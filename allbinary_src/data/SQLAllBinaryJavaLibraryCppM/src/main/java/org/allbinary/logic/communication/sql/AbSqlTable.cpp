@@ -47,21 +47,20 @@
         #include "AbSqlBasic.h"
 
 class AbSqlTable: public AbSqlBasic {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: tableName: string;
+    private: std::string tableName;
 
-    private: const METHOD_CREATED_TABLE: string = "createTable()";
+    private: const std::string METHOD_CREATED_TABLE = "createTable()";
 
-    private: const METHOD_DROP_TABLE: string = "dropTable()";
+    private: const std::string METHOD_DROP_TABLE = "dropTable()";
 
-    private: const TABLE_CREATION_SUCCESS: string = "Table Creation Successful: ";
+    private: const std::string TABLE_CREATION_SUCCESS = "Table Creation Successful: ";
 
-    private: const DROPPED_SUCCESS: string = " Dropped Successfully";
+    private: const std::string DROPPED_SUCCESS = " Dropped Successfully";
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface){
+public: AbSqlTable(DbConnectionInfo databaseConnectionInfoInterface){
             super(databaseConnectionInfoInterface);
                     
 
@@ -70,33 +69,33 @@ public constructor (DbConnectionInfo databaseConnectionInfoInterface){
 }
 
 
-    public setTableName(string tableName){
-this.tableName= tableName;
+    public: void setTableName(std::string tableName){
+this->tableName= tableName;
     
 }
 
 
-    public string getTableName(){
+    public: std::string getTableName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tableName;
+                        return this->tableName;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string createTable(string data){
+    public: std::string createTable(std::string data){
 
         try {
-            this.executeSQLStatement(data);
+            this->executeSQLStatement(data);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.TABLE_CREATION_SUCCESS +this.tableName +" with statement: " +data, this, this.METHOD_CREATED_TABLE);
+                                    this->logUtil.putF(this->TABLE_CREATION_SUCCESS +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE);
     
 
                                     }
@@ -105,17 +104,17 @@ this.tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tableName +this.sqlStrings!.CREATE_RETURN;
+                        return this->tableName +this->sqlStrings.CREATE_RETURN;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put("Table Creation Failed: " +this.tableName +" with statement: " +data, this, this.METHOD_CREATED_TABLE, e);
+                                    this->logUtil.put("Table Creation Failed: " +this->tableName +" with statement: " +data, this, this->METHOD_CREATED_TABLE, e);
     
 
                                     }
@@ -124,7 +123,7 @@ this.tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Failed to Create " +this.tableName +" table.";
+                        return "Failed to Create " +this->tableName +" table.";
     
 }
 
@@ -132,19 +131,19 @@ this.tableName= tableName;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
-    sqlStatement: string = this.sqlStrings!.DROP_TABLE +this.tableName;;
+    std::string sqlStatement = this->sqlStrings.DROP_TABLE +this->tableName;;
     
 
         try {
-            this.executeSQLStatement(sqlStatement);
+            this->executeSQLStatement(sqlStatement);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.SUCCESS_SQL_STATEMENT +sqlStatement, this, this.METHOD_DROP_TABLE);
+                                    this->logUtil.putF(this->SUCCESS_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE);
     
 
                                     }
@@ -153,17 +152,17 @@ this.tableName= tableName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return tableName +this.DROPPED_SUCCESS;
+                        return tableName +this->DROPPED_SUCCESS;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.FAILED_SQL_STATEMENT +sqlStatement, this, this.METHOD_DROP_TABLE, e);
+                                    this->logUtil.put(this->FAILED_SQL_STATEMENT +sqlStatement, this, this->METHOD_DROP_TABLE, e);
     
 
                                     }

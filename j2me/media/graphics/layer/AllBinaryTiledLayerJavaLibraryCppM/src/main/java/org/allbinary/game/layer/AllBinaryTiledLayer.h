@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYTILEDLAYER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -63,66 +65,65 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AllBinaryTiledLayer: public Layer: public NamedInterface, public PaintableInterface {
-        
+class AllBinaryTiledLayer: public Layer, public NamedInterface, public PaintableInterface {
 
-    private: cellWidth: int32_t;
+    private: int32_t cellWidth;
 
-    private: cellHeight: int32_t;
+    private: int32_t cellHeight;
 
-    private: const halfWidth: int32_t;
+    private: int32_t halfWidth;
 
-    private: const halfHeight: int32_t;
+    private: int32_t halfHeight;
 
-    private: const halfCellWidth: int32_t;
+    private: int32_t halfCellWidth;
 
-    private: const halfCellHeight: int32_t;
+    private: int32_t halfCellHeight;
 
-    private: const dataId: Integer;
+    private: Integer dataId;
 
-public constructor (Integer dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight);
+public: AllBinaryTiledLayer(Integer dataId, int32_t width, int32_t height, int32_t cellWidth, int32_t cellHeight);
 
-    public setCells(std::vector<std::vector<int32_t>> mapTwoDArray);
+    public: void setCells(std::vector<std::vector<int32_t>> mapTwoDArray);
 
-    public updateCells(std::vector<std::vector<int32_t>> mapTwoDArray, int32_t fromTileId, int32_t toTileId);
+    public: void updateCells(std::vector<std::vector<int32_t>> mapTwoDArray, int32_t fromTileId, int32_t toTileId);
 
-    public string getName();
+    public: std::string getName();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
-    public int32_t getX2();
+    public: int32_t getX2();
 
-    public int32_t getY2();
+    public: int32_t getY2();
 
-    public int32_t getZ2();
+    public: int32_t getZ2();
 
-    public int32_t getCellWidth();
+    public: int32_t getCellWidth();
 
-    public int32_t getCellHeight();
+    public: int32_t getCellHeight();
 
-    public int32_t getCell(int32_t col, int32_t row);
+    public: int32_t getCell(int32_t col, int32_t row);
 
-    public int32_t getColumns();
+    public: int32_t getColumns();
 
-    public int32_t getRows();
+    public: int32_t getRows();
 
-    public setCell(int32_t col, int32_t row, int32_t tileIndex);
+    public: void setCell(int32_t col, int32_t row, int32_t tileIndex);
 
-    public int32_t getHalfWidth();
+    public: int32_t getHalfWidth();
 
-    public int32_t getHalfHeight();
+    public: int32_t getHalfHeight();
 
-    public Integer getDataId();
+    public: Integer getDataId();
 
-    public int32_t getHalfCellWidth();
+    public: int32_t getHalfCellWidth();
 
-    public int32_t getHalfCellHeight();
+    public: int32_t getHalfCellHeight();
 
-    public bool isOnTileLayer(int32_t column, int32_t row);
+    public: bool isOnTileLayer(int32_t column, int32_t row);
 
-    public int32_t getAnimatedTile(int32_t animationTileIndex);
+    public: int32_t getAnimatedTile(int32_t animationTileIndex);
 
 };
 

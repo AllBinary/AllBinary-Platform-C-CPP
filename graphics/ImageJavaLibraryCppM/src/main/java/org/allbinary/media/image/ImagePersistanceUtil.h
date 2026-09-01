@@ -84,23 +84,22 @@
 class ImagePersistanceUtil
             : public Object
          {
-        
 
-    private: static const instance: ImagePersistanceUtil = new ImagePersistanceUtil();
+    private: static ImagePersistanceUtil instance() { return ImagePersistanceUtil(); }
 
-    public static ImagePersistanceUtil getInstance();
+    public: static ImagePersistanceUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public saveWithBatik(AbFile file, BufferedImage bufferedImage);
+    public: void saveWithBatik(AbFile file, BufferedImage bufferedImage);
 
-    public saveWithImageIO(string filePath, BufferedImage bufferedImage);
+    public: void saveWithImageIO(std::string filePath, BufferedImage bufferedImage);
 
-    public saveWithImageIO(File file, BufferedImage bufferedImage);
+    public: void saveWithImageIO(File file, BufferedImage bufferedImage);
 
 };
 

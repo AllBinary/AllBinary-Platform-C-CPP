@@ -67,21 +67,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BoundBounceAI: public BasicAI {
-        
 
-    currentRelativeAngle: int32_t = 0;
+    protected: int32_t currentRelativeAngle = 0;
 
-    private: layerBounds: LayerBounds;
+    private: LayerBounds layerBounds;
 
-    private: boundsVisitorInterface: BoundsVisitorInterface;
+    private: BoundsVisitorInterface boundsVisitorInterface;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput, LayerBounds layerBounds, BoundsVisitorInterface boundsVisitorInterface);
+public: BoundBounceAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput, LayerBounds layerBounds, BoundsVisitorInterface boundsVisitorInterface);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

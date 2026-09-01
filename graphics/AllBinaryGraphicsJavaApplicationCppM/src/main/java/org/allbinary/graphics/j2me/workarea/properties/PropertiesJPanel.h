@@ -48,40 +48,39 @@
 #include "GridLayout.h"
 #include "Font.h"
 
-class PropertiesJPanel: public javax.swing.JPanel {
-        
+class PropertiesJPanel: public javax::swing::JPanel {
 
-public constructor ();
+public: PropertiesJPanel();
 
-    public set(JPanel panel);
+    public: void set(JPanel panel);
 
-    initComponents();
+    private: void initComponents();
 
-    private: rotateJButton: javax.swing.JButton;
+    private: javax::swing::JButton rotateJButton;
 
-    private: copyVerticalJButton: javax.swing.JButton;
+    private: javax::swing::JButton copyVerticalJButton;
 
-    private: leftJButton: javax.swing.JButton;
+    private: javax::swing::JButton leftJButton;
 
-    private: rotateJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel rotateJPanel;
 
-    private: angleJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField angleJTextField;
 
-    private: workAreaPropertiesJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel workAreaPropertiesJPanel;
 
-    private: modifierJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel modifierJPanel;
 
-    private: upJButton: javax.swing.JButton;
+    private: javax::swing::JButton upJButton;
 
-    private: jPanel8: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel8;
 
-    private: downJButton: javax.swing.JButton;
+    private: javax::swing::JButton downJButton;
 
-    private: jPanel7: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel7;
 
-    private: rightJButton: javax.swing.JButton;
+    private: javax::swing::JButton rightJButton;
 
-    private: copyHorizontalJButton: javax.swing.JButton;
+    private: javax::swing::JButton copyHorizontalJButton;
 
 };
 

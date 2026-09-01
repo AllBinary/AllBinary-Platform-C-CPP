@@ -52,7 +52,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DestroyableInterface: public NamedInterface {
-        
 
                 //@Throws(Exception.constructor)
             

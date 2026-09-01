@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_NEWWORKFLOWFACTORY_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_NEWWORKFLOWFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -78,23 +80,22 @@
 class NewWorkFlowFactory
             : public Object
          {
-        
 
-    private: static const instance: NewWorkFlowFactory = new NewWorkFlowFactory();
+    private: static NewWorkFlowFactory instance() { return NewWorkFlowFactory(); }
 
-    public static NewWorkFlowFactory getInstance();
+    public: static NewWorkFlowFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor, LicensingException.constructor)
-            
-    public WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap, PageContext pageContext);
+private: NewWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, string className);
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap, PageContext pageContext);
+
+                //@Throws(Exception.constructor, LicensingException.constructor)
+            
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string className);
 
 };
 

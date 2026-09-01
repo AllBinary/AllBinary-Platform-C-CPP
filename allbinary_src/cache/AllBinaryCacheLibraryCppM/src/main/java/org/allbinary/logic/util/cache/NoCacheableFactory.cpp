@@ -46,21 +46,18 @@
 class NoCacheableFactory
             : public Object
         : public CacheableInterfaceFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: NoCacheableFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface getInstance(any = {} key){
+    public: CacheableInterface getInstance(Object* key){
 
 
 
-                            throw new Exception("This Factory Does Not");
+                            throw Exception("This Factory Does Not");
                     
 }
 

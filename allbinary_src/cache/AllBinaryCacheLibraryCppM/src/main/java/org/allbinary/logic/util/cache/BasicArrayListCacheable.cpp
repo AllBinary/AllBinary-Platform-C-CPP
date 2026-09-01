@@ -44,15 +44,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CacheableInterface.h"
 
-class BasicArrayListCacheable: public BasicArrayListD: public CacheableInterface {
-        
+class BasicArrayListCacheable: public BasicArrayListD, public CacheableInterface {
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

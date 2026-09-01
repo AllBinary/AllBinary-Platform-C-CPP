@@ -45,15 +45,12 @@
         #include "ValidatorBase.h"
 
 class GenericValidator: public ValidatorBase {
-        
 
-public constructor (){
-
-            super();
-        }
+public: GenericValidator(){
+}
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -63,7 +60,7 @@ public constructor (){
 }
 
 
-    public Node toValidationInfoNode(org.w3c.dom.Document document){
+    public: Node toValidationInfoNode(org::w3c::dom::Document document){
 
 
 

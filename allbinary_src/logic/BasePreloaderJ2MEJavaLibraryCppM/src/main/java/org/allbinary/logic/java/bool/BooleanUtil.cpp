@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -54,39 +56,36 @@
 class BooleanUtil
             : public Object
          {
-        
 
-    private: static const instance: BooleanUtil = new BooleanUtil();
+    private: static BooleanUtil instance() { return BooleanUtil(); }
 
-    public static BooleanUtil getInstance(){
+    public: static BooleanUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanUtil.instance;
+                        return BooleanUtil::instance();
     
 }
 
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: BooleanUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public bool getFromString(string booleanString){
+    public: bool getFromString(std::string booleanString){
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;;
+    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
     
 
-                        if(stringValidationUtil!.isEmpty(booleanString))
+                        if(stringValidationUtil.isEmpty(booleanString))
                         
                                     {
                                     
@@ -99,10 +98,10 @@ private constructor (){
                                     }
                                 
 
-    booleanStringLowerCase: string = booleanString!.toLowerCase()!;;
+    std::string booleanStringLowerCase = booleanString.toLowerCase();;
     
 
-                        if(this.tsUtil!.compareTo(booleanStringLowerCase, booleanFactory!.TRUE_STRING) == 0)
+                        if(this->tsUtil.compareTo(booleanStringLowerCase, booleanFactory.TRUE_STRING) == 0)
                         
                                     {
                                     
@@ -115,7 +114,7 @@ private constructor (){
                                     }
                                 
                              else 
-                        if(this.tsUtil!.compareTo(booleanStringLowerCase, booleanFactory!.FALSE_STRING) == 0)
+                        if(this->tsUtil.compareTo(booleanStringLowerCase, booleanFactory.FALSE_STRING) == 0)
                         
                                     {
                                     
@@ -131,7 +130,7 @@ private constructor (){
                             
 
 
-                            throw new Exception("Invalid booleanString - Must be true or false");
+                            throw Exception("Invalid booleanString - Must be true or false");
                     
 
                         }
@@ -141,15 +140,15 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public bool isStringBoolean(string booleanString){
+    public: bool isStringBoolean(std::string booleanString){
 
-    booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;;
+    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
     
 
-    booleanStringLowerCase: string = booleanString!.toLowerCase()!;;
+    std::string booleanStringLowerCase = booleanString.toLowerCase();;
     
 
-                        if(booleanStringLowerCase!.compareTo(booleanFactory!.TRUE_STRING) == 0 || booleanStringLowerCase!.compareTo(booleanFactory!.FALSE_STRING) == 0)
+                        if(booleanStringLowerCase.compareTo(booleanFactory.TRUE_STRING) == 0 || booleanStringLowerCase.compareTo(booleanFactory.FALSE_STRING) == 0)
                         
                                     {
                                     
@@ -170,22 +169,21 @@ private constructor (){
 }
 
 
-    public string toStringFromBooleanArray(std::vector<bool> booleanArray){
+    public: std::string toStringFromBooleanArray(std::vector<bool> booleanArray){
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    size: int32_t = booleanArray!.length
-                ;;
+    int32_t size = booleanArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringMaker!.appendboolean(booleanArray[index]!);
+stringMaker.appendboolean(booleanArray[index]!);
     
 }
 
@@ -193,7 +191,7 @@ stringMaker!.appendboolean(booleanArray[index]!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringMaker!.toString();;
+                        return stringMaker.toString();;
     
 }
 

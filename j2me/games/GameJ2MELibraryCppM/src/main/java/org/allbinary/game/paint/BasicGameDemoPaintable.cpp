@@ -59,36 +59,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicGameDemoPaintable: public StatePaintable {
-        
 
-    private: const mainDemoStatePaintable: Paintable;
+    private: Paintable mainDemoStatePaintable;
 
-    private: const ownershipPaintable: Paintable;
+    private: Paintable ownershipPaintable;
 
-    private: const helpPaintableInterface: Paintable;
+    private: Paintable helpPaintableInterface;
 
-    private: currentStatePaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable currentStatePaintable = NullPaintable::getInstance();
 
-public constructor (Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface){
-
-            super();
-        this.mainDemoStatePaintable= mainDemoStatePaintable;
+public: BasicGameDemoPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface){
+this->mainDemoStatePaintable= mainDemoStatePaintable;
     
-this.setCurrentStatePaintable(NullPaintable.getInstance());
+this->setCurrentStatePaintable(NullPaintable::getInstance());
     
-this.ownershipPaintable= ownershipPaintable;
+this->ownershipPaintable= ownershipPaintable;
     
-this.helpPaintableInterface= helpPaintableInterface;
+this->helpPaintableInterface= helpPaintableInterface;
     
 }
 
 
-    public setState(int32_t state){
+    public: void setState(int32_t state){
 
                         if(state == 0)
                         
                                     {
-                                    this.setCurrentStatePaintable(this.getMainDemoStatePaintable());
+                                    this->setCurrentStatePaintable(this->getMainDemoStatePaintable());
     
 
                                     }
@@ -97,13 +94,13 @@ this.helpPaintableInterface= helpPaintableInterface;
                         if(state == 1)
                         
                                     {
-                                    this.setCurrentStatePaintable(this.helpPaintableInterface);
+                                    this->setCurrentStatePaintable(this->helpPaintableInterface);
     
 
                                     }
                                 
                         else {
-                            this.setCurrentStatePaintable(this.ownershipPaintable);
+                            this->setCurrentStatePaintable(this->ownershipPaintable);
     
 
                         }
@@ -111,44 +108,44 @@ this.helpPaintableInterface= helpPaintableInterface;
 }
 
 
-    public paint(Graphics graphics){
-this.getCurrentStatePaintable()!.paint(graphics);
+    public: void paint(Graphics graphics){
+this->getCurrentStatePaintable().paint(graphics);
     
 }
 
 
-    public Paintable getHelpPaintableInterface(){
+    public: Paintable getHelpPaintableInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.helpPaintableInterface;
+                        return this->helpPaintableInterface;
     
 }
 
 
-    setCurrentStatePaintable(Paintable currentStatePaintable){
-this.currentStatePaintable= currentStatePaintable;
+    protected: void setCurrentStatePaintable(Paintable currentStatePaintable){
+this->currentStatePaintable= currentStatePaintable;
     
 }
 
 
-    Paintable getCurrentStatePaintable(){
+    protected: Paintable getCurrentStatePaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentStatePaintable;
+                        return this->currentStatePaintable;
     
 }
 
 
-    Paintable getMainDemoStatePaintable(){
+    protected: Paintable getMainDemoStatePaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mainDemoStatePaintable;
+                        return this->mainDemoStatePaintable;
     
 }
 

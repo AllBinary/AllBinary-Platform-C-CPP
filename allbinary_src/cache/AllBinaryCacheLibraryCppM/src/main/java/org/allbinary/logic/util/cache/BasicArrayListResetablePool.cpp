@@ -43,9 +43,8 @@
 #include "CacheableInterface.h"
 
 class BasicArrayListResetablePool: public AbstractArrayListPool {
-        
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
+public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
             super(cacheableInterfaceFactoryInterface);
                     
 
@@ -54,15 +53,15 @@ public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactory
 }
 
 
-    public clear(){
+    public: void clear(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface remove(any = {} key){
+    public: CacheableInterface remove(Object* key){
 
-    size: int32_t = this.buffers.size()!;;
+    int32_t size = this->buffers.size();;
     
 
                         if(size > 0)
@@ -72,7 +71,7 @@ public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buffers.removeAt(size -1) as CacheableInterface;
+                        return this->buffers.removeAt(size -1) as CacheableInterface;
     
 
                                     }
@@ -82,7 +81,7 @@ public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cacheableInterfaceFactoryInterface!.getInstance(key);;
+                        return this->cacheableInterfaceFactoryInterface.getInstance(key);;
     
 
                         }

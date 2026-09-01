@@ -51,21 +51,20 @@
 class LayerPlacementTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: LayerPlacementTypeFactory = new LayerPlacementTypeFactory();
+    private: static LayerPlacementTypeFactory instance() { return LayerPlacementTypeFactory(); }
 
-    public static LayerPlacementTypeFactory getInstance();
+    public: static LayerPlacementTypeFactory getInstance();
 
-    public const MAP: LayerPlacementType = new LayerPlacementType(Integer.MAX_VALUE);
+    public: const LayerPlacementType MAP = LayerPlacementType(Integer::MAX_VALUE);
 
-    public const LEFT: LayerPlacementType = new LayerPlacementType(DirectionFactory.getInstance()!.LEFT.getValue());
+    public: const LayerPlacementType LEFT = LayerPlacementType(DirectionFactory::getInstance().LEFT.getValue());
 
-    public const DOWN: LayerPlacementType = new LayerPlacementType(DirectionFactory.getInstance()!.DOWN.getValue());
+    public: const LayerPlacementType DOWN = LayerPlacementType(DirectionFactory::getInstance().DOWN.getValue());
 
-    public const UP: LayerPlacementType = new LayerPlacementType(DirectionFactory.getInstance()!.UP.getValue());
+    public: const LayerPlacementType UP = LayerPlacementType(DirectionFactory::getInstance().UP.getValue());
 
-    public const RIGHT: LayerPlacementType = new LayerPlacementType(DirectionFactory.getInstance()!.RIGHT.getValue());
+    public: const LayerPlacementType RIGHT = LayerPlacementType(DirectionFactory::getInstance().RIGHT.getValue());
 
 };
 

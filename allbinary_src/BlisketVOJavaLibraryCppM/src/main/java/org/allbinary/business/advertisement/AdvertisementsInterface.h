@@ -42,17 +42,16 @@
         #include "AdvertisementInterface.h"
 
 class AdvertisementsInterface {
-        
 
-    add(AdvertisementInterface advertisementInterface);
+    void add(AdvertisementInterface advertisementInterface);
 
     AdvertisementInterface get(int32_t index);
 
     int32_t getCurrentPageNum();
 
-    string getErrorDescription();
+    std::string getErrorDescription();
 
-    string getErrorNum();
+    std::string getErrorNum();
 
     int32_t getNumberOfPosters();
 
@@ -64,19 +63,19 @@ class AdvertisementsInterface {
 
     bool isSearchValid();
 
-    setCurrentPageNum(int32_t currentPageNum);
+    void setCurrentPageNum(int32_t currentPageNum);
 
-    setErrorDescription(string errorDescription);
+    void setErrorDescription(std::string errorDescription);
 
-    setErrorNum(string errorNum);
+    void setErrorNum(std::string errorNum);
 
-    setNumberOfProductsInPage(int32_t numberOfProductsInPage);
+    void setNumberOfProductsInPage(int32_t numberOfProductsInPage);
 
-    setStatusCode(int32_t statusCode);
+    void setStatusCode(int32_t statusCode);
 
-    setTotalNumberOfProducts(int32_t totalNumberOfProducts);
+    void setTotalNumberOfProducts(int32_t totalNumberOfProducts);
 
-    string toString();
+    std::string toString();
 
 };
 

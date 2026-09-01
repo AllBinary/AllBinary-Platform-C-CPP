@@ -31,25 +31,24 @@
 class BasicGameInfoFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: BasicGameInfoFactory = new BasicGameInfoFactory();
+    private: static const BasicGameInfoFactory SINGLETON = BasicGameInfoFactory();
 
-    public static BasicGameInfoFactory getInstance();
+    public: static BasicGameInfoFactory getInstance();
 
-    public currentReleaseIndex: int32_t= 0;
+    public: int32_t currentReleaseIndex= 0;
 
-    public currentDestroyIndex: int32_t= 0;
+    public: int32_t currentDestroyIndex= 0;
 
-    public total: int32_t= 0;
+    public: int32_t total= 0;
 
-private constructor ();
+private: BasicGameInfoFactory();
 
-    public init(int32_t total);
+    public: void init(int32_t total);
 
-    public bool isPeaked();
+    public: bool isPeaked();
 
-    public int32_t howManyLeft();
+    public: int32_t howManyLeft();
 
 };
 

@@ -80,57 +80,54 @@
 class CreateGameRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const demoGameMidlet: DemoGameMidlet;
+    private: DemoGameMidlet demoGameMidlet;
 
-    private: const hashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> hashtable;
 
-    private: const startGameMidletEvent: DemoGameMidletEvent;
+    private: DemoGameMidletEvent startGameMidletEvent;
 
-public constructor (DemoGameMidlet demoGameMidlet, Hashtable<any, any> hashtable){
-
-            super();
-        this.demoGameMidlet= demoGameMidlet;
+public: CreateGameRunnable(DemoGameMidlet demoGameMidlet, Hashtable<any, any> hashtable){
+this->demoGameMidlet= demoGameMidlet;
     
-this.hashtable= hashtable;
+this->hashtable= hashtable;
     
-this.startGameMidletEvent= new DemoGameMidletEvent(this, DemoGameMidletStateFactory.getInstance()!.START_GAME);
+this->startGameMidletEvent= DemoGameMidletEvent(this, DemoGameMidletStateFactory::getInstance().START_GAME);
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START_RUNNABLE, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-this.demoGameMidlet!.commandAction(MyCommandsFactory.getInstance()!.SET_DISPLAYABLE, progressCanvas);
+this->demoGameMidlet.commandAction(MyCommandsFactory::getInstance().SET_DISPLAYABLE, progressCanvas);
     
-this.demoGameMidlet!.stopGameCanvasRunnableInterface();
+this->demoGameMidlet.stopGameCanvasRunnableInterface();
     
-this.demoGameMidlet!.setGameCanvasRunnableInterface(this.demoGameMidlet!.createGameCanvasRunnableInterface());
+this->demoGameMidlet.setGameCanvasRunnableInterface(this->demoGameMidlet.createGameCanvasRunnableInterface());
     
-this.demoGameMidlet!.getGameCanvasRunnableInterface()!.setLoadStateHashtable(this.hashtable);
+this->demoGameMidlet.getGameCanvasRunnableInterface().setLoadStateHashtable(this->hashtable);
     
-this.demoGameMidlet!.startGameCanvasRunnableInterface();
+this->demoGameMidlet.startGameCanvasRunnableInterface();
     
-DemoGameMidletEventHandler.getInstance()!.fireEvent(this.startGameMidletEvent);
+DemoGameMidletEventHandler::getInstance().fireEvent(this->startGameMidletEvent);
     
-this.logUtil!.putF(this.commonStrings!.END_RUNNABLE, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

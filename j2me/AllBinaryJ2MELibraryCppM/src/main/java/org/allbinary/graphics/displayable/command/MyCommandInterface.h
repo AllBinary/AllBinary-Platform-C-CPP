@@ -50,11 +50,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MyCommandInterface {
-        
 
-    addCommand(Command command);
+    void addCommand(Command command);
 
-    removeAllCommands();
+    void removeAllCommands();
 
 };
 

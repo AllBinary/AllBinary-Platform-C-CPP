@@ -45,89 +45,84 @@
 class Grid
             : public Object
          {
-        
 
-    public grid: GPoint;
+    public: GPoint grid;
 
-    public isGridOn: bool = true;
+    public: bool isGridOn = true;
 
-    public isGridPossible: bool = false;
+    public: bool isGridPossible = false;
 
-    private: zoom: int32_t = 3;
+    private: int32_t zoom = 3;
 
-    public isChanged: bool = true;
+    public: bool isChanged = true;
 
-public constructor (){
-
-            super();
-        }
+public: Grid(){
+}
 
 
-public constructor (Grid grid){
-
-            super();
-        this.grid= grid.grid;
+public: Grid(Grid grid){
+this->grid= grid.grid;
     
-this.showGrid(grid.isGridOn);
+this->showGrid(grid.isGridOn);
     
-this.isGridPossible= grid.isGridPossible;
+this->isGridPossible= grid.isGridPossible;
     
-this.setZoom(grid.getZoom());
+this->setZoom(grid.getZoom());
     
 }
 
 
-    public bool isGridOn(){
+    public: bool isGridOn(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isGridOn;
+                        return this->isGridOn;
     
 }
 
 
-    public bool isGridPossible(){
+    public: bool isGridPossible(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isGridPossible;
+                        return this->isGridPossible;
     
 }
 
 
-    public GPoint getGrid(){
+    public: GPoint getGrid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.grid;
+                        return this->grid;
     
 }
 
 
-    public int32_t getZoom(){
+    public: int32_t getZoom(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.zoom;
+                        return this->zoom;
     
 }
 
 
-    public showGrid(bool value){
-this.isGridOn= value;
+    public: void showGrid(bool value){
+this->isGridOn= value;
     
 }
 
 
-    public setZoom(int32_t zoom){
-this.zoom= zoom;
+    public: void setZoom(int32_t zoom){
+this->zoom= zoom;
     
 
-                        if(this.zoom < 1)
+                        if(this->zoom < 1)
                         
                                     {
                                     zoom= 1;
@@ -135,7 +130,7 @@ this.zoom= zoom;
 
                                     }
                                 
-this.isChanged= true;
+this->isChanged= true;
     
 }
 

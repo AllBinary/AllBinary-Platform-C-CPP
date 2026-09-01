@@ -42,58 +42,55 @@
 class SearchData
             : public Object
          {
-        
 
-    public static const TOTAL_NUMBER_PAGES: string = "SEARCHDATA_TOTALNUMBEROFPAGES";
+    public: static const std::string TOTAL_NUMBER_PAGES = "SEARCHDATA_TOTALNUMBEROFPAGES";
 
-    public static const TOTAL_NUMBER_ITEMS_ON_THIS_PAGE: string = "SEARCHDATA_TOTALNUMBEROFITEMSONTHISPAGE";
+    public: static const std::string TOTAL_NUMBER_ITEMS_ON_THIS_PAGE = "SEARCHDATA_TOTALNUMBEROFITEMSONTHISPAGE";
 
-    public static const TOTAL_NUMBER_ITEMS: string = "SEARCHDATA_TOTALNUMBEROFITEMS";
+    public: static const std::string TOTAL_NUMBER_ITEMS = "SEARCHDATA_TOTALNUMBEROFITEMS";
 
-    public static const DEFAULT_PAGE_LENGTH: int32_t = 10;
+    public: static const int32_t DEFAULT_PAGE_LENGTH = 10;
 
-    public static const GENERATESTATICPAGES: string = "Generate Static Pages";
+    public: static const std::string GENERATESTATICPAGES = "Generate Static Pages";
 
-    public static const SEARCHBYSUMMARY: string = "Search By Summary";
+    public: static const std::string SEARCHBYSUMMARY = "Search By Summary";
 
-    public static const SEARCHBYDESCRIPTION: string = "Search By Description";
+    public: static const std::string SEARCHBYDESCRIPTION = "Search By Description";
 
-    public static const SEARCHBYCATEGORY: string = "Search By Category";
+    public: static const std::string SEARCHBYCATEGORY = "Search By Category";
 
-    public static const SEARCHCATEGORIES: string = "Search Categories";
+    public: static const std::string SEARCHCATEGORIES = "Search Categories";
 
-    public static const FILENAME: string = "SEARCHDATA_BASEFILENAME";
+    public: static const std::string FILENAME = "SEARCHDATA_BASEFILENAME";
 
-    public static const COLUMNNAME: string = "COLUMN_NAME";
+    public: static const std::string COLUMNNAME = "COLUMN_NAME";
 
-    public static const COLUMNVALUE: string = "COLUMN_VALUE";
+    public: static const std::string COLUMNVALUE = "COLUMN_VALUE";
 
-    public static const PARAMS: string = "SEARCHDATA_PARAMS";
+    public: static const std::string PARAMS = "SEARCHDATA_PARAMS";
 
-    public static const LENGTH: string = "SEARCHDATA_LENGTH";
+    public: static const std::string LENGTH = "SEARCHDATA_LENGTH";
 
-    public static const ORDER: string = "SEARCHDATA_ORDER";
+    public: static const std::string ORDER = "SEARCHDATA_ORDER";
 
-    public static const PAGE: string = "SEARCHDATA_PAGE";
+    public: static const std::string PAGE = "SEARCHDATA_PAGE";
 
-    public static const FIELDS: string = "SEARCHDATA_FIELDS";
+    public: static const std::string FIELDS = "SEARCHDATA_FIELDS";
 
-    public static const FIELD: string = "SEARCHDATA_FIELD";
+    public: static const std::string FIELD = "SEARCHDATA_FIELD";
 
-    public static const SORTBY: string = "SEARCHDATA_SORTBY";
+    public: static const std::string SORTBY = "SEARCHDATA_SORTBY";
 
-    public static const TYPE: string = "SEARCHDATA_TYPE";
+    public: static const std::string TYPE = "SEARCHDATA_TYPE";
 
-    public static const PAGE_INFO: string = "pageInfo";
+    public: static const std::string PAGE_INFO = "pageInfo";
 
-    public static const SEARCH: string = "search";
+    public: static const std::string SEARCH = "search";
 
-    public static const MAKEPUBLIC: string = "Make Public";
+    public: static const std::string MAKEPUBLIC = "Make Public";
 
-public constructor (){
-
-            super();
-        }
+public: SearchData(){
+}
 
 
 };

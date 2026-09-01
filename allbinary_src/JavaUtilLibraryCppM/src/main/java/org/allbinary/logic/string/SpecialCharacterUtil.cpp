@@ -55,65 +55,64 @@
 class SpecialCharacterUtil
             : public Object
          {
-        
 
-    public static HashMap<any, any> getHashMap(){
+    public: static HashMap<any, any> getHashMap(){
 
-    commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;;
-    
-
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-hashMap!.put("!", stringUtil!.EMPTY_STRING);
+
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put("@", stringUtil!.EMPTY_STRING);
+hashMap.put("!", stringUtil.EMPTY_STRING);
     
-hashMap!.put(commonPhoneStrings!.POUND, stringUtil!.EMPTY_STRING);
+hashMap.put("@", stringUtil.EMPTY_STRING);
     
-hashMap!.put("$", stringUtil!.EMPTY_STRING);
+hashMap.put(commonPhoneStrings.POUND, stringUtil.EMPTY_STRING);
     
-hashMap!.put("%", stringUtil!.EMPTY_STRING);
+hashMap.put("$", stringUtil.EMPTY_STRING);
     
-hashMap!.put("^", stringUtil!.EMPTY_STRING);
+hashMap.put("%", stringUtil.EMPTY_STRING);
     
-hashMap!.put(CommonSeps.getInstance()!.AMPERSAND, stringUtil!.EMPTY_STRING);
+hashMap.put("^", stringUtil.EMPTY_STRING);
     
-hashMap!.put(commonPhoneStrings!.STAR, stringUtil!.EMPTY_STRING);
+hashMap.put(CommonSeps::getInstance().AMPERSAND, stringUtil.EMPTY_STRING);
     
-hashMap!.put("(", stringUtil!.EMPTY_STRING);
+hashMap.put(commonPhoneStrings.STAR, stringUtil.EMPTY_STRING);
     
-hashMap!.put(")", stringUtil!.EMPTY_STRING);
+hashMap.put("(", stringUtil.EMPTY_STRING);
     
-hashMap!.put("-", stringUtil!.EMPTY_STRING);
+hashMap.put(")", stringUtil.EMPTY_STRING);
     
-hashMap!.put("_", stringUtil!.EMPTY_STRING);
+hashMap.put("-", stringUtil.EMPTY_STRING);
     
-hashMap!.put("+", stringUtil!.EMPTY_STRING);
+hashMap.put("_", stringUtil.EMPTY_STRING);
     
-hashMap!.put("=", stringUtil!.EMPTY_STRING);
+hashMap.put("+", stringUtil.EMPTY_STRING);
     
-hashMap!.put("\\", stringUtil!.EMPTY_STRING);
+hashMap.put("=", stringUtil.EMPTY_STRING);
     
-hashMap!.put("|", stringUtil!.EMPTY_STRING);
+hashMap.put("\\", stringUtil.EMPTY_STRING);
     
-hashMap!.put(AbPathData.getInstance()!.EXTENSION_SEP, stringUtil!.EMPTY_STRING);
+hashMap.put("|", stringUtil.EMPTY_STRING);
     
-hashMap!.put(",", stringUtil!.EMPTY_STRING);
+hashMap.put(AbPathData::getInstance().EXTENSION_SEP, stringUtil.EMPTY_STRING);
     
-hashMap!.put("<", stringUtil!.EMPTY_STRING);
+hashMap.put(",", stringUtil.EMPTY_STRING);
     
-hashMap!.put(">", stringUtil!.EMPTY_STRING);
+hashMap.put("<", stringUtil.EMPTY_STRING);
     
-hashMap!.put("?", stringUtil!.EMPTY_STRING);
+hashMap.put(">", stringUtil.EMPTY_STRING);
     
-hashMap!.put(AbPathData.getInstance()!.SEPARATOR, stringUtil!.EMPTY_STRING);
+hashMap.put("?", stringUtil.EMPTY_STRING);
     
-hashMap!.put("~", stringUtil!.EMPTY_STRING);
+hashMap.put(AbPathData::getInstance().SEPARATOR, stringUtil.EMPTY_STRING);
     
-hashMap!.put("`", stringUtil!.EMPTY_STRING);
+hashMap.put("~", stringUtil.EMPTY_STRING);
+    
+hashMap.put("`", stringUtil.EMPTY_STRING);
     
 
 

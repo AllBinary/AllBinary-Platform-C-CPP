@@ -42,13 +42,12 @@
         #include "TouchButtonResource.h"
 
 class TouchButtonDownResource: public TouchButtonResource {
-        
 
-    private: static const instance: TouchButtonResource = new TouchButtonDownResource();
+    private: static const TouchButtonResource instance = TouchButtonDownResource();
 
-    public static TouchButtonResource getInstance();
+    public: static TouchButtonResource getInstance();
 
-private constructor ();
+private: TouchButtonDownResource();
 
 };
 

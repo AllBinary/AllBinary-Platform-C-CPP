@@ -95,55 +95,54 @@
 class GameConfigurationCentral
             : public Object
          {
-        
 
-    private: static SINGLETON: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameConfigurationCentral getInstance();
+    public: static GameConfigurationCentral getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const SCALE: GameConfiguration;
+    public: GameConfiguration SCALE;
 
-    public const ORIENTATION: GameConfiguration;
+    public: GameConfiguration ORIENTATION;
 
-    public const SENSOR_UPDATE_RATE: GameConfiguration;
+    public: GameConfiguration SENSOR_UPDATE_RATE;
 
-    public const VIBRATION: GameConfiguration;
+    public: GameConfiguration VIBRATION;
 
-    public const CHALLENGE_LEVEL: GameConfiguration;
+    public: GameConfiguration CHALLENGE_LEVEL;
 
-    public const COLLIDE_DAMAGE: GameConfiguration;
+    public: GameConfiguration COLLIDE_DAMAGE;
 
-    public const DURABILITY_CHALLENGE_LEVEL: GameConfiguration;
+    public: GameConfiguration DURABILITY_CHALLENGE_LEVEL;
 
-    public const SPEED_CHALLENGE_LEVEL: GameConfiguration;
+    public: GameConfiguration SPEED_CHALLENGE_LEVEL;
 
-    public const ATTACK_CHALLENGE_LEVEL: GameConfiguration;
+    public: GameConfiguration ATTACK_CHALLENGE_LEVEL;
 
-    public const CONTROL_LEVEL: GameConfiguration;
+    public: GameConfiguration CONTROL_LEVEL;
 
-    public const PLAYER_INPUT_WAIT: GameConfiguration;
+    public: GameConfiguration PLAYER_INPUT_WAIT;
 
-    public const SPEED: GameConfiguration;
+    public: GameConfiguration SPEED;
 
-    public const SOUND_VOLUME: GameConfiguration;
+    public: GameConfiguration SOUND_VOLUME;
 
-    public const MAX_GAME_OBJECTS: GameConfiguration;
+    public: GameConfiguration MAX_GAME_OBJECTS;
 
-    public const MAX_LAYERS: GameConfiguration;
+    public: GameConfiguration MAX_LAYERS;
 
-    private: gameControlFidelity: int32_t = 36;
+    private: int32_t gameControlFidelity = 36;
 
-private constructor ();
+private: GameConfigurationCentral();
 
-    public load(AbeClientInformationInterface abeClientInformation);
+    public: void load(AbeClientInformationInterface abeClientInformation);
 
-    public setGameControlFidelity(int32_t gameControlFidelity);
+    public: void setGameControlFidelity(int32_t gameControlFidelity);
 
-    public int32_t getGameControlFidelity();
+    public: int32_t getGameControlFidelity();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

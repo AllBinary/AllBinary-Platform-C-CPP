@@ -53,20 +53,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AllCommandsVisitor: public Visitor {
-        
 
-public constructor (){
-
-            super();
-        }
+public: AllCommandsVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return BooleanFactory::getInstance().TRUE;
     
 }
 

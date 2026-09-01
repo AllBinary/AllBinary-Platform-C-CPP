@@ -45,59 +45,56 @@
 class CacheType
             : public Object
          {
-        
 
-    private: const vendor: string;
+    private: std::string vendor;
 
-    private: const type: string;
+    private: std::string type;
 
-public constructor (string vendor, string type){
-
-            super();
-        this.vendor= vendor;
+public: CacheType(std::string vendor, std::string type){
+this->vendor= vendor;
     
-this.type= type;
+this->type= type;
     
 }
 
 
-    public string getVendor(){
+    public: std::string getVendor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vendor;
+                        return this->vendor;
     
 }
 
 
-    public string getType(){
+    public: std::string getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return this->type;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("CacheType: Vendor: ");
+stringBuffer.append("CacheType: Vendor: ");
     
-stringBuffer!.append(this.getVendor());
+stringBuffer.append(this->getVendor());
     
-stringBuffer!.append(" Type: ");
+stringBuffer.append(" Type: ");
     
-stringBuffer!.append(this.getType());
+stringBuffer.append(this->getType());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

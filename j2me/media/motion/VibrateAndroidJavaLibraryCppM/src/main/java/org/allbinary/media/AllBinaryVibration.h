@@ -55,19 +55,18 @@
 #include "AllBinaryNoVibration.h"
 
 class AllBinaryVibration: public AllBinaryVibrationME {
-        
 
-    private: static VIBRATION: AllBinaryVibrationME = AllBinaryNoVibration.NO_VIBRATION;
+    private: static AllBinaryVibrationME VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
 
-    public static AllBinaryVibrationME getInstance();
+    public: static AllBinaryVibrationME getInstance();
 
-    public static init();
+    public: static void init();
 
-    private: const vibrator: Vibrator = ResourceUtil.getInstance()!.getContext()!.getSystemService(Context.VIBRATOR_SERVICE) as unknown as Vibrator;
+    private: const Vibrator vibrator = ResourceUtil::getInstance().getContext().getSystemService(Context::VIBRATOR_SERVICE) as unknown as Vibrator;
 
-protected constructor ();
+protected: AllBinaryVibration();
 
-    public vibrate(int32_t duration, int32_t type, int32_t volume);
+    public: void vibrate(int32_t duration, int32_t type, int32_t volume);
 
 };
 

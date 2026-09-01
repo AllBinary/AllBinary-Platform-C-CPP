@@ -52,31 +52,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AllBinaryOrientationSensor: public AllBinarySensor {
-        
 
-    public static const NULL_ALLBINARY_ORIENTATION_SENSOR: AllBinaryOrientationSensor = new AllBinaryOrientationSensor();
+    public: static const AllBinaryOrientationSensor NULL_ALLBINARY_ORIENTATION_SENSOR = AllBinaryOrientationSensor();
 
-    private: listener: CompleteMotionGestureInputEventListenerInterface = NoCompleteMotionGestureInputEventListener.getInstance()!;
+    private: CompleteMotionGestureInputEventListenerInterface listener = NoCompleteMotionGestureInputEventListener::getInstance();
 
-    public setListener(CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface){
-this.listener= completeMotionGestureInputEventListenerInterface;
+    public: void setListener(CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface){
+this->listener= completeMotionGestureInputEventListenerInterface;
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: AllBinaryOrientationSensor(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Orientation getOrientation(){
+    public: Orientation getOrientation(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 

@@ -45,17 +45,16 @@
         #include "BaseGameStatistics.h"
 //ActualPlatform
 /*actual*/ class GameStatisticsFactory: public BaseGameStatistics {
-        
 
-    private: static const instance: GameStatisticsFactory = new GameStatisticsFactory();
+    private: static GameStatisticsFactory instance() { return GameStatisticsFactory(); }
 
-    /*actual*/ public static GameStatisticsFactory getInstance();
+    /*actual*/ public: static GameStatisticsFactory getInstance();
 
-    private: stringBuffer: StringMaker = new StringMaker();
+    private: StringMaker stringBuffer = StringMaker();
 
-    public add(string string);
+    public: void add(std::string string);
 
-    /*actual*/ public string toString();
+    /*actual*/ public: std::string toString();
 
 };
 

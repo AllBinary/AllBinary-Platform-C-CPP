@@ -100,38 +100,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DownloadFileServlet: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const DOWNLOAD: string = "download";
+    private: const std::string DOWNLOAD = "download";
 
-    private: const DEFAULT_BUFFER_SIZE: int32_t = 16384;
+    private: const int32_t DEFAULT_BUFFER_SIZE = 16384;
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    processRequest(HttpServletRequest request, HttpServletResponse response){
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response){
 
-    inputStream: InputStream = 
+    InputStream inputStream = 
                 null
             ;;
     
 
         try {
-            BlisketServletUtil.getInstance()!.init(request);
+            BlisketServletUtil::getInstance().init(request);
     
 
-    requestPath: string = request.getRequestURI()!;;
+    std::string requestPath = request.getRequestURI();;
     
 
-                        if(requestPath == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                                    response.sendError(HttpServletResponse::SC_NOT_FOUND);
     
 
 
@@ -143,34 +140,34 @@ class DownloadFileServlet: public HttpServlet {
                                     }
                                 
 
-    beginIndex: int32_t = requestPath!.indexOf(this.DOWNLOAD)!;;
+    int32_t beginIndex = requestPath.indexOf(this->DOWNLOAD);;
     
 
-    filePath: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string filePath = StringUtil::getInstance().EMPTY_STRING;;
     
 
                         if(beginIndex >= 0)
                         
                                     {
-                                    filePath= requestPath!.substring(beginIndex +this.DOWNLOAD.length);
+                                    filePath= requestPath.substring(beginIndex +DOWNLOAD.size());
     
 
                                     }
                                 
                         else {
-                            response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                            response.sendError(HttpServletResponse::SC_NOT_FOUND);
     
 
                         }
                             
 
-    file: AbFile = AbFile.createAbFile(URLGLOBALS.getWebappPath() +filePath)!;;
+    AbFile file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +filePath);;
     
 
                         if(!file.exists())
                         
                                     {
-                                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                                    response.sendError(HttpServletResponse::SC_NOT_FOUND);
     
 
 
@@ -182,28 +179,26 @@ class DownloadFileServlet: public HttpServlet {
                                     }
                                 
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    authenticationHelper: AuthenticationHelper = new AuthenticationHelperFactory().getInstance(hashMap, request) as AuthenticationHelper;;
+    AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request) as AuthenticationHelper;;
     
 
-                        if(authenticationHelper!.isAuthenticated())
+                        if(authenticationHelper.isAuthenticated())
                         
                                     {
                                     
-                        if(AuthenticationHelperUtil.getInstance()!.isAuthorized(authenticationHelper, filePath))
+                        if(AuthenticationHelperUtil::getInstance().isAuthorized(authenticationHelper, filePath))
                         
                                     {
-                                    inputStream= CloudStreamUtil.getInstance()!.getFile(file);
+                                    inputStream= CloudStreamUtil::getInstance().getFile(file);
     
 
-    contentType: string = getServletContext()!.getMimeType(file.getName())!;;
+    std::string contentType = getServletContext().getMimeType(file.getName());;
     
 
-                        if(contentType == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     contentType= "application/octet-stream";
@@ -213,30 +208,30 @@ class DownloadFileServlet: public HttpServlet {
                                 
 response.reset();
     
-response.setBufferSize(this.DEFAULT_BUFFER_SIZE);
+response.setBufferSize(this->DEFAULT_BUFFER_SIZE);
     
 response.setContentType(contentType);
     
 response.setHeader("Content-Length", length.slice(, ).join(''));
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("attachment; filename=\"");
+stringBuffer.append("attachment; filename=\"");
     
-stringBuffer!.append(file.getName());
+stringBuffer.append(file.getName());
     
-stringBuffer!.append(CommonSeps.getInstance()!.QUOTE);
+stringBuffer.append(CommonSeps::getInstance().QUOTE);
     
-response.setHeader("Content-Disposition", stringBuffer!.toString());
+response.setHeader("Content-Disposition", stringBuffer.toString());
     
-StreamUtil.getInstance()!.get(inputStream, response.getOutputStream(), new Array(16348));
+StreamUtil::getInstance().get(inputStream, response.getOutputStream(), new Array(16348));
     
 
                                     }
                                 
                         else {
-                            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "You are not Authorized");
+                            response.sendError(HttpServletResponse::SC_UNAUTHORIZED, "You are not Authorized");
     
 
                         }
@@ -245,7 +240,7 @@ StreamUtil.getInstance()!.get(inputStream, response.getOutputStream(), new Array
                                     }
                                 
                         else {
-                            response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Please Login");
+                            response.sendError(HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
     
 
                         }
@@ -255,23 +250,23 @@ StreamUtil.getInstance()!.get(inputStream, response.getOutputStream(), new Array
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "processRequest()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processRequest()", e);
     
 
                                     }
                                 
-response.sendError(HttpServletResponse.SC_NOT_FOUND);
+response.sendError(HttpServletResponse::SC_NOT_FOUND);
     
 }
 
          finally {
-            StreamUtil.getInstance()!.close(response.getOutputStream());
+            StreamUtil::getInstance().close(response.getOutputStream());
     
 
-                        if(!StreamUtil.getInstance()!.close(inputStream))
+                        if(!StreamUtil::getInstance().close(inputStream))
                         
                                     {
                                     
@@ -285,21 +280,21 @@ response.sendError(HttpServletResponse.SC_NOT_FOUND);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
-    public string getServletInfo(){
+    public: std::string getServletInfo(){
 
 
 

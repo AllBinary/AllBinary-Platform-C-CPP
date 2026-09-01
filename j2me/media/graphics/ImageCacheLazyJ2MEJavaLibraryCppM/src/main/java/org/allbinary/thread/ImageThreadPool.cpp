@@ -53,23 +53,22 @@
         #include "ThreadPool.h"
 //This is mainly for network communications.
 class ImageThreadPool: public ThreadPool {
-        
 
-    private: static const instance: ThreadPool = new ImageThreadPool("ImageLoader", 1, ThreadPool.NORMAL_PRIORITY);
+    private: static const ThreadPool instance = ImageThreadPool("ImageLoader", 1, ThreadPool::NORMAL_PRIORITY);
 
-    public static ThreadPool getInstance(){
+    public: static ThreadPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageThreadPool.instance;
+                        return ImageThreadPool::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (string poolName, int32_t numThreads, int32_t priority){
+public: ImageThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
             super(poolName, numThreads, priority);
                     
 
@@ -79,17 +78,17 @@ public constructor (string poolName, int32_t numThreads, int32_t priority){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public runTask(Runnable task){
+    public: void runTask(Runnable task){
 super.runTask(task);
     
 }
 
 
-    startTask(Runnable task){
+    protected: void startTask(Runnable task){
 }
 
 
-    completedTask(Runnable task){
+    protected: void completedTask(Runnable task){
 }
 
 

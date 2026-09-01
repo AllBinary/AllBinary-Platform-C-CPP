@@ -74,17 +74,16 @@
 #include "WaypointInfoHudPaintable.h"
 
 class WorkWaypoint: public Waypoint {
-        
 
-    public static const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(25)!;
+    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(25);
 
-public constructor (PathFindingLayerInterface ownerLayer);
+public: WorkWaypoint(PathFindingLayerInterface ownerLayer);
 
                 //@Throws(Exception.constructor)
             
-    public visit(UnitLayer unitLayer);
+    public: void visit(UnitLayer unitLayer);
 
-    public int32_t getType();
+    public: int32_t getType();
 
 };
 

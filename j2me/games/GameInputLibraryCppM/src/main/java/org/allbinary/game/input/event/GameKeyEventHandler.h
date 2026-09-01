@@ -66,30 +66,29 @@
 class GameKeyEventHandler
             : public Object
          {
-        
 
-    private: static const instance: GameKeyEventHandler = new GameKeyEventHandler();
+    private: static GameKeyEventHandler instance() { return GameKeyEventHandler(); }
 
-    public static GameKeyEventHandler getInstance();
+    public: static GameKeyEventHandler getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const pressGameKeyEventHandler: PressGameKeyEventHandler = PressGameKeyEventHandler.getInstance()!;
+    private: const PressGameKeyEventHandler pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
 
-    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!;
+    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public addListenerForPlayer(EventListenerInterface eventListenerInterface, int32_t playerInputId);
+    public: void addListenerForPlayer(EventListenerInterface eventListenerInterface, int32_t playerInputId);
 
-    public addListener(EventListenerInterface eventListenerInterface);
+    public: void addListener(EventListenerInterface eventListenerInterface);
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
 };
 

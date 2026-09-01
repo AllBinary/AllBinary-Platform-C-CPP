@@ -58,33 +58,30 @@
 class CryptServiceFactory
             : public Object
         : public ServiceFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: cryptService: CryptService = new CryptService();
+    private: CryptService cryptService = CryptService();
 
-public constructor (){
-
-            super();
-        }
+public: CryptServiceFactory(){
+}
 
 
-    public any getService(Bundle bundle, ServiceRegistration registration){
-this.logUtil!.putF(this.commonStrings!.START, this, "getService");
+    public: Object* getService(Bundle bundle, ServiceRegistration registration){
+this->logUtil.putF(this->commonStrings.START, this, "getService");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cryptService;
+                        return this->cryptService;
     
 }
 
 
-    public ungetService(Bundle bundle, ServiceRegistration registration, any = {} service){
+    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service){
 }
 
 

@@ -51,25 +51,24 @@
 class CombatBaseBehavior
             : public Object
          {
-        
 
-    public static const NULL_COMBAT_BEHAVIOR: CombatBaseBehavior = new CombatBaseBehavior(DamageableBaseBehavior.getInstance(), DestroyableBaseBehavior.getInstance());
+    public: static const CombatBaseBehavior NULL_COMBAT_BEHAVIOR = CombatBaseBehavior(DamageableBaseBehavior::getInstance(), DestroyableBaseBehavior::getInstance());
 
-    private: const damageableBaseBehavior: DamageableBaseBehavior;
+    private: DamageableBaseBehavior damageableBaseBehavior;
 
-    private: const destroyableBaseBehavior: DestroyableBaseBehavior;
+    private: DestroyableBaseBehavior destroyableBaseBehavior;
 
-    private: readyForExplosion: bool= false;
+    private: bool readyForExplosion= false;
 
-public constructor (DamageableBaseBehavior damageableBaseBehavior, DestroyableBaseBehavior destroyableBaseBehavior);
+public: CombatBaseBehavior(DamageableBaseBehavior damageableBaseBehavior, DestroyableBaseBehavior destroyableBaseBehavior);
 
-    public DamageableBaseBehavior getDamageableBaseBehavior();
+    public: DamageableBaseBehavior getDamageableBaseBehavior();
 
-    public DestroyableBaseBehavior getDestroyableBaseBehavior();
+    public: DestroyableBaseBehavior getDestroyableBaseBehavior();
 
-    public bool isReadyForExplosion();
+    public: bool isReadyForExplosion();
 
-    public setReadyForExplosion(bool readyForExplosion);
+    public: void setReadyForExplosion(bool readyForExplosion);
 
 };
 

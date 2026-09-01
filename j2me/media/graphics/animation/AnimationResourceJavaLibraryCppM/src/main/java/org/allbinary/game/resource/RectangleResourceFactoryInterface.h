@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GAME_RESOURCE_RECTANGLERESOURCEFACTORYINTERFACE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <org/allbinary/graphics/Rectangle.h>
@@ -46,15 +48,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RectangleResourceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    Rectangle getRectangle(string resource);
+    Rectangle getRectangle(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(string resource);
+    std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(std::string resource);
 
 };
 

@@ -84,138 +84,133 @@
 class CssPropertyValues
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: propertyValueVector: Vector;
+    private: Vector propertyValueVector;
 
-public constructor (){
-
-            super();
-        this.propertyValueVector= new Vector();
+public: CssPropertyValues(){
+this->propertyValueVector= Vector();
     
 }
 
 
-public constructor (Node node){
+public: CssPropertyValues(Node node){
 
-            super();
-        
-    indexPropertyValueHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> indexPropertyValueHashMap = HashMap<any, any>();;
     
-this.propertyValueVector= new Vector();
+this->propertyValueVector= Vector();
     
 
-    cssPropertyNodeVector: Vector = DomSearchHelper.getAllNodes(CssPropertyValueData.getInstance()!.NAME, node.getChildNodes())!;;
+    Vector cssPropertyNodeVector = DomSearchHelper::getAllNodes(CssPropertyValueData::getInstance().NAME, node.getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.STYLE))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().STYLE))
                         
                                     {
-                                    this.logUtil!.putF("Number Of Properties: " +cssPropertyNodeVector!.length, this, "CssProperties()");
+                                    this->logUtil.putF("Number Of Properties: " +cssPropertyNodeVector.length, this, "CssProperties()");
     
 
                                     }
                                 
 
-    size: int32_t = cssPropertyNodeVector!.length!;;
+    int32_t size = cssPropertyNodeVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    cssPropertyValueNode: Node = cssPropertyNodeVector!.get(index) as Node;;
+    Node cssPropertyValueNode = cssPropertyNodeVector.get(index) as Node;;
     
 
-    valueNode: Node = DomSearchHelper.getNode(DomData.VALUE, cssPropertyValueNode!.getChildNodes())!;;
+    Node valueNode = DomSearchHelper::getNode(DomData::VALUE, cssPropertyValueNode.getChildNodes());;
     
 
-    propertyValue: string = DomNodeHelper.getTextNodeValue(valueNode)!;;
+    std::string propertyValue = DomNodeHelper::getTextNodeValue(valueNode);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.STYLE))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().STYLE))
                         
                                     {
-                                    this.logUtil!.putF("Property Value: " +propertyValue, this, "CssProperties()");
+                                    this->logUtil.putF("Property Value: " +propertyValue, this, "CssProperties()");
     
 
                                     }
                                 
 
-    indexNode: Node = DomSearchHelper.getNode(DomData.INDEX, cssPropertyValueNode!.getChildNodes())!;;
+    Node indexNode = DomSearchHelper::getNode(DomData::INDEX, cssPropertyValueNode.getChildNodes());;
     
 
-    indexValue: string = DomNodeHelper.getTextNodeValue(indexNode)!;;
+    std::string indexValue = DomNodeHelper::getTextNodeValue(indexNode);;
     
-indexPropertyValueHashMap!.put(indexValue, propertyValue);
+indexPropertyValueHashMap.put(indexValue, propertyValue);
     
 }
 
 
-    size2: int32_t = indexPropertyValueHashMap!.keys().size()!;;
+    int32_t size2 = indexPropertyValueHashMap.keys().size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size2; index++)
+    int32_t index = 0;index < size2; index++)
         {
 
-    indexInt: Integer = new Integer(index);;
+    Integer indexInt = Integer(index);;
     
 
-    propertyValue: string = indexPropertyValueHashMap!.get(indexInt!.toString()) as string;;
+    std::string propertyValue = indexPropertyValueHashMap.get(indexInt.toString()) as string;;
     
-this.propertyValueVector!.add(propertyValue);
+this->propertyValueVector.add(propertyValue);
     
 }
 
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    cssPropertyValueData: CssPropertyValueData = CssPropertyValueData.getInstance()!;;
+    CssPropertyValueData cssPropertyValueData = CssPropertyValueData::getInstance();;
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    size: int32_t = this.propertyValueVector!.length!;;
+    int32_t size = this->propertyValueVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    value: string = this.propertyValueVector!.get(index) as string;;
+    std::string value = this->propertyValueVector.get(index) as string;;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(cssPropertyValueData!.NAME);
+stringBuffer.append(cssPropertyValueData.NAME);
     
-stringBuffer!.append(commonSeps!.BRACKET_OPEN);
+stringBuffer.append(commonSeps.BRACKET_OPEN);
     
-stringBuffer!.appendint(index);
+stringBuffer.appendint(index);
     
-stringBuffer!.append(commonSeps!.BRACKET_CLOSE);
+stringBuffer.append(commonSeps.BRACKET_CLOSE);
     
-hashMap!.put(stringBuffer!.toString(), value);
+hashMap.put(stringBuffer.toString(), value);
     
 index++;
     
@@ -232,15 +227,15 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    hashMap: HashMap<any, any> = this.toHashMap()!;;
+    HashMap<any, any> hashMap = this->toHashMap();;
     
-this.logUtil!.putF("CssPropertyValues HashMap: " +hashMap!.toString(), this, "toXmlNode()");
+this->logUtil.putF("CssPropertyValues HashMap: " +hashMap.toString(), this, "toXmlNode()");
     
 
                                     }
@@ -249,7 +244,7 @@ this.logUtil!.putF("CssPropertyValues HashMap: " +hashMap!.toString(), this, "to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueIndexNodes(document, CssPropertyData.getInstance()!.VALUES, CssPropertyValueData.getInstance()!.NAME, this.propertyValueVector);;
+                        return ModDomHelper::createNameValueIndexNodes(document, CssPropertyData::getInstance().VALUES, CssPropertyValueData::getInstance().NAME, this->propertyValueVector);;
     
 }
 

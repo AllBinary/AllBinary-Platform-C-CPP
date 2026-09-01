@@ -57,11 +57,10 @@
         #include "Input.h"
 
 class GameKey: public Input {
-        
 
-    public static const NULL_GAME_KEY: GameKey = new GameKey( -1, StringUtil.getInstance()!.NULL_STRING);
+    public: static const GameKey NULL_GAME_KEY = GameKey( -1, StringUtil::getInstance().NULL_STRING);
 
- constructor (int32_t key, string name){
+: GameKey(int32_t key, std::string name){
             super(key, name);
                     
 
@@ -70,12 +69,12 @@ class GameKey: public Input {
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append("GameKey ")!.append(super.toString())!.toString();;
+                        return StringMaker().append("GameKey ").append(super.toString()).toString();;
     
 }
 

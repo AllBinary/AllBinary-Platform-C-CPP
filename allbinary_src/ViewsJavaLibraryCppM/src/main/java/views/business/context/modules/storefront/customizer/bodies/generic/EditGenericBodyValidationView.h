@@ -67,20 +67,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GenericBodyCustomizerView.h"
 
-class EditGenericBodyValidationView: public GenericBodyCustomizerView: public ValidationComponentInterface {
-        
+class EditGenericBodyValidationView: public GenericBodyCustomizerView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: EditGenericBodyValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

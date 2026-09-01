@@ -42,25 +42,24 @@
 class MusicStrings
             : public Object
          {
-        
 
-    private: static const instance: MusicStrings = new MusicStrings();
+    private: static MusicStrings instance() { return MusicStrings(); }
 
-    public static MusicStrings getInstance(){
+    public: static MusicStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MusicStrings.instance;
+                        return MusicStrings::instance();
     
 }
 
 
-    public const SONG_EXTRA: string = "SONG";
+    public: const std::string SONG_EXTRA = "SONG";
 
-    public const LEFT_VOLUME: string = "LEFT_VOLUME";
+    public: const std::string LEFT_VOLUME = "LEFT_VOLUME";
 
-    public const RIGHT_VOLUME: string = "RIGHT_VOLUME";
+    public: const std::string RIGHT_VOLUME = "RIGHT_VOLUME";
 
 };
 

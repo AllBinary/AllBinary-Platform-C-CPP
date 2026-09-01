@@ -57,15 +57,14 @@
 class BasicProfileActionScriptOutputNode
             : public Object
          {
-        
 
-public constructor (Node node);
+public: BasicProfileActionScriptOutputNode(Node node);
 
-public constructor ();
+public: BasicProfileActionScriptOutputNode();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

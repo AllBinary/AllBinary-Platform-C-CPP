@@ -65,21 +65,20 @@
 class FullScreenUtil
             : public Object
          {
-        
 
-    private: static const instance: FullScreenUtil = new FullScreenUtil();
+    private: static FullScreenUtil instance() { return FullScreenUtil(); }
 
-    public static FullScreenUtil getInstance();
+    public: static FullScreenUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public initOnRun(Canvas fullScreenInterface, CommandListener commandListener);
+    public: void initOnRun(Canvas fullScreenInterface, CommandListener commandListener);
 
-    public init(Canvas fullScreenInterface);
+    public: void init(Canvas fullScreenInterface);
 
-    public bool isScreenChange(bool isFullScreen);
+    public: bool isScreenChange(bool isFullScreen);
 
-    public bool isScreenChangeCanvas(Canvas fullScreenInterface);
+    public: bool isScreenChangeCanvas(Canvas fullScreenInterface);
 
 };
 

@@ -59,17 +59,16 @@
 class DisposalUtil
             : public Object
          {
-        
 
-    private: static const instance: DisposalUtil = new DisposalUtil();
+    private: static DisposalUtil instance() { return DisposalUtil(); }
 
-    public static DisposalUtil getInstance();
+    public: static DisposalUtil getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public disposeImage(Image image);
+    public: void disposeImage(Image image);
 
-    public disposeResource(Resource resource);
+    public: void disposeResource(Resource resource);
 
 };
 

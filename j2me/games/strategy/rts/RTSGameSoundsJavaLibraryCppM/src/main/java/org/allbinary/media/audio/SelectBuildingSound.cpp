@@ -43,21 +43,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SelectBuildingSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new SelectBuildingSound();
+    private: static Sound soundInterface = SelectBuildingSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectBuildingSound.soundInterface;
+                        return SelectBuildingSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: SelectBuildingSound(){
             super("resource:/wav/select_building.wav");
                     
 

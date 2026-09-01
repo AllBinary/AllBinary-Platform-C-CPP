@@ -86,59 +86,56 @@
 class RemoteHighScoresSubmissionProcessor
             : public Object
         : public RemoteHighScoresSubmissionProcessorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const noCrypt: NoCrypt = new NoCrypt();
+    private: const NoCrypt noCrypt = NoCrypt();
 
-public constructor (){
-
-            super();
-        }
+public: RemoteHighScoresSubmissionProcessor(){
+}
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, HighScore highScore){
+    public: void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, HighScore highScore){
 
         try {
-            this.logUtil!.putF("Begin Remote HighScores Submission", this, this.commonStrings!.PROCESS);
+            this->logUtil.putF("Begin Remote HighScores Submission", this, this->commonStrings.PROCESS);
     
 
-    gameInfoData: GameInfoData = GameInfoData.getInstance()!;;
+    GameInfoData gameInfoData = GameInfoData::getInstance();;
     
 
-    hashtable: Hashtable<any, any> = abeClientInformation!.toHashtable()!;;
+    Hashtable<any, any> hashtable = abeClientInformation.toHashtable();;
     
-HashtableUtil.getInstance()!.putAll(highScore!.getGameInfo()!.toHashtable(), hashtable);
+HashtableUtil::getInstance().putAll(highScore.getGameInfo().toHashtable(), hashtable);
     
-hashtable.put(RemoteHighScoresData.getInstance()!.CUSTOMER_USER_NAME, "None");
+hashtable.put(RemoteHighScoresData::getInstance().CUSTOMER_USER_NAME, "None");
     
-hashtable.put(RemoteHighScoresData.getInstance()!.DISPLAY_NAME, highScore!.getName());
+hashtable.put(RemoteHighScoresData::getInstance().DISPLAY_NAME, highScore.getName());
     
-hashtable.put(gameInfoData!.SOFTWARE_INFORMATION, remoteHighScores!.getSoftwareInformation()!.toString());
+hashtable.put(gameInfoData.SOFTWARE_INFORMATION, remoteHighScores.getSoftwareInformation().toString());
     
-hashtable.put(remoteHighScores!.ASCENDING, remoteHighScores!.getAscending()!.toString());
-    
-
-    displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
-    
-hashtable.put(displayInfoSingleton!.ORIENTATION, BooleanFactory.getInstance()!.toStringb(displayInfoSingleton!.isPortrait()));
-    
-hashtable.put(RemoteHighScoresData.getInstance()!.GAME_CONFIGURATION, GameConfigurationCentral.getInstance()!.toString());
-    
-hashtable.put(RemoteHighScoresData.getInstance()!.SCORE, (highScore!.getScore()).toString());
+hashtable.put(remoteHighScores.ASCENDING, remoteHighScores.getAscending().toString());
     
 
-                        if(XmlRpcAbeClient.isOnline)
+    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    
+hashtable.put(displayInfoSingleton.ORIENTATION, BooleanFactory::getInstance().toStringb(displayInfoSingleton.isPortrait()));
+    
+hashtable.put(RemoteHighScoresData::getInstance().GAME_CONFIGURATION, GameConfigurationCentral::getInstance().toString());
+    
+hashtable.put(RemoteHighScoresData::getInstance().SCORE, std::to_string(getScore));
+    
+
+                        if(XmlRpcAbeClient::isOnline)
                         
                                     {
                                     
-    resultHashtable: Hashtable<any, any> = new XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresubmissionservicessl.php", "HighScoreSubmissionService.process").get(hashtable, this.noCrypt) as Hashtable<any, any>;;
+    Hashtable<any, any> resultHashtable = XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresubmissionservicessl.php", "HighScoreSubmissionService.process").get(hashtable, this->noCrypt) as Hashtable<any, any>;;
     
-remoteHighScores!.update(resultHashtable);
+remoteHighScores.update(resultHashtable);
     
 
                                     }
@@ -147,7 +144,7 @@ remoteHighScores!.update(resultHashtable);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 }
 

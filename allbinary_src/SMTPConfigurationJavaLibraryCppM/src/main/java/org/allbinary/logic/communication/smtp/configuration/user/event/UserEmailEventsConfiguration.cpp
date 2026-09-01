@@ -68,38 +68,33 @@
 class UserEmailEventsConfiguration
             : public Object
         : public UserEmailEventsConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: emailEventHashMap: HashMap<any, any>;
+    private: HashMap<any, any> emailEventHashMap;
 
-public constructor (){
-
-            super();
-        this.init();
+public: UserEmailEventsConfiguration(){
+this->init();
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.init();
+public: UserEmailEventsConfiguration(HashMap<any, any> hashMap){
+this->init();
     
 }
 
 
-    init(){
-this.emailEventHashMap= new HashMap<any, any>();
+    private: void init(){
+this->emailEventHashMap= HashMap<any, any>();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, " Constructor");
+                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, " Constructor");
     
 
                                     }
@@ -107,42 +102,42 @@ this.emailEventHashMap= new HashMap<any, any>();
 }
 
 
-    public HashMap<any, any> getEventConfigurationHashMap(){
+    public: HashMap<any, any> getEventConfigurationHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.emailEventHashMap;
+                        return this->emailEventHashMap;
     
 }
 
 
-    public addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+    public: void addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Adding: " +userEmailEventConfigurationInterface!.log(), this, "addUserEmailEventConfiguration");
+                                    this->logUtil.putF("Adding: " +userEmailEventConfigurationInterface.log(), this, "addUserEmailEventConfiguration");
     
 
                                     }
                                 
-this.emailEventHashMap!.put(userEmailEventConfigurationInterface!.getName(), userEmailEventConfigurationInterface);
+this->emailEventHashMap.put(userEmailEventConfigurationInterface.getName(), userEmailEventConfigurationInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public UserEmailEventListenerInterface getEventListener(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
+    public: UserEmailEventListenerInterface getEventListener(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
 
-    userEmailEventConfigurationInterface: UserEmailEventConfigurationInterface = this.emailEventHashMap!.get(userEmailEventNameData!.toString()) as UserEmailEventConfigurationInterface;;
+    UserEmailEventConfigurationInterface userEmailEventConfigurationInterface = this->emailEventHashMap.get(userEmailEventNameData.toString()) as UserEmailEventConfigurationInterface;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserEmailEventListenerFactory.getInstance(abeClientInformation, userEmailEventConfigurationInterface, userInterface);;
+                        return UserEmailEventListenerFactory::getInstance(abeClientInformation, userEmailEventConfigurationInterface, userInterface);;
     
 }
 

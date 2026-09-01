@@ -45,13 +45,12 @@
 class TagStrings
             : public Object
          {
-        
 
-    private: static const instance: TagStrings = new TagStrings();
+    private: static TagStrings instance() { return TagStrings(); }
 
-    public static TagStrings getInstance();
+    public: static TagStrings getInstance();
 
-    public const DO_START_TAG: string = "doStartTag";
+    public: const std::string DO_START_TAG = "doStartTag";
 
 };
 

@@ -51,49 +51,46 @@
 class LogTableEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: LogTableEntityFactory = new LogTableEntityFactory();
+    private: static LogTableEntityFactory instance() { return LogTableEntityFactory(); }
 
-    public static LogTableEntityFactory getInstance(){
+    public: static LogTableEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogTableEntityFactory.instance;
+                        return LogTableEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: LogTableEntityFactory(){
+}
 
 
-    public LogTableEntity getLogTableEntityInstance(){
+    public: LogTableEntity getLogTableEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.log.LogTableEntity();
+                        return org::allbinary::data::tables::log::LogTableEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

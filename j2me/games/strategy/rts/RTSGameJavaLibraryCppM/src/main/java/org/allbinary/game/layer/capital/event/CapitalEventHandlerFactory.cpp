@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -46,9 +48,8 @@
 class CapitalEventHandlerFactory
             : public Object
          {
-        
 
-    private: static const capitalEventHandlerArray: std::vector<CapitalEventHandler>;
+    private: static const std::vector<CapitalEventHandler> capitalEventHandlerArray;
 
                     static int32_t initResult = CapitalEventHandlerFactory::init();
                 static int32_t init() { 
@@ -60,9 +61,9 @@ capitalEventHandlerArray= new Array(10);
 
 
                         for (
-    index: int32_t = CapitalEventHandlerFactory.capitalEventHandlerArray!.length -1;index >= 0; index--)
+    int32_t index = CapitalEventHandlerFactory::capitalEventHandlerArray.size() -1;index >= 0; index--)
         {
-CapitalEventHandlerFactory.capitalEventHandlerArray[index]= new CapitalEventHandler();
+CapitalEventHandlerFactory::capitalEventHandlerArray[index]= CapitalEventHandler();
     
 }
 
@@ -71,25 +72,25 @@ CapitalEventHandlerFactory.capitalEventHandlerArray[index]= new CapitalEventHand
                     return 0;
                 }
             
-    public static CapitalEventHandler getInstance(Group groupInterface){
+    public: static CapitalEventHandler getInstance(Group groupInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CapitalEventHandlerFactory.capitalEventHandlerArray[static_cast<int32_t>(groupInterface!.getGroupId();)]!;
+                        return CapitalEventHandlerFactory::capitalEventHandlerArray[static_cast<int32_t>(groupInterface.getGroupId();)]!;
     
 }
 
 
-    public static removeAll(){
+    public: static void removeAll(){
 
 
 
 
                         for (
-    index: int32_t = CapitalEventHandlerFactory.capitalEventHandlerArray!.length -1;index >= 0; index--)
+    int32_t index = CapitalEventHandlerFactory::capitalEventHandlerArray.size() -1;index >= 0; index--)
         {
-CapitalEventHandlerFactory.capitalEventHandlerArray[index]!.removeAllListeners();
+CapitalEventHandlerFactory::capitalEventHandlerArray[index]!.removeAllListeners();
     
 }
 

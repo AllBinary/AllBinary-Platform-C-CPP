@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -50,41 +52,40 @@
 class ImageProcessorInput
             : public Object
          {
-        
 
-    private: bufferedImageArray: std::vector<BufferedImage>;
+    private: std::vector<BufferedImage> bufferedImageArray;
 
-    private: files: std::vector<File>;
+    private: std::vector<File> files;
 
-public constructor (std::vector<File> files, std::vector<BufferedImage> bufferedImageArray){
+public: ImageProcessorInput(std::vector<File> files, std::vector<BufferedImage> bufferedImageArray){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.bufferedImageArray= bufferedImageArray;
+this->bufferedImageArray= bufferedImageArray;
     
-this.files= files;
-    
-}
-
-
-    public std::vector<BufferedImage> getBufferedImageArray(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bufferedImageArray;
+this->files= files;
     
 }
 
 
-    public std::vector<File> getFiles(){
+    public: std::vector<BufferedImage> getBufferedImageArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.files;
+                        return this->bufferedImageArray;
+    
+}
+
+
+    public: std::vector<File> getFiles(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->files;
     
 }
 

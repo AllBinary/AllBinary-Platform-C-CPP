@@ -106,47 +106,46 @@
 class InputAutomationModuleConfiguration
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: className: string;
+    private: std::string className;
 
-    private: name: string;
+    private: std::string name;
 
-    private: inputAutomationModuleInterface: InputAutomationModuleFactoryInterface;
+    private: InputAutomationModuleFactoryInterface inputAutomationModuleInterface;
 
-public constructor ();
+public: InputAutomationModuleConfiguration();
 
-public constructor (AbeClientInformationInterface abeClientInformation, Node node);
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, Node node);
 
-public constructor (AbeClientInformationInterface abeClientInformation, string name, string className);
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, std::string name, std::string className);
 
-public constructor (InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public init(AbeClientInformationInterface abeClientInformation, Node node);
-
-    public init(AbeClientInformationInterface abeClientInformation);
+public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDomNode(Document document);
+    public: void init(AbeClientInformationInterface abeClientInformation, Node node);
 
-    public string getName();
+    public: void init(AbeClientInformationInterface abeClientInformation);
 
-    public setName(string name);
+                //@Throws(Exception.constructor)
+            
+    public: Node toDomNode(Document document);
 
-    public string getClassName();
+    public: std::string getName();
 
-    public setClassName(string className);
+    public: void setName(std::string name);
 
-    public InputAutomationModuleFactoryInterface getInputAutomationModuleInterface();
+    public: std::string getClassName();
 
-    public setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
+    public: void setClassName(std::string className);
+
+    public: InputAutomationModuleFactoryInterface getInputAutomationModuleInterface();
+
+    public: void setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
 
 };
 

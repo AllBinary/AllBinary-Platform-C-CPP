@@ -53,46 +53,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "LogTableEntityInterface.h"
 
-class LogTableEntity: public AbSqlBean: public LogTableEntityInterface {
-        
+class LogTableEntity: public AbSqlBean, public LogTableEntityInterface {
 
-    private: const tableName: string = "log";
+    private: const std::string tableName = "log";
 
-public constructor (){
-            super(new LogDbInitInfo());
+public: LogTableEntity(){
+            super(LogDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    abeHttpRequestInfoData: AbeHttpRequestInfoData = AbeHttpRequestInfoData.getInstance()!;;
+    AbeHttpRequestInfoData abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(tableName)!.append(this.sqlStrings!.START)!.append(this.sqlStrings!.ID)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(abeHttpRequestInfoData!.HTTP_USER_AGENT)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(abeHttpRequestInfoData!.REMOTE_HOST)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(abeHttpRequestInfoData!.REMOTE_ADDRESS)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(abeHttpRequestInfoData!.REQUEST_FILE_PATH)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(abeHttpRequestInfoData!.REMOTE_PORT)!.append(this.sqlTypeStrings!.MAX_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(this.sqlStrings!.ID)!.append(this.sqlStrings!.END);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(this->sqlStrings.ID).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(abeHttpRequestInfoData.HTTP_USER_AGENT).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(abeHttpRequestInfoData.REMOTE_HOST).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(abeHttpRequestInfoData.REMOTE_ADDRESS).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(abeHttpRequestInfoData.REQUEST_FILE_PATH).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(abeHttpRequestInfoData.REMOTE_PORT).append(this->sqlTypeStrings.MAX_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(this->sqlStrings.ID).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return super.createTable(this->createTableStatement());;
     
 }
 

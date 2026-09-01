@@ -55,36 +55,35 @@
 class FeatureResourceInitializationUtil
             : public Object
          {
-        
 
-    private: static const instance: FeatureResourceInitializationUtil = new FeatureResourceInitializationUtil();
+    private: static FeatureResourceInitializationUtil instance() { return FeatureResourceInitializationUtil(); }
 
-    public static FeatureResourceInitializationUtil getInstance(){
+    public: static FeatureResourceInitializationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeatureResourceInitializationUtil.instance;
+                        return FeatureResourceInitializationUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level){
+    public: void init(int32_t level){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, commonStrings!.INIT);
+this->logUtil.putF(commonStrings.START, this, commonStrings.INIT);
     
 
-    featuredResourceFactory: FeaturedResourceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!;;
+    FeaturedResourceFactory featuredResourceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
     
-featuredResourceFactory!.init(level);
+featuredResourceFactory.init(level);
     
-FeaturedResourceRelativeRelationshipFactory.getInstance()!.init(level);
+FeaturedResourceRelativeRelationshipFactory::getInstance().init(level);
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONS_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Exception.h"
@@ -102,83 +104,82 @@
 class GenericProfileActions
             : public Object
         : public DomNodeInterface, public DomDocumentMappingInterface {
-        
 
-    public static const DEFAULT_PROFILE_ACTIONS_PATH: string = GenericProfiles.DEFAULT_PROFILES_PATH +"actions/";
+    public: static const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonFileStrings: CommonDataFileStrings = CommonDataFileStrings.getInstance()!;
+    private: const CommonDataFileStrings commonFileStrings = CommonDataFileStrings::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: genericProfileActionsJPanel: GenericProfileActionsJPanel;
+    private: GenericProfileActionsJPanel genericProfileActionsJPanel;
 
-    private: actionsDefaultListModelHelper: DefaultListModelHelper;
+    private: DefaultListModelHelper actionsDefaultListModelHelper;
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (GenericProfileActionsJPanel genericProfileActionsJPanel, string name);
+public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, std::string name);
 
-public constructor (GenericProfileActionsJPanel genericProfileActionsJPanel, AbPath abPath, string name);
+public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, AbPath abPath, std::string name);
 
-public constructor (GenericProfileActionsJPanel genericProfileActionsJPanel, FileInputStream fileInputStream, string name);
-
-                //@Throws(Exception.constructor)
-            
-    init(GenericProfileActionsJPanel genericProfileActionsJPanel);
+public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, FileInputStream fileInputStream, std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public save();
-
-    public File getFile(string name);
+    private: void init(GenericProfileActionsJPanel genericProfileActionsJPanel);
 
                 //@Throws(Exception.constructor)
             
-    load();
+    public: void save();
+
+    public: File getFile(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    fileInit(FileInputStream fileInputStream);
+    private: void load();
 
                 //@Throws(Exception.constructor)
             
-    initActions(NodeList nodeList);
-
-    public DefaultListModelHelper getDefaultListModelHelper();
-
-    public GenericProfileAction getAction(string string);
+    private: void fileInit(FileInputStream fileInputStream);
 
                 //@Throws(Exception.constructor)
             
-    public add(string name);
+    private: void initActions(NodeList nodeList);
+
+    public: DefaultListModelHelper getDefaultListModelHelper();
+
+    public: GenericProfileAction getAction(std::string string);
 
                 //@Throws(Exception.constructor)
             
-    public remove(string name);
-
-    public HashMap<any, any> toHashMap();
+    public: void add(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: void remove(std::string name);
+
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
 
-    public GenericProfileActionsJPanel getGenericProfileActionsJPanel();
+                //@Throws(Exception.constructor)
+            
+    public: Document toXmlDoc();
 
-    public setGenericProfileActionsJPanel(GenericProfileActionsJPanel genericProfileActionsJPanel);
+    public: GenericProfileActionsJPanel getGenericProfileActionsJPanel();
 
-    public HashMap<any, any> getHashMap();
+    public: void setGenericProfileActionsJPanel(GenericProfileActionsJPanel genericProfileActionsJPanel);
 
-    public setHashMap(HashMap<any, any> hashMap);
+    public: HashMap<any, any> getHashMap();
 
-    public string getName();
+    public: void setHashMap(HashMap<any, any> hashMap);
 
-    public setName(string name);
+    public: std::string getName();
+
+    public: void setName(std::string name);
 
 };
 

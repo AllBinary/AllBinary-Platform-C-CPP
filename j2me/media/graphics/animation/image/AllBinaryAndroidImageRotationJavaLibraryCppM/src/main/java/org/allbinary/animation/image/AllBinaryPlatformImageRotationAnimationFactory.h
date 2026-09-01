@@ -50,9 +50,8 @@
         #include "AllBinaryAndroidImageRotationAnimationFactory.h"
 
 class AllBinaryPlatformImageRotationAnimationFactory: public AllBinaryAndroidImageRotationAnimationFactory {
-        
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
+public: AllBinaryPlatformImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
 
 };
 

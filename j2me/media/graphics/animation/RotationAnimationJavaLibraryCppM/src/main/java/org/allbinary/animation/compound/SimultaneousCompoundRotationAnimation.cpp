@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -70,79 +72,76 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SimultaneousCompoundRotationAnimation: public RotationAnimation {
-        
 
-    private: animationInterfaceArray: std::vector<RotationAnimation>;
+    private: std::vector<RotationAnimation> animationInterfaceArray;
 
-public constructor (std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
-            super(AngleInfo.getInstance(AngleFactory.getInstance()!.QUARTER_TOTAL_ANGLE), CircularIndexUtil.createInstance(4), animationBehavior);
+public: SimultaneousCompoundRotationAnimation(std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
+            super(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.animationInterfaceArray= animationInterfaceArray;
+this->animationInterfaceArray= animationInterfaceArray;
     
 }
 
 
-    public setFrame(int32_t frameIndex){
+    public: void setFrame(int32_t frameIndex){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.setFrame(frameIndex);
+this->animationInterfaceArray[index]!.setFrame(frameIndex);
     
 }
 
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getFrame();;
+                        return this->animationInterfaceArray[0]!.getFrame();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getAnimationSize();;
+                        return this->animationInterfaceArray[0]!.getAnimationSize();;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getSize();;
+                        return this->animationInterfaceArray[0]!.getSize();;
     
 }
 
 
-    public previousFrame(){
+    public: void previousFrame(){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.previousFrame();
+this->animationInterfaceArray[index]!.previousFrame();
     
 }
 
@@ -151,192 +150,183 @@ this.animationInterfaceArray[index]!.previousFrame();
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame(){
+    public: void nextFrame(){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.nextFrame();
+this->animationInterfaceArray[index]!.nextFrame();
     
 }
 
 }
 
 
-    public previousRotation(){
+    public: void previousRotation(){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.previousRotation();
+this->animationInterfaceArray[index]!.previousRotation();
     
 }
 
 }
 
 
-    public nextRotation(){
+    public: void nextRotation(){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.nextRotation();
+this->animationInterfaceArray[index]!.nextRotation();
     
 }
 
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.paintXY(graphics, x, y);
+this->animationInterfaceArray[index]!.paintXY(graphics, x, y);
     
 }
 
 }
 
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
+this->animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
     
 }
 
 }
 
 
-    public setFrameByDirection(Direction direction){
+    public: void setFrameByDirection(Direction direction){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.setFrameByDirection(direction);
+this->animationInterfaceArray[index]!.setFrameByDirection(direction);
     
 }
 
 }
 
 
-    public setFrameToAngle(Angle angle){
+    public: void setFrameToAngle(Angle angle){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.setFrameToAngle(angle);
+this->animationInterfaceArray[index]!.setFrameToAngle(angle);
     
 }
 
 }
 
 
-    public adjustFrameToAngle(Angle newAngle){
-this.adjustFrame(newAngle!.getValue());
+    public: void adjustFrameToAngle(Angle newAngle){
+this->adjustFrame(newAngle.getValue());
     
 }
 
 
-    public adjustFrame(int16_t angle){
+    public: void adjustFrame(int16_t angle){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.adjustFrame(angle);
+this->animationInterfaceArray[index]!.adjustFrame(angle);
     
 }
 
 }
 
 
-    public AngleInfo getAngleInfoP(){
+    public: AngleInfo getAngleInfoP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getAngleInfoP();;
+                        return this->animationInterfaceArray[0]!.getAngleInfoP();;
     
 }
 
 
-    public std::vector<RotationAnimation> getAnimationInterfaceArray(){
+    public: std::vector<RotationAnimation> getAnimationInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray;
+                        return this->animationInterfaceArray;
     
 }
 
 
-    public setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray){
-this.animationInterfaceArray= animationInterfaceArray;
+    public: void setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray){
+this->animationInterfaceArray= animationInterfaceArray;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void set(GL gl){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.set(gl);
+this->animationInterfaceArray[index]!.set(gl);
     
 }
 

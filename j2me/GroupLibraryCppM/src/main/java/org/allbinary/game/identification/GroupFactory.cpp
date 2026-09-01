@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -58,33 +60,32 @@
 class GroupFactory
             : public Object
          {
-        
 
-    private: static instance: GroupFactory = new GroupFactory();
+    private: static GroupFactory instance = GroupFactory();
 
-    public static GroupFactory getInstance(){
+    public: static GroupFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GroupFactory.instance;
+                        return GroupFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const NULL_GROUP_ARRAY: std::vector<Group> = [];
+    public: const std::vector<Group> NULL_GROUP_ARRAY = {};
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: index: int32_t = 0;
+    private: int32_t index = 0;
 
-    public Group getNextGroup(){
+    public: Group getNextGroup(){
 
-    group: Group = this.list.objectArray[this.index]! as Group;;
+    Group group = this->list.objectArray[this->index]! as Group;;
     
-this.index++;
+this->index++;
     
 
 
@@ -95,9 +96,9 @@ this.index++;
 }
 
 
-    public Group getNextGroupByName(string name){
+    public: Group getNextGroupByName(std::string name){
 
-    group: Group = this.getNextGroup()!;;
+    Group group = this->getNextGroup();;
     
 group.setName(name);
     
@@ -110,31 +111,31 @@ group.setName(name);
 }
 
 
-    public init(int16_t groups, std::vector<string> nameArray){
+    public: void init(int16_t groups, std::vector<std::string> nameArray){
 
-    stringMaker: StringMaker = new StringMaker();;
-    
-
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringMaker stringMaker = StringMaker();;
     
 
-    TEAM: string = "Team ";;
-    
-this.list.clear();
-    
-this.index= 0;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    size: int32_t = this.list.size()!;;
+    std::string TEAM = "Team ";;
+    
+this->list.clear();
+    
+this->index= 0;
+    
+
+    int32_t size = this->list.size();;
     
 
         while(size < groups)
         {
 
-    name: string = stringUtil!.EMPTY_STRING;;
+    std::string name = stringUtil.EMPTY_STRING;;
     
 
-                        if(size < nameArray!.length)
+                        if(size < nameArray.size())
                         
                                     {
                                     name= nameArray[size]!;
@@ -143,14 +144,14 @@ this.index= 0;
                                     }
                                 
                         else {
-                            stringMaker!.delete(0, stringMaker!.length());
+                            stringMaker.delete(0, stringMaker.length());
     
-name= stringMaker!.append(TEAM)!.appendint(size)!.toString();
+name= stringMaker.append(TEAM).appendint(size).toString();
     
 
                         }
                             
-this.list.add(new Group(name, (size +3)));
+this->list.add(Group(name, (size +3)));
     
 size++;
     

@@ -68,19 +68,17 @@
 //#include "TitleProgressBarSetProgressRunnable.h"
 
 class AndroidTitleProgressBar: public ProgressCanvas {
-        
 
 //inner= member=true isStatic=
 class TitleProgressBarSetProgressRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar);
+: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar androidTitleProgressBar);
 
-    public run();
+    public: void run();
 
 };
 
@@ -89,13 +87,12 @@ class TitleProgressBarSetProgressRunnable
 class TitleProgressBarPortionSetProgressRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar);
+: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar androidTitleProgressBar);
 
-    public run();
+    public: void run();
 
 };
 
@@ -104,13 +101,12 @@ class TitleProgressBarPortionSetProgressRunnable
 class ShowTitleProgressBarRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar);
+: ShowTitleProgressBarRunnable(AndroidTitleProgressBar androidTitleProgressBar);
 
-    public run();
+    public: void run();
 
 };
 
@@ -119,48 +115,47 @@ class ShowTitleProgressBarRunnable
 class DismissTitleProgressBarRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar);
+: DismissTitleProgressBarRunnable(AndroidTitleProgressBar androidTitleProgressBar);
 
-    public run();
+    public: void run();
 
 };
 
             
-    private: showTitleProgressBarRunnable = new this.ShowTitleProgressBarRunnable(this);
+    private: showTitleProgressBarRunnable = ShowTitleProgressBarRunnable(this);
 
-    private: dismissTitleProgressBarRunnable = new this.DismissTitleProgressBarRunnable(this);
+    private: dismissTitleProgressBarRunnable = DismissTitleProgressBarRunnable(this);
 
-    private: progressDialogPortionSetProgressRunnable = new this.TitleProgressBarPortionSetProgressRunnable(this);
+    private: progressDialogPortionSetProgressRunnable = TitleProgressBarPortionSetProgressRunnable(this);
 
-    private: progressDialogSetProgressRunnable = new this.TitleProgressBarSetProgressRunnable(this);
+    private: progressDialogSetProgressRunnable = TitleProgressBarSetProgressRunnable(this);
 
-    private: progressActivity: ProgressActivityInterface = NullProgressActivity.NULL_PROGRESS_ACTIVITY;
+    private: ProgressActivityInterface progressActivity = NullProgressActivity::NULL_PROGRESS_ACTIVITY;
 
-    private: portion: int32_t = 0;
+    private: int32_t portion = 0;
 
-protected constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+protected: AndroidTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public init(ProgressActivityInterface activity);
+    public: void init(ProgressActivityInterface activity);
 
-    public bool isInitialized();
+    public: bool isInitialized();
 
-    public start();
+    public: void start();
 
-    public end();
+    public: void end();
 
-    public addPortion(int32_t value, string text, int32_t index);
+    public: void addPortion(int32_t value, std::string text, int32_t index);
 
-    public addNormalPortion(int32_t value, string text);
+    public: void addNormalPortion(int32_t value, std::string text);
 
-    setValue(int32_t value);
+    protected: void setValue(int32_t value);
 
-    public waitUntilDisplayed();
+    public: void waitUntilDisplayed();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

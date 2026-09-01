@@ -61,20 +61,19 @@
 class MotionEventCircularPool
             : public Object
          {
-        
 
-    public static MotionEventCircularPool createPool(int32_t id);
+    public: static MotionEventCircularPool createPool(int32_t id);
 
-    private: const MIN: int32_t = TouchMotionGestureFactory.getInstance()!.LAST_MOTION.getId()!;
+    private: const int32_t MIN = TouchMotionGestureFactory::getInstance().LAST_MOTION.getId();
 
-    private: eventPool: AllBinaryEventCircularPool = new AllBinaryEventCircularPool((InputFactory.getInstance()!.MAX -1) -this.MIN);
+    private: AllBinaryEventCircularPool eventPool = AllBinaryEventCircularPool((InputFactory::getInstance().MAX -1) -this->MIN);
 
-private constructor (int32_t id);
+private: MotionEventCircularPool(int32_t id);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public MotionGestureEvent getInstance(MotionGestureInput motionGestureInput);
+    public: MotionGestureEvent getInstance(MotionGestureInput motionGestureInput);
 
 };
 

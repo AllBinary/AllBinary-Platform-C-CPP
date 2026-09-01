@@ -67,15 +67,14 @@
 #include "AllBinaryAdjustedHTMLImageRotationAnimation.h"
 
 class AllBinaryHTMLImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryHTMLImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static AllBinaryHTMLImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
 
-    htmlImageRotationAnimationFactory: AllBinaryHTMLImageRotationAnimationFactory = new AllBinaryHTMLImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory);;
+    AllBinaryHTMLImageRotationAnimationFactory htmlImageRotationAnimationFactory = AllBinaryHTMLImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory);;
     
-htmlImageRotationAnimationFactory!.init(dx, dy);
+htmlImageRotationAnimationFactory.init(dx, dy);
     
 
 
@@ -86,51 +85,51 @@ htmlImageRotationAnimationFactory!.init(dx, dy);
 }
 
 
-    const angleIncrement: int16_t;
+    protected: int16_t angleIncrement;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, PrimitiveIntUtil.getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
+public: AllBinaryHTMLImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
+            super(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.angleIncrement= angleIncrement;
+this->angleIncrement= angleIncrement;
     
 }
 
 
-    public init(int32_t dx, int32_t dy){
-this.animationFactoryInitializationVisitor!.dx= dx;
+    public: void init(int32_t dx, int32_t dy){
+this->animationFactoryInitializationVisitor.dx= dx;
     
-this.animationFactoryInitializationVisitor!.dy= dy;
+this->animationFactoryInitializationVisitor.dy= dy;
     
-this.animationFactoryInitializationVisitor!.originalDx= dx;
+this->animationFactoryInitializationVisitor.originalDx= dx;
     
-this.animationFactoryInitializationVisitor!.originalDy= dy;
+this->animationFactoryInitializationVisitor.originalDy= dy;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    scaledImage: Image = this.animationFactoryImageScaleUtil!.createImage(this.getImage(), this.animationFactoryInitializationVisitor!.width, this.animationFactoryInitializationVisitor!.height, this.scaleProperties!.scaleWidth, this.scaleProperties!.scaleHeight)!;;
+    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
-    copyOfScaledImage: Image = ImageCopyUtil.getInstance()!.createImage(scaledImage)!;;
+    Image copyOfScaledImage = ImageCopyUtil::getInstance().createImage(scaledImage);;
     
 
-                        if(this.animationFactoryInitializationVisitor!.dx != 0 || this.animationFactoryInitializationVisitor!.dy != 0)
+                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
                         
                                     {
-                                    this.animationFactoryImageScaleUtil!.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil.processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryAdjustedHTMLImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo.getInstance(this.getAngleIncrement()), AngleFactory.getInstance()!.TOTAL_ANGLE, this.animationFactoryInitializationVisitor!.dx, this.animationFactoryInitializationVisitor!.dy, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AllBinaryAdjustedHTMLImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->getAngleIncrement()), AngleFactory::getInstance().TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -140,7 +139,7 @@ this.animationFactoryInitializationVisitor!.originalDy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryHTMLImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo.getInstance(this.angleIncrement), AngleFactory.getInstance()!.TOTAL_ANGLE, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AllBinaryHTMLImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance().TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }
@@ -148,12 +147,12 @@ this.animationFactoryInitializationVisitor!.originalDy= dy;
 }
 
 
-    int16_t getAngleIncrement(){
+    protected: int16_t getAngleIncrement(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angleIncrement;
+                        return this->angleIncrement;
     
 }
 

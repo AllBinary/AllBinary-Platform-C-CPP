@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_MONEY_PAYMENT_TYPES_CHECKTYPE_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
 
@@ -45,14 +47,13 @@
 class CheckType
             : public Object
          {
-        
 
-    private: const types: std::vector<string> = 
-                                                        [
+    private: const std::vector<std::string> types = 
+                                                        {
                                                             "Check","Money Order","Cashiers Check"
-                                                        ];
+                                                        };
 
-public constructor ();
+public: CheckType();
 
 };
 

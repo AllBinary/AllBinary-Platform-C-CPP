@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_ALLBINARYJ2METILEDLAYER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Integer.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -59,39 +61,38 @@
         #include "AllBinaryTiledLayer.h"
 
 class AllBinaryJ2METiledLayer: public AllBinaryTiledLayer {
-        
 
-    const tiledLayerP: TiledLayer;
+    protected: TiledLayer tiledLayerP;
 
-    const debugColor: int32_t;
+    protected: int32_t debugColor;
 
-public constructor (Integer dataId, TiledLayer tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor);
+public: AllBinaryJ2METiledLayer(Integer dataId, TiledLayer tiledLayer, std::vector<std::vector<int32_t>> mapTwoDArray, int32_t debugColor);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    const font2: Font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, 4)!;
+    const Font font2 = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, 4);
 
-    public paintDebug(Graphics graphics);
+    public: void paintDebug(Graphics graphics);
 
-    public moveDXY(int32_t dx, int32_t dy);
+    public: void moveDXY(int32_t dx, int32_t dy);
 
-    public setPosition(int32_t x, int32_t y, int32_t z);
+    public: void setPosition(int32_t x, int32_t y, int32_t z);
 
-    public TiledLayer getTiledLayer();
+    public: TiledLayer getTiledLayer();
 
-    public int32_t getCellWidth();
+    public: int32_t getCellWidth();
 
-    public int32_t getCellHeight();
+    public: int32_t getCellHeight();
 
-    public int32_t getCell(int32_t col, int32_t row);
+    public: int32_t getCell(int32_t col, int32_t row);
 
-    public int32_t getColumns();
+    public: int32_t getColumns();
 
-    public int32_t getRows();
+    public: int32_t getRows();
 
-    public setCell(int32_t col, int32_t row, int32_t index);
+    public: void setCell(int32_t col, int32_t row, int32_t index);
 
-    public int32_t getAnimatedTile(int32_t animationTileIndex);
+    public: int32_t getAnimatedTile(int32_t animationTileIndex);
 
 };
 

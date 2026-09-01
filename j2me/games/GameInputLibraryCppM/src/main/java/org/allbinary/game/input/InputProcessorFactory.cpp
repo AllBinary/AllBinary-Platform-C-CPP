@@ -43,28 +43,27 @@
 class InputProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: InputProcessorFactory = new InputProcessorFactory();
+    private: static InputProcessorFactory instance() { return InputProcessorFactory(); }
 
-    public static InputProcessorFactory getInstance(){
+    public: static InputProcessorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputProcessorFactory.instance;
+                        return InputProcessorFactory::instance();
     
 }
 
 
-    private: const inputProcessor: InputProcessor = new InputProcessor();
+    private: const InputProcessor inputProcessor = InputProcessor();
 
-    public InputProcessor getInputProcessor(){
+    public: InputProcessor getInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputProcessor;
+                        return this->inputProcessor;
     
 }
 

@@ -85,113 +85,110 @@
 class WaypointBase
             : public Object
         : public EventListenerInterface {
-        
 
-    public static NULL_WAYPOINT_BASE: WaypointBase = new WaypointBase(NoSound.getInstance());
+    public: static WaypointBase NULL_WAYPOINT_BASE = WaypointBase(NoSound::getInstance());
 
-    private: const connectedWaypointList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList connectedWaypointList = BasicArrayListD();
 
-    private: const sound: Sound;
+    private: Sound sound;
 
-    allBinaryGameLayerManagerP: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public constructor (Sound sound){
-
-            super();
-        this.sound= sound;
+public: WaypointBase(Sound sound){
+this->sound= sound;
     
 }
 
 
-    public Sound getSound(){
+    public: Sound getSound(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sound;
+                        return this->sound;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
-this.allBinaryGameLayerManagerP= allBinaryGameLayerManager;
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 }
 
 
-    public BasicArrayList getConnectedWaypointList(){
+    public: BasicArrayList getConnectedWaypointList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.connectedWaypointList;
+                        return this->connectedWaypointList;
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PathFindingInfo getPathFindingInfo(GeographicMapCellPosition geographicMapCellPosition){
+    public: PathFindingInfo getPathFindingInfo(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsList(GeographicMapCellPosition geographicMapCellPosition, PathFindingInfo pathFindingInfo, MultipassState multipassState){
+    public: BasicArrayList getPathsList(GeographicMapCellPosition geographicMapCellPosition, PathFindingInfo pathFindingInfo, MultipassState multipassState){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public visit(PathFindingLayerInterface unitLayer){
+    public: void visit(PathFindingLayerInterface unitLayer){
 }
 
 
-    public reset(){
+    public: void reset(){
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 

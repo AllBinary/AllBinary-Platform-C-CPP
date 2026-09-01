@@ -42,15 +42,12 @@
 class TrueTypeFontUtilBase
             : public Object
          {
-        
 
-public constructor (int32_t scale){
-
-            super();
-        }
+public: TrueTypeFontUtilBase(int32_t scale){
+}
 
 
-    public int32_t getAsTextureSize(int32_t textureSize){
+    public: int32_t getAsTextureSize(int32_t textureSize){
 
 
 
@@ -60,7 +57,7 @@ public constructor (int32_t scale){
 }
 
 
-    public int32_t getCellSize(int32_t cellSize){
+    public: int32_t getCellSize(int32_t cellSize){
 
 
 

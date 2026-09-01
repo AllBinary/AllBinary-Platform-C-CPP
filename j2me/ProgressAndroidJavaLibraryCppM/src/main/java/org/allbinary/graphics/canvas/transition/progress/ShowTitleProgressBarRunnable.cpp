@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/animation/transition/TransistionTypes.h>
@@ -54,11 +56,10 @@
 #include "ProgressCanvas.h"
 
 class ShowTitleProgressBarRunnable: public ProgressRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Activity midletActivity, ProgressCanvas progressCanvas){
+public: ShowTitleProgressBarRunnable(Activity midletActivity, ProgressCanvas progressCanvas){
             super(midletActivity, progressCanvas);
                     
 
@@ -67,21 +68,21 @@ public constructor (Activity midletActivity, ProgressCanvas progressCanvas){
 }
 
 
-    private: const FADE_IN_HALF: std::vector<int32_t> = [TransistionTypes.getInstance()!.FADE_IN_TO_HALF_ALPHA,TransistionTypes.getInstance()!.FADE_IN_FROM_HALF_ALPHA];
+    private: const std::vector<int32_t> FADE_IN_HALF = {TransistionTypes::getInstance().FADE_IN_TO_HALF_ALPHA,TransistionTypes::getInstance().FADE_IN_FROM_HALF_ALPHA};
 
-    public run(){
+    public: void run(){
 
         try {
-            this.midletActivity!.onShowProgress(false, this.FADE_IN_HALF);
+            this->midletActivity.onShowProgress(false, this->FADE_IN_HALF);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 

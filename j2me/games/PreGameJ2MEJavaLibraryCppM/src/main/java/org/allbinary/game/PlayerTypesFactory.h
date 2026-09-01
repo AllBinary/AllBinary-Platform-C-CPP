@@ -46,17 +46,16 @@
 class PlayerTypesFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: PlayerTypesFactory = new PlayerTypesFactory();
+    private: static const PlayerTypesFactory SINGLETON = PlayerTypesFactory();
 
-    public static PlayerTypesFactory getInstance();
+    public: static PlayerTypesFactory getInstance();
 
-    public const PLAYER_TYPE_ONE: PlayerType = new PlayerType("Player Type One", 0);
+    public: const PlayerType PLAYER_TYPE_ONE = PlayerType("Player Type One", 0);
 
-    public const PLAYER_TYPE_TWO: PlayerType = new PlayerType("Player Type Two", 1);
+    public: const PlayerType PLAYER_TYPE_TWO = PlayerType("Player Type Two", 1);
 
-    public const PLAYER_TYPE_THREE: PlayerType = new PlayerType("Player Type Three", 2);
+    public: const PlayerType PLAYER_TYPE_THREE = PlayerType("Player Type Three", 2);
 
 };
 

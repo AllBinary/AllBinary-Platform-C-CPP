@@ -96,33 +96,32 @@
 #include "TransformInfoObjectConfigData.h"
 
 class GenericStoreTransformInfoObjectConfig: public TransformInfoObjectConfig {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const abeClientInformation: AbeClientInformationInterface;
+    protected: AbeClientInformationInterface abeClientInformation;
 
-public constructor (Object abeClientInformation, Object transformInfoInterface);
+public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface);
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, Object document);
+public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document);
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, string name, string type);
-
-                //@Throws(Exception.constructor)
-            
-    Document generate(Document objectConfigDocument);
+public: GenericStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, string objectConfigDocumentString);
+    protected: Document generate(Document objectConfigDocument);
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, string objectConfigDocumentString);
+    private: HashMap<any, any> createReplaceHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
 
                 //@Throws(Exception.constructor)
             
-    Document generate(string objectConfigDocumentString, HashMap<any, any> hashMap);
+    private: HashMap<any, any> createHashMap(TransformInfoHttp transformInfoHttpStoreInterface, std::string objectConfigDocumentString);
+
+                //@Throws(Exception.constructor)
+            
+    private: Document generate(std::string objectConfigDocumentString, HashMap<any, any> hashMap);
 
 };
 

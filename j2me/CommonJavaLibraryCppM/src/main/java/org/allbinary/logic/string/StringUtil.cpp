@@ -18,9 +18,9 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
-
-#include <vector>
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -75,7 +75,10 @@ class StringUtil
 
     public: const std::string EMPTY_STRING = "";
 
-    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = {this->EMPTY_STRING};
+    public: std::vector<std::string> ONE_EMPTY_STRING_ARRAY = 
+                                                        {
+                                                            this->EMPTY_STRING
+                                                        };
 
     private: const std::vector<std::string> stringArray = {};
 
@@ -154,16 +157,18 @@ private: StringUtil(){
 }
 
 
-    public: std::string toString(Object* object){
+    public: std::string toString(Object* anyType){
 
-                        if(object != nullptr)
+                        if(anyType != 
+                                    nullptr
+                                )
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return object->toString();
+                        return anyType->toString();;
     
 
                                     }

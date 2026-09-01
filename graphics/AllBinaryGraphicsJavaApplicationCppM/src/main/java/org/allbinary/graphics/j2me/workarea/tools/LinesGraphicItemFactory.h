@@ -51,9 +51,8 @@
 class LinesGraphicItemFactory
             : public Object
         : public GraphicsItemInterfaceFactoryInterface {
-        
 
-    public GraphicItemInterface getInstance(CanvasJPanel canvasJPanel);
+    public: GraphicItemInterface getInstance(CanvasJPanel canvasJPanel);
 
 };
 

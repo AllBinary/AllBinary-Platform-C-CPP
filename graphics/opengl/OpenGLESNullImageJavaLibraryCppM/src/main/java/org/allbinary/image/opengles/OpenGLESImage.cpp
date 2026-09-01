@@ -73,49 +73,46 @@
 #include "OpenGLESImageProcessor.h"
 #include "OpenGLESImageTranslate.h"
 //OpenGLESNullImageJavaLibrary
-class OpenGLESImage: public Image: public OpenGLSurfaceChangedInterface {
-        
+class OpenGLESImage: public Image, public OpenGLSurfaceChangedInterface {
 
-    public static const NULL_OPENGL_IMAGE: OpenGLESImage = new OpenGLESImage(NullImage.NULL_IMAGE, PlatformBitmapBaseFactory.NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory.NULL_PLATFORM_TEXTURE_BASE_FACTORY);
+    public: static const OpenGLESImage NULL_OPENGL_IMAGE = OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY);
 
-    public static const texture2dList: BasicArrayList = new BasicArrayListD();
+    public: static const BasicArrayList texture2dList = BasicArrayListD();
 
-    public static const TYPE: int32_t = 4;
+    public: static const int32_t TYPE = 4;
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const textureFactory: PlatformTextureBaseFactory;
+    protected: PlatformTextureBaseFactory textureFactory;
 
-    public const openGLBitmap: PlatformBitmapBase;
+    public: PlatformBitmapBase openGLBitmap;
 
-    public const openGLESImageProperties: OpenGLESImageProperties = new OpenGLESImageProperties();
+    public: const OpenGLESImageProperties openGLESImageProperties = OpenGLESImageProperties();
 
-    public imageProcessor: OpenGLESImageProcessor = OpenGLESImageProcessor.getInstance()!;
+    public: OpenGLESImageProcessor imageProcessor = OpenGLESImageProcessor::getInstance();
 
-    public openGLESImageTranslate: OpenGLESImageTranslate = OpenGLESImageTranslate.getInstance()!;
+    public: OpenGLESImageTranslate openGLESImageTranslate = OpenGLESImageTranslate::getInstance();
 
-public constructor (Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-
-            super();
-        this.openGLBitmap= bitmapFactory!.createBitmap(image);
+public: OpenGLESImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
+this->openGLBitmap= bitmapFactory.createBitmap(image);
     
-this.textureFactory= textureFactory;
+this->textureFactory= textureFactory;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void set(GL gl){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    bool initTexture(GL10 gl){
+    protected: bool initTexture(GL10 gl){
 
 
 
@@ -125,20 +122,20 @@ this.textureFactory= textureFactory;
 }
 
 
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
 }
 
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z){
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImage.TYPE;
+                        return OpenGLESImage::TYPE;
     
 }
 

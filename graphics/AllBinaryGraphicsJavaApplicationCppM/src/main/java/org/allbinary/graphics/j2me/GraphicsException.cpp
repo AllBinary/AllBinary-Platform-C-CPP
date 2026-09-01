@@ -45,14 +45,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GraphicsException: public java.lang.Exception {
-        
+class GraphicsException: public java::lang::Exception {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const guiLog: GuiLog = GuiLog.getInstance()!;
+    private: const GuiLog guiLog = GuiLog::getInstance();
 
-public constructor (string msg, any = {} obj, string method){
+public: GraphicsException(std::string msg, Object* obj, std::string method){
             super(msg);
                     
 
@@ -60,9 +59,9 @@ public constructor (string msg, any = {} obj, string method){
                     
 
         try {
-            this.guiLog!.showDialog(msg);
+            this->guiLog.showDialog(msg);
     
-this.logUtil!.put(msg, obj, method, this);
+this->logUtil.put(msg, obj, method, this);
     
 
                 //: 
@@ -73,7 +72,7 @@ this.logUtil!.put(msg, obj, method, this);
 }
 
 
-public constructor (string msg, string className, string method){
+public: GraphicsException(std::string msg, std::string className, std::string method){
             super(msg);
                     
 
@@ -81,9 +80,9 @@ public constructor (string msg, string className, string method){
                     
 
         try {
-            this.guiLog!.showDialog(msg);
+            this->guiLog.showDialog(msg);
     
-this.logUtil!.put(msg, className, method, this);
+this->logUtil.put(msg, className, method, this);
     
 
                 //: 

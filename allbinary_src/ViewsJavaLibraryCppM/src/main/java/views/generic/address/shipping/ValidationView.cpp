@@ -58,10 +58,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ShippingAddressesView.h"
 
-class ValidationView: public ShippingAddressesView: public ValidationComponentInterface {
-        
+class ValidationView: public ShippingAddressesView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -70,15 +69,15 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-    billingAddressesEntity: ShippingAddressesEntity = new ShippingAddressesEntity(this.getWeblisketSession()!.getUserName());;
+    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
-this.streetAddressList= billingAddressesEntity!.get();
+this->streetAddressList= billingAddressesEntity.get();
     
 
-                        if(this.streetAddressList == 
-                                    null
+                        if(this->streetAddressList == 
+                                    nullptr
                                 )
                         
                                     {
@@ -86,29 +85,29 @@ this.streetAddressList= billingAddressesEntity!.get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    size: int32_t = this.streetAddressList!.size()!;;
+    int32_t size = this->streetAddressList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    streetAddress: StreetAddress = streetAddressList!.get(index) as StreetAddress;;
+    StreetAddress streetAddress = streetAddressList.get(index) as StreetAddress;;
     
 
-                        if(streetAddress!.isValid() == Boolean.FALSE)
+                        if(streetAddress.isValid() == Boolean::FALSE)
                         
                                     {
-                                    streetAddressList!.remove(streetAddress);
+                                    streetAddressList.remove(streetAddress);
     
 
                                     }
@@ -116,14 +115,14 @@ this.streetAddressList= billingAddressesEntity!.get();
 }
 
 
-                        if(this.streetAddressList!.size() < 1)
+                        if(this->streetAddressList.size() < 1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -132,12 +131,12 @@ this.streetAddressList= billingAddressesEntity!.get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -147,7 +146,7 @@ this.streetAddressList= billingAddressesEntity!.get();
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -157,7 +156,7 @@ this.streetAddressList= billingAddressesEntity!.get();
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

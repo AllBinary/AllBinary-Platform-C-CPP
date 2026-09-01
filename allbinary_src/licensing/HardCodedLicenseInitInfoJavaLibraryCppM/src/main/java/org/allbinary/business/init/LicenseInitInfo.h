@@ -69,31 +69,30 @@
 class LicenseInitInfo
             : public Object
          {
-        
 
-    private: id: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string id = StringUtil::getInstance().EMPTY_STRING;
 
-    private: serverList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList serverList = BasicArrayListD();
 
- constructor ();
+: LicenseInitInfo();
 
-    public string getLicenseId();
+    public: std::string getLicenseId();
 
-    public string getServer(int32_t index);
+    public: std::string getServer(int32_t index);
 
-    public int32_t getNumberOfServers();
+    public: int32_t getNumberOfServers();
 
-    public setLicenseId(string value);
+    public: void setLicenseId(std::string value);
 
-    public clearServers();
+    public: void clearServers();
 
-    public setServer(string value, int32_t index);
+    public: void setServer(std::string value, int32_t index);
 
-    public addServer(string value);
+    public: void addServer(std::string value);
 
-    public BasicArrayList getServerList();
+    public: BasicArrayList getServerList();
 
-    public setServerList(BasicArrayList servers);
+    public: void setServerList(BasicArrayList servers);
 
 };
 

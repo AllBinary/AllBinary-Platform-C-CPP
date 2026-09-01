@@ -67,78 +67,75 @@
 class CamelCaseUtil
             : public Object
          {
-        
 
-    private: static const instance: CamelCaseUtil = new CamelCaseUtil();
+    private: static CamelCaseUtil instance() { return CamelCaseUtil(); }
 
-    public static CamelCaseUtil getInstance(){
+    public: static CamelCaseUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CamelCaseUtil.instance;
+                        return CamelCaseUtil::instance();
     
 }
 
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string getAsCamelCase(string string, StringMaker stringBuilder){
+    public: std::string getAsCamelCase(std::string string, StringMaker stringBuilder){
 
-                        if(string == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 
                                     }
                                 
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
-stringBuilder!.delete(0, stringBuilder!.length());
-    
-
-    list: BasicArrayList = new BasicArrayListD();;
+stringBuilder.delete(0, stringBuilder.length());
     
 
-    tokenizer: Tokenizer = new Tokenizer(this.commonSeps!.UNDERSCORE);;
+    BasicArrayList list = BasicArrayListD();;
+    
+
+    Tokenizer tokenizer = Tokenizer(this->commonSeps.UNDERSCORE);;
     
 tokenizer.getTokensFromString(string, list);
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    word: string;;
+    std::string word;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 word= list.get(i) as string;
     
-word= stringValidationUtil!.isEmpty(word)
+word= stringValidationUtil.isEmpty(word)
                         ?       
                                 word
                                 :
 
-                            new StringMaker().appendchar(Character.toUpperCase(word[0]))!.append(word.substring(1)!.toLowerCase())!.toString();
+                            StringMaker().appendchar(Character::toUpperCase(word[0])).append(word.substring(1).toLowerCase()).toString();
 
     ;
     
-stringBuilder!.append(word);
+stringBuilder.append(word);
     
 }
 
@@ -146,7 +143,7 @@ stringBuilder!.append(word);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuilder!.toString();;
+                        return stringBuilder.toString();;
     
 }
 

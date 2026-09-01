@@ -53,10 +53,9 @@
         #include "AdjustedImageArrayRotationAnimation.h"
 #include "ImageArrayRotationAnimationInfo.h"
 
-class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation: public CacheableInterface {
-        
+class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public CacheableInterface {
 
-public constructor (any = {} anyType, AnimationBehavior animationBehavior){
+public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior animationBehavior){
             super((anyType as ImageArrayRotationAnimationInfo).getImageArray(), (anyType as ImageArrayRotationAnimationInfo).getAngleInfoP(), (anyType as ImageArrayRotationAnimationInfo).getTotalAngle(), (anyType as ImageArrayRotationAnimationInfo).getDx(), (anyType as ImageArrayRotationAnimationInfo).getDy(), animationBehavior);
                     
 
@@ -65,22 +64,22 @@ public constructor (any = {} anyType, AnimationBehavior animationBehavior){
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

@@ -61,72 +61,69 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil.instance;
+                        return ImageRotationUtil::instance();
     
 }
 
 
-    private: const imageJ2SERotationUtil: ImageJ2SERotationUtil = ImageJ2SERotationUtil.getInstance()!;
+    private: const ImageJ2SERotationUtil imageJ2SERotationUtil = ImageJ2SERotationUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageRotationUtil(){
+}
 
 
-    public rotateImage(Image originalImage, Image image, int32_t totalAngle){
+    public: void rotateImage(Image originalImage, Image image, int32_t totalAngle){
 
                         if(image.isMutable())
                         
                                     {
                                     
-    j2seImage: J2SEMutableImage = image as J2SEMutableImage;;
+    J2SEMutableImage j2seImage = image as J2SEMutableImage;;
     
 
-    newBufferedImage: BufferedImage = j2seImage!.getImage() as BufferedImage;;
+    BufferedImage newBufferedImage = j2seImage.getImage() as BufferedImage;;
     
 
-    originalAwtImage: java.awt.Image = 
+    java::awt::Image originalAwtImage = 
                 null
             ;;
     
 
-                        if(originalImage!.isMutable())
+                        if(originalImage.isMutable())
                         
                                     {
                                     
-    originalJ2SEImage: J2SEMutableImage = originalImage as J2SEMutableImage;;
+    J2SEMutableImage originalJ2SEImage = originalImage as J2SEMutableImage;;
     
-originalAwtImage= originalJ2SEImage!.getImage() as java.awt.Image;
+originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
     
 
                                     }
                                 
                         else {
                             
-    originalJ2SEImage: J2SEImmutableImage = originalImage as J2SEImmutableImage;;
+    J2SEImmutableImage originalJ2SEImage = originalImage as J2SEImmutableImage;;
     
-originalAwtImage= originalJ2SEImage!.getImage() as java.awt.Image;
+originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
     
 
                         }
                             
-this.imageJ2SERotationUtil!.rotateImage(originalAwtImage, newBufferedImage, totalAngle);
+this->imageJ2SERotationUtil.rotateImage(originalAwtImage, newBufferedImage, totalAngle);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil.putOE("Not Mutable", this, "getRotatedImage", new Exception());
+                            PreLogUtil::putOE("Not Mutable", this, "getRotatedImage", Exception());
     
 
                         }
@@ -136,48 +133,48 @@ this.imageJ2SERotationUtil!.rotateImage(originalAwtImage, newBufferedImage, tota
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
 
-    image: Image = ImageCreationUtil.getInstance()!.createImageWH(originalImage!.getWidth(), originalImage!.getHeight())!;;
+    Image image = ImageCreationUtil::getInstance().createImageWH(originalImage.getWidth(), originalImage.getHeight());;
     
 
                         if(image.isMutable())
                         
                                     {
                                     
-    originalAwtImage: java.awt.Image = 
+    java::awt::Image originalAwtImage = 
                 null
             ;;
     
 
-                        if(originalImage!.isMutable())
+                        if(originalImage.isMutable())
                         
                                     {
                                     
-    originalJ2SEImage: J2SEMutableImage = originalImage as J2SEMutableImage;;
+    J2SEMutableImage originalJ2SEImage = originalImage as J2SEMutableImage;;
     
-originalAwtImage= originalJ2SEImage!.getImage() as java.awt.Image;
+originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
     
 
                                     }
                                 
                         else {
                             
-    originalJ2SEImage: J2SEImmutableImage = originalImage as J2SEImmutableImage;;
+    J2SEImmutableImage originalJ2SEImage = originalImage as J2SEImmutableImage;;
     
-originalAwtImage= originalJ2SEImage!.getImage() as java.awt.Image;
+originalAwtImage= originalJ2SEImage.getImage() as java::awt::Image;
     
 
                         }
                             
 
-    j2seImage: J2SEMutableImage = image as J2SEMutableImage;;
+    J2SEMutableImage j2seImage = image as J2SEMutableImage;;
     
 
-    newBufferedImage: BufferedImage = j2seImage!.getImage() as BufferedImage;;
+    BufferedImage newBufferedImage = j2seImage.getImage() as BufferedImage;;
     
 
-    bufferedImage: BufferedImage = this.imageJ2SERotationUtil!.createRotatedImage(originalAwtImage, newBufferedImage, rotationInDegrees)!;;
+    BufferedImage bufferedImage = this->imageJ2SERotationUtil.createRotatedImage(originalAwtImage, newBufferedImage, rotationInDegrees);;
     
 
 
@@ -192,7 +189,7 @@ originalAwtImage= originalJ2SEImage!.getImage() as java.awt.Image;
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }

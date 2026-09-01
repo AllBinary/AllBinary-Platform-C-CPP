@@ -74,23 +74,22 @@
 class StoreFrontInventoryStatistics
             : public Object
         : public StoreFrontInventoryStatisticsInterface {
-        
 
-    private: totalNumberOfItems: int64_t= 0;
+    private: int64_t totalNumberOfItems= 0;
 
-    private: totalInventorySaleValueMoney: Money;
+    private: Money totalInventorySaleValueMoney;
 
-public constructor (StoreFrontInterface storeFrontInterface);
+public: StoreFrontInventoryStatistics(StoreFrontInterface storeFrontInterface);
 
-    public Long getNumber();
+    public: Long getNumber();
 
-    public Money getTotal();
+    public: Money getTotal();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public any getKey();
+    public: Object* getKey();
 
 };
 

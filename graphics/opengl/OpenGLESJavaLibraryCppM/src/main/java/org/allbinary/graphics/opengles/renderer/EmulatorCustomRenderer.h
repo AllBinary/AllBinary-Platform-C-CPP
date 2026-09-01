@@ -68,15 +68,14 @@
 class EmulatorCustomRenderer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const renderStrings: RendererStrings = RendererStrings.getInstance()!;
+    protected: const RendererStrings renderStrings = RendererStrings::getInstance();
 
-    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig);
+    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig);
 
 };
 

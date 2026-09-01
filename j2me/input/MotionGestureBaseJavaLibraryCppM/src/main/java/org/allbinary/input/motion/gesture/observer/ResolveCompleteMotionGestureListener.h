@@ -75,15 +75,14 @@
 class ResolveCompleteMotionGestureListener
             : public Object
         : public CompleteMotionGestureListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: ResolveCompleteMotionGestureListener();
 
                 //@Throws(Exception.constructor)
             
-    public onMotionGestureCompleted(BasicArrayList list);
+    public: void onMotionGestureCompleted(BasicArrayList list);
 
 };
 

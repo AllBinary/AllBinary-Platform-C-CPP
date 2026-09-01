@@ -61,69 +61,66 @@
 class TransformInfoHttpComposite
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: transformInfoInterface: TransformInfoHttpInterface;
+    private: TransformInfoHttpInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: TransformInfoHttpComposite(TransformInfoInterface transformInfoInterface){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.transformInfoInterface= transformInfoInterface as TransformInfoHttpInterface;
+this->transformInfoInterface= transformInfoInterface as TransformInfoHttpInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface getTransformInfoInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformInfoInterface;
+                        return this->transformInfoInterface;
     
 }
 
 
-    public WeblisketSession getWeblisketSession(){
+    public: WeblisketSession getWeblisketSession(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new WeblisketSession(this.getPropertiesHashMap(), this.getPageContext());
+                        return WeblisketSession(this->getPropertiesHashMap(), this->getPageContext());
     
 }
 
 
-    public PageContext getPageContext(){
+    public: PageContext getPageContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformInfoInterface!.getPageContext();;
+                        return this->transformInfoInterface.getPageContext();;
     
 }
 
 
-    public HashMap<any, any> getPropertiesHashMap(){
+    public: HashMap<any, any> getPropertiesHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformInfoInterface!.getPropertiesHashMap();;
+                        return this->transformInfoInterface.getPropertiesHashMap();;
     
 }
 

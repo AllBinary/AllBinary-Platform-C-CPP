@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 
 
 
@@ -38,7 +40,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CryptInterface {
-        
 
     std::vector<int8_t> encrypt(std::vector<int8_t> array)
 

@@ -69,82 +69,81 @@
 #include "AbTagData.h"
 
 class MultipartRequestParamForwardTag: public CustomTagSupport {
-        
 
-    private: page: string;
+    private: std::string page;
 
-    private: command: string;
+    private: std::string command;
 
-    private: paramVector: Vector;
+    private: Vector paramVector;
 
-    public setPage(string page){
-this.page= page;
+    public: void setPage(std::string page){
+this->page= page;
     
 }
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setParamVector(Vector paramVector){
-this.paramVector= paramVector;
+    public: void setParamVector(Vector paramVector){
+this->paramVector= paramVector;
     
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-    parentTag: HelperTag = this.getParent() as HelperTag;;
+    HelperTag parentTag = this->getParent() as HelperTag;;
     
-ParentInventoryTagHelper.getInstance()!.isValid(this, parentTag);
-    
-
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
-    
-hashMap!.put(AbTagData.PARENT, parentTag);
+ParentInventoryTagHelper::getInstance().isValid(this, parentTag);
     
 
-    multipartRequestParamForwardHelper: MultipartRequestParamForwardHelper = new MultipartRequestParamForwardHelper(parentTag, this.page, this.command, this.paramVector, this.pageContext);;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-multipartRequestParamForwardHelper!.forward();
+hashMap.put(AbTagData::PARENT, parentTag);
+    
+
+    MultipartRequestParamForwardHelper multipartRequestParamForwardHelper = MultipartRequestParamForwardHelper(parentTag, this->page, this->command, this->paramVector, this->pageContext);;
+    
+multipartRequestParamForwardHelper.forward();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Tag.SKIP_BODY;
+                        return Tag::SKIP_BODY;
     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Tag.SKIP_BODY;
+                        return Tag::SKIP_BODY;
     
 }
 
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Tag.SKIP_BODY;
+                        return Tag::SKIP_BODY;
     
 }
 */

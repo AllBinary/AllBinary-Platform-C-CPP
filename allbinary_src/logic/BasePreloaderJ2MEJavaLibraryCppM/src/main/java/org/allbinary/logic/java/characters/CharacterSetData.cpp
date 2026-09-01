@@ -42,37 +42,34 @@
 class CharacterSetData
             : public Object
          {
-        
 
-    private: static const instance: CharacterSetData = new CharacterSetData();
+    private: static CharacterSetData instance() { return CharacterSetData(); }
 
-    public static CharacterSetData getInstance(){
+    public: static CharacterSetData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CharacterSetData.instance;
+                        return CharacterSetData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CharacterSetData(){
+}
 
 
-    public const US_ASCII: string = "US-ASCII";
+    public: const std::string US_ASCII = "US-ASCII";
 
-    public const ISO_8859_1: string = "ISO-8859-1";
+    public: const std::string ISO_8859_1 = "ISO-8859-1";
 
-    public const UTF_8: string = "UTF-8";
+    public: const std::string UTF_8 = "UTF-8";
 
-    public const UTF_16: string = "UTF-16";
+    public: const std::string UTF_16 = "UTF-16";
 
-    public const UTF_16BE: string = "UTF-16BE";
+    public: const std::string UTF_16BE = "UTF-16BE";
 
-    public const UTF_16LE: string = "UTF-16LE";
+    public: const std::string UTF_16LE = "UTF-16LE";
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATOR_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedRTSGameLayer.h>
@@ -66,27 +68,26 @@
 #include "RaceTrackGeographicMap.h"
 
 class CustomMapGenerator: public CustomMapGeneratorBase {
-        
 
-    private: const customMapArray: std::vector<std::vector<int32_t>>;
+    private: std::vector<std::vector<int32_t>> customMapArray;
 
-    private: const raceTrackGeographicMap: RaceTrackGeographicMap;
+    private: RaceTrackGeographicMap raceTrackGeographicMap;
 
-    private: const geographicMapCellTypeFactory: GeographicMapCellTypeFactory;
+    private: GeographicMapCellTypeFactory geographicMapCellTypeFactory;
 
-public constructor (RaceTrackGeographicMap raceTrackGeographicMap);
-
-                //@Throws(Exception.constructor)
-            
-    public copyMapIntoCustomMap();
-
-    private: const dropCellPositionHistory: DropCellPositionHistory = DropCellPositionHistory.getInstance()!;
+public: CustomMapGenerator(RaceTrackGeographicMap raceTrackGeographicMap);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getCustomType(int32_t column, int32_t row, int32_t currentType);
+    public: void copyMapIntoCustomMap();
 
-    public std::vector<std::vector<int32_t>> getCustomMapArray();
+    private: const DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    public: int32_t getCustomType(int32_t column, int32_t row, int32_t currentType);
+
+    public: std::vector<std::vector<int32_t>> getCustomMapArray();
 
 };
 

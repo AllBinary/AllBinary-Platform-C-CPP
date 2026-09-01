@@ -48,11 +48,10 @@
         #include "SequentialAnimationInterface.h"
 
 class IndexedAnimationInterface: public SequentialAnimationInterface {
-        
 
-    reset();
+    void reset();
 
-    setFrame(int32_t index);
+    void setFrame(int32_t index);
 
     int32_t getFrame();
 

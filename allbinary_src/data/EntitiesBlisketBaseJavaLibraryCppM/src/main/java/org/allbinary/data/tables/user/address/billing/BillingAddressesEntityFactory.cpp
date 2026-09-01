@@ -54,49 +54,46 @@
 class BillingAddressesEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: BillingAddressesEntityFactory = new BillingAddressesEntityFactory();
+    private: static BillingAddressesEntityFactory instance() { return BillingAddressesEntityFactory(); }
 
-    public static BillingAddressesEntityFactory getInstance(){
+    public: static BillingAddressesEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BillingAddressesEntityFactory.instance;
+                        return BillingAddressesEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: BillingAddressesEntityFactory(){
+}
 
 
-    public StreetAddressesEntity getInstance(string userName){
+    public: StreetAddressesEntity getInstance(std::string userName){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BillingAddressesEntity(userName);
+                        return BillingAddressesEntity(userName);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

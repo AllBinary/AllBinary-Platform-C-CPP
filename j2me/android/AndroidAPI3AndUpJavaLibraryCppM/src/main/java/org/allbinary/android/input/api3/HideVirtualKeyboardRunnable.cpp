@@ -73,53 +73,50 @@
 class HideVirtualKeyboardRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const activity: Activity;
+    private: Activity activity;
 
-public constructor (Activity activity){
-
-            super();
-        this.activity= activity;
+public: HideVirtualKeyboardRunnable(Activity activity){
+this->activity= activity;
     
 }
 
 
-    public run(){
+    public: void run(){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    inputMethodManager: InputMethodManager = this.activity.getSystemService(Context.INPUT_METHOD_SERVICE) as unknown as InputMethodManager;;
+    InputMethodManager inputMethodManager = this->activity.getSystemService(Context::INPUT_METHOD_SERVICE) as unknown as InputMethodManager;;
     
 
-    viewCompositeInterface: ViewCompositeInterface = this.activity as unknown as ViewCompositeInterface;;
+    ViewCompositeInterface viewCompositeInterface = this->activity as unknown as ViewCompositeInterface;;
     
 
                         if(viewCompositeInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    ForcedLogUtil.log("Activity Null", this);
+                                    ForcedLogUtil::log("Activity Null", this);
     
 
                                     }
                                 
 
-    view: View = viewCompositeInterface!.getView()!;;
+    View view = viewCompositeInterface.getView();;
     
 
                         if(view.getWindowToken() == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("Unable to hide virtual keyboard as window token is null - This usually happens during loading when the view is not attached to a window", this, commonStrings!.RUN);
+                                    this->logUtil.putF("Unable to hide virtual keyboard as window token is null - This usually happens during loading when the view is not attached to a window", this, commonStrings.RUN);
     
 
 
@@ -131,15 +128,15 @@ public constructor (Activity activity){
                                     }
                                 
 
-    token: IBinder = view.getWindowToken()!;;
+    IBinder token = view.getWindowToken();;
     
-inputMethodManager!.hideSoftInputFromWindow(token, 0);
+inputMethodManager.hideSoftInputFromWindow(token, 0);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 

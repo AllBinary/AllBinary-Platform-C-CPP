@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -56,16 +58,15 @@
 class BasicPlatormGeographicMapCellType
             : public Object
          {
-        
 
-    public static BasicPlatormGeographicMapCellType createType(int32_t type){
+    public: static BasicPlatormGeographicMapCellType createType(int32_t type){
 
-    types: BasicArrayList = new BasicArrayListS(1);;
+    BasicArrayList types = BasicArrayListS(1);;
     
-types.add(SmallIntegerSingletonFactory.getInstance()!.getAt(type));
+types.add(SmallIntegerSingletonFactory::getInstance().getAt(type));
     
 
-    basicPlatormGeographicMapCellType: BasicPlatormGeographicMapCellType = new BasicPlatormGeographicMapCellType(types);;
+    BasicPlatormGeographicMapCellType basicPlatormGeographicMapCellType = BasicPlatormGeographicMapCellType(types);;
     
 
 
@@ -76,69 +77,66 @@ types.add(SmallIntegerSingletonFactory.getInstance()!.getAt(type));
 }
 
 
-    private: const types: std::vector<int32_t>;
+    private: std::vector<int32_t> types;
 
-public constructor (BasicArrayList types){
+public: BasicPlatormGeographicMapCellType(BasicArrayList types){
 
-            super();
-        
-    size: int32_t = types.size()!;;
+    int32_t size = types.size();;
     
 
-    typeArray: std::vector<int32_t> = new Array(size);;
+    std::vector<int32_t> typeArray = new Array(size);;
     
 
-    typeAsInteger: Integer;;
+    Integer typeAsInteger;;
     
 
-    type: int32_t= 0;;
+    int32_t type= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 typeAsInteger= (types.get(index) as Integer);
     
-type= typeAsInteger!.intValue();
+type= typeAsInteger.intValue();
     
-new GeographicMapCellType(type, 0);
+GeographicMapCellType(type, 0);
     
 typeArray[index]= type;
     
 }
 
-this.types= typeArray;
+this->types= typeArray;
     
 }
 
 
-    public bool isType(GeographicMapCellType type){
+    public: bool isType(GeographicMapCellType type){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hasType(type.getType());;
+                        return this->hasType(type.getType());;
     
 }
 
 
-    public bool hasType(int32_t type){
+    public: bool hasType(int32_t type){
 
-    size: int32_t = types.length
-                ;;
+    int32_t size = types.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-                        if(this.types[index] == type)
+                        if(this->types[index] == type)
                         
                                     {
                                     

@@ -49,31 +49,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasketTag: public StoreValidationTransformTag {
-        
 
-public constructor (){
-
-            super();
-        }
+public: BasketTag(){
+}
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
-            this.setName("Basic Basket View");
+            this->setName("Basic Basket View");
     
-this.setObjectFile("views.generic.basket.ValidationView");
+this->setObjectFile("views.generic.basket.ValidationView");
     
 
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
@@ -83,7 +80,7 @@ this.setObjectFile("views.generic.basket.ValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -100,13 +97,13 @@ this.setObjectFile("views.generic.basket.ValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

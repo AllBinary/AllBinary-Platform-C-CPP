@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../../../java/lang/Integer.h"
@@ -100,68 +102,65 @@
         #include "SimplePathFinderGraphVisitorFactory.h"
 
 class PathFindingInfoFactory: public BasePathFindingInfoFactory {
-        
 
-    private: static instance: PathFindingInfoFactory;
+    private: static PathFindingInfoFactory instance;
 
-    public static PathFindingInfoFactory getInstance(){
+    public: static PathFindingInfoFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathFindingInfoFactory.instance;
+                        return PathFindingInfoFactory::instance();
     
 }
 
 
-    public static initMax(int32_t max){
-PathFindingInfoFactory.instance= new PathFindingInfoFactory(new SimplePathFinderGraphVisitorFactory(1, 1, Integer.MAX_VALUE), max);
+    public: static void initMax(int32_t max){
+PathFindingInfoFactory::instance= PathFindingInfoFactory(SimplePathFinderGraphVisitorFactory(1, 1, Integer::MAX_VALUE), max);
     
 }
 
 
-    private: const MAX_DIRECTIONS: int32_t = 4;
+    private: const int32_t MAX_DIRECTIONS = 4;
 
-    private: const pathFindingInfo: PathFindingInfo;
+    private: PathFindingInfo pathFindingInfo;
 
-    private: const basicGeographicMapGraph: BasicGeographicMapGraph;
+    private: BasicGeographicMapGraph basicGeographicMapGraph;
 
-    private: const basicGeographicMapPathFinder: BasicGeographicMapPathFinder;
+    private: BasicGeographicMapPathFinder basicGeographicMapPathFinder;
 
-    private: const pathFinderGraphVisitorFactoryInterface: PathFinderGraphVisitorFactoryBase;
+    private: PathFinderGraphVisitorFactoryBase pathFinderGraphVisitorFactoryInterface;
 
-private constructor (PathFinderGraphVisitorFactoryBase pathFinderGraphVisitorFactoryInterface, int32_t max){
+private: PathFindingInfoFactory(PathFinderGraphVisitorFactoryBase pathFinderGraphVisitorFactoryInterface, int32_t max){
 
-            super();
-        
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.put("Using Dynamic Path Finding", this, commonStrings!.GET_INSTANCE);
+PreLogUtil::put("Using Dynamic Path Finding", this, commonStrings.GET_INSTANCE);
     
-this.basicGeographicMapPathFinder= new BasicGeographicMapPathFinder(max);
+this->basicGeographicMapPathFinder= BasicGeographicMapPathFinder(max);
     
-this.pathFindingInfo= new PathFindingInfo(new PathFindingNodeCostInfoFactory(max), new BasicArrayListS(1), new BasicArrayListS(1));
+this->pathFindingInfo= PathFindingInfo(PathFindingNodeCostInfoFactory(max), BasicArrayListS(1), BasicArrayListS(1));
     
-this.basicGeographicMapGraph= new BasicGeographicMapGraph(this.pathFindingInfo!.getPathFindingNodeCostInfoFactoryInterface() as PathFindingNodeCostInfoFactory);
+this->basicGeographicMapGraph= BasicGeographicMapGraph(this->pathFindingInfo.getPathFindingNodeCostInfoFactoryInterface() as PathFindingNodeCostInfoFactory);
     
-this.pathFinderGraphVisitorFactoryInterface= pathFinderGraphVisitorFactoryInterface;
+this->pathFinderGraphVisitorFactoryInterface= pathFinderGraphVisitorFactoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> mapArray){
+    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> mapArray){
 
-    pathFindingInfo: PathFindingInfo = new PathFindingInfo(this.pathFindingInfo!.getPathFindingNodeCostInfoFactoryInterface(), new BasicArrayListS(1), new BasicArrayListS(1));;
+    PathFindingInfo pathFindingInfo = PathFindingInfo(this->pathFindingInfo.getPathFindingNodeCostInfoFactoryInterface(), BasicArrayListS(1), BasicArrayListS(1));;
     
-RaceTrackRoadsGeographicMapCellHistoryFactory.getInstance()!.init();
+RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance().init();
     
-this.init(geographicMapInterface, pathFindingInfo, mapArray);
+this->init(geographicMapInterface, pathFindingInfo, mapArray);
     
-this.basicGeographicMapPathFinder!.init(geographicMapInterface, this.basicGeographicMapGraph, this.pathFinderGraphVisitorFactoryInterface!.getInstance(geographicMapInterface));
+this->basicGeographicMapPathFinder.init(geographicMapInterface, this->basicGeographicMapGraph, this->pathFinderGraphVisitorFactoryInterface.getInstance(geographicMapInterface));
     
-pathFindingInfo!.setPathFinder(this.basicGeographicMapPathFinder);
+pathFindingInfo.setPathFinder(this->basicGeographicMapPathFinder);
     
 
 
@@ -174,75 +173,75 @@ pathFindingInfo!.setPathFinder(this.basicGeographicMapPathFinder);
 
                 //@Throws(Exception.constructor)
             
-    public init(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
+    public: void init(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
 super.init(geographicMapInterface, pathFindingInfo, mapArray);
     
-this.buildPathFindingNodes(geographicMapInterface, pathFindingInfo, mapArray);
+this->buildPathFindingNodes(geographicMapInterface, pathFindingInfo, mapArray);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    buildPathFindingNodesForCellPosition(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray, GeographicMapCellPosition cellPosition){
+    private: void buildPathFindingNodesForCellPosition(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray, GeographicMapCellPosition cellPosition){
 
-    geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterface!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterface.getGeographicMapCellPositionFactory();;
     
 
-    cellTypeId: int32_t = mapArray[cellPosition!.getRow()]![cellPosition!.getColumn()]!;;
+    int32_t cellTypeId = mapArray[cellPosition.getRow()]![cellPosition.getColumn()];;
     
 
-    geographicMapCellType: GeographicMapCellType = GeographicMapCellTypeFactory.getInstance()!.get(geographicMapInterface!.getCellTypeFromMapCellTypeInt(cellTypeId))!;;
+    GeographicMapCellType geographicMapCellType = GeographicMapCellTypeFactory::getInstance().get(geographicMapInterface.getCellTypeFromMapCellTypeInt(cellTypeId));;
     
 
-    raceTrackGeographicMapCellType: RaceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
     
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
 
-    pathFindingNodeCostInfoFactoryInterface: PathFindingNodeCostInfoFactoryBase = pathFindingInfo!.getPathFindingNodeCostInfoFactoryInterface()!;;
+    PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface = pathFindingInfo.getPathFindingNodeCostInfoFactoryInterface();;
     
 
-    basicGeographicMapUtil: BasicGeographicMapUtil = BasicGeographicMapUtil.getInstance()!;;
+    BasicGeographicMapUtil basicGeographicMapUtil = BasicGeographicMapUtil::getInstance();;
     
 
-    row: int32_t= 0;;
+    int32_t row= 0;;
     
 
-    column: int32_t= 0;;
+    int32_t column= 0;;
     
 
-    goingToGeographicMapCellPosition: GeographicMapCellPosition;;
+    GeographicMapCellPosition goingToGeographicMapCellPosition;;
     
 
-    costFromStart: int32_t= 0;;
+    int32_t costFromStart= 0;;
     
 
-    costToEnd: int32_t= 0;;
+    int32_t costToEnd= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.MAX_DIRECTIONS; index++)
+    int32_t index = 0;index < this->MAX_DIRECTIONS; index++)
         {
-row= basicGeographicMapUtil!.getBorderingRow(index, cellPosition);
+row= basicGeographicMapUtil.getBorderingRow(index, cellPosition);
     
-column= basicGeographicMapUtil!.getBorderingColumn(index, cellPosition);
+column= basicGeographicMapUtil.getBorderingColumn(index, cellPosition);
     
 
-                        if(row < allBinaryTiledLayer!.getRows() && column < allBinaryTiledLayer!.getColumns() && row >= 0 && column >= 0)
+                        if(row < allBinaryTiledLayer.getRows() && column < allBinaryTiledLayer.getColumns() && row >= 0 && column >= 0)
                         
                                     {
-                                    goingToGeographicMapCellPosition= geographicMapCellPositionFactory!.getAt(column, row);
+                                    goingToGeographicMapCellPosition= geographicMapCellPositionFactory.getAt(column, row);
     
-costFromStart= raceTrackGeographicMapCellType!.getTravelCost();
+costFromStart= raceTrackGeographicMapCellType.getTravelCost();
     
 costToEnd= costFromStart;
     
-pathFindingNodeCostInfoFactoryInterface!.create(geographicMapInterface, goingToGeographicMapCellPosition, cellPosition, costFromStart, costToEnd);
+pathFindingNodeCostInfoFactoryInterface.create(geographicMapInterface, goingToGeographicMapCellPosition, cellPosition, costFromStart, costToEnd);
     
 
                                     }
@@ -254,34 +253,34 @@ pathFindingNodeCostInfoFactoryInterface!.create(geographicMapInterface, goingToG
 
                 //@Throws(Exception.constructor)
             
-    buildPathFindingNodes(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
+    private: void buildPathFindingNodes(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
 
-    geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterface!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterface.getGeographicMapCellPositionFactory();;
     
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
 
-    totalColumns: int32_t = allBinaryTiledLayer!.getColumns()!;;
+    int32_t totalColumns = allBinaryTiledLayer.getColumns();;
     
 
-    totalRows: int32_t = allBinaryTiledLayer!.getRows()!;;
+    int32_t totalRows = allBinaryTiledLayer.getRows();;
     
 
 
 
 
                         for (
-    column: int32_t = 0;column < totalColumns; column++)
+    int32_t column = 0;column < totalColumns; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = 0;row < totalRows; row++)
+    int32_t row = 0;row < totalRows; row++)
         {
-this.buildPathFindingNodesForCellPosition(geographicMapInterface, pathFindingInfo, mapArray, geographicMapCellPositionFactory!.getAt(column, row));
+this->buildPathFindingNodesForCellPosition(geographicMapInterface, pathFindingInfo, mapArray, geographicMapCellPositionFactory.getAt(column, row));
     
 }
 

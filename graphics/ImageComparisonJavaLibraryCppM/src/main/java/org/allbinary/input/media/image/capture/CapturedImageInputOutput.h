@@ -86,15 +86,14 @@
 class CapturedImageInputOutput
             : public Object
         : public ImageIOInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public save(Long frame);
+    public: void save(Long frame);
 
-    public save(BufferedImage bufferedImage, Long frame);
+    public: void save(BufferedImage bufferedImage, Long frame);
 
 };
 

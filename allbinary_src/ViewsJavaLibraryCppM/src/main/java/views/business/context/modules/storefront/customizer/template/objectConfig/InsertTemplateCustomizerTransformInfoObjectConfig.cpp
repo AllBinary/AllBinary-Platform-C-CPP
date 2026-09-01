@@ -65,11 +65,10 @@
         #include "NoTemplateTransformInfoObjectConfig.h"
 
 class InsertTemplateCustomizerTransformInfoObjectConfig: public NoTemplateTransformInfoObjectConfig {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object transformInfoInterface){
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -78,67 +77,67 @@ public constructor (Object transformInfoInterface){
 }
 
 
-public constructor (Object transformInfoInterface, Object document){
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, Object document){
             super(transformInfoInterface, document);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
-public constructor (Object transformInfoInterface, string name, string type){
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type){
             super(transformInfoInterface, name, type);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public set(string aParentViewName){
+    public: void set(std::string aParentViewName){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Setting: " +aParentViewName, this, "set()");
+                                    this->logUtil.putF("Setting: " +aParentViewName, this, "set()");
     
 
                                     }
                                 
 
-    document: Document = this.toXmlDoc()!;;
+    Document document = this->toXmlDoc();;
     
 
-    parentComponentsNodeList: NodeList = document.getElementsByTagName(TransformInfosData.getInstance()!.NAME)!;;
+    NodeList parentComponentsNodeList = document.getElementsByTagName(TransformInfosData::getInstance().NAME);;
     
 
                         if(parentComponentsNodeList != 
-                                    null
-                                 && parentComponentsNodeList!.getLength() > 0)
+                                    nullptr
+                                 && parentComponentsNodeList.getLength() > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Replacing", this, "set()");
+                                    this->logUtil.putF("Replacing", this, "set()");
     
 
                                     }
                                 
 
-    componentNode: Node = parentComponentsNodeList!.item(0)!.getChildNodes()!.item(0)!;;
+    Node componentNode = parentComponentsNodeList.item(0).getChildNodes().item(0);;
     
 
                         if(componentNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -147,33 +146,33 @@ this.setDocument(this.generate(this.toXmlDoc()));
 
                                     }
                                 
-parentComponentsNodeList!.item(0)!.appendChild(new TransformInfoDomNodeView(aParentViewName).toXmlNode(document));
+parentComponentsNodeList.item(0).appendChild(TransformInfoDomNodeView(aParentViewName).toXmlNode(document));
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Setting", this, "set()");
+                                    this->logUtil.putF("Setting", this, "set()");
     
 
                                     }
                                 
 
-    objectConfigNode: Node = document.getElementsByTagName(TransformInfoObjectConfigData.getInstance()!.NAME)!.item(0)!;;
+    Node objectConfigNode = document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
     
 
-    parentComponentsNode: Node = document.createElement(TransformInfosData.getInstance()!.NAME)!;;
+    Node parentComponentsNode = document.createElement(TransformInfosData::getInstance().NAME);;
     
-objectConfigNode!.appendChild(parentComponentsNode);
+objectConfigNode.appendChild(parentComponentsNode);
     
 
-    transformInfoDomNodeView: TransformInfoDomNodeView = new TransformInfoDomNodeView(aParentViewName);;
+    TransformInfoDomNodeView transformInfoDomNodeView = TransformInfoDomNodeView(aParentViewName);;
     
-parentComponentsNode!.appendChild(transformInfoDomNodeView!.toXmlNode(document));
+parentComponentsNode.appendChild(transformInfoDomNodeView.toXmlNode(document));
     
 
                         }

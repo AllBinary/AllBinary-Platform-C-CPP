@@ -42,9 +42,8 @@
         #include "Type.h"
 
 class NullJ2SEControl: public Control {
-        
 
- constructor (Type type){
+: NullJ2SEControl(Type type){
             super(type);
                     
 

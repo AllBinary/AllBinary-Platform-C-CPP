@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_NUMBERLAYERSSEQUENCEAIFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -55,9 +57,8 @@
 class NumberLayersSequenceAIFactory
             : public Object
          {
-        
 
-    public ArtificialIntelligenceInterface getInstance(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface getInstance(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
 };
 

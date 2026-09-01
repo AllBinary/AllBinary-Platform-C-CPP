@@ -45,13 +45,12 @@
 class LicenseLevelUtil
             : public Object
          {
-        
 
-    private: static const instance: LicenseLevelUtil = new LicenseLevelUtil();
+    private: static LicenseLevelUtil instance() { return LicenseLevelUtil(); }
 
-    public static LicenseLevelUtil getInstance();
+    public: static LicenseLevelUtil getInstance();
 
-    public int32_t getMaxLevel(int32_t maxLevel, int32_t demoLevel);
+    public: int32_t getMaxLevel(int32_t maxLevel, int32_t demoLevel);
 
 };
 

@@ -55,11 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CategoryPropertiesInterface: public TableMappingInterface, public ValidationInterface {
-        
 
-    setValue(string value);
+    void setValue(std::string value);
 
-    string getValue();
+    std::string getValue();
 
                 //@Throws(Exception.constructor)
             
@@ -71,7 +70,7 @@ class CategoryPropertiesInterface: public TableMappingInterface, public Validati
 
                 //@Throws(Exception.constructor)
             
-    string getFileName();
+    std::string getFileName();
 
                 //@Throws(Exception.constructor)
             

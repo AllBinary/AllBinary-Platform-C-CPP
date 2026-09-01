@@ -49,15 +49,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NoAccelerometerSensor: public AllBinaryOrientationSensor {
-        
 
-public constructor ();
+public: NoAccelerometerSensor();
 
                 //@Throws(Exception.constructor)
             
-    public Orientation getOrientation();
+    public: Orientation getOrientation();
 
-    public onSensorChange();
+    public: void onSensorChange();
 
 };
 

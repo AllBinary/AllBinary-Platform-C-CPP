@@ -82,12 +82,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ShippingAddressView.h"
 
-class AddTaxValidationView: public ShippingAddressView: public ValidationComponentInterface {
-        
+class AddTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: AddTaxValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -98,20 +97,20 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
-            this.streetAddress= new StreetAddress(this.getRequest());
+            this->streetAddress= StreetAddress(this->getRequest());
     
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getTransformInfoInterface()!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());;
     
 
-    taxInterface: TaxModuleInterface = TaxFactory.getInstance()!.getInstance(this.abeClientInformation, storeFrontInterface)!;;
+    TaxModuleInterface taxInterface = TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface);;
     
 
                         if(taxInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -119,33 +118,33 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(taxInterface!.isValid(this.streetAddress, storeFrontInterface) == Boolean.FALSE)
+                        if(taxInterface.isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    billingAddressesEntity: ShippingAddressesEntity = new ShippingAddressesEntity(this.getWeblisketSession()!.getUserName());;
+    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
 
-    streetAddressList: Vector = billingAddressesEntity!.get()!;;
+    Vector streetAddressList = billingAddressesEntity.get();;
     
 
                         if(streetAddressList == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -153,33 +152,33 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    size: int32_t = streetAddressList!.length!;;
+    int32_t size = streetAddressList.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    aStreetAddress: StreetAddress = streetAddressList!.get(index) as StreetAddress;;
+    StreetAddress aStreetAddress = streetAddressList.get(index) as StreetAddress;;
     
 
-                        if(aStreetAddress!.getName()!.compareTo(ShippingAddressData.TAX) == 0)
+                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -190,17 +189,17 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -209,7 +208,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
@@ -218,35 +217,35 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getTransformInfoInterface()!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());;
     
 
-    taxInterface: TaxModuleInterface = TaxFactory.getInstance()!.getInstance(this.abeClientInformation, storeFrontInterface)!;;
+    TaxModuleInterface taxInterface = TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface);;
     
 
                         if(taxInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append("Unable to Load Tax Component<br/>");
+                                    stringBuffer.append("Unable to Load Tax Component<br/>");
     
 
                                     }
                                 
                         else {
                             
-                        if(taxInterface!.isValid(this.streetAddress, storeFrontInterface) == Boolean.FALSE)
+                        if(taxInterface.isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append("Unable to validate address with Tax Component<br/>");
+                                    stringBuffer.append("Unable to validate address with Tax Component<br/>");
     
 
                                     }
@@ -255,29 +254,29 @@ public constructor (TransformInfoInterface transformInfoInterface){
                         }
                             
 
-    billingAddressesEntity: ShippingAddressesEntity = new ShippingAddressesEntity(this.getWeblisketSession()!.getUserName());;
+    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
 
-    streetAddressList: Vector = billingAddressesEntity!.get()!;;
+    Vector streetAddressList = billingAddressesEntity.get();;
     
 
-    size: int32_t = streetAddressList!.length!;;
+    int32_t size = streetAddressList.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    aStreetAddress: StreetAddress = streetAddressList!.get(index) as StreetAddress;;
+    StreetAddress aStreetAddress = streetAddressList.get(index) as StreetAddress;;
     
 
-                        if(aStreetAddress!.getName()!.compareTo(ShippingAddressData.TAX) == 0)
+                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
-                                    stringBuffer!.append("Not a valid tax location<br/>");
+                                    stringBuffer.append("Not a valid tax location<br/>");
     
 
                                     }
@@ -288,17 +287,17 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to create validateInfo", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to create validateInfo", this, "validationInfo()", e);
     
 
                                     }
@@ -314,7 +313,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -324,7 +323,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

@@ -87,29 +87,28 @@
 class TransformFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformFactory = new TransformFactory();
+    private: static TransformFactory instance() { return TransformFactory(); }
 
-    public static TransformFactory getInstance();
+    public: static TransformFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: TransformFactory();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, string viewName, TransformInfoInterface ownerTransformInfoInterface);
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string viewName, TransformInfoInterface ownerTransformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+
+                //@Throws(Exception.constructor)
+            
+    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
 
 };
 

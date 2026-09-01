@@ -46,13 +46,12 @@
 class TouchScreenTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: TouchScreenTypeFactory = new TouchScreenTypeFactory();
+    private: static TouchScreenTypeFactory instance() { return TouchScreenTypeFactory(); }
 
-    public static TouchScreenTypeFactory getInstance();
+    public: static TouchScreenTypeFactory getInstance();
 
-    public TouchScreenTypeFactory();
+    public: void TouchScreenTypeFactory();
 
 };
 

@@ -47,11 +47,10 @@
         #include "EmailEvent.h"
 
 class UserEmailEventListenerInterface: public EventListener {
-        
 
                 //@Throws(Exception.constructor)
             
-    onEmailSendRequest(EmailEvent userEmailInfoEvent);
+    void onEmailSendRequest(EmailEvent userEmailInfoEvent);
 
 };
 

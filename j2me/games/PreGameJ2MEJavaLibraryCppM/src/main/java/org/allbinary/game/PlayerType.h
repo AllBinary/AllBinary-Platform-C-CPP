@@ -57,19 +57,18 @@
 class PlayerType
             : public Object
          {
-        
 
-    private: id: int32_t;
+    private: int32_t id;
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
- constructor (string name, int32_t value);
+: PlayerType(std::string name, int32_t value);
 
-    public int32_t getId();
+    public: int32_t getId();
 
-    public string getName();
+    public: std::string getName();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

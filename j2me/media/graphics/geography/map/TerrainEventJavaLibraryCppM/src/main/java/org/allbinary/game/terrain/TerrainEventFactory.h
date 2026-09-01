@@ -55,11 +55,10 @@
 class TerrainEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-public constructor ();
+public: TerrainEventFactory();
 
-    public AllBinaryEventObject getInstance();
+    public: AllBinaryEventObject getInstance();
 
 };
 

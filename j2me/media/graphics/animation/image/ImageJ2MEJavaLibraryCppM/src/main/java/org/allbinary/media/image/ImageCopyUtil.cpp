@@ -66,60 +66,57 @@
 class ImageCopyUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCopyUtil = new ImageCopyUtil();
+    private: static ImageCopyUtil instance() { return ImageCopyUtil(); }
 
-    public static ImageCopyUtil getInstance(){
+    public: static ImageCopyUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil.instance;
+                        return ImageCopyUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageCreationUtil: ImageCreationUtil = ImageCreationUtil.getInstance()!;
+    private: const ImageCreationUtil imageCreationUtil = ImageCreationUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageCopyUtil(){
+}
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: const gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;
+    private: const GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();
 
-    private: const features: Features = Features.getInstance()!;
+    private: const Features features = Features::getInstance();
 
-    private: const NO_COPY: string = "J2ME does not need to copy images after initial loading";
+    private: const std::string NO_COPY = "J2ME does not need to copy images after initial loading";
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageForRotation(Image originalImage){
+    public: Image createImageForRotation(Image originalImage){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage(originalImage);;
+                        return this->createImage(originalImage);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(Image originalImage){
+    public: Image createImage(Image originalImage){
 
-                        if(!this.features.isFeature(this.gameFeatureFactory!.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this.logUtil!.put(this.NO_COPY, this, this.commonStrings!.CONSTRUCTOR, new Exception());
+                                    this->logUtil.put(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR, Exception());
     
 
 
@@ -131,13 +128,13 @@ private constructor (){
                                     }
                                 
 
-    image: Image = this.imageCreationUtil!.createImageWH(originalImage!.getWidth(), originalImage!.getHeight())!;;
+    Image image = this->imageCreationUtil.createImageWH(originalImage.getWidth(), originalImage.getHeight());;
     
 
                         if(image.isMutable())
                         
                                     {
-                                    image.getGraphics()!.drawImage(originalImage, 0, 0, this.anchor);
+                                    image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
     
 
 
@@ -152,7 +149,7 @@ private constructor (){
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -162,12 +159,12 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageScale(Image originalImage, float canvasScale, bool resize){
+    public: Image createImageScale(Image originalImage, float canvasScale, bool resize){
 
-                        if(!this.features.isFeature(this.gameFeatureFactory!.POST_IMAGE_LOADING_MODIFICATION))
+                        if(!this->features.isFeature(this->gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION))
                         
                                     {
-                                    this.logUtil!.put(this.NO_COPY, this, this.commonStrings!.CONSTRUCTOR, new Exception());
+                                    this->logUtil.put(this->NO_COPY, this, this->commonStrings.CONSTRUCTOR, Exception());
     
 
 
@@ -179,10 +176,10 @@ private constructor (){
                                     }
                                 
 
-    newWidth: int32_t = static_cast<int32_t>((originalImage!.getWidth() *canvasScale));;
+    int32_t newWidth = static_cast<int32_t>((originalImage.getWidth() *canvasScale));;
     
 
-    newHeight: int32_t = static_cast<int32_t>((originalImage!.getHeight() *canvasScale));;
+    int32_t newHeight = static_cast<int32_t>((originalImage.getHeight() *canvasScale));;
     
 
                         if(resize)
@@ -210,22 +207,22 @@ private constructor (){
                                     }
                                 
 
-    image: Image = this.imageCreationUtil!.createImageWH(newWidth, newHeight)!;;
+    Image image = this->imageCreationUtil.createImageWH(newWidth, newHeight);;
     
 
                         if(image.isMutable())
                         
                                     {
                                     
-    halfWidthDelta: int32_t = (newWidth -originalImage!.getWidth()) /2;;
+    int32_t halfWidthDelta = (newWidth -originalImage.getWidth()) /2;;
     
 
-    halfHeightDelta: int32_t = (newHeight -originalImage!.getHeight()) /2;;
+    int32_t halfHeightDelta = (newHeight -originalImage.getHeight()) /2;;
     
 
-    graphics: Graphics = image.getGraphics()!;;
+    Graphics graphics = image.getGraphics();;
     
-graphics.drawImage(originalImage, halfWidthDelta, halfHeightDelta, this.anchor);
+graphics.drawImage(originalImage, halfWidthDelta, halfHeightDelta, this->anchor);
     
 
 
@@ -240,7 +237,7 @@ graphics.drawImage(originalImage, halfWidthDelta, halfHeightDelta, this.anchor);
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }

@@ -52,11 +52,10 @@
 class GameInputMotionInfoFactory
             : public Object
          {
-        
 
-    public static GameInputMotionInfo getInstance(){
+    public: static GameInputMotionInfo getInstance(){
 
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
                         if(SDK_VERSION <= 4)
@@ -66,7 +65,7 @@ class GameInputMotionInfoFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionInfoAPI1.getInstance();;
+                        return GameInputMotionInfoAPI1::getInstance();;
     
 
                                     }
@@ -76,7 +75,7 @@ class GameInputMotionInfoFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionInfoAPI5.getInstance();;
+                        return GameInputMotionInfoAPI5::getInstance();;
     
 
                         }

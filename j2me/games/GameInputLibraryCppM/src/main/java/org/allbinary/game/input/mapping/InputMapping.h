@@ -87,39 +87,38 @@
 class InputMapping
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    private: const mappedList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList mappedList = BasicArrayListD();
 
-protected constructor ();
+protected: InputMapping();
 
-    public int32_t getTotalMapped();
+    public: int32_t getTotalMapped();
 
-    bool isDefaultNew();
+    protected: bool isDefaultNew();
 
-    InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping getDefault();
 
-    removeAll();
+    protected: void removeAll();
 
-    public remove(Input input, Input mappedToInput);
+    public: void remove(Input input, Input mappedToInput);
 
                 //@Throws(Exception.constructor)
             
-    public addMapping(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void addMapping(InputToGameKeyMapping inputToGameKeyMapping);
 
-    public add(Input input, Input mappedToInput);
+    public: void add(Input input, Input mappedToInput);
 
-    public bool isMapped(Input input);
+    public: bool isMapped(Input input);
 
-    public BasicArrayList getMappedInput(Input id);
+    public: BasicArrayList getMappedInput(Input id);
 
-    public Hashtable<any, any> getHashtable();
+    public: Hashtable<any, any> getHashtable();
 
 };
 

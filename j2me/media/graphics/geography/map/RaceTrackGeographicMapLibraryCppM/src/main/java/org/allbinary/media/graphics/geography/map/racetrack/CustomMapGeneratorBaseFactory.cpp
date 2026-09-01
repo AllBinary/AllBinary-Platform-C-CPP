@@ -46,34 +46,31 @@
 class CustomMapGeneratorBaseFactory
             : public Object
          {
-        
 
-    private: static const instance: CustomMapGeneratorBaseFactory = new CustomMapGeneratorBaseFactory();
+    private: static CustomMapGeneratorBaseFactory instance() { return CustomMapGeneratorBaseFactory(); }
 
-    public static CustomMapGeneratorBaseFactory getInstance(){
+    public: static CustomMapGeneratorBaseFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomMapGeneratorBaseFactory.instance;
+                        return CustomMapGeneratorBaseFactory::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: CustomMapGeneratorBaseFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap){
+    public: CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CustomMapGeneratorBase();
+                        return CustomMapGeneratorBase();
     
 }
 

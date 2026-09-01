@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -73,37 +75,34 @@
 class GameAdStateBase
             : public Object
          {
-        
 
-    const adConfigurationP: AdConfiguration;
+    protected: AdConfiguration adConfigurationP;
 
-    const advertisementsP: Advertisements = new Advertisements();
+    protected: const Advertisements advertisementsP = Advertisements();
 
-    okayToShowAdsP: bool= false;
+    protected: bool okayToShowAdsP= false;
 
-public constructor (AdConfiguration adConfiguration){
-
-            super();
-        this.adConfigurationP= adConfiguration;
+public: GameAdStateBase(AdConfiguration adConfiguration){
+this->adConfigurationP= adConfiguration;
     
 }
 
 
-    public initViewArray(std::vector<any> viewArray){
+    public: void initViewArray(std::vector<Object*> viewArray){
 }
 
 
-    public onStart(any = {} anyType){
-this.init();
+    public: void onStart(Object* anyType){
+this->init();
     
 }
 
 
-    public init(){
+    public: void init(){
 }
 
 
-    public bool isShowingAtLocation(int32_t location){
+    public: bool isShowingAtLocation(int32_t location){
 
 
 
@@ -113,7 +112,7 @@ this.init();
 }
 
 
-    public bool isShowingAt(){
+    public: bool isShowingAt(){
 
 
 
@@ -123,51 +122,51 @@ this.init();
 }
 
 
-    public show(){
+    public: void show(){
 }
 
 
-    public hide(){
+    public: void hide(){
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public processAdState(GameState gameState, GameType gameType){
+    public: void processAdState(GameState gameState, GameType gameType){
 }
 
 
-    public processPageAdState(){
+    public: void processPageAdState(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public playingAdState(){
+    public: void playingAdState(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public playingAdStateWH(int32_t width, int32_t height){
+    public: void playingAdStateWH(int32_t width, int32_t height){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public notPlayingAdState(){
+    public: void notPlayingAdState(){
 }
 
 
-    public setGameIsReady(bool gameIsReady){
+    public: void setGameIsReady(bool gameIsReady){
 }
 
 
-    public bool isGameIsReady(){
+    public: bool isGameIsReady(){
 
 
 
@@ -177,27 +176,27 @@ ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
 }
 
 
-    public Advertisements getAdvertisements(){
+    public: Advertisements getAdvertisements(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.advertisementsP;
+                        return this->advertisementsP;
     
 }
 
 
-    public AdConfiguration getAdConfiguration(){
+    public: AdConfiguration getAdConfiguration(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adConfigurationP;
+                        return this->adConfigurationP;
     
 }
 
 
-    public bool isOkayToShowPageAd(){
+    public: bool isOkayToShowPageAd(){
 
 
 
@@ -207,23 +206,23 @@ ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
 }
 
 
-    public setOkayToShowAds(bool okayToShowAds){
-this.okayToShowAdsP= okayToShowAds;
+    public: void setOkayToShowAds(bool okayToShowAds){
+this->okayToShowAdsP= okayToShowAds;
     
 }
 
 
-    public bool isOkayToShowAds(){
+    public: bool isOkayToShowAds(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.okayToShowAdsP;
+                        return this->okayToShowAdsP;
     
 }
 
 
-    public bool isEnabled(){
+    public: bool isEnabled(){
 
 
 

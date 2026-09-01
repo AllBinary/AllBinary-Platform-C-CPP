@@ -163,52 +163,51 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "OrderHistoryEntityInterface.h"
 
-class OrderHistoryEntity: public AbSqlBean: public OrderHistoryEntityInterface {
-        
+class OrderHistoryEntity: public AbSqlBean, public OrderHistoryEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "orderhistory";
+    protected: const std::string tableName = "orderhistory";
 
-public constructor ();
+public: OrderHistoryEntity();
 
-    public insert(string userName, Order order);
+    public: void insert(std::string userName, Order order);
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public setStatus(string orderId, string status);
+    public: void setStatus(std::string orderId, std::string status);
 
-    public setPaymentMethod(string orderId, string paymentMethod);
-
-                //@Throws(Exception.constructor)
-            
-    public Vector getStoreOrders(StoreFrontInterface storeFrontInterface);
+    public: void setPaymentMethod(std::string orderId, std::string paymentMethod);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getOrders(string userName);
+    public: Vector getStoreOrders(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getOrders(string status, string fromDate, string toDate);
+    public: Vector getOrders(std::string userName);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getOrders(string fromDate, string toDate);
+    public: Vector getOrders(std::string status, std::string fromDate, std::string toDate);
 
                 //@Throws(Exception.constructor)
             
-    public OrderHistory getOrder(string id);
-
-    public string createTableStatement();
-
-    public string createTable();
-
-    public string dropTable();
+    public: Vector getOrders(std::string fromDate, std::string toDate);
 
                 //@Throws(Exception.constructor)
             
-    public update(HashMap<any, any> whereHashMap, HashMap<any, any> orderHashMap);
+    public: OrderHistory getOrder(std::string id);
+
+    public: std::string createTableStatement();
+
+    public: std::string createTable();
+
+    public: std::string dropTable();
+
+                //@Throws(Exception.constructor)
+            
+    public: void update(HashMap<any, any> whereHashMap, HashMap<any, any> orderHashMap);
 
 };
 

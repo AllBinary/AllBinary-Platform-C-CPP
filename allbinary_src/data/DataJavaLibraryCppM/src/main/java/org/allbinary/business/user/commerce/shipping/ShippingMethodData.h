@@ -45,19 +45,18 @@
 class ShippingMethodData
             : public Object
          {
-        
 
-    public static const DESCRIPTION: string = "SHIPPINGMETHOD_DESCRIPTION";
+    public: static const std::string DESCRIPTION = "SHIPPINGMETHOD_DESCRIPTION";
 
-    public static const DEFAULT: string = "SHIPPINGMETHOD_DEFAULT";
+    public: static const std::string DEFAULT = "SHIPPINGMETHOD_DEFAULT";
 
-    public static const NAME: string = "SHIPPINGMETHOD_NAME";
+    public: static const std::string NAME = "SHIPPINGMETHOD_NAME";
 
-    public static const GROUP: string = "SHIPPINGMETHOD_GROUP";
+    public: static const std::string GROUP = "SHIPPINGMETHOD_GROUP";
 
-    public static const COST: string = "SHIPPINGMETHOD_COST";
+    public: static const std::string COST = "SHIPPINGMETHOD_COST";
 
-public constructor ();
+public: ShippingMethodData();
 
 };
 

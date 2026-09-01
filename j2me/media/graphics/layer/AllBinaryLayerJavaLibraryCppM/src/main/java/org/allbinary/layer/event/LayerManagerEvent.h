@@ -62,19 +62,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LayerManagerEvent: public AllBinaryEventObject {
-        
 
-    private: layerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: const crud: string;
+    private: std::string crud;
 
-public constructor (LayerManager layerManager, string crud);
+public: LayerManagerEvent(LayerManager layerManager, std::string crud);
 
-    public AllBinaryLayer getLayerInterface();
+    public: AllBinaryLayer getLayerInterface();
 
-    public setLayerInterface(AllBinaryLayer layerInterface);
+    public: void setLayerInterface(AllBinaryLayer layerInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

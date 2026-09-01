@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -83,11 +85,10 @@
         #include "BaseGameInitialization.h"
 
 class CommonGameInitialization: public BaseGameInitialization {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor (std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion){
+protected: CommonGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion){
             super(resourceInitializationArray, portion);
                     
 
@@ -98,36 +99,36 @@ protected constructor (std::vector<ResourceInitialization> resourceInitializatio
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level){
+    public: void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level){
 super.init(abeClientInformation, commandListener, level);
     
 
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(!this.isGameInitialized() && level == resourceLoadingLevelFactory!.LOAD_ALL.getLevel())
+                        if(!this->isGameInitialized() && level == resourceLoadingLevelFactory.LOAD_ALL.getLevel())
                         
                                     {
-                                    this.setGameInitialized(true);
+                                    this->setGameInitialized(true);
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-SmallIntegerSingletonFactory.getInstance()!.init();
+SmallIntegerSingletonFactory::getInstance().init();
     
-progressCanvas!.addNormalPortion(50, "Integers");
+progressCanvas.addNormalPortion(50, "Integers");
     
-PointFactory.getInstance()!.init();
+PointFactory::getInstance().init();
     
-progressCanvas!.addNormalPortion(50, "Points");
+progressCanvas.addNormalPortion(50, "Points");
     
-AngleFactory.getInstance();
+AngleFactory::getInstance();
     
-progressCanvas!.addNormalPortion(50, "Angles");
+progressCanvas.addNormalPortion(50, "Angles");
     
-this.initGame();
+this->initGame();
     
-this.resourceInitializationArray[this.GAME_RESOURCES]!.init();
+this->resourceInitializationArray[this->GAME_RESOURCES]!.init();
     
 
                                     }
@@ -139,11 +140,11 @@ super.resourceInitialization(level);
 
                 //@Throws(Exception.constructor)
             
-    public initGame(){
+    public: void initGame(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 

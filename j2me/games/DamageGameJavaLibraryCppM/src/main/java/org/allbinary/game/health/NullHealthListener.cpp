@@ -43,11 +43,10 @@
 class NullHealthListener
             : public Object
         : public HealthListenerInterface {
-        
 
-    public static const NULL_HEALTH_LISTENER: NullHealthListener = new NullHealthListener();
+    public: static const NullHealthListener NULL_HEALTH_LISTENER = NullHealthListener();
 
-    public onHealthChange(){
+    public: void onHealthChange(){
 }
 
 

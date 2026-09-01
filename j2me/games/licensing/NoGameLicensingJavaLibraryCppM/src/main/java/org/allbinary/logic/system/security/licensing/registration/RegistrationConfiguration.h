@@ -62,31 +62,30 @@
 class RegistrationConfiguration
             : public Object
          {
-        
 
-    private: static const SINGLETON: RegistrationConfiguration = new RegistrationConfiguration();
+    private: static const RegistrationConfiguration SINGLETON = RegistrationConfiguration();
 
-    public static RegistrationConfiguration getInstance();
+    public: static RegistrationConfiguration getInstance();
 
-    private: registrationCode: string = "No Registration Code";
+    private: std::string registrationCode = "No Registration Code";
 
-    public const NAME: string = "registrationid";
+    public: const std::string NAME = "registrationid";
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    read();
+private: RegistrationConfiguration();
 
                 //@Throws(Exception.constructor)
             
-    public write();
+    private: void read();
 
-    public string toString();
+                //@Throws(Exception.constructor)
+            
+    public: void write();
 
-    public setRegistrationCode(string registrationCode);
+    public: std::string toString();
 
-    public string getRegistrationCode();
+    public: void setRegistrationCode(std::string registrationCode);
+
+    public: std::string getRegistrationCode();
 
 };
 

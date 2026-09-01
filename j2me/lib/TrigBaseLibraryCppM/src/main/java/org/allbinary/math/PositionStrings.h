@@ -54,27 +54,26 @@
 class PositionStrings
             : public Object
          {
-        
 
-    private: static const instance: PositionStrings = new PositionStrings();
+    private: static PositionStrings instance() { return PositionStrings(); }
 
-    public static PositionStrings getInstance();
+    public: static PositionStrings getInstance();
 
-    public const X: string = "x";
+    public: const std::string X = "x";
 
-    public const Y: string = "y";
+    public: const std::string Y = "y";
 
-    public const X_LABEL: string = "x: ";
+    public: const std::string X_LABEL = "x: ";
 
-    public const Y_LABEL: string = "y: ";
+    public: const std::string Y_LABEL = "y: ";
 
-    public const Z_LABEL: string = "z: ";
+    public: const std::string Z_LABEL = "z: ";
 
-    public const DX_LABEL: string = "dx: ";
+    public: const std::string DX_LABEL = "dx: ";
 
-    public const DY_LABEL: string = "dy: ";
+    public: const std::string DY_LABEL = "dy: ";
 
-    public const DZ_LABEL: string = "dz: ";
+    public: const std::string DZ_LABEL = "dz: ";
 
 };
 

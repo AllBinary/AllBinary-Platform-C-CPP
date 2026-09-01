@@ -64,17 +64,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpDownVectorAI: public BasicAI {
-        
 
-    private: const velocityInterface: BasicVelocityProperties;
+    private: BasicVelocityProperties velocityInterface;
 
-    private: index: int32_t = 0;
+    private: int32_t index = 0;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: UpDownVectorAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

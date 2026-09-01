@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_NULLVEHICLELAYER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -72,83 +74,82 @@
 class NullVehicleLayer
             : public Object
         : public VehicleLayerInterface {
-        
 
-    public static const NULL_VEHICLE_LAYER: NullVehicleLayer = new NullVehicleLayer();
+    public: static const NullVehicleLayer NULL_VEHICLE_LAYER = NullVehicleLayer();
 
-    public string getName();
+    public: std::string getName();
 
-    public std::vector<Group> getGroupInterface();
+    public: std::vector<Group> getGroupInterface();
 
-    public setPosition(int32_t x, int32_t y, int32_t z);
+    public: void setPosition(int32_t x, int32_t y, int32_t z);
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHalfHeight();
+    public: int32_t getHalfHeight();
 
-    public int32_t getHalfWidth();
+    public: int32_t getHalfWidth();
 
-    public int32_t getXP();
+    public: int32_t getXP();
 
-    public int32_t getYP();
+    public: int32_t getYP();
 
-    public int32_t getZP();
+    public: int32_t getZP();
 
-    public int32_t getX2();
+    public: int32_t getX2();
 
-    public int32_t getY2();
+    public: int32_t getY2();
 
-    public int32_t getZ2();
+    public: int32_t getZ2();
 
-    public bool isVisible();
+    public: bool isVisible();
 
-    public moveDXYZ(int32_t dx, int32_t dy, int32_t dz);
+    public: void moveDXYZ(int32_t dx, int32_t dy, int32_t dz);
 
-    public setVisible(bool visible);
+    public: void setVisible(bool visible);
 
-    public bool implmentsTickableInterface();
+    public: bool implmentsTickableInterface();
 
-    public bool implmentsCollidableInterface();
+    public: bool implmentsCollidableInterface();
 
-    public bool implmentsGameInputInterface();
+    public: bool implmentsGameInputInterface();
 
-    public bool implmentsArtificialIntelligenceCompositeInterface();
+    public: bool implmentsArtificialIntelligenceCompositeInterface();
 
-    public int32_t getType();
+    public: int32_t getType();
 
-    public VehicleProperties getVehicleProperties();
+    public: VehicleProperties getVehicleProperties();
 
-    public BasicArrayList getGameKeyEventList();
+    public: BasicArrayList getGameKeyEventList();
 
-    public BasicDecimal getSpeedBasicDecimal();
+    public: BasicDecimal getSpeedBasicDecimal();
 
-    public bool isReadyForExplosion();
+    public: bool isReadyForExplosion();
 
-    public RotationAnimation getRotationAnimationInterface();
+    public: RotationAnimation getRotationAnimationInterface();
 
-    public setRotationAnimationInterface(RotationAnimation animationInterface);
+    public: void setRotationAnimationInterface(RotationAnimation animationInterface);
 
-    public bool isDestroyed();
+    public: bool isDestroyed();
 
-    public bool isFinish();
+    public: bool isFinish();
 
-    public int32_t getFinalPosition();
+    public: int32_t getFinalPosition();
 
                 //@Throws(Exception.constructor)
             
-    public handleFinish();
+    public: void handleFinish();
 
-    public GeographicMapCellPositionTracking getGeographicMapCellPositionTracking();
+    public: GeographicMapCellPositionTracking getGeographicMapCellPositionTracking();
 
-    public std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray();
+    public: std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray();
 
-    public setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory);
+    public: void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

@@ -65,46 +65,43 @@
         #include "MotionEventProcessor.h"
 
 class TrackballGameInputMotionEventProcessor: public MotionEventProcessor {
-        
 
-    private: static PROCESSOR: TrackballGameInputMotionEventProcessor = new TrackballGameInputMotionEventProcessor();
+    private: static TrackballGameInputMotionEventProcessor PROCESSOR = TrackballGameInputMotionEventProcessor();
 
-    public static TrackballGameInputMotionEventProcessor getInstance(){
+    public: static TrackballGameInputMotionEventProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackballGameInputMotionEventProcessor.PROCESSOR;
+                        return TrackballGameInputMotionEventProcessor::PROCESSOR;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const listener: SingleKeyPressGameKeyFromMotionGestureEventListener = new SingleKeyPressGameKeyFromMotionGestureEventListener();
+    private: const SingleKeyPressGameKeyFromMotionGestureEventListener listener = SingleKeyPressGameKeyFromMotionGestureEventListener();
 
-private constructor (){
-
-            super();
-        }
+private: TrackballGameInputMotionEventProcessor(){
+}
 
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public process(MotionEvent motionEvent){
+    public: void process(MotionEvent motionEvent){
 
         try {
             
-    x: float = motionEvent!.getX()!;;
+    float x = motionEvent.getX();;
     
 
-    y: float = motionEvent!.getY()!;;
+    float y = motionEvent.getY();;
     
 
                         if(x < 0)
                         
                                     {
-                                    this.listener.onCompleteMotionGestureInputEvent(LeftTrackballInputToGameKeyEventAction.getInstance());
+                                    this->listener.onCompleteMotionGestureInputEvent(LeftTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
@@ -113,7 +110,7 @@ private constructor (){
                         if(x > 0)
                         
                                     {
-                                    this.listener.onCompleteMotionGestureInputEvent(RightTrackballInputToGameKeyEventAction.getInstance());
+                                    this->listener.onCompleteMotionGestureInputEvent(RightTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
@@ -122,7 +119,7 @@ private constructor (){
                         if(y < 0)
                         
                                     {
-                                    this.listener.onCompleteMotionGestureInputEvent(UpTrackballInputToGameKeyEventAction.getInstance());
+                                    this->listener.onCompleteMotionGestureInputEvent(UpTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
@@ -131,7 +128,7 @@ private constructor (){
                         if(y > 0)
                         
                                     {
-                                    this.listener.onCompleteMotionGestureInputEvent(DownTrackballInputToGameKeyEventAction.getInstance());
+                                    this->listener.onCompleteMotionGestureInputEvent(DownTrackballInputToGameKeyEventAction::getInstance());
     
 
                                     }
@@ -140,7 +137,7 @@ private constructor (){
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 }
 

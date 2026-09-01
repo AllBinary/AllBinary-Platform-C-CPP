@@ -64,53 +64,50 @@
 class ShippingMethods
             : public Object
         : public ShippingMethodsInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: shippingVector: Vector;
+    private: Vector shippingVector;
 
-    private: defaultShippingMethodInterface: ShippingInterface;
+    private: ShippingInterface defaultShippingMethodInterface;
 
-public constructor (AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
-
-            super();
-        this.defaultShippingMethodInterface= new ShippingMethodsFactory(abeClientInformation, storeFrontInterface).getDefaultInstance();
+public: ShippingMethods(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
+this->defaultShippingMethodInterface= ShippingMethodsFactory(abeClientInformation, storeFrontInterface).getDefaultInstance();
     
-this.shippingVector= new ShippingMethodsFactory(abeClientInformation, storeFrontInterface).getInstance();
+this->shippingVector= ShippingMethodsFactory(abeClientInformation, storeFrontInterface).getInstance();
     
 }
 
 
-    public Vector get(){
+    public: Vector get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingVector;
+                        return this->shippingVector;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public ShippingInterface getShippingInterface(string name){
+    public: ShippingInterface getShippingInterface(std::string name){
 
-    shipping: ShippingInterface;;
+    ShippingInterface shipping;;
     
 
-    size: int32_t = this.shippingVector!.length!;;
+    int32_t size = this->shippingVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-shipping= this.shippingVector!.get(index) as ShippingInterface;
+shipping= this->shippingVector.get(index) as ShippingInterface;
     
 
                         if(name.compareTo(shipping.getName()) == 0)
@@ -123,13 +120,13 @@ shipping= this.shippingVector!.get(index) as ShippingInterface;
 }
 
 
-    error: string = "Error Finding Shipping: " +name;;
+    std::string error = "Error Finding Shipping: " +name;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SHIPPINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SHIPPINGERROR))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.EXCEPTION, this, "getShippingInterface(String name)");
+                                    this->logUtil.putF(this->commonStrings.EXCEPTION, this, "getShippingInterface(String name)");
     
 
                                     }
@@ -137,19 +134,19 @@ shipping= this.shippingVector!.get(index) as ShippingInterface;
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public ShippingInterface getDefault(){
+    public: ShippingInterface getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultShippingMethodInterface;
+                        return this->defaultShippingMethodInterface;
     
 }
 

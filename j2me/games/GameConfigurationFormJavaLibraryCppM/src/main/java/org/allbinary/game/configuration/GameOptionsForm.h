@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORM_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_GAMEOPTIONSFORM_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -126,25 +128,24 @@
 #include "GameConfigurationCentral.h"
 
 class GameOptionsForm: public CommandForm {
-        
 
-public constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
-
-                //@Throws(Exception.constructor)
-            
-    public closeClientInformation(AbeClientInformationInterface abeClientInformation);
-
-    addTextFieldsIfSimulated();
-
-    addTextFields();
-
-    addConfiguration();
-
-    public initCommands(CommandListener cmdListener);
+public: GameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation);
+    public: void closeClientInformation(AbeClientInformationInterface abeClientInformation);
+
+    private: void addTextFieldsIfSimulated();
+
+    private: void addTextFields();
+
+    private: void addConfiguration();
+
+    public: void initCommands(CommandListener cmdListener);
+
+                //@Throws(Exception.constructor)
+            
+    public: void save(AbeClientInformationInterface abeClientInformation);
 
 };
 

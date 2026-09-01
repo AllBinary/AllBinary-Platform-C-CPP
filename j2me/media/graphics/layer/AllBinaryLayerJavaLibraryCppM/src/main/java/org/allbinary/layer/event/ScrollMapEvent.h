@@ -44,23 +44,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScrollMapEvent: public AllBinaryEventObject {
-        
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (any = {} anyType);
+public: ScrollMapEvent(Object* anyType);
 
-    public setDx(int32_t dx);
+    public: void setDx(int32_t dx);
 
-    public int32_t getDx();
+    public: int32_t getDx();
 
-    public setDy(int32_t dy);
+    public: void setDy(int32_t dy);
 
-    public int32_t getDy();
+    public: int32_t getDy();
 
-    public setDxDy(int32_t dx, int32_t dy);
+    public: void setDxDy(int32_t dx, int32_t dy);
 
 };
 

@@ -44,14 +44,13 @@
 class PaintableFactory
             : public Object
          {
-        
 
-    public Paintable getInstance(){
+    public: Paintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullPaintable.getInstance();;
+                        return NullPaintable::getInstance();;
     
 }
 

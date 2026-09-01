@@ -36,7 +36,6 @@
 class BooleanTest
             : public Object
          {
-        
 
 };
 

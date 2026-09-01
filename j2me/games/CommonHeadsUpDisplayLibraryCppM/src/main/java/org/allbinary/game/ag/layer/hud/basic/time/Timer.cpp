@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
@@ -54,60 +56,57 @@
 class Timer
             : public Object
          {
-        
 
-    private: startTime: int64_t =  -1;
+    private: int64_t startTime =  -1;
 
-    private: hundredthTime: int64_t= 0;
+    private: int64_t hundredthTime= 0;
 
-    private: maxTime: int64_t;
+    private: int64_t maxTime;
 
-    private: modifier: int64_t= 0;
+    private: int64_t modifier= 0;
 
-    private: hundrethsString: std::vector<char> = PrimitiveLongSingleton.getInstance()!.ZERO;
+    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance().ZERO;
 
-    private: totalDigits: int32_t = 1;
+    private: int32_t totalDigits = 1;
 
-    private: primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-    private: const MAX: std::vector<char> = ['L','O','L'];
+    private: const std::vector<char> MAX = ['L','O','L'];
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public constructor (int32_t maxTime){
-
-            super();
-        this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(maxTime);
+public: Timer(int32_t maxTime){
+this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(maxTime);
     
-this.maxTime= maxTime;
+this->maxTime= maxTime;
     
 }
 
 
-    public start(){
-this.hundredthTime= 0;
+    public: void start(){
+this->hundredthTime= 0;
     
-this.startTime= this.gameTickTimeDelayHelper!.startTime;
+this->startTime= this->gameTickTimeDelayHelper.startTime;
     
 }
 
 
-    public int64_t get(){
+    public: int64_t get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hundredthTime;
+                        return this->hundredthTime;
     
 }
 
 
-    public update(){
+    public: void update(){
 
-    lastLowerTime: int64_t = this.hundredthTime;;
+    int64_t lastLowerTime = this->hundredthTime;;
     
 
-    currentTime: int64_t = ((this.modifier +this.gameTickTimeDelayHelper!.startTime) -this.startTime);;
+    int64_t currentTime = ((this->modifier +this->gameTickTimeDelayHelper.startTime) -this->startTime);;
     
 
                         if(currentTime < 0)
@@ -118,17 +117,17 @@ this.startTime= this.gameTickTimeDelayHelper!.startTime;
 
                                     }
                                 
-this.hundredthTime= currentTime /100;
+this->hundredthTime= currentTime /100;
     
 
-                        if(this.hundredthTime >= this.maxTime)
+                        if(this->hundredthTime >= this->maxTime)
                         
                                     {
                                     
-                        if(this.startTime > 0)
+                        if(this->startTime > 0)
                         
                                     {
-                                    this.hundrethsString= this.MAX;
+                                    this->hundrethsString= this->MAX;
     
 
                                     }
@@ -137,12 +136,12 @@ this.hundredthTime= currentTime /100;
                                     }
                                 
                              else 
-                        if(lastLowerTime != this.hundredthTime)
+                        if(lastLowerTime != this->hundredthTime)
                         
                                     {
-                                    this.hundrethsString= this.primitiveLongUtil!.getCharArray(static_cast<int32_t>(this.hundredthTime));
+                                    this->hundrethsString= this->primitiveLongUtil.getCharArray(static_cast<int32_t>(this->hundredthTime));
     
-this.totalDigits= this.primitiveLongUtil!.getCurrentTotalDigits();
+this->totalDigits= this->primitiveLongUtil.getCurrentTotalDigits();
     
 
                                     }
@@ -150,34 +149,34 @@ this.totalDigits= this.primitiveLongUtil!.getCurrentTotalDigits();
 }
 
 
-    public reduce(int32_t value){
-this.modifier -= value;
+    public: void reduce(int32_t value){
+this->modifier -= value;
     
 }
 
 
-    public add(int32_t value){
-this.modifier += value;
+    public: void add(int32_t value){
+this->modifier += value;
     
 }
 
 
-    public std::vector<char> getTimeChars(){
+    public: std::vector<char> getTimeChars(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hundrethsString;
+                        return this->hundrethsString;
     
 }
 
 
-    public int32_t getCurrentTotalDigits(){
+    public: int32_t getCurrentTotalDigits(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalDigits;
+                        return this->totalDigits;
     
 }
 

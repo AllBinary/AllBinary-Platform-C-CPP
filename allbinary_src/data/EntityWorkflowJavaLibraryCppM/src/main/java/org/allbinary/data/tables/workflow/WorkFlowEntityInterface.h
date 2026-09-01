@@ -58,19 +58,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WorkFlowEntityInterface: public BasicDataTableInterface {
-        
 
-    Vector get(string storeName);
+    Vector get(std::string storeName);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    WorkFlowInterface get(string name, string storeName);
+    WorkFlowInterface get(std::string name, std::string storeName);
 
-    delete(string name, string storeName);
+    void delete_(std::string name, std::string storeName);
 
-    insert(Vector values);
+    void insert(Vector values);
 
-    update(HashMap<any, any> updatedValues);
+    void update(HashMap<any, any> updatedValues);
 
 };
 

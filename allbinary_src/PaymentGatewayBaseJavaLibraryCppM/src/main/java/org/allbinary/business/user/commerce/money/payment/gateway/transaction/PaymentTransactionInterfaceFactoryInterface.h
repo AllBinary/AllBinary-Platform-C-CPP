@@ -50,7 +50,6 @@
         #include "PaymentTransactionInterface.h"
 
 class PaymentTransactionInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

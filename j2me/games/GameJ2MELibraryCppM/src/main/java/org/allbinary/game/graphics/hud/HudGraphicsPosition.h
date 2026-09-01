@@ -63,23 +63,22 @@
 class HudGraphicsPosition
             : public Object
          {
-        
 
-    public static const NULL_HUD_GRAPHICS_POSITION: HudGraphicsPosition = new HudGraphicsPosition(PointFactory.getInstance()!.ZERO_ZERO, 9);
+    public: static const HudGraphicsPosition NULL_HUD_GRAPHICS_POSITION = HudGraphicsPosition(PointFactory::getInstance().ZERO_ZERO, 9);
 
-    private: anchor: int32_t= 0;
+    private: int32_t anchor= 0;
 
-    private: point: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: GPoint point = PointFactory::getInstance().ZERO_ZERO;
 
-public constructor (GPoint point, int32_t anchor);
+public: HudGraphicsPosition(GPoint point, int32_t anchor);
 
-    public int32_t getAnchor();
+    public: int32_t getAnchor();
 
-    setAnchor(int32_t anchor);
+    private: void setAnchor(int32_t anchor);
 
-    public GPoint getPoint();
+    public: GPoint getPoint();
 
-    public setPoint(GPoint point);
+    public: void setPoint(GPoint point);
 
 };
 

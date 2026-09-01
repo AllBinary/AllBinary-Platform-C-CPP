@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -51,36 +53,22 @@
 class J2SEUtil
             : public Object
          {
-        
 
-    private: static const instance: J2SEUtil = new J2SEUtil();
+    private: static J2SEUtil instance() { return J2SEUtil(); }
 
-    public static J2SEUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2SEUtil.instance;
-    
-}
-
-
-    public std::vector<any> getHashMapAsArray(HashMap<any, any> hashMap){
-
-    objectArray: std::vector<any> = hashMap!.keys().()!;;
-    
+    public: static J2SEUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return objectArray;
+                        return J2SEUtil::instance();
     
 }
 
 
-    public std::vector<any> getMapAsArray(Map<any, any> map){
+    public: std::vector<Object*> getHashMapAsArray(HashMap<any, any> hashMap){
 
-    objectArray: std::vector<any> = map.keySet()!.()!;;
+    std::vector<Object*> objectArray = hashMap.keys().();;
     
 
 
@@ -91,9 +79,22 @@ class J2SEUtil
 }
 
 
-    public std::vector<any> getSetAsArray(Set<string> set){
+    public: std::vector<Object*> getMapAsArray(Map<any, any> map){
 
-    objectArray: std::vector<any> = set.toArray()!;;
+    std::vector<Object*> objectArray = map.keySet().();;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return objectArray;
+    
+}
+
+
+    public: std::vector<Object*> getSetAsArray(Set<string> set){
+
+    std::vector<Object*> objectArray = set.toArray();;
     
 
 

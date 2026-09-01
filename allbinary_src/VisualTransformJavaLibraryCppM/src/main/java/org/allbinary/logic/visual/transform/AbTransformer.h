@@ -78,35 +78,34 @@
 class AbTransformer
             : public Object
         : public BasicTransformerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-    private: inputStream: InputStream;
+    private: InputStream inputStream;
 
-    private: uriResolver: URIResolver;
+    private: URIResolver uriResolver;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: AbTransformer(TransformInfoInterface transformInfoInterface);
 
-    public TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface getTransformInfoInterface();
 
-    public setInputStream(InputStream inputStream);
+    public: void setInputStream(InputStream inputStream);
 
-    public setURIResolver(URIResolver uriResolver);
+    public: void setURIResolver(URIResolver uriResolver);
 
-    public InputStream getInputStream();
+    public: InputStream getInputStream();
 
-    public URIResolver getURIResolver();
+    public: URIResolver getURIResolver();
 
-    public StreamSource getStreamSource();
+    public: StreamSource getStreamSource();
 
                 //@Throws(Exception.constructor)
             
-    public string translate(string xmlDocumentStr);
+    public: std::string translate(std::string xmlDocumentStr);
 
 };
 

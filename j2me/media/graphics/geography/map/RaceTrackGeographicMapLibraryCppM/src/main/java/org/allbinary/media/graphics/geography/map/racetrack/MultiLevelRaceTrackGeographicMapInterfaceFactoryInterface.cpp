@@ -41,7 +41,6 @@
         #include "RaceTrackGeographicMapInterfaceFactoryInterface.h"
 
 class MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface: public RaceTrackGeographicMapInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

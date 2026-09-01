@@ -55,15 +55,14 @@
 class MineLayerCircularStaticPool
             : public Object
          {
-        
 
-    private: static WEAPON_LAYER_CIRCULAR_STATIC_POOL: WeaponLayerCircularPool = new WeaponLayerCircularPool();
+    private: static WeaponLayerCircularPool WEAPON_LAYER_CIRCULAR_STATIC_POOL = WeaponLayerCircularPool();
 
                 //@Throws(Exception.constructor)
             
-    public static init(ViewPositionFactoryInterface viewPositionFactoryInterface);
+    public: static void init(ViewPositionFactoryInterface viewPositionFactoryInterface);
 
-    public static WeaponLayerCircularPool getInstance();
+    public: static WeaponLayerCircularPool getInstance();
 
 };
 

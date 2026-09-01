@@ -21,6 +21,8 @@
         #ifndef ADMIN_TAGS_AUTHENTICATIONTAG_H
         #define ADMIN_TAGS_AUTHENTICATIONTAG_H
 
+            #include <vector>
+        
             #include "../../java/lang/Class.h"
         
             #include "../../java/lang/Exception.h"
@@ -92,77 +94,76 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AuthenticationTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: newPassword: string;
+    private: std::string newPassword;
 
-    private: roles: Vector;
+    private: Vector roles;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor ();
+public: AuthenticationTag();
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public setUserName(string userName);
+    public: void setUserName(std::string userName);
 
-    public setPassword(string value);
+    public: void setPassword(std::string value);
 
-    public setNewPassword(string value);
+    public: void setNewPassword(std::string value);
 
-    public setRoles(Vector values);
-
-                //@Throws(LicensingException.constructor)
-            
-    bool changePassword();
+    public: void setRoles(Vector values);
 
                 //@Throws(LicensingException.constructor)
             
-    bool newPassword();
+    private: bool changePassword();
 
                 //@Throws(LicensingException.constructor)
             
-    int32_t invalidateSession();
+    private: bool newPassword();
 
                 //@Throws(LicensingException.constructor)
             
-    bool isSessionOld();
+    private: int32_t invalidateSession();
 
                 //@Throws(LicensingException.constructor)
             
-    bool isRoleValid();
+    private: bool isSessionOld();
 
                 //@Throws(LicensingException.constructor)
             
-    string validRole();
+    private: bool isRoleValid();
 
                 //@Throws(LicensingException.constructor)
             
-    string invalidRole();
+    private: std::string validRole();
 
                 //@Throws(LicensingException.constructor)
             
-    bool isAuthenticationSessionValid();
+    private: std::string invalidRole();
 
                 //@Throws(LicensingException.constructor)
             
-    bool processIfNewLogin();
+    private: bool isAuthenticationSessionValid();
 
                 //@Throws(LicensingException.constructor)
             
-    bool processInvalidation();
+    private: bool processIfNewLogin();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: bool processInvalidation();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

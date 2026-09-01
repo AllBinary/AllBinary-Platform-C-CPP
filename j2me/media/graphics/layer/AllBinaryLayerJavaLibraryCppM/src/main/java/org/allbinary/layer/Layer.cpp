@@ -76,113 +76,110 @@
 class Layer
             : public Object
          {
-        
 
-    public static const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    x: int32_t= 0;
+    protected: int32_t x= 0;
 
-    y: int32_t= 0;
+    protected: int32_t y= 0;
 
-    z: int32_t = 3;
+    protected: int32_t z = 3;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-    private: visible: bool = true;
+    private: bool visible = true;
 
-public constructor (int32_t width, int32_t height){
-
-            super();
-        this.setLayerWidth(width);
+public: Layer(int32_t width, int32_t height){
+this->setLayerWidth(width);
     
-this.setLayerHeight(height);
+this->setLayerHeight(height);
     
 }
 
 
-    public setPosition(int32_t x, int32_t y, int32_t z){
-this.x= x;
+    public: void setPosition(int32_t x, int32_t y, int32_t z){
+this->x= x;
     
-this.y= y;
+this->y= y;
     
-this.z= z;
-    
-}
-
-
-    public moveDXY(int32_t dx, int32_t dy){
-this.x += dx;
-    
-this.y += dy;
+this->z= z;
     
 }
 
 
-    public moveDXYZ(int32_t dx, int32_t dy, int32_t dz){
-this.x += dx;
+    public: void moveDXY(int32_t dx, int32_t dy){
+this->x += dx;
     
-this.y += dy;
-    
-this.z += dz;
+this->y += dy;
     
 }
 
 
-    public int32_t getXP(){
+    public: void moveDXYZ(int32_t dx, int32_t dy, int32_t dz){
+this->x += dx;
+    
+this->y += dy;
+    
+this->z += dz;
+    
+}
+
+
+    public: int32_t getXP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.x;
+                        return this->x;
     
 }
 
 
-    public int32_t getYP(){
+    public: int32_t getYP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.y;
+                        return this->y;
     
 }
 
 
-    public int32_t getZP(){
+    public: int32_t getZP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.z;
+                        return this->z;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    public int64_t getDepth(){
+    public: int64_t getDepth(){
 
 
 
@@ -192,35 +189,35 @@ this.z += dz;
 }
 
 
-    public setVisible(bool visible){
-this.visible= visible;
+    public: void setVisible(bool visible){
+this->visible= visible;
     
 }
 
 
-    public bool isVisible(){
+    public: bool isVisible(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.visible;
+                        return this->visible;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;;
+    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.NOT_IMPLEMENTED, this, canvasStrings!.PAINT);
+this->logUtil.putF(commonStrings.NOT_IMPLEMENTED, this, canvasStrings.PAINT);
     
 }
 
 
-    setLayerWidth(int32_t width){
+    protected: void setLayerWidth(int32_t width){
 
                         if(width < 0)
                         
@@ -228,17 +225,17 @@ this.logUtil!.putF(commonStrings!.NOT_IMPLEMENTED, this, canvasStrings!.PAINT);
                                     
 
 
-                            throw new IllegalArgumentException();
+                            throw IllegalArgumentException();
                     
 
                                     }
                                 
-this.width= width;
+this->width= width;
     
 }
 
 
-    setLayerHeight(int32_t height){
+    protected: void setLayerHeight(int32_t height){
 
                         if(height < 0)
                         
@@ -246,17 +243,17 @@ this.width= width;
                                     
 
 
-                            throw new IllegalArgumentException();
+                            throw IllegalArgumentException();
                     
 
                                     }
                                 
-this.height= height;
+this->height= height;
     
 }
 
 
-    public toStringAppend(StringMaker stringBuffer){
+    public: void toStringAppend(StringMaker stringBuffer){
 }
 
 

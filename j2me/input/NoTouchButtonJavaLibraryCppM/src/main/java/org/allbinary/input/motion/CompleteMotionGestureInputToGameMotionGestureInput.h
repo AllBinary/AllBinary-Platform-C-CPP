@@ -51,15 +51,14 @@
 class CompleteMotionGestureInputToGameMotionGestureInput
             : public Object
          {
-        
 
-    private: static const instance: CompleteMotionGestureInputToGameMotionGestureInput = new CompleteMotionGestureInputToGameMotionGestureInput();
+    private: static CompleteMotionGestureInputToGameMotionGestureInput instance() { return CompleteMotionGestureInputToGameMotionGestureInput(); }
 
-    public static CompleteMotionGestureInputToGameMotionGestureInput getInstance();
+    public: static CompleteMotionGestureInputToGameMotionGestureInput getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public init();
+    public: void init();
 
 };
 

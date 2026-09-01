@@ -45,9 +45,8 @@
 class MidletIcon
             : public Object
          {
-        
 
-    public static RESOURCE: string = "icon";
+    public: static std::string RESOURCE = "icon";
 
 };
 

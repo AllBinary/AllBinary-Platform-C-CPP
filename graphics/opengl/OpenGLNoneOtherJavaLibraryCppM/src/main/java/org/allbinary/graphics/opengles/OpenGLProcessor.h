@@ -37,11 +37,10 @@
 class OpenGLProcessor
             : public Object
          {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public process(GL10 gl);
+    public: void process(GL10 gl);
 
 };
 

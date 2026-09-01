@@ -90,65 +90,64 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LoadGameForm: public CommandForm {
-        
 
-    private: areChoices: bool= false;
+    private: bool areChoices= false;
 
-public constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+public: LoadGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
             super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.update();
+this->update();
     
-this.initCommands(commandListener);
+this->initCommands(commandListener);
     
 }
 
 
-    public initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener cmdListener){
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
-this.removeAllCommands();
+this->removeAllCommands();
     
-this.addCommand(gameCommandsFactory!.LOAD_FILE);
+this->addCommand(gameCommandsFactory.LOAD_FILE);
     
-this.addCommand(gameCommandsFactory!.DELETE_FILE);
+this->addCommand(gameCommandsFactory.DELETE_FILE);
     
-this.addCommand(gameCommandsFactory!.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS);
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(){
+    public: void update(){
 
-    list: BasicArrayList = GamePersistanceSingleton.getInstance()!.getIds()!;;
+    BasicArrayList list = GamePersistanceSingleton::getInstance().getIds();;
     
-this.deleteAll();
+this->deleteAll();
     
 
                         if(list.size() > 0)
                         
                                     {
-                                    this.add(list, "Select A Saved Game", ChoiceI.EXCLUSIVE);
+                                    this->add(list, "Select A Saved Game", Choice::EXCLUSIVE);
     
-this.areChoices= true;
+this->areChoices= true;
     
 
                                     }
                                 
                         else {
-                            this.append(new StringItem("No Saved Games", StringUtil.getInstance()!.EMPTY_STRING, Item.PLAIN));
+                            this->append(StringItem("No Saved Games", StringUtil::getInstance().EMPTY_STRING, Item::PLAIN));
     
-this.areChoices= false;
+this->areChoices= false;
     
 
                         }
@@ -158,50 +157,50 @@ super.update();
 }
 
 
-    add(BasicArrayList list, string name, int32_t option){
+    private: void add(BasicArrayList list, std::string name, int32_t option){
 
-    choiceGroup: ChoiceGroup = this.getChoiceGroup(list, name, option)!;;
+    ChoiceGroup choiceGroup = this->getChoiceGroup(list, name, option);;
     
 
                         if(list.size() > 0)
                         
                                     {
-                                    choiceGroup!.setSelectedIndex(0, true);
+                                    choiceGroup.setSelectedIndex(0, true);
     
 
                                     }
                                 
-this.append(choiceGroup);
+this->append(choiceGroup);
     
 }
 
 
-    ChoiceGroup getChoiceGroup(BasicArrayList list, string name, int32_t option){
+    private: ChoiceGroup getChoiceGroup(BasicArrayList list, std::string name, int32_t option){
 
-    METHOD_NAME: string = "getChoiceGroup";;
+    std::string METHOD_NAME = "getChoiceGroup";;
     
 
-    ADDING_CHOICE: string = "Adding Choice: ";;
+    std::string ADDING_CHOICE = "Adding Choice: ";;
     
 
-    choiceGroup: ChoiceGroup = new ChoiceGroup(name, option, StringUtil.getInstance()!.getArrayInstance(), NullImage.NULL_IMAGE_ARRAY);;
+    ChoiceGroup choiceGroup = ChoiceGroup(name, option, StringUtil::getInstance().getArrayInstance(), NullImage::NULL_IMAGE_ARRAY);;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    anyType: any = list.objectArray[index]!;;
+    Object* anyType = list.objectArray[index];;
     
-this.logUtil!.putF(new StringMaker().append(ADDING_CHOICE)!.append(anyType!.toString())!.toString(), this, METHOD_NAME);
+this->logUtil.putF(StringMaker().append(ADDING_CHOICE).append(anyType->toString()).toString(), this, METHOD_NAME);
     
-choiceGroup!.append(anyType!.toString(), NullImage.NULL_IMAGE);
+choiceGroup.append(anyType->toString(), NullImage::NULL_IMAGE);
     
 }
 
@@ -214,19 +213,19 @@ choiceGroup!.append(anyType!.toString(), NullImage.NULL_IMAGE);
 }
 
 
-    public int32_t getSelectedId(){
+    public: int32_t getSelectedId(){
 
-                        if(this.areChoices)
+                        if(this->areChoices)
                         
                                     {
                                     
-    choiceGroup: ChoiceGroup = this.get(0) as ChoiceGroup;;
+    ChoiceGroup choiceGroup = this->get(0) as ChoiceGroup;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return choiceGroup!.getSelectedIndex();;
+                        return choiceGroup.getSelectedIndex();;
     
 
                                     }
@@ -244,16 +243,16 @@ choiceGroup!.append(anyType!.toString(), NullImage.NULL_IMAGE);
 }
 
 
-    public int32_t getSelectedText(){
+    public: int32_t getSelectedText(){
 
-                        if(this.areChoices)
+                        if(this->areChoices)
                         
                                     {
                                     
-    choiceGroup: ChoiceGroup = this.get(0) as ChoiceGroup;;
+    ChoiceGroup choiceGroup = this->get(0) as ChoiceGroup;;
     
 
-    value: int32_t = Integer.valueOf(choiceGroup!.getString(choiceGroup!.getSelectedIndex()))!.intValue()!;;
+    int32_t value = Integer::valueOf(choiceGroup.getString(choiceGroup.getSelectedIndex())).intValue();;
     
 
 

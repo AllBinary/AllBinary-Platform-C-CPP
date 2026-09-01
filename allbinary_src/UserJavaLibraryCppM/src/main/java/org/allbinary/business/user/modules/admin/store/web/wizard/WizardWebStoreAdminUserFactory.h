@@ -57,17 +57,16 @@
 class WizardWebStoreAdminUserFactory
             : public Object
         : public UserFactoryInterface {
-        
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public UserInterface getInstance();
+public: WizardWebStoreAdminUserFactory();
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getInstance(HashMap<any, any> hashMap);
+    public: UserInterface getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    public: UserInterface getInstance(HashMap<any, any> hashMap);
 
 };
 

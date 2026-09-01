@@ -85,92 +85,85 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BodyData.h"
 
-class GenericBodyValidation: public Validation: public DomNodeInterface {
-        
+class GenericBodyValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: body: string;
+    private: std::string body;
 
-public constructor (){
-
-            super();
-        this.body= StringUtil.getInstance()!.EMPTY_STRING;
+public: GenericBodyValidation(){
+this->body= StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-public constructor (Document document){
+public: GenericBodyValidation(Document document){
 
-            super();
-        
-    nodeList: NodeList = document.getElementsByTagName(BodyData.getInstance()!.NAME)!;;
+    NodeList nodeList = document.getElementsByTagName(BodyData::getInstance().NAME);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    aBodyNode: Node = nodeList!.item(index)!;;
+    Node aBodyNode = nodeList.item(index);;
     
 
-    aBodyValueNode: Node = DomSearchHelper.getNode(DomData.VALUE, aBodyNode!.getChildNodes())!;;
+    Node aBodyValueNode = DomSearchHelper::getNode(DomData::VALUE, aBodyNode.getChildNodes());;
     
-this.body= DomNodeHelper.getTextNodeValue(aBodyValueNode);
+this->body= DomNodeHelper::getTextNodeValue(aBodyValueNode);
     
 }
 
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.getFormData(hashMap);
+public: GenericBodyValidation(HashMap<any, any> hashMap){
+this->getFormData(hashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public getFormData(HashMap<any, any> hashMap){
-this.body= hashMap!.get(BodyData.getInstance()!.NAME) as string;
+    public: void getFormData(HashMap<any, any> hashMap){
+this->body= hashMap.get(BodyData::getInstance().NAME) as string;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    isValid: Boolean = Boolean.TRUE;;
+    Boolean isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.IS_VALID);
-    
-
-                                    }
-                                
-
-                        if(!StringValidationUtil.getInstance()!.isValidNotRequired(this.body, BodyData.getInstance()!.MIN, AbSqlData.MAXBLOB))
-                        
-                                    {
-                                    isValid= Boolean.FALSE;
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(!StringValidationUtil::getInstance().isValidNotRequired(this->body, BodyData::getInstance().MIN, AbSqlData::MAXBLOB))
                         
                                     {
-                                    this.logUtil!.putF("BodyValidation: " +isValid, this, this.commonStrings!.IS_VALID);
+                                    isValid= Boolean::FALSE;
+    
+
+                                    }
+                                
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        
+                                    {
+                                    this->logUtil.putF("BodyValidation: " +isValid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -186,10 +179,10 @@ this.body= hashMap!.get(BodyData.getInstance()!.NAME) as string;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -198,29 +191,29 @@ this.body= hashMap!.get(BodyData.getInstance()!.NAME) as string;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
                             {
-                            stringBuffer!.append("Error: Data submitted is < ");
+                            stringBuffer.append("Error: Data submitted is < ");
     
-stringBuffer!.appendint(BodyData.getInstance()!.MIN);
+stringBuffer.appendint(BodyData::getInstance().MIN);
     
-stringBuffer!.append(" or > ");
+stringBuffer.append(" or > ");
     
-stringBuffer!.appendint(AbSqlData.MAXBLOB);
+stringBuffer.appendint(AbSqlData::MAXBLOB);
     
 
                             }
@@ -229,17 +222,17 @@ stringBuffer!.appendint(AbSqlData.MAXBLOB);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -255,7 +248,7 @@ stringBuffer!.appendint(AbSqlData.MAXBLOB);
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -265,7 +258,7 @@ stringBuffer!.appendint(AbSqlData.MAXBLOB);
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -277,9 +270,9 @@ stringBuffer!.appendint(AbSqlData.MAXBLOB);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createNameValueNodes(document, BodyData.getInstance()!.NAME, this.body)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance().NAME, this->body);;
     
 
 

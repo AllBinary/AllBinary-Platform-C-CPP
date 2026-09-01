@@ -58,15 +58,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShippingAddressTag: public StoreValidationTransformTag {
-        
 
-    private: value: string;
+    private: std::string value;
 
-public constructor ();
+public: ShippingAddressTag();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

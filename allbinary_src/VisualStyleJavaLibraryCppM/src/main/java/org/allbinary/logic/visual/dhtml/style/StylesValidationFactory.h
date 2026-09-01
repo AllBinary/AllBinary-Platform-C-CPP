@@ -85,23 +85,22 @@
 class StylesValidationFactory
             : public Object
          {
-        
 
-    private: static const instance: StylesValidationFactory = new StylesValidationFactory();
+    private: static StylesValidationFactory instance() { return StylesValidationFactory(); }
 
-    public static StylesValidationFactory getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public static Vector getInstance(HashMap<any, any> hashMap);
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-private constructor ();
+    public: static StylesValidationFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getInstance(Document document);
+    public: static Vector getInstance(HashMap<any, any> hashMap);
+
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+private: StylesValidationFactory();
+
+                //@Throws(Exception.constructor)
+            
+    public: Vector getInstance(Document document);
 
 };
 

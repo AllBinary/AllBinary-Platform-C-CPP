@@ -75,32 +75,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PageValidation: public Validation: public DomNodeInterface {
-        
+class PageValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: title: TitleValidation;
+    private: TitleValidation title;
 
-public constructor ();
+public: PageValidation();
 
-public constructor (Document document);
+public: PageValidation(Document document);
 
-public constructor (HashMap<any, any> hashMap);
+public: PageValidation(HashMap<any, any> hashMap);
 
-    public getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<any, any> hashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_GROUPFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/communication/log/LogUtil.h>
@@ -61,25 +63,24 @@
 class GroupFactory
             : public Object
          {
-        
 
-    private: static instance: GroupFactory = new GroupFactory();
+    private: static GroupFactory instance = GroupFactory();
 
-    public static GroupFactory getInstance();
+    public: static GroupFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const NULL_GROUP_ARRAY: std::vector<Group> = [];
+    public: const std::vector<Group> NULL_GROUP_ARRAY = {};
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: index: int32_t = 0;
+    private: int32_t index = 0;
 
-    public Group getNextGroup();
+    public: Group getNextGroup();
 
-    public Group getNextGroupByName(string name);
+    public: Group getNextGroupByName(std::string name);
 
-    public init(int16_t groups, std::vector<string> nameArray);
+    public: void init(int16_t groups, std::vector<std::string> nameArray);
 
 };
 

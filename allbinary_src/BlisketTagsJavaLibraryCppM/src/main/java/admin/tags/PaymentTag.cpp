@@ -70,47 +70,44 @@
         #include "TableTag.h"
 
 class PaymentTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new PaymentHelperFactory());
+public: PaymentTag(){
+this->setTagHelperFactory(PaymentHelperFactory());
     
-this.setTagRequestHelperFactory(new PaymentHelperFactory());
+this->setTagRequestHelperFactory(PaymentHelperFactory());
     
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string select(){
+    private: std::string select(){
 
         try {
             
-    anyType: any = new PaymentHelperFactory().getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = PaymentHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("select", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("select", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -134,13 +131,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to select Payment";;
+    std::string error = "Failed to select Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "selectPayment()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "selectPayment()", e);
     
 
                                     }
@@ -158,35 +155,35 @@ this.storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
-                                    this.propertiesHashMap= new HashMap<any, any>();
+                                    this->propertiesHashMap= HashMap<any, any>();
     
-this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(PaymentData.SELECT) == 0)
+                        if(this->getCommand().compareTo(PaymentData::SELECT) == 0)
                         
                                     {
                                     
-    output: string = this.select()!;;
+    std::string output = this->select();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -195,7 +192,7 @@ this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
 
                                     }
@@ -226,7 +223,7 @@ this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -239,7 +236,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

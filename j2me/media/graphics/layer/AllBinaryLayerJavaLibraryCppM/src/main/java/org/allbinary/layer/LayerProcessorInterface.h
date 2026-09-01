@@ -53,13 +53,12 @@
 #include "AllBinaryLayer.h"
 
 class LayerProcessorInterface: public BasicLayerProcessorInterface {
-        
 
     LayerManager getLayerManager();
 
                 //@Throws(Exception.constructor)
             
-    processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+    void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
 
                 //@Throws(Exception.constructor)
             

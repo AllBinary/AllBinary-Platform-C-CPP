@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RollRightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(RollRightOrientationInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(RollRightOrientationInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    RollRightOrientationInputToGameKeyEventAction.instance= new RollRightOrientationInputToGameKeyEventAction();
+                                    RollRightOrientationInputToGameKeyEventAction::instance= RollRightOrientationInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class RollRightOrientationInputToGameKeyEventAction: public GameKeyCompleteMotio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RollRightOrientationInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return RollRightOrientationInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Roll Right Action", OrientationMotionGestureFactory.getInstance()!.ROLL_RIGHT, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: RollRightOrientationInputToGameKeyEventAction(){
+            super("Roll Right Action", OrientationMotionGestureFactory::getInstance().ROLL_RIGHT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

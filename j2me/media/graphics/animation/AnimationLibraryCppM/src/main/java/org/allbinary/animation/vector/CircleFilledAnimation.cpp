@@ -49,36 +49,35 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CircleFilledAnimation: public Animation: public ColorCompositeInterface {
-        
+class CircleFilledAnimation: public Animation, public ColorCompositeInterface {
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-public constructor (int32_t width, int32_t height, BasicColor basicColor){
+public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.width= width;
+this->width= width;
     
-this.height= height;
+this->height= height;
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-graphics.fillRect(x, y, this.width, this.height);
+graphics.fillRect(x, y, this->width, this->height);
     
 }
 

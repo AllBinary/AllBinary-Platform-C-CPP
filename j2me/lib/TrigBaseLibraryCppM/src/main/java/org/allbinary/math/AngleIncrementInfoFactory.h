@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_H
         #define ORG_ALLBINARY_MATH_ANGLEINCREMENTINFOFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 
@@ -47,15 +49,14 @@
 class AngleIncrementInfoFactory
             : public Object
          {
-        
 
-    private: static const instance: AngleIncrementInfoFactory = new AngleIncrementInfoFactory();
+    private: static AngleIncrementInfoFactory instance() { return AngleIncrementInfoFactory(); }
 
-    public static AngleIncrementInfoFactory getInstance();
+    public: static AngleIncrementInfoFactory getInstance();
 
-    private: const angleIncrementInfo: std::vector<AngleIncrementInfo> = new Array(static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE));
+    private: const std::vector<AngleIncrementInfo> angleIncrementInfo = new Array(static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE));
 
-    public AngleIncrementInfo getAt(int16_t angleIncrement);
+    public: AngleIncrementInfo getAt(int16_t angleIncrement);
 
 };
 

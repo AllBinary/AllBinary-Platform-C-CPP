@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -79,64 +81,61 @@
         #include "ImageCacheBase.h"
 
 class ImageCache: public ImageCacheBase {
-        
 
-    public static const NULL_IMAGE_CACHE: ImageCache = new ImageCache();
+    public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: ImageCache(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Image get(string caller, int32_t width, int32_t height){
+    public: Image get(std::string caller, int32_t width, int32_t height){
 
-    foundIndex: int32_t = this.getIndexWH(width, height)!;;
+    int32_t foundIndex = this->getIndexWH(width, height);;
     
 
-    image: Image = this.getFromAvailable(foundIndex, width, height)!;;
+    Image image = this->getFromAvailable(foundIndex, width, height);;
     
 
-                        if(image == NullImage.NULL_IMAGE)
+                        if(image == NullImage::NULL_IMAGE)
                         
                                     {
-                                    this.volume += width *height;
+                                    this->volume += width *height;
     
 
-                        if(this.volume > 32000)
+                        if(this->volume > 32000)
                         
                                     {
                                     System.gc();
     
-this.volume= 0;
+this->volume= 0;
     
 
                                     }
                                 
-image= this.createImage(caller, width, height);
+image= this->createImage(caller, width, height);
     
 
                         if(foundIndex ==  -1)
                         
                                     {
-                                    foundIndex= this.nextIndex;
+                                    foundIndex= this->nextIndex;
     
-this.widths[this.nextIndex]= width;
+this->widths[this->nextIndex]= width;
     
-this.heights[this.nextIndex]= height;
+this->heights[this->nextIndex]= height;
     
-this.nextIndex++;
+this->nextIndex++;
     
 
                                     }
                                 
-this.listOfList[foundIndex]!.add(image);
+this->listOfList[foundIndex]!.add(image);
     
 
                                     }
@@ -152,52 +151,52 @@ this.listOfList[foundIndex]!.add(image);
 
                 //@Throws(Exception.constructor)
             
-    public Image get(any = {} key){
+    public: Image get(Object* key){
 
-    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    resourceId: Integer = resourceUtil!.getResourceId(key as string)!;;
+    Integer resourceId = resourceUtil.getResourceId(key as string);;
     
 
-    image: Image = this.getImage(resourceId)!;;
+    Image image = this->getImage(resourceId);;
     
 
-                        if(image == NullImage.NULL_IMAGE)
+                        if(image == NullImage::NULL_IMAGE)
                         
                                     {
                                     
-    inputStream: InputStream = 
+    InputStream inputStream = 
                 null
             ;;
     
 
         try {
-            this.logUtil!.putF(Memory.getInfo(), this, this.commonStrings!.GET);
+            this->logUtil.putF(Memory::getInfo(), this, this->commonStrings.GET);
     
-image= this.createImage(key, inputStream);
+image= this->createImage(key, inputStream);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Exception: Trying Again After GC", this, this.commonStrings!.GET, e);
+this->logUtil.put("Exception: Trying Again After GC", this, this->commonStrings.GET, e);
     
-this.logUtil!.putF(new StringMaker().append("InputStream: ")!.append(inputStream!.toString())!.toString(), this, this.commonStrings!.GET);
-    
-System.gc();
+this->logUtil.putF(StringMaker().append("InputStream: ").append(inputStream.toString()).toString(), this, this->commonStrings.GET);
     
 System.gc();
     
-this.logUtil!.putF(Memory.getInfo(), this, this.commonStrings!.GET);
+System.gc();
     
-Thread.sleep(100);
+this->logUtil.putF(Memory::getInfo(), this, this->commonStrings.GET);
     
-image= this.createImage(key, inputStream);
+Thread::sleep(100);
+    
+image= this->createImage(key, inputStream);
     
 }
 
-this.hashtable.put(resourceId, image);
+this->hashtable.put(resourceId, image);
     
 
                                     }
@@ -211,23 +210,22 @@ this.hashtable.put(resourceId, image);
 }
 
 
-    public int32_t getIndex(any = {} key){
+    public: int32_t getIndex(Object* key){
 
-    gdResources: GDResources = GDResources.getInstance()!;;
+    GDResources gdResources = GDResources::getInstance();;
     
 
-    resourceStringArray: std::vector<string> = gdResources!.resourceStringArray;;
+    std::vector<std::string> resourceStringArray = gdResources.resourceStringArray;;
     
 
-    size: int32_t = resourceStringArray!.length
-                ;;
+    int32_t size = resourceStringArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
                         if(resourceStringArray[index] == key)
@@ -244,33 +242,33 @@ this.hashtable.put(resourceId, image);
                                 
 }
 
-this.logUtil!.putF(new StringMaker().append("unable to find key: ")!.append(StringUtil.getInstance()!.toString(key))!.toString(), this, this.commonStrings!.RUN);
+this->logUtil.putF(StringMaker().append("unable to find key: ").append(StringUtil::getInstance().toString(key)).toString(), this, this->commonStrings.RUN);
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Image createImage(any = {} key, InputStream inputStream){
+    protected: Image createImage(Object* key, InputStream inputStream){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Image.createImageLater(key as string,  -1,  -1);;
+                        return Image::createImageLater(key as string,  -1,  -1);;
     
 }
 
 
-    public bool isLazy(){
+    public: bool isLazy(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

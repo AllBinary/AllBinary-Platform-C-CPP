@@ -38,13 +38,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AlwaysActionScriptConditionInterface {
-        
 
-    setIsOn(bool isOn)
+    void setIsOn(bool isOn)
 
     bool isIsOn()
 
-    log()
+    void log()
 
 };
 

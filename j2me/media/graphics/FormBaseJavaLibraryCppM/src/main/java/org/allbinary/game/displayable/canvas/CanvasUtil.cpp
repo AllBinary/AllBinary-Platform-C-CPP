@@ -48,73 +48,72 @@
 class CanvasUtil
             : public Object
          {
-        
 
-    public static string getKeyName(int32_t key){
+    public: static std::string getKeyName(int32_t key){
 
-    commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;;
+    CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
-                        if(key == Canvas.UP)
+                        if(key == Canvas::UP)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings!.UP;
-    
-
-                                    }
-                                
-                             else 
-                        if(key == Canvas.DOWN)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings!.DOWN;
+                        return commonPhoneStrings.UP;
     
 
                                     }
                                 
                              else 
-                        if(key == Canvas.RIGHT)
+                        if(key == Canvas::DOWN)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings!.RIGHT;
+                        return commonPhoneStrings.DOWN;
     
 
                                     }
                                 
                              else 
-                        if(key == Canvas.LEFT)
+                        if(key == Canvas::RIGHT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings!.LEFT;
+                        return commonPhoneStrings.RIGHT;
     
 
                                     }
                                 
                              else 
-                        if(key == Canvas.FIRE)
+                        if(key == Canvas::LEFT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonPhoneStrings!.FIRE;
+                        return commonPhoneStrings.LEFT;
+    
+
+                                    }
+                                
+                             else 
+                        if(key == Canvas::FIRE)
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return commonPhoneStrings.FIRE;
     
 
                                     }
@@ -128,10 +127,8 @@ class CanvasUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CanvasUtil(){
+}
 
 
 };

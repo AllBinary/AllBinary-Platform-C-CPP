@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
@@ -46,30 +48,27 @@
 class InputAutomationRobotService
             : public Object
         : public InputAutomationRobotServiceInterface {
-        
 
-    private: inputRobotInterfaceArray: std::vector<InputRobotInterface>;
+    private: std::vector<InputRobotInterface> inputRobotInterfaceArray;
 
-public constructor (std::vector<InputRobotInterface> inputRobotInterfaceArray){
-
-            super();
-        this.setInputRobotInterfaceArray(inputRobotInterfaceArray);
+public: InputAutomationRobotService(std::vector<InputRobotInterface> inputRobotInterfaceArray){
+this->setInputRobotInterfaceArray(inputRobotInterfaceArray);
     
 }
 
 
-    public std::vector<InputRobotInterface> getInputRobotInterfaceArray(){
+    public: std::vector<InputRobotInterface> getInputRobotInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputRobotInterfaceArray;
+                        return this->inputRobotInterfaceArray;
     
 }
 
 
-    public setInputRobotInterfaceArray(std::vector<InputRobotInterface> inputRobotInterfaceArray){
-this.inputRobotInterfaceArray= inputRobotInterfaceArray;
+    public: void setInputRobotInterfaceArray(std::vector<InputRobotInterface> inputRobotInterfaceArray){
+this->inputRobotInterfaceArray= inputRobotInterfaceArray;
     
 }
 

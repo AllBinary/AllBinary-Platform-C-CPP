@@ -45,9 +45,8 @@
         #include "TableTag.h"
 
 class InitTag: public TableTag {
-        
 
-public constructor ();
+public: InitTag();
 
 };
 

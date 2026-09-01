@@ -71,29 +71,28 @@
         #include "TransformInfoHttp.h"
 
 class TransformInfoHttpContext: public TransformInfoHttp {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpContext(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    string getPath();
+public: TransformInfoHttpContext(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getTemplateFilePath();
+    private: std::string getPath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath();
+    public: AbPath getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath();
+    public: AbPath getObjectConfigFilePath();
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getDataFilePath();
 
 };
 

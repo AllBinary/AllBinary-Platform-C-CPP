@@ -76,25 +76,24 @@
 class CssProperty
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: propertyName: string;
+    private: std::string propertyName;
 
-    private: cssPropertyValues: CssPropertyValues;
+    private: CssPropertyValues cssPropertyValues;
 
-public constructor (string name);
+public: CssProperty(std::string name);
 
-public constructor (Node node);
+public: CssProperty(Node node);
 
-    public string getName();
+    public: std::string getName();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

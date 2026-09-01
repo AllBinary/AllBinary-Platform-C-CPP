@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEBUNDLEACTIVATOR_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -85,49 +87,48 @@
 class InputAutomationModuleBundleActivator
             : public Object
         : public BundleActivator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: inputAutomationModuleInterface: std::vector<InputAutomationModuleFactoryInterface>;
+    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterface;
 
-    private: serviceFactory: ServiceFactory;
+    private: ServiceFactory serviceFactory;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public init();
+public: InputAutomationModuleBundleActivator();
 
                 //@Throws(Exception.constructor)
             
-    InputAutomationConfigurationModuleChangeListener getInputAutomationConfigurationModuleChangeListener(BundleContext context);
-
-    addModules(BundleContext context);
+    public: void init();
 
                 //@Throws(Exception.constructor)
             
-    public registerAsService(BundleContext bundleContext);
+    private: InputAutomationConfigurationModuleChangeListener getInputAutomationConfigurationModuleChangeListener(BundleContext context);
 
-    removeModules(BundleContext context);
-
-                //@Throws(Exception.constructor)
-            
-    public start(BundleContext context);
+    private: void addModules(BundleContext context);
 
                 //@Throws(Exception.constructor)
             
-    public stop(BundleContext context);
+    public: void registerAsService(BundleContext bundleContext);
 
-    std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterface();
+    private: void removeModules(BundleContext context);
 
-    setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterface);
+                //@Throws(Exception.constructor)
+            
+    public: void start(BundleContext context);
 
-    any getServiceFactory();
+                //@Throws(Exception.constructor)
+            
+    public: void stop(BundleContext context);
 
-    setServiceFactory(ServiceFactory serviceObject);
+    protected: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterface();
+
+    protected: void setInputAutomationModuleInterface(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterface);
+
+    protected: Object* getServiceFactory();
+
+    protected: void setServiceFactory(ServiceFactory serviceObject);
 
 };
 

@@ -44,26 +44,23 @@
 #include "PaintableForm.h"
 
 class LockableFormPaintableFactory: public ItemPaintableFactory {
-        
 
-    private: const lockedIndex: int32_t;
+    private: int32_t lockedIndex;
 
-public constructor (int32_t lockedIndex){
-
-            super();
-        this.lockedIndex= lockedIndex;
+public: LockableFormPaintableFactory(int32_t lockedIndex){
+this->lockedIndex= lockedIndex;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm){
+    public: ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LockablePaintable(this.lockedIndex);
+                        return LockablePaintable(this->lockedIndex);
     
 }
 

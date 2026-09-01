@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_METHODUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -54,11 +56,10 @@
 class MethodUtil
             : public Object
          {
-        
 
-    public static string viewAll(Function myClass, string lineBreak);
+    public: static std::string viewAll(Function myClass, std::string lineBreak);
 
-private constructor ();
+private: MethodUtil();
 
 };
 

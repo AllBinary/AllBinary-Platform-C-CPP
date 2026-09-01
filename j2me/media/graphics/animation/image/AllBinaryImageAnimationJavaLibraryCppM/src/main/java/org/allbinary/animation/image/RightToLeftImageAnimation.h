@@ -71,25 +71,24 @@
         #include "ImageSegmentAnimation.h"
 
 class RightToLeftImageAnimation: public ImageSegmentAnimation {
-        
 
-    private: startWidth: int32_t= 0;
+    private: int32_t startWidth= 0;
 
-    private: currentWidth: int32_t= 0;
+    private: int32_t currentWidth= 0;
 
-public constructor (Image image, AnimationBehavior animationBehavior);
+public: RightToLeftImageAnimation(Image image, AnimationBehavior animationBehavior);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    update();
+    private: void update();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

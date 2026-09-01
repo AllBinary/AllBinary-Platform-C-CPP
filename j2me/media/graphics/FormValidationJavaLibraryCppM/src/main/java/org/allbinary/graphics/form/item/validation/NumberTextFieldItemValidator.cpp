@@ -66,73 +66,70 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NumberTextFieldItemValidator: public ValidatorBase {
-        
 
-    private: const textFieldItem: ABTextFieldItem;
+    private: ABTextFieldItem textFieldItem;
 
-    private: const min: int32_t;
+    private: int32_t min;
 
-    private: const max: int32_t;
+    private: int32_t max;
 
-    private: const maxChars: int32_t;
+    private: int32_t maxChars;
 
-public constructor (ABTextFieldItem textFieldItem, int32_t maxChars, int32_t min, int32_t max){
-
-            super();
-        this.textFieldItem= textFieldItem;
+public: NumberTextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t maxChars, int32_t min, int32_t max){
+this->textFieldItem= textFieldItem;
     
-this.min= min;
+this->min= min;
     
-this.max= max;
+this->max= max;
     
-this.maxChars= maxChars;
+this->maxChars= maxChars;
     
 }
 
 
-    Boolean isNumberValid(Integer value){
+    protected: Boolean isNumberValid(Integer value){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return BooleanFactory::getInstance().TRUE;
     
 }
 
 
-    Vector<any> toNumberVector(Integer value){
+    protected: Vector<any> toNumberVector(Integer value){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Vector<any>();
+                        return Vector<any>();
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-    result: Boolean = BooleanFactory.getInstance()!.TRUE;;
+    Boolean result = BooleanFactory::getInstance().TRUE;;
     
 
-    string: string = this.textFieldItem!.getString()!;;
+    std::string string = this->textFieldItem.getString();;
     
 
-    textLength: int32_t = string.length!;;
+    int32_t textLength = string.size();;
     
 
-                        if(textLength > 0 && textLength < this.maxChars)
+                        if(textLength > 0 && textLength < this->maxChars)
                         
                                     {
                                     
         try {
-            Integer.parseInt(this.textFieldItem!.getString());
+            Integer::parseInt(this->textFieldItem.getString());
     
 
                 //: 
 } catch(e) 
             {
-result= BooleanFactory.getInstance()!.FALSE;
+result= BooleanFactory::getInstance().FALSE;
     
 }
 
@@ -144,16 +141,16 @@ result= BooleanFactory.getInstance()!.FALSE;
                         if(textLength < 1)
                         
                                     {
-                                    result= BooleanFactory.getInstance()!.FALSE;
+                                    result= BooleanFactory::getInstance().FALSE;
     
 
                                     }
                                 
                              else 
-                        if(textLength > this.maxChars)
+                        if(textLength > this->maxChars)
                         
                                     {
-                                    result= BooleanFactory.getInstance()!.FALSE;
+                                    result= BooleanFactory::getInstance().FALSE;
     
 
                                     }
@@ -170,55 +167,55 @@ result= BooleanFactory.getInstance()!.FALSE;
 }
 
 
-    public BasicArrayList toList(){
+    public: BasicArrayList toList(){
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    string: string = this.textFieldItem!.getString()!;;
+    std::string string = this->textFieldItem.getString();;
     
 
-    textLength: int32_t = string.length!;;
+    int32_t textLength = string.size();;
     
 
-    label: string = this.textFieldItem!.getLabel()!;;
+    std::string label = this->textFieldItem.getLabel();;
     
 
-    name: string = label.substring(0, label.length -2)!;;
+    std::string name = label.substring(0, label.size() -2);;
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-                        if(textLength > 0 && textLength < this.maxChars)
+                        if(textLength > 0 && textLength < this->maxChars)
                         
                                     {
                                     
         try {
             
-    number: Integer = smallIntegerSingletonFactory!.createInstance(Integer.parseInt(this.textFieldItem!.getString()))!;;
+    Integer number = smallIntegerSingletonFactory.createInstance(Integer::parseInt(this->textFieldItem.getString()));;
     
 
-                        if(number.intValue() > this.min)
+                        if(number.intValue() > this->min)
                         
                                     {
-                                    stringMaker!.delete(0, stringMaker!.length());
+                                    stringMaker.delete(0, stringMaker.length());
     
-list.add(stringMaker!.append(name)!.append(" is to small")!.toString());
+list.add(stringMaker.append(name).append(" is to small").toString());
     
 
                                     }
                                 
                              else 
-                        if(number.intValue() > this.max)
+                        if(number.intValue() > this->max)
                         
                                     {
-                                    stringMaker!.delete(0, stringMaker!.length());
+                                    stringMaker.delete(0, stringMaker.length());
     
-list.add(stringMaker!.append(name)!.append(" is to large")!.toString());
+list.add(stringMaker.append(name).append(" is to large").toString());
     
 
                                     }
@@ -227,9 +224,9 @@ list.add(stringMaker!.append(name)!.append(" is to large")!.toString());
                 //: 
 } catch(e) 
             {
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-list.add(stringMaker!.append(name)!.append(" is not a number")!.toString());
+list.add(stringMaker.append(name).append(" is not a number").toString());
     
 }
 
@@ -241,20 +238,20 @@ list.add(stringMaker!.append(name)!.append(" is not a number")!.toString());
                         if(textLength < 1)
                         
                                     {
-                                    stringMaker!.delete(0, stringMaker!.length());
+                                    stringMaker.delete(0, stringMaker.length());
     
-list.add(stringMaker!.append(name)!.append(" is to short")!.toString());
+list.add(stringMaker.append(name).append(" is to short").toString());
     
 
                                     }
                                 
                              else 
-                        if(textLength > this.maxChars)
+                        if(textLength > this->maxChars)
                         
                                     {
-                                    stringMaker!.delete(0, stringMaker!.length());
+                                    stringMaker.delete(0, stringMaker.length());
     
-list.add(stringMaker!.append(name)!.append(" is to long")!.toString());
+list.add(stringMaker.append(name).append(" is to long").toString());
     
 
                                     }

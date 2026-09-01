@@ -53,27 +53,26 @@
 class AllBinaryThreedTiledLayerFactory
             : public Object
          {
-        
 
-    private: static const instance: AllBinaryThreedTiledLayerFactory = new AllBinaryThreedTiledLayerFactory();
+    private: static AllBinaryThreedTiledLayerFactory instance() { return AllBinaryThreedTiledLayerFactory(); }
 
-    public static AllBinaryThreedTiledLayerFactory getInstance(){
+    public: static AllBinaryThreedTiledLayerFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryThreedTiledLayerFactory.instance;
+                        return AllBinaryThreedTiledLayerFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData){
+    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData){
 
 
 
-                            throw new Exception("No Threed");
+                            throw Exception("No Threed");
                     
 }
 

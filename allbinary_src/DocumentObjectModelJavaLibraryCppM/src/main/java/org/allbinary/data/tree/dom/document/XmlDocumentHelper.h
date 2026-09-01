@@ -92,25 +92,24 @@
 class XmlDocumentHelper
             : public Object
          {
-        
 
-    private: static const instance: XmlDocumentHelper = new XmlDocumentHelper();
+    private: static XmlDocumentHelper instance() { return XmlDocumentHelper(); }
 
-    public static XmlDocumentHelper getInstance();
+    public: static XmlDocumentHelper getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const INDENT_NUMBER: string = "indent-number";
+    private: const std::string INDENT_NUMBER = "indent-number";
 
-    private: transformer: Transformer;
+    private: Transformer transformer;
 
-private constructor ();
+private: XmlDocumentHelper();
 
-    public init(int32_t indent, bool ignoreDeclaration);
+    public: void init(int32_t indent, bool ignoreDeclaration);
 
                 //@Throws(Exception.constructor)
             
-    public string format(string xmlString);
+    public: std::string format(std::string xmlString);
 
 };
 

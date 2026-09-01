@@ -66,17 +66,16 @@
 class ShaderUpdater
             : public Object
          {
-        
 
-    private: static const instance: ShaderUpdater = new ShaderUpdater();
+    private: static ShaderUpdater instance() { return ShaderUpdater(); }
 
-    public static ShaderUpdater getInstance();
+    public: static ShaderUpdater getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const rendererStrings: RendererStrings = RendererStrings.getInstance()!;
+    protected: const RendererStrings rendererStrings = RendererStrings::getInstance();
 
-    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig);
+    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig);
 
 };
 

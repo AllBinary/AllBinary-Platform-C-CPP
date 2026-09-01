@@ -135,85 +135,84 @@
 class LinuxHardware
             : public Object
         : public HardwareInterface {
-        
 
-    private: static const PCIFILE: string = "/proc/pci";
+    private: static const std::string PCIFILE = "/proc/pci";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: componentInterfaceVector: Vector;
+    private: Vector componentInterfaceVector;
 
-    private: videoInterfaceVector: Vector;
+    private: Vector videoInterfaceVector;
 
-    private: hardDriveControllerInterfaceVector: Vector;
+    private: Vector hardDriveControllerInterfaceVector;
 
-    private: cpuInterfaceVector: Vector;
+    private: Vector cpuInterfaceVector;
 
-    private: usbInterfaceVector: Vector;
+    private: Vector usbInterfaceVector;
 
-    private: ethernetInterfaceVector: Vector;
+    private: Vector ethernetInterfaceVector;
 
-    private: multimediaInterfaceVector: Vector;
+    private: Vector multimediaInterfaceVector;
 
-    private: fireWireInterfaceVector: Vector;
+    private: Vector fireWireInterfaceVector;
 
-    private: bridgeInterfaceVector: Vector;
+    private: Vector bridgeInterfaceVector;
 
-    private: hardDriveInterfaceVector: Vector;
+    private: Vector hardDriveInterfaceVector;
 
-    private: macInterfaceVector: Vector;
+    private: Vector macInterfaceVector;
 
-    private: monitorInterfaceVector: Vector;
+    private: Vector monitorInterfaceVector;
 
-    private: const NAME: string = "Linux Hardware Profile";
+    private: const std::string NAME = "Linux Hardware Profile";
 
-    private: const MINHARDWARE: int32_t = 5;
+    private: const int32_t MINHARDWARE = 5;
 
-public constructor (string path);
+public: LinuxHardware(std::string path);
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    init(string filePath);
+public: LinuxHardware();
 
                 //@Throws(Exception.constructor)
             
-    init(LineNumberReader lineNumberReader, string filePath);
+    private: void init(std::string filePath);
 
-    public MediaInterface getMultimedia(int32_t index);
+                //@Throws(Exception.constructor)
+            
+    private: void init(LineNumberReader lineNumberReader, std::string filePath);
 
-    public BridgeInterface getBridge(int32_t index);
+    public: MediaInterface getMultimedia(int32_t index);
 
-    public CpuInterface getCpu(int32_t index);
+    public: BridgeInterface getBridge(int32_t index);
 
-    public EthernetInterface getEthernet(int32_t index);
+    public: CpuInterface getCpu(int32_t index);
 
-    public FireWireInterface getFireWire(int32_t index);
+    public: EthernetInterface getEthernet(int32_t index);
 
-    public HardDriveControllerInterface getHardDriveController(int32_t index);
+    public: FireWireInterface getFireWire(int32_t index);
 
-    public HardDriveInterface getHardDrive(int32_t index);
+    public: HardDriveControllerInterface getHardDriveController(int32_t index);
 
-    public MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index);
+    public: HardDriveInterface getHardDrive(int32_t index);
 
-    public MonitorInterface getMonitor(int32_t index);
+    public: MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index);
 
-    public UsbInterface getUsb(int32_t index);
+    public: MonitorInterface getMonitor(int32_t index);
 
-    public VideoInterface getVideo(int32_t index);
+    public: UsbInterface getUsb(int32_t index);
 
-    public HardwareComponentInterface getComponent(int32_t index);
+    public: VideoInterface getVideo(int32_t index);
 
-    public string toString();
+    public: HardwareComponentInterface getComponent(int32_t index);
 
-    public bool compareTo(HardwareInterface hardwareInterface);
+    public: std::string toString();
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: bool compareTo(HardwareInterface hardwareInterface);
 
-    public bool isNextHardware(string nextLine);
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+
+    public: bool isNextHardware(std::string nextLine);
 
 };
 

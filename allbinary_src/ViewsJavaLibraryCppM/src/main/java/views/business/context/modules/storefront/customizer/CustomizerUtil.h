@@ -83,43 +83,42 @@
 class CustomizerUtil
             : public Object
          {
-        
 
-    private: static const instance: CustomizerUtil = new CustomizerUtil();
+    private: static CustomizerUtil instance() { return CustomizerUtil(); }
 
-    public static CustomizerUtil getInstance();
+    public: static CustomizerUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public TransformInfoInterface getTransformInfoInterfaceToCustomize(TransformInfoInterface customizerTransformInfoInterface, TransformInfoInterface transformInfoInterface);
+private: CustomizerUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface);
+    public: TransformInfoInterface getTransformInfoInterfaceToCustomize(TransformInfoInterface customizerTransformInfoInterface, TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface);
+    public: Vector getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface);
+    public: Vector getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public insert(TransformInfoInterface transformInfoInterface, DomNodeInterface domNodeInterface);
+    public: Vector getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public write(TransformInfoInterface specifiedTransformInfoInterface, string documentString);
+    public: void insert(TransformInfoInterface transformInfoInterface, DomNodeInterface domNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Document getViewDataForComponentsInObjectConfig(Object transformInfoInterface);
+    public: void write(TransformInfoInterface specifiedTransformInfoInterface, std::string documentString);
+
+                //@Throws(Exception.constructor)
+            
+    public: Document getViewDataForComponentsInObjectConfig(Object transformInfoInterface);
 
 };
 

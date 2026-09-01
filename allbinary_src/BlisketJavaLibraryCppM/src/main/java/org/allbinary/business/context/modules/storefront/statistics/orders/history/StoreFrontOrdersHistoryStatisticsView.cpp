@@ -61,26 +61,23 @@
 class StoreFrontOrdersHistoryStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: storeFrontOrdersHistoryStatisticsInterface: StoreFrontOrdersHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface;
 
-public constructor (StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface){
-
-            super();
-        this.storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatisticsInterface;
+public: StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface){
+this->storeFrontOrdersHistoryStatisticsInterface= storeFrontOrdersHistoryStatisticsInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.storeFrontOrdersHistoryStatisticsInterface!.toHashMap()!;;
+    HashMap<any, any> hashMap = this->storeFrontOrdersHistoryStatisticsInterface.toHashMap();;
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, StoreFrontOrdersHistoryStatisticsData.getInstance()!.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, StoreFrontOrdersHistoryStatisticsData::getInstance().NAME, hashMap);;
     
 
 

@@ -54,17 +54,16 @@
 class PreResourceImageUtil
             : public Object
          {
-        
 
-    private: static const instance: PreResourceImageUtil = new PreResourceImageUtil();
+    private: static PreResourceImageUtil instance() { return PreResourceImageUtil(); }
 
-    public static PreResourceImageUtil getInstance();
+    public: static PreResourceImageUtil getInstance();
 
-    public Image encapsulate(Image image);
+    public: Image encapsulate(Image image);
 
-    public updateGL(GL gl, Image image);
+    public: void updateGL(GL gl, Image image);
 
-    public update(Graphics graphics, Image image);
+    public: void update(Graphics graphics, Image image);
 
 };
 

@@ -50,7 +50,6 @@
         #include "PartInterface.h"
 
 class PartFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

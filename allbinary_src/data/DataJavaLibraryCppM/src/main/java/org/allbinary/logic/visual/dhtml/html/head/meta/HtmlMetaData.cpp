@@ -42,31 +42,28 @@
 class HtmlMetaData
             : public Object
          {
-        
 
-    private: static const instance: HtmlMetaData = new HtmlMetaData();
+    private: static HtmlMetaData instance() { return HtmlMetaData(); }
 
-    public static HtmlMetaData getInstance(){
+    public: static HtmlMetaData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlMetaData.instance;
+                        return HtmlMetaData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: HtmlMetaData(){
+}
 
 
-    public NAME: string = "HTMLMETA_NAME";
+    public: std::string NAME = "HTMLMETA_NAME";
 
-    public LABEL: string = "HTMLMETA_LABEL";
+    public: std::string LABEL = "HTMLMETA_LABEL";
 
-    public VALUE: string = "meta";
+    public: std::string VALUE = "meta";
 
 };
 

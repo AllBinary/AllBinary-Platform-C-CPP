@@ -57,107 +57,100 @@
 class CategoryHierarchy
             : public Object
         : public CategoryHierarchyInterface {
-        
 
-    private: rootCategoryInterface: CategoryInterface;
+    private: CategoryInterface rootCategoryInterface;
 
-    private: parentCategoryInterface: CategoryInterface;
+    private: CategoryInterface parentCategoryInterface;
 
-    private: level: int32_t;
+    private: int32_t level;
 
-public constructor (CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface){
-
-            super();
-        this.level= 0;
+public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface){
+this->level= 0;
     
-this.setRoot(rootCategoryInterface);
+this->setRoot(rootCategoryInterface);
     
-this.setParent(parentCategoryInterface);
+this->setParent(parentCategoryInterface);
     
 }
 
 
-public constructor (CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, int32_t level){
-
-            super();
-        this.level= level;
+public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, int32_t level){
+this->level= level;
     
-this.setRoot(rootCategoryInterface);
+this->setRoot(rootCategoryInterface);
     
-this.setParent(parentCategoryInterface);
+this->setParent(parentCategoryInterface);
     
 }
 
 
-public constructor (CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap){
+public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap){
 
-            super();
-        
-    levelString: string = StringUtil.getInstance()!.getNonNull(categoryPropertiesHashMap!.get(CategoryData.getInstance()!.LEVEL) as string)!;;
+    std::string levelString = StringUtil::getInstance().getNonNull(categoryPropertiesHashMap.get(CategoryData::getInstance().LEVEL) as string);;
     
-this.level= Integer.valueOf(levelString)!.intValue();
+this->level= Integer::valueOf(levelString).intValue();
     
-this.setRoot(rootCategoryInterface);
+this->setRoot(rootCategoryInterface);
     
-this.setParent(parentCategoryInterface);
+this->setParent(parentCategoryInterface);
     
 }
 
 
-    public int32_t getLevel(){
+    public: int32_t getLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level;
+                        return this->level;
     
 }
 
 
-    public string getLevelString(){
+    public: std::string getLevelString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level.toString();;
+                        return std::to_string(level);;
     
 }
 
 
-    public setLevel(int32_t level){
-this.level= level;
+    public: void setLevel(int32_t level){
+this->level= level;
     
 }
 
 
-    public setParent(CategoryInterface categoryInterface){
-this.parentCategoryInterface= categoryInterface;
+    public: void setParent(CategoryInterface categoryInterface){
+this->parentCategoryInterface= categoryInterface;
     
 }
 
 
-    public setRoot(CategoryInterface categoryInterface){
-this.rootCategoryInterface= categoryInterface;
+    public: void setRoot(CategoryInterface categoryInterface){
+this->rootCategoryInterface= categoryInterface;
     
 }
 
 
-    public CategoryInterface getRoot(){
+    public: CategoryInterface getRoot(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rootCategoryInterface;
+                        return this->rootCategoryInterface;
     
 }
 
 
-    public CategoryInterface getParent(){
+    public: CategoryInterface getParent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.parentCategoryInterface;
+                        return this->parentCategoryInterface;
     
 }
 

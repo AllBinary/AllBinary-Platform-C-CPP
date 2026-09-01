@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -97,11 +99,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CompoundContextTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object abeClientInformation, Object transformInfoInterface){
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface){
             super(abeClientInformation, transformInfoInterface);
                     
 
@@ -110,141 +111,141 @@ public constructor (Object abeClientInformation, Object transformInfoInterface){
 }
 
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, Object document){
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document){
             super(abeClientInformation, transformInfoInterface, document);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, string name, string type){
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type){
             super(abeClientInformation, transformInfoInterface, name, type);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string get(){
+    public: std::string get(){
 
-    storeName: string = this.getTransformInfoInterface()!.getStoreName()!;;
-    
-
-    httpTransformInfoInterface: TransformInfoHttpInterface = this.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    std::string storeName = this->getTransformInfoInterface().getStoreName();;
     
 
-    templateNameOverride: string = StringUtil.getInstance()!.getNonNull(httpTransformInfoInterface!.getPropertiesHashMap()!.get(TransformInfoData.getInstance()!.PARTIAL) as string)!;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(storeName);
-    
-stringBuffer!.append(templateNameOverride);
-    
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
-    
-stringBuffer!.append(RootTransformInfoData.NAME);
+    std::string templateNameOverride = StringUtil::getInstance().getNonNull(httpTransformInfoInterface.getPropertiesHashMap().get(TransformInfoData::getInstance().PARTIAL) as string);;
     
 
-    rootComponentInterface: TransformInterface = TransformFactory.getInstance()!.getInstance(abeClientInformation, stringBuffer!.toString(), this.getTransformInfoInterface())!;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append(storeName);
+    
+stringBuffer.append(templateNameOverride);
+    
+stringBuffer.append(CommonSeps::getInstance().SPACE);
+    
+stringBuffer.append(RootTransformInfoData::NAME);
     
 
-    viewVector: Vector = this.getTransformDomNodes()!;;
+    TransformInterface rootComponentInterface = TransformFactory::getInstance().getInstance(abeClientInformation, stringBuffer.toString(), this->getTransformInfoInterface());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+    Vector viewVector = this->getTransformDomNodes();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Root View Called with: " +viewVector!.length, this, "get(transformInfoInterface)");
+                                    this->logUtil.putF("Root View Called with: " +viewVector.length, this, "get(transformInfoInterface)");
     
 
                                     }
                                 
 
-    rootView: string = rootComponentInterface!.view()!;;
+    std::string rootView = rootComponentInterface.view();;
     
 
-    startXMLHeader: string = "<xsl:text disable-output-escaping=\"yes\" ><![CDATA[";;
+    std::string startXMLHeader = "<xsl:text disable-output-escaping=\"yes\" ><![CDATA[";;
     
 
-    endXMLHeader: string = "]]></xsl:text>";;
+    std::string endXMLHeader = "]]></xsl:text>";;
     
 
-    size: int32_t = viewVector!.length!;;
+    int32_t size = viewVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    objectConfigTransformInfoDomNode: TransformInfoDomNode = viewVector!.get(index) as TransformInfoDomNode;;
+    TransformInfoDomNode objectConfigTransformInfoDomNode = viewVector.get(index) as TransformInfoDomNode;;
     
 
-    templateKey: string = objectConfigTransformInfoDomNode!.getReplaceKey()!;;
+    std::string templateKey = objectConfigTransformInfoDomNode.getReplaceKey();;
     
 
-    componentInterface: TransformInterface = TransformFactory.getInstance()!.getInstance(abeClientInformation, objectConfigTransformInfoDomNode!.getTransformInfoInterface()!.getName(), this.getTransformInfoInterface())!;;
+    TransformInterface componentInterface = TransformFactory::getInstance().getInstance(abeClientInformation, objectConfigTransformInfoDomNode.getTransformInfoInterface().getName(), this->getTransformInfoInterface());;
     
 
-    replacementViewString: string = componentInterface!.view()!;;
+    std::string replacementViewString = componentInterface.view();;
     
-replacementViewString= DocumentToNode.convertDocumentToNodeString(replacementViewString);
+replacementViewString= DocumentToNode::convertDocumentToNodeString(replacementViewString);
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(startXMLHeader);
+stringBuffer.append(startXMLHeader);
     
-stringBuffer!.append(replacementViewString);
+stringBuffer.append(replacementViewString);
     
-stringBuffer!.append(endXMLHeader);
-    
-
-    templateValue: string = stringBuffer!.toString()!;;
+stringBuffer.append(endXMLHeader);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+    std::string templateValue = stringBuffer.toString();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("Replacing: ");
+stringBuffer.append("Replacing: ");
     
-stringBuffer!.append(templateKey);
+stringBuffer.append(templateKey);
     
-stringBuffer!.append(" with ");
+stringBuffer.append(" with ");
     
-stringBuffer!.append(templateValue);
+stringBuffer.append(templateValue);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "get()");
+this->logUtil.putF(stringBuffer.toString(), this, "get()");
     
 
                                     }
                                 
 
-    replace: Replace = new Replace(templateKey, templateValue);;
+    Replace replace = Replace(templateKey, templateValue);;
     
 rootView= replace.all(rootView);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("End: Result of a compound view: " +rootView, this, "get()");
+                                    this->logUtil.putF("End: Result of a compound view: " +rootView, this, "get()");
     
 
                                     }
@@ -260,18 +261,18 @@ rootView= replace.all(rootView);
 
                 //@Throws(Exception.constructor)
             
-    public InputStream createInputStream(){
+    public: InputStream createInputStream(){
 
-    completeTemplateViewBytes: std::vector<int8_t> = this.get()!.getBytes()!;;
+    std::vector<int8_t> completeTemplateViewBytes = this->get().getBytes();;
     
 
-    bais: ByteArrayInputStream = new ByteArrayInputStream(completeTemplateViewBytes);;
+    ByteArrayInputStream bais = ByteArrayInputStream(completeTemplateViewBytes);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Template: " +String.fromCharCode(...completeTemplateViewBytes).toString(), this, "createInputStream()");
+                                    this->logUtil.putF("Template: " +String.fromCharCode(...completeTemplateViewBytes).toString(), this, "createInputStream()");
     
 
                                     }

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMECOMMANDCANVAS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/RuntimeException.h"
@@ -216,100 +218,99 @@
 #include "BasicMenuInputProcessor.h"
 #include "ImmediateCommandFormInputProcessor.h"
 
-class GameCommandCanvas: public MyCanvas: public MenuListener, public DisplayChangeEventListener, public UpdateMyFontInterface {
-        
+class GameCommandCanvas: public MyCanvas, public MenuListener, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
-    private: static const id: int32_t = 0;
+    private: static const int32_t id = 0;
 
-    private: const repaintProcessor: Processor = ScreenRepaintProcessorFactory.getInstance()!.create(this)!;
+    private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    const foregroundBasicColor: BasicColor;
+    protected: BasicColor foregroundBasicColor;
 
-    const backgroundBasicColor: BasicColor;
+    protected: BasicColor backgroundBasicColor;
 
-    const inputToGameKeyMapping: InputToGameKeyMapping = PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping()!;
+    protected: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
 
-    const gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;
+    protected: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!;
+    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    public const repaintBehavior: RepaintBehavior;
+    public: RepaintBehavior repaintBehavior;
 
-    const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    foregroundColor: int32_t;
+    protected: int32_t foregroundColor;
 
-    backgroundColor: int32_t;
+    protected: int32_t backgroundColor;
 
-    private: menuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: menuPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable menuPaintable = NullPaintable::getInstance();
 
-    private: menuForm: PaintableForm = PaintableForm.getNullPaintableForm()!;
+    private: PaintableForm menuForm = PaintableForm::getNullPaintableForm();
 
-    private: isSingleKeyRepeatableProcessing: bool = Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_REPEAT_PRESS)!;
+    private: bool isSingleKeyRepeatableProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS);
 
-    fontHeight: int32_t = 0;
+    protected: int32_t fontHeight = 0;
 
-public constructor (CommandListener cmdListener, string name, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: GameCommandCanvas(CommandListener cmdListener, std::string name, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
 
-    public initCommands(CommandListener cmdListener);
-
-                //@Throws(Exception.constructor)
-            
-    initMenu();
+    public: void initCommands(CommandListener cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public ScrollSelectionForm createForm();
-
-    public Rectangle createRectangle(int32_t size);
-
-    public open();
-
-    public close();
+    protected: void initMenu();
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: ScrollSelectionForm createForm();
 
-    public int32_t getSourceId();
+    public: Rectangle createRectangle(int32_t size);
 
-    public keyPressed(int32_t keyCode);
+    public: void open();
 
-    public keyReleased(int32_t keyCode);
+    public: void close();
 
-    public keyRepeated(int32_t keyCode);
+                //@Throws(Exception.constructor)
+            
+    public: void update();
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    public: int32_t getSourceId();
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyPressed(int32_t keyCode);
 
-    public keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyReleased(int32_t keyCode);
 
-    addGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated);
+    public: void keyRepeated(int32_t keyCode);
 
-    removeGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated);
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public paint(Graphics graphics);
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
-    setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor);
+    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
 
-    BasicMenuInputProcessor getMenuInputProcessor();
+    private: void addGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated);
+
+    private: void removeGameKeyEvent(int32_t keyCode, int32_t deviceId, bool repeated);
+
+    public: void paint(Graphics graphics);
+
+    private: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor);
+
+    protected: BasicMenuInputProcessor getMenuInputProcessor();
 
 };
 

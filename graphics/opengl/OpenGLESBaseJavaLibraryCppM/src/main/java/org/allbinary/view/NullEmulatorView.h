@@ -52,15 +52,14 @@
 class NullEmulatorView
             : public Object
         : public EmulatorViewInterface {
-        
 
-    public static const NULL_EMULATOR_VIEW: NullEmulatorView = new NullEmulatorView();
+    public: static const NullEmulatorView NULL_EMULATOR_VIEW = NullEmulatorView();
 
-    public setMidlet(MIDlet midlet);
+    public: void setMidlet(MIDlet midlet);
 
-    public onEmulatorInitComplete(any = {} midletActivity);
+    public: void onEmulatorInitComplete(Object* midletActivity);
 
-    public onSetDisplayable(Displayable displayable);
+    public: void onSetDisplayable(Displayable displayable);
 
 };
 

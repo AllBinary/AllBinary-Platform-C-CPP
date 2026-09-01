@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <android/graphics/Matrix.h>
@@ -68,62 +70,61 @@
         #include "ImageBaseRotationAnimation.h"
 
 class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
-        
 
-    private: const imageModifierUtil: ImageModifierUtil = ImageModifierUtil.getInstanceOrCreate()!;
+    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const androidImageUtil: AndroidImageUtil = AndroidImageUtil.getInstance()!;
+    private: const AndroidImageUtil androidImageUtil = AndroidImageUtil::getInstance();
 
-    private: const matrix: Matrix = new Matrix();
+    private: const Matrix matrix = Matrix();
 
-    private: const halfWidth: int32_t;
+    private: int32_t halfWidth;
 
-    private: const halfHeight: int32_t;
+    private: int32_t halfHeight;
 
-    private: const increment: int16_t;
+    private: int16_t increment;
 
-    private: const originalImage: Image;
+    private: Image originalImage;
 
-    private: const twoImages: std::vector<Image> = new Array(2);
+    private: const std::vector<Image> twoImages = new Array(2);
 
-    private: imageToShow: Image;
+    private: Image imageToShow;
 
-    private: bufferedImageIndex: int32_t= 0;
+    private: int32_t bufferedImageIndex= 0;
 
-protected constructor (Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
+protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
             super(image, angleInfo, totalAngle, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.originalImage= originalImage;
+this->originalImage= originalImage;
     
-this.halfWidth= (image.getWidth()>>1);
+this->halfWidth= (image.getWidth()>>1);
     
-this.halfHeight= (image.getHeight()>>1);
+this->halfHeight= (image.getHeight()>>1);
     
-this.increment= (this.angleInfo!.getAngleIncrementInfo()!.getAngleIncrement());
+this->increment= (this->angleInfo.getAngleIncrementInfo().getAngleIncrement());
     
-this.imageToShow= image;
+this->imageToShow= image;
     
-this.twoImages[0]= image;
+this->twoImages[0]= image;
     
-this.twoImages[1]= ImageCopyUtil.getInstance()!.createImage(image);
+this->twoImages[1]= ImageCopyUtil::getInstance().createImage(image);
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor basicColor){
 
-    changed: bool = false;;
+    bool changed = false;;
     
 
-                        if(this.getBasicColorP() == 
-                                    null
-                                 || this.getBasicColorP()!.intValue() != basicColor!.intValue())
+                        if(this->getBasicColorP() == 
+                                    nullptr
+                                 || this->getBasicColorP().intValue() != basicColor.intValue())
                         
                                     {
-                                    this.imageModifierUtil!.setColor(this.originalImage, this.imageToShow, 0, basicColor);
+                                    this->imageModifierUtil.setColor(this->originalImage, this->imageToShow, 0, basicColor);
     
 changed= true;
     
@@ -136,9 +137,9 @@ super.setBasicColorP(basicColor);
                         if(changed)
                         
                                     {
-                                    this.matrix.setRotate(0.0, this.halfWidth, this.halfHeight);
+                                    this->matrix.setRotate(0.0, this->halfWidth, this->halfHeight);
     
-this.updateImage();
+this->updateImage();
     
 
                                     }
@@ -146,18 +147,18 @@ this.updateImage();
 }
 
 
-    public changeBasicColor(BasicColor basicColor){
-this.setBasicColorP(basicColor);
+    public: void changeBasicColor(BasicColor basicColor){
+this->setBasicColorP(basicColor);
     
 }
 
 
-    public setAlpha(int32_t alpha){
+    public: void setAlpha(int32_t alpha){
 
-    changed: bool = false;;
+    bool changed = false;;
     
 
-                        if(this.alphaP != alpha)
+                        if(this->alphaP != alpha)
                         
                                     {
                                     changed= true;
@@ -167,15 +168,15 @@ this.setBasicColorP(basicColor);
                                 
 super.setAlpha(alpha);
     
-this.imageModifierUtil!.setAlpha(this.originalImage, this.imageToShow, 0, this.alphaP);
+this->imageModifierUtil.setAlpha(this->originalImage, this->imageToShow, 0, this->alphaP);
     
 
                         if(changed)
                         
                                     {
-                                    this.matrix.setRotate(0.0, this.halfWidth, this.halfHeight);
+                                    this->matrix.setRotate(0.0, this->halfWidth, this->halfHeight);
     
-this.updateImage();
+this->updateImage();
     
 
                                     }
@@ -183,66 +184,66 @@ this.updateImage();
 }
 
 
-    public nextRotation(){
+    public: void nextRotation(){
 super.nextRotation();
     
-this.matrix.setRotate(this.increment, this.halfWidth, this.halfHeight);
+this->matrix.setRotate(this->increment, this->halfWidth, this->halfHeight);
     
-this.updateImage();
+this->updateImage();
     
 }
 
 
-    public previousRotation(){
+    public: void previousRotation(){
 super.previousRotation();
     
-this.matrix.setRotate( -this.increment, this.halfWidth, this.halfHeight);
+this->matrix.setRotate( -this->increment, this->halfWidth, this->halfHeight);
     
-this.updateImage();
-    
-}
-
-
-    updateImage(){
-this.androidImageUtil!.rotate(this.twoImages[this.bufferedImageIndex]!, originalImage, matrix, imageModifierUtil!.paint);
-    
-this.swap();
+this->updateImage();
     
 }
 
 
-    public setFrame(int32_t index){
-
-    currentFrame: int32_t = this.circularIndexUtil!.getIndex()!;;
+    private: void updateImage(){
+this->androidImageUtil.rotate(this->twoImages[this->bufferedImageIndex]!, originalImage, matrix, imageModifierUtil.paint);
     
-this.circularIndexUtil!.setIndex(index);
-    
-
-    newFrame: int32_t = this.circularIndexUtil!.getIndex()!;;
-    
-this.angleInfo!.adjustAngle(newFrame);
-    
-this.matrix.setRotate((newFrame -currentFrame) *this.increment, this.halfWidth, this.halfHeight);
-    
-this.updateImage();
+this->swap();
     
 }
 
 
-    public swap(){
-this.imageToShow= this.twoImages[this.bufferedImageIndex]!;
+    public: void setFrame(int32_t index){
+
+    int32_t currentFrame = this->circularIndexUtil.getIndex();;
+    
+this->circularIndexUtil.setIndex(index);
     
 
-                        if(this.bufferedImageIndex == 0)
+    int32_t newFrame = this->circularIndexUtil.getIndex();;
+    
+this->angleInfo.adjustAngle(newFrame);
+    
+this->matrix.setRotate((newFrame -currentFrame) *this->increment, this->halfWidth, this->halfHeight);
+    
+this->updateImage();
+    
+}
+
+
+    public: void swap(){
+this->imageToShow= this->twoImages[this->bufferedImageIndex]!;
+    
+
+                        if(this->bufferedImageIndex == 0)
                         
                                     {
-                                    this.bufferedImageIndex= 1;
+                                    this->bufferedImageIndex= 1;
     
 
                                     }
                                 
                         else {
-                            this.bufferedImageIndex= 0;
+                            this->bufferedImageIndex= 0;
     
 
                         }
@@ -250,8 +251,8 @@ this.imageToShow= this.twoImages[this.bufferedImageIndex]!;
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this.imageToShow, x, y, this.anchor);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+graphics.drawImage(this->imageToShow, x, y, this->anchor);
     
 }
 

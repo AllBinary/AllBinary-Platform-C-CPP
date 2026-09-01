@@ -78,69 +78,68 @@
 class ThreadPool
             : public Object
          {
-        
 
-    private: static const ROOT_NAME: string = "-PooledThread-";
+    private: static const std::string ROOT_NAME = "-PooledThread-";
 
-    public static const NORMAL_PRIORITY: int32_t = Thread.NORM_PRIORITY;
+    public: static const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const NULL_RUNNABLE: NullRunnable = NullRunnable.getInstance()!;
+    protected: const NullRunnable NULL_RUNNABLE = NullRunnable::getInstance();
 
-    const threadPoolStrings: ThreadPoolStrings = ThreadPoolStrings.getInstance()!;
+    protected: const ThreadPoolStrings threadPoolStrings = ThreadPoolStrings::getInstance();
 
-    const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: const poolName: string;
+    private: std::string poolName;
 
-    private: const priority: int32_t;
+    private: int32_t priority;
 
-    private: isAlive: bool = false;
+    private: bool isAlive = false;
 
-    private: taskQueue: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList taskQueue = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: threadID: int32_t= 0;
+    private: int32_t threadID= 0;
 
-    private: numThreads: int32_t;
+    private: int32_t numThreads;
 
-    runningTask: bool= false;
+    protected: bool runningTask= false;
 
-public constructor (string poolName, int32_t numThreads, int32_t priority);
+public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    public init();
+    public: void init();
 
                 //@Throws(Exception.constructor)
             
-    public runAPriorityTask();
+    public: void runAPriorityTask();
 
-    public runTaskWithPriority(PriorityRunnable task);
+    public: void runTaskWithPriority(PriorityRunnable task);
 
-    public runTask(Runnable task);
+    public: void runTask(Runnable task);
 
                 //@Throws(InterruptedException.constructor)
             
-    Runnable getTask();
+    protected: Runnable getTask();
 
-    public clear();
+    public: void clear();
 
-    public close();
+    public: void close();
 
-    public join();
+    public: void join();
 
-    public bool isBusy();
+    public: bool isBusy();
 
-    threadStarted();
+    protected: void threadStarted();
 
-    threadStopped();
+    protected: void threadStopped();
 
-    startTask(Runnable task);
+    protected: void startTask(Runnable task);
 
-    completedTask(Runnable task);
+    protected: void completedTask(Runnable task);
 
-    public string createName();
+    public: std::string createName();
 
 };
 

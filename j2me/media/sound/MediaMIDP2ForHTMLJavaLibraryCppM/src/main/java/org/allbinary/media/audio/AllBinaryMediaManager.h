@@ -76,34 +76,33 @@
 class AllBinaryMediaManager
             : public Object
          {
-        
 
-    private: static const THIS: string = "AllBinaryMediaManagerHTML5";
+    private: static const std::string THIS = "AllBinaryMediaManagerHTML5";
 
-    public static bool isMuted();
+    public: static bool isMuted();
 
-    public static setMuted(bool aMuted);
+    public: static void setMuted(bool aMuted);
 
-    public static bool update();
-
-                //@Throws(Exception.constructor)
-            
-    public static init(SoundsFactoryInterface soundsFactoryInterface);
+    public: static bool update();
 
                 //@Throws(Exception.constructor)
             
-    public static shutdown(SoundsFactoryInterface soundsFactoryInterface);
+    public: static void init(SoundsFactoryInterface soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public static Player createPlayer(string resource);
+    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: static Player createPlayer(std::string resource);
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static playTone(int32_t frequency, int32_t time, int32_t volume);
+    public: static void playTone(int32_t frequency, int32_t time, int32_t volume);
 
-private constructor ();
+private: AllBinaryMediaManager();
 
 };
 

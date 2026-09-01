@@ -56,21 +56,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StaticTileLayerIntoPositionViewPosition: public ViewPosition {
-        
 
-    private: static tiledLayer: Layer = NullLayer.getInstance()!;
+    private: static Layer tiledLayer = NullLayer::getInstance();
 
-    public static layer: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    public: static AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    public static setTiledLayer(AllBinaryTiledLayer tiledLayer);
+    public: static void setTiledLayer(AllBinaryTiledLayer tiledLayer);
 
-public constructor ();
+public: StaticTileLayerIntoPositionViewPosition();
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public int32_t getZ();
+    public: int32_t getZ();
 
 };
 

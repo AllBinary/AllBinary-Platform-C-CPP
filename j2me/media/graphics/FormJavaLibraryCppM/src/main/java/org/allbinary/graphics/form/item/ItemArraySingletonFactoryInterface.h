@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ITEMARRAYSINGLETONFACTORYINTERFACE_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_ITEMARRAYSINGLETONFACTORYINTERFACE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 
@@ -44,7 +46,6 @@
         #include "ABCustomItem.h"
 
 class ItemArraySingletonFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

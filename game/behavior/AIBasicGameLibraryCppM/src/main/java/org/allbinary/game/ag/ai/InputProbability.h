@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_H
         #define ORG_ALLBINARY_GAME_AG_AI_INPUTPROBABILITY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -56,29 +58,28 @@
 class InputProbability
             : public Object
          {
-        
 
-    public static INPUT_PROBABILITY: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    public: static Integer INPUT_PROBABILITY = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: const likelyhoodIntegerArray: std::vector<std::vector<Integer>>;
+    private: std::vector<std::vector<Integer>> likelyhoodIntegerArray;
 
-    private: const repeatLikelyhoodIntegerArray: std::vector<Integer>;
+    private: std::vector<Integer> repeatLikelyhoodIntegerArray;
 
-    private: const max: int32_t;
+    private: int32_t max;
 
-    private: const timeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeDelayHelper;
 
-public constructor (std::vector<std::vector<Integer>> likelyhoodIntegerArray, std::vector<Integer> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper timeDelayHelper);
+public: InputProbability(std::vector<std::vector<Integer>> likelyhoodIntegerArray, std::vector<Integer> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper timeDelayHelper);
 
-    public std::vector<std::vector<Integer>> getLikelyhoodIntegerArray();
+    public: std::vector<std::vector<Integer>> getLikelyhoodIntegerArray();
 
-    public std::vector<Integer> getRepeatLikelyhoodIntegerArray();
+    public: std::vector<Integer> getRepeatLikelyhoodIntegerArray();
 
-    public int32_t getMax();
+    public: int32_t getMax();
 
-    public TimeDelayHelper getTimeDelayHelper();
+    public: TimeDelayHelper getTimeDelayHelper();
 
-    public Hashtable<any, any> toHashtable();
+    public: Hashtable<any, any> toHashtable();
 
 };
 

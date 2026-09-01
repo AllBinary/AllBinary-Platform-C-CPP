@@ -33,21 +33,20 @@
 class OpenGLUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLUtil = new OpenGLUtil();
+    private: static OpenGLUtil instance() { return OpenGLUtil(); }
 
-    public static OpenGLUtil getInstance(){
+    public: static OpenGLUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLUtil.instance;
+                        return OpenGLUtil::instance();
     
 }
 
 
-    public Image addImage(Image image){
+    public: Image addImage(Image image){
 
 
 
@@ -57,11 +56,11 @@ class OpenGLUtil
 }
 
 
-    public clear(){
+    public: void clear(){
 }
 
 
-    public addRunnable(Runnable runnable){
+    public: void addRunnable(Runnable runnable){
 }
 
 

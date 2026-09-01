@@ -42,37 +42,34 @@
 class StoreFrontOrdersHistoryStatisticsData
             : public Object
          {
-        
 
-    private: static const instance: StoreFrontOrdersHistoryStatisticsData = new StoreFrontOrdersHistoryStatisticsData();
+    private: static StoreFrontOrdersHistoryStatisticsData instance() { return StoreFrontOrdersHistoryStatisticsData(); }
 
-    public static StoreFrontOrdersHistoryStatisticsData getInstance(){
+    public: static StoreFrontOrdersHistoryStatisticsData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontOrdersHistoryStatisticsData.instance;
+                        return StoreFrontOrdersHistoryStatisticsData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: StoreFrontOrdersHistoryStatisticsData(){
+}
 
 
-    public const NAME: string = "STOREFRONT_ORDERS_HISTORY_STATISTICS_NAME";
+    public: const std::string NAME = "STOREFRONT_ORDERS_HISTORY_STATISTICS_NAME";
 
-    public const NUMBEROFORDERS: string = "STOREFRONT_ORDERS_HISTORY_STATISTICS_NUMBER_OF_ORDERS";
+    public: const std::string NUMBEROFORDERS = "STOREFRONT_ORDERS_HISTORY_STATISTICS_NUMBER_OF_ORDERS";
 
-    public const SUBTOTAL: string = "STOREFRONT_ORDERS_HISTORY_STATISTICS_SUBTOTAL";
+    public: const std::string SUBTOTAL = "STOREFRONT_ORDERS_HISTORY_STATISTICS_SUBTOTAL";
 
-    public const SHIPPINGCOST: string = "STOREFRONT_ORDERS_HISTORY_STATISTICS_SHIPPINGCOST";
+    public: const std::string SHIPPINGCOST = "STOREFRONT_ORDERS_HISTORY_STATISTICS_SHIPPINGCOST";
 
-    public const TAXES: string = "STOREFRONT_ORDERS_HISTORY_STATISTICS_TAXES";
+    public: const std::string TAXES = "STOREFRONT_ORDERS_HISTORY_STATISTICS_TAXES";
 
-    public const TOTAL: string = "STOREFRONT_ORDERS_HISTORY_STATISTICS_TOTAL";
+    public: const std::string TOTAL = "STOREFRONT_ORDERS_HISTORY_STATISTICS_TOTAL";
 
 };
 

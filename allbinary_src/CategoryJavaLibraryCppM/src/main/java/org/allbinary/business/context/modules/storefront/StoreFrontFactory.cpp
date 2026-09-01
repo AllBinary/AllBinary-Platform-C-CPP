@@ -57,35 +57,34 @@
 class StoreFrontFactory
             : public Object
          {
-        
 
-    public static StoreFront getInstance(string storeName){
+    public: static StoreFront getInstance(std::string storeName){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    storeFronts: StoreFrontsEntity = StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!;;
+    StoreFrontsEntity storeFronts = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return storeFronts!.getStoreFrontInterface(storeName);;
+                        return storeFronts.getStoreFrontInterface(storeName);;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
                         
                                     {
-                                    logUtil!.put(commonStrings!.EXCEPTION, "StoreFrontFactory", commonStrings!.GET_INSTANCE, e);
+                                    logUtil.put(commonStrings.EXCEPTION, "StoreFrontFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -101,10 +100,8 @@ class StoreFrontFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: StoreFrontFactory(){
+}
 
 
 };

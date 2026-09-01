@@ -43,21 +43,20 @@
 class SWTProcessorUtil
             : public Object
          {
-        
 
-    private: static const instance: SWTProcessorUtil = new SWTProcessorUtil();
+    private: static SWTProcessorUtil instance() { return SWTProcessorUtil(); }
 
-    public static SWTProcessorUtil getInstance(){
+    public: static SWTProcessorUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SWTProcessorUtil.instance;
+                        return SWTProcessorUtil::instance();
     
 }
 
 
-    public swtProcessor: SWTProcessor = SWTProcessor.getInstance()!;
+    public: SWTProcessor swtProcessor = SWTProcessor::getInstance();
 
 };
 

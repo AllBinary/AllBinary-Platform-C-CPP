@@ -74,21 +74,20 @@
 class ExitRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const midlet: AllBinaryMidlet;
+    private: AllBinaryMidlet midlet;
 
-    private: const processor: Processor;
+    private: Processor processor;
 
-    private: const isProgress: bool;
+    private: bool isProgress;
 
-public constructor (AllBinaryMidlet midlet, Processor processor, bool isProgress);
+public: ExitRunnable(AllBinaryMidlet midlet, Processor processor, bool isProgress);
 
-    public run();
+    public: void run();
 
 };
 

@@ -58,16 +58,15 @@
 class PlatformFormInputMappingFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PlatformFormInputMappingFactory getInstance(){
+    public: static PlatformFormInputMappingFactory getInstance(){
 
-                        if(PlatformFormInputMappingFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(PlatformFormInputMappingFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    PlatformFormInputMappingFactory.instance= new PlatformFormInputMappingFactory();
+                                    PlatformFormInputMappingFactory::instance= PlatformFormInputMappingFactory();
     
 
                                     }
@@ -76,42 +75,42 @@ class PlatformFormInputMappingFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformFormInputMappingFactory.instance as PlatformFormInputMappingFactory;
+                        return PlatformFormInputMappingFactory::instance() as PlatformFormInputMappingFactory;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: inputToGameKeyMapping: InputToGameKeyMapping = InputToGameKeyMapping.getNullInstance()!;
+    private: InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
 
-    public InputToGameKeyMapping getOrCreate(){
+    public: InputToGameKeyMapping getOrCreate(){
 
         try {
             
-                        if(this.inputToGameKeyMapping == InputToGameKeyMapping.getNullInstance())
+                        if(this->inputToGameKeyMapping == InputToGameKeyMapping::getNullInstance())
                         
                                     {
                                     
-    pcKeyFactory: PCKeyFactory = PCKeyFactory.getInstance()!;;
+    PCKeyFactory pcKeyFactory = PCKeyFactory::getInstance();;
     
 
-    inputToGameKeyMapping: InputToGameKeyMapping = new InputToGameKeyMapping();;
+    InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping();;
     
 
-    gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;;
+    GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();;
     
-inputToGameKeyMapping!.add(gameKeyFactory!.UP, pcKeyFactory!.DPAD_UP);
+inputToGameKeyMapping.add(gameKeyFactory.UP, pcKeyFactory.DPAD_UP);
     
-inputToGameKeyMapping!.add(gameKeyFactory!.DOWN, pcKeyFactory!.DPAD_DOWN);
+inputToGameKeyMapping.add(gameKeyFactory.DOWN, pcKeyFactory.DPAD_DOWN);
     
-inputToGameKeyMapping!.add(gameKeyFactory!.LEFT, pcKeyFactory!.DPAD_LEFT);
+inputToGameKeyMapping.add(gameKeyFactory.LEFT, pcKeyFactory.DPAD_LEFT);
     
-inputToGameKeyMapping!.add(gameKeyFactory!.RIGHT, pcKeyFactory!.DPAD_RIGHT);
+inputToGameKeyMapping.add(gameKeyFactory.RIGHT, pcKeyFactory.DPAD_RIGHT);
     
-inputToGameKeyMapping!.add(gameKeyFactory!.KEY_NUM1, pcKeyFactory!.ENTER);
+inputToGameKeyMapping.add(gameKeyFactory.KEY_NUM1, pcKeyFactory.ENTER);
     
-this.inputToGameKeyMapping= inputToGameKeyMapping;
+this->inputToGameKeyMapping= inputToGameKeyMapping;
     
 
                                     }
@@ -121,9 +120,9 @@ this.inputToGameKeyMapping= inputToGameKeyMapping;
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 }
 
@@ -131,7 +130,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputToGameKeyMapping;
+                        return this->inputToGameKeyMapping;
     
 }
 

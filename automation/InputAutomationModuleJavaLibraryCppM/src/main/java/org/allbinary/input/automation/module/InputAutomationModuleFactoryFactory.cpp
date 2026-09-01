@@ -82,69 +82,66 @@
 class InputAutomationModuleFactoryFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: defaultListModelHelper: DefaultListModelHelper;
+    private: DefaultListModelHelper defaultListModelHelper;
 
-    private: helpSetListenerInterface: HelpSetListener;
+    private: HelpSetListener helpSetListenerInterface;
 
-public constructor (InputAutomationModuleConfigurations inputAutomationModuleConfigurations, HelpSetListener helpSetListenerInterface){
-
-            super();
-        this.helpSetListenerInterface= helpSetListenerInterface;
+public: InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations inputAutomationModuleConfigurations, HelpSetListener helpSetListenerInterface){
+this->helpSetListenerInterface= helpSetListenerInterface;
     
-this.defaultListModelHelper= new DefaultListModelHelper();
+this->defaultListModelHelper= DefaultListModelHelper();
     
-this.hashMap= new HashMap<any, any>();
+this->hashMap= HashMap<any, any>();
     
 
-    collection: Collection = inputAutomationModuleConfigurations!.getHashMap()!.values()!;;
+    Collection collection = inputAutomationModuleConfigurations.getHashMap().values();;
     
 
-    iterator: Iterator = collection.iterator()!;;
+    Iterator iterator = collection.iterator();;
     
 
-    inputAutomationModuleConfiguration: InputAutomationModuleConfiguration;;
+    InputAutomationModuleConfiguration inputAutomationModuleConfiguration;;
     
 
         while(iterator.hasNext())
         {
 inputAutomationModuleConfiguration= iterator.next() as InputAutomationModuleConfiguration;
     
-this.add(inputAutomationModuleConfiguration);
+this->add(inputAutomationModuleConfiguration);
     
 }
 
-this.defaultListModelHelper!.initDefaultModelList();
+this->defaultListModelHelper.initDefaultModelList();
     
-this.logUtil!.putF("Loaded " +this.hashMap!.size() +"/" +this.defaultListModelHelper!.getListModel()!.getSize() +" Input Automation Modules", this, "Contructor");
+this->logUtil.putF("Loaded " +this->hashMap.size() +"/" +this->defaultListModelHelper.getListModel().getSize() +" Input Automation Modules", this, "Contructor");
     
 }
 
 
-    add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+    private: void add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
 
-    inputAutomationModuleInterface: InputAutomationModuleFactoryInterface = inputAutomationModuleConfiguration!.getInputAutomationModuleInterface()!;;
+    InputAutomationModuleFactoryInterface inputAutomationModuleInterface = inputAutomationModuleConfiguration.getInputAutomationModuleInterface();;
     
-this.hashMap!.put(inputAutomationModuleConfiguration!.getName(), inputAutomationModuleInterface);
+this->hashMap.put(inputAutomationModuleConfiguration.getName(), inputAutomationModuleInterface);
     
-this.defaultListModelHelper!.add(inputAutomationModuleConfiguration!.getName());
-    
-
-    helpSet: HelpSet = inputAutomationModuleInterface!.getHelpSet()!;;
+this->defaultListModelHelper.add(inputAutomationModuleConfiguration.getName());
     
 
-                        if(!JavaHelpSetNotifier.isNotified(helpSet))
+    HelpSet helpSet = inputAutomationModuleInterface.getHelpSet();;
+    
+
+                        if(!JavaHelpSetNotifier::isNotified(helpSet))
                         
                                     {
                                     
-    helpSetEvent: HelpSetEvent = new HelpSetEvent(this, helpSet, HelpSetEvent.HELPSET_ADDED);;
+    HelpSetEvent helpSetEvent = HelpSetEvent(this, helpSet, HelpSetEvent::HELPSET_ADDED);;
     
-this.helpSetListenerInterface!.helpSetAdded(helpSetEvent);
+this->helpSetListenerInterface.helpSetAdded(helpSetEvent);
     
 
                                     }
@@ -152,32 +149,32 @@ this.helpSetListenerInterface!.helpSetAdded(helpSetEvent);
 }
 
 
-    public ListModel getListModel(){
+    public: ListModel getListModel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultListModelHelper!.getListModel() as ListModel;
+                        return this->defaultListModelHelper.getListModel() as ListModel;
     
 }
 
 
-    public InputAutomationModuleFactoryInterface getInstance(string moduleName){
+    public: InputAutomationModuleFactoryInterface getInstance(std::string moduleName){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF("Getting Module: " +moduleName, this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF("Getting Module: " +moduleName, this, commonStrings.GET_INSTANCE);
     
 
-    inputAutomationModuleFactoryInterface: InputAutomationModuleFactoryInterface = this.hashMap!.get(moduleName) as InputAutomationModuleFactoryInterface;;
+    InputAutomationModuleFactoryInterface inputAutomationModuleFactoryInterface = this->hashMap.get(moduleName) as InputAutomationModuleFactoryInterface;;
     
 
                         if(inputAutomationModuleFactoryInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("Module: " +moduleName +" was null", this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Module: " +moduleName +" was null", this, commonStrings.GET_INSTANCE);
     
 
                                     }

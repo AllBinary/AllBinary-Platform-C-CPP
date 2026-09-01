@@ -63,44 +63,41 @@
 class HttpFilePermissions
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const file: AbFile;
+    private: AbFile file;
 
-    private: const userRoles: Vector = new Vector();
+    private: const Vector userRoles = Vector();
 
-public constructor (AbPath fullPath){
-
-            super();
-        this.file= AbFile.createAbFileFromAbPath(new AbPath(fullPath!.toFileSystemString(), FileUploadData.getInstance()!.FILE));
+public: HttpFilePermissions(AbPath fullPath){
+this->file= AbFile::createAbFileFromAbPath(AbPath(fullPath.toFileSystemString(), FileUploadData::getInstance().FILE));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF("Loading Privileges: " +fullPath!.toFileSystemString(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("Loading Privileges: " +fullPath.toFileSystemString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
 
-                        if(this.isFile())
+                        if(this->isFile())
                         
                                     {
-                                    this.userRoles!.add(BasicUserRoleFactory.getInstance()!.ADMINISTRATOR);
+                                    this->userRoles.add(BasicUserRoleFactory::getInstance().ADMINISTRATOR);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF("User Roles: " +this.userRoles, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("User Roles: " +this->userRoles, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -108,22 +105,22 @@ public constructor (AbPath fullPath){
 }
 
 
-    public bool isFile(){
+    public: bool isFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.isFile();;
+                        return this->file.isFile();;
     
 }
 
 
-    public Vector getUserRoles(){
+    public: Vector getUserRoles(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userRoles;
+                        return this->userRoles;
     
 }
 

@@ -58,17 +58,16 @@
 class BasicColorSetUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicColorSetUtil = new BasicColorSetUtil();
+    private: static BasicColorSetUtil instance() { return BasicColorSetUtil(); }
 
-    public static BasicColorSetUtil getInstance();
+    public: static BasicColorSetUtil getInstance();
 
-protected constructor ();
+protected: BasicColorSetUtil();
 
-    public setBasicColorP(Graphics graphics, BasicColor basicColor);
+    public: void setBasicColorP(Graphics graphics, BasicColor basicColor);
 
-    public setBasicColorP3(Graphics graphics, BasicColor basicColor, int32_t value);
+    public: void setBasicColorP3(Graphics graphics, BasicColor basicColor, int32_t value);
 
 };
 

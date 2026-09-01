@@ -69,30 +69,29 @@
 #include "RaceTrackInfo.h"
 #include "RaceTrackData.h"
 
-class BaseRaceTrackGeographicMap: public BasicGeographicMap: public RaceTrackGeographicMapInterface {
-        
+class BaseRaceTrackGeographicMap: public BasicGeographicMap, public RaceTrackGeographicMapInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: raceTrackInfo: RaceTrackInfo;
+    private: RaceTrackInfo raceTrackInfo;
 
-    private: raceTrackData: RaceTrackData;
+    private: RaceTrackData raceTrackData;
 
-    private: miniGeographicMap: BasicGeographicMap;
+    private: BasicGeographicMap miniGeographicMap;
 
-public constructor (RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayer tiledLayer, BasicGeographicMap miniGeographicMap, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory);
+public: BaseRaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayer tiledLayer, BasicGeographicMap miniGeographicMap, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory);
 
-    public RaceTrackInfo getRaceTrackInfo();
+    public: RaceTrackInfo getRaceTrackInfo();
 
-    public setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo);
+    public: void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo);
 
-    public setMiniBasicGeographicMap(BasicGeographicMap miniBasicGeographicMap);
+    public: void setMiniBasicGeographicMap(BasicGeographicMap miniBasicGeographicMap);
 
-    public BasicGeographicMap getMiniBasicGeographicMap();
+    public: BasicGeographicMap getMiniBasicGeographicMap();
 
-    public RaceTrackData getRaceTrackData();
+    public: RaceTrackData getRaceTrackData();
 
-    public setRaceTrackData(RaceTrackData raceTrackData);
+    public: void setRaceTrackData(RaceTrackData raceTrackData);
 
 };
 

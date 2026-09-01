@@ -20,6 +20,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_FAKELAYERMANAGER_H
         #define ORG_ALLBINARY_GAME_LAYER_FAKELAYERMANAGER_H
 
+            #include <vector>
+        
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -55,20 +57,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameLayerManager.h"
 
-class FakeLayerManager: public AllBinaryGameLayerManager: public GeographicMapCompositeInterface {
-        
+class FakeLayerManager: public AllBinaryGameLayerManager, public GeographicMapCompositeInterface {
 
-    private: geographicMapInterfaceArray: std::vector<BasicGeographicMap> = BasicGeographicMap.NULL_BASIC_GEOGRAPHIC_MAP_ARRAY;
+    private: std::vector<BasicGeographicMap> geographicMapInterfaceArray = BasicGeographicMap::NULL_BASIC_GEOGRAPHIC_MAP_ARRAY;
 
-    private: geographicMapCellTypeArray: std::vector<GeographicMapCellType> = GeographicMapCellType.NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
+    private: std::vector<GeographicMapCellType> geographicMapCellTypeArray = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
 
-public constructor (GameInfo gameInfo);
+public: FakeLayerManager(GameInfo gameInfo);
 
-    public std::vector<BasicGeographicMap> getGeographicMapInterface();
+    public: std::vector<BasicGeographicMap> getGeographicMapInterface();
 
-    public setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterfaceArray);
+    public: void setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterfaceArray);
 
-    public std::vector<GeographicMapCellType> geographicMapCellTypeArray();
+    public: std::vector<GeographicMapCellType> geographicMapCellTypeArray();
 
 };
 

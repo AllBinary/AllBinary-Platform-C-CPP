@@ -39,9 +39,8 @@
         #include "HealthInterface.h"
 
 class HealthVisitorInterface {
-        
 
-    visit(HealthInterface healthInterface)
+    void visit(HealthInterface healthInterface)
 
 };
 

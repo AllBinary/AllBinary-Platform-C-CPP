@@ -46,24 +46,21 @@
 class TransformDocumentFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TransformDocumentInterface getInstance(){
+    public: static TransformDocumentInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformDocument() as TransformDocumentInterface;
+                        return TransformDocument() as TransformDocumentInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformDocumentFactory(){
+}
 
 
 };

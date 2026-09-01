@@ -55,41 +55,38 @@
 class DestroyEventCircularStaticPool
             : public Object
          {
-        
 
-    private: static const instance: DestroyEventCircularStaticPool = new DestroyEventCircularStaticPool();
+    private: static DestroyEventCircularStaticPool instance() { return DestroyEventCircularStaticPool(); }
 
-    public static DestroyEventCircularStaticPool getInstance(){
+    public: static DestroyEventCircularStaticPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DestroyEventCircularStaticPool.instance;
+                        return DestroyEventCircularStaticPool::instance();
     
 }
 
 
-    private: EVENT_POOL: AllBinaryEventCircularPool = new AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
 
-private constructor (){
-
-            super();
-        }
+private: DestroyEventCircularStaticPool(){
+}
 
 
-    public init(AllBinaryGameCanvas combatGameCanvas){
-this.EVENT_POOL.initAllBinaryEventCircularPool(new DestroyEventFactory(combatGameCanvas));
+    public: void init(AllBinaryGameCanvas combatGameCanvas){
+this->EVENT_POOL.initAllBinaryEventCircularPool(DestroyEventFactory(combatGameCanvas));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public DestroyedEvent getInstanceForLayer(AllBinaryLayer layerInterface){
+    public: DestroyedEvent getInstanceForLayer(AllBinaryLayer layerInterface){
 
-    destroyedEvent: DestroyedEvent = this.EVENT_POOL.getNextInstance() as DestroyedEvent;;
+    DestroyedEvent destroyedEvent = this->EVENT_POOL.getNextInstance() as DestroyedEvent;;
     
-destroyedEvent!.setLayerInterfaceForCircularStaticPool(layerInterface);
+destroyedEvent.setLayerInterfaceForCircularStaticPool(layerInterface);
     
 
 

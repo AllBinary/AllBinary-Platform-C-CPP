@@ -61,59 +61,54 @@
 class PaymentType
             : public Object
          {
-        
 
-    private: const basicPaymentType: BasicPaymentType;
+    private: BasicPaymentType basicPaymentType;
 
-    private: const paymentTransactionInterfaceFactoryInterface: PaymentTransactionInterfaceFactoryInterface;
+    private: PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface;
 
-    private: const paymentProcessorInterfaceFactoryInterface: PaymentProcessorInterfaceFactoryInterface;
+    private: PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface;
 
-protected constructor (BasicPaymentType basicPaymentType){
-
-            super();
-        this.basicPaymentType= basicPaymentType;
+protected: PaymentType(BasicPaymentType basicPaymentType){
+this->basicPaymentType= basicPaymentType;
     
-this.paymentTransactionInterfaceFactoryInterface= 
+this->paymentTransactionInterfaceFactoryInterface= 
                                         nullptr
                                     ;
     
-this.paymentProcessorInterfaceFactoryInterface= 
+this->paymentProcessorInterfaceFactoryInterface= 
                                         nullptr
                                     ;
     
-PaymentTypeUtil.getInstance()!.add(this);
+PaymentTypeUtil::getInstance().add(this);
     
 }
 
 
-protected constructor (BasicPaymentType basicPaymentType, PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface){
-
-            super();
-        this.basicPaymentType= basicPaymentType;
+protected: PaymentType(BasicPaymentType basicPaymentType, PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface){
+this->basicPaymentType= basicPaymentType;
     
-this.paymentTransactionInterfaceFactoryInterface= paymentTransactionInterfaceFactoryInterface;
+this->paymentTransactionInterfaceFactoryInterface= paymentTransactionInterfaceFactoryInterface;
     
-this.paymentProcessorInterfaceFactoryInterface= paymentProcessorInterfaceFactoryInterface;
+this->paymentProcessorInterfaceFactoryInterface= paymentProcessorInterfaceFactoryInterface;
     
-PaymentTypeUtil.getInstance()!.add(this);
+PaymentTypeUtil::getInstance().add(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentTransactionInterfaceFactoryInterface getPaymentTransactionInterfaceFactoryInterface(){
+    public: PaymentTransactionInterfaceFactoryInterface getPaymentTransactionInterfaceFactoryInterface(){
 
-                        if(this.paymentTransactionInterfaceFactoryInterface == 
-                                    null
+                        if(this->paymentTransactionInterfaceFactoryInterface == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("PaymentTransactionInterfaceFactoryInterface is Null");
+                            throw Exception("PaymentTransactionInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -122,24 +117,24 @@ PaymentTypeUtil.getInstance()!.add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentTransactionInterfaceFactoryInterface;
+                        return this->paymentTransactionInterfaceFactoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentProcessorInterfaceFactoryInterface getPaymentProcessorInterfaceFactoryInterface(){
+    public: PaymentProcessorInterfaceFactoryInterface getPaymentProcessorInterfaceFactoryInterface(){
 
-                        if(this.paymentProcessorInterfaceFactoryInterface == 
-                                    null
+                        if(this->paymentProcessorInterfaceFactoryInterface == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("PaymentProcessorInterfaceFactoryInterface is Null");
+                            throw Exception("PaymentProcessorInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -148,35 +143,35 @@ PaymentTypeUtil.getInstance()!.add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentProcessorInterfaceFactoryInterface;
+                        return this->paymentProcessorInterfaceFactoryInterface;
     
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.addAll(this.getBasicPaymentType()!.toVector());
+vector.addAll(this->getBasicPaymentType().toVector());
     
 
-                        if(this.paymentTransactionInterfaceFactoryInterface != 
-                                    null
+                        if(this->paymentTransactionInterfaceFactoryInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    vector.add(this.paymentTransactionInterfaceFactoryInterface!.constructor.name.toString()!);
+                                    vector.add(this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString()!);
     
 
                                     }
                                 
 
-                        if(this.paymentProcessorInterfaceFactoryInterface != 
-                                    null
+                        if(this->paymentProcessorInterfaceFactoryInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    vector.add(this.paymentProcessorInterfaceFactoryInterface!.constructor.name.toString()!);
+                                    vector.add(this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString()!);
     
 
                                     }
@@ -190,30 +185,30 @@ vector.addAll(this.getBasicPaymentType()!.toVector());
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.putAll(this.getBasicPaymentType()!.toHashMap());
+hashMap.putAll(this->getBasicPaymentType().toHashMap());
     
 
-                        if(this.paymentTransactionInterfaceFactoryInterface != 
-                                    null
+                        if(this->paymentTransactionInterfaceFactoryInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    hashMap!.put(PaymentGatewayData.PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this.paymentTransactionInterfaceFactoryInterface!.constructor.name.toString()!);
+                                    hashMap.put(PaymentGatewayData::PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE.toString(), this->paymentTransactionInterfaceFactoryInterface.constructor.name.toString()!);
     
 
                                     }
                                 
 
-                        if(this.paymentProcessorInterfaceFactoryInterface != 
-                                    null
+                        if(this->paymentProcessorInterfaceFactoryInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    hashMap!.put(PaymentGatewayData.PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this.paymentProcessorInterfaceFactoryInterface!.constructor.name.toString()!);
+                                    hashMap.put(PaymentGatewayData::PAYMENTPROCESSORINTERFACEFACTORYINTERFACE.toString(), this->paymentProcessorInterfaceFactoryInterface.constructor.name.toString()!);
     
 
                                     }
@@ -227,12 +222,12 @@ hashMap!.putAll(this.getBasicPaymentType()!.toHashMap());
 }
 
 
-    public BasicPaymentType getBasicPaymentType(){
+    public: BasicPaymentType getBasicPaymentType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicPaymentType;
+                        return this->basicPaymentType;
     
 }
 

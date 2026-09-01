@@ -46,15 +46,14 @@
 class InputAutomationRobotChangeEvent
             : public Object
          {
-        
 
-    private: inputAutomationRobotInterfaceWrapper: InputAutomationRobotInterfaceWrapper;
+    private: InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper;
 
-public constructor (InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper);
+public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper);
 
-    public InputAutomationRobotInterfaceWrapper getInputAutomationRobotInterfaceWrapper();
+    public: InputAutomationRobotInterfaceWrapper getInputAutomationRobotInterfaceWrapper();
 
-    public setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper);
+    public: void setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper);
 
 };
 

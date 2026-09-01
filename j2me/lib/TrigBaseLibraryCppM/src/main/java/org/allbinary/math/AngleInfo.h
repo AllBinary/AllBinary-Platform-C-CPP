@@ -66,29 +66,28 @@
 class AngleInfo
             : public Object
          {
-        
 
-    public static AngleInfo getInstance(int16_t angleIncrement);
+    public: static AngleInfo getInstance(int16_t angleIncrement);
 
-    private: static const ANGLE: string = "Angle: ";
+    private: static const std::string ANGLE = "Angle: ";
 
-    private: const angleIncrementInfo: AngleIncrementInfo;
+    private: AngleIncrementInfo angleIncrementInfo;
 
-    private: angle: int16_t = 0;
+    private: int16_t angle = 0;
 
-private constructor (AngleIncrementInfo angleIncrementInfo);
+private: AngleInfo(AngleIncrementInfo angleIncrementInfo);
 
-    private: const frameUtil: FrameUtil = FrameUtil.getInstance()!;
+    private: const FrameUtil frameUtil = FrameUtil::getInstance();
 
-    public adjustAngle(int32_t frame);
+    public: void adjustAngle(int32_t frame);
 
-    public int16_t getAngle();
+    public: int16_t getAngle();
 
-    public setAngle(int16_t angle);
+    public: void setAngle(int16_t angle);
 
-    public AngleIncrementInfo getAngleIncrementInfo();
+    public: AngleIncrementInfo getAngleIncrementInfo();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

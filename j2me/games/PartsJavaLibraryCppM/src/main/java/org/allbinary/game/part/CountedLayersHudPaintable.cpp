@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -71,135 +73,131 @@
 class CountedLayersHudPaintable
             : public Object
         : public PaintableInterface, public UpdateMyFontInterface {
-        
 
-    private: static XXStringWidth: int32_t = 0;
+    private: static int32_t XXStringWidth = 0;
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const partInterfaceArray: std::vector<PartInterface>;
+    private: std::vector<PartInterface> partInterfaceArray;
 
-    private: const countedTotalStringColor: int32_t;
+    private: int32_t countedTotalStringColor;
 
-    private: const countedPartsBorder: int32_t;
+    private: int32_t countedPartsBorder;
 
-    private: const startIndex: int32_t;
+    private: int32_t startIndex;
 
-    private: const dropSize: int32_t;
+    private: int32_t dropSize;
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-public constructor (std::vector<PartInterface> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder){
-
-            super();
-        this.partInterfaceArray= partInterfaceArray;
+public: CountedLayersHudPaintable(std::vector<PartInterface> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder){
+this->partInterfaceArray= partInterfaceArray;
     
-this.startIndex= startIndex;
+this->startIndex= startIndex;
     
-this.countedTotalStringColor= countedTotalStringColor;
+this->countedTotalStringColor= countedTotalStringColor;
     
-this.countedPartsBorder= countedPartsBorder;
+this->countedPartsBorder= countedPartsBorder;
     
-this.dropSize= dropSize;
+this->dropSize= dropSize;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.height= font.getHeight();
+this->height= font.getHeight();
     
 
-                        if(this.dropSize > font.getHeight())
+                        if(this->dropSize > font.getHeight())
                         
                                     {
-                                    this.height= this.dropSize;
+                                    this->height= this->dropSize;
     
 
                                     }
                                 
 
-                        if(CountedLayersHudPaintable.XXStringWidth == 0)
+                        if(CountedLayersHudPaintable::XXStringWidth == 0)
                         
                                     {
                                     
-    XXString: string = "XX";;
+    std::string XXString = "XX";;
     
-CountedLayersHudPaintable.XXStringWidth= font.stringWidth(XXString);
+CountedLayersHudPaintable::XXStringWidth= font.stringWidth(XXString);
     
 
                                     }
                                 
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
-    lastWidth: int32_t = this.displayInfoSingleton!.getLastWidth()!;;
+    int32_t lastWidth = this->displayInfoSingleton.getLastWidth();;
     
 
-    widthEdge: int32_t = lastWidth -this.dropSize;;
+    int32_t widthEdge = lastWidth -this->dropSize;;
     
 
-    size: int32_t = this.partInterfaceArray!.length
-                ;;
+    int32_t size = this->partInterfaceArray.size();;
     
 
-    count: int32_t = 0;;
+    int32_t count = 0;;
     
 
-    y: int32_t= 0;;
+    int32_t y= 0;;
     
 
-    countedLayerInterfaceFactory: CountedLayerInterfaceFactoryPart;;
+    CountedLayerInterfaceFactoryPart countedLayerInterfaceFactory;;
     
 
-    pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface;;
+    PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface;;
     
 
-    layerInterface: AllBinaryLayer;;
+    AllBinaryLayer layerInterface;;
     
 
-    charArray: std::vector<char>;;
+    std::vector<char> charArray;;
     
 
 
 
 
                         for (
-    index: int32_t = this.startIndex;index < size; index++)
+    int32_t index = this->startIndex;index < size; index++)
         {
-countedLayerInterfaceFactory= this.partInterfaceArray[index]! as CountedLayerInterfaceFactoryPart;
+countedLayerInterfaceFactory= this->partInterfaceArray[index]! as CountedLayerInterfaceFactoryPart;
     
 
-                        if(countedLayerInterfaceFactory!.getTotal() > 0)
+                        if(countedLayerInterfaceFactory.getTotal() > 0)
                         
                                     {
-                                    pickedUpLayerInterfaceFactoryInterface= countedLayerInterfaceFactory!.getCountedPickedUpLayerInterfaceFactory();
+                                    pickedUpLayerInterfaceFactoryInterface= countedLayerInterfaceFactory.getCountedPickedUpLayerInterfaceFactory();
     
-layerInterface= pickedUpLayerInterfaceFactoryInterface!.getIconLayer();
+layerInterface= pickedUpLayerInterfaceFactoryInterface.getIconLayer();
     
-y= 40 +(count *this.height);
+y= 40 +(count *this->height);
     
-layerInterface!.setPosition(widthEdge, y, layerInterface!.getZP());
+layerInterface.setPosition(widthEdge, y, layerInterface.getZP());
     
-layerInterface!.paint(graphics);
+layerInterface.paint(graphics);
     
-graphics.setColor(this.countedTotalStringColor);
+graphics.setColor(this->countedTotalStringColor);
     
-countedLayerInterfaceFactory!.paint(graphics);
+countedLayerInterfaceFactory.paint(graphics);
     
-charArray= countedLayerInterfaceFactory!.getTotalString();
+charArray= countedLayerInterfaceFactory.getTotalString();
     
-graphics.drawChars(charArray, 0, charArray!.length, widthEdge -countedLayerInterfaceFactory!.getXOffset(), y, 0);
+graphics.drawChars(charArray, 0, charArray.size(), widthEdge -countedLayerInterfaceFactory.getXOffset(), y, 0);
     
 count++;
     
@@ -212,9 +210,9 @@ count++;
                         if(count > 0)
                         
                                     {
-                                    graphics.setColor(this.countedPartsBorder);
+                                    graphics.setColor(this->countedPartsBorder);
     
-graphics.drawRect(lastWidth -(CountedLayersHudPaintable.XXStringWidth +this.dropSize), 40, CountedLayersHudPaintable.XXStringWidth +this.dropSize, (count *this.height) +3);
+graphics.drawRect(lastWidth -(CountedLayersHudPaintable::XXStringWidth +this->dropSize), 40, CountedLayersHudPaintable::XXStringWidth +this->dropSize, (count *this->height) +3);
     
 
                                     }
@@ -222,7 +220,7 @@ graphics.drawRect(lastWidth -(CountedLayersHudPaintable.XXStringWidth +this.drop
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics graphics){
 }
 
 

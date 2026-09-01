@@ -51,52 +51,49 @@
 /*actual*/ class PreLogUtil
             : public Object
          {
-        
 
-    /*actual*/ public static put(string specialMessage, any = {} anyType, string functionName){
-PreLogUtil.putOE(specialMessage, anyType, functionName, NullUtil.getInstance()!.NULL_OBJECT);
+    /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName){
+PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance().NULL_OBJECT);
     
 }
 
 
-    private: static const LOG_SUCCESS: string = "org.allbinary: ";
+    private: static const std::string LOG_SUCCESS = "org.allbinary: ";
 
-    /*actual*/ public static putOE(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType!.constructor.name.toString()! != 
-                                    null
+                        if(anyType->constructor.name.toString()! != 
+                                    nullptr
                                 )
                         
                                     {
-                                    className= anyType!.constructor.name.toString()!;
+                                    className= anyType->constructor.name.toString()!;
     
 
                                     }
                                 
 
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
 console.log(LOG_SUCCESS + message);
     
 }
 
 
-    /*actual*/ public static putSE(string specialMessage, string className, string functionName, any = {} exception){
+    /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
 
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
 console.log(LOG_SUCCESS + message);
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: PreLogUtil(){
+}
 
 
 };

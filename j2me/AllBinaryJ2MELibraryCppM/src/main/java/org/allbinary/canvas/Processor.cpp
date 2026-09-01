@@ -50,29 +50,28 @@
 class Processor
             : public Object
          {
-        
 
-    private: static const SINGLETON: Processor = new Processor();
+    private: static const Processor SINGLETON = Processor();
 
-    public static Processor getInstance(){
+    public: static Processor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Processor.SINGLETON;
+                        return Processor::SINGLETON;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    public: void process(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processt(int64_t timeDelta){
+    public: void processt(int64_t timeDelta){
 }
 
 

@@ -46,9 +46,8 @@
 #include "MotionJ2MEDefaultGameInputMapping.h"
 
 class MotionJ2MEGameInputMapping: public J2MEGameInputMapping {
-        
 
-    InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping getDefault();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESS_H
         #define ORG_ALLBINARY_BUSINESS_USER_ADDRESS_STREETADDRESS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -87,85 +89,84 @@
 class StreetAddress
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: id: string;
+    private: std::string id;
 
-    private: name: string;
+    private: std::string name;
 
-    private: street: string;
+    private: std::string street;
 
-    private: city: string;
+    private: std::string city;
 
-    private: state: string;
+    private: std::string state;
 
-    private: code: string;
+    private: std::string code;
 
-    private: country: string;
+    private: std::string country;
 
-    private: isDefault: bool = false;
+    private: bool isDefault = false;
 
-public constructor ();
+public: StreetAddress();
 
-public constructor (Node node);
+public: StreetAddress(Node node);
 
-public constructor (StreetAddress streetAddress);
+public: StreetAddress(StreetAddress streetAddress);
 
-public constructor (HttpServletRequest request);
+public: StreetAddress(HttpServletRequest request);
 
-public constructor (string name, string street, string city, string state, string code, string country);
+public: StreetAddress(std::string name, std::string street, std::string city, std::string state, std::string code, std::string country);
 
-public constructor (HashMap<any, any> address);
+public: StreetAddress(HashMap<any, any> address);
 
-    log();
+    private: void log();
 
-    public setId(string id);
+    public: void setId(std::string id);
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public setStreet(string value);
+    public: void setStreet(std::string value);
 
-    public setCity(string value);
+    public: void setCity(std::string value);
 
-    public setState(string value);
+    public: void setState(std::string value);
 
-    public setCode(string value);
+    public: void setCode(std::string value);
 
-    public setCountry(string value);
+    public: void setCountry(std::string value);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getStreet();
+    public: std::string getStreet();
 
-    public string getCity();
+    public: std::string getCity();
 
-    public string getState();
+    public: std::string getState();
 
-    public string getCode();
+    public: std::string getCode();
 
-    public string getCountry();
+    public: std::string getCountry();
 
-    public string getId();
+    public: std::string getId();
 
-    public bool isDefault();
+    public: bool isDefault();
 
-    public Boolean isEmpty();
+    public: Boolean isEmpty();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    Document toValidationInfoDoc();
+    private: Document toValidationInfoDoc();
 
-    Node toValidationInfoNode(Document document);
+    private: Node toValidationInfoNode(Document document);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

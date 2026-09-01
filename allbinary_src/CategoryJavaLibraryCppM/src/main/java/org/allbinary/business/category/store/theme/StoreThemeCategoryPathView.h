@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYPATHVIEW_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryView.h>
@@ -64,14 +66,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StoreThemeCategoryInterface.h"
 
-class StoreThemeCategoryPathView: public CategoryView: public DomNodeInterface {
-        
+class StoreThemeCategoryPathView: public CategoryView, public DomNodeInterface {
 
-public constructor (StoreThemeCategoryInterface categoryInterface);
+public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

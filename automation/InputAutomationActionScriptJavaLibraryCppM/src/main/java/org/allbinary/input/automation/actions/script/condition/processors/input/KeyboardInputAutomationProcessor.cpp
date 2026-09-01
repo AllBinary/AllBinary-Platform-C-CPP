@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Exception.h"
@@ -64,27 +66,26 @@
 class KeyboardInputAutomationProcessor
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static process(KeyboardActionScriptInputInterface keyActionScriptInputInterface){
+    public: static void process(KeyboardActionScriptInputInterface keyActionScriptInputInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF(CommonLabels.getInstance()!.START +keyActionScriptInputInterface!.toString(), "KeyInputAutomationProcessor", commonStrings!.PROCESS);
-    
-
-    inputRobotInterface: InputRobotInterface = keyActionScriptInputInterface!.getInputRobotInterface()!;;
+logUtil.putF(CommonLabels::getInstance().START +keyActionScriptInputInterface.toString(), "KeyInputAutomationProcessor", commonStrings.PROCESS);
     
 
-    integer: std::vector<Integer> = keyActionScriptInputInterface!.getKeyArray()!;;
+    InputRobotInterface inputRobotInterface = keyActionScriptInputInterface.getInputRobotInterface();;
     
 
-                        if(keyActionScriptInputInterface!.getDelayBetweenKeys() == 0)
+    std::vector<Integer> integer = keyActionScriptInputInterface.getKeyArray();;
+    
+
+                        if(keyActionScriptInputInterface.getDelayBetweenKeys() == 0)
                         
                                     {
                                     
@@ -92,33 +93,33 @@ logUtil!.putF(CommonLabels.getInstance()!.START +keyActionScriptInputInterface!.
 
 
                         for (
-    index: int32_t = 0;index < keyActionScriptInputInterface!.getKeyArray()!.length; index++)
+    int32_t index = 0;index < keyActionScriptInputInterface.getKeyArray().length; index++)
         {
 
-                        if(keyActionScriptInputInterface!.isPress())
+                        if(keyActionScriptInputInterface.isPress())
                         
                                     {
-                                    inputRobotInterface!.keyPress(integer[index]!);
+                                    inputRobotInterface.keyPress(integer[index]!);
     
 
                                     }
                                 
 }
 
-Thread.sleep(keyActionScriptInputInterface!.getTime());
+Thread::sleep(keyActionScriptInputInterface.getTime());
     
 
 
 
 
                         for (
-    index: int32_t = keyActionScriptInputInterface!.getKeyArray()!.length -1;index >= 0; index--)
+    int32_t index = keyActionScriptInputInterface.getKeyArray().length -1;index >= 0; index--)
         {
 
-                        if(keyActionScriptInputInterface!.isRelease())
+                        if(keyActionScriptInputInterface.isRelease())
                         
                                     {
-                                    inputRobotInterface!.keyRelease(integer[index]!);
+                                    inputRobotInterface.keyRelease(integer[index]!);
     
 
                                     }
@@ -134,40 +135,40 @@ Thread.sleep(keyActionScriptInputInterface!.getTime());
 
 
                         for (
-    index: int32_t = 0;index < keyActionScriptInputInterface!.getKeyArray()!.length; index++)
+    int32_t index = 0;index < keyActionScriptInputInterface.getKeyArray().length; index++)
         {
 
-                        if(keyActionScriptInputInterface!.isPress())
+                        if(keyActionScriptInputInterface.isPress())
                         
                                     {
-                                    inputRobotInterface!.keyPress(integer[index]!);
+                                    inputRobotInterface.keyPress(integer[index]!);
     
 
                                     }
                                 
-Thread.sleep(keyActionScriptInputInterface!.getTime());
+Thread::sleep(keyActionScriptInputInterface.getTime());
     
 
-                        if(keyActionScriptInputInterface!.isRelease())
+                        if(keyActionScriptInputInterface.isRelease())
                         
                                     {
-                                    inputRobotInterface!.keyRelease(integer[index]!);
+                                    inputRobotInterface.keyRelease(integer[index]!);
     
 
                                     }
                                 
 
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(keyActionScriptInputInterface!.getDelayBetweenKeys());;
+    TimeDelayHelper timeHelper = TimeDelayHelper(keyActionScriptInputInterface.getDelayBetweenKeys());;
     
 
-    toLong: int32_t = 0;;
+    int32_t toLong = 0;;
     
 
-        while(!timeHelper!.isTimeTNT() || toLong > 6000)
+        while(!timeHelper.isTimeTNT() || toLong > 6000)
         {
 toLong++;
     
-Thread.sleep(50);
+Thread::sleep(50);
     
 }
 
@@ -179,10 +180,8 @@ Thread.sleep(50);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: KeyboardInputAutomationProcessor(){
+}
 
 
 };

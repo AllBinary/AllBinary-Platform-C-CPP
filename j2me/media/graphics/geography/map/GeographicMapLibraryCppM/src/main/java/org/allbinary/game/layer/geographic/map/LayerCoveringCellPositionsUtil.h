@@ -62,21 +62,20 @@
 class LayerCoveringCellPositionsUtil
             : public Object
          {
-        
 
-    private: static const instance: LayerCoveringCellPositionsUtil = new LayerCoveringCellPositionsUtil();
+    private: static LayerCoveringCellPositionsUtil instance() { return LayerCoveringCellPositionsUtil(); }
 
-    public static LayerCoveringCellPositionsUtil getInstance();
+    public: static LayerCoveringCellPositionsUtil getInstance();
 
-    private: const cellPositionsUtil: CellPositionsUtil = CellPositionsUtil.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList getAllXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t x, int32_t y, BasicArrayList reusableList);
+    private: const CellPositionsUtil cellPositionsUtil = CellPositionsUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topLeftGeographicMapCellPosition, AllBinaryLayer layerInterface, BasicArrayList reusableList);
+    public: BasicArrayList getAllXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t x, int32_t y, BasicArrayList reusableList);
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topLeftGeographicMapCellPosition, AllBinaryLayer layerInterface, BasicArrayList reusableList);
 
 };
 

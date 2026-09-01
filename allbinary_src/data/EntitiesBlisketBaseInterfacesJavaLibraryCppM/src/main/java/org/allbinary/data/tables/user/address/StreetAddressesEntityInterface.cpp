@@ -46,19 +46,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StreetAddressesEntityInterface: public BasicDataTableInterface {
-        
 
-    remove(Integer index)
+    void remove(Integer index)
 
-    add(StreetAddress address)
+    void add(StreetAddress address)
 
-    update(StreetAddress address)
+    void update(StreetAddress address)
 
-    string getLastId()
+    std::string getLastId()
 
     StreetAddress getDefault()
 
-    setDefault(string value)
+    void setDefault(std::string value)
 
 };
 

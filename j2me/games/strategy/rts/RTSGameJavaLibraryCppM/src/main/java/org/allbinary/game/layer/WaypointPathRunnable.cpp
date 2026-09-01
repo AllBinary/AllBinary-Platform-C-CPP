@@ -53,64 +53,61 @@
 #include "WaypointBehaviorBase.h"
 
 class WaypointPathRunnable: public WaypointPathRunnableBase {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: WaypointPathRunnable(){
+}
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.pathFindingLayer!.getWaypointRunnableLogHelper()!.start(this.pathFindingLayer);
+            this->pathFindingLayer.getWaypointRunnableLogHelper().start(this->pathFindingLayer);
     
 
-    waypointBehavior: WaypointBehaviorBase = this.pathFindingLayer!.getWaypointBehavior()!;;
+    WaypointBehaviorBase waypointBehavior = this->pathFindingLayer.getWaypointBehavior();;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition = this.pathFindingLayer!.getCurrentGeographicMapCellPosition()!;;
+    GeographicMapCellPosition geographicMapCellPosition = this->pathFindingLayer.getCurrentGeographicMapCellPosition();;
     
 
                         if(geographicMapCellPosition == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Should never be running here");
+                            throw Exception("Should never be running here");
                     
 
                                     }
                                 
-waypointBehavior!.setWaypointPathsList(this.targetPathFindingLayer!.getWaypointBehavior()!.getWaypoint()!.getPathsListRunnable(geographicMapCellPosition));
+waypointBehavior.setWaypointPathsList(this->targetPathFindingLayer.getWaypointBehavior().getWaypoint().getPathsListRunnable(geographicMapCellPosition));
     
-this.pathFindingLayer!.getWaypointRunnableLogHelper()!.end(this.pathFindingLayer);
+this->pathFindingLayer.getWaypointRunnableLogHelper().end(this->pathFindingLayer);
     
-Thread.sleep(15 +(this.priorityP *2));
+Thread::sleep(15 +(this->priorityP *2));
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
-this.setRunning(false);
+this->setRunning(false);
     
 }
 
 }
 
 
-    public bool isDone(){
+    public: bool isDone(){
 
 
 

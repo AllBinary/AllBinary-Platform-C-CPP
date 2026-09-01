@@ -54,13 +54,12 @@
 class LinePathAnimation
             : public Object
          {
-        
 
-    private: static const instance: LinePathAnimation = new LinePathAnimation();
+    private: static LinePathAnimation instance() { return LinePathAnimation(); }
 
-    public static LinePathAnimation getInstance();
+    public: static LinePathAnimation getInstance();
 
-    public paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer);
+    public: void paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer);
 
 };
 

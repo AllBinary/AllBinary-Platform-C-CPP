@@ -61,9 +61,8 @@
 class HorizontalRotationManeuverAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
 };
 

@@ -62,19 +62,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SaveGameForm: public CommandForm {
-        
 
-    private: static FORM: CommandForm = CommandForm.getNullCommandForm()!;
+    private: static CommandForm FORM = CommandForm::getNullCommandForm();
 
                 //@Throws(Exception.constructor)
             
-    public static CommandForm createForm(CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+    public: static CommandForm createForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public static CommandForm getInstance();
+    public: static CommandForm getInstance();
 
-private constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+private: SaveGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
 };
 

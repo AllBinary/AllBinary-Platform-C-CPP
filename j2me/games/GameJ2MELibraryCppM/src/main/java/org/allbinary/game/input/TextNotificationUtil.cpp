@@ -70,63 +70,62 @@
 class TextNotificationUtil
             : public Object
          {
-        
 
-    private: static const instance: TextNotificationUtil = new TextNotificationUtil();
+    private: static TextNotificationUtil instance() { return TextNotificationUtil(); }
 
-    public static TextNotificationUtil getInstance(){
+    public: static TextNotificationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TextNotificationUtil.instance;
+                        return TextNotificationUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fireError(string message){
-PrimaryPlayerQueueFactory.getInstance()!.add(ErrorSound.getInstance());
+    public: void fireError(std::string message){
+PrimaryPlayerQueueFactory::getInstance().add(ErrorSound::getInstance());
     
-this.fire(message);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public fireNew(string message){
-PrimaryPlayerQueueFactory.getInstance()!.add(SelectSound.getInstance());
-    
-this.fire(message);
+this->fire(message);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fireSuccess(string message){
-PrimaryPlayerQueueFactory.getInstance()!.add(SelectSound.getInstance());
+    public: void fireNew(std::string message){
+PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
     
-this.fire(message);
+this->fire(message);
     
 }
 
 
-    private: const TWO: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(2)!;
+                //@Throws(Exception.constructor)
+            
+    public: void fireSuccess(std::string message){
+PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
+    
+this->fire(message);
+    
+}
 
-    private: const FALSE: Boolean = BooleanFactory.getInstance()!.FALSE;
 
-    private: const gameNotificationEventHandler: GameNotificationEventHandler = GameNotificationEventHandler.getInstance()!;
+    private: const Integer TWO = SmallIntegerSingletonFactory::getInstance().getAt(2);
+
+    private: const Boolean FALSE = BooleanFactory::getInstance().FALSE;
+
+    private: const GameNotificationEventHandler gameNotificationEventHandler = GameNotificationEventHandler::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public fire(string message){
+    public: void fire(std::string message){
 
-    gameNotificationEvent: GameNotificationEvent = new GameNotificationEvent(this, message, this.TWO, BasicColorFactory.getInstance()!.RED, this.FALSE);;
+    GameNotificationEvent gameNotificationEvent = GameNotificationEvent(this, message, this->TWO, BasicColorFactory::getInstance().RED, this->FALSE);;
     
-this.gameNotificationEventHandler!.fireEvent(gameNotificationEvent);
+this->gameNotificationEventHandler.fireEvent(gameNotificationEvent);
     
 }
 

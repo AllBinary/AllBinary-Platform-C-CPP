@@ -54,17 +54,16 @@
 class TransactionEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: TransactionEntityFactory = new TransactionEntityFactory();
+    private: static TransactionEntityFactory instance() { return TransactionEntityFactory(); }
 
-    public static TransactionEntityFactory getInstance();
+    public: static TransactionEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: TransactionEntityFactory();
 
-    public TransactionEntity getTransactionEntityInstance();
+    public: TransactionEntity getTransactionEntityInstance();
 
 };
 

@@ -44,36 +44,35 @@
 class ScreenListenerHandler
             : public Object
          {
-        
 
-    private: static const instance: ScreenListenerHandler = new ScreenListenerHandler();
+    private: static ScreenListenerHandler instance() { return ScreenListenerHandler(); }
 
-    public static ScreenListenerHandler getInstance(){
+    public: static ScreenListenerHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenListenerHandler.instance;
+                        return ScreenListenerHandler::instance();
     
 }
 
 
-    private: screenListenerInterface: ScreenListenerInterface = new ScreenEmptyListener();
+    private: ScreenListenerInterface screenListenerInterface = ScreenEmptyListener();
 
-    public setListener(ScreenListenerInterface screenListenerInterface){
-this.screenListenerInterface= screenListenerInterface;
+    public: void setListener(ScreenListenerInterface screenListenerInterface){
+this->screenListenerInterface= screenListenerInterface;
     
 }
 
 
-    public fireWithState(bool isFullScreen){
-this.screenListenerInterface!.onFullScreen(isFullScreen);
+    public: void fireWithState(bool isFullScreen){
+this->screenListenerInterface.onFullScreen(isFullScreen);
     
 }
 
 
-    public fire(){
-this.screenListenerInterface!.onFullScreenDisplay();
+    public: void fire(){
+this->screenListenerInterface.onFullScreenDisplay();
     
 }
 

@@ -48,34 +48,31 @@
         #include "InitialJumpBehavior.h"
 
 class TopViewGameLayerBehavior: public GameLayerBehavior {
-        
 
-    public const maxGravityActionIndex: int32_t;
+    public: int32_t maxGravityActionIndex;
 
-    public isJumpAction: bool = true;
+    public: bool isJumpAction = true;
 
-    public isJumpOver: bool = false;
+    public: bool isJumpOver = false;
 
-    public isFallingWithoutJumpAttempt: bool = false;
+    public: bool isFallingWithoutJumpAttempt = false;
 
-    public gravityActionIndex: int32_t = 0;
+    public: int32_t gravityActionIndex = 0;
 
-public constructor (int32_t maxGravityActionIndex){
-
-            super();
-        this.maxGravityActionIndex= maxGravityActionIndex;
+public: TopViewGameLayerBehavior(int32_t maxGravityActionIndex){
+this->maxGravityActionIndex= maxGravityActionIndex;
     
 }
 
 
-    public gravity(){
+    public: void gravity(){
 
-                        if(this.gravityActionIndex == 0)
+                        if(this->gravityActionIndex == 0)
                         
                                     {
-                                    this.gravityActionIndex++;
+                                    this->gravityActionIndex++;
     
-this.isFallingWithoutJumpAttempt= true;
+this->isFallingWithoutJumpAttempt= true;
     
 
                                     }
@@ -83,43 +80,43 @@ this.isFallingWithoutJumpAttempt= true;
 }
 
 
-    public land(VelocityProperties velocityProperties){
-velocityProperties!.getVelocityYBasicDecimalP()!.setint(0);
+    public: void land(VelocityProperties velocityProperties){
+velocityProperties.getVelocityYBasicDecimalP().setint(0);
     
-this.landReset();
-    
-}
-
-
-    public landReset(){
-this.gravityActionIndex= 0;
-    
-this.isFallingWithoutJumpAttempt= false;
-    
-this.isJumpAction= true;
-    
-this.isJumpOver= false;
+this->landReset();
     
 }
 
 
-    public up(VelocityProperties velocityProperties, BasicAccelerationProperties acceleration, InitialJumpBehavior jumpBehavior, int32_t accelerationMultiplier){
+    public: void landReset(){
+this->gravityActionIndex= 0;
+    
+this->isFallingWithoutJumpAttempt= false;
+    
+this->isJumpAction= true;
+    
+this->isJumpOver= false;
+    
+}
 
-                        if(!this.isJumpOver)
+
+    public: void up(VelocityProperties velocityProperties, BasicAccelerationProperties acceleration, InitialJumpBehavior jumpBehavior, int32_t accelerationMultiplier){
+
+                        if(!this->isJumpOver)
                         
                                     {
                                     
-                        if(this.gravityActionIndex < this.maxGravityActionIndex)
+                        if(this->gravityActionIndex < this->maxGravityActionIndex)
                         
                                     {
                                     
-    acceleration2: int32_t =  -acceleration.getForward() *accelerationMultiplier;;
+    int32_t acceleration2 =  -acceleration.getForward() *accelerationMultiplier;;
     
-velocityProperties!.getVelocityYBasicDecimalP()!.addint(acceleration2);
+velocityProperties.getVelocityYBasicDecimalP().addint(acceleration2);
     
-velocityProperties!.limitXYToForwardAndReverseMaxVelocity();
+velocityProperties.limitXYToForwardAndReverseMaxVelocity();
     
-this.gravityActionIndex++;
+this->gravityActionIndex++;
     
 
                                     }
@@ -136,12 +133,12 @@ this.gravityActionIndex++;
                         }
                             
 
-                        if(this.isJumpAction)
+                        if(this->isJumpAction)
                         
                                     {
-                                    jumpBehavior!.process();
+                                    jumpBehavior.process();
     
-this.isJumpAction= false;
+this->isJumpAction= false;
     
 
                                     }
@@ -149,12 +146,12 @@ this.isJumpAction= false;
 }
 
 
-    public inputFrames(VelocityProperties velocityProperties){
+    public: void inputFrames(VelocityProperties velocityProperties){
 
-                        if(this.gravityActionIndex > 0 && velocityProperties!.getVelocityYBasicDecimalP()!.getUnscaled() > 0)
+                        if(this->gravityActionIndex > 0 && velocityProperties.getVelocityYBasicDecimalP().getUnscaled() > 0)
                         
                                     {
-                                    this.isJumpOver= true;
+                                    this->isJumpOver= true;
     
 
                                     }

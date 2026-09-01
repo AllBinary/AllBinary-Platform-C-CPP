@@ -43,21 +43,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SecuredNativeLibraryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    load();
+    void load();
 
                 //@Throws(Exception.constructor)
             
-    unload();
+    void unload();
 
-    bool unlock(string key);
+    bool unlock(std::string key);
 
-    string getLibraryName();
+    std::string getLibraryName();
 
-    string getName();
+    std::string getName();
 
 };
 

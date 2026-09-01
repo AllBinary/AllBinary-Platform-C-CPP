@@ -56,17 +56,16 @@
 class OrderHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.OrderHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.OrderHelper";
 
-    private: static const FACTORYNAME: string = "OrderHelperFactory";
+    private: static const std::string FACTORYNAME = "OrderHelperFactory";
 
-public constructor ();
+public: OrderHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

@@ -84,34 +84,33 @@
 class MusicManager
             : public Object
          {
-        
 
-    public static pause(Activity activity, Function musicServiceClass){
+    public: static void pause(Activity activity, Function musicServiceClass){
 
-    commonStateStrings: CommonStateStrings = CommonStateStrings.getInstance()!;;
+    CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();;
     
 
-    musicPauseIntent: Intent = new Intent(activity as Context, musicServiceClass);;
+    Intent musicPauseIntent = Intent(activity as Context, musicServiceClass);;
     
-musicPauseIntent!.putExtra(commonStateStrings!.ON_START_COMMAND, 1);
+musicPauseIntent.putExtra(commonStateStrings.ON_START_COMMAND, 1);
     
 activity.startService(musicPauseIntent);
     
 }
 
 
-    public static resume(Activity activity, Function musicServiceClass){
+    public: static void resume(Activity activity, Function musicServiceClass){
 
-                        if(AndroidServicesUtil.getInstance()!.isServiceRunning(musicServiceClass!.toString()!))
+                        if(AndroidServicesUtil::getInstance().isServiceRunning(musicServiceClass.toString()!))
                         
                                     {
                                     
-    commonStateStrings: CommonStateStrings = CommonStateStrings.getInstance()!;;
+    CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();;
     
 
-    musicResumeIntent: Intent = new Intent(activity, musicServiceClass);;
+    Intent musicResumeIntent = Intent(activity, musicServiceClass);;
     
-musicResumeIntent!.putExtra(commonStateStrings!.ON_START_COMMAND, 2);
+musicResumeIntent.putExtra(commonStateStrings.ON_START_COMMAND, 2);
     
 activity.startService(musicResumeIntent);
     
@@ -121,88 +120,86 @@ activity.startService(musicResumeIntent);
 }
 
 
-    private: const PLAY: string = "Play ";
+    private: const std::string PLAY = "Play ";
 
-    private: const FOR: string = " for: ";
+    private: const std::string FOR = " for: ";
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const musicStrings: MusicStrings = MusicStrings.getInstance()!;
+    private: const MusicStrings musicStrings = MusicStrings::getInstance();
 
-    private: const commonStateStrings: CommonStateStrings = CommonStateStrings.getInstance()!;
+    private: const CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;
+    private: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
 
-    private: const androidServicesUtil: AndroidServicesUtil = AndroidServicesUtil.getInstance()!;
+    private: const AndroidServicesUtil androidServicesUtil = AndroidServicesUtil::getInstance();
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
 
-    private: const timeDelayHelper2: TimeDelayHelper = new TimeDelayHelper(1200);
+    private: const TimeDelayHelper timeDelayHelper2 = TimeDelayHelper(1200);
 
-    private: const songList: BasicArrayList;
+    private: BasicArrayList songList;
 
-    private: currentSongSound: Sound = NoSound.getInstance()!;
+    private: Sound currentSongSound = NoSound::getInstance();
 
-    private: nextSongSound: Sound = NoSound.getInstance()!;
+    private: Sound nextSongSound = NoSound::getInstance();
 
-    private: leftVolume: int32_t = 100;
+    private: int32_t leftVolume = 100;
 
-    private: rightVolume: int32_t = 100;
+    private: int32_t rightVolume = 100;
 
-    private: const musicServiceClass: Function;
+    private: Function musicServiceClass;
 
-    private: const currentIntent: Intent;
+    private: Intent currentIntent;
 
-public constructor (Function musicServiceClass, BasicArrayList songList){
-
-            super();
-        PreLogUtil.put(this.commonStateStrings!.CONTEXT +this.resourceUtil!.getContext(), this, this.commonStrings!.CONSTRUCTOR);
+public: MusicManager(Function musicServiceClass, BasicArrayList songList){
+PreLogUtil::put(this->commonStateStrings.CONTEXT +this->resourceUtil.getContext(), this, this->commonStrings.CONSTRUCTOR);
     
-this.musicServiceClass= musicServiceClass;
+this->musicServiceClass= musicServiceClass;
     
-this.currentIntent= new Intent(this.resourceUtil!.getContext(), musicServiceClass);
+this->currentIntent= Intent(this->resourceUtil.getContext(), musicServiceClass);
     
-this.songList= songList;
+this->songList= songList;
     
 }
 
 
-    public nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume){
+    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume){
 
                         if(nextSongSound == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    nextSongSound= NoSound.getInstance();
+                                    nextSongSound= NoSound::getInstance();
     
 
                                     }
                                 
-this.nextSongSound= nextSongSound;
+this->nextSongSound= nextSongSound;
     
-this.leftVolume= leftVolume;
+this->leftVolume= leftVolume;
     
-this.rightVolume= rightVolume;
+this->rightVolume= rightVolume;
     
-this.reset();
-    
-}
-
-
-    public reset(){
-this.timeDelayHelper!.delay= 0;
+this->reset();
     
 }
 
 
-    public process(){
+    public: void reset(){
+this->timeDelayHelper.delay= 0;
+    
+}
 
-                        if(this.songList!.size() == 0)
+
+    public: void process(){
+
+                        if(this->songList.size() == 0)
                         
                                     {
                                     
@@ -215,10 +212,10 @@ this.timeDelayHelper!.delay= 0;
                                     }
                                 
 
-                        if(this.timeDelayHelper!.isTime(this.gameTickTimeDelayHelper!.startTime))
+                        if(this->timeDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime))
                         
                                     {
-                                    this.startNewSong();
+                                    this->startNewSong();
     
 
 
@@ -230,18 +227,18 @@ this.timeDelayHelper!.delay= 0;
                                     }
                                 
 
-                        if(this.timeDelayHelper2!.isTime(this.gameTickTimeDelayHelper!.startTime))
+                        if(this->timeDelayHelper2.isTime(this->gameTickTimeDelayHelper.startTime))
                         
                                     {
                                     
-                        if(this.androidServicesUtil!.isServiceRunning(this.musicServiceClass!.toString()!))
+                        if(this->androidServicesUtil.isServiceRunning(this->musicServiceClass.toString()!))
                         
                                     {
                                     
                                     }
                                 
                         else {
-                            this.startNewSong();
+                            this->startNewSong();
     
 
                         }
@@ -252,83 +249,83 @@ this.timeDelayHelper!.delay= 0;
 }
 
 
-    public show(){
+    public: void show(){
 
 
 
 
                         for (
-    index: int32_t = this.songList!.size()!;--index >= 0; )
+    int32_t index = this->songList.size();--index >= 0; )
         {
 
-    sound: Sound = this.songList!.get(index) as Sound;;
+    Sound sound = this->songList.get(index) as Sound;;
     
 
-    duration: int64_t = sound.getDuration();;
+    int64_t duration = sound.getDuration();;
     
-PreLogUtil.put(new StringMaker().append(this.PLAY)!.append(sound.getResource())!.append(this.FOR)!.appendlong(duration)!.toString(), this, this.commonStrings!.PROCESS);
+PreLogUtil::put(StringMaker().append(this->PLAY).append(sound.getResource()).append(this->FOR).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
     
 }
 
 }
 
 
-    public startNewSong(){
+    public: void startNewSong(){
 
         try {
-            this.resourceUtil!.getContext()!.stopService(this.currentIntent);
+            this->resourceUtil.getContext().stopService(this->currentIntent);
     
 
-                        if(this.nextSongSound == NoSound.getInstance())
+                        if(this->nextSongSound == NoSound::getInstance())
                         
                                     {
-                                    this.currentSongSound= this.basicArrayListUtil!.getRandom(this.songList) as Sound;
+                                    this->currentSongSound= this->basicArrayListUtil.getRandom(this->songList) as Sound;
     
 
                                     }
                                 
                         else {
-                            this.currentSongSound= this.nextSongSound;
+                            this->currentSongSound= this->nextSongSound;
     
-this.nextSongSound= NoSound.getInstance();
+this->nextSongSound= NoSound::getInstance();
     
 
                         }
                             
 
-    duration: int64_t = this.currentSongSound!.getDuration();;
+    int64_t duration = this->currentSongSound.getDuration();;
     
-PreLogUtil.put(new StringMaker().append(this.PLAY)!.append(this.currentSongSound!.getResource())!.append(this.FOR)!.appendlong(duration)!.toString(), this, this.commonStrings!.PROCESS);
+PreLogUtil::put(StringMaker().append(this->PLAY).append(this->currentSongSound.getResource()).append(this->FOR).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
     
-this.timeDelayHelper!.delay= static_cast<int32_t>(duration);
+this->timeDelayHelper.delay= static_cast<int32_t>(duration);
     
-this.currentIntent!.putExtra(this.musicStrings!.SONG_EXTRA, this.resourceUtil!.getResourceId(this.currentSongSound!.getResource())!.intValue());
+this->currentIntent.putExtra(this->musicStrings.SONG_EXTRA, this->resourceUtil.getResourceId(this->currentSongSound.getResource()).intValue());
     
-this.currentIntent!.putExtra(this.musicStrings!.LEFT_VOLUME, this.leftVolume);
+this->currentIntent.putExtra(this->musicStrings.LEFT_VOLUME, this->leftVolume);
     
-this.currentIntent!.putExtra(this.musicStrings!.RIGHT_VOLUME, this.rightVolume);
+this->currentIntent.putExtra(this->musicStrings.RIGHT_VOLUME, this->rightVolume);
     
-this.resourceUtil!.getContext()!.startService(this.currentIntent);
+this->resourceUtil.getContext().startService(this->currentIntent);
     
 
                 //: 
 } catch(e) 
             {
 
-    resource: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string resource = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(this.currentSongSound != 
-                                    null
+                        if(this->currentSongSound != 
+                                    nullptr
                                 )
                         
                                     {
-                                    resource= this.currentSongSound!.getResource();
+                                    resource= this->currentSongSound.getResource();
     
 
                                     }
                                 
-PreLogUtil.putOE(this.commonStrings!.EXCEPTION_LABEL +resource, this, this.commonStrings!.PROCESS, e);
+PreLogUtil::putOE(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.PROCESS, e);
     
 }
 
@@ -337,8 +334,8 @@ PreLogUtil.putOE(this.commonStrings!.EXCEPTION_LABEL +resource, this, this.commo
 
                 //@Throws(Exception.constructor)
             
-    public stop(){
-this.resourceUtil!.getContext()!.stopService(this.currentIntent);
+    public: void stop(){
+this->resourceUtil.getContext().stopService(this->currentIntent);
     
 }
 

@@ -45,76 +45,73 @@
 class LOGGING
             : public Object
          {
-        
 
-    private: static logging: Vector = new Vector();
+    private: static Vector logging = Vector();
 
-    public static bool contains(LOGGING logType){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LOGGING.logging.contains(logType!.toString());;
-    
-}
-
-
-    public static const GRAPHICSPAINT: LOGGING = new LOGGING("Graphics Paint");
-
-    public static const GRAPHICSCREATION: LOGGING = new LOGGING("Graphics Creation");
-
-    public static const GRAPHICSDELETION: LOGGING = new LOGGING("Graphics Deletion");
-
-    public static const LOADINGERROR: LOGGING = new LOGGING("Loading Error");
-
-    public static const MENUEVENT: LOGGING = new LOGGING("Menu Action Event");
-
-    public static const MOUSEEVENT: LOGGING = new LOGGING("Mouse Action Event");
-
-    public static const KEYEVENT: LOGGING = new LOGGING("Keyboard Action Event");
-
-    public static const ACTIONEVENT: LOGGING = new LOGGING("Action Event");
-
-    public static const ADJUSTMENTEVENT: LOGGING = new LOGGING("Adjustment Action Event");
-
-    public static const COMPONENTEVENT: LOGGING = new LOGGING("Component Action Event");
-
-    public static const CONTAINEREVENT: LOGGING = new LOGGING("Container Action Event");
-
-    public static const FOCUSEVENT: LOGGING = new LOGGING("Focus Action Event");
-
-    public static const HIERARCHYEVENT: LOGGING = new LOGGING("Hierarchy Action Event");
-
-    public static const INPUTEVENT: LOGGING = new LOGGING("Input Action Event");
-
-    public static const INVOCATIONEVENT: LOGGING = new LOGGING("Invocation Action Event");
-
-    public static const ITEMEVENT: LOGGING = new LOGGING("Item Action Event");
-
-    public static const PAINTEVENT: LOGGING = new LOGGING("Paint Action Event");
-
-    public static const TEXTEVENT: LOGGING = new LOGGING("Text Action Event");
-
-    public static const WINDOWEVENT: LOGGING = new LOGGING("Window Action Event");
-
-    private: name: string;
-
-private constructor (string value){
-
-            super();
-        this.name= value;
-    
-LOGGING.logging.add(value);
-    
-}
-
-
-    public string toString(){
+    public: static bool contains(LOGGING logType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return LOGGING::logging.contains(logType.toString());;
+    
+}
+
+
+    public: static const LOGGING GRAPHICSPAINT = LOGGING("Graphics Paint");
+
+    public: static const LOGGING GRAPHICSCREATION = LOGGING("Graphics Creation");
+
+    public: static const LOGGING GRAPHICSDELETION = LOGGING("Graphics Deletion");
+
+    public: static const LOGGING LOADINGERROR = LOGGING("Loading Error");
+
+    public: static const LOGGING MENUEVENT = LOGGING("Menu Action Event");
+
+    public: static const LOGGING MOUSEEVENT = LOGGING("Mouse Action Event");
+
+    public: static const LOGGING KEYEVENT = LOGGING("Keyboard Action Event");
+
+    public: static const LOGGING ACTIONEVENT = LOGGING("Action Event");
+
+    public: static const LOGGING ADJUSTMENTEVENT = LOGGING("Adjustment Action Event");
+
+    public: static const LOGGING COMPONENTEVENT = LOGGING("Component Action Event");
+
+    public: static const LOGGING CONTAINEREVENT = LOGGING("Container Action Event");
+
+    public: static const LOGGING FOCUSEVENT = LOGGING("Focus Action Event");
+
+    public: static const LOGGING HIERARCHYEVENT = LOGGING("Hierarchy Action Event");
+
+    public: static const LOGGING INPUTEVENT = LOGGING("Input Action Event");
+
+    public: static const LOGGING INVOCATIONEVENT = LOGGING("Invocation Action Event");
+
+    public: static const LOGGING ITEMEVENT = LOGGING("Item Action Event");
+
+    public: static const LOGGING PAINTEVENT = LOGGING("Paint Action Event");
+
+    public: static const LOGGING TEXTEVENT = LOGGING("Text Action Event");
+
+    public: static const LOGGING WINDOWEVENT = LOGGING("Window Action Event");
+
+    private: std::string name;
+
+private: LOGGING(std::string value){
+this->name= value;
+    
+LOGGING::logging.add(value);
+    
+}
+
+
+    public: std::string toString(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->name;
     
 }
 

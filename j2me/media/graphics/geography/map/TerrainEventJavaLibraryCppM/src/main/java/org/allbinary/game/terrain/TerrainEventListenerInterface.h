@@ -47,11 +47,10 @@
         #include "TerrainEvent.h"
 
 class TerrainEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onTerrainEvent(TerrainEvent trackingEvent);
+    void onTerrainEvent(TerrainEvent trackingEvent);
 
 };
 

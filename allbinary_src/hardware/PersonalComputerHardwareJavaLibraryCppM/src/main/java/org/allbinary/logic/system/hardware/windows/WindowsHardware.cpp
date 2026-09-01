@@ -101,71 +101,68 @@
 class WindowsHardware
             : public Object
         : public HardwareInterface {
-        
 
-    private: componentInterfaceVector: Vector;
+    private: Vector componentInterfaceVector;
 
-    private: videoInterfaceVector: Vector;
+    private: Vector videoInterfaceVector;
 
-    private: hardDriveControllerInterfaceVector: Vector;
+    private: Vector hardDriveControllerInterfaceVector;
 
-    private: cpuInterfaceVector: Vector;
+    private: Vector cpuInterfaceVector;
 
-    private: usbInterfaceVector: Vector;
+    private: Vector usbInterfaceVector;
 
-    private: ethernetInterfaceVector: Vector;
+    private: Vector ethernetInterfaceVector;
 
-    private: multimediaInterfaceVector: Vector;
+    private: Vector multimediaInterfaceVector;
 
-    private: fireWireInterfaceVector: Vector;
+    private: Vector fireWireInterfaceVector;
 
-    private: bridgeInterfaceVector: Vector;
+    private: Vector bridgeInterfaceVector;
 
-    private: hardDriveInterfaceVector: Vector;
+    private: Vector hardDriveInterfaceVector;
 
-    private: macInterfaceVector: Vector;
+    private: Vector macInterfaceVector;
 
-    private: monitorInterfaceVector: Vector;
+    private: Vector monitorInterfaceVector;
 
-    private: const NAME: string = "Windows Hardware Profile";
+    private: const std::string NAME = "Windows Hardware Profile";
 
-    private: const MINHARDWARE: int32_t = 0;
+    private: const int32_t MINHARDWARE = 0;
 
-    private: const componentFactory: ComponentFactory = ComponentFactory.getInstance()!;
+    private: const ComponentFactory componentFactory = ComponentFactory::getInstance();
 
-public constructor (){
+public: WindowsHardware(){
 
-            super();
-        
         try {
-            this.componentInterfaceVector= new Vector();
+            this->componentInterfaceVector= Vector();
     
-this.videoInterfaceVector= new Vector();
+this->videoInterfaceVector= Vector();
     
-this.hardDriveControllerInterfaceVector= new Vector();
+this->hardDriveControllerInterfaceVector= Vector();
     
-this.cpuInterfaceVector= new Vector();
+this->cpuInterfaceVector= Vector();
     
-this.usbInterfaceVector= new Vector();
+this->usbInterfaceVector= Vector();
     
-this.ethernetInterfaceVector= new Vector();
+this->ethernetInterfaceVector= Vector();
     
-this.multimediaInterfaceVector= new Vector();
+this->multimediaInterfaceVector= Vector();
     
-this.fireWireInterfaceVector= new Vector();
+this->fireWireInterfaceVector= Vector();
     
-this.bridgeInterfaceVector= new Vector();
+this->bridgeInterfaceVector= Vector();
     
-this.hardDriveInterfaceVector= new Vector();
+this->hardDriveInterfaceVector= Vector();
     
-this.macInterfaceVector= new Vector();
+this->macInterfaceVector= Vector();
     
-this.monitorInterfaceVector= new Vector();
+this->monitorInterfaceVector= Vector();
     
 
-                        if(this.componentInterfaceVector!.length < this.MINHARDWARE)
+                        if(this->componentInterfaceVector.length < this->MINHARDWARE)
                         
-                                    throw new Exception("Not Enough Data For A Valid License On Windows");
+                                    throw Exception("Not Enough Data For A Valid License On Windows");
                                 
 
                 //: 
@@ -181,94 +178,94 @@ this.monitorInterfaceVector= new Vector();
 }
 
 
-    string getComponentType(string component){
+    private: std::string getComponentType(std::string component){
 
-                        if(component.indexOf(this.componentFactory!.ETHERNET.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.ETHERNET.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.ETHERNET.toString();;
+                        return this->componentFactory.ETHERNET.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.BRIDGE.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.BRIDGE.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.BRIDGE.toString();;
+                        return this->componentFactory.BRIDGE.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.IDE.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.IDE.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.IDE.toString();;
+                        return this->componentFactory.IDE.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.MULTIMEDIA.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.MULTIMEDIA.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.MULTIMEDIA.toString();;
+                        return this->componentFactory.MULTIMEDIA.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.SCSI.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.SCSI.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.SCSI.toString();;
+                        return this->componentFactory.SCSI.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.USB.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.USB.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.USB.toString();;
+                        return this->componentFactory.USB.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.VGA.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.VGA.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.VGA.toString();;
+                        return this->componentFactory.VGA.toString();;
     
 
                                     }
@@ -279,146 +276,146 @@ this.monitorInterfaceVector= new Vector();
 }
 
 
-    public MediaInterface getMultimedia(int32_t index){
+    public: MediaInterface getMultimedia(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.multimediaInterfaceVector!.get(index) as MediaInterface;
+                        return this->multimediaInterfaceVector.get(index) as MediaInterface;
     
 }
 
 
-    public BridgeInterface getBridge(int32_t index){
+    public: BridgeInterface getBridge(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bridgeInterfaceVector!.get(index) as BridgeInterface;
+                        return this->bridgeInterfaceVector.get(index) as BridgeInterface;
     
 }
 
 
-    public CpuInterface getCpu(int32_t index){
+    public: CpuInterface getCpu(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cpuInterfaceVector!.get(index) as CpuInterface;
+                        return this->cpuInterfaceVector.get(index) as CpuInterface;
     
 }
 
 
-    public EthernetInterface getEthernet(int32_t index){
+    public: EthernetInterface getEthernet(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ethernetInterfaceVector!.get(index) as EthernetInterface;
+                        return this->ethernetInterfaceVector.get(index) as EthernetInterface;
     
 }
 
 
-    public FireWireInterface getFireWire(int32_t index){
+    public: FireWireInterface getFireWire(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fireWireInterfaceVector!.get(index) as FireWireInterface;
+                        return this->fireWireInterfaceVector.get(index) as FireWireInterface;
     
 }
 
 
-    public HardDriveControllerInterface getHardDriveController(int32_t index){
+    public: HardDriveControllerInterface getHardDriveController(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hardDriveControllerInterfaceVector!.get(index) as HardDriveControllerInterface;
+                        return this->hardDriveControllerInterfaceVector.get(index) as HardDriveControllerInterface;
     
 }
 
 
-    public HardDriveInterface getHardDrive(int32_t index){
+    public: HardDriveInterface getHardDrive(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hardDriveInterfaceVector!.get(index) as HardDriveInterface;
+                        return this->hardDriveInterfaceVector.get(index) as HardDriveInterface;
     
 }
 
 
-    public MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index){
+    public: MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.macInterfaceVector!.get(index) as MachineAccessControlAddressInterface;
+                        return this->macInterfaceVector.get(index) as MachineAccessControlAddressInterface;
     
 }
 
 
-    public MonitorInterface getMonitor(int32_t index){
+    public: MonitorInterface getMonitor(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.monitorInterfaceVector!.get(index) as MonitorInterface;
+                        return this->monitorInterfaceVector.get(index) as MonitorInterface;
     
 }
 
 
-    public UsbInterface getUsb(int32_t index){
+    public: UsbInterface getUsb(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.usbInterfaceVector!.get(index) as UsbInterface;
+                        return this->usbInterfaceVector.get(index) as UsbInterface;
     
 }
 
 
-    public VideoInterface getVideo(int32_t index){
+    public: VideoInterface getVideo(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.videoInterfaceVector!.get(index) as VideoInterface;
+                        return this->videoInterfaceVector.get(index) as VideoInterface;
     
 }
 
 
-    public HardwareComponentInterface getComponent(int32_t index){
+    public: HardwareComponentInterface getComponent(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentInterfaceVector!.get(index) as HardwareComponentInterface;
+                        return this->componentInterfaceVector.get(index) as HardwareComponentInterface;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    hardwareBuffer: StringMaker = new StringMaker();;
+    StringMaker hardwareBuffer = StringMaker();;
     
 
-    size: int32_t = this.componentInterfaceVector!.length!;;
+    int32_t size = this->componentInterfaceVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    componentInterface: HardwareComponentInterface = this.componentInterfaceVector!.get(index) as HardwareComponentInterface;;
+    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index) as HardwareComponentInterface;;
     
-hardwareBuffer!.append(componentInterface!.toString());
+hardwareBuffer.append(componentInterface.toString());
     
-hardwareBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+hardwareBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
 }
 
@@ -426,12 +423,12 @@ hardwareBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return hardwareBuffer!.toString();;
+                        return hardwareBuffer.toString();;
     
 }
 
 
-    public bool compareTo(HardwareInterface hardwareInterface){
+    public: bool compareTo(HardwareInterface hardwareInterface){
 
 
 
@@ -441,12 +438,12 @@ hardwareBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
 }
 
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface){
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 

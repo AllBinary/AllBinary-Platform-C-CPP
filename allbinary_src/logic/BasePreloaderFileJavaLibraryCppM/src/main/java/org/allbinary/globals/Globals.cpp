@@ -64,87 +64,84 @@
 class Globals
             : public Object
          {
-        
 
-    private: static const instance: Globals = new Globals();
+    private: static Globals instance() { return Globals(); }
 
-    public static Globals getInstance(){
+    public: static Globals getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Globals.instance;
+                        return Globals::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: Globals(){
+}
 
 
-    public init(ClassLoader classLoader, string pathString){
+    public: void init(ClassLoader classLoader, std::string pathString){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-
-    appUrlGlobals: AppUrlGlobals = new AppUrlGlobals();;
-    
-appUrlGlobals!.setWebappPath(pathString);
-    
-URLGLOBALS.init(appUrlGlobals);
-    
-WebappClassLoaderInfo.setLoader(classLoader);
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    AppUrlGlobals appUrlGlobals = AppUrlGlobals();;
     
-stringBuffer!.append("Setting Up AllBinary System Configuration Args: ");
+appUrlGlobals.setWebappPath(pathString);
     
-stringBuffer!.append(pathString);
+URLGLOBALS::init(appUrlGlobals);
     
-stringBuffer!.append(" ClassLoader: ");
-    
-stringBuffer!.append(classLoader!.constructor.name.toString()!);
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.INIT);
+WebappClassLoaderInfo::setLoader(classLoader);
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("Setting Up AllBinary System Configuration Args: ");
+    
+stringBuffer.append(pathString);
+    
+stringBuffer.append(" ClassLoader: ");
+    
+stringBuffer.append(classLoader.constructor.name.toString()!);
+    
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
     
 
-                        if(stringValidationUtil!.isEmpty(pathString))
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(stringValidationUtil.isEmpty(pathString))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("No Path Provided. Using Process Path: ");
+stringBuffer.append("No Path Provided. Using Process Path: ");
     
-stringBuffer!.append(pathString);
+stringBuffer.append(pathString);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(CommonSeps.getInstance()!.EQUALS);
+stringBuffer.append(CommonSeps::getInstance().EQUALS);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.INIT);
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
     
 
                                     }
                                 
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("Webapp Path Set To: ");
+stringBuffer.append("Webapp Path Set To: ");
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.INIT);
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
     
 }
 

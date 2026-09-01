@@ -64,13 +64,12 @@
 class KeyPressesAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    isSingleKeyProcessing: bool = InputFeatureFactory.getInstance()!.isSingleKeyProcessing()!;;
+    bool isSingleKeyProcessing = InputFeatureFactory::getInstance().isSingleKeyProcessing();;
     
 
                         if(isSingleKeyProcessing)
@@ -80,7 +79,7 @@ class KeyPressesAIFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new KeyPressesAI(hashtable, ownerLayerInterface, gameInput);
+                        return KeyPressesAI(hashtable, ownerLayerInterface, gameInput);
     
 
                                     }
@@ -90,7 +89,7 @@ class KeyPressesAIFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MultiKeyPressesAI(hashtable, ownerLayerInterface, gameInput);
+                        return MultiKeyPressesAI(hashtable, ownerLayerInterface, gameInput);
     
 
                         }

@@ -21,6 +21,8 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICE_H
         #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
@@ -49,15 +51,14 @@
 class InputAutomationRobotService
             : public Object
         : public InputAutomationRobotServiceInterface {
-        
 
-    private: inputRobotInterfaceArray: std::vector<InputRobotInterface>;
+    private: std::vector<InputRobotInterface> inputRobotInterfaceArray;
 
-public constructor (std::vector<InputRobotInterface> inputRobotInterfaceArray);
+public: InputAutomationRobotService(std::vector<InputRobotInterface> inputRobotInterfaceArray);
 
-    public std::vector<InputRobotInterface> getInputRobotInterfaceArray();
+    public: std::vector<InputRobotInterface> getInputRobotInterfaceArray();
 
-    public setInputRobotInterfaceArray(std::vector<InputRobotInterface> inputRobotInterfaceArray);
+    public: void setInputRobotInterfaceArray(std::vector<InputRobotInterface> inputRobotInterfaceArray);
 
 };
 

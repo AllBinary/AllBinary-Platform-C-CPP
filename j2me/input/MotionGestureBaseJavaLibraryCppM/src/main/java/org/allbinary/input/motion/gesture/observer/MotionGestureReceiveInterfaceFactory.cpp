@@ -51,11 +51,10 @@
 class MotionGestureReceiveInterfaceFactory
             : public Object
          {
-        
 
-    public static CompleteMotionGestureListenerInterface getInstance(){
+    public: static CompleteMotionGestureListenerInterface getInstance(){
 
-    configuration: MotionGestureConfiguration = MotionGestureConfigurationFactory.getInstance()!;;
+    MotionGestureConfiguration configuration = MotionGestureConfigurationFactory::getInstance();;
     
 
                         if(!configuration.isExecutingActionsAllowed())
@@ -65,7 +64,7 @@ class MotionGestureReceiveInterfaceFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NullCompleteMotionGestureReceiver();
+                        return NullCompleteMotionGestureReceiver();
     
 
                                     }
@@ -75,7 +74,7 @@ class MotionGestureReceiveInterfaceFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ResolveCompleteMotionGestureListener();
+                        return ResolveCompleteMotionGestureListener();
     
 
                         }

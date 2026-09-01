@@ -64,31 +64,30 @@
 class BasicEmailInfo
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: subject: string;
+    private: std::string subject;
 
-    private: textBody: string;
+    private: std::string textBody;
 
-    emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    protected: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor (string subject, string textBody);
+public: BasicEmailInfo(std::string subject, std::string textBody);
 
-    public string getSubject();
+    public: std::string getSubject();
 
-    public string getTextBody();
+    public: std::string getTextBody();
 
-    public EmailServerConfigurationInterface getEmailServerConfigurationInterface();
+    public: EmailServerConfigurationInterface getEmailServerConfigurationInterface();
 
-    public setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface);
+    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface);
 
-    public string toString();
+    public: std::string toString();
 
                 //@Throws(Exception.constructor)
             
-    init();
+    protected: void init();
 
 };
 

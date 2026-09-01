@@ -55,20 +55,17 @@
 class OrientationToGameKeyEvent
             : public Object
          {
-        
 
-    private: allBinaryGyroSensor: AllBinaryOrientationSensor;
+    private: AllBinaryOrientationSensor allBinaryGyroSensor;
 
-    private: const MIN: int32_t = 15;
+    private: const int32_t MIN = 15;
 
-public constructor (){
+public: OrientationToGameKeyEvent(){
 
-            super();
-        
-                        if(Features.getInstance()!.isFeature(SensorFeatureFactory.getInstance()!.NO_ORIENTATION))
+                        if(Features::getInstance().isFeature(SensorFeatureFactory::getInstance().NO_ORIENTATION))
                         
                                     {
-                                    this.allBinaryGyroSensor= new NoGyroSensor();
+                                    this->allBinaryGyroSensor= NoGyroSensor();
     
 
                                     }
@@ -77,7 +74,7 @@ public constructor (){
                             
 
 
-                            throw new Exception("Not Such Feature");
+                            throw Exception("Not Such Feature");
                     
 
                         }
@@ -85,31 +82,31 @@ public constructor (){
 }
 
 
-    public setAllBinaryGyroSensor(AllBinaryOrientationSensor allBinaryGyroSensor){
-this.allBinaryGyroSensor= allBinaryGyroSensor;
+    public: void setAllBinaryGyroSensor(AllBinaryOrientationSensor allBinaryGyroSensor){
+this->allBinaryGyroSensor= allBinaryGyroSensor;
     
 }
 
 
-    public AllBinaryOrientationSensor getAllBinaryGyroSensor(){
+    public: AllBinaryOrientationSensor getAllBinaryGyroSensor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.allBinaryGyroSensor;
+                        return this->allBinaryGyroSensor;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    public: void process(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    updateGameKeyEvents(Orientation orientation, int32_t yaw, int32_t pitch, int32_t roll){
+    private: void updateGameKeyEvents(Orientation orientation, int32_t yaw, int32_t pitch, int32_t roll){
 }
 
 

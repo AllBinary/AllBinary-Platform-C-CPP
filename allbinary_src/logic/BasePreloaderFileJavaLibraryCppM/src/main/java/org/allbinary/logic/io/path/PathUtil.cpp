@@ -56,88 +56,85 @@
 class PathUtil
             : public Object
          {
-        
 
-    private: static const instance: PathUtil = new PathUtil();
+    private: static PathUtil instance() { return PathUtil(); }
 
-    public static PathUtil getInstance(){
+    public: static PathUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathUtil.instance;
+                        return PathUtil::instance();
     
 }
 
 
-    private: const abPathData: AbPathData = AbPathData.getInstance()!;
+    private: const AbPathData abPathData = AbPathData::getInstance();
 
-    private: const filePathData: FilePathData = FilePathData.getInstance()!;
+    private: const FilePathData filePathData = FilePathData::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: PathUtil(){
+}
 
 
-    public string getExtensionWithAbFilePath(AbFilePath abFilePath){
+    public: std::string getExtensionWithAbFilePath(AbFilePath abFilePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abPathData!.getExtension(abFilePath!.toString());;
+                        return this->abPathData.getExtension(abFilePath.toString());;
     
 }
 
 
-    public string getExtensionWithAbPath(AbPath abPath){
+    public: std::string getExtensionWithAbPath(AbPath abPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abPathData!.getExtension(abPath!.toString());;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public string getWithoutExtensionWithAbFilePath(AbFilePath abFilePath){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getWithoutExtension(abFilePath!.toString());;
+                        return this->abPathData.getExtension(abPath.toString());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getWithoutExtensionWithAbPath(AbPath abPath){
+    public: std::string getWithoutExtensionWithAbFilePath(AbFilePath abFilePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getWithoutExtension(abPath!.toString());;
+                        return this->getWithoutExtension(abFilePath.toString());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getWithoutExtension(string filePath){
+    public: std::string getWithoutExtensionWithAbPath(AbPath abPath){
 
-    indexOfFileExtensionDelmiter: int32_t = this.abPathData!.getExtensionIndex(filePath)!;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->getWithoutExtension(abPath.toString());;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string getWithoutExtension(std::string filePath){
+
+    int32_t indexOfFileExtensionDelmiter = this->abPathData.getExtensionIndex(filePath);;
     
 
-    pathWithoutExtension: string = filePath;;
+    std::string pathWithoutExtension = filePath;;
     
 
                         if(indexOfFileExtensionDelmiter >= 0)
                         
                                     {
-                                    pathWithoutExtension= filePath!.substring(0, indexOfFileExtensionDelmiter);
+                                    pathWithoutExtension= filePath.substring(0, indexOfFileExtensionDelmiter);
     
 
                                     }
@@ -151,13 +148,13 @@ private constructor (){
 }
 
 
-    public bool isValid(string path){
+    public: bool isValid(std::string path){
 
-                        if(this.isValidStart(path))
+                        if(this->isValidStart(path))
                         
                                     {
                                     
-                        if(this.isValidEnd(path))
+                        if(this->isValidEnd(path))
                         
                                     {
                                     
@@ -181,52 +178,9 @@ private constructor (){
 }
 
 
-    bool isValidStart(string path){
+    private: bool isValidStart(std::string path){
 
-                        if(path[0] == this.abPathData!.SEPARATORCHAR || path[0] == '.')
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-
-                                    }
-                                
-                        else {
-                            
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-
-                        }
-                            
-}
-
-
-    bool isValidEnd(string path){
-
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
-    
-
-                        if(stringValidationUtil!.isEmpty(path))
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-
-                                    }
-                                
-
-                        if(path[path.length -1] == this.abPathData!.SEPARATORCHAR)
+                        if(path[0] == this->abPathData.SEPARATORCHAR || path[0] == '.')
                         
                                     {
                                     
@@ -251,57 +205,100 @@ private constructor (){
 }
 
 
-    public string adjustStart(string path){
+    private: bool isValidEnd(std::string path){
 
-                        if(!this.isValidStart(path))
-                        
-                                    {
-                                    path= this.abPathData!.SEPARATOR +path;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return path;
-    
-}
-
-
-    public string adjustEnd(string path){
-
-                        if(!this.isValidEnd(path))
-                        
-                                    {
-                                    path= path +this.abPathData!.SEPARATOR;
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return path;
-    
-}
-
-
-    public string adjust(string path){
-
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
-    
-
-                        if(stringValidationUtil!.isEmpty(path))
+                        if(stringValidationUtil.isEmpty(path))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abPathData!.SEPARATOR;
+                        return false;
+    
+
+                                    }
+                                
+
+                        if(path[path.size() -1] == this->abPathData.SEPARATORCHAR)
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+
+                        }
+                            
+}
+
+
+    public: std::string adjustStart(std::string path){
+
+                        if(!this->isValidStart(path))
+                        
+                                    {
+                                    path= this->abPathData.SEPARATOR +path;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return path;
+    
+}
+
+
+    public: std::string adjustEnd(std::string path){
+
+                        if(!this->isValidEnd(path))
+                        
+                                    {
+                                    path= path +this->abPathData.SEPARATOR;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return path;
+    
+}
+
+
+    public: std::string adjust(std::string path){
+
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(stringValidationUtil.isEmpty(path))
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->abPathData.SEPARATOR;
     
 
                                     }
@@ -310,7 +307,7 @@ private constructor (){
                         if(path.indexOf("\\") >= 0)
                         
                                     {
-                                    path= path.replace('\\', this.abPathData!.SEPARATORCHAR);
+                                    path= path.replace('\\', this->abPathData.SEPARATORCHAR);
     
 
                                     }
@@ -326,15 +323,15 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public AbPath removeNameFromPath(string path){
+    public: AbPath removeNameFromPath(std::string path){
 
-    endIndex: int32_t = path.lastIndexOf(this.abPathData!.SEPARATOR)!;;
+    int32_t endIndex = path.lastIndexOf(this->abPathData.SEPARATOR);;
     
 
                         if(endIndex < 0)
                         
                                     {
-                                    endIndex= path.lastIndexOf(this.filePathData!.SEPARATORCHAR);
+                                    endIndex= path.lastIndexOf(this->filePathData.SEPARATORCHAR);
     
 
                                     }
@@ -347,33 +344,33 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath.createAbPath();;
+                        return AbPath::createAbPath();;
     
 
                                     }
                                 
 
-                        if(path.length == endIndex +1)
+                        if(path.size() == endIndex +1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.removeNameFromPath(path.substring(0, endIndex -1));;
+                        return this->removeNameFromPath(path.substring(0, endIndex -1));;
     
 
                                     }
                                 
                         else {
                             
-    pathWithoutName: string = path.substring(0, endIndex)!;;
+    std::string pathWithoutName = path.substring(0, endIndex);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(pathWithoutName, StringUtil.getInstance()!.EMPTY_STRING);
+                        return AbPath(pathWithoutName, StringUtil::getInstance().EMPTY_STRING);
     
 
                         }

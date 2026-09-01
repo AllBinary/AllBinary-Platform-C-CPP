@@ -46,71 +46,68 @@
 class StoreRoleFactory
             : public Object
          {
-        
 
-    private: static const instance: StoreRoleFactory = new StoreRoleFactory();
+    private: static StoreRoleFactory instance() { return StoreRoleFactory(); }
 
-    public static StoreRoleFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreRoleFactory.instance;
-    
-}
-
-
-    private: const roles: Vector<any> = new Vector<any>();
-
-    private: const subscriberRoles: Vector<any> = new Vector<any>();
-
-    private: const wholesaleRoles: Vector<any> = new Vector<any>();
-
-private constructor (){
-
-            super();
-        
-    basicUserRoleFactory: BasicUserRoleFactory = BasicUserRoleFactory.getInstance()!;;
-    
-this.roles.add(basicUserRoleFactory!.CUSTOMER);
-    
-this.roles.add(basicUserRoleFactory!.SUBSCRIBERCUSTOMER);
-    
-this.roles.add(basicUserRoleFactory!.WHOLESALECUSTOMER);
-    
-this.subscriberRoles!.add(basicUserRoleFactory!.SUBSCRIBERCUSTOMER);
-    
-this.wholesaleRoles!.add(basicUserRoleFactory!.WHOLESALECUSTOMER);
-    
-}
-
-
-    public Vector<any> getRoles(){
+    public: static StoreRoleFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.roles;
+                        return StoreRoleFactory::instance();
     
 }
 
 
-    public Vector<any> getSubscriberRoles(){
+    private: const Vector<any> roles = Vector<any>();
 
+    private: const Vector<any> subscriberRoles = Vector<any>();
 
+    private: const Vector<any> wholesaleRoles = Vector<any>();
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.subscriberRoles;
+private: StoreRoleFactory(){
+
+    BasicUserRoleFactory basicUserRoleFactory = BasicUserRoleFactory::getInstance();;
+    
+this->roles.add(basicUserRoleFactory.CUSTOMER);
+    
+this->roles.add(basicUserRoleFactory.SUBSCRIBERCUSTOMER);
+    
+this->roles.add(basicUserRoleFactory.WHOLESALECUSTOMER);
+    
+this->subscriberRoles.add(basicUserRoleFactory.SUBSCRIBERCUSTOMER);
+    
+this->wholesaleRoles.add(basicUserRoleFactory.WHOLESALECUSTOMER);
     
 }
 
 
-    public Vector<any> getWholesaleRoles(){
+    public: Vector<any> getRoles(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.wholesaleRoles;
+                        return this->roles;
+    
+}
+
+
+    public: Vector<any> getSubscriberRoles(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->subscriberRoles;
+    
+}
+
+
+    public: Vector<any> getWholesaleRoles(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->wholesaleRoles;
     
 }
 

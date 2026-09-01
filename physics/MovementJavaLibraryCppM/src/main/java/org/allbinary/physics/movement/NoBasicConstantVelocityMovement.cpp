@@ -50,10 +50,9 @@
         #include "BasicConstantVelocityMovement.h"
 
 class NoBasicConstantVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-public constructor (){
-            super(BasicDecimal.ZERO_BIGDECIMAL, new BasicVelocityProperties());
+public: NoBasicConstantVelocityMovement(){
+            super(BasicDecimal::ZERO_BIGDECIMAL, BasicVelocityProperties());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -63,7 +62,7 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer layer){
 }
 
 

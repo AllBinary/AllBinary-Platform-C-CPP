@@ -50,9 +50,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OpenGLFeature: public Feature {
-        
 
- constructor (string name);
+: OpenGLFeature(std::string name);
 
 };
 

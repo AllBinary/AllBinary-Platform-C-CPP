@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASDOM_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -88,71 +90,70 @@
 class CanvasDom
             : public Object
          {
-        
 
-    public static const FRAME: string = "frame";
+    public: static const std::string FRAME = "frame";
 
-    public static const ROTATE: string = "rotate";
+    public: static const std::string ROTATE = "rotate";
 
-    public static const SIZE: string = "size";
+    public: static const std::string SIZE = "size";
 
-    public static const X: string = "X";
+    public: static const std::string X = "X";
 
-    public static const Y: string = "Y";
+    public: static const std::string Y = "Y";
 
-    public static const ZOOM: string = "zoom";
+    public: static const std::string ZOOM = "zoom";
 
-    public static const GRID: string = "grid";
+    public: static const std::string GRID = "grid";
 
-    public static const ENABLED: string = "enabled";
+    public: static const std::string ENABLED = "enabled";
 
-    public static const POSSIBLE: string = "possible";
+    public: static const std::string POSSIBLE = "possible";
 
-    public static const GRAPHICITEMS: string = "graphicItems";
+    public: static const std::string GRAPHICITEMS = "graphicItems";
 
-    public static const REAL_SIZE: string = "realSize";
+    public: static const std::string REAL_SIZE = "realSize";
 
-    public static const WIDTH: string = "width";
+    public: static const std::string WIDTH = "width";
 
-    public static const HEIGHT: string = "height";
+    public: static const std::string HEIGHT = "height";
 
-    private: graphicItemHashMap: HashMap<any, any>;
+    private: HashMap<any, any> graphicItemHashMap;
 
-    private: angle: double;
+    private: double angle;
 
-    private: dimension: IntegerDimension;
+    private: IntegerDimension dimension;
 
-    private: const grid: Grid;
+    private: Grid grid;
 
-public constructor (Node canvasNode);
+public: CanvasDom(Node canvasNode);
 
-public constructor (CanvasJPanel canvasJPanel);
+public: CanvasDom(CanvasJPanel canvasJPanel);
 
-    public double getAngle();
+    public: double getAngle();
 
-    public HashMap<any, any> getGraphicItemHashMap();
+    public: HashMap<any, any> getGraphicItemHashMap();
 
-    public setAngle(double angle);
-
-                //@Throws(Exception.constructor)
-            
-    public setWorkArea(int32_t x, int32_t y);
+    public: void setAngle(double angle);
 
                 //@Throws(Exception.constructor)
             
-    public setGrid(int32_t gridX, int32_t gridY);
-
-    Node getPointNode(GPoint point, string pointName);
+    public: void setWorkArea(int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom();
+    public: void setGrid(int32_t gridX, int32_t gridY);
 
-    public IntegerDimension getDimension();
+    private: Node getPointNode(GPoint point, std::string pointName);
 
-    public setDimension(IntegerDimension dimension);
+                //@Throws(Exception.constructor)
+            
+    public: Node toDom();
 
-    public Grid getGrid();
+    public: IntegerDimension getDimension();
+
+    public: void setDimension(IntegerDimension dimension);
+
+    public: Grid getGrid();
 
 };
 

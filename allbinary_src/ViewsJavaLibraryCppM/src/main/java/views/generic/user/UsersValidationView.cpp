@@ -58,34 +58,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "UsersView.h"
 
-class UsersValidationView: public UsersView: public ValidationComponentInterface {
-        
+class UsersValidationView: public UsersView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: UsersValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.userVector= UserEntityFactory.getInstance()!.getCustomers();
+this->userVector= UserEntityFactory::getInstance().getCustomers();
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-                        if(this.userVector!.size() > 0)
+                        if(this->userVector.size() > 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -95,7 +94,7 @@ this.userVector= UserEntityFactory.getInstance()!.getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                         }
@@ -105,10 +104,10 @@ this.userVector= UserEntityFactory.getInstance()!.getCustomers();
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -117,14 +116,14 @@ this.userVector= UserEntityFactory.getInstance()!.getCustomers();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
@@ -138,10 +137,10 @@ this.userVector= UserEntityFactory.getInstance()!.getCustomers();
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -157,7 +156,7 @@ this.userVector= UserEntityFactory.getInstance()!.getCustomers();
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -167,7 +166,7 @@ this.userVector= UserEntityFactory.getInstance()!.getCustomers();
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

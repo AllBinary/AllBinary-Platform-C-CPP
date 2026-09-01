@@ -45,17 +45,16 @@
 class OrientationData
             : public Object
          {
-        
 
-    private: static const SINGLETON: OrientationData = new OrientationData();
+    private: static const OrientationData SINGLETON = OrientationData();
 
-    public static OrientationData getInstance();
+    public: static OrientationData getInstance();
 
-private constructor ();
+private: OrientationData();
 
-    public const ORIENTATION_SENSOR_INPUT: string = "Orientation Sensor Input";
+    public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
 
-    public const ORIENTATION_TYPE: string = "Orientation Type";
+    public: const std::string ORIENTATION_TYPE = "Orientation Type";
 
 };
 

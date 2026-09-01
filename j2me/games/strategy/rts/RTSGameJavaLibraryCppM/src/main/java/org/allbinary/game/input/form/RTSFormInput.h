@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_RTSFORMINPUT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -104,81 +106,80 @@
 class RTSFormInput
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;
+    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    const newUnconstructedRTSLayerInterfaceArray: std::vector<CollidableDestroyableDamageableLayer> = new Array(7);
+    protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = new Array(7);
 
-    const groupInterfaceArray: std::vector<Group>;
+    protected: std::vector<Group> groupInterfaceArray;
 
-    private: selectedGeographicCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition selectedGeographicCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: stickyItemSelected: bool= false;
+    private: bool stickyItemSelected= false;
 
-    private: selectedStickyItemIndex: int32_t= 0;
+    private: int32_t selectedStickyItemIndex= 0;
 
-    private: selectedStickyItem: ABCustomItem = ABCustomItem.getNullInstance()!;
+    private: ABCustomItem selectedStickyItem = ABCustomItem::getNullInstance();
 
-public constructor (std::vector<Group> groupInterfaceArray);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: RTSFormInput(std::vector<Group> groupInterfaceArray);
 
                 //@Throws(Exception.constructor)
             
-    public processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager layerManager);
+    public: void processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point);
 
                 //@Throws(Exception.constructor)
             
-    public processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index);
+    public: void process(AllBinaryLayerManager layerManager);
 
                 //@Throws(Exception.constructor)
             
-    public bool processSticky(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point);
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index);
+    public: bool processSticky(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point);
 
                 //@Throws(Exception.constructor)
             
-    ABCustomItem getItemAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point);
+    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    int32_t getIndexAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point);
+    protected: ABCustomItem getItemAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point);
 
                 //@Throws(Exception.constructor)
             
-    CollidableDestroyableDamageableLayer getInstance(AllBinaryLayerManager layerManager, ABCustomItem aItem, GeographicMapCellPosition geographicMapCellPosition);
+    protected: int32_t getIndexAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point);
 
-    public GeographicMapCellPosition getSelectedGeographicCellPosition();
+                //@Throws(Exception.constructor)
+            
+    protected: CollidableDestroyableDamageableLayer getInstance(AllBinaryLayerManager layerManager, ABCustomItem aItem, GeographicMapCellPosition geographicMapCellPosition);
 
-    public setSelectedGeographicCellPosition(GeographicMapCellPosition selectedGeographicCellPosition);
+    public: GeographicMapCellPosition getSelectedGeographicCellPosition();
 
-    public bool isStickyItemSelected();
+    public: void setSelectedGeographicCellPosition(GeographicMapCellPosition selectedGeographicCellPosition);
 
-    public setStickyItemSelected(bool stickyItemSelected);
+    public: bool isStickyItemSelected();
 
-    public ABCustomItem getSelectedStickyItem();
+    public: void setStickyItemSelected(bool stickyItemSelected);
 
-    public setSelectedStickyItem(ABCustomItem selectedStickyItem);
+    public: ABCustomItem getSelectedStickyItem();
 
-    public int32_t getSelectedStickyItemIndex();
+    public: void setSelectedStickyItem(ABCustomItem selectedStickyItem);
 
-    public setSelectedStickyItemIndex(int32_t selectedStickyItemIndex);
+    public: int32_t getSelectedStickyItemIndex();
 
-    public Hashtable<any, any> getHashtable();
+    public: void setSelectedStickyItemIndex(int32_t selectedStickyItemIndex);
+
+    public: Hashtable<any, any> getHashtable();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <java/util/Vector.h>
@@ -54,103 +56,99 @@
 class HtmlForm
             : public Object
          {
-        
 
-    private: const FORMBEGIN: string = "<form ";
+    private: const std::string FORMBEGIN = "<form ";
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const FORMEND: string = "</form>";
+    private: const std::string FORMEND = "</form>";
 
-    private: const ACTION: string = "ACTION=\"";
+    private: const std::string ACTION = "ACTION=\"";
 
-    private: const GET: string = "GET\"";
+    private: const std::string GET = "GET\"";
 
-    private: const POST: string = "POST\"";
+    private: const std::string POST = "POST\"";
 
-    private: const METHODS: std::vector<string> = 
-                                                        [
-                                                            this.GET,this.POST
-                                                        ];
+    private: const std::vector<std::string> METHODS = 
+                                                        {
+                                                            this->GET,this->POST
+                                                        };
 
-    private: const METHOD: string = "METHOD=\"";
+    private: const std::string METHOD = "METHOD=\"";
 
-    private: method: string;
+    private: std::string method;
 
-    private: action: string;
+    private: std::string action;
 
-    inputs: Vector;
+    Vector inputs;
 
-public constructor (string action){
-
-            super();
-        this.action= action;
+public: HtmlForm(std::string action){
+this->action= action;
     
-this.inputs= new Vector();
+this->inputs= Vector();
     
 }
 
 
-    public setPost(){
-this.method= this.POST;
+    public: void setPost(){
+this->method= this->POST;
     
 }
 
 
-    public setGet(){
-this.method= this.GET;
+    public: void setGet(){
+this->method= this->GET;
     
 }
 
 
-    public addInput(HtmlInput htmlInput){
-this.inputs.add(htmlInput);
+    public: void addInput(HtmlInput htmlInput){
+this->inputs.add(htmlInput);
     
 }
 
 
-    public addTable(HtmlTable htmlTable){
-this.inputs.add(htmlTable);
+    public: void addTable(HtmlTable htmlTable){
+this->inputs.add(htmlTable);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
-    
-
-    result: string = stringUtil!.EMPTY_STRING;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    inputArray: std::vector<any> = this.inputs.toArray()!;;
+    std::string result = stringUtil.EMPTY_STRING;;
     
 
-    inputSize: int32_t = inputArray!.length
-                ;;
+    std::vector<Object*> inputArray = this->inputs.toArray();;
     
-result= this.FORMBEGIN;
+
+    int32_t inputSize = inputArray.size();;
     
-result += this.METHOD;
+result= this->FORMBEGIN;
     
-result += this.method;
+result += this->METHOD;
+    
+result += this->method;
     
 result += "\" ";
     
-result += this.ACTION;
+result += this->ACTION;
     
-result += this.action;
+result += this->action;
     
 result += "\" ";
     
-result += this.END;
+result += this->END;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < inputSize; i++)
+    int32_t i = 0;i < inputSize; i++)
         {
 result += inputArray[i]!.toString();
     
@@ -158,7 +156,7 @@ result += " ";
     
 }
 
-result += this.FORMEND;
+result += this->FORMEND;
     
 
 

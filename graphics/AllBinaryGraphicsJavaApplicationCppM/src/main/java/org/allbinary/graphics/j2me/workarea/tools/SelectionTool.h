@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_SELECTIONTOOL_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -98,103 +100,102 @@
 class SelectionTool
             : public Object
         : public GraphicItemInterface {
-        
 
-    private: static const NAME: string = "Selection Tool";
+    private: static const std::string NAME = "Selection Tool";
 
-    public static string getStaticName();
+    public: static std::string getStaticName();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const canvasJPanel: CanvasJPanel;
+    private: CanvasJPanel canvasJPanel;
 
-    private: active: bool = true;
+    private: bool active = true;
 
-public constructor (CanvasJPanel canvasJPanel);
+public: SelectionTool(CanvasJPanel canvasJPanel);
 
-    public setColor(Color color);
+    public: void setColor(Color color);
 
-    public MutableTreeNode getTreeNode();
+    public: MutableTreeNode getTreeNode();
 
-    public Points getPointsInterface();
+    public: Points getPointsInterface();
 
-    public setPointsInterface(Points points);
+    public: void setPointsInterface(Points points);
 
-    public bool isValid();
+    public: bool isValid();
 
-    public bool isActive();
+    public: bool isActive();
 
-    public deactivate();
+    public: void deactivate();
 
-    public activate();
+    public: void activate();
 
-    public setFulcrumPoint(GPoint point);
-
-                //@Throws(Exception.constructor)
-            
-    public translate(int32_t x, int32_t y);
-
-    public setRotate(double theta);
-
-    public addRotate(double theta);
-
-    public setAngle(double angle);
-
-    public addAngle(double angle);
-
-    public double getAngle();
-
-    private: controlIdDown: bool= false;
-
-    makeSelection();
-
-    private: const rectColor: Color = new Color(BasicColorFactory.getInstance()!.RED.intValue());
-
-    public int32_t getXRect();
-
-    public int32_t getYRect();
-
-    public paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
+    public: void setFulcrumPoint(GPoint point);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom(CanvasDom canvasDom);
+    public: void translate(int32_t x, int32_t y);
 
-    public GPoint removePoint();
+    public: void setRotate(double theta);
 
-    public addPoint(GPoint point);
+    public: void addRotate(double theta);
 
-    public string getName();
+    public: void setAngle(double angle);
 
-    private: startPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    public: void addAngle(double angle);
 
-    private: endPoint: GPoint = this.startPoint;
+    public: double getAngle();
 
-    public mouseClicked(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    private: bool controlIdDown= false;
 
-    public mouseMoved(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    private: void makeSelection();
 
-    public mouseEntered(java.awt.event.MouseEvent mouseEvent);
+    private: const Color rectColor = Color(BasicColorFactory::getInstance().RED.intValue());
 
-    public mouseExited(java.awt.event.MouseEvent mouseEvent);
+    public: int32_t getXRect();
 
-    public mousePressed(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: int32_t getYRect();
 
-    public mouseReleased(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
-
-    public mouseDragged(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
-
-    public keyPressed(java.awt.event.KeyEvent keyEvent);
-
-    public keyReleased(java.awt.event.KeyEvent keyEvent);
-
-    public keyTyped(java.awt.event.KeyEvent keyEvent);
+    public: void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public GraphicItemInterface duplicate();
+    public: Node toDom(CanvasDom canvasDom);
+
+    public: GPoint removePoint();
+
+    public: void addPoint(GPoint point);
+
+    public: std::string getName();
+
+    private: GPoint startPoint = PointFactory::getInstance().ZERO_ZERO;
+
+    private: GPoint endPoint = this->startPoint;
+
+    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+
+    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+
+    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent);
+
+    public: void mouseExited(java::awt::event::MouseEvent mouseEvent);
+
+    public: void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+
+    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+
+    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+
+    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
+
+                //@Throws(Exception.constructor)
+            
+    public: GraphicItemInterface duplicate();
 
 };
 

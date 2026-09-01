@@ -56,23 +56,22 @@
 class NullSpecialAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: static NULL_SPECIAL_ANIMATION_FACTORY: NullSpecialAnimationFactory = new NullSpecialAnimationFactory();
+    private: static NullSpecialAnimationFactory NULL_SPECIAL_ANIMATION_FACTORY = NullSpecialAnimationFactory();
 
-    public static NullSpecialAnimationFactory getFactoryInstance();
+    public: static NullSpecialAnimationFactory getFactoryInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Animation getInstance(int32_t instanceId);
+private: NullSpecialAnimationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
+
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

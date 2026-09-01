@@ -50,9 +50,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class VirtualKeyboardEvent: public AllBinaryEventObject {
-        
 
-public constructor (any = {} anyType);
+public: VirtualKeyboardEvent(Object* anyType);
 
 };
 

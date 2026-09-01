@@ -48,15 +48,14 @@
 class KeyValueFactory
             : public Object
          {
-        
 
-    private: static const instance: KeyValueFactory = new KeyValueFactory();
+    private: static KeyValueFactory instance() { return KeyValueFactory(); }
 
-    public static KeyValueFactory getInstance();
+    public: static KeyValueFactory getInstance();
 
-    public const MAP: Hashtable<any, any> = new Hashtable<any, any>();
+    public: const Hashtable<any, any> MAP = Hashtable<any, any>();
 
-    public string get(string key);
+    public: std::string get(std::string key);
 
 };
 

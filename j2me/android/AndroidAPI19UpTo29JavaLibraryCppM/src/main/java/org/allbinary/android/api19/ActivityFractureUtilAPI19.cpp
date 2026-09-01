@@ -47,28 +47,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ActivityFractureUtilAPI19: public ActivityFractureUtilAPI5 {
-        
 
-    private: static const instance19: ActivityFractureUtilAPI19 = new ActivityFractureUtilAPI19();
+    private: static const ActivityFractureUtilAPI19 instance19 = ActivityFractureUtilAPI19();
 
-    public static ActivityFractureUtilAPI19 getInstance(){
+    public: static ActivityFractureUtilAPI19 getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI19.instance19;
+                        return ActivityFractureUtilAPI19::instance19;
     
 }
 
 
-    public setFullScreen(Activity activity){
+    public: void setFullScreen(Activity activity){
 
-    decorView: View = activity.getWindow()!.getDecorView()!;;
+    View decorView = activity.getWindow().getDecorView();;
     
 
-    visibility: int32_t = View.SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View.SYSTEM_UI_FLAG_HIDE_NAVIGATION | View.SYSTEM_UI_FLAG_FULLSCREEN;;
+    int32_t visibility = View::SYSTEM_UI_FLAG_IMMERSIVE_STICKY | View::SYSTEM_UI_FLAG_HIDE_NAVIGATION | View::SYSTEM_UI_FLAG_FULLSCREEN;;
     
-decorView!.setSystemUiVisibility(visibility);
+decorView.setSystemUiVisibility(visibility);
     
 }
 

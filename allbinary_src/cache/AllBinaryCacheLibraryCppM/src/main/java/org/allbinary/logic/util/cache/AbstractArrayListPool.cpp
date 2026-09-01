@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -56,63 +58,60 @@
 class AbstractArrayListPool
             : public Object
         : public PoolInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    buffers: BasicArrayList = new BasicArrayListD();
+    protected: BasicArrayList buffers = BasicArrayListD();
 
-    cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface;
+    protected: CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface;
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
-
-            super();
-        this.cacheableInterfaceFactoryInterface= cacheableInterfaceFactoryInterface;
+public: AbstractArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
+this->cacheableInterfaceFactoryInterface= cacheableInterfaceFactoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public clear(){
+    public: void clear(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface remove(any = {} key){
+    public: CacheableInterface remove(Object* key){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public add(CacheableInterface cacheableInterface){
-this.buffers.add(cacheableInterface);
+    public: void add(CacheableInterface cacheableInterface){
+this->buffers.add(cacheableInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addArray(std::vector<CacheableInterface> cacheableInterfaces){
+    public: void addArray(std::vector<CacheableInterface> cacheableInterfaces){
 
 
 
 
                         for (
-    index: int32_t = 0;index < cacheableInterfaces!.length; index++)
+    int32_t index = 0;index < cacheableInterfaces.size(); index++)
         {
-this.buffers.add(cacheableInterfaces[index]!);
+this->buffers.add(cacheableInterfaces[index]!);
     
 }
 

@@ -48,11 +48,10 @@
 class TouchButtonVisitor
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public process(TouchButtonInput touchButtonInput, string string);
+    public: void process(TouchButtonInput touchButtonInput, std::string string);
 
 };
 

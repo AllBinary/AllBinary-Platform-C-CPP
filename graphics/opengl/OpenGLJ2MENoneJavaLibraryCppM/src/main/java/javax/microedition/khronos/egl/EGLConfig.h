@@ -33,9 +33,8 @@
 class EGLConfig
             : public Object
          {
-        
 
-public constructor ();
+public: EGLConfig();
 
 };
 

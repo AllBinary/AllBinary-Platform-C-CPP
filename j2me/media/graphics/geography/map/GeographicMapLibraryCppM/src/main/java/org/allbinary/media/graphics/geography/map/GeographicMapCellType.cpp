@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/RuntimeException.h"
@@ -53,34 +55,31 @@
 class GeographicMapCellType
             : public Object
          {
-        
 
-    public static const NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY: std::vector<GeographicMapCellType> = [];
+    public: static const std::vector<GeographicMapCellType> NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
 
-    public static const NULL_GEOGRAPHIC_MAP_CELL_TYPE: GeographicMapCellType = new GeographicMapCellType(Integer.MIN_VALUE, 0);
+    public: static const GeographicMapCellType NULL_GEOGRAPHIC_MAP_CELL_TYPE = GeographicMapCellType(Integer::MIN_VALUE, 0);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const type: int32_t;
+    private: int32_t type;
 
-public constructor (int32_t type, int32_t reset){
-
-            super();
-        this.type= type;
+public: GeographicMapCellType(int32_t type, int32_t reset){
+this->type= type;
     
 
-                        if(type != Integer.MIN_VALUE)
+                        if(type != Integer::MIN_VALUE)
                         
                                     {
                                     
-    geographicMapCellTypeFactory: GeographicMapCellTypeFactory = GeographicMapCellTypeFactory.getInstance()!;;
+    GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
     
 
-    geographicMapCellTypeArray: std::vector<GeographicMapCellType> = geographicMapCellTypeFactory!.getGeographicMapCellTypeArray()!;;
+    std::vector<GeographicMapCellType> geographicMapCellTypeArray = geographicMapCellTypeFactory.getGeographicMapCellTypeArray();;
     
 
                         if(geographicMapCellTypeArray[type] == 
-                                    null
+                                    nullptr
                                  || reset == 1)
                         
                                     {
@@ -97,7 +96,7 @@ public constructor (int32_t type, int32_t reset){
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -111,22 +110,22 @@ public constructor (int32_t type, int32_t reset){
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return this->type;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallIntegerSingletonFactory.getInstance()!.getAt(this.type)!.toString();;
+                        return SmallIntegerSingletonFactory::getInstance().getAt(this->type).toString();;
     
 }
 

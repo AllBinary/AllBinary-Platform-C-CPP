@@ -39,17 +39,16 @@
         #include "OpenGLGLUUtils.h"
 
 class OpenGLTextureFactory: public PlatformTextureBaseFactory {
-        
 
-    private: static const instance: OpenGLTextureFactory = new OpenGLTextureFactory();
+    private: static OpenGLTextureFactory instance() { return OpenGLTextureFactory(); }
 
-    public static OpenGLTextureFactory getInstance();
+    public: static OpenGLTextureFactory getInstance();
 
-    private: const gluUtils: OpenGLGLUUtils = OpenGLGLUUtils.getInstance()!;
+    private: const OpenGLGLUUtils gluUtils = OpenGLGLUUtils::getInstance();
 
-private constructor ();
+private: OpenGLTextureFactory();
 
-    public load(GL10 gl, int32_t target, int32_t level, Image image, int32_t border, bool flip);
+    public: void load(GL10 gl, int32_t target, int32_t level, Image image, int32_t border, bool flip);
 
 };
 

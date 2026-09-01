@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/SelectionHudPaintable.h>
@@ -66,9 +68,8 @@
 #include "GeologicalResourceInfoHudPaintable.h"
 
 class ResourceWaypointLayer: public WaypointLayer {
-        
 
-public constructor (RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, string rootName, string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y){
+public: ResourceWaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y){
             super(remoteInfo, parentLayer, groupInterface, rootName, name, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y);
                     
 
@@ -77,13 +78,13 @@ public constructor (RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer
 }
 
 
-    public SelectionHudPaintable createHudPaintable(){
+    public: SelectionHudPaintable createHudPaintable(){
 
-    rtsLayerHudPaintable: GeologicalResourceInfoHudPaintable = GeologicalResourceInfoHudPaintableSingleton.getInstance()!;;
+    GeologicalResourceInfoHudPaintable rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
     
-rtsLayerHudPaintable!.setBasicColorP(this.allBinaryGameLayerManagerP!.getForegroundBasicColor());
+rtsLayerHudPaintable.setBasicColorP(this->allBinaryGameLayerManagerP.getForegroundBasicColor());
     
-rtsLayerHudPaintable!.setRtsLayer(this);
+rtsLayerHudPaintable.setRtsLayer(this);
     
 
 
@@ -94,9 +95,9 @@ rtsLayerHudPaintable!.setRtsLayer(this);
 }
 
 
-    public SelectionHudPaintable getHudPaintable(){
+    public: SelectionHudPaintable getHudPaintable(){
 
-    rtsLayerHudPaintable: GeologicalResourceInfoHudPaintable = GeologicalResourceInfoHudPaintableSingleton.getInstance()!;;
+    GeologicalResourceInfoHudPaintable rtsLayerHudPaintable = GeologicalResourceInfoHudPaintableSingleton::getInstance();;
     
 
 

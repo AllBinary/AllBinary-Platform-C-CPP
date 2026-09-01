@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_INPUTFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -73,31 +75,30 @@
 class InputFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static InputFactory getInstance();
+    public: static InputFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const KEY_CODE_LABEL: string = "KeyCode: ";
+    public: const std::string KEY_CODE_LABEL = "KeyCode: ";
 
-    public const DEVICE_ID_LABEL: string = "DeviceId: ";
+    public: const std::string DEVICE_ID_LABEL = "DeviceId: ";
 
-    public const MAX: int32_t = SmallIntegerSingletonFactory.getInstance()!.getMin()!;
+    public: const int32_t MAX = SmallIntegerSingletonFactory::getInstance().getMin();
 
-    const inputIntegerArray: std::vector<Input> = new Array(this.MAX);
+    protected: const std::vector<Input> inputIntegerArray = new Array(this->MAX);
 
-    public const NO_INPUT: Input = new Input(0, this.commonStrings!.UNKNOWN);
+    public: const Input NO_INPUT = Input(0, this->commonStrings.UNKNOWN);
 
-private constructor ();
+private: InputFactory();
 
-    public add(int32_t id, Input input);
+    public: void add(int32_t id, Input input);
 
-    public Input getInstanceById(int32_t id);
+    public: Input getInstanceById(int32_t id);
 
 };
 

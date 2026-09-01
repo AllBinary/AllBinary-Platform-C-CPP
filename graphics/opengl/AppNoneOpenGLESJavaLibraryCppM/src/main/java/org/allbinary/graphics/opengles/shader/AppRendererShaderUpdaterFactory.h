@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_APPRENDERERSHADERUPDATERFACTORY_H
 
+            #include <vector>
+        
 
 
 
@@ -44,21 +46,20 @@
 #include "ShaderOpenGLProcessor.h"
 
 class AppRendererShaderUpdaterFactory: public ShaderUpdater {
-        
 
-    private: static const instanceC: AppRendererShaderUpdaterFactory = new AppRendererShaderUpdaterFactory();
+    private: static const AppRendererShaderUpdaterFactory instanceC = AppRendererShaderUpdaterFactory();
 
-    public static AppRendererShaderUpdaterFactory getInstance();
+    public: static AppRendererShaderUpdaterFactory getInstance();
 
-    private: const NULL_SHADER_COMPOSITE_ARRAY: std::vector<ShaderComposite> = [];
+    private: const std::vector<ShaderComposite> NULL_SHADER_COMPOSITE_ARRAY = {};
 
-    public const shaderCompositeArray: std::vector<ShaderComposite> = this.NULL_SHADER_COMPOSITE_ARRAY;
+    public: const std::vector<ShaderComposite> shaderCompositeArray = this->NULL_SHADER_COMPOSITE_ARRAY;
 
-    private: const shaderOpenGLProcessorArray: std::vector<ShaderOpenGLProcessor> = [];
+    private: const std::vector<ShaderOpenGLProcessor> shaderOpenGLProcessorArray = {};
 
-    public std::vector<ShaderOpenGLProcessor> getTestShaders();
+    public: std::vector<ShaderOpenGLProcessor> getTestShaders();
 
-    public setShaderComposite(any = {} object3d);
+    public: void setShaderComposite(Object* object3d);
 
 };
 

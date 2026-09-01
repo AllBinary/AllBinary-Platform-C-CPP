@@ -64,60 +64,57 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HealthBarAnimation: public Animation {
-        
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    x2: int32_t= 0;
+    protected: int32_t x2= 0;
 
-    thickness: int32_t= 0;
+    protected: int32_t thickness= 0;
 
-    private: location: int32_t;
+    private: int32_t location;
 
-    allbinaryLayer: AllBinaryLayer;
+    protected: AllBinaryLayer allbinaryLayer;
 
-public constructor (AllBinaryLayer layerInterface, int32_t location){
-
-            super();
-        this.allbinaryLayer= layerInterface;
+public: HealthBarAnimation(AllBinaryLayer layerInterface, int32_t location){
+this->allbinaryLayer= layerInterface;
     
-this.location= location;
+this->location= location;
     
 
-    basicHudFactory: BasicHudFactory = BasicHudFactory.getInstance()!;;
+    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
     
 
-                        if(this.location != basicHudFactory!.TOPLEFT && this.location != basicHudFactory!.BOTTOMLEFT)
+                        if(this->location != basicHudFactory.TOPLEFT && this->location != basicHudFactory.BOTTOMLEFT)
                         
                                     {
                                     
 
 
-                            throw new Exception("Location Not Valid");
+                            throw Exception("Location Not Valid");
                     
 
                                     }
                                 
 
-                        if(layerInterface!.getWidth() > 40)
+                        if(layerInterface.getWidth() > 40)
                         
                                     {
-                                    this.thickness= 3;
+                                    this->thickness= 3;
     
 
                                     }
                                 
                              else 
-                        if(layerInterface!.getWidth() > 20)
+                        if(layerInterface.getWidth() > 20)
                         
                                     {
-                                    this.thickness= 2;
+                                    this->thickness= 2;
     
 
                                     }
                                 
                         else {
-                            this.thickness= 1;
+                            this->thickness= 1;
     
 
                         }
@@ -125,49 +122,49 @@ this.location= location;
 }
 
 
-    public onHealthChange(int32_t newX2){
-this.x2= newX2;
+    public: void onHealthChange(int32_t newX2){
+this->x2= newX2;
     
 
-    quarter: int32_t = (this.allbinaryLayer!.getWidth()>>2);;
+    int32_t quarter = (this->allbinaryLayer.getWidth()>>2);;
     
 
-                        if(this.x2 > quarter *3)
+                        if(this->x2 > quarter *3)
                         
                                     {
-                                    this.basicColor= this.basicColorFactory!.GREEN;
+                                    this->basicColor= this->basicColorFactory.GREEN;
     
-this.colorP= this.basicColor!.intValue();
+this->colorP= this->basicColor.intValue();
     
 
                                     }
                                 
                              else 
-                        if(this.x2 > quarter *2)
+                        if(this->x2 > quarter *2)
                         
                                     {
-                                    this.basicColor= this.basicColorFactory!.YELLOW;
+                                    this->basicColor= this->basicColorFactory.YELLOW;
     
-this.colorP= this.basicColor!.intValue();
+this->colorP= this->basicColor.intValue();
     
 
                                     }
                                 
                              else 
-                        if(this.x2 > quarter)
+                        if(this->x2 > quarter)
                         
                                     {
-                                    this.basicColor= this.basicColorFactory!.ORANGE;
+                                    this->basicColor= this->basicColorFactory.ORANGE;
     
-this.colorP= this.basicColor!.intValue();
+this->colorP= this->basicColor.intValue();
     
 
                                     }
                                 
                         else {
-                            this.basicColor= this.basicColorFactory!.RED;
+                            this->basicColor= this->basicColorFactory.RED;
     
-this.colorP= this.basicColor!.intValue();
+this->colorP= this->basicColor.intValue();
     
 
                         }
@@ -175,32 +172,32 @@ this.colorP= this.basicColor!.intValue();
 }
 
 
-    int32_t getY(){
+    protected: int32_t getY(){
 
-    basicHudFactory: BasicHudFactory = BasicHudFactory.getInstance()!;;
+    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
     
 
-                        if(this.location == basicHudFactory!.TOPLEFT)
+                        if(this->location == basicHudFactory.TOPLEFT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.allbinaryLayer!.getViewPosition()!.getY() -4;
+                        return this->allbinaryLayer.getViewPosition().getY() -4;
     
 
                                     }
                                 
                              else 
-                        if(this.location == basicHudFactory!.BOTTOMLEFT)
+                        if(this->location == basicHudFactory.BOTTOMLEFT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.allbinaryLayer!.getViewPosition()!.getY2() +4;
+                        return this->allbinaryLayer.getViewPosition().getY2() +4;
     
 
                                     }

@@ -72,34 +72,31 @@
 class GameInput
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameKeyEventList: BasicArrayList;
+    private: BasicArrayList gameKeyEventList;
 
-    private: const removalGameKeyEventList: BasicArrayList;
+    private: BasicArrayList removalGameKeyEventList;
 
-    const isRemoveDuplicateKeyPresses: bool;
+    protected: bool isRemoveDuplicateKeyPresses;
 
-public constructor (BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList){
-
-            super();
-        this.gameKeyEventList= gameKeyEventList;
+public: GameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList){
+this->gameKeyEventList= gameKeyEventList;
     
-this.removalGameKeyEventList= removalGameKeyEventList;
+this->removalGameKeyEventList= removalGameKeyEventList;
     
-this.isRemoveDuplicateKeyPresses= Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.REMOVE_DUPLICATE_KEY_PRESSES);
+this->isRemoveDuplicateKeyPresses= Features::getInstance().isFeature(InputFeatureFactory::getInstance().REMOVE_DUPLICATE_KEY_PRESSES);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public add(GameKeyEvent gameKeyEvent){
+    public: void add(GameKeyEvent gameKeyEvent){
 
-                        if(this.isRemoveDuplicateKeyPresses && this.gameKeyEventList!.contains(gameKeyEvent))
+                        if(this->isRemoveDuplicateKeyPresses && this->gameKeyEventList.contains(gameKeyEvent))
                         
                                     {
                                     
@@ -113,17 +110,17 @@ this.isRemoveDuplicateKeyPresses= Features.getInstance()!.isFeature(InputFeature
                                 
 
                         if(gameKeyEvent != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.gameKeyEventList!.add(gameKeyEvent);
+                                    this->gameKeyEventList.add(gameKeyEvent);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Danger Passed Null GameKeyEvent", this, this.commonStrings!.ADD);
+                            this->logUtil.putF("Danger Passed Null GameKeyEvent", this, this->commonStrings.ADD);
     
 
                         }
@@ -132,49 +129,49 @@ this.isRemoveDuplicateKeyPresses= Features.getInstance()!.isFeature(InputFeature
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addForRemoval(GameKeyEvent gameKeyEvent){
-this.removalGameKeyEventList!.add(gameKeyEvent);
+    public: void addForRemoval(GameKeyEvent gameKeyEvent){
+this->removalGameKeyEventList.add(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isForRemoval(GameKeyEvent gameKeyEvent){
+    public: bool isForRemoval(GameKeyEvent gameKeyEvent){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.removalGameKeyEventList!.contains(gameKeyEvent);;
+                        return this->removalGameKeyEventList.contains(gameKeyEvent);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public clear(){
-this.gameKeyEventList!.clear();
+    public: void clear(){
+this->gameKeyEventList.clear();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeNonAIInputGameKeyEvents(){
+    public: void removeNonAIInputGameKeyEvents(){
 
-    list: BasicArrayList = this.gameKeyEventList;;
+    BasicArrayList list = this->gameKeyEventList;;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size()!;--index >= 0; )
+    int32_t index = list.size();--index >= 0; )
         {
 gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
     
 
-                        if(gameKeyEvent!.getSourceId() != 1)
+                        if(gameKeyEvent.getSourceId() != 1)
                         
                                     {
                                     list.removeAt(index);
@@ -188,32 +185,32 @@ gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public update(){
+    public: void update(){
 
-    removeList: BasicArrayList = this.removalGameKeyEventList;;
+    BasicArrayList removeList = this->removalGameKeyEventList;;
     
 
-    list: BasicArrayList = this.gameKeyEventList;;
+    BasicArrayList list = this->gameKeyEventList;;
     
 
-    size: int32_t = removeList!.size()!;;
+    int32_t size = removeList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    anyType: any = removeList!.objectArray[index]!;;
+    Object* anyType = removeList.objectArray[index];;
     
 
 
 
 
                         for (
-    index2: int32_t = list.size()!;--index2 >= 0; )
+    int32_t index2 = list.size();--index2 >= 0; )
         {
 
                         if(list.objectArray[index2] == anyType)
@@ -228,27 +225,27 @@ gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
 
 }
 
-removeList!.clear();
+removeList.clear();
     
 }
 
 
-    BasicArrayList getRemovalGameKeyEventList(){
+    protected: BasicArrayList getRemovalGameKeyEventList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.removalGameKeyEventList;
+                        return this->removalGameKeyEventList;
     
 }
 
 
-    BasicArrayList getGameKeyEventList(){
+    protected: BasicArrayList getGameKeyEventList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyEventList;
+                        return this->gameKeyEventList;
     
 }
 

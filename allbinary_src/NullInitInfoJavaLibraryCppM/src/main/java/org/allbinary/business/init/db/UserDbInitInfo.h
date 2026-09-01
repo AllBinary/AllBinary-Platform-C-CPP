@@ -42,11 +42,10 @@
         #include "DbInitInfo.h"
 
 class UserDbInitInfo: public DbInitInfo {
-        
 
-public constructor ();
+public: UserDbInitInfo();
 
-public constructor (bool read);
+public: UserDbInitInfo(bool read);
 
 };
 

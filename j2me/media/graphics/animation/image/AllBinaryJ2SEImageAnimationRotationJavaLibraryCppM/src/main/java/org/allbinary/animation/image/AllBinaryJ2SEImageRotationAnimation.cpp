@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Throwable.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -79,69 +81,68 @@
 #include "AlphaProcessor.h"
 
 class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
-        
 
-    private: const imageRotationUtil: ImageRotationUtil = ImageRotationUtil.getInstance()!;
+    private: const ImageRotationUtil imageRotationUtil = ImageRotationUtil::getInstance();
 
-    private: const imageModifierUtil: ImageModifierUtil = ImageModifierUtil.getInstanceOrCreate()!;
+    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const realOriginalImage: Image;
+    private: Image realOriginalImage;
 
-    private: const originalImageArray: std::vector<Image> = new Array(1);
+    private: const std::vector<Image> originalImageArray = new Array(1);
 
-    private: const twoImages: std::vector<Image> = new Array(2);
+    private: const std::vector<Image> twoImages = new Array(2);
 
-    private: imageToShow: Image;
+    private: Image imageToShow;
 
-    private: bufferedImageIndex: int32_t= 0;
+    private: int32_t bufferedImageIndex= 0;
 
-    private: lastScaleX: float = 1.0;
+    private: float lastScaleX = 1.0;
 
-    private: lastScaleY: float = 1.0;
+    private: float lastScaleY = 1.0;
 
-    private: scaleX: float = 1.0;
+    private: float scaleX = 1.0;
 
-    private: scaleY: float = 1.0;
+    private: float scaleY = 1.0;
 
-    private: maxScaleX: float= 0.0;
+    private: float maxScaleX= 0.0;
 
-    private: maxScaleY: float= 0.0;
+    private: float maxScaleY= 0.0;
 
-    private: alphaProcessor: ModifierBaseProcessor = ModifierBaseProcessor.getInstance()!;
+    private: ModifierBaseProcessor alphaProcessor = ModifierBaseProcessor::getInstance();
 
-    private: setColorProcessor: ModifierBaseProcessor = ModifierBaseProcessor.getInstance()!;
+    private: ModifierBaseProcessor setColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: changeColorProcessor: ModifierBaseProcessor = ModifierBaseProcessor.getInstance()!;
+    private: ModifierBaseProcessor changeColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: scaleProcessor: ScaleBaseProcessor = ScaleProcessor.getInstance()!;
+    private: ScaleBaseProcessor scaleProcessor = ScaleProcessor::getInstance();
 
-public constructor (Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
+public: AllBinaryJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
             super(image, angleInfo, totalAngle, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.realOriginalImage= originalImage;
+this->realOriginalImage= originalImage;
     
-this.originalImageArray[0]= originalImage;
+this->originalImageArray[0]= originalImage;
     
-this.imageToShow= image;
+this->imageToShow= image;
     
-this.twoImages[0]= image;
+this->twoImages[0]= image;
     
-this.twoImages[1]= ImageCopyUtil.getInstance()!.createImageForRotation(image);
+this->twoImages[1]= ImageCopyUtil::getInstance().createImageForRotation(image);
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor basicColor){
 
-    changed: bool = false;;
+    bool changed = false;;
     
 
-                        if(this.getBasicColorP() == 
-                                    null
-                                 || this.getBasicColorP()!.intValue() != basicColor!.intValue())
+                        if(this->getBasicColorP() == 
+                                    nullptr
+                                 || this->getBasicColorP().intValue() != basicColor.intValue())
                         
                                     {
                                     changed= true;
@@ -155,9 +156,9 @@ super.setBasicColorP(basicColor);
                         if(changed)
                         
                                     {
-                                    this.setColorProcessor= SetColorProcessor.getInstance();
+                                    this->setColorProcessor= SetColorProcessor::getInstance();
     
-this.updateImage();
+this->updateImage();
     
 
                                     }
@@ -165,14 +166,14 @@ this.updateImage();
 }
 
 
-    public changeBasicColor(BasicColor basicColor){
+    public: void changeBasicColor(BasicColor basicColor){
 
-    changed: bool = false;;
+    bool changed = false;;
     
 
-                        if(this.getChangeBasicColor() == 
-                                    null
-                                 || this.getChangeBasicColor()!.intValue() != basicColor!.intValue())
+                        if(this->getChangeBasicColor() == 
+                                    nullptr
+                                 || this->getChangeBasicColor().intValue() != basicColor.intValue())
                         
                                     {
                                     changed= true;
@@ -186,9 +187,9 @@ super.changeBasicColor(basicColor);
                         if(changed)
                         
                                     {
-                                    this.changeColorProcessor= ChangeColorProcessor.getInstance();
+                                    this->changeColorProcessor= ChangeColorProcessor::getInstance();
     
-this.updateImage();
+this->updateImage();
     
 
                                     }
@@ -196,12 +197,12 @@ this.updateImage();
 }
 
 
-    public setAlpha(int32_t alpha){
+    public: void setAlpha(int32_t alpha){
 
-    changed: bool = false;;
+    bool changed = false;;
     
 
-                        if(this.alphaP != alpha)
+                        if(this->alphaP != alpha)
                         
                                     {
                                     changed= true;
@@ -215,9 +216,9 @@ super.setAlpha(alpha);
                         if(changed)
                         
                                     {
-                                    this.alphaProcessor= AlphaProcessor.getInstance();
+                                    this->alphaProcessor= AlphaProcessor::getInstance();
     
-this.updateImage();
+this->updateImage();
     
 
                                     }
@@ -225,93 +226,93 @@ this.updateImage();
 }
 
 
-    public setScale(float scaleX, float scaleY){
-this.scaleX= scaleX;
+    public: void setScale(float scaleX, float scaleY){
+this->scaleX= scaleX;
     
-this.scaleY= scaleY;
+this->scaleY= scaleY;
     
 
-                        if(this.scaleX != this.lastScaleX || this.scaleY != this.lastScaleY)
+                        if(this->scaleX != this->lastScaleX || this->scaleY != this->lastScaleY)
                         
                                     {
-                                    this.scaleProcessor!.update(this.realOriginalImage, this.originalImageArray, this.twoImages, this.bufferedImageIndex, this.scaleX, this.scaleY, this.maxScaleX, this.maxScaleY);
+                                    this->scaleProcessor.update(this->realOriginalImage, this->originalImageArray, this->twoImages, this->bufferedImageIndex, this->scaleX, this->scaleY, this->maxScaleX, this->maxScaleY);
     
-this.updateImage();
+this->updateImage();
     
 
                                     }
                                 
-this.lastScaleX= this.scaleX;
+this->lastScaleX= this->scaleX;
     
-this.lastScaleY= this.scaleY;
-    
-}
-
-
-    public setMaxScale(float maxScaleX, float maxScaleY){
-this.maxScaleX= maxScaleX;
-    
-this.maxScaleY= maxScaleY;
-    
-this.scaleProcessor!.update(this.realOriginalImage, this.originalImageArray, this.twoImages, this.bufferedImageIndex, this.scaleX, this.scaleY, this.maxScaleX, this.maxScaleY);
-    
-this.updateImage();
+this->lastScaleY= this->scaleY;
     
 }
 
 
-    public nextRotation(){
+    public: void setMaxScale(float maxScaleX, float maxScaleY){
+this->maxScaleX= maxScaleX;
+    
+this->maxScaleY= maxScaleY;
+    
+this->scaleProcessor.update(this->realOriginalImage, this->originalImageArray, this->twoImages, this->bufferedImageIndex, this->scaleX, this->scaleY, this->maxScaleX, this->maxScaleY);
+    
+this->updateImage();
+    
+}
+
+
+    public: void nextRotation(){
 super.nextRotation();
     
-this.updateImage();
+this->updateImage();
     
 }
 
 
-    public previousRotation(){
+    public: void previousRotation(){
 super.previousRotation();
     
-this.updateImage();
+this->updateImage();
     
 }
 
 
-    updateImage(){
-this.imageRotationUtil!.rotateImage(this.originalImageArray[0]!, this.twoImages[this.bufferedImageIndex]!, this.angleInfo!.getAngle() +90);
+    private: void updateImage(){
+this->imageRotationUtil.rotateImage(this->originalImageArray[0]!, this->twoImages[this->bufferedImageIndex]!, this->angleInfo.getAngle() +90);
     
-this.alphaProcessor!.updateAlpha(this.imageModifierUtil, NullImage.NULL_IMAGE, this.twoImages[this.bufferedImageIndex]!, 0, this.alphaP);
+this->alphaProcessor.updateAlpha(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex]!, 0, this->alphaP);
     
-this.setColorProcessor!.updateColor(this.imageModifierUtil, NullImage.NULL_IMAGE, this.twoImages[this.bufferedImageIndex]!, 0, this.basicColor);
+this->setColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex]!, 0, this->basicColor);
     
-this.changeColorProcessor!.updateColor(this.imageModifierUtil, NullImage.NULL_IMAGE, this.twoImages[this.bufferedImageIndex]!, 0, this.changeBasicColorP);
+this->changeColorProcessor.updateColor(this->imageModifierUtil, NullImage::NULL_IMAGE, this->twoImages[this->bufferedImageIndex]!, 0, this->changeBasicColorP);
     
-this.swap();
+this->swap();
     
 }
 
 
-    public setFrame(int32_t index){
+    public: void setFrame(int32_t index){
 super.setFrame(index);
     
-this.updateImage();
+this->updateImage();
     
 }
 
 
-    public swap(){
-this.imageToShow= this.twoImages[this.bufferedImageIndex]!;
+    public: void swap(){
+this->imageToShow= this->twoImages[this->bufferedImageIndex]!;
     
 
-                        if(this.bufferedImageIndex == 0)
+                        if(this->bufferedImageIndex == 0)
                         
                                     {
-                                    this.bufferedImageIndex= 1;
+                                    this->bufferedImageIndex= 1;
     
 
                                     }
                                 
                         else {
-                            this.bufferedImageIndex= 0;
+                            this->bufferedImageIndex= 0;
     
 
                         }
@@ -319,96 +320,92 @@ this.imageToShow= this.twoImages[this.bufferedImageIndex]!;
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this.imageToShow, x, y, this.anchor);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+graphics.drawImage(this->imageToShow, x, y, this->anchor);
     
 }
 
 
-    public close(){
+    public: void close(){
 super.close();
     
 
-    disposalUtil: DisposalUtil = DisposalUtil.getInstance()!;;
+    DisposalUtil disposalUtil = DisposalUtil::getInstance();;
     
 
-    size2: int32_t = this.twoImages!.length
-                ;;
-    
-
-
-
-
-                        for (
-    index: int32_t = 0;index < size2; index++)
-        {
-disposalUtil!.disposeImage(this.twoImages[index]!);
-    
-}
-
-
-    size: int32_t = this.originalImageArray!.length
-                ;;
+    int32_t size2 = this->twoImages.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size2; index++)
         {
-disposalUtil!.disposeImage(this.originalImageArray[index]!);
+disposalUtil.disposeImage(this->twoImages[index]!);
     
 }
 
-disposalUtil!.disposeImage(this.realOriginalImage);
+
+    int32_t size = this->originalImageArray.size();;
     
-disposalUtil!.disposeImage(this.imageToShow);
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+disposalUtil.disposeImage(this->originalImageArray[index]!);
+    
+}
+
+disposalUtil.disposeImage(this->realOriginalImage);
+    
+disposalUtil.disposeImage(this->imageToShow);
     
 }
 
 
                 //@Throws(Throwable.constructor)
             
-    finalize(){
+    protected: void finalize(){
 super.finalize();
     
 
-    disposalUtil: DisposalUtil = DisposalUtil.getInstance()!;;
+    DisposalUtil disposalUtil = DisposalUtil::getInstance();;
     
 
-    size2: int32_t = this.twoImages!.length
-                ;;
-    
-
-
-
-
-                        for (
-    index: int32_t = 0;index < size2; index++)
-        {
-disposalUtil!.disposeImage(this.twoImages[index]!);
-    
-}
-
-
-    size: int32_t = this.originalImageArray!.length
-                ;;
+    int32_t size2 = this->twoImages.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size2; index++)
         {
-disposalUtil!.disposeImage(this.originalImageArray[index]!);
+disposalUtil.disposeImage(this->twoImages[index]!);
     
 }
 
-disposalUtil!.disposeImage(this.realOriginalImage);
+
+    int32_t size = this->originalImageArray.size();;
     
-disposalUtil!.disposeImage(this.imageToShow);
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+disposalUtil.disposeImage(this->originalImageArray[index]!);
+    
+}
+
+disposalUtil.disposeImage(this->realOriginalImage);
+    
+disposalUtil.disposeImage(this->imageToShow);
     
 }
 

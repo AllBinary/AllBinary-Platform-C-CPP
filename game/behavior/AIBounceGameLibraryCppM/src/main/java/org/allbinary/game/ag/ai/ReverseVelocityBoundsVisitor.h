@@ -60,27 +60,26 @@
 class ReverseVelocityBoundsVisitor
             : public Object
         : public BoundsVisitorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    velocityInterface: VelocityInterface;
+    protected: VelocityInterface velocityInterface;
 
-    private: layerInterface: LayerInterface;
+    private: LayerInterface layerInterface;
 
-public constructor (LayerInterface layerInterface);
+public: ReverseVelocityBoundsVisitor(LayerInterface layerInterface);
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public minX();
+    public: void minX();
 
-    public maxX();
+    public: void maxX();
 
-    public minY();
+    public: void minY();
 
-    public maxY();
+    public: void maxY();
 
 };
 

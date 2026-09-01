@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_ALLBINARYMEDIAMANAGER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -86,42 +88,41 @@
 class AllBinaryMediaManager
             : public Object
          {
-        
 
-    private: static const THIS: string = "AllBinaryMediaManagerAndroid";
+    private: static const std::string THIS = "AllBinaryMediaManagerAndroid";
 
-    private: static mostUsedTotal: int32_t = 0;
+    private: static int32_t mostUsedTotal = 0;
 
-    public static bool isMuted();
+    public: static bool isMuted();
 
-    public static setMuted(bool aMuted);
+    public: static void setMuted(bool aMuted);
 
-    public static bool update();
-
-                //@Throws(Exception.constructor)
-            
-    public static init(SoundsFactoryInterface soundsFactoryInterface);
+    public: static bool update();
 
                 //@Throws(Exception.constructor)
             
-    static shutdown(SoundsFactoryInterface soundsFactoryInterface);
+    public: static void init(SoundsFactoryInterface soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public static Player createPlayer(string resource);
+    static void shutdown(SoundsFactoryInterface soundsFactoryInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: static Player createPlayer(std::string resource);
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public static Player createPlayerFromInputStream(InputStream stream, string type);
+    public: static Player createPlayerFromInputStream(InputStream stream, std::string type);
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static playTone(int32_t frequency, int32_t time, int32_t volume);
+    public: static void playTone(int32_t frequency, int32_t time, int32_t volume);
 
-    public static bool isInitialized();
+    public: static bool isInitialized();
 
-private constructor ();
+private: AllBinaryMediaManager();
 
 };
 

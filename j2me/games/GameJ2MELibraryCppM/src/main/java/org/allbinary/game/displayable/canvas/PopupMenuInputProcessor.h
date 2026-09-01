@@ -99,35 +99,34 @@
 #include "AllBinaryGameCanvas.h"
 
 class PopupMenuInputProcessor: public BasicMenuInputProcessor {
-        
 
-    private: const rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;
+    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    private: const CLICK_DELAY: int32_t = 120;
+    private: const int32_t CLICK_DELAY = 120;
 
-    private: const clickTimeHelper: TimeDelayHelper = new TimeDelayHelper(this.CLICK_DELAY);
+    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle);
+public: PopupMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle);
 
-    public init(Rectangle rectangle);
-
-                //@Throws(Exception.constructor)
-            
-    public int32_t processInput(int32_t key);
+    public: void init(Rectangle rectangle);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList();
+    public: int32_t processInput(int32_t key);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processMotionInputs();
+    public: int32_t processInputList();
 
                 //@Throws(Exception.constructor)
             
-    processMotionInput(MotionGestureEvent motionGestureEvent);
+    public: int32_t processMotionInputs();
+
+                //@Throws(Exception.constructor)
+            
+    protected: void processMotionInput(MotionGestureEvent motionGestureEvent);
 
 };
 

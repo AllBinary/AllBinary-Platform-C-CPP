@@ -89,54 +89,51 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicAI: public ArtificialIntelligence: public GameKeyEventSourceInterface {
-        
+class BasicAI: public ArtificialIntelligence, public GameKeyEventSourceInterface {
 
-    public static const AI_VISITOR: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(2)!;
+    public: static const Integer AI_VISITOR = SmallIntegerSingletonFactory::getInstance().getAt(2);
 
-    public static const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(1)!;
+    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(1);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    protected: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const ownerLayerInterface: AllBinaryLayer;
+    private: AllBinaryLayer ownerLayerInterface;
 
-    private: const gameInput: GameInput;
+    private: GameInput gameInput;
 
-    private: lastKey: int32_t =  -1;
+    private: int32_t lastKey =  -1;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-
-            super();
-        this.ownerLayerInterface= ownerLayerInterface;
+public: BasicAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+this->ownerLayerInterface= ownerLayerInterface;
     
-this.gameInput= gameInput;
+this->gameInput= gameInput;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processKeyAI(int32_t key){
+    public: void processKeyAI(int32_t key){
 
                         if(key !=  -1)
                         
                                     {
-                                    this.gameInput!.add(this.gameKeyEventFactory!.getInstanceForKey(this, key));
+                                    this->gameInput.add(this->gameKeyEventFactory.getInstanceForKey(this, key));
     
 
                                     }
@@ -144,74 +141,74 @@ this.gameInput= gameInput;
 }
 
 
-    public setLastKey(int32_t lastKey){
-this.lastKey= lastKey;
+    public: void setLastKey(int32_t lastKey){
+this->lastKey= lastKey;
     
 }
 
 
-    public int32_t getLastKey(){
+    public: int32_t getLastKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastKey;
+                        return this->lastKey;
     
 }
 
 
-    public AllBinaryLayer getOwnerLayerInterface(){
+    public: AllBinaryLayer getOwnerLayerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ownerLayerInterface;
+                        return this->ownerLayerInterface;
     
 }
 
 
-    public GameInput getGameInput(){
+    public: GameInput getGameInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInput;
+                        return this->gameInput;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.constructor.name.toString()!;;
+                        return this->constructor.name.toString()!;;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append(this.getName());
+stringBuffer.append(this->getName());
     
-stringBuffer!.append(" LastKey: ");
+stringBuffer.append(" LastKey: ");
     
-stringBuffer!.append(CanvasUtil.getKeyName(this.getLastKey()));
+stringBuffer.append(CanvasUtil::getKeyName(this->getLastKey()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public int32_t getSourceId(){
+    public: int32_t getSourceId(){
 
 
 

@@ -44,66 +44,63 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class VehicleFrictionProperties: public FrictionProperties {
-        
 
-    private: const TIRE_FRICTION_NOMINATOR: int32_t;
+    private: int32_t TIRE_FRICTION_NOMINATOR;
 
-    private: const BRAKE_FRICTION_NOMINATOR: int32_t;
+    private: int32_t BRAKE_FRICTION_NOMINATOR;
 
-    private: const AIR_FRICTION_NOMINATOR: int32_t;
+    private: int32_t AIR_FRICTION_NOMINATOR;
 
-    private: const CRASH_FRICTION_NOMINATOR: int32_t;
+    private: int32_t CRASH_FRICTION_NOMINATOR;
 
-public constructor (int32_t tireFriction, int32_t brakeFriction, int32_t airFriction, int32_t crashFriction){
-
-            super();
-        this.TIRE_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -tireFriction;
+public: VehicleFrictionProperties(int32_t tireFriction, int32_t brakeFriction, int32_t airFriction, int32_t crashFriction){
+this->TIRE_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -tireFriction;
     
-this.BRAKE_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -brakeFriction;
+this->BRAKE_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -brakeFriction;
     
-this.AIR_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -airFriction;
+this->AIR_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -airFriction;
     
-this.CRASH_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -crashFriction;
+this->CRASH_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -crashFriction;
     
 }
 
 
-    public int32_t getTireFrictionNominator(){
+    public: int32_t getTireFrictionNominator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.TIRE_FRICTION_NOMINATOR;
+                        return this->TIRE_FRICTION_NOMINATOR;
     
 }
 
 
-    public int32_t getBrakeFrictionNominator(){
+    public: int32_t getBrakeFrictionNominator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.BRAKE_FRICTION_NOMINATOR;
+                        return this->BRAKE_FRICTION_NOMINATOR;
     
 }
 
 
-    public int32_t getAirFrictionNominator(){
+    public: int32_t getAirFrictionNominator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.AIR_FRICTION_NOMINATOR;
+                        return this->AIR_FRICTION_NOMINATOR;
     
 }
 
 
-    public int32_t getCrashFrictionNominator(){
+    public: int32_t getCrashFrictionNominator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.CRASH_FRICTION_NOMINATOR;
+                        return this->CRASH_FRICTION_NOMINATOR;
     
 }
 

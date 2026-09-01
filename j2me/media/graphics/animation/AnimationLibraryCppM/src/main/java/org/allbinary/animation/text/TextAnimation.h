@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TEXT_TEXTANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -97,44 +99,43 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TextChangeListener.h"
 
-class TextAnimation: public IndexedAnimation: public UpdateMyFontInterface {
-        
+class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    textArrayP: std::vector<string> = StringUtil.getInstance()!.ONE_EMPTY_STRING_ARRAY;
+    protected: std::vector<std::string> textArrayP = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-    private: offsetY: int32_t = 0;
+    private: int32_t offsetY = 0;
 
-    private: textChangeListener: TextChangeListener = TextChangeListener.getInstance()!;
+    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
 
-public constructor (string text, AnimationBehavior animationBehavior);
+public: TextAnimation(std::string text, AnimationBehavior animationBehavior);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame();
+    public: void nextFrame();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public paintXYNoUpdate(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXYNoUpdate(Graphics graphics, int32_t x, int32_t y);
 
-    public setTextWithOnMeasure(string text, TextChangeListener textChangeListener);
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener);
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    public std::vector<string> getTextArray();
+    public: std::vector<std::string> getTextArray();
 
-    public int32_t getFontHeight();
+    public: int32_t getFontHeight();
 
 };
 

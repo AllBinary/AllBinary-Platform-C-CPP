@@ -86,20 +86,19 @@
         #include "AllBinaryGameCanvas.h"
 
 class CheatGameInputProcessor: public PlayerGameInput {
-        
 
-    public static inputProcessor: SpecialGameInputInterface = SpecialGameInputFactory.NO_SPECIAL_GAME_INPUT;
+    public: static SpecialGameInputInterface inputProcessor = SpecialGameInputFactory::NO_SPECIAL_GAME_INPUT;
 
-    private: const PROCESS_GAME: string = "processGame";
+    private: const std::string PROCESS_GAME = "processGame";
 
-    private: const gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: CheatGameInputProcessor(AllBinaryGameCanvas gameCanvas);
 
-    private: const gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;
+    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public update();
+    public: void update();
 
 };
 

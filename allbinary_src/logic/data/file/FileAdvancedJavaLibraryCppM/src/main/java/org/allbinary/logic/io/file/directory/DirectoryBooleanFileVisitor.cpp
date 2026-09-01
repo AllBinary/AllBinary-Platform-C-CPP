@@ -48,25 +48,22 @@
 class DirectoryBooleanFileVisitor
             : public Object
         : public VisitorInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: DirectoryBooleanFileVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.visit(anyType as AbFile);
+                        return this->visit(anyType as AbFile);
     
 }
 
 
-    public Boolean visit(AbFile file){
+    public: Boolean visit(AbFile file){
 
                         if(file.isDirectory())
                         
@@ -75,7 +72,7 @@ public constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -84,7 +81,7 @@ public constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

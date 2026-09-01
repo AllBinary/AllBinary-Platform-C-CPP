@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -70,16 +72,15 @@
 class InputFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static InputFactory getInstance(){
+    public: static InputFactory getInstance(){
 
-                        if(InputFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(InputFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    InputFactory.instance= new InputFactory();
+                                    InputFactory::instance= InputFactory();
     
 
                                     }
@@ -88,53 +89,50 @@ class InputFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputFactory.instance as InputFactory;
+                        return InputFactory::instance() as InputFactory;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const KEY_CODE_LABEL: string = "KeyCode: ";
+    public: const std::string KEY_CODE_LABEL = "KeyCode: ";
 
-    public const DEVICE_ID_LABEL: string = "DeviceId: ";
+    public: const std::string DEVICE_ID_LABEL = "DeviceId: ";
 
-    public const MAX: int32_t = SmallIntegerSingletonFactory.getInstance()!.getMin()!;
+    public: const int32_t MAX = SmallIntegerSingletonFactory::getInstance().getMin();
 
-    const inputIntegerArray: std::vector<Input> = new Array(this.MAX);
+    protected: const std::vector<Input> inputIntegerArray = new Array(this->MAX);
 
-    public const NO_INPUT: Input = new Input(0, this.commonStrings!.UNKNOWN);
+    public: const Input NO_INPUT = Input(0, this->commonStrings.UNKNOWN);
 
-private constructor (){
+private: InputFactory(){
 
-            super();
-        
-    size: int32_t = this.inputIntegerArray!.length
-                ;;
+    int32_t size = this->inputIntegerArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.inputIntegerArray[index]= this.NO_INPUT;
+this->inputIntegerArray[index]= this->NO_INPUT;
     
 }
 
 }
 
 
-    public add(int32_t id, Input input){
-this.inputIntegerArray[id]= input;
+    public: void add(int32_t id, Input input){
+this->inputIntegerArray[id]= input;
     
 }
 
 
-    public Input getInstanceById(int32_t id){
+    public: Input getInstanceById(int32_t id){
 
                         if(id < 0)
                         
@@ -145,16 +143,16 @@ this.inputIntegerArray[id]= input;
                                     }
                                 
 
-                        if(id > this.inputIntegerArray!.length)
+                        if(id > this->inputIntegerArray.size())
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append("Warning id: ")!.appendint(id)!.toString(), this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF(StringMaker().append("Warning id: ").appendint(id).toString(), this, this->commonStrings.GET_INSTANCE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NO_INPUT;
+                        return this->NO_INPUT;
     
 
                                     }
@@ -163,7 +161,7 @@ this.inputIntegerArray[id]= input;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputIntegerArray[id]!;
+                        return this->inputIntegerArray[id]!;
     
 }
 

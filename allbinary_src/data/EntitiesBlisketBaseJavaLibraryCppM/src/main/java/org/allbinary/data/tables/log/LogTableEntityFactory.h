@@ -54,17 +54,16 @@
 class LogTableEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: LogTableEntityFactory = new LogTableEntityFactory();
+    private: static LogTableEntityFactory instance() { return LogTableEntityFactory(); }
 
-    public static LogTableEntityFactory getInstance();
+    public: static LogTableEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: LogTableEntityFactory();
 
-    public LogTableEntity getLogTableEntityInstance();
+    public: LogTableEntity getLogTableEntityInstance();
 
 };
 

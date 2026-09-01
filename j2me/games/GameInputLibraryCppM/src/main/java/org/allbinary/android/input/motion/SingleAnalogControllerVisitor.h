@@ -52,13 +52,12 @@
 #include "AnalogLocationInputProcessor.h"
 
 class SingleAnalogControllerVisitor: public AnalogControllerVisitor {
-        
 
-    private: const playerInputId: int32_t;
+    private: int32_t playerInputId;
 
-public constructor (int32_t playerInputId);
+public: SingleAnalogControllerVisitor(int32_t playerInputId);
 
-    public process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor);
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor);
 
 };
 

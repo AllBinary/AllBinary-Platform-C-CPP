@@ -53,33 +53,30 @@
         #include "BuildingEventListenerInterface.h"
 
 class BuildingEventHandler: public BasicEventHandler {
-        
 
-    private: static eventHandler: BuildingEventHandler = new BuildingEventHandler();
+    private: static BuildingEventHandler eventHandler = BuildingEventHandler();
 
-    public static BuildingEventHandler getInstance(){
+    public: static BuildingEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingEventHandler.eventHandler;
+                        return BuildingEventHandler::eventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BuildingEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    buildingEventListenerInterface: BuildingEventListenerInterface = (eventListenerInterface as BuildingEventListenerInterface);;
+    BuildingEventListenerInterface buildingEventListenerInterface = (eventListenerInterface as BuildingEventListenerInterface);;
     
-buildingEventListenerInterface!.onBuildingEvent(eventObject as RTSLayerEvent);
+buildingEventListenerInterface.onBuildingEvent(eventObject as RTSLayerEvent);
     
 }
 

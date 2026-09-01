@@ -51,9 +51,8 @@
 class GameEventHandlerUtil
             : public Object
          {
-        
 
-    public static removeAllListeners();
+    public: static void removeAllListeners();
 
 };
 

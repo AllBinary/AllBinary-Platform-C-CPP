@@ -52,15 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WorkflowEditorWebStoreAdminUser: public User {
-        
 
-public constructor ();
+public: WorkflowEditorWebStoreAdminUser();
 
-public constructor (HashMap<any, any> userHashMap);
+public: WorkflowEditorWebStoreAdminUser(HashMap<any, any> userHashMap);
 
-    public validateSession(WeblisketSessionInterface weblisketSession);
+    public: void validateSession(WeblisketSessionInterface weblisketSession);
 
-    public updateSession(WeblisketSessionInterface weblisketSession);
+    public: void updateSession(WeblisketSessionInterface weblisketSession);
 
 };
 

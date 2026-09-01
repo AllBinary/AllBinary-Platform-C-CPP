@@ -53,13 +53,12 @@
         #include "ValidationTransformTag.h"
 
 class StoreValidationTransformTag: public ValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeName: string;
+    private: std::string storeName;
 
-public constructor (){
+public: StoreValidationTransformTag(){
             super();
                     
 
@@ -68,24 +67,24 @@ public constructor (){
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
-this.getPropertiesHashMap()!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->storeName);
     
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Tag Start", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Tag Start", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -100,7 +99,7 @@ this.getPropertiesHashMap()!.put(StoreFrontData.getInstance()!.NAME, this.storeN
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

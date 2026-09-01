@@ -54,11 +54,10 @@
 class LifeLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance();
+    public: AllBinaryLayer getInstance();
 
 };
 

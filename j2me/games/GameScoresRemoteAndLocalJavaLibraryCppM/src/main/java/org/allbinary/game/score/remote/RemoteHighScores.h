@@ -84,39 +84,38 @@
 #include "RemoteHighScoresData.h"
 
 class RemoteHighScores: public HighScores {
-        
 
-    private: static const hashTable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashTable = Hashtable<any, any>();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static HighScores getInstance(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, string heading, string columnTwoHeading, Boolean isAscending);
+    public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean isAscending);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static HighScores getInstancePreload(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, string heading, string columnTwoHeading, Boolean isAscending, bool preload);
+    public: static HighScores getInstancePreload(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean isAscending, bool preload);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: const softwareInformation: SoftwareInformation;
+    private: SoftwareInformation softwareInformation;
 
-    private: ascending: Boolean;
+    private: Boolean ascending;
 
-    public const ASCENDING: string = "ASCENDING";
+    public: const std::string ASCENDING = "ASCENDING";
 
-private constructor (AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, string heading, string columnTwoHeading, Boolean ascending, bool preload);
+private: RemoteHighScores(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean ascending, bool preload);
 
-    public addHighScore(HighScore newHighScore);
+    public: void addHighScore(HighScore newHighScore);
 
-    public update(Hashtable<any, any> hashtable);
+    public: void update(Hashtable<any, any> hashtable);
 
-    setAscending(Boolean ascending);
+    private: void setAscending(Boolean ascending);
 
-    public Boolean getAscending();
+    public: Boolean getAscending();
 
-    public SoftwareInformation getSoftwareInformation();
+    public: SoftwareInformation getSoftwareInformation();
 
 };
 

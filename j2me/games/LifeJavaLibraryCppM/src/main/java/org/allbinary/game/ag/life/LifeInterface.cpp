@@ -38,17 +38,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LifeInterface {
-        
 
     int16_t get()
 
-    set(int16_t lives)
+    void set(int16_t lives)
 
-    reset()
+    void reset()
 
-    add(int16_t lives)
+    void add(int16_t lives)
 
-    deaths(int16_t lives)
+    void deaths(int16_t lives)
 
     int16_t getMaxlives()
 

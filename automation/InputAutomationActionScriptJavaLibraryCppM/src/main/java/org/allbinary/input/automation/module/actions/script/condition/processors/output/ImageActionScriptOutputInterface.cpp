@@ -40,21 +40,20 @@
 #include "ImageTypes.h"
 
 class ImageActionScriptOutputInterface: public ProfileActionScriptOutputInterface {
-        
 
     ImageTypes getImageTypes()
 
-    setImageTypes(ImageTypes imageTypes)
+    void setImageTypes(ImageTypes imageTypes)
 
     bool isSaved()
 
-    setSaved(bool saved)
+    void setSaved(bool saved)
 
     bool isDisplay()
 
-    setDisplay(bool display)
+    void setDisplay(bool display)
 
-    log()
+    void log()
 
 };
 

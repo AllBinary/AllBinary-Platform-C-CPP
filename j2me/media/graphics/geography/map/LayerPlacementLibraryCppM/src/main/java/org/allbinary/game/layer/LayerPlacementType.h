@@ -54,15 +54,14 @@
 class LayerPlacementType
             : public Object
          {
-        
 
-    private: type: int32_t;
+    private: int32_t type;
 
- constructor (int32_t type);
+: LayerPlacementType(int32_t type);
 
-    public int32_t getType();
+    public: int32_t getType();
 
-    setType(int32_t type);
+    protected: void setType(int32_t type);
 
 };
 

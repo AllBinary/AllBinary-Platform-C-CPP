@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../java/lang/Class.h"
         
             #include "../../java/lang/Exception.h"
@@ -66,61 +68,58 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CustomLoaderTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: webappPath: string;
+    private: std::string webappPath;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
-
-            super();
-        }
+public: CustomLoaderTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setWebappPath(string value){
-this.webappPath= value;
+    public: void setWebappPath(std::string value){
+this->webappPath= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    setCustomLoaderWebappPath(){
+    private: void setCustomLoaderWebappPath(){
 
         try {
             
-    anyType: any = new CustomLoaderHelperFactory().getInstance(this.propertiesHashMap, pageContext)!;;
+    Object* anyType = CustomLoaderHelperFactory().getInstance(this->propertiesHashMap, pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    methodParams: std::vector<Function> = 
-                                                        [
-                                                            this.webappPath!.constructor
-                                                        ];;
+    std::vector<Function> methodParams = 
+                                                        {
+                                                            this->webappPath.constructor
+                                                        };;
     
 
-    methodArgs: std::vector<any> = 
-                                                        [
-                                                            this.webappPath
-                                                        ];;
+    std::vector<Object*> methodArgs = 
+                                                        {
+                                                            this->webappPath
+                                                        };;
     
 
-    setMethod: Method = helperClass!.getMethod("setWebappPath", methodParams)!;;
+    Method setMethod = helperClass.getMethod("setWebappPath", methodParams);;
     
-setMethod!.invoke(anyType, methodArgs);
+setMethod.invoke(anyType, methodArgs);
     
 
                 //: 
@@ -137,10 +136,10 @@ setMethod!.invoke(anyType, methodArgs);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setCustomLoaderWebappPath()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setCustomLoaderWebappPath()", e);
     
 
                                     }
@@ -152,31 +151,29 @@ setMethod!.invoke(anyType, methodArgs);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.propertiesHashMap= new HashMap<any, any>();
+                                    this->propertiesHashMap= HashMap<any, any>();
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.SET) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.SET) == 0)
                         
                                     {
-                                    this.setCustomLoaderWebappPath();
+                                    this->setCustomLoaderWebappPath();
     
 
                                     }
@@ -194,7 +191,7 @@ setMethod!.invoke(anyType, methodArgs);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -207,7 +204,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

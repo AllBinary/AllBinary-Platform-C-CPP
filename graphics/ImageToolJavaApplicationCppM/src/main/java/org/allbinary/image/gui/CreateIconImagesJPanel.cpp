@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/System.h"
@@ -93,16 +95,15 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class CreateIconImagesJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class CreateIconImagesJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-public constructor (ImageProcessorInput imageProcessorInput){
+public: CreateIconImagesJPanel(ImageProcessorInput imageProcessorInput){
             super();
                     
 
@@ -110,30 +111,30 @@ public constructor (ImageProcessorInput imageProcessorInput){
                     
 initComponents();
     
-this.imageProcessorInput= imageProcessorInput;
+this->imageProcessorInput= imageProcessorInput;
     
 
-    numberStringArray: std::vector<string> = new Array(101);;
+    std::vector<std::string> numberStringArray = new Array(101);;
     
-numberStringArray[0]= Integer.toString( -1);
+numberStringArray[0]= std::to_string();
     
 
 
 
 
                         for (
-    index: int32_t = 1;index < 100; index++)
+    int32_t index = 1;index < 100; index++)
         {
-numberStringArray[index]= index.toString();
+numberStringArray[index]= std::to_string(index);
     
 }
 
 
-    araster: Raster = this.imageProcessorInput!.getBufferedImageArray()[0]!.getAlphaRaster()!;;
+    Raster araster = this->imageProcessorInput.getBufferedImageArray()[0]!.getAlphaRaster();;
     
 
                         if(araster == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -151,114 +152,114 @@ numberStringArray[index]= index.toString();
 }
 
 
-    public process(){
-new class extends Thread
+    public: void process(){
+class extends Thread
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    imageUtil: ImageUtil = ImageUtil.getInstance()!;;
+    ImageUtil imageUtil = ImageUtil::getInstance();;
     
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    imageProcessorInput: ImageProcessorInput = this::.getImageProcessorInput()!;;
+    ImageProcessorInput imageProcessorInput = this->getImageProcessorInput();;
     
 
-    files: std::vector<File> = imageProcessorInput!.getFiles()!;;
+    std::vector<File> files = imageProcessorInput.getFiles();;
     
 
-    iconWidthList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList iconWidthList = BasicArrayListD();;
     
 
-    iconHeightList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList iconHeightList = BasicArrayListD();;
     
-iconWidthList!.add(864);
+iconWidthList.add(864);
     
-iconHeightList!.add(864);
-    
-
-    ANDROID: string = "android-icon-";;
+iconHeightList.add(864);
     
 
-    IOS: string = "ios-icon-";;
+    std::string ANDROID = "android-icon-";;
     
 
-    size: int32_t = iconWidthList!.size()!;;
+    std::string IOS = "ios-icon-";;
     
 
-    width: int32_t = 0;;
+    int32_t size = iconWidthList.size();;
     
 
-    height: int32_t = 0;;
+    int32_t width = 0;;
+    
+
+    int32_t height = 0;;
     
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size; index2++)
+    int32_t index2 = 0;index2 < size; index2++)
         {
 width= (get as Integer).intValue();
     
 height= (get as Integer).intValue();
     
 
-    generatedBufferedImageArray: std::vector<BufferedImage> = imageUtil!.createBufferedImage3(imageProcessorInput!.getBufferedImageArray(), width, height, true)!;;
+    std::vector<BufferedImage> generatedBufferedImageArray = imageUtil.createBufferedImage3(imageProcessorInput.getBufferedImageArray(), width, height, true);;
     
 
-    imagePersistanceUtil: ImagePersistanceUtil = ImagePersistanceUtil.getInstance()!;;
+    ImagePersistanceUtil imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < generatedBufferedImageArray!.length; index++)
+    int32_t index = 0;index < generatedBufferedImageArray.size(); index++)
         {
 
-    filePath: string = files[index]!.getAbsolutePath()!;;
+    std::string filePath = files[index]!.getAbsolutePath();;
     
 
-    endIndex: int32_t = filePath!.lastIndexOf('\\')!;;
+    int32_t endIndex = filePath.lastIndexOf('\\');;
     
 
-    path: string = filePath!.substring(0, endIndex +1)!;;
+    std::string path = filePath.substring(0, endIndex +1);;
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-stringMaker!.append(path)!.append(ANDROID)!.appendint(width)!.append(CanvasStrings.getInstance()!._PNG);
+stringMaker.append(path).append(ANDROID).appendint(width).append(CanvasStrings::getInstance()._PNG);
     
 
-    newFilePath: string = stringMaker!.toString()!;;
+    std::string newFilePath = stringMaker.toString();;
     
-imagePersistanceUtil!.saveWithBatik(AbFile.createAbFile(newFilePath), generatedBufferedImageArray[index]!);
+imagePersistanceUtil.saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]!);
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-stringMaker!.append(path)!.append(IOS)!.appendint(width)!.append(CanvasStrings.getInstance()!._PNG);
+stringMaker.append(path).append(IOS).appendint(width).append(CanvasStrings::getInstance()._PNG);
     
-newFilePath= stringMaker!.toString();
+newFilePath= stringMaker.toString();
     
-imagePersistanceUtil!.saveWithBatik(AbFile.createAbFile(newFilePath), generatedBufferedImageArray[index]!);
+imagePersistanceUtil.saveWithBatik(AbFile::createAbFile(newFilePath), generatedBufferedImageArray[index]!);
     
 }
 
 }
 
-this::.getParent()!.repaint();
+this->getParent().repaint();
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -270,31 +271,31 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 }
 
 
-    public ImageProcessorInput getImageProcessorInput(){
+    public: ImageProcessorInput getImageProcessorInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageProcessorInput;
+                        return this->imageProcessorInput;
     
 }
 
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput){
-this.imageProcessorInput= imageProcessorInput;
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput){
+this->imageProcessorInput= imageProcessorInput;
     
 }
 
 
-    initComponents(){
-this.aboveJButton= new javax.swing.JButton();
+    private: void initComponents(){
+this->aboveJButton= javax::swing::JButton();
     
-this.aboveJButton!.setText("Process");
+this->aboveJButton.setText("Process");
     
-this.aboveJButton!.addActionListener(new class extends java.awt.event.ActionListener
+this->aboveJButton.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 aboveJButtonActionPerformed(evt);
     
 }
@@ -303,24 +304,24 @@ aboveJButtonActionPerformed(evt);
                             );
     
 
-    layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this);;
+    javax::swing::GroupLayout layout = javax::swing::GroupLayout(this);;
     
-this.setLayout(layout);
+this->setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addComponent(aboveJButton)!.addGap(0, 335, Short.MAX_VALUE)));
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addComponent(aboveJButton).addGap(0, 335, Short::MAX_VALUE)));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addContainerGap()!.addComponent(aboveJButton)!.addContainerGap(286, Short.MAX_VALUE)));
-    
-}
-
-
-    aboveJButtonActionPerformed(java.awt.event.ActionEvent evt){
-this.process();
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(aboveJButton).addContainerGap(286, Short::MAX_VALUE)));
     
 }
 
 
-    private: aboveJButton: javax.swing.JButton;
+    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent evt){
+this->process();
+    
+}
+
+
+    private: javax::swing::JButton aboveJButton;
 
 };
 

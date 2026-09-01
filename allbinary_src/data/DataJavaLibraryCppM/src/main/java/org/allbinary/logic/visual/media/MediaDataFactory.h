@@ -46,51 +46,50 @@
 class MediaDataFactory
             : public Object
          {
-        
 
-    private: static const instance: MediaDataFactory = new MediaDataFactory();
+    private: static MediaDataFactory instance() { return MediaDataFactory(); }
 
-    public static MediaDataFactory getInstance();
+    public: static MediaDataFactory getInstance();
 
-    public const AVI: MediaData = new MediaData("avi");
+    public: const MediaData AVI = MediaData("avi");
 
-    public const BMP: MediaData = new MediaData("bmp");
+    public: const MediaData BMP = MediaData("bmp");
 
-    public const CEL: MediaData = new MediaData("cel");
+    public: const MediaData CEL = MediaData("cel");
 
-    public const FITS: MediaData = new MediaData("fits");
+    public: const MediaData FITS = MediaData("fits");
 
-    public const FLI: MediaData = new MediaData("fli");
+    public: const MediaData FLI = MediaData("fli");
 
-    public const GBR: MediaData = new MediaData("gbr");
+    public: const MediaData GBR = MediaData("gbr");
 
-    public const GIF: MediaData = new MediaData("gif");
+    public: const MediaData GIF = MediaData("gif");
 
-    public const GIH: MediaData = new MediaData("gih");
+    public: const MediaData GIH = MediaData("gih");
 
-    public const JPG: MediaData = new MediaData("jpg");
+    public: const MediaData JPG = MediaData("jpg");
 
-    public const PIX: MediaData = new MediaData("pix");
+    public: const MediaData PIX = MediaData("pix");
 
-    public const PNG: MediaData = new MediaData("png");
+    public: const MediaData PNG = MediaData("png");
 
-    public const PNM: MediaData = new MediaData("pnm");
+    public: const MediaData PNM = MediaData("pnm");
 
-    public const PSD: MediaData = new MediaData("psd");
+    public: const MediaData PSD = MediaData("psd");
 
-    public const PSP: MediaData = new MediaData("psp");
+    public: const MediaData PSP = MediaData("psp");
 
-    public const PS: MediaData = new MediaData("ps");
+    public: const MediaData PS = MediaData("ps");
 
-    public const SGI: MediaData = new MediaData("SGI");
+    public: const MediaData SGI = MediaData("SGI");
 
-    public const SWF: MediaData = new MediaData("swf");
+    public: const MediaData SWF = MediaData("swf");
 
-    public const TGA: MediaData = new MediaData("tga");
+    public: const MediaData TGA = MediaData("tga");
 
-    public const TIFF: MediaData = new MediaData("tiff");
+    public: const MediaData TIFF = MediaData("tiff");
 
-    public const WMF: MediaData = new MediaData("wmf");
+    public: const MediaData WMF = MediaData("wmf");
 
 };
 

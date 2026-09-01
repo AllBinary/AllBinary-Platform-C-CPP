@@ -124,29 +124,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //#include "ProgressPaintable.h"
 
-class ProgressCanvas: public RunnableCanvas: public PaintableInterface, public UpdateMyFontInterface {
-        
+class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
 
-    hasPainted: bool= false;
+    protected: bool hasPainted= false;
 
-    private: const backgroundBasicColor: BasicColor;
+    private: BasicColor backgroundBasicColor;
 
 //inner= member=true isStatic=
 class ProgressPaintable: public Paintable {
-        
 
-    const progressCanvas: ProgressCanvas;
+    ProgressCanvas progressCanvas;
 
- constructor (ProgressCanvas progressCanvas){
-
-            super();
-        this.progressCanvas= progressCanvas;
+: ProgressPaintable(ProgressCanvas progressCanvas){
+this->progressCanvas= progressCanvas;
     
 }
 
 
-    public paint(Graphics graphics){
-this.progressCanvas!.paint2(graphics);
+    public: void paint(Graphics graphics){
+this->progressCanvas.paint2(graphics);
     
 }
 
@@ -154,291 +150,291 @@ this.progressCanvas!.paint2(graphics);
 };
 
             
-    public const GAUGE_PAINTABLE: Paintable = new this.ProgressPaintable(this);
+    public: const Paintable GAUGE_PAINTABLE = ProgressPaintable(this);
 
-    private: const maxValue: float = 100.0;
+    private: const float maxValue = 100.0;
 
-    const gauge: ABCustomGaugeItem;
+    protected: ABCustomGaugeItem gauge;
 
-    private: const TEXT: string = this.commonStrings!.LOADING;
+    private: const std::string TEXT = this->commonStrings.LOADING;
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    allbinaryMidlet: AllBinaryMidlet = AllBinaryMidlet.getNullInstance()!;
+    protected: AllBinaryMidlet allbinaryMidlet = AllBinaryMidlet::getNullInstance();
 
-    private: value: float= 0.0;
+    private: float value= 0.0;
 
-    private: text: string = this.TEXT;
+    private: std::string text = this->TEXT;
 
-    private: background: bool = true;
+    private: bool background = true;
 
-    paintable: PaintableInterface = this.GAUGE_PAINTABLE;
+    protected: PaintableInterface paintable = this->GAUGE_PAINTABLE;
 
-    public inProgress: bool = false;
+    public: bool inProgress = false;
 
-    private: const IN_GAME_PROCESSOR: Processor = new class extends Processor
+    private: const Processor IN_GAME_PROCESSOR = class extends Processor
                                 {
                                 
-    private: const pathFindingThreadPool: ThreadPool = PathFindingThreadPool.getInstance()!;
+    const ThreadPool pathFindingThreadPool = PathFindingThreadPool::getInstance();
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.pathFindingThreadPool!.runAPriorityTask();
+    public: void process(){
+this->pathFindingThreadPool.runAPriorityTask();
     
 }
 
                                 }
                             ;
 
-    public inGameProcessor: Processor = Processor.getInstance()!;
+    public: Processor inGameProcessor = Processor::getInstance();
 
- constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(NullCommandListener.NULL_COMMAND_LISTENER, CanvasStrings.getInstance()!.EMPTY_CHILD_NAME_LIST, false);
+: ProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+            super(NullCommandListener::NULL_COMMAND_LISTENER, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST, false);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.backgroundBasicColor= backgroundBasicColor;
+this->backgroundBasicColor= backgroundBasicColor;
     
-this.gauge= new ABCustomGaugeItem(StringUtil.getInstance()!.EMPTY_STRING, static_cast<int32_t>(this.maxValue), 0, backgroundBasicColor, foregroundBasicColor);
-    
-}
-
-
-    public updateMeasurement(Graphics graphics){
-
-    font: Font = graphics.getFont()!;;
-    
-this.gauge.setHeight(font.getHeight() +2);
-    
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->gauge= ABCustomGaugeItem(StringUtil::getInstance().EMPTY_STRING, static_cast<int32_t>(this->maxValue), 0, backgroundBasicColor, foregroundBasicColor);
     
 }
 
 
-    public init(AllBinaryMidlet gameMidlet){
-this.allbinaryMidlet= gameMidlet;
+    public: void updateMeasurement(Graphics graphics){
+
+    Font font = graphics.getFont();;
+    
+this->gauge.setHeight(font.getHeight() +2);
+    
+this->myFontProcessor= MyFontProcessor::getInstance();
+    
+}
+
+
+    public: void init(AllBinaryMidlet gameMidlet){
+this->allbinaryMidlet= gameMidlet;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(Graphics graphics){
+    public: void update(Graphics graphics){
 }
 
 
-    public initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener cmdListener){
 }
 
 
-    float getMaxValue(){
+    protected: float getMaxValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxValue;
+                        return this->maxValue;
     
 }
 
 
-    public start(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.START_METHOD_NAME);
+    public: void start(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START_METHOD_NAME);
     
-this.setBackground(true);
+this->setBackground(true);
     
-this.gauge.setHeight(30);
+this->gauge.setHeight(30);
     
-this.gauge.setLabel(this.commonStrings!.PLEASE_WAIT);
+this->gauge.setLabel(this->commonStrings.PLEASE_WAIT);
     
-this.setText(this.TEXT);
+this->setText(this->TEXT);
     
-this.setValue(0);
+this->setValue(0);
     
-this.inGameProcessor= Processor.getInstance();
+this->inGameProcessor= Processor::getInstance();
     
-this.paintable= this.GAUGE_PAINTABLE;
+this->paintable= this->GAUGE_PAINTABLE;
     
-this.inProgress= true;
-    
-}
-
-
-    private: const backgroundLabel: string = "Background AI Game Loading...";
-
-    private: const START_BACKGROUND: string = "startBackground";
-
-    public startBackground(bool background){
-this.logUtil!.putF(this.commonStrings!.START, this, this.START_BACKGROUND);
-    
-this.setBackground(background);
-    
-this.myFontProcessor= this.updateMyFontProcessor;
-    
-this.gauge.setLabel(this.backgroundLabel);
-    
-this.setText(this.TEXT);
-    
-this.setValue(0);
-    
-this.inGameProcessor= Processor.getInstance();
-    
-this.paintable= this.GAUGE_PAINTABLE;
+this->inProgress= true;
     
 }
 
 
-    public endActual(){
-this.allbinaryMidlet!.commandAction(GameCommandsFactory.getInstance()!.SHOW_GAME_CANVAS, NullCanvas.NULL_CANVAS);
-    
-this.inProgress= false;
-    
-this.inGame();
-    
-}
+    private: const std::string backgroundLabel = "Background AI Game Loading...";
 
+    private: const std::string START_BACKGROUND = "startBackground";
 
-    public inGame(){
-this.inGameProcessor= this.IN_GAME_PROCESSOR;
+    public: void startBackground(bool background){
+this->logUtil.putF(this->commonStrings.START, this, this->START_BACKGROUND);
     
-}
-
-
-    public end(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.END_METHOD_NAME);
+this->setBackground(background);
     
-this.gauge.setValue(this.getMaxValue());
+this->myFontProcessor= this->updateMyFontProcessor;
     
-this.endActual();
+this->gauge.setLabel(this->backgroundLabel);
     
-this.paintable= NullPaintable.getInstance();
+this->setText(this->TEXT);
+    
+this->setValue(0);
+    
+this->inGameProcessor= Processor::getInstance();
+    
+this->paintable= this->GAUGE_PAINTABLE;
     
 }
 
 
-    public endFromInitialLazyLoadingComplete(){
-this.gauge.setValue(this.getMaxValue());
+    public: void endActual(){
+this->allbinaryMidlet.commandAction(GameCommandsFactory::getInstance().SHOW_GAME_CANVAS, NullCanvas::NULL_CANVAS);
     
-this.inGameProcessor= this.IN_GAME_PROCESSOR;
+this->inProgress= false;
     
-}
-
-
-    public endIfPaintedSinceStart(){
-}
-
-
-    const ADD_PORTION: string = "addPortion";
-
-    const ADD_EARLY_PORTION: string = "addEarlyPortion";
-
-    public addEarlyPortion(int32_t value, string text, int32_t index){
-this.setText(new StringMaker().append(text)!.append(SmallIntegerSingletonFactory.getInstance()!.getAt(index)!.toString())!.toString());
-    
-this.gauge.setValue(this.gauge.getValue() +this.getMaxValue() /value);
+this->inGame();
     
 }
 
 
-    public addPortion(int32_t value, string text, int32_t index){
-this.setText(new StringMaker().append(text)!.append(SmallIntegerSingletonFactory.getInstance()!.getAt(index)!.toString())!.toString());
-    
-PreLogUtil.put(this.text, this, this.ADD_PORTION);
-    
-this.gauge.setValue(this.gauge.getValue() +this.getMaxValue() /value);
+    public: void inGame(){
+this->inGameProcessor= this->IN_GAME_PROCESSOR;
     
 }
 
 
-    public addNormalPortion(int32_t value, string text){
+    public: void end(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
+    
+this->gauge.setValue(this->getMaxValue());
+    
+this->endActual();
+    
+this->paintable= NullPaintable::getInstance();
+    
+}
 
-                        if(this.text != text)
+
+    public: void endFromInitialLazyLoadingComplete(){
+this->gauge.setValue(this->getMaxValue());
+    
+this->inGameProcessor= this->IN_GAME_PROCESSOR;
+    
+}
+
+
+    public: void endIfPaintedSinceStart(){
+}
+
+
+    protected: const std::string ADD_PORTION = "addPortion";
+
+    protected: const std::string ADD_EARLY_PORTION = "addEarlyPortion";
+
+    public: void addEarlyPortion(int32_t value, std::string text, int32_t index){
+this->setText(StringMaker().append(text).append(SmallIntegerSingletonFactory::getInstance().getAt(index).toString()).toString());
+    
+this->gauge.setValue(this->gauge.getValue() +this->getMaxValue() /value);
+    
+}
+
+
+    public: void addPortion(int32_t value, std::string text, int32_t index){
+this->setText(StringMaker().append(text).append(SmallIntegerSingletonFactory::getInstance().getAt(index).toString()).toString());
+    
+PreLogUtil::put(this->text, this, this->ADD_PORTION);
+    
+this->gauge.setValue(this->gauge.getValue() +this->getMaxValue() /value);
+    
+}
+
+
+    public: void addNormalPortion(int32_t value, std::string text){
+
+                        if(this->text != text)
                         
                                     {
-                                    PreLogUtil.put(text, this, this.ADD_PORTION);
+                                    PreLogUtil::put(text, this, this->ADD_PORTION);
     
 
                                     }
                                 
-this.setText(text);
+this->setText(text);
     
-this.gauge.setValue(this.gauge.getValue() +this.getMaxValue() /value);
-    
-}
-
-
-    setValue(int32_t value){
-this.value= value;
-    
-this.gauge.setValue(value);
+this->gauge.setValue(this->gauge.getValue() +this->getMaxValue() /value);
     
 }
 
 
-    public paint(Graphics graphics){
-this.paintable.paint(graphics);
+    protected: void setValue(int32_t value){
+this->value= value;
+    
+this->gauge.setValue(value);
     
 }
 
 
-    public paint2(Graphics graphics){
-this.myFontProcessor!.process(graphics);
-    
-graphics.setColor(this.backgroundBasicColor!.intValue());
-    
-graphics.fillRect(0, 0, this.displayInfo!.getLastWidth(), this.displayInfo!.getLastHeight());
-    
-this.gauge.paintXY(graphics, 0, 0);
-    
-this.hasPainted= true;
+    public: void paint(Graphics graphics){
+this->paintable.paint(graphics);
     
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paint2(Graphics graphics){
+this->myFontProcessor.process(graphics);
+    
+graphics.setColor(this->backgroundBasicColor.intValue());
+    
+graphics.fillRect(0, 0, this->displayInfo.getLastWidth(), this->displayInfo.getLastHeight());
+    
+this->gauge.paintXY(graphics, 0, 0);
+    
+this->hasPainted= true;
+    
 }
 
 
-    float getValue(){
+    public: void paintThreed(Graphics graphics){
+}
+
+
+    protected: float getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 
 
-    public setText(string text){
-this.text= text;
+    public: void setText(std::string text){
+this->text= text;
     
 }
 
 
-    public string getText(){
+    public: std::string getText(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.text;
+                        return this->text;
     
 }
 
 
-    setBackground(bool background){
-this.background= background;
+    protected: void setBackground(bool background){
+this->background= background;
     
 }
 
 
-    bool isBackground(){
+    protected: bool isBackground(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.background;
+                        return this->background;
     
 }
 

@@ -64,23 +64,22 @@
 #include "WaypointRunnableLogHelper.h"
 
 class WaypointLayerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList)
+    void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList)
 
     BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition)
 
                 //@Throws(Exception.constructor)
             
-    setClosestGeographicMapCellHistory(BasicArrayList pathsList)
+    void setClosestGeographicMapCellHistory(BasicArrayList pathsList)
 
-    teleportTo(GeographicMapCellPosition geographicMapCellPosition)
+    void teleportTo(GeographicMapCellPosition geographicMapCellPosition)
 
                 //@Throws(Exception.constructor)
             
-    setLoad(int32_t resource)
+    void setLoad(int32_t resource)
 
                 //@Throws(Exception.constructor)
             
@@ -94,11 +93,11 @@ class WaypointLayerInterface {
 
                 //@Throws(Exception.constructor)
             
-    trackTo(string reason)
+    void trackTo(std::string reason)
 
                 //@Throws(Exception.constructor)
             
-    trackToDXY(int32_t dx, int32_t dy)
+    void trackToDXY(int32_t dx, int32_t dy)
 
                 //@Throws(Exception.constructor)
             
@@ -106,7 +105,7 @@ class WaypointLayerInterface {
 
     TrackingEvent getTrackingEvent()
 
-    allStop()
+    void allStop()
 
     bool isWaypointListEmptyOrOnlyTargets()
 

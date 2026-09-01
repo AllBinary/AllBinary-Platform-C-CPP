@@ -53,13 +53,12 @@
 #include "CapitalEvent.h"
 
 class CapitalEventHandler: public BasicEventHandler {
-        
 
-public constructor ();
+public: CapitalEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

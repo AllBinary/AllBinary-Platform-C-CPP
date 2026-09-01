@@ -43,11 +43,10 @@
 class NullDemoPaintable
             : public Object
         : public DemoPaintableInterface {
-        
 
-    public static const NULL_DEMO_PAINTABLE: NullDemoPaintable = new NullDemoPaintable();
+    public: static const NullDemoPaintable NULL_DEMO_PAINTABLE = NullDemoPaintable();
 
-    public showGamePaintable(){
+    public: void showGamePaintable(){
 }
 
 

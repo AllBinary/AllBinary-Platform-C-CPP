@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTLISTENERFACTORY_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTLISTENERFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../java/lang/Class.h"
@@ -62,13 +64,12 @@
 class UserEmailEventListenerFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static UserEmailEventListenerInterface getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventConfigurationInterface userEmailEventConfigurationInterface, UserInterface userInterface);
+    public: static UserEmailEventListenerInterface getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventConfigurationInterface userEmailEventConfigurationInterface, UserInterface userInterface);
 
-private constructor ();
+private: UserEmailEventListenerFactory();
 
 };
 

@@ -38,17 +38,16 @@
 class JTreeInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: JTreeInterfaceFactory = new JTreeInterfaceFactory();
+    private: static JTreeInterfaceFactory instance() { return JTreeInterfaceFactory(); }
 
-    public static JTreeInterfaceFactory getInstance();
+    public: static JTreeInterfaceFactory getInstance();
 
-    private: jTreeInterface: JTreeInterface;
+    private: JTreeInterface jTreeInterface;
 
-    public set(JTreeInterface jTreeInterface);
+    public: void set(JTreeInterface jTreeInterface);
 
-    public JTreeInterface getJTreeInterface();
+    public: JTreeInterface getJTreeInterface();
 
 };
 

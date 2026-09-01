@@ -31,11 +31,10 @@
 class E
             : public Object
          {
-        
 
-    private: static const e: E = new E();
+    private: static const E e = E();
 
-    public E newInstance();
+    public: E newInstance();
 
 };
 

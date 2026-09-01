@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_ARRAYAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_ARRAYAI_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -58,17 +60,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ArrayAI: public BasicAI {
-        
 
-    private: const artificialIntelligenceInterfaceArray: std::vector<ArtificialIntelligenceInterface>;
+    private: std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray;
 
-public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: ArrayAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    public std::vector<ArtificialIntelligenceInterface> getArtificialIntelligenceInterface();
+    public: std::vector<ArtificialIntelligenceInterface> getArtificialIntelligenceInterface();
 
 };
 

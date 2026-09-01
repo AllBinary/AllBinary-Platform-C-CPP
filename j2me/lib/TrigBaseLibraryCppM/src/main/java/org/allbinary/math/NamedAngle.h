@@ -51,11 +51,10 @@
         #include "Angle.h"
 
 class NamedAngle: public Angle {
-        
 
-    public const name: string;
+    public: std::string name;
 
-public constructor (int16_t angle, string name);
+public: NamedAngle(int16_t angle, std::string name);
 
 };
 

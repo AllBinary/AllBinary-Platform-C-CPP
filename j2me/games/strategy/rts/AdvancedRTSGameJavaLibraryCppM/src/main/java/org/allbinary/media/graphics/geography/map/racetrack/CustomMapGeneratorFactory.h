@@ -47,11 +47,10 @@
 #include "RaceTrackGeographicMap.h"
 
 class CustomMapGeneratorFactory: public CustomMapGeneratorBaseFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap);
+    public: CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap);
 
 };
 

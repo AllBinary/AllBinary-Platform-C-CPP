@@ -55,23 +55,22 @@
 class BasicLayerPlacement
             : public Object
          {
-        
 
-    private: layerType: LayerPlacementType;
+    private: LayerPlacementType layerType;
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-public constructor (LayerPlacementType layerType, int32_t width, int32_t height);
+public: BasicLayerPlacement(LayerPlacementType layerType, int32_t width, int32_t height);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public LayerPlacementType getLayerType();
+    public: LayerPlacementType getLayerType();
 
-    setLayerType(LayerPlacementType layerType);
+    protected: void setLayerType(LayerPlacementType layerType);
 
 };
 

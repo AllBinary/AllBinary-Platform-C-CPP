@@ -52,20 +52,19 @@
 class NullParcelable
             : public Object
         : public Parcelable {
-        
 
-    public static const NULL_PARCELABLE: NullParcelable = new NullParcelable();
+    public: static const NullParcelable NULL_PARCELABLE = NullParcelable();
 
-    public int32_t describeContents(){
-
+    public: int32_t describeContents(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
-    public writeToParcel(Parcel dest, int32_t flags){
+    public: void writeToParcel(Parcel dest, int32_t flags){
 }
 
 

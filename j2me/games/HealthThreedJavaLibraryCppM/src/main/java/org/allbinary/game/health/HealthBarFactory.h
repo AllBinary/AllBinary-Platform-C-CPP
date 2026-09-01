@@ -60,11 +60,10 @@
 class HealthBarFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public HealthBar getInstance(AllBinaryLayer layerInterface, Health healthInterface, int32_t location, int32_t direction);
+    public: HealthBar getInstance(AllBinaryLayer layerInterface, Health healthInterface, int32_t location, int32_t direction);
 
 };
 

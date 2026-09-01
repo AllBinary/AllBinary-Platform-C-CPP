@@ -49,7 +49,6 @@
 #include "AdvancedPlayerOwnedRTSLayers.h"
 
 class AdvancedRTSPlayerLayerInterface: public RTSPlayerLayerInterface {
-        
 
     AdvancedPlayerOwnedRTSLayers getAdvancedPlayerOwnedRTSLayers();
 

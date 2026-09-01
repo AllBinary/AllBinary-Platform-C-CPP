@@ -46,11 +46,10 @@
 class TransformInfoFactory
             : public Object
          {
-        
 
-private constructor ();
+private: TransformInfoFactory();
 
-    public TransformInfoInterface getInstance();
+    public: TransformInfoInterface getInstance();
 
 };
 

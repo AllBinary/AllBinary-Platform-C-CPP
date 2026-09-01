@@ -50,15 +50,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DirectoryOrIncludeFileExtensionBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
-        
 
-    private: const includesString: string;
+    private: std::string includesString;
 
-public constructor (BasicArrayList filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
 
-public constructor (BasicArrayList filterStringBasicArrayList, string includesString);
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString);
 
-    public Boolean visit(AbFile file);
+    public: Boolean visit(AbFile file);
 
 };
 

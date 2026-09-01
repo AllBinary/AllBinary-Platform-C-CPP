@@ -46,19 +46,18 @@
 class CreditCardTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: CreditCardTypeFactory = new CreditCardTypeFactory();
+    private: static CreditCardTypeFactory instance() { return CreditCardTypeFactory(); }
 
-    public static CreditCardTypeFactory getInstance();
+    public: static CreditCardTypeFactory getInstance();
 
-    public const VISA: CreditCardType = new CreditCardType("Visa");
+    public: const CreditCardType VISA = CreditCardType("Visa");
 
-    public const MASTERCARD: CreditCardType = new CreditCardType("MasterCard");
+    public: const CreditCardType MASTERCARD = CreditCardType("MasterCard");
 
-    public const DISCOVER: CreditCardType = new CreditCardType("Discover");
+    public: const CreditCardType DISCOVER = CreditCardType("Discover");
 
-    public const AMERICANEXPRESS: CreditCardType = new CreditCardType("AMX");
+    public: const CreditCardType AMERICANEXPRESS = CreditCardType("AMX");
 
 };
 

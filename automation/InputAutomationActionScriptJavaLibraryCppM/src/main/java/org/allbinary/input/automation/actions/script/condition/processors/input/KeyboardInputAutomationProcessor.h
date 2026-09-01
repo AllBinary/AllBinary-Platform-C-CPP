@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDINPUTAUTOMATIONPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDINPUTAUTOMATIONPROCESSOR_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Exception.h"
@@ -67,13 +69,12 @@
 class KeyboardInputAutomationProcessor
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static process(KeyboardActionScriptInputInterface keyActionScriptInputInterface);
+    public: static void process(KeyboardActionScriptInputInterface keyActionScriptInputInterface);
 
-private constructor ();
+private: KeyboardInputAutomationProcessor();
 
 };
 

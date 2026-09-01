@@ -49,143 +49,142 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentGatewayInterface: public TableMappingInterface {
-        
 
-    string getEnable()
+    std::string getEnable()
 
-    string getStoreName()
+    std::string getStoreName()
 
-    string getName()
+    std::string getName()
 
-    string getPaymentMethod()
+    std::string getPaymentMethod()
 
-    string getMode()
+    std::string getMode()
 
-    string getTestProtocol()
+    std::string getTestProtocol()
 
-    string getTestServer()
+    std::string getTestServer()
 
-    string getTestPort()
+    std::string getTestPort()
 
-    string getTestPath()
+    std::string getTestPath()
 
-    string getServerProtocol()
+    std::string getServerProtocol()
 
-    string getServer()
+    std::string getServer()
 
-    string getServerPort()
+    std::string getServerPort()
 
-    string getServerPath()
+    std::string getServerPath()
 
-    string getUserName()
+    std::string getUserName()
 
-    string getPassword()
+    std::string getPassword()
 
-    string getProxyProtocol()
+    std::string getProxyProtocol()
 
-    string getProxyServer()
+    std::string getProxyServer()
 
-    string getProxyPath()
+    std::string getProxyPath()
 
-    string getProxyPort()
+    std::string getProxyPort()
 
-    string getProxyUserName()
+    std::string getProxyUserName()
 
-    string getProxyPassword()
+    std::string getProxyPassword()
 
-    string getTimeout()
+    std::string getTimeout()
 
-    string getProxyTimeout()
+    std::string getProxyTimeout()
 
-    string getSpecial1()
+    std::string getSpecial1()
 
-    string getSpecial2()
+    std::string getSpecial2()
 
-    string getSpecial3()
+    std::string getSpecial3()
 
-    string getSpecial4()
+    std::string getSpecial4()
 
-    string getSpecial5()
+    std::string getSpecial5()
 
-    string getSpecial6()
+    std::string getSpecial6()
 
-    string getSpecial7()
+    std::string getSpecial7()
 
-    string getSpecial8()
+    std::string getSpecial8()
 
-    string getSpecial9()
+    std::string getSpecial9()
 
-    string getLastModified()
+    std::string getLastModified()
 
-    string getTimeEntered()
+    std::string getTimeEntered()
 
-    setEnable(string value)
+    void setEnable(std::string value)
 
-    setStoreName(string value)
+    void setStoreName(std::string value)
 
-    setName(string value)
+    void setName(std::string value)
 
-    setPaymentMethod(string value)
+    void setPaymentMethod(std::string value)
 
-    setMode(string value)
+    void setMode(std::string value)
 
-    setTestProtocol(string value)
+    void setTestProtocol(std::string value)
 
-    setTestServer(string value)
+    void setTestServer(std::string value)
 
-    setTestPort(string value)
+    void setTestPort(std::string value)
 
-    setTestPath(string value)
+    void setTestPath(std::string value)
 
-    setServerProtocol(string value)
+    void setServerProtocol(std::string value)
 
-    setServer(string value)
+    void setServer(std::string value)
 
-    setServerPort(string value)
+    void setServerPort(std::string value)
 
-    setServerPath(string value)
+    void setServerPath(std::string value)
 
-    setUserName(string value)
+    void setUserName(std::string value)
 
-    setPassword(string value)
+    void setPassword(std::string value)
 
-    setProxyProtocol(string value)
+    void setProxyProtocol(std::string value)
 
-    setProxyServer(string value)
+    void setProxyServer(std::string value)
 
-    setProxyPath(string value)
+    void setProxyPath(std::string value)
 
-    setProxyPort(string value)
+    void setProxyPort(std::string value)
 
-    setProxyUserName(string value)
+    void setProxyUserName(std::string value)
 
-    setProxyPassword(string value)
+    void setProxyPassword(std::string value)
 
-    setTimeout(string value)
+    void setTimeout(std::string value)
 
-    setProxyTimeout(string value)
+    void setProxyTimeout(std::string value)
 
-    setSpecial1(string value)
+    void setSpecial1(std::string value)
 
-    setSpecial2(string value)
+    void setSpecial2(std::string value)
 
-    setSpecial3(string value)
+    void setSpecial3(std::string value)
 
-    setSpecial4(string value)
+    void setSpecial4(std::string value)
 
-    setSpecial5(string value)
+    void setSpecial5(std::string value)
 
-    setSpecial6(string value)
+    void setSpecial6(std::string value)
 
-    setSpecial7(string value)
+    void setSpecial7(std::string value)
 
-    setSpecial8(string value)
+    void setSpecial8(std::string value)
 
-    setSpecial9(string value)
+    void setSpecial9(std::string value)
 
-    setLastModified(string value)
+    void setLastModified(std::string value)
 
-    setTimeEntered(string value)
+    void setTimeEntered(std::string value)
 
                 //@Throws(Exception.constructor)
             

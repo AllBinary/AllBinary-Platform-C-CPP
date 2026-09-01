@@ -45,44 +45,42 @@
 class TimeTypeTest
             : public Object
          {
-        
 
-    static int64_t millisForHourLocal(int32_t hour);
+    private: static int64_t millisForHourLocal(int32_t hour);
 
 //inner= member=true isStatic=static
 class TestableTimeTypeUtil: public TimeTypeUtil {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const hour: int32_t;
+    private: int32_t hour;
 
- constructor (int32_t hour);
+: TestableTimeTypeUtil(int32_t hour);
 
-    public int32_t getHourOfDay();
+    public: int32_t getHourOfDay();
 
 };
 
             
-    isNight_returnsTrue_for_hours_less_than_6();
+    void isNight_returnsTrue_for_hours_less_than_6();
 
-    isNight_returnsTrue_for_hours_greater_than_18();
+    void isNight_returnsTrue_for_hours_greater_than_18();
 
-    isNight_returnsFalse_for_boundary_hours_6_and_18();
+    void isNight_returnsFalse_for_boundary_hours_6_and_18();
 
-    getNightOrDay_returns_expected_label();
+    void getNightOrDay_returns_expected_label();
 
-    getHourOfDay_long_converts_epoch_to_local_hour();
+    void getHourOfDay_long_converts_epoch_to_local_hour();
 
-    isNight_long_expected_ranges();
+    void isNight_long_expected_ranges();
 
-    getNightOrDay_long_consistency();
+    void getNightOrDay_long_consistency();
 
-    boundaries_day_for_long_based_api();
+    void boundaries_day_for_long_based_api();
 
-    constants_accessible_and_stable();
+    void constants_accessible_and_stable();
 
-    getInstance_returns_same_singleton();
+    void getInstance_returns_same_singleton();
 
 };
 

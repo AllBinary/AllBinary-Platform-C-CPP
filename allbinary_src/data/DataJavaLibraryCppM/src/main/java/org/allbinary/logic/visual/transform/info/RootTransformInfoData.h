@@ -45,11 +45,10 @@
 class RootTransformInfoData
             : public Object
          {
-        
 
-    public static const NAME: string = "ROOT_TRANSFORM_INFO_NAME";
+    public: static const std::string NAME = "ROOT_TRANSFORM_INFO_NAME";
 
-private constructor ();
+private: RootTransformInfoData();
 
 };
 

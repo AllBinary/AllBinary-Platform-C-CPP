@@ -42,20 +42,17 @@
 class AffiliateSales
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: AffiliateSales(){
+}
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 

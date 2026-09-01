@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEBASEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEBASEROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Throwable.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -84,35 +86,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ImageBaseRotationAnimation: public RotationAnimation {
-        
 
-    private: const image: Image;
+    private: Image image;
 
-public constructor (Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+public: ImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    anchor: int32_t = Anchor.TOP_LEFT;
+    protected: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    Image getImage();
+    protected: Image getImage();
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public close();
+    public: void close();
 
                 //@Throws(Throwable.constructor)
             
-    finalize();
+    protected: void finalize();
 
 };
 

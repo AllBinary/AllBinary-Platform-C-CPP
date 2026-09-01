@@ -48,17 +48,16 @@
 class FilePathData
             : public Object
          {
-        
 
-    private: static const instance: FilePathData = new FilePathData();
+    private: static FilePathData instance() { return FilePathData(); }
 
-    public static FilePathData getInstance();
+    public: static FilePathData getInstance();
 
-    public const SEPARATORCHAR: char = File.separatorChar;
+    public: const char SEPARATORCHAR = File::separatorChar;
 
-    public PATH_START: string = File.separator;
+    public: std::string PATH_START = File::separator;
 
-private constructor ();
+private: FilePathData();
 
 };
 

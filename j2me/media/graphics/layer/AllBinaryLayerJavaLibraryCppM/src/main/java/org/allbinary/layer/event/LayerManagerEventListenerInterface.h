@@ -53,15 +53,14 @@
         #include "LayerManagerEvent.h"
 
 class LayerManagerEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent);
+    void onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent);
 
                 //@Throws(Exception.constructor)
             
-    onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent);
+    void onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent);
 
 };
 

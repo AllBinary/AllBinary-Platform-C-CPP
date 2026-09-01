@@ -50,17 +50,16 @@
 class WebappClassLoaderInfo
             : public Object
          {
-        
 
-    private: static classLoader: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* classLoader = NullUtil::getInstance().NULL_OBJECT;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static setLoader(ClassLoader classLoader);
+    public: static void setLoader(ClassLoader classLoader);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static ClassLoader getLoader();
+    public: static ClassLoader getLoader();
 
-private constructor ();
+private: WebappClassLoaderInfo();
 
 };
 

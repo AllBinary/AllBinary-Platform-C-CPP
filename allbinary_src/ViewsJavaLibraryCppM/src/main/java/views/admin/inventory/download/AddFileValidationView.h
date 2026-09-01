@@ -120,30 +120,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "DownloadableInventoryItemView.h"
 
-class AddFileValidationView: public DownloadableInventoryItemView: public ValidationComponentInterface {
-        
+class AddFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-    private: static const ADDPRODUCT: string = "Finish";
+    private: static const std::string ADDPRODUCT = "Finish";
 
-    private: static const ADDANOTHERDOWNLOADABLE: string = "Add Another";
+    private: static const std::string ADDANOTHERDOWNLOADABLE = "Add Another";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: AddFileValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
                 //@Throws(Exception.constructor)
             
-    Boolean isValid(string fileName, int64_t size);
+    private: Boolean isValid(std::string fileName, int64_t size);
 
-    validationInfo(StringMaker stringBuffer, string fileName, int64_t size);
+    private: void validationInfo(StringMaker stringBuffer, std::string fileName, int64_t size);
 
 };
 

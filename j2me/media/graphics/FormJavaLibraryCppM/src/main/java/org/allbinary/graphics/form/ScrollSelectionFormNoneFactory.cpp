@@ -43,14 +43,13 @@
 class ScrollSelectionFormNoneFactory
             : public Object
          {
-        
 
-    public static ScrollSelectionForm getInstance(){
+    public: static ScrollSelectionForm getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm.getNullScrollSelectionFormHorizontal();;
+                        return ScrollSelectionForm::getNullScrollSelectionFormHorizontal();;
     
 }
 

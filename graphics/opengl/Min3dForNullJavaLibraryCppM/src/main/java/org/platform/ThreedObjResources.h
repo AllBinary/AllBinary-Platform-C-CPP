@@ -48,15 +48,14 @@
 class ThreedObjResources
             : public Object
          {
-        
 
-    private: static const instance: ThreedObjResources = new ThreedObjResources();
+    private: static ThreedObjResources instance() { return ThreedObjResources(); }
 
-    public static ThreedObjResources getInstance();
+    public: static ThreedObjResources getInstance();
 
-    public const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    public: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public string get(string resourceName);
+    public: std::string get(std::string resourceName);
 
 };
 

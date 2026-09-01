@@ -46,11 +46,10 @@
 class InputAutomationClientInformationFactory
             : public Object
          {
-        
 
-    private: static const instance: InputAutomationClientInformation = new InputAutomationClientInformation();
+    private: static InputAutomationClientInformation instance() { return InputAutomationClientInformation(); }
 
-    public static InputAutomationClientInformation getInstance();
+    public: static InputAutomationClientInformation getInstance();
 
 };
 

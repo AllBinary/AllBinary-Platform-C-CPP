@@ -53,11 +53,10 @@
         #include "CompoundTransform.h"
 
 class CompoundComponentView: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: CompoundComponentView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -68,14 +67,14 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-    success: string = DomDocumentHelper.toString(this.getDoc())!;;
+    std::string success = DomDocumentHelper::toString(this->getDoc());;
     
 
-    result: string = new CompoundTransform(this.getTransformInfoInterface()).translate(success)!;;
+    std::string result = CompoundTransform(this->getTransformInfoInterface()).translate(success);;
     
 
 
@@ -88,10 +87,10 @@ public constructor (TransformInfoInterface transformInfoInterface){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

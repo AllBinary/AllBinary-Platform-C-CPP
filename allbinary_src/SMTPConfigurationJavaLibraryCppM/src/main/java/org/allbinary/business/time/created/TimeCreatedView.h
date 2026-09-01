@@ -66,21 +66,20 @@
 class TimeCreatedView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: timeCreated: TimeCreated;
+    private: TimeCreated timeCreated;
 
-public constructor (TimeCreated timeCreated);
+public: TimeCreatedView(TimeCreated timeCreated);
 
-public constructor (Node node);
+public: TimeCreatedView(Node node);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public TimeCreated getTimeCreated();
+    public: TimeCreated getTimeCreated();
 
-    public setTimeCreated(TimeCreated timeCreated);
+    public: void setTimeCreated(TimeCreated timeCreated);
 
 };
 

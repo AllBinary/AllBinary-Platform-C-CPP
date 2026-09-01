@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -83,47 +85,44 @@
 class ComparisonImageInputOutput
             : public Object
         : public ImageIOInterface {
-        
 
-    private: static const ROOT_NAME: string = "_Changed_";
+    private: static const std::string ROOT_NAME = "_Changed_";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: ComparisonImageInputOutput(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public save(Long frame){
+    public: void save(Long frame){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
                         if(frame > 0)
                         
                                     {
                                     
-    imageComparisonResultFrameCacheable: ImageComparisonResultFrameCacheable = (getInstance as AutomaticCacheInterface).get(frame) as ImageComparisonResultFrameCacheable;;
+    ImageComparisonResultFrameCacheable imageComparisonResultFrameCacheable = (getInstance as AutomaticCacheInterface).get(frame) as ImageComparisonResultFrameCacheable;;
     
 
                         if(imageComparisonResultFrameCacheable != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    imageComparisonResult: ImageComparisonResult = imageComparisonResultFrameCacheable!.getImageComparisonResult()!;;
+    ImageComparisonResult imageComparisonResult = imageComparisonResultFrameCacheable.getImageComparisonResult();;
     
-this.save(imageComparisonResult, imageComparisonResultFrameCacheable!.getFrame());
+this->save(imageComparisonResult, imageComparisonResultFrameCacheable.getFrame());
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Comparison Results Not Available for Output: " +frame, this, commonStrings!.SAVE);
+                            this->logUtil.putF("Comparison Results Not Available for Output: " +frame, this, commonStrings.SAVE);
     
 
                         }
@@ -132,7 +131,7 @@ this.save(imageComparisonResult, imageComparisonResultFrameCacheable!.getFrame()
                                     }
                                 
                         else {
-                            this.logUtil!.putF("No Comparison Results: for first frame: " +frame, this, commonStrings!.SAVE);
+                            this->logUtil.putF("No Comparison Results: for first frame: " +frame, this, commonStrings.SAVE);
     
 
                         }
@@ -142,63 +141,63 @@ this.save(imageComparisonResult, imageComparisonResultFrameCacheable!.getFrame()
 
                 //@Throws(Exception.constructor)
             
-    public save(ImageComparisonResult imageComparisonResult, Long frame){
+    public: void save(ImageComparisonResult imageComparisonResult, Long frame){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-
-    filePathStringBuffer: StringMaker = new StringMaker();;
-    
-filePathStringBuffer!.append(ImageOutputData.SAVE_PATH);
-    
-filePathStringBuffer!.append(LongUtil.fillIn(frame.toString()));
-    
-filePathStringBuffer!.append(ComparisonImageInputOutput.ROOT_NAME);
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    filePathStringBuffer1: StringMaker = new StringMaker();;
+    StringMaker filePathStringBuffer = StringMaker();;
     
-filePathStringBuffer1!.append(filePathStringBuffer!.toString());
+filePathStringBuffer.append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer1!.append("_1");
+filePathStringBuffer.append(LongUtil::fillIn(frame.toString()));
     
-filePathStringBuffer1!.append(MediaDataFactory.getInstance()!.JPG.getExtension());
-    
-
-    filePath1: string = filePathStringBuffer1!.toString()!;;
+filePathStringBuffer.append(ComparisonImageInputOutput::ROOT_NAME);
     
 
-    filePathStringBuffer2: StringMaker = new StringMaker();;
+    StringMaker filePathStringBuffer1 = StringMaker();;
     
-filePathStringBuffer2!.append(filePathStringBuffer!.toString());
+filePathStringBuffer1.append(filePathStringBuffer.toString());
     
-filePathStringBuffer2!.append("_2");
+filePathStringBuffer1.append("_1");
     
-filePathStringBuffer2!.append(MediaDataFactory.getInstance()!.JPG.getExtension());
-    
-
-    filePath2: string = filePathStringBuffer2!.toString()!;;
+filePathStringBuffer1.append(MediaDataFactory::getInstance().JPG.getExtension());
     
 
-    bufferedImageCacheables: std::vector<BufferedImageCacheable> = ChangedPixelsUtil.generateBufferedImageChacheables(imageComparisonResult)!;;
-    
-this.logUtil!.putF("Comparison Image File Path 1: " +filePath1, this, commonStrings!.SAVE);
-    
-this.logUtil!.putF("Comparison Image File Path 2: " +filePath2, this, commonStrings!.SAVE);
+    std::string filePath1 = filePathStringBuffer1.toString();;
     
 
-    bufferedImageArray: std::vector<BufferedImage> = new Array(2);;
+    StringMaker filePathStringBuffer2 = StringMaker();;
+    
+filePathStringBuffer2.append(filePathStringBuffer.toString());
+    
+filePathStringBuffer2.append("_2");
+    
+filePathStringBuffer2.append(MediaDataFactory::getInstance().JPG.getExtension());
+    
+
+    std::string filePath2 = filePathStringBuffer2.toString();;
+    
+
+    std::vector<BufferedImageCacheable> bufferedImageCacheables = ChangedPixelsUtil::generateBufferedImageChacheables(imageComparisonResult);;
+    
+this->logUtil.putF("Comparison Image File Path 1: " +filePath1, this, commonStrings.SAVE);
+    
+this->logUtil.putF("Comparison Image File Path 2: " +filePath2, this, commonStrings.SAVE);
+    
+
+    std::vector<BufferedImage> bufferedImageArray = new Array(2);;
     
 bufferedImageArray[0]= bufferedImageCacheables[0]!.getBufferedImage();
     
 bufferedImageArray[1]= bufferedImageCacheables[1]!.getBufferedImage();
     
 
-    imagePersistanceUtil: ImagePersistanceUtil = ImagePersistanceUtil.getInstance()!;;
+    ImagePersistanceUtil imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
     
-imagePersistanceUtil!.saveWithImageIO(filePath1, bufferedImageArray[0]!);
+imagePersistanceUtil.saveWithImageIO(filePath1, bufferedImageArray[0]!);
     
-imagePersistanceUtil!.saveWithImageIO(filePath2, bufferedImageArray[1]!);
+imagePersistanceUtil.saveWithImageIO(filePath2, bufferedImageArray[1]!);
     
 }
 

@@ -75,23 +75,22 @@
 #include "CountedPickedUpLayerInterfaceFactoryPool.h"
 #include "PickedUpLayerType.h"
 
-class CountedPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory: public CountedPickedUpLayerInterfaceFactoryInterface {
-        
+class CountedPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public CountedPickedUpLayerInterfaceFactoryInterface {
 
-    public static const NULL_COUNTED_PICKUP_LAYER_FACTORY: CountedPickedUpLayerInterfaceFactory = new CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory.getInstance()!.NONE, IconLayer.NULL_ICON_LAYER, NullAnimationFactory.getFactoryInstance()!.getInstance(0));
+    public: static const CountedPickedUpLayerInterfaceFactory NULL_COUNTED_PICKUP_LAYER_FACTORY = CountedPickedUpLayerInterfaceFactory(PickedUpLayerTypeFactory::getInstance().NONE, IconLayer::NULL_ICON_LAYER, NullAnimationFactory::getFactoryInstance().getInstance(0));
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-public constructor (PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface){
+public: CountedPickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface){
             super(pickeUpLayerType, iconLayer, animationInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    list: BasicArrayList = CountedPickedUpLayerInterfaceFactoryPool.getInstance()!.getList()!;;
+    BasicArrayList list = CountedPickedUpLayerInterfaceFactoryPool::getInstance().getList();;
     
-this.id= list.size();
+this->id= list.size();
     
 list.add(this);
     
@@ -100,16 +99,16 @@ list.add(this);
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
 
 
 
-                            throw new Exception(CommonStrings.getInstance()!.NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
                     
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
@@ -119,12 +118,12 @@ list.add(this);
 }
 
 
-    public int32_t getId(){
+    public: int32_t getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 

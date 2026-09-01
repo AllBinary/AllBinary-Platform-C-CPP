@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_UTIL_ENUMERATIONUTIL_H
         #define ORG_ALLBINARY_UTIL_ENUMERATIONUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -56,17 +58,16 @@
 class EnumerationUtil
             : public Object
          {
-        
 
-    private: static const instance: EnumerationUtil = new EnumerationUtil();
+    private: static EnumerationUtil instance() { return EnumerationUtil(); }
 
-    public static EnumerationUtil getInstance();
+    public: static EnumerationUtil getInstance();
 
-    public bool hasMoreElements(Enumeration<any> enumeration);
+    public: bool hasMoreElements(Enumeration<any> enumeration);
 
-    public any nextElement(Enumeration<any> enumeration);
+    public: Object* nextElement(Enumeration<any> enumeration);
 
-    public std::vector<any> getAsArray(Enumeration<any> enumeration);
+    public: std::vector<Object*> getAsArray(Enumeration<any> enumeration);
 
 };
 

@@ -60,72 +60,69 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-    private: const logger: Logger = Logger.getLogger(LogUtil.constructor.toString()!)!;
+    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString()!);
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    /*actual*/ public putL(Log log){
+    /*actual*/ public: void putL(Log log){
 
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
-this.put(specialMessage, anyType, functionName, exception);
+this->put(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName){
-this.put(specialMessage, anyType, functionName, NullUtil.getInstance()!.NULL_OBJECT);
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
+this->put(specialMessage, anyType, functionName, NullUtil::getInstance().NULL_OBJECT);
     
 }
 
 
-    /*actual*/ public putFS(string specialMessage, string className, string functionName){
-this.putS(specialMessage, className, functionName, NullUtil.getInstance()!.NULL_OBJECT);
+    /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
+this->putS(specialMessage, className, functionName, NullUtil::getInstance().NULL_OBJECT);
     
 }
 
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
         try {
             
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-    clazz: Function = anyType!.constructor!;;
+    Function clazz = anyType->constructor;;
     
 
                         if(clazz.toString()! != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -135,21 +132,21 @@ this.putS(specialMessage, className, functionName, NullUtil.getInstance()!.NULL_
                                     }
                                 
 
-    message: string = this.logFormatUtil!.getS(className, functionName, specialMessage)!;;
+    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
     
 
                         if(exception != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logger.log(Level.SEVERE, message, exception);
+                                    this->logger.log(Level::SEVERE, message, exception);
     
 
                                     }
                                 
                         else {
-                            this.logger.log(Level.INFO, message);
+                            this->logger.log(Level::INFO, message);
     
 
                         }
@@ -163,25 +160,25 @@ this.putS(specialMessage, className, functionName, NullUtil.getInstance()!.NULL_
 }
 
 
-    /*actual*/ public putS(string specialMessage, string className, string functionName, any = {} exception){
+    /*actual*/ public: void putS(std::string specialMessage, std::string className, std::string functionName, Object* exception){
 
         try {
             
-    message: string = this.logFormatUtil!.getS(className, functionName, specialMessage)!;;
+    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
     
 
                         if(exception != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logger.log(Level.SEVERE, message, exception);
+                                    this->logger.log(Level::SEVERE, message, exception);
     
 
                                     }
                                 
                         else {
-                            this.logger.log(Level.INFO, message);
+                            this->logger.log(Level::INFO, message);
     
 
                         }

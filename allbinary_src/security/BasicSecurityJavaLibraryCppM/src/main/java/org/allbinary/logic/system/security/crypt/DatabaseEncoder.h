@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_DATABASEENCODER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_DATABASEENCODER_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -74,13 +76,12 @@
 class DatabaseEncoder
             : public Object
          {
-        
 
-    public static string encode(std::vector<int8_t> value);
+    public: static std::string encode(std::vector<int8_t> value);
 
-    public static std::vector<int8_t> decode(string value);
+    public: static std::vector<int8_t> decode(std::string value);
 
-private constructor ();
+private: DatabaseEncoder();
 
 };
 

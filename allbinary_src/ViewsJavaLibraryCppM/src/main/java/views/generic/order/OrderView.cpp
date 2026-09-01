@@ -75,66 +75,63 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class OrderView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    order: Order;
+    protected: Order order;
 
-    orderHistory: OrderHistory;
+    protected: OrderHistory orderHistory;
 
-    basketReview: BasketReview;
+    protected: BasketReview basketReview;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: OrderView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    getFormData(){
+    private: void getFormData(){
 
-    id: string = this.request.getParameter(OrderData.ID)!;;
+    std::string id = this->request.getParameter(OrderData::ID);;
     
 
-                        if(id == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    id= this.getWeblisketSession()!.getOrder()!.getId();
+                                    id= this->getWeblisketSession().getOrder().getId();
     
 
                                     }
                                 
-this.order= new Order(new Basket());
+this->order= Order(Basket());
     
-this.order.setId(id);
+this->order.setId(id);
     
 }
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    orderHistoryNode: Node = this.orderHistory!.toXmlNode(document)!;;
+    Node orderHistoryNode = this->orderHistory.toXmlNode(document);;
     
 
-    node: Node = document.createElement(this.orderHistory!.getPaymentMethod())!;;
+    Node node = document.createElement(this->orderHistory.getPaymentMethod());;
     
-orderHistoryNode!.appendChild(this.basketReview!.toXmlNode(document));
+orderHistoryNode.appendChild(this->basketReview.toXmlNode(document));
     
 node.appendChild(orderHistoryNode);
     
@@ -149,10 +146,10 @@ node.appendChild(orderHistoryNode);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -168,18 +165,18 @@ node.appendChild(orderHistoryNode);
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -192,10 +189,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

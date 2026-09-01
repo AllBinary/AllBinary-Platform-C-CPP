@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ProfileActionScriptNodeInterface: public DomNodeInterface, public MutableTreeNode {
-        
 
-    addCondition(ProfileActionScriptNodeInterface profileActionConditionInterface)
+    void addCondition(ProfileActionScriptNodeInterface profileActionConditionInterface)
 
-    removeCondition(ProfileActionScriptNodeInterface profileActionConditionInterface)
+    void removeCondition(ProfileActionScriptNodeInterface profileActionConditionInterface)
 
 };
 

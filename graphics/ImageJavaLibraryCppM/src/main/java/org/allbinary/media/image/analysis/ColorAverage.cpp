@@ -48,101 +48,98 @@
 class ColorAverage
             : public Object
          {
-        
 
-    private: avgRed: float= 0.0;
+    private: float avgRed= 0.0;
 
-    private: avgGreen: float= 0.0;
+    private: float avgGreen= 0.0;
 
-    private: avgBlue: float= 0.0;
+    private: float avgBlue= 0.0;
 
-public constructor (){
-
-            super();
-        this.setAvgRed(0);
+public: ColorAverage(){
+this->setAvgRed(0);
     
-this.setAvgGreen(0);
+this->setAvgGreen(0);
     
-this.setAvgBlue(0);
+this->setAvgBlue(0);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("getAvgRed(): ");
+stringBuffer.append("getAvgRed(): ");
     
-stringBuffer!.appendfloat(this.getAvgRed());
+stringBuffer.appendfloat(this->getAvgRed());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("getAvgRed(): ");
+stringBuffer.append("getAvgRed(): ");
     
-stringBuffer!.appendfloat(this.getAvgRed());
+stringBuffer.appendfloat(this->getAvgRed());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("getAvgGreen(): ");
+stringBuffer.append("getAvgGreen(): ");
     
-stringBuffer!.appendfloat(this.getAvgGreen());
+stringBuffer.appendfloat(this->getAvgGreen());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public float getAvgRed(){
+    public: float getAvgRed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.avgRed;
+                        return this->avgRed;
     
 }
 
 
-    public setAvgRed(float avgRed){
-this.avgRed= avgRed;
+    public: void setAvgRed(float avgRed){
+this->avgRed= avgRed;
     
 }
 
 
-    public float getAvgGreen(){
+    public: float getAvgGreen(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.avgGreen;
+                        return this->avgGreen;
     
 }
 
 
-    public setAvgGreen(float avgGreen){
-this.avgGreen= avgGreen;
+    public: void setAvgGreen(float avgGreen){
+this->avgGreen= avgGreen;
     
 }
 
 
-    public float getAvgBlue(){
+    public: float getAvgBlue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.avgBlue;
+                        return this->avgBlue;
     
 }
 
 
-    public setAvgBlue(float avgBlue){
-this.avgBlue= avgBlue;
+    public: void setAvgBlue(float avgBlue){
+this->avgBlue= avgBlue;
     
 }
 

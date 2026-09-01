@@ -53,24 +53,21 @@
 class AllBinaryLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
-    private: const rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-public constructor (Rectangle rectangle){
-
-            super();
-        this.rectangle= rectangle;
+public: AllBinaryLayerFactory(Rectangle rectangle){
+this->rectangle= rectangle;
     
 }
 
 
-    public AllBinaryLayer getInstance(){
+    public: AllBinaryLayer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryLayer(StringUtil.getInstance()!.EMPTY_STRING, this.rectangle, ViewPosition.getInstanceD());
+                        return AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, this->rectangle, ViewPosition::getInstanceD());
     
 }
 

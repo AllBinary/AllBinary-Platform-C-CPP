@@ -59,26 +59,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "SpecialAnimationInterface.h"
 
-class SpecialAnimation: public IndexedAnimation: public SpecialAnimationInterface {
-        
+class SpecialAnimation: public IndexedAnimation, public SpecialAnimationInterface {
 
-    private: static const NULL_SPECIAL_ANIMATION: SpecialAnimation = new SpecialAnimation(new IndexedAnimationBehavior(1, 250));
+    private: static const SpecialAnimation NULL_SPECIAL_ANIMATION = SpecialAnimation(IndexedAnimationBehavior(1, 250));
 
-    public static SpecialAnimation getInstance();
+    public: static SpecialAnimation getInstance();
 
-public constructor (AnimationBehavior animationBehavior);
+public: SpecialAnimation(AnimationBehavior animationBehavior);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public setLastFrame();
+    public: void setLastFrame();
 
-    public bool isComplete();
+    public: bool isComplete();
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 
-    public process();
+    public: void process();
 
 };
 

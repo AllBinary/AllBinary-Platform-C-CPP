@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -55,33 +57,32 @@
 class BasicGeographicMapUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicGeographicMapUtil = new BasicGeographicMapUtil();
+    private: static BasicGeographicMapUtil instance() { return BasicGeographicMapUtil(); }
 
-    public static BasicGeographicMapUtil getInstance();
+    public: static BasicGeographicMapUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public int32_t getBorderingRow(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getBorderingColumn(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
+    public: int32_t getBorderingRow(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public bool isSameCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: int32_t getBorderingColumn(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition);
 
-    public std::vector<Layer> createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap> geographicMapInterfaceArray);
+                //@Throws(Exception.constructor)
+            
+    public: bool isSameCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
 
-    public std::vector<Layer> getAllBinaryTiledLayerArray(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<Layer> tiledLayerArray, int32_t startIndex);
+    public: std::vector<Layer> createAllBinaryTiledLayerArray(std::vector<BasicGeographicMap> geographicMapInterfaceArray);
 
-    public move(std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t dx, int32_t dy);
+    public: std::vector<Layer> getAllBinaryTiledLayerArray(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<Layer> tiledLayerArray, int32_t startIndex);
 
-    public setPosition(std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y);
+    public: void move(std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t dx, int32_t dy);
+
+    public: void setPosition(std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y);
 
 };
 

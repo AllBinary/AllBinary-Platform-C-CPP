@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../java/lang/Object.h"
         
             #include "../../java/lang/InterruptedException.h"
@@ -65,49 +67,48 @@
 class TsUtil
             : public Object
          {
-        
 
-    private: static const instance: TsUtil = new TsUtil();
+    private: static TsUtil instance() { return TsUtil(); }
 
-    public static TsUtil getInstance(){
+    public: static TsUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TsUtil.instance;
+                        return TsUtil::instance();
     
 }
 
 
-    public int32_t hashCode(any = {} anyType){
+    public: int32_t hashCode(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType!.hashCode();;
+                        return anyType->hashCode();;
     
 }
 
 
                 //@Throws(InterruptedException.constructor)
             
-    public waitFor(any = {} any, int64_t timeoutMillis){
+    public: void waitFor(Object* any, int64_t timeoutMillis){
 
-    anyType: any = any;;
+    Object* anyType = any;;
     
-anyType!.wait(timeoutMillis);
+;
     
 }
 
 
                 //@Throws(RecordStoreNotOpenException.constructor, InvalidRecordIDException.constructor, RecordStoreException.constructor)
             
-    public std::vector<int8_t> getRecord(any = {} anyType, int32_t recordId){
+    public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId){
 
-    recordStore: RecordStore = anyType as RecordStore;;
+    RecordStore recordStore = anyType as RecordStore;;
     
 
-    data: std::vector<int8_t>;;
+    std::vector<int8_t> data;;
     
 
         
@@ -116,9 +117,9 @@ anyType!.wait(timeoutMillis);
 
         //mutex.withLock
         
-data= new Array(recordStore!.getRecordSize(recordId));
+data= new Array(recordStore.getRecordSize(recordId));
     
-recordStore!.getRecord(recordId, data, 0);
+recordStore.getRecord(recordId, data, 0);
     
 
 
@@ -126,9 +127,9 @@ recordStore!.getRecord(recordId, data, 0);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return data.length < 1
+                        return data.size() < 1
                         ?       
-                                NullUtil.getInstance()!.NULL_BYTE_ARRAY
+                                NullUtil::getInstance().NULL_BYTE_ARRAY
                                 :
 
                             data;
@@ -138,7 +139,7 @@ recordStore!.getRecord(recordId, data, 0);
 }
 
 
-    public int32_t compareTo(string a, string b){
+    public: int32_t compareTo(std::string a, std::string b){
 
 
 
@@ -148,7 +149,7 @@ recordStore!.getRecord(recordId, data, 0);
 }
 
 
-    public bool equalIgnoreCase(string a, string b){
+    public: bool equalIgnoreCase(std::string a, std::string b){
 
 
 
@@ -158,17 +159,17 @@ recordStore!.getRecord(recordId, data, 0);
 }
 
 
-    public bool equalsNotstring(any = {} anyType, any = {} object2){
+    public: bool equalsNotstring(Object* anyType, Object* object2){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return anyType! === object2;;
+                        return anyType === object2;;
     
 }
 
 
-    public int32_t toNumberFromChar(char value){
+    public: int32_t toNumberFromChar(char value){
 
 
 
@@ -178,7 +179,7 @@ recordStore!.getRecord(recordId, data, 0);
 }
 
 
-    public int32_t toNumber(int32_t value){
+    public: int32_t toNumber(int32_t value){
 
 
 
@@ -188,7 +189,7 @@ recordStore!.getRecord(recordId, data, 0);
 }
 
 
-    public std::vector<int8_t> getByteArray(string string){
+    public: std::vector<int8_t> getByteArray(std::string string){
 
 
 
@@ -198,7 +199,7 @@ recordStore!.getRecord(recordId, data, 0);
 }
 
 
-    public bool isItemListener(Displayable owner){
+    public: bool isItemListener(Displayable owner){
 
                         if(owner instanceof Form)
                         

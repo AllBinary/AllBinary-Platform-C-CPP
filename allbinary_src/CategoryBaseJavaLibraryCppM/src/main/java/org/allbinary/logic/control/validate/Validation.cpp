@@ -56,50 +56,49 @@
 class Validation
             : public Object
         : public ValidationInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

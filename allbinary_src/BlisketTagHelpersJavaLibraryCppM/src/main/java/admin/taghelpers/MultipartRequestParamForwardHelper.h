@@ -81,29 +81,28 @@
 class MultipartRequestParamForwardHelper
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const requestMapInterface: RequestMapInterface;
+    private: RequestMapInterface requestMapInterface;
 
-    private: const page: string;
+    private: std::string page;
 
-    private: const command: string;
+    private: std::string command;
 
-    private: const paramVector: Vector;
+    private: Vector paramVector;
 
-public constructor (HelperTag parentHelperTag, string page, string command, Vector paramVector, PageContext pageContext);
+public: MultipartRequestParamForwardHelper(HelperTag parentHelperTag, std::string page, std::string command, Vector paramVector, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public forward();
+    public: void forward();
 
-    string getParams();
+    private: std::string getParams();
 
-    bool shouldForward();
+    private: bool shouldForward();
 
 };
 

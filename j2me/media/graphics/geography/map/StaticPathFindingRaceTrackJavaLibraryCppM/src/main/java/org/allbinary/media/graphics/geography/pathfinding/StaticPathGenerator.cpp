@@ -94,51 +94,48 @@
 class StaticPathGenerator
             : public Object
         : public PathGeneratorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-protected constructor (){
-
-            super();
-        PreLogUtil.put("Using Static Path Finding", this, CommonStrings.getInstance()!.CONSTRUCTOR);
+protected: StaticPathGenerator(){
+PreLogUtil::put("Using Static Path Finding", this, CommonStrings::getInstance().CONSTRUCTOR);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(any = {} geographicMapInterface, int32_t totalPaths){
+    public: void init(Object* geographicMapInterface, int32_t totalPaths){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory, BasicArrayList pathList){
+    private: BasicArrayList getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory, BasicArrayList pathList){
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    size: int32_t = pathList!.size()!;;
+    int32_t size = pathList.size();;
     
 
-    basicGeographicMapCellPosition: CellPosition;;
+    CellPosition basicGeographicMapCellPosition;;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-basicGeographicMapCellPosition= pathList!.get(index) as CellPosition;
+basicGeographicMapCellPosition= pathList.get(index) as CellPosition;
     
-geographicMapCellPosition= geographicMapCellPositionFactory!.getAt(basicGeographicMapCellPosition!.getColumn(), basicGeographicMapCellPosition!.getRow());
+geographicMapCellPosition= geographicMapCellPositionFactory.getAt(basicGeographicMapCellPosition.getColumn(), basicGeographicMapCellPosition.getRow());
     
 list.add(geographicMapCellPosition);
     
@@ -155,66 +152,66 @@ list.add(geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths){
+    public: BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    pathCacheFactory: PathCacheFactory = PathCacheFactory.getInstance()!;;
+    PathCacheFactory pathCacheFactory = PathCacheFactory::getInstance();;
     
 
-    mapIdInteger: Integer = geographicMapInterface!.getAllBinaryTiledLayer()!.getDataId()!;;
+    Integer mapIdInteger = geographicMapInterface->getAllBinaryTiledLayer().getDataId();;
     
 
-    list: BasicArrayList = pathCacheFactory!.getOrCreate(mapIdInteger)!;;
+    BasicArrayList list = pathCacheFactory.getOrCreate(mapIdInteger);;
     
 
-                        if(list == this.basicArrayListUtil!.getImmutableInstance())
+                        if(list == this->basicArrayListUtil.getImmutableInstance())
                         
                                     {
-                                    list= new BasicArrayListD();
+                                    list= BasicArrayListD();
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterface!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    id: int32_t = PathData.getInstance()!.OFFSET +mapIdInteger!.intValue();;
+    int32_t id = PathData::getInstance().OFFSET +mapIdInteger.intValue();;
     
 
-    basicList: BasicArrayList = pathCacheFactory!.getOrCreate(smallIntegerSingletonFactory!.getAt(id))!;;
+    BasicArrayList basicList = pathCacheFactory.getOrCreate(smallIntegerSingletonFactory.getAt(id));;
     
 
-    size: int32_t = basicList!.size()!;;
+    int32_t size = basicList.size();;
     
 
-    pathList: BasicArrayList;;
+    BasicArrayList pathList;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-pathList= this.getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(geographicMapCellPositionFactory, basicList!.get(index) as BasicArrayList);
+pathList= this->getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(geographicMapCellPositionFactory, basicList.get(index) as BasicArrayList);
     
 list.add(pathList);
     
 }
 
-pathCacheFactory!.add(mapIdInteger, list);
+pathCacheFactory.add(mapIdInteger, list);
     
-pathCacheFactory!.remove(smallIntegerSingletonFactory!.getAt(id));
+pathCacheFactory.remove(smallIntegerSingletonFactory.getAt(id));
     
 
                                     }
                                 
-this.logUtil!.putF(new StringMaker().append("Using Cached Path(s): ")!.append(StringUtil.getInstance()!.toString(list))!.toString(), this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF(StringMaker().append("Using Cached Path(s): ").append(StringUtil::getInstance().toString(list)).toString(), this, commonStrings.GET_INSTANCE);
     
 
 
@@ -226,13 +223,13 @@ this.logUtil!.putF(new StringMaker().append("Using Cached Path(s): ")!.append(St
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicArrayListD();
+                        return BasicArrayListD();
     
 }
 

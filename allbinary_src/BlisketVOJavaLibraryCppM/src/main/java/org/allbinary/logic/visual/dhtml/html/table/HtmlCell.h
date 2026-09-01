@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLCELL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLCELL_H
 
+            #include <vector>
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -47,33 +49,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HtmlCell: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const START: string = "<td ";
+    private: const std::string START = "<td ";
 
-    private: const ENDTAG: string = "</td>";
+    private: const std::string ENDTAG = "</td>";
 
-    private: const HEIGHT: string = "height";
+    private: const std::string HEIGHT = "height";
 
-    private: const WIDTH: string = "width";
+    private: const std::string WIDTH = "width";
 
-    private: height: string;
+    private: std::string height;
 
-    private: width: string;
+    private: std::string width;
 
-    private: before: string;
+    private: std::string before;
 
-    private: body: string;
+    private: std::string body;
 
-    private: after: string;
+    private: std::string after;
 
-public constructor (string before, string width, string height, string after);
+public: HtmlCell(std::string before, std::string width, std::string height, std::string after);
 
-    public addText(string body);
+    public: void addText(std::string body);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

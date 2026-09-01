@@ -50,15 +50,14 @@
 class UrlGlobalsInterface
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    string getMainPath();
+    std::string getMainPath();
 
-    string getTestHtmlPath();
+    std::string getTestHtmlPath();
 
-    string getWebappPath();
+    std::string getWebappPath();
 
     bool isTestingMode();
 

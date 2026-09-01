@@ -74,60 +74,57 @@
 class DeleteCloud
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: DeleteCloud(){
+}
 
 
-    public bool delete(string prePath, int32_t current, int32_t total){
+    public: bool delete_(std::string prePath, int32_t current, int32_t total){
 
         try {
             
-                        if(AbIOSystem.getInstance()!.isType("com.vobject.appengine.java.io"))
+                        if(AbIOSystem::getInstance().isType("com.vobject.appengine.java.io"))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-stringBuffer!.append(prePath);
-    
-
-    path: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+stringBuffer.append(prePath);
     
 
-    file: AbFile = AbFile.createAbFileFromAbPath(path)!;;
+    AbPath path = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-    fileBasicArrayList: BasicArrayList = Directory.getInstance()!.search(file, true)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(path);;
     
 
-    size: int32_t = fileBasicArrayList!.size()!;;
-    
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append("Searched: ");
-    
-stringBuffer!.append(path.toFileSystemString());
-    
-stringBuffer!.append(" BasicArrayList: ");
-    
-stringBuffer!.appendint(size);
+    BasicArrayList fileBasicArrayList = Directory::getInstance().search(file, true);;
     
 
-    portion: int32_t = size /total +1;;
+    int32_t size = fileBasicArrayList.size();;
+    
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append("Searched: ");
+    
+stringBuffer.append(path.toFileSystemString());
+    
+stringBuffer.append(" BasicArrayList: ");
+    
+stringBuffer.appendint(size);
     
 
-    start: int32_t = portion *current;;
+    int32_t portion = size /total +1;;
     
 
-    end: int32_t = start +portion;;
+    int32_t start = portion *current;;
+    
+
+    int32_t end = start +portion;;
     
 
                         if(end > size)
@@ -138,35 +135,35 @@ stringBuffer!.appendint(size);
 
                                     }
                                 
-stringBuffer!.append(" Section: ");
+stringBuffer.append(" Section: ");
     
-stringBuffer!.appendint(start);
+stringBuffer.appendint(start);
     
-stringBuffer!.append(" - ");
+stringBuffer.append(" - ");
     
-stringBuffer!.appendint(end);
+stringBuffer.appendint(end);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "initialize()");
+this->logUtil.putF(stringBuffer.toString(), this, "initialize()");
     
 
-    nextFile: AbFile;;
+    AbFile nextFile;;
     
 
 
 
 
                         for (
-    index: int32_t = start;index < end; index++)
+    int32_t index = start;index < end; index++)
         {
-nextFile= fileBasicArrayList!.get(index) as AbFile;
+nextFile= fileBasicArrayList.get(index) as AbFile;
     
 
         try {
             
-                        if(nextFile!.getPath()!.indexOf(FileUploadData.getInstance()!.FILE) < 0)
+                        if(nextFile.getPath().indexOf(FileUploadData::getInstance().FILE) < 0)
                         
                                     {
-                                    nextFile!.delete();
+                                    nextFile.delete();
     
 
                                     }
@@ -179,7 +176,7 @@ nextFile= fileBasicArrayList!.get(index) as AbFile;
 
 }
 
-this.logUtil!.putF("Deleted Files From Cloud", this, "initialize()");
+this->logUtil.putF("Deleted Files From Cloud", this, "initialize()");
     
 
                                     }
@@ -194,7 +191,7 @@ this.logUtil!.putF("Deleted Files From Cloud", this, "initialize()");
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Unable to copy installer files into cloud", this, "initialize()", e);
+this->logUtil.put("Unable to copy installer files into cloud", this, "initialize()", e);
     
 
 

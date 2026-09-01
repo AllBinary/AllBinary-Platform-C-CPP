@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RollLeftOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(RollLeftOrientationInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(RollLeftOrientationInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    RollLeftOrientationInputToGameKeyEventAction.instance= new RollLeftOrientationInputToGameKeyEventAction();
+                                    RollLeftOrientationInputToGameKeyEventAction::instance= RollLeftOrientationInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class RollLeftOrientationInputToGameKeyEventAction: public GameKeyCompleteMotion
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RollLeftOrientationInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return RollLeftOrientationInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Roll Left Action", OrientationMotionGestureFactory.getInstance()!.ROLL_LEFT, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: RollLeftOrientationInputToGameKeyEventAction(){
+            super("Roll Left Action", OrientationMotionGestureFactory::getInstance().ROLL_LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

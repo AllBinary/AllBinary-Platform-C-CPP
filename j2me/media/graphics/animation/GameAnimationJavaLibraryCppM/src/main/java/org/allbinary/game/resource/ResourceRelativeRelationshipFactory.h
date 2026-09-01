@@ -63,33 +63,32 @@
 class ResourceRelativeRelationshipFactory
             : public Object
         : public ResourceRelativeRelationshipFactoryInterface {
-        
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    private: initialized: bool= false;
-
-                //@Throws(Exception.constructor)
-            
-    public init(int32_t level);
+    private: bool initialized= false;
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getResourceRelativeRelationshipList(string resource);
+    public: void init(int32_t level);
 
                 //@Throws(Exception.constructor)
             
-    public addResourceRelativeRelationship(string resource, RelativeRelationship hardPoint);
+    public: BasicArrayList getResourceRelativeRelationshipList(std::string resource);
 
-    public bool isLoadingLevel(int32_t level);
+                //@Throws(Exception.constructor)
+            
+    public: void addResourceRelativeRelationship(std::string resource, RelativeRelationship hardPoint);
 
-    public bool isFeature();
+    public: bool isLoadingLevel(int32_t level);
 
-    public setInitialized(bool initialized);
+    public: bool isFeature();
 
-    public bool isInitialized();
+    public: void setInitialized(bool initialized);
+
+    public: bool isInitialized();
 
 };
 

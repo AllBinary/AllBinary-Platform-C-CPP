@@ -48,13 +48,12 @@
         #include "BooleanFileVisitor.h"
 
 class ExcludeFileExtensionsBooleanFileVisitor: public BooleanFileVisitor {
-        
 
-public constructor (BasicArrayList filterStringBasicArrayList);
+public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
 
-    public Boolean visit(AbFile file);
+    public: Boolean visit(AbFile file);
 
-    public Boolean visit(AbFile file, string fileNameString);
+    public: Boolean visit(AbFile file, std::string fileNameString);
 
 };
 

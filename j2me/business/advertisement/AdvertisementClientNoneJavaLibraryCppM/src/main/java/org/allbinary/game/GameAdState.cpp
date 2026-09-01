@@ -63,23 +63,22 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameAdState: public GameAdStateBase: public VirtualKeyboardEventListenerInterface {
-        
+class GameAdState: public GameAdStateBase, public VirtualKeyboardEventListenerInterface {
 
-public constructor (AdConfiguration adConfiguration){
+public: GameAdState(AdConfiguration adConfiguration){
             super(adConfiguration);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-VirtualKeyboardEventHandler.getInstance()!.addListenerInterface(this);
+VirtualKeyboardEventHandler::getInstance().addListenerInterface(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
 }
 
 

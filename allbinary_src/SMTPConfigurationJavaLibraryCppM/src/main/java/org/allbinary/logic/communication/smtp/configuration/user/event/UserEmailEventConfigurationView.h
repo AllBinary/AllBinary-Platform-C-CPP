@@ -72,21 +72,20 @@
 class UserEmailEventConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: userEmailEventConfigurationInterface: UserEmailEventConfigurationInterface;
+    private: UserEmailEventConfigurationInterface userEmailEventConfigurationInterface;
 
-public constructor (Node node);
+public: UserEmailEventConfigurationView(Node node);
 
-public constructor (UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
+public: UserEmailEventConfigurationView(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public UserEmailEventConfigurationInterface getUserEmailEventConfigurationInterface();
+    public: UserEmailEventConfigurationInterface getUserEmailEventConfigurationInterface();
 
-    public setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
+    public: void setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
 
 };
 

@@ -55,22 +55,21 @@
 #include "HealthInterface.h"
 #include "Health.h"
 
-class HealthBar: public Paintable: public HealthListenerInterface {
-        
+class HealthBar: public Paintable, public HealthListenerInterface {
 
-    private: const animationInterface: HealthBarAnimation;
+    private: HealthBarAnimation animationInterface;
 
-    private: const healthInterface: HealthInterface;
+    private: HealthInterface healthInterface;
 
-    const allbinaryLayer: AllBinaryLayer;
+    protected: AllBinaryLayer allbinaryLayer;
 
-public constructor (AllBinaryLayer layerInterface, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction);
+public: HealthBar(AllBinaryLayer layerInterface, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction);
 
-    public onHealthChange();
+    public: void onHealthChange();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

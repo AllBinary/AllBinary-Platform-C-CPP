@@ -28,7 +28,6 @@
         #include "GL.h"
 
 class GL11Ext: public GL {
-        
 
 };
 

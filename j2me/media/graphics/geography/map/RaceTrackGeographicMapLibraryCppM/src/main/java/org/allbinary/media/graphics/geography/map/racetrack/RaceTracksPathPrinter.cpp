@@ -56,43 +56,42 @@
 class RaceTracksPathPrinter
             : public Object
          {
-        
 
-    printPath(BasicArrayList list){
+    private: void printPath(BasicArrayList list){
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    anyType: any = list.get(index)!;;
+    Object* anyType = list.get(index);;
     
-PreLogUtil.put(new StringMaker().append("pathList.add(cellPositionFactory.getInstance")!.append(anyType!.toString())!.append(");")!.toString(), this, "printPath");
+PreLogUtil::put(StringMaker().append("pathList.add(cellPositionFactory.getInstance").append(anyType->toString()).append(");").toString(), this, "printPath");
     
 }
 
 }
 
 
-    printPaths(BasicArrayList list){
+    protected: void printPaths(BasicArrayList list){
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-console.log(new StringMaker().append(" Path ")!.appendint(index)!.append(CommonLabels.getInstance()!.COLON_SEP)!.toString());
+console.log(StringMaker().append(" Path ").appendint(index).append(CommonLabels::getInstance().COLON_SEP).toString());
     
-this.printPath(list.get(index) as BasicArrayList);
+this->printPath(list.get(index) as BasicArrayList);
     
 }
 

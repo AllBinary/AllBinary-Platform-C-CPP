@@ -46,11 +46,10 @@
 /*actual*/ class LogFactory
             : public Object
          {
-        
 
-    /*actual*/ public static Log getInstance(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    /*actual*/ public: static Log getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
-    /*actual*/ public static Log getInstanceF(string specialMessage, any = {} anyType, string functionName);
+    /*actual*/ public: static Log getInstanceF(std::string specialMessage, Object* anyType, std::string functionName);
 
 };
 

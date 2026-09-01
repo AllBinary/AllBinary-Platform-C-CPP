@@ -64,28 +64,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //SwtToJ2ME
-class FullScreenPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public static FullScreenPaintable getInstance();
+    public: static FullScreenPaintable getInstance();
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: const FULLSCREEN_TEXT: string = "F11 - Toggle Fullscreen";
+    private: const std::string FULLSCREEN_TEXT = "F11 - Toggle Fullscreen";
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: Y: int32_t= 0;
+    private: int32_t Y= 0;
 
-    private: beginWidth: int32_t= 0;
+    private: int32_t beginWidth= 0;
 
-private constructor ();
+private: FullScreenPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

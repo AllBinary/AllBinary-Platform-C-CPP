@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPEFACTORY_H
 
+            #include <vector>
+        
 #include <java/util/Hashtable.h>
 
       
@@ -67,35 +69,34 @@
 #include "BasicTopViewGeographicMapStrings.h"
 
 class BasicTopViewGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
-        
 
-    public const BLOCK_CELL_TYPE: BasicTopViewGeographicMapCellType;
+    public: BasicTopViewGeographicMapCellType BLOCK_CELL_TYPE;
 
-    public const OFF_MAP_CELL_TYPE: BasicTopViewGeographicMapCellType;
+    public: BasicTopViewGeographicMapCellType OFF_MAP_CELL_TYPE;
 
-    public const FLOOR_CELL_TYPE: BasicTopViewGeographicMapCellType;
+    public: BasicTopViewGeographicMapCellType FLOOR_CELL_TYPE;
 
-    public const DOOR_CELL_TYPE: BasicTopViewGeographicMapCellType;
+    public: BasicTopViewGeographicMapCellType DOOR_CELL_TYPE;
 
-    public const STAIRS_UP_CELL_TYPE: BasicTopViewGeographicMapCellType;
+    public: BasicTopViewGeographicMapCellType STAIRS_UP_CELL_TYPE;
 
-    public const STAIRS_DOWN_CELL_TYPE: BasicTopViewGeographicMapCellType;
+    public: BasicTopViewGeographicMapCellType STAIRS_DOWN_CELL_TYPE;
 
-    public const OTHER_CELL_TYPE: BasicTopViewGeographicMapCellType;
+    public: BasicTopViewGeographicMapCellType OTHER_CELL_TYPE;
 
-    private: const maxTileId: int32_t;
+    private: int32_t maxTileId;
 
-public constructor (Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId);
+public: BasicTopViewGeographicMapCellTypeFactory(Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId);
 
-    public int32_t getStartType();
+    public: int32_t getStartType();
 
-    public int32_t getEndType();
+    public: int32_t getEndType();
 
-    public int32_t getEmptyType();
+    public: int32_t getEmptyType();
 
-    public bool isPath(GeographicMapCellType cellType);
+    public: bool isPath(GeographicMapCellType cellType);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

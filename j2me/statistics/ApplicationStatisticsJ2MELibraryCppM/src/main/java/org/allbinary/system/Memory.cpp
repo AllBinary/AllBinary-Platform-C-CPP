@@ -47,25 +47,24 @@
 /*actual*/ class Memory
             : public Object
          {
-        
 
-    /*actual*/ public static string getInfo(){
+    /*actual*/ public: static std::string getInfo(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Memory: Free: ");
+stringBuffer.append("Memory: Free: ");
     
-stringBuffer!.appendlong(Runtime.getRuntime()!.freeMemory());
+stringBuffer.appendlong(Runtime::getRuntime().freeMemory());
     
-stringBuffer!.append(" Total: ");
+stringBuffer.append(" Total: ");
     
-stringBuffer!.appendlong(Runtime.getRuntime()!.totalMemory());
+stringBuffer.appendlong(Runtime::getRuntime().totalMemory());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

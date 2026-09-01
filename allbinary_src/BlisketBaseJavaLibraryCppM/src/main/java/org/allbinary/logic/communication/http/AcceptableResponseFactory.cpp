@@ -43,25 +43,24 @@
 class AcceptableResponseFactory
             : public Object
          {
-        
 
-    private: static const instance: AcceptableResponseFactory = new AcceptableResponseFactory();
+    private: static AcceptableResponseFactory instance() { return AcceptableResponseFactory(); }
 
-    public static AcceptableResponseFactory getInstance(){
+    public: static AcceptableResponseFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AcceptableResponseFactory.instance;
+                        return AcceptableResponseFactory::instance();
     
 }
 
 
-    public const HTML: AcceptableResponse = new AcceptableResponse("text/html", "html", 0);
+    public: const AcceptableResponse HTML = AcceptableResponse("text/html", "html", 0);
 
-    public const WML: AcceptableResponse = new AcceptableResponse("text/wml", "wml", 1);
+    public: const AcceptableResponse WML = AcceptableResponse("text/wml", "wml", 1);
 
-    public const VXML: AcceptableResponse = new AcceptableResponse("text/vxml", "vxml", 2);
+    public: const AcceptableResponse VXML = AcceptableResponse("text/vxml", "vxml", 2);
 
 };
 

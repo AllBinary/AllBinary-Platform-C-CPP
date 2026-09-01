@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -95,41 +97,38 @@
 class SelectionTool
             : public Object
         : public GraphicItemInterface {
-        
 
-    private: static const NAME: string = "Selection Tool";
+    private: static const std::string NAME = "Selection Tool";
 
-    public static string getStaticName(){
+    public: static std::string getStaticName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectionTool.NAME;
+                        return SelectionTool::NAME;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const canvasJPanel: CanvasJPanel;
+    private: CanvasJPanel canvasJPanel;
 
-    private: active: bool = true;
+    private: bool active = true;
 
-public constructor (CanvasJPanel canvasJPanel){
-
-            super();
-        this.canvasJPanel= canvasJPanel;
+public: SelectionTool(CanvasJPanel canvasJPanel){
+this->canvasJPanel= canvasJPanel;
     
 }
 
 
-    public setColor(Color color){
+    public: void setColor(Color color){
 }
 
 
-    public MutableTreeNode getTreeNode(){
+    public: MutableTreeNode getTreeNode(){
 
 
 
@@ -139,7 +138,7 @@ public constructor (CanvasJPanel canvasJPanel){
 }
 
 
-    public Points getPointsInterface(){
+    public: Points getPointsInterface(){
 
 
 
@@ -149,11 +148,11 @@ public constructor (CanvasJPanel canvasJPanel){
 }
 
 
-    public setPointsInterface(Points points){
+    public: void setPointsInterface(Points points){
 }
 
 
-    public bool isValid(){
+    public: bool isValid(){
 
 
 
@@ -163,51 +162,51 @@ public constructor (CanvasJPanel canvasJPanel){
 }
 
 
-    public bool isActive(){
+    public: bool isActive(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.active;
+                        return this->active;
     
 }
 
 
-    public deactivate(){
+    public: void deactivate(){
 }
 
 
-    public activate(){
+    public: void activate(){
 }
 
 
-    public setFulcrumPoint(GPoint point){
+    public: void setFulcrumPoint(GPoint point){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public translate(int32_t x, int32_t y){
+    public: void translate(int32_t x, int32_t y){
 }
 
 
-    public setRotate(double theta){
+    public: void setRotate(double theta){
 }
 
 
-    public addRotate(double theta){
+    public: void addRotate(double theta){
 }
 
 
-    public setAngle(double angle){
+    public: void setAngle(double angle){
 }
 
 
-    public addAngle(double angle){
+    public: void addAngle(double angle){
 }
 
 
-    public double getAngle(){
+    public: double getAngle(){
 
 
 
@@ -217,50 +216,49 @@ public constructor (CanvasJPanel canvasJPanel){
 }
 
 
-    private: controlIdDown: bool= false;
+    private: bool controlIdDown= false;
 
-    makeSelection(){
+    private: void makeSelection(){
 
-    xRect: int32_t = this.getXRect()!;;
+    int32_t xRect = this->getXRect();;
     
 
-    xRect2: int32_t = Math.abs(this.endPoint!.getX() -this.startPoint!.getX()) +xRect;;
+    int32_t xRect2 = Math::abs(this->endPoint.getX() -this->startPoint.getX()) +xRect;;
     
 
-    yRect: int32_t = this.getYRect()!;;
+    int32_t yRect = this->getYRect();;
     
 
-    yRect2: int32_t = Math.abs(this.endPoint!.getY() -this.startPoint!.getY()) +yRect;;
+    int32_t yRect2 = Math::abs(this->endPoint.getY() -this->startPoint.getY()) +yRect;;
     
 
-    hashMap: HashMap<any, any> = this.canvasJPanel!.getGraphicItemHashMap()!;;
+    HashMap<any, any> hashMap = this->canvasJPanel.getGraphicItemHashMap();;
     
 
-    graphicItemArray: std::vector<any> = hashMap!.keys().()!;;
+    std::vector<Object*> graphicItemArray = hashMap.keys().();;
     
 
-    size: int32_t = graphicItemArray!.length
-                ;;
+    int32_t size = graphicItemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: GraphicItemInterface = hashMap!.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = hashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
     
 
-                        if(item.getName() == LinesGraphicItem.getStaticName())
+                        if(item.getName() == LinesGraphicItem::getStaticName())
                         
                                     {
                                     
-                        if(RectangleCollisionPointUtil.allPointsInsideCell(xRect, yRect, xRect2, yRect2, item.getPointsInterface()!.getPoints(), this.canvasJPanel!.getXPixelsPerWorkAreaPixel(), this.canvasJPanel!.getYPixelsPerWorkAreaPixel()))
+                        if(RectangleCollisionPointUtil::allPointsInsideCell(xRect, yRect, xRect2, yRect2, item.getPointsInterface().getPoints(), this->canvasJPanel.getXPixelsPerWorkAreaPixel(), this->canvasJPanel.getYPixelsPerWorkAreaPixel()))
                         
                                     {
-                                    item.setColor(Color.YELLOW);
+                                    item.setColor(Color::YELLOW);
     
 item.activate();
     
@@ -268,10 +266,10 @@ item.activate();
                                     }
                                 
                              else 
-                        if(!this.controlIdDown)
+                        if(!this->controlIdDown)
                         
                                     {
-                                    item.setColor(Color.WHITE);
+                                    item.setColor(Color::WHITE);
     
 item.deactivate();
     
@@ -286,20 +284,20 @@ item.deactivate();
 }
 
 
-    private: const rectColor: Color = new Color(BasicColorFactory.getInstance()!.RED.intValue());
+    private: const Color rectColor = Color(BasicColorFactory::getInstance().RED.intValue());
 
-    public int32_t getXRect(){
+    public: int32_t getXRect(){
 
-    xDiff: int32_t = this.endPoint!.getX() -this.startPoint!.getX();;
+    int32_t xDiff = this->endPoint.getX() -this->startPoint.getX();;
     
 
-    xRect: int32_t = this.startPoint!.getX()!;;
+    int32_t xRect = this->startPoint.getX();;
     
 
                         if(xDiff < 0)
                         
                                     {
-                                    xRect= this.endPoint!.getX();
+                                    xRect= this->endPoint.getX();
     
 
                                     }
@@ -313,18 +311,18 @@ item.deactivate();
 }
 
 
-    public int32_t getYRect(){
+    public: int32_t getYRect(){
 
-    yDiff: int32_t = this.endPoint!.getY() -this.startPoint!.getY();;
+    int32_t yDiff = this->endPoint.getY() -this->startPoint.getY();;
     
 
-    yRect: int32_t = this.startPoint!.getY()!;;
+    int32_t yRect = this->startPoint.getY();;
     
 
                         if(yDiff < 0)
                         
                                     {
-                                    yRect= this.endPoint!.getY();
+                                    yRect= this->endPoint.getY();
     
 
                                     }
@@ -338,20 +336,20 @@ item.deactivate();
 }
 
 
-    public paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y){
-g.setColor(this.rectColor);
+    public: void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y){
+g.setColor(this->rectColor);
     
 
-    xRect: int32_t = this.getXRect()!;;
+    int32_t xRect = this->getXRect();;
     
 
-    width: int32_t = Math.abs(this.endPoint!.getX() -this.startPoint!.getX())!;;
+    int32_t width = Math::abs(this->endPoint.getX() -this->startPoint.getX());;
     
 
-    yRect: int32_t = this.getYRect()!;;
+    int32_t yRect = this->getYRect();;
     
 
-    height: int32_t = Math.abs(this.endPoint!.getY() -this.startPoint!.getY())!;;
+    int32_t height = Math::abs(this->endPoint.getY() -this->startPoint.getY());;
     
 g.drawRect(xRect, yRect, width, height);
     
@@ -360,7 +358,7 @@ g.drawRect(xRect, yRect, width, height);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom(CanvasDom canvasDom){
+    public: Node toDom(CanvasDom canvasDom){
 
 
 
@@ -370,7 +368,7 @@ g.drawRect(xRect, yRect, width, height);
 }
 
 
-    public GPoint removePoint(){
+    public: GPoint removePoint(){
 
 
 
@@ -380,74 +378,74 @@ g.drawRect(xRect, yRect, width, height);
 }
 
 
-    public addPoint(GPoint point){
+    public: void addPoint(GPoint point){
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectionTool.NAME;
+                        return SelectionTool::NAME;
     
 }
 
 
-    private: startPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: GPoint startPoint = PointFactory::getInstance().ZERO_ZERO;
 
-    private: endPoint: GPoint = this.startPoint;
+    private: GPoint endPoint = this->startPoint;
 
-    public mouseClicked(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
 }
 
 
-    public mouseMoved(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
 }
 
 
-    public mouseEntered(java.awt.event.MouseEvent mouseEvent){
+    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent){
 }
 
 
-    public mouseExited(java.awt.event.MouseEvent mouseEvent){
+    public: void mouseExited(java::awt::event::MouseEvent mouseEvent){
 }
 
 
-    public mousePressed(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
-this.logUtil!.putF(this.commonStrings!.START, this, MouseStrings.getInstance()!.MOUSE_PRESSED);
+    public: void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+this->logUtil.putF(this->commonStrings.START, this, MouseStrings::getInstance().MOUSE_PRESSED);
     
-this.startPoint= PointFactory.getInstance()!.createXY(mouseEvent!.getX(), mouseEvent!.getY());
+this->startPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEvent.getY());
     
-this.endPoint= this.startPoint;
-    
-}
-
-
-    public mouseReleased(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
-this.logUtil!.putF(this.commonStrings!.START, this, MouseStrings.getInstance()!.MOUSE_RELEASED);
-    
-this.endPoint= PointFactory.getInstance()!.createXY(mouseEvent!.getX(), mouseEvent!.getY());
-    
-this.active= false;
-    
-this.makeSelection();
+this->endPoint= this->startPoint;
     
 }
 
 
-    public mouseDragged(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
-this.endPoint= PointFactory.getInstance()!.createXY(mouseEvent!.getX(), mouseEvent!.getY());
+    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+this->logUtil.putF(this->commonStrings.START, this, MouseStrings::getInstance().MOUSE_RELEASED);
+    
+this->endPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEvent.getY());
+    
+this->active= false;
+    
+this->makeSelection();
     
 }
 
 
-    public keyPressed(java.awt.event.KeyEvent keyEvent){
+    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+this->endPoint= PointFactory::getInstance().createXY(mouseEvent.getX(), mouseEvent.getY());
+    
+}
 
-                        if(keyEvent!.getKeyCode() == keyEvent!.VK_CONTROL)
+
+    public: void keyPressed(java::awt::event::KeyEvent keyEvent){
+
+                        if(keyEvent.getKeyCode() == keyEvent.VK_CONTROL)
                         
                                     {
-                                    this.controlIdDown= true;
+                                    this->controlIdDown= true;
     
 
                                     }
@@ -455,12 +453,12 @@ this.endPoint= PointFactory.getInstance()!.createXY(mouseEvent!.getX(), mouseEve
 }
 
 
-    public keyReleased(java.awt.event.KeyEvent keyEvent){
+    public: void keyReleased(java::awt::event::KeyEvent keyEvent){
 
-                        if(keyEvent!.getKeyCode() == keyEvent!.VK_CONTROL)
+                        if(keyEvent.getKeyCode() == keyEvent.VK_CONTROL)
                         
                                     {
-                                    this.controlIdDown= false;
+                                    this->controlIdDown= false;
     
 
                                     }
@@ -468,13 +466,13 @@ this.endPoint= PointFactory.getInstance()!.createXY(mouseEvent!.getX(), mouseEve
 }
 
 
-    public keyTyped(java.awt.event.KeyEvent keyEvent){
+    public: void keyTyped(java::awt::event::KeyEvent keyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GraphicItemInterface duplicate(){
+    public: GraphicItemInterface duplicate(){
 
 
 

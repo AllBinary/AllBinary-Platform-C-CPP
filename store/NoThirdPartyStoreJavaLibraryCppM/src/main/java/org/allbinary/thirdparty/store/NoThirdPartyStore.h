@@ -48,11 +48,10 @@
         #include "ThirdPartyStore.h"
 
 class NoThirdPartyStore: public ThirdPartyStore {
-        
 
- constructor ();
+: NoThirdPartyStore();
 
-    public authorize(AbeClientInformationInterface clientInformationInterface);
+    public: void authorize(AbeClientInformationInterface clientInformationInterface);
 
 };
 

@@ -84,180 +84,179 @@
 #include "TransformInfoHttpInterface.h"
 #include "TransformInfoData.h"
 
-class TransformInfoHttp: public TransformInfo: public TransformInfoHttpInterface {
-        
+class TransformInfoHttp: public TransformInfo, public TransformInfoHttpInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abContext: AbContext;
+    private: AbContext abContext;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext, bool crud){
+public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext, bool crud){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abContext= new AbContext(propertiesHashMap, pageContext);
+this->abContext= AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Properties HashMap: " +propertiesHashMap!.toString(), this, "Constructor(HashMap, PageContext, boolean)");
+                                    this->logUtil.putF("Properties HashMap: " +propertiesHashMap.toString(), this, "Constructor(HashMap, PageContext, boolean)");
     
 
                                     }
                                 
-this.override(propertiesHashMap);
+this->override(propertiesHashMap);
     
 }
 
 
-public constructor (HttpServletRequest request, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: TransformInfoHttp(HttpServletRequest request, HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abContext= new AbContext(propertiesHashMap, pageContext);
+this->abContext= AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Properties HashMap: " +propertiesHashMap!.toString(), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
+                                    this->logUtil.putF("Properties HashMap: " +propertiesHashMap.toString(), this, "Constructor(HttpServletRequest, HashMap, PageContext)");
     
 
                                     }
                                 
-this.set(new RequestParams(request as HttpServletRequest).toHashMap());
+this->set(RequestParams(request as HttpServletRequest).toHashMap());
     
-this.override(propertiesHashMap);
+this->override(propertiesHashMap);
     
 }
 
 
-public constructor (HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: TransformInfoHttp(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abContext= new AbContext(propertiesHashMap, pageContext);
+this->abContext= AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Properties HashMap: " +propertiesHashMap!.toString(), this, "Constructor(HashMap, HashMap, PageContext)");
+                                    this->logUtil.putF("Properties HashMap: " +propertiesHashMap.toString(), this, "Constructor(HashMap, HashMap, PageContext)");
     
 
                                     }
                                 
-this.set(databaseHashMap);
+this->set(databaseHashMap);
     
 }
 
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abContext= new AbContext(propertiesHashMap, pageContext);
+this->abContext= AbContext(propertiesHashMap, pageContext);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Properties HashMap: " +propertiesHashMap!.toString(), this, "Constructor(HashMap, PageContext)");
+                                    this->logUtil.putF("Properties HashMap: " +propertiesHashMap.toString(), this, "Constructor(HashMap, PageContext)");
     
 
                                     }
                                 
-this.set(propertiesHashMap);
+this->set(propertiesHashMap);
     
 }
 
 
-public constructor (TransformInfoHttp parentViewOfThisTransformInfoInterface){
+public: TransformInfoHttp(TransformInfoHttp parentViewOfThisTransformInfoInterface){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abContext= new AbContext(parentViewOfThisTransformInfoInterface!.getPropertiesHashMap(), parentViewOfThisTransformInfoInterface!.getPageContext());
+this->abContext= AbContext(parentViewOfThisTransformInfoInterface.getPropertiesHashMap(), parentViewOfThisTransformInfoInterface.getPageContext());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    set(HashMap<any, any> hashMap){
+    private: void set(HashMap<any, any> hashMap){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Properties HashMap: " +hashMap!.toString(), this, "set()");
+                                    this->logUtil.putF("Properties HashMap: " +hashMap.toString(), this, "set()");
     
 
                                     }
                                 
 
-    transformInfoData: TransformInfoData = TransformInfoData.getInstance()!;;
+    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
-this.setName(hashMap!.get(transformInfoData!.NAME) as string);
+this->setName(hashMap.get(transformInfoData.NAME) as string);
     
-this.setStoreName(hashMap!.get(StoreFrontData.getInstance()!.NAME) as string);
+this->setStoreName(hashMap.get(StoreFrontData::getInstance().NAME) as string);
     
-this.setObjectFile(hashMap!.get(transformInfoData!.OBJECTFILENAME) as string);
+this->setObjectFile(hashMap.get(transformInfoData.OBJECTFILENAME) as string);
     
-this.setObject(hashMap!.get(transformInfoData!.OBJECT) as string);
-    
-
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+this->setObject(hashMap.get(transformInfoData.OBJECT) as string);
     
 
-    objectConfigString: string = hashMap!.get(transformInfoData!.OBJECTCONFIG) as string;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil!.isValidRequired(objectConfigString, 10, AbSqlData.MAXBLOB))
+    std::string objectConfigString = hashMap.get(transformInfoData.OBJECTCONFIG) as string;;
+    
+
+                        if(stringValidationUtil.isValidRequired(objectConfigString, 10, AbSqlData::MAXBLOB))
                         
                                     {
-                                    this.setObjectConfig(objectConfigString);
+                                    this->setObjectConfig(objectConfigString);
     
 
                                     }
                                 
                         else {
-                            this.setObjectConfig(new TransformInfoObjectConfig(this).toString());
+                            this->setObjectConfig(TransformInfoObjectConfig(this).toString());
     
 
                         }
                             
 
-                        if(!stringValidationUtil!.isEmpty(hashMap!.get(transformInfoData!.OBJECTCONFIGFILENAME) as string))
+                        if(!stringValidationUtil.isEmpty(hashMap.get(transformInfoData.OBJECTCONFIGFILENAME) as string))
                         
                                     {
-                                    this.setObjectConfigFile(hashMap!.get(transformInfoData!.OBJECTCONFIGFILENAME) as string);
+                                    this->setObjectConfigFile(hashMap.get(transformInfoData.OBJECTCONFIGFILENAME) as string);
     
 
                                     }
                                 
-this.setTemplateFile(hashMap!.get(transformInfoData!.TEMPLATEFILENAME) as string);
+this->setTemplateFile(hashMap.get(transformInfoData.TEMPLATEFILENAME) as string);
     
-this.setTemplate(hashMap!.get(transformInfoData!.TEMPLATE) as string);
+this->setTemplate(hashMap.get(transformInfoData.TEMPLATE) as string);
     
-this.setDataFile(hashMap!.get(transformInfoData!.DATAFILENAME) as string);
+this->setDataFile(hashMap.get(transformInfoData.DATAFILENAME) as string);
     
-this.setData(hashMap!.get(transformInfoData!.DATA) as string);
+this->setData(hashMap.get(transformInfoData.DATA) as string);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
                         
                                     {
-                                    this.logUtil!.putF(this.log(), this, "set()");
+                                    this->logUtil.putF(this->log(), this, "set()");
     
 
                                     }
@@ -265,68 +264,68 @@ this.setData(hashMap!.get(transformInfoData!.DATA) as string);
 }
 
 
-    public WeblisketSessionInterface getWeblisketSession(){
+    public: WeblisketSessionInterface getWeblisketSession(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abContext!.getWeblisketSession();;
+                        return this->abContext.getWeblisketSession();;
     
 }
 
 
-    public PageContext getPageContext(){
+    public: PageContext getPageContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abContext!.getPageContext();;
+                        return this->abContext.getPageContext();;
     
 }
 
 
-    public HashMap<any, any> getPropertiesHashMap(){
+    public: HashMap<any, any> getPropertiesHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abContext!.getPropertiesHashMap();;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public AbPath getTemplateFilePath(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(URLGLOBALS.getMainPath() +FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH, this.getTemplateFile());
+                        return this->abContext.getPropertiesHashMap();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath(){
+    public: AbPath getTemplateFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(URLGLOBALS.getMainPath() +FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH, this.getObjectConfigFile());
+                        return AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH, this->getTemplateFile());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath(){
+    public: AbPath getObjectConfigFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(URLGLOBALS.getMainPath() +FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH, this.getDataFile());
+                        return AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH, this->getObjectConfigFile());
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getDataFilePath(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH, this->getDataFile());
     
 }
 

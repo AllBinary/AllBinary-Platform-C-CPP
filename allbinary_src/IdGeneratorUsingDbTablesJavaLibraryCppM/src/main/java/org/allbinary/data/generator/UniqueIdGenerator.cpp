@@ -65,48 +65,45 @@
 class UniqueIdGenerator
             : public Object
         : public IdGeneratorInterface {
-        
 
-    public static const EXT: string = ".unq";
+    public: static const std::string EXT = ".unq";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const idGeneratorEntity: IdGeneratorEntity;
+    private: IdGeneratorEntity idGeneratorEntity;
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (){
-
-            super();
-        this.idGeneratorEntity= IdGeneratorEntityFactory.getInstance() as IdGeneratorEntity;
+public: UniqueIdGenerator(){
+this->idGeneratorEntity= IdGeneratorEntityFactory::getInstance() as IdGeneratorEntity;
     
 }
 
 
-    public initialize(int32_t value){
+    public: void initialize(int32_t value){
 
         try {
             
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(this.name);
+vector.add(this->name);
     
-vector.add(Long.valueOf(value)!.toString());
+vector.add(Long::valueOf(value).toString());
     
-this.idGeneratorEntity!.insert(vector);
+this->idGeneratorEntity.insert(vector);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "initialize", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "initialize", e);
     
 
                                     }
@@ -119,8 +116,8 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "initialize", e);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setFile(string filePathName, string name){
-this.name= name;
+    public: void setFile(std::string filePathName, std::string name){
+this->name= name;
     
 }
 
@@ -128,35 +125,35 @@ this.name= name;
                 //@Throws(IOException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string getNext(){
+    public: std::string getNext(){
 
         try {
             
-    idLong: Long = this.idGeneratorEntity!.get(this.name)!;;
+    Long idLong = this->idGeneratorEntity.get(this->name);;
     
 
-    newValue: Long = (idLong!.longValue() +1).toLong()!;;
+    Long newValue = (idLong.longValue() +1).toLong();;
     
-this.idGeneratorEntity!.update(this.name, newValue);
+this->idGeneratorEntity.update(this->name, newValue);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return idLong!.toString();;
+                        return idLong.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "getNext", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "getNext", e);
     
 
                                     }

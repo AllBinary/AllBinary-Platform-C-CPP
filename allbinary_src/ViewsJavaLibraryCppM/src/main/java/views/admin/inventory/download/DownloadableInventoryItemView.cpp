@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -108,93 +110,92 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DownloadableInventoryItemView: public HttpStoreComponentView: public RequestMapInterface {
-        
+class DownloadableInventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public static TYPE_ID: int32_t = 11;
+    public: static int32_t TYPE_ID = 11;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const request: HttpServletRequest;
+    protected: HttpServletRequest request;
 
-    id: string;
+    protected: std::string id;
 
-    itemInterface: ItemInterface;
+    protected: ItemInterface itemInterface;
 
-    downloadableItem: DownloadableItem;
+    protected: DownloadableItem downloadableItem;
 
-    private: requestHashMap: HashMap<any, any>;
+    private: HashMap<any, any> requestHashMap;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, string empty){
+public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
 }
 
 
-    public int32_t getTypeId(){
+    public: int32_t getTypeId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownloadableInventoryItemView.TYPE_ID;
+                        return DownloadableInventoryItemView::TYPE_ID;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    getFormData(){
-this.setRequestHashMap(new MultipartRequestParams(this.request).toHashMap());
+    private: void getFormData(){
+this->setRequestHashMap(MultipartRequestParams(this->request).toHashMap());
     
-this.id= this.getRequestHashMap()!.get(BasicItemData.ID) as string;
+this->id= this->getRequestHashMap().get(BasicItemData::ID) as string;
     
 }
 
 
-    public addDomNodeInterfaces(){
+    public: void addDomNodeInterfaces(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
-                        if(this.downloadableItem != 
-                                    null
+                        if(this->downloadableItem != 
+                                    nullptr
                                 )
                         
                                     {
-                                    vector.add(new DownloadableItemView(this.downloadableItem));
+                                    vector.add(DownloadableItemView(this->downloadableItem));
     
 
                                     }
                                 
-this.addDomNodeInterface(new BasicItemView(this.itemInterface, vector));
+this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -207,10 +208,10 @@ this.addDomNodeInterface(new BasicItemView(this.itemInterface, vector));
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -227,127 +228,127 @@ this.addDomNodeInterface(new BasicItemView(this.itemInterface, vector));
 
                 //@Throws(Exception.constructor)
             
-    processFile(FileItem fileItem){
+    protected: void processFile(FileItem fileItem){
 
-    fileName: string = fileItem!.getName()!;;
-    
-
-    fullPath: string = this.getItemFilePath()!;;
+    std::string fileName = fileItem.getName();;
     
 
-    itemResourceFile: AbFile = AbFile.createAbFile(fullPath)!;;
-    
-itemResourceFile!.mkdir();
+    std::string fullPath = this->getItemFilePath();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    AbFile itemResourceFile = AbFile::createAbFile(fullPath);;
     
-stringBuffer!.append(fullPath);
-    
-stringBuffer!.append(fileName);
-    
-this.logUtil!.putF("FileName: " +fileName, this, "processFile()");
+itemResourceFile.mkdir();
     
 
-    file: AbFile = AbFile.createAbFile(stringBuffer!.toString())!;;
+    StringMaker stringBuffer = StringMaker();;
     
-this.logUtil!.putF(file.getPath(), this, "processFiles()");
+stringBuffer.append(fullPath);
+    
+stringBuffer.append(fileName);
+    
+this->logUtil.putF("FileName: " +fileName, this, "processFile()");
+    
+
+    AbFile file = AbFile::createAbFile(stringBuffer.toString());;
+    
+this->logUtil.putF(file.getPath(), this, "processFiles()");
     
 file.createNewFile();
     
 
-    byteArray: std::vector<int8_t> = fileItem!.get()!;;
+    std::vector<int8_t> byteArray = fileItem.get();;
     
-FileUtil.getInstance()!.write(new ByteArrayInputStream(byteArray), file);
+FileUtil::getInstance().write(ByteArrayInputStream(byteArray), file);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    unzip(FileItem fileItem){
+    protected: void unzip(FileItem fileItem){
 
-    fileName: string = fileItem!.getName()!;;
-    
-
-    fullPath: string = this.getItemFilePath()!;;
+    std::string fileName = fileItem.getName();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(fullPath);
-    
-stringBuffer!.append(fileName);
-    
-this.logUtil!.putF("FileName: " +fileName, this, "unzip()");
+    std::string fullPath = this->getItemFilePath();;
     
 
-    file: AbFile = AbFile.createAbFile(stringBuffer!.toString())!;;
+    StringMaker stringBuffer = StringMaker();;
     
-this.logUtil!.putF(file.getPath(), this, "unzip()");
+stringBuffer.append(fullPath);
     
-ZipFileUtil.getInstance()!.unzip(fullPath, file, fileName);
+stringBuffer.append(fileName);
+    
+this->logUtil.putF("FileName: " +fileName, this, "unzip()");
+    
+
+    AbFile file = AbFile::createAbFile(stringBuffer.toString());;
+    
+this->logUtil.putF(file.getPath(), this, "unzip()");
+    
+ZipFileUtil::getInstance().unzip(fullPath, file, fileName);
     
 }
 
 
-    string getItemFilePath(){
+    private: std::string getItemFilePath(){
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getWeblisketSession()!.getStoreName())!;;
-    
-
-    filePathData: FilePathData = FilePathData.getInstance()!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    FilePathData filePathData = FilePathData::getInstance();;
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(storeFrontInterface!.getCurrentHostNamePath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-stringBuffer!.append(this.itemInterface!.getCategory());
+stringBuffer.append(storeFrontInterface.getCurrentHostNamePath());
     
-stringBuffer!.appendchar(filePathData!.SEPARATORCHAR);
+stringBuffer.append(this->itemInterface.getCategory());
     
-stringBuffer!.append(this.itemInterface!.getId());
+stringBuffer.appendchar(filePathData.SEPARATORCHAR);
     
-stringBuffer!.appendchar(filePathData!.SEPARATORCHAR);
+stringBuffer.append(this->itemInterface.getId());
     
-stringBuffer!.append(this.downloadableItem!.getId());
+stringBuffer.appendchar(filePathData.SEPARATORCHAR);
     
-stringBuffer!.appendchar(filePathData!.SEPARATORCHAR);
+stringBuffer.append(this->downloadableItem.getId());
+    
+stringBuffer.appendchar(filePathData.SEPARATORCHAR);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    setRequestHashMap(HashMap<any, any> requestHashMap){
-this.requestHashMap= requestHashMap;
+    private: void setRequestHashMap(HashMap<any, any> requestHashMap){
+this->requestHashMap= requestHashMap;
     
 }
 
 
-    public HashMap<any, any> getRequestHashMap(){
+    public: HashMap<any, any> getRequestHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.requestHashMap;
+                        return this->requestHashMap;
     
 }
 
 
-    public DownloadableItem getDownloadableItem(){
+    public: DownloadableItem getDownloadableItem(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.downloadableItem;
+                        return this->downloadableItem;
     
 }
 

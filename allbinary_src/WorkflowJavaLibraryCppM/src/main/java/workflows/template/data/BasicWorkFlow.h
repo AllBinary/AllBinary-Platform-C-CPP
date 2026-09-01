@@ -82,33 +82,32 @@
 class BasicWorkFlow
             : public Object
         : public WorkFlowInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: validationDomNodeInterface: ValidationComponentInterface;
+    private: ValidationComponentInterface validationDomNodeInterface;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    public string getName();
-
-    HashMap<any, any> getPropertiesHashMap();
-
-    PageContext getPageContext();
+public: BasicWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public Integer process();
+    public: std::string getName();
+
+    protected: HashMap<any, any> getPropertiesHashMap();
+
+    protected: PageContext getPageContext();
+
+                //@Throws(Exception.constructor)
+            
+    public: Integer process();
 
 };
 

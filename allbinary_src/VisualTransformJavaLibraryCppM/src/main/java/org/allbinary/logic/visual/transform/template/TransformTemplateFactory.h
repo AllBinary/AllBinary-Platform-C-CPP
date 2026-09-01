@@ -72,19 +72,18 @@
 class TransformTemplateFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformTemplateFactory = new TransformTemplateFactory();
+    private: static TransformTemplateFactory instance() { return TransformTemplateFactory(); }
 
-    public static TransformTemplateFactory getInstance();
+    public: static TransformTemplateFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: TransformTemplateFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, string templateName, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string templateName, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
 };
 

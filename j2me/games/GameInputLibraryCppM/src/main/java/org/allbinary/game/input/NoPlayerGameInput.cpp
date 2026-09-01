@@ -45,22 +45,21 @@
         #include "PlayerGameInput.h"
 
 class NoPlayerGameInput: public PlayerGameInput {
-        
 
-    private: static const SINGLETON: NoPlayerGameInput = new NoPlayerGameInput();
+    private: static const NoPlayerGameInput SINGLETON = NoPlayerGameInput();
 
-    public static NoPlayerGameInput getInstance(){
+    public: static NoPlayerGameInput getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayerGameInput.SINGLETON;
+                        return NoPlayerGameInput::SINGLETON;
     
 }
 
 
-private constructor (){
-            super(new BasicArrayListD(), new BasicArrayListD(),  -1);
+private: NoPlayerGameInput(){
+            super(BasicArrayListD(), BasicArrayListD(),  -1);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -69,12 +68,12 @@ private constructor (){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
 }
 
 

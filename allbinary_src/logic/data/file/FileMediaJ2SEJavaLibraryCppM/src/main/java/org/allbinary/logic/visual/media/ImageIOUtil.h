@@ -48,15 +48,14 @@
 class ImageIOUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BufferedImage read(AbFile file);
+    public: static BufferedImage read(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public static bool write(RenderedImage renderedImage, string name, AbFile file);
+    public: static bool write(RenderedImage renderedImage, std::string name, AbFile file);
 
 };
 

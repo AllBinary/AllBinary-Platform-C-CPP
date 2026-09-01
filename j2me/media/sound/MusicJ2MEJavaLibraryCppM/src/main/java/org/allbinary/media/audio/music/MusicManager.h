@@ -88,72 +88,71 @@
 class MusicManager
             : public Object
          {
-        
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const playerStateUtil: PlayerStateUtil = PlayerStateUtil.getInstance()!;
+    private: const PlayerStateUtil playerStateUtil = PlayerStateUtil::getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
 
-    private: const playerListener: PlayerListener = new class extends PlayerListener
+    private: const PlayerListener playerListener = class extends PlayerListener
                                 {
                                 
-    public playerUpdate(Player player, string event, any = {} eventData);
+    public: void playerUpdate(Player player, std::string event, Object* eventData);
                                 }
                             ;
 
-    private: const PLAY: string = "Play ";
+    private: const std::string PLAY = "Play ";
 
-    private: const SONG: string = " for: ";
+    private: const std::string SONG = " for: ";
 
-    private: const NEXT_SONG: string = "Next Song: ";
+    private: const std::string NEXT_SONG = "Next Song: ";
 
-    private: const STOPPING: string = "Stopping Current Song: ";
+    private: const std::string STOPPING = "Stopping Current Song: ";
 
-    private: const ENDING: string = "Ending Current Song: ";
+    private: const std::string ENDING = "Ending Current Song: ";
 
-    private: const WAITING_FOR_MEDIA_TO_END: string = "Waiting for media to end";
+    private: const std::string WAITING_FOR_MEDIA_TO_END = "Waiting for media to end";
 
-    private: const ALREADY_PLAYING: string = "Already Playing: ";
+    private: const std::string ALREADY_PLAYING = "Already Playing: ";
 
-    private: const ALREADY_ENDED: string = "Last Song already ended: ";
+    private: const std::string ALREADY_ENDED = "Last Song already ended: ";
 
-    private: const songList: BasicArrayList;
+    private: BasicArrayList songList;
 
-    private: currentSongSound: Sound = NoSound.getInstance()!;
+    private: Sound currentSongSound = NoSound::getInstance();
 
-    private: nextSongSound: Sound = NoSound.getInstance()!;
+    private: Sound nextSongSound = NoSound::getInstance();
 
-    private: reset: bool= false;
+    private: bool reset= false;
 
-    private: noDuration: bool= false;
+    private: bool noDuration= false;
 
-    private: stopped: bool = true;
+    private: bool stopped = true;
 
-public constructor (Function musicServiceClass, BasicArrayList songList);
+public: MusicManager(Function musicServiceClass, BasicArrayList songList);
 
-    public startNewSong();
+    public: void startNewSong();
 
-    public nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
+    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
 
-    public reset();
+    public: void reset();
 
-    public process();
-
-                //@Throws(Exception.constructor)
-            
-    waitForStateChange(Sound endingCurrentSongSound, Sound startingCurrentSongSound);
+    public: void process();
 
                 //@Throws(Exception.constructor)
             
-    public stop();
+    private: void waitForStateChange(Sound endingCurrentSongSound, Sound startingCurrentSongSound);
+
+                //@Throws(Exception.constructor)
+            
+    public: void stop();
 
 };
 

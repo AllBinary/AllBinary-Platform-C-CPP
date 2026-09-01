@@ -61,27 +61,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PointsLayer: public AllBinaryLayer {
-        
 
-    private: const points: int32_t;
+    private: int32_t points;
 
-public constructor (int32_t points){
-            super(StringUtil.getInstance()!.EMPTY_STRING, new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 0, 0), ViewPosition.getInstanceD());
+public: PointsLayer(int32_t points){
+            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.points= points;
+this->points= points;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public visit(ScoreableInterface scoreableInterface){
-scoreableInterface!.addPoints(this.points);
+    public: void visit(ScoreableInterface scoreableInterface){
+scoreableInterface.addPoints(this->points);
     
 }
 

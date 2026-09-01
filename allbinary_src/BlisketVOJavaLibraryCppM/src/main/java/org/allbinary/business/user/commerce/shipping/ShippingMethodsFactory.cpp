@@ -109,125 +109,121 @@
 class ShippingMethodsFactory
             : public Object
          {
-        
 
-    private: static const SHIPPINGMETHODSFILEPATHSTRING: string;
+    private: static const std::string SHIPPINGMETHODSFILEPATHSTRING;
 
                     static int32_t initResult = ShippingMethodsFactory::init();
                 static int32_t init() { 
                     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    sep: string = AbPathData.getInstance()!.SEPARATOR;;
+    std::string sep = AbPathData::getInstance().SEPARATOR;;
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("generic");
+stringBuffer.append("generic");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("shipping");
+stringBuffer.append("shipping");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-SHIPPINGMETHODSFILEPATHSTRING= stringBuffer!.toString();
+SHIPPINGMETHODSFILEPATHSTRING= stringBuffer.toString();
     
 
 
                     return 0;
                 }
             
-    private: static const SHIPPINGMETHODSFILENAME: string = "shippingMethods.xml";
+    private: static const std::string SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
 
-    private: defaultShippingMethodInterface: ShippingInterface;
+    private: ShippingInterface defaultShippingMethodInterface;
 
-    private: document: Document;
+    private: Document document;
 
-    private: shippingVector: Vector;
+    private: Vector shippingVector;
 
-public constructor (AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
+public: ShippingMethodsFactory(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
 
-            super();
-        
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    sep: string = AbPathData.getInstance()!.SEPARATOR;;
+    std::string sep = AbPathData::getInstance().SEPARATOR;;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(storeFrontInterface!.getName());
+stringBuffer.append(storeFrontInterface.getName());
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append(ShippingMethodsFactory.SHIPPINGMETHODSFILEPATHSTRING);
-    
-
-    abPath: AbPath = new AbPath(stringBuffer!.toString(), this.SHIPPINGMETHODSFILENAME) as AbPath;;
+stringBuffer.append(ShippingMethodsFactory::SHIPPINGMETHODSFILEPATHSTRING);
     
 
-    data: string = new CryptFileReader(TransformInfoObjectConfigData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoObjectConfigData.getInstance()!.ENCRYPTED_EXTENSION).get(abPath)!;;
-    
-this.document= DomDocumentHelper.create(data);
-    
-this.shippingVector= new Vector();
+    AbPath abPath = AbPath(stringBuffer.toString(), this->SHIPPINGMETHODSFILENAME) as AbPath;;
     
 
-    nodeList: NodeList = this.document.getElementsByTagName(ShippingMethodsData.NAME)!;;
+    std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(abPath);;
+    
+this->document= DomDocumentHelper::create(data);
+    
+this->shippingVector= Vector();
+    
+
+    NodeList nodeList = this->document.getElementsByTagName(ShippingMethodsData::NAME);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
 
-    shippingMethodNodeChildren: NodeList = node.getChildNodes()!;;
+    NodeList shippingMethodNodeChildren = node.getChildNodes();;
     
 
-    shippingMethodNameNode: Node = DomSearchHelper.getNode(ShippingMethodData.NAME, shippingMethodNodeChildren)!;;
+    Node shippingMethodNameNode = DomSearchHelper::getNode(ShippingMethodData::NAME, shippingMethodNodeChildren);;
     
 
-    classNameNode: Node = DomSearchHelper.getNode(DynamicObjectData.NAME, shippingMethodNameNode!.getChildNodes())!;;
+    Node classNameNode = DomSearchHelper::getNode(DynamicObjectData::NAME, shippingMethodNameNode.getChildNodes());;
     
 
-    shippingMethodClassName: string = DomNodeHelper.getTextNodeValue(classNameNode)!;;
+    std::string shippingMethodClassName = DomNodeHelper::getTextNodeValue(classNameNode);;
     
 
-    shippingMethodInterface: ShippingInterface = AbeFactory.getInstance()!.getInstance(abeClientInformation, shippingMethodClassName) as ShippingInterface;;
+    ShippingInterface shippingMethodInterface = AbeFactory::getInstance().getInstance(abeClientInformation, shippingMethodClassName) as ShippingInterface;;
     
-this.shippingVector!.add(shippingMethodInterface);
-    
-
-    defaultShippingMethodNameNode: Node = DomSearchHelper.getNode(ShippingMethodData.DEFAULT, shippingMethodNameNode!.getChildNodes())!;;
+this->shippingVector.add(shippingMethodInterface);
     
 
-    defaultShippingMethodNameNodeValue: string = DomNodeHelper.getTextNodeValue(defaultShippingMethodNameNode)!;;
+    Node defaultShippingMethodNameNode = DomSearchHelper::getNode(ShippingMethodData::DEFAULT, shippingMethodNameNode.getChildNodes());;
     
 
-                        if(defaultShippingMethodNameNodeValue != 
-                                    null
-                                 && defaultShippingMethodNameNodeValue!.compareTo(ShippingMethodData.DEFAULT) == 0)
-                        this.defaultShippingMethodInterface= shippingMethodInterface
+    std::string defaultShippingMethodNameNodeValue = DomNodeHelper::getTextNodeValue(defaultShippingMethodNameNode);;
+    
+
+                        if(true && defaultShippingMethodNameNodeValue.compareTo(ShippingMethodData::DEFAULT) == 0)
+                        this->defaultShippingMethodInterface= shippingMethodInterface;
+                                
 }
 
 
-                        if(this.shippingVector!.length < 1)
+                        if(this->shippingVector.length < 1)
                         
                                     {
-                                    this.defaultShippingMethodInterface= new BasicWeightShippingModuleView();
+                                    this->defaultShippingMethodInterface= BasicWeightShippingModuleView();
     
-this.shippingVector!.add(this.defaultShippingMethodInterface);
+this->shippingVector.add(this->defaultShippingMethodInterface);
     
-this.shippingVector!.add(new NoShippingModuleView());
+this->shippingVector.add(NoShippingModuleView());
     
 
                                     }
@@ -237,22 +233,22 @@ this.shippingVector!.add(new NoShippingModuleView());
 
                 //@Throws(Exception.constructor)
             
-    public Vector getInstance(){
+    public: Vector getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingVector;
+                        return this->shippingVector;
     
 }
 
 
-    public ShippingInterface getDefaultInstance(){
+    public: ShippingInterface getDefaultInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultShippingMethodInterface;
+                        return this->defaultShippingMethodInterface;
     
 }
 

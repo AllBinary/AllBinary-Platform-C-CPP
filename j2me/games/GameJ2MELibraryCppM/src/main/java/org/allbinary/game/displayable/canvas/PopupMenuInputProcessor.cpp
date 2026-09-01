@@ -96,44 +96,43 @@
 #include "AllBinaryGameCanvas.h"
 
 class PopupMenuInputProcessor: public BasicMenuInputProcessor {
-        
 
-    private: const rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;
+    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    private: const CLICK_DELAY: int32_t = 120;
+    private: const int32_t CLICK_DELAY = 120;
 
-    private: const clickTimeHelper: TimeDelayHelper = new TimeDelayHelper(this.CLICK_DELAY);
+    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle){
+public: PopupMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, Rectangle rectangle){
             super(gameKeyEventList, playerInputId, gameCanvas);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.rectangle= rectangle;
+this->rectangle= rectangle;
     
 }
 
 
-    public init(Rectangle rectangle){
-this.rectangle= rectangle;
+    public: void init(Rectangle rectangle){
+this->rectangle= rectangle;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInput(int32_t key){
+    public: int32_t processInput(int32_t key){
 
-                        if(key == Canvas.KEY_STAR)
+                        if(key == Canvas::KEY_STAR)
                         
                                     {
                                     
-    gameCanvas: AllBinaryGameCanvas = this.getCanvas() as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas gameCanvas = this->getCanvas() as AllBinaryGameCanvas;;
     
-gameCanvas!.toggleMenu();
+gameCanvas.toggleMenu();
     
 
 
@@ -155,43 +154,43 @@ gameCanvas!.toggleMenu();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList(){
+    public: int32_t processInputList(){
 
         try {
             
-    motionInputsIndex: int32_t = this.processMotionInputs()!;;
+    int32_t motionInputsIndex = this->processMotionInputs();;
     
 
-    list: BasicArrayList = this.getGameKeyEventList()!;;
+    BasicArrayList list = this->getGameKeyEventList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    key: int32_t = 0;;
+    int32_t key = 0;;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
     
 
                         if(gameKeyEvent != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    key= gameKeyEvent!.getKey();
+                                    key= gameKeyEvent.getKey();
     
 
-                        if(this.processInput(key) == 1)
+                        if(this->processInput(key) == 1)
                         
                                     {
                                     break;
@@ -205,7 +204,7 @@ gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
                                 
 }
 
-this.clear();
+this->clear();
     
 
                         if(size > 0 || motionInputsIndex >= 0)
@@ -234,7 +233,7 @@ this.clear();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, GameInputStrings.getInstance()!.PROCESS_INPUT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, GameInputStrings::getInstance().PROCESS_INPUT, e);
     
 
 
@@ -249,23 +248,23 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, GameInputStrings.getInsta
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processMotionInputs(){
+    public: int32_t processMotionInputs(){
 
-    lastIndex: int32_t = this.motionGestureEventList!.size() -1;;
+    int32_t lastIndex = this->motionGestureEventList.size() -1;;
     
 
                         if(lastIndex >= 0)
                         
                                     {
                                     
-    motionGestureEvent: MotionGestureEvent = this.motionGestureEventList!.objectArray[lastIndex]! as MotionGestureEvent;;
+    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex]! as MotionGestureEvent;;
     
-this.processMotionInput(motionGestureEvent);
+this->processMotionInput(motionGestureEvent);
     
 
                                     }
                                 
-this.motionGestureEventList!.clear();
+this->motionGestureEventList.clear();
     
 
 
@@ -278,14 +277,14 @@ this.motionGestureEventList!.clear();
 
                 //@Throws(Exception.constructor)
             
-    processMotionInput(MotionGestureEvent motionGestureEvent){
+    protected: void processMotionInput(MotionGestureEvent motionGestureEvent){
 
                         if(motionGestureEvent == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("Exception: Bug", this, this.gameInputStrings!.PROCESS_MOTION_INPUT);
+                                    this->logUtil.putF("Exception: Bug", this, this->gameInputStrings.PROCESS_MOTION_INPUT);
     
 
 
@@ -297,33 +296,33 @@ this.motionGestureEventList!.clear();
                                     }
                                 
 
-    touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!;;
+    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    motionGestureInput: MotionGestureInput = motionGestureEvent!.getMotionGesture()!;;
+    MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
     
 
-                        if(motionGestureInput == touchMotionGestureFactory!.RELEASED)
+                        if(motionGestureInput == touchMotionGestureFactory.RELEASED)
                         
                                     {
                                     
-    point: GPoint = motionGestureEvent!.getCurrentPoint()!;;
+    GPoint point = motionGestureEvent.getCurrentPoint();;
     
 
-    rectPoint: GPoint = this.rectangle.getPoint()!;;
+    GPoint rectPoint = this->rectangle.getPoint();;
     
 
-                        if(this.rectangleCollisionUtil!.isInside(rectPoint!.getX(), rectPoint!.getY(), this.rectangle.getMaxX() +20, this.rectangle.getMaxY(), point.getX(), point.getY()))
+                        if(this->rectangleCollisionUtil.isInside(rectPoint.getX(), rectPoint.getY(), this->rectangle.getMaxX() +20, this->rectangle.getMaxY(), point.getX(), point.getY()))
                         
                                     {
                                     
-                        if(this.clickTimeHelper!.isTimeTNT())
+                        if(this->clickTimeHelper.isTimeTNT())
                         
                                     {
                                     
-    gameCanvas: AllBinaryGameCanvas = this.getCanvas() as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas gameCanvas = this->getCanvas() as AllBinaryGameCanvas;;
     
-gameCanvas!.toggleMenu();
+gameCanvas.toggleMenu();
     
 
                                     }

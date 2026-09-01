@@ -54,11 +54,10 @@
 class ImageSwtUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageSwtUtil = new ImageSwtUtil();
+    private: static ImageSwtUtil instance() { return ImageSwtUtil(); }
 
-    public static ImageSwtUtil getInstance();
+    public: static ImageSwtUtil getInstance();
 
 };
 

@@ -56,52 +56,49 @@
 #include "IconLayer.h"
 
 class PickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactoryBase {
-        
 
-    private: const pickedUpLayerType: PickedUpLayerType;
+    private: PickedUpLayerType pickedUpLayerType;
 
-    private: const iconLayer: IconLayer;
+    private: IconLayer iconLayer;
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-protected constructor (PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface){
-
-            super();
-        this.pickedUpLayerType= pickeUpLayerType;
+protected: PickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface){
+this->pickedUpLayerType= pickeUpLayerType;
     
-this.animationInterface= animationInterface;
+this->animationInterface= animationInterface;
     
-this.iconLayer= iconLayer;
+this->iconLayer= iconLayer;
     
 }
 
 
-    public AllBinaryLayer getIconLayer(){
+    public: AllBinaryLayer getIconLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.iconLayer;
+                        return this->iconLayer;
     
 }
 
 
-    public Animation getAnimationInterface(){
+    public: Animation getAnimationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface;
+                        return this->animationInterface;
     
 }
 
 
-    public PickedUpLayerType getPickedUpLayerType(){
+    public: PickedUpLayerType getPickedUpLayerType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pickedUpLayerType;
+                        return this->pickedUpLayerType;
     
 }
 

@@ -62,46 +62,43 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil.instance;
+                        return ImageRotationUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ImageRotationUtil(){
+}
 
 
-    public Image rotateImage(Image originalImage, Image image, int32_t totalAngle){
+    public: Image rotateImage(Image originalImage, Image image, int32_t totalAngle){
 
                         if(image.isMutable())
                         
                                     {
                                     
-    htmlImage: PlaynMutableImage = image as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = image as PlaynMutableImage;;
     
 
-    canvasImage: CanvasImage = htmlImage!.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
     
 
-    canvasSurface: CanvasSurface = htmlImage!.getCanvasSurface(canvasImage)!;;
+    CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;
     
-canvasSurface!.translate(originalImage!.getWidth() /2, originalImage!.getHeight() /2);
+canvasSurface.translate(originalImage.getWidth() /2, originalImage.getHeight() /2);
     
 
-    image2: Image = this.rotateImageCanvasSurface(originalImage, image, canvasSurface, totalAngle)!;;
+    Image image2 = this->rotateImageCanvasSurface(originalImage, image, canvasSurface, totalAngle);;
     
-this.drawImage(originalImage, image, canvasSurface);
+this->drawImage(originalImage, image, canvasSurface);
     
 
 
@@ -125,22 +122,22 @@ this.drawImage(originalImage, image, canvasSurface);
 }
 
 
-    public Image rotateImageCanvasSurfaceClear(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle){
+    public: Image rotateImageCanvasSurfaceClear(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle){
 
                         if(image.isMutable())
                         
                                     {
-                                    canvasSurface!.translate( -originalImage!.getWidth() /2,  -originalImage!.getHeight() /2);
+                                    canvasSurface.translate( -originalImage.getWidth() /2,  -originalImage.getHeight() /2);
     
-canvasSurface!.clear();
+canvasSurface.clear();
     
-canvasSurface!.translate(originalImage!.getWidth() /2, originalImage!.getHeight() /2);
+canvasSurface.translate(originalImage.getWidth() /2, originalImage.getHeight() /2);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rotateImageCanvasSurface(originalImage, image, canvasSurface, totalAngle);;
+                        return this->rotateImageCanvasSurface(originalImage, image, canvasSurface, totalAngle);;
     
 
                                     }
@@ -158,12 +155,12 @@ canvasSurface!.translate(originalImage!.getWidth() /2, originalImage!.getHeight(
 }
 
 
-    public Image rotateImageCanvasSurface(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle){
+    public: Image rotateImageCanvasSurface(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle){
 
                         if(image.isMutable())
                         
                                     {
-                                    canvasSurface!.rotate(Math.toRadians(totalAngle));
+                                    canvasSurface.rotate(Math::toRadians(totalAngle));
     
 
 
@@ -187,57 +184,57 @@ canvasSurface!.translate(originalImage!.getWidth() /2, originalImage!.getHeight(
 }
 
 
-    public drawImage(Image originalImage, Image image, CanvasSurface canvasSurface){
+    public: void drawImage(Image originalImage, Image image, CanvasSurface canvasSurface){
 
-    originalPlayNImage: playn.core.Image = 
+    playn::core::Image originalPlayNImage = 
                 null
             ;;
     
 
-                        if(originalImage!.isMutable())
+                        if(originalImage.isMutable())
                         
                                     {
                                     
-    originalHTMLImage: PlaynMutableImage = originalImage as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = originalImage as PlaynMutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                                     }
                                 
                         else {
                             
-    originalHTMLImage: PlaynImmutableImage = originalImage as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = originalImage as PlaynImmutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                         }
                             
-canvasSurface!.drawImage(originalPlayNImage,  -originalImage!.getWidth() /2,  -originalImage!.getHeight() /2);
+canvasSurface.drawImage(originalPlayNImage,  -originalImage.getWidth() /2,  -originalImage.getHeight() /2);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
 
-    image: Image = ImageCreationUtil.getInstance()!.createImageWH(originalImage!.getWidth(), originalImage!.getHeight())!;;
+    Image image = ImageCreationUtil::getInstance().createImageWH(originalImage.getWidth(), originalImage.getHeight());;
     
 
-    rotatedImage: Image = this.rotateImage(originalImage, image, rotationInDegrees)!;;
+    Image rotatedImage = this->rotateImage(originalImage, image, rotationInDegrees);;
     
 
                         if(rotatedImage == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                                     }

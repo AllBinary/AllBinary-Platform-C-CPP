@@ -65,57 +65,54 @@
 class TransformInfoObjectConfigNoManipulationFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoObjectConfigNoManipulationFactory = new TransformInfoObjectConfigNoManipulationFactory();
+    private: static TransformInfoObjectConfigNoManipulationFactory instance() { return TransformInfoObjectConfigNoManipulationFactory(); }
 
-    public static TransformInfoObjectConfigNoManipulationFactory getInstance(){
+    public: static TransformInfoObjectConfigNoManipulationFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigNoManipulationFactory.instance;
+                        return TransformInfoObjectConfigNoManipulationFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoObjectConfigNoManipulationFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigInterface getInstance(TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath){
+    public: TransformInfoObjectConfigInterface getInstance(TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath){
 
         try {
             
-    transformInfoObjectConfigData: TransformInfoObjectConfigData = TransformInfoObjectConfigData.getInstance()!;;
+    TransformInfoObjectConfigData transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;
     
 
-    data: string = new CryptFileReader(transformInfoObjectConfigData!.UNCRYPTED_EXTENSION, transformInfoObjectConfigData!.getInstance()!.ENCRYPTED_EXTENSION).get(objectConfigFileAbPath)!;;
+    std::string data = CryptFileReader(transformInfoObjectConfigData.UNCRYPTED_EXTENSION, transformInfoObjectConfigData.getInstance().ENCRYPTED_EXTENSION).get(objectConfigFileAbPath);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformInfoObjectConfig(transformInfoInterface, DomDocumentHelper.create(data));
+                        return TransformInfoObjectConfig(transformInfoInterface, DomDocumentHelper::create(data));
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Could Not Load Object Config", this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put("Could Not Load Object Config", this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

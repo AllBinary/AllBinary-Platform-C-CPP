@@ -66,51 +66,48 @@
 class TransformsGeneratorUtil
             : public Object
          {
-        
 
-    private: static const instance: TransformsGeneratorUtil = new TransformsGeneratorUtil();
+    private: static TransformsGeneratorUtil instance() { return TransformsGeneratorUtil(); }
 
-    public static TransformsGeneratorUtil getInstance(){
+    public: static TransformsGeneratorUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformsGeneratorUtil.instance;
+                        return TransformsGeneratorUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformsGeneratorUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoInterface, string group){
+    public: std::string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string group){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Started Group: " +group, this, "generateComponentsFromObjectConfig(2)");
+                                    this->logUtil.putF("Started Group: " +group, this, "generateComponentsFromObjectConfig(2)");
     
 
                                     }
                                 
 
-    transformInfoObjectConfigInterface: TransformInfoObjectConfigInterface = transformInfoInterface!.getObjectConfigInterface()!;;
+    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = transformInfoInterface.getObjectConfigInterface();;
     
 
-    result: string = this.generateComponentsFromObjectConfig(abeClientInformation, transformInfoObjectConfigInterface, transformInfoInterface, group)!;;
+    std::string result = this->generateComponentsFromObjectConfig(abeClientInformation, transformInfoObjectConfigInterface, transformInfoInterface, group);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("End Group: " +group, this, "generateComponentsFromObjectConfig(2)");
+                                    this->logUtil.putF("End Group: " +group, this, "generateComponentsFromObjectConfig(2)");
     
 
                                     }
@@ -126,91 +123,91 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoObjectConfigInterface, Object transformInfoInterface, string group){
+    public: std::string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoObjectConfigInterface, Object transformInfoInterface, std::string group){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Started Group: " +group, this, "generateComponentsFromObjectConfig()");
+                                    this->logUtil.putF("Started Group: " +group, this, "generateComponentsFromObjectConfig()");
     
 
                                     }
                                 
 
-    transformInfoObjectConfigComponentVector: Vector = transformInfoObjectConfigInterface!.getTransformsGroup(group)!;;
+    Vector transformInfoObjectConfigComponentVector = transformInfoObjectConfigInterface.getTransformsGroup(group);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Processing ");
+stringBuffer.append("Processing ");
     
-stringBuffer!.appendint(transformInfoObjectConfigComponentVector!.length);
+stringBuffer.appendint(transformInfoObjectConfigComponentVector.length);
     
-stringBuffer!.append(" Components Group: ");
+stringBuffer.append(" Components Group: ");
     
-stringBuffer!.append(group);
+stringBuffer.append(group);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "generateComponentsFromObjectConfig()");
+this->logUtil.putF(stringBuffer.toString(), this, "generateComponentsFromObjectConfig()");
     
 
                                     }
                                 
 
-                        if(transformInfoObjectConfigComponentVector!.length < 1)
+                        if(transformInfoObjectConfigComponentVector.length < 1)
                         
                                     {
                                     
 
 
-                            throw new Exception("No Pages Generated For Template.");
+                            throw Exception("No Pages Generated For Template.");
                     
 
                                     }
                                 
 
-    size: int32_t = transformInfoObjectConfigComponentVector!.length!;;
+    int32_t size = transformInfoObjectConfigComponentVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    transformInfoObjectConfigComponent: TransformInfoDomNode = transformInfoObjectConfigComponentVector!.get(index) as TransformInfoDomNode;;
+    TransformInfoDomNode transformInfoObjectConfigComponent = transformInfoObjectConfigComponentVector.get(index) as TransformInfoDomNode;;
     
-TransformGeneratorUtil.getInstance()!.generate(abeClientInformation, transformInfoObjectConfigComponent, transformInfoInterface);
+TransformGeneratorUtil::getInstance().generate(abeClientInformation, transformInfoObjectConfigComponent, transformInfoInterface);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Done Group: " +group, this, "generateComponentsFromObjectConfig()");
+                                    this->logUtil.putF("Done Group: " +group, this, "generateComponentsFromObjectConfig()");
     
 
                                     }
                                 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("<!-- Generated all template views successfully for View: ");
+stringBuffer.append("<!-- Generated all template views successfully for View: ");
     
-stringBuffer!.append(transformInfoInterface!.getName());
+stringBuffer.append(transformInfoInterface.getName());
     
-stringBuffer!.append("-->");
+stringBuffer.append("-->");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

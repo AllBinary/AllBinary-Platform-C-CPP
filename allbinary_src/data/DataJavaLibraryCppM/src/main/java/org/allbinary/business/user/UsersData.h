@@ -45,11 +45,10 @@
 class UsersData
             : public Object
          {
-        
 
-    public static const NAME: string = "USERS_NAME";
+    public: static const std::string NAME = "USERS_NAME";
 
-private constructor ();
+private: UsersData();
 
 };
 

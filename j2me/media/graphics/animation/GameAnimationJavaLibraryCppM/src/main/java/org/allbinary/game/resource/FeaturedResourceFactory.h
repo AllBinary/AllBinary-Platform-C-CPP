@@ -93,43 +93,42 @@
 class FeaturedResourceFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-public constructor ();
+public: FeaturedResourceFactory();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const ANIMATION_FEATURES: string = "Animation Features: Vector: ";
+    private: const std::string ANIMATION_FEATURES = "Animation Features: Vector: ";
 
-    private: const IMAGE_LABEL: string = " Image: ";
+    private: const std::string IMAGE_LABEL = " Image: ";
 
-    private: const IMAGE_GRAPHICS_ARRAY: string = "Image Array: ";
+    private: const std::string IMAGE_GRAPHICS_ARRAY = "Image Array: ";
 
-    private: const IMAGE_GRAPHICS_ROTATION: string = "Image Rotate: ";
+    private: const std::string IMAGE_GRAPHICS_ROTATION = "Image Rotate: ";
 
-    private: const SPRITE_QUARTER: string = " Sprite Quarter: ";
+    private: const std::string SPRITE_QUARTER = " Sprite Quarter: ";
 
-    private: const SPRITE_FULL: string = " Sprite Full: ";
+    private: const std::string SPRITE_FULL = " Sprite Full: ";
 
-    private: const IS_LOADING_LEVEL_LABEL: string = " isLoadingLevel ";
+    private: const std::string IS_LOADING_LEVEL_LABEL = " isLoadingLevel ";
 
-    private: const IS_FEATURE: string = " isFeature: ";
+    private: const std::string IS_FEATURE = " isFeature: ";
 
-    private: const GAME_FEATURE_CONTROLLED: string = "GameFeatureControlledInterface: ";
+    private: const std::string GAME_FEATURE_CONTROLLED = "GameFeatureControlledInterface: ";
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level);
+    public: void init(int32_t level);
 
-    public clear();
+    public: void clear();
 
-    public add(GameFeatureControlledInterface featureInterface);
+    public: void add(GameFeatureControlledInterface featureInterface);
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

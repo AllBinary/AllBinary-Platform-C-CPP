@@ -45,20 +45,17 @@
 class HtmlTag
             : public Object
          {
-        
 
-    otherAttributes: HashMap<any, any>;
+    protected: HashMap<any, any> otherAttributes;
 
-public constructor (){
-
-            super();
-        this.otherAttributes= new HashMap<any, any>();
+public: HtmlTag(){
+this->otherAttributes= HashMap<any, any>();
     
 }
 
 
-    public addAttribute(string key, string value){
-this.otherAttributes!.put(key, value);
+    public: void addAttribute(std::string key, std::string value){
+this->otherAttributes.put(key, value);
     
 }
 

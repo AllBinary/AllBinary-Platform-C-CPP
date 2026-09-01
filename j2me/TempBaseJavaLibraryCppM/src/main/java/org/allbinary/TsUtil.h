@@ -47,19 +47,16 @@
 class TsUtil
             : public Object
          {
-        
 
-private:
-        static TsUtil instance() { return TsUtil(); }
+    private: static TsUtil instance() { return TsUtil(); }
 
-public:
-        static TsUtil getInstance();
+    public: static TsUtil getInstance();
 
-        int32_t hashCode(Object* object);
+    public: int32_t hashCode(Object* anyType);
 
                 //@Throws(InterruptedException.constructor)
             
-        void waitFor(Object* object, int64_t timeoutMillis);
+    public: void waitFor(Object* any, int64_t timeoutMillis);
 
 };
 

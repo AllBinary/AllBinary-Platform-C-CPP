@@ -80,81 +80,77 @@
         #include "BuildingLayer.h"
 
 class BuildingInfoHudPaintable: public SelectionHudPaintable {
-        
 
-    private: static const instance: BuildingInfoHudPaintable = new BuildingInfoHudPaintable();
+    private: static BuildingInfoHudPaintable instance() { return BuildingInfoHudPaintable(); }
 
-    public static BuildingInfoHudPaintable getInstance(){
+    public: static BuildingInfoHudPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingInfoHudPaintable.instance;
+                        return BuildingInfoHudPaintable::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const HEALTH: string = "Health:";
+    private: const std::string HEALTH = "Health:";
 
-    private: const productivityHud: NumberStringHud;
+    private: NumberStringHud productivityHud;
 
-    private: const efficiencyHud: NumberStringHud;
+    private: NumberStringHud efficiencyHud;
 
-    private: const healthHud: NumberStringHud;
+    private: NumberStringHud healthHud;
 
-    private: const maxHealthHud: NumberStringHud;
+    private: NumberStringHud maxHealthHud;
 
-    private: rtsLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    private: currentHealth: int32_t = 0;
+    private: int32_t currentHealth = 0;
 
-private constructor (){
+private: BuildingInfoHudPaintable(){
 
-            super();
-        
-    numberStringHudFactory: NumberStringHudFactory = NumberStringHudFactory.getInstance()!;;
+    NumberStringHudFactory numberStringHudFactory = NumberStringHudFactory::getInstance();;
     
 
-    productivityHud: NumberStringHud = numberStringHudFactory!.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud productivityHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
     
 
-    efficiencyHud: NumberStringHud = numberStringHudFactory!.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud efficiencyHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
     
 
-    healthHud: NumberStringHud = numberStringHudFactory!.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud healthHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
     
 
-    maxHealthHud: NumberStringHud = numberStringHudFactory!.NULL_NUMBER_STRING_HUD;;
+    NumberStringHud maxHealthHud = numberStringHudFactory.NULL_NUMBER_STRING_HUD;;
     
 
         try {
             
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    basicHudFactory: BasicHudFactory = BasicHudFactory.getInstance()!;;
+    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
     
 
-    basicColor: BasicColor = this.getBasicColorP()!;;
+    BasicColor basicColor = this->getBasicColorP();;
     
 
-    textX: int32_t = this.textX;;
+    int32_t textX = this->textX;;
     
 
-    y: int32_t = this.y;;
+    int32_t y = this->y;;
     
 
-    firstIndex: int32_t = index;;
+    int32_t firstIndex = index;;
     
 
 //inner=true member= isStatic=
 class ProductivityNumberStringHud: public NumberStringHud {
-        
 
- constructor (){
-            super("Productivity:", 999, basicHudFactory!.ABSOLUTE, basicHudFactory!.HORIZONTAL, 0, basicColor);
+: ProductivityNumberStringHud(){
+            super("Productivity:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -162,13 +158,13 @@ class ProductivityNumberStringHud: public NumberStringHud {
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.updateMaxWidth= textX;
+this->updateMaxWidth= textX;
     
-this.updateMaxHeight= y +((firstIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((firstIndex +1) *font.getHeight());
     
 super.updateMeasurement(graphics);
     
@@ -181,20 +177,19 @@ super.updateMeasurement(graphics);
 
                     //Otherwise - statement - EmptyStmt
 
-productivityHud= new ProductivityNumberStringHud();
+productivityHud= ProductivityNumberStringHud();
     
 index++;
     
 
-    secondIndex: int32_t = index;;
+    int32_t secondIndex = index;;
     
 
 //inner=true member= isStatic=
 class EfficiencyNumberStringHud: public NumberStringHud {
-        
 
- constructor (){
-            super("Efficiency:", 999, basicHudFactory!.ABSOLUTE, basicHudFactory!.HORIZONTAL, 0, basicColor);
+: EfficiencyNumberStringHud(){
+            super("Efficiency:", 999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -202,15 +197,15 @@ class EfficiencyNumberStringHud: public NumberStringHud {
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.updateMaxWidth= textX;
+this->updateMaxWidth= textX;
     
-this.updateMaxHeight= y +((secondIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((secondIndex +1) *font.getHeight());
     
 }
 
@@ -221,23 +216,22 @@ this.updateMaxHeight= y +((secondIndex +1) *font.getHeight());
 
                     //Otherwise - statement - EmptyStmt
 
-efficiencyHud= new EfficiencyNumberStringHud();
+efficiencyHud= EfficiencyNumberStringHud();
     
 index++;
     
 
-    HEALTH: string = this.HEALTH;;
+    std::string HEALTH = this->HEALTH;;
     
 
-    thirdIndex: int32_t = index;;
+    int32_t thirdIndex = index;;
     
 
 //inner=true member= isStatic=
 class HealthNumberStringHud: public NumberStringHud {
-        
 
- constructor (){
-            super(HEALTH, 99999, basicHudFactory!.ABSOLUTE, basicHudFactory!.HORIZONTAL, 0, basicColor);
+: HealthNumberStringHud(){
+            super(HEALTH, 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -245,13 +239,13 @@ class HealthNumberStringHud: public NumberStringHud {
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.updateMaxWidth= textX;
+this->updateMaxWidth= textX;
     
-this.updateMaxHeight= y +((thirdIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((thirdIndex +1) *font.getHeight());
     
 super.updateMeasurement(graphics);
     
@@ -265,20 +259,19 @@ super.updateMeasurement(graphics);
                     //Otherwise - statement - EmptyStmt
 
 
-    totalLength: int32_t = HEALTH.length +1;;
+    int32_t totalLength = HEALTH.size() +1;;
     
-healthHud= new HealthNumberStringHud();
+healthHud= HealthNumberStringHud();
     
 
-    fourthIndex: int32_t = index;;
+    int32_t fourthIndex = index;;
     
 
 //inner=true member= isStatic=
 class MaxHealthNumberStringHud: public NumberStringHud {
-        
 
- constructor (){
-            super("/ ", 99999, basicHudFactory!.ABSOLUTE, basicHudFactory!.HORIZONTAL, 0, basicColor);
+: MaxHealthNumberStringHud(){
+            super("/ ", 99999, basicHudFactory.ABSOLUTE, basicHudFactory.HORIZONTAL, 0, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -286,15 +279,15 @@ class MaxHealthNumberStringHud: public NumberStringHud {
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.updateMaxWidth= textX +(totalLength *font.getHeight());
+this->updateMaxWidth= textX +(totalLength *font.getHeight());
     
-this.updateMaxHeight= y +((fourthIndex +1) *font.getHeight());
+this->updateMaxHeight= y +((fourthIndex +1) *font.getHeight());
     
 }
 
@@ -305,101 +298,101 @@ this.updateMaxHeight= y +((fourthIndex +1) *font.getHeight());
 
                     //Otherwise - statement - EmptyStmt
 
-maxHealthHud= new MaxHealthNumberStringHud();
+maxHealthHud= MaxHealthNumberStringHud();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
-    
-}
-
-this.productivityHud= productivityHud;
-    
-this.efficiencyHud= efficiencyHud;
-    
-this.healthHud= healthHud;
-    
-this.maxHealthHud= maxHealthHud;
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
-
-    public updateMeasurement(Graphics graphics){
-
-    font: Font = graphics.getFont()!;;
+this->productivityHud= productivityHud;
     
-
-    totalLength: int32_t = this.HEALTH.length +MathUtil.getInstance()!.getTotalDigits(this.currentHealth);;
+this->efficiencyHud= efficiencyHud;
     
-this.maxHealthHud!.setX(this.textX +MyFontProcessor.defaultStringWidth(font, totalLength));
+this->healthHud= healthHud;
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->maxHealthHud= maxHealthHud;
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
+    public: void updateMeasurement(Graphics graphics){
+
+    Font font = graphics.getFont();;
+    
+
+    int32_t totalLength = HEALTH.size() +MathUtil::getInstance().getTotalDigits(this->currentHealth);;
+    
+this->maxHealthHud.setX(this->textX +MyFontProcessor::defaultStringWidth(font, totalLength));
+    
+this->myFontProcessor= MyFontProcessor::getInstance();
+    
+}
+
+
+    public: void setBasicColorP(BasicColor basicColor){
 super.setBasicColorP(basicColor);
     
-this.productivityHud!.setBasicColorP(basicColor);
+this->productivityHud.setBasicColorP(basicColor);
     
-this.efficiencyHud!.setBasicColorP(basicColor);
+this->efficiencyHud.setBasicColorP(basicColor);
     
-this.healthHud!.setBasicColorP(basicColor);
+this->healthHud.setBasicColorP(basicColor);
     
-this.maxHealthHud!.setBasicColorP(basicColor);
+this->maxHealthHud.setBasicColorP(basicColor);
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
-this.myFontProcessor!.process(graphics);
+this->myFontProcessor.process(graphics);
     
-this.productivityHud!.paint(graphics);
+this->productivityHud.paint(graphics);
     
-this.efficiencyHud!.paint(graphics);
+this->efficiencyHud.paint(graphics);
     
-this.healthHud!.paint(graphics);
+this->healthHud.paint(graphics);
     
-this.maxHealthHud!.paint(graphics);
+this->maxHealthHud.paint(graphics);
     
-this.getAnimationInterface()!.paintXY(graphics, this.imageX, this.y);
-    
-}
-
-
-    public updateSelectionInfo(){
-
-    buildingLayer: BuildingLayer = this.rtsLayer as BuildingLayer;;
-    
-this.setName(buildingLayer!.getName());
-    
-this.setAnimationInterface(buildingLayer!.getVerticleBuildAnimationInterface());
-    
-this.productivityHud!.set(buildingLayer!.getProductivity());
-    
-this.efficiencyHud!.set(buildingLayer!.getEfficiency() /100);
-    
-this.currentHealth= buildingLayer!.getHealthInterface()!.getHealth();
-    
-this.healthHud!.set(this.currentHealth);
-    
-this.myFontProcessor= this.updateMyFontProcessor;
-    
-this.maxHealthHud!.set(buildingLayer!.getHealthInterface()!.getMaxHealth());
+this->getAnimationInterface().paintXY(graphics, this->imageX, this->y);
     
 }
 
 
-    public setRtsLayer(PathFindingLayerInterface rtsLayer){
-this.rtsLayer= rtsLayer;
+    public: void updateSelectionInfo(){
+
+    BuildingLayer buildingLayer = this->rtsLayer as BuildingLayer;;
+    
+this->setName(buildingLayer.getName());
+    
+this->setAnimationInterface(buildingLayer.getVerticleBuildAnimationInterface());
+    
+this->productivityHud.set(buildingLayer.getProductivity());
+    
+this->efficiencyHud.set(buildingLayer.getEfficiency() /100);
+    
+this->currentHealth= buildingLayer.getHealthInterface().getHealth();
+    
+this->healthHud.set(this->currentHealth);
+    
+this->myFontProcessor= this->updateMyFontProcessor;
+    
+this->maxHealthHud.set(buildingLayer.getHealthInterface().getMaxHealth());
+    
+}
+
+
+    public: void setRtsLayer(PathFindingLayerInterface rtsLayer){
+this->rtsLayer= rtsLayer;
     
 }
 

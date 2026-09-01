@@ -39,15 +39,14 @@
         #include "SizeConstraintInterface.h"
 
 class TwoDimensionalConstraintInterface {
-        
 
     SizeConstraintInterface getHeight()
 
     SizeConstraintInterface getWidth()
 
-    setHeight(SizeConstraintInterface heightSizeConstraintInterface)
+    void setHeight(SizeConstraintInterface heightSizeConstraintInterface)
 
-    setWidth(SizeConstraintInterface widthSizeConstraintInterface)
+    void setWidth(SizeConstraintInterface widthSizeConstraintInterface)
 
 };
 

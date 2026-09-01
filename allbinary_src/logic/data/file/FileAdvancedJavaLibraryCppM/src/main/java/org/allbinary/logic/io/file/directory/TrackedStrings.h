@@ -45,31 +45,30 @@
 class TrackedStrings
             : public Object
          {
-        
 
-    private: static const instance: TrackedStrings = new TrackedStrings();
+    private: static TrackedStrings instance() { return TrackedStrings(); }
 
-    public static TrackedStrings getInstance();
+    public: static TrackedStrings getInstance();
 
-    public const TARGET_PATH_WINDOWS: string = "\\target\\";
+    public: const std::string TARGET_PATH_WINDOWS = "\\target\\";
 
-    public const TARGET_PATH_UNIX: string = "/target/";
+    public: const std::string TARGET_PATH_UNIX = "/target/";
 
-    public const HTML_TEMP: string = "HTMLTemp";
+    public: const std::string HTML_TEMP = "HTMLTemp";
 
-    public const APPLICATION: string = "Application";
+    public: const std::string APPLICATION = "Application";
 
-    public const APP: string = "\\app";
+    public: const std::string APP = "\\app";
 
-    public const GIT_COMMAND: string = "git";
+    public: const std::string GIT_COMMAND = "git";
 
-    public const CHANGE_DIRECTORY_OPTION: string = "-C";
+    public: const std::string CHANGE_DIRECTORY_OPTION = "-C";
 
-    public const LIST_FILES_COMMAND: string = "ls-files";
+    public: const std::string LIST_FILES_COMMAND = "ls-files";
 
-    public const ERROR_UNMATCH_OPTION: string = "--error-unmatch";
+    public: const std::string ERROR_UNMATCH_OPTION = "--error-unmatch";
 
-    public const PATHSPEC_SEPARATOR: string = "--";
+    public: const std::string PATHSPEC_SEPARATOR = "--";
 
 };
 

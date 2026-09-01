@@ -51,23 +51,22 @@
         #include "CircleAnimation.h"
 
 class AdjustedCircleAnimation: public CircleAnimation {
-        
 
-    public static AdjustedCircleAnimation createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor basicColor);
+    public: static AdjustedCircleAnimation createAnimation(int32_t width, int32_t height, int32_t xAdjustment, int32_t yAdjustment, BasicColor basicColor);
 
-    public static AdjustedCircleAnimation createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor basicColor);
+    public: static AdjustedCircleAnimation createW(int32_t width, int32_t height, int32_t innerWidth, BasicColor basicColor);
 
-    private: xAdjustment: int32_t= 0;
+    private: int32_t xAdjustment= 0;
 
-    private: yAdjustment: int32_t= 0;
+    private: int32_t yAdjustment= 0;
 
-public constructor (int32_t width, int32_t height, BasicColor basicColor);
+public: AdjustedCircleAnimation(int32_t width, int32_t height, BasicColor basicColor);
 
-    initXY(int32_t xAdjustment, int32_t yAdjustment);
+    private: void initXY(int32_t xAdjustment, int32_t yAdjustment);
 
-    init(int32_t innerWidth);
+    private: void init(int32_t innerWidth);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

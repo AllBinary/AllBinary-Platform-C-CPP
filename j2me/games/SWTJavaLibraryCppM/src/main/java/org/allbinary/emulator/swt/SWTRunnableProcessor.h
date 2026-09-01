@@ -45,15 +45,14 @@
         #include "SWTProcessor.h"
 
 class SWTRunnableProcessor: public SWTProcessor {
-        
 
-    private: static const instanceR: SWTRunnableProcessor = new SWTRunnableProcessor();
+    private: static const SWTRunnableProcessor instanceR = SWTRunnableProcessor();
 
-    public static SWTRunnableProcessor getInstance();
+    public: static SWTRunnableProcessor getInstance();
 
-private constructor ();
+private: SWTRunnableProcessor();
 
-    public process(Display display);
+    public: void process(Display display);
 
 };
 

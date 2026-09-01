@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -95,41 +97,40 @@
         #include "DbConnectionInfo.h"
 
 class DbInitInfo: public DbConnectionInfo {
-        
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    private: const httpData: HttpData = HttpData.getInstance()!;
+    private: const HttpData httpData = HttpData::getInstance();
 
-    private: const GET_URL: string = "getUrl";
+    private: const std::string GET_URL = "getUrl";
 
-    private: const PACKAGE: string = FREEBLISKET_PATH_GLOBALS.getInstance()!.DBINITPATH;
+    private: const std::string PACKAGE = FREEBLISKET_PATH_GLOBALS::getInstance().DBINITPATH;
 
-    private: initFileName: string;
+    private: std::string initFileName;
 
-    private: hasRead: bool = false;
+    private: bool hasRead = false;
 
-public constructor (string initFileName, bool read){
+public: DbInitInfo(std::string initFileName, bool read){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initFileName= initFileName;
+this->initFileName= initFileName;
     
 
                         if(read)
                         
                                     {
-                                    this.updateIfNeeded();
+                                    this->updateIfNeeded();
     
 
                                     }
                                 
                         else {
-                            this.setHasRead(true);
+                            this->setHasRead(true);
     
 
                         }
@@ -137,15 +138,15 @@ this.initFileName= initFileName;
 }
 
 
-    public string getUrl(){
+    public: std::string getUrl(){
 
-    url: string = super.getUrl()!;;
+    std::string url = super.getUrl();;
     
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put(this.httpData!.URL_LABEL +url, this, GET_URL);
+                                    PreLogUtil::put(this->httpData.URL_LABEL +url, this, GET_URL);
     
 
                                     }
@@ -161,67 +162,67 @@ this.initFileName= initFileName;
 
                 //@Throws(Exception.constructor)
             
-    public write(){
+    public: void write(){
 
-    PATH: AbPath = new AbPath(URLGLOBALS.getWebappPath() +this.PACKAGE, StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath PATH = AbPath(URLGLOBALS::getWebappPath() +this->PACKAGE, StringUtil::getInstance().EMPTY_STRING);;
     
-this.directory.create(PATH);
-    
-
-    FILEABPATH: AbPath = new AbPath(URLGLOBALS.getWebappPath() +this.PACKAGE, this.initFileName);;
+this->directory.create(PATH);
     
 
-        try {
-            
-    newFile: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!;;
-    
-newFile!.createNewFile();
-    
-
-    dataOutputStream: AbDataOutputStream = DataOutputStreamFactory.getInstance()!.getInstanceForAbFile(newFile)!;;
+    AbPath FILEABPATH = AbPath(URLGLOBALS::getWebappPath() +this->PACKAGE, this->initFileName);;
     
 
         try {
             
-    cryptedJdbcDriver: std::vector<int8_t> = new WeakCrypt(1).encrypt(this.getJdbcDriver())!.getBytes()!;;
+    AbFile newFile = AbFile::createAbFileFromAbPath(FILEABPATH);;
+    
+newFile.createNewFile();
     
 
-    cryptedName: std::vector<int8_t> = new WeakCrypt(2).encrypt(this.getName())!.getBytes()!;;
+    AbDataOutputStream dataOutputStream = DataOutputStreamFactory::getInstance().getInstanceForAbFile(newFile);;
     
 
-    cryptedUserName: std::vector<int8_t> = new WeakCrypt(3).encrypt(this.getUserName())!.getBytes()!;;
+        try {
+            
+    std::vector<int8_t> cryptedJdbcDriver = WeakCrypt(1).encrypt(this->getJdbcDriver()).getBytes();;
     
 
-    cryptedPassword: std::vector<int8_t> = new WeakCrypt(4).encrypt(this.getPassword())!.getBytes()!;;
+    std::vector<int8_t> cryptedName = WeakCrypt(2).encrypt(this->getName()).getBytes();;
     
 
-    cryptedSchema: std::vector<int8_t> = new WeakCrypt(5).encrypt(this.getSchema())!.getBytes()!;;
+    std::vector<int8_t> cryptedUserName = WeakCrypt(3).encrypt(this->getUserName()).getBytes();;
     
 
-    cryptedServer: std::vector<int8_t> = new WeakCrypt(6).encrypt(this.getServer())!.getBytes()!;;
+    std::vector<int8_t> cryptedPassword = WeakCrypt(4).encrypt(this->getPassword()).getBytes();;
     
 
-    cryptedPort: std::vector<int8_t> = new WeakCrypt(7).encrypt(this.getPort())!.getBytes()!;;
+    std::vector<int8_t> cryptedSchema = WeakCrypt(5).encrypt(this->getSchema()).getBytes();;
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedJdbcDriver));
+
+    std::vector<int8_t> cryptedServer = WeakCrypt(6).encrypt(this->getServer()).getBytes();;
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedName));
+
+    std::vector<int8_t> cryptedPort = WeakCrypt(7).encrypt(this->getPort()).getBytes();;
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedUserName));
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedJdbcDriver));
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedPassword));
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedName));
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedSchema));
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedUserName));
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedServer));
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedPassword));
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedPort));
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedSchema));
     
-this.hasRead= false;
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedServer));
+    
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedPort));
+    
+this->hasRead= false;
     
 
          finally {
-            StreamUtil.getInstance()!.close(dataOutputStream);
+            StreamUtil::getInstance().close(dataOutputStream);
     
 
          }
@@ -231,10 +232,10 @@ this.hasRead= false;
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE("Failed Write: " +FILEABPATH.toString(), this, "write", e);
+                                    PreLogUtil::putOE("Failed Write: " +FILEABPATH::toString(), this, "write", e);
     
 
                                     }
@@ -246,68 +247,68 @@ this.hasRead= false;
 
                 //@Throws(Exception.constructor)
             
-    load(){
+    private: void load(){
 
-    FILEABPATH: AbPath = new AbPath(URLGLOBALS.getWebappPath() +this.PACKAGE, this.initFileName);;
+    AbPath FILEABPATH = AbPath(URLGLOBALS::getWebappPath() +this->PACKAGE, this->initFileName);;
     
 
         try {
             
-    file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
                         if(file.isFile())
                         
                                     {
                                     
-    iFile: AbFileInputStream = new AbFileInputStream(file);;
+    AbFileInputStream iFile = AbFileInputStream(file);;
     
 
-    iData: AbDataInputStream = new AbDataInputStream(iFile);;
+    AbDataInputStream iData = AbDataInputStream(iFile);;
     
 
         try {
             
-    decryptedJdbcDriver: string = decode.toCharArray();;
+    std::string decryptedJdbcDriver = decode.toCharArray();;
     
 
-    decryptedName: string = decode.toCharArray();;
+    std::string decryptedName = decode.toCharArray();;
     
 
-    decryptedUserName: string = decode.toCharArray();;
+    std::string decryptedUserName = decode.toCharArray();;
     
 
-    decryptedPassword: string = decode.toCharArray();;
+    std::string decryptedPassword = decode.toCharArray();;
     
 
-    decryptedSchema: string = decode.toCharArray();;
+    std::string decryptedSchema = decode.toCharArray();;
     
 
-    decryptedServer: string = decode.toCharArray();;
+    std::string decryptedServer = decode.toCharArray();;
     
 
-    decryptedPort: string = decode.toCharArray();;
+    std::string decryptedPort = decode.toCharArray();;
     
-this.setJdbcDriver(new WeakCrypt(1).decrypt(decryptedJdbcDriver));
+this->setJdbcDriver(WeakCrypt(1).decrypt(decryptedJdbcDriver));
     
-this.setName(new WeakCrypt(2).decrypt(decryptedName));
+this->setName(WeakCrypt(2).decrypt(decryptedName));
     
-this.setUserName(new WeakCrypt(3).decrypt(decryptedUserName));
+this->setUserName(WeakCrypt(3).decrypt(decryptedUserName));
     
-this.setPassword(new WeakCrypt(4).decrypt(decryptedPassword));
+this->setPassword(WeakCrypt(4).decrypt(decryptedPassword));
     
-this.setSchema(new WeakCrypt(5).decrypt(decryptedSchema));
+this->setSchema(WeakCrypt(5).decrypt(decryptedSchema));
     
-this.setServer(new WeakCrypt(6).decrypt(decryptedServer));
+this->setServer(WeakCrypt(6).decrypt(decryptedServer));
     
-this.setPort(new WeakCrypt(7).decrypt(decryptedPort));
+this->setPort(WeakCrypt(7).decrypt(decryptedPort));
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
          finally {
-            StreamUtil.getInstance()!.close(iData);
+            StreamUtil::getInstance().close(iData);
     
 
          }
@@ -316,13 +317,13 @@ this.setPort(new WeakCrypt(7).decrypt(decryptedPort));
                                     }
                                 
                         else {
-                            this.hasRead= false;
+                            this->hasRead= false;
     
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put("Not a File - Failed Loading: " +FILEABPATH.toString(), this, this.commonStrings!.LOAD);
+                                    PreLogUtil::put("Not a File - Failed Loading: " +FILEABPATH::toString(), this, this->commonStrings.LOAD);
     
 
                                     }
@@ -335,10 +336,10 @@ this.setPort(new WeakCrypt(7).decrypt(decryptedPort));
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE("Failed Loading: " +FILEABPATH.toString(), this, this.commonStrings!.LOAD, e);
+                                    PreLogUtil::putOE("Failed Loading: " +FILEABPATH::toString(), this, this->commonStrings.LOAD, e);
     
 
                                     }
@@ -348,22 +349,22 @@ this.setPort(new WeakCrypt(7).decrypt(decryptedPort));
 }
 
 
-    public setHasRead(bool value){
-this.hasRead= value;
+    public: void setHasRead(bool value){
+this->hasRead= value;
     
 }
 
 
-    updateIfNeeded(){
+    private: void updateIfNeeded(){
 
         try {
             
-                        if(!this.hasRead)
+                        if(!this->hasRead)
                         
                                     {
-                                    this.hasRead= true;
+                                    this->hasRead= true;
     
-this.load();
+this->load();
     
 
                                     }
@@ -373,10 +374,10 @@ this.load();
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this, "updateIfNeeded", e);
+                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this, "updateIfNeeded", e);
     
 
                                     }
@@ -386,14 +387,14 @@ this.load();
 }
 
 
-    public string getName(){
-this.updateIfNeeded();
+    public: std::string getName(){
+this->updateIfNeeded();
     
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put("Name: " +super.getName(), this, "getName");
+                                    PreLogUtil::put("Name: " +super.getName(), this, "getName");
     
 
                                     }
@@ -407,14 +408,14 @@ this.updateIfNeeded();
 }
 
 
-    public string getUserName(){
-this.updateIfNeeded();
+    public: std::string getUserName(){
+this->updateIfNeeded();
     
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put("Name: " +super.getUserName(), this, "getUserName");
+                                    PreLogUtil::put("Name: " +super.getUserName(), this, "getUserName");
     
 
                                     }
@@ -428,8 +429,8 @@ this.updateIfNeeded();
 }
 
 
-    public string getPassword(){
-this.updateIfNeeded();
+    public: std::string getPassword(){
+this->updateIfNeeded();
     
 
 
@@ -440,8 +441,8 @@ this.updateIfNeeded();
 }
 
 
-    public string getSchema(){
-this.updateIfNeeded();
+    public: std::string getSchema(){
+this->updateIfNeeded();
     
 
 
@@ -452,8 +453,8 @@ this.updateIfNeeded();
 }
 
 
-    public string getServer(){
-this.updateIfNeeded();
+    public: std::string getServer(){
+this->updateIfNeeded();
     
 
 
@@ -464,8 +465,8 @@ this.updateIfNeeded();
 }
 
 
-    public string getPort(){
-this.updateIfNeeded();
+    public: std::string getPort(){
+this->updateIfNeeded();
     
 
 

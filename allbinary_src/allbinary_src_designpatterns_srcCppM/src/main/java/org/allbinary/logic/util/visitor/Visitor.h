@@ -58,15 +58,14 @@
 class Visitor
             : public Object
         : public VisitorInterface {
-        
 
-    private: static const instance: Visitor = new Visitor();
+    private: static Visitor instance() { return Visitor(); }
 
-    public static Visitor getInstance();
+    public: static Visitor getInstance();
 
-    const nullUtil: NullUtil = NullUtil.getInstance()!;
+    protected: const NullUtil nullUtil = NullUtil::getInstance();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
 };
 

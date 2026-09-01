@@ -42,11 +42,10 @@
 class SpecialItemData
             : public Object
          {
-        
 
-    public static const START_TIME: string = "SPECIALITEM_START_TIME";
+    public: static const std::string START_TIME = "SPECIALITEM_START_TIME";
 
-    public static const END_TIME: string = "SPECIALITEM_END_TIME";
+    public: static const std::string END_TIME = "SPECIALITEM_END_TIME";
 
 };
 

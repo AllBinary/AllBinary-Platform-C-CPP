@@ -40,10 +40,9 @@
 #include "HtmlInputData.h"
 
 class HtmlSubmitInput: public HtmlValueInput {
-        
 
-public constructor (string before, string name, string value, string after){
-            super(before, HtmlInputData.getInstance()!.SUBMIT, name, value, after);
+public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after){
+            super(before, HtmlInputData::getInstance().SUBMIT, name, value, after);
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -31,9 +31,8 @@
 class KotlinUtil
             : public Object
          {
-        
 
-    public static bool isKotlin(){
+    public: static bool isKotlin(){
 
 
 
@@ -43,12 +42,12 @@ class KotlinUtil
 }
 
 
-    public static string getShortName(){
+    public: static std::string getShortName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

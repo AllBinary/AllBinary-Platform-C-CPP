@@ -57,17 +57,16 @@
 class VirtualKeyboard
             : public Object
          {
-        
 
-    public static const NULL_VIRTUAL_KEYBOARD: VirtualKeyboard = new VirtualKeyboard();
+    public: static const VirtualKeyboard NULL_VIRTUAL_KEYBOARD = VirtualKeyboard();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
 
-    public forceHide();
+    public: void forceHide();
 
-    public hide();
+    public: void hide();
 
 };
 

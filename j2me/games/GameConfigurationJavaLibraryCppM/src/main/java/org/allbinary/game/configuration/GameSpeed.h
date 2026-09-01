@@ -47,15 +47,14 @@
 class GameSpeed
             : public Object
          {
-        
 
-    private: static const instance: GameSpeed = new GameSpeed();
+    private: static GameSpeed instance() { return GameSpeed(); }
 
-    public static GameSpeed getInstance();
+    public: static GameSpeed getInstance();
 
-    public int32_t getSpeed();
+    public: int32_t getSpeed();
 
-    public int32_t getDelay();
+    public: int32_t getDelay();
 
 };
 

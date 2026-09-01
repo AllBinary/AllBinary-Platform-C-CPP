@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_H
         #define ORG_ALLBINARY_BUSINESS_INIT_WEBLISKETFINDER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -76,29 +78,28 @@
 class WeblisketFinder
             : public Object
          {
-        
 
-    private: static const instance: WeblisketFinder = new WeblisketFinder();
+    private: static WeblisketFinder instance() { return WeblisketFinder(); }
 
-    public static WeblisketFinder getInstance();
+    public: static WeblisketFinder getInstance();
 
-    private: static const KEY: string = "installerdata.dat";
+    private: static const std::string KEY = "installerdata.dat";
 
                 //@Throws(Exception.constructor)
             
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const subDirectory: SubDirectory = SubDirectory.getInstance()!;
+    private: const SubDirectory subDirectory = SubDirectory::getInstance();
 
-private constructor ();
+private: WeblisketFinder();
 
-    public BasicArrayList findAll(string path);
+    public: BasicArrayList findAll(std::string path);
 
-    public string getInstallationPath(AbFile file);
+    public: std::string getInstallationPath(AbFile file);
 
 };
 

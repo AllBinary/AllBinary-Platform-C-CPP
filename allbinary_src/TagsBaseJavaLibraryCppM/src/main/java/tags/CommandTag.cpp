@@ -40,30 +40,27 @@
 #include "TagStrings.h"
 
 class CommandTag: public CustomTagSupport {
-        
 
-    const tagStrings: TagStrings = TagStrings.getInstance()!;
+    protected: const TagStrings tagStrings = TagStrings::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-public constructor (){
-
-            super();
-        }
+public: CommandTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public string getCommand(){
+    public: std::string getCommand(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.command;
+                        return this->command;
     
 }
 

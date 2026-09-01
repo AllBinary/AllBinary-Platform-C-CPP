@@ -91,96 +91,93 @@
 #include "HighScores.h"
 #include "HighScore.h"
 
-class HighScoresPaintable: public Paintable: public ColorChangeListener, public UpdateMyFontInterface {
-        
+class HighScoresPaintable: public Paintable, public ColorChangeListener, public UpdateMyFontInterface {
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    private: highScores: HighScores = NullHighScoresSingletonFactory.getInstance()!;
+    private: HighScores highScores = NullHighScoresSingletonFactory::getInstance();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: charHeight: int32_t= 0;
+    private: int32_t charHeight= 0;
 
-public constructor (){
-
-            super();
-        }
+public: HighScoresPaintable(){
+}
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.charHeight= font.getHeight();
+this->charHeight= font.getHeight();
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject eventObject){
 
-    colorChangeEvent: ColorChangeEvent = eventObject as ColorChangeEvent;;
+    ColorChangeEvent colorChangeEvent = eventObject as ColorChangeEvent;;
     
-this.basicColor= colorChangeEvent!.getBasicColorP();
+this->basicColor= colorChangeEvent.getBasicColorP();
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
-    width: int32_t = this.displayInfoSingleton!.getLastWidth()!;;
+    int32_t width = this->displayInfoSingleton.getLastWidth();;
     
 
-    height: int32_t = this.displayInfoSingleton!.getLastHeight()!;;
+    int32_t height = this->displayInfoSingleton.getLastHeight();;
     
-graphics.setColor(this.getBasicColorP()!.intValue());
-    
-
-    heading: string = this.highScores!.getHeading()!;;
+graphics.setColor(this->getBasicColorP().intValue());
     
 
-    topScoresWidth: int32_t = (graphics.getFont()!.stringWidth(heading)>>1);;
+    std::string heading = this->highScores.getHeading();;
     
 
-    charHeight: int32_t = this.charHeight;;
-    
-graphics.drawString(heading, (width>>1) -topScoresWidth, charHeight, this.anchor);
-    
-graphics.drawString(this.highScores!.getColumnOneHeading(), 10, charHeight *3, this.anchor);
+    int32_t topScoresWidth = (graphics.getFont().stringWidth(heading)>>1);;
     
 
-    columnTwoHeading: string = this.highScores!.getColumnTwoHeading()!;;
+    int32_t charHeight = this->charHeight;;
+    
+graphics.drawString(heading, (width>>1) -topScoresWidth, charHeight, this->anchor);
+    
+graphics.drawString(this->highScores.getColumnOneHeading(), 10, charHeight *3, this->anchor);
     
 
-    columnTwoHeadingWidth: int32_t = graphics.getFont()!.stringWidth(columnTwoHeading)!;;
-    
-graphics.drawString(columnTwoHeading, width -10 -columnTwoHeadingWidth, charHeight *3, this.anchor);
+    std::string columnTwoHeading = this->highScores.getColumnTwoHeading();;
     
 
-    index: int32_t = 4;;
+    int32_t columnTwoHeadingWidth = graphics.getFont().stringWidth(columnTwoHeading);;
+    
+graphics.drawString(columnTwoHeading, width -10 -columnTwoHeadingWidth, charHeight *3, this->anchor);
     
 
-    largestSecondColumnWidth: int32_t = columnTwoHeadingWidth;;
+    int32_t index = 4;;
     
 
-    list: BasicArrayList = this.highScores!.getList()!;;
+    int32_t largestSecondColumnWidth = columnTwoHeadingWidth;;
     
 
-    size: int32_t = list.size()!;;
+    BasicArrayList list = this->highScores.getList();;
     
 
-    vectorIndex: int32_t = 0;;
+    int32_t size = list.size();;
     
 
-    highScore: HighScore;;
+    int32_t vectorIndex = 0;;
+    
+
+    HighScore highScore;;
     
 
         while(vectorIndex < size && charHeight *index < height -(charHeight *2))
@@ -188,7 +185,7 @@ graphics.drawString(columnTwoHeading, width -10 -columnTwoHeadingWidth, charHeig
 highScore= list.objectArray[vectorIndex]! as HighScore;
     
 
-    nextScoreWidth: int32_t = graphics.getFont()!.stringWidth(highScore!.getScoreString())!;;
+    int32_t nextScoreWidth = graphics.getFont().stringWidth(highScore.getScoreString());;
     
 
                         if(nextScoreWidth > largestSecondColumnWidth)
@@ -210,9 +207,9 @@ vectorIndex= 0;
         {
 highScore= list.objectArray[vectorIndex]! as HighScore;
     
-graphics.drawString(highScore!.getName(), 10, charHeight *index, this.anchor);
+graphics.drawString(highScore.getName(), 10, charHeight *index, this->anchor);
     
-graphics.drawString(highScore!.getScoreString(), width -10 -largestSecondColumnWidth, charHeight *index, this.anchor);
+graphics.drawString(highScore.getScoreString(), width -10 -largestSecondColumnWidth, charHeight *index, this->anchor);
     
 index++;
     
@@ -223,24 +220,24 @@ vectorIndex++;
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
 }
 
 
-    public BasicColor getBasicColorP(){
+    public: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 
 
-    public setHighScores(HighScores highScores){
-this.highScores= highScores;
+    public: void setHighScores(HighScores highScores){
+this->highScores= highScores;
     
 }
 

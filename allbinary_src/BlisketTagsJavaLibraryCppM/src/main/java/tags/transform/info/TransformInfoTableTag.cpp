@@ -44,12 +44,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInfoTableTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new TransformInfoHelperFactory());
+public: TransformInfoTableTag(){
+this->setTagHelperFactory(TransformInfoHelperFactory());
     
 }
 

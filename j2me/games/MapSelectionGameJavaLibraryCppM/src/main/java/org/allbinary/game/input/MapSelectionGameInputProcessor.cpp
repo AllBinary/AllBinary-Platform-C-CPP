@@ -97,60 +97,59 @@
 #include "PlayerGameInput.h"
 #include "GameInputProcessorComposite.h"
 
-class MapSelectionGameInputProcessor: public Processor: public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
-        
+class MapSelectionGameInputProcessor: public Processor, public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-    private: const raceTrackGeographicMapInterfaceFactoryInterface: MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface;
+    private: MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface;
 
-    private: const preGameSelectorPaintable: PreGameSelectorPaintable;
+    private: PreGameSelectorPaintable preGameSelectorPaintable;
 
-    private: const inputTimeHelper: TimeDelayHelper = new TimeDelayHelper(650);
+    private: const TimeDelayHelper inputTimeHelper = TimeDelayHelper(650);
 
-    private: const playerGameInput: PlayerGameInput;
+    private: PlayerGameInput playerGameInput;
 
-    private: const lockedIndex: int32_t;
+    private: int32_t lockedIndex;
 
-    private: const abRunnable: ABRunnable = new class extends ABRunnable
+    private: const ABRunnable abRunnable = class extends ABRunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
         try {
-            this.setRunning(true);
+            this->setRunning(true);
     
-SecondaryPlayerQueueFactory.getInstance()!.add(SelectSound.getInstance());
-    
-
-    track: int32_t = preGameSelectorPaintable!.getPreGameSelectionForm()!.getSelectedIndex() +1;;
+SecondaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
     
 
-    wave: int32_t = raceTrackGeographicMapInterfaceFactoryInterface!.getFirstWaveWithTrack(track)!;;
+    int32_t track = preGameSelectorPaintable.getPreGameSelectionForm().getSelectedIndex() +1;;
     
-gameCanvas!.getLayerManager()!.getGameInfo()!.setCurrentLevel(wave);
+
+    int32_t wave = raceTrackGeographicMapInterfaceFactoryInterface.getFirstWaveWithTrack(track);;
     
-gameCanvas!.buildGameInit(false);
+gameCanvas.getLayerManager().getGameInfo().setCurrentLevel(wave);
     
-GameKeyEventHandler.getInstance()!.removeListener(getPlayerGameInput());
+gameCanvas.buildGameInit(false);
     
-this.setRunning(false);
+GameKeyEventHandler::getInstance().removeListener(getPlayerGameInput());
+    
+this->setRunning(false);
     
 
                 //: 
 } catch(e) 
             {
-this.setRunning(false);
+this->setRunning(false);
     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -159,60 +158,58 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
                                 }
                             ;
 
-public constructor (AllBinaryGameCanvas gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable mapSelectorPaintable, int32_t lockedIndex){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: MapSelectionGameInputProcessor(AllBinaryGameCanvas gameCanvas, MultiLevelRaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface, PreGameSelectorPaintable mapSelectorPaintable, int32_t lockedIndex){
+this->gameCanvas= gameCanvas;
     
-this.raceTrackGeographicMapInterfaceFactoryInterface= raceTrackGeographicMapInterfaceFactoryInterface;
+this->raceTrackGeographicMapInterfaceFactoryInterface= raceTrackGeographicMapInterfaceFactoryInterface;
     
-this.preGameSelectorPaintable= mapSelectorPaintable;
+this->preGameSelectorPaintable= mapSelectorPaintable;
     
-this.playerGameInput= new GameInputProcessorComposite("Map Selection", this);
+this->playerGameInput= GameInputProcessorComposite("Map Selection", this);
     
-this.lockedIndex= lockedIndex;
+this->lockedIndex= lockedIndex;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.getPlayerGameInput()!.update();
+    public: void process(){
+this->getPlayerGameInput().update();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onInput(BasicArrayList list){
+    public: void onInput(BasicArrayList list){
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    anyType: any = list.get(index)!;;
+    Object* anyType = list.get(index);;
     
 
-    key: int32_t = GameKeyEventUtil.getKey(anyType)!;;
+    int32_t key = GameKeyEventUtil::getKey(anyType);;
     
 
-                        if(key == Canvas.LEFT || key == Canvas.RIGHT || key == Canvas.UP || key == Canvas.DOWN)
+                        if(key == Canvas::LEFT || key == Canvas::RIGHT || key == Canvas::UP || key == Canvas::DOWN)
                         
                                     {
                                     
-                        if(this.inputTimeHelper!.isTimeTNT())
+                        if(this->inputTimeHelper.isTimeTNT())
                         
                                     {
-                                    SecondaryPlayerQueueFactory.getInstance()!.add(SelectSound.getInstance());
+                                    SecondaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
     
-this.preGameSelectorPaintable!.getPreGameSelectionForm()!.processInputKey(key);
+this->preGameSelectorPaintable.getPreGameSelectionForm().processInputKey(key);
     
 break;
 
@@ -224,23 +221,23 @@ break;
                                     }
                                 
                              else 
-                        if(key == Canvas.KEY_NUM0)
+                        if(key == Canvas::KEY_NUM0)
                         
                                     {
                                     
-    selectedIndex: int32_t = this.preGameSelectorPaintable!.getPreGameSelectionForm()!.getSelectedIndex()!;;
+    int32_t selectedIndex = this->preGameSelectorPaintable.getPreGameSelectionForm().getSelectedIndex();;
     
 
-                        if(selectedIndex < this.lockedIndex || !LockedUtil.getInstance()!.isLocked())
+                        if(selectedIndex < this->lockedIndex || !LockedUtil::getInstance().isLocked())
                         
                                     {
                                     
-                        if(!abRunnable!.isRunning())
+                        if(!abRunnable.isRunning())
                         
                                     {
-                                    abRunnable!.setRunning(true);
+                                    abRunnable.setRunning(true);
     
-ThreadObjectUtil.getInstance()!.processThread(abRunnable);
+ThreadObjectUtil::getInstance().processThread(abRunnable);
     
 
                                     }
@@ -252,7 +249,7 @@ break;
                                     }
                                 
                         else {
-                            LockedFeatureNotificationUtil.getInstance()!.fire();
+                            LockedFeatureNotificationUtil::getInstance().fire();
     
 
                         }
@@ -269,30 +266,30 @@ list.clear();
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager layerManager){
 }
 
 
-    public initInputProcessors(){
+    public: void initInputProcessors(){
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.toString();;
+                        return this->toString();;
     
 }
 
 
-    public PlayerGameInput getPlayerGameInput(){
+    public: PlayerGameInput getPlayerGameInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerGameInput;
+                        return this->playerGameInput;
     
 }
 

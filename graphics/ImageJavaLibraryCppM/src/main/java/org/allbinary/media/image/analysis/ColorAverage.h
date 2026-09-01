@@ -51,29 +51,28 @@
 class ColorAverage
             : public Object
          {
-        
 
-    private: avgRed: float= 0.0;
+    private: float avgRed= 0.0;
 
-    private: avgGreen: float= 0.0;
+    private: float avgGreen= 0.0;
 
-    private: avgBlue: float= 0.0;
+    private: float avgBlue= 0.0;
 
-public constructor ();
+public: ColorAverage();
 
-    public string toString();
+    public: std::string toString();
 
-    public float getAvgRed();
+    public: float getAvgRed();
 
-    public setAvgRed(float avgRed);
+    public: void setAvgRed(float avgRed);
 
-    public float getAvgGreen();
+    public: float getAvgGreen();
 
-    public setAvgGreen(float avgGreen);
+    public: void setAvgGreen(float avgGreen);
 
-    public float getAvgBlue();
+    public: float getAvgBlue();
 
-    public setAvgBlue(float avgBlue);
+    public: void setAvgBlue(float avgBlue);
 
 };
 

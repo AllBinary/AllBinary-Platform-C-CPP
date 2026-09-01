@@ -45,9 +45,8 @@
 #include "HtmlInputData.h"
 
 class HtmlTextInput: public HtmlLengthInput {
-        
 
-public constructor (string before, string name, string value, string after);
+public: HtmlTextInput(std::string before, std::string name, std::string value, std::string after);
 
 };
 

@@ -64,17 +64,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HttpStoreComponentView: public HttpComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: HttpStoreComponentView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

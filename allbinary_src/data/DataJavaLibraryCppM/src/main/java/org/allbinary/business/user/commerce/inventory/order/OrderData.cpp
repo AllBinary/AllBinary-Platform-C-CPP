@@ -42,21 +42,20 @@
 class OrderData
             : public Object
          {
-        
 
-    public static const ORDERS: string = "ORDERS";
+    public: static const std::string ORDERS = "ORDERS";
 
-    public static const ORDER: string = "ORDER";
+    public: static const std::string ORDER = "ORDER";
 
-    public static const ID: string = "ORDER_ID";
+    public: static const std::string ID = "ORDER_ID";
 
-    public static const CUSTOMERCOMMENT: string = "ORDER_CUSTOMER_COMMENT";
+    public: static const std::string CUSTOMERCOMMENT = "ORDER_CUSTOMER_COMMENT";
 
-    public static const CUSTOMERCANCELCOMMENT: string = "ORDER_CUSTOMER_CANCEL_COMMENT";
+    public: static const std::string CUSTOMERCANCELCOMMENT = "ORDER_CUSTOMER_CANCEL_COMMENT";
 
-    public static const STORECOMMENT: string = "ORDER_STORE_COMMENT";
+    public: static const std::string STORECOMMENT = "ORDER_STORE_COMMENT";
 
-    public static const STORECANCELCOMMENT: string = "ORDER_STORE_CANCEL_COMMENT";
+    public: static const std::string STORECANCELCOMMENT = "ORDER_STORE_CANCEL_COMMENT";
 
 };
 

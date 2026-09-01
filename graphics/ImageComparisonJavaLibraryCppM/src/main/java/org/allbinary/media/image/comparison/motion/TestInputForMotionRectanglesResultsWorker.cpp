@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -89,169 +91,165 @@
 class TestInputForMotionRectanglesResultsWorker
             : public Object
         : public MotionRectanglesResultsListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: index: int64_t= 0;
+    private: int64_t index= 0;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: motionRectanglesVector: Vector;
+    private: Vector motionRectanglesVector;
 
-public constructor (){
-
-            super();
-        this.motionRectanglesVector= new Vector();
+public: TestInputForMotionRectanglesResultsWorker(){
+this->motionRectanglesVector= Vector();
     
 }
 
 
-    public Vector getMotionRectanglesVector(){
+    public: Vector getMotionRectanglesVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionRectanglesVector;
+                        return this->motionRectanglesVector;
     
 }
 
 
-    public onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent){
-this.getMotionRectanglesVector()!.add(motionRectanglesImageComparisonResultsEvent!.getMotionRectangles());
+    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent){
+this->getMotionRectanglesVector().add(motionRectanglesImageComparisonResultsEvent.getMotionRectangles());
     
-this.run();
+this->run();
     
 }
 
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject){
-this.onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject as MotionRectanglesResultsEvent);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
+this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject as MotionRectanglesResultsEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
-    
-timeHelper!.setStartTimeTNT();
+this->setRunning(true);
     
 
-    motionRectangles: MotionRectangles = this.getMotionRectanglesVector()!.get(0) as MotionRectangles;;
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+timeHelper.setStartTimeTNT();
     
 
-    motionRectangleVector: Vector = motionRectangles!.getVector()!;;
+    MotionRectangles motionRectangles = this->getMotionRectanglesVector().get(0) as MotionRectangles;;
     
 
-                        if(motionRectangleVector!.length > 0)
+    Vector motionRectangleVector = motionRectangles.getVector();;
+    
+
+                        if(motionRectangleVector.length > 0)
                         
                                     {
                                     
-    rectangle: Rectangle = motionRectangleVector!.get(0) as Rectangle;;
+    Rectangle rectangle = motionRectangleVector.get(0) as Rectangle;;
     
 
-    robotHashtable: Hashtable<any, any> = InputRobotFactory.getInstance()!.get()!;;
+    Hashtable<any, any> robotHashtable = InputRobotFactory::getInstance().get();;
     
 
-    inputTypeNameArray: std::vector<any> = robotHashtable!.keys().()!;;
+    std::vector<Object*> inputTypeNameArray = robotHashtable.keys().();;
     
 
-    size: int32_t = inputTypeNameArray!.length
-                ;;
+    int32_t size = inputTypeNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    inputTypeNameString: string = inputTypeNameArray[index]! as string;;
+    std::string inputTypeNameString = inputTypeNameArray[index]! as string;;
     
 
-    inputRobotInterface: InputRobotInterface = robotHashtable!.get(inputTypeNameString) as InputRobotInterface;;
+    InputRobotInterface inputRobotInterface = robotHashtable.get(inputTypeNameString) as InputRobotInterface;;
     
-inputRobotInterface!.mouseMoveToTarget(rectangle);
+inputRobotInterface.mouseMoveToTarget(rectangle);
     
 
-                        if(inputRobotInterface!.getName()!.compareTo(TempInputRobotNames.DX_NAME) == 0)
+                        if(inputRobotInterface.getName().compareTo(TempInputRobotNames::DX_NAME) == 0)
                         
                                     {
-                                    inputRobotInterface!.mousePress(InputEvent.BUTTON1_MASK);
+                                    inputRobotInterface.mousePress(InputEvent::BUTTON1_MASK);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.mouseRelease(InputEvent.BUTTON1_MASK);
+inputRobotInterface.mouseRelease(InputEvent::BUTTON1_MASK);
     
-inputRobotInterface!.mousePress(InputEvent.BUTTON2_MASK);
+inputRobotInterface.mousePress(InputEvent::BUTTON2_MASK);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.mouseRelease(InputEvent.BUTTON2_MASK);
+inputRobotInterface.mouseRelease(InputEvent::BUTTON2_MASK);
     
-inputRobotInterface!.mousePress(InputEvent.BUTTON3_MASK);
+inputRobotInterface.mousePress(InputEvent::BUTTON3_MASK);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.mouseRelease(InputEvent.BUTTON3_MASK);
+inputRobotInterface.mouseRelease(InputEvent::BUTTON3_MASK);
     
-inputRobotInterface!.keyPress(KeyEvent.VK_1);
+inputRobotInterface.keyPress(KeyEvent::VK_1);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.keyRelease(KeyEvent.VK_1);
+inputRobotInterface.keyRelease(KeyEvent::VK_1);
     
-inputRobotInterface!.keyPress(KeyEvent.VK_2);
+inputRobotInterface.keyPress(KeyEvent::VK_2);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.keyRelease(KeyEvent.VK_2);
+inputRobotInterface.keyRelease(KeyEvent::VK_2);
     
-inputRobotInterface!.keyPress(KeyEvent.VK_3);
+inputRobotInterface.keyPress(KeyEvent::VK_3);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.keyRelease(KeyEvent.VK_3);
+inputRobotInterface.keyRelease(KeyEvent::VK_3);
     
-inputRobotInterface!.keyPress(KeyEvent.VK_4);
+inputRobotInterface.keyPress(KeyEvent::VK_4);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.keyRelease(KeyEvent.VK_4);
+inputRobotInterface.keyRelease(KeyEvent::VK_4);
     
-inputRobotInterface!.keyPress(KeyEvent.VK_F1);
+inputRobotInterface.keyPress(KeyEvent::VK_F1);
     
-Thread.sleep(300);
+Thread::sleep(300);
     
-inputRobotInterface!.keyRelease(KeyEvent.VK_F1);
+inputRobotInterface.keyRelease(KeyEvent::VK_F1);
     
 
                                     }
@@ -261,19 +259,19 @@ inputRobotInterface!.keyRelease(KeyEvent.VK_F1);
 
                                     }
                                 
-this.index++;
+this->index++;
     
-this.getMotionRectanglesVector()!.remove(motionRectangles);
+this->getMotionRectanglesVector().remove(motionRectangles);
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

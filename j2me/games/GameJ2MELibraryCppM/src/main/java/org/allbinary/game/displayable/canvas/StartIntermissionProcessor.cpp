@@ -62,34 +62,31 @@
         #include "AllBinaryGameCanvas.h"
 
 class StartIntermissionProcessor: public Processor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-    private: const WAIT: int64_t = 5000;
+    private: const int64_t WAIT = 5000;
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: StartIntermissionProcessor(AllBinaryGameCanvas gameCanvas){
+this->gameCanvas= gameCanvas;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    public: void process(){
 
-                        if(this.gameCanvas!.getStartIntermissionInterface()!.getTimeDelayHelper()!.isElapsedTNT(this.WAIT))
+                        if(this->gameCanvas.getStartIntermissionInterface().getTimeDelayHelper().isElapsedTNT(this->WAIT))
                         
                                     {
-                                    this.logUtil!.putF("Intermission End", this, this.commonStrings!.PROCESS);
+                                    this->logUtil.putF("Intermission End", this, this->commonStrings.PROCESS);
     
-this.gameCanvas!.getStartIntermissionInterface()!.setEnabled(false);
+this->gameCanvas.getStartIntermissionInterface().setEnabled(false);
     
 
                                     }

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -98,11 +100,10 @@
 #include "NullRecordComparator.h"
 
 class KeyValuePersistance: public BasicPersitance {
-        
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-protected constructor (string recordId){
+protected: KeyValuePersistance(std::string recordId){
             super(recordId);
                     
 
@@ -113,93 +114,93 @@ protected constructor (string recordId){
 
                 //@Throws(Exception.constructor)
             
-    public loadAll(AbeClientInformationInterface abeClientInformation){
-this.loadAllSize(abeClientInformation, 1);
+    public: void loadAll(AbeClientInformationInterface abeClientInformation){
+this->loadAllSize(abeClientInformation, 1);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public loadAllSize(AbeClientInformationInterface abeClientInformation, int32_t size){
+    public: void loadAllSize(AbeClientInformationInterface abeClientInformation, int32_t size){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            recordStore= RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true);
+            recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    recordEnum: RecordEnumeration = recordStore!.enumerateRecords(NullRecordFilter.NULL_RECORD_FILTER, NullRecordComparator.NULL_RECORD_COMPARATOR, true)!;;
+    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    hashtable: Hashtable<string, string>;;
+    Hashtable<string, string> hashtable;;
     
 
-    name: string;;
+    std::string name;;
     
 
-    value: string;;
+    std::string value;;
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    recordAsBytes: std::vector<int8_t>;;
+    std::vector<int8_t> recordAsBytes;;
     
 
-    byteArrayInputStream: ByteArrayInputStream;;
+    ByteArrayInputStream byteArrayInputStream;;
     
 
-    inputStream: DataInputStream;;
+    DataInputStream inputStream;;
     
 
-        while(recordEnum!.hasNextElement())
+        while(recordEnum.hasNextElement())
         {
 
-    id: int32_t = recordEnum!.nextRecordId()!;;
+    int32_t id = recordEnum.nextRecordId();;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-this.logUtil!.putF(stringBuffer!.append(this.persistanceStrings!.LOADING_ID)!.appendint(id)!.toString(), this, this.persistanceStrings!.LOAD_ALL);
+this->logUtil.putF(stringBuffer.append(this->persistanceStrings.LOADING_ID).appendint(id).toString(), this, this->persistanceStrings.LOAD_ALL);
     
-recordAsBytes= this.tsUtil!.getRecord(recordStore, id);
+recordAsBytes= this->tsUtil.getRecord(recordStore, id);
     
 
                         if(recordAsBytes != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
+                                    byteArrayInputStream= ByteArrayInputStream(recordAsBytes);
     
-inputStream= new DataInputStream(byteArrayInputStream);
+inputStream= DataInputStream(byteArrayInputStream);
     
-hashtable= new Hashtable<string, string>();
+hashtable= Hashtable<string, string>();
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-name= inputStream!.readUTF();
+name= inputStream.readUTF();
     
-inputStream!.readUTF();
+inputStream.readUTF();
     
-value= inputStream!.readUTF();
+value= inputStream.readUTF();
     
 hashtable.put(name, value);
     
 }
 
-this.valueList!.add(hashtable);
+this->valueList.add(hashtable);
     
-this.idList!.add(smallIntegerSingletonFactory!.getAt(id));
+this->idList.add(smallIntegerSingletonFactory.getAt(id));
     
 
                                     }
@@ -220,13 +221,13 @@ this.idList!.add(smallIntegerSingletonFactory!.getAt(id));
          finally {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put(this.persistanceStrings!.CLOSING_RECORDSTORE, this, this.persistanceStrings!.LOAD_ALL);
+                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->persistanceStrings.LOAD_ALL);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -239,64 +240,63 @@ recordStore!.closeRecordStore();
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable){
+    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this.logUtil!.putF(new StringMaker().append(this.persistanceStrings!.SAVING)!.append(StringUtil.getInstance()!.toString(hashtable))!.toString(), this, this.commonStrings!.SAVE);
+            this->logUtil.putF(StringMaker().append(this->persistanceStrings.SAVING).append(StringUtil::getInstance().toString(hashtable)).toString(), this, this->commonStrings.SAVE);
     
-recordStore= RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true);
-    
-
-    byteArrayOutputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    outputStream: DataOutputStream = new DataOutputStream(byteArrayOutputStream);;
+    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
     
 
-    value: string;;
+    DataOutputStream outputStream = DataOutputStream(byteArrayOutputStream);;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    std::string value;;
     
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(hashtable)!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    anyType: any;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
     
 
-    size: int32_t = objectArray!.length
-                ;;
+    Object* anyType;;
+    
+
+    int32_t size = objectArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-outputStream!.writeUTF(objectArray[index]! as string);
+outputStream.writeUTF(objectArray[index]! as string);
     
-outputStream!.writeUTF(commonSeps!.EQUALS);
+outputStream.writeUTF(commonSeps.EQUALS);
     
 anyType= objectArray[index]!;
     
 value= hashtable.get(anyType) as string;
     
-outputStream!.writeUTF(value);
+outputStream.writeUTF(value);
     
 }
 
 
-    tsUtil: TsUtil = TsUtil.getInstance()!;;
+    TsUtil tsUtil = TsUtil::getInstance();;
     
 
-    savedGameBytes: std::vector<int8_t> = tsUtil!.getByteArray(byteArrayOutputStream!.toString())!;;
+    std::vector<int8_t> savedGameBytes = tsUtil.getByteArray(byteArrayOutputStream.toString());;
     
-recordStore!.addRecord(savedGameBytes, 0, savedGameBytes!.length);
+recordStore.addRecord(savedGameBytes, 0, savedGameBytes.size());
     
 
                 //: 
@@ -312,13 +312,13 @@ recordStore!.addRecord(savedGameBytes, 0, savedGameBytes!.length);
          finally {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put(this.persistanceStrings!.CLOSING_RECORDSTORE, this, this.commonStrings!.SAVE);
+                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->commonStrings.SAVE);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -329,9 +329,9 @@ recordStore!.closeRecordStore();
 }
 
 
-    public Hashtable<any, any> get(int32_t index){
+    public: Hashtable<any, any> get(int32_t index){
 
-    hashtable: Hashtable<any, any> = this.valueList!.objectArray[index]! as Hashtable<any, any>;;
+    Hashtable<any, any> hashtable = this->valueList.objectArray[index]! as Hashtable<any, any>;;
     
 
 

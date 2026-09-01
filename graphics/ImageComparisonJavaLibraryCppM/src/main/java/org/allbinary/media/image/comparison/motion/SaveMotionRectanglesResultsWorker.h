@@ -69,31 +69,30 @@
 class SaveMotionRectanglesResultsWorker
             : public Object
         : public MotionRectanglesResultsListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: motionRectanglesVector: Vector;
+    private: Vector motionRectanglesVector;
 
-public constructor ();
+public: SaveMotionRectanglesResultsWorker();
 
-    public Vector getMotionRectanglesVector();
+    public: Vector getMotionRectanglesVector();
 
-    public onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesResultsEvent);
+    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesResultsEvent);
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public run();
+    public: void run();
 
 };
 

@@ -60,17 +60,16 @@
 class PlatformFormInputMappingFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PlatformFormInputMappingFactory getInstance();
+    public: static PlatformFormInputMappingFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: inputToGameKeyMapping: InputToGameKeyMapping = InputToGameKeyMapping.getNullInstance()!;
+    private: InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
 
-    public InputToGameKeyMapping getOrCreate();
+    public: InputToGameKeyMapping getOrCreate();
 
 };
 

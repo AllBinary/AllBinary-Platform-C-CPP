@@ -96,39 +96,32 @@
 class CategoryProperties
             : public Object
         : public CategoryPropertiesInterface {
-        
 
-    private: static const MAXDEPTH: int32_t = 100;
+    private: static const int32_t MAXDEPTH = 100;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: category: string;
+    private: std::string category;
 
-public constructor (string name){
-
-            super();
-        this.category= name;
+public: CategoryProperties(std::string name){
+this->category= name;
     
 }
 
 
-public constructor (Node node){
-
-            super();
-        this.category= CategoryUtil.getNameFromNode(node);
+public: CategoryProperties(Node node){
+this->category= CategoryUtil::getNameFromNode(node);
     
 }
 
 
-public constructor (HashMap<any, any> categoryPropertiesHashMap){
-
-            super();
-        this.category= .toCharArray();
+public: CategoryProperties(HashMap<any, any> categoryPropertiesHashMap){
+this->category= .toCharArray();
     
 }
 
 
-    public bool isRealRoot(){
+    public: bool isRealRoot(){
 
 
 
@@ -138,7 +131,7 @@ public constructor (HashMap<any, any> categoryPropertiesHashMap){
 }
 
 
-    public bool isRoot(){
+    public: bool isRoot(){
 
 
 
@@ -148,55 +141,55 @@ public constructor (HashMap<any, any> categoryPropertiesHashMap){
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getValue();
+                        return this->getValue();
     
 }
 
 
-    public string getValue(){
+    public: std::string getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.category;
+                        return this->category;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
 
-    abPathData: AbPathData = AbPathData.getInstance()!;;
+    AbPathData abPathData = AbPathData::getInstance();;
     
 
-    pathStringBuffer: StringMaker = new StringMaker();;
+    StringMaker pathStringBuffer = StringMaker();;
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    nextParentCategoryInterface: CategoryInterface = categoryHierarchyInterface!.getParent()!;;
+    CategoryInterface nextParentCategoryInterface = categoryHierarchyInterface.getParent();;
     
 
-                        if(this != nextParentCategoryInterface!.getProperties())
+                        if(this != nextParentCategoryInterface.getProperties())
                         
                                     {
                                     
-    depthIndex: int32_t = 0;;
+    int32_t depthIndex = 0;;
     
 
         while(nextParentCategoryInterface != 
-                                    null
+                                    nullptr
                                 )
         {
 
-                        if(nextParentCategoryInterface!.getProperties()!.isRealRoot())
+                        if(nextParentCategoryInterface.getProperties().isRealRoot())
                         
                                     {
                                     break;
@@ -206,24 +199,24 @@ public constructor (HashMap<any, any> categoryPropertiesHashMap){
                                     }
                                 
 
-                        if(nextParentCategoryInterface!.getProperties()!.isRoot())
+                        if(nextParentCategoryInterface.getProperties().isRoot())
                         
                                     {
-                                    list.addAt(0, nextParentCategoryInterface!.getPath()!.toString());
+                                    list.addAt(0, nextParentCategoryInterface.getPath().toString());
     
 
                                     }
                                 
                         else {
-                            pathStringBuffer!.delete(0, pathStringBuffer!.length());
+                            pathStringBuffer.delete(0, pathStringBuffer.length());
     
-list.addAt(0, pathStringBuffer!.append(abPathData!.SEPARATOR)!.append(nextParentCategoryInterface!.getProperties()!.getValue())!.toString());
+list.addAt(0, pathStringBuffer.append(abPathData.SEPARATOR).append(nextParentCategoryInterface.getProperties().getValue()).toString());
     
 
                         }
                             
 
-                        if(nextParentCategoryInterface == nextParentCategoryInterface!.getHierarchy()!.getParent())
+                        if(nextParentCategoryInterface == nextParentCategoryInterface.getHierarchy().getParent())
                         
                                     {
                                     break;
@@ -232,18 +225,18 @@ list.addAt(0, pathStringBuffer!.append(abPathData!.SEPARATOR)!.append(nextParent
 
                                     }
                                 
-nextParentCategoryInterface= nextParentCategoryInterface!.getHierarchy()!.getParent();
+nextParentCategoryInterface= nextParentCategoryInterface.getHierarchy().getParent();
     
 depthIndex++;
     
 
-                        if(depthIndex > CategoryProperties.MAXDEPTH)
+                        if(depthIndex > CategoryProperties::MAXDEPTH)
                         
                                     {
                                     
 
 
-                            throw new Exception("Probably Major Error");
+                            throw Exception("Probably Major Error");
                     
 
                                     }
@@ -253,31 +246,31 @@ depthIndex++;
 
                                     }
                                 
-pathStringBuffer!.delete(0, pathStringBuffer!.length());
+pathStringBuffer.delete(0, pathStringBuffer.length());
     
-pathStringBuffer!.append(abPathData!.SEPARATOR)!.append(this.getValue());
+pathStringBuffer.append(abPathData.SEPARATOR).append(this->getValue());
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-pathStringBuffer!.append(list.get(index) as string);
+pathStringBuffer.append(list.get(index) as string);
     
 }
 
-pathStringBuffer!.append(abPathData!.SEPARATOR);
+pathStringBuffer.append(abPathData.SEPARATOR);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF("path = " +pathStringBuffer!.toString(), this, "getPath");
+                                    this->logUtil.putF("path = " +pathStringBuffer.toString(), this, "getPath");
     
 
                                     }
@@ -286,47 +279,47 @@ pathStringBuffer!.append(abPathData!.SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(pathStringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);
+                        return AbPath(pathStringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
-    public string getFileName(){
+    public: std::string getFileName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getValue() +AbPathData.getInstance()!.EXTENSION_SEP +CategoryData.getInstance()!.UNCRYPTED_EXTENSION;
+                        return this->getValue() +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getWebAppPath(){
+    public: AbPath getWebAppPath(){
 
 
 
-                            throw new Exception("Not Root");
+                            throw Exception("Not Root");
                     
 }
 
 
-    public setValue(string value){
-this.category= value;
+    public: void setValue(std::string value){
+this->category= value;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-    returnBoolean: Boolean = Boolean.FALSE;;
+    Boolean returnBoolean = Boolean::FALSE;;
     
 
-                        if(StringValidationUtil.getInstance()!.isValidRequired(this.category, 1, AbSqlData.MAXSTRING))
+                        if(StringValidationUtil::getInstance().isValidRequired(this->category, 1, AbSqlData::MAXSTRING))
                         
                                     {
-                                    returnBoolean= Boolean.TRUE;
+                                    returnBoolean= Boolean::TRUE;
     
 
                                     }
@@ -340,11 +333,11 @@ this.category= value;
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    categoryHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> categoryHashMap = HashMap<any, any>();;
     
-categoryHashMap!.put(CategoryData.getInstance()!.NAME, this.category);
+categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
     
 
 
@@ -355,11 +348,11 @@ categoryHashMap!.put(CategoryData.getInstance()!.NAME, this.category);
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    categoryVector: Vector = new Vector();;
+    Vector categoryVector = Vector();;
     
-categoryVector!.add(this.category);
+categoryVector.add(this->category);
     
 
 
@@ -372,7 +365,7 @@ categoryVector!.add(this.category);
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -384,7 +377,7 @@ categoryVector!.add(this.category);
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -396,7 +389,7 @@ categoryVector!.add(this.category);
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 

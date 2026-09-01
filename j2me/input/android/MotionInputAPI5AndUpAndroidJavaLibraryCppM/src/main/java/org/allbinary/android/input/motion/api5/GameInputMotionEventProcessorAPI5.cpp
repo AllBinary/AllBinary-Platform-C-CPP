@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
@@ -68,16 +70,15 @@
         #include "GameInputMotionInfoAPI5.h"
 
 class GameInputMotionEventProcessorAPI5: public BaseGameInputMotionEventProcessor {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameInputMotionEventProcessorAPI5 getInstance(){
+    public: static GameInputMotionEventProcessorAPI5 getInstance(){
 
-                        if(GameInputMotionEventProcessorAPI5.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(GameInputMotionEventProcessorAPI5::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    GameInputMotionEventProcessorAPI5.instance= new GameInputMotionEventProcessorAPI5();
+                                    GameInputMotionEventProcessorAPI5::instance= GameInputMotionEventProcessorAPI5();
     
 
                                     }
@@ -86,52 +87,50 @@ class GameInputMotionEventProcessorAPI5: public BaseGameInputMotionEventProcesso
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionEventProcessorAPI5.instance as GameInputMotionEventProcessorAPI5;
+                        return GameInputMotionEventProcessorAPI5::instance() as GameInputMotionEventProcessorAPI5;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const motionRecognizerArray: std::vector<MotionRecognizer>;
+    private: std::vector<MotionRecognizer> motionRecognizerArray;
 
-    private: const TOTAL_MINUS_ONE: int32_t;
+    private: int32_t TOTAL_MINUS_ONE;
 
-private constructor (){
+private: GameInputMotionEventProcessorAPI5(){
 
-            super();
-        
-    size: int32_t = GameInputMotionInfoAPI5.getInstance()!.MAX_POINTERS;;
+    int32_t size = GameInputMotionInfoAPI5::getInstance().MAX_POINTERS;;
     
-this.motionRecognizerArray= new Array(size);
+this->motionRecognizerArray= new Array(size);
     
-this.TOTAL_MINUS_ONE= size;
+this->TOTAL_MINUS_ONE= size;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.motionRecognizerArray[index]= new AllMotionRecognizer();
+this->motionRecognizerArray[index]= AllMotionRecognizer();
     
 }
 
 }
 
 
-    bool isValid(int32_t pointerId){
+    private: bool isValid(int32_t pointerId){
 
-                        if(pointerId > this.TOTAL_MINUS_ONE)
+                        if(pointerId > this->TOTAL_MINUS_ONE)
                         
                                     {
                                     
-    message: string = "Log that the pointer Ids are not what would be expected or Android has more than what I set my stuff to support pointerId: ";;
+    std::string message = "Log that the pointer Ids are not what would be expected or Android has more than what I set my stuff to support pointerId: ";;
     
-ForcedLogUtil.log(message +pointerId, this);
+ForcedLogUtil::log(message +pointerId, this);
     
 
 
@@ -155,39 +154,38 @@ ForcedLogUtil.log(message +pointerId, this);
 }
 
 
-    public process(MotionEvent motionEvent){
+    public: void process(MotionEvent motionEvent){
 
         try {
             
-    action: int32_t = motionEvent!.getAction()!;;
+    int32_t action = motionEvent.getAction();;
     
 
-    total: int32_t = this.motionRecognizerArray!.length
-                ;;
+    int32_t total = this->motionRecognizerArray.size();;
     
 
-                        if(total > motionEvent!.getPointerCount())
+                        if(total > motionEvent.getPointerCount())
                         
                                     {
-                                    total= motionEvent!.getPointerCount();
+                                    total= motionEvent.getPointerCount();
     
 
                                     }
                                 
                         else {
                             
-    message: string = "Log that Android has more pointers than I have expected so increase it motionEvent.getPointerCount(): ";;
+    std::string message = "Log that Android has more pointers than I have expected so increase it motionEvent.getPointerCount(): ";;
     
-ForcedLogUtil.log(message +motionEvent!.getPointerCount(), this);
+ForcedLogUtil::log(message +motionEvent.getPointerCount(), this);
     
 
                         }
                             
 
-    totalMinusOne: int32_t = total -1;;
+    int32_t totalMinusOne = total -1;;
     
 
-                        if(action == MotionEvent.ACTION_DOWN)
+                        if(action == MotionEvent::ACTION_DOWN)
                         
                                     {
                                     
@@ -195,25 +193,25 @@ ForcedLogUtil.log(message +motionEvent!.getPointerCount(), this);
 
 
                         for (
-    pointerIndex: int32_t = totalMinusOne;pointerIndex >= 0; pointerIndex--)
+    int32_t pointerIndex = totalMinusOne;pointerIndex >= 0; pointerIndex--)
         {
 
-    pointerId: int32_t = motionEvent!.getPointerId(pointerIndex)!;;
+    int32_t pointerId = motionEvent.getPointerId(pointerIndex);;
     
 
-                        if(this.isValid(pointerId))
+                        if(this->isValid(pointerId))
                         
                                     {
                                     
-    scalableListener: ScalableListener = this.displayInfo!.getScalableListener()!;;
+    ScalableListener scalableListener = this->displayInfo.getScalableListener();;
     
 
-    x: int32_t = static_cast<int32_t>(((motionEvent!.getX(pointerIndex) -this.displayInfo!.getLeft()) /scalableListener!.getRatio(this.displayInfo!.getRatio())));;
+    int32_t x = static_cast<int32_t>(((motionEvent.getX(pointerIndex) -this->displayInfo.getLeft()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
 
-    y: int32_t = static_cast<int32_t>(((motionEvent!.getY(pointerIndex) -this.displayInfo!.getTop()) /scalableListener!.getRatio(this.displayInfo!.getRatio())));;
+    int32_t y = static_cast<int32_t>(((motionEvent.getY(pointerIndex) -this->displayInfo.getTop()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
-this.motionRecognizerArray[pointerId]!.processStartMotionEvent(x, y, motionEvent!.getDeviceId(), 0);
+this->motionRecognizerArray[pointerId]!.processStartMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
@@ -224,7 +222,7 @@ this.motionRecognizerArray[pointerId]!.processStartMotionEvent(x, y, motionEvent
                                     }
                                 
                              else 
-                        if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL)
+                        if(action == MotionEvent::ACTION_UP || action == MotionEvent::ACTION_CANCEL)
                         
                                     {
                                     
@@ -232,25 +230,25 @@ this.motionRecognizerArray[pointerId]!.processStartMotionEvent(x, y, motionEvent
 
 
                         for (
-    pointerIndex: int32_t = totalMinusOne;pointerIndex >= 0; pointerIndex--)
+    int32_t pointerIndex = totalMinusOne;pointerIndex >= 0; pointerIndex--)
         {
 
-    pointerId: int32_t = motionEvent!.getPointerId(pointerIndex)!;;
+    int32_t pointerId = motionEvent.getPointerId(pointerIndex);;
     
 
-                        if(this.isValid(pointerId))
+                        if(this->isValid(pointerId))
                         
                                     {
                                     
-    scalableListener: ScalableListener = this.displayInfo!.getScalableListener()!;;
+    ScalableListener scalableListener = this->displayInfo.getScalableListener();;
     
 
-    x: int32_t = static_cast<int32_t>(((motionEvent!.getX(pointerIndex) -this.displayInfo!.getLeft()) /scalableListener!.getRatio(this.displayInfo!.getRatio())));;
+    int32_t x = static_cast<int32_t>(((motionEvent.getX(pointerIndex) -this->displayInfo.getLeft()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
 
-    y: int32_t = static_cast<int32_t>(((motionEvent!.getY(pointerIndex) -this.displayInfo!.getTop()) /scalableListener!.getRatio(this.displayInfo!.getRatio())));;
+    int32_t y = static_cast<int32_t>(((motionEvent.getY(pointerIndex) -this->displayInfo.getTop()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
-this.motionRecognizerArray[pointerId]!.processEndMotionEvent(x, y, motionEvent!.getDeviceId(), 0);
+this->motionRecognizerArray[pointerId]!.processEndMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
@@ -261,7 +259,7 @@ this.motionRecognizerArray[pointerId]!.processEndMotionEvent(x, y, motionEvent!.
                                     }
                                 
                              else 
-                        if(action == MotionEvent.ACTION_MOVE)
+                        if(action == MotionEvent::ACTION_MOVE)
                         
                                     {
                                     
@@ -269,25 +267,25 @@ this.motionRecognizerArray[pointerId]!.processEndMotionEvent(x, y, motionEvent!.
 
 
                         for (
-    pointerIndex: int32_t = totalMinusOne;pointerIndex >= 0; pointerIndex--)
+    int32_t pointerIndex = totalMinusOne;pointerIndex >= 0; pointerIndex--)
         {
 
-    pointerId: int32_t = motionEvent!.getPointerId(pointerIndex)!;;
+    int32_t pointerId = motionEvent.getPointerId(pointerIndex);;
     
 
-                        if(this.isValid(pointerId))
+                        if(this->isValid(pointerId))
                         
                                     {
                                     
-    scalableListener: ScalableListener = this.displayInfo!.getScalableListener()!;;
+    ScalableListener scalableListener = this->displayInfo.getScalableListener();;
     
 
-    x: int32_t = static_cast<int32_t>(((motionEvent!.getX(pointerIndex) -this.displayInfo!.getLeft()) /scalableListener!.getRatio(this.displayInfo!.getRatio())));;
+    int32_t x = static_cast<int32_t>(((motionEvent.getX(pointerIndex) -this->displayInfo.getLeft()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
 
-    y: int32_t = static_cast<int32_t>(((motionEvent!.getY(pointerIndex) -this.displayInfo!.getTop()) /scalableListener!.getRatio(this.displayInfo!.getRatio())));;
+    int32_t y = static_cast<int32_t>(((motionEvent.getY(pointerIndex) -this->displayInfo.getTop()) /scalableListener.getRatio(this->displayInfo.getRatio())));;
     
-this.motionRecognizerArray[pointerId]!.processDraggedMotionEvent(x, y, motionEvent!.getDeviceId(), 0);
+this->motionRecognizerArray[pointerId]!.processDraggedMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
@@ -301,7 +299,7 @@ this.motionRecognizerArray[pointerId]!.processDraggedMotionEvent(x, y, motionEve
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 }
 

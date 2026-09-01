@@ -31,9 +31,8 @@
         #include "CollisionProcessor.h"
 
 class Collision2DProcessor: public CollisionProcessor {
-        
 
-    public bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2);
+    public: bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2);
 
 };
 

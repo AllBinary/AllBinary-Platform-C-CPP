@@ -59,13 +59,12 @@
 class ProgressCanvasFactory
             : public Object
          {
-        
 
-    private: static PROGRESS_FORM_SCREEN: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ProgressCanvas getInstance();
+    public: static ProgressCanvas getInstance();
 
-    public static PaintableInterface getLazyInstance();
+    public: static PaintableInterface getLazyInstance();
 
 };
 

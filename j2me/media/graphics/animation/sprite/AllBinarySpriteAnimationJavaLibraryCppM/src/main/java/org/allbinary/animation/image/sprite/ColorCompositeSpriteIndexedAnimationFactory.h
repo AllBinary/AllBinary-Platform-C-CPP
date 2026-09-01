@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_COLORCOMPOSITESPRITEINDEXEDANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_COLORCOMPOSITESPRITEINDEXEDANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -70,22 +72,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "SpriteIndexedAnimation.h"
 
-class ColorCompositeSpriteIndexedAnimationFactory: public BaseImageAnimationFactory: public ProceduralAnimationInterfaceFactoryInterface {
-        
+class ColorCompositeSpriteIndexedAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
 
-    private: const animationFactorySpriteScaleUtil: AnimationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil.getInstance()!;
+    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
 
-    private: const basicColorArray: std::vector<BasicColor>;
+    private: std::vector<BasicColor> basicColorArray;
 
-public constructor (Image image, std::vector<BasicColor> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
-
-                //@Throws(Exception.constructor)
-            
-    public Animation getInstance(int32_t instanceId);
+public: ColorCompositeSpriteIndexedAnimationFactory(Image image, std::vector<BasicColor> basicColorArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstance(int32_t instanceId);
+
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
 
 };
 

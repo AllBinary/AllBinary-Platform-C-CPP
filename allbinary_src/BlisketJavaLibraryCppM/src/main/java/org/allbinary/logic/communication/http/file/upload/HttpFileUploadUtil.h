@@ -65,25 +65,24 @@
 class HttpFileUploadUtil
             : public Object
          {
-        
 
-    private: static const instance: HttpFileUploadUtil = new HttpFileUploadUtil();
+    private: static HttpFileUploadUtil instance() { return HttpFileUploadUtil(); }
 
-    public static HttpFileUploadUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public static log(FileItemStream fileItem);
-
-    public static log(FileItem fileItem);
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-private constructor ();
+    public: static HttpFileUploadUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(any = {} anyType);
+    public: static void log(FileItemStream fileItem);
+
+    public: static void log(FileItem fileItem);
+
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+private: HttpFileUploadUtil();
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isValid(Object* anyType);
 
 };
 

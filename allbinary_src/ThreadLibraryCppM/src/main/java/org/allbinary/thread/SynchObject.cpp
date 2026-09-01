@@ -42,7 +42,6 @@
 class SynchObject
             : public Object
          {
-        
 
 };
 

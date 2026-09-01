@@ -52,19 +52,18 @@
 class UspsShippingModule
             : public Object
         : public ShippingInterface {
-        
 
-    private: const name: string = "USPS";
+    private: const std::string name = "USPS";
 
-    private: const description: string = "Snail Mail";
+    private: const std::string description = "Snail Mail";
 
-public constructor ();
+public: UspsShippingModule();
 
-    public Money getCost(OrderInterface order);
+    public: Money getCost(OrderInterface order);
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public string getName();
+    public: std::string getName();
 
 };
 

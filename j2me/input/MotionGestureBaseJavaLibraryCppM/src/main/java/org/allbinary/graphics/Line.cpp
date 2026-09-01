@@ -44,100 +44,97 @@
 class Line
             : public Object
          {
-        
 
-    private: p1: GPoint;
+    private: GPoint p1;
 
-    private: p2: GPoint;
+    private: GPoint p2;
 
-    private: deltaX: double= 0.0;
+    private: double deltaX= 0.0;
 
-    private: deltaY: double= 0.0;
+    private: double deltaY= 0.0;
 
-public constructor (GPoint p1, GPoint p2){
-
-            super();
-        this.p1= PointFactory.getInstance()!.ZERO_ZERO;
+public: Line(GPoint p1, GPoint p2){
+this->p1= PointFactory::getInstance().ZERO_ZERO;
     
-this.p2= this.p1;
+this->p2= this->p1;
     
-this.setP1(p1);
+this->setP1(p1);
     
-this.setP2(p2);
+this->setP2(p2);
     
 }
 
 
-    public double getGradient(){
+    public: double getGradient(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getDeltaY() /this.getDeltaX();
+                        return this->getDeltaY() /this->getDeltaX();
     
 }
 
 
-    update(){
-this.deltaX= this.getP1()!.getX() -this.getP2()!.getX();
+    private: void update(){
+this->deltaX= this->getP1().getX() -this->getP2().getX();
     
-this.deltaY= this.getP1()!.getY() -this.getP2()!.getY();
+this->deltaY= this->getP1().getY() -this->getP2().getY();
     
 }
 
 
-    public double getDeltaX(){
+    public: double getDeltaX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.deltaX;
+                        return this->deltaX;
     
 }
 
 
-    public double getDeltaY(){
+    public: double getDeltaY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.deltaY;
+                        return this->deltaY;
     
 }
 
 
-    public GPoint getP1(){
+    public: GPoint getP1(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.p1;
+                        return this->p1;
     
 }
 
 
-    public GPoint getP2(){
+    public: GPoint getP2(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.p2;
+                        return this->p2;
     
 }
 
 
-    public setP1(GPoint p1){
-this.p1= p1;
+    public: void setP1(GPoint p1){
+this->p1= p1;
     
-this.update();
+this->update();
     
 }
 
 
-    public setP2(GPoint p2){
-this.p2= p2;
+    public: void setP2(GPoint p2){
+this->p2= p2;
     
-this.update();
+this->update();
     
 }
 

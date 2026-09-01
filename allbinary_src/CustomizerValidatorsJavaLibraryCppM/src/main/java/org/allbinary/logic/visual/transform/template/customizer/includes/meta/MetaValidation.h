@@ -78,36 +78,35 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MetaValidation: public Validation: public DomNodeInterface {
-        
+class MetaValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: label: string;
+    private: std::string label;
 
-    private: name: string;
+    private: std::string name;
 
-    private: httpEquiv: string;
+    private: std::string httpEquiv;
 
-    private: content: string;
+    private: std::string content;
 
-public constructor (HtmlMetaAttributeData htmlMetaAttributeData, string label, string attributeValue, string contentValue);
+public: MetaValidation(HtmlMetaAttributeData htmlMetaAttributeData, std::string label, std::string attributeValue, std::string contentValue);
 
-public constructor (Document document);
+public: MetaValidation(Document document);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

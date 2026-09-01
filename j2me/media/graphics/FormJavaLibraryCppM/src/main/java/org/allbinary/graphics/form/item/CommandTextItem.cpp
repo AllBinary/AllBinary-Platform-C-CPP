@@ -45,22 +45,21 @@
         #include "ABTextItem.h"
 
 class CommandTextItem: public ABTextItem {
-        
 
-    private: const command: Command;
+    private: Command command;
 
-public constructor (Command command, int32_t layout, string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: CommandTextItem(Command command, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(command.getLabel(), layout, altText, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.command= command;
+this->command= command;
     
 }
 
 
-    public bool isFocusable(){
+    public: bool isFocusable(){
 
 
 
@@ -70,12 +69,12 @@ this.command= command;
 }
 
 
-    public Command getCommand(){
+    public: Command getCommand(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.command;
+                        return this->command;
     
 }
 

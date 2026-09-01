@@ -59,13 +59,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LimitCommandsVisitor: public Visitor {
-        
 
-    private: const isNotSmallDisplay: bool;
+    private: bool isNotSmallDisplay;
 
-public constructor ();
+public: LimitCommandsVisitor();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
 };
 

@@ -73,21 +73,20 @@
 class GameInitializationUtil
             : public Object
          {
-        
 
-    private: static const instance: GameInitializationUtil = new GameInitializationUtil();
+    private: static GameInitializationUtil instance() { return GameInitializationUtil(); }
 
-    public static GameInitializationUtil getInstance();
+    public: static GameInitializationUtil getInstance();
 
-    public const EVENT: GameInitializedEvent = new GameInitializedEvent(this);
-
-                //@Throws(Exception.constructor)
-            
-    public initDemo(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface);
+    public: const GameInitializedEvent EVENT = GameInitializedEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public initGame(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface);
+    public: void initDemo(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void initGame(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface);
 
 };
 

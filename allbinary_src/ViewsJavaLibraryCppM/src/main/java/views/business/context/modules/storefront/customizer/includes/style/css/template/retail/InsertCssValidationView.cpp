@@ -78,28 +78,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InsertCssValidationView: public CssCustomizerView: public ValidationComponentInterface {
-        
+class InsertCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: InsertCssValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    requestHashMap: HashMap<any, any> = new NameSpaceRequestParams(this.getPageContext()).toHashMap()!;;
+    HashMap<any, any> requestHashMap = NameSpaceRequestParams(this->getPageContext()).toHashMap();;
     
-this.styleValidationInterface= new CssStyleValidation(requestHashMap);
+this->styleValidationInterface= CssStyleValidation(requestHashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
@@ -109,26 +108,26 @@ this.styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    isValid: Boolean = Boolean.TRUE;;
+    Boolean isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Started Validation", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("Started Validation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(isValid == Boolean.TRUE)
+                        if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil.getInstance()!.insert(this.getTransformInfoInterface(), this.styleValidationInterface as DomNodeInterface);
+                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->styleValidationInterface as DomNodeInterface);
     
 
                                     }
@@ -144,10 +143,10 @@ this.styleValidationInterface= new CssStyleValidation(requestHashMap);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -156,34 +155,34 @@ this.styleValidationInterface= new CssStyleValidation(requestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -199,7 +198,7 @@ this.styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -209,7 +208,7 @@ this.styleValidationInterface= new CssStyleValidation(requestHashMap);
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -221,24 +220,24 @@ this.styleValidationInterface= new CssStyleValidation(requestHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreCustomizerComponentUtil.getInstance()!.generate(this.abeClientInformation, this.getTransformInfoInterface());;
+                        return StoreCustomizerComponentUtil::getInstance().generate(this->abeClientInformation, this->getTransformInfoInterface());;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

@@ -48,15 +48,14 @@
 class InputAutomationRobotInterfaceWrapper
             : public Object
          {
-        
 
-    private: inputRobotInterface: InputRobotInterface;
+    private: InputRobotInterface inputRobotInterface;
 
-public constructor (InputRobotInterface inputRobotInterface);
+public: InputAutomationRobotInterfaceWrapper(InputRobotInterface inputRobotInterface);
 
-    public InputRobotInterface getInputRobotInterface();
+    public: InputRobotInterface getInputRobotInterface();
 
-    public setInputRobotInterface(InputRobotInterface inputRobotInterface);
+    public: void setInputRobotInterface(InputRobotInterface inputRobotInterface);
 
 };
 

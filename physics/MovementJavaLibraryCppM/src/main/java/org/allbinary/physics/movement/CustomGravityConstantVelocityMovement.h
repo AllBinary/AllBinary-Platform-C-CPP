@@ -56,17 +56,16 @@
         #include "BasicConstantVelocityMovement.h"
 
 class CustomGravityConstantVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-    private: customGravity: int32_t;
+    private: int32_t customGravity;
 
-public constructor (BasicDecimal speedBasicDecimal, int32_t customGravity);
+public: CustomGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal, int32_t customGravity);
 
-    private: const gravityUtil: GravityUtil = GravityUtil.getInstance()!;
+    private: const GravityUtil gravityUtil = GravityUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
 };
 

@@ -83,19 +83,18 @@
 class UserConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: userConfigurationInterface: UserConfigurationInterface;
+    private: UserConfigurationInterface userConfigurationInterface;
 
-public constructor (Node node);
+public: UserConfigurationView(Node node);
 
-public constructor (UserConfigurationInterface userConfigurationInterface);
+public: UserConfigurationView(UserConfigurationInterface userConfigurationInterface);
 
-    public UserConfigurationInterface getUserConfigurationInterface();
+    public: UserConfigurationInterface getUserConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -72,139 +74,136 @@
 class TransformTemplateCustomizerUtil
             : public Object
          {
-        
 
-    private: static const instance: TransformTemplateCustomizerUtil = new TransformTemplateCustomizerUtil();
+    private: static TransformTemplateCustomizerUtil instance() { return TransformTemplateCustomizerUtil(); }
 
-    public static TransformTemplateCustomizerUtil getInstance(){
+    public: static TransformTemplateCustomizerUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformTemplateCustomizerUtil.instance;
+                        return TransformTemplateCustomizerUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const CUSTOMIZER_NAME: string;
+    private: std::string CUSTOMIZER_NAME;
 
-    private: const BODY_VIEWNAMEKEY: string;
+    private: std::string BODY_VIEWNAMEKEY;
 
-    private: const TITLE_VIEWNAMEKEY: string;
+    private: std::string TITLE_VIEWNAMEKEY;
 
-    private: const GLOBALS_NEW: string;
+    private: std::string GLOBALS_NEW;
 
-    private: const GLOBALS_INSERT: string;
+    private: std::string GLOBALS_INSERT;
 
-    private: const GLOBALS_DELETE: string;
+    private: std::string GLOBALS_DELETE;
 
-    private: const GLOBALS_EDIT: string;
+    private: std::string GLOBALS_EDIT;
 
-    private: const GLOBALS_UPDATE: string;
+    private: std::string GLOBALS_UPDATE;
 
-private constructor (){
+private: TransformTemplateCustomizerUtil(){
 
-            super();
-        
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    SPACE: string = CommonSeps.getInstance()!.SPACE;;
+    std::string SPACE = CommonSeps::getInstance().SPACE;;
     
-this.CUSTOMIZER_NAME= SPACE +CustomizerTransformInfoData.NAME;
+this->CUSTOMIZER_NAME= SPACE +CustomizerTransformInfoData::NAME;
     
-this.BODY_VIEWNAMEKEY= SPACE +BodyData.getInstance()!.VIEWNAMEKEY;
+this->BODY_VIEWNAMEKEY= SPACE +BodyData::getInstance().VIEWNAMEKEY;
     
-this.TITLE_VIEWNAMEKEY= SPACE +TitleData.getInstance()!.VIEWNAMEKEY;
+this->TITLE_VIEWNAMEKEY= SPACE +TitleData::getInstance().VIEWNAMEKEY;
     
-this.GLOBALS_NEW= GLOBALS2.NEW +SPACE;
+this->GLOBALS_NEW= GLOBALS2::NEW +SPACE;
     
-this.GLOBALS_INSERT= commonStrings!.INSERT +SPACE;
+this->GLOBALS_INSERT= commonStrings.INSERT +SPACE;
     
-this.GLOBALS_DELETE= commonStrings!.DELETE +SPACE;
+this->GLOBALS_DELETE= commonStrings.DELETE +SPACE;
     
-this.GLOBALS_EDIT= GLOBALS2.EDIT +SPACE;
+this->GLOBALS_EDIT= GLOBALS2::EDIT +SPACE;
     
-this.GLOBALS_UPDATE= commonStrings!.UPDATE +SPACE;
+this->GLOBALS_UPDATE= commonStrings.UPDATE +SPACE;
     
 }
 
 
-    public string getPageNameHack(string viewName, string storeName){
+    public: std::string getPageNameHack(std::string viewName, std::string storeName){
 
-    SPACE: string = CommonSeps.getInstance()!.SPACE;;
+    std::string SPACE = CommonSeps::getInstance().SPACE;;
     
 
-    ONE_EMPTY_STRING_ARRAY: std::vector<string> = StringUtil.getInstance()!.ONE_EMPTY_STRING_ARRAY;;
+    std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;;
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(
-                                                [
+hashMap.put(
+                                                {
                                                     viewName +SPACE
-                                                ], ONE_EMPTY_STRING_ARRAY);
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
+hashMap.put(
+                                                {
                                                     storeName +SPACE
-                                                ], ONE_EMPTY_STRING_ARRAY);
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.CUSTOMIZER_NAME
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->CUSTOMIZER_NAME
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.BODY_VIEWNAMEKEY
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->BODY_VIEWNAMEKEY
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.TITLE_VIEWNAMEKEY
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->TITLE_VIEWNAMEKEY
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.GLOBALS_NEW
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->GLOBALS_NEW
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.GLOBALS_INSERT
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->GLOBALS_INSERT
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.GLOBALS_DELETE
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->GLOBALS_DELETE
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.GLOBALS_EDIT
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->GLOBALS_EDIT
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
-hashMap!.put(
-                                                [
-                                                    this.GLOBALS_UPDATE
-                                                ], ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    this->GLOBALS_UPDATE
+                                                }, ONE_EMPTY_STRING_ARRAY);
     
 
-    replace: Replace = 
+    Replace replace = 
                 null
             ;;
     
 
-    rootViewName: string = replace.all(viewName)!;;
+    std::string rootViewName = replace.all(viewName);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("RootViewName for ObjectConfig: " +rootViewName, this, "getPageNameHack");
+                                    this->logUtil.putF("RootViewName for ObjectConfig: " +rootViewName, this, "getPageNameHack");
     
 
                                     }

@@ -69,19 +69,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreTagWorkFlowHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: storeWorkFlowInterface: StoreWorkFlowInterface;
+    private: StoreWorkFlowInterface storeWorkFlowInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: StoreTagWorkFlowHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public Integer process();
+    public: Integer process();
 
 };
 

@@ -52,27 +52,26 @@
         #include "ABTextItem.h"
 
 class ABTextFieldItem: public ABTextItem {
-        
 
-    private: font: Font;
+    private: Font font;
 
-public constructor (Canvas canvas, Visitor visitor, string label, string value, int32_t maxSize, int32_t layout, string altText, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ABTextFieldItem(Canvas canvas, Visitor visitor, std::string label, std::string value, int32_t maxSize, int32_t layout, std::string altText, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public string getLabel();
+    public: std::string getLabel();
 
-    public setLabel(string label);
+    public: void setLabel(std::string label);
 
-    public string getString();
+    public: std::string getString();
 
-    public setString(string string);
+    public: void setString(std::string string);
 
-    public setFocus(bool state);
+    public: void setFocus(bool state);
 
-    public int32_t getFontHeight();
+    public: int32_t getFontHeight();
 
-    public setBackgroundBasicColorP(BasicColor basicColor);
+    public: void setBackgroundBasicColorP(BasicColor basicColor);
 
-    public setForegroundBasicColorP(BasicColor basicColor);
+    public: void setForegroundBasicColorP(BasicColor basicColor);
 
 };
 

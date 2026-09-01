@@ -56,17 +56,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentGatewayViewAbstract: public TransformInfoHttpComposite {
-        
 
-    private: paymentGatewayPrimaryKey: PaymentGatewayPrimaryKey;
+    private: PaymentGatewayPrimaryKey paymentGatewayPrimaryKey;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: PaymentGatewayViewAbstract(TransformInfoInterface transformInfoInterface);
 
-    public getFormData(HttpServletRequest request);
+    public: void getFormData(HttpServletRequest request);
 
-    public PaymentGatewayPrimaryKey getPaymentGatewayPrimaryKey();
+    public: PaymentGatewayPrimaryKey getPaymentGatewayPrimaryKey();
 
-    public setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey paymentGatewayPrimaryKey);
+    public: void setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey paymentGatewayPrimaryKey);
 
 };
 

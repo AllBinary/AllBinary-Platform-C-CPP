@@ -64,19 +64,18 @@
 class PaymentTransactionInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: PaymentTransactionInterfaceFactory = new PaymentTransactionInterfaceFactory();
+    private: static PaymentTransactionInterfaceFactory instance() { return PaymentTransactionInterfaceFactory(); }
 
-    public static PaymentTransactionInterfaceFactory getInstance();
+    public: static PaymentTransactionInterfaceFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: PaymentTransactionInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public PaymentTransactionInterface getInstance(OrderHistory orderReview);
+    public: PaymentTransactionInterface getInstance(OrderHistory orderReview);
 
 };
 

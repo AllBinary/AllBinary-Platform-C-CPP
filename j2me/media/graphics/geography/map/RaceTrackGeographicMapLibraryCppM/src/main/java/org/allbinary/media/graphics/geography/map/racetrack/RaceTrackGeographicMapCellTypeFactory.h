@@ -49,43 +49,42 @@
 #include "RaceTrackGeographicMapCellTypes.h"
 
 class RaceTrackGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
-        
 
-    private: static const instanceC: RaceTrackGeographicMapCellTypeFactory = new RaceTrackGeographicMapCellTypeFactory();
+    private: static const RaceTrackGeographicMapCellTypeFactory instanceC = RaceTrackGeographicMapCellTypeFactory();
 
-    public static RaceTrackGeographicMapCellTypeFactory getInstance();
+    public: static RaceTrackGeographicMapCellTypeFactory getInstance();
 
-    public EMPTY_CELL_TYPE: GeographicMapCellType = new GeographicMapCellType(0,  -1);
+    public: GeographicMapCellType EMPTY_CELL_TYPE = GeographicMapCellType(0,  -1);
 
-    public EASY_CELL_TYPE: GeographicMapCellType = this.EMPTY_CELL_TYPE;
+    public: GeographicMapCellType EASY_CELL_TYPE = this->EMPTY_CELL_TYPE;
 
-    public const BOTTOM_LEFT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType BOTTOM_LEFT_TURN_ROAD_CELL_TYPE;
 
-    public const BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType BOTTOM_RIGHT_TURN_ROAD_CELL_TYPE;
 
-    public const TOP_LEFT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType TOP_LEFT_TURN_ROAD_CELL_TYPE;
 
-    public const TOP_RIGHT_TURN_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType TOP_RIGHT_TURN_ROAD_CELL_TYPE;
 
-    public const HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE;
 
-    public const VERTICAL_STRAIGHT_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType VERTICAL_STRAIGHT_ROAD_CELL_TYPE;
 
-    public const START_LINE_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType START_LINE_ROAD_CELL_TYPE;
 
-    public const DEFAULT_FINISH_LINE_ROAD_CELL_TYPE: RaceTrackGeographicMapCellType;
+    public: RaceTrackGeographicMapCellType DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
 
-    public FINISH_LINE_ROAD_CELL_TYPE: GeographicMapCellType = GeographicMapCellType.NULL_GEOGRAPHIC_MAP_CELL_TYPE;
+    public: GeographicMapCellType FINISH_LINE_ROAD_CELL_TYPE = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
 
-public constructor ();
+public: RaceTrackGeographicMapCellTypeFactory();
 
-    public int32_t getStartType();
+    public: int32_t getStartType();
 
-    public int32_t getEndType();
+    public: int32_t getEndType();
 
-    public int32_t getEmptyType();
+    public: int32_t getEmptyType();
 
-    public bool isPath(GeographicMapCellType cellType);
+    public: bool isPath(GeographicMapCellType cellType);
 
 };
 

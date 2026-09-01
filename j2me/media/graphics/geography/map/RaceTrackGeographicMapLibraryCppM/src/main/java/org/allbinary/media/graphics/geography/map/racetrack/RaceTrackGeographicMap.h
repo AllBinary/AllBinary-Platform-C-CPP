@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAP_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKGEOGRAPHICMAP_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -65,17 +67,16 @@
 #include "CustomMapGeneratorBaseFactory.h"
 
 class RaceTrackGeographicMap: public BaseRaceTrackGeographicMap {
-        
 
-    private: const customMapGenerator: CustomMapGeneratorBase;
+    private: CustomMapGeneratorBase customMapGenerator;
 
-public constructor (RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory customMapGeneratorBaseFactory);
+public: RaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory customMapGeneratorBaseFactory);
 
-    public CustomMapGeneratorBase getCustomMapGenerator();
+    public: CustomMapGeneratorBase getCustomMapGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(GeographicMapCellPosition geographicMapCellPosition);
+    public: bool isValid(GeographicMapCellPosition geographicMapCellPosition);
 
 };
 

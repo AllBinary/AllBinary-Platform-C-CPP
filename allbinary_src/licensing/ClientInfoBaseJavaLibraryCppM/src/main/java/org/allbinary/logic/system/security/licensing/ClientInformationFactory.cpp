@@ -51,13 +51,12 @@
 class ClientInformationFactory
             : public Object
          {
-        
 
-    public ClientInformation getInstance(){
-
+    public: ClientInformation getInstance(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 

@@ -64,57 +64,46 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TransformInfoHttpInterface.h"
 //Hack class should not exist
-class TransformInfoBasic: public AbContext: public TransformInfoHttpInterface {
-        
+class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-public constructor (StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super(propertiesHashMap, pageContext);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.storeFrontInterface= storeFrontInterface;
+this->storeFrontInterface= storeFrontInterface;
     
 }
 
 
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeFrontInterface!.getName();;
+                        return this->storeFrontInterface.getName();;
     
 }
 
 
-    public string log(){
+    public: std::string log(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonStrings!.NOT_IMPLEMENTED;
+                        return commonStrings.NOT_IMPLEMENTED;
     
 }
 
 
-    public override(HashMap<any, any> hashMap){
+    public: void override(HashMap<any, any> hashMap){
 }
 
 
-    public string getName(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public string getObjectFile(){
+    public: std::string getName(){
 
 
 
@@ -124,7 +113,7 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public any getObject(){
+    public: std::string getObjectFile(){
 
 
 
@@ -134,7 +123,7 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public TransformInfoObjectConfigInterface getObjectConfigInterface(){
+    public: Object* getObject(){
 
 
 
@@ -144,11 +133,7 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public setObjectConfigInterface(Object transformInfoObjectConfigInterface){
-}
-
-
-    public AbPath getTemplateFilePath(){
+    public: TransformInfoObjectConfigInterface getObjectConfigInterface(){
 
 
 
@@ -158,7 +143,11 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public string getTemplateFile(){
+    public: void setObjectConfigInterface(Object transformInfoObjectConfigInterface){
+}
+
+
+    public: AbPath getTemplateFilePath(){
 
 
 
@@ -168,7 +157,7 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public string getTemplate(){
+    public: std::string getTemplateFile(){
 
 
 
@@ -178,7 +167,7 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public AbPath getDataFilePath(){
+    public: std::string getTemplate(){
 
 
 
@@ -188,7 +177,17 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public string getDataFile(){
+    public: AbPath getDataFilePath(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+    public: std::string getDataFile(){
 
 
 
@@ -200,56 +199,56 @@ this.storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public Document getDataDocument(){
+    public: Document getDataDocument(){
 
 
 
-                            throw new Exception(commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public setName(string value){
+    public: void setName(std::string value){
 }
 
 
-    public setStoreName(string value){
+    public: void setStoreName(std::string value){
 }
 
 
-    public setObjectFile(string value){
+    public: void setObjectFile(std::string value){
 }
 
 
-    public setObject(Object anyType){
+    public: void setObject(Object anyType){
 }
 
 
-    public setObjectConfigFile(string value){
+    public: void setObjectConfigFile(std::string value){
 }
 
 
-    public setTemplateFile(string value){
+    public: void setTemplateFile(std::string value){
 }
 
 
-    public setTemplate(string value){
+    public: void setTemplate(std::string value){
 }
 
 
-    public setDataFile(string value){
+    public: void setDataFile(std::string value){
 }
 
 
-    public setData(string value){
+    public: void setData(std::string value){
 }
 
 
-    public setChild(){
+    public: void setChild(){
 }
 
 
-    public bool isChild(){
+    public: bool isChild(){
 
 
 
@@ -259,7 +258,7 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public string getImportUriPath(){
+    public: std::string getImportUriPath(){
 
 
 
@@ -269,25 +268,13 @@ this.storeFrontInterface= storeFrontInterface;
 }
 
 
-    public setImportUriPath(string importUriPath){
+    public: void setImportUriPath(std::string importUriPath){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public Vector toVector(){
+    public: Object* getKey(){
 
 
 
@@ -299,7 +286,19 @@ this.storeFrontInterface= storeFrontInterface;
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: Vector toVector(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: HashMap<any, any> toHashMap(){
 
 
 

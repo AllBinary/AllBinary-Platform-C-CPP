@@ -54,26 +54,23 @@
 class MineLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
-    private: viewPositionFactoryInterface: ViewPositionFactoryInterface;
+    private: ViewPositionFactoryInterface viewPositionFactoryInterface;
 
-public constructor (ViewPositionFactoryInterface viewPositionFactoryInterface){
-
-            super();
-        this.viewPositionFactoryInterface= viewPositionFactoryInterface;
+public: MineLayerFactory(ViewPositionFactoryInterface viewPositionFactoryInterface){
+this->viewPositionFactoryInterface= viewPositionFactoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance(){
+    public: AllBinaryLayer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MineLayer(this.viewPositionFactoryInterface!.getInstance());
+                        return MineLayer(this->viewPositionFactoryInterface.getInstance());
     
 }
 

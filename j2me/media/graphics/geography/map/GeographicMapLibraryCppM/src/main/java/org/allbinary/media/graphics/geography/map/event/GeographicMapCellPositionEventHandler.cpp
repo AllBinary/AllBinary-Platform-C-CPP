@@ -63,34 +63,31 @@
 #include "GeographicMapCellPositionEventListenerInterface.h"
 
 class GeographicMapCellPositionEventHandler: public BasicEventHandler {
-        
 
-    private: static instance: GeographicMapCellPositionEventHandler = new GeographicMapCellPositionEventHandler();
+    private: static GeographicMapCellPositionEventHandler instance = GeographicMapCellPositionEventHandler();
 
-    public static GeographicMapCellPositionEventHandler getInstance(){
+    public: static GeographicMapCellPositionEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellPositionEventHandler.instance;
+                        return GeographicMapCellPositionEventHandler::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: GeographicMapCellPositionEventHandler(){
+}
 
 
-    public addListener(MiniMapLayer miniMapLayer){
+    public: void addListener(MiniMapLayer miniMapLayer){
 
-                        if(!this.list.contains(miniMapLayer))
+                        if(!this->list.contains(miniMapLayer))
                         
                                     {
-                                    this.list.add(miniMapLayer);
+                                    this->list.add(miniMapLayer);
     
 
                                     }
@@ -98,16 +95,16 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -116,26 +113,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    miniMapLayer: MiniMapLayer = this.list.get(index) as MiniMapLayer;;
+    MiniMapLayer miniMapLayer = this->list.get(index) as MiniMapLayer;;
     
-miniMapLayer!.onGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+miniMapLayer.onGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -149,49 +146,49 @@ super.fireEvent(eventObject);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireRemoveEvent(AllBinaryEventObject eventObject){
+    public: void fireRemoveEvent(AllBinaryEventObject eventObject){
 
-    list: BasicArrayList = this.eventListenerInterfaceList;;
+    BasicArrayList list = this->eventListenerInterfaceList;;
     
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    miniMapLayer: MiniMapLayer = this.list.get(index) as MiniMapLayer;;
+    MiniMapLayer miniMapLayer = this->list.get(index) as MiniMapLayer;;
     
-miniMapLayer!.onRemoveGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+miniMapLayer.onRemoveGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
 }
 
 
-    eventListenerInterface: EventListenerInterface;;
+    EventListenerInterface eventListenerInterface;;
     
 
-    geographicMapCellPositionEventListenerInterface: GeographicMapCellPositionEventListenerInterface;;
+    GeographicMapCellPositionEventListenerInterface geographicMapCellPositionEventListenerInterface;;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
         try {
@@ -199,13 +196,13 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance(
     
 geographicMapCellPositionEventListenerInterface= (eventListenerInterface as GeographicMapCellPositionEventListenerInterface);
     
-geographicMapCellPositionEventListenerInterface!.onRemoveGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+geographicMapCellPositionEventListenerInterface.onRemoveGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -216,11 +213,11 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance(
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    geographicMapCellPositionEventListenerInterface: GeographicMapCellPositionEventListenerInterface = (eventListenerInterface as GeographicMapCellPositionEventListenerInterface);;
+    GeographicMapCellPositionEventListenerInterface geographicMapCellPositionEventListenerInterface = (eventListenerInterface as GeographicMapCellPositionEventListenerInterface);;
     
-geographicMapCellPositionEventListenerInterface!.onGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
+geographicMapCellPositionEventListenerInterface.onGeographicMapCellPositionEvent(eventObject as GeographicMapCellPositionEvent);
     
 }
 

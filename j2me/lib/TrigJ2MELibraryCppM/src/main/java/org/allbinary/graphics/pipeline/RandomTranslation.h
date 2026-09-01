@@ -54,11 +54,10 @@
 class RandomTranslation
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList getInstance(BasicArrayList vector, int32_t howMuch);
+    public: static BasicArrayList getInstance(BasicArrayList vector, int32_t howMuch);
 
 };
 

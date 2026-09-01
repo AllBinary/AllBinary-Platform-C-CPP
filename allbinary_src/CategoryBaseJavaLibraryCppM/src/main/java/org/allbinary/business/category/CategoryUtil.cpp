@@ -70,12 +70,11 @@
 class CategoryUtil
             : public Object
          {
-        
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static int32_t getPathLevel(AbPath categoryPath){
+    public: static int32_t getPathLevel(AbPath categoryPath){
 
-    count: int32_t = StringUtils.countMatches(categoryPath!.toString(), AbPathData.getInstance()!.SEPARATOR)!;;
+    int32_t count = StringUtils::countMatches(categoryPath.toString(), AbPathData::getInstance().SEPARATOR);;
     
 
 
@@ -87,16 +86,16 @@ class CategoryUtil
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string getNameFromNode(Node node){
+    public: static std::string getNameFromNode(Node node){
 
-    attributes: NamedNodeMap = node.getAttributes()!;;
+    NamedNodeMap attributes = node.getAttributes();;
     
 
-    attrNode: Attr = attributes.getNamedItem(CategoryData.getInstance()!.LABEL) as Attr;;
+    Attr attrNode = attributes.getNamedItem(CategoryData::getInstance().LABEL) as Attr;;
     
 
                         if(attrNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -104,18 +103,18 @@ class CategoryUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return attrNode!.getValue();;
+                        return attrNode.getValue();;
     
 
                                     }
                                 
                         else {
                             
-    labelNode: Node = DomSearchHelper.getNodeNoThrow(CategoryData.getInstance()!.LABEL, node.getChildNodes())!;;
+    Node labelNode = DomSearchHelper::getNodeNoThrow(CategoryData::getInstance().LABEL, node.getChildNodes());;
     
 
                         if(labelNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -123,7 +122,7 @@ class CategoryUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomNodeHelper.getTextNodeValue(labelNode);;
+                        return DomNodeHelper::getTextNodeValue(labelNode);;
     
 
                                     }
@@ -135,15 +134,13 @@ class CategoryUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CategoryUtil(){
+}
 
 
 };

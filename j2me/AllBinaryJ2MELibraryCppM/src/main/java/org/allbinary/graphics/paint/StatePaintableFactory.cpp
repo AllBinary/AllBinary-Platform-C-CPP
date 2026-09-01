@@ -43,16 +43,15 @@
 class StatePaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: StatePaintable = new StatePaintable();
+    private: static StatePaintable instance() { return StatePaintable(); }
 
-    public static StatePaintable getInstance(){
+    public: static StatePaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StatePaintableFactory.instance;
+                        return StatePaintableFactory::instance();
     
 }
 

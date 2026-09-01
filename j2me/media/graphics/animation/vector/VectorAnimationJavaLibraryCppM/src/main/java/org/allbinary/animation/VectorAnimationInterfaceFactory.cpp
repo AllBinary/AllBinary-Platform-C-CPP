@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -57,55 +59,52 @@
 class VectorAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: currentPoints: std::vector<std::vector<std::vector<int32_t>>>;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.currentPoints= currentPoints;
+public: VectorAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory){
+this->currentPoints= currentPoints;
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
-this.animationBehaviorFactory= animationBehaviorFactory;
+this->animationBehaviorFactory= animationBehaviorFactory;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new VectorAnimation(this.currentPoints, this.getBasicColorP(), this.animationBehaviorFactory!.getOrCreateInstance());
+                        return VectorAnimation(this->currentPoints, this->getBasicColorP(), this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 
 
-    setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    protected: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
 }
 
 
-    BasicColor getBasicColorP(){
+    protected: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

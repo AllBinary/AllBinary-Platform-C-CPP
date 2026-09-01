@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -109,45 +111,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UploadFileServlet: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    requestHashMap: HashMap<any, any>;
+    protected: HashMap<any, any> requestHashMap;
 
-    private: fileName: string;
+    private: std::string fileName;
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    processRequest(HttpServletRequest request, HttpServletResponse response){
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response){
 
-    isError: bool = false;;
+    bool isError = false;;
     
 
-    inputStream: InputStream = 
+    InputStream inputStream = 
                 null
             ;;
     
 
         try {
-            BlisketServletUtil.getInstance()!.init(request);
+            BlisketServletUtil::getInstance().init(request);
     
-this.requestHashMap= new MultipartRequestParams(request).toHashMap();
-    
-
-    filePath: string = this.requestHashMap!.get(FileUploadData.getInstance()!.UPLOAD_TO_FILE_PATH) as string;;
+this->requestHashMap= MultipartRequestParams(request).toHashMap();
     
 
-                        if(filePath == 
-                                    null
-                                )
+    std::string filePath = this->requestHashMap.get(FileUploadData::getInstance().UPLOAD_TO_FILE_PATH) as string;;
+    
+
+                        if(false)
                         
                                     {
                                     isError= true;
     
-response.sendError(HttpServletResponse.SC_NOT_FOUND);
+response.sendError(HttpServletResponse::SC_NOT_FOUND);
     
 
 
@@ -159,24 +158,24 @@ response.sendError(HttpServletResponse.SC_NOT_FOUND);
                                     }
                                 
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    authenticationHelper: AuthenticationHelper = new AuthenticationHelperFactory().getInstance(hashMap, request) as AuthenticationHelper;;
+    AuthenticationHelper authenticationHelper = AuthenticationHelperFactory().getInstance(hashMap, request) as AuthenticationHelper;;
     
 
-                        if(authenticationHelper!.isAuthenticated())
+                        if(authenticationHelper.isAuthenticated())
                         
                                     {
                                     
-                        if(AuthenticationHelperUtil.getInstance()!.isAuthorized(authenticationHelper, filePath))
+                        if(AuthenticationHelperUtil::getInstance().isAuthorized(authenticationHelper, filePath))
                         
                                     {
-                                    this.saveFile(filePath);
+                                    this->saveFile(filePath);
     
 response.setContentType("text/plain");
     
-response.getOutputStream()!.write("OK!".getBytes());
+response.getOutputStream().write("OK!".getBytes());
     
 
                                     }
@@ -184,7 +183,7 @@ response.getOutputStream()!.write("OK!".getBytes());
                         else {
                             isError= true;
     
-response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "You are not Authorized");
+response.sendError(HttpServletResponse::SC_UNAUTHORIZED, "You are not Authorized");
     
 
                         }
@@ -195,7 +194,7 @@ response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "You are not Authorized"
                         else {
                             isError= true;
     
-response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Please Login");
+response.sendError(HttpServletResponse::SC_UNAUTHORIZED, "Please Login");
     
 
                         }
@@ -205,17 +204,17 @@ response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Please Login");
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "processRequest()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processRequest()", e);
     
 
                                     }
                                 
 isError= true;
     
-response.sendError(HttpServletResponse.SC_NOT_FOUND);
+response.sendError(HttpServletResponse::SC_NOT_FOUND);
     
 }
 
@@ -224,13 +223,13 @@ response.sendError(HttpServletResponse.SC_NOT_FOUND);
                         if(!isError)
                         
                                     {
-                                    StreamUtil.getInstance()!.close(response.getOutputStream());
+                                    StreamUtil::getInstance().close(response.getOutputStream());
     
 
                                     }
                                 
 
-                        if(!StreamUtil.getInstance()!.close(inputStream))
+                        if(!StreamUtil::getInstance().close(inputStream))
                         
                                     {
                                     
@@ -244,61 +243,61 @@ response.sendError(HttpServletResponse.SC_NOT_FOUND);
 
                 //@Throws(Exception.constructor)
             
-    saveFile(string filePath){
+    private: void saveFile(std::string filePath){
 
-    fileOutputStream: AbFileOutputStream = 
+    AbFileOutputStream fileOutputStream = 
                 null
             ;;
     
 
         try {
             
-    fileItem: FileItem = this.requestHashMap!.get(FileUploadData.getInstance()!.FILE_DATA) as FileItem;;
+    FileItem fileItem = this->requestHashMap.get(FileUploadData::getInstance().FILE_DATA) as FileItem;;
     
 
                         if(fileItem != 
-                                    null
-                                 && fileItem!.getSize() > 1)
+                                    nullptr
+                                 && fileItem.getSize() > 1)
                         
                                     {
-                                    this.fileName= HttpRequestUtil.getInstance()!.generateFileName(fileItem!.getName());
+                                    this->fileName= HttpRequestUtil::getInstance().generateFileName(fileItem.getName());
     
 
-                        if(filePath!.endsWith("/") || filePath!.endsWith("\\"))
+                        if(filePath.endsWith("/") || filePath.endsWith("\\"))
                         
                                     {
-                                    filePath= filePath +this.fileName;
+                                    filePath= filePath +this->fileName;
     
 
                                     }
                                 
 
-    file: AbFile = AbFile.createAbFile(URLGLOBALS.getWebappPath() +filePath)!;;
+    AbFile file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +filePath);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Uploaded File: ");
+stringBuffer.append("Uploaded File: ");
     
-stringBuffer!.append(this.fileName);
+stringBuffer.append(this->fileName);
     
-stringBuffer!.append(" New File: ");
+stringBuffer.append(" New File: ");
     
-stringBuffer!.append(file.getPath());
+stringBuffer.append(file.getPath());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "saveFile()");
+this->logUtil.putF(stringBuffer.toString(), this, "saveFile()");
     
 
                                     }
                                 
-HttpFileUploadUtil.log(fileItem);
+HttpFileUploadUtil::log(fileItem);
     
 
-    byteArray: std::vector<int8_t> = fileItem!.get()!;;
+    std::vector<int8_t> byteArray = fileItem.get();;
     
 
                         if(file.isFile())
@@ -311,9 +310,9 @@ file.createNewFile();
 
                                     }
                                 
-fileOutputStream= AbFileOutputStream.createFromAbFile(file);
+fileOutputStream= AbFileOutputStream::createFromAbFile(file);
     
-fileOutputStream!.write(byteArray);
+fileOutputStream.write(byteArray);
     
 
                                     }
@@ -322,11 +321,11 @@ fileOutputStream!.write(byteArray);
          finally {
             
                         if(fileOutputStream != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    fileOutputStream!.close();
+                                    fileOutputStream.close();
     
 
                                     }
@@ -339,21 +338,21 @@ fileOutputStream!.write(byteArray);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
-    public string getServletInfo(){
+    public: std::string getServletInfo(){
 
 
 

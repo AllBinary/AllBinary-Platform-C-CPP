@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -44,9 +46,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SequenceInterface {
-        
 
-    setSequence(std::vector<int32_t> sequence)
+    void setSequence(std::vector<int32_t> sequence)
 
     std::vector<int32_t> getSequence()
 

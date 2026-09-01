@@ -83,16 +83,15 @@
 class GameFeatureItemStateListener
             : public Object
         : public ItemStateListener {
-        
 
-    private: static toggleList: BasicArrayList = new BasicArrayListD();
+    private: static BasicArrayList toggleList = BasicArrayListD();
 
-    public static add(GameFeature gameFeature){
+    public: static void add(GameFeature gameFeature){
 
-                        if(!GameFeatureItemStateListener.toggleList!.contains(gameFeature))
+                        if(!GameFeatureItemStateListener::toggleList.contains(gameFeature))
                         
                                     {
-                                    GameFeatureItemStateListener.toggleList!.add(gameFeature);
+                                    GameFeatureItemStateListener::toggleList.add(gameFeature);
     
 
                                     }
@@ -100,50 +99,48 @@ class GameFeatureItemStateListener
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: gameOptionsForm: GameOptionsForm;
+    private: GameOptionsForm gameOptionsForm;
 
-public constructor (GameOptionsForm gameOptionsForm){
-
-            super();
-        this.gameOptionsForm= gameOptionsForm;
+public: GameFeatureItemStateListener(GameOptionsForm gameOptionsForm){
+this->gameOptionsForm= gameOptionsForm;
     
 
-    gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;;
+    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.ARTIFICIAL_INTELLEGENCE_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory.ARTIFICIAL_INTELLEGENCE_PROCESSOR);
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory.COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.DAMAGE_FLOATERS);
+GameFeatureItemStateListener::add(gameFeatureFactory.DAMAGE_FLOATERS);
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.DROPPED_ITEMS);
+GameFeatureItemStateListener::add(gameFeatureFactory.DROPPED_ITEMS);
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.GAME_INPUT_LAYER_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory.GAME_INPUT_LAYER_PROCESSOR);
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.HEALTH_BARS);
+GameFeatureItemStateListener::add(gameFeatureFactory.HEALTH_BARS);
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.SOUND);
+GameFeatureItemStateListener::add(gameFeatureFactory.SOUND);
     
-GameFeatureItemStateListener.add(gameFeatureFactory!.TICKABLE_LAYER_PROCESSOR);
+GameFeatureItemStateListener::add(gameFeatureFactory.TICKABLE_LAYER_PROCESSOR);
     
 }
 
 
-    public itemStateChanged(Item item){
+    public: void itemStateChanged(Item item){
 
         try {
             
-    itemLabel: string = item.getLabel()!;;
+    std::string itemLabel = item.getLabel();;
     
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.ITEM_LABEL)!.append(itemLabel)!.toString(), this, "itemStateChanged");
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).append(itemLabel).toString(), this, "itemStateChanged");
     
 
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil.getInstance()!.change(this.gameOptionsForm, item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item as GameConfigurationGauge);
     
 
                                     }
@@ -153,19 +150,19 @@ this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.ITEM_LAB
                         
                                     {
                                     
-    gameFeatureUtil: GameFeatureUtil = GameFeatureUtil.getInstance()!;;
+    GameFeatureUtil gameFeatureUtil = GameFeatureUtil::getInstance();;
     
 
-                        if(gameFeatureUtil!.isExclusive(itemLabel))
+                        if(gameFeatureUtil.isExclusive(itemLabel))
                         
                                     {
-                                    gameFeatureUtil!.updateExclusiveForChoiceGroup(item as ChoiceGroup);
+                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item as ChoiceGroup);
     
 
                                     }
                                 
                         else {
-                            gameFeatureUtil!.updateMultiple(item as ChoiceGroup);
+                            gameFeatureUtil.updateMultiple(item as ChoiceGroup);
     
 
                         }
@@ -178,9 +175,9 @@ this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.ITEM_LAB
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "itemStateChanged", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "itemStateChanged", e);
     
 }
 

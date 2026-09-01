@@ -71,33 +71,22 @@
 class NullGameCanvasRunnable
             : public Object
         : public GameCanvasRunnableInterface {
-        
 
-    public static const NULL_GAME_CANVAS_RUNNABLE: NullGameCanvasRunnable = new NullGameCanvasRunnable();
+    public: static const NullGameCanvasRunnable NULL_GAME_CANVAS_RUNNABLE = NullGameCanvasRunnable();
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    public string getTitle(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
-    
-}
-
-
-    public bool isInitialized(){
+    public: std::string getTitle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public bool isPaused(){
+    public: bool isInitialized(){
 
 
 
@@ -107,15 +96,25 @@ class NullGameCanvasRunnable
 }
 
 
-    public unPause(){
+    public: bool isPaused(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
 }
 
 
-    public pause(){
+    public: void unPause(){
 }
 
 
-    public bool isHighScoreSubmitted(){
+    public: void pause(){
+}
+
+
+    public: bool isHighScoreSubmitted(){
 
 
 
@@ -127,17 +126,17 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public setHighScoreSubmitted(bool highScoreSubmitted){
+    public: void setHighScoreSubmitted(bool highScoreSubmitted){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processGameOver(){
+    public: void processGameOver(){
 }
 
 
-    public bool isGameOver(){
+    public: bool isGameOver(){
 
 
 
@@ -147,41 +146,41 @@ class NullGameCanvasRunnable
 }
 
 
-    public initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener cmdListener){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getCurrentStateHashtable(){
+    public: Hashtable<any, any> getCurrentStateHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getLoadStateHashtable(){
+    public: Hashtable<any, any> getLoadStateHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setLoadStateHashtable(Hashtable<any, any> hashtable){
+    public: void setLoadStateHashtable(Hashtable<any, any> hashtable){
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
@@ -193,33 +192,33 @@ class NullGameCanvasRunnable
 
                 //@Throws(Exception.constructor)
             
-    public setGameState(GameState gameState){
+    public: void setGameState(GameState gameState){
 }
 
 
-    public GameState getGameState(){
+    public: GameState getGameState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameStateFactory!.NO_GAME_STATE;
+                        return this->gameStateFactory.NO_GAME_STATE;
     
 }
 
 
-    public itemStateChanged(Item item){
+    public: void itemStateChanged(Item item){
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics graphics){
 }
 
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
@@ -229,17 +228,17 @@ class NullGameCanvasRunnable
 }
 
 
-    public setRunning(bool isRunning){
+    public: void setRunning(bool isRunning){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread){
+    public: void setThread(Thread thread){
 }
 
 
-    public run(){
+    public: void run(){
 }
 
 

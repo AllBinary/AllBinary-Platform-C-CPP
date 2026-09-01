@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -62,104 +64,101 @@
 class BasicCrypt
             : public Object
         : public CryptInterface {
-        
 
-    private: const byteUtil: ByteUtil = ByteUtil.getInstance()!;
+    private: const ByteUtil byteUtil = ByteUtil::getInstance();
 
-    private: const key: std::vector<int8_t>;
+    private: std::vector<int8_t> key;
 
-public constructor (string keyAsString){
+public: BasicCrypt(std::string keyAsString){
 
-            super();
-        
-    key: std::vector<int8_t> = NullUtil.getInstance()!.NULL_BYTE_ARRAY;;
+    std::vector<int8_t> key = NullUtil::getInstance().NULL_BYTE_ARRAY;;
     
 
         try {
-            key= TsUtil.getInstance()!.getByteArray(keyAsString);
+            key= TsUtil::getInstance().getByteArray(keyAsString);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, "AbCrypt(alg,key)", e);
-    
-}
-
-this.key= key;
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, "AbCrypt(alg,key)", e);
     
 }
 
+this->key= key;
+    
+}
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array){
+
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mutilate(array);;
+                        return this->mutilate(array);;
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("Encrypt Failed", this, "encrypt", e);
+PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
     
 }
 
 }
 
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mutilate(array);;
+                        return this->mutilate(array);;
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("decrypt Failed", this, "decrypt", e);
+PreLogUtil::putOE("decrypt Failed", this, "decrypt", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
     
 }
 
 }
 
 
-    public std::vector<int8_t> mutilate(std::vector<int8_t> array){
+    public: std::vector<int8_t> mutilate(std::vector<int8_t> array){
 
-    value: int8_t;;
+    int8_t value;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.key.length; index++)
+    int32_t index = 0;index < this->key.size(); index++)
         {
-value= this.key[index]!;
+value= this->key[index]!;
     
-array= this.byteUtil!.xor(array, value);
+array= this->byteUtil.xor(array, value);
     
 }
 

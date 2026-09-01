@@ -75,51 +75,48 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
-
-            super();
-        }
+public: OrderTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string process(){
+    private: std::string process(){
 
         try {
             
-    anyType: any = new OrderHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = OrderHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod(commonStrings!.PROCESS, 
-                            nullptr)!;;
+    Method method = helperClass.getMethod(commonStrings.PROCESS, 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -143,13 +140,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to Process Order: ";;
+    std::string error = "Failed to Process Order: ";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 
                                     }
@@ -167,21 +164,21 @@ this.storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    Boolean setPaymentGateway(){
+    private: Boolean setPaymentGateway(){
 
         try {
             
-    anyType: any = new OrderHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = OrderHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("setPaymentGateway", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("setPaymentGateway", 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(anyType, 
+    Boolean result = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -205,13 +202,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to setPaymentGateway for Order";;
+    std::string error = "Failed to setPaymentGateway for Order";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setPaymentGateway()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setPaymentGateway()", e);
     
 
                                     }
@@ -220,7 +217,7 @@ this.storeName= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 */
@@ -229,41 +226,39 @@ this.storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.command != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.propertiesHashMap= new HashMap<any, any>();
+                                    this->propertiesHashMap= HashMap<any, any>();
     
-this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESS) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESS) == 0)
                         
                                     {
-                                    this.process();
+                                    this->process();
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(PaymentGatewayData.NAME.toString()) == 0)
+                        if(this->command.compareTo(PaymentGatewayData::NAME.toString()) == 0)
                         
                                     {
                                     
-                        if(this.setPaymentGateway() == Boolean.TRUE)
+                        if(this->setPaymentGateway() == Boolean::TRUE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                                     }
@@ -278,13 +273,13 @@ this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -297,7 +292,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

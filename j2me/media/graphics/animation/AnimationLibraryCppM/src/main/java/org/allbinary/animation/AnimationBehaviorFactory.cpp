@@ -49,26 +49,25 @@
 class AnimationBehaviorFactory
             : public Object
          {
-        
 
-    private: static const instance: AnimationBehaviorFactory = new AnimationBehaviorFactory();
+    private: static AnimationBehaviorFactory instance() { return AnimationBehaviorFactory(); }
 
-    public static AnimationBehaviorFactory getInstance(){
+    public: static AnimationBehaviorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationBehaviorFactory.instance;
+                        return AnimationBehaviorFactory::instance();
     
 }
 
 
-    public AnimationBehavior getOrCreateInstance(){
+    public: AnimationBehavior getOrCreateInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationBehavior.getInstance();;
+                        return AnimationBehavior::getInstance();;
     
 }
 

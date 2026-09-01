@@ -54,67 +54,64 @@
 class IIOImageCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: key: string;
+    private: std::string key;
 
-    private: iioImage: IIOImage;
+    private: IIOImage iioImage;
 
-public constructor (string key){
-
-            super();
-        this.key= key;
+public: IIOImageCacheable(std::string key){
+this->key= key;
     
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.key;
+                        return this->key;
     
 }
 
 
-    public setBufferedImage(BufferedImage bufferedImage){
-this.setIioImage(new IIOImage(bufferedImage, 
+    public: void setBufferedImage(BufferedImage bufferedImage){
+this->setIioImage(IIOImage(bufferedImage, 
                             nullptr, 
                             nullptr));
     
 }
 
 
-    public IIOImage getIioImage(){
+    public: IIOImage getIioImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.iioImage;
+                        return this->iioImage;
     
 }
 
 
-    setIioImage(IIOImage iioImage){
-this.iioImage= iioImage;
+    private: void setIioImage(IIOImage iioImage){
+this->iioImage= iioImage;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString()!);
     
-stringBuffer!.append(" Reusable IIOImage");
+stringBuffer.append(" Reusable IIOImage");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

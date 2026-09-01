@@ -62,76 +62,73 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil.instance;
+                        return ImageRotationUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ImageRotationUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
 
-    image: Image = ImageCreationUtil.getInstance()!.getInstance(originalImage!.getWidth(), originalImage!.getHeight())!;;
+    Image image = ImageCreationUtil::getInstance().getInstance(originalImage.getWidth(), originalImage.getHeight());;
     
 
                         if(image.isMutable())
                         
                                     {
                                     
-    originalPlayNImage: playn.core.Image = 
+    playn::core::Image originalPlayNImage = 
                 null
             ;;
     
 
-                        if(originalImage!.isMutable())
+                        if(originalImage.isMutable())
                         
                                     {
                                     
-    originalHTMLImage: PlaynMutableImage = originalImage as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = originalImage as PlaynMutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                                     }
                                 
                         else {
                             
-    originalHTMLImage: PlaynImmutableImage = originalImage as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = originalImage as PlaynImmutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                         }
                             
 
-    htmlImage: PlaynMutableImage = image as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = image as PlaynMutableImage;;
     
 
-    canvasImage: CanvasImage = htmlImage!.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
     
 
-    canvasSurface: CanvasSurface = htmlImage!.getCanvasSurface(canvasImage)!;;
+    CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;
     
-canvasSurface!.translate(originalPlayNImage!.width() /2, originalPlayNImage!.height() /2);
+canvasSurface.translate(originalPlayNImage.width() /2, originalPlayNImage.height() /2);
     
-canvasSurface!.rotate(Math.toRadians(rotationInDegrees));
+canvasSurface.rotate(Math::toRadians(rotationInDegrees));
     
-canvasSurface!.drawImage(originalPlayNImage,  -originalPlayNImage!.width() /2,  -originalPlayNImage!.height() /2);
+canvasSurface.drawImage(originalPlayNImage,  -originalPlayNImage.width() /2,  -originalPlayNImage.height() /2);
     
 
 
@@ -146,7 +143,7 @@ canvasSurface!.drawImage(originalPlayNImage,  -originalPlayNImage!.width() /2,  
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }

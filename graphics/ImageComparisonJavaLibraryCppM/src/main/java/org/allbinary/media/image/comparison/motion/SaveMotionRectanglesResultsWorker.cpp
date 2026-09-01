@@ -66,97 +66,94 @@
 class SaveMotionRectanglesResultsWorker
             : public Object
         : public MotionRectanglesResultsListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: motionRectanglesVector: Vector;
+    private: Vector motionRectanglesVector;
 
-public constructor (){
-
-            super();
-        this.motionRectanglesVector= new Vector();
+public: SaveMotionRectanglesResultsWorker(){
+this->motionRectanglesVector= Vector();
     
 }
 
 
-    public Vector getMotionRectanglesVector(){
+    public: Vector getMotionRectanglesVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionRectanglesVector;
+                        return this->motionRectanglesVector;
     
 }
 
 
-    public onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesResultsEvent){
-this.getMotionRectanglesVector()!.add(motionRectanglesResultsEvent);
+    public: void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesResultsEvent){
+this->getMotionRectanglesVector().add(motionRectanglesResultsEvent);
     
-this.run();
+this->run();
     
 }
 
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject){
-this.onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject as MotionRectanglesResultsEvent);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
+this->onMotionRectanglesImageComparisonResultsEvent(allBinaryEventObject as MotionRectanglesResultsEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
-    
-timeHelper!.setStartTimeTNT();
+this->setRunning(true);
     
 
-    motionRectanglesResultsEvent: MotionRectanglesResultsEvent = this.getMotionRectanglesVector()!.get(0) as MotionRectanglesResultsEvent;;
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+timeHelper.setStartTimeTNT();
     
 
-    motionRectangles: MotionRectangles = motionRectanglesResultsEvent!.getMotionRectangles()!;;
+    MotionRectanglesResultsEvent motionRectanglesResultsEvent = this->getMotionRectanglesVector().get(0) as MotionRectanglesResultsEvent;;
     
-new MotionRectanglesImageInputOutput().save(motionRectangles, motionRectanglesResultsEvent!.getFrame());
+
+    MotionRectangles motionRectangles = motionRectanglesResultsEvent.getMotionRectangles();;
     
-this.getMotionRectanglesVector()!.remove(motionRectangles);
+MotionRectanglesImageInputOutput().save(motionRectangles, motionRectanglesResultsEvent.getFrame());
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->getMotionRectanglesVector().remove(motionRectangles);
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+    
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

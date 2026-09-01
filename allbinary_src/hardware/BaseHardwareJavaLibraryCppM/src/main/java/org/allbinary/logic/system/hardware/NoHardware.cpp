@@ -55,31 +55,30 @@
 class NoHardware
             : public Object
         : public HardwareInterface {
-        
 
-    private: static const instance: HardwareInterface = new NoHardware();
+    private: static const HardwareInterface instance = NoHardware();
 
-    public static HardwareInterface getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHardware.instance;
-    
-}
-
-
-    public HardwareComponentInterface getComponent(int32_t index){
+    public: static HardwareInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHardwareComponent.getInstance();;
+                        return NoHardware::instance();
     
 }
 
 
-    public string toString(){
+    public: HardwareComponentInterface getComponent(int32_t index){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NoHardwareComponent::getInstance();;
+    
+}
+
+
+    public: std::string toString(){
 
 
 
@@ -89,7 +88,7 @@ class NoHardware
 }
 
 
-    public bool compareTo(HardwareInterface hardwareInterface){
+    public: bool compareTo(HardwareInterface hardwareInterface){
 
 
 
@@ -99,12 +98,12 @@ class NoHardware
 }
 
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface){
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 

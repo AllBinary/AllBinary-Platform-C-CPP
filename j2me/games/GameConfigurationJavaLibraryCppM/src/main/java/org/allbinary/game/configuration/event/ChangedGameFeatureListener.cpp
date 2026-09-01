@@ -48,26 +48,25 @@
         #include "BaseChangedGameFeatureListener.h"
 
 class ChangedGameFeatureListener: public BaseChangedGameFeatureListener {
-        
 
-    private: static const gameFeatureListener: ChangedGameFeatureListener = new ChangedGameFeatureListener();
+    private: static const ChangedGameFeatureListener gameFeatureListener = ChangedGameFeatureListener();
 
-    public static ChangedGameFeatureListener getInstance(){
+    public: static ChangedGameFeatureListener getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChangedGameFeatureListener.gameFeatureListener;
+                        return ChangedGameFeatureListener::gameFeatureListener;
     
 }
 
 
-    public bool isChangedGameConfiguration(GameConfiguration gameConfiguration){
+    public: bool isChangedGameConfiguration(GameConfiguration gameConfiguration){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.contains(gameConfiguration);;
+                        return this->list.contains(gameConfiguration);;
     
 }
 

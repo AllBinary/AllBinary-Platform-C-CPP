@@ -60,17 +60,16 @@
 #include "BasicStoreFrontInterface.h"
 
 class BasicStoreFrontsEntity: public InitSql {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "storefronts";
+    protected: const std::string tableName = "storefronts";
 
-public constructor ();
+public: BasicStoreFrontsEntity();
 
                 //@Throws(Exception.constructor)
             
-    public BasicStoreFrontInterface getStoreFrontInterface(string name);
+    public: BasicStoreFrontInterface getStoreFrontInterface(std::string name);
 
 };
 

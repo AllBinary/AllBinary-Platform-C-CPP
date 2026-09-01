@@ -56,17 +56,16 @@
 class TransformInfoHttpStoreFactory
             : public Object
         : public TransformInfoFactoryInterface {
-        
 
-    private: static const instance: TransformInfoHttpStoreFactory = new TransformInfoHttpStoreFactory();
+    private: static TransformInfoHttpStoreFactory instance() { return TransformInfoHttpStoreFactory(); }
 
-    public static TransformInfoHttpStoreFactory getInstance();
+    public: static TransformInfoHttpStoreFactory getInstance();
 
-private constructor ();
+private: TransformInfoHttpStoreFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getInstance(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: TransformInfoInterface getInstance(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
 };
 

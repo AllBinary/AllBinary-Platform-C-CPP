@@ -57,13 +57,12 @@
 class UserFactory
             : public Object
         : public UserFactoryInterface {
-        
 
-public constructor ();
+public: UserFactory();
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getInstance(HashMap<any, any> hashMap);
+    public: UserInterface getInstance(HashMap<any, any> hashMap);
 
 };
 

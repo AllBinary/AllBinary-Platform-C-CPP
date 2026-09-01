@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameMidletEventListener: public EventListenerInterface {
-        
 
-    onGameEnd(AllBinaryEventObject eventObject);
+    void onGameEnd(AllBinaryEventObject eventObject);
 
 };
 

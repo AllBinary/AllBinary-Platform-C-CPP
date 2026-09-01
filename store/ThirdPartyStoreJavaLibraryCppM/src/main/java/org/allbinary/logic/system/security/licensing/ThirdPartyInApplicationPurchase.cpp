@@ -47,65 +47,8 @@
 class ThirdPartyInApplicationPurchase
             : public Object
         : public ThirdPartyInApplicationPurchaseInterface {
-        
 
-    public bool isPurchased(LockableFeature lockableFeature){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
-
-    public onCreate(any = {} anyType, any = {} stateObject){
-}
-
-
-    public onDestroy(){
-}
-
-
-    public onStart(){
-}
-
-
-    public onActivityResult(int32_t requestCode, int32_t resultCode, any = {} dataObject){
-}
-
-
-    public onSaveInstanceState(any = {} anyType){
-}
-
-
-    public onStop(){
-}
-
-
-    public requestPurchase(LockableFeature lockableFeature){
-}
-
-
-    public requestReceipts(){
-}
-
-
-    public add(LockableFeature lockableFeature){
-}
-
-
-    public string getUserName(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
-    
-}
-
-
-    public bool isEnabled(){
+    public: bool isPurchased(LockableFeature lockableFeature){
 
 
 
@@ -115,7 +58,63 @@ class ThirdPartyInApplicationPurchase
 }
 
 
-    requestProducts(){
+    public: void onCreate(Object* anyType, Object* stateObject){
+}
+
+
+    public: void onDestroy(){
+}
+
+
+    public: void onStart(){
+}
+
+
+    public: void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject){
+}
+
+
+    public: void onSaveInstanceState(Object* anyType){
+}
+
+
+    public: void onStop(){
+}
+
+
+    public: void requestPurchase(LockableFeature lockableFeature){
+}
+
+
+    public: void requestReceipts(){
+}
+
+
+    public: void add(LockableFeature lockableFeature){
+}
+
+
+    public: std::string getUserName(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringUtil::getInstance().EMPTY_STRING;
+    
+}
+
+
+    public: bool isEnabled(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+    protected: void requestProducts(){
 }
 
 

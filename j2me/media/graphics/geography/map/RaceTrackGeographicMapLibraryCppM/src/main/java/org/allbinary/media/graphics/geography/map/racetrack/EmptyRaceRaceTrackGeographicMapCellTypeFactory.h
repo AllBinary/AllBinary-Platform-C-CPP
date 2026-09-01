@@ -49,13 +49,12 @@
 #include "RaceTrackGeographicMapCellType.h"
 
 class EmptyRaceRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
-        
 
-    private: static const instanceC: EmptyRaceRaceTrackGeographicMapCellTypeFactory = new EmptyRaceRaceTrackGeographicMapCellTypeFactory();
+    private: static const EmptyRaceRaceTrackGeographicMapCellTypeFactory instanceC = EmptyRaceRaceTrackGeographicMapCellTypeFactory();
 
-    public static EmptyRaceRaceTrackGeographicMapCellTypeFactory getInstance();
+    public: static EmptyRaceRaceTrackGeographicMapCellTypeFactory getInstance();
 
-private constructor ();
+private: EmptyRaceRaceTrackGeographicMapCellTypeFactory();
 
 };
 

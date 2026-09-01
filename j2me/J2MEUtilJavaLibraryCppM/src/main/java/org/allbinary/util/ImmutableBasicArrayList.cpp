@@ -42,23 +42,22 @@
         #include "BasicArrayListS.h"
 
 class ImmutableBasicArrayList: public BasicArrayListS {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name, int32_t size){
+public: ImmutableBasicArrayList(std::string name, int32_t size){
             super(size);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.name= name;
+this->name= name;
     
 }
 
 
-    public bool add(any = {} e){
-ForcedLogUtil.log(this.name, this);
+    public: bool add(Object* e){
+ForcedLogUtil::log(this->name, this);
     
 
 
@@ -69,18 +68,18 @@ ForcedLogUtil.log(this.name, this);
 }
 
 
-    public addAt(int32_t index, any = {} element){
-ForcedLogUtil.log(this.name, this);
+    public: void addAt(int32_t index, Object* element){
+ForcedLogUtil::log(this->name, this);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

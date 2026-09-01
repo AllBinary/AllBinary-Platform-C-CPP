@@ -67,25 +67,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GenericBodyCustomizerView.h"
 
-class NewGenericBodyValidationView: public GenericBodyCustomizerView: public ValidationComponentInterface {
-        
+class NewGenericBodyValidationView: public GenericBodyCustomizerView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: NewGenericBodyValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.body= new GenericBodyValidation();
+this->body= GenericBodyValidation();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
@@ -95,13 +94,13 @@ this.body= new GenericBodyValidation();
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
 
                             {
-                            CustomizerUtil.getInstance()!.insert(this.getTransformInfoInterface(), this.body as DomNodeInterface);
+                            CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this->body as DomNodeInterface);
     
 
                             }
@@ -110,17 +109,17 @@ this.body= new GenericBodyValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -129,36 +128,36 @@ this.body= new GenericBodyValidation();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.body.validationInfo());
+stringBuffer.append(this->body.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -174,7 +173,7 @@ stringBuffer!.append(this.body.validationInfo());
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -184,7 +183,7 @@ stringBuffer!.append(this.body.validationInfo());
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -196,12 +195,12 @@ stringBuffer!.append(this.body.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()!.view(this);;
+                        return views.ValidationOnlyTempUtil.getInstance().view(this);;
     
 }
 

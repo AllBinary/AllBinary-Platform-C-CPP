@@ -83,41 +83,40 @@
 class CustomUriTransformView
             : public Object
         : public TransformInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-    private: transformDocumentInterface: TransformDocumentInterface;
+    private: TransformDocumentInterface transformDocumentInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: CustomUriTransformView(TransformInfoInterface transformInfoInterface);
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId();
+    public: int32_t getTypeId();
 
-    public TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface getTransformInfoInterface();
 
-    public setTransformInfoInterface(TransformInfoInterface transformInfoInterface);
+    public: void setTransformInfoInterface(TransformInfoInterface transformInfoInterface);
 
-    public TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformDocumentInterface getTransformDocumentInterface();
 
-    public setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
 
-    public Document toXmlDoc();
-
-                //@Throws(Exception.constructor)
-            
-    public Document getDoc();
+    public: Document toXmlDoc();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Document getDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

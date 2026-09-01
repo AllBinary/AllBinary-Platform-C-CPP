@@ -45,11 +45,10 @@
 class ToDomHelper
             : public Object
          {
-        
 
-    public static string convertNull(string value);
+    public: static std::string convertNull(std::string value);
 
-private constructor ();
+private: ToDomHelper();
 
 };
 

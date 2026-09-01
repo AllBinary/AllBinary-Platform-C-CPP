@@ -46,11 +46,10 @@
 #include "BoundsVisitorInterface.h"
 
 class TopULayerBounds: public LayerBounds {
-        
 
-public constructor (Rectangle rectangle);
+public: TopULayerBounds(Rectangle rectangle);
 
-    public visit(BoundsVisitorInterface boundsVisitorInterface);
+    public: void visit(BoundsVisitorInterface boundsVisitorInterface);
 
 };
 

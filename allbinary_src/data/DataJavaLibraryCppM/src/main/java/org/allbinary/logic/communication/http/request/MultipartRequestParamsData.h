@@ -45,11 +45,10 @@
 class MultipartRequestParamsData
             : public Object
          {
-        
 
-    public static const HASHMAP: string = "MULTIPART_REQUEST_HASHMAP";
+    public: static const std::string HASHMAP = "MULTIPART_REQUEST_HASHMAP";
 
-public constructor ();
+public: MultipartRequestParamsData();
 
 };
 

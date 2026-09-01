@@ -42,9 +42,8 @@
         #include "ImageComparisonSearchResultsEvent.h"
 
 class ImageComparisonSearchResultsListener: public BasicEventListenerInterface {
-        
 
-    onImageComparisonResultsEvent(ImageComparisonSearchResultsEvent imageComparisonSearchResultsEvent)
+    void onImageComparisonResultsEvent(ImageComparisonSearchResultsEvent imageComparisonSearchResultsEvent)
 
 };
 

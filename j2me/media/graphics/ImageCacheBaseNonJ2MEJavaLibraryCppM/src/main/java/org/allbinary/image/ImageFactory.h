@@ -59,23 +59,22 @@
 class ImageFactory
             : public Object
          {
-        
 
-    private: static const instance: ImageFactory = new ImageFactory();
+    private: static ImageFactory instance() { return ImageFactory(); }
 
-    public static ImageFactory getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImageUrl(string url);
+    public: static ImageFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(string caller, int32_t width, int32_t height);
+    public: Image createImageUrl(std::string url);
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageFromInputStream(any = {} key, InputStream inputStream);
+    public: Image createImage(std::string caller, int32_t width, int32_t height);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageFromInputStream(Object* key, InputStream inputStream);
 
 };
 

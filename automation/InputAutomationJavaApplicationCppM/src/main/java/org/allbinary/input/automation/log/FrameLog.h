@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_LOG_FRAMELOG_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -70,33 +72,32 @@
 class FrameLog
             : public Object
          {
-        
 
-    private: static frameBytes: std::vector<int8_t> = .toCharArray().getBytes()!;
+    private: static std::vector<int8_t> frameBytes = "Frame: ".getBytes();
 
-    private: static info: std::vector<int8_t> = .toCharArray().getBytes()!;
+    private: static std::vector<int8_t> info = "Info: \n".getBytes();
 
-    private: static actions: std::vector<int8_t> = .toCharArray().getBytes()!;
+    private: static std::vector<int8_t> actions = "Actions: \n".getBytes();
 
-    private: const frame: Long;
+    private: Long frame;
 
-    private: infoStringBuffer: StringMaker = new StringMaker();
+    private: StringMaker infoStringBuffer = StringMaker();
 
-    private: actionsStringBuffer: StringMaker = new StringMaker();
+    private: StringMaker actionsStringBuffer = StringMaker();
 
-public constructor (Long frame);
+public: FrameLog(Long frame);
 
-    public addInfo(string infoString);
+    public: void addInfo(std::string infoString);
 
-    public addActions(Vector<string> vectorOfStrings);
+    public: void addActions(Vector<string> vectorOfStrings);
 
-    public addAction(string action);
+    public: void addAction(std::string action);
 
                 //@Throws(Exception.constructor)
             
-    public write();
+    public: void write();
 
-    public Long getFrame();
+    public: Long getFrame();
 
 };
 

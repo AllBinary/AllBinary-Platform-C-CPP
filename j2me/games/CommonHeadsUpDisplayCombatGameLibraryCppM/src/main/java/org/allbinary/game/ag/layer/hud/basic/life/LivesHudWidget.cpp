@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -60,100 +62,99 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LivesHudWidget: public BasicHud: public PaintableInterface {
-        
+class LivesHudWidget: public BasicHud, public PaintableInterface {
 
-    private: const lifeInterface: Life;
+    private: Life lifeInterface;
 
-    private: const xArray: std::vector<int32_t>;
+    private: std::vector<int32_t> xArray;
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction){
-            super(location, direction, 2, BasicColorFactory.getInstance()!.WHITE);
+public: LivesHudWidget(Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction){
+            super(location, direction, 2, BasicColorFactory::getInstance().WHITE);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.lifeInterface= lifeInterface;
+this->lifeInterface= lifeInterface;
     
 
-    size: int32_t = static_cast<int32_t>(this.getLifeInterface()!.getMaxlives());;
+    int32_t size = static_cast<int32_t>(this->getLifeInterface().getMaxlives());;
     
-this.xArray= new Array(size);
+this->xArray= new Array(size);
     
-this.animationInterface= animationInterface;
+this->animationInterface= animationInterface;
     
-this.updateMaxWidth= this.lifeInterface!.getMaxlives() *16;
+this->updateMaxWidth= this->lifeInterface.getMaxlives() *16;
     
-this.updateMaxHeight= 16;
+this->updateMaxHeight= 16;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    maxLives: int32_t = static_cast<int32_t>(this.getLifeInterface()!.getMaxlives());;
+    int32_t maxLives = static_cast<int32_t>(this->getLifeInterface().getMaxlives());;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < maxLives; index++)
+    int32_t index = 0;index < maxLives; index++)
         {
-this.xArray[index]= this.getX() +(index *16);
+this->xArray[index]= this->getX() +(index *16);
     
 }
 
 }
 
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
 super.onDisplayChangeEvent(displayChangeEvent);
     
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public setX(int32_t x){
+    public: void setX(int32_t x){
 super.setX(x);
     
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
 
 
 
                         for (
-    index: int32_t = static_cast<int32_t>(this.getLifeInterface()!.get());--index >= 0; )
+    int32_t index = static_cast<int32_t>(this->getLifeInterface().get());--index >= 0; )
         {
-this.animationInterface!.paintXY(graphics, this.xArray[index]!, this.getY());
+this->animationInterface.paintXY(graphics, this->xArray[index]!, this->getY());
     
 }
 
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics graphics){
 }
 
 
-    public Life getLifeInterface(){
+    public: Life getLifeInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lifeInterface;
+                        return this->lifeInterface;
     
 }
 

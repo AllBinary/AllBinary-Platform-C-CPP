@@ -53,9 +53,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileInputStream: public FileInputStream {
-        
 
-public constructor (string name){
+public: AbFileInputStream(std::string name){
             super(name);
                     
 
@@ -64,8 +63,8 @@ public constructor (string name){
 }
 
 
-public constructor (AbFile file){
-            super(AbFileNativeUtil.get(file));
+public: AbFileInputStream(AbFile file){
+            super(AbFileNativeUtil::get(file));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -73,7 +72,7 @@ public constructor (AbFile file){
 }
 
 
-protected constructor (File file){
+protected: AbFileInputStream(File file){
             super(file);
                     
 

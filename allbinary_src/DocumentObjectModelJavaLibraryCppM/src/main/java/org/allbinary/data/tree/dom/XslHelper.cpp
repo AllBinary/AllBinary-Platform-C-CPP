@@ -77,36 +77,33 @@
 class XslHelper
             : public Object
          {
-        
 
-    private: static const instance: XslHelper = new XslHelper();
+    private: static XslHelper instance() { return XslHelper(); }
 
-    public static XslHelper getInstance(){
+    public: static XslHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XslHelper.instance;
+                        return XslHelper::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: XslHelper(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public OutputStream translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult){
+    public: OutputStream translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult){
 
         try {
             
-    transformerFactory: TransformerFactory = TransformerFactory.newInstance()!;;
+    TransformerFactory transformerFactory = TransformerFactory::newInstance();;
     
 
-    transformer: Transformer = transformerFactory!.newTransformer(xsltStreamSource)!;;
+    Transformer transformer = transformerFactory.newTransformer(xsltStreamSource);;
     
 transformer.transform(xmlStreamSource, streamResult);
     
@@ -114,7 +111,7 @@ transformer.transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return streamResult!.getOutputStream();;
+                        return streamResult.getOutputStream();;
     
 
                 //: 
@@ -132,16 +129,16 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public OutputStream translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult){
+    public: OutputStream translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult){
 
         try {
             
-    tFactory: TransformerFactory = TransformerFactory.newInstance()!;;
+    TransformerFactory tFactory = TransformerFactory::newInstance();;
     
-tFactory!.setURIResolver(resolver);
+tFactory.setURIResolver(resolver);
     
 
-    transformer: Transformer = tFactory!.newTransformer(xsltStreamSource)!;;
+    Transformer transformer = tFactory.newTransformer(xsltStreamSource);;
     
 transformer.transform(xmlStreamSource, streamResult);
     
@@ -149,7 +146,7 @@ transformer.transform(xmlStreamSource, streamResult);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return streamResult!.getOutputStream();;
+                        return streamResult.getOutputStream();;
     
 
                 //: 
@@ -167,17 +164,17 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public string translate(StreamSource xsltStreamSource, Document xmlDocument){
+    public: std::string translate(StreamSource xsltStreamSource, Document xmlDocument){
 
         try {
             
-    outputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.translate(xsltStreamSource, new StreamSource(new StringBufferInputStream(DomDocumentHelper.toString(xmlDocument))), new StreamResult(outputStream))!.toString();;
+                        return this->translate(xsltStreamSource, StreamSource(StringBufferInputStream(DomDocumentHelper::toString(xmlDocument))), StreamResult(outputStream)).toString();;
     
 
                 //: 
@@ -195,17 +192,17 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public string translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource){
+    public: std::string translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource){
 
         try {
             
-    outputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.translate(xsltStreamSource, xmlStreamSource, new StreamResult(outputStream))!.toString();;
+                        return this->translate(xsltStreamSource, xmlStreamSource, StreamResult(outputStream)).toString();;
     
 
                 //: 
@@ -223,17 +220,17 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public string translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource){
+    public: std::string translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource){
 
         try {
             
-    outputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.translate(resolver, xsltStreamSource, xmlStreamSource, new StreamResult(outputStream))!.toString();;
+                        return this->translate(resolver, xsltStreamSource, xmlStreamSource, StreamResult(outputStream)).toString();;
     
 
                 //: 
@@ -251,12 +248,12 @@ transformer.transform(xmlStreamSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public export(File outputFile, string xsltFilePath, Document xmlDocument){
+    public: void export(File outputFile, std::string xsltFilePath, Document xmlDocument){
 
         try {
-            outputFile!.createNewFile();
+            outputFile.createNewFile();
     
-this.translate(new StreamSource(xsltFilePath), new StreamSource(new StringBufferInputStream(DomDocumentHelper.toString(xmlDocument))), new StreamResult(outputFile));
+this->translate(StreamSource(xsltFilePath), StreamSource(StringBufferInputStream(DomDocumentHelper::toString(xmlDocument))), StreamResult(outputFile));
     
 
                 //: 

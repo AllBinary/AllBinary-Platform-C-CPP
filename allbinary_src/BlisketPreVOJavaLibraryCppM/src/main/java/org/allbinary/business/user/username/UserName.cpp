@@ -65,23 +65,22 @@
 class UserName
             : public Object
          {
-        
 
-    private: static const instance: UserName = new UserName();
+    private: static UserName instance() { return UserName(); }
 
-    public static UserName getInstance(){
+    public: static UserName getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserName.instance;
+                        return UserName::instance();
     
 }
 
 
-    public static string getValidationInfo(string aUserName){
+    public: static std::string getValidationInfo(std::string aUserName){
 
-                        if(!StringValidationUtil.getInstance()!.isValidRequired(aUserName, 5, UserData.MAXLEN))
+                        if(!StringValidationUtil::getInstance().isValidRequired(aUserName, 5, UserData::MAXLEN))
                         
                                     {
                                     
@@ -97,47 +96,43 @@ class UserName
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userName: string;
+    private: std::string userName;
 
-private constructor (){
-
-            super();
-        }
+private: UserName(){
+}
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.userName= hashMap!.get(UserData.USERNAME) as string;
+public: UserName(HashMap<any, any> hashMap){
+this->userName= hashMap.get(UserData::USERNAME) as string;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isValid(this.userName);;
+                        return this->isValid(this->userName);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, "isUserNameValid()", e);
+                                    this->logUtil.put("Failed to validate form", this, "isUserNameValid()", e);
     
 
                                     }
@@ -146,58 +141,58 @@ public constructor (HashMap<any, any> hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string get(){
+    public: std::string get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userName;
+                        return this->userName;
     
 }
 
 
-    public Boolean isValid(string aUserName){
+    public: Boolean isValid(std::string aUserName){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;;
+    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
     
 
-    valid: Boolean = booleanFactory!.TRUE;;
+    Boolean valid = booleanFactory.TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VALIDATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATION))
                         
                                     {
-                                    this.logUtil!.putF("UserName: " +aUserName, this, commonStrings!.IS_VALID);
+                                    this->logUtil.putF("UserName: " +aUserName, this, commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil.getInstance()!.isValidRequired(aUserName, 5, UserData.MAXLEN))
+                        if(!StringValidationUtil::getInstance().isValidRequired(aUserName, 5, UserData::MAXLEN))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VALIDATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATION))
                         
                                     {
-                                    this.logUtil!.putF("UserName is invalid", this, commonStrings!.IS_VALID);
+                                    this->logUtil.putF("UserName is invalid", this, commonStrings.IS_VALID);
     
 
                                     }
                                 
-valid= booleanFactory!.FALSE;
+valid= booleanFactory.FALSE;
     
 
                                     }
@@ -213,10 +208,10 @@ valid= booleanFactory!.FALSE;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, commonStrings.IS_VALID, e);
     
 
                                     }
@@ -225,7 +220,7 @@ valid= booleanFactory!.FALSE;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

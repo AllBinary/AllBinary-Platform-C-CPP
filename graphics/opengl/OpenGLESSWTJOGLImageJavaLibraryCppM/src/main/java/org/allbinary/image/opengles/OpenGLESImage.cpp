@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -89,94 +91,93 @@
 #include "OpenGLESImageProperties.h"
 #include "OpenGLImageCacheFactory.h"
 //OpenGLESSWTJOGLImageJavaLibrary
-class OpenGLESImage: public Image: public OpenGLSurfaceChangedInterface {
-        
+class OpenGLESImage: public Image, public OpenGLSurfaceChangedInterface {
 
-    public static const NULL_OPENGL_IMAGE: OpenGLESImage = new OpenGLESImage(NullImage.NULL_IMAGE, PlatformBitmapBaseFactory.NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory.NULL_PLATFORM_TEXTURE_BASE_FACTORY);
+    public: static const OpenGLESImage NULL_OPENGL_IMAGE = OpenGLESImage(NullImage::NULL_IMAGE, PlatformBitmapBaseFactory::NULL_PLATFORM_BITMAP_BASE_FACTORY, PlatformTextureBaseFactory::NULL_PLATFORM_TEXTURE_BASE_FACTORY);
 
-    public static const texture2dList: BasicArrayList = new BasicArrayListD();
+    public: static const BasicArrayList texture2dList = BasicArrayListD();
 
-    public static const TYPE: int32_t = 4;
+    public: static const int32_t TYPE = 4;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const textureFactory: PlatformTextureBaseFactory;
+    protected: PlatformTextureBaseFactory textureFactory;
 
-    public const openGLBitmap: PlatformBitmapBase;
+    public: PlatformBitmapBase openGLBitmap;
 
-    public imageProcessor: OpenGLESImageProcessor = OpenGLESImageProcessor.getInstance()!;
+    public: OpenGLESImageProcessor imageProcessor = OpenGLESImageProcessor::getInstance();
 
-    public openGLESImageTranslate: OpenGLESImageTranslate = OpenGLESImageTranslate.getInstance()!;
+    public: OpenGLESImageTranslate openGLESImageTranslate = OpenGLESImageTranslate::getInstance();
 
-    public const openGLESImageProperties: OpenGLESImageProperties = new OpenGLESImageProperties();
+    public: const OpenGLESImageProperties openGLESImageProperties = OpenGLESImageProperties();
 
-public constructor (Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-            super(image.getName(), PostLoadImageProcessor.NULL_POST_LOAD_IMAGE_PROCESSOR);
+public: OpenGLESImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
+            super(image.getName(), PostLoadImageProcessor::NULL_POST_LOAD_IMAGE_PROCESSOR);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.openGLBitmap= bitmapFactory!.createBitmap(image);
+this->openGLBitmap= bitmapFactory.createBitmap(image);
     
-this.textureFactory= textureFactory;
+this->textureFactory= textureFactory;
     
-OpenGLImageCacheFactory.getInstance()!.init(this);
+OpenGLImageCacheFactory::getInstance().init(this);
     
-this.platformImage= OpenGLESPostLoadPlatformImage.getInstance();
-    
-}
-
-
-    public int32_t getHeight(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this.openGLBitmap!.getHeight() *this.openGLESImageProperties!.scaleY2));
+this->platformImage= OpenGLESPostLoadPlatformImage::getInstance();
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this.openGLBitmap!.getWidth() *this.openGLESImageProperties!.scaleX2));
+                        return static_cast<int32_t>((this->openGLBitmap.getHeight() *this->openGLESImageProperties.scaleY2));
+    
+}
+
+
+    public: int32_t getWidth(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return static_cast<int32_t>((this->openGLBitmap.getWidth() *this->openGLESImageProperties.scaleX2));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void set(GL gl){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    bool initTexture(GL10 gl){
+    protected: bool initTexture(GL10 gl){
 
-                        if(!OpenGLESImage.texture2dList!.contains(this))
+                        if(!OpenGLESImage::texture2dList.contains(this))
                         
                                     {
-                                    OpenGLESImage.texture2dList!.add(this);
+                                    OpenGLESImage::texture2dList.add(this);
     
 
-    textures: std::vector<int32_t> = new Array(1);;
+    std::vector<int32_t> textures = new Array(1);;
     
-gl.glEnable(GL10.GL_TEXTURE_2D);
+gl.glEnable(GL10::GL_TEXTURE_2D);
     
 
-                        if(this.openGLESImageProperties!.textureID !=  -1)
+                        if(this->openGLESImageProperties.textureID !=  -1)
                         
                                     {
-                                    textures[0]= this.openGLESImageProperties!.textureID;
+                                    textures[0]= this->openGLESImageProperties.textureID;
     
 gl.glDeleteTextures(1, textures, 0);
     
@@ -185,15 +186,15 @@ gl.glDeleteTextures(1, textures, 0);
                                 
 gl.glGenTextures(1, textures, 0);
     
-this.openGLESImageProperties!.textureID= textures[0]!;
+this->openGLESImageProperties.textureID= textures[0]!;
     
-gl.glBindTexture(GL10.GL_TEXTURE_2D, this.openGLESImageProperties!.textureID);
+gl.glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
     
-gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_MIN_FILTER, GL10.GL_NEAREST);
+gl.glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_MIN_FILTER, GL10::GL_NEAREST);
     
-gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_S, GL10.GL_CLAMP_TO_EDGE);
+gl.glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_S, GL10::GL_CLAMP_TO_EDGE);
     
-gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_EDGE);
+gl.glTexParameterf(GL10::GL_TEXTURE_2D, GL10::GL_TEXTURE_WRAP_T, GL10::GL_CLAMP_TO_EDGE);
     
 
 
@@ -213,33 +214,33 @@ gl.glTexParameterf(GL10.GL_TEXTURE_2D, GL10.GL_TEXTURE_WRAP_T, GL10.GL_CLAMP_TO_
 }
 
 
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
 }
 
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z){
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImage.TYPE;
+                        return OpenGLESImage::TYPE;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    graphicsStrings: GraphicsStrings = GraphicsStrings.getInstance()!;;
+    GraphicsStrings graphicsStrings = GraphicsStrings::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(this.getName())!.append(super.toString())!.append(graphicsStrings!.OPACITY)!.appendfloat(this.openGLESImageProperties!.alphaf)!.toString();;
+                        return StringMaker().append(this->getName()).append(super.toString()).append(graphicsStrings.OPACITY).appendfloat(this->openGLESImageProperties.alphaf).toString();;
     
 }
 

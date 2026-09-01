@@ -48,9 +48,8 @@
 class NullGL10
             : public Object
         : public GL10 {
-        
 
-    public static const NULL_GL10: NullGL10 = new NullGL10();
+    public: static const NullGL10 NULL_GL10 = NullGL10();
 
 };
 

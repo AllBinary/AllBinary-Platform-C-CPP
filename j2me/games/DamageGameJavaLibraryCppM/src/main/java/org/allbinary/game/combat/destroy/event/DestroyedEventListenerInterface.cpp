@@ -44,11 +44,10 @@
         #include "DestroyedEvent.h"
 
 class DestroyedEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onDestroyed(DestroyedEvent destroyedEvent)
+    void onDestroyed(DestroyedEvent destroyedEvent)
 
 };
 

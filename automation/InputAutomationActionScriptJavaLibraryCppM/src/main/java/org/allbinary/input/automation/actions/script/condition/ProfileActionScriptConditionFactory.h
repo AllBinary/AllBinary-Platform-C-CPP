@@ -60,13 +60,12 @@
 class ProfileActionScriptConditionFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ProfileActionScriptConditionInterface getInstance(Node node);
+    public: static ProfileActionScriptConditionInterface getInstance(Node node);
 
-private constructor ();
+private: ProfileActionScriptConditionFactory();
 
 };
 

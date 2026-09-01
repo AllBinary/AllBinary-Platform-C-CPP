@@ -72,24 +72,23 @@
 #include "GameCommandCanvas.h"
 
 class ImmediateCommandFormInputProcessor: public CommandFormInputProcessor {
-        
 
-    private: const timeHelper: TimeDelayHelper = new TimeDelayHelper(25);
+    private: const TimeDelayHelper timeHelper = TimeDelayHelper(25);
 
-    gameCommandCanvas: GameCommandCanvas;
+    protected: GameCommandCanvas gameCommandCanvas;
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form);
+public: ImmediateCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
 
-    public onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
 
 };
 

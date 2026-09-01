@@ -70,25 +70,24 @@
 #include "CaptionAnimation.h"
 
 class CaptionAnimationHelper: public CaptionAnimationHelperBase {
-        
 
-    private: const timeHelper: TimeDelayHelper = new TimeDelayHelper(620);
+    private: const TimeDelayHelper timeHelper = TimeDelayHelper(620);
 
-    private: const textAnimation: TextAnimation = new TextAnimation(StringUtil.getInstance()!.EMPTY_STRING, AnimationBehavior.getInstance());
+    private: const TextAnimation textAnimation = TextAnimation(StringUtil::getInstance().EMPTY_STRING, AnimationBehavior::getInstance());
 
-    private: const captionAnimation: Animation;
+    private: Animation captionAnimation;
 
-    private: animation: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-public constructor (Animation captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
+public: CaptionAnimationHelper(Animation captionAnimation, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
 
-    public bool isShowing();
+    public: bool isShowing();
 
-    public tick();
+    public: void tick();
 
-    public update(string message, BasicColor basicColor);
+    public: void update(std::string message, BasicColor basicColor);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

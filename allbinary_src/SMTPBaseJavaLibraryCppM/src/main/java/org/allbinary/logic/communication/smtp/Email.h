@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_EMAIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -112,63 +114,62 @@
 class Email
             : public Object
         : public EmailInterface {
-        
 
-    private: static const DEBUG: string = "mail.debug";
+    private: static const std::string DEBUG = "mail.debug";
 
-    private: static const SMTP_HOST: string = "mail.smtp.host";
+    private: static const std::string SMTP_HOST = "mail.smtp.host";
 
-    private: static const SMTP_PORT: string = "mail.smtp.port";
+    private: static const std::string SMTP_PORT = "mail.smtp.port";
 
-    private: static const SMTP_USER: string = "mail.smtp.user";
+    private: static const std::string SMTP_USER = "mail.smtp.user";
 
-    private: static const SMTP_RETURN_ADDRESS: string = "mail.from";
+    private: static const std::string SMTP_RETURN_ADDRESS = "mail.from";
 
-    private: static const SMTP_LOCAL_HOST: string = "mail.smtp.localhost";
+    private: static const std::string SMTP_LOCAL_HOST = "mail.smtp.localhost";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: msg: MimeMessage;
+    private: MimeMessage msg;
 
-    private: properties: Properties;
+    private: Properties properties;
 
-    private: bs: ByteArrayOutputStream;
+    private: ByteArrayOutputStream bs;
 
-    private: isDebug: bool;
+    private: bool isDebug;
 
-public constructor (string from, string to, string subject, string server, string textBody, string htmlAttachment, string contentBase);
+public: Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase);
 
-public constructor (string from, string to, string subject, string server, string textBody, string htmlAttachment, string contentBase, bool isDebug);
+public: Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase, bool isDebug);
 
                 //@Throws(Exception.constructor)
             
-    public init(string from, string to, string subject, string server, string textBody, string htmlAttachment, string contentBase);
+    public: void init(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase);
 
                 //@Throws(MessagingException.constructor)
             
-    public init(string server, Authenticator authenticator, std::vector<InternetAddress> addresses_from, std::vector<InternetAddress> addresses_to, std::vector<InternetAddress> addresses_cc, std::vector<InternetAddress> addresses_bcc, string subject, std::vector<MimeBodyPart> mimeBodyParts);
+    public: void init(std::string server, Authenticator authenticator, std::vector<InternetAddress> addresses_from, std::vector<InternetAddress> addresses_to, std::vector<InternetAddress> addresses_cc, std::vector<InternetAddress> addresses_bcc, std::string subject, std::vector<MimeBodyPart> mimeBodyParts);
 
-    public MimeMessage getMimeMessage();
+    public: MimeMessage getMimeMessage();
 
-    public string getDebugInfo();
-
-                //@Throws(Exception.constructor)
-            
-    public string log();
+    public: std::string getDebugInfo();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: std::string log();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: Document toXmlDoc();
 
 };
 

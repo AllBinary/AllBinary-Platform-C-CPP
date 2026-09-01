@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLECOMPOSITESHADERUPDATER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SIMPLECOMPOSITESHADERUPDATER_H
 
+            #include <vector>
+        
 
 
 
@@ -42,9 +44,8 @@
         #include "CompositeShaderUpdater.h"
 
 class SimpleCompositeShaderUpdater: public CompositeShaderUpdater {
-        
 
-public constructor (std::vector<string> uniformBlockArray, std::vector<string> uniformArray, std::vector<string> attributeArray, std::vector<int32_t> attributeHandleArray);
+public: SimpleCompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray);
 
 };
 

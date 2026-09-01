@@ -69,53 +69,50 @@
 class Sound
             : public Object
         : public SoundInterface, public Runnable {
-        
 
-    private: resource: string;
+    private: std::string resource;
 
-    player: Player = NoPlayer.NO_PLAYER;
+    protected: Player player = NoPlayer::NO_PLAYER;
 
-protected constructor (string resource){
-
-            super();
-        this.resource= resource;
+protected: Sound(std::string resource){
+this->resource= resource;
     
 }
 
 
-    public string getResource(){
+    public: std::string getResource(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.resource;
+                        return this->resource;
     
 }
 
 
-    public Player getPlayerP(){
+    public: Player getPlayerP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player;
+                        return this->player;
     
 }
 
 
-    public setPlayerP(Player player){
-this.player= player;
+    public: void setPlayerP(Player player){
+this->player= player;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(){
+    public: void init(){
 }
 
 
-    public int32_t getDuration(){
+    public: int32_t getDuration(){
 
 
 
@@ -125,19 +122,19 @@ this.player= player;
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.player.start();
+            this->player.start();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN);
+PreLogUtil::put(commonStrings.EXCEPTION, this, commonStrings.RUN);
     
 }
 

@@ -80,86 +80,81 @@
 class UserConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: userConfigurationInterface: UserConfigurationInterface;
+    private: UserConfigurationInterface userConfigurationInterface;
 
-public constructor (Node node){
-
-            super();
-        this.userConfigurationInterface= new UserConfiguration() as UserConfigurationInterface;
+public: UserConfigurationView(Node node){
+this->userConfigurationInterface= UserConfiguration() as UserConfigurationInterface;
     
 
-    childNodeList: NodeList = node.getChildNodes()!;;
+    NodeList childNodeList = node.getChildNodes();;
     
 
-    emailConfigurationNode: Node = DomSearchHelper.getNode(UserEmailConfigurationData.NAME, childNodeList)!;;
+    Node emailConfigurationNode = DomSearchHelper::getNode(UserEmailConfigurationData::NAME, childNodeList);;
     
 
-    userEmailConfigurationView: UserEmailConfigurationView = new UserEmailConfigurationView(emailConfigurationNode);;
+    UserEmailConfigurationView userEmailConfigurationView = UserEmailConfigurationView(emailConfigurationNode);;
     
 
-    userEmailConfigurationInterface: UserEmailConfigurationInterface = userEmailConfigurationView!.getEmailConfigurationInterface() as UserEmailConfigurationInterface;;
+    UserEmailConfigurationInterface userEmailConfigurationInterface = userEmailConfigurationView.getEmailConfigurationInterface() as UserEmailConfigurationInterface;;
     
-this.userConfigurationInterface!.setUserEmailConfigurationInterface(userEmailConfigurationInterface);
-    
-
-    timeCreatedNode: Node = DomSearchHelper.getNode(EntryData.getInstance()!.TIMECREATED, childNodeList)!;;
+this->userConfigurationInterface.setUserEmailConfigurationInterface(userEmailConfigurationInterface);
     
 
-    timeCreatedView: TimeCreatedView = new TimeCreatedView(timeCreatedNode);;
-    
-this.userConfigurationInterface!.setTimeCreated(timeCreatedView!.getTimeCreated());
+    Node timeCreatedNode = DomSearchHelper::getNode(EntryData::getInstance().TIMECREATED, childNodeList);;
     
 
-    timeLastModifiedNode: Node = DomSearchHelper.getNode(EntryData.getInstance()!.LASTMODIFIED, childNodeList)!;;
+    TimeCreatedView timeCreatedView = TimeCreatedView(timeCreatedNode);;
+    
+this->userConfigurationInterface.setTimeCreated(timeCreatedView.getTimeCreated());
     
 
-    timeLastModifiedView: TimeLastModifiedView = new TimeLastModifiedView(timeLastModifiedNode);;
+    Node timeLastModifiedNode = DomSearchHelper::getNode(EntryData::getInstance().LASTMODIFIED, childNodeList);;
     
-this.userConfigurationInterface!.setTimeLastModified(timeLastModifiedView!.getTimeLastModified());
+
+    TimeLastModifiedView timeLastModifiedView = TimeLastModifiedView(timeLastModifiedNode);;
+    
+this->userConfigurationInterface.setTimeLastModified(timeLastModifiedView.getTimeLastModified());
     
 }
 
 
-public constructor (UserConfigurationInterface userConfigurationInterface){
-
-            super();
-        this.userConfigurationInterface= userConfigurationInterface;
+public: UserConfigurationView(UserConfigurationInterface userConfigurationInterface){
+this->userConfigurationInterface= userConfigurationInterface;
     
 }
 
 
-    public UserConfigurationInterface getUserConfigurationInterface(){
+    public: UserConfigurationInterface getUserConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userConfigurationInterface;
+                        return this->userConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(UserConfigurationData.NAME)!;;
-    
-
-    userEmailConfigurationView: UserEmailConfigurationView = new UserEmailConfigurationView(this.userConfigurationInterface!.getUserEmailConfigurationInterface());;
-    
-node.appendChild(userEmailConfigurationView!.toXmlNode(document));
+    Node node = document.createElement(UserConfigurationData::NAME);;
     
 
-    timeCreatedView: TimeCreatedView = new TimeCreatedView(this.userConfigurationInterface!.getTimeCreated());;
+    UserEmailConfigurationView userEmailConfigurationView = UserEmailConfigurationView(this->userConfigurationInterface.getUserEmailConfigurationInterface());;
     
-node.appendChild(timeCreatedView!.toXmlNode(document));
+node.appendChild(userEmailConfigurationView.toXmlNode(document));
     
 
-    timeLastModifiedView: TimeLastModifiedView = new TimeLastModifiedView(this.userConfigurationInterface!.getTimeLastModified());;
+    TimeCreatedView timeCreatedView = TimeCreatedView(this->userConfigurationInterface.getTimeCreated());;
     
-node.appendChild(timeLastModifiedView!.toXmlNode(document));
+node.appendChild(timeCreatedView.toXmlNode(document));
+    
+
+    TimeLastModifiedView timeLastModifiedView = TimeLastModifiedView(this->userConfigurationInterface.getTimeLastModified());;
+    
+node.appendChild(timeLastModifiedView.toXmlNode(document));
     
 
 

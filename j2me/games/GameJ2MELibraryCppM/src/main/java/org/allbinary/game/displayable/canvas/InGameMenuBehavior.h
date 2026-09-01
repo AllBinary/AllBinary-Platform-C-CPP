@@ -49,31 +49,30 @@
 #include "GameCanvasNonBotPaintable.h"
 
 class InGameMenuBehavior: public BaseMenuBehavior {
-        
 
-    private: static const instanceC: InGameMenuBehavior = new InGameMenuBehavior();
+    private: static const InGameMenuBehavior instanceC = InGameMenuBehavior();
 
-    public static InGameMenuBehavior getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent);
-
-    public initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: static InGameMenuBehavior getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public initMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent);
+
+    public: void initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public updateMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void initMenu(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public popupMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateMenu(AllBinaryGameCanvas allBinaryGameCanvas);
 
-    public closeMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+                //@Throws(Exception.constructor)
+            
+    public: void popupMenu(AllBinaryGameCanvas allBinaryGameCanvas);
+
+    public: void closeMenu(AllBinaryGameCanvas allBinaryGameCanvas);
 
 };
 

@@ -63,11 +63,10 @@
 #include "PaymentGatewayComponent.h"
 
 class GatewayView: public PaymentGatewayViewAbstract {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: GatewayView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -76,14 +75,14 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public getFormData(HttpServletRequest request){
+    public: void getFormData(HttpServletRequest request){
 super.getFormData(request);
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.getPaymentGatewayPrimaryKey()!.getName()))
+                        if(StringValidationUtil::getInstance().isEmpty(this->getPaymentGatewayPrimaryKey().getName()))
                         
                                     {
-                                    this.getPaymentGatewayPrimaryKey()!.setName(this.getWeblisketSession()!.getPaymentMethod());
+                                    this->getPaymentGatewayPrimaryKey().setName(this->getWeblisketSession().getPaymentMethod());
     
 
                                     }
@@ -93,27 +92,27 @@ super.getFormData(request);
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-    paymentGatewayInterface: PaymentGatewayInterface = PaymentGatewayEntityFactory.getInstance()!.getPaymentGatewayInterface(this.getPaymentGatewayPrimaryKey()!.getStoreName(), BasicPaymentTypeUtil.getInstance()!.get(this.getPaymentGatewayPrimaryKey()!.getName()))!;;
+    PaymentGatewayInterface paymentGatewayInterface = PaymentGatewayEntityFactory::getInstance().getPaymentGatewayInterface(this->getPaymentGatewayPrimaryKey().getStoreName(), BasicPaymentTypeUtil::getInstance().get(this->getPaymentGatewayPrimaryKey().getName()));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PaymentGatewayComponent(this.getTransformInfoInterface(), paymentGatewayInterface).view();;
+                        return PaymentGatewayComponent(this->getTransformInfoInterface(), paymentGatewayInterface).view();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "edit()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "edit()", e);
     
 
                                     }

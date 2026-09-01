@@ -54,31 +54,30 @@
 class GameConfigurationTextInput
             : public Object
          {
-        
 
-    private: static hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public static SIMULATOR_IP: GameConfigurationTextInput = new GameConfigurationTextInput("IP: ", "192.168.1.3");
+    public: static GameConfigurationTextInput SIMULATOR_IP = GameConfigurationTextInput("IP: ", "192.168.1.3");
 
-    public static SIMULATOR_PORT: GameConfigurationTextInput = new GameConfigurationTextInput("Port: ", "8010");
+    public: static GameConfigurationTextInput SIMULATOR_PORT = GameConfigurationTextInput("Port: ", "8010");
 
-    public static update(TextField textField);
+    public: static void update(TextField textField);
 
-    public static Hashtable<any, any> getHashtable();
+    public: static Hashtable<any, any> getHashtable();
 
-    private: label: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string label = StringUtil::getInstance().EMPTY_STRING;
 
-    private: text: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string text = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string label, string text);
+public: GameConfigurationTextInput(std::string label, std::string text);
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    public string getText();
+    public: std::string getText();
 
-    public setLabel(string label);
+    public: void setLabel(std::string label);
 
-    public string getLabel();
+    public: std::string getLabel();
 
 };
 

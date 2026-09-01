@@ -58,31 +58,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PreGameLockablePaintable: public LockablePaintable {
-        
 
-    private: const halfWidth: int32_t;
+    private: int32_t halfWidth;
 
-    private: const paintableForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm paintableForm;
 
-public constructor (ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex){
+public: PreGameLockablePaintable(ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex){
             super(lockedIndex);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.paintableForm= paintableForm;
+this->paintableForm= paintableForm;
     
-this.halfWidth= GameFeatureImageCacheFactory.getInstance()!.getWithKey(LockedResources.getInstance()!.LOCKED_DEMO_GAME_FEATURE_RESOURCE)!.getWidth() /2;
+this->halfWidth= GameFeatureImageCacheFactory::getInstance().getWithKey(LockedResources::getInstance().LOCKED_DEMO_GAME_FEATURE_RESOURCE).getWidth() /2;
     
 }
 
 
-    public paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y){
+    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y){
 
-                        if(LockedUtil.getInstance()!.isLocked() && this.getPaintableForm()!.getSelectedIndex() >= this.getLockedIndex())
+                        if(LockedUtil::getInstance().isLocked() && this->getPaintableForm().getSelectedIndex() >= this->getLockedIndex())
                         
                                     {
-                                    this.getAnimation()!.paintXY(graphics, this.getPaintableForm()!.getDx() -this.halfWidth, this.getPaintableForm()!.getDy() +34);
+                                    this->getAnimation().paintXY(graphics, this->getPaintableForm().getDx() -this->halfWidth, this->getPaintableForm().getDy() +34);
     
 
                                     }
@@ -90,12 +89,12 @@ this.halfWidth= GameFeatureImageCacheFactory.getInstance()!.getWithKey(LockedRes
 }
 
 
-    ScrollCurrentSelectionForm getPaintableForm(){
+    protected: ScrollCurrentSelectionForm getPaintableForm(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paintableForm;
+                        return this->paintableForm;
     
 }
 

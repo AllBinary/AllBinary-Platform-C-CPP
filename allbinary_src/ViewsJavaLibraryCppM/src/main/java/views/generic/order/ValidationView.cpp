@@ -64,12 +64,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "OrderView.h"
 
-class ValidationView: public OrderView: public ValidationComponentInterface {
-        
+class ValidationView: public OrderView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -78,59 +77,59 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(this.order.isIdValid() == Boolean.FALSE)
+                        if(this->order.isIdValid() == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
                         else {
-                            this.orderHistory= OrderHistoryFactory.getInstance(this.order.getId());
+                            this->orderHistory= OrderHistoryFactory::getInstance(this->order.getId());
     
 
-                        if(this.orderHistory == 
-                                    null
-                                 || this.orderHistory!.isValid() == Boolean.FALSE)
+                        if(this->orderHistory == 
+                                    nullptr
+                                 || this->orderHistory.isValid() == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    orderItems: OrderItemsEntity = new OrderItemsEntity();;
+    OrderItemsEntity orderItems = OrderItemsEntity();;
     
-this.basketReview= orderItems!.getBasketReview(this.order.getId());
+this->basketReview= orderItems.getBasketReview(this->order.getId());
     
 
-                        if(this.basketReview == 
-                                    null
-                                 || this.basketReview!.isValid() == Boolean.FALSE)
+                        if(this->basketReview == 
+                                    nullptr
+                                 || this->basketReview.isValid() == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -149,10 +148,10 @@ this.basketReview= orderItems!.getBasketReview(this.order.getId());
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -161,75 +160,75 @@ this.basketReview= orderItems!.getBasketReview(this.order.getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.order.isIdValid() == Boolean.FALSE)
+                        if(this->order.isIdValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append(this.order.getIdValidationInfo());
+                                    stringBuffer.append(this->order.getIdValidationInfo());
     
 
                                     }
                                 
                         else {
-                            this.orderHistory= OrderHistoryFactory.getInstance(this.order.getId());
+                            this->orderHistory= OrderHistoryFactory::getInstance(this->order.getId());
     
 
-                        if(this.orderHistory == 
-                                    null
-                                 || this.orderHistory!.isValid() == Boolean.FALSE)
+                        if(this->orderHistory == 
+                                    nullptr
+                                 || this->orderHistory.isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append("Order History data error for: ");
+                                    stringBuffer.append("Order History data error for: ");
     
-stringBuffer!.append(this.order.getId());
+stringBuffer.append(this->order.getId());
     
-stringBuffer!.append("<br />");
+stringBuffer.append("<br />");
     
 
                                     }
                                 
 
-    orderItems: OrderItemsEntity = new OrderItemsEntity();;
+    OrderItemsEntity orderItems = OrderItemsEntity();;
     
-this.basketReview= orderItems!.getBasketReview(this.order.getId());
+this->basketReview= orderItems.getBasketReview(this->order.getId());
     
 
-                        if(this.basketReview == 
-                                    null
+                        if(this->basketReview == 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append("Order Items data error - does not exist for: ");
+                                    stringBuffer.append("Order Items data error - does not exist for: ");
     
-stringBuffer!.append(this.order.getId());
+stringBuffer.append(this->order.getId());
     
-stringBuffer!.append("<br />");
+stringBuffer.append("<br />");
     
 
                                     }
                                 
                              else 
-                        if(this.basketReview!.isValid() == Boolean.FALSE)
+                        if(this->basketReview.isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append("Order Items data error - not valid for: ");
+                                    stringBuffer.append("Order Items data error - not valid for: ");
     
-stringBuffer!.append(this.order.getId());
+stringBuffer.append(this->order.getId());
     
-stringBuffer!.append("<br />");
+stringBuffer.append("<br />");
     
 
                                     }
@@ -241,17 +240,17 @@ stringBuffer!.append("<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -267,7 +266,7 @@ stringBuffer!.append("<br />");
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -277,7 +276,7 @@ stringBuffer!.append("<br />");
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

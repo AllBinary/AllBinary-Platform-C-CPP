@@ -46,11 +46,10 @@
 class NullOpenGLTextureProcessor
             : public Object
          {
-        
 
-    private: static const instance: OpenGLObject3dProcessor = new OpenGLObject3dProcessor();
+    private: static OpenGLObject3dProcessor instance() { return OpenGLObject3dProcessor(); }
 
-    public static OpenGLObject3dProcessor getInstance();
+    public: static OpenGLObject3dProcessor getInstance();
 
 };
 

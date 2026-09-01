@@ -45,21 +45,20 @@
 class RendererStrings
             : public Object
          {
-        
 
-    private: static const instance: RendererStrings = new RendererStrings();
+    private: static RendererStrings instance() { return RendererStrings(); }
 
-    public static RendererStrings getInstance();
+    public: static RendererStrings getInstance();
 
-    public const ON_SURFACE_CREATED: string = "onSurfaceCreated";
+    public: const std::string ON_SURFACE_CREATED = "onSurfaceCreated";
 
-    public const ON_SURFACE_CHANGED: string = "onSurfaceChanged";
+    public: const std::string ON_SURFACE_CHANGED = "onSurfaceChanged";
 
-    public const ON_DRAW_FRAME: string = "onDrawFrame";
+    public: const std::string ON_DRAW_FRAME = "onDrawFrame";
 
-    public const ON_DRAW_FRAME_THREED: string = "onDrawFrameThreed";
+    public: const std::string ON_DRAW_FRAME_THREED = "onDrawFrameThreed";
 
-    public const ON_DRAW_FRAME_2D: string = "onDrawFrame2d";
+    public: const std::string ON_DRAW_FRAME_2D = "onDrawFrame2d";
 
 };
 

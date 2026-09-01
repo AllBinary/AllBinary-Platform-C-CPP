@@ -43,19 +43,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ModifyTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    string insert();
+    std::string insert();
 
                 //@Throws(Exception.constructor)
             
-    string delete();
+    std::string delete_();
 
                 //@Throws(Exception.constructor)
             
-    string update();
+    std::string update();
 
 };
 

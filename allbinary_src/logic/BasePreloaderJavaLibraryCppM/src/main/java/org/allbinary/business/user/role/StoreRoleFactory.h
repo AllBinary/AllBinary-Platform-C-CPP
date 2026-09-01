@@ -49,25 +49,24 @@
 class StoreRoleFactory
             : public Object
          {
-        
 
-    private: static const instance: StoreRoleFactory = new StoreRoleFactory();
+    private: static StoreRoleFactory instance() { return StoreRoleFactory(); }
 
-    public static StoreRoleFactory getInstance();
+    public: static StoreRoleFactory getInstance();
 
-    private: const roles: Vector<any> = new Vector<any>();
+    private: const Vector<any> roles = Vector<any>();
 
-    private: const subscriberRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> subscriberRoles = Vector<any>();
 
-    private: const wholesaleRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> wholesaleRoles = Vector<any>();
 
-private constructor ();
+private: StoreRoleFactory();
 
-    public Vector<any> getRoles();
+    public: Vector<any> getRoles();
 
-    public Vector<any> getSubscriberRoles();
+    public: Vector<any> getSubscriberRoles();
 
-    public Vector<any> getWholesaleRoles();
+    public: Vector<any> getWholesaleRoles();
 
 };
 

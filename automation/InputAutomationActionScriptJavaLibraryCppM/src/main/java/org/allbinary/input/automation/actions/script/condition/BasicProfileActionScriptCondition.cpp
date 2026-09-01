@@ -109,63 +109,62 @@
 #include "AlwaysActionScriptCondition.h"
 #include "ColorAtActionScriptCondition.h"
 
-class BasicProfileActionScriptCondition: public ProfileActionScriptItem: public ProfileActionScriptConditionInterface {
-        
+class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public ProfileActionScriptConditionInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: profileActionProcessorInterfaceVector: Vector;
+    private: Vector profileActionProcessorInterfaceVector;
 
-    private: profileActionConditionInterfaceVector: Vector;
+    private: Vector profileActionConditionInterfaceVector;
 
-public constructor (string label, Node node){
+public: BasicProfileActionScriptCondition(std::string label, Node node){
             super(label, node);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init();
+this->init();
     
 
-    nodeList: NodeList = node.getChildNodes()!;;
+    NodeList nodeList = node.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    actionItemNode: Node = nodeList!.item(index)!;;
+    Node actionItemNode = nodeList.item(index);;
     
 
-                        if(actionItemNode!.getNodeType() == Node.ELEMENT_NODE)
+                        if(actionItemNode.getNodeType() == Node::ELEMENT_NODE)
                         
                                     {
                                     
-                        if(actionItemNode!.getNodeName()!.compareTo(GenericProfileActionScriptConditionData.NAME) == 0)
+                        if(actionItemNode.getNodeName().compareTo(GenericProfileActionScriptConditionData::NAME) == 0)
                         
                                     {
-                                    this.addCondition(ProfileActionScriptConditionFactory.getInstance(actionItemNode));
+                                    this->addCondition(ProfileActionScriptConditionFactory::getInstance(actionItemNode));
     
 
                                     }
                                 
                              else 
-                        if(actionItemNode!.getNodeName()!.compareTo(GenericProfileActionScriptInputData.NAME) == 0)
+                        if(actionItemNode.getNodeName().compareTo(GenericProfileActionScriptInputData::NAME) == 0)
                         
                                     {
-                                    this.addProcessor(ProfileActionScriptInputFactory.getInstance(actionItemNode));
+                                    this->addProcessor(ProfileActionScriptInputFactory::getInstance(actionItemNode));
     
 
                                     }
                                 
                              else 
-                        if(actionItemNode!.getNodeName()!.compareTo(GenericProfileActionScriptOutputData.NAME) == 0)
+                        if(actionItemNode.getNodeName().compareTo(GenericProfileActionScriptOutputData::NAME) == 0)
                         
                                     {
-                                    this.addProcessor(ProfileActionScriptOutputFactory.getInstance(actionItemNode));
+                                    this->addProcessor(ProfileActionScriptOutputFactory::getInstance(actionItemNode));
     
 
                                     }
@@ -180,34 +179,34 @@ this.init();
 
                 //@Throws(Exception.constructor)
             
-    public addProcessorNodes(Node node){
+    public: void addProcessorNodes(Node node){
 
-    nodeList: NodeList = node.getChildNodes()!;;
+    NodeList nodeList = node.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    processorActionItemNode: Node = nodeList!.item(index)!;;
+    Node processorActionItemNode = nodeList.item(index);;
     
 
-                        if(processorActionItemNode!.getNodeName()!.compareTo(GenericProfileActionScriptInputData.NAME) == 0)
+                        if(processorActionItemNode.getNodeName().compareTo(GenericProfileActionScriptInputData::NAME) == 0)
                         
                                     {
-                                    this.addProcessor(ProfileActionScriptInputFactory.getInstance(processorActionItemNode));
+                                    this->addProcessor(ProfileActionScriptInputFactory::getInstance(processorActionItemNode));
     
 
                                     }
                                 
                              else 
-                        if(processorActionItemNode!.getNodeName()!.compareTo(GenericProfileActionScriptOutputData.NAME) == 0)
+                        if(processorActionItemNode.getNodeName().compareTo(GenericProfileActionScriptOutputData::NAME) == 0)
                         
                                     {
-                                    this.addProcessor(ProfileActionScriptOutputFactory.getInstance(processorActionItemNode));
+                                    this->addProcessor(ProfileActionScriptOutputFactory::getInstance(processorActionItemNode));
     
 
                                     }
@@ -217,55 +216,55 @@ this.init();
 }
 
 
-public constructor (string label){
+public: BasicProfileActionScriptCondition(std::string label){
             super(label);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init();
+this->init();
     
 }
 
 
-    init(){
-this.setProfileActionProcessorInterfaceVector(new Vector());
+    private: void init(){
+this->setProfileActionProcessorInterfaceVector(Vector());
     
-this.setProfileActionConditionInterfaceVector(new Vector());
+this->setProfileActionConditionInterfaceVector(Vector());
     
-this.getJPopupMenu()!.add(this.getConditionJPopupMenu());
+this->getJPopupMenu().add(this->getConditionJPopupMenu());
     
-this.getJPopupMenu()!.add(this.getInputJPopupMenu());
+this->getJPopupMenu().add(this->getInputJPopupMenu());
     
-this.getJPopupMenu()!.add(this.getOutputJPopupMenu());
+this->getJPopupMenu().add(this->getOutputJPopupMenu());
     
 }
 
 
-    JMenu getConditionJPopupMenu(){
+    private: JMenu getConditionJPopupMenu(){
 
-    jMenu: JMenu = new JMenu(NEW_CONDITION);;
-    
-
-    jMenuItemColorAt: JMenuItem = new JMenuItem(NEW_COLOR_AT);;
+    JMenu jMenu = JMenu(NEW_CONDITION);;
     
 
-    jMenuItemAlways: JMenuItem = new JMenuItem(NEW_ALWAYS);;
+    JMenuItem jMenuItemColorAt = JMenuItem(NEW_COLOR_AT);;
     
 
-    jMenuItemTimeInterval: JMenuItem = new JMenuItem(NEW_TIME_INTERVAL);;
+    JMenuItem jMenuItemAlways = JMenuItem(NEW_ALWAYS);;
     
-jMenuItemColorAt!.addActionListener(this);
+
+    JMenuItem jMenuItemTimeInterval = JMenuItem(NEW_TIME_INTERVAL);;
     
-jMenuItemAlways!.addActionListener(this);
+jMenuItemColorAt.addActionListener(this);
     
-jMenuItemTimeInterval!.addActionListener(this);
+jMenuItemAlways.addActionListener(this);
     
-jMenu!.add(jMenuItemColorAt);
+jMenuItemTimeInterval.addActionListener(this);
     
-jMenu!.add(jMenuItemAlways);
+jMenu.add(jMenuItemColorAt);
     
-jMenu!.add(jMenuItemTimeInterval);
+jMenu.add(jMenuItemAlways);
+    
+jMenu.add(jMenuItemTimeInterval);
     
 
 
@@ -276,50 +275,30 @@ jMenu!.add(jMenuItemTimeInterval);
 }
 
 
-    JMenu getInputJPopupMenu(){
+    private: JMenu getInputJPopupMenu(){
 
-    jMenu: JMenu = new JMenu(NEW_INPUT);;
-    
-
-    jMenuItemKey: JMenuItem = new JMenuItem(NEW_KEY_INPUT);;
+    JMenu jMenu = JMenu(NEW_INPUT);;
     
 
-    jMenuItemMouse: JMenuItem = new JMenuItem(NEW_MOUSE_INPUT);;
+    JMenuItem jMenuItemKey = JMenuItem(NEW_KEY_INPUT);;
     
 
-    jMenuItemJoystick: JMenuItem = new JMenuItem(NEW_JOYSTICK_INPUT);;
-    
-jMenuItemKey!.addActionListener(this);
-    
-jMenuItemMouse!.addActionListener(this);
-    
-jMenuItemJoystick!.addActionListener(this);
-    
-jMenu!.add(jMenuItemKey);
-    
-jMenu!.add(jMenuItemMouse);
-    
-jMenu!.add(jMenuItemJoystick);
+    JMenuItem jMenuItemMouse = JMenuItem(NEW_MOUSE_INPUT);;
     
 
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return jMenu;
+    JMenuItem jMenuItemJoystick = JMenuItem(NEW_JOYSTICK_INPUT);;
     
-}
-
-
-    JMenu getOutputJPopupMenu(){
-
-    jMenu: JMenu = new JMenu(NEW_OUTPUT);;
+jMenuItemKey.addActionListener(this);
     
-
-    jMenuItemImage: JMenuItem = new JMenuItem(NEW_IMAGE_OUTPUT);;
+jMenuItemMouse.addActionListener(this);
     
-jMenuItemImage!.addActionListener(this);
+jMenuItemJoystick.addActionListener(this);
     
-jMenu!.add(jMenuItemImage);
+jMenu.add(jMenuItemKey);
+    
+jMenu.add(jMenuItemMouse);
+    
+jMenu.add(jMenuItemJoystick);
     
 
 
@@ -330,89 +309,109 @@ jMenu!.add(jMenuItemImage);
 }
 
 
-    public addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface){
-this.logUtil!.putF(this.commonStrings!.START, this, "addInput");
+    private: JMenu getOutputJPopupMenu(){
+
+    JMenu jMenu = JMenu(NEW_OUTPUT);;
     
-this.getProfileActionProcessorInterfaceVector()!.add(profileActionProcessorInterface);
+
+    JMenuItem jMenuItemImage = JMenuItem(NEW_IMAGE_OUTPUT);;
     
-this.add(profileActionProcessorInterface);
+jMenuItemImage.addActionListener(this);
+    
+jMenu.add(jMenuItemImage);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return jMenu;
     
 }
 
 
-    public removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface){
-this.logUtil!.putF(this.commonStrings!.START, this, "removeInput");
+    public: void addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface){
+this->logUtil.putF(this->commonStrings.START, this, "addInput");
     
-this.getProfileActionProcessorInterfaceVector()!.remove(profileActionProcessorInterface);
+this->getProfileActionProcessorInterfaceVector().add(profileActionProcessorInterface);
     
-this.remove(profileActionProcessorInterface);
-    
-}
-
-
-    public removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
-this.logUtil!.putF(this.commonStrings!.START, this, "removeCondition");
-    
-this.getProfileActionConditionInterfaceVector()!.remove(profileActionScriptNodeInterface);
-    
-this.remove(profileActionScriptNodeInterface);
+this->add(profileActionProcessorInterface);
     
 }
 
 
-    public addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
-this.logUtil!.putF(this.commonStrings!.START, this, "addCondition");
+    public: void removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface){
+this->logUtil.putF(this->commonStrings.START, this, "removeInput");
     
-this.getProfileActionConditionInterfaceVector()!.add(profileActionScriptNodeInterface);
+this->getProfileActionProcessorInterfaceVector().remove(profileActionProcessorInterface);
     
-this.add(profileActionScriptNodeInterface);
+this->remove(profileActionProcessorInterface);
+    
+}
+
+
+    public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
+this->logUtil.putF(this->commonStrings.START, this, "removeCondition");
+    
+this->getProfileActionConditionInterfaceVector().remove(profileActionScriptNodeInterface);
+    
+this->remove(profileActionScriptNodeInterface);
+    
+}
+
+
+    public: void addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
+this->logUtil.putF(this->commonStrings.START, this, "addCondition");
+    
+this->getProfileActionConditionInterfaceVector().add(profileActionScriptNodeInterface);
+    
+this->add(profileActionScriptNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(GenericProfileActionScriptConditionData.NAME)!;;
+    Node node = document.createElement(GenericProfileActionScriptConditionData::NAME);;
     
 
-    profileActionConditionInterfaceVector: Vector = this.getProfileActionConditionInterfaceVector()!;;
+    Vector profileActionConditionInterfaceVector = this->getProfileActionConditionInterfaceVector();;
     
 
-    size: int32_t = profileActionConditionInterfaceVector!.length!;;
+    int32_t size = profileActionConditionInterfaceVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    profileActionConditionInterface: ProfileActionScriptConditionInterface = profileActionConditionInterfaceVector!.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionConditionInterface = profileActionConditionInterfaceVector.get(index) as ProfileActionScriptConditionInterface;;
     
-node.appendChild(profileActionConditionInterface!.toXmlNode(document));
+node.appendChild(profileActionConditionInterface.toXmlNode(document));
     
 }
 
 
-    profileActionProcessorInterfaceVector: Vector = this.getProfileActionProcessorInterfaceVector()!;;
+    Vector profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;
     
 
-    size2: int32_t = profileActionProcessorInterfaceVector!.length!;;
+    int32_t size2 = profileActionProcessorInterfaceVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size2; index++)
+    int32_t index = 0;index < size2; index++)
         {
 
-    profileActionProcessorInterface: ProfileActionScriptProcessorInterface = profileActionProcessorInterfaceVector!.get(index) as ProfileActionScriptProcessorInterface;;
+    ProfileActionScriptProcessorInterface profileActionProcessorInterface = profileActionProcessorInterfaceVector.get(index) as ProfileActionScriptProcessorInterface;;
     
-node.appendChild(profileActionProcessorInterface!.toXmlNode(document));
+node.appendChild(profileActionProcessorInterface.toXmlNode(document));
     
 }
 
@@ -425,110 +424,110 @@ node.appendChild(profileActionProcessorInterface!.toXmlNode(document));
 }
 
 
-    public Vector getProfileActionConditionInterfaceVector(){
+    public: Vector getProfileActionConditionInterfaceVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.profileActionConditionInterfaceVector;
+                        return this->profileActionConditionInterfaceVector;
     
 }
 
 
-    public setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector){
-this.profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
+    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector){
+this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
     
 }
 
 
-    public actionPerformed(ActionEvent actionEvent){
+    public: void actionPerformed(ActionEvent actionEvent){
 
         try {
             super.actionPerformed(actionEvent);
     
 
-                        if(actionEvent!.getActionCommand()!.compareTo(DELETE) == 0)
+                        if(actionEvent.getActionCommand().compareTo(DELETE) == 0)
                         
                                     {
                                     
-                        if(this.getParent() instanceof ProfileActionScriptNodeInterface)
+                        if(this->getParent() instanceof ProfileActionScriptNodeInterface)
                         
                                     {
                                     
-    profileActionScriptNodeInterface: ProfileActionScriptNodeInterface = this.getParent() as ProfileActionScriptNodeInterface;;
+    ProfileActionScriptNodeInterface profileActionScriptNodeInterface = this->getParent() as ProfileActionScriptNodeInterface;;
     
-profileActionScriptNodeInterface!.removeCondition(this);
+profileActionScriptNodeInterface.removeCondition(this);
     
-JTreeInterfaceFactory.getInstance()!.getJTreeInterface()!.updateJTree();
+JTreeInterfaceFactory::getInstance().getJTreeInterface().updateJTree();
     
 
                                     }
                                 
-
-                                    }
-                                
-                             else 
-                        if(actionEvent!.getActionCommand()!.compareTo(NEW_COLOR_AT) == 0)
-                        
-                                    {
-                                    this.addCondition(new ColorAtActionScriptCondition());
-    
-this.updateTree();
-    
 
                                     }
                                 
                              else 
-                        if(actionEvent!.getActionCommand()!.compareTo(NEW_ALWAYS) == 0)
+                        if(actionEvent.getActionCommand().compareTo(NEW_COLOR_AT) == 0)
                         
                                     {
-                                    this.addCondition(new AlwaysActionScriptCondition());
+                                    this->addCondition(ColorAtActionScriptCondition());
     
-this.updateTree();
+this->updateTree();
     
 
                                     }
                                 
                              else 
-                        if(actionEvent!.getActionCommand()!.compareTo(NEW_TIME_INTERVAL) == 0)
+                        if(actionEvent.getActionCommand().compareTo(NEW_ALWAYS) == 0)
                         
                                     {
-                                    this.addCondition(new TimeIntervalActionScriptCondition());
+                                    this->addCondition(AlwaysActionScriptCondition());
     
-this.updateTree();
+this->updateTree();
     
 
                                     }
                                 
                              else 
-                        if(actionEvent!.getActionCommand()!.compareTo(NEW_KEY_INPUT) == 0)
+                        if(actionEvent.getActionCommand().compareTo(NEW_TIME_INTERVAL) == 0)
                         
                                     {
-                                    this.addProcessor(new KeyboardActionScriptInput());
+                                    this->addCondition(TimeIntervalActionScriptCondition());
     
-this.updateTree();
+this->updateTree();
     
 
                                     }
                                 
                              else 
-                        if(actionEvent!.getActionCommand()!.compareTo(NEW_MOUSE_INPUT) == 0)
+                        if(actionEvent.getActionCommand().compareTo(NEW_KEY_INPUT) == 0)
                         
                                     {
-                                    this.addProcessor(new MouseActionScriptInput());
+                                    this->addProcessor(KeyboardActionScriptInput());
     
-this.updateTree();
+this->updateTree();
     
 
                                     }
                                 
                              else 
-                        if(actionEvent!.getActionCommand()!.compareTo(NEW_IMAGE_OUTPUT) == 0)
+                        if(actionEvent.getActionCommand().compareTo(NEW_MOUSE_INPUT) == 0)
                         
                                     {
-                                    this.addProcessor(new ImageActionScriptOutput());
+                                    this->addProcessor(MouseActionScriptInput());
     
-this.updateTree();
+this->updateTree();
+    
+
+                                    }
+                                
+                             else 
+                        if(actionEvent.getActionCommand().compareTo(NEW_IMAGE_OUTPUT) == 0)
+                        
+                                    {
+                                    this->addProcessor(ImageActionScriptOutput());
+    
+this->updateTree();
     
 
                                     }
@@ -537,61 +536,61 @@ this.updateTree();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Error", this, "actionPerformed", e);
+this->logUtil.put("Error", this, "actionPerformed", e);
     
 }
 
 }
 
 
-    public Vector getProfileActionProcessorInterfaceVector(){
+    public: Vector getProfileActionProcessorInterfaceVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.profileActionProcessorInterfaceVector;
+                        return this->profileActionProcessorInterfaceVector;
     
 }
 
 
-    public setProfileActionProcessorInterfaceVector(Vector profileActionProcessorInterfaceVector){
-this.profileActionProcessorInterfaceVector= profileActionProcessorInterfaceVector;
+    public: void setProfileActionProcessorInterfaceVector(Vector profileActionProcessorInterfaceVector){
+this->profileActionProcessorInterfaceVector= profileActionProcessorInterfaceVector;
     
 }
 
 
-    updateTree(){
-JTreeInterfaceFactory.getInstance()!.getJTreeInterface()!.updateJTree();
+    private: void updateTree(){
+JTreeInterfaceFactory::getInstance().getJTreeInterface().updateJTree();
     
 
-    treePath: TreePath = new TreePath(this);;
+    TreePath treePath = TreePath(this);;
     
-JTreeInterfaceFactory.getInstance()!.getJTreeInterface()!.getActionScriptJTree()!.expandPath(treePath);
+JTreeInterfaceFactory::getInstance().getJTreeInterface().getActionScriptJTree().expandPath(treePath);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool shouldProcess(Long frame){
+    public: bool shouldProcess(Long frame){
 
-    profileActionConditionInterfaceVector: Vector = this.getProfileActionConditionInterfaceVector()!;;
+    Vector profileActionConditionInterfaceVector = this->getProfileActionConditionInterfaceVector();;
     
 
-    size: int32_t = profileActionConditionInterfaceVector!.length!;;
+    int32_t size = profileActionConditionInterfaceVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    profileActionScriptConditionInterface: ProfileActionScriptConditionInterface = profileActionConditionInterfaceVector!.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = profileActionConditionInterfaceVector.get(index) as ProfileActionScriptConditionInterface;;
     
 
-                        if(!profileActionScriptConditionInterface!.shouldProcess(frame))
+                        if(!profileActionScriptConditionInterface.shouldProcess(frame))
                         
                                     {
                                     
@@ -616,26 +615,26 @@ JTreeInterfaceFactory.getInstance()!.getJTreeInterface()!.getActionScriptJTree()
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame){
-this.logUtil!.putF(new StringMaker().append("Start - Processing ")!.appendint(this.getProfileActionProcessorInterfaceVector()!.size())!.append(" inputs")!.toString(), this, this.commonStrings!.PROCESS);
+    public: void process(Long frame){
+this->logUtil.putF(StringMaker().append("Start - Processing ").appendint(this->getProfileActionProcessorInterfaceVector().size()).append(" inputs").toString(), this, this->commonStrings.PROCESS);
     
 
-    profileActionProcessorInterfaceVector: Vector = this.getProfileActionProcessorInterfaceVector()!;;
+    Vector profileActionProcessorInterfaceVector = this->getProfileActionProcessorInterfaceVector();;
     
 
-    size: int32_t = profileActionProcessorInterfaceVector!.length!;;
+    int32_t size = profileActionProcessorInterfaceVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    profileActionScriptProcessorInterface: ProfileActionScriptProcessorInterface = profileActionProcessorInterfaceVector!.get(index) as ProfileActionScriptProcessorInterface;;
+    ProfileActionScriptProcessorInterface profileActionScriptProcessorInterface = profileActionProcessorInterfaceVector.get(index) as ProfileActionScriptProcessorInterface;;
     
-profileActionScriptProcessorInterface!.process(frame);
+profileActionScriptProcessorInterface.process(frame);
     
 }
 

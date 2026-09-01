@@ -67,45 +67,42 @@
         #include "TableTag.h"
 
 class QuoteRequestTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeName: string;
+    private: std::string storeName;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new QuoteHelperFactory());
+public: QuoteRequestTag(){
+this->setTagHelperFactory(QuoteHelperFactory());
     
-this.setTagRequestHelperFactory(new QuoteRequestHelperFactory());
+this->setTagRequestHelperFactory(QuoteRequestHelperFactory());
     
 }
 
 
-    public setStoreName(string storeName){
-this.storeName= storeName;
+    public: void setStoreName(std::string storeName){
+this->storeName= storeName;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string email(){
+    private: std::string email(){
 
         try {
             
-    anyType: any = new QuoteHelperFactory().getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = QuoteHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("email", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("email", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -129,13 +126,13 @@ this.storeName= storeName;
 /* catch(e) 
             {
 
-    error: string = "Failed to send QuoteRequest emails";;
+    std::string error = "Failed to send QuoteRequest emails";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "sendEmail()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "sendEmail()", e);
     
 
                                     }
@@ -153,28 +150,28 @@ this.storeName= storeName;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.getPropertiesHashMap()!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+                                    this->getPropertiesHashMap().put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this.getCommand()!.compareTo("EMAIL") == 0)
+                        if(this->getCommand().compareTo("EMAIL") == 0)
                         
                                     {
-                                    this.email();
+                                    this->email();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
 
                                     }
@@ -202,7 +199,7 @@ this.storeName= storeName;
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -215,7 +212,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -57,55 +59,52 @@
 class KeyValueDrawCharArray
             : public Object
         : public UpdateMyFontInterface {
-        
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: const LABEL: string;
+    private: std::string LABEL;
 
-    private: labelX: int32_t;
+    private: int32_t labelX;
 
-    private: valueX: int32_t= 0;
+    private: int32_t valueX= 0;
 
-    private: value: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;
+    private: std::vector<char> value = CharArrayFactory::getInstance().getZeroCharArray();
 
-    private: len: int32_t= 0;
+    private: int32_t len= 0;
 
-public constructor (string label, int32_t x){
-
-            super();
-        this.LABEL= label;
+public: KeyValueDrawCharArray(std::string label, int32_t x){
+this->LABEL= label;
     
-this.labelX= x;
+this->labelX= x;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    labelWidth: int32_t = graphics.getFont()!.stringWidth(this.LABEL) -this.LABEL.length;;
+    int32_t labelWidth = graphics.getFont().stringWidth(this->LABEL) -LABEL.size();;
     
-this.valueX= labelWidth +this.labelX;
+this->valueX= labelWidth +this->labelX;
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public paint(Graphics graphics, int32_t y){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics, int32_t y){
+this->myFontProcessor.process(graphics);
     
-graphics.drawString(this.LABEL, this.labelX, y, 0);
+graphics.drawString(this->LABEL, this->labelX, y, 0);
     
-graphics.drawChars(this.value, 0, this.len, this.valueX, y, 0);
+graphics.drawChars(this->value, 0, this->len, this->valueX, y, 0);
     
 }
 
 
-    public update(std::vector<char> value, int32_t len){
-this.value= value;
+    public: void update(std::vector<char> value, int32_t len){
+this->value= value;
     
-this.len= len;
+this->len= len;
     
 }
 

@@ -42,34 +42,31 @@
 class Capital
             : public Object
          {
-        
 
-    private: value: int32_t= 0;
+    private: int32_t value= 0;
 
-public constructor (){
-
-            super();
-        }
+public: Capital(){
+}
 
 
-    public int32_t getTotalMoney(){
+    public: int32_t getTotalMoney(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 
 
-    public removeMoney(int32_t points){
-this.value -= points;
+    public: void removeMoney(int32_t points){
+this->value -= points;
     
 }
 
 
-    public addMoney(int32_t points){
-this.value += points;
+    public: void addMoney(int32_t points){
+this->value += points;
     
 }
 

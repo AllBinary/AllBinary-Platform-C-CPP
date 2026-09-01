@@ -53,11 +53,10 @@
         #include "GameNotificationEvent.h"
 
 class GameNotificationListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onGameNotificationEvent(GameNotificationEvent gameNotificationEvent);
+    void onGameNotificationEvent(GameNotificationEvent gameNotificationEvent);
 
 };
 

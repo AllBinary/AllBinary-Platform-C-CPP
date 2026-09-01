@@ -43,9 +43,8 @@
 class ResizableEmptyListener
             : public Object
         : public ResizableListenerInterface {
-        
 
-    public onResizable(bool isResizable){
+    public: void onResizable(bool isResizable){
 }
 
 

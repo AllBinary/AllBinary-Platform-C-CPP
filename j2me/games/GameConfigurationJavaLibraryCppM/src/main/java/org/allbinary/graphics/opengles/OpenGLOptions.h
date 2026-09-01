@@ -58,9 +58,8 @@
 class OpenGLOptions
             : public Object
          {
-        
 
-    public init();
+    public: void init();
 
 };
 

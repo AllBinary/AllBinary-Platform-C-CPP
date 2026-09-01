@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -67,42 +69,39 @@
 class ImageArrayAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: dx: int32_t = 0;
+    private: int32_t dx = 0;
 
-    private: dy: int32_t = 0;
+    private: int32_t dy = 0;
 
-    private: const imageArray: std::vector<Image>;
+    private: std::vector<Image> imageArray;
 
-    private: const animationBehaviorFactory: AnimationBehaviorFactory;
+    private: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.imageArray= imageArray;
+public: ImageArrayAnimationFactory(std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
+this->imageArray= imageArray;
     
-this.animationBehaviorFactory= animationBehaviorFactory;
+this->animationBehaviorFactory= animationBehaviorFactory;
     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-                        if(this.dx != 0 || this.dy != 0)
+                        if(this->dx != 0 || this->dy != 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedImageArrayAnimation(this.imageArray, this.dx, this.dy, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AdjustedImageArrayAnimation(this->imageArray, this->dx, this->dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -112,7 +111,7 @@ this.dy= dy;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageArrayAnimation(this.imageArray, AnimationBehavior.getInstance());
+                        return ImageArrayAnimation(this->imageArray, AnimationBehavior::getInstance());
     
 
                         }
@@ -120,7 +119,7 @@ this.dy= dy;
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

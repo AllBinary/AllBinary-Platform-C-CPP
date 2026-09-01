@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STORETAGWORKFLOWFACTORY_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_STORETAGWORKFLOWFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -77,19 +79,18 @@
 class StoreTagWorkFlowFactory
             : public Object
          {
-        
 
-    private: static const instance: StoreTagWorkFlowFactory = new StoreTagWorkFlowFactory();
+    private: static StoreTagWorkFlowFactory instance() { return StoreTagWorkFlowFactory(); }
 
-    public static StoreTagWorkFlowFactory getInstance();
+    public: static StoreTagWorkFlowFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: StoreTagWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
 };
 

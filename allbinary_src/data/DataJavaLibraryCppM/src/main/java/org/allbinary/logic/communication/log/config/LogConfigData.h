@@ -45,19 +45,18 @@
 class LogConfigData
             : public Object
          {
-        
 
-    private: static const instance: LogConfigData = new LogConfigData();
+    private: static LogConfigData instance() { return LogConfigData(); }
 
-    public static LogConfigData getInstance();
+    public: static LogConfigData getInstance();
 
-private constructor ();
+private: LogConfigData();
 
-    public const NAME: string = "LOG_CONFIG_NAME";
+    public: const std::string NAME = "LOG_CONFIG_NAME";
 
-    public const DESCRIPTION: string = "LOG_CONFIG_DESCRIPTION";
+    public: const std::string DESCRIPTION = "LOG_CONFIG_DESCRIPTION";
 
-    public const FILE: string = "LOG_CONFIG_FILE";
+    public: const std::string FILE = "LOG_CONFIG_FILE";
 
 };
 

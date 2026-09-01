@@ -50,35 +50,34 @@
 class AndroidDebug
             : public Object
         : public DebugInterface {
-        
 
-    private: startTime: int64_t = Long.MAX_VALUE;
+    private: int64_t startTime = Long::MAX_VALUE;
 
-    private: running: bool = false;
+    private: bool running = false;
 
-    private: bufferSize: int32_t = 32 *1024 *1024;
+    private: int32_t bufferSize = 32 *1024 *1024;
 
-    public start(){
-this.setStartTime(Date.now());
+    public: void start(){
+this->setStartTime(Date.now());
     
-Debug.startMethodTracing("trace", this.bufferSize);
+Debug::startMethodTracing("trace", this->bufferSize);
     
-this.setRunning(true);
-    
-}
-
-
-    public stop(){
-this.startTime= Long.MAX_VALUE;
-    
-Debug.stopMethodTracing();
-    
-this.setRunning(false);
+this->setRunning(true);
     
 }
 
 
-    public int64_t getMaxTime(){
+    public: void stop(){
+this->startTime= Long::MAX_VALUE;
+    
+Debug::stopMethodTracing();
+    
+this->setRunning(false);
+    
+}
+
+
+    public: int64_t getMaxTime(){
 
 
 
@@ -88,34 +87,34 @@ this.setRunning(false);
 }
 
 
-    setStartTime(int64_t startTime){
-this.startTime= startTime;
+    private: void setStartTime(int64_t startTime){
+this->startTime= startTime;
     
 }
 
 
-    public int64_t getStartTime(){
+    public: int64_t getStartTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startTime;
+                        return this->startTime;
     
 }
 
 
-    setRunning(bool running){
-this.running= running;
+    private: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 

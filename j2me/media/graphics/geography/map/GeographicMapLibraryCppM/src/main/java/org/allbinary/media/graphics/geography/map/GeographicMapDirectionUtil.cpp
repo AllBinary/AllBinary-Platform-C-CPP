@@ -57,45 +57,42 @@
 class GeographicMapDirectionUtil
             : public Object
          {
-        
 
-    private: static const instance: GeographicMapDirectionUtil = new GeographicMapDirectionUtil();
+    private: static GeographicMapDirectionUtil instance() { return GeographicMapDirectionUtil(); }
 
-    public static GeographicMapDirectionUtil getInstance(){
+    public: static GeographicMapDirectionUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapDirectionUtil.instance;
+                        return GeographicMapDirectionUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GeographicMapDirectionUtil(){
+}
 
 
-    private: const MESSAGE: string = "Cell Position should have been cached!!!";
+    private: const std::string MESSAGE = "Cell Position should have been cached!!!";
 
                 //@Throws(Exception.constructor)
             
-    public Direction getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
+    public: Direction getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
 
-    fromColumn: int32_t = fromGeographicMapCellPosition!.getColumn()!;;
+    int32_t fromColumn = fromGeographicMapCellPosition.getColumn();;
     
 
-    fromRow: int32_t = fromGeographicMapCellPosition!.getRow()!;;
+    int32_t fromRow = fromGeographicMapCellPosition.getRow();;
     
 
-    goColumn: int32_t = toGeographicMapCellPosition!.getColumn()!;;
+    int32_t goColumn = toGeographicMapCellPosition.getColumn();;
     
 
-    goRow: int32_t = toGeographicMapCellPosition!.getRow()!;;
+    int32_t goRow = toGeographicMapCellPosition.getRow();;
     
 
-    directionFactory: DirectionFactory = DirectionFactory.getInstance()!;;
+    DirectionFactory directionFactory = DirectionFactory::getInstance();;
     
 
                         if(fromColumn -1 == goColumn)
@@ -105,7 +102,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.LEFT;
+                        return directionFactory.LEFT;
     
 
                                     }
@@ -118,7 +115,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.RIGHT;
+                        return directionFactory.RIGHT;
     
 
                                     }
@@ -131,7 +128,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP;
+                        return directionFactory.UP;
     
 
                                     }
@@ -144,7 +141,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN;
+                        return directionFactory.DOWN;
     
 
                                     }
@@ -157,7 +154,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.NO_DIRECTION;
+                        return directionFactory.NO_DIRECTION;
     
 
                                     }
@@ -169,7 +166,7 @@ private constructor (){
                                     
 
 
-                            throw new Exception(this.MESSAGE);
+                            throw Exception(this->MESSAGE);
                     
 
                                     }
@@ -178,28 +175,28 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.NOT_BORDERED_WITH;
+                        return directionFactory.NOT_BORDERED_WITH;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Direction getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
+    public: Direction getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
 
-    fromColumn: int32_t = fromGeographicMapCellPosition!.getColumn()!;;
+    int32_t fromColumn = fromGeographicMapCellPosition.getColumn();;
     
 
-    fromRow: int32_t = fromGeographicMapCellPosition!.getRow()!;;
+    int32_t fromRow = fromGeographicMapCellPosition.getRow();;
     
 
-    goColumn: int32_t = toGeographicMapCellPosition!.getColumn()!;;
+    int32_t goColumn = toGeographicMapCellPosition.getColumn();;
     
 
-    goRow: int32_t = toGeographicMapCellPosition!.getRow()!;;
+    int32_t goRow = toGeographicMapCellPosition.getRow();;
     
 
-    directionFactory: DirectionFactory = DirectionFactory.getInstance()!;;
+    DirectionFactory directionFactory = DirectionFactory::getInstance();;
     
 
                         if(fromRow == goRow)
@@ -213,7 +210,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.LEFT;
+                        return directionFactory.LEFT;
     
 
                                     }
@@ -226,7 +223,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.RIGHT;
+                        return directionFactory.RIGHT;
     
 
                                     }
@@ -246,7 +243,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP;
+                        return directionFactory.UP;
     
 
                                     }
@@ -259,7 +256,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP_LEFT;
+                        return directionFactory.UP_LEFT;
     
 
                                     }
@@ -272,7 +269,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP_RIGHT;
+                        return directionFactory.UP_RIGHT;
     
 
                                     }
@@ -292,7 +289,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN;
+                        return directionFactory.DOWN;
     
 
                                     }
@@ -305,7 +302,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN_LEFT;
+                        return directionFactory.DOWN_LEFT;
     
 
                                     }
@@ -318,7 +315,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN_RIGHT;
+                        return directionFactory.DOWN_RIGHT;
     
 
                                     }
@@ -334,7 +331,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.NO_DIRECTION;
+                        return directionFactory.NO_DIRECTION;
     
 
                                     }
@@ -346,7 +343,7 @@ private constructor (){
                                     
 
 
-                            throw new Exception(this.MESSAGE);
+                            throw Exception(this->MESSAGE);
                     
 
                                     }
@@ -355,28 +352,28 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.NOT_BORDERED_WITH;
+                        return directionFactory.NOT_BORDERED_WITH;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Direction getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
+    public: Direction getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
 
-    fromColumn: int32_t = fromGeographicMapCellPosition!.getColumn()!;;
+    int32_t fromColumn = fromGeographicMapCellPosition.getColumn();;
     
 
-    fromRow: int32_t = fromGeographicMapCellPosition!.getRow()!;;
+    int32_t fromRow = fromGeographicMapCellPosition.getRow();;
     
 
-    goColumn: int32_t = toGeographicMapCellPosition!.getColumn()!;;
+    int32_t goColumn = toGeographicMapCellPosition.getColumn();;
     
 
-    goRow: int32_t = toGeographicMapCellPosition!.getRow()!;;
+    int32_t goRow = toGeographicMapCellPosition.getRow();;
     
 
-    directionFactory: DirectionFactory = DirectionFactory.getInstance()!;;
+    DirectionFactory directionFactory = DirectionFactory::getInstance();;
     
 
                         if(fromColumn > goColumn)
@@ -386,7 +383,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.LEFT;
+                        return directionFactory.LEFT;
     
 
                                     }
@@ -399,7 +396,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.RIGHT;
+                        return directionFactory.RIGHT;
     
 
                                     }
@@ -412,7 +409,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP;
+                        return directionFactory.UP;
     
 
                                     }
@@ -425,48 +422,48 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN;
+                        return directionFactory.DOWN;
     
 
                                     }
                                 
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    string: string = stringMaker!.append(CellPosition.toStringCellPosition(fromGeographicMapCellPosition))!.append(" == ")!.append(CellPosition.toStringCellPosition(toGeographicMapCellPosition))!.toString()!;;
+    std::string string = stringMaker.append(CellPosition::toStringCellPosition(fromGeographicMapCellPosition)).append(" == ").append(CellPosition::toStringCellPosition(toGeographicMapCellPosition)).toString();;
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
 
 
 
-                            throw new Exception(stringMaker!.append("Error: ")!.append(string)!.toString());
+                            throw Exception(stringMaker.append("Error: ").append(string).toString());
                     
 }
 
 
-    private: const ERROR: string = "Error: ";
+    private: const std::string ERROR = "Error: ";
 
-    private: const EQUAL: string = " == ";
+    private: const std::string EQUAL = " == ";
 
                 //@Throws(Exception.constructor)
             
-    public Direction getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
+    public: Direction getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition){
 
-    fromColumn: int32_t = fromGeographicMapCellPosition!.getColumn()!;;
+    int32_t fromColumn = fromGeographicMapCellPosition.getColumn();;
     
 
-    fromRow: int32_t = fromGeographicMapCellPosition!.getRow()!;;
+    int32_t fromRow = fromGeographicMapCellPosition.getRow();;
     
 
-    goColumn: int32_t = toGeographicMapCellPosition!.getColumn()!;;
+    int32_t goColumn = toGeographicMapCellPosition.getColumn();;
     
 
-    goRow: int32_t = toGeographicMapCellPosition!.getRow()!;;
+    int32_t goRow = toGeographicMapCellPosition.getRow();;
     
 
-    directionFactory: DirectionFactory = DirectionFactory.getInstance()!;;
+    DirectionFactory directionFactory = DirectionFactory::getInstance();;
     
 
                         if(fromGeographicMapCellPosition == toGeographicMapCellPosition)
@@ -476,7 +473,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.NO_DIRECTION;
+                        return directionFactory.NO_DIRECTION;
     
 
                                     }
@@ -493,7 +490,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.LEFT;
+                        return directionFactory.LEFT;
     
 
                                     }
@@ -506,7 +503,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.RIGHT;
+                        return directionFactory.RIGHT;
     
 
                                     }
@@ -526,7 +523,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP_LEFT;
+                        return directionFactory.UP_LEFT;
     
 
                                     }
@@ -539,7 +536,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP_RIGHT;
+                        return directionFactory.UP_RIGHT;
     
 
                                     }
@@ -552,7 +549,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.UP;
+                        return directionFactory.UP;
     
 
                                     }
@@ -572,7 +569,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN_LEFT;
+                        return directionFactory.DOWN_LEFT;
     
 
                                     }
@@ -585,7 +582,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN_RIGHT;
+                        return directionFactory.DOWN_RIGHT;
     
 
                                     }
@@ -598,7 +595,7 @@ stringMaker!.delete(0, stringMaker!.length());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return directionFactory!.DOWN;
+                        return directionFactory.DOWN;
     
 
                                     }
@@ -607,20 +604,20 @@ stringMaker!.delete(0, stringMaker!.length());
                                     }
                                 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.ERROR);
+stringBuffer.append(this->ERROR);
     
-stringBuffer!.append(CellPosition.toStringCellPosition(fromGeographicMapCellPosition));
+stringBuffer.append(CellPosition::toStringCellPosition(fromGeographicMapCellPosition));
     
-stringBuffer!.append(this.EQUAL);
+stringBuffer.append(this->EQUAL);
     
-stringBuffer!.append(CellPosition.toStringCellPosition(toGeographicMapCellPosition));
+stringBuffer.append(CellPosition::toStringCellPosition(toGeographicMapCellPosition));
     
 
 
 
-                            throw new Exception(stringBuffer!.toString());
+                            throw Exception(stringBuffer.toString());
                     
 }
 

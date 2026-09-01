@@ -48,15 +48,14 @@
 class UserConfigurationData
             : public Object
          {
-        
 
-    public static const NAME: string = "USER_CONFIGURATION_NAME";
+    public: static const std::string NAME = "USER_CONFIGURATION_NAME";
 
-    public static const UNCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.UNCRYPTED_EXTENSION;
+    public: static const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
 
-    public static const ENCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.ENCRYPTED_EXTENSION;
+    public: static const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
 
-private constructor ();
+private: UserConfigurationData();
 
 };
 

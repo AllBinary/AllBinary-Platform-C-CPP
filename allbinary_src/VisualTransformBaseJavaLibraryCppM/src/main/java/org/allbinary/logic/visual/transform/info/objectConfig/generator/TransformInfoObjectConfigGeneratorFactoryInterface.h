@@ -47,7 +47,6 @@
         #include "TransformInfoObjectConfigGenerator.h"
 
 class TransformInfoObjectConfigGeneratorFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

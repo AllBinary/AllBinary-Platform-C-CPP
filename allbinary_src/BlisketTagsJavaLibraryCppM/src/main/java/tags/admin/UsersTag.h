@@ -55,17 +55,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UsersTag: public StoreValidationTransformTag {
-        
 
-    private: role: string;
+    private: std::string role;
 
-public constructor ();
+public: UsersTag();
 
-    public setRole(string value);
+    public: void setRole(std::string value);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

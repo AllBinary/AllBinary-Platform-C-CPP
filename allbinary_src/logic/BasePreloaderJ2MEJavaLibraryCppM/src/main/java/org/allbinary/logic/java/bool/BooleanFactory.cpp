@@ -51,42 +51,41 @@
 class BooleanFactory
             : public Object
          {
-        
 
-    private: static const instance: BooleanFactory = new BooleanFactory();
+    private: static BooleanFactory instance() { return BooleanFactory(); }
 
-    public static BooleanFactory getInstance(){
+    public: static BooleanFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.instance;
+                        return BooleanFactory::instance();
     
 }
 
 
-    public const TRUE: Boolean = true;
+    public: const Boolean TRUE = true;
 
-    public const FALSE: Boolean = false;
+    public: const Boolean FALSE = false;
 
-    public const TRUE_STRING: string = this.TRUE.toString()!;
+    public: const std::string TRUE_STRING = this->TRUE.toString();
 
-    public const FALSE_STRING: string = this.FALSE.toString()!;
+    public: const std::string FALSE_STRING = this->FALSE.toString();
 
-    public const YES: string = "yes";
+    public: const std::string YES = "yes";
 
-    public const NO: string = "no";
+    public: const std::string NO = "no";
 
-    public string toStringb(bool bool){
+    public: std::string toStringb(bool bool_){
 
-                        if(bool)
+                        if(bool_)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.TRUE_STRING;
+                        return this->TRUE_STRING;
     
 
                                     }
@@ -96,7 +95,7 @@ class BooleanFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.FALSE_STRING;
+                        return this->FALSE_STRING;
     
 
                         }

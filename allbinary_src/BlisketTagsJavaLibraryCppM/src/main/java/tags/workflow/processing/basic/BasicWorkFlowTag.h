@@ -58,15 +58,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //and remove the hidden fields
 class BasicWorkFlowTag: public StoreWorkFlowTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: BasicWorkFlowTag();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

@@ -55,28 +55,27 @@
 class Visitor
             : public Object
         : public VisitorInterface {
-        
 
-    private: static const instance: Visitor = new Visitor();
+    private: static Visitor instance() { return Visitor(); }
 
-    public static Visitor getInstance(){
+    public: static Visitor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Visitor.instance;
+                        return Visitor::instance();
     
 }
 
 
-    const nullUtil: NullUtil = NullUtil.getInstance()!;
+    protected: const NullUtil nullUtil = NullUtil::getInstance();
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nullUtil!.NULL_OBJECT;
+                        return this->nullUtil.NULL_OBJECT;
     
 }
 

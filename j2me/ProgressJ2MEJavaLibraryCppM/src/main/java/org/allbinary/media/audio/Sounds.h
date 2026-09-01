@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_SOUNDS_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_SOUNDS_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -76,29 +78,28 @@
 class Sounds
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const soundStrings: SoundStrings = SoundStrings.getInstance()!;
+    private: const SoundStrings soundStrings = SoundStrings::getInstance();
 
-    private: const soundsFactoryInterface: SoundsFactoryInterface;
+    private: SoundsFactoryInterface soundsFactoryInterface;
 
-public constructor (SoundsFactoryInterface soundsFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public init();
+public: Sounds(SoundsFactoryInterface soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public stopAll();
+    public: void init();
 
                 //@Throws(Exception.constructor)
             
-    public closeAll();
+    public: void stopAll();
+
+                //@Throws(Exception.constructor)
+            
+    public: void closeAll();
 
 };
 

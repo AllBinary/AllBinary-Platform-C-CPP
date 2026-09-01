@@ -60,11 +60,10 @@
 class LayerUtil
             : public Object
          {
-        
 
-    private: static const HASHTABLE: string = "Hashtable: ";
+    private: static const std::string HASHTABLE = "Hashtable: ";
 
-    public static string toString(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: static std::string toString(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
 
 };
 

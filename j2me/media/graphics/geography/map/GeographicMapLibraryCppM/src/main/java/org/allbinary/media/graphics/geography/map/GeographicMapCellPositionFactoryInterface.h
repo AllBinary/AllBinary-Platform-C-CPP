@@ -45,7 +45,6 @@
 #include "BasicGeographicMap.h"
 
 class GeographicMapCellPositionFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

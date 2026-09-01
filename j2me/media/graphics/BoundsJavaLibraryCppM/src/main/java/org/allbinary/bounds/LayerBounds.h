@@ -67,21 +67,20 @@
 class LayerBounds
             : public Object
         : public BoundsChangeEventListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    rectangle: Rectangle;
+    protected: Rectangle rectangle;
 
-protected constructor (Rectangle rectangle);
+protected: LayerBounds(Rectangle rectangle);
 
-    public Rectangle getRectangleP();
+    public: Rectangle getRectangleP();
 
-    public visit(BoundsVisitorInterface boundsVisitorInterface);
+    public: void visit(BoundsVisitorInterface boundsVisitorInterface);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent);
+    public: void onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent);
 
 };
 

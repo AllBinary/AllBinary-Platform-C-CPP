@@ -50,15 +50,14 @@
         #include "SensorGameUpdateProcessor.h"
 
 class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
-        
 
                 //@Throws(Exception.constructor)
             
-    public process(any = {} anyType);
+    public: void process(Object* anyType);
 
                 //@Throws(Exception.constructor)
             
-    public sendNotifications(any = {} anyType);
+    public: void sendNotifications(Object* anyType);
 
 };
 

@@ -42,24 +42,21 @@
 class AbSqlData
             : public Object
          {
-        
 
-    public static const ANYSINGLECHARACTERMATCH: string = "_";
+    public: static const std::string ANYSINGLECHARACTERMATCH = "_";
 
-    public static const ANYMULTICHARACTERMATCH: string = "%";
+    public: static const std::string ANYMULTICHARACTERMATCH = "%";
 
-    public static const MAXNUM: int32_t = 19;
+    public: static const int32_t MAXNUM = 19;
 
-    public static const MINSTRING: int32_t = 1;
+    public: static const int32_t MINSTRING = 1;
 
-    public static const MAXSTRING: int32_t = 255;
+    public: static const int32_t MAXSTRING = 255;
 
-    public static const MAXBLOB: int32_t = 32000;
+    public: static const int32_t MAXBLOB = 32000;
 
-public constructor (){
-
-            super();
-        }
+public: AbSqlData(){
+}
 
 
 };

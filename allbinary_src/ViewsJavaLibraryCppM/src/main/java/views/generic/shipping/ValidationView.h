@@ -54,18 +54,17 @@
 #include "Document.h"
 #include "Node.h"
 
-class ValidationView: public ShippingMethodsView: public ValidationComponentInterface {
-        
+class ValidationView: public ShippingMethodsView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: ValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public org.w3c.dom.Document toValidationInfoDoc();
+    public: org::w3c::dom::Document toValidationInfoDoc();
 
-    public org.w3c.dom.Node toValidationInfoNode(org.w3c.dom.Document document);
+    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
 };
 

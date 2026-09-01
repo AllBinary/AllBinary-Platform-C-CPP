@@ -69,148 +69,143 @@
 class BasicStoreFront
             : public Object
         : public BasicStoreFrontInterface {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: basketName: string;
+    private: std::string basketName;
 
-    private: homeHostName: string;
+    private: std::string homeHostName;
 
-    private: homeHostNamePath: string;
+    private: std::string homeHostNamePath;
 
-    private: hostName: string;
+    private: std::string hostName;
 
-    private: hostNamePath: string;
+    private: std::string hostNamePath;
 
-    private: testHomeHostName: string;
+    private: std::string testHomeHostName;
 
-    private: testHomeHostNamePath: string;
+    private: std::string testHomeHostNamePath;
 
-    private: testHostName: string;
+    private: std::string testHostName;
 
-    private: testHostNamePath: string;
+    private: std::string testHostNamePath;
 
-    private: imagePath: string;
+    private: std::string imagePath;
 
-    private: staticPath: string;
+    private: std::string staticPath;
 
-    private: categoryPath: string;
+    private: std::string categoryPath;
 
-    private: inventoryControl: string;
+    private: std::string inventoryControl;
 
-    private: subStores: string;
+    private: std::string subStores;
 
-    private: tagLocation: string;
+    private: std::string tagLocation;
 
-    private: packageLocation: string;
+    private: std::string packageLocation;
 
-    private: ftp: string;
+    private: std::string ftp;
 
-    private: ftpPath: string;
+    private: std::string ftpPath;
 
-    private: ftpUserName: string;
+    private: std::string ftpUserName;
 
-    private: ftpPassword: string;
+    private: std::string ftpPassword;
 
-    private: testFtp: string;
+    private: std::string testFtp;
 
-    private: testFtpPath: string;
+    private: std::string testFtpPath;
 
-    private: testFtpUserName: string;
+    private: std::string testFtpUserName;
 
-    private: testFtpPassword: string;
+    private: std::string testFtpPassword;
 
-    private: timeCreated: string;
+    private: std::string timeCreated;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (){
-
-            super();
-        }
+public: BasicStoreFront(){
+}
 
 
-public constructor (HashMap<any, any> storeHashMap){
+public: BasicStoreFront(HashMap<any, any> storeHashMap){
 
-            super();
-        
-    storeFrontData: StoreFrontData = StoreFrontData.getInstance()!;;
+    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
     
-this.name= storeHashMap!.get(storeFrontData!.NAME) as string;
+this->name= storeHashMap.get(storeFrontData.NAME) as string;
     
-this.userName= storeHashMap!.get(UserData.USERNAME) as string;
+this->userName= storeHashMap.get(UserData::USERNAME) as string;
     
-this.basketName= storeHashMap!.get(storeFrontData!.NAME) as string;
+this->basketName= storeHashMap.get(storeFrontData.NAME) as string;
     
-this.homeHostName= storeHashMap!.get(storeFrontData!.HOMEHOSTNAME) as string;
+this->homeHostName= storeHashMap.get(storeFrontData.HOMEHOSTNAME) as string;
     
-this.homeHostNamePath= storeHashMap!.get(storeFrontData!.HOMEHOSTNAMEPATH) as string;
+this->homeHostNamePath= storeHashMap.get(storeFrontData.HOMEHOSTNAMEPATH) as string;
     
-this.hostName= storeHashMap!.get(storeFrontData!.HOSTNAME) as string;
+this->hostName= storeHashMap.get(storeFrontData.HOSTNAME) as string;
     
-this.hostNamePath= storeHashMap!.get(storeFrontData!.HOSTNAMEPATH) as string;
+this->hostNamePath= storeHashMap.get(storeFrontData.HOSTNAMEPATH) as string;
     
-this.testHomeHostName= storeHashMap!.get(storeFrontData!.TESTHOMEHOSTNAME) as string;
+this->testHomeHostName= storeHashMap.get(storeFrontData.TESTHOMEHOSTNAME) as string;
     
-this.testHomeHostNamePath= storeHashMap!.get(storeFrontData!.TESTHOMEHOSTNAMEPATH) as string;
+this->testHomeHostNamePath= storeHashMap.get(storeFrontData.TESTHOMEHOSTNAMEPATH) as string;
     
-this.testHostName= storeHashMap!.get(storeFrontData!.TESTHOSTNAME) as string;
+this->testHostName= storeHashMap.get(storeFrontData.TESTHOSTNAME) as string;
     
-this.testHostNamePath= storeHashMap!.get(storeFrontData!.TESTHOSTNAMEPATH) as string;
+this->testHostNamePath= storeHashMap.get(storeFrontData.TESTHOSTNAMEPATH) as string;
     
-this.imagePath= storeHashMap!.get(storeFrontData!.IMAGEPATH) as string;
+this->imagePath= storeHashMap.get(storeFrontData.IMAGEPATH) as string;
     
-this.staticPath= storeHashMap!.get(storeFrontData!.STATICPATH) as string;
+this->staticPath= storeHashMap.get(storeFrontData.STATICPATH) as string;
     
-this.categoryPath= storeHashMap!.get(storeFrontData!.CATEGORYPATH) as string;
+this->categoryPath= storeHashMap.get(storeFrontData.CATEGORYPATH) as string;
     
-this.inventoryControl= storeHashMap!.get(storeFrontData!.INVENTORYCONTROL) as string;
+this->inventoryControl= storeHashMap.get(storeFrontData.INVENTORYCONTROL) as string;
     
-this.subStores= storeHashMap!.get(storeFrontData!.SUBSTORES) as string;
+this->subStores= storeHashMap.get(storeFrontData.SUBSTORES) as string;
     
-this.tagLocation= storeHashMap!.get(storeFrontData!.TAGLOCATION) as string;
+this->tagLocation= storeHashMap.get(storeFrontData.TAGLOCATION) as string;
     
-this.packageLocation= storeHashMap!.get(storeFrontData!.PACKAGELOCATION) as string;
+this->packageLocation= storeHashMap.get(storeFrontData.PACKAGELOCATION) as string;
     
-this.ftp= storeHashMap!.get(storeFrontData!.FTP) as string;
+this->ftp= storeHashMap.get(storeFrontData.FTP) as string;
     
-this.ftpPath= storeHashMap!.get(storeFrontData!.FTPPATH) as string;
+this->ftpPath= storeHashMap.get(storeFrontData.FTPPATH) as string;
     
-this.ftpUserName= storeHashMap!.get(storeFrontData!.FTPUSERNAME) as string;
+this->ftpUserName= storeHashMap.get(storeFrontData.FTPUSERNAME) as string;
     
-this.ftpPassword= storeHashMap!.get(storeFrontData!.FTPPASSWORD) as string;
+this->ftpPassword= storeHashMap.get(storeFrontData.FTPPASSWORD) as string;
     
-this.testFtp= storeHashMap!.get(storeFrontData!.TESTFTP) as string;
+this->testFtp= storeHashMap.get(storeFrontData.TESTFTP) as string;
     
-this.testFtpPath= storeHashMap!.get(storeFrontData!.TESTFTPPATH) as string;
+this->testFtpPath= storeHashMap.get(storeFrontData.TESTFTPPATH) as string;
     
-this.testFtpUserName= storeHashMap!.get(storeFrontData!.TESTFTPUSERNAME) as string;
+this->testFtpUserName= storeHashMap.get(storeFrontData.TESTFTPUSERNAME) as string;
     
-this.testFtpPassword= storeHashMap!.get(storeFrontData!.TESTFTPPASSWORD) as string;
+this->testFtpPassword= storeHashMap.get(storeFrontData.TESTFTPPASSWORD) as string;
     
-this.timeCreated= storeHashMap!.get(EntryData.getInstance()!.TIMECREATED) as string;
+this->timeCreated= storeHashMap.get(EntryData::getInstance().TIMECREATED) as string;
     
-this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as string;
+this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED) as string;
     
 }
 
 
-    public string getTestHtmlPath(){
+    public: std::string getTestHtmlPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.URLGLOBALS.getTestHtmlPath() +this.getCurrentHostNamePath();
+                        return org.allbinary.globals.URLGLOBALS.getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
 
-    public string getCurrentHostName(){
+    public: std::string getCurrentHostName(){
 
-    location: string = 
+    std::string location = 
                 null
             ;;
     
@@ -218,13 +213,13 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHostName();
+                                    location= this->getTestHostName();
     
 
                                     }
                                 
                         else {
-                            location= this.getHostName();
+                            location= this->getHostName();
     
 
                         }
@@ -238,9 +233,9 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
 }
 
 
-    public string getCurrentHostNamePath(){
+    public: std::string getCurrentHostNamePath(){
 
-    location: string = 
+    std::string location = 
                 null
             ;;
     
@@ -248,13 +243,13 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHostNamePath();
+                                    location= this->getTestHostNamePath();
     
 
                                     }
                                 
                         else {
-                            location= this.getHostNamePath();
+                            location= this->getHostNamePath();
     
 
                         }
@@ -268,9 +263,9 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
 }
 
 
-    public string getCurrentHomeHostName(){
+    public: std::string getCurrentHomeHostName(){
 
-    location: string = 
+    std::string location = 
                 null
             ;;
     
@@ -278,13 +273,13 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHomeHostName();
+                                    location= this->getTestHomeHostName();
     
 
                                     }
                                 
                         else {
-                            location= this.getHomeHostName();
+                            location= this->getHomeHostName();
     
 
                         }
@@ -298,9 +293,9 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
 }
 
 
-    public string getCurrentHomeHostNamePath(){
+    public: std::string getCurrentHomeHostNamePath(){
 
-    location: string = 
+    std::string location = 
                 null
             ;;
     
@@ -308,13 +303,13 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHomeHostNamePath();
+                                    location= this->getTestHomeHostNamePath();
     
 
                                     }
                                 
                         else {
-                            location= this.getHomeHostNamePath();
+                            location= this->getHomeHostNamePath();
     
 
                         }
@@ -328,156 +323,156 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getUserName(){
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userName;
+                        return this->userName;
     
 }
 
 
-    public string getBasketName(){
+    public: std::string getBasketName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basketName;
+                        return this->basketName;
     
 }
 
 
-    public string getHomeHostName(){
+    public: std::string getHomeHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.homeHostName;
+                        return this->homeHostName;
     
 }
 
 
-    public string getHomeHostNamePath(){
+    public: std::string getHomeHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.homeHostNamePath;
+                        return this->homeHostNamePath;
     
 }
 
 
-    public string getHostName(){
+    public: std::string getHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hostName;
+                        return this->hostName;
     
 }
 
 
-    public string getHostNamePath(){
+    public: std::string getHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hostNamePath;
+                        return this->hostNamePath;
     
 }
 
 
-    public string getTestHomeHostName(){
+    public: std::string getTestHomeHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHomeHostName;
+                        return this->testHomeHostName;
     
 }
 
 
-    public string getTestHomeHostNamePath(){
+    public: std::string getTestHomeHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHomeHostNamePath;
+                        return this->testHomeHostNamePath;
     
 }
 
 
-    public string getTestHostName(){
+    public: std::string getTestHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHostName;
+                        return this->testHostName;
     
 }
 
 
-    public string getTestHostNamePath(){
+    public: std::string getTestHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHostNamePath;
+                        return this->testHostNamePath;
     
 }
 
 
-    public string getStaticPath(){
+    public: std::string getStaticPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.staticPath;
+                        return this->staticPath;
     
 }
 
 
-    public string getCategoryPath(){
+    public: std::string getCategoryPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.categoryPath;
+                        return this->categoryPath;
     
 }
 
 
-    public string getInventoryControl(){
+    public: std::string getInventoryControl(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inventoryControl;
+                        return this->inventoryControl;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getSubStores(){
+    public: BasicArrayList getSubStores(){
 
         try {
             
-    tokenizer: Tokenizer = new Tokenizer(CommonSeps.getInstance()!.SEMICOLON);;
+    Tokenizer tokenizer = Tokenizer(CommonSeps::getInstance().SEMICOLON);;
     
 
-    subStoreVector: BasicArrayList = tokenizer.getTokensFromString(this.subStores, new BasicArrayListD())!;;
+    BasicArrayList subStoreVector = tokenizer.getTokensFromString(this->subStores, BasicArrayListD());;
     
 
 
@@ -499,122 +494,122 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
 }
 
 
-    public string getTagLocation(){
+    public: std::string getTagLocation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tagLocation;
+                        return this->tagLocation;
     
 }
 
 
-    public string getPackageLocation(){
+    public: std::string getPackageLocation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.packageLocation;
+                        return this->packageLocation;
     
 }
 
 
-    public string getFtp(){
+    public: std::string getFtp(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftp;
+                        return this->ftp;
     
 }
 
 
-    public string getFtpUserName(){
+    public: std::string getFtpUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpUserName;
+                        return this->ftpUserName;
     
 }
 
 
-    public string getFtpPassword(){
+    public: std::string getFtpPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpPassword;
+                        return this->ftpPassword;
     
 }
 
 
-    public string getTestFtp(){
+    public: std::string getTestFtp(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtp;
+                        return this->testFtp;
     
 }
 
 
-    public string getTestFtpUserName(){
+    public: std::string getTestFtpUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtpUserName;
+                        return this->testFtpUserName;
     
 }
 
 
-    public string getTestFtpPassword(){
+    public: std::string getTestFtpPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtpPassword;
+                        return this->testFtpPassword;
     
 }
 
 
-    public string getFtpPath(){
+    public: std::string getFtpPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpPath;
+                        return this->ftpPath;
     
 }
 
 
-    public string getTestFtpPath(){
+    public: std::string getTestFtpPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtpPath;
+                        return this->testFtpPath;
     
 }
 
 
-    public string getTimeCreated(){
+    public: std::string getTimeCreated(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeCreated;
+                        return this->timeCreated;
     
 }
 
 
-    public string getLastModified(){
+    public: std::string getLastModified(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastModified;
+                        return this->lastModified;
     
 }
 

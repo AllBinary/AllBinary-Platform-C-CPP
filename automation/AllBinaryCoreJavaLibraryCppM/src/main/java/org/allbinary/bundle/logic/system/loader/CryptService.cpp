@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -89,51 +91,48 @@
 class CryptService
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abCryptUtil: AbCryptUtil = AbCryptUtil.getInstance()!;
+    private: const AbCryptUtil abCryptUtil = AbCryptUtil::getInstance();
 
-public constructor (){
-
-            super();
-        Globals.getInstance()!.init(this.constructor.namegetClassLoader(), "./");
+public: CryptService(){
+Globals::getInstance().init(this->constructor.namegetClassLoader(), "./");
     
-this.logUtil!.putF("Set Globals: " +URLGLOBALS.getWebappPath(), this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("Set Globals: " +URLGLOBALS::getWebappPath(), this, this->commonStrings.CONSTRUCTOR);
     
 }
 
 
-    public InputStream getDecryptedInputStream(AbeClientInformationInterface abeClientInformation, string name, InputStream inputStream){
+    public: InputStream getDecryptedInputStream(AbeClientInformationInterface abeClientInformation, std::string name, InputStream inputStream){
 
         try {
             
-    key: string = AbKeys.getInstance()!.getKey(abeClientInformation, name)!;;
+    std::string key = AbKeys::getInstance().getKey(abeClientInformation, name);;
     
 
-    decrypted: std::vector<int8_t> = this.abCryptUtil!.decrypt(inputStream, key)!;;
+    std::vector<int8_t> decrypted = this->abCryptUtil.decrypt(inputStream, key);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ByteArrayInputStream(decrypted);
+                        return ByteArrayInputStream(decrypted);
     
 
                 //: 
 } catch(e) 
             {
-this.showLicenseDialog(abeClientInformation, e);
+this->showLicenseDialog(abeClientInformation, e);
     
 }
 
                 //: 
 /* catch(e) 
             {
-this.showLicenseDialog(abeClientInformation, e);
+this->showLicenseDialog(abeClientInformation, e);
     
 }
 */
@@ -146,28 +145,28 @@ this.showLicenseDialog(abeClientInformation, e);
 }
 
 
-    showLicenseDialog(AbeClientInformationInterface abeClientInformation, Exception e){
+    private: void showLicenseDialog(AbeClientInformationInterface abeClientInformation, Exception e){
 
         try {
-            this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+            this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 
-    basicTextJDialog: BasicTextJDialog = new BasicTextJDialog(e.message);;
+    BasicTextJDialog basicTextJDialog = BasicTextJDialog(e.message);;
     
 
         try {
             
-    abeLicenseInterface: AbeLicenseInterface = AbeLicenseInterfaceFactory.getInstance()!.getLicenseInstance(abeClientInformation)!;;
+    AbeLicenseInterface abeLicenseInterface = AbeLicenseInterfaceFactory::getInstance().getLicenseInstance(abeClientInformation);;
     
 
-                        if(abeLicenseInterface != AbeNoLicense.getInstance())
+                        if(abeLicenseInterface != AbeNoLicense::getInstance())
                         
                                     {
                                     
-                        if(abeLicenseInterface!.isValid())
+                        if(abeLicenseInterface.isValid())
                         
                                     {
-                                    basicTextJDialog!.setText("Subscription Invalid");
+                                    basicTextJDialog.setText("Subscription Invalid");
     
 
                                     }
@@ -179,19 +178,19 @@ this.showLicenseDialog(abeClientInformation, e);
                 //: 
 } catch(e2) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e2);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e2);
     
 }
 
-basicTextJDialog!.addCloseListener(new ExitCloseListener());
+basicTextJDialog.addCloseListener(ExitCloseListener());
     
-basicTextJDialog!.setVisible(true);
+basicTextJDialog.setVisible(true);
     
 
                 //: 
 } catch(e3) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e3);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e3);
     
 }
 

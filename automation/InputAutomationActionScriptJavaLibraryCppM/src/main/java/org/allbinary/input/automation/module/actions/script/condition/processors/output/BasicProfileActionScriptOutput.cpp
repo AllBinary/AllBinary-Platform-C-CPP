@@ -50,10 +50,9 @@
         #include "ProfileActionScriptOutputInterface.h"
 #include "GenericProfileActionScriptOutputData.h"
 
-class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor: public ProfileActionScriptOutputInterface {
-        
+class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor, public ProfileActionScriptOutputInterface {
 
-public constructor (string label, Node node){
+public: BasicProfileActionScriptOutput(std::string label, Node node){
             super(label, node);
                     
 
@@ -62,7 +61,7 @@ public constructor (string label, Node node){
 }
 
 
-public constructor (string label){
+public: BasicProfileActionScriptOutput(std::string label){
             super(label);
                     
 
@@ -73,9 +72,9 @@ public constructor (string label){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(GenericProfileActionScriptOutputData.NAME)!;;
+    Node node = document.createElement(GenericProfileActionScriptOutputData::NAME);;
     
 
 

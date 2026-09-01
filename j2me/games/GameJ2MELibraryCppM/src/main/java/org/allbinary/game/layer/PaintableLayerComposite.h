@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_H
         #define ORG_ALLBINARY_GAME_LAYER_PAINTABLELAYERCOMPOSITE_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -53,15 +55,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaintableLayerComposite: public Paintable {
-        
 
-    private: const paintableArray: std::vector<Layer>;
+    private: std::vector<Layer> paintableArray;
 
-public constructor (std::vector<Layer> paintableArray);
+public: PaintableLayerComposite(std::vector<Layer> paintableArray);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

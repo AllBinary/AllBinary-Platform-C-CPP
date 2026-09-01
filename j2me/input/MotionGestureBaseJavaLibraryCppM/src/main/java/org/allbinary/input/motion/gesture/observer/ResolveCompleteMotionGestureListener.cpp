@@ -72,53 +72,50 @@
 class ResolveCompleteMotionGestureListener
             : public Object
         : public CompleteMotionGestureListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
+public: ResolveCompleteMotionGestureListener(){
 
-            super();
-        
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF("MotionGesture to CompleteMotionGesture Reciever", this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("MotionGesture to CompleteMotionGesture Reciever", this, commonStrings.CONSTRUCTOR);
     
-CompleteMotionGestureInputEventHandler.getInstance()!.addListener(new GameKeyFromMotionGestureEventListener());
+CompleteMotionGestureInputEventHandler::getInstance().addListener(GameKeyFromMotionGestureEventListener());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onMotionGestureCompleted(BasicArrayList list){
+    public: void onMotionGestureCompleted(BasicArrayList list){
 
-    configuration: MotionGestureConfiguration = MotionGestureConfigurationFactory.getInstance()!;;
+    MotionGestureConfiguration configuration = MotionGestureConfigurationFactory::getInstance();;
     
 
-    commandActionsList: BasicArrayList = configuration.getAssociateCommandActionsList()!;;
+    BasicArrayList commandActionsList = configuration.getAssociateCommandActionsList();;
     
 
-    size: int32_t = commandActionsList!.size()!;;
+    int32_t size = commandActionsList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
 
-    association: MotionGestureToMotionGestureActionAssociation = commandActionsList!.objectArray[index]! as MotionGestureToMotionGestureActionAssociation;;
+    MotionGestureToMotionGestureActionAssociation association = commandActionsList.objectArray[index]! as MotionGestureToMotionGestureActionAssociation;;
     
 
                         if(association.isMotionGestureArrayEquals(list) == true)
                         
                                     {
                                     
-    completeMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent = association.getCommandAction() as GameKeyCompleteMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent completeMotionGestureInputEvent = association.getCommandAction() as GameKeyCompleteMotionGestureInputEvent;;
     
-CompleteMotionGestureInputEventHandler.getInstance()!.fireEvent(completeMotionGestureInputEvent);
+CompleteMotionGestureInputEventHandler::getInstance().fireEvent(completeMotionGestureInputEvent);
     
 break;
 

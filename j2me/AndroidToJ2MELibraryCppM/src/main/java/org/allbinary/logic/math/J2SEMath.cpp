@@ -44,31 +44,30 @@
 class J2SEMath
             : public Object
          {
-        
 
-    private: static const instance: J2SEMath = new J2SEMath();
+    private: static J2SEMath instance() { return J2SEMath(); }
 
-    public static J2SEMath getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2SEMath.instance;
-    
-}
-
-
-    public int32_t round(float value){
+    public: static J2SEMath getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Math.round(value);;
+                        return J2SEMath::instance();
     
 }
 
 
-    public float abs(float value){
+    public: int32_t round(float value){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Math::round(value);;
+    
+}
+
+
+    public: float abs(float value){
 
 
 
@@ -85,7 +84,7 @@ class J2SEMath
 }
 
 
-    public double absdouble(double value){
+    public: double absdouble(double value){
 
 
 

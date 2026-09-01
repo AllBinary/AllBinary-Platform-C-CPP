@@ -28,16 +28,15 @@
         #include "AndroidKeyFactory.h"
 
 class AndroidAPI1KeyFactory: public AndroidKeyFactory {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AndroidAPI1KeyFactory getInstance(){
+    public: static AndroidAPI1KeyFactory getInstance(){
 
-                        if(AndroidAPI1KeyFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(AndroidAPI1KeyFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    AndroidAPI1KeyFactory.instance= new AndroidAPI1KeyFactory();
+                                    AndroidAPI1KeyFactory::instance= AndroidAPI1KeyFactory();
     
 
                                     }
@@ -46,15 +45,13 @@ class AndroidAPI1KeyFactory: public AndroidKeyFactory {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidAPI1KeyFactory.instance as AndroidAPI1KeyFactory;
+                        return AndroidAPI1KeyFactory::instance() as AndroidAPI1KeyFactory;
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
+protected: AndroidAPI1KeyFactory(){
+}
 
 
 };

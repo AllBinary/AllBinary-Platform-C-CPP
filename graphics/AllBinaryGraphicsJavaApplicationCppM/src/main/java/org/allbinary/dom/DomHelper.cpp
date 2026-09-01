@@ -86,39 +86,36 @@
 class DomHelper
             : public Object
          {
-        
 
-    private: static const instance: DomHelper = new DomHelper();
+    private: static DomHelper instance() { return DomHelper(); }
 
-    public static DomHelper getInstance(){
+    public: static DomHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomHelper.instance;
+                        return DomHelper::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: DomHelper(){
+}
 
 
-    public Document createDocument(){
+    public: Document createDocument(){
 
         try {
             
-    factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()!;;
+    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
     
 
-    builder: DocumentBuilder = factory.newDocumentBuilder()!;;
+    DocumentBuilder builder = factory.newDocumentBuilder();;
     
 
-    document: Document = builder.newDocument()!;;
+    Document document = builder.newDocument();;
     
 
 
@@ -143,17 +140,17 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public Document createDocument(File xmlFile){
+    public: Document createDocument(File xmlFile){
 
         try {
             
-    factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()!;;
+    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
     
 
-    builder: DocumentBuilder = factory.newDocumentBuilder()!;;
+    DocumentBuilder builder = factory.newDocumentBuilder();;
     
 
-    document: Document = builder.parse(xmlFile)!;;
+    Document document = builder.parse(xmlFile);;
     
 
 
@@ -177,31 +174,31 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public string toString(Document document){
+    public: std::string toString(Document document){
 
         try {
             
-    domSource: DOMSource = new DOMSource(document);;
+    DOMSource domSource = DOMSource(document);;
     
 
-    byteArrayOutputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
     
 
-    streamResult: StreamResult = new StreamResult(byteArrayOutputStream);;
+    StreamResult streamResult = StreamResult(byteArrayOutputStream);;
     
 
-    copyTransformerFactory: TransformerFactory = TransformerFactory.newInstance()!;;
+    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
     
 
-    copyTransformer: Transformer = copyTransformerFactory!.newTransformer()!;;
+    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
     
-copyTransformer!.transform(domSource, streamResult);
+copyTransformer.transform(domSource, streamResult);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream!.toString();;
+                        return byteArrayOutputStream.toString();;
     
 
                 //: 
@@ -219,24 +216,24 @@ copyTransformer!.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public save(File file, Document document){
+    public: void save(File file, Document document){
 
         try {
             
-    copyTransformerFactory: TransformerFactory = TransformerFactory.newInstance()!;;
+    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
     
 
-    copyTransformer: Transformer = copyTransformerFactory!.newTransformer()!;;
+    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
     
 
-    domSource: DOMSource = new DOMSource(document);;
+    DOMSource domSource = DOMSource(document);;
     
 file.createNewFile();
     
 
-    streamResult: StreamResult = new StreamResult(file);;
+    StreamResult streamResult = StreamResult(file);;
     
-copyTransformer!.transform(domSource, streamResult);
+copyTransformer.transform(domSource, streamResult);
     
 
                 //: 
@@ -254,22 +251,22 @@ copyTransformer!.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public NodeList getChildNodeList(string nodeName, NodeList nodeList){
+    public: NodeList getChildNodeList(std::string nodeName, NodeList nodeList){
 
-    numberOfNodes: int32_t = nodeList!.getLength()!;;
+    int32_t numberOfNodes = nodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfNodes; index++)
+    int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
 
-                        if(node.getNodeName()!.compareTo(nodeName) == 0)
+                        if(node.getNodeName().compareTo(nodeName) == 0)
                         
                                     {
                                     
@@ -286,35 +283,35 @@ copyTransformer!.transform(domSource, streamResult);
 
 
 
-                            throw new Exception(nodeName +" Node Not Found");
+                            throw Exception(nodeName +" Node Not Found");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getChildrenWithoutTextNodes(string nodeName, NodeList nodeList){
+    public: BasicArrayList getChildrenWithoutTextNodes(std::string nodeName, NodeList nodeList){
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    childNodeList: NodeList = this.getChildNodeList(nodeName, nodeList)!;;
+    NodeList childNodeList = this->getChildNodeList(nodeName, nodeList);;
     
 
-    numberOfChildren: int32_t = childNodeList!.getLength()!;;
+    int32_t numberOfChildren = childNodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfChildren; index++)
+    int32_t index = 0;index < numberOfChildren; index++)
         {
 
-    node: Node = childNodeList!.item(index)!;;
+    Node node = childNodeList.item(index);;
     
 
-                        if(node.getNodeType() != Node.TEXT_NODE)
+                        if(node.getNodeType() != Node::TEXT_NODE)
                         
                                     {
                                     list.add(node);
@@ -335,25 +332,25 @@ copyTransformer!.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getWithoutTextNodes(NodeList nodeList){
+    public: BasicArrayList getWithoutTextNodes(NodeList nodeList){
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    numberOfChildren: int32_t = nodeList!.getLength()!;;
+    int32_t numberOfChildren = nodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfChildren; index++)
+    int32_t index = 0;index < numberOfChildren; index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
 
-                        if(node.getNodeType() != Node.TEXT_NODE)
+                        if(node.getNodeType() != Node::TEXT_NODE)
                         
                                     {
                                     list.add(node);
@@ -374,24 +371,24 @@ copyTransformer!.transform(domSource, streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public Node searchNodeList(string nodeName, NodeList nodeList){
+    public: Node searchNodeList(std::string nodeName, NodeList nodeList){
 
-    numberOfNodes: int32_t = nodeList!.getLength()!;;
+    int32_t numberOfNodes = nodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfNodes; index++)
+    int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
-this.logUtil!.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
+this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
     
 
-                        if(node.getNodeName()!.compareTo(nodeName) == 0)
+                        if(node.getNodeName().compareTo(nodeName) == 0)
                         
                                     {
                                     
@@ -408,31 +405,31 @@ this.logUtil!.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
 
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(nodeName +" Node Not Found in search");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node searchNodeList(string nodeName, BasicArrayList nodeList){
+    public: Node searchNodeList(std::string nodeName, BasicArrayList nodeList){
 
-    numberOfNodes: int32_t = nodeList!.size()!;;
+    int32_t numberOfNodes = nodeList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfNodes; index++)
+    int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    node: Node = nodeList!.get(index) as Node;;
+    Node node = nodeList.get(index) as Node;;
     
-this.logUtil!.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
+this->logUtil.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
     
 
-                        if(node.getNodeName()!.compareTo(nodeName) == 0)
+                        if(node.getNodeName().compareTo(nodeName) == 0)
                         
                                     {
                                     
@@ -449,7 +446,7 @@ this.logUtil!.putF("NodeName: " +node.getNodeName(), this, "searchNodeList");
 
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(nodeName +" Node Not Found in search");
                     
 }
 

@@ -42,24 +42,21 @@
 class NameSpaceRequestParamData
             : public Object
          {
-        
 
-    public static const NAME: string = "NAMESPACE_REQUESTDATA_NAME";
+    public: static const std::string NAME = "NAMESPACE_REQUESTDATA_NAME";
 
-    public static const VALUE: string = "INPUT_VALUE";
+    public: static const std::string VALUE = "INPUT_VALUE";
 
-    public static const PROPERTIES: string = "_PROPERTIES_";
+    public: static const std::string PROPERTIES = "_PROPERTIES_";
 
-    public static const SEP: string = "_DOT_";
+    public: static const std::string SEP = "_DOT_";
 
-    public static const PROPERTIESSEPARATOR: string = "_PROPDOT_";
+    public: static const std::string PROPERTIESSEPARATOR = "_PROPDOT_";
 
-    public static const DOCUMENT: string = "NAMESPACE_REQUESTDATA_DOCUMENT";
+    public: static const std::string DOCUMENT = "NAMESPACE_REQUESTDATA_DOCUMENT";
 
-public constructor (){
-
-            super();
-        }
+public: NameSpaceRequestParamData(){
+}
 
 
 };

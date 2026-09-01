@@ -55,31 +55,30 @@
 #include "RTSLayer.h"
 
 class RTSLayerCompositePaintable: public Paintable {
-        
 
-    private: upgradeCost: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string upgradeCost = StringUtil::getInstance().EMPTY_STRING;
 
-    private: downGradeCost: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string downGradeCost = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const UPGRADE: string = "Up: $";
+    private: const std::string UPGRADE = "Up: $";
 
-    private: const DOWNGRADE: string = "Down: $-";
+    private: const std::string DOWNGRADE = "Down: $-";
 
-    const upgradableRTSLayerHudPaintable: UpgradableRTSLayerHudPaintable;
+    protected: UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable;
 
-public constructor (UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable);
+public: RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable);
 
-    public update(RTSLayer rtsLayer);
+    public: void update(RTSLayer rtsLayer);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    setUpgradeCost(string upgradeCost);
+    protected: void setUpgradeCost(std::string upgradeCost);
 
-    string getUpgradeCost();
+    protected: std::string getUpgradeCost();
 
-    setDownGradeCost(string downGradeCost);
+    protected: void setDownGradeCost(std::string downGradeCost);
 
-    string getDownGradeCost();
+    protected: std::string getDownGradeCost();
 
 };
 

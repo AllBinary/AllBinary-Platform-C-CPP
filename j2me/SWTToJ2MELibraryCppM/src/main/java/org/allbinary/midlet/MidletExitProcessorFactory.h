@@ -58,13 +58,12 @@
 class MidletExitProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: MidletExitProcessorFactory = new MidletExitProcessorFactory();
+    private: static MidletExitProcessorFactory instance() { return MidletExitProcessorFactory(); }
 
-    public static MidletExitProcessorFactory getInstance();
+    public: static MidletExitProcessorFactory getInstance();
 
-    public Processor getExitInstance(MIDlet midlet);
+    public: Processor getExitInstance(MIDlet midlet);
 
 };
 

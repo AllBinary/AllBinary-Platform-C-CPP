@@ -36,23 +36,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicGeographicMapExtractedPathCacheFactory: public BaseBasicArrayListCache {
-        
 
-    private: static const instance: BasicGeographicMapExtractedPathCacheFactory = new BasicGeographicMapExtractedPathCacheFactory();
+    private: static BasicGeographicMapExtractedPathCacheFactory instance() { return BasicGeographicMapExtractedPathCacheFactory(); }
 
-    public static BasicGeographicMapExtractedPathCacheFactory getInstance();
+    public: static BasicGeographicMapExtractedPathCacheFactory getInstance();
 
-    private: maxConcurrentPaths: int32_t= 0;
+    private: int32_t maxConcurrentPaths= 0;
 
-    private: maxPaths: int32_t= 0;
+    private: int32_t maxPaths= 0;
 
-private constructor ();
+private: BasicGeographicMapExtractedPathCacheFactory();
 
-    public init(int32_t maxConcurrentPaths, int32_t maxPaths);
+    public: void init(int32_t maxConcurrentPaths, int32_t maxPaths);
 
-    public BasicArrayList getPath();
+    public: BasicArrayList getPath();
 
-    public release(BasicArrayList list);
+    public: void release(BasicArrayList list);
 
 };
 

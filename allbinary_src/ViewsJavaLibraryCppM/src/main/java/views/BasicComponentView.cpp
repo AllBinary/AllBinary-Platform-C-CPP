@@ -80,107 +80,104 @@
 class BasicComponentView
             : public Object
         : public TransformInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: transformDocumentInterface: TransformDocumentInterface;
+    private: TransformDocumentInterface transformDocumentInterface;
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: BasicComponentView(TransformInfoInterface transformInfoInterface){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.setTransformInfoInterface(transformInfoInterface);
+this->setTransformInfoInterface(transformInfoInterface);
     
-this.setTransformDocumentInterface(TransformDocumentFactory.getInstance());
+this->setTransformDocumentInterface(TransformDocumentFactory::getInstance());
     
 }
 
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId(){
+    public: int32_t getTypeId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NO_TYPE;
+                        return this->NO_TYPE;
     
 }
 
 
-    public TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface getTransformDocumentInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformDocumentInterface;
+                        return this->transformDocumentInterface;
     
 }
 
 
-    public setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
-this.transformDocumentInterface= transformDocumentInterface;
+    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
+this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface getTransformInfoInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformInfoInterface;
+                        return this->transformInfoInterface;
     
 }
 
 
-    public setTransformInfoInterface(TransformInfoInterface transformInfoInterface){
-this.transformInfoInterface= transformInfoInterface;
+    public: void setTransformInfoInterface(TransformInfoInterface transformInfoInterface){
+this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformDocumentInterface!.getDoc();;
+                        return this->transformDocumentInterface.getDoc();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document getDoc(){
+    public: Document getDoc(){
 
-    document: Document = this.getTransformInfoInterface()!.getDataDocument()!;;
+    Document document = this->getTransformInfoInterface().getDataDocument();;
     
 
-    dataNode: Node = this.getTransformDocumentInterface()!.getDoc()!.importNode(document.getFirstChild(), true)!;;
+    Node dataNode = this->getTransformDocumentInterface().getDoc().importNode(document.getFirstChild(), true);;
     
 
                         if(dataNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.getTransformDocumentInterface()!.getBaseNode()!.appendChild(dataNode);
+                                    this->getTransformDocumentInterface().getBaseNode().appendChild(dataNode);
     
 
                                     }
@@ -189,21 +186,21 @@ this.transformInfoInterface= transformInfoInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransformDocumentInterface()!.getDoc();;
+                        return this->getTransformDocumentInterface().getDoc();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-    success: string = DomDocumentHelper.toString(this.getDoc())!;;
+    std::string success = DomDocumentHelper::toString(this->getDoc());;
     
 
-    result: string = new BasicTransformer(this.abeClientInformation, this.getTransformInfoInterface()).translate(success)!;;
+    std::string result = BasicTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;
     
 
 
@@ -216,10 +213,10 @@ this.transformInfoInterface= transformInfoInterface;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

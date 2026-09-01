@@ -73,38 +73,37 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //J2MEForJ2ME
-class OwnershipPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public static OwnershipPaintable getInstance();
+    public: static OwnershipPaintable getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: const COPYRIGHT: string = "AllBinary Copyright (c) 2011";
+    private: const std::string COPYRIGHT = "AllBinary Copyright (c) 2011";
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    private: color: int32_t = this.basicColor!.intValue()!;
+    private: int32_t color = this->basicColor.intValue();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: COPYRIGHT_Y: int32_t= 0;
+    private: int32_t COPYRIGHT_Y= 0;
 
-    private: beginWidth: int32_t= 0;
+    private: int32_t beginWidth= 0;
 
-private constructor ();
+private: OwnershipPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public BasicColor getBasicColorP();
+    public: BasicColor getBasicColorP();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

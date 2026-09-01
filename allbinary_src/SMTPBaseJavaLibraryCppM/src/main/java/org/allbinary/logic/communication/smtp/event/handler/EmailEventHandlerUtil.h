@@ -81,23 +81,22 @@
 class EmailEventHandlerUtil
             : public Object
          {
-        
 
-    private: static const instance: EmailEventHandlerUtil = new EmailEventHandlerUtil();
+    private: static EmailEventHandlerUtil instance() { return EmailEventHandlerUtil(); }
 
-    public static EmailEventHandlerUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public static Vector getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-private constructor ();
+    public: static EmailEventHandlerUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, Vector userVector);
+    public: static Vector getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
+
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+private: EmailEventHandlerUtil();
+
+                //@Throws(Exception.constructor)
+            
+    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, Vector userVector);
 
 };
 

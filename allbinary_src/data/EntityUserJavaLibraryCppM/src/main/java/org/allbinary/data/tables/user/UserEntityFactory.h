@@ -54,11 +54,10 @@
 class UserEntityFactory
             : public Object
          {
-        
 
-    public static UserEntity getInstance();
+    public: static UserEntity getInstance();
 
-private constructor ();
+private: UserEntityFactory();
 
 };
 

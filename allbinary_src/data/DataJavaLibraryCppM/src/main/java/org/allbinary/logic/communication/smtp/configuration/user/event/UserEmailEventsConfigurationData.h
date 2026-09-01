@@ -45,11 +45,10 @@
 class UserEmailEventsConfigurationData
             : public Object
          {
-        
 
-    public static const NAME: string = "EMAIL_EVENTS_CONFIGURATION_NAME";
+    public: static const std::string NAME = "EMAIL_EVENTS_CONFIGURATION_NAME";
 
-private constructor ();
+private: UserEmailEventsConfigurationData();
 
 };
 

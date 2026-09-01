@@ -45,38 +45,35 @@
 class RaceTrackFrictionProperties
             : public Object
          {
-        
 
-    private: const ROAD_FRICTION_NOMINATOR: int32_t;
+    private: int32_t ROAD_FRICTION_NOMINATOR;
 
-    private: const GROUND_FRICTION_NOMINATOR: int32_t;
+    private: int32_t GROUND_FRICTION_NOMINATOR;
 
-public constructor (int32_t roadFriction, int32_t groundFriction){
-
-            super();
-        this.ROAD_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -roadFriction;
+public: RaceTrackFrictionProperties(int32_t roadFriction, int32_t groundFriction){
+this->ROAD_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -roadFriction;
     
-this.GROUND_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -groundFriction;
+this->GROUND_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -groundFriction;
     
 }
 
 
-    public int32_t getRoadFrictionNominator(){
+    public: int32_t getRoadFrictionNominator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ROAD_FRICTION_NOMINATOR;
+                        return this->ROAD_FRICTION_NOMINATOR;
     
 }
 
 
-    public int32_t getGroundFrictionNominator(){
+    public: int32_t getGroundFrictionNominator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.GROUND_FRICTION_NOMINATOR;
+                        return this->GROUND_FRICTION_NOMINATOR;
     
 }
 

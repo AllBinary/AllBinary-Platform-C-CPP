@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -70,79 +72,78 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CaptionIndexedAnimation: public IndexedAnimation {
-        
 
-    private: animationInterface: Animation;
+    private: Animation animationInterface;
 
-    private: movieIndexedAnimationInterface: IndexedAnimation;
+    private: IndexedAnimation movieIndexedAnimationInterface;
 
-    private: captionDx: int32_t;
+    private: int32_t captionDx;
 
-    private: captionDy: int32_t;
+    private: int32_t captionDy;
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-    private: time: int32_t;
+    private: int32_t time;
 
-    private: END_EVENT: AllBinaryEventObject;
+    private: AllBinaryEventObject END_EVENT;
 
-    private: timeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeDelayHelper;
 
-    private: player: Player;
+    private: Player player;
 
-public constructor (Animation animationInterface, IndexedAnimation movieIndexedAnimationInterface, Player player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior animationBehavior){
+public: CaptionIndexedAnimation(Animation animationInterface, IndexedAnimation movieIndexedAnimationInterface, Player player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior animationBehavior){
             super(animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.animationInterface= animationInterface;
+this->animationInterface= animationInterface;
     
-this.movieIndexedAnimationInterface= movieIndexedAnimationInterface;
+this->movieIndexedAnimationInterface= movieIndexedAnimationInterface;
     
-this.captionDx= captionDx;
+this->captionDx= captionDx;
     
-this.captionDy= captionDy;
+this->captionDy= captionDy;
     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
-this.time= time;
+this->time= time;
     
-this.END_EVENT= new AllBinaryEventObject(this);
+this->END_EVENT= AllBinaryEventObject(this);
     
 
-    timePerFrame: int32_t = this.time /this.getSize();;
+    int32_t timePerFrame = this->time /this->getSize();;
     
-this.timeDelayHelper= new TimeDelayHelper(timePerFrame);
+this->timeDelayHelper= TimeDelayHelper(timePerFrame);
     
-this.player= player;
+this->player= player;
     
-this.player.start();
+this->player.start();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame(){
+    public: void nextFrame(){
 
-                        if(this.timeDelayHelper!.isTime(GameTickTimeDelayHelperFactory.getInstance()!.startTime))
+                        if(this->timeDelayHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime))
                         
                                     {
-                                    this.movieIndexedAnimationInterface!.nextFrame();
+                                    this->movieIndexedAnimationInterface.nextFrame();
     
 
                                     }
                                 
 
-                        if(this.isLastFrame())
+                        if(this->isLastFrame())
                         
                                     {
-                                    AnimationEventHandler.getInstance()!.fireEvent(this.END_EVENT);
+                                    AnimationEventHandler::getInstance().fireEvent(this->END_EVENT);
     
 
                                     }
@@ -150,9 +151,9 @@ this.player.start();
 }
 
 
-    public bool isLastFrame(){
+    public: bool isLastFrame(){
 
-                        if(this.movieIndexedAnimationInterface!.getFrame() == this.getSize() -1)
+                        if(this->movieIndexedAnimationInterface.getFrame() == this->getSize() -1)
                         
                                     {
                                     
@@ -177,64 +178,64 @@ this.player.start();
 }
 
 
-    public previousFrame(){
-this.movieIndexedAnimationInterface!.previousFrame();
+    public: void previousFrame(){
+this->movieIndexedAnimationInterface.previousFrame();
     
 }
 
 
-    public setFrame(int32_t index){
-this.movieIndexedAnimationInterface!.setFrame(index);
+    public: void setFrame(int32_t index){
+this->movieIndexedAnimationInterface.setFrame(index);
     
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.movieIndexedAnimationInterface!.getFrame();;
+                        return this->movieIndexedAnimationInterface.getFrame();;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.movieIndexedAnimationInterface!.getSize();;
+                        return this->movieIndexedAnimationInterface.getSize();;
     
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.animationInterface!.paintXY(graphics, x +this.captionDx, y +this.captionDy);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->animationInterface.paintXY(graphics, x +this->captionDx, y +this->captionDy);
     
-this.movieIndexedAnimationInterface!.paintXY(graphics, x +this.captionDx +this.dx, y +this.captionDy +this.dy);
+this->movieIndexedAnimationInterface.paintXY(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy);
     
 }
 
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-this.animationInterface!.paintThreedXYZ(graphics, x +this.captionDx, y +this.captionDy, z);
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+this->animationInterface.paintThreedXYZ(graphics, x +this->captionDx, y +this->captionDy, z);
     
-this.movieIndexedAnimationInterface!.paintThreedXYZ(graphics, x +this.captionDx +this.dx, y +this.captionDy +this.dy, z);
+this->movieIndexedAnimationInterface.paintThreedXYZ(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy, z);
     
 }
 

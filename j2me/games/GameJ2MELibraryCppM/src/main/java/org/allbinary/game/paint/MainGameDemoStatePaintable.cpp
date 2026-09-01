@@ -53,46 +53,43 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MainGameDemoStatePaintable: public Paintable {
-        
 
-    private: const ownershipPaintableInterface: Paintable;
+    private: Paintable ownershipPaintableInterface;
 
-    private: const menuPaintableInterface: Paintable;
+    private: Paintable menuPaintableInterface;
 
-public constructor (Paintable ownershipPaintableInterface, Paintable menuPaintableInterface){
-
-            super();
-        this.ownershipPaintableInterface= ownershipPaintableInterface;
+public: MainGameDemoStatePaintable(Paintable ownershipPaintableInterface, Paintable menuPaintableInterface){
+this->ownershipPaintableInterface= ownershipPaintableInterface;
     
-this.menuPaintableInterface= menuPaintableInterface;
+this->menuPaintableInterface= menuPaintableInterface;
     
 }
 
 
-    public paint(Graphics graphics){
-this.menuPaintableInterface!.paint(graphics);
+    public: void paint(Graphics graphics){
+this->menuPaintableInterface.paint(graphics);
     
-this.ownershipPaintableInterface!.paint(graphics);
+this->ownershipPaintableInterface.paint(graphics);
     
 }
 
 
-    public Paintable getOwnershipPaintableInterface(){
+    public: Paintable getOwnershipPaintableInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ownershipPaintableInterface;
+                        return this->ownershipPaintableInterface;
     
 }
 
 
-    public Paintable getMenuPaintableInterface(){
+    public: Paintable getMenuPaintableInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuPaintableInterface;
+                        return this->menuPaintableInterface;
     
 }
 

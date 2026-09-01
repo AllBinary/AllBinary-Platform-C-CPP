@@ -83,19 +83,18 @@
 class DemoRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const demoGameMidlet: DemoGameMidlet;
+    private: DemoGameMidlet demoGameMidlet;
 
-    private: const startDemoGameMidletEvent: DemoGameMidletEvent;
+    private: DemoGameMidletEvent startDemoGameMidletEvent;
 
-public constructor (DemoGameMidlet demoGameMidlet);
+public: DemoRunnable(DemoGameMidlet demoGameMidlet);
 
-    public run();
+    public: void run();
 
 };
 

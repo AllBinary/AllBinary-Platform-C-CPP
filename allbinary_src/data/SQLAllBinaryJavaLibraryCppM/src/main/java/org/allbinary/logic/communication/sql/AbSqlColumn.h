@@ -61,27 +61,26 @@
         #include "AbSqlTable.h"
 
 class AbSqlColumn: public AbSqlTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const LARGEST_INT_VALUE_IN_COLUMN: string = "\nLargest Int Value in column: ";
+    private: const std::string LARGEST_INT_VALUE_IN_COLUMN = "\nLargest Int Value in column: ";
 
-    private: const METHOD_GET_LARGETS_INTEGER_IN_COLUMN: string = "getLargestIntegerInColumn";
+    private: const std::string METHOD_GET_LARGETS_INTEGER_IN_COLUMN = "getLargestIntegerInColumn";
 
-    private: const METHOD_GET_COLUMN: string = "getColumn";
+    private: const std::string METHOD_GET_COLUMN = "getColumn";
 
-    private: const METHOD_GET_COLUMN_WHERE: string = "getColumnWhere";
+    private: const std::string METHOD_GET_COLUMN_WHERE = "getColumnWhere";
 
-    private: const INVALID_RESULT: string = "-1";
+    private: const std::string INVALID_RESULT = "-1";
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlColumn(DbConnectionInfo databaseConnectionInfoInterface);
 
-    public string getLargestIntegerInColumnWhere(string columnName, string key, string value);
+    public: std::string getLargestIntegerInColumnWhere(std::string columnName, std::string key, std::string value);
 
-    public Vector getColumn(string columnName);
+    public: Vector getColumn(std::string columnName);
 
-    public Vector getColumnWhere(string columnName, string key, string value);
+    public: Vector getColumnWhere(std::string columnName, std::string key, std::string value);
 
 };
 

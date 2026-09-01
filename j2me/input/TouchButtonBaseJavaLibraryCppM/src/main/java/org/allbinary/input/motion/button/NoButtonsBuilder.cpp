@@ -50,17 +50,16 @@
         #include "BaseTouchInput.h"
 
 class NoButtonsBuilder: public BaseTouchInput {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    list: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;;
+    BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();;
     
 
 
@@ -72,13 +71,13 @@ class NoButtonsBuilder: public BaseTouchInput {
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET_LIST, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil.getInstance()!.getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
     
 }
 

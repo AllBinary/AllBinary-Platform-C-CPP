@@ -48,9 +48,8 @@
         #include "InventorySearch.h"
 
 class AutoSearchValidationInventoryView: public InventorySearch {
-        
 
-public constructor (SearchRequest searchRequest){
+public: AutoSearchValidationInventoryView(SearchRequest searchRequest){
             super(searchRequest);
                     
 
@@ -59,27 +58,17 @@ public constructor (SearchRequest searchRequest){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public Document toValidationInfoDoc(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public Node toValidationInfoNode(Document document){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -89,7 +78,17 @@ public constructor (SearchRequest searchRequest){
 }
 
 
-    public string validationInfo(){
+    public: Node toValidationInfoNode(Document document){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+    public: std::string validationInfo(){
 
 
 

@@ -52,19 +52,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class QuoteRequestEntityInterface: public BasicDataTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    QuoteRequest get(string userName, int32_t id)
+    QuoteRequest get(std::string userName, int32_t id)
 
-    Vector getIds(string userName)
+    Vector getIds(std::string userName)
 
-    deleteWhere(string key, string value)
+    void deleteWhere(std::string key, std::string value)
 
-    insert(Vector values)
+    void insert(Vector values)
 
-    update(string userName, HashMap<any, any> updatedValues)
+    void update(std::string userName, HashMap<any, any> updatedValues)
 
 };
 

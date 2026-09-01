@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -87,73 +89,70 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSLayerCostAnimation: public Animation: public TechEventListenerInterface, public UpdateMyFontInterface {
-        
+class RTSLayerCostAnimation: public Animation, public TechEventListenerInterface, public UpdateMyFontInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const primitiveLongUtil: PrimitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(10000)!;
+    private: const PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
 
-    private: const DOLLAR: string = "$";
+    private: const std::string DOLLAR = "$";
 
-    private: const image: Image;
+    private: Image image;
 
-    private: const layerInterfaceFactoryInterface: CostLayerInterfaceFactoryInterface;
+    private: CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface;
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: costString: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> costString = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: len: int32_t= 0;
+    private: int32_t len= 0;
 
-    private: adjustedCostX: int32_t= 0;
+    private: int32_t adjustedCostX= 0;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (Image image, CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-
-            super();
-        this.image= image;
+public: RTSLayerCostAnimation(Image image, CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+this->image= image;
     
-this.layerInterfaceFactoryInterface= layerInterfaceFactoryInterface;
+this->layerInterfaceFactoryInterface= layerInterfaceFactoryInterface;
     
-this.update();
+this->update();
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.fontHeight= font.getHeight();
+this->fontHeight= font.getHeight();
     
-this.adjustedCostX= font.stringWidth(this.DOLLAR);
+this->adjustedCostX= font.stringWidth(this->DOLLAR);
     
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public onEvent(AllBinaryEventObject event){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public onTechEvent(AllBinaryEventObject event){
+    public: void onEvent(AllBinaryEventObject event){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    
+}
+
+
+    public: void onTechEvent(AllBinaryEventObject event){
 
         try {
-            this.update();
+            this->update();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "onTechEvent", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "onTechEvent", e);
     
 }
 
@@ -162,30 +161,30 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "onTechEvent", e);
 
                 //@Throws(Exception.constructor)
             
-    public update(){
-this.len= 0;
+    public: void update(){
+this->len= 0;
     
-this.costString= this.primitiveLongUtil!.getCharArray(this.layerInterfaceFactoryInterface!.getCost());
+this->costString= this->primitiveLongUtil.getCharArray(this->layerInterfaceFactoryInterface.getCost());
     
-this.len= this.primitiveLongUtil!.getCurrentTotalDigits();
+this->len= this->primitiveLongUtil.getCurrentTotalDigits();
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.myFontProcessor!.process(graphics);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->myFontProcessor.process(graphics);
     
 super.paintXY(graphics, x, y);
     
 
-    adjustedCostY: int32_t = this.image.getHeight() -this.fontHeight;;
+    int32_t adjustedCostY = this->image.getHeight() -this->fontHeight;;
     
 
-    xa: int32_t = x +2;;
+    int32_t xa = x +2;;
     
-graphics.drawString(this.DOLLAR, xa, y +adjustedCostY, 0);
+graphics.drawString(this->DOLLAR, xa, y +adjustedCostY, 0);
     
-graphics.drawChars(this.costString, 0, this.len, x +this.adjustedCostX, y +adjustedCostY, 0);
+graphics.drawChars(this->costString, 0, this->len, x +this->adjustedCostX, y +adjustedCostY, 0);
     
 }
 

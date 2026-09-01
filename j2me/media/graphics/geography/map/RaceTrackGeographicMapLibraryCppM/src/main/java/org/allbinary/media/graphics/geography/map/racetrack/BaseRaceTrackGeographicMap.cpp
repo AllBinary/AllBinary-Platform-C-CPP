@@ -66,68 +66,67 @@
 #include "RaceTrackInfo.h"
 #include "RaceTrackData.h"
 
-class BaseRaceTrackGeographicMap: public BasicGeographicMap: public RaceTrackGeographicMapInterface {
-        
+class BaseRaceTrackGeographicMap: public BasicGeographicMap, public RaceTrackGeographicMapInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: raceTrackInfo: RaceTrackInfo;
+    private: RaceTrackInfo raceTrackInfo;
 
-    private: raceTrackData: RaceTrackData;
+    private: RaceTrackData raceTrackData;
 
-    private: miniGeographicMap: BasicGeographicMap;
+    private: BasicGeographicMap miniGeographicMap;
 
-public constructor (RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayer tiledLayer, BasicGeographicMap miniGeographicMap, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory){
-            super(raceTrackInfo!.getId(), raceTrackInfo!.getName(), raceTrackData!.getCellTypeIdToGeographicMapCellTypeArray(), tiledLayer, raceTrackInfo!.getForegroundBasicColor(), raceTrackInfo!.getBackgroundBasicColor(), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory);
+public: BaseRaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayer tiledLayer, BasicGeographicMap miniGeographicMap, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory){
+            super(raceTrackInfo.getId(), raceTrackInfo.getName(), raceTrackData.getCellTypeIdToGeographicMapCellTypeArray(), tiledLayer, raceTrackInfo.getForegroundBasicColor(), raceTrackInfo.getBackgroundBasicColor(), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.raceTrackInfo= raceTrackInfo;
+this->raceTrackInfo= raceTrackInfo;
     
-this.raceTrackData= raceTrackData;
+this->raceTrackData= raceTrackData;
     
-this.miniGeographicMap= miniGeographicMap;
-    
-
-    miniTiledLayer: AllBinaryTiledLayer = this.miniGeographicMap!.getAllBinaryTiledLayer()!;;
+this->miniGeographicMap= miniGeographicMap;
     
 
-                        if(miniTiledLayer!.getColumns() != this.getGeographicMapCellPositionFactory()!.getColumns())
+    AllBinaryTiledLayer miniTiledLayer = this->miniGeographicMap.getAllBinaryTiledLayer();;
+    
+
+                        if(miniTiledLayer.getColumns() != this->getGeographicMapCellPositionFactory().getColumns())
                         
                                     {
                                     
-    error: string = new StringMaker().append("RaceTrackMap has incorrect Mini Map columns: ")!.appendint(miniTiledLayer!.getColumns())!.append(" != ")!.appendint(this.getGeographicMapCellPositionFactory()!.getColumns())!.toString()!;;
+    std::string error = StringMaker().append("RaceTrackMap has incorrect Mini Map columns: ").appendint(miniTiledLayer.getColumns()).append(" != ").appendint(this->getGeographicMapCellPositionFactory().getColumns()).toString();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR);
     
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 
                                     }
                                 
 
-                        if(miniTiledLayer!.getRows() != this.getGeographicMapCellPositionFactory()!.getRows())
+                        if(miniTiledLayer.getRows() != this->getGeographicMapCellPositionFactory().getRows())
                         
                                     {
                                     
-    error: string = "RaceTrackMap has incorrect Mini Map rows";;
+    std::string error = "RaceTrackMap has incorrect Mini Map rows";;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR);
     
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 
                                     }
@@ -135,50 +134,50 @@ this.logUtil!.putF(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR);
 }
 
 
-    public RaceTrackInfo getRaceTrackInfo(){
+    public: RaceTrackInfo getRaceTrackInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.raceTrackInfo;
+                        return this->raceTrackInfo;
     
 }
 
 
-    public setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo){
-this.raceTrackInfo= aRaceTrackInfo;
+    public: void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo){
+this->raceTrackInfo= aRaceTrackInfo;
     
 }
 
 
-    public setMiniBasicGeographicMap(BasicGeographicMap miniBasicGeographicMap){
-this.miniGeographicMap= miniBasicGeographicMap;
+    public: void setMiniBasicGeographicMap(BasicGeographicMap miniBasicGeographicMap){
+this->miniGeographicMap= miniBasicGeographicMap;
     
 }
 
 
-    public BasicGeographicMap getMiniBasicGeographicMap(){
+    public: BasicGeographicMap getMiniBasicGeographicMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.miniGeographicMap;
+                        return this->miniGeographicMap;
     
 }
 
 
-    public RaceTrackData getRaceTrackData(){
+    public: RaceTrackData getRaceTrackData(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.raceTrackData;
+                        return this->raceTrackData;
     
 }
 
 
-    public setRaceTrackData(RaceTrackData raceTrackData){
-this.raceTrackData= raceTrackData;
+    public: void setRaceTrackData(RaceTrackData raceTrackData){
+this->raceTrackData= raceTrackData;
     
 }
 

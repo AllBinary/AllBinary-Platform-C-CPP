@@ -46,29 +46,28 @@
 #include "AnimationBehavior.h"
 
 class NullRotationAnimation: public RotationAnimation {
-        
 
-    public static NullRotationAnimation createTotalAngle(AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NullRotationAnimation(angleInfo, CircularIndexUtil.createInstance(totalAngle /angleInfo!.getAngleIncrementInfo()!.getAngleIncrement()), animationBehavior);
-    
-}
-
-
-    public static NullRotationAnimation createQuarter(AnimationBehavior animationBehavior){
+    public: static NullRotationAnimation createTotalAngle(AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NullRotationAnimation(AngleInfo.getInstance(AngleFactory.getInstance()!.QUARTER_TOTAL_ANGLE), CircularIndexUtil.createInstance(4), animationBehavior);
+                        return NullRotationAnimation(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior);
     
 }
 
 
-protected constructor (AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior){
+    public: static NullRotationAnimation createQuarter(AnimationBehavior animationBehavior){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullRotationAnimation(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior);
+    
+}
+
+
+protected: NullRotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior){
             super(angleInfo, circularIndexUtil, animationBehavior);
                     
 
@@ -79,7 +78,7 @@ protected constructor (AngleInfo angleInfo, CircularIndexUtil circularIndexUtil,
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 

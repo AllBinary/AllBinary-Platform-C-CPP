@@ -43,16 +43,15 @@
 class ThrustAIVisitorFactory
             : public Object
          {
-        
 
-    private: static const instance: ThrustAIVisitor = new ThrustAIVisitor();
+    private: static ThrustAIVisitor instance() { return ThrustAIVisitor(); }
 
-    public static ThrustAIVisitor getInstance(){
+    public: static ThrustAIVisitor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThrustAIVisitorFactory.instance;
+                        return ThrustAIVisitorFactory::instance();
     
 }
 

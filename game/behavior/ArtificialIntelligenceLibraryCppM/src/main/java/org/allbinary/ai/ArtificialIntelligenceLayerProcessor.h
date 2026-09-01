@@ -54,17 +54,16 @@
 #include "ArtificialIntelligenceCompositeInterface.h"
 
 class ArtificialIntelligenceLayerProcessor: public LayerProcessor {
-        
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+public: ArtificialIntelligenceLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
 
 };
 

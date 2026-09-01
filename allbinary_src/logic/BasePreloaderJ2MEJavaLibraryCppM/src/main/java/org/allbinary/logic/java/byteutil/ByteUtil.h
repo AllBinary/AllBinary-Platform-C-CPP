@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_BYTEUTIL_BYTEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -45,23 +47,22 @@
 class ByteUtil
             : public Object
          {
-        
 
-    private: static const instance: ByteUtil = new ByteUtil();
+    private: static ByteUtil instance() { return ByteUtil(); }
 
-    public static ByteUtil getInstance();
+    public: static ByteUtil getInstance();
 
-private constructor ();
+private: ByteUtil();
 
-    public std::vector<int8_t> xor(std::vector<int8_t> array, int8_t mask);
+    public: std::vector<int8_t> xor(std::vector<int8_t> array, int8_t mask);
 
-    public std::vector<int8_t> not(std::vector<int8_t> array);
+    public: std::vector<int8_t> not(std::vector<int8_t> array);
 
-    public std::vector<int8_t> xorByte(std::vector<int8_t> array, int32_t index);
+    public: std::vector<int8_t> xorByte(std::vector<int8_t> array, int32_t index);
 
-    public bool compare(std::vector<int8_t> newByteArray, std::vector<int8_t> oldByteArray);
+    public: bool compare(std::vector<int8_t> newByteArray, std::vector<int8_t> oldByteArray);
 
-    public bool compareWithStats(std::vector<int8_t> newByteArray, int32_t newSize, std::vector<int8_t> oldByteArray, std::vector<int32_t> stats);
+    public: bool compareWithStats(std::vector<int8_t> newByteArray, int32_t newSize, std::vector<int8_t> oldByteArray, std::vector<int32_t> stats);
 
 };
 

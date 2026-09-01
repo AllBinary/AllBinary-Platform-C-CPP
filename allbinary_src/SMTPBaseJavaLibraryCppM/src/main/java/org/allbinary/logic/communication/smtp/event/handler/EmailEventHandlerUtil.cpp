@@ -78,37 +78,36 @@
 class EmailEventHandlerUtil
             : public Object
          {
-        
 
-    private: static const instance: EmailEventHandlerUtil = new EmailEventHandlerUtil();
+    private: static EmailEventHandlerUtil instance() { return EmailEventHandlerUtil(); }
 
-    public static EmailEventHandlerUtil getInstance(){
+    public: static EmailEventHandlerUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EmailEventHandlerUtil.instance;
+                        return EmailEventHandlerUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
+    public: static Vector getUserEmailEventListenerVector(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface){
 
-    userConfigurationInterface: UserConfigurationInterface = userInterface!.getUserConfigurationInterface()!;;
+    UserConfigurationInterface userConfigurationInterface = userInterface.getUserConfigurationInterface();;
     
 
-    userEmailConfigurationInterface: UserEmailConfigurationInterface = userConfigurationInterface!.getUserEmailConfigurationInterface()!;;
+    UserEmailConfigurationInterface userEmailConfigurationInterface = userConfigurationInterface.getUserEmailConfigurationInterface();;
     
 
-    userEmailEventsConfigurationInterface: UserEmailEventsConfigurationInterface = userEmailConfigurationInterface!.getUserEmailEventsConfigurationInterface()!;;
+    UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface = userEmailConfigurationInterface.getUserEmailEventsConfigurationInterface();;
     
 
-    userEmailEventListenerInterface: UserEmailEventListenerInterface = userEmailEventsConfigurationInterface!.getEventListener(abeClientInformation, userEmailEventNameData, userInterface)!;;
+    UserEmailEventListenerInterface userEmailEventListenerInterface = userEmailEventsConfigurationInterface.getEventListener(abeClientInformation, userEmailEventNameData, userInterface);;
     
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 vector.add(userEmailEventListenerInterface);
     
@@ -121,57 +120,55 @@ vector.add(userEmailEventListenerInterface);
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: EmailEventHandlerUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, Vector userVector){
+    public: UserEmailEventHandler getEventHandler(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, Vector userVector){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Returning UserEmailEventHandler for ");
+stringBuffer.append("Returning UserEmailEventHandler for ");
     
-stringBuffer!.appendint(userVector!.length);
+stringBuffer.appendint(userVector.length);
     
-stringBuffer!.append(" users.");
+stringBuffer.append(" users.");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "getEventHandler");
+this->logUtil.putF(stringBuffer.toString(), this, "getEventHandler");
     
 
                                     }
                                 
 
-    userEmailEventHandler: UserEmailEventHandler = new UserEmailEventHandler();;
+    UserEmailEventHandler userEmailEventHandler = UserEmailEventHandler();;
     
-userEmailEventHandler!.addListener(new LogUserEmailEventListenerModule());
+userEmailEventHandler.addListener(LogUserEmailEventListenerModule());
     
 
-    size: int32_t = userVector!.length!;;
+    int32_t size = userVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    userInterface: UserInterface = userVector!.get(index) as UserInterface;;
+    UserInterface userInterface = userVector.get(index) as UserInterface;;
     
 
-    vector: Vector = EmailEventHandlerUtil.getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface)!;;
+    Vector vector = EmailEventHandlerUtil::getUserEmailEventListenerVector(abeClientInformation, userEmailEventNameData, userInterface);;
     
-userEmailEventHandler!.addListener(vector);
+userEmailEventHandler.addListener(vector);
     
 }
 

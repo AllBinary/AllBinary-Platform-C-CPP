@@ -49,38 +49,35 @@
 class HardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: HardwareFactory = new HardwareFactory();
+    private: static HardwareFactory instance() { return HardwareFactory(); }
 
-    public static HardwareFactory getInstance(){
+    public: static HardwareFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HardwareFactory.instance;
+                        return HardwareFactory::instance();
     
 }
 
 
-    private: const SINGLETON: HardwareInterface = NoHardware.getInstance()!;
+    private: const HardwareInterface SINGLETON = NoHardware::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: HardwareFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public HardwareInterface getInstance(OperatingSystemInterface os){
+    public: HardwareInterface getInstance(OperatingSystemInterface os){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.SINGLETON;
+                        return this->SINGLETON;
     
 
                 //: 

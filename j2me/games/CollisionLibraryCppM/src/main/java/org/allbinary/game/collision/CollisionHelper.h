@@ -63,17 +63,16 @@
 class CollisionHelper
             : public Object
          {
-        
 
-    sourceLayerInterface: AllBinaryLayer;
+    protected: AllBinaryLayer sourceLayerInterface;
 
-public constructor (AllBinaryLayer sourceLayerInterface);
+public: CollisionHelper(AllBinaryLayer sourceLayerInterface);
 
-    public bool isCollidable(CollidableCompositeLayer layerInterface);
+    public: bool isCollidable(CollidableCompositeLayer layerInterface);
 
-    public AllBinaryLayer getOwnerLayerInterface();
+    public: AllBinaryLayer getOwnerLayerInterface();
 
-    public setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface);
+    public: void setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface);
 
 };
 

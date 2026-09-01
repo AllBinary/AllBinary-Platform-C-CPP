@@ -50,22 +50,19 @@
         #include "Paintable.h"
 #include "InitUpdatePaintableInterface.h"
 
-class InitUpdatePaintable: public Paintable: public InitUpdatePaintableInterface {
-        
+class InitUpdatePaintable: public Paintable, public InitUpdatePaintableInterface {
 
-protected constructor (){
-
-            super();
-        }
+protected: InitUpdatePaintable(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public init(){
+    public: void init(){
 }
 
 
-    public update(){
+    public: void update(){
 }
 
 

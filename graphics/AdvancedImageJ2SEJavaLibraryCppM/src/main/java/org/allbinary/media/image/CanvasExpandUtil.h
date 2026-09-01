@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_CANVASEXPANDUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -59,19 +61,18 @@
 class CanvasExpandUtil
             : public Object
          {
-        
 
-    private: static const instance: CanvasExpandUtil = new CanvasExpandUtil();
+    private: static CanvasExpandUtil instance() { return CanvasExpandUtil(); }
 
-    public static CanvasExpandUtil getInstance();
+    public: static CanvasExpandUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public process(ImageProcessorInput imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor visitor);
+    public: void process(ImageProcessorInput imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor visitor);
 
 };
 

@@ -39,135 +39,132 @@
         #include "BasicVelocityProperties.h"
 #include "VelocityInterface.h"
 
-class VelocityProperties: public BasicVelocityProperties: public VelocityInterface {
-        
+class VelocityProperties: public BasicVelocityProperties, public VelocityInterface {
 
-    public static const NULL_VELOCITY_PROPERTIES: VelocityProperties = new VelocityProperties(0, 0);
+    public: static const VelocityProperties NULL_VELOCITY_PROPERTIES = VelocityProperties(0, 0);
 
-    private: maxForwardVelocity: int32_t= 0;
+    private: int32_t maxForwardVelocity= 0;
 
-    private: maxReverseVelocity: int32_t= 0;
+    private: int32_t maxReverseVelocity= 0;
 
-public constructor (int32_t maxForwardVelocity, int32_t maxReverseVelocity){
-
-            super();
-        this.setMaxForwardVelocity(maxForwardVelocity);
+public: VelocityProperties(int32_t maxForwardVelocity, int32_t maxReverseVelocity){
+this->setMaxForwardVelocity(maxForwardVelocity);
     
-this.setMaxReverseVelocity(maxReverseVelocity);
+this->setMaxReverseVelocity(maxReverseVelocity);
     
 }
 
 
-    public int32_t getMaxForwardVelocity(){
+    public: int32_t getMaxForwardVelocity(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxForwardVelocity;
+                        return this->maxForwardVelocity;
     
 }
 
 
-    public setMaxForwardVelocity(int32_t maxForwardVelocity){
-this.maxForwardVelocity= maxForwardVelocity;
+    public: void setMaxForwardVelocity(int32_t maxForwardVelocity){
+this->maxForwardVelocity= maxForwardVelocity;
     
 }
 
 
-    public int32_t getMaxReverseVelocity(){
+    public: int32_t getMaxReverseVelocity(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxReverseVelocity;
+                        return this->maxReverseVelocity;
     
 }
 
 
-    public setMaxReverseVelocity(int32_t maxReverseVelocity){
-this.maxReverseVelocity= maxReverseVelocity;
+    public: void setMaxReverseVelocity(int32_t maxReverseVelocity){
+this->maxReverseVelocity= maxReverseVelocity;
     
 }
 
 
-    public limitMaxXYForwardVelocity(){
-this.limitMaxXYVelocity(this.getMaxForwardVelocity());
+    public: void limitMaxXYForwardVelocity(){
+this->limitMaxXYVelocity(this->getMaxForwardVelocity());
     
 }
 
 
-    public limitMaxXYReverseVelocity(){
-this.limitMaxXYVelocity(this.getMaxReverseVelocity());
+    public: void limitMaxXYReverseVelocity(){
+this->limitMaxXYVelocity(this->getMaxReverseVelocity());
     
 }
 
 
-    public limitMaxYForwardVelocity(){
-this.limitMaxYVelocity(this.getMaxForwardVelocity());
+    public: void limitMaxYForwardVelocity(){
+this->limitMaxYVelocity(this->getMaxForwardVelocity());
     
 }
 
 
-    public limitMaxYReverseVelocity(){
-this.limitMaxYVelocity(this.getMaxReverseVelocity());
+    public: void limitMaxYReverseVelocity(){
+this->limitMaxYVelocity(this->getMaxReverseVelocity());
     
 }
 
 
-    public limitMaxXForwardVelocity(){
-this.limitMaxXVelocity(this.getMaxForwardVelocity());
+    public: void limitMaxXForwardVelocity(){
+this->limitMaxXVelocity(this->getMaxForwardVelocity());
     
 }
 
 
-    public limitMaxXReverseVelocity(){
-this.limitMaxXVelocity(this.getMaxReverseVelocity());
+    public: void limitMaxXReverseVelocity(){
+this->limitMaxXVelocity(this->getMaxReverseVelocity());
     
 }
 
 
-    public bool isOverXYMaxForwardVelocity(){
+    public: bool isOverXYMaxForwardVelocity(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isOverXYMaxVelocity(this.getMaxForwardVelocity());;
+                        return this->isOverXYMaxVelocity(this->getMaxForwardVelocity());;
     
 }
 
 
-    public bool isOverXYMaxReverseVelocity(){
+    public: bool isOverXYMaxReverseVelocity(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isOverXYMaxVelocity(this.getMaxReverseVelocity());;
+                        return this->isOverXYMaxVelocity(this->getMaxReverseVelocity());;
     
 }
 
 
-    public limitXYToForwardAndReverseMaxVelocity(){
-this.limitMaxXYForwardVelocity();
+    public: void limitXYToForwardAndReverseMaxVelocity(){
+this->limitMaxXYForwardVelocity();
     
-this.limitMaxXYReverseVelocity();
-    
-}
-
-
-    public limitMaxXYVelocity(int32_t maxVelocity){
-this.limitMaxXVelocity(maxVelocity);
-    
-this.limitMaxYVelocity(maxVelocity);
+this->limitMaxXYReverseVelocity();
     
 }
 
 
-    public limitMaxPositiveYVelocity(int32_t maxVelocity){
+    public: void limitMaxXYVelocity(int32_t maxVelocity){
+this->limitMaxXVelocity(maxVelocity);
+    
+this->limitMaxYVelocity(maxVelocity);
+    
+}
 
-                        if(this.velocityYBasicDecimal!.getUnscaled() > maxVelocity)
+
+    public: void limitMaxPositiveYVelocity(int32_t maxVelocity){
+
+                        if(this->velocityYBasicDecimal.getUnscaled() > maxVelocity)
                         
                                     {
-                                    this.velocityYBasicDecimal!.setint(maxVelocity);
+                                    this->velocityYBasicDecimal.setint(maxVelocity);
     
 
                                     }
@@ -175,12 +172,12 @@ this.limitMaxYVelocity(maxVelocity);
 }
 
 
-    public limitMaxNegativeYVelocity(int32_t maxVelocity){
+    public: void limitMaxNegativeYVelocity(int32_t maxVelocity){
 
-                        if(this.velocityYBasicDecimal!.getUnscaled() <  -maxVelocity)
+                        if(this->velocityYBasicDecimal.getUnscaled() <  -maxVelocity)
                         
                                     {
-                                    this.velocityYBasicDecimal!.setint( -maxVelocity);
+                                    this->velocityYBasicDecimal.setint( -maxVelocity);
     
 
                                     }
@@ -188,29 +185,29 @@ this.limitMaxYVelocity(maxVelocity);
 }
 
 
-    public limitMaxYVelocity(int32_t maxVelocity){
-this.limitMaxPositiveYVelocity(maxVelocity);
+    public: void limitMaxYVelocity(int32_t maxVelocity){
+this->limitMaxPositiveYVelocity(maxVelocity);
     
-this.limitMaxNegativeYVelocity(maxVelocity);
+this->limitMaxNegativeYVelocity(maxVelocity);
     
 }
 
 
-    public limitMaxXVelocity(int32_t maxVelocity){
+    public: void limitMaxXVelocity(int32_t maxVelocity){
 
-                        if(this.velocityXBasicDecimal!.getUnscaled() > maxVelocity)
+                        if(this->velocityXBasicDecimal.getUnscaled() > maxVelocity)
                         
                                     {
-                                    this.velocityXBasicDecimal!.setint(maxVelocity);
+                                    this->velocityXBasicDecimal.setint(maxVelocity);
     
 
                                     }
                                 
 
-                        if(this.velocityXBasicDecimal!.getUnscaled() <  -maxVelocity)
+                        if(this->velocityXBasicDecimal.getUnscaled() <  -maxVelocity)
                         
                                     {
-                                    this.velocityXBasicDecimal!.setint( -maxVelocity);
+                                    this->velocityXBasicDecimal.setint( -maxVelocity);
     
 
                                     }
@@ -218,9 +215,9 @@ this.limitMaxNegativeYVelocity(maxVelocity);
 }
 
 
-    public bool isOverXYMaxVelocity(int32_t maxVelocity){
+    public: bool isOverXYMaxVelocity(int32_t maxVelocity){
 
-                        if(this.velocityXBasicDecimal!.getUnscaled() > maxVelocity)
+                        if(this->velocityXBasicDecimal.getUnscaled() > maxVelocity)
                         
                                     {
                                     
@@ -233,7 +230,7 @@ this.limitMaxNegativeYVelocity(maxVelocity);
                                     }
                                 
 
-                        if(this.velocityXBasicDecimal!.getUnscaled() <  -maxVelocity)
+                        if(this->velocityXBasicDecimal.getUnscaled() <  -maxVelocity)
                         
                                     {
                                     
@@ -246,7 +243,7 @@ this.limitMaxNegativeYVelocity(maxVelocity);
                                     }
                                 
 
-                        if(this.velocityYBasicDecimal!.getUnscaled() > maxVelocity)
+                        if(this->velocityYBasicDecimal.getUnscaled() > maxVelocity)
                         
                                     {
                                     
@@ -259,7 +256,7 @@ this.limitMaxNegativeYVelocity(maxVelocity);
                                     }
                                 
 
-                        if(this.velocityYBasicDecimal!.getUnscaled() <  -maxVelocity)
+                        if(this->velocityYBasicDecimal.getUnscaled() <  -maxVelocity)
                         
                                     {
                                     
@@ -280,18 +277,18 @@ this.limitMaxNegativeYVelocity(maxVelocity);
 }
 
 
-    public setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
+    public: void setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
 super.setVelocityi(magnitude, angle, otherAngle);
     
-this.limitXYToForwardAndReverseMaxVelocity();
+this->limitXYToForwardAndReverseMaxVelocity();
     
 }
 
 
-    public addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
+    public: void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle){
 super.addVelocityi(magnitude, angle, otherAngle);
     
-this.limitXYToForwardAndReverseMaxVelocity();
+this->limitXYToForwardAndReverseMaxVelocity();
     
 }
 

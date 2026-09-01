@@ -52,18 +52,17 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CircleFilledAnimation: public Animation: public ColorCompositeInterface {
-        
+class CircleFilledAnimation: public Animation, public ColorCompositeInterface {
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-public constructor (int32_t width, int32_t height, BasicColor basicColor);
+public: CircleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

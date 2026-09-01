@@ -45,32 +45,29 @@
         #include "AllBinaryEventObjectFactoryInterface.h"
 
 class AllBinaryEventCircularPool: public BaseCircularPool {
-        
 
-public constructor (int32_t max){
-
-            super();
-        this.OBJECT_ARRAY= new Array(max);
+public: AllBinaryEventCircularPool(int32_t max){
+this->OBJECT_ARRAY= new Array(max);
     
-this.circularIndexUtil= CircularIndexUtil.createInstance(max);
+this->circularIndexUtil= CircularIndexUtil::createInstance(max);
     
 }
 
 
-    public initAllBinaryEventCircularPool(AllBinaryEventObjectFactoryInterface allBinaryEventObjectFactoryInterface){
-this.circularIndexUtil!.setIndex(0);
+    public: void initAllBinaryEventCircularPool(AllBinaryEventObjectFactoryInterface allBinaryEventObjectFactoryInterface){
+this->circularIndexUtil.setIndex(0);
     
 
-    size: int32_t = this.circularIndexUtil!.getSize()!;;
+    int32_t size = this->circularIndexUtil.getSize();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.OBJECT_ARRAY[index]= allBinaryEventObjectFactoryInterface!.getInstance();
+this->OBJECT_ARRAY[index]= allBinaryEventObjectFactoryInterface.getInstance();
     
 }
 

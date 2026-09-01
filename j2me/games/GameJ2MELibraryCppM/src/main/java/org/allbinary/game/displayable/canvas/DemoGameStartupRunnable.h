@@ -65,19 +65,18 @@
         #include "DemoCanvas.h"
 
 class DemoGameStartupRunnable: public ABRunnable {
-        
 
-    public static const TYPE: int32_t = 4;
+    public: static const int32_t TYPE = 4;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const demoCanvas: DemoCanvas;
+    private: DemoCanvas demoCanvas;
 
-public constructor (DemoCanvas demoCanvas);
+public: DemoGameStartupRunnable(DemoCanvas demoCanvas);
 
-    public run();
+    public: void run();
 
-    public int32_t getType();
+    public: int32_t getType();
 
 };
 

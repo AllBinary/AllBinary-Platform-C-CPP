@@ -45,55 +45,52 @@
 class LicenseInitInfoUtil
             : public Object
          {
-        
 
-    private: static const instance: LicenseInitInfoUtil = new LicenseInitInfoUtil();
+    private: static LicenseInitInfoUtil instance() { return LicenseInitInfoUtil(); }
 
-    public static LicenseInitInfoUtil getInstance(){
+    public: static LicenseInitInfoUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseInitInfoUtil.instance;
+                        return LicenseInitInfoUtil::instance();
     
 }
 
 
-    public const INITFILENAME: string = "licenseinitdata.dat";
+    public: const std::string INITFILENAME = "licenseinitdata.dat";
 
-    public const ABOUT: string = "about";
+    public: const std::string ABOUT = "about";
 
-    public const PRIVACY_POLICY: string = "privacy_policy";
+    public: const std::string PRIVACY_POLICY = "privacy_policy";
 
-    private: const OFFICIAL_ALLBINARY_SERVICES_SERVER: string = "https://services.allbinary.com/LicServ/serverssl.php";
+    private: const std::string OFFICIAL_ALLBINARY_SERVICES_SERVER = "https://services.allbinary.com/LicServ/serverssl.php";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setFilePath(string filePath){
+    public: void setFilePath(std::string filePath){
 }
 
 
-private constructor (){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public write(LicenseInitInfo initData){
+private: LicenseInitInfoUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public LicenseInitInfo read(){
+    public: void write(LicenseInitInfo initData){
+}
+
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: LicenseInitInfo read(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readAgain(0);;
+                        return this->readAgain(0);;
     
 }
 
@@ -101,13 +98,13 @@ private constructor (){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public LicenseInitInfo readAgain(int32_t initializeCounter){
+    public: LicenseInitInfo readAgain(int32_t initializeCounter){
 
-    licenseInitInfo: LicenseInitInfo = new LicenseInitInfo();;
+    LicenseInitInfo licenseInitInfo = LicenseInitInfo();;
     
-licenseInitInfo!.clearServers();
+licenseInitInfo.clearServers();
     
-licenseInitInfo!.addServer(this.OFFICIAL_ALLBINARY_SERVICES_SERVER);
+licenseInitInfo.addServer(this->OFFICIAL_ALLBINARY_SERVICES_SERVER);
     
 
 

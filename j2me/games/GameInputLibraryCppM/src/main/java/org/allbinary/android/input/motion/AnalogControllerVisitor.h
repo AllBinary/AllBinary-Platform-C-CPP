@@ -55,9 +55,8 @@
 class AnalogControllerVisitor
             : public Object
          {
-        
 
-    public process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor);
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor);
 
 };
 

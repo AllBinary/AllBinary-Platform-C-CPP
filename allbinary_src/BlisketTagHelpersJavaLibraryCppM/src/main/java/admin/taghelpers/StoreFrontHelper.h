@@ -69,19 +69,18 @@
         #include "TagHelper.h"
 
 class StoreFrontHelper: public TagHelper {
-        
 
-    private: const storeFrontInterface: StoreFrontInterface;
+    private: const StoreFrontInterface storeFrontInterface;
 
-    private: const currentLocation: string;
+    private: const std::string currentLocation;
 
-    private: const currentHomeLocation: string;
+    private: const std::string currentHomeLocation;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: StoreFrontHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string getCurrentLocation();
+    public: std::string getCurrentLocation();
 
-    public string getCurrentHomeLocation();
+    public: std::string getCurrentHomeLocation();
 
 };
 

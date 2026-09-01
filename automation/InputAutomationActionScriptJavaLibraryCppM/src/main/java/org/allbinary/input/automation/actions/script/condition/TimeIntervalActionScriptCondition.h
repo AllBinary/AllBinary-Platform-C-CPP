@@ -77,40 +77,39 @@
 #include "TimeIntervalActionScriptConditionJPanel.h"
 #include "TimeIntervalActionScriptConditionData.h"
 
-class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition: public TimeIntervalActionScriptConditionInterface {
-        
+class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition, public TimeIntervalActionScriptConditionInterface {
 
-    private: static const NAME: string = "Time Interval";
+    private: static const std::string NAME = "Time Interval";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: timeIntervalActionScriptConditionJPanel: TimeIntervalActionScriptConditionJPanel;
+    private: TimeIntervalActionScriptConditionJPanel timeIntervalActionScriptConditionJPanel;
 
-    private: timeHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeHelper;
 
-public constructor (Node node);
+public: TimeIntervalActionScriptCondition(Node node);
 
-public constructor ();
+public: TimeIntervalActionScriptCondition();
 
-    init();
+    private: void init();
 
-    public showDialog();
+    public: void showDialog();
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
-
-    public log();
-
-    public TimeDelayHelper getTimeDelayHelper();
-
-    public setTimeDelayHelper(TimeDelayHelper timeHelper);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public bool shouldProcess(Long frame);
+    public: Node toXmlNode(Document document);
+
+    public: void log();
+
+    public: TimeDelayHelper getTimeDelayHelper();
+
+    public: void setTimeDelayHelper(TimeDelayHelper timeHelper);
+
+                //@Throws(Exception.constructor)
+            
+    public: bool shouldProcess(Long frame);
 
 };
 

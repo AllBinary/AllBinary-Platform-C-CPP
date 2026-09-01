@@ -52,15 +52,14 @@
 class NullInputMappingEventListener
             : public Object
         : public InputMappingEventListenerInterface {
-        
 
-    public static const NULL_INPUT_MAPPING_EVENT_LISTENER: NullInputMappingEventListener = new NullInputMappingEventListener();
+    public: static const NullInputMappingEventListener NULL_INPUT_MAPPING_EVENT_LISTENER = NullInputMappingEventListener();
 
                 //@Throws(Exception.constructor)
             
-    public onInputMappingEvent(InputMappingEvent inputMappingEvent);
+    public: void onInputMappingEvent(InputMappingEvent inputMappingEvent);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
 };
 

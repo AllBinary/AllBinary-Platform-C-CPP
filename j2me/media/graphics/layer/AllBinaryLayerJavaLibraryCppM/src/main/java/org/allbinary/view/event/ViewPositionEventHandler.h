@@ -66,29 +66,28 @@
 #include "ViewPositionEventListenerInterface.h"
 
 class ViewPositionEventHandler: public BasicEventHandler {
-        
 
-    private: static SINGLETON: ViewPositionEventHandler = new ViewPositionEventHandler();
+    private: static ViewPositionEventHandler SINGLETON = ViewPositionEventHandler();
 
-    public static ViewPositionEventHandler getInstance();
+    public: static ViewPositionEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: ViewPositionEventHandler();
 
-    public addListener(AllBinaryLayer layerInterface);
+    public: void addListener(AllBinaryLayer layerInterface);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    public: void fireEvent(AllBinaryEventObject eventObject);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

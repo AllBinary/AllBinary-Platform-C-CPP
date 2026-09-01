@@ -54,17 +54,16 @@
 class StaticPagesEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: StaticPagesEntityFactory = new StaticPagesEntityFactory();
+    private: static StaticPagesEntityFactory instance() { return StaticPagesEntityFactory(); }
 
-    public static StaticPagesEntityFactory getInstance();
+    public: static StaticPagesEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: StaticPagesEntityFactory();
 
-    public StaticPagesEntity getStaticPagesEntityInstance();
+    public: StaticPagesEntity getStaticPagesEntityInstance();
 
 };
 

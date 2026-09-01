@@ -59,68 +59,65 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WaypointInfoHudPaintable: public SelectionHudPaintable {
-        
 
-    private: const keyvalueDrawString: KeyValueDrawString;
+    private: KeyValueDrawString keyvalueDrawString;
 
-    rtsLayerP: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface rtsLayerP = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    private: textLine2Y: int32_t= 0;
+    private: int32_t textLine2Y= 0;
 
-public constructor (){
-
-            super();
-        this.keyvalueDrawString= new KeyValueDrawString("Owner: ", this.textX);
+public: WaypointInfoHudPaintable(){
+this->keyvalueDrawString= KeyValueDrawString("Owner: ", this->textX);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.textLine2Y= (this.y +font.getHeight());
-    
-}
-
-
-    public updateSelectionInfo(){
-
-    rtsLayer: RTSLayer = this.rtsLayerP as RTSLayer;;
-    
-this.setName(rtsLayer!.getName());
-    
-this.setAnimationInterface(rtsLayer!.getVerticleBuildAnimationInterface());
-    
-this.keyvalueDrawString!.update(rtsLayer!.getParentLayer()!.getName());
+this->textLine2Y= (this->y +font.getHeight());
     
 }
 
 
-    public setRtsLayer(RTSLayer rtsLayer){
-this.rtsLayerP= rtsLayer;
+    public: void updateSelectionInfo(){
+
+    RTSLayer rtsLayer = this->rtsLayerP as RTSLayer;;
+    
+this->setName(rtsLayer.getName());
+    
+this->setAnimationInterface(rtsLayer.getVerticleBuildAnimationInterface());
+    
+this->keyvalueDrawString.update(rtsLayer.getParentLayer().getName());
     
 }
 
 
-    public PathFindingLayerInterface getRtsLayer(){
+    public: void setRtsLayer(RTSLayer rtsLayer){
+this->rtsLayerP= rtsLayer;
+    
+}
+
+
+    public: PathFindingLayerInterface getRtsLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rtsLayerP;
+                        return this->rtsLayerP;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
-this.keyvalueDrawString!.paint(graphics, this.textLine2Y);
+this->keyvalueDrawString.paint(graphics, this->textLine2Y);
     
-this.getAnimationInterface()!.paintXY(graphics, this.imageX, this.y);
+this->getAnimationInterface().paintXY(graphics, this->imageX, this->y);
     
 }
 

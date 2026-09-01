@@ -47,25 +47,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class VehicleFrictionProperties: public FrictionProperties {
-        
 
-    private: const TIRE_FRICTION_NOMINATOR: int32_t;
+    private: int32_t TIRE_FRICTION_NOMINATOR;
 
-    private: const BRAKE_FRICTION_NOMINATOR: int32_t;
+    private: int32_t BRAKE_FRICTION_NOMINATOR;
 
-    private: const AIR_FRICTION_NOMINATOR: int32_t;
+    private: int32_t AIR_FRICTION_NOMINATOR;
 
-    private: const CRASH_FRICTION_NOMINATOR: int32_t;
+    private: int32_t CRASH_FRICTION_NOMINATOR;
 
-public constructor (int32_t tireFriction, int32_t brakeFriction, int32_t airFriction, int32_t crashFriction);
+public: VehicleFrictionProperties(int32_t tireFriction, int32_t brakeFriction, int32_t airFriction, int32_t crashFriction);
 
-    public int32_t getTireFrictionNominator();
+    public: int32_t getTireFrictionNominator();
 
-    public int32_t getBrakeFrictionNominator();
+    public: int32_t getBrakeFrictionNominator();
 
-    public int32_t getAirFrictionNominator();
+    public: int32_t getAirFrictionNominator();
 
-    public int32_t getCrashFrictionNominator();
+    public: int32_t getCrashFrictionNominator();
 
 };
 

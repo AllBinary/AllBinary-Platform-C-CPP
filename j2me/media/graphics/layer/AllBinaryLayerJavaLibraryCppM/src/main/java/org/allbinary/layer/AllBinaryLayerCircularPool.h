@@ -59,13 +59,12 @@
         #include "AllBinaryLayerFactoryInterface.h"
 
 class AllBinaryLayerCircularPool: public BaseCircularPool {
-        
 
-protected constructor ();
+protected: AllBinaryLayerCircularPool();
 
                 //@Throws(Exception.constructor)
             
-    public initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+    public: void initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
 
 };
 

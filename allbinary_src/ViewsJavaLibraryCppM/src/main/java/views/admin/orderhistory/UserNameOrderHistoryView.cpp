@@ -90,62 +90,61 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserNameOrderHistoryView: public HttpStoreComponentView: public ValidationComponentInterface, public DomNodeInterface {
-        
+class UserNameOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: shipped: string;
+    private: std::string shipped;
 
-    private: partiallyShipped: string;
+    private: std::string partiallyShipped;
 
-    private: processing: string;
+    private: std::string processing;
 
-    private: preprocessing: string;
+    private: std::string preprocessing;
 
-    private: cancelled: string;
+    private: std::string cancelled;
 
-    private: const ON: string = "on";
+    private: const std::string ON = "on";
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: UserNameOrderHistoryView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
-this.userName= this.request.getParameter(UserData.USERNAME);
+this->userName= this->request.getParameter(UserData::USERNAME);
     
-this.preprocessing= this.request.getParameter(OrderHistoryData.PREPROCESSINGNAME);
+this->preprocessing= this->request.getParameter(OrderHistoryData::PREPROCESSINGNAME);
     
-this.shipped= this.request.getParameter(OrderHistoryData.SHIPPEDNAME);
+this->shipped= this->request.getParameter(OrderHistoryData::SHIPPEDNAME);
     
-this.partiallyShipped= this.request.getParameter(OrderHistoryData.PARTIALLYSHIPPEDNAME);
+this->partiallyShipped= this->request.getParameter(OrderHistoryData::PARTIALLYSHIPPEDNAME);
     
-this.processing= this.request.getParameter(OrderHistoryData.PROCESSINGNAME);
+this->processing= this->request.getParameter(OrderHistoryData::PROCESSINGNAME);
     
-this.cancelled= this.request.getParameter(OrderHistoryData.CANCELLEDNAME);
+this->cancelled= this->request.getParameter(OrderHistoryData::CANCELLEDNAME);
     
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -158,10 +157,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -176,61 +175,61 @@ this.addDomNodeInterface(this as DomNodeInterface);
 }
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    node: Node = document.createElement(OrderData.ORDERS)!;;
+    Node node = document.createElement(OrderData::ORDERS);;
     
 
-    orderHistoryEntity: OrderHistoryEntity = new OrderHistoryEntity();;
+    OrderHistoryEntity orderHistoryEntity = OrderHistoryEntity();;
     
 
-    orderReviewVector: Vector = orderHistoryEntity!.getOrders(this.userName)!;;
+    Vector orderReviewVector = orderHistoryEntity.getOrders(this->userName);;
     
 
-    size: int32_t = orderReviewVector!.length!;;
+    int32_t size = orderReviewVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    orderHistory: OrderHistory = orderReviewVector!.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderReviewVector.get(index) as OrderHistory;;
     
 
-    orderHistoryNode: Node = orderHistory!.toXmlNode(document)!;;
+    Node orderHistoryNode = orderHistory.toXmlNode(document);;
     
 
-    orderNode: Node = document.createElement(orderHistory!.getPaymentMethod())!;;
+    Node orderNode = document.createElement(orderHistory.getPaymentMethod());;
     
-node.appendChild(orderHistory!.toXmlNode(document));
+node.appendChild(orderHistory.toXmlNode(document));
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Attempt to View a users order history", this, "view");
+                                    this->logUtil.putF("Attempt to View a users order history", this, "view");
     
 
                                     }
                                 
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PREPROCESSINGNAME, OrderHistoryData.PREPROCESSING));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PREPROCESSINGNAME, OrderHistoryData::PREPROCESSING));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PROCESSINGNAME, OrderHistoryData.PROCESSING));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PROCESSINGNAME, OrderHistoryData::PROCESSING));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.CANCELLEDNAME, OrderHistoryData.CANCELLED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::CANCELLEDNAME, OrderHistoryData::CANCELLED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PARTIALLYSHIPPEDNAME, OrderHistoryData.PARTIALLYSHIPPED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PARTIALLYSHIPPEDNAME, OrderHistoryData::PARTIALLYSHIPPED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.SHIPPEDNAME, OrderHistoryData.SHIPPED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::SHIPPEDNAME, OrderHistoryData::SHIPPED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, GLOBALS2.VIEW));
+node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME, GLOBALS2::VIEW));
     
 
 
@@ -243,10 +242,10 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -262,25 +261,25 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Started", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("Started", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(UserName.getInstance()!.isValid(this.userName) == Boolean.TRUE)
+                        if(UserName::getInstance().isValid(this->userName) == Boolean::TRUE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -289,12 +288,12 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -304,7 +303,7 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -314,11 +313,9 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
-                        if(this.userName == 
-                                    null
-                                )
+                        if(false)
                         
 
 
@@ -326,7 +323,7 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
                         return "No User Name Specified<br />";
     
 
-                        if(UserName.getInstance()!.isValid(this.userName) == Boolean.FALSE)
+                        if(UserName::getInstance().isValid(this->userName) == Boolean::FALSE)
                         
                                     {
                                     

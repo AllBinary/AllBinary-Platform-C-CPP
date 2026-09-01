@@ -69,53 +69,52 @@
 #include "AlwaysActionScriptConditionJPanel.h"
 #include "AlwaysActionScriptConditionData.h"
 
-class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition: public AlwaysActionScriptConditionInterface {
-        
+class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, public AlwaysActionScriptConditionInterface {
 
-    private: static const NAME: string = "Always On/Off";
+    private: static const std::string NAME = "Always On/Off";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: alwaysActionScriptConditionJPanel: AlwaysActionScriptConditionJPanel;
+    private: AlwaysActionScriptConditionJPanel alwaysActionScriptConditionJPanel;
 
-    private: isOn: bool= false;
+    private: bool isOn= false;
 
-public constructor (Node node){
-            super(AlwaysActionScriptCondition.NAME, node);
+public: AlwaysActionScriptCondition(Node node){
+            super(AlwaysActionScriptCondition::NAME, node);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    actionNode: Node = DomSearchHelper.getNode(AlwaysActionScriptConditionData.NAME, node.getChildNodes())!;;
+    Node actionNode = DomSearchHelper::getNode(AlwaysActionScriptConditionData::NAME, node.getChildNodes());;
     
 
                         if(actionNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    nodeList: NodeList = actionNode!.getChildNodes()!;;
+    NodeList nodeList = actionNode.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    childNode: Node = nodeList!.item(index)!;;
+    Node childNode = nodeList.item(index);;
     
 
-                        if(childNode!.getNodeName()!.compareTo(AlwaysActionScriptConditionData.IS_ON) == 0)
+                        if(childNode.getNodeName().compareTo(AlwaysActionScriptConditionData::IS_ON) == 0)
                         
                                     {
                                     
-    booleanString: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setIsOn(.valueOf());
+this->setIsOn(.valueOf());
     
 
                                     }
@@ -124,7 +123,7 @@ this.setIsOn(.valueOf());
                             
 
 
-                            throw new Exception("Action Script Condition Unknown Node");
+                            throw Exception("Action Script Condition Unknown Node");
                     
 
                         }
@@ -138,62 +137,62 @@ this.setIsOn(.valueOf());
                             
 
 
-                            throw new Exception("Action Script Condition Node Null");
+                            throw Exception("Action Script Condition Node Null");
                     
 
                         }
                             
-this.init();
+this->init();
     
 }
 
 
-public constructor (){
-            super(AlwaysActionScriptCondition.NAME);
+public: AlwaysActionScriptCondition(){
+            super(AlwaysActionScriptCondition::NAME);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init();
+this->init();
     
 }
 
 
-    init(){
-this.alwaysActionScriptConditionJPanel= new AlwaysActionScriptConditionJPanel(this);
+    private: void init(){
+this->alwaysActionScriptConditionJPanel= AlwaysActionScriptConditionJPanel(this);
     
 }
 
 
-    public bool isIsOn(){
+    public: bool isIsOn(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isOn;
+                        return this->isOn;
     
 }
 
 
-    public setIsOn(bool isOn){
-this.isOn= isOn;
+    public: void setIsOn(bool isOn){
+this->isOn= isOn;
     
 }
 
 
-    public showDialog(){
-this.alwaysActionScriptConditionJPanel!.getAlwaysActionJDialog()!.setVisible(true);
+    public: void showDialog(){
+this->alwaysActionScriptConditionJPanel.getAlwaysActionJDialog().setVisible(true);
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(AlwaysActionScriptConditionData.IS_ON, Boolean.toString(this.isIsOn()));
+hashMap.put(AlwaysActionScriptConditionData::IS_ON, Boolean::toString(this->isIsOn()));
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -206,11 +205,11 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = super.toXmlNode(document)!;;
+    Node node = super.toXmlNode(document);;
     
-node.appendChild(ModDomHelper.createNodeWithValueNodes(document, AlwaysActionScriptConditionData.NAME, this.toHashMap()));
+node.appendChild(ModDomHelper::createNodeWithValueNodes(document, AlwaysActionScriptConditionData::NAME, this->toHashMap()));
     
 
 
@@ -223,9 +222,9 @@ node.appendChild(ModDomHelper.createNodeWithValueNodes(document, AlwaysActionScr
 
                 //@Throws(Exception.constructor)
             
-    public bool shouldProcess(Long frame){
+    public: bool shouldProcess(Long frame){
 
-                        if(this.isIsOn())
+                        if(this->isIsOn())
                         
                                     {
                                     
@@ -246,8 +245,8 @@ node.appendChild(ModDomHelper.createNodeWithValueNodes(document, AlwaysActionScr
 }
 
 
-    public log(){
-this.logUtil!.putF("Is On: " +this.isIsOn(), this, "log");
+    public: void log(){
+this->logUtil.putF("Is On: " +this->isIsOn(), this, "log");
     
 }
 

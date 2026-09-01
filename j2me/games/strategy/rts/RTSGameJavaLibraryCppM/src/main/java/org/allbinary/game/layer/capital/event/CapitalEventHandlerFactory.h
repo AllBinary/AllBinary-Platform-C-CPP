@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_CAPITAL_EVENT_CAPITALEVENTHANDLERFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -49,16 +51,15 @@
 class CapitalEventHandlerFactory
             : public Object
          {
-        
 
-    private: static const capitalEventHandlerArray: std::vector<CapitalEventHandler>;
+    private: static const std::vector<CapitalEventHandler> capitalEventHandlerArray;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public static CapitalEventHandler getInstance(Group groupInterface);
+    public: static CapitalEventHandler getInstance(Group groupInterface);
 
-    public static removeAll();
+    public: static void removeAll();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
@@ -74,91 +76,88 @@
         #include "RaceTrackDropCellPositionGenerator.h"
 
 class RaceTrackRandomDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
-        
 
-    private: static SINGLETON: RaceTrackRandomDropCellPositionGenerator = new RaceTrackRandomDropCellPositionGenerator();
+    private: static RaceTrackRandomDropCellPositionGenerator SINGLETON = RaceTrackRandomDropCellPositionGenerator();
 
-    public static RaceTrackRandomDropCellPositionGenerator getInstance(){
+    public: static RaceTrackRandomDropCellPositionGenerator getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackRandomDropCellPositionGenerator.SINGLETON;
+                        return RaceTrackRandomDropCellPositionGenerator::SINGLETON;
     
 }
 
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    private: const cellsPerRowOrColumn: int32_t = 3;
+    private: const int32_t cellsPerRowOrColumn = 3;
 
-    private: const totalCells: int32_t = this.cellsPerRowOrColumn *this.cellsPerRowOrColumn;
+    private: const int32_t totalCells = this->cellsPerRowOrColumn *this->cellsPerRowOrColumn;
 
-    private: const rowArray: std::vector<int32_t> = [0,1,2,0,1,2,0,1,2];
+    private: const std::vector<int32_t> rowArray = {0,1,2,0,1,2,0,1,2};
 
-    private: const columnArray: std::vector<int32_t> = [0,0,0,1,1,1,2,2,2];
+    private: const std::vector<int32_t> columnArray = {0,0,0,1,1,1,2,2,2};
 
-    private: cellWidth: int32_t= 0;
+    private: int32_t cellWidth= 0;
 
-    private: cellHeight: int32_t= 0;
+    private: int32_t cellHeight= 0;
 
-private constructor (){
-
-            super();
-        }
+private: RaceTrackRandomDropCellPositionGenerator(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
 super.update(allBinaryGameLayerManager, geographicMapInterface);
     
 
-    tiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
-this.cellWidth= tiledLayer!.getCellWidth() /this.cellsPerRowOrColumn;
+this->cellWidth= tiledLayer.getCellWidth() /this->cellsPerRowOrColumn;
     
-this.cellHeight= tiledLayer!.getCellHeight() /this.cellsPerRowOrColumn;
+this->cellHeight= tiledLayer.getCellHeight() /this->cellsPerRowOrColumn;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
+    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
 
-    geographicMapCellPosition: GeographicMapCellPosition = this.list.get(index) as GeographicMapCellPosition;;
-    
-
-    point: GPoint = geographicMapCellPosition!.getPoint()!;;
+    GeographicMapCellPosition geographicMapCellPosition = this->list.get(index) as GeographicMapCellPosition;;
     
 
-    randomCell: int32_t = this.myRandomFactory!.getAbsoluteNextInt(this.totalCells)!;;
+    GPoint point = geographicMapCellPosition.getPoint();;
     
 
-    row: int32_t = this.rowArray[randomCell]!;;
+    int32_t randomCell = this->myRandomFactory.getAbsoluteNextInt(this->totalCells);;
     
 
-    column: int32_t = this.columnArray[randomCell]!;;
+    int32_t row = this->rowArray[randomCell];;
     
 
-    x: int32_t = point.getX() +(row *this.cellWidth);;
+    int32_t column = this->columnArray[randomCell];;
     
 
-    y: int32_t = point.getY() +(column *this.cellHeight);;
+    int32_t x = point.getX() +(row *this->cellWidth);;
     
 
-    pickedUpLayerInterfaceFactory: PickedUpLayerInterfaceFactoryInterface = DropLayerFactory.getInstance()!.getRandomInstance()!;;
+    int32_t y = point.getY() +(column *this->cellHeight);;
     
 
-    tiledLayer: AllBinaryTiledLayer = this.raceTrackGeographicMap!.getAllBinaryTiledLayer()!;;
+    PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactory = DropLayerFactory::getInstance().getRandomInstance();;
     
 
-    pickupLayer: RaceTrackPickupLayer = PickupLayerCircularStaticPool.getInstance()!.getInstanceXYZ(pickedUpLayerInterfaceFactory, x, y, tiledLayer!.getZP() +3) as RaceTrackPickupLayer;;
+    AllBinaryTiledLayer tiledLayer = this->raceTrackGeographicMap.getAllBinaryTiledLayer();;
     
-pickupLayer!.setTiledLayer(tiledLayer);
+
+    RaceTrackPickupLayer pickupLayer = PickupLayerCircularStaticPool::getInstance().getInstanceXYZ(pickedUpLayerInterfaceFactory, x, y, tiledLayer.getZP() +3) as RaceTrackPickupLayer;;
     
-allBinaryLayerManager!.append(pickupLayer);
+pickupLayer.setTiledLayer(tiledLayer);
+    
+allBinaryLayerManager.append(pickupLayer);
     
 }
 

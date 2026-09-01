@@ -57,60 +57,57 @@
 class BooleanFileVisitor
             : public Object
         : public VisitorInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: filterStringBasicArrayList: BasicArrayList;
+    private: BasicArrayList filterStringBasicArrayList;
 
-public constructor (BasicArrayList filterStringBasicArrayList){
-
-            super();
-        this.setFilterStringBasicArrayList(filterStringBasicArrayList);
+public: BooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
+this->setFilterStringBasicArrayList(filterStringBasicArrayList);
     
-PreLogUtil.put("Filter BasicArrayList: " +this.getFilterStringBasicArrayList()!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+PreLogUtil::put("Filter BasicArrayList: " +this->getFilterStringBasicArrayList().toString(), this, this->commonStrings.CONSTRUCTOR);
     
 }
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.visit(anyType as AbFile);
+                        return this->visit(anyType as AbFile);
     
 }
 
 
-    public Boolean visit(AbFile file){
+    public: Boolean visit(AbFile file){
 
-    list: BasicArrayList = this.getFilterStringBasicArrayList()!;;
+    BasicArrayList list = this->getFilterStringBasicArrayList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    nextFileFilterString: string;;
+    std::string nextFileFilterString;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 nextFileFilterString= list.get(index) as string;
     
 
-                        if(this.visit(file, nextFileFilterString).valueOf())
+                        if(this->visit(file, nextFileFilterString).valueOf())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -121,33 +118,33 @@ nextFileFilterString= list.get(index) as string;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 
-    public BasicArrayList getFilterStringBasicArrayList(){
+    public: BasicArrayList getFilterStringBasicArrayList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.filterStringBasicArrayList;
+                        return this->filterStringBasicArrayList;
     
 }
 
 
-    public setFilterStringBasicArrayList(BasicArrayList filterStringBasicArrayList){
-this.filterStringBasicArrayList= filterStringBasicArrayList;
+    public: void setFilterStringBasicArrayList(BasicArrayList filterStringBasicArrayList){
+this->filterStringBasicArrayList= filterStringBasicArrayList;
     
 }
 
 
-    public Boolean visit(AbFile file, string fileNameString){
+    public: Boolean visit(AbFile file, std::string fileNameString){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

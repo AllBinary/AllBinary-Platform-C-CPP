@@ -75,32 +75,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GameNotification.h"
 
-class GameNotificationHud: public BasicHud: public GameNotificationListenerInterface {
-        
+class GameNotificationHud: public BasicHud, public GameNotificationListenerInterface {
 
-    public static const NULL_GAME_NOTIFICATION: GameNotificationHud = new GameNotificationHud(BasicHudFactory.getInstance()!.TOPCENTER, BasicHudFactory.getInstance()!.HORIZONTAL, 0, BasicColorFactory.getInstance()!.RED);
+    public: static const GameNotificationHud NULL_GAME_NOTIFICATION = GameNotificationHud(BasicHudFactory::getInstance().TOPCENTER, BasicHudFactory::getInstance().HORIZONTAL, 0, BasicColorFactory::getInstance().RED);
 
-public constructor (int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    private: const METHOD_NAME: string = "onGameNotificationEvent";
+    private: const std::string METHOD_NAME = "onGameNotificationEvent";
 
-    private: lastGameNotificationEvent: GameNotificationEvent = GameNotification.NULL_GAME_NOTIFICATION_EVENT;
-
-                //@Throws(Exception.constructor)
-            
-    public onGameNotificationEvent(GameNotificationEvent gameNotificationEvent);
-
-    add(string string, Integer seconds, BasicColor basicColor, Boolean permanent);
+    private: GameNotificationEvent lastGameNotificationEvent = GameNotification::NULL_GAME_NOTIFICATION_EVENT;
 
                 //@Throws(Exception.constructor)
             
-    public processTick();
+    public: void onGameNotificationEvent(GameNotificationEvent gameNotificationEvent);
 
-    public paint(Graphics graphics);
+    protected: void add(std::string string, Integer seconds, BasicColor basicColor, Boolean permanent);
 
-    public clear();
+                //@Throws(Exception.constructor)
+            
+    public: void processTick();
+
+    public: void paint(Graphics graphics);
+
+    public: void clear();
 
 };
 

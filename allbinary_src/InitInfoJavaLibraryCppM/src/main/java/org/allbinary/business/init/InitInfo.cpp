@@ -66,108 +66,105 @@
 class InitInfo
             : public Object
          {
-        
 
-    private: static const instance: InitInfo = new InitInfo();
+    private: static InitInfo instance() { return InitInfo(); }
 
-    public static InitInfo getInstance(){
+    public: static InitInfo getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo.instance;
+                        return InitInfo::instance();
     
 }
 
 
-    public const TESTING: string = "TESTING";
+    public: const std::string TESTING = "TESTING";
 
-    public const MAINPATH: string = "MAINPATH";
+    public: const std::string MAINPATH = "MAINPATH";
 
-    public const TESTHTMLPATH: string = "TESTHTMLPATH";
+    public: const std::string TESTHTMLPATH = "TESTHTMLPATH";
 
-    private: testing: string = 
+    private: std::string testing = 
                 null
             ;
 
-    private: mainPath: AbPath = 
+    private: AbPath mainPath = 
                 null
             ;
 
-    private: testHtmlPath: AbPath = 
+    private: AbPath testHtmlPath = 
                 null
             ;
 
-    private: hasRead: bool = false;
+    private: bool hasRead = false;
 
-private constructor (){
-
-            super();
-        }
+private: InitInfo(){
+}
 
 
                 //@Throws(InitException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public set(){
+    public: void set(){
 
         try {
             
-    initInfoEntity: InitInfoEntity = new InitInfoEntity();;
+    InitInfoEntity initInfoEntity = InitInfoEntity();;
     
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put("created entity", "InitInfo", "set()");
+                                    PreLogUtil::put("created entity", "InitInfo", "set()");
     
 
                                     }
                                 
 
-                        if(!initInfoEntity!.is())
+                        if(!initInfoEntity.is())
                         
                                     {
                                     
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put("adding", "InitInfo", "set()");
+                                    PreLogUtil::put("adding", "InitInfo", "set()");
     
 
                                     }
                                 
-initInfoEntity!.add();
+initInfoEntity.add();
     
 
                                     }
                                 
                         else {
                             
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put("update", "InitInfo", "set()");
+                                    PreLogUtil::put("update", "InitInfo", "set()");
     
 
                                     }
                                 
-initInfoEntity!.update();
+initInfoEntity.update();
     
 
                         }
                             
-this.hasRead= false;
+this->hasRead= false;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE("error", "InitInfo", "set()", e);
+                                    PreLogUtil::putOE("error", "InitInfo", "set()", e);
     
 
                                     }
@@ -178,24 +175,24 @@ this.hasRead= false;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public set(HashMap<any, any> hashMap){
+    public: void set(HashMap<any, any> hashMap){
 
         try {
-            this.testing= hashMap!.get(this.TESTING) as string;
+            this->testing= hashMap.get(this->TESTING) as string;
     
-this.mainPath= new AbPath(hashMap!.get(this.MAINPATH) as string, StringUtil.getInstance()!.EMPTY_STRING);
+this->mainPath= AbPath(hashMap.get(this->MAINPATH) as string, StringUtil::getInstance().EMPTY_STRING);
     
-this.testHtmlPath= new AbPath(hashMap!.get(this.TESTHTMLPATH) as string, StringUtil.getInstance()!.EMPTY_STRING);
+this->testHtmlPath= AbPath(hashMap.get(this->TESTHTMLPATH) as string, StringUtil::getInstance().EMPTY_STRING);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE("error", "InitInfo", "set()", e);
+                                    PreLogUtil::putOE("error", "InitInfo", "set()", e);
     
 
                                     }
@@ -206,35 +203,35 @@ this.testHtmlPath= new AbPath(hashMap!.get(this.TESTHTMLPATH) as string, StringU
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    get(){
+    private: void get(){
 
         try {
-            this.testing= 
+            this->testing= 
                                         nullptr
                                     ;
     
-this.mainPath= 
+this->mainPath= 
                                         nullptr
                                     ;
     
-this.testHtmlPath= 
+this->testHtmlPath= 
                                         nullptr
                                     ;
     
 
-    initInfoEntity: InitInfoEntity = new InitInfoEntity();;
+    InitInfoEntity initInfoEntity = InitInfoEntity();;
     
-initInfoEntity!.get();
+initInfoEntity.get();
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE("error", "InitInfo", "set()", e);
+                                    PreLogUtil::putOE("error", "InitInfo", "set()", e);
     
 
                                     }
@@ -251,23 +248,23 @@ initInfoEntity!.get();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setHasRead(bool value){
-this.hasRead= value;
+    public: void setHasRead(bool value){
+this->hasRead= value;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    updateIfNeeded(){
+    private: void updateIfNeeded(){
 
         try {
             
-                        if(!this.hasRead)
+                        if(!this->hasRead)
                         
                                     {
-                                    this.hasRead= true;
+                                    this->hasRead= true;
     
-this.get();
+this->get();
     
 
                                     }
@@ -277,10 +274,10 @@ this.get();
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE("error", "InitInfo", "updateIfNeeded()", e);
+                                    PreLogUtil::putOE("error", "InitInfo", "updateIfNeeded()", e);
     
 
                                     }
@@ -296,26 +293,26 @@ this.get();
 }
 
 
-    public bool isTesting(){
+    public: bool isTesting(){
 
         try {
-            this.updateIfNeeded();
+            this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanUtil.getInstance()!.getFromString(this.testing);;
+                        return BooleanUtil::getInstance().getFromString(this->testing);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE("error", "InitInfo", "updateIfNeeded()", e);
+                                    PreLogUtil::putOE("error", "InitInfo", "updateIfNeeded()", e);
     
 
                                     }
@@ -331,24 +328,24 @@ this.get();
 }
 
 
-    public string getTesting(){
-this.updateIfNeeded();
+    public: std::string getTesting(){
+this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testing;
+                        return this->testing;
     
 }
 
 
-    public string getTestHtmlPath(){
-this.updateIfNeeded();
+    public: std::string getTestHtmlPath(){
+this->updateIfNeeded();
     
 
-                        if(this.testHtmlPath != 
-                                    null
+                        if(this->testHtmlPath != 
+                                    nullptr
                                 )
                         
                                     {
@@ -356,7 +353,7 @@ this.updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHtmlPath!.toString();;
+                        return this->testHtmlPath.toString();;
     
 
                                     }
@@ -374,12 +371,12 @@ this.updateIfNeeded();
 }
 
 
-    public string getMainPath(){
-this.updateIfNeeded();
+    public: std::string getMainPath(){
+this->updateIfNeeded();
     
 
-                        if(this.mainPath != 
-                                    null
+                        if(this->mainPath != 
+                                    nullptr
                                 )
                         
                                     {
@@ -387,7 +384,7 @@ this.updateIfNeeded();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mainPath!.toString();;
+                        return this->mainPath.toString();;
     
 
                                     }
@@ -405,25 +402,25 @@ this.updateIfNeeded();
 }
 
 
-    public setTesting(string value){
-this.testing= value;
+    public: void setTesting(std::string value){
+this->testing= value;
     
 }
 
 
-    public setTestHtmlPath(AbPath value){
-this.testHtmlPath= value;
+    public: void setTestHtmlPath(AbPath value){
+this->testHtmlPath= value;
     
 }
 
 
-    public setMainPath(AbPath value){
-this.mainPath= value;
+    public: void setMainPath(AbPath value){
+this->mainPath= value;
     
 }
 
 
-    public bool isMainPathValid(AbPath abPath){
+    public: bool isMainPathValid(AbPath abPath){
 
 
 
@@ -433,7 +430,7 @@ this.mainPath= value;
 }
 
 
-    public bool isTestHtmlPathValid(AbPath abPath){
+    public: bool isTestHtmlPathValid(AbPath abPath){
 
 
 
@@ -445,25 +442,25 @@ this.mainPath= value;
 
                 //@Throws(Exception.constructor)
             
-    public bool isTestingValid(string testing){
+    public: bool isTestingValid(std::string testing){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanUtil.getInstance()!.isStringBoolean(testing);;
+                        return BooleanUtil::getInstance().isStringBoolean(testing);;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(this.TESTING, this.getTesting());
+hashMap.put(this->TESTING, this->getTesting());
     
-hashMap!.put(this.MAINPATH, this.getMainPath());
+hashMap.put(this->MAINPATH, this->getMainPath());
     
-hashMap!.put(this.TESTHTMLPATH, this.getTestHtmlPath());
+hashMap.put(this->TESTHTMLPATH, this->getTestHtmlPath());
     
 
 

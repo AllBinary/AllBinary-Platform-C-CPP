@@ -45,7 +45,6 @@
 class NullControl
             : public Object
         : public Control {
-        
 
 };
 

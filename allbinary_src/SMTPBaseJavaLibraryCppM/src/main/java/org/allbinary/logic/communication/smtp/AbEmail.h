@@ -61,33 +61,32 @@
 class AbEmail
             : public Object
         : public EmailInterface {
-        
 
-    private: email: Email;
+    private: Email email;
 
-public constructor (string server, string from, string to, string subject, string textBody, string htmlAttachment, string contentBase);
+public: AbEmail(std::string server, std::string from, std::string to, std::string subject, std::string textBody, std::string htmlAttachment, std::string contentBase);
 
-    public MimeMessage getMimeMessage();
+    public: MimeMessage getMimeMessage();
 
-    public string getDebugInfo();
-
-                //@Throws(Exception.constructor)
-            
-    public string log();
+    public: std::string getDebugInfo();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: std::string log();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
-
-    public Email getEmail();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
+
+    public: Email getEmail();
+
+                //@Throws(Exception.constructor)
+            
+    public: Document toXmlDoc();
 
 };
 

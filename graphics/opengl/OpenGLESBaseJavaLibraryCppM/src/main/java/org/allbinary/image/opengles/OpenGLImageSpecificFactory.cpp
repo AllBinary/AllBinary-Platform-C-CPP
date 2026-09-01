@@ -52,38 +52,37 @@
 class OpenGLImageSpecificFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLImageSpecificFactory = new OpenGLImageSpecificFactory();
+    private: static OpenGLImageSpecificFactory instance() { return OpenGLImageSpecificFactory(); }
 
-    public static OpenGLImageSpecificFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLImageSpecificFactory.instance;
-    
-}
-
-
-    private: imageFactory: OpenGLImageFactory = OpenGLImageFactory.NULL_OPENGL_IMAGE_FACTORY;
-
-    public updating: bool = false;
-
-    public setImageFactory(OpenGLImageFactory imageFactory){
-this.imageFactory= imageFactory;
-    
-PreLogUtil.put(new StringMaker().append("Selected Image Factory: ")!.append(StringUtil.getInstance()!.toString(this.imageFactory))!.toString(), this, "setImageFactory");
-    
-}
-
-
-    public OpenGLImageFactory getImageFactory(){
+    public: static OpenGLImageSpecificFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageFactory;
+                        return OpenGLImageSpecificFactory::instance();
+    
+}
+
+
+    private: OpenGLImageFactory imageFactory = OpenGLImageFactory::NULL_OPENGL_IMAGE_FACTORY;
+
+    public: bool updating = false;
+
+    public: void setImageFactory(OpenGLImageFactory imageFactory){
+this->imageFactory= imageFactory;
+    
+PreLogUtil::put(StringMaker().append("Selected Image Factory: ").append(StringUtil::getInstance().toString(this->imageFactory)).toString(), this, "setImageFactory");
+    
+}
+
+
+    public: OpenGLImageFactory getImageFactory(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->imageFactory;
     
 }
 

@@ -52,15 +52,14 @@
 class ToastUtil
             : public Object
          {
-        
 
-    private: static const instance: ToastUtil = new ToastUtil();
+    private: static ToastUtil instance() { return ToastUtil(); }
 
-    public static ToastUtil getInstance();
+    public: static ToastUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public makeToast(View view, Context context, string message, int32_t time);
+    public: void makeToast(View view, Context context, std::string message, int32_t time);
 
 };
 

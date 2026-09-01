@@ -39,16 +39,15 @@
         #include "PlatformImage.h"
 //PlatformNullImageJavaLibrary
 class PreLoadPlatformImage: public PlatformImage {
-        
 
-    private: static const instance: PreLoadPlatformImage = new PreLoadPlatformImage();
+    private: static PreLoadPlatformImage instance() { return PreLoadPlatformImage(); }
 
-    public static PreLoadPlatformImage getInstance(){
+    public: static PreLoadPlatformImage getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PreLoadPlatformImage.instance;
+                        return PreLoadPlatformImage::instance();
     
 }
 

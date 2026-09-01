@@ -86,52 +86,51 @@
 class BaseChangedGameFeatureListener
             : public Object
         : public GameFeatureListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const gameFeatureUtil: GameFeatureUtil = GameFeatureUtil.getInstance()!;
+    protected: const GameFeatureUtil gameFeatureUtil = GameFeatureUtil::getInstance();
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    private: changed: bool = true;
+    private: bool changed = true;
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(CommonStrings.getInstance()!.NOT_IMPLEMENTED, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(CommonStrings::getInstance().NOT_IMPLEMENTED, this);
     
 }
 
 
-    public onGameFeatureChange(GameFeatureEvent gameFeatureEvent){
-this.logUtil!.putF(new StringMaker().append(this.gameFeatureUtil!.GAME_FEATURE_CHANGED)!.append(gameFeatureEvent!.getWhatChanged())!.toString(), this, this.gameFeatureUtil!.ON_GAME_FEATURE_CHANGE);
+    public: void onGameFeatureChange(GameFeatureEvent gameFeatureEvent){
+this->logUtil.putF(StringMaker().append(this->gameFeatureUtil.GAME_FEATURE_CHANGED).append(gameFeatureEvent.getWhatChanged()).toString(), this, this->gameFeatureUtil.ON_GAME_FEATURE_CHANGE);
     
-this.list.add(gameFeatureEvent!.getGameOption());
+this->list.add(gameFeatureEvent.getGameOption());
     
-this.setChanged(true);
-    
-}
-
-
-    public add(Feature gameFeature){
-this.list.add(gameFeature);
+this->setChanged(true);
     
 }
 
 
-    public remove(Feature gameFeature){
-this.list.remove(gameFeature);
+    public: void add(Feature gameFeature){
+this->list.add(gameFeature);
     
 }
 
 
-    public setChanged(bool initialized){
-this.changed= initialized;
+    public: void remove(Feature gameFeature){
+this->list.remove(gameFeature);
+    
+}
+
+
+    public: void setChanged(bool initialized){
+this->changed= initialized;
     
 
-                        if(!this.isChanged())
+                        if(!this->isChanged())
                         
                                     {
-                                    this.list.clear();
+                                    this->list.clear();
     
 
                                     }
@@ -139,26 +138,26 @@ this.changed= initialized;
 }
 
 
-    public bool isChangedFeature(Feature gameFeature){
+    public: bool isChangedFeature(Feature gameFeature){
 
-    isChanged: bool = this.list.contains(gameFeature)!;;
+    bool isChanged = this->list.contains(gameFeature);;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("GameFeature: ");
+stringBuffer.append("GameFeature: ");
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(gameFeature));
+stringBuffer.append(StringUtil::getInstance().toString(gameFeature));
     
-stringBuffer!.append(" isFeature: ");
+stringBuffer.append(" isFeature: ");
     
-stringBuffer!.appendboolean(Features.getInstance()!.isFeature(gameFeature));
+stringBuffer.appendboolean(Features::getInstance().isFeature(gameFeature));
     
-stringBuffer!.append(" isChanged: ");
+stringBuffer.append(" isChanged: ");
     
-stringBuffer!.appendboolean(isChanged);
+stringBuffer.appendboolean(isChanged);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "isChanged");
+this->logUtil.putF(stringBuffer.toString(), this, "isChanged");
     
 
 
@@ -169,12 +168,12 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isChanged");
 }
 
 
-    public bool isChanged(){
+    public: bool isChanged(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.changed;
+                        return this->changed;
     
 }
 

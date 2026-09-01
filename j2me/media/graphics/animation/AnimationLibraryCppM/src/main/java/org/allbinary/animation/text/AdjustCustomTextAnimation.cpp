@@ -45,59 +45,58 @@
         #include "CustomTextAnimation.h"
 
 class AdjustCustomTextAnimation: public CustomTextAnimation {
-        
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
+public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
             super(text, fontSize, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 
 
-    public int32_t getDx(){
+    public: int32_t getDx(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dx;
+                        return this->dx;
     
 }
 
 
-    public setDx(int32_t dx){
-this.dx= dx;
+    public: void setDx(int32_t dx){
+this->dx= dx;
     
 }
 
 
-    public int32_t getDy(){
+    public: int32_t getDy(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dy;
+                        return this->dy;
     
 }
 
 
-    public setDy(int32_t dy){
-this.dy= dy;
+    public: void setDy(int32_t dy){
+this->dy= dy;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this.dx, y +this.dy);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 

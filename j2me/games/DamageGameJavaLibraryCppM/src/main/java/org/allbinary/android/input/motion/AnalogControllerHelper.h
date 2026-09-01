@@ -54,37 +54,36 @@
 class AnalogControllerHelper
             : public Object
          {
-        
 
-    private: const reduceTimeFactor: int32_t;
+    private: int32_t reduceTimeFactor;
 
-public constructor (int32_t reduceTimeFactor);
+public: AnalogControllerHelper(int32_t reduceTimeFactor);
 
-    private: const SCALE_VALUE: int32_t = AnalogControllerConfigurationFactory.getInstance()!.SCALE_VALUE;
+    private: const int32_t SCALE_VALUE = AnalogControllerConfigurationFactory::getInstance().SCALE_VALUE;
 
-    private: const rightTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper rightTimeElapsedHelper = TimeDelayHelper(0);
 
-    private: const leftTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper leftTimeElapsedHelper = TimeDelayHelper(0);
 
-    private: const downTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper downTimeElapsedHelper = TimeDelayHelper(0);
 
-    private: const upTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
-
-                //@Throws(Exception.constructor)
-            
-    public right(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    private: const TimeDelayHelper upTimeElapsedHelper = TimeDelayHelper(0);
 
                 //@Throws(Exception.constructor)
             
-    public left(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    public: void right(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
 
                 //@Throws(Exception.constructor)
             
-    public up(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    public: void left(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
 
                 //@Throws(Exception.constructor)
             
-    public down(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+    public: void up(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
+
+                //@Throws(Exception.constructor)
+            
+    public: void down(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue);
 
 };
 

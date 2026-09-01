@@ -80,37 +80,36 @@
 class XslHelper
             : public Object
          {
-        
 
-    private: static const instance: XslHelper = new XslHelper();
+    private: static XslHelper instance() { return XslHelper(); }
 
-    public static XslHelper getInstance();
+    public: static XslHelper getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public OutputStream translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult);
+private: XslHelper();
 
                 //@Throws(Exception.constructor)
             
-    public OutputStream translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult);
+    public: OutputStream translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public string translate(StreamSource xsltStreamSource, Document xmlDocument);
+    public: OutputStream translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource, StreamResult streamResult);
 
                 //@Throws(Exception.constructor)
             
-    public string translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource);
+    public: std::string translate(StreamSource xsltStreamSource, Document xmlDocument);
 
                 //@Throws(Exception.constructor)
             
-    public string translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource);
+    public: std::string translate(StreamSource xsltStreamSource, StreamSource xmlStreamSource);
 
                 //@Throws(Exception.constructor)
             
-    public export(File outputFile, string xsltFilePath, Document xmlDocument);
+    public: std::string translate(URIResolver resolver, StreamSource xsltStreamSource, StreamSource xmlStreamSource);
+
+                //@Throws(Exception.constructor)
+            
+    public: void export(File outputFile, std::string xsltFilePath, Document xmlDocument);
 
 };
 

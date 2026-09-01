@@ -63,21 +63,20 @@
 #include "ThreadPool.h"
 
 class PooledThread: public Thread {
-        
 
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
+    private: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: const threadPool: ThreadPool;
+    private: ThreadPool threadPool;
 
-public constructor (ThreadPool threadPool);
+public: PooledThread(ThreadPool threadPool);
 
-    private: const INTERRUPT_EXCEPTION: string = "Exit InterruptedException";
+    private: const std::string INTERRUPT_EXCEPTION = "Exit InterruptedException";
 
-    public run();
+    public: void run();
 
 };
 

@@ -45,27 +45,26 @@
 class ColorAtActionScriptConditionData
             : public Object
          {
-        
 
-    public static NAME: string = "COLOR_AT_ACTION_CONDITION_NAME";
+    public: static std::string NAME = "COLOR_AT_ACTION_CONDITION_NAME";
 
-    public static LOCATION_X: string = "COLOR_AT_ACTION_CONDITION_LOCATION_X";
+    public: static std::string LOCATION_X = "COLOR_AT_ACTION_CONDITION_LOCATION_X";
 
-    public static LOCATION_Y: string = "COLOR_AT_ACTION_CONDITION_LOCATION_Y";
+    public: static std::string LOCATION_Y = "COLOR_AT_ACTION_CONDITION_LOCATION_Y";
 
-    public static MIN_RED: string = "COLOR_AT_ACTION_CONDITION_MIN_RED";
+    public: static std::string MIN_RED = "COLOR_AT_ACTION_CONDITION_MIN_RED";
 
-    public static MAX_RED: string = "COLOR_AT_ACTION_CONDITION_MAX_RED";
+    public: static std::string MAX_RED = "COLOR_AT_ACTION_CONDITION_MAX_RED";
 
-    public static MIN_GREEN: string = "COLOR_AT_ACTION_CONDITION_MIN_GREEN";
+    public: static std::string MIN_GREEN = "COLOR_AT_ACTION_CONDITION_MIN_GREEN";
 
-    public static MAX_GREEN: string = "COLOR_AT_ACTION_CONDITION_MAX_GREEN";
+    public: static std::string MAX_GREEN = "COLOR_AT_ACTION_CONDITION_MAX_GREEN";
 
-    public static MIN_BLUE: string = "COLOR_AT_ACTION_CONDITION_MIN_BLUE";
+    public: static std::string MIN_BLUE = "COLOR_AT_ACTION_CONDITION_MIN_BLUE";
 
-    public static MAX_BLUE: string = "COLOR_AT_ACTION_CONDITION_MAX_BLUE";
+    public: static std::string MAX_BLUE = "COLOR_AT_ACTION_CONDITION_MAX_BLUE";
 
-private constructor ();
+private: ColorAtActionScriptConditionData();
 
 };
 

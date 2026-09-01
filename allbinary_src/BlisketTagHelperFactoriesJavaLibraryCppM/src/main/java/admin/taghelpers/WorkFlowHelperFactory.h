@@ -57,15 +57,14 @@
 #include "WorkFlowHelper.h"
 
 class WorkFlowHelperFactory: public TagHelperFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: WorkFlowHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

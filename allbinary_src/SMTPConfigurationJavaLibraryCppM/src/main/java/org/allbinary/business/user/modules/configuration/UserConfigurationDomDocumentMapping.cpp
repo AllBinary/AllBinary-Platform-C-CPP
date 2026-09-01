@@ -58,26 +58,23 @@
 class UserConfigurationDomDocumentMapping
             : public Object
         : public DomDocumentMappingInterface {
-        
 
-    private: userConfigurationInterface: UserConfigurationInterface;
+    private: UserConfigurationInterface userConfigurationInterface;
 
-public constructor (UserConfigurationInterface userConfigurationInterface){
-
-            super();
-        this.userConfigurationInterface= userConfigurationInterface;
+public: UserConfigurationDomDocumentMapping(UserConfigurationInterface userConfigurationInterface){
+this->userConfigurationInterface= userConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
-    document: Document = DomDocumentHelper.create()!;;
+    Document document = DomDocumentHelper::create();;
     
 
-    node: Node = new UserConfigurationView(this.userConfigurationInterface).toXmlNode(document)!;;
+    Node node = UserConfigurationView(this->userConfigurationInterface).toXmlNode(document);;
     
 document.appendChild(node);
     
@@ -92,12 +89,12 @@ document.appendChild(node);
 
                 //@Throws(Exception.constructor)
             
-    public string toDomDocumentString(){
+    public: std::string toDomDocumentString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper.toString(this.toXmlDoc());;
+                        return DomDocumentHelper::toString(this->toXmlDoc());;
     
 }
 

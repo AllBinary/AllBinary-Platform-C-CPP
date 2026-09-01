@@ -45,13 +45,12 @@
         #include "LocationPaintable.h"
 
 class StringLocationPaintable: public LocationPaintable {
-        
 
-    private: const value: string;
+    private: std::string value;
 
-public constructor (string value);
+public: StringLocationPaintable(std::string value);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

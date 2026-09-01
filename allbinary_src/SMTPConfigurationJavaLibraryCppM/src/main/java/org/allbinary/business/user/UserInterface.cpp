@@ -56,105 +56,104 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UserInterface: public TableMappingInterface, public ValidationInterface {
-        
 
-    setUserName(string value)
+    void setUserName(std::string value)
 
-    setPrefixName(string value)
+    void setPrefixName(std::string value)
 
-    setFirstName(string value)
+    void setFirstName(std::string value)
 
-    setLastName(string value)
+    void setLastName(std::string value)
 
-    setMiddleName(string value)
+    void setMiddleName(std::string value)
 
-    setSuffixName(string value)
+    void setSuffixName(std::string value)
 
-    setCompany(string value)
+    void setCompany(std::string value)
 
-    setPositionAtCompany(string value)
+    void setPositionAtCompany(std::string value)
 
-    setMainEmail(string value)
+    void setMainEmail(std::string value)
 
-    setSecondaryEmail(string value)
+    void setSecondaryEmail(std::string value)
 
-    setHomePhone(string value)
+    void setHomePhone(std::string value)
 
-    setCellPhone(string value)
+    void setCellPhone(std::string value)
 
-    setWorkPhone(string value)
+    void setWorkPhone(std::string value)
 
-    setOtherContact(string value)
+    void setOtherContact(std::string value)
 
-    setElectronicContact(string value)
+    void setElectronicContact(std::string value)
 
-    setFax(string value)
+    void setFax(std::string value)
 
-    setRole(UserRole aRole)
+    void setRole(UserRole aRole)
 
-    setEncryption(string value)
+    void setEncryption(std::string value)
 
-    setSecret(string value)
+    void setSecret(std::string value)
 
-    setPassword(string value)
+    void setPassword(std::string value)
 
-    setPermissions(string value)
+    void setPermissions(std::string value)
 
-    enable()
+    void enable()
 
-    setEnable(string enable)
+    void setEnable(std::string enable)
 
-    string getUserName()
+    std::string getUserName()
 
-    string getPrefixName()
+    std::string getPrefixName()
 
-    string getFirstName()
+    std::string getFirstName()
 
-    string getLastName()
+    std::string getLastName()
 
-    string getMiddleName()
+    std::string getMiddleName()
 
-    string getSuffixName()
+    std::string getSuffixName()
 
-    string getCompany()
+    std::string getCompany()
 
-    string getPositionAtCompany()
+    std::string getPositionAtCompany()
 
-    string getMainEmail()
+    std::string getMainEmail()
 
-    string getSecondaryEmail()
+    std::string getSecondaryEmail()
 
-    string getHomePhone()
+    std::string getHomePhone()
 
-    string getCellPhone()
+    std::string getCellPhone()
 
-    string getWorkPhone()
+    std::string getWorkPhone()
 
-    string getOtherContact()
+    std::string getOtherContact()
 
-    string getElectronicContact()
+    std::string getElectronicContact()
 
-    string getFax()
+    std::string getFax()
 
     UserRole getRole()
 
-    string getEncryption()
+    std::string getEncryption()
 
-    string getSecret()
+    std::string getSecret()
 
-    string getPassword()
+    std::string getPassword()
 
-    string getPermissions()
+    std::string getPermissions()
 
     UserConfigurationInterface getUserConfigurationInterface()
 
-    setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface)
+    void setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface)
 
     HashMap<any, any> toPasswordHashMap()
 
-    validateSession(WeblisketSessionInterface weblisketSession)
+    void validateSession(WeblisketSessionInterface weblisketSession)
 
-    updateSession(WeblisketSessionInterface weblisketSession)
+    void updateSession(WeblisketSessionInterface weblisketSession)
 
     Boolean isSessionValid()
 

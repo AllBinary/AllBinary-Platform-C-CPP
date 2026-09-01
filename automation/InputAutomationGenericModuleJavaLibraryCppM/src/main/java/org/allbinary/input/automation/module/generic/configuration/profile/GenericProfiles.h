@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILES_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_GENERICPROFILES_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../java/lang/Exception.h"
@@ -98,53 +100,52 @@
 class GenericProfiles
             : public Object
         : public DomNodeInterface, public DomDocumentMappingInterface {
-        
 
-    public static const DEFAULT_PROFILES_PATH: string = "./modules/configs/profiles/";
+    public: static const std::string DEFAULT_PROFILES_PATH = "./modules/configs/profiles/";
 
-    public static const DEFAULT_PROFILE_ACTIONS_PATH: string = GenericProfiles.DEFAULT_PROFILES_PATH +"actions/";
+    public: static const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
 
-    public static const DEFAULT_FILE: string = GenericProfiles.DEFAULT_PROFILES_PATH +"profiles.xml";
+    public: static const std::string DEFAULT_FILE = GenericProfiles::DEFAULT_PROFILES_PATH +"profiles.xml";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: profilesDefaultListModelHelper: DefaultListModelHelper;
+    private: DefaultListModelHelper profilesDefaultListModelHelper;
 
-    private: const fileName: string;
+    private: std::string fileName;
 
-public constructor (string fileName);
-
-                //@Throws(Exception.constructor)
-            
-    initProfiles(Node node);
-
-    public DefaultListModelHelper getDefaultListModelHelper();
+public: GenericProfiles(std::string fileName);
 
                 //@Throws(Exception.constructor)
             
-    public GenericProfile get(string name);
+    private: void initProfiles(Node node);
+
+    public: DefaultListModelHelper getDefaultListModelHelper();
 
                 //@Throws(Exception.constructor)
             
-    public add(string name);
+    public: GenericProfile get(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public remove(string name);
+    public: void add(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: void remove(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public save();
+    public: Document toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: void save();
 
 };
 

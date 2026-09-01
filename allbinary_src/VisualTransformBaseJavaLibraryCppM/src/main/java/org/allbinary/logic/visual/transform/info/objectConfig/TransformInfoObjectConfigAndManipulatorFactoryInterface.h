@@ -56,7 +56,6 @@
         #include "TransformInfoObjectConfigInterface.h"
 
 class TransformInfoObjectConfigAndManipulatorFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

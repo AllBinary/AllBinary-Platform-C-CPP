@@ -63,160 +63,157 @@
 class MotionGestureConfiguration
             : public Object
          {
-        
 
-    private: diagonalMotionGestureAllowed: bool = true;
+    private: bool diagonalMotionGestureAllowed = true;
 
-    private: diagonalTolerance: int32_t = 7;
+    private: int32_t diagonalTolerance = 7;
 
-    private: minimumMotionGesture: int32_t = 9;
+    private: int32_t minimumMotionGesture = 9;
 
-    private: button: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string button = StringUtil::getInstance().EMPTY_STRING;
 
-    private: color: BasicColor = BasicColorFactory.getInstance()!.BLUE;
+    private: BasicColor color = BasicColorFactory::getInstance().BLUE;
 
-    private: executingActions: bool = true;
+    private: bool executingActions = true;
 
-    private: mouseButtonMask: int32_t = 0;
+    private: int32_t mouseButtonMask = 0;
 
-    private: activeCommands: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList activeCommands = BasicArrayListD();
 
-public constructor (){
-
-            super();
-        }
+public: MotionGestureConfiguration(){
+}
 
 
-    public addMotionGestureAction(BasicArrayList list, CompleteMotionGestureInputEvent commandAction){
-this.activeCommands!.add(new MotionGestureToMotionGestureActionAssociation(list, commandAction));
+    public: void addMotionGestureAction(BasicArrayList list, CompleteMotionGestureInputEvent commandAction){
+this->activeCommands.add(MotionGestureToMotionGestureActionAssociation(list, commandAction));
     
 }
 
 
-    public clearMotionGestureAction(){
-this.activeCommands!.clear();
+    public: void clearMotionGestureAction(){
+this->activeCommands.clear();
     
 }
 
 
-    public BasicArrayList getAssociateCommandActionsList(){
+    public: BasicArrayList getAssociateCommandActionsList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.activeCommands;
+                        return this->activeCommands;
     
 }
 
 
-    public bool isDiagonalMotionGestureAllowed(){
+    public: bool isDiagonalMotionGestureAllowed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.diagonalMotionGestureAllowed;
+                        return this->diagonalMotionGestureAllowed;
     
 }
 
 
-    public bool isExecutingActionsAllowed(){
+    public: bool isExecutingActionsAllowed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.executingActions;
+                        return this->executingActions;
     
 }
 
 
-    public setExecutingActionsAllowed(bool executingActionAllowed){
-this.executingActions= executingActionAllowed;
+    public: void setExecutingActionsAllowed(bool executingActionAllowed){
+this->executingActions= executingActionAllowed;
     
 }
 
 
-    public setDiagonalMotionGestureAllowed(bool diagonalMotionGestureAllowed){
-this.diagonalMotionGestureAllowed= diagonalMotionGestureAllowed;
+    public: void setDiagonalMotionGestureAllowed(bool diagonalMotionGestureAllowed){
+this->diagonalMotionGestureAllowed= diagonalMotionGestureAllowed;
     
 }
 
 
-    public int32_t getDiagonalTolerance(){
+    public: int32_t getDiagonalTolerance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.diagonalTolerance;
+                        return this->diagonalTolerance;
     
 }
 
 
-    public setDiagonalTolerance(int32_t diagonalTolerance){
-this.diagonalTolerance= diagonalTolerance;
+    public: void setDiagonalTolerance(int32_t diagonalTolerance){
+this->diagonalTolerance= diagonalTolerance;
     
 }
 
 
-    public int32_t getMinimumMotionGesture(){
+    public: int32_t getMinimumMotionGesture(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minimumMotionGesture;
+                        return this->minimumMotionGesture;
     
 }
 
 
-    public setMinimumMotionGesture(int32_t minimumMotionGesture){
-this.minimumMotionGesture= minimumMotionGesture;
+    public: void setMinimumMotionGesture(int32_t minimumMotionGesture){
+this->minimumMotionGesture= minimumMotionGesture;
     
 }
 
 
-    public string getButton(){
+    public: std::string getButton(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.button;
+                        return this->button;
     
 }
 
 
-    public setButton(string button){
-this.button= button;
+    public: void setButton(std::string button){
+this->button= button;
     
 }
 
 
-    public BasicColor getColor(){
+    public: BasicColor getColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.color;
+                        return this->color;
     
 }
 
 
-    public setColor(BasicColor color){
-this.color= color;
+    public: void setColor(BasicColor color){
+this->color= color;
     
 }
 
 
-    public int32_t getMouseButtonMask(){
+    public: int32_t getMouseButtonMask(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mouseButtonMask;
+                        return this->mouseButtonMask;
     
 }
 
 
-    public setMouseButtonMask(int32_t mouseButtonMask){
-this.mouseButtonMask= mouseButtonMask;
+    public: void setMouseButtonMask(int32_t mouseButtonMask){
+this->mouseButtonMask= mouseButtonMask;
     
 }
 

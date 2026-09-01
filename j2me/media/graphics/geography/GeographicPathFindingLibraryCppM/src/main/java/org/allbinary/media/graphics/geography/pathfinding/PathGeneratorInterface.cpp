@@ -50,7 +50,6 @@
         #include "PathFindingInfo.h"
 
 class PathGeneratorInterface {
-        
 
                 //@Throws(Exception.constructor)
             

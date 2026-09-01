@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_POINTFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_POINTFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -49,14 +51,13 @@
 class PointFactory
             : public Object
          {
-        
 
-    private: static pointArray: std::vector<std::vector<Point>> = new Array(3000).fill(null).map(() => new Array(3000).fill(0))
+    private: static std::vector<std::vector<Point>> pointArray = new Array(3000).fill(null).map(() => new Array(3000).fill(0))
                                                             ;
 
-    public static Point getInstance(int32_t x, int32_t y);
+    public: static Point getInstance(int32_t x, int32_t y);
 
-private constructor ();
+private: PointFactory();
 
 };
 

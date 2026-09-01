@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -67,28 +69,25 @@
 class ScoreComparator
             : public Object
         : public RecordComparator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const isHighestBest: bool;
+    private: bool isHighestBest;
 
-public constructor (bool isHighestBest){
-
-            super();
-        this.isHighestBest= isHighestBest;
+public: ScoreComparator(bool isHighestBest){
+this->isHighestBest= isHighestBest;
     
 }
 
 
-    public int64_t getBestScore(){
+    public: int64_t getBestScore(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isHighestBest
+                        return this->isHighestBest
                         ?       
-                                Long.MAX_VALUE
+                                Long::MAX_VALUE
                                 :
 
                             0;
@@ -98,43 +97,43 @@ public constructor (bool isHighestBest){
 }
 
 
-    public int32_t compare(std::vector<int8_t> recordOne, std::vector<int8_t> recordTwo){
+    public: int32_t compare(std::vector<int8_t> recordOne, std::vector<int8_t> recordTwo){
 
-    byteArrayInputStreamOne: ByteArrayInputStream = new ByteArrayInputStream(recordOne);;
+    ByteArrayInputStream byteArrayInputStreamOne = ByteArrayInputStream(recordOne);;
     
 
-    inputStreamOne: DataInputStream = new DataInputStream(byteArrayInputStreamOne);;
+    DataInputStream inputStreamOne = DataInputStream(byteArrayInputStreamOne);;
     
 
-    byteArrayInputStreamTwo: ByteArrayInputStream = new ByteArrayInputStream(recordTwo);;
+    ByteArrayInputStream byteArrayInputStreamTwo = ByteArrayInputStream(recordTwo);;
     
 
-    inputStreamTwo: DataInputStream = new DataInputStream(byteArrayInputStreamTwo);;
+    DataInputStream inputStreamTwo = DataInputStream(byteArrayInputStreamTwo);;
     
 
-    scoreOne: int64_t = 0;;
+    int64_t scoreOne = 0;;
     
 
-    scoreTwo: int64_t = 0;;
+    int64_t scoreTwo = 0;;
     
 
         try {
-            inputStreamOne!.readUTF();
+            inputStreamOne.readUTF();
     
-inputStreamTwo!.readUTF();
+inputStreamTwo.readUTF();
     
-scoreOne= inputStreamOne!.readLong();
+scoreOne= inputStreamOne.readLong();
     
-scoreTwo= inputStreamTwo!.readLong();
+scoreTwo= inputStreamTwo.readLong();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "compare", e);
     
 }
 
@@ -142,9 +141,9 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 /* catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "compare", e);
     
 }
 */
@@ -152,21 +151,21 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 /* catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "compare", e);
     
 }
 */
 
-                        if(this.isHighestBest)
+                        if(this->isHighestBest)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getHighTooLow(scoreOne, scoreTwo);;
+                        return this->getHighTooLow(scoreOne, scoreTwo);;
     
 
                                     }
@@ -176,7 +175,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getLowTooHigh(scoreOne, scoreTwo);;
+                        return this->getLowTooHigh(scoreOne, scoreTwo);;
     
 
                         }
@@ -184,7 +183,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 }
 
 
-    public int32_t getHighTooLow(int64_t scoreOne, int64_t scoreTwo){
+    public: int32_t getHighTooLow(int64_t scoreOne, int64_t scoreTwo){
 
                         if(scoreOne > scoreTwo)
                         
@@ -193,7 +192,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RecordComparatorI.PRECEDES;
+                        return RecordComparator::PRECEDES;
     
 
                                     }
@@ -206,7 +205,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RecordComparatorI.FOLLOWS;
+                        return RecordComparator::FOLLOWS;
     
 
                                     }
@@ -216,7 +215,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RecordComparatorI.EQUIVALENT;
+                        return RecordComparator::EQUIVALENT;
     
 
                         }
@@ -224,7 +223,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 }
 
 
-    public int32_t getLowTooHigh(int64_t scoreOne, int64_t scoreTwo){
+    public: int32_t getLowTooHigh(int64_t scoreOne, int64_t scoreTwo){
 
                         if(scoreOne < scoreTwo)
                         
@@ -233,7 +232,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RecordComparatorI.PRECEDES;
+                        return RecordComparator::PRECEDES;
     
 
                                     }
@@ -246,7 +245,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RecordComparatorI.FOLLOWS;
+                        return RecordComparator::FOLLOWS;
     
 
                                     }
@@ -256,7 +255,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "compare", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RecordComparatorI.EQUIVALENT;
+                        return RecordComparator::EQUIVALENT;
     
 
                         }

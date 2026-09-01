@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -51,90 +53,87 @@
 class VectorInfo
             : public Object
          {
-        
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-    private: points: std::vector<std::vector<int32_t>>;
+    private: std::vector<std::vector<int32_t>> points;
 
-    private: totalFrames: int32_t;
+    private: int32_t totalFrames;
 
-public constructor (int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t totalFrames){
-
-            super();
-        this.width= width;
+public: VectorInfo(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t totalFrames){
+this->width= width;
     
-this.height= height;
+this->height= height;
     
-this.points= points;
+this->points= points;
     
-this.totalFrames= totalFrames;
+this->totalFrames= totalFrames;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    setWidth(int32_t width){
-this.width= width;
+    private: void setWidth(int32_t width){
+this->width= width;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    setHeight(int32_t height){
-this.height= height;
+    private: void setHeight(int32_t height){
+this->height= height;
     
 }
 
 
-    public std::vector<std::vector<int32_t>> getPoints(){
+    public: std::vector<std::vector<int32_t>> getPoints(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.points;
+                        return this->points;
     
 }
 
 
-    setPoints(std::vector<std::vector<int32_t>> points){
-this.points= points;
+    private: void setPoints(std::vector<std::vector<int32_t>> points){
+this->points= points;
     
 }
 
 
-    public int32_t getTotalFrames(){
+    public: int32_t getTotalFrames(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalFrames;
+                        return this->totalFrames;
     
 }
 
 
-    setTotalFrames(int32_t totalFrames){
-this.totalFrames= totalFrames;
+    private: void setTotalFrames(int32_t totalFrames){
+this->totalFrames= totalFrames;
     
 }
 

@@ -50,17 +50,16 @@
 class Portion
             : public Object
          {
-        
 
-    private: const current: Integer;
+    private: Integer current;
 
-    private: const total: Integer;
+    private: Integer total;
 
-public constructor (HashMap<any, any> hashMap);
+public: Portion(HashMap<any, any> hashMap);
 
-    public Integer getCurrent();
+    public: Integer getCurrent();
 
-    public Integer getTotal();
+    public: Integer getTotal();
 
 };
 

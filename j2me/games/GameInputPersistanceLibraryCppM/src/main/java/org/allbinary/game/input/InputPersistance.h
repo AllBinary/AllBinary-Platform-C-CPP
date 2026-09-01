@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_H
         #define ORG_ALLBINARY_GAME_INPUT_INPUTPERSISTANCE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -117,21 +119,20 @@
 #include "InputFactory.h"
 //GameInputPersistanceLibrary
 class InputPersistance: public BasicPersitance {
-        
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const hashtableUtil: HashtableUtil = HashtableUtil.getInstance()!;
+    private: const HashtableUtil hashtableUtil = HashtableUtil::getInstance();
 
-public constructor (string name);
-
-                //@Throws(Exception.constructor)
-            
-    public loadAll(AbeClientInformationInterface abeClientInformation);
+public: InputPersistance(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable);
+    public: void loadAll(AbeClientInformationInterface abeClientInformation);
+
+                //@Throws(Exception.constructor)
+            
+    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable);
 
 };
 

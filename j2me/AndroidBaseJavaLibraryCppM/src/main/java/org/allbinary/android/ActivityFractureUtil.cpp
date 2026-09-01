@@ -49,15 +49,14 @@
 class ActivityFractureUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public process(Activity activity){
+    public: void process(Activity activity){
 }
 
 
-    public setFullScreen(Activity activity){
+    public: void setFullScreen(Activity activity){
 }
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -49,44 +51,41 @@
 #include "HighScoresHelperBaseInterface.h"
 
 class NoHighScoresFactory: public HighScoresBase {
-        
 
-    private: static const instance: NoHighScoresFactory = new NoHighScoresFactory();
+    private: static NoHighScoresFactory instance() { return NoHighScoresFactory(); }
 
-    public static NoHighScoresFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHighScoresFactory.instance;
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    public const NO_HIGH_SCORES: std::vector<HighScores> = [];
-
-private constructor (){
-
-            super();
-        }
-
-
-    public fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
-this.logUtil!.putF("Getting No HighScores", this, "fetchHighScores");
-    
-highScoresResultsListener!.setHighScoresArray(this.NO_HIGH_SCORES);
-    
-}
-
-
-    public HighScoresHelperBaseInterface createHighScoresHelper(){
+    public: static NoHighScoresFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HighScoresHelperBase();
+                        return NoHighScoresFactory::instance();
+    
+}
+
+
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    public: const std::vector<HighScores> NO_HIGH_SCORES = {};
+
+private: NoHighScoresFactory(){
+}
+
+
+    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
+this->logUtil.putF("Getting No HighScores", this, "fetchHighScores");
+    
+highScoresResultsListener.setHighScoresArray(this->NO_HIGH_SCORES);
+    
+}
+
+
+    public: HighScoresHelperBaseInterface createHighScoresHelper(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return HighScoresHelperBase();
     
 }
 

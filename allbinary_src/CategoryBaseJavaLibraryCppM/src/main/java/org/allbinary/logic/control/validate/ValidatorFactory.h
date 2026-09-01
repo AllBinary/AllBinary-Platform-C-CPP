@@ -45,9 +45,8 @@
 class ValidatorFactory
             : public Object
          {
-        
 
-private constructor ();
+private: ValidatorFactory();
 
 };
 

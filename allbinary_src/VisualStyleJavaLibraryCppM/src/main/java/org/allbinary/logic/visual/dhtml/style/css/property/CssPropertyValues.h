@@ -87,21 +87,20 @@
 class CssPropertyValues
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: propertyValueVector: Vector;
+    private: Vector propertyValueVector;
 
-public constructor ();
+public: CssPropertyValues();
 
-public constructor (Node node);
+public: CssPropertyValues(Node node);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

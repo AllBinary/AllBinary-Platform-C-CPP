@@ -74,231 +74,230 @@
 class PaymentGateway
             : public Object
         : public PaymentGatewayInterface {
-        
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: name: string;
+    private: std::string name;
 
-    private: enable: string;
+    private: std::string enable;
 
-    private: paymentMethod: string;
+    private: std::string paymentMethod;
 
-    private: mode: string;
+    private: std::string mode;
 
-    private: testProtocol: string;
+    private: std::string testProtocol;
 
-    private: testServer: string;
+    private: std::string testServer;
 
-    private: testPort: string;
+    private: std::string testPort;
 
-    private: testPath: string;
+    private: std::string testPath;
 
-    private: serverProtocol: string;
+    private: std::string serverProtocol;
 
-    private: server: string;
+    private: std::string server;
 
-    private: serverPort: string;
+    private: std::string serverPort;
 
-    private: serverPath: string;
+    private: std::string serverPath;
 
-    private: timeout: string;
+    private: std::string timeout;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: proxyProtocol: string;
+    private: std::string proxyProtocol;
 
-    private: proxyServer: string;
+    private: std::string proxyServer;
 
-    private: proxyPort: string;
+    private: std::string proxyPort;
 
-    private: proxyPath: string;
+    private: std::string proxyPath;
 
-    private: proxyUserName: string;
+    private: std::string proxyUserName;
 
-    private: proxyPassword: string;
+    private: std::string proxyPassword;
 
-    private: proxyTimeout: string;
+    private: std::string proxyTimeout;
 
-    private: special1: string;
+    private: std::string special1;
 
-    private: special2: string;
+    private: std::string special2;
 
-    private: special3: string;
+    private: std::string special3;
 
-    private: special4: string;
+    private: std::string special4;
 
-    private: special5: string;
+    private: std::string special5;
 
-    private: special6: string;
+    private: std::string special6;
 
-    private: special7: string;
+    private: std::string special7;
 
-    private: special8: string;
+    private: std::string special8;
 
-    private: special9: string;
+    private: std::string special9;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-public constructor (HashMap<any, any> hashMap);
+public: PaymentGateway(HashMap<any, any> hashMap);
 
-    public getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<any, any> hashMap);
 
-    public string getStoreName();
+    public: std::string getStoreName();
 
-    public string getName();
+    public: std::string getName();
 
-    public string getEnable();
+    public: std::string getEnable();
 
-    public string getPaymentMethod();
+    public: std::string getPaymentMethod();
 
-    public string getMode();
+    public: std::string getMode();
 
-    public string getTestProtocol();
+    public: std::string getTestProtocol();
 
-    public string getTestServer();
+    public: std::string getTestServer();
 
-    public string getTestPort();
+    public: std::string getTestPort();
 
-    public string getTestPath();
+    public: std::string getTestPath();
 
-    public string getServerProtocol();
+    public: std::string getServerProtocol();
 
-    public string getServer();
+    public: std::string getServer();
 
-    public string getServerPort();
+    public: std::string getServerPort();
 
-    public string getServerPath();
+    public: std::string getServerPath();
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getPassword();
+    public: std::string getPassword();
 
-    public string getProxyProtocol();
+    public: std::string getProxyProtocol();
 
-    public string getProxyServer();
+    public: std::string getProxyServer();
 
-    public string getProxyPath();
+    public: std::string getProxyPath();
 
-    public string getProxyPort();
+    public: std::string getProxyPort();
 
-    public string getProxyUserName();
+    public: std::string getProxyUserName();
 
-    public string getProxyPassword();
+    public: std::string getProxyPassword();
 
-    public string getTimeout();
+    public: std::string getTimeout();
 
-    public string getProxyTimeout();
+    public: std::string getProxyTimeout();
 
-    public string getSpecial1();
+    public: std::string getSpecial1();
 
-    public string getSpecial2();
+    public: std::string getSpecial2();
 
-    public string getSpecial3();
+    public: std::string getSpecial3();
 
-    public string getSpecial4();
+    public: std::string getSpecial4();
 
-    public string getSpecial5();
+    public: std::string getSpecial5();
 
-    public string getSpecial6();
+    public: std::string getSpecial6();
 
-    public string getSpecial7();
+    public: std::string getSpecial7();
 
-    public string getSpecial8();
+    public: std::string getSpecial8();
 
-    public string getSpecial9();
+    public: std::string getSpecial9();
 
-    public string getLastModified();
+    public: std::string getLastModified();
 
-    public string getTimeEntered();
+    public: std::string getTimeEntered();
 
-    public setEnable(string value);
+    public: void setEnable(std::string value);
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public setPaymentMethod(string value);
+    public: void setPaymentMethod(std::string value);
 
-    public setMode(string value);
+    public: void setMode(std::string value);
 
-    public setTestProtocol(string value);
+    public: void setTestProtocol(std::string value);
 
-    public setTestServer(string value);
+    public: void setTestServer(std::string value);
 
-    public setTestPort(string value);
+    public: void setTestPort(std::string value);
 
-    public setTestPath(string value);
+    public: void setTestPath(std::string value);
 
-    public setServerProtocol(string value);
+    public: void setServerProtocol(std::string value);
 
-    public setServer(string value);
+    public: void setServer(std::string value);
 
-    public setServerPort(string value);
+    public: void setServerPort(std::string value);
 
-    public setServerPath(string value);
+    public: void setServerPath(std::string value);
 
-    public setTimeout(string value);
+    public: void setTimeout(std::string value);
 
-    public setUserName(string value);
+    public: void setUserName(std::string value);
 
-    public setPassword(string value);
+    public: void setPassword(std::string value);
 
-    public setProxyProtocol(string value);
+    public: void setProxyProtocol(std::string value);
 
-    public setProxyServer(string value);
+    public: void setProxyServer(std::string value);
 
-    public setProxyPort(string value);
+    public: void setProxyPort(std::string value);
 
-    public setProxyPath(string value);
+    public: void setProxyPath(std::string value);
 
-    public setProxyUserName(string value);
+    public: void setProxyUserName(std::string value);
 
-    public setProxyPassword(string value);
+    public: void setProxyPassword(std::string value);
 
-    public setProxyTimeout(string value);
+    public: void setProxyTimeout(std::string value);
 
-    public setSpecial1(string value);
+    public: void setSpecial1(std::string value);
 
-    public setSpecial2(string value);
+    public: void setSpecial2(std::string value);
 
-    public setSpecial3(string value);
+    public: void setSpecial3(std::string value);
 
-    public setSpecial4(string value);
+    public: void setSpecial4(std::string value);
 
-    public setSpecial5(string value);
+    public: void setSpecial5(std::string value);
 
-    public setSpecial6(string value);
+    public: void setSpecial6(std::string value);
 
-    public setSpecial7(string value);
+    public: void setSpecial7(std::string value);
 
-    public setSpecial8(string value);
+    public: void setSpecial8(std::string value);
 
-    public setSpecial9(string value);
+    public: void setSpecial9(std::string value);
 
-    public setLastModified(string value);
+    public: void setLastModified(std::string value);
 
-    public setTimeEntered(string value);
+    public: void setTimeEntered(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(bool isEncrypted);
+    public: HashMap<any, any> toHashMap(bool isEncrypted);
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public Vector toVector(bool isEncrypted);
+    public: Vector toVector(bool isEncrypted);
 
                 //@Throws(Exception.constructor)
             
-    public any getKey();
+    public: Object* getKey();
 
 };
 

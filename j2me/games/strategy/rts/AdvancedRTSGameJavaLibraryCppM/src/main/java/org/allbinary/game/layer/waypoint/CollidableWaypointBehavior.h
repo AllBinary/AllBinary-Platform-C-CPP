@@ -52,21 +52,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CollidableWaypointBehavior: public CollidableRTSBehavior {
-        
 
-public constructor (bool collidable);
+public: CollidableWaypointBehavior(bool collidable);
 
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-                //@Throws(Exception.constructor)
-            
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-    public bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterface);
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterface);
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
+
+    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterface);
 
 };
 

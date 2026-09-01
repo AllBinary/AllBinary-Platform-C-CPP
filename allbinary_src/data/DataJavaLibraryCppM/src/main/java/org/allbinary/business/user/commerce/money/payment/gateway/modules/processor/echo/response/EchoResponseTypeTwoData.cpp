@@ -42,14 +42,11 @@
 class EchoResponseTypeTwoData
             : public Object
          {
-        
 
-    public static NAME: string = "ECHOTYPE2";
+    public: static std::string NAME = "ECHOTYPE2";
 
-private constructor (){
-
-            super();
-        }
+private: EchoResponseTypeTwoData(){
+}
 
 
 };

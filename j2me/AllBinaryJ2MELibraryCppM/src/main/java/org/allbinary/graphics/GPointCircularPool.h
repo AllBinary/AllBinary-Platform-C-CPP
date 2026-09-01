@@ -48,9 +48,8 @@
         #include "CustomGPoint.h"
 
 class GPointCircularPool: public BaseCircularPool {
-        
 
-public constructor (int32_t size);
+public: GPointCircularPool(int32_t size);
 
 };
 

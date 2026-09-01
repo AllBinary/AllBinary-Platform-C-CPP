@@ -48,11 +48,10 @@
 class InitInfoDocument
             : public Object
          {
-        
 
-    private: initInfoDocument: Document;
+    private: Document initInfoDocument;
 
-public constructor ();
+public: InitInfoDocument();
 
 };
 

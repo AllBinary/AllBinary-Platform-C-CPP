@@ -59,75 +59,70 @@
 class Tokenizer
             : public Object
          {
-        
 
-    private: sep: string;
+    private: std::string sep;
 
-    private: endSep: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string endSep = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string sep){
+public: Tokenizer(std::string sep){
 
-            super();
-        
-                        if(sep == 
-                                    null
-                                 || TsUtil.getInstance()!.compareTo(sep, StringUtil.getInstance()!.EMPTY_STRING) == 0)
+                        if(false || TsUtil::getInstance().compareTo(sep, StringUtil::getInstance().EMPTY_STRING) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("Sep provided is not valid");
+                            throw Exception("Sep provided is not valid");
                     
 
                                     }
                                 
-this.sep= sep;
+this->sep= sep;
     
 }
 
 
-    public setSep(string sep){
-this.sep= sep;
+    public: void setSep(std::string sep){
+this->sep= sep;
     
 }
 
 
-    public setEndSep(string endSep){
-this.endSep= endSep;
+    public: void setEndSep(std::string endSep){
+this->endSep= endSep;
     
 }
 
 
-    public BasicArrayList getInsideSep(string string){
+    public: BasicArrayList getInsideSep(std::string string){
 
-    tokenList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList tokenList = BasicArrayListD();;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    size: int32_t = string.length!;;
+    int32_t size = string.size();;
     
 
         while(index < size)
         {
-index= string.indexOf(this.sep, index);
+index= string.indexOf(this->sep, index);
     
 
                         if(index !=  -1)
                         
                                     {
                                     
-    end: int32_t = string.indexOf(this.endSep, index +this.sep.length)!;;
+    int32_t end = string.indexOf(this->endSep, index +sep.size());;
     
 
                         if(end !=  -1)
                         
                                     {
-                                    tokenList!.add(string.substring(index +this.sep.length, end -(this.endSep!.length -1)));
+                                    tokenList.add(string.substring(index +sep.size(), end -(endSep.size() -1)));
     
-index= end +this.endSep!.length;
+index= end +endSep.size();
     
 
                                     }
@@ -157,31 +152,31 @@ index= end +this.endSep!.length;
 }
 
 
-    public BasicArrayList getTokensFromString(string string, BasicArrayList tokenVector){
+    public: BasicArrayList getTokensFromString(std::string string, BasicArrayList tokenVector){
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    end: int32_t = 0;;
+    int32_t end = 0;;
     
 
-        while(index < string.length)
+        while(index < string.size())
         {
-end= string.indexOf(this.sep, index);
+end= string.indexOf(this->sep, index);
     
 
                         if(end !=  -1)
                         
                                     {
-                                    tokenVector!.add(string.substring(index, end));
+                                    tokenVector.add(string.substring(index, end));
     
-index= end +this.sep.length;
+index= end +sep.size();
     
 
                                     }
                                 
                         else {
-                            tokenVector!.add(string.substring(index, string.length));
+                            tokenVector.add(string.substring(index, string.size()));
     
 break;
 
@@ -200,35 +195,35 @@ break;
 }
 
 
-    public Hashtable<any, any> getTokens(BasicArrayList stringVector){
+    public: Hashtable<any, any> getTokens(BasicArrayList stringVector){
 
-    tokenHashtable: Hashtable<any, any> = new Hashtable<any, any>();;
+    Hashtable<any, any> tokenHashtable = Hashtable<any, any>();;
     
 
-    string: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string string = StringUtil::getInstance().EMPTY_STRING;;
     
 
-    end: int32_t = 0;;
+    int32_t end = 0;;
     
 
-    size: int32_t = stringVector!.size()!;;
+    int32_t size = stringVector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-string= stringVector!.objectArray[index]! as string;
+string= stringVector.objectArray[index]! as string;
     
-end= string.indexOf(this.sep);
+end= string.indexOf(this->sep);
     
 
                         if(end >= 0)
                         
                                     {
-                                    tokenHashtable!.put(string.substring(0, end), string.substring(end +1, string.length));
+                                    tokenHashtable.put(string.substring(0, end), string.substring(end +1, string.size()));
     
 
                                     }

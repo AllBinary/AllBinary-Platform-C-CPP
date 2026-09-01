@@ -51,37 +51,36 @@
 class GeographicMapCellPathHistoryInfo
             : public Object
          {
-        
 
-    private: previousGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: previousOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition previousOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: nextUnvisitedOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: nextOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition nextOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: nextChosenOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    public GeographicMapCellPosition getPreviousGeographicMapCellPosition();
+    public: GeographicMapCellPosition getPreviousGeographicMapCellPosition();
 
-    public setPreviousGeographicMapCellPosition(GeographicMapCellPosition previousGeographicMapCellPosition);
+    public: void setPreviousGeographicMapCellPosition(GeographicMapCellPosition previousGeographicMapCellPosition);
 
-    public GeographicMapCellPosition getPreviousOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition getPreviousOnPathGeographicMapCellPosition();
 
-    public setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition previousOnPathGeographicMapCellPosition);
+    public: void setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition previousOnPathGeographicMapCellPosition);
 
-    public GeographicMapCellPosition getNextUnvisitedOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition getNextUnvisitedOnPathGeographicMapCellPosition();
 
-    public setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition);
+    public: void setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition);
 
-    public GeographicMapCellPosition getNextOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition getNextOnPathGeographicMapCellPosition();
 
-    public setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition nextOnPathGeographicMapCellPosition);
+    public: void setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition nextOnPathGeographicMapCellPosition);
 
-    public GeographicMapCellPosition getNextChosenOnPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition getNextChosenOnPathGeographicMapCellPosition();
 
-    public setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition);
+    public: void setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition);
 
 };
 

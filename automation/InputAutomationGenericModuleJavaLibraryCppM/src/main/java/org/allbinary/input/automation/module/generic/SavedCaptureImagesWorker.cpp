@@ -97,130 +97,127 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SavedCaptureImagesWorker: public BasicEventHandler: public CaptureWorkerInterface {
-        
+class SavedCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static index: int64_t;
+    private: static int64_t index;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: screenScavangerRobot: ScreenScavangerRobot;
+    private: ScreenScavangerRobot screenScavangerRobot;
 
-    private: savedCaptureGenericProfileDataWorkerType: SavedCaptureGenericProfileDataWorkerType;
+    private: SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType;
 
-public constructor (SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType){
-
-            super();
-        this.savedCaptureGenericProfileDataWorkerType= savedCaptureGenericProfileDataWorkerType;
+public: SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType){
+this->savedCaptureGenericProfileDataWorkerType= savedCaptureGenericProfileDataWorkerType;
     
-this.screenScavangerRobot= new ScreenScavangerRobot();
+this->screenScavangerRobot= ScreenScavangerRobot();
     
-SavedCaptureImagesWorker.index= ProcessingFrameIndexFactory.next();
+SavedCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread){
+    public: void setThread(Thread thread){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
+this->setRunning(true);
     
 
-        while(this.isRunning())
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+
+        while(this->isRunning())
         {
-timeHelper!.setStartTimeTNT();
+timeHelper.setStartTimeTNT();
     
 
-    frame: Long = new Long(index);;
+    Long frame = Long(index);;
     
 
-    filePathStringBuffer: StringMaker = new StringMaker();;
+    StringMaker filePathStringBuffer = StringMaker();;
     
-filePathStringBuffer!.append(this.savedCaptureGenericProfileDataWorkerType!.getPath());
+filePathStringBuffer.append(this->savedCaptureGenericProfileDataWorkerType.getPath());
     
-filePathStringBuffer!.append(LongUtil.fillIn(frame.toString()));
+filePathStringBuffer.append(LongUtil::fillIn(frame.toString()));
     
-filePathStringBuffer!.append(MediaDataFactory.getInstance()!.JPG.getExtension());
-    
-
-    filePath: string = filePathStringBuffer!.toString()!;;
-    
-this.logUtil!.putF("Loading Image File Path: " +filePath, this, this.commonStrings!.RUN);
+filePathStringBuffer.append(MediaDataFactory::getInstance().JPG.getExtension());
     
 
-    file: File = new File(filePath);;
+    std::string filePath = filePathStringBuffer.toString();;
+    
+this->logUtil.putF("Loading Image File Path: " +filePath, this, this->commonStrings.RUN);
+    
+
+    File file = File(filePath);;
     
 
                         if(file.isFile())
                         
                                     {
                                     
-    bufferedImage: BufferedImage = ImageIO.read(file)!;;
+    BufferedImage bufferedImage = ImageIO::read(file);;
     
-SavedCaptureImagesWorker.index++;
+SavedCaptureImagesWorker::index++;
     
-CapturedBufferedImagesCacheSingleton.getInstance()!.add(new BufferedImageFrameCacheable(bufferedImage, frame));
+CapturedBufferedImagesCacheSingleton::getInstance().add(BufferedImageFrameCacheable(bufferedImage, frame));
     
 
-    capturedImageEvent: CapturedImageWorkerResultsEvent = new CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
+    CapturedImageWorkerResultsEvent capturedImageEvent = CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
     
-this.fireEvent(capturedImageEvent);
+this->fireEvent(capturedImageEvent);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Could Not Load File: " +filePath, this, this.commonStrings!.RUN);
+                            this->logUtil.putF("Could Not Load File: " +filePath, this, this->commonStrings.RUN);
     
 
                         }
                             
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
     
-this.setRunning(false);
+this->setRunning(false);
     
 }
 
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

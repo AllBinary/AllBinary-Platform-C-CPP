@@ -74,27 +74,26 @@
 class TransformInfoDomNode
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-    private: mappedName: string;
+    private: std::string mappedName;
 
-public constructor (Node node);
+public: TransformInfoDomNode(Node node);
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: TransformInfoDomNode(TransformInfoInterface transformInfoInterface);
 
-public constructor (TransformInfoInterface transformInfoInterface, string mappedName);
+public: TransformInfoDomNode(TransformInfoInterface transformInfoInterface, std::string mappedName);
 
-public constructor (string name, string mappedName);
+public: TransformInfoDomNode(std::string name, std::string mappedName);
 
-    public TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface getTransformInfoInterface();
 
-    public string getMappedName();
+    public: std::string getMappedName();
 
-    public string getReplaceKey();
+    public: std::string getReplaceKey();
 
 };
 

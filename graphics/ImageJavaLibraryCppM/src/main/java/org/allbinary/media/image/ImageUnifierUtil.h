@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUNIFIERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -63,21 +65,20 @@
 class ImageUnifierUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageUnifierUtil = new ImageUnifierUtil();
+    private: static ImageUnifierUtil instance() { return ImageUnifierUtil(); }
 
-    public static ImageUnifierUtil getInstance();
+    public: static ImageUnifierUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-private constructor ();
+private: ImageUnifierUtil();
 
-    public GraphicsConfiguration getDefaultConfiguration();
+    public: GraphicsConfiguration getDefaultConfiguration();
 
-    public BufferedImage getImage(std::vector<BufferedImage> bufferedImageArray, ImageUnifierProperties imageUnifierProperties);
+    public: BufferedImage getImage(std::vector<BufferedImage> bufferedImageArray, ImageUnifierProperties imageUnifierProperties);
 
 };
 

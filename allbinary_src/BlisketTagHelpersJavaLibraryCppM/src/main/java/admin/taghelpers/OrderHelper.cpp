@@ -98,115 +98,112 @@
         #include "TagHelper.h"
 
 class OrderHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
-
-            super();
-        this.propertiesHashMap= propertiesHashMap;
+public: OrderHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+this->propertiesHashMap= propertiesHashMap;
     
-this.pageContext= pageContext;
+this->pageContext= pageContext;
     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
 
-    storeName: string = propertiesHashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(storeName))
+                        if(!StringValidationUtil::getInstance().isEmpty(storeName))
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 
                                     }
                                 
-this.weblisketSession= new WeblisketSession(this.propertiesHashMap, this.pageContext);
+this->weblisketSession= WeblisketSession(this->propertiesHashMap, this->pageContext);
     
 }
 
 
-    public Boolean setPaymentGateway(){
+    public: Boolean setPaymentGateway(){
 
         try {
             
-    paymentGatewayBoolean: Boolean = Boolean.FALSE;;
+    Boolean paymentGatewayBoolean = Boolean::FALSE;;
     
 
-    orderInterface: OrderInterface = this.weblisketSession!.getOrder()!;;
+    OrderInterface orderInterface = this->weblisketSession.getOrder();;
     
 
-    requestPaymentGateway: string = this.request.getParameter(PaymentGatewayData.NAME.toString()) as string;;
+    std::string requestPaymentGateway = this->request.getParameter(PaymentGatewayData::NAME.toString()) as string;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(requestPaymentGateway))
+                        if(!StringValidationUtil::getInstance().isEmpty(requestPaymentGateway))
                         
                                     {
-                                    this.weblisketSession!.setPaymentMethod(requestPaymentGateway);
+                                    this->weblisketSession.setPaymentMethod(requestPaymentGateway);
     
-orderInterface!.setPaymentMethod(requestPaymentGateway);
+orderInterface.setPaymentMethod(requestPaymentGateway);
     
-paymentGatewayBoolean= Boolean.TRUE;
+paymentGatewayBoolean= Boolean::TRUE;
     
 
                                     }
                                 
 
-    paymentGatewayEntityInterface: PaymentGatewayEntity = PaymentGatewayEntityFactory.getInstance() as PaymentGatewayEntity;;
+    PaymentGatewayEntity paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance() as PaymentGatewayEntity;;
     
 
-    paymentTypeVector: Vector = paymentGatewayEntityInterface!.findPaymentTypeVectorByStore(this.weblisketSession!.getStoreName())!;;
+    Vector paymentTypeVector = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->weblisketSession.getStoreName());;
     
 
-                        if(paymentTypeVector!.length == 1)
+                        if(paymentTypeVector.length == 1)
                         
                                     {
                                     
-    paymentType: BasicPaymentType = paymentTypeVector!.get(0) as BasicPaymentType;;
+    BasicPaymentType paymentType = paymentTypeVector.get(0) as BasicPaymentType;;
     
 
-    paymentGatewayInterface: PaymentGatewayInterface = paymentGatewayEntityInterface!.getPaymentGatewayInterface(this.weblisketSession!.getStoreName(), paymentType) as PaymentGatewayInterface;;
+    PaymentGatewayInterface paymentGatewayInterface = paymentGatewayEntityInterface.getPaymentGatewayInterface(this->weblisketSession.getStoreName(), paymentType) as PaymentGatewayInterface;;
     
 
-    paymentGateway: string = paymentGatewayInterface!.getName()!;;
+    std::string paymentGateway = paymentGatewayInterface.getName();;
     
-this.weblisketSession!.setPaymentMethod(paymentGateway);
+this->weblisketSession.setPaymentMethod(paymentGateway);
     
-orderInterface!.setPaymentMethod(paymentGateway);
+orderInterface.setPaymentMethod(paymentGateway);
     
-paymentGatewayBoolean= Boolean.TRUE;
+paymentGatewayBoolean= Boolean::TRUE;
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Successfully set PaymentGateway Order: ");
+stringBuffer.append("Successfully set PaymentGateway Order: ");
     
-stringBuffer!.append(orderInterface!.getId());
+stringBuffer.append(orderInterface.getId());
     
-stringBuffer!.append(" to: ");
+stringBuffer.append(" to: ");
     
-stringBuffer!.append(orderInterface!.getPaymentMethod());
+stringBuffer.append(orderInterface.getPaymentMethod());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "setPaymentGateway()");
+this->logUtil.putF(stringBuffer.toString(), this, "setPaymentGateway()");
     
 
                                     }
@@ -222,30 +219,30 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "setPaymentGateway()");
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Failed to set PaymentGateway for Order: ");
+stringBuffer.append("Failed to set PaymentGateway for Order: ");
     
 
         try {
             
-    orderInterface: OrderInterface = this.weblisketSession!.getOrder()!;;
+    OrderInterface orderInterface = this->weblisketSession.getOrder();;
     
 
                         if(orderInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(orderInterface!.getId());
+                                    stringBuffer.append(orderInterface.getId());
     
-stringBuffer!.append(" to: ");
+stringBuffer.append(" to: ");
     
-stringBuffer!.append(orderInterface!.getPaymentMethod());
+stringBuffer.append(orderInterface.getPaymentMethod());
     
 
                                     }
@@ -254,11 +251,11 @@ stringBuffer!.append(orderInterface!.getPaymentMethod());
                 //: 
 } catch(ex) 
             {
-stringBuffer!.append(" Exception Getting");
+stringBuffer.append(" Exception Getting");
     
 }
 
-this.logUtil!.put(stringBuffer!.toString(), this, "setPaymentGateway()", e);
+this->logUtil.put(stringBuffer.toString(), this, "setPaymentGateway()", e);
     
 
                                     }
@@ -267,29 +264,29 @@ this.logUtil!.put(stringBuffer!.toString(), this, "setPaymentGateway()", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string process(){
+    public: std::string process(){
 
         try {
             
-    order: OrderInterface = this.weblisketSession!.getOrder()!;;
+    OrderInterface order = this->weblisketSession.getOrder();;
     
-order.setStoreName(this.storeFrontInterface!.getName());
-    
-
-    result: string = OrderProcessorUtil.getInstance()!.process(this.weblisketSession!.getUserName(), order as Order)!;;
+order.setStoreName(this->storeFrontInterface.getName());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string result = OrderProcessorUtil::getInstance().process(this->weblisketSession.getUserName(), order as Order);;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF("Successfully Processed Order: " +result, this, "processOrder()");
+                                    this->logUtil.putF("Successfully Processed Order: " +result, this, "processOrder()");
     
 
                                     }
@@ -305,30 +302,30 @@ order.setStoreName(this.storeFrontInterface!.getName());
 } catch(e) 
             {
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Failed to Process Order: ");
+stringBuffer.append("Failed to Process Order: ");
     
 
         try {
-            stringBuffer!.append(this.weblisketSession!.getOrder()!.getId());
+            stringBuffer.append(this->weblisketSession.getOrder().getId());
     
 
                 //: 
 } catch(ex) 
             {
-stringBuffer!.append(" Exception Getting Id");
+stringBuffer.append(" Exception Getting Id");
     
 }
 
 
-    error: string = stringBuffer!.toString()!;;
+    std::string error = stringBuffer.toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 
                                     }

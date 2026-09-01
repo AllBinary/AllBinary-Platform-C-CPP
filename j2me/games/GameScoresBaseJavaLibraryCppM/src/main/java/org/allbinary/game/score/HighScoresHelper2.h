@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER2_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER2_H
 
+            #include <vector>
+        
 #include <org/allbinary/util/CircularIndexUtil.h>
 
       
@@ -47,19 +49,18 @@
 #include "HighScores.h"
 
 class HighScoresHelper2: public HighScoresHelperBase {
-        
 
-    private: const circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(0, 0)!;
+    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
 
-    private: selectedHighScores: HighScores = NullHighScoresSingletonFactory.getInstance()!;
+    private: HighScores selectedHighScores = NullHighScoresSingletonFactory::getInstance();
 
-    public setSelectedHighScores(HighScores selectedHighScores);
+    public: void setSelectedHighScores(HighScores selectedHighScores);
 
-    public HighScores getSelectedHighScores();
+    public: HighScores getSelectedHighScores();
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArrayP);
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP);
 
-    public selectHighScores();
+    public: void selectHighScores();
 
 };
 

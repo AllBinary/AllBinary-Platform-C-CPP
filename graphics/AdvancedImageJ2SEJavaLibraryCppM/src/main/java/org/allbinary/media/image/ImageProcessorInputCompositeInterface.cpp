@@ -39,11 +39,10 @@
         #include "ImageProcessorInput.h"
 
 class ImageProcessorInputCompositeInterface {
-        
 
     ImageProcessorInput getImageProcessorInput()
 
-    setImageProcessorInput(ImageProcessorInput imageProcessorInput)
+    void setImageProcessorInput(ImageProcessorInput imageProcessorInput)
 
 };
 

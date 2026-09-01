@@ -48,9 +48,8 @@
 class ViewPositionFactory
             : public Object
         : public ViewPositionFactoryInterface {
-        
 
-    public ViewPositionBase getInstance();
+    public: ViewPositionBase getInstance();
 
 };
 

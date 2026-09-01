@@ -48,24 +48,21 @@
         #include "Paintable.h"
 
 class NullPaintable: public Paintable {
-        
 
-    private: static const SINGLETON: NullPaintable = new NullPaintable();
+    private: static const NullPaintable SINGLETON = NullPaintable();
 
-    public static Paintable getInstance(){
+    public: static Paintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullPaintable.SINGLETON;
+                        return NullPaintable::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NullPaintable(){
+}
 
 
 };

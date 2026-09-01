@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/io/FileInputStream.h>
 
       
@@ -53,30 +55,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileInputStream: public InputStream {
-        
 
-    private: fileInputStream: FileInputStream;
+    private: FileInputStream fileInputStream;
 
-public constructor (FileInputStream fileInputStream){
-
-            super();
-        this.fileInputStream= fileInputStream;
+public: AbFileInputStream(FileInputStream fileInputStream){
+this->fileInputStream= fileInputStream;
     
 }
 
 
-    public mark(int32_t readlimit){
-this.fileInputStream!.mark(readlimit);
+    public: void mark(int32_t readlimit){
+this->fileInputStream.mark(readlimit);
     
 }
 
 
-    public bool markSupported(){
+    public: bool markSupported(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileInputStream!.markSupported();;
+                        return this->fileInputStream.markSupported();;
     
 }
 
@@ -84,84 +83,84 @@ this.fileInputStream!.mark(readlimit);
                 //@Throws(IOException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public reset(){
-this.fileInputStream!.reset();
+    public: void reset(){
+this->fileInputStream.reset();
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public int32_t available(){
+    public: int32_t available(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileInputStream!.available();;
+                        return this->fileInputStream.available();;
     
 }
 
 
-    public close(){
-this.fileInputStream!.close();
+    public: void close(){
+this->fileInputStream.close();
     
 }
 
 
-    public FileChannel getChannel(){
+    public: FileChannel getChannel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileInputStream!.getChannel();;
-    
-}
-
-
-                //@Throws(IOException.constructor)
-            
-    public int32_t read(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileInputStream!.read();;
+                        return this->fileInputStream.getChannel();;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public int32_t read(std::vector<int8_t> b){
+    public: int32_t read(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileInputStream!.read(b);;
+                        return this->fileInputStream.read();;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public int32_t read(std::vector<int8_t> buffer, int32_t offset, int32_t count){
+    public: int32_t read(std::vector<int8_t> b){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileInputStream!.read(buffer, offset, count);;
+                        return this->fileInputStream.read(b);;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public int64_t skip(int64_t n){
+    public: int32_t read(std::vector<int8_t> buffer, int32_t offset, int32_t count){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileInputStream!.skip(n);;
+                        return this->fileInputStream.read(buffer, offset, count);;
+    
+}
+
+
+                //@Throws(IOException.constructor)
+            
+    public: int64_t skip(int64_t n){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->fileInputStream.skip(n);;
     
 }
 

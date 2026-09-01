@@ -48,42 +48,39 @@
 class CountedPickedUpLayerInterfaceFactoryPool
             : public Object
          {
-        
 
-    private: static SINGLETON: CountedPickedUpLayerInterfaceFactoryPool = new CountedPickedUpLayerInterfaceFactoryPool();
+    private: static CountedPickedUpLayerInterfaceFactoryPool SINGLETON = CountedPickedUpLayerInterfaceFactoryPool();
 
-    public static CountedPickedUpLayerInterfaceFactoryPool getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CountedPickedUpLayerInterfaceFactoryPool.SINGLETON;
-    
-}
-
-
-    public static init(){
-CountedPickedUpLayerInterfaceFactoryPool.SINGLETON= new CountedPickedUpLayerInterfaceFactoryPool();
-    
-}
-
-
-    private: list: BasicArrayList;
-
-private constructor (){
-
-            super();
-        this.list= new BasicArrayListD();
-    
-}
-
-
-    public BasicArrayList getList(){
+    public: static CountedPickedUpLayerInterfaceFactoryPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return CountedPickedUpLayerInterfaceFactoryPool::SINGLETON;
+    
+}
+
+
+    public: static void init(){
+CountedPickedUpLayerInterfaceFactoryPool::SINGLETON= CountedPickedUpLayerInterfaceFactoryPool();
+    
+}
+
+
+    private: BasicArrayList list;
+
+private: CountedPickedUpLayerInterfaceFactoryPool(){
+this->list= BasicArrayListD();
+    
+}
+
+
+    public: BasicArrayList getList(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->list;
     
 }
 

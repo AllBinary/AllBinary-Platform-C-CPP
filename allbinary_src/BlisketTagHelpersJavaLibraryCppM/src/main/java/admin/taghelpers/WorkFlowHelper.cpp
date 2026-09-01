@@ -59,49 +59,46 @@
         #include "BasicTable.h"
 
 class WorkFlowHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.hashMap= hashMap;
+public: WorkFlowHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->hashMap= hashMap;
     
-this.pageContext= pageContext;
+this->pageContext= pageContext;
     
-this.portion= new Portion(hashMap);
+this->portion= Portion(hashMap);
     
 }
 
 
-    public string drop(){
+    public: std::string drop(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowEntityFactory.getInstance()!.create2()!.dropTable();;
+                        return WorkFlowEntityFactory::getInstance().create2().dropTable();;
     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed to drop view info table";;
+    std::string error = "Failed to drop view info table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.DROP, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, e);
     
 
                                     }
@@ -117,27 +114,27 @@ this.portion= new Portion(hashMap);
 }
 
 
-    public string create(){
+    public: std::string create(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowEntityFactory.getInstance()!.create2()!.createTable();;
+                        return WorkFlowEntityFactory::getInstance().create2().createTable();;
     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed to create workflow table";;
+    std::string error = "Failed to create workflow table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "create()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "create()", e);
     
 
                                     }
@@ -153,20 +150,20 @@ this.portion= new Portion(hashMap);
 }
 
 
-    public string restore(){
+    public: std::string restore(){
 
         try {
             
-    success: string = "Restore Successful";;
+    std::string success = "Restore Successful";;
     
 
-    result: string = AbSqlTableUtil.getInstance()!.restoreTable(WorkFlowEntityFactory.getInstance()!.create2(), this.portion)!;;
+    std::string result = AbSqlTableUtil::getInstance().restoreTable(WorkFlowEntityFactory::getInstance().create2(), this->portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "restore()");
+                                    this->logUtil.putF(success, this, "restore()");
     
 
                                     }
@@ -182,13 +179,13 @@ this.portion= new Portion(hashMap);
 } catch(e) 
             {
 
-    error: string = "Failed to restore backup";;
+    std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "restore()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "restore()", e);
     
 
                                     }
@@ -204,20 +201,20 @@ this.portion= new Portion(hashMap);
 }
 
 
-    public string backup(){
+    public: std::string backup(){
 
         try {
             
-    success: string = "Restore Successful";;
+    std::string success = "Restore Successful";;
     
 
-    result: string = AbSqlTableUtil.getInstance()!.backupTable(WorkFlowEntityFactory.getInstance()!.create2())!;;
+    std::string result = AbSqlTableUtil::getInstance().backupTable(WorkFlowEntityFactory::getInstance().create2());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "backup()");
+                                    this->logUtil.putF(success, this, "backup()");
     
 
                                     }
@@ -233,13 +230,13 @@ this.portion= new Portion(hashMap);
 } catch(e) 
             {
 
-    error: string = "Failed to make backup";;
+    std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "backup()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
     
 
                                     }

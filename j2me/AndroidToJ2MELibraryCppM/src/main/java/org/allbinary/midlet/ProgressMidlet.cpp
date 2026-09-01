@@ -81,45 +81,42 @@
 #include "ExitRunnable.h"
 
 class ProgressMidlet: public AllBinaryMidlet {
-        
 
-    public const abeClientInformation: AbeClientInformationInterface;
+    public: AbeClientInformationInterface abeClientInformation;
 
-public constructor (ClientInformationFactory clientInformationFactory){
-
-            super();
-        Globals.getInstance()!.init(TsUtil.getInstance()!.getClassClassLoader(this), StringUtil.getInstance()!.EMPTY_STRING);
+public: ProgressMidlet(ClientInformationFactory clientInformationFactory){
+Globals::getInstance().init(TsUtil::getInstance().getClassClassLoader(this), StringUtil::getInstance().EMPTY_STRING);
     
-this.preInit();
+this->preInit();
     
-this.abeClientInformation= clientInformationFactory!.getInstance();
+this->abeClientInformation= clientInformationFactory.getInstance();
     
 }
 
 
-    public preInit(){
+    public: void preInit(){
 }
 
 
-    exitProgress(bool isProgress){
+    protected: void exitProgress(bool isProgress){
 
-    processor: Processor = MidletExitProcessorFactory.getInstance()!.getExitInstance(this)!;;
+    Processor processor = MidletExitProcessorFactory::getInstance().getExitInstance(this);;
     
 
         try {
             
-    primaryThreadPool: ThreadPool = PrimaryThreadPool.getInstance()!;;
+    ThreadPool primaryThreadPool = PrimaryThreadPool::getInstance();;
     
 
-    runnable: Runnable = new ExitRunnable(this, processor, isProgress);;
+    Runnable runnable = ExitRunnable(this, processor, isProgress);;
     
-primaryThreadPool!.runTask(runnable);
+primaryThreadPool.runTask(runnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "exit", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", e);
     
 
         try {
@@ -129,7 +126,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "exit", e);
                 //: 
 } catch(e2) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "exit", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "exit", e);
     
 }
 

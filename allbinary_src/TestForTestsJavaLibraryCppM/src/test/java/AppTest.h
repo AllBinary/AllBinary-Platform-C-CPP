@@ -39,13 +39,12 @@
 class AppTest
             : public Object
          {
-        
 
-    testAddition();
+    void testAddition();
 
-    testStringEquality();
+    void testStringEquality();
 
-    testBooleanAssertions();
+    void testBooleanAssertions();
 
 };
 

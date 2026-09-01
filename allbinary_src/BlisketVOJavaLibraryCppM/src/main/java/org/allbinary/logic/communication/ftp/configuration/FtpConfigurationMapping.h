@@ -58,21 +58,20 @@
 class FtpConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: ftpConfigurationInterface: FtpConfigurationInterface;
+    private: FtpConfigurationInterface ftpConfigurationInterface;
 
-public constructor (FtpConfigurationInterface ftpConfigurationInterface);
+public: FtpConfigurationMapping(FtpConfigurationInterface ftpConfigurationInterface);
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public any getKey();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Object* getKey();
+
+                //@Throws(Exception.constructor)
+            
+    public: Vector toVector();
 
 };
 

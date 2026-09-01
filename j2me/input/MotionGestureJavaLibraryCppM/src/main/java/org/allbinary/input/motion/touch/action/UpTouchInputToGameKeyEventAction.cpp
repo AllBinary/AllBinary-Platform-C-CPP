@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(UpTouchInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(UpTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    UpTouchInputToGameKeyEventAction.instance= new UpTouchInputToGameKeyEventAction();
+                                    UpTouchInputToGameKeyEventAction::instance= UpTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class UpTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInput
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpTouchInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return UpTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Up Action", TouchMotionGestureFactory.getInstance()!.UP, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: UpTouchInputToGameKeyEventAction(){
+            super("Up Action", TouchMotionGestureFactory::getInstance().UP, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

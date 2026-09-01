@@ -65,35 +65,34 @@
 class BasicGraphicsPipeline
             : public Object
          {
-        
 
-    pointBasicArrayList: BasicArrayList;
+    protected: BasicArrayList pointBasicArrayList;
 
-public constructor (BasicArrayList points);
+public: BasicGraphicsPipeline(BasicArrayList points);
 
-    public setInitMatrix(BasicArrayList points);
+    public: void setInitMatrix(BasicArrayList points);
 
-    public createMatrix();
-
-                //@Throws(Exception.constructor)
-            
-    public translate(int32_t x, int32_t y);
+    public: void createMatrix();
 
                 //@Throws(Exception.constructor)
             
-    public rotateToAngle(Angle angle);
-
-    private: const noDecimalTrigTable: NoDecimalTrigTable = NoDecimalTrigTable.getInstance()!;
+    public: void translate(int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    rotate(int32_t angle);
+    public: void rotateToAngle(Angle angle);
+
+    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public mirror(int32_t width);
+    private: void rotate(int32_t angle);
 
-    public BasicArrayList getMatrix();
+                //@Throws(Exception.constructor)
+            
+    public: void mirror(int32_t width);
+
+    public: BasicArrayList getMatrix();
 
 };
 

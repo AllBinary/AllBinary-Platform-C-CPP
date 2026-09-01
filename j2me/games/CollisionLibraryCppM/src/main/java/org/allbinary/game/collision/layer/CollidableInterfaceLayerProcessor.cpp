@@ -57,10 +57,9 @@
 #include "AllBinaryCollisionManager.h"
 
 class CollidableInterfaceLayerProcessor: public LayerProcessor {
-        
 
-public constructor (){
-            super(new CollidableInterfaceLayerManager());
+public: CollidableInterfaceLayerProcessor(){
+            super(CollidableInterfaceLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -70,15 +69,15 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    collidableInterfaceCompositeInterface: CollidableInterfaceCompositeInterface = layerInterface as CollidableInterfaceCompositeInterface;;
+    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface = layerInterface as CollidableInterfaceCompositeInterface;;
     
 
-                        if(collidableInterfaceCompositeInterface!.getCollidableInferface()!.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
+                        if(collidableInterfaceCompositeInterface.getCollidableInferface().isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
                         
                                     {
-                                    AllBinaryCollisionManager.getInstance()!.process(this.getLayerManager(), collidableInterfaceCompositeInterface, index);
+                                    AllBinaryCollisionManager::getInstance().process(this->getLayerManager(), collidableInterfaceCompositeInterface, index);
     
 
                                     }
@@ -86,9 +85,9 @@ public constructor (){
 }
 
 
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
-                        if(layerInterface!.implmentsCollidableInterface())
+                        if(layerInterface.implmentsCollidableInterface())
                         
                                     {
                                     

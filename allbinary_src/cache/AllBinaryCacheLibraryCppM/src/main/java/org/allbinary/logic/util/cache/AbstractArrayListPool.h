@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_ABSTRACTARRAYLISTPOOL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -59,31 +61,30 @@
 class AbstractArrayListPool
             : public Object
         : public PoolInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    buffers: BasicArrayList = new BasicArrayListD();
+    protected: BasicArrayList buffers = BasicArrayListD();
 
-    cacheableInterfaceFactoryInterface: CacheableInterfaceFactoryInterface;
+    protected: CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface;
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public clear();
+public: AbstractArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface remove(any = {} key);
+    public: void clear();
 
                 //@Throws(Exception.constructor)
             
-    public add(CacheableInterface cacheableInterface);
+    public: CacheableInterface remove(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    public addArray(std::vector<CacheableInterface> cacheableInterfaces);
+    public: void add(CacheableInterface cacheableInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void addArray(std::vector<CacheableInterface> cacheableInterfaces);
 
 };
 

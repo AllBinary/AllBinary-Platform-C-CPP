@@ -52,22 +52,21 @@
 class AllBinaryMediaManagerShutdown
             : public Object
          {
-        
 
-    private: static const instance: AllBinaryMediaManagerShutdown = new AllBinaryMediaManagerShutdown();
+    private: static AllBinaryMediaManagerShutdown instance() { return AllBinaryMediaManagerShutdown(); }
 
                 //@Throws(Exception.constructor)
             
-    public static shutdown(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF(commonStrings!.START, instance, "shutdown");
+logUtil.putF(commonStrings.START, instance, "shutdown");
     
-AllBinaryMediaManager.shutdown(soundsFactoryInterface);
+AllBinaryMediaManager::shutdown(soundsFactoryInterface);
     
 }
 

@@ -39,11 +39,10 @@
         #include "TimeDelayHelper.h"
 
 class NoTimeDelayHelper: public TimeDelayHelper {
-        
 
-    public static const SINGLETON: NoTimeDelayHelper = new NoTimeDelayHelper();
+    public: static const NoTimeDelayHelper SINGLETON = NoTimeDelayHelper();
 
-public constructor (){
+public: NoTimeDelayHelper(){
             super(0);
                     
 
@@ -52,7 +51,7 @@ public constructor (){
 }
 
 
-    public bool isTimeTNT(){
+    public: bool isTimeTNT(){
 
 
 
@@ -62,7 +61,7 @@ public constructor (){
 }
 
 
-    public bool isTimeSinceTNT(int32_t delay){
+    public: bool isTimeSinceTNT(int32_t delay){
 
 
 
@@ -72,7 +71,7 @@ public constructor (){
 }
 
 
-    public bool isTime(int64_t currentTime){
+    public: bool isTime(int64_t currentTime){
 
 
 
@@ -82,7 +81,7 @@ public constructor (){
 }
 
 
-    public bool isTimeSince(int32_t delay, int64_t currentTime){
+    public: bool isTimeSince(int32_t delay, int64_t currentTime){
 
 
 

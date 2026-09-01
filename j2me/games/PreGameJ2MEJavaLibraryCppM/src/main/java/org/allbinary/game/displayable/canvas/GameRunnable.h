@@ -66,21 +66,20 @@
 class GameRunnable
             : public Object
         : public Runnable {
-        
 
-    public const WAIT: int32_t = 240;
+    public: const int32_t WAIT = 240;
 
-    public const FAST: int32_t = 60;
+    public: const int32_t FAST = 60;
 
-    public waitInMillis: int64_t = this.WAIT;
+    public: int64_t waitInMillis = this->WAIT;
 
-public constructor ();
+public: GameRunnable();
 
-    public run();
+    public: void run();
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep();
+    public: void processLoopSleep();
 
 };
 

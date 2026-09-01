@@ -60,19 +60,18 @@
 #include "AllBinaryGameCanvas.h"
 
 class GameFrameRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()!;
+    private: const GameTickDisplayInfoSingleton gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
 
-    private: const allBinaryGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas allBinaryGameCanvas;
 
-public constructor (AllBinaryGameCanvas allBinaryGameCanvas);
+public: GameFrameRunnable(AllBinaryGameCanvas allBinaryGameCanvas);
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    public run();
+    public: void run();
 
 };
 

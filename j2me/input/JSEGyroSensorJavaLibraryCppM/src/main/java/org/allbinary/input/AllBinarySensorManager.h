@@ -54,25 +54,24 @@
 class AllBinarySensorManager
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AllBinarySensorManager getInstance();
+    public: static AllBinarySensorManager getInstance();
 
-    public const ORIENTATION_SENSOR_INPUT: string = "Orientation Sensor Input";
+    public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
 
-    public const ORIENTATION_TYPE: string = "Orientation Type";
+    public: const std::string ORIENTATION_TYPE = "Orientation Type";
 
-private constructor ();
+private: AllBinarySensorManager();
 
-    public init();
+    public: void init();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public BasicArrayList getSensorNamesList();
+    public: BasicArrayList getSensorNamesList();
 
-    public shutdown();
+    public: void shutdown();
 
 };
 

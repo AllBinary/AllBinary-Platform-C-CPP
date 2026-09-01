@@ -61,25 +61,24 @@
 class SubDirectory
             : public Object
          {
-        
 
-    private: static const instance: SubDirectory = new SubDirectory();
+    private: static SubDirectory instance() { return SubDirectory(); }
 
-    public static SubDirectory getInstance();
+    public: static SubDirectory getInstance();
 
-    public static string toString(BasicArrayList files);
+    public: static std::string toString(BasicArrayList files);
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-private constructor ();
+private: SubDirectory();
 
-    public BasicArrayList search(FileFilter fileFilter, AbFile file);
+    public: BasicArrayList search(FileFilter fileFilter, AbFile file);
 
-    public BasicArrayList search(AbFile file);
+    public: BasicArrayList search(AbFile file);
 
-    public BasicArrayList search(string searchValue, AbFile file);
+    public: BasicArrayList search(std::string searchValue, AbFile file);
 
-    public BasicArrayList search(int32_t level, AbFile file);
+    public: BasicArrayList search(int32_t level, AbFile file);
 
 };
 

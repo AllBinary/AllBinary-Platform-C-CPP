@@ -42,18 +42,15 @@
 class GenericProfileActionScriptInputData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_NAME";
+    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_NAME";
 
-    public static TYPE: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_TYPE";
+    public: static std::string TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_TYPE";
 
-    public static DELAY: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_DELAY";
+    public: static std::string DELAY = "GENERIC_CONFIGURATION_PROFILE_ACTION_INPUT_DELAY";
 
-private constructor (){
-
-            super();
-        }
+private: GenericProfileActionScriptInputData(){
+}
 
 
 };

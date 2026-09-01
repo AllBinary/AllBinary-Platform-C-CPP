@@ -69,40 +69,39 @@
 class LockedFeatureNotificationUtil
             : public Object
          {
-        
 
-    private: static const instance: LockedFeatureNotificationUtil = new LockedFeatureNotificationUtil();
+    private: static LockedFeatureNotificationUtil instance() { return LockedFeatureNotificationUtil(); }
 
-    public static LockedFeatureNotificationUtil getInstance(){
+    public: static LockedFeatureNotificationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockedFeatureNotificationUtil.instance;
+                        return LockedFeatureNotificationUtil::instance();
     
 }
 
 
-    private: const gameNotificationEvent: GameNotificationEvent = new GameNotificationEvent(this, LicenseStrings.getInstance()!.LOCKED, SmallIntegerSingletonFactory.getInstance()!.getAt(3), BasicColorFactory.getInstance()!.RED, BooleanFactory.getInstance()!.FALSE);
+    private: const GameNotificationEvent gameNotificationEvent = GameNotificationEvent(this, LicenseStrings::getInstance().LOCKED, SmallIntegerSingletonFactory::getInstance().getAt(3), BasicColorFactory::getInstance().RED, BooleanFactory::getInstance().FALSE);
 
                 //@Throws(Exception.constructor)
             
-    public fire(){
-PrimaryPlayerQueueFactory.getInstance()!.add(ErrorSound.getInstance());
+    public: void fire(){
+PrimaryPlayerQueueFactory::getInstance().add(ErrorSound::getInstance());
     
-GameNotificationEventHandler.getInstance()!.fireEvent(this.gameNotificationEvent);
+GameNotificationEventHandler::getInstance().fireEvent(this->gameNotificationEvent);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fireWithColor(BasicColor basicColor){
-PrimaryPlayerQueueFactory.getInstance()!.add(ErrorSound.getInstance());
+    public: void fireWithColor(BasicColor basicColor){
+PrimaryPlayerQueueFactory::getInstance().add(ErrorSound::getInstance());
     
-this.gameNotificationEvent!.setBasicColorP(basicColor);
+this->gameNotificationEvent.setBasicColorP(basicColor);
     
-GameNotificationEventHandler.getInstance()!.fireEvent(this.gameNotificationEvent);
+GameNotificationEventHandler::getInstance().fireEvent(this->gameNotificationEvent);
     
 }
 

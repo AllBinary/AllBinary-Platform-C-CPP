@@ -99,26 +99,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "PaymentGatewayEntityInterface.h"
 
-class PaymentGatewayEntity: public AbSqlBean: public PaymentGatewayEntityInterface {
-        
+class PaymentGatewayEntity: public AbSqlBean, public PaymentGatewayEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "paymentgateways";
+    private: const std::string tableName = "paymentgateways";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: PaymentGatewayEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -126,30 +125,30 @@ this.setTableName(this.tableName);
 }
 
 
-    public add(PaymentGatewayInterface paymentGatewayInterface){
+    public: void add(PaymentGatewayInterface paymentGatewayInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "add");
+                                    this->logUtil.putF(this->commonStrings.START, this, "add");
     
 
                                     }
                                 
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(new PaymentGatewayIdGenerator().getNext());
+vector.add(PaymentGatewayIdGenerator().getNext());
     
-vector.addAll(new PaymentGatewayEncryptedMapping(paymentGatewayInterface).toVector());
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+vector.addAll(PaymentGatewayEncryptedMapping(paymentGatewayInterface).toVector());
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
+    
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 vector.add(time);
     
@@ -158,10 +157,10 @@ vector.add(time);
 super.insert(vector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.END, this, "add");
+                                    this->logUtil.putF(this->commonStrings.END, this, "add");
     
 
                                     }
@@ -171,10 +170,10 @@ super.insert(vector);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "add", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "add", e);
     
 
                                     }
@@ -184,48 +183,48 @@ super.insert(vector);
 }
 
 
-    public update(PaymentGatewayInterface paymentGatewayInterface){
+    public: void update(PaymentGatewayInterface paymentGatewayInterface){
 
         try {
             
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
-paymentGatewayInterface!.setLastModified(time);
-    
-
-    whereKeyValuePairs: HashMap<any, any> = new HashMap<any, any>();;
-    
-whereKeyValuePairs!.put(StoreFrontData.getInstance()!.NAME.toString(), paymentGatewayInterface!.getStoreName());
-    
-whereKeyValuePairs!.put(PaymentGatewayData.NAME.toString(), paymentGatewayInterface!.getName());
+paymentGatewayInterface.setLastModified(time);
     
 
-                        if(whereKeyValuePairs!.get(EntryData.getInstance()!.TIMECREATED) != 
-                                    null
+    HashMap<any, any> whereKeyValuePairs = HashMap<any, any>();;
+    
+whereKeyValuePairs.put(StoreFrontData::getInstance().NAME.toString(), paymentGatewayInterface.getStoreName());
+    
+whereKeyValuePairs.put(PaymentGatewayData::NAME.toString(), paymentGatewayInterface.getName());
+    
+
+                        if(whereKeyValuePairs.get(EntryData::getInstance().TIMECREATED) != 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Don't update TimeCreated for update");
+                            throw Exception("Don't update TimeCreated for update");
                     
 
                                     }
                                 
 
-    updateHashMap: HashMap<any, any> = new PaymentGatewayEncryptedMapping(paymentGatewayInterface).toHashMap()!;;
+    HashMap<any, any> updateHashMap = PaymentGatewayEncryptedMapping(paymentGatewayInterface).toHashMap();;
     
 super.updateWhere(whereKeyValuePairs, updateHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "update");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "update");
     
 
                                     }
@@ -235,10 +234,10 @@ super.updateWhere(whereKeyValuePairs, updateHashMap);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "update", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "update", e);
     
 
                                     }
@@ -248,93 +247,93 @@ super.updateWhere(whereKeyValuePairs, updateHashMap);
 }
 
 
-    public PaymentGatewayInterface getPaymentGatewayInterface(string storeName, BasicPaymentType paymentType){
+    public: PaymentGatewayInterface getPaymentGatewayInterface(std::string storeName, BasicPaymentType paymentType){
 
         try {
             
-    paymentGatewayHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> paymentGatewayHashMap = HashMap<any, any>();;
     
 
-    whereKeyAndValue: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> whereKeyAndValue = HashMap<any, any>();;
     
-whereKeyAndValue!.put(StoreFrontData.getInstance()!.NAME.toString(), storeName);
+whereKeyAndValue.put(StoreFrontData::getInstance().NAME.toString(), storeName);
     
-whereKeyAndValue!.put(PaymentGatewayData.NAME.toString(), paymentType!.getName());
+whereKeyAndValue.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
     
 paymentGatewayHashMap= super.getRow(whereKeyAndValue);
     
 
                         if(paymentGatewayHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    userName: string = paymentGatewayHashMap!.get(UserData.USERNAME.toString()) as string;;
+    std::string userName = paymentGatewayHashMap.get(UserData::USERNAME.toString()) as string;;
     
 
-    password: string = paymentGatewayHashMap!.get(UserData.PASSWORD.toString()) as string;;
+    std::string password = paymentGatewayHashMap.get(UserData::PASSWORD.toString()) as string;;
     
 
-    special1: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL1.toString()) as string;;
+    std::string special1 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL1.toString()) as string;;
     
 
-    special2: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL2.toString()) as string;;
+    std::string special2 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL2.toString()) as string;;
     
 
-    special3: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL3.toString()) as string;;
+    std::string special3 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL3.toString()) as string;;
     
 
-    special4: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL4.toString()) as string;;
+    std::string special4 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL4.toString()) as string;;
     
 
-    special5: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL5.toString()) as string;;
+    std::string special5 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL5.toString()) as string;;
     
 
-    special6: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL6.toString()) as string;;
+    std::string special6 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL6.toString()) as string;;
     
 
-    special7: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL7.toString()) as string;;
+    std::string special7 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL7.toString()) as string;;
     
 
-    special8: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL8.toString()) as string;;
+    std::string special8 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL8.toString()) as string;;
     
 
-    special9: string = paymentGatewayHashMap!.get(PaymentGatewayData.SPECIAL9.toString()) as string;;
+    std::string special9 = paymentGatewayHashMap.get(PaymentGatewayData::SPECIAL9.toString()) as string;;
     
 
-    superCrypt: SuperCrypt = new SuperCrypt(PaymentGatewayData.CRYPTNUM);;
+    SuperCrypt superCrypt = SuperCrypt(PaymentGatewayData::CRYPTNUM);;
     
-paymentGatewayHashMap!.put(UserData.USERNAME.toString(), superCrypt!.decrypt(userName));
+paymentGatewayHashMap.put(UserData::USERNAME.toString(), superCrypt.decrypt(userName));
     
-paymentGatewayHashMap!.put(UserData.PASSWORD.toString(), superCrypt!.decrypt(password));
+paymentGatewayHashMap.put(UserData::PASSWORD.toString(), superCrypt.decrypt(password));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL1.toString(), superCrypt!.decrypt(special1));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL1.toString(), superCrypt.decrypt(special1));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL2.toString(), superCrypt!.decrypt(special2));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL2.toString(), superCrypt.decrypt(special2));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL3.toString(), superCrypt!.decrypt(special3));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL3.toString(), superCrypt.decrypt(special3));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL4.toString(), superCrypt!.decrypt(special4));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL4.toString(), superCrypt.decrypt(special4));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL5.toString(), superCrypt!.decrypt(special5));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL5.toString(), superCrypt.decrypt(special5));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL6.toString(), superCrypt!.decrypt(special6));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL6.toString(), superCrypt.decrypt(special6));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL7.toString(), superCrypt!.decrypt(special7));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL7.toString(), superCrypt.decrypt(special7));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL8.toString(), superCrypt!.decrypt(special8));
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL8.toString(), superCrypt.decrypt(special8));
     
-paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL9.toString(), superCrypt!.decrypt(special9));
-    
-
-    paymentGatewayInterface: PaymentGatewayInterface = new PaymentGatewayInterfaceFactory().getInstance(paymentGatewayHashMap)!;;
+paymentGatewayHashMap.put(PaymentGatewayData::SPECIAL9.toString(), superCrypt.decrypt(special9));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+    PaymentGatewayInterface paymentGatewayInterface = PaymentGatewayInterfaceFactory().getInstance(paymentGatewayHashMap);;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "getPaymentGatewayInterface()");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "getPaymentGatewayInterface()");
     
 
                                     }
@@ -353,7 +352,7 @@ paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL9.toString(), superCrypt!.d
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PaymentGatewayInterfaceFactory().getInstance(paymentType);;
+                        return PaymentGatewayInterfaceFactory().getInstance(paymentType);;
     
 
                         }
@@ -363,10 +362,10 @@ paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL9.toString(), superCrypt!.d
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put("Command Failed for paymentType: " +paymentType!.getName(), this, "getPaymentGatewayInterface", e);
+                                    this->logUtil.put("Command Failed for paymentType: " +paymentType.getName(), this, "getPaymentGatewayInterface", e);
     
 
                                     }
@@ -382,48 +381,48 @@ paymentGatewayHashMap!.put(PaymentGatewayData.SPECIAL9.toString(), superCrypt!.d
 }
 
 
-    public Vector findPaymentTypeVectorByStore(string storeName){
+    public: Vector findPaymentTypeVectorByStore(std::string storeName){
 
         try {
             
-    paymentGatewayNameVector: Vector = new Vector();;
+    Vector paymentGatewayNameVector = Vector();;
     
-paymentGatewayNameVector= super.getColumnWhere(PaymentGatewayData.NAME.toString(), StoreFrontData.getInstance()!.NAME.toString(), storeName);
+paymentGatewayNameVector= super.getColumnWhere(PaymentGatewayData::NAME.toString(), StoreFrontData::getInstance().NAME.toString(), storeName);
     
 
                         if(paymentGatewayNameVector != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    paymentGatewayVector: Vector = new Vector();;
+    Vector paymentGatewayVector = Vector();;
     
 
-    size: int32_t = paymentGatewayNameVector!.length!;;
+    int32_t size = paymentGatewayNameVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    paymentTypeString: string = paymentGatewayNameVector!.get(i) as string;;
+    std::string paymentTypeString = paymentGatewayNameVector.get(i) as string;;
     
 
-    paymentType: BasicPaymentType = BasicPaymentTypeUtil.getInstance()!.get(paymentTypeString)!;;
+    BasicPaymentType paymentType = BasicPaymentTypeUtil::getInstance().get(paymentTypeString);;
     
-paymentGatewayVector!.add(paymentType);
+paymentGatewayVector.add(paymentType);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "findPaymentTypeVectorByStore()");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "findPaymentTypeVectorByStore()");
     
 
                                     }
@@ -442,7 +441,7 @@ paymentGatewayVector!.add(paymentType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Vector();
+                        return Vector();
     
 
                         }
@@ -452,10 +451,10 @@ paymentGatewayVector!.add(paymentType);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "findPaymentTypeVectorByStore", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "findPaymentTypeVectorByStore", e);
     
 
                                     }
@@ -471,23 +470,23 @@ paymentGatewayVector!.add(paymentType);
 }
 
 
-    public remove(string storeName, BasicPaymentType paymentType){
+    public: void remove(std::string storeName, BasicPaymentType paymentType){
 
         try {
             
-    whereHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = HashMap<any, any>();;
     
-whereHashMap!.put(StoreFrontData.getInstance()!.NAME.toString(), storeName);
+whereHashMap.put(StoreFrontData::getInstance().NAME.toString(), storeName);
     
-whereHashMap!.put(PaymentGatewayData.NAME.toString(), paymentType!.getName());
+whereHashMap.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
     
 super.deleteWhere(whereHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "remove");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "remove");
     
 
                                     }
@@ -497,10 +496,10 @@ super.deleteWhere(whereHashMap);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "remove", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "remove", e);
     
 
                                     }
@@ -510,182 +509,182 @@ super.deleteWhere(whereHashMap);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer!.append(this.tableName);
+stringBuffer.append(this->tableName);
     
-stringBuffer!.append(this.sqlStrings!.START);
+stringBuffer.append(this->sqlStrings.START);
     
-stringBuffer!.append(PaymentGatewayData.ID.toString());
+stringBuffer.append(PaymentGatewayData::ID.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL);
     
-stringBuffer!.append(EntryData.getInstance()!.ENABLE);
+stringBuffer.append(EntryData::getInstance().ENABLE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(StoreFrontData.getInstance()!.NAME);
+stringBuffer.append(StoreFrontData::getInstance().NAME);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.NAME.toString());
+stringBuffer.append(PaymentGatewayData::NAME.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentData.METHOD);
+stringBuffer.append(PaymentData::METHOD);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.MODE.toString());
+stringBuffer.append(PaymentGatewayData::MODE.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.TESTPROTOCOL.toString());
+stringBuffer.append(PaymentGatewayData::TESTPROTOCOL.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.TESTSERVER.toString());
+stringBuffer.append(PaymentGatewayData::TESTSERVER.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.TESTPORT.toString());
+stringBuffer.append(PaymentGatewayData::TESTPORT.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.TESTPATH.toString());
+stringBuffer.append(PaymentGatewayData::TESTPATH.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SERVERPROTOCOL.toString());
+stringBuffer.append(PaymentGatewayData::SERVERPROTOCOL.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SERVER.toString());
+stringBuffer.append(PaymentGatewayData::SERVER.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SERVERPORT.toString());
+stringBuffer.append(PaymentGatewayData::SERVERPORT.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SERVERPATH.toString());
+stringBuffer.append(PaymentGatewayData::SERVERPATH.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(UserData.USERNAME);
+stringBuffer.append(UserData::USERNAME);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(UserData.PASSWORD);
+stringBuffer.append(UserData::PASSWORD);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.TIMEOUT.toString());
+stringBuffer.append(PaymentGatewayData::TIMEOUT.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.PROXYPROTOCOL.toString());
+stringBuffer.append(PaymentGatewayData::PROXYPROTOCOL.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.PROXYSERVER.toString());
+stringBuffer.append(PaymentGatewayData::PROXYSERVER.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.PROXYPORT.toString());
+stringBuffer.append(PaymentGatewayData::PROXYPORT.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.PROXYPATH.toString());
+stringBuffer.append(PaymentGatewayData::PROXYPATH.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.PROXYUSERNAME.toString());
+stringBuffer.append(PaymentGatewayData::PROXYUSERNAME.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.PROXYPASSWORD.toString());
+stringBuffer.append(PaymentGatewayData::PROXYPASSWORD.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.PROXYTIMEOUT.toString());
+stringBuffer.append(PaymentGatewayData::PROXYTIMEOUT.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL1.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL1.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL2.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL2.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL3.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL3.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL4.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL4.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL5.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL5.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL6.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL6.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL7.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL7.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL8.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL8.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(PaymentGatewayData.SPECIAL9.toString());
+stringBuffer.append(PaymentGatewayData::SPECIAL9.toString());
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(EntryData.getInstance()!.LASTMODIFIED);
+stringBuffer.append(EntryData::getInstance().LASTMODIFIED);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(EntryData.getInstance()!.TIMECREATED);
+stringBuffer.append(EntryData::getInstance().TIMECREATED);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(this.sqlStrings!.PRIMARY_KEY);
+stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer!.append(PaymentGatewayData.ID.toString());
+stringBuffer.append(PaymentGatewayData::ID.toString());
     
-stringBuffer!.append(this.sqlStrings!.END);
+stringBuffer.append(this->sqlStrings.END);
     
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
-    
-}
-
-
-    public string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string dropTable(){
+    public: std::string createTable(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.createTable(this->createTableStatement());;
+    
+}
+
+
+    public: std::string dropTable(){
 
 
 

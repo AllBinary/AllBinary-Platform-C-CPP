@@ -48,17 +48,16 @@
         #include "CommandTag.h"
 
 class PropertiesTag: public CommandTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor ();
+public: PropertiesTag();
 
-    HashMap<any, any> getPropertiesHashMap();
+    protected: HashMap<any, any> getPropertiesHashMap();
 
-    public int32_t doEndTag();
+    public: int32_t doEndTag();
 
 };
 

@@ -57,46 +57,45 @@
 class InputImageIOInterfaceFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ImageIOInterface getInstance(InputImageType imageType){
+    public: static ImageIOInterface getInstance(InputImageType imageType){
 
-                        if(imageType == InputImageType.CAPTURE)
+                        if(imageType == InputImageType::CAPTURE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CapturedImageInputOutput();
+                        return CapturedImageInputOutput();
     
 
                                     }
                                 
                              else 
-                        if(imageType == InputImageType.COMPARISON)
+                        if(imageType == InputImageType::COMPARISON)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ComparisonImageInputOutput();
+                        return ComparisonImageInputOutput();
     
 
                                     }
                                 
                              else 
-                        if(imageType == InputImageType.MOTION)
+                        if(imageType == InputImageType::MOTION)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MotionRectanglesImageInputOutput();
+                        return MotionRectanglesImageInputOutput();
     
 
                                     }
@@ -105,7 +104,7 @@ class InputImageIOInterfaceFactory
                             
 
 
-                            throw new Exception("No ImageIOInterface for: " +imageType!.toString());
+                            throw Exception("No ImageIOInterface for: " +imageType.toString());
                     
 
                         }
@@ -113,10 +112,8 @@ class InputImageIOInterfaceFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InputImageIOInterfaceFactory(){
+}
 
 
 };

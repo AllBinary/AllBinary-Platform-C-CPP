@@ -50,11 +50,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SteeringVisitor: public Visitor {
-        
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

@@ -45,9 +45,8 @@
         #include "BasicArrayListS.h"
 
 class BasicArrayListD: public BasicArrayListS {
-        
 
-public constructor (){
+public: BasicArrayListD(){
             super(7);
                     
 

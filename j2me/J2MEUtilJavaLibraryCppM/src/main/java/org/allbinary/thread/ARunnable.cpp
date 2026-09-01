@@ -50,9 +50,8 @@
 class ARunnable
             : public Object
         : public Runnable {
-        
 
-    public run(){
+    public: void run(){
 }
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -51,40 +53,37 @@
 class ImageJ2MEScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageJ2MEScaleUtil = new ImageJ2MEScaleUtil();
+    private: static ImageJ2MEScaleUtil instance() { return ImageJ2MEScaleUtil(); }
 
-    public static ImageJ2MEScaleUtil getInstance(){
+    public: static ImageJ2MEScaleUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2MEScaleUtil.instance;
+                        return ImageJ2MEScaleUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ImageJ2MEScaleUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
+    public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
 
 
 
 
                         for (
-    index: int32_t = 0;index < images.length; index++)
+    int32_t index = 0;index < images.size(); index++)
         {
 
-    image: Image = images[index]!;;
+    Image image = images[index];;
     
-images[index]= ImageScaleUtil.getInstance()!.createImage2(GameFeatureImageCacheFactory.getInstance(), image, width /2, image.getWidth(), height, image.getHeight(), false);
+images[index]= ImageScaleUtil::getInstance().createImage2(GameFeatureImageCacheFactory::getInstance(), image, width /2, image.getWidth(), height, image.getHeight(), false);
     
 }
 
@@ -99,12 +98,12 @@ images[index]= ImageScaleUtil.getInstance()!.createImage2(GameFeatureImageCacheF
 
                 //@Throws(Exception.constructor)
             
-    public Image scale(Image image, int32_t width, int32_t height){
+    public: Image scale(Image image, int32_t width, int32_t height){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil.getInstance()!.createImage2(GameFeatureImageCacheFactory.getInstance(), image, width, image.getWidth(), height, image.getHeight(), false);;
+                        return ImageScaleUtil::getInstance().createImage2(GameFeatureImageCacheFactory::getInstance(), image, width, image.getWidth(), height, image.getHeight(), false);;
     
 }
 

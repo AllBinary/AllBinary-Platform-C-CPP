@@ -34,7 +34,6 @@
 #include "RaceTrackData.h"
 
 class AllBinaryTiledLayerFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

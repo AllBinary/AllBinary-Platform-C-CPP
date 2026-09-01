@@ -42,56 +42,53 @@
 class UserData
             : public Object
          {
-        
 
-    public static MAXLEN: int32_t = 250;
+    public: static int32_t MAXLEN = 250;
 
-    public static const NAME: string = "USER_NAME";
+    public: static const std::string NAME = "USER_NAME";
 
-    public static const USERNAME: string = "CUSTOMER_USER_NAME";
+    public: static const std::string USERNAME = "CUSTOMER_USER_NAME";
 
-    public static const PASSWORD: string = "CUSTOMER_PASSWORD";
+    public: static const std::string PASSWORD = "CUSTOMER_PASSWORD";
 
-    public static const PREFIXNAME: string = "CUSTOMER_PREFIX_NAME";
+    public: static const std::string PREFIXNAME = "CUSTOMER_PREFIX_NAME";
 
-    public static const FIRSTNAME: string = "CUSTOMER_FIRST_NAME";
+    public: static const std::string FIRSTNAME = "CUSTOMER_FIRST_NAME";
 
-    public static const LASTNAME: string = "CUSTOMER_LAST_NAME";
+    public: static const std::string LASTNAME = "CUSTOMER_LAST_NAME";
 
-    public static const MIDDLENAME: string = "CUSTOMER_MIDDLE_NAME";
+    public: static const std::string MIDDLENAME = "CUSTOMER_MIDDLE_NAME";
 
-    public static const SUFFIXNAME: string = "CUSTOMER_SUFFIX_NAME";
+    public: static const std::string SUFFIXNAME = "CUSTOMER_SUFFIX_NAME";
 
-    public static const COMPANY: string = "CUSTOMER_COMPANY";
+    public: static const std::string COMPANY = "CUSTOMER_COMPANY";
 
-    public static const POSITIONATCOMPANY: string = "CUSTOMER_POSITION_AT_COMPANY";
+    public: static const std::string POSITIONATCOMPANY = "CUSTOMER_POSITION_AT_COMPANY";
 
-    public static const MAINEMAIL: string = "CUSTOMER_MAIN_EMAIL";
+    public: static const std::string MAINEMAIL = "CUSTOMER_MAIN_EMAIL";
 
-    public static const SECONDARYEMAIL: string = "CUSTOMER_SECONDARY_EMAIL";
+    public: static const std::string SECONDARYEMAIL = "CUSTOMER_SECONDARY_EMAIL";
 
-    public static const HOMEPHONE: string = "CUSTOMER_HOME_PHONE";
+    public: static const std::string HOMEPHONE = "CUSTOMER_HOME_PHONE";
 
-    public static const CELLPHONE: string = "CUSTOMER_CELL_PHONE";
+    public: static const std::string CELLPHONE = "CUSTOMER_CELL_PHONE";
 
-    public static const WORKPHONE: string = "CUSTOMER_WORK_PHONE";
+    public: static const std::string WORKPHONE = "CUSTOMER_WORK_PHONE";
 
-    public static const OTHERCONTACT: string = "CUSTOMER_OTHER_CONTACT";
+    public: static const std::string OTHERCONTACT = "CUSTOMER_OTHER_CONTACT";
 
-    public static const ELECTRONICDEVICE: string = "CUSTOMER_ELECTRONIC_DEVICE";
+    public: static const std::string ELECTRONICDEVICE = "CUSTOMER_ELECTRONIC_DEVICE";
 
-    public static const FAX: string = "CUSTOMER_FAX";
+    public: static const std::string FAX = "CUSTOMER_FAX";
 
-    public static const SECRET: string = "CUSTOMER_SECRET";
+    public: static const std::string SECRET = "CUSTOMER_SECRET";
 
-    public static const PERMISSIONS: string = "CUSTOMER_PERMISSIONS";
+    public: static const std::string PERMISSIONS = "CUSTOMER_PERMISSIONS";
 
-    public static const CONFIGURATION: string = "CUSTOMER_CONFIGURATION";
+    public: static const std::string CONFIGURATION = "CUSTOMER_CONFIGURATION";
 
-private constructor (){
-
-            super();
-        }
+private: UserData(){
+}
 
 
 };

@@ -49,13 +49,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShippingMethodsInterface {
-        
 
     Vector get();
 
                 //@Throws(Exception.constructor)
             
-    ShippingInterface getShippingInterface(string name);
+    ShippingInterface getShippingInterface(std::string name);
 
                 //@Throws(Exception.constructor)
             

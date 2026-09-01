@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DownTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(DownTrackballInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(DownTrackballInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    DownTrackballInputToGameKeyEventAction.instance= new DownTrackballInputToGameKeyEventAction();
+                                    DownTrackballInputToGameKeyEventAction::instance= DownTrackballInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class DownTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestur
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownTrackballInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return DownTrackballInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Down Action", TrackballMotionGestureFactory.getInstance()!.DOWN, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: DownTrackballInputToGameKeyEventAction(){
+            super("Down Action", TrackballMotionGestureFactory::getInstance().DOWN, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

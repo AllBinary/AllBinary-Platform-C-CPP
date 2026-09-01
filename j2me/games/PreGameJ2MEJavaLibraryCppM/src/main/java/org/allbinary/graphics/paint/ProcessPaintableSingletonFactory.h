@@ -46,13 +46,12 @@
 class ProcessPaintableSingletonFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: ProcessPaintable = new ProcessPaintable();
+    private: static const ProcessPaintable SINGLETON = ProcessPaintable();
 
-    public static ProcessPaintable getInstance();
+    public: static ProcessPaintable getInstance();
 
-private constructor ();
+private: ProcessPaintableSingletonFactory();
 
 };
 

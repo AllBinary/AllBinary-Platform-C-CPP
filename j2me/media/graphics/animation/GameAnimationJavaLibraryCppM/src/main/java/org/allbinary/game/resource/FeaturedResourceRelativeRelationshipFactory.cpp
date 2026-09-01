@@ -66,63 +66,60 @@
 #include "ResourceRelativeRelationshipFactoryInterface.h"
 
 class FeaturedResourceRelativeRelationshipFactory: public FeaturedResourceFactory {
-        
 
-    private: static INSTANCE: FeaturedResourceRelativeRelationshipFactory = new FeaturedResourceRelativeRelationshipFactory();
+    private: static FeaturedResourceRelativeRelationshipFactory INSTANCE = FeaturedResourceRelativeRelationshipFactory();
 
-    public static FeaturedResourceRelativeRelationshipFactory getInstance(){
+    public: static FeaturedResourceRelativeRelationshipFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedResourceRelativeRelationshipFactory.INSTANCE;
+                        return FeaturedResourceRelativeRelationshipFactory::INSTANCE;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: FeaturedResourceRelativeRelationshipFactory(){
+}
 
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getRelativeRelationshipList(string resource, AllBinaryLayer layer){
+    public: BasicArrayList getRelativeRelationshipList(std::string resource, AllBinaryLayer layer){
 
-    featureReleaseList: BasicArrayList = this.getList()!;;
+    BasicArrayList featureReleaseList = this->getList();;
     
 
-    size: int32_t = this.getList()!.size()!;;
+    int32_t size = this->getList().size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    featureInterface: ResourceRelativeRelationshipFactoryInterface = featureReleaseList!.objectArray[index]! as ResourceRelativeRelationshipFactoryInterface;;
+    ResourceRelativeRelationshipFactoryInterface featureInterface = featureReleaseList.objectArray[index]! as ResourceRelativeRelationshipFactoryInterface;;
     
 
-                        if(featureInterface!.isFeature())
+                        if(featureInterface.isFeature())
                         
                                     {
                                     
-    list: BasicArrayList = featureInterface!.getResourceRelativeRelationshipList(resource)!;;
+    BasicArrayList list = featureInterface.getResourceRelativeRelationshipList(resource);;
     
 
-                        if(list != this.basicArrayListUtil!.getImmutableInstance())
+                        if(list != this->basicArrayListUtil.getImmutableInstance())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.duplicate(list, layer);;
+                        return this->duplicate(list, layer);;
     
 
                                     }
@@ -135,34 +132,34 @@ private constructor (){
 
 
 
-                            throw new Exception(new StringMaker().append("Not available for current feature selection or Resource: ")!.append(resource)!.toString());
+                            throw Exception(StringMaker().append("Not available for current feature selection or Resource: ").append(resource).toString());
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList duplicate(BasicArrayList list, AllBinaryLayer layer){
+    private: BasicArrayList duplicate(BasicArrayList list, AllBinaryLayer layer){
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-    newList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList newList = BasicArrayListD();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    relativeRelationship: RelativeRelationship = list.objectArray[index]! as RelativeRelationship;;
+    RelativeRelationship relativeRelationship = list.objectArray[index]! as RelativeRelationship;;
     
-newList!.add(new RelativeLayerRelationship(layer, pointFactory!.createXY(relativeRelationship!.getX(), relativeRelationship!.getY()), BasicArrayListUtil.getInstance()!.getImmutableInstance()));
+newList.add(RelativeLayerRelationship(layer, pointFactory.createXY(relativeRelationship.getX(), relativeRelationship.getY()), BasicArrayListUtil::getInstance().getImmutableInstance()));
     
 }
 

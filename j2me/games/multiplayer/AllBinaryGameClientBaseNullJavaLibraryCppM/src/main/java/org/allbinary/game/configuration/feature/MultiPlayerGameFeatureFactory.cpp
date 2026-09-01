@@ -34,34 +34,31 @@
 class MultiPlayerGameFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: MultiPlayerGameFeatureFactory = new MultiPlayerGameFeatureFactory();
+    private: static MultiPlayerGameFeatureFactory instance() { return MultiPlayerGameFeatureFactory(); }
 
-    public static MultiPlayerGameFeatureFactory getInstance(){
+    public: static MultiPlayerGameFeatureFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MultiPlayerGameFeatureFactory.instance;
+                        return MultiPlayerGameFeatureFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: MultiPlayerGameFeatureFactory(){
+}
 
 
-    public addCommands(any = {} anyType){
+    public: void addCommands(Object* anyType){
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-    canvas: Canvas = anyType as Canvas;;
+    Canvas canvas = anyType as Canvas;;
     
-canvas.addCommand(gameCommandsFactory!.QUIT_COMMAND);
+canvas.addCommand(gameCommandsFactory.QUIT_COMMAND);
     
 }
 

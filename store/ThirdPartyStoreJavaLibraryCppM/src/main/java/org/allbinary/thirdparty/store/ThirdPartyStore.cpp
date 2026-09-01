@@ -54,46 +54,43 @@
 class ThirdPartyStore
             : public Object
          {
-        
 
-    private: authorized: bool= false;
+    private: bool authorized= false;
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name){
-
-            super();
-        this.name= name;
+public: ThirdPartyStore(std::string name){
+this->name= name;
     
 }
 
 
-    public authorize(AbeClientInformationInterface clientInformationInterface){
+    public: void authorize(AbeClientInformationInterface clientInformationInterface){
 }
 
 
-    public bool isAuthorized(){
+    public: bool isAuthorized(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.authorized;
+                        return this->authorized;
     
 }
 
 
-    setAuthorized(bool authorized){
-this.authorized= authorized;
+    protected: void setAuthorized(bool authorized){
+this->authorized= authorized;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

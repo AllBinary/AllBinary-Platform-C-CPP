@@ -57,15 +57,14 @@
 class BasicProfileActionScriptProcessorNode
             : public Object
          {
-        
 
-public constructor (Node node);
+public: BasicProfileActionScriptProcessorNode(Node node);
 
-public constructor ();
+public: BasicProfileActionScriptProcessorNode();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

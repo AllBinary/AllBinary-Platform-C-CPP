@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -74,65 +76,64 @@
 class DrawVerticalStringUtil
             : public Object
          {
-        
 
-    private: static const instance: DrawVerticalStringUtil = new DrawVerticalStringUtil();
+    private: static DrawVerticalStringUtil instance() { return DrawVerticalStringUtil(); }
 
-    public static DrawVerticalStringUtil getInstance(){
+    public: static DrawVerticalStringUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DrawVerticalStringUtil.instance;
+                        return DrawVerticalStringUtil::instance();
     
 }
 
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: charHeight: int32_t= 0;
+    private: int32_t charHeight= 0;
 
-    private: offsetY: int32_t= 0;
+    private: int32_t offsetY= 0;
 
-    private: offsetXArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    private: std::vector<int32_t> offsetXArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    public updateMeasurement(Graphics graphics, string string){
+    public: void updateMeasurement(Graphics graphics, std::string string){
 
-    openGLFeatureUtil: OpenGLFeatureUtil = OpenGLFeatureUtil.getInstance()!;;
+    OpenGLFeatureUtil openGLFeatureUtil = OpenGLFeatureUtil::getInstance();;
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.charHeight= font.getHeight();
+this->charHeight= font.getHeight();
     
-this.offsetY= 0;
+this->offsetY= 0;
     
 
-                        if(J2MEUtil.isHTML())
+                        if(J2MEUtil::isHTML())
                         
                                     {
-                                    this.charHeight += 1;
+                                    this->charHeight += 1;
     
 
                                     }
                                 
                              else 
-                        if(openGLFeatureUtil!.isAnyThreed())
+                        if(openGLFeatureUtil.isAnyThreed())
                         
                                     {
-                                    this.charHeight += 2;
+                                    this->charHeight += 2;
     
 
-                        if(AndroidUtil.isAndroid())
+                        if(AndroidUtil::isAndroid())
                         
                                     {
                                     
                                     }
                                 
                         else {
-                            this.offsetY= 2 +(this.charHeight *2 /3);
+                            this->offsetY= 2 +(this->charHeight *2 /3);
     
 
                         }
@@ -141,25 +142,25 @@ this.offsetY= 0;
                                     }
                                 
 
-    size: int32_t = string.length!;;
+    int32_t size = string.size();;
     
 
-    aChar: char;;
+    char aChar;;
     
 
-    offsetXArray: std::vector<int32_t> = new Array(size);;
+    std::vector<int32_t> offsetXArray = new Array(size);;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
 aChar= string[index];
     
 
-                        if(openGLFeatureUtil!.isAnyThreed())
+                        if(openGLFeatureUtil.isAnyThreed())
                         
                                     {
                                     offsetXArray[index]= font.charWidth(aChar) /2;
@@ -169,76 +170,76 @@ aChar= string[index];
                                 
 }
 
-this.offsetXArray= offsetXArray;
+this->offsetXArray= offsetXArray;
     
 }
 
 
-    public paintVerticle(Graphics graphics, string string, int32_t x, int32_t y, int32_t anchor){
+    public: void paintVerticle(Graphics graphics, std::string string, int32_t x, int32_t y, int32_t anchor){
 
-    size: int32_t = string.length!;;
+    int32_t size = string.size();;
     
 
-    aChar: char;;
+    char aChar;;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
 aChar= string[index];
     
-graphics.drawChar(aChar, x +this.offsetXArray[index], y +(this.charHeight *index) +this.offsetY, anchor);
+graphics.drawChar(aChar, x +this->offsetXArray[index], y +(this->charHeight *index) +this->offsetY, anchor);
     
 }
 
 }
 
 
-    public drawCenterString(Graphics graphics, string string, int32_t offset, int32_t length, int32_t x, int32_t y){
+    public: void drawCenterString(Graphics graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y){
 
-    width: int32_t = (graphics.getFont()!.substringWidth(string, offset, length)>>1);;
+    int32_t width = (graphics.getFont().substringWidth(string, offset, length)>>1);;
     
 
         try {
-            graphics.drawSubstring(string, offset, length, x -width, y, this.anchor);
+            graphics.drawSubstring(string, offset, length, x -width, y, this->anchor);
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.put(new StringMaker().append("Exception: stringLength: ")!.appendint(string.length)!.append(" offset: ")!.appendint(offset)!.append(" currentLength: ")!.appendint(length)!.toString(), this, "drawCenterString");
+PreLogUtil::put(StringMaker().append("Exception: stringLength: ").appendint(string.size()).append(" offset: ").appendint(offset).append(" currentLength: ").appendint(length).toString(), this, "drawCenterString");
     
 }
 
 }
 
 
-    public drawCenterStrings(Graphics graphics, std::vector<string> stringArray, int32_t maxWidth, int32_t x, int32_t y){
+    public: void drawCenterStrings(Graphics graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t x, int32_t y){
 
-    extraLines: int32_t = 0;;
+    int32_t extraLines = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < stringArray!.length; index++)
+    int32_t index = 0;index < stringArray.size(); index++)
         {
 
-    string: string = stringArray[index]!;;
+    std::string string = stringArray[index];;
     
 
-                        if(string != this.EMPTY_STRING)
+                        if(string != this->EMPTY_STRING)
                         
                                     {
                                     
-    width: int32_t = graphics.getFont()!.stringWidth(string)!;;
+    int32_t width = graphics.getFont().stringWidth(string);;
     
 
-    minTotalLines: int32_t = 1;;
+    int32_t minTotalLines = 1;;
     
 
                         if(width > maxWidth)
@@ -250,16 +251,16 @@ PreLogUtil.put(new StringMaker().append("Exception: stringLength: ")!.appendint(
                                     }
                                 
 
-    linePortion: int32_t = string.length /minTotalLines;;
+    int32_t linePortion = string.size() /minTotalLines;;
     
 
-    offset: int32_t = 0;;
+    int32_t offset = 0;;
     
 
-    currentLength: int32_t = linePortion;;
+    int32_t currentLength = linePortion;;
     
 
-    size: int32_t = string.length!;;
+    int32_t size = string.size();;
     
 
         while(offset < size)
@@ -296,7 +297,7 @@ currentLength--;
 
                                     }
                                 
-this.drawCenterString(graphics, string, offset, currentLength, x, y +((index +extraLines++) *this.charHeight));
+this->drawCenterString(graphics, string, offset, currentLength, x, y +((index +extraLines++) *this->charHeight));
     
 offset= offset +currentLength;
     

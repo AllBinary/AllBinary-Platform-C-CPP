@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Throwable.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -86,35 +88,34 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SpriteIndexedAnimation: public IndexedAnimation: public ColorCompositeInterface {
-        
+class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInterface {
 
-    const sprite: Sprite;
+    protected: Sprite sprite;
 
-    const image: Image;
+    protected: Image image;
 
-    private: const basicColorArray: std::vector<BasicColor>;
+    private: std::vector<BasicColor> basicColorArray;
 
-public constructor (Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior){
+public: SpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior){
             super(animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.sprite= sprite;
+this->sprite= sprite;
     
-this.image= image;
+this->image= image;
     
-this.basicColorArray= basicColorArray;
+this->basicColorArray= basicColorArray;
     
 
-                        if(this.basicColorArray!.length != 0 && this.getSize() != this.basicColorArray!.length)
+                        if(this->basicColorArray.size() != 0 && this->getSize() != this->basicColorArray.size())
                         
                                     {
                                     
 
 
-                            throw new Exception(new StringMaker().append(CommonLabels.getInstance()!.TOTAL_LABEL)!.appendint(this.getSize())!.append("!=")!.appendint(this.basicColorArray!.length)!.toString());
+                            throw Exception(StringMaker().append(CommonLabels::getInstance().TOTAL_LABEL).appendint(this->getSize()).append("!=").appendint(this->basicColorArray.size()).toString());
                     
 
                                     }
@@ -124,29 +125,29 @@ this.basicColorArray= basicColorArray;
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize();;
+                        return this->getSize();;
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor basicColor){
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.basicColorArray!.length; index++)
+    int32_t index = 0;index < this->basicColorArray.size(); index++)
         {
 
-                        if(basicColor == this.basicColorArray[index])
+                        if(basicColor == this->basicColorArray[index])
                         
                                     {
-                                    this.setFrame(index);
+                                    this->setFrame(index);
     
 break;
 
@@ -159,16 +160,16 @@ break;
 }
 
 
-    public BasicColor getBasicColorP(){
+    public: BasicColor getBasicColorP(){
 
-                        if(this.basicColorArray!.length < this.getFrame())
+                        if(this->basicColorArray.size() < this->getFrame())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColorArray[this.getFrame()]!;
+                        return this->basicColorArray[this->getFrame()]!;
     
 
                                     }
@@ -178,7 +179,7 @@ break;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory.getInstance()!.WHITE;
+                        return BasicColorFactory::getInstance().WHITE;
     
 
                         }
@@ -186,71 +187,71 @@ break;
 }
 
 
-    public paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y){
-this.setFrame(frame);
+    public: void paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y){
+this->setFrame(frame);
     
-this.sprite.setPosition(x, y);
+this->sprite.setPosition(x, y);
     
-this.sprite.paint(graphics);
-    
-}
-
-
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.sprite.setPosition(x, y);
-    
-this.sprite.paint(graphics);
+this->sprite.paint(graphics);
     
 }
 
 
-    paint(Graphics graphics){
-this.sprite.paint(graphics);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->sprite.setPosition(x, y);
+    
+this->sprite.paint(graphics);
     
 }
 
 
-    public nextFrame(){
-this.sprite.nextFrame();
+    protected: void paint(Graphics graphics){
+this->sprite.paint(graphics);
     
 }
 
 
-    public previousFrame(){
-this.sprite.prevFrame();
+    public: void nextFrame(){
+this->sprite.nextFrame();
     
 }
 
 
-    public int32_t getSize(){
+    public: void previousFrame(){
+this->sprite.prevFrame();
+    
+}
+
+
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getRawFrameCount();;
+                        return this->sprite.getRawFrameCount();;
     
 }
 
 
-    public setFrame(int32_t frame){
-this.sprite.setFrame(frame);
+    public: void setFrame(int32_t frame){
+this->sprite.setFrame(frame);
     
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getFrame();;
+                        return this->sprite.getFrame();;
     
 }
 
 
-    public bool isLastFrame(){
+    public: bool isLastFrame(){
 
-                        if(this.sprite.getFrame() == this.getSize() -1)
+                        if(this->sprite.getFrame() == this->getSize() -1)
                         
                                     {
                                     
@@ -275,37 +276,37 @@ this.sprite.setFrame(frame);
 }
 
 
-    public int32_t getLastFrame(){
+    public: int32_t getLastFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize();;
+                        return this->getSize();;
     
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public close(){
+    public: void close(){
 }
 
 
                 //@Throws(Throwable.constructor)
             
-    finalize(){
+    protected: void finalize(){
 }
 
 

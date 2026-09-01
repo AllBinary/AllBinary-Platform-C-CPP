@@ -45,23 +45,22 @@
 class GameKeyUtil
             : public Object
          {
-        
 
-    private: static const instance: GameKeyUtil = new GameKeyUtil();
+    private: static GameKeyUtil instance() { return GameKeyUtil(); }
 
-    public static GameKeyUtil getInstance(){
+    public: static GameKeyUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyUtil.instance;
+                        return GameKeyUtil::instance();
     
 }
 
 
-    public bool isDirectionKey(int32_t key){
+    public: bool isDirectionKey(int32_t key){
 
-                        if(key == Canvas.UP || key == Canvas.DOWN || key == Canvas.LEFT || key == Canvas.RIGHT)
+                        if(key == Canvas::UP || key == Canvas::DOWN || key == Canvas::LEFT || key == Canvas::RIGHT)
                         
                                     {
                                     

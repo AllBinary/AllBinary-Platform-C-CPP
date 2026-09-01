@@ -42,29 +42,26 @@
 class TransformInfoObjectData
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoObjectData = new TransformInfoObjectData();
+    private: static TransformInfoObjectData instance() { return TransformInfoObjectData(); }
 
-    public static TransformInfoObjectData getInstance(){
+    public: static TransformInfoObjectData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectData.instance;
+                        return TransformInfoObjectData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoObjectData(){
+}
 
 
-    public const UNCRYPTED_EXTENSION: string = "class";
+    public: const std::string UNCRYPTED_EXTENSION = "class";
 
-    public const ENCRYPTED_EXTENSION: string = "abw";
+    public: const std::string ENCRYPTED_EXTENSION = "abw";
 
 };
 

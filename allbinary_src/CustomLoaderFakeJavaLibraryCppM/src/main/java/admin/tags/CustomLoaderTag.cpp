@@ -64,53 +64,50 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CustomLoaderTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: webappPath: string;
+    private: std::string webappPath;
 
-public constructor (){
-
-            super();
-        }
+public: CustomLoaderTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setWebappPath(string value){
-this.webappPath= value;
+    public: void setWebappPath(std::string value){
+this->webappPath= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    setCustomLoaderWebappPath(){
+    private: void setCustomLoaderWebappPath(){
 
         try {
             
-    urlGlobals: AppUrlGlobals = new AppUrlGlobals();;
+    AppUrlGlobals urlGlobals = AppUrlGlobals();;
     
-urlGlobals!.setWebappPath(this.webappPath);
+urlGlobals.setWebappPath(this->webappPath);
     
-URLGLOBALS.init(urlGlobals);
+URLGLOBALS::init(urlGlobals);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setCustomLoaderWebappPath()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setCustomLoaderWebappPath()", e);
     
 
                                     }
@@ -122,29 +119,27 @@ URLGLOBALS.init(urlGlobals);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
-                        if(this.command.compareTo(GLOBALS2.SET) == 0)
+                        if(this->command.compareTo(GLOBALS2::SET) == 0)
                         
                                     {
-                                    this.setCustomLoaderWebappPath();
+                                    this->setCustomLoaderWebappPath();
     
 
                                     }
@@ -162,7 +157,7 @@ URLGLOBALS.init(urlGlobals);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -175,7 +170,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

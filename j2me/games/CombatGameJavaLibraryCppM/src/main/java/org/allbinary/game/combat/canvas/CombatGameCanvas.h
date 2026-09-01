@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_H
         #define ORG_ALLBINARY_GAME_COMBAT_CANVAS_COMBATGAMECANVAS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -100,31 +102,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CombatGameCanvas: public AllBinaryGameCanvas {
-        
 
-    static basicLayerProcessor: std::vector<BasicLayerProcessor> = [];
+    protected: static std::vector<BasicLayerProcessor> basicLayerProcessor = {};
 
-public constructor (CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered);
+public: CombatGameCanvas(CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered);
 
-    CombatGameCanvas_init();
-
-                //@Throws(Exception.constructor)
-            
-    initApp(AbeClientInformationInterface abeClientInformation);
-
-    initConfigurablePortion(int32_t portion);
+    private: void CombatGameCanvas_init();
 
                 //@Throws(Exception.constructor)
             
-    processPlayingGame();
+    protected: void initApp(AbeClientInformationInterface abeClientInformation);
+
+    protected: void initConfigurablePortion(int32_t portion);
 
                 //@Throws(Exception.constructor)
             
-    cleanupGame();
+    protected: void processPlayingGame();
 
                 //@Throws(Exception.constructor)
             
-    cleanupManager();
+    protected: void cleanupGame();
+
+                //@Throws(Exception.constructor)
+            
+    protected: void cleanupManager();
 
 };
 

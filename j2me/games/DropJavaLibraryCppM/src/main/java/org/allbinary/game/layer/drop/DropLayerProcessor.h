@@ -56,17 +56,16 @@
         #include "DropLayerInterface.h"
 
 class DropLayerProcessor: public BasicLayerProcessor {
-        
 
-    private: static const LAYER_PROCESSOR: BasicLayerProcessor = new DropLayerProcessor();
+    private: static const BasicLayerProcessor LAYER_PROCESSOR = DropLayerProcessor();
 
-    public static BasicLayerProcessor getInstance();
+    public: static BasicLayerProcessor getInstance();
 
-private constructor ();
+private: DropLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager);
+    public: void process(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

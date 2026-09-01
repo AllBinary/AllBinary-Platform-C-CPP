@@ -48,32 +48,29 @@
 class SelectAdvancedRTSLayerVisitorFactory
             : public Object
         : public SelectRTSLayerVisitorFactoryInterface {
-        
 
-    private: static const instance: SelectAdvancedRTSLayerVisitorFactory = new SelectAdvancedRTSLayerVisitorFactory();
+    private: static SelectAdvancedRTSLayerVisitorFactory instance() { return SelectAdvancedRTSLayerVisitorFactory(); }
 
-    public static SelectAdvancedRTSLayerVisitorFactory getInstance(){
+    public: static SelectAdvancedRTSLayerVisitorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectAdvancedRTSLayerVisitorFactory.instance;
+                        return SelectAdvancedRTSLayerVisitorFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: SelectAdvancedRTSLayerVisitorFactory(){
+}
 
 
-    public Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+    public: Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SelectAdvancedRTSLayerVisitor(selectedRTSLayersPlayerGameInput);
+                        return SelectAdvancedRTSLayerVisitor(selectedRTSLayersPlayerGameInput);
     
 }
 

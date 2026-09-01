@@ -49,19 +49,18 @@
 class VehicleProperties
             : public Object
          {
-        
 
-    private: const velocityProperties: VelocityProperties;
+    private: VelocityProperties velocityProperties;
 
-    private: vehicleFrictionProperties: VehicleFrictionProperties;
+    private: VehicleFrictionProperties vehicleFrictionProperties;
 
-public constructor (VelocityProperties velocityProperties, VehicleFrictionProperties vehicleFrictionProperties);
+public: VehicleProperties(VelocityProperties velocityProperties, VehicleFrictionProperties vehicleFrictionProperties);
 
-    public VehicleFrictionProperties getVehicleFrictionProperties();
+    public: VehicleFrictionProperties getVehicleFrictionProperties();
 
-    public setVehicleFrictionProperties(VehicleFrictionProperties vehicleFrictionProperties);
+    public: void setVehicleFrictionProperties(VehicleFrictionProperties vehicleFrictionProperties);
 
-    public VelocityProperties getVelocityProperties();
+    public: VelocityProperties getVelocityProperties();
 
 };
 

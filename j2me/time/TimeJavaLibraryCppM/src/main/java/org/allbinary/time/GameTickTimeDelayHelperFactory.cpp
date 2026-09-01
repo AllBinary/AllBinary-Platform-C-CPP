@@ -43,24 +43,21 @@
 class GameTickTimeDelayHelperFactory
             : public Object
          {
-        
 
-    private: static const instance: GameTickTimeDelayHelper = new GameTickTimeDelayHelper( -1);
+    private: static GameTickTimeDelayHelper instance() { return GameTickTimeDelayHelper(); }
 
-    public static GameTickTimeDelayHelper getInstance(){
+    public: static GameTickTimeDelayHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameTickTimeDelayHelperFactory.instance;
+                        return GameTickTimeDelayHelperFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GameTickTimeDelayHelperFactory(){
+}
 
 
 };

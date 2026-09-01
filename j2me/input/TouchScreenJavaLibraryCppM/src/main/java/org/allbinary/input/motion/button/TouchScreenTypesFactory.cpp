@@ -43,27 +43,26 @@
 class TouchScreenTypesFactory
             : public Object
          {
-        
 
-    private: static const instance: TouchScreenTypesFactory = new TouchScreenTypesFactory();
+    private: static TouchScreenTypesFactory instance() { return TouchScreenTypesFactory(); }
 
-    public static TouchScreenTypesFactory getInstance(){
+    public: static TouchScreenTypesFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenTypesFactory.instance;
+                        return TouchScreenTypesFactory::instance();
     
 }
 
 
-    public const FINGER: TouchScreenType = new TouchScreenType("Finger");
+    public: const TouchScreenType FINGER = TouchScreenType("Finger");
 
-    public const NOTOUCH: TouchScreenType = new TouchScreenType("No Touch");
+    public: const TouchScreenType NOTOUCH = TouchScreenType("No Touch");
 
-    public const STYLUS: TouchScreenType = new TouchScreenType("Stylus");
+    public: const TouchScreenType STYLUS = TouchScreenType("Stylus");
 
-    public const UNDEFINED: TouchScreenType = new TouchScreenType("Undefined");
+    public: const TouchScreenType UNDEFINED = TouchScreenType("Undefined");
 
 };
 

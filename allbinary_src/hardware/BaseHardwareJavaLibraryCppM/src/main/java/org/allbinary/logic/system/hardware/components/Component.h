@@ -45,13 +45,12 @@
 class Component
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string componentName);
+public: Component(std::string componentName);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

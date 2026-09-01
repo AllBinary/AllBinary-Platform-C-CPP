@@ -51,17 +51,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WeblisketSessionInterface {
-        
 
-    clear();
+    void clear();
 
     Integer getAttempts();
 
-    string getAuthentication();
+    std::string getAuthentication();
 
     int64_t getCreationTime();
 
-    string getId();
+    std::string getId();
 
     int64_t getLastAccessedTime();
 
@@ -69,41 +68,41 @@ class WeblisketSessionInterface {
             
     OrderInterface getOrder();
 
-    string getPassword();
+    std::string getPassword();
 
-    string getPaymentMethod();
+    std::string getPaymentMethod();
 
                 //@Throws(Exception.constructor)
             
     UserRole getRole();
 
-    string getStoreName();
+    std::string getStoreName();
 
-    string getTimeout();
+    std::string getTimeout();
 
-    string getUserName();
+    std::string getUserName();
 
-    string getWebAppPath();
+    std::string getWebAppPath();
 
-    removeBasket();
+    void removeBasket();
 
-    setAttempts(Integer value);
+    void setAttempts(Integer value);
 
-    setAuthenticated();
+    void setAuthenticated();
 
-    setAuthenticated(bool value);
+    void setAuthenticated(bool value);
 
-    setPassword(string password);
+    void setPassword(std::string password);
 
-    setPaymentMethod(string value);
+    void setPaymentMethod(std::string value);
 
-    setRole(UserRole aRole);
+    void setRole(UserRole aRole);
 
-    setStoreName(string value);
+    void setStoreName(std::string value);
 
-    setTimeout(string value);
+    void setTimeout(std::string value);
 
-    setUserName(string userName);
+    void setUserName(std::string userName);
 
 };
 

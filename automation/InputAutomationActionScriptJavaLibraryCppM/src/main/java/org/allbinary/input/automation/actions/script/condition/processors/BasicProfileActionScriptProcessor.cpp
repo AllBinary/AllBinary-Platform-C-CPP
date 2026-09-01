@@ -59,10 +59,9 @@
         #include "ProfileActionScriptProcessorInterface.h"
 #include "GenericProfileActionScriptProcessorData.h"
 
-class BasicProfileActionScriptProcessor: public ProfileActionScriptItem: public ProfileActionScriptProcessorInterface {
-        
+class BasicProfileActionScriptProcessor: public ProfileActionScriptItem, public ProfileActionScriptProcessorInterface {
 
-public constructor (string label, Node node){
+public: BasicProfileActionScriptProcessor(std::string label, Node node){
             super(label, node);
                     
 
@@ -71,7 +70,7 @@ public constructor (string label, Node node){
 }
 
 
-public constructor (string label){
+public: BasicProfileActionScriptProcessor(std::string label){
             super(label);
                     
 
@@ -80,23 +79,23 @@ public constructor (string label){
 }
 
 
-    public actionPerformed(ActionEvent actionEvent){
+    public: void actionPerformed(ActionEvent actionEvent){
 super.actionPerformed(actionEvent);
     
 
-                        if(actionEvent!.getActionCommand()!.compareTo(DELETE) == 0)
+                        if(actionEvent.getActionCommand().compareTo(DELETE) == 0)
                         
                                     {
                                     
-                        if(this.getParent() instanceof ProfileActionScriptConditionInterface)
+                        if(this->getParent() instanceof ProfileActionScriptConditionInterface)
                         
                                     {
                                     
-    profileActionScriptConditionInterface: ProfileActionScriptConditionInterface = this.getParent() as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = this->getParent() as ProfileActionScriptConditionInterface;;
     
-profileActionScriptConditionInterface!.removeProcessor(this as ProfileActionScriptProcessorInterface);
+profileActionScriptConditionInterface.removeProcessor(this as ProfileActionScriptProcessorInterface);
     
-JTreeInterfaceFactory.getInstance()!.getJTreeInterface()!.updateJTree();
+JTreeInterfaceFactory::getInstance().getJTreeInterface().updateJTree();
     
 
                                     }
@@ -109,9 +108,9 @@ JTreeInterfaceFactory.getInstance()!.getJTreeInterface()!.updateJTree();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(GenericProfileActionScriptProcessorData.NAME)!;;
+    Node node = document.createElement(GenericProfileActionScriptProcessorData::NAME);;
     
 
 

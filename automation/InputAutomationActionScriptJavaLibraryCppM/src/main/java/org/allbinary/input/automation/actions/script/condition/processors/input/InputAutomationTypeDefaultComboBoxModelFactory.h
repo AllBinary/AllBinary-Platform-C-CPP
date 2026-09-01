@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_INPUTAUTOMATIONTYPEDEFAULTCOMBOBOXMODELFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Exception.h"
@@ -57,13 +59,12 @@
 class InputAutomationTypeDefaultComboBoxModelFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static DefaultComboBoxModel getInstance();
+    public: static DefaultComboBoxModel getInstance();
 
-private constructor ();
+private: InputAutomationTypeDefaultComboBoxModelFactory();
 
 };
 

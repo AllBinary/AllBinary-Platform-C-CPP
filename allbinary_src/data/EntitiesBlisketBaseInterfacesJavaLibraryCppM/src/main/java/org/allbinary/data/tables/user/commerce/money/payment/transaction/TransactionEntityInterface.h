@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransactionEntityInterface: public BasicDataTableInterface {
-        
 
-    remove(string userName, string orderNumber);
+    void remove(std::string userName, std::string orderNumber);
 
-    add(string userName, string orderNumber, PaymentTransactionInterface paymentTransactionInterface);
+    void add(std::string userName, std::string orderNumber, PaymentTransactionInterface paymentTransactionInterface);
 
 };
 

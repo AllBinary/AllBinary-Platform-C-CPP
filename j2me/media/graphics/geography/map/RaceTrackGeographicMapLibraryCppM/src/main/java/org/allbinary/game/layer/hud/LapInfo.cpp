@@ -45,53 +45,50 @@
 class LapInfo
             : public Object
          {
-        
 
-    public static NULL_LAP_INFO: LapInfo = new LapInfo( -1);
+    public: static LapInfo NULL_LAP_INFO = LapInfo( -1);
 
-    private: numberOfLaps: int32_t;
+    private: int32_t numberOfLaps;
 
-    private: totalLaps: int32_t;
+    private: int32_t totalLaps;
 
-public constructor (int32_t totalLaps){
-
-            super();
-        this.totalLaps= totalLaps;
+public: LapInfo(int32_t totalLaps){
+this->totalLaps= totalLaps;
     
-this.numberOfLaps= 1;
+this->numberOfLaps= 1;
     
 }
 
 
-    public add(){
-this.numberOfLaps++;
+    public: void add(){
+this->numberOfLaps++;
     
 }
 
 
-    public int32_t getCurrentLap(){
+    public: int32_t getCurrentLap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.numberOfLaps;
+                        return this->numberOfLaps;
     
 }
 
 
-    public int32_t getTotalLaps(){
+    public: int32_t getTotalLaps(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalLaps;
+                        return this->totalLaps;
     
 }
 
 
-    public bool isDone(){
+    public: bool isDone(){
 
-                        if(this.numberOfLaps >= this.totalLaps)
+                        if(this->numberOfLaps >= this->totalLaps)
                         
                                     {
                                     
@@ -112,27 +109,27 @@ this.numberOfLaps++;
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("isDone: ");
+stringBuffer.append("isDone: ");
     
-stringBuffer!.appendboolean(this.isDone());
+stringBuffer.appendboolean(this->isDone());
     
-stringBuffer!.append(" CurrentLap: ");
+stringBuffer.append(" CurrentLap: ");
     
-stringBuffer!.appendint(this.getCurrentLap());
+stringBuffer.appendint(this->getCurrentLap());
     
-stringBuffer!.append(" Total Laps: ");
+stringBuffer.append(" Total Laps: ");
     
-stringBuffer!.appendint(this.getTotalLaps());
+stringBuffer.appendint(this->getTotalLaps());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

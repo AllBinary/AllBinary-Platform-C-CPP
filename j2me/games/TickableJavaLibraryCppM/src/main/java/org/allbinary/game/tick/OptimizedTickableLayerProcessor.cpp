@@ -56,10 +56,9 @@
         #include "OptimizedTickableLayerManager.h"
 
 class OptimizedTickableLayerProcessor: public LayerProcessor {
-        
 
-public constructor (){
-            super(new OptimizedTickableLayerManager());
+public: OptimizedTickableLayerProcessor(){
+            super(OptimizedTickableLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -69,18 +68,18 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    tickableInterface: AllBinaryGameLayer = layerInterface as AllBinaryGameLayer;;
+    AllBinaryGameLayer tickableInterface = layerInterface as AllBinaryGameLayer;;
     
-tickableInterface!.processTick(allBinaryLayerManager);
+tickableInterface.processTick(allBinaryLayerManager);
     
 }
 
 
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
-                        if(layerInterface!.implmentsTickableInterface())
+                        if(layerInterface.implmentsTickableInterface())
                         
                                     {
                                     

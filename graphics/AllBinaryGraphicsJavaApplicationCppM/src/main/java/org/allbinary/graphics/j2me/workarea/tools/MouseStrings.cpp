@@ -45,39 +45,38 @@
 class MouseStrings
             : public Object
          {
-        
 
-    private: static const instance: MouseStrings = new MouseStrings();
+    private: static MouseStrings instance() { return MouseStrings(); }
 
-    public static MouseStrings getInstance(){
+    public: static MouseStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MouseStrings.instance;
+                        return MouseStrings::instance();
     
 }
 
 
-    public const MOUSE_PRESSED: string = "mousePressed";
+    public: const std::string MOUSE_PRESSED = "mousePressed";
 
-    public const MOUSE_RELEASED: string = "mouseReleased";
+    public: const std::string MOUSE_RELEASED = "mouseReleased";
 
-    public const MOUSE_CLICKED: string = "mouseClicked";
+    public: const std::string MOUSE_CLICKED = "mouseClicked";
 
-    public const MOUSE_DRAGGED: string = "mouseDragged";
+    public: const std::string MOUSE_DRAGGED = "mouseDragged";
 
-    public const MOUSE_MOVED: string = "mouseMoved";
+    public: const std::string MOUSE_MOVED = "mouseMoved";
 
-    public const MOUSE_PRESSED_LABEL: string = "MousePressed" +CommonSeps.getInstance()!.COLON_SEP;
+    public: const std::string MOUSE_PRESSED_LABEL = "MousePressed" +CommonSeps::getInstance().COLON_SEP;
 
-    public const MOUSE_RELEASED_LABEL: string = "MouseReleased" +CommonSeps.getInstance()!.COLON_SEP;
+    public: const std::string MOUSE_RELEASED_LABEL = "MouseReleased" +CommonSeps::getInstance().COLON_SEP;
 
-    public const MOUSE_CLICKED_LABEL: string = "MouseClicked" +CommonSeps.getInstance()!.COLON_SEP;
+    public: const std::string MOUSE_CLICKED_LABEL = "MouseClicked" +CommonSeps::getInstance().COLON_SEP;
 
-    public const MOUSE_DRAGGED_LABEL: string = "MouseDragged" +CommonSeps.getInstance()!.COLON_SEP;
+    public: const std::string MOUSE_DRAGGED_LABEL = "MouseDragged" +CommonSeps::getInstance().COLON_SEP;
 
-    public const MOUSE_MOVED_LABEL: string = "MouseMoved" +CommonSeps.getInstance()!.COLON_SEP;
+    public: const std::string MOUSE_MOVED_LABEL = "MouseMoved" +CommonSeps::getInstance().COLON_SEP;
 
 };
 

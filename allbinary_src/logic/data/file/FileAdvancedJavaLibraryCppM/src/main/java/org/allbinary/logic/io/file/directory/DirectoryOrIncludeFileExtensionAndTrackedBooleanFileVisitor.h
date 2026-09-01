@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONANDTRACKEDBOOLEANFILEVISITOR_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORYORINCLUDEFILEEXTENSIONANDTRACKEDBOOLEANFILEVISITOR_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/System.h"
@@ -69,23 +71,22 @@
 #include "Process.h"
 
 class DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
-        
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    private: const trackedStrings: TrackedStrings = TrackedStrings.getInstance()!;
+    private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
 
-    private: const includesString: string;
+    private: std::string includesString;
 
-public constructor (BasicArrayList filterStringBasicArrayList);
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
 
-public constructor (BasicArrayList filterStringBasicArrayList, string includesString);
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString);
 
-    public Boolean visit(AbFile file);
+    public: Boolean visit(AbFile file);
 
-    public Boolean visit(AbFile file, string fileNameString);
+    public: Boolean visit(AbFile file, std::string fileNameString);
 
-    bool isGitTracked(AbFile file);
+    private: bool isGitTracked(AbFile file);
 
 };
 

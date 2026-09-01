@@ -51,69 +51,68 @@
 class LayerDistanceUtil
             : public Object
          {
-        
 
-    private: static const instance: LayerDistanceUtil = new LayerDistanceUtil();
+    private: static LayerDistanceUtil instance() { return LayerDistanceUtil(); }
 
-    public static LayerDistanceUtil getInstance(){
+    public: static LayerDistanceUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerDistanceUtil.instance;
+                        return LayerDistanceUtil::instance();
     
 }
 
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    public int32_t getDistance(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2){
+    public: int32_t getDistance(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2){
 
-    dx: int32_t = (layerInterface!.getXP() +layerInterface!.getHalfWidth()) -(layerInterface2!.getXP() +layerInterface2!.getHalfWidth());;
+    int32_t dx = (layerInterface.getXP() +layerInterface.getHalfWidth()) -(layerInterface2.getXP() +layerInterface2.getHalfWidth());;
     
 
-    dy: int32_t = (layerInterface!.getYP() +layerInterface!.getHalfHeight()) -(layerInterface2!.getYP() +layerInterface2!.getHalfHeight());;
+    int32_t dy = (layerInterface.getYP() +layerInterface.getHalfHeight()) -(layerInterface2.getYP() +layerInterface2.getHalfHeight());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(this.mathUtil!.sqrt((dx *dx) +(dy *dy)));
+                        return static_cast<int32_t>(this->mathUtil.sqrt((dx *dx) +(dy *dy)));
     
 }
 
 
-    public int32_t getDistance3D(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2){
+    public: int32_t getDistance3D(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2){
 
-    dx: int32_t = (layerInterface!.getXP() +layerInterface!.getHalfWidth()) -(layerInterface2!.getXP() +layerInterface2!.getHalfWidth());;
+    int32_t dx = (layerInterface.getXP() +layerInterface.getHalfWidth()) -(layerInterface2.getXP() +layerInterface2.getHalfWidth());;
     
 
-    dy: int32_t = (layerInterface!.getYP() +layerInterface!.getHalfHeight()) -(layerInterface2!.getYP() +layerInterface2!.getHalfHeight());;
+    int32_t dy = (layerInterface.getYP() +layerInterface.getHalfHeight()) -(layerInterface2.getYP() +layerInterface2.getHalfHeight());;
     
 
-    dz: int32_t = (layerInterface!.getZP() +layerInterface!.getHalfDepth()) -(layerInterface2!.getZP() +layerInterface2!.getHalfDepth());;
+    int32_t dz = (layerInterface.getZP() +layerInterface.getHalfDepth()) -(layerInterface2.getZP() +layerInterface2.getHalfDepth());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(this.mathUtil!.sqrt((dx *dx) +(dy *dy) +(dz *dz)));
+                        return static_cast<int32_t>(this->mathUtil.sqrt((dx *dx) +(dy *dy) +(dz *dz)));
     
 }
 
 
-    public int32_t getDistanceAt(AllBinaryLayer layerInterface, GPoint point){
+    public: int32_t getDistanceAt(AllBinaryLayer layerInterface, GPoint point){
 
-    dx: int32_t = layerInterface!.getXP() -point.getX();;
+    int32_t dx = layerInterface.getXP() -point.getX();;
     
 
-    dy: int32_t = layerInterface!.getYP() -point.getY();;
+    int32_t dy = layerInterface.getYP() -point.getY();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(this.mathUtil!.sqrt((dx *dx) +(dy *dy)));
+                        return static_cast<int32_t>(this->mathUtil.sqrt((dx *dx) +(dy *dy)));
     
 }
 

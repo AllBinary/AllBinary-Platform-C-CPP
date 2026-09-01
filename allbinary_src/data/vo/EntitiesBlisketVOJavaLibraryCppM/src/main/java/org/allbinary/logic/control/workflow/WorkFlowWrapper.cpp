@@ -58,46 +58,43 @@
 class WorkFlowWrapper
             : public Object
         : public WorkFlowInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: anyType: any;
+    private: Object* anyType;
 
-public constructor (any = {} anyType){
-
-            super();
-        this.anyType= anyType;
+public: WorkFlowWrapper(Object* anyType){
+this->anyType= anyType;
     
 }
 
 
-    any getWorkFlowObject(){
+    protected: Object* getWorkFlowObject(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.anyType;
+                        return this->anyType;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getName(){
+    public: std::string getName(){
 
         try {
             
-    helperClass: Function = this.anyType!.constructor!;;
+    Function helperClass = this->anyType.constructor;;
     
 
-    method: Method = helperClass!.getMethod("getName", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("getName", 
+                            nullptr);;
     
 
-    result: string = method.invoke(this.anyType, 
+    std::string result = method.invoke(this->anyType, 
                             nullptr) as string;;
     
 
@@ -111,13 +108,13 @@ public constructor (any = {} anyType){
 } catch(e) 
             {
 
-    error: string = "Reflection Exception";;
+    std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getName()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getName()", e);
     
 
                                     }
@@ -125,7 +122,7 @@ public constructor (any = {} anyType){
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
@@ -134,18 +131,18 @@ public constructor (any = {} anyType){
 
                 //@Throws(Exception.constructor)
             
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
         try {
             
-    helperClass: Function = this.anyType!.constructor!;;
+    Function helperClass = this->anyType.constructor;;
     
 
-    method: Method = helperClass!.getMethod("getStoreName", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("getStoreName", 
+                            nullptr);;
     
 
-    result: string = method.invoke(this.anyType, 
+    std::string result = method.invoke(this->anyType, 
                             nullptr) as string;;
     
 
@@ -159,13 +156,13 @@ public constructor (any = {} anyType){
 } catch(e) 
             {
 
-    error: string = "Reflection Exception";;
+    std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getStoreName()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getStoreName()", e);
     
 
                                     }
@@ -173,7 +170,7 @@ public constructor (any = {} anyType){
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 
@@ -182,18 +179,18 @@ public constructor (any = {} anyType){
 
                 //@Throws(Exception.constructor)
             
-    public Integer process(){
+    public: Integer process(){
 
         try {
             
-    helperClass: Function = this.anyType!.constructor!;;
+    Function helperClass = this->anyType.constructor;;
     
 
-    method: Method = helperClass!.getMethod(this.commonStrings!.PROCESS, 
-                            nullptr)!;;
+    Method method = helperClass.getMethod(this->commonStrings.PROCESS, 
+                            nullptr);;
     
 
-    result: Integer = method.invoke(this.anyType, 
+    Integer result = method.invoke(this->anyType, 
                             nullptr) as Integer;;
     
 
@@ -207,13 +204,13 @@ public constructor (any = {} anyType){
 } catch(e) 
             {
 
-    error: string = "Reflection Exception";;
+    std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 
                                     }
@@ -221,7 +218,7 @@ public constructor (any = {} anyType){
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 

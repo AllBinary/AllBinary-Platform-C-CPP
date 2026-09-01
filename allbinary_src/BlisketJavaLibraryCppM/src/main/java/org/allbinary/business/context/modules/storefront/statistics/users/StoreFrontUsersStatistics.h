@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICS_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STATISTICS_USERS_STOREFRONTUSERSSTATISTICS_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../java/lang/Exception.h"
@@ -75,25 +77,24 @@
 class StoreFrontUsersStatistics
             : public Object
         : public StoreFrontUsersStatisticsInterface {
-        
 
-    private: totalNumberOfUsers: Long;
+    private: Long totalNumberOfUsers;
 
-    private: totalUsersByRoleHashMap: HashMap<any, any>;
+    private: HashMap<any, any> totalUsersByRoleHashMap;
 
-public constructor (StoreFrontInterface storeFrontInterface);
+public: StoreFrontUsersStatistics(StoreFrontInterface storeFrontInterface);
 
-    Long getNewTotal(UserRole userRole);
+    private: Long getNewTotal(UserRole userRole);
 
-    public Long getNumberOfUsers();
+    public: Long getNumberOfUsers();
 
-    public Long getNumberOfUsersByRole(string role);
+    public: Long getNumberOfUsersByRole(std::string role);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public any getKey();
+    public: Object* getKey();
 
 };
 

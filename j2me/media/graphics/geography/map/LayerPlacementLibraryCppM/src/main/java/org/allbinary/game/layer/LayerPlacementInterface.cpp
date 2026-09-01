@@ -44,7 +44,6 @@
         #include "LayerPlacementType.h"
 
 class LayerPlacementInterface {
-        
 
     int32_t getWidth()
 

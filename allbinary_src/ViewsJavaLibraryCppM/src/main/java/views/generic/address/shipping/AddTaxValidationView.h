@@ -85,24 +85,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ShippingAddressView.h"
 
-class AddTaxValidationView: public ShippingAddressView: public ValidationComponentInterface {
-        
+class AddTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Boolean isValid();
+public: AddTaxValidationView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+                //@Throws(Exception.constructor)
+            
+    public: std::string validationInfo();
 
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
 
 };
 

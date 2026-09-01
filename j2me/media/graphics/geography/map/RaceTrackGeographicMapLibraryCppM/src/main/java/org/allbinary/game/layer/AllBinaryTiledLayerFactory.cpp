@@ -67,20 +67,19 @@
 class AllBinaryTiledLayerFactory
             : public Object
         : public AllBinaryTiledLayerFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData){
+    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData){
 
-    allbinaryTiledLayer: AllBinaryTiledLayer;;
+    AllBinaryTiledLayer allbinaryTiledLayer;;
     
 
-    tiledLayer: TiledLayer = new TiledLayerFactory().getInstance(raceTrackData)!;;
+    TiledLayer tiledLayer = TiledLayerFactory().getInstance(raceTrackData);;
     
-allbinaryTiledLayer= new AllBinaryJ2METiledLayer(raceTrackData!.getId(), tiledLayer, raceTrackData!.getMapArray(), BasicColorFactory.getInstance()!.RED.intValue());
+allbinaryTiledLayer= AllBinaryJ2METiledLayer(raceTrackData.getId(), tiledLayer, raceTrackData.getMapArray(), BasicColorFactory::getInstance().RED.intValue());
     
-allbinaryTiledLayer!.setCells(raceTrackData!.getMapArray());
+allbinaryTiledLayer.setCells(raceTrackData.getMapArray());
     
 
 
@@ -93,17 +92,17 @@ allbinaryTiledLayer!.setCells(raceTrackData!.getMapArray());
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryTiledLayer getMiniInstance(RaceTrackData raceTrackData){
+    public: AllBinaryTiledLayer getMiniInstance(RaceTrackData raceTrackData){
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    tiledLayer: TiledLayer = new TiledLayerFactory().getMiniInstance(raceTrackData)!;;
+    TiledLayer tiledLayer = TiledLayerFactory().getMiniInstance(raceTrackData);;
     
 
-    allbinaryTiledLayer: AllBinaryTiledLayer = new AllBinaryJ2METiledLayer(smallIntegerSingletonFactory!.getAt(raceTrackData!.getId()!.intValue() +100 +1), tiledLayer, raceTrackData!.getMapArray(), BasicColorFactory.getInstance()!.RED.intValue());;
+    AllBinaryTiledLayer allbinaryTiledLayer = AllBinaryJ2METiledLayer(smallIntegerSingletonFactory.getAt(raceTrackData.getId().intValue() +100 +1), tiledLayer, raceTrackData.getMapArray(), BasicColorFactory::getInstance().RED.intValue());;
     
-allbinaryTiledLayer!.setCells(raceTrackData!.getMapArray());
+allbinaryTiledLayer.setCells(raceTrackData.getMapArray());
     
 
 

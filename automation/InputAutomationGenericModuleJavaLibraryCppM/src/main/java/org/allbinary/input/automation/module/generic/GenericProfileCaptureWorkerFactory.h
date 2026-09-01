@@ -66,13 +66,12 @@
 class GenericProfileCaptureWorkerFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static CaptureWorkerInterface getInstance(GenericProfile genericProfile);
+    public: static CaptureWorkerInterface getInstance(GenericProfile genericProfile);
 
-private constructor ();
+private: GenericProfileCaptureWorkerFactory();
 
 };
 

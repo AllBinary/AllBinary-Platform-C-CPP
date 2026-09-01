@@ -45,13 +45,12 @@
         #include "TextChangeListener.h"
 
 class TextInterface {
-        
 
-    setTextWithOnMeasure(string text, TextChangeListener textChangeListener)
+    void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener)
 
-    string getText()
+    std::string getText()
 
-    setText(string text)
+    void setText(std::string text)
 
     int32_t getFontHeight()
 

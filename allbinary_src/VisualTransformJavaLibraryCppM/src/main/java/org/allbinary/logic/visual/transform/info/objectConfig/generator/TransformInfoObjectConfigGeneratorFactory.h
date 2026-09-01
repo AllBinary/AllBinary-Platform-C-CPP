@@ -63,19 +63,18 @@
 class TransformInfoObjectConfigGeneratorFactory
             : public Object
         : public TransformInfoObjectConfigGeneratorFactoryInterface {
-        
 
-    private: static const instance: TransformInfoObjectConfigGeneratorFactory = new TransformInfoObjectConfigGeneratorFactory();
+    private: static TransformInfoObjectConfigGeneratorFactory instance() { return TransformInfoObjectConfigGeneratorFactory(); }
 
-    public static TransformInfoObjectConfigGeneratorFactory getInstance();
+    public: static TransformInfoObjectConfigGeneratorFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: TransformInfoObjectConfigGeneratorFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigGenerator getInstance(TransformInfoInterface transformInfoInterface);
+    public: TransformInfoObjectConfigGenerator getInstance(TransformInfoInterface transformInfoInterface);
 
 };
 

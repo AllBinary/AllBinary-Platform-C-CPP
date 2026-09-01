@@ -45,45 +45,44 @@
 class FileData
             : public Object
          {
-        
 
-    private: static const instance: FileData = new FileData();
+    private: static FileData instance() { return FileData(); }
 
-    public static FileData getInstance();
+    public: static FileData getInstance();
 
-private constructor ();
+private: FileData();
 
-    public const NAME: string = "FILE_NAME";
+    public: const std::string NAME = "FILE_NAME";
 
-    public const ISFILE: string = "FILE_ISFILE";
+    public: const std::string ISFILE = "FILE_ISFILE";
 
-    public const ISDIRECTORY: string = "FILE_ISDIRECTORY";
+    public: const std::string ISDIRECTORY = "FILE_ISDIRECTORY";
 
-    public const ISHIDDEN: string = "FILE_ISHIDDEN";
+    public: const std::string ISHIDDEN = "FILE_ISHIDDEN";
 
-    public const ISABSOLUTE: string = "FILE_ISABSOLUTE";
+    public: const std::string ISABSOLUTE = "FILE_ISABSOLUTE";
 
-    public const ROOT_NAME: string = "FILE_ROOT_NAME";
+    public: const std::string ROOT_NAME = "FILE_ROOT_NAME";
 
-    public const PATH: string = "FILE_PATH";
+    public: const std::string PATH = "FILE_PATH";
 
-    public const ABSOLUTE_PATH: string = "FILE_ABSOLUTE_PATH";
+    public: const std::string ABSOLUTE_PATH = "FILE_ABSOLUTE_PATH";
 
-    public const CANONICAL_PATH: string = "FILE_CANONICAL_PATH";
+    public: const std::string CANONICAL_PATH = "FILE_CANONICAL_PATH";
 
-    public const PARENT: string = "FILE_PARENT";
+    public: const std::string PARENT = "FILE_PARENT";
 
-    public const MINLEN: int32_t = 1;
+    public: const int32_t MINLEN = 1;
 
-    public const MAXLEN: int32_t = 120;
+    public: const int32_t MAXLEN = 120;
 
-    public const MAXIMAGEFILESIZE: int32_t = 1048576;
+    public: const int32_t MAXIMAGEFILESIZE = 1048576;
 
-    public const MINIMAGEFILESIZE: int32_t = 32;
+    public: const int32_t MINIMAGEFILESIZE = 32;
 
-    public const MAXDOWNLOADABLEFILESIZE: int32_t = 1048576 *20;
+    public: const int32_t MAXDOWNLOADABLEFILESIZE = 1048576 *20;
 
-    public const MINDOWNLOADABLEFILESIZE: int32_t = 1;
+    public: const int32_t MINDOWNLOADABLEFILESIZE = 1;
 
 };
 

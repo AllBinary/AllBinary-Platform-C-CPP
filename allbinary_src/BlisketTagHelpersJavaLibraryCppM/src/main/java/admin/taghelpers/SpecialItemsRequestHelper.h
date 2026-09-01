@@ -82,39 +82,38 @@
         #include "ModifyTable.h"
 
 class SpecialItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: enabled: string;
+    private: std::string enabled;
 
-    private: number: string;
+    private: std::string number;
 
-    private: startTime: string;
+    private: std::string startTime;
 
-    private: endTime: string;
+    private: std::string endTime;
 
-    private: price: string;
+    private: std::string price;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: SpecialItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public getFormData();
+    public: void getFormData();
 
-    HashMap<any, any> getHashMap();
+    private: HashMap<any, any> getHashMap();
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string update();
+    public: std::string update();
 
 };
 

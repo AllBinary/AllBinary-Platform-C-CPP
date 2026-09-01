@@ -53,17 +53,16 @@
 class GameGlobalsFactory
             : public Object
          {
-        
 
-    private: static const instance: GameGlobalsFactory = new GameGlobalsFactory();
+    private: static GameGlobalsFactory instance() { return GameGlobalsFactory(); }
 
-    public static GameGlobalsFactory getInstance();
+    public: static GameGlobalsFactory getInstance();
 
-    public newCanvas: bool = true;
+    public: bool newCanvas = true;
 
-    public newDisplaybleTime: int64_t = Integer.MIN_VALUE;
+    public: int64_t newDisplaybleTime = Integer::MIN_VALUE;
 
-    public point: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    public: GPoint point = PointFactory::getInstance().ZERO_ZERO;
 
 };
 

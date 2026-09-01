@@ -90,30 +90,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AddValidationStoreFrontView: public HttpContextView: public ValidationComponentInterface {
-        
+class AddValidationStoreFrontView: public HttpContextView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    newStoreFrontInterface: StoreFrontInterface;
+    protected: StoreFrontInterface newStoreFrontInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: AddValidationStoreFrontView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
-
-                //@Throws(Exception.constructor)
-            
-    string getStoreViewsPath();
-
-    public string validationInfo();
-
-    public Document toValidationInfoDoc();
-
-    public Node toValidationInfoNode(Document document);
+    public: Boolean isValid();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    private: std::string getStoreViewsPath();
+
+    public: std::string validationInfo();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

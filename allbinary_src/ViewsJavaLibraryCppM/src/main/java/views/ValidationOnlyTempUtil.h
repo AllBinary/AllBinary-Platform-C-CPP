@@ -59,19 +59,18 @@
 class ValidationOnlyTempUtil
             : public Object
          {
-        
 
-    private: static const instance: ValidationOnlyTempUtil = new ValidationOnlyTempUtil();
+    private: static ValidationOnlyTempUtil instance() { return ValidationOnlyTempUtil(); }
 
-    public static ValidationOnlyTempUtil getInstance();
+    public: static ValidationOnlyTempUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ValidationOnlyTempUtil();
 
                 //@Throws(Exception.constructor)
             
-    public string view(ValidationComponentInterface validationComponentInterface);
+    public: std::string view(ValidationComponentInterface validationComponentInterface);
 
 };
 

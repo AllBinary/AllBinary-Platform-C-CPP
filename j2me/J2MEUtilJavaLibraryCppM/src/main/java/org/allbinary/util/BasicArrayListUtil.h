@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLISTUTIL_H
         #define ORG_ALLBINARY_UTIL_BASICARRAYLISTUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/System.h"
@@ -71,30 +73,29 @@
 class BasicArrayListUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicArrayListUtil = new BasicArrayListUtil();
+    private: static BasicArrayListUtil instance() { return BasicArrayListUtil(); }
 
-    public static BasicArrayListUtil getInstance();
+    public: static BasicArrayListUtil getInstance();
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    public const NULL_ARRAY_OF_ARRAY: std::vector<std::vector<BasicArrayList>> = new Array(0).fill(null).map(() => new Array(0).fill(0))
+    public: const std::vector<std::vector<BasicArrayList>> NULL_ARRAY_OF_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0))
                                                             ;
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    private: const immutableInstance: BasicArrayList = new ImmutableBasicArrayList("Immutable", 0);
+    private: const BasicArrayList immutableInstance = ImmutableBasicArrayList("Immutable", 0);
 
-    public any getRandom(BasicArrayList list);
+    public: Object* getRandom(BasicArrayList list);
 
-    public int32_t getRandomIndex(BasicArrayList list);
+    public: int32_t getRandomIndex(BasicArrayList list);
 
-    public reverse(BasicArrayList list);
+    public: void reverse(BasicArrayList list);
 
-    public string log(BasicArrayList list);
+    public: std::string log(BasicArrayList list);
 
-    public BasicArrayList getImmutableInstance();
+    public: BasicArrayList getImmutableInstance();
 
 };
 

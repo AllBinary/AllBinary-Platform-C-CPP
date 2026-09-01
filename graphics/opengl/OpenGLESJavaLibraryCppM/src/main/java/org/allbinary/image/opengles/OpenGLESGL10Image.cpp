@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/nio/ByteBuffer.h>
 
       
@@ -75,188 +77,187 @@
 #include "OpenGLESImageProcessor.h"
 
 class OpenGLESGL10Image: public OpenGLESImage {
-        
 
-    private: const textureVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *2)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
+    private: const FloatBuffer textureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-    private: const realOpenGLESImageDraw: OpenGLESImageDraw = new class extends OpenGLESImageDraw
+    private: const OpenGLESImageDraw realOpenGLESImageDraw = class extends OpenGLESImageDraw
                                 {
                                 
-    private: const glUtil: GLUtil = GLUtil.getInstance()!;
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
-    private: const textureVertexFloatBuffer: FloatBuffer = this::.textureVertexFloatBuffer;
-    private: const regionTextureRectangleFloatArray: std::vector<float> = new Array(8);
-    private: const regionTextureVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *2)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
-    private: const regionRectangleFloatArray: std::vector<float> = [0,0,0,0,0,0,0,0,0,0,0,0];
-    const regionRectangleVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *3)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
-    const openGLESImageProperties: OpenGLESImageProperties = this::.openGLESImageProperties;
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+    const GLUtil glUtil = GLUtil::getInstance();
+    const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    const FloatBuffer textureVertexFloatBuffer = this->textureVertexFloatBuffer;
+    const std::vector<float> regionTextureRectangleFloatArray = new Array(8);
+    const FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
+    const std::vector<float> regionRectangleFloatArray = {0,0,0,0,0,0,0,0,0,0,0,0};
+    const FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
+    const OpenGLESImageProperties openGLESImageProperties = this->openGLESImageProperties;
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
 
-    imageWidth: int32_t = this::.getWidth()!;;
-    
-
-    imageHeight: int32_t = this::.getHeight()!;;
-    
-this.regionRectangleFloatArray[7]= viewHeight;
-    
-this.regionRectangleFloatArray[1]= this.regionRectangleFloatArray[7] -height;
-    
-this.regionRectangleFloatArray[3]= width;
-    
-this.regionRectangleFloatArray[4]= this.regionRectangleFloatArray[1]!;
-    
-this.regionRectangleFloatArray[9]= this.regionRectangleFloatArray[3]!;
-    
-this.regionRectangleFloatArray[10]= this.regionRectangleFloatArray[7]!;
-    
-this.regionTextureRectangleFloatArray[0]= x_src /imageWidth;
-    
-this.regionTextureRectangleFloatArray[1]= () /imageHeight;
-    
-this.regionTextureRectangleFloatArray[2]= () /imageWidth;
-    
-this.regionTextureRectangleFloatArray[3]= this.regionTextureRectangleFloatArray[1]!;
-    
-this.regionTextureRectangleFloatArray[4]= this.regionTextureRectangleFloatArray[0]!;
-    
-this.regionTextureRectangleFloatArray[5]= y_src /imageHeight;
-    
-this.regionTextureRectangleFloatArray[6]= this.regionTextureRectangleFloatArray[2]!;
-    
-this.regionTextureRectangleFloatArray[7]= this.regionTextureRectangleFloatArray[5]!;
+    int32_t imageWidth = this->getWidth();;
     
 
-    u_center: float = (this.regionTextureRectangleFloatArray[0] +this.regionTextureRectangleFloatArray[2]) /2.0;;
+    int32_t imageHeight = this->getHeight();;
+    
+this->regionRectangleFloatArray[7]= viewHeight;
+    
+this->regionRectangleFloatArray[1]= this->regionRectangleFloatArray[7] -height;
+    
+this->regionRectangleFloatArray[3]= width;
+    
+this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1]!;
+    
+this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3]!;
+    
+this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7]!;
+    
+this->regionTextureRectangleFloatArray[0]= x_src /imageWidth;
+    
+this->regionTextureRectangleFloatArray[1]= () /imageHeight;
+    
+this->regionTextureRectangleFloatArray[2]= () /imageWidth;
+    
+this->regionTextureRectangleFloatArray[3]= this->regionTextureRectangleFloatArray[1]!;
+    
+this->regionTextureRectangleFloatArray[4]= this->regionTextureRectangleFloatArray[0]!;
+    
+this->regionTextureRectangleFloatArray[5]= y_src /imageHeight;
+    
+this->regionTextureRectangleFloatArray[6]= this->regionTextureRectangleFloatArray[2]!;
+    
+this->regionTextureRectangleFloatArray[7]= this->regionTextureRectangleFloatArray[5]!;
     
 
-    v_center: float = (this.regionTextureRectangleFloatArray[5] +this.regionTextureRectangleFloatArray[1]) /2.0;;
+    float u_center = (this->regionTextureRectangleFloatArray[0] +this->regionTextureRectangleFloatArray[2]) /2.0;;
     
-this.glUtil!.rotateUVs(this.regionTextureRectangleFloatArray,  -this.openGLESImageProperties!.angle, u_center, v_center);
+
+    float v_center = (this->regionTextureRectangleFloatArray[5] +this->regionTextureRectangleFloatArray[1]) /2.0;;
+    
+this->glUtil.rotateUVs(this->regionTextureRectangleFloatArray,  -this->openGLESImageProperties.angle, u_center, v_center);
     
 gl.glPushMatrix();
     
 
-    imageProcessor: OpenGLESImageProcessor = this::.imageProcessor;;
+    OpenGLESImageProcessor imageProcessor = this->imageProcessor;;
     
-this::.openGLESImageTranslate!.translate(gl, this::, x,  -y);
+this->openGLESImageTranslate.translate(gl, this, x,  -y);
     
-imageProcessor!.scale(gl, this.openGLESImageProperties!.scaleX, this.openGLESImageProperties!.scaleY);
+imageProcessor.scale(gl, this->openGLESImageProperties.scaleX, this->openGLESImageProperties.scaleY);
     
-imageProcessor!.colorMask(gl, this.openGLESImageProperties!.redf, this.openGLESImageProperties!.greenf, this.openGLESImageProperties!.bluef, this.openGLESImageProperties!.alphaf);
+imageProcessor.colorMask(gl, this->openGLESImageProperties.redf, this->openGLESImageProperties.greenf, this->openGLESImageProperties.bluef, this->openGLESImageProperties.alphaf);
     
-this::.openGLESImageTranslate!.translate2(gl, this::);
+this->openGLESImageTranslate.translate2(gl, this);
     
-this.regionRectangleVertexFloatBuffer!.put(this.regionRectangleFloatArray);
+this->regionRectangleVertexFloatBuffer.put(this->regionRectangleFloatArray);
     
-this.glUtil!.position(this.regionRectangleVertexFloatBuffer, 0);
+this->glUtil.position(this->regionRectangleVertexFloatBuffer, 0);
     
-gl.glVertexPointer(3, GL10.GL_FLOAT, 0, this.regionRectangleVertexFloatBuffer);
+gl.glVertexPointer(3, GL10::GL_FLOAT, 0, this->regionRectangleVertexFloatBuffer);
     
-gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+gl.glEnableClientState(GL10::GL_VERTEX_ARRAY);
     
-gl.glEnable(GL10.GL_TEXTURE_2D);
+gl.glEnable(GL10::GL_TEXTURE_2D);
     
-gl.glBindTexture(GL10.GL_TEXTURE_2D, this.openGLESImageProperties!.textureID);
+gl.glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
     
-gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+gl.glEnableClientState(GL10::GL_TEXTURE_COORD_ARRAY);
     
-this.regionTextureVertexFloatBuffer!.put(this.regionTextureRectangleFloatArray);
+this->regionTextureVertexFloatBuffer.put(this->regionTextureRectangleFloatArray);
     
-this.glUtil!.position(this.regionTextureVertexFloatBuffer, 0);
+this->glUtil.position(this->regionTextureVertexFloatBuffer, 0);
     
-gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, this.regionTextureVertexFloatBuffer);
+gl.glTexCoordPointer(2, GL10::GL_FLOAT, 0, this->regionTextureVertexFloatBuffer);
     
-gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
+gl.glDrawArrays(GL10::GL_TRIANGLE_STRIP, 0, 4);
     
-gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
+gl.glDisableClientState(GL10::GL_VERTEX_ARRAY);
     
-gl.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+gl.glDisableClientState(GL10::GL_TEXTURE_COORD_ARRAY);
     
-gl.glDisable(GL10.GL_TEXTURE_2D);
+gl.glDisable(GL10::GL_TEXTURE_2D);
     
 gl.glPopMatrix();
     
 }
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z){
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
 
-    width: int32_t = this::.getWidth()!;;
+    int32_t width = this->getWidth();;
     
 
-    height: int32_t = this::.getHeight()!;;
+    int32_t height = this->getHeight();;
     
-this.regionRectangleFloatArray[7]= this.displayInfoSingleton!.getLastHeight();
+this->regionRectangleFloatArray[7]= this->displayInfoSingleton.getLastHeight();
     
-this.regionRectangleFloatArray[1]= this.regionRectangleFloatArray[7] -height;
+this->regionRectangleFloatArray[1]= this->regionRectangleFloatArray[7] -height;
     
-this.regionRectangleFloatArray[3]= width;
+this->regionRectangleFloatArray[3]= width;
     
-this.regionRectangleFloatArray[4]= this.regionRectangleFloatArray[1]!;
+this->regionRectangleFloatArray[4]= this->regionRectangleFloatArray[1]!;
     
-this.regionRectangleFloatArray[9]= this.regionRectangleFloatArray[3]!;
+this->regionRectangleFloatArray[9]= this->regionRectangleFloatArray[3]!;
     
-this.regionRectangleFloatArray[10]= this.regionRectangleFloatArray[7]!;
+this->regionRectangleFloatArray[10]= this->regionRectangleFloatArray[7]!;
     
-this.regionTextureRectangleFloatArray[0]= 0;
+this->regionTextureRectangleFloatArray[0]= 0;
     
-this.regionTextureRectangleFloatArray[1]= 1;
+this->regionTextureRectangleFloatArray[1]= 1;
     
-this.regionTextureRectangleFloatArray[2]= 1;
+this->regionTextureRectangleFloatArray[2]= 1;
     
-this.regionTextureRectangleFloatArray[3]= 1;
+this->regionTextureRectangleFloatArray[3]= 1;
     
-this.regionTextureRectangleFloatArray[4]= 0;
+this->regionTextureRectangleFloatArray[4]= 0;
     
-this.regionTextureRectangleFloatArray[5]= 0;
+this->regionTextureRectangleFloatArray[5]= 0;
     
-this.regionTextureRectangleFloatArray[6]= 1;
+this->regionTextureRectangleFloatArray[6]= 1;
     
-this.regionTextureRectangleFloatArray[7]= 0;
+this->regionTextureRectangleFloatArray[7]= 0;
     
 gl.glPushMatrix();
     
-this::.openGLESImageTranslate!.translate(gl, this::, x,  -y);
+this->openGLESImageTranslate.translate(gl, this, x,  -y);
     
 
-    imageProcessor: OpenGLESImageProcessor = this::.imageProcessor;;
+    OpenGLESImageProcessor imageProcessor = this->imageProcessor;;
     
-imageProcessor!.scale(gl, this.openGLESImageProperties!.scaleX, this.openGLESImageProperties!.scaleY);
+imageProcessor.scale(gl, this->openGLESImageProperties.scaleX, this->openGLESImageProperties.scaleY);
     
-imageProcessor!.colorMask(gl, this.openGLESImageProperties!.redf, this.openGLESImageProperties!.greenf, this.openGLESImageProperties!.bluef, this.openGLESImageProperties!.alphaf);
+imageProcessor.colorMask(gl, this->openGLESImageProperties.redf, this->openGLESImageProperties.greenf, this->openGLESImageProperties.bluef, this->openGLESImageProperties.alphaf);
     
-this::.openGLESImageTranslate!.translate2(gl, this::);
+this->openGLESImageTranslate.translate2(gl, this);
     
-this.regionRectangleVertexFloatBuffer!.put(this.regionRectangleFloatArray);
+this->regionRectangleVertexFloatBuffer.put(this->regionRectangleFloatArray);
     
-this.glUtil!.position(this.regionRectangleVertexFloatBuffer, 0);
+this->glUtil.position(this->regionRectangleVertexFloatBuffer, 0);
     
-gl.glVertexPointer(3, GL10.GL_FLOAT, 0, this.regionRectangleVertexFloatBuffer);
+gl.glVertexPointer(3, GL10::GL_FLOAT, 0, this->regionRectangleVertexFloatBuffer);
     
-gl.glEnableClientState(GL10.GL_VERTEX_ARRAY);
+gl.glEnableClientState(GL10::GL_VERTEX_ARRAY);
     
-gl.glEnable(GL10.GL_TEXTURE_2D);
+gl.glEnable(GL10::GL_TEXTURE_2D);
     
-gl.glBindTexture(GL10.GL_TEXTURE_2D, this.openGLESImageProperties!.textureID);
+gl.glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
     
-gl.glEnableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+gl.glEnableClientState(GL10::GL_TEXTURE_COORD_ARRAY);
     
-this.glUtil!.rotateUVs(this.regionTextureRectangleFloatArray,  -this.openGLESImageProperties!.angle, 0.5, 0.5);
+this->glUtil.rotateUVs(this->regionTextureRectangleFloatArray,  -this->openGLESImageProperties.angle, 0.5, 0.5);
     
-this.glUtil!.position(this.textureVertexFloatBuffer, 0);
+this->glUtil.position(this->textureVertexFloatBuffer, 0);
     
-this.textureVertexFloatBuffer!.put(this.regionTextureRectangleFloatArray);
+this->textureVertexFloatBuffer.put(this->regionTextureRectangleFloatArray);
     
-this.glUtil!.position(this.textureVertexFloatBuffer, 0);
+this->glUtil.position(this->textureVertexFloatBuffer, 0);
     
-gl.glTexCoordPointer(2, GL10.GL_FLOAT, 0, this.textureVertexFloatBuffer);
+gl.glTexCoordPointer(2, GL10::GL_FLOAT, 0, this->textureVertexFloatBuffer);
     
-gl.glDrawArrays(GL10.GL_TRIANGLE_STRIP, 0, 4);
+gl.glDrawArrays(GL10::GL_TRIANGLE_STRIP, 0, 4);
     
-gl.glDisableClientState(GL10.GL_VERTEX_ARRAY);
+gl.glDisableClientState(GL10::GL_VERTEX_ARRAY);
     
-gl.glDisableClientState(GL10.GL_TEXTURE_COORD_ARRAY);
+gl.glDisableClientState(GL10::GL_TEXTURE_COORD_ARRAY);
     
-gl.glDisable(GL10.GL_TEXTURE_2D);
+gl.glDisable(GL10::GL_TEXTURE_2D);
     
 gl.glPopMatrix();
     
@@ -265,56 +266,56 @@ gl.glPopMatrix();
                                 }
                             ;
 
-    private: openGLESImageDraw: OpenGLESImageDraw = OpenGLESImageDraw.getInstance()!;
+    private: OpenGLESImageDraw openGLESImageDraw = OpenGLESImageDraw::getInstance();
 
-public constructor (Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
+public: OpenGLESGL10Image(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
             super(image, bitmapFactory, textureFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initVertices();
+this->initVertices();
     
 }
 
 
-    initVertices(){
-this.textureVertexFloatBuffer!.put(0);
+    protected: void initVertices(){
+this->textureVertexFloatBuffer.put(0);
     
-this.textureVertexFloatBuffer!.put(1);
+this->textureVertexFloatBuffer.put(1);
     
-this.textureVertexFloatBuffer!.put(1);
+this->textureVertexFloatBuffer.put(1);
     
-this.textureVertexFloatBuffer!.put(1);
+this->textureVertexFloatBuffer.put(1);
     
-this.textureVertexFloatBuffer!.put(0);
+this->textureVertexFloatBuffer.put(0);
     
-this.textureVertexFloatBuffer!.put(0);
+this->textureVertexFloatBuffer.put(0);
     
-this.textureVertexFloatBuffer!.put(1);
+this->textureVertexFloatBuffer.put(1);
     
-this.textureVertexFloatBuffer!.put(0);
+this->textureVertexFloatBuffer.put(0);
     
-this.textureVertexFloatBuffer!.rewind();
+this->textureVertexFloatBuffer.rewind();
     
 }
 
 
-    public set(GL gl){
+    public: void set(GL gl){
 
-    gl10: GL10 = gl as GL10;;
+    GL10 gl10 = gl as GL10;;
     
 
                         if(super.initTexture(gl10))
                         
                                     {
-                                    this.textureFactory!.load(gl10, GL10.GL_TEXTURE_2D, 0, this, 0, true);
+                                    this->textureFactory.load(gl10, GL10::GL_TEXTURE_2D, 0, this, 0, true);
     
-gl10.glDisable(GL10.GL_TEXTURE_2D);
+gl10.glDisable(GL10::GL_TEXTURE_2D);
     
-this.openGLESImageDraw= this.realOpenGLESImageDraw;
+this->openGLESImageDraw= this->realOpenGLESImageDraw;
     
-OpenGLLogUtil.getInstance()!.logError(gl10, this);
+OpenGLLogUtil::getInstance().logError(gl10, this);
     
 
                                     }
@@ -322,14 +323,14 @@ OpenGLLogUtil.getInstance()!.logError(gl10, this);
 }
 
 
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
-this.openGLESImageDraw!.drawRegion(gl, viewHeight, x_src, y_src, width, height, x, y, z);
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z){
+this->openGLESImageDraw.drawRegion(gl, viewHeight, x_src, y_src, width, height, x, y, z);
     
 }
 
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z){
-this.openGLESImageDraw!.draw(gl, x, y, z);
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
+this->openGLESImageDraw.draw(gl, x, y, z);
     
 }
 

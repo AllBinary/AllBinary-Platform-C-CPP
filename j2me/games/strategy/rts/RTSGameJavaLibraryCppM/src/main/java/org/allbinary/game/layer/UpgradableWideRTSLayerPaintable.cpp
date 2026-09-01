@@ -53,11 +53,10 @@
 #include "RTSLayer.h"
 
 class UpgradableWideRTSLayerPaintable: public RTSLayerCompositePaintable {
-        
 
-    private: cost: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string cost = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable){
+public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable){
             super(upgradableRTSLayerHudPaintable);
                     
 
@@ -66,32 +65,32 @@ public constructor (UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintabl
 }
 
 
-    public update(RTSLayer rtsLayer){
+    public: void update(RTSLayer rtsLayer){
 super.update(rtsLayer);
     
-this.setCost(new StringMaker().append(this.getUpgradeCost())!.append(CommonSeps.getInstance()!.SPACE)!.append(this.getDownGradeCost())!.toString());
+this->setCost(StringMaker().append(this->getUpgradeCost()).append(CommonSeps::getInstance().SPACE).append(this->getDownGradeCost()).toString());
     
 }
 
 
-    public paint(Graphics graphics){
-graphics.drawString(this.getCost(), this.upgradableRTSLayerHudPaintable!.textX, this.upgradableRTSLayerHudPaintable!.costY, 0);
+    public: void paint(Graphics graphics){
+graphics.drawString(this->getCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY, 0);
     
 }
 
 
-    setCost(string cost){
-this.cost= cost;
+    protected: void setCost(std::string cost){
+this->cost= cost;
     
 }
 
 
-    string getCost(){
+    protected: std::string getCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cost;
+                        return this->cost;
     
 }
 

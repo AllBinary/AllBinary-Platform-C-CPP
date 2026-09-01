@@ -54,17 +54,16 @@
 #include "BoundsChangeEvent.h"
 
 class BoundsChangeEventHandler: public BasicEventHandler {
-        
 
-    private: static SINGLETON: BasicEventHandler = new BoundsChangeEventHandler();
+    private: static BasicEventHandler SINGLETON = BoundsChangeEventHandler();
 
-    public static BasicEventHandler getInstance();
+    public: static BasicEventHandler getInstance();
 
-private constructor ();
+private: BoundsChangeEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

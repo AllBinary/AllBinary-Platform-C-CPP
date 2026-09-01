@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -51,27 +53,26 @@
 class IndexedAnimationToImageArrayUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static std::vector<Image> getInstance(int32_t width, int32_t height, IndexedAnimation sequentialAnimationInterface){
+    public: static std::vector<Image> getInstance(int32_t width, int32_t height, IndexedAnimation sequentialAnimationInterface){
 
-    size: int32_t = sequentialAnimationInterface!.getAnimationSize()!;;
+    int32_t size = sequentialAnimationInterface.getAnimationSize();;
     
 
-    imageArray: std::vector<Image> = new Array(size);;
+    std::vector<Image> imageArray = new Array(size);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-sequentialAnimationInterface!.setFrame(index);
+sequentialAnimationInterface.setFrame(index);
     
-imageArray[index]= AnimationFrameToImageUtil.getInstance()!.getInstanceWH(width, height, sequentialAnimationInterface);
+imageArray[index]= AnimationFrameToImageUtil::getInstance().getInstanceWH(width, height, sequentialAnimationInterface);
     
 }
 

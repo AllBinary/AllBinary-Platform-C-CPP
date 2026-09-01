@@ -77,35 +77,32 @@
         #include "BasicTable.h"
 
 class StoreFrontsHelper: public BasicTable {
-        
 
-    private: static const CLASS: string = "class";
+    private: static const std::string CLASS = "class";
 
-    private: static const TEXT: string = "text";
+    private: static const std::string TEXT = "text";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.portion= new Portion(hashMap);
+public: StoreFrontsHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->portion= Portion(hashMap);
     
 }
 
 
-    public string drop(){
+    public: std::string drop(){
 
         try {
             
-    success: string = StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.dropTable()!;;
+    std::string success = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().dropTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, this.commonStrings!.DROP);
+                                    this->logUtil.putF(success, this, this->commonStrings.DROP);
     
 
                                     }
@@ -121,13 +118,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to drop storefronts table";;
+    std::string error = "Failed to drop storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.DROP, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, e);
     
 
                                     }
@@ -143,17 +140,17 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public string create(){
+    public: std::string create(){
 
         try {
             
-    success: string = StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.createTable()!;;
+    std::string success = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "create()");
+                                    this->logUtil.putF(success, this, "create()");
     
 
                                     }
@@ -169,13 +166,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to create new storefronts table";;
+    std::string error = "Failed to create new storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "create()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "create()", e);
     
 
                                     }
@@ -191,20 +188,20 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public string restore(){
+    public: std::string restore(){
 
         try {
             
-    success: string = "Restore Successful";;
+    std::string success = "Restore Successful";;
     
 
-    result: string = AbSqlTableUtil.getInstance()!.restoreTable(StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance(), this.portion)!;;
+    std::string result = AbSqlTableUtil::getInstance().restoreTable(StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance(), this->portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "restore()");
+                                    this->logUtil.putF(success, this, "restore()");
     
 
                                     }
@@ -220,13 +217,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to restore backup";;
+    std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "restore()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "restore()", e);
     
 
                                     }
@@ -242,20 +239,20 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public string backup(){
+    public: std::string backup(){
 
         try {
             
-    success: string = "Restore Successful";;
+    std::string success = "Restore Successful";;
     
 
-    result: string = AbSqlTableUtil.getInstance()!.backupTable(StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance())!;;
+    std::string result = AbSqlTableUtil::getInstance().backupTable(StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "backup()");
+                                    this->logUtil.putF(success, this, "backup()");
     
 
                                     }
@@ -271,13 +268,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to make backup";;
+    std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "backup()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "backup()", e);
     
 
                                     }
@@ -293,46 +290,46 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    private: const commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;
+    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
-    public string generateSelect(){
+    public: std::string generateSelect(){
 
         try {
             
-    success: string = CommonSeps.getInstance()!.SPACE;;
+    std::string success = CommonSeps::getInstance().SPACE;;
     
 
-    storeNamesVector: Vector = StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.getStoreFrontNames()!;;
+    Vector storeNamesVector = StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().getStoreFrontNames();;
     
 
-    storeSelect: HtmlSelect = new HtmlSelect(StringUtil.getInstance()!.EMPTY_STRING, this.commonPhoneStrings!.ONE, StoreFrontData.getInstance()!.SELECTSTORENAME, StringUtil.getInstance()!.EMPTY_STRING);;
+    HtmlSelect storeSelect = HtmlSelect(StringUtil::getInstance().EMPTY_STRING, this->commonPhoneStrings.ONE, StoreFrontData::getInstance().SELECTSTORENAME, StringUtil::getInstance().EMPTY_STRING);;
     
-storeSelect!.addAttribute(StoreFrontsHelper.CLASS, StoreFrontsHelper.TEXT);
+storeSelect.addAttribute(StoreFrontsHelper::CLASS, StoreFrontsHelper::TEXT);
     
 
-    size: int32_t = storeNamesVector!.length!;;
+    int32_t size = storeNamesVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    storeName: string = storeNamesVector!.get(index) as string;;
+    std::string storeName = storeNamesVector.get(index) as string;;
     
-storeSelect!.addOption(storeName);
+storeSelect.addOption(storeName);
     
 }
 
 success += storeSelect;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "generateSelect()");
+                                    this->logUtil.putF(success, this, "generateSelect()");
     
 
                                     }
@@ -348,13 +345,13 @@ success += storeSelect;
 } catch(e) 
             {
 
-    error: string = "Failed to generate storefronts select";;
+    std::string error = "Failed to generate storefronts select";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "generateSelect()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "generateSelect()", e);
     
 
                                     }

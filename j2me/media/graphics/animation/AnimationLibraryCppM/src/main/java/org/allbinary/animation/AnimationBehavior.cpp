@@ -48,21 +48,20 @@
 class AnimationBehavior
             : public Object
          {
-        
 
-    private: static const instance: AnimationBehavior = new AnimationBehavior();
+    private: static AnimationBehavior instance() { return AnimationBehavior(); }
 
-    public static AnimationBehavior getInstance(){
+    public: static AnimationBehavior getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationBehavior.instance;
+                        return AnimationBehavior::instance();
     
 }
 
 
-    public reset(){
+    public: void reset(){
 }
 
 

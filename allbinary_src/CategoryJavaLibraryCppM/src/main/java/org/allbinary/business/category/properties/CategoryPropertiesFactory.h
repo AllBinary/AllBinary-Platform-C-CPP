@@ -62,19 +62,18 @@
 class CategoryPropertiesFactory
             : public Object
         : public CategoryPropertiesFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: categoryPropertiesInterface: CategoryPropertiesInterface;
+    private: CategoryPropertiesInterface categoryPropertiesInterface;
 
-public constructor (string name);
+public: CategoryPropertiesFactory(std::string name);
 
-public constructor (Node node);
+public: CategoryPropertiesFactory(Node node);
 
-public constructor (HashMap<any, any> categoryPropertiesHashMap);
+public: CategoryPropertiesFactory(HashMap<any, any> categoryPropertiesHashMap);
 
-    public CategoryPropertiesInterface getInstance();
+    public: CategoryPropertiesInterface getInstance();
 
 };
 

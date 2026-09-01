@@ -62,11 +62,10 @@
         #include "TransformHttpRequestDocument.h"
 
 class TransformStoreDocument: public TransformHttpRequestDocument {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (PageContext pageContext, WeblisketSession weblisketSession){
+public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisketSession){
             super(pageContext, weblisketSession);
                     
 
@@ -75,30 +74,30 @@ public constructor (PageContext pageContext, WeblisketSession weblisketSession){
 
         try {
             
-    storeName: string = weblisketSession!.getStoreName()!;;
+    std::string storeName = weblisketSession.getStoreName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Using Session StoreName: " +storeName, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("Using Session StoreName: " +storeName, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.getBaseNode()!.appendChild(StoreFrontViewFactory.getInstance(storeName)!.toXmlNode(this.getDoc()));
+this->getBaseNode().appendChild(StoreFrontViewFactory::getInstance(storeName).toXmlNode(this->getDoc()));
     
-this.getBaseNode()!.appendChild(new RequestParams(pageContext!.getRequest() as HttpServletRequest).toXmlNode(this.getDoc()));
+this->getBaseNode().appendChild(RequestParams(pageContext.getRequest() as HttpServletRequest).toXmlNode(this->getDoc()));
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 
                                     }
@@ -113,7 +112,7 @@ this.getBaseNode()!.appendChild(new RequestParams(pageContext!.getRequest() as H
 }
 
 
-public constructor (SearchRequest searchRequest){
+public: TransformStoreDocument(SearchRequest searchRequest){
             super(searchRequest);
                     
 
@@ -121,19 +120,19 @@ public constructor (SearchRequest searchRequest){
                     
 
         try {
-            this.getBaseNode()!.appendChild(StoreFrontViewFactory.getInstance(searchRequest!.getStoreFront()!.getName())!.toXmlNode(this.getDoc()));
+            this->getBaseNode().appendChild(StoreFrontViewFactory::getInstance(searchRequest.getStoreFront().getName()).toXmlNode(this->getDoc()));
     
-this.getBaseNode()!.appendChild(searchRequest!.getParams()!.getParamsNode(this.getDoc()));
+this->getBaseNode().appendChild(searchRequest.getParams().getParamsNode(this->getDoc()));
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 
                                     }

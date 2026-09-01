@@ -44,13 +44,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GenericTrackingLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-    private: static SINGLETON: GenericTrackingLayerCircularStaticPool = new GenericTrackingLayerCircularStaticPool();
+    private: static GenericTrackingLayerCircularStaticPool SINGLETON = GenericTrackingLayerCircularStaticPool();
 
-    public static GenericTrackingLayerCircularStaticPool getInstance();
+    public: static GenericTrackingLayerCircularStaticPool getInstance();
 
-private constructor ();
+private: GenericTrackingLayerCircularStaticPool();
 
 };
 

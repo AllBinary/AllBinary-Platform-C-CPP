@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_COMBOSEQUENCEAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_COMBOSEQUENCEAI_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -56,13 +58,12 @@
         #include "SequenceAI.h"
 
 class ComboSequenceAI: public SequenceAI {
-        
 
-public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

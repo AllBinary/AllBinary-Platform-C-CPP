@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEFLOATUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -45,11 +47,10 @@
 class PrimitiveFloatUtil
             : public Object
          {
-        
 
-    public static std::vector<float> getArrayInstance();
+    public: static std::vector<float> getArrayInstance();
 
-private constructor ();
+private: PrimitiveFloatUtil();
 
 };
 

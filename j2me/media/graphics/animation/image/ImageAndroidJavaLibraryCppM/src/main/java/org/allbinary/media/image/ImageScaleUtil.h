@@ -85,45 +85,44 @@
 class ImageScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageScaleUtil = new ImageScaleUtil();
+    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
 
-    public static ImageScaleUtil getInstance();
+    public: static ImageScaleUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ImageScaleUtil();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: const imageBasicArrayList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList imageBasicArrayList = BasicArrayListD();
 
-    private: const scaledImageBasicArrayList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList scaledImageBasicArrayList = BasicArrayListD();
 
-    private: const scaleXBasicArrayList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList scaleXBasicArrayList = BasicArrayListD();
 
-    private: const scaleYBasicArrayList: BasicArrayList = new BasicArrayListD();
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
+    private: const BasicArrayList scaleYBasicArrayList = BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
+    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached);
+    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
 
                 //@Throws(Exception.constructor)
             
-    Image getScaledImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached);
+    public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached);
 
-    scale(Image image, Matrix matrix, float scaleX, float scaleY);
+                //@Throws(Exception.constructor)
+            
+    private: Image getScaledImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached);
+
+    private: void scale(Image image, Matrix matrix, float scaleX, float scaleY);
 
 };
 

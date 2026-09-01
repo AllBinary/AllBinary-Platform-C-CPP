@@ -45,9 +45,8 @@
         #include "TableTag.h"
 
 class WorkFlowTag: public TableTag {
-        
 
-public constructor ();
+public: WorkFlowTag();
 
 };
 

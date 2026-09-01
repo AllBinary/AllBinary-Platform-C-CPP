@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_H
         #define ORG_ALLBINARY_GAME_LAYER_ITEM_RTSLAYERCOSTANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -90,42 +92,41 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSLayerCostAnimation: public Animation: public TechEventListenerInterface, public UpdateMyFontInterface {
-        
+class RTSLayerCostAnimation: public Animation, public TechEventListenerInterface, public UpdateMyFontInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const primitiveLongUtil: PrimitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(10000)!;
+    private: const PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
 
-    private: const DOLLAR: string = "$";
+    private: const std::string DOLLAR = "$";
 
-    private: const image: Image;
+    private: Image image;
 
-    private: const layerInterfaceFactoryInterface: CostLayerInterfaceFactoryInterface;
+    private: CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface;
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: costString: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> costString = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: len: int32_t= 0;
+    private: int32_t len= 0;
 
-    private: adjustedCostX: int32_t= 0;
+    private: int32_t adjustedCostX= 0;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (Image image, CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+public: RTSLayerCostAnimation(Image image, CostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public onEvent(AllBinaryEventObject event);
+    public: void onEvent(AllBinaryEventObject event);
 
-    public onTechEvent(AllBinaryEventObject event);
+    public: void onTechEvent(AllBinaryEventObject event);
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void update();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

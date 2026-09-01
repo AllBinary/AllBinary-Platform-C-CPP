@@ -54,17 +54,16 @@
 /*actual*/ class PreLogUtil
             : public Object
          {
-        
 
-    /*actual*/ public static put(string specialMessage, any = {} anyType, string functionName);
+    /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName);
 
-    private: static const LOG_SUCCESS: string = "org.allbinary: ";
+    private: static const std::string LOG_SUCCESS = "org.allbinary: ";
 
-    /*actual*/ public static putOE(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
-    /*actual*/ public static putSE(string specialMessage, string className, string functionName, any = {} exception);
+    /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
 
-public constructor ();
+public: PreLogUtil();
 
 };
 

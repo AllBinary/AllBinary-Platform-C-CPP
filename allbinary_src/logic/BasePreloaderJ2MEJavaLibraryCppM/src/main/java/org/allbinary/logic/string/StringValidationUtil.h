@@ -58,33 +58,32 @@
 class StringValidationUtil
             : public Object
          {
-        
 
-    private: static const instance: StringValidationUtil = new StringValidationUtil();
+    private: static StringValidationUtil instance() { return StringValidationUtil(); }
 
-    public static StringValidationUtil getInstance();
+    public: static StringValidationUtil getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor ();
+private: StringValidationUtil();
 
-    public bool containsSpaces(string value);
+    public: bool containsSpaces(std::string value);
 
-    public bool isNumber(string value);
+    public: bool isNumber(std::string value);
 
-    public bool isNumberFromChar(char digit);
+    public: bool isNumberFromChar(char digit);
 
-    public bool isValidRequired(string value, int32_t min, int32_t max);
+    public: bool isValidRequired(std::string value, int32_t min, int32_t max);
 
-    public bool isValidRequiredNumber(string value, int32_t min, int32_t max);
+    public: bool isValidRequiredNumber(std::string value, int32_t min, int32_t max);
 
-    public bool isValidNotRequired(string value, int32_t min, int32_t max);
+    public: bool isValidNotRequired(std::string value, int32_t min, int32_t max);
 
-    public bool isValidNotRequiredNumber(string value, int32_t min, int32_t max);
+    public: bool isValidNotRequiredNumber(std::string value, int32_t min, int32_t max);
 
-    public bool isEmpty(string string);
+    public: bool isEmpty(std::string string);
 
 };
 

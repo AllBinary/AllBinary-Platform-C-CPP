@@ -42,23 +42,22 @@
         #include "LicenseType.h"
 
 class AbeLicenseInterface {
-        
 
     bool hasKey()
 
-    string getKey(string keyName)
+    std::string getKey(std::string keyName)
 
-    string getLicenseId()
+    std::string getLicenseId()
 
     BasicArrayList getServers()
 
-    string getSpecial()
+    std::string getSpecial()
 
     LicenseType getLicenseType()
 
     bool isValid()
 
-    string toString()
+    std::string toString()
 
 };
 

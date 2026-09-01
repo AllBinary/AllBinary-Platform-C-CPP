@@ -45,11 +45,10 @@
 class DynamicObjectData
             : public Object
          {
-        
 
-    public static const NAME: string = "DYNAMICCOMPONENT_NAME";
+    public: static const std::string NAME = "DYNAMICCOMPONENT_NAME";
 
-private constructor ();
+private: DynamicObjectData();
 
 };
 

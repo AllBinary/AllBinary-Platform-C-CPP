@@ -62,18 +62,17 @@
         #include "ProfileActionScriptProcessorInterface.h"
 #include "GenericProfileActionScriptProcessorData.h"
 
-class BasicProfileActionScriptProcessor: public ProfileActionScriptItem: public ProfileActionScriptProcessorInterface {
-        
+class BasicProfileActionScriptProcessor: public ProfileActionScriptItem, public ProfileActionScriptProcessorInterface {
 
-public constructor (string label, Node node);
+public: BasicProfileActionScriptProcessor(std::string label, Node node);
 
-public constructor (string label);
+public: BasicProfileActionScriptProcessor(std::string label);
 
-    public actionPerformed(ActionEvent actionEvent);
+    public: void actionPerformed(ActionEvent actionEvent);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

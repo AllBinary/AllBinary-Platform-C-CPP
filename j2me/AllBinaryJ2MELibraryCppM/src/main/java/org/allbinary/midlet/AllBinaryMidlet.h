@@ -108,64 +108,63 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         // MIDlet methods not overridden are final
-class AllBinaryMidlet: public MIDlet: public CommandListener {
-        
+class AllBinaryMidlet: public MIDlet, public CommandListener {
 
-    private: static NULL_ALLBINARY_MIDLET: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AllBinaryMidlet getNullInstance();
+    public: static AllBinaryMidlet getNullInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const SET_DISPLAY: string = "setDisplay";
+    private: const std::string SET_DISPLAY = "setDisplay";
 
-    private: const SETTING_: string = "Setting: ";
+    private: const std::string SETTING_ = "Setting: ";
 
-    private: const _DISPLAY_: string = " Display: ";
+    private: const std::string _DISPLAY_ = " Display: ";
 
-    private: const SETTING_NO_TITLE: string = "Setting: No Title, Display: ";
+    private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
 
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    private: midletDestroyed: bool= false;
+    private: bool midletDestroyed= false;
 
-public constructor ();
+public: AllBinaryMidlet();
 
-    setDisplay(Displayable newDisplay);
+    protected: void setDisplay(Displayable newDisplay);
 
-    public Display getDisplay();
+    public: Display getDisplay();
 
-    Displayable getCurrentDisplayable();
+    protected: Displayable getCurrentDisplayable();
 
-    public setDestroyed(bool destroyed);
+    public: void setDestroyed(bool destroyed);
 
-    public bool isDestroyed();
+    public: bool isDestroyed();
 
                 //@Throws(MIDletStateChangeException.constructor)
             
-    startApp();
+    protected: void startApp();
 
-    pauseApp();
+    protected: void pauseApp();
 
-    destroyAppInRunnable(bool unconditional, bool isProgress);
+    protected: void destroyAppInRunnable(bool unconditional, bool isProgress);
 
-    destroyApp(bool unconditional);
-
-                //@Throws(Exception.constructor)
-            
-    public setStartStateHashtable(Hashtable<any, any> hashtable);
+    protected: void destroyApp(bool unconditional);
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getStartStateHashtable();
+    public: void setStartStateHashtable(Hashtable<any, any> hashtable);
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getCurrentStateHashtable();
+    public: Hashtable<any, any> getStartStateHashtable();
 
-    public commandAction(Command command, Displayable displayable);
+                //@Throws(Exception.constructor)
+            
+    public: Hashtable<any, any> getCurrentStateHashtable();
+
+    public: void commandAction(Command command, Displayable displayable);
 
 };
 

@@ -57,21 +57,20 @@
 class RandomRotationFactory
             : public Object
          {
-        
 
-    private: static const instance: RandomRotationFactory = new RandomRotationFactory();
+    private: static RandomRotationFactory instance() { return RandomRotationFactory(); }
 
-    public static RandomRotationFactory getInstance();
+    public: static RandomRotationFactory getInstance();
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    private: const angleFactory: AngleFactory = AngleFactory.getInstance()!;
+    private: const AngleFactory angleFactory = AngleFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getInstanceList(BasicArrayList vector, int32_t howMuch);
+    public: BasicArrayList getInstanceList(BasicArrayList vector, int32_t howMuch);
 
-    public int32_t getNextRandomAngle(int32_t howMuch);
+    public: int32_t getNextRandomAngle(int32_t howMuch);
 
 };
 

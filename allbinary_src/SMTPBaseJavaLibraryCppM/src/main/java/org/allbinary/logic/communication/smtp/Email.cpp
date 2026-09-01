@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -109,112 +111,107 @@
 class Email
             : public Object
         : public EmailInterface {
-        
 
-    private: static const DEBUG: string = "mail.debug";
+    private: static const std::string DEBUG = "mail.debug";
 
-    private: static const SMTP_HOST: string = "mail.smtp.host";
+    private: static const std::string SMTP_HOST = "mail.smtp.host";
 
-    private: static const SMTP_PORT: string = "mail.smtp.port";
+    private: static const std::string SMTP_PORT = "mail.smtp.port";
 
-    private: static const SMTP_USER: string = "mail.smtp.user";
+    private: static const std::string SMTP_USER = "mail.smtp.user";
 
-    private: static const SMTP_RETURN_ADDRESS: string = "mail.from";
+    private: static const std::string SMTP_RETURN_ADDRESS = "mail.from";
 
-    private: static const SMTP_LOCAL_HOST: string = "mail.smtp.localhost";
+    private: static const std::string SMTP_LOCAL_HOST = "mail.smtp.localhost";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: msg: MimeMessage;
+    private: MimeMessage msg;
 
-    private: properties: Properties;
+    private: Properties properties;
 
-    private: bs: ByteArrayOutputStream;
+    private: ByteArrayOutputStream bs;
 
-    private: isDebug: bool;
+    private: bool isDebug;
 
-public constructor (string from, string to, string subject, string server, string textBody, string htmlAttachment, string contentBase){
-
-            super();
-        this.isDebug= false;
+public: Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase){
+this->isDebug= false;
     
-this.init(from, to, subject, server, textBody, htmlAttachment, contentBase);
+this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
     
 }
 
 
-public constructor (string from, string to, string subject, string server, string textBody, string htmlAttachment, string contentBase, bool isDebug){
-
-            super();
-        this.isDebug= isDebug;
+public: Email(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase, bool isDebug){
+this->isDebug= isDebug;
     
-this.init(from, to, subject, server, textBody, htmlAttachment, contentBase);
+this->init(from, to, subject, server, textBody, htmlAttachment, contentBase);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(string from, string to, string subject, string server, string textBody, string htmlAttachment, string contentBase){
+    public: void init(std::string from, std::string to, std::string subject, std::string server, std::string textBody, std::string htmlAttachment, std::string contentBase){
 
         try {
             
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    mimeBodyParts: std::vector<MimeBodyPart> = new Array(
+    std::vector<MimeBodyPart> mimeBodyParts = new Array(
                             //Otherwise - levels - level - dimension - ConditionalExpr
 );;
     
-mimeBodyParts[0]= new MimeBodyPart();
+mimeBodyParts[0]= MimeBodyPart();
     
 mimeBodyParts[0]!.setText(textBody);
     
 
-                        if(!stringValidationUtil!.isEmpty(htmlAttachment))
+                        if(!stringValidationUtil.isEmpty(htmlAttachment))
                         
                                     {
                                     
-    internetHeaders: InternetHeaders = new InternetHeaders();;
+    InternetHeaders internetHeaders = InternetHeaders();;
     
-internetHeaders!.addHeader("Content-Type", "text/html");
+internetHeaders.addHeader("Content-Type", "text/html");
     
 
-                        if(!stringValidationUtil!.isEmpty(contentBase))
+                        if(!stringValidationUtil.isEmpty(contentBase))
                         
                                     {
-                                    internetHeaders!.addHeader("Content-Base", contentBase);
+                                    internetHeaders.addHeader("Content-Base", contentBase);
     
 
                                     }
                                 
-mimeBodyParts[1]= new MimeBodyPart(internetHeaders, htmlAttachment!.getBytes());
+mimeBodyParts[1]= MimeBodyPart(internetHeaders, htmlAttachment.getBytes());
     
 
                                     }
                                 
-this.init(server, nullptr as Authenticator, 
-                                                [
-                                                    new InternetAddress(from)
-                                                ], 
-                                                [
-                                                    new InternetAddress(to)
-                                                ], nullptr as InternetAddress[], nullptr as InternetAddress[], subject, mimeBodyParts);
+this->init(server, nullptr as Authenticator, 
+                                                {
+                                                    InternetAddress(from)
+                                                }, 
+                                                {
+                                                    InternetAddress(to)
+                                                }, nullptr as InternetAddress[], nullptr as InternetAddress[], subject, mimeBodyParts);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "emailConstructor", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "emailConstructor", e);
     
 
                                     }
@@ -231,30 +228,30 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "emailConstructor", e);
 
                 //@Throws(MessagingException.constructor)
             
-    public init(string server, Authenticator authenticator, std::vector<InternetAddress> addresses_from, std::vector<InternetAddress> addresses_to, std::vector<InternetAddress> addresses_cc, std::vector<InternetAddress> addresses_bcc, string subject, std::vector<MimeBodyPart> mimeBodyParts){
-this.properties= new Properties();
+    public: void init(std::string server, Authenticator authenticator, std::vector<InternetAddress> addresses_from, std::vector<InternetAddress> addresses_to, std::vector<InternetAddress> addresses_cc, std::vector<InternetAddress> addresses_bcc, std::string subject, std::vector<MimeBodyPart> mimeBodyParts){
+this->properties= Properties();
     
-this.properties.put(Email.SMTP_HOST, server);
+this->properties.put(Email::SMTP_HOST, server);
     
 
         try {
             
-    hostName: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string hostName = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(hostName))
+                        if(StringValidationUtil::getInstance().isEmpty(hostName))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.putF("Unable to get HostName so using fake", this, "init()");
+                                    this->logUtil.putF("Unable to get HostName so using fake", this, "init()");
     
 
                                     }
                                 
-this.properties.put(Email.SMTP_LOCAL_HOST, "FakeHostName");
+this->properties.put(Email::SMTP_LOCAL_HOST, "FakeHostName");
     
 
                                     }
@@ -264,90 +261,90 @@ this.properties.put(Email.SMTP_LOCAL_HOST, "FakeHostName");
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put("Continuing on Exception: Unable to get HostName", this, "init()", e);
+                                    this->logUtil.put("Continuing on Exception: Unable to get HostName", this, "init()", e);
     
 
                                     }
                                 
-this.properties.put(Email.SMTP_LOCAL_HOST, "FakeHostName");
+this->properties.put(Email::SMTP_LOCAL_HOST, "FakeHostName");
     
 }
 
 
-                        if(this.isDebug)
+                        if(this->isDebug)
                         
                                     {
-                                    this.properties.put(Email.DEBUG, "true");
+                                    this->properties.put(Email::DEBUG, "true");
     
 
                                     }
                                 
 
-    session: Session = Session.getInstance(this.properties, authenticator)!;;
+    Session session = Session::getInstance(this->properties, authenticator);;
     
 
-                        if(this.isDebug)
+                        if(this->isDebug)
                         
                                     {
                                     session.setDebug(true);
     
-this.bs= new ByteArrayOutputStream();
+this->bs= ByteArrayOutputStream();
     
 
-    printStream: PrintStream = new PrintStream(this.bs);;
+    PrintStream printStream = PrintStream(this->bs);;
     
 session.setDebugOut(printStream);
     
 
                                     }
                                 
-this.msg= new MimeMessage(session);
+this->msg= MimeMessage(session);
     
-this.msg.addFrom(addresses_from);
+this->msg.addFrom(addresses_from);
     
-this.msg.setRecipients(Message.RecipientType.TO, addresses_to);
+this->msg.setRecipients(Message::RecipientType.TO, addresses_to);
     
-this.msg.setRecipients(Message.RecipientType.CC, addresses_cc);
+this->msg.setRecipients(Message::RecipientType.CC, addresses_cc);
     
-this.msg.setRecipients(Message.RecipientType.BCC, addresses_bcc);
+this->msg.setRecipients(Message::RecipientType.BCC, addresses_bcc);
     
-this.msg.setSubject(subject);
+this->msg.setSubject(subject);
     
 
-    mimeMultipart: MimeMultipart = new MimeMultipart();;
+    MimeMultipart mimeMultipart = MimeMultipart();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < mimeBodyParts!.length; i++)
+    int32_t i = 0;i < mimeBodyParts.size(); i++)
         {
-mimeMultipart!.addBodyPart(mimeBodyParts[i]!);
+mimeMultipart.addBodyPart(mimeBodyParts[i]!);
     
 }
 
-this.msg.setContent(mimeMultipart);
+this->msg.setContent(mimeMultipart);
     
 }
 
 
-    public MimeMessage getMimeMessage(){
+    public: MimeMessage getMimeMessage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.msg;
+                        return this->msg;
     
 }
 
 
-    public string getDebugInfo(){
+    public: std::string getDebugInfo(){
 
-                        if(this.isDebug)
+                        if(this->isDebug)
                         
                                     {
                                     
@@ -376,32 +373,32 @@ this.msg.setContent(mimeMultipart);
 
                 //@Throws(Exception.constructor)
             
-    public string log(){
+    public: std::string log(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "\nHashMap: " +this.toHashMap()!.toString();
+                        return "\nHashMap: " +this->toHashMap().toString();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
         try {
             
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(EmailData.SERVER, this.properties.get(Email.SMTP_HOST) as string);
+hashMap.put(EmailData::SERVER, this->properties.get(Email::SMTP_HOST) as string);
     
 
-    addresses: std::vector<Address> = this.msg.getFrom()!;;
+    std::vector<Address> addresses = this->msg.getFrom();;
     
 
                         if(addresses != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -410,20 +407,20 @@ hashMap!.put(EmailData.SERVER, this.properties.get(Email.SMTP_HOST) as string);
 
 
                         for (
-    index: int32_t = 0;index < addresses.length; index++)
+    int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap!.put(EmailData.FROM, addresses[index]!.toString());
+hashMap.put(EmailData::FROM, addresses[index]!.toString());
     
 }
 
 
                                     }
                                 
-addresses= this.msg.getRecipients(Message.RecipientType.TO);
+addresses= this->msg.getRecipients(Message::RecipientType.TO);
     
 
                         if(addresses != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -432,20 +429,20 @@ addresses= this.msg.getRecipients(Message.RecipientType.TO);
 
 
                         for (
-    index: int32_t = 0;index < addresses.length; index++)
+    int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap!.put(EmailData.TO, addresses[index]!.toString());
+hashMap.put(EmailData::TO, addresses[index]!.toString());
     
 }
 
 
                                     }
                                 
-addresses= this.msg.getRecipients(Message.RecipientType.CC);
+addresses= this->msg.getRecipients(Message::RecipientType.CC);
     
 
                         if(addresses != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -454,20 +451,20 @@ addresses= this.msg.getRecipients(Message.RecipientType.CC);
 
 
                         for (
-    index: int32_t = 0;index < addresses.length; index++)
+    int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap!.put(EmailData.CC, addresses[index]!.toString());
+hashMap.put(EmailData::CC, addresses[index]!.toString());
     
 }
 
 
                                     }
                                 
-addresses= this.msg.getRecipients(Message.RecipientType.BCC);
+addresses= this->msg.getRecipients(Message::RecipientType.BCC);
     
 
                         if(addresses != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -476,23 +473,23 @@ addresses= this.msg.getRecipients(Message.RecipientType.BCC);
 
 
                         for (
-    index: int32_t = 0;index < addresses.length; index++)
+    int32_t index = 0;index < addresses.size(); index++)
         {
-hashMap!.put(EmailData.BCC, addresses[index]!.toString());
+hashMap.put(EmailData::BCC, addresses[index]!.toString());
     
 }
 
 
                                     }
                                 
-hashMap!.put(EmailData.SUBJECT, this.msg.getSubject());
+hashMap.put(EmailData::SUBJECT, this->msg.getSubject());
     
 
-    mimeMultipart: MimeMultipart = msg.getContent() as MimeMultipart;;
+    MimeMultipart mimeMultipart = msg.getContent() as MimeMultipart;;
     
 
                         if(mimeMultipart != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -501,12 +498,12 @@ hashMap!.put(EmailData.SUBJECT, this.msg.getSubject());
 
 
                         for (
-    index: int32_t = 0;index < mimeMultipart!.getCount(); index++)
+    int32_t index = 0;index < mimeMultipart.getCount(); index++)
         {
 
-    content: string = mimeMultipart!.getBodyPart(index)!.getContent() as string;;
+    std::string content = mimeMultipart.getBodyPart(index).getContent() as string;;
     
-hashMap!.put(EmailData.CONTENT, content);
+hashMap.put(EmailData::CONTENT, content);
     
 }
 
@@ -524,10 +521,10 @@ hashMap!.put(EmailData.CONTENT, content);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toHashMap()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toHashMap()", e);
     
 
                                     }
@@ -544,9 +541,9 @@ hashMap!.put(EmailData.CONTENT, content);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createNameValueNodes(document, EmailData.NAME, this.toHashMap())!;;
+    Node node = ModDomHelper::createNameValueNodes(document, EmailData::NAME, this->toHashMap());;
     
 
 
@@ -559,11 +556,11 @@ hashMap!.put(EmailData.CONTENT, content);
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
-                            throw new Exception(CommonStrings.getInstance()!.NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
                     
 }
 

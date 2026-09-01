@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 
@@ -44,38 +46,37 @@
 class AngleIncrementInfoFactory
             : public Object
          {
-        
 
-    private: static const instance: AngleIncrementInfoFactory = new AngleIncrementInfoFactory();
+    private: static AngleIncrementInfoFactory instance() { return AngleIncrementInfoFactory(); }
 
-    public static AngleIncrementInfoFactory getInstance(){
+    public: static AngleIncrementInfoFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AngleIncrementInfoFactory.instance;
+                        return AngleIncrementInfoFactory::instance();
     
 }
 
 
-    private: const angleIncrementInfo: std::vector<AngleIncrementInfo> = new Array(static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE));
+    private: const std::vector<AngleIncrementInfo> angleIncrementInfo = new Array(static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE));
 
-    public AngleIncrementInfo getAt(int16_t angleIncrement){
+    public: AngleIncrementInfo getAt(int16_t angleIncrement){
 
-    halfAngleIncrement: int32_t = (static_cast<int32_t>(angleIncrement)>>1);;
+    int32_t halfAngleIncrement = (static_cast<int32_t>(angleIncrement)>>1);;
     
 
-    angleIncrementInfoCanBeNull: AngleIncrementInfo = this.angleIncrementInfo[halfAngleIncrement];;
+    AngleIncrementInfo angleIncrementInfoCanBeNull = this->angleIncrementInfo[halfAngleIncrement];;
     
 
                         if(angleIncrementInfoCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    angleIncrementInfoCanBeNull= new AngleIncrementInfo(angleIncrement);
+                                    angleIncrementInfoCanBeNull= AngleIncrementInfo(angleIncrement);
     
-this.angleIncrementInfo[halfAngleIncrement]= angleIncrementInfoCanBeNull;
+this->angleIncrementInfo[halfAngleIncrement]= angleIncrementInfoCanBeNull;
     
 
                                     }

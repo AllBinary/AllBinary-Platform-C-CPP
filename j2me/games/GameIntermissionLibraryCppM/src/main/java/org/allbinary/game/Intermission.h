@@ -60,23 +60,22 @@
 class Intermission
             : public Object
         : public IntermissionInterface {
-        
 
-    private: enabled: bool= false;
+    private: bool enabled= false;
 
-    private: const timeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeElapsedHelper = TimeDelayHelper(0);
 
-    private: intermissionEnableListener: IntermissionEnableListenerInterface = NullIntermissionEnableListener.getInstance()!;
+    private: IntermissionEnableListenerInterface intermissionEnableListener = NullIntermissionEnableListener::getInstance();
 
-public constructor ();
+public: Intermission();
 
-    public setListener(IntermissionEnableListenerInterface enableListener);
+    public: void setListener(IntermissionEnableListenerInterface enableListener);
 
-    public TimeDelayHelper getTimeDelayHelper();
+    public: TimeDelayHelper getTimeDelayHelper();
 
-    public setEnabled(bool enabled);
+    public: void setEnabled(bool enabled);
 
-    public bool isEnabled();
+    public: bool isEnabled();
 
 };
 

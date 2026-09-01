@@ -59,17 +59,16 @@
         #include "BasicEmailInfo.h"
 
 class StoreEmailInfo: public BasicEmailInfo {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-public constructor (StoreFrontInterface storeFrontInterface, string subject, string textBody);
+public: StoreEmailInfo(StoreFrontInterface storeFrontInterface, std::string subject, std::string textBody);
 
                 //@Throws(Exception.constructor)
             
-    init();
+    protected: void init();
 
 };
 

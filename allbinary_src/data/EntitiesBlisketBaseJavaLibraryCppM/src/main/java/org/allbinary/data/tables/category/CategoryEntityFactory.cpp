@@ -51,49 +51,46 @@
 class CategoryEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: CategoryEntityFactory = new CategoryEntityFactory();
+    private: static CategoryEntityFactory instance() { return CategoryEntityFactory(); }
 
-    public static CategoryEntityFactory getInstance(){
+    public: static CategoryEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CategoryEntityFactory.instance;
+                        return CategoryEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: CategoryEntityFactory(){
+}
 
 
-    public CategoryEntity getCategoryEntityInstance(){
+    public: CategoryEntity getCategoryEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.category.CategoryEntity();
+                        return org::allbinary::data::tables::category::CategoryEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "getCategoryEntityInstance()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getCategoryEntityInstance()", e);
     
 
                                     }

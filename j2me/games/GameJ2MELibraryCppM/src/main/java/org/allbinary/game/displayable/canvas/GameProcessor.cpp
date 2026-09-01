@@ -53,22 +53,19 @@
         #include "AllBinaryGameCanvas.h"
 
 class GameProcessor: public Processor {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: GameProcessor(AllBinaryGameCanvas gameCanvas){
+this->gameCanvas= gameCanvas;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.gameCanvas!.processPlayingGame();
+    public: void process(){
+this->gameCanvas.processPlayingGame();
     
 }
 

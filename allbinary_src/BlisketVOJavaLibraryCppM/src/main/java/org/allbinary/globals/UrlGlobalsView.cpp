@@ -60,24 +60,21 @@
 class UrlGlobalsView
             : public Object
         : public DomNodeInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: UrlGlobalsView(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(UrlGlobalsData.WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWebappPath());
+hashMap.put(UrlGlobalsData::WEBAPPPATH, org.allbinary.globals.URLGLOBALS.getWebappPath());
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, UrlGlobalsData.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, UrlGlobalsData::NAME, hashMap);;
     
 
 

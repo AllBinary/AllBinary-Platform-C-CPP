@@ -81,23 +81,22 @@
 class InputAutomationConfigurationFactory
             : public Object
          {
-        
 
-    private: static const instance: InputAutomationConfigurationFactory = new InputAutomationConfigurationFactory();
+    private: static InputAutomationConfigurationFactory instance() { return InputAutomationConfigurationFactory(); }
 
-    public static InputAutomationConfigurationFactory getInstance();
+    public: static InputAutomationConfigurationFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public inputAutomationConfiguration: InputAutomationConfiguration = 
-                null
+    public: InputAutomationConfiguration inputAutomationConfiguration = 
+                nullptr
             ;
 
-private constructor ();
+private: InputAutomationConfigurationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation);
+    public: void init(AbeClientInformationInterface abeClientInformation);
 
 };
 

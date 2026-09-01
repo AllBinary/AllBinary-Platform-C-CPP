@@ -43,13 +43,12 @@
 #include "GamePersistanceStrings.h"
 
 class GamePersistanceSingleton: public KeyValuePersistance {
-        
 
-    private: static GAME_PERSISTANCE: GamePersistanceSingleton = new GamePersistanceSingleton();
+    private: static GamePersistanceSingleton GAME_PERSISTANCE = GamePersistanceSingleton();
 
-    public static GamePersistanceSingleton getInstance();
+    public: static GamePersistanceSingleton getInstance();
 
-private constructor ();
+private: GamePersistanceSingleton();
 
 };
 

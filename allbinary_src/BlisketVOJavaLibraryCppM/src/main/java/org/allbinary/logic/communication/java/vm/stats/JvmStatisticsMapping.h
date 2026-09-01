@@ -53,20 +53,19 @@
         #include "JvmStatistics.h"
 #include "JvmStatisticsData.h"
 
-class JvmStatisticsMapping: public JvmStatistics: public TableMappingInterface {
-        
+class JvmStatisticsMapping: public JvmStatistics, public TableMappingInterface {
 
-public constructor ();
+public: JvmStatisticsMapping();
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public any getKey();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Object* getKey();
+
+                //@Throws(Exception.constructor)
+            
+    public: Vector toVector();
 
 };
 

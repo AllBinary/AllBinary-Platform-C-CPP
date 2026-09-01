@@ -81,31 +81,30 @@
 class TransformHttpRequestDocument
             : public Object
         : public TransformDocumentInterface {
-        
 
-    private: static const language: string = "en";
+    private: static const std::string language = "en";
 
-    private: static const local: string = "US";
+    private: static const std::string local = "US";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: baseNode: Node;
+    private: Node baseNode;
 
-    private: document: Document;
+    private: Document document;
 
-public constructor (PageContext pageContext, WeblisketSession weblisketSession);
+public: TransformHttpRequestDocument(PageContext pageContext, WeblisketSession weblisketSession);
 
-public constructor (SearchRequest searchRequest);
+public: TransformHttpRequestDocument(SearchRequest searchRequest);
 
-    public Node getBaseNode();
+    public: Node getBaseNode();
 
-    public Document getDoc();
+    public: Document getDoc();
 
                 //@Throws(Exception.constructor)
             
-    public string log();
+    public: std::string log();
 
 };
 

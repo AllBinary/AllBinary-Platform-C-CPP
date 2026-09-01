@@ -49,9 +49,8 @@
 #include "PathUtil.h"
 
 class AbFilePath: public AbPath {
-        
 
-public constructor (string aPath);
+public: AbFilePath(std::string aPath);
 
 };
 

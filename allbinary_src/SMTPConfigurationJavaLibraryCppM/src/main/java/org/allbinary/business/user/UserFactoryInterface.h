@@ -50,7 +50,6 @@
         #include "UserInterface.h"
 
 class UserFactoryInterface: public Serializable {
-        
 
                 //@Throws(Exception.constructor)
             

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_LINEANIMATION_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -58,24 +60,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LineAnimation: public Animation: public ColorCompositeInterface, public PositionInterface {
-        
+class LineAnimation: public Animation, public ColorCompositeInterface, public PositionInterface {
 
-    private: newLine: std::vector<std::vector<int32_t>> = new Array(2).fill(null).map(() => new Array(2).fill(0));
+    private: std::vector<std::vector<int32_t>> newLine = new Array(2).fill(null).map(() => new Array(2).fill(0));
 
-    private: tempLine: std::vector<std::vector<int32_t>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int32_t>> tempLine = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
-    private: line: std::vector<std::vector<int32_t>> = new Array(2).fill(null).map(() => new Array(2).fill(0));
+    private: std::vector<std::vector<int32_t>> line = new Array(2).fill(null).map(() => new Array(2).fill(0));
 
-public constructor (BasicColor basicColor);
+public: LineAnimation(BasicColor basicColor);
 
-    public init(int32_t x, int32_t y);
+    public: void init(int32_t x, int32_t y);
 
-    public setPosition(int32_t x, int32_t y, int32_t z);
+    public: void setPosition(int32_t x, int32_t y, int32_t z);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public nextFrame();
+    public: void nextFrame();
 
 };
 

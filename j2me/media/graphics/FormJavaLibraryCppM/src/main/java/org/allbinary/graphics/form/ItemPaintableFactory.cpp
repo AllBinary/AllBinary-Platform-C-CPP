@@ -48,28 +48,27 @@
 #include "PaintableForm.h"
 
 class ItemPaintableFactory: public ItemPaintable {
-        
 
-    private: static const instance: ItemPaintableFactory = new ItemPaintableFactory();
+    private: static ItemPaintableFactory instance() { return ItemPaintableFactory(); }
 
-    public static ItemPaintableFactory getInstance(){
+    public: static ItemPaintableFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemPaintableFactory.instance;
+                        return ItemPaintableFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm){
+    public: ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemPaintableFactory.instance;
+                        return ItemPaintableFactory::instance();
     
 }
 

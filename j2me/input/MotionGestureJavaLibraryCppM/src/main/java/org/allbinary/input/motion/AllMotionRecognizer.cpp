@@ -56,58 +56,55 @@
         #include "MotionRecognizer.h"
 
 class AllMotionRecognizer: public MotionRecognizer {
-        
 
-    private: static index: int32_t = 0;
+    private: static int32_t index = 0;
 
-    private: static const pointCircularPool: GPointCircularPool = new GPointCircularPool(40);
+    private: static const GPointCircularPool pointCircularPool = GPointCircularPool(40);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const motionGestureRecognizer: MotionGestureRecognizer;
+    private: MotionGestureRecognizer motionGestureRecognizer;
 
-    private: touchButtonProcessing: bool = false;
+    private: bool touchButtonProcessing = false;
 
-    private: const touchButtonRecognizer: TouchButtonRecognizer;
+    private: TouchButtonRecognizer touchButtonRecognizer;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-public constructor (){
-
-            super();
-        this.id= AllMotionRecognizer.index++;
+public: AllMotionRecognizer(){
+this->id= AllMotionRecognizer::index++;
     
-this.motionGestureRecognizer= new MotionGestureRecognizer(this.id);
+this->motionGestureRecognizer= MotionGestureRecognizer(this->id);
     
-this.touchButtonRecognizer= new TouchButtonRecognizer();
+this->touchButtonRecognizer= TouchButtonRecognizer();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(this.touchButtonRecognizer!.pressTouchButtonInput(x, y, deviceId))
+                        if(this->touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId))
                         
                                     {
-                                    this.touchButtonProcessing= true;
+                                    this->touchButtonProcessing= true;
     
 
                                     }
                                 
 
-                        if(!this.touchButtonProcessing)
+                        if(!this->touchButtonProcessing)
                         
                                     {
                                     
-    point: CustomGPoint = AllMotionRecognizer.pointCircularPool!.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
     
 point.setX(x);
     
 point.setY(y);
     
-this.motionGestureRecognizer!.processPressedMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer.processPressedMotionEvent(point, deviceId, modifiers);
     
 
                                     }
@@ -117,35 +114,35 @@ this.motionGestureRecognizer!.processPressedMotionEvent(point, deviceId, modifie
 
                 //@Throws(Exception.constructor)
             
-    public processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(this.touchButtonRecognizer!.releaseTouchButtonInput(x, y, deviceId))
+                        if(this->touchButtonRecognizer.releaseTouchButtonInput(x, y, deviceId))
                         
                                     {
                                     
                                     }
                                 
 
-                        if(!this.touchButtonProcessing)
+                        if(!this->touchButtonProcessing)
                         
                                     {
                                     
-    point: CustomGPoint = AllMotionRecognizer.pointCircularPool!.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
     
 point.setX(x);
     
 point.setY(y);
     
-this.motionGestureRecognizer!.processReleasedMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer.processReleasedMotionEvent(point, deviceId, modifiers);
     
 
                                     }
                                 
 
-                        if(this.touchButtonProcessing)
+                        if(this->touchButtonProcessing)
                         
                                     {
-                                    this.touchButtonProcessing= false;
+                                    this->touchButtonProcessing= false;
     
 
                                     }
@@ -155,28 +152,28 @@ this.motionGestureRecognizer!.processReleasedMotionEvent(point, deviceId, modifi
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(this.touchButtonProcessing)
+                        if(this->touchButtonProcessing)
                         
                                     {
-                                    this.touchButtonRecognizer!.pressTouchButtonInput(x, y, deviceId);
+                                    this->touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId);
     
 
                                     }
                                 
 
-                        if(!this.touchButtonProcessing)
+                        if(!this->touchButtonProcessing)
                         
                                     {
                                     
-    point: CustomGPoint = AllMotionRecognizer.pointCircularPool!.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
     
 point.setX(x);
     
 point.setY(y);
     
-this.motionGestureRecognizer!.processDraggedMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer.processDraggedMotionEvent(point, deviceId, modifiers);
     
 
                                     }
@@ -184,29 +181,29 @@ this.motionGestureRecognizer!.processDraggedMotionEvent(point, deviceId, modifie
 }
 
 
-    private: lastX: int32_t= 0;
+    private: int32_t lastX= 0;
 
-    private: lastY: int32_t= 0;
+    private: int32_t lastY= 0;
 
                 //@Throws(Exception.constructor)
             
-    public processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(x != this.lastX || y != this.lastY)
+                        if(x != this->lastX || y != this->lastY)
                         
                                     {
-                                    this.lastX= x;
+                                    this->lastX= x;
     
-this.lastY= y;
+this->lastY= y;
     
 
-    point: CustomGPoint = AllMotionRecognizer.pointCircularPool!.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
     
 point.setX(x);
     
 point.setY(y);
     
-this.motionGestureRecognizer!.processMovedMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer.processMovedMotionEvent(point, deviceId, modifiers);
     
 
                                     }
@@ -216,25 +213,25 @@ this.motionGestureRecognizer!.processMovedMotionEvent(point, deviceId, modifiers
 
                 //@Throws(Exception.constructor)
             
-    public processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-    point: CustomGPoint = AllMotionRecognizer.pointCircularPool!.getNextInstance() as CustomGPoint;;
+    CustomGPoint point = AllMotionRecognizer::pointCircularPool.getNextInstance() as CustomGPoint;;
     
 point.setX(x);
     
 point.setY(y);
     
-this.motionGestureRecognizer!.processScrolledMotionEvent(point, deviceId, modifiers);
+this->motionGestureRecognizer.processScrolledMotionEvent(point, deviceId, modifiers);
     
 }
 
 
-    public MotionGestureRecognizer getMotionGestureRecognizer(){
+    public: MotionGestureRecognizer getMotionGestureRecognizer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionGestureRecognizer;
+                        return this->motionGestureRecognizer;
     
 }
 

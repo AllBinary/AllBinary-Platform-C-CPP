@@ -39,7 +39,6 @@
         #include "Scoreable.h"
 
 class ScoreableInterfaceCompositeInterface {
-        
 
     Scoreable getScoreableInterface()
 

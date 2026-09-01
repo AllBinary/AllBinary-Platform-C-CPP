@@ -65,17 +65,16 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance();
+    public: static ImageRotationUtil getInstance();
 
-private constructor ();
+private: ImageRotationUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
 
 };
 

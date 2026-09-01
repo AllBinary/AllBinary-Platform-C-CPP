@@ -45,14 +45,11 @@
         #include "TableTag.h"
 
 class SpecialItemsTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new SpecialItemsHelperFactory());
+public: SpecialItemsTag(){
+this->setTagHelperFactory(SpecialItemsHelperFactory());
     
-this.setTagRequestHelperFactory(new SpecialItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(SpecialItemsRequestHelperFactory());
     
 }
 

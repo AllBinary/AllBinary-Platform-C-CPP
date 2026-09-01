@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -73,67 +75,66 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "RTSInterface.h"
 
-class TechnologyRTSInterfaceImageItem: public ABCustomImageItem: public UpdateMyFontInterface {
-        
+class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMyFontInterface {
 
-    private: const rtsInterface: RTSInterface;
+    private: RTSInterface rtsInterface;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(10000)!;
+    private: const PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
 
-    private: const LEVEL: string = "Level";
+    private: const std::string LEVEL = "Level";
 
-    private: const COST: string = "Cost";
+    private: const std::string COST = "Cost";
 
-    private: const DOLLAR: string = "$";
+    private: const std::string DOLLAR = "$";
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: costString: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;
+    private: std::vector<char> costString = CharArrayFactory::getInstance().getZeroCharArray();
 
-    private: costLength: int32_t= 0;
+    private: int32_t costLength= 0;
 
-    private: levelString: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;
+    private: std::vector<char> levelString = CharArrayFactory::getInstance().getZeroCharArray();
 
-    private: levelLength: int32_t= 0;
+    private: int32_t levelLength= 0;
 
-    private: adjustedCostLabelY: int32_t= 0;
+    private: int32_t adjustedCostLabelY= 0;
 
-    private: adjustedCostX: int32_t= 0;
+    private: int32_t adjustedCostX= 0;
 
-    private: adjustedCostY: int32_t= 0;
+    private: int32_t adjustedCostY= 0;
 
-    private: adjustedLevelX: int32_t= 0;
+    private: int32_t adjustedLevelX= 0;
 
-    private: adjustedLevelY: int32_t= 0;
+    private: int32_t adjustedLevelY= 0;
 
-public constructor (string label, Image img, int32_t layout, string altText, BasicColor basicColor, RTSInterface rtsInterface){
+public: TechnologyRTSInterfaceImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, RTSInterface rtsInterface){
             super(label, img, layout, altText, basicColor, 0);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.rtsInterface= rtsInterface;
+this->rtsInterface= rtsInterface;
     
-this.update();
+this->update();
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
 
-    fontHeight: int32_t = font.getHeight()!;;
+    int32_t fontHeight = font.getHeight();;
     
 
-    imageHeight: int32_t = 0;;
+    int32_t imageHeight = 0;;
     
 
-    image: Image = this.getImage()!;;
+    Image image = this->getImage();;
     
 
-                        if(image != NullImage.NULL_IMAGE)
+                        if(image != NullImage::NULL_IMAGE)
                         
                                     {
                                     imageHeight= image.getHeight();
@@ -141,56 +142,56 @@ this.update();
 
                                     }
                                 
-this.adjustedCostLabelY=  -this.yOffset +imageHeight -(3 *fontHeight);
+this->adjustedCostLabelY=  -this->yOffset +imageHeight -(3 *fontHeight);
     
-this.adjustedCostY=  -this.yOffset +imageHeight -(2 *fontHeight);
+this->adjustedCostY=  -this->yOffset +imageHeight -(2 *fontHeight);
     
-this.adjustedCostX= 2 +(this.DOLLAR.length *(fontHeight -1));
+this->adjustedCostX= 2 +(DOLLAR.size() *(fontHeight -1));
     
-this.adjustedLevelY=  -this.yOffset +imageHeight -fontHeight;
+this->adjustedLevelY=  -this->yOffset +imageHeight -fontHeight;
     
-this.adjustedLevelX= 2 +(this.LEVEL.length *(fontHeight -1));
+this->adjustedLevelX= 2 +(LEVEL.size() *(fontHeight -1));
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public RTSInterface getRtsInterface(){
+    public: RTSInterface getRtsInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rtsInterface;
+                        return this->rtsInterface;
     
 }
 
 
-    public update(){
-this.costString= this.primitiveLongUtil!.getCharArray(this.getRtsInterface()!.getUpgradeCost());
+    public: void update(){
+this->costString= this->primitiveLongUtil.getCharArray(this->getRtsInterface().getUpgradeCost());
     
-this.levelString= this.primitiveLongUtil!.getCharArray(this.getRtsInterface()!.getLevel());
+this->levelString= this->primitiveLongUtil.getCharArray(this->getRtsInterface().getLevel());
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.myFontProcessor!.process(graphics);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->myFontProcessor.process(graphics);
     
 super.paintXY(graphics, x, y);
     
 
-    xa: int32_t = x +2;;
+    int32_t xa = x +2;;
     
-graphics.drawString(this.COST, xa, y +this.adjustedCostLabelY, 0);
+graphics.drawString(this->COST, xa, y +this->adjustedCostLabelY, 0);
     
-graphics.drawString(this.DOLLAR, xa, y +this.adjustedCostY, 0);
+graphics.drawString(this->DOLLAR, xa, y +this->adjustedCostY, 0);
     
-graphics.drawChars(this.costString, 0, this.costLength, x +this.adjustedCostX, y +this.adjustedCostY, 0);
+graphics.drawChars(this->costString, 0, this->costLength, x +this->adjustedCostX, y +this->adjustedCostY, 0);
     
-graphics.drawString(this.LEVEL, xa, y +this.adjustedLevelY, 0);
+graphics.drawString(this->LEVEL, xa, y +this->adjustedLevelY, 0);
     
-graphics.drawChars(this.levelString, 0, this.levelLength, x +this.adjustedLevelX, y +this.adjustedLevelY, 0);
+graphics.drawChars(this->levelString, 0, this->levelLength, x +this->adjustedLevelX, y +this->adjustedLevelY, 0);
     
 }
 

@@ -42,33 +42,32 @@
         #include "ImageComparisonSearch.h"
 
 class ImageComparisonSearchResultsEvent: public AllBinaryEventObject {
-        
 
-    private: imageComparisonSearch: ImageComparisonSearch;
+    private: ImageComparisonSearch imageComparisonSearch;
 
-public constructor (any = {} anyType, ImageComparisonSearch imageComparisonSearch){
+public: ImageComparisonSearchResultsEvent(Object* anyType, ImageComparisonSearch imageComparisonSearch){
             super(anyType);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setImageComparisonSearch(imageComparisonSearch);
+this->setImageComparisonSearch(imageComparisonSearch);
     
 }
 
 
-    public ImageComparisonSearch getImageComparisonSearch(){
+    public: ImageComparisonSearch getImageComparisonSearch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageComparisonSearch;
+                        return this->imageComparisonSearch;
     
 }
 
 
-    setImageComparisonSearch(ImageComparisonSearch imageComparisonSearch){
-this.imageComparisonSearch= imageComparisonSearch;
+    private: void setImageComparisonSearch(ImageComparisonSearch imageComparisonSearch){
+this->imageComparisonSearch= imageComparisonSearch;
     
 }
 

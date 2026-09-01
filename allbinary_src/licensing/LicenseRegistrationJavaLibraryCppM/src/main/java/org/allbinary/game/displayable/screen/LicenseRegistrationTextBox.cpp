@@ -88,20 +88,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LicenseRegistrationTextBox: public CustomTextBox {
-        
 
-    public static const DISPLAY_COMMAND: Command = new Command("Register", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: static const Command DISPLAY_COMMAND = Command("Register", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    public static const SUBMIT_COMMAND: Command = new Command("Submit", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: static const Command SUBMIT_COMMAND = Command("Submit", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const pleaseWaitPaintable: Paintable = new SimpleTextPaintable(commonStrings!.PLEASE_WAIT, BasicColorFactory.getInstance()!.WHITE);
+    private: const Paintable pleaseWaitPaintable = SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
 
-    private: paintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable paintable = NullPaintable::getInstance();
 
-public constructor (CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(cmdListener, "Enter Registration Code:", StringUtil.getInstance()!.EMPTY_STRING, 60, TextField.ANY, Font.getDefaultFont(), backgrounBasicColor, foregroundBasicColor);
+public: LicenseRegistrationTextBox(CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+            super(cmdListener, "Enter Registration Code:", StringUtil::getInstance().EMPTY_STRING, 60, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -109,83 +108,83 @@ public constructor (CommandListener cmdListener, BasicColor backgrounBasicColor,
 }
 
 
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
     
-this.addCommand(GameCommandsFactory.getInstance()!.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
     
-this.addCommand(GameCommandsFactory.getInstance()!.TOGGLE_KEYBOARD);
+this->addCommand(GameCommandsFactory::getInstance().TOGGLE_KEYBOARD);
     
-this.addCommand(SUBMIT_COMMAND);
+this->addCommand(SUBMIT_COMMAND);
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 
 
-    public open(){
+    public: void open(){
 
         try {
             
-    virtualKeyboardEventHandler: VirtualKeyboardEventHandler = VirtualKeyboardEventHandler.getInstance()!;;
+    VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
     
-virtualKeyboardEventHandler!.fireEvent(virtualKeyboardEventHandler!.SHOW_EVENT);
+virtualKeyboardEventHandler.fireEvent(virtualKeyboardEventHandler.SHOW_EVENT);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "open", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "open", e);
     
 }
 
 super.open();
     
-this.paintable= NullPaintable.getInstance();
+this->paintable= NullPaintable::getInstance();
     
-this.repaint();
+this->repaint();
     
 }
 
 
-    public close(){
+    public: void close(){
 
         try {
             
-    virtualKeyboardEventHandler: VirtualKeyboardEventHandler = VirtualKeyboardEventHandler.getInstance()!;;
+    VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
     
-virtualKeyboardEventHandler!.fireEvent(virtualKeyboardEventHandler!.HIDE_EVENT);
+virtualKeyboardEventHandler.fireEvent(virtualKeyboardEventHandler.HIDE_EVENT);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "open", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "open", e);
     
 }
 
-this.paintable= this.pleaseWaitPaintable;
+this->paintable= this->pleaseWaitPaintable;
     
-this.repaint();
+this->repaint();
     
 super.close();
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
-this.paintable.paint(graphics);
+this->paintable.paint(graphics);
     
 }
 
 
-    public submit(){
+    public: void submit(){
 
-    commandListener: CommandListener = this.getCustomCommandListener()!;;
+    CommandListener commandListener = this->getCustomCommandListener();;
     
-commandListener!.commandAction(SUBMIT_COMMAND, this);
+commandListener.commandAction(SUBMIT_COMMAND, this);
     
 }
 

@@ -83,21 +83,20 @@
         #include "BasicWeaponPart.h"
 
 class StraightMultiProjectileWeaponPart: public BasicWeaponPart {
-        
 
-    public static StraightMultiProjectileWeaponPart createStraightMultiProjectileWeaponPart(Animation animationInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool);
+    public: static StraightMultiProjectileWeaponPart createStraightMultiProjectileWeaponPart(Animation animationInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool);
 
-    private: const weaponLayerCircularStaticPool: WeaponLayerCircularPool;
+    private: WeaponLayerCircularPool weaponLayerCircularStaticPool;
 
-    private: const total: int32_t;
+    private: int32_t total;
 
-public constructor (Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, int32_t total, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
+public: StraightMultiProjectileWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, int32_t total, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
 
-    private: const noDecimalTrigTable: NoDecimalTrigTable = NoDecimalTrigTable.getInstance()!;
+    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
+    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
 
 };
 

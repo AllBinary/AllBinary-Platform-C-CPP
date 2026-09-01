@@ -43,34 +43,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "KeyListener.h"
 
-class WorkAreaJPanelInterface: public java.awt.event.KeyListener {
-        
+class WorkAreaJPanelInterface: public java::awt::event::KeyListener {
 
-    string getName()
+    std::string getName()
 
-    deselect()
+    void deselect()
 
-    select()
+    void select()
 
-    changeZoom(int32_t factor)
+    void changeZoom(int32_t factor)
 
-    explodeAll()
-
-                //@Throws(Exception.constructor)
-            
-    autoRotate(int32_t increments, int32_t totalAngle)
+    void explodeAll()
 
                 //@Throws(Exception.constructor)
             
-    autoExplode(int32_t numberOfFrames, int32_t explodeType)
+    void autoRotate(int32_t increments, int32_t totalAngle)
 
                 //@Throws(Exception.constructor)
             
-    autoMirror()
+    void autoExplode(int32_t numberOfFrames, int32_t explodeType)
 
-    play()
+                //@Throws(Exception.constructor)
+            
+    void autoMirror()
 
-    stop()
+    void play()
+
+    void stop()
 
     bool isPlaying()
 

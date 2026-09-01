@@ -57,29 +57,28 @@
 class FileFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: FileFactory = new FileFactory(ResourceUtil.getInstance()!.getContext());
+    private: static const FileFactory SINGLETON = FileFactory(ResourceUtil::getInstance().getContext());
 
-    public static FileFactory getInstance();
+    public: static FileFactory getInstance();
 
-    private: context: Context;
+    private: Context context;
 
-private constructor (Context context);
-
-                //@Throws(Exception.constructor)
-            
-    public bool isFile(string path);
-
-    public Context getContext();
+private: FileFactory(Context context);
 
                 //@Throws(Exception.constructor)
             
-    public AbFile getFile(string filePath);
+    public: bool isFile(std::string path);
+
+    public: Context getContext();
 
                 //@Throws(Exception.constructor)
             
-    public AbFile getInstance(AbFile file, string childFilePath);
+    public: AbFile getFile(std::string filePath);
+
+                //@Throws(Exception.constructor)
+            
+    public: AbFile getInstance(AbFile file, std::string childFilePath);
 
 };
 

@@ -67,12 +67,11 @@
 class LicenseRegistrationUtil
             : public Object
          {
-        
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static process(AbeClientInformationInterface abeClientInformation, string registrationId);
+    public: static void process(AbeClientInformationInterface abeClientInformation, std::string registrationId);
 
-private constructor ();
+private: LicenseRegistrationUtil();
 
 };
 

@@ -46,19 +46,18 @@
 class CollisionTypeFactory
             : public Object
          {
-        
 
-    private: static SINGLETON: CollisionTypeFactory = new CollisionTypeFactory();
+    private: static CollisionTypeFactory SINGLETON = CollisionTypeFactory();
 
-    public static CollisionTypeFactory getInstance();
+    public: static CollisionTypeFactory getInstance();
 
-    public NONE: CollisionType = new CollisionType("None");
+    public: CollisionType NONE = CollisionType("None");
 
-    public DAMAGE: CollisionType = new CollisionType("Damage");
+    public: CollisionType DAMAGE = CollisionType("Damage");
 
-    public PICKUP: CollisionType = new CollisionType("Pickup");
+    public: CollisionType PICKUP = CollisionType("Pickup");
 
-    public COLLISION: CollisionType = new CollisionType("Collision");
+    public: CollisionType COLLISION = CollisionType("Collision");
 
 };
 

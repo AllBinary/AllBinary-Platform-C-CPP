@@ -82,39 +82,38 @@
         #include "ModifyTable.h"
 
 class BasicOptionItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: optionOneTitle: string;
+    private: std::string optionOneTitle;
 
-    private: defaultOptionItem: string;
+    private: std::string defaultOptionItem;
 
-    private: defaultOptionValue: string;
+    private: std::string defaultOptionValue;
 
-    private: optionItem: Vector;
+    private: Vector optionItem;
 
-    private: optionValue: Vector;
+    private: Vector optionValue;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicOptionItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public getFormData();
+    public: void getFormData();
 
-    HashMap<any, any> getHashMap();
+    private: HashMap<any, any> getHashMap();
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string update();
+    public: std::string update();
 
 };
 

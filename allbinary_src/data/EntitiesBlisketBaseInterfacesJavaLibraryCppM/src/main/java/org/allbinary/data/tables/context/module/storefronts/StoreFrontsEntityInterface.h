@@ -55,19 +55,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontsEntityInterface: public BasicDataTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    StoreFrontInterface getStoreFrontInterface(string name);
+    StoreFrontInterface getStoreFrontInterface(std::string name);
 
     Vector getStoreFrontNames();
 
-    delete(string value);
+    void delete_(std::string value);
 
-    insert(Vector values);
+    void insert(Vector values);
 
-    update(HashMap<any, any> updatedValues);
+    void update(HashMap<any, any> updatedValues);
 
 };
 

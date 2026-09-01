@@ -78,106 +78,103 @@
 class InputAutomationConfigurationFactory
             : public Object
          {
-        
 
-    private: static const instance: InputAutomationConfigurationFactory = new InputAutomationConfigurationFactory();
+    private: static InputAutomationConfigurationFactory instance() { return InputAutomationConfigurationFactory(); }
 
-    public static InputAutomationConfigurationFactory getInstance(){
+    public: static InputAutomationConfigurationFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationConfigurationFactory.instance;
+                        return InputAutomationConfigurationFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public inputAutomationConfiguration: InputAutomationConfiguration = 
+    public: InputAutomationConfiguration inputAutomationConfiguration = 
                 null
             ;
 
-private constructor (){
-
-            super();
-        }
+private: InputAutomationConfigurationFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation){
+    public: void init(AbeClientInformationInterface abeClientInformation){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    INPUT_AUTOMATION_CONFIGURATION: string = "InputAutomationConfiguration";;
+    std::string INPUT_AUTOMATION_CONFIGURATION = "InputAutomationConfiguration";;
     
 
-    file: File = InputAutomationConfiguration.getFile()!;;
+    File file = InputAutomationConfiguration::getFile();;
     
 
                         if(file.isFile())
                         
                                     {
-                                    logUtil!.putF("LoadingConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings!.INIT);
+                                    logUtil.putF("LoadingConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
     
 
-    jaxbContext: JAXBContext = JAXBContext.newInstance(InputAutomationConfiguration.constructor)!;;
+    JAXBContext jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
     
 
-    unmarshaller: Unmarshaller = jaxbContext!.createUnmarshaller()!;;
+    Unmarshaller unmarshaller = jaxbContext.createUnmarshaller();;
     
 
-    root: JAXBElement<InputAutomationConfiguration> = unmarshaller.unmarshal(new StreamSource(new FileInputStream(file)), InputAutomationConfiguration.constructor)!;;
+    JAXBElement<InputAutomationConfiguration> root = unmarshaller.unmarshal(StreamSource(FileInputStream(file)), InputAutomationConfiguration.constructor);;
     
-this.inputAutomationConfiguration= root.getValue() as InputAutomationConfiguration;
+this->inputAutomationConfiguration= root.getValue() as InputAutomationConfiguration;
     
 
-    inputAutomationModuleConfigurationList: List<InputAutomationModuleConfiguration> = this.inputAutomationConfiguration!.getInputAutomationModuleConfigurationList()!;;
+    List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList = this->inputAutomationConfiguration.getInputAutomationModuleConfigurationList();;
     
-logUtil!.putF("isInstalled: " +this.inputAutomationConfiguration!.isInstalled() +" inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, INPUT_AUTOMATION_CONFIGURATION, commonStrings!.INIT);
+logUtil.putF("isInstalled: " +this->inputAutomationConfiguration.isInstalled() +" inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
     
 
                         if(inputAutomationModuleConfigurationList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    size: int32_t = inputAutomationModuleConfigurationList!.length!;;
+    int32_t size = inputAutomationModuleConfigurationList.length;;
     
 
-    inputAutomationModuleConfiguration: InputAutomationModuleConfiguration;;
+    InputAutomationModuleConfiguration inputAutomationModuleConfiguration;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-inputAutomationModuleConfiguration= inputAutomationModuleConfigurationList!.get(index);
+inputAutomationModuleConfiguration= inputAutomationModuleConfigurationList.get(index);
     
-inputAutomationModuleConfiguration!.init(abeClientInformation);
+inputAutomationModuleConfiguration.init(abeClientInformation);
     
 }
 
 
                                     }
                                 
-logUtil!.putF("LoadedConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings!.INIT);
+logUtil.putF("LoadedConfiguration", INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
     
 
                                     }
                                 
                         else {
-                            logUtil!.putF("New Configuration", INPUT_AUTOMATION_CONFIGURATION, commonStrings!.INIT);
+                            logUtil.putF("New Configuration", INPUT_AUTOMATION_CONFIGURATION, commonStrings.INIT);
     
-this.inputAutomationConfiguration= new InputAutomationConfiguration();
+this->inputAutomationConfiguration= InputAutomationConfiguration();
     
 
                         }

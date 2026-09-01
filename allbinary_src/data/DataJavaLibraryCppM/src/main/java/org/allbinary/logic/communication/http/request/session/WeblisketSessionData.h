@@ -45,25 +45,24 @@
 class WeblisketSessionData
             : public Object
          {
-        
 
-    public static const INVALIDATESESSION: string = "SESSION_INVALIDATE_SESSION";
+    public: static const std::string INVALIDATESESSION = "SESSION_INVALIDATE_SESSION";
 
-    public static const ATTEMPTS: string = "SESSION_ATTEMPTS";
+    public: static const std::string ATTEMPTS = "SESSION_ATTEMPTS";
 
-    public static const TIMEOUT: string = "SESSION_TIMEOUT";
+    public: static const std::string TIMEOUT = "SESSION_TIMEOUT";
 
-    public static const REMOVABLEUSERNAME: string = "SESSION_REMOVABLE_USER_NAME";
+    public: static const std::string REMOVABLEUSERNAME = "SESSION_REMOVABLE_USER_NAME";
 
-    public static const REMOVABLEPASSWORD: string = "SESSION_REMOVABLE_PASSWORD";
+    public: static const std::string REMOVABLEPASSWORD = "SESSION_REMOVABLE_PASSWORD";
 
-    public static const REMOVABLENEWPASSWORD: string = "SESSION_REMOVABLE_NEW_PASSWORD";
+    public: static const std::string REMOVABLENEWPASSWORD = "SESSION_REMOVABLE_NEW_PASSWORD";
 
-    public static const REMOVABLEREENTERNEWPASSWORD: string = "SESSION_REMOVABLE_REENTER_NEW_PASSWORD";
+    public: static const std::string REMOVABLEREENTERNEWPASSWORD = "SESSION_REMOVABLE_REENTER_NEW_PASSWORD";
 
-    public static const AUTHENTICATED: string = "SESSION_AUTHENTICATED";
+    public: static const std::string AUTHENTICATED = "SESSION_AUTHENTICATED";
 
-public constructor ();
+public: WeblisketSessionData();
 
 };
 

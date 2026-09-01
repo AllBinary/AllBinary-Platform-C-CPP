@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/System.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -70,97 +72,96 @@
         #include "SpecialAnimation.h"
 
 class TitleAnimation: public SpecialAnimation {
-        
 
-    public static TitleAnimation createAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width){
+    public: static TitleAnimation createAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TitleAnimation(animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, new IndexedAnimationBehavior(1, 250));
+                        return TitleAnimation(animationInterfaceArray, basicColorArray, dxArray, dyArray, y, width, IndexedAnimationBehavior(1, 250));
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public deltaX: float= 0.0;
+    public: float deltaX= 0.0;
 
-    public deltaY: float= 0.0;
+    public: float deltaY= 0.0;
 
-    public deltaZ: float= 0.0;
+    public: float deltaZ= 0.0;
 
-    const basicColorArray: std::vector<BasicColor>;
+    protected: std::vector<BasicColor> basicColorArray;
 
-    const dxArray: std::vector<int32_t>;
+    protected: std::vector<int32_t> dxArray;
 
-    const dyArray: std::vector<int32_t>;
+    protected: std::vector<int32_t> dyArray;
 
-    const widthP: int32_t;
+    protected: int32_t widthP;
 
-    const animationInterfaceArray: std::vector<IndexedAnimation>;
+    protected: std::vector<IndexedAnimation> animationInterfaceArray;
 
-    const sizeP: int32_t;
+    protected: int32_t sizeP;
 
-    const y: int32_t;
+    protected: int32_t y;
 
-    private: lastFrameStartTime: int64_t;
+    private: int64_t lastFrameStartTime;
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public constructor (std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior){
+public: TitleAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior){
             super(animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.lastFrameStartTime= Date.now();
+this->lastFrameStartTime= Date.now();
     
-this.animationInterfaceArray= animationInterfaceArray;
+this->animationInterfaceArray= animationInterfaceArray;
     
-this.sizeP= this.animationInterfaceArray!.length;
+this->sizeP= this->animationInterfaceArray.size();
     
-this.basicColorArray= basicColorArray;
+this->basicColorArray= basicColorArray;
     
-this.dxArray= dxArray;
+this->dxArray= dxArray;
     
-this.dyArray= dyArray;
+this->dyArray= dyArray;
     
-this.y= y;
+this->y= y;
     
-this.widthP= width;
+this->widthP= width;
     
-this.reset();
+this->reset();
     
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 
-    currentTime: int64_t = Date.now()!;;
+    int64_t currentTime = Date.now();;
     
 
-    totalTimeElapsed: int64_t = currentTime -this.lastFrameStartTime;;
+    int64_t totalTimeElapsed = currentTime -this->lastFrameStartTime;;
     
 
-    indexedAnimationBehavior: IndexedAnimationBehavior = this.getAnimationBehavior() as IndexedAnimationBehavior;;
+    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior() as IndexedAnimationBehavior;;
     
 
-                        if(totalTimeElapsed > indexedAnimationBehavior!.frameDelayTime)
+                        if(totalTimeElapsed > indexedAnimationBehavior.frameDelayTime)
                         
                                     {
-                                    this.previousFrame();
+                                    this->previousFrame();
     
-this.lastFrameStartTime= currentTime;
+this->lastFrameStartTime= currentTime;
     
 
                                     }
                                 
 
-                        if(this.animationInterfaceArray[0]!.getFrame() == 0)
+                        if(this->animationInterfaceArray[0]!.getFrame() == 0)
                         
                                     {
-                                    indexedAnimationBehavior!.loopIndex++;
+                                    indexedAnimationBehavior.loopIndex++;
     
 
                                     }
@@ -168,12 +169,12 @@ this.lastFrameStartTime= currentTime;
 }
 
 
-    public bool isComplete(){
+    public: bool isComplete(){
 
-    indexedAnimationBehavior: IndexedAnimationBehavior = this.getAnimationBehavior() as IndexedAnimationBehavior;;
+    IndexedAnimationBehavior indexedAnimationBehavior = this->getAnimationBehavior() as IndexedAnimationBehavior;;
     
 
-                        if(indexedAnimationBehavior!.loopTotal ==  -1 || indexedAnimationBehavior!.loopIndex < indexedAnimationBehavior!.loopTotal || this.getFrame() != 0)
+                        if(indexedAnimationBehavior.loopTotal ==  -1 || indexedAnimationBehavior.loopIndex < indexedAnimationBehavior.loopTotal || this->getFrame() != 0)
                         
                                     {
                                     
@@ -198,137 +199,137 @@ this.lastFrameStartTime= currentTime;
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getSize();;
+                        return this->animationInterfaceArray[0]!.getSize();;
     
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getFrame();;
+                        return this->animationInterfaceArray[0]!.getFrame();;
     
 }
 
 
-    public setFrame(int32_t frame){
+    public: void setFrame(int32_t frame){
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.sizeP; index++)
+    int32_t index = 0;index < this->sizeP; index++)
         {
-this.animationInterfaceArray[index]!.setFrame(frame);
+this->animationInterfaceArray[index]!.setFrame(frame);
     
 }
 
 }
 
 
-    public setLastFrame(){
-this.setFrame(this.getSize() -1);
+    public: void setLastFrame(){
+this->setFrame(this->getSize() -1);
     
 }
 
 
-    public reset(){
-this.setLastFrame();
+    public: void reset(){
+this->setLastFrame();
     
 
-    indexedAnimationBehavior: IndexedAnimationBehavior = (this.getAnimationBehavior() as IndexedAnimationBehavior);;
+    IndexedAnimationBehavior indexedAnimationBehavior = (this->getAnimationBehavior() as IndexedAnimationBehavior);;
     
-indexedAnimationBehavior!.reset();
+indexedAnimationBehavior.reset();
     
 }
 
 
-    public previousFrame(){
+    public: void previousFrame(){
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.sizeP; index++)
+    int32_t index = 0;index < this->sizeP; index++)
         {
-this.animationInterfaceArray[index]!.previousFrame();
+this->animationInterfaceArray[index]!.previousFrame();
     
 }
 
 }
 
 
-    public paintFrameXY(Graphics graphics, int32_t frame, int32_t x, int32_t y){
-this.setFrame(frame);
+    public: void paintFrameXY(Graphics graphics, int32_t frame, int32_t x, int32_t y){
+this->setFrame(frame);
     
-this.paintXY(graphics, x, y);
+this->paintXY(graphics, x, y);
     
 }
 
 
-    const CLEAR_COLOR: BasicColor = BasicColorFactory.getInstance()!.CLEAR_COLOR;
+    protected: const BasicColor CLEAR_COLOR = BasicColorFactory::getInstance().CLEAR_COLOR;
 
-    public paintXY(Graphics graphics, int32_t ax, int32_t ay){
+    public: void paintXY(Graphics graphics, int32_t ax, int32_t ay){
 
-    x: int32_t = 0;;
+    int32_t x = 0;;
     
 
-                        if(this.widthP != Integer.MIN_VALUE)
+                        if(this->widthP != Integer::MIN_VALUE)
                         
                                     {
-                                    x= ((this.displayInfoSingleton!.getLastWidth() -this.widthP) /2);
+                                    x= ((this->displayInfoSingleton.getLastWidth() -this->widthP) /2);
     
 
                                     }
                                 
 
-    deltaX: int32_t= 0;;
+    int32_t deltaX= 0;;
     
 
-    deltaY: int32_t= 0;;
+    int32_t deltaY= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.sizeP; index++)
+    int32_t index = 0;index < this->sizeP; index++)
         {
-deltaX= this.dxArray[index] +x;
+deltaX= this->dxArray[index] +x;
     
-deltaY= this.dyArray[index] +this.y;
+deltaY= this->dyArray[index] +this->y;
     
 
-                        if(this.basicColorArray[index] != this.CLEAR_COLOR)
+                        if(this->basicColorArray[index] != this->CLEAR_COLOR)
                         
                                     {
-                                    this.basicSetColorUtil!.setBasicColorP(graphics, this.basicColorArray[index]!);
+                                    this->basicSetColorUtil.setBasicColorP(graphics, this->basicColorArray[index]!);
     
 
                                     }
                                 
-this.animationInterfaceArray[index]!.paintXY(graphics, deltaX, deltaY);
+this->animationInterfaceArray[index]!.paintXY(graphics, deltaX, deltaY);
     
 }
 

@@ -82,19 +82,18 @@
 class RepaintBehavior
             : public Object
          {
-        
 
-    private: static const instance: RepaintBehavior = new RepaintBehavior();
+    private: static RepaintBehavior instance() { return RepaintBehavior(); }
 
-    public static RepaintBehavior getInstance();
+    public: static RepaintBehavior getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public repaint(Canvas canvas);
+    public: void repaint(Canvas canvas);
 
-    private: const NAME: string = "RepaintBehavior";
+    private: const std::string NAME = "RepaintBehavior";
 
-    public onChangeRepaint(Canvas canvas);
+    public: void onChangeRepaint(Canvas canvas);
 
 };
 

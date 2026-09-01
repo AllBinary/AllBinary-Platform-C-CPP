@@ -48,13 +48,12 @@
 class DisplayPointScalar
             : public Object
          {
-        
 
-    private: static const instance: DisplayPointScalar = new DisplayPointScalar();
+    private: static DisplayPointScalar instance() { return DisplayPointScalar(); }
 
-    public static DisplayPointScalar getInstance();
+    public: static DisplayPointScalar getInstance();
 
-    public GPoint process(GPoint point);
+    public: GPoint process(GPoint point);
 
 };
 

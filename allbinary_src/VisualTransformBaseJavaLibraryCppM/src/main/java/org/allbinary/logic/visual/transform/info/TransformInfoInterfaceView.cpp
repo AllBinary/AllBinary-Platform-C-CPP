@@ -58,26 +58,23 @@
 class TransformInfoInterfaceView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
-
-            super();
-        this.transformInfoInterface= transformInfoInterface;
+public: TransformInfoInterfaceView(TransformInfoInterface transformInfoInterface){
+this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueNodes(document, TransformInfoData.getInstance()!.NAME, this.transformInfoInterface!.toHashMap());;
+                        return ModDomHelper::createNameValueNodes(document, TransformInfoData::getInstance().NAME, this->transformInfoInterface.toHashMap());;
     
 }
 

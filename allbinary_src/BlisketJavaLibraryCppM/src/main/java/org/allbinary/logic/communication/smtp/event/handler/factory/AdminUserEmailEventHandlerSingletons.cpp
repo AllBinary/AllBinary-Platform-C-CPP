@@ -71,34 +71,31 @@
 class AdminUserEmailEventHandlerSingletons
             : public Object
          {
-        
 
-    private: static const instance: AdminUserEmailEventHandlerSingletons = new AdminUserEmailEventHandlerSingletons();
+    private: static AdminUserEmailEventHandlerSingletons instance() { return AdminUserEmailEventHandlerSingletons(); }
 
-    public static AdminUserEmailEventHandlerSingletons getInstance(){
+    public: static AdminUserEmailEventHandlerSingletons getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdminUserEmailEventHandlerSingletons.instance;
+                        return AdminUserEmailEventHandlerSingletons::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const userEmailEventHandlerHashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: const HashMap<any, any> userEmailEventHandlerHashMap = HashMap<any, any>();
 
-private constructor (){
+private: AdminUserEmailEventHandlerSingletons(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -108,41 +105,41 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public UserEmailEventHandler getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData){
+    public: UserEmailEventHandler getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
 
-    userEmailEventHandler: UserEmailEventHandler = this.userEmailEventHandlerHashMap!.get(userEmailEventNameData) as UserEmailEventHandler;;
+    UserEmailEventHandler userEmailEventHandler = this->userEmailEventHandlerHashMap.get(userEmailEventNameData) as UserEmailEventHandler;;
     
 
                         if(userEmailEventHandler == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Creating New Named UserEmailEventHandler", this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Creating New Named UserEmailEventHandler", this, this->commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
 
-    userVector: Vector = UserEntityFactory.getInstance()!.getAdministrators()!;;
+    Vector userVector = UserEntityFactory::getInstance().getAdministrators();;
     
 
-    newUserEmailEventHandler: UserEmailEventHandler = EmailEventHandlerUtil.getInstance()!.getEventHandler(abeClientInformation, userEmailEventNameData, userVector)!;;
+    UserEmailEventHandler newUserEmailEventHandler = EmailEventHandlerUtil::getInstance().getEventHandler(abeClientInformation, userEmailEventNameData, userVector);;
     
-this.userEmailEventHandlerHashMap!.put(userEmailEventNameData, newUserEmailEventHandler);
+this->userEmailEventHandlerHashMap.put(userEmailEventNameData, newUserEmailEventHandler);
     
 
 
@@ -155,10 +152,10 @@ this.userEmailEventHandlerHashMap!.put(userEmailEventNameData, newUserEmailEvent
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Returning existing UserEmailEventHandler", this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Returning existing UserEmailEventHandler", this, this->commonStrings.GET_INSTANCE);
     
 
                                     }

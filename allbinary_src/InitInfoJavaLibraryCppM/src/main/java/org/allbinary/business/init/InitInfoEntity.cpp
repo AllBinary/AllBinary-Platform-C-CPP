@@ -66,90 +66,89 @@
 #include "InitInfo.h"
 
 class InitInfoEntity: public InitSql {
-        
 
-    private: const NAME: string = "InitInfoEntity";
+    private: const std::string NAME = "InitInfoEntity";
 
-    private: const NOTHING: string = "NOTHING";
+    private: const std::string NOTHING = "NOTHING";
 
-    private: const tableName: string = "initdata";
+    private: const std::string tableName = "initdata";
 
-    private: const tableData: string;
+    private: std::string tableData;
 
-    private: const NOT_IN_DB: string = "Not In DB";
+    private: const std::string NOT_IN_DB = "Not In DB";
 
-    private: const METHOD_GET: string = "get()";
+    private: const std::string METHOD_GET = "get()";
 
-    private: const METHOD_IS: string = "is()";
+    private: const std::string METHOD_IS = "is()";
 
-    private: const METHOD_ADD: string = "add()";
+    private: const std::string METHOD_ADD = "add()";
 
-    private: const CREATED_SUCCESS: string = " Created Successfully";
+    private: const std::string CREATED_SUCCESS = " Created Successfully";
 
-    private: const FAILED_TO_CREATE: string = "Failed to create ";
+    private: const std::string FAILED_TO_CREATE = "Failed to create ";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: InitInfoEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer!.append(this.tableName);
+stringBuffer.append(this->tableName);
     
-stringBuffer!.append(this.sqlStrings!.START);
+stringBuffer.append(this->sqlStrings.START);
     
-stringBuffer!.append(this.NOTHING);
+stringBuffer.append(this->NOTHING);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(InitInfo.getInstance()!.TESTING);
+stringBuffer.append(InitInfo::getInstance().TESTING);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(InitInfo.getInstance()!.TESTHTMLPATH);
+stringBuffer.append(InitInfo::getInstance().TESTHTMLPATH);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(InitInfo.getInstance()!.MAINPATH);
+stringBuffer.append(InitInfo::getInstance().MAINPATH);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(this.sqlStrings!.PRIMARY_KEY);
+stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer!.append(this.NOTHING);
+stringBuffer.append(this->NOTHING);
     
-stringBuffer!.append(this.sqlStrings!.END);
+stringBuffer.append(this->sqlStrings.END);
     
-this.tableData= stringBuffer!.toString();
+this->tableData= stringBuffer.toString();
     
-this.setTable(this.tableName);
+this->setTable(this->tableName);
     
 }
 
 
-    public bool get(){
+    public: bool get(){
 
         try {
             
-    keyAndValue: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keyAndValue = HashMap<any, any>();;
     
-keyAndValue!.put(this.NOTHING, this.NOTHING);
+keyAndValue.put(this->NOTHING, this->NOTHING);
     
 
-    hashMap: HashMap<any, any> = getRow(keyAndValue)!;;
+    HashMap<any, any> hashMap = getRow(keyAndValue);;
     
 
                         if(hashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    InitInfo.getInstance()!.set(hashMap);
+                                    InitInfo::getInstance().set(hashMap);
     
 
 
@@ -162,10 +161,10 @@ keyAndValue!.put(this.NOTHING, this.NOTHING);
                                 
                         else {
                             
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put(this.NOT_IN_DB, NAME, this.METHOD_GET);
+                                    PreLogUtil::put(this->NOT_IN_DB, NAME, this->METHOD_GET);
     
 
                                     }
@@ -184,10 +183,10 @@ keyAndValue!.put(this.NOTHING, this.NOTHING);
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this.NAME, this.METHOD_GET, e);
+                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_GET, e);
     
 
                                     }
@@ -203,20 +202,20 @@ keyAndValue!.put(this.NOTHING, this.NOTHING);
 }
 
 
-    public bool is(){
+    public: bool is(){
 
         try {
             
-    keyAndValue: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keyAndValue = HashMap<any, any>();;
     
-keyAndValue!.put(this.NOTHING, this.NOTHING);
+keyAndValue.put(this->NOTHING, this->NOTHING);
     
 
-    hashMap: HashMap<any, any> = getRow(keyAndValue)!;;
+    HashMap<any, any> hashMap = getRow(keyAndValue);;
     
 
                         if(hashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -231,10 +230,10 @@ keyAndValue!.put(this.NOTHING, this.NOTHING);
                                 
                         else {
                             
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADER))
                         
                                     {
-                                    PreLogUtil.put(this.NOT_IN_DB, this.NAME, this.METHOD_IS);
+                                    PreLogUtil::put(this->NOT_IN_DB, this->NAME, this->METHOD_IS);
     
 
                                     }
@@ -253,10 +252,10 @@ keyAndValue!.put(this.NOTHING, this.NOTHING);
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this.NAME, this.METHOD_IS, e);
+                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_IS, e);
     
 
                                     }
@@ -272,25 +271,25 @@ keyAndValue!.put(this.NOTHING, this.NOTHING);
 }
 
 
-    public update(){
-updateWhere(NOTHING, NOTHING, InitInfo.getInstance()!.toHashMap());
+    public: void update(){
+updateWhere(NOTHING, NOTHING, InitInfo::getInstance().toHashMap());
     
 }
 
 
-    public add(){
+    public: void add(){
 
         try {
             
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
-values.add(this.NOTHING);
+values.add(this->NOTHING);
     
-values.add(InitInfo.getInstance()!.getTesting());
+values.add(InitInfo::getInstance().getTesting());
     
-values.add(InitInfo.getInstance()!.getTestHtmlPath());
+values.add(InitInfo::getInstance().getTestHtmlPath());
     
-values.add(InitInfo.getInstance()!.getMainPath());
+values.add(InitInfo::getInstance().getMainPath());
     
 insert(values);
     
@@ -299,10 +298,10 @@ insert(values);
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this.NAME, this.METHOD_ADD, e);
+                                    PreLogUtil::putOE(this->commonStrings.EXCEPTION, this->NAME, this->METHOD_ADD, e);
     
 
                                     }
@@ -312,35 +311,35 @@ insert(values);
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
-                        if(super.createTable(this.tableData))
+                        if(super.createTable(this->tableData))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tableName +this.CREATED_SUCCESS;
+                        return this->tableName +this->CREATED_SUCCESS;
     
 
                                     }
                                 
                         else {
                             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.FAILED_TO_CREATE);
+stringBuffer.append(this->FAILED_TO_CREATE);
     
-stringBuffer!.append(this.tableData);
+stringBuffer.append(this->tableData);
     
-stringBuffer!.append(AbPathData.getInstance()!.EXTENSION_SEP);
+stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                         }

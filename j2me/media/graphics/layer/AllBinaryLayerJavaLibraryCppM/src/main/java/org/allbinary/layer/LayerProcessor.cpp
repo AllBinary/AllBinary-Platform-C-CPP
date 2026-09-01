@@ -63,69 +63,66 @@
 class LayerProcessor
             : public Object
         : public LayerProcessorInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const layerManager: LayerManager;
+    private: LayerManager layerManager;
 
-public constructor (LayerManager layerManager){
-
-            super();
-        this.layerManager= layerManager;
+public: LayerProcessor(LayerManager layerManager){
+this->layerManager= layerManager;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public LayerManager getLayerManager(){
+    public: LayerManager getLayerManager(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerManager;
+                        return this->layerManager;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager allBinaryLayerManager){
 
-    layerManager: LayerManager = this.getLayerManager()!;;
+    LayerManager layerManager = this->getLayerManager();;
     
 
-    size: int32_t = layerManager!.getSize()!;;
+    int32_t size = layerManager.getSize();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.processAt(allBinaryLayerManager, layerManager!.getLayerAt(index) as AllBinaryLayer, index);
+this->processAt(allBinaryLayerManager, layerManager.getLayerAt(index) as AllBinaryLayer, index);
     
 }
 

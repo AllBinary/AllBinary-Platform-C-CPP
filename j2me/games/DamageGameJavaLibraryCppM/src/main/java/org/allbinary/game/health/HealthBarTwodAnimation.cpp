@@ -47,9 +47,8 @@
         #include "HealthBarAnimation.h"
 
 class HealthBarTwodAnimation: public HealthBarAnimation {
-        
 
-public constructor (AllBinaryLayer layerInterface, int32_t location){
+public: HealthBarTwodAnimation(AllBinaryLayer layerInterface, int32_t location){
             super(layerInterface, location);
                     
 
@@ -58,13 +57,13 @@ public constructor (AllBinaryLayer layerInterface, int32_t location){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 
-    ax: int32_t = this.allbinaryLayer!.getViewPosition()!.getX()!;;
+    int32_t ax = this->allbinaryLayer.getViewPosition().getX();;
     
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.basicColor, this.colorP);
+this->basicSetColorUtil.setBasicColorP3(graphics, this->basicColor, this->colorP);
     
-graphics.fillRect(ax, this.getY() -1, this.x2, this.thickness);
+graphics.fillRect(ax, this->getY() -1, this->x2, this->thickness);
     
 }
 

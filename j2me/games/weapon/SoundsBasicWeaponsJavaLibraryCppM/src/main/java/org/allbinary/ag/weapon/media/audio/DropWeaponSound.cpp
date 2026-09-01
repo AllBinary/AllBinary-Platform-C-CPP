@@ -44,21 +44,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DropWeaponSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new DropWeaponSound();
+    private: static Sound soundInterface = DropWeaponSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropWeaponSound.soundInterface;
+                        return DropWeaponSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: DropWeaponSound(){
             super("resource:/wav/mine.wav");
                     
 

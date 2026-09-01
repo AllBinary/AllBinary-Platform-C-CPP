@@ -71,23 +71,22 @@
         #include "CollidableDestroyableDamageableLayer.h"
 
 class CollidableDestroyableDamageableBehavior: public CollidableBaseBehavior {
-        
 
-    const damageUtil: DamageUtil = DamageUtil.getInstance()!;
+    protected: const DamageUtil damageUtil = DamageUtil::getInstance();
 
-public constructor (bool collidable);
+public: CollidableDestroyableDamageableBehavior(bool collidable);
 
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-                //@Throws(Exception.constructor)
-            
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
-
-    public bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+
+    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
 
 };
 

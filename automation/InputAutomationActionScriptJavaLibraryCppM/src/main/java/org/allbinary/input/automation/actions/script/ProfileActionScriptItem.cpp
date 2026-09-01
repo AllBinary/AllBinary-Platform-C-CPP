@@ -67,121 +67,120 @@
 #include "JPopupMenu.h"
 #include "JMenuItem.h"
 
-class ProfileActionScriptItem: public DefaultMutableTreeNode: public ProfileActionScriptItemInterface, public ActionListener {
-        
+class ProfileActionScriptItem: public DefaultMutableTreeNode, public ProfileActionScriptItemInterface, public ActionListener {
 
-    private: static const EDIT: string = "Edit";
+    private: static const std::string EDIT = "Edit";
 
-    static const DELETE: string = "Delete";
+    protected: static const std::string DELETE = "Delete";
 
-    static const NEW_CONDITION: string = "New Condition";
+    protected: static const std::string NEW_CONDITION = "New Condition";
 
-    static const NEW_INPUT: string = "New Input";
+    protected: static const std::string NEW_INPUT = "New Input";
 
-    static const NEW_OUTPUT: string = "New Output";
+    protected: static const std::string NEW_OUTPUT = "New Output";
 
-    static const NEW_COLOR_AT: string = "Color At";
+    protected: static const std::string NEW_COLOR_AT = "Color At";
 
-    static const NEW_TIME_INTERVAL: string = "Time Interval";
+    protected: static const std::string NEW_TIME_INTERVAL = "Time Interval";
 
-    static const NEW_ALWAYS: string = "Always On/Off";
+    protected: static const std::string NEW_ALWAYS = "Always On/Off";
 
-    static const NEW_KEY_INPUT: string = "Key";
+    protected: static const std::string NEW_KEY_INPUT = "Key";
 
-    static const NEW_MOUSE_INPUT: string = "Mouse";
+    protected: static const std::string NEW_MOUSE_INPUT = "Mouse";
 
-    static const NEW_JOYSTICK_INPUT: string = "Joystick";
+    protected: static const std::string NEW_JOYSTICK_INPUT = "Joystick";
 
-    static const NEW_IMAGE_OUTPUT: string = "Image";
+    protected: static const std::string NEW_IMAGE_OUTPUT = "Image";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: jPopupMenu: JPopupMenu;
+    private: JPopupMenu jPopupMenu;
 
-public constructor (string label, Node node){
+public: ProfileActionScriptItem(std::string label, Node node){
             super(label);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init();
+this->init();
     
-this.logUtil!.putF("Label: " +label, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("Label: " +label, this, this->commonStrings.CONSTRUCTOR);
     
 }
 
 
-public constructor (string label){
+public: ProfileActionScriptItem(std::string label){
             super(label);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init();
+this->init();
     
-this.logUtil!.putF("Label: " +label, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("Label: " +label, this, this->commonStrings.CONSTRUCTOR);
     
 }
 
 
-    init(){
-this.setJPopupMenu(new JPopupMenu());
+    private: void init(){
+this->setJPopupMenu(JPopupMenu());
     
 
-    jMenuItemEdit: JMenuItem = new JMenuItem(EDIT);;
+    JMenuItem jMenuItemEdit = JMenuItem(EDIT);;
     
 
-    jMenuItemDelete: JMenuItem = new JMenuItem(DELETE);;
+    JMenuItem jMenuItemDelete = JMenuItem(DELETE);;
     
-jMenuItemEdit!.addActionListener(this);
+jMenuItemEdit.addActionListener(this);
     
-jMenuItemDelete!.addActionListener(this);
+jMenuItemDelete.addActionListener(this);
     
-this.getJPopupMenu()!.add(jMenuItemEdit);
+this->getJPopupMenu().add(jMenuItemEdit);
     
-this.getJPopupMenu()!.add(jMenuItemDelete);
+this->getJPopupMenu().add(jMenuItemDelete);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame){
+    public: void process(Long frame){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public JPopupMenu getJPopupMenu(){
+    public: JPopupMenu getJPopupMenu(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.jPopupMenu;
+                        return this->jPopupMenu;
     
 }
 
 
-    public showDialog(){
+    public: void showDialog(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public actionPerformed(ActionEvent actionEvent){
+    public: void actionPerformed(ActionEvent actionEvent){
 
-                        if(actionEvent!.getActionCommand()!.compareTo(ProfileActionScriptItem.EDIT) == 0)
+                        if(actionEvent.getActionCommand().compareTo(ProfileActionScriptItem::EDIT) == 0)
                         
                                     {
-                                    this.showDialog();
+                                    this->showDialog();
     
 
                                     }
@@ -189,8 +188,8 @@ this.getJPopupMenu()!.add(jMenuItemDelete);
 }
 
 
-    public setJPopupMenu(JPopupMenu jPopupMenu){
-this.jPopupMenu= jPopupMenu;
+    public: void setJPopupMenu(JPopupMenu jPopupMenu){
+this->jPopupMenu= jPopupMenu;
     
 }
 

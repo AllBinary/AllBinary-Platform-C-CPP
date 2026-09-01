@@ -94,21 +94,20 @@
 class ThreadFactoryUtil
             : public Object
          {
-        
 
-    private: static const instance: ThreadFactoryUtil = new ThreadFactoryUtil();
+    private: static ThreadFactoryUtil instance() { return ThreadFactoryUtil(); }
 
-    public static ThreadFactoryUtil getInstance();
+    public: static ThreadFactoryUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public Thread getInstanceGameCanvasRunnable(GameCanvasRunnableInterface runnable);
+    public: Thread getInstanceGameCanvasRunnable(GameCanvasRunnableInterface runnable);
 
-    public Thread getInstanceForRunnable(ABRunnable runnable);
+    public: Thread getInstanceForRunnable(ABRunnable runnable);
 
-    Thread getInstanceType(Runnable runnable, int32_t type);
+    private: Thread getInstanceType(Runnable runnable, int32_t type);
 
-    public start(Thread thread);
+    public: void start(Thread thread);
 
 };
 

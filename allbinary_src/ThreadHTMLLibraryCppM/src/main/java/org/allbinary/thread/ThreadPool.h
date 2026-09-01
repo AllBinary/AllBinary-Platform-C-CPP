@@ -79,70 +79,69 @@
 class ThreadPool
             : public Object
          {
-        
 
-    public static const NORMAL_PRIORITY: int32_t = 5;
+    public: static const int32_t NORMAL_PRIORITY = 5;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const NULL_RUNNABLE: NullRunnable = NullRunnable.getInstance()!;
+    protected: const NullRunnable NULL_RUNNABLE = NullRunnable::getInstance();
 
-    const threadPoolStrings: ThreadPoolStrings = ThreadPoolStrings.getInstance()!;
+    protected: const ThreadPoolStrings threadPoolStrings = ThreadPoolStrings::getInstance();
 
-    const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: isAlive: bool= false;
+    private: bool isAlive= false;
 
-    private: taskQueue: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList taskQueue = BasicArrayListD();
 
-    private: numThreads: int32_t= 0;
+    private: int32_t numThreads= 0;
 
-    private: runningTask: bool= false;
+    private: bool runningTask= false;
 
-public constructor (string poolName, int32_t numThreads, int32_t priority);
+public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    private: currentPriorityRunnable: PriorityRunnable = this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
-
-                //@Throws(Exception.constructor)
-            
-    public runAPriorityTask();
+    private: PriorityRunnable currentPriorityRunnable = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;
 
                 //@Throws(Exception.constructor)
             
-    public runATask();
+    public: void runAPriorityTask();
 
-    public init();
+                //@Throws(Exception.constructor)
+            
+    public: void runATask();
+
+    public: void init();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public runTaskWithPriority(PriorityRunnable task);
+    public: void runTaskWithPriority(PriorityRunnable task);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public runTask(Runnable task);
+    public: void runTask(Runnable task);
 
                 //@Throws(InterruptedException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    Runnable getTask();
+    protected: Runnable getTask();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public clear();
+    public: void clear();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public close();
+    public: void close();
 
-    public join();
+    public: void join();
 
-    public bool isBusy();
+    public: bool isBusy();
 
-    threadStarted();
+    protected: void threadStarted();
 
-    threadStopped();
+    protected: void threadStopped();
 
-    startTask(Runnable task);
+    protected: void startTask(Runnable task);
 
-    completedTask(Runnable task);
+    protected: void completedTask(Runnable task);
 
 };
 

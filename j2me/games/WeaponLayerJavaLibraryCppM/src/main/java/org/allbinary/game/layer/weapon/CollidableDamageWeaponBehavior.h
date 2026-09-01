@@ -70,33 +70,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CollidableDamageWeaponBehavior: public CollidableDestroyableDamageableBehavior {
-        
 
-    private: collided: bool= false;
+    private: bool collided= false;
 
-    collisionHelper: CollisionHelper;
+    protected: CollisionHelper collisionHelper;
 
-public constructor (bool collidable);
+public: CollidableDamageWeaponBehavior(bool collidable);
 
-    public init(AllBinaryLayer sourceLayerInterface);
+    public: void init(AllBinaryLayer sourceLayerInterface);
 
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-                //@Throws(Exception.constructor)
-            
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-    public bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
 
-    public CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
 
-    public bool isCollided();
+                //@Throws(Exception.constructor)
+            
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
 
-    setCollided(bool collided);
+    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+
+    public: bool isCollided();
+
+    private: void setCollided(bool collided);
 
 };
 

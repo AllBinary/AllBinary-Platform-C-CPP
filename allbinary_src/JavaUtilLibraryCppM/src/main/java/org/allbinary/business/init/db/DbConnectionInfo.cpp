@@ -52,251 +52,248 @@
 class DbConnectionInfo
             : public Object
         : public DatabaseConnectionInfoInterface {
-        
 
-    private: jdbcDriver: string;
+    private: std::string jdbcDriver;
 
-    private: name: string;
+    private: std::string name;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: schema: string;
+    private: std::string schema;
 
-    private: server: string;
+    private: std::string server;
 
-    private: port: string;
+    private: std::string port;
 
-    private: url: string;
+    private: std::string url;
 
-    private: host: string;
+    private: std::string host;
 
-    private: const SCHEMA_SEP: string = "://";
+    private: const std::string SCHEMA_SEP = "://";
 
-    private: const USER_NAME_KEY: string = "?user=";
+    private: const std::string USER_NAME_KEY = "?user=";
 
-    private: const PASSWORD_KEY: string = "&password=";
+    private: const std::string PASSWORD_KEY = "&password=";
 
-public constructor (){
-
-            super();
-        }
+public: DbConnectionInfo(){
+}
 
 
-    updateUrl(){
-this.updateHost();
+    private: void updateUrl(){
+this->updateHost();
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getHost());
+stringBuffer.append(this->getHost());
     
-stringBuffer!.append(this.getName());
+stringBuffer.append(this->getName());
     
-stringBuffer!.append(this.getUserNameKey());
+stringBuffer.append(this->getUserNameKey());
     
-stringBuffer!.append(this.getUserName());
+stringBuffer.append(this->getUserName());
     
-stringBuffer!.append(this.getPasswordKey());
+stringBuffer.append(this->getPasswordKey());
     
-stringBuffer!.append(this.getPassword());
+stringBuffer.append(this->getPassword());
     
-this.url= stringBuffer!.toString();
+this->url= stringBuffer.toString();
     
 }
 
 
-    public string getUrl(){
+    public: std::string getUrl(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.url;
+                        return this->url;
     
 }
 
 
-    public string getJdbcDriver(){
+    public: std::string getJdbcDriver(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.jdbcDriver;
+                        return this->jdbcDriver;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getUserName(){
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userName;
+                        return this->userName;
     
 }
 
 
-    public string getPassword(){
+    public: std::string getPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.password;
+                        return this->password;
     
 }
 
 
-    updateHost(){
+    private: void updateHost(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getSchema());
+stringBuffer.append(this->getSchema());
     
-stringBuffer!.append(this.SCHEMA_SEP);
+stringBuffer.append(this->SCHEMA_SEP);
     
-stringBuffer!.append(this.getServer());
+stringBuffer.append(this->getServer());
     
 
-                        if(this.getPort() != 
-                                    null
-                                 && this.getPort()!.length() > 1)
+                        if(this->getPort() != 
+                                    nullptr
+                                 && this->getPort().length() > 1)
                         
                                     {
-                                    stringBuffer!.append(CommonSeps.getInstance()!.COLON);
+                                    stringBuffer.append(CommonSeps::getInstance().COLON);
     
-stringBuffer!.append(this.getPort());
+stringBuffer.append(this->getPort());
     
 
                                     }
                                 
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
-this.host= stringBuffer!.toString();
+this->host= stringBuffer.toString();
     
 }
 
 
-    public string getHost(){
+    public: std::string getHost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.host;
+                        return this->host;
     
 }
 
 
-    public string getSchema(){
+    public: std::string getSchema(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.schema;
+                        return this->schema;
     
 }
 
 
-    public string getServer(){
+    public: std::string getServer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.server;
+                        return this->server;
     
 }
 
 
-    public string getPort(){
+    public: std::string getPort(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.port;
+                        return this->port;
     
 }
 
 
-    public setJdbcDriver(string value){
-this.jdbcDriver= value;
+    public: void setJdbcDriver(std::string value){
+this->jdbcDriver= value;
     
 }
 
 
-    public setName(string value){
-this.name= value;
+    public: void setName(std::string value){
+this->name= value;
     
-this.updateUrl();
-    
-}
-
-
-    public setUserName(string value){
-this.userName= value;
-    
-this.updateUrl();
+this->updateUrl();
     
 }
 
 
-    public setPassword(string value){
-this.password= value;
+    public: void setUserName(std::string value){
+this->userName= value;
     
-this.updateUrl();
-    
-}
-
-
-    public setSchema(string value){
-this.schema= value;
-    
-this.updateUrl();
+this->updateUrl();
     
 }
 
 
-    public setServer(string value){
-this.server= value;
+    public: void setPassword(std::string value){
+this->password= value;
     
-this.updateUrl();
-    
-}
-
-
-    public setPort(string value){
-this.port= value;
-    
-this.updateUrl();
+this->updateUrl();
     
 }
 
 
-    public string getUserNameKey(){
+    public: void setSchema(std::string value){
+this->schema= value;
+    
+this->updateUrl();
+    
+}
+
+
+    public: void setServer(std::string value){
+this->server= value;
+    
+this->updateUrl();
+    
+}
+
+
+    public: void setPort(std::string value){
+this->port= value;
+    
+this->updateUrl();
+    
+}
+
+
+    public: std::string getUserNameKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.USER_NAME_KEY;
+                        return this->USER_NAME_KEY;
     
 }
 
 
-    public string getPasswordKey(){
+    public: std::string getPasswordKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.PASSWORD_KEY;
+                        return this->PASSWORD_KEY;
     
 }
 

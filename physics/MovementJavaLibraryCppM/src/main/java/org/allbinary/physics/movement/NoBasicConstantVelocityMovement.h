@@ -53,13 +53,12 @@
         #include "BasicConstantVelocityMovement.h"
 
 class NoBasicConstantVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-public constructor ();
+public: NoBasicConstantVelocityMovement();
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
 };
 

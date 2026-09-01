@@ -48,15 +48,14 @@
 class ImageCacheable
             : public Object
          {
-        
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string name, any = {} anyType);
+public: ImageCacheable(std::string name, Object* anyType);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

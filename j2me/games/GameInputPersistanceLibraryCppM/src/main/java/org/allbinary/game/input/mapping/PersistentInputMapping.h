@@ -108,63 +108,62 @@
 class PersistentInputMapping
             : public Object
          {
-        
 
-    public static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    public: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PersistentInputMapping getNullInstance();
+    public: static PersistentInputMapping getNullInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    private: const inputMapping: InputToGameKeyMapping = new InputToGameKeyMapping();
+    private: const InputToGameKeyMapping inputMapping = InputToGameKeyMapping();
 
-    private: inputMappingEventListenerInterface: InputMappingEventListenerInterface = NullInputMappingEventListener.NULL_INPUT_MAPPING_EVENT_LISTENER;
+    private: InputMappingEventListenerInterface inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
 
-    private: const inputPersistance: InputPersistance;
+    private: InputPersistance inputPersistance;
 
-protected constructor (string name);
+protected: PersistentInputMapping(std::string name);
 
-    public int32_t getTotalMapped();
+    public: int32_t getTotalMapped();
 
-    bool isDefaultNew();
+    protected: bool isDefaultNew();
 
-    InputToGameKeyMapping getDefault();
-
-                //@Throws(Exception.constructor)
-            
-    public setDefault(AbeClientInformationInterface abeClientInformation);
+    protected: InputToGameKeyMapping getDefault();
 
                 //@Throws(Exception.constructor)
             
-    public update(AbeClientInformationInterface abeClientInformation);
-
-    private: inputMappingEvent: InputMappingEvent = new InputMappingEvent(this);
+    public: void setDefault(AbeClientInformationInterface abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation);
+    public: void update(AbeClientInformationInterface abeClientInformation);
+
+    private: InputMappingEvent inputMappingEvent = InputMappingEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation);
-
-    public setInputMappingEventListenerInterface(InputMappingEventListenerInterface inputMappingEventListenerInterface);
-
-    InputMappingEventListenerInterface getInputMappingEventListenerInterface();
-
-    public InputToGameKeyMapping getInputMapping();
+    public: void save(AbeClientInformationInterface abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public bool isDelete(Input input);
+    public: void init(AbeClientInformationInterface abeClientInformation);
+
+    public: void setInputMappingEventListenerInterface(InputMappingEventListenerInterface inputMappingEventListenerInterface);
+
+    private: InputMappingEventListenerInterface getInputMappingEventListenerInterface();
+
+    public: InputToGameKeyMapping getInputMapping();
 
                 //@Throws(Exception.constructor)
             
-    public bool isSystemInput(Input input);
+    public: bool isDelete(Input input);
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isSystemInput(Input input);
 
 };
 

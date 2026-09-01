@@ -45,13 +45,12 @@
         #include "DemoGameMidletEvent.h"
 
 class DemoGameMidletEventListener: public EventListenerInterface {
-        
 
-    onDemoStart();
+    void onDemoStart();
 
-    onGameStart();
+    void onGameStart();
 
-    onDemoGameMidletEvent(DemoGameMidletEvent demoGameMidletEvent);
+    void onDemoGameMidletEvent(DemoGameMidletEvent demoGameMidletEvent);
 
 };
 

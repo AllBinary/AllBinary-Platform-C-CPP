@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -100,44 +102,43 @@
 class InventorySearch
             : public Object
         : public InventoryViewSearchInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const searchRequest: SearchRequest;
+    private: SearchRequest searchRequest;
 
-public constructor (SearchRequest searchRequest){
+public: InventorySearch(SearchRequest searchRequest){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.searchRequest= searchRequest;
+this->searchRequest= searchRequest;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string searchSingleStaticPage(){
+    public: std::string searchSingleStaticPage(){
 
         try {
             
-    storeFront: StoreFrontInterface = this.searchRequest!.getStoreFront()!;;
+    StoreFrontInterface storeFront = this->searchRequest.getStoreFront();;
     
 
-    searchParams: SearchParams = this.searchRequest!.getParams()!;;
+    SearchParams searchParams = this->searchRequest.getParams();;
     
 
-    columnValueHashMap: HashMap<any, any> = searchParams!.get()!;;
+    HashMap<any, any> columnValueHashMap = searchParams.get();;
     
 
-    file: string = new StaticPagesEntity().getFile(storeFront!.getName(), new Replace("-", CommonSeps.getInstance()!.SPACE).all(columnValueHashMap!.get(BasicItemData.KEYWORDS) as string))!;;
+    std::string file = StaticPagesEntity().getFile(storeFront.getName(), Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(BasicItemData::KEYWORDS) as string));;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(file))
+                        if(StringValidationUtil::getInstance().isEmpty(file))
                         
                                     {
                                     
@@ -151,24 +152,24 @@ this.searchRequest= searchRequest;
                                 
                         else {
                             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(storeFront!.getCurrentHostName());
+stringBuffer.append(storeFront.getCurrentHostName());
     
-stringBuffer!.append(storeFront!.getCurrentHostNamePath());
+stringBuffer.append(storeFront.getCurrentHostNamePath());
     
-stringBuffer!.append(storeFront!.getStaticPath());
+stringBuffer.append(storeFront.getStaticPath());
     
-stringBuffer!.append(file);
+stringBuffer.append(file);
     
-stringBuffer!.append(this.searchRequest!.getParams()!.getEndPage());
+stringBuffer.append(this->searchRequest.getParams().getEndPage());
     
-stringBuffer!.append(AbPathData.getInstance()!.EXTENSION_SEP);
+stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
     
-stringBuffer!.append(InputOutputTypeData.getInstance()!.DEFAULT);
+stringBuffer.append(InputOutputTypeData::getInstance().DEFAULT);
     
 
-    filePath: string = new Replace(CommonSeps.getInstance()!.SPACE, "%20").all(stringBuffer!.toString())!;;
+    std::string filePath = Replace(CommonSeps::getInstance().SPACE, "%20").all(stringBuffer.toString());;
     
 
 
@@ -184,10 +185,10 @@ stringBuffer!.append(InputOutputTypeData.getInstance()!.DEFAULT);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "searchSingleStaticPage", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "searchSingleStaticPage", e);
     
 
                                     }
@@ -195,7 +196,7 @@ stringBuffer!.append(InputOutputTypeData.getInstance()!.DEFAULT);
 
 
 
-                            throw new Exception("Failed retrieve Single Product Page Static");
+                            throw Exception("Failed retrieve Single Product Page Static");
                     
 }
 
@@ -204,27 +205,27 @@ stringBuffer!.append(InputOutputTypeData.getInstance()!.DEFAULT);
 
                 //@Throws(Exception.constructor)
             
-    public string searchSingleDynamicPage(){
+    public: std::string searchSingleDynamicPage(){
 
         try {
             
-    str: std::vector<string> = this.search()!;;
+    std::vector<std::string> str = this->search();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return str[this.searchRequest!.getParams()!.getStartPageInt()!.intValue()]!;
+                        return str[this->searchRequest.getParams().getStartPageInt().intValue()]!;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "searchSingleDynamicPage", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "searchSingleDynamicPage", e);
     
 
                                     }
@@ -232,7 +233,7 @@ stringBuffer!.append(InputOutputTypeData.getInstance()!.DEFAULT);
 
 
 
-                            throw new Exception("Failed retrieve Single Product Page Dynamically");
+                            throw Exception("Failed retrieve Single Product Page Dynamically");
                     
 }
 
@@ -241,36 +242,36 @@ stringBuffer!.append(InputOutputTypeData.getInstance()!.DEFAULT);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<string> search(){
+    public: std::vector<std::string> search(){
 
-    abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;;
+    AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
     
 
-    inventorySearchUtil: InventorySearchUtil = InventorySearchUtil.getInstance()!;;
+    InventorySearchUtil inventorySearchUtil = InventorySearchUtil::getInstance();;
     
 
-    vector: Vector = inventorySearchUtil!.getBasicItemIdColumn(this.searchRequest)!;;
+    Vector vector = inventorySearchUtil.getBasicItemIdColumn(this->searchRequest);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return inventorySearchUtil!.search(abeClientInformation, searchRequest, vector);;
+                        return inventorySearchUtil.search(abeClientInformation, searchRequest, vector);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getProduct(string product){
+    public: std::string getProduct(std::string product){
 
-    abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;;
+    AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventorySearchProductUtil.getInstance()!.getProduct(abeClientInformation, this.searchRequest, product);;
+                        return InventorySearchProductUtil::getInstance().getProduct(abeClientInformation, this->searchRequest, product);;
     
 }
 

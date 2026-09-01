@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -75,116 +77,114 @@
 #include "VectorAnimationInterface.h"
 #include "AnimationBehavior.h"
 
-class VectorBaseRotationAnimation: public RotationAnimation: public VectorAnimationInterface {
-        
+class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: currentPoints: std::vector<std::vector<std::vector<int32_t>>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 
-public constructor (AngleInfo angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
-            super(angleInfo, CircularIndexUtil.createInstance(360 /angleInfo!.getAngleIncrementInfo()!.getAngleIncrement()), animationBehavior);
+public: VectorBaseRotationAnimation(AngleInfo angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
+            super(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setPoints(currentPoints);
+this->setPoints(currentPoints);
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize();;
+                        return this->getSize();;
     
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!.getIndex();;
+                        return this->circularIndexUtil.getIndex();;
     
 }
 
 
-    public setFrame(int32_t index){
-this.circularIndexUtil!.setIndex(index);
+    public: void setFrame(int32_t index){
+this->circularIndexUtil.setIndex(index);
     
 }
 
 
-    public nextFrame(){
-this.circularIndexUtil!.next();
+    public: void nextFrame(){
+this->circularIndexUtil.next();
     
 }
 
 
-    public previousFrame(){
-this.circularIndexUtil!.previous();
+    public: void previousFrame(){
+this->circularIndexUtil.previous();
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentPoints!.length;
+                        return this->currentPoints.size();
     
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.basicSetColorUtil!.setBasicColorP(graphics, this.basicColor);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->basicSetColorUtil.setBasicColorP(graphics, this->basicColor);
     
 
         try {
             
-    nextPointX: int32_t = 0;;
+    int32_t nextPointX = 0;;
     
 
-    nextPointY: int32_t = 0;;
+    int32_t nextPointY = 0;;
     
 
-    nextPoint: std::vector<int32_t>;;
+    std::vector<int32_t> nextPoint;;
     
 
-    point: std::vector<int32_t>;;
+    std::vector<int32_t> point;;
     
 
-    currentPointsFrame: std::vector<std::vector<int32_t>> = this.currentPoints[this.circularIndexUtil!.getIndex()]!;;
+    std::vector<std::vector<int32_t>> currentPointsFrame = this->currentPoints[this->circularIndexUtil.getIndex()];;
     
 
-    size: int32_t = currentPointsFrame!.length
-                ;;
+    int32_t size = currentPointsFrame.size();;
     
 
-    index: int32_t = size -2;;
+    int32_t index = size -2;;
     
 
         while(--index >= 0)
@@ -218,27 +218,27 @@ nextPointY= nextPoint[1]!;
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "paintVectors", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "paintVectors", e);
     
 }
 
 }
 
 
-    public std::vector<std::vector<int32_t>> getPoints(int32_t frame){
+    public: std::vector<std::vector<int32_t>> getPoints(int32_t frame){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentPoints[frame]!;
+                        return this->currentPoints[frame]!;
     
 }
 
 
-    public setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints){
-this.currentPoints= currentPoints;
+    public: void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints){
+this->currentPoints= currentPoints;
     
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.currentPoints!.length);
+this->circularIndexUtil= CircularIndexUtil::createInstance(this->currentPoints.size());
     
 }
 

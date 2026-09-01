@@ -52,9 +52,8 @@
 class DomNodeListHelper
             : public Object
          {
-        
 
-    public static Vector getVector(NodeList nodeList);
+    public: static Vector getVector(NodeList nodeList);
 
 };
 

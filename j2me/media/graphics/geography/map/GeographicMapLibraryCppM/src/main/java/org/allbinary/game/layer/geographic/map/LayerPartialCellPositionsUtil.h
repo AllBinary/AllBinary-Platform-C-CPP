@@ -62,19 +62,18 @@
 class LayerPartialCellPositionsUtil
             : public Object
          {
-        
 
-    private: static const instance: LayerPartialCellPositionsUtil = new LayerPartialCellPositionsUtil();
+    private: static LayerPartialCellPositionsUtil instance() { return LayerPartialCellPositionsUtil(); }
 
-    public static LayerPartialCellPositionsUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList getAll(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, BasicArrayList reusableList);
+    public: static LayerPartialCellPositionsUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getAllDXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t dx, int32_t dy, BasicArrayList reusableList);
+    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, BasicArrayList reusableList);
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getAllDXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t dx, int32_t dy, BasicArrayList reusableList);
 
 };
 

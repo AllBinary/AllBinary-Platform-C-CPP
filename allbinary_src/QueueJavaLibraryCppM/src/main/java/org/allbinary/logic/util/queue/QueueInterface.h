@@ -43,19 +43,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class QueueInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    bool offer(any anyType);
+    bool offer(Object* anyType);
 
                 //@Throws(Exception.constructor)
             
-    remove(any anyType);
+    void remove(Object* anyType);
 
                 //@Throws(Exception.constructor)
             
-    any remove();
+    Object* remove();
 
 };
 

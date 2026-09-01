@@ -75,49 +75,46 @@
 class Animation
             : public Object
         : public AnimationInterface, public OpenGLSurfaceChangedInterface {
-        
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    colorP: int32_t= 0;
+    protected: int32_t colorP= 0;
 
-    changeBasicColorP: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    protected: BasicColor changeBasicColorP = BasicColorFactory::getInstance().NULL_COLOR;
 
-    changeColorP: int32_t= 0;
+    protected: int32_t changeColorP= 0;
 
-    public alphaP: int32_t= 0;
+    public: int32_t alphaP= 0;
 
-public constructor (){
-
-            super();
-        }
+public: Animation(){
+}
 
 
-    public setAlpha(int32_t alpha){
-this.alphaP= alpha;
+    public: void setAlpha(int32_t alpha){
+this->alphaP= alpha;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 }
 
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
 }
 
 
-    public bool isThreed(){
+    public: bool isThreed(){
 
 
 
@@ -127,85 +124,85 @@ this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.ge
 }
 
 
-    public BasicColor getBasicColorP(){
+    public: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
-this.colorP= this.basicColor!.intValue();
+this->colorP= this->basicColor.intValue();
     
 }
 
 
-    public setBackgroundBasicColorP(BasicColor basicColor){
+    public: void setBackgroundBasicColorP(BasicColor basicColor){
 }
 
 
-    public BasicColor getChangeBasicColor(){
+    public: BasicColor getChangeBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.changeBasicColorP;
+                        return this->changeBasicColorP;
     
 }
 
 
-    public changeBasicColor(BasicColor basicColor){
-this.changeBasicColorP= basicColor;
+    public: void changeBasicColor(BasicColor basicColor){
+this->changeBasicColorP= basicColor;
     
-this.changeColorP= this.changeBasicColorP!.intValue();
+this->changeColorP= this->changeBasicColorP.intValue();
     
 }
 
 
-    public int32_t getChangeColor(){
+    public: int32_t getChangeColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.changeColorP;
+                        return this->changeColorP;
     
 }
 
 
-    public int32_t getColor(){
+    public: int32_t getColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorP;
+                        return this->colorP;
     
 }
 
 
-    public setScale(float scaleX, float scaleY){
+    public: void setScale(float scaleX, float scaleY){
 }
 
 
-    public setMaxScale(float maxScaleX, float maxScaleY){
+    public: void setMaxScale(float maxScaleX, float maxScaleY){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void set(GL gl){
 }
 
 
-    public setDx(int32_t dx){
+    public: void setDx(int32_t dx){
 }
 
 
-    public int32_t getDx(){
+    public: int32_t getDx(){
 
 
 
@@ -215,11 +212,11 @@ this.changeColorP= this.changeBasicColorP!.intValue();
 }
 
 
-    public setDy(int32_t dy){
+    public: void setDy(int32_t dy){
 }
 
 
-    public int32_t getDy(){
+    public: int32_t getDy(){
 
 
 

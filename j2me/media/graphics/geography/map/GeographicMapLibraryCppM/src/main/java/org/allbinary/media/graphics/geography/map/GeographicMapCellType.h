@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPE_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/RuntimeException.h"
@@ -56,21 +58,20 @@
 class GeographicMapCellType
             : public Object
          {
-        
 
-    public static const NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY: std::vector<GeographicMapCellType> = [];
+    public: static const std::vector<GeographicMapCellType> NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY = {};
 
-    public static const NULL_GEOGRAPHIC_MAP_CELL_TYPE: GeographicMapCellType = new GeographicMapCellType(Integer.MIN_VALUE, 0);
+    public: static const GeographicMapCellType NULL_GEOGRAPHIC_MAP_CELL_TYPE = GeographicMapCellType(Integer::MIN_VALUE, 0);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const type: int32_t;
+    private: int32_t type;
 
-public constructor (int32_t type, int32_t reset);
+public: GeographicMapCellType(int32_t type, int32_t reset);
 
-    public int32_t getType();
+    public: int32_t getType();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

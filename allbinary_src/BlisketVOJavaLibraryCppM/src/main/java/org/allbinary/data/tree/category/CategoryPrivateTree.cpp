@@ -71,28 +71,25 @@
 class CategoryPrivateTree
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    categoryFactoryInterface: CategoryFactoryInterface;
+    protected: CategoryFactoryInterface categoryFactoryInterface;
 
-public constructor (CategoryFactoryInterface categoryFactoryInterface){
+public: CategoryPrivateTree(CategoryFactoryInterface categoryFactoryInterface){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, "CategoryPrivateTree(CategoryFactoryInterface categoryFactoryInterface)");
+this->logUtil.putF(commonStrings.START, this, "CategoryPrivateTree(CategoryFactoryInterface categoryFactoryInterface)");
     
 
                                     }
                                 
-this.categoryFactoryInterface= categoryFactoryInterface;
+this->categoryFactoryInterface= categoryFactoryInterface;
     
 }
 
@@ -100,29 +97,29 @@ this.categoryFactoryInterface= categoryFactoryInterface;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    save(CategoryInterface categoryInterface){
+    protected: void save(CategoryInterface categoryInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Saving Category File: " +categoryInterface!.getFilePath(), this, "save()");
+                                    this->logUtil.putF("Saving Category File: " +categoryInterface.getFilePath(), this, "save()");
     
 
                                     }
                                 
 
-    document: Document = new CategoryComponent(categoryInterface).toXmlDoc()!;;
+    Document document = CategoryComponent(categoryInterface).toXmlDoc();;
     
 
-    cryptFileWriter: CryptFileWriter = new CryptFileWriter(CategoryData.getInstance()!.UNCRYPTED_EXTENSION, CategoryData.getInstance()!.ENCRYPTED_EXTENSION);;
+    CryptFileWriter cryptFileWriter = CryptFileWriter(CategoryData::getInstance().UNCRYPTED_EXTENSION, CategoryData::getInstance().ENCRYPTED_EXTENSION);;
     
-cryptFileWriter!.write(categoryInterface!.getFilePath(), document);
+cryptFileWriter.write(categoryInterface.getFilePath(), document);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("end", this, "save()");
+                                    this->logUtil.putF("end", this, "save()");
     
 
                                     }
@@ -133,23 +130,23 @@ cryptFileWriter!.write(categoryInterface!.getFilePath(), document);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    delete(CategoryInterface categoryInterface){
+    protected: void delete_(CategoryInterface categoryInterface){
 
-                        if(categoryInterface!.isLeaf())
+                        if(categoryInterface.isLeaf())
                         
                                     {
                                     
-    categoryFile: AbFile = AbFile.createAbFileFromAbPath(categoryInterface!.getFilePath())!;;
+    AbFile categoryFile = AbFile::createAbFileFromAbPath(categoryInterface.getFilePath());;
     
 
-                        if(categoryFile!.delete())
+                        if(categoryFile.delete_())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Removed: " +categoryInterface!.getFilePath(), this, "delete(CategoryInterface)");
+                                    this->logUtil.putF("Removed: " +categoryInterface.getFilePath(), this, "delete(CategoryInterface)");
     
 
                                     }
@@ -162,10 +159,10 @@ cryptFileWriter!.write(categoryInterface!.getFilePath(), document);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Not a leaf unable to remove", this, "delete(CategoryInterface)");
+                                    this->logUtil.putF("Not a leaf unable to remove", this, "delete(CategoryInterface)");
     
 
                                     }

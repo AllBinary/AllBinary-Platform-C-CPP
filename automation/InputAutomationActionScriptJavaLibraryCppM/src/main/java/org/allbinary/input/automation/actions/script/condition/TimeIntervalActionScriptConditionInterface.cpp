@@ -41,11 +41,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TimeIntervalActionScriptConditionInterface {
-        
 
     TimeDelayHelper getTimeDelayHelper()
 
-    log()
+    void log()
 
 };
 

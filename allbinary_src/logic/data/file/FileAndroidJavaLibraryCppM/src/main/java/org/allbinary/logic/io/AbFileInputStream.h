@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABFILEINPUTSTREAM_H
 
+            #include <vector>
+        
 #include <java/io/FileInputStream.h>
 
       
@@ -56,44 +58,43 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileInputStream: public InputStream {
-        
 
-    private: fileInputStream: FileInputStream;
+    private: FileInputStream fileInputStream;
 
-public constructor (FileInputStream fileInputStream);
+public: AbFileInputStream(FileInputStream fileInputStream);
 
-    public mark(int32_t readlimit);
+    public: void mark(int32_t readlimit);
 
-    public bool markSupported();
+    public: bool markSupported();
 
                 //@Throws(IOException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public reset();
+    public: void reset();
 
                 //@Throws(IOException.constructor)
             
-    public int32_t available();
+    public: int32_t available();
 
-    public close();
+    public: void close();
 
-    public FileChannel getChannel();
-
-                //@Throws(IOException.constructor)
-            
-    public int32_t read();
+    public: FileChannel getChannel();
 
                 //@Throws(IOException.constructor)
             
-    public int32_t read(std::vector<int8_t> b);
+    public: int32_t read();
 
                 //@Throws(IOException.constructor)
             
-    public int32_t read(std::vector<int8_t> buffer, int32_t offset, int32_t count);
+    public: int32_t read(std::vector<int8_t> b);
 
                 //@Throws(IOException.constructor)
             
-    public int64_t skip(int64_t n);
+    public: int32_t read(std::vector<int8_t> buffer, int32_t offset, int32_t count);
+
+                //@Throws(IOException.constructor)
+            
+    public: int64_t skip(int64_t n);
 
 };
 

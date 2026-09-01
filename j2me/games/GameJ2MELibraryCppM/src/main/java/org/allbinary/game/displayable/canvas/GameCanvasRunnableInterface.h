@@ -67,31 +67,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameCanvasRunnableInterface: public RunnableInterface, public PaintableInterface, public ItemStateListener, public GameStateCompositeInterface {
-        
 
-    string getTitle();
+    std::string getTitle();
 
     bool isInitialized();
 
     bool isPaused();
 
-    unPause();
+    void unPause();
 
-    pause();
+    void pause();
 
     bool isHighScoreSubmitted();
 
                 //@Throws(Exception.constructor)
             
-    setHighScoreSubmitted(bool highScoreSubmitted);
+    void setHighScoreSubmitted(bool highScoreSubmitted);
 
                 //@Throws(Exception.constructor)
             
-    processGameOver();
+    void processGameOver();
 
     bool isGameOver();
 
-    initCommands(CommandListener cmdListener);
+    void initCommands(CommandListener cmdListener);
 
                 //@Throws(Exception.constructor)
             
@@ -103,7 +102,7 @@ class GameCanvasRunnableInterface: public RunnableInterface, public PaintableInt
 
                 //@Throws(Exception.constructor)
             
-    setLoadStateHashtable(Hashtable<any, any> hashtable);
+    void setLoadStateHashtable(Hashtable<any, any> hashtable);
 
     int32_t getType();
 

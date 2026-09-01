@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLROW_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLROW_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
@@ -77,70 +79,69 @@
         #include "AbSqlColumn.h"
 
 class AbSqlRow: public AbSqlColumn {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const EQUAL_QUOTE: string = "=\"";
+    private: const std::string EQUAL_QUOTE = "=\"";
 
-    private: const ESCAPE_QUOTES: string = "\\\"";
+    private: const std::string ESCAPE_QUOTES = "\\\"";
 
-    private: const GET_ROW: string = "Row Value: ";
+    private: const std::string GET_ROW = "Row Value: ";
 
-    private: const METHOD_GET_ROW: string = "getRow()";
+    private: const std::string METHOD_GET_ROW = "getRow()";
 
-    private: const METHOD_GET_ROWS: string = "getRows()";
+    private: const std::string METHOD_GET_ROWS = "getRows()";
 
-    private: const METHOD_GET_ALL_ROWS: string = "getAllRows()";
+    private: const std::string METHOD_GET_ALL_ROWS = "getAllRows()";
 
-    private: const METHOD_UPDATE_WHERE: string = "updateWhere()";
+    private: const std::string METHOD_UPDATE_WHERE = "updateWhere()";
 
-    private: const METHOD_GET_ROWS_WHERE_BETWEEN: string = "getRowsWhereBetween()";
+    private: const std::string METHOD_GET_ROWS_WHERE_BETWEEN = "getRowsWhereBetween()";
 
-    private: const METHOD_DELETE_WHERE: string = "deleteWhere()";
+    private: const std::string METHOD_DELETE_WHERE = "deleteWhere()";
 
-    private: const ROW_VALUE_LABEL: string = "Row Value: ";
+    private: const std::string ROW_VALUE_LABEL = "Row Value: ";
 
-    private: const ROW_VALUES_LABEL: string = "Row Values: ";
+    private: const std::string ROW_VALUES_LABEL = "Row Values: ";
 
-    private: const NO_RESULTS_IN_RESULT_SET: string = "No Results in ResultSet";
+    private: const std::string NO_RESULTS_IN_RESULT_SET = "No Results in ResultSet";
 
-    private: const COLUMN_NAME_LABEL: string = "columnName: ";
+    private: const std::string COLUMN_NAME_LABEL = "columnName: ";
 
-    private: const INSERT_END: string = "')";
+    private: const std::string INSERT_END = "')";
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlRow(DbConnectionInfo databaseConnectionInfoInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    string getValue(string value);
+    private: std::string getValue(std::string value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public updateWhere(string key, string value, HashMap<any, any> updatedKeyValuePairs);
+    public: void updateWhere(std::string key, std::string value, HashMap<any, any> updatedKeyValuePairs);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public updateWhere(HashMap<any, any> whereKeyValuePairs, HashMap<any, any> updatedKeyValuePairs);
+    public: void updateWhere(HashMap<any, any> whereKeyValuePairs, HashMap<any, any> updatedKeyValuePairs);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public deleteWhere(string key, string value);
+    public: void deleteWhere(std::string key, std::string value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public deleteWhere(HashMap<any, any> keysAndValues);
+    public: void deleteWhere(HashMap<any, any> keysAndValues);
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public HashMap<any, any> getRow(HashMap<any, any> keysAndValues);
+    public: HashMap<any, any> getRow(HashMap<any, any> keysAndValues);
 
-    public Vector getRows(HashMap<any, any> keysAndValues);
+    public: Vector getRows(HashMap<any, any> keysAndValues);
 
-    public Vector getRows(HashMap<any, any> keysAndValues, string more);
+    public: Vector getRows(HashMap<any, any> keysAndValues, std::string more);
 
-    public Vector getAllRows();
+    public: Vector getAllRows();
 
-    public Vector getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, string betweenColumn, string smallest, string largest);
+    public: Vector getRowsWhereBetween(HashMap<any, any> whereKeyValuePairs, std::string betweenColumn, std::string smallest, std::string largest);
 
-    public Vector getRowsWhereBetween(string betweenColumn, string smallest, string largest);
+    public: Vector getRowsWhereBetween(std::string betweenColumn, std::string smallest, std::string largest);
 
 };
 

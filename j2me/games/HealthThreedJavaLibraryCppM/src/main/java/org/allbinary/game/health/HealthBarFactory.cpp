@@ -57,26 +57,25 @@
 class HealthBarFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public HealthBar getInstance(AllBinaryLayer layerInterface, Health healthInterface, int32_t location, int32_t direction){
+    public: HealthBar getInstance(AllBinaryLayer layerInterface, Health healthInterface, int32_t location, int32_t direction){
 
-                        if(OpenGLFeatureUtil.getInstance()!.isAnyThreed())
+                        if(OpenGLFeatureUtil::getInstance().isAnyThreed())
                         
                                     {
                                     
-    featuredAnimationInterfaceFactoryInterfaceFactory: FeaturedAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!;;
+    FeaturedAnimationInterfaceFactoryInterfaceFactory featuredAnimationInterfaceFactoryInterfaceFactory = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance();;
     
 
-    healthBarAnimationInterfaceFactory: HealthBarAnimationInterfaceFactory = featuredAnimationInterfaceFactoryInterfaceFactory!.get(Health.NAME) as HealthBarAnimationInterfaceFactory;;
+    HealthBarAnimationInterfaceFactory healthBarAnimationInterfaceFactory = featuredAnimationInterfaceFactoryInterfaceFactory.get(Health::NAME) as HealthBarAnimationInterfaceFactory;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HealthBar(layerInterface, healthInterface, healthBarAnimationInterfaceFactory!.getInstanceByLocation(layerInterface, location), direction);
+                        return HealthBar(layerInterface, healthInterface, healthBarAnimationInterfaceFactory.getInstanceByLocation(layerInterface, location), direction);
     
 
                                     }
@@ -86,7 +85,7 @@ class HealthBarFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HealthBar(layerInterface, healthInterface, new HealthBarTwodAnimation(layerInterface, location), direction);
+                        return HealthBar(layerInterface, healthInterface, HealthBarTwodAnimation(layerInterface, location), direction);
     
 
                         }

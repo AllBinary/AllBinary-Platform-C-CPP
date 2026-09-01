@@ -58,25 +58,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInfoEntityInterface: public BasicDataTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    TransformInfoInterface get(string name, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    TransformInfoInterface get(std::string name, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    Vector getObjectConfigs(string storeName);
+    Vector getObjectConfigs(std::string storeName);
 
                 //@Throws(Exception.constructor)
             
-    Vector getNames(string storeName);
+    Vector getNames(std::string storeName);
 
-    delete(string name);
+    void delete_(std::string name);
 
-    insert(Vector values);
+    void insert(Vector values);
 
-    update(HashMap<any, any> updatedValues);
+    void update(HashMap<any, any> updatedValues);
 
 };
 

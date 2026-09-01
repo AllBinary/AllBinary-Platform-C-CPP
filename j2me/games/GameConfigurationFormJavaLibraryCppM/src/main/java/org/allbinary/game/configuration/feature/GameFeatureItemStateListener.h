@@ -86,19 +86,18 @@
 class GameFeatureItemStateListener
             : public Object
         : public ItemStateListener {
-        
 
-    private: static toggleList: BasicArrayList = new BasicArrayListD();
+    private: static BasicArrayList toggleList = BasicArrayListD();
 
-    public static add(GameFeature gameFeature);
+    public: static void add(GameFeature gameFeature);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: gameOptionsForm: GameOptionsForm;
+    private: GameOptionsForm gameOptionsForm;
 
-public constructor (GameOptionsForm gameOptionsForm);
+public: GameFeatureItemStateListener(GameOptionsForm gameOptionsForm);
 
-    public itemStateChanged(Item item);
+    public: void itemStateChanged(Item item);
 
 };
 

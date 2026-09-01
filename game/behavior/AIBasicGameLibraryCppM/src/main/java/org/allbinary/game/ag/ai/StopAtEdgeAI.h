@@ -64,13 +64,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StopAtEdgeAI: public BasicAI {
-        
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: StopAtEdgeAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

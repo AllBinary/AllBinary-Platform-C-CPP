@@ -60,19 +60,16 @@
 class CollisionHelper
             : public Object
          {
-        
 
-    sourceLayerInterface: AllBinaryLayer;
+    protected: AllBinaryLayer sourceLayerInterface;
 
-public constructor (AllBinaryLayer sourceLayerInterface){
-
-            super();
-        this.sourceLayerInterface= sourceLayerInterface;
+public: CollisionHelper(AllBinaryLayer sourceLayerInterface){
+this->sourceLayerInterface= sourceLayerInterface;
     
 }
 
 
-    public bool isCollidable(CollidableCompositeLayer layerInterface){
+    public: bool isCollidable(CollidableCompositeLayer layerInterface){
 
 
 
@@ -82,18 +79,18 @@ public constructor (AllBinaryLayer sourceLayerInterface){
 }
 
 
-    public AllBinaryLayer getOwnerLayerInterface(){
+    public: AllBinaryLayer getOwnerLayerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sourceLayerInterface;
+                        return this->sourceLayerInterface;
     
 }
 
 
-    public setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface){
-this.sourceLayerInterface= sourceLayerInterface;
+    public: void setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface){
+this->sourceLayerInterface= sourceLayerInterface;
     
 }
 

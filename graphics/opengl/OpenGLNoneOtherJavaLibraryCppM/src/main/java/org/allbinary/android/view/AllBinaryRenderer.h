@@ -47,15 +47,14 @@
 class AllBinaryRenderer
             : public Object
          {
-        
 
-    private: static const instance: AllBinaryRenderer = new AllBinaryRenderer();
+    private: static AllBinaryRenderer instance() { return AllBinaryRenderer(); }
 
-    public static AllBinaryRenderer getInstance();
+    public: static AllBinaryRenderer getInstance();
 
-    public setRunnable(Runnable runnable);
+    public: void setRunnable(Runnable runnable);
 
-    public clearRunnable();
+    public: void clearRunnable();
 
 };
 

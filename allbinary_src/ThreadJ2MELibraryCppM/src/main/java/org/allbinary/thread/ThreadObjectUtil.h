@@ -42,25 +42,24 @@
 class ThreadObjectUtil
             : public Object
          {
-        
 
-    private: static const instance: ThreadObjectUtil = new ThreadObjectUtil();
+    private: static ThreadObjectUtil instance() { return ThreadObjectUtil(); }
 
-    public static ThreadObjectUtil getInstance();
+    public: static ThreadObjectUtil getInstance();
 
-    public const NULL_PRIORITY_RUNNABLE: PriorityRunnable = new NullPriorityRunnable();
+    public: const PriorityRunnable NULL_PRIORITY_RUNNABLE = NullPriorityRunnable();
 
-    public notifyObject(Object anyType);
-
-                //@Throws(Exception.constructor)
-            
-    public waitObject(Object anyType);
+    public: void notifyObject(Object anyType);
 
                 //@Throws(Exception.constructor)
             
-    public waitObjectFor(Object anyType, int64_t delay);
+    public: void waitObject(Object anyType);
 
-    public processThread(Runnable runnable);
+                //@Throws(Exception.constructor)
+            
+    public: void waitObjectFor(Object anyType, int64_t delay);
+
+    public: void processThread(Runnable runnable);
 
 };
 

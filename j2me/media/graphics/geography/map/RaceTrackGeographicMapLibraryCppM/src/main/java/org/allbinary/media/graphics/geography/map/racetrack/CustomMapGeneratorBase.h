@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_CUSTOMMAPGENERATORBASE_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -50,17 +52,16 @@
 class CustomMapGeneratorBase
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public copyMapIntoCustomMap();
+    public: void copyMapIntoCustomMap();
 
-    public std::vector<std::vector<int32_t>> getCustomMapArray();
+    public: std::vector<std::vector<int32_t>> getCustomMapArray();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getCustomType(int32_t column, int32_t row, int32_t currentType);
+    public: int32_t getCustomType(int32_t column, int32_t row, int32_t currentType);
 
 };
 

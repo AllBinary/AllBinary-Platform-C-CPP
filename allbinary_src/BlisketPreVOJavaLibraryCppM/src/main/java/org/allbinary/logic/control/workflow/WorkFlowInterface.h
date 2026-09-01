@@ -45,11 +45,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //extends ValidationComponentInterface, ValidationInterface, ComponentInterface, DomNodeInterface, DataMappingInterface
 class WorkFlowInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    string getName();
+    std::string getName();
 
                 //@Throws(Exception.constructor)
             

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -53,62 +55,59 @@
 class NullAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    public static NULL_NOT_FOR_USE_ANIMATION_FACTORY: NullAnimationFactory = new NullAnimationFactory();
+    public: static NullAnimationFactory NULL_NOT_FOR_USE_ANIMATION_FACTORY = NullAnimationFactory();
 
-    private: static NULL_ANIMATION_FACTORY: NullAnimationFactory = new NullAnimationFactory();
+    private: static NullAnimationFactory NULL_ANIMATION_FACTORY = NullAnimationFactory();
 
-    public static NullAnimationFactory getFactoryInstance(){
+    public: static NullAnimationFactory getFactoryInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.NULL_ANIMATION_FACTORY;
+                        return NullAnimationFactory::NULL_ANIMATION_FACTORY;
     
 }
 
 
-    private: const NULL_ANIMATION: Animation = new class extends Animation
+    private: const Animation NULL_ANIMATION = class extends Animation
                                 {
                                 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 }
 
                                 }
                             ;
 
-    public const EMPTY_ARRAY: std::vector<Animation> = [];
+    public: const std::vector<Animation> EMPTY_ARRAY = {};
 
-private constructor (){
-
-            super();
-        }
+private: NullAnimationFactory(){
+}
 
 
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION;
+                        return this->NULL_ANIMATION;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION;
+                        return this->NULL_ANIMATION;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

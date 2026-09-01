@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_NUMBERSTRINGHUD_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -69,42 +71,41 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NumberStringHud: public BasicHud: public PaintableInterface {
-        
+class NumberStringHud: public BasicHud, public PaintableInterface {
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-    private: const prependString: string;
+    private: std::string prependString;
 
-    private: const PREPEND_STRING: std::vector<char>;
+    private: std::vector<char> PREPEND_STRING;
 
-    private: value: int32_t;
+    private: int32_t value;
 
-    private: max: int32_t;
+    private: int32_t max;
 
-    private: offset: int32_t= 0;
+    private: int32_t offset= 0;
 
-    private: valueString: std::vector<char>;
+    private: std::vector<char> valueString;
 
-    private: valueTotalDigits: int32_t= 0;
+    private: int32_t valueTotalDigits= 0;
 
-public constructor (string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public int32_t get();
+    public: int32_t get();
 
-    public add(int32_t value);
+    public: void add(int32_t value);
 
-    public set(int32_t value);
+    public: void set(int32_t value);
 
-    public reduce(int32_t value);
+    public: void reduce(int32_t value);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

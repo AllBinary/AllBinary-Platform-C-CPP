@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Thread.h"
@@ -65,69 +67,67 @@
 #include "InputAutomationActionInterface.h"
 
 class TestInputAutomationActionWorker: public AbstractInputAutomationWorker {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: sleep: int32_t;
+    private: int32_t sleep;
 
-public constructor (int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
+public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
             super(inputAutomationActionInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF("BasicTestAttackWorder", this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("BasicTestAttackWorder", this, this->commonStrings.CONSTRUCTOR);
     
-this.sleep= sleep;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public processBetweenWorkers(){
-Thread.sleep(2000);
+this->sleep= sleep;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.PROCESS);
+    public: void processBetweenWorkers(){
+Thread::sleep(2000);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
-    hashtable: Hashtable<any, any> = InputRobotFactory.getInstance()!.get()!;;
+    Hashtable<any, any> hashtable = InputRobotFactory::getInstance().get();;
     
 
-    set: Set = hashtable.keys()!;;
+    Set set = hashtable.keys();;
     
 
-    inputTypeNameArray: std::vector<any> = set.toArray()!;;
+    std::vector<Object*> inputTypeNameArray = set.toArray();;
     
 
-    size: int32_t = inputTypeNameArray!.length
-                ;;
+    int32_t size = inputTypeNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    inputTypeNameString: string = inputTypeNameArray[index]! as string;;
+    std::string inputTypeNameString = inputTypeNameArray[index]! as string;;
     
 
-    robot: InputRobotInterface = hashtable.get(inputTypeNameString) as InputRobotInterface;;
+    InputRobotInterface robot = hashtable.get(inputTypeNameString) as InputRobotInterface;;
     
 
-                        if(this.sleep > 0)
+                        if(this->sleep > 0)
                         
                                     {
-                                    Thread.sleep(this.sleep);
+                                    Thread::sleep(this->sleep);
     
 
                                     }

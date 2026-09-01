@@ -114,99 +114,96 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "UnitLayer.h"
 
-class UnitWaypointBehavior: public WaypointBehaviorBase: public WaypointEventListenerInterface {
-        
+class UnitWaypointBehavior: public WaypointBehaviorBase, public WaypointEventListenerInterface {
 
-    private: static const PATHING: string = "Pathing";
+    private: static const std::string PATHING = "Pathing";
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: longWeaponRange: int32_t = 0;
+    private: int32_t longWeaponRange = 0;
 
-    private: sensorAction: SensorAction = SensorActionFactory.getInstance()!.ATTACK;
+    private: SensorAction sensorAction = SensorActionFactory::getInstance().ATTACK;
 
-    private: const completeTimeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper completeTimeDelayHelper;
 
-    const currentGeographicMapCellHistoryP: GeographicMapCellHistory;
+    protected: GeographicMapCellHistory currentGeographicMapCellHistoryP;
 
-    private: lastPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition lastPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: currentPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition currentPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: const FAKE_WAYPOINT_LAYER: CollidableDestroyableDamageableLayer;
+    private: CollidableDestroyableDamageableLayer FAKE_WAYPOINT_LAYER;
 
-    const targetList: BasicArrayList;
+    protected: BasicArrayList targetList;
 
-    private: const possibleTargetList: BasicArrayList;
+    private: BasicArrayList possibleTargetList;
 
-    const associatedAdvancedRTSGameLayer: UnitLayer;
+    protected: UnitLayer associatedAdvancedRTSGameLayer;
 
-    private: moving: bool = false;
+    private: bool moving = false;
 
-    private: movingFromStopped: bool = false;
+    private: bool movingFromStopped = false;
 
-    waypointPathsListP: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    protected: BasicArrayList waypointPathsListP = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: currentTargetDistance: int32_t = Integer.MAX_VALUE;
+    private: int32_t currentTargetDistance = Integer::MAX_VALUE;
 
-    currentTargetLayerInterfaceP: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    protected: CollidableDestroyableDamageableLayer currentTargetLayerInterfaceP = CollidableDestroyableDamageableLayer::getNullInstance();
 
-    private: trackingWaypoint: bool= false;
+    private: bool trackingWaypoint= false;
 
-protected constructor (UnitLayer associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer fakeWaypoint){
-
-            super();
-        this.associatedAdvancedRTSGameLayer= associatedAdvancedRTSGameLayer;
+protected: UnitWaypointBehavior(UnitLayer associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer fakeWaypoint){
+this->associatedAdvancedRTSGameLayer= associatedAdvancedRTSGameLayer;
     
-this.completeTimeDelayHelper= new TimeDelayHelper(30000);
+this->completeTimeDelayHelper= TimeDelayHelper(30000);
     
-this.targetList= new BasicArrayListD();
+this->targetList= BasicArrayListD();
     
-this.possibleTargetList= new BasicArrayListD();
+this->possibleTargetList= BasicArrayListD();
     
-this.setWaypointPathsList(BasicArrayListUtil.getInstance()!.getImmutableInstance());
+this->setWaypointPathsList(BasicArrayListUtil::getInstance().getImmutableInstance());
     
-this.currentGeographicMapCellHistoryP= new GeographicMapCellHistory();
+this->currentGeographicMapCellHistoryP= GeographicMapCellHistory();
     
-this.FAKE_WAYPOINT_LAYER= fakeWaypoint;
+this->FAKE_WAYPOINT_LAYER= fakeWaypoint;
     
 }
 
 
-    initRange(int32_t weaponRange){
-this.longWeaponRange= weaponRange /2;
+    protected: void initRange(int32_t weaponRange){
+this->longWeaponRange= weaponRange /2;
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onWaypointEvent(RTSLayerEvent event){
+    public: void onWaypointEvent(RTSLayerEvent event){
 
-    advancedRTSGameLayer: AdvancedRTSGameLayer = event.getRtsLayer() as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer advancedRTSGameLayer = event.getRtsLayer() as AdvancedRTSGameLayer;;
     
-this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.onWaypointEvent(this.associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
+this->associatedAdvancedRTSGameLayer.waypointLogHelperP.onWaypointEvent(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
     
 
-                        if(this.associatedAdvancedRTSGameLayer!.isSelected())
+                        if(this->associatedAdvancedRTSGameLayer.isSelected())
                         
                                     {
-                                    this.addWaypointFromUser(advancedRTSGameLayer);
+                                    this->addWaypointFromUser(advancedRTSGameLayer);
     
 
                                     }
                                 
                              else 
-                        if(advancedRTSGameLayer!.shouldAddWaypointFromBuilding())
+                        if(advancedRTSGameLayer.shouldAddWaypointFromBuilding())
                         
                                     {
-                                    this.addWaypointFromBuilding(advancedRTSGameLayer);
+                                    this->addWaypointFromBuilding(advancedRTSGameLayer);
     
 
                                     }
@@ -216,38 +213,38 @@ this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.onWaypointEvent(this.as
 
                 //@Throws(Exception.constructor)
             
-    addWaypointFromUser(AdvancedRTSGameLayer advancedRTSGameLayer){
+    protected: void addWaypointFromUser(AdvancedRTSGameLayer advancedRTSGameLayer){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    addWaypointFromBuilding(AdvancedRTSGameLayer advancedRTSGameLayer){
+    private: void addWaypointFromBuilding(AdvancedRTSGameLayer advancedRTSGameLayer){
 
-                        if(advancedRTSGameLayer == PrimaryWaypointHelper.getInstance()!.getWaypointLayer() || advancedRTSGameLayer!.getParentLayer() == this.associatedAdvancedRTSGameLayer!.getParentLayer())
+                        if(advancedRTSGameLayer == PrimaryWaypointHelper::getInstance().getWaypointLayer() || advancedRTSGameLayer.getParentLayer() == this->associatedAdvancedRTSGameLayer.getParentLayer())
                         
                                     {
                                     
-                        if(!this.targetList!.contains(advancedRTSGameLayer))
+                        if(!this->targetList.contains(advancedRTSGameLayer))
                         
                                     {
-                                    this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.addWaypointFromBuilding(this.associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
+                                    this->associatedAdvancedRTSGameLayer.waypointLogHelperP.addWaypointFromBuilding(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer);
     
 
-                        if(advancedRTSGameLayer!.isDestroyed())
+                        if(advancedRTSGameLayer.isDestroyed())
                         
                                     {
                                     
 
 
-                            throw new Exception("Trying to add a dead: " +advancedRTSGameLayer);
+                            throw Exception("Trying to add a dead: " +advancedRTSGameLayer);
                     
 
                                     }
                                 
-this.targetList!.add(advancedRTSGameLayer);
+this->targetList.add(advancedRTSGameLayer);
     
-this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.addWaypointFromBuildingList(this.associatedAdvancedRTSGameLayer, advancedRTSGameLayer, this.targetList);
+this->associatedAdvancedRTSGameLayer.waypointLogHelperP.addWaypointFromBuildingList(this->associatedAdvancedRTSGameLayer, advancedRTSGameLayer, this->targetList);
     
 
                                     }
@@ -258,7 +255,7 @@ this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.addWaypointFromBuilding
 }
 
 
-    public bool isWaypointListEmptyOrOnlyTargets(){
+    public: bool isWaypointListEmptyOrOnlyTargets(){
 
 
 
@@ -270,28 +267,28 @@ this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.addWaypointFromBuilding
 
                 //@Throws(Exception.constructor)
             
-    public bool insertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer){
+    public: bool insertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer){
 
-                        if(this.canInsertWaypoint(index, rtsLayer))
+                        if(this->canInsertWaypoint(index, rtsLayer))
                         
                                     {
-                                    this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.insertWaypoint(this.associatedAdvancedRTSGameLayer, index, rtsLayer, this.getName());
+                                    this->associatedAdvancedRTSGameLayer.waypointLogHelperP.insertWaypoint(this->associatedAdvancedRTSGameLayer, index, rtsLayer, this->getName());
     
 
-                        if(rtsLayer!.isDestroyed())
+                        if(rtsLayer.isDestroyed())
                         
                                     {
                                     
 
 
-                            throw new Exception("Trying to add a dead: " +rtsLayer);
+                            throw Exception("Trying to add a dead: " +rtsLayer);
                     
 
                                     }
                                 
-this.targetList!.addAt(index, rtsLayer);
+this->targetList.addAt(index, rtsLayer);
     
-this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.insertWaypointList(this.associatedAdvancedRTSGameLayer, index, rtsLayer, this.getName(), this.targetList);
+this->associatedAdvancedRTSGameLayer.waypointLogHelperP.insertWaypointList(this->associatedAdvancedRTSGameLayer, index, rtsLayer, this->getName(), this->targetList);
     
 
 
@@ -311,43 +308,43 @@ this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.insertWaypointList(this
 }
 
 
-    move(){
+    protected: void move(){
 
-                        if(this.isMoving())
+                        if(this->isMoving())
                         
                                     {
-                                    this.setMovingFromStopped(false);
+                                    this->setMovingFromStopped(false);
     
 
                                     }
                                 
                         else {
-                            this.setMovingFromStopped(true);
+                            this->setMovingFromStopped(true);
     
 
                         }
                             
-this.setMoving(false);
+this->setMoving(false);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    setRandomGeographicMapCellHistory(BasicArrayList pathsList){
+    protected: void setRandomGeographicMapCellHistory(BasicArrayList pathsList){
 
-    size: int32_t = pathsList!.size()!;;
+    int32_t size = pathsList.size();;
     
-this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.setRandomGeographicMapCellHistoryList(this.associatedAdvancedRTSGameLayer, pathsList);
+this->associatedAdvancedRTSGameLayer.waypointLogHelperP.setRandomGeographicMapCellHistoryList(this->associatedAdvancedRTSGameLayer, pathsList);
     
 
                         if(size > 0)
                         
                                     {
                                     
-    geographicMapCellPositionBasicArrayList: BasicArrayList = BasicArrayListUtil.getInstance()!.getRandom(pathsList) as BasicArrayList;;
+    BasicArrayList geographicMapCellPositionBasicArrayList = BasicArrayListUtil::getInstance().getRandom(pathsList) as BasicArrayList;;
     
-this.setGeographicMapCellHistoryPath(geographicMapCellPositionBasicArrayList);
+this->setGeographicMapCellHistoryPath(geographicMapCellPositionBasicArrayList);
     
 
                                     }
@@ -357,39 +354,39 @@ this.setGeographicMapCellHistoryPath(geographicMapCellPositionBasicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    setGeographicMapCellHistoryPath(BasicArrayList geographicMapCellPositionBasicArrayList){
-this.lastPathGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    protected: void setGeographicMapCellHistoryPath(BasicArrayList geographicMapCellPositionBasicArrayList){
+this->lastPathGeographicMapCellPosition= SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
-                        if(this.associatedAdvancedRTSGameLayer!.showMoreCaptionStates)
+                        if(this->associatedAdvancedRTSGameLayer.showMoreCaptionStates)
                         
                                     {
-                                    this.associatedAdvancedRTSGameLayer!.getCaptionAnimationHelper()!.update(UnitWaypointBehavior.PATHING, BasicColorFactory.getInstance()!.GREEN);
+                                    this->associatedAdvancedRTSGameLayer.getCaptionAnimationHelper().update(UnitWaypointBehavior::PATHING, BasicColorFactory::getInstance().GREEN);
     
 
                                     }
                                 
-this.currentGeographicMapCellHistoryP!.init();
+this->currentGeographicMapCellHistoryP.init();
     
-this.associatedAdvancedRTSGameLayer!.init(this.currentGeographicMapCellHistoryP, geographicMapCellPositionBasicArrayList);
+this->associatedAdvancedRTSGameLayer.init(this->currentGeographicMapCellHistoryP, geographicMapCellPositionBasicArrayList);
     
-this.setTrackingWaypoint(true);
+this->setTrackingWaypoint(true);
     
-this.getCompleteTimeDelayHelper()!.setStartTimeTNT();
+this->getCompleteTimeDelayHelper().setStartTimeTNT();
     
 }
 
 
-    bool canInsertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer){
+    protected: bool canInsertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer){
 
-                        if(this.targetList!.size() > 4)
+                        if(this->targetList.size() > 4)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this.targetList!.contains(rtsLayer))
+                        if(this->targetList.contains(rtsLayer))
                         
                                     {
                                     
@@ -416,35 +413,35 @@ this.getCompleteTimeDelayHelper()!.setStartTimeTNT();
 
                 //@Throws(Exception.constructor)
             
-    public addBuildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition){
+    public: void addBuildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    moveAwayFromBuilding(BuildingLayer buildingLayer){
+    protected: void moveAwayFromBuilding(BuildingLayer buildingLayer){
 
-    geographicMapCellPosition: GeographicMapCellPosition = this.associatedAdvancedRTSGameLayer!.getCurrentGeographicMapCellPosition()!;;
+    GeographicMapCellPosition geographicMapCellPosition = this->associatedAdvancedRTSGameLayer.getCurrentGeographicMapCellPosition();;
     
 
-    list: BasicArrayList = buildingLayer!.geographicMapCellPositionAreaBase!.getOccupyingGeographicMapCellPositionList()!;;
+    BasicArrayList list = buildingLayer.geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
     
 
                         if(list.contains(geographicMapCellPosition))
                         
                                     {
                                     
-                        if(this.insertWaypoint(0, this.FAKE_WAYPOINT_LAYER))
+                        if(this->insertWaypoint(0, this->FAKE_WAYPOINT_LAYER))
                         
                                     {
-                                    this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.moveAwayFromBuilding(this.associatedAdvancedRTSGameLayer);
+                                    this->associatedAdvancedRTSGameLayer.waypointLogHelperP.moveAwayFromBuilding(this->associatedAdvancedRTSGameLayer);
     
-this.setCurrentTargetLayerInterface(this.FAKE_WAYPOINT_LAYER as CollidableDestroyableDamageableLayer);
+this->setCurrentTargetLayerInterface(this->FAKE_WAYPOINT_LAYER as CollidableDestroyableDamageableLayer);
     
 
-    pathsList: BasicArrayList = buildingLayer!.getMoveOutOfBuildAreaPath(geographicMapCellPosition)!;;
+    BasicArrayList pathsList = buildingLayer.getMoveOutOfBuildAreaPath(geographicMapCellPosition);;
     
-this.associatedAdvancedRTSGameLayer!.setClosestGeographicMapCellHistory(pathsList);
+this->associatedAdvancedRTSGameLayer.setClosestGeographicMapCellHistory(pathsList);
     
 
                                     }
@@ -455,16 +452,16 @@ this.associatedAdvancedRTSGameLayer!.setClosestGeographicMapCellHistory(pathsLis
 }
 
 
-    private: const repeatedToLong: TimeDelayHelper = new TimeDelayHelper(22000);
+    private: const TimeDelayHelper repeatedToLong = TimeDelayHelper(22000);
 
-    public bool needToMove(){
-this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.needToMove(this.associatedAdvancedRTSGameLayer, this);
+    public: bool needToMove(){
+this->associatedAdvancedRTSGameLayer.waypointLogHelperP.needToMove(this->associatedAdvancedRTSGameLayer, this);
     
 
-                        if(this.isTrackingWaypoint() || this.sensorAction == SensorActionFactory.getInstance()!.EVADE || (this.currentTargetLayerInterfaceP != CollidableDestroyableDamageableLayer.getNullInstance() && this.getCurrentTargetDistance() >= this.longWeaponRange +this.currentTargetLayerInterfaceP!.getHalfHeight()))
+                        if(this->isTrackingWaypoint() || this->sensorAction == SensorActionFactory::getInstance().EVADE || (this->currentTargetLayerInterfaceP != CollidableDestroyableDamageableLayer::getNullInstance() && this->getCurrentTargetDistance() >= this->longWeaponRange +this->currentTargetLayerInterfaceP.getHalfHeight()))
                         
                                     {
-                                    this.repeatedToLong!.setStartTimeTNT();
+                                    this->repeatedToLong.setStartTimeTNT();
     
 
 
@@ -476,13 +473,13 @@ this.associatedAdvancedRTSGameLayer!.waypointLogHelperP!.needToMove(this.associa
                                     }
                                 
 
-                        if(this.repeatedToLong!.isTimeTNT())
+                        if(this->repeatedToLong.isTimeTNT())
                         
                                     {
                                     
-    message: string = "Repeating too long: " +this.getMovementLogicAsString();;
+    std::string message = "Repeating too long: " +this->getMovementLogicAsString();;
     
-ForcedLogUtil.log(message, this.associatedAdvancedRTSGameLayer);
+ForcedLogUtil::log(message, this->associatedAdvancedRTSGameLayer);
     
 
                                     }
@@ -496,33 +493,33 @@ ForcedLogUtil.log(message, this.associatedAdvancedRTSGameLayer);
 }
 
 
-    public string getMovementLogicAsString(){
+    public: std::string getMovementLogicAsString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("isTrackingWaypoint: ");
+stringBuffer.append("isTrackingWaypoint: ");
     
-stringBuffer!.appendboolean(this.isTrackingWaypoint());
+stringBuffer.appendboolean(this->isTrackingWaypoint());
     
-stringBuffer!.append(" sensorAction: ");
+stringBuffer.append(" sensorAction: ");
     
-stringBuffer!.append(this.sensorAction!.name);
+stringBuffer.append(this->sensorAction.name);
     
-stringBuffer!.append(" getCurrentTargetLayerInterface: ");
+stringBuffer.append(" getCurrentTargetLayerInterface: ");
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(this.currentTargetLayerInterfaceP));
+stringBuffer.append(StringUtil::getInstance().toString(this->currentTargetLayerInterfaceP));
     
 
-                        if(this.currentTargetLayerInterfaceP != CollidableDestroyableDamageableLayer.getNullInstance())
+                        if(this->currentTargetLayerInterfaceP != CollidableDestroyableDamageableLayer::getNullInstance())
                         
                                     {
-                                    stringBuffer!.append(" Target Range: ");
+                                    stringBuffer.append(" Target Range: ");
     
-stringBuffer!.appendint(this.getCurrentTargetDistance());
+stringBuffer.appendint(this->getCurrentTargetDistance());
     
-stringBuffer!.append(" >= ");
+stringBuffer.append(" >= ");
     
-stringBuffer!.appendint(this.longWeaponRange +this.currentTargetLayerInterfaceP!.getHalfHeight());
+stringBuffer.appendint(this->longWeaponRange +this->currentTargetLayerInterfaceP.getHalfHeight());
     
 
                                     }
@@ -531,181 +528,181 @@ stringBuffer!.appendint(this.longWeaponRange +this.currentTargetLayerInterfaceP!
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public bool isMovingFromStopped(){
+    public: bool isMovingFromStopped(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.movingFromStopped;
+                        return this->movingFromStopped;
     
 }
 
 
-    setMovingFromStopped(bool movingFromStopped){
-this.movingFromStopped= movingFromStopped;
+    protected: void setMovingFromStopped(bool movingFromStopped){
+this->movingFromStopped= movingFromStopped;
     
 }
 
 
-    public setWaypointPathsList(BasicArrayList waypointPathsList){
-this.waypointPathsListP= waypointPathsList;
+    public: void setWaypointPathsList(BasicArrayList waypointPathsList){
+this->waypointPathsListP= waypointPathsList;
     
 }
 
 
-    public BasicArrayList getWaypointPathsList(){
+    public: BasicArrayList getWaypointPathsList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.waypointPathsListP;
+                        return this->waypointPathsListP;
     
 }
 
 
-    bool isMoving(){
+    protected: bool isMoving(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.moving;
+                        return this->moving;
     
 }
 
 
-    setMoving(bool moving){
-this.moving= moving;
+    protected: void setMoving(bool moving){
+this->moving= moving;
     
 }
 
 
-    public bool isTrackingWaypoint(){
+    public: bool isTrackingWaypoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.trackingWaypoint;
+                        return this->trackingWaypoint;
     
 }
 
 
-    BasicArrayList getPossibleTargetList(){
+    protected: BasicArrayList getPossibleTargetList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.possibleTargetList;
+                        return this->possibleTargetList;
     
 }
 
 
-    setLastPathGeographicMapCellPosition(GeographicMapCellPosition lastPathGeographicMapCellPosition){
-this.lastPathGeographicMapCellPosition= lastPathGeographicMapCellPosition;
+    protected: void setLastPathGeographicMapCellPosition(GeographicMapCellPosition lastPathGeographicMapCellPosition){
+this->lastPathGeographicMapCellPosition= lastPathGeographicMapCellPosition;
     
 }
 
 
-    GeographicMapCellPosition getLastPathGeographicMapCellPosition(){
+    protected: GeographicMapCellPosition getLastPathGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastPathGeographicMapCellPosition;
+                        return this->lastPathGeographicMapCellPosition;
     
 }
 
 
-    setCurrentPathGeographicMapCellPosition(GeographicMapCellPosition currentPathGeographicMapCellPosition){
-this.currentPathGeographicMapCellPosition= currentPathGeographicMapCellPosition;
+    protected: void setCurrentPathGeographicMapCellPosition(GeographicMapCellPosition currentPathGeographicMapCellPosition){
+this->currentPathGeographicMapCellPosition= currentPathGeographicMapCellPosition;
     
 }
 
 
-    public GeographicMapCellPosition getCurrentPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getCurrentPathGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentPathGeographicMapCellPosition;
+                        return this->currentPathGeographicMapCellPosition;
     
 }
 
 
-    setSensorAction(SensorAction sensorAction){
-this.sensorAction= sensorAction;
+    protected: void setSensorAction(SensorAction sensorAction){
+this->sensorAction= sensorAction;
     
 }
 
 
-    SensorAction getSensorAction(){
+    protected: SensorAction getSensorAction(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sensorAction;
+                        return this->sensorAction;
     
 }
 
 
-    setCurrentTargetLayerInterface(CollidableDestroyableDamageableLayer currentTargetLayerInterface){
-this.currentTargetLayerInterfaceP= currentTargetLayerInterface;
+    protected: void setCurrentTargetLayerInterface(CollidableDestroyableDamageableLayer currentTargetLayerInterface){
+this->currentTargetLayerInterfaceP= currentTargetLayerInterface;
     
 }
 
 
-    public CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface(){
+    public: CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentTargetLayerInterfaceP;
+                        return this->currentTargetLayerInterfaceP;
     
 }
 
 
-    setCurrentTargetDistance(int32_t currentTargetDistance){
-this.currentTargetDistance= currentTargetDistance;
+    protected: void setCurrentTargetDistance(int32_t currentTargetDistance){
+this->currentTargetDistance= currentTargetDistance;
     
 }
 
 
-    int32_t getCurrentTargetDistance(){
+    protected: int32_t getCurrentTargetDistance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentTargetDistance;
+                        return this->currentTargetDistance;
     
 }
 
 
-    TimeDelayHelper getCompleteTimeDelayHelper(){
+    protected: TimeDelayHelper getCompleteTimeDelayHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.completeTimeDelayHelper;
+                        return this->completeTimeDelayHelper;
     
 }
 
 
-    public GeographicMapCellHistory getCurrentGeographicMapCellHistory(){
+    public: GeographicMapCellHistory getCurrentGeographicMapCellHistory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentGeographicMapCellHistoryP;
+                        return this->currentGeographicMapCellHistoryP;
     
 }
 
 
-    setTrackingWaypoint(bool trackingWaypoint){
-this.trackingWaypoint= trackingWaypoint;
+    protected: void setTrackingWaypoint(bool trackingWaypoint){
+this->trackingWaypoint= trackingWaypoint;
     
 }
 

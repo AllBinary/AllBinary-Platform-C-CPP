@@ -42,27 +42,24 @@
 class StoreFrontOrdersStatisticsData
             : public Object
          {
-        
 
-    private: static const instance: StoreFrontOrdersStatisticsData = new StoreFrontOrdersStatisticsData();
+    private: static StoreFrontOrdersStatisticsData instance() { return StoreFrontOrdersStatisticsData(); }
 
-    public static StoreFrontOrdersStatisticsData getInstance(){
+    public: static StoreFrontOrdersStatisticsData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontOrdersStatisticsData.instance;
+                        return StoreFrontOrdersStatisticsData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: StoreFrontOrdersStatisticsData(){
+}
 
 
-    public const NAME: string = "STOREFRONT_ORDERS_STATISTICS_NAME";
+    public: const std::string NAME = "STOREFRONT_ORDERS_STATISTICS_NAME";
 
 };
 

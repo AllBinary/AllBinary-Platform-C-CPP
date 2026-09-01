@@ -65,25 +65,24 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance();
+    public: static ImageRotationUtil getInstance();
 
-private constructor ();
+private: ImageRotationUtil();
 
-    public Image rotateImage(Image originalImage, Image image, int32_t totalAngle);
+    public: Image rotateImage(Image originalImage, Image image, int32_t totalAngle);
 
-    public Image rotateImageCanvasSurfaceClear(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle);
+    public: Image rotateImageCanvasSurfaceClear(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle);
 
-    public Image rotateImageCanvasSurface(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle);
+    public: Image rotateImageCanvasSurface(Image originalImage, Image image, CanvasSurface canvasSurface, int32_t totalAngle);
 
-    public drawImage(Image originalImage, Image image, CanvasSurface canvasSurface);
+    public: void drawImage(Image originalImage, Image image, CanvasSurface canvasSurface);
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
 
 };
 

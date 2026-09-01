@@ -47,25 +47,24 @@
 #include "ListModel.h"
 
 class JListSwingWorker: public SwingWorker {
-        
 
-    private: jList: JList;
+    private: JList jList;
 
-    private: listModel: ListModel;
+    private: ListModel listModel;
 
-public constructor (JList jList, ListModel listModel);
+public: JListSwingWorker(JList jList, ListModel listModel);
 
-    public any doInBackground();
+    public: Object* doInBackground();
 
-    done();
+    protected: void done();
 
-    JList getJList();
+    private: JList getJList();
 
-    setJList(JList jList);
+    private: void setJList(JList jList);
 
-    ListModel getListModel();
+    private: ListModel getListModel();
 
-    setListModel(ListModel listModel);
+    private: void setListModel(ListModel listModel);
 
 };
 

@@ -69,100 +69,97 @@
 class WindowsOperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: WindowsOperatingSystemFactory = new WindowsOperatingSystemFactory();
+    private: static WindowsOperatingSystemFactory instance() { return WindowsOperatingSystemFactory(); }
 
-    public static WindowsOperatingSystemFactory getInstance(){
+    public: static WindowsOperatingSystemFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WindowsOperatingSystemFactory.instance;
+                        return WindowsOperatingSystemFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: WindowsOperatingSystemFactory(){
+}
 
 
-    public GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem getOperatingSystemInstance(){
 
         try {
             
-    operatingSystems: OperatingSystems = OperatingSystems.getInstance()!;;
+    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
     
 
-    osName: string = SystemProperties.getInstance()!.getName()!;;
+    std::string osName = SystemProperties::getInstance().getName();;
     
 
-    operatingSystemInterface: GenericOperatingSystem;;
+    GenericOperatingSystem operatingSystemInterface;;
     
 
-                        if(osName!.compareTo(operatingSystems!.WINDOWS_NT) == 0)
+                        if(osName.compareTo(operatingSystems.WINDOWS_NT) == 0)
                         
                                     {
-                                    operatingSystemInterface= new WindowsOS();
+                                    operatingSystemInterface= WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName!.compareTo(operatingSystems!.WINDOWS_10) == 0)
+                        if(osName.compareTo(operatingSystems.WINDOWS_10) == 0)
                         
                                     {
-                                    operatingSystemInterface= new WindowsOS();
+                                    operatingSystemInterface= WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName!.compareTo(operatingSystems!.WINDOWS_11) == 0)
+                        if(osName.compareTo(operatingSystems.WINDOWS_11) == 0)
                         
                                     {
-                                    operatingSystemInterface= new WindowsOS();
+                                    operatingSystemInterface= WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName!.compareTo(operatingSystems!.WINDOWS2000) == 0)
+                        if(osName.compareTo(operatingSystems.WINDOWS2000) == 0)
                         
                                     {
-                                    operatingSystemInterface= new WindowsOS();
+                                    operatingSystemInterface= WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName!.compareTo(operatingSystems!.WINDOWS_XP) == 0)
+                        if(osName.compareTo(operatingSystems.WINDOWS_XP) == 0)
                         
                                     {
-                                    operatingSystemInterface= new WindowsOS();
+                                    operatingSystemInterface= WindowsOS();
     
 
                                     }
                                 
                              else 
-                        if(osName!.compareTo(operatingSystems!.WINDOWS_VISTA) == 0)
+                        if(osName.compareTo(operatingSystems.WINDOWS_VISTA) == 0)
                         
                                     {
-                                    operatingSystemInterface= new WindowsOS();
+                                    operatingSystemInterface= WindowsOS();
     
 
                                     }
                                 
                         else {
                             
-                        if(operatingSystems!.isUnknownSpecificOSAllowed())
+                        if(operatingSystems.isUnknownSpecificOSAllowed())
                         
                                     {
-                                    operatingSystemInterface= new WindowsOS();
+                                    operatingSystemInterface= WindowsOS();
     
 
                                     }
@@ -171,7 +168,7 @@ private constructor (){
                             
 
 
-                            throw new Exception("Specific Windows OS Not Supported: " +osName);
+                            throw Exception("Specific Windows OS Not Supported: " +osName);
                     
 
                         }
@@ -190,13 +187,13 @@ private constructor (){
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -205,7 +202,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoOperatingSystem.NO_OPERATING_SYSTEM;
+                        return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }
 

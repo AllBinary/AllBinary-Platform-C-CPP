@@ -52,9 +52,8 @@
 #include "AllBinaryMediaManager.h"
 
 class CompositeSound: public Sound {
-        
 
-protected constructor (string resource){
+protected: CompositeSound(std::string resource){
             super(resource);
                     
 
@@ -65,8 +64,8 @@ protected constructor (string resource){
 
                 //@Throws(Exception.constructor)
             
-    public init(){
-this.setPlayerP(new PlayerComposite(AllBinaryMediaManager.createPlayer(this.getResource()), 570));
+    public: void init(){
+this->setPlayerP(PlayerComposite(AllBinaryMediaManager::createPlayer(this->getResource()), 570));
     
 }
 

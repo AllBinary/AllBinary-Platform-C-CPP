@@ -44,24 +44,21 @@
 class ThirdPartyStoreFactory
             : public Object
          {
-        
 
-    private: static const instance: NoThirdPartyStore = new NoThirdPartyStore();
+    private: static NoThirdPartyStore instance() { return NoThirdPartyStore(); }
 
-    public static ThirdPartyStore getInstance(){
+    public: static ThirdPartyStore getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThirdPartyStoreFactory.instance;
+                        return ThirdPartyStoreFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ThirdPartyStoreFactory(){
+}
 
 
 };

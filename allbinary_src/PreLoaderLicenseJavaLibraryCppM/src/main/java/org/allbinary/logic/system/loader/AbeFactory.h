@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -77,32 +79,31 @@
 class AbeFactory
             : public Object
          {
-        
 
-    private: static const instance: AbeFactory = new AbeFactory();
+    private: static AbeFactory instance() { return AbeFactory(); }
 
-    public static AbeFactory getInstance();
+    public: static AbeFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: useCustomLoader: bool = false;
+    private: bool useCustomLoader = false;
 
-private constructor ();
-
-                //@Throws(LicensingException.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public any getInstance(AbeClientInformationInterface abeClientInformation, string className);
+private: AbeFactory();
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public any getInstance(AbeClientInformationInterface abeClientInformation, string className, std::vector<Function> classes, std::vector<any> params);
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className);
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Function constructor(AbeClientInformationInterface abeClientInformation, string className);
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className, std::vector<Function> classes, std::vector<Object*> params);
+
+                //@Throws(LicensingException.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: Function constructor(AbeClientInformationInterface abeClientInformation, std::string className);
 
 };
 

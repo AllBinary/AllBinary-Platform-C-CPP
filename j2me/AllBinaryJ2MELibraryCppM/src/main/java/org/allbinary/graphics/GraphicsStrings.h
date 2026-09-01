@@ -45,23 +45,22 @@
 class GraphicsStrings
             : public Object
          {
-        
 
-    private: static const instance: GraphicsStrings = new GraphicsStrings();
+    private: static GraphicsStrings instance() { return GraphicsStrings(); }
 
-    public static GraphicsStrings getInstance();
+    public: static GraphicsStrings getInstance();
 
-    public const ANIMATION: string = "animation";
+    public: const std::string ANIMATION = "animation";
 
-    public const ANGLE: string = "angle";
+    public: const std::string ANGLE = "angle";
 
-    public const MOVEMENT_ANGLE: string = "movement_angle";
+    public: const std::string MOVEMENT_ANGLE = "movement_angle";
 
-    public const ROTATION: string = "rotation";
+    public: const std::string ROTATION = "rotation";
 
-    public const OPACITY: string = "opacity";
+    public: const std::string OPACITY = "opacity";
 
-    public const HTML: string = "HTML";
+    public: const std::string HTML = "HTML";
 
 };
 

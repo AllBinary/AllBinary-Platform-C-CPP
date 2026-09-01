@@ -87,23 +87,22 @@
 class UserEmailConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: userEmailConfigurationInterface: UserEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
 
-public constructor (Node node);
+public: UserEmailConfigurationView(Node node);
 
-public constructor (UserEmailConfigurationInterface userEmailConfigurationInterface);
+public: UserEmailConfigurationView(UserEmailConfigurationInterface userEmailConfigurationInterface);
 
-    public UserEmailConfigurationInterface getEmailConfigurationInterface();
+    public: UserEmailConfigurationInterface getEmailConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

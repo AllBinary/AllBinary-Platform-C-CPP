@@ -64,31 +64,30 @@
 class Advertisements
             : public Object
          {
-        
 
-    private: const bannerList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList bannerList = BasicArrayListD();
 
-    private: const pageList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList pageList = BasicArrayListD();
 
-    public addPage(AdvertisementProcessorInterface advertisementProcessorInterface);
+    public: void addPage(AdvertisementProcessorInterface advertisementProcessorInterface);
 
-    public startRandomPage();
+    public: void startRandomPage();
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    public processRandomPage();
+    public: void processRandomPage();
 
-    public stopAllPage();
+    public: void stopAllPage();
 
-    public addBanner(AdvertisementProcessorInterface advertisementProcessorInterface);
+    public: void addBanner(AdvertisementProcessorInterface advertisementProcessorInterface);
 
-    public startAll();
+    public: void startAll();
 
-    public stopAllBanner();
+    public: void stopAllBanner();
 
-    public AdvertisementProcessorInterface getBanner(int32_t index);
+    public: AdvertisementProcessorInterface getBanner(int32_t index);
 
-    public stopAll();
+    public: void stopAll();
 
 };
 

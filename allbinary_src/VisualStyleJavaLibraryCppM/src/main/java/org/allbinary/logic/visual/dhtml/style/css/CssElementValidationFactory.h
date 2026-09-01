@@ -54,13 +54,12 @@
 class CssElementValidationFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ValidationInterface getInstance(Node node);
+    public: static ValidationInterface getInstance(Node node);
 
-private constructor ();
+private: CssElementValidationFactory();
 
 };
 

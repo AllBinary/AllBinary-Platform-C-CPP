@@ -41,9 +41,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PingInfoCompositeInterface {
-        
 
-    setPingInfo(bool show);
+    void setPingInfo(bool show);
 
 };
 

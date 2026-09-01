@@ -31,15 +31,14 @@
 class SuperCrypt
             : public Object
          {
-        
 
-    public static KEYMAX: int32_t = 0;
+    public: static int32_t KEYMAX = 0;
 
-public constructor (int32_t key);
+public: SuperCrypt(int32_t key);
 
-    public string encrypt(string value);
+    public: std::string encrypt(std::string value);
 
-    public string decrypt(string value);
+    public: std::string decrypt(std::string value);
 
 };
 

@@ -45,21 +45,20 @@
 class GenericConfigData
             : public Object
          {
-        
 
-    public static RELATIVE_PATH: string = "./";
+    public: static std::string RELATIVE_PATH = "./";
 
-    public static CONFIG_PATH: string = "modules/configs/";
+    public: static std::string CONFIG_PATH = "modules/configs/";
 
-    public static MODULE_RELATIVE_PATH: string = GenericConfigData.RELATIVE_PATH +GenericConfigData.CONFIG_PATH +"allbinary/input/automation/module/";
+    public: static std::string MODULE_RELATIVE_PATH = GenericConfigData::RELATIVE_PATH +GenericConfigData::CONFIG_PATH +"allbinary/input/automation/module/";
 
-    public static GAME_MODULE_RELATIVE_PATH: string = GenericConfigData.MODULE_RELATIVE_PATH +"game/";
+    public: static std::string GAME_MODULE_RELATIVE_PATH = GenericConfigData::MODULE_RELATIVE_PATH +"game/";
 
-    public static MMO_GAME_MODULE_RELATIVE_PATH: string = GenericConfigData.GAME_MODULE_RELATIVE_PATH +"mmog/";
+    public: static std::string MMO_GAME_MODULE_RELATIVE_PATH = GenericConfigData::GAME_MODULE_RELATIVE_PATH +"mmog/";
 
-    public static FREE_MMO_GAME_MODULE_RELATIVE_PATH: string = "free/";
+    public: static std::string FREE_MMO_GAME_MODULE_RELATIVE_PATH = "free/";
 
-private constructor ();
+private: GenericConfigData();
 
 };
 

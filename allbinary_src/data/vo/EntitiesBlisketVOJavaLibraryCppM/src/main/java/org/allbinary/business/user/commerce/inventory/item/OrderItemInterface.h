@@ -45,31 +45,30 @@
         #include "ItemInterface.h"
 
 class OrderItemInterface: public ItemInterface {
-        
 
-    setGroup(string value);
+    void setGroup(std::string value);
 
-    setTax(string value);
+    void setTax(std::string value);
 
-    setShippingType(string value);
+    void setShippingType(std::string value);
 
-    setShippingCost(string value);
+    void setShippingCost(std::string value);
 
-    setShippingAddress(StreetAddress value);
+    void setShippingAddress(StreetAddress value);
 
-    setSpecial(string value);
+    void setSpecial(std::string value);
 
-    string getGroup();
+    std::string getGroup();
 
-    string getTax();
+    std::string getTax();
 
-    string getShippingType();
+    std::string getShippingType();
 
-    string getShippingCost();
+    std::string getShippingCost();
 
     StreetAddress getShippingAddress();
 
-    string getSpecial();
+    std::string getSpecial();
 
 };
 

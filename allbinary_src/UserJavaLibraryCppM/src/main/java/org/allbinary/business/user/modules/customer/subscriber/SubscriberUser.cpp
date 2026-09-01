@@ -52,52 +52,51 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SubscriberUser: public User {
-        
 
-    private: subscription: Subscription;
+    private: Subscription subscription;
 
-public constructor (){
+public: SubscriberUser(){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.subscription= new Subscription();
+this->subscription= Subscription();
     
 }
 
 
-public constructor (HashMap<any, any> userHashMap){
+public: SubscriberUser(HashMap<any, any> userHashMap){
             super(userHashMap);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.subscription= new Subscription();
+this->subscription= Subscription();
     
 }
 
 
-    public validateSession(WeblisketSessionInterface weblisketSession){
+    public: void validateSession(WeblisketSessionInterface weblisketSession){
 super.validateSession(weblisketSession);
     
-this.updateSession(weblisketSession);
+this->updateSession(weblisketSession);
     
 }
 
 
-    public updateSession(WeblisketSessionInterface weblisketSession){
-weblisketSession!.setStoreName(this.getPermissions());
+    public: void updateSession(WeblisketSessionInterface weblisketSession){
+weblisketSession.setStoreName(this->getPermissions());
     
 }
 
 
-    public Boolean isSessionValid(){
+    public: Boolean isSessionValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.subscription.isSubscribed();;
+                        return this->subscription.isSubscribed();;
     
 }
 

@@ -35,11 +35,10 @@
 class ActivityFractureControllerUtilFactory
             : public Object
          {
-        
 
-    public static AndroidKeyFactory getInstance(){
+    public: static AndroidKeyFactory getInstance(){
 
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
                         if(SDK_VERSION <= 8)
@@ -49,7 +48,7 @@ class ActivityFractureControllerUtilFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidAPI1KeyFactory.getInstance();;
+                        return AndroidAPI1KeyFactory::getInstance();;
     
 
                                     }
@@ -62,7 +61,7 @@ class ActivityFractureControllerUtilFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidAPI9KeyFactory.getInstance();;
+                        return AndroidAPI9KeyFactory::getInstance();;
     
 
                                     }
@@ -72,7 +71,7 @@ class ActivityFractureControllerUtilFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidAPI12KeyFactory.getAPI12Instance();;
+                        return AndroidAPI12KeyFactory::getAPI12Instance();;
     
 
                         }

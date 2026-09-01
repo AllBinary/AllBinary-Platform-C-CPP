@@ -67,17 +67,16 @@
 class Globals
             : public Object
          {
-        
 
-    private: static const instance: Globals = new Globals();
+    private: static Globals instance() { return Globals(); }
 
-    public static Globals getInstance();
+    public: static Globals getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: Globals();
 
-    public init(ClassLoader classLoader, string pathString);
+    public: void init(ClassLoader classLoader, std::string pathString);
 
 };
 

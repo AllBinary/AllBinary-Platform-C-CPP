@@ -42,25 +42,22 @@
 class HtmlMetaAttributeData
             : public Object
          {
-        
 
-    private: id: int32_t;
+    private: int32_t id;
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (int32_t id, string value){
-
-            super();
-        this.name= value;
+public: HtmlMetaAttributeData(int32_t id, std::string value){
+this->name= value;
     
-this.id= id;
+this->id= id;
     
 }
 
 
-    public bool equals(HtmlMetaAttributeData htmlMetaAttributeData){
+    public: bool equals(HtmlMetaAttributeData htmlMetaAttributeData){
 
-                        if(htmlMetaAttributeData!.id == this.id)
+                        if(htmlMetaAttributeData.id == this->id)
                         
                                     {
                                     
@@ -85,12 +82,12 @@ this.id= id;
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

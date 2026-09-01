@@ -67,21 +67,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformTag: public TransformInfoTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: TransformTag();
 
-public constructor (TagHelperFactoryInterface tagHelperFactoryInterface);
+public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    string view();
+    protected: std::string view();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

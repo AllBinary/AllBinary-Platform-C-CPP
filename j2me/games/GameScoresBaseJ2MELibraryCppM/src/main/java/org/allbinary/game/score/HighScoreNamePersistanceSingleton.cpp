@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -115,88 +117,87 @@
 class HighScoreNamePersistanceSingleton
             : public Object
          {
-        
 
-    private: static SINGLETON: HighScoreNamePersistanceSingleton = new HighScoreNamePersistanceSingleton();
+    private: static HighScoreNamePersistanceSingleton SINGLETON = HighScoreNamePersistanceSingleton();
 
-    public static HighScoreNamePersistanceSingleton getInstance(){
+    public: static HighScoreNamePersistanceSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoreNamePersistanceSingleton.SINGLETON;
+                        return HighScoreNamePersistanceSingleton::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const platformRecordIdUtil: PlatformRecordIdUtil = PlatformRecordIdUtil.getInstance()!;
+    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
-    private: const RECORD_ID: string = "_SN";
+    private: const std::string RECORD_ID = "_SN";
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: nameBasicArrayList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList nameBasicArrayList = BasicArrayListD();
 
-    public clear(){
-this.name= StringUtil.getInstance()!.EMPTY_STRING;
+    public: void clear(){
+this->name= StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public deleteAll(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo){
+    public: void deleteAll(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo){
 
-    size: int32_t = this.nameBasicArrayList!.size()!;;
+    int32_t size = this->nameBasicArrayList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    integer: Integer = this.nameBasicArrayList!.objectArray[index]! as Integer;;
+    Integer integer = this->nameBasicArrayList.objectArray[index]! as Integer;;
     
-this.delete(abeClientInformation, gameInfo, integer.intValue());
-    
-}
-
-this.clear();
+this->delete(abeClientInformation, gameInfo, integer.intValue());
     
 }
 
+this->clear();
+    
+}
 
-    string getRecordId(AbeClientInformationInterface abeClientInformation){
+
+    private: std::string getRecordId(AbeClientInformationInterface abeClientInformation){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.platformRecordIdUtil!.getRecordId(abeClientInformation, this.RECORD_ID);;
+                        return this->platformRecordIdUtil.getRecordId(abeClientInformation, this->RECORD_ID);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public delete(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, int32_t deleteId){
+    public: void delete_(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, int32_t deleteId){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this.logUtil!.putF(new StringMaker().append("Deleting: ")!.appendint(deleteId)!.toString(), this, this.commonStrings!.delete);
+            this->logUtil.putF(StringMaker().append("Deleting: ").appendint(deleteId).toString(), this, this->commonStrings.delete_);
     
-recordStore= RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true);
+recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
-recordStore!.deleteRecord(deleteId);
+recordStore.deleteRecord(deleteId);
     
 
                 //: 
@@ -212,13 +213,13 @@ recordStore!.deleteRecord(deleteId);
          finally {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put("Closing RecordStore", this, this.commonStrings!.delete);
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings.delete_);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -229,68 +230,68 @@ recordStore!.closeRecordStore();
 }
 
 
-    public BasicArrayList getIds(){
+    public: BasicArrayList getIds(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nameBasicArrayList;
+                        return this->nameBasicArrayList;
     
 }
 
 
-    public string load(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo){
+    public: std::string load(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
             
-                        if(this.name == StringUtil.getInstance()!.EMPTY_STRING)
+                        if(this->name == StringUtil::getInstance().EMPTY_STRING)
                         
                                     {
                                     
-    LOADING_ID: string = "Loading id: ";;
+    std::string LOADING_ID = "Loading id: ";;
     
-recordStore= RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true);
-    
-
-    recordEnum: RecordEnumeration = recordStore!.enumerateRecords(NullRecordFilter.NULL_RECORD_FILTER, NullRecordComparator.NULL_RECORD_COMPARATOR, true)!;;
+recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    recordAsBytes: std::vector<int8_t>;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    byteArrayInputStream: ByteArrayInputStream;;
+    std::vector<int8_t> recordAsBytes;;
     
 
-    inputStream: DataInputStream;;
+    ByteArrayInputStream byteArrayInputStream;;
     
 
-        while(recordEnum!.hasNextElement())
+    DataInputStream inputStream;;
+    
+
+        while(recordEnum.hasNextElement())
         {
 
-    id: int32_t = recordEnum!.nextRecordId()!;;
+    int32_t id = recordEnum.nextRecordId();;
     
-this.logUtil!.putF(new StringMaker().append(LOADING_ID)!.appendint(id)!.toString(), this, this.commonStrings!.LOAD);
+this->logUtil.putF(StringMaker().append(LOADING_ID).appendint(id).toString(), this, this->commonStrings.LOAD);
     
-recordAsBytes= this.tsUtil!.getRecord(recordStore, id);
+recordAsBytes= this->tsUtil.getRecord(recordStore, id);
     
-byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
+byteArrayInputStream= ByteArrayInputStream(recordAsBytes);
     
-inputStream= new DataInputStream(byteArrayInputStream);
+inputStream= DataInputStream(byteArrayInputStream);
     
 
-        while(inputStream!.available() > 0)
+        while(inputStream.available() > 0)
         {
-this.name= inputStream!.readUTF();
+this->name= inputStream.readUTF();
     
 }
 
-this.nameBasicArrayList!.add(smallIntegerSingletonFactory!.getAt(id));
+this->nameBasicArrayList.add(smallIntegerSingletonFactory.getAt(id));
     
 }
 
@@ -301,9 +302,9 @@ this.nameBasicArrayList!.add(smallIntegerSingletonFactory!.getAt(id));
                 //: 
 } catch(e) 
             {
-this.save(abeClientInformation, gameInfo, this.name);
+this->save(abeClientInformation, gameInfo, this->name);
     
-this.logUtil!.putF(new StringMaker().append(this.commonStrings!.EXCEPTION_LABEL)!.append(ExceptionUtil.getInstance()!.getStackTrace(e))!.toString(), this, this.commonStrings!.LOAD);
+this->logUtil.putF(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append(ExceptionUtil::getInstance().getStackTrace(e)).toString(), this, this->commonStrings.LOAD);
     
 }
 
@@ -312,13 +313,13 @@ this.logUtil!.putF(new StringMaker().append(this.commonStrings!.EXCEPTION_LABEL)
         try {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put("Closing RecordStore", this, this.commonStrings!.LOAD);
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings.LOAD);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -327,7 +328,7 @@ recordStore!.closeRecordStore();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.LOAD, e);
     
 }
 
@@ -338,41 +339,41 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public save(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, string name){
+    public: void save(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string name){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this.logUtil!.putF(new StringMaker().append("Saving: ")!.append(name)!.toString(), this, this.commonStrings!.SAVE);
+            this->logUtil.putF(StringMaker().append("Saving: ").append(name).toString(), this, this->commonStrings.SAVE);
     
-recordStore= RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true);
-    
-
-    byteArrayOutputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
 
-    outputStream: DataOutputStream = new DataOutputStream(byteArrayOutputStream);;
-    
-outputStream!.writeUTF(name);
+    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
     
 
-    savedGameBytes: std::vector<int8_t> = byteArrayOutputStream!.toByteArray()!;;
+    DataOutputStream outputStream = DataOutputStream(byteArrayOutputStream);;
     
-recordStore!.addRecord(savedGameBytes, 0, savedGameBytes!.length);
+outputStream.writeUTF(name);
     
-this.name= name;
+
+    std::vector<int8_t> savedGameBytes = byteArrayOutputStream.toByteArray();;
+    
+recordStore.addRecord(savedGameBytes, 0, savedGameBytes.size());
+    
+this->name= name;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.SAVE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE, e);
     
 }
 
@@ -381,13 +382,13 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.SAVE,
         try {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put("Closing RecordStore", this, this.commonStrings!.SAVE);
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings.SAVE);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -396,7 +397,7 @@ recordStore!.closeRecordStore();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.SAVE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE, e);
     
 }
 

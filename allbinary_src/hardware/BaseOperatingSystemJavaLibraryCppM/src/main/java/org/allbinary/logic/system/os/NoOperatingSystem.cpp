@@ -39,14 +39,11 @@
         #include "GenericOperatingSystem.h"
 
 class NoOperatingSystem: public GenericOperatingSystem {
-        
 
-    public static const NO_OPERATING_SYSTEM: GenericOperatingSystem = new GenericOperatingSystem();
+    public: static const GenericOperatingSystem NO_OPERATING_SYSTEM = GenericOperatingSystem();
 
-public constructor (){
-
-            super();
-        }
+public: NoOperatingSystem(){
+}
 
 
 };

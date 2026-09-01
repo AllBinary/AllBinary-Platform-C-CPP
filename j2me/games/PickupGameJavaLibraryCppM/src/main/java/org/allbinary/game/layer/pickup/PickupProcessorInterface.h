@@ -52,11 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PickupProcessorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryLayer sourceLayerInterface);
+    void process(AllBinaryLayer sourceLayerInterface);
 
 };
 

@@ -50,15 +50,14 @@
 // class PreLogUtil
             : public Object
          {
-        
 
-    public static put(string specialMessage, any = {} anyType, string functionName);
+    public: static void put(std::string specialMessage, Object* anyType, std::string functionName);
 
-    public static putOE(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
-    public static putSE(string specialMessage, string className, string functionName, any = {} exception);
+    public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception);
 
-public constructor ();
+public: PreLogUtil();
 
 };
 

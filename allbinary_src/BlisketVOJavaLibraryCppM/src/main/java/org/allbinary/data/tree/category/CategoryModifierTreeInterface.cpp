@@ -41,11 +41,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CategoryModifierTreeInterface {
-        
 
-    insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface)
+    void insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface)
 
-    delete(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface)
+    void delete_(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface)
 
 };
 

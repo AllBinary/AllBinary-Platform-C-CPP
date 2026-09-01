@@ -71,23 +71,22 @@
 class PaymentGatewayInterfaceFactory
             : public Object
         : public PaymentGatewayInterfaceFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public PaymentGatewayInterface getInstance(HttpServletRequest httpServletRequest);
+public: PaymentGatewayInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayInterface getInstance(BasicPaymentType paymentType);
+    public: PaymentGatewayInterface getInstance(HttpServletRequest httpServletRequest);
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayInterface getInstance(HashMap<any, any> hashMap);
+    public: PaymentGatewayInterface getInstance(BasicPaymentType paymentType);
+
+                //@Throws(Exception.constructor)
+            
+    public: PaymentGatewayInterface getInstance(HashMap<any, any> hashMap);
 
 };
 

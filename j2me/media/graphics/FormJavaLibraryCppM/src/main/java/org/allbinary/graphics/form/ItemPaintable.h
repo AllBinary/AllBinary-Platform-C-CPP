@@ -54,9 +54,8 @@
 class ItemPaintable
             : public Object
          {
-        
 
-    public paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y);
+    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y);
 
 };
 

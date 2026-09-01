@@ -44,13 +44,12 @@
         #include "UrlGlobalsInterface.h"
 //implements
 class AppUrlGlobals: public UrlGlobalsInterface {
-        
 
-    public static const NULL_APP_URL_GLOBALS: AppUrlGlobals = new AppUrlGlobals();
+    public: static const AppUrlGlobals NULL_APP_URL_GLOBALS = AppUrlGlobals();
 
-    private: path: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string path = StringUtil::getInstance().EMPTY_STRING;
 
-    public bool isTestingMode(){
+    public: bool isTestingMode(){
 
 
 
@@ -60,25 +59,25 @@ class AppUrlGlobals: public UrlGlobalsInterface {
 }
 
 
-    public string getWebappPath(){
+    public: std::string getWebappPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.path;
+                        return this->path;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setWebappPath(string path){
-this.path= path;
+    public: void setWebappPath(std::string path){
+this->path= path;
     
 
-                        if(!(this.path.endsWith("\\") || this.path.endsWith("/")))
+                        if(!(this->path.endsWith("\\") || this->path.endsWith("/")))
                         
                                     {
-                                    this.path= this.path +"\\";
+                                    this->path= this->path +"\\";
     
 
                                     }
@@ -86,24 +85,24 @@ this.path= path;
 }
 
 
-    public string getTestHtmlPath(){
+    public: std::string getTestHtmlPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getMainPath(){
+    public: std::string getMainPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.path;
+                        return this->path;
     
 }
 

@@ -54,32 +54,31 @@
 class PlatformInputMappingFactory
             : public Object
          {
-        
 
-    private: static const instance: PlatformInputMappingFactory = new PlatformInputMappingFactory();
+    private: static PlatformInputMappingFactory instance() { return PlatformInputMappingFactory(); }
 
-    public static PlatformInputMappingFactory getInstance(){
+    public: static PlatformInputMappingFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformInputMappingFactory.instance;
+                        return PlatformInputMappingFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: inputToGameKeyMapping: PersistentInputMapping = PersistentInputMapping.getNullInstance()!;
+    private: PersistentInputMapping inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
 
-    public PersistentInputMapping getPersistentInputMappingInstance(){
+    public: PersistentInputMapping getPersistentInputMappingInstance(){
 
         try {
             
-                        if(this.inputToGameKeyMapping == PersistentInputMapping.getNullInstance())
+                        if(this->inputToGameKeyMapping == PersistentInputMapping::getNullInstance())
                         
                                     {
-                                    this.inputToGameKeyMapping= new NormalJ2MEGameInputMapping();
+                                    this->inputToGameKeyMapping= NormalJ2MEGameInputMapping();
     
 
                                     }
@@ -89,9 +88,9 @@ class PlatformInputMappingFactory
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 }
 
@@ -99,7 +98,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputToGameKeyMapping;
+                        return this->inputToGameKeyMapping;
     
 }
 

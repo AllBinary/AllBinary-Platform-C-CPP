@@ -76,40 +76,39 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PressStartMenuPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const PRESS_START: string = "Press Screen To Start";
+    private: const std::string PRESS_START = "Press Screen To Start";
 
-    private: const KEY_START: string = "Press or Click F2 To Begin";
+    private: const std::string KEY_START = "Press or Click F2 To Begin";
 
-    private: const MENU_START: string = "Press Start From The Menu To Begin";
+    private: const std::string MENU_START = "Press Start From The Menu To Begin";
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: startString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string startString = StringUtil::getInstance().EMPTY_STRING;
 
-    private: timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(1100);
+    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(1100);
 
-    private: flash: bool= false;
+    private: bool flash= false;
 
-public constructor ();
+public: PressStartMenuPaintable();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: beginWidth: int32_t= 0;
+    private: int32_t beginWidth= 0;
 
-    private: line: int32_t= 0;
+    private: int32_t line= 0;
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    setFlash(bool flash);
+    private: void setFlash(bool flash);
 
-    bool isFlash();
+    private: bool isFlash();
 
 };
 

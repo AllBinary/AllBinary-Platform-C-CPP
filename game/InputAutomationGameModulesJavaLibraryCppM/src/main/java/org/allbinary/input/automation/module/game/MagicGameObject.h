@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_MAGICGAMEOBJECT_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -55,14 +57,13 @@
         #include "MeteredGameObject.h"
 #include "MagicGameObjectInterface.h"
 
-class MagicGameObject: public MeteredGameObject: public MagicGameObjectInterface {
-        
+class MagicGameObject: public MeteredGameObject, public MagicGameObjectInterface {
 
-    private: const MP_LABEL: string = "MP:";
+    private: const std::string MP_LABEL = "MP:";
 
-public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
+public: MagicGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -66,44 +66,39 @@
         #include "TagHelper.h"
 
 class StoreFrontHelper: public TagHelper {
-        
 
-    private: const storeFrontInterface: StoreFrontInterface;
+    private: const StoreFrontInterface storeFrontInterface;
 
-    private: const currentLocation: string;
+    private: const std::string currentLocation;
 
-    private: const currentHomeLocation: string;
+    private: const std::string currentHomeLocation;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
+public: StoreFrontHelper(HashMap<any, any> hashMap, PageContext pageContext){
 
-            super();
-        
-    storeName: string = hashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(storeName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
-this.currentLocation= new Replace(CommonSeps.getInstance()!.SPACE, "%20").all(this.storeFrontInterface!.getCurrentHostName() +this.storeFrontInterface!.getCurrentHostNamePath());
+this->currentLocation= Replace(CommonSeps::getInstance().SPACE, "%20").all(this->storeFrontInterface.getCurrentHostName() +this->storeFrontInterface.getCurrentHostNamePath());
     
-this.currentHomeLocation= new Replace(CommonSeps.getInstance()!.SPACE, "%20").all(this.storeFrontInterface!.getCurrentHomeHostName() +this.storeFrontInterface!.getCurrentHomeHostNamePath());
+this->currentHomeLocation= Replace(CommonSeps::getInstance().SPACE, "%20").all(this->storeFrontInterface.getCurrentHomeHostName() +this->storeFrontInterface.getCurrentHomeHostNamePath());
     
 
                                     }
                                 
                         else {
                             
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-this.storeFrontInterface= new StoreFront();
+this->storeFrontInterface= StoreFront();
     
-this.currentLocation= stringUtil!.EMPTY_STRING;
+this->currentLocation= stringUtil.EMPTY_STRING;
     
-this.currentHomeLocation= stringUtil!.EMPTY_STRING;
+this->currentHomeLocation= stringUtil.EMPTY_STRING;
     
 
                         }
@@ -111,22 +106,22 @@ this.currentHomeLocation= stringUtil!.EMPTY_STRING;
 }
 
 
-    public string getCurrentLocation(){
+    public: std::string getCurrentLocation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentLocation;
+                        return this->currentLocation;
     
 }
 
 
-    public string getCurrentHomeLocation(){
+    public: std::string getCurrentHomeLocation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentHomeLocation;
+                        return this->currentHomeLocation;
     
 }
 

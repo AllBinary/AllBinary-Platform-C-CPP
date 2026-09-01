@@ -60,21 +60,20 @@
 class BaseDropCellPositionGenerator
             : public Object
         : public DropCellPositionGeneratorInterface {
-        
 
-    public string getName();
-
-                //@Throws(Exception.constructor)
-            
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition);
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

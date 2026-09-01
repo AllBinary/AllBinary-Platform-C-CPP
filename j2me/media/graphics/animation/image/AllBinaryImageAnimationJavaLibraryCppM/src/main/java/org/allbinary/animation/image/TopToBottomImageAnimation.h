@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -59,23 +61,22 @@
         #include "ImageSegmentAnimation.h"
 
 class TopToBottomImageAnimation: public ImageSegmentAnimation {
-        
 
-    private: currentHeight: int32_t;
+    private: int32_t currentHeight;
 
-public constructor (Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior);
+public: TopToBottomImageAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    update();
+    private: void update();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

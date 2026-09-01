@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLBITMAP_H
 
+            #include <vector>
+        
 #include <android/graphics/Bitmap.h>
 
       
@@ -33,21 +35,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OpenGLBitmap: public PlatformBitmapBase {
-        
 
-    public const bitmap: Bitmap;
+    public: Bitmap bitmap;
 
-public constructor (any = {} bitmap);
+public: OpenGLBitmap(Object* bitmap);
 
-    public getPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height);
+    public: void getPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height);
 
-    public setPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height);
+    public: void setPixels(std::vector<int32_t> pixels, int32_t offset, int32_t stride, int32_t x, int32_t y, int32_t width, int32_t height);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public recycle();
+    public: void recycle();
 
 };
 

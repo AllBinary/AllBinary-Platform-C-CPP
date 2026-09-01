@@ -57,46 +57,42 @@
 class NoGameNotificationHudSingleton
             : public Object
          {
-        
 
-    private: static const instance: NoGameNotificationHudSingleton = new NoGameNotificationHudSingleton();
+    private: static NoGameNotificationHudSingleton instance() { return NoGameNotificationHudSingleton(); }
 
-    public static NoGameNotificationHudSingleton getInstance(){
+    public: static NoGameNotificationHudSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoGameNotificationHudSingleton.instance;
+                        return NoGameNotificationHudSingleton::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: gameNotificationHud: GameNotificationHud = GameNotificationHud.NULL_GAME_NOTIFICATION;
+    private: GameNotificationHud gameNotificationHud = GameNotificationHud::NULL_GAME_NOTIFICATION;
 
-private constructor (){
+private: NoGameNotificationHudSingleton(){
 
-            super();
-        
         try {
             
-    basicHudFactory: BasicHudFactory = BasicHudFactory.getInstance()!;;
+    BasicHudFactory basicHudFactory = BasicHudFactory::getInstance();;
     
 
 //inner=true member= isStatic=
 class NoGameGameNotificationHud: public GameNotificationHud {
-        
 
- constructor (){
-            super(basicHudFactory!.TOPCENTER, basicHudFactory!.HORIZONTAL, 2, BasicColorFactory.getInstance()!.RED);
+: NoGameGameNotificationHud(){
+            super(basicHudFactory.TOPCENTER, basicHudFactory.HORIZONTAL, 2, BasicColorFactory::getInstance().RED);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.updateMaxWidth= 40;
+this->updateMaxWidth= 40;
     
-this.updateMaxHeight= 14;
+this->updateMaxHeight= 14;
     
 }
 
@@ -107,28 +103,28 @@ this.updateMaxHeight= 14;
 
                     //Otherwise - statement - EmptyStmt
 
-this.gameNotificationHud= new NoGameGameNotificationHud();
+this->gameNotificationHud= NoGameGameNotificationHud();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
 }
 
 
-    public GameNotificationHud getGameNotificationHud(){
+    public: GameNotificationHud getGameNotificationHud(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameNotificationHud;
+                        return this->gameNotificationHud;
     
 }
 

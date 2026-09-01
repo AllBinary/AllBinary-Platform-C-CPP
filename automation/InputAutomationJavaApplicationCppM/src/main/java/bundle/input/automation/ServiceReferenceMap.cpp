@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <java/util/Collection.h>
@@ -57,32 +59,29 @@
 class ServiceReferenceMap
             : public Object
         : public Map {
-        
 
-    public static string toString(Map map){
+    public: static std::string toString(Map map){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    private: serviceReference: ServiceReference;
+    private: ServiceReference serviceReference;
 
-public constructor (ServiceReference serviceReference){
-
-            super();
-        this.serviceReference= serviceReference;
+public: ServiceReferenceMap(ServiceReference serviceReference){
+this->serviceReference= serviceReference;
     
 }
 
 
-    public int32_t size(){
+    public: int32_t size(){
 
 
 
@@ -92,7 +91,7 @@ public constructor (ServiceReference serviceReference){
 }
 
 
-    public bool isEmpty(){
+    public: bool isEmpty(){
 
 
 
@@ -102,7 +101,7 @@ public constructor (ServiceReference serviceReference){
 }
 
 
-    public bool containsKey(any = {} key){
+    public: bool containsKey(Object* key){
 
 
 
@@ -112,7 +111,7 @@ public constructor (ServiceReference serviceReference){
 }
 
 
-    public bool containsValue(any = {} value){
+    public: bool containsValue(Object* value){
 
 
 
@@ -122,27 +121,17 @@ public constructor (ServiceReference serviceReference){
 }
 
 
-    public any get(any = {} key){
+    public: Object* get(Object* key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serviceReference!.getProperty(key as string);;
+                        return this->serviceReference.getProperty(key as string);;
     
 }
 
 
-    public any put(any = {} key, any = {} value){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public any remove(any = {} key){
+    public: Object* put(Object* key, Object* value){
 
 
 
@@ -152,17 +141,27 @@ public constructor (ServiceReference serviceReference){
 }
 
 
-    public putAll(Map m){
+    public: Object* remove(Object* key){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
 }
 
 
-    public clear(){
+    public: void putAll(Map m){
 }
 
 
-    public Set keySet(){
+    public: void clear(){
+}
 
-    keyStringArray: std::vector<string> = this.serviceReference!.getPropertyKeys()!;;
+
+    public: Set keySet(){
+
+    std::vector<std::string> keyStringArray = this->serviceReference.getPropertyKeys();;
     
 
 
@@ -173,7 +172,7 @@ public constructor (ServiceReference serviceReference){
 }
 
 
-    public Collection<any> values(){
+    public: Collection<any> values(){
 
 
 
@@ -183,7 +182,7 @@ public constructor (ServiceReference serviceReference){
 }
 
 
-    public Set entrySet(){
+    public: Set entrySet(){
 
 
 

@@ -52,58 +52,55 @@
 class BasicLayerPlacement
             : public Object
          {
-        
 
-    private: layerType: LayerPlacementType;
+    private: LayerPlacementType layerType;
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-public constructor (LayerPlacementType layerType, int32_t width, int32_t height){
-
-            super();
-        this.layerType= layerType;
+public: BasicLayerPlacement(LayerPlacementType layerType, int32_t width, int32_t height){
+this->layerType= layerType;
     
-this.width= width;
+this->width= width;
     
-this.height= height;
+this->height= height;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    public LayerPlacementType getLayerType(){
+    public: LayerPlacementType getLayerType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerType;
+                        return this->layerType;
     
 }
 
 
-    setLayerType(LayerPlacementType layerType){
-this.layerType= layerType;
+    protected: void setLayerType(LayerPlacementType layerType){
+this->layerType= layerType;
     
 }
 

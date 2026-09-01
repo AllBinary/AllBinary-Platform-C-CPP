@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -95,32 +97,29 @@
 class UnitItemArrayFactory
             : public Object
         : public ItemArraySingletonFactoryInterface {
-        
 
-    private: static const ITEMS: std::vector<ABCustomItem> = CustomItemUtil.getInstance()!.CUSTOM_ITEM_ARRAY;
+    private: static const std::vector<ABCustomItem> ITEMS = CustomItemUtil::getInstance().CUSTOM_ITEM_ARRAY;
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    private: const resources: std::vector<BasicGameResources>;
+    private: std::vector<BasicGameResources> resources;
 
-protected constructor (std::vector<BasicGameResources> resources){
-
-            super();
-        this.resources= resources;
+protected: UnitItemArrayFactory(std::vector<BasicGameResources> resources){
+this->resources= resources;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    ABCustomItem createFlagItem(FlagGameResources flagResources, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+    protected: ABCustomItem createFlagItem(FlagGameResources flagResources, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
 
-    name: string = flagResources!.NAME;;
+    std::string name = flagResources.NAME;;
     
 
-    index: int32_t = name.indexOf(this.commonSeps!.SPACE)!;;
+    int32_t index = name.indexOf(this->commonSeps.SPACE);;
     
 
                         if(index >= 0)
@@ -135,25 +134,25 @@ protected constructor (std::vector<BasicGameResources> resources){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createNamedFlagItem(flagResources, name, layerInterfaceFactoryInterface);;
+                        return this->createNamedFlagItem(flagResources, name, layerInterfaceFactoryInterface);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    ABCustomItem createNamedFlagItem(FlagGameResources flagResources, string name, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+    protected: ABCustomItem createNamedFlagItem(FlagGameResources flagResources, std::string name, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
 
-    IMAGE_CACHE: ImageCache = GameFeatureImageCacheFactory.getInstance()!;;
+    ImageCache IMAGE_CACHE = GameFeatureImageCacheFactory::getInstance();;
     
 
-    image: Image = IMAGE_CACHE.getWithKey(flagResources!.RESOURCE_ICON)!;;
+    Image image = IMAGE_CACHE::getWithKey(flagResources.RESOURCE_ICON);;
     
 
-    item: ABCustomItem = new LayerInterfaceFactoryImageItem(name, image, ImageItem.LAYOUT_DEFAULT, flagResources!.NAME, this.basicColor, 
-                                                [
-                                                    new RTSLayerTextAnimation(RTSGameStrings.getInstance()!.DRAGGABLE, image)
-                                                ], layerInterfaceFactoryInterface);;
+    ABCustomItem item = LayerInterfaceFactoryImageItem(name, image, ImageItem::LAYOUT_DEFAULT, flagResources.NAME, this->basicColor, 
+                                                {
+                                                    RTSLayerTextAnimation(RTSGameStrings::getInstance().DRAGGABLE, image)
+                                                }, layerInterfaceFactoryInterface);;
     
 
 
@@ -166,36 +165,36 @@ protected constructor (std::vector<BasicGameResources> resources){
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<ABCustomItem> getItems(){
+    public: std::vector<ABCustomItem> getItems(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UnitItemArrayFactory.ITEMS;
+                        return UnitItemArrayFactory::ITEMS;
     
 }
 
 
-    public std::vector<BasicGameResources> getResources(){
+    public: std::vector<BasicGameResources> getResources(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.resources;
+                        return this->resources;
     
 }
 
 
-    public int32_t indexOf(BasicGameResources basicGameResources){
+    public: int32_t indexOf(BasicGameResources basicGameResources){
 
 
 
 
                         for (
-    index: int32_t = this.resources.length -1;index >= 0; index--)
+    int32_t index = this->resources.size() -1;index >= 0; index--)
         {
 
-                        if(this.resources[index] == basicGameResources)
+                        if(this->resources[index] == basicGameResources)
                         
                                     {
                                     

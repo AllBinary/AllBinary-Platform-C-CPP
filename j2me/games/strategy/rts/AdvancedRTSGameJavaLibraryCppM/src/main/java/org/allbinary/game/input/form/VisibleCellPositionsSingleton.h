@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_VISIBLECELLPOSITIONSSINGLETON_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_VISIBLECELLPOSITIONSSINGLETON_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -89,59 +91,58 @@
 class VisibleCellPositionsSingleton
             : public Object
         : public BuildingEventListenerInterface, public ScrollMapEventListenerInterface {
-        
 
-    private: static const instance: VisibleCellPositionsSingleton = new VisibleCellPositionsSingleton();
+    private: static VisibleCellPositionsSingleton instance() { return VisibleCellPositionsSingleton(); }
 
-    public static VisibleCellPositionsSingleton getInstance();
+    public: static VisibleCellPositionsSingleton getInstance();
 
-    private: stationaryVisibleCellPositions: std::vector<std::vector<int16_t>> = NullUtil.getInstance()!.NULL_SHORT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int16_t>> stationaryVisibleCellPositions = NullUtil::getInstance().NULL_SHORT_ARRAY_ARRAY;
 
-    private: visibleCellPositions: std::vector<std::vector<int16_t>> = NullUtil.getInstance()!.NULL_SHORT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int16_t>> visibleCellPositions = NullUtil::getInstance().NULL_SHORT_ARRAY_ARRAY;
 
-    private: currentlyVisibleCellPositions: std::vector<std::vector<int16_t>> = NullUtil.getInstance()!.NULL_SHORT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int16_t>> currentlyVisibleCellPositions = NullUtil::getInstance().NULL_SHORT_ARRAY_ARRAY;
 
-    public const ALL_VISIBLE_TILEDLAYER: SimpleTiledLayer = new SimpleTiledLayer(0, 0, 0, 0);
+    public: const SimpleTiledLayer ALL_VISIBLE_TILEDLAYER = SimpleTiledLayer(0, 0, 0, 0);
 
-    private: simpleTiledLayer: SimpleTiledLayer = this.ALL_VISIBLE_TILEDLAYER;
+    private: SimpleTiledLayer simpleTiledLayer = this->ALL_VISIBLE_TILEDLAYER;
 
-    private: paintSimpleTiledLayer: SimpleTiledLayer = this.ALL_VISIBLE_TILEDLAYER;
+    private: SimpleTiledLayer paintSimpleTiledLayer = this->ALL_VISIBLE_TILEDLAYER;
 
-    private: currentIndex: int32_t= 0;
+    private: int32_t currentIndex= 0;
 
-private constructor ();
+private: VisibleCellPositionsSingleton();
 
-    public init(SimpleTiledLayer simpleTiledLayer);
+    public: void init(SimpleTiledLayer simpleTiledLayer);
 
-    public onEvent(AllBinaryEventObject eventObject);
-
-                //@Throws(Exception.constructor)
-            
-    public onBuildingEvent(RTSLayerEvent event);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public onMoveEvent(ScrollMapEvent scrollMapEvent);
+    public: void onBuildingEvent(RTSLayerEvent event);
 
-    public addStationaryCellPositions(BasicArrayList list);
+                //@Throws(Exception.constructor)
+            
+    public: void onMoveEvent(ScrollMapEvent scrollMapEvent);
 
-    public removeStationaryCellPositions(BasicArrayList list);
+    public: void addStationaryCellPositions(BasicArrayList list);
 
-    public update();
+    public: void removeStationaryCellPositions(BasicArrayList list);
 
-    public bool shouldProcess();
+    public: void update();
 
-    public addCellPositions(BasicArrayList list);
+    public: bool shouldProcess();
 
-    public bool isVisible(CellPosition cellPosition);
+    public: void addCellPositions(BasicArrayList list);
 
-    public move(int32_t dx, int32_t dy);
+    public: bool isVisible(CellPosition cellPosition);
 
-    public paint(Graphics graphics);
+    public: void move(int32_t dx, int32_t dy);
 
-    setSimpleTiledLayer(SimpleTiledLayer simpleTiledLayer);
+    public: void paint(Graphics graphics);
 
-    public SimpleTiledLayer getSimpleTiledLayer();
+    private: void setSimpleTiledLayer(SimpleTiledLayer simpleTiledLayer);
+
+    public: SimpleTiledLayer getSimpleTiledLayer();
 
 };
 

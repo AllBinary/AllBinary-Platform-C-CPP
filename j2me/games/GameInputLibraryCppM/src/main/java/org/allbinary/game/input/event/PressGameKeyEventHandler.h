@@ -69,29 +69,28 @@
 #include "PressGameKeyEventListenerInterface.h"
 
 class PressGameKeyEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: PressGameKeyEventHandler = new PressGameKeyEventHandler();
+    private: static PressGameKeyEventHandler instance() { return PressGameKeyEventHandler(); }
 
-    public static PressGameKeyEventHandler getInstance();
+    public: static PressGameKeyEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: PressGameKeyEventHandler();
 
-    public addListener(PlayerGameInput playerGameInput);
+    public: void addListener(PlayerGameInput playerGameInput);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    public: void fireEvent(AllBinaryEventObject eventObject);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

@@ -57,21 +57,20 @@
 class PaymentGatewayMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: paymentGatewayInterface: PaymentGatewayInterface;
+    private: PaymentGatewayInterface paymentGatewayInterface;
 
-public constructor (PaymentGatewayInterface paymentGatewayInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public HashMap<any, any> toHashMap();
-
-    public Vector toVector();
+public: PaymentGatewayMapping(PaymentGatewayInterface paymentGatewayInterface);
 
                 //@Throws(Exception.constructor)
             
-    public any getKey();
+    public: HashMap<any, any> toHashMap();
+
+    public: Vector toVector();
+
+                //@Throws(Exception.constructor)
+            
+    public: Object* getKey();
 
 };
 

@@ -45,9 +45,8 @@
         #include "GameConfiguration.h"
 
 class GameConfigurationGauge: public Gauge {
-        
 
-public constructor (GameConfiguration gameConfiguration);
+public: GameConfigurationGauge(GameConfiguration gameConfiguration);
 
 };
 

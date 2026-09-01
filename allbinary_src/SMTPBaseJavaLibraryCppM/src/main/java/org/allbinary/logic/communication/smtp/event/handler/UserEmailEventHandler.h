@@ -62,34 +62,33 @@
 class UserEmailEventHandler
             : public Object
          {
-        
 
-    private: emailVector: Vector;
+    private: Vector emailVector;
 
-    private: emailInfo: EmailInfo;
+    private: EmailInfo emailInfo;
 
-    private: userEmailEventNameData: UserEmailEventNameData;
+    private: UserEmailEventNameData userEmailEventNameData;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public receiveEmailInfo(UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo);
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public addListener(Vector vector);
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public addListener(UserEmailEventListenerInterface emailEventListenerInterface);
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public removeListener(UserEmailEventListenerInterface emailEventListenerInterface);
+public: UserEmailEventHandler();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireEmailEvent();
+    public: void receiveEmailInfo(UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void addListener(Vector vector);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void addListener(UserEmailEventListenerInterface emailEventListenerInterface);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void removeListener(UserEmailEventListenerInterface emailEventListenerInterface);
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void fireEmailEvent();
 
 };
 

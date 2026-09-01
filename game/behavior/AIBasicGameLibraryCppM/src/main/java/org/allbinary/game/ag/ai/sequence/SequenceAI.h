@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SEQUENCE_SEQUENCEAI_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligence.h>
@@ -70,29 +72,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SequenceAI: public ArrayAI {
-        
 
-    private: static const SEQUENCE_AI: string = "Sequence AI";
+    private: static const std::string SEQUENCE_AI = "Sequence AI";
 
-    private: index: int32_t= 0;
+    private: int32_t index= 0;
 
-public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    public next();
+    public: void next();
 
-    public int32_t getIndex();
+    public: int32_t getIndex();
 
-    public setIndex(int32_t index);
+    public: void setIndex(int32_t index);
 
-    public ArtificialIntelligenceInterface getSelectedArtificialIntelligenceInterface();
+    public: ArtificialIntelligenceInterface getSelectedArtificialIntelligenceInterface();
 
-    public string getName();
+    public: std::string getName();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

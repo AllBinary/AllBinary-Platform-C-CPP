@@ -63,29 +63,28 @@
 class PixelDelta
             : public Object
         : public CacheableInterface {
-        
 
-    public static any getKey(GPoint point, ColorDelta colorDelta);
+    public: static Object* getKey(GPoint point, ColorDelta colorDelta);
 
-    private: point: GPoint;
+    private: GPoint point;
 
-    private: colorDelta: ColorDelta;
+    private: ColorDelta colorDelta;
 
-    private: key: any;
+    private: Object* key;
 
-public constructor (GPoint point, ColorDelta colorDelta);
+public: PixelDelta(GPoint point, ColorDelta colorDelta);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public GPoint getPoint();
+    public: GPoint getPoint();
 
-    public setPoint(GPoint point);
+    public: void setPoint(GPoint point);
 
-    public ColorDelta getColorDelta();
+    public: ColorDelta getColorDelta();
 
-    public setColorDelta(ColorDelta colorDelta);
+    public: void setColorDelta(ColorDelta colorDelta);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

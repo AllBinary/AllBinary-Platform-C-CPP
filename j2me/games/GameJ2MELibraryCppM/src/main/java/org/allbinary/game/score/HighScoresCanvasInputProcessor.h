@@ -68,28 +68,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HighScoresCanvasInputProcessor: public PlayerGameInput {
-        
 
-    private: const highScoresCanvas: HighScoresCanvas;
+    private: HighScoresCanvas highScoresCanvas;
 
-public constructor (HighScoresCanvas highScoresCanvas);
+public: HighScoresCanvasInputProcessor(HighScoresCanvas highScoresCanvas);
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public HighScoresCanvas getHighScoresCanvas();
+    public: HighScoresCanvas getHighScoresCanvas();
 
 };
 

@@ -62,9 +62,8 @@
 class ImageComparisonResultCacheSingleton
             : public Object
          {
-        
 
-    private: static cacheInterface: CacheInterface = 
+    private: static CacheInterface cacheInterface = 
                 null
             ;
 
@@ -72,30 +71,30 @@ class ImageComparisonResultCacheSingleton
                 static int32_t init() { 
                     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    STATIC_BLOCK: string = "Static Block";;
+    std::string STATIC_BLOCK = "Static Block";;
     
 
-    instance: string = "ImageComparisonCacheSingleton";;
+    std::string instance = "ImageComparisonCacheSingleton";;
     
 
         try {
-            logUtil!.putF(commonStrings!.START, instance, STATIC_BLOCK);
+            logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
     
-ImageComparisonResultCacheSingleton.cacheInterface= CacheInterfaceFactory.getInstance(CacheTypeFactory.getInstance()!.CACHE, CachePolicyFactory.getInstance()!.ONE_MINUTE_FIVE_MAX);
+ImageComparisonResultCacheSingleton::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().ONE_MINUTE_FIVE_MAX);
     
-logUtil!.putF(commonStrings!.END, instance, STATIC_BLOCK);
+logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
+logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
     
 }
 
@@ -104,22 +103,20 @@ logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
                     return 0;
                 }
             
-    public static CacheInterface getInstance(){
+    public: static CacheInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageComparisonResultCacheSingleton.cacheInterface;
+                        return ImageComparisonResultCacheSingleton::cacheInterface;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageComparisonResultCacheSingleton(){
+}
 
 
 };

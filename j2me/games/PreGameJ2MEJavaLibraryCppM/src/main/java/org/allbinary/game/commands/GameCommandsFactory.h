@@ -69,67 +69,66 @@
 class GameCommandsFactory
             : public Object
          {
-        
 
-    private: static const instance: GameCommandsFactory = new GameCommandsFactory();
+    private: static GameCommandsFactory instance() { return GameCommandsFactory(); }
 
-    public static GameCommandsFactory getInstance();
+    public: static GameCommandsFactory getInstance();
 
-    public const TOGGLE_FULLSCREEN: Command = new Command("Toggle FullScreen", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command TOGGLE_FULLSCREEN = Command("Toggle FullScreen", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const TOGGLE_KEYBOARD: Command = new Command("Keyboard", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command TOGGLE_KEYBOARD = Command("Keyboard", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const SET_MENU_DISPLAYABLE: Command = new Command("Set Menu Displayable", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command SET_MENU_DISPLAYABLE = Command("Set Menu Displayable", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const APPLICATION_UPDATE: Command = new Command(CommonStrings.getInstance()!.UPDATE, StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command APPLICATION_UPDATE = Command(CommonStrings::getInstance().UPDATE, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const DISPLAY_ABOUT: Command = new Command(CanvasStrings.getInstance()!.ABOUT, StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: const Command DISPLAY_ABOUT = Command(CanvasStrings::getInstance().ABOUT, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    public const OPEN_WEB_URL: Command = new Command("Open Web URL", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: const Command OPEN_WEB_URL = Command("Open Web URL", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    public const CLOSE_OPTIONS: Command = new Command("Back", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command CLOSE_OPTIONS = Command("Back", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const DISPLAY_OPTIONS: Command = new Command(CanvasStrings.getInstance()!.OPTIONS, StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: const Command DISPLAY_OPTIONS = Command(CanvasStrings::getInstance().OPTIONS, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    public const START_TRACE: Command = new Command("Start Trace", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command START_TRACE = Command("Start Trace", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const STOP_TRACE: Command = new Command("Stop Trace", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command STOP_TRACE = Command("Stop Trace", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const DEFAULT_OPTIONS: Command = new Command("Default", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command DEFAULT_OPTIONS = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const SHOW_GAME_CANVAS: Command = new Command("Back to Game", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command SHOW_GAME_CANVAS = Command("Back to Game", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const CLOSE_AND_SHOW_GAME_CANVAS: Command = new Command("Back", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command CLOSE_AND_SHOW_GAME_CANVAS = Command("Back", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const QUIT_COMMAND: Command = new Command("Quit", StringUtil.getInstance()!.EMPTY_STRING, Command.STOP, 1);
+    public: const Command QUIT_COMMAND = Command("Quit", StringUtil::getInstance().EMPTY_STRING, Command::STOP, 1);
 
-    public const RESTART_COMMAND: Command = new Command("Restart", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 0);
+    public: const Command RESTART_COMMAND = Command("Restart", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 0);
 
-    public const DISPLAY_SAVE_FORM: Command = new Command("Save To", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: const Command DISPLAY_SAVE_FORM = Command("Save To", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    public const SAVE: Command = new Command("Save", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: const Command SAVE = Command("Save", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    public const DISPLAY_LOAD_FORM: Command = new Command("Load", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: const Command DISPLAY_LOAD_FORM = Command("Load", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    public const LOAD_FILE: Command = new Command("Load File", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: const Command LOAD_FILE = Command("Load File", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    public const DELETE_FILE: Command = new Command("Delete File", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command DELETE_FILE = Command("Delete File", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const EXIT_COMMAND: Command = new Command("Exit", StringUtil.getInstance()!.EMPTY_STRING, Command.EXIT, 2);
+    public: const Command EXIT_COMMAND = Command("Exit", StringUtil::getInstance().EMPTY_STRING, Command::EXIT, 2);
 
-    public const EXIT_WITHOUT_PROGRESS_COMMAND: Command = new Command("Exit Without Progress", StringUtil.getInstance()!.EMPTY_STRING, Command.EXIT, 2);
+    public: const Command EXIT_WITHOUT_PROGRESS_COMMAND = Command("Exit Without Progress", StringUtil::getInstance().EMPTY_STRING, Command::EXIT, 2);
 
-    public const START_COMMAND: Command = new Command(CommonStrings.getInstance()!.START, StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command START_COMMAND = Command(CommonStrings::getInstance().START, StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const CONTINUE_COMMAND: Command = new Command("Continue", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command CONTINUE_COMMAND = Command("Continue", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const SELECT_COMMAND: Command = new Command("Select", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command SELECT_COMMAND = Command("Select", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const FEATURE_UPDATE: Command = new Command("Feature Update", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command FEATURE_UPDATE = Command("Feature Update", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const BUY_COMMAND: Command = new Command("BUY", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command BUY_COMMAND = Command("BUY", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-protected constructor ();
+protected: GameCommandsFactory();
 
 };
 

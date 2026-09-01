@@ -65,13 +65,12 @@
         #include "WeaponLayer.h"
 
 class WeaponLayerCircularPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor ();
+public: WeaponLayerCircularPool();
 
                 //@Throws(Exception.constructor)
             
-    public WeaponLayer getInstanceWeaponLayer(AllBinaryLayer sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable);
+    public: WeaponLayer getInstanceWeaponLayer(AllBinaryLayer sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable);
 
 };
 

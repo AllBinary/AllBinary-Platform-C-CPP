@@ -21,6 +21,8 @@
         #ifndef ADMIN_TAGHELPERS_CATEGORYREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_CATEGORYREQUESTHELPER_H
 
+            #include <vector>
+        
             #include "../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -116,43 +118,42 @@
         #include "ModifyTable.h"
 
 class CategoryRequestHelper: public ModifyTable {
-        
 
-    private: static const categoryRequest: string = new StringMaker().append("<")!.append(CategoryData.getInstance()!.REQUEST)!.append(">")!.toString()!;
+    private: static const std::string categoryRequest = StringMaker().append("<").append(CategoryData::getInstance().REQUEST).append(">").toString();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: categoryLoaderInterface: CategoryLoaderInterface;
+    private: CategoryLoaderInterface categoryLoaderInterface;
 
-    private: categoryInterface: CategoryInterface;
+    private: CategoryInterface categoryInterface;
 
-    private: childCategoryInterface: CategoryInterface;
+    private: CategoryInterface childCategoryInterface;
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: CategoryRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public getXmlData();
+    public: void getXmlData();
 
                 //@Throws(Exception.constructor)
             
-    setCategoryLoader(Node requestNode);
+    private: void setCategoryLoader(Node requestNode);
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string viewCategory();
+    public: std::string viewCategory();
 
-    public string viewCategories();
+    public: std::string viewCategories();
 
-    public string update();
+    public: std::string update();
 
 };
 

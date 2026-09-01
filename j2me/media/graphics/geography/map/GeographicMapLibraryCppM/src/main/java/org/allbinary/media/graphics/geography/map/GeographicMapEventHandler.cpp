@@ -58,34 +58,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GeographicMapEventHandler: public BasicEventHandler {
-        
 
-    private: static instance: GeographicMapEventHandler = new GeographicMapEventHandler();
+    private: static GeographicMapEventHandler instance = GeographicMapEventHandler();
 
-    public static GeographicMapEventHandler getInstance(){
+    public: static GeographicMapEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapEventHandler.instance;
+                        return GeographicMapEventHandler::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: GeographicMapEventHandler(){
+}
 
 
-    public addListener(AllBinaryGameLayer gameLayer){
+    public: void addListener(AllBinaryGameLayer gameLayer){
 
-                        if(!this.list.contains(gameLayer))
+                        if(!this->list.contains(gameLayer))
                         
                                     {
-                                    this.list.add(gameLayer);
+                                    this->list.add(gameLayer);
     
 
                                     }
@@ -93,42 +90,42 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
 }
 
 
-    public fireEvent(){
+    public: void fireEvent(){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    gameLayer: AllBinaryGameLayer = this.list.get(index) as AllBinaryGameLayer;;
+    AllBinaryGameLayer gameLayer = this->list.get(index) as AllBinaryGameLayer;;
     
-gameLayer!.move();
+gameLayer.move();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 

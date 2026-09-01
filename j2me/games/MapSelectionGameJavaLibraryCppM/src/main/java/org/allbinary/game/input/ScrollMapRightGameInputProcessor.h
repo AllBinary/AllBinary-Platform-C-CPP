@@ -51,13 +51,12 @@
 #include "ScrollMapPlayerGameInput.h"
 
 class ScrollMapRightGameInputProcessor: public ScrollMapGameInputProcessor {
-        
 
-public constructor (ScrollMapPlayerGameInput scrollMapPlayerGameInput);
+public: ScrollMapRightGameInputProcessor(ScrollMapPlayerGameInput scrollMapPlayerGameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
 
 };
 

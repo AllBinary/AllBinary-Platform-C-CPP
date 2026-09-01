@@ -50,13 +50,12 @@
 class MotionEventProcessor
             : public Object
          {
-        
 
- constructor ();
+: MotionEventProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public process(MotionEvent motionEvent);
+    public: void process(MotionEvent motionEvent);
 
 };
 

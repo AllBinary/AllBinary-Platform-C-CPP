@@ -42,11 +42,10 @@
         #include "ShaderInitializer.h"
 
 class SimpleShaderInitializer: public ShaderInitializer {
-        
 
-    private: static const instanceC: SimpleShaderInitializer = new SimpleShaderInitializer();
+    private: static const SimpleShaderInitializer instanceC = SimpleShaderInitializer();
 
-    public static SimpleShaderInitializer getInstance();
+    public: static SimpleShaderInitializer getInstance();
 
 };
 

@@ -62,21 +62,20 @@
         #include "BasicTable.h"
 
 class StaticPagesHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: StaticPagesHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string drop();
+    public: std::string drop();
 
-    public string create();
+    public: std::string create();
 
-    public string restore();
+    public: std::string restore();
 
-    public string backup();
+    public: std::string backup();
 
 };
 

@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -45,52 +47,51 @@
 class GameAdStateFactory
             : public Object
         : public GameAdStateFactoryInterface {
-        
 
-    private: static const instance: GameAdStateFactory = new GameAdStateFactory();
+    private: static GameAdStateFactory instance() { return GameAdStateFactory(); }
 
-    public static GameAdStateFactory getInstance(){
+    public: static GameAdStateFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameAdStateFactory.instance;
+                        return GameAdStateFactory::instance();
     
 }
 
 
-    private: const gameAdStateArray: std::vector<GameAdState> = 
-                                                        [
-                                                            new GameAdState(new AppNameLicensingAdConfiguration())
-                                                        ];
+    private: const std::vector<GameAdState> gameAdStateArray = 
+                                                        {
+                                                            GameAdState(AppNameLicensingAdConfiguration())
+                                                        };
 
-    private: gameAdState: GameAdState = this.gameAdStateArray[0]!;
+    private: GameAdState gameAdState = this->gameAdStateArray[0];
 
-    public GameAdState getCurrentInstance(){
+    public: GameAdState getCurrentInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameAdState;
+                        return this->gameAdState;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GameAdStateBase getInstanceForApp(SoftwareInformation softwareInformation){
-this.gameAdState= this.gameAdStateArray[0]!;
+    public: GameAdStateBase getInstanceForApp(SoftwareInformation softwareInformation){
+this->gameAdState= this->gameAdStateArray[0]!;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameAdStateArray[0]!;
+                        return this->gameAdStateArray[0]!;
     
 }
 
 
-    public bool isEnabled(){
+    public: bool isEnabled(){
 
 
 

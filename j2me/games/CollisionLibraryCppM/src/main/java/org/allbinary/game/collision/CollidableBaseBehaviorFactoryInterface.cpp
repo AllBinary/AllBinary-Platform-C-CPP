@@ -45,7 +45,6 @@
         #include "CollidableBaseBehavior.h"
 
 class CollidableBaseBehaviorFactoryInterface {
-        
 
     CollidableBaseBehavior createBehavior()
 

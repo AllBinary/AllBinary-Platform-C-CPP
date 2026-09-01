@@ -51,21 +51,20 @@
 class MidletStrings
             : public Object
          {
-        
 
-    private: static const instance: MidletStrings = new MidletStrings();
+    private: static MidletStrings instance() { return MidletStrings(); }
 
-    public static MidletStrings getInstance(){
+    public: static MidletStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MidletStrings.instance;
+                        return MidletStrings::instance();
     
 }
 
 
-    public const COMMAND_ACTION: string = "commandAction";
+    public: const std::string COMMAND_ACTION = "commandAction";
 
 };
 

@@ -51,11 +51,10 @@
 class IconLayerFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static IconLayer getInstance(Animation animationInterface, int32_t width, int32_t height);
+    public: static IconLayer getInstance(Animation animationInterface, int32_t width, int32_t height);
 
 };
 

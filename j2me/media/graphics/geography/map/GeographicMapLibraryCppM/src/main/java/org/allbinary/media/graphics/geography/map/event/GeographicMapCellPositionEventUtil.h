@@ -55,21 +55,20 @@
 class GeographicMapCellPositionEventUtil
             : public Object
          {
-        
 
-    private: const geographicMapCellPositionEvent: GeographicMapCellPositionEvent;
+    private: GeographicMapCellPositionEvent geographicMapCellPositionEvent;
 
-    private: const geographicMapCellPositionEventHandler: GeographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler.getInstance()!;
+    private: const GeographicMapCellPositionEventHandler geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
 
-public constructor (any = {} anyType);
-
-                //@Throws(Exception.constructor)
-            
-    public update(GeographicMapCellPositionTracking geographicMapCellPositionTracking);
+public: GeographicMapCellPositionEventUtil(Object* anyType);
 
                 //@Throws(Exception.constructor)
             
-    public remove(GeographicMapCellPositionTracking geographicMapCellPositionTracking);
+    public: void update(GeographicMapCellPositionTracking geographicMapCellPositionTracking);
+
+                //@Throws(Exception.constructor)
+            
+    public: void remove(GeographicMapCellPositionTracking geographicMapCellPositionTracking);
 
 };
 

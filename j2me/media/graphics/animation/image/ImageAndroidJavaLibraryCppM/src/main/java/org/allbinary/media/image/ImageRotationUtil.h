@@ -66,21 +66,20 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance();
+    public: static ImageRotationUtil getInstance();
 
-    private: const matrix: Matrix = new Matrix();
+    private: const Matrix matrix = Matrix();
 
-private constructor ();
+private: ImageRotationUtil();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
 
 };
 

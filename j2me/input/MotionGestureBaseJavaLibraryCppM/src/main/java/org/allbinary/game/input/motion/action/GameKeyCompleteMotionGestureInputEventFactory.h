@@ -61,19 +61,18 @@
 class GameKeyCompleteMotionGestureInputEventFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: GameKeyCompleteMotionGestureInputEventFactory = new GameKeyCompleteMotionGestureInputEventFactory();
+    private: static const GameKeyCompleteMotionGestureInputEventFactory SINGLETON = GameKeyCompleteMotionGestureInputEventFactory();
 
-    public static GameKeyCompleteMotionGestureInputEventFactory getInstance();
+    public: static GameKeyCompleteMotionGestureInputEventFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const eventList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList eventList = BasicArrayListD();
 
-    public add(GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent);
+    public: void add(GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent);
 
-    public updateAll();
+    public: void updateAll();
 
 };
 

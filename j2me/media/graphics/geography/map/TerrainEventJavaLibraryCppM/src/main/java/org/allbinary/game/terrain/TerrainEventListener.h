@@ -48,15 +48,14 @@
 class TerrainEventListener
             : public Object
         : public TerrainEventListenerInterface {
-        
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onTerrainEvent(TerrainEvent terrainEvent);
+    public: void onTerrainEvent(TerrainEvent terrainEvent);
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

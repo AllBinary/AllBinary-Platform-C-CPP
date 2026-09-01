@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -58,43 +60,39 @@
 class StoreThemeCategoriesView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: categoryInterface: StoreThemeCategoryInterface;
+    private: StoreThemeCategoryInterface categoryInterface;
 
-public constructor (StoreThemeCategoryInterface categoryInterface){
-
-            super();
-        this.categoryInterface= categoryInterface;
+public: StoreThemeCategoriesView(StoreThemeCategoryInterface categoryInterface){
+this->categoryInterface= categoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = new StoreThemeCategoryView(this.categoryInterface).toXmlNode(document)!;;
+    Node node = StoreThemeCategoryView(this->categoryInterface).toXmlNode(document);;
     
 
-    childArray: std::vector<any> = this.categoryInterface!.getChildNodes()!.toArray()!;;
+    std::vector<Object*> childArray = this->categoryInterface.getChildNodes().toArray();;
     
 
-    size: int32_t = childArray!.length
-                ;;
+    int32_t size = childArray.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    childCategoryInterface: CategoryInterface = childArray[i]! as CategoryInterface;;
+    CategoryInterface childCategoryInterface = childArray[i]! as CategoryInterface;;
     
 
-    childCategoryNode: Node = new StoreThemeCategoriesView(childCategoryInterface as StoreThemeCategoryInterface).toXmlNode(document)!;;
+    Node childCategoryNode = StoreThemeCategoriesView(childCategoryInterface as StoreThemeCategoryInterface).toXmlNode(document);;
     
 node.appendChild(childCategoryNode);
     

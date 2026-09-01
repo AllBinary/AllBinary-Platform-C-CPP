@@ -47,27 +47,26 @@
 class TouchScreenFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: TouchScreenFactory = new TouchScreenFactory();
+    private: static const TouchScreenFactory SINGLETON = TouchScreenFactory();
 
-    public static TouchScreenFactory getInstance();
+    public: static TouchScreenFactory getInstance();
 
-    private: multiTouch: bool= false;
+    private: bool multiTouch= false;
 
-    private: touch: bool= false;
+    private: bool touch= false;
 
-    private: touchScreenType: TouchScreenType = TouchScreenTypesFactory.getInstance()!.NOTOUCH;
+    private: TouchScreenType touchScreenType = TouchScreenTypesFactory::getInstance().NOTOUCH;
 
-private constructor ();
+private: TouchScreenFactory();
 
-    public bool isMultiTouch();
+    public: bool isMultiTouch();
 
-    public setTouch(bool touch);
+    public: void setTouch(bool touch);
 
-    public bool isTouch();
+    public: bool isTouch();
 
-    public TouchScreenType getTouchScreenType();
+    public: TouchScreenType getTouchScreenType();
 
 };
 

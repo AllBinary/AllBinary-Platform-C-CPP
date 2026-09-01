@@ -50,15 +50,14 @@
         #include "ScreenRepaintUtil.h"
 
 class ScreenRepaintProcessor: public Processor {
-        
 
-    private: const displayable: Displayable;
+    private: Displayable displayable;
 
-public constructor (Displayable displayable);
+public: ScreenRepaintProcessor(Displayable displayable);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 

@@ -58,43 +58,40 @@
 class GraphicsFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: GraphicsFeatureFactory = new GraphicsFeatureFactory();
+    private: static GraphicsFeatureFactory instance() { return GraphicsFeatureFactory(); }
 
-    public static GraphicsFeatureFactory getInstance(){
+    public: static GraphicsFeatureFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GraphicsFeatureFactory.instance;
+                        return GraphicsFeatureFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GraphicsFeatureFactory(){
+}
 
 
-    public const NONE: GraphicsFeature = new GraphicsFeature(StringUtil.getInstance()!.NULL_STRING);
+    public: const GraphicsFeature NONE = GraphicsFeature(StringUtil::getInstance().NULL_STRING);
 
-    public const TRANSPARENT_IMAGE_CREATION: GraphicsFeature = new GraphicsFeature("Transparent Image Creation");
+    public: const GraphicsFeature TRANSPARENT_IMAGE_CREATION = GraphicsFeature("Transparent Image Creation");
 
-    public const IMAGE_GRAPHICS: GraphicsFeature = new GraphicsFeature("Image Graphics");
+    public: const GraphicsFeature IMAGE_GRAPHICS = GraphicsFeature("Image Graphics");
 
-    public const IMAGE_ROTATION_ON_THE_FLY: GraphicsFeature = new GraphicsFeature("Image Rotated On The Fly");
+    public: const GraphicsFeature IMAGE_ROTATION_ON_THE_FLY = GraphicsFeature("Image Rotated On The Fly");
 
-    public const IMAGE_TO_ARRAY_GRAPHICS: GraphicsFeature = new GraphicsFeature("Image To Array Graphics");
+    public: const GraphicsFeature IMAGE_TO_ARRAY_GRAPHICS = GraphicsFeature("Image To Array Graphics");
 
-    public const SPRITE_QUARTER_ROTATION_GRAPHICS: GraphicsFeature = new GraphicsFeature("Sprite Quarter Rotation Graphics");
+    public: const GraphicsFeature SPRITE_QUARTER_ROTATION_GRAPHICS = GraphicsFeature("Sprite Quarter Rotation Graphics");
 
-    public const SPRITE_FULL_GRAPHICS: GraphicsFeature = new GraphicsFeature("Sprite Full Rotation Graphics");
+    public: const GraphicsFeature SPRITE_FULL_GRAPHICS = GraphicsFeature("Sprite Full Rotation Graphics");
 
-    public const VECTOR_GRAPHICS: GraphicsFeature = new GraphicsFeature("Vector Graphics");
+    public: const GraphicsFeature VECTOR_GRAPHICS = GraphicsFeature("Vector Graphics");
 
-    public const VECTOR_TO_IMAGE_GRAPHICS: GraphicsFeature = new GraphicsFeature("Vector To Image Graphics");
+    public: const GraphicsFeature VECTOR_TO_IMAGE_GRAPHICS = GraphicsFeature("Vector To Image Graphics");
 
 };
 

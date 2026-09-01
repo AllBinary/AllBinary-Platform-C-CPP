@@ -46,13 +46,12 @@
 class AbPathUtil
             : public Object
          {
-        
 
-    private: static const instance: AbPathUtil = new AbPathUtil();
+    private: static AbPathUtil instance() { return AbPathUtil(); }
 
-    public static AbPathUtil getInstance();
+    public: static AbPathUtil getInstance();
 
-    public const NO_ABPATH: AbPath = AbPath.createAbPath()!;
+    public: const AbPath NO_ABPATH = AbPath::createAbPath();
 
 };
 

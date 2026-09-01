@@ -54,15 +54,14 @@
 class ParentInventoryTagHelper
             : public Object
          {
-        
 
-    private: static const instance: ParentInventoryTagHelper = new ParentInventoryTagHelper();
+    private: static ParentInventoryTagHelper instance() { return ParentInventoryTagHelper(); }
 
-    public static ParentInventoryTagHelper getInstance();
+    public: static ParentInventoryTagHelper getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public isValid(any = {} tagClass, Tag parentTag);
+    public: void isValid(Object* tagClass, Tag parentTag);
 
 };
 

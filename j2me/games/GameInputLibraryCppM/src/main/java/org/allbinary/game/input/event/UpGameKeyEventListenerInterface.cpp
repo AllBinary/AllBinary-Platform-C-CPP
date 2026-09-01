@@ -50,11 +50,10 @@
         #include "GameKeyEvent.h"
 
 class UpGameKeyEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onUpGameKeyEvent(GameKeyEvent gameKeyEvent)
+    void onUpGameKeyEvent(GameKeyEvent gameKeyEvent)
 
 };
 

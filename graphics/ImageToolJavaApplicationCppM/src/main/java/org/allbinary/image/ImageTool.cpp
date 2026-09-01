@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -57,30 +59,29 @@
 class ImageTool
             : public Object
          {
-        
 
-    public static main(std::vector<string> args){
-java.awt.EventQueue.invokeLater(new class extends ARunnable
+    public: static void main(std::vector<std::string> args){
+java.awt.EventQueue.invokeLater(class extends ARunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
-            logUtil!.putF(commonStrings!.START, this, commonStrings!.RUN);
+            logUtil.putF(commonStrings.START, this, commonStrings.RUN);
     
-new ImageToolJFrame().setVisible(true);
+ImageToolJFrame().setVisible(true);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -92,12 +93,10 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: ImageTool(){
+}
 
 
 };

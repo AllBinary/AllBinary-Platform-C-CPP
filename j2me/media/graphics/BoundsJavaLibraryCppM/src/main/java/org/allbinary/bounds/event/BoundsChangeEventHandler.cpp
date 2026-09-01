@@ -51,33 +51,30 @@
 #include "BoundsChangeEvent.h"
 
 class BoundsChangeEventHandler: public BasicEventHandler {
-        
 
-    private: static SINGLETON: BasicEventHandler = new BoundsChangeEventHandler();
+    private: static BasicEventHandler SINGLETON = BoundsChangeEventHandler();
 
-    public static BasicEventHandler getInstance(){
+    public: static BasicEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BoundsChangeEventHandler.SINGLETON;
+                        return BoundsChangeEventHandler::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BoundsChangeEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    boundsChangeEventListener: BoundsChangeEventListener = eventListenerInterface as BoundsChangeEventListener;;
+    BoundsChangeEventListener boundsChangeEventListener = eventListenerInterface as BoundsChangeEventListener;;
     
-boundsChangeEventListener!.onBoundsChangeEvent(eventObject as BoundsChangeEvent);
+boundsChangeEventListener.onBoundsChangeEvent(eventObject as BoundsChangeEvent);
     
 }
 

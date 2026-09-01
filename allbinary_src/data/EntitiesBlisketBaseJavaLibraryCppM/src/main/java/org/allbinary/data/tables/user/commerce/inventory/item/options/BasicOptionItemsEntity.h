@@ -70,26 +70,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasicOptionItemsEntityInterface.h"
 
-class BasicOptionItemsEntity: public AbSqlBean: public BasicOptionItemsEntityInterface {
-        
+class BasicOptionItemsEntity: public AbSqlBean, public BasicOptionItemsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "basicoptionitems";
+    protected: const std::string tableName = "basicoptionitems";
 
-public constructor ();
+public: BasicOptionItemsEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string value);
+    public: void delete_(std::string value);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

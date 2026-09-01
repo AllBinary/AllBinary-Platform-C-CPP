@@ -51,29 +51,28 @@
 class Driver
             : public Object
          {
-        
 
-    public static const NULL_DRIVER: Driver = new Driver(SmallIntegerSingletonFactory.getInstance()!.getAt(0), SmallIntegerSingletonFactory.getInstance()!.getAt(0), new Aggression(SmallIntegerSingletonFactory.getInstance()!.getAt(0), SmallIntegerSingletonFactory.getInstance()!.getAt(0), SmallIntegerSingletonFactory.getInstance()!.getAt(0)));
+    public: static const Driver NULL_DRIVER = Driver(SmallIntegerSingletonFactory::getInstance().getAt(0), SmallIntegerSingletonFactory::getInstance().getAt(0), Aggression(SmallIntegerSingletonFactory::getInstance().getAt(0), SmallIntegerSingletonFactory::getInstance().getAt(0), SmallIntegerSingletonFactory::getInstance().getAt(0)));
 
-    private: turnSpeed: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer turnSpeed = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: trackPathSelectionSkill: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer trackPathSelectionSkill = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: aggression: Aggression;
+    private: Aggression aggression;
 
-public constructor (Integer turnSpeed, Integer trackPathSelectionSkill, Aggression aggression);
+public: Driver(Integer turnSpeed, Integer trackPathSelectionSkill, Aggression aggression);
 
-    public Integer getTurnSpeed();
+    public: Integer getTurnSpeed();
 
-    public setTurnSpeed(Integer turnSpeed);
+    public: void setTurnSpeed(Integer turnSpeed);
 
-    public Integer getTrackPathSelectionSkill();
+    public: Integer getTrackPathSelectionSkill();
 
-    public setTrackPathSelectionSkill(Integer trackPathSelectionSkill);
+    public: void setTrackPathSelectionSkill(Integer trackPathSelectionSkill);
 
-    public Aggression getAggression();
+    public: Aggression getAggression();
 
-    public setAggression(Aggression aggression);
+    public: void setAggression(Aggression aggression);
 
 };
 

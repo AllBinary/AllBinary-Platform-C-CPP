@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_NATIVELIBRARYHELPERWRAPPER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -63,27 +65,26 @@
 class NativeLibraryHelperWrapper
             : public Object
          {
-        
 
-    private: libraryName: string;
+    private: std::string libraryName;
 
-    private: loader: ClassLoader;
+    private: ClassLoader loader;
 
-    private: anyType: any;
+    private: Object* anyType;
 
-public constructor (string libraryName);
+public: NativeLibraryHelperWrapper(std::string libraryName);
 
                 //@Throws(Exception.constructor)
             
-    public load();
+    public: void load();
 
-    public unload();
+    public: void unload();
 
-    public string toString();
+    public: std::string toString();
 
-    public string getLibraryName();
+    public: std::string getLibraryName();
 
-    public setLibraryName(string libraryName);
+    public: void setLibraryName(std::string libraryName);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2SEROTATIONUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Math.h"
@@ -58,33 +60,32 @@
 class ImageJ2SERotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageJ2SERotationUtil = new ImageJ2SERotationUtil();
+    private: static ImageJ2SERotationUtil instance() { return ImageJ2SERotationUtil(); }
 
-    public static ImageJ2SERotationUtil getInstance();
+    public: static ImageJ2SERotationUtil getInstance();
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    private: const imageJ2SEUtil: ImageJ2SEUtil = ImageJ2SEUtil.getInstance()!;
+    private: const ImageJ2SEUtil imageJ2SEUtil = ImageJ2SEUtil::getInstance();
 
-private constructor ();
+private: ImageJ2SERotationUtil();
 
-    public BufferedImage getRotatedImage(Image bufferedImage, int32_t totalAngle);
+    public: BufferedImage getRotatedImage(Image bufferedImage, int32_t totalAngle);
 
-    public BufferedImage getRotatedImageRadians(Image bufferedImage, double radians);
+    public: BufferedImage getRotatedImageRadians(Image bufferedImage, double radians);
 
-    BufferedImage drawRotatedImageRadians(Image bufferedImage, BufferedImage newBufferedImage, Graphics2D g, double radians);
+    private: BufferedImage drawRotatedImageRadians(Image bufferedImage, BufferedImage newBufferedImage, Graphics2D g, double radians);
 
-    private: const TWO_PIE: double = 2 *Math.PI;
+    private: const double TWO_PIE = 2 *Math::PI;
 
-    public BufferedImage rotateImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle);
+    public: BufferedImage rotateImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle);
 
-    public BufferedImage createRotatedImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle);
+    public: BufferedImage createRotatedImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle);
 
-    public std::vector<BufferedImage> getRotatedImages(Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle);
+    public: std::vector<BufferedImage> getRotatedImages(Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle);
 
-    public BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray);
+    public: BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray);
 
 };
 

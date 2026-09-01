@@ -52,9 +52,8 @@
 #include "OpenGLESGL11ExtImage.h"
 
 class OpenGLESGL11ExtImageFactory: public OpenGLImageFactory {
-        
 
-    public Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+    public: Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
 
 };
 

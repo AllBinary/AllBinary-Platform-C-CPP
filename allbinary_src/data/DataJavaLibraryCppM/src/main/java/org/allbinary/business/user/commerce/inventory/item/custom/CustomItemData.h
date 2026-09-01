@@ -45,9 +45,8 @@
 class CustomItemData
             : public Object
          {
-        
 
-    public static const PACKAGE: string = "CUSTOMITEM_PACKAGE";
+    public: static const std::string PACKAGE = "CUSTOMITEM_PACKAGE";
 
 };
 

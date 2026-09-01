@@ -50,15 +50,14 @@
 // class TimeStampUtil
             : public Object
          {
-        
 
-    private: static const instance: TimeStampUtil
+    private: static TimeStampUtil instance() { return TimeStampUtil(); }
 
-    public static TimeStampUtil getInstance()
-
+    public: static TimeStampUtil getInstance()
 
 
-    public string getAsString()
+
+    public: std::string getAsString()
 
 };
 

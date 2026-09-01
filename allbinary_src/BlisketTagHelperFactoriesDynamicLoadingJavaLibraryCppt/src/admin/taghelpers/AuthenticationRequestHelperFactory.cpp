@@ -56,38 +56,35 @@
 class AuthenticationRequestHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.AuthenticationRequestHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.AuthenticationRequestHelper";
 
-    private: static const FACTORYNAME: string = "AuthenticationRequestHelperFactory";
+    private: static const std::string FACTORYNAME = "AuthenticationRequestHelperFactory";
 
-public constructor (){
-
-            super();
-        }
+public: AuthenticationRequestHelperFactory(){
+}
 
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HelperFactory.getInstance(AuthenticationRequestHelperFactory.FACTORYNAME, AuthenticationRequestHelperFactory.CLASSNAME, hashMap, pageContext);;
+                        return HelperFactory::getInstance(AuthenticationRequestHelperFactory::FACTORYNAME, AuthenticationRequestHelperFactory::CLASSNAME, hashMap, pageContext);;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+    public: Object* getInstance(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HelperFactory.getInstance(AuthenticationRequestHelperFactory.FACTORYNAME, AuthenticationRequestHelperFactory.CLASSNAME, hashMap, httpServletRequest);;
+                        return HelperFactory::getInstance(AuthenticationRequestHelperFactory::FACTORYNAME, AuthenticationRequestHelperFactory::CLASSNAME, hashMap, httpServletRequest);;
     
 }
 

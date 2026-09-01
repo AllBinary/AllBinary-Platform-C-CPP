@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -66,19 +68,18 @@
 class UploadMediaSingleton
             : public Object
          {
-        
 
-    private: static uploadMedia: UploadMediaSingleton;
+    private: static UploadMediaSingleton uploadMedia;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static UploadMediaSingleton getInstance(){
+    public: static UploadMediaSingleton getInstance(){
 
-                        if(UploadMediaSingleton.uploadMedia == 
-                                    null
+                        if(UploadMediaSingleton::uploadMedia == 
+                                    nullptr
                                 )
                         
                                     {
-                                    UploadMediaSingleton.uploadMedia= new UploadMediaSingleton();
+                                    UploadMediaSingleton::uploadMedia= UploadMediaSingleton();
     
 
                                     }
@@ -87,106 +88,103 @@ class UploadMediaSingleton
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UploadMediaSingleton.uploadMedia;
+                        return UploadMediaSingleton::uploadMedia;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: readerFileTypesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> readerFileTypesHashMap;
 
-    private: writerFileTypesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> writerFileTypesHashMap;
 
-private constructor (){
-
-            super();
-        this.readerFileTypesHashMap= new HashMap<any, any>();
+private: UploadMediaSingleton(){
+this->readerFileTypesHashMap= HashMap<any, any>();
     
-this.writerFileTypesHashMap= new HashMap<any, any>();
+this->writerFileTypesHashMap= HashMap<any, any>();
     
 
-    hashMap: HashMap<any, any> = MediaData.toHashMap()!;;
+    HashMap<any, any> hashMap = MediaData::toHashMap();;
     
 
-    set: Set = hashMap!.keys()!;;
+    Set set = hashMap.keys();;
     
 
-    mediaDataNameArray: std::vector<any> = set.toArray()!;;
+    std::vector<Object*> mediaDataNameArray = set.toArray();;
     
 
-    size: int32_t = mediaDataNameArray!.length
-                ;;
+    int32_t size = mediaDataNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    mediaDataName: string = mediaDataNameArray[index]! as string;;
+    std::string mediaDataName = mediaDataNameArray[index]! as string;;
     
 
-    mediaData: MediaData = hashMap!.get(mediaDataName) as MediaData;;
+    MediaData mediaData = hashMap.get(mediaDataName) as MediaData;;
     
-this.readerFileTypesHashMap!.put(mediaData!.getName(), mediaData!.getType());
+this->readerFileTypesHashMap.put(mediaData.getName(), mediaData.getType());
     
 }
 
 
-    mediaIOUtil: MediaIOUtil = MediaIOUtil.getInstance()!;;
+    MediaIOUtil mediaIOUtil = MediaIOUtil::getInstance();;
     
 
-    RESIZABLE_MEDIA: string = MediaTypeData.getInstance()!.RESIZABLE_MEDIA;;
+    std::string RESIZABLE_MEDIA = MediaTypeData::getInstance().RESIZABLE_MEDIA;;
     
 
-    readerFileTypes: std::vector<string> = mediaIOUtil!.getReaderFormatNames()!;;
+    std::vector<std::string> readerFileTypes = mediaIOUtil.getReaderFormatNames();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < readerFileTypes!.length; index++)
+    int32_t index = 0;index < readerFileTypes.size(); index++)
         {
-this.readerFileTypesHashMap!.put(readerFileTypes[index]!, RESIZABLE_MEDIA);
+this->readerFileTypesHashMap.put(readerFileTypes[index]!, RESIZABLE_MEDIA);
     
 }
 
 
-    writerFileTypes: std::vector<string> = mediaIOUtil!.getWriterFormatNames()!;;
+    std::vector<std::string> writerFileTypes = mediaIOUtil.getWriterFormatNames();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < writerFileTypes!.length; index++)
+    int32_t index = 0;index < writerFileTypes.size(); index++)
         {
-this.writerFileTypesHashMap!.put(writerFileTypes[index]!, RESIZABLE_MEDIA);
+this->writerFileTypesHashMap.put(writerFileTypes[index]!, RESIZABLE_MEDIA);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Supported Media Readers: ");
+stringBuffer.append("Supported Media Readers: ");
     
-stringBuffer!.append(this.readerFileTypesHashMap!.toString());
+stringBuffer.append(this->readerFileTypesHashMap.toString());
     
-stringBuffer!.append(" Writers: ");
+stringBuffer.append(" Writers: ");
     
-stringBuffer!.append(this.writerFileTypesHashMap!.toString());
+stringBuffer.append(this->writerFileTypesHashMap.toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -194,76 +192,76 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.CONSTRUCT
 }
 
 
-    public bool isReaderSupported(string mediaFileType){
+    public: bool isReaderSupported(std::string mediaFileType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readerFileTypesHashMap!.containsKey(mediaFileType);;
+                        return this->readerFileTypesHashMap.containsKey(mediaFileType);;
     
 }
 
 
-    public bool isWriterSupported(string mediaFileType){
+    public: bool isWriterSupported(std::string mediaFileType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readerFileTypesHashMap!.containsKey(mediaFileType);;
+                        return this->readerFileTypesHashMap.containsKey(mediaFileType);;
     
 }
 
 
-    public bool isSupported(string mediaFileType){
+    public: bool isSupported(std::string mediaFileType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isReaderSupported(mediaFileType) && this.isWriterSupported(mediaFileType);
+                        return this->isReaderSupported(mediaFileType) && this->isWriterSupported(mediaFileType);
     
 }
 
 
-    public bool isMedia(string mediaFileType, string aMediaType){
+    public: bool isMedia(std::string mediaFileType, std::string aMediaType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isReaderMedia(mediaFileType, aMediaType) && this.isWriterMedia(mediaFileType, aMediaType);
+                        return this->isReaderMedia(mediaFileType, aMediaType) && this->isWriterMedia(mediaFileType, aMediaType);
     
 }
 
 
-    public bool isReaderMedia(string mediaFileType, string aMediaType){
+    public: bool isReaderMedia(std::string mediaFileType, std::string aMediaType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isMedia(mediaFileType, aMediaType, this.readerFileTypesHashMap);;
+                        return this->isMedia(mediaFileType, aMediaType, this->readerFileTypesHashMap);;
     
 }
 
 
-    public bool isWriterMedia(string mediaFileType, string aMediaType){
+    public: bool isWriterMedia(std::string mediaFileType, std::string aMediaType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isMedia(mediaFileType, aMediaType, this.writerFileTypesHashMap);;
+                        return this->isMedia(mediaFileType, aMediaType, this->writerFileTypesHashMap);;
     
 }
 
 
-    bool isMedia(string mediaFileType, string aMediaType, HashMap<any, any> hashMap){
+    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<any, any> hashMap){
 
-                        if(hashMap!.containsKey(mediaFileType))
+                        if(hashMap.containsKey(mediaFileType))
                         
                                     {
                                     
-    mediaType: string = hashMap!.get(mediaFileType) as string;;
+    std::string mediaType = hashMap.get(mediaFileType) as string;;
     
 
-                        if(mediaType!.compareTo(aMediaType) == 0)
+                        if(mediaType.compareTo(aMediaType) == 0)
                         
                                     {
                                     

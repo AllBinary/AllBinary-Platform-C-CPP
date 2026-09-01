@@ -47,52 +47,49 @@
 class XmlRpcClient
             : public Object
         : public XmlRpcHandler {
-        
 
-    private: const url: URL;
+    private: URL url;
 
-public constructor (string url){
-
-            super();
-        this.url= new URL(url);
+public: XmlRpcClient(std::string url){
+this->url= URL(url);
     
 }
 
 
-    public URL getURL(){
+    public: URL getURL(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.url;
+                        return this->url;
     
 }
 
 
-    public setBasicAuthentication(string user, string password){
+    public: void setBasicAuthentication(std::string user, std::string password){
 }
 
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public any execute(string method, Vector<any> params){
+    public: Object* execute(std::string method, Vector<any> params){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public any execute(string method, Vector<any> params, CryptInterface cryptInterface){
+    public: Object* execute(std::string method, Vector<any> params, CryptInterface cryptInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 

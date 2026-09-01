@@ -62,11 +62,10 @@
         #include "PaymentGatewaysView.h"
 
 class SelectNewView: public PaymentGatewayViewAbstract {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: SelectNewView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -77,33 +76,33 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-    paymentGatewayEntityInterface: PaymentGatewayEntityInterface = PaymentGatewayEntityFactory.getInstance()!;;
+    PaymentGatewayEntityInterface paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance();;
     
 
-    existingGateways: Vector = paymentGatewayEntityInterface!.findPaymentTypeVectorByStore(this.getPaymentGatewayPrimaryKey()!.getStoreName())!;;
+    Vector existingGateways = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->getPaymentGatewayPrimaryKey().getStoreName());;
     
 
-    allGatewaysLessExisting: Vector = BasicPaymentTypeUtil.getInstance()!.difference(existingGateways)!;;
+    Vector allGatewaysLessExisting = BasicPaymentTypeUtil::getInstance().difference(existingGateways);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PaymentGatewaysView(this.getTransformInfoInterface(), allGatewaysLessExisting).view();;
+                        return PaymentGatewaysView(this->getTransformInfoInterface(), allGatewaysLessExisting).view();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
     
 
                                     }

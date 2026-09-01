@@ -47,11 +47,10 @@
         #include "AnalogControllerConfigurationEvent.h"
 
 class AnalogControllerConfigurationEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onAnalogControllerConfigurationEvent(AnalogControllerConfigurationEvent analogControllerConfigurationEvent);
+    void onAnalogControllerConfigurationEvent(AnalogControllerConfigurationEvent analogControllerConfigurationEvent);
 
 };
 

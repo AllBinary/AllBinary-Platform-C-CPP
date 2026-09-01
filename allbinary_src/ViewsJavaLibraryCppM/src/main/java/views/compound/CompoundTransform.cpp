@@ -70,36 +70,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CompoundTransform: public AbTransformer {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: CompoundTransform(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setURIResolver(new StoreUriResolver(this.getTransformInfoInterface(), this.getURIResolver() as BasicUriResolver) as URIResolver);
+this->setURIResolver(StoreUriResolver(this->getTransformInfoInterface(), this->getURIResolver() as BasicUriResolver) as URIResolver);
     
 
-    objectConfig: CompoundContextTransformInfoObjectConfig = new CompoundContextTransformInfoObjectConfig(this.abeClientInformation, this.getTransformInfoInterface(), this.getTransformInfoInterface()!.getObjectConfigInterface()!.toXmlDoc());;
+    CompoundContextTransformInfoObjectConfig objectConfig = CompoundContextTransformInfoObjectConfig(this->abeClientInformation, this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("\nObjectConfig: \n" +objectConfig!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("\nObjectConfig: \n" +objectConfig.toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
 
-    templateInputStream: InputStream = objectConfig!.createInputStream()!;;
+    InputStream templateInputStream = objectConfig.createInputStream();;
     
-this.setInputStream(templateInputStream);
+this->setInputStream(templateInputStream);
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_DISPLAYINFOSINGLETON_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -115,155 +117,154 @@
 class DisplayInfoSingleton
             : public Object
          {
-        
 
-    private: static const SINGLETON: DisplayInfoSingleton = new DisplayInfoSingleton();
+    private: static const DisplayInfoSingleton SINGLETON = DisplayInfoSingleton();
 
-    public static DisplayInfoSingleton getInstance();
+    public: static DisplayInfoSingleton getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonLabels: CommonLabels = CommonLabels.getInstance()!;
+    private: const CommonLabels commonLabels = CommonLabels::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const ORIENTATION: string = "ORIENTATION";
+    public: const std::string ORIENTATION = "ORIENTATION";
 
-    public const ADJUSTING_FOR_SCALING_IN_PORTRAIT: string = "Adjusting for Scaling in portrait display ratio: ";
+    public: const std::string ADJUSTING_FOR_SCALING_IN_PORTRAIT = "Adjusting for Scaling in portrait display ratio: ";
 
-    public const ADJUSTING_FOR_SCALING_IN_LANDSCAPE: string = "Adjusting for Scaling in landscape display ratio: ";
+    public: const std::string ADJUSTING_FOR_SCALING_IN_LANDSCAPE = "Adjusting for Scaling in landscape display ratio: ";
 
-    private: last: std::vector<int32_t> = new Array(4);
+    private: std::vector<int32_t> last = new Array(4);
 
-    private: lastHalf: std::vector<int32_t> = new Array(4);
+    private: std::vector<int32_t> lastHalf = new Array(4);
 
-    private: full: std::vector<int32_t> = new Array(4);
+    private: std::vector<int32_t> full = new Array(4);
 
-    private: top: int32_t= 0;
+    private: int32_t top= 0;
 
-    private: left: int32_t= 0;
+    private: int32_t left= 0;
 
-    private: xOffset: int32_t= 0;
+    private: int32_t xOffset= 0;
 
-    private: yOffset: int32_t= 0;
+    private: int32_t yOffset= 0;
 
-    private: scaleLargestTo: float= 0.0;
+    private: float scaleLargestTo= 0.0;
 
-    public const WIDTH: int32_t = 0;
+    public: const int32_t WIDTH = 0;
 
-    public const HEIGHT: int32_t = 1;
+    public: const int32_t HEIGHT = 1;
 
-    public const CUSTOM_WIDTH: int32_t = 2;
+    public: const int32_t CUSTOM_WIDTH = 2;
 
-    public const CUSTOM_HEIGHT: int32_t = 3;
+    public: const int32_t CUSTOM_HEIGHT = 3;
 
-    private: scalableListener: BaseScalable = new BaseScalable();
+    private: BaseScalable scalableListener = BaseScalable();
 
-    private: displayRatio: float= 0.0;
+    private: float displayRatio= 0.0;
 
-    private: ratio: float = 1.0;
+    private: float ratio = 1.0;
 
-private constructor ();
+private: DisplayInfoSingleton();
 
-    public std::vector<int32_t> getLastHalf();
+    public: std::vector<int32_t> getLastHalf();
 
-    public std::vector<int32_t> getLast();
+    public: std::vector<int32_t> getLast();
 
-    public std::vector<int32_t> getFull();
+    public: std::vector<int32_t> getFull();
 
-    public float getScaleLargestTo();
+    public: float getScaleLargestTo();
 
-    public setScaleLargestTo(int32_t scaleLargestTo);
+    public: void setScaleLargestTo(int32_t scaleLargestTo);
 
-    private: const SET_LAST_SIZE_METHOD_NAME: string = "setLastSize";
+    private: const std::string SET_LAST_SIZE_METHOD_NAME = "setLastSize";
 
-    private: const FULL_WIDTH: string = " FullWidth: ";
+    private: const std::string FULL_WIDTH = " FullWidth: ";
 
-    private: const FULL_HEIGHT: string = " FullHeight: ";
+    private: const std::string FULL_HEIGHT = " FullHeight: ";
 
-    private: const LAST_WIDTH: string = "LastWidth: ";
+    private: const std::string LAST_WIDTH = "LastWidth: ";
 
-    private: const LAST_HEIGHT: string = " LastHeight: ";
+    private: const std::string LAST_HEIGHT = " LastHeight: ";
 
-    private: const PORTRAIT: string = "Portrait";
+    private: const std::string PORTRAIT = "Portrait";
 
-    private: const LANDSCAPE: string = "Landscape";
+    private: const std::string LANDSCAPE = "Landscape";
 
-    public setLastSize(int32_t aLastWidth, int32_t aLastHeight, string reason);
+    public: void setLastSize(int32_t aLastWidth, int32_t aLastHeight, std::string reason);
 
-    setLastSizeForce(int32_t aLastWidth, int32_t aLastHeight, string reason);
+    private: void setLastSizeForce(int32_t aLastWidth, int32_t aLastHeight, std::string reason);
 
-    public bool isPortraitWH(int32_t lastWidth, int32_t lastHeight);
+    public: bool isPortraitWH(int32_t lastWidth, int32_t lastHeight);
 
-    public bool isPortrait();
+    public: bool isPortrait();
 
-    public const displayChangeEvent: DisplayChangeEvent = new DisplayChangeEvent(this);
+    public: const DisplayChangeEvent displayChangeEvent = DisplayChangeEvent(this);
 
-    private: const FIRE_METHOD_NAME: string = "fire";
+    private: const std::string FIRE_METHOD_NAME = "fire";
 
-    private: const REASON: string = "reason: ";
+    private: const std::string REASON = "reason: ";
 
-    private: const UPDATE_FROM_ORIENTATION_CHANGE: string = "Updating from Orientation Change ";
+    private: const std::string UPDATE_FROM_ORIENTATION_CHANGE = "Updating from Orientation Change ";
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public add(string reason);
+    public: void add(std::string reason);
 
-    public process();
+    public: void process();
 
-    public processForced();
+    public: void processForced();
 
-    public update(Displayable displayable, string reason);
+    public: void update(Displayable displayable, std::string reason);
 
-    private: const DISPLAY_INFO: string = "Display Info: ";
+    private: const std::string DISPLAY_INFO = "Display Info: ";
 
-    private: const FULL: string = "full";
+    private: const std::string FULL = "full";
 
-    private: const LAST: string = "last";
+    private: const std::string LAST = "last";
 
-    private: const LAST_HALF: string = "lastHalf";
+    private: const std::string LAST_HALF = "lastHalf";
 
-    public string toString();
+    public: std::string toString();
 
-    public string toStringAppend(StringMaker stringBuffer);
+    public: std::string toStringAppend(StringMaker stringBuffer);
 
-    public int32_t getTop();
+    public: int32_t getTop();
 
-    public int32_t getLeft();
+    public: int32_t getLeft();
 
-    public int32_t getLastWidth();
+    public: int32_t getLastWidth();
 
-    public int32_t getLastHeight();
+    public: int32_t getLastHeight();
 
-    public int32_t getLastHalfWidth();
+    public: int32_t getLastHalfWidth();
 
-    public int32_t getLastHalfHeight();
+    public: int32_t getLastHalfHeight();
 
-    public int32_t getCustomLastWidth();
+    public: int32_t getCustomLastWidth();
 
-    public int32_t getCustomLastHeight();
+    public: int32_t getCustomLastHeight();
 
-    public int32_t getRawLastWidth();
+    public: int32_t getRawLastWidth();
 
-    public int32_t getRawLastHeight();
+    public: int32_t getRawLastHeight();
 
-    public setCustom(int32_t width, int32_t height);
+    public: void setCustom(int32_t width, int32_t height);
 
-    public setScalableListener(BaseScalable scalableListener);
+    public: void setScalableListener(BaseScalable scalableListener);
 
-    public ScalableListener getScalableListener();
+    public: ScalableListener getScalableListener();
 
-    public float getRatio();
+    public: float getRatio();
 
-    public float getDisplayRatio();
+    public: float getDisplayRatio();
 
-    public setOffset(int32_t left, int32_t top);
+    public: void setOffset(int32_t left, int32_t top);
 
-    public int32_t getxOffset();
+    public: int32_t getxOffset();
 
-    public int32_t getyOffset();
+    public: int32_t getyOffset();
 
 };
 

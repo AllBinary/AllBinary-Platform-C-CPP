@@ -56,19 +56,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MainGameDemoStatePaintable: public Paintable {
-        
 
-    private: const ownershipPaintableInterface: Paintable;
+    private: Paintable ownershipPaintableInterface;
 
-    private: const menuPaintableInterface: Paintable;
+    private: Paintable menuPaintableInterface;
 
-public constructor (Paintable ownershipPaintableInterface, Paintable menuPaintableInterface);
+public: MainGameDemoStatePaintable(Paintable ownershipPaintableInterface, Paintable menuPaintableInterface);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public Paintable getOwnershipPaintableInterface();
+    public: Paintable getOwnershipPaintableInterface();
 
-    public Paintable getMenuPaintableInterface();
+    public: Paintable getMenuPaintableInterface();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSLAYERFORMFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/input/RTSLayerFormFactory.h>
@@ -63,15 +65,14 @@
 #include "RTSLayer.h"
 
 class AdvancedRTSLayerFormFactory: public RTSLayerFormFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
-protected constructor (string label, ItemArraySingletonFactoryInterface itemArrayFactoryInterface);
+protected: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface itemArrayFactoryInterface);
 
-    public ScrollSelectionForm getInstance(RTSLayer rtsLayer);
+    public: ScrollSelectionForm getInstance(RTSLayer rtsLayer);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_EVENT_WAYPOINTEVENTHANDLERFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -49,16 +51,15 @@
 class WaypointEventHandlerFactory
             : public Object
          {
-        
 
-    private: static const eventHandlerArray: std::vector<WaypointEventHandler> = 
-                                                        [
-                                                            new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler()
-                                                        ];
+    private: static const std::vector<WaypointEventHandler> eventHandlerArray = 
+                                                        {
+                                                            WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler()
+                                                        };
 
-    public static WaypointEventHandler getInstance(Group groupInterface);
+    public: static WaypointEventHandler getInstance(Group groupInterface);
 
-    public static removeAll();
+    public: static void removeAll();
 
 };
 

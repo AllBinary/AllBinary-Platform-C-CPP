@@ -45,9 +45,8 @@
         #include "TextFieldItemValidator.h"
 
 class PasswordValidator: public TextFieldItemValidator {
-        
 
-public constructor (ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
+public: PasswordValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
 
 };
 

@@ -80,39 +80,38 @@
 class ViewHelper
             : public Object
         : public TransformInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: componentInterface: TransformInterface;
+    private: TransformInterface componentInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: ViewHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId();
-
-                //@Throws(Exception.constructor)
-            
-    public string view();
+    public: int32_t getTypeId();
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
-
-    public TransformInterface getViewObject();
+    public: std::string view();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterface();
+    public: Document toXmlDoc();
 
-    public TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformInterface getViewObject();
 
-    public setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface);
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoInterface getTransformInfoInterface();
+
+    public: TransformDocumentInterface getTransformDocumentInterface();
+
+    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface);
 
 };
 

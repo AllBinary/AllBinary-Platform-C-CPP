@@ -43,94 +43,91 @@
 class AnalogLocationInput
             : public Object
          {
-        
 
-    public static const NULL_ANALOG_LOCATION_INPUT: AnalogLocationInput = new AnalogLocationInput( -1);
+    public: static const AnalogLocationInput NULL_ANALOG_LOCATION_INPUT = AnalogLocationInput( -1);
 
-    private: const playerId: int32_t;
+    private: int32_t playerId;
 
-    private: const customGPoint: CustomGPoint;
+    private: CustomGPoint customGPoint;
 
-    private: rz: int32_t= 0;
+    private: int32_t rz= 0;
 
-    private: rightTrigger: int32_t= 0;
+    private: int32_t rightTrigger= 0;
 
-    private: leftTrigger: int32_t= 0;
+    private: int32_t leftTrigger= 0;
 
- constructor (int32_t playerId){
-
-            super();
-        this.playerId= playerId;
+: AnalogLocationInput(int32_t playerId){
+this->playerId= playerId;
     
-this.customGPoint= new CustomGPoint(0, 0, 0);
+this->customGPoint= CustomGPoint(0, 0, 0);
     
 }
 
 
-    public int32_t getPlayerId(){
+    public: int32_t getPlayerId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerId;
+                        return this->playerId;
     
 }
 
 
-    public CustomGPoint getCustomGPoint(){
+    public: CustomGPoint getCustomGPoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.customGPoint;
+                        return this->customGPoint;
     
 }
 
 
-    public int32_t getRz(){
+    public: int32_t getRz(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rz;
+                        return this->rz;
     
 }
 
 
-    public setRz(int32_t rz){
-this.rz= rz;
+    public: void setRz(int32_t rz){
+this->rz= rz;
     
 }
 
 
-    public int32_t getRightTrigger(){
+    public: int32_t getRightTrigger(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rightTrigger;
+                        return this->rightTrigger;
     
 }
 
 
-    public setRightTrigger(int32_t rightTrigger){
-this.rightTrigger= rightTrigger;
+    public: void setRightTrigger(int32_t rightTrigger){
+this->rightTrigger= rightTrigger;
     
 }
 
 
-    public int32_t getLeftTrigger(){
+    public: int32_t getLeftTrigger(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.leftTrigger;
+                        return this->leftTrigger;
     
 }
 
 
-    public setLeftTrigger(int32_t leftTrigger){
-this.leftTrigger= leftTrigger;
+    public: void setLeftTrigger(int32_t leftTrigger){
+this->leftTrigger= leftTrigger;
     
 }
 

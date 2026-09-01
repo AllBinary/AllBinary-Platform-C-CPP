@@ -89,68 +89,65 @@
 class XmlDocumentHelper
             : public Object
          {
-        
 
-    private: static const instance: XmlDocumentHelper = new XmlDocumentHelper();
+    private: static XmlDocumentHelper instance() { return XmlDocumentHelper(); }
 
-    public static XmlDocumentHelper getInstance(){
+    public: static XmlDocumentHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XmlDocumentHelper.instance;
+                        return XmlDocumentHelper::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const INDENT_NUMBER: string = "indent-number";
+    private: const std::string INDENT_NUMBER = "indent-number";
 
-    private: transformer: Transformer;
+    private: Transformer transformer;
 
-private constructor (){
-
-            super();
-        this.init(4, true);
+private: XmlDocumentHelper(){
+this->init(4, true);
     
 }
 
 
-    public init(int32_t indent, bool ignoreDeclaration){
+    public: void init(int32_t indent, bool ignoreDeclaration){
 
         try {
             
-    booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;;
+    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
     
 
-    transformerFactory: TransformerFactory = TransformerFactory.newInstance()!;;
+    TransformerFactory transformerFactory = TransformerFactory::newInstance();;
     
-transformerFactory!.setAttribute(this.INDENT_NUMBER, indent);
+transformerFactory.setAttribute(this->INDENT_NUMBER, indent);
     
-this.transformer= transformerFactory!.newTransformer();
+this->transformer= transformerFactory.newTransformer();
     
-this.transformer.setOutputProperty(OutputKeys.ENCODING, CharacterSetData.getInstance()!.UTF_8);
+this->transformer.setOutputProperty(OutputKeys::ENCODING, CharacterSetData::getInstance().UTF_8);
     
-this.transformer.setOutputProperty(OutputKeys.OMIT_XML_DECLARATION, ignoreDeclaration
+this->transformer.setOutputProperty(OutputKeys::OMIT_XML_DECLARATION, ignoreDeclaration
                         ?       
-                                booleanFactory!.YES
+                                booleanFactory.YES
                                 :
 
-                            booleanFactory!.NO;
+                            booleanFactory.NO;
 
     );
     
-this.transformer.setOutputProperty(OutputKeys.INDENT, booleanFactory!.YES);
+this->transformer.setOutputProperty(OutputKeys::INDENT, booleanFactory.YES);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.INIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
     
 }
 
@@ -159,17 +156,17 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.INIT, e);
 
                 //@Throws(Exception.constructor)
             
-    public string format(string xmlString){
+    public: std::string format(std::string xmlString){
 
-    src: InputSource = new InputSource(new StringReader(xmlString));;
+    InputSource src = InputSource(StringReader(xmlString));;
     
 
-    document: Document = DocumentBuilderFactory.newInstance()!.newDocumentBuilder()!.parse(src)!;;
+    Document document = DocumentBuilderFactory::newInstance().newDocumentBuilder().parse(src);;
     
 
-    out: Writer = new StringWriter();;
+    Writer out = StringWriter();;
     
-this.transformer.transform(new DOMSource(document), new StreamResult(out));
+this->transformer.transform(DOMSource(document), StreamResult(out));
     
 
 

@@ -47,7 +47,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CaptureWorkerInterface: public RunnableInterface, public BasicEventHandlerInterface {
-        
 
 };
 

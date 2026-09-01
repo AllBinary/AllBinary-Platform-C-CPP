@@ -47,9 +47,8 @@
 #include "BasicArrayListCacheable.h"
 
 class BasicArrayListPool: public AbstractArrayListPool {
-        
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
+public: BasicArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
             super(cacheableInterfaceFactoryInterface);
                     
 
@@ -58,17 +57,17 @@ public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactory
 }
 
 
-    public clear(){
-this.buffers.clear();
+    public: void clear(){
+this->buffers.clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface remove(any = {} key){
+    public: CacheableInterface remove(Object* key){
 
-    size: int32_t = this.buffers.size()!;;
+    int32_t size = this->buffers.size();;
     
 
                         if(size > 0)
@@ -78,7 +77,7 @@ this.buffers.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buffers.removeAt(size -1) as CacheableInterface;
+                        return this->buffers.removeAt(size -1) as CacheableInterface;
     
 
                                     }
@@ -88,7 +87,7 @@ this.buffers.clear();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cacheableInterfaceFactoryInterface!.getInstance(key);;
+                        return this->cacheableInterfaceFactoryInterface.getInstance(key);;
     
 
                         }
@@ -98,46 +97,46 @@ this.buffers.clear();
 
                 //@Throws(Exception.constructor)
             
-    public addAll(BasicArrayList usedList){
+    public: void addAll(BasicArrayList usedList){
 
 
 
 
                         for (
-    index: int32_t = usedList!.size()!;--index >= 0; )
+    int32_t index = usedList.size();--index >= 0; )
         {
 
-    anyType: CacheableInterface = usedList!.objectArray[index]! as CacheableInterface;;
+    CacheableInterface anyType = usedList.objectArray[index]! as CacheableInterface;;
     
-this.add(anyType);
+this->add(anyType);
     
 }
 
-usedList!.clear();
+usedList.clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public releaseUsedBackToPool(BasicArrayList usedList){
+    public: void releaseUsedBackToPool(BasicArrayList usedList){
 
 
 
 
                         for (
-    index: int32_t = usedList!.size()!;--index >= 0; )
+    int32_t index = usedList.size();--index >= 0; )
         {
 
-    list: BasicArrayListCacheable = usedList!.objectArray[index]! as BasicArrayListCacheable;;
+    BasicArrayListCacheable list = usedList.objectArray[index]! as BasicArrayListCacheable;;
     
 
                         if(list.size() == 0)
                         
                                     {
-                                    usedList!.removeAt(index);
+                                    usedList.removeAt(index);
     
-this.add(list);
+this->add(list);
     
 
                                     }

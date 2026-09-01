@@ -35,34 +35,33 @@
 class JTreeInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: JTreeInterfaceFactory = new JTreeInterfaceFactory();
+    private: static JTreeInterfaceFactory instance() { return JTreeInterfaceFactory(); }
 
-    public static JTreeInterfaceFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return JTreeInterfaceFactory.instance;
-    
-}
-
-
-    private: jTreeInterface: JTreeInterface;
-
-    public set(JTreeInterface jTreeInterface){
-this.jTreeInterface= jTreeInterface;
-    
-}
-
-
-    public JTreeInterface getJTreeInterface(){
+    public: static JTreeInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.jTreeInterface;
+                        return JTreeInterfaceFactory::instance();
+    
+}
+
+
+    private: JTreeInterface jTreeInterface;
+
+    public: void set(JTreeInterface jTreeInterface){
+this->jTreeInterface= jTreeInterface;
+    
+}
+
+
+    public: JTreeInterface getJTreeInterface(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->jTreeInterface;
     
 }
 

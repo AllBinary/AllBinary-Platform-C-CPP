@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_GAMEPERFORMANCEINITUPDATEPAINTABLE_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -67,28 +69,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable: public UpdateMyFontInterface {
-        
+class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    private: const halfHeight: int32_t = DisplayInfoSingleton.getInstance()!.getLastHalfHeight()!;
+    private: const int32_t halfHeight = DisplayInfoSingleton::getInstance().getLastHalfHeight();
 
-    private: const yArray: std::vector<int32_t> = [this.halfHeight +30,this.halfHeight +30,this.halfHeight +30 +15,this.halfHeight +30 +15,this.halfHeight +30 +30,this.halfHeight +30 +30,this.halfHeight +30 +45,this.halfHeight +30 +45];
+    private: const std::vector<int32_t> yArray = {this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45};
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: baseRefreshHelperCharArray: std::vector<std::vector<char>> = new Array(0).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = new Array(0).fill(null).map(() => new Array(0).fill(0));
 
-    private: defaultStringWidth: int32_t= 0;
+    private: int32_t defaultStringWidth= 0;
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public init();
+    public: void init();
 
-    public update();
+    public: void update();
 
-    private: const RED: int32_t = BasicColorFactory.getInstance()!.RED.intValue()!;
+    private: const int32_t RED = BasicColorFactory::getInstance().RED.intValue();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

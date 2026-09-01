@@ -82,49 +82,48 @@
         #include "ModifyTable.h"
 
 class BasicGroupItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: itemOne: string;
+    private: std::string itemOne;
 
-    private: itemTwo: string;
+    private: std::string itemTwo;
 
-    private: itemThree: string;
+    private: std::string itemThree;
 
-    private: itemFour: string;
+    private: std::string itemFour;
 
-    private: itemFive: string;
+    private: std::string itemFive;
 
-    private: itemSix: string;
+    private: std::string itemSix;
 
-    private: itemSeven: string;
+    private: std::string itemSeven;
 
-    private: itemEight: string;
+    private: std::string itemEight;
 
-    private: itemNine: string;
+    private: std::string itemNine;
 
-    private: itemTen: string;
+    private: std::string itemTen;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicGroupItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public getFormData();
+    public: void getFormData();
 
-    HashMap<any, any> getHashMap();
+    private: HashMap<any, any> getHashMap();
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string update();
+    public: std::string update();
 
 };
 

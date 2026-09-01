@@ -51,13 +51,12 @@
         #include "IndexedAnimationInterface.h"
 
 class RotationAnimationInterface: public IndexedAnimationInterface, public DirectionalInterface {
-        
 
     AngleInfo getAngleInfoP()
 
-    nextRotation()
+    void nextRotation()
 
-    previousRotation()
+    void previousRotation()
 
 };
 

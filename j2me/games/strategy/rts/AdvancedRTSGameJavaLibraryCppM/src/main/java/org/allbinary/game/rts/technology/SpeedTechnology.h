@@ -49,37 +49,36 @@
 class SpeedTechnology
             : public Object
         : public RTSInterface {
-        
 
-    private: level: int32_t= 0;
+    private: int32_t level= 0;
 
-    private: maxLevel: int32_t;
+    private: int32_t maxLevel;
 
-public constructor (int32_t maxLevel);
+public: SpeedTechnology(int32_t maxLevel);
 
-    public bool isCompleted();
+    public: bool isCompleted();
 
-    public int32_t getPercentComplete();
+    public: int32_t getPercentComplete();
 
-    public int32_t getLevel();
+    public: int32_t getLevel();
 
-    public int32_t getMaxLevel();
+    public: int32_t getMaxLevel();
 
-    public int32_t getCost();
+    public: int32_t getCost();
 
-    public downgrade();
+    public: void downgrade();
 
-    public int32_t getDowngradeCost();
+    public: int32_t getDowngradeCost();
 
-    public bool isDowngradeable();
+    public: bool isDowngradeable();
 
-    public int32_t getUpgradeCost();
+    public: int32_t getUpgradeCost();
 
-    public bool isUpgradeable();
+    public: bool isUpgradeable();
 
-    public upgrade();
+    public: void upgrade();
 
-    public bool isSelfUpgradeable();
+    public: bool isSelfUpgradeable();
 
 };
 

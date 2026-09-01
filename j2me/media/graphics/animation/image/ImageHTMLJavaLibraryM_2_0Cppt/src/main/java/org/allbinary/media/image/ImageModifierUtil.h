@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Throwable.h"
@@ -94,37 +96,36 @@
 class ImageModifierUtil
             : public Object
          {
-        
 
-    public static ImageModifierUtil getInstanceOrCreate();
+    public: static ImageModifierUtil getInstanceOrCreate();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const resourceCallbackStrings: ResourceCallbackStrings = ResourceCallbackStrings.getInstance()!;
+    private: const ResourceCallbackStrings resourceCallbackStrings = ResourceCallbackStrings::getInstance();
 
-    private: alphaArray: std::vector<bool>;
+    private: std::vector<bool> alphaArray;
 
-    public setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
+    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
 
-    public changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
+    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
 
-    public setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alpha);
+    public: void setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alpha);
 
-    public setAlphaF(Image originalImage, Image image, int32_t imageIndex, float alpha);
+    public: void setAlphaF(Image originalImage, Image image, int32_t imageIndex, float alpha);
 
-    public setAlpha2(Image originalImage, Image image, int32_t imageIndex, float alpha);
+    public: void setAlpha2(Image originalImage, Image image, int32_t imageIndex, float alpha);
 
-    public setAlpha3(Image image, float alpha);
+    public: void setAlpha3(Image image, float alpha);
 
-    public std::vector<Image> getImageArray(std::vector<Image> originalImageArray);
+    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray);
 
-    public handleImage(std::vector<Image> imageArray, int32_t index, Image image);
+    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image);
 
-    public copy(std::vector<Image> imageArray, int32_t index, Image image, playn.core.Image image3);
+    public: void copy(std::vector<Image> imageArray, int32_t index, Image image, playn::core::Image image3);
 
-    public reset();
+    public: void reset();
 
 };
 

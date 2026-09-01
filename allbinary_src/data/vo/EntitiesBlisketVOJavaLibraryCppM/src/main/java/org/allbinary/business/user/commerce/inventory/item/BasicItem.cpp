@@ -86,374 +86,369 @@
 class BasicItem
             : public Object
         : public ItemInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    itemId: string;
+    protected: std::string itemId;
 
-    number: string;
+    protected: std::string number;
 
-    inBaskets: string;
+    protected: std::string inBaskets;
 
-    weight: string;
+    protected: std::string weight;
 
-    enabled: string;
+    protected: std::string enabled;
 
-    newOrUsed: string;
+    protected: std::string newOrUsed;
 
-    summary: string;
+    protected: std::string summary;
 
-    distributor: string;
+    protected: std::string distributor;
 
-    idUsedByDistributor: string;
+    protected: std::string idUsedByDistributor;
 
-    producedBy: string;
+    protected: std::string producedBy;
 
-    productionDate: string;
+    protected: std::string productionDate;
 
-    startProductionDate: string;
+    protected: std::string startProductionDate;
 
-    description: string;
+    protected: std::string description;
 
-    keywords: string;
+    protected: std::string keywords;
 
-    category: string;
+    protected: std::string category;
 
-    type: string;
+    protected: std::string type;
 
-    smallImage: string;
+    protected: std::string smallImage;
 
-    mediumImage: string;
+    protected: std::string mediumImage;
 
-    largeImage: string;
+    protected: std::string largeImage;
 
-    price: Money;
+    protected: Money price;
 
-    comment: string;
+    protected: std::string comment;
 
-    customs: string;
+    protected: std::string customs;
 
-    private: downloads: string;
+    private: std::string downloads;
 
-    groups: string;
+    protected: std::string groups;
 
-    options: string;
+    protected: std::string options;
 
-    permissions: string;
+    protected: std::string permissions;
 
-    specials: string;
+    protected: std::string specials;
 
-    private: downloadable: bool= false;
+    private: bool downloadable= false;
 
-    timeEntered: string;
+    protected: std::string timeEntered;
 
-    lastModified: string;
+    protected: std::string lastModified;
 
-public constructor (HashMap<any, any> itemHashMap){
+public: BasicItem(HashMap<any, any> itemHashMap){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "Constructor(HashMap)");
+                                    this->logUtil.putF(this->commonStrings.START, this, "Constructor(HashMap)");
     
 
                                     }
                                 
-this.itemId= itemHashMap!.get(BasicItemData.ID) as string;
+this->itemId= itemHashMap.get(BasicItemData::ID) as string;
     
-this.number= itemHashMap!.get(BasicItemData.NUMBER) as string;
+this->number= itemHashMap.get(BasicItemData::NUMBER) as string;
     
-this.inBaskets= itemHashMap!.get(BasicItemData.INBASKETS) as string;
+this->inBaskets= itemHashMap.get(BasicItemData::INBASKETS) as string;
     
-this.weight= itemHashMap!.get(BasicItemData.WEIGHT) as string;
+this->weight= itemHashMap.get(BasicItemData::WEIGHT) as string;
     
-this.enabled= itemHashMap!.get(EntryData.getInstance()!.ENABLE) as string;
+this->enabled= itemHashMap.get(EntryData::getInstance().ENABLE) as string;
     
-this.newOrUsed= itemHashMap!.get(BasicItemData.NEWORUSED) as string;
+this->newOrUsed= itemHashMap.get(BasicItemData::NEWORUSED) as string;
     
-this.summary= itemHashMap!.get(BasicItemData.SUMMARY) as string;
+this->summary= itemHashMap.get(BasicItemData::SUMMARY) as string;
     
-this.distributor= itemHashMap!.get(BasicItemData.DISTRIBUTOR) as string;
+this->distributor= itemHashMap.get(BasicItemData::DISTRIBUTOR) as string;
     
-this.idUsedByDistributor= itemHashMap!.get(BasicItemData.IDUSEDBYDISTRIBUTOR) as string;
+this->idUsedByDistributor= itemHashMap.get(BasicItemData::IDUSEDBYDISTRIBUTOR) as string;
     
-this.producedBy= itemHashMap!.get(BasicItemData.PRODUCEDBY) as string;
+this->producedBy= itemHashMap.get(BasicItemData::PRODUCEDBY) as string;
     
-this.productionDate= itemHashMap!.get(BasicItemData.PRODUCTIONDATE) as string;
+this->productionDate= itemHashMap.get(BasicItemData::PRODUCTIONDATE) as string;
     
-this.startProductionDate= itemHashMap!.get(BasicItemData.STARTPRODUCTIONDATE) as string;
+this->startProductionDate= itemHashMap.get(BasicItemData::STARTPRODUCTIONDATE) as string;
     
-this.description= itemHashMap!.get(BasicItemData.DESCRIPTION) as string;
+this->description= itemHashMap.get(BasicItemData::DESCRIPTION) as string;
     
-this.keywords= itemHashMap!.get(BasicItemData.KEYWORDS) as string;
+this->keywords= itemHashMap.get(BasicItemData::KEYWORDS) as string;
     
-this.category= itemHashMap!.get(BasicItemData.CATEGORY) as string;
+this->category= itemHashMap.get(BasicItemData::CATEGORY) as string;
     
-this.type= itemHashMap!.get(BasicItemData.TYPE) as string;
+this->type= itemHashMap.get(BasicItemData::TYPE) as string;
     
-this.smallImage= itemHashMap!.get(BasicItemData.SMALLIMAGE) as string;
+this->smallImage= itemHashMap.get(BasicItemData::SMALLIMAGE) as string;
     
-this.mediumImage= itemHashMap!.get(BasicItemData.MEDIUMIMAGE) as string;
+this->mediumImage= itemHashMap.get(BasicItemData::MEDIUMIMAGE) as string;
     
-this.largeImage= itemHashMap!.get(BasicItemData.LARGEIMAGE) as string;
+this->largeImage= itemHashMap.get(BasicItemData::LARGEIMAGE) as string;
     
-this.timeEntered= itemHashMap!.get(EntryData.getInstance()!.TIMECREATED) as string;
+this->timeEntered= itemHashMap.get(EntryData::getInstance().TIMECREATED) as string;
     
-this.lastModified= itemHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as string;
+this->lastModified= itemHashMap.get(EntryData::getInstance().LASTMODIFIED) as string;
     
-this.price= new Money(itemHashMap!.get(BasicItemData.PRICE) as string);
+this->price= Money(itemHashMap.get(BasicItemData::PRICE) as string);
     
-this.comment= itemHashMap!.get(BasicItemData.COMMENT) as string;
+this->comment= itemHashMap.get(BasicItemData::COMMENT) as string;
     
-this.customs= itemHashMap!.get(BasicItemData.CUSTOMS) as string;
+this->customs= itemHashMap.get(BasicItemData::CUSTOMS) as string;
     
-this.setDownloads(itemHashMap!.get(BasicItemData.DOWNLOADS) as string);
+this->setDownloads(itemHashMap.get(BasicItemData::DOWNLOADS) as string);
     
-this.groups= itemHashMap!.get(BasicItemData.GROUPS) as string;
+this->groups= itemHashMap.get(BasicItemData::GROUPS) as string;
     
-this.options= itemHashMap!.get(BasicItemData.OPTIONS) as string;
+this->options= itemHashMap.get(BasicItemData::OPTIONS) as string;
     
-this.permissions= itemHashMap!.get(BasicItemData.PERMISSIONS) as string;
+this->permissions= itemHashMap.get(BasicItemData::PERMISSIONS) as string;
     
-this.specials= itemHashMap!.get(BasicItemData.SPECIALS) as string;
+this->specials= itemHashMap.get(BasicItemData::SPECIALS) as string;
     
 }
 
 
-public constructor (){
+public: BasicItem(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
 
-    EMPTY: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY = StringUtil::getInstance().EMPTY_STRING;;
     
-this.itemId= new ProductIdGenerator().getNext();
+this->itemId= ProductIdGenerator().getNext();
     
-this.number= CommonPhoneStrings.getInstance()!.ZERO;
+this->number= CommonPhoneStrings::getInstance().ZERO;
     
-this.inBaskets= EMPTY;
+this->inBaskets= EMPTY;
     
-this.weight= EMPTY;
+this->weight= EMPTY;
     
-this.enabled= EMPTY;
+this->enabled= EMPTY;
     
-this.newOrUsed= EMPTY;
+this->newOrUsed= EMPTY;
     
-this.summary= EMPTY;
+this->summary= EMPTY;
     
-this.distributor= EMPTY;
+this->distributor= EMPTY;
     
-this.idUsedByDistributor= EMPTY;
+this->idUsedByDistributor= EMPTY;
     
-this.producedBy= EMPTY;
+this->producedBy= EMPTY;
     
-this.productionDate= EMPTY;
+this->productionDate= EMPTY;
     
-this.startProductionDate= EMPTY;
+this->startProductionDate= EMPTY;
     
-this.description= EMPTY;
+this->description= EMPTY;
     
-this.keywords= EMPTY;
+this->keywords= EMPTY;
     
-this.category= EMPTY;
+this->category= EMPTY;
     
-this.type= EMPTY;
+this->type= EMPTY;
     
-this.smallImage= EMPTY;
+this->smallImage= EMPTY;
     
-this.mediumImage= EMPTY;
+this->mediumImage= EMPTY;
     
-this.largeImage= EMPTY;
+this->largeImage= EMPTY;
     
-this.timeEntered= EMPTY;
+this->timeEntered= EMPTY;
     
-this.lastModified= EMPTY;
+this->lastModified= EMPTY;
     
-this.price= new Money();
+this->price= Money();
     
-this.comment= EMPTY;
+this->comment= EMPTY;
     
-this.customs= EMPTY;
+this->customs= EMPTY;
     
-this.setDownloads(EMPTY);
+this->setDownloads(EMPTY);
     
-this.groups= EMPTY;
+this->groups= EMPTY;
     
-this.options= EMPTY;
+this->options= EMPTY;
     
-this.permissions= EMPTY;
+this->permissions= EMPTY;
     
-this.specials= EMPTY;
-    
-}
-
-
-    public setId(string itemId){
-this.itemId= itemId;
+this->specials= EMPTY;
     
 }
 
 
-    public setNumber(string number){
-this.number= number;
+    public: void setId(std::string itemId){
+this->itemId= itemId;
     
 }
 
 
-    public setInBaskets(string value){
-this.inBaskets= value;
+    public: void setNumber(std::string number){
+this->number= number;
     
 }
 
 
-    public setWeight(string value){
-this.weight= value;
+    public: void setInBaskets(std::string value){
+this->inBaskets= value;
     
 }
 
 
-    public setNewOrUsed(string value){
-this.newOrUsed= value;
+    public: void setWeight(std::string value){
+this->weight= value;
     
 }
 
 
-    public setSummary(string value){
-this.summary= value;
+    public: void setNewOrUsed(std::string value){
+this->newOrUsed= value;
     
 }
 
 
-    public setDistributor(string value){
-this.distributor= value;
+    public: void setSummary(std::string value){
+this->summary= value;
     
 }
 
 
-    public setIdUsedByDistributor(string value){
-this.idUsedByDistributor= value;
+    public: void setDistributor(std::string value){
+this->distributor= value;
     
 }
 
 
-    public setProducedBy(string value){
-this.producedBy= value;
+    public: void setIdUsedByDistributor(std::string value){
+this->idUsedByDistributor= value;
     
 }
 
 
-    public setProductionDate(string value){
-this.productionDate= value;
+    public: void setProducedBy(std::string value){
+this->producedBy= value;
     
 }
 
 
-    public setStartProductionDate(string value){
-this.startProductionDate= value;
+    public: void setProductionDate(std::string value){
+this->productionDate= value;
     
 }
 
 
-    public setDescription(string value){
-this.description= value;
+    public: void setStartProductionDate(std::string value){
+this->startProductionDate= value;
     
 }
 
 
-    public setKeywords(string value){
-this.keywords= value;
+    public: void setDescription(std::string value){
+this->description= value;
     
 }
 
 
-    public setCategory(string value){
-this.category= value;
+    public: void setKeywords(std::string value){
+this->keywords= value;
     
 }
 
 
-    public setType(string value){
-this.type= value;
+    public: void setCategory(std::string value){
+this->category= value;
     
 }
 
 
-    public setSmallImage(string value){
-this.smallImage= value;
+    public: void setType(std::string value){
+this->type= value;
     
 }
 
 
-    public setMediumImage(string value){
-this.mediumImage= value;
+    public: void setSmallImage(std::string value){
+this->smallImage= value;
     
 }
 
 
-    public setLargeImage(string value){
-this.largeImage= value;
+    public: void setMediumImage(std::string value){
+this->mediumImage= value;
     
 }
 
 
-    public setTimeEntered(string value){
-this.timeEntered= value;
+    public: void setLargeImage(std::string value){
+this->largeImage= value;
     
 }
 
 
-    public setLastModified(string value){
-this.lastModified= value;
+    public: void setTimeEntered(std::string value){
+this->timeEntered= value;
     
 }
 
 
-    public setPrice(Money value){
-this.price= value;
+    public: void setLastModified(std::string value){
+this->lastModified= value;
     
 }
 
 
-    public setComment(string value){
-this.comment= value;
+    public: void setPrice(Money value){
+this->price= value;
     
 }
 
 
-    public setCustoms(string value){
-this.customs= value;
+    public: void setComment(std::string value){
+this->comment= value;
     
 }
 
 
-    public setDownloads(string value){
-this.downloads= value;
+    public: void setCustoms(std::string value){
+this->customs= value;
+    
+}
+
+
+    public: void setDownloads(std::string value){
+this->downloads= value;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(this.downloads))
+                        if(!StringValidationUtil::getInstance().isEmpty(this->downloads))
                         
                                     {
                                     
-    downloadInteger: Integer = Integer.valueOf(this.downloads)!;;
+    Integer downloadInteger = Integer::valueOf(this->downloads);;
     
 
-                        if(downloadInteger!.intValue() != 0)
+                        if(downloadInteger.intValue() != 0)
                         
                                     {
-                                    this.setDownloadable(true);
+                                    this->setDownloadable(true);
     
 
                                     }
@@ -464,347 +459,347 @@ this.downloads= value;
 }
 
 
-    public setGroups(string value){
-this.groups= value;
+    public: void setGroups(std::string value){
+this->groups= value;
     
 }
 
 
-    public setOptions(string value){
-this.options= value;
+    public: void setOptions(std::string value){
+this->options= value;
     
 }
 
 
-    public setPermissions(string value){
-this.permissions= value;
+    public: void setPermissions(std::string value){
+this->permissions= value;
     
 }
 
 
-    public setSpecials(string value){
-this.specials= value;
+    public: void setSpecials(std::string value){
+this->specials= value;
     
 }
 
 
-    public setEnabled(string value){
-this.enabled= value;
+    public: void setEnabled(std::string value){
+this->enabled= value;
     
 }
 
 
-    public string getId(){
+    public: std::string getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.itemId;
+                        return this->itemId;
     
 }
 
 
-    public string getNumber(){
+    public: std::string getNumber(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.number;
+                        return this->number;
     
 }
 
 
-    public string getInBaskets(){
+    public: std::string getInBaskets(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inBaskets;
+                        return this->inBaskets;
     
 }
 
 
-    public string getWeight(){
+    public: std::string getWeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.weight;
+                        return this->weight;
     
 }
 
 
-    public string getNewOrUsed(){
+    public: std::string getNewOrUsed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.newOrUsed;
+                        return this->newOrUsed;
     
 }
 
 
-    public string getSummary(){
+    public: std::string getSummary(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.summary;
+                        return this->summary;
     
 }
 
 
-    public string getDistributor(){
+    public: std::string getDistributor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.distributor;
+                        return this->distributor;
     
 }
 
 
-    public string getIdUsedByDistributor(){
+    public: std::string getIdUsedByDistributor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.idUsedByDistributor;
+                        return this->idUsedByDistributor;
     
 }
 
 
-    public string getProducedBy(){
+    public: std::string getProducedBy(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.producedBy;
+                        return this->producedBy;
     
 }
 
 
-    public string getProductionDate(){
+    public: std::string getProductionDate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.productionDate;
+                        return this->productionDate;
     
 }
 
 
-    public string getStartProductionDate(){
+    public: std::string getStartProductionDate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startProductionDate;
+                        return this->startProductionDate;
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public string getKeywords(){
+    public: std::string getKeywords(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.keywords;
+                        return this->keywords;
     
 }
 
 
-    public string getCategory(){
+    public: std::string getCategory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.category;
+                        return this->category;
     
 }
 
 
-    public string getType(){
+    public: std::string getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return this->type;
     
 }
 
 
-    public string getSmallImage(){
+    public: std::string getSmallImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.smallImage;
+                        return this->smallImage;
     
 }
 
 
-    public string getMediumImage(){
+    public: std::string getMediumImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mediumImage;
+                        return this->mediumImage;
     
 }
 
 
-    public string getLargeImage(){
+    public: std::string getLargeImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.largeImage;
+                        return this->largeImage;
     
 }
 
 
-    public string getTimeEntered(){
+    public: std::string getTimeEntered(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeEntered;
+                        return this->timeEntered;
     
 }
 
 
-    public string getLastModified(){
+    public: std::string getLastModified(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastModified;
+                        return this->lastModified;
     
 }
 
 
-    public Money getPrice(){
+    public: Money getPrice(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.price;
+                        return this->price;
     
 }
 
 
-    public string getComment(){
+    public: std::string getComment(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.comment;
+                        return this->comment;
     
 }
 
 
-    public string getCustoms(){
+    public: std::string getCustoms(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.customs;
+                        return this->customs;
     
 }
 
 
-    public string getDownloads(){
+    public: std::string getDownloads(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.downloads;
+                        return this->downloads;
     
 }
 
 
-    public string getGroups(){
+    public: std::string getGroups(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.groups;
+                        return this->groups;
     
 }
 
 
-    public string getOptions(){
+    public: std::string getOptions(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.options;
+                        return this->options;
     
 }
 
 
-    public string getPermissions(){
+    public: std::string getPermissions(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.permissions;
+                        return this->permissions;
     
 }
 
 
-    public string getSpecials(){
+    public: std::string getSpecials(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.specials;
+                        return this->specials;
     
 }
 
 
-    public setDownloadable(bool downloadable){
-this.downloadable= downloadable;
+    public: void setDownloadable(bool downloadable){
+this->downloadable= downloadable;
     
 }
 
 
-    public bool isDownloadable(){
+    public: bool isDownloadable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.downloadable;
+                        return this->downloadable;
     
 }
 
 
-    public string getEnabled(){
+    public: std::string getEnabled(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.enabled;
+                        return this->enabled;
     
 }
 
 
-    public Money getTotal(){
+    public: Money getTotal(){
 
-    itemTotal: Money = new Money(this.price);;
+    Money itemTotal = Money(this->price);;
     
-itemTotal!.multiply(new Integer(this.number).intValue());
+itemTotal.multiply(Integer(this->number).intValue());
     
 
 
@@ -815,80 +810,80 @@ itemTotal!.multiply(new Integer(this.number).intValue());
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "toHashMap");
+                                    this->logUtil.putF(this->commonStrings.START, this, "toHashMap");
     
 
                                     }
                                 
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(BasicItemData.ID, this.itemId);
+hashMap.put(BasicItemData::ID, this->itemId);
     
-hashMap!.put(BasicItemData.NUMBER, this.number);
+hashMap.put(BasicItemData::NUMBER, this->number);
     
-hashMap!.put(BasicItemData.INBASKETS, this.inBaskets);
+hashMap.put(BasicItemData::INBASKETS, this->inBaskets);
     
-hashMap!.put(BasicItemData.WEIGHT, this.weight);
+hashMap.put(BasicItemData::WEIGHT, this->weight);
     
-hashMap!.put(EntryData.getInstance()!.ENABLE, this.enabled);
+hashMap.put(EntryData::getInstance().ENABLE, this->enabled);
     
-hashMap!.put(BasicItemData.NEWORUSED, this.newOrUsed);
+hashMap.put(BasicItemData::NEWORUSED, this->newOrUsed);
     
-hashMap!.put(BasicItemData.SUMMARY, this.summary);
+hashMap.put(BasicItemData::SUMMARY, this->summary);
     
-hashMap!.put(BasicItemData.DISTRIBUTOR, this.distributor);
+hashMap.put(BasicItemData::DISTRIBUTOR, this->distributor);
     
-hashMap!.put(BasicItemData.IDUSEDBYDISTRIBUTOR, this.idUsedByDistributor);
+hashMap.put(BasicItemData::IDUSEDBYDISTRIBUTOR, this->idUsedByDistributor);
     
-hashMap!.put(BasicItemData.PRODUCEDBY, this.producedBy);
+hashMap.put(BasicItemData::PRODUCEDBY, this->producedBy);
     
-hashMap!.put(BasicItemData.PRODUCTIONDATE, this.productionDate);
+hashMap.put(BasicItemData::PRODUCTIONDATE, this->productionDate);
     
-hashMap!.put(BasicItemData.STARTPRODUCTIONDATE, this.startProductionDate);
+hashMap.put(BasicItemData::STARTPRODUCTIONDATE, this->startProductionDate);
     
-hashMap!.put(BasicItemData.DESCRIPTION, this.description);
+hashMap.put(BasicItemData::DESCRIPTION, this->description);
     
-hashMap!.put(BasicItemData.KEYWORDS, this.keywords);
+hashMap.put(BasicItemData::KEYWORDS, this->keywords);
     
-hashMap!.put(BasicItemData.CATEGORY, this.category);
+hashMap.put(BasicItemData::CATEGORY, this->category);
     
-hashMap!.put(BasicItemData.TYPE, this.type);
+hashMap.put(BasicItemData::TYPE, this->type);
     
-hashMap!.put(BasicItemData.SMALLIMAGE, this.smallImage);
+hashMap.put(BasicItemData::SMALLIMAGE, this->smallImage);
     
-hashMap!.put(BasicItemData.MEDIUMIMAGE, this.mediumImage);
+hashMap.put(BasicItemData::MEDIUMIMAGE, this->mediumImage);
     
-hashMap!.put(BasicItemData.LARGEIMAGE, this.largeImage);
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+hashMap.put(BasicItemData::LARGEIMAGE, this->largeImage);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString()!;;
+    Calendar calendar = Calendar::getInstance();;
     
-hashMap!.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
-hashMap!.put(BasicItemData.PRICE, this.price.toString());
+hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
     
-hashMap!.put(BasicItemData.COMMENT, this.comment);
+hashMap.put(BasicItemData::PRICE, this->price.toString());
     
-hashMap!.put(BasicItemData.CUSTOMS, this.customs);
+hashMap.put(BasicItemData::COMMENT, this->comment);
     
-hashMap!.put(BasicItemData.DOWNLOADS, this.getDownloads());
+hashMap.put(BasicItemData::CUSTOMS, this->customs);
     
-hashMap!.put(BasicItemData.GROUPS, this.groups);
+hashMap.put(BasicItemData::DOWNLOADS, this->getDownloads());
     
-hashMap!.put(BasicItemData.OPTIONS, this.options);
+hashMap.put(BasicItemData::GROUPS, this->groups);
     
-hashMap!.put(BasicItemData.PERMISSIONS, this.permissions);
+hashMap.put(BasicItemData::OPTIONS, this->options);
     
-hashMap!.put(BasicItemData.SPECIALS, this.specials);
+hashMap.put(BasicItemData::PERMISSIONS, this->permissions);
+    
+hashMap.put(BasicItemData::SPECIALS, this->specials);
     
 
 
@@ -899,82 +894,82 @@ hashMap!.put(BasicItemData.SPECIALS, this.specials);
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "toVector");
+                                    this->logUtil.putF(this->commonStrings.START, this, "toVector");
     
 
                                     }
                                 
 
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
-values.add(this.itemId);
+values.add(this->itemId);
     
-values.add(this.number);
+values.add(this->number);
     
-values.add(this.inBaskets);
+values.add(this->inBaskets);
     
-values.add(this.weight);
+values.add(this->weight);
     
-values.add(this.enabled);
+values.add(this->enabled);
     
-values.add(this.newOrUsed);
+values.add(this->newOrUsed);
     
-values.add(this.summary);
+values.add(this->summary);
     
-values.add(this.distributor);
+values.add(this->distributor);
     
-values.add(this.idUsedByDistributor);
+values.add(this->idUsedByDistributor);
     
-values.add(this.producedBy);
+values.add(this->producedBy);
     
-values.add(this.productionDate);
+values.add(this->productionDate);
     
-values.add(this.startProductionDate);
+values.add(this->startProductionDate);
     
-values.add(this.description);
+values.add(this->description);
     
-values.add(this.keywords);
+values.add(this->keywords);
     
-values.add(this.category);
+values.add(this->category);
     
-values.add(this.type);
+values.add(this->type);
     
-values.add(this.getSmallImage());
+values.add(this->getSmallImage());
     
-values.add(this.getMediumImage());
+values.add(this->getMediumImage());
     
-values.add(this.getLargeImage());
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+values.add(this->getLargeImage());
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString()!;;
+    Calendar calendar = Calendar::getInstance();;
+    
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 values.add(time);
     
 values.add(time);
     
-values.add(this.price.toString());
+values.add(this->price.toString());
     
-values.add(this.comment);
+values.add(this->comment);
     
-values.add(this.customs);
+values.add(this->customs);
     
-values.add(this.getDownloads());
+values.add(this->getDownloads());
     
-values.add(this.groups);
+values.add(this->groups);
     
-values.add(this.options);
+values.add(this->options);
     
-values.add(this.permissions);
+values.add(this->permissions);
     
-values.add(this.specials);
+values.add(this->specials);
     
 
 
@@ -987,12 +982,12 @@ values.add(this.specials);
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getId();
+                        return this->getId();
     
 }
 

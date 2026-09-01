@@ -28,13 +28,12 @@
         #include "AdConfiguration.h"
 
 class AppNameLicensingAdConfiguration: public AdConfiguration {
-        
 
-public constructor (){
+public: AppNameLicensingAdConfiguration(){
             super(
-                                                [
-                                                    StringUtil.getInstance()!.EMPTY_STRING,StringUtil.getInstance()!.EMPTY_STRING,StringUtil.getInstance()!.EMPTY_STRING
-                                                ]);
+                                                {
+                                                    StringUtil::getInstance().EMPTY_STRING,StringUtil::getInstance().EMPTY_STRING,StringUtil::getInstance().EMPTY_STRING
+                                                });
                     
 
                             //For kotlin this is before the body of the constructor.

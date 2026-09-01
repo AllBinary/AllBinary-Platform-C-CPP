@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_TIMEDVECTORANIMATION_H
 
+            #include <vector>
+        
 #include <org/allbinary/graphics/color/BasicColor.h>
 
       
@@ -52,13 +54,12 @@
 #include "AnimationBehavior.h"
 
 class TimedVectorAnimation: public VectorAnimation {
-        
 
-    private: timeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(200);
+    private: TimeDelayHelper timeElapsedHelper = TimeDelayHelper(200);
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: TimedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
 
-    public nextFrame();
+    public: void nextFrame();
 
 };
 

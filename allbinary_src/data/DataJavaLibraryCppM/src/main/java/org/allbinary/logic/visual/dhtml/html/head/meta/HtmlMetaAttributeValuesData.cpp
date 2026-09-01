@@ -42,31 +42,28 @@
 class HtmlMetaAttributeValuesData
             : public Object
          {
-        
 
-    private: static const instance: HtmlMetaAttributeValuesData = new HtmlMetaAttributeValuesData();
+    private: static HtmlMetaAttributeValuesData instance() { return HtmlMetaAttributeValuesData(); }
 
-    public static HtmlMetaAttributeValuesData getInstance(){
+    public: static HtmlMetaAttributeValuesData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlMetaAttributeValuesData.instance;
+                        return HtmlMetaAttributeValuesData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: HtmlMetaAttributeValuesData(){
+}
 
 
-    public ABSTRACT: string = "abstract";
+    public: std::string ABSTRACT = "abstract";
 
-    public DESCRIPTION: string = "description";
+    public: std::string DESCRIPTION = "description";
 
-    public KEYWORDS: string = "keywords";
+    public: std::string KEYWORDS = "keywords";
 
 };
 

@@ -43,15 +43,12 @@
 #include "ShaderComposite.h"
 
 class UniformCameraPositionOpenGLProcessor: public OpenGLObject3dProcessor {
-        
 
-public constructor (ShaderComposite shaderComposite, int32_t handleIndex){
-
-            super();
-        }
+public: UniformCameraPositionOpenGLProcessor(ShaderComposite shaderComposite, int32_t handleIndex){
+}
 
 
-    public process(GL10 gl, any = {} anyType){
+    public: void process(GL10 gl, Object* anyType){
 }
 
 

@@ -51,33 +51,30 @@
 #include "MotionGestureEvent.h"
 
 class ScrolledMotionGesturesHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: ScrolledMotionGesturesHandler = new ScrolledMotionGesturesHandler();
+    private: static const ScrolledMotionGesturesHandler SINGLETON = ScrolledMotionGesturesHandler();
 
-    public static ScrolledMotionGesturesHandler getInstance(){
+    public: static ScrolledMotionGesturesHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrolledMotionGesturesHandler.SINGLETON;
+                        return ScrolledMotionGesturesHandler::SINGLETON;
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
+protected: ScrolledMotionGesturesHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    baseMotionGestureEventListener: BaseMotionGestureEventListener = eventListenerInterface as BaseMotionGestureEventListener;;
+    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface as BaseMotionGestureEventListener;;
     
-baseMotionGestureEventListener!.onScrolledMotionGestureEvent(eventObject as MotionGestureEvent);
+baseMotionGestureEventListener.onScrolledMotionGestureEvent(eventObject as MotionGestureEvent);
     
 }
 

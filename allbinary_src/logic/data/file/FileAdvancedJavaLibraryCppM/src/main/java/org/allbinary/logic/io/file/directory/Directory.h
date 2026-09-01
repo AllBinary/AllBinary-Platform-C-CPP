@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_DIRECTORY_DIRECTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -71,41 +73,40 @@
 class Directory
             : public Object
          {
-        
 
-    private: static const instance: Directory = new Directory();
+    private: static Directory instance() { return Directory(); }
 
-    public static Directory getInstance();
+    public: static Directory getInstance();
 
-private constructor ();
+private: Directory();
 
-    public bool create(AbPath directoryAbPath);
-
-                //@Throws(Exception.constructor)
-            
-    public remove(AbPath existingDirectoryAbPath);
-
-    bool create(string directory);
+    public: bool create(AbPath directoryAbPath);
 
                 //@Throws(Exception.constructor)
             
-    remove(string existingDirectory);
+    public: void remove(AbPath existingDirectoryAbPath);
 
-    public BasicArrayList search(FileFilter fileFilter, AbFile file);
+    private: bool create(std::string directory);
 
-    public BasicArrayList search(FileFilter fileFilter, AbFile file, bool isRecursiveSearch);
+                //@Throws(Exception.constructor)
+            
+    private: void remove(std::string existingDirectory);
 
-    public BasicArrayList search(AbFile file);
+    public: BasicArrayList search(FileFilter fileFilter, AbFile file);
 
-    public BasicArrayList search(AbFile file, bool isRecursiveSearch);
+    public: BasicArrayList search(FileFilter fileFilter, AbFile file, bool isRecursiveSearch);
 
-    public BasicArrayList search(string searchValue, AbFile file);
+    public: BasicArrayList search(AbFile file);
 
-    public BasicArrayList search(string searchValue, AbFile file, bool isRecursiveSearch);
+    public: BasicArrayList search(AbFile file, bool isRecursiveSearch);
 
-    public BasicArrayList search(int32_t level, AbFile file);
+    public: BasicArrayList search(std::string searchValue, AbFile file);
 
-    public BasicArrayList search(int32_t level, AbFile file, bool isRecursiveSearch);
+    public: BasicArrayList search(std::string searchValue, AbFile file, bool isRecursiveSearch);
+
+    public: BasicArrayList search(int32_t level, AbFile file);
+
+    public: BasicArrayList search(int32_t level, AbFile file, bool isRecursiveSearch);
 
 };
 

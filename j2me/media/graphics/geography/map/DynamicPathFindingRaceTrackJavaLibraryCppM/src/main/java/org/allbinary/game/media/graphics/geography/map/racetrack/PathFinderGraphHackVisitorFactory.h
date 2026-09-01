@@ -51,17 +51,16 @@
         #include "PathFinderGraphHackVisitor.h"
 
 class PathFinderGraphHackVisitorFactory: public PathFinderGraphVisitorFactoryBase {
-        
 
-    private: const edgeMinimum: int32_t;
+    private: int32_t edgeMinimum;
 
-    private: const minPathWeight: int32_t;
+    private: int32_t minPathWeight;
 
-    private: const maxPathWeight: int32_t;
+    private: int32_t maxPathWeight;
 
-public constructor (int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
+public: PathFinderGraphHackVisitorFactory(int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
 
-    public PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface);
+    public: PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface);
 
 };
 

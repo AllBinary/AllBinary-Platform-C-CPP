@@ -73,32 +73,29 @@
 class PlayerQueue
             : public Object
          {
-        
 
-    private: static const TOTAL: string = "Sounds In Queue: ";
+    private: static const std::string TOTAL = "Sounds In Queue: ";
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: max: int32_t;
+    private: int32_t max;
 
- constructor (int32_t max){
-
-            super();
-        this.max= max;
+: PlayerQueue(int32_t max){
+this->max= max;
     
 }
 
 
-    public add(Sound sound){
+    public: void add(Sound sound){
 
         try {
             
-                        if(!this.list.contains(sound))
+                        if(!this->list.contains(sound))
                         
                                     {
-                                    this.list.add(sound);
+                                    this->list.add(sound);
     
 
                                     }
@@ -107,43 +104,43 @@ class PlayerQueue
                 //: 
 } catch(e) 
             {
-PreLogUtil.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD);
+PreLogUtil::put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD);
     
 }
 
 }
 
 
-    public bool process(){
+    public: bool process(){
 
-    sound: Sound = NoSound.getInstance()!;;
+    Sound sound = NoSound::getInstance();;
     
 
         try {
             
-    played: bool = false;;
+    bool played = false;;
     
 
-                        if(this.list.size() > 0)
+                        if(this->list.size() > 0)
                         
                                     {
-                                    sound= this.list.removeAt(0) as Sound;
+                                    sound= this->list.removeAt(0) as Sound;
     
 
                         if(sound != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    sound.getPlayerP()!.start();
+                                    sound.getPlayerP().start();
     
 
                                     }
                                 
 
-        while(this.list.size() > this.max)
+        while(this->list.size() > this->max)
         {
-this.list.removeAt(0);
+this->list.removeAt(0);
     
 }
 
@@ -163,11 +160,11 @@ played= true;
 } catch(e) 
             {
 
-    resource: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string resource = StringUtil::getInstance().EMPTY_STRING;;
     
 
                         if(sound != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -176,7 +173,7 @@ played= true;
 
                                     }
                                 
-PreLogUtil.put(new StringMaker().append(this.commonStrings!.EXCEPTION_LABEL)!.append(resource)!.toString(), this, this.commonStrings!.PROCESS);
+PreLogUtil::put(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append(resource).toString(), this, this->commonStrings.PROCESS);
     
 
 
@@ -189,18 +186,18 @@ PreLogUtil.put(new StringMaker().append(this.commonStrings!.EXCEPTION_LABEL)!.ap
 }
 
 
-    public clear(){
-this.list.clear();
+    public: void clear(){
+this->list.clear();
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(PlayerQueue.TOTAL)!.appendint(this.list.size())!.toString();;
+                        return StringMaker().append(PlayerQueue::TOTAL).appendint(this->list.size()).toString();;
     
 }
 

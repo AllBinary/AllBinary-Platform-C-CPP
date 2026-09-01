@@ -54,19 +54,18 @@
 class OpenGLESImageExclusionUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESImageExclusionUtil = new OpenGLESImageExclusionUtil();
+    private: static OpenGLESImageExclusionUtil instance() { return OpenGLESImageExclusionUtil(); }
 
-    public static OpenGLESImageExclusionUtil getInstance();
+    public: static OpenGLESImageExclusionUtil getInstance();
 
-    private: const EXCLUSION: string = "font";
+    private: const std::string EXCLUSION = "font";
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: OpenGLESImageExclusionUtil();
 
-    public bool isCustomScaling(Image image);
+    public: bool isCustomScaling(Image image);
 
 };
 

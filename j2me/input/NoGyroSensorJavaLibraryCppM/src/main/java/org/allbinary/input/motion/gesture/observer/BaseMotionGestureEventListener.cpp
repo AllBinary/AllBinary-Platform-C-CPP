@@ -48,11 +48,10 @@
         #include "MotionGestureEvent.h"
 
 class BaseMotionGestureEventListener: public EventListenerInterface {
-        
 
-    onMotionGestureEvent(MotionGestureEvent motionGestureEvent)
+    void onMotionGestureEvent(MotionGestureEvent motionGestureEvent)
 
-    onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent)
+    void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent)
 
 };
 

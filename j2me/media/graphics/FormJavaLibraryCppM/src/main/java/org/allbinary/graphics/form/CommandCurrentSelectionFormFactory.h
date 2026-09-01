@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORMFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORMFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -66,11 +68,10 @@
 class CommandCurrentSelectionFormFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ScrollSelectionForm getInstance(string title, std::vector<ABCustomItem> items, Rectangle rectangle, FormType formType, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+    public: static ScrollSelectionForm getInstance(std::string title, std::vector<ABCustomItem> items, Rectangle rectangle, FormType formType, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
 };
 

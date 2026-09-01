@@ -50,15 +50,14 @@
         #include "Rectangle.h"
 
 class BasicGameInputAutomationActionInterface: public InputAutomationActionInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    attack(Rectangle rectangle);
+    void attack(Rectangle rectangle);
 
                 //@Throws(Exception.constructor)
             
-    target(Rectangle rectangle);
+    void target(Rectangle rectangle);
 
 };
 

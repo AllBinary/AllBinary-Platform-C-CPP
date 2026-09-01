@@ -45,24 +45,23 @@
 class OpenGLImageCacheFactory
             : public Object
          {
-        
 
-    private: static IMAGE_CACHE: ImageCache = ImageCache.NULL_IMAGE_CACHE;
+    private: static ImageCache IMAGE_CACHE = ImageCache::NULL_IMAGE_CACHE;
 
-    public static ImageCache getInstance(){
+    public: static ImageCache getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLImageCacheFactory.IMAGE_CACHE;
+                        return OpenGLImageCacheFactory::IMAGE_CACHE;
     
 }
 
 
-    public static init(){
+    public: static void init(){
 
-                        if(OpenGLImageCacheFactory.IMAGE_CACHE == 
-                                    null
+                        if(OpenGLImageCacheFactory::IMAGE_CACHE == 
+                                    nullptr
                                 )
                         
                                     {

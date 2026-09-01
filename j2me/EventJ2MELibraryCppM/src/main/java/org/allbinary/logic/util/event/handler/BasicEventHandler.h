@@ -84,43 +84,42 @@
 class BasicEventHandler
             : public Object
         : public BasicEventHandlerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const eventStrings: EventStrings = EventStrings.getInstance()!;
+    private: const EventStrings eventStrings = EventStrings::getInstance();
 
-    eventListenerInterfaceList: BasicArrayList;
+    protected: BasicArrayList eventListenerInterfaceList;
 
-public constructor ();
+public: BasicEventHandler();
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public addListeners(BasicArrayList vector);
+    public: void addListeners(BasicArrayList vector);
 
-    public removeListeners(BasicArrayList vector);
+    public: void removeListeners(BasicArrayList vector);
 
-    public addListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void addListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 
-    public addListenerInterface(EventListenerInterface eventListenerInterface);
+    public: void addListenerInterface(EventListenerInterface eventListenerInterface);
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 
-    public removeListener(EventListenerInterface eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    public: void fireEvent(AllBinaryEventObject eventObject);
 
-    public BasicArrayList getEventListenerInterfaceListP();
+                //@Throws(Exception.constructor)
+            
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
-    public string toString();
+    public: BasicArrayList getEventListenerInterfaceListP();
+
+    public: std::string toString();
 
 };
 

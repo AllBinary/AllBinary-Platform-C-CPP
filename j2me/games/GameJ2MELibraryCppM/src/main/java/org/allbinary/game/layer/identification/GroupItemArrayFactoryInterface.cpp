@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -46,7 +48,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GroupItemArrayFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

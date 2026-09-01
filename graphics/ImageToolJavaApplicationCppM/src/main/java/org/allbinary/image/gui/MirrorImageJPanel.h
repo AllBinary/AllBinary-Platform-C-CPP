@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_MIRRORIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_MIRRORIMAGEJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Thread.h"
@@ -89,54 +91,53 @@
 #include "ActionListener.h"
 #include "ActionEvent.h"
 
-class MirrorImageJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class MirrorImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageStrings: ImageStrings = ImageStrings.getInstance()!;
+    private: const ImageStrings imageStrings = ImageStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-    private: result: BufferedImage;
+    private: BufferedImage result;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: MirrorImageJPanel(ImageProcessorInput imageProcessorInput);
 
-    public process();
+    public: void process();
 
-    initComponents();
+    private: void initComponents();
 
-    generateJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    renameJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void renameJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: buttonGroup: javax.swing.ButtonGroup;
+    private: javax::swing::ButtonGroup buttonGroup;
 
-    private: generateJButton: javax.swing.JButton;
+    private: javax::swing::JButton generateJButton;
 
-    private: horizontalJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox horizontalJCheckBox;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLayeredPane1: javax.swing.JLayeredPane;
+    private: javax::swing::JLayeredPane jLayeredPane1;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: jPanel2: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel2;
 
-    private: jPanel3: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel3;
 
-    private: renameJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JRadioButton renameJRadioButton;
 
-    private: verticleJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox verticleJCheckBox;
 
-    private: writeOverOriginalJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JRadioButton writeOverOriginalJRadioButton;
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
 };
 

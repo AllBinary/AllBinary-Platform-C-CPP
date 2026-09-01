@@ -37,9 +37,8 @@
 class V
             : public Object
          {
-        
 
-    public int32_t getId();
+    public: int32_t getId();
 
 };
 

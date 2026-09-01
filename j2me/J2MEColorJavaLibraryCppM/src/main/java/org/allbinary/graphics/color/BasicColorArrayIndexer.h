@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORARRAYINDEXER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -58,19 +60,18 @@
 class BasicColorArrayIndexer
             : public Object
          {
-        
 
-    private: basicColorArray: std::vector<BasicColor>;
+    private: std::vector<BasicColor> basicColorArray;
 
-    private: circularIndexUtil: CircularIndexUtil;
+    private: CircularIndexUtil circularIndexUtil;
 
-public constructor (std::vector<BasicColor> basicColorArray);
+public: BasicColorArrayIndexer(std::vector<BasicColor> basicColorArray);
 
-    public next();
+    public: void next();
 
-    public BasicColor get();
+    public: BasicColor get();
 
-    public std::vector<BasicColor> getBasicColorArray();
+    public: std::vector<BasicColor> getBasicColorArray();
 
 };
 

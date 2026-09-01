@@ -49,50 +49,49 @@
 /*actual*/ class LogFactory
             : public Object
          {
-        
 
-    /*actual*/ public static Log getInstanceD(){
+    /*actual*/ public: static Log getInstanceD(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    nullUtil: NullUtil = NullUtil.getInstance()!;;
+    NullUtil nullUtil = NullUtil::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Log(stringUtil!.EMPTY_STRING, nullUtil!.NULL_OBJECT, stringUtil!.EMPTY_STRING, nullUtil!.NULL_OBJECT);
+                        return Log(stringUtil.EMPTY_STRING, nullUtil.NULL_OBJECT, stringUtil.EMPTY_STRING, nullUtil.NULL_OBJECT);
     
 }
 
 
-    /*actual*/ public static Log getInstanceNoF(string specialMessage, any = {} anyType, any = {} exception){
+    /*actual*/ public: static Log getInstanceNoF(std::string specialMessage, Object* anyType, Object* exception){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Log(specialMessage, anyType, StringUtil.getInstance()!.EMPTY_STRING, exception);
+                        return Log(specialMessage, anyType, StringUtil::getInstance().EMPTY_STRING, exception);
     
 }
 
 
-    /*actual*/ public static Log getInstance(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: static Log getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Log(specialMessage, anyType, functionName, exception);
+                        return Log(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public static Log getInstanceF(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: static Log getInstanceF(std::string specialMessage, Object* anyType, std::string functionName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Log(specialMessage, anyType, functionName, NullUtil.getInstance()!.NULL_OBJECT);
+                        return Log(specialMessage, anyType, functionName, NullUtil::getInstance().NULL_OBJECT);
     
 }
 

@@ -48,15 +48,14 @@
         #include "ImageIcon.h"
 
 class ImageIconUnique: public ImageIcon {
-        
 
-    private: id: int32_t= 0;
+    private: int32_t id= 0;
 
-public constructor (BufferedImage bufferedImage, int32_t index);
+public: ImageIconUnique(BufferedImage bufferedImage, int32_t index);
 
-    public int32_t getId();
+    public: int32_t getId();
 
-    public setId(int32_t id);
+    public: void setId(int32_t id);
 
 };
 

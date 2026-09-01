@@ -57,17 +57,16 @@
 class InputAutomationModuleFactoryInterface
             : public Object
          {
-        
 
-    public string getName();
+    public: std::string getName();
 
-    public JPanel getConfigurationJPanel();
+    public: JPanel getConfigurationJPanel();
 
-    public HelpSet getHelpSet();
+    public: HelpSet getHelpSet();
 
                 //@Throws(Exception.constructor)
             
-    public RunnableInterface getInstance();
+    public: RunnableInterface getInstance();
 
 };
 

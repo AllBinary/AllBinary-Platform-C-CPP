@@ -55,41 +55,40 @@
 class DirectionFactory
             : public Object
          {
-        
 
-    private: static const instance: DirectionFactory = new DirectionFactory();
+    private: static DirectionFactory instance() { return DirectionFactory(); }
 
-    public static DirectionFactory getInstance();
+    public: static DirectionFactory getInstance();
 
-    public const NAME: string = "DIRECTION";
+    public: const std::string NAME = "DIRECTION";
 
-    public const LEFT: Direction = new Direction(CommonPhoneStrings.getInstance()!.LEFT, "WEST", 0, 1);
+    public: const Direction LEFT = Direction(CommonPhoneStrings::getInstance().LEFT, "WEST", 0, 1);
 
-    public const RIGHT: Direction = new Direction(CommonPhoneStrings.getInstance()!.RIGHT, "EAST", 1, 0);
+    public: const Direction RIGHT = Direction(CommonPhoneStrings::getInstance().RIGHT, "EAST", 1, 0);
 
-    public const DOWN: Direction = new Direction(CommonPhoneStrings.getInstance()!.DOWN, "SOUTH", 2, 0);
+    public: const Direction DOWN = Direction(CommonPhoneStrings::getInstance().DOWN, "SOUTH", 2, 0);
 
-    public const UP: Direction = new Direction(CommonPhoneStrings.getInstance()!.UP, "NORTH", 3, 0);
+    public: const Direction UP = Direction(CommonPhoneStrings::getInstance().UP, "NORTH", 3, 0);
 
-    public const UP_LEFT: Direction;
+    public: Direction UP_LEFT;
 
-    public const UP_RIGHT: Direction;
+    public: Direction UP_RIGHT;
 
-    public const DOWN_LEFT: Direction;
+    public: Direction DOWN_LEFT;
 
-    public const DOWN_RIGHT: Direction;
+    public: Direction DOWN_RIGHT;
 
-    public const NOT_BORDERED_WITH: Direction = new Direction("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0);
+    public: const Direction NOT_BORDERED_WITH = Direction("NOT_BORDERED_WITH", "NOT_BORDERED_WITH", 8, 0);
 
-    public const NO_DIRECTION: Direction = new Direction("NO_DIRECTION", "NO_DIRECTION", 9, 0);
+    public: const Direction NO_DIRECTION = Direction("NO_DIRECTION", "NO_DIRECTION", 9, 0);
 
-    public const TOP: Direction = new Direction("TOP", "TOP", 10, 0);
+    public: const Direction TOP = Direction("TOP", "TOP", 10, 0);
 
-    public const BOTTOM: Direction = new Direction("BOTTOM", "BOTTOM", 11, 0);
+    public: const Direction BOTTOM = Direction("BOTTOM", "BOTTOM", 11, 0);
 
-    public const ALL_DIRECTION: Direction = new Direction("ALL_DIRECTION", "ALL_DIRECTION", 12, 0);
+    public: const Direction ALL_DIRECTION = Direction("ALL_DIRECTION", "ALL_DIRECTION", 12, 0);
 
-private constructor ();
+private: DirectionFactory();
 
 };
 

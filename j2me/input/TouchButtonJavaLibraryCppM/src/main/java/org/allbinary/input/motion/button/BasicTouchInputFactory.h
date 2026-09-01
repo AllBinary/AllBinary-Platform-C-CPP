@@ -70,54 +70,53 @@
 class BasicTouchInputFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static BasicTouchInputFactory getInstance();
+    public: static BasicTouchInputFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const SPECIAL_BUTTON_SEVEN_TESTING_ONLY: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_SEVEN_TESTING_ONLY;
 
-    public const SPECIAL_BUTTON_EIGHT_TESTING_ONLY: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_EIGHT_TESTING_ONLY;
 
-    public const SPECIAL_BUTTON_SIX: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_SIX;
 
-    public const SPECIAL_BUTTON_FIVE: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_FIVE;
 
-    public const SPECIAL_BUTTON_FOUR: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_FOUR;
 
-    public const SPECIAL_BUTTON_THREE: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_THREE;
 
-    public const SPECIAL_BUTTON_TWO: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_TWO;
 
-    public const SPECIAL_BUTTON_ONE: TouchButtonInput;
+    public: TouchButtonInput SPECIAL_BUTTON_ONE;
 
-    public const UP: TouchButtonInput;
+    public: TouchButtonInput UP;
 
-    public const LEFT: TouchButtonInput;
+    public: TouchButtonInput LEFT;
 
-    public const RIGHT: TouchButtonInput;
+    public: TouchButtonInput RIGHT;
 
-    public const DOWN: TouchButtonInput;
+    public: TouchButtonInput DOWN;
 
-    public const NONE: TouchButtonInput;
+    public: TouchButtonInput NONE;
 
-    private: initialized: bool = false;
+    private: bool initialized = false;
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: BasicTouchInputFactory();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public init(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void init(InputToGameKeyMapping inputToGameKeyMapping);
 
-    public updateAll(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void updateAll(InputToGameKeyMapping inputToGameKeyMapping);
 
-    public updateAllFromList(BasicArrayList list, InputToGameKeyMapping inputToGameKeyMapping);
+    public: void updateAllFromList(BasicArrayList list, InputToGameKeyMapping inputToGameKeyMapping);
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

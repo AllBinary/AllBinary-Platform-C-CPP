@@ -72,19 +72,18 @@
 #include "AllBinaryGameCanvas.h"
 
 class GameCanvasPauseRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const allBinaryGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas allBinaryGameCanvas;
 
-public constructor (AllBinaryGameCanvas allBinaryGameCanvas);
+public: GameCanvasPauseRunnable(AllBinaryGameCanvas allBinaryGameCanvas);
 
-    public run();
+    public: void run();
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep();
+    public: void processLoopSleep();
 
 };
 

@@ -62,37 +62,36 @@
 class DecalAnimationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: DecalAnimationInterfaceFactory = new DecalAnimationInterfaceFactory();
+    private: static DecalAnimationInterfaceFactory instance() { return DecalAnimationInterfaceFactory(); }
 
-    public static DecalAnimationInterfaceFactory getInstance(){
+    public: static DecalAnimationInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DecalAnimationInterfaceFactory.instance;
+                        return DecalAnimationInterfaceFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AnimationInterfaceFactoryInterface getAnimationFactory(BasicGameResources basicGameResources, BasicColor basicColor){
+    public: AnimationInterfaceFactoryInterface getAnimationFactory(BasicGameResources basicGameResources, BasicColor basicColor){
 
-    animationInterfaceFactoryInterface: AnimationInterfaceFactoryInterface;;
+    AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface;;
     
 
-                        if(basicColor == BasicColorFactory.getInstance()!.RED)
+                        if(basicColor == BasicColorFactory::getInstance().RED)
                         
                                     {
-                                    animationInterfaceFactoryInterface= FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(basicGameResources!.RESOURCE);
+                                    animationInterfaceFactoryInterface= FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(basicGameResources.RESOURCE);
     
 
                                     }
                                 
                         else {
-                            animationInterfaceFactoryInterface= NullRotationAnimationFactory.getFactoryInstance();
+                            animationInterfaceFactoryInterface= NullRotationAnimationFactory::getFactoryInstance();
     
 
                         }

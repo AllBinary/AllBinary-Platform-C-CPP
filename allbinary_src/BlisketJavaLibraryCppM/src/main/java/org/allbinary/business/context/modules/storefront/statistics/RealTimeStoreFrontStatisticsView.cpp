@@ -85,63 +85,60 @@
 class RealTimeStoreFrontStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: const storeFrontStatisticsInterface: StoreFrontStatisticsInterface;
+    private: StoreFrontStatisticsInterface storeFrontStatisticsInterface;
 
-    private: const userRole: UserRole;
+    private: UserRole userRole;
 
-public constructor (StoreFrontStatisticsInterface storeFrontStatisticsInterface, UserRole userRole){
-
-            super();
-        this.storeFrontStatisticsInterface= storeFrontStatisticsInterface;
+public: RealTimeStoreFrontStatisticsView(StoreFrontStatisticsInterface storeFrontStatisticsInterface, UserRole userRole){
+this->storeFrontStatisticsInterface= storeFrontStatisticsInterface;
     
-this.userRole= userRole;
+this->userRole= userRole;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(StoreFrontStatisticsData.getInstance()!.NAME)!;;
-    
-
-    storeFrontAdvertisementsStatisticsInterface: StoreFrontAdvertisementsStatisticsInterface = this.storeFrontStatisticsInterface!.getAdvertisements()!;;
+    Node node = document.createElement(StoreFrontStatisticsData::getInstance().NAME);;
     
 
-    storeFrontAdvertisementsStatisticsDomNodeInterface: DomNodeInterface = new StoreFrontAdvertisementsStatisticsView(storeFrontAdvertisementsStatisticsInterface);;
-    
-node.appendChild(storeFrontAdvertisementsStatisticsDomNodeInterface!.toXmlNode(document));
+    StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface = this->storeFrontStatisticsInterface.getAdvertisements();;
     
 
-    storeFrontInventoryStatisticsInterface: StoreFrontInventoryStatisticsInterface = this.storeFrontStatisticsInterface!.getInventory()!;;
+    DomNodeInterface storeFrontAdvertisementsStatisticsDomNodeInterface = StoreFrontAdvertisementsStatisticsView(storeFrontAdvertisementsStatisticsInterface);;
+    
+node.appendChild(storeFrontAdvertisementsStatisticsDomNodeInterface.toXmlNode(document));
     
 
-    storeFrontInventoryStatisticsDomNodeInterface: DomNodeInterface = new StoreFrontInventoryStatisticsView(storeFrontInventoryStatisticsInterface);;
-    
-node.appendChild(storeFrontInventoryStatisticsDomNodeInterface!.toXmlNode(document));
+    StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface = this->storeFrontStatisticsInterface.getInventory();;
     
 
-    storeFrontOrdersHistoryStatisticsInterface: StoreFrontOrdersHistoryStatisticsInterface = this.storeFrontStatisticsInterface!.getOrders()!;;
+    DomNodeInterface storeFrontInventoryStatisticsDomNodeInterface = StoreFrontInventoryStatisticsView(storeFrontInventoryStatisticsInterface);;
+    
+node.appendChild(storeFrontInventoryStatisticsDomNodeInterface.toXmlNode(document));
     
 
-    storeFrontOrdersHistoryStatisticsDomNodeInterface: DomNodeInterface = new StoreFrontOrdersHistoryStatisticsView(storeFrontOrdersHistoryStatisticsInterface);;
-    
-node.appendChild(storeFrontOrdersHistoryStatisticsDomNodeInterface!.toXmlNode(document));
+    StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface = this->storeFrontStatisticsInterface.getOrders();;
     
 
-                        if(this.userRole == UserRoleFactory.getInstance()!.ADMINISTRATOR)
+    DomNodeInterface storeFrontOrdersHistoryStatisticsDomNodeInterface = StoreFrontOrdersHistoryStatisticsView(storeFrontOrdersHistoryStatisticsInterface);;
+    
+node.appendChild(storeFrontOrdersHistoryStatisticsDomNodeInterface.toXmlNode(document));
+    
+
+                        if(this->userRole == UserRoleFactory::getInstance().ADMINISTRATOR)
                         
                                     {
                                     
-    storeFrontUsersStatisticsInterface: StoreFrontUsersStatisticsInterface = this.storeFrontStatisticsInterface!.getUsers()!;;
+    StoreFrontUsersStatisticsInterface storeFrontUsersStatisticsInterface = this->storeFrontStatisticsInterface.getUsers();;
     
 
-    storeFrontUsersStatisticsDomNodeInterface: DomNodeInterface = new StoreFrontUsersStatisticsView(storeFrontUsersStatisticsInterface);;
+    DomNodeInterface storeFrontUsersStatisticsDomNodeInterface = StoreFrontUsersStatisticsView(storeFrontUsersStatisticsInterface);;
     
-node.appendChild(storeFrontUsersStatisticsDomNodeInterface!.toXmlNode(document));
+node.appendChild(storeFrontUsersStatisticsDomNodeInterface.toXmlNode(document));
     
 
                                     }

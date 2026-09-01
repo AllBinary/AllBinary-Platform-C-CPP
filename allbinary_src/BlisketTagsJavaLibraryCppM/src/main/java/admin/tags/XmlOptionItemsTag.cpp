@@ -45,14 +45,11 @@
         #include "TableTag.h"
 
 class XmlOptionItemsTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new XmlOptionItemsHelperFactory());
+public: XmlOptionItemsTag(){
+this->setTagHelperFactory(XmlOptionItemsHelperFactory());
     
-this.setTagRequestHelperFactory(new XmlOptionItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(XmlOptionItemsRequestHelperFactory());
     
 }
 

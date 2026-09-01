@@ -63,27 +63,26 @@
         #include "BasicPlatormGeographicMapCellType.h"
 
 class BasicPlatormGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
-        
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public const BLOCK_CELL_TYPE: BasicPlatormGeographicMapCellType;
+    public: BasicPlatormGeographicMapCellType BLOCK_CELL_TYPE;
 
-    public const JUMP_THRU_CELL_TYPE: BasicPlatormGeographicMapCellType;
+    public: BasicPlatormGeographicMapCellType JUMP_THRU_CELL_TYPE;
 
-    public const LADDER_CELL_TYPE: BasicPlatormGeographicMapCellType;
+    public: BasicPlatormGeographicMapCellType LADDER_CELL_TYPE;
 
-    private: const maxTileId: int32_t;
+    private: int32_t maxTileId;
 
-public constructor (Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId);
+public: BasicPlatormGeographicMapCellTypeFactory(Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId);
 
-    public int32_t getStartType();
+    public: int32_t getStartType();
 
-    public int32_t getEndType();
+    public: int32_t getEndType();
 
-    public int32_t getEmptyType();
+    public: int32_t getEmptyType();
 
-    public bool isPath(GeographicMapCellType cellType);
+    public: bool isPath(GeographicMapCellType cellType);
 
 };
 

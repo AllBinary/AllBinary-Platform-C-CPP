@@ -60,20 +60,19 @@
 #include "TransformInfoInterface.h"
 #include "TransformInfoData.h"
 
-class TransformInfoDomNodeView: public TransformInfoDomNode: public DomNodeInterface {
-        
+class TransformInfoDomNodeView: public TransformInfoDomNode, public DomNodeInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface, string mapping);
+public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, std::string mapping);
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface);
 
-public constructor (string name, string mappedName);
+public: TransformInfoDomNodeView(std::string name, std::string mappedName);
 
-public constructor (string name);
+public: TransformInfoDomNodeView(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

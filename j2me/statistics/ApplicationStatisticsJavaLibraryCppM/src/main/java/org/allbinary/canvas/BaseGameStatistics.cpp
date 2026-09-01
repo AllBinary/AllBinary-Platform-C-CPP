@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Integer.h"
@@ -82,66 +84,63 @@
 class BaseGameStatistics
             : public Object
          {
-        
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(Integer.MAX_VALUE);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(Integer::MAX_VALUE);
 
-    private: const updateDelayHelper: TimeDelayHelper = new TimeDelayHelper(2000);
+    private: const TimeDelayHelper updateDelayHelper = TimeDelayHelper(2000);
 
-    private: totalRefreshes: int64_t= 0;
+    private: int64_t totalRefreshes= 0;
 
-    private: totalFrames: int64_t= 0;
+    private: int64_t totalFrames= 0;
 
-    const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    protected: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: BaseGameStatistics(){
+}
 
 
-    public init(){
-this.timeDelayHelper!.setStartTimeTNT();
+    public: void init(){
+this->timeDelayHelper.setStartTimeTNT();
     
-this.totalRefreshes= 0;
+this->totalRefreshes= 0;
     
-this.totalFrames= 0;
+this->totalFrames= 0;
     
 }
 
 
-    public add(string string){
+    public: void add(std::string string){
 }
 
 
-    public process(){
+    public: void process(){
 }
 
 
-    public nextFrame(){
-this.totalFrames++;
+    public: void nextFrame(){
+this->totalFrames++;
     
 }
 
 
-    public nextRefresh(){
-this.totalRefreshes++;
+    public: void nextRefresh(){
+this->totalRefreshes++;
     
 }
 
 
-    private: const DEFAULT_SCALE_FACTOR: int32_t = ScaleFactorFactory.getInstance()!.DEFAULT_SCALE_FACTOR;
+    private: const int32_t DEFAULT_SCALE_FACTOR = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
 
-    public int16_t getRefreshRate(){
+    public: int16_t getRefreshRate(){
 
-    elapsed: int64_t = this.timeDelayHelper!.getElapsed(this.gameTickTimeDelayHelper!.startTime)!;;
+    int64_t elapsed = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
     
 
                         if(elapsed > 1)
                         
                                     {
                                     
-    time: int16_t = (this.totalRefreshes /(elapsed>>this.DEFAULT_SCALE_FACTOR));;
+    int16_t time = (this->totalRefreshes /(elapsed>>this->DEFAULT_SCALE_FACTOR));;
     
 
 
@@ -165,58 +164,58 @@ this.totalRefreshes++;
 }
 
 
-    TimeDelayHelper getTimeDelayHelper(){
+    protected: TimeDelayHelper getTimeDelayHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeDelayHelper;
+                        return this->timeDelayHelper;
     
 }
 
 
-    const NOT: string = "Not enough Time to Calculate";
+    protected: const std::string NOT = "Not enough Time to Calculate";
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const STRING_ARRAY: std::vector<string> = 
-                                                        [
-                                                            " Total Time: ",this.EMPTY_STRING," Total Frames: ",this.EMPTY_STRING," Frames/10 Sec: ",this.EMPTY_STRING," Total Paints: ",this.EMPTY_STRING," Paints/10 Sec: ",this.EMPTY_STRING
-                                                        ];
+    private: const std::vector<std::string> STRING_ARRAY = 
+                                                        {
+                                                            " Total Time: ",this->EMPTY_STRING," Total Frames: ",this->EMPTY_STRING," Frames/10 Sec: ",this->EMPTY_STRING," Total Paints: ",this->EMPTY_STRING," Paints/10 Sec: ",this->EMPTY_STRING
+                                                        };
 
-    private: const SPACE_CHAR: char = ' ';
+    private: const char SPACE_CHAR = ' ';
 
-    private: const PLUS_CHAR: char = '+';
+    private: const char PLUS_CHAR = '+';
 
-    private: const X_CHAR: char = 'X';
+    private: const char X_CHAR = 'X';
 
-    private: const CHAR_ARRAY: std::vector<std::vector<char>> = 
-                                                        [
+    private: const std::vector<std::vector<char>> CHAR_ARRAY = 
+                                                        {
                                                             ['F','r','a','m','e','s','/','1','0',' ','S','e','c',':'],['X','X'],['P','a','i','n','t','s','/','1','0',' ','S','e','c',':'],['X','X']
-                                                        ];
+                                                        };
 
-    private: const primitiveLongSingleton: PrimitiveLongSingleton = PrimitiveLongSingleton.getInstance()!;
+    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
-    public std::vector<std::vector<char>> to2DCharArray(){
+    public: std::vector<std::vector<char>> to2DCharArray(){
 
-    totalTime: int64_t = this.timeDelayHelper!.getElapsed(this.gameTickTimeDelayHelper!.startTime)!;;
+    int64_t totalTime = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
     
-totalTime= (totalTime>>this.DEFAULT_SCALE_FACTOR);
+totalTime= (totalTime>>this->DEFAULT_SCALE_FACTOR);
     
 
-                        if(totalTime > 0 && this.updateDelayHelper!.isTime(this.gameTickTimeDelayHelper!.startTime))
+                        if(totalTime > 0 && this->updateDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime))
                         
                                     {
                                     
-    framesPerSec: int32_t = static_cast<int32_t>((this.totalFrames /totalTime));;
+    int32_t framesPerSec = static_cast<int32_t>((this->totalFrames /totalTime));;
     
 
                         if(framesPerSec < 10)
                         
                                     {
-                                    this.CHAR_ARRAY[1]![0]= this.SPACE_CHAR;
+                                    this->CHAR_ARRAY[1]![0]= this->SPACE_CHAR;
     
-this.CHAR_ARRAY[1]![1]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[framesPerSec]!;
+this->CHAR_ARRAY[1]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec]!;
     
 
                                     }
@@ -226,36 +225,36 @@ this.CHAR_ARRAY[1]![1]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[framesPer
                         
                                     {
                                     
-    tens: int32_t = framesPerSec /10;;
+    int32_t tens = framesPerSec /10;;
     
 
-    removeTens: int32_t = tens *10;;
+    int32_t removeTens = tens *10;;
     
-this.CHAR_ARRAY[1]![0]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[tens]!;
+this->CHAR_ARRAY[1]![0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[tens]!;
     
-this.CHAR_ARRAY[1]![1]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[framesPerSec -removeTens]!;
+this->CHAR_ARRAY[1]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[framesPerSec -removeTens]!;
     
 
                                     }
                                 
                         else {
-                            this.CHAR_ARRAY[1]![0]= this.PLUS_CHAR;
+                            this->CHAR_ARRAY[1]![0]= this->PLUS_CHAR;
     
-this.CHAR_ARRAY[1]![1]= this.PLUS_CHAR;
+this->CHAR_ARRAY[1]![1]= this->PLUS_CHAR;
     
 
                         }
                             
 
-    refreshesPerSec: int32_t = static_cast<int32_t>((this.totalRefreshes /totalTime));;
+    int32_t refreshesPerSec = static_cast<int32_t>((this->totalRefreshes /totalTime));;
     
 
                         if(refreshesPerSec < 10)
                         
                                     {
-                                    this.CHAR_ARRAY[3]![0]= this.X_CHAR;
+                                    this->CHAR_ARRAY[3]![0]= this->X_CHAR;
     
-this.CHAR_ARRAY[3]![1]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[refreshesPerSec]!;
+this->CHAR_ARRAY[3]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec]!;
     
 
                                     }
@@ -265,22 +264,22 @@ this.CHAR_ARRAY[3]![1]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[refreshes
                         
                                     {
                                     
-    tens: int32_t = refreshesPerSec /10;;
+    int32_t tens = refreshesPerSec /10;;
     
 
-    removeTens: int32_t = tens *10;;
+    int32_t removeTens = tens *10;;
     
-this.CHAR_ARRAY[3]![0]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[refreshesPerSec /10]!;
+this->CHAR_ARRAY[3]![0]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec /10]!;
     
-this.CHAR_ARRAY[3]![1]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[refreshesPerSec -removeTens]!;
+this->CHAR_ARRAY[3]![1]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[refreshesPerSec -removeTens]!;
     
 
                                     }
                                 
                         else {
-                            this.CHAR_ARRAY[3]![0]= this.PLUS_CHAR;
+                            this->CHAR_ARRAY[3]![0]= this->PLUS_CHAR;
     
-this.CHAR_ARRAY[3]![1]= this.PLUS_CHAR;
+this->CHAR_ARRAY[3]![1]= this->PLUS_CHAR;
     
 
                         }
@@ -292,14 +291,14 @@ this.CHAR_ARRAY[3]![1]= this.PLUS_CHAR;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.CHAR_ARRAY;
+                        return this->CHAR_ARRAY;
     
 }
 
 
-    public std::vector<string> toStringArray(){
+    public: std::vector<std::string> toStringArray(){
 
-    totalTime: int64_t = this.timeDelayHelper!.getElapsed(this.gameTickTimeDelayHelper!.startTime)!;;
+    int64_t totalTime = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
     
 totalTime= (totalTime /10000);
     
@@ -307,32 +306,32 @@ totalTime= (totalTime /10000);
                         if(totalTime > 0)
                         
                                     {
-                                    this.STRING_ARRAY[1]= (totalTime).toString();
+                                    this->STRING_ARRAY[1]= std::to_string(totalTime);
     
-this.STRING_ARRAY[3]= (this.totalFrames).toString();
+this->STRING_ARRAY[3]= std::to_string(totalFrames);
     
-this.STRING_ARRAY[5]= (this.totalFrames /totalTime).toString();
+this->STRING_ARRAY[5]= std::to_string();
     
-this.STRING_ARRAY[7]= (this.totalRefreshes).toString();
+this->STRING_ARRAY[7]= std::to_string(totalRefreshes);
     
-this.STRING_ARRAY[9]= (this.totalRefreshes /totalTime).toString();
+this->STRING_ARRAY[9]= std::to_string();
     
 
                                     }
                                 
                         else {
                             
-    string: string = this.EMPTY_STRING;;
+    std::string string = this->EMPTY_STRING;;
     
-this.STRING_ARRAY[1]= string;
+this->STRING_ARRAY[1]= string;
     
-this.STRING_ARRAY[3]= string;
+this->STRING_ARRAY[3]= string;
     
-this.STRING_ARRAY[5]= string;
+this->STRING_ARRAY[5]= string;
     
-this.STRING_ARRAY[7]= string;
+this->STRING_ARRAY[7]= string;
     
-this.STRING_ARRAY[9]= string;
+this->STRING_ARRAY[9]= string;
     
 
                         }
@@ -341,40 +340,40 @@ this.STRING_ARRAY[9]= string;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.STRING_ARRAY;
+                        return this->STRING_ARRAY;
     
 }
 
 
-    public string toStringAt(int64_t totalTime){
+    public: std::string toStringAt(int64_t totalTime){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.STRING_ARRAY[0]!);
+stringBuffer.append(this->STRING_ARRAY[0]!);
     
-stringBuffer!.appendlong(totalTime);
+stringBuffer.appendlong(totalTime);
     
-stringBuffer!.append(this.STRING_ARRAY[2]!);
+stringBuffer.append(this->STRING_ARRAY[2]!);
     
-stringBuffer!.appendlong(this.totalFrames);
+stringBuffer.appendlong(this->totalFrames);
     
-stringBuffer!.append(this.STRING_ARRAY[4]!);
+stringBuffer.append(this->STRING_ARRAY[4]!);
     
-stringBuffer!.appendlong(this.totalFrames /totalTime);
+stringBuffer.appendlong(this->totalFrames /totalTime);
     
 
-                        if(this.totalRefreshes > 0)
+                        if(this->totalRefreshes > 0)
                         
                                     {
-                                    stringBuffer!.append(this.STRING_ARRAY[6]!);
+                                    stringBuffer.append(this->STRING_ARRAY[6]!);
     
-stringBuffer!.appendlong(this.totalRefreshes);
+stringBuffer.appendlong(this->totalRefreshes);
     
-stringBuffer!.append(this.STRING_ARRAY[8]!);
+stringBuffer.append(this->STRING_ARRAY[8]!);
     
-stringBuffer!.appendlong(this.totalRefreshes /totalTime);
+stringBuffer.appendlong(this->totalRefreshes /totalTime);
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
 
                                     }
@@ -383,14 +382,14 @@ stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    totalTime: int64_t = this.timeDelayHelper!.getElapsed(this.gameTickTimeDelayHelper!.startTime)!;;
+    int64_t totalTime = this->timeDelayHelper.getElapsed(this->gameTickTimeDelayHelper.startTime);;
     
 totalTime= (totalTime /1000);
     
@@ -402,7 +401,7 @@ totalTime= (totalTime /1000);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.toStringAt(totalTime);;
+                        return this->toStringAt(totalTime);;
     
 
                                     }
@@ -412,7 +411,7 @@ totalTime= (totalTime /1000);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NOT;
+                        return this->NOT;
     
 
                         }

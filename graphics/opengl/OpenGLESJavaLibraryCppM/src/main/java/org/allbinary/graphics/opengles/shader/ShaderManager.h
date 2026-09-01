@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERMANAGER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -54,27 +56,26 @@
 class ShaderManager
             : public Object
          {
-        
 
-    private: static const instance: ShaderManager = new ShaderManager( -1,  -1);
+    private: static ShaderManager instance() { return ShaderManager(); }
 
-    public static ShaderManager getInstance();
+    public: static ShaderManager getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const LOAD_SHADER: string = "loadShader";
+    protected: const std::string LOAD_SHADER = "loadShader";
 
-    const __VERSION__: string = "__VERSION__";
+    protected: const std::string __VERSION__ = "__VERSION__";
 
-    public const GL_VERTEX_SHADER: int32_t;
+    public: int32_t GL_VERTEX_SHADER;
 
-    public const GL_FRAGMENT_SHADER: int32_t;
+    public: int32_t GL_FRAGMENT_SHADER;
 
-public constructor (int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER);
+public: ShaderManager(int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER);
 
-    public int32_t load(GL10 gl, string resource, std::vector<string> shaderAsStringArray, int32_t shaderType);
+    public: int32_t load(GL10 gl, std::string resource, std::vector<std::string> shaderAsStringArray, int32_t shaderType);
 
-    public int32_t loadShader(GL10 gl, string resource, BasicArrayList stringList, int32_t shaderType);
+    public: int32_t loadShader(GL10 gl, std::string resource, BasicArrayList stringList, int32_t shaderType);
 
 };
 

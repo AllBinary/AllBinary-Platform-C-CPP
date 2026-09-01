@@ -38,17 +38,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UserEmailEventConfigurationInterface {
-        
 
-    string getName()
+    std::string getName()
 
-    setName(string name)
+    void setName(std::string name)
 
-    string getEventListenerClassPath()
+    std::string getEventListenerClassPath()
 
-    setEventListenerClassPath(string eventListenerClassPath)
+    void setEventListenerClassPath(std::string eventListenerClassPath)
 
-    string log()
+    std::string log()
 
 };
 

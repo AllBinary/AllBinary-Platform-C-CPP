@@ -56,17 +56,16 @@
 class PathFindingNodeCostInfoFactoryBase
             : public Object
         : public PathFindingNodeCostInfoFactoryBaseInterface {
-        
 
-    public static const NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE: PathFindingNodeCostInfoFactoryBase = new PathFindingNodeCostInfoFactoryBase();
-
-                //@Throws(Exception.constructor)
-            
-    public create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+    public: static const PathFindingNodeCostInfoFactoryBase NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE = PathFindingNodeCostInfoFactoryBase();
 
                 //@Throws(Exception.constructor)
             
-    public int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition);
+    public: void create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+
+                //@Throws(Exception.constructor)
+            
+    public: int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition);
 
 };
 

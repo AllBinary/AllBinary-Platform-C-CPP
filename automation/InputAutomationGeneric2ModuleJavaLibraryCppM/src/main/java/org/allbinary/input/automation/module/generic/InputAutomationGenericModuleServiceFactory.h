@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_INPUTAUTOMATIONGENERICMODULESERVICEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
@@ -53,15 +55,14 @@
         #include "GenericModuleFactory.h"
 
 class InputAutomationGenericModuleServiceFactory: public InputAutomationModuleServiceFactory {
-        
 
-    private: static inputAutomationGenericModuleServiceFactory: InputAutomationGenericModuleServiceFactory = new InputAutomationGenericModuleServiceFactory();
+    private: static InputAutomationGenericModuleServiceFactory inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory();
 
-    public static InputAutomationGenericModuleServiceFactory getInstance();
+    public: static InputAutomationGenericModuleServiceFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: InputAutomationGenericModuleServiceFactory();
 
 };
 

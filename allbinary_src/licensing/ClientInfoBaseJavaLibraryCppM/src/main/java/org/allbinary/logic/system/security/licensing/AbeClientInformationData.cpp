@@ -54,57 +54,54 @@
 class AbeClientInformationData
             : public Object
          {
-        
 
-    private: static const instance: AbeClientInformationData = new AbeClientInformationData();
+    private: static AbeClientInformationData instance() { return AbeClientInformationData(); }
 
-    public static AbeClientInformationData getInstance(){
+    public: static AbeClientInformationData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeClientInformationData.instance;
+                        return AbeClientInformationData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AbeClientInformationData(){
+}
 
 
-    public const KEY: string = "KEY";
+    public: const std::string KEY = "KEY";
 
-    public const NAME: string = "NAME";
+    public: const std::string NAME = "NAME";
 
-    public const VERSION: string = "VERSION";
+    public: const std::string VERSION = "VERSION";
 
-    public const SPECIALNAME: string = "SPECIALNAME";
+    public: const std::string SPECIALNAME = "SPECIALNAME";
 
-    public const LICENSEID: string = "LICENSEID";
+    public: const std::string LICENSEID = "LICENSEID";
 
-    public const LICENSE_TYPE: string = "LICENSETYPE";
+    public: const std::string LICENSE_TYPE = "LICENSETYPE";
 
-    public const PREVIOUSLICENSEID: string = "PREVIOUSLICENSEID";
+    public: const std::string PREVIOUSLICENSEID = "PREVIOUSLICENSEID";
 
-    public const OSNAME: string = "OSNAME";
+    public: const std::string OSNAME = "OSNAME";
 
-    public const OSARCH: string = "OSARCH";
+    public: const std::string OSARCH = "OSARCH";
 
-    public const OSVERSION: string = "OSVERSION";
+    public: const std::string OSVERSION = "OSVERSION";
 
-    public const OS: string = "OS";
+    public: const std::string OS = "OS";
 
-    public const HARDWARE: string = "HARDWARE";
+    public: const std::string HARDWARE = "HARDWARE";
 
-    public const LICENSESERVERS: string = "LICENSESERVERS";
+    public: const std::string LICENSESERVERS = "LICENSESERVERS";
 
-    public const NEWLICENSE: string = "NEWLICENSE";
+    public: const std::string NEWLICENSE = "NEWLICENSE";
 
-    public const ISNEW: string = "ISNEW";
+    public: const std::string ISNEW = "ISNEW";
 
-    public const SPECIAL: string = "SPECIAL";
+    public: const std::string SPECIAL = "SPECIAL";
 
 };
 

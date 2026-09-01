@@ -51,33 +51,30 @@
 #include "GameFeatureEvent.h"
 
 class GameFeatureEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: GameFeatureEventHandler = new GameFeatureEventHandler();
+    private: static const GameFeatureEventHandler gameKeyEventHandler = GameFeatureEventHandler();
 
-    public static GameFeatureEventHandler getInstance(){
+    public: static GameFeatureEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureEventHandler.gameKeyEventHandler;
+                        return GameFeatureEventHandler::gameKeyEventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GameFeatureEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    gameFeatureListenerInterface: GameFeatureListenerInterface = (eventListenerInterface as GameFeatureListenerInterface);;
+    GameFeatureListenerInterface gameFeatureListenerInterface = (eventListenerInterface as GameFeatureListenerInterface);;
     
-gameFeatureListenerInterface!.onGameFeatureChange(eventObject as GameFeatureEvent);
+gameFeatureListenerInterface.onGameFeatureChange(eventObject as GameFeatureEvent);
     
 }
 

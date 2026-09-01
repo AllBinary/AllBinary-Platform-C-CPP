@@ -53,67 +53,66 @@
         #include "AllBinaryJ2SEImageRotationAnimation.h"
 
 class AllBinaryAdjustedJ2SEImageRotationAnimation: public AllBinaryJ2SEImageRotationAnimation {
-        
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
+public: AllBinaryAdjustedJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
             super(originalImage, image, angleInfo, totalAngle, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init(dx, dy);
+this->init(dx, dy);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t dx, int32_t dy){
-this.dx= dx;
+    public: void init(int32_t dx, int32_t dy){
+this->dx= dx;
     
-this.dy= dy;
-    
-}
-
-
-    public setDx(int32_t dx){
-this.dx= dx;
+this->dy= dy;
     
 }
 
 
-    public int32_t getDx(){
+    public: void setDx(int32_t dx){
+this->dx= dx;
+    
+}
+
+
+    public: int32_t getDx(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dx;
+                        return this->dx;
     
 }
 
 
-    public setDy(int32_t dy){
-this.dy= dy;
+    public: void setDy(int32_t dy){
+this->dy= dy;
     
 }
 
 
-    public int32_t getDy(){
+    public: int32_t getDy(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dy;
+                        return this->dy;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this.dx, y +this.dy);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 

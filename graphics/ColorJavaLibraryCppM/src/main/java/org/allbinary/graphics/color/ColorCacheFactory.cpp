@@ -63,9 +63,8 @@
 class ColorCacheFactory
             : public Object
          {
-        
 
-    private: static cacheInterface: AutomaticCacheInterface = 
+    private: static AutomaticCacheInterface cacheInterface = 
                 null
             ;
 
@@ -73,27 +72,27 @@ class ColorCacheFactory
                 static int32_t init() { 
                     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    STATIC_BLOCK: string = "Static Block";;
+    std::string STATIC_BLOCK = "Static Block";;
     
 
         try {
-            logUtil!.putF(commonStrings!.START, ColorCacheFactory.constructor, STATIC_BLOCK);
+            logUtil.putF(commonStrings.START, ColorCacheFactory.constructor, STATIC_BLOCK);
     
-ColorCacheFactory.cacheInterface= AutomaticCacheInterfaceFactory.getInstance(new ColorCacheableFactory(), CacheTypeFactory.getInstance()!.CACHE, CachePolicyFactory.getInstance()!.THIRTY_MINUTES_TEN_THOUSAND_MAX);
+ColorCacheFactory::cacheInterface= AutomaticCacheInterfaceFactory::getInstance(ColorCacheableFactory(), CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX);
     
-logUtil!.putF(commonStrings!.END, ColorCacheFactory.constructor, STATIC_BLOCK);
+logUtil.putF(commonStrings.END, ColorCacheFactory.constructor, STATIC_BLOCK);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, ColorCacheFactory.constructor, STATIC_BLOCK, e);
+logUtil.put(commonStrings.EXCEPTION, ColorCacheFactory.constructor, STATIC_BLOCK, e);
     
 }
 
@@ -102,20 +101,18 @@ logUtil!.put(commonStrings!.EXCEPTION, ColorCacheFactory.constructor, STATIC_BLO
                     return 0;
                 }
             
-    public static AutomaticCacheInterface getInstance(){
+    public: static AutomaticCacheInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorCacheFactory.cacheInterface;
+                        return ColorCacheFactory::cacheInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ColorCacheFactory(){
+}
 
 
 };

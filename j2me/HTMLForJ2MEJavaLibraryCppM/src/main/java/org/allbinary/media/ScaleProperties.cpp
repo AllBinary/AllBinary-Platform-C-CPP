@@ -57,26 +57,25 @@
 class ScaleProperties
             : public Object
          {
-        
 
-    public static const instance: ScaleProperties = new ScaleProperties();
+    private: static ScaleProperties instance() { return ScaleProperties(); }
 
-    public scaleX: float= 0.0;
+    public: float scaleX= 0.0;
 
-    public scaleY: float= 0.0;
+    public: float scaleY= 0.0;
 
-    public scaleWidth: int32_t= 0;
+    public: int32_t scaleWidth= 0;
 
-    public scaleHeight: int32_t= 0;
+    public: int32_t scaleHeight= 0;
 
-    public shouldScale: bool= false;
+    public: bool shouldScale= false;
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(CommonLabels.getInstance()!.COLON_SEP)!.appendboolean(this.shouldScale)!.append("scaleX: ")!.appendfloat(this.scaleX)!.append("scaleY: ")!.appendfloat(this.scaleY)!.append("scaleWidth: ")!.appendint(this.scaleWidth)!.append("scaleHeight: ")!.appendint(this.scaleHeight)!.toString();;
+                        return StringMaker().append(CommonLabels::getInstance().COLON_SEP).appendboolean(this->shouldScale).append("scaleX: ").appendfloat(this->scaleX).append("scaleY: ").appendfloat(this->scaleY).append("scaleWidth: ").appendint(this->scaleWidth).append("scaleHeight: ").appendint(this->scaleHeight).toString();;
     
 }
 

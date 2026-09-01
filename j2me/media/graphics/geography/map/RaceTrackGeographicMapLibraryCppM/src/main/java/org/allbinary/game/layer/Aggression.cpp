@@ -47,70 +47,67 @@
 class Aggression
             : public Object
          {
-        
 
-    private: ram: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer ram = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: projectile: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer projectile = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: drops: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer drops = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-public constructor (Integer ram, Integer projectile, Integer drops){
-
-            super();
-        this.setRam(ram);
+public: Aggression(Integer ram, Integer projectile, Integer drops){
+this->setRam(ram);
     
-this.setProjectile(projectile);
+this->setProjectile(projectile);
     
-this.setDrops(drops);
+this->setDrops(drops);
     
 }
 
 
-    public Integer getRam(){
+    public: Integer getRam(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ram;
+                        return this->ram;
     
 }
 
 
-    public setRam(Integer ram){
-this.ram= ram;
+    public: void setRam(Integer ram){
+this->ram= ram;
     
 }
 
 
-    public Integer getProjectile(){
+    public: Integer getProjectile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.projectile;
+                        return this->projectile;
     
 }
 
 
-    public setProjectile(Integer projectile){
-this.projectile= projectile;
+    public: void setProjectile(Integer projectile){
+this->projectile= projectile;
     
 }
 
 
-    public Integer getDrops(){
+    public: Integer getDrops(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.drops;
+                        return this->drops;
     
 }
 
 
-    public setDrops(Integer drops){
-this.drops= drops;
+    public: void setDrops(Integer drops){
+this->drops= drops;
     
 }
 

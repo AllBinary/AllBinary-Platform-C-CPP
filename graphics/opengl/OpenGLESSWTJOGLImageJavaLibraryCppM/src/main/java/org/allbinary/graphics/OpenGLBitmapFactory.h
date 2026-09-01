@@ -44,37 +44,35 @@
 #include "OpenGLBitmap.h"
 
 class OpenGLBitmapFactory: public PlatformBitmapBaseFactory {
-        
 
-    private: static const instance: OpenGLBitmapFactory = new OpenGLBitmapFactory();
+    private: static OpenGLBitmapFactory instance() { return OpenGLBitmapFactory(); }
 
-    public static OpenGLBitmapFactory getInstance();
+    public: static OpenGLBitmapFactory getInstance();
 
 //inner= member=true isStatic=
 class Config
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    public const bitmapConfig: any;
+    public: Object* bitmapConfig;
 
-private constructor (any = {} bitmapConfig);
+private: Config(Object* bitmapConfig);
 
 };
 
             
-    public const ARGB_8888 = new this.Config(
+    public: const ARGB_8888 = Config(
                             nullptr);
 
-    public OpenGLBitmap createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory.Config config);
+    public: OpenGLBitmap createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config config);
 
                 //@Throws(IOException.constructor)
             
-    public OpenGLBitmap decodeStream(InputStream inputStream);
+    public: OpenGLBitmap decodeStream(InputStream inputStream);
 
-    public PlatformBitmapBase createBitmap(Image image);
+    public: PlatformBitmapBase createBitmap(Image image);
 
 };
 

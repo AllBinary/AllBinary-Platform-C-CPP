@@ -103,29 +103,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DownloadFileServlet: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const DOWNLOAD: string = "download";
+    private: const std::string DOWNLOAD = "download";
 
-    private: const DEFAULT_BUFFER_SIZE: int32_t = 16384;
-
-                //@Throws(ServletException.constructor, IOException.constructor)
-            
-    processRequest(HttpServletRequest request, HttpServletResponse response);
+    private: const int32_t DEFAULT_BUFFER_SIZE = 16384;
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response);
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response);
 
-    public string getServletInfo();
+                //@Throws(ServletException.constructor, IOException.constructor)
+            
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response);
+
+    public: std::string getServletInfo();
 
 };
 

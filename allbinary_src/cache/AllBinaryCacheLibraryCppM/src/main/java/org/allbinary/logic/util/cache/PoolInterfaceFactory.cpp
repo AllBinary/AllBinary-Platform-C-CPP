@@ -48,23 +48,20 @@
 class PoolInterfaceFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static PoolInterface getInstance(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface, PoolType poolType, CachePolicy cachePolicy){
+    public: static PoolInterface getInstance(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface, PoolType poolType, CachePolicy cachePolicy){
 
 
 
-                            throw new Exception("No Such PoolType: " +poolType!.toString());
+                            throw Exception("No Such PoolType: " +poolType.toString());
                     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PoolInterfaceFactory(){
+}
 
 
 };

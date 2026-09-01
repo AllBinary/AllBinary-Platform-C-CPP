@@ -51,15 +51,14 @@
 class LockableFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: LockableFeatureFactory = new LockableFeatureFactory();
+    private: static LockableFeatureFactory instance() { return LockableFeatureFactory(); }
 
-    public static LockableFeatureFactory getInstance();
+    public: static LockableFeatureFactory getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

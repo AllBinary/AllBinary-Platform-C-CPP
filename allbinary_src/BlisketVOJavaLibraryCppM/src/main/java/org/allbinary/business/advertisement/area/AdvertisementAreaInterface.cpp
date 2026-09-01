@@ -39,27 +39,26 @@
         #include "AdvertisementAreaConstraintsInterface.h"
 
 class AdvertisementAreaInterface {
-        
 
-    string getName()
+    std::string getName()
 
-    string getStoreName()
+    std::string getStoreName()
 
-    string getDescription()
+    std::string getDescription()
 
     AdvertisementAreaConstraintsInterface getConstraints()
 
-    string getCampaign()
+    std::string getCampaign()
 
-    setName(string name)
+    void setName(std::string name)
 
-    setStoreName(string storeName)
+    void setStoreName(std::string storeName)
 
-    setDescription(string description)
+    void setDescription(std::string description)
 
-    setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface)
+    void setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface)
 
-    setCampaign(string campaign)
+    void setCampaign(std::string campaign)
 
 };
 

@@ -45,7 +45,6 @@
 class VectorExplosionType
             : public Object
          {
-        
 
 };
 

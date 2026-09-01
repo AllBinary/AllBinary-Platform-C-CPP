@@ -81,23 +81,22 @@
 #include "InventoryItemViewParentTagHelper.h"
 
 class InventoryRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const itemInterface: ItemInterface;
+    private: ItemInterface itemInterface;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: InventoryRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string update();
+    public: std::string update();
 
-    public ItemInterface getItemInterface();
+    public: ItemInterface getItemInterface();
 
 };
 

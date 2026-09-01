@@ -64,45 +64,42 @@
 class LicenseRegistrationUtil
             : public Object
          {
-        
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static process(AbeClientInformationInterface abeClientInformation, string registrationId){
+    public: static void process(AbeClientInformationInterface abeClientInformation, std::string registrationId){
 
         try {
             
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.put(CommonLabels.getInstance()!.START_LABEL +"License Registration", "LicenseRegistrationUtil", commonStrings!.PROCESS);
+PreLogUtil::put(CommonLabels::getInstance().START_LABEL +"License Registration", "LicenseRegistrationUtil", commonStrings.PROCESS);
     
-RegistrationConfiguration.getInstance()!.setRegistrationCode(registrationId);
+RegistrationConfiguration::getInstance().setRegistrationCode(registrationId);
     
-RegistrationConfiguration.getInstance()!.write();
+RegistrationConfiguration::getInstance().write();
     
 
-    hashtable: Hashtable<any, any> = abeClientInformation!.toHashtable()!;;
+    Hashtable<any, any> hashtable = abeClientInformation.toHashtable();;
     
-hashtable.put(RegistrationConfiguration.getInstance()!.NAME, registrationId);
+hashtable.put(RegistrationConfiguration::getInstance().NAME, registrationId);
     
-hashtable.put("message", SpecialMessageUtil.getInstance()!.get());
+hashtable.put("message", SpecialMessageUtil::getInstance().get());
     
-new XmlRpcRemoteLicenseRegistrationClient(abeClientInformation).get(hashtable);
+XmlRpcRemoteLicenseRegistrationClient(abeClientInformation).get(hashtable);
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("License Registration Exception", "LicenseRegistrationUtil", "License Registration", e);
+PreLogUtil::putOE("License Registration Exception", "LicenseRegistrationUtil", "License Registration", e);
     
 }
 
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: LicenseRegistrationUtil(){
+}
 
 
 };

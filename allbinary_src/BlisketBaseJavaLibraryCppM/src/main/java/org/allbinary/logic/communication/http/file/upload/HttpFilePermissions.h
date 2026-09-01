@@ -66,21 +66,20 @@
 class HttpFilePermissions
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const file: AbFile;
+    private: AbFile file;
 
-    private: const userRoles: Vector = new Vector();
+    private: const Vector userRoles = Vector();
 
-public constructor (AbPath fullPath);
+public: HttpFilePermissions(AbPath fullPath);
 
-    public bool isFile();
+    public: bool isFile();
 
-    public Vector getUserRoles();
+    public: Vector getUserRoles();
 
 };
 

@@ -34,11 +34,10 @@
 class NullCommandListener
             : public Object
         : public CommandListener {
-        
 
-    public static const NULL_COMMAND_LISTENER: NullCommandListener = new NullCommandListener();
+    public: static const NullCommandListener NULL_COMMAND_LISTENER = NullCommandListener();
 
-    public commandAction(Command c, Displayable d);
+    public: void commandAction(Command c, Displayable d);
 
 };
 

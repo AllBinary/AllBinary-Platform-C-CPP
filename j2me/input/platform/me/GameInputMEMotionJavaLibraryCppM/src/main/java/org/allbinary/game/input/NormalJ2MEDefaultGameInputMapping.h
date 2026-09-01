@@ -51,9 +51,8 @@
         #include "GameKeyFactory.h"
 
 class NormalJ2MEDefaultGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor ();
+public: NormalJ2MEDefaultGameInputMapping();
 
 };
 

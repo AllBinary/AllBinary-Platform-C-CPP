@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -81,338 +83,337 @@
 class NullPathFindingLayer
             : public Object
         : public PathFindingLayerInterface {
-        
 
-    public static const NULL_PATH_FINDING_LAYER: NullPathFindingLayer = new NullPathFindingLayer();
+    public: static const NullPathFindingLayer NULL_PATH_FINDING_LAYER = NullPathFindingLayer();
 
-    public string getName(){
-
+    public: std::string getName(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getEndGeographicMapCellPositionList(){
+    public: BasicArrayList getEndGeographicMapCellPositionList(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool shouldHandleStartSameAsEnd(){
+    public: bool shouldHandleStartSameAsEnd(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public GeographicMapCellPositionAreaBase getGeographicMapCellPositionArea(){
+    public: GeographicMapCellPositionAreaBase getGeographicMapCellPositionArea(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public SelectionHudPaintable getHudPaintable(){
+    public: SelectionHudPaintable getHudPaintable(){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public handleCost(PathFindingLayerInterface ownerLayer){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public PathFindingLayerInterface getParentLayer(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public RTSLayer2LogHelper getRTSLayer2LogHelper(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setTarget(PathFindingLayerInterface targetGameLayer){
+    public: void handleCost(PathFindingLayerInterface ownerLayer){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+    public: PathFindingLayerInterface getParentLayer(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: RTSLayer2LogHelper getRTSLayer2LogHelper(){
+
+
+
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList){
+    public: void setTarget(PathFindingLayerInterface targetGameLayer){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setClosestGeographicMapCellHistory(BasicArrayList pathsList){
+    public: void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public teleportTo(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public setLoad(int32_t resource){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getSurroundingGeographicMapCellPositionList(){
+    public: void setClosestGeographicMapCellHistory(BasicArrayList pathsList){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isSelected(){
+    public: void teleportTo(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public bool shouldAddWaypointFromBuilding(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public bool isShowMoreCaptionStates(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public trackTo(string reason){
+    public: void setLoad(int32_t resource){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public trackToDXY(int32_t dx, int32_t dy){
+    public: BasicArrayList getSurroundingGeographicMapCellPositionList(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+    public: bool isSelected(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: bool shouldAddWaypointFromBuilding(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: bool isShowMoreCaptionStates(){
+
+
+
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition){
+    public: void trackTo(std::string reason){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public TrackingEvent getTrackingEvent(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public allStop(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public bool isWaypointListEmptyOrOnlyTargets(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getCurrentGeographicMapCellPosition(){
+    public: void trackToDXY(int32_t dx, int32_t dy){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getTopLeftGeographicMapCellPosition(){
+    public: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public CaptionAnimationHelperBase getCaptionAnimationHelper(){
+    public: TrackingEvent getTrackingEvent(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public WaypointBehaviorBase getWaypointBehavior(){
+    public: void allStop(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public WaypointLogHelper getWaypointLogHelper(){
+    public: bool isWaypointListEmptyOrOnlyTargets(){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-    public Waypoint2LogHelper getWaypoint2LogHelper(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public WaypointRunnableLogHelper getWaypointRunnableLogHelper(){
-
-
-
-                            throw new RuntimeException();
-                    
-}
-
-
-    public std::vector<Group> getGroupInterface(){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isDestroyed(){
+    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getSourceId(){
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellPosition getTopLeftGeographicMapCellPosition(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+    public: CaptionAnimationHelperBase getCaptionAnimationHelper(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: WaypointBehaviorBase getWaypointBehavior(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: WaypointLogHelper getWaypointLogHelper(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: Waypoint2LogHelper getWaypoint2LogHelper(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: WaypointRunnableLogHelper getWaypointRunnableLogHelper(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: std::vector<Group> getGroupInterface(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isDestroyed(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: int32_t getSourceId(){
+
+
+
+                            throw RuntimeException();
                     
 }
 

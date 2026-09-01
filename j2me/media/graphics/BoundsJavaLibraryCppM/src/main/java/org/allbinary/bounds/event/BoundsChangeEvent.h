@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BoundsChangeEvent: public AllBinaryEventObject {
-        
 
-public constructor (Rectangle rectangle);
+public: BoundsChangeEvent(Rectangle rectangle);
 
-    public Rectangle getRectangle();
+    public: Rectangle getRectangle();
 
 };
 

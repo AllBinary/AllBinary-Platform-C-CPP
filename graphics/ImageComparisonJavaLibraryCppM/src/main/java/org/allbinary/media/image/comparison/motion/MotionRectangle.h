@@ -54,23 +54,22 @@
 class MotionRectangle
             : public Object
         : public Cloneable {
-        
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-    private: pixelDeltaVector: Vector;
+    private: Vector pixelDeltaVector;
 
-public constructor (Rectangle rectangle);
+public: MotionRectangle(Rectangle rectangle);
 
-    public Rectangle getRectangle();
+    public: Rectangle getRectangle();
 
-    public setRectangle(Rectangle rectangle);
+    public: void setRectangle(Rectangle rectangle);
 
-    public Vector getPixelDeltaVector();
+    public: Vector getPixelDeltaVector();
 
-    public setPixelDeltaVector(Vector pixelDeltaVector);
+    public: void setPixelDeltaVector(Vector pixelDeltaVector);
 
-    public any clone();
+    public: Object* clone();
 
 };
 

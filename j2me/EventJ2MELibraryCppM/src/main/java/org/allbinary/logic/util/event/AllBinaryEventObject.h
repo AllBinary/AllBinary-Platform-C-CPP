@@ -60,17 +60,16 @@
 class AllBinaryEventObject
             : public Object
          {
-        
 
-    public static const NULL_EVENT: AllBinaryEventObject = new AllBinaryEventObject(NullUtil.getInstance()!.NULL_OBJECT);
+    public: static const AllBinaryEventObject NULL_EVENT = AllBinaryEventObject(NullUtil::getInstance().NULL_OBJECT);
 
-    private: source: any;
+    private: Object* source;
 
-public constructor (any = {} anyType);
+public: AllBinaryEventObject(Object* anyType);
 
-    public any getSource();
+    public: Object* getSource();
 
-    setSource(any = {} source);
+    protected: void setSource(Object* source);
 
 };
 

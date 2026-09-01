@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/io/FilenameFilter.h>
 
       
@@ -47,7 +49,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileInterface {
-        
 
     bool canRead()
 
@@ -59,21 +60,21 @@ class AbFileInterface {
 
                 //@Throws(IOException.constructor)
             
-    bool delete()
+    bool delete_()
 
-    deleteOnExit()
+    void deleteOnExit()
 
     bool exists()
 
-    string getAbsolutePath()
+    std::string getAbsolutePath()
 
                 //@Throws(IOException.constructor)
             
-    string getCanonicalPath()
+    std::string getCanonicalPath()
 
-    string getParent()
+    std::string getParent()
 
-    string getPath()
+    std::string getPath()
 
     bool isAbsolute()
 
@@ -87,9 +88,9 @@ class AbFileInterface {
 
     int64_t length()
 
-    std::vector<string> list()
+    std::vector<std::string> list()
 
-    std::vector<string> listWithFilter(FilenameFilter filter)
+    std::vector<std::string> listWithFilter(FilenameFilter filter)
 
     bool mkdir()
 
@@ -99,7 +100,7 @@ class AbFileInterface {
 
     bool setReadOnly()
 
-    string toString()
+    std::string toString()
 
     URI toURI()
 

@@ -46,13 +46,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInputMotionInfoAPI5: public GameInputMotionInfo {
-        
 
-    private: static const instance: GameInputMotionInfoAPI5 = new GameInputMotionInfoAPI5();
+    private: static GameInputMotionInfoAPI5 instance() { return GameInputMotionInfoAPI5(); }
 
-    public static GameInputMotionInfoAPI5 getInstance();
+    public: static GameInputMotionInfoAPI5 getInstance();
 
-private constructor ();
+private: GameInputMotionInfoAPI5();
 
 };
 

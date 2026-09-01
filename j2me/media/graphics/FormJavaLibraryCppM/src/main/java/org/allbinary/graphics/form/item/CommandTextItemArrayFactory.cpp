@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -83,37 +85,34 @@
 class CommandTextItemArrayFactory
             : public Object
          {
-        
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: const visitorInterface: Visitor;
+    private: Visitor visitorInterface;
 
-public constructor (Visitor visitorInterface){
-
-            super();
-        this.visitorInterface= visitorInterface;
+public: CommandTextItemArrayFactory(Visitor visitorInterface){
+this->visitorInterface= visitorInterface;
     
 }
 
 
-    public std::vector<ABCustomItem> getInstance(Vector<any> vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+    public: std::vector<ABCustomItem> getInstance(Vector<any> vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
-this.list.clear();
-    
-
-    textItem: CommandTextItem;;
+this->list.clear();
     
 
-    priorityLimit: int32_t = 7;;
+    CommandTextItem textItem;;
     
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    int32_t priorityLimit = 7;;
     
 
-    isLargeEnoughDisplayForBigMenu: bool = (displayInfo!.isPortrait() && displayInfo!.getLastHeight() >= ScreenInfo.getInstance()!.MEDIUM_WIDTH) || (!displayInfo!.isPortrait() && displayInfo!.getLastWidth() >= ScreenInfo.getInstance()!.MEDIUM_WIDTH);;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    
+
+    bool isLargeEnoughDisplayForBigMenu = (displayInfo.isPortrait() && displayInfo.getLastHeight() >= ScreenInfo::getInstance().MEDIUM_WIDTH) || (!displayInfo.isPortrait() && displayInfo.getLastWidth() >= ScreenInfo::getInstance().MEDIUM_WIDTH);;
     
 
                         if(!isLargeEnoughDisplayForBigMenu && size > 3)
@@ -125,14 +124,14 @@ this.list.clear();
                                     }
                                 
 
-    command: Command;;
+    Command command;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 command= vector.elementAt(index) as Command;
     
@@ -141,15 +140,15 @@ command= vector.elementAt(index) as Command;
                         
                                     {
                                     
-    aBoolean: Boolean = this.visitorInterface!.visit(command) as Boolean;;
+    Boolean aBoolean = this->visitorInterface.visit(command) as Boolean;;
     
 
                         if(aBoolean.valueOf())
                         
                                     {
-                                    textItem= new CommandTextItem(command, ImageItem.LAYOUT_DEFAULT, StringUtil.getInstance()!.EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
+                                    textItem= CommandTextItem(command, ImageItem::LAYOUT_DEFAULT, StringUtil::getInstance().EMPTY_STRING, backgroundBasicColor, foregroundBasicColor);
     
-this.list.add(textItem);
+this->list.add(textItem);
     
 
                                     }
@@ -160,20 +159,19 @@ this.list.add(textItem);
 }
 
 
-    textItemArray: std::vector<ABCustomItem> = new Array(this.list.size());;
+    std::vector<ABCustomItem> textItemArray = new Array(this->list.size());;
     
 
-    size2: int32_t = textItemArray!.length
-                ;;
+    int32_t size2 = textItemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size2; index++)
+    int32_t index = 0;index < size2; index++)
         {
-textItemArray[index]= this.list.objectArray[index]! as ABCustomItem;
+textItemArray[index]= this->list.objectArray[index]! as ABCustomItem;
     
 }
 

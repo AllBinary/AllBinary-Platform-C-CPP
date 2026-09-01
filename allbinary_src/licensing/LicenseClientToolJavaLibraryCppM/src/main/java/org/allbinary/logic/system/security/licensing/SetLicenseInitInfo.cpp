@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -78,36 +80,33 @@
 class SetLicenseInitInfo
             : public Object
          {
-        
 
-    private: static stdinput: BufferedReader = new BufferedReader(new InputStreamReader(System.in));
+    private: static BufferedReader stdinput = BufferedReader(InputStreamReader(System.in));
 
                 //@Throws(Exception.constructor)
             
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
-    initInfo: SetLicenseInitInfo = new SetLicenseInitInfo(args);;
+    SetLicenseInitInfo initInfo = SetLicenseInitInfo(args);;
     
-initInfo!.createNewLicenseInitInfo(new BasicArrayListD());
+initInfo.createNewLicenseInitInfo(BasicArrayListD());
     
 }
 
 
-    private: vector: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList vector = BasicArrayListD();
 
-public constructor (std::vector<string> options){
-
-            super();
-        LicenseInitInfoUtil.getInstance()!.setFilePath(PrintLicenseInitInfo.PATH +PATH_GLOBALS.getInstance()!.INIT_PATH);
+public: SetLicenseInitInfo(std::vector<std::string> options){
+LicenseInitInfoUtil::getInstance().setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance().INIT_PATH);
     
 
 
 
 
                         for (
-    index: int32_t = 1;index < options.length; index++)
+    int32_t index = 1;index < options.size(); index++)
         {
-this.vector.add(options[index]!);
+this->vector.add(options[index]!);
     
 }
 
@@ -116,19 +115,19 @@ this.vector.add(options[index]!);
 
                 //@Throws(Exception.constructor)
             
-    public LicenseInitInfo getLicenseInitInfo(){
+    public: LicenseInitInfo getLicenseInitInfo(){
 
-    licenseInitInfoUtil: LicenseInitInfoUtil = LicenseInitInfoUtil.getInstance()!;;
+    LicenseInitInfoUtil licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
     
 
-                        if(FileFactory.getInstance()!.isFile(licenseInitInfoUtil!.INITFILENAME))
+                        if(FileFactory::getInstance().isFile(licenseInitInfoUtil.INITFILENAME))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return licenseInitInfoUtil!.read();;
+                        return licenseInitInfoUtil.read();;
     
 
                                     }
@@ -138,7 +137,7 @@ this.vector.add(options[index]!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LicenseInitInfo();
+                        return LicenseInitInfo();
     
 
                         }
@@ -146,52 +145,50 @@ this.vector.add(options[index]!);
 }
 
 
-    public createNewLicenseInitInfo(BasicArrayList licenceServerVector){
+    public: void createNewLicenseInitInfo(BasicArrayList licenceServerVector){
 
         try {
             
                         if(licenceServerVector == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("null Vector Passed - Just Make Empty if you want");
+                            throw Exception("null Vector Passed - Just Make Empty if you want");
                     
 
                                     }
                                 
 
-    licenseInitInfo: LicenseInitInfo = this.getLicenseInitInfo()!;;
+    LicenseInitInfo licenseInitInfo = this->getLicenseInitInfo();;
     
 console.log("License Serv Example: http://www.dartstatistics.com/LicServ/serverssl.php");
     
-licenseInitInfo!.clearServers();
+licenseInitInfo.clearServers();
     
 
-    file: File = new File(PrintLicenseInitInfo.PATH +"licenseservers.txt");;
+    File file = File(PrintLicenseInitInfo::PATH +"licenseservers.txt");;
     
 
-    reader: FileReader = new FileReader(file);;
+    FileReader reader = FileReader(file);;
     
 
-    lineNumberReader: LineNumberReader = new LineNumberReader(reader);;
+    LineNumberReader lineNumberReader = LineNumberReader(reader);;
     
 
         while(true)
         {
 
-    line: string = lineNumberReader!.readLine()!;;
+    std::string line = lineNumberReader.readLine();;
     
 
-                        if(line != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    licenseInitInfo!.addServer(line);
+                                    licenseInitInfo.addServer(line);
     
 
                                     }
@@ -205,9 +202,9 @@ licenseInitInfo!.clearServers();
                             
 }
 
-LicenseInitInfoUtil.getInstance()!.write(licenseInitInfo);
+LicenseInitInfoUtil::getInstance().write(licenseInitInfo);
     
-LicenseInitInfoUtil.getInstance()!.read();
+LicenseInitInfoUtil::getInstance().read();
     
 
                 //: 

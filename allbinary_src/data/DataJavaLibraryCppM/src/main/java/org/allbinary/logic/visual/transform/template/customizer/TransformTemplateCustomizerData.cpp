@@ -42,14 +42,11 @@
 class TransformTemplateCustomizerData
             : public Object
          {
-        
 
-    public static NAME: string = "TEMPLATE_CUSTOMIZER_NAME";
+    public: static std::string NAME = "TEMPLATE_CUSTOMIZER_NAME";
 
-public constructor (){
-
-            super();
-        }
+public: TransformTemplateCustomizerData(){
+}
 
 
 };

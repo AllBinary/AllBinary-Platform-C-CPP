@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_PROXY_INTERFACECASTPROXY_H
         #define ORG_ALLBINARY_LOGIC_JAVA_PROXY_INTERFACECASTPROXY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Throwable.h"
@@ -53,18 +55,17 @@
 
 class InterfaceCastProxy
             : public Object
-        : public java.lang.reflect.InvocationHandler {
-        
+        : public java::lang::reflect::InvocationHandler {
 
-    public static any newInstance(any = {} anyType);
+    public: static Object* newInstance(Object* anyType);
 
-    private: anyType: any;
+    private: Object* anyType;
 
-private constructor (any = {} anyType);
+private: InterfaceCastProxy(Object* anyType);
 
                 //@Throws(Throwable.constructor)
             
-    public any invoke(any = {} proxyObject, Method proxyMethod, std::vector<any> proxyArgs);
+    public: Object* invoke(Object* proxyObject, Method proxyMethod, std::vector<Object*> proxyArgs);
 
 };
 

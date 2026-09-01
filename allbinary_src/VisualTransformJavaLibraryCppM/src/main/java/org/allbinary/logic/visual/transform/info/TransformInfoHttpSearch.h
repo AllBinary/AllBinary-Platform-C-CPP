@@ -65,25 +65,24 @@
         #include "TransformInfoHttp.h"
 
 class TransformInfoHttpSearch: public TransformInfoHttp {
-        
 
-public constructor (SearchRequest searchRequest);
-
-                //@Throws(Exception.constructor)
-            
-    string getPath();
+public: TransformInfoHttpSearch(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getTemplateFilePath();
+    private: std::string getPath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath();
+    public: AbPath getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath();
+    public: AbPath getObjectConfigFilePath();
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getDataFilePath();
 
 };
 

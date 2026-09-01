@@ -51,33 +51,30 @@
 #include "DisplayChangeEvent.h"
 
 class DisplayChangeEventHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: DisplayChangeEventHandler = new DisplayChangeEventHandler();
+    private: static const DisplayChangeEventHandler SINGLETON = DisplayChangeEventHandler();
 
-    public static DisplayChangeEventHandler getInstance(){
+    public: static DisplayChangeEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplayChangeEventHandler.SINGLETON;
+                        return DisplayChangeEventHandler::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: DisplayChangeEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    displayChangeEventListener: DisplayChangeEventListener = (eventListenerInterface as DisplayChangeEventListener);;
+    DisplayChangeEventListener displayChangeEventListener = (eventListenerInterface as DisplayChangeEventListener);;
     
-displayChangeEventListener!.onDisplayChangeEvent(eventObject as DisplayChangeEvent);
+displayChangeEventListener.onDisplayChangeEvent(eventObject as DisplayChangeEvent);
     
 }
 

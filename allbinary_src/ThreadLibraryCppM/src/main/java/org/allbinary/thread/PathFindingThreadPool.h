@@ -45,21 +45,20 @@
 #include "PriorityRunnable.h"
 //This is mainly for network communications.
 class PathFindingThreadPool: public ThreadPool {
-        
 
-    private: static const instance: ThreadPool = new PathFindingThreadPool("PathFinding", 1, 1);
+    private: static const ThreadPool instance = PathFindingThreadPool("PathFinding", 1, 1);
 
-    public static ThreadPool getInstance();
+    public: static ThreadPool getInstance();
 
-public constructor (string poolName, int32_t numThreads, int32_t priority);
+public: PathFindingThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    public runTaskWithPriority(PriorityRunnable task);
+    public: void runTaskWithPriority(PriorityRunnable task);
 
-    public runTask(Runnable task);
+    public: void runTask(Runnable task);
 
-    startTask(Runnable task);
+    protected: void startTask(Runnable task);
 
-    completedTask(Runnable task);
+    protected: void completedTask(Runnable task);
 
 };
 

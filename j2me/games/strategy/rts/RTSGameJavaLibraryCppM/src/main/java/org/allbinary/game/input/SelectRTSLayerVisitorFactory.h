@@ -51,15 +51,14 @@
 class SelectRTSLayerVisitorFactory
             : public Object
         : public SelectRTSLayerVisitorFactoryInterface {
-        
 
-    private: static const instance: SelectRTSLayerVisitorFactory = new SelectRTSLayerVisitorFactory();
+    private: static SelectRTSLayerVisitorFactory instance() { return SelectRTSLayerVisitorFactory(); }
 
-    public static SelectRTSLayerVisitorFactory getInstance();
+    public: static SelectRTSLayerVisitorFactory getInstance();
 
-private constructor ();
+private: SelectRTSLayerVisitorFactory();
 
-    public Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
+    public: Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
 
 };
 

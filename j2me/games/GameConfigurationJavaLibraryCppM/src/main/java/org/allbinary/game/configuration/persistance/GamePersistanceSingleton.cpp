@@ -40,22 +40,21 @@
 #include "GamePersistanceStrings.h"
 
 class GamePersistanceSingleton: public KeyValuePersistance {
-        
 
-    private: static GAME_PERSISTANCE: GamePersistanceSingleton = new GamePersistanceSingleton();
+    private: static GamePersistanceSingleton GAME_PERSISTANCE = GamePersistanceSingleton();
 
-    public static GamePersistanceSingleton getInstance(){
+    public: static GamePersistanceSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GamePersistanceSingleton.GAME_PERSISTANCE;
+                        return GamePersistanceSingleton::GAME_PERSISTANCE;
     
 }
 
 
-private constructor (){
-            super(GamePersistanceStrings.getInstance()!.SAVED_GAME_RECORD_ID);
+private: GamePersistanceSingleton(){
+            super(GamePersistanceStrings::getInstance().SAVED_GAME_RECORD_ID);
                     
 
                             //For kotlin this is before the body of the constructor.

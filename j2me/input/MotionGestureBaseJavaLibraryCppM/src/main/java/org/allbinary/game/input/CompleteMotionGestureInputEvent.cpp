@@ -70,69 +70,68 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CompleteMotionGestureInputInterface.h"
 
-class CompleteMotionGestureInputEvent: public AllBinaryEventObject: public CompleteMotionGestureInputInterface {
-        
+class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public CompleteMotionGestureInputInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: motionGestureInput: MotionGestureInput = TouchMotionGestureFactory.getInstance()!.NO_MOTION;
+    private: MotionGestureInput motionGestureInput = TouchMotionGestureFactory::getInstance().NO_MOTION;
 
-public constructor (string name, MotionGestureInput motionGestureInput){
+public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput){
             super(motionGestureInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setName(name);
+this->setName(name);
     
 
         try {
-            this.setMotionGestureInput(motionGestureInput);
+            this->setMotionGestureInput(motionGestureInput);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "InputToGameKeyEventAction", e);
-    
-}
-
-}
-
-
-    setName(string name){
-this.name= name;
+this->logUtil.put(commonStrings.EXCEPTION, this, "InputToGameKeyEventAction", e);
     
 }
 
+}
 
-    public string getName(){
+
+    protected: void setName(std::string name){
+this->name= name;
+    
+}
+
+
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setMotionGestureInput(MotionGestureInput motionGestureInput){
-this.motionGestureInput= motionGestureInput;
+    public: void setMotionGestureInput(MotionGestureInput motionGestureInput){
+this->motionGestureInput= motionGestureInput;
     
 }
 
 
-    public MotionGestureInput getMotionGestureInput(){
+    public: MotionGestureInput getMotionGestureInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionGestureInput;
+                        return this->motionGestureInput;
     
 }
 

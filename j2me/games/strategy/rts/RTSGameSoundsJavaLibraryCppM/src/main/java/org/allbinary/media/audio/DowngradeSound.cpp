@@ -43,21 +43,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DowngradeSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new DowngradeSound();
+    private: static Sound soundInterface = DowngradeSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DowngradeSound.soundInterface;
+                        return DowngradeSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: DowngradeSound(){
             super("resource:/wav/downgrade.wav");
                     
 

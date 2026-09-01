@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/RuntimeException.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -66,42 +68,41 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NumberStringHud: public BasicHud: public PaintableInterface {
-        
+class NumberStringHud: public BasicHud, public PaintableInterface {
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-    private: const prependString: string;
+    private: std::string prependString;
 
-    private: const PREPEND_STRING: std::vector<char>;
+    private: std::vector<char> PREPEND_STRING;
 
-    private: value: int32_t;
+    private: int32_t value;
 
-    private: max: int32_t;
+    private: int32_t max;
 
-    private: offset: int32_t= 0;
+    private: int32_t offset= 0;
 
-    private: valueString: std::vector<char>;
+    private: std::vector<char> valueString;
 
-    private: valueTotalDigits: int32_t= 0;
+    private: int32_t valueTotalDigits= 0;
 
-public constructor (string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
+public: NumberStringHud(std::string prependString, int32_t max, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
             super(location, direction, bufferZone, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.prependString= prependString;
+this->prependString= prependString;
     
-this.PREPEND_STRING= prependString!.split('');
+this->PREPEND_STRING= prependString.split('');
     
-this.valueString= PrimitiveLongSingleton.getInstance()!.NUMBER_CHAR_ARRAYS[0]!;
+this->valueString= PrimitiveLongSingleton::getInstance().NUMBER_CHAR_ARRAYS[0]!;
     
-this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(max +1);
+this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(max +1);
     
-this.max= max;
+this->max= max;
     
-this.value= 0;
+this->value= 0;
     
 
                         if(direction == 0)
@@ -110,7 +111,7 @@ this.value= 0;
                                     
 
 
-                            throw new RuntimeException(BasicHudFactory.getInstance()!.DIRECTION_EXCEPTION);
+                            throw RuntimeException(BasicHudFactory::getInstance().DIRECTION_EXCEPTION);
                     
 
                                     }
@@ -118,90 +119,89 @@ this.value= 0;
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.offset= font.stringWidth(this.prependString) +MyFontProcessor.defaultCharWidth(font);
+this->offset= font.stringWidth(this->prependString) +MyFontProcessor::defaultCharWidth(font);
     
 super.updateMeasurement(graphics);
     
 }
 
 
-    public int32_t get(){
+    public: int32_t get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 
 
-    public add(int32_t value){
-this.set(this.value +value);
+    public: void add(int32_t value){
+this->set(this->value +value);
     
 }
 
 
-    public set(int32_t value){
-this.value= value;
+    public: void set(int32_t value){
+this->value= value;
     
 
-                        if(this.value > this.max)
+                        if(this->value > this->max)
                         
                                     {
-                                    this.value= 0;
+                                    this->value= 0;
     
 
                                     }
                                 
-this.valueString= this.primitiveLongUtil!.getCharArray(this.value);
+this->valueString= this->primitiveLongUtil.getCharArray(this->value);
     
-this.valueTotalDigits= this.primitiveLongUtil!.getCurrentTotalDigits();
-    
-}
-
-
-    public reduce(int32_t value){
-this.set(this.value -value);
+this->valueTotalDigits= this->primitiveLongUtil.getCurrentTotalDigits();
     
 }
 
 
-    public paint(Graphics graphics){
-super.paintDX(graphics, this.PREPEND_STRING, 0, this.PREPEND_STRING.length, this.valueString, 0, this.valueTotalDigits, this.offset);
+    public: void reduce(int32_t value){
+this->set(this->value -value);
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+super.paintDX(graphics, this->PREPEND_STRING, 0, this->PREPEND_STRING.size(), this->valueString, 0, this->valueTotalDigits, this->offset);
+    
+}
+
+
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->myFontProcessor.process(graphics);
     
 
-    charArray: std::vector<char> = this.PREPEND_STRING;;
+    std::vector<char> charArray = this->PREPEND_STRING;;
     
 
-    len: int32_t = this.PREPEND_STRING.length
-                ;;
+    int32_t len = this->PREPEND_STRING.size();;
     
 
-    charArray2: std::vector<char> = this.valueString;;
+    std::vector<char> charArray2 = this->valueString;;
     
 
-    len2: int32_t = this.valueTotalDigits;;
+    int32_t len2 = this->valueTotalDigits;;
     
-this.basicSetColorUtil!.setBasicColorP(graphics, this.getBasicColorP());
+this->basicSetColorUtil.setBasicColorP(graphics, this->getBasicColorP());
     
 graphics.drawChars(charArray, 0, len, x, y, 0);
     
-graphics.drawChars(charArray2, 0, len2, x -this.offset, y, 0);
+graphics.drawChars(charArray2, 0, len2, x -this->offset, y, 0);
     
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics graphics){
 }
 
 

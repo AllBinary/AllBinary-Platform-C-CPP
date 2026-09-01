@@ -43,34 +43,33 @@
 class OpenGLESGraphicsCompositeFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESGraphicsCompositeFactory = new OpenGLESGraphicsCompositeFactory();
+    private: static OpenGLESGraphicsCompositeFactory instance() { return OpenGLESGraphicsCompositeFactory(); }
 
-    public static OpenGLESGraphicsCompositeFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESGraphicsCompositeFactory.instance;
-    
-}
-
-
-    private: openGLESGraphicsFactory: OpenGLESGraphicsFactory = new OpenGLESGraphicsFactory();
-
-    public set(OpenGLESGraphicsFactory openGLESGraphicsFactory){
-this.openGLESGraphicsFactory= openGLESGraphicsFactory;
-    
-}
-
-
-    public OpenGLESGraphicsFactory get(){
+    public: static OpenGLESGraphicsCompositeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.openGLESGraphicsFactory;
+                        return OpenGLESGraphicsCompositeFactory::instance();
+    
+}
+
+
+    private: OpenGLESGraphicsFactory openGLESGraphicsFactory = OpenGLESGraphicsFactory();
+
+    public: void set(OpenGLESGraphicsFactory openGLESGraphicsFactory){
+this->openGLESGraphicsFactory= openGLESGraphicsFactory;
+    
+}
+
+
+    public: OpenGLESGraphicsFactory get(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->openGLESGraphicsFactory;
     
 }
 

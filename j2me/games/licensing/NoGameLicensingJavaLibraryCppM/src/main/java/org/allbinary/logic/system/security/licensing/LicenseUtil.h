@@ -48,21 +48,20 @@
 class LicenseUtil
             : public Object
          {
-        
 
-    private: static const instance: LicenseUtil = new LicenseUtil();
+    private: static LicenseUtil instance() { return LicenseUtil(); }
 
-    public static LicenseUtil getInstance();
+    public: static LicenseUtil getInstance();
 
-    public init();
+    public: void init();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public bool shouldWait(CommandListener commandListener);
+    public: bool shouldWait(CommandListener commandListener);
 
 };
 

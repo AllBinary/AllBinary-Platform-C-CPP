@@ -48,9 +48,8 @@
         #include "TableTag.h"
 
 class PermissionItemsTag: public TableTag {
-        
 
-public constructor ();
+public: PermissionItemsTag();
 
 };
 

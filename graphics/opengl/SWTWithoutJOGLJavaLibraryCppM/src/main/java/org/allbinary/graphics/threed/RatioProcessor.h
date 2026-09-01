@@ -45,9 +45,8 @@
 class RatioProcessor
             : public Object
          {
-        
 
-    public setCustom(int32_t width, int32_t height, float ratio);
+    public: void setCustom(int32_t width, int32_t height, float ratio);
 
 };
 

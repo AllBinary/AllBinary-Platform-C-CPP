@@ -61,21 +61,20 @@
 class GameTickTimeDelayHelper
             : public Object
          {
-        
 
-    public timeDelta: int64_t= 0;
+    public: int64_t timeDelta= 0;
 
-    public startTime: int64_t;
+    public: int64_t startTime;
 
-    public lastStartTime: int64_t;
+    public: int64_t lastStartTime;
 
-public constructor (int64_t startTime);
+public: GameTickTimeDelayHelper(int64_t startTime);
 
-    public int64_t setStartTime();
+    public: int64_t setStartTime();
 
-    public loop();
+    public: void loop();
 
-    public int64_t getTimeFromStart();
+    public: int64_t getTimeFromStart();
 
 };
 

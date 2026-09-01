@@ -65,61 +65,56 @@
         #include "TagHelper.h"
 
 class BasketHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const MAX: int32_t = 200;
+    private: const int32_t MAX = 200;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.propertiesHashMap= hashMap;
+public: BasketHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->propertiesHashMap= hashMap;
     
-this.pageContext= pageContext;
+this->pageContext= pageContext;
     
 
-    storeName: string = this.propertiesHashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = this->propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(storeName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 
                                     }
                                 
-this.weblisketSession= new WeblisketSession(hashMap, pageContext);
+this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
 }
 
 
-    public Boolean isBasketEmpty(){
+    public: Boolean isBasketEmpty(){
 
         try {
             
-    basket: BasketInterface = this.weblisketSession!.getOrder()!.getBasket()!;;
+    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
     
 
-                        if(basket.getNumberOfItems()!.intValue() <= 0)
+                        if(basket.getNumberOfItems().intValue() <= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -129,7 +124,7 @@ this.weblisketSession= new WeblisketSession(hashMap, pageContext);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                         }
@@ -139,10 +134,10 @@ this.weblisketSession= new WeblisketSession(hashMap, pageContext);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isBasketEmpty()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isBasketEmpty()", e);
     
 
                                     }
@@ -151,7 +146,7 @@ this.weblisketSession= new WeblisketSession(hashMap, pageContext);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 

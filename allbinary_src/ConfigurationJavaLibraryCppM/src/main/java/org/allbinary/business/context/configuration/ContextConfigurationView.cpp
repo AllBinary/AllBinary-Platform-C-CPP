@@ -71,57 +71,52 @@
 class ContextConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor (Node node){
+public: ContextConfigurationView(Node node){
 
-            super();
-        
-    childNodeList: NodeList = node.getChildNodes()!;;
+    NodeList childNodeList = node.getChildNodes();;
     
-this.contextConfigurationInterface= new ContextConfiguration();
+this->contextConfigurationInterface= ContextConfiguration();
     
 
-    emailConfigurationNode: Node = DomSearchHelper.getNode(EmailServerConfigurationData.NAME, childNodeList)!;;
+    Node emailConfigurationNode = DomSearchHelper::getNode(EmailServerConfigurationData::NAME, childNodeList);;
     
 
-    emailServerConfigurationView: EmailServerConfigurationView = new EmailServerConfigurationView(emailConfigurationNode);;
+    EmailServerConfigurationView emailServerConfigurationView = EmailServerConfigurationView(emailConfigurationNode);;
     
-this.contextConfigurationInterface!.setEmailServerConfigurationInterface(emailServerConfigurationView!.getEmailConfigurationInterface() as EmailServerConfigurationInterface);
+this->contextConfigurationInterface.setEmailServerConfigurationInterface(emailServerConfigurationView.getEmailConfigurationInterface() as EmailServerConfigurationInterface);
     
 }
 
 
-public constructor (ContextConfigurationInterface contextConfigurationInterface){
-
-            super();
-        this.contextConfigurationInterface= contextConfigurationInterface;
+public: ContextConfigurationView(ContextConfigurationInterface contextConfigurationInterface){
+this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-    public ContextConfigurationInterface getContextConfigurationInterface(){
+    public: ContextConfigurationInterface getContextConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.contextConfigurationInterface;
+                        return this->contextConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(ContextConfigurationData.getInstance()!.NAME)!;;
+    Node node = document.createElement(ContextConfigurationData::getInstance().NAME);;
     
 
-    emailServerConfigurationView: EmailServerConfigurationView = new EmailServerConfigurationView(this.getContextConfigurationInterface()!.getEmailServerConfigurationInterface());;
+    EmailServerConfigurationView emailServerConfigurationView = EmailServerConfigurationView(this->getContextConfigurationInterface().getEmailServerConfigurationInterface());;
     
-node.appendChild(emailServerConfigurationView!.toXmlNode(document));
+node.appendChild(emailServerConfigurationView.toXmlNode(document));
     
 
 

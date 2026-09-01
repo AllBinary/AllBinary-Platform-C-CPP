@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputMappingInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    processInputMapping(GameKey gameKey, Input input)
+    void processInputMapping(GameKey gameKey, Input input)
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLHISTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -100,83 +102,82 @@
 class GeographicMapCellHistory
             : public Object
         : public UpdateMyFontInterface {
-        
 
-    public static const NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY: std::vector<GeographicMapCellHistory> = [];
+    public: static const std::vector<GeographicMapCellHistory> NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;
+    private: const BooleanFactory booleanFactory = BooleanFactory::getInstance();
 
-    private: const list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: const visitedList: BasicArrayList;
+    private: BasicArrayList visitedList;
 
-    private: const MISSED_INFO: string = "Missed";
+    private: const std::string MISSED_INFO = "Missed";
 
-    private: const animation: Animation = new TextAnimation(this.MISSED_INFO, AnimationBehavior.getInstance());
+    private: const Animation animation = TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance());
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: totalVisited: int32_t= 0;
+    private: int32_t totalVisited= 0;
 
-    private: halfWidth: int32_t = 0;
+    private: int32_t halfWidth = 0;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor ();
+public: GeographicMapCellHistory();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public int32_t getTotalVisited();
+    public: int32_t getTotalVisited();
 
-    public int32_t getTotalNotVisited();
+    public: int32_t getTotalNotVisited();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public trackAll(BasicArrayList list);
+    public: void trackAll(BasicArrayList list);
 
-    public track(GeographicMapCellPosition geographicMapCellPosition);
+    public: void track(GeographicMapCellPosition geographicMapCellPosition);
 
-    public BasicArrayList getTracked();
+    public: BasicArrayList getTracked();
 
-    public BasicArrayList getVisited();
+    public: BasicArrayList getVisited();
 
-    public GeographicMapCellPosition getAfterIfNotLast(GeographicMapCellPosition geographicMapCellPosition);
+    public: GeographicMapCellPosition getAfterIfNotLast(GeographicMapCellPosition geographicMapCellPosition);
 
-    public GeographicMapCellPosition getFirstUnvisited();
+    public: GeographicMapCellPosition getFirstUnvisited();
 
-    public int32_t getFirstUnvisitedIndex();
+    public: int32_t getFirstUnvisitedIndex();
 
-    public BasicArrayList getInPathButNotTracked(BasicArrayList pathList);
+    public: BasicArrayList getInPathButNotTracked(BasicArrayList pathList);
 
-    public bool isVisited(GeographicMapCellPosition geographicMapCellPosition);
+    public: bool isVisited(GeographicMapCellPosition geographicMapCellPosition);
 
-    public bool visit(GeographicMapCellPosition geographicMapCellPosition);
-
-                //@Throws(Exception.constructor)
-            
-    public bool isAllVisited();
+    public: bool visit(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public bool isAllVisited2();
+    public: bool isAllVisited();
 
                 //@Throws(Exception.constructor)
             
-    public bool isPortionVisited(BasicDecimal basicDecimal);
+    public: bool isAllVisited2();
 
                 //@Throws(Exception.constructor)
             
-    public reset();
+    public: bool isPortionVisited(BasicDecimal basicDecimal);
 
-    paintNotVisitedRelativeToPoint(Graphics graphics, AllBinaryTiledLayer tiledLayer, GPoint point);
+                //@Throws(Exception.constructor)
+            
+    public: void reset();
 
-    private: const RED: int32_t = BasicColorFactory.getInstance()!.RED.intValue()!;
+    private: void paintNotVisitedRelativeToPoint(Graphics graphics, AllBinaryTiledLayer tiledLayer, GPoint point);
 
-    public paintNotVisited(Graphics graphics, BasicGeographicMap geographicMapInterface);
+    private: const int32_t RED = BasicColorFactory::getInstance().RED.intValue();
 
-    public init();
+    public: void paintNotVisited(Graphics graphics, BasicGeographicMap geographicMapInterface);
+
+    public: void init();
 
 };
 

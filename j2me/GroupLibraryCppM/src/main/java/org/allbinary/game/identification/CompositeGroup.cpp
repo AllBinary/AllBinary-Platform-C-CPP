@@ -62,56 +62,53 @@
 class CompositeGroup
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const groupInterface: Group;
+    private: Group groupInterface;
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-public constructor (Group groupInterface){
-
-            super();
-        this.groupInterface= groupInterface;
+public: CompositeGroup(Group groupInterface){
+this->groupInterface= groupInterface;
     
 }
 
 
-    public clear(){
-this.list.clear();
+    public: void clear(){
+this->list.clear();
     
 }
 
 
-    public add(Group groupInterface){
+    public: void add(Group groupInterface){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-
-    groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();;
     
-stringBuffer!.append(groupCommonFactory!.ADDING_LABEL);
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(groupInterface!.toString());
+stringBuffer.append(groupCommonFactory.ADDING_LABEL);
     
-stringBuffer!.append(groupCommonFactory!.TO_LABEL);
+stringBuffer.append(groupInterface.toString());
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(this.groupInterface));
+stringBuffer.append(groupCommonFactory.TO_LABEL);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.ADD);
+stringBuffer.append(StringUtil::getInstance().toString(this->groupInterface));
     
-this.list.add(groupInterface);
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.ADD);
+    
+this->list.add(groupInterface);
     
 }
 
 
-    public bool isInGroup(Group groupInterface){
+    public: bool isInGroup(Group groupInterface){
 
-                        if(this.list.contains(groupInterface))
+                        if(this->list.contains(groupInterface))
                         
                                     {
                                     
@@ -136,12 +133,12 @@ this.list.add(groupInterface);
 }
 
 
-    public Group getGroup(){
+    public: Group getGroup(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.groupInterface;
+                        return this->groupInterface;
     
 }
 

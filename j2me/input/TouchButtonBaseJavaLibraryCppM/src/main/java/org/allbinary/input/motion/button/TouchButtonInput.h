@@ -81,24 +81,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonInput: public Input: public GameKeyEventSourceInterface {
-        
+class TouchButtonInput: public Input, public GameKeyEventSourceInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const TOUCH_BUTTON_SOURCE_ID: int32_t = this.gameKeyEventFactory!.TOUCH_BUTTON_SOURCE_ID;
+    private: const int32_t TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory.TOUCH_BUTTON_SOURCE_ID;
 
-    private: gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-public constructor (int32_t id, string name);
+public: TouchButtonInput(int32_t id, std::string name);
 
-    public update(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void update(InputToGameKeyMapping inputToGameKeyMapping);
 
-    public int32_t getSourceId();
+    public: int32_t getSourceId();
 
-    public GameKeyEvent getGameKeyEvent();
+    public: GameKeyEvent getGameKeyEvent();
 
 };
 

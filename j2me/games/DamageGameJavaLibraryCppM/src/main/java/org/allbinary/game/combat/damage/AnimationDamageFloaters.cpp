@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -68,90 +70,87 @@
         #include "DamageFloaters.h"
 
 class AnimationDamageFloaters: public DamageFloaters {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: layerInterface: AllBinaryLayer;
+    private: AllBinaryLayer layerInterface;
 
-    private: animationInterfaceArray: std::vector<IndexedAnimation>;
+    private: std::vector<IndexedAnimation> animationInterfaceArray;
 
-    private: const circularIndexUtil: CircularIndexUtil;
+    private: CircularIndexUtil circularIndexUtil;
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (AllBinaryLayer layerInterface, std::vector<IndexedAnimation> animationInterfaceArray, int32_t dx, int32_t dy){
-
-            super();
-        this.animationInterfaceArray= animationInterfaceArray;
+public: AnimationDamageFloaters(AllBinaryLayer layerInterface, std::vector<IndexedAnimation> animationInterfaceArray, int32_t dx, int32_t dy){
+this->animationInterfaceArray= animationInterfaceArray;
     
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length -1;index >= 0; index--)
+    int32_t index = this->animationInterfaceArray.size() -1;index >= 0; index--)
         {
-this.animationInterfaceArray[index]!.setFrame(this.animationInterfaceArray[index]!.getSize() -1);
+this->animationInterfaceArray[index]!.setFrame(this->animationInterfaceArray[index]!.getSize() -1);
     
 }
 
-this.layerInterface= layerInterface;
+this->layerInterface= layerInterface;
     
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.animationInterfaceArray!.length);
+this->circularIndexUtil= CircularIndexUtil::createInstance(this->animationInterfaceArray.size());
     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
-    
-}
-
-
-    public add(int32_t damage){
-
-    i: int32_t = this.circularIndexUtil!.getIndex()!;;
-    
-this.animationInterfaceArray[i]!.setFrame(0);
-    
-this.circularIndexUtil!.next();
+this->dy= dy;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void add(int32_t damage){
+
+    int32_t i = this->circularIndexUtil.getIndex();;
+    
+this->animationInterfaceArray[i]!.setFrame(0);
+    
+this->circularIndexUtil.next();
+    
+}
+
+
+    public: void paint(Graphics graphics){
 
         try {
             
-    viewPosition: ViewPositionBase = this.layerInterface!.getViewPosition()!;;
+    ViewPositionBase viewPosition = this->layerInterface.getViewPosition();;
     
 
-    x: int32_t = viewPosition!.getX()!;;
+    int32_t x = viewPosition.getX();;
     
 
-    y: int32_t = viewPosition!.getY()!;;
+    int32_t y = viewPosition.getY();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.animationInterfaceArray!.length; index++)
+    int32_t index = 0;index < this->animationInterfaceArray.size(); index++)
         {
 
-    animationInterface: IndexedAnimation = this.animationInterfaceArray[index]!;;
+    IndexedAnimation animationInterface = this->animationInterfaceArray[index];;
     
 
-                        if(animationInterface!.getFrame() < animationInterface!.getAnimationSize() -1)
+                        if(animationInterface.getFrame() < animationInterface.getAnimationSize() -1)
                         
                                     {
                                     
-    delta: int32_t = animationInterface!.getFrame() *20;;
+    int32_t delta = animationInterface.getFrame() *20;;
     
-animationInterface!.paintXY(graphics, x +this.dx, y -delta +this.dy);
+animationInterface.paintXY(graphics, x +this->dx, y -delta +this->dy);
     
-animationInterface!.nextFrame();
+animationInterface.nextFrame();
     
 
                                     }
@@ -163,12 +162,12 @@ animationInterface!.nextFrame();
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;;
+    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, canvasStrings!.PAINT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, canvasStrings.PAINT, e);
     
 }
 

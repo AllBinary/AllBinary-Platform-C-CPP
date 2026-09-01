@@ -60,17 +60,16 @@
 class LayerCollisionUtil
             : public Object
          {
-        
 
-    private: static const instance: LayerCollisionUtil = new LayerCollisionUtil();
+    private: static LayerCollisionUtil instance() { return LayerCollisionUtil(); }
 
-    public static LayerCollisionUtil getInstance();
+    public: static LayerCollisionUtil getInstance();
 
-    private: const collisionProcessor: CollisionProcessor;
+    private: const CollisionProcessor collisionProcessor;
 
-private constructor ();
+private: LayerCollisionUtil();
 
-    public bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2);
+    public: bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2);
 
 };
 

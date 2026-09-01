@@ -63,21 +63,20 @@
 class Scoreable
             : public Object
         : public ScoreableInterface {
-        
 
-    public static ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(3)!;
+    public: static Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(3);
 
-    private: points: int32_t;
+    private: int32_t points;
 
-public constructor (int32_t points);
+public: Scoreable(int32_t points);
 
-    public addPoints(int32_t points);
+    public: void addPoints(int32_t points);
 
-    public removePoints(int32_t points);
+    public: void removePoints(int32_t points);
 
-    setPoints(int32_t points);
+    protected: void setPoints(int32_t points);
 
-    public int32_t getPoints();
+    public: int32_t getPoints();
 
 };
 

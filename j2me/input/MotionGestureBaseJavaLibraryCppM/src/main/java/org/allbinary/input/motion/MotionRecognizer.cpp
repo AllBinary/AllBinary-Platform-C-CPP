@@ -50,23 +50,22 @@
 class MotionRecognizer
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 }
 
 

@@ -109,30 +109,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryItemView.h"
 
-class UpdateFileValidationView: public InventoryItemView: public ValidationComponentInterface {
-        
+class UpdateFileValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-    private: static const UPDATEPRODUCT: string = CommonStrings.getInstance()!.UPDATE;
+    private: static const std::string UPDATEPRODUCT = CommonStrings::getInstance().UPDATE;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
-
-                //@Throws(Exception.constructor)
-            
-    public string validationInfo();
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    Boolean isValid(string fileName, int64_t size);
+    public: std::string validationInfo();
 
-    validationInfo(StringMaker stringBuffer, string fileName, string fileItemFieldName, int64_t size);
+                //@Throws(Exception.constructor)
+            
+    private: Boolean isValid(std::string fileName, int64_t size);
+
+    private: void validationInfo(StringMaker stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size);
 
 };
 

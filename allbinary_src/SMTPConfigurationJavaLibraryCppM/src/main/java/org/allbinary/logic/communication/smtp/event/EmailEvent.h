@@ -51,23 +51,22 @@
         #include "UserEmailEventNameData.h"
 
 class EmailEvent: public EventObject {
-        
 
-    private: emailInfo: EmailInfo;
+    private: EmailInfo emailInfo;
 
-    private: userEmailEventNameData: UserEmailEventNameData;
+    private: UserEmailEventNameData userEmailEventNameData;
 
-    private: attempts: int32_t= 0;
+    private: int32_t attempts= 0;
 
-public constructor (any = {} emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts);
+public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts);
 
-    public EmailInfo getEmailInfo();
+    public: EmailInfo getEmailInfo();
 
-    public int32_t getAttempts();
+    public: int32_t getAttempts();
 
-    public setAttempts(int32_t attempts);
+    public: void setAttempts(int32_t attempts);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

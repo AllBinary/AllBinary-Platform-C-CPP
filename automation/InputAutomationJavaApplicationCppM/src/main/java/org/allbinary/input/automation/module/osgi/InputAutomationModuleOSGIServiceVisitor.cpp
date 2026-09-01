@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -68,45 +70,42 @@
 class InputAutomationModuleOSGIServiceVisitor
             : public Object
         : public OSGIServiceVisitorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: InputAutomationModuleOSGIServiceVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.visit(anyType as OSGIServiceInterface);;
+                        return this->visit(anyType as OSGIServiceInterface);;
     
 }
 
 
-    public Boolean visit(OSGIServiceInterface osgiServiceInterface){
+    public: Boolean visit(OSGIServiceInterface osgiServiceInterface){
 
         try {
             
-    inputAutomationModuleService: InputAutomationModuleService = osgiServiceInterface as InputAutomationModuleService;;
+    InputAutomationModuleService inputAutomationModuleService = osgiServiceInterface as InputAutomationModuleService;;
     
 
-    inputAutomationModuleInterfaceArray: std::vector<InputAutomationModuleFactoryInterface> = inputAutomationModuleService!.getInputAutomationModuleInterfaceArray()!;;
+    std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray = inputAutomationModuleService.getInputAutomationModuleInterfaceArray();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < inputAutomationModuleInterfaceArray!.length; index++)
+    int32_t index = 0;index < inputAutomationModuleInterfaceArray.size(); index++)
         {
-InputAutomationJFrame.getInstance()!.onAdd(InputAutomationConfigurationUtil.getChangeEvent(inputAutomationModuleInterfaceArray[index]!));
+InputAutomationJFrame::getInstance().onAdd(InputAutomationConfigurationUtil::getChangeEvent(inputAutomationModuleInterfaceArray[index]!));
     
 }
 
@@ -114,19 +113,19 @@ InputAutomationJFrame.getInstance()!.onAdd(InputAutomationConfigurationUtil.getC
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "visit", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "visit", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

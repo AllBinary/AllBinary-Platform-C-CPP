@@ -46,13 +46,12 @@
 class ShaderManagerFactory
             : public Object
          {
-        
 
-    private: static const instance: ShaderManagerFactory = new ShaderManagerFactory();
+    private: static ShaderManagerFactory instance() { return ShaderManagerFactory(); }
 
-    public static ShaderManagerFactory getInstance();
+    public: static ShaderManagerFactory getInstance();
 
-    public ShaderManager create();
+    public: ShaderManager create();
 
 };
 

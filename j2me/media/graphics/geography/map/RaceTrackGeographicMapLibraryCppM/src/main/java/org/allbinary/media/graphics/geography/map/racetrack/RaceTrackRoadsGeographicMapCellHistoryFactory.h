@@ -48,13 +48,12 @@
 class RaceTrackRoadsGeographicMapCellHistoryFactory
             : public Object
          {
-        
 
-    private: static geographicMapCellHistory: GeographicMapCellHistory = new GeographicMapCellHistory();
+    private: static GeographicMapCellHistory geographicMapCellHistory = GeographicMapCellHistory();
 
-    public static GeographicMapCellHistory getInstance();
+    public: static GeographicMapCellHistory getInstance();
 
-private constructor ();
+private: RaceTrackRoadsGeographicMapCellHistoryFactory();
 
 };
 

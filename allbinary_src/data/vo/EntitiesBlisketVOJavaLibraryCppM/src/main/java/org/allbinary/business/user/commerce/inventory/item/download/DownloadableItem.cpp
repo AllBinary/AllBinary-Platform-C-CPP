@@ -74,189 +74,184 @@
 class DownloadableItem
             : public Object
          {
-        
 
-    private: const id: string;
+    private: std::string id;
 
-    private: const basicItemId: string;
+    private: std::string basicItemId;
 
-    private: const enabled: string;
+    private: std::string enabled;
 
-    private: const system: string;
+    private: std::string system;
 
-    private: const platform: string;
+    private: std::string platform;
 
-    private: const specialName: string;
+    private: std::string specialName;
 
-    private: const version: string;
+    private: std::string version;
 
-    private: const changes: string;
+    private: std::string changes;
 
-    private: const licenseFile: string;
+    private: std::string licenseFile;
 
-    private: const file: string;
+    private: std::string file;
 
-    private: const size: Long;
+    private: Long size;
 
-    private: const validTime: Long;
+    private: Long validTime;
 
-    private: const retries: string;
+    private: std::string retries;
 
-public constructor (string id){
+public: DownloadableItem(std::string id){
 
-            super();
-        
-    EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
-this.id= new ProductIdGenerator().getNext();
+this->id= ProductIdGenerator().getNext();
     
-this.basicItemId= id;
+this->basicItemId= id;
     
-this.enabled= EntryData.getInstance()!.YES;
+this->enabled= EntryData::getInstance().YES;
     
-this.system= "Java";
+this->system= "Java";
     
-this.platform= "Android";
+this->platform= "Android";
     
-this.specialName= EMPTY_STRING;
+this->specialName= EMPTY_STRING;
     
-this.version= EMPTY_STRING;
+this->version= EMPTY_STRING;
     
-this.changes= EMPTY_STRING;
+this->changes= EMPTY_STRING;
     
-this.licenseFile= EMPTY_STRING;
+this->licenseFile= EMPTY_STRING;
     
-this.file= EMPTY_STRING;
+this->file= EMPTY_STRING;
     
-this.size= (0).toLong();
+this->size= (0).toLong();
     
-this.validTime= (0).toLong();
+this->validTime= (0).toLong();
     
-this.retries= EMPTY_STRING;
+this->retries= EMPTY_STRING;
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.id= hashMap!.get(DownloadItemData.ID) as string;
+public: DownloadableItem(HashMap<any, any> hashMap){
+this->id= hashMap.get(DownloadItemData::ID) as string;
     
-this.basicItemId= hashMap!.get(BasicItemData.ID) as string;
+this->basicItemId= hashMap.get(BasicItemData::ID) as string;
     
-this.enabled= hashMap!.get(EntryData.getInstance()!.ENABLE) as string;
+this->enabled= hashMap.get(EntryData::getInstance().ENABLE) as string;
     
-this.system= hashMap!.get(DownloadItemData.SYSTEM) as string;
+this->system= hashMap.get(DownloadItemData::SYSTEM) as string;
     
-this.platform= hashMap!.get(DownloadItemData.PLATFORM) as string;
+this->platform= hashMap.get(DownloadItemData::PLATFORM) as string;
     
-this.specialName= hashMap!.get(DownloadItemData.SPECIAL_NAME) as string;
+this->specialName= hashMap.get(DownloadItemData::SPECIAL_NAME) as string;
     
-this.version= hashMap!.get(DownloadItemData.VERSION) as string;
+this->version= hashMap.get(DownloadItemData::VERSION) as string;
     
-this.changes= hashMap!.get(DownloadItemData.CHANGES) as string;
+this->changes= hashMap.get(DownloadItemData::CHANGES) as string;
     
-this.licenseFile= hashMap!.get(DownloadItemData.LICENSE_FILE) as string;
+this->licenseFile= hashMap.get(DownloadItemData::LICENSE_FILE) as string;
     
-this.file= hashMap!.get(DownloadItemData.FILE) as string;
+this->file= hashMap.get(DownloadItemData::FILE) as string;
     
 
-    value: string = hashMap!.get(DownloadItemData.SIZE) as string;;
+    std::string value = hashMap.get(DownloadItemData::SIZE) as string;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(value))
+                        if(!StringValidationUtil::getInstance().isEmpty(value))
                         
                                     {
-                                    this.size= (value).toLong();
+                                    this->size= (value).toLong();
     
 
                                     }
                                 
                         else {
-                            this.size= new Long(0);
+                            this->size= Long(0);
     
 
                         }
                             
 
-    validTime: string = hashMap!.get(DownloadItemData.VALID_TIME) as string;;
+    std::string validTime = hashMap.get(DownloadItemData::VALID_TIME) as string;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(validTime))
+                        if(!StringValidationUtil::getInstance().isEmpty(validTime))
                         
                                     {
-                                    this.validTime= (validTime).toLong();
+                                    this->validTime= (validTime).toLong();
     
 
                                     }
                                 
                         else {
                             
-    totalYears: string = hashMap!.get(DownloadItemData.VALID_TIME_YEARS) as string;;
+    std::string totalYears = hashMap.get(DownloadItemData::VALID_TIME_YEARS) as string;;
     
 
-    totalMonths: string = hashMap!.get(DownloadItemData.VALID_TIME_MONTHS) as string;;
+    std::string totalMonths = hashMap.get(DownloadItemData::VALID_TIME_MONTHS) as string;;
     
 
-    totalDays: string = hashMap!.get(DownloadItemData.VALID_TIME_DAYS) as string;;
+    std::string totalDays = hashMap.get(DownloadItemData::VALID_TIME_DAYS) as string;;
     
 
-    totalHours: string = hashMap!.get(DownloadItemData.VALID_TIME_HOURS) as string;;
+    std::string totalHours = hashMap.get(DownloadItemData::VALID_TIME_HOURS) as string;;
     
 
-    totalMinutes: string = hashMap!.get(DownloadItemData.VALID_TIME_MINUTES) as string;;
+    std::string totalMinutes = hashMap.get(DownloadItemData::VALID_TIME_MINUTES) as string;;
     
 
-    totalSeconds: string = hashMap!.get(DownloadItemData.VALID_TIME_SECONDS) as string;;
+    std::string totalSeconds = hashMap.get(DownloadItemData::VALID_TIME_SECONDS) as string;;
     
 
-    totalTime: int64_t = TimeUtil.getInstance()!.getTotalTime(totalYears, totalMonths, totalDays, totalHours, totalMinutes, totalSeconds)!;;
+    int64_t totalTime = TimeUtil::getInstance().getTotalTime(totalYears, totalMonths, totalDays, totalHours, totalMinutes, totalSeconds);;
     
-this.validTime= new Long(totalTime);
+this->validTime= Long(totalTime);
     
 
                         }
                             
-this.retries= hashMap!.get(DownloadItemData.RETRIES) as string;
+this->retries= hashMap.get(DownloadItemData::RETRIES) as string;
     
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString()!;;
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
 values.add(getId());
     
-values.add(this.basicItemId);
+values.add(this->basicItemId);
     
-values.add(this.enabled);
+values.add(this->enabled);
     
-values.add(this.getSpecialName());
+values.add(this->getSpecialName());
     
-values.add(this.getVersion());
+values.add(this->getVersion());
     
-values.add(this.getChanges());
+values.add(this->getChanges());
     
-values.add(this.getSystem());
+values.add(this->getSystem());
     
-values.add(this.getPlatform());
+values.add(this->getPlatform());
     
-values.add(this.getLicenseFile());
+values.add(this->getLicenseFile());
     
-values.add(this.getFile());
+values.add(this->getFile());
     
-values.add(this.getSize()!.toString());
+values.add(this->getSize().toString());
     
-values.add(this.getValidTime()!.toString());
+values.add(this->getValidTime().toString());
     
-values.add(this.getRetries());
+values.add(this->getRetries());
     
 values.add(time);
     
@@ -271,43 +266,43 @@ values.add(time);
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    values: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> values = HashMap<any, any>();;
     
-values.put(DownloadItemData.ID, this.getId());
+values.put(DownloadItemData::ID, this->getId());
     
-values.put(BasicItemData.ID, this.basicItemId);
+values.put(BasicItemData::ID, this->basicItemId);
     
-values.put(EntryData.getInstance()!.ENABLE, this.enabled);
+values.put(EntryData::getInstance().ENABLE, this->enabled);
     
-values.put(DownloadItemData.SYSTEM, this.getSystem());
+values.put(DownloadItemData::SYSTEM, this->getSystem());
     
-values.put(DownloadItemData.PLATFORM, this.getPlatform());
+values.put(DownloadItemData::PLATFORM, this->getPlatform());
     
-values.put(DownloadItemData.SPECIAL_NAME, this.getSpecialName());
+values.put(DownloadItemData::SPECIAL_NAME, this->getSpecialName());
     
-values.put(DownloadItemData.VERSION, this.getVersion());
+values.put(DownloadItemData::VERSION, this->getVersion());
     
-values.put(DownloadItemData.CHANGES, this.getChanges());
+values.put(DownloadItemData::CHANGES, this->getChanges());
     
-values.put(DownloadItemData.LICENSE_FILE, this.getLicenseFile());
+values.put(DownloadItemData::LICENSE_FILE, this->getLicenseFile());
     
-values.put(DownloadItemData.FILE, this.getFile());
+values.put(DownloadItemData::FILE, this->getFile());
     
-values.put(DownloadItemData.SIZE, this.getSize()!.toString());
+values.put(DownloadItemData::SIZE, this->getSize().toString());
     
-values.put(DownloadItemData.VALID_TIME, this.getValidTime()!.toString());
+values.put(DownloadItemData::VALID_TIME, this->getValidTime().toString());
     
-values.put(DownloadItemData.RETRIES, this.getRetries());
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+values.put(DownloadItemData::RETRIES, this->getRetries());
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-values.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+values.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -318,112 +313,112 @@ values.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public string getId(){
+    public: std::string getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public string getSystem(){
+    public: std::string getSystem(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.system;
+                        return this->system;
     
 }
 
 
-    public string getPlatform(){
+    public: std::string getPlatform(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.platform;
+                        return this->platform;
     
 }
 
 
-    public string getSpecialName(){
+    public: std::string getSpecialName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.specialName;
+                        return this->specialName;
     
 }
 
 
-    public string getVersion(){
+    public: std::string getVersion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.version;
+                        return this->version;
     
 }
 
 
-    public string getChanges(){
+    public: std::string getChanges(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.changes;
+                        return this->changes;
     
 }
 
 
-    public string getLicenseFile(){
+    public: std::string getLicenseFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.licenseFile;
+                        return this->licenseFile;
     
 }
 
 
-    public string getFile(){
+    public: std::string getFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file;
+                        return this->file;
     
 }
 
 
-    public Long getSize(){
+    public: Long getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.size;
+                        return this->size;
     
 }
 
 
-    public Long getValidTime(){
+    public: Long getValidTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.validTime;
+                        return this->validTime;
     
 }
 
 
-    public string getRetries(){
+    public: std::string getRetries(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.retries;
+                        return this->retries;
     
 }
 

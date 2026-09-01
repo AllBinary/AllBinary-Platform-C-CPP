@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,23 +72,22 @@
 class ImageArrayAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: dx: int32_t = 0;
+    private: int32_t dx = 0;
 
-    private: dy: int32_t = 0;
+    private: int32_t dy = 0;
 
-    private: const imageArray: std::vector<Image>;
+    private: std::vector<Image> imageArray;
 
-    private: const animationBehaviorFactory: AnimationBehaviorFactory;
+    private: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+public: ImageArrayAnimationFactory(std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

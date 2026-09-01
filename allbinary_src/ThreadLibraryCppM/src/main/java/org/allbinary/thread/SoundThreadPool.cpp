@@ -43,16 +43,15 @@
 class SoundThreadPool
             : public Object
          {
-        
 
-    private: static const instance: ThreadPool = new ThreadPool("Sound", 1, ThreadPool.NORMAL_PRIORITY);
+    private: static ThreadPool instance() { return ThreadPool(); }
 
-    public static ThreadPool getInstance(){
+    public: static ThreadPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SoundThreadPool.instance;
+                        return SoundThreadPool::instance();
     
 }
 

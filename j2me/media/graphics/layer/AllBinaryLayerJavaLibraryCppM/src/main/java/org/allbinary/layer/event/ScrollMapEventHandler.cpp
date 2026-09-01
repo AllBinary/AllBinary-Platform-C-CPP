@@ -51,33 +51,30 @@
 #include "ScrollMapEvent.h"
 
 class ScrollMapEventHandler: public BasicEventHandler {
-        
 
-    private: static SINGLETON: ScrollMapEventHandler = new ScrollMapEventHandler();
+    private: static ScrollMapEventHandler SINGLETON = ScrollMapEventHandler();
 
-    public static ScrollMapEventHandler getInstance(){
+    public: static ScrollMapEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollMapEventHandler.SINGLETON;
+                        return ScrollMapEventHandler::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ScrollMapEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    scrollMapEventListenerInterface: ScrollMapEventListenerInterface = (eventListenerInterface as ScrollMapEventListenerInterface);;
+    ScrollMapEventListenerInterface scrollMapEventListenerInterface = (eventListenerInterface as ScrollMapEventListenerInterface);;
     
-scrollMapEventListenerInterface!.onMoveEvent(eventObject as ScrollMapEvent);
+scrollMapEventListenerInterface.onMoveEvent(eventObject as ScrollMapEvent);
     
 }
 

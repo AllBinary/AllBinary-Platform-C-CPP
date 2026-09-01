@@ -45,13 +45,12 @@
 class AudioContentTypeData
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
- constructor (string name);
+: AudioContentTypeData(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
 };
 

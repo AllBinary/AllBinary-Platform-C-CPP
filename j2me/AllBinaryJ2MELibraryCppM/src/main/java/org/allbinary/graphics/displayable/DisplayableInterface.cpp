@@ -50,17 +50,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DisplayableInterface {
-        
 
-    addCommand(Command cmd)
+    void addCommand(Command cmd)
 
     int32_t getHeight()
 
     int32_t getWidth()
 
-    removeCommand(Command cmd)
+    void removeCommand(Command cmd)
 
-    setCommandListener(CommandListener l)
+    void setCommandListener(CommandListener l)
 
 };
 

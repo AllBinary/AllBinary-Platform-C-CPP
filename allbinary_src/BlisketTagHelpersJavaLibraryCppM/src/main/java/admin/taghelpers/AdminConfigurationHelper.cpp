@@ -50,27 +50,24 @@
         #include "BasicTable.h"
 
 class AdminConfigurationHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        }
+public: AdminConfigurationHelper(HashMap<any, any> hashMap, PageContext pageContext){
+}
 
 
-    public string create(){
+    public: std::string create(){
 
         try {
             
-    success: string = "No Imp";;
+    std::string success = "No Imp";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "create()");
+                                    this->logUtil.putF(success, this, "create()");
     
 
                                     }
@@ -86,13 +83,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to create table";;
+    std::string error = "Failed to create table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "create()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "create()", e);
     
 
                                     }
@@ -108,17 +105,17 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public string drop(){
+    public: std::string drop(){
 
         try {
             
-    success: string = "No Imp";;
+    std::string success = "No Imp";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, this.commonStrings!.DROP);
+                                    this->logUtil.putF(success, this, this->commonStrings.DROP);
     
 
                                     }
@@ -134,13 +131,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to drop table";;
+    std::string error = "Failed to drop table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.DROP, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, e);
     
 
                                     }
@@ -156,11 +153,11 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public string restore(){
+    public: std::string restore(){
 
         try {
             
-    success: string = "No Imp";;
+    std::string success = "No Imp";;
     
 
 
@@ -173,13 +170,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to restore backup";;
+    std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "restore()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "restore()", e);
     
 
                                     }
@@ -195,17 +192,17 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public string backup(){
+    public: std::string backup(){
 
         try {
             
-    success: string = "Backup Successful";;
+    std::string success = "Backup Successful";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "backup()");
+                                    this->logUtil.putF(success, this, "backup()");
     
 
                                     }
@@ -221,13 +218,13 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 } catch(e) 
             {
 
-    error: string = "Failed to make backup";;
+    std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "backup()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
     
 
                                     }

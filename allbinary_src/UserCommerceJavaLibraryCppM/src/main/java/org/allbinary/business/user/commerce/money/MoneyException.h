@@ -43,9 +43,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MoneyException: public Exception {
-        
 
-public constructor ();
+public: MoneyException();
 
 };
 

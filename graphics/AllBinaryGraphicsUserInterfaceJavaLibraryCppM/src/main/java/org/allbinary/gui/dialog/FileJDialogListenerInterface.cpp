@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/io/File.h>
 
       
@@ -41,9 +43,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class FileJDialogListenerInterface {
-        
 
-    onFiles(std::vector<File> files)
+    void onFiles(std::vector<File> files)
 
 };
 

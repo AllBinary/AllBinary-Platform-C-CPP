@@ -54,7 +54,6 @@
 #include "Color.h"
 
 class ImageComparatorConstraintsInterface {
-        
 
     int32_t getMaxNonMatchingPixelDeltas();
 

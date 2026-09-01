@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -73,124 +75,121 @@
 class Sounds
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const soundStrings: SoundStrings = SoundStrings.getInstance()!;
+    private: const SoundStrings soundStrings = SoundStrings::getInstance();
 
-    private: const soundsFactoryInterface: SoundsFactoryInterface;
+    private: SoundsFactoryInterface soundsFactoryInterface;
 
-public constructor (SoundsFactoryInterface soundsFactoryInterface){
-
-            super();
-        this.soundsFactoryInterface= soundsFactoryInterface;
+public: Sounds(SoundsFactoryInterface soundsFactoryInterface){
+this->soundsFactoryInterface= soundsFactoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.INIT);
+    public: void init(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
 
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-this.soundsFactoryInterface!.init();
-    
-
-    soundInterfaceArray: std::vector<Sound> = this.soundsFactoryInterface!.getSoundInterfaceArray()!;;
+this->soundsFactoryInterface.init();
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    std::vector<Sound> soundInterfaceArray = this->soundsFactoryInterface.getSoundInterfaceArray();;
     
 
-    indexInteger: Integer;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    indexString: string;;
+    Integer indexInteger;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    std::string indexString;;
+    
+
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < soundInterfaceArray!.length; i++)
+    int32_t i = 0;i < soundInterfaceArray.size(); i++)
         {
 
-    soundInterfaceCanBeNull: Sound = soundInterfaceArray[i];;
+    Sound soundInterfaceCanBeNull = soundInterfaceArray[i];;
     
 
                         if(soundInterfaceCanBeNull != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    indexInteger= smallIntegerSingletonFactory!.getAt(i);
+                                    indexInteger= smallIntegerSingletonFactory.getAt(i);
     
-indexString= indexInteger!.toString();
+indexString= indexInteger.toString();
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(commonLabels!.INDEX_LABEL);
+stringBuffer.append(commonLabels.INDEX_LABEL);
     
-stringBuffer!.append(indexString);
+stringBuffer.append(indexString);
     
-stringBuffer!.append(this.soundStrings!.SOUND);
+stringBuffer.append(this->soundStrings.SOUND);
     
-stringBuffer!.append(soundInterfaceCanBeNull!.constructor.name.toString()!);
+stringBuffer.append(soundInterfaceCanBeNull.constructor.name.toString()!);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.INIT);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
     
-soundInterfaceCanBeNull!.init();
+soundInterfaceCanBeNull.init();
     
-progressCanvas!.addNormalPortion(100, new StringMaker().append(this.soundStrings!.INIT_SOUND)!.append(indexString)!.toString());
+progressCanvas.addNormalPortion(100, StringMaker().append(this->soundStrings.INIT_SOUND).append(indexString).toString());
     
 
                                     }
                                 
 }
 
-this.soundsFactoryInterface!.setInitialized(true);
+this->soundsFactoryInterface.setInitialized(true);
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.INIT);
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.INIT);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public stopAll(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.soundStrings!.STOP_ALL);
+    public: void stopAll(){
+this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.STOP_ALL);
     
 
-    soundInterfaceArray: std::vector<Sound> = this.soundsFactoryInterface!.getSoundInterfaceArray()!;;
+    std::vector<Sound> soundInterfaceArray = this->soundsFactoryInterface.getSoundInterfaceArray();;
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-    player: Player;;
+    Player player;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < soundInterfaceArray!.length; index++)
+    int32_t index = 0;index < soundInterfaceArray.size(); index++)
         {
 
                         if(soundInterfaceArray[index] != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -198,13 +197,13 @@ this.logUtil!.putF(this.commonStrings!.START, this, this.soundStrings!.STOP_ALL)
     
 
                         if(player != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     player.stop();
     
-progressCanvas!.addPortion(100, this.soundStrings!.STOPPING_SOUND, index);
+progressCanvas.addPortion(100, this->soundStrings.STOPPING_SOUND, index);
     
 
                                     }
@@ -219,28 +218,28 @@ progressCanvas!.addPortion(100, this.soundStrings!.STOPPING_SOUND, index);
 
                 //@Throws(Exception.constructor)
             
-    public closeAll(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.soundStrings!.CLOSE_ALL);
+    public: void closeAll(){
+this->logUtil.putF(this->commonStrings.START, this, this->soundStrings.CLOSE_ALL);
     
 
-    soundInterfaceArray: std::vector<Sound> = this.soundsFactoryInterface!.getSoundInterfaceArray()!;;
+    std::vector<Sound> soundInterfaceArray = this->soundsFactoryInterface.getSoundInterfaceArray();;
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-    player: Player;;
+    Player player;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < soundInterfaceArray!.length; index++)
+    int32_t index = 0;index < soundInterfaceArray.size(); index++)
         {
 
                         if(soundInterfaceArray[index] != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -248,13 +247,13 @@ this.logUtil!.putF(this.commonStrings!.START, this, this.soundStrings!.CLOSE_ALL
     
 
                         if(player != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     player.close();
     
-progressCanvas!.addPortion(100, this.soundStrings!.CLOSING_SOUND, index);
+progressCanvas.addPortion(100, this->soundStrings.CLOSING_SOUND, index);
     
 
                                     }

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -52,38 +54,37 @@
 class BaseSoundsFactory
             : public Object
         : public SoundsFactoryInterface {
-        
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-    public init(){
+    public: void init(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Sound> getSoundInterfaceArray(){
+    public: std::vector<Sound> getSoundInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 
 
-    public setInitialized(bool initialized){
-this.initialized= initialized;
+    public: void setInitialized(bool initialized){
+this->initialized= initialized;
     
 }
 
 
-    public bool isInitialized(){
+    public: bool isInitialized(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized;
+                        return this->initialized;
     
 }
 

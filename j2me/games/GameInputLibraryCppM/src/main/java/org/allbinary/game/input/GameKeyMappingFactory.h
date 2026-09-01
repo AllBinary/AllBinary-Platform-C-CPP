@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEKEYMAPPINGFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -51,19 +53,18 @@
 class GameKeyMappingFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyMappingFactory getInstance();
+    public: static GameKeyMappingFactory getInstance();
 
-    private: intKeyToGameKey: std::vector<GameKey> = new Array(InputFactory.getInstance()!.MAX);
+    private: std::vector<GameKey> intKeyToGameKey = new Array(InputFactory::getInstance().MAX);
 
-private constructor ();
+private: GameKeyMappingFactory();
 
-    public GameKey getGameKey(int32_t key);
+    public: GameKey getGameKey(int32_t key);
 
-    setGameKey(GameKey gameKey);
+    private: void setGameKey(GameKey gameKey);
 
 };
 

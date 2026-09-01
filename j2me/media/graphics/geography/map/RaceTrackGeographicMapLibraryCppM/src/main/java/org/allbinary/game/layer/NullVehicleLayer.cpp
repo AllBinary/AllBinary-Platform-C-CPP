@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -69,323 +71,322 @@
 class NullVehicleLayer
             : public Object
         : public VehicleLayerInterface {
-        
 
-    public static const NULL_VEHICLE_LAYER: NullVehicleLayer = new NullVehicleLayer();
+    public: static const NullVehicleLayer NULL_VEHICLE_LAYER = NullVehicleLayer();
 
-    public string getName(){
-
+    public: std::string getName(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
-    public std::vector<Group> getGroupInterface(){
+    public: std::vector<Group> getGroupInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setPosition(int32_t x, int32_t y, int32_t z){
+    public: void setPosition(int32_t x, int32_t y, int32_t z){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getHalfHeight(){
+    public: int32_t getHalfHeight(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getHalfWidth(){
+    public: int32_t getHalfWidth(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getXP(){
+    public: int32_t getXP(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getYP(){
+    public: int32_t getYP(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getZP(){
+    public: int32_t getZP(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getX2(){
+    public: int32_t getX2(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getY2(){
+    public: int32_t getY2(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getZ2(){
+    public: int32_t getZ2(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isVisible(){
+    public: bool isVisible(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public moveDXYZ(int32_t dx, int32_t dy, int32_t dz){
+    public: void moveDXYZ(int32_t dx, int32_t dy, int32_t dz){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setVisible(bool visible){
+    public: void setVisible(bool visible){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool implmentsTickableInterface(){
+    public: bool implmentsTickableInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool implmentsCollidableInterface(){
+    public: bool implmentsCollidableInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool implmentsGameInputInterface(){
+    public: bool implmentsGameInputInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool implmentsArtificialIntelligenceCompositeInterface(){
+    public: bool implmentsArtificialIntelligenceCompositeInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public VehicleProperties getVehicleProperties(){
+    public: VehicleProperties getVehicleProperties(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public BasicArrayList getGameKeyEventList(){
+    public: BasicArrayList getGameKeyEventList(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public BasicDecimal getSpeedBasicDecimal(){
+    public: BasicDecimal getSpeedBasicDecimal(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isReadyForExplosion(){
+    public: bool isReadyForExplosion(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public RotationAnimation getRotationAnimationInterface(){
+    public: RotationAnimation getRotationAnimationInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setRotationAnimationInterface(RotationAnimation animationInterface){
+    public: void setRotationAnimationInterface(RotationAnimation animationInterface){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isDestroyed(){
+    public: bool isDestroyed(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isFinish(){
+    public: bool isFinish(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getFinalPosition(){
+    public: int32_t getFinalPosition(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public handleFinish(){
+    public: void handleFinish(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public GeographicMapCellPositionTracking getGeographicMapCellPositionTracking(){
+    public: GeographicMapCellPositionTracking getGeographicMapCellPositionTracking(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray(){
+    public: std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory){
+    public: void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics graphics){
 }
 
 

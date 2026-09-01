@@ -53,63 +53,62 @@
 #include "AllBinaryGameLayer.h"
 
 class AdvancedPlayerOwnedRTSLayers: public PlayerOwnedRTSLayers {
-        
 
-    private: const unitsList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList unitsList = BasicArrayListD();
 
-    private: const waypointsList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList waypointsList = BasicArrayListD();
 
-    private: const buildingList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList buildingList = BasicArrayListD();
 
-    private: const baseList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList baseList = BasicArrayListD();
 
-    private: const garrisonList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList garrisonList = BasicArrayListD();
 
-    private: const houseList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList houseList = BasicArrayListD();
 
-    private: const labList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList labList = BasicArrayListD();
 
-    private: const factoryList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList factoryList = BasicArrayListD();
 
-    public addUnit(RTSLayer rtsLayer);
+    public: void addUnit(RTSLayer rtsLayer);
 
-    public addWaypoint(RTSLayer rtsLayer);
+    public: void addWaypoint(RTSLayer rtsLayer);
 
-    public addBase(RTSLayer rtsLayer);
+    public: void addBase(RTSLayer rtsLayer);
 
-    public addGarrison(RTSLayer rtsLayer);
+    public: void addGarrison(RTSLayer rtsLayer);
 
-    public addHouse(RTSLayer rtsLayer);
+    public: void addHouse(RTSLayer rtsLayer);
 
-    public addLab(RTSLayer rtsLayer);
+    public: void addLab(RTSLayer rtsLayer);
 
-    public addFactory(RTSLayer rtsLayer);
+    public: void addFactory(RTSLayer rtsLayer);
 
-    public removeUnit(AllBinaryGameLayer gameLayer);
+    public: void removeUnit(AllBinaryGameLayer gameLayer);
 
-    public removeWaypoint(AllBinaryGameLayer gameLayer);
+    public: void removeWaypoint(AllBinaryGameLayer gameLayer);
 
-    public BasicArrayList getUnitsList();
+    public: BasicArrayList getUnitsList();
 
-    public BasicArrayList getWaypointsList();
+    public: BasicArrayList getWaypointsList();
 
-    public BasicArrayList getBaseList();
+    public: BasicArrayList getBaseList();
 
-    public BasicArrayList getGarrisonList();
+    public: BasicArrayList getGarrisonList();
 
-    public BasicArrayList getHouseList();
+    public: BasicArrayList getHouseList();
 
-    public BasicArrayList getLabList();
+    public: BasicArrayList getLabList();
 
-    public BasicArrayList getFactoryList();
+    public: BasicArrayList getFactoryList();
 
-    public int32_t getTotalBuildings();
+    public: int32_t getTotalBuildings();
 
-    public removeBuilding(AllBinaryGameLayer layerInterface);
+    public: void removeBuilding(AllBinaryGameLayer layerInterface);
 
-    public string toString();
+    public: std::string toString();
 
-    public BasicArrayList getBuildingList();
+    public: BasicArrayList getBuildingList();
 
 };
 

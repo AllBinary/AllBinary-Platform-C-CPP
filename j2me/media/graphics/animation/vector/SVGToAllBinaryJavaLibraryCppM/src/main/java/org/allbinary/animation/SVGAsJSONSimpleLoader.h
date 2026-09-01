@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H
         #define ORG_ALLBINARY_ANIMATION_SVGASJSONSIMPLELOADER_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -88,95 +90,94 @@
 class SVGAsJSONSimpleLoader
             : public Object
          {
-        
 
-    private: static const instance: SVGAsJSONSimpleLoader = new SVGAsJSONSimpleLoader();
+    private: static SVGAsJSONSimpleLoader instance() { return SVGAsJSONSimpleLoader(); }
 
-    public static SVGAsJSONSimpleLoader getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public static main(std::vector<string> args);
-
-    private: const shapeTypeFactory: ShapeTypeFactory = ShapeTypeFactory.getInstance()!;
-
-    private: const KEY_SVG: string = "svg";
-
-    private: const KEY_X1: string = "x1";
-
-    private: const KEY_Y1: string = "y1";
-
-    private: const KEY_X2: string = "x2";
-
-    private: const KEY_Y2: string = "y2";
-
-    private: const KEY_CX: string = "cx";
-
-    private: const KEY_CY: string = "cy";
-
-    private: const KEY_R: string = "r";
-
-    private: const KEY_X: string = PositionStrings.getInstance()!.X;
-
-    private: const KEY_Y: string = PositionStrings.getInstance()!.Y;
-
-    private: const KEY_WIDTH: string = "width";
-
-    private: const KEY_HEIGHT: string = "height";
-
-    private: const ERROR_PARSE_SVG_JSON: string = "Unable to parse SVG JSON";
-
-    private: const ERROR_MISSING_KEY_PREFIX: string = "Missing key: ";
-
-    private: const ERROR_INVALID_NUMBER_PREFIX: string = "Invalid number for key: ";
-
-    private: const ERROR_EXPECTED_OBJECT_PREFIX: string = "Expected object for: ";
-
-    private: const EMPTY_POINTS: std::vector<std::vector<int32_t>> = PrimitiveIntUtil.getTwoDimensionalArrayInstance()!;
-
-    private: const SHAPE_SEPARATOR: std::vector<int32_t> = [1000,1000];
-
-    private: const CIRCLE_SEGMENTS: int32_t = 16;
+    public: static SVGAsJSONSimpleLoader getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<std::vector<int32_t>> load(string svgAsJson);
+    public: static void main(std::vector<std::string> args);
+
+    private: const ShapeTypeFactory shapeTypeFactory = ShapeTypeFactory::getInstance();
+
+    private: const std::string KEY_SVG = "svg";
+
+    private: const std::string KEY_X1 = "x1";
+
+    private: const std::string KEY_Y1 = "y1";
+
+    private: const std::string KEY_X2 = "x2";
+
+    private: const std::string KEY_Y2 = "y2";
+
+    private: const std::string KEY_CX = "cx";
+
+    private: const std::string KEY_CY = "cy";
+
+    private: const std::string KEY_R = "r";
+
+    private: const std::string KEY_X = PositionStrings::getInstance().X;
+
+    private: const std::string KEY_Y = PositionStrings::getInstance().Y;
+
+    private: const std::string KEY_WIDTH = "width";
+
+    private: const std::string KEY_HEIGHT = "height";
+
+    private: const std::string ERROR_PARSE_SVG_JSON = "Unable to parse SVG JSON";
+
+    private: const std::string ERROR_MISSING_KEY_PREFIX = "Missing key: ";
+
+    private: const std::string ERROR_INVALID_NUMBER_PREFIX = "Invalid number for key: ";
+
+    private: const std::string ERROR_EXPECTED_OBJECT_PREFIX = "Expected object for: ";
+
+    private: const std::vector<std::vector<int32_t>> EMPTY_POINTS = PrimitiveIntUtil::getTwoDimensionalArrayInstance();
+
+    private: const std::vector<int32_t> SHAPE_SEPARATOR = {1000,1000};
+
+    private: const int32_t CIRCLE_SEGMENTS = 16;
 
                 //@Throws(Exception.constructor)
             
-    addShapes(BasicArrayList pointVector, any = {} value, ShapeType shapeType);
+    public: std::vector<std::vector<int32_t>> load(std::string svgAsJson);
 
                 //@Throws(Exception.constructor)
             
-    addShape(BasicArrayList pointVector, any = {} value, ShapeType shapeType);
+    private: void addShapes(BasicArrayList pointVector, Object* value, ShapeType shapeType);
 
                 //@Throws(Exception.constructor)
             
-    addLine(BasicArrayList pointVector, JSONObject line);
+    private: void addShape(BasicArrayList pointVector, Object* value, ShapeType shapeType);
 
                 //@Throws(Exception.constructor)
             
-    addCircle(BasicArrayList pointVector, JSONObject circle);
+    private: void addLine(BasicArrayList pointVector, JSONObject line);
 
                 //@Throws(Exception.constructor)
             
-    addRectangle(BasicArrayList pointVector, JSONObject rectangle);
-
-    addPoint(BasicArrayList pointVector, int32_t x, int32_t y);
-
-    addSeparator(BasicArrayList pointVector);
+    private: void addCircle(BasicArrayList pointVector, JSONObject circle);
 
                 //@Throws(Exception.constructor)
             
-    int32_t readInt(JSONObject anyType, string key);
+    private: void addRectangle(BasicArrayList pointVector, JSONObject rectangle);
 
-    int32_t readInt(JSONObject anyType, string key, int32_t defaultValue);
+    private: void addPoint(BasicArrayList pointVector, int32_t x, int32_t y);
 
-    int32_t toInt(any = {} value, string key);
+    private: void addSeparator(BasicArrayList pointVector);
 
-    JSONObject asObject(Object value, string name);
+                //@Throws(Exception.constructor)
+            
+    private: int32_t readInt(JSONObject anyType, std::string key);
 
-    std::vector<std::vector<int32_t>> toPoints(BasicArrayList pointVector);
+    private: int32_t readInt(JSONObject anyType, std::string key, int32_t defaultValue);
+
+    private: int32_t toInt(Object* value, std::string key);
+
+    private: JSONObject asObject(Object value, std::string name);
+
+    private: std::vector<std::vector<int32_t>> toPoints(BasicArrayList pointVector);
 
 };
 

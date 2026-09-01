@@ -51,39 +51,36 @@
 class DirectoryFileVisitor
             : public Object
         : public VisitorInterface, public FileFilter {
-        
 
-public constructor (){
-
-            super();
-        }
+public: DirectoryFileVisitor(){
+}
 
 
-    public bool accept(java.io.File arg0){
+    public: bool accept(java::io::File arg0){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return visit = this.visit(arg0)visit as Boolean
+                        return visit = this->visit(arg0)visit as Boolean
 visit.
                     .valueOf();;
     
 }
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
-    file: File = anyType as File;;
+    File file = anyType as File;;
     
 
-    index: int32_t = 1;;
+    int32_t index = 1;;
     
 
-    aFile: File = file.getParentFile()!;;
+    File aFile = file.getParentFile();;
     
 
-        while((aFile= aFile!.getParentFile()) != 
-                                    null
+        while((aFile= aFile.getParentFile()) != 
+                                    nullptr
                                 )
         {
 index++;
@@ -98,7 +95,7 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -107,7 +104,7 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

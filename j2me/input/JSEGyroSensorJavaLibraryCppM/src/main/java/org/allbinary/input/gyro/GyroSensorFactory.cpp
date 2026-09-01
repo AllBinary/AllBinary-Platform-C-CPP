@@ -46,24 +46,23 @@
 class GyroSensorFactory
             : public Object
          {
-        
 
-    private: static allBinaryGyroSensor: AllBinaryOrientationSensor;
+    private: static AllBinaryOrientationSensor allBinaryGyroSensor;
 
                 //@Throws(Exception.constructor)
             
-    public static init(){
-GyroSensorFactory.allBinaryGyroSensor= new NoGyroSensor();
+    public: static void init(){
+GyroSensorFactory::allBinaryGyroSensor= NoGyroSensor();
     
 }
 
 
-    public static AllBinaryOrientationSensor getInstance(){
+    public: static AllBinaryOrientationSensor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GyroSensorFactory.allBinaryGyroSensor;
+                        return GyroSensorFactory::allBinaryGyroSensor;
     
 }
 

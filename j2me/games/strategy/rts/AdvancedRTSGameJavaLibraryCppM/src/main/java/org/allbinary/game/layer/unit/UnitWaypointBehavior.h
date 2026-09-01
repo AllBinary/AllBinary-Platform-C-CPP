@@ -117,136 +117,135 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "UnitLayer.h"
 
-class UnitWaypointBehavior: public WaypointBehaviorBase: public WaypointEventListenerInterface {
-        
+class UnitWaypointBehavior: public WaypointBehaviorBase, public WaypointEventListenerInterface {
 
-    private: static const PATHING: string = "Pathing";
+    private: static const std::string PATHING = "Pathing";
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: longWeaponRange: int32_t = 0;
+    private: int32_t longWeaponRange = 0;
 
-    private: sensorAction: SensorAction = SensorActionFactory.getInstance()!.ATTACK;
+    private: SensorAction sensorAction = SensorActionFactory::getInstance().ATTACK;
 
-    private: const completeTimeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper completeTimeDelayHelper;
 
-    const currentGeographicMapCellHistoryP: GeographicMapCellHistory;
+    protected: GeographicMapCellHistory currentGeographicMapCellHistoryP;
 
-    private: lastPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition lastPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: currentPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition currentPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: const FAKE_WAYPOINT_LAYER: CollidableDestroyableDamageableLayer;
+    private: CollidableDestroyableDamageableLayer FAKE_WAYPOINT_LAYER;
 
-    const targetList: BasicArrayList;
+    protected: BasicArrayList targetList;
 
-    private: const possibleTargetList: BasicArrayList;
+    private: BasicArrayList possibleTargetList;
 
-    const associatedAdvancedRTSGameLayer: UnitLayer;
+    protected: UnitLayer associatedAdvancedRTSGameLayer;
 
-    private: moving: bool = false;
+    private: bool moving = false;
 
-    private: movingFromStopped: bool = false;
+    private: bool movingFromStopped = false;
 
-    waypointPathsListP: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    protected: BasicArrayList waypointPathsListP = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: currentTargetDistance: int32_t = Integer.MAX_VALUE;
+    private: int32_t currentTargetDistance = Integer::MAX_VALUE;
 
-    currentTargetLayerInterfaceP: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    protected: CollidableDestroyableDamageableLayer currentTargetLayerInterfaceP = CollidableDestroyableDamageableLayer::getNullInstance();
 
-    private: trackingWaypoint: bool= false;
+    private: bool trackingWaypoint= false;
 
-protected constructor (UnitLayer associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer fakeWaypoint);
+protected: UnitWaypointBehavior(UnitLayer associatedAdvancedRTSGameLayer, CollidableDestroyableDamageableLayer fakeWaypoint);
 
-    initRange(int32_t weaponRange);
+    protected: void initRange(int32_t weaponRange);
 
-    public onEvent(AllBinaryEventObject eventObject);
-
-                //@Throws(Exception.constructor)
-            
-    public onWaypointEvent(RTSLayerEvent event);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    addWaypointFromUser(AdvancedRTSGameLayer advancedRTSGameLayer);
+    public: void onWaypointEvent(RTSLayerEvent event);
 
                 //@Throws(Exception.constructor)
             
-    addWaypointFromBuilding(AdvancedRTSGameLayer advancedRTSGameLayer);
-
-    public bool isWaypointListEmptyOrOnlyTargets();
+    protected: void addWaypointFromUser(AdvancedRTSGameLayer advancedRTSGameLayer);
 
                 //@Throws(Exception.constructor)
             
-    public bool insertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer);
+    private: void addWaypointFromBuilding(AdvancedRTSGameLayer advancedRTSGameLayer);
 
-    move();
-
-                //@Throws(Exception.constructor)
-            
-    setRandomGeographicMapCellHistory(BasicArrayList pathsList);
+    public: bool isWaypointListEmptyOrOnlyTargets();
 
                 //@Throws(Exception.constructor)
             
-    setGeographicMapCellHistoryPath(BasicArrayList geographicMapCellPositionBasicArrayList);
+    public: bool insertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer);
 
-    bool canInsertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer);
-
-                //@Throws(Exception.constructor)
-            
-    public addBuildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    protected: void move();
 
                 //@Throws(Exception.constructor)
             
-    moveAwayFromBuilding(BuildingLayer buildingLayer);
+    protected: void setRandomGeographicMapCellHistory(BasicArrayList pathsList);
 
-    private: const repeatedToLong: TimeDelayHelper = new TimeDelayHelper(22000);
+                //@Throws(Exception.constructor)
+            
+    protected: void setGeographicMapCellHistoryPath(BasicArrayList geographicMapCellPositionBasicArrayList);
 
-    public bool needToMove();
+    protected: bool canInsertWaypoint(int32_t index, CollidableDestroyableDamageableLayer rtsLayer);
 
-    public string getMovementLogicAsString();
+                //@Throws(Exception.constructor)
+            
+    public: void addBuildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
 
-    public bool isMovingFromStopped();
+                //@Throws(Exception.constructor)
+            
+    protected: void moveAwayFromBuilding(BuildingLayer buildingLayer);
 
-    setMovingFromStopped(bool movingFromStopped);
+    private: const TimeDelayHelper repeatedToLong = TimeDelayHelper(22000);
 
-    public setWaypointPathsList(BasicArrayList waypointPathsList);
+    public: bool needToMove();
 
-    public BasicArrayList getWaypointPathsList();
+    public: std::string getMovementLogicAsString();
 
-    bool isMoving();
+    public: bool isMovingFromStopped();
 
-    setMoving(bool moving);
+    protected: void setMovingFromStopped(bool movingFromStopped);
 
-    public bool isTrackingWaypoint();
+    public: void setWaypointPathsList(BasicArrayList waypointPathsList);
 
-    BasicArrayList getPossibleTargetList();
+    public: BasicArrayList getWaypointPathsList();
 
-    setLastPathGeographicMapCellPosition(GeographicMapCellPosition lastPathGeographicMapCellPosition);
+    protected: bool isMoving();
 
-    GeographicMapCellPosition getLastPathGeographicMapCellPosition();
+    protected: void setMoving(bool moving);
 
-    setCurrentPathGeographicMapCellPosition(GeographicMapCellPosition currentPathGeographicMapCellPosition);
+    public: bool isTrackingWaypoint();
 
-    public GeographicMapCellPosition getCurrentPathGeographicMapCellPosition();
+    protected: BasicArrayList getPossibleTargetList();
 
-    setSensorAction(SensorAction sensorAction);
+    protected: void setLastPathGeographicMapCellPosition(GeographicMapCellPosition lastPathGeographicMapCellPosition);
 
-    SensorAction getSensorAction();
+    protected: GeographicMapCellPosition getLastPathGeographicMapCellPosition();
 
-    setCurrentTargetLayerInterface(CollidableDestroyableDamageableLayer currentTargetLayerInterface);
+    protected: void setCurrentPathGeographicMapCellPosition(GeographicMapCellPosition currentPathGeographicMapCellPosition);
 
-    public CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface();
+    public: GeographicMapCellPosition getCurrentPathGeographicMapCellPosition();
 
-    setCurrentTargetDistance(int32_t currentTargetDistance);
+    protected: void setSensorAction(SensorAction sensorAction);
 
-    int32_t getCurrentTargetDistance();
+    protected: SensorAction getSensorAction();
 
-    TimeDelayHelper getCompleteTimeDelayHelper();
+    protected: void setCurrentTargetLayerInterface(CollidableDestroyableDamageableLayer currentTargetLayerInterface);
 
-    public GeographicMapCellHistory getCurrentGeographicMapCellHistory();
+    public: CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface();
 
-    setTrackingWaypoint(bool trackingWaypoint);
+    protected: void setCurrentTargetDistance(int32_t currentTargetDistance);
+
+    protected: int32_t getCurrentTargetDistance();
+
+    protected: TimeDelayHelper getCompleteTimeDelayHelper();
+
+    public: GeographicMapCellHistory getCurrentGeographicMapCellHistory();
+
+    protected: void setTrackingWaypoint(bool trackingWaypoint);
 
 };
 

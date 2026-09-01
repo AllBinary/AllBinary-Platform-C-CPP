@@ -47,35 +47,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DirectoryOrIncludeFileExtensionBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
-        
 
-    private: const includesString: string;
+    private: std::string includesString;
 
-public constructor (BasicArrayList filterStringBasicArrayList){
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
             super(filterStringBasicArrayList);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.includesString= 
+this->includesString= 
                                         nullptr
                                     ;
     
 }
 
 
-public constructor (BasicArrayList filterStringBasicArrayList, string includesString){
+public: DirectoryOrIncludeFileExtensionBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString){
             super(filterStringBasicArrayList);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.includesString= includesString;
+this->includesString= includesString;
     
 }
 
 
-    public Boolean visit(AbFile file){
+    public: Boolean visit(AbFile file){
 
                         if(file.isDirectory())
                         
@@ -84,15 +83,13 @@ this.includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
                                 
 
-                        if(this.includesString == 
-                                    null
-                                 || file.getAbsolutePath()!.indexOf(this.includesString) >= 0)
+                        if(false || file.getAbsolutePath().indexOf(this->includesString) >= 0)
                         
                                     {
                                     
@@ -109,7 +106,7 @@ this.includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                         }

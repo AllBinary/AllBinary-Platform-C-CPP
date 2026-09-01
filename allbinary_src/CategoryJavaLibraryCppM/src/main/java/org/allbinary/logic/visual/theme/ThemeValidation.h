@@ -139,73 +139,72 @@
 class ThemeValidation
             : public Object
         : public ThemeInterface, public ValidationInterface, public DomNodeInterface, public CompositeTransformInfoInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-    private: styleValidationInterface: ValidationInterface;
+    private: ValidationInterface styleValidationInterface;
 
-    private: themeName: string;
+    private: std::string themeName;
 
-    private: themePreviewImageName: string;
+    private: std::string themePreviewImageName;
 
-    private: webAppAbPath: AbPath;
+    private: AbPath webAppAbPath;
 
-    private: categoryAbPath: AbPath;
+    private: AbPath categoryAbPath;
 
-    private: fileAbPath: AbPath;
+    private: AbPath fileAbPath;
 
-public constructor (TransformInfoInterface transformInfoInterface, CssStyleValidation cssStyleValidation, string categoryThemePath);
+public: ThemeValidation(TransformInfoInterface transformInfoInterface, CssStyleValidation cssStyleValidation, std::string categoryThemePath);
 
-public constructor (TransformInfoInterface transformInfoInterface, HashMap<any, any> hashMap);
+public: ThemeValidation(TransformInfoInterface transformInfoInterface, HashMap<any, any> hashMap);
 
-public constructor (StoreThemeCategoryInterface storeThemeCategoryInterface, Node node);
-
-                //@Throws(Exception.constructor)
-            
-    init();
+public: ThemeValidation(StoreThemeCategoryInterface storeThemeCategoryInterface, Node node);
 
                 //@Throws(Exception.constructor)
             
-    init(StoreThemeCategoryInterface storeThemeCategoryInterface);
+    private: void init();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterface();
-
-    public string getName();
-
-    public string getPreviewImageName();
-
-    public string getPreviewImagePath();
-
-    public string getPath();
+    private: void init(StoreThemeCategoryInterface storeThemeCategoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public CssStyleValidation getCssStyleValidation();
+    public: TransformInfoInterface getTransformInfoInterface();
 
-    public Boolean isValid();
+    public: std::string getName();
 
-    public string validationInfo();
+    public: std::string getPreviewImageName();
 
-    public Document toValidationInfoDoc();
+    public: std::string getPreviewImagePath();
 
-    public Node toValidationInfoNode(Document document);
-
-    public any getKey();
-
-    public Vector toVector();
-
-    public HashMap<any, any> toHashMap();
+    public: std::string getPath();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: CssStyleValidation getCssStyleValidation();
+
+    public: Boolean isValid();
+
+    public: std::string validationInfo();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+    public: Object* getKey();
+
+    public: Vector toVector();
+
+    public: HashMap<any, any> toHashMap();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node toXmlNode(Document document);
 
 };
 

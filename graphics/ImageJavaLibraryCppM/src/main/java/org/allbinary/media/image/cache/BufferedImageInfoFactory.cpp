@@ -49,13 +49,12 @@
 class BufferedImageInfoFactory
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    public static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type){
+    public: static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type){
 
-    stringbuffer: StringMaker = new StringMaker();;
+    StringMaker stringbuffer = StringMaker();;
     
 stringbuffer.appendint(width);
     
@@ -64,20 +63,20 @@ stringbuffer.appendint(height);
 stringbuffer.appendint(type);
     
 
-    key: string = stringbuffer.toString()!;;
+    std::string key = stringbuffer.toString();;
     
 
-    bufferedImageInfo: BufferedImageInfo = BufferedImageInfoFactory.hashMap!.get(key) as BufferedImageInfo;;
+    BufferedImageInfo bufferedImageInfo = BufferedImageInfoFactory::hashMap.get(key) as BufferedImageInfo;;
     
 
                         if(bufferedImageInfo == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    bufferedImageInfo= new BufferedImageInfo(width, height, type);
+                                    bufferedImageInfo= BufferedImageInfo(width, height, type);
     
-BufferedImageInfoFactory.hashMap!.put(key, bufferedImageInfo);
+BufferedImageInfoFactory::hashMap.put(key, bufferedImageInfo);
     
 
                                     }
@@ -91,10 +90,8 @@ BufferedImageInfoFactory.hashMap!.put(key, bufferedImageInfo);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BufferedImageInfoFactory(){
+}
 
 
 };

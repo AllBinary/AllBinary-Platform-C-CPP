@@ -109,69 +109,68 @@
 class OpenGLConfiguration
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static OpenGLConfiguration getInstance();
+    public: static OpenGLConfiguration getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const FILE: string = "OpenGLConfiguration.dat";
+    private: const std::string FILE = "OpenGLConfiguration.dat";
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: opengl: bool = false;
+    private: bool opengl = false;
 
-    private: type: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.OPENGL_AS_GAME_THREAD;
+    private: OpenGLFeature type = OpenGLFeatureFactory::getInstance().OPENGL_AS_GAME_THREAD;
 
-    private: imageColor: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature imageColor = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
 
-    private: color: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature color = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
 
-    private: versionSelector: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.OPENGL_AUTO_SELECT;
+    private: OpenGLFeature versionSelector = OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT;
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    read();
+private: OpenGLConfiguration();
 
                 //@Throws(Exception.constructor)
             
-    public write();
+    private: void read();
 
                 //@Throws(Exception.constructor)
             
-    public init();
+    public: void write();
 
                 //@Throws(Exception.constructor)
             
-    public update(Feature gameFeature, bool colorLocked);
+    public: void init();
 
-    public setOpenGL(bool opengl);
+                //@Throws(Exception.constructor)
+            
+    public: void update(Feature gameFeature, bool colorLocked);
 
-    public bool isOpenGL();
+    public: void setOpenGL(bool opengl);
 
-    public setImageColor(OpenGLFeature imageColor);
+    public: bool isOpenGL();
 
-    public OpenGLFeature getImageColor();
+    public: void setImageColor(OpenGLFeature imageColor);
 
-    public setColor(OpenGLFeature color);
+    public: OpenGLFeature getImageColor();
 
-    public OpenGLFeature getColor();
+    public: void setColor(OpenGLFeature color);
 
-    public setVersionSelector(OpenGLFeature versionSelector);
+    public: OpenGLFeature getColor();
 
-    public OpenGLFeature getVersionSelector();
+    public: void setVersionSelector(OpenGLFeature versionSelector);
 
-    public setType(OpenGLFeature type);
+    public: OpenGLFeature getVersionSelector();
 
-    public OpenGLFeature getType();
+    public: void setType(OpenGLFeature type);
 
-    public string toString();
+    public: OpenGLFeature getType();
+
+    public: std::string toString();
 
 };
 

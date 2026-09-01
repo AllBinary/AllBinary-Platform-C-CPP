@@ -68,19 +68,18 @@
 class TransformInfoObjectConfigNoManipulationFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoObjectConfigNoManipulationFactory = new TransformInfoObjectConfigNoManipulationFactory();
+    private: static TransformInfoObjectConfigNoManipulationFactory instance() { return TransformInfoObjectConfigNoManipulationFactory(); }
 
-    public static TransformInfoObjectConfigNoManipulationFactory getInstance();
+    public: static TransformInfoObjectConfigNoManipulationFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: TransformInfoObjectConfigNoManipulationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigInterface getInstance(TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath);
+    public: TransformInfoObjectConfigInterface getInstance(TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath);
 
 };
 

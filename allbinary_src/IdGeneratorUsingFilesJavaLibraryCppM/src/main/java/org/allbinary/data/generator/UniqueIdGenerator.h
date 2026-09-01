@@ -80,29 +80,28 @@
 class UniqueIdGenerator
             : public Object
         : public IdGeneratorInterface {
-        
 
-    public static const EXT: string = ".unq";
+    public: static const std::string EXT = ".unq";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: newFile: AbFile;
+    private: AbFile newFile;
 
-    private: id: int64_t = 0;
+    private: int64_t id = 0;
 
-public constructor ();
+public: UniqueIdGenerator();
 
-    public initialize(int32_t value);
+    public: void initialize(int32_t value);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setFile(string filePathName, string name);
+    public: void setFile(std::string filePathName, std::string name);
 
                 //@Throws(IOException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string getNext();
+    public: std::string getNext();
 
 };
 

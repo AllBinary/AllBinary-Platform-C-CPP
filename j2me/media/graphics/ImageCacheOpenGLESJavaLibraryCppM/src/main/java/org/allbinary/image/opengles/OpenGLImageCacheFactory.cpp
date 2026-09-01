@@ -49,21 +49,20 @@
 class OpenGLImageCacheFactory
             : public Object
          {
-        
 
-    private: static const IMAGE_CACHE: ImageCache = new OpenGLImageCache();
+    private: static const ImageCache IMAGE_CACHE = OpenGLImageCache();
 
-    public static ImageCache getInstance(){
+    public: static ImageCache getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLImageCacheFactory.IMAGE_CACHE;
+                        return OpenGLImageCacheFactory::IMAGE_CACHE;
     
 }
 
 
-    public static init(){
+    public: static void init(){
 }
 
 

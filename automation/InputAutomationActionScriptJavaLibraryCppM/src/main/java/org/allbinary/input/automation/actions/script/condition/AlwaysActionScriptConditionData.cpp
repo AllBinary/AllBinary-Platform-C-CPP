@@ -42,16 +42,13 @@
 class AlwaysActionScriptConditionData
             : public Object
          {
-        
 
-    public static NAME: string = "ALWAYS_ACTION_CONDITION_NAME";
+    public: static std::string NAME = "ALWAYS_ACTION_CONDITION_NAME";
 
-    public static IS_ON: string = "ALWAYS_ACTION_CONDITION_IS_ON";
+    public: static std::string IS_ON = "ALWAYS_ACTION_CONDITION_IS_ON";
 
-private constructor (){
-
-            super();
-        }
+private: AlwaysActionScriptConditionData(){
+}
 
 
 };

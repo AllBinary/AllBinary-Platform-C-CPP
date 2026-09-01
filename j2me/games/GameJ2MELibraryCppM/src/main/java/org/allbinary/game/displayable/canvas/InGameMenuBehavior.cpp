@@ -46,60 +46,59 @@
 #include "GameCanvasNonBotPaintable.h"
 
 class InGameMenuBehavior: public BaseMenuBehavior {
-        
 
-    private: static const instanceC: InGameMenuBehavior = new InGameMenuBehavior();
+    private: static const InGameMenuBehavior instanceC = InGameMenuBehavior();
 
-    public static InGameMenuBehavior getInstance(){
+    public: static InGameMenuBehavior getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameMenuBehavior.instanceC;
+                        return InGameMenuBehavior::instanceC;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent){
-allBinaryGameCanvas!.updateMenuFromEvent(displayChangeEvent);
+    public: void onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent){
+allBinaryGameCanvas.updateMenuFromEvent(displayChangeEvent);
     
 }
 
 
-    public initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas!.setNonBotPaintableP(new GameCanvasNonBotPaintable(allBinaryGameCanvas));
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public initMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas!.initMenu2();
+    public: void initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas){
+allBinaryGameCanvas.setNonBotPaintableP(GameCanvasNonBotPaintable(allBinaryGameCanvas));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updateMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas!.initMenu2();
+    public: void initMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+allBinaryGameCanvas.initMenu2();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public popupMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas!.popupMenu2();
+    public: void updateMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+allBinaryGameCanvas.initMenu2();
     
 }
 
 
-    public closeMenu(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas!.closeMenu2();
+                //@Throws(Exception.constructor)
+            
+    public: void popupMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+allBinaryGameCanvas.popupMenu2();
+    
+}
+
+
+    public: void closeMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+allBinaryGameCanvas.closeMenu2();
     
 }
 

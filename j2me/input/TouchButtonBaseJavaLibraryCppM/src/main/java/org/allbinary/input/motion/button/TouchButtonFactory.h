@@ -62,32 +62,31 @@
 class TouchButtonFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: TouchButtonFactory = new TouchButtonFactory();
+    private: static const TouchButtonFactory SINGLETON = TouchButtonFactory();
 
-    public static TouchButtonFactory getInstance();
+    public: static TouchButtonFactory getInstance();
 
-    private: LIST: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: list: BasicArrayList = this.LIST;
+    private: BasicArrayList list = this->LIST;
 
-    private: savedList: BasicArrayList = this.LIST;
+    private: BasicArrayList savedList = this->LIST;
 
-private constructor ();
+private: TouchButtonFactory();
 
-    public defaultList();
+    public: void defaultList();
 
-    private: saved: bool = false;
+    private: bool saved = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public toggle(bool save, BasicArrayList list);
+    public: void toggle(bool save, BasicArrayList list);
 
                 //@Throws(Exception.constructor)
             
-    public setList(BasicArrayList list);
+    public: void setList(BasicArrayList list);
 
-    BasicArrayList getList();
+    protected: BasicArrayList getList();
 
 };
 

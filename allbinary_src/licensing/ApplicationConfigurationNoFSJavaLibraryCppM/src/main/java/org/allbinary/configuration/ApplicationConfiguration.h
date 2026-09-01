@@ -54,47 +54,46 @@
 class ApplicationConfiguration
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ApplicationConfiguration getInstance();
+    public: static ApplicationConfiguration getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: fullscreen: bool = true;
+    private: bool fullscreen = true;
 
-    private: showTitleBar: bool = false;
+    private: bool showTitleBar = false;
 
-    private: progressBarView: bool = false;
+    private: bool progressBarView = false;
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    read();
+private: ApplicationConfiguration();
 
                 //@Throws(Exception.constructor)
             
-    public write();
+    private: void read();
 
                 //@Throws(Exception.constructor)
             
-    public update(Feature gameFeature);
+    public: void write();
 
-    public setFullscreen(bool fullscreen);
+                //@Throws(Exception.constructor)
+            
+    public: void update(Feature gameFeature);
 
-    public bool isFullscreen();
+    public: void setFullscreen(bool fullscreen);
 
-    public setShowTitleBar(bool showTitleBar);
+    public: bool isFullscreen();
 
-    public bool isShowTitleBar();
+    public: void setShowTitleBar(bool showTitleBar);
 
-    public setProgressBarView(bool progressBarView);
+    public: bool isShowTitleBar();
 
-    public bool isProgressBarView();
+    public: void setProgressBarView(bool progressBarView);
 
-    public string toString();
+    public: bool isProgressBarView();
+
+    public: std::string toString();
 
 };
 

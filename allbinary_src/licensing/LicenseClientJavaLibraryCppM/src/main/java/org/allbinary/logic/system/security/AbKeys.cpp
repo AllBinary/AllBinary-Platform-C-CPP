@@ -56,38 +56,35 @@
 class AbKeys
             : public Object
          {
-        
 
-    private: static const instance: AbKeys = new AbKeys();
+    private: static AbKeys instance() { return AbKeys(); }
 
-    public static AbKeys getInstance(){
+    public: static AbKeys getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbKeys.instance;
+                        return AbKeys::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: AbKeys(){
+}
 
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string getKey(AbeClientInformationInterface abeClientInformation, string keyName){
+    public: std::string getKey(AbeClientInformationInterface abeClientInformation, std::string keyName){
 
         try {
-            this.logUtil!.putF("Getting Key: " +keyName, this, "getKey");
+            this->logUtil.putF("Getting Key: " +keyName, this, "getKey");
     
 
-                        if(keyName!.compareTo("DirectX 8") == 0 || keyName!.compareTo("DirectX") == 0 || keyName!.compareTo("Low Level") == 0 || keyName!.compareTo("System Drivers") == 0)
+                        if(keyName.compareTo("DirectX 8") == 0 || keyName.compareTo("DirectX") == 0 || keyName.compareTo("Low Level") == 0 || keyName.compareTo("System Drivers") == 0)
                         
                                     {
                                     
@@ -103,7 +100,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeLicenseInterfaceFactory.getInstance()!.getLicenseInstance(abeClientInformation)!.getKey(keyName);;
+                        return AbeLicenseInterfaceFactory::getInstance().getLicenseInstance(abeClientInformation).getKey(keyName);;
     
 
                 //: 
@@ -119,12 +116,12 @@ private constructor (){
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put("Licensing Failure", this, "getKey()", e);
+this->logUtil.put("Licensing Failure", this, "getKey()", e);
     
 
 
 
-                            throw new LicensingException("Unknown License Failure");
+                            throw LicensingException("Unknown License Failure");
                     
 }
 */

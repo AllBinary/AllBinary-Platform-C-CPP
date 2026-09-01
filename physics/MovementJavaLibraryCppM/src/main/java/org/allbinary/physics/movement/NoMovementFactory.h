@@ -46,15 +46,14 @@
 class NoMovementFactory
             : public Object
          {
-        
 
-    private: static const instance: NoMovementFactory = new NoMovementFactory();
+    private: static NoMovementFactory instance() { return NoMovementFactory(); }
 
-    public static NoMovementFactory getInstance();
+    public: static NoMovementFactory getInstance();
 
-    private: const movement: Movement = new Movement();
+    private: const Movement movement = Movement();
 
-    public Movement getMovmentInstance();
+    public: Movement getMovmentInstance();
 
 };
 

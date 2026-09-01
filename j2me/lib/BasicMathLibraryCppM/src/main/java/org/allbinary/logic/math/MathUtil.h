@@ -37,27 +37,26 @@
 class MathUtil
             : public Object
          {
-        
 
-    private: static const instance: MathUtil = new MathUtil();
+    private: static MathUtil instance() { return MathUtil(); }
 
-    public static MathUtil getInstance();
+    public: static MathUtil getInstance();
 
-    public int32_t getTotalDigits(int32_t digits);
+    public: int32_t getTotalDigits(int32_t digits);
 
-    public int32_t sqrt(int32_t value);
+    public: int32_t sqrt(int32_t value);
 
-    private: const ACCURACY: int32_t = 100;
+    private: const int32_t ACCURACY = 100;
 
-    public double sqrtd(int32_t x);
+    public: double sqrtd(int32_t x);
 
-    public int32_t abs(int32_t value);
+    public: int32_t abs(int32_t value);
 
-    public int64_t abslong(int64_t value);
+    public: int64_t abslong(int64_t value);
 
-    public int32_t min(int32_t value, int32_t value2);
+    public: int32_t min(int32_t value, int32_t value2);
 
-    public int32_t max(int32_t value, int32_t value2);
+    public: int32_t max(int32_t value, int32_t value2);
 
 };
 

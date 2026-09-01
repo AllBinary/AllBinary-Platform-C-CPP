@@ -44,14 +44,13 @@
 class OpenGLESGraphicsFactory
             : public Object
          {
-        
 
-    public OpenGLESGraphics getOpenGLESGraphicsInstance(){
+    public: OpenGLESGraphics getOpenGLESGraphicsInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESNullGraphicsFactory.getInstance();;
+                        return OpenGLESNullGraphicsFactory::getInstance();;
     
 }
 

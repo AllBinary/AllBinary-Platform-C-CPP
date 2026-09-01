@@ -52,15 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MovementInterface {
-        
 
-    init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle)
+    void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle)
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryGameLayer layer)
+    void process(AllBinaryGameLayer layer)
 
-    stop()
+    void stop()
 
 };
 

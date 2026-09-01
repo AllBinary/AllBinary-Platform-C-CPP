@@ -52,24 +52,21 @@
 class TransformHttpRequestDocumentFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession){
+    public: static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformHttpRequestDocument(pageContext, weblisketSession) as TransformDocumentInterface;
+                        return TransformHttpRequestDocument(pageContext, weblisketSession) as TransformDocumentInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformHttpRequestDocumentFactory(){
+}
 
 
 };

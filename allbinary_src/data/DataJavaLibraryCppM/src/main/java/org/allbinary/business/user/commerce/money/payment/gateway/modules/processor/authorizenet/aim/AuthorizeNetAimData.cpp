@@ -42,28 +42,25 @@
 class AuthorizeNetAimData
             : public Object
          {
-        
 
-    public static const X_DELIM_DATA: string = "x_delim_data";
+    public: static const std::string X_DELIM_DATA = "x_delim_data";
 
-    public static const X_DELIM_CHAR: string = "x_delim_char";
+    public: static const std::string X_DELIM_CHAR = "x_delim_char";
 
-    public static const X_ENCAP_CHAR: string = "x_encap_char";
+    public: static const std::string X_ENCAP_CHAR = "x_encap_char";
 
-    public static const X_AUTHENTICATION_INDICATOR: string = "x_authentication_indicator";
+    public: static const std::string X_AUTHENTICATION_INDICATOR = "x_authentication_indicator";
 
-    public static const X_CARDHOLDER_AUTHENTICATION_VALUE: string = "x_cardholder_authentication_value";
+    public: static const std::string X_CARDHOLDER_AUTHENTICATION_VALUE = "x_cardholder_authentication_value";
 
-    public static const X_DRIVERS_LICENSE_NUM: string = "x_drivers_license_num";
+    public: static const std::string X_DRIVERS_LICENSE_NUM = "x_drivers_license_num";
 
-    public static const X_DRIVERS_LICENSE_STATE: string = "x_drivers_license_state";
+    public: static const std::string X_DRIVERS_LICENSE_STATE = "x_drivers_license_state";
 
-    public static const X_DRIVERS_LICENSE_DOB: string = "x_drivers_license_dob";
+    public: static const std::string X_DRIVERS_LICENSE_DOB = "x_drivers_license_dob";
 
-private constructor (){
-
-            super();
-        }
+private: AuthorizeNetAimData(){
+}
 
 
 };

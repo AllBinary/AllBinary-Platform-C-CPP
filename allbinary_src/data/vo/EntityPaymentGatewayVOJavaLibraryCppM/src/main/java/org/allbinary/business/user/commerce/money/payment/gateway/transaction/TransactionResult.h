@@ -79,69 +79,68 @@
 class TransactionResult
             : public Object
         : public TransactionResultInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: keyValuePairs: HashMap<any, any>;
+    private: HashMap<any, any> keyValuePairs;
 
-    private: result: string;
+    private: std::string result;
 
-public constructor (string result);
+public: TransactionResult(std::string result);
 
-public constructor (HashMap<any, any> keyValuePairs);
+public: TransactionResult(HashMap<any, any> keyValuePairs);
 
-    public string toString();
+    public: std::string toString();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    Vector getAllPossibleKeys();
+    private: Vector getAllPossibleKeys();
 
-    public Vector getValues();
+    public: Vector getValues();
 
-    public string getPnRef();
+    public: std::string getPnRef();
 
-    public string getRespMsg();
+    public: std::string getRespMsg();
 
-    public string getResult();
+    public: std::string getResult();
 
-    public string getScore();
+    public: std::string getScore();
 
-    public string getStatus();
+    public: std::string getStatus();
 
-    public string getFraudCode();
+    public: std::string getFraudCode();
 
-    public string getFraudMsg();
+    public: std::string getFraudMsg();
 
-    public string getOrigResult();
+    public: std::string getOrigResult();
 
-    public string getAvsAddr();
+    public: std::string getAvsAddr();
 
-    public string getAvsZip();
+    public: std::string getAvsZip();
 
-    public string getErrCode();
+    public: std::string getErrCode();
 
-    public string getException1();
+    public: std::string getException1();
 
-    public string getException2();
+    public: std::string getException2();
 
-    public string getException3();
+    public: std::string getException3();
 
-    public string getException4();
+    public: std::string getException4();
 
-    public string getException5();
+    public: std::string getException5();
 
-    public string getException6();
+    public: std::string getException6();
 
-    public string getException7();
+    public: std::string getException7();
 
-    public string getReason1();
+    public: std::string getReason1();
 
-    public string getReason2();
+    public: std::string getReason2();
 
-    public string getReason3();
+    public: std::string getReason3();
 
 };
 

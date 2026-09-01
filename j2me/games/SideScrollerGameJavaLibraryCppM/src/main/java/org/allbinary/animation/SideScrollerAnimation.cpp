@@ -42,27 +42,24 @@
 class SideScrollerAnimation
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
-
-
-    public jump(){
+public: SideScrollerAnimation(){
 }
 
 
-    public walk(){
+    public: void jump(){
 }
 
 
-    public run(){
+    public: void walk(){
 }
 
 
-    public crouch(){
+    public: void run(){
+}
+
+
+    public: void crouch(){
 }
 
 

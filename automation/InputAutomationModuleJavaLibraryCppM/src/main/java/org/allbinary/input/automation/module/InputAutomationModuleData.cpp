@@ -42,16 +42,13 @@
 class InputAutomationModuleData
             : public Object
          {
-        
 
-    public static NAME: string = "INPUT_AUTOMATION_MODULE";
+    public: static std::string NAME = "INPUT_AUTOMATION_MODULE";
 
-    public static MODULE_NAME_END: string = " Module";
+    public: static std::string MODULE_NAME_END = " Module";
 
-private constructor (){
-
-            super();
-        }
+private: InputAutomationModuleData(){
+}
 
 
 };

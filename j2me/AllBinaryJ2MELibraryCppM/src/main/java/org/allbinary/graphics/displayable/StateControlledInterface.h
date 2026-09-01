@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StateControlledInterface {
-        
 
-    setState(int32_t state);
+    void setState(int32_t state);
 
 };
 

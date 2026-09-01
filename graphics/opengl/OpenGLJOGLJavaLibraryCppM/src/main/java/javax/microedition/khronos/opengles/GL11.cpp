@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
 
 
 
@@ -30,128 +32,128 @@
             // Interfaces do not have static fields, so create a C++ helper class.
             class GL11I {
         
-    public static const GL_ACTIVE_TEXTURE: int32_t = 34016;
-    public static const GL_ADD_SIGNED: int32_t = 34164;
-    public static const GL_ALPHA_SCALE: int32_t = 3356;
-    public static const GL_ALPHA_TEST_FUNC: int32_t = 3009;
-    public static const GL_ALPHA_TEST_REF: int32_t = 3010;
-    public static const GL_ARRAY_BUFFER: int32_t = 34962;
-    public static const GL_ARRAY_BUFFER_BINDING: int32_t = 34964;
-    public static const GL_BLEND_DST: int32_t = 3040;
-    public static const GL_BLEND_SRC: int32_t = 3041;
-    public static const GL_BUFFER_ACCESS: int32_t = 35003;
-    public static const GL_BUFFER_SIZE: int32_t = 34660;
-    public static const GL_BUFFER_USAGE: int32_t = 34661;
-    public static const GL_CLIENT_ACTIVE_TEXTURE: int32_t = 34017;
-    public static const GL_CLIP_PLANE0: int32_t = 12288;
-    public static const GL_CLIP_PLANE1: int32_t = 12289;
-    public static const GL_CLIP_PLANE2: int32_t = 12290;
-    public static const GL_CLIP_PLANE3: int32_t = 12291;
-    public static const GL_CLIP_PLANE4: int32_t = 12292;
-    public static const GL_CLIP_PLANE5: int32_t = 12293;
-    public static const GL_COLOR_ARRAY_BUFFER_BINDING: int32_t = 34968;
-    public static const GL_COLOR_ARRAY_POINTER: int32_t = 32912;
-    public static const GL_COLOR_ARRAY_SIZE: int32_t = 32897;
-    public static const GL_COLOR_ARRAY_STRIDE: int32_t = 32899;
-    public static const GL_COLOR_ARRAY_TYPE: int32_t = 32898;
-    public static const GL_COLOR_CLEAR_VALUE: int32_t = 3106;
-    public static const GL_COLOR_WRITEMASK: int32_t = 3107;
-    public static const GL_COMBINE: int32_t = 34160;
-    public static const GL_COMBINE_ALPHA: int32_t = 34162;
-    public static const GL_COMBINE_RGB: int32_t = 34161;
-    public static const GL_CONSTANT: int32_t = 34166;
-    public static const GL_COORD_REPLACE_OES: int32_t = 34914;
-    public static const GL_CULL_FACE_MODE: int32_t = 2885;
-    public static const GL_CURRENT_COLOR: int32_t = 2816;
-    public static const GL_CURRENT_NORMAL: int32_t = 2818;
-    public static const GL_CURRENT_TEXTURE_COORDS: int32_t = 2819;
-    public static const GL_DEPTH_CLEAR_VALUE: int32_t = 2931;
-    public static const GL_DEPTH_FUNC: int32_t = 2932;
-    public static const GL_DEPTH_RANGE: int32_t = 2928;
-    public static const GL_DEPTH_WRITEMASK: int32_t = 2930;
-    public static const GL_DOT3_RGB: int32_t = 34478;
-    public static const GL_DOT3_RGBA: int32_t = 34479;
-    public static const GL_DYNAMIC_DRAW: int32_t = 35048;
-    public static const GL_ELEMENT_ARRAY_BUFFER: int32_t = 34963;
-    public static const GL_ELEMENT_ARRAY_BUFFER_BINDING: int32_t = 34965;
-    public static const GL_FRONT_FACE: int32_t = 2886;
-    public static const GL_GENERATE_MIPMAP: int32_t = 33169;
-    public static const GL_GENERATE_MIPMAP_HINT: int32_t = 33170;
-    public static const GL_INTERPOLATE: int32_t = 34165;
-    public static const GL_LINE_WIDTH: int32_t = 2849;
-    public static const GL_LOGIC_OP_MODE: int32_t = 3056;
-    public static const GL_MATRIX_MODE: int32_t = 2976;
-    public static const GL_MAX_CLIP_PLANES: int32_t = 3378;
-    public static const GL_MODELVIEW_MATRIX: int32_t = 2982;
-    public static const GL_MODELVIEW_MATRIX_FLOAT_AS_INT_BITS_OES: int32_t = 35213;
-    public static const GL_MODELVIEW_STACK_DEPTH: int32_t = 2979;
-    public static const GL_NORMAL_ARRAY_BUFFER_BINDING: int32_t = 34967;
-    public static const GL_NORMAL_ARRAY_POINTER: int32_t = 32911;
-    public static const GL_NORMAL_ARRAY_STRIDE: int32_t = 32895;
-    public static const GL_NORMAL_ARRAY_TYPE: int32_t = 32894;
-    public static const GL_OPERAND0_ALPHA: int32_t = 34200;
-    public static const GL_OPERAND0_RGB: int32_t = 34192;
-    public static const GL_OPERAND1_ALPHA: int32_t = 34201;
-    public static const GL_OPERAND1_RGB: int32_t = 34193;
-    public static const GL_OPERAND2_ALPHA: int32_t = 34202;
-    public static const GL_OPERAND2_RGB: int32_t = 34194;
-    public static const GL_POINT_DISTANCE_ATTENUATION: int32_t = 33065;
-    public static const GL_POINT_FADE_THRESHOLD_SIZE: int32_t = 33064;
-    public static const GL_POINT_SIZE: int32_t = 2833;
-    public static const GL_POINT_SIZE_ARRAY_BUFFER_BINDING_OES: int32_t = 35743;
-    public static const GL_POINT_SIZE_ARRAY_OES: int32_t = 35740;
-    public static const GL_POINT_SIZE_ARRAY_POINTER_OES: int32_t = 35212;
-    public static const GL_POINT_SIZE_ARRAY_STRIDE_OES: int32_t = 35211;
-    public static const GL_POINT_SIZE_ARRAY_TYPE_OES: int32_t = 35210;
-    public static const GL_POINT_SIZE_MAX: int32_t = 33063;
-    public static const GL_POINT_SIZE_MIN: int32_t = 33062;
-    public static const GL_POINT_SPRITE_OES: int32_t = 34913;
-    public static const GL_POLYGON_OFFSET_FACTOR: int32_t = 32824;
-    public static const GL_POLYGON_OFFSET_UNITS: int32_t = 10752;
-    public static const GL_PREVIOUS: int32_t = 34168;
-    public static const GL_PRIMARY_COLOR: int32_t = 34167;
-    public static const GL_PROJECTION_MATRIX: int32_t = 2983;
-    public static const GL_PROJECTION_MATRIX_FLOAT_AS_INT_BITS_OES: int32_t = 35214;
-    public static const GL_PROJECTION_STACK_DEPTH: int32_t = 2980;
-    public static const GL_RGB_SCALE: int32_t = 34163;
-    public static const GL_SAMPLE_BUFFERS: int32_t = 32936;
-    public static const GL_SAMPLE_COVERAGE_INVERT: int32_t = 32939;
-    public static const GL_SAMPLE_COVERAGE_VALUE: int32_t = 32938;
-    public static const GL_SAMPLES: int32_t = 32937;
-    public static const GL_SCISSOR_BOX: int32_t = 3088;
-    public static const GL_SHADE_MODEL: int32_t = 2900;
-    public static const GL_SRC0_ALPHA: int32_t = 34184;
-    public static const GL_SRC0_RGB: int32_t = 34176;
-    public static const GL_SRC1_ALPHA: int32_t = 34185;
-    public static const GL_SRC1_RGB: int32_t = 34177;
-    public static const GL_SRC2_ALPHA: int32_t = 34186;
-    public static const GL_SRC2_RGB: int32_t = 34178;
-    public static const GL_STATIC_DRAW: int32_t = 35044;
-    public static const GL_STENCIL_CLEAR_VALUE: int32_t = 2961;
-    public static const GL_STENCIL_FAIL: int32_t = 2964;
-    public static const GL_STENCIL_FUNC: int32_t = 2962;
-    public static const GL_STENCIL_PASS_DEPTH_FAIL: int32_t = 2965;
-    public static const GL_STENCIL_PASS_DEPTH_PASS: int32_t = 2966;
-    public static const GL_STENCIL_REF: int32_t = 2967;
-    public static const GL_STENCIL_VALUE_MASK: int32_t = 2963;
-    public static const GL_STENCIL_WRITEMASK: int32_t = 2968;
-    public static const GL_SUBTRACT: int32_t = 34023;
-    public static const GL_TEXTURE_BINDING_2D: int32_t = 32873;
-    public static const GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING: int32_t = 34970;
-    public static const GL_TEXTURE_COORD_ARRAY_POINTER: int32_t = 32914;
-    public static const GL_TEXTURE_COORD_ARRAY_SIZE: int32_t = 32904;
-    public static const GL_TEXTURE_COORD_ARRAY_STRIDE: int32_t = 32906;
-    public static const GL_TEXTURE_COORD_ARRAY_TYPE: int32_t = 32905;
-    public static const GL_TEXTURE_MATRIX: int32_t = 2984;
-    public static const GL_TEXTURE_MATRIX_FLOAT_AS_INT_BITS_OES: int32_t = 35215;
-    public static const GL_TEXTURE_STACK_DEPTH: int32_t = 2981;
-    public static const GL_VERTEX_ARRAY_BUFFER_BINDING: int32_t = 34966;
-    public static const GL_VERTEX_ARRAY_POINTER: int32_t = 32910;
-    public static const GL_VERTEX_ARRAY_SIZE: int32_t = 32890;
-    public static const GL_VERTEX_ARRAY_STRIDE: int32_t = 32892;
-    public static const GL_VERTEX_ARRAY_TYPE: int32_t = 32891;
-    public static const GL_VIEWPORT: int32_t = 2978;
-    public static const GL_WRITE_ONLY: int32_t = 35001;
+    public: static const int32_t GL_ACTIVE_TEXTURE = 34016;
+    public: static const int32_t GL_ADD_SIGNED = 34164;
+    public: static const int32_t GL_ALPHA_SCALE = 3356;
+    public: static const int32_t GL_ALPHA_TEST_FUNC = 3009;
+    public: static const int32_t GL_ALPHA_TEST_REF = 3010;
+    public: static const int32_t GL_ARRAY_BUFFER = 34962;
+    public: static const int32_t GL_ARRAY_BUFFER_BINDING = 34964;
+    public: static const int32_t GL_BLEND_DST = 3040;
+    public: static const int32_t GL_BLEND_SRC = 3041;
+    public: static const int32_t GL_BUFFER_ACCESS = 35003;
+    public: static const int32_t GL_BUFFER_SIZE = 34660;
+    public: static const int32_t GL_BUFFER_USAGE = 34661;
+    public: static const int32_t GL_CLIENT_ACTIVE_TEXTURE = 34017;
+    public: static const int32_t GL_CLIP_PLANE0 = 12288;
+    public: static const int32_t GL_CLIP_PLANE1 = 12289;
+    public: static const int32_t GL_CLIP_PLANE2 = 12290;
+    public: static const int32_t GL_CLIP_PLANE3 = 12291;
+    public: static const int32_t GL_CLIP_PLANE4 = 12292;
+    public: static const int32_t GL_CLIP_PLANE5 = 12293;
+    public: static const int32_t GL_COLOR_ARRAY_BUFFER_BINDING = 34968;
+    public: static const int32_t GL_COLOR_ARRAY_POINTER = 32912;
+    public: static const int32_t GL_COLOR_ARRAY_SIZE = 32897;
+    public: static const int32_t GL_COLOR_ARRAY_STRIDE = 32899;
+    public: static const int32_t GL_COLOR_ARRAY_TYPE = 32898;
+    public: static const int32_t GL_COLOR_CLEAR_VALUE = 3106;
+    public: static const int32_t GL_COLOR_WRITEMASK = 3107;
+    public: static const int32_t GL_COMBINE = 34160;
+    public: static const int32_t GL_COMBINE_ALPHA = 34162;
+    public: static const int32_t GL_COMBINE_RGB = 34161;
+    public: static const int32_t GL_CONSTANT = 34166;
+    public: static const int32_t GL_COORD_REPLACE_OES = 34914;
+    public: static const int32_t GL_CULL_FACE_MODE = 2885;
+    public: static const int32_t GL_CURRENT_COLOR = 2816;
+    public: static const int32_t GL_CURRENT_NORMAL = 2818;
+    public: static const int32_t GL_CURRENT_TEXTURE_COORDS = 2819;
+    public: static const int32_t GL_DEPTH_CLEAR_VALUE = 2931;
+    public: static const int32_t GL_DEPTH_FUNC = 2932;
+    public: static const int32_t GL_DEPTH_RANGE = 2928;
+    public: static const int32_t GL_DEPTH_WRITEMASK = 2930;
+    public: static const int32_t GL_DOT3_RGB = 34478;
+    public: static const int32_t GL_DOT3_RGBA = 34479;
+    public: static const int32_t GL_DYNAMIC_DRAW = 35048;
+    public: static const int32_t GL_ELEMENT_ARRAY_BUFFER = 34963;
+    public: static const int32_t GL_ELEMENT_ARRAY_BUFFER_BINDING = 34965;
+    public: static const int32_t GL_FRONT_FACE = 2886;
+    public: static const int32_t GL_GENERATE_MIPMAP = 33169;
+    public: static const int32_t GL_GENERATE_MIPMAP_HINT = 33170;
+    public: static const int32_t GL_INTERPOLATE = 34165;
+    public: static const int32_t GL_LINE_WIDTH = 2849;
+    public: static const int32_t GL_LOGIC_OP_MODE = 3056;
+    public: static const int32_t GL_MATRIX_MODE = 2976;
+    public: static const int32_t GL_MAX_CLIP_PLANES = 3378;
+    public: static const int32_t GL_MODELVIEW_MATRIX = 2982;
+    public: static const int32_t GL_MODELVIEW_MATRIX_FLOAT_AS_INT_BITS_OES = 35213;
+    public: static const int32_t GL_MODELVIEW_STACK_DEPTH = 2979;
+    public: static const int32_t GL_NORMAL_ARRAY_BUFFER_BINDING = 34967;
+    public: static const int32_t GL_NORMAL_ARRAY_POINTER = 32911;
+    public: static const int32_t GL_NORMAL_ARRAY_STRIDE = 32895;
+    public: static const int32_t GL_NORMAL_ARRAY_TYPE = 32894;
+    public: static const int32_t GL_OPERAND0_ALPHA = 34200;
+    public: static const int32_t GL_OPERAND0_RGB = 34192;
+    public: static const int32_t GL_OPERAND1_ALPHA = 34201;
+    public: static const int32_t GL_OPERAND1_RGB = 34193;
+    public: static const int32_t GL_OPERAND2_ALPHA = 34202;
+    public: static const int32_t GL_OPERAND2_RGB = 34194;
+    public: static const int32_t GL_POINT_DISTANCE_ATTENUATION = 33065;
+    public: static const int32_t GL_POINT_FADE_THRESHOLD_SIZE = 33064;
+    public: static const int32_t GL_POINT_SIZE = 2833;
+    public: static const int32_t GL_POINT_SIZE_ARRAY_BUFFER_BINDING_OES = 35743;
+    public: static const int32_t GL_POINT_SIZE_ARRAY_OES = 35740;
+    public: static const int32_t GL_POINT_SIZE_ARRAY_POINTER_OES = 35212;
+    public: static const int32_t GL_POINT_SIZE_ARRAY_STRIDE_OES = 35211;
+    public: static const int32_t GL_POINT_SIZE_ARRAY_TYPE_OES = 35210;
+    public: static const int32_t GL_POINT_SIZE_MAX = 33063;
+    public: static const int32_t GL_POINT_SIZE_MIN = 33062;
+    public: static const int32_t GL_POINT_SPRITE_OES = 34913;
+    public: static const int32_t GL_POLYGON_OFFSET_FACTOR = 32824;
+    public: static const int32_t GL_POLYGON_OFFSET_UNITS = 10752;
+    public: static const int32_t GL_PREVIOUS = 34168;
+    public: static const int32_t GL_PRIMARY_COLOR = 34167;
+    public: static const int32_t GL_PROJECTION_MATRIX = 2983;
+    public: static const int32_t GL_PROJECTION_MATRIX_FLOAT_AS_INT_BITS_OES = 35214;
+    public: static const int32_t GL_PROJECTION_STACK_DEPTH = 2980;
+    public: static const int32_t GL_RGB_SCALE = 34163;
+    public: static const int32_t GL_SAMPLE_BUFFERS = 32936;
+    public: static const int32_t GL_SAMPLE_COVERAGE_INVERT = 32939;
+    public: static const int32_t GL_SAMPLE_COVERAGE_VALUE = 32938;
+    public: static const int32_t GL_SAMPLES = 32937;
+    public: static const int32_t GL_SCISSOR_BOX = 3088;
+    public: static const int32_t GL_SHADE_MODEL = 2900;
+    public: static const int32_t GL_SRC0_ALPHA = 34184;
+    public: static const int32_t GL_SRC0_RGB = 34176;
+    public: static const int32_t GL_SRC1_ALPHA = 34185;
+    public: static const int32_t GL_SRC1_RGB = 34177;
+    public: static const int32_t GL_SRC2_ALPHA = 34186;
+    public: static const int32_t GL_SRC2_RGB = 34178;
+    public: static const int32_t GL_STATIC_DRAW = 35044;
+    public: static const int32_t GL_STENCIL_CLEAR_VALUE = 2961;
+    public: static const int32_t GL_STENCIL_FAIL = 2964;
+    public: static const int32_t GL_STENCIL_FUNC = 2962;
+    public: static const int32_t GL_STENCIL_PASS_DEPTH_FAIL = 2965;
+    public: static const int32_t GL_STENCIL_PASS_DEPTH_PASS = 2966;
+    public: static const int32_t GL_STENCIL_REF = 2967;
+    public: static const int32_t GL_STENCIL_VALUE_MASK = 2963;
+    public: static const int32_t GL_STENCIL_WRITEMASK = 2968;
+    public: static const int32_t GL_SUBTRACT = 34023;
+    public: static const int32_t GL_TEXTURE_BINDING_2D = 32873;
+    public: static const int32_t GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING = 34970;
+    public: static const int32_t GL_TEXTURE_COORD_ARRAY_POINTER = 32914;
+    public: static const int32_t GL_TEXTURE_COORD_ARRAY_SIZE = 32904;
+    public: static const int32_t GL_TEXTURE_COORD_ARRAY_STRIDE = 32906;
+    public: static const int32_t GL_TEXTURE_COORD_ARRAY_TYPE = 32905;
+    public: static const int32_t GL_TEXTURE_MATRIX = 2984;
+    public: static const int32_t GL_TEXTURE_MATRIX_FLOAT_AS_INT_BITS_OES = 35215;
+    public: static const int32_t GL_TEXTURE_STACK_DEPTH = 2981;
+    public: static const int32_t GL_VERTEX_ARRAY_BUFFER_BINDING = 34966;
+    public: static const int32_t GL_VERTEX_ARRAY_POINTER = 32910;
+    public: static const int32_t GL_VERTEX_ARRAY_SIZE = 32890;
+    public: static const int32_t GL_VERTEX_ARRAY_STRIDE = 32892;
+    public: static const int32_t GL_VERTEX_ARRAY_TYPE = 32891;
+    public: static const int32_t GL_VIEWPORT = 2978;
+    public: static const int32_t GL_WRITE_ONLY = 35001;
     
     
     
@@ -199,308 +201,307 @@
     
             }
         
-class GL11: public javax.microedition.khronos.opengles.GL10 {
-        
+class GL11: public javax::microedition::khronos::opengles::GL10 {
 
-    //Interfaces do not have static fields - public static const GL_ACTIVE_TEXTURE: int32_t = 34016;
+    //Interfaces do not have static fields - public: static const int32_t GL_ACTIVE_TEXTURE = 34016;
 
-    //Interfaces do not have static fields - public static const GL_ADD_SIGNED: int32_t = 34164;
+    //Interfaces do not have static fields - public: static const int32_t GL_ADD_SIGNED = 34164;
 
-    //Interfaces do not have static fields - public static const GL_ALPHA_SCALE: int32_t = 3356;
+    //Interfaces do not have static fields - public: static const int32_t GL_ALPHA_SCALE = 3356;
 
-    //Interfaces do not have static fields - public static const GL_ALPHA_TEST_FUNC: int32_t = 3009;
+    //Interfaces do not have static fields - public: static const int32_t GL_ALPHA_TEST_FUNC = 3009;
 
-    //Interfaces do not have static fields - public static const GL_ALPHA_TEST_REF: int32_t = 3010;
+    //Interfaces do not have static fields - public: static const int32_t GL_ALPHA_TEST_REF = 3010;
 
-    //Interfaces do not have static fields - public static const GL_ARRAY_BUFFER: int32_t = 34962;
+    //Interfaces do not have static fields - public: static const int32_t GL_ARRAY_BUFFER = 34962;
 
-    //Interfaces do not have static fields - public static const GL_ARRAY_BUFFER_BINDING: int32_t = 34964;
+    //Interfaces do not have static fields - public: static const int32_t GL_ARRAY_BUFFER_BINDING = 34964;
 
-    //Interfaces do not have static fields - public static const GL_BLEND_DST: int32_t = 3040;
+    //Interfaces do not have static fields - public: static const int32_t GL_BLEND_DST = 3040;
 
-    //Interfaces do not have static fields - public static const GL_BLEND_SRC: int32_t = 3041;
+    //Interfaces do not have static fields - public: static const int32_t GL_BLEND_SRC = 3041;
 
-    //Interfaces do not have static fields - public static const GL_BUFFER_ACCESS: int32_t = 35003;
+    //Interfaces do not have static fields - public: static const int32_t GL_BUFFER_ACCESS = 35003;
 
-    //Interfaces do not have static fields - public static const GL_BUFFER_SIZE: int32_t = 34660;
+    //Interfaces do not have static fields - public: static const int32_t GL_BUFFER_SIZE = 34660;
 
-    //Interfaces do not have static fields - public static const GL_BUFFER_USAGE: int32_t = 34661;
+    //Interfaces do not have static fields - public: static const int32_t GL_BUFFER_USAGE = 34661;
 
-    //Interfaces do not have static fields - public static const GL_CLIENT_ACTIVE_TEXTURE: int32_t = 34017;
+    //Interfaces do not have static fields - public: static const int32_t GL_CLIENT_ACTIVE_TEXTURE = 34017;
 
-    //Interfaces do not have static fields - public static const GL_CLIP_PLANE0: int32_t = 12288;
+    //Interfaces do not have static fields - public: static const int32_t GL_CLIP_PLANE0 = 12288;
 
-    //Interfaces do not have static fields - public static const GL_CLIP_PLANE1: int32_t = 12289;
+    //Interfaces do not have static fields - public: static const int32_t GL_CLIP_PLANE1 = 12289;
 
-    //Interfaces do not have static fields - public static const GL_CLIP_PLANE2: int32_t = 12290;
+    //Interfaces do not have static fields - public: static const int32_t GL_CLIP_PLANE2 = 12290;
 
-    //Interfaces do not have static fields - public static const GL_CLIP_PLANE3: int32_t = 12291;
+    //Interfaces do not have static fields - public: static const int32_t GL_CLIP_PLANE3 = 12291;
 
-    //Interfaces do not have static fields - public static const GL_CLIP_PLANE4: int32_t = 12292;
+    //Interfaces do not have static fields - public: static const int32_t GL_CLIP_PLANE4 = 12292;
 
-    //Interfaces do not have static fields - public static const GL_CLIP_PLANE5: int32_t = 12293;
+    //Interfaces do not have static fields - public: static const int32_t GL_CLIP_PLANE5 = 12293;
 
-    //Interfaces do not have static fields - public static const GL_COLOR_ARRAY_BUFFER_BINDING: int32_t = 34968;
+    //Interfaces do not have static fields - public: static const int32_t GL_COLOR_ARRAY_BUFFER_BINDING = 34968;
 
-    //Interfaces do not have static fields - public static const GL_COLOR_ARRAY_POINTER: int32_t = 32912;
+    //Interfaces do not have static fields - public: static const int32_t GL_COLOR_ARRAY_POINTER = 32912;
 
-    //Interfaces do not have static fields - public static const GL_COLOR_ARRAY_SIZE: int32_t = 32897;
+    //Interfaces do not have static fields - public: static const int32_t GL_COLOR_ARRAY_SIZE = 32897;
 
-    //Interfaces do not have static fields - public static const GL_COLOR_ARRAY_STRIDE: int32_t = 32899;
+    //Interfaces do not have static fields - public: static const int32_t GL_COLOR_ARRAY_STRIDE = 32899;
 
-    //Interfaces do not have static fields - public static const GL_COLOR_ARRAY_TYPE: int32_t = 32898;
+    //Interfaces do not have static fields - public: static const int32_t GL_COLOR_ARRAY_TYPE = 32898;
 
-    //Interfaces do not have static fields - public static const GL_COLOR_CLEAR_VALUE: int32_t = 3106;
+    //Interfaces do not have static fields - public: static const int32_t GL_COLOR_CLEAR_VALUE = 3106;
 
-    //Interfaces do not have static fields - public static const GL_COLOR_WRITEMASK: int32_t = 3107;
+    //Interfaces do not have static fields - public: static const int32_t GL_COLOR_WRITEMASK = 3107;
 
-    //Interfaces do not have static fields - public static const GL_COMBINE: int32_t = 34160;
+    //Interfaces do not have static fields - public: static const int32_t GL_COMBINE = 34160;
 
-    //Interfaces do not have static fields - public static const GL_COMBINE_ALPHA: int32_t = 34162;
+    //Interfaces do not have static fields - public: static const int32_t GL_COMBINE_ALPHA = 34162;
 
-    //Interfaces do not have static fields - public static const GL_COMBINE_RGB: int32_t = 34161;
+    //Interfaces do not have static fields - public: static const int32_t GL_COMBINE_RGB = 34161;
 
-    //Interfaces do not have static fields - public static const GL_CONSTANT: int32_t = 34166;
+    //Interfaces do not have static fields - public: static const int32_t GL_CONSTANT = 34166;
 
-    //Interfaces do not have static fields - public static const GL_COORD_REPLACE_OES: int32_t = 34914;
+    //Interfaces do not have static fields - public: static const int32_t GL_COORD_REPLACE_OES = 34914;
 
-    //Interfaces do not have static fields - public static const GL_CULL_FACE_MODE: int32_t = 2885;
+    //Interfaces do not have static fields - public: static const int32_t GL_CULL_FACE_MODE = 2885;
 
-    //Interfaces do not have static fields - public static const GL_CURRENT_COLOR: int32_t = 2816;
+    //Interfaces do not have static fields - public: static const int32_t GL_CURRENT_COLOR = 2816;
 
-    //Interfaces do not have static fields - public static const GL_CURRENT_NORMAL: int32_t = 2818;
+    //Interfaces do not have static fields - public: static const int32_t GL_CURRENT_NORMAL = 2818;
 
-    //Interfaces do not have static fields - public static const GL_CURRENT_TEXTURE_COORDS: int32_t = 2819;
+    //Interfaces do not have static fields - public: static const int32_t GL_CURRENT_TEXTURE_COORDS = 2819;
 
-    //Interfaces do not have static fields - public static const GL_DEPTH_CLEAR_VALUE: int32_t = 2931;
+    //Interfaces do not have static fields - public: static const int32_t GL_DEPTH_CLEAR_VALUE = 2931;
 
-    //Interfaces do not have static fields - public static const GL_DEPTH_FUNC: int32_t = 2932;
+    //Interfaces do not have static fields - public: static const int32_t GL_DEPTH_FUNC = 2932;
 
-    //Interfaces do not have static fields - public static const GL_DEPTH_RANGE: int32_t = 2928;
+    //Interfaces do not have static fields - public: static const int32_t GL_DEPTH_RANGE = 2928;
 
-    //Interfaces do not have static fields - public static const GL_DEPTH_WRITEMASK: int32_t = 2930;
+    //Interfaces do not have static fields - public: static const int32_t GL_DEPTH_WRITEMASK = 2930;
 
-    //Interfaces do not have static fields - public static const GL_DOT3_RGB: int32_t = 34478;
+    //Interfaces do not have static fields - public: static const int32_t GL_DOT3_RGB = 34478;
 
-    //Interfaces do not have static fields - public static const GL_DOT3_RGBA: int32_t = 34479;
+    //Interfaces do not have static fields - public: static const int32_t GL_DOT3_RGBA = 34479;
 
-    //Interfaces do not have static fields - public static const GL_DYNAMIC_DRAW: int32_t = 35048;
+    //Interfaces do not have static fields - public: static const int32_t GL_DYNAMIC_DRAW = 35048;
 
-    //Interfaces do not have static fields - public static const GL_ELEMENT_ARRAY_BUFFER: int32_t = 34963;
+    //Interfaces do not have static fields - public: static const int32_t GL_ELEMENT_ARRAY_BUFFER = 34963;
 
-    //Interfaces do not have static fields - public static const GL_ELEMENT_ARRAY_BUFFER_BINDING: int32_t = 34965;
+    //Interfaces do not have static fields - public: static const int32_t GL_ELEMENT_ARRAY_BUFFER_BINDING = 34965;
 
-    //Interfaces do not have static fields - public static const GL_FRONT_FACE: int32_t = 2886;
+    //Interfaces do not have static fields - public: static const int32_t GL_FRONT_FACE = 2886;
 
-    //Interfaces do not have static fields - public static const GL_GENERATE_MIPMAP: int32_t = 33169;
+    //Interfaces do not have static fields - public: static const int32_t GL_GENERATE_MIPMAP = 33169;
 
-    //Interfaces do not have static fields - public static const GL_GENERATE_MIPMAP_HINT: int32_t = 33170;
+    //Interfaces do not have static fields - public: static const int32_t GL_GENERATE_MIPMAP_HINT = 33170;
 
-    //Interfaces do not have static fields - public static const GL_INTERPOLATE: int32_t = 34165;
+    //Interfaces do not have static fields - public: static const int32_t GL_INTERPOLATE = 34165;
 
-    //Interfaces do not have static fields - public static const GL_LINE_WIDTH: int32_t = 2849;
+    //Interfaces do not have static fields - public: static const int32_t GL_LINE_WIDTH = 2849;
 
-    //Interfaces do not have static fields - public static const GL_LOGIC_OP_MODE: int32_t = 3056;
+    //Interfaces do not have static fields - public: static const int32_t GL_LOGIC_OP_MODE = 3056;
 
-    //Interfaces do not have static fields - public static const GL_MATRIX_MODE: int32_t = 2976;
+    //Interfaces do not have static fields - public: static const int32_t GL_MATRIX_MODE = 2976;
 
-    //Interfaces do not have static fields - public static const GL_MAX_CLIP_PLANES: int32_t = 3378;
+    //Interfaces do not have static fields - public: static const int32_t GL_MAX_CLIP_PLANES = 3378;
 
-    //Interfaces do not have static fields - public static const GL_MODELVIEW_MATRIX: int32_t = 2982;
+    //Interfaces do not have static fields - public: static const int32_t GL_MODELVIEW_MATRIX = 2982;
 
-    //Interfaces do not have static fields - public static const GL_MODELVIEW_MATRIX_FLOAT_AS_INT_BITS_OES: int32_t = 35213;
+    //Interfaces do not have static fields - public: static const int32_t GL_MODELVIEW_MATRIX_FLOAT_AS_INT_BITS_OES = 35213;
 
-    //Interfaces do not have static fields - public static const GL_MODELVIEW_STACK_DEPTH: int32_t = 2979;
+    //Interfaces do not have static fields - public: static const int32_t GL_MODELVIEW_STACK_DEPTH = 2979;
 
-    //Interfaces do not have static fields - public static const GL_NORMAL_ARRAY_BUFFER_BINDING: int32_t = 34967;
+    //Interfaces do not have static fields - public: static const int32_t GL_NORMAL_ARRAY_BUFFER_BINDING = 34967;
 
-    //Interfaces do not have static fields - public static const GL_NORMAL_ARRAY_POINTER: int32_t = 32911;
+    //Interfaces do not have static fields - public: static const int32_t GL_NORMAL_ARRAY_POINTER = 32911;
 
-    //Interfaces do not have static fields - public static const GL_NORMAL_ARRAY_STRIDE: int32_t = 32895;
+    //Interfaces do not have static fields - public: static const int32_t GL_NORMAL_ARRAY_STRIDE = 32895;
 
-    //Interfaces do not have static fields - public static const GL_NORMAL_ARRAY_TYPE: int32_t = 32894;
+    //Interfaces do not have static fields - public: static const int32_t GL_NORMAL_ARRAY_TYPE = 32894;
 
-    //Interfaces do not have static fields - public static const GL_OPERAND0_ALPHA: int32_t = 34200;
+    //Interfaces do not have static fields - public: static const int32_t GL_OPERAND0_ALPHA = 34200;
 
-    //Interfaces do not have static fields - public static const GL_OPERAND0_RGB: int32_t = 34192;
+    //Interfaces do not have static fields - public: static const int32_t GL_OPERAND0_RGB = 34192;
 
-    //Interfaces do not have static fields - public static const GL_OPERAND1_ALPHA: int32_t = 34201;
+    //Interfaces do not have static fields - public: static const int32_t GL_OPERAND1_ALPHA = 34201;
 
-    //Interfaces do not have static fields - public static const GL_OPERAND1_RGB: int32_t = 34193;
+    //Interfaces do not have static fields - public: static const int32_t GL_OPERAND1_RGB = 34193;
 
-    //Interfaces do not have static fields - public static const GL_OPERAND2_ALPHA: int32_t = 34202;
+    //Interfaces do not have static fields - public: static const int32_t GL_OPERAND2_ALPHA = 34202;
 
-    //Interfaces do not have static fields - public static const GL_OPERAND2_RGB: int32_t = 34194;
+    //Interfaces do not have static fields - public: static const int32_t GL_OPERAND2_RGB = 34194;
 
-    //Interfaces do not have static fields - public static const GL_POINT_DISTANCE_ATTENUATION: int32_t = 33065;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_DISTANCE_ATTENUATION = 33065;
 
-    //Interfaces do not have static fields - public static const GL_POINT_FADE_THRESHOLD_SIZE: int32_t = 33064;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_FADE_THRESHOLD_SIZE = 33064;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE: int32_t = 2833;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE = 2833;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE_ARRAY_BUFFER_BINDING_OES: int32_t = 35743;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE_ARRAY_BUFFER_BINDING_OES = 35743;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE_ARRAY_OES: int32_t = 35740;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE_ARRAY_OES = 35740;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE_ARRAY_POINTER_OES: int32_t = 35212;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE_ARRAY_POINTER_OES = 35212;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE_ARRAY_STRIDE_OES: int32_t = 35211;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE_ARRAY_STRIDE_OES = 35211;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE_ARRAY_TYPE_OES: int32_t = 35210;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE_ARRAY_TYPE_OES = 35210;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE_MAX: int32_t = 33063;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE_MAX = 33063;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SIZE_MIN: int32_t = 33062;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SIZE_MIN = 33062;
 
-    //Interfaces do not have static fields - public static const GL_POINT_SPRITE_OES: int32_t = 34913;
+    //Interfaces do not have static fields - public: static const int32_t GL_POINT_SPRITE_OES = 34913;
 
-    //Interfaces do not have static fields - public static const GL_POLYGON_OFFSET_FACTOR: int32_t = 32824;
+    //Interfaces do not have static fields - public: static const int32_t GL_POLYGON_OFFSET_FACTOR = 32824;
 
-    //Interfaces do not have static fields - public static const GL_POLYGON_OFFSET_UNITS: int32_t = 10752;
+    //Interfaces do not have static fields - public: static const int32_t GL_POLYGON_OFFSET_UNITS = 10752;
 
-    //Interfaces do not have static fields - public static const GL_PREVIOUS: int32_t = 34168;
+    //Interfaces do not have static fields - public: static const int32_t GL_PREVIOUS = 34168;
 
-    //Interfaces do not have static fields - public static const GL_PRIMARY_COLOR: int32_t = 34167;
+    //Interfaces do not have static fields - public: static const int32_t GL_PRIMARY_COLOR = 34167;
 
-    //Interfaces do not have static fields - public static const GL_PROJECTION_MATRIX: int32_t = 2983;
+    //Interfaces do not have static fields - public: static const int32_t GL_PROJECTION_MATRIX = 2983;
 
-    //Interfaces do not have static fields - public static const GL_PROJECTION_MATRIX_FLOAT_AS_INT_BITS_OES: int32_t = 35214;
+    //Interfaces do not have static fields - public: static const int32_t GL_PROJECTION_MATRIX_FLOAT_AS_INT_BITS_OES = 35214;
 
-    //Interfaces do not have static fields - public static const GL_PROJECTION_STACK_DEPTH: int32_t = 2980;
+    //Interfaces do not have static fields - public: static const int32_t GL_PROJECTION_STACK_DEPTH = 2980;
 
-    //Interfaces do not have static fields - public static const GL_RGB_SCALE: int32_t = 34163;
+    //Interfaces do not have static fields - public: static const int32_t GL_RGB_SCALE = 34163;
 
-    //Interfaces do not have static fields - public static const GL_SAMPLE_BUFFERS: int32_t = 32936;
+    //Interfaces do not have static fields - public: static const int32_t GL_SAMPLE_BUFFERS = 32936;
 
-    //Interfaces do not have static fields - public static const GL_SAMPLE_COVERAGE_INVERT: int32_t = 32939;
+    //Interfaces do not have static fields - public: static const int32_t GL_SAMPLE_COVERAGE_INVERT = 32939;
 
-    //Interfaces do not have static fields - public static const GL_SAMPLE_COVERAGE_VALUE: int32_t = 32938;
+    //Interfaces do not have static fields - public: static const int32_t GL_SAMPLE_COVERAGE_VALUE = 32938;
 
-    //Interfaces do not have static fields - public static const GL_SAMPLES: int32_t = 32937;
+    //Interfaces do not have static fields - public: static const int32_t GL_SAMPLES = 32937;
 
-    //Interfaces do not have static fields - public static const GL_SCISSOR_BOX: int32_t = 3088;
+    //Interfaces do not have static fields - public: static const int32_t GL_SCISSOR_BOX = 3088;
 
-    //Interfaces do not have static fields - public static const GL_SHADE_MODEL: int32_t = 2900;
+    //Interfaces do not have static fields - public: static const int32_t GL_SHADE_MODEL = 2900;
 
-    //Interfaces do not have static fields - public static const GL_SRC0_ALPHA: int32_t = 34184;
+    //Interfaces do not have static fields - public: static const int32_t GL_SRC0_ALPHA = 34184;
 
-    //Interfaces do not have static fields - public static const GL_SRC0_RGB: int32_t = 34176;
+    //Interfaces do not have static fields - public: static const int32_t GL_SRC0_RGB = 34176;
 
-    //Interfaces do not have static fields - public static const GL_SRC1_ALPHA: int32_t = 34185;
+    //Interfaces do not have static fields - public: static const int32_t GL_SRC1_ALPHA = 34185;
 
-    //Interfaces do not have static fields - public static const GL_SRC1_RGB: int32_t = 34177;
+    //Interfaces do not have static fields - public: static const int32_t GL_SRC1_RGB = 34177;
 
-    //Interfaces do not have static fields - public static const GL_SRC2_ALPHA: int32_t = 34186;
+    //Interfaces do not have static fields - public: static const int32_t GL_SRC2_ALPHA = 34186;
 
-    //Interfaces do not have static fields - public static const GL_SRC2_RGB: int32_t = 34178;
+    //Interfaces do not have static fields - public: static const int32_t GL_SRC2_RGB = 34178;
 
-    //Interfaces do not have static fields - public static const GL_STATIC_DRAW: int32_t = 35044;
+    //Interfaces do not have static fields - public: static const int32_t GL_STATIC_DRAW = 35044;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_CLEAR_VALUE: int32_t = 2961;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_CLEAR_VALUE = 2961;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_FAIL: int32_t = 2964;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_FAIL = 2964;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_FUNC: int32_t = 2962;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_FUNC = 2962;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_PASS_DEPTH_FAIL: int32_t = 2965;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_PASS_DEPTH_FAIL = 2965;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_PASS_DEPTH_PASS: int32_t = 2966;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_PASS_DEPTH_PASS = 2966;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_REF: int32_t = 2967;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_REF = 2967;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_VALUE_MASK: int32_t = 2963;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_VALUE_MASK = 2963;
 
-    //Interfaces do not have static fields - public static const GL_STENCIL_WRITEMASK: int32_t = 2968;
+    //Interfaces do not have static fields - public: static const int32_t GL_STENCIL_WRITEMASK = 2968;
 
-    //Interfaces do not have static fields - public static const GL_SUBTRACT: int32_t = 34023;
+    //Interfaces do not have static fields - public: static const int32_t GL_SUBTRACT = 34023;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_BINDING_2D: int32_t = 32873;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_BINDING_2D = 32873;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING: int32_t = 34970;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING = 34970;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_COORD_ARRAY_POINTER: int32_t = 32914;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_COORD_ARRAY_POINTER = 32914;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_COORD_ARRAY_SIZE: int32_t = 32904;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_COORD_ARRAY_SIZE = 32904;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_COORD_ARRAY_STRIDE: int32_t = 32906;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_COORD_ARRAY_STRIDE = 32906;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_COORD_ARRAY_TYPE: int32_t = 32905;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_COORD_ARRAY_TYPE = 32905;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_MATRIX: int32_t = 2984;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_MATRIX = 2984;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_MATRIX_FLOAT_AS_INT_BITS_OES: int32_t = 35215;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_MATRIX_FLOAT_AS_INT_BITS_OES = 35215;
 
-    //Interfaces do not have static fields - public static const GL_TEXTURE_STACK_DEPTH: int32_t = 2981;
+    //Interfaces do not have static fields - public: static const int32_t GL_TEXTURE_STACK_DEPTH = 2981;
 
-    //Interfaces do not have static fields - public static const GL_VERTEX_ARRAY_BUFFER_BINDING: int32_t = 34966;
+    //Interfaces do not have static fields - public: static const int32_t GL_VERTEX_ARRAY_BUFFER_BINDING = 34966;
 
-    //Interfaces do not have static fields - public static const GL_VERTEX_ARRAY_POINTER: int32_t = 32910;
+    //Interfaces do not have static fields - public: static const int32_t GL_VERTEX_ARRAY_POINTER = 32910;
 
-    //Interfaces do not have static fields - public static const GL_VERTEX_ARRAY_SIZE: int32_t = 32890;
+    //Interfaces do not have static fields - public: static const int32_t GL_VERTEX_ARRAY_SIZE = 32890;
 
-    //Interfaces do not have static fields - public static const GL_VERTEX_ARRAY_STRIDE: int32_t = 32892;
+    //Interfaces do not have static fields - public: static const int32_t GL_VERTEX_ARRAY_STRIDE = 32892;
 
-    //Interfaces do not have static fields - public static const GL_VERTEX_ARRAY_TYPE: int32_t = 32891;
+    //Interfaces do not have static fields - public: static const int32_t GL_VERTEX_ARRAY_TYPE = 32891;
 
-    //Interfaces do not have static fields - public static const GL_VIEWPORT: int32_t = 2978;
+    //Interfaces do not have static fields - public: static const int32_t GL_VIEWPORT = 2978;
 
-    //Interfaces do not have static fields - public static const GL_WRITE_ONLY: int32_t = 35001;
+    //Interfaces do not have static fields - public: static const int32_t GL_WRITE_ONLY = 35001;
 
-    glBindBuffer(int32_t target, int32_t buffer)
+    void glBindBuffer(int32_t target, int32_t buffer)
 
-    glBufferData(int32_t target, int32_t size, java.nio.Buffer data, int32_t usage)
+    void glBufferData(int32_t target, int32_t size, java::nio::Buffer data, int32_t usage)
 
-    glBufferSubData(int32_t target, int32_t offset, int32_t size, java.nio.Buffer data)
+    void glBufferSubData(int32_t target, int32_t offset, int32_t size, java::nio::Buffer data)
 
-    glClipPlanef(int32_t plane, std::vector<float> equation, int32_t offset)
+    void glClipPlanef(int32_t plane, std::vector<float> equation, int32_t offset)
 
-    glClipPlanef(int32_t plane, java.nio.FloatBuffer equation)
+    void glClipPlanef(int32_t plane, java::nio::FloatBuffer equation)
 
-    glColor4ub(int8_t red, int8_t green, int8_t blue, int8_t alpha)
+    void glColor4ub(int8_t red, int8_t green, int8_t blue, int8_t alpha)
 
-    glColorPointer(int32_t size, int32_t type, int32_t stride, int32_t offset)
+    void glColorPointer(int32_t size, int32_t type, int32_t stride, int32_t offset)
 
-    glDeleteBuffers(int32_t n, std::vector<int32_t> buffers, int32_t offset)
+    void glDeleteBuffers(int32_t n, std::vector<int32_t> buffers, int32_t offset)
 
-    glDeleteBuffers(int32_t n, java.nio.IntBuffer buffers)
+    void glDeleteBuffers(int32_t n, java::nio::IntBuffer buffers)
 
-    glDrawElements(int32_t mode, int32_t count, int32_t type, int32_t offset)
+    void glDrawElements(int32_t mode, int32_t count, int32_t type, int32_t offset)
 
-    glGenBuffers(int32_t n, std::vector<int32_t> buffers, int32_t offset)
+    void glGenBuffers(int32_t n, std::vector<int32_t> buffers, int32_t offset)
 
-    glGenBuffers(int32_t n, java.nio.IntBuffer buffers)
+    void glGenBuffers(int32_t n, java::nio::IntBuffer buffers)
 
-    glGetBufferParameteriv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
+    void glGetBufferParameteriv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
 
-    glGetBufferParameteriv(int32_t target, int32_t pname, java.nio.IntBuffer params)
+    void glGetBufferParameteriv(int32_t target, int32_t pname, java::nio::IntBuffer params)
 
-    glGetClipPlanef(int32_t pname, std::vector<float> eqn, int32_t offset)
+    void glGetClipPlanef(int32_t pname, std::vector<float> eqn, int32_t offset)
 
-    glGetClipPlanef(int32_t pname, java.nio.FloatBuffer eqn)
+    void glGetClipPlanef(int32_t pname, java::nio::FloatBuffer eqn)
 
-    glGetFloatv(int32_t pname, std::vector<float> params, int32_t offset)
+    void glGetFloatv(int32_t pname, std::vector<float> params, int32_t offset)
 
-    glGetFloatv(int32_t pname, java.nio.FloatBuffer params)
+    void glGetFloatv(int32_t pname, java::nio::FloatBuffer params)
 
-    glGetLightfv(int32_t light, int32_t pname, std::vector<float> params, int32_t offset)
+    void glGetLightfv(int32_t light, int32_t pname, std::vector<float> params, int32_t offset)
 
-    glGetLightfv(int32_t light, int32_t pname, java.nio.FloatBuffer params)
+    void glGetLightfv(int32_t light, int32_t pname, java::nio::FloatBuffer params)
 
-    glGetMaterialfv(int32_t face, int32_t pname, std::vector<float> params, int32_t offset)
+    void glGetMaterialfv(int32_t face, int32_t pname, std::vector<float> params, int32_t offset)
 
-    glGetMaterialfv(int32_t face, int32_t pname, java.nio.FloatBuffer params)
+    void glGetMaterialfv(int32_t face, int32_t pname, java::nio::FloatBuffer params)
 
-    glGetTexEnviv(int32_t env, int32_t pname, std::vector<int32_t> params, int32_t offset)
+    void glGetTexEnviv(int32_t env, int32_t pname, std::vector<int32_t> params, int32_t offset)
 
-    glGetTexEnviv(int32_t env, int32_t pname, java.nio.IntBuffer params)
+    void glGetTexEnviv(int32_t env, int32_t pname, java::nio::IntBuffer params)
 
-    glGetTexParameterfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset)
+    void glGetTexParameterfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset)
 
-    glGetTexParameterfv(int32_t target, int32_t pname, java.nio.FloatBuffer params)
+    void glGetTexParameterfv(int32_t target, int32_t pname, java::nio::FloatBuffer params)
 
-    glGetTexParameteriv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
+    void glGetTexParameteriv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
 
-    glGetTexParameteriv(int32_t target, int32_t pname, java.nio.IntBuffer params)
+    void glGetTexParameteriv(int32_t target, int32_t pname, java::nio::IntBuffer params)
 
     bool glIsBuffer(int32_t buffer)
 
@@ -508,33 +509,33 @@ class GL11: public javax.microedition.khronos.opengles.GL10 {
 
     bool glIsTexture(int32_t texture)
 
-    glNormalPointer(int32_t type, int32_t stride, int32_t offset)
+    void glNormalPointer(int32_t type, int32_t stride, int32_t offset)
 
-    glPointParameterf(int32_t pname, float param)
+    void glPointParameterf(int32_t pname, float param)
 
-    glPointParameterfv(int32_t pname, std::vector<float> params, int32_t offset)
+    void glPointParameterfv(int32_t pname, std::vector<float> params, int32_t offset)
 
-    glPointParameterfv(int32_t pname, java.nio.FloatBuffer params)
+    void glPointParameterfv(int32_t pname, java::nio::FloatBuffer params)
 
-    glTexCoordPointer(int32_t size, int32_t type, int32_t stride, int32_t offset)
+    void glTexCoordPointer(int32_t size, int32_t type, int32_t stride, int32_t offset)
 
-    glTexEnvi(int32_t target, int32_t pname, int32_t param)
+    void glTexEnvi(int32_t target, int32_t pname, int32_t param)
 
-    glTexEnviv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
+    void glTexEnviv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
 
-    glTexEnviv(int32_t target, int32_t pname, java.nio.IntBuffer params)
+    void glTexEnviv(int32_t target, int32_t pname, java::nio::IntBuffer params)
 
-    glTexParameterfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset)
+    void glTexParameterfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset)
 
-    glTexParameterfv(int32_t target, int32_t pname, java.nio.FloatBuffer params)
+    void glTexParameterfv(int32_t target, int32_t pname, java::nio::FloatBuffer params)
 
-    glTexParameteri(int32_t target, int32_t pname, int32_t param)
+    void glTexParameteri(int32_t target, int32_t pname, int32_t param)
 
-    glTexParameteriv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
+    void glTexParameteriv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset)
 
-    glTexParameteriv(int32_t target, int32_t pname, java.nio.IntBuffer params)
+    void glTexParameteriv(int32_t target, int32_t pname, java::nio::IntBuffer params)
 
-    glVertexPointer(int32_t size, int32_t type, int32_t stride, int32_t offset)
+    void glVertexPointer(int32_t size, int32_t type, int32_t stride, int32_t offset)
 
 };
 

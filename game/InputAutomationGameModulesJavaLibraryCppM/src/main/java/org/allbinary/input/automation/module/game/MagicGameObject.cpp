@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -52,12 +54,11 @@
         #include "MeteredGameObject.h"
 #include "MagicGameObjectInterface.h"
 
-class MagicGameObject: public MeteredGameObject: public MagicGameObjectInterface {
-        
+class MagicGameObject: public MeteredGameObject, public MagicGameObjectInterface {
 
-    private: const MP_LABEL: string = "MP:";
+    private: const std::string MP_LABEL = "MP:";
 
-public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
+public: MagicGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
             super(bufferedImage, minX, maxX, y);
                     
 
@@ -66,21 +67,21 @@ public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Inte
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append(this.MP_LABEL);
+stringBuffer.append(this->MP_LABEL);
     
-stringBuffer!.append(super.toString());
+stringBuffer.append(super.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

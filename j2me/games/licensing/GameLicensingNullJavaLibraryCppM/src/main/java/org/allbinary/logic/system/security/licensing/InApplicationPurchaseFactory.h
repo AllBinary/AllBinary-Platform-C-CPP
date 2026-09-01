@@ -58,37 +58,36 @@
 class InApplicationPurchaseFactory
             : public Object
          {
-        
 
-    private: static const instance: InApplicationPurchaseFactory = new InApplicationPurchaseFactory();
+    private: static InApplicationPurchaseFactory instance() { return InApplicationPurchaseFactory(); }
 
-    public static InApplicationPurchaseFactory getInstance();
+    public: static InApplicationPurchaseFactory getInstance();
 
-private constructor ();
+private: InApplicationPurchaseFactory();
 
-    public init(any = {} anyType, any = {} stateObject);
+    public: void init(Object* anyType, Object* stateObject);
 
-    public onCreate(any = {} anyType, any = {} stateObject);
+    public: void onCreate(Object* anyType, Object* stateObject);
 
-    public onStart();
+    public: void onStart();
 
-    public onResult(int32_t requestCode, int32_t resultCode, any = {} data);
+    public: void onResult(int32_t requestCode, int32_t resultCode, Object* data);
 
-    public onSaveState(any = {} anyType);
+    public: void onSaveState(Object* anyType);
 
-    public onStop();
+    public: void onStop();
 
-    public onDestroy();
+    public: void onDestroy();
 
-    public purchase(LockableFeature lockableFeature);
+    public: void purchase(LockableFeature lockableFeature);
 
-    public bool isPurchased(LockableFeature lockableFeature);
+    public: bool isPurchased(LockableFeature lockableFeature);
 
-    public add(LockableFeature lockableFeature);
+    public: void add(LockableFeature lockableFeature);
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public bool isEnabled();
+    public: bool isEnabled();
 
 };
 

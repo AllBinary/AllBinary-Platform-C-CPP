@@ -72,25 +72,24 @@
 class DamageUtil
             : public Object
          {
-        
 
-    private: static const instance: DamageUtil = new DamageUtil();
+    private: static DamageUtil instance() { return DamageUtil(); }
 
-    public static DamageUtil getInstance();
+    public: static DamageUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const COLLIDE: string = "collide";
+    public: const std::string COLLIDE = "collide";
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public process(DamageableInterface damageableInterface, DamageableInterface damageableInterface2);
+private: DamageUtil();
 
                 //@Throws(Exception.constructor)
             
-    public debugDamage(CollidableCompositeLayer collidableInterfaceCompositeInterface1, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: void process(DamageableInterface damageableInterface, DamageableInterface damageableInterface2);
+
+                //@Throws(Exception.constructor)
+            
+    public: void debugDamage(CollidableCompositeLayer collidableInterfaceCompositeInterface1, CollidableCompositeLayer collidableInterfaceCompositeInterface);
 
 };
 

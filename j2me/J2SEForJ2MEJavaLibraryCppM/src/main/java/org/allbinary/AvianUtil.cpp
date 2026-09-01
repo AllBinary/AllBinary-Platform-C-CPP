@@ -42,9 +42,8 @@
 class AvianUtil
             : public Object
          {
-        
 
-    public static bool isAvian(){
+    public: static bool isAvian(){
 
 
 

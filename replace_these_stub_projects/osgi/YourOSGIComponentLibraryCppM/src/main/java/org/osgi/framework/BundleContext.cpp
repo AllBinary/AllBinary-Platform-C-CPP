@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/util/Dictionary.h>
 
       
@@ -30,23 +32,22 @@
 #include "ServiceReference.h"
 
 class BundleContext {
-        
 
     std::vector<Bundle> getBundles()
 
                 //@Throws(BundleException.constructor)
             
-    Bundle installBundle(string location)
+    Bundle installBundle(std::string location)
 
-    ServiceRegistration registerService(string clazz, any service, Dictionary properties)
+    ServiceRegistration registerService(std::string clazz, Object* service, Dictionary properties)
 
-    any getService(ServiceReference reference)
+    Object* getService(ServiceReference reference)
 
                 //@Throws(InvalidSyntaxException.constructor)
             
-    std::vector<ServiceReference> getServiceReferences(string clazz, string filter)
+    std::vector<ServiceReference> getServiceReferences(std::string clazz, std::string filter)
 
-    ServiceReference getServiceReference(string clazz)
+    ServiceReference getServiceReference(std::string clazz)
 
 };
 

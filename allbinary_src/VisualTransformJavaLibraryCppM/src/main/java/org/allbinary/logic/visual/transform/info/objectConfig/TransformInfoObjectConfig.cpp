@@ -103,56 +103,53 @@
 class TransformInfoObjectConfig
             : public Object
         : public TransformInfoObjectConfigInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const ownerTransformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface ownerTransformInfoInterface;
 
-    private: document: Document;
+    private: Document document;
 
-    private: outputTypeName: string;
+    private: std::string outputTypeName;
 
-public constructor (Object transformInfoInterface){
-
-            super();
-        this.ownerTransformInfoInterface= transformInfoInterface;
+public: TransformInfoObjectConfig(Object transformInfoInterface){
+this->ownerTransformInfoInterface= transformInfoInterface;
     
-this.createDocument();
+this->createDocument();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TransformInfo: ");
+stringBuffer.append("TransformInfo: ");
     
 
-                        if(this.ownerTransformInfoInterface != 
-                                    null
+                        if(this->ownerTransformInfoInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(this.ownerTransformInfoInterface!.getName());
+                                    stringBuffer.append(this->ownerTransformInfoInterface.getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append("No Owner!?#@");
+                            stringBuffer.append("No Owner!?#@");
     
 
                         }
                             
-stringBuffer!.append("\nConstructed with document: ");
+stringBuffer.append("\nConstructed with document: ");
     
-stringBuffer!.append(this.toString());
+stringBuffer.append(this->toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "Constructor(TransformInfoInterface)");
+this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInterface)");
     
 
                                     }
@@ -160,58 +157,56 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "Constructor(TransformInfoInt
 }
 
 
-public constructor (Object transformInfoInterface, Object document){
-
-            super();
-        this.ownerTransformInfoInterface= transformInfoInterface;
+public: TransformInfoObjectConfig(Object transformInfoInterface, Object document){
+this->ownerTransformInfoInterface= transformInfoInterface;
     
-this.document= document;
+this->document= document;
     
 
-    node: Node = DomSearchHelper.getNodeNoThrow(OutputTypeData.getInstance()!.NAME, this.getRootNode()!.getChildNodes())!;;
+    Node node = DomSearchHelper::getNodeNoThrow(OutputTypeData::getInstance().NAME, this->getRootNode().getChildNodes());;
     
 
                         if(node != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.setOutputTypeName(DomNodeHelper.getTextNodeValue(node));
+                                    this->setOutputTypeName(DomNodeHelper::getTextNodeValue(node));
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TransformInfo: ");
+stringBuffer.append("TransformInfo: ");
     
 
-                        if(this.ownerTransformInfoInterface != 
-                                    null
+                        if(this->ownerTransformInfoInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(this.ownerTransformInfoInterface!.getName());
+                                    stringBuffer.append(this->ownerTransformInfoInterface.getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append("No Owner!?#@");
+                            stringBuffer.append("No Owner!?#@");
     
 
                         }
                             
-stringBuffer!.append("\nConstructed with document: ");
+stringBuffer.append("\nConstructed with document: ");
     
-stringBuffer!.append(this.toString());
+stringBuffer.append(this->toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "Constructor(TransformInfoInterface, Document)");
+this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInterface, Document)");
     
 
                                     }
@@ -219,54 +214,52 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "Constructor(TransformInfoInt
 }
 
 
-public constructor (Object transformInfoInterface, string name, string type){
-
-            super();
-        this.ownerTransformInfoInterface= transformInfoInterface;
+public: TransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type){
+this->ownerTransformInfoInterface= transformInfoInterface;
     
-this.createDocument();
+this->createDocument();
     
 
-    configNameAttr: Attr = this.document.createAttribute(TransformInfoObjectConfigData.getInstance()!.NAME)!;;
+    Attr configNameAttr = this->document.createAttribute(TransformInfoObjectConfigData::getInstance().NAME);;
     
-configNameAttr!.setValue(name);
-    
-
-    objectConfigNode: Node = this.document.getElementsByTagName(TransformInfoObjectConfigData.getInstance()!.NAME)!.item(0)!;;
-    
-objectConfigNode!.appendChild(configNameAttr);
+configNameAttr.setValue(name);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+    Node objectConfigNode = this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
+    
+objectConfigNode.appendChild(configNameAttr);
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TransformInfo: ");
+stringBuffer.append("TransformInfo: ");
     
 
-                        if(this.ownerTransformInfoInterface != 
-                                    null
+                        if(this->ownerTransformInfoInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(this.ownerTransformInfoInterface!.getName());
+                                    stringBuffer.append(this->ownerTransformInfoInterface.getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append("No Owner!?#@");
+                            stringBuffer.append("No Owner!?#@");
     
 
                         }
                             
-stringBuffer!.append("\nConstructed with document: ");
+stringBuffer.append("\nConstructed with document: ");
     
-stringBuffer!.append(this.toString());
+stringBuffer.append(this->toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "Constructor(TransformInfoInterface, name, type)");
+this->logUtil.putF(stringBuffer.toString(), this, "Constructor(TransformInfoInterface, name, type)");
     
 
                                     }
@@ -274,73 +267,73 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "Constructor(TransformInfoInt
 }
 
 
-    createDocument(){
-this.document= DomDocumentHelper.create();
+    private: void createDocument(){
+this->document= DomDocumentHelper::create();
     
 
-    objectConfigNode: Node = this.document.createElement(TransformInfoObjectConfigData.getInstance()!.NAME)!;;
+    Node objectConfigNode = this->document.createElement(TransformInfoObjectConfigData::getInstance().NAME);;
     
-this.document.appendChild(objectConfigNode);
+this->document.appendChild(objectConfigNode);
     
 }
 
 
-    TransformInfoInterface getTransformInfoInterface(){
+    protected: TransformInfoInterface getTransformInfoInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ownerTransformInfoInterface;
+                        return this->ownerTransformInfoInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.document;
+                        return this->document;
     
 }
 
 
-    setDocument(Document document){
-this.document= document;
+    protected: void setDocument(Document document){
+this->document= document;
     
 }
 
 
-    public bool containsView(TransformInfoInterface transformInfoInterface){
+    public: bool containsView(TransformInfoInterface transformInfoInterface){
 
-    objectConfigNode: Node = this.document.getElementsByTagName(TransformInfoObjectConfigData.getInstance()!.NAME)!.item(0)!;;
+    Node objectConfigNode = this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
     
 
-    viewNodeList: NodeList = objectConfigNode!.getChildNodes()!;;
+    NodeList viewNodeList = objectConfigNode.getChildNodes();;
     
 
-    numberOfViews: int32_t = viewNodeList!.getLength()!;;
+    int32_t numberOfViews = viewNodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfViews; index++)
+    int32_t index = 0;index < numberOfViews; index++)
         {
 
-    viewNode: Node = viewNodeList!.item(index)!;;
+    Node viewNode = viewNodeList.item(index);;
     
 
-    viewAttributes: NamedNodeMap = viewNode!.getAttributes()!;;
+    NamedNodeMap viewAttributes = viewNode.getAttributes();;
     
 
-    attrNode: Attr = viewAttributes!.getNamedItem(TransformInfoData.getInstance()!.NAME) as Attr;;
+    Attr attrNode = viewAttributes.getNamedItem(TransformInfoData::getInstance().NAME) as Attr;;
     
 
-                        if(transformInfoInterface!.getName()!.compareTo(attrNode!.getValue()) == 0)
+                        if(transformInfoInterface.getName().compareTo(attrNode.getValue()) == 0)
                         
                                     {
                                     
@@ -365,79 +358,79 @@ this.document= document;
 
                 //@Throws(Exception.constructor)
             
-    NamedNodeMap getTemplateAttributes(){
+    private: NamedNodeMap getTemplateAttributes(){
 
-    componentNode: Node = this.document.getElementsByTagName(TransformInfoObjectConfigData.getInstance()!.NAME)!.item(0)!;;
+    Node componentNode = this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return componentNode!.getAttributes();;
+                        return componentNode.getAttributes();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getName(){
+    public: std::string getName(){
 
-    attrNode: Attr = this.getTemplateAttributes()!.getNamedItem(TransformInfoObjectConfigData.getInstance()!.NAME) as Attr;;
+    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME) as Attr;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return attrNode!.getValue();;
+                        return attrNode.getValue();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setName(string name){
+    public: void setName(std::string name){
 
-    attrNode: Attr = this.getTemplateAttributes()!.getNamedItem(TransformInfoObjectConfigData.getInstance()!.NAME) as Attr;;
+    Attr attrNode = this->getTemplateAttributes().getNamedItem(TransformInfoObjectConfigData::getInstance().NAME) as Attr;;
     
-attrNode!.setValue(name);
+attrNode.setValue(name);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Vector getNodeVector(string nodeName){
+    private: Vector getNodeVector(std::string nodeName){
 
-    componentsNodeList: NodeList = this.document.getElementsByTagName(nodeName)!;;
+    NodeList componentsNodeList = this->document.getElementsByTagName(nodeName);;
     
 
                         if(componentsNodeList != 
-                                    null
-                                 && componentsNodeList!.getLength() > 0)
+                                    nullptr
+                                 && componentsNodeList.getLength() > 0)
                         
                                     {
                                     
-    viewNodeVector: Vector = DomSearchHelper.getAllNodes(TransformInfoData.getInstance()!.NAME, componentsNodeList!.item(0)!.getChildNodes())!;;
+    Vector viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNodeList.item(0).getChildNodes());;
     
 
-    numberOfViews: int32_t = viewNodeVector!.length!;;
+    int32_t numberOfViews = viewNodeVector.length;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Number Of ");
+stringBuffer.append("Number Of ");
     
-stringBuffer!.append(nodeName);
+stringBuffer.append(nodeName);
     
-stringBuffer!.append(" Nodes: ");
+stringBuffer.append(" Nodes: ");
     
-stringBuffer!.appendint(numberOfViews);
+stringBuffer.appendint(numberOfViews);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "getNodeVector(nodename)");
+this->logUtil.putF(stringBuffer.toString(), this, "getNodeVector(nodename)");
     
 
                                     }
@@ -455,34 +448,34 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "getNodeVector(nodename)");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Vector();
+                        return Vector();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Vector getTransformDomNodes(string nodeName){
+    private: Vector getTransformDomNodes(std::string nodeName){
 
-    viewVector: Vector = new Vector();;
+    Vector viewVector = Vector();;
     
 
-    viewNodeVector: Vector = this.getNodeVector(nodeName)!;;
+    Vector viewNodeVector = this->getNodeVector(nodeName);;
     
 
-    size: int32_t = viewNodeVector!.length!;;
+    int32_t size = viewNodeVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    viewNode: Node = viewNodeVector!.get(index) as Node;;
+    Node viewNode = viewNodeVector.get(index) as Node;;
     
-viewVector!.add(new TransformInfoDomNode(viewNode));
+viewVector.add(TransformInfoDomNode(viewNode));
     
 }
 
@@ -497,27 +490,27 @@ viewVector!.add(new TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransforms(string nodeName){
+    public: Vector getTransforms(std::string nodeName){
 
-    viewVector: Vector = new Vector();;
+    Vector viewVector = Vector();;
     
 
-    viewNodeVector: Vector = this.getNodeVector(nodeName)!;;
+    Vector viewNodeVector = this->getNodeVector(nodeName);;
     
 
-    size: int32_t = viewNodeVector!.length!;;
+    int32_t size = viewNodeVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    viewNode: Node = viewNodeVector!.get(index) as Node;;
+    Node viewNode = viewNodeVector.get(index) as Node;;
     
-viewVector!.add(new TransformInfoDomNode(viewNode).getTransformInfoInterface());
+viewVector.add(TransformInfoDomNode(viewNode).getTransformInfoInterface());
     
 }
 
@@ -532,55 +525,55 @@ viewVector!.add(new TransformInfoDomNode(viewNode).getTransformInfoInterface());
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformsGroup(string group){
+    public: Vector getTransformsGroup(std::string group){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Started: " +group, this, "getTransformsGroup()");
+                                    this->logUtil.putF("Started: " +group, this, "getTransformsGroup()");
     
 
                                     }
                                 
 
-    viewVector: Vector = new Vector();;
+    Vector viewVector = Vector();;
     
 
-    GROUP: string = TransformInfosData.getInstance()!.GROUP;;
+    std::string GROUP = TransformInfosData::getInstance().GROUP;;
     
 
-    componentsNodeList: NodeList = this.document.getElementsByTagName(GROUP)!;;
+    NodeList componentsNodeList = this->document.getElementsByTagName(GROUP);;
     
 
                         if(componentsNodeList != 
-                                    null
-                                 && componentsNodeList!.getLength() > 0)
+                                    nullptr
+                                 && componentsNodeList.getLength() > 0)
                         
                                     {
                                     
-    componentsNode: Node = componentsNodeList!.item(0)!;;
+    Node componentsNode = componentsNodeList.item(0);;
     
 
-    length: int32_t = componentsNodeList!.getLength()!;;
+    int32_t length = componentsNodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < length; index++)
+    int32_t index = 0;index < length; index++)
         {
 
-    node: Node = componentsNodeList!.item(index)!;;
+    Node node = componentsNodeList.item(index);;
     
 
-    attributes: NamedNodeMap = node.getAttributes()!;;
+    NamedNodeMap attributes = node.getAttributes();;
     
 
-    attrNode: Attr = attributes.getNamedItem(GROUP) as Attr;;
+    Attr attrNode = attributes.getNamedItem(GROUP) as Attr;;
     
 
-    value: string = attrNode!.getValue()!;;
+    std::string value = attrNode.getValue();;
     
 
                         if(value.compareTo(group) == 0)
@@ -597,34 +590,34 @@ break;
 }
 
 
-    viewNodeVector: Vector = DomSearchHelper.getAllNodes(TransformInfoData.getInstance()!.NAME, componentsNode!.getChildNodes())!;;
+    Vector viewNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, componentsNode.getChildNodes());;
     
 
-    numberOfViews: int32_t = viewNodeVector!.length!;;
+    int32_t numberOfViews = viewNodeVector.length;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Number Of Nodes: " +numberOfViews, this, "getTransformsGroup()");
+                                    this->logUtil.putF("Number Of Nodes: " +numberOfViews, this, "getTransformsGroup()");
     
 
                                     }
                                 
 
-    size: int32_t = viewNodeVector!.length!;;
+    int32_t size = viewNodeVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    viewNode: Node = viewNodeVector!.get(index) as Node;;
+    Node viewNode = viewNodeVector.get(index) as Node;;
     
-viewVector!.add(new TransformInfoDomNode(viewNode));
+viewVector.add(TransformInfoDomNode(viewNode));
     
 }
 
@@ -633,22 +626,22 @@ viewVector!.add(new TransformInfoDomNode(viewNode));
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
                         if(componentsNodeList == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("Number Of Nodes: NULL", this, "getTransformsGroup()");
+                                    this->logUtil.putF("Number Of Nodes: NULL", this, "getTransformsGroup()");
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Number Of Nodes: 0", this, "getTransformsGroup()");
+                            this->logUtil.putF("Number Of Nodes: 0", this, "getTransformsGroup()");
     
 
                         }
@@ -670,131 +663,131 @@ viewVector!.add(new TransformInfoDomNode(viewNode));
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformDomNodes(){
+    public: Vector getTransformDomNodes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransformDomNodes(TransformInfosData.getInstance()!.GROUP);;
+                        return this->getTransformDomNodes(TransformInfosData::getInstance().GROUP);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransforms(){
+    public: Vector getTransforms(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransforms(TransformInfosData.getInstance()!.NAME);;
+                        return this->getTransforms(TransformInfosData::getInstance().NAME);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getGroupTransforms(){
+    public: Vector getGroupTransforms(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransforms(TransformInfosData.getInstance()!.GROUP);;
+                        return this->getTransforms(TransformInfosData::getInstance().GROUP);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getParentTransforms(){
+    public: Vector getParentTransforms(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransforms(TransformInfoData.getInstance()!.PARENT);;
+                        return this->getTransforms(TransformInfoData::getInstance().PARENT);;
     
 }
 
 
-    Node getRootNode(){
+    private: Node getRootNode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.document.getElementsByTagName(TransformInfoObjectConfigData.getInstance()!.NAME)!.item(0);;
+                        return this->document.getElementsByTagName(TransformInfoObjectConfigData::getInstance().NAME).item(0);;
     
 }
 
 
-    public setOutputTypeName(string outputTypeName){
-this.outputTypeName= outputTypeName;
+    public: void setOutputTypeName(std::string outputTypeName){
+this->outputTypeName= outputTypeName;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getOutputTypeName(){
+    public: std::string getOutputTypeName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.outputTypeName;
+                        return this->outputTypeName;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getInputOutputTypeName(){
+    public: std::string getInputOutputTypeName(){
 
-    node: Node = DomSearchHelper.getNode(InputOutputTypeData.getInstance()!.NAME, this.getRootNode()!.getChildNodes())!;;
+    Node node = DomSearchHelper::getNode(InputOutputTypeData::getInstance().NAME, this->getRootNode().getChildNodes());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomNodeHelper.getTextNodeValue(node);;
+                        return DomNodeHelper::getTextNodeValue(node);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getInputOutputTypeFile(){
+    public: std::string getInputOutputTypeFile(){
 
-    node: Node = DomSearchHelper.getNode(InputOutputTypeData.getInstance()!.FILE, this.getRootNode()!.getChildNodes())!;;
+    Node node = DomSearchHelper::getNode(InputOutputTypeData::getInstance().FILE, this->getRootNode().getChildNodes());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomNodeHelper.getTextNodeValue(node);;
+                        return DomNodeHelper::getTextNodeValue(node);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getImportUriPath(){
+    public: std::string getImportUriPath(){
 
-    node: Node = DomSearchHelper.getNode(XslData.getInstance()!.ROOT_IMPORT_URI, this.getRootNode()!.getChildNodes())!;;
+    Node node = DomSearchHelper::getNode(XslData::getInstance().ROOT_IMPORT_URI, this->getRootNode().getChildNodes());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomNodeHelper.getTextNodeValue(node);;
+                        return DomNodeHelper::getTextNodeValue(node);;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
         try {
             
-                        if(this.document != 
-                                    null
+                        if(this->document != 
+                                    nullptr
                                 )
                         
                                     {
@@ -802,7 +795,7 @@ this.outputTypeName= outputTypeName;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper.toString(this.document);;
+                        return DomDocumentHelper::toString(this->document);;
     
 
                                     }
@@ -822,10 +815,10 @@ this.outputTypeName= outputTypeName;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF("DOM Document error", this, this.commonStrings!.TOSTRING);
+                                    this->logUtil.putF("DOM Document error", this, this->commonStrings.TOSTRING);
     
 
                                     }

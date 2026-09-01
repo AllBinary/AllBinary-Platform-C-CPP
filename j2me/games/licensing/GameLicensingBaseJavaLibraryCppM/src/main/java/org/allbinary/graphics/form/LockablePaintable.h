@@ -59,19 +59,18 @@
         #include "ItemPaintable.h"
 
 class LockablePaintable: public ItemPaintable {
-        
 
-    private: const animation: Animation = FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(LockedResources.getInstance()!.LOCKED_DEMO_GAME_FEATURE_RESOURCE)!.getInstance(0)!;
+    private: const Animation animation = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LockedResources::getInstance().LOCKED_DEMO_GAME_FEATURE_RESOURCE).getInstance(0);
 
-    private: const lockedIndex: int32_t;
+    private: int32_t lockedIndex;
 
-public constructor (int32_t lockedIndex);
+public: LockablePaintable(int32_t lockedIndex);
 
-    public paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y);
+    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y);
 
-    int32_t getLockedIndex();
+    protected: int32_t getLockedIndex();
 
-    Animation getAnimation();
+    protected: Animation getAnimation();
 
 };
 

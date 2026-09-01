@@ -59,15 +59,14 @@
         #include "ViewHelper.h"
 
 class ViewHelperFactory: public TagHelperFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: ViewHelperFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

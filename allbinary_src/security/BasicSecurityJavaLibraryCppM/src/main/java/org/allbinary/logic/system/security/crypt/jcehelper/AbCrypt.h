@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABCRYPT_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -83,21 +85,20 @@
 class AbCrypt
             : public Object
         : public CryptInterface {
-        
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: secretComposite: BaseSecretComposite = BaseSecretComposite.NULL_SECRET_COMPOSITE;
+    private: BaseSecretComposite secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
 
-    private: algorithm: string;
+    private: std::string algorithm;
 
-public constructor (string algorithm);
+public: AbCrypt(std::string algorithm);
 
-    public init(string keyAsString);
+    public: void init(std::string keyAsString);
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
 
 };
 

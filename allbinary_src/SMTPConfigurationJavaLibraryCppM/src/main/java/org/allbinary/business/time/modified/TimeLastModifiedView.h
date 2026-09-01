@@ -66,21 +66,20 @@
 class TimeLastModifiedView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: timeLastModified: TimeLastModified;
+    private: TimeLastModified timeLastModified;
 
-public constructor (TimeLastModified timeLastModified);
+public: TimeLastModifiedView(TimeLastModified timeLastModified);
 
-public constructor (Node node);
+public: TimeLastModifiedView(Node node);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public TimeLastModified getTimeLastModified();
+    public: TimeLastModified getTimeLastModified();
 
-    public setTimeLastModified(TimeLastModified timeLastModified);
+    public: void setTimeLastModified(TimeLastModified timeLastModified);
 
 };
 

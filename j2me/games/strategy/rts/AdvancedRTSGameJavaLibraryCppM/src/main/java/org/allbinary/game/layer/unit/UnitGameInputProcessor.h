@@ -45,11 +45,10 @@
         #include "UnitLayer.h"
 
 class UnitGameInputProcessor: public GameInputProcessor {
-        
 
-    const unitLayer: UnitLayer;
+    protected: UnitLayer unitLayer;
 
-public constructor (UnitLayer unitLayer);
+public: UnitGameInputProcessor(UnitLayer unitLayer);
 
 };
 

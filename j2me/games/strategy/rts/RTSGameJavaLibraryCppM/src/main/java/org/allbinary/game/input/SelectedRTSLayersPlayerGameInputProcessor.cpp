@@ -40,14 +40,11 @@
 #include "SelectedRTSLayersPlayerGameInput.h"
 
 class SelectedRTSLayersPlayerGameInputProcessor: public GameInputProcessor {
-        
 
-    const selectedRTSLayersPlayerGameInput: SelectedRTSLayersPlayerGameInput;
+    protected: SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput;
 
-public constructor (SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
-
-            super();
-        this.selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
+public: SelectedRTSLayersPlayerGameInputProcessor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
     
 }
 

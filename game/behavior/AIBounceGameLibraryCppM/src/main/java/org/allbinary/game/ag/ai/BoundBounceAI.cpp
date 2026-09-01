@@ -64,40 +64,39 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BoundBounceAI: public BasicAI {
-        
 
-    currentRelativeAngle: int32_t = 0;
+    protected: int32_t currentRelativeAngle = 0;
 
-    private: layerBounds: LayerBounds;
+    private: LayerBounds layerBounds;
 
-    private: boundsVisitorInterface: BoundsVisitorInterface;
+    private: BoundsVisitorInterface boundsVisitorInterface;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput, LayerBounds layerBounds, BoundsVisitorInterface boundsVisitorInterface){
+public: BoundBounceAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput, LayerBounds layerBounds, BoundsVisitorInterface boundsVisitorInterface){
             super(ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.layerBounds= layerBounds;
+this->layerBounds= layerBounds;
     
-this.boundsVisitorInterface= boundsVisitorInterface;
+this->boundsVisitorInterface= boundsVisitorInterface;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-    rectange: Rectangle = this.layerBounds!.getRectangleP()!;;
+    Rectangle rectange = this->layerBounds.getRectangleP();;
     
-graphics.drawRect(rectange.getPoint()!.getX(), rectange.getPoint()!.getY(), rectange.getWidth(), rectange.getHeight());
+graphics.drawRect(rectange.getPoint().getX(), rectange.getPoint().getY(), rectange.getWidth(), rectange.getHeight());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
-this.layerBounds!.visit(this.boundsVisitorInterface);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+this->layerBounds.visit(this->boundsVisitorInterface);
     
 }
 

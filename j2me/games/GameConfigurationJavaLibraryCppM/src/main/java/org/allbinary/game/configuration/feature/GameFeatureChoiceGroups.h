@@ -51,23 +51,22 @@
 class GameFeatureChoiceGroups
             : public Object
          {
-        
 
-    private: static gameFeatureChoiceGroupsExclusive: GameFeatureChoiceGroups = new GameFeatureChoiceGroups();
+    private: static GameFeatureChoiceGroups gameFeatureChoiceGroupsExclusive = GameFeatureChoiceGroups();
 
-    private: static gameFeatureChoiceGroupsMultiple: GameFeatureChoiceGroups = new GameFeatureChoiceGroups();
+    private: static GameFeatureChoiceGroups gameFeatureChoiceGroupsMultiple = GameFeatureChoiceGroups();
 
-    public static GameFeatureChoiceGroups getExclusiveInstance();
+    public: static GameFeatureChoiceGroups getExclusiveInstance();
 
-    public static GameFeatureChoiceGroups getMultipleInstance();
+    public: static GameFeatureChoiceGroups getMultipleInstance();
 
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-private constructor ();
+private: GameFeatureChoiceGroups();
 
-    public Hashtable<any, any> get();
+    public: Hashtable<any, any> get();
 
-    public add(string name, BasicArrayList list);
+    public: void add(std::string name, BasicArrayList list);
 
 };
 

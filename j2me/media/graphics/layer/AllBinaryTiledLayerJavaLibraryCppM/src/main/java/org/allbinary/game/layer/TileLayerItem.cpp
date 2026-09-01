@@ -53,95 +53,94 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryTiledLayer.h"
 
-class TileLayerItem: public ABCustomItem: public ABCustomItemInterface {
-        
+class TileLayerItem: public ABCustomItem, public ABCustomItemInterface {
 
-    private: const tiledLayer: AllBinaryTiledLayer;
+    private: AllBinaryTiledLayer tiledLayer;
 
-public constructor (string label, AllBinaryTiledLayer tiledLayer, int32_t layout, string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: TileLayerItem(std::string label, AllBinaryTiledLayer tiledLayer, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(label, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.tiledLayer= tiledLayer;
+this->tiledLayer= tiledLayer;
     
 }
 
 
-    public setOwner(Screen owner){
+    public: void setOwner(Screen owner){
 }
 
 
-    public int32_t getMinimumWidth(){
+    public: int32_t getMinimumWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tiledLayer!.getWidth();;
+                        return this->tiledLayer.getWidth();;
     
 }
 
 
-    public int32_t getMinimumHeight(){
+    public: int32_t getMinimumHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tiledLayer!.getHeight();;
+                        return this->tiledLayer.getHeight();;
     
 }
 
 
-    int32_t getMinContentHeight(){
+    protected: int32_t getMinContentHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tiledLayer!.getHeight();;
+                        return this->tiledLayer.getHeight();;
     
 }
 
 
-    int32_t getMinContentWidth(){
+    protected: int32_t getMinContentWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tiledLayer!.getWidth();;
+                        return this->tiledLayer.getWidth();;
     
 }
 
 
-    int32_t getPrefContentHeight(int32_t width){
+    protected: int32_t getPrefContentHeight(int32_t width){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tiledLayer!.getHeight();;
+                        return this->tiledLayer.getHeight();;
     
 }
 
 
-    int32_t getPrefContentWidth(int32_t height){
+    protected: int32_t getPrefContentWidth(int32_t height){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tiledLayer!.getWidth();;
+                        return this->tiledLayer.getWidth();;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.tiledLayer!.setPosition(x, y, this.tiledLayer!.getZP());
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->tiledLayer.setPosition(x, y, this->tiledLayer.getZP());
     
-this.tiledLayer!.paint(graphics);
+this->tiledLayer.paint(graphics);
     
 }
 
 
-    public paintUnselected(Graphics graphics, int32_t x, int32_t y){
+    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y){
 }
 
 

@@ -49,11 +49,10 @@
 class NullHighScoresSingletonFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: HighScores = new HighScores("Loading", "High Scores Not Loaded", CommonStrings.getInstance()!.PERIODS);
+    private: static const HighScores SINGLETON = HighScores("Loading", "High Scores Not Loaded", CommonStrings::getInstance().PERIODS);
 
-    public static HighScores getInstance();
+    public: static HighScores getInstance();
 
 };
 

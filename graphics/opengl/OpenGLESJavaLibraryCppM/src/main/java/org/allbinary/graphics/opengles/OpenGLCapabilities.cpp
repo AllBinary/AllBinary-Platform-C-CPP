@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -96,132 +98,127 @@
 class OpenGLCapabilities
             : public Object
          {
-        
 
-    private: static const instance: OpenGLCapabilities = new OpenGLCapabilities();
+    private: static OpenGLCapabilities instance() { return OpenGLCapabilities(); }
 
-    public static OpenGLCapabilities getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLCapabilities.instance;
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    public const CUSTOM_GL_SURFACE_VIEW: bool = true;
-
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
-
-    private: initialized: bool = false;
-
-    private: glVersionString: string = this.stringUtil!.EMPTY_STRING;
-
-    private: glShaderVersionString: string = this.stringUtil!.EMPTY_STRING;
-
-    public shaderVersion: int32_t = 0;
-
-    private: glRenderer: string = this.stringUtil!.EMPTY_STRING;
-
-    private: glVendor: string = this.stringUtil!.EMPTY_STRING;
-
-    private: glExtensions: string = this.stringUtil!.EMPTY_STRING;
-
-    private: possiblyAccelerated: bool= false;
-
-    private: acceleratedString: string = this.stringUtil!.EMPTY_STRING;
-
-    public maxTextureSize: int32_t = 64;
-
-    public const VERSION_1_0: string = "1.0";
-
-    public const VERSION_1_1: string = "1.1";
-
-    public const VERSION_2_0: string = "2.0";
-
-    public const VERSION_3_0: string = "3.0";
-
-    public const VERSION_3_1: string = "3.1";
-
-    public const VERSION_3_2: string = "3.2";
-
-    public const VERSION_HIGHER_THAN_EXISTS: string = "999.999";
-
-    public const VERSION_UNK: string = "Unk";
-
-    public const GL_EXT_GPU_SHADER_100: string = "GL_ARB_shading_language_100";
-
-    public const GL_EXT_GPU_SHADER4: string = "GL_EXT_gpu_shader4";
-
-    private: glVersion: string = this.glVersionString;
-
-    public glInstanceVersion: string = this.VERSION_UNK;
-
-    private: glExtensionDrawTexture: bool= false;
-
-    private: glThreedDrawTexture: bool= false;
-
-    private: glExtensionGPUShader4: bool= false;
-
-    private: glExtensionGPUShader100: bool= false;
-
-    private: vertexBufferObjectSupport: bool= false;
-
-private constructor (){
-
-            super();
-        }
-
-
-    public bool isInitialized(){
+    public: static OpenGLCapabilities getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized;
+                        return OpenGLCapabilities::instance();
     
 }
 
 
-    requireInitialization(){
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    public: const bool CUSTOM_GL_SURFACE_VIEW = true;
+
+    private: const StringUtil stringUtil = StringUtil::getInstance();
+
+    private: bool initialized = false;
+
+    private: std::string glVersionString = this->stringUtil.EMPTY_STRING;
+
+    private: std::string glShaderVersionString = this->stringUtil.EMPTY_STRING;
+
+    public: int32_t shaderVersion = 0;
+
+    private: std::string glRenderer = this->stringUtil.EMPTY_STRING;
+
+    private: std::string glVendor = this->stringUtil.EMPTY_STRING;
+
+    private: std::string glExtensions = this->stringUtil.EMPTY_STRING;
+
+    private: bool possiblyAccelerated= false;
+
+    private: std::string acceleratedString = this->stringUtil.EMPTY_STRING;
+
+    public: int32_t maxTextureSize = 64;
+
+    public: const std::string VERSION_1_0 = "1.0";
+
+    public: const std::string VERSION_1_1 = "1.1";
+
+    public: const std::string VERSION_2_0 = "2.0";
+
+    public: const std::string VERSION_3_0 = "3.0";
+
+    public: const std::string VERSION_3_1 = "3.1";
+
+    public: const std::string VERSION_3_2 = "3.2";
+
+    public: const std::string VERSION_HIGHER_THAN_EXISTS = "999.999";
+
+    public: const std::string VERSION_UNK = "Unk";
+
+    public: const std::string GL_EXT_GPU_SHADER_100 = "GL_ARB_shading_language_100";
+
+    public: const std::string GL_EXT_GPU_SHADER4 = "GL_EXT_gpu_shader4";
+
+    private: std::string glVersion = this->glVersionString;
+
+    public: std::string glInstanceVersion = this->VERSION_UNK;
+
+    private: bool glExtensionDrawTexture= false;
+
+    private: bool glThreedDrawTexture= false;
+
+    private: bool glExtensionGPUShader4= false;
+
+    private: bool glExtensionGPUShader100= false;
+
+    private: bool vertexBufferObjectSupport= false;
+
+private: OpenGLCapabilities(){
 }
 
 
-    public initCapabilities(GL10 gl){
+    public: bool isInitialized(){
 
-    METHOD_NAME: string = "initGLCapabilities";;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->initialized;
+    
+}
+
+
+    private: void requireInitialization(){
+}
+
+
+    public: void initCapabilities(GL10 gl){
+
+    std::string METHOD_NAME = "initGLCapabilities";;
     
 
         try {
             
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-    openGLImageSpecificFactory: OpenGLImageSpecificFactory = OpenGLImageSpecificFactory.getInstance()!;;
+    OpenGLImageSpecificFactory openGLImageSpecificFactory = OpenGLImageSpecificFactory::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-this.glVersionString= gl.glGetString(GL10.GL_VERSION);
-    
-
-    GL_SHADING_LANGUAGE_VERSION: int32_t = 0x8b8c;;
-    
-this.glShaderVersionString= gl.glGetString(GL_SHADING_LANGUAGE_VERSION);
+this->glVersionString= gl.glGetString(GL10::GL_VERSION);
     
 
-                        if(this.glShaderVersionString == 
-                                    null
-                                )
+    int32_t GL_SHADING_LANGUAGE_VERSION = 0x8b8c;;
+    
+this->glShaderVersionString= gl.glGetString(GL_SHADING_LANGUAGE_VERSION);
+    
+
+                        if(false)
                         
                                     {
-                                    this.glShaderVersionString= this.stringUtil!.EMPTY_STRING;
+                                    this->glShaderVersionString= this->stringUtil.EMPTY_STRING;
     
 
                                     }
@@ -229,24 +226,22 @@ this.glShaderVersionString= gl.glGetString(GL_SHADING_LANGUAGE_VERSION);
 
         try {
             
-                        if(this.glShaderVersionString != 
-                                    null
-                                 && this.glShaderVersionString!.indexOf('.') >= 0)
+                        if(true && this->glShaderVersionString.indexOf('.') >= 0)
                         
                                     {
                                     
-    startIndex: int32_t = this.glShaderVersionString!.lastIndexOf(' ')!;;
+    int32_t startIndex = this->glShaderVersionString.lastIndexOf(' ');;
     
 
                         if(startIndex >= 0)
                         
                                     {
-                                    this.glShaderVersionString= this.glShaderVersionString!.substring(startIndex +1);
+                                    this->glShaderVersionString= this->glShaderVersionString.substring(startIndex +1);
     
 
                                     }
                                 
-this.shaderVersion= Integer.parseInt(this.glShaderVersionString!.replace(CommonSeps.getInstance()!.PERIOD, StringUtil.getInstance()!.EMPTY_STRING));
+this->shaderVersion= Integer::parseInt(this->glShaderVersionString.replace(CommonSeps::getInstance().PERIOD, StringUtil::getInstance().EMPTY_STRING));
     
 
                                     }
@@ -256,116 +251,112 @@ this.shaderVersion= Integer.parseInt(this.glShaderVersionString!.replace(CommonS
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, METHOD_NAME, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, METHOD_NAME, e);
     
 }
 
-this.glRenderer= gl.glGetString(GL10.GL_RENDERER);
+this->glRenderer= gl.glGetString(GL10::GL_RENDERER);
     
-this.glVendor= gl.glGetString(GL10.GL_VENDOR);
+this->glVendor= gl.glGetString(GL10::GL_VENDOR);
     
-this.glExtensions= gl.glGetString(GL10.GL_EXTENSIONS);
+this->glExtensions= gl.glGetString(GL10::GL_EXTENSIONS);
     
 
-                        if(this.glExtensions!.indexOf(this.GL_EXT_GPU_SHADER_100) >= 0)
+                        if(this->glExtensions.indexOf(this->GL_EXT_GPU_SHADER_100) >= 0)
                         
                                     {
-                                    this.glExtensionGPUShader100= true;
+                                    this->glExtensionGPUShader100= true;
     
 
                                     }
                                 
                         else {
-                            this.glExtensionGPUShader100= false;
+                            this->glExtensionGPUShader100= false;
     
 
                         }
                             
 
-                        if(this.glExtensions!.indexOf(this.GL_EXT_GPU_SHADER4) >= 0)
+                        if(this->glExtensions.indexOf(this->GL_EXT_GPU_SHADER4) >= 0)
                         
                                     {
-                                    this.glExtensionGPUShader4= true;
+                                    this->glExtensionGPUShader4= true;
     
 
                                     }
                                 
                         else {
-                            this.glExtensionGPUShader4= false;
+                            this->glExtensionGPUShader4= false;
     
 
                         }
                             
 
-                        if(this.glRenderer == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    this.glRenderer= this.stringUtil!.EMPTY_STRING;
+                                    this->glRenderer= this->stringUtil.EMPTY_STRING;
     
 
                                     }
                                 
 
-                        if(this.glRenderer!.toLowerCase()!.indexOf("pixelflinger") >= 0)
+                        if(this->glRenderer.toLowerCase().indexOf("pixelflinger") >= 0)
                         
                                     {
-                                    this.acceleratedString= "Probably Not for " +this.glRenderer;
+                                    this->acceleratedString= "Probably Not for " +this->glRenderer;
     
-this.possiblyAccelerated= false;
+this->possiblyAccelerated= false;
     
 
                                     }
                                 
                         else {
-                            this.acceleratedString= "Probably for " +this.glRenderer;
+                            this->acceleratedString= "Probably for " +this->glRenderer;
     
 
                     //Otherwise - statement - EmptyStmt
 
-this.possiblyAccelerated= true;
+this->possiblyAccelerated= true;
     
 
                         }
                             
-this.glExtensionDrawTexture= false;
+this->glExtensionDrawTexture= false;
     
 
-                        if(this.glVersionString == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    this.glVersionString= this.stringUtil!.EMPTY_STRING;
+                                    this->glVersionString= this->stringUtil.EMPTY_STRING;
     
-this.glVersion= this.VERSION_UNK;
+this->glVersion= this->VERSION_UNK;
     
 
                                     }
                                 
                              else 
-                        if(this.glVersionString!.indexOf(" 1.0") >= 0)
+                        if(this->glVersionString.indexOf(" 1.0") >= 0)
                         
                                     {
-                                    this.glVersion= this.VERSION_1_0;
+                                    this->glVersion= this->VERSION_1_0;
     
 
                                     }
                                 
                              else 
-                        if(this.glVersionString!.indexOf(" 1.1") >= 0)
+                        if(this->glVersionString.indexOf(" 1.1") >= 0)
                         
                                     {
-                                    this.glVersion= this.VERSION_1_1;
+                                    this->glVersion= this->VERSION_1_1;
     
 
                                     }
                                 
                         else {
-                            this.glVersion= this.VERSION_UNK;
+                            this->glVersion= this->VERSION_UNK;
     
 
                         }
@@ -374,7 +365,7 @@ this.glVersion= this.VERSION_UNK;
                         if(gl instanceof GL11)
                         
                                     {
-                                    this.glInstanceVersion= this.VERSION_1_1;
+                                    this->glInstanceVersion= this->VERSION_1_1;
     
 
                                     }
@@ -383,54 +374,50 @@ this.glVersion= this.VERSION_UNK;
                         if(gl instanceof GL10)
                         
                                     {
-                                    this.glInstanceVersion= this.VERSION_1_0;
+                                    this->glInstanceVersion= this->VERSION_1_0;
     
 
                                     }
                                 
 
-                        if(this.glVendor == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    this.glVendor= this.stringUtil!.EMPTY_STRING;
+                                    this->glVendor= this->stringUtil.EMPTY_STRING;
     
 
                                     }
                                 
 
-                        if(this.glExtensions == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    this.glExtensions= this.stringUtil!.EMPTY_STRING;
+                                    this->glExtensions= this->stringUtil.EMPTY_STRING;
     
 
                                     }
                                 
 
-                        if(this.possiblyAccelerated)
+                        if(this->possiblyAccelerated)
                         
                                     {
-                                    PreLogUtil.put(new StringMaker().append("VBO:?")!.appendboolean((this.glInstanceVersion == this.VERSION_1_1))!.append("||")!.appendboolean(this.isExtension(openGLFeatureFactory!.OPENGL_VERTEX_BUFFER_OBJECT))!.toString(), this, METHOD_NAME);
+                                    PreLogUtil::put(StringMaker().append("VBO:?").appendboolean((this->glInstanceVersion == this->VERSION_1_1)).append("||").appendboolean(this->isExtension(openGLFeatureFactory.OPENGL_VERTEX_BUFFER_OBJECT)).toString(), this, METHOD_NAME);
     
 
-                        if((this.glInstanceVersion == this.VERSION_1_1 || this.isExtension(openGLFeatureFactory!.OPENGL_VERTEX_BUFFER_OBJECT)))
+                        if((this->glInstanceVersion == this->VERSION_1_1 || this->isExtension(openGLFeatureFactory.OPENGL_VERTEX_BUFFER_OBJECT)))
                         
                                     {
                                     
-                        if(AndroidUtil.isAndroid())
+                        if(AndroidUtil::isAndroid())
                         
                                     {
-                                    PreLogUtil.put("VBO implementation was detected, but disabled by default for Android", this, METHOD_NAME);
+                                    PreLogUtil::put("VBO implementation was detected, but disabled by default for Android", this, METHOD_NAME);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil.put("VBO implementation was detected, but disabled for now", this, METHOD_NAME);
+                            PreLogUtil::put("VBO implementation was detected, but disabled for now", this, METHOD_NAME);
     
 
                         }
@@ -442,31 +429,31 @@ this.glVersion= this.VERSION_UNK;
                                     }
                                 
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-                        if(features.isDefault(openGLFeatureFactory!.OPENGL_AUTO_SELECT))
+                        if(features.isDefault(openGLFeatureFactory.OPENGL_AUTO_SELECT))
                         
                                     {
                                     
-                        if(this.vertexBufferObjectSupport)
+                        if(this->vertexBufferObjectSupport)
                         
                                     {
-                                    openGLImageSpecificFactory!.setImageFactory(new OpenGLESGL11VBOImageFactory());
+                                    openGLImageSpecificFactory.setImageFactory(OpenGLESGL11VBOImageFactory());
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append("OpenGL is on but ");
+                            stringBuffer.append("OpenGL is on but ");
     
-stringBuffer!.append(stringUtil!.toString(openGLFeatureFactory!.OPENGL_DRAW_TEXTURE));
+stringBuffer.append(stringUtil.toString(openGLFeatureFactory.OPENGL_DRAW_TEXTURE));
     
-stringBuffer!.append(" was not available");
+stringBuffer.append(" was not available");
     
-PreLogUtil.put(stringBuffer!.toString(), this, METHOD_NAME);
+PreLogUtil::put(stringBuffer.toString(), this, METHOD_NAME);
     
-openGLImageSpecificFactory!.setImageFactory(new OpenGLESGL10ImageFactory());
+openGLImageSpecificFactory.setImageFactory(OpenGLESGL10ImageFactory());
     
 
                         }
@@ -475,43 +462,43 @@ openGLImageSpecificFactory!.setImageFactory(new OpenGLESGL10ImageFactory());
                                     }
                                 
                         else {
-                            stringBuffer!.append(stringUtil!.toString(openGLFeatureFactory!.OPENGL_AUTO_SELECT));
+                            stringBuffer.append(stringUtil.toString(openGLFeatureFactory.OPENGL_AUTO_SELECT));
     
-stringBuffer!.append(" is not on");
+stringBuffer.append(" is not on");
     
-PreLogUtil.put(stringBuffer!.toString(), this, METHOD_NAME);
+PreLogUtil::put(stringBuffer.toString(), this, METHOD_NAME);
     
-openGLImageSpecificFactory!.setImageFactory(new OpenGLESGL10ImageFactory());
+openGLImageSpecificFactory.setImageFactory(OpenGLESGL10ImageFactory());
     
 
                         }
                             
 
-    maxTextureSizeArray: std::vector<int32_t> = new Array(1);;
+    std::vector<int32_t> maxTextureSizeArray = new Array(1);;
     
-gl.glGetIntegerv(GL10.GL_MAX_TEXTURE_SIZE, maxTextureSizeArray, 0);
+gl.glGetIntegerv(GL10::GL_MAX_TEXTURE_SIZE, maxTextureSizeArray, 0);
     
-this.maxTextureSize= maxTextureSizeArray[0]!;
+this->maxTextureSize= maxTextureSizeArray[0]!;
     
-this.initialized= true;
+this->initialized= true;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, METHOD_NAME, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, METHOD_NAME, e);
     
 }
 
 }
 
 
-    bool isExtension(OpenGLFeature gameFeature){
+    private: bool isExtension(OpenGLFeature gameFeature){
 
-    index: int32_t = this.glExtensions!.indexOf(gameFeature!.getName())!;;
+    int32_t index = this->glExtensions.indexOf(gameFeature.getName());;
     
 
                         if(index >= 0)
@@ -539,117 +526,117 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, METHOD_NAME, e);
 }
 
 
-    public bool isGlExtensionDrawTexture(){
-this.requireInitialization();
+    public: bool isGlExtensionDrawTexture(){
+this->requireInitialization();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glExtensionDrawTexture;
+                        return this->glExtensionDrawTexture;
     
 }
 
 
-    public bool isGlExtensionGPUShader100(){
+    public: bool isGlExtensionGPUShader100(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glExtensionGPUShader100;
+                        return this->glExtensionGPUShader100;
     
 }
 
 
-    public bool isGlExtensionGPUShader4(){
-this.requireInitialization();
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glExtensionGPUShader4;
-    
-}
-
-
-    public string getGlVersion(){
-this.requireInitialization();
+    public: bool isGlExtensionGPUShader4(){
+this->requireInitialization();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glVersion;
+                        return this->glExtensionGPUShader4;
     
 }
 
 
-    public string getGlVersionString(){
-this.requireInitialization();
+    public: std::string getGlVersion(){
+this->requireInitialization();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glVersionString;
+                        return this->glVersion;
     
 }
 
 
-    public string getGlShaderVersion(){
-this.requireInitialization();
+    public: std::string getGlVersionString(){
+this->requireInitialization();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glShaderVersionString;
+                        return this->glVersionString;
     
 }
 
 
-    public bool isGlThreedDrawTexture(){
-this.requireInitialization();
+    public: std::string getGlShaderVersion(){
+this->requireInitialization();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glThreedDrawTexture;
+                        return this->glShaderVersionString;
     
 }
 
 
-    public string getGlRenderer(){
-this.requireInitialization();
+    public: bool isGlThreedDrawTexture(){
+this->requireInitialization();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.glRenderer;
+                        return this->glThreedDrawTexture;
     
 }
 
 
-    public bool isVertexBufferObjectSupport(){
-this.requireInitialization();
+    public: std::string getGlRenderer(){
+this->requireInitialization();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vertexBufferObjectSupport;
+                        return this->glRenderer;
     
 }
 
 
-    public bool isTextureSizeValid(int32_t widthAndHeight){
-this.requireInitialization();
+    public: bool isVertexBufferObjectSupport(){
+this->requireInitialization();
     
 
-                        if(this.maxTextureSize >= widthAndHeight)
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->vertexBufferObjectSupport;
+    
+}
+
+
+    public: bool isTextureSizeValid(int32_t widthAndHeight){
+this->requireInitialization();
+    
+
+                        if(this->maxTextureSize >= widthAndHeight)
                         
                                     {
                                     
@@ -670,72 +657,72 @@ this.requireInitialization();
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("GL_VERSION: ");
+stringBuffer.append("GL_VERSION: ");
     
-stringBuffer!.append(this.glVersionString);
+stringBuffer.append(this->glVersionString);
     
-stringBuffer!.append(" GL_SHADING_LANGUAGE_VERSION: ");
+stringBuffer.append(" GL_SHADING_LANGUAGE_VERSION: ");
     
-stringBuffer!.append(this.glShaderVersionString);
+stringBuffer.append(this->glShaderVersionString);
     
-stringBuffer!.append(" GL_RENDERER: ");
+stringBuffer.append(" GL_RENDERER: ");
     
-stringBuffer!.append(this.glRenderer);
+stringBuffer.append(this->glRenderer);
     
-stringBuffer!.append(" GL_VENDOR: ");
+stringBuffer.append(" GL_VENDOR: ");
     
-stringBuffer!.append(this.glVendor);
+stringBuffer.append(this->glVendor);
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(" Is Accelerated: ");
+stringBuffer.append(" Is Accelerated: ");
     
-stringBuffer!.append(this.acceleratedString);
+stringBuffer.append(this->acceleratedString);
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(" VBO Support: ");
+stringBuffer.append(" VBO Support: ");
     
-stringBuffer!.appendboolean(this.isVertexBufferObjectSupport());
+stringBuffer.appendboolean(this->isVertexBufferObjectSupport());
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(" Max Texture Size: ");
+stringBuffer.append(" Max Texture Size: ");
     
-stringBuffer!.appendint(this.maxTextureSize);
+stringBuffer.appendint(this->maxTextureSize);
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(" GL_EXTENSIONS: ");
+stringBuffer.append(" GL_EXTENSIONS: ");
     
 
         try {
             
-    tokenizer: Tokenizer = new Tokenizer(commonSeps!.SPACE);;
+    Tokenizer tokenizer = Tokenizer(commonSeps.SPACE);;
     
 
-    list: BasicArrayList = tokenizer.getTokensFromString(this.glExtensions, new BasicArrayListD())!;;
+    BasicArrayList list = tokenizer.getTokensFromString(this->glExtensions, BasicArrayListD());;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.stringUtil!.toString(list.objectArray[index]!));
+stringBuffer.append(this->stringUtil.toString(list.objectArray[index]!));
     
 }
 
@@ -744,9 +731,9 @@ stringBuffer!.append(this.stringUtil!.toString(list.objectArray[index]!));
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.TOSTRING, e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.TOSTRING, e);
     
 }
 
@@ -754,7 +741,7 @@ PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.TOSTRING, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

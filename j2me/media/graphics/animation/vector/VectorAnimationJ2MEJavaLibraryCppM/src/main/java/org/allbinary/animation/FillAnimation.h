@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_FILLANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_FILLANIMATION_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -35,29 +37,28 @@
 #include "AnimationBehavior.h"
 
 class FillAnimation: public IndexedAnimation {
-        
 
-    private: const pixelBuffer: std::vector<int32_t>;
+    private: std::vector<int32_t> pixelBuffer;
 
-    private: const width: int32_t;
+    private: int32_t width;
 
-    private: const height: int32_t;
+    private: int32_t height;
 
-public constructor (std::vector<int32_t> pixelBuffer, int32_t width, int32_t height, AnimationBehavior animationBehavior);
+public: FillAnimation(std::vector<int32_t> pixelBuffer, int32_t width, int32_t height, AnimationBehavior animationBehavior);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor basicColor);
 
-    public setAlpha(int32_t alpha);
+    public: void setAlpha(int32_t alpha);
 
-    public setScale(float scaleX, float scaleY);
+    public: void setScale(float scaleX, float scaleY);
 
-    public setMaxScale(float maxScaleX, float maxScaleY);
+    public: void setMaxScale(float maxScaleX, float maxScaleY);
 
-    updateModifiers();
+    private: void updateModifiers();
 
-    paint(Graphics g);
+    protected: void paint(Graphics g);
 
 };
 

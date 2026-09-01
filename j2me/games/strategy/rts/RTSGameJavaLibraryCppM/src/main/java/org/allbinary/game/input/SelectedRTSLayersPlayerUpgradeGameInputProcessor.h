@@ -51,13 +51,12 @@
 #include "SelectedRTSLayersPlayerGameInput.h"
 
 class SelectedRTSLayersPlayerUpgradeGameInputProcessor: public SelectedRTSLayersPlayerGameInputProcessor {
-        
 
-public constructor (SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
+public: SelectedRTSLayersPlayerUpgradeGameInputProcessor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
 
 };
 

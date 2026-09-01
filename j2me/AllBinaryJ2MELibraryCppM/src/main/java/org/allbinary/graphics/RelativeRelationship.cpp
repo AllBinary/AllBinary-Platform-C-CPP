@@ -62,74 +62,71 @@
 class RelativeRelationship
             : public Object
          {
-        
 
-    public static const NULL_RELATIVE_RELATIONSHIP: RelativeRelationship = new RelativeRelationship(PointFactory.getInstance()!.ZERO_ZERO, BasicArrayListUtil.getInstance()!.getImmutableInstance());
+    public: static const RelativeRelationship NULL_RELATIVE_RELATIONSHIP = RelativeRelationship(PointFactory::getInstance().ZERO_ZERO, BasicArrayListUtil::getInstance().getImmutableInstance());
 
-    private: typesAllowedList: BasicArrayList;
+    private: BasicArrayList typesAllowedList;
 
-    private: x: int32_t;
+    private: int32_t x;
 
-    private: y: int32_t;
+    private: int32_t y;
 
-    private: z: int32_t;
+    private: int32_t z;
 
-public constructor (GPoint point, BasicArrayList typesAllowedList){
-
-            super();
-        this.x= point.getX();
+public: RelativeRelationship(GPoint point, BasicArrayList typesAllowedList){
+this->x= point.getX();
     
-this.y= point.getY();
+this->y= point.getY();
     
-this.z= point.getZ();
+this->z= point.getZ();
     
-this.typesAllowedList= typesAllowedList;
+this->typesAllowedList= typesAllowedList;
     
 }
 
 
-    public int32_t getX(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.x;
+                        return this->x;
     
 }
 
 
-    public int32_t getY(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.y;
+                        return this->y;
     
 }
 
 
-    public int32_t getZ(){
+    public: int32_t getZ(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.z;
+                        return this->z;
     
 }
 
 
-    public BasicArrayList getTypesAllowedList(){
+    public: BasicArrayList getTypesAllowedList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.typesAllowedList;
+                        return this->typesAllowedList;
     
 }
 
 
-    public setTypesAllowedList(BasicArrayList typesAllowedList){
-this.typesAllowedList= typesAllowedList;
+    public: void setTypesAllowedList(BasicArrayList typesAllowedList){
+this->typesAllowedList= typesAllowedList;
     
 }
 

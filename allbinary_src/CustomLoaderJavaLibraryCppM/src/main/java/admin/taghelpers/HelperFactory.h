@@ -21,6 +21,8 @@
         #ifndef ADMIN_TAGHELPERS_HELPERFACTORY_H
         #define ADMIN_TAGHELPERS_HELPERFACTORY_H
 
+            #include <vector>
+        
             #include "../../java/lang/Object.h"
         
             #include "../../java/lang/Class.h"
@@ -73,27 +75,26 @@
 class HelperFactory
             : public Object
          {
-        
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, PageContext pageContext);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, PageContext pageContext);
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, HashMap<any, any> specialhashMap, PageContext pageContext);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HashMap<any, any> specialhashMap, PageContext pageContext);
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: HelperFactory();
 
 };
 

@@ -47,11 +47,10 @@
 class StringValidationJSEUtil
             : public Object
          {
-        
 
-    public static bool isBlank(string string);
+    public: static bool isBlank(std::string string);
 
-private constructor ();
+private: StringValidationJSEUtil();
 
 };
 

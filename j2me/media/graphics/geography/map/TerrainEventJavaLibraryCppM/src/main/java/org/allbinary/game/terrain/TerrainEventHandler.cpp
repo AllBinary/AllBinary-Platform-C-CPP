@@ -67,29 +67,28 @@
 #include "TerrainEventListenerInterface.h"
 
 class TerrainEventHandler: public BasicEventHandler {
-        
 
-    private: static hashtable: Hashtable<any, any> = NullUtil.getInstance()!.NULL_TABLE;
+    private: static Hashtable<any, any> hashtable = NullUtil::getInstance().NULL_TABLE;
 
-    public static init(){
-TerrainEventHandler.hashtable= new Hashtable<any, any>();
+    public: static void init(){
+TerrainEventHandler::hashtable= Hashtable<any, any>();
     
 }
 
 
-    public static TerrainEventHandler getInstance(any = {} anyType){
+    public: static TerrainEventHandler getInstance(Object* anyType){
 
-    eventHandlerCanBeNull: any = TerrainEventHandler.hashtable.get(anyType);;
+    Object* eventHandlerCanBeNull = TerrainEventHandler::hashtable.get(anyType);;
     
 
                         if(eventHandlerCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    eventHandlerCanBeNull= new TerrainEventHandler();
+                                    eventHandlerCanBeNull= TerrainEventHandler();
     
-TerrainEventHandler.hashtable.put(anyType, eventHandlerCanBeNull);
+TerrainEventHandler::hashtable.put(anyType, eventHandlerCanBeNull);
     
 
                                     }
@@ -103,20 +102,18 @@ TerrainEventHandler.hashtable.put(anyType, eventHandlerCanBeNull);
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: TerrainEventHandler(){
+}
 
 
-    public addListener(TerrainEventListener terrainEventListener){
+    public: void addListener(TerrainEventListener terrainEventListener){
 
-                        if(!this.list.contains(terrainEventListener))
+                        if(!this->list.contains(terrainEventListener))
                         
                                     {
-                                    this.list.add(terrainEventListener);
+                                    this->list.add(terrainEventListener);
     
 
                                     }
@@ -124,16 +121,16 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -142,26 +139,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    terrainEventListener: TerrainEventListener = this.list.get(index) as TerrainEventListener;;
+    TerrainEventListener terrainEventListener = this->list.get(index) as TerrainEventListener;;
     
-terrainEventListener!.onTerrainEvent(eventObject as TerrainEvent);
+terrainEventListener.onTerrainEvent(eventObject as TerrainEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -174,11 +171,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    terrainEventListenerInterface: TerrainEventListenerInterface = eventListenerInterface as TerrainEventListenerInterface;;
+    TerrainEventListenerInterface terrainEventListenerInterface = eventListenerInterface as TerrainEventListenerInterface;;
     
-terrainEventListenerInterface!.onTerrainEvent(eventObject as TerrainEvent);
+terrainEventListenerInterface.onTerrainEvent(eventObject as TerrainEvent);
     
 }
 

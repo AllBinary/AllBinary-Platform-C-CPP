@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -74,68 +76,65 @@
 class StoreTagWorkFlowFactory
             : public Object
          {
-        
 
-    private: static const instance: StoreTagWorkFlowFactory = new StoreTagWorkFlowFactory();
+    private: static StoreTagWorkFlowFactory instance() { return StoreTagWorkFlowFactory(); }
 
-    public static StoreTagWorkFlowFactory getInstance(){
+    public: static StoreTagWorkFlowFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreTagWorkFlowFactory.instance;
+                        return StoreTagWorkFlowFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: StoreTagWorkFlowFactory(){
+}
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: StoreWorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
         try {
             
-    workFlowClassName: string = propertiesHashMap!.get(DynamicObjectData.NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Creating WorkFlow: ");
+stringBuffer.append("Creating WorkFlow: ");
     
-stringBuffer!.append(workFlowClassName);
+stringBuffer.append(workFlowClassName);
     
-stringBuffer!.append("->");
+stringBuffer.append("->");
     
-stringBuffer!.append(StoreTagWorkFlowFactory.instance.constructor.name.toString()!);
+stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString()!);
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
 
-    params: std::vector<any> = new Array(2);;
+    std::vector<Object*> params = new Array(2);;
     
 
-    classes: std::vector<Function> = new Array(2);;
+    std::vector<Function> classes = new Array(2);;
     
-classes[0]= propertiesHashMap!.constructor;
+classes[0]= propertiesHashMap.constructor;
     
-classes[1]= AbeFactory.getInstance()!.constructor;
+classes[1]= AbeFactory::getInstance().constructor;
     
 params[0]= propertiesHashMap;
     
@@ -145,34 +144,34 @@ params[1]= pageContext;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory.getInstance()!.getInstance(abeClientInformation, workFlowClassName, classes, params) as StoreWorkFlowInterface;
+                        return AbeFactory::getInstance().getInstance(abeClientInformation, workFlowClassName, classes, params) as StoreWorkFlowInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    workFlowClassName: string = propertiesHashMap!.get(DynamicObjectData.NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Error Creating WorkFlow: ");
+stringBuffer.append("Error Creating WorkFlow: ");
     
-stringBuffer!.append(workFlowClassName);
+stringBuffer.append(workFlowClassName);
     
-stringBuffer!.append("->");
+stringBuffer.append("->");
     
-stringBuffer!.append(StoreTagWorkFlowFactory.instance.constructor.name.toString()!);
+stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString()!);
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(stringBuffer!.toString(), this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -188,27 +187,27 @@ this.logUtil!.put(stringBuffer!.toString(), this, commonStrings!.GET_INSTANCE, e
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    workFlowClassName: string = propertiesHashMap!.get(DynamicObjectData.NAME) as string;;
+    std::string workFlowClassName = propertiesHashMap.get(DynamicObjectData::NAME) as string;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Error Creating WorkFlow: ");
+stringBuffer.append("Error Creating WorkFlow: ");
     
-stringBuffer!.append(workFlowClassName);
+stringBuffer.append(workFlowClassName);
     
-stringBuffer!.append("->");
+stringBuffer.append("->");
     
-stringBuffer!.append(StoreTagWorkFlowFactory.instance.constructor.name.toString()!);
+stringBuffer.append(StoreTagWorkFlowFactory::instance.constructor.name.toString()!);
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(stringBuffer!.toString(), this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(stringBuffer.toString(), this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

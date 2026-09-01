@@ -85,89 +85,88 @@
 #include "MouseActionScriptInputData.h"
 #include "MouseInputAutomationProcessor.h"
 
-class MouseActionScriptInput: public BasicProfileActionScriptInput: public MouseActionScriptInputInterface {
-        
+class MouseActionScriptInput: public BasicProfileActionScriptInput, public MouseActionScriptInputInterface {
 
-    private: static const NAME: string = "Mouse";
+    private: static const std::string NAME = "Mouse";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: point: Point;
+    private: Point point;
 
-    private: buttons: int32_t= 0;
+    private: int32_t buttons= 0;
 
-    private: mouseActionScriptInputJPanel: MouseActionScriptInputJPanel;
+    private: MouseActionScriptInputJPanel mouseActionScriptInputJPanel;
 
-public constructor (Node node){
+public: MouseActionScriptInput(Node node){
             super(NAME, node);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.point= new Point();
+this->point= Point();
     
 
-    actionNode: Node = DomSearchHelper.getNode(MouseActionScriptInputData.NAME, node.getChildNodes())!;;
+    Node actionNode = DomSearchHelper::getNode(MouseActionScriptInputData::NAME, node.getChildNodes());;
     
 
                         if(actionNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    nodeList: NodeList = actionNode!.getChildNodes()!;;
+    NodeList nodeList = actionNode.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    childNode: Node = nodeList!.item(index)!;;
+    Node childNode = nodeList.item(index);;
     
 
-                        if(childNode!.getNodeName()!.compareTo(MouseActionScriptInputData.BUTTONS) == 0)
+                        if(childNode.getNodeName().compareTo(MouseActionScriptInputData::BUTTONS) == 0)
                         
                                     {
                                     
-    buttons: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string buttons = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setButtonClicks(Integer.valueOf(buttons)!.intValue());
+this->setButtonClicks(Integer::valueOf(buttons).intValue());
     
 
                                     }
                                 
                              else 
-                        if(childNode!.getNodeName()!.compareTo(MouseActionScriptInputData.MOVE) == 0)
+                        if(childNode.getNodeName().compareTo(MouseActionScriptInputData::MOVE) == 0)
                         
                                     {
                                     
-    mouseXNode: Node = DomSearchHelper.getNode(MouseActionScriptInputData.MOVE_X, childNode!.getChildNodes())!;;
+    Node mouseXNode = DomSearchHelper::getNode(MouseActionScriptInputData::MOVE_X, childNode.getChildNodes());;
     
 
-    mouseXString: string = DomNodeHelper.getTextNodeValue(mouseXNode)!;;
+    std::string mouseXString = DomNodeHelper::getTextNodeValue(mouseXNode);;
     
 
-    mouseXInteger: Integer = Integer.valueOf(mouseXString)!;;
+    Integer mouseXInteger = Integer::valueOf(mouseXString);;
     
 
-    mouseYNode: Node = DomSearchHelper.getNode(MouseActionScriptInputData.MOVE_Y, childNode!.getChildNodes())!;;
+    Node mouseYNode = DomSearchHelper::getNode(MouseActionScriptInputData::MOVE_Y, childNode.getChildNodes());;
     
 
-    mouseYString: string = DomNodeHelper.getTextNodeValue(mouseYNode)!;;
+    std::string mouseYString = DomNodeHelper::getTextNodeValue(mouseYNode);;
     
 
-    mouseYInteger: Integer = Integer.valueOf(mouseYString)!;;
+    Integer mouseYInteger = Integer::valueOf(mouseYString);;
     
 
-    newPoint: Point = new Point(mouseXInteger!.intValue(), mouseYInteger!.intValue());;
+    Point newPoint = Point(mouseXInteger.intValue(), mouseYInteger.intValue());;
     
-this.setPoint(newPoint);
+this->setPoint(newPoint);
     
 
                                     }
@@ -176,7 +175,7 @@ this.setPoint(newPoint);
                             
 
 
-                            throw new Exception("Action Script Input Unknown Node");
+                            throw Exception("Action Script Input Unknown Node");
                     
 
                         }
@@ -190,78 +189,78 @@ this.setPoint(newPoint);
                             
 
 
-                            throw new Exception("Action Script Input Node Null");
+                            throw Exception("Action Script Input Node Null");
                     
 
                         }
                             
-this.setAllowsChildren(false);
+this->setAllowsChildren(false);
     
-this.mouseActionScriptInputJPanel= new MouseActionScriptInputJPanel(this);
+this->mouseActionScriptInputJPanel= MouseActionScriptInputJPanel(this);
     
 }
 
 
-public constructor (){
+public: MouseActionScriptInput(){
             super(NAME);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.point= new Point();
+this->point= Point();
     
-this.setAllowsChildren(false);
+this->setAllowsChildren(false);
     
-this.mouseActionScriptInputJPanel= new MouseActionScriptInputJPanel(this);
-    
-}
-
-
-    public setPoint(Point point){
-this.point= point;
+this->mouseActionScriptInputJPanel= MouseActionScriptInputJPanel(this);
     
 }
 
 
-    public Point getPoint(){
+    public: void setPoint(Point point){
+this->point= point;
+    
+}
+
+
+    public: Point getPoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point;
+                        return this->point;
     
 }
 
 
-    public int32_t getButtonClicks(){
+    public: int32_t getButtonClicks(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buttons;
+                        return this->buttons;
     
 }
 
 
-    public setButtonClicks(int32_t buttons){
-this.buttons= buttons;
+    public: void setButtonClicks(int32_t buttons){
+this->buttons= buttons;
     
 }
 
 
-    public showDialog(){
-this.mouseActionScriptInputJPanel!.getMouseActionJDialog()!.setVisible(true);
+    public: void showDialog(){
+this->mouseActionScriptInputJPanel.getMouseActionJDialog().setVisible(true);
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(MouseActionScriptInputData.BUTTONS, Integer.toString(this.getButtonClicks()));
+hashMap.put(MouseActionScriptInputData::BUTTONS, std::to_string(getButtonClicks));
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -274,23 +273,23 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = super.toXmlNode(document)!;;
+    Node node = super.toXmlNode(document);;
     
 
-    mouseNode: Node = ModDomHelper.createNodeWithValueNodes(document, MouseActionScriptInputData.NAME, this.toHashMap())!;;
+    Node mouseNode = ModDomHelper::createNodeWithValueNodes(document, MouseActionScriptInputData::NAME, this->toHashMap());;
     
 node.appendChild(mouseNode);
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(MouseActionScriptInputData.MOVE_X, Integer.toString(this.getPoint()!.x));
+hashMap.put(MouseActionScriptInputData::MOVE_X, std::to_string(x));
     
-hashMap!.put(MouseActionScriptInputData.MOVE_Y, Integer.toString(this.getPoint()!.y));
+hashMap.put(MouseActionScriptInputData::MOVE_Y, std::to_string(y));
     
-mouseNode!.appendChild(ModDomHelper.createNodeWithValueNodes(document, MouseActionScriptInputData.MOVE, hashMap));
+mouseNode.appendChild(ModDomHelper::createNodeWithValueNodes(document, MouseActionScriptInputData::MOVE, hashMap));
     
 
 
@@ -303,71 +302,71 @@ mouseNode!.appendChild(ModDomHelper.createNodeWithValueNodes(document, MouseActi
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame){
-MouseInputAutomationProcessor.process(this);
+    public: void process(Long frame){
+MouseInputAutomationProcessor::process(this);
     
 }
 
 
-    public log(){
+    public: void log(){
 
-    buttonStringBuffer: StringMaker = new StringMaker();;
+    StringMaker buttonStringBuffer = StringMaker();;
     
-buttonStringBuffer!.append("1: ");
-    
-
-    booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;;
+buttonStringBuffer.append("1: ");
     
 
-                        if((this.getButtonClicks()&InputEvent.BUTTON1_MASK) != 0)
+    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
+    
+
+                        if((this->getButtonClicks()&InputEvent::BUTTON1_MASK) != 0)
                         
                                     {
-                                    buttonStringBuffer!.append(booleanFactory!.TRUE_STRING);
+                                    buttonStringBuffer.append(booleanFactory.TRUE_STRING);
     
 
                                     }
                                 
                         else {
-                            buttonStringBuffer!.append(booleanFactory!.FALSE_STRING);
+                            buttonStringBuffer.append(booleanFactory.FALSE_STRING);
     
 
                         }
                             
-buttonStringBuffer!.append(" 2: ");
+buttonStringBuffer.append(" 2: ");
     
 
-                        if((this.getButtonClicks()&InputEvent.BUTTON2_MASK) != 0)
+                        if((this->getButtonClicks()&InputEvent::BUTTON2_MASK) != 0)
                         
                                     {
-                                    buttonStringBuffer!.append(booleanFactory!.TRUE_STRING);
+                                    buttonStringBuffer.append(booleanFactory.TRUE_STRING);
     
 
                                     }
                                 
                         else {
-                            buttonStringBuffer!.append(booleanFactory!.FALSE_STRING);
+                            buttonStringBuffer.append(booleanFactory.FALSE_STRING);
     
 
                         }
                             
-buttonStringBuffer!.append(" 3: ");
+buttonStringBuffer.append(" 3: ");
     
 
-                        if((this.getButtonClicks()&InputEvent.BUTTON3_MASK) != 0)
+                        if((this->getButtonClicks()&InputEvent::BUTTON3_MASK) != 0)
                         
                                     {
-                                    buttonStringBuffer!.append(booleanFactory!.TRUE_STRING);
+                                    buttonStringBuffer.append(booleanFactory.TRUE_STRING);
     
 
                                     }
                                 
                         else {
-                            buttonStringBuffer!.append(booleanFactory!.FALSE_STRING);
+                            buttonStringBuffer.append(booleanFactory.FALSE_STRING);
     
 
                         }
                             
-this.logUtil!.putF("Input Type: " +this.getInputRobotInterface()!.getName() +" Point: " +this.getPoint() +" Buttons Clicked: " +buttonStringBuffer!.toString(), this, "log");
+this->logUtil.putF("Input Type: " +this->getInputRobotInterface().getName() +" Point: " +this->getPoint() +" Buttons Clicked: " +buttonStringBuffer.toString(), this, "log");
     
 }
 

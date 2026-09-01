@@ -49,22 +49,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ViewCustomizersTag: public StoreValidationTransformTag {
-        
 
-public constructor (){
-
-            super();
-        }
+public: ViewCustomizersTag(){
+}
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
-            this.setName("Add Validation Customizers View");
+            this->setName("Add Validation Customizers View");
     
-this.setObjectFile("views.admin.customizers.CustomizersValidationView");
+this->setObjectFile("views.admin.customizers.CustomizersValidationView");
     
 
 
@@ -76,7 +73,7 @@ this.setObjectFile("views.admin.customizers.CustomizersValidationView");
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

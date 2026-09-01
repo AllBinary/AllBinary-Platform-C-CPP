@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../../java/lang/Exception.h"
@@ -69,23 +71,22 @@
 class ImageTypes
             : public Object
          {
-        
 
-    public static ImageTypes valueOf(std::vector<any> anyType){
+    public: static ImageTypes valueOf(std::vector<Object*> anyType){
 
-    imageTypes: ImageTypes = new ImageTypes();;
+    ImageTypes imageTypes = ImageTypes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < anyType!.length; index++)
+    int32_t index = 0;index < anyType.size(); index++)
         {
 
-    imageType: InputImageType = InputImageType.getInstance(anyType[index]! as string)!;;
+    InputImageType imageType = InputImageType::getInstance(anyType[index]! as string);;
     
-imageTypes!.getVector()!.add(imageType);
+imageTypes.getVector().add(imageType);
     
 }
 
@@ -98,38 +99,34 @@ imageTypes!.getVector()!.add(imageType);
 }
 
 
-    private: vector: Vector = new Vector();
+    private: Vector vector = Vector();
 
-public constructor (){
-
-            super();
-        }
+public: ImageTypes(){
+}
 
 
-public constructor (Node node){
+public: ImageTypes(Node node){
 
-            super();
-        
-    nodeList: NodeList = node.getChildNodes()!;;
+    NodeList nodeList = node.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    childNode: Node = nodeList!.item(index)!;;
+    Node childNode = nodeList.item(index);;
     
 
-                        if(childNode!.getNodeName()!.compareTo(ImageActionScriptOutputData.TYPE) == 0)
+                        if(childNode.getNodeName().compareTo(ImageActionScriptOutputData::TYPE) == 0)
                         
                                     {
                                     
-    nextImageTypeString: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string nextImageTypeString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.getVector()!.add(InputImageType.getInstance(nextImageTypeString));
+this->getVector().add(InputImageType::getInstance(nextImageTypeString));
     
 
                                     }
@@ -138,7 +135,7 @@ this.getVector()!.add(InputImageType.getInstance(nextImageTypeString));
                             
 
 
-                            throw new Exception("ImageTypes Unknown Node");
+                            throw Exception("ImageTypes Unknown Node");
                     
 
                         }
@@ -148,36 +145,36 @@ this.getVector()!.add(InputImageType.getInstance(nextImageTypeString));
 }
 
 
-    public Vector getVector(){
+    public: Vector getVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vector;
+                        return this->vector;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    newNode: Node = document.createElement(ImageActionScriptOutputData.TYPES)!;;
+    Node newNode = document.createElement(ImageActionScriptOutputData::TYPES);;
     
 
-    size: int32_t = this.vector.length!;;
+    int32_t size = this->vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    imageType: InputImageType = this.vector.get(index) as InputImageType;;
+    InputImageType imageType = this->vector.get(index) as InputImageType;;
     
-newNode!.appendChild(ModDomHelper.createTextNode(document, ImageActionScriptOutputData.TYPE, imageType!.getName()));
+newNode.appendChild(ModDomHelper::createTextNode(document, ImageActionScriptOutputData::TYPE, imageType.getName()));
     
 }
 
@@ -190,37 +187,38 @@ newNode!.appendChild(ModDomHelper.createTextNode(document, ImageActionScriptOutp
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("ImageTypes: ");
+stringBuffer.append("ImageTypes: ");
     
 
-    size: int32_t = this.vector.length!;;
+    int32_t size = this->vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    imageType: InputImageType = this.vector.get(index) as InputImageType;;
+    InputImageType imageType = this->vector.get(index) as InputImageType;;
     
-stringBuffer!.append(imageType!.getName());
+stringBuffer.append(imageType.getName());
     
 
                         if(index < size -1)
-                        stringBuffer!.append(", ")
+                        stringBuffer.append(", ");
+                                
 }
 
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

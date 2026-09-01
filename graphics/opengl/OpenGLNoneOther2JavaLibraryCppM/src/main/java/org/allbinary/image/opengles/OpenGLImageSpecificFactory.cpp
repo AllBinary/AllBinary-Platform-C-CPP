@@ -51,21 +51,20 @@
 class OpenGLImageSpecificFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLImageSpecificFactory = new OpenGLImageSpecificFactory();
+    private: static OpenGLImageSpecificFactory instance() { return OpenGLImageSpecificFactory(); }
 
-    public static OpenGLImageSpecificFactory getInstance(){
+    public: static OpenGLImageSpecificFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLImageSpecificFactory.instance;
+                        return OpenGLImageSpecificFactory::instance();
     
 }
 
 
-    public updating: bool = false;
+    public: bool updating = false;
 
 };
 

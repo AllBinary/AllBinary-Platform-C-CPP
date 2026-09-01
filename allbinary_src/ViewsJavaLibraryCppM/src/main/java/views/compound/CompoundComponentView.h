@@ -56,15 +56,14 @@
         #include "CompoundTransform.h"
 
 class CompoundComponentView: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: CompoundComponentView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

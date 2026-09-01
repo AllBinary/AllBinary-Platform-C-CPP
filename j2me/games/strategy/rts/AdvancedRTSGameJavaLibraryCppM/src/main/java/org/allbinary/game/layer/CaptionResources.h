@@ -45,15 +45,14 @@
 class CaptionResources
             : public Object
          {
-        
 
-    private: static const instance: CaptionResources = new CaptionResources();
+    private: static CaptionResources instance() { return CaptionResources(); }
 
-    public static CaptionResources getInstance();
+    public: static CaptionResources getInstance();
 
-private constructor ();
+private: CaptionResources();
 
-    public const RESOURCE: string = "/unit_message_bubbled_box.png";
+    public: const std::string RESOURCE = "/unit_message_bubbled_box.png";
 
 };
 

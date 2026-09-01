@@ -48,19 +48,16 @@
 class PCI
             : public Object
         : public HardwareComponentInterface, public VideoInterface {
-        
 
-    private: data: string;
+    private: std::string data;
 
-public constructor (string data){
-
-            super();
-        this.data= data;
+public: PCI(std::string data){
+this->data= data;
     
 }
 
 
-    public bool compareTo(HardwareComponentInterface componentInterface){
+    public: bool compareTo(HardwareComponentInterface componentInterface){
 
 
 
@@ -70,12 +67,12 @@ public constructor (string data){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.data;
+                        return this->data;
     
 }
 

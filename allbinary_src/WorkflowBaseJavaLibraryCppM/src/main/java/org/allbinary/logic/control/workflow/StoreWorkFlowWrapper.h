@@ -55,15 +55,14 @@
         #include "WorkFlowWrapper.h"
 
 class StoreWorkFlowWrapper: public WorkFlowWrapper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (any = {} anyType);
+public: StoreWorkFlowWrapper(Object* anyType);
 
                 //@Throws(Exception.constructor)
             
-    public string getStoreName();
+    public: std::string getStoreName();
 
 };
 

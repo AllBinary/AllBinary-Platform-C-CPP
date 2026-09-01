@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_DESKTOPBUNDLE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_OSGI_DESKTOPBUNDLE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -63,17 +65,16 @@
 class DesktopBundle
             : public Object
          {
-        
 
-    private: static const DESKTOP_SYMBOLIC_NAME: string = "org.knopflerfish.bundle.desktop";
+    private: static const std::string DESKTOP_SYMBOLIC_NAME = "org.knopflerfish.bundle.desktop";
 
-    private: bundle: Bundle;
+    private: Bundle bundle;
 
-public constructor ();
+public: DesktopBundle();
 
                 //@Throws(Exception.constructor)
             
-    public start();
+    public: void start();
 
 };
 

@@ -52,15 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShipOrderStoreAdminUser: public User {
-        
 
-public constructor ();
+public: ShipOrderStoreAdminUser();
 
-public constructor (HashMap<any, any> userHashMap);
+public: ShipOrderStoreAdminUser(HashMap<any, any> userHashMap);
 
-    public validateSession(WeblisketSessionInterface weblisketSession);
+    public: void validateSession(WeblisketSessionInterface weblisketSession);
 
-    public updateSession(WeblisketSessionInterface weblisketSession);
+    public: void updateSession(WeblisketSessionInterface weblisketSession);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -50,33 +52,32 @@
 class NullServiceReference
             : public Object
          {
-        
 
-    public any getProperty(string key){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
-    
-}
-
-
-    public std::vector<string> getPropertyKeys(){
+    public: Object* getProperty(std::string key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.getArrayInstance();;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 
 
-    public int32_t compareTo(any = {} o){
+    public: std::vector<std::string> getPropertyKeys(){
 
 
 
-                            throw new RuntimeException();
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringUtil::getInstance().getArrayInstance();;
+    
+}
+
+
+    public: int32_t compareTo(Object* o){
+
+
+
+                            throw RuntimeException();
                     
 }
 

@@ -75,19 +75,18 @@
 class WebCommandProcessor
             : public Object
          {
-        
 
-    private: static const instance: WebCommandProcessor = new WebCommandProcessor();
+    private: static WebCommandProcessor instance() { return WebCommandProcessor(); }
 
-    public static WebCommandProcessor getInstance();
+    public: static WebCommandProcessor getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const aboutCommandProcessor: AboutCommandProcessor = AboutCommandProcessor.getInstance()!;
+    private: const AboutCommandProcessor aboutCommandProcessor = AboutCommandProcessor::getInstance();
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
-    public process(CommandListener midletCommandListener, Command command, Canvas canvas);
+    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas);
 
 };
 

@@ -68,20 +68,19 @@
 class CapturedBufferedImagesCacheSingleton
             : public Object
          {
-        
 
-    private: static cacheInterface: AutomaticCacheInterface = 
-                null
+    private: static AutomaticCacheInterface cacheInterface = 
+                nullptr
             ;
 
-    public static CacheInterface getInstance();
+    public: static CacheInterface getInstance();
 
                     static int32_t initResult;
                 static int32_t init();
             
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: CapturedBufferedImagesCacheSingleton();
 
 };
 

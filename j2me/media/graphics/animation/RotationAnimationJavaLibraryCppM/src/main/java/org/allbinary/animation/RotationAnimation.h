@@ -76,48 +76,47 @@
 #include "RotationAnimationInterface.h"
 #include "AnimationBehavior.h"
 
-class RotationAnimation: public IndexedAnimation: public RotationAnimationInterface {
-        
+class RotationAnimation: public IndexedAnimation, public RotationAnimationInterface {
 
-    const frameUtil: FrameUtil = FrameUtil.getInstance()!;
+    protected: const FrameUtil frameUtil = FrameUtil::getInstance();
 
-    const directionUtil: DirectionUtil = DirectionUtil.getInstance()!;
+    protected: const DirectionUtil directionUtil = DirectionUtil::getInstance();
 
-    const angleInfo: AngleInfo;
+    protected: AngleInfo angleInfo;
 
-    circularIndexUtil: CircularIndexUtil;
+    protected: CircularIndexUtil circularIndexUtil;
 
-protected constructor (AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior);
+protected: RotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior);
 
-    public nextRotationX();
+    public: void nextRotationX();
 
-    public previousRotationX();
+    public: void previousRotationX();
 
-    public nextRotation();
+    public: void nextRotation();
 
-    public previousRotation();
+    public: void previousRotation();
 
-    public nextRotationZ();
+    public: void nextRotationZ();
 
-    public previousRotationZ();
+    public: void previousRotationZ();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public setFrameByDirection(Direction direction);
+    public: void setFrameByDirection(Direction direction);
 
-    public setFrameToAngle(Angle angle);
+    public: void setFrameToAngle(Angle angle);
 
-    public adjustFrameToAngle(Angle angle);
+    public: void adjustFrameToAngle(Angle angle);
 
-    public adjustFrame(int16_t angle);
+    public: void adjustFrame(int16_t angle);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public AngleInfo getAngleInfoP();
+    public: AngleInfo getAngleInfoP();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

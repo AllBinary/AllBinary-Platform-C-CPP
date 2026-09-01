@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_HACKROTATIONSPRITEINDEXEDANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -79,37 +81,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HackRotationSpriteIndexedAnimation: public RotationAnimation {
-        
 
-    const sprite: Sprite;
+    protected: Sprite sprite;
 
-    private: const image: Image;
+    private: Image image;
 
-public constructor (Sprite sprite, Image image, AngleInfo angleInfo, AnimationBehavior animationBehavior);
+public: HackRotationSpriteIndexedAnimation(Sprite sprite, Image image, AngleInfo angleInfo, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public paintFrame(Graphics g, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrame(Graphics g, int32_t frame, int32_t x, int32_t y);
 
-    public paintXY(Graphics g, int32_t x, int32_t y);
+    public: void paintXY(Graphics g, int32_t x, int32_t y);
 
-    paint(Graphics g);
+    protected: void paint(Graphics g);
 
-    public nextRotation();
+    public: void nextRotation();
 
-    public previousRotation();
+    public: void previousRotation();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public setFrame(int32_t frame);
+    public: void setFrame(int32_t frame);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
 };
 

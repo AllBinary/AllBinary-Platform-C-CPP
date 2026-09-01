@@ -54,19 +54,18 @@
 class ColorCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: key: any;
+    private: Object* key;
 
-    private: color: Color;
+    private: Color color;
 
-public constructor (any = {} key);
+public: ColorCacheable(Object* key);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public Color getColor();
+    public: Color getColor();
 
-    public setColor(Color color);
+    public: void setColor(Color color);
 
 };
 

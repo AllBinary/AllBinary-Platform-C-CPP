@@ -48,7 +48,6 @@
         #include "CollidableBaseBehavior.h"
 
 class CollidableInterfaceCompositeInterface {
-        
 
     CollidableBaseBehavior getCollidableInferface();
 

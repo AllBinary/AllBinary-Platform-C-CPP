@@ -47,35 +47,34 @@
 class AllMotionRecognizer
             : public Object
          {
-        
 
-    private: static index: int32_t = 0;
+    private: static int32_t index = 0;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+public: AllMotionRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    public processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
                 //@Throws(Exception.constructor)
             
-    public processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
                 //@Throws(Exception.constructor)
             
-    public processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
-    public int32_t getId();
+                //@Throws(Exception.constructor)
+            
+    public: void processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+
+    public: int32_t getId();
 
 };
 

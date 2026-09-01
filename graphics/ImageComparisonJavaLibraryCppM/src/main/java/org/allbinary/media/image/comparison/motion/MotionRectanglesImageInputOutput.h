@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESIMAGEINPUTOUTPUT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_MOTIONRECTANGLESIMAGEINPUTOUTPUT_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -112,21 +114,20 @@
 class MotionRectanglesImageInputOutput
             : public Object
         : public ImageIOInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const NUMBER_OF_IMAGES: int32_t = 1;
+    private: const int32_t NUMBER_OF_IMAGES = 1;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public save(Long frame);
+public: MotionRectanglesImageInputOutput();
 
                 //@Throws(Exception.constructor)
             
-    public save(MotionRectangles motionRectangles, Long frame);
+    public: void save(Long frame);
+
+                //@Throws(Exception.constructor)
+            
+    public: void save(MotionRectangles motionRectangles, Long frame);
 
 };
 

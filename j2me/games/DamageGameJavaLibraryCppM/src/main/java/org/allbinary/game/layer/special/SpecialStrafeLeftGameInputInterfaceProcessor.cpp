@@ -48,9 +48,8 @@
 #include "SpecialGameInputInterface.h"
 
 class SpecialStrafeLeftGameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
-        
 
-public constructor (SpecialGameInputInterface collidableDestroyableDamageableLayer){
+public: SpecialStrafeLeftGameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer){
             super(collidableDestroyableDamageableLayer);
                     
 
@@ -61,8 +60,8 @@ public constructor (SpecialGameInputInterface collidableDestroyableDamageableLay
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-this.specialGameInputInterface!.strafeLeft();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+this->specialGameInputInterface.strafeLeft();
     
 }
 

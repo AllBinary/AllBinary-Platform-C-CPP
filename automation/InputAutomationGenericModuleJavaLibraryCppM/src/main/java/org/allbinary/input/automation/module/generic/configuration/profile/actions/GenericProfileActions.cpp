@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Exception.h"
@@ -99,117 +101,110 @@
 class GenericProfileActions
             : public Object
         : public DomNodeInterface, public DomDocumentMappingInterface {
-        
 
-    public static const DEFAULT_PROFILE_ACTIONS_PATH: string = GenericProfiles.DEFAULT_PROFILES_PATH +"actions/";
+    public: static const std::string DEFAULT_PROFILE_ACTIONS_PATH = GenericProfiles::DEFAULT_PROFILES_PATH +"actions/";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonFileStrings: CommonDataFileStrings = CommonDataFileStrings.getInstance()!;
+    private: const CommonDataFileStrings commonFileStrings = CommonDataFileStrings::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: genericProfileActionsJPanel: GenericProfileActionsJPanel;
+    private: GenericProfileActionsJPanel genericProfileActionsJPanel;
 
-    private: actionsDefaultListModelHelper: DefaultListModelHelper;
+    private: DefaultListModelHelper actionsDefaultListModelHelper;
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (GenericProfileActionsJPanel genericProfileActionsJPanel, string name){
-
-            super();
-        this.setName(name);
+public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, std::string name){
+this->setName(name);
     
-this.init(genericProfileActionsJPanel);
+this->init(genericProfileActionsJPanel);
     
-this.load();
+this->load();
     
 }
 
 
-public constructor (GenericProfileActionsJPanel genericProfileActionsJPanel, AbPath abPath, string name){
-
-            super();
-        this.setName(name);
+public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, AbPath abPath, std::string name){
+this->setName(name);
     
-this.init(genericProfileActionsJPanel);
+this->init(genericProfileActionsJPanel);
     
-this.load();
+this->load();
     
 }
 
 
-public constructor (GenericProfileActionsJPanel genericProfileActionsJPanel, FileInputStream fileInputStream, string name){
-
-            super();
-        this.setName(name);
+public: GenericProfileActions(GenericProfileActionsJPanel genericProfileActionsJPanel, FileInputStream fileInputStream, std::string name){
+this->setName(name);
     
-this.init(genericProfileActionsJPanel);
+this->init(genericProfileActionsJPanel);
     
-this.fileInit(fileInputStream);
+this->fileInit(fileInputStream);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(GenericProfileActionsJPanel genericProfileActionsJPanel){
-this.setGenericProfileActionsJPanel(genericProfileActionsJPanel);
+    private: void init(GenericProfileActionsJPanel genericProfileActionsJPanel){
+this->setGenericProfileActionsJPanel(genericProfileActionsJPanel);
     
-this.actionsDefaultListModelHelper= new DefaultListModelHelper();
+this->actionsDefaultListModelHelper= DefaultListModelHelper();
     
-this.setHashMap(new HashMap<any, any>());
+this->setHashMap(HashMap<any, any>());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public save(){
+    public: void save(){
 
-    idFile: FileOutputStream = new FileOutputStream(GenericProfileActions.DEFAULT_PROFILE_ACTIONS_PATH +getName() +this.commonFileStrings!._XML);;
+    FileOutputStream idFile = FileOutputStream(GenericProfileActions::DEFAULT_PROFILE_ACTIONS_PATH +getName() +this->commonFileStrings._XML);;
     
 
-    idOutData: DataOutputStream = new DataOutputStream(idFile);;
+    DataOutputStream idOutData = DataOutputStream(idFile);;
     
-idOutData!.writeBytes(DomDocumentHelper.toString(this.toXmlDoc()));
+idOutData.writeBytes(DomDocumentHelper::toString(this->toXmlDoc()));
     
 }
 
 
-    public File getFile(string name){
+    public: File getFile(std::string name){
 
-    fileName: string = DEFAULT_PROFILE_ACTIONS_PATH +name +this.commonFileStrings!._XML;;
+    std::string fileName = DEFAULT_PROFILE_ACTIONS_PATH +name +this->commonFileStrings._XML;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new File(fileName);
+                        return File(fileName);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    load(){
+    private: void load(){
 
-    file: File = this.getFile(getName())!;;
+    File file = this->getFile(getName());;
     
 
                         if(file.isFile())
                         
                                     {
                                     
-    idFile: FileInputStream = new FileInputStream(file);;
+    FileInputStream idFile = FileInputStream(file);;
     
-this.fileInit(idFile);
+this->fileInit(idFile);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("No Profile: " +file.getAbsolutePath(), this, "Contructor");
+                            this->logUtil.putF("No Profile: " +file.getAbsolutePath(), this, "Contructor");
     
 
                         }
@@ -219,47 +214,47 @@ this.fileInit(idFile);
 
                 //@Throws(Exception.constructor)
             
-    fileInit(FileInputStream fileInputStream){
+    private: void fileInit(FileInputStream fileInputStream){
 
-    bytes: std::vector<int8_t> = new Array(100000);;
+    std::vector<int8_t> bytes = new Array(100000);;
     
 
-    length: int32_t = fileInputStream!.read(bytes)!;;
+    int32_t length = fileInputStream.read(bytes);;
     
 
-    data: string = String.fromCharCode(...bytes);;
+    std::string data = String.fromCharCode(...bytes);;
     
 
-    endIndex: int32_t = data.lastIndexOf('>')!;;
+    int32_t endIndex = data.lastIndexOf('>');;
     
 
-    document: Document = DomDocumentHelper.create(data.substring(0, endIndex +1))!;;
+    Document document = DomDocumentHelper::create(data.substring(0, endIndex +1));;
     
 
-    nameNodeList: NodeList = document.getElementsByTagName(GenericProfileActionsData.NAME)!;;
+    NodeList nameNodeList = document.getElementsByTagName(GenericProfileActionsData::NAME);;
     
-this.logUtil!.putF("Number Of Profiles Specified: " +nameNodeList!.getLength(), this, "Contructor");
+this->logUtil.putF("Number Of Profiles Specified: " +nameNodeList.getLength(), this, "Contructor");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nameNodeList!.getLength(); index++)
+    int32_t index = 0;index < nameNodeList.getLength(); index++)
         {
 
-    node: Node = nameNodeList!.item(index)!;;
+    Node node = nameNodeList.item(index);;
     
 
-    nodeList: NodeList = node.getChildNodes()!;;
+    NodeList nodeList = node.getChildNodes();;
     
 
                         if(nodeList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.initActions(nodeList);
+                                    this->initActions(nodeList);
     
 
                                     }
@@ -268,45 +263,45 @@ this.logUtil!.putF("Number Of Profiles Specified: " +nameNodeList!.getLength(), 
                             
 
 
-                            throw new Exception(GenericProfileActionData.NAME +" Name Node Node Children");
+                            throw Exception(GenericProfileActionData::NAME +" Name Node Node Children");
                     
 
                         }
                             
 }
 
-this.logUtil!.putF("Loaded: " +this.getHashMap()!.size() +" Configuration Profile Action(s)", this, "Contructor");
+this->logUtil.putF("Loaded: " +this->getHashMap().size() +" Configuration Profile Action(s)", this, "Contructor");
     
-this.getDefaultListModelHelper()!.initDefaultModelList();
+this->getDefaultListModelHelper().initDefaultModelList();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initActions(NodeList nodeList){
+    private: void initActions(NodeList nodeList){
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    actionNode: Node = nodeList!.item(index)!;;
+    Node actionNode = nodeList.item(index);;
     
 
                         if(actionNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    genericConfigurationProfileAction: GenericProfileAction = new GenericProfileAction(this.getGenericProfileActionsJPanel()!.getGenericProfileActionJPanel(), actionNode);;
+    GenericProfileAction genericConfigurationProfileAction = GenericProfileAction(this->getGenericProfileActionsJPanel().getGenericProfileActionJPanel(), actionNode);;
     
-this.getHashMap()!.put(genericConfigurationProfileAction!.getName(), genericConfigurationProfileAction);
+this->getHashMap().put(genericConfigurationProfileAction.getName(), genericConfigurationProfileAction);
     
-this.getDefaultListModelHelper()!.add(genericConfigurationProfileAction!.getName());
+this->getDefaultListModelHelper().add(genericConfigurationProfileAction.getName());
     
 
                                     }
@@ -315,7 +310,7 @@ this.getDefaultListModelHelper()!.add(genericConfigurationProfileAction!.getName
                             
 
 
-                            throw new Exception(GenericProfileActionData.NAME +" Node Null");
+                            throw Exception(GenericProfileActionData::NAME +" Node Null");
                     
 
                         }
@@ -325,62 +320,62 @@ this.getDefaultListModelHelper()!.add(genericConfigurationProfileAction!.getName
 }
 
 
-    public DefaultListModelHelper getDefaultListModelHelper(){
+    public: DefaultListModelHelper getDefaultListModelHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.actionsDefaultListModelHelper;
+                        return this->actionsDefaultListModelHelper;
     
 }
 
 
-    public GenericProfileAction getAction(string string){
+    public: GenericProfileAction getAction(std::string string){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getHashMap()!.get(string) as GenericProfileAction;
+                        return this->getHashMap().get(string) as GenericProfileAction;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public add(string name){
+    public: void add(std::string name){
 
-    genericProfileAction: GenericProfileAction = new GenericProfileAction(name);;
+    GenericProfileAction genericProfileAction = GenericProfileAction(name);;
     
-this.getHashMap()!.put(genericProfileAction!.getName(), genericProfileAction);
+this->getHashMap().put(genericProfileAction.getName(), genericProfileAction);
     
-this.getDefaultListModelHelper()!.add(genericProfileAction!.getName());
+this->getDefaultListModelHelper().add(genericProfileAction.getName());
     
-this.getDefaultListModelHelper()!.initDefaultModelList();
+this->getDefaultListModelHelper().initDefaultModelList();
     
-this.save();
+this->save();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public remove(string name){
-this.getHashMap()!.remove(name);
+    public: void remove(std::string name){
+this->getHashMap().remove(name);
     
-this.getDefaultListModelHelper()!.remove(name);
+this->getDefaultListModelHelper().remove(name);
     
-this.getDefaultListModelHelper()!.initDefaultModelList();
+this->getDefaultListModelHelper().initDefaultModelList();
     
-this.save();
+this->save();
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -393,34 +388,33 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(GenericProfileActionsData.NAME)!;;
+    Node node = document.createElement(GenericProfileActionsData::NAME);;
     
 
-    set: Set = this.getHashMap()!.keys()!;;
+    Set set = this->getHashMap().keys();;
     
 
-    actionNameArray: std::vector<any> = set.toArray()!;;
+    std::vector<Object*> actionNameArray = set.toArray();;
     
 
-    size: int32_t = actionNameArray!.length
-                ;;
+    int32_t size = actionNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    nextActionName: string = actionNameArray[index]! as string;;
+    std::string nextActionName = actionNameArray[index]! as string;;
     
 
-    nextGenericProfileAction: GenericProfileAction = this.getAction(nextActionName) as GenericProfileAction;;
+    GenericProfileAction nextGenericProfileAction = this->getAction(nextActionName) as GenericProfileAction;;
     
-node.appendChild(nextGenericProfileAction!.toXmlNode(document));
+node.appendChild(nextGenericProfileAction.toXmlNode(document));
     
 }
 
@@ -435,12 +429,12 @@ node.appendChild(nextGenericProfileAction!.toXmlNode(document));
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
-    document: Document = DomDocumentHelper.create()!;;
+    Document document = DomDocumentHelper::create();;
     
 
-    node: Node = this.toXmlNode(document)!;;
+    Node node = this->toXmlNode(document);;
     
 document.appendChild(node);
     
@@ -453,50 +447,50 @@ document.appendChild(node);
 }
 
 
-    public GenericProfileActionsJPanel getGenericProfileActionsJPanel(){
+    public: GenericProfileActionsJPanel getGenericProfileActionsJPanel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericProfileActionsJPanel;
+                        return this->genericProfileActionsJPanel;
     
 }
 
 
-    public setGenericProfileActionsJPanel(GenericProfileActionsJPanel genericProfileActionsJPanel){
-this.genericProfileActionsJPanel= genericProfileActionsJPanel;
+    public: void setGenericProfileActionsJPanel(GenericProfileActionsJPanel genericProfileActionsJPanel){
+this->genericProfileActionsJPanel= genericProfileActionsJPanel;
     
 }
 
 
-    public HashMap<any, any> getHashMap(){
+    public: HashMap<any, any> getHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashMap;
+                        return this->hashMap;
     
 }
 
 
-    public setHashMap(HashMap<any, any> hashMap){
-this.hashMap= hashMap;
+    public: void setHashMap(HashMap<any, any> hashMap){
+this->hashMap= hashMap;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 

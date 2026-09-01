@@ -65,23 +65,22 @@
 class SystemHardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: SystemHardwareFactory = new SystemHardwareFactory();
+    private: static SystemHardwareFactory instance() { return SystemHardwareFactory(); }
 
-    public static SystemHardwareFactory getInstance();
+    public: static SystemHardwareFactory getInstance();
 
-    public static string static_toString();
+    public: static std::string static_toString();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: hardwareInterface: HardwareInterface = NoHardware.getInstance()!;
+    private: HardwareInterface hardwareInterface = NoHardware::getInstance();
 
-private constructor ();
+private: SystemHardwareFactory();
 
-    public HardwareInterface getInstance(GenericOperatingSystem operatingSystemInterface);
+    public: HardwareInterface getInstance(GenericOperatingSystem operatingSystemInterface);
 
 };
 

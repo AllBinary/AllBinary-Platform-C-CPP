@@ -48,32 +48,29 @@
 class BasicTerrainInfo
             : public Object
          {
-        
 
-    public static const NULL_BASIC_TERRAIN_INFO: BasicTerrainInfo = new BasicTerrainInfo(AngleFactory.getInstance()!.NOT_ANGLE);
+    public: static const BasicTerrainInfo NULL_BASIC_TERRAIN_INFO = BasicTerrainInfo(AngleFactory::getInstance().NOT_ANGLE);
 
-    private: angle: Angle;
+    private: Angle angle;
 
-public constructor (Angle angle){
-
-            super();
-        this.angle= angle;
+public: BasicTerrainInfo(Angle angle){
+this->angle= angle;
     
 }
 
 
-    public Angle getAngle(){
+    public: Angle getAngle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angle;
+                        return this->angle;
     
 }
 
 
-    public setAngle(Angle angle){
-this.angle= angle;
+    public: void setAngle(Angle angle){
+this->angle= angle;
     
 }
 

@@ -56,44 +56,43 @@
 class OpenGLImageUtilBase
             : public Object
          {
-        
 
-    public OpenGLBitmap paint(OpenGLBitmap alphaBitmap, OpenGLBitmap originalBitmap, int32_t index){
-
+    public: OpenGLBitmap paint(OpenGLBitmap alphaBitmap, OpenGLBitmap originalBitmap, int32_t index){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
-    public OpenGLBitmap paint(OpenGLBitmap colorBitmap, OpenGLBitmap originalBitmap, int32_t alpha, BasicColor basicColor){
+    public: OpenGLBitmap paint(OpenGLBitmap colorBitmap, OpenGLBitmap originalBitmap, int32_t alpha, BasicColor basicColor){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(IOException.constructor)
-            
-    public OpenGLBitmap createImage(string name){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public OpenGLBitmap createImageFromInputStream(InputStream inputStream){
+    public: OpenGLBitmap createImage(std::string name){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+                //@Throws(IOException.constructor)
+            
+    public: OpenGLBitmap createImageFromInputStream(InputStream inputStream){
+
+
+
+                            throw RuntimeException();
                     
 }
 

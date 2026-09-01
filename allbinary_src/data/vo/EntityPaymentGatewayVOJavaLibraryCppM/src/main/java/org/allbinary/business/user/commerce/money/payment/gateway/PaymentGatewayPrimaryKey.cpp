@@ -52,80 +52,77 @@
 
 class PaymentGatewayPrimaryKey
             : public Object
-        : public java.io.Serializable {
-        
+        : public java::io::Serializable {
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string storeName, string gatewayName){
-
-            super();
-        this.setStoreName(storeName);
+public: PaymentGatewayPrimaryKey(std::string storeName, std::string gatewayName){
+this->setStoreName(storeName);
     
-this.setName(gatewayName);
+this->setName(gatewayName);
     
 }
 
 
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeName;
+                        return this->storeName;
     
 }
 
 
-    public setStoreName(string storeName){
-this.storeName= storeName;
+    public: void setStoreName(std::string storeName){
+this->storeName= storeName;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(PaymentGatewayPrimaryKey.constructor.toString()!);
+stringBuffer.append(PaymentGatewayPrimaryKey.constructor.toString()!);
     
-stringBuffer!.append(StoreFront.constructor.toString()!);
+stringBuffer.append(StoreFront.constructor.toString()!);
     
-stringBuffer!.append(" =");
+stringBuffer.append(" =");
     
-stringBuffer!.append(this.getStoreName());
+stringBuffer.append(this->getStoreName());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(PaymentGateway.constructor.toString()!);
+stringBuffer.append(PaymentGateway.constructor.toString()!);
     
-stringBuffer!.append("=");
+stringBuffer.append("=");
     
-stringBuffer!.append(this.getName());
+stringBuffer.append(this->getName());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

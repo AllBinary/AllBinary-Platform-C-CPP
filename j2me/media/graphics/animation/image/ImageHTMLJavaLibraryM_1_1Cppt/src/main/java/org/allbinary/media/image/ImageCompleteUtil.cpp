@@ -59,44 +59,43 @@
 class ImageCompleteUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCompleteUtil = new ImageCompleteUtil();
+    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
 
-    public static ImageCompleteUtil getInstance(){
+    public: static ImageCompleteUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCompleteUtil.instance;
+                        return ImageCompleteUtil::instance();
     
 }
 
 
-    const ISREADY: string = "isReady";
+    protected: const std::string ISREADY = "isReady";
 
                 //@Throws(Exception.constructor)
             
-    public waitForImage(Image image, string name){
+    public: void waitForImage(Image image, std::string name){
 }
 
 
-    private: const COMPLETE: string = "Image loading complete for: ";
+    private: const std::string COMPLETE = "Image loading complete for: ";
 
                 //@Throws(Exception.constructor)
             
-    public bool isReady(Image image, string name, TimeDelayHelper timeDelayHelper){
+    public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    playnImage: PlaynImage = image as PlaynImage;;
+    PlaynImage playnImage = image as PlaynImage;;
     
 
-    playnCoreImage: playn.core.Image = playnImage!.getImage() as playn.core.Image;;
+    playn::core::Image playnCoreImage = playnImage.getImage() as playn::core::Image;;
     
 
-                        if(!playnCoreImage!.isReady() || playnCoreImage!.width() +playnCoreImage!.height() <= 0)
+                        if(!playnCoreImage.isReady() || playnCoreImage.width() +playnCoreImage.height() <= 0)
                         
                                     {
-                                    this.handleTimeout(name);
+                                    this->handleTimeout(name);
     
 
 
@@ -117,7 +116,7 @@ class ImageCompleteUtil
                         if(!image.isReady())
                         
                                     {
-                                    PreLogUtil.put("Waiting for Not Ready Image: " +image.getName(), this, this.ISREADY);
+                                    PreLogUtil::put("Waiting for Not Ready Image: " +image.getName(), this, this->ISREADY);
     
 
                                     }
@@ -126,9 +125,9 @@ class ImageCompleteUtil
                                     }
                                 
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.put(this.COMPLETE +image.getName(), this, commonStrings!.SUCCESS);
+PreLogUtil::put(this->COMPLETE +image.getName(), this, commonStrings.SUCCESS);
     
 
 
@@ -141,13 +140,13 @@ PreLogUtil.put(this.COMPLETE +image.getName(), this, commonStrings!.SUCCESS);
 
                 //@Throws(Exception.constructor)
             
-    public handleTimeout(string name){
+    public: void handleTimeout(std::string name){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public waitForAll(){
+    public: void waitForAll(){
 }
 
 

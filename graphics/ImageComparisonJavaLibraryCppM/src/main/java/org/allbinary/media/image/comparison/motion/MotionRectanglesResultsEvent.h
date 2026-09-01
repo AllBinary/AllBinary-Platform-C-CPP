@@ -47,19 +47,18 @@
         #include "MotionRectangles.h"
 
 class MotionRectanglesResultsEvent: public AllBinaryEventObject {
-        
 
-    private: const frame: Long;
+    private: Long frame;
 
-    private: motionRectangles: MotionRectangles;
+    private: MotionRectangles motionRectangles;
 
-public constructor (any = {} anyType, Long frame, MotionRectangles motionRectangles);
+public: MotionRectanglesResultsEvent(Object* anyType, Long frame, MotionRectangles motionRectangles);
 
-    public MotionRectangles getMotionRectangles();
+    public: MotionRectangles getMotionRectangles();
 
-    public setMotionRectangles(MotionRectangles motionRectangles);
+    public: void setMotionRectangles(MotionRectangles motionRectangles);
 
-    public Long getFrame();
+    public: Long getFrame();
 
 };
 

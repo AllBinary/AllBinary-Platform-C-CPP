@@ -45,84 +45,81 @@
 class ImageUnifierProperties
             : public Object
          {
-        
 
-    private: rows: Integer;
+    private: Integer rows;
 
-    private: columns: Integer;
+    private: Integer columns;
 
-    private: imageUnifierCell: ImageUnifierCell;
+    private: ImageUnifierCell imageUnifierCell;
 
-public constructor (){
-
-            super();
-        }
+public: ImageUnifierProperties(){
+}
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getColumns()!.intValue() *this.getImageUnifierCell()!.getWidth()!.intValue();
+                        return this->getColumns().intValue() *this->getImageUnifierCell().getWidth().intValue();
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getRows()!.intValue() *this.getImageUnifierCell()!.getHeight()!.intValue();
+                        return this->getRows().intValue() *this->getImageUnifierCell().getHeight().intValue();
     
 }
 
 
-    public Integer getRows(){
+    public: Integer getRows(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rows;
+                        return this->rows;
     
 }
 
 
-    public setRows(Integer rows){
-this.rows= rows;
+    public: void setRows(Integer rows){
+this->rows= rows;
     
 }
 
 
-    public Integer getColumns(){
+    public: Integer getColumns(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columns;
+                        return this->columns;
     
 }
 
 
-    public setColumns(Integer columns){
-this.columns= columns;
+    public: void setColumns(Integer columns){
+this->columns= columns;
     
 }
 
 
-    public ImageUnifierCell getImageUnifierCell(){
+    public: ImageUnifierCell getImageUnifierCell(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageUnifierCell;
+                        return this->imageUnifierCell;
     
 }
 
 
-    public setImageUnifierCell(ImageUnifierCell imageUnifierCell){
-this.imageUnifierCell= imageUnifierCell;
+    public: void setImageUnifierCell(ImageUnifierCell imageUnifierCell){
+this->imageUnifierCell= imageUnifierCell;
     
 }
 

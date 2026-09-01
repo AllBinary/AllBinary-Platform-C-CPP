@@ -56,19 +56,18 @@
 class GeographicPathFinderBase
             : public Object
          {
-        
 
-    public static const NULL_GEOGRAPHIC_PATH_FINDER_BASE: GeographicPathFinderBase = new GeographicPathFinderBase();
+    public: static const GeographicPathFinderBase NULL_GEOGRAPHIC_PATH_FINDER_BASE = GeographicPathFinderBase();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths);
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState);
+    public: BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths);
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState);
 
 };
 

@@ -66,14 +66,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameAdState: public GameAdStateBase: public VirtualKeyboardEventListenerInterface {
-        
+class GameAdState: public GameAdStateBase, public VirtualKeyboardEventListenerInterface {
 
-public constructor (AdConfiguration adConfiguration);
+public: GameAdState(AdConfiguration adConfiguration);
 
                 //@Throws(Exception.constructor)
             
-    public onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
 
 };
 

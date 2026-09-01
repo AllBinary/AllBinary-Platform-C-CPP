@@ -57,35 +57,32 @@
 #include "GameNotificationEvent.h"
 
 class GameNotificationEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: GameNotificationEventHandler = new GameNotificationEventHandler();
+    private: static GameNotificationEventHandler instance() { return GameNotificationEventHandler(); }
 
-    public static GameNotificationEventHandler getInstance(){
+    public: static GameNotificationEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameNotificationEventHandler.instance;
+                        return GameNotificationEventHandler::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GameNotificationEventHandler(){
+}
 
 
-    public enabled: bool = true;
+    public: bool enabled = true;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners(){
+    public: void removeAllListeners(){
 
-    eventListenerInterface: EventListenerInterface = NullEventListener.NULL_EVENT_LISTENER;;
+    EventListenerInterface eventListenerInterface = NullEventListener::NULL_EVENT_LISTENER;;
     
 
-    list: BasicArrayList = this.eventListenerInterfaceList;;
+    BasicArrayList list = this->eventListenerInterfaceList;;
     
 
                         if(list.size() > 0)
@@ -99,10 +96,10 @@ private constructor (){
 super.removeAllListeners();
     
 
-                        if(eventListenerInterface != NullEventListener.NULL_EVENT_LISTENER)
+                        if(eventListenerInterface != NullEventListener::NULL_EVENT_LISTENER)
                         
                                     {
-                                    this.addListenerInterface(eventListenerInterface);
+                                    this->addListenerInterface(eventListenerInterface);
     
 
                                     }
@@ -112,9 +109,9 @@ super.removeAllListeners();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-                        if(!this.enabled)
+                        if(!this->enabled)
                         
                                     {
                                     
@@ -127,9 +124,9 @@ super.removeAllListeners();
                                     }
                                 
 
-    gameNotificationListenerInterface: GameNotificationListenerInterface = eventListenerInterface as GameNotificationListenerInterface;;
+    GameNotificationListenerInterface gameNotificationListenerInterface = eventListenerInterface as GameNotificationListenerInterface;;
     
-gameNotificationListenerInterface!.onGameNotificationEvent(eventObject as GameNotificationEvent);
+gameNotificationListenerInterface.onGameNotificationEvent(eventObject as GameNotificationEvent);
     
 }
 

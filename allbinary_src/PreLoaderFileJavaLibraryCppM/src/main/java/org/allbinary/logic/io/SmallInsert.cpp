@@ -61,36 +61,33 @@
 class SmallInsert
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: fileName: string;
+    private: std::string fileName;
 
-    private: string: string;
+    private: std::string string;
 
-public constructor (string fileName){
-
-            super();
-        this.fileName= fileName;
+public: SmallInsert(std::string fileName){
+this->fileName= fileName;
     
-this.string= AbFileSystem.getInstance()!.readAsString(fileName);
+this->string= AbFileSystem::getInstance().readAsString(fileName);
     
 }
 
 
-    public bool atBeginning(string text){
+    public: bool atBeginning(std::string text){
 
         try {
             
-    idFile: FileOutputStream = new FileOutputStream(this.fileName);;
+    FileOutputStream idFile = FileOutputStream(this->fileName);;
     
 
-    idOutData: DataOutputStream = new DataOutputStream(idFile);;
+    DataOutputStream idOutData = DataOutputStream(idFile);;
     
-idOutData!.writeBytes(text +this.string);
+idOutData.writeBytes(text +this->string);
     
 
 
@@ -103,10 +100,10 @@ idOutData!.writeBytes(text +this.string);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "insertAtBeginning", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insertAtBeginning", e);
     
 
                                     }
@@ -122,17 +119,17 @@ idOutData!.writeBytes(text +this.string);
 }
 
 
-    public bool after(string text, string after){
+    public: bool after(std::string text, std::string after){
 
         try {
             
-    index: int32_t = this.string.indexOf(after)!;;
+    int32_t index = this->string.indexOf(after);;
     
 
                         if(index < 0)
                         
                                     {
-                                    console.log("No such start: " +after +" in: " +this.string);
+                                    console.log("No such start: " +after +" in: " +this->string);
     
 
 
@@ -143,25 +140,25 @@ idOutData!.writeBytes(text +this.string);
 
                                     }
                                 
-index= index +after.length;
+index= index +after.size();
     
 
-    start: string = this.string.substring(0, index)!;;
+    std::string start = this->string.substring(0, index);;
     
 
-    end: string = this.string.substring(index +1, this.string.length)!;;
+    std::string end = this->string.substring(index +1, string.size());;
     
 
-    idFile: FileOutputStream = new FileOutputStream(this.fileName);;
+    FileOutputStream idFile = FileOutputStream(this->fileName);;
     
 
-    idOutData: DataOutputStream = new DataOutputStream(idFile);;
+    DataOutputStream idOutData = DataOutputStream(idFile);;
     
-idOutData!.writeBytes(start +text +end);
+idOutData.writeBytes(start +text +end);
     
-idOutData!.close();
+idOutData.close();
     
-idFile!.close();
+idFile.close();
     
 
 
@@ -174,10 +171,10 @@ idFile!.close();
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "after", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "after", e);
     
 
                                     }
@@ -193,16 +190,16 @@ idFile!.close();
 }
 
 
-    public bool atEnd(string text){
+    public: bool atEnd(std::string text){
 
         try {
             
-    idFile: FileOutputStream = new FileOutputStream(this.fileName);;
+    FileOutputStream idFile = FileOutputStream(this->fileName);;
     
 
-    idOutData: DataOutputStream = new DataOutputStream(idFile);;
+    DataOutputStream idOutData = DataOutputStream(idFile);;
     
-idOutData!.writeBytes(this.string +text);
+idOutData.writeBytes(this->string +text);
     
 
 
@@ -215,10 +212,10 @@ idOutData!.writeBytes(this.string +text);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "insertAtEnd", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insertAtEnd", e);
     
 
                                     }

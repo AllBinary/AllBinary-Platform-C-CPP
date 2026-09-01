@@ -73,10 +73,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ShippingAddressView.h"
 
-class UpdateTaxValidationView: public ShippingAddressView: public ValidationComponentInterface {
-        
+class UpdateTaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: UpdateTaxValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -87,34 +86,34 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid(){
-this.streetAddress= new StreetAddress(this.getRequest());
+    public: Boolean isValid(){
+this->streetAddress= StreetAddress(this->getRequest());
     
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getTransformInfoInterface()!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());;
     
 
-                        if(TaxFactory.getInstance()!.getInstance(this.abeClientInformation, storeFrontInterface)!.isValid(this.streetAddress, storeFrontInterface) == Boolean.FALSE)
+                        if(TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface).isValid(this->streetAddress, storeFrontInterface) == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    billingAddressesEntity: ShippingAddressesEntity = new ShippingAddressesEntity(this.getWeblisketSession()!.getUserName());;
+    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
 
-    streetAddressList: Vector = billingAddressesEntity!.get()!;;
+    Vector streetAddressList = billingAddressesEntity.get();;
     
 
                         if(streetAddressList == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -122,29 +121,29 @@ this.streetAddress= new StreetAddress(this.getRequest());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    count: int32_t = 0;;
+    int32_t count = 0;;
     
 
-    size: int32_t = streetAddressList!.length!;;
+    int32_t size = streetAddressList.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    aStreetAddress: StreetAddress = streetAddressList!.get(index) as StreetAddress;;
+    StreetAddress aStreetAddress = streetAddressList.get(index) as StreetAddress;;
     
 
-                        if(aStreetAddress!.getName()!.compareTo(ShippingAddressData.TAX) == 0)
+                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
                                     count++;
@@ -160,18 +159,18 @@ this.streetAddress= new StreetAddress(this.getRequest());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -181,7 +180,7 @@ this.streetAddress= new StreetAddress(this.getRequest());
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -191,7 +190,7 @@ this.streetAddress= new StreetAddress(this.getRequest());
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -77,125 +79,124 @@
 #include "GameInputProcessorUtil.h"
 #include "TestInputInterface.h"
 
-class TestingInputSingleton: public AllBinaryGameLayer: public GameInputInterface {
-        
+class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterface {
 
-    private: static const instance: TestingInputSingleton = new TestingInputSingleton();
+    private: static TestingInputSingleton instance() { return TestingInputSingleton(); }
 
-    public static TestingInputSingleton getInstance(){
+    public: static TestingInputSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TestingInputSingleton.instance;
+                        return TestingInputSingleton::instance();
     
 }
 
 
-    const inputProcessorArray: std::vector<GameInputProcessor> = new Array(InputFactory.getInstance()!.MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
 
-private constructor (){
-            super(StringUtil.getInstance()!.EMPTY_STRING, RectangleFactory.SINGLETON, ViewPosition.getInstanceD());
+private: TestingInputSingleton(){
+            super(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPosition::getInstanceD());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-GameInputProcessorUtil.init(this.inputProcessorArray);
+GameInputProcessorUtil::init(this->inputProcessorArray);
     
 }
 
 
-    private: paintable: PaintableInterface = NullPaintable.getInstance()!;
+    private: PaintableInterface paintable = NullPaintable::getInstance();
 
-    public initInputProcessors(){
+    public: void initInputProcessors(){
 }
 
 
-    public initInputProcessorsForTestInput(TestInputInterface aTestInputInterface){
+    public: void initInputProcessorsForTestInput(TestInputInterface aTestInputInterface){
 
-    testInputInterface: TestInputInterface = aTestInputInterface;;
+    TestInputInterface testInputInterface = aTestInputInterface;;
     
-this.paintable= testInputInterface;
+this->paintable= testInputInterface;
     
-this.inputProcessorArray[Canvas.UP]= new class extends GameInputProcessor
+this->inputProcessorArray[Canvas::UP]= class extends GameInputProcessor
                                 {
                                 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface!.up();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+testInputInterface.up();
     
 }
 
                                 }
                             ;
     
-this.inputProcessorArray[Canvas.DOWN]= new class extends GameInputProcessor
+this->inputProcessorArray[Canvas::DOWN]= class extends GameInputProcessor
                                 {
                                 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface!.down();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+testInputInterface.down();
     
 }
 
                                 }
                             ;
     
-this.inputProcessorArray[Canvas.LEFT]= new class extends GameInputProcessor
+this->inputProcessorArray[Canvas::LEFT]= class extends GameInputProcessor
                                 {
                                 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface!.left();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+testInputInterface.left();
     
 }
 
                                 }
                             ;
     
-this.inputProcessorArray[Canvas.RIGHT]= new class extends GameInputProcessor
+this->inputProcessorArray[Canvas::RIGHT]= class extends GameInputProcessor
                                 {
                                 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface!.right();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+testInputInterface.right();
     
 }
 
                                 }
                             ;
     
-this.inputProcessorArray[Canvas.KEY_NUM7]= new class extends GameInputProcessor
+this->inputProcessorArray[Canvas::KEY_NUM7]= class extends GameInputProcessor
                                 {
                                 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface!.strafeLeft();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+testInputInterface.strafeLeft();
     
 }
 
                                 }
                             ;
     
-this.inputProcessorArray[Canvas.KEY_NUM9]= new class extends GameInputProcessor
+this->inputProcessorArray[Canvas::KEY_NUM9]= class extends GameInputProcessor
                                 {
                                 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-testInputInterface!.strafeRight();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+testInputInterface.strafeRight();
     
 }
 
                                 }
                             ;
     
-GameInputProcessorUtil.init(this.inputProcessorArray);
+GameInputProcessorUtil::init(this->inputProcessorArray);
     
 }
 
@@ -203,28 +204,28 @@ GameInputProcessorUtil.init(this.inputProcessorArray);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public processInputList(AllBinaryLayerManager allbinaryLayerManager, BasicArrayList list){
+    public: void processInputList(AllBinaryLayerManager allbinaryLayerManager, BasicArrayList list){
 
-    key: int32_t = 0;;
+    int32_t key = 0;;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 gameKeyEvent= (list.objectArray[index]! as GameKeyEvent);
     
-key= gameKeyEvent!.getKey();
+key= gameKeyEvent.getKey();
     
-this.inputProcessorArray[key]!.processEvent(allbinaryLayerManager, GameKeyEvent.NONE);
+this->inputProcessorArray[key]!.processEvent(allbinaryLayerManager, GameKeyEvent::NONE);
     
 }
 
@@ -234,21 +235,21 @@ this.inputProcessorArray[key]!.processEvent(allbinaryLayerManager, GameKeyEvent.
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public processInput(AllBinaryLayerManager allbinaryLayerManager){
-this.processInputList(allbinaryLayerManager, this.getGameKeyEventList());
+    public: void processInput(AllBinaryLayerManager allbinaryLayerManager){
+this->processInputList(allbinaryLayerManager, this->getGameKeyEventList());
     
-this.getGameKeyEventList()!.clear();
-    
-}
-
-
-    public paint(Graphics graphics){
-this.paintable.paint(graphics);
+this->getGameKeyEventList().clear();
     
 }
 
 
-    public bool implmentsGameInputInterface(){
+    public: void paint(Graphics graphics){
+this->paintable.paint(graphics);
+    
+}
+
+
+    public: bool implmentsGameInputInterface(){
 
 
 

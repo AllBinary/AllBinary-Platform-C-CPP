@@ -51,33 +51,32 @@
 class InputImageType
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    private: static const TYPE_VECTOR: Vector = new Vector();
+    private: static const Vector TYPE_VECTOR = Vector();
 
-    public static CAPTURE: InputImageType = new InputImageType("Capture", 0);
+    public: static InputImageType CAPTURE = InputImageType("Capture", 0);
 
-    public static COMPARISON: InputImageType = new InputImageType("Comparison", 1);
+    public: static InputImageType COMPARISON = InputImageType("Comparison", 1);
 
-    public static MOTION: InputImageType = new InputImageType("Motion", 2);
+    public: static InputImageType MOTION = InputImageType("Motion", 2);
 
-    public static InputImageType getInstance(string imageTypeString);
+    public: static InputImageType getInstance(std::string imageTypeString);
 
-    public static Vector getAllAsVector();
+    public: static Vector getAllAsVector();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const index: int32_t;
+    private: int32_t index;
 
-private constructor (string name, int32_t index);
+private: InputImageType(std::string name, int32_t index);
 
-    public string toString();
+    public: std::string toString();
 
-    public string getName();
+    public: std::string getName();
 
-    public int32_t getIndex();
+    public: int32_t getIndex();
 
 };
 

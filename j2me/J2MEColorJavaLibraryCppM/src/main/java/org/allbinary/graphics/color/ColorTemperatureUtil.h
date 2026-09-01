@@ -47,15 +47,14 @@
 class ColorTemperatureUtil
             : public Object
          {
-        
 
-    private: static const instance: ColorTemperatureUtil = new ColorTemperatureUtil();
+    private: static ColorTemperatureUtil instance() { return ColorTemperatureUtil(); }
 
-    public static ColorTemperatureUtil getInstance();
+    public: static ColorTemperatureUtil getInstance();
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    public BasicColor getBasicColor(int32_t thirdTemp);
+    public: BasicColor getBasicColor(int32_t thirdTemp);
 
 };
 

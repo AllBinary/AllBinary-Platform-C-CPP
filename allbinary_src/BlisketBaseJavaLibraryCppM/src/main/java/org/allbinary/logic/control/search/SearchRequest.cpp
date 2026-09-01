@@ -63,125 +63,124 @@
 #include "SearchData.h"
 
 class SearchRequest: public AbContext {
-        
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-    private: pageName: string;
+    private: std::string pageName;
 
-    private: contentType: string;
+    private: std::string contentType;
 
-    private: searchParams: SearchParams;
+    private: SearchParams searchParams;
 
-    private: storeFront: StoreFrontInterface;
+    private: StoreFrontInterface storeFront;
 
-public constructor (StoreFrontInterface storeFront, SearchParams searchParams, string xslFile, string contentType, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams, std::string xslFile, std::string contentType, HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super(propertiesHashMap, pageContext);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.storeFront= storeFront;
+this->storeFront= storeFront;
     
-this.searchParams= searchParams;
+this->searchParams= searchParams;
     
-this.xslFile= xslFile;
+this->xslFile= xslFile;
     
-this.pageName= this.pageName;
+this->pageName= this->pageName;
     
-this.contentType= contentType;
-    
-}
-
-
-    public setStoreFront(StoreFrontInterface storeFront){
-this.storeFront= storeFront;
+this->contentType= contentType;
     
 }
 
 
-    public setParams(SearchParams searchParams){
-this.searchParams= searchParams;
+    public: void setStoreFront(StoreFrontInterface storeFront){
+this->storeFront= storeFront;
     
 }
 
 
-    public setXslFile(string value){
-this.xslFile= value;
+    public: void setParams(SearchParams searchParams){
+this->searchParams= searchParams;
     
 }
 
 
-    public setFileBaseName(string value){
-this.pageName= value;
+    public: void setXslFile(std::string value){
+this->xslFile= value;
     
 }
 
 
-    public setContentType(string value){
-this.contentType= value;
+    public: void setFileBaseName(std::string value){
+this->pageName= value;
     
 }
 
 
-    public StoreFrontInterface getStoreFront(){
+    public: void setContentType(std::string value){
+this->contentType= value;
+    
+}
+
+
+    public: StoreFrontInterface getStoreFront(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeFront;
+                        return this->storeFront;
     
 }
 
 
-    public SearchParams getParams(){
+    public: SearchParams getParams(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.searchParams;
+                        return this->searchParams;
     
 }
 
 
-    public string getXslFile(){
+    public: std::string getXslFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.xslFile;
+                        return this->xslFile;
     
 }
 
 
-    public string getFileBaseName(){
+    public: std::string getFileBaseName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pageName;
+                        return this->pageName;
     
 }
 
 
-    public string getContentType(){
+    public: std::string getContentType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.contentType;
+                        return this->contentType;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node getFileBaseNameNode(Document document){
+    public: Node getFileBaseNameNode(Document document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueNodes(document, SearchData.FILENAME, this.getFileBaseName());;
+                        return ModDomHelper::createNameValueNodes(document, SearchData::FILENAME, this->getFileBaseName());;
     
 }
 

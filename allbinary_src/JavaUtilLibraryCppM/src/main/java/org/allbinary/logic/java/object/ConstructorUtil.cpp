@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -53,27 +55,26 @@
 class ConstructorUtil
             : public Object
          {
-        
 
-    public static string viewAll(Function myClass, string lineBreak){
+    public: static std::string viewAll(Function myClass, std::string lineBreak){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    constructor: std::vector<Constructor> = myClass!.getConstructors()!;;
+    std::vector<Constructor> constructor = myClass.getConstructors();;
     
-stringBuffer!.append("Constructors: ");
+stringBuffer.append("Constructors: ");
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < constructor.length; index++)
+    int32_t index = 0;index < constructor.size(); index++)
         {
-stringBuffer!.append(ConstructorUtil.view(constructor[index]!, lineBreak));
+stringBuffer.append(ConstructorUtil::view(constructor[index]!, lineBreak));
     
 }
 
@@ -81,53 +82,53 @@ stringBuffer!.append(ConstructorUtil.view(constructor[index]!, lineBreak));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public static string view(Constructor constructor, string lineBreak){
+    public: static std::string view(Constructor constructor, std::string lineBreak){
 
                         if(constructor != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(constructor.getName());
+stringBuffer.append(constructor.getName());
     
 
-    classes: std::vector<Function> = constructor.getParameterTypes()!;;
+    std::vector<Function> classes = constructor.getParameterTypes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < classes.length; index++)
+    int32_t index = 0;index < classes.size(); index++)
         {
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.append(classes[index]!.getName());
+stringBuffer.append(classes[index]!.getName());
     
-stringBuffer!.append(commonSeps!.COLON);
+stringBuffer.append(commonSeps.COLON);
     
-stringBuffer!.appendint(index);
+stringBuffer.appendint(index);
     
 }
 
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                                     }
@@ -138,10 +139,8 @@ stringBuffer!.append(lineBreak);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ConstructorUtil(){
+}
 
 
 };

@@ -37,9 +37,8 @@
 class CollisionProcessor
             : public Object
          {
-        
 
-    public bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2){
+    public: bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2){
 
 
 

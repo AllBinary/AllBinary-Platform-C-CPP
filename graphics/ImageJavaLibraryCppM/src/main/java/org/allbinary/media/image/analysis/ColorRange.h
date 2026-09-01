@@ -56,49 +56,48 @@
 class ColorRange
             : public Object
         : public ColorRangeInterface {
-        
 
-    private: minRed: int32_t;
+    private: int32_t minRed;
 
-    private: maxRed: int32_t;
+    private: int32_t maxRed;
 
-    private: minGreen: int32_t;
+    private: int32_t minGreen;
 
-    private: maxGreen: int32_t;
+    private: int32_t maxGreen;
 
-    private: minBlue: int32_t;
+    private: int32_t minBlue;
 
-    private: maxBlue: int32_t;
+    private: int32_t maxBlue;
 
-public constructor ();
+public: ColorRange();
 
-    public int32_t getMinRed();
+    public: int32_t getMinRed();
 
-    public setMinRed(int32_t minRed);
+    public: void setMinRed(int32_t minRed);
 
-    public int32_t getMaxRed();
+    public: int32_t getMaxRed();
 
-    public setMaxRed(int32_t maxRed);
+    public: void setMaxRed(int32_t maxRed);
 
-    public int32_t getMinGreen();
+    public: int32_t getMinGreen();
 
-    public setMinGreen(int32_t minGreen);
+    public: void setMinGreen(int32_t minGreen);
 
-    public int32_t getMaxGreen();
+    public: int32_t getMaxGreen();
 
-    public setMaxGreen(int32_t maxGreen);
+    public: void setMaxGreen(int32_t maxGreen);
 
-    public int32_t getMinBlue();
+    public: int32_t getMinBlue();
 
-    public setMinBlue(int32_t minBlue);
+    public: void setMinBlue(int32_t minBlue);
 
-    public int32_t getMaxBlue();
+    public: int32_t getMaxBlue();
 
-    public setMaxBlue(int32_t maxBlue);
+    public: void setMaxBlue(int32_t maxBlue);
 
-    public bool isInRange(Color color);
+    public: bool isInRange(Color color);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

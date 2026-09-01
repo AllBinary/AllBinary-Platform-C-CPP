@@ -68,33 +68,32 @@
 class GenericProfileDataWorkerType
             : public Object
         : public GenericProfileDataWorkerTypeInterface {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    public static SAVED_CAPTURE: GenericProfileDataWorkerType = SavedCaptureGenericProfileDataWorkerType.SAVED_CAPTURE;
+    public: static GenericProfileDataWorkerType SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
 
-    public static SCREEN_CAPTURE: GenericProfileDataWorkerType = new GenericProfileDataWorkerType("Screen " +InputImageType.CAPTURE.getName());
+    public: static GenericProfileDataWorkerType SCREEN_CAPTURE = GenericProfileDataWorkerType("Screen " +InputImageType::CAPTURE.getName());
 
-    public static COMPARISON: GenericProfileDataWorkerType = new GenericProfileDataWorkerType(InputImageType.COMPARISON.getName());
+    public: static GenericProfileDataWorkerType COMPARISON = GenericProfileDataWorkerType(InputImageType::COMPARISON.getName());
 
-    public static MOTION: GenericProfileDataWorkerType = new GenericProfileDataWorkerType(InputImageType.MOTION.getName());
+    public: static GenericProfileDataWorkerType MOTION = GenericProfileDataWorkerType(InputImageType::MOTION.getName());
 
-    public static GenericProfileDataWorkerType getInstance(Node node);
+    public: static GenericProfileDataWorkerType getInstance(Node node);
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: GenericProfileDataWorkerType(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -58,18 +58,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BillingAddressView.h"
 
-class SelectValidationView: public BillingAddressView: public ValidationComponentInterface {
-        
+class SelectValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: SelectValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDER_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -92,87 +94,86 @@
 class Order
             : public Object
         : public OrderInterface, public Serializable {
-        
 
-    private: const basket: BasketInterface;
+    private: BasketInterface basket;
 
-    private: paymentMethod: string;
+    private: std::string paymentMethod;
 
-    private: shippingType: string;
+    private: std::string shippingType;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: special: string;
+    private: std::string special;
 
-    private: id: string;
+    private: std::string id;
 
-    private: userComment: string;
+    private: std::string userComment;
 
-    private: userCancelComment: string;
+    private: std::string userCancelComment;
 
-    private: storeComment: string;
+    private: std::string storeComment;
 
-    private: storeCancelComment: string;
+    private: std::string storeCancelComment;
 
-public constructor (BasketInterface basket);
+public: Order(BasketInterface basket);
 
-public constructor (string storeName, BasketInterface basket, string id, string shippingType, string special, string paymentMethod);
+public: Order(std::string storeName, BasketInterface basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod);
 
-    public Boolean isIdValid();
+    public: Boolean isIdValid();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string getIdValidationInfo();
+    public: std::string getIdValidationInfo();
 
-    public setShippingMethod(string shippingType);
+    public: void setShippingMethod(std::string shippingType);
 
-    public setPaymentMethod(string value);
+    public: void setPaymentMethod(std::string value);
 
-    public setSpecial(string special);
+    public: void setSpecial(std::string special);
 
-    public setId(string value);
+    public: void setId(std::string value);
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
-    public setUserComments(string value);
+    public: void setUserComments(std::string value);
 
-    public setUserCancelComments(string value);
+    public: void setUserCancelComments(std::string value);
 
-    public setStoreComments(string value);
+    public: void setStoreComments(std::string value);
 
-    public setStoreCancelComments(string value);
+    public: void setStoreCancelComments(std::string value);
 
-    public BasketInterface getBasket();
+    public: BasketInterface getBasket();
 
-    public string getShippingMethod();
+    public: std::string getShippingMethod();
 
-    public string getPaymentMethod();
+    public: std::string getPaymentMethod();
 
-    public string getSpecial();
+    public: std::string getSpecial();
 
-    public string getId();
+    public: std::string getId();
 
-    public string getStoreName();
+    public: std::string getStoreName();
 
-    public string getUserComments();
+    public: std::string getUserComments();
 
-    public string getUserCancelComments();
+    public: std::string getUserCancelComments();
 
-    public string getStoreComments();
+    public: std::string getStoreComments();
 
-    public string getStoreCancelComments();
+    public: std::string getStoreCancelComments();
 
-    public string reviewOrder(string paymentMethod);
+    public: std::string reviewOrder(std::string paymentMethod);
 
-    public string viewOrder(string paymentMethod);
+    public: std::string viewOrder(std::string paymentMethod);
 
-    public string emailOrder(string userName, string paymentMethod, StoreFrontInterface storeFrontInterface);
+    public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface storeFrontInterface);
 
-    public HashMap<any, any> toHashMapOrder();
+    public: HashMap<any, any> toHashMapOrder();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

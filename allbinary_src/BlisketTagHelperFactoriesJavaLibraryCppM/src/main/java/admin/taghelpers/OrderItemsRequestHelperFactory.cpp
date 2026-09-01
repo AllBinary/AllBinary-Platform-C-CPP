@@ -54,36 +54,33 @@
 #include "OrderItemsRequestHelper.h"
 
 class OrderItemsRequestHelperFactory: public TagHelperFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: OrderItemsRequestHelperFactory(){
+}
 
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new OrderItemsRequestHelper(hashMap, pageContext);
+                        return OrderItemsRequestHelper(hashMap, pageContext);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, e);
     
 
                                     }

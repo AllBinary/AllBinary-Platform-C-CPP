@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -47,64 +49,61 @@
 class SmallBasicColorCacheFactory
             : public Object
          {
-        
 
-    private: static const instance: SmallBasicColorCacheFactory = new SmallBasicColorCacheFactory();
+    private: static SmallBasicColorCacheFactory instance() { return SmallBasicColorCacheFactory(); }
 
-    public static SmallBasicColorCacheFactory getInstance(){
+    public: static SmallBasicColorCacheFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallBasicColorCacheFactory.instance;
+                        return SmallBasicColorCacheFactory::instance();
     
 }
 
 
-    private: const SIZE: int32_t = 255;
+    private: const int32_t SIZE = 255;
 
-    private: const INDEX_TO_COLOR: std::vector<int32_t> = new Array(this.SIZE);
+    private: const std::vector<int32_t> INDEX_TO_COLOR = new Array(this->SIZE);
 
-    private: const BASIC_COLOR_ARRAY: std::vector<BasicColor> = new Array(this.SIZE);
+    private: const std::vector<BasicColor> BASIC_COLOR_ARRAY = new Array(this->SIZE);
 
-    private: colorIndex: int32_t = 0;
+    private: int32_t colorIndex = 0;
 
-private constructor (){
-
-            super();
-        }
+private: SmallBasicColorCacheFactory(){
+}
 
 
-    public add(BasicColor basicDefaultColor){
-this.BASIC_COLOR_ARRAY[this.colorIndex]= basicDefaultColor;
+    public: void add(BasicColor basicDefaultColor){
+this->BASIC_COLOR_ARRAY[this->colorIndex]= basicDefaultColor;
     
-this.INDEX_TO_COLOR[this.colorIndex]= basicDefaultColor!.intValue();
+this->INDEX_TO_COLOR[this->colorIndex]= basicDefaultColor.intValue();
     
-this.colorIndex++;
+this->colorIndex++;
     
 }
 
 
-    public BasicColor getAndOrCreate(int32_t colorAsInt){
+    public: BasicColor getAndOrCreate(int32_t colorAsInt){
 
-    basicColor: BasicColor;;
+    BasicColor basicColor;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.SIZE; index++)
+    int32_t index = 0;index < this->SIZE; index++)
         {
 
-                        if(this.INDEX_TO_COLOR[index] == colorAsInt)
+                        if(this->INDEX_TO_COLOR[index] == colorAsInt)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.BASIC_COLOR_ARRAY[index]!;
+                        return this->BASIC_COLOR_ARRAY[index]!;
     
 
                                     }
@@ -112,11 +111,11 @@ this.colorIndex++;
 }
 
 
-    ALPHA_MASK: int32_t = static_cast<int32_t>(0xFF000000);;
+    int32_t ALPHA_MASK = static_cast<int32_t>(0xFF000000);;
     
-basicColor= BasicColorFactory.getInstance()!.createInstanceAN(colorAsInt&ALPHA_MASK, colorAsInt&0x00FFFFFF, StringUtil.getInstance()!.EMPTY_STRING);
+basicColor= BasicColorFactory::getInstance().createInstanceAN(colorAsInt&ALPHA_MASK, colorAsInt&0x00FFFFFF, StringUtil::getInstance().EMPTY_STRING);
     
-this.add(basicColor);
+this->add(basicColor);
     
 
 

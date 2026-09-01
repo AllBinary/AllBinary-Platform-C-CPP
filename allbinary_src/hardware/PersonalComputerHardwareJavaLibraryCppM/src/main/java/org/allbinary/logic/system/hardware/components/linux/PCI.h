@@ -51,15 +51,14 @@
 class PCI
             : public Object
         : public HardwareComponentInterface, public VideoInterface {
-        
 
-    private: data: string;
+    private: std::string data;
 
-public constructor (string data);
+public: PCI(std::string data);
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface componentInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

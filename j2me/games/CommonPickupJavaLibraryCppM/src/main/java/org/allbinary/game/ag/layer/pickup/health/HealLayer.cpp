@@ -63,11 +63,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealLayer: public AllBinaryLayer: public HealthVisitorInterface {
-        
+class HealLayer: public AllBinaryLayer, public HealthVisitorInterface {
 
-public constructor (){
-            super(StringUtil.getInstance()!.EMPTY_STRING, new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 0, 0), ViewPosition.getInstanceD());
+public: HealLayer(){
+            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -75,22 +74,22 @@ public constructor (){
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public visit(HealthInterface healthInterface){
+    public: void visit(HealthInterface healthInterface){
 
-                        if(healthInterface!.isAlive())
+                        if(healthInterface.isAlive())
                         
                                     {
-                                    healthInterface!.healMax();
+                                    healthInterface.healMax();
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Heal attempt on dead: Does not currently occur", this, "visit");
+                            this->logUtil.putF("Heal attempt on dead: Does not currently occur", this, "visit");
     
 
                         }

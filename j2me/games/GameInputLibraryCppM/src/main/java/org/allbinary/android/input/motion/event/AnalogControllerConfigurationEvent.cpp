@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AnalogControllerConfigurationEvent: public AllBinaryEventObject {
-        
 
-public constructor (any = {} anyType){
+public: AnalogControllerConfigurationEvent(Object* anyType){
             super(anyType);
                     
 

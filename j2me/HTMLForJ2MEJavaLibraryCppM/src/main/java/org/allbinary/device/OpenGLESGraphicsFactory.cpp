@@ -29,9 +29,8 @@
 class OpenGLESGraphicsFactory
             : public Object
          {
-        
 
-    public OpenGLESGraphics getOpenGLESGraphicsInstance(){
+    public: OpenGLESGraphics getOpenGLESGraphicsInstance(){
 
 
 

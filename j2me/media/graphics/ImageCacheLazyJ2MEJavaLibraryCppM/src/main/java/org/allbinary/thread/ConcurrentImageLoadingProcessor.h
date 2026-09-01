@@ -61,24 +61,23 @@
 #include "ImageThreadPool.h"
 
 class ConcurrentImageLoadingProcessor: public BaseImageLoadingProcessor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageCache: ImageCache;
+    private: ImageCache imageCache;
 
-    private: const runnable: ABRunnable = new class extends ABRunnable
+    private: const ABRunnable runnable = class extends ABRunnable
                                 {
                                 
-    public run();
+    public: void run();
                                 }
                             ;
 
-public constructor (ImageCache imageCache);
+public: ConcurrentImageLoadingProcessor(ImageCache imageCache);
 
-    public runTask();
+    public: void runTask();
 
 };
 

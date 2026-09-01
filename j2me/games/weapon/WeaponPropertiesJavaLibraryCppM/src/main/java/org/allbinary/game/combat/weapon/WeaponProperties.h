@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_H
         #define ORG_ALLBINARY_GAME_COMBAT_WEAPON_WEAPONPROPERTIES_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -69,47 +71,46 @@
         #include "SimpleWeaponProperties.h"
 
 class WeaponProperties: public SimpleWeaponProperties {
-        
 
-    public static const NULL_WEAPON_PROPERTIES: WeaponProperties = new WeaponProperties(0, 0, 0, 0, 0);
+    public: static const WeaponProperties NULL_WEAPON_PROPERTIES = WeaponProperties(0, 0, 0, 0, 0);
 
-    private: static messageSent: bool = false;
+    private: static bool messageSent = false;
 
-    private: static const DAMAGE: string = "Damage: ";
+    private: static const std::string DAMAGE = "Damage: ";
 
-    private: static const RANGE: string = "Range: ";
+    private: static const std::string RANGE = "Range: ";
 
-    private: static const RELOAD: string = "Reload: ";
+    private: static const std::string RELOAD = "Reload: ";
 
-    private: reloadTime: int64_t= 0;
+    private: int64_t reloadTime= 0;
 
-    private: targetingTime: int64_t= 0;
+    private: int64_t targetingTime= 0;
 
-    private: speed: BasicDecimal = BasicDecimal.ZERO_BIGDECIMAL;
+    private: BasicDecimal speed = BasicDecimal::ZERO_BIGDECIMAL;
 
-    private: const MAX: int64_t = 10240;
+    private: const int64_t MAX = 10240;
 
-    private: const ZERO: int16_t = 0;
+    private: const int16_t ZERO = 0;
 
-public constructor (int64_t reloadTime, int64_t targetingTime, int64_t speed, int32_t damage, int16_t dissipation);
+public: WeaponProperties(int64_t reloadTime, int64_t targetingTime, int64_t speed, int32_t damage, int16_t dissipation);
 
-    setReloadTime(int64_t reloadTime);
+    private: void setReloadTime(int64_t reloadTime);
 
-    public int64_t getReloadTime();
+    public: int64_t getReloadTime();
 
-    setTargetingTime(int64_t targetingTime);
+    private: void setTargetingTime(int64_t targetingTime);
 
-    public int64_t getTargetingTime();
+    public: int64_t getTargetingTime();
 
-    public BasicDecimal getSpeed();
+    public: BasicDecimal getSpeed();
 
-    public setSpeed(BasicDecimal speed);
+    public: void setSpeed(BasicDecimal speed);
 
-    public int32_t getDamageI(int32_t range);
+    public: int32_t getDamageI(int32_t range);
 
-    public std::vector<string> toStringArray();
+    public: std::vector<std::string> toStringArray();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

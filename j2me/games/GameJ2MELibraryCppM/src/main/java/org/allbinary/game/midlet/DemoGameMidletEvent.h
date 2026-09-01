@@ -54,17 +54,16 @@
         #include "DemoGameMidletState.h"
 
 class DemoGameMidletEvent: public AllBinaryEventObject {
-        
 
-    private: demoGameMidletState: DemoGameMidletState;
+    private: DemoGameMidletState demoGameMidletState;
 
-public constructor (any = {} anyType, DemoGameMidletState demoGameMidletState);
+public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState demoGameMidletState);
 
-    public init(any = {} anyType);
+    public: void init(Object* anyType);
 
-    public setDemoGameMidletState(DemoGameMidletState demoGameMidletState);
+    public: void setDemoGameMidletState(DemoGameMidletState demoGameMidletState);
 
-    public DemoGameMidletState getDemoGameMidletState();
+    public: DemoGameMidletState getDemoGameMidletState();
 
 };
 

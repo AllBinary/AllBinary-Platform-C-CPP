@@ -58,37 +58,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AccelerometerSensorUpdateProcessor: public Processor {
-        
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    public: void process(){
 
-    sensorFeatureFactory: SensorFeatureFactory = SensorFeatureFactory.getInstance()!;;
+    SensorFeatureFactory sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
 
-                        if(Features.getInstance()!.isFeature(sensorFeatureFactory!.ORIENTATION_SENSORS))
+                        if(Features::getInstance().isFeature(sensorFeatureFactory.ORIENTATION_SENSORS))
                         
                                     {
-                                    AccelerometerSensorFactory.getInstance()!.setCompleteMotionGestureInputEventListener(new SingleKeyPressGameKeyFromMotionGestureEventListener());
-    
-
-                                    }
-                                
-                             else 
-                        if(Features.getInstance()!.isFeature(sensorFeatureFactory!.SIMULATED_ORIENTATION_SENSORS))
-                        
-                                    {
-                                    AccelerometerSensorFactory.getInstance()!.setCompleteMotionGestureInputEventListener(new SingleKeyPressGameKeyFromMotionGestureEventListener());
+                                    AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(SingleKeyPressGameKeyFromMotionGestureEventListener());
     
 
                                     }
                                 
                              else 
-                        if(Features.getInstance()!.isFeature(sensorFeatureFactory!.NO_ORIENTATION))
+                        if(Features::getInstance().isFeature(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS))
                         
                                     {
-                                    AccelerometerSensorFactory.getInstance()!.setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener.getInstance());
+                                    AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(SingleKeyPressGameKeyFromMotionGestureEventListener());
+    
+
+                                    }
+                                
+                             else 
+                        if(Features::getInstance().isFeature(sensorFeatureFactory.NO_ORIENTATION))
+                        
+                                    {
+                                    AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
     
 
                                     }
@@ -97,7 +96,7 @@ class AccelerometerSensorUpdateProcessor: public Processor {
                             
 
 
-                            throw new Exception("Sensor Feature Not Set");
+                            throw Exception("Sensor Feature Not Set");
                     
 
                         }

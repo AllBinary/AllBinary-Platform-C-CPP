@@ -51,15 +51,12 @@
 class MachineAccessControlAddress
             : public Object
         : public HardwareComponentInterface, public MachineAccessControlAddressInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: MachineAccessControlAddress(){
+}
 
 
-    public bool compareTo(HardwareComponentInterface componentInterface){
+    public: bool compareTo(HardwareComponentInterface componentInterface){
 
 
 
@@ -69,12 +66,12 @@ public constructor (){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

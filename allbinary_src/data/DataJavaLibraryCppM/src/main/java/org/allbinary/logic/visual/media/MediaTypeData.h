@@ -45,17 +45,16 @@
 class MediaTypeData
             : public Object
          {
-        
 
-    private: static const instance: MediaTypeData = new MediaTypeData();
+    private: static MediaTypeData instance() { return MediaTypeData(); }
 
-    public static MediaTypeData getInstance();
+    public: static MediaTypeData getInstance();
 
-private constructor ();
+private: MediaTypeData();
 
-    public const RESIZABLE_MEDIA: string = "RESIZABLE_MEDIA";
+    public: const std::string RESIZABLE_MEDIA = "RESIZABLE_MEDIA";
 
-    public const NOT_RESIZABLE_MEDIA: string = "NOT_RESIZABLE_MEDIA";
+    public: const std::string NOT_RESIZABLE_MEDIA = "NOT_RESIZABLE_MEDIA";
 
 };
 

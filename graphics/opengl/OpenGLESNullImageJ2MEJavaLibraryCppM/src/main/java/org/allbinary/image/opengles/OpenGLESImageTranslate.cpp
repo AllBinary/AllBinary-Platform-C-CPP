@@ -46,25 +46,24 @@
 class OpenGLESImageTranslate
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESImageTranslate = new OpenGLESImageTranslate();
+    private: static OpenGLESImageTranslate instance() { return OpenGLESImageTranslate(); }
 
-    public static OpenGLESImageTranslate getInstance(){
+    public: static OpenGLESImageTranslate getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageTranslate.instance;
+                        return OpenGLESImageTranslate::instance();
     
 }
 
 
-    public translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y){
+    public: void translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y){
 }
 
 
-    public translate2(GL10 gl, OpenGLESImage openGLESImage){
+    public: void translate2(GL10 gl, OpenGLESImage openGLESImage){
 }
 
 

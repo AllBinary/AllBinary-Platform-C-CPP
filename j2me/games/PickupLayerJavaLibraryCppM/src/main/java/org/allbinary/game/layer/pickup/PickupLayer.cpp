@@ -88,112 +88,111 @@
 #include "CountedPickedUpLayerInterfaceFactory.h"
 #include "PickedUpLayerInterfaceFactoryInterface.h"
 
-class PickupLayer: public MultiPlayerGameLayer: public PickedUpLayerInterface, public PickupableInterface {
-        
+class PickupLayer: public MultiPlayerGameLayer, public PickedUpLayerInterface, public PickupableInterface {
 
-    private: pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
-    private: destroyed: bool= false;
+    private: bool destroyed= false;
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-public constructor (string name, RemoteInfo remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
-            super(remoteInfo, BasicGroupFactory.getInstance()!.NONE_ARRAY, name, rectangle, viewPosition);
+public: PickupLayer(std::string name, RemoteInfo remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
+            super(remoteInfo, BasicGroupFactory::getInstance().NONE_ARRAY, name, rectangle, viewPosition);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setCollidableInferface(CollidableAlwaysPickupNeverCollideBehaviorFactory.getInstance()!.createBehavior());
+this->setCollidableInferface(CollidableAlwaysPickupNeverCollideBehaviorFactory::getInstance().createBehavior());
     
-this.setLayerWidth(10);
+this->setLayerWidth(10);
     
-this.setLayerHeight(10);
+this->setLayerHeight(10);
     
-this.init(pickedUpLayerInterfaceFactoryInterface, animationInterface);
-    
-}
-
-
-    public init(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface){
-this.pickedUpLayerInterfaceFactoryInterface= pickedUpLayerInterfaceFactoryInterface;
-    
-this.animationInterface= animationInterface;
-    
-this.setDestroyed(false);
+this->init(pickedUpLayerInterfaceFactoryInterface, animationInterface);
     
 }
 
 
-    public initXYZ(int32_t x, int32_t y, int32_t z){
-this.setPosition(x, y, z);
+    public: void init(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface){
+this->pickedUpLayerInterfaceFactoryInterface= pickedUpLayerInterfaceFactoryInterface;
+    
+this->animationInterface= animationInterface;
+    
+this->setDestroyed(false);
     
 }
 
 
-    public paint(Graphics graphics){
-
-    viewPosition: ViewPositionBase = this.getViewPosition()!;;
-    
-
-    viewX: int32_t = viewPosition!.getX()!;;
-    
-
-    viewY: int32_t = viewPosition!.getY()!;;
-    
-this.animationInterface!.paintXY(graphics, viewX, viewY);
+    public: void initXYZ(int32_t x, int32_t y, int32_t z){
+this->setPosition(x, y, z);
     
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-    viewPosition: ViewPositionBase = this.getViewPosition()!;;
+    ViewPositionBase viewPosition = this->getViewPosition();;
     
 
-    viewX: int32_t = viewPosition!.getX()!;;
+    int32_t viewX = viewPosition.getX();;
     
 
-    viewY: int32_t = viewPosition!.getY()!;;
+    int32_t viewY = viewPosition.getY();;
     
-this.animationInterface!.paintThreedXYZ(graphics, viewX, viewY, 3);
+this->animationInterface.paintXY(graphics, viewX, viewY);
     
 }
 
 
-    public PickedUpLayerInterfaceFactoryInterface getPickedUpLayerInterfaceFactoryInterface(){
+    public: void paintThreed(Graphics graphics){
+
+    ViewPositionBase viewPosition = this->getViewPosition();;
+    
+
+    int32_t viewX = viewPosition.getX();;
+    
+
+    int32_t viewY = viewPosition.getY();;
+    
+this->animationInterface.paintThreedXYZ(graphics, viewX, viewY, 3);
+    
+}
+
+
+    public: PickedUpLayerInterfaceFactoryInterface getPickedUpLayerInterfaceFactoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pickedUpLayerInterfaceFactoryInterface;
+                        return this->pickedUpLayerInterfaceFactoryInterface;
     
 }
 
 
-    public setPickedUp(){
-this.setDestroyed(true);
+    public: void setPickedUp(){
+this->setDestroyed(true);
     
 }
 
 
-    public bool isDestroyed(){
+    public: bool isDestroyed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.destroyed;
+                        return this->destroyed;
     
 }
 
 
-    public setDestroyed(bool destroyed){
-this.destroyed= destroyed;
+    public: void setDestroyed(bool destroyed){
+this->destroyed= destroyed;
     
 
-                        if(this.isDestroyed())
+                        if(this->isDestroyed())
                         
                                     {
-                                    DestroyedLayerProcessor.getInstance()!.add(this);
+                                    DestroyedLayerProcessor::getInstance().add(this);
     
 
                                     }
@@ -201,11 +200,11 @@ this.destroyed= destroyed;
 }
 
 
-    public damage(int32_t damage, int32_t damageType){
+    public: void damage(int32_t damage, int32_t damageType){
 }
 
 
-    public int32_t getDamage(int32_t damageType){
+    public: int32_t getDamage(int32_t damageType){
 
 
 
@@ -217,11 +216,11 @@ this.destroyed= destroyed;
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void set(GL gl){
 
-    openGLSurfaceChangedInterface: OpenGLSurfaceChangedInterface = this.animationInterface as OpenGLSurfaceChangedInterface;;
+    OpenGLSurfaceChangedInterface openGLSurfaceChangedInterface = this->animationInterface as OpenGLSurfaceChangedInterface;;
     
-openGLSurfaceChangedInterface!.set(gl);
+openGLSurfaceChangedInterface.set(gl);
     
 }
 

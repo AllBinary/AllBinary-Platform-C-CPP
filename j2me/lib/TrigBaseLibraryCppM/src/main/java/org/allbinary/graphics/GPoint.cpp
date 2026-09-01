@@ -60,138 +60,135 @@
 class GPoint
             : public Object
          {
-        
 
-    public static GPoint getInstance(GPoint point){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GPoint(point.getX(), point.getY(), point.getZ());
-    
-}
-
-
-    private: static const POINT_LABEL: string = "Point: ";
-
-    public static string toStringStatic(int32_t x, int32_t y, int32_t z){
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-
-    positionStrings: PositionStrings = PositionStrings.getInstance()!;;
-    
-stringBuffer!.append(GPoint.POINT_LABEL);
-    
-stringBuffer!.append(positionStrings!.X_LABEL);
-    
-stringBuffer!.appendint(x);
-    
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
-    
-stringBuffer!.append(positionStrings!.Y_LABEL);
-    
-stringBuffer!.appendint(y);
-    
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
-    
-stringBuffer!.append(positionStrings!.Z_LABEL);
-    
-stringBuffer!.appendint(z);
-    
+    public: static GPoint getInstance(GPoint point){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return GPoint(point.getX(), point.getY(), point.getZ());
     
 }
 
 
-    private: const x: int32_t;
+    private: static const std::string POINT_LABEL = "Point: ";
 
-    private: const y: int32_t;
+    public: static std::string toStringStatic(int32_t x, int32_t y, int32_t z){
 
-    private: const z: int32_t;
-
-public constructor (int32_t x, int32_t y, int32_t z){
-
-            super();
-        this.x= x;
+    StringMaker stringBuffer = StringMaker();;
     
-this.y= y;
-    
-this.z= z;
-    
-}
 
-
-    public int32_t getX(){
+    PositionStrings positionStrings = PositionStrings::getInstance();;
+    
+stringBuffer.append(GPoint::POINT_LABEL);
+    
+stringBuffer.append(positionStrings.X_LABEL);
+    
+stringBuffer.appendint(x);
+    
+stringBuffer.append(CommonSeps::getInstance().SPACE);
+    
+stringBuffer.append(positionStrings.Y_LABEL);
+    
+stringBuffer.appendint(y);
+    
+stringBuffer.append(CommonSeps::getInstance().SPACE);
+    
+stringBuffer.append(positionStrings.Z_LABEL);
+    
+stringBuffer.appendint(z);
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.x;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public int32_t getY(){
+    private: int32_t x;
 
+    private: int32_t y;
 
+    private: int32_t z;
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.y;
+public: GPoint(int32_t x, int32_t y, int32_t z){
+this->x= x;
+    
+this->y= y;
+    
+this->z= z;
     
 }
 
 
-    public int32_t getZ(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.z;
+                        return this->x;
     
 }
 
 
-    public int32_t getRawX(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.x;
+                        return this->y;
     
 }
 
 
-    public int32_t getRawY(){
+    public: int32_t getZ(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.y;
+                        return this->z;
     
 }
 
 
-    public int32_t getRawZ(){
+    public: int32_t getRawX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.z;
+                        return this->x;
     
 }
 
 
-    public string toString(){
+    public: int32_t getRawY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GPoint.toStringStatic(this.getX(), this.getY(), this.getZ());;
+                        return this->y;
+    
+}
+
+
+    public: int32_t getRawZ(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->z;
+    
+}
+
+
+    public: std::string toString(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return GPoint::toStringStatic(this->getX(), this->getY(), this->getZ());;
     
 }
 

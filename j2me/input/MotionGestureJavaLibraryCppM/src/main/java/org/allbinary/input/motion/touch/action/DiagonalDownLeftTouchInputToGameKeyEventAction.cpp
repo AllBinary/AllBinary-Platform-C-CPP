@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DiagonalDownLeftTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(DiagonalDownLeftTouchInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(DiagonalDownLeftTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    DiagonalDownLeftTouchInputToGameKeyEventAction.instance= new DiagonalDownLeftTouchInputToGameKeyEventAction();
+                                    DiagonalDownLeftTouchInputToGameKeyEventAction::instance= DiagonalDownLeftTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class DiagonalDownLeftTouchInputToGameKeyEventAction: public GameKeyCompleteMoti
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DiagonalDownLeftTouchInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return DiagonalDownLeftTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Diagonal Down Left Action", TouchMotionGestureFactory.getInstance()!.DIAGONAL_DOWN_LEFT, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: DiagonalDownLeftTouchInputToGameKeyEventAction(){
+            super("Diagonal Down Left Action", TouchMotionGestureFactory::getInstance().DIAGONAL_DOWN_LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

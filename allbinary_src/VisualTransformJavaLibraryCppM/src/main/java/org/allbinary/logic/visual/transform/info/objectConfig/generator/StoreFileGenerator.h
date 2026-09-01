@@ -107,23 +107,22 @@
         #include "TransformInfoObjectConfigGenerator.h"
 
 class StoreFileGenerator: public TransformInfoObjectConfigGenerator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const output: string;
+    private: std::string output;
 
-    private: const fileAbPath: AbPath;
+    private: AbPath fileAbPath;
 
-    private: const file: AbFile;
+    private: AbFile file;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: StoreFileGenerator(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string process(string input);
+    public: std::string process(std::string input);
 
 };
 

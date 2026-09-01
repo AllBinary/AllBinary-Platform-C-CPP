@@ -45,27 +45,24 @@
 class RunAtEndAnimationListener
             : public Object
         : public AnimationListenerInterface {
-        
 
-    runnable: Runnable;
+    protected: Runnable runnable;
 
-protected constructor (Runnable runnable){
-
-            super();
-        this.runnable= runnable;
+protected: RunAtEndAnimationListener(Runnable runnable){
+this->runnable= runnable;
     
 }
 
 
-    public onPlatformAnimationStart(){
+    public: void onPlatformAnimationStart(){
 }
 
 
-    public onPlatformAnimationEnd(){
+    public: void onPlatformAnimationEnd(){
 }
 
 
-    public onPlatformAnimationRepeat(){
+    public: void onPlatformAnimationRepeat(){
 }
 
 

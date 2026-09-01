@@ -52,20 +52,17 @@
 #include "UpdateMyFontInterface.h"
 
 class UpdateMyFontProcessor: public MyFontProcessor {
-        
 
-    private: const updateMeasurementProcessor: UpdateMyFontInterface;
+    private: UpdateMyFontInterface updateMeasurementProcessor;
 
-public constructor (UpdateMyFontInterface keyValueDrawCharArray){
-
-            super();
-        this.updateMeasurementProcessor= keyValueDrawCharArray;
+public: UpdateMyFontProcessor(UpdateMyFontInterface keyValueDrawCharArray){
+this->updateMeasurementProcessor= keyValueDrawCharArray;
     
 }
 
 
-    public process(Graphics graphics){
-this.updateMeasurementProcessor!.updateMeasurement(graphics);
+    public: void process(Graphics graphics){
+this->updateMeasurementProcessor.updateMeasurement(graphics);
     
 }
 

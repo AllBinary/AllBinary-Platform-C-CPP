@@ -54,11 +54,10 @@
 class PlayerOwnedRTSLayers
             : public Object
          {
-        
 
-    public const rtsLayerList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList rtsLayerList = BasicArrayListD();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

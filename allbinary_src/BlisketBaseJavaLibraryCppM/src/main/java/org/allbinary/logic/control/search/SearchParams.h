@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHPARAMS_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_SEARCH_SEARCHPARAMS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -71,71 +73,70 @@
 class SearchParams
             : public Object
          {
-        
 
-    private: columnsAndSearchValues: HashMap<any, any>;
+    private: HashMap<any, any> columnsAndSearchValues;
 
-    private: order: string;
+    private: std::string order;
 
-    private: sortBy: string;
+    private: std::string sortBy;
 
-    private: listLength: string;
+    private: std::string listLength;
 
-    private: startPage: string;
+    private: std::string startPage;
 
-    private: endPage: string;
+    private: std::string endPage;
 
-public constructor (HttpServletRequest request);
+public: SearchParams(HttpServletRequest request);
 
-    public add(string column, string value);
+    public: void add(std::string column, std::string value);
 
-    public setOrder(string value);
+    public: void setOrder(std::string value);
 
-    public setSortBy(string value);
+    public: void setSortBy(std::string value);
 
-    public setLength(string value);
+    public: void setLength(std::string value);
 
-    public setStartPage(string value);
+    public: void setStartPage(std::string value);
 
-    public setEndPage(string value);
+    public: void setEndPage(std::string value);
 
-    public HashMap<any, any> get();
+    public: HashMap<any, any> get();
 
-    public string getOrder();
+    public: std::string getOrder();
 
-    public string getSortBy();
+    public: std::string getSortBy();
 
-    public string getLength();
+    public: std::string getLength();
 
-    public Integer getLengthInt();
+    public: Integer getLengthInt();
 
-    public string getStartPage();
+    public: std::string getStartPage();
 
-    public string getEndPage();
+    public: std::string getEndPage();
 
-    public Integer getStartPageInt();
+    public: Integer getStartPageInt();
 
-    public Integer getEndPageInt();
-
-                //@Throws(Exception.constructor)
-            
-    public Node getParamsNode(Document document);
+    public: Integer getEndPageInt();
 
                 //@Throws(Exception.constructor)
             
-    Node getFieldsNode(Document document);
+    public: Node getParamsNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    Node getOrderNode(Document document);
+    private: Node getFieldsNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    Node getSortByNode(Document document);
+    private: Node getOrderNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    Node getLengthNode(Document document);
+    private: Node getSortByNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    private: Node getLengthNode(Document document);
 
 };
 

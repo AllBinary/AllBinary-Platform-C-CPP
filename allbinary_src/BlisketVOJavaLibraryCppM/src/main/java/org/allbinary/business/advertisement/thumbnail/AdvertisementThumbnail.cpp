@@ -46,46 +46,43 @@
 class AdvertisementThumbnail
             : public Object
         : public AdvertisementThumbnailInterface {
-        
 
-    private: imageFileName: string;
+    private: std::string imageFileName;
 
-    private: imageUrl: string;
+    private: std::string imageUrl;
 
-    private: constraint: TwoDimensionalConstraintInterface;
+    private: TwoDimensionalConstraintInterface constraint;
 
-public constructor (){
-
-            super();
-        }
+public: AdvertisementThumbnail(){
+}
 
 
-    public string getFileName(){
+    public: std::string getFileName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageFileName;
+                        return this->imageFileName;
     
 }
 
 
-    public string getUrl(){
+    public: std::string getUrl(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageUrl;
+                        return this->imageUrl;
     
 }
 
 
-    public TwoDimensionalConstraintInterface getTwoDimensionalConstraint(){
+    public: TwoDimensionalConstraintInterface getTwoDimensionalConstraint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.constraint;
+                        return this->constraint;
     
 }
 

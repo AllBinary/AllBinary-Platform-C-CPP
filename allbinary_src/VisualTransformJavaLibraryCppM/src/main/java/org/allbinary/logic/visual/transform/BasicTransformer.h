@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMER_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_BASICTRANSFORMER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -98,27 +100,26 @@
         #include "AbTransformer.h"
 
 class BasicTransformer: public AbTransformer {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const streamUtil: StreamUtil = StreamUtil.getInstance()!;
+    private: const StreamUtil streamUtil = StreamUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-public constructor (AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    setEncryptedTemplateFileAsInputStream(AbFile file);
+public: BasicTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    setEncryptedTemplateAsInputStream();
+    private: void setEncryptedTemplateFileAsInputStream(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    setTemplateAsInputStream();
+    private: void setEncryptedTemplateAsInputStream();
+
+                //@Throws(Exception.constructor)
+            
+    private: void setTemplateAsInputStream();
 
 };
 

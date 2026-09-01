@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -89,47 +91,45 @@
         #include "ScrollCurrentSelectionForm.h"
 #include "ItemPaintableFactory.h"
 
-class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm: public UpdateMyFontInterface {
-        
+class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public UpdateMyFontInterface {
 
-    const selectedAnimationArray: std::vector<Animation> = new Array(16);
+    protected: const std::vector<Animation> selectedAnimationArray = new Array(16);
 
-    const unSelectedAnimationArray: std::vector<Animation> = new Array(16);
+    protected: const std::vector<Animation> unSelectedAnimationArray = new Array(16);
 
-public constructor (string title, std::vector<ABCustomItem> items, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-            super(title, items, ItemPaintableFactory.getInstance(), border,  -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor);
+public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem> items, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+            super(title, items, ItemPaintableFactory::getInstance(), border,  -3, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initAnimations();
+this->initAnimations();
     
-this.addAll(items);
+this->addAll(items);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
-this.updateAll(graphics, getAllitems());
+    public: void updateMeasurement(Graphics graphics){
+this->updateAll(graphics, getAllitems());
     
 super.updateMeasurement(graphics);
     
 }
 
 
-    initAnimations(){
+    private: void initAnimations(){
 
-    nullAnimation: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;;
+    Animation nullAnimation = NullAnimationFactory::getFactoryInstance().getInstance(0);;
     
 
 
 
 
                         for (
-    index: int32_t = this.selectedAnimationArray!.length
-                ;--index >= 0; )
+    int32_t index = this->selectedAnimationArray.size();--index >= 0; )
         {
-this.selectedAnimationArray[index]= nullAnimation;
+this->selectedAnimationArray[index]= nullAnimation;
     
 }
 
@@ -138,71 +138,69 @@ this.selectedAnimationArray[index]= nullAnimation;
 
 
                         for (
-    index: int32_t = this.unSelectedAnimationArray!.length
-                ;--index >= 0; )
+    int32_t index = this->unSelectedAnimationArray.size();--index >= 0; )
         {
-this.unSelectedAnimationArray[index]= nullAnimation;
+this->unSelectedAnimationArray[index]= nullAnimation;
     
 }
 
 }
 
 
-    addAll(std::vector<ABCustomItem> items){
+    private: void addAll(std::vector<ABCustomItem> items){
 
 
 
 
                         for (
-    index: int32_t = items.length
-                ;--index >= 0; )
+    int32_t index = items.size();--index >= 0; )
         {
-this.addAt(index, items[index]!);
+this->addAt(index, items[index]!);
     
 }
 
 }
 
 
-    addAt(int32_t index, ABCustomItem item){
+    private: void addAt(int32_t index, ABCustomItem item){
 
-    basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;;
+    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
     
 
-    buttonColor: BasicColor = basicColorFactory!.TRANSPARENT_GREY;;
+    BasicColor buttonColor = basicColorFactory.TRANSPARENT_GREY;;
     
 
-    selectedButtonColor: BasicColor = basicColorFactory!.TRANSPARENT_RED;;
+    BasicColor selectedButtonColor = basicColorFactory.TRANSPARENT_RED;;
     
 
-    width: int32_t = item.getMinimumWidth()!;;
+    int32_t width = item.getMinimumWidth();;
     
 
-    height: int32_t = item.getMinimumHeight()!;;
+    int32_t height = item.getMinimumHeight();;
     
 
-    adjustedBorder: int32_t = 3;;
+    int32_t adjustedBorder = 3;;
     
 
-    offset: int32_t =  -(this.halfBorder +adjustedBorder);;
+    int32_t offset =  -(this->halfBorder +adjustedBorder);;
     
 
-    rectWidth: int32_t = width +this.border -adjustedBorder;;
+    int32_t rectWidth = width +this->border -adjustedBorder;;
     
 
-    rectHeight: int32_t = height +this.border -adjustedBorder;;
+    int32_t rectHeight = height +this->border -adjustedBorder;;
     
 
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
+                        if(J2MEUtil::isJ2ME() || J2MEUtil::isHTML())
                         
                                     {
-                                    this.selectedAnimationArray[index]= new RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor);
+                                    this->selectedAnimationArray[index]= RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor);
     
 
                                     }
                                 
                         else {
-                            this.selectedAnimationArray[index]= new RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor);
+                            this->selectedAnimationArray[index]= RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, selectedButtonColor);
     
 
                         }
@@ -210,16 +208,16 @@ this.addAt(index, items[index]!);
 adjustedBorder= 4;
     
 
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
+                        if(J2MEUtil::isJ2ME() || J2MEUtil::isHTML())
                         
                                     {
-                                    this.unSelectedAnimationArray[index]= new RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor);
+                                    this->unSelectedAnimationArray[index]= RectangleAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor);
     
 
                                     }
                                 
                         else {
-                            this.unSelectedAnimationArray[index]= new RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor);
+                            this->unSelectedAnimationArray[index]= RectangleFilledAdjustedAnimation(rectWidth, rectHeight, offset, offset, buttonColor);
     
 
                         }
@@ -227,85 +225,84 @@ adjustedBorder= 4;
 }
 
 
-    updateAll(Graphics graphics, std::vector<ABCustomItem> items){
+    private: void updateAll(Graphics graphics, std::vector<ABCustomItem> items){
 
 
 
 
                         for (
-    index: int32_t = items.length
-                ;--index >= 0; )
+    int32_t index = items.size();--index >= 0; )
         {
 items[index]!.preMeasurement(graphics);
     
-this.updateAt(index, items[index]!);
+this->updateAt(index, items[index]!);
     
 }
 
 }
 
 
-    updateAt(int32_t index, ABCustomItem item){
+    private: void updateAt(int32_t index, ABCustomItem item){
 
-    basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;;
+    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
     
 
-    buttonColor: BasicColor = basicColorFactory!.TRANSPARENT_GREY;;
+    BasicColor buttonColor = basicColorFactory.TRANSPARENT_GREY;;
     
 
-    selectedButtonColor: BasicColor = basicColorFactory!.TRANSPARENT_RED;;
+    BasicColor selectedButtonColor = basicColorFactory.TRANSPARENT_RED;;
     
 
-    width: int32_t = item.getMinimumWidth()!;;
+    int32_t width = item.getMinimumWidth();;
     
 
-    height: int32_t = item.getMinimumHeight()!;;
+    int32_t height = item.getMinimumHeight();;
     
 
-    adjustedBorder: int32_t = 3;;
+    int32_t adjustedBorder = 3;;
     
 
-    offset: int32_t =  -(this.halfBorder +adjustedBorder);;
+    int32_t offset =  -(this->halfBorder +adjustedBorder);;
     
 
-    rectWidth: int32_t = width +this.border -adjustedBorder;;
+    int32_t rectWidth = width +this->border -adjustedBorder;;
     
 
-    rectHeight: int32_t = height +this.border -adjustedBorder;;
+    int32_t rectHeight = height +this->border -adjustedBorder;;
     
 
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
+                        if(J2MEUtil::isJ2ME() || J2MEUtil::isHTML())
                         
                                     {
                                     
-    rectangleAdjustedAnimation: RectangleAdjustedAnimation = this.selectedAnimationArray[index]! as RectangleAdjustedAnimation;;
+    RectangleAdjustedAnimation rectangleAdjustedAnimation = this->selectedAnimationArray[index]! as RectangleAdjustedAnimation;;
     
-rectangleAdjustedAnimation!.setWidth(rectWidth);
+rectangleAdjustedAnimation.setWidth(rectWidth);
     
-rectangleAdjustedAnimation!.setHeight(rectHeight);
+rectangleAdjustedAnimation.setHeight(rectHeight);
     
-rectangleAdjustedAnimation!.setOffsetX(offset);
+rectangleAdjustedAnimation.setOffsetX(offset);
     
-rectangleAdjustedAnimation!.setOffsetY(offset);
+rectangleAdjustedAnimation.setOffsetY(offset);
     
-rectangleAdjustedAnimation!.setBasicColorP(selectedButtonColor);
+rectangleAdjustedAnimation.setBasicColorP(selectedButtonColor);
     
 
                                     }
                                 
                         else {
                             
-    rectangleAdjustedAnimation: RectangleFilledAdjustedAnimation = this.selectedAnimationArray[index]! as RectangleFilledAdjustedAnimation;;
+    RectangleFilledAdjustedAnimation rectangleAdjustedAnimation = this->selectedAnimationArray[index]! as RectangleFilledAdjustedAnimation;;
     
-rectangleAdjustedAnimation!.setWidth(rectWidth);
+rectangleAdjustedAnimation.setWidth(rectWidth);
     
-rectangleAdjustedAnimation!.setHeight(rectHeight);
+rectangleAdjustedAnimation.setHeight(rectHeight);
     
-rectangleAdjustedAnimation!.setOffsetX(offset);
+rectangleAdjustedAnimation.setOffsetX(offset);
     
-rectangleAdjustedAnimation!.setOffsetY(offset);
+rectangleAdjustedAnimation.setOffsetY(offset);
     
-rectangleAdjustedAnimation!.setBasicColorP(selectedButtonColor);
+rectangleAdjustedAnimation.setBasicColorP(selectedButtonColor);
     
 
                         }
@@ -313,38 +310,38 @@ rectangleAdjustedAnimation!.setBasicColorP(selectedButtonColor);
 adjustedBorder= 4;
     
 
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
+                        if(J2MEUtil::isJ2ME() || J2MEUtil::isHTML())
                         
                                     {
                                     
-    rectangleAdjustedAnimation: RectangleAdjustedAnimation = this.unSelectedAnimationArray[index]! as RectangleAdjustedAnimation;;
+    RectangleAdjustedAnimation rectangleAdjustedAnimation = this->unSelectedAnimationArray[index]! as RectangleAdjustedAnimation;;
     
-rectangleAdjustedAnimation!.setWidth(rectWidth);
+rectangleAdjustedAnimation.setWidth(rectWidth);
     
-rectangleAdjustedAnimation!.setHeight(rectHeight);
+rectangleAdjustedAnimation.setHeight(rectHeight);
     
-rectangleAdjustedAnimation!.setOffsetX(offset);
+rectangleAdjustedAnimation.setOffsetX(offset);
     
-rectangleAdjustedAnimation!.setOffsetY(offset);
+rectangleAdjustedAnimation.setOffsetY(offset);
     
-rectangleAdjustedAnimation!.setBasicColorP(buttonColor);
+rectangleAdjustedAnimation.setBasicColorP(buttonColor);
     
 
                                     }
                                 
                         else {
                             
-    rectangleAdjustedAnimation: RectangleFilledAdjustedAnimation = this.unSelectedAnimationArray[index]! as RectangleFilledAdjustedAnimation;;
+    RectangleFilledAdjustedAnimation rectangleAdjustedAnimation = this->unSelectedAnimationArray[index]! as RectangleFilledAdjustedAnimation;;
     
-rectangleAdjustedAnimation!.setWidth(rectWidth);
+rectangleAdjustedAnimation.setWidth(rectWidth);
     
-rectangleAdjustedAnimation!.setHeight(rectHeight);
+rectangleAdjustedAnimation.setHeight(rectHeight);
     
-rectangleAdjustedAnimation!.setOffsetX(offset);
+rectangleAdjustedAnimation.setOffsetX(offset);
     
-rectangleAdjustedAnimation!.setOffsetY(offset);
+rectangleAdjustedAnimation.setOffsetY(offset);
     
-rectangleAdjustedAnimation!.setBasicColorP(buttonColor);
+rectangleAdjustedAnimation.setBasicColorP(buttonColor);
     
 
                         }
@@ -352,27 +349,27 @@ rectangleAdjustedAnimation!.setBasicColorP(buttonColor);
 }
 
 
-    public Command getSelectedCommand(){
+    public: Command getSelectedCommand(){
 
-    index: int32_t = super.getSelectedIndex()!;;
+    int32_t index = super.getSelectedIndex();;
     
 
-    commandTextItem: CommandTextItem = this.get(index) as unknown as CommandTextItem;;
+    CommandTextItem commandTextItem = this->get(index) as unknown as CommandTextItem;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commandTextItem!.getCommand();;
+                        return commandTextItem.getCommand();;
     
 }
 
 
-    public int32_t append(ABCustomItem item){
+    public: int32_t append(ABCustomItem item){
 
-    result: int32_t = super.append(item)!;;
+    int32_t result = super.append(item);;
     
-this.addAt(result, item);
+this->addAt(result, item);
     
 
 
@@ -383,34 +380,34 @@ this.addAt(result, item);
 }
 
 
-    public delete(int32_t itemNum){
+    public: void delete_(int32_t itemNum){
 super.delete(itemNum);
     
 }
 
 
-    public deleteAll(){
-this.initAnimations();
+    public: void deleteAll(){
+this->initAnimations();
     
 super.deleteAll();
     
 }
 
 
-    public insert(int32_t itemNum, ABCustomItem item){
+    public: void insert(int32_t itemNum, ABCustomItem item){
 super.insert(itemNum, item);
     
 }
 
 
-    public set(int32_t itemNum, ABCustomItem item){
+    public: void set(int32_t itemNum, ABCustomItem item){
 super.set(itemNum, item);
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 super.paint(graphics);
     
@@ -419,8 +416,8 @@ super.paint(graphics);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
-this.selectedAnimationArray[index]!.paintXY(graphics, x, y);
+    public: int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
+this->selectedAnimationArray[index]!.paintXY(graphics, x, y);
     
 
 
@@ -433,8 +430,8 @@ this.selectedAnimationArray[index]!.paintXY(graphics, x, y);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
-this.unSelectedAnimationArray[index]!.paintXY(graphics, x, y);
+    public: int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
+this->unSelectedAnimationArray[index]!.paintXY(graphics, x, y);
     
 
 

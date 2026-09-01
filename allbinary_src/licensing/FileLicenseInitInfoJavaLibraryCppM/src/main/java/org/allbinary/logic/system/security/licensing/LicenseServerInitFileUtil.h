@@ -80,17 +80,16 @@
 class LicenseServerInitFileUtil
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const NULL_OUTPUT_STREAM: OutputStream = SimpleFileUtil.nullOutputStream()!;
+    private: const OutputStream NULL_OUTPUT_STREAM = SimpleFileUtil::nullOutputStream();
 
-    public init();
+    public: void init();
 
-    write();
+    private: void write();
 
 };
 

@@ -54,60 +54,59 @@
 class NullAllBinaryGameCanvas
             : public Object
         : public AllBinaryGameCanvasInterface {
-        
 
-    public static const NULL_ALLBINARY_GAME_CANVAS: NullAllBinaryGameCanvas = new NullAllBinaryGameCanvas();
+    public: static const NullAllBinaryGameCanvas NULL_ALLBINARY_GAME_CANVAS = NullAllBinaryGameCanvas();
 
-    public AllBinaryGameLayerManager getLayerManager(){
-
+    public: AllBinaryGameLayerManager getLayerManager(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
-    public addCommand(Command cmd){
+    public: void addCommand(Command cmd){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public removeCommand(Command cmd){
+    public: void removeCommand(Command cmd){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setCommandListener(CommandListener l){
+    public: void setCommandListener(CommandListener l){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

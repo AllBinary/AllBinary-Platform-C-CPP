@@ -121,76 +121,75 @@
         #include "GameCommandCanvas.h"
 #include "GameInputMappingInstructionsCanvas.h"
 
-class GameInputMappingCanvas: public GameCommandCanvas: public InputMappingInterface {
-        
+class GameInputMappingCanvas: public GameCommandCanvas, public InputMappingInterface {
 
-    public static const NAME: string = "GameInputMappingCanvas";
+    public: static const std::string NAME = "GameInputMappingCanvas";
 
-    public static const DISPLAY: Command = new Command("Controls", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: static const Command DISPLAY = Command("Controls", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    public static const DEFAULT: Command = new Command("Default", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: static const Command DEFAULT = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    private: const paintable: ProcessPaintable;
+    private: ProcessPaintable paintable;
 
-    private: const helpPaintable: InputMappingHelpPaintable;
+    private: InputMappingHelpPaintable helpPaintable;
 
-    const colorFillPaintable: ColorFillBasePaintable;
+    protected: ColorFillBasePaintable colorFillPaintable;
 
-    private: const inputMapping: PersistentInputMapping;
+    private: PersistentInputMapping inputMapping;
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: selectedGameKey: GameKey = this.NONE;
+    private: GameKey selectedGameKey = this->NONE;
 
-    private: selectedInput: Input = this.NONE;
+    private: Input selectedInput = this->NONE;
 
-public constructor (AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable);
+public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable);
 
-    public close();
+    public: void close();
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    public keyPressed(int32_t keyCode);
+    public: void keyPressed(int32_t keyCode);
 
-    public keyReleased(int32_t keyCode);
+    public: void keyReleased(int32_t keyCode);
 
-    public keyRepeated(int32_t keyCode);
+    public: void keyRepeated(int32_t keyCode);
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    private: const inputFactory: InputFactory = InputFactory.getInstance()!;
+    private: const InputFactory inputFactory = InputFactory::getInstance();
 
-    addGameKey(int32_t keyCode, bool repeated);
-
-                //@Throws(Exception.constructor)
-            
-    public processInputMapping(GameKey gameKey, Input input);
-
-    setSelectedAction(GameKey gameKey);
+    private: void addGameKey(int32_t keyCode, bool repeated);
 
                 //@Throws(Exception.constructor)
             
-    gameActionCrud(GameKey gameKey, Input input);
+    public: void processInputMapping(GameKey gameKey, Input input);
+
+    private: void setSelectedAction(GameKey gameKey);
 
                 //@Throws(Exception.constructor)
             
-    addNewMapping(GameKey gameKey, Input input);
+    private: void gameActionCrud(GameKey gameKey, Input input);
 
                 //@Throws(Exception.constructor)
             
-    deleteCurrentMapping();
+    private: void addNewMapping(GameKey gameKey, Input input);
 
                 //@Throws(Exception.constructor)
             
-    public setDefault();
+    private: void deleteCurrentMapping();
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void setDefault();
 
-    public paint(Graphics graphics);
+                //@Throws(Exception.constructor)
+            
+    public: void update();
+
+    public: void paint(Graphics graphics);
 
 };
 

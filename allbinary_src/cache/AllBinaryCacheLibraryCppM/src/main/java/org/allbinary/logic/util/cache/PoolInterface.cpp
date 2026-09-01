@@ -42,11 +42,10 @@
 #include "CacheableInterface.h"
 
 class PoolInterface: public CacheInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    CacheableInterface remove(any key)
+    CacheableInterface remove(Object* key)
 
 };
 

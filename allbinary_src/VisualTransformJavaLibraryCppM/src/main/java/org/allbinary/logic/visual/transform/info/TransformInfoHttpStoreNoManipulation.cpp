@@ -50,9 +50,8 @@
         #include "TransformInfoHttpStore.h"
 
 class TransformInfoHttpStoreNoManipulation: public TransformInfoHttpStore {
-        
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: TransformInfoHttpStoreNoManipulation(HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super(propertiesHashMap, pageContext);
                     
 
@@ -63,21 +62,21 @@ public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfigFile(string value){
-this.setObjectConfigFileName(value);
+    protected: void setObjectConfigFile(std::string value){
+this->setObjectConfigFileName(value);
     
-this.setObjectConfigInterface(TransformInfoObjectConfigNoManipulationFactory.getInstance()!.getInstance(this, this.getObjectConfigFilePath()));
+this->setObjectConfigInterface(TransformInfoObjectConfigNoManipulationFactory::getInstance().getInstance(this, this->getObjectConfigFilePath()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfig(string value){
+    protected: void setObjectConfig(std::string value){
 
 
 
-                            throw new Exception("Should not set from config");
+                            throw Exception("Should not set from config");
                     
 }
 

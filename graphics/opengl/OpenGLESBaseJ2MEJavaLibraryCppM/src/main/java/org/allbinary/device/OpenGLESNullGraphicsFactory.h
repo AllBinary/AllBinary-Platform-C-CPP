@@ -32,11 +32,10 @@
 class OpenGLESNullGraphicsFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESGraphics = new OpenGLESGraphics();
+    private: static OpenGLESGraphics instance() { return OpenGLESGraphics(); }
 
-    public static OpenGLESGraphics getInstance();
+    public: static OpenGLESGraphics getInstance();
 
 };
 

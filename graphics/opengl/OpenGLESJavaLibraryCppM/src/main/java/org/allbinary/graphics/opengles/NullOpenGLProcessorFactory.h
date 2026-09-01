@@ -32,11 +32,10 @@
 class NullOpenGLProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLProcessor = new OpenGLProcessor();
+    private: static OpenGLProcessor instance() { return OpenGLProcessor(); }
 
-    public static OpenGLProcessor getInstance();
+    public: static OpenGLProcessor getInstance();
 
 };
 

@@ -49,21 +49,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentEntityInterface: public BasicDataTableInterface {
-        
 
-    string getLastId(string userName)
+    std::string getLastId(std::string userName)
 
-    setDefault(string userName, Integer index)
+    void setDefault(std::string userName, Integer index)
 
-    PaymentInterface getDefault(string userName)
+    PaymentInterface getDefault(std::string userName)
 
-    Vector get(string userName)
+    Vector get(std::string userName)
 
-    add(string userName, PaymentInterface paymentInterface)
+    void add(std::string userName, PaymentInterface paymentInterface)
 
-    remove(string userName, Integer index)
+    void remove(std::string userName, Integer index)
 
-    insert(Vector values)
+    void insert(Vector values)
 
 };
 

@@ -55,100 +55,97 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShippingAddressTag: public StoreValidationTransformTag {
-        
 
-    private: value: string;
+    private: std::string value;
 
-public constructor (){
-
-            super();
-        }
+public: ShippingAddressTag(){
+}
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.ViewShippingAddressesView");
+this->setObjectFile("views.generic.address.shipping.ViewShippingAddressesView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.EditShippingAddressesView");
+this->setObjectFile("views.generic.address.shipping.EditShippingAddressesView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.NewShippingAddressesView");
+this->setObjectFile("views.generic.address.shipping.NewShippingAddressesView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.INSERT) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.AddShippingAddressesView");
+this->setObjectFile("views.generic.address.shipping.AddShippingAddressesView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.DELETE) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.DELETE) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.DeleteShippingAddressesView");
+this->setObjectFile("views.generic.address.shipping.DeleteShippingAddressesView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(ShippingAddressData.SELECT) == 0)
+                        if(this->getCommand().compareTo(ShippingAddressData::SELECT) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.SelectShippingAddressesView");
+this->setObjectFile("views.generic.address.shipping.SelectShippingAddressesView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(ShippingAddressData.SETTOBILLINGADDRESS) == 0)
+                        if(this->getCommand().compareTo(ShippingAddressData::SETTOBILLINGADDRESS) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
+this->setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
     
 
                                     }
@@ -157,7 +154,7 @@ this.setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -174,13 +171,13 @@ this.setObjectFile("views.generic.address.shipping.SetShippingAddressesView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -193,7 +190,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

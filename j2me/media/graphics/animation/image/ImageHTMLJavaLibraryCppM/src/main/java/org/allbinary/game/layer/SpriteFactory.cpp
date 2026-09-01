@@ -61,28 +61,27 @@
 class SpriteFactory
             : public Object
         : public SpriteFactoryInterface {
-        
 
-    private: static const instance: SpriteFactory = new SpriteFactory();
+    private: static SpriteFactory instance() { return SpriteFactory(); }
 
-    public static SpriteFactory getInstance(){
+    public: static SpriteFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpriteFactory.instance;
+                        return SpriteFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public Sprite createSprite(Image image, int32_t frameWidth, int32_t frameHeight){
+    public: Sprite createSprite(Image image, int32_t frameWidth, int32_t frameHeight){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Sprite(image, frameWidth, frameHeight);
+                        return Sprite(image, frameWidth, frameHeight);
     
 }
 

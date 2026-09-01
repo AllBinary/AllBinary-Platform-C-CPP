@@ -38,9 +38,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class Controllable2 {
-        
 
-    setVolume(int32_t leftVolume, int32_t rightVolume)
+    void setVolume(int32_t leftVolume, int32_t rightVolume)
 
 };
 

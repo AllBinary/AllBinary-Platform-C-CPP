@@ -58,21 +58,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ThemeCustomizerView: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    validationInterface: ValidationInterface;
+    protected: ValidationInterface validationInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public addDomNodeInterfaces();
+public: ThemeCustomizerView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: void addDomNodeInterfaces();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

@@ -46,31 +46,28 @@
 #include "RaceTrackGeographicMapCellType.h"
 
 class EmptyRaceRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
-        
 
-    private: static const instanceC: EmptyRaceRaceTrackGeographicMapCellTypeFactory = new EmptyRaceRaceTrackGeographicMapCellTypeFactory();
+    private: static const EmptyRaceRaceTrackGeographicMapCellTypeFactory instanceC = EmptyRaceRaceTrackGeographicMapCellTypeFactory();
 
-    public static EmptyRaceRaceTrackGeographicMapCellTypeFactory getInstance(){
+    public: static EmptyRaceRaceTrackGeographicMapCellTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EmptyRaceRaceTrackGeographicMapCellTypeFactory.instanceC;
+                        return EmptyRaceRaceTrackGeographicMapCellTypeFactory::instanceC;
     
 }
 
 
-private constructor (){
+private: EmptyRaceRaceTrackGeographicMapCellTypeFactory(){
 
-            super();
-        
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.EMPTY_CELL_TYPE= new RaceTrackGeographicMapCellType(commonStrings!.EMPTY, 0, PathFindingNodeCostInfoData.getInstance()!.MAX_NODE_COST, 1);
+this->EMPTY_CELL_TYPE= RaceTrackGeographicMapCellType(commonStrings.EMPTY, 0, PathFindingNodeCostInfoData::getInstance().MAX_NODE_COST, 1);
     
-this.EASY_CELL_TYPE= new RaceTrackGeographicMapCellType("Easy", 19, 1, 0);
+this->EASY_CELL_TYPE= RaceTrackGeographicMapCellType("Easy", 19, 1, 0);
     
-this.FINISH_LINE_ROAD_CELL_TYPE= this.DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
+this->FINISH_LINE_ROAD_CELL_TYPE= this->DEFAULT_FINISH_LINE_ROAD_CELL_TYPE;
     
 }
 

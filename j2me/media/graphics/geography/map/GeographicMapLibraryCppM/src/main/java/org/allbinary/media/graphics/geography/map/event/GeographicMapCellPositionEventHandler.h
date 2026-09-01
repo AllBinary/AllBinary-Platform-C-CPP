@@ -66,34 +66,33 @@
 #include "GeographicMapCellPositionEventListenerInterface.h"
 
 class GeographicMapCellPositionEventHandler: public BasicEventHandler {
-        
 
-    private: static instance: GeographicMapCellPositionEventHandler = new GeographicMapCellPositionEventHandler();
+    private: static GeographicMapCellPositionEventHandler instance = GeographicMapCellPositionEventHandler();
 
-    public static GeographicMapCellPositionEventHandler getInstance();
+    public: static GeographicMapCellPositionEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: GeographicMapCellPositionEventHandler();
 
-    public addListener(MiniMapLayer miniMapLayer);
+    public: void addListener(MiniMapLayer miniMapLayer);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireRemoveEvent(AllBinaryEventObject eventObject);
+    public: void fireRemoveEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

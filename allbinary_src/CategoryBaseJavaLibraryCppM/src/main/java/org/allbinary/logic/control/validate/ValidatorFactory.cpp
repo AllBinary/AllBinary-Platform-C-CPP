@@ -42,12 +42,9 @@
 class ValidatorFactory
             : public Object
          {
-        
 
-private constructor (){
-
-            super();
-        }
+private: ValidatorFactory(){
+}
 
 
 };

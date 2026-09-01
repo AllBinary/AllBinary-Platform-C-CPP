@@ -63,49 +63,48 @@
 #include "AllBinaryGameCanvas.h"
 
 class BaseGameBehavior: public DemoGameBehavior {
-        
 
-    private: static const instanceC: BaseGameBehavior = new BaseGameBehavior();
+    private: static const BaseGameBehavior instanceC = BaseGameBehavior();
 
-    public static DemoGameBehavior getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public init();
-
-    public pause(AllBinaryGameCanvas allBinaryGameCanvas);
-
-    public unPause(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: static DemoGameBehavior getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public updateTouch(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void init();
+
+    public: void pause(AllBinaryGameCanvas allBinaryGameCanvas);
+
+    public: void unPause(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public updateScreenButtonPaintable(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateTouch(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public setGameState(AllBinaryGameCanvas allBinaryGameCanvas);
-
-    public removeAllGameKeyInputListeners(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateScreenButtonPaintable(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public updateEndGameProcessor(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void setGameState(AllBinaryGameCanvas allBinaryGameCanvas);
+
+    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public buildGame(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void updateEndGameProcessor(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public run(AllBinaryGameCanvas allBinaryGameCanvas);
+    public: void buildGame(AllBinaryGameCanvas allBinaryGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public setHighScore(AbeClientInformationInterface abeClientInformation, AllBinaryGameCanvas allBinaryGameCanvas, string name, int64_t score, bool autoSubmit, bool isLast);
+    public: void run(AllBinaryGameCanvas allBinaryGameCanvas);
+
+                //@Throws(Exception.constructor)
+            
+    public: void setHighScore(AbeClientInformationInterface abeClientInformation, AllBinaryGameCanvas allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast);
 
 };
 

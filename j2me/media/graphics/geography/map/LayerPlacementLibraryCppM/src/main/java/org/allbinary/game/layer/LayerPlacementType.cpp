@@ -51,30 +51,27 @@
 class LayerPlacementType
             : public Object
          {
-        
 
-    private: type: int32_t;
+    private: int32_t type;
 
- constructor (int32_t type){
-
-            super();
-        this.type= type;
+: LayerPlacementType(int32_t type){
+this->type= type;
     
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return this->type;
     
 }
 
 
-    setType(int32_t type){
-this.type= type;
+    protected: void setType(int32_t type){
+this->type= type;
     
 }
 

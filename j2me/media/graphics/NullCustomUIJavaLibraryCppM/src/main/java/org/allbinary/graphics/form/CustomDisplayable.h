@@ -31,9 +31,8 @@
 class CustomDisplayable
             : public Object
          {
-        
 
-    public setTitle(string title);
+    public: void setTitle(std::string title);
 
 };
 

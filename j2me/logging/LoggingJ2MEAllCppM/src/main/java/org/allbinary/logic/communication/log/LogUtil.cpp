@@ -60,99 +60,96 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    /*actual*/ public putL(Log log){
+    /*actual*/ public: void putL(Log log){
 
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
-this.put(specialMessage, anyType, functionName, exception);
+this->put(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
 
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType!.constructor.name.toString()! != 
-                                    null
+                        if(anyType->constructor.name.toString()! != 
+                                    nullptr
                                 )
                         
                                     {
-                                    className= new StringMaker().append(anyType!.constructor.name.toString()!)!.append(CommonSeps.getInstance()!.COLON)!.append(Integer.toHexString(TsUtil.getInstance()!.hashCode(anyType)))!.toString();
+                                    className= StringMaker().append(anyType->constructor.name.toString()!).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
     
 
                                     }
                                 
 
-    message: string = this.logFormatUtil!.getS(className, functionName, specialMessage)!;;
+    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
     
-console.log(this.LOG_SUCCESS + message);
-    
-}
-
-
-    /*actual*/ public putFS(string specialMessage, string className, string functionName){
-
-    message: string = this.logFormatUtil!.getS(className, functionName, specialMessage)!;;
-    
-console.log(this.LOG_SUCCESS + message);
+console.log(this->LOG_SUCCESS + message);
     
 }
 
 
-    private: const LOG_SUCCESS: string = "org.allbinary: ";
+    /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    
+console.log(this->LOG_SUCCESS + message);
+    
+}
 
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+
+    private: const std::string LOG_SUCCESS = "org.allbinary: ";
+
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-                        if(anyType!.constructor.name.toString()! != 
-                                    null
+                        if(anyType->constructor.name.toString()! != 
+                                    nullptr
                                 )
                         
                                     {
-                                    className= new StringMaker().append(anyType!.constructor.name.toString()!)!.append(CommonSeps.getInstance()!.COLON)!.append(Integer.toHexString(TsUtil.getInstance()!.hashCode(anyType)))!.toString();
+                                    className= StringMaker().append(anyType->constructor.name.toString()!).append(CommonSeps::getInstance().COLON).append(Integer::toHexString(TsUtil::getInstance().hashCode(anyType))).toString();
     
 
                                     }
                                 
 
-    message: string = this.logFormatUtil!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
     
-console.log(this.LOG_SUCCESS + message);
+console.log(this->LOG_SUCCESS + message);
     
 }
 

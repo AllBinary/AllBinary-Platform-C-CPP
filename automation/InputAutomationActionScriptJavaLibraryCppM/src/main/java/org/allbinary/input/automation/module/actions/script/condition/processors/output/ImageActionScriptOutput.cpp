@@ -74,80 +74,79 @@
 #include "ImageActionScriptOutputData.h"
 #include "ImageActionScriptOutputProcessor.h"
 
-class ImageActionScriptOutput: public BasicProfileActionScriptOutput: public ImageActionScriptOutputInterface {
-        
+class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public ImageActionScriptOutputInterface {
 
-    private: static const NAME: string = "Captures";
+    private: static const std::string NAME = "Captures";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: saved: bool = false;
+    private: bool saved = false;
 
-    private: display: bool = false;
+    private: bool display = false;
 
-    private: imageTypes: ImageTypes;
+    private: ImageTypes imageTypes;
 
-    private: actionScriptOutputJPanel: ImageActionScriptOutputJPanel;
+    private: ImageActionScriptOutputJPanel actionScriptOutputJPanel;
 
-public constructor (Node node){
+public: ImageActionScriptOutput(Node node){
             super(NAME, node);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    actionNode: Node = DomSearchHelper.getNode(ImageActionScriptOutputData.NAME, node.getChildNodes())!;;
+    Node actionNode = DomSearchHelper::getNode(ImageActionScriptOutputData::NAME, node.getChildNodes());;
     
 
                         if(actionNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    nodeList: NodeList = actionNode!.getChildNodes()!;;
+    NodeList nodeList = actionNode.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    childNode: Node = nodeList!.item(index)!;;
+    Node childNode = nodeList.item(index);;
     
 
-                        if(childNode!.getNodeName()!.compareTo(ImageActionScriptOutputData.SAVE) == 0)
+                        if(childNode.getNodeName().compareTo(ImageActionScriptOutputData::SAVE) == 0)
                         
                                     {
                                     
-    booleanString: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setSaved(.valueOf());
+this->setSaved(.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode!.getNodeName()!.compareTo(ImageActionScriptOutputData.DISPLAY) == 0)
+                        if(childNode.getNodeName().compareTo(ImageActionScriptOutputData::DISPLAY) == 0)
                         
                                     {
                                     
-    booleanString: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string booleanString = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setSaved(.valueOf());
+this->setSaved(.valueOf());
     
 
                                     }
                                 
                              else 
-                        if(childNode!.getNodeName()!.compareTo(ImageActionScriptOutputData.TYPES) == 0)
+                        if(childNode.getNodeName().compareTo(ImageActionScriptOutputData::TYPES) == 0)
                         
                                     {
-                                    this.setImageTypes(new ImageTypes(childNode));
+                                    this->setImageTypes(ImageTypes(childNode));
     
 
                                     }
@@ -156,7 +155,7 @@ this.setSaved(.valueOf());
                             
 
 
-                            throw new Exception("Action Script Output Unknown Node");
+                            throw Exception("Action Script Output Unknown Node");
                     
 
                         }
@@ -170,52 +169,52 @@ this.setSaved(.valueOf());
                             
 
 
-                            throw new Exception("Action Script Output Node Null");
+                            throw Exception("Action Script Output Node Null");
                     
 
                         }
                             
-this.setAllowsChildren(false);
+this->setAllowsChildren(false);
     
-this.actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
+this->actionScriptOutputJPanel= ImageActionScriptOutputJPanel(this);
     
 }
 
 
-public constructor (){
+public: ImageActionScriptOutput(){
             super(NAME);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setImageTypes(new ImageTypes());
+this->setImageTypes(ImageTypes());
     
-this.setAllowsChildren(false);
+this->setAllowsChildren(false);
     
-this.actionScriptOutputJPanel= new ImageActionScriptOutputJPanel(this);
+this->actionScriptOutputJPanel= ImageActionScriptOutputJPanel(this);
     
 }
 
 
-    public ImageActionScriptOutputJPanel getActionScriptOutputJPanel(){
+    public: ImageActionScriptOutputJPanel getActionScriptOutputJPanel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.actionScriptOutputJPanel;
+                        return this->actionScriptOutputJPanel;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(ImageActionScriptOutputData.DISPLAY, Boolean.toString(this.isDisplay()));
+hashMap.put(ImageActionScriptOutputData::DISPLAY, Boolean::toString(this->isDisplay()));
     
-hashMap!.put(ImageActionScriptOutputData.SAVE, Boolean.toString(this.isSaved()));
+hashMap.put(ImageActionScriptOutputData::SAVE, Boolean::toString(this->isSaved()));
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -228,14 +227,14 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = super.toXmlNode(document)!;;
+    Node node = super.toXmlNode(document);;
     
 
-    newNode: Node = ModDomHelper.createNodeWithValueNodes(document, ImageActionScriptOutputData.NAME, this.toHashMap())!;;
+    Node newNode = ModDomHelper::createNodeWithValueNodes(document, ImageActionScriptOutputData::NAME, this->toHashMap());;
     
-newNode!.appendChild(this.getImageTypes()!.toXmlNode(document));
+newNode.appendChild(this->getImageTypes().toXmlNode(document));
     
 node.appendChild(newNode);
     
@@ -250,93 +249,93 @@ node.appendChild(newNode);
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame){
-ImageActionScriptOutputProcessor.process(this, frame);
+    public: void process(Long frame){
+ImageActionScriptOutputProcessor::process(this, frame);
     
 }
 
 
-    public showDialog(){
-this.actionScriptOutputJPanel!.getCapturedImageActionJDialog()!.setVisible(true);
+    public: void showDialog(){
+this->actionScriptOutputJPanel.getCapturedImageActionJDialog().setVisible(true);
     
 }
 
 
-    public bool isSaved(){
+    public: bool isSaved(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.saved;
+                        return this->saved;
     
 }
 
 
-    public setSaved(bool saved){
-this.saved= saved;
+    public: void setSaved(bool saved){
+this->saved= saved;
     
 }
 
 
-    public bool isDisplay(){
+    public: bool isDisplay(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.display;
+                        return this->display;
     
 }
 
 
-    public setDisplay(bool display){
-this.display= display;
+    public: void setDisplay(bool display){
+this->display= display;
     
 }
 
 
-    public string future_toString(){
+    public: std::string future_toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(" Is Save: ");
+stringBuffer.append(" Is Save: ");
     
-stringBuffer!.appendboolean(this.isSaved());
+stringBuffer.appendboolean(this->isSaved());
     
-stringBuffer!.append(" Is Display: ");
+stringBuffer.append(" Is Display: ");
     
-stringBuffer!.appendboolean(this.isDisplay());
+stringBuffer.appendboolean(this->isDisplay());
     
-stringBuffer!.append(" ");
+stringBuffer.append(" ");
     
-stringBuffer!.append(this.getImageTypes()!.toString());
+stringBuffer.append(this->getImageTypes().toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public log(){
-this.logUtil!.putF(this.future_toString(), this, "log");
+    public: void log(){
+this->logUtil.putF(this->future_toString(), this, "log");
     
 }
 
 
-    public ImageTypes getImageTypes(){
+    public: ImageTypes getImageTypes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageTypes;
+                        return this->imageTypes;
     
 }
 
 
-    public setImageTypes(ImageTypes imageTypes){
-this.imageTypes= imageTypes;
+    public: void setImageTypes(ImageTypes imageTypes){
+this->imageTypes= imageTypes;
     
 }
 

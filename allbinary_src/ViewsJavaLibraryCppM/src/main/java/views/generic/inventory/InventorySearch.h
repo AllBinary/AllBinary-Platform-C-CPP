@@ -21,6 +21,8 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCH_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCH_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -103,31 +105,30 @@
 class InventorySearch
             : public Object
         : public InventoryViewSearchInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const searchRequest: SearchRequest;
+    private: SearchRequest searchRequest;
 
-public constructor (SearchRequest searchRequest);
-
-                //@Throws(Exception.constructor)
-            
-    public string searchSingleStaticPage();
+public: InventorySearch(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    public string searchSingleDynamicPage();
+    public: std::string searchSingleStaticPage();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<string> search();
+    public: std::string searchSingleDynamicPage();
 
                 //@Throws(Exception.constructor)
             
-    public string getProduct(string product);
+    public: std::vector<std::string> search();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string getProduct(std::string product);
 
 };
 

@@ -51,37 +51,36 @@
 class PaymentGatewayPageData
             : public Object
          {
-        
 
-    private: static const EXTENSION: string = ".jsp";
+    private: static const std::string EXTENSION = ".jsp";
 
-    private: static const NAME: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: static const std::string NAME = StringUtil::getInstance().EMPTY_STRING;
 
-    public static const FORWARDMAKEPAYMENT: string = "MakePayment.jsp";
+    public: static const std::string FORWARDMAKEPAYMENT = "MakePayment.jsp";
 
-    public static const PAYMENTOPTIONS: string = "PaymentOptions" +PaymentGatewayPageData.EXTENSION;
+    public: static const std::string PAYMENTOPTIONS = "PaymentOptions" +PaymentGatewayPageData::EXTENSION;
 
-    public static const STARTCHECKOUT: string = "StartCheckout" +PaymentGatewayPageData.EXTENSION;
+    public: static const std::string STARTCHECKOUT = "StartCheckout" +PaymentGatewayPageData::EXTENSION;
 
-    public const MAKEPAYMENT: string;
+    public: std::string MAKEPAYMENT;
 
-    public const CHECKOUT: string;
+    public: std::string CHECKOUT;
 
-    public const SHIPPING: string;
+    public: std::string SHIPPING;
 
-    public const SHIPPINGADDRESS: string;
+    public: std::string SHIPPINGADDRESS;
 
-    public const SHIPPINGADDRESSACTION: string;
+    public: std::string SHIPPINGADDRESSACTION;
 
-    public const BILLINGADDRESS: string;
+    public: std::string BILLINGADDRESS;
 
-    public const PAYMENT: string;
+    public: std::string PAYMENT;
 
-    public const AUTHORIZE: string;
+    public: std::string AUTHORIZE;
 
-    public const FINISH: string;
+    public: std::string FINISH;
 
-public constructor (string location, string paymentMethod);
+public: PaymentGatewayPageData(std::string location, std::string paymentMethod);
 
 };
 

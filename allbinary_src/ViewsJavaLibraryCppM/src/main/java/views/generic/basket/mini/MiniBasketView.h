@@ -69,22 +69,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MiniBasketView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class MiniBasketView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
-
-    public addDomNodeInterfaces();
+public: MiniBasketView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+    public: void addDomNodeInterfaces();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

@@ -71,60 +71,57 @@
 class ExitRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const midlet: AllBinaryMidlet;
+    private: AllBinaryMidlet midlet;
 
-    private: const processor: Processor;
+    private: Processor processor;
 
-    private: const isProgress: bool;
+    private: bool isProgress;
 
-public constructor (AllBinaryMidlet midlet, Processor processor, bool isProgress){
-
-            super();
-        this.midlet= midlet;
+public: ExitRunnable(AllBinaryMidlet midlet, Processor processor, bool isProgress){
+this->midlet= midlet;
     
-this.isProgress= isProgress;
+this->isProgress= isProgress;
     
-this.processor= processor;
+this->processor= processor;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START_RUNNABLE, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
     
-this.midlet.destroyAppInRunnable(false, this.isProgress);
+this->midlet.destroyAppInRunnable(false, this->isProgress);
     
-this.midlet.setDisplay(NullCanvas.NULL_CANVAS);
+this->midlet.setDisplay(NullCanvas::NULL_CANVAS);
     
-this.midlet.notifyDestroyed();
+this->midlet.notifyDestroyed();
     
-this.logUtil!.putF(this.commonStrings!.END_RUNNABLE, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
     
-this.processor.process();
+this->processor.process();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 
         try {
-            this.processor.process();
+            this->processor.process();
     
 
                 //: 
 } catch(e2) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

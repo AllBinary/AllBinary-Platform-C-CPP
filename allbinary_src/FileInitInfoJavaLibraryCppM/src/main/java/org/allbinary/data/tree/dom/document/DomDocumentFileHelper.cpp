@@ -75,18 +75,17 @@
 class DomDocumentFileHelper
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Document createDocument(AbFile xmlFile){
+    public: static Document createDocument(AbFile xmlFile){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper.create(new AbFileInputStream(xmlFile));;
+                        return DomDocumentHelper::create(AbFileInputStream(xmlFile));;
     
 
                 //: 
@@ -104,22 +103,22 @@ class DomDocumentFileHelper
 
                 //@Throws(Exception.constructor)
             
-    public static save(AbFile file, Document document){
+    public: static void save(AbFile file, Document document){
 
-    dataOutputStream: AbDataOutputStream = 
+    AbDataOutputStream dataOutputStream = 
                 null
             ;;
     
 
         try {
             
-    copyTransformerFactory: TransformerFactory = TransformerFactory.newInstance()!;;
+    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
     
 
-    copyTransformer: Transformer = copyTransformerFactory!.newTransformer()!;;
+    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
     
 
-    domSource: DOMSource = new DOMSource(document);;
+    DOMSource domSource = DOMSource(document);;
     
 
                         if(file.isFile())
@@ -132,14 +131,14 @@ class DomDocumentFileHelper
                                 
 file.createNewFile();
     
-dataOutputStream= DataOutputStreamFactory.getInstance()!.getInstanceForAbFile(file);
+dataOutputStream= DataOutputStreamFactory::getInstance().getInstanceForAbFile(file);
     
 
-    streamResult: StreamResult = new StreamResult(dataOutputStream);;
+    StreamResult streamResult = StreamResult(dataOutputStream);;
     
-copyTransformer!.transform(domSource, streamResult);
+copyTransformer.transform(domSource, streamResult);
     
-dataOutputStream!.flush();
+dataOutputStream.flush();
     
 
                 //: 
@@ -153,7 +152,7 @@ dataOutputStream!.flush();
 }
 
          finally {
-            StreamUtil.getInstance()!.close(dataOutputStream);
+            StreamUtil::getInstance().close(dataOutputStream);
     
 
          }
@@ -161,10 +160,8 @@ dataOutputStream!.flush();
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: DomDocumentFileHelper(){
+}
 
 
 };

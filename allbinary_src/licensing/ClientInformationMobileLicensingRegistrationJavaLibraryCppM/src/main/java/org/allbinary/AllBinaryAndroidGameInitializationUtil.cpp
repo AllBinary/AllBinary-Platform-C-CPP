@@ -54,21 +54,20 @@
 class AllBinaryAndroidGameInitializationUtil
             : public Object
          {
-        
 
-    public static init(){
+    public: static void init(){
 
-    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    androidResources: AndroidResources = AndroidResources.getInstance()!;;
+    AndroidResources androidResources = AndroidResources::getInstance();;
     
 
-    licenseInitInfoUtil: LicenseInitInfoUtil = LicenseInitInfoUtil.getInstance()!;;
+    LicenseInitInfoUtil licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
     
-resourceUtil!.addResource(licenseInitInfoUtil!.INITFILENAME, Integer.valueOf(androidResources!.raw.licenseinitdata));
+resourceUtil.addResource(licenseInitInfoUtil.INITFILENAME, Integer::valueOf(androidResources.raw.licenseinitdata));
     
-resourceUtil!.addResource(PartnerIdentifierFileUtil.getInstance()!.FILE_NAME, Integer.valueOf(androidResources!.raw.partner));
+resourceUtil.addResource(PartnerIdentifierFileUtil::getInstance().FILE_NAME, Integer::valueOf(androidResources.raw.partner));
     
 }
 

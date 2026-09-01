@@ -42,25 +42,22 @@
 class ProcessingFrameIndexFactory
             : public Object
          {
-        
 
-    private: static currentFrame: int64_t = 0;
+    private: static int64_t currentFrame = 0;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static int64_t next(){
+    public: static int64_t next(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProcessingFrameIndexFactory.currentFrame++;
+                        return ProcessingFrameIndexFactory::currentFrame++;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ProcessingFrameIndexFactory(){
+}
 
 
 };

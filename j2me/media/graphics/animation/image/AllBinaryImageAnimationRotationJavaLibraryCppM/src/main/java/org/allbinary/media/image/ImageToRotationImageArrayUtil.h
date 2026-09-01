@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGETOROTATIONIMAGEARRAYUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -51,17 +53,16 @@
 class ImageToRotationImageArrayUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageToRotationImageArrayUtil = new ImageToRotationImageArrayUtil();
+    private: static ImageToRotationImageArrayUtil instance() { return ImageToRotationImageArrayUtil(); }
 
-    public static ImageToRotationImageArrayUtil getInstance();
+    public: static ImageToRotationImageArrayUtil getInstance();
 
-private constructor ();
+private: ImageToRotationImageArrayUtil();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Image> generate(Image image, int32_t angleIncrement, int32_t totalAngle);
+    public: std::vector<Image> generate(Image image, int32_t angleIncrement, int32_t totalAngle);
 
 };
 

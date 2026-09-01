@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 
 
 
@@ -41,37 +43,36 @@
 #include "ShaderOpenGLProcessor.h"
 
 class AppRendererShaderUpdaterFactory: public ShaderUpdater {
-        
 
-    private: static const instanceC: AppRendererShaderUpdaterFactory = new AppRendererShaderUpdaterFactory();
+    private: static const AppRendererShaderUpdaterFactory instanceC = AppRendererShaderUpdaterFactory();
 
-    public static AppRendererShaderUpdaterFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AppRendererShaderUpdaterFactory.instanceC;
-    
-}
-
-
-    private: const NULL_SHADER_COMPOSITE_ARRAY: std::vector<ShaderComposite> = [];
-
-    public const shaderCompositeArray: std::vector<ShaderComposite> = this.NULL_SHADER_COMPOSITE_ARRAY;
-
-    private: const shaderOpenGLProcessorArray: std::vector<ShaderOpenGLProcessor> = [];
-
-    public std::vector<ShaderOpenGLProcessor> getTestShaders(){
+    public: static AppRendererShaderUpdaterFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shaderOpenGLProcessorArray;
+                        return AppRendererShaderUpdaterFactory::instanceC;
     
 }
 
 
-    public setShaderComposite(any = {} object3d){
+    private: const std::vector<ShaderComposite> NULL_SHADER_COMPOSITE_ARRAY = {};
+
+    public: const std::vector<ShaderComposite> shaderCompositeArray = this->NULL_SHADER_COMPOSITE_ARRAY;
+
+    private: const std::vector<ShaderOpenGLProcessor> shaderOpenGLProcessorArray = {};
+
+    public: std::vector<ShaderOpenGLProcessor> getTestShaders(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->shaderOpenGLProcessorArray;
+    
+}
+
+
+    public: void setShaderComposite(Object* object3d){
 }
 
 

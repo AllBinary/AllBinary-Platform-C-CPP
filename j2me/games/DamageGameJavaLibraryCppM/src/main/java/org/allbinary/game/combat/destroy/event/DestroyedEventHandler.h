@@ -66,32 +66,31 @@
 #include "DestroyedEventListenerInterface.h"
 
 class DestroyedEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: DestroyedEventHandler = new DestroyedEventHandler();
+    private: static DestroyedEventHandler instance() { return DestroyedEventHandler(); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static DestroyedEventHandler getInstance();
+    public: static DestroyedEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: DestroyedEventHandler();
 
-    public addListener(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+    public: void addListener(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

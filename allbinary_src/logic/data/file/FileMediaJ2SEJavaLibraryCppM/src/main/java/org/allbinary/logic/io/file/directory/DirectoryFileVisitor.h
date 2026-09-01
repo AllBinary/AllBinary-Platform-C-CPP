@@ -54,13 +54,12 @@
 class DirectoryFileVisitor
             : public Object
         : public VisitorInterface, public FileFilter {
-        
 
-public constructor ();
+public: DirectoryFileVisitor();
 
-    public bool accept(java.io.File arg0);
+    public: bool accept(java::io::File arg0);
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
 };
 

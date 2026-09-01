@@ -59,48 +59,47 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class TimeIntervalActionScriptConditionJPanel: public javax.swing.JPanel {
-        
+class TimeIntervalActionScriptConditionJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: timeIntervalActionScriptConditionInterface: TimeIntervalActionScriptConditionInterface;
+    private: TimeIntervalActionScriptConditionInterface timeIntervalActionScriptConditionInterface;
 
-public constructor (TimeIntervalActionScriptConditionInterface timeIntervalActionScriptConditionInterface);
+public: TimeIntervalActionScriptConditionJPanel(TimeIntervalActionScriptConditionInterface timeIntervalActionScriptConditionInterface);
 
-    set();
+    private: void set();
 
-    update();
+    private: void update();
 
-    public javax.swing.JTextField getTimeIntervalJTextField();
+    public: javax::swing::JTextField getTimeIntervalJTextField();
 
-    public setTimeIntervalJTextField(javax.swing.JTextField timeIntervalJTextField);
+    public: void setTimeIntervalJTextField(javax::swing::JTextField timeIntervalJTextField);
 
-    public javax.swing.JDialog getTimeIntervalActionJDialog();
+    public: javax::swing::JDialog getTimeIntervalActionJDialog();
 
-    public setTimeIntervalActionJDialog(javax.swing.JDialog timeIntervalActionJDialog);
+    public: void setTimeIntervalActionJDialog(javax::swing::JDialog timeIntervalActionJDialog);
 
-    initComponents();
+    private: void initComponents();
 
-    okJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    timeIntervalActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void timeIntervalActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: okJButton: javax.swing.JButton;
+    private: javax::swing::JButton okJButton;
 
-    private: timeIntervalActionJButton: javax.swing.JButton;
+    private: javax::swing::JButton timeIntervalActionJButton;
 
-    private: timeIntervalActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JDialog timeIntervalActionJDialog;
 
-    private: timeIntervalJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField timeIntervalJTextField;
 
-    private: titleJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel titleJLabel;
 
 };
 

@@ -42,37 +42,36 @@
 class InitEmulatorFactory
             : public Object
          {
-        
 
-    private: static const instance: InitEmulatorFactory = new InitEmulatorFactory();
+    private: static InitEmulatorFactory instance() { return InitEmulatorFactory(); }
 
-    public static InitEmulatorFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitEmulatorFactory.instance;
-    
-}
-
-
-    public setInitEmulator(bool initEmulator){
-this.initEmulator= initEmulator;
-    
-}
-
-
-    public bool isInitEmulator(){
+    public: static InitEmulatorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initEmulator;
+                        return InitEmulatorFactory::instance();
     
 }
 
 
-    private: initEmulator: bool = false;
+    public: void setInitEmulator(bool initEmulator){
+this->initEmulator= initEmulator;
+    
+}
+
+
+    public: bool isInitEmulator(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->initEmulator;
+    
+}
+
+
+    private: bool initEmulator = false;
 
 };
 

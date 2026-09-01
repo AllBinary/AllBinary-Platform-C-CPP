@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_H
         #define ORG_ALLBINARY_GAME_GD_RESOURCE_GDLAZYRESOURCES_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -45,20 +47,19 @@
 class GDLazyResources
             : public Object
          {
-        
 
-    private: static const instance: GDLazyResources = new GDLazyResources();
+    private: static GDLazyResources instance() { return GDLazyResources(); }
 
-    public static GDLazyResources getInstance();
+    public: static GDLazyResources getInstance();
 
-    public const imageResourceWidthArray: std::vector<int32_t> = [];
+    public: const std::vector<int32_t> imageResourceWidthArray = {};
 
-    public const imageResourceHeightArray: std::vector<int32_t> = [];
+    public: const std::vector<int32_t> imageResourceHeightArray = {};
 
-    public const requiredResourcesBeforeLoadingArray: std::vector<string> = 
-                                                        [
+    public: const std::vector<std::string> requiredResourcesBeforeLoadingArray = 
+                                                        {
                                                             
-                                                        ];
+                                                        };
 
 };
 

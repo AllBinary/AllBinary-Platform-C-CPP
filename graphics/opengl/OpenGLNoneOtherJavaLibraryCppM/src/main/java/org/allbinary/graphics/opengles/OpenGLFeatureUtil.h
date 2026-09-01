@@ -45,15 +45,14 @@
 class OpenGLFeatureUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLFeatureUtil = new OpenGLFeatureUtil();
+    private: static OpenGLFeatureUtil instance() { return OpenGLFeatureUtil(); }
 
-    public static OpenGLFeatureUtil getInstance();
+    public: static OpenGLFeatureUtil getInstance();
 
-public constructor ();
+public: OpenGLFeatureUtil();
 
-    public bool isAnyThreed();
+    public: bool isAnyThreed();
 
 };
 

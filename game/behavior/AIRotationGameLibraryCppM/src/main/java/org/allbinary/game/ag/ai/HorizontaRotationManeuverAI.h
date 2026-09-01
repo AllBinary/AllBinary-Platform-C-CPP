@@ -92,34 +92,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HorizontaRotationManeuverAI: public BasicAI: public ArtificialIntelligenceTransitionInterface {
-        
+class HorizontaRotationManeuverAI: public BasicAI, public ArtificialIntelligenceTransitionInterface {
 
-    private: const circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(10, Integer.MAX_VALUE)!;
+    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(10, Integer::MAX_VALUE);
 
-    private: currentSpeedDivisor: int32_t = 5;
+    private: int32_t currentSpeedDivisor = 5;
 
-    private: const rotationAnimationInterface: IndexedAnimation;
+    private: IndexedAnimation rotationAnimationInterface;
 
-    private: const baseVelocityInterface: BasicVelocityProperties;
+    private: BasicVelocityProperties baseVelocityInterface;
 
-    private: const velocityInterface: VelocityInterface;
+    private: VelocityInterface velocityInterface;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: HorizontaRotationManeuverAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
-    public transition();
+    public: void transition();
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    reverse();
+    protected: void reverse();
 
-    accelerate();
+    private: void accelerate();
 
-    drop();
+    private: void drop();
 
-    public int32_t getId();
+    public: int32_t getId();
 
 };
 

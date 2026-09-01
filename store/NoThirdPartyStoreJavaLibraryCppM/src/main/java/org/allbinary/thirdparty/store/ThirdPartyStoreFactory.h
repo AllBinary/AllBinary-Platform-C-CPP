@@ -47,13 +47,12 @@
 class ThirdPartyStoreFactory
             : public Object
          {
-        
 
-    private: static const instance: NoThirdPartyStore = new NoThirdPartyStore();
+    private: static NoThirdPartyStore instance() { return NoThirdPartyStore(); }
 
-    public static ThirdPartyStore getInstance();
+    public: static ThirdPartyStore getInstance();
 
-private constructor ();
+private: ThirdPartyStoreFactory();
 
 };
 

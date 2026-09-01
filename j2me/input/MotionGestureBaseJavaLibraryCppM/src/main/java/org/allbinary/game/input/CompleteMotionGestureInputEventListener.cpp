@@ -39,13 +39,12 @@
 class CompleteMotionGestureInputEventListener
             : public Object
         : public CompleteMotionGestureInputEventListenerInterface {
-        
 
-    public onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject eventObject){
 }
 
 
-    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
 }
 
 

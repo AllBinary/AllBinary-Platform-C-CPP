@@ -54,19 +54,8 @@
 class InputAutomationModuleFactoryInterface
             : public Object
          {
-        
 
-    public string getName(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public JPanel getConfigurationJPanel(){
+    public: std::string getName(){
 
 
 
@@ -76,7 +65,17 @@ class InputAutomationModuleFactoryInterface
 }
 
 
-    public HelpSet getHelpSet(){
+    public: JPanel getConfigurationJPanel(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+    public: HelpSet getHelpSet(){
 
 
 
@@ -88,7 +87,7 @@ class InputAutomationModuleFactoryInterface
 
                 //@Throws(Exception.constructor)
             
-    public RunnableInterface getInstance(){
+    public: RunnableInterface getInstance(){
 
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
@@ -80,51 +82,50 @@
         #include "BlisketServletUtil.h"
 
 class CloudImageServlet: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    processRequest(HttpServletRequest request, HttpServletResponse response){
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response){
 
-    inputStream: InputStream = 
+    InputStream inputStream = 
                 null
             ;;
     
 
         try {
-            BlisketServletUtil.getInstance()!.init(request);
+            BlisketServletUtil::getInstance().init(request);
     
 
-    requestURI: string = request.getRequestURI()!;;
+    std::string requestURI = request.getRequestURI();;
     
 
-    file: AbFile = AbFile.createAbFile(URLGLOBALS.getWebappPath() +requestURI)!;;
+    AbFile file = AbFile::createAbFile(URLGLOBALS::getWebappPath() +requestURI);;
     
-inputStream= CloudStreamUtil.getInstance()!.getFile(file);
-    
-
-    outputStream: ByteArrayOutputStream = new ByteArrayOutputStream(8000);;
+inputStream= CloudStreamUtil::getInstance().getFile(file);
     
 
-    byteArray: std::vector<int8_t> = StreamUtil.getInstance()!.getByteArray(inputStream, outputStream, new Array(16384))!;;
+    ByteArrayOutputStream outputStream = ByteArrayOutputStream(8000);;
+    
+
+    std::vector<int8_t> byteArray = StreamUtil::getInstance().getByteArray(inputStream, outputStream, new Array(16384));;
     
 response.setContentType("image/jpeg;charset=utf-8");
     
-response.getOutputStream()!.write(byteArray);
+response.getOutputStream().write(byteArray);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "processRequest()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processRequest()", e);
     
 
                                     }
@@ -132,13 +133,13 @@ response.getOutputStream()!.write(byteArray);
 }
 
          finally {
-            StreamUtil.getInstance()!.close(response.getOutputStream());
+            StreamUtil::getInstance().close(response.getOutputStream());
     
 
-                        if(!StreamUtil.getInstance()!.close(inputStream))
+                        if(!StreamUtil::getInstance().close(inputStream))
                         
                                     {
-                                    response.sendError(HttpServletResponse.SC_NOT_FOUND);
+                                    response.sendError(HttpServletResponse::SC_NOT_FOUND);
     
 
                                     }
@@ -151,21 +152,21 @@ response.getOutputStream()!.write(byteArray);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
-    public string getServletInfo(){
+    public: std::string getServletInfo(){
 
 
 

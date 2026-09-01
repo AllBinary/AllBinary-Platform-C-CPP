@@ -75,19 +75,18 @@
 #include "InventoryItemViewParentTagHelper.h"
 
 class DownloadItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const downloadableItem: DownloadableItem;
+    private: DownloadableItem downloadableItem;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: DownloadItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string update();
+    public: std::string update();
 
 };
 

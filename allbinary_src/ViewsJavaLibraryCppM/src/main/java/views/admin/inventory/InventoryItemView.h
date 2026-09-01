@@ -21,6 +21,8 @@
         #ifndef VIEWS_ADMIN_INVENTORY_INVENTORYITEMVIEW_H
         #define VIEWS_ADMIN_INVENTORY_INVENTORYITEMVIEW_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -115,50 +117,49 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryUploadMediaUtil.h"
 
-class InventoryItemView: public HttpStoreComponentView: public RequestMapInterface {
-        
+class InventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public static TYPE_ID: int32_t = 10;
+    public: static int32_t TYPE_ID = 10;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const request: HttpServletRequest;
+    protected: HttpServletRequest request;
 
-    private: imageFileName: string;
+    private: std::string imageFileName;
 
-    private: mediaData: MediaData;
+    private: MediaData mediaData;
 
-    itemInterface: ItemInterface;
+    protected: ItemInterface itemInterface;
 
-    downloadableItemVector: Vector;
+    protected: Vector downloadableItemVector;
 
-    private: requestHashMap: HashMap<any, any>;
+    private: HashMap<any, any> requestHashMap;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: InventoryItemView(TransformInfoInterface transformInfoInterface);
 
-public constructor (TransformInfoInterface transformInfoInterface, string empty);
+public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty);
 
-    public int32_t getTypeId();
-
-                //@Throws(Exception.constructor)
-            
-    getFormData();
-
-    public addDomNodeInterfaces();
-
-    public ItemInterface getItemInterface();
+    public: int32_t getTypeId();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    private: void getFormData();
+
+    public: void addDomNodeInterfaces();
+
+    public: ItemInterface getItemInterface();
 
                 //@Throws(Exception.constructor)
             
-    processImageFiles();
+    public: std::string view();
 
-    setRequestHashMap(HashMap<any, any> requestHashMap);
+                //@Throws(Exception.constructor)
+            
+    protected: void processImageFiles();
 
-    public HashMap<any, any> getRequestHashMap();
+    private: void setRequestHashMap(HashMap<any, any> requestHashMap);
+
+    public: HashMap<any, any> getRequestHashMap();
 
 };
 

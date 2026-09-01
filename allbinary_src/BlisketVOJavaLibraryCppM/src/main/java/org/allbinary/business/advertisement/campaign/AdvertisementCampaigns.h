@@ -58,21 +58,20 @@
 class AdvertisementCampaigns
             : public Object
         : public AdvertisementCampaignsInterface {
-        
 
-    private: advertisementsVector: Vector;
+    private: Vector advertisementsVector;
 
-public constructor (Vector vector);
+public: AdvertisementCampaigns(Vector vector);
 
-    public add(AdvertisementInterface advertisementInterface);
+    public: void add(AdvertisementInterface advertisementInterface);
 
-    public AdvertisementInterface get(int32_t index);
+    public: AdvertisementInterface get(int32_t index);
 
-    public int32_t size();
+    public: int32_t size();
 
-    public bool isEnabled();
+    public: bool isEnabled();
 
-    public AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface);
+    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface);
 
 };
 

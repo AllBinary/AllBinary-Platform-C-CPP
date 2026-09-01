@@ -57,21 +57,20 @@
 class NullAllBinaryGameCanvas
             : public Object
         : public AllBinaryGameCanvasInterface {
-        
 
-    public static const NULL_ALLBINARY_GAME_CANVAS: NullAllBinaryGameCanvas = new NullAllBinaryGameCanvas();
+    public: static const NullAllBinaryGameCanvas NULL_ALLBINARY_GAME_CANVAS = NullAllBinaryGameCanvas();
 
-    public AllBinaryGameLayerManager getLayerManager();
+    public: AllBinaryGameLayerManager getLayerManager();
 
-    public addCommand(Command cmd);
+    public: void addCommand(Command cmd);
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public removeCommand(Command cmd);
+    public: void removeCommand(Command cmd);
 
-    public setCommandListener(CommandListener l);
+    public: void setCommandListener(CommandListener l);
 
 };
 

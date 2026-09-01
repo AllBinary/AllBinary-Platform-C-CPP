@@ -58,60 +58,55 @@
 class UserEmailConfiguration
             : public Object
         : public UserEmailConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: userEmailEventsConfigurationInterface: UserEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
 
-public constructor (){
+public: UserEmailConfiguration(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.setUserEmailEventsConfigurationInterface(new UserEmailEventsConfiguration());
+this->setUserEmailEventsConfigurationInterface(UserEmailEventsConfiguration());
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
+public: UserEmailConfiguration(HashMap<any, any> hashMap){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.setUserEmailEventsConfigurationInterface(new UserEmailEventsConfiguration(hashMap));
+this->setUserEmailEventsConfigurationInterface(UserEmailEventsConfiguration(hashMap));
     
 }
 
 
-    public UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface(){
+    public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userEmailEventsConfigurationInterface;
+                        return this->userEmailEventsConfigurationInterface;
     
 }
 
 
-    public setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface){
-this.userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
+    public: void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface){
+this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
     
 }
 

@@ -53,10 +53,9 @@
         #include "ImageAnimation.h"
 
 class ImageAnimationSingletonInterfaceFactory: public SingletonAnimationInterfaceFactory {
-        
 
-public constructor (Animation animationInterface, int32_t width, int32_t height){
-            super(new ImageAnimation(AnimationFrameToImageUtil.getInstance()!.getInstanceWH(width, height, animationInterface), AnimationBehavior.getInstance()));
+public: ImageAnimationSingletonInterfaceFactory(Animation animationInterface, int32_t width, int32_t height){
+            super(ImageAnimation(AnimationFrameToImageUtil::getInstance().getInstanceWH(width, height, animationInterface), AnimationBehavior::getInstance()));
                     
 
                             //For kotlin this is before the body of the constructor.

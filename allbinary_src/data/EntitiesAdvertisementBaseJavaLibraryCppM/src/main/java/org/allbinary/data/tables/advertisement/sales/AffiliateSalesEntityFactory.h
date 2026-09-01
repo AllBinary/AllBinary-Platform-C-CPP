@@ -55,13 +55,12 @@
 class AffiliateSalesEntityFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "org.allbinary.data.tables.AffiliatesSalesEntity";
+    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AffiliatesSalesEntity";
 
-    public static AffiliateSalesEntityInterface getInstance();
+    public: static AffiliateSalesEntityInterface getInstance();
 
-private constructor ();
+private: AffiliateSalesEntityFactory();
 
 };
 

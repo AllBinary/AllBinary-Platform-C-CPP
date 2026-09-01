@@ -49,21 +49,20 @@
 class MathVector
             : public Object
         : public MathVectorInterface {
-        
 
-    private: magnitudeBasicDecimal: BasicDecimal;
+    private: BasicDecimal magnitudeBasicDecimal;
 
-    private: direction: int32_t;
+    private: int32_t direction;
 
-    resultBasicDecimal: BasicDecimal;
+    protected: BasicDecimal resultBasicDecimal;
 
-public constructor (BasicDecimal magnitudeBasicDecimal, int32_t direction);
+public: MathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction);
 
-    public BasicDecimal getMagnitude();
+    public: BasicDecimal getMagnitude();
 
-    public int32_t getDirection();
+    public: int32_t getDirection();
 
-    public BasicDecimal getResult();
+    public: BasicDecimal getResult();
 
 };
 

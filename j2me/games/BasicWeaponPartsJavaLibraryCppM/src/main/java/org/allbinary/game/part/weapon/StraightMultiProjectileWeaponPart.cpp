@@ -80,94 +80,93 @@
         #include "BasicWeaponPart.h"
 
 class StraightMultiProjectileWeaponPart: public BasicWeaponPart {
-        
 
-    public static StraightMultiProjectileWeaponPart createStraightMultiProjectileWeaponPart(Animation animationInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool){
+    public: static StraightMultiProjectileWeaponPart createStraightMultiProjectileWeaponPart(Animation animationInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StraightMultiProjectileWeaponPart(animationInterface, AllBinaryLayer.NULL_ALLBINARY_LAYER, weaponLayerCircularStaticPool, 2, WeaponProperties.NULL_WEAPON_PROPERTIES, NoScoreable.getInstance(), RelativeRelationship.NULL_RELATIVE_RELATIONSHIP);
+                        return StraightMultiProjectileWeaponPart(animationInterface, AllBinaryLayer::NULL_ALLBINARY_LAYER, weaponLayerCircularStaticPool, 2, WeaponProperties::NULL_WEAPON_PROPERTIES, NoScoreable::getInstance(), RelativeRelationship::NULL_RELATIVE_RELATIONSHIP);
     
 }
 
 
-    private: const weaponLayerCircularStaticPool: WeaponLayerCircularPool;
+    private: WeaponLayerCircularPool weaponLayerCircularStaticPool;
 
-    private: const total: int32_t;
+    private: int32_t total;
 
-public constructor (Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, int32_t total, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship){
+public: StraightMultiProjectileWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, int32_t total, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship){
             super(animationInterface, sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.total= total;
+this->total= total;
     
-this.weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
+this->weaponLayerCircularStaticPool= weaponLayerCircularStaticPool;
     
 }
 
 
-    private: const noDecimalTrigTable: NoDecimalTrigTable = NoDecimalTrigTable.getInstance()!;
+    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface){
+    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface){
 
-    sourceLayerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!;;
+    AllBinaryLayer sourceLayerInterface = this->getOwnerLayerInterface();;
     
 
-    reducedWidth: int32_t = (sourceLayerInterface!.getWidth() *8 /10);;
+    int32_t reducedWidth = (sourceLayerInterface.getWidth() *8 /10);;
     
 
-    halfWidth: int32_t = (reducedWidth>>1);;
+    int32_t halfWidth = (reducedWidth>>1);;
     
 
-    x: int32_t = this.relativeRelationship!.getX()!;;
+    int32_t x = this->relativeRelationship.getX();;
     
 
-    y: int32_t = this.relativeRelationship!.getY()!;;
+    int32_t y = this->relativeRelationship.getY();;
     
 
-    sine: int64_t= 0;;
+    int64_t sine= 0;;
     
 
-    beamX: int32_t= 0;;
+    int32_t beamX= 0;;
     
 
-    cosine: int64_t= 0;;
+    int64_t cosine= 0;;
     
 
-    beamY: int32_t= 0;;
+    int32_t beamY= 0;;
     
 
-    weaponLayer: WeaponLayer;;
+    WeaponLayer weaponLayer;;
     
 
-    increment: int32_t = reducedWidth /(this.total -1);;
+    int32_t increment = reducedWidth /(this->total -1);;
     
 
-    next: int32_t =  -halfWidth;;
+    int32_t next =  -halfWidth;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.total; index++)
+    int32_t index = 0;index < this->total; index++)
         {
-sine= (next *this.noDecimalTrigTable!.sin(static_cast<int32_t>(angle)));
+sine= (next *this->noDecimalTrigTable.sin(static_cast<int32_t>(angle)));
     
-beamX= static_cast<int32_t>((sine /this.noDecimalTrigTable!.SCALE));
+beamX= static_cast<int32_t>((sine /this->noDecimalTrigTable.SCALE));
     
-cosine= (next *this.noDecimalTrigTable!.cos(static_cast<int32_t>(angle)));
+cosine= (next *this->noDecimalTrigTable.cos(static_cast<int32_t>(angle)));
     
-beamY=  -static_cast<int32_t>((cosine /this.noDecimalTrigTable!.SCALE));
+beamY=  -static_cast<int32_t>((cosine /this->noDecimalTrigTable.SCALE));
     
-weaponLayer= this.weaponLayerCircularStaticPool!.getInstanceWeaponLayer(sourceLayerInterface, x +beamX, y +beamY, 0, static_cast<int32_t>(angle), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);
+weaponLayer= this->weaponLayerCircularStaticPool.getInstanceWeaponLayer(sourceLayerInterface, x +beamX, y +beamY, 0, static_cast<int32_t>(angle), static_cast<int32_t>(otherAngle), weaponProperties, scoreableInterface);
     
-allbinaryLayerManager!.append(weaponLayer);
+allbinaryLayerManager.append(weaponLayer);
     
 next += increment;
     

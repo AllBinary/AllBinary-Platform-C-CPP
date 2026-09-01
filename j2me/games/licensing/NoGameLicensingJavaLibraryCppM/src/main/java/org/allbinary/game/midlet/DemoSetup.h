@@ -52,9 +52,8 @@
 class DemoSetup
             : public Object
          {
-        
 
-    public init(GameMidlet gameMidlet);
+    public: void init(GameMidlet gameMidlet);
 
 };
 

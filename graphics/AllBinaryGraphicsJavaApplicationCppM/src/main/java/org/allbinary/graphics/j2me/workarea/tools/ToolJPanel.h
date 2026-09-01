@@ -49,80 +49,79 @@
 #include "MouseEvent.h"
 #include "ToolFactory.h"
 
-class ToolJPanel: public javax.swing.JPanel {
-        
+class ToolJPanel: public javax::swing::JPanel {
 
-public constructor ();
+public: ToolJPanel();
 
-    initComponents();
+    private: void initComponents();
 
-    dottedFillRountRectJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void dottedFillRountRectJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    dottedFillArcJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void dottedFillArcJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    dottedFillRectJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void dottedFillRectJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    dottedArcJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void dottedArcJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    dottedRectButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void dottedRectButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    dottedLineJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void dottedLineJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    fillRoundRectJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void fillRoundRectJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    fillRectJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void fillRectJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    fillArcJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void fillArcJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    imageJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void imageJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    roundRectJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void roundRectJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    charJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void charJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    stringJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void stringJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    arcJButtonMousePressed(java.awt.event.MouseEvent evt);
+    private: void arcJButtonMousePressed(java::awt::event::MouseEvent evt);
 
-    rectJButtonMouseClicked(java.awt.event.MouseEvent evt);
+    private: void rectJButtonMouseClicked(java::awt::event::MouseEvent evt);
 
-    lineJButtonMouseClicked(java.awt.event.MouseEvent evt);
+    private: void lineJButtonMouseClicked(java::awt::event::MouseEvent evt);
 
-    private: arcJButton: javax.swing.JButton;
+    private: javax::swing::JButton arcJButton;
 
-    private: charJButton: javax.swing.JButton;
+    private: javax::swing::JButton charJButton;
 
-    private: colorJList: javax.swing.JList;
+    private: javax::swing::JList colorJList;
 
-    private: colorJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel colorJPanel;
 
-    private: dottedArcJButton: javax.swing.JButton;
+    private: javax::swing::JButton dottedArcJButton;
 
-    private: dottedFillArcJButton: javax.swing.JButton;
+    private: javax::swing::JButton dottedFillArcJButton;
 
-    private: dottedFillRectJButton: javax.swing.JButton;
+    private: javax::swing::JButton dottedFillRectJButton;
 
-    private: dottedFillRountRectJButton: javax.swing.JButton;
+    private: javax::swing::JButton dottedFillRountRectJButton;
 
-    private: dottedLineJButton: javax.swing.JButton;
+    private: javax::swing::JButton dottedLineJButton;
 
-    private: dottedRectButton: javax.swing.JButton;
+    private: javax::swing::JButton dottedRectButton;
 
-    private: fillArcJButton: javax.swing.JButton;
+    private: javax::swing::JButton fillArcJButton;
 
-    private: fillRectJButton: javax.swing.JButton;
+    private: javax::swing::JButton fillRectJButton;
 
-    private: fillRoundRectJButton: javax.swing.JButton;
+    private: javax::swing::JButton fillRoundRectJButton;
 
-    private: imageJButton: javax.swing.JButton;
+    private: javax::swing::JButton imageJButton;
 
-    private: lineJButton: javax.swing.JButton;
+    private: javax::swing::JButton lineJButton;
 
-    private: rectJButton: javax.swing.JButton;
+    private: javax::swing::JButton rectJButton;
 
-    private: roundRectJButton: javax.swing.JButton;
+    private: javax::swing::JButton roundRectJButton;
 
-    private: stringJButton: javax.swing.JButton;
+    private: javax::swing::JButton stringJButton;
 
 };
 

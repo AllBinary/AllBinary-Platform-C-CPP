@@ -46,21 +46,18 @@
 class DamageTechnology
             : public Object
         : public RTSInterface {
-        
 
-    private: level: int32_t= 0;
+    private: int32_t level= 0;
 
-    private: maxLevel: int32_t;
+    private: int32_t maxLevel;
 
-public constructor (int32_t maxLevel){
-
-            super();
-        this.maxLevel= maxLevel;
+public: DamageTechnology(int32_t maxLevel){
+this->maxLevel= maxLevel;
     
 }
 
 
-    public bool isCompleted(){
+    public: bool isCompleted(){
 
 
 
@@ -70,7 +67,7 @@ public constructor (int32_t maxLevel){
 }
 
 
-    public int32_t getPercentComplete(){
+    public: int32_t getPercentComplete(){
 
 
 
@@ -80,41 +77,27 @@ public constructor (int32_t maxLevel){
 }
 
 
-    public int32_t getLevel(){
+    public: int32_t getLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level;
+                        return this->level;
     
 }
 
 
-    public int32_t getMaxLevel(){
+    public: int32_t getMaxLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxLevel;
+                        return this->maxLevel;
     
 }
 
 
-    public int32_t getCost(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0;
-    
-}
-
-
-    public downgrade(){
-}
-
-
-    public int32_t getDowngradeCost(){
+    public: int32_t getCost(){
 
 
 
@@ -124,7 +107,21 @@ public constructor (int32_t maxLevel){
 }
 
 
-    public bool isDowngradeable(){
+    public: void downgrade(){
+}
+
+
+    public: int32_t getDowngradeCost(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public: bool isDowngradeable(){
 
 
 
@@ -134,19 +131,19 @@ public constructor (int32_t maxLevel){
 }
 
 
-    public int32_t getUpgradeCost(){
+    public: int32_t getUpgradeCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (this.getLevel() *this.getLevel()) *1000;
+                        return (this->getLevel() *this->getLevel()) *1000;
     
 }
 
 
-    public bool isUpgradeable(){
+    public: bool isUpgradeable(){
 
-                        if(this.getLevel() < this.getMaxLevel())
+                        if(this->getLevel() < this->getMaxLevel())
                         
                                     {
                                     
@@ -171,18 +168,18 @@ public constructor (int32_t maxLevel){
 }
 
 
-    public upgrade(){
-this.level++;
+    public: void upgrade(){
+this->level++;
     
 
-    unitTechnologySingletonFactory: UnitTechnologySingletonFactory = UnitTechnologySingletonFactory.getInstance()!;;
+    UnitTechnologySingletonFactory unitTechnologySingletonFactory = UnitTechnologySingletonFactory::getInstance();;
     
-unitTechnologySingletonFactory!.setDamage(unitTechnologySingletonFactory!.getDamage() +(this.getLevel() *100));
+unitTechnologySingletonFactory.setDamage(unitTechnologySingletonFactory.getDamage() +(this->getLevel() *100));
     
 }
 
 
-    public bool isSelfUpgradeable(){
+    public: bool isSelfUpgradeable(){
 
 
 

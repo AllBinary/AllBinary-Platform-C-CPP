@@ -56,9 +56,8 @@
 class TransformInfoEntityBuilder
             : public Object
          {
-        
 
-    public static TransformInfoEntity getInstance();
+    public: static TransformInfoEntity getInstance();
 
 };
 

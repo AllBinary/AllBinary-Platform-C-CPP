@@ -74,16 +74,15 @@
 class GameGraphicsResourceUtil
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameGraphicsResourceUtil getInstance(){
+    public: static GameGraphicsResourceUtil getInstance(){
 
-                        if(GameGraphicsResourceUtil.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(GameGraphicsResourceUtil::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    GameGraphicsResourceUtil.instance= new GameGraphicsResourceUtil();
+                                    GameGraphicsResourceUtil::instance= GameGraphicsResourceUtil();
     
 
                                     }
@@ -92,34 +91,32 @@ class GameGraphicsResourceUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGraphicsResourceUtil.instance as GameGraphicsResourceUtil;
+                        return GameGraphicsResourceUtil::instance() as GameGraphicsResourceUtil;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const SPRITE: string = "_sprite";
+    public: const std::string SPRITE = "_sprite";
 
-    public const QUARTER: string = "_quarter";
+    public: const std::string QUARTER = "_quarter";
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (){
+public: GameGraphicsResourceUtil(){
 
-            super();
-        
         try {
-            this.name= this.getString();
+            this->name= this->getString();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
@@ -128,48 +125,48 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
 
                 //@Throws(Exception.constructor)
             
-    string getString(){
+    private: std::string getString(){
 
-    graphicsFeatureFactory: GraphicsFeatureFactory = GraphicsFeatureFactory.getInstance()!;;
+    GraphicsFeatureFactory graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
 
-    graphicsFeature: GraphicsFeature = graphicsFeatureFactory!.NONE;;
+    GraphicsFeature graphicsFeature = graphicsFeatureFactory.NONE;;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(graphicsFeatureFactory!.IMAGE_TO_ARRAY_GRAPHICS))
+                        if(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory!.IMAGE_TO_ARRAY_GRAPHICS;
+                                    graphicsFeature= graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS;
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory!.SPRITE_FULL_GRAPHICS))
+                        if(features.isFeature(graphicsFeatureFactory.SPRITE_FULL_GRAPHICS))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory!.SPRITE_FULL_GRAPHICS;
+                                    graphicsFeature= graphicsFeatureFactory.SPRITE_FULL_GRAPHICS;
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory!.SPRITE_QUARTER_ROTATION_GRAPHICS))
+                        if(features.isFeature(graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory!.SPRITE_QUARTER_ROTATION_GRAPHICS;
+                                    graphicsFeature= graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS;
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory!.IMAGE_ROTATION_ON_THE_FLY))
+                        if(features.isFeature(graphicsFeatureFactory.IMAGE_ROTATION_ON_THE_FLY))
                         
                                     {
-                                    graphicsFeature= graphicsFeatureFactory!.IMAGE_ROTATION_ON_THE_FLY;
+                                    graphicsFeature= graphicsFeatureFactory.IMAGE_ROTATION_ON_THE_FLY;
     
 
                                     }
@@ -178,59 +175,59 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getStringForFeature(graphicsFeature);;
+                        return this->getStringForFeature(graphicsFeature);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getStringForFeature(GraphicsFeature graphicsFeature){
+    public: std::string getStringForFeature(GraphicsFeature graphicsFeature){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    graphicsFeatureFactory: GraphicsFeatureFactory = GraphicsFeatureFactory.getInstance()!;;
+    GraphicsFeatureFactory graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-
-    features: Features = Features.getInstance()!;;
+stringBuffer.delete(0, stringBuffer.length());
     
 
-                        if(features.isFeature(graphicsFeatureFactory!.VECTOR_GRAPHICS))
+    Features features = Features::getInstance();;
+    
+
+                        if(features.isFeature(graphicsFeatureFactory.VECTOR_GRAPHICS))
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(features.isFeature(graphicsFeatureFactory!.IMAGE_GRAPHICS))
+                        if(features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS))
                         
                                     {
                                     
-                        if(graphicsFeature == graphicsFeatureFactory!.IMAGE_TO_ARRAY_GRAPHICS || graphicsFeature == graphicsFeatureFactory!.IMAGE_ROTATION_ON_THE_FLY)
+                        if(graphicsFeature == graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS || graphicsFeature == graphicsFeatureFactory.IMAGE_ROTATION_ON_THE_FLY)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(graphicsFeature == graphicsFeatureFactory!.SPRITE_FULL_GRAPHICS)
+                        if(graphicsFeature == graphicsFeatureFactory.SPRITE_FULL_GRAPHICS)
                         
                                     {
-                                    stringBuffer!.append(this.SPRITE);
+                                    stringBuffer.append(this->SPRITE);
     
 
                                     }
                                 
                              else 
-                        if(graphicsFeature == graphicsFeatureFactory!.SPRITE_QUARTER_ROTATION_GRAPHICS)
+                        if(graphicsFeature == graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS)
                         
                                     {
-                                    stringBuffer!.append(this.QUARTER);
+                                    stringBuffer.append(this->QUARTER);
     
-stringBuffer!.append(this.SPRITE);
+stringBuffer.append(this->SPRITE);
     
 
                                     }
@@ -239,7 +236,7 @@ stringBuffer!.append(this.SPRITE);
                             
 
 
-                            throw new Exception("None/Unknown Sub Image Resource Type Specified");
+                            throw Exception("None/Unknown Sub Image Resource Type Specified");
                     
 
                         }
@@ -248,10 +245,10 @@ stringBuffer!.append(this.SPRITE);
                                     }
                                 
                              else 
-                        if(OpenGLFeatureUtil.getInstance()!.isAnyThreed())
+                        if(OpenGLFeatureUtil::getInstance().isAnyThreed())
                         
                                     {
-                                    stringBuffer!.append(CanvasStrings.getInstance()!.OBJ_MODEL);
+                                    stringBuffer.append(CanvasStrings::getInstance().OBJ_MODEL);
     
 
                                     }
@@ -260,7 +257,7 @@ stringBuffer!.append(this.SPRITE);
                             
 
 
-                            throw new Exception("None/Unknown Main Image Resource Type Specified");
+                            throw Exception("None/Unknown Main Image Resource Type Specified");
                     
 
                         }
@@ -269,17 +266,17 @@ stringBuffer!.append(this.SPRITE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

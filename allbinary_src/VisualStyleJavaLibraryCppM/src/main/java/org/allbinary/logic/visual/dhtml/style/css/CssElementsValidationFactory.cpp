@@ -57,33 +57,32 @@
 class CssElementsValidationFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getInstance(Vector cssElementStyleNodeList){
+    public: static Vector getInstance(Vector cssElementStyleNodeList){
 
-    styles: Vector = new Vector();;
+    Vector styles = Vector();;
     
 
-    size: int32_t = cssElementStyleNodeList!.length!;;
+    int32_t size = cssElementStyleNodeList.length;;
     
 
-    cssElementStyleNode: Node;;
+    Node cssElementStyleNode;;
     
 
-    cssValidationInterface: ValidationInterface;;
+    ValidationInterface cssValidationInterface;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-cssElementStyleNode= cssElementStyleNodeList!.get(index) as Node;
+cssElementStyleNode= cssElementStyleNodeList.get(index) as Node;
     
-cssValidationInterface= CssElementValidationFactory.getInstance(cssElementStyleNode) as ValidationInterface;
+cssValidationInterface= CssElementValidationFactory::getInstance(cssElementStyleNode) as ValidationInterface;
     
 styles.add(cssValidationInterface);
     
@@ -98,9 +97,9 @@ styles.add(cssValidationInterface);
 }
 
 
-    public static Vector getInstance(HashMap<any, any> hashMap){
+    public: static Vector getInstance(HashMap<any, any> hashMap){
 
-    styles: Vector = new Vector();;
+    Vector styles = Vector();;
     
 
 
@@ -111,10 +110,8 @@ styles.add(cssValidationInterface);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CssElementsValidationFactory(){
+}
 
 
 };

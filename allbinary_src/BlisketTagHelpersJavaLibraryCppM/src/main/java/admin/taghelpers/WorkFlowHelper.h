@@ -62,25 +62,24 @@
         #include "BasicTable.h"
 
 class WorkFlowHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: WorkFlowHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string drop();
+    public: std::string drop();
 
-    public string create();
+    public: std::string create();
 
-    public string restore();
+    public: std::string restore();
 
-    public string backup();
+    public: std::string backup();
 
 };
 

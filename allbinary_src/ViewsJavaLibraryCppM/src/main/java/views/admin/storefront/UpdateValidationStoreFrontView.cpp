@@ -61,12 +61,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StoreFrontComponent.h"
 
-class UpdateValidationStoreFrontView: public StoreFrontComponent: public ValidationComponentInterface {
-        
+class UpdateValidationStoreFrontView: public StoreFrontComponent, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: UpdateValidationStoreFrontView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -75,28 +74,28 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(this.newStoreFrontInterface!.isValid() == Boolean.FALSE)
+                        if(this->newStoreFrontInterface.isValid() == Boolean::FALSE)
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory.getInstance(newStoreFrontInterface!.getName()) == 
-                                    null
+                        if(StoreFrontFactory::getInstance(newStoreFrontInterface.getName()) == 
+                                    nullptr
                                 )
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
@@ -112,10 +111,10 @@ public constructor (TransformInfoInterface transformInfoInterface){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -124,35 +123,35 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.newStoreFrontInterface!.isValid() == Boolean.FALSE)
+                        if(this->newStoreFrontInterface.isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append(this.newStoreFrontInterface!.validationInfo());
+                                    stringBuffer.append(this->newStoreFrontInterface.validationInfo());
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory.getInstance(this.newStoreFrontInterface!.getName()) == 
-                                    null
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) == 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append("Store does not exist<br>");
+                                    stringBuffer.append("Store does not exist<br>");
     
 
                                     }
@@ -161,17 +160,17 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -187,7 +186,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -197,7 +196,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

@@ -69,21 +69,20 @@
 #include "DemoCanvas.h"
 
 class DemoGameRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const demoCanvas: DemoCanvas;
+    private: DemoCanvas demoCanvas;
 
-public constructor (DemoCanvas demoCanvas);
+public: DemoGameRunnable(DemoCanvas demoCanvas);
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    public run();
+    public: void run();
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep();
+    public: void processLoopSleep();
 
 };
 

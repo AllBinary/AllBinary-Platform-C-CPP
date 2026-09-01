@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Math.h"
@@ -55,62 +57,59 @@
 class ImageJ2SERotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageJ2SERotationUtil = new ImageJ2SERotationUtil();
+    private: static ImageJ2SERotationUtil instance() { return ImageJ2SERotationUtil(); }
 
-    public static ImageJ2SERotationUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2SERotationUtil.instance;
-    
-}
-
-
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
-
-    private: const imageJ2SEUtil: ImageJ2SEUtil = ImageJ2SEUtil.getInstance()!;
-
-private constructor (){
-
-            super();
-        }
-
-
-    public BufferedImage getRotatedImage(Image bufferedImage, int32_t totalAngle){
+    public: static ImageJ2SERotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getRotatedImageRadians(bufferedImage, TWO_PIE *totalAngle /360);;
+                        return ImageJ2SERotationUtil::instance();
     
 }
 
 
-    public BufferedImage getRotatedImageRadians(Image bufferedImage, double radians){
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    newBufferedImage: BufferedImage = this.imageUtil!.create(bufferedImage!.getWidth(
-                            nullptr), bufferedImage!.getHeight(
-                            nullptr))!;;
+    private: const ImageJ2SEUtil imageJ2SEUtil = ImageJ2SEUtil::getInstance();
+
+private: ImageJ2SERotationUtil(){
+}
+
+
+    public: BufferedImage getRotatedImage(Image bufferedImage, int32_t totalAngle){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->getRotatedImageRadians(bufferedImage, TWO_PIE *totalAngle /360);;
+    
+}
+
+
+    public: BufferedImage getRotatedImageRadians(Image bufferedImage, double radians){
+
+    BufferedImage newBufferedImage = this->imageUtil.create(bufferedImage.getWidth(
+                            nullptr), bufferedImage.getHeight(
+                            nullptr));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.drawRotatedImageRadians(bufferedImage, newBufferedImage, newBufferedImage!.createGraphics(), radians);;
+                        return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, newBufferedImage.createGraphics(), radians);;
     
 }
 
 
-    BufferedImage drawRotatedImageRadians(Image bufferedImage, BufferedImage newBufferedImage, Graphics2D g, double radians){
-g.rotate(radians, newBufferedImage!.getWidth(
-                            nullptr) /2, newBufferedImage!.getHeight(
+    private: BufferedImage drawRotatedImageRadians(Image bufferedImage, BufferedImage newBufferedImage, Graphics2D g, double radians){
+g.rotate(radians, newBufferedImage.getWidth(
+                            nullptr) /2, newBufferedImage.getHeight(
                             nullptr) /2);
     
-g.drawImage(bufferedImage, 0, 0, bufferedImage!.getWidth(
-                            nullptr), bufferedImage!.getHeight(
+g.drawImage(bufferedImage, 0, 0, bufferedImage.getWidth(
+                            nullptr), bufferedImage.getHeight(
                             nullptr), 
                             nullptr);
     
@@ -125,60 +124,59 @@ g.dispose();
 }
 
 
-    private: const TWO_PIE: double = 2 *Math.PI;
+    private: const double TWO_PIE = 2 *Math::PI;
 
-    public BufferedImage rotateImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle){
+    public: BufferedImage rotateImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle){
 
-    g: Graphics2D = newBufferedImage!.createGraphics()!;;
+    Graphics2D g = newBufferedImage.createGraphics();;
     
-g.setBackground(this.imageJ2SEUtil!.TRANSPARENT_COLOR);
+g.setBackground(this->imageJ2SEUtil.TRANSPARENT_COLOR);
     
-g.clearRect(0, 0, newBufferedImage!.getWidth(), newBufferedImage!.getHeight());
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
-    
-}
-
-
-    public BufferedImage createRotatedImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle){
-
-    g: Graphics2D = newBufferedImage!.createGraphics()!;;
+g.clearRect(0, 0, newBufferedImage.getWidth(), newBufferedImage.getHeight());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
+                        return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
     
 }
 
 
-    public std::vector<BufferedImage> getRotatedImages(Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
+    public: BufferedImage createRotatedImage(Image bufferedImage, BufferedImage newBufferedImage, int32_t totalAngle){
 
-    bufferedImageArray: std::vector<BufferedImage> = new Array(numberOfFrames);;
+    Graphics2D g = newBufferedImage.createGraphics();;
     
 
-    arc: double = () *totalAngle /360;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->drawRotatedImageRadians(bufferedImage, newBufferedImage, g, TWO_PIE *totalAngle /360);;
+    
+}
+
+
+    public: std::vector<BufferedImage> getRotatedImages(Image bufferedImage, int32_t numberOfFrames, int32_t totalAngle){
+
+    std::vector<BufferedImage> bufferedImageArray = new Array(numberOfFrames);;
     
 
-    size: int32_t = bufferedImageArray!.length
-                ;;
+    double arc = () *totalAngle /360;;
+    
+
+    int32_t size = bufferedImageArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    radians: double = (arc /size) *index;;
+    double radians = (arc /size) *index;;
     
-bufferedImageArray[index]= this.getRotatedImageRadians(bufferedImage, radians);
+bufferedImageArray[index]= this->getRotatedImageRadians(bufferedImage, radians);
     
 }
 
@@ -191,16 +189,15 @@ bufferedImageArray[index]= this.getRotatedImageRadians(bufferedImage, radians);
 }
 
 
-    public BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray){
+    public: BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray){
 
-    columns: int32_t = 9;;
+    int32_t columns = 9;;
     
 
-    rows: int32_t = 0;;
+    int32_t rows = 0;;
     
 
-    size: int32_t = bufferedImageArray!.length
-                ;;
+    int32_t size = bufferedImageArray.size();;
     
 
                         if(size < columns)
@@ -223,31 +220,31 @@ rows= (size /columns);
                                     }
                                 
 
-    firstBufferedImage: BufferedImage = bufferedImageArray[0]!;;
+    BufferedImage firstBufferedImage = bufferedImageArray[0];;
     
 
-    bufferedImage: BufferedImage = this.imageUtil!.create(firstBufferedImage!.getWidth(
-                            nullptr) *columns, firstBufferedImage!.getHeight(
-                            nullptr) *rows)!;;
+    BufferedImage bufferedImage = this->imageUtil.create(firstBufferedImage.getWidth(
+                            nullptr) *columns, firstBufferedImage.getHeight(
+                            nullptr) *rows);;
     
 
-    g: Graphics2D = bufferedImage!.createGraphics()!;;
+    Graphics2D g = bufferedImage.createGraphics();;
     
 
-    columnIndex: int32_t = 0;;
+    int32_t columnIndex = 0;;
     
 
-    rowIndex: int32_t = 0;;
+    int32_t rowIndex = 0;;
     
 
-    nextBufferedImage: BufferedImage;;
+    BufferedImage nextBufferedImage;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
                         if(index /9 != 0 && index % 9 == 0)
@@ -262,10 +259,10 @@ columnIndex= 0;
                                 
 nextBufferedImage= bufferedImageArray[index]!;
     
-g.drawImage(nextBufferedImage, nextBufferedImage!.getWidth(
-                            nullptr) *columnIndex, nextBufferedImage!.getHeight(
-                            nullptr) *rowIndex, nextBufferedImage!.getWidth(
-                            nullptr), nextBufferedImage!.getHeight(
+g.drawImage(nextBufferedImage, nextBufferedImage.getWidth(
+                            nullptr) *columnIndex, nextBufferedImage.getHeight(
+                            nullptr) *rowIndex, nextBufferedImage.getWidth(
+                            nullptr), nextBufferedImage.getHeight(
                             nullptr), 
                             nullptr);
     

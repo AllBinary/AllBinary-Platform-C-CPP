@@ -49,19 +49,18 @@
 class MediaData
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
                 //@Throws(Exception.constructor)
             
-    public static MediaData get(string a_Name){
+    public: static MediaData get(std::string a_Name){
 
-    mediaData: MediaData = MediaData.hashMap!.get(a_Name) as MediaData;;
+    MediaData mediaData = MediaData::hashMap.get(a_Name) as MediaData;;
     
 
                         if(mediaData != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -78,7 +77,7 @@ class MediaData
                             
 
 
-                            throw new Exception("No Such MediaData");
+                            throw Exception("No Such MediaData");
                     
 
                         }
@@ -86,79 +85,77 @@ class MediaData
 }
 
 
-    public static MediaData getDefault(){
+    public: static MediaData getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaDataFactory.getInstance()!.JPG;
+                        return MediaDataFactory::getInstance().JPG;
     
 }
 
 
-    public static HashMap<any, any> toHashMap(){
+    public: static HashMap<any, any> toHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaData.hashMap;
+                        return MediaData::hashMap;
     
 }
 
 
-    private: name: string;
+    private: std::string name;
 
-    private: type: string;
+    private: std::string type;
 
-    private: extension: string;
+    private: std::string extension;
 
-protected constructor (string a_Name){
-
-            super();
-        this.name= a_Name;
+protected: MediaData(std::string a_Name){
+this->name= a_Name;
     
-this.extension= "." +this.name;
+this->extension= "." +this->name;
     
-this.type= MediaTypeData.getInstance()!.NOT_RESIZABLE_MEDIA;
+this->type= MediaTypeData::getInstance().NOT_RESIZABLE_MEDIA;
     
-MediaData.hashMap!.put(a_Name, this);
+MediaData::hashMap.put(a_Name, this);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getType(){
+    public: std::string getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return this->type;
     
 }
 
 
-    public string getExtension(){
+    public: std::string getExtension(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.extension;
+                        return this->extension;
     
 }
 
 
-    public bool isConvertableTo(MediaData mediaData){
+    public: bool isConvertableTo(MediaData mediaData){
 
-                        if(this == MediaDataFactory.getInstance()!.GIF && mediaData == MediaDataFactory.getInstance()!.JPG)
+                        if(this == MediaDataFactory::getInstance().GIF && mediaData == MediaDataFactory::getInstance().JPG)
                         
                                     {
                                     
@@ -179,12 +176,12 @@ MediaData.hashMap!.put(a_Name, this);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();;
+                        return this->getName();;
     
 }
 

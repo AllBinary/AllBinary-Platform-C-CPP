@@ -58,9 +58,8 @@
 #include "GameKeyFactory.h"
 
 class MotionLaptopDefaultGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor ();
+public: MotionLaptopDefaultGameInputMapping();
 
 };
 

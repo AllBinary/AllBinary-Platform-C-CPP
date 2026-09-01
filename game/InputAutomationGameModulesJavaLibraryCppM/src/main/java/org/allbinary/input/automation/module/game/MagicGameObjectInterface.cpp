@@ -39,7 +39,6 @@
         #include "MeteredGameObjectInterface.h"
 
 class MagicGameObjectInterface: public MeteredGameObjectInterface {
-        
 
 };
 

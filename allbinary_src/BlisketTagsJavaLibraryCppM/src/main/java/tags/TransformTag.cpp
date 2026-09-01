@@ -64,21 +64,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformTag: public TransformInfoTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-            super(new ViewHelperFactory());
+public: TransformTag(){
+            super(ViewHelperFactory());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -86,17 +85,17 @@ public constructor (){
 }
 
 
-public constructor (TagHelperFactoryInterface tagHelperFactoryInterface){
+public: TransformTag(TagHelperFactoryInterface tagHelperFactoryInterface){
             super(tagHelperFactoryInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -106,12 +105,12 @@ public constructor (TagHelperFactoryInterface tagHelperFactoryInterface){
 
                 //@Throws(Exception.constructor)
             
-    string view(){
+    protected: std::string view(){
 
         try {
             
-    result: string = this.getHelper()!.constructor.name.getMethod("view", 
-                            nullptr)!.invoke(this.getHelper(), 
+    std::string result = this->getHelper().constructor.name.getMethod("view", 
+                            nullptr).invoke(this->getHelper(), 
                             nullptr) as string;;
     
 
@@ -125,10 +124,10 @@ public constructor (TagHelperFactoryInterface tagHelperFactoryInterface){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -145,47 +144,47 @@ public constructor (TagHelperFactoryInterface tagHelperFactoryInterface){
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Creating with: \n" +this.getPropertiesHashMap()!.toString(), this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Creating with: \n" +this->getPropertiesHashMap().toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("ViewTag Start For: ");
+stringBuffer.append("ViewTag Start For: ");
     
-stringBuffer!.append(this.getName());
+stringBuffer.append(this->getName());
     
-stringBuffer!.append("\nViewFile: ");
+stringBuffer.append("\nViewFile: ");
     
-stringBuffer!.append(this.getObjectFile());
+stringBuffer.append(this->getObjectFile());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, tagStrings!.DO_START_TAG);
+this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-this.setHelper();
+this->setHelper();
     
-pageContext!.getOut()!.print(this.view());
+pageContext.getOut().print(this->view());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Tag End", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Tag End", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -200,7 +199,7 @@ pageContext!.getOut()!.print(this.view());
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -213,7 +212,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

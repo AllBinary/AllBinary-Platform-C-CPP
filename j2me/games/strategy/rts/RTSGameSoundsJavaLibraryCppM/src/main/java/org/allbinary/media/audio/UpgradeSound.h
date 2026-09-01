@@ -46,13 +46,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpgradeSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new UpgradeSound();
+    private: static Sound soundInterface = UpgradeSound();
 
-    public static Sound getInstance();
+    public: static Sound getInstance();
 
-private constructor ();
+private: UpgradeSound();
 
 };
 

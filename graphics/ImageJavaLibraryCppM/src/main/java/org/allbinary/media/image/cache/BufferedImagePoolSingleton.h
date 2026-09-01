@@ -66,18 +66,17 @@
 class BufferedImagePoolSingleton
             : public Object
          {
-        
 
-    private: static poolInterface: PoolInterface = 
-                null
+    private: static PoolInterface poolInterface = 
+                nullptr
             ;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public static PoolInterface getInstance();
+    public: static PoolInterface getInstance();
 
-private constructor ();
+private: BufferedImagePoolSingleton();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -143,78 +145,77 @@
 class InventorySearchUtil
             : public Object
          {
-        
 
-    private: static const instance: InventorySearchUtil = new InventorySearchUtil();
+    private: static InventorySearchUtil instance() { return InventorySearchUtil(); }
 
-    public static InventorySearchUtil getInstance(){
+    public: static InventorySearchUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventorySearchUtil.instance;
+                        return InventorySearchUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;
+    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getBasicItemIdColumn(SearchRequest searchRequest){
+    public: Vector getBasicItemIdColumn(SearchRequest searchRequest){
 
-    inventoryEntityInterface: InventoryEntity = InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!;;
+    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
 
-    storeFrontInterface: StoreFrontInterface = searchRequest!.getStoreFront()!;;
+    StoreFrontInterface storeFrontInterface = searchRequest.getStoreFront();;
     
 
-    inventorySearchUtil: InventoryColumnUtil = InventoryColumnUtil.getInstance()!;;
+    InventoryColumnUtil inventorySearchUtil = InventoryColumnUtil::getInstance();;
     
 
-    column: Vector = inventorySearchUtil!.getColumnWhereLike(inventoryEntityInterface, storeFrontInterface!.getCategoryPath(), BasicItemData.ID)!;;
+    Vector column = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, storeFrontInterface.getCategoryPath(), BasicItemData::ID);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Number Of Items Found: " +column.length, this, "search");
+                                    this->logUtil.putF("Number Of Items Found: " +column.length, this, "search");
     
 
                                     }
                                 
 
-    subStoreVector: BasicArrayList = storeFrontInterface!.getSubStores()!;;
+    BasicArrayList subStoreVector = storeFrontInterface.getSubStores();;
     
 
-    size: int32_t = subStoreVector!.size()!;;
+    int32_t size = subStoreVector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    subStore: string = subStoreVector!.get(index) as string;;
+    std::string subStore = subStoreVector.get(index) as string;;
     
 
-    substoreIdColumn: Vector = inventorySearchUtil!.getColumnWhereLike(inventoryEntityInterface, subStore, BasicItemData.ID)!;;
+    Vector substoreIdColumn = inventorySearchUtil.getColumnWhereLike(inventoryEntityInterface, subStore, BasicItemData::ID);;
     
 column.addAll(substoreIdColumn);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Number Of Items Found Including SubStores: " +column.length, this, "search");
+                                    this->logUtil.putF("Number Of Items Found Including SubStores: " +column.length, this, "search");
     
 
                                     }
@@ -230,19 +231,19 @@ column.addAll(substoreIdColumn);
 
                 //@Throws(Exception.constructor)
             
-    string getNoResults(TransformDocumentInterface viewDocumentInterface, Node inventoryNode){
-inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterface!.getDoc(), SearchData.TOTAL_NUMBER_PAGES, this.commonPhoneStrings!.ZERO));
+    private: std::string getNoResults(TransformDocumentInterface viewDocumentInterface, Node inventoryNode){
+inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_PAGES, this->commonPhoneStrings.ZERO));
     
-inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterface!.getDoc(), SearchData.TOTAL_NUMBER_ITEMS, this.commonPhoneStrings!.ZERO));
-    
-
-    success: string = DomDocumentHelper.toString(viewDocumentInterface!.getDoc())!;;
+inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_ITEMS, this->commonPhoneStrings.ZERO));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+    std::string success = DomDocumentHelper::toString(viewDocumentInterface.getDoc());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("No Results Xml: " +success, this, "search");
+                                    this->logUtil.putF("No Results Xml: " +success, this, "search");
     
 
                                     }
@@ -256,35 +257,35 @@ inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterfa
 }
 
 
-    public std::vector<string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, Vector column){
+    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, Vector column){
 
         try {
             
-    inventoryEntityInterface: InventoryEntity = InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!;;
+    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
 
-    searchParams: SearchParams = searchRequest!.getParams()!;;
+    SearchParams searchParams = searchRequest.getParams();;
     
 
-    startPage: int32_t = searchParams!.getStartPageInt()!.intValue()!;;
+    int32_t startPage = searchParams.getStartPageInt().intValue();;
     
 
-    endPage: int32_t = searchParams!.getEndPageInt()!.intValue()!;;
+    int32_t endPage = searchParams.getEndPageInt().intValue();;
     
 
-    pageLength: int32_t = searchParams!.getLengthInt()!.intValue()!;;
+    int32_t pageLength = searchParams.getLengthInt().intValue();;
     
 
-    savedPagesInRange: int32_t = 0;;
+    int32_t savedPagesInRange = 0;;
     
 
-    columnValueHashMap: HashMap<any, any> = searchParams!.get()!;;
+    HashMap<any, any> columnValueHashMap = searchParams.get();;
     
 
-    keyword: string = new Replace("-", CommonSeps.getInstance()!.SPACE).all(columnValueHashMap!.get(BasicItemData.KEYWORDS) as string)!;;
+    std::string keyword = Replace("-", CommonSeps::getInstance().SPACE).all(columnValueHashMap.get(BasicItemData::KEYWORDS) as string);;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(keyword))
+                        if(StringValidationUtil::getInstance().isEmpty(keyword))
                         
                                     {
                                     
@@ -297,7 +298,7 @@ inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterfa
                                     }
                                 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
                         if(startPage >= 0)
@@ -307,72 +308,72 @@ inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterfa
                         if(pageLength == 0)
                         
                                     {
-                                    pageLength= SearchData.DEFAULT_PAGE_LENGTH;
+                                    pageLength= SearchData::DEFAULT_PAGE_LENGTH;
     
 
                                     }
                                 
 
-    MAXPAGES: int32_t = 100;;
+    int32_t MAXPAGES = 100;;
     
 
-    productListingPages: std::vector<string> = new Array(MAXPAGES);;
+    std::vector<std::string> productListingPages = new Array(MAXPAGES);;
     
 
-    documents: std::vector<Document> = new Array(MAXPAGES);;
+    std::vector<Document> documents = new Array(MAXPAGES);;
     
 
-    inventoryNodes: std::vector<Node> = new Array(MAXPAGES);;
+    std::vector<Node> inventoryNodes = new Array(MAXPAGES);;
     
 
-    iter: ListIterator = column.listIterator()!;;
+    ListIterator iter = column.listIterator();;
     
 keyword= keyword.toUpperCase();
     
 
-    lastPage: int32_t =  -1;;
+    int32_t lastPage =  -1;;
     
 
-    numberOfResultsOnCurrentPage: int32_t = 0;;
+    int32_t numberOfResultsOnCurrentPage = 0;;
     
 
-    numberOfResults: int32_t = 0;;
+    int32_t numberOfResults = 0;;
     
 
-    viewDocumentInterface: TransformDocumentInterface = TransformStoreDocumentFactory.getInstance(searchRequest)!;;
+    TransformDocumentInterface viewDocumentInterface = TransformStoreDocumentFactory::getInstance(searchRequest);;
     
 
-    inventoryNode: Node = viewDocumentInterface!.getDoc()!.createElement(InventoryData.INVENTORY)!;;
+    Node inventoryNode = viewDocumentInterface.getDoc().createElement(InventoryData::INVENTORY);;
     
-viewDocumentInterface!.getBaseNode()!.appendChild(inventoryNode);
+viewDocumentInterface.getBaseNode().appendChild(inventoryNode);
     
-inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterface!.getDoc(), SearchData.PAGE, new Integer(startPage).toString()));
+inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::PAGE, Integer(startPage).toString()));
     
 
-                        if(searchRequest!.getFileBaseName() != 
-                                    null
+                        if(searchRequest.getFileBaseName() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    inventoryNode!.appendChild(searchRequest!.getFileBaseNameNode(viewDocumentInterface!.getDoc()));
+                                    inventoryNode.appendChild(searchRequest.getFileBaseNameNode(viewDocumentInterface.getDoc()));
     
 
                                     }
                                 
 
-    currentPage: int32_t =  -1;;
+    int32_t currentPage =  -1;;
     
 
         while(iter.hasNext())
         {
 
-    product: string = .toCharArray();;
+    std::string product = .toCharArray();;
     
 
-    itemInterface: ItemInterface = inventoryEntityInterface!.getItem(product)!;;
+    ItemInterface itemInterface = inventoryEntityInterface.getItem(product);;
     
 
-    keywords: string = itemInterface!.getKeywords()!;;
+    std::string keywords = itemInterface.getKeywords();;
     
 keywords= keywords.toUpperCase();
     
@@ -385,11 +386,11 @@ keywords= keywords.toUpperCase();
                         
                                     {
                                     
-    itemNode: Node = new BasicItemView(itemInterface, new Vector()).toXmlNode(viewDocumentInterface!.getDoc())!;;
+    Node itemNode = BasicItemView(itemInterface, Vector()).toXmlNode(viewDocumentInterface.getDoc());;
     
-itemNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterface!.getDoc(), BasketData.ITEMTOTALINBASKET, this.commonPhoneStrings!.ONE));
+itemNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), BasketData::ITEMTOTALINBASKET, this->commonPhoneStrings.ONE));
     
-inventoryNode!.appendChild(itemNode!.cloneNode(true));
+inventoryNode.appendChild(itemNode.cloneNode(true));
     
 
                                     }
@@ -406,29 +407,29 @@ numberOfResultsOnCurrentPage++;
                         if(currentPage >= startPage && currentPage <= endPage)
                         
                                     {
-                                    inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterface!.getDoc(), SearchData.TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, new Integer(numberOfResultsOnCurrentPage).toString()));
+                                    inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(numberOfResultsOnCurrentPage).toString()));
     
-documents[currentPage]= viewDocumentInterface!.getDoc();
+documents[currentPage]= viewDocumentInterface.getDoc();
     
 inventoryNodes[currentPage]= inventoryNode;
     
 savedPagesInRange++;
     
-viewDocumentInterface= TransformStoreDocumentFactory.getInstance(searchRequest);
+viewDocumentInterface= TransformStoreDocumentFactory::getInstance(searchRequest);
     
-inventoryNode= viewDocumentInterface!.getDoc()!.createElement(InventoryData.INVENTORY);
+inventoryNode= viewDocumentInterface.getDoc().createElement(InventoryData::INVENTORY);
     
-viewDocumentInterface!.getBaseNode()!.appendChild(inventoryNode);
+viewDocumentInterface.getBaseNode().appendChild(inventoryNode);
     
-inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterface!.getDoc(), SearchData.PAGE, new Integer(currentPage +1).toString()));
+inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::PAGE, Integer(currentPage +1).toString()));
     
 
-                        if(searchRequest!.getFileBaseName() != 
-                                    null
+                        if(searchRequest.getFileBaseName() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    inventoryNode!.appendChild(searchRequest!.getFileBaseNameNode(viewDocumentInterface!.getDoc()));
+                                    inventoryNode.appendChild(searchRequest.getFileBaseNameNode(viewDocumentInterface.getDoc()));
     
 
                                     }
@@ -464,9 +465,9 @@ numberOfResults++;
                         if(numberOfResultsOnCurrentPage > 0 && (currentPage +1 >= startPage && currentPage +1 <= endPage))
                         
                                     {
-                                    inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(viewDocumentInterface!.getDoc(), SearchData.TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, new Integer(numberOfResultsOnCurrentPage -1).toString()));
+                                    inventoryNode.appendChild(ModDomHelper::createNameValueNodes(viewDocumentInterface.getDoc(), SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(numberOfResultsOnCurrentPage -1).toString()));
     
-documents[lastPage +1]= viewDocumentInterface!.getDoc();
+documents[lastPage +1]= viewDocumentInterface.getDoc();
     
 inventoryNodes[lastPage +1]= inventoryNode;
     
@@ -498,50 +499,50 @@ savedPagesInRange++;
 
 
                         for (
-    index: int32_t = startPage;index <= endPage; index++)
+    int32_t index = startPage;index <= endPage; index++)
         {
 
                         if(index <= lastPage)
                         
                                     {
                                     
-    tempDocument: Document = documents[index]!;;
+    Document tempDocument = documents[index];;
     
-inventoryNodes[index]!.appendChild(ModDomHelper.createNameValueNodes(tempDocument, SearchData.TOTAL_NUMBER_PAGES, new Integer(lastPage +1).toString()));
+inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_PAGES, Integer(lastPage +1).toString()));
     
-inventoryNodes[index]!.appendChild(ModDomHelper.createNameValueNodes(tempDocument, SearchData.TOTAL_NUMBER_ITEMS, new Integer(numberOfResults).toString()));
+inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::TOTAL_NUMBER_ITEMS, Integer(numberOfResults).toString()));
     
 
 
 
 
                         for (
-    pageIndex: int32_t = 0;pageIndex <= lastPage; pageIndex++)
+    int32_t pageIndex = 0;pageIndex <= lastPage; pageIndex++)
         {
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(searchRequest!.getFileBaseName());
+stringBuffer.append(searchRequest.getFileBaseName());
     
 
-                        if(stringBuffer!.length() > 0)
+                        if(stringBuffer.length() > 0)
                         
                                     {
                                     
                         if(pageIndex != 0)
                         
                                     {
-                                    stringBuffer!.append(pageIndex.toString());
+                                    stringBuffer.append(std::to_string(pageIndex));
     
 
                                     }
                                 
-inventoryNodes[index]!.appendChild(ModDomHelper.createNameValueNodes(tempDocument, SearchData.PAGE_INFO, pageIndex.toString(), stringBuffer!.toString()));
+inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)stringBuffer.toString()));
     
 
                                     }
                                 
                         else {
-                            inventoryNodes[index]!.appendChild(ModDomHelper.createNameValueNodes(tempDocument, SearchData.PAGE_INFO, pageIndex.toString(), SearchData.SEARCH));
+                            inventoryNodes[index]!.appendChild(ModDomHelper::createNameValueNodes(tempDocument, SearchData::PAGE_INFO, std::to_string(pageIndex)SearchData::SEARCH));
     
 
                         }
@@ -549,9 +550,9 @@ inventoryNodes[index]!.appendChild(ModDomHelper.createNameValueNodes(tempDocumen
 }
 
 
-    success: string = DomDocumentHelper.toString(tempDocument)!;;
+    std::string success = DomDocumentHelper::toString(tempDocument);;
     
-productListingPages[index]= new StoreTransformer(abeClientInformation, new TransformInfoHttpSearch(searchRequest) as TransformInfoInterface).translate(success);
+productListingPages[index]= StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest) as TransformInfoInterface).translate(success);
     
 
                                     }
@@ -563,9 +564,9 @@ productListingPages[index]= new StoreTransformer(abeClientInformation, new Trans
                         
                                     {
                                     
-    result: string = this.getNoResults(viewDocumentInterface, inventoryNode)!;;
+    std::string result = this->getNoResults(viewDocumentInterface, inventoryNode);;
     
-productListingPages[0]= new StoreTransformer(abeClientInformation, new TransformInfoHttpSearch(searchRequest)).translate(result);
+productListingPages[0]= StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest)).translate(result);
     
 
                                     }
@@ -594,10 +595,10 @@ productListingPages[0]= new StoreTransformer(abeClientInformation, new Transform
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "search", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "search", e);
     
 
                                     }

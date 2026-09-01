@@ -47,15 +47,14 @@
 class AndroidInfoFactory
             : public Object
          {
-        
 
-    private: static const instance: AndroidInfoFactory = new AndroidInfoFactory();
+    private: static AndroidInfoFactory instance() { return AndroidInfoFactory(); }
 
-    public static AndroidInfoFactory getInstance();
+    public: static AndroidInfoFactory getInstance();
 
-    private: const version: int32_t = 8;
+    private: const int32_t version = 8;
 
-    public int32_t getVersion();
+    public: int32_t getVersion();
 
 };
 

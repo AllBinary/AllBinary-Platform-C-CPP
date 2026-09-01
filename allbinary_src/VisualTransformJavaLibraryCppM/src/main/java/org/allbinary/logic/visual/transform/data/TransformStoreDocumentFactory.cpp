@@ -55,36 +55,33 @@
 class TransformStoreDocumentFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession){
+    public: static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformStoreDocument(pageContext, weblisketSession) as TransformDocumentInterface;
+                        return TransformStoreDocument(pageContext, weblisketSession) as TransformDocumentInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static TransformDocumentInterface getInstance(SearchRequest searchRequest){
+    public: static TransformDocumentInterface getInstance(SearchRequest searchRequest){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformStoreDocument(searchRequest) as TransformDocumentInterface;
+                        return TransformStoreDocument(searchRequest) as TransformDocumentInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformStoreDocumentFactory(){
+}
 
 
 };

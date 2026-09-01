@@ -55,9 +55,8 @@
 #include "AnalogLocationInputProcessor.h"
 
 class AllAnalogControllerVisitor: public AnalogControllerVisitor {
-        
 
-    public process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor);
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor);
 
 };
 

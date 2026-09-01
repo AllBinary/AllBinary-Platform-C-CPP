@@ -61,21 +61,20 @@
 class ContextConfiguration
             : public Object
         : public ContextConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor ();
+public: ContextConfiguration();
 
-public constructor (HashMap<any, any> hashMap);
+public: ContextConfiguration(HashMap<any, any> hashMap);
 
-    public EmailServerConfigurationInterface getEmailServerConfigurationInterface();
+    public: EmailServerConfigurationInterface getEmailServerConfigurationInterface();
 
-    public setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface);
+    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface);
 
 };
 

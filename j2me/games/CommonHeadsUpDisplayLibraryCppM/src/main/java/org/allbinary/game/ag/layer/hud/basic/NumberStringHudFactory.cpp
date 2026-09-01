@@ -65,16 +65,15 @@
 class NumberStringHudFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!;
+    private: static Object* instance = NullUtil::getInstance();
 
-    public static NumberStringHudFactory getInstance(){
+    public: static NumberStringHudFactory getInstance(){
 
-                        if(NumberStringHudFactory.instance == NullUtil.getInstance())
+                        if(NumberStringHudFactory::instance() == NullUtil::getInstance())
                         
                                     {
-                                    NumberStringHudFactory.instance= new NumberStringHudFactory();
+                                    NumberStringHudFactory::instance= NumberStringHudFactory();
     
 
                                     }
@@ -83,43 +82,43 @@ class NumberStringHudFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NumberStringHudFactory.instance as NumberStringHudFactory;
+                        return NumberStringHudFactory::instance() as NumberStringHudFactory;
     
 }
 
 
-    public NumberStringHud createHud(){
+    public: NumberStringHud createHud(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NumberStringHud(StringUtil.getInstance()!.EMPTY_STRING, 9, BasicHudFactory.getInstance()!.ABSOLUTE, 1, 0, BasicColorFactory.getInstance()!.NULL_COLOR);
+                        return NumberStringHud(StringUtil::getInstance().EMPTY_STRING, 9, BasicHudFactory::getInstance().ABSOLUTE, 1, 0, BasicColorFactory::getInstance().NULL_COLOR);
     
 
                 //: 
 } catch(e) 
             {
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    public const NULL_NUMBER_STRING_HUD: NumberStringHud = this.createHud()!;
+    public: const NumberStringHud NULL_NUMBER_STRING_HUD = this->createHud();
 
 };
 

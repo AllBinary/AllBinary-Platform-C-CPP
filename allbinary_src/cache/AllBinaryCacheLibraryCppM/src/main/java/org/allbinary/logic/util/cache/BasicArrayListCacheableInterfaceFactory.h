@@ -50,11 +50,10 @@
 class BasicArrayListCacheableInterfaceFactory
             : public Object
         : public CacheableInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface getInstance(any = {} key);
+    public: CacheableInterface getInstance(Object* key);
 
 };
 

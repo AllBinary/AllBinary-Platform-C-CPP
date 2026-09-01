@@ -61,19 +61,18 @@
 class UserConfigurationDomDocumentMapping
             : public Object
         : public DomDocumentMappingInterface {
-        
 
-    private: userConfigurationInterface: UserConfigurationInterface;
+    private: UserConfigurationInterface userConfigurationInterface;
 
-public constructor (UserConfigurationInterface userConfigurationInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Document toXmlDoc();
+public: UserConfigurationDomDocumentMapping(UserConfigurationInterface userConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string toDomDocumentString();
+    public: Document toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string toDomDocumentString();
 
 };
 

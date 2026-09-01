@@ -81,41 +81,40 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TransactionResultEntityInterface.h"
 
-class TransactionResultEntity: public AbSqlBean: public TransactionResultEntityInterface {
-        
+class TransactionResultEntity: public AbSqlBean, public TransactionResultEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "vresults";
+    private: const std::string tableName = "vresults";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: TransactionResultEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public remove(string userName, string orderNumber){
+    public: void remove(std::string userName, std::string orderNumber){
 
         try {
             
-    whereHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = HashMap<any, any>();;
     
-whereHashMap!.put(OrderData.ID, orderNumber as string);
+whereHashMap.put(OrderData::ID, orderNumber as string);
     
-whereHashMap!.put(UserData.USERNAME, userName);
+whereHashMap.put(UserData::USERNAME, userName);
     
 super.deleteWhere(whereHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "remove");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "remove");
     
 
                                     }
@@ -125,10 +124,10 @@ super.deleteWhere(whereHashMap);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "remove", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "remove", e);
     
 
                                     }
@@ -138,23 +137,23 @@ super.deleteWhere(whereHashMap);
 }
 
 
-    public add(string userName, string orderNumber, TransactionResultInterface transactionResultInterface){
+    public: void add(std::string userName, std::string orderNumber, TransactionResultInterface transactionResultInterface){
 
         try {
             
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
 values.add(orderNumber);
     
 values.add(userName);
     
-values.addAll(transactionResultInterface!.getValues());
+values.addAll(transactionResultInterface.getValues());
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString()!;;
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 values.add(time);
     
@@ -163,10 +162,10 @@ values.add(time);
 super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "add");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "add");
     
 
                                     }
@@ -176,10 +175,10 @@ super.insert(values);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "add", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "add", e);
     
 
                                     }
@@ -189,33 +188,33 @@ super.insert(values);
 }
 
 
-    public TransactionResultInterface getTransactionResultInterface(string orderNumber){
+    public: TransactionResultInterface getTransactionResultInterface(std::string orderNumber){
 
         try {
             
-    resultHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> resultHashMap = HashMap<any, any>();;
     
 
-    updateKeyAndValue: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> updateKeyAndValue = HashMap<any, any>();;
     
-updateKeyAndValue!.put(OrderData.ID, orderNumber);
+updateKeyAndValue.put(OrderData::ID, orderNumber);
     
 resultHashMap= super.getRow(updateKeyAndValue);
     
 
                         if(resultHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    transactionResult: TransactionResult = new TransactionResult(resultHashMap);;
+    TransactionResult transactionResult = TransactionResult(resultHashMap);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "getTransactionResultInterface");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "getTransactionResultInterface");
     
 
                                     }
@@ -244,10 +243,10 @@ resultHashMap= super.getRow(updateKeyAndValue);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "getTransactionResultInterface", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "getTransactionResultInterface", e);
     
 
                                     }
@@ -263,53 +262,53 @@ resultHashMap= super.getRow(updateKeyAndValue);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    paymentTransactionKeysFactory: PaymentTransactionKeysFactory = PaymentTransactionKeysFactory.getInstance()!;;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(tableName)!.append(this.sqlStrings!.START)!.append(OrderData.ID)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(UserData.USERNAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.RESULT.toString())!.append(this.sqlTypeStrings!.MAX_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.PNREF.toString())!.append(this.sqlTypeStrings!.TWELVE_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.RESPMSG.toString())!.append(this.sqlTypeStrings!.BLOB_NOT_NULL)!.append(paymentTransactionKeysFactory!.AUTHCODE.toString())!.append(this.sqlTypeStrings!.SIX_CHAR_COLUMN_NOT_NULL)!.append(paymentTransactionKeysFactory!.AVSADDR.toString())!.append(this.sqlTypeStrings!.ONE_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.AVSZIP.toString())!.append(this.sqlTypeStrings!.ONE_CHAR_COLUMN_NOT_NULL)!.append(paymentTransactionKeysFactory!.ORIGRESULT.toString())!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(paymentTransactionKeysFactory!.STATUS.toString())!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.FRAUDCODE.toString())!.append(this.sqlTypeStrings!.TWO_INT_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.FRAUDMSG.toString())!.append(this.sqlTypeStrings!.MAX_INT_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.ERRCODE.toString())!.append(this.sqlTypeStrings!.MAX_INT_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.SCORE.toString())!.append(this.sqlTypeStrings!.THREE_INT_NOT_NULL);
-    
-stringBuffer!.append(paymentTransactionKeysFactory!.REASON1.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.REASON2.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.REASON3.toString());
-    
-stringBuffer!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.EXCEPTION1.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.EXCEPTION2.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.EXCEPTION3.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.EXCEPTION4.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.EXCEPTION5.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.EXCEPTION6.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(paymentTransactionKeysFactory!.EXCEPTION7.toString())!.append(this.sqlTypeStrings!.FOUR_INT_NOT_NULL)!.append(EntryData.getInstance()!.LASTMODIFIED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(OrderData.ID)!.append(this.sqlStrings!.END);
+    PaymentTransactionKeysFactory paymentTransactionKeysFactory = PaymentTransactionKeysFactory::getInstance();;
     
 
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+    StringMaker stringBuffer = StringMaker();;
     
-}
-
-
-    public string createTable(){
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(OrderData::ID).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(UserData::USERNAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.RESULT.toString()).append(this->sqlTypeStrings.MAX_INT_NOT_NULL).append(paymentTransactionKeysFactory.PNREF.toString()).append(this->sqlTypeStrings.TWELVE_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.RESPMSG.toString()).append(this->sqlTypeStrings.BLOB_NOT_NULL).append(paymentTransactionKeysFactory.AUTHCODE.toString()).append(this->sqlTypeStrings.SIX_CHAR_COLUMN_NOT_NULL).append(paymentTransactionKeysFactory.AVSADDR.toString()).append(this->sqlTypeStrings.ONE_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.AVSZIP.toString()).append(this->sqlTypeStrings.ONE_CHAR_COLUMN_NOT_NULL).append(paymentTransactionKeysFactory.ORIGRESULT.toString()).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(paymentTransactionKeysFactory.STATUS.toString()).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.FRAUDCODE.toString()).append(this->sqlTypeStrings.TWO_INT_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.FRAUDMSG.toString()).append(this->sqlTypeStrings.MAX_INT_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.ERRCODE.toString()).append(this->sqlTypeStrings.MAX_INT_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.SCORE.toString()).append(this->sqlTypeStrings.THREE_INT_NOT_NULL);
+    
+stringBuffer.append(paymentTransactionKeysFactory.REASON1.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.REASON2.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.REASON3.toString());
+    
+stringBuffer.append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.EXCEPTION1.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.EXCEPTION2.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.EXCEPTION3.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.EXCEPTION4.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.EXCEPTION5.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.EXCEPTION6.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(paymentTransactionKeysFactory.EXCEPTION7.toString()).append(this->sqlTypeStrings.FOUR_INT_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(OrderData::ID).append(this->sqlStrings.END);
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string dropTable(){
+    public: std::string createTable(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.createTable(this->createTableStatement());;
+    
+}
+
+
+    public: std::string dropTable(){
 
 
 

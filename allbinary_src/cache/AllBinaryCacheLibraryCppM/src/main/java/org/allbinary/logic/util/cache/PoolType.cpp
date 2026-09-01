@@ -43,37 +43,34 @@
 class PoolType
             : public Object
          {
-        
 
-    private: const cacheType: CacheType;
+    private: CacheType cacheType;
 
-public constructor (CacheType cacheType){
-
-            super();
-        this.cacheType= cacheType;
+public: PoolType(CacheType cacheType){
+this->cacheType= cacheType;
     
 }
 
 
-    public CacheType getCacheType(){
+    public: CacheType getCacheType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cacheType;
+                        return this->cacheType;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    POOL_TYPE: string = "PoolType: ";;
+    std::string POOL_TYPE = "PoolType: ";;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return POOL_TYPE +this.getCacheType()!.toString();
+                        return POOL_TYPE +this->getCacheType().toString();
     
 }
 

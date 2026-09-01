@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -66,30 +68,28 @@
 class NullRotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: static NULL_ROTATION_ANIMATION_FACTORY: NullRotationAnimationFactory = new NullRotationAnimationFactory();
+    private: static NullRotationAnimationFactory NULL_ROTATION_ANIMATION_FACTORY = NullRotationAnimationFactory();
 
-    public static NullRotationAnimationFactory getFactoryInstance(){
+    public: static NullRotationAnimationFactory getFactoryInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRotationAnimationFactory.NULL_ROTATION_ANIMATION_FACTORY;
+                        return NullRotationAnimationFactory::NULL_ROTATION_ANIMATION_FACTORY;
     
 }
 
 
-    public const NULL_ROTATION_ANIMATION_ARRAY: std::vector<RotationAnimation> = [];
+    public: const std::vector<RotationAnimation> NULL_ROTATION_ANIMATION_ARRAY = {};
 
 //inner= member=true isStatic=
 class NullRotationAnimation2: public NullRotationAnimation {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
- constructor (){
-            super(AngleInfo.getInstance(AngleFactory.getInstance()!.QUARTER_TOTAL_ANGLE), CircularIndexUtil.createInstance(4), new IndexedAnimationBehavior(1, 250));
+: NullRotationAnimation2(){
+            super(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), IndexedAnimationBehavior(1, 250));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -97,44 +97,42 @@ class NullRotationAnimation2: public NullRotationAnimation {
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 }
 
 
 };
 
             
-    private: const NULL_ANIMATION: Animation = new this.NullRotationAnimation2();
+    private: const Animation NULL_ANIMATION = NullRotationAnimation2();
 
-private constructor (){
-
-            super();
-        }
+private: NullRotationAnimationFactory(){
+}
 
 
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION;
+                        return this->NULL_ANIMATION;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION;
+                        return this->NULL_ANIMATION;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

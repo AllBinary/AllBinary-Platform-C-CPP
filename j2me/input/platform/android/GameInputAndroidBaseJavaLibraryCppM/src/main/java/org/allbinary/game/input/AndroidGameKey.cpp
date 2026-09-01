@@ -29,15 +29,14 @@
 #include "InputFactory.h"
 
 class AndroidGameKey: public Input {
-        
 
-    public static string getString(int32_t keyCode){
+    public: static std::string getString(int32_t keyCode){
 
-    input: Input = InputFactory.getInstance()!.getInstanceById(keyCode)!;;
+    Input input = InputFactory::getInstance().getInstanceById(keyCode);;
     
 
                         if(input != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -55,7 +54,7 @@ class AndroidGameKey: public Input {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 
                         }
@@ -63,21 +62,21 @@ class AndroidGameKey: public Input {
 }
 
 
- constructor (int32_t keyCode, string name){
+: AndroidGameKey(int32_t keyCode, std::string name){
             super(keyCode, name);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    inputFactory: InputFactory = InputFactory.getInstance()!;;
+    InputFactory inputFactory = InputFactory::getInstance();;
     
-inputFactory!.inputIntegerArray[this.getId()]= this;
+inputFactory.inputIntegerArray[this->getId()]= this;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 

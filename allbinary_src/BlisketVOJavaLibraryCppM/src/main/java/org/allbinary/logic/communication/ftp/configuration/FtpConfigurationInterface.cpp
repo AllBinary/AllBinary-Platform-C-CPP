@@ -38,23 +38,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class FtpConfigurationInterface {
-        
 
-    string getServer()
+    std::string getServer()
 
-    string getPath()
+    std::string getPath()
 
-    string getUserName()
+    std::string getUserName()
 
-    string getPassword()
+    std::string getPassword()
 
-    setServer(string value)
+    void setServer(std::string value)
 
-    setPath(string value)
+    void setPath(std::string value)
 
-    setUserName(string value)
+    void setUserName(std::string value)
 
-    setPassword(string value)
+    void setPassword(std::string value)
 
 };
 

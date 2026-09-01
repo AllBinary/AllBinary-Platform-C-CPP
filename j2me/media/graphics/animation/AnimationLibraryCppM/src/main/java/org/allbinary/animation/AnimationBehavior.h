@@ -51,13 +51,12 @@
 class AnimationBehavior
             : public Object
          {
-        
 
-    private: static const instance: AnimationBehavior = new AnimationBehavior();
+    private: static AnimationBehavior instance() { return AnimationBehavior(); }
 
-    public static AnimationBehavior getInstance();
+    public: static AnimationBehavior getInstance();
 
-    public reset();
+    public: void reset();
 
 };
 

@@ -50,11 +50,10 @@
         #include "HighScore.h"
 
 class HighScoresInterface {
-        
 
     BasicArrayList getList()
 
-    addHighScore(HighScore newHighScore)
+    void addHighScore(HighScore newHighScore)
 
     int32_t getTotal()
 

@@ -60,21 +60,20 @@
 class Feature
             : public Object
          {
-        
 
-    private: static hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public static Feature getInstance(string name);
+    public: static Feature getInstance(std::string name);
 
-    static add(string name, Feature gameFeature);
+    private: static void add(std::string name, Feature gameFeature);
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: Feature(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
-    public string getName();
+    public: std::string getName();
 
 };
 

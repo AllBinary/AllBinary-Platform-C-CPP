@@ -54,19 +54,18 @@
 class CommonButtons
             : public Object
          {
-        
 
-    private: static const instance: CommonButtons = new CommonButtons();
+    private: static CommonButtons instance() { return CommonButtons(); }
 
-    public static CommonButtons getInstance();
+    public: static CommonButtons getInstance();
 
-    public const STANDARD_BUTTON_SIZE: int32_t;
+    public: int32_t STANDARD_BUTTON_SIZE;
 
-    public const NORMAL_BUTTON: Rectangle;
+    public: Rectangle NORMAL_BUTTON;
 
-    public const LARGE_BUTTON: Rectangle;
+    public: Rectangle LARGE_BUTTON;
 
-private constructor ();
+private: CommonButtons();
 
 };
 

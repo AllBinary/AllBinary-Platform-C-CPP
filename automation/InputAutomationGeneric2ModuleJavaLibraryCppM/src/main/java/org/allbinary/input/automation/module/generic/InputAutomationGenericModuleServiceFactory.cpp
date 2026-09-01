@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
@@ -50,39 +52,36 @@
         #include "GenericModuleFactory.h"
 
 class InputAutomationGenericModuleServiceFactory: public InputAutomationModuleServiceFactory {
-        
 
-    private: static inputAutomationGenericModuleServiceFactory: InputAutomationGenericModuleServiceFactory = new InputAutomationGenericModuleServiceFactory();
+    private: static InputAutomationGenericModuleServiceFactory inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory();
 
-    public static InputAutomationGenericModuleServiceFactory getInstance(){
+    public: static InputAutomationGenericModuleServiceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationGenericModuleServiceFactory.inputAutomationGenericModuleServiceFactory;
+                        return InputAutomationGenericModuleServiceFactory::inputAutomationGenericModuleServiceFactory;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
+public: InputAutomationGenericModuleServiceFactory(){
 
-            super();
-        
         try {
             
-    inputAutomationModuleInterfaceArray: std::vector<InputAutomationModuleFactoryInterface> = new Array(1);;
+    std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray = new Array(1);;
     
-inputAutomationModuleInterfaceArray[0]= new GenericModuleFactory();
+inputAutomationModuleInterfaceArray[0]= GenericModuleFactory();
     
-this.setInputAutomationModuleInterfaceArray(inputAutomationModuleInterfaceArray);
+this->setInputAutomationModuleInterfaceArray(inputAutomationModuleInterfaceArray);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 }
 

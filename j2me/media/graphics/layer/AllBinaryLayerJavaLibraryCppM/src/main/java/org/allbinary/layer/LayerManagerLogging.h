@@ -63,47 +63,46 @@
 #include "LayerManager.h"
 
 class LayerManagerLogging: public LayerManagerLoggingBase {
-        
 
-    private: static const instance: LayerManagerLogging = new LayerManagerLogging();
+    private: static LayerManagerLogging instance() { return LayerManagerLogging(); }
 
-    public static LayerManagerLogging getInstance();
+    public: static LayerManagerLogging getInstance();
 
-    private: static removeFailed: bool = false;
+    private: static bool removeFailed = false;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const stringBuilder: StringMaker = new StringMaker();
+    private: const StringMaker stringBuilder = StringMaker();
 
-    private: const APPEND: string = "append";
+    private: const std::string APPEND = "append";
 
-    private: const APPEND_: string = " append: ";
+    private: const std::string APPEND_ = " append: ";
 
-    private: const _AT_: string = " at: ";
+    private: const std::string _AT_ = " at: ";
 
-    private: const ATTEMPT_REMOVE_: string = " Remove Attempt: ";
+    private: const std::string ATTEMPT_REMOVE_ = " Remove Attempt: ";
 
-    private: const REMOVE_: string = " Remove: ";
+    private: const std::string REMOVE_ = " Remove: ";
 
-    private: const REMOVE: string = "remove";
+    private: const std::string REMOVE = "remove";
 
-    private: const DID_NOT_REMOVE: string = " Did not remove: ";
+    private: const std::string DID_NOT_REMOVE = " Did not remove: ";
 
-    private: const CLEAR: string = " Clear List";
+    private: const std::string CLEAR = " Clear List";
 
                 //@Throws(Exception.constructor)
             
-    public append(AllBinaryLayer layerInterface);
+    public: void append(AllBinaryLayer layerInterface);
 
-    public appendAt(AllBinaryLayer layerInterface, int32_t index);
+    public: void appendAt(AllBinaryLayer layerInterface, int32_t index);
 
-    public remove(AllBinaryLayer layerInterface);
+    public: void remove(AllBinaryLayer layerInterface);
 
-    public removeResult(LayerManager layerManager, AllBinaryLayer layerInterface, bool result);
+    public: void removeResult(LayerManager layerManager, AllBinaryLayer layerInterface, bool result);
 
-    log(LayerManager layerManager);
+    private: void log(LayerManager layerManager);
 
-    public clear();
+    public: void clear();
 
 };
 

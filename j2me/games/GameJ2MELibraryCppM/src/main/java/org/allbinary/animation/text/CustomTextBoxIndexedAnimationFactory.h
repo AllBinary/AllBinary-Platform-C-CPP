@@ -82,21 +82,20 @@
 class CustomTextBoxIndexedAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public scaleProperties: ScaleProperties;
+    public: ScaleProperties scaleProperties;
 
-    private: const maxLength: int32_t;
+    private: int32_t maxLength;
 
-public constructor (int32_t fontSize, int32_t maxLength);
+public: CustomTextBoxIndexedAnimationFactory(int32_t fontSize, int32_t maxLength);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

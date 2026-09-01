@@ -54,19 +54,18 @@
 class LayerDistanceUtil
             : public Object
          {
-        
 
-    private: static const instance: LayerDistanceUtil = new LayerDistanceUtil();
+    private: static LayerDistanceUtil instance() { return LayerDistanceUtil(); }
 
-    public static LayerDistanceUtil getInstance();
+    public: static LayerDistanceUtil getInstance();
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    public int32_t getDistance(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2);
+    public: int32_t getDistance(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2);
 
-    public int32_t getDistance3D(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2);
+    public: int32_t getDistance3D(AllBinaryLayer layerInterface, AllBinaryLayer layerInterface2);
 
-    public int32_t getDistanceAt(AllBinaryLayer layerInterface, GPoint point);
+    public: int32_t getDistanceAt(AllBinaryLayer layerInterface, GPoint point);
 
 };
 

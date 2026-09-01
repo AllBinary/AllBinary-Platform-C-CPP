@@ -54,27 +54,24 @@
 class DisplayPointScalar
             : public Object
          {
-        
 
-    private: static const instance: DisplayPointScalar = new DisplayPointScalar();
+    private: static DisplayPointScalar instance() { return DisplayPointScalar(); }
 
-    public static DisplayPointScalar getInstance(){
+    public: static DisplayPointScalar getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplayPointScalar.instance;
+                        return DisplayPointScalar::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: DisplayPointScalar(){
+}
 
 
-    public int32_t processX(int32_t value){
+    public: int32_t processX(int32_t value){
 
 
 
@@ -84,7 +81,7 @@ public constructor (){
 }
 
 
-    public int32_t processY(int32_t value){
+    public: int32_t processY(int32_t value){
 
 
 
@@ -94,7 +91,7 @@ public constructor (){
 }
 
 
-    public GPoint process(GPoint point){
+    public: GPoint process(GPoint point){
 
 
 

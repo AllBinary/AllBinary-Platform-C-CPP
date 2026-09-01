@@ -64,37 +64,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "Life.h"
 
-class HealthIncludingLifeBar: public Paintable: public HealthListenerInterface {
-        
+class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 
-    private: const animationInterface: HealthBarAnimation;
+    private: HealthBarAnimation animationInterface;
 
-    private: const life: Life;
+    private: Life life;
 
-    private: const healthInterface: HealthInterface;
+    private: HealthInterface healthInterface;
 
-    const allbinaryLayer: AllBinaryLayer;
+    protected: AllBinaryLayer allbinaryLayer;
 
-public constructor (AllBinaryLayer layerInterface, Life life, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction){
-
-            super();
-        this.allbinaryLayer= layerInterface;
+public: HealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction){
+this->allbinaryLayer= layerInterface;
     
-this.animationInterface= animationInterface;
+this->animationInterface= animationInterface;
     
-this.life= life;
+this->life= life;
     
-this.healthInterface= healthInterface;
+this->healthInterface= healthInterface;
     
-this.healthInterface!.addListener(this);
+this->healthInterface.addListener(this);
     
-this.onHealthChange();
+this->onHealthChange();
     
 }
 
 
-public constructor (AllBinaryLayer layerInterface, Life life, Health healthInterface, int32_t location, int32_t direction){
-            this(layerInterface, life, healthInterface, new HealthBarTwodAnimation(layerInterface, location), direction);
+public: HealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, int32_t location, int32_t direction){
+            this(layerInterface, life, healthInterface, HealthBarTwodAnimation(layerInterface, location), direction);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -102,20 +99,20 @@ public constructor (AllBinaryLayer layerInterface, Life life, Health healthInter
 }
 
 
-    public onHealthChange(){
-this.animationInterface!.onHealthChange(((this.healthInterface!.getHealth() +(this.healthInterface!.getMaxHealth() *this.life.get())) *this.allbinaryLayer!.getWidth()) /(this.healthInterface!.getMaxHealth() +(this.healthInterface!.getMaxHealth() *this.life.getStartLives())));
+    public: void onHealthChange(){
+this->animationInterface.onHealthChange(((this->healthInterface.getHealth() +(this->healthInterface.getMaxHealth() *this->life.get())) *this->allbinaryLayer.getWidth()) /(this->healthInterface.getMaxHealth() +(this->healthInterface.getMaxHealth() *this->life.getStartLives())));
     
 }
 
 
-    public paint(Graphics graphics){
-this.animationInterface!.paintXY(graphics, 0, 0);
+    public: void paint(Graphics graphics){
+this->animationInterface.paintXY(graphics, 0, 0);
     
 }
 
 
-    public paintThreed(Graphics graphics){
-this.animationInterface!.paintThreedXYZ(graphics, 0, 0, 0);
+    public: void paintThreed(Graphics graphics){
+this->animationInterface.paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 

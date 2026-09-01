@@ -50,11 +50,10 @@
         #include "TrackingEvent.h"
 
 class TrackingEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onMovement(TrackingEvent trackingEvent)
+    void onMovement(TrackingEvent trackingEvent)
 
 };
 

@@ -52,20 +52,19 @@
 class BasicColorCacheFactory
             : public Object
          {
-        
 
-    private: static const instance: BasicColorCacheFactory = new BasicColorCacheFactory();
+    private: static BasicColorCacheFactory instance() { return BasicColorCacheFactory(); }
 
-    public static BasicColorCacheFactory getInstance();
+    public: static BasicColorCacheFactory getInstance();
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-private constructor ();
+private: BasicColorCacheFactory();
 
-    public add(BasicColor basicDefaultColor);
+    public: void add(BasicColor basicDefaultColor);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public BasicColor getAndOrCreate(Integer integer);
+    public: BasicColor getAndOrCreate(Integer integer);
 
 };
 

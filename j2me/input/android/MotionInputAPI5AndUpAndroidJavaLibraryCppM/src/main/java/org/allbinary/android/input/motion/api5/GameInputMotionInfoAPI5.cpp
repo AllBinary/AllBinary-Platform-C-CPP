@@ -43,22 +43,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInputMotionInfoAPI5: public GameInputMotionInfo {
-        
 
-    private: static const instance: GameInputMotionInfoAPI5 = new GameInputMotionInfoAPI5();
+    private: static GameInputMotionInfoAPI5 instance() { return GameInputMotionInfoAPI5(); }
 
-    public static GameInputMotionInfoAPI5 getInstance(){
+    public: static GameInputMotionInfoAPI5 getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionInfoAPI5.instance;
+                        return GameInputMotionInfoAPI5::instance();
     
 }
 
 
-private constructor (){
-            super(Integer.MAX_VALUE, 10);
+private: GameInputMotionInfoAPI5(){
+            super(Integer::MAX_VALUE, 10);
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -46,17 +46,16 @@
 #include "Point.h"
 
 class MouseActionScriptInputInterface: public ProfileActionScriptInputInterface {
-        
 
-    setPoint(Point point);
+    void setPoint(Point point);
 
     Point getPoint();
 
     int32_t getButtonClicks();
 
-    setButtonClicks(int32_t buttons);
+    void setButtonClicks(int32_t buttons);
 
-    log();
+    void log();
 
 };
 

@@ -72,45 +72,42 @@
 #include "InventoryItemViewParentTagHelper.h"
 
 class DownloadItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const downloadableItem: DownloadableItem;
+    private: DownloadableItem downloadableItem;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
+public: DownloadItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
 
-            super();
-        
-    inventoryTag: HelperTag = hashMap!.get(AbTagData.PARENT) as HelperTag;;
+    HelperTag inventoryTag = hashMap.get(AbTagData::PARENT) as HelperTag;;
     
 
-    inventoryItemViewParentTagHelper: InventoryItemViewParentTagHelper = InventoryItemViewParentTagHelper.getInstance()!;;
+    InventoryItemViewParentTagHelper inventoryItemViewParentTagHelper = InventoryItemViewParentTagHelper::getInstance();;
     
 
-    downloadableInventoryItemView: DownloadableInventoryItemView = inventoryItemViewParentTagHelper!.getDownloadableInventoryItemView(inventoryTag)!;;
+    DownloadableInventoryItemView downloadableInventoryItemView = inventoryItemViewParentTagHelper.getDownloadableInventoryItemView(inventoryTag);;
     
-this.downloadableItem= downloadableInventoryItemView!.getDownloadableItem();
+this->downloadableItem= downloadableInventoryItemView.getDownloadableItem();
     
 }
 
 
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    vector: Vector = this.downloadableItem!.toVector()!;;
+    Vector vector = this->downloadableItem.toVector();;
     
-DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.insert(vector);
-    
-
-    success: string = "Successfully inserted " +this.downloadableItem!.getId() +" into downloaditems table";;
+DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance().insert(vector);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = "Successfully inserted " +this->downloadableItem.getId() +" into downloaditems table";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "insert()");
+                                    this->logUtil.putF(success, this, "insert()");
     
 
                                     }
@@ -126,13 +123,13 @@ DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.inse
 } catch(e) 
             {
 
-    error: string = "Failed to insert " +this.downloadableItem!.getId() +" into downloaditems table";;
+    std::string error = "Failed to insert " +this->downloadableItem.getId() +" into downloaditems table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "inserts()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "inserts()", e);
     
 
                                     }
@@ -148,19 +145,19 @@ DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.inse
 }
 
 
-    public string delete(){
+    public: std::string delete_(){
 
         try {
-            DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.delete(this.downloadableItem!.getId());
+            DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance().delete(this->downloadableItem.getId());
     
 
-    success: string = "Successfully deleted";;
+    std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "delete()");
+                                    this->logUtil.putF(success, this, "delete()");
     
 
                                     }
@@ -176,13 +173,13 @@ DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.inse
 } catch(e) 
             {
 
-    error: string = "Failed to delete";;
+    std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
     
 
                                     }
@@ -198,22 +195,22 @@ DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.inse
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    success: string = "Update Successful";;
+    std::string success = "Update Successful";;
     
 
-    values: HashMap<any, any> = this.downloadableItem!.toHashMap()!;;
+    HashMap<any, any> values = this->downloadableItem.toHashMap();;
     
-DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.update(values);
+DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance().update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(this.downloadableItem!.getId() +CommonSeps.getInstance()!.SPACE +success, this, "update()");
+                                    this->logUtil.putF(this->downloadableItem.getId() +CommonSeps::getInstance().SPACE +success, this, "update()");
     
 
                                     }
@@ -229,13 +226,13 @@ DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!.upda
 } catch(e) 
             {
 
-    error: string = "Failed to update: " +this.downloadableItem!.getId();;
+    std::string error = "Failed to update: " +this->downloadableItem.getId();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }

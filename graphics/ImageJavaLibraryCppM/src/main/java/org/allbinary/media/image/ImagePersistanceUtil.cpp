@@ -81,78 +81,77 @@
 class ImagePersistanceUtil
             : public Object
          {
-        
 
-    private: static const instance: ImagePersistanceUtil = new ImagePersistanceUtil();
+    private: static ImagePersistanceUtil instance() { return ImagePersistanceUtil(); }
 
-    public static ImagePersistanceUtil getInstance(){
+    public: static ImagePersistanceUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImagePersistanceUtil.instance;
+                        return ImagePersistanceUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public saveWithBatik(AbFile file, BufferedImage bufferedImage){
+    public: void saveWithBatik(AbFile file, BufferedImage bufferedImage){
 
-    batikPNGImageWriter: PNGImageWriter = new PNGImageWriter();;
+    PNGImageWriter batikPNGImageWriter = PNGImageWriter();;
     
 
-    fileOutputStream: AbFileOutputStream = AbFileOutputStream.createFromAbFile(file)!;;
+    AbFileOutputStream fileOutputStream = AbFileOutputStream::createFromAbFile(file);;
     
 
         try {
-            batikPNGImageWriter!.writeImage(bufferedImage, fileOutputStream);
+            batikPNGImageWriter.writeImage(bufferedImage, fileOutputStream);
     
 
          finally {
-            fileOutputStream!.flush();
+            fileOutputStream.flush();
     
-StreamUtil.getInstance()!.close(fileOutputStream);
+StreamUtil::getInstance().close(fileOutputStream);
     
 
          }
         
-this.logUtil!.putF("Wrote Image: " +file.getAbsolutePath(), this, this.commonStrings!.SAVE);
+this->logUtil.putF("Wrote Image: " +file.getAbsolutePath(), this, this->commonStrings.SAVE);
     
 }
 
 
-    public saveWithImageIO(string filePath, BufferedImage bufferedImage){
-this.saveWithImageIO(new File(filePath), bufferedImage);
+    public: void saveWithImageIO(std::string filePath, BufferedImage bufferedImage){
+this->saveWithImageIO(File(filePath), bufferedImage);
     
 }
 
 
-    public saveWithImageIO(File file, BufferedImage bufferedImage){
+    public: void saveWithImageIO(File file, BufferedImage bufferedImage){
 
-    writer: ImageWriter = 
+    ImageWriter writer = 
                 null
             ;;
     
 
-    ios: ImageOutputStream = 
+    ImageOutputStream ios = 
                 null
             ;;
     
 
         try {
             
-    iter: Iterator = ImageIO.getImageWritersByFormatName("jpeg")!;;
+    Iterator iter = ImageIO::getImageWritersByFormatName("jpeg");;
     
 
                         if(!iter.hasNext())
                         
                                     {
-                                    this.logUtil!.putF("Unable to save image to jpeg file type.", this, this.commonStrings!.SAVE);
+                                    this->logUtil.putF("Unable to save image to jpeg file type.", this, this->commonStrings.SAVE);
     
 
 
@@ -165,29 +164,29 @@ this.saveWithImageIO(new File(filePath), bufferedImage);
                                 
 writer= iter.next() as ImageWriter;
     
-ios= ImageIO.createImageOutputStream(file);
+ios= ImageIO::createImageOutputStream(file);
     
 writer.setOutput(ios);
     
 
-    iwp: ImageWriteParam = writer.getDefaultWriteParam()!;;
+    ImageWriteParam iwp = writer.getDefaultWriteParam();;
     
-iwp.setCompressionMode(ImageWriteParam.MODE_EXPLICIT);
+iwp.setCompressionMode(ImageWriteParam::MODE_EXPLICIT);
     
 iwp.setCompressionQuality(0.95);
     
 writer.write(
-                            nullptr, new IIOImage(bufferedImage, 
+                            nullptr, IIOImage(bufferedImage, 
                             nullptr, 
                             nullptr), iwp);
     
-this.logUtil!.putF("Wrote Image: " +file.getAbsolutePath(), this, this.commonStrings!.SAVE);
+this->logUtil.putF("Wrote Image: " +file.getAbsolutePath(), this, this->commonStrings.SAVE);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.SAVE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE, e);
     
 }
 
@@ -196,7 +195,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.SAVE,
         try {
             
                         if(ios != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -206,11 +205,11 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.SAVE,
         try {
             
                         if(ios != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF(ios.toString(), ios, this.commonStrings!.CLOSE);
+                                    this->logUtil.putF(ios.toString(), ios, this->commonStrings.CLOSE);
     
 ios.close();
     
@@ -221,7 +220,7 @@ ios.close();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, ios, commonStrings!.CLOSE, e);
+this->logUtil.put(commonStrings.EXCEPTION, ios, commonStrings.CLOSE, e);
     
 }
 
@@ -230,7 +229,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, ios, commonStrings!.CLOSE, e);
                                 
 
                         if(writer != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -243,7 +242,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, ios, commonStrings!.CLOSE, e);
                 //: 
 } catch(e2) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.SAVE, e2);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.SAVE, e2);
     
 }
 

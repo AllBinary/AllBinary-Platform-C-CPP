@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -69,64 +71,62 @@
 class MyRandomFactory
             : public Object
          {
-        
 
-    private: static const instance: MyRandomFactory = new MyRandomFactory();
+    private: static MyRandomFactory instance() { return MyRandomFactory(); }
 
-    public static MyRandomFactory getInstance(){
+    public: static MyRandomFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyRandomFactory.instance;
+                        return MyRandomFactory::instance();
     
 }
 
 
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
-    randomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;;
+    MyRandomFactory randomFactory = MyRandomFactory::getInstance();;
     
 
-    stringBuilder: StringMaker = new StringMaker();;
+    StringMaker stringBuilder = StringMaker();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    size2: int32_t = 100;;
+    int32_t size2 = 100;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size2; index++)
+    int32_t index = 0;index < size2; index++)
         {
-stringBuilder!.appendint(randomFactory!.getAbsoluteNextInt(3))!.append(commonSeps!.COMMA);
+stringBuilder.appendint(randomFactory.getAbsoluteNextInt(3)).append(commonSeps.COMMA);
     
 }
 
-console.log(stringBuilder!.toString());
+console.log(stringBuilder.toString());
     
-stringBuilder!.delete(0, stringBuilder!.length());
-    
-
-    intArray: std::vector<int32_t> = new Array(52);;
+stringBuilder.delete(0, stringBuilder.length());
     
 
-    intArray2: std::vector<int32_t> = new Array(52);;
+    std::vector<int32_t> intArray = new Array(52);;
     
 
-    size: int32_t = intArray!.length
-                ;;
+    std::vector<int32_t> intArray2 = new Array(52);;
+    
+
+    int32_t size = intArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 intArray[index]= index;
     
@@ -134,45 +134,45 @@ intArray2[index]= index;
     
 }
 
-randomFactory!.shuffle2(intArray, intArray2);
+randomFactory.shuffle2(intArray, intArray2);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringBuilder!.appendint(intArray[index]!)!.append(commonSeps!.COMMA);
+stringBuilder.appendint(intArray[index]!).append(commonSeps.COMMA);
     
 }
 
-console.log(stringBuilder!.toString());
+console.log(stringBuilder.toString());
     
-stringBuilder!.delete(0, stringBuilder!.length());
+stringBuilder.delete(0, stringBuilder.length());
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringBuilder!.appendint(intArray2[index]!)!.append(commonSeps!.COMMA);
+stringBuilder.appendint(intArray2[index]!).append(commonSeps.COMMA);
     
 }
 
-console.log(stringBuilder!.toString());
+console.log(stringBuilder.toString());
     
 
-    found: bool= false;;
+    bool found= false;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 found= false;
     
@@ -181,7 +181,7 @@ found= false;
 
 
                         for (
-    index2: int32_t = 0;index2 < size; index2++)
+    int32_t index2 = 0;index2 < size; index2++)
         {
 
                         if(intArray[index2] == index)
@@ -197,55 +197,53 @@ found= false;
 
                         if(!found)
                         
-                                    throw new RuntimeException();
+                                    throw RuntimeException();
                                 
 }
 
 }
 
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    private: rand: Random;
+    private: Random rand;
 
-private constructor (){
-
-            super();
-        this.rand= new Random(Date.now());
+private: MyRandomFactory(){
+this->rand= Random(Date.now());
     
 }
 
 
-    public setSeed(int64_t seed){
-this.rand= new Random(seed);
+    public: void setSeed(int64_t seed){
+this->rand= Random(seed);
     
 }
 
 
-    public int32_t getNextInt(int32_t range){
+    public: int32_t getNextInt(int32_t range){
 
-    div: int32_t = (Integer.MAX_VALUE /range) +1;;
+    int32_t div = (Integer::MAX_VALUE /range) +1;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this.rand.nextInt() /div));
+                        return static_cast<int32_t>((this->rand.nextInt() /div));
     
 }
 
 
-    public int32_t getAbsoluteNextInt(int32_t range){
+    public: int32_t getAbsoluteNextInt(int32_t range){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mathUtil!.abs(this.getNextInt(range));;
+                        return this->mathUtil.abs(this->getNextInt(range));;
     
 }
 
 
-    public int32_t getAbsoluteNextIntAllowZero(int32_t range){
+    public: int32_t getAbsoluteNextIntAllowZero(int32_t range){
 
                         if(range == 0)
                         
@@ -264,7 +262,7 @@ this.rand= new Random(seed);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mathUtil!.abs(this.getNextInt(range));;
+                        return this->mathUtil.abs(this->getNextInt(range));;
     
 
                         }
@@ -272,36 +270,35 @@ this.rand= new Random(seed);
 }
 
 
-    public shuffle(std::vector<int32_t> intArray){
-this.shuffleTotal(intArray, intArray!.length *7);
+    public: void shuffle(std::vector<int32_t> intArray){
+this->shuffleTotal(intArray, intArray.size() *7);
     
 }
 
 
-    public shuffleTotal(std::vector<int32_t> intArray, int32_t shuffleTotal){
+    public: void shuffleTotal(std::vector<int32_t> intArray, int32_t shuffleTotal){
 
-    size: int32_t = intArray!.length
-                ;;
+    int32_t size = intArray.size();;
     
 
-    randomIndex: int32_t= 0;;
+    int32_t randomIndex= 0;;
     
 
-    randomIndex2: int32_t= 0;;
+    int32_t randomIndex2= 0;;
     
 
-    value: int32_t= 0;;
+    int32_t value= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < shuffleTotal; index++)
+    int32_t index = 0;index < shuffleTotal; index++)
         {
-randomIndex= this.getAbsoluteNextIntAllowZero(size);
+randomIndex= this->getAbsoluteNextIntAllowZero(size);
     
-randomIndex2= this.getAbsoluteNextIntAllowZero(size);
+randomIndex2= this->getAbsoluteNextIntAllowZero(size);
     
 value= intArray[randomIndex]!;
     
@@ -314,39 +311,38 @@ intArray[randomIndex2]= value;
 }
 
 
-    public shuffle2(std::vector<int32_t> intArray, std::vector<int32_t> intArray2){
-this.shuffle2Total(intArray, intArray2, intArray!.length *7);
+    public: void shuffle2(std::vector<int32_t> intArray, std::vector<int32_t> intArray2){
+this->shuffle2Total(intArray, intArray2, intArray.size() *7);
     
 }
 
 
-    public shuffle2Total(std::vector<int32_t> intArray, std::vector<int32_t> intArray2, int32_t shuffleTotal){
+    public: void shuffle2Total(std::vector<int32_t> intArray, std::vector<int32_t> intArray2, int32_t shuffleTotal){
 
-    size: int32_t = intArray!.length
-                ;;
+    int32_t size = intArray.size();;
     
 
-    randomIndex: int32_t= 0;;
+    int32_t randomIndex= 0;;
     
 
-    randomIndex2: int32_t= 0;;
+    int32_t randomIndex2= 0;;
     
 
-    value: int32_t= 0;;
+    int32_t value= 0;;
     
 
-    value2: int32_t= 0;;
+    int32_t value2= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < shuffleTotal; index++)
+    int32_t index = 0;index < shuffleTotal; index++)
         {
-randomIndex= this.getAbsoluteNextIntAllowZero(size);
+randomIndex= this->getAbsoluteNextIntAllowZero(size);
     
-randomIndex2= this.getAbsoluteNextIntAllowZero(size);
+randomIndex2= this->getAbsoluteNextIntAllowZero(size);
     
 value= intArray[randomIndex]!;
     

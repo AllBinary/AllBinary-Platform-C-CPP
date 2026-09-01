@@ -62,57 +62,54 @@
         #include "DemoCanvas.h"
 
 class DemoGameStartupRunnable: public ABRunnable {
-        
 
-    public static const TYPE: int32_t = 4;
+    public: static const int32_t TYPE = 4;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const demoCanvas: DemoCanvas;
+    private: DemoCanvas demoCanvas;
 
-public constructor (DemoCanvas demoCanvas){
-
-            super();
-        this.demoCanvas= demoCanvas;
+public: DemoGameStartupRunnable(DemoCanvas demoCanvas){
+this->demoCanvas= demoCanvas;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.setRunning(true);
+            this->setRunning(true);
     
-this.demoCanvas!.stopGameDemo();
+this->demoCanvas.stopGameDemo();
     
-this.demoCanvas!.create();
+this->demoCanvas.create();
     
-this.demoCanvas!.start();
+this->demoCanvas.start();
     
-this.setRunning(false);
+this->setRunning(false);
     
 
                 //: 
 } catch(e) 
             {
-this.setRunning(false);
+this->setRunning(false);
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameStartupRunnable.TYPE;
+                        return DemoGameStartupRunnable::TYPE;
     
 }
 

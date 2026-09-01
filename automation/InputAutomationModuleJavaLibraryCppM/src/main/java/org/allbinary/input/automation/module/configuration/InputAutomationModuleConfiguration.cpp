@@ -103,84 +103,75 @@
 class InputAutomationModuleConfiguration
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: className: string;
+    private: std::string className;
 
-    private: name: string;
+    private: std::string name;
 
-    private: inputAutomationModuleInterface: InputAutomationModuleFactoryInterface;
+    private: InputAutomationModuleFactoryInterface inputAutomationModuleInterface;
 
-public constructor (){
-
-            super();
-        }
+public: InputAutomationModuleConfiguration(){
+}
 
 
-public constructor (AbeClientInformationInterface abeClientInformation, Node node){
-
-            super();
-        this.init(abeClientInformation, node);
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, Node node){
+this->init(abeClientInformation, node);
     
 }
 
 
-public constructor (AbeClientInformationInterface abeClientInformation, string name, string className){
-
-            super();
-        this.setName(name);
+public: InputAutomationModuleConfiguration(AbeClientInformationInterface abeClientInformation, std::string name, std::string className){
+this->setName(name);
     
-this.setClassName(className);
+this->setClassName(className);
     
-this.init(abeClientInformation);
+this->init(abeClientInformation);
     
 }
 
 
-public constructor (InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
-
-            super();
-        this.setInputAutomationModuleInterface(inputAutomationModuleInterface);
+public: InputAutomationModuleConfiguration(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
+this->setInputAutomationModuleInterface(inputAutomationModuleInterface);
     
-this.setClassName(this.inputAutomationModuleInterface!.constructor.name.toString()!);
+this->setClassName(this->inputAutomationModuleInterface.constructor.name.toString()!);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation, Node node){
+    public: void init(AbeClientInformationInterface abeClientInformation, Node node){
 
-    nodeList: NodeList = node.getChildNodes()!;;
+    NodeList nodeList = node.getChildNodes();;
     
 
                         if(nodeList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    classNameNode: Node = DomSearchHelper.getNode(DynamicObjectData.NAME, nodeList)!;;
+    Node classNameNode = DomSearchHelper::getNode(DynamicObjectData::NAME, nodeList);;
     
 
                         if(classNameNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.setClassName(DomNodeHelper.getTextNodeValue(classNameNode));
+                                    this->setClassName(DomNodeHelper::getTextNodeValue(classNameNode));
     
-this.init(abeClientInformation);
+this->init(abeClientInformation);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Class Node Null", this, this.commonStrings!.INIT);
+                            this->logUtil.putF("Class Node Null", this, this->commonStrings.INIT);
     
 
                         }
@@ -189,7 +180,7 @@ this.init(abeClientInformation);
                                     }
                                 
                         else {
-                            this.logUtil!.putF(InputAutomationData.NAME +" Node Has No Children", this, "Contructor");
+                            this->logUtil.putF(InputAutomationData::NAME +" Node Has No Children", this, "Contructor");
     
 
                         }
@@ -197,25 +188,25 @@ this.init(abeClientInformation);
 }
 
 
-    public init(AbeClientInformationInterface abeClientInformation){
+    public: void init(AbeClientInformationInterface abeClientInformation){
 
         try {
-            this.logUtil!.putF("Name: " +getName(), this, this.commonStrings!.INIT);
+            this->logUtil.putF("Name: " +getName(), this, this->commonStrings.INIT);
     
-this.logUtil!.putF("ClassName: " +className, this, this.commonStrings!.INIT);
+this->logUtil.putF("ClassName: " +className, this, this->commonStrings.INIT);
     
-this.setInputAutomationModuleInterface(AbeFactory.getInstance()!.getInstance()!.getInstance(abeClientInformation, getClassName()) as InputAutomationModuleFactoryInterface);
+this->setInputAutomationModuleInterface(AbeFactory::getInstance().getInstance().getInstance(abeClientInformation, getClassName()) as InputAutomationModuleFactoryInterface);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
@@ -224,12 +215,12 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDomNode(Document document){
+    public: Node toDomNode(Document document){
 
-    node: Node = document.createElement(InputAutomationModuleData.NAME)!;;
+    Node node = document.createElement(InputAutomationModuleData::NAME);;
     
 
-    classNameNode: Node = ModDomHelper.createTextNode(document, DynamicObjectData.NAME, this.getClassName())!;;
+    Node classNameNode = ModDomHelper::createTextNode(document, DynamicObjectData::NAME, this->getClassName());;
     
 node.appendChild(classNameNode);
     
@@ -242,58 +233,58 @@ node.appendChild(classNameNode);
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.logUtil!.putF("Name: " +name, this, "setName");
+    public: void setName(std::string name){
+this->logUtil.putF("Name: " +name, this, "setName");
     
-this.name= name;
+this->name= name;
     
 }
 
 
-    public string getClassName(){
+    public: std::string getClassName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.className;
+                        return this->className;
     
 }
 
 
-    public setClassName(string className){
-this.logUtil!.putF("ClassName : " +className, this, "setClassName");
+    public: void setClassName(std::string className){
+this->logUtil.putF("ClassName : " +className, this, "setClassName");
     
-this.className= className;
+this->className= className;
     
 }
 
 
-    public InputAutomationModuleFactoryInterface getInputAutomationModuleInterface(){
+    public: InputAutomationModuleFactoryInterface getInputAutomationModuleInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputAutomationModuleInterface;
+                        return this->inputAutomationModuleInterface;
     
 }
 
 
-    public setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
-this.logUtil!.putF("InputAutomationModuleFactoryInterface : " +inputAutomationModuleInterface, this, "setInputAutomationModuleInterface");
+    public: void setInputAutomationModuleInterface(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
+this->logUtil.putF("InputAutomationModuleFactoryInterface : " +inputAutomationModuleInterface, this, "setInputAutomationModuleInterface");
     
-this.inputAutomationModuleInterface= inputAutomationModuleInterface;
+this->inputAutomationModuleInterface= inputAutomationModuleInterface;
     
-this.setName(this.inputAutomationModuleInterface!.getName());
+this->setName(this->inputAutomationModuleInterface.getName());
     
 }
 

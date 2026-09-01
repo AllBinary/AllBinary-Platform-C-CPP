@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_NULLRECORDCOMPARATOR_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/microedition/rms/RecordComparator.h>
@@ -48,11 +50,10 @@
 class NullRecordComparator
             : public Object
         : public RecordComparator {
-        
 
-    public static const NULL_RECORD_COMPARATOR: NullRecordComparator = new NullRecordComparator();
+    public: static const NullRecordComparator NULL_RECORD_COMPARATOR = NullRecordComparator();
 
-    public int32_t compare(std::vector<int8_t> rec1, std::vector<int8_t> rec2);
+    public: int32_t compare(std::vector<int8_t> rec1, std::vector<int8_t> rec2);
 
 };
 

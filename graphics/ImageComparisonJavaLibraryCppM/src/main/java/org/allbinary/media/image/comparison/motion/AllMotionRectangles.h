@@ -58,31 +58,30 @@
 #include "Rectangle.h"
 
 class AllMotionRectangles: public MotionRectangles {
-        
 
-    private: static const NAME: string = "allMotionRectangles_";
+    private: static const std::string NAME = "allMotionRectangles_";
 
-public constructor (ImageComparisonResult imageComparisonResult);
-
-                //@Throws(Exception.constructor)
-            
-    createMotionRectangles(ImageComparisonResult imageComparisonInfo);
+public: AllMotionRectangles(ImageComparisonResult imageComparisonResult);
 
                 //@Throws(Exception.constructor)
             
-    bool addPixelDeltaToExistingMotionRectangle(PixelDelta pixelDelta);
+    private: void createMotionRectangles(ImageComparisonResult imageComparisonInfo);
 
                 //@Throws(Exception.constructor)
             
-    addPixelDeltaToAMotionRectangle(PixelDelta pixelDelta);
+    private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta pixelDelta);
 
                 //@Throws(Exception.constructor)
             
-    bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta);
+    private: void addPixelDeltaToAMotionRectangle(PixelDelta pixelDelta);
 
                 //@Throws(Exception.constructor)
             
-    bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta);
+    private: bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta);
+
+                //@Throws(Exception.constructor)
+            
+    private: bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta);
 
 };
 

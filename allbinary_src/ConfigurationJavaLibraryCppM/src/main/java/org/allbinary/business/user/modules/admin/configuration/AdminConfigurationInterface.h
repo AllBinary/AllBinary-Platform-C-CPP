@@ -46,15 +46,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdminConfigurationInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    write();
+    void write();
 
     ContextConfigurationInterface getContextConfigurationInterface();
 
-    setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
+    void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
 
 };
 

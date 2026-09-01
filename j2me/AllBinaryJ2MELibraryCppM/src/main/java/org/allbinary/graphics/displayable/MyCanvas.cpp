@@ -96,87 +96,84 @@
 #include "CanvasStrings.h"
 #include "DisplayInfoSingleton.h"
 
-class MyCanvas: public Canvas: public DisplayableInterface, public MyCommandInterface {
-        
+class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    const stringUtil: StringUtil = StringUtil.getInstance()!;
+    protected: const StringUtil stringUtil = StringUtil::getInstance();
 
-    const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const childNameList: BasicArrayList;
+    private: BasicArrayList childNameList;
 
-    private: const commandStack: Stack<any>;
+    private: Stack<any> commandStack;
 
-    private: commandListener: CommandListener = NullCommandListener.NULL_COMMAND_LISTENER;
+    private: CommandListener commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
 
-    private: paused: bool= false;
+    private: bool paused= false;
 
-public constructor (string name, BasicArrayList childNameList){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, this.commonStrings!.CONSTRUCTOR);
+public: MyCanvas(std::string name, BasicArrayList childNameList){
+this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
     
-this.displayInfo!.update(this, this.canvasStrings!.CONSTRUCTOR);
+this->displayInfo.update(this, this->canvasStrings.CONSTRUCTOR);
     
-this.name= name;
+this->name= name;
     
-this.childNameList= childNameList;
+this->childNameList= childNameList;
     
-this.commandStack= new Stack();
+this->commandStack= Stack();
     
 }
 
 
-    public setFullScreenMode(bool mode){
+    public: void setFullScreenMode(bool mode){
 super.setFullScreenMode(mode);
     
-this.displayInfo!.update(this, this.canvasStrings!.SET_FULL_SCREEN_MODE);
+this->displayInfo.update(this, this->canvasStrings.SET_FULL_SCREEN_MODE);
     
 }
 
 
-    sizeChanged(int32_t w, int32_t h){
-this.displayInfo!.update(this, this.canvasStrings!.SIZE_CHANGED);
+    protected: void sizeChanged(int32_t w, int32_t h){
+this->displayInfo.update(this, this->canvasStrings.SIZE_CHANGED);
     
 }
 
 
-    public Stack<any> getCommandStack(){
+    public: Stack<any> getCommandStack(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandStack;
+                        return this->commandStack;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isCommand(Command command){
+    public: bool isCommand(Command command){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandStack!.contains(command);;
+                        return this->commandStack.contains(command);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addCommand(Command command){
+    public: void addCommand(Command command){
 
-                        if(!this.commandStack!.contains(command))
+                        if(!this->commandStack.contains(command))
                         
                                     {
-                                    this.commandStack!.push(command);
+                                    this->commandStack.push(command);
     
 super.addCommand(command);
     
@@ -187,8 +184,8 @@ super.addCommand(command);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeCommand(Command command){
-this.commandStack!.removeElement(command);
+    public: void removeCommand(Command command){
+this->commandStack.removeElement(command);
     
 super.removeCommand(command);
     
@@ -196,156 +193,156 @@ super.removeCommand(command);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllCommands(){
+    public: void removeAllCommands(){
 
-    size: int32_t = this.commandStack!.length!;;
+    int32_t size = this->commandStack.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-super.removeCommand(this.commandStack!.pop() as Command);
+super.removeCommand(this->commandStack.pop() as Command);
     
 }
 
 }
 
 
-    public setCommandListener(CommandListener l){
+    public: void setCommandListener(CommandListener l){
 super.setCommandListener(l);
     
-this.commandListener= l;
+this->commandListener= l;
     
 }
 
 
-    public CommandListener getCustomCommandListener(){
+    public: CommandListener getCustomCommandListener(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandListener;
+                        return this->commandListener;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isPaused(){
+    public: bool isPaused(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paused;
+                        return this->paused;
     
 }
 
 
-    public removePauseCommand(){
-this.removeCommand(MyCommandsFactory.getInstance()!.PAUSE_COMMAND);
-    
-}
-
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public pause(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.canvasStrings!.PAUSE);
-    
-this.removePauseCommand();
-    
-this.addCommand(MyCommandsFactory.getInstance()!.RESUME_COMMAND);
-    
-this.setPaused(true);
+    public: void removePauseCommand(){
+this->removeCommand(MyCommandsFactory::getInstance().PAUSE_COMMAND);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public unPause(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.canvasStrings!.UN_PAUSE);
+    public: void pause(){
+this->logUtil.putF(this->commonStrings.START, this, this->canvasStrings.PAUSE);
     
-this.removeCommand(MyCommandsFactory.getInstance()!.RESUME_COMMAND);
+this->removePauseCommand();
     
-this.addCommand(MyCommandsFactory.getInstance()!.PAUSE_COMMAND);
+this->addCommand(MyCommandsFactory::getInstance().RESUME_COMMAND);
     
-this.setPaused(false);
+this->setPaused(true);
+    
+}
+
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void unPause(){
+this->logUtil.putF(this->commonStrings.START, this, this->canvasStrings.UN_PAUSE);
+    
+this->removeCommand(MyCommandsFactory::getInstance().RESUME_COMMAND);
+    
+this->addCommand(MyCommandsFactory::getInstance().PAUSE_COMMAND);
+    
+this->setPaused(false);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    process(){
-this.displayInfo!.process();
+    protected: void process(){
+this->displayInfo.process();
     
 }
 
 
-    paint(Graphics graphics){
+    protected: void paint(Graphics graphics){
 }
 
 
-    public draw(Graphics graphics){
+    public: void draw(Graphics graphics){
 }
 
 
-    public bool hasChild(MyCanvas displayable){
+    public: bool hasChild(MyCanvas displayable){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.childNameList!.contains(displayable.name);;
+                        return this->childNameList.contains(displayable.name);;
     
 }
 
 
-    public destroy(){
-this.logUtil!.putF("Destroyed MyCanvas", this, "destroy");
+    public: void destroy(){
+this->logUtil.putF("Destroyed MyCanvas", this, "destroy");
     
 }
 
 
-    setPaused(bool isPaused){
-this.paused= isPaused;
+    protected: void setPaused(bool isPaused){
+this->paused= isPaused;
     
 }
 
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
 }
 
 
-    public keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
 }
 
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
 }
 
 
-    private: const touchME: TouchJ2ME = new TouchJ2ME();
+    private: const TouchJ2ME touchME = TouchJ2ME();
 
-    pointerDragged(int32_t x, int32_t y){
-this.touchME!.pointerDragged(x, y);
+    protected: void pointerDragged(int32_t x, int32_t y){
+this->touchME.pointerDragged(x, y);
     
 }
 
 
-    pointerPressed(int32_t x, int32_t y){
-this.touchME!.pointerPressed(x, y);
+    protected: void pointerPressed(int32_t x, int32_t y){
+this->touchME.pointerPressed(x, y);
     
 }
 
 
-    pointerReleased(int32_t x, int32_t y){
-this.touchME!.pointerReleased(x, y);
+    protected: void pointerReleased(int32_t x, int32_t y){
+this->touchME.pointerReleased(x, y);
     
 }
 
 
-    public nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume){
+    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume){
 }
 
 

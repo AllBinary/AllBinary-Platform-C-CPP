@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_HITPOINTGAMEOBJECT_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -55,32 +57,31 @@
         #include "MeteredGameObject.h"
 #include "HitPointGameObjectInterface.h"
 
-class HitPointGameObject: public MeteredGameObject: public HitPointGameObjectInterface {
-        
+class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInterface {
 
-    private: damaged: bool = false;
+    private: bool damaged = false;
 
-    private: closeDeath: bool = false;
+    private: bool closeDeath = false;
 
-    private: const HP_LABEL: string = "HP: ";
+    private: const std::string HP_LABEL = "HP: ";
 
-    private: const IS_DAMAGED_LABEL: string = "isDamaged: ";
+    private: const std::string IS_DAMAGED_LABEL = "isDamaged: ";
 
-    private: const IS_CLOSE_DEATH_LABEL: string = "isCloseDeath: ";
+    private: const std::string IS_CLOSE_DEATH_LABEL = "isCloseDeath: ";
 
-public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
+public: HitPointGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
 
-    public bool isMoreThan(float aFloat);
+    public: bool isMoreThan(float aFloat);
 
-    public bool isCloseDeath();
+    public: bool isCloseDeath();
 
-    setCloseDeath(bool closeDeath);
+    protected: void setCloseDeath(bool closeDeath);
 
-    public bool isDamaged();
+    public: bool isDamaged();
 
-    public setDamaged(bool damaged);
+    public: void setDamaged(bool damaged);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

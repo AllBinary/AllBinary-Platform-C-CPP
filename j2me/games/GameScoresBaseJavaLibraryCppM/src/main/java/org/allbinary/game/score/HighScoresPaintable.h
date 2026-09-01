@@ -94,34 +94,33 @@
 #include "HighScores.h"
 #include "HighScore.h"
 
-class HighScoresPaintable: public Paintable: public ColorChangeListener, public UpdateMyFontInterface {
-        
+class HighScoresPaintable: public Paintable, public ColorChangeListener, public UpdateMyFontInterface {
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    private: highScores: HighScores = NullHighScoresSingletonFactory.getInstance()!;
+    private: HighScores highScores = NullHighScoresSingletonFactory::getInstance();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: charHeight: int32_t= 0;
+    private: int32_t charHeight= 0;
 
-public constructor ();
+public: HighScoresPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public BasicColor getBasicColorP();
+    public: BasicColor getBasicColorP();
 
-    public setHighScores(HighScores highScores);
+    public: void setHighScores(HighScores highScores);
 
 };
 

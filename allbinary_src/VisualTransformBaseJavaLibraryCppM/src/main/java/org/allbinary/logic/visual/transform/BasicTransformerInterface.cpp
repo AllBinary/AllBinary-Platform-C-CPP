@@ -52,11 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicTransformerInterface: public CompositeTransformInfoInterface {
-        
 
-    setInputStream(InputStream inputStream)
+    void setInputStream(InputStream inputStream)
 
-    setURIResolver(URIResolver uriResolver)
+    void setURIResolver(URIResolver uriResolver)
 
     StreamSource getStreamSource()
 
@@ -66,7 +65,7 @@ class BasicTransformerInterface: public CompositeTransformInfoInterface {
 
                 //@Throws(Exception.constructor)
             
-    string translate(string xmlDocumentStr)
+    std::string translate(std::string xmlDocumentStr)
 
 };
 

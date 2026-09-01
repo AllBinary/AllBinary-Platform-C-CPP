@@ -42,11 +42,10 @@
         #include "PlatformImage.h"
 //PlatformNullImageJavaLibrary
 class PostLoadPlatformImage: public PlatformImage {
-        
 
-    private: static const instance: PostLoadPlatformImage = new PostLoadPlatformImage();
+    private: static PostLoadPlatformImage instance() { return PostLoadPlatformImage(); }
 
-    public static PostLoadPlatformImage getInstance();
+    public: static PostLoadPlatformImage getInstance();
 
 };
 

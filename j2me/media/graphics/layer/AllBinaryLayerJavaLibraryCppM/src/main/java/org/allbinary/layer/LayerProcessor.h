@@ -66,27 +66,26 @@
 class LayerProcessor
             : public Object
         : public LayerProcessorInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const layerManager: LayerManager;
+    private: LayerManager layerManager;
 
-public constructor (LayerManager layerManager);
-
-                //@Throws(Exception.constructor)
-            
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+public: LayerProcessor(LayerManager layerManager);
 
                 //@Throws(Exception.constructor)
             
-    public bool isProcessorLayer(AllBinaryLayer layerInterface);
-
-    public LayerManager getLayerManager();
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager);
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
+
+    public: LayerManager getLayerManager();
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

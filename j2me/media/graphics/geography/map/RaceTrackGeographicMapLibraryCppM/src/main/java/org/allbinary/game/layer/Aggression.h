@@ -50,27 +50,26 @@
 class Aggression
             : public Object
          {
-        
 
-    private: ram: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer ram = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: projectile: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer projectile = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: drops: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer drops = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-public constructor (Integer ram, Integer projectile, Integer drops);
+public: Aggression(Integer ram, Integer projectile, Integer drops);
 
-    public Integer getRam();
+    public: Integer getRam();
 
-    public setRam(Integer ram);
+    public: void setRam(Integer ram);
 
-    public Integer getProjectile();
+    public: Integer getProjectile();
 
-    public setProjectile(Integer projectile);
+    public: void setProjectile(Integer projectile);
 
-    public Integer getDrops();
+    public: Integer getDrops();
 
-    public setDrops(Integer drops);
+    public: void setDrops(Integer drops);
 
 };
 

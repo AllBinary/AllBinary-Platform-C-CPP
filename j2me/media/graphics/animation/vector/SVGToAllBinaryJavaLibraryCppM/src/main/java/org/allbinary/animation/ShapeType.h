@@ -45,13 +45,12 @@
 class ShapeType
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: ShapeType(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
 };
 

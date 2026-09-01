@@ -51,15 +51,14 @@
 class Bridge
             : public Object
         : public HardwareComponentInterface, public BridgeInterface {
-        
 
-    private: data: string;
+    private: std::string data;
 
-public constructor (string data);
+public: Bridge(std::string data);
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface componentInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

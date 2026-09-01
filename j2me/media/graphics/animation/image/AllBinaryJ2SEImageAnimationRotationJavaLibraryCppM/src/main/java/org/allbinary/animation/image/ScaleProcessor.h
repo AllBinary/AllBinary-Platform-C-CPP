@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SCALEPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SCALEPROCESSOR_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -56,19 +58,18 @@
         #include "ScaleBaseProcessor.h"
 
 class ScaleProcessor: public ScaleBaseProcessor {
-        
 
-    private: static const instanceC: ScaleProcessor = new ScaleProcessor();
+    private: static const ScaleProcessor instanceC = ScaleProcessor();
 
-    public static ScaleBaseProcessor getInstance();
+    public: static ScaleBaseProcessor getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageScaleUtil: ImageScaleUtil = ImageScaleUtil.getInstance()!;
+    private: const ImageScaleUtil imageScaleUtil = ImageScaleUtil::getInstance();
 
-    public update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
+    public: void update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
 
 };
 

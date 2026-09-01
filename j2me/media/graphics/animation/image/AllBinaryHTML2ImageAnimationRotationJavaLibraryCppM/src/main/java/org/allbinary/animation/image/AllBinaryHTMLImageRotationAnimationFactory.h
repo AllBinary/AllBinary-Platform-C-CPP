@@ -70,23 +70,22 @@
 #include "AllBinaryAdjustedHTMLImageRotationAnimation.h"
 
 class AllBinaryHTMLImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryHTMLImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryHTMLImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
 
-    const angleIncrement: int16_t;
+    protected: int16_t angleIncrement;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+public: AllBinaryHTMLImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
 
-    public init(int32_t dx, int32_t dy);
+    public: void init(int32_t dx, int32_t dy);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    int16_t getAngleIncrement();
+    protected: int16_t getAngleIncrement();
 
 };
 

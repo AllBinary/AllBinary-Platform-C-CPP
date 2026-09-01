@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_SIMPLEPROGRESSACTIVITYINTERFACE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_SIMPLEPROGRESSACTIVITYINTERFACE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Runnable.h"
@@ -45,21 +47,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SimpleProgressActivityInterface {
-        
 
-    runOnUiThread(Runnable action);
-
-                //@Throws(Exception.constructor)
-            
-    onSetProgress(int32_t value, string text);
+    void runOnUiThread(Runnable action);
 
                 //@Throws(Exception.constructor)
             
-    onDismissProgress(std::vector<int32_t> animationSequence);
+    void onSetProgress(int32_t value, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence);
+    void onDismissProgress(std::vector<int32_t> animationSequence);
+
+                //@Throws(Exception.constructor)
+            
+    void onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence);
 
 };
 

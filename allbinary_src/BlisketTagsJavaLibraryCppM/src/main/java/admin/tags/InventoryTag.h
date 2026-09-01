@@ -64,17 +64,16 @@
 #include "AbTagData.h"
 
 class InventoryTag: public TableTag {
-        
 
-    private: storeName: string;
+    private: std::string storeName;
 
-public constructor ();
+public: InventoryTag();
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

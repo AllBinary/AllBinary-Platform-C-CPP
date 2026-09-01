@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //import org.allbinary.business.user.commerce.money.Money;
 class StoreFrontUsersStatisticsInterface: public TableMappingInterface {
-        
 
     Long getNumberOfUsers();
 
-    Long getNumberOfUsersByRole(string role);
+    Long getNumberOfUsersByRole(std::string role);
 
 };
 

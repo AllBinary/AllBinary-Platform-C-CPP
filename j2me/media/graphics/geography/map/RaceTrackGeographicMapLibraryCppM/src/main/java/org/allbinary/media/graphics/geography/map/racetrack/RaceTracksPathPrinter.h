@@ -59,11 +59,10 @@
 class RaceTracksPathPrinter
             : public Object
          {
-        
 
-    printPath(BasicArrayList list);
+    private: void printPath(BasicArrayList list);
 
-    printPaths(BasicArrayList list);
+    protected: void printPaths(BasicArrayList list);
 
 };
 

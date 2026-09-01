@@ -61,39 +61,36 @@
 class AndroidMediaPlayerWrapperListener
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: androidMediaPlayerWrapper: AndroidMediaPlayerWrapper = AndroidMediaPlayerWrapper.NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
+    private: AndroidMediaPlayerWrapper androidMediaPlayerWrapper = AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
 
-public constructor (AndroidMediaPlayerWrapper androidMediaPlayerWrapper){
+public: AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper androidMediaPlayerWrapper){
 
-            super();
-        
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.androidMediaPlayerWrapper= androidMediaPlayerWrapper;
+this->androidMediaPlayerWrapper= androidMediaPlayerWrapper;
     
 
-    mediaPlayer: MediaPlayer = androidMediaPlayerWrapper!.getMediaPlayer()!;;
+    MediaPlayer mediaPlayer = androidMediaPlayerWrapper.getMediaPlayer();;
     
-mediaPlayer!.setOnCompletionListener(this.mOnCompletionListener);
+mediaPlayer.setOnCompletionListener(this->mOnCompletionListener);
     
-mediaPlayer!.setOnBufferingUpdateListener(this.mOnBufferingUpdateListener);
+mediaPlayer.setOnBufferingUpdateListener(this->mOnBufferingUpdateListener);
     
-mediaPlayer!.setOnPreparedListener(this.mOnPreparedListener);
+mediaPlayer.setOnPreparedListener(this->mOnPreparedListener);
     
-mediaPlayer!.setOnErrorListener(this.mOnErrorListener);
+mediaPlayer.setOnErrorListener(this->mOnErrorListener);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 }
 
@@ -103,10 +100,9 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
 //inner= member=true isStatic=
 class MediaPlayerOnBufferingUpdateListener
             : public Object
-        : public MediaPlayer.OnBufferingUpdateListener {
-        
+        : public MediaPlayer::OnBufferingUpdateListener {
 
-    public onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i){
+    public: void onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i){
 }
 
 
@@ -116,10 +112,9 @@ class MediaPlayerOnBufferingUpdateListener
 //inner= member=true isStatic=
 class MediaPlayerOnPreparedListener
             : public Object
-        : public MediaPlayer.OnPreparedListener {
-        
+        : public MediaPlayer::OnPreparedListener {
 
-    public onPrepared(MediaPlayer mp){
+    public: void onPrepared(MediaPlayer mp){
 }
 
 
@@ -129,10 +124,9 @@ class MediaPlayerOnPreparedListener
 //inner= member=true isStatic=
 class MediaPlayerOnErrorListener
             : public Object
-        : public MediaPlayer.OnErrorListener {
-        
+        : public MediaPlayer::OnErrorListener {
 
-    public bool onError(MediaPlayer mp, int32_t what, int32_t extra){
+    public: bool onError(MediaPlayer mp, int32_t what, int32_t extra){
 
 
 
@@ -148,10 +142,9 @@ class MediaPlayerOnErrorListener
 //inner= member=true isStatic=
 class MediaPlayerOnCompletionListener
             : public Object
-        : public MediaPlayer.OnCompletionListener {
-        
+        : public MediaPlayer::OnCompletionListener {
 
-    public onCompletion(MediaPlayer mp){
+    public: void onCompletion(MediaPlayer mp){
 }
 
 
@@ -160,27 +153,24 @@ class MediaPlayerOnCompletionListener
             
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnBufferingUpdateListener: public MediaPlayerOnBufferingUpdateListener {
-        
 
-    private: const ON_BUFFERING_UPDATE: string = "onBufferingUpdate()";
+    private: const std::string ON_BUFFERING_UPDATE = "onBufferingUpdate()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
-
-            super();
-        this.androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
+public: AndroidMediaPlayerOnBufferingUpdateListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
+this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i){
+    public: void onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF(new StringMaker().append("Update buffer: ")!.appendint(i)!.append("%")!.toString(), this, this.ON_BUFFERING_UPDATE);
+logUtil.putF(StringMaker().append("Update buffer: ").appendint(i).append("%").toString(), this, this->ON_BUFFERING_UPDATE);
     
-this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(PlayerListener.DEVICE_UNAVAILABLE);
+this->androidMediaPlayerWrapperListener.androidMediaPlayerWrapper.update(PlayerListener::DEVICE_UNAVAILABLE);
     
 }
 
@@ -188,34 +178,31 @@ this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(Player
 };
 
             
-    private: mOnBufferingUpdateListener: MediaPlayer.OnBufferingUpdateListener = new this.AndroidMediaPlayerOnBufferingUpdateListener(this);
+    private: MediaPlayer::OnBufferingUpdateListener mOnBufferingUpdateListener = AndroidMediaPlayerOnBufferingUpdateListener(this);
 
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnPreparedListener: public MediaPlayerOnPreparedListener {
-        
 
-    private: const ON_PREPARE: string = "onPrepare()";
+    private: const std::string ON_PREPARE = "onPrepare()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
-
-            super();
-        this.androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
+public: AndroidMediaPlayerOnPreparedListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
+this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public onPrepared(MediaPlayer mp){
+    public: void onPrepared(MediaPlayer mp){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF(commonStrings!.START, this, this.ON_PREPARE);
+logUtil.putF(commonStrings.START, this, this->ON_PREPARE);
     
-this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(PlayerListener.DEVICE_AVAILABLE);
+this->androidMediaPlayerWrapperListener.androidMediaPlayerWrapper.update(PlayerListener::DEVICE_AVAILABLE);
     
 }
 
@@ -223,31 +210,28 @@ this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(Player
 };
 
             
-    private: mOnPreparedListener: MediaPlayer.OnPreparedListener = new this.AndroidMediaPlayerOnPreparedListener(this);
+    private: MediaPlayer::OnPreparedListener mOnPreparedListener = AndroidMediaPlayerOnPreparedListener(this);
 
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnErrorListener: public MediaPlayerOnErrorListener {
-        
 
-    private: const ON_ERROR: string = "onError()";
+    private: const std::string ON_ERROR = "onError()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
-
-            super();
-        this.androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
+public: AndroidMediaPlayerOnErrorListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
+this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public bool onError(MediaPlayer mp, int32_t what, int32_t extra){
+    public: bool onError(MediaPlayer mp, int32_t what, int32_t extra){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append("What: ")!.appendint(what)!.append(" Extra: ")!.appendint(extra)!.toString(), this, this.ON_ERROR);
+logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append("What: ").appendint(what).append(" Extra: ").appendint(extra).toString(), this, this->ON_ERROR);
     
-this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(PlayerListener.ERROR);
+this->androidMediaPlayerWrapperListener.androidMediaPlayerWrapper.update(PlayerListener::ERROR);
     
 
 
@@ -261,34 +245,31 @@ this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(Player
 };
 
             
-    private: mOnErrorListener: MediaPlayer.OnErrorListener = new this.AndroidMediaPlayerOnErrorListener(this);
+    private: MediaPlayer::OnErrorListener mOnErrorListener = AndroidMediaPlayerOnErrorListener(this);
 
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnCompletionListener: public MediaPlayerOnCompletionListener {
-        
 
-    private: const ON_COMPLETE: string = "onComplete()";
+    private: const std::string ON_COMPLETE = "onComplete()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
-
-            super();
-        this.androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
+public: AndroidMediaPlayerOnCompletionListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener){
+this->androidMediaPlayerWrapperListener= androidMediaPlayerWrapperListener;
     
 }
 
 
-    public onCompletion(MediaPlayer mp){
+    public: void onCompletion(MediaPlayer mp){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF(commonStrings!.START, this, this.ON_COMPLETE);
+logUtil.putF(commonStrings.START, this, this->ON_COMPLETE);
     
-this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(PlayerListener.END_OF_MEDIA);
+this->androidMediaPlayerWrapperListener.androidMediaPlayerWrapper.update(PlayerListener::END_OF_MEDIA);
     
 }
 
@@ -296,7 +277,7 @@ this.androidMediaPlayerWrapperListener!.androidMediaPlayerWrapper!.update(Player
 };
 
             
-    private: mOnCompletionListener: MediaPlayer.OnCompletionListener = new this.AndroidMediaPlayerOnCompletionListener(this);
+    private: MediaPlayer::OnCompletionListener mOnCompletionListener = AndroidMediaPlayerOnCompletionListener(this);
 
 };
 

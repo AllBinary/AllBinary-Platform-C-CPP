@@ -46,31 +46,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ColorAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: ColorAttributePointerOpenGLProcessor = new ColorAttributePointerOpenGLProcessor();
+    private: static ColorAttributePointerOpenGLProcessor instance() { return ColorAttributePointerOpenGLProcessor(); }
 
-    public static ColorAttributePointerOpenGLProcessor getInstance(){
+    public: static ColorAttributePointerOpenGLProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorAttributePointerOpenGLProcessor.instance;
+                        return ColorAttributePointerOpenGLProcessor::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: ColorAttributePointerOpenGLProcessor(){
+}
 
 
-    public process(GL10 gl, any = {} anyType){
+    public: void process(GL10 gl, Object* anyType){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

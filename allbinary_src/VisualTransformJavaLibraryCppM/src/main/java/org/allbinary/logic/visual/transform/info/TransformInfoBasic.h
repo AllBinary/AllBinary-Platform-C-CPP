@@ -67,80 +67,79 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TransformInfoHttpInterface.h"
 //Hack class should not exist
-class TransformInfoBasic: public AbContext: public TransformInfoHttpInterface {
-        
+class TransformInfoBasic: public AbContext, public TransformInfoHttpInterface {
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-public constructor (StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoBasic(StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    public string getStoreName();
+    public: std::string getStoreName();
 
-    public string log();
+    public: std::string log();
 
-    public override(HashMap<any, any> hashMap);
+    public: void override(HashMap<any, any> hashMap);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getObjectFile();
+    public: std::string getObjectFile();
 
-    public any getObject();
+    public: Object* getObject();
 
-    public TransformInfoObjectConfigInterface getObjectConfigInterface();
+    public: TransformInfoObjectConfigInterface getObjectConfigInterface();
 
-    public setObjectConfigInterface(Object transformInfoObjectConfigInterface);
+    public: void setObjectConfigInterface(Object transformInfoObjectConfigInterface);
 
-    public AbPath getTemplateFilePath();
+    public: AbPath getTemplateFilePath();
 
-    public string getTemplateFile();
+    public: std::string getTemplateFile();
 
-    public string getTemplate();
+    public: std::string getTemplate();
 
-    public AbPath getDataFilePath();
+    public: AbPath getDataFilePath();
 
-    public string getDataFile();
-
-                //@Throws(Exception.constructor)
-            
-    public Document getDataDocument();
-
-    public setName(string value);
-
-    public setStoreName(string value);
-
-    public setObjectFile(string value);
-
-    public setObject(Object anyType);
-
-    public setObjectConfigFile(string value);
-
-    public setTemplateFile(string value);
-
-    public setTemplate(string value);
-
-    public setDataFile(string value);
-
-    public setData(string value);
-
-    public setChild();
-
-    public bool isChild();
-
-    public string getImportUriPath();
-
-    public setImportUriPath(string importUriPath);
+    public: std::string getDataFile();
 
                 //@Throws(Exception.constructor)
             
-    public any getKey();
+    public: Document getDataDocument();
+
+    public: void setName(std::string value);
+
+    public: void setStoreName(std::string value);
+
+    public: void setObjectFile(std::string value);
+
+    public: void setObject(Object anyType);
+
+    public: void setObjectConfigFile(std::string value);
+
+    public: void setTemplateFile(std::string value);
+
+    public: void setTemplate(std::string value);
+
+    public: void setDataFile(std::string value);
+
+    public: void setData(std::string value);
+
+    public: void setChild();
+
+    public: bool isChild();
+
+    public: std::string getImportUriPath();
+
+    public: void setImportUriPath(std::string importUriPath);
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Object* getKey();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: Vector toVector();
+
+                //@Throws(Exception.constructor)
+            
+    public: HashMap<any, any> toHashMap();
 
 };
 

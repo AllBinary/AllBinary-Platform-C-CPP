@@ -47,21 +47,20 @@
 class ImageColorResults
             : public Object
          {
-        
 
-    private: colorRange: ColorRange;
+    private: ColorRange colorRange;
 
-    private: colorAverage: ColorAverage;
+    private: ColorAverage colorAverage;
 
-public constructor ();
+public: ImageColorResults();
 
-    public ColorRange getColorRange();
+    public: ColorRange getColorRange();
 
-    public setColorRange(ColorRange colorRange);
+    public: void setColorRange(ColorRange colorRange);
 
-    public ColorAverage getColorAverage();
+    public: ColorAverage getColorAverage();
 
-    public setColorAverage(ColorAverage colorAverage);
+    public: void setColorAverage(ColorAverage colorAverage);
 
 };
 

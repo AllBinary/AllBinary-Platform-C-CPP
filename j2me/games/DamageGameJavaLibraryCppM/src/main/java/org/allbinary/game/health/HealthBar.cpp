@@ -52,45 +52,42 @@
 #include "HealthInterface.h"
 #include "Health.h"
 
-class HealthBar: public Paintable: public HealthListenerInterface {
-        
+class HealthBar: public Paintable, public HealthListenerInterface {
 
-    private: const animationInterface: HealthBarAnimation;
+    private: HealthBarAnimation animationInterface;
 
-    private: const healthInterface: HealthInterface;
+    private: HealthInterface healthInterface;
 
-    const allbinaryLayer: AllBinaryLayer;
+    protected: AllBinaryLayer allbinaryLayer;
 
-public constructor (AllBinaryLayer layerInterface, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction){
-
-            super();
-        this.allbinaryLayer= layerInterface;
+public: HealthBar(AllBinaryLayer layerInterface, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction){
+this->allbinaryLayer= layerInterface;
     
-this.animationInterface= animationInterface;
+this->animationInterface= animationInterface;
     
-this.healthInterface= healthInterface;
+this->healthInterface= healthInterface;
     
-this.healthInterface!.addListener(this);
+this->healthInterface.addListener(this);
     
-this.onHealthChange();
+this->onHealthChange();
     
 }
 
 
-    public onHealthChange(){
-this.animationInterface!.onHealthChange(this.healthInterface!.getHealth() *this.allbinaryLayer!.getWidth() /this.healthInterface!.getMaxHealth());
+    public: void onHealthChange(){
+this->animationInterface.onHealthChange(this->healthInterface.getHealth() *this->allbinaryLayer.getWidth() /this->healthInterface.getMaxHealth());
     
 }
 
 
-    public paint(Graphics graphics){
-this.animationInterface!.paintXY(graphics, 0, 0);
+    public: void paint(Graphics graphics){
+this->animationInterface.paintXY(graphics, 0, 0);
     
 }
 
 
-    public paintThreed(Graphics graphics){
-this.animationInterface!.paintThreedXYZ(graphics, 0, 0, 0);
+    public: void paintThreed(Graphics graphics){
+this->animationInterface.paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 

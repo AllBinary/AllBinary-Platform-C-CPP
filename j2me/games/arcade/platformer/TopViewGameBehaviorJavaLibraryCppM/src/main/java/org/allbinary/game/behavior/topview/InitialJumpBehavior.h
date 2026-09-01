@@ -45,9 +45,8 @@
 class InitialJumpBehavior
             : public Object
          {
-        
 
-    public process();
+    public: void process();
 
 };
 

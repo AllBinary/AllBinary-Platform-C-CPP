@@ -42,9 +42,8 @@
         #include "ViewCompositeInterface.h"
 
 class KeyInputViewCompositeInterface: public ViewCompositeInterface {
-        
 
-    setKeyInputView(View keyInputView)
+    void setKeyInputView(View keyInputView)
 
 };
 

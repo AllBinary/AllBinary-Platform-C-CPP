@@ -58,31 +58,30 @@
 class PathCacheFactory
             : public Object
          {
-        
 
-    private: static pathFactory: PathCacheFactory = new PathCacheFactory();
+    private: static PathCacheFactory pathFactory = PathCacheFactory();
 
-    public static PathCacheFactory getInstance();
+    public: static PathCacheFactory getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-private constructor ();
+private: PathCacheFactory();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public add(Integer pathId, BasicArrayList list);
+    public: void add(Integer pathId, BasicArrayList list);
 
-    public remove(Integer pathId);
-
-                //@Throws(Exception.constructor)
-            
-    public removeAll();
+    public: void remove(Integer pathId);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getOrCreate(Integer pathIdInteger);
+    public: void removeAll();
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getOrCreate(Integer pathIdInteger);
 
 };
 

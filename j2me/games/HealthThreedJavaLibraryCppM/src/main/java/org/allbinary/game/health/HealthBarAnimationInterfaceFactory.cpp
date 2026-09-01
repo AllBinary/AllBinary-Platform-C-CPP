@@ -61,29 +61,26 @@
 class HealthBarAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: HealthBarAnimationInterfaceFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public HealthBarAnimation getInstanceByLocation(AllBinaryLayer layerInterface, int32_t location){
+    public: HealthBarAnimation getInstanceByLocation(AllBinaryLayer layerInterface, int32_t location){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HealthBarThreedAnimation(layerInterface, location);
+                        return HealthBarThreedAnimation(layerInterface, location);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
@@ -95,7 +92,7 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
 
 
@@ -105,7 +102,7 @@ public constructor (){
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

@@ -54,13 +54,12 @@
 class OpenGLImageSpecificFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLImageSpecificFactory = new OpenGLImageSpecificFactory();
+    private: static OpenGLImageSpecificFactory instance() { return OpenGLImageSpecificFactory(); }
 
-    public static OpenGLImageSpecificFactory getInstance();
+    public: static OpenGLImageSpecificFactory getInstance();
 
-    public updating: bool = false;
+    public: bool updating = false;
 
 };
 

@@ -54,25 +54,24 @@
 class AdvancedRTSLayerUtil
             : public Object
          {
-        
 
-    private: static const instance: AdvancedRTSLayerUtil = new AdvancedRTSLayerUtil();
+    private: static AdvancedRTSLayerUtil instance() { return AdvancedRTSLayerUtil(); }
 
-    public static AdvancedRTSLayerUtil getInstance(){
+    public: static AdvancedRTSLayerUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvancedRTSLayerUtil.instance;
+                        return AdvancedRTSLayerUtil::instance();
     
 }
 
 
-    public Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
+    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
 
-    hashtable: Hashtable<any, any> = RTSLayerUtil.getInstance()!.createFakeRTSLayerHashtable(baseRaceTrackGeographicMap)!;;
+    Hashtable<any, any> hashtable = RTSLayerUtil::getInstance().createFakeRTSLayerHashtable(baseRaceTrackGeographicMap);;
     
-hashtable.put(WorkWaypoint.ID, SmallIntegerSingletonFactory.getInstance()!.getAt(50));
+hashtable.put(WorkWaypoint::ID, SmallIntegerSingletonFactory::getInstance().getAt(50));
     
 
 

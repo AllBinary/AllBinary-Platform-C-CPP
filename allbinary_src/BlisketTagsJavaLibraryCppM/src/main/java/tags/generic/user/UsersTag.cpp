@@ -52,41 +52,38 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UsersTag: public StoreValidationTransformTag {
-        
 
-    private: role: string;
+    private: std::string role;
 
-public constructor (){
-
-            super();
-        }
+public: UsersTag(){
+}
 
 
-    public setRole(string value){
-this.role= value;
+    public: void setRole(std::string value){
+this->role= value;
     
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
-            this.setName("Generic Users View");
+            this->setName("Generic Users View");
     
-this.setObjectFile("views.generic.user.UsersValidationView");
+this->setObjectFile("views.generic.user.UsersValidationView");
     
 
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.getPropertiesHashMap()!.put(UserRoleData.NAME, this.role);
+                                    this->getPropertiesHashMap().put(UserRoleData::NAME, this->role);
     
 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
@@ -96,7 +93,7 @@ this.setObjectFile("views.generic.user.UsersValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -113,13 +110,13 @@ this.setObjectFile("views.generic.user.UsersValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_VECTOR_POINTSUTIL_H
         #define ORG_ALLBINARY_VECTOR_POINTSUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 
@@ -45,17 +47,16 @@
 class PointsUtil
             : public Object
          {
-        
 
-    private: static const instance: PointsUtil = new PointsUtil();
+    private: static PointsUtil instance() { return PointsUtil(); }
 
-    public static PointsUtil getInstance();
+    public: static PointsUtil getInstance();
 
-    public std::vector<std::vector<std::vector<int32_t>>> adjustXY(std::vector<std::vector<std::vector<int32_t>>> points, int32_t x, int32_t y);
+    public: std::vector<std::vector<std::vector<int32_t>>> adjustXY(std::vector<std::vector<std::vector<int32_t>>> points, int32_t x, int32_t y);
 
-    public std::vector<std::vector<int32_t>> adjust(std::vector<std::vector<int32_t>> points, int32_t both);
+    public: std::vector<std::vector<int32_t>> adjust(std::vector<std::vector<int32_t>> points, int32_t both);
 
-    public std::vector<std::vector<int32_t>> adjust(std::vector<std::vector<int32_t>> points, int32_t x, int32_t y);
+    public: std::vector<std::vector<int32_t>> adjust(std::vector<std::vector<int32_t>> points, int32_t x, int32_t y);
 
 };
 

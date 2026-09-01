@@ -64,16 +64,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(ReleaseTouchInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(ReleaseTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    ReleaseTouchInputToGameKeyEventAction.instance= new ReleaseTouchInputToGameKeyEventAction();
+                                    ReleaseTouchInputToGameKeyEventAction::instance= ReleaseTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -82,40 +81,40 @@ class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGesture
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ReleaseTouchInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return ReleaseTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-private constructor (){
-            super("Release Action", TouchMotionGestureFactory.getInstance()!.RELEASED, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: ReleaseTouchInputToGameKeyEventAction(){
+            super("Release Action", TouchMotionGestureFactory::getInstance().RELEASED, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
         try {
-            this.setGameKey(this.NONE);
+            this->setGameKey(this->NONE);
     
-this.setGameKeyEvent(GameKeyEventFactory.getInstance()!.getInstanceForInput(this, this.NONE));
+this->setGameKeyEvent(GameKeyEventFactory::getInstance().getInstanceForInput(this, this->NONE));
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
 }
 
 
-    public update(){
+    public: void update(){
 }
 
 

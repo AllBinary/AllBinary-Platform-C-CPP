@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_ANIMATIONDAMAGEFLOATERS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -71,25 +73,24 @@
         #include "DamageFloaters.h"
 
 class AnimationDamageFloaters: public DamageFloaters {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: layerInterface: AllBinaryLayer;
+    private: AllBinaryLayer layerInterface;
 
-    private: animationInterfaceArray: std::vector<IndexedAnimation>;
+    private: std::vector<IndexedAnimation> animationInterfaceArray;
 
-    private: const circularIndexUtil: CircularIndexUtil;
+    private: CircularIndexUtil circularIndexUtil;
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (AllBinaryLayer layerInterface, std::vector<IndexedAnimation> animationInterfaceArray, int32_t dx, int32_t dy);
+public: AnimationDamageFloaters(AllBinaryLayer layerInterface, std::vector<IndexedAnimation> animationInterfaceArray, int32_t dx, int32_t dy);
 
-    public add(int32_t damage);
+    public: void add(int32_t damage);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

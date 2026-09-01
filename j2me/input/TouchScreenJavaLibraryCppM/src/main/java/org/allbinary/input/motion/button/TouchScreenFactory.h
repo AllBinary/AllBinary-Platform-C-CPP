@@ -61,41 +61,40 @@
 class TouchScreenFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: TouchScreenFactory = new TouchScreenFactory();
+    private: static const TouchScreenFactory SINGLETON = TouchScreenFactory();
 
-    public static TouchScreenFactory getInstance();
+    public: static TouchScreenFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: touch: bool= false;
+    private: bool touch= false;
 
-    private: multiTouch: bool= false;
+    private: bool multiTouch= false;
 
-    private: multiTouchDistinct: bool= false;
+    private: bool multiTouchDistinct= false;
 
-    private: touchScreenType: TouchScreenType = TouchScreenTypesFactory.getInstance()!.NOTOUCH;
+    private: TouchScreenType touchScreenType = TouchScreenTypesFactory::getInstance().NOTOUCH;
 
-private constructor ();
+private: TouchScreenFactory();
 
-    public setMultiTouch(bool multiTouch);
+    public: void setMultiTouch(bool multiTouch);
 
-    public bool isMultiTouch();
+    public: bool isMultiTouch();
 
-    public setTouch(bool touch);
+    public: void setTouch(bool touch);
 
-    public bool isTouch();
+    public: bool isTouch();
 
-    public setMultiTouchDistinct(bool multiTouchDistinct);
+    public: void setMultiTouchDistinct(bool multiTouchDistinct);
 
-    public bool isMultiTouchDistinct();
+    public: bool isMultiTouchDistinct();
 
-    public setTouchScreenType(TouchScreenType touchScreenType);
+    public: void setTouchScreenType(TouchScreenType touchScreenType);
 
-    public TouchScreenType getTouchScreenType();
+    public: TouchScreenType getTouchScreenType();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

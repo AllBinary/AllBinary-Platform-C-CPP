@@ -64,25 +64,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicTextEmailTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: subject: string;
+    private: std::string subject;
 
-    private: body: string;
+    private: std::string body;
 
-public constructor ();
+public: BasicTextEmailTag();
 
-    public setSubject(string value);
+    public: void setSubject(std::string value);
 
-    public setBody(string value);
+    public: void setBody(std::string value);
 
-    public string send();
+    public: std::string send();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

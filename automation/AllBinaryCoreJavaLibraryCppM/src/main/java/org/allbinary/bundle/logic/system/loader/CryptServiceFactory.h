@@ -61,19 +61,18 @@
 class CryptServiceFactory
             : public Object
         : public ServiceFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: cryptService: CryptService = new CryptService();
+    private: CryptService cryptService = CryptService();
 
-public constructor ();
+public: CryptServiceFactory();
 
-    public any getService(Bundle bundle, ServiceRegistration registration);
+    public: Object* getService(Bundle bundle, ServiceRegistration registration);
 
-    public ungetService(Bundle bundle, ServiceRegistration registration, any = {} service);
+    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service);
 
 };
 

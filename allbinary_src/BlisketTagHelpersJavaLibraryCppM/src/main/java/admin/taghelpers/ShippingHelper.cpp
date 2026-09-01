@@ -71,72 +71,67 @@
         #include "TagHelper.h"
 
 class ShippingHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: shippingType: string;
+    private: std::string shippingType;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.pageContext= pageContext;
+public: ShippingHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->pageContext= pageContext;
     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
 
-    storeName: string = hashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(storeName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 
                                     }
                                 
-this.weblisketSession= new WeblisketSession(hashMap, pageContext);
+this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
-this.getFormData();
-    
-}
-
-
-    getFormData(){
-this.shippingType= this.request.getParameter(ShippingMethodData.NAME);
+this->getFormData();
     
 }
 
 
-    public string setShippingType(){
+    private: void getFormData(){
+this->shippingType= this->request.getParameter(ShippingMethodData::NAME);
+    
+}
+
+
+    public: std::string setShippingType(){
 
         try {
             
-    success: string = "Successfully Set Shipping Type";;
+    std::string success = "Successfully Set Shipping Type";;
     
 
-    order: OrderInterface = this.weblisketSession!.getOrder()!;;
+    OrderInterface order = this->weblisketSession.getOrder();;
     
-order.setShippingMethod(this.shippingType);
+order.setShippingMethod(this->shippingType);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "setShippingType()");
+                                    this->logUtil.putF(success, this, "setShippingType()");
     
 
                                     }
@@ -152,13 +147,13 @@ order.setShippingMethod(this.shippingType);
 } catch(e) 
             {
 
-    error: string = "Failed to view Shipping Type";;
+    std::string error = "Failed to view Shipping Type";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setShippingType()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setShippingType()", e);
     
 
                                     }

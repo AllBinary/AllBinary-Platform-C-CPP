@@ -61,44 +61,43 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HttpContextView: public HttpComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: HttpContextView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.setTransformDocumentInterface(TransformHttpRequestDocumentFactory.getInstance(this.getPageContext(), this.getWeblisketSession()));
+this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInstance(this->getPageContext(), this->getWeblisketSession()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.toXmlDoc();
+            this->toXmlDoc();
     
 
-    success: string = DomDocumentHelper.toString(this.getDoc())!;;
+    std::string success = DomDocumentHelper::toString(this->getDoc());;
     
 
-    result: string = new ContextTransformer(this.abeClientInformation, this.getTransformInfoInterface()).translate(success)!;;
+    std::string result = ContextTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;
     
 
 
@@ -111,10 +110,10 @@ this.setTransformDocumentInterface(TransformHttpRequestDocumentFactory.getInstan
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
     
 
                                     }

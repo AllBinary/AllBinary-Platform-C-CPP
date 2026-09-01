@@ -55,13 +55,12 @@
 class DestroyEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-    private: combatGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas combatGameCanvas;
 
-public constructor (AllBinaryGameCanvas combatGameCanvas);
+public: DestroyEventFactory(AllBinaryGameCanvas combatGameCanvas);
 
-    public AllBinaryEventObject getInstance();
+    public: AllBinaryEventObject getInstance();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PRINTLICENSEINITINFO_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_PRINTLICENSEINITINFO_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -64,21 +66,20 @@
 class PrintLicenseInitInfo
             : public Object
          {
-        
 
-    public static const PATH: string = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
-
-                //@Throws(Exception.constructor)
-            
-    public static main(std::vector<string> args);
-
-public constructor (std::vector<string> options);
+    public: static const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
                 //@Throws(Exception.constructor)
             
-    public LicenseInitInfo getLicenseInitInfo();
+    public: static void main(std::vector<std::string> args);
 
-    public printInitInfo();
+public: PrintLicenseInitInfo(std::vector<std::string> options);
+
+                //@Throws(Exception.constructor)
+            
+    public: LicenseInitInfo getLicenseInitInfo();
+
+    public: void printInitInfo();
 
 };
 

@@ -51,10 +51,9 @@
 #include "ArtificialIntelligenceCompositeInterface.h"
 
 class ArtificialIntelligenceLayerProcessor: public LayerProcessor {
-        
 
-public constructor (){
-            super(new ArtificialIntelligenceLayerManager());
+public: ArtificialIntelligenceLayerProcessor(){
+            super(ArtificialIntelligenceLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -64,20 +63,20 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    artificialIntelligenceCompositeInterface: ArtificialIntelligenceCompositeInterface = layerInterface as ArtificialIntelligenceCompositeInterface;;
+    ArtificialIntelligenceCompositeInterface artificialIntelligenceCompositeInterface = layerInterface as ArtificialIntelligenceCompositeInterface;;
     
-artificialIntelligenceCompositeInterface!.getArtificialIntelligenceInterface()!.processAI(allBinaryLayerManager);
+artificialIntelligenceCompositeInterface.getArtificialIntelligenceInterface().processAI(allBinaryLayerManager);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
-                        if(layerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(layerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
                                     

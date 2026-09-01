@@ -67,34 +67,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasicOptionItemsEntityInterface.h"
 
-class BasicOptionItemsEntity: public AbSqlBean: public BasicOptionItemsEntityInterface {
-        
+class BasicOptionItemsEntity: public AbSqlBean, public BasicOptionItemsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "basicoptionitems";
+    protected: const std::string tableName = "basicoptionitems";
 
-public constructor (){
-            super(new InventoryDbInitInfo());
+public: BasicOptionItemsEntity(){
+            super(InventoryDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -104,10 +103,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -117,16 +116,16 @@ this.setTableName(this.tableName);
 }
 
 
-    public delete(string value){
+    public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(BasicItemData.ID, value);
+            super.deleteWhere(BasicItemData::ID, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, this.commonStrings!.delete);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
@@ -136,10 +135,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }
@@ -149,42 +148,42 @@ this.setTableName(this.tableName);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(tableName)!.append(this.sqlStrings!.START)!.append(BasicItemData.ID)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(BasicItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicOptionItemData.OPTION_ONE_TITLE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.DEFAULT_OPTION_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.DEFAULT_OPTION_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(BasicOptionItemData::OPTION_ONE_TITLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::DEFAULT_OPTION_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::DEFAULT_OPTION_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicOptionItemData.OPTION_ONE_ONE_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_ONE_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_TWO_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_TWO_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_THREE_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_THREE_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_FOUR_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_FOUR_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_FIVE_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_FIVE_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_SIX_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_SIX_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_SEVEN_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_SEVEN_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_EIGHT_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_EIGHT_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_NINE_ITEM)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicOptionItemData.OPTION_ONE_NINE_VALUE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(EntryData.getInstance()!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.LASTMODIFIED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(BasicItemData.ID)!.append(this.sqlStrings!.END);
+stringBuffer.append(BasicOptionItemData::OPTION_ONE_ONE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_ONE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_TWO_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_TWO_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_THREE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_THREE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FOUR_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FOUR_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FIVE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_FIVE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SIX_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SIX_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SEVEN_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_SEVEN_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_EIGHT_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_EIGHT_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_NINE_ITEM).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicOptionItemData::OPTION_ONE_NINE_VALUE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(BasicItemData::ID).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return super.createTable(this->createTableStatement());;
     
 }
 
 
-    public update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData.ID, updatedValues!.get(BasicItemData.ID) as string, updatedValues);
+    public: void update(HashMap<any, any> updatedValues){
+super.updateWhere(BasicItemData::ID, updatedValues.get(BasicItemData::ID) as string, updatedValues);
     
 }
 
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
 
 

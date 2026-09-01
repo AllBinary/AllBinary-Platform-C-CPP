@@ -48,45 +48,44 @@
 class OpenGLCapabilities
             : public Object
          {
-        
 
-    private: static const instance: OpenGLCapabilities = new OpenGLCapabilities();
+    private: static OpenGLCapabilities instance() { return OpenGLCapabilities(); }
 
-    public static OpenGLCapabilities getInstance();
+    public: static OpenGLCapabilities getInstance();
 
-    public const VERSION_1_0: string = "1.0";
+    public: const std::string VERSION_1_0 = "1.0";
 
-    public const VERSION_1_1: string = "1.1";
+    public: const std::string VERSION_1_1 = "1.1";
 
-    public const VERSION_2_0: string = "2.0";
+    public: const std::string VERSION_2_0 = "2.0";
 
-    public const VERSION_3_0: string = "3.0";
+    public: const std::string VERSION_3_0 = "3.0";
 
-    public const VERSION_3_1: string = "3.1";
+    public: const std::string VERSION_3_1 = "3.1";
 
-    public const VERSION_3_2: string = "3.2";
+    public: const std::string VERSION_3_2 = "3.2";
 
-    public const VERSION_HIGHER_THAN_EXISTS: string = "999.999";
+    public: const std::string VERSION_HIGHER_THAN_EXISTS = "999.999";
 
-    private: glVersion: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string glVersion = StringUtil::getInstance().EMPTY_STRING;
 
-    public shaderVersion: int32_t = 0;
+    public: int32_t shaderVersion = 0;
 
-    public glInstanceVersion: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string glInstanceVersion = StringUtil::getInstance().EMPTY_STRING;
 
-    public maxTextureSize: int32_t = 64;
+    public: int32_t maxTextureSize = 64;
 
-private constructor ();
+private: OpenGLCapabilities();
 
-    public initCapabilities(any = {} gl);
+    public: void initCapabilities(Object* gl);
 
-    public bool isGlExtensionDrawTexture();
+    public: bool isGlExtensionDrawTexture();
 
-    public string getGlVersion();
+    public: std::string getGlVersion();
 
-    public bool isVertexBufferObjectSupport();
+    public: bool isVertexBufferObjectSupport();
 
-    public bool isTextureSizeValid(int32_t widthAndHeight);
+    public: bool isTextureSizeValid(int32_t widthAndHeight);
 
 };
 

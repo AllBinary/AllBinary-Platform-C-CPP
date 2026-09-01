@@ -51,49 +51,46 @@
 class StoreFrontsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: StoreFrontsEntityFactory = new StoreFrontsEntityFactory();
+    private: static StoreFrontsEntityFactory instance() { return StoreFrontsEntityFactory(); }
 
-    public static StoreFrontsEntityFactory getInstance(){
+    public: static StoreFrontsEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreFrontsEntityFactory.instance;
+                        return StoreFrontsEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: StoreFrontsEntityFactory(){
+}
 
 
-    public StoreFrontsEntity getStoreFrontsEntityInstance(){
+    public: StoreFrontsEntity getStoreFrontsEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.context.module.storefronts.StoreFrontsEntity();
+                        return org::allbinary::data::tables::context::module::storefronts::StoreFrontsEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

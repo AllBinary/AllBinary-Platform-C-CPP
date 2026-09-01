@@ -45,19 +45,18 @@
 class EventStrings
             : public Object
          {
-        
 
-    private: static const instance: EventStrings = new EventStrings();
+    private: static EventStrings instance() { return EventStrings(); }
 
-    public static EventStrings getInstance();
+    public: static EventStrings getInstance();
 
-    public const PERFORMANCE_MESSAGE: string = "Use Custom onEvent Methods for needed optimization";
+    public: const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 
-    public const TOTAL_LISTENERS: string = "Total Listeners: ";
+    public: const std::string TOTAL_LISTENERS = "Total Listeners: ";
 
-    public const LISTENER_LABEL: string = " Listener: ";
+    public: const std::string LISTENER_LABEL = " Listener: ";
 
-    public const FIRE_EVENT: string = "fireEvent";
+    public: const std::string FIRE_EVENT = "fireEvent";
 
 };
 

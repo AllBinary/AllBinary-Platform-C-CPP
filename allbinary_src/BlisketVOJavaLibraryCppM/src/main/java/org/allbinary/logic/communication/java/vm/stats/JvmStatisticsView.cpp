@@ -56,10 +56,9 @@
         #include "JvmStatisticsMapping.h"
 #include "JvmStatisticsData.h"
 
-class JvmStatisticsView: public JvmStatisticsMapping: public DomNodeInterface {
-        
+class JvmStatisticsView: public JvmStatisticsMapping, public DomNodeInterface {
 
-public constructor (){
+public: JvmStatisticsView(){
             super();
                     
 
@@ -70,12 +69,12 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.toHashMap()!;;
+    HashMap<any, any> hashMap = this->toHashMap();;
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, JvmStatisticsData.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, JvmStatisticsData::NAME, hashMap);;
     
 
 

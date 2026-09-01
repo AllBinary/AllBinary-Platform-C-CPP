@@ -53,13 +53,12 @@
 class TransformInfoObjectConfigGenerator
             : public Object
         : public TransformInfoObjectConfigGeneratorInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string process(string input);
+    public: std::string process(std::string input);
 
 };
 

@@ -56,29 +56,26 @@
         #include "HealLayer.h"
 
 class HealLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor (AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
-
-            super();
-        super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
+public: HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
+super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryLayer sourceLayerInterface){
+    public: void visit(AllBinaryLayer sourceLayerInterface){
 
-    healLayer: HealLayer = this.getNextInstance() as HealLayer;;
+    HealLayer healLayer = this->getNextInstance() as HealLayer;;
     
 
-    healthInterfaceCompositeInterface: HealthInterfaceCompositeInterface = sourceLayerInterface as unknown as HealthInterfaceCompositeInterface;;
+    HealthInterfaceCompositeInterface healthInterfaceCompositeInterface = sourceLayerInterface as unknown as HealthInterfaceCompositeInterface;;
     
 
-    healthInterface: HealthInterface = healthInterfaceCompositeInterface!.getHealthInterface()!;;
+    HealthInterface healthInterface = healthInterfaceCompositeInterface.getHealthInterface();;
     
-healLayer!.visit(healthInterface);
+healLayer.visit(healthInterface);
     
 }
 

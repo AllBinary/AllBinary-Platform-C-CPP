@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYER_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYER_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
             #include "../../../java/lang/Integer.h"
@@ -106,72 +108,71 @@
         #include "Layer.h"
 #include "LayerInterface.h"
 
-class AllBinaryLayer: public Layer: public LayerInterface {
-        
+class AllBinaryLayer: public Layer, public LayerInterface {
 
-    public static const NULL_ALLBINARY_LAYER: AllBinaryLayer = new AllBinaryLayer(StringUtil.getInstance()!.EMPTY_STRING, RectangleFactory.SINGLETON, ViewPositionBase.NULL_VIEW_POSITION);
+    public: static const AllBinaryLayer NULL_ALLBINARY_LAYER = AllBinaryLayer(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION);
 
-    private: static const TYPE: string = "Type: ";
+    private: static const std::string TYPE = "Type: ";
 
-    const viewPositionEvent: ViewPositionEvent = new ViewPositionEvent(this);
+    protected: const ViewPositionEvent viewPositionEvent = ViewPositionEvent(this);
 
-    private: halfWidth: int32_t= 0;
+    private: int32_t halfWidth= 0;
 
-    private: halfHeight: int32_t= 0;
+    private: int32_t halfHeight= 0;
 
-    private: const name: string;
+    private: std::string name;
 
-    private: viewPosition: ViewPositionBase = ViewPositionBase.NULL_VIEW_POSITION;
+    private: ViewPositionBase viewPosition = ViewPositionBase::NULL_VIEW_POSITION;
 
-public constructor (string name, Rectangle rectangle, ViewPositionBase viewPosition);
+public: AllBinaryLayer(std::string name, Rectangle rectangle, ViewPositionBase viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public onChangeEvent(ViewPositionEvent layerManagerEvent);
+    public: void onChangeEvent(ViewPositionEvent layerManagerEvent);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
-    public int32_t getX2();
+    public: int32_t getX2();
 
-    public int32_t getY2();
+    public: int32_t getY2();
 
-    public int32_t getZ2();
+    public: int32_t getZ2();
 
-    public string getName();
+    public: std::string getName();
 
-    setHalfWidth(int32_t halfWidth);
+    protected: void setHalfWidth(int32_t halfWidth);
 
-    public int32_t getHalfWidth();
+    public: int32_t getHalfWidth();
 
-    setHalfHeight(int32_t halfHeight);
+    protected: void setHalfHeight(int32_t halfHeight);
 
-    public int32_t getHalfHeight();
+    public: int32_t getHalfHeight();
 
-    public int32_t getHalfDepth();
+    public: int32_t getHalfDepth();
 
-    public ViewPositionBase getViewPosition();
+    public: ViewPositionBase getViewPosition();
 
-    public setViewPosition(ViewPositionBase viewPosition);
+    public: void setViewPosition(ViewPositionBase viewPosition);
 
-    public std::vector<Group> getGroupInterface();
+    public: std::vector<Group> getGroupInterface();
 
-    public bool implmentsTickableInterface();
+    public: bool implmentsTickableInterface();
 
-    public bool implmentsGameInputInterface();
+    public: bool implmentsGameInputInterface();
 
-    public bool implmentsArtificialIntelligenceCompositeInterface();
+    public: bool implmentsArtificialIntelligenceCompositeInterface();
 
-    public bool implmentsCollidableInterface();
+    public: bool implmentsCollidableInterface();
 
-    public bool implementsThreedInterface();
+    public: bool implementsThreedInterface();
 
-    public int32_t getType();
+    public: int32_t getType();
 
-    public int32_t getMultiPlayerType();
+    public: int32_t getMultiPlayerType();
 
-    public toStringAppend(StringMaker stringBuffer);
+    public: void toStringAppend(StringMaker stringBuffer);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

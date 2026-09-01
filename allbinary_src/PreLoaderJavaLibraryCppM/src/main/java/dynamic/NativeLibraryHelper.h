@@ -47,13 +47,12 @@
 class NativeLibraryHelper
             : public Object
          {
-        
 
-    private: library: string;
+    private: std::string library;
 
-public constructor (string library);
+public: NativeLibraryHelper(std::string library);
 
-    public load();
+    public: void load();
 
 };
 

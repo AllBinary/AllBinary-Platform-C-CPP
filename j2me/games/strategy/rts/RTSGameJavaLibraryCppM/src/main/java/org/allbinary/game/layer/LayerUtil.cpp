@@ -57,47 +57,46 @@
 class LayerUtil
             : public Object
          {
-        
 
-    private: static const HASHTABLE: string = "Hashtable: ";
+    private: static const std::string HASHTABLE = "Hashtable: ";
 
-    public static string toString(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: static std::string toString(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
-    
-
-    positionStrings: PositionStrings = PositionStrings.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    PositionStrings positionStrings = PositionStrings::getInstance();;
     
-stringBuffer!.append(LayerUtil.HASHTABLE);
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(hashtable));
+stringBuffer.append(LayerUtil::HASHTABLE);
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.append(StringUtil::getInstance().toString(hashtable));
     
-stringBuffer!.append(positionStrings!.X_LABEL);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.appendint(x);
+stringBuffer.append(positionStrings.X_LABEL);
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.appendint(x);
     
-stringBuffer!.append(positionStrings!.Y_LABEL);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.appendint(y);
+stringBuffer.append(positionStrings.Y_LABEL);
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.appendint(y);
     
-stringBuffer!.append(positionStrings!.Z_LABEL);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.appendint(z);
+stringBuffer.append(positionStrings.Z_LABEL);
+    
+stringBuffer.appendint(z);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

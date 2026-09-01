@@ -47,9 +47,8 @@
 class PaintableFactory
             : public Object
          {
-        
 
-    public Paintable getInstance();
+    public: Paintable getInstance();
 
 };
 

@@ -34,17 +34,16 @@
         #include "RectangleFilledAnimation.h"
 
 class ARectangleFilledAnimation: public RectangleFilledAnimation {
-        
 
-    public x: int32_t= 0;
+    public: int32_t x= 0;
 
-    public y: int32_t= 0;
+    public: int32_t y= 0;
 
-public constructor ();
+public: ARectangleFilledAnimation();
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public paintXY(Graphics graphics, int32_t unusedX, int32_t unusedY);
+    public: void paintXY(Graphics graphics, int32_t unusedX, int32_t unusedY);
 
 };
 

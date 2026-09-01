@@ -41,11 +41,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScreenListenerInterface {
-        
 
-    onFullScreen(bool isFullScreen);
+    void onFullScreen(bool isFullScreen);
 
-    onFullScreenDisplay();
+    void onFullScreenDisplay();
 
 };
 

@@ -44,31 +44,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RaceTrackGeographicMapCellType: public GeographicMapCellType {
-        
 
-    public const name: string;
+    public: std::string name;
 
-    private: const travelCost: int32_t;
+    private: int32_t travelCost;
 
-public constructor (string name, int32_t type, int32_t travelCost, int32_t reset){
+public: RaceTrackGeographicMapCellType(std::string name, int32_t type, int32_t travelCost, int32_t reset){
             super(type, reset);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.name= name;
+this->name= name;
     
-this.travelCost= travelCost;
+this->travelCost= travelCost;
     
 }
 
 
-    public int32_t getTravelCost(){
+    public: int32_t getTravelCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.travelCost;
+                        return this->travelCost;
     
 }
 

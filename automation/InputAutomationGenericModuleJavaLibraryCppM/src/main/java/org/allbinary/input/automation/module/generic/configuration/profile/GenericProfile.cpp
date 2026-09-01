@@ -71,48 +71,45 @@
 class GenericProfile
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: vector: Vector;
+    private: Vector vector;
 
-    private: genericProfileActions: GenericProfileActions;
+    private: GenericProfileActions genericProfileActions;
 
-public constructor (Node node){
-
-            super();
-        this.setName(DomNodeHelper.getTextNodeValue(node));
+public: GenericProfile(Node node){
+this->setName(DomNodeHelper::getTextNodeValue(node));
     
-this.vector= new Vector();
+this->vector= Vector();
     
 
-    nodeList: NodeList = node.getChildNodes()!;;
+    NodeList nodeList = node.getChildNodes();;
     
-this.logUtil!.putF("Name: " +this.getName() +" Child Nodes: " +nodeList!.getLength(), this, "Contructor");
+this->logUtil.putF("Name: " +this->getName() +" Child Nodes: " +nodeList.getLength(), this, "Contructor");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    profileNode: Node = nodeList!.item(index)!;;
+    Node profileNode = nodeList.item(index);;
     
 
-                        if(profileNode!.getNodeName()!.compareTo(GenericProfileDataWorkerData.NAME) == 0)
+                        if(profileNode.getNodeName().compareTo(GenericProfileDataWorkerData::NAME) == 0)
                         
                                     {
                                     
-    genericProfileDataWorkerType: GenericProfileDataWorkerType = GenericProfileDataWorkerType.getInstance(profileNode)!;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = GenericProfileDataWorkerType::getInstance(profileNode);;
     
-this.logUtil!.putF("Adding GenericProfileDataWorkerType: " +genericProfileDataWorkerType!.toString(), this, "Contructor");
+this->logUtil.putF("Adding GenericProfileDataWorkerType: " +genericProfileDataWorkerType.toString(), this, "Contructor");
     
-this.vector.add(genericProfileDataWorkerType);
+this->vector.add(genericProfileDataWorkerType);
     
 
                                     }
@@ -122,59 +119,58 @@ this.vector.add(genericProfileDataWorkerType);
 }
 
 
-public constructor (string name){
-
-            super();
-        this.setName(name);
+public: GenericProfile(std::string name){
+this->setName(name);
     
-this.vector= new Vector();
+this->vector= Vector();
     
 }
 
 
-    public Vector getGenericProfileDataWorkerTypeVector(){
+    public: Vector getGenericProfileDataWorkerTypeVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vector;
+                        return this->vector;
     
 }
 
 
-    public add(GenericProfileDataWorkerType genericProfileDataWorkerType){
+    public: void add(GenericProfileDataWorkerType genericProfileDataWorkerType){
 
-                        if(!this.vector.contains(genericProfileDataWorkerType))
-                        this.vector.add(genericProfileDataWorkerType)
+                        if(!this->vector.contains(genericProfileDataWorkerType))
+                        this->vector.add(genericProfileDataWorkerType);
+                                
 }
 
 
-    public remove(GenericProfileDataWorkerType genericProfileDataWorkerType){
-this.vector.remove(genericProfileDataWorkerType);
+    public: void remove(GenericProfileDataWorkerType genericProfileDataWorkerType){
+this->vector.remove(genericProfileDataWorkerType);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createTextNode(document, GenericProfileData.NAME, this.name)!;;
+    Node node = ModDomHelper::createTextNode(document, GenericProfileData::NAME, this->name);;
     
 
-    size: int32_t = this.vector.length!;;
+    int32_t size = this->vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    genericProfileDataWorkerType: GenericProfileDataWorkerType = this.vector.get(index) as GenericProfileDataWorkerType;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = this->vector.get(index) as GenericProfileDataWorkerType;;
     
-node.appendChild(genericProfileDataWorkerType!.toXmlNode(document));
+node.appendChild(genericProfileDataWorkerType.toXmlNode(document));
     
 }
 
@@ -187,34 +183,34 @@ node.appendChild(genericProfileDataWorkerType!.toXmlNode(document));
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public GenericProfileActions getGenericProfileActions(){
+    public: GenericProfileActions getGenericProfileActions(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericProfileActions;
+                        return this->genericProfileActions;
     
 }
 
 
-    public setGenericProfileActions(GenericProfileActions genericProfileActions){
-this.genericProfileActions= genericProfileActions;
+    public: void setGenericProfileActions(GenericProfileActions genericProfileActions){
+this->genericProfileActions= genericProfileActions;
     
 }
 

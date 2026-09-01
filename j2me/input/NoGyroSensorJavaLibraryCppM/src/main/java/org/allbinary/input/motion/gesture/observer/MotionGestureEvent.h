@@ -77,39 +77,38 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MotionGestureEvent: public AllBinaryEventObject {
-        
 
-    private: static const CURRENT: string = CommonLabels.getInstance()!.CURRENT;
+    private: static const std::string CURRENT = CommonLabels::getInstance().CURRENT;
 
-    private: static const PREVIOUS: string = " Previous: ";
+    private: static const std::string PREVIOUS = " Previous: ";
 
-    private: static const HASHCODE: string = " hashcode: ";
+    private: static const std::string HASHCODE = " hashcode: ";
 
-    private: motionGesture: MotionGestureInput = TouchMotionGestureFactory.getInstance()!.NO_MOTION;
+    private: MotionGestureInput motionGesture = TouchMotionGestureFactory::getInstance().NO_MOTION;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-    private: previousPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: GPoint previousPoint = PointFactory::getInstance().ZERO_ZERO;
 
-    private: currentPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: GPoint currentPoint = PointFactory::getInstance().ZERO_ZERO;
 
-public constructor (any = {} source, int32_t id, MotionGestureInput motionGesture);
+public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput motionGesture);
 
-    public MotionGestureInput getMotionGesture();
+    public: MotionGestureInput getMotionGesture();
 
-    public setMotionGesture(MotionGestureInput motionGesture);
+    public: void setMotionGesture(MotionGestureInput motionGesture);
 
-    public GPoint getPreviousPoint();
+    public: GPoint getPreviousPoint();
 
-    public setPreviousPoint(GPoint previousPoint);
+    public: void setPreviousPoint(GPoint previousPoint);
 
-    public GPoint getCurrentPoint();
+    public: GPoint getCurrentPoint();
 
-    public setCurrentPoint(GPoint currentPoint);
+    public: void setCurrentPoint(GPoint currentPoint);
 
-    public string toString();
+    public: std::string toString();
 
-    public int32_t getId();
+    public: int32_t getId();
 
 };
 

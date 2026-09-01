@@ -54,54 +54,51 @@
         #include "PreGameScrollSelectionForm.h"
 
 class PreGameSelectorPaintable: public InitUpdatePaintable {
-        
 
-    private: const title: string;
+    private: std::string title;
 
-    private: canvasDrawLineString: CanvasDrawLineString;
+    private: CanvasDrawLineString canvasDrawLineString;
 
-    private: const preGameScrollSelectionForm: PreGameScrollSelectionForm;
+    private: PreGameScrollSelectionForm preGameScrollSelectionForm;
 
-public constructor (string title, PreGameScrollSelectionForm preGameScrollSelectionForm){
-
-            super();
-        this.title= title;
+public: PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm preGameScrollSelectionForm){
+this->title= title;
     
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
-this.canvasDrawLineString= new CanvasDrawLineString(displayInfo!.getLastHalfWidth(), 0);
+this->canvasDrawLineString= CanvasDrawLineString(displayInfo.getLastHalfWidth(), 0);
     
-this.preGameScrollSelectionForm= preGameScrollSelectionForm;
+this->preGameScrollSelectionForm= preGameScrollSelectionForm;
     
 }
 
 
-    public update(){
+    public: void update(){
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
-this.canvasDrawLineString= new CanvasDrawLineString(displayInfo!.getLastHalfWidth(), 0);
-    
-}
-
-
-    public paint(Graphics graphics){
-graphics.setColor(BasicColorFactory.getInstance()!.WHITE.intValue());
-    
-this.canvasDrawLineString!.paint(graphics, title, 0);
-    
-this.getPreGameSelectionForm()!.paint(graphics);
+this->canvasDrawLineString= CanvasDrawLineString(displayInfo.getLastHalfWidth(), 0);
     
 }
 
 
-    public PreGameScrollSelectionForm getPreGameSelectionForm(){
+    public: void paint(Graphics graphics){
+graphics.setColor(BasicColorFactory::getInstance().WHITE.intValue());
+    
+this->canvasDrawLineString.paint(graphics, title, 0);
+    
+this->getPreGameSelectionForm().paint(graphics);
+    
+}
+
+
+    public: PreGameScrollSelectionForm getPreGameSelectionForm(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.preGameScrollSelectionForm;
+                        return this->preGameScrollSelectionForm;
     
 }
 

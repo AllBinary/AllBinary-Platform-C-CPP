@@ -51,25 +51,24 @@
 class PlayerStateUtil
             : public Object
          {
-        
 
-    private: static const instance: PlayerStateUtil = new PlayerStateUtil();
+    private: static PlayerStateUtil instance() { return PlayerStateUtil(); }
 
-    public static PlayerStateUtil getInstance();
+    public: static PlayerStateUtil getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const UNREALIZED: string = "UNREALIZED";
+    public: const std::string UNREALIZED = "UNREALIZED";
 
-    public const REALIZED: string = "REALIZED";
+    public: const std::string REALIZED = "REALIZED";
 
-    public const PREFETCHED: string = "PREFETCHED";
+    public: const std::string PREFETCHED = "PREFETCHED";
 
-    public const STARTED: string = "STARTED";
+    public: const std::string STARTED = "STARTED";
 
-    public const CLOSED: string = "CLOSED";
+    public: const std::string CLOSED = "CLOSED";
 
-    public string convert(int32_t state);
+    public: std::string convert(int32_t state);
 
 };
 

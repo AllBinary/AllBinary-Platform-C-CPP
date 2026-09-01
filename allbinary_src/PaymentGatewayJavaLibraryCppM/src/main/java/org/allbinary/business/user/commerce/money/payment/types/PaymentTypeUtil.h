@@ -105,48 +105,47 @@
 class PaymentTypeUtil
             : public Object
          {
-        
 
-    private: static const instance: PaymentTypeUtil = new PaymentTypeUtil();
+    private: static PaymentTypeUtil instance() { return PaymentTypeUtil(); }
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public static PaymentTypeUtil getInstance();
+    public: static PaymentTypeUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const PAYMENTGATEWAYFILEPATHSTRING: string;
+    private: std::string PAYMENTGATEWAYFILEPATHSTRING;
 
-    private: const SHIPPINGMETHODSFILENAME: string = "paymentGatewayTypes.xml";
+    private: const std::string SHIPPINGMETHODSFILENAME = "paymentGatewayTypes.xml";
 
-    private: defaultName: string = 
-                null
+    private: std::string defaultName = 
+                nullptr
             ;
 
-    private: paymentTypeVector: Vector = new Vector();
+    private: Vector paymentTypeVector = Vector();
 
-private constructor ();
+private: PaymentTypeUtil();
 
-    public add(PaymentType paymentType);
-
-                //@Throws(Exception.constructor)
-            
-    public PaymentType get(string paymentTypeString);
+    public: void add(PaymentType paymentType);
 
                 //@Throws(Exception.constructor)
             
-    public initDefault(string storeName);
+    public: PaymentType get(std::string paymentTypeString);
 
                 //@Throws(Exception.constructor)
             
-    public PaymentType getDefault(string storeName);
+    public: void initDefault(std::string storeName);
 
-    public bool isContain(PaymentType paymentType);
+                //@Throws(Exception.constructor)
+            
+    public: PaymentType getDefault(std::string storeName);
 
-    public Vector difference(Vector a_PaymentTypeVector);
+    public: bool isContain(PaymentType paymentType);
+
+    public: Vector difference(Vector a_PaymentTypeVector);
 
 };
 

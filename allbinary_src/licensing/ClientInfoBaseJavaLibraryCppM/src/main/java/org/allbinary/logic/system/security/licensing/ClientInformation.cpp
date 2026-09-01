@@ -86,159 +86,156 @@
 class ClientInformation
             : public Object
         : public AbeClientInformationInterface {
-        
 
-    private: operatingSystemInterface: GenericOperatingSystem = NoOperatingSystem.NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const shortName: string;
+    private: std::string shortName;
 
-    private: const version: string;
+    private: std::string version;
 
-    private: const specialName: string;
+    private: std::string specialName;
 
-    private: hardSale: bool = true;
+    private: bool hardSale = true;
 
-    private: licenseId: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string licenseId = StringUtil::getInstance().EMPTY_STRING;
 
-    private: licenseServers: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList licenseServers = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-public constructor (string name, string version, string specialName, string shortName){
-
-            super();
-        this.name= name;
+public: ClientInformation(std::string name, std::string version, std::string specialName, std::string shortName){
+this->name= name;
     
-this.version= version;
+this->version= version;
     
-this.specialName= specialName;
+this->specialName= specialName;
     
-this.shortName= new StringMaker().append(shortName)!.append(CommonSeps.getInstance()!.UNDERSCORE)!.append(version)!.toString();
+this->shortName= StringMaker().append(shortName).append(CommonSeps::getInstance().UNDERSCORE).append(version).toString();
     
-this.init();
+this->init();
     
 }
 
 
-    public init(){
+    public: void init(){
 }
 
 
-    public GenericOperatingSystem getOperatingSystemInterface(){
+    public: GenericOperatingSystem getOperatingSystemInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.operatingSystemInterface;
+                        return this->operatingSystemInterface;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getSpecialName(){
+    public: std::string getSpecialName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.specialName;
+                        return this->specialName;
     
 }
 
 
-    public string getVersion(){
+    public: std::string getVersion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.version;
+                        return this->version;
     
 }
 
 
-    public string getLicenseId(){
+    public: std::string getLicenseId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.licenseId;
+                        return this->licenseId;
     
 }
 
 
-    public BasicArrayList getLicenseServers(){
+    public: BasicArrayList getLicenseServers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.licenseServers;
+                        return this->licenseServers;
     
 }
 
 
-    public string getLicenseServer(int32_t index){
+    public: std::string getLicenseServer(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.licenseServers!.objectArray[index]! as string;
+                        return this->licenseServers.objectArray[index]! as string;
     
 }
 
 
-    public int32_t getNumberOfLicenseServers(){
+    public: int32_t getNumberOfLicenseServers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.licenseServers!.size();;
+                        return this->licenseServers.size();;
     
 }
 
 
-    public Hashtable<any, any> toHashtable(){
+    public: Hashtable<any, any> toHashtable(){
 
-    abeClientInformationData: AbeClientInformationData = AbeClientInformationData.getInstance()!;;
-    
-
-    genericOperatingSystem: GenericOperatingSystem = this.getOperatingSystemInterface()!;;
+    AbeClientInformationData abeClientInformationData = AbeClientInformationData::getInstance();;
     
 
-    clientInfoHashtable: Hashtable<any, any> = new Hashtable<any, any>();;
-    
-clientInfoHashtable!.put(abeClientInformationData!.NAME, this.name);
-    
-clientInfoHashtable!.put(abeClientInformationData!.VERSION, this.version);
-    
-clientInfoHashtable!.put(abeClientInformationData!.SPECIALNAME, this.specialName);
-    
-clientInfoHashtable!.put(abeClientInformationData!.LICENSEID, this.getLicenseId());
-    
-clientInfoHashtable!.put(abeClientInformationData!.OSNAME, genericOperatingSystem!.getName());
-    
-clientInfoHashtable!.put(abeClientInformationData!.OSARCH, genericOperatingSystem!.getArch());
-    
-clientInfoHashtable!.put(abeClientInformationData!.OSVERSION, genericOperatingSystem!.getVersion());
-    
-clientInfoHashtable!.put(abeClientInformationData!.OS, genericOperatingSystem!.toString());
+    GenericOperatingSystem genericOperatingSystem = this->getOperatingSystemInterface();;
     
 
-    hardwareInterface: HardwareInterface = SystemHardwareFactory.getInstance()!.getInstance(genericOperatingSystem)!;;
+    Hashtable<any, any> clientInfoHashtable = Hashtable<any, any>();;
+    
+clientInfoHashtable.put(abeClientInformationData.NAME, this->name);
+    
+clientInfoHashtable.put(abeClientInformationData.VERSION, this->version);
+    
+clientInfoHashtable.put(abeClientInformationData.SPECIALNAME, this->specialName);
+    
+clientInfoHashtable.put(abeClientInformationData.LICENSEID, this->getLicenseId());
+    
+clientInfoHashtable.put(abeClientInformationData.OSNAME, genericOperatingSystem.getName());
+    
+clientInfoHashtable.put(abeClientInformationData.OSARCH, genericOperatingSystem.getArch());
+    
+clientInfoHashtable.put(abeClientInformationData.OSVERSION, genericOperatingSystem.getVersion());
+    
+clientInfoHashtable.put(abeClientInformationData.OS, genericOperatingSystem.toString());
     
 
-    hardwareString: string = hardwareInterface!.toString()!;;
+    HardwareInterface hardwareInterface = SystemHardwareFactory::getInstance().getInstance(genericOperatingSystem);;
     
-clientInfoHashtable!.put(abeClientInformationData!.HARDWARE, hardwareString);
+
+    std::string hardwareString = hardwareInterface.toString();;
+    
+clientInfoHashtable.put(abeClientInformationData.HARDWARE, hardwareString);
     
 
 
@@ -249,9 +246,9 @@ clientInfoHashtable!.put(abeClientInformationData!.HARDWARE, hardwareString);
 }
 
 
-    public bool isSameId(string alicenseId){
+    public: bool isSameId(std::string alicenseId){
 
-                        if(this.tsUtil!.compareTo(this.getLicenseId(), alicenseId) == 0)
+                        if(this->tsUtil.compareTo(this->getLicenseId(), alicenseId) == 0)
                         
                                     {
                                     
@@ -276,12 +273,12 @@ clientInfoHashtable!.put(abeClientInformationData!.HARDWARE, hardwareString);
 }
 
 
-    public bool isLargerOrDifferentServerList(BasicArrayList list){
+    public: bool isLargerOrDifferentServerList(BasicArrayList list){
 
-    size: int32_t = list.size() -1;;
+    int32_t size = list.size() -1;;
     
 
-    currentSize: int32_t = this.licenseServers!.size() -1;;
+    int32_t currentSize = this->licenseServers.size() -1;;
     
 
                         if(size > currentSize)
@@ -301,23 +298,23 @@ clientInfoHashtable!.put(abeClientInformationData!.HARDWARE, hardwareString);
 
 
                         for (
-    index: int32_t = size;index >= 0; index--)
+    int32_t index = size;index >= 0; index--)
         {
 
-    newServerName: string = list.objectArray[index]! as string;;
+    std::string newServerName = list.objectArray[index]! as string;;
     
 
 
 
 
                         for (
-    index2: int32_t = currentSize;index2 >= 0; index2--)
+    int32_t index2 = currentSize;index2 >= 0; index2--)
         {
 
-    nextOldServerName: string = this.licenseServers!.objectArray[index]! as string;;
+    std::string nextOldServerName = this->licenseServers.objectArray[index]! as string;;
     
 
-                        if(this.tsUtil!.compareTo(newServerName, nextOldServerName) != 0)
+                        if(this->tsUtil.compareTo(newServerName, nextOldServerName) != 0)
                         
                                     {
                                     
@@ -342,46 +339,46 @@ clientInfoHashtable!.put(abeClientInformationData!.HARDWARE, hardwareString);
 }
 
 
-    setHardSale(bool hardSale){
-this.hardSale= hardSale;
+    protected: void setHardSale(bool hardSale){
+this->hardSale= hardSale;
     
 }
 
 
-    public bool isHardSale(){
+    public: bool isHardSale(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hardSale;
+                        return this->hardSale;
     
 }
 
 
-    setOperatingSystemInterface(GenericOperatingSystem operatingSystemInterface){
-this.operatingSystemInterface= operatingSystemInterface;
+    protected: void setOperatingSystemInterface(GenericOperatingSystem operatingSystemInterface){
+this->operatingSystemInterface= operatingSystemInterface;
     
 }
 
 
-    setLicenseId(string licenseId){
-this.licenseId= licenseId;
+    protected: void setLicenseId(std::string licenseId){
+this->licenseId= licenseId;
     
 }
 
 
-    setLicenseServers(BasicArrayList licenseServers){
-this.licenseServers= licenseServers;
+    protected: void setLicenseServers(BasicArrayList licenseServers){
+this->licenseServers= licenseServers;
     
 }
 
 
-    public string toShortString(){
+    public: std::string toShortString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shortName;
+                        return this->shortName;
     
 }
 

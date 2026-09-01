@@ -95,43 +95,42 @@
         #include "TouchButtonInput.h"
 
 class TouchButton: public Paintable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const touchButtonInput: TouchButtonInput;
+    private: TouchButtonInput touchButtonInput;
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-    const rawRectangle: Rectangle;
+    protected: Rectangle rawRectangle;
 
-    const xBorder: int32_t;
+    protected: int32_t xBorder;
 
-    const yBorder: int32_t;
+    protected: int32_t yBorder;
 
-    rectangle: Rectangle = RectangleFactory.SINGLETON;
+    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
 
-    const cellPosition: CellPosition;
+    protected: CellPosition cellPosition;
 
-    animationX: int32_t= 0;
+    protected: int32_t animationX= 0;
 
-    animationY: int32_t= 0;
+    protected: int32_t animationY= 0;
 
-public constructor (TouchButtonInput touchButtonInput, AnimationInterface animationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
+public: TouchButton(TouchButtonInput touchButtonInput, AnimationInterface animationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    updateRectangle();
+    protected: void updateRectangle();
 
-    public CellPosition getCellPositionP();
+    public: CellPosition getCellPositionP();
 
-    public Rectangle getRectangleP();
+    public: Rectangle getRectangleP();
 
-    public TouchButtonInput getTouchButtonInput();
+    public: TouchButtonInput getTouchButtonInput();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

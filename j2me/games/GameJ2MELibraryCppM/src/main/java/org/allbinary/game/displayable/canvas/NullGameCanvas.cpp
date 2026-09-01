@@ -70,41 +70,40 @@
         #include "AllBinaryGameCanvas.h"
 
 class NullGameCanvas: public AllBinaryGameCanvas {
-        
 
-    static NullGameCanvas createNull(){
+    private: static NullGameCanvas createNull(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NullGameCanvas(AllBinaryGameLayerManager.getNullInstance());
+                        return NullGameCanvas(AllBinaryGameLayerManager::getNullInstance());
     
 
                 //: 
 } catch(e) 
             {
-LogUtil.getInstance()!.put(CommonStrings.getInstance()!.EXCEPTION, "NullGameCanvas", CommonStrings.getInstance()!.GET_INSTANCE, e);
+LogUtil::getInstance().put(CommonStrings::getInstance().EXCEPTION, "NullGameCanvas", CommonStrings::getInstance().GET_INSTANCE, e);
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static NullGameCanvas getInstance(){
+    public: static NullGameCanvas getInstance(){
 
-                        if(NullGameCanvas.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(NullGameCanvas::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    NullGameCanvas.instance= NullGameCanvas.createNull();
+                                    NullGameCanvas::instance= NullGameCanvas::createNull();
     
 
                                     }
@@ -113,20 +112,20 @@ LogUtil.getInstance()!.put(CommonStrings.getInstance()!.EXCEPTION, "NullGameCanv
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas.instance as NullGameCanvas;
+                        return NullGameCanvas::instance() as NullGameCanvas;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static NullGameCanvas createCanvas(AllBinaryGameLayerManager gameLayerManager){
+    public: static NullGameCanvas createCanvas(AllBinaryGameLayerManager gameLayerManager){
 
-    nullGameCanvas: NullGameCanvas = new NullGameCanvas(gameLayerManager);;
+    NullGameCanvas nullGameCanvas = NullGameCanvas(gameLayerManager);;
     
-nullGameCanvas!.setInitialized(true);
+nullGameCanvas.setInitialized(true);
     
-nullGameCanvas!.setTitle(NullGameCanvas.NO_GAME);
+nullGameCanvas.setTitle(NullGameCanvas::NO_GAME);
     
 
 
@@ -137,12 +136,12 @@ nullGameCanvas!.setTitle(NullGameCanvas.NO_GAME);
 }
 
 
-    public static const NO_GAME: string = "No Background Game";
+    public: static const std::string NO_GAME = "No Background Game";
 
-    public static const TYPE: int32_t = 1;
+    public: static const int32_t TYPE = 1;
 
-protected constructor (AllBinaryGameLayerManager gameLayerManager){
-            super(NullCommandListener.NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory.getInstance(), BasicBuildGameInitializerFactory.NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false);
+protected: NullGameCanvas(AllBinaryGameLayerManager gameLayerManager){
+            super(NullCommandListener::NULL_COMMAND_LISTENER, gameLayerManager, NoHighScoresFactory::getInstance(), BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY, false);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -153,7 +152,7 @@ super.setWait(1200);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isGameOver(){
+    public: bool isGameOver(){
 
 
 
@@ -163,81 +162,81 @@ super.setWait(1200);
 }
 
 
-    private: runningNull: bool = true;
+    private: bool runningNull = true;
 
-    public setRunning(bool running){
-this.runningNull= running;
+    public: void setRunning(bool running){
+this->runningNull= running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.runningNull;
+                        return this->runningNull;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public pause(){
-this.setPaused(true);
+    public: void pause(){
+this->setPaused(true);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public unPause(){
-this.setPaused(false);
+    public: void unPause(){
+this->setPaused(false);
     
 }
 
 
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public buildGameInit(bool isProgress){
+    public: void buildGameInit(bool isProgress){
 }
 
 
-    public draw(Graphics graphics){
+    public: void draw(Graphics graphics){
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START_RUNNABLE, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
     
-this.logUtil!.putF(this.commonStrings!.END_RUNNABLE, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullGameCanvas.TYPE;
+                        return NullGameCanvas::TYPE;
     
 }
 

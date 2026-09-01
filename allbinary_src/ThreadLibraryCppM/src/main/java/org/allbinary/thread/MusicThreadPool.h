@@ -55,19 +55,18 @@
         #include "ThreadPool.h"
 
 class MusicThreadPool: public ThreadPool {
-        
 
-    private: static const THREAD_POOL: ThreadPool = new ThreadPool("Music", 2, ThreadPool.NORMAL_PRIORITY);
+    private: static const ThreadPool THREAD_POOL = ThreadPool("Music", 2, ThreadPool::NORMAL_PRIORITY);
 
-    public static ThreadPool getInstance();
+    public: static ThreadPool getInstance();
 
-public constructor (string poolName, int32_t numThreads, int32_t priority);
+public: MusicThreadPool(std::string poolName, int32_t numThreads, int32_t priority);
 
-    public runTask(Runnable task);
+    public: void runTask(Runnable task);
 
-    startTask(Runnable task);
+    protected: void startTask(Runnable task);
 
-    completedTask(Runnable task);
+    protected: void completedTask(Runnable task);
 
 };
 

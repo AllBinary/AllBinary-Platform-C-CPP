@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONWORKER_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONWORKER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Long.h"
@@ -80,38 +82,37 @@
 #include "ImageComparisonResultCacheSingleton.h"
 #include "ImageComparisonResultsEvent.h"
 
-class ImageComparisonWorker: public BasicEventHandler: public CapturedImageWorkerResultsListener {
-        
+class ImageComparisonWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const bufferedImageVector: Vector = new Vector();
+    private: const Vector bufferedImageVector = Vector();
 
-    private: const imageComparatorConstraintsInterface: ImageComparatorConstraintsInterface;
+    private: ImageComparatorConstraintsInterface imageComparatorConstraintsInterface;
 
-    private: const imageComparator: ImageComparator;
+    private: ImageComparator imageComparator;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: index2: int32_t= 0;
+    private: int32_t index2= 0;
 
-public constructor (ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
+public: ImageComparisonWorker(ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent);
+    public: void onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
 
-    public run();
+    public: void run();
 
 };
 

@@ -65,32 +65,31 @@
 class GuiLog
             : public Object
          {
-        
 
-    private: static const instance: GuiLog = new GuiLog();
+    private: static GuiLog instance() { return GuiLog(); }
 
-    public static GuiLog getInstance();
+    public: static GuiLog getInstance();
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-private constructor ();
+private: GuiLog();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public showDialog(string msg);
+    public: void showDialog(std::string msg);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, any = {} anyType, string functionName);
+    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, any = {} anyType, string functionName, Exception exception);
+    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName, Exception exception);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, string className, string functionName);
+    public: std::string put(std::string specialMessage, std::string className, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, string className, string functionName, Exception exception);
+    public: std::string put(std::string specialMessage, std::string className, std::string functionName, Exception exception);
 
 };
 

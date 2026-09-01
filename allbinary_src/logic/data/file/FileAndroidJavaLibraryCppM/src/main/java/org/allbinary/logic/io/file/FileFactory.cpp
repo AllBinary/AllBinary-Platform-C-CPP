@@ -54,36 +54,33 @@
 class FileFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: FileFactory = new FileFactory(ResourceUtil.getInstance()!.getContext());
+    private: static const FileFactory SINGLETON = FileFactory(ResourceUtil::getInstance().getContext());
 
-    public static FileFactory getInstance(){
+    public: static FileFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileFactory.SINGLETON;
+                        return FileFactory::SINGLETON;
     
 }
 
 
-    private: context: Context;
+    private: Context context;
 
-private constructor (Context context){
-
-            super();
-        this.context= context;
+private: FileFactory(Context context){
+this->context= context;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isFile(string path){
+    public: bool isFile(std::string path){
 
         try {
-            this.context.openFileInput(path);
+            this->context.openFileInput(path);
     
 
 
@@ -106,36 +103,36 @@ private constructor (Context context){
 }
 
 
-    public Context getContext(){
+    public: Context getContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.context;
+                        return this->context;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbFile getFile(string filePath){
+    public: AbFile getFile(std::string filePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFile.createAbFileFromRawPath(filePath);;
+                        return AbFile::createAbFileFromRawPath(filePath);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbFile getInstance(AbFile file, string childFilePath){
+    public: AbFile getInstance(AbFile file, std::string childFilePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFile.createAbFileWithChild(file, childFilePath);;
+                        return AbFile::createAbFileWithChild(file, childFilePath);;
     
 }
 

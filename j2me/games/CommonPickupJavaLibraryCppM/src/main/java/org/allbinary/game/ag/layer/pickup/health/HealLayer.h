@@ -66,14 +66,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealLayer: public AllBinaryLayer: public HealthVisitorInterface {
-        
+class HealLayer: public AllBinaryLayer, public HealthVisitorInterface {
 
-public constructor ();
+public: HealLayer();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public visit(HealthInterface healthInterface);
+    public: void visit(HealthInterface healthInterface);
 
 };
 

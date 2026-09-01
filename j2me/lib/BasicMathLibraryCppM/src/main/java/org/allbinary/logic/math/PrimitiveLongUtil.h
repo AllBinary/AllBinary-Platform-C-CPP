@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,33 +72,32 @@
 class PrimitiveLongUtil
             : public Object
          {
-        
 
-    public static PrimitiveLongUtil createPowerOfTen(int32_t powerOfTen);
+    public: static PrimitiveLongUtil createPowerOfTen(int32_t powerOfTen);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: powerOfTen: int32_t;
+    private: int32_t powerOfTen;
 
-    private: maxValue: int32_t;
+    private: int32_t maxValue;
 
-    private: maxDigits: int32_t;
+    private: int32_t maxDigits;
 
-    private: const charArray: std::vector<char>;
+    private: std::vector<char> charArray;
 
-    private: currentTotalDigits: int32_t= 0;
+    private: int32_t currentTotalDigits= 0;
 
-    private: const primitiveLongSingleton: PrimitiveLongSingleton = PrimitiveLongSingleton.getInstance()!;
+    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
-public constructor (int32_t powerOfTen, any = {} unused);
+public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused);
 
-    public std::vector<char> getCharArray(int32_t value);
+    public: std::vector<char> getCharArray(int32_t value);
 
-    setCurrentTotalDigits(int32_t currentTotalDigits);
+    private: void setCurrentTotalDigits(int32_t currentTotalDigits);
 
-    public int32_t getCurrentTotalDigits();
+    public: int32_t getCurrentTotalDigits();
 
-    public int32_t getMaxDigits();
+    public: int32_t getMaxDigits();
 
 };
 

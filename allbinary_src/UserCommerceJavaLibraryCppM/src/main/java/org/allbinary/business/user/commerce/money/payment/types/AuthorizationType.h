@@ -45,13 +45,12 @@
 class AuthorizationType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: AuthorizationType(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

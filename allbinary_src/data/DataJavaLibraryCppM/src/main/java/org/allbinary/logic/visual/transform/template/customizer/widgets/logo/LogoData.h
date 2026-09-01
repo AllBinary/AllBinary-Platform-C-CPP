@@ -45,21 +45,20 @@
 class LogoData
             : public Object
          {
-        
 
-    private: static const instance: LogoData = new LogoData();
+    private: static LogoData instance() { return LogoData(); }
 
-    public static LogoData getInstance();
+    public: static LogoData getInstance();
 
-private constructor ();
+private: LogoData();
 
-    public const NAME: string = "LOGO_NAME";
+    public: const std::string NAME = "LOGO_NAME";
 
-    public const IMAGEPATH: string = "LOGO_IMAGE_PATH";
+    public: const std::string IMAGEPATH = "LOGO_IMAGE_PATH";
 
-    public const IMAGEFILENAME: string = "LOGO_IMAGE_FILE_NAME";
+    public: const std::string IMAGEFILENAME = "LOGO_IMAGE_FILE_NAME";
 
-    public const IMAGE: string = "LOGO_IMAGE";
+    public: const std::string IMAGE = "LOGO_IMAGE";
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_SPRITEINDEXEDANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Throwable.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -89,54 +91,53 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SpriteIndexedAnimation: public IndexedAnimation: public ColorCompositeInterface {
-        
+class SpriteIndexedAnimation: public IndexedAnimation, public ColorCompositeInterface {
 
-    const sprite: Sprite;
+    protected: Sprite sprite;
 
-    const image: Image;
+    protected: Image image;
 
-    private: const basicColorArray: std::vector<BasicColor>;
+    private: std::vector<BasicColor> basicColorArray;
 
-public constructor (Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior);
+public: SpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public BasicColor getBasicColorP();
+    public: BasicColor getBasicColorP();
 
-    public paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    paint(Graphics graphics);
+    protected: void paint(Graphics graphics);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public setFrame(int32_t frame);
+    public: void setFrame(int32_t frame);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public bool isLastFrame();
+    public: bool isLastFrame();
 
-    public int32_t getLastFrame();
+    public: int32_t getLastFrame();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    public close();
+    public: void close();
 
                 //@Throws(Throwable.constructor)
             
-    finalize();
+    protected: void finalize();
 
 };
 

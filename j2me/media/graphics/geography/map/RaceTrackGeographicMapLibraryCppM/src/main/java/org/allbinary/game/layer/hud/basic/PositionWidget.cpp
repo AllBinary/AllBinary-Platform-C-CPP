@@ -57,19 +57,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //super.paint(graphics, positionString, currentPostString, offset2, offset);
 class PositionWidget: public BasicHud {
-        
 
-    public static string toString(int32_t position){
+    public: static std::string toString(int32_t position){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(position.toString());
+stringBuffer.append(std::to_string(position));
     
 
                         if(position == 1)
                         
                                     {
-                                    stringBuffer!.append("st");
+                                    stringBuffer.append("st");
     
 
                                     }
@@ -78,7 +77,7 @@ stringBuffer!.append(position.toString());
                         if(position == 2)
                         
                                     {
-                                    stringBuffer!.append("nd");
+                                    stringBuffer.append("nd");
     
 
                                     }
@@ -87,13 +86,13 @@ stringBuffer!.append(position.toString());
                         if(position == 3)
                         
                                     {
-                                    stringBuffer!.append("rd");
+                                    stringBuffer.append("rd");
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append("th");
+                            stringBuffer.append("th");
     
 
                         }
@@ -102,48 +101,48 @@ stringBuffer!.append(position.toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    private: position: int32_t= 0;
+    private: int32_t position= 0;
 
-    private: positionString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string positionString = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (int32_t position, int32_t location, int32_t direction, BasicColor basicColor){
+public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor basicColor){
             super(location, direction, 2, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.updateMaxHeight= 10;
+this->updateMaxHeight= 10;
     
-this.updateMaxWidth= 40;
+this->updateMaxWidth= 40;
     
 }
 
 
-    public int32_t get(){
+    public: int32_t get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.position;
+                        return this->position;
     
 }
 
 
-    public set(int32_t position){
-this.position= position;
+    public: void set(int32_t position){
+this->position= position;
     
-this.positionString= PositionWidget.toString(this.get());
+this->positionString= PositionWidget::toString(this->get());
     
 }
 
 
-    public paint(Graphics graphics){
-super.paintString(graphics, this.positionString);
+    public: void paint(Graphics graphics){
+super.paintString(graphics, this->positionString);
     
 }
 

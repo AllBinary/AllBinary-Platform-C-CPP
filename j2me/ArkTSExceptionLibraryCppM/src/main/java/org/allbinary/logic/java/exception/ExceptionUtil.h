@@ -49,19 +49,18 @@
 /*actual*/ class ExceptionUtil
             : public Object
          {
-        
 
-    private: static const instance: ExceptionUtil = new ExceptionUtil();
+    private: static ExceptionUtil instance() { return ExceptionUtil(); }
 
-    /*actual*/ public static ExceptionUtil getInstance();
+    /*actual*/ public: static ExceptionUtil getInstance();
 
-private constructor ();
+private: ExceptionUtil();
 
-    /*actual*/ public const PRETEND_EXCEPTION: Exception = new Exception("Not Really An Exception");
+    /*actual*/ public: const Exception PRETEND_EXCEPTION = Exception("Not Really An Exception");
 
-    private: const NONE: string = "No Stack Trace";
+    private: const std::string NONE = "No Stack Trace";
 
-    /*actual*/ public string getStackTrace(Throwable e);
+    /*actual*/ public: std::string getStackTrace(Throwable e);
 
 };
 

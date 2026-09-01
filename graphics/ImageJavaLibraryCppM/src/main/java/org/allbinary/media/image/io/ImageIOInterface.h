@@ -45,11 +45,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ImageIOInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    save(Long frame);
+    void save(Long frame);
 
 };
 

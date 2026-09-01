@@ -57,13 +57,12 @@
 class FontDebugFactory
             : public Object
          {
-        
 
-    private: static const instance: FontDebugFactory = new FontDebugFactory();
+    private: static FontDebugFactory instance() { return FontDebugFactory(); }
 
-    public static FontDebugFactory getInstance();
+    public: static FontDebugFactory getInstance();
 
-    public setFont(Font font, Graphics graphics);
+    public: void setFont(Font font, Graphics graphics);
 
 };
 

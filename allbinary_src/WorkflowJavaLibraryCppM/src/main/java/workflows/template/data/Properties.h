@@ -57,19 +57,18 @@
 class Properties
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor ();
+public: Properties();
 
-    HashMap<any, any> getPropertiesHashMap();
+    protected: HashMap<any, any> getPropertiesHashMap();
 
-    public int32_t doEndTag();
+    public: int32_t doEndTag();
 
 };
 

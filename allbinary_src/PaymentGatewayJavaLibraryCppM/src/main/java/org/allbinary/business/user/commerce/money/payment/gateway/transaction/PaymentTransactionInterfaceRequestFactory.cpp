@@ -121,104 +121,99 @@
 class PaymentTransactionInterfaceRequestFactory
             : public Object
          {
-        
 
-    private: static const instance: PaymentTransactionInterfaceRequestFactory = new PaymentTransactionInterfaceRequestFactory();
+    private: static PaymentTransactionInterfaceRequestFactory instance() { return PaymentTransactionInterfaceRequestFactory(); }
 
-    public static PaymentTransactionInterfaceRequestFactory getInstance(){
+    public: static PaymentTransactionInterfaceRequestFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentTransactionInterfaceRequestFactory.instance;
+                        return PaymentTransactionInterfaceRequestFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: PaymentTransactionInterfaceRequestFactory(){
+}
 
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public PaymentTransactionInterface getInstance(TransformInfoInterface transformInfoInterface){
+    public: PaymentTransactionInterface getInstance(TransformInfoInterface transformInfoInterface){
 
         try {
             
-    httpTransformInfoInterface: TransformInfoHttpInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
     
 
-    pageContext: PageContext = httpTransformInfoInterface!.getPageContext()!;;
+    PageContext pageContext = httpTransformInfoInterface.getPageContext();;
     
 
-    httpServletRequest: HttpServletRequest = pageContext!.getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = pageContext.getRequest() as HttpServletRequest;;
     
 
-    command: string = httpServletRequest!.getParameter(org.allbinary.globals.GLOBALS2.ADMINCOMMAND)!;;
+    std::string command = httpServletRequest.getParameter(org.allbinary.globals.GLOBALS2.ADMINCOMMAND);;
     
 
-                        if(command != 
-                                    null
-                                 && command.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(true && command.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.generateFromTestData(transformInfoInterface);;
+                        return this->generateFromTestData(transformInfoInterface);;
     
 
                                     }
                                 
                         else {
                             
-    propertiesHashMap: HashMap<any, any> = httpTransformInfoInterface!.getPropertiesHashMap()!;;
+    HashMap<any, any> propertiesHashMap = httpTransformInfoInterface.getPropertiesHashMap();;
     
 
-    weblisketSession: WeblisketSession = new WeblisketSession(propertiesHashMap, pageContext);;
+    WeblisketSession weblisketSession = WeblisketSession(propertiesHashMap, pageContext);;
     
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(weblisketSession!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(weblisketSession.getStoreName());;
     
 
-    order: OrderInterface = weblisketSession!.getOrder()!;;
+    OrderInterface order = weblisketSession.getOrder();;
     
 
-    orderId: string = order.getId()!;;
+    std::string orderId = order.getId();;
     
 
-    orderHistoryEntityInterface: OrderHistoryEntityInterface = OrderHistoryEntityFactory.getInstance()!;;
+    OrderHistoryEntityInterface orderHistoryEntityInterface = OrderHistoryEntityFactory::getInstance();;
     
 
-    orderReview: OrderHistory = orderHistoryEntityInterface!.getOrder(orderId)!;;
+    OrderHistory orderReview = orderHistoryEntityInterface.getOrder(orderId);;
     
 
-    orderPaymentInfo: Payment = orderReview!.getPaymentInfo()!;;
+    Payment orderPaymentInfo = orderReview.getPaymentInfo();;
     
-orderPaymentInfo!.setTransactionType(TransactionTypeFactory.getInstance()!.SALE.toString());
+orderPaymentInfo.setTransactionType(TransactionTypeFactory::getInstance().SALE.toString());
     
-orderPaymentInfo!.setTenderType(TenderTypeFactory.getInstance()!.CREDITCARD.toString());
+orderPaymentInfo.setTenderType(TenderTypeFactory::getInstance().CREDITCARD.toString());
     
-orderReview!.setPaymentInfo(orderPaymentInfo);
+orderReview.setPaymentInfo(orderPaymentInfo);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF(orderReview!.getId(), this, "getPaymentTransactionInterface()");
+                                    this->logUtil.putF(orderReview.getId(), this, "getPaymentTransactionInterface()");
     
 
                                     }
                                 
 
-    paymentTransactionInterface: PaymentTransactionInterface = PaymentTransactionInterfaceFactory.getInstance()!.getInstance(orderReview)!;;
+    PaymentTransactionInterface paymentTransactionInterface = PaymentTransactionInterfaceFactory::getInstance().getInstance(orderReview);;
     
 
 
@@ -234,10 +229,10 @@ orderReview!.setPaymentInfo(orderPaymentInfo);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getPaymentTransactionInterface()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getPaymentTransactionInterface()", e);
     
 
                                     }
@@ -254,97 +249,95 @@ orderReview!.setPaymentInfo(orderPaymentInfo);
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface generateFromTestData(TransformInfoInterface transformInfoInterface){
+    private: PaymentTransactionInterface generateFromTestData(TransformInfoInterface transformInfoInterface){
 
         try {
             
-    httpTransformInfoInterface: TransformInfoHttpInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
     
 
-    propertiesHashMap: HashMap<any, any> = httpTransformInfoInterface!.getPropertiesHashMap()!;;
+    HashMap<any, any> propertiesHashMap = httpTransformInfoInterface.getPropertiesHashMap();;
     
 
-    pageContext: PageContext = httpTransformInfoInterface!.getPageContext()!;;
+    PageContext pageContext = httpTransformInfoInterface.getPageContext();;
     
 
-    weblisketSession: WeblisketSession = new WeblisketSession(propertiesHashMap, pageContext);;
+    WeblisketSession weblisketSession = WeblisketSession(propertiesHashMap, pageContext);;
     
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(weblisketSession!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(weblisketSession.getStoreName());;
     
 
-    httpServletRequest: HttpServletRequest = pageContext!.getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = pageContext.getRequest() as HttpServletRequest;;
     
 
-    gatewayName: string = weblisketSession!.getPaymentMethod() as string;;
+    std::string gatewayName = weblisketSession.getPaymentMethod() as string;;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(gatewayName))
+                        if(StringValidationUtil::getInstance().isEmpty(gatewayName))
                         
                                     {
-                                    gatewayName= httpServletRequest!.getParameter(PaymentGatewayData.NAME.toString());
+                                    gatewayName= httpServletRequest.getParameter(PaymentGatewayData::NAME.toString());
     
 
                                     }
                                 
 
-    transactionType: string = httpServletRequest!.getParameter(PaymentData.TRANSACTIONTYPE)!;;
+    std::string transactionType = httpServletRequest.getParameter(PaymentData::TRANSACTIONTYPE);;
     
 
-    tenderType: string = httpServletRequest!.getParameter(PaymentData.TENDERTYPE)!;;
+    std::string tenderType = httpServletRequest.getParameter(PaymentData::TENDERTYPE);;
     
 
-    payment: Payment = new Payment();;
+    Payment payment = Payment();;
     
 payment.setTransactionType(transactionType);
     
 payment.setTenderType(tenderType);
     
 
-    orderReview: OrderHistory = new OrderHistory(new Basket());;
+    OrderHistory orderReview = OrderHistory(Basket());;
     
-orderReview!.setStoreName(storeFrontInterface!.getName());
+orderReview.setStoreName(storeFrontInterface.getName());
     
-orderReview!.setPaymentMethod(gatewayName);
+orderReview.setPaymentMethod(gatewayName);
     
-orderReview!.setUserName("testing");
-    
-
-    orderId: string = httpServletRequest!.getParameter("orderNumber")!;;
+orderReview.setUserName("testing");
     
 
-                        if(orderId == 
-                                    null
-                                 || orderId!.compareTo(StringUtil.getInstance()!.EMPTY_STRING) == 0)
+    std::string orderId = httpServletRequest.getParameter("orderNumber");;
+    
+
+                        if(false || orderId.compareTo(StringUtil::getInstance().EMPTY_STRING) == 0)
                         
                                     {
-                                    orderId= new OrderIdGenerator().getNext();
+                                    orderId= OrderIdGenerator().getNext();
     
-orderReview!.setId(orderId);
-    
-
-    account: string = httpServletRequest!.getParameter("account")!;;
+orderReview.setId(orderId);
     
 
-    expirationDate: string = httpServletRequest!.getParameter("expirationDate")!;;
+    std::string account = httpServletRequest.getParameter("account");;
     
 
-    checkNumber: string = httpServletRequest!.getParameter("checkNumber")!;;
+    std::string expirationDate = httpServletRequest.getParameter("expirationDate");;
     
 
-    driversLicense: string = httpServletRequest!.getParameter("driversLicense")!;;
+    std::string checkNumber = httpServletRequest.getParameter("checkNumber");;
     
 
-    magneticInkCheckReader: string = httpServletRequest!.getParameter("magneticInkCheckReader")!;;
+    std::string driversLicense = httpServletRequest.getParameter("driversLicense");;
     
 
-    aba: string = httpServletRequest!.getParameter("aba")!;;
+    std::string magneticInkCheckReader = httpServletRequest.getParameter("magneticInkCheckReader");;
     
 
-    accountType: string = httpServletRequest!.getParameter("accountType")!;;
+    std::string aba = httpServletRequest.getParameter("aba");;
     
 
-    name: string = httpServletRequest!.getParameter("name")!;;
+    std::string accountType = httpServletRequest.getParameter("accountType");;
+    
+
+    std::string name = httpServletRequest.getParameter("name");;
     
 payment.setName(name);
     
@@ -363,53 +356,53 @@ payment.setAba(aba);
 payment.setAccountType(accountType);
     
 
-    street: string = httpServletRequest!.getParameter("street")!;;
+    std::string street = httpServletRequest.getParameter("street");;
     
 
-    city: string = httpServletRequest!.getParameter("city")!;;
+    std::string city = httpServletRequest.getParameter("city");;
     
 
-    state: string = httpServletRequest!.getParameter("state")!;;
+    std::string state = httpServletRequest.getParameter("state");;
     
 
-    zip: string = httpServletRequest!.getParameter("zip")!;;
+    std::string zip = httpServletRequest.getParameter("zip");;
     
 
-    streetAddress: StreetAddress = new StreetAddress();;
+    StreetAddress streetAddress = StreetAddress();;
     
-streetAddress!.setName(name);
+streetAddress.setName(name);
     
-streetAddress!.setStreet(street);
+streetAddress.setStreet(street);
     
-streetAddress!.setCity(city);
+streetAddress.setCity(city);
     
-streetAddress!.setState(state);
+streetAddress.setState(state);
     
-streetAddress!.setCode(zip);
-    
-
-    email: string = httpServletRequest!.getParameter("email")!;;
+streetAddress.setCode(zip);
     
 
-    amount: string = httpServletRequest!.getParameter("amount")!;;
+    std::string email = httpServletRequest.getParameter("email");;
     
-orderReview!.setTotal(new Money(amount));
+
+    std::string amount = httpServletRequest.getParameter("amount");;
     
-orderReview!.setBillingAddress(streetAddress);
+orderReview.setTotal(Money(amount));
+    
+orderReview.setBillingAddress(streetAddress);
     
 
                                     }
                                 
                         else {
-                            orderReview!.setId(orderId);
+                            orderReview.setId(orderId);
     
 
                         }
                             
-orderReview!.setPaymentInfo(payment);
+orderReview.setPaymentInfo(payment);
     
 
-    paymentTransactionInterface: PaymentTransactionInterface = PaymentTransactionInterfaceFactory.getInstance()!.getInstance(orderReview)!;;
+    PaymentTransactionInterface paymentTransactionInterface = PaymentTransactionInterfaceFactory::getInstance().getInstance(orderReview);;
     
 
 
@@ -422,10 +415,10 @@ orderReview!.setPaymentInfo(payment);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "generatePaymentTransactionInterfaceFromTestData()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generatePaymentTransactionInterfaceFromTestData()", e);
     
 
                                     }

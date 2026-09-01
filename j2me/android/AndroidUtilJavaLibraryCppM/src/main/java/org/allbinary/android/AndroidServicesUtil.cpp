@@ -65,64 +65,63 @@
 class AndroidServicesUtil
             : public Object
          {
-        
 
-    public static AndroidServicesUtil getInstance(){
+    public: static AndroidServicesUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidServicesUtil.instance;
+                        return AndroidServicesUtil::instance();
     
 }
 
 
-    private: static const instance: AndroidServicesUtil = new AndroidServicesUtil();
+    private: static AndroidServicesUtil instance() { return AndroidServicesUtil(); }
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;
+    private: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
 
-    private: const SERVICE_LIMIT_MAX: int32_t = 1000;
+    private: const int32_t SERVICE_LIMIT_MAX = 1000;
 
-    private: const IS_SERVICE_RUNNING: string = "isServiceRunning";
+    private: const std::string IS_SERVICE_RUNNING = "isServiceRunning";
 
-    private: const SERVICE_NOT_FOUND_RUNNING: string = "Service not found Running: ";
+    private: const std::string SERVICE_NOT_FOUND_RUNNING = "Service not found Running: ";
 
-    public bool isServiceRunning(string name){
+    public: bool isServiceRunning(std::string name){
 
-    activityManager: ActivityManager = this.resourceUtil!.getContext()!.getSystemService(Context.ACTIVITY_SERVICE) as unknown as ActivityManager;;
+    ActivityManager activityManager = this->resourceUtil.getContext().getSystemService(Context::ACTIVITY_SERVICE) as unknown as ActivityManager;;
     
 
-    runningServicesList: List<RunningServiceInfo> = activityManager!.getRunningServices(this.SERVICE_LIMIT_MAX)!;;
+    List<RunningServiceInfo> runningServicesList = activityManager.getRunningServices(this->SERVICE_LIMIT_MAX);;
     
 
-    runningServiceInfo: RunningServiceInfo;;
+    RunningServiceInfo runningServiceInfo;;
     
 
-    serviceComponent: ComponentName;;
+    ComponentName serviceComponent;;
     
 
-    serviceName: string;;
+    std::string serviceName;;
     
 
-    size: int32_t = runningServicesList!.length!;;
+    int32_t size = runningServicesList.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-runningServiceInfo= runningServicesList!.get(index);
+runningServiceInfo= runningServicesList.get(index);
     
-serviceComponent= runningServiceInfo!.service;
+serviceComponent= runningServiceInfo.service;
     
-serviceName= serviceComponent!.toString();
+serviceName= serviceComponent.toString();
     
 
-                        if(serviceName!.indexOf(name) >= 0)
+                        if(serviceName.indexOf(name) >= 0)
                         
                                     {
                                     
@@ -136,7 +135,7 @@ serviceName= serviceComponent!.toString();
                                 
 }
 
-this.logUtil!.putF(this.SERVICE_NOT_FOUND_RUNNING +name, this, this.IS_SERVICE_RUNNING);
+this->logUtil.putF(this->SERVICE_NOT_FOUND_RUNNING +name, this, this->IS_SERVICE_RUNNING);
     
 
 

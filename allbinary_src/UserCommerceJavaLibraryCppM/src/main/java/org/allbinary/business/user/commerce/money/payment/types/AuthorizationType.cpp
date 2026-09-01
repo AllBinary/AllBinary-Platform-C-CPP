@@ -42,24 +42,21 @@
 class AuthorizationType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string name){
-
-            super();
-        this.name= name;
+public: AuthorizationType(std::string name){
+this->name= name;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

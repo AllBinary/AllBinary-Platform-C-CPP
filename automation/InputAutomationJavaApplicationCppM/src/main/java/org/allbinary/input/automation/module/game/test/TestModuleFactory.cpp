@@ -56,14 +56,13 @@
         #include "JPanel.h"
 
 class TestModuleFactory: public AbstractInputAutomationFactory {
-        
 
-    private: static NAME: string = "Test New Game" +InputAutomationModuleData.MODULE_NAME_END;
+    private: static std::string NAME = "Test New Game" +InputAutomationModuleData::MODULE_NAME_END;
 
-    private: blankModuleConfigurationJPanel: BlankModuleConfigurationJPanel;
+    private: BlankModuleConfigurationJPanel blankModuleConfigurationJPanel;
 
-public constructor (){
-            super(NAME, new BlankModuleConfigurationJPanel());
+public: TestModuleFactory(){
+            super(NAME, BlankModuleConfigurationJPanel());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -71,22 +70,22 @@ public constructor (){
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TestModuleFactory.NAME;
+                        return TestModuleFactory::NAME;
     
 }
 
 
-    public JPanel getConfigurationJPanel(){
+    public: JPanel getConfigurationJPanel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.blankModuleConfigurationJPanel;
+                        return this->blankModuleConfigurationJPanel;
     
 }
 
@@ -94,7 +93,7 @@ public constructor (){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public RunnableInterface getInstance(){
+    public: RunnableInterface getInstance(){
 
 
 

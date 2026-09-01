@@ -54,47 +54,46 @@
 class CommonDataFileStrings
             : public Object
          {
-        
 
-    private: static const instance: CommonDataFileStrings = new CommonDataFileStrings();
+    private: static CommonDataFileStrings instance() { return CommonDataFileStrings(); }
 
-    public static CommonDataFileStrings getInstance();
+    public: static CommonDataFileStrings getInstance();
 
-    public const XML: string = "xml";
+    public: const std::string XML = "xml";
 
-    public const _XML: string = ".xml";
+    public: const std::string _XML = ".xml";
 
-    public const JSON: string = "json";
+    public: const std::string JSON = "json";
 
-    public const _JSON: string = ".json";
+    public: const std::string _JSON = ".json";
 
-    public const XSL: string = "xsl";
+    public: const std::string XSL = "xsl";
 
-    public const _XSL: string = ".xsl";
+    public: const std::string _XSL = ".xsl";
 
-    public const JAVA: string = "java";
+    public: const std::string JAVA = "java";
 
-    public const _JAVA: string = ".java";
+    public: const std::string _JAVA = ".java";
 
-    public const KT: string = "kt";
+    public: const std::string KT = "kt";
 
-    public const _KT: string = ".kt";
+    public: const std::string _KT = ".kt";
 
-    public const TS: string = "ts";
+    public: const std::string TS = "ts";
 
-    public const _TS: string = ".ts";
+    public: const std::string _TS = ".ts";
 
-    public const JS: string = "js";
+    public: const std::string JS = "js";
 
-    public const _JS: string = ".js";
+    public: const std::string _JS = ".js";
 
-    public const CPP: string = "cpp";
+    public: const std::string CPP = "cpp";
 
-    public const _CPP: string = ".cpp";
+    public: const std::string _CPP = ".cpp";
 
-    public const UNCRYPTED_EXTENSION: string = this.XML;
+    public: const std::string UNCRYPTED_EXTENSION = this->XML;
 
-    public const ENCRYPTED_EXTENSION: string = "abd";
+    public: const std::string ENCRYPTED_EXTENSION = "abd";
 
 };
 

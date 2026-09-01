@@ -57,17 +57,16 @@
 class OrderProcessorUtil
             : public Object
          {
-        
 
-    private: static const instance: OrderProcessorUtil = new OrderProcessorUtil();
+    private: static OrderProcessorUtil instance() { return OrderProcessorUtil(); }
 
-    public static OrderProcessorUtil getInstance();
+    public: static OrderProcessorUtil getInstance();
 
-    private: const ORDER_PROCESSED: string = "Order Processed";
+    private: const std::string ORDER_PROCESSED = "Order Processed";
 
                 //@Throws(Exception.constructor)
             
-    public string process(string userName, Order order);
+    public: std::string process(std::string userName, Order order);
 
 };
 

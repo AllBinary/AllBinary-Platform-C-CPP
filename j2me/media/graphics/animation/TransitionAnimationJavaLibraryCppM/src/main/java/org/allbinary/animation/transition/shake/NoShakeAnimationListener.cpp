@@ -39,9 +39,8 @@
         #include "ShakeAnimationListener.h"
 
 class NoShakeAnimationListener: public ShakeAnimationListener {
-        
 
-    public static const NO_SHAKE_ANIMATION_LISTENER: ShakeAnimationListener = new NoShakeAnimationListener();
+    public: static const ShakeAnimationListener NO_SHAKE_ANIMATION_LISTENER = NoShakeAnimationListener();
 
 };
 

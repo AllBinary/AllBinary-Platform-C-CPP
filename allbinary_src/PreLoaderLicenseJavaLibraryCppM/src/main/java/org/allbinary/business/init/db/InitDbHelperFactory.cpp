@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -54,18 +56,17 @@
 class InitDbHelperFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "org.allbinary.business.installer.InitDbCrypted";
+    private: static const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
 
-    params: std::vector<any> = new Array(1);;
+    std::vector<Object*> params = new Array(1);;
     
 
-    classes: std::vector<Function> = new Array(1);;
+    std::vector<Function> classes = new Array(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -74,7 +75,7 @@ classes[0]=
 params[0]= databaseConnectionInfoInterface;
     
 
-    anyType: any = AbeFactory.getInstance()!.getInstance(abeClientInformation, CLASSNAME, classes, params)!;;
+    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, CLASSNAME, classes, params);;
     
 
 
@@ -87,11 +88,11 @@ params[0]= databaseConnectionInfoInterface;
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation){
 
-    anyType: any = AbeFactory.getInstance()!.getInstance(abeClientInformation, CLASSNAME, 
+    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, CLASSNAME, 
                             nullptr, 
-                            nullptr)!;;
+                            nullptr);;
     
 
 
@@ -102,10 +103,8 @@ params[0]= databaseConnectionInfoInterface;
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InitDbHelperFactory(){
+}
 
 
 };

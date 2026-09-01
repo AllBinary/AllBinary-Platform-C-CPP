@@ -42,11 +42,10 @@
         #include "GameRunnable.h"
 
 class NullWaitGameRunnable: public GameRunnable {
-        
 
-    private: static const instance: GameRunnable = new NullWaitGameRunnable();
+    private: static const GameRunnable instance = NullWaitGameRunnable();
 
-    public static GameRunnable getInstance();
+    public: static GameRunnable getInstance();
 
 };
 

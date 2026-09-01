@@ -48,74 +48,73 @@
         #include "UserEmailEventNameData.h"
 
 class EmailEvent: public EventObject {
-        
 
-    private: emailInfo: EmailInfo;
+    private: EmailInfo emailInfo;
 
-    private: userEmailEventNameData: UserEmailEventNameData;
+    private: UserEmailEventNameData userEmailEventNameData;
 
-    private: attempts: int32_t= 0;
+    private: int32_t attempts= 0;
 
-public constructor (any = {} emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts){
+public: EmailEvent(Object* emailEventHandler, UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo, int32_t attempts){
             super(emailEventHandler);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.userEmailEventNameData= userEmailEventNameData;
+this->userEmailEventNameData= userEmailEventNameData;
     
-this.emailInfo= emailInfo;
+this->emailInfo= emailInfo;
     
 }
 
 
-    public EmailInfo getEmailInfo(){
+    public: EmailInfo getEmailInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.emailInfo;
+                        return this->emailInfo;
     
 }
 
 
-    public int32_t getAttempts(){
+    public: int32_t getAttempts(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.attempts;
+                        return this->attempts;
     
 }
 
 
-    public setAttempts(int32_t attempts){
-this.attempts= attempts;
+    public: void setAttempts(int32_t attempts){
+this->attempts= attempts;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("EmailEvent Log: \n");
+stringBuffer.append("EmailEvent Log: \n");
     
-stringBuffer!.append("Event Name: ");
+stringBuffer.append("Event Name: ");
     
-stringBuffer!.append(this.userEmailEventNameData!.toString());
+stringBuffer.append(this->userEmailEventNameData.toString());
     
-stringBuffer!.append(this.getEmailInfo()!.toString());
+stringBuffer.append(this->getEmailInfo().toString());
     
-stringBuffer!.append("\nNumber of Attempts: ");
+stringBuffer.append("\nNumber of Attempts: ");
     
-stringBuffer!.appendint(this.getAttempts());
+stringBuffer.appendint(this->getAttempts());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

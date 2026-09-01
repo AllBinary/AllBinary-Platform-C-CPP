@@ -45,19 +45,18 @@
 class DomData
             : public Object
          {
-        
 
-    public static const ID: string = "id";
+    public: static const std::string ID = "id";
 
-    public static const CHILD: string = "child";
+    public: static const std::string CHILD = "child";
 
-    public static const NAME: string = "name";
+    public: static const std::string NAME = "name";
 
-    public static const VALUE: string = "value";
+    public: static const std::string VALUE = "value";
 
-    public static const INDEX: string = "index";
+    public: static const std::string INDEX = "index";
 
-private constructor ();
+private: DomData();
 
 };
 

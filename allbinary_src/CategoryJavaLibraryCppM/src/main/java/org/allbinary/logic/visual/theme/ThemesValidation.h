@@ -61,28 +61,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ThemesData.h"
 
-class ThemesValidation: public Validation: public DomNodeInterface {
-        
+class ThemesValidation: public Validation, public DomNodeInterface {
 
-    private: themeVector: Vector;
+    private: Vector themeVector;
 
-public constructor ();
+public: ThemesValidation();
 
-public constructor (Node node);
+public: ThemesValidation(Node node);
 
-public constructor (HashMap<any, any> hashMap);
+public: ThemesValidation(HashMap<any, any> hashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

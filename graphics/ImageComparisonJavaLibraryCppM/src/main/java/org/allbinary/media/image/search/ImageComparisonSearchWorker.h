@@ -76,34 +76,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ImageComparisonSearchConstraintsInterface.h"
 
-class ImageComparisonSearchWorker: public BasicEventHandler: public ImageComparisonResultsListener {
-        
+class ImageComparisonSearchWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageComparisonInfoVector: Vector;
+    private: Vector imageComparisonInfoVector;
 
-    private: index: int64_t= 0;
+    private: int64_t index= 0;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: imageSearchConstraintsInterface: ImageComparisonSearchConstraintsInterface;
+    private: ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface;
 
-public constructor (ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface);
+public: ImageComparisonSearchWorker(ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface);
 
-    public onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent);
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public run();
+    public: void run();
 
 };
 

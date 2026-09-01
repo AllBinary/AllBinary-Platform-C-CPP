@@ -54,17 +54,16 @@
 #include "GameInitializedEvent.h"
 
 class GameInitializedEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: GameInitializedEventHandler = new GameInitializedEventHandler();
+    private: static const GameInitializedEventHandler gameKeyEventHandler = GameInitializedEventHandler();
 
-    public static GameInitializedEventHandler getInstance();
+    public: static GameInitializedEventHandler getInstance();
 
-private constructor ();
+private: GameInitializedEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

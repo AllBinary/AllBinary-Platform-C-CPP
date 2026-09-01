@@ -50,21 +50,20 @@
 class TwoDimensionalConstraint
             : public Object
         : public TwoDimensionalConstraintInterface {
-        
 
-    private: widthSizeConstraintInterface: SizeConstraintInterface;
+    private: SizeConstraintInterface widthSizeConstraintInterface;
 
-    private: heightSizeConstraintInterface: SizeConstraintInterface;
+    private: SizeConstraintInterface heightSizeConstraintInterface;
 
-public constructor (Node node);
+public: TwoDimensionalConstraint(Node node);
 
-    public SizeConstraintInterface getHeight();
+    public: SizeConstraintInterface getHeight();
 
-    public SizeConstraintInterface getWidth();
+    public: SizeConstraintInterface getWidth();
 
-    public setHeight(SizeConstraintInterface heightSizeConstraintInterface);
+    public: void setHeight(SizeConstraintInterface heightSizeConstraintInterface);
 
-    public setWidth(SizeConstraintInterface widthSizeConstraintInterface);
+    public: void setWidth(SizeConstraintInterface widthSizeConstraintInterface);
 
 };
 

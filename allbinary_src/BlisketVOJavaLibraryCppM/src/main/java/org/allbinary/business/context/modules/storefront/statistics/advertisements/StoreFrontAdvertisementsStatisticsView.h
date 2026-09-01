@@ -64,15 +64,14 @@
 class StoreFrontAdvertisementsStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: storeFrontAdvertisementsStatisticsInterface: StoreFrontAdvertisementsStatisticsInterface;
+    private: StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface;
 
-public constructor (StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface);
+public: StoreFrontAdvertisementsStatisticsView(StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -39,9 +39,8 @@
         #include "DbInitInfo.h"
 
 class UserDbInitInfo: public DbInitInfo {
-        
 
-public constructor (){
+public: UserDbInitInfo(){
             super(
                             nullptr, false);
                     
@@ -51,7 +50,7 @@ public constructor (){
 }
 
 
-public constructor (bool read){
+public: UserDbInitInfo(bool read){
             super(
                             nullptr, false);
                     

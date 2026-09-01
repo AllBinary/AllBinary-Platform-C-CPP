@@ -83,58 +83,55 @@
         #include "TagHelper.h"
 
 class OrderHistoryRequestHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: groupId: string;
+    private: std::string groupId;
 
-    private: status: string;
+    private: std::string status;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.request= pageContext!.getRequest() as HttpServletRequest;
+public: OrderHistoryRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    getFormData(){
-this.id= this.request.getParameter(OrderData.ID);
+    private: void getFormData(){
+this->id= this->request.getParameter(OrderData::ID);
     
-this.groupId= this.request.getParameter(ShippingMethodData.GROUP);
+this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
     
-this.status= this.request.getParameter(OrderHistoryData.STATUS);
+this->status= this->request.getParameter(OrderHistoryData::STATUS);
     
 }
 
 
-    public string setOrderStatus(){
+    public: std::string setOrderStatus(){
 
         try {
             
-                        if(this.groupId!.compareTo(CommonPhoneStrings.getInstance()!.ZERO) != 0)
+                        if(this->groupId.compareTo(CommonPhoneStrings::getInstance().ZERO) != 0)
                         
                                     {
                                     
-                        if(OrderItemsEntityFactory.getInstance()!.isEverythingShipped(this.id))
+                        if(OrderItemsEntityFactory::getInstance().isEverythingShipped(this->id))
                         
                                     {
-                                    this.status= OrderHistoryData.SHIPPED;
+                                    this->status= OrderHistoryData::SHIPPED;
     
 
                                     }
                                 
                         else {
-                            this.status= OrderHistoryData.PARTIALLYSHIPPED;
+                            this->status= OrderHistoryData::PARTIALLYSHIPPED;
     
 
                         }
@@ -143,15 +140,15 @@ this.status= this.request.getParameter(OrderHistoryData.STATUS);
                                     }
                                 
 
-    success: string = "Status successfully set to: " +this.status;;
+    std::string success = "Status successfully set to: " +this->status;;
     
-OrderHistoryEntityFactory.getInstance()!.setStatus(this.id, this.status);
+OrderHistoryEntityFactory::getInstance().setStatus(this->id, this->status);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF("Success", this, "setOrderStatus()");
+                                    this->logUtil.putF("Success", this, "setOrderStatus()");
     
 
                                     }
@@ -167,13 +164,13 @@ OrderHistoryEntityFactory.getInstance()!.setStatus(this.id, this.status);
 } catch(e) 
             {
 
-    error: string = "Failed to set order status";;
+    std::string error = "Failed to set order status";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setOrderStatus()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", e);
     
 
                                     }
@@ -189,29 +186,28 @@ OrderHistoryEntityFactory.getInstance()!.setStatus(this.id, this.status);
 }
 
 
-    public string setOrderStatus(string newStatus){
+    public: std::string setOrderStatus(std::string newStatus){
 
         try {
             
-                        if(newStatus == 
-                                    null
-                                )
-                        newStatus= this.status
+                        if(false)
+                        newStatus= this->status;
+                                
 
-    success: string = "Status successfully set to: " +newStatus;;
+    std::string success = "Status successfully set to: " +newStatus;;
     
-OrderHistoryEntityFactory.getInstance()!.setStatus(this.id, newStatus);
-    
-
-    orderHistory: OrderHistory = OrderHistoryEntityFactory.getInstance()!.getOrder(this.id)!;;
-    
-new OrderStatusEmail(this.abeClientInformation, orderHistory).process();
+OrderHistoryEntityFactory::getInstance().setStatus(this->id, newStatus);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    OrderHistory orderHistory = OrderHistoryEntityFactory::getInstance().getOrder(this->id);;
+    
+OrderStatusEmail(this->abeClientInformation, orderHistory).process();
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF("Success", this, "setOrderStatus()");
+                                    this->logUtil.putF("Success", this, "setOrderStatus()");
     
 
                                     }
@@ -227,13 +223,13 @@ new OrderStatusEmail(this.abeClientInformation, orderHistory).process();
 } catch(e) 
             {
 
-    error: string = "Failed to view order table";;
+    std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setOrderStatus(newStatus)", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus(newStatus)", e);
     
 
                                     }

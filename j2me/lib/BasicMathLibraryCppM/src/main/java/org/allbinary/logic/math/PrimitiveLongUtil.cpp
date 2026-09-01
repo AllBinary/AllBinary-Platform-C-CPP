@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -67,23 +69,22 @@
 class PrimitiveLongUtil
             : public Object
          {
-        
 
-    public static PrimitiveLongUtil createPowerOfTen(int32_t powerOfTen){
+    public: static PrimitiveLongUtil createPowerOfTen(int32_t powerOfTen){
 
-    primitiveLongUtil: PrimitiveLongUtil = new PrimitiveLongUtil(powerOfTen, NullUtil.getInstance()!.NULL_OBJECT);;
+    PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil(powerOfTen, NullUtil::getInstance().NULL_OBJECT);;
     
 
                         if(powerOfTen % 10 != 0)
                         
                                     {
                                     
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, primitiveLongUtil, commonStrings!.CONSTRUCTOR, new Exception("Max must be power of 10"));
+logUtil.put(commonStrings.EXCEPTION, primitiveLongUtil, commonStrings.CONSTRUCTOR, Exception("Max must be power of 10"));
     
 
                                     }
@@ -97,79 +98,77 @@ logUtil!.put(commonStrings!.EXCEPTION, primitiveLongUtil, commonStrings!.CONSTRU
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: powerOfTen: int32_t;
+    private: int32_t powerOfTen;
 
-    private: maxValue: int32_t;
+    private: int32_t maxValue;
 
-    private: maxDigits: int32_t;
+    private: int32_t maxDigits;
 
-    private: const charArray: std::vector<char>;
+    private: std::vector<char> charArray;
 
-    private: currentTotalDigits: int32_t= 0;
+    private: int32_t currentTotalDigits= 0;
 
-    private: const primitiveLongSingleton: PrimitiveLongSingleton = PrimitiveLongSingleton.getInstance()!;
+    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
-public constructor (int32_t powerOfTen, any = {} unused){
-
-            super();
-        this.maxDigits= MathUtil.getInstance()!.getTotalDigits(powerOfTen);
+public: PrimitiveLongUtil(int32_t powerOfTen, Object* unused){
+this->maxDigits= MathUtil::getInstance().getTotalDigits(powerOfTen);
     
-this.powerOfTen= powerOfTen;
+this->powerOfTen= powerOfTen;
     
-this.maxValue= (powerOfTen *10) -1;
+this->maxValue= (powerOfTen *10) -1;
     
-this.charArray= new Array(this.maxDigits);
+this->charArray= std::vector<char>(this->maxDigits);
     
 }
 
 
-    public std::vector<char> getCharArray(int32_t value){
+    public: std::vector<char> getCharArray(int32_t value){
 
                         if(value < 10)
                         
                                     {
-                                    this.setCurrentTotalDigits(1);
+                                    this->setCurrentTotalDigits(1);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.primitiveLongSingleton!.NUMBER_CHAR_ARRAYS[value]!;
+                        return this->primitiveLongSingleton.NUMBER_CHAR_ARRAYS[value]!;
     
 
                                     }
                                 
 
-                        if(value > this.maxValue)
+                        if(value > this->maxValue)
                         
                                     {
-                                    this.setCurrentTotalDigits(3);
+                                    this->setCurrentTotalDigits(3);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.primitiveLongSingleton!.UNK;
+                        return this->primitiveLongSingleton.UNK;
     
 
                                     }
                                 
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    div: int32_t = this.powerOfTen;;
+    int32_t div = this->powerOfTen;;
     
 
-    lastValue: int32_t = 0;;
+    int32_t lastValue = 0;;
     
 
         while(div >= 1)
         {
 
-    digit: int32_t = (value -lastValue) /div;;
+    int32_t digit = (value -lastValue) /div;;
     
 
                         if(digit >= 0 && digit < 10)
@@ -183,7 +182,7 @@ this.charArray= new Array(this.maxDigits);
                                     }
                                 
                         else {
-                            this.charArray[index++]= this.primitiveLongSingleton!.NUMBER_CHAR_ARRAY[digit]!;
+                            this->charArray[index++]= this->primitiveLongSingleton.NUMBER_CHAR_ARRAY[digit]!;
     
 
                         }
@@ -197,39 +196,39 @@ div= div /10;
     
 }
 
-this.setCurrentTotalDigits(index);
+this->setCurrentTotalDigits(index);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.charArray;
+                        return this->charArray;
     
 }
 
 
-    setCurrentTotalDigits(int32_t currentTotalDigits){
-this.currentTotalDigits= currentTotalDigits;
+    private: void setCurrentTotalDigits(int32_t currentTotalDigits){
+this->currentTotalDigits= currentTotalDigits;
     
 }
 
 
-    public int32_t getCurrentTotalDigits(){
+    public: int32_t getCurrentTotalDigits(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentTotalDigits;
+                        return this->currentTotalDigits;
     
 }
 
 
-    public int32_t getMaxDigits(){
+    public: int32_t getMaxDigits(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxDigits;
+                        return this->maxDigits;
     
 }
 

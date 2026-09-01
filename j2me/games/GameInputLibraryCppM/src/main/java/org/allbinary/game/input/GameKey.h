@@ -60,13 +60,12 @@
         #include "Input.h"
 
 class GameKey: public Input {
-        
 
-    public static const NULL_GAME_KEY: GameKey = new GameKey( -1, StringUtil.getInstance()!.NULL_STRING);
+    public: static const GameKey NULL_GAME_KEY = GameKey( -1, StringUtil::getInstance().NULL_STRING);
 
- constructor (int32_t key, string name);
+: GameKey(int32_t key, std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

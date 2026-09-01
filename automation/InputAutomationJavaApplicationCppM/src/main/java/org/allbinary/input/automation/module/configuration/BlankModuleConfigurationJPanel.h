@@ -44,14 +44,13 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class BlankModuleConfigurationJPanel: public javax.swing.JPanel {
-        
+class BlankModuleConfigurationJPanel: public javax::swing::JPanel {
 
-public constructor ();
+public: BlankModuleConfigurationJPanel();
 
-    initComponents();
+    private: void initComponents();
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
 };
 

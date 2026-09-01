@@ -45,15 +45,14 @@
 class CssElementData
             : public Object
          {
-        
 
-    private: static const instance: CssElementData = new CssElementData();
+    private: static CssElementData instance() { return CssElementData(); }
 
-    public static CssElementData getInstance();
+    public: static CssElementData getInstance();
 
-private constructor ();
+private: CssElementData();
 
-    public const NAME: string = "CSS_ELEMENT_NAME";
+    public: const std::string NAME = "CSS_ELEMENT_NAME";
 
 };
 

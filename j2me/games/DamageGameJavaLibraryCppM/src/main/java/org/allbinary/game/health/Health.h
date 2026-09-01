@@ -57,45 +57,44 @@
 class Health
             : public Object
         : public HealthInterface {
-        
 
-    public static const NULL_HEALTH: Health = new Health(0);
+    public: static const Health NULL_HEALTH = Health(0);
 
-    public static const NAME: string = "Health Resource";
+    public: static const std::string NAME = "Health Resource";
 
-    private: static const HEALTH_LABEL: string = "Health: ";
+    private: static const std::string HEALTH_LABEL = "Health: ";
 
-    private: static const MAX_HEALTH_LABEL: string = " Max: ";
+    private: static const std::string MAX_HEALTH_LABEL = " Max: ";
 
-    private: health: int32_t= 0;
+    private: int32_t health= 0;
 
-    private: maxHealth: int32_t= 0;
+    private: int32_t maxHealth= 0;
 
-    private: healthListenerInterface: HealthListenerInterface = NullHealthListener.NULL_HEALTH_LISTENER;
+    private: HealthListenerInterface healthListenerInterface = NullHealthListener::NULL_HEALTH_LISTENER;
 
-public constructor (int32_t maxHealth);
+public: Health(int32_t maxHealth);
 
-    public heal(int32_t ahealth);
+    public: void heal(int32_t ahealth);
 
-    public healMax();
+    public: void healMax();
 
-    public bool isDamaged();
+    public: bool isDamaged();
 
-    public damage(int32_t ahealth);
+    public: void damage(int32_t ahealth);
 
-    public bool isAlive();
+    public: bool isAlive();
 
-    public int32_t getMaxHealth();
+    public: int32_t getMaxHealth();
 
-    public setMaxHealth(int32_t maxHealth);
+    public: void setMaxHealth(int32_t maxHealth);
 
-    public setHealth(int32_t health);
+    public: void setHealth(int32_t health);
 
-    public int32_t getHealth();
+    public: int32_t getHealth();
 
-    public addListener(HealthListenerInterface healthGraphic);
+    public: void addListener(HealthListenerInterface healthGraphic);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

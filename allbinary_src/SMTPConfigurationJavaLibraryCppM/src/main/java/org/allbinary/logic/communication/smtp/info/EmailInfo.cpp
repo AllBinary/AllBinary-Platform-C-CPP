@@ -51,106 +51,101 @@
 class EmailInfo
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: basicEmailInfo: BasicEmailInfo;
+    private: BasicEmailInfo basicEmailInfo;
 
-    private: htmlAttachment: string;
+    private: std::string htmlAttachment;
 
-    private: contentBase: string;
+    private: std::string contentBase;
 
-public constructor (BasicEmailInfo basicEmailInfo){
+public: EmailInfo(BasicEmailInfo basicEmailInfo){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.init(basicEmailInfo, 
+this->init(basicEmailInfo, 
                             nullptr, 
                             nullptr);
     
 }
 
 
-public constructor (BasicEmailInfo basicEmailInfo, string htmlAttachment, string contentBase){
+public: EmailInfo(BasicEmailInfo basicEmailInfo, std::string htmlAttachment, std::string contentBase){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.init(basicEmailInfo, 
+this->init(basicEmailInfo, 
                             nullptr, 
                             nullptr);
     
 }
 
 
-    init(BasicEmailInfo basicEmailInfo, string htmlAttachment, string contentBase){
-this.basicEmailInfo= basicEmailInfo;
+    private: void init(BasicEmailInfo basicEmailInfo, std::string htmlAttachment, std::string contentBase){
+this->basicEmailInfo= basicEmailInfo;
     
-this.htmlAttachment= htmlAttachment;
+this->htmlAttachment= htmlAttachment;
     
-this.contentBase= contentBase;
-    
-}
-
-
-    public BasicEmailInfo getBasicEmailInfo(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicEmailInfo;
+this->contentBase= contentBase;
     
 }
 
 
-    public string getHtmlAttachment(){
+    public: BasicEmailInfo getBasicEmailInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.htmlAttachment;
+                        return this->basicEmailInfo;
     
 }
 
 
-    public string getContentBase(){
+    public: std::string getHtmlAttachment(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.contentBase;
+                        return this->htmlAttachment;
     
 }
 
 
-    public string toString(){
+    public: std::string getContentBase(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Email Info: \n " +this.getBasicEmailInfo()!.toString();
+                        return this->contentBase;
+    
+}
+
+
+    public: std::string toString(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return "Email Info: \n " +this->getBasicEmailInfo().toString();
     
 }
 

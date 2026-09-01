@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKADJACENTDROPCELLPOSITIONGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKADJACENTDROPCELLPOSITIONGENERATOR_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Hashtable.h>
@@ -117,35 +119,34 @@
 #include "RaceTrackAdjacentDropLayerFactory.h"
 
 class RaceTrackAdjacentDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
-        
 
-    private: static SINGLETON: RaceTrackAdjacentDropCellPositionGenerator = new RaceTrackAdjacentDropCellPositionGenerator();
+    private: static RaceTrackAdjacentDropCellPositionGenerator SINGLETON = RaceTrackAdjacentDropCellPositionGenerator();
 
-    public static DropCellPositionGeneratorInterface getInstance();
+    public: static DropCellPositionGeneratorInterface getInstance();
 
-    private: const layerCoveringCellPositionsUtil: LayerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil.getInstance()!;
+    private: const LayerCoveringCellPositionsUtil layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
 
-    private: const groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;
+    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: surroundingCellPositions: std::vector<GeographicMapCellPosition> = new Array(4);
+    private: std::vector<GeographicMapCellPosition> surroundingCellPositions = new Array(4);
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    GeographicMapCellPosition getFirstNonRoadAdjacentCellPosition(int32_t column, int32_t row);
-
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+private: RaceTrackAdjacentDropCellPositionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+    private: GeographicMapCellPosition getFirstNonRoadAdjacentCellPosition(int32_t column, int32_t row);
 
-    private: const geographicMapDirectionUtil: GeographicMapDirectionUtil = GeographicMapDirectionUtil.getInstance()!;
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
                 //@Throws(Exception.constructor)
             
-    drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+
+    private: const GeographicMapDirectionUtil geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
 
 };
 

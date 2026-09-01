@@ -53,27 +53,26 @@
 class MotionRectangles
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: rectangleVector: Vector;
+    private: Vector rectangleVector;
 
-    private: imageComparisonResult: ImageComparisonResult;
+    private: ImageComparisonResult imageComparisonResult;
 
-    const MAX_PIXEL_DISTANCE_THRESHOLD: int32_t = 2;
+    protected: const int32_t MAX_PIXEL_DISTANCE_THRESHOLD = 2;
 
-public constructor (string name, ImageComparisonResult imageComparisonResult);
+public: MotionRectangles(std::string name, ImageComparisonResult imageComparisonResult);
 
-    public Vector getVector();
+    public: Vector getVector();
 
-    public setVector(Vector rectangleVector);
+    public: void setVector(Vector rectangleVector);
 
-    public string getName();
+    public: std::string getName();
 
-    public ImageComparisonResult getImageComparisonResult();
+    public: ImageComparisonResult getImageComparisonResult();
 
-    public setImageComparisonResult(ImageComparisonResult imageComparisonResult);
+    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult);
 
 };
 

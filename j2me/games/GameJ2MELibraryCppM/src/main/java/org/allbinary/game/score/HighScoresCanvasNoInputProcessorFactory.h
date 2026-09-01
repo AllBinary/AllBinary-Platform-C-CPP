@@ -50,9 +50,8 @@
 class HighScoresCanvasNoInputProcessorFactory
             : public Object
         : public HighScoresCanvasInputProcessorFactoryInterface {
-        
 
-    public HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas);
+    public: HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas);
 
 };
 

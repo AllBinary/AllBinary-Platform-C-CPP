@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -60,39 +62,38 @@
 class BasicCryptUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicCryptUtil = new BasicCryptUtil();
+    private: static BasicCryptUtil instance() { return BasicCryptUtil(); }
 
-    public static BasicCryptUtil getInstance(){
+    public: static BasicCryptUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicCryptUtil.instance;
+                        return BasicCryptUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const XML_START: string = "<?xml";
+    private: const std::string XML_START = "<?xml";
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getDecryptedInputStream(InputStream inputStream, CryptInterface cryptInterface){
+    public: InputStream getDecryptedInputStream(InputStream inputStream, CryptInterface cryptInterface){
 
-    buffer: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream buffer = ByteArrayOutputStream();;
     
 
-    ch: int32_t= 0;;
+    int32_t ch= 0;;
     
 
         while(true)
         {
-ch= inputStream!.read();
+ch= inputStream.read();
     
 
                         if(ch ==  -1)
@@ -109,19 +110,19 @@ buffer.write(ch);
 }
 
 
-    decrypted: std::vector<int8_t> = cryptInterface!.decrypt(buffer.toByteArray())!;;
+    std::vector<int8_t> decrypted = cryptInterface.decrypt(buffer.toByteArray());;
     
 
-    decryptedString: string = String.fromCharCode(...decrypted);;
+    std::string decryptedString = String.fromCharCode(...decrypted);;
     
 
-    index: int32_t = decryptedString!.indexOf(this.XML_START)!;;
+    int32_t index = decryptedString.indexOf(this->XML_START);;
     
 
                         if(index > 0)
                         
                                     {
-                                    decryptedString= decryptedString!.substring(index);
+                                    decryptedString= decryptedString.substring(index);
     
 
                                     }
@@ -130,7 +131,7 @@ buffer.write(ch);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ByteArrayInputStream(this.tsUtil!.getByteArray(decryptedString));
+                        return ByteArrayInputStream(this->tsUtil.getByteArray(decryptedString));
     
 }
 

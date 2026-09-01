@@ -45,17 +45,16 @@
 class SideScrollerAnimation
             : public Object
          {
-        
 
-public constructor ();
+public: SideScrollerAnimation();
 
-    public jump();
+    public: void jump();
 
-    public walk();
+    public: void walk();
 
-    public run();
+    public: void run();
 
-    public crouch();
+    public: void crouch();
 
 };
 

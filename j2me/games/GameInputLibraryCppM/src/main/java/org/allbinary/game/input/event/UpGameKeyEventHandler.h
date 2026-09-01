@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPGAMEKEYEVENTHANDLER_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -57,30 +59,29 @@
         #include "UpGameKeyEventHandlerBase.h"
 
 class UpGameKeyEventHandler: public UpGameKeyEventHandlerBase {
-        
 
-    private: static const instance: UpGameKeyEventHandler = new UpGameKeyEventHandler();
+    private: static UpGameKeyEventHandler instance() { return UpGameKeyEventHandler(); }
 
-    private: static const instanceArray: std::vector<UpGameKeyEventHandlerBase> = 
-                                                        [
-                                                            new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase()
-                                                        ];
+    private: static const std::vector<UpGameKeyEventHandlerBase> instanceArray = 
+                                                        {
+                                                            UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase()
+                                                        };
 
-    public static UpGameKeyEventHandler getInstance();
+    public: static UpGameKeyEventHandler getInstance();
 
-    private: const playerInputIdFactory: LocalPlayerInputIdFactory = LocalPlayerInputIdFactory.getInstance()!;
+    private: const LocalPlayerInputIdFactory playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
 
-    public UpGameKeyEventHandlerBase getInstanceForDevice(int32_t deviceId);
+    public: UpGameKeyEventHandlerBase getInstanceForDevice(int32_t deviceId);
 
-    public UpGameKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId);
+    public: UpGameKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId);
 
-private constructor ();
+private: UpGameKeyEventHandler();
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
 };
 

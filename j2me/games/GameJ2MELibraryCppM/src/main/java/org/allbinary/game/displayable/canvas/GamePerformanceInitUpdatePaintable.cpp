@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -64,80 +66,79 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable: public UpdateMyFontInterface {
-        
+class GamePerformanceInitUpdatePaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    private: const halfHeight: int32_t = DisplayInfoSingleton.getInstance()!.getLastHalfHeight()!;
+    private: const int32_t halfHeight = DisplayInfoSingleton::getInstance().getLastHalfHeight();
 
-    private: const yArray: std::vector<int32_t> = [this.halfHeight +30,this.halfHeight +30,this.halfHeight +30 +15,this.halfHeight +30 +15,this.halfHeight +30 +30,this.halfHeight +30 +30,this.halfHeight +30 +45,this.halfHeight +30 +45];
+    private: const std::vector<int32_t> yArray = {this->halfHeight +30,this->halfHeight +30,this->halfHeight +30 +15,this->halfHeight +30 +15,this->halfHeight +30 +30,this->halfHeight +30 +30,this->halfHeight +30 +45,this->halfHeight +30 +45};
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: baseRefreshHelperCharArray: std::vector<std::vector<char>> = new Array(0).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> baseRefreshHelperCharArray = new Array(0).fill(null).map(() => new Array(0).fill(0));
 
-    private: defaultStringWidth: int32_t= 0;
+    private: int32_t defaultStringWidth= 0;
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.defaultStringWidth= MyFontProcessor.defaultStringWidth(font, 2);
+this->defaultStringWidth= MyFontProcessor::defaultStringWidth(font, 2);
     
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public init(){
-}
-
-
-    public update(){
-this.baseRefreshHelperCharArray= GameStatisticsFactory.getInstance()!.to2DCharArray();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    private: const RED: int32_t = BasicColorFactory.getInstance()!.RED.intValue()!;
+    public: void init(){
+}
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
-    
-graphics.setColor(this.RED);
-    
 
-    charArray: std::vector<char>;;
+    public: void update(){
+this->baseRefreshHelperCharArray= GameStatisticsFactory::getInstance().to2DCharArray();
     
+}
 
-    charArray2: std::vector<char>;;
+
+    private: const int32_t RED = BasicColorFactory::getInstance().RED.intValue();
+
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
-
-    size2: int32_t= 0;;
-    
-
-    size3: int32_t= 0;;
+graphics.setColor(this->RED);
     
 
-    size: int32_t = this.baseRefreshHelperCharArray!.length -2;;
+    std::vector<char> charArray;;
+    
+
+    std::vector<char> charArray2;;
+    
+
+    int32_t size2= 0;;
+    
+
+    int32_t size3= 0;;
+    
+
+    int32_t size = this->baseRefreshHelperCharArray.size() -2;;
     
 
 
 
 
                         for (
-    index: int32_t = size;index >= 0; )
+    int32_t index = size;index >= 0; )
         {
-charArray= this.baseRefreshHelperCharArray[index]!;
+charArray= this->baseRefreshHelperCharArray[index]!;
     
-charArray2= this.baseRefreshHelperCharArray[index +1]!;
+charArray2= this->baseRefreshHelperCharArray[index +1]!;
     
-size2= charArray!.length;
+size2= charArray.size();
     
-size3= charArray2!.length;
+size3= charArray2.size();
     
-graphics.drawChars(charArray, 0, size2, 0, this.yArray[index]!, 0);
+graphics.drawChars(charArray, 0, size2, 0, this->yArray[index]!, 0);
     
-graphics.drawChars(charArray2, 0, size3, size2 *this.defaultStringWidth, this.yArray[index +1]!, 0);
+graphics.drawChars(charArray2, 0, size3, size2 *this->defaultStringWidth, this->yArray[index +1]!, 0);
     
 }
 

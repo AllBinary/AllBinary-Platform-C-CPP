@@ -64,15 +64,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PointsLayer: public AllBinaryLayer {
-        
 
-    private: const points: int32_t;
+    private: int32_t points;
 
-public constructor (int32_t points);
+public: PointsLayer(int32_t points);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public visit(ScoreableInterface scoreableInterface);
+    public: void visit(ScoreableInterface scoreableInterface);
 
 };
 

@@ -48,19 +48,18 @@
 class LogData
             : public Object
          {
-        
 
-    public const MAX: int64_t = 5000000;
+    public: const int64_t MAX = 5000000;
 
-    public const extension: string = "log";
+    public: const std::string extension = "log";
 
-    public const backupFileExt: string = AbPathData.getInstance()!.EXTENSION_SEP +"bak" +AbPathData.getInstance()!.EXTENSION_SEP +"txt";
+    public: const std::string backupFileExt = AbPathData::getInstance().EXTENSION_SEP +"bak" +AbPathData::getInstance().EXTENSION_SEP +"txt";
 
-    public const ALLBINARY: string = "allbinary";
+    public: const std::string ALLBINARY = "allbinary";
 
-    public const NAME: string = "LOG_NAME";
+    public: const std::string NAME = "LOG_NAME";
 
-    public const DESCRIPTION: string = "LOG_DESCRIPTION";
+    public: const std::string DESCRIPTION = "LOG_DESCRIPTION";
 
 };
 

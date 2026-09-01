@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -67,50 +69,47 @@
 class VectorExplosionGenerator
             : public Object
          {
-        
 
-    private: static const instance: VectorExplosionGenerator = new VectorExplosionGenerator();
+    private: static VectorExplosionGenerator instance() { return VectorExplosionGenerator(); }
 
-    public static VectorExplosionGenerator getInstance(){
+    public: static VectorExplosionGenerator getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorExplosionGenerator.instance;
+                        return VectorExplosionGenerator::instance();
     
 }
 
 
-    public const RANDOM: VectorExplosionType = new VectorExplosionType();
+    public: const VectorExplosionType RANDOM = VectorExplosionType();
 
-    public const ROTATION: VectorExplosionType = new VectorExplosionType();
+    public: const VectorExplosionType ROTATION = VectorExplosionType();
 
-    private: const vectorAnimationUtil: VectorAnimationUtil = VectorAnimationUtil.getInstance()!;
+    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: VectorExplosionGenerator(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList createList(BasicArrayList list, int32_t howMuch, VectorExplosionType type){
+    public: BasicArrayList createList(BasicArrayList list, int32_t howMuch, VectorExplosionType type){
 
-    point: GPoint;;
+    GPoint point;;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    points: std::vector<std::vector<int32_t>> = new Array(size).fill(null).map(() => new Array(2).fill(0));;
+    std::vector<std::vector<int32_t>> points = new Array(size).fill(null).map(() => new Array(2).fill(0));;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 point= list.objectArray[index]! as GPoint;
     
@@ -124,22 +123,22 @@ points[index]![1]= point.getY();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createListFromPoints(list, points, howMuch, type);;
+                        return this->createListFromPoints(list, points, howMuch, type);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type){
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type){
 
-    pointsBasicArrayList: BasicArrayList = this.getInstanceStartFrame(points, howMuch, type, true)!;;
+    BasicArrayList pointsBasicArrayList = this->getInstanceStartFrame(points, howMuch, type, true);;
     
 
-    tempBasicArrayList: BasicArrayList = pointsBasicArrayList!.objectArray[0]! as BasicArrayList;;
+    BasicArrayList tempBasicArrayList = pointsBasicArrayList.objectArray[0]! as BasicArrayList;;
     
 
-    newPoints: std::vector<std::vector<std::vector<int32_t>>> = this.vectorAnimationUtil!.toAnimationArrayFromListOfPointListWithPointsPerFrame(pointsBasicArrayList, tempBasicArrayList!.size())!;;
+    std::vector<std::vector<std::vector<int32_t>>> newPoints = this->vectorAnimationUtil.toAnimationArrayFromListOfPointListWithPointsPerFrame(pointsBasicArrayList, tempBasicArrayList.size());;
     
 
 
@@ -152,31 +151,31 @@ points[index]![1]= point.getY();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type, bool startFrame){
+    public: BasicArrayList getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type, bool startFrame){
 
         try {
             
-    pointsBasicArrayList: BasicArrayList = new BasicArrayListS(howMuch);;
+    BasicArrayList pointsBasicArrayList = BasicArrayListS(howMuch);;
     
-pointsBasicArrayList!.add(this.createPointsBasicArrayList(points));
-    
-
-    frameIndex: int32_t = 0;;
+pointsBasicArrayList.add(this->createPointsBasicArrayList(points));
     
 
-    tempBasicArrayList: BasicArrayList;;
+    int32_t frameIndex = 0;;
     
 
-    pointBasicArrayList: BasicArrayList;;
+    BasicArrayList tempBasicArrayList;;
+    
+
+    BasicArrayList pointBasicArrayList;;
     
 
         while(frameIndex < howMuch)
         {
-tempBasicArrayList= pointsBasicArrayList!.objectArray[frameIndex]! as BasicArrayList;
+tempBasicArrayList= pointsBasicArrayList.objectArray[frameIndex]! as BasicArrayList;
     
-pointBasicArrayList= this.createListFromPoints(tempBasicArrayList, points, howMuch, type);
+pointBasicArrayList= this->createListFromPoints(tempBasicArrayList, points, howMuch, type);
     
-pointsBasicArrayList!.add(pointBasicArrayList);
+pointsBasicArrayList.add(pointBasicArrayList);
     
 frameIndex++;
     
@@ -186,7 +185,7 @@ frameIndex++;
                         if(!startFrame)
                         
                                     {
-                                    pointsBasicArrayList!.removeAt(0);
+                                    pointsBasicArrayList.removeAt(0);
     
 
                                     }
@@ -211,34 +210,34 @@ frameIndex++;
 }
 
 
-    private: const randomRotationFactory: RandomRotationFactory = RandomRotationFactory.getInstance()!;
+    private: const RandomRotationFactory randomRotationFactory = RandomRotationFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList createListFromPoints(BasicArrayList tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type){
+    private: BasicArrayList createListFromPoints(BasicArrayList tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type){
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    pointBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList pointBasicArrayList = BasicArrayListD();;
     
 
-    sectionBasicArrayList: BasicArrayList;;
+    BasicArrayList sectionBasicArrayList;;
     
 
-        while(index < points.length)
+        while(index < points.size())
         {
-sectionBasicArrayList= new BasicArrayListD();
+sectionBasicArrayList= BasicArrayListD();
     
 
         while(points[index]![0] != 1000)
         {
-sectionBasicArrayList!.add(tempBasicArrayList!.objectArray[index]!);
+sectionBasicArrayList.add(tempBasicArrayList.objectArray[index]!);
     
 index++;
     
 
-                        if(index >= points.length)
+                        if(index >= points.size())
                         
                                     {
                                     break;
@@ -249,33 +248,33 @@ index++;
                                 
 }
 
-sectionBasicArrayList= RandomTranslation.getInstance(sectionBasicArrayList, howMuch);
+sectionBasicArrayList= RandomTranslation::getInstance(sectionBasicArrayList, howMuch);
     
 
-                        if(type == this.ROTATION)
+                        if(type == this->ROTATION)
                         
                                     {
-                                    sectionBasicArrayList= this.randomRotationFactory!.getInstanceList(sectionBasicArrayList, howMuch);
+                                    sectionBasicArrayList= this->randomRotationFactory.getInstanceList(sectionBasicArrayList, howMuch);
     
 
                                     }
                                 
 
-    size: int32_t = sectionBasicArrayList!.size()!;;
+    int32_t size = sectionBasicArrayList.size();;
     
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size; index2++)
+    int32_t index2 = 0;index2 < size; index2++)
         {
-pointBasicArrayList!.add(sectionBasicArrayList!.objectArray[index2]!);
+pointBasicArrayList.add(sectionBasicArrayList.objectArray[index2]!);
     
 }
 
 
-                        if(index >= points.length)
+                        if(index >= points.size())
                         
                                     {
                                     break;
@@ -288,7 +287,7 @@ pointBasicArrayList!.add(sectionBasicArrayList!.objectArray[index2]!);
                         if(points[index]![0] == 1000)
                         
                                     {
-                                    pointBasicArrayList!.add(tempBasicArrayList!.objectArray[index]!);
+                                    pointBasicArrayList.add(tempBasicArrayList.objectArray[index]!);
     
 index++;
     
@@ -308,33 +307,33 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList createPointsBasicArrayList(std::vector<std::vector<int32_t>> points){
+    private: BasicArrayList createPointsBasicArrayList(std::vector<std::vector<int32_t>> points){
 
-                        if(points.length == 0)
+                        if(points.size() == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("Not Points Provided");
+                            throw Exception("Not Points Provided");
                     
 
                                     }
                                 
 
-    firstPointBasicArrayList: BasicArrayList = new BasicArrayListS(points.length);;
+    BasicArrayList firstPointBasicArrayList = BasicArrayListS(points.size());;
     
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < points.length; index++)
+    int32_t index = 0;index < points.size(); index++)
         {
-firstPointBasicArrayList!.add(pointFactory!.createXY(points[index]![0]!, points[index]![1]!));
+firstPointBasicArrayList.add(pointFactory.createXY(points[index]![0]!, points[index]![1]!));
     
 }
 

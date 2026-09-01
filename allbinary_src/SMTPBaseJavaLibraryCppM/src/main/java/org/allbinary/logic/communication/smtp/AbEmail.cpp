@@ -58,24 +58,21 @@
 class AbEmail
             : public Object
         : public EmailInterface {
-        
 
-    private: email: Email;
+    private: Email email;
 
-public constructor (string server, string from, string to, string subject, string textBody, string htmlAttachment, string contentBase){
+public: AbEmail(std::string server, std::string from, std::string to, std::string subject, std::string textBody, std::string htmlAttachment, std::string contentBase){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.email= new Email(from, to, subject, server, textBody, htmlAttachment, contentBase, true);
+                                    this->email= Email(from, to, subject, server, textBody, htmlAttachment, contentBase, true);
     
 
                                     }
                                 
                         else {
-                            this.email= new Email(from, to, subject, server, textBody, htmlAttachment, contentBase);
+                            this->email= Email(from, to, subject, server, textBody, htmlAttachment, contentBase);
     
 
                         }
@@ -83,80 +80,80 @@ public constructor (string server, string from, string to, string subject, strin
 }
 
 
-    public MimeMessage getMimeMessage(){
+    public: MimeMessage getMimeMessage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.email.getMimeMessage();;
+                        return this->email.getMimeMessage();;
     
 }
 
 
-    public string getDebugInfo(){
+    public: std::string getDebugInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.email.getDebugInfo();;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public string log(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.email.log();;
+                        return this->email.getDebugInfo();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: std::string log(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.email.toHashMap();;
+                        return this->email.log();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: HashMap<any, any> toHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.email.toXmlNode(document);;
-    
-}
-
-
-    public Email getEmail(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.email as Email;
+                        return this->email.toHashMap();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Node toXmlNode(Document document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.email.toXmlDoc();;
+                        return this->email.toXmlNode(document);;
+    
+}
+
+
+    public: Email getEmail(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->email as Email;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: Document toXmlDoc(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->email.toXmlDoc();;
     
 }
 

@@ -44,24 +44,21 @@
 class EmailQueueFactory
             : public Object
          {
-        
 
-    private: static emailQueueInterface: EmailQueueInterface = BasicEmailQueue.getInstance() as EmailQueueInterface;
+    private: static EmailQueueInterface emailQueueInterface = BasicEmailQueue::getInstance() as EmailQueueInterface;
 
-    public static EmailQueueInterface getInstance(){
+    public: static EmailQueueInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EmailQueueFactory.emailQueueInterface;
+                        return EmailQueueFactory::emailQueueInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: EmailQueueFactory(){
+}
 
 
 };

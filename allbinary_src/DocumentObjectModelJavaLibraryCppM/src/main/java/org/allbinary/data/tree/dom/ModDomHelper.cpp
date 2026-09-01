@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -71,18 +73,17 @@
 class ModDomHelper
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Node createTextNode(Document document, string name, string text){
+    public: static Node createTextNode(Document document, std::string name, std::string text){
 
-    newValueNode: Node = document.createElement(name)!;;
+    Node newValueNode = document.createElement(name);;
     
 
-    newValueTextNode: Node = document.createTextNode(text)!;;
+    Node newValueTextNode = document.createTextNode(text);;
     
-newValueNode!.appendChild(newValueTextNode);
+newValueNode.appendChild(newValueTextNode);
     
 
 
@@ -95,64 +96,49 @@ newValueNode!.appendChild(newValueTextNode);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createValueNode(Document document, string text){
+    public: static Node createValueNode(Document document, std::string text){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createTextNode(document, DomData.VALUE, text);;
+                        return ModDomHelper::createTextNode(document, DomData::VALUE, text);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameNode(Document document, string text){
+    public: static Node createNameNode(Document document, std::string text){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createTextNode(document, DomData.NAME, text);;
+                        return ModDomHelper::createTextNode(document, DomData::NAME, text);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Node createIndexNode(Document document, int32_t index){
+    public: static Node createIndexNode(Document document, int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createTextNode(document, DomData.INDEX, new Integer(index).toString());;
+                        return ModDomHelper::createTextNode(document, DomData::INDEX, Integer(index).toString());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, string elementName, string nameText, string valueText){
+    public: static Node createNameValueNodes(Document document, std::string elementName, std::string nameText, std::string valueText){
 
-    newNode: Node = document.createElement(elementName)!;;
+    Node newNode = document.createElement(elementName);;
     
-newNode!.appendChild(ModDomHelper.createNameNode(document, nameText));
+newNode.appendChild(ModDomHelper::createNameNode(document, nameText));
     
-newNode!.appendChild(ModDomHelper.createValueNode(document, valueText));
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return newNode;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public static Node createNameValueNodes(Document document, string elementNameAndNameText, string valueText){
-
-    newNode: Node = ModDomHelper.createNameValueNodes(document, elementNameAndNameText, elementNameAndNameText, valueText)!;;
+newNode.appendChild(ModDomHelper::createValueNode(document, valueText));
     
 
 
@@ -165,11 +151,9 @@ newNode!.appendChild(ModDomHelper.createValueNode(document, valueText));
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueIndexNodes(Document document, string elementNameAndNameText, int32_t index, string valueText){
+    public: static Node createNameValueNodes(Document document, std::string elementNameAndNameText, std::string valueText){
 
-    newNode: Node = ModDomHelper.createNameValueNodes(document, elementNameAndNameText, valueText)!;;
-    
-newNode!.appendChild(ModDomHelper.createIndexNode(document, index));
+    Node newNode = ModDomHelper::createNameValueNodes(document, elementNameAndNameText, elementNameAndNameText, valueText);;
     
 
 
@@ -182,61 +166,77 @@ newNode!.appendChild(ModDomHelper.createIndexNode(document, index));
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, string rootNode, HashMap<any, any> hashMap){
+    public: static Node createNameValueIndexNodes(Document document, std::string elementNameAndNameText, int32_t index, std::string valueText){
 
-    node: Node = document.createElement(rootNode)!;;
+    Node newNode = ModDomHelper::createNameValueNodes(document, elementNameAndNameText, valueText);;
+    
+newNode.appendChild(ModDomHelper::createIndexNode(document, index));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueNodes(document, node, hashMap);;
+                        return newNode;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, Node node, HashMap<any, any> hashMap){
+    public: static Node createNameValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    Node node = document.createElement(rootNode);;
     
 
-    keySet: Set = hashMap!.keys()!;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ModDomHelper::createNameValueNodes(document, node, hashMap);;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: static Node createNameValueNodes(Document document, Node node, HashMap<any, any> hashMap){
+
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    keyArray: std::vector<any> = keySet!.()!;;
+    Set keySet = hashMap.keys();;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    std::vector<Object*> keyArray = keySet.();;
+    
+
+    int32_t size = keyArray.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    objectKey: any = keyArray[i]!;;
+    Object* objectKey = keyArray[i];;
     
 
-    name: string = objectKey as string;;
+    std::string name = objectKey as string;;
     
 
-    anyType: any = hashMap!.get(objectKey);;
+    Object* anyType = hashMap.get(objectKey);;
     
 
                         if(anyType == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    value: string = stringUtil!.EMPTY_STRING;;
+    std::string value = stringUtil.EMPTY_STRING;;
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 
                                     }
@@ -246,9 +246,9 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
                         
                                     {
                                     
-    value: string = stringUtil!.getNonNull(anyType as string)!;;
+    std::string value = stringUtil.getNonNull(anyType as string);;
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 
                                     }
@@ -257,7 +257,7 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
                         if(anyType instanceof HashMap)
                         
                                     {
-                                    node.appendChild(ModDomHelper.createNameValueNodes(document, name, hashMap));
+                                    node.appendChild(ModDomHelper::createNameValueNodes(document, name, hashMap));
     
 
                                     }
@@ -266,7 +266,7 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
                             
 
 
-                            throw new Exception("HashMap value is the wrong instance and is: " +ClassUtil.viewAll(anyType, CommonSeps.getInstance()!.NEW_LINE));
+                            throw Exception("HashMap value is the wrong instance and is: " +ClassUtil::viewAll(anyType, CommonSeps::getInstance().NEW_LINE));
                     
 
                         }
@@ -284,27 +284,27 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, string rootNodeName, string duplicateNodeName, Vector valueVector){
+    public: static Node createNameValueNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    node: Node = document.createElement(rootNodeName)!;;
+    Node node = document.createElement(rootNodeName);;
     
 
-    size: int32_t = valueVector!.length!;;
+    int32_t size = valueVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    value: string = stringUtil!.getNonNull(valueVector!.get(i) as string)!;;
+    std::string value = stringUtil.getNonNull(valueVector.get(i) as string);;
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, duplicateNodeName, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, duplicateNodeName, value));
     
 }
 
@@ -319,27 +319,27 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, duplicateNodeName, 
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueIndexNodes(Document document, string rootNodeName, string duplicateNodeName, Vector valueVector){
+    public: static Node createNameValueIndexNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    node: Node = document.createElement(rootNodeName)!;;
+    Node node = document.createElement(rootNodeName);;
     
 
-    size: int32_t = valueVector!.length!;;
+    int32_t size = valueVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    value: string = stringUtil!.getNonNull(valueVector!.get(index) as string)!;;
+    std::string value = stringUtil.getNonNull(valueVector.get(index) as string);;
     
-node.appendChild(ModDomHelper.createNameValueIndexNodes(document, duplicateNodeName, index, value));
+node.appendChild(ModDomHelper::createNameValueIndexNodes(document, duplicateNodeName, index, value));
     
 }
 
@@ -354,52 +354,51 @@ node.appendChild(ModDomHelper.createNameValueIndexNodes(document, duplicateNodeN
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNodeWithValueNodes(Document document, string rootNode, HashMap<any, any> hashMap){
+    public: static Node createNodeWithValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap){
 
-    node: Node = document.createElement(rootNode)!;;
+    Node node = document.createElement(rootNode);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNodeWithValueNodes(document, node, hashMap);;
+                        return ModDomHelper::createNodeWithValueNodes(document, node, hashMap);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNodeWithValueNodes(Document document, Node node, HashMap<any, any> hashMap){
+    public: static Node createNodeWithValueNodes(Document document, Node node, HashMap<any, any> hashMap){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    keySet: Set = hashMap!.keys()!;;
+    Set keySet = hashMap.keys();;
     
 
-    keyArray: std::vector<any> = keySet!.()!;;
+    std::vector<Object*> keyArray = keySet.();;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    int32_t size = keyArray.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    name: string = keyArray[i]! as string;;
+    std::string name = keyArray[i]! as string;;
     
 
-    anyType: any = hashMap!.get(name);;
+    Object* anyType = hashMap.get(name);;
     
 
-    value: string = stringUtil!.getNonNull(anyType as string)!;;
+    std::string value = stringUtil.getNonNull(anyType as string);;
     
-node.appendChild(ModDomHelper.createTextNode(document, name, value));
+node.appendChild(ModDomHelper::createTextNode(document, name, value));
     
 }
 
@@ -412,10 +411,8 @@ node.appendChild(ModDomHelper.createTextNode(document, name, value));
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ModDomHelper(){
+}
 
 
 };

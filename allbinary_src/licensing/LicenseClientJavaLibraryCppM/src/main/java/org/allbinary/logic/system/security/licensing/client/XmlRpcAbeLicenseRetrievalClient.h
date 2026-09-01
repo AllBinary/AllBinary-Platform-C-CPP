@@ -85,15 +85,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcAbeLicenseRetrievalClient: public XmlRpcAbeClient {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (AbeClientInformationInterface clientInfo);
+public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface clientInfo);
 
                 //@Throws(Exception.constructor)
             
-    public any get(any = {} anyType, CryptInterface cryptInterface);
+    public: Object* get(Object* anyType, CryptInterface cryptInterface);
 
 };
 

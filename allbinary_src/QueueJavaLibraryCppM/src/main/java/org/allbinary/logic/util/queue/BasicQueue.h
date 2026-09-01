@@ -50,22 +50,21 @@
 class BasicQueue
             : public Object
          {
-        
 
-    const queueVector: Vector = new Vector();
+    protected: const Vector queueVector = Vector();
 
-protected constructor ();
+protected: BasicQueue();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    bool offer(any = {} anyType);
+    protected: bool offer(Object* anyType);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    remove(any = {} anyType);
+    protected: void remove(Object* anyType);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    any removeLast();
+    protected: Object* removeLast();
 
 };
 

@@ -37,13 +37,12 @@
         #include "EmulatorViewInterface.h"
 
 class AllBinaryMidletViewInterface: public MidletCompositeInterface, public EmulatorViewInterface, public DemoGameMidletEventListener, public GameInitializedListenerInterface {
-        
 
-    onResume();
+    void onResume();
 
-    onPause();
+    void onPause();
 
-    onDestroy();
+    void onDestroy();
 
 };
 

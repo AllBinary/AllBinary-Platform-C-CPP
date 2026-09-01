@@ -50,57 +50,56 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileOutputStream: public FileOutputStream {
-        
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromAbFile(AbFile file){
+    public: static AbFileOutputStream createFromAbFile(AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(file.getPath(), false);
+                        return AbFileOutputStream(file.getPath(), false);
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append){
+    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(file.getPath(), append);
+                        return AbFileOutputStream(file.getPath(), append);
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePath(string name){
+    public: static AbFileOutputStream createFromFilePath(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(name, false);
+                        return AbFileOutputStream(name, false);
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePathAppend(string name, bool append){
+    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(name, append);
+                        return AbFileOutputStream(name, append);
     
 }
 
 
-public constructor (string name, bool append){
+public: AbFileOutputStream(std::string name, bool append){
             super(name, append);
                     
 

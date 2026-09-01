@@ -54,17 +54,16 @@
 #include "DisplayChangeEvent.h"
 
 class LastDisplayChangeEventHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: LastDisplayChangeEventHandler = new LastDisplayChangeEventHandler();
+    private: static const LastDisplayChangeEventHandler SINGLETON = LastDisplayChangeEventHandler();
 
-    public static LastDisplayChangeEventHandler getInstance();
+    public: static LastDisplayChangeEventHandler getInstance();
 
-private constructor ();
+private: LastDisplayChangeEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

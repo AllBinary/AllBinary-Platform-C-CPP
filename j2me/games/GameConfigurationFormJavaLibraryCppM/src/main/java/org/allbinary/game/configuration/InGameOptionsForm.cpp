@@ -79,42 +79,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InGameOptionsForm: public CommandForm {
-        
 
-    public static const DISPLAY: Command = new Command("Options In Game", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command DISPLAY = Command("Options In Game", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public static const SAVE: Command = new Command("Save", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command SAVE = Command("Save", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public static const DEFAULT: Command = new Command("Default", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command DEFAULT = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
- constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+: InGameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
             super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    gameFeatureFormUtil: GameFeatureFormUtil = GameFeatureFormUtil.getInstance()!;;
+    GameFeatureFormUtil gameFeatureFormUtil = GameFeatureFormUtil::getInstance();;
     
-gameFeatureFormUtil!.addChoiceGroup(this, InGameFeatureChoiceGroups.getExclusiveInstance()!.get(), ChoiceI.EXCLUSIVE);
+gameFeatureFormUtil.addChoiceGroup(this, InGameFeatureChoiceGroups::getExclusiveInstance().get(), Choice::EXCLUSIVE);
     
-gameFeatureFormUtil!.addChoiceGroup(this, InGameFeatureChoiceGroups.getMultipleInstance()!.get(), ChoiceI.MULTIPLE);
+gameFeatureFormUtil.addChoiceGroup(this, InGameFeatureChoiceGroups::getMultipleInstance().get(), Choice::MULTIPLE);
     
-this.initCommands(commandListener);
+this->initCommands(commandListener);
     
 }
 
 
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
     
-this.addCommand(GameCommandsFactory.getInstance()!.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
     
-this.addCommand(InGameOptionsForm.DEFAULT);
+this->addCommand(InGameOptionsForm::DEFAULT);
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 

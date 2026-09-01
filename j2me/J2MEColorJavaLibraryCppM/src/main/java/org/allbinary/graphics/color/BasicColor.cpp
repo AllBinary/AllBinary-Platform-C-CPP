@@ -58,45 +58,42 @@
 class BasicColor
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const value: int32_t;
+    private: int32_t value;
 
-    private: const redComponent: float;
+    private: float redComponent;
 
-    private: const greenComponent: float;
+    private: float greenComponent;
 
-    private: const blueComponent: float;
+    private: float blueComponent;
 
-    private: const alphaComponent: float;
+    private: float alphaComponent;
 
-    public const red: int16_t;
+    public: int16_t red;
 
-    public const green: int16_t;
+    public: int16_t green;
 
-    public const blue: int16_t;
+    public: int16_t blue;
 
-    public const alpha: int16_t;
+    public: int16_t alpha;
 
- constructor (int32_t alphaValue, int32_t value, string name){
-
-            super();
-        this.name= name;
+: BasicColor(int32_t alphaValue, int32_t value, std::string name){
+this->name= name;
     
 
-    tempValue: int32_t= 0;;
+    int32_t tempValue= 0;;
     
 
-    basicColorUtil: BasicColorUtil = BasicColorUtil.getInstance()!;;
+    BasicColorUtil basicColorUtil = BasicColorUtil::getInstance();;
     
 
-                        if(basicColorUtil!.isAlpha)
+                        if(basicColorUtil.isAlpha)
                         
                                     {
                                     
-                        if(basicColorUtil!.ffOpaque)
+                        if(basicColorUtil.ffOpaque)
                         
                                     {
                                     tempValue= alphaValue | value;
@@ -120,139 +117,139 @@ class BasicColor
                         }
                             
 
-    alphaInt: int32_t = ((tempValue>>24)&255);;
+    int32_t alphaInt = ((tempValue>>24)&255);;
     
-this.alpha= alphaInt;
+this->alpha= alphaInt;
     
-this.alphaComponent= (alphaInt) /255;
-    
-
-    redInt: int32_t = ((tempValue>>16)&255);;
-    
-this.red= redInt;
-    
-this.redComponent= (redInt) /255;
+this->alphaComponent= (alphaInt) /255;
     
 
-    greenInt: int32_t = ((tempValue>>8)&255);;
+    int32_t redInt = ((tempValue>>16)&255);;
     
-this.green= greenInt;
+this->red= redInt;
     
-this.greenComponent= (greenInt) /255;
+this->redComponent= (redInt) /255;
     
 
-    blueInt: int32_t = ((tempValue)&255);;
+    int32_t greenInt = ((tempValue>>8)&255);;
     
-this.blue= blueInt;
+this->green= greenInt;
     
-this.blueComponent= (blueInt) /255;
+this->greenComponent= (greenInt) /255;
     
-this.value= tempValue;
+
+    int32_t blueInt = ((tempValue)&255);;
     
-}
-
-
-    public int32_t intValue(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+this->blue= blueInt;
+    
+this->blueComponent= (blueInt) /255;
+    
+this->value= tempValue;
     
 }
 
 
-    public int32_t toInt(){
+    public: int32_t intValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 
 
-    public string toString(){
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("BasicColor: ");
-    
-stringBuffer!.append("Alpha: ");
-    
-stringBuffer!.appendshort(this.alpha);
-    
-stringBuffer!.append(" Red: ");
-    
-stringBuffer!.appendshort(this.red);
-    
-stringBuffer!.append(" Green: ");
-    
-stringBuffer!.appendshort(this.green);
-    
-stringBuffer!.append(" Blue: ");
-    
-stringBuffer!.appendshort(this.blue);
-    
-stringBuffer!.append(" Value: ");
-    
-stringBuffer!.appendint(this.value);
-    
+    public: int32_t toInt(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return this->value;
     
 }
 
 
-    public string getName(){
+    public: std::string toString(){
+
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("BasicColor: ");
+    
+stringBuffer.append("Alpha: ");
+    
+stringBuffer.appendshort(this->alpha);
+    
+stringBuffer.append(" Red: ");
+    
+stringBuffer.appendshort(this->red);
+    
+stringBuffer.append(" Green: ");
+    
+stringBuffer.appendshort(this->green);
+    
+stringBuffer.append(" Blue: ");
+    
+stringBuffer.appendshort(this->blue);
+    
+stringBuffer.append(" Value: ");
+    
+stringBuffer.appendint(this->value);
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public float getRedComponent(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.redComponent;
+                        return this->name;
     
 }
 
 
-    public float getGreenComponent(){
+    public: float getRedComponent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.greenComponent;
+                        return this->redComponent;
     
 }
 
 
-    public float getBlueComponent(){
+    public: float getGreenComponent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.blueComponent;
+                        return this->greenComponent;
     
 }
 
 
-    public float getAlphaComponent(){
+    public: float getBlueComponent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.alphaComponent;
+                        return this->blueComponent;
+    
+}
+
+
+    public: float getAlphaComponent(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->alphaComponent;
     
 }
 

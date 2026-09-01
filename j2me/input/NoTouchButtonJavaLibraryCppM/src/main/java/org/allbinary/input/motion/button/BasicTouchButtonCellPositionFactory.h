@@ -45,11 +45,10 @@
 class BasicTouchButtonCellPositionFactory
             : public Object
          {
-        
 
-    public static init();
+    public: static void init();
 
-private constructor ();
+private: BasicTouchButtonCellPositionFactory();
 
 };
 

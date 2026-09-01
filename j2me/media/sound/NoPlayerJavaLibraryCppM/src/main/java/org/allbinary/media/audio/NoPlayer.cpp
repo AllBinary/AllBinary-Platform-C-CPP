@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/media/Control.h>
 
       
@@ -46,46 +48,43 @@
 #include "NullControl.h"
 
 class NoPlayer: public BasicPlayer {
-        
 
-    public static const NO_PLAYER: NoPlayer = new NoPlayer();
+    public: static const NoPlayer NO_PLAYER = NoPlayer();
 
-public constructor (){
-
-            super();
-        }
-
-
-    public close(){
+public: NoPlayer(){
 }
 
 
-    public string getContentType(){
+    public: void close(){
+}
+
+
+    public: std::string getContentType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.NULL_STRING;
+                        return StringUtil::getInstance().NULL_STRING;
     
 }
 
 
-    public Control getControl(string controlType){
+    public: Control getControl(std::string controlType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NullControl();
+                        return NullControl();
     
 }
 
 
-    public std::vector<Control> getControls(){
+    public: std::vector<Control> getControls(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 

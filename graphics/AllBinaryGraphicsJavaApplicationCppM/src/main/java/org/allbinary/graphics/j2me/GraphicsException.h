@@ -48,16 +48,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GraphicsException: public java.lang.Exception {
-        
+class GraphicsException: public java::lang::Exception {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const guiLog: GuiLog = GuiLog.getInstance()!;
+    private: const GuiLog guiLog = GuiLog::getInstance();
 
-public constructor (string msg, any = {} obj, string method);
+public: GraphicsException(std::string msg, Object* obj, std::string method);
 
-public constructor (string msg, string className, string method);
+public: GraphicsException(std::string msg, std::string className, std::string method);
 
 };
 

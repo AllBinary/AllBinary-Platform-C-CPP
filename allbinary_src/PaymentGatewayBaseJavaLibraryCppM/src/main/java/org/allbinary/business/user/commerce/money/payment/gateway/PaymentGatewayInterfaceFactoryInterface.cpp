@@ -44,7 +44,6 @@
         #include "PaymentGatewayInterface.h"
 
 class PaymentGatewayInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

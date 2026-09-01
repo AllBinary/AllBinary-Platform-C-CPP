@@ -83,36 +83,35 @@
         #include "GameInput.h"
 #include "GameInputStrings.h"
 
-class PlayerGameInput: public GameInput: public GameKeyEventListenerInterface {
-        
+class PlayerGameInput: public GameInput, public GameKeyEventListenerInterface {
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    private: const playerInputId: int32_t;
+    private: int32_t playerInputId;
 
-public constructor (BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList, int32_t playerInputId);
+public: PlayerGameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList, int32_t playerInputId);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownKey(Integer gameKeyEvent);
+    public: void onDownKey(Integer gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpKeyEvent(Integer gameKeyEvent);
+    public: void onUpKeyEvent(Integer gameKeyEvent);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public int32_t getPlayerInputId();
+    public: int32_t getPlayerInputId();
 
 };
 

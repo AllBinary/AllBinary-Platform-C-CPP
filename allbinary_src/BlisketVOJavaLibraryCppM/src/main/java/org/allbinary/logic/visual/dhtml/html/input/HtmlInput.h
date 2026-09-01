@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUT_H
 
+            #include <vector>
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -47,29 +49,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HtmlInput: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const STARTINPUT: string = "<INPUT ";
+    private: const std::string STARTINPUT = "<INPUT ";
 
-    private: const ENDINPUT: string = "</INPUT>";
+    private: const std::string ENDINPUT = "</INPUT>";
 
-    private: const TYPE: string = "TYPE=\"";
+    private: const std::string TYPE = "TYPE=\"";
 
-    private: const NAME: string = "NAME=\"";
+    private: const std::string NAME = "NAME=\"";
 
-    private: before: string;
+    private: std::string before;
 
-    private: type: string;
+    private: std::string type;
 
-    private: name: string;
+    private: std::string name;
 
-    private: after: string;
+    private: std::string after;
 
-public constructor (string before, string type, string name, string after);
+public: HtmlInput(std::string before, std::string type, std::string name, std::string after);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

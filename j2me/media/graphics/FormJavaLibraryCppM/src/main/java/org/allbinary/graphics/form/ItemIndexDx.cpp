@@ -53,23 +53,22 @@
 class ItemIndexDx
             : public Object
          {
-        
 
-    private: static const instance: ItemIndexDx = new ItemIndexDx();
+    private: static ItemIndexDx instance() { return ItemIndexDx(); }
 
-    public static ItemIndexDx getInstance(){
+    public: static ItemIndexDx getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemIndexDx.instance;
+                        return ItemIndexDx::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 

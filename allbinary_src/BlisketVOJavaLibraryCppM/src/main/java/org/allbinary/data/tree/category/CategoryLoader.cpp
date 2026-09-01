@@ -83,22 +83,21 @@
         #include "CategoryModifierTree.h"
 #include "CategoryLoaderInterface.h"
 
-class CategoryLoader: public CategoryModifierTree: public CategoryLoaderInterface {
-        
+class CategoryLoader: public CategoryModifierTree, public CategoryLoaderInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (CategoryFactoryInterface categoryFactoryInterface){
+public: CategoryLoader(CategoryFactoryInterface categoryFactoryInterface){
             super(categoryFactoryInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "CategoryLoader(CategoryFactoryInterface categoryFactoryInterface)");
+                                    this->logUtil.putF(this->commonStrings.START, this, "CategoryLoader(CategoryFactoryInterface categoryFactoryInterface)");
     
 
                                     }
@@ -107,41 +106,41 @@ public constructor (CategoryFactoryInterface categoryFactoryInterface){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Document getDoc(CategoryInterface categoryInterface){
+    public: Document getDoc(CategoryInterface categoryInterface){
 
         try {
             
-                        if(categoryInterface!.getProperties()!.getPath(categoryInterface!.getHierarchy()) != 
-                                    null
+                        if(categoryInterface.getProperties().getPath(categoryInterface.getHierarchy()) != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(categoryInterface!.getHierarchy()!.getLevel() == 1)
+                        if(categoryInterface.getHierarchy().getLevel() == 1)
                         
                                     {
                                     
-    rootAbFile: AbFile = AbFile.createAbFileFromAbPath(categoryInterface!.getRootFilePath())!;;
+    AbFile rootAbFile = AbFile::createAbFileFromAbPath(categoryInterface.getRootFilePath());;
     
 
-                        if(!rootAbFile!.isDirectory())
+                        if(!rootAbFile.isDirectory())
                         
                                     {
-                                    rootAbFile!.mkdirs();
+                                    rootAbFile.mkdirs();
     
 
-                        if(!rootAbFile!.isDirectory())
+                        if(!rootAbFile.isDirectory())
                         
                                     {
                                     
 
 
-                            throw new Exception("Could Not Create Directory");
+                            throw Exception("Could Not Create Directory");
                     
 
                                     }
                                 
-this.save(categoryInterface);
+this->save(categoryInterface);
     
 
                                     }
@@ -150,13 +149,13 @@ this.save(categoryInterface);
                                     }
                                 
 
-    fileAbPath: AbPath = categoryInterface!.getFilePath()!;;
+    AbPath fileAbPath = categoryInterface.getFilePath();;
     
 
-    cryptFileReader: CryptFileReader = new CryptFileReader(CategoryData.getInstance()!.UNCRYPTED_EXTENSION, CategoryData.getInstance()!.ENCRYPTED_EXTENSION);;
+    CryptFileReader cryptFileReader = CryptFileReader(CategoryData::getInstance().UNCRYPTED_EXTENSION, CategoryData::getInstance().ENCRYPTED_EXTENSION);;
     
 
-    document: Document = DomDocumentHelper.create(cryptFileReader!.get(fileAbPath))!;;
+    Document document = DomDocumentHelper::create(cryptFileReader.get(fileAbPath));;
     
 
 
@@ -171,7 +170,7 @@ this.save(categoryInterface);
                             
 
 
-                            throw new Exception("Null Category");
+                            throw Exception("Null Category");
                     
 
                         }
@@ -181,22 +180,22 @@ this.save(categoryInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
                                     
         try {
-            categoryInterface!.log();
+            categoryInterface.log();
     
 
                 //: 
 } catch(e2) 
             {
-this.logUtil!.put("Could Not Log Category", this, "getDoc", e);
+this->logUtil.put("Could Not Log Category", this, "getDoc", e);
     
 }
 
-this.logUtil!.put(this.commonStrings!.FAILURE, this, "getDoc", e);
+this->logUtil.put(this->commonStrings.FAILURE, this, "getDoc", e);
     
 
                                     }
@@ -213,30 +212,30 @@ this.logUtil!.put(this.commonStrings!.FAILURE, this, "getDoc", e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public CategoryInterface get(CategoryInterface categoryInterface){
+    public: CategoryInterface get(CategoryInterface categoryInterface){
 
         try {
             
-    document: Document = this.getDoc(categoryInterface)!;;
+    Document document = this->getDoc(categoryInterface);;
     
 
-    categoryNode: Node = DomSearchHelper.getNode(CategoryData.getInstance()!.NAME, document.getChildNodes())!;;
+    Node categoryNode = DomSearchHelper::getNode(CategoryData::getInstance().NAME, document.getChildNodes());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.addProperties(categoryInterface, categoryNode!.getChildNodes());;
+                        return this->addProperties(categoryInterface, categoryNode.getChildNodes());;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.GET, e);
     
 
                                     }
@@ -253,30 +252,30 @@ this.logUtil!.put(this.commonStrings!.FAILURE, this, "getDoc", e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public CategoryInterface get(Document document){
+    public: CategoryInterface get(Document document){
 
         try {
             
-    categoryNode: Node = DomSearchHelper.getNode(CategoryData.getInstance()!.NAME, document.getChildNodes())!;;
+    Node categoryNode = DomSearchHelper::getNode(CategoryData::getInstance().NAME, document.getChildNodes());;
     
 
-    loadedCategoryInterface: CategoryInterface = this.categoryFactoryInterface!.getRootInstanceFromNode(categoryNode)!;;
+    CategoryInterface loadedCategoryInterface = this->categoryFactoryInterface.getRootInstanceFromNode(categoryNode);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.addProperties(loadedCategoryInterface, categoryNode!.getChildNodes());;
+                        return this->addProperties(loadedCategoryInterface, categoryNode.getChildNodes());;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.GET, e);
     
 
                                     }
@@ -293,27 +292,27 @@ this.logUtil!.put(this.commonStrings!.FAILURE, this, "getDoc", e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public CategoryInterface getAll(CategoryInterface categoryInterface){
+    public: CategoryInterface getAll(CategoryInterface categoryInterface){
 
         try {
             
-    document: Document = this.getDoc(categoryInterface)!;;
+    Document document = this->getDoc(categoryInterface);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getAll(document);;
+                        return this->getAll(document);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.GET, e);
     
 
                                     }
@@ -330,30 +329,30 @@ this.logUtil!.put(this.commonStrings!.FAILURE, this, "getDoc", e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    CategoryInterface getAll(Document document){
+    private: CategoryInterface getAll(Document document){
 
         try {
             
-    categoryNode: Node = DomSearchHelper.getNode(CategoryData.getInstance()!.NAME, document.getChildNodes())!;;
+    Node categoryNode = DomSearchHelper::getNode(CategoryData::getInstance().NAME, document.getChildNodes());;
     
 
-    loadedCategoryInterface: CategoryInterface = this.categoryFactoryInterface!.getRootInstanceFromNode(categoryNode)!;;
+    CategoryInterface loadedCategoryInterface = this->categoryFactoryInterface.getRootInstanceFromNode(categoryNode);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.addProperties(loadedCategoryInterface, categoryNode!.getChildNodes());;
+                        return this->addProperties(loadedCategoryInterface, categoryNode.getChildNodes());;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.GET, e);
     
 
                                     }
@@ -370,12 +369,12 @@ this.logUtil!.put(this.commonStrings!.FAILURE, this, "getDoc", e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    CategoryInterface getAll(CategoryInterface parentCategoryInterface, NodeList categoryNodeList){
+    private: CategoryInterface getAll(CategoryInterface parentCategoryInterface, NodeList categoryNodeList){
 
         try {
             
                         if(categoryNodeList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -384,21 +383,21 @@ this.logUtil!.put(this.commonStrings!.FAILURE, this, "getDoc", e);
 
 
                         for (
-    index: int32_t = 0;index < categoryNodeList!.getLength(); index++)
+    int32_t index = 0;index < categoryNodeList.getLength(); index++)
         {
 
-    categoryNode: Node = categoryNodeList!.item(index)!;;
+    Node categoryNode = categoryNodeList.item(index);;
     
 
                         if(categoryNode != 
-                                    null
-                                 && categoryNode!.getNodeName()!.compareTo(CategoryData.getInstance()!.NAME) == 0)
+                                    nullptr
+                                 && categoryNode.getNodeName().compareTo(CategoryData::getInstance().NAME) == 0)
                         
                                     {
                                     
-    categoryInterface: CategoryInterface = this.categoryFactoryInterface!.getInstance(parentCategoryInterface!.getHierarchy()!.getRoot(), parentCategoryInterface, categoryNode) as CategoryInterface;;
+    CategoryInterface categoryInterface = this->categoryFactoryInterface.getInstance(parentCategoryInterface.getHierarchy().getRoot(), parentCategoryInterface, categoryNode) as CategoryInterface;;
     
-parentCategoryInterface!.addChild(categoryInterface);
+parentCategoryInterface.addChild(categoryInterface);
     
 
                                     }
@@ -419,10 +418,10 @@ parentCategoryInterface!.addChild(categoryInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.GET, e);
     
 
                                     }
@@ -439,12 +438,12 @@ parentCategoryInterface!.addChild(categoryInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    CategoryInterface addProperties(CategoryInterface loadedCategoryInterface, NodeList categoryNodeList){
+    private: CategoryInterface addProperties(CategoryInterface loadedCategoryInterface, NodeList categoryNodeList){
 
         try {
             
                         if(categoryNodeList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -453,21 +452,21 @@ parentCategoryInterface!.addChild(categoryInterface);
 
 
                         for (
-    index: int32_t = 0;index < categoryNodeList!.getLength(); index++)
+    int32_t index = 0;index < categoryNodeList.getLength(); index++)
         {
 
-    categoryNode: Node = categoryNodeList!.item(index)!;;
+    Node categoryNode = categoryNodeList.item(index);;
     
 
                         if(categoryNode != 
-                                    null
-                                 && categoryNode!.getNodeName()!.compareTo(CategoryData.getInstance()!.NAME) == 0)
+                                    nullptr
+                                 && categoryNode.getNodeName().compareTo(CategoryData::getInstance().NAME) == 0)
                         
                                     {
                                     
-    categoryPropertiesInterface: CategoryPropertiesInterface = new CategoryProperties(categoryNode) as CategoryPropertiesInterface;;
+    CategoryPropertiesInterface categoryPropertiesInterface = CategoryProperties(categoryNode) as CategoryPropertiesInterface;;
     
-loadedCategoryInterface!.addChildProperty(categoryPropertiesInterface);
+loadedCategoryInterface.addChildProperty(categoryPropertiesInterface);
     
 
                                     }
@@ -488,10 +487,10 @@ loadedCategoryInterface!.addChildProperty(categoryPropertiesInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.GET, e);
     
 
                                     }

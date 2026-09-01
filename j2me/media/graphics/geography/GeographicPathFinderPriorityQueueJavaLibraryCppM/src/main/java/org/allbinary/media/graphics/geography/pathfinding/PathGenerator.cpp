@@ -59,37 +59,34 @@
 class PathGenerator
             : public Object
         : public PathGeneratorInterface {
-        
 
-    private: static const SINGLETON: PathGenerator = new PathGenerator();
+    private: static const PathGenerator SINGLETON = PathGenerator();
 
-    public static PathGenerator getInstance(){
+    public: static PathGenerator getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathGenerator.SINGLETON;
+                        return PathGenerator::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            
-    public init(any = {} geographicMapInterface, int32_t totalPaths){
+private: PathGenerator(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getInstanceNoCache(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths){
+    public: void init(Object* geographicMapInterface, int32_t totalPaths){
+}
 
-    geographicMapCellPositionBasicArrayList: BasicArrayList = this.create(geographicMapInterface, pathFindingInfo, totalPaths)!;;
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getInstanceNoCache(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths){
+
+    BasicArrayList geographicMapCellPositionBasicArrayList = this->create(geographicMapInterface, pathFindingInfo, totalPaths);;
     
 
 
@@ -102,53 +99,29 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths){
+    public: BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList create(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths){
+    private: BasicArrayList create(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths){
 
-    startPathFindingNodeList: BasicArrayList = pathFindingInfo!.getStartPathFindingNodeList()!;;
+    BasicArrayList startPathFindingNodeList = pathFindingInfo.getStartPathFindingNodeList();;
     
 
-    endPathFindingNodeList: BasicArrayList = pathFindingInfo!.getEndPathFindingNodeList()!;;
+    BasicArrayList endPathFindingNodeList = pathFindingInfo.getEndPathFindingNodeList();;
     
 
-    geographicPathFinderInterface: GeographicPathFinderBase = pathFindingInfo!.getPathFinder()!;;
+    GeographicPathFinderBase geographicPathFinderInterface = pathFindingInfo.getPathFinder();;
     
 
-    geographicMapCellPositionBasicArrayList: BasicArrayList = geographicPathFinderInterface!.searchTotalPath(startPathFindingNodeList, endPathFindingNodeList, totalPaths)!;;
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return geographicMapCellPositionBasicArrayList;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList createN(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths, MultipassState multipassState){
-
-    startPathFindingNodeList: BasicArrayList = pathFindingInfo!.getStartPathFindingNodeList()!;;
-    
-
-    endPathFindingNodeList: BasicArrayList = pathFindingInfo!.getEndPathFindingNodeList()!;;
-    
-
-    geographicPathFinderInterface: GeographicPathFinderBase = pathFindingInfo!.getPathFinder()!;;
-    
-
-    geographicMapCellPositionBasicArrayList: BasicArrayList = geographicPathFinderInterface!.searchTotalPathN(startPathFindingNodeList, endPathFindingNodeList, totalPaths, multipassState)!;;
+    BasicArrayList geographicMapCellPositionBasicArrayList = geographicPathFinderInterface.searchTotalPath(startPathFindingNodeList, endPathFindingNodeList, totalPaths);;
     
 
 
@@ -161,11 +134,35 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    bool isValid(BasicArrayList pathList, GeographicMapCellHistory geographicMapCellHistory){
+    public: BasicArrayList createN(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths, MultipassState multipassState){
+
+    BasicArrayList startPathFindingNodeList = pathFindingInfo.getStartPathFindingNodeList();;
+    
+
+    BasicArrayList endPathFindingNodeList = pathFindingInfo.getEndPathFindingNodeList();;
+    
+
+    GeographicPathFinderBase geographicPathFinderInterface = pathFindingInfo.getPathFinder();;
+    
+
+    BasicArrayList geographicMapCellPositionBasicArrayList = geographicPathFinderInterface.searchTotalPathN(startPathFindingNodeList, endPathFindingNodeList, totalPaths, multipassState);;
+    
 
 
 
-                            throw new RuntimeException();
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return geographicMapCellPositionBasicArrayList;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    private: bool isValid(BasicArrayList pathList, GeographicMapCellHistory geographicMapCellHistory){
+
+
+
+                            throw RuntimeException();
                     
 }
 

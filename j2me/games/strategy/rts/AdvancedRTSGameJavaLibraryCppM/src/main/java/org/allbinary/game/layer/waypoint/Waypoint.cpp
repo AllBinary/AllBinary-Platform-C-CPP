@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/RuntimeException.h"
@@ -114,91 +116,88 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WaypointBase.h"
 
-class Waypoint: public WaypointBase: public BuildingEventListenerInterface {
-        
+class Waypoint: public WaypointBase, public BuildingEventListenerInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    protected: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    const ownerLayer: PathFindingLayerInterface;
+    protected: PathFindingLayerInterface ownerLayer;
 
-    private: endList: BasicArrayList = this.basicArrayListUtil!.getImmutableInstance()!;
+    private: BasicArrayList endList = this->basicArrayListUtil.getImmutableInstance();
 
-    private: paths: std::vector<std::vector<BasicArrayList>> = this.basicArrayListUtil!.NULL_ARRAY_OF_ARRAY;
+    private: std::vector<std::vector<BasicArrayList>> paths = this->basicArrayListUtil.NULL_ARRAY_OF_ARRAY;
 
-public constructor (PathFindingLayerInterface ownerLayer, Sound sound){
+public: Waypoint(PathFindingLayerInterface ownerLayer, Sound sound){
             super(sound);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.ownerLayer= ownerLayer;
+this->ownerLayer= ownerLayer;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
-    tiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
 
-                        if(this.paths != this.basicArrayListUtil!.NULL_ARRAY_OF_ARRAY)
+                        if(this->paths != this->basicArrayListUtil.NULL_ARRAY_OF_ARRAY)
                         
                                     {
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
                                 
-this.endList= this.ownerLayer!.getEndGeographicMapCellPositionList();
+this->endList= this->ownerLayer.getEndGeographicMapCellPositionList();
     
-this.paths= new Array(tiledLayer!.getColumns()).fill(null).map(() => new Array(tiledLayer!.getRows()).fill(0))
+this->paths= new Array(tiledLayer.getColumns()).fill(null).map(() => new Array(tiledLayer.getRows()).fill(0))
                                                             ;
     
-this.clearPaths();
+this->clearPaths();
     
 }
 
 
-    public releaseCachedPaths(){
+    public: void releaseCachedPaths(){
 
 
 
 
                         for (
-    columnIndex: int32_t = this.paths.length
-                ;--columnIndex >= 0; )
+    int32_t columnIndex = this->paths.size();--columnIndex >= 0; )
         {
 
 
 
 
                         for (
-    rowIndex: int32_t = this.paths.length
-                ;--rowIndex >= 0; )
+    int32_t rowIndex = this->paths.size();--rowIndex >= 0; )
         {
 
-    pathsList: BasicArrayList = this.paths[columnIndex]![rowIndex]!;;
+    BasicArrayList pathsList = this->paths[columnIndex]![rowIndex];;
     
 
-                        if(pathsList != this.basicArrayListUtil!.getImmutableInstance())
+                        if(pathsList != this->basicArrayListUtil.getImmutableInstance())
                         
                                     {
-                                    BasicGeographicMapExtractedPathsCacheFactory.getInstance()!.release(pathsList);
+                                    BasicGeographicMapExtractedPathsCacheFactory::getInstance().release(pathsList);
     
 
                                     }
@@ -212,29 +211,29 @@ this.clearPaths();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paths[geographicMapCellPosition!.getColumn()]![geographicMapCellPosition!.getRow()]!;
+                        return this->paths[geographicMapCellPosition.getColumn()]![geographicMapCellPosition.getRow()]!;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition){
+    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition){
 
-    pathsList: BasicArrayList = this.paths[geographicMapCellPosition!.getColumn()]![geographicMapCellPosition!.getRow()]!;;
+    BasicArrayList pathsList = this->paths[geographicMapCellPosition.getColumn()]![geographicMapCellPosition.getRow()];;
     
 
-                        if(pathsList == this.basicArrayListUtil!.getImmutableInstance())
+                        if(pathsList == this->basicArrayListUtil.getImmutableInstance())
                         
                                     {
-                                    pathsList= this.createPaths(geographicMapCellPosition);
+                                    pathsList= this->createPaths(geographicMapCellPosition);
     
-this.paths[geographicMapCellPosition!.getColumn()]![geographicMapCellPosition!.getRow()]= pathsList;
+this->paths[geographicMapCellPosition.getColumn()]![geographicMapCellPosition.getRow()]= pathsList;
     
 
                                     }
@@ -248,9 +247,9 @@ this.paths[geographicMapCellPosition!.getColumn()]![geographicMapCellPosition!.g
 }
 
 
-    GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition){
+    protected: GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition){
 
-    endGeographicMapCellPosition: GeographicMapCellPosition = this.basicArrayListUtil!.getRandom(this.endList) as GeographicMapCellPosition;;
+    GeographicMapCellPosition endGeographicMapCellPosition = this->basicArrayListUtil.getRandom(this->endList) as GeographicMapCellPosition;;
     
 
                         if(startGeographicMapCellPosition == endGeographicMapCellPosition)
@@ -261,9 +260,9 @@ this.paths[geographicMapCellPosition!.getColumn()]![geographicMapCellPosition!.g
 
 
                         for (
-    index: int32_t = this.endList!.size() -1;index >= 0; index--)
+    int32_t index = this->endList.size() -1;index >= 0; index--)
         {
-endGeographicMapCellPosition= this.endList!.get(index) as GeographicMapCellPosition;
+endGeographicMapCellPosition= this->endList.get(index) as GeographicMapCellPosition;
     
 
                         if(startGeographicMapCellPosition != endGeographicMapCellPosition)
@@ -291,26 +290,26 @@ endGeographicMapCellPosition= this.endList!.get(index) as GeographicMapCellPosit
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList createPaths(GeographicMapCellPosition startGeographicMapCellPosition){
+    private: BasicArrayList createPaths(GeographicMapCellPosition startGeographicMapCellPosition){
 
-                        if(this.endList!.size() == 0)
+                        if(this->endList.size() == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 
                                     }
                                 
 
-    endGeographicMapCellPosition: GeographicMapCellPosition = this.getEndGeographicMapCellPosition(startGeographicMapCellPosition)!;;
+    GeographicMapCellPosition endGeographicMapCellPosition = this->getEndGeographicMapCellPosition(startGeographicMapCellPosition);;
     
 
                         if(endGeographicMapCellPosition == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -318,7 +317,7 @@ endGeographicMapCellPosition= this.endList!.get(index) as GeographicMapCellPosit
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 
                                     }
@@ -328,14 +327,14 @@ endGeographicMapCellPosition= this.endList!.get(index) as GeographicMapCellPosit
                         
                                     {
                                     
-                        if(this.ownerLayer!.shouldHandleStartSameAsEnd())
+                        if(this->ownerLayer.shouldHandleStartSameAsEnd())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 
                                     }
@@ -344,7 +343,7 @@ endGeographicMapCellPosition= this.endList!.get(index) as GeographicMapCellPosit
                             
 
 
-                            throw new Exception("Start should not be End: " +this.endList!.size());
+                            throw Exception("Start should not be End: " +this->endList.size());
                     
 
                         }
@@ -353,34 +352,34 @@ endGeographicMapCellPosition= this.endList!.get(index) as GeographicMapCellPosit
                                     }
                                 
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = this.allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
-    raceTrackGeographicMap: RaceTrackGeographicMap = geographicMapInterface as RaceTrackGeographicMap;;
+    RaceTrackGeographicMap raceTrackGeographicMap = geographicMapInterface as RaceTrackGeographicMap;;
     
 
-    raceTrackGeographicMapCellTypeFactory: GeographicMapCellTypeFactory = raceTrackGeographicMap!.getGeographicMapCellTypeFactory()!;;
+    GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = raceTrackGeographicMap.getGeographicMapCellTypeFactory();;
     
 
-    customMapGenerator: CustomMapGenerator = raceTrackGeographicMap!.getCustomMapGenerator() as CustomMapGenerator;;
+    CustomMapGenerator customMapGenerator = raceTrackGeographicMap.getCustomMapGenerator() as CustomMapGenerator;;
     
-customMapGenerator!.copyMapIntoCustomMap();
-    
-
-    customMapArray: std::vector<std::vector<int32_t>> = customMapGenerator!.getCustomMapArray()!;;
-    
-customMapArray[startGeographicMapCellPosition!.getRow()]![startGeographicMapCellPosition!.getColumn()]= raceTrackGeographicMapCellTypeFactory!.getStartType();
-    
-customMapArray[endGeographicMapCellPosition!.getRow()]![endGeographicMapCellPosition!.getColumn()]= raceTrackGeographicMapCellTypeFactory!.getEndType();
+customMapGenerator.copyMapIntoCustomMap();
     
 
-    pathFindingInfo: PathFindingInfo = PathFindingInfoFactory.getInstance()!.getInstancePathFindingInfo(raceTrackGeographicMap, customMapArray)!;;
+    std::vector<std::vector<int32_t>> customMapArray = customMapGenerator.getCustomMapArray();;
+    
+customMapArray[startGeographicMapCellPosition.getRow()]![startGeographicMapCellPosition.getColumn()]= raceTrackGeographicMapCellTypeFactory.getStartType();
+    
+customMapArray[endGeographicMapCellPosition.getRow()]![endGeographicMapCellPosition.getColumn()]= raceTrackGeographicMapCellTypeFactory.getEndType();
     
 
-    list: BasicArrayList = PathGenerator.getInstance()!.getInstanceNoCache(geographicMapInterface, pathFindingInfo, 2)!;;
+    PathFindingInfo pathFindingInfo = PathFindingInfoFactory::getInstance().getInstancePathFindingInfo(raceTrackGeographicMap, customMapArray);;
+    
+
+    BasicArrayList list = PathGenerator::getInstance().getInstanceNoCache(geographicMapInterface, pathFindingInfo, 2);;
     
 
                         if(list.size() < 1)
@@ -389,7 +388,7 @@ customMapArray[endGeographicMapCellPosition!.getRow()]![endGeographicMapCellPosi
                                     
 
 
-                            throw new Exception("Path may have been cleared by clearing caching");
+                            throw Exception("Path may have been cleared by clearing caching");
                     
 
                                     }
@@ -403,38 +402,36 @@ customMapArray[endGeographicMapCellPosition!.getRow()]![endGeographicMapCellPosi
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onBuildingEvent(RTSLayerEvent event){
-this.clearPaths();
+    public: void onBuildingEvent(RTSLayerEvent event){
+this->clearPaths();
     
 }
 
 
-    clearPaths(){
+    private: void clearPaths(){
 
 
 
 
                         for (
-    columnIndex: int32_t = this.paths.length
-                ;--columnIndex >= 0; )
+    int32_t columnIndex = this->paths.size();--columnIndex >= 0; )
         {
 
 
 
 
                         for (
-    rowIndex: int32_t = this.paths.length
-                ;--rowIndex >= 0; )
+    int32_t rowIndex = this->paths.size();--rowIndex >= 0; )
         {
-this.paths[columnIndex]![rowIndex]= this.basicArrayListUtil!.getImmutableInstance();
+this->paths[columnIndex]![rowIndex]= this->basicArrayListUtil.getImmutableInstance();
     
 }
 
@@ -443,19 +440,19 @@ this.paths[columnIndex]![rowIndex]= this.basicArrayListUtil!.getImmutableInstanc
 }
 
 
-    public reset(){
-this.getConnectedWaypointList()!.clear();
+    public: void reset(){
+this->getConnectedWaypointList().clear();
     
-this.releaseCachedPaths();
+this->releaseCachedPaths();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public visit(PathFindingLayerInterface unitLayer){
+    public: void visit(PathFindingLayerInterface unitLayer){
 
-                        if(unitLayer!.getGroupInterface()[0] != this.ownerLayer!.getGroupInterface()[0])
+                        if(unitLayer.getGroupInterface()[0] != this->ownerLayer.getGroupInterface()[0])
                         
                                     {
                                     
@@ -468,34 +465,34 @@ this.releaseCachedPaths();
                                     }
                                 
 
-    size: int32_t = this.getConnectedWaypointList()!.size()!;;
+    int32_t size = this->getConnectedWaypointList().size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    unitWaypointBehavior: UnitWaypointBehavior = unitLayer!.getWaypointBehavior() as UnitWaypointBehavior;;
+    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior() as UnitWaypointBehavior;;
     
 
-        while(this.getConnectedWaypointList()!.size() > 0)
+        while(this->getConnectedWaypointList().size() > 0)
         {
 
-    rtsLayer: CollidableDestroyableDamageableLayer = this.getConnectedWaypointList()!.get(0) as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer rtsLayer = this->getConnectedWaypointList().get(0) as CollidableDestroyableDamageableLayer;;
     
 
-                        if(rtsLayer!.isDestroyed())
+                        if(rtsLayer.isDestroyed())
                         
                                     {
-                                    this.getConnectedWaypointList()!.remove(rtsLayer);
+                                    this->getConnectedWaypointList().remove(rtsLayer);
     
 
                                     }
                                 
                         else {
-                            unitLayer!.handleCost(this.ownerLayer);
+                            unitLayer.handleCost(this->ownerLayer);
     
-unitWaypointBehavior!.insertWaypoint(0, rtsLayer);
+unitWaypointBehavior.insertWaypoint(0, rtsLayer);
     
 break;
 

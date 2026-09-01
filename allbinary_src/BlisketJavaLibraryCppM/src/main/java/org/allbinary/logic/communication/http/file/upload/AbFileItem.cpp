@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -88,42 +90,39 @@
 class AbFileItem
             : public Object
         : public FileItem {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: fieldName: string;
+    private: std::string fieldName;
 
-    private: const byteArray: std::vector<int8_t>;
+    private: std::vector<int8_t> byteArray;
 
-public constructor (string name, string fieldName, std::vector<int8_t> byteArray){
-
-            super();
-        this.name= name;
+public: AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> byteArray){
+this->name= name;
     
-this.fieldName= fieldName;
+this->fieldName= fieldName;
     
-this.byteArray= byteArray;
+this->byteArray= byteArray;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public InputStream getInputStream(){
+    public: InputStream getInputStream(){
 
 
 
-                            throw new IOException(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw IOException(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public string getContentType(){
+    public: std::string getContentType(){
 
 
 
@@ -133,17 +132,17 @@ this.byteArray= byteArray;
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public bool isInMemory(){
+    public: bool isInMemory(){
 
 
 
@@ -153,29 +152,29 @@ this.byteArray= byteArray;
 }
 
 
-    public int64_t getSize(){
+    public: int64_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.byteArray!.length;
+                        return this->byteArray.size();
     
 }
 
 
-    public std::vector<int8_t> get(){
+    public: std::vector<int8_t> get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.byteArray;
+                        return this->byteArray;
     
 }
 
 
                 //@Throws(UnsupportedEncodingException.constructor)
             
-    public string getString(string encoding){
+    public: std::string getString(std::string encoding){
 
 
 
@@ -185,24 +184,24 @@ this.byteArray= byteArray;
 }
 
 
-    public string getString(){
+    public: std::string getString(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileItemUtil.getInstance()!.getString(this.byteArray);;
+                        return FileItemUtil::getInstance().getString(this->byteArray);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getString", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getString", e);
     
 
                                     }
@@ -211,7 +210,7 @@ this.byteArray= byteArray;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
@@ -220,51 +219,51 @@ this.byteArray= byteArray;
 
                 //@Throws(Exception.constructor)
             
-    public write(File file){
+    public: void write(File file){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(AbFile file){
+    public: void write(AbFile file){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public delete(){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, "delete()");
+    public: void delete_(){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, "delete()");
     
 }
 
 
-    public string getFieldName(){
+    public: std::string getFieldName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fieldName;
+                        return this->fieldName;
     
 }
 
 
-    public setFieldName(string name){
-this.fieldName= name;
+    public: void setFieldName(std::string name){
+this->fieldName= name;
     
 }
 
 
-    public bool isFormField(){
+    public: bool isFormField(){
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.fieldName))
+                        if(StringValidationUtil::getInstance().isEmpty(this->fieldName))
                         
                                     {
                                     
@@ -289,35 +288,35 @@ this.fieldName= name;
 }
 
 
-    public setFormField(bool state){
+    public: void setFormField(bool state){
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public OutputStream getOutputStream(){
+    public: OutputStream getOutputStream(){
 
 
 
-                            throw new IOException(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw IOException(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public FileItemHeaders getHeaders(){
+    public: FileItemHeaders getHeaders(){
 
 
 
-                            throw new RuntimeException(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw RuntimeException(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public setHeaders(FileItemHeaders fih){
+    public: void setHeaders(FileItemHeaders fih){
 
 
 
-                            throw new RuntimeException(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw RuntimeException(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 

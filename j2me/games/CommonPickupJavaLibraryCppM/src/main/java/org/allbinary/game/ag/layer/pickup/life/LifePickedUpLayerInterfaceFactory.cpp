@@ -66,33 +66,32 @@
 #include "LifeLayerFactory.h"
 #include "LifeResources.h"
 
-class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory: public PickupProcessorInterface {
-        
+class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public static init(){
-LifePickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface= new LifePickedUpLayerInterfaceFactory();
+    public: static void init(){
+LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= LifePickedUpLayerInterfaceFactory();
     
 }
 
 
-    public static PickedUpLayerInterfaceFactoryInterface getInstance(){
+    public: static PickedUpLayerInterfaceFactoryInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LifePickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface;
+                        return LifePickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
     
 }
 
 
-    private: pool: LifeLayerCircularStaticPool = new LifeLayerCircularStaticPool(new LifeLayerFactory(), 1);
+    private: LifeLayerCircularStaticPool pool = LifeLayerCircularStaticPool(LifeLayerFactory(), 1);
 
-private constructor (){
-            super(PickedUpLayerTypeFactory.getInstance()!.LIFE, IconLayerFactory.getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(LifeResources.getInstance()!.RESOURCE)!.getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(LifeResources.getInstance()!.RESOURCE)!.getInstance(0));
+private: LifePickedUpLayerInterfaceFactory(){
+            super(PickedUpLayerTypeFactory::getInstance().LIFE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LifeResources::getInstance().RESOURCE).getInstance(0));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -100,7 +99,7 @@ private constructor (){
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
@@ -112,8 +111,8 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayer sourceLayerInterface){
-this.pool.visit(sourceLayerInterface);
+    public: void process(AllBinaryLayer sourceLayerInterface){
+this->pool.visit(sourceLayerInterface);
     
 }
 

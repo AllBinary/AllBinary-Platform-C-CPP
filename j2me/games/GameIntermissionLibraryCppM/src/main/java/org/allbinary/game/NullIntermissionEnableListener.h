@@ -46,15 +46,14 @@
 class NullIntermissionEnableListener
             : public Object
         : public IntermissionEnableListenerInterface {
-        
 
-    private: static const SINGLETON: IntermissionEnableListenerInterface = new NullIntermissionEnableListener();
+    private: static const IntermissionEnableListenerInterface SINGLETON = NullIntermissionEnableListener();
 
-    public static IntermissionEnableListenerInterface getInstance();
+    public: static IntermissionEnableListenerInterface getInstance();
 
-private constructor ();
+private: NullIntermissionEnableListener();
 
-    public notifyIntermission(bool enable);
+    public: void notifyIntermission(bool enable);
 
 };
 

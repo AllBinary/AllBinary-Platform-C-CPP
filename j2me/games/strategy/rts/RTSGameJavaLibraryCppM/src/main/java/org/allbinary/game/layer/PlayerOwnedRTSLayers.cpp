@@ -51,23 +51,22 @@
 class PlayerOwnedRTSLayers
             : public Object
          {
-        
 
-    public const rtsLayerList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList rtsLayerList = BasicArrayListD();
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("All: ");
+stringBuffer.append("All: ");
     
-stringBuffer!.appendint(this.rtsLayerList!.size());
+stringBuffer.appendint(this->rtsLayerList.size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

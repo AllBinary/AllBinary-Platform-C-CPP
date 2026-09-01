@@ -47,24 +47,23 @@
         #include "UrlGlobalsInterface.h"
 //implements
 class AppUrlGlobals: public UrlGlobalsInterface {
-        
 
-    public static const NULL_APP_URL_GLOBALS: AppUrlGlobals = new AppUrlGlobals();
+    public: static const AppUrlGlobals NULL_APP_URL_GLOBALS = AppUrlGlobals();
 
-    private: path: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string path = StringUtil::getInstance().EMPTY_STRING;
 
-    public bool isTestingMode();
+    public: bool isTestingMode();
 
-    public string getWebappPath();
+    public: std::string getWebappPath();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setWebappPath(string path);
+    public: void setWebappPath(std::string path);
 
-    public string getTestHtmlPath();
+    public: std::string getTestHtmlPath();
 
                 //@Throws(Exception.constructor)
             
-    public string getMainPath();
+    public: std::string getMainPath();
 
 };
 

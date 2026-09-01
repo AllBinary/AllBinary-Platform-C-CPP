@@ -69,23 +69,22 @@
 class TransformsGeneratorUtil
             : public Object
          {
-        
 
-    private: static const instance: TransformsGeneratorUtil = new TransformsGeneratorUtil();
+    private: static TransformsGeneratorUtil instance() { return TransformsGeneratorUtil(); }
 
-    public static TransformsGeneratorUtil getInstance();
+    public: static TransformsGeneratorUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoInterface, string group);
+private: TransformsGeneratorUtil();
 
                 //@Throws(Exception.constructor)
             
-    public string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoObjectConfigInterface, Object transformInfoInterface, string group);
+    public: std::string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string group);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string generateComponentsFromObjectConfig(Object abeClientInformation, Object transformInfoObjectConfigInterface, Object transformInfoInterface, std::string group);
 
 };
 

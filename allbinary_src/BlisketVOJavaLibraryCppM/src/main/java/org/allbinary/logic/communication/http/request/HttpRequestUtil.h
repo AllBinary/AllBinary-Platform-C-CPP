@@ -50,19 +50,18 @@
 class HttpRequestUtil
             : public Object
          {
-        
 
-    private: static const instance: HttpRequestUtil = new HttpRequestUtil();
+    private: static HttpRequestUtil instance() { return HttpRequestUtil(); }
 
-    public static HttpRequestUtil getInstance();
+    public: static HttpRequestUtil getInstance();
 
-private constructor ();
+private: HttpRequestUtil();
 
-    public int32_t getLastSeparatorIndex(string requestPath);
+    public: int32_t getLastSeparatorIndex(std::string requestPath);
 
                 //@Throws(Exception.constructor)
             
-    public string generateFileName(string requestPath);
+    public: std::string generateFileName(std::string requestPath);
 
 };
 

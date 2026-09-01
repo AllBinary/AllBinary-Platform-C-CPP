@@ -92,28 +92,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameLayer.h"
 
-class CollidableCompositeLayer: public AllBinaryGameLayer: public CollidableInterfaceCompositeInterface {
-        
+class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInterfaceCompositeInterface {
 
-    private: static NULL_COLLIDABLE_COMPOSITE_LAYER: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance().NULL_OBJECT;
 
-    public static CollidableCompositeLayer getNullInstance();
+    public: static CollidableCompositeLayer getNullInstance();
 
-    private: collidableInferface: CollidableBaseBehavior = CollidableNeverCollideBehaviorFactory.getInstance()!.createBehavior()!;
+    private: CollidableBaseBehavior collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance().createBehavior();
 
-public constructor (string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory);
+public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory);
 
-    public ArtificialIntelligenceInterface getArtificialIntelligenceInterface();
+    public: ArtificialIntelligenceInterface getArtificialIntelligenceInterface();
 
-    public CollidableBaseBehavior getCollidableInferface();
+    public: CollidableBaseBehavior getCollidableInferface();
 
-    public setCollidableInferface(CollidableBaseBehavior collidableInferface);
+    public: void setCollidableInferface(CollidableBaseBehavior collidableInferface);
 
-    public bool implmentsCollidableInterface();
+    public: bool implmentsCollidableInterface();
 
-    public toStringAppend(StringMaker stringBuffer);
+    public: void toStringAppend(StringMaker stringBuffer);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

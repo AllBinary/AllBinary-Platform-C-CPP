@@ -49,23 +49,22 @@
 class DomNodeListHelper
             : public Object
          {
-        
 
-    public static Vector getVector(NodeList nodeList){
+    public: static Vector getVector(NodeList nodeList){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
-    size: int32_t = nodeList!.getLength()!;;
+    int32_t size = nodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-vector.add(DomNodeHelper.getTextNodeValue(nodeList!.item(index)));
+vector.add(DomNodeHelper::getTextNodeValue(nodeList.item(index)));
     
 }
 

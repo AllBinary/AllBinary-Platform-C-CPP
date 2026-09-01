@@ -50,9 +50,8 @@
 class MusicManagerFactory
             : public Object
          {
-        
 
-    public static MusicManager createMusicManager(BasicArrayList soundList);
+    public: static MusicManager createMusicManager(BasicArrayList soundList);
 
 };
 

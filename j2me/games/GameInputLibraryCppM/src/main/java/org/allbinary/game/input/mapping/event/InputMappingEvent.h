@@ -56,15 +56,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputMappingEvent: public AllBinaryEventObject {
-        
 
-    private: inputToGameKeyMapping: InputToGameKeyMapping = InputToGameKeyMapping.getNullInstance()!;
+    private: InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
 
-public constructor (any = {} anyType);
+public: InputMappingEvent(Object* anyType);
 
-    public setInputToGameKeyMapping(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void setInputToGameKeyMapping(InputToGameKeyMapping inputToGameKeyMapping);
 
-    public InputToGameKeyMapping getInputToGameKeyMapping();
+    public: InputToGameKeyMapping getInputToGameKeyMapping();
 
 };
 

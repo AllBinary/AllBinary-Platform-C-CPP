@@ -59,57 +59,50 @@
 class CategoryPropertiesFactory
             : public Object
         : public CategoryPropertiesFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: categoryPropertiesInterface: CategoryPropertiesInterface;
+    private: CategoryPropertiesInterface categoryPropertiesInterface;
 
-public constructor (string name){
-
-            super();
-        this.categoryPropertiesInterface= new CategoryProperties(name) as CategoryPropertiesInterface;
+public: CategoryPropertiesFactory(std::string name){
+this->categoryPropertiesInterface= CategoryProperties(name) as CategoryPropertiesInterface;
     
 }
 
 
-public constructor (Node node){
-
-            super();
-        this.categoryPropertiesInterface= new CategoryProperties(node) as CategoryPropertiesInterface;
+public: CategoryPropertiesFactory(Node node){
+this->categoryPropertiesInterface= CategoryProperties(node) as CategoryPropertiesInterface;
     
 }
 
 
-public constructor (HashMap<any, any> categoryPropertiesHashMap){
-
-            super();
-        this.categoryPropertiesInterface= new CategoryProperties(categoryPropertiesHashMap) as CategoryPropertiesInterface;
+public: CategoryPropertiesFactory(HashMap<any, any> categoryPropertiesHashMap){
+this->categoryPropertiesInterface= CategoryProperties(categoryPropertiesHashMap) as CategoryPropertiesInterface;
     
 }
 
 
-    public CategoryPropertiesInterface getInstance(){
+    public: CategoryPropertiesInterface getInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.categoryPropertiesInterface as CategoryPropertiesInterface;
+                        return this->categoryPropertiesInterface as CategoryPropertiesInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

@@ -49,9 +49,8 @@
 class BaseScalable
             : public Object
         : public ScalableListener {
-        
 
-    public float getRatio(float ratio){
+    public: float getRatio(float ratio){
 
 
 
@@ -61,7 +60,7 @@ class BaseScalable
 }
 
 
-    public int32_t getLeft(int32_t xOffset){
+    public: int32_t getLeft(int32_t xOffset){
 
 
 
@@ -71,7 +70,7 @@ class BaseScalable
 }
 
 
-    public int32_t getTop(int32_t yOffset){
+    public: int32_t getTop(int32_t yOffset){
 
 
 
@@ -81,7 +80,7 @@ class BaseScalable
 }
 
 
-    public scale(float ratio){
+    public: void scale(float ratio){
 }
 
 

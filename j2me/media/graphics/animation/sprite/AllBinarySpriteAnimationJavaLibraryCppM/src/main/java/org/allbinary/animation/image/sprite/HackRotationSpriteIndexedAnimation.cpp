@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -76,107 +78,106 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HackRotationSpriteIndexedAnimation: public RotationAnimation {
-        
 
-    const sprite: Sprite;
+    protected: Sprite sprite;
 
-    private: const image: Image;
+    private: Image image;
 
-public constructor (Sprite sprite, Image image, AngleInfo angleInfo, AnimationBehavior animationBehavior){
-            super(angleInfo, CircularIndexUtil.createInstance(360 /angleInfo!.getAngleIncrementInfo()!.getAngleIncrement()), animationBehavior);
+public: HackRotationSpriteIndexedAnimation(Sprite sprite, Image image, AngleInfo angleInfo, AnimationBehavior animationBehavior){
+            super(angleInfo, CircularIndexUtil::createInstance(360 /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.sprite= sprite;
+this->sprite= sprite;
     
-this.image= image;
+this->image= image;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize();;
+                        return this->getSize();;
     
 }
 
 
-    public paintFrame(Graphics g, int32_t frame, int32_t x, int32_t y){
-this.setFrame(frame);
+    public: void paintFrame(Graphics g, int32_t frame, int32_t x, int32_t y){
+this->setFrame(frame);
     
-this.paintXY(g, x, y);
-    
-}
-
-
-    public paintXY(Graphics g, int32_t x, int32_t y){
-this.sprite.setPosition(x, y);
-    
-this.paint(g);
+this->paintXY(g, x, y);
     
 }
 
 
-    paint(Graphics g){
-this.sprite.paint(g);
+    public: void paintXY(Graphics g, int32_t x, int32_t y){
+this->sprite.setPosition(x, y);
+    
+this->paint(g);
     
 }
 
 
-    public nextRotation(){
-this.sprite.nextFrame();
+    protected: void paint(Graphics g){
+this->sprite.paint(g);
     
 }
 
 
-    public previousRotation(){
-this.sprite.prevFrame();
+    public: void nextRotation(){
+this->sprite.nextFrame();
     
 }
 
 
-    public int32_t getSize(){
+    public: void previousRotation(){
+this->sprite.prevFrame();
+    
+}
+
+
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getRawFrameCount();;
+                        return this->sprite.getRawFrameCount();;
     
 }
 
 
-    public setFrame(int32_t frame){
-this.sprite.setFrame(frame);
+    public: void setFrame(int32_t frame){
+this->sprite.setFrame(frame);
     
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sprite.getFrame();;
+                        return this->sprite.getFrame();;
     
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 

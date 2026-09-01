@@ -42,22 +42,19 @@
 class UrlGlobalsData
             : public Object
          {
-        
 
-    public static const NAME: string = "URLGLOBALS_NAME";
+    public: static const std::string NAME = "URLGLOBALS_NAME";
 
-    public static const WEBAPPPATH: string = "URLGLOBALS_WEBAPPPATH";
+    public: static const std::string WEBAPPPATH = "URLGLOBALS_WEBAPPPATH";
 
-    public static const TESTINGMODE: string = "URLGLOBALS_TESTINGMODE";
+    public: static const std::string TESTINGMODE = "URLGLOBALS_TESTINGMODE";
 
-    public static const TESTINGHTMLPATH: string = "URLGLOBALS_TESTINGHTMLPATH";
+    public: static const std::string TESTINGHTMLPATH = "URLGLOBALS_TESTINGHTMLPATH";
 
-    public static const MAINPATH: string = "URLGLOBALS_MAINPATH";
+    public: static const std::string MAINPATH = "URLGLOBALS_MAINPATH";
 
-private constructor (){
-
-            super();
-        }
+private: UrlGlobalsData(){
+}
 
 
 };

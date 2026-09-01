@@ -42,13 +42,12 @@
         #include "DbInitInfo.h"
 
 class LogDbInitInfo: public DbInitInfo {
-        
 
-    private: static const INITFILE: string = "logdbinitdata.dat";
+    private: static const std::string INITFILE = "logdbinitdata.dat";
 
-public constructor ();
+public: LogDbInitInfo();
 
-public constructor (bool read);
+public: LogDbInitInfo(bool read);
 
 };
 

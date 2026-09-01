@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -55,107 +57,106 @@
 class OpenGLESStrings
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public set(GL10 gl){
+    public: void set(GL10 gl){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public initFont(GL10 gl, int32_t width, int32_t height){
+    public: void initFont(GL10 gl, int32_t width, int32_t height){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(GL10 gl, int32_t width, int32_t height){
+    public: void update(GL10 gl, int32_t width, int32_t height){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public drawChar(GL10 gl, Graphics graphics, char character, int32_t x, int32_t y, int32_t anchor){
+    public: void drawChar(GL10 gl, Graphics graphics, char character, int32_t x, int32_t y, int32_t anchor){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public drawChars(GL10 gl, Graphics graphics, std::vector<char> data, int32_t offset, int32_t length, int32_t x, int32_t y, int32_t anchor){
+    public: void drawChars(GL10 gl, Graphics graphics, std::vector<char> data, int32_t offset, int32_t length, int32_t x, int32_t y, int32_t anchor){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public drawString(GL10 gl, Graphics graphics, string string, int32_t x, int32_t y, int32_t anchor){
+    public: void drawString(GL10 gl, Graphics graphics, std::string string, int32_t x, int32_t y, int32_t anchor){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public drawSubstring(GL10 gl, Graphics graphics, string string, int32_t offset, int32_t len, int32_t x, int32_t y, int32_t anchor){
+    public: void drawSubstring(GL10 gl, Graphics graphics, std::string string, int32_t offset, int32_t len, int32_t x, int32_t y, int32_t anchor){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t charWidth(char ch){
+    public: int32_t charWidth(char ch){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t charsWidth(std::vector<char> ch, int32_t offset, int32_t length){
+    public: int32_t charsWidth(std::vector<char> ch, int32_t offset, int32_t length){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t stringWidth(string string){
+    public: int32_t stringWidth(std::string string){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t stringWidth(string string, int32_t offset, int32_t len){
+    public: int32_t stringWidth(std::string string, int32_t offset, int32_t len){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

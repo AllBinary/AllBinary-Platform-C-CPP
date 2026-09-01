@@ -55,31 +55,28 @@
 class StringValidationUtil
             : public Object
          {
-        
 
-    private: static const instance: StringValidationUtil = new StringValidationUtil();
+    private: static StringValidationUtil instance() { return StringValidationUtil(); }
 
-    public static StringValidationUtil getInstance(){
+    public: static StringValidationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringValidationUtil.instance;
+                        return StringValidationUtil::instance();
     
 }
 
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: StringValidationUtil(){
+}
 
 
-    public bool containsSpaces(string value){
+    public: bool containsSpaces(std::string value){
 
                         if(value.indexOf(' ') >= 0)
                         
@@ -102,22 +99,22 @@ private constructor (){
 }
 
 
-    public bool isNumber(string value){
+    public: bool isNumber(std::string value){
 
-    numberOfDecimalPoints: int32_t = 0;;
+    int32_t numberOfDecimalPoints = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < value.length; index++)
+    int32_t index = 0;index < value.size(); index++)
         {
 
-    digit: char = value[index]!;;
+    char digit = value[index];;
     
 
-                        if(!this.isNumberFromChar(digit) && digit != '.')
+                        if(!this->isNumberFromChar(digit) && digit != '.')
                         
                                     {
                                     
@@ -162,7 +159,7 @@ private constructor (){
 }
 
 
-    public bool isNumberFromChar(char digit){
+    public: bool isNumberFromChar(char digit){
 
                         if(digit != '0' && digit != '1' && digit != '2' && digit != '3' && digit != '4' && digit != '5' && digit != '6' && digit != '7' && digit != '8' && digit != '9')
                         
@@ -185,11 +182,9 @@ private constructor (){
 }
 
 
-    public bool isValidRequired(string value, int32_t min, int32_t max){
+    public: bool isValidRequired(std::string value, int32_t min, int32_t max){
 
-                        if(value == 
-                                    null
-                                 || value.length < min || value.length > max)
+                        if(false || value.size() < min || value.size() > max)
                         
                                     {
                                     
@@ -210,9 +205,9 @@ private constructor (){
 }
 
 
-    public bool isValidRequiredNumber(string value, int32_t min, int32_t max){
+    public: bool isValidRequiredNumber(std::string value, int32_t min, int32_t max){
 
-                        if(this.isEmpty(value) || value.length < min || value.length > max)
+                        if(this->isEmpty(value) || value.size() < min || value.size() > max)
                         
                                     {
                                     
@@ -225,7 +220,7 @@ private constructor (){
                                     }
                                 
 
-                        if(!this.isNumber(value))
+                        if(!this->isNumber(value))
                         
                                     {
                                     
@@ -246,60 +241,13 @@ private constructor (){
 }
 
 
-    public bool isValidNotRequired(string value, int32_t min, int32_t max){
+    public: bool isValidNotRequired(std::string value, int32_t min, int32_t max){
 
-                        if(value != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
-                        if(value.length < min || value.length > max)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-
-                                    }
-                                
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return true;
-    
-}
-
-
-    public bool isValidNotRequiredNumber(string value, int32_t min, int32_t max){
-
-                        if(value != 
-                                    null
-                                )
-                        
-                                    {
-                                    
-                        if(this.tsUtil!.compareTo(value, this.stringUtil!.NULL_STRING) == 0 || value.length < min || value.length > max)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-
-                                    }
-                                
-
-                        if(!this.isNumber(value))
+                        if(value.size() < min || value.size() > max)
                         
                                     {
                                     
@@ -323,11 +271,52 @@ private constructor (){
 }
 
 
-    public bool isEmpty(string string){
+    public: bool isValidNotRequiredNumber(std::string value, int32_t min, int32_t max){
 
-                        if(string != 
-                                    null
-                                 && this.tsUtil!.compareTo(string, this.stringUtil!.NULL_STRING) != 0 && this.tsUtil!.compareTo(string, this.stringUtil!.EMPTY_STRING) != 0)
+                        if(true)
+                        
+                                    {
+                                    
+                        if(this->tsUtil.compareTo(value, this->stringUtil.NULL_STRING) == 0 || value.size() < min || value.size() > max)
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+
+                                    }
+                                
+
+                        if(!this->isNumber(value))
+                        
+                                    {
+                                    
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+
+                                    }
+                                
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return true;
+    
+}
+
+
+    public: bool isEmpty(std::string string){
+
+                        if(true && this->tsUtil.compareTo(string, this->stringUtil.NULL_STRING) != 0 && this->tsUtil.compareTo(string, this->stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     

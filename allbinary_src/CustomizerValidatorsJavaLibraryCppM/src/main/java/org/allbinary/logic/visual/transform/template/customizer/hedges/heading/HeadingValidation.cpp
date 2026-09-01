@@ -79,103 +79,96 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "HeadingData.h"
 
-class HeadingValidation: public Validation: public DomNodeInterface {
-        
+class HeadingValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: title: TitleValidation;
+    private: TitleValidation title;
 
-    private: logo: LogoValidation;
+    private: LogoValidation logo;
 
-public constructor (){
-
-            super();
-        this.title= new TitleValidation();
+public: HeadingValidation(){
+this->title= TitleValidation();
     
-this.logo= new LogoValidation();
+this->logo= LogoValidation();
     
 }
 
 
-public constructor (Document document){
+public: HeadingValidation(Document document){
 
-            super();
-        
-    headingNodeList: NodeList = document.getElementsByTagName(HeadingData.NAME)!;;
+    NodeList headingNodeList = document.getElementsByTagName(HeadingData::NAME);;
     
 
-    titleNode: Node = DomSearchHelper.getNode(TitleData.getInstance()!.NAME, headingNodeList!.item(0)!.getChildNodes())!;;
+    Node titleNode = DomSearchHelper::getNode(TitleData::getInstance().NAME, headingNodeList.item(0).getChildNodes());;
     
 
-    logoNode: Node = DomSearchHelper.getNode(LogoData.getInstance()!.NAME, headingNodeList!.item(0)!.getChildNodes())!;;
+    Node logoNode = DomSearchHelper::getNode(LogoData::getInstance().NAME, headingNodeList.item(0).getChildNodes());;
     
-this.title= new TitleValidation(titleNode);
+this->title= TitleValidation(titleNode);
     
-this.logo= new LogoValidation(logoNode);
+this->logo= LogoValidation(logoNode);
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.getFormData(hashMap);
+public: HeadingValidation(HashMap<any, any> hashMap){
+this->getFormData(hashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public getFormData(HashMap<any, any> hashMap){
-this.title= new TitleValidation(hashMap);
+    public: void getFormData(HashMap<any, any> hashMap){
+this->title= TitleValidation(hashMap);
     
-this.logo= new LogoValidation(hashMap);
+this->logo= LogoValidation(hashMap);
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-    titleValid: Boolean = Boolean.TRUE;;
+    Boolean titleValid = Boolean::TRUE;;
     
 
-    logoValid: Boolean = Boolean.TRUE;;
+    Boolean logoValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(!this.title.isValid().valueOf())
+                        if(!this->title.isValid().valueOf())
                         
                                     {
-                                    titleValid= Boolean.FALSE;
+                                    titleValid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!this.logo.isValid().valueOf())
+                        if(!this->logo.isValid().valueOf())
                         
                                     {
-                                    logoValid= Boolean.FALSE;
+                                    logoValid= Boolean::FALSE;
     
 
                                     }
                                 
                         else {
-                            this.logo.processLogoFile();
+                            this->logo.processLogoFile();
     
 
                         }
@@ -184,16 +177,16 @@ this.logo= new LogoValidation(hashMap);
                         if(!titleValid.valueOf() && !logoValid.valueOf())
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("HeadingValidation: " +valid, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("HeadingValidation: " +valid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -209,10 +202,10 @@ this.logo= new LogoValidation(hashMap);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -221,42 +214,42 @@ this.logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-    titleValid: Boolean = Boolean.TRUE;;
+    Boolean titleValid = Boolean::TRUE;;
     
 
-    logoValid: Boolean = Boolean.TRUE;;
+    Boolean logoValid = Boolean::TRUE;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(!this.title.isValid().valueOf())
+                        if(!this->title.isValid().valueOf())
                         
                                     {
-                                    titleValid= Boolean.FALSE;
+                                    titleValid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!this.logo.isValid().valueOf())
+                        if(!this->logo.isValid().valueOf())
                         
                                     {
-                                    logoValid= Boolean.FALSE;
+                                    logoValid= Boolean::FALSE;
     
 
                                     }
@@ -265,7 +258,7 @@ this.logo= new LogoValidation(hashMap);
                         if(!titleValid.valueOf() && !logoValid.valueOf())
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
@@ -274,7 +267,7 @@ this.logo= new LogoValidation(hashMap);
                         if(!valid.valueOf())
                         
                                     {
-                                    stringBuffer!.append("Include a title and/or logo for the header.");
+                                    stringBuffer.append("Include a title and/or logo for the header.");
     
 
                                     }
@@ -283,17 +276,17 @@ this.logo= new LogoValidation(hashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -309,7 +302,7 @@ this.logo= new LogoValidation(hashMap);
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -319,7 +312,7 @@ this.logo= new LogoValidation(hashMap);
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -331,13 +324,13 @@ this.logo= new LogoValidation(hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(HeadingData.NAME)!;;
+    Node node = document.createElement(HeadingData::NAME);;
     
-node.appendChild(this.logo.toXmlNode(document));
+node.appendChild(this->logo.toXmlNode(document));
     
-node.appendChild(this.title.toXmlNode(document));
+node.appendChild(this->title.toXmlNode(document));
     
 
 

@@ -52,84 +52,81 @@
 class PathFindingInfo
             : public Object
         : public PathFindingInfoInterface {
-        
 
-    public static const NULL_PATH_FINDING_INFO: PathFindingInfo = new PathFindingInfo(PathFindingNodeCostInfoFactoryBase.NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil.getInstance()!.getImmutableInstance(), BasicArrayListUtil.getInstance()!.getImmutableInstance());
+    public: static const PathFindingInfo NULL_PATH_FINDING_INFO = PathFindingInfo(PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil::getInstance().getImmutableInstance(), BasicArrayListUtil::getInstance().getImmutableInstance());
 
-    private: pathFinder: GeographicPathFinderBase = GeographicPathFinderBase.NULL_GEOGRAPHIC_PATH_FINDER_BASE;
+    private: GeographicPathFinderBase pathFinder = GeographicPathFinderBase::NULL_GEOGRAPHIC_PATH_FINDER_BASE;
 
-    private: const startPathFindingNodeList: BasicArrayList;
+    private: BasicArrayList startPathFindingNodeList;
 
-    private: const endPathFindingNodeList: BasicArrayList;
+    private: BasicArrayList endPathFindingNodeList;
 
-    private: const pathFindingNodeCostInfoFactoryInterface: PathFindingNodeCostInfoFactoryBase;
+    private: PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface;
 
-public constructor (PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
-
-            super();
-        this.pathFindingNodeCostInfoFactoryInterface= pathFindingNodeCostInfoFactoryInterface;
+public: PathFindingInfo(PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+this->pathFindingNodeCostInfoFactoryInterface= pathFindingNodeCostInfoFactoryInterface;
     
-this.startPathFindingNodeList= startPathFindingNodeList;
+this->startPathFindingNodeList= startPathFindingNodeList;
     
-this.endPathFindingNodeList= endPathFindingNodeList;
+this->endPathFindingNodeList= endPathFindingNodeList;
     
 }
 
 
-    public BasicArrayList getStartPathFindingNodeList(){
+    public: BasicArrayList getStartPathFindingNodeList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startPathFindingNodeList;
+                        return this->startPathFindingNodeList;
     
 }
 
 
-    public BasicArrayList getEndPathFindingNodeList(){
+    public: BasicArrayList getEndPathFindingNodeList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endPathFindingNodeList;
+                        return this->endPathFindingNodeList;
     
 }
 
 
-    public GeographicPathFinderBase getPathFinder(){
+    public: GeographicPathFinderBase getPathFinder(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pathFinder;
+                        return this->pathFinder;
     
 }
 
 
-    public addStartPathFindingNode(PathFindingNode startPathFindingNode){
-this.startPathFindingNodeList!.add(startPathFindingNode);
+    public: void addStartPathFindingNode(PathFindingNode startPathFindingNode){
+this->startPathFindingNodeList.add(startPathFindingNode);
     
 }
 
 
-    public addEndPathFindingNode(PathFindingNode endPathFindingNode){
-this.endPathFindingNodeList!.add(endPathFindingNode);
+    public: void addEndPathFindingNode(PathFindingNode endPathFindingNode){
+this->endPathFindingNodeList.add(endPathFindingNode);
     
 }
 
 
-    public setPathFinder(GeographicPathFinderBase pathFinder){
-this.pathFinder= pathFinder;
+    public: void setPathFinder(GeographicPathFinderBase pathFinder){
+this->pathFinder= pathFinder;
     
 }
 
 
-    public PathFindingNodeCostInfoFactoryBase getPathFindingNodeCostInfoFactoryInterface(){
+    public: PathFindingNodeCostInfoFactoryBase getPathFindingNodeCostInfoFactoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pathFindingNodeCostInfoFactoryInterface;
+                        return this->pathFindingNodeCostInfoFactoryInterface;
     
 }
 

@@ -76,43 +76,42 @@
 #include "AllBinaryAdjustedAndroidImageRotationAnimation.h"
 
 class AllBinaryAndroidImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactory(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactory(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryA(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryA(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryU(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryU(Image image, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryDXYU(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryDXYU(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
 
-    public init(int32_t dx, int32_t dy);
+    public: void init(int32_t dx, int32_t dy);
 
-    private: const angleIncrement: int16_t;
+    private: int16_t angleIncrement;
 
-    private: const resizeCanvasForRotation: bool;
+    private: bool resizeCanvasForRotation;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
-
-                //@Throws(Exception.constructor)
-            
-    Image getCanvasImage();
+public: AllBinaryAndroidImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    private: Image getCanvasImage();
+
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstance(int32_t instanceId);
 
 };
 

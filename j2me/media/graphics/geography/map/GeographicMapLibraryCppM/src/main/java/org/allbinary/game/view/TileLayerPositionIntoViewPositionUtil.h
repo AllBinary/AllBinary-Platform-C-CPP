@@ -60,9 +60,8 @@
 class TileLayerPositionIntoViewPositionUtil
             : public Object
          {
-        
 
-    public static init(AllBinaryGameCanvas gameCanvasInterface, TileLayerPositionIntoViewPosition viewPosition);
+    public: static void init(AllBinaryGameCanvas gameCanvasInterface, TileLayerPositionIntoViewPosition viewPosition);
 
 };
 

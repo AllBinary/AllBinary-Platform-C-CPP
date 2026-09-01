@@ -73,21 +73,20 @@
 #include "AllBinaryAdjustedJ2SEImageRotationAnimation.h"
 
 class AllBinaryJ2SEImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryJ2SEImageRotationAnimationFactory createDXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
+    public: static AllBinaryJ2SEImageRotationAnimationFactory createDXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
 
-    imageRotationAnimationFactory: AllBinaryJ2SEImageRotationAnimationFactory = new AllBinaryJ2SEImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);;
+    AllBinaryJ2SEImageRotationAnimationFactory imageRotationAnimationFactory = AllBinaryJ2SEImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);;
     
-imageRotationAnimationFactory!.animationFactoryInitializationVisitor!.dx= dx;
+imageRotationAnimationFactory.animationFactoryInitializationVisitor.dx= dx;
     
-imageRotationAnimationFactory!.animationFactoryInitializationVisitor!.dy= dy;
+imageRotationAnimationFactory.animationFactoryInitializationVisitor.dy= dy;
     
-imageRotationAnimationFactory!.animationFactoryInitializationVisitor!.originalDx= dx;
+imageRotationAnimationFactory.animationFactoryInitializationVisitor.originalDx= dx;
     
-imageRotationAnimationFactory!.animationFactoryInitializationVisitor!.originalDy= dy;
+imageRotationAnimationFactory.animationFactoryInitializationVisitor.originalDy= dy;
     
 
 
@@ -98,38 +97,38 @@ imageRotationAnimationFactory!.animationFactoryInitializationVisitor!.originalDy
 }
 
 
-    const angleIncrementP: int16_t;
+    protected: int16_t angleIncrementP;
 
-    private: const resizeCanvasForRotation: bool;
+    private: bool resizeCanvasForRotation;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
-            super(image, PrimitiveIntUtil.getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
+public: AllBinaryJ2SEImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
+            super(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.angleIncrementP= angleIncrement;
+this->angleIncrementP= angleIncrement;
     
-this.resizeCanvasForRotation= resizeCanvasForRotation;
+this->resizeCanvasForRotation= resizeCanvasForRotation;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Image getCanvasImage(){
+    private: Image getCanvasImage(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(this.resizeCanvasForRotation && !features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(this->resizeCanvasForRotation && !features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil.getInstance()!.createImageScale(this.getImage(), 1.44, false);;
+                        return ImageCopyUtil::getInstance().createImageScale(this->getImage(), 1.44, false);;
     
 
                                     }
@@ -139,7 +138,7 @@ this.resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getImage();;
+                        return this->getImage();;
     
 
                         }
@@ -149,35 +148,35 @@ this.resizeCanvasForRotation= resizeCanvasForRotation;
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    imageCopyUtil: ImageCopyUtil = ImageCopyUtil.getInstance()!;;
+    ImageCopyUtil imageCopyUtil = ImageCopyUtil::getInstance();;
     
 
-    canvasImage: Image = this.getCanvasImage()!;;
+    Image canvasImage = this->getCanvasImage();;
     
 
-    scaledImage: Image = this.animationFactoryImageScaleUtil!.createImage(canvasImage, this.animationFactoryInitializationVisitor!.width, this.animationFactoryInitializationVisitor!.height, this.scaleProperties!.scaleWidth, this.scaleProperties!.scaleHeight)!;;
+    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(canvasImage, this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
-    openGLUtil: OpenGLUtil = OpenGLUtil.getInstance()!;;
+    OpenGLUtil openGLUtil = OpenGLUtil::getInstance();;
     
-scaledImage= openGLUtil!.addImage(scaledImage);
-    
-
-    copyOfScaledImage: Image = imageCopyUtil!.createImageForRotation(scaledImage)!;;
+scaledImage= openGLUtil.addImage(scaledImage);
     
 
-                        if(this.animationFactoryInitializationVisitor!.dx != 0 || this.animationFactoryInitializationVisitor!.dy != 0)
+    Image copyOfScaledImage = imageCopyUtil.createImageForRotation(scaledImage);;
+    
+
+                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
                         
                                     {
-                                    this.animationFactoryImageScaleUtil!.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil.processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryAdjustedJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo.getInstance(this.angleIncrementP), AngleFactory.getInstance()!.TOTAL_ANGLE, this.animationFactoryInitializationVisitor!.dx, this.animationFactoryInitializationVisitor!.dy, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AllBinaryAdjustedJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance().TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -187,7 +186,7 @@ scaledImage= openGLUtil!.addImage(scaledImage);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo.getInstance(this.angleIncrementP), AngleFactory.getInstance()!.TOTAL_ANGLE, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AllBinaryJ2SEImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrementP), AngleFactory::getInstance().TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }
@@ -195,12 +194,12 @@ scaledImage= openGLUtil!.addImage(scaledImage);
 }
 
 
-    int16_t getAngleIncrement(){
+    protected: int16_t getAngleIncrement(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angleIncrementP;
+                        return this->angleIncrementP;
     
 }
 

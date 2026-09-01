@@ -63,116 +63,113 @@
 class AdvertisementArea
             : public Object
         : public AdvertisementAreaInterface {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: description: string;
+    private: std::string description;
 
-    private: advertisementAreaConstraintsInterface: AdvertisementAreaConstraintsInterface;
+    private: AdvertisementAreaConstraintsInterface advertisementAreaConstraintsInterface;
 
-    private: campaign: string;
+    private: std::string campaign;
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.name= hashMap!.get(AdvertisementAreaData.getInstance()!.NAME) as string;
+public: AdvertisementArea(HashMap<any, any> hashMap){
+this->name= hashMap.get(AdvertisementAreaData::getInstance().NAME) as string;
     
-this.storeName= hashMap!.get(StoreFrontData.getInstance()!.NAME) as string;
+this->storeName= hashMap.get(StoreFrontData::getInstance().NAME) as string;
     
-this.description= hashMap!.get(AdvertisementAreaData.getInstance()!.DESCRIPTION) as string;
+this->description= hashMap.get(AdvertisementAreaData::getInstance().DESCRIPTION) as string;
     
 
-    constraintsDomString: string = hashMap!.get(AdvertisementAreaData.getInstance()!.CONSTRAINTS) as string;;
+    std::string constraintsDomString = hashMap.get(AdvertisementAreaData::getInstance().CONSTRAINTS) as string;;
     
 
-    document: Document = DomDocumentHelper.create(constraintsDomString)!;;
+    Document document = DomDocumentHelper::create(constraintsDomString);;
     
-this.advertisementAreaConstraintsInterface= new AdvertisementAreaConstraints(document);
+this->advertisementAreaConstraintsInterface= AdvertisementAreaConstraints(document);
     
-this.campaign= hashMap!.get(AdvertisementCampaignData.getInstance()!.NAME) as string;
+this->campaign= hashMap.get(AdvertisementCampaignData::getInstance().NAME) as string;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeName;
+                        return this->storeName;
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public AdvertisementAreaConstraintsInterface getConstraints(){
+    public: AdvertisementAreaConstraintsInterface getConstraints(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.advertisementAreaConstraintsInterface;
+                        return this->advertisementAreaConstraintsInterface;
     
 }
 
 
-    public string getCampaign(){
+    public: std::string getCampaign(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.campaign;
+                        return this->campaign;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public setStoreName(string storeName){
-this.storeName= storeName;
+    public: void setStoreName(std::string storeName){
+this->storeName= storeName;
     
 }
 
 
-    public setDescription(string description){
-this.description= description;
+    public: void setDescription(std::string description){
+this->description= description;
     
 }
 
 
-    public setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface){
-this.advertisementAreaConstraintsInterface= this.advertisementAreaConstraintsInterface;
+    public: void setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface){
+this->advertisementAreaConstraintsInterface= this->advertisementAreaConstraintsInterface;
     
 }
 
 
-    public setCampaign(string campaign){
-this.campaign= campaign;
+    public: void setCampaign(std::string campaign){
+this->campaign= campaign;
     
 }
 

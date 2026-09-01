@@ -54,28 +54,23 @@
 class BasicProfileActionScriptInputNode
             : public Object
          {
-        
 
-public constructor (Node node){
+public: BasicProfileActionScriptInputNode(Node node){
 
-            super();
-        
-    actionNode: Node = DomSearchHelper.getNode(GenericProfileActionScriptInputData.NAME, node.getChildNodes())!;;
+    Node actionNode = DomSearchHelper::getNode(GenericProfileActionScriptInputData::NAME, node.getChildNodes());;
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: BasicProfileActionScriptInputNode(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(GenericProfileActionScriptInputData.NAME)!;;
+    Node node = document.createElement(GenericProfileActionScriptInputData::NAME);;
     
 
 

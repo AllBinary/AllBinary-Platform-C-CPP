@@ -85,28 +85,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AdvertisementCampaignInternalEntityInterface.h"
 
-class AdvertisementCampaignInternalEntity: public AbSqlBean: public AdvertisementCampaignInternalEntityInterface {
-        
+class AdvertisementCampaignInternalEntity: public AbSqlBean, public AdvertisementCampaignInternalEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "adCampaignInternal";
+    protected: const std::string tableName = "adCampaignInternal";
 
-public constructor ();
+public: AdvertisementCampaignInternalEntity();
 
-    public delete(string value);
+    public: void delete_(std::string value);
 
-    public AdvertisementCampaignsInterface getCampaignsInStore(string storeName);
+    public: AdvertisementCampaignsInterface getCampaignsInStore(std::string storeName);
 
-    public AdvertisementCampaignInterface get(string storeName, string name);
+    public: AdvertisementCampaignInterface get(std::string storeName, std::string name);
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

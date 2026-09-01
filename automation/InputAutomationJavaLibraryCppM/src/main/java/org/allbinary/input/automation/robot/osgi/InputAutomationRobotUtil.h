@@ -52,13 +52,12 @@
 class InputAutomationRobotUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static InputAutomationRobotChangeEvent getChangeEvent(InputRobotInterface inputRobotInterface);
+    public: static InputAutomationRobotChangeEvent getChangeEvent(InputRobotInterface inputRobotInterface);
 
-private constructor ();
+private: InputAutomationRobotUtil();
 
 };
 

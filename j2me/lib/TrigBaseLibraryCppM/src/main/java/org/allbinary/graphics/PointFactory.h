@@ -58,21 +58,20 @@
 class PointFactory
             : public Object
          {
-        
 
-    private: static const instance: PointFactory = new PointFactory();
+    private: static PointFactory instance() { return PointFactory(); }
 
-    public static PointFactory getInstance();
+    public: static PointFactory getInstance();
 
-    public ZERO_ZERO: GPoint = this.createXYZ(0, 0, 0)!;
+    public: GPoint ZERO_ZERO = this->createXYZ(0, 0, 0);
 
-    public init();
+    public: void init();
 
-private constructor ();
+private: PointFactory();
 
-    public GPoint createXY(int32_t x, int32_t y);
+    public: GPoint createXY(int32_t x, int32_t y);
 
-    public GPoint createXYZ(int32_t x, int32_t y, int32_t z);
+    public: GPoint createXYZ(int32_t x, int32_t y, int32_t z);
 
 };
 

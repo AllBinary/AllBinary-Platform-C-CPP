@@ -65,25 +65,24 @@
         #include "ItemInterface.h"
 
 class BasicItemValidation: public Validation {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const MAXWEIGHT: int32_t = 14;
+    private: const int32_t MAXWEIGHT = 14;
 
-    private: const MAXPRICE: int32_t = 14;
+    private: const int32_t MAXPRICE = 14;
 
-    private: itemInterface: ItemInterface;
+    private: ItemInterface itemInterface;
 
-public constructor (ItemInterface itemInterface);
+public: BasicItemValidation(ItemInterface itemInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

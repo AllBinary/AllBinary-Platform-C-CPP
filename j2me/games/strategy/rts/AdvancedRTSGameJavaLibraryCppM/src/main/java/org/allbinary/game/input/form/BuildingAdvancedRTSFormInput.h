@@ -20,6 +20,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGADVANCEDRTSFORMINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGADVANCEDRTSFORMINPUT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedPlayerOwnedRTSLayers.h>
@@ -106,27 +108,26 @@
         #include "BuildingRTSFormInput.h"
 
 class BuildingAdvancedRTSFormInput: public BuildingRTSFormInput {
-        
 
-    const atLeastOneHouseGameNotificationEvent: GameNotificationEvent;
+    protected: GameNotificationEvent atLeastOneHouseGameNotificationEvent;
 
-public constructor (std::vector<Group> groupInterface, bool isUnitProducer);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
-
-    public bool isPositionBlocked();
+public: BuildingAdvancedRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer);
 
                 //@Throws(Exception.constructor)
             
-    bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
-    private: const BUILD_BUILDING_RTS_LAYER_EVENT: RTSLayerEvent = new RTSLayerEvent(NullPathFindingLayer.NULL_PATH_FINDING_LAYER);
+    public: bool isPositionBlocked();
 
                 //@Throws(Exception.constructor)
             
-    add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface);
+    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface);
+
+    private: const RTSLayerEvent BUILD_BUILDING_RTS_LAYER_EVENT = RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface);
 
 };
 

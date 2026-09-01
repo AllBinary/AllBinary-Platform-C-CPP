@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -45,20 +47,19 @@
 class PrimitiveArrayToString
             : public Object
          {
-        
 
-    public static string toString(std::vector<float> floats){
+    public: static std::string toString(std::vector<float> floats){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < floats.length; index++)
+    int32_t index = 0;index < floats.size(); index++)
         {
-stringBuffer!.appendfloat(floats[index]!);
+stringBuffer.appendfloat(floats[index]!);
     
 }
 
@@ -66,7 +67,7 @@ stringBuffer!.appendfloat(floats[index]!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

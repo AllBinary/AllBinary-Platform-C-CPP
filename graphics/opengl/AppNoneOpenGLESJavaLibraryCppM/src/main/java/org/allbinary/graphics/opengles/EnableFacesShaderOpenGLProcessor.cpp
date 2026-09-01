@@ -30,27 +30,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class EnableFacesShaderOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: EnableFacesShaderOpenGLProcessor = new EnableFacesShaderOpenGLProcessor();
+    private: static EnableFacesShaderOpenGLProcessor instance() { return EnableFacesShaderOpenGLProcessor(); }
 
-    public static EnableFacesShaderOpenGLProcessor getInstance(){
+    public: static EnableFacesShaderOpenGLProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EnableFacesShaderOpenGLProcessor.instance;
+                        return EnableFacesShaderOpenGLProcessor::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: EnableFacesShaderOpenGLProcessor(){
+}
 
 
-    public process(GL10 gl, any = {} anyType){
+    public: void process(GL10 gl, Object* anyType){
 }
 
 

@@ -49,13 +49,12 @@
 class OpenGLProcessor
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public process(GL10 gl);
+    public: void process(GL10 gl);
 
 };
 

@@ -44,28 +44,25 @@
         #include "MotionRecognizer.h"
 
 class OnlyTouchButtonRecognizer: public MotionRecognizer {
-        
 
-    private: const touchButtonRecognizer: TouchButtonRecognizer;
+    private: TouchButtonRecognizer touchButtonRecognizer;
 
-    private: touchButtonProcessing: bool = false;
+    private: bool touchButtonProcessing = false;
 
-public constructor (){
-
-            super();
-        this.touchButtonRecognizer= new TouchButtonRecognizer();
+public: OnlyTouchButtonRecognizer(){
+this->touchButtonRecognizer= TouchButtonRecognizer();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(this.touchButtonRecognizer!.pressTouchButtonInput(x, y, deviceId))
+                        if(this->touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId))
                         
                                     {
-                                    this.touchButtonProcessing= true;
+                                    this->touchButtonProcessing= true;
     
 
                                     }
@@ -75,18 +72,18 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(this.touchButtonProcessing)
+                        if(this->touchButtonProcessing)
                         
                                     {
-                                    this.touchButtonProcessing= false;
+                                    this->touchButtonProcessing= false;
     
 
                                     }
                                 
 
-                        if(this.touchButtonRecognizer!.releaseTouchButtonInput(x, y, deviceId))
+                        if(this->touchButtonRecognizer.releaseTouchButtonInput(x, y, deviceId))
                         
                                     {
                                     
@@ -103,12 +100,12 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
+    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers){
 
-                        if(this.touchButtonProcessing)
+                        if(this->touchButtonProcessing)
                         
                                     {
-                                    this.touchButtonRecognizer!.pressTouchButtonInput(x, y, deviceId);
+                                    this->touchButtonRecognizer.pressTouchButtonInput(x, y, deviceId);
     
 
                                     }

@@ -75,27 +75,26 @@
 #include "CollidableWeaponBehavior.h"
 
 class SimpleWeaponLayer: public WeaponLayer {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Animation createDestroyed(){
+    public: static Animation createDestroyed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.getProcedural(ExplosionResources.getInstance()!.THIRD_EXPLOSION_RESOURCE)!.getInstanceAnimation(NullIndexedAnimationFactory.getFactoryInstance()!.getInstance(0));;
+                        return FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().getProcedural(ExplosionResources::getInstance().THIRD_EXPLOSION_RESOURCE).getInstanceAnimation(NullIndexedAnimationFactory::getFactoryInstance().getInstance(0));;
     
 }
 
 
-public constructor (string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
+public: SimpleWeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
             super(name, remoteInfo, multiPlayerType, movement, animationInterface, destroyedAnimationInterface, rectangle, viewPosition);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setCollidableInferface(new CollidableWeaponBehavior(true));
+this->setCollidableInferface(CollidableWeaponBehavior(true));
     
 }
 

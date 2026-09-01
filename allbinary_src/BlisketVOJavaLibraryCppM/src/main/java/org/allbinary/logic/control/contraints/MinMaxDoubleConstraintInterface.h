@@ -41,15 +41,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MinMaxDoubleConstraintInterface {
-        
 
     double getMax();
 
     double getMin();
 
-    setMax(double max);
+    void setMax(double max);
 
-    setMin(double min);
+    void setMin(double min);
 
 };
 

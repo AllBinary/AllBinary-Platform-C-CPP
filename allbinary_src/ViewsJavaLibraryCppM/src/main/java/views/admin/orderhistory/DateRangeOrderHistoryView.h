@@ -104,82 +104,81 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DateRangeOrderHistoryView: public HttpStoreComponentView: public ValidationComponentInterface, public DomNodeInterface {
-        
+class DateRangeOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const VIEWALLORDERS: string = "View All";
+    private: const std::string VIEWALLORDERS = "View All";
 
-    private: const VIEWORDERSINLASTHOUR: string = "Last Hour";
+    private: const std::string VIEWORDERSINLASTHOUR = "Last Hour";
 
-    private: const VIEWORDERSINLASTDAY: string = "Last Day";
+    private: const std::string VIEWORDERSINLASTDAY = "Last Day";
 
-    private: const VIEWORDERSINLASTWEEK: string = "Last Week";
+    private: const std::string VIEWORDERSINLASTWEEK = "Last Week";
 
-    private: const VIEWORDERSINLAST30DAYS: string = "30 Days";
+    private: const std::string VIEWORDERSINLAST30DAYS = "30 Days";
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: shipped: string;
+    private: std::string shipped;
 
-    private: partiallyShipped: string;
+    private: std::string partiallyShipped;
 
-    private: processing: string;
+    private: std::string processing;
 
-    private: preprocessing: string;
+    private: std::string preprocessing;
 
-    private: cancelled: string;
+    private: std::string cancelled;
 
-    private: dateType: string;
+    private: std::string dateType;
 
-    private: toDate: string;
+    private: std::string toDate;
 
-    private: fromDate: string;
+    private: std::string fromDate;
 
-    private: fromYear: string;
+    private: std::string fromYear;
 
-    private: fromMonth: string;
+    private: std::string fromMonth;
 
-    private: fromDay: string;
+    private: std::string fromDay;
 
-    private: fromHour: string;
+    private: std::string fromHour;
 
-    private: toYear: string;
+    private: std::string toYear;
 
-    private: toMonth: string;
+    private: std::string toMonth;
 
-    private: toDay: string;
+    private: std::string toDay;
 
-    private: toHour: string;
+    private: std::string toHour;
 
-    private: command: string;
+    private: std::string command;
 
-    private: const ON: string = "on";
+    private: const std::string ON = "on";
 
-    private: MAXLEN: int32_t = 15;
+    private: int32_t MAXLEN = 15;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: DateRangeOrderHistoryView(TransformInfoInterface transformInfoInterface);
 
-    getFormData();
+    private: void getFormData();
 
-    public addDomNodeInterfaces();
-
-                //@Throws(Exception.constructor)
-            
-    public string view();
-
-    public Node toXmlNode(Document document);
-
-    public Boolean isValid();
-
-    public Document toValidationInfoDoc();
-
-    public Node toValidationInfoNode(Document document);
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: std::string view();
+
+    public: Node toXmlNode(Document document);
+
+    public: Boolean isValid();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string validationInfo();
 
 };
 

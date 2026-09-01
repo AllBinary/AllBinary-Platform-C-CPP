@@ -43,39 +43,36 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
-
-
-    /*actual*/ public putP(Log log){
+private: LogUtil(){
 }
 
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: void putP(Log log){
 }
 
 
-    /*actual*/ public putF(string specialMessage, string className, string functionName){
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
 }
 
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: void putF(std::string specialMessage, std::string className, std::string functionName){
+}
+
+
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 }
 
 

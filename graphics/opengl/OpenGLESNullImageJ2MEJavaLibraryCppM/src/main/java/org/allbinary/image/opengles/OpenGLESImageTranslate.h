@@ -49,15 +49,14 @@
 class OpenGLESImageTranslate
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESImageTranslate = new OpenGLESImageTranslate();
+    private: static OpenGLESImageTranslate instance() { return OpenGLESImageTranslate(); }
 
-    public static OpenGLESImageTranslate getInstance();
+    public: static OpenGLESImageTranslate getInstance();
 
-    public translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y);
+    public: void translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y);
 
-    public translate2(GL10 gl, OpenGLESImage openGLESImage);
+    public: void translate2(GL10 gl, OpenGLESImage openGLESImage);
 
 };
 

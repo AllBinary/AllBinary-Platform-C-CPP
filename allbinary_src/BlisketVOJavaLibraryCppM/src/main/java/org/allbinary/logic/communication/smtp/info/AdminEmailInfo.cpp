@@ -59,46 +59,45 @@
         #include "BasicEmailInfo.h"
 
 class AdminEmailInfo: public BasicEmailInfo {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (string subject, string textBody){
+public: AdminEmailInfo(std::string subject, std::string textBody){
             super(subject, textBody);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.init();
+this->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(){
+    protected: void init(){
 
-    adminConfigurationInterface: AdminConfigurationInterface = new AdminConfiguration() as AdminConfigurationInterface;;
+    AdminConfigurationInterface adminConfigurationInterface = AdminConfiguration() as AdminConfigurationInterface;;
     
 
-    contextConfigurationInterface: ContextConfigurationInterface = adminConfigurationInterface!.getContextConfigurationInterface()!;;
+    ContextConfigurationInterface contextConfigurationInterface = adminConfigurationInterface.getContextConfigurationInterface();;
     
 
-    emailServerConfigurationInterface: EmailServerConfigurationInterface = contextConfigurationInterface!.getEmailServerConfigurationInterface()!;;
+    EmailServerConfigurationInterface emailServerConfigurationInterface = contextConfigurationInterface.getEmailServerConfigurationInterface();;
     
-this.setEmailServerConfigurationInterface(emailServerConfigurationInterface);
+this->setEmailServerConfigurationInterface(emailServerConfigurationInterface);
     
 }
 

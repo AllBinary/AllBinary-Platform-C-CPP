@@ -61,19 +61,18 @@
         #include "TransformTag.h"
 
 class XmlValidationTransformTag: public TransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: XmlValidationTransformTag();
 
                 //@Throws(Exception.constructor)
             
-    bool isValid();
+    private: bool isValid();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

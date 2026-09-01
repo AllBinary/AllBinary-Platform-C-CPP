@@ -110,31 +110,30 @@
 class SimpleStateTaxModule
             : public Object
         : public TaxModuleInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: streetAddress: StreetAddress;
+    private: StreetAddress streetAddress;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: const ALL: string = CommonPhoneStrings.getInstance()!.STAR;
+    private: const std::string ALL = CommonPhoneStrings::getInstance().STAR;
 
-    private: const STATETAXPATH: string = "/generic/taxes/";
+    private: const std::string STATETAXPATH = "/generic/taxes/";
 
-    private: const STATETAXFILE: string = "stateTaxation.xml";
+    private: const std::string STATETAXFILE = "stateTaxation.xml";
 
-    private: document: Document;
+    private: Document document;
 
-public constructor ();
+public: SimpleStateTaxModule();
 
                 //@Throws(Exception.constructor)
             
-    public number getTaxRate(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface);
+    public: number getTaxRate(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface);
 
-    public Boolean isValid(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface);
+    public: Boolean isValid(StreetAddress streetAddress, StoreFrontInterface storeFrontInterface);
 
 };
 

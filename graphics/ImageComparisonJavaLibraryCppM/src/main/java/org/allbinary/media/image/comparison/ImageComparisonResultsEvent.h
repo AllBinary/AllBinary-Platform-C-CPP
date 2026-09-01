@@ -45,15 +45,14 @@
         #include "ImageComparisonResult.h"
 
 class ImageComparisonResultsEvent: public AllBinaryEventObject {
-        
 
-    private: imageComparisonResult: ImageComparisonResult;
+    private: ImageComparisonResult imageComparisonResult;
 
-public constructor (any = {} anyType, ImageComparisonResult imageComparisonInfo);
+public: ImageComparisonResultsEvent(Object* anyType, ImageComparisonResult imageComparisonInfo);
 
-    public ImageComparisonResult getImageComparisonResult();
+    public: ImageComparisonResult getImageComparisonResult();
 
-    public setImageComparisonResult(ImageComparisonResult imageComparisonResult);
+    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult);
 
 };
 

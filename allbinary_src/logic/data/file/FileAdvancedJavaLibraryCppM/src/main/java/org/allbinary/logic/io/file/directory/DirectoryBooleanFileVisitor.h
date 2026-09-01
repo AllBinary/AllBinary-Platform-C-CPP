@@ -51,13 +51,12 @@
 class DirectoryBooleanFileVisitor
             : public Object
         : public VisitorInterface {
-        
 
-public constructor ();
+public: DirectoryBooleanFileVisitor();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
-    public Boolean visit(AbFile file);
+    public: Boolean visit(AbFile file);
 
 };
 

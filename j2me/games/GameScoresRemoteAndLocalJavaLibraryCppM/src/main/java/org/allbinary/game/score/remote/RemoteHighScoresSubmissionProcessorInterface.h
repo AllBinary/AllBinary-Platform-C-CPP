@@ -48,9 +48,8 @@
         #include "RemoteHighScores.h"
 
 class RemoteHighScoresSubmissionProcessorInterface {
-        
 
-    process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, HighScore highScore);
+    void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, HighScore highScore);
 
 };
 

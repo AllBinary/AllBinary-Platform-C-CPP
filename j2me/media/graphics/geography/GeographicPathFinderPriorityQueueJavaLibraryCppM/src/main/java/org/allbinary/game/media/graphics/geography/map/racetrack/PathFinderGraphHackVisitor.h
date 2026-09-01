@@ -50,35 +50,34 @@
         #include "BasePathFinderGraphVisitor.h"
 //1.4.2
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor {
-        
 
-public constructor (BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
-
-                //@Throws(Exception.constructor)
-            
-    public visit(any = {} graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
+public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
 
                 //@Throws(Exception.constructor)
             
-    fixStart(any = {} graph, BasicArrayList startPathFindingNodeList);
+    public: void visit(Object* graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    fixEnd(any = {} graph, BasicArrayList endPathFindingNodeList);
+    private: void fixStart(Object* graph, BasicArrayList startPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    fixOverPassEdges(any = {} graph);
+    private: void fixEnd(Object* graph, BasicArrayList endPathFindingNodeList);
 
                 //@Throws(Exception.constructor)
             
-    public fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList);
+    private: void fixOverPassEdges(Object* graph);
 
                 //@Throws(Exception.constructor)
             
-    removeOverPassEdges(BasicArrayList pathList);
+    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList);
 
-    public bool isValid(any = {} graphPath);
+                //@Throws(Exception.constructor)
+            
+    private: void removeOverPassEdges(BasicArrayList pathList);
+
+    public: bool isValid(Object* graphPath);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
 
       
@@ -44,16 +46,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MineWeaponResources: public BasicGameResources {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static MineWeaponResources getInstance(){
+    public: static MineWeaponResources getInstance(){
 
-                        if(MineWeaponResources.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(MineWeaponResources::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    MineWeaponResources.instance= new MineWeaponResources();
+                                    MineWeaponResources::instance= MineWeaponResources();
     
 
                                     }
@@ -62,43 +63,41 @@ class MineWeaponResources: public BasicGameResources {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineWeaponResources.instance as MineWeaponResources;
+                        return MineWeaponResources::instance() as MineWeaponResources;
     
 }
 
 
-    public const DROP_TEXT_RESOURCE: string = "/mine_drop_text_20_by_20.png";
+    public: const std::string DROP_TEXT_RESOURCE = "/mine_drop_text_20_by_20.png";
 
-    public const DROP_RESOURCE: string = "/mine_drop_20_by_20.png";
+    public: const std::string DROP_RESOURCE = "/mine_drop_20_by_20.png";
 
-    public const DROP_ICON_RESOURCE: string = "/mine_drop_icon_20_by_20.png";
+    public: const std::string DROP_ICON_RESOURCE = "/mine_drop_icon_20_by_20.png";
 
-protected constructor (){
+protected: MineWeaponResources(){
 
-            super();
-        
-    ROOT: string = "/mine";;
+    std::string ROOT = "/mine";;
     
 
-    SMALL: string = "_20_by_20.png";;
+    std::string SMALL = "_20_by_20.png";;
     
 
-    MEDIUM: string = SMALL;;
+    std::string MEDIUM = SMALL;;
     
 
-    SIZE_FOUR: string = SMALL;;
+    std::string SIZE_FOUR = SMALL;;
     
 
-    SIZE_FIVE: string = SMALL;;
+    std::string SIZE_FIVE = SMALL;;
     
 
-    SIZE_SIX: string = SMALL;;
+    std::string SIZE_SIX = SMALL;;
     
 
-    SIZE: std::vector<string> = 
-                                                        [
+    std::vector<std::string> SIZE = 
+                                                        {
                                                             SMALL,MEDIUM,SIZE_FOUR,SIZE_FIVE,SIZE_SIX
-                                                        ];;
+                                                        };;
     
 super.init(ROOT, SIZE);
     

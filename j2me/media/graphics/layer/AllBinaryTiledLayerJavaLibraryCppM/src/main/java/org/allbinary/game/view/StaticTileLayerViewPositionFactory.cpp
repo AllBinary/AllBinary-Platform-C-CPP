@@ -51,16 +51,15 @@
 class StaticTileLayerViewPositionFactory
             : public Object
         : public ViewPositionFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ViewPositionBase getInstance(){
+    public: ViewPositionBase getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StaticTileLayerIntoPositionViewPosition();
+                        return StaticTileLayerIntoPositionViewPosition();
     
 }
 

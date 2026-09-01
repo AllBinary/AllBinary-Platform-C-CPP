@@ -60,17 +60,16 @@
 class MultiplayerBehavior
             : public Object
          {
-        
 
-    public static const NULL_MULTIPLAYER_BEHAVIOR: MultiplayerBehavior = new MultiplayerBehavior(StringUtil.getInstance()!.EMPTY_STRING);
+    public: static const MultiplayerBehavior NULL_MULTIPLAYER_BEHAVIOR = MultiplayerBehavior(StringUtil::getInstance().EMPTY_STRING);
 
-protected constructor (string username);
+protected: MultiplayerBehavior(std::string username);
 
-    public startTick();
+    public: void startTick();
 
-    public endTick();
+    public: void endTick();
 
-    public int64_t getApproximateElapsed();
+    public: int64_t getApproximateElapsed();
 
 };
 

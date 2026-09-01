@@ -56,21 +56,20 @@
         #include "BasicTable.h"
 
 class InitHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: InitHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string drop();
+    public: std::string drop();
 
-    public string create();
+    public: std::string create();
 
-    public string view();
+    public: std::string view();
 
-    public string restore();
+    public: std::string restore();
 
-    public string backup();
+    public: std::string backup();
 
 };
 

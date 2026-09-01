@@ -48,21 +48,20 @@
 class FullScreenPaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: FullScreenPaintableFactory = new FullScreenPaintableFactory();
+    private: static FullScreenPaintableFactory instance() { return FullScreenPaintableFactory(); }
 
-    public static FullScreenPaintableFactory getInstance(){
+    public: static FullScreenPaintableFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FullScreenPaintableFactory.instance;
+                        return FullScreenPaintableFactory::instance();
     
 }
 
 
-    public paintable: Paintable = NullPaintable.getInstance()!;
+    public: Paintable paintable = NullPaintable::getInstance();
 
 };
 

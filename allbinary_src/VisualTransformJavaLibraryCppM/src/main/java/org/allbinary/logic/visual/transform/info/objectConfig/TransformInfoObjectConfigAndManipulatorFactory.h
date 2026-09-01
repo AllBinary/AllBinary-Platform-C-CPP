@@ -72,27 +72,26 @@
 #include "GenericStoreTransformInfoObjectConfig.h"
 
 class TransformInfoObjectConfigAndManipulatorFactory: public TransformInfoObjectConfigAndManipulatorFactoryBase {
-        
 
-    private: static const instance: TransformInfoObjectConfigAndManipulatorFactory = new TransformInfoObjectConfigAndManipulatorFactory();
+    private: static TransformInfoObjectConfigAndManipulatorFactory instance() { return TransformInfoObjectConfigAndManipulatorFactory(); }
 
-    public static TransformInfoObjectConfigAndManipulatorFactory getInstance();
+    public: static TransformInfoObjectConfigAndManipulatorFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath);
+private: TransformInfoObjectConfigAndManipulatorFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath);
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document);
+    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document);
 
 };
 

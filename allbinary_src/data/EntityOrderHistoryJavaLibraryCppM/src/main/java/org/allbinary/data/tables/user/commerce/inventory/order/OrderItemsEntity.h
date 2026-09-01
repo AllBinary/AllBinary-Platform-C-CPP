@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITY_H
         #define ORG_ALLBINARY_DATA_TABLES_USER_COMMERCE_INVENTORY_ORDER_ORDERITEMSENTITY_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -121,28 +123,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "OrderItemsEntityInterface.h"
 
-class OrderItemsEntity: public AbSqlBean: public OrderItemsEntityInterface {
-        
+class OrderItemsEntity: public AbSqlBean, public OrderItemsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "orderitems";
+    protected: const std::string tableName = "orderitems";
 
-public constructor ();
+public: OrderItemsEntity();
 
-    public insert(string userName, OrderInterface order);
+    public: void insert(std::string userName, OrderInterface order);
 
-    public setStatus(string orderId, string groupId, string status);
+    public: void setStatus(std::string orderId, std::string groupId, std::string status);
 
-    public bool isEverythingShipped(string orderId);
+    public: bool isEverythingShipped(std::string orderId);
 
-    public BasketReview getBasketReview(string orderId);
+    public: BasketReview getBasketReview(std::string orderId);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

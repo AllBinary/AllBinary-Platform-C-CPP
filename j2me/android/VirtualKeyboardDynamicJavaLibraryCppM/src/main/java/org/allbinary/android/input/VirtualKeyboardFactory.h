@@ -58,13 +58,12 @@
 class VirtualKeyboardFactory
             : public Object
          {
-        
 
-    private: static virtualKeyboard: VirtualKeyboard = VirtualKeyboard.NULL_VIRTUAL_KEYBOARD;
+    private: static VirtualKeyboard virtualKeyboard = VirtualKeyboard::NULL_VIRTUAL_KEYBOARD;
 
-    public static init(Activity activity);
+    public: static void init(Activity activity);
 
-    public static VirtualKeyboard getInstance();
+    public: static VirtualKeyboard getInstance();
 
 };
 

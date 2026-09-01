@@ -43,24 +43,23 @@
 class GameInfoCopyFactory
             : public Object
          {
-        
 
-    public static GameInfo getInstanceMaxLevel(GameInfo gameInfo, int32_t maxLevel){
+    public: static GameInfo getInstanceMaxLevel(GameInfo gameInfo, int32_t maxLevel){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GameInfo(gameInfo!.getGameType(), gameInfo!.getGameMode(), gameInfo!.getPlayerType(), maxLevel, gameInfo!.getCurrentLevel());
+                        return GameInfo(gameInfo.getGameType(), gameInfo.getGameMode(), gameInfo.getPlayerType(), maxLevel, gameInfo.getCurrentLevel());
     
 }
 
 
-    public static GameInfo getInstance(GameInfo gameInfo){
+    public: static GameInfo getInstance(GameInfo gameInfo){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GameInfo(gameInfo!.getGameType(), gameInfo!.getGameMode(), gameInfo!.getPlayerType(), gameInfo!.getHighestLevel(), gameInfo!.getCurrentLevel());
+                        return GameInfo(gameInfo.getGameType(), gameInfo.getGameMode(), gameInfo.getPlayerType(), gameInfo.getHighestLevel(), gameInfo.getCurrentLevel());
     
 }
 

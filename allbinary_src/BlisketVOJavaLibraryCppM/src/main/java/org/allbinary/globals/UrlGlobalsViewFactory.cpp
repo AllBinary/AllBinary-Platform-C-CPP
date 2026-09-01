@@ -54,11 +54,10 @@
 class UrlGlobalsViewFactory
             : public Object
          {
-        
 
-    public static DomNodeInterface getInstance(){
+    public: static DomNodeInterface getInstance(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -66,20 +65,20 @@ class UrlGlobalsViewFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new UrlGlobalsView() as DomNodeInterface;
+                        return UrlGlobalsView() as DomNodeInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
                         
                                     {
-                                    logUtil!.put(commonStrings!.EXCEPTION, "GlobalsViewFactory", commonStrings!.GET_INSTANCE, e);
+                                    logUtil.put(commonStrings.EXCEPTION, "GlobalsViewFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -95,10 +94,8 @@ class UrlGlobalsViewFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: UrlGlobalsViewFactory(){
+}
 
 
 };

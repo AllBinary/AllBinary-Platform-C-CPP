@@ -45,7 +45,6 @@
 class BaseMusicService
             : public Object
          {
-        
 
 };
 

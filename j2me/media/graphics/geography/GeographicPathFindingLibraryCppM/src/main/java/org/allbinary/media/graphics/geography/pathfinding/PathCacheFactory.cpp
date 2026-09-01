@@ -55,65 +55,62 @@
 class PathCacheFactory
             : public Object
          {
-        
 
-    private: static pathFactory: PathCacheFactory = new PathCacheFactory();
+    private: static PathCacheFactory pathFactory = PathCacheFactory();
 
-    public static PathCacheFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathCacheFactory.pathFactory;
-    
-}
-
-
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
-
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
-
-private constructor (){
-
-            super();
-        }
-
-
-    public int32_t getSize(){
+    public: static PathCacheFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable.length;;
+                        return PathCacheFactory::pathFactory;
     
 }
 
 
-    public add(Integer pathId, BasicArrayList list){
-this.hashtable.put(pathId, list);
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
+
+private: PathCacheFactory(){
+}
+
+
+    public: int32_t getSize(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->hashtable.length;;
     
 }
 
 
-    public remove(Integer pathId){
-this.hashtable.remove(pathId);
+    public: void add(Integer pathId, BasicArrayList list){
+this->hashtable.put(pathId, list);
+    
+}
+
+
+    public: void remove(Integer pathId){
+this->hashtable.remove(pathId);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public removeAll(){
-this.hashtable.clear();
+    public: void removeAll(){
+this->hashtable.clear();
     
 
-                        if(this.hashtable.length > 0)
+                        if(this->hashtable.length > 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("Did not clear");
+                            throw Exception("Did not clear");
                     
 
                                     }
@@ -123,17 +120,17 @@ this.hashtable.clear();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getOrCreate(Integer pathIdInteger){
+    public: BasicArrayList getOrCreate(Integer pathIdInteger){
 
-    listCanBeNull: any = this.hashtable.get(pathIdInteger);;
+    Object* listCanBeNull = this->hashtable.get(pathIdInteger);;
     
 
                         if(listCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    listCanBeNull= this.basicArrayListUtil!.getImmutableInstance();
+                                    listCanBeNull= this->basicArrayListUtil.getImmutableInstance();
     
 
                                     }

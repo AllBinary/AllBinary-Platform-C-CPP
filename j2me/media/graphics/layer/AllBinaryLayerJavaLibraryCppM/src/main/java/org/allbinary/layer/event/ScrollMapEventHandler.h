@@ -54,17 +54,16 @@
 #include "ScrollMapEvent.h"
 
 class ScrollMapEventHandler: public BasicEventHandler {
-        
 
-    private: static SINGLETON: ScrollMapEventHandler = new ScrollMapEventHandler();
+    private: static ScrollMapEventHandler SINGLETON = ScrollMapEventHandler();
 
-    public static ScrollMapEventHandler getInstance();
+    public: static ScrollMapEventHandler getInstance();
 
-private constructor ();
+private: ScrollMapEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <javax/crypto/Cipher.h>
@@ -50,74 +52,71 @@
         #include "BaseSecretComposite.h"
 
 class SecretComposite: public BaseSecretComposite {
-        
 
-    private: const byteUtil: ByteUtil = ByteUtil.getInstance()!;
+    private: const ByteUtil byteUtil = ByteUtil::getInstance();
 
-    private: const cipher: Cipher;
+    private: Cipher cipher;
 
-    private: const secretKey: SecretKey;
+    private: SecretKey secretKey;
 
-    private: key: std::vector<int8_t>;
+    private: std::vector<int8_t> key;
 
-public constructor (SecretKey secretKey, Cipher cipher, std::vector<int8_t> key){
-
-            super();
-        this.secretKey= secretKey;
+public: SecretComposite(SecretKey secretKey, Cipher cipher, std::vector<int8_t> key){
+this->secretKey= secretKey;
     
-this.cipher= cipher;
+this->cipher= cipher;
     
-this.key= key;
+this->key= key;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array){
-array= this.mutilate(array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
+array= this->mutilate(array);
     
-this.cipher.init(Cipher.ENCRYPT_MODE, this.secretKey);
+this->cipher.init(Cipher::ENCRYPT_MODE, this->secretKey);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cipher.doFinal(array);;
+                        return this->cipher.doFinal(array);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array){
-this.cipher.init(Cipher.DECRYPT_MODE, this.secretKey);
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
+this->cipher.init(Cipher::DECRYPT_MODE, this->secretKey);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mutilate(this.cipher.doFinal(array));;
+                        return this->mutilate(this->cipher.doFinal(array));;
     
 }
 
 
-    std::vector<int8_t> mutilate(std::vector<int8_t> array){
+    private: std::vector<int8_t> mutilate(std::vector<int8_t> array){
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.key.length; index++)
+    int32_t index = 0;index < this->key.size(); index++)
         {
 
-    value: int8_t = this.key[index]!;;
+    int8_t value = this->key[index];;
     
 
                         if(value < 8 && value > 0)
                         
                                     {
-                                    array= this.byteUtil!.xorByte(array, static_cast<int32_t>(value));
+                                    array= this->byteUtil.xorByte(array, static_cast<int32_t>(value));
     
 
                                     }

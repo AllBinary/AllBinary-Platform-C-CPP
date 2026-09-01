@@ -55,59 +55,56 @@
 class InApplicationPurchaseFactory
             : public Object
          {
-        
 
-    private: static const instance: InApplicationPurchaseFactory = new InApplicationPurchaseFactory();
+    private: static InApplicationPurchaseFactory instance() { return InApplicationPurchaseFactory(); }
 
-    public static InApplicationPurchaseFactory getInstance(){
+    public: static InApplicationPurchaseFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InApplicationPurchaseFactory.instance;
+                        return InApplicationPurchaseFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
-
-
-    public init(any = {} anyType, any = {} stateObject){
+private: InApplicationPurchaseFactory(){
 }
 
 
-    public onCreate(any = {} anyType, any = {} stateObject){
+    public: void init(Object* anyType, Object* stateObject){
 }
 
 
-    public onStart(){
+    public: void onCreate(Object* anyType, Object* stateObject){
 }
 
 
-    public onResult(int32_t requestCode, int32_t resultCode, any = {} data){
+    public: void onStart(){
 }
 
 
-    public onSaveState(any = {} anyType){
+    public: void onResult(int32_t requestCode, int32_t resultCode, Object* data){
 }
 
 
-    public onStop(){
+    public: void onSaveState(Object* anyType){
 }
 
 
-    public onDestroy(){
+    public: void onStop(){
 }
 
 
-    public purchase(LockableFeature lockableFeature){
+    public: void onDestroy(){
 }
 
 
-    public bool isPurchased(LockableFeature lockableFeature){
+    public: void purchase(LockableFeature lockableFeature){
+}
+
+
+    public: bool isPurchased(LockableFeature lockableFeature){
 
 
 
@@ -117,21 +114,21 @@ private constructor (){
 }
 
 
-    public add(LockableFeature lockableFeature){
+    public: void add(LockableFeature lockableFeature){
 }
 
 
-    public string getUserName(){
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public bool isEnabled(){
+    public: bool isEnabled(){
 
 
 

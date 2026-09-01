@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -69,25 +71,24 @@
 class HighScoresHelperBase
             : public Object
         : public HighScoresHelperBaseInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    highScoresArrayP: std::vector<HighScores> = LastFetchHighScoresFactory.getInstance()!.highScoresArray;
+    protected: std::vector<HighScores> highScoresArrayP = LastFetchHighScoresFactory::getInstance().highScoresArray;
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArrayP);
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP);
 
-    public HighScores getNextHighScores();
+    public: HighScores getNextHighScores();
 
-    public bool isAnyHighScores();
+    public: bool isAnyHighScores();
 
-    public setSelectedHighScores(HighScores selectedHighScores);
+    public: void setSelectedHighScores(HighScores selectedHighScores);
 
-    public HighScores getSelectedHighScores();
+    public: HighScores getSelectedHighScores();
 
-    public std::vector<HighScores> getHighScoresArray();
+    public: std::vector<HighScores> getHighScoresArray();
 
-    public selectHighScores();
+    public: void selectHighScores();
 
 };
 

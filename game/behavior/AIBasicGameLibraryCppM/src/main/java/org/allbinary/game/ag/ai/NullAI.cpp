@@ -46,17 +46,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NullAI: public ArtificialIntelligence {
-        
 
-public constructor (){
-
-            super();
-        }
+public: NullAI(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 }
 
 

@@ -54,9 +54,8 @@
 class MotionGestureReceiveInterfaceFactory
             : public Object
          {
-        
 
-    public static CompleteMotionGestureListenerInterface getInstance();
+    public: static CompleteMotionGestureListenerInterface getInstance();
 
 };
 

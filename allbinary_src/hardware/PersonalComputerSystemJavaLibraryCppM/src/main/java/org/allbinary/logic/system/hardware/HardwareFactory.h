@@ -60,17 +60,16 @@
 class HardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: HardwareFactory = new HardwareFactory();
+    private: static HardwareFactory instance() { return HardwareFactory(); }
 
-    public static HardwareFactory getInstance();
+    public: static HardwareFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public static HardwareInterface getInstance(GenericOperatingSystem os);
+    public: static HardwareInterface getInstance(GenericOperatingSystem os);
 
-private constructor ();
+private: HardwareFactory();
 
 };
 

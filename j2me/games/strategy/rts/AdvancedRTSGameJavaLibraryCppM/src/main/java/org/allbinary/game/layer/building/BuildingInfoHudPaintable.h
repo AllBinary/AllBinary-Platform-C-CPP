@@ -83,39 +83,38 @@
         #include "BuildingLayer.h"
 
 class BuildingInfoHudPaintable: public SelectionHudPaintable {
-        
 
-    private: static const instance: BuildingInfoHudPaintable = new BuildingInfoHudPaintable();
+    private: static BuildingInfoHudPaintable instance() { return BuildingInfoHudPaintable(); }
 
-    public static BuildingInfoHudPaintable getInstance();
+    public: static BuildingInfoHudPaintable getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const HEALTH: string = "Health:";
+    private: const std::string HEALTH = "Health:";
 
-    private: const productivityHud: NumberStringHud;
+    private: NumberStringHud productivityHud;
 
-    private: const efficiencyHud: NumberStringHud;
+    private: NumberStringHud efficiencyHud;
 
-    private: const healthHud: NumberStringHud;
+    private: NumberStringHud healthHud;
 
-    private: const maxHealthHud: NumberStringHud;
+    private: NumberStringHud maxHealthHud;
 
-    private: rtsLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    private: currentHealth: int32_t = 0;
+    private: int32_t currentHealth = 0;
 
-private constructor ();
+private: BuildingInfoHudPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public updateSelectionInfo();
+    public: void updateSelectionInfo();
 
-    public setRtsLayer(PathFindingLayerInterface rtsLayer);
+    public: void setRtsLayer(PathFindingLayerInterface rtsLayer);
 
 };
 

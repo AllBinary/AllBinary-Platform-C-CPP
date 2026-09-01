@@ -54,13 +54,12 @@
 #include "ProgressCanvas.h"
 
 class TitleProgressBarSetProgressRunnable: public ProgressRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Activity midletActivity, ProgressCanvas progressCanvas);
+public: TitleProgressBarSetProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas);
 
-    public run();
+    public: void run();
 
 };
 

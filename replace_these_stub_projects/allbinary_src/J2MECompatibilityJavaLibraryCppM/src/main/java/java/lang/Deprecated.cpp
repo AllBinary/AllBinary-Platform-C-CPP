@@ -28,7 +28,6 @@
 class Deprecated
             : public Object
          {
-        
 
 };
 

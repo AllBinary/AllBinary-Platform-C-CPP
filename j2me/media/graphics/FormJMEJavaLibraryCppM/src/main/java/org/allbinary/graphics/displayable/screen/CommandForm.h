@@ -97,38 +97,37 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ScreenRepaintProcessorFactory.h"
 
-class CommandForm: public Form: public MyCommandInterface, public MenuListener {
-        
+class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
-    private: static NULL_COMMAND_FORM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_COMMAND_FORM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static CommandForm getNullCommandForm();
+    public: static CommandForm getNullCommandForm();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const repaintProcessor: Processor = ScreenRepaintProcessorFactory.getInstance()!.create(this)!;
+    private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
 
-    private: commandStack: Stack<any>;
+    private: Stack<any> commandStack;
 
-public constructor (CommandListener commandListener, string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: CommandForm(CommandListener commandListener, std::string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void update();
 
-    public int32_t getSourceId();
+    public: int32_t getSourceId();
 
-    public addCommand(Command command);
+    public: void addCommand(Command command);
 
-    public removeAllCommands();
+    public: void removeAllCommands();
 
 };
 

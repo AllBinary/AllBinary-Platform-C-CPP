@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -55,43 +57,39 @@
 class CategoriesView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: categoryInterface: CategoryInterface;
+    private: CategoryInterface categoryInterface;
 
-public constructor (CategoryInterface categoryInterface){
-
-            super();
-        this.categoryInterface= categoryInterface;
+public: CategoriesView(CategoryInterface categoryInterface){
+this->categoryInterface= categoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = new CategoryView(this.categoryInterface).toXmlNode(document)!;;
+    Node node = CategoryView(this->categoryInterface).toXmlNode(document);;
     
 
-    childArray: std::vector<any> = this.categoryInterface!.getChildNodes()!.toArray()!;;
+    std::vector<Object*> childArray = this->categoryInterface.getChildNodes().toArray();;
     
 
-    size: int32_t = childArray!.length
-                ;;
+    int32_t size = childArray.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    childCategoryInterface: CategoryInterface = childArray[i]! as CategoryInterface;;
+    CategoryInterface childCategoryInterface = childArray[i]! as CategoryInterface;;
     
 
-    childCategoryNode: Node = new CategoriesView(childCategoryInterface).toXmlNode(document)!;;
+    Node childCategoryNode = CategoriesView(childCategoryInterface).toXmlNode(document);;
     
 node.appendChild(childCategoryNode);
     

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKET_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -74,31 +76,30 @@
 class Basket
             : public Object
         : public BasketInterface, public Serializable {
-        
 
-    private: items: HashMap<any, any> = new HashMap<any, any>();
+    private: HashMap<any, any> items = HashMap<any, any>();
 
-public constructor ();
+public: Basket();
 
-    public addItem(string id, string num);
+    public: void addItem(std::string id, std::string num);
 
-    public removeItem(string id);
+    public: void removeItem(std::string id);
 
-    public adjustItem(string id, string num);
+    public: void adjustItem(std::string id, std::string num);
 
-    public string getTotalWeight();
+    public: std::string getTotalWeight();
 
-    public Integer getNumberOfItems();
+    public: Integer getNumberOfItems();
 
-    public Set getIds();
+    public: Set getIds();
 
-    public HashMap<any, any> getItems();
+    public: HashMap<any, any> getItems();
 
-    public Integer getNumberOf(string product);
+    public: Integer getNumberOf(std::string product);
 
                 //@Throws(MoneyException.constructor)
             
-    public Money getSubTotal();
+    public: Money getSubTotal();
 
 };
 

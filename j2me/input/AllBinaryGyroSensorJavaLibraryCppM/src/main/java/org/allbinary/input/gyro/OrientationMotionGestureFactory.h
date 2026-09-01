@@ -54,25 +54,24 @@
 class OrientationMotionGestureFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static OrientationMotionGestureFactory getInstance();
+    public: static OrientationMotionGestureFactory getInstance();
 
-    public const LEFT: MotionGestureInput;
+    public: MotionGestureInput LEFT;
 
-    public const RIGHT: MotionGestureInput;
+    public: MotionGestureInput RIGHT;
 
-    public const UP: MotionGestureInput;
+    public: MotionGestureInput UP;
 
-    public const DOWN: MotionGestureInput;
+    public: MotionGestureInput DOWN;
 
-    public const ROLL_LEFT: MotionGestureInput;
+    public: MotionGestureInput ROLL_LEFT;
 
-    public const ROLL_RIGHT: MotionGestureInput;
+    public: MotionGestureInput ROLL_RIGHT;
 
-private constructor ();
+private: OrientationMotionGestureFactory();
 
 };
 

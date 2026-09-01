@@ -50,31 +50,28 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil.instance;
+                        return ImageRotationUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ImageRotationUtil(){
+}
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
 
 
 

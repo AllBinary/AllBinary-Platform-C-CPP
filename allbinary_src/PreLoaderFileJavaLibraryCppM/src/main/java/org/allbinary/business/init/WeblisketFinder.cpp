@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -73,70 +75,67 @@
 class WeblisketFinder
             : public Object
          {
-        
 
-    private: static const instance: WeblisketFinder = new WeblisketFinder();
+    private: static WeblisketFinder instance() { return WeblisketFinder(); }
 
-    public static WeblisketFinder getInstance(){
+    public: static WeblisketFinder getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WeblisketFinder.instance;
+                        return WeblisketFinder::instance();
     
 }
 
 
-    private: static const KEY: string = "installerdata.dat";
+    private: static const std::string KEY = "installerdata.dat";
 
                 //@Throws(Exception.constructor)
             
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    vector: BasicArrayList = WeblisketFinder.getInstance()!.findAll(stringUtil!.EMPTY_STRING)!;;
+    BasicArrayList vector = WeblisketFinder::getInstance().findAll(stringUtil.EMPTY_STRING);;
     
 console.log(vector.size());
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const subDirectory: SubDirectory = SubDirectory.getInstance()!;
+    private: const SubDirectory subDirectory = SubDirectory::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: WeblisketFinder(){
+}
 
 
-    public BasicArrayList findAll(string path){
+    public: BasicArrayList findAll(std::string path){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "findAll");
+            this->logUtil.putF(this->commonStrings.START, this, "findAll");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.subDirectory!.search(WeblisketFinder.KEY, AbFile.createAbFile(path));;
+                        return this->subDirectory.search(WeblisketFinder::KEY, AbFile::createAbFile(path));;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "findAll", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "findAll", e);
     
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().PRELOADERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "findAll", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "findAll", e);
     
 
                                     }
@@ -152,14 +151,14 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "findAll", e);
 }
 
 
-    public string getInstallationPath(AbFile file){
+    public: std::string getInstallationPath(AbFile file){
 
         try {
             
-    filePath: string = file.getPath()!;;
+    std::string filePath = file.getPath();;
     
 
-    end: int32_t = filePath!.indexOf(KEY)!;;
+    int32_t end = filePath.indexOf(KEY);;
     
 
                         if(end < 0)
@@ -178,17 +177,17 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "findAll", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return filePath!.substring(0, end);;
+                        return filePath.substring(0, end);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getInstallationPath", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getInstallationPath", e);
     
 
                                     }

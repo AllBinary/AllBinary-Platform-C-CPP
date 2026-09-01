@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -51,51 +53,50 @@
 #include "ImageArrayRotationAnimationInfo.h"
 
 class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
-        
 
                 //@Throws(Exception.constructor)
             
-    static ImageArrayRotationAnimation createAnimation(any = {} anyType, AnimationBehavior animationBehavior){
+    protected: static ImageArrayRotationAnimation createAnimation(Object* anyType, AnimationBehavior animationBehavior){
 
-    imageRotationAnimationInfo: ImageArrayRotationAnimationInfo = anyType as ImageArrayRotationAnimationInfo;;
+    ImageArrayRotationAnimationInfo imageRotationAnimationInfo = anyType as ImageArrayRotationAnimationInfo;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageArrayRotationAnimation(imageRotationAnimationInfo!.getImageArray(), imageRotationAnimationInfo!.getAngleInfoP(), imageRotationAnimationInfo!.getTotalAngle(), animationBehavior);
+                        return ImageArrayRotationAnimation(imageRotationAnimationInfo.getImageArray(), imageRotationAnimationInfo.getAngleInfoP(), imageRotationAnimationInfo.getTotalAngle(), animationBehavior);
     
 }
 
 
-    private: expectedTotalFrames: int32_t= 0;
+    private: int32_t expectedTotalFrames= 0;
 
-public constructor (std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior){
+public: ImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior){
             super(imageArray, angleInfo, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init(imageArray, angleInfo, totalAngle);
+this->init(imageArray, angleInfo, totalAngle);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle){
-this.expectedTotalFrames= totalAngle /this.angleInfo!.getAngleIncrementInfo()!.getAngleIncrement();
+    private: void init(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle){
+this->expectedTotalFrames= totalAngle /this->angleInfo.getAngleIncrementInfo().getAngleIncrement();
     
-this.angleInfo!.adjustAngle(0);
+this->angleInfo.adjustAngle(0);
     
 
-                        if(this.expectedTotalFrames != this.getSize())
+                        if(this->expectedTotalFrames != this->getSize())
                         
                                     {
                                     
 
 
-                            throw new Exception("Wrong Number of Frames");
+                            throw Exception("Wrong Number of Frames");
                     
 
                                     }
@@ -103,10 +104,10 @@ this.angleInfo!.adjustAngle(0);
 }
 
 
-    public setImageArray(std::vector<Image> imageArray){
+    public: void setImageArray(std::vector<Image> imageArray){
 super.setImageArray(imageArray);
     
-this.angleInfo!.adjustAngle(0);
+this->angleInfo.adjustAngle(0);
     
 }
 

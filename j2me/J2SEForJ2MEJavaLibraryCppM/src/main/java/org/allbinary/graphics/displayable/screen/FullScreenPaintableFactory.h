@@ -51,13 +51,12 @@
 class FullScreenPaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: FullScreenPaintableFactory = new FullScreenPaintableFactory();
+    private: static FullScreenPaintableFactory instance() { return FullScreenPaintableFactory(); }
 
-    public static FullScreenPaintableFactory getInstance();
+    public: static FullScreenPaintableFactory getInstance();
 
-    public paintable: Paintable = NullPaintable.getInstance()!;
+    public: Paintable paintable = NullPaintable::getInstance();
 
 };
 

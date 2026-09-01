@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -43,41 +45,40 @@
 class BasicColorUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicColorUtil = new BasicColorUtil();
+    private: static BasicColorUtil instance() { return BasicColorUtil(); }
 
-    public static BasicColorUtil getInstance(){
+    public: static BasicColorUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorUtil.instance;
+                        return BasicColorUtil::instance();
     
 }
 
 
-    public const ZERO_ARRAY: std::vector<BasicColor> = [];
+    public: const std::vector<BasicColor> ZERO_ARRAY = {};
 
-    public const ALPHA: int32_t = static_cast<int32_t>(0xFF000000);
+    public: const int32_t ALPHA = static_cast<int32_t>(0xFF000000);
 
-    public const isAlpha: bool = true;
+    public: const bool isAlpha = true;
 
-    public const ffOpaque: bool = true;
+    public: const bool ffOpaque = true;
 
-    public int32_t getRGB(int32_t red, int32_t green, int32_t blue){
+    public: int32_t getRGB(int32_t red, int32_t green, int32_t blue){
 
-    value: int32_t = 0;;
+    int32_t value = 0;;
     
 
-                        if(this.isAlpha)
+                        if(this->isAlpha)
                         
                                     {
                                     
-                        if(this.ffOpaque)
+                        if(this->ffOpaque)
                         
                                     {
-                                    value= this.ALPHA;
+                                    value= this->ALPHA;
     
 
                                     }
@@ -100,32 +101,32 @@ value= blue | value;
 }
 
 
-    public int32_t getARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b){
+    public: int32_t getARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ((alphaValue<<24)&this.ALPHA) +((r<<16)&0x00FF0000) +((g<<8)&0x0000FF00) +(b&0x000000FF);
+                        return ((alphaValue<<24)&this->ALPHA) +((r<<16)&0x00FF0000) +((g<<8)&0x0000FF00) +(b&0x000000FF);
     
 }
 
 
-    public int32_t get(int32_t alphaValue, int32_t color){
+    public: int32_t get(int32_t alphaValue, int32_t color){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ((alphaValue<<24)&this.ALPHA) +color;
+                        return ((alphaValue<<24)&this->ALPHA) +color;
     
 }
 
 
-    public int32_t invert(int32_t color){
+    public: int32_t invert(int32_t color){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (0xFFFFFF -color) | this.ALPHA;
+                        return (0xFFFFFF -color) | this->ALPHA;
     
 }
 

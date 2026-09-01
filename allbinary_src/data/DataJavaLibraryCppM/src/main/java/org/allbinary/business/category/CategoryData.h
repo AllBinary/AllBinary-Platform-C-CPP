@@ -48,33 +48,32 @@
 class CategoryData
             : public Object
          {
-        
 
-    private: static const instance: CategoryData = new CategoryData();
+    private: static CategoryData instance() { return CategoryData(); }
 
-    public static CategoryData getInstance();
+    public: static CategoryData getInstance();
 
-private constructor ();
+private: CategoryData();
 
-    public const PARENT: string = "CATEGORY_PARENT";
+    public: const std::string PARENT = "CATEGORY_PARENT";
 
-    public const NAME: string = "CATEGORY_NAME";
+    public: const std::string NAME = "CATEGORY_NAME";
 
-    public const PATH: string = "CATEGORY_PATH";
+    public: const std::string PATH = "CATEGORY_PATH";
 
-    public const LABEL: string = "CATEGORY_LABEL";
+    public: const std::string LABEL = "CATEGORY_LABEL";
 
-    public const VIEW: string = "CATEGORY_VIEW_CATEGORY";
+    public: const std::string VIEW = "CATEGORY_VIEW_CATEGORY";
 
-    public const LEVEL: string = "CATEGORY_LEVEL";
+    public: const std::string LEVEL = "CATEGORY_LEVEL";
 
-    public const REQUEST: string = "request";
+    public: const std::string REQUEST = "request";
 
-    public const ROOTCATEGORY: string = "Category";
+    public: const std::string ROOTCATEGORY = "Category";
 
-    public const UNCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
 
-    public const ENCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
 
 };
 

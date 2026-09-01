@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -80,114 +82,111 @@
 class AbCrypt
             : public Object
         : public CryptInterface {
-        
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: secretComposite: BaseSecretComposite = BaseSecretComposite.NULL_SECRET_COMPOSITE;
+    private: BaseSecretComposite secretComposite = BaseSecretComposite::NULL_SECRET_COMPOSITE;
 
-    private: algorithm: string;
+    private: std::string algorithm;
 
-public constructor (string algorithm){
-
-            super();
-        this.algorithm= algorithm;
+public: AbCrypt(std::string algorithm){
+this->algorithm= algorithm;
     
 }
 
 
-    public init(string keyAsString){
+    public: void init(std::string keyAsString){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
         try {
-            Security.addProvider(new BouncyCastleProvider());
+            Security::addProvider(BouncyCastleProvider());
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.INIT, e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
     
 }
 
 
-    key: std::vector<int8_t> = this.tsUtil!.getByteArray(keyAsString)!;;
+    std::vector<int8_t> key = this->tsUtil.getByteArray(keyAsString);;
     
 
-    keySpec: KeySpec = KeySpecFactory.getInstance()!.getInstance(this.algorithm, key)!;;
+    KeySpec keySpec = KeySpecFactory::getInstance().getInstance(this->algorithm, key);;
     
 
-    keyFactory: SecretKeyFactory = SecretKeyFactory.getInstance(this.algorithm)!;;
+    SecretKeyFactory keyFactory = SecretKeyFactory::getInstance(this->algorithm);;
     
 
-    secretKey: SecretKey = keyFactory!.generateSecret(keySpec)!;;
+    SecretKey secretKey = keyFactory.generateSecret(keySpec);;
     
 
-    cipher: Cipher = Cipher.getInstance(this.algorithm)!;;
+    Cipher cipher = Cipher::getInstance(this->algorithm);;
     
-this.secretComposite= new SecretComposite(secretKey, cipher, key);
+this->secretComposite= SecretComposite(secretKey, cipher, key);
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("init Failed", this, commonStrings!.INIT, e);
+PreLogUtil::putOE("init Failed", this, commonStrings.INIT, e);
     
 }
 
 }
 
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.secretComposite!.encrypt(array);;
+                        return this->secretComposite.encrypt(array);;
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("Encrypt Failed", this, "encrypt", e);
+PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
     
 }
 
 }
 
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.secretComposite!.decrypt(array);;
+                        return this->secretComposite.decrypt(array);;
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("decrypt Failed", this, "decrypt", e);
+PreLogUtil::putOE("decrypt Failed", this, "decrypt", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
     
 }
 

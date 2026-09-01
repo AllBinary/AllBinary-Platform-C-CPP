@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -65,30 +67,27 @@
 class HighScoreCommandsBaseFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const HIGH_SCORE_COMMANDS: std::vector<Command>;
+    public: std::vector<Command> HIGH_SCORE_COMMANDS;
 
-protected constructor (std::vector<Command> HIGH_SCORE_COMMANDS){
-
-            super();
-        this.HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
+protected: HighScoreCommandsBaseFactory(std::vector<Command> HIGH_SCORE_COMMANDS){
+this->HIGH_SCORE_COMMANDS= HIGH_SCORE_COMMANDS;
     
 }
 
 
-    public bool isHighScoreCommand(Command command){
+    public: bool isHighScoreCommand(Command command){
 
 
 
 
                         for (
-    index: int32_t = this.HIGH_SCORE_COMMANDS.length -1;index >= 0; index--)
+    int32_t index = this->HIGH_SCORE_COMMANDS.size() -1;index >= 0; index--)
         {
 
-                        if(command == this.HIGH_SCORE_COMMANDS[index])
+                        if(command == this->HIGH_SCORE_COMMANDS[index])
                         
                                     {
                                     
@@ -113,16 +112,16 @@ protected constructor (std::vector<Command> HIGH_SCORE_COMMANDS){
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getIndex(Command command){
+    public: int32_t getIndex(Command command){
 
 
 
 
                         for (
-    index: int32_t = this.HIGH_SCORE_COMMANDS.length -1;index >= 0; index--)
+    int32_t index = this->HIGH_SCORE_COMMANDS.size() -1;index >= 0; index--)
         {
 
-                        if(command == this.HIGH_SCORE_COMMANDS[index])
+                        if(command == this->HIGH_SCORE_COMMANDS[index])
                         
                                     {
                                     
@@ -139,7 +138,7 @@ protected constructor (std::vector<Command> HIGH_SCORE_COMMANDS){
 
 
 
-                            throw new Exception("No Such Command");
+                            throw Exception("No Such Command");
                     
 }
 

@@ -40,14 +40,11 @@
 #include "RTSPlayerGameInput.h"
 
 class RTSPlayerGameInputProcessor: public GameInputProcessor {
-        
 
-    const rtsPlayerGameInput: RTSPlayerGameInput;
+    protected: RTSPlayerGameInput rtsPlayerGameInput;
 
-public constructor (RTSPlayerGameInput rtsPlayerGameInput){
-
-            super();
-        this.rtsPlayerGameInput= rtsPlayerGameInput;
+public: RTSPlayerGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput){
+this->rtsPlayerGameInput= rtsPlayerGameInput;
     
 }
 

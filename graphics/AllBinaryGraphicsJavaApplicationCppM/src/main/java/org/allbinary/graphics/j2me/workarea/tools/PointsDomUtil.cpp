@@ -71,70 +71,69 @@
 class PointsDomUtil
             : public Object
          {
-        
 
-    private: static const instance: PointsDomUtil = new PointsDomUtil();
+    private: static PointsDomUtil instance() { return PointsDomUtil(); }
 
-    public static PointsDomUtil getInstance(){
+    public: static PointsDomUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsDomUtil.instance;
+                        return PointsDomUtil::instance();
     
 }
 
 
-    public const LINES: string = "lines";
+    public: const std::string LINES = "lines";
 
-    public const POINTONE: string = "pointOne";
+    public: const std::string POINTONE = "pointOne";
 
-    public const POINTTWO: string = "pointTwo";
+    public: const std::string POINTTWO = "pointTwo";
 
-    private: const ROTATEDPOINTONE: string = "rotatedPointOne";
+    private: const std::string ROTATEDPOINTONE = "rotatedPointOne";
 
-    private: const ROTATEDPOINTTWO: string = "rotatedPointTwo";
+    private: const std::string ROTATEDPOINTTWO = "rotatedPointTwo";
 
-    private: const LINE: string = "line";
+    private: const std::string LINE = "line";
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom(CanvasDom canvasDom, BasicArrayList pointVector){
+    public: Node toDom(CanvasDom canvasDom, BasicArrayList pointVector){
 
-    tempPointVector: BasicArrayList = PointsUtil.getInstance()!.doTransforms(pointVector, new number(canvasDom!.getAngle()), PointFactory.getInstance()!.createXY(canvasDom!.getDimension()!.getWidth(), canvasDom!.getDimension()!.getHeight()))!;;
+    BasicArrayList tempPointVector = PointsUtil::getInstance().doTransforms(pointVector, number(canvasDom.getAngle()), PointFactory::getInstance().createXY(canvasDom.getDimension().getWidth(), canvasDom.getDimension().getHeight()));;
     
 
-    document: org.w3c.dom.Document = WorkAreaJPanel.getDocument()!;;
+    org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    linesNode: Node = document.createElement(this.LINES) as Node;;
+    Node linesNode = document.createElement(this->LINES) as Node;;
     
 
-    size2: int32_t = tempPointVector!.size()!;;
+    int32_t size2 = tempPointVector.size();;
     
 
-    size: int32_t = pointVector!.size()!;;
+    int32_t size = pointVector.size();;
     
 
-    firstPoint: GPoint = 
+    GPoint firstPoint = 
                 null
             ;;
     
 
-    rotatedFirstPoint: GPoint = 
+    GPoint rotatedFirstPoint = 
                 null
             ;;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
                         if(index < size && index < size2)
                         
                                     {
-                                    rotatedFirstPoint= tempPointVector!.get(index) as GPoint;
+                                    rotatedFirstPoint= tempPointVector.get(index) as GPoint;
     
-firstPoint= pointVector!.get(index) as GPoint;
+firstPoint= pointVector.get(index) as GPoint;
     
 index++;
     
@@ -145,39 +144,39 @@ index++;
         while(index < size && index < size2)
         {
 
-    lineNode: Node = document.createElement(this.LINE) as Node;;
+    Node lineNode = document.createElement(this->LINE) as Node;;
     
 
-    rotatedSecondPoint: GPoint = tempPointVector!.get(index) as GPoint;;
+    GPoint rotatedSecondPoint = tempPointVector.get(index) as GPoint;;
     
 
-    secondPoint: GPoint = pointVector!.get(index) as GPoint;;
+    GPoint secondPoint = pointVector.get(index) as GPoint;;
     
 
-    pointOneNode: Node = this.getPointNode(firstPoint, this.POINTONE)!;;
+    Node pointOneNode = this->getPointNode(firstPoint, this->POINTONE);;
     
 
-    pointTwoNode: Node = this.getPointNode(secondPoint, this.POINTTWO)!;;
+    Node pointTwoNode = this->getPointNode(secondPoint, this->POINTTWO);;
     
 
-    rotatedPointOneNode: Node = this.getPointNode(rotatedFirstPoint, this.ROTATEDPOINTONE)!;;
+    Node rotatedPointOneNode = this->getPointNode(rotatedFirstPoint, this->ROTATEDPOINTONE);;
     
 
-    rotatedPointTwoNode: Node = this.getPointNode(rotatedSecondPoint, this.ROTATEDPOINTTWO)!;;
+    Node rotatedPointTwoNode = this->getPointNode(rotatedSecondPoint, this->ROTATEDPOINTTWO);;
     
-lineNode!.appendChild(pointOneNode);
+lineNode.appendChild(pointOneNode);
     
-lineNode!.appendChild(pointTwoNode);
+lineNode.appendChild(pointTwoNode);
     
-lineNode!.appendChild(rotatedPointOneNode);
+lineNode.appendChild(rotatedPointOneNode);
     
-lineNode!.appendChild(rotatedPointTwoNode);
+lineNode.appendChild(rotatedPointTwoNode);
     
 firstPoint= secondPoint;
     
 rotatedFirstPoint= rotatedSecondPoint;
     
-linesNode!.appendChild(lineNode);
+linesNode.appendChild(lineNode);
     
 index++;
     
@@ -192,32 +191,32 @@ index++;
 }
 
 
-    Node getPointNode(GPoint point, string pointName){
+    private: Node getPointNode(GPoint point, std::string pointName){
 
-    document: org.w3c.dom.Document = WorkAreaJPanel.getDocument()!;;
-    
-
-    pointNode: Node = document.createElement(pointName) as Node;;
+    org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    xNode: Node = document.createElement(PositionStrings.getInstance()!.X) as Node;;
+    Node pointNode = document.createElement(pointName) as Node;;
     
 
-    xTextNode: Node = document.createTextNode(Integer.toString(point.getX())) as Node;;
-    
-xNode!.appendChild(xTextNode);
+    Node xNode = document.createElement(PositionStrings::getInstance().X) as Node;;
     
 
-    yNode: Node = document.createElement(PositionStrings.getInstance()!.Y) as Node;;
+    Node xTextNode = document.createTextNode(std::to_string(getX)) as Node;;
+    
+xNode.appendChild(xTextNode);
     
 
-    yTextNode: Node = document.createTextNode(Integer.toString(point.getY())) as Node;;
+    Node yNode = document.createElement(PositionStrings::getInstance().Y) as Node;;
     
-yNode!.appendChild(yTextNode);
+
+    Node yTextNode = document.createTextNode(std::to_string(getY)) as Node;;
     
-pointNode!.appendChild(xNode);
+yNode.appendChild(yTextNode);
     
-pointNode!.appendChild(yNode);
+pointNode.appendChild(xNode);
+    
+pointNode.appendChild(yNode);
     
 
 

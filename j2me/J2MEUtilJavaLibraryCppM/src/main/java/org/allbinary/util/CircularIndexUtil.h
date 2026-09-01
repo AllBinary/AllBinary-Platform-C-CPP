@@ -63,35 +63,34 @@
 class CircularIndexUtil
             : public Object
          {
-        
 
-    public static const NULL_CIRCULAR_INDEX_UTIL: CircularIndexUtil = new CircularIndexUtil(0, 0);
+    public: static const CircularIndexUtil NULL_CIRCULAR_INDEX_UTIL = CircularIndexUtil(0, 0);
 
-    public static CircularIndexUtil createInstance(int32_t max);
+    public: static CircularIndexUtil createInstance(int32_t max);
 
-    public static CircularIndexUtil createInstanceAt(int32_t index, int32_t max);
+    public: static CircularIndexUtil createInstanceAt(int32_t index, int32_t max);
 
-    private: index: int32_t = 0;
+    private: int32_t index = 0;
 
-    private: lastIndex: int32_t = 0;
+    private: int32_t lastIndex = 0;
 
-    private: size: int32_t = 0;
+    private: int32_t size = 0;
 
-private constructor (int32_t index, int32_t size);
+private: CircularIndexUtil(int32_t index, int32_t size);
 
-    public int32_t next();
+    public: int32_t next();
 
-    public int32_t previous();
+    public: int32_t previous();
 
-    public setIndex(int32_t index);
+    public: void setIndex(int32_t index);
 
-    public int32_t getIndex();
+    public: int32_t getIndex();
 
-    public setSize(int32_t size);
+    public: void setSize(int32_t size);
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -61,89 +61,86 @@
 class TableSearchRequest
             : public Object
          {
-        
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-    private: pageName: string;
+    private: std::string pageName;
 
-    private: contentType: string;
+    private: std::string contentType;
 
-    private: keywords: string;
+    private: std::string keywords;
 
-    private: searchParams: SearchParams;
+    private: SearchParams searchParams;
 
-public constructor (string keywords, SearchParams searchParams, string xslFile, string contentType){
-
-            super();
-        this.keywords= keywords;
+public: TableSearchRequest(std::string keywords, SearchParams searchParams, std::string xslFile, std::string contentType){
+this->keywords= keywords;
     
-this.searchParams= searchParams;
+this->searchParams= searchParams;
     
-this.xslFile= xslFile;
+this->xslFile= xslFile;
     
-this.pageName= this.pageName;
+this->pageName= this->pageName;
     
-this.contentType= contentType;
+this->contentType= contentType;
     
 }
 
 
-    public setKeywords(string value){
-this.keywords= value;
+    public: void setKeywords(std::string value){
+this->keywords= value;
     
 }
 
 
-    public setParams(SearchParams searchParams){
-this.searchParams= searchParams;
+    public: void setParams(SearchParams searchParams){
+this->searchParams= searchParams;
     
 }
 
 
-    public setXslFile(string value){
-this.xslFile= value;
+    public: void setXslFile(std::string value){
+this->xslFile= value;
     
 }
 
 
-    public setFileBaseName(string value){
-this.pageName= value;
+    public: void setFileBaseName(std::string value){
+this->pageName= value;
     
 }
 
 
-    public setContentType(string value){
-this.contentType= value;
+    public: void setContentType(std::string value){
+this->contentType= value;
     
 }
 
 
-    public string getKeywords(){
+    public: std::string getKeywords(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.keywords;
+                        return this->keywords;
     
 }
 
 
-    public SearchParams getParams(){
+    public: SearchParams getParams(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.searchParams;
+                        return this->searchParams;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getXslFile(){
+    public: std::string getXslFile(){
 
-    path: string = URLGLOBALS.getMainPath() +FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH +this.xslFile;;
+    std::string path = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH +this->xslFile;;
     
 
 
@@ -154,34 +151,34 @@ this.contentType= value;
 }
 
 
-    public string getFileBaseName(){
+    public: std::string getFileBaseName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pageName;
+                        return this->pageName;
     
 }
 
 
-    public string getContentType(){
+    public: std::string getContentType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.contentType;
+                        return this->contentType;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node getFileBaseNameNode(Document document){
+    public: Node getFileBaseNameNode(Document document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueNodes(document, SearchData.FILENAME, this.getFileBaseName());;
+                        return ModDomHelper::createNameValueNodes(document, SearchData::FILENAME, this->getFileBaseName());;
     
 }
 

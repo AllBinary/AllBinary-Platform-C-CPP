@@ -77,33 +77,30 @@
 class GameFeatureItemCommandListener
             : public Object
         : public ItemCommandListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: gameOptionsForm: GameOptionsForm;
+    private: GameOptionsForm gameOptionsForm;
 
-public constructor (GameOptionsForm gameOptionsForm){
-
-            super();
-        this.gameOptionsForm= gameOptionsForm;
+public: GameFeatureItemCommandListener(GameOptionsForm gameOptionsForm){
+this->gameOptionsForm= gameOptionsForm;
     
 }
 
 
-    public commandAction(Command command, Item item){
+    public: void commandAction(Command command, Item item){
 
         try {
             
-    itemLabel: string = item.getLabel()!;;
+    std::string itemLabel = item.getLabel();;
     
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.ITEM_LABEL)!.append(itemLabel)!.toString(), this, MidletStrings.getInstance()!.COMMAND_ACTION);
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).append(itemLabel).toString(), this, MidletStrings::getInstance().COMMAND_ACTION);
     
 
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil.getInstance()!.change(this.gameOptionsForm, item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().change(this->gameOptionsForm, item as GameConfigurationGauge);
     
 
                                     }
@@ -113,9 +110,9 @@ this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.ITEM_LAB
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, MidletStrings.getInstance()!.COMMAND_ACTION, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, MidletStrings::getInstance().COMMAND_ACTION, e);
     
 }
 

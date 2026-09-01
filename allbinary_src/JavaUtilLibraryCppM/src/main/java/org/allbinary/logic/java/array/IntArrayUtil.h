@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_ARRAY_INTARRAYUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_ARRAY_INTARRAYUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -48,15 +50,14 @@
 class IntArrayUtil
             : public Object
          {
-        
 
-    public static string toString(std::vector<int32_t> array);
+    public: static std::string toString(std::vector<int32_t> array);
 
-    public static string toString(std::vector<std::vector<int32_t>> array);
+    public: static std::string toString(std::vector<std::vector<int32_t>> array);
 
-    public static string toString(std::vector<std::vector<std::vector<int32_t>>> array);
+    public: static std::string toString(std::vector<std::vector<std::vector<int32_t>>> array);
 
-private constructor ();
+private: IntArrayUtil();
 
 };
 

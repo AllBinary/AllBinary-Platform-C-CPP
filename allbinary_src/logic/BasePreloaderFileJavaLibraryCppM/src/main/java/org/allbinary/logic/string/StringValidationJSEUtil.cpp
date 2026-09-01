@@ -44,24 +44,23 @@
 class StringValidationJSEUtil
             : public Object
          {
-        
 
-    public static bool isBlank(string string){
+    public: static bool isBlank(std::string string){
 
-    len: int32_t = string.length!;;
+    int32_t len = string.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < len; i++)
+    int32_t i = 0;i < len; i++)
         {
 
-    c: char = string[i]!;;
+    char c = string[i];;
     
 
-                        if(Character.isWhitespace(c) == false)
+                        if(Character::isWhitespace(c) == false)
                         
                                     {
                                     
@@ -84,10 +83,8 @@ class StringValidationJSEUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: StringValidationJSEUtil(){
+}
 
 
 };

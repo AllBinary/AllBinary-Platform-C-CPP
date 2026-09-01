@@ -50,31 +50,30 @@
 class FullScreenUtil
             : public Object
          {
-        
 
-    private: static const instance: FullScreenUtil = new FullScreenUtil();
+    private: static FullScreenUtil instance() { return FullScreenUtil(); }
 
-    public static FullScreenUtil getInstance(){
+    public: static FullScreenUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FullScreenUtil.instance;
+                        return FullScreenUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public initOnRun(Canvas fullScreenInterface, CommandListener commandListener){
+    public: void initOnRun(Canvas fullScreenInterface, CommandListener commandListener){
 }
 
 
-    public init(Canvas fullScreenInterface){
+    public: void init(Canvas fullScreenInterface){
 }
 
 
-    public bool isScreenChange(bool isFullScreen){
+    public: bool isScreenChange(bool isFullScreen){
 
 
 
@@ -84,12 +83,12 @@ class FullScreenUtil
 }
 
 
-    public bool isScreenChangeCanvas(Canvas fullScreenInterface){
+    public: bool isScreenChangeCanvas(Canvas fullScreenInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isScreenChange(fullScreenInterface!.isFullScreenMode());;
+                        return this->isScreenChange(fullScreenInterface.isFullScreenMode());;
     
 }
 

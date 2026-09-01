@@ -56,15 +56,14 @@
         #include "AllBinaryGameCanvas.h"
 
 class GameProcessor: public Processor {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: GameProcessor(AllBinaryGameCanvas gameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 

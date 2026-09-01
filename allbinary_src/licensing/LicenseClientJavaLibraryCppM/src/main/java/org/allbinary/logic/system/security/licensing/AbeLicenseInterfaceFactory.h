@@ -67,41 +67,40 @@
 class AbeLicenseInterfaceFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: AbeLicenseInterfaceFactory = new AbeLicenseInterfaceFactory();
+    private: static const AbeLicenseInterfaceFactory SINGLETON = AbeLicenseInterfaceFactory();
 
-    public static AbeLicenseInterfaceFactory getInstance();
+    public: static AbeLicenseInterfaceFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: time: int64_t = 0;
+    private: int64_t time = 0;
 
-    private: check: bool = false;
+    private: bool check = false;
 
-    private: checkPeriod: int32_t = 36000000;
+    private: int32_t checkPeriod = 36000000;
 
-    private: abeLicenseInterface: AbeLicenseInterface = 
-                null
+    private: AbeLicenseInterface abeLicenseInterface = 
+                nullptr
             ;
 
-private constructor ();
+private: AbeLicenseInterfaceFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public AbeLicenseInterface getLicenseInstance(AbeClientInformationInterface abeClientInformation);
+    public: AbeLicenseInterface getLicenseInstance(AbeClientInformationInterface abeClientInformation);
 
                 //@Throws(LicensingException.constructor)
             
-    AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation);
+    private: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation);
 
-    bool isTimeToGetKey();
+    private: bool isTimeToGetKey();
 
-    public setCheck(bool check);
+    public: void setCheck(bool check);
 
-    bool isCheck();
+    private: bool isCheck();
 
 };
 

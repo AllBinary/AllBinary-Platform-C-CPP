@@ -9,6 +9,8 @@
 
             #include <hilog/log.h>
         
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <android/app/Activity.h>
@@ -42,27 +44,26 @@
 class ViewSwapper
             : public Object
          {
-        
 
-    public static const NULL_VIEW_ARRAY: std::vector<View> = [];
+    public: static const std::vector<View> NULL_VIEW_ARRAY = {};
 
-    private: const rootViewId: int32_t;
+    private: int32_t rootViewId;
 
-    private: const activity: Activity;
+    private: Activity activity;
 
-    private: currentMainViewId: int32_t =  -1;
+    private: int32_t currentMainViewId =  -1;
 
-    private: mainViewArray: std::vector<View> = ViewSwapper.NULL_VIEW_ARRAY;
+    private: std::vector<View> mainViewArray = ViewSwapper::NULL_VIEW_ARRAY;
 
-    private: topViewArray: std::vector<View> = ViewSwapper.NULL_VIEW_ARRAY;
+    private: std::vector<View> topViewArray = ViewSwapper::NULL_VIEW_ARRAY;
 
-public constructor (Activity activity, int32_t rootViewId);
+public: ViewSwapper(Activity activity, int32_t rootViewId);
 
-    public setMainViews(std::vector<View> viewArray);
+    public: void setMainViews(std::vector<View> viewArray);
 
-    public setTopViewArray(std::vector<View> topViewArray);
+    public: void setTopViewArray(std::vector<View> topViewArray);
 
-    public setMainView(int32_t id);
+    public: void setMainView(int32_t id);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_TOOLS_EVENT_MYGRAPHICITEMEVENTSERVICE_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Class.h"
@@ -53,32 +55,31 @@
 class MyGraphicItemEventService
             : public Object
          {
-        
 
-    private: static listenerList: javax.swing.event.EventListenerList = new javax.swing.event.EventListenerList();
+    private: static javax::swing::event::EventListenerList listenerList = javax::swing::event::EventListenerList();
 
-    public static DELETE: string = "delete";
+    public: static std::string DELETE = "delete";
 
-    public static DESELECT: string = "deselect";
+    public: static std::string DESELECT = "deselect";
 
-    public static SELECT: string = "select";
+    public: static std::string SELECT = "select";
 
-    public static DUPLICATE: string = "duplicate";
+    public: static std::string DUPLICATE = "duplicate";
 
-    public static ROTATE: string = "rotate";
+    public: static std::string ROTATE = "rotate";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static addListener(MyGraphicItemEventListener listener);
+    public: static void addListener(MyGraphicItemEventListener listener);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static removeListener(MyGraphicItemEventListener listener);
+    public: static void removeListener(MyGraphicItemEventListener listener);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static fire(MyGraphicItemEvent evt);
+    public: static void fire(MyGraphicItemEvent evt);
 
-private constructor ();
+private: MyGraphicItemEventService();
 
 };
 

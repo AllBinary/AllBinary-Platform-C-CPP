@@ -35,120 +35,117 @@
 #include "Graphics.h"
 
 class NullCanvas: public Canvas {
-        
 
-    public static const NULL_CANVAS: NullCanvas = new NullCanvas();
+    public: static const NullCanvas NULL_CANVAS = NullCanvas();
 
-public constructor (){
-
-            super();
-        }
-
-
-    public setFullScreenMode(bool mode){
+public: NullCanvas(){
 }
 
 
-    sizeChanged(int32_t w, int32_t h){
+    public: void setFullScreenMode(bool mode){
 }
 
 
-    public Stack<any> getCommandStack(){
+    protected: void sizeChanged(int32_t w, int32_t h){
+}
+
+
+    public: Stack<any> getCommandStack(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isCommand(Command command){
+    public: bool isCommand(Command command){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public addCommand(Command command){
+    public: void addCommand(Command command){
 }
 
 
-    public removeCommand(Command command){
+    public: void removeCommand(Command command){
 }
 
 
-    public removeAllCommands(){
+    public: void removeAllCommands(){
 }
 
 
-    public setCommandListener(CommandListener l){
+    public: void setCommandListener(CommandListener l){
 }
 
 
-    public CommandListener getCustomCommandListener(){
+    public: CommandListener getCustomCommandListener(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isPaused(){
+    public: bool isPaused(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public removePauseCommand(){
+    public: void removePauseCommand(){
 }
 
 
-    public pause(){
+    public: void pause(){
 }
 
 
-    public unPause(){
+    public: void unPause(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    process(){
+    protected: void process(){
 }
 
 
-    paint(Graphics graphics){
+    protected: void paint(Graphics graphics){
 }
 
 
-    public destroy(){
+    public: void destroy(){
 }
 
 
-    setPaused(bool isPaused){
+    protected: void setPaused(bool isPaused){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    pointerDragged(int32_t x, int32_t y){
+    protected: void pointerDragged(int32_t x, int32_t y){
 }
 
 
-    pointerPressed(int32_t x, int32_t y){
+    protected: void pointerPressed(int32_t x, int32_t y){
 }
 
 
-    pointerReleased(int32_t x, int32_t y){
+    protected: void pointerReleased(int32_t x, int32_t y){
 }
 
 

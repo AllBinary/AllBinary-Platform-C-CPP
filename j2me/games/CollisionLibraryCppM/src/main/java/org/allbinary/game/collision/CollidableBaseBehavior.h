@@ -85,41 +85,40 @@
 class CollidableBaseBehavior
             : public Object
         : public CollidableInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const layerCollisionUtil: LayerCollisionUtil = LayerCollisionUtil.getInstance()!;
+    protected: const LayerCollisionUtil layerCollisionUtil = LayerCollisionUtil::getInstance();
 
-    private: collidable: bool = true;
+    private: bool collidable = true;
 
-public constructor (bool collidable);
+public: CollidableBaseBehavior(bool collidable);
 
-    public update();
+    public: void update();
 
-    public string getName();
+    public: std::string getName();
 
-    public setCollidable(bool collidable);
+    public: void setCollidable(bool collidable);
 
-    public bool isCollidable(CollidableCompositeLayer ownerLayer);
-
-                //@Throws(Exception.constructor)
-            
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer allbinaryCollidableLayer);
-
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
-
-    public bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: bool isCollidable(CollidableCompositeLayer ownerLayer);
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer allbinaryCollidableLayer);
 
-    public paint(CollidableCompositeLayer ownerLayer, Graphics graphics);
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer);
 
-    public CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+
+    public: void paint(CollidableCompositeLayer ownerLayer, Graphics graphics);
+
+    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
 
 };
 

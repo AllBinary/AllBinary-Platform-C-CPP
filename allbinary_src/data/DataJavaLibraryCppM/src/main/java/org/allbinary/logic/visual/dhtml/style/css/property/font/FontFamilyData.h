@@ -45,17 +45,16 @@
 class FontFamilyData
             : public Object
          {
-        
 
-    private: static const instance: FontFamilyData = new FontFamilyData();
+    private: static FontFamilyData instance() { return FontFamilyData(); }
 
-    public static FontFamilyData getInstance();
+    public: static FontFamilyData getInstance();
 
-private constructor ();
+private: FontFamilyData();
 
-    public const NAME: string = "FONT_FAMILY_NAME";
+    public: const std::string NAME = "FONT_FAMILY_NAME";
 
-    public const VALUE: string = "font-family";
+    public: const std::string VALUE = "font-family";
 
 };
 

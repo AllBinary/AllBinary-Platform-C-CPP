@@ -51,44 +51,41 @@
 class ColorCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: key: any;
+    private: Object* key;
 
-    private: color: Color;
+    private: Color color;
 
-public constructor (any = {} key){
-
-            super();
-        this.key= key;
+public: ColorCacheable(Object* key){
+this->key= key;
     
-this.color= new Color((key as Integer).intValue());
+this->color= Color((key as Integer).intValue());
     
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.key;
+                        return this->key;
     
 }
 
 
-    public Color getColor(){
+    public: Color getColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.color;
+                        return this->color;
     
 }
 
 
-    public setColor(Color color){
-this.color= color;
+    public: void setColor(Color color){
+this->color= color;
     
 }
 

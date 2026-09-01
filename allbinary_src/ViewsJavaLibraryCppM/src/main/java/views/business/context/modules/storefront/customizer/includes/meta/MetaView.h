@@ -63,24 +63,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MetaView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class MetaView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    metasValidation: MetasValidation;
+    protected: MetasValidation metasValidation;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: MetaView(TransformInfoInterface transformInfoInterface);
 
-    public addDomNodeInterfaces();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

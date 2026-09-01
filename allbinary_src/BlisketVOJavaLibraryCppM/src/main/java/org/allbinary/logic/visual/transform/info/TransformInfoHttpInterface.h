@@ -51,7 +51,6 @@
         #include "TransformInfoInterface.h"
 
 class TransformInfoHttpInterface: public TransformInfoInterface {
-        
 
     WeblisketSessionInterface getWeblisketSession();
 

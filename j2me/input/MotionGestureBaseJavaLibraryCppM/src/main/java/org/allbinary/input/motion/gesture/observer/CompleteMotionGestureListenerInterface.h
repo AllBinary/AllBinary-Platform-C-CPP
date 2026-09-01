@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CompleteMotionGestureListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onMotionGestureCompleted(BasicArrayList list);
+    void onMotionGestureCompleted(BasicArrayList list);
 
 };
 

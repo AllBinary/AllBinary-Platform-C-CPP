@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -97,118 +99,115 @@
 class GeographicMapCellHistory
             : public Object
         : public UpdateMyFontInterface {
-        
 
-    public static const NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY: std::vector<GeographicMapCellHistory> = [];
+    public: static const std::vector<GeographicMapCellHistory> NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY = {};
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;
+    private: const BooleanFactory booleanFactory = BooleanFactory::getInstance();
 
-    private: const list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: const visitedList: BasicArrayList;
+    private: BasicArrayList visitedList;
 
-    private: const MISSED_INFO: string = "Missed";
+    private: const std::string MISSED_INFO = "Missed";
 
-    private: const animation: Animation = new TextAnimation(this.MISSED_INFO, AnimationBehavior.getInstance());
+    private: const Animation animation = TextAnimation(this->MISSED_INFO, AnimationBehavior::getInstance());
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: totalVisited: int32_t= 0;
+    private: int32_t totalVisited= 0;
 
-    private: halfWidth: int32_t = 0;
+    private: int32_t halfWidth = 0;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (){
-
-            super();
-        this.list= new BasicArrayListD();
+public: GeographicMapCellHistory(){
+this->list= BasicArrayListD();
     
-this.visitedList= new BasicArrayListD();
+this->visitedList= BasicArrayListD();
     
-this.init();
+this->init();
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.fontHeight= font.getHeight();
+this->fontHeight= font.getHeight();
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public int32_t getTotalVisited(){
+    public: int32_t getTotalVisited(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalVisited;
+                        return this->totalVisited;
     
 }
 
 
-    public int32_t getTotalNotVisited(){
+    public: int32_t getTotalNotVisited(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize() -this.totalVisited;
+                        return this->getSize() -this->totalVisited;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size();;
+                        return this->list.size();;
     
 }
 
 
-    public trackAll(BasicArrayList list){
+    public: void trackAll(BasicArrayList list){
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
-this.list.ensureCapacity(size);
+this->list.ensureCapacity(size);
     
-this.visitedList!.ensureCapacity(size);
+this->visitedList.ensureCapacity(size);
     
 
-    geographicMapCellPosition: GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 geographicMapCellPosition= list.get(index) as GeographicMapCellPosition;
     
-this.track(geographicMapCellPosition);
+this->track(geographicMapCellPosition);
     
 }
 
 }
 
 
-    public track(GeographicMapCellPosition geographicMapCellPosition){
+    public: void track(GeographicMapCellPosition geographicMapCellPosition){
 
-                        if(!this.list.contains(geographicMapCellPosition))
+                        if(!this->list.contains(geographicMapCellPosition))
                         
                                     {
-                                    this.list.add(geographicMapCellPosition);
+                                    this->list.add(geographicMapCellPosition);
     
-this.visitedList!.add(this.booleanFactory!.FALSE);
+this->visitedList.add(this->booleanFactory.FALSE);
     
 
                                     }
@@ -216,42 +215,42 @@ this.visitedList!.add(this.booleanFactory!.FALSE);
 }
 
 
-    public BasicArrayList getTracked(){
+    public: BasicArrayList getTracked(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 
 
-    public BasicArrayList getVisited(){
+    public: BasicArrayList getVisited(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.visitedList;
+                        return this->visitedList;
     
 }
 
 
-    public GeographicMapCellPosition getAfterIfNotLast(GeographicMapCellPosition geographicMapCellPosition){
+    public: GeographicMapCellPosition getAfterIfNotLast(GeographicMapCellPosition geographicMapCellPosition){
 
-    localList: BasicArrayList = this.list;;
+    BasicArrayList localList = this->list;;
     
 
-    index: int32_t = localList!.indexOf(geographicMapCellPosition)!;;
+    int32_t index = localList.indexOf(geographicMapCellPosition);;
     
 
-                        if(localList!.size() > index +1)
+                        if(localList.size() > index +1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList!.get(index +1) as GeographicMapCellPosition;
+                        return localList.get(index +1) as GeographicMapCellPosition;
     
 
                                     }
@@ -265,37 +264,37 @@ this.visitedList!.add(this.booleanFactory!.FALSE);
 }
 
 
-    public GeographicMapCellPosition getFirstUnvisited(){
+    public: GeographicMapCellPosition getFirstUnvisited(){
 
-    localList: BasicArrayList = this.list;;
+    BasicArrayList localList = this->list;;
     
 
-    localVisitedList: BasicArrayList = this.visitedList;;
+    BasicArrayList localVisitedList = this->visitedList;;
     
 
-    size: int32_t = localVisitedList!.size()!;;
+    int32_t size = localVisitedList.size();;
     
 
-    value: Boolean;;
+    Boolean value;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-value= this.visitedList!.get(index) as Boolean;
+value= this->visitedList.get(index) as Boolean;
     
 
-                        if(value == this.booleanFactory!.FALSE)
+                        if(value == this->booleanFactory.FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList!.get(index) as GeographicMapCellPosition;
+                        return localList.get(index) as GeographicMapCellPosition;
     
 
                                     }
@@ -306,32 +305,32 @@ value= this.visitedList!.get(index) as Boolean;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return localList!.get(0) as GeographicMapCellPosition;
+                        return localList.get(0) as GeographicMapCellPosition;
     
 }
 
 
-    public int32_t getFirstUnvisitedIndex(){
+    public: int32_t getFirstUnvisitedIndex(){
 
-    localVisitedList: BasicArrayList = this.visitedList;;
+    BasicArrayList localVisitedList = this->visitedList;;
     
 
-    size: int32_t = localVisitedList!.size()!;;
+    int32_t size = localVisitedList.size();;
     
 
-    value: Boolean;;
+    Boolean value;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-value= this.visitedList!.get(index) as Boolean;
+value= this->visitedList.get(index) as Boolean;
     
 
-                        if(value == this.booleanFactory!.FALSE)
+                        if(value == this->booleanFactory.FALSE)
                         
                                     {
                                     
@@ -354,33 +353,33 @@ value= this.visitedList!.get(index) as Boolean;
 }
 
 
-    public BasicArrayList getInPathButNotTracked(BasicArrayList pathList){
+    public: BasicArrayList getInPathButNotTracked(BasicArrayList pathList){
 
-    inPathButNotTrackedList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList inPathButNotTrackedList = BasicArrayListD();;
     
 
-    localList: BasicArrayList = this.list;;
+    BasicArrayList localList = this->list;;
     
 
-    size: int32_t = pathList!.size()!;;
+    int32_t size = pathList.size();;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-geographicMapCellPosition= pathList!.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= pathList.get(index) as GeographicMapCellPosition;
     
 
-                        if(!localList!.contains(geographicMapCellPosition))
+                        if(!localList.contains(geographicMapCellPosition))
                         
                                     {
-                                    inPathButNotTrackedList!.add(geographicMapCellPosition);
+                                    inPathButNotTrackedList.add(geographicMapCellPosition);
     
 
                                     }
@@ -396,19 +395,19 @@ geographicMapCellPosition= pathList!.get(index) as GeographicMapCellPosition;
 }
 
 
-    public bool isVisited(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool isVisited(GeographicMapCellPosition geographicMapCellPosition){
 
-    index: int32_t = this.list.indexOf(geographicMapCellPosition)!;;
+    int32_t index = this->list.indexOf(geographicMapCellPosition);;
     
 
                         if(index !=  -1)
                         
                                     {
                                     
-    value: Boolean = this.visitedList!.get(index) as Boolean;;
+    Boolean value = this->visitedList.get(index) as Boolean;;
     
 
-                        if(value == this.booleanFactory!.TRUE)
+                        if(value == this->booleanFactory.TRUE)
                         
                                     {
                                     
@@ -436,29 +435,29 @@ geographicMapCellPosition= pathList!.get(index) as GeographicMapCellPosition;
 }
 
 
-    public bool visit(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool visit(GeographicMapCellPosition geographicMapCellPosition){
 
-    index: int32_t = this.list.indexOf(geographicMapCellPosition)!;;
+    int32_t index = this->list.indexOf(geographicMapCellPosition);;
     
 
-    value: Boolean;;
+    Boolean value;;
     
 
                         if(index !=  -1)
                         
                                     {
-                                    value= this.visitedList!.get(index) as Boolean;
+                                    value= this->visitedList.get(index) as Boolean;
     
 
-    TRUE: Boolean = this.booleanFactory!.TRUE;;
+    Boolean TRUE = this->booleanFactory.TRUE;;
     
 
                         if(value != TRUE)
                         
                                     {
-                                    this.visitedList!.set(index, TRUE);
+                                    this->visitedList.set(index, TRUE);
     
-this.totalVisited++;
+this->totalVisited++;
     
 
 
@@ -487,9 +486,9 @@ this.totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public bool isAllVisited(){
+    public: bool isAllVisited(){
 
-                        if(this.totalVisited == this.getSize() -1)
+                        if(this->totalVisited == this->getSize() -1)
                         
                                     {
                                     
@@ -516,9 +515,9 @@ this.totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public bool isAllVisited2(){
+    public: bool isAllVisited2(){
 
-                        if(this.totalVisited == this.getSize())
+                        if(this->totalVisited == this->getSize())
                         
                                     {
                                     
@@ -545,15 +544,15 @@ this.totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public bool isPortionVisited(BasicDecimal basicDecimal){
+    public: bool isPortionVisited(BasicDecimal basicDecimal){
 
-    size: int32_t = this.getSize()!;;
+    int32_t size = this->getSize();;
     
 
-    numberRequired: int32_t = (size<<basicDecimal!.getScaledFactor()) /static_cast<int32_t>(basicDecimal!.getUnscaled());;
+    int32_t numberRequired = (size<<basicDecimal.getScaledFactor()) /static_cast<int32_t>(basicDecimal.getUnscaled());;
     
 
-    numberNotVisited: int32_t = this.getSize() -1 -this.totalVisited;;
+    int32_t numberNotVisited = this->getSize() -1 -this->totalVisited;;
     
 
                         if(size -numberNotVisited > numberRequired)
@@ -583,93 +582,93 @@ this.totalVisited++;
 
                 //@Throws(Exception.constructor)
             
-    public reset(){
+    public: void reset(){
 
-    localVisitedList: BasicArrayList = this.visitedList;;
+    BasicArrayList localVisitedList = this->visitedList;;
     
 
-    localFalseBoolean: Boolean = this.booleanFactory!.FALSE;;
+    Boolean localFalseBoolean = this->booleanFactory.FALSE;;
     
 
-    size: int32_t = localVisitedList!.size()!;;
+    int32_t size = localVisitedList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
-localVisitedList!.set(index, localFalseBoolean);
+localVisitedList.set(index, localFalseBoolean);
     
 }
 
-this.totalVisited= 0;
+this->totalVisited= 0;
     
 }
 
 
-    paintNotVisitedRelativeToPoint(Graphics graphics, AllBinaryTiledLayer tiledLayer, GPoint point){
+    private: void paintNotVisitedRelativeToPoint(Graphics graphics, AllBinaryTiledLayer tiledLayer, GPoint point){
 
-    x: int32_t = point.getX() -tiledLayer!.getXP();;
+    int32_t x = point.getX() -tiledLayer.getXP();;
     
 
-    y: int32_t = point.getY() -tiledLayer!.getYP();;
+    int32_t y = point.getY() -tiledLayer.getYP();;
     
 
-                        if(this.halfWidth == 0)
+                        if(this->halfWidth == 0)
                         
                                     {
-                                    this.halfWidth= (graphics.getFont()!.stringWidth(this.MISSED_INFO)>>1);
+                                    this->halfWidth= (graphics.getFont().stringWidth(this->MISSED_INFO)>>1);
     
 
                                     }
                                 
 
-    height: int32_t = 2 *this.fontHeight;;
+    int32_t height = 2 *this->fontHeight;;
     
-this.animation.paintXY(graphics, x +this.halfWidth, y +(height));
+this->animation.paintXY(graphics, x +this->halfWidth, y +(height));
     
 }
 
 
-    private: const RED: int32_t = BasicColorFactory.getInstance()!.RED.intValue()!;
+    private: const int32_t RED = BasicColorFactory::getInstance().RED.intValue();
 
-    public paintNotVisited(Graphics graphics, BasicGeographicMap geographicMapInterface){
+    public: void paintNotVisited(Graphics graphics, BasicGeographicMap geographicMapInterface){
 
         try {
-            this.myFontProcessor!.process(graphics);
+            this->myFontProcessor.process(graphics);
     
-graphics.setColor(this.RED);
-    
-
-    localVisitedList: BasicArrayList = this.visitedList;;
+graphics.setColor(this->RED);
     
 
-    size: int32_t = localVisitedList!.size()!;;
+    BasicArrayList localVisitedList = this->visitedList;;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition;;
+    int32_t size = localVisitedList.size();;
     
 
-    isCellVisitedBoolean: Boolean;;
+    GeographicMapCellPosition geographicMapCellPosition;;
+    
+
+    Boolean isCellVisitedBoolean;;
     
 
 
 
 
                         for (
-    index: int32_t = size;--index >= 0; )
+    int32_t index = size;--index >= 0; )
         {
-geographicMapCellPosition= this.list.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= this->list.get(index) as GeographicMapCellPosition;
     
-isCellVisitedBoolean= localVisitedList!.get(index) as Boolean;
+isCellVisitedBoolean= localVisitedList.get(index) as Boolean;
     
 
                         if(!isCellVisitedBoolean.valueOf())
                         
                                     {
-                                    this.paintNotVisitedRelativeToPoint(graphics, geographicMapInterface!.getAllBinaryTiledLayer(), geographicMapCellPosition!.getPoint());
+                                    this->paintNotVisitedRelativeToPoint(graphics, geographicMapInterface.getAllBinaryTiledLayer(), geographicMapCellPosition.getPoint());
     
 
                                     }
@@ -681,21 +680,21 @@ isCellVisitedBoolean= localVisitedList!.get(index) as Boolean;
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "paintNotVisited", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "paintNotVisited", e);
     
 }
 
 }
 
 
-    public init(){
-this.list.clear();
+    public: void init(){
+this->list.clear();
     
-this.visitedList!.clear();
+this->visitedList.clear();
     
-this.totalVisited= 0;
+this->totalVisited= 0;
     
 }
 

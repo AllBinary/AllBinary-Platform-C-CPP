@@ -47,17 +47,14 @@
 class MotionEventProcessor
             : public Object
          {
-        
 
- constructor (){
-
-            super();
-        }
+: MotionEventProcessor(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public process(MotionEvent motionEvent){
+    public: void process(MotionEvent motionEvent){
 }
 
 

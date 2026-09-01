@@ -54,20 +54,19 @@
 class PaintableToImageUtil
             : public Object
          {
-        
 
-    private: static const instance: PaintableToImageUtil = new PaintableToImageUtil();
+    private: static PaintableToImageUtil instance() { return PaintableToImageUtil(); }
 
                 //@Throws(Exception.constructor)
             
-    public static Image getImage(PaintableInterface paintableInterface, int32_t width, int32_t height){
+    public: static Image getImage(PaintableInterface paintableInterface, int32_t width, int32_t height){
 
-    image: Image = GameFeatureImageCacheFactory.getInstance()!.get(PaintableToImageUtil.instance.constructor.name.toString()!, width, height)!;;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(PaintableToImageUtil::instance.constructor.name.toString()!, width, height);;
     
 
-    graphics: Graphics = image.getGraphics()!;;
+    Graphics graphics = image.getGraphics();;
     
-paintableInterface!.paint(graphics);
+paintableInterface.paint(graphics);
     
 
 

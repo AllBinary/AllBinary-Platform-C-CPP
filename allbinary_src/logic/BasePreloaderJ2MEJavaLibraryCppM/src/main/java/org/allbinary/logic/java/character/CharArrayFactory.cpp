@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -42,31 +44,30 @@
 class CharArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: CharArrayFactory = new CharArrayFactory();
+    private: static CharArrayFactory instance() { return CharArrayFactory(); }
 
-    public static CharArrayFactory getInstance(){
+    public: static CharArrayFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CharArrayFactory.instance;
+                        return CharArrayFactory::instance();
     
 }
 
 
-    private: const zeroCharArray: std::vector<char> = 
+    private: const std::vector<char> zeroCharArray = 
                                                         
-                                                        new Array(0)
+                                                        std::vector<char>(0)
                                                     ;
 
-    public std::vector<char> getZeroCharArray(){
+    public: std::vector<char> getZeroCharArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.zeroCharArray;
+                        return this->zeroCharArray;
     
 }
 

@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -32,55 +34,54 @@
 class ScreenRelationalUtil
             : public Object
          {
-        
 
-    private: static const instance: ScreenRelationalUtil = new ScreenRelationalUtil();
+    private: static ScreenRelationalUtil instance() { return ScreenRelationalUtil(); }
 
-    public static ScreenRelationalUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenRelationalUtil.instance;
-    
-}
-
-
-    public float getScaleImage(Image image){
+    public: static ScreenRelationalUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getScaleWH(image.getWidth(), image.getHeight());;
+                        return ScreenRelationalUtil::instance();
     
 }
 
 
-    public float getScaleWH(int32_t aWidth, int32_t aHeight){
+    public: float getScaleImage(Image image){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getScaleWHA(aWidth, aHeight, 20);;
+                        return this->getScaleWH(image.getWidth(), image.getHeight());;
     
 }
 
 
-    public float getScaleWHA(int32_t aWidth, int32_t aHeight, int32_t add){
+    public: float getScaleWH(int32_t aWidth, int32_t aHeight){
 
-    displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->getScaleWHA(aWidth, aHeight, 20);;
+    
+}
+
+
+    public: float getScaleWHA(int32_t aWidth, int32_t aHeight, int32_t add){
+
+    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
     
 
-    last: std::vector<int32_t> = displayInfoSingleton!.getLast()!;;
+    std::vector<int32_t> last = displayInfoSingleton.getLast();;
     
 
-    width: float = last[displayInfoSingleton!.WIDTH]!;;
+    float width = last[displayInfoSingleton.WIDTH]!;;
     
 
-    height: float = last[displayInfoSingleton!.HEIGHT]!;;
+    float height = last[displayInfoSingleton.HEIGHT]!;;
     
 
-    largestSize: float = width;;
+    float largestSize = width;;
     
 
                         if(largestSize < height)
@@ -92,7 +93,7 @@ class ScreenRelationalUtil
                                     }
                                 
 
-    scale: float = (largestSize) /aWidth;;
+    float scale = (largestSize) /aWidth;;
     
 
 
@@ -103,22 +104,22 @@ class ScreenRelationalUtil
 }
 
 
-    public int32_t getScaledHeight(int32_t aWidth, int32_t aHeight){
+    public: int32_t getScaledHeight(int32_t aWidth, int32_t aHeight){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this.getScaleWH(aWidth, aHeight) *aHeight));
+                        return static_cast<int32_t>((this->getScaleWH(aWidth, aHeight) *aHeight));
     
 }
 
 
-    public int32_t getScaledHeightAdd(int32_t aWidth, int32_t aHeight, int32_t add){
+    public: int32_t getScaledHeightAdd(int32_t aWidth, int32_t aHeight, int32_t add){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>((this.getScaleWHA(aWidth, aHeight, add) *aHeight));
+                        return static_cast<int32_t>((this->getScaleWHA(aWidth, aHeight, add) *aHeight));
     
 }
 

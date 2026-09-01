@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Integer.h"
         
 
@@ -41,7 +43,6 @@
         #include "ProfileActionScriptInputInterface.h"
 
 class KeyboardActionScriptInputInterface: public ProfileActionScriptInputInterface {
-        
 
     int32_t getDelayBetweenKeys()
 
@@ -53,17 +54,17 @@ class KeyboardActionScriptInputInterface: public ProfileActionScriptInputInterfa
 
     bool isNormal()
 
-    setPress(bool press)
+    void setPress(bool press)
 
-    setRelease(bool release)
+    void setRelease(bool release)
 
-    setNormal()
+    void setNormal()
 
-    string getText()
+    std::string getText()
 
-    setText(string text)
+    void setText(std::string text)
 
-    log()
+    void log()
 
 };
 

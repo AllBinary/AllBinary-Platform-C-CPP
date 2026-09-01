@@ -54,15 +54,14 @@
         #include "ProgressCanvas.h"
 
 class ProgressRunnable: public ARunnable {
-        
 
-    const midletActivity: SimpleProgressActivityInterface;
+    protected: SimpleProgressActivityInterface midletActivity;
 
-    const progressCanvas: ProgressCanvas;
+    protected: ProgressCanvas progressCanvas;
 
-public constructor (Activity midletActivity, ProgressCanvas progressCanvas);
+public: ProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas);
 
-    public run();
+    public: void run();
 
 };
 

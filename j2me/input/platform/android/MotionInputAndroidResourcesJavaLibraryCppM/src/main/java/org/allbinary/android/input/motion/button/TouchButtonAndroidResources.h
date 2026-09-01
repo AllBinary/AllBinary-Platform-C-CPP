@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_BUTTON_TOUCHBUTTONANDROIDRESOURCES_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_BUTTON_TOUCHBUTTONANDROIDRESOURCES_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Integer.h"
         
 #include <org/allbinary/AndroidResources.h>
@@ -88,9 +90,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TouchButtonAndroidResources: public Init {
-        
 
-    public init();
+    public: void init();
 
 };
 

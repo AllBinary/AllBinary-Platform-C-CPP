@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Class.h"
@@ -50,30 +52,29 @@
 class MyGraphicItemEventService
             : public Object
          {
-        
 
-    private: static listenerList: javax.swing.event.EventListenerList = new javax.swing.event.EventListenerList();
+    private: static javax::swing::event::EventListenerList listenerList = javax::swing::event::EventListenerList();
 
-    public static DELETE: string = "delete";
+    public: static std::string DELETE = "delete";
 
-    public static DESELECT: string = "deselect";
+    public: static std::string DESELECT = "deselect";
 
-    public static SELECT: string = "select";
+    public: static std::string SELECT = "select";
 
-    public static DUPLICATE: string = "duplicate";
+    public: static std::string DUPLICATE = "duplicate";
 
-    public static ROTATE: string = "rotate";
+    public: static std::string ROTATE = "rotate";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static addListener(MyGraphicItemEventListener listener){
-MyGraphicItemEventService.listenerList!.add(listener.constructor as Class<any>, listener as java.util.EventListener);
+    public: static void addListener(MyGraphicItemEventListener listener){
+MyGraphicItemEventService::listenerList.add(listener.constructor as Class<any>, listener as java::util::EventListener);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static removeListener(MyGraphicItemEventListener listener){
-MyGraphicItemEventService.listenerList!.remove(listener.constructor as Class<any>, listener as java.util.EventListener);
+    public: static void removeListener(MyGraphicItemEventListener listener){
+MyGraphicItemEventService::listenerList.remove(listener.constructor as Class<any>, listener as java::util::EventListener);
     
 }
 
@@ -81,23 +82,23 @@ MyGraphicItemEventService.listenerList!.remove(listener.constructor as Class<any
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static fire(MyGraphicItemEvent evt){
+    public: static void fire(MyGraphicItemEvent evt){
 
-    listeners: std::vector<any> = listenerList!.getListenerList()!;;
+    std::vector<Object*> listeners = listenerList.getListenerList();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < listeners.length; )
+    int32_t i = 0;i < listeners.size(); )
         {
 
                         if(listeners[i] == listeners[i +1]!.constructor)
                         
                                     {
                                     
-                        if(evt.getCommand()!.compareTo(MyGraphicItemEventService.SELECT) == 0)
+                        if(evt.getCommand().compareTo(MyGraphicItemEventService::SELECT) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyGraphicItemEventListener
@@ -108,7 +109,7 @@ MyGraphicItemEventService.listenerList!.remove(listener.constructor as Class<any
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyGraphicItemEventService.DESELECT) == 0)
+                        if(evt.getCommand().compareTo(MyGraphicItemEventService::DESELECT) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyGraphicItemEventListener
@@ -119,7 +120,7 @@ MyGraphicItemEventService.listenerList!.remove(listener.constructor as Class<any
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyGraphicItemEventService.DELETE) == 0)
+                        if(evt.getCommand().compareTo(MyGraphicItemEventService::DELETE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyGraphicItemEventListener
@@ -130,7 +131,7 @@ MyGraphicItemEventService.listenerList!.remove(listener.constructor as Class<any
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyGraphicItemEventService.DUPLICATE) == 0)
+                        if(evt.getCommand().compareTo(MyGraphicItemEventService::DUPLICATE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyGraphicItemEventListener
@@ -141,7 +142,7 @@ MyGraphicItemEventService.listenerList!.remove(listener.constructor as Class<any
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyGraphicItemEventService.ROTATE) == 0)
+                        if(evt.getCommand().compareTo(MyGraphicItemEventService::ROTATE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyGraphicItemEventListener
@@ -159,10 +160,8 @@ MyGraphicItemEventService.listenerList!.remove(listener.constructor as Class<any
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: MyGraphicItemEventService(){
+}
 
 
 };

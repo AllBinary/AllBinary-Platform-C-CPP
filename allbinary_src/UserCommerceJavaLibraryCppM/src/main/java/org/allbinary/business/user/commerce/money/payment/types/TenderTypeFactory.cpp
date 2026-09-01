@@ -43,25 +43,24 @@
 class TenderTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: TenderTypeFactory = new TenderTypeFactory();
+    private: static TenderTypeFactory instance() { return TenderTypeFactory(); }
 
-    public static TenderTypeFactory getInstance(){
+    public: static TenderTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TenderTypeFactory.instance;
+                        return TenderTypeFactory::instance();
     
 }
 
 
-    public const CREDITCARD: TenderType = new TenderType("Credit Card");
+    public: const TenderType CREDITCARD = TenderType("Credit Card");
 
-    public const CHECK: TenderType = new TenderType("Check");
+    public: const TenderType CHECK = TenderType("Check");
 
-    public const ACH: TenderType = new TenderType("Ach");
+    public: const TenderType ACH = TenderType("Ach");
 
 };
 

@@ -70,45 +70,42 @@
         #include "TableTag.h"
 
 class StaticPagesTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new StaticPagesHelperFactory());
+public: StaticPagesTag(){
+this->setTagHelperFactory(StaticPagesHelperFactory());
     
-this.setTagRequestHelperFactory(new StaticPagesRequestHelperFactory());
+this->setTagRequestHelperFactory(StaticPagesRequestHelperFactory());
     
 }
 
 
-    public setXsl(string value){
-this.xslFile= value;
+    public: void setXsl(std::string value){
+this->xslFile= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public string generateStaticPages(){
+    public: std::string generateStaticPages(){
 
         try {
             
-    anyType: any = new StaticPagesRequestHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = StaticPagesRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("generateStaticPages", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("generateStaticPages", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -132,13 +129,13 @@ this.xslFile= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to generate staticpages table";;
+    std::string error = "Failed to generate staticpages table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "generateStaticPages()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", e);
     
 
                                     }
@@ -156,21 +153,21 @@ this.xslFile= value;
 
                 //@Throws(LicensingException.constructor)
             
-    public string makePublic(){
+    public: std::string makePublic(){
 
         try {
             
-    anyType: any = new StaticPagesRequestHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = StaticPagesRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("makePublic", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("makePublic", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -194,13 +191,13 @@ this.xslFile= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to makePublic";;
+    std::string error = "Failed to makePublic";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "makePublic()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "makePublic()", e);
     
 
                                     }
@@ -218,33 +215,33 @@ this.xslFile= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(SearchData.GENERATESTATICPAGES) == 0)
+                        if(this->getCommand().compareTo(SearchData::GENERATESTATICPAGES) == 0)
                         
                                     {
-                                    this.getPropertiesHashMap()!.put(TransformInfoData.getInstance()!.TEMPLATEFILENAME, this.xslFile);
+                                    this->getPropertiesHashMap().put(TransformInfoData::getInstance().TEMPLATEFILENAME, this->xslFile);
     
 
-    output: string = this.generateStaticPages()!;;
+    std::string output = this->generateStaticPages();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output);
+                                    this->pageContext.getOut().print(output);
     
 
                                     }
@@ -253,17 +250,17 @@ this.xslFile= value;
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(SearchData.MAKEPUBLIC) == 0)
+                        if(this->getCommand().compareTo(SearchData::MAKEPUBLIC) == 0)
                         
                                     {
                                     
-    output: string = this.makePublic()!;;
+    std::string output = this->makePublic();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output);
+                                    this->pageContext.getOut().print(output);
     
 
                                     }
@@ -297,7 +294,7 @@ this.xslFile= value;
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -310,7 +307,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

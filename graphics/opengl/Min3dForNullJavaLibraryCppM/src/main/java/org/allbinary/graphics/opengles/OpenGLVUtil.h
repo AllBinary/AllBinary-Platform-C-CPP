@@ -42,11 +42,10 @@
         #include "OpenGLVUtilBase.h"
 
 class OpenGLVUtil: public OpenGLVUtilBase {
-        
 
-    private: static const instance: OpenGLVUtil = new OpenGLVUtil();
+    private: static OpenGLVUtil instance() { return OpenGLVUtil(); }
 
-    public static OpenGLVUtil getInstance();
+    public: static OpenGLVUtil getInstance();
 
 };
 

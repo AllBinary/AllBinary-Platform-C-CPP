@@ -42,26 +42,23 @@
 class HealthResources
             : public Object
          {
-        
 
-    private: static const SINGLETON: HealthResources = new HealthResources();
+    private: static const HealthResources SINGLETON = HealthResources();
 
-    public static HealthResources getInstance(){
+    public: static HealthResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealthResources.SINGLETON;
+                        return HealthResources::SINGLETON;
     
 }
 
 
-    public RESOURCE: string = "health_drop_20_by_20.png";
+    public: std::string RESOURCE = "health_drop_20_by_20.png";
 
-private constructor (){
-
-            super();
-        }
+private: HealthResources(){
+}
 
 
 };

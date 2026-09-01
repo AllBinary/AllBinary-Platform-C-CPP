@@ -54,49 +54,46 @@
 class ShippingAddressesEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: ShippingAddressesEntityFactory = new ShippingAddressesEntityFactory();
+    private: static ShippingAddressesEntityFactory instance() { return ShippingAddressesEntityFactory(); }
 
-    public static ShippingAddressesEntityFactory getInstance(){
+    public: static ShippingAddressesEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShippingAddressesEntityFactory.instance;
+                        return ShippingAddressesEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ShippingAddressesEntityFactory(){
+}
 
 
-    public StreetAddressesEntity getInstance(string userName){
+    public: StreetAddressesEntity getInstance(std::string userName){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ShippingAddressesEntity(userName);
+                        return ShippingAddressesEntity(userName);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "getShippingAddressesEntityInstance()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getShippingAddressesEntityInstance()", e);
     
 
                                     }

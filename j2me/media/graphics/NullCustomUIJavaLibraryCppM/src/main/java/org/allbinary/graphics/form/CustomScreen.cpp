@@ -25,7 +25,6 @@
         #include "CustomDisplayable.h"
 
 class CustomScreen: public CustomDisplayable {
-        
 
 };
 

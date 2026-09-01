@@ -71,54 +71,51 @@
         #include "AllBinaryGameCanvas.h"
 
 class EndGameProcessor: public Processor {
-        
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-    private: const WAIT: int64_t = 5000;
+    private: const int64_t WAIT = 5000;
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: EndGameProcessor(AllBinaryGameCanvas gameCanvas){
+this->gameCanvas= gameCanvas;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    public: void process(){
 
-                        if(this.gameCanvas!.isHighScoreSubmitted())
+                        if(this->gameCanvas.isHighScoreSubmitted())
                         
                                     {
                                     
-                        if(this.gameCanvas!.getGameStateTimeHelper()!.isElapsedTNT(this.WAIT))
+                        if(this->gameCanvas.getGameStateTimeHelper().isElapsedTNT(this->WAIT))
                         
                                     {
                                     
-                        if(this.gameCanvas!.getGameState() == this.gameStateFactory!.SHOW_END_RESULT_GAME_STATE)
+                        if(this->gameCanvas.getGameState() == this->gameStateFactory.SHOW_END_RESULT_GAME_STATE)
                         
                                     {
                                     
-    highScoresBase: HighScoresHelperBase = this.gameCanvas!.highScoresHelper as HighScoresHelperBase;;
+    HighScoresHelperBase highScoresBase = this->gameCanvas.highScoresHelper as HighScoresHelperBase;;
     
 
-    highScores: HighScores = highScoresBase!.getSelectedHighScores()!;;
+    HighScores highScores = highScoresBase.getSelectedHighScores();;
     
 
-                        if(highScores != NullHighScoresSingletonFactory.getInstance())
+                        if(highScores != NullHighScoresSingletonFactory::getInstance())
                         
                                     {
-                                    highScoresBase!.selectHighScores();
+                                    highScoresBase.selectHighScores();
     
-this.gameCanvas!.getRealHighScoresPaintable()!.setHighScores(highScores);
+this->gameCanvas.getRealHighScoresPaintable().setHighScores(highScores);
     
-this.gameCanvas!.setGameState(this.gameStateFactory!.SHOW_HIGH_SCORE_GAME_STATE);
+this->gameCanvas.setGameState(this->gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE);
     
-this.gameCanvas!.setHighScoresPaintable(this.gameCanvas!.getRealHighScoresPaintable());
+this->gameCanvas.setHighScoresPaintable(this->gameCanvas.getRealHighScoresPaintable());
     
 
                                     }
@@ -127,12 +124,12 @@ this.gameCanvas!.setHighScoresPaintable(this.gameCanvas!.getRealHighScoresPainta
                                     }
                                 
                              else 
-                        if(this.gameCanvas!.getGameState() == this.gameStateFactory!.SHOW_HIGH_SCORE_GAME_STATE)
+                        if(this->gameCanvas.getGameState() == this->gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE)
                         
                                     {
-                                    this.gameCanvas!.setGameState(this.gameStateFactory!.SHOW_END_RESULT_GAME_STATE);
+                                    this->gameCanvas.setGameState(this->gameStateFactory.SHOW_END_RESULT_GAME_STATE);
     
-this.gameCanvas!.setHighScoresPaintable(NullPaintable.getInstance());
+this->gameCanvas.setHighScoresPaintable(NullPaintable::getInstance());
     
 
                                     }

@@ -45,26 +45,23 @@
         #include "InitUpdatePaintable.h"
 
 class AnimationCompositePaintable: public InitUpdatePaintable {
-        
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface){
-
-            super();
-        this.animationInterface= animationInterface;
+public: AnimationCompositePaintable(Animation animationInterface){
+this->animationInterface= animationInterface;
     
 }
 
 
-    public paint(Graphics graphics){
-this.animationInterface!.paintXY(graphics, 0, 0);
+    public: void paint(Graphics graphics){
+this->animationInterface.paintXY(graphics, 0, 0);
     
 }
 
 
-    public paintThreed(Graphics graphics){
-this.animationInterface!.paintThreedXYZ(graphics, 0, 0, 0);
+    public: void paintThreed(Graphics graphics){
+this->animationInterface.paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 

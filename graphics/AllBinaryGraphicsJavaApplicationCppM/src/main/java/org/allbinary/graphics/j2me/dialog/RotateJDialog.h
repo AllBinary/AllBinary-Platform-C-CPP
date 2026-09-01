@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_ROTATEJDIALOG_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_ROTATEJDIALOG_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/System.h"
@@ -75,32 +77,31 @@
 #include "WindowAdapter.h"
 #include "WindowEvent.h"
 
-class RotateJDialog: public javax.swing.JDialog {
-        
+class RotateJDialog: public javax::swing::JDialog {
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: HashMap<any, any> hashMap = HashMap<any, any>();
 
-public constructor (java.awt.Frame parent, bool modal);
+public: RotateJDialog(java::awt::Frame parent, bool modal);
 
-    initComponents();
+    private: void initComponents();
 
-    jButton1ActionPerformed(java.awt.event.ActionEvent evt);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: angleIncrementJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField angleIncrementJTextField;
 
-    private: jButton1: javax.swing.JButton;
+    private: javax::swing::JButton jButton1;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: totalRotationJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField totalRotationJTextField;
 
 };
 

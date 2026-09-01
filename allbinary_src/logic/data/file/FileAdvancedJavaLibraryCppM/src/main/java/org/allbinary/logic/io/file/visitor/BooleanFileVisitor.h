@@ -60,23 +60,22 @@
 class BooleanFileVisitor
             : public Object
         : public VisitorInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: filterStringBasicArrayList: BasicArrayList;
+    private: BasicArrayList filterStringBasicArrayList;
 
-public constructor (BasicArrayList filterStringBasicArrayList);
+public: BooleanFileVisitor(BasicArrayList filterStringBasicArrayList);
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
-    public Boolean visit(AbFile file);
+    public: Boolean visit(AbFile file);
 
-    public BasicArrayList getFilterStringBasicArrayList();
+    public: BasicArrayList getFilterStringBasicArrayList();
 
-    public setFilterStringBasicArrayList(BasicArrayList filterStringBasicArrayList);
+    public: void setFilterStringBasicArrayList(BasicArrayList filterStringBasicArrayList);
 
-    public Boolean visit(AbFile file, string fileNameString);
+    public: Boolean visit(AbFile file, std::string fileNameString);
 
 };
 

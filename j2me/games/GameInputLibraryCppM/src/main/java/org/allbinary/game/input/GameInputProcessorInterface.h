@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInputProcessorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onInput(BasicArrayList list);
+    void onInput(BasicArrayList list);
 
 };
 

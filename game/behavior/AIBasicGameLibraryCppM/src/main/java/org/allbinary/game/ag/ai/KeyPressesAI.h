@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_KEYPRESSESAI_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -63,33 +65,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class KeyPressesAI: public BasicAI {
-        
 
-    private: on: bool = true;
+    private: bool on = true;
 
-    keys: std::vector<Integer>;
+    protected: std::vector<Integer> keys;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
-
-                //@Throws(Exception.constructor)
-            
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+public: KeyPressesAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public toggle();
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public disable();
+    public: void toggle();
 
                 //@Throws(Exception.constructor)
             
-    public enable();
+    public: void disable();
 
-    setOn(bool on);
+                //@Throws(Exception.constructor)
+            
+    public: void enable();
 
-    bool isOn();
+    private: void setOn(bool on);
+
+    protected: bool isOn();
 
 };
 

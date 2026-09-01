@@ -53,13 +53,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RightTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance();
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance();
 
-private constructor ();
+private: RightTrackballInputToGameKeyEventAction();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILELISTFETCHER_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILELISTFETCHER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -71,27 +73,26 @@
 class FileListFetcher
             : public Object
          {
-        
 
-    private: static const instance: FileListFetcher = new FileListFetcher();
+    private: static FileListFetcher instance() { return FileListFetcher(); }
 
-    public static FileListFetcher getInstance();
+    public: static FileListFetcher getInstance();
 
-    private: const subDirectory: SubDirectory = SubDirectory.getInstance()!;
+    private: const SubDirectory subDirectory = SubDirectory::getInstance();
 
-    public BasicArrayList getFiles(string path);
+    public: BasicArrayList getFiles(std::string path);
 
-    public BasicArrayList getFiles(string path, std::vector<string> includeExtensions);
+    public: BasicArrayList getFiles(std::string path, std::vector<std::string> includeExtensions);
 
-    public BasicArrayList getFiles(string path, string includeExtension);
+    public: BasicArrayList getFiles(std::string path, std::string includeExtension);
 
-    public BasicArrayList getFiles(string path, string pathIncludes, string includeExtension);
+    public: BasicArrayList getFiles(std::string path, std::string pathIncludes, std::string includeExtension);
 
-    public BasicArrayList getTrackedFiles(string path, std::vector<string> includeExtensions);
+    public: BasicArrayList getTrackedFiles(std::string path, std::vector<std::string> includeExtensions);
 
-    public BasicArrayList getTrackedFiles(string path, string includeExtension);
+    public: BasicArrayList getTrackedFiles(std::string path, std::string includeExtension);
 
-    public BasicArrayList getDirectories(string path);
+    public: BasicArrayList getDirectories(std::string path);
 
 };
 

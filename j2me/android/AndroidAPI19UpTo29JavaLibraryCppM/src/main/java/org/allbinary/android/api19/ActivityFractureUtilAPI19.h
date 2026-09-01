@@ -50,13 +50,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ActivityFractureUtilAPI19: public ActivityFractureUtilAPI5 {
-        
 
-    private: static const instance19: ActivityFractureUtilAPI19 = new ActivityFractureUtilAPI19();
+    private: static const ActivityFractureUtilAPI19 instance19 = ActivityFractureUtilAPI19();
 
-    public static ActivityFractureUtilAPI19 getInstance();
+    public: static ActivityFractureUtilAPI19 getInstance();
 
-    public setFullScreen(Activity activity);
+    public: void setFullScreen(Activity activity);
 
 };
 

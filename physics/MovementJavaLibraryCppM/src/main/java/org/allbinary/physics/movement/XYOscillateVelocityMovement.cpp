@@ -50,71 +50,70 @@
         #include "BasicConstantVelocityMovement.h"
 
 class XYOscillateVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-    private: oscillateMin: int32_t;
+    private: int32_t oscillateMin;
 
-    private: oscillateMax: int32_t;
+    private: int32_t oscillateMax;
 
-    private: oscillate: int32_t= 0;
+    private: int32_t oscillate= 0;
 
-    private: oscillatePositive: bool= false;
+    private: bool oscillatePositive= false;
 
-public constructor (BasicDecimal speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax){
-            super(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal!.getUnscaled()), static_cast<int32_t>(speedBasicDecimal!.getUnscaled())));
+public: XYOscillateVelocityMovement(BasicDecimal speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax){
+            super(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled())));
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.oscillateMin= oscillateMin;
+this->oscillateMin= oscillateMin;
     
-this.oscillateMax= oscillateMax;
+this->oscillateMax= oscillateMax;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer layer){
 super.process(layer);
     
 
-                        if(this.oscillate < this.oscillateMin)
+                        if(this->oscillate < this->oscillateMin)
                         
                                     {
-                                    this.oscillatePositive= true;
+                                    this->oscillatePositive= true;
     
-this.getVelocityProperties()!.getVelocityYBasicDecimalP()!.addint(3000);
+this->getVelocityProperties().getVelocityYBasicDecimalP().addint(3000);
     
 
                                     }
                                 
                              else 
-                        if(this.oscillate > this.oscillateMax)
+                        if(this->oscillate > this->oscillateMax)
                         
                                     {
-                                    this.oscillatePositive= false;
+                                    this->oscillatePositive= false;
     
-this.getVelocityProperties()!.getVelocityYBasicDecimalP()!.subtractint(3000);
+this->getVelocityProperties().getVelocityYBasicDecimalP().subtractint(3000);
     
 
                                     }
                                 
 
-                        if(this.oscillatePositive)
+                        if(this->oscillatePositive)
                         
                                     {
-                                    this.oscillate++;
+                                    this->oscillate++;
     
-this.getVelocityProperties()!.getVelocityXBasicDecimalP()!.addint(5000);
+this->getVelocityProperties().getVelocityXBasicDecimalP().addint(5000);
     
 
                                     }
                                 
                         else {
-                            this.oscillate--;
+                            this->oscillate--;
     
-this.getVelocityProperties()!.getVelocityXBasicDecimalP()!.subtractint(5000);
+this->getVelocityProperties().getVelocityXBasicDecimalP().subtractint(5000);
     
 
                         }

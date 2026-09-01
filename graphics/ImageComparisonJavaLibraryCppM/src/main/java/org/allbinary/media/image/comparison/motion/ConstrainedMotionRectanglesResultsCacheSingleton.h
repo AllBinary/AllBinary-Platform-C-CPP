@@ -65,20 +65,19 @@
 class ConstrainedMotionRectanglesResultsCacheSingleton
             : public Object
          {
-        
 
-    private: static cacheInterface: CacheInterface = 
-                null
+    private: static CacheInterface cacheInterface = 
+                nullptr
             ;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public static CacheInterface getInstance();
+    public: static CacheInterface getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ConstrainedMotionRectanglesResultsCacheSingleton();
 
 };
 

@@ -60,11 +60,10 @@
         #include "ColorFillBasePaintable.h"
 
 class ColorFillPaintable: public ColorFillBasePaintable {
-        
 
-    const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public constructor (BasicColor basicColor){
+public: ColorFillPaintable(BasicColor basicColor){
             super(basicColor);
                     
 
@@ -73,10 +72,10 @@ public constructor (BasicColor basicColor){
 }
 
 
-    public paint(Graphics graphics){
-graphics.setColor(this.colorP);
+    public: void paint(Graphics graphics){
+graphics.setColor(this->colorP);
     
-graphics.fillRect(0, 0, this.displayInfoSingleton!.getLastWidth(), this.displayInfoSingleton!.getLastHeight());
+graphics.fillRect(0, 0, this->displayInfoSingleton.getLastWidth(), this->displayInfoSingleton.getLastHeight());
     
 }
 

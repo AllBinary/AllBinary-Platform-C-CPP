@@ -124,222 +124,214 @@
 class User
             : public Object
         : public UserInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: prefixName: string;
+    private: std::string prefixName;
 
-    private: firstName: string;
+    private: std::string firstName;
 
-    private: lastName: string;
+    private: std::string lastName;
 
-    private: middleName: string;
+    private: std::string middleName;
 
-    private: suffixName: string;
+    private: std::string suffixName;
 
-    private: company: string;
+    private: std::string company;
 
-    private: positionAtCompany: string;
+    private: std::string positionAtCompany;
 
-    private: mainEmail: string;
+    private: std::string mainEmail;
 
-    private: secondaryEmail: string;
+    private: std::string secondaryEmail;
 
-    private: homePhone: string;
+    private: std::string homePhone;
 
-    private: cellPhone: string;
+    private: std::string cellPhone;
 
-    private: workPhone: string;
+    private: std::string workPhone;
 
-    private: otherContact: string;
+    private: std::string otherContact;
 
-    private: electronicDevice: string;
+    private: std::string electronicDevice;
 
-    private: fax: string;
+    private: std::string fax;
 
-    private: role: UserRole;
+    private: UserRole role;
 
-    private: encryption: string;
+    private: std::string encryption;
 
-    private: secret: string;
+    private: std::string secret;
 
-    private: password: Password;
+    private: Password password;
 
-    private: enable: string;
+    private: std::string enable;
 
-    private: permissions: string;
+    private: std::string permissions;
 
-    private: userConfigurationInterface: UserConfigurationInterface;
+    private: UserConfigurationInterface userConfigurationInterface;
 
-public constructor (){
-
-            super();
-        this.userConfigurationInterface= UserConfigurationInterfaceFactory.getInstance();
+public: User(){
+this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance();
     
-this.password= new Password(StringUtil.getInstance()!.EMPTY_STRING);
+this->password= Password(StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
-public constructor (HttpServletRequest request){
-
-            super();
-        this.getFormData(new RequestParams(request).toHashMap());
+public: User(HttpServletRequest request){
+this->getFormData(RequestParams(request).toHashMap());
     
-this.userConfigurationInterface= UserConfigurationInterfaceFactory.getInstance(this.getRole());
+this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance(this->getRole());
     
 }
 
 
-public constructor (HashMap<any, any> userHashMap){
-
-            super();
-        this.getFormData(userHashMap);
+public: User(HashMap<any, any> userHashMap){
+this->getFormData(userHashMap);
     
-this.userConfigurationInterface= UserConfigurationInterfaceFactory.getInstance(this.getRole());
+this->userConfigurationInterface= UserConfigurationInterfaceFactory::getInstance(this->getRole());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public getFormData(HashMap<any, any> userHashMap){
-this.userName= new UserName(userHashMap).get();
+    public: void getFormData(HashMap<any, any> userHashMap){
+this->userName= UserName(userHashMap).get();
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    passwordString: string = stringUtil!.getNonNull(userHashMap!.get(UserData.PASSWORD) as string)!;;
+    std::string passwordString = stringUtil.getNonNull(userHashMap.get(UserData::PASSWORD) as string);;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil!.isEmpty(this.userName) && stringValidationUtil!.isEmpty(passwordString))
+                        if(stringValidationUtil.isEmpty(this->userName) && stringValidationUtil.isEmpty(passwordString))
                         
                                     {
-                                    this.userName= stringUtil!.getNonNull(userHashMap!.get(WeblisketSessionData.REMOVABLEUSERNAME) as string);
+                                    this->userName= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEUSERNAME) as string);
     
-passwordString= stringUtil!.getNonNull(userHashMap!.get(WeblisketSessionData.REMOVABLEPASSWORD) as string);
+passwordString= stringUtil.getNonNull(userHashMap.get(WeblisketSessionData::REMOVABLEPASSWORD) as string);
     
 
                                     }
                                 
 
-    encryption: string = stringUtil!.getNonNull(userHashMap!.get(EntryData.getInstance()!.ENCRYPTION) as string)!;;
+    std::string encryption = stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENCRYPTION) as string);;
     
 
-    secret: string = stringUtil!.getNonNull(userHashMap!.get(UserData.SECRET) as string)!;;
+    std::string secret = stringUtil.getNonNull(userHashMap.get(UserData::SECRET) as string);;
     
-this.password= new Password(passwordString);
+this->password= Password(passwordString);
     
-this.prefixName= stringUtil!.getNonNull(userHashMap!.get(UserData.PREFIXNAME) as string);
+this->prefixName= stringUtil.getNonNull(userHashMap.get(UserData::PREFIXNAME) as string);
     
-this.firstName= stringUtil!.getNonNull(userHashMap!.get(UserData.FIRSTNAME) as string);
+this->firstName= stringUtil.getNonNull(userHashMap.get(UserData::FIRSTNAME) as string);
     
-this.lastName= stringUtil!.getNonNull(userHashMap!.get(UserData.LASTNAME) as string);
+this->lastName= stringUtil.getNonNull(userHashMap.get(UserData::LASTNAME) as string);
     
-this.middleName= stringUtil!.getNonNull(userHashMap!.get(UserData.MIDDLENAME) as string);
+this->middleName= stringUtil.getNonNull(userHashMap.get(UserData::MIDDLENAME) as string);
     
-this.suffixName= stringUtil!.getNonNull(userHashMap!.get(UserData.SUFFIXNAME) as string);
+this->suffixName= stringUtil.getNonNull(userHashMap.get(UserData::SUFFIXNAME) as string);
     
-this.company= stringUtil!.getNonNull(userHashMap!.get(UserData.COMPANY) as string);
+this->company= stringUtil.getNonNull(userHashMap.get(UserData::COMPANY) as string);
     
-this.positionAtCompany= stringUtil!.getNonNull(userHashMap!.get(UserData.POSITIONATCOMPANY) as string);
+this->positionAtCompany= stringUtil.getNonNull(userHashMap.get(UserData::POSITIONATCOMPANY) as string);
     
-this.mainEmail= stringUtil!.getNonNull(userHashMap!.get(UserData.MAINEMAIL) as string);
+this->mainEmail= stringUtil.getNonNull(userHashMap.get(UserData::MAINEMAIL) as string);
     
-this.secondaryEmail= stringUtil!.getNonNull(userHashMap!.get(UserData.SECONDARYEMAIL) as string);
+this->secondaryEmail= stringUtil.getNonNull(userHashMap.get(UserData::SECONDARYEMAIL) as string);
     
-this.homePhone= stringUtil!.getNonNull(userHashMap!.get(UserData.HOMEPHONE) as string);
+this->homePhone= stringUtil.getNonNull(userHashMap.get(UserData::HOMEPHONE) as string);
     
-this.cellPhone= stringUtil!.getNonNull(userHashMap!.get(UserData.CELLPHONE) as string);
+this->cellPhone= stringUtil.getNonNull(userHashMap.get(UserData::CELLPHONE) as string);
     
-this.workPhone= stringUtil!.getNonNull(userHashMap!.get(UserData.WORKPHONE) as string);
+this->workPhone= stringUtil.getNonNull(userHashMap.get(UserData::WORKPHONE) as string);
     
-this.otherContact= stringUtil!.getNonNull(userHashMap!.get(UserData.OTHERCONTACT) as string);
+this->otherContact= stringUtil.getNonNull(userHashMap.get(UserData::OTHERCONTACT) as string);
     
-this.electronicDevice= stringUtil!.getNonNull(userHashMap!.get(UserData.ELECTRONICDEVICE) as string);
+this->electronicDevice= stringUtil.getNonNull(userHashMap.get(UserData::ELECTRONICDEVICE) as string);
     
-this.fax= stringUtil!.getNonNull(userHashMap!.get(UserData.FAX) as string);
+this->fax= stringUtil.getNonNull(userHashMap.get(UserData::FAX) as string);
     
-this.role= UserRoleB.getRole(userHashMap!.get(UserRoleData.NAME.toString()) as string);
+this->role= UserRoleB::getRole(userHashMap.get(UserRoleData::NAME.toString()) as string);
     
-this.permissions= stringUtil!.getNonNull(userHashMap!.get(UserData.PERMISSIONS) as string);
+this->permissions= stringUtil.getNonNull(userHashMap.get(UserData::PERMISSIONS) as string);
     
 
-                        if(!stringValidationUtil!.isEmpty(this.permissions) && this.permissions.compareTo(StoreFrontData.getInstance()!.NAME) == 0)
-                        this.permissions= stringUtil!.getNonNull(userHashMap!.get(StoreFrontData.getInstance()!.NAME) as string)
+                        if(!stringValidationUtil.isEmpty(this->permissions) && this->permissions.compareTo(StoreFrontData::getInstance().NAME) == 0)
+                        this->permissions= stringUtil.getNonNull(userHashMap.get(StoreFrontData::getInstance().NAME) as string);
+                                
                              else 
-                        if(this.permissions == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    this.permissions= "No Permissions";
+                                    this->permissions= "No Permissions";
     
 
                                     }
                                 
-this.enable= stringUtil!.getNonNull(userHashMap!.get(EntryData.getInstance()!.ENABLE) as string);
+this->enable= stringUtil.getNonNull(userHashMap.get(EntryData::getInstance().ENABLE) as string);
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(!UserName.getInstance()!.isValid(this.userName).valueOf())
+                        if(!UserName::getInstance().isValid(this->userName).valueOf())
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!this.password.isValid().valueOf())
+                        if(!this->password.isValid().valueOf())
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil!.isValidRequired(this.firstName, 1, UserData.MAXLEN))
+                        if(!stringValidationUtil.isValidRequired(this->firstName, 1, UserData::MAXLEN))
                         
                                     {
-                                    valid= Boolean.FALSE;
-    
-
-                                    }
-                                
-
-                        if(!stringValidationUtil!.isValidRequired(this.lastName, 1, UserData.MAXLEN))
-                        
-                                    {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.mainEmail, 1, UserData.MAXLEN) || this.mainEmail!.indexOf("@") ==  -1)
+                        if(!stringValidationUtil.isValidRequired(this->lastName, 1, UserData::MAXLEN))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
+    
+
+                                    }
+                                
+
+                        if(!stringValidationUtil.isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
+                        
+                                    {
+                                    valid= Boolean::FALSE;
     
 
                                     }
@@ -355,13 +347,13 @@ this.enable= stringUtil!.getNonNull(userHashMap!.get(EntryData.getInstance()!.EN
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VALIDATIONERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VALIDATIONERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put("Failed to validate form", this, commonStrings!.IS_VALID, e);
+this->logUtil.put("Failed to validate form", this, commonStrings.IS_VALID, e);
     
 
                                     }
@@ -370,49 +362,49 @@ this.logUtil!.put("Failed to validate form", this, commonStrings!.IS_VALID, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(UserName.getValidationInfo(this.userName));
+stringBuffer.append(UserName::getValidationInfo(this->userName));
     
-stringBuffer!.append(this.password.getValidationInfo());
+stringBuffer.append(this->password.getValidationInfo());
     
 
-                        if(!stringValidationUtil!.isValidRequired(this.firstName, 1, UserData.MAXLEN))
+                        if(!stringValidationUtil.isValidRequired(this->firstName, 1, UserData::MAXLEN))
                         
                                     {
-                                    stringBuffer!.append("Please enter a valid First Name.<br />");
+                                    stringBuffer.append("Please enter a valid First Name.<br />");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.lastName, 1, UserData.MAXLEN))
+                        if(!stringValidationUtil.isValidRequired(this->lastName, 1, UserData::MAXLEN))
                         
                                     {
-                                    stringBuffer!.append("Please enter a valid Last Name.<br />");
+                                    stringBuffer.append("Please enter a valid Last Name.<br />");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.mainEmail, 1, UserData.MAXLEN) || this.mainEmail!.indexOf("@") ==  -1)
+                        if(!stringValidationUtil.isValidRequired(this->mainEmail, 1, UserData::MAXLEN) || this->mainEmail.indexOf("@") ==  -1)
                         
                                     {
-                                    stringBuffer!.append("Please enter a valid email address.<br />");
+                                    stringBuffer.append("Please enter a valid email address.<br />");
     
 
                                     }
@@ -421,17 +413,17 @@ stringBuffer!.append(this.password.getValidationInfo());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -447,416 +439,416 @@ stringBuffer!.append(this.password.getValidationInfo());
 }
 
 
-    public setUserName(string value){
-this.userName= value;
+    public: void setUserName(std::string value){
+this->userName= value;
     
 }
 
 
-    public setPrefixName(string value){
-this.prefixName= value;
+    public: void setPrefixName(std::string value){
+this->prefixName= value;
     
 }
 
 
-    public setFirstName(string value){
-this.firstName= value;
+    public: void setFirstName(std::string value){
+this->firstName= value;
     
 }
 
 
-    public setLastName(string value){
-this.lastName= value;
+    public: void setLastName(std::string value){
+this->lastName= value;
     
 }
 
 
-    public setMiddleName(string value){
-this.middleName= value;
+    public: void setMiddleName(std::string value){
+this->middleName= value;
     
 }
 
 
-    public setSuffixName(string value){
-this.suffixName= value;
+    public: void setSuffixName(std::string value){
+this->suffixName= value;
     
 }
 
 
-    public setCompany(string value){
-this.company= value;
+    public: void setCompany(std::string value){
+this->company= value;
     
 }
 
 
-    public setPositionAtCompany(string value){
-this.positionAtCompany= value;
+    public: void setPositionAtCompany(std::string value){
+this->positionAtCompany= value;
     
 }
 
 
-    public setMainEmail(string value){
-this.mainEmail= value;
+    public: void setMainEmail(std::string value){
+this->mainEmail= value;
     
 }
 
 
-    public setSecondaryEmail(string value){
-this.secondaryEmail= value;
+    public: void setSecondaryEmail(std::string value){
+this->secondaryEmail= value;
     
 }
 
 
-    public setHomePhone(string value){
-this.homePhone= value;
+    public: void setHomePhone(std::string value){
+this->homePhone= value;
     
 }
 
 
-    public setCellPhone(string value){
-this.cellPhone= value;
+    public: void setCellPhone(std::string value){
+this->cellPhone= value;
     
 }
 
 
-    public setWorkPhone(string value){
-this.workPhone= value;
+    public: void setWorkPhone(std::string value){
+this->workPhone= value;
     
 }
 
 
-    public setOtherContact(string value){
-this.otherContact= value;
+    public: void setOtherContact(std::string value){
+this->otherContact= value;
     
 }
 
 
-    public setElectronicContact(string value){
-this.electronicDevice= value;
+    public: void setElectronicContact(std::string value){
+this->electronicDevice= value;
     
 }
 
 
-    public setFax(string value){
-this.fax= value;
+    public: void setFax(std::string value){
+this->fax= value;
     
 }
 
 
-    public setRole(UserRole role){
-this.role= role;
+    public: void setRole(UserRole role){
+this->role= role;
     
 }
 
 
-    public setPermissions(string value){
-this.permissions= value;
+    public: void setPermissions(std::string value){
+this->permissions= value;
     
 }
 
 
-    public setEncryption(string value){
-this.encryption= value;
+    public: void setEncryption(std::string value){
+this->encryption= value;
     
 }
 
 
-    public setSecret(string value){
-this.secret= value;
+    public: void setSecret(std::string value){
+this->secret= value;
     
 }
 
 
-    public setPassword(string value){
-this.password.set(value);
+    public: void setPassword(std::string value){
+this->password.set(value);
     
 }
 
 
-    public enable(){
-this.setEnable("Yes");
+    public: void enable(){
+this->setEnable("Yes");
     
 }
 
 
-    public disable(){
-this.setEnable("No");
+    public: void disable(){
+this->setEnable("No");
     
 }
 
 
-    public setEnable(string enable){
-this.enable= enable;
+    public: void setEnable(std::string enable){
+this->enable= enable;
     
 }
 
 
-    public string getUserName(){
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userName;
+                        return this->userName;
     
 }
 
 
-    public string getPrefixName(){
+    public: std::string getPrefixName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.prefixName;
+                        return this->prefixName;
     
 }
 
 
-    public string getFirstName(){
+    public: std::string getFirstName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.firstName;
+                        return this->firstName;
     
 }
 
 
-    public string getLastName(){
+    public: std::string getLastName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastName;
+                        return this->lastName;
     
 }
 
 
-    public string getMiddleName(){
+    public: std::string getMiddleName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.middleName;
+                        return this->middleName;
     
 }
 
 
-    public string getSuffixName(){
+    public: std::string getSuffixName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.suffixName;
+                        return this->suffixName;
     
 }
 
 
-    public string getCompany(){
+    public: std::string getCompany(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.company;
+                        return this->company;
     
 }
 
 
-    public string getPositionAtCompany(){
+    public: std::string getPositionAtCompany(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.positionAtCompany;
+                        return this->positionAtCompany;
     
 }
 
 
-    public string getMainEmail(){
+    public: std::string getMainEmail(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mainEmail;
+                        return this->mainEmail;
     
 }
 
 
-    public string getSecondaryEmail(){
+    public: std::string getSecondaryEmail(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.secondaryEmail;
+                        return this->secondaryEmail;
     
 }
 
 
-    public string getHomePhone(){
+    public: std::string getHomePhone(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.homePhone;
+                        return this->homePhone;
     
 }
 
 
-    public string getCellPhone(){
+    public: std::string getCellPhone(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellPhone;
+                        return this->cellPhone;
     
 }
 
 
-    public string getWorkPhone(){
+    public: std::string getWorkPhone(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.workPhone;
+                        return this->workPhone;
     
 }
 
 
-    public string getOtherContact(){
+    public: std::string getOtherContact(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.otherContact;
+                        return this->otherContact;
     
 }
 
 
-    public string getElectronicContact(){
+    public: std::string getElectronicContact(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.electronicDevice;
+                        return this->electronicDevice;
     
 }
 
 
-    public string getFax(){
+    public: std::string getFax(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fax;
+                        return this->fax;
     
 }
 
 
-    public UserRole getRole(){
+    public: UserRole getRole(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.role;
+                        return this->role;
     
 }
 
 
-    public string getPermissions(){
+    public: std::string getPermissions(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.permissions;
+                        return this->permissions;
     
 }
 
 
-    public string getEncryption(){
+    public: std::string getEncryption(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.encryption;
+                        return this->encryption;
     
 }
 
 
-    public string getSecret(){
+    public: std::string getSecret(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.secret;
+                        return this->secret;
     
 }
 
 
-    public string getPassword(){
+    public: std::string getPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.password.get();;
+                        return this->password.get();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
-values.add(this.userName);
+values.add(this->userName);
     
-values.add(this.prefixName);
+values.add(this->prefixName);
     
-values.add(this.firstName);
+values.add(this->firstName);
     
-values.add(this.lastName);
+values.add(this->lastName);
     
-values.add(this.middleName);
+values.add(this->middleName);
     
-values.add(this.suffixName);
+values.add(this->suffixName);
     
-values.add(this.company);
+values.add(this->company);
     
-values.add(this.positionAtCompany);
+values.add(this->positionAtCompany);
     
-values.add(this.mainEmail);
+values.add(this->mainEmail);
     
-values.add(this.secondaryEmail);
+values.add(this->secondaryEmail);
     
-values.add(this.homePhone);
+values.add(this->homePhone);
     
-values.add(this.cellPhone);
+values.add(this->cellPhone);
     
-values.add(this.workPhone);
+values.add(this->workPhone);
     
-values.add(this.otherContact);
+values.add(this->otherContact);
     
-values.add(this.electronicDevice);
+values.add(this->electronicDevice);
     
-values.add(this.fax);
+values.add(this->fax);
     
-values.add(this.getRole()!.toString());
-    
-
-    userConfigurationDomDocumentMapping: UserConfigurationDomDocumentMapping = new UserConfigurationDomDocumentMapping(this.getUserConfigurationInterface());;
-    
-values.add(userConfigurationDomDocumentMapping!.toDomDocumentString());
-    
-values.add(this.permissions);
-    
-values.addAll(this.password.toVector(this.secret));
-    
-values.add(this.enable);
+values.add(this->getRole().toString());
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    UserConfigurationDomDocumentMapping userConfigurationDomDocumentMapping = UserConfigurationDomDocumentMapping(this->getUserConfigurationInterface());;
+    
+values.add(userConfigurationDomDocumentMapping.toDomDocumentString());
+    
+values.add(this->permissions);
+    
+values.addAll(this->password.toVector(this->secret));
+    
+values.add(this->enable);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
+    
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 values.add(time);
     
@@ -873,71 +865,71 @@ values.add(time);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    values: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> values = HashMap<any, any>();;
     
-values.put(UserData.USERNAME, userName);
+values.put(UserData::USERNAME, userName);
     
-values.put(UserData.PREFIXNAME, prefixName);
+values.put(UserData::PREFIXNAME, prefixName);
     
-values.put(UserData.FIRSTNAME, firstName);
+values.put(UserData::FIRSTNAME, firstName);
     
-values.put(UserData.LASTNAME, lastName);
+values.put(UserData::LASTNAME, lastName);
     
-values.put(UserData.MIDDLENAME, middleName);
+values.put(UserData::MIDDLENAME, middleName);
     
-values.put(UserData.SUFFIXNAME, suffixName);
+values.put(UserData::SUFFIXNAME, suffixName);
     
-values.put(UserData.COMPANY, company);
+values.put(UserData::COMPANY, company);
     
-values.put(UserData.POSITIONATCOMPANY, positionAtCompany);
+values.put(UserData::POSITIONATCOMPANY, positionAtCompany);
     
-values.put(UserData.MAINEMAIL, mainEmail);
+values.put(UserData::MAINEMAIL, mainEmail);
     
-values.put(UserData.SECONDARYEMAIL, secondaryEmail);
+values.put(UserData::SECONDARYEMAIL, secondaryEmail);
     
-values.put(UserData.HOMEPHONE, homePhone);
+values.put(UserData::HOMEPHONE, homePhone);
     
-values.put(UserData.CELLPHONE, cellPhone);
+values.put(UserData::CELLPHONE, cellPhone);
     
-values.put(UserData.WORKPHONE, workPhone);
+values.put(UserData::WORKPHONE, workPhone);
     
-values.put(UserData.OTHERCONTACT, otherContact);
+values.put(UserData::OTHERCONTACT, otherContact);
     
-values.put(UserData.ELECTRONICDEVICE, electronicDevice);
+values.put(UserData::ELECTRONICDEVICE, electronicDevice);
     
-values.put(UserData.FAX, fax);
+values.put(UserData::FAX, fax);
     
 
-                        if(this.getRole() != 
-                                    null
+                        if(this->getRole() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    values.put(UserRoleData.NAME.toString(), this.getRole()!.toString());
+                                    values.put(UserRoleData::NAME.toString(), this->getRole().toString());
     
 
                                     }
                                 
 
-    userConfigurationDomDocumentMapping: UserConfigurationDomDocumentMapping = new UserConfigurationDomDocumentMapping(this.getUserConfigurationInterface());;
+    UserConfigurationDomDocumentMapping userConfigurationDomDocumentMapping = UserConfigurationDomDocumentMapping(this->getUserConfigurationInterface());;
     
-values.put(UserData.CONFIGURATION, userConfigurationDomDocumentMapping!.toDomDocumentString());
+values.put(UserData::CONFIGURATION, userConfigurationDomDocumentMapping.toDomDocumentString());
     
-values.put(UserData.PERMISSIONS, this.permissions);
+values.put(UserData::PERMISSIONS, this->permissions);
     
-values.putAll(this.password.toHashMap(this.secret));
+values.putAll(this->password.toHashMap(this->secret));
     
-values.put(EntryData.getInstance()!.ENABLE, this.enable);
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+values.put(EntryData::getInstance().ENABLE, this->enable);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-values.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+values.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -948,63 +940,53 @@ values.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public HashMap<any, any> toPasswordHashMap(){
+    public: HashMap<any, any> toPasswordHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.password.toHashMap(this.secret);;
+                        return this->password.toHashMap(this->secret);;
     
 }
 
 
-    public validateSession(WeblisketSessionInterface weblisketSession){
-weblisketSession!.setAuthenticated();
+    public: void validateSession(WeblisketSessionInterface weblisketSession){
+weblisketSession.setAuthenticated();
     
-weblisketSession!.setRole(this.getRole());
+weblisketSession.setRole(this->getRole());
     
-weblisketSession!.setUserName(this.getUserName());
+weblisketSession.setUserName(this->getUserName());
     
 }
 
 
-    public updateSession(WeblisketSessionInterface weblisketSession){
+    public: void updateSession(WeblisketSessionInterface weblisketSession){
 }
 
 
-    public Boolean isSessionValid(){
+    public: Boolean isSessionValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userName;
+                        return this->userName;
     
 }
 
 
-    public Document toValidationInfoDoc(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public Node toValidationInfoNode(Document document){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -1014,18 +996,28 @@ weblisketSession!.setUserName(this.getUserName());
 }
 
 
-    public UserConfigurationInterface getUserConfigurationInterface(){
+    public: Node toValidationInfoNode(Document document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userConfigurationInterface;
+                        return nullptr;
     
 }
 
 
-    public setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface){
-this.userConfigurationInterface= userConfigurationInterface;
+    public: UserConfigurationInterface getUserConfigurationInterface(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->userConfigurationInterface;
+    
+}
+
+
+    public: void setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface){
+this->userConfigurationInterface= userConfigurationInterface;
     
 }
 

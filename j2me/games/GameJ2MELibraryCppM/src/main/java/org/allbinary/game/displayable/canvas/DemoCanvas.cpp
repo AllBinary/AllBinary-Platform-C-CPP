@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Thread.h"
@@ -369,189 +371,188 @@
 #include "DemoCanvasProgressUtil.h"
 #include "DemoGameRunnable.h"
 
-class DemoCanvas: public RunnableCanvas: public GameCanvasRunnableInterface, public MenuListener, public DisplayChangeEventListener, public DemoPaintableInterface {
-        
+class DemoCanvas: public RunnableCanvas, public GameCanvasRunnableInterface, public MenuListener, public DisplayChangeEventListener, public DemoPaintableInterface {
 
-    private: static const id: int32_t = 0;
+    private: static const int32_t id = 0;
 
-    private: static const BOT_GAME_STATS: string = "Bot Game Statistics: ";
+    private: static const std::string BOT_GAME_STATS = "Bot Game Statistics: ";
 
-    public static const TYPE: int32_t = 3;
+    public: static const int32_t TYPE = 3;
 
-    const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    protected: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    const myCommandsFactory: MyCommandsFactory = MyCommandsFactory.getInstance()!;
+    protected: const MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();
 
-    const gameAdStateFactory: GameAdStateFactory = GameAdStateFactory.getInstance()!;
+    protected: const GameAdStateFactory gameAdStateFactory = GameAdStateFactory::getInstance();
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    private: const threadFactoryUtil: ThreadFactoryUtil = ThreadFactoryUtil.getInstance()!;
+    private: const ThreadFactoryUtil threadFactoryUtil = ThreadFactoryUtil::getInstance();
 
-    const formUtil: FormUtil = FormUtil.getInstance()!;
+    protected: const FormUtil formUtil = FormUtil::getInstance();
 
-    fullscreenPaintable: Paintable = FullScreenPaintableFactory.getInstance()!.paintable;
+    protected: Paintable fullscreenPaintable = FullScreenPaintableFactory::getInstance().paintable;
 
-    private: basicGameDemoPaintable: StatePaintable = StatePaintableFactory.getInstance()!;
+    private: StatePaintable basicGameDemoPaintable = StatePaintableFactory::getInstance();
 
-    private: specialAnimationInterface: SpecialAnimation = SpecialAnimation.getInstance()!;
+    private: SpecialAnimation specialAnimationInterface = SpecialAnimation::getInstance();
 
-    private: paintedSpecialAnimationInterface: Animation = SpecialAnimation.getInstance()!;
+    private: Animation paintedSpecialAnimationInterface = SpecialAnimation::getInstance();
 
-    private: const fullScreenUtil: FullScreenUtil = FullScreenUtil.getInstance()!;
+    private: const FullScreenUtil fullScreenUtil = FullScreenUtil::getInstance();
 
-    private: gameCanvas: AllBinaryGameCanvas = NullGameCanvas.getInstance()!;
+    private: AllBinaryGameCanvas gameCanvas = NullGameCanvas::getInstance();
 
-    private: const highScoresHelper: HighScoresHelperBase = new HighScoresHelper();
+    private: const HighScoresHelperBase highScoresHelper = HighScoresHelper();
 
-    private: const realHighScoresPaintable: HighScoresPaintable = new HighScoresPaintable();
+    private: const HighScoresPaintable realHighScoresPaintable = HighScoresPaintable();
 
-    private: highScoresPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable highScoresPaintable = NullPaintable::getInstance();
 
-    private: state: int32_t = 0;
+    private: int32_t state = 0;
 
-    private: canvasThread: Thread = NullThread.NULL_THREAD;
+    private: Thread canvasThread = NullThread::NULL_THREAD;
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(6000);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(6000);
 
-    private: basicColor: BasicColor = this.basicColorFactory!.RED;
+    private: BasicColor basicColor = this->basicColorFactory.RED;
 
-    const abeClientInformation: AbeClientInformationInterface;
+    protected: AbeClientInformationInterface abeClientInformation;
 
-    private: const highScoresFactoryInterface: HighScoresFactoryInterface;
+    private: HighScoresFactoryInterface highScoresFactoryInterface;
 
-    private: menuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: menuForm: ScrollSelectionForm = ScrollSelectionForm.getNullScrollSelectionForm()!;
+    private: ScrollSelectionForm menuForm = ScrollSelectionForm::getNullScrollSelectionForm();
 
-    private: const gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory;
+    private: BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface;
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-    private: const demoGameRunnable: DemoGameStartupRunnable;
+    private: DemoGameStartupRunnable demoGameRunnable;
 
-    private: defaultPaintableInterface: Paintable = NullPaintable.getInstance()!;
+    private: Paintable defaultPaintableInterface = NullPaintable::getInstance();
 
-    private: paintableInterface: PaintableInterface = NullPaintable.getInstance()!;
+    private: PaintableInterface paintableInterface = NullPaintable::getInstance();
 
-    private: const overlayPaintable: InitUpdatePaintable;
+    private: InitUpdatePaintable overlayPaintable;
 
-    private: const progressPaintable: PaintableInterface = ProgressCanvasFactory.getLazyInstance()!;
+    private: const PaintableInterface progressPaintable = ProgressCanvasFactory::getLazyInstance();
 
-    private: tempWait: int32_t = NullWaitGameRunnable.getInstance()!.WAIT;
+    private: int32_t tempWait = NullWaitGameRunnable::getInstance().WAIT;
 
-    private: const inputToGameKeyMapping: InputToGameKeyMapping = PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping()!;
+    private: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
 
-    gameRunnable: GameRunnable = NullWaitGameRunnable.getInstance()!;
+    protected: GameRunnable gameRunnable = NullWaitGameRunnable::getInstance();
 
-public constructor (AbeClientInformationInterface abeClientInformation, CommandListener commandListener, HighScoresFactoryInterface highScoresFactoryInterface, Paintable paintable, InitUpdatePaintable overlayPaintable, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool isContinue){
-            super(commandListener, CurrentDisplayableFactory.getInstance()!.DEFAULT_CHILD_NAME_LIST, true);
+public: DemoCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, HighScoresFactoryInterface highScoresFactoryInterface, Paintable paintable, InitUpdatePaintable overlayPaintable, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool isContinue){
+            super(commandListener, CurrentDisplayableFactory::getInstance().DEFAULT_CHILD_NAME_LIST, true);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abeClientInformation= abeClientInformation;
+this->abeClientInformation= abeClientInformation;
     
-this.setWait(NullWaitGameRunnable.getInstance()!.WAIT);
+this->setWait(NullWaitGameRunnable::getInstance().WAIT);
     
-this.gameInitializationInterfaceFactoryInterface= gameInitializationInterfaceFactoryInterface;
+this->gameInitializationInterfaceFactoryInterface= gameInitializationInterfaceFactoryInterface;
     
-GameInitializationUtil.getInstance()!.initDemo(abeClientInformation, this, gameInitializationInterfaceFactoryInterface);
+GameInitializationUtil::getInstance().initDemo(abeClientInformation, this, gameInitializationInterfaceFactoryInterface);
     
-ResizableListenerHandler.getInstance()!.fireEvent(false);
+ResizableListenerHandler::getInstance().fireEvent(false);
     
-this.overlayPaintable= overlayPaintable;
+this->overlayPaintable= overlayPaintable;
     
-this.highScoresFactoryInterface= highScoresFactoryInterface;
+this->highScoresFactoryInterface= highScoresFactoryInterface;
     
-this.setDefaultPaintableInterface(paintable);
+this->setDefaultPaintableInterface(paintable);
     
-this.setPaintableInterface(this.getDefaultPaintableInterface());
+this->setPaintableInterface(this->getDefaultPaintableInterface());
     
 
                         if(isContinue)
                         
                                     {
-                                    this.addCommand(GameCommandsFactory.getInstance()!.CONTINUE_COMMAND);
+                                    this->addCommand(GameCommandsFactory::getInstance().CONTINUE_COMMAND);
     
 
                                     }
                                 
 
-                        if(ChangedGameFeatureListener.getInstance()!.isChangedFeature(GameFeatureFactory.getInstance()!.SOUND))
+                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(GameFeatureFactory::getInstance().SOUND))
                         
                                     {
-                                    this.mediaInit();
+                                    this->mediaInit();
     
 
                                     }
                                 
-this.demoGameRunnable= new DemoGameStartupRunnable(this);
+this->demoGameRunnable= DemoGameStartupRunnable(this);
     
-DisplayChangeEventHandler.getInstance()!.addListenerInterface(this);
-    
-}
-
-
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+DisplayChangeEventHandler::getInstance().addListenerInterface(this);
     
 }
 
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
+    
+}
+
+
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
 
         try {
-            this.logUtil!.putF(new StringMaker().append(this.commonLabels!.START_LABEL)!.append(this.displayInfo!.toString())!.toString(), this, this.canvasStrings!.ON_DISPLAY_CHANGE_EVENT);
+            this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(this->displayInfo.toString()).toString(), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
     
 
-    scrollSelectionForm: ScrollSelectionForm = this.getMenuForm()!;;
+    ScrollSelectionForm scrollSelectionForm = this->getMenuForm();;
     
 
                         if(scrollSelectionForm != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    formType: FormType = FormTypeFactory.getInstance()!.getFormType()!;;
+    FormType formType = FormTypeFactory::getInstance().getFormType();;
     
 
-    rectangle: Rectangle = this.formUtil!.createFormRectangle()!;;
+    Rectangle rectangle = this->formUtil.createFormRectangle();;
     
-scrollSelectionForm!.init(rectangle, formType);
+scrollSelectionForm.init(rectangle, formType);
     
 
                                     }
                                 
-this.overlayPaintable!.init();
+this->overlayPaintable.init();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.canvasStrings!.ON_DISPLAY_CHANGE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, e);
     
 }
 
 }
 
 
-    std::vector<any> getCustomCommands(){
+    protected: std::vector<Object*> getCustomCommands(){
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-                        if(J2MEUtil.isHTML())
+                        if(J2MEUtil::isHTML())
                         
                                     {
                                     
-    commandArray: std::vector<any> = 
-                                                        [
-                                                            gameCommandsFactory!.START_COMMAND,HighScoreCommands.getInstance()!.DISPLAY,GameInputMappingCanvas.DISPLAY,gameCommandsFactory!.DISPLAY_ABOUT
-                                                        ];;
+    std::vector<Object*> commandArray = 
+                                                        {
+                                                            gameCommandsFactory.START_COMMAND,HighScoreCommands::getInstance().DISPLAY,GameInputMappingCanvas::DISPLAY,gameCommandsFactory.DISPLAY_ABOUT
+                                                        };;
     
 
 
@@ -564,25 +565,25 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.canvasStrings!.ON_DI
                                 
                         else {
                             
-    commandList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList commandList = BasicArrayListD();;
     
-commandList!.add(gameCommandsFactory!.START_COMMAND);
-    
-
-    inApplicationPurchaseFactory: InApplicationPurchaseFactory = InApplicationPurchaseFactory.getInstance()!;;
+commandList.add(gameCommandsFactory.START_COMMAND);
     
 
-                        if(inApplicationPurchaseFactory!.isEnabled())
+    InApplicationPurchaseFactory inApplicationPurchaseFactory = InApplicationPurchaseFactory::getInstance();;
+    
+
+                        if(inApplicationPurchaseFactory.isEnabled())
                         
                                     {
                                     
-    list: BasicArrayList = LockableFeatureFactory.getInstance()!.getList()!;;
+    BasicArrayList list = LockableFeatureFactory::getInstance().getList();;
     
 
-                        if(list.size() > 0 && !inApplicationPurchaseFactory!.isPurchased(list.get(0) as LockableFeature))
+                        if(list.size() > 0 && !inApplicationPurchaseFactory.isPurchased(list.get(0) as LockableFeature))
                         
                                     {
-                                    commandList!.add(gameCommandsFactory!.BUY_COMMAND);
+                                    commandList.add(gameCommandsFactory.BUY_COMMAND);
     
 
                                     }
@@ -590,18 +591,18 @@ commandList!.add(gameCommandsFactory!.START_COMMAND);
 
                                     }
                                 
-commandList!.add(HighScoreCommands.getInstance()!.DISPLAY);
+commandList.add(HighScoreCommands::getInstance().DISPLAY);
     
 
         try {
             
-    isOverScan: bool = OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!.isOverScan()!;;
+    bool isOverScan = OperatingSystemFactory::getInstance().getOperatingSystemInstance().isOverScan();;
     
 
-                        if(SWTUtil.isSWT)
+                        if(SWTUtil::isSWT)
                         
                                     {
-                                    commandList!.add(GameInputMappingCanvas.DISPLAY);
+                                    commandList.add(GameInputMappingCanvas::DISPLAY);
     
 
                                     }
@@ -610,11 +611,11 @@ commandList!.add(HighScoreCommands.getInstance()!.DISPLAY);
                         if(!isOverScan)
                         
                                     {
-                                    commandList!.add(gameCommandsFactory!.DISPLAY_OPTIONS);
+                                    commandList.add(gameCommandsFactory.DISPLAY_OPTIONS);
     
-commandList!.add(gameCommandsFactory!.DISPLAY_LOAD_FORM);
+commandList.add(gameCommandsFactory.DISPLAY_LOAD_FORM);
     
-commandList!.add(GameInputMappingCanvas.DISPLAY);
+commandList.add(GameInputMappingCanvas::DISPLAY);
     
 
                                     }
@@ -625,10 +626,10 @@ commandList!.add(GameInputMappingCanvas.DISPLAY);
             {
 }
 
-commandList!.add(gameCommandsFactory!.DISPLAY_ABOUT);
+commandList.add(gameCommandsFactory.DISPLAY_ABOUT);
     
 
-    commandArray: std::vector<any> = commandList!.toArray()!;;
+    std::vector<Object*> commandArray = commandList.toArray();;
     
 
 
@@ -642,164 +643,163 @@ commandList!.add(gameCommandsFactory!.DISPLAY_ABOUT);
 }
 
 
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
     
 
-    commandArray: std::vector<any> = this.getCustomCommands()!;;
+    std::vector<Object*> commandArray = this->getCustomCommands();;
     
 
-    size: int32_t = commandArray!.length
-                ;;
+    int32_t size = commandArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.addCommand(commandArray[index]! as Command);
+this->addCommand(commandArray[index]! as Command);
     
 }
 
-CustomGameMenuUtil.add(this);
+CustomGameMenuUtil::add(this);
     
-this.setCommandListener(cmdListener);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public initPostPaint(){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public mediaInit(){
-AllBinaryMediaManager.init(EarlySoundsFactory.getInstance());
-    
-}
-
-
-    public itemStateChanged(Item item){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+this->setCommandListener(cmdListener);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initMenu(){
-this.close();
+    public: void initPostPaint(){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void mediaInit(){
+AllBinaryMediaManager::init(EarlySoundsFactory::getInstance());
+    
+}
+
+
+    public: void itemStateChanged(Item item){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    protected: void initMenu(){
+this->close();
     
 
-    commandTextItemArrayFactory: CommandTextItemArrayFactory = DemoLimitedCommandTextItemArrayFactory.getInstance()!.getCommandTextItemArrayFactory()!;;
+    CommandTextItemArrayFactory commandTextItemArrayFactory = DemoLimitedCommandTextItemArrayFactory::getInstance().getCommandTextItemArrayFactory();;
     
 
-    items: std::vector<ABCustomItem> = commandTextItemArrayFactory!.getInstance(this.getCommandStack() as Vector<any>, this.basicColorFactory!.BLACK, this.basicColorFactory!.WHITE)!;;
+    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack() as Vector<any>, this->basicColorFactory.BLACK, this->basicColorFactory.WHITE);;
     
 
-    formType: FormType = FormTypeFactory.getInstance()!.getFormType()!;;
+    FormType formType = FormTypeFactory::getInstance().getFormType();;
     
 
-    rectangle: Rectangle = this.formUtil!.createFormRectangle()!;;
+    Rectangle rectangle = this->formUtil.createFormRectangle();;
     
-PreLogUtil.put(new StringMaker().append(this.commonLabels!.START_LABEL)!.append(this.displayInfo!.toString())!.toString(), this, "initMenu");
-    
-
-    scrollSelectionForm: ScrollSelectionForm = CommandCurrentSelectionFormFactory.getInstance(StringUtil.getInstance()!.EMPTY_STRING, items, rectangle, formType, 15, true, this.basicColorFactory!.BLACK, this.basicColorFactory!.WHITE)!;;
-    
-this.setMenuForm(scrollSelectionForm);
+PreLogUtil::put(StringMaker().append(this->commonLabels.START_LABEL).append(this->displayInfo.toString()).toString(), this, "initMenu");
     
 
-    formType2: FormType = FormTypeFactory.getInstance()!.getFormType()!;;
+    ScrollSelectionForm scrollSelectionForm = CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance().EMPTY_STRING, items, rectangle, formType, 15, true, this->basicColorFactory.BLACK, this->basicColorFactory.WHITE);;
+    
+this->setMenuForm(scrollSelectionForm);
     
 
-    rectangle2: Rectangle = this.formUtil!.createFormRectangle()!;;
-    
-scrollSelectionForm!.init(rectangle2, formType2);
+    FormType formType2 = FormTypeFactory::getInstance().getFormType();;
     
 
-                        if(this.getMenuForm() != ScrollSelectionFormNoneFactory.getInstance())
+    Rectangle rectangle2 = this->formUtil.createFormRectangle();;
+    
+scrollSelectionForm.init(rectangle2, formType2);
+    
+
+                        if(this->getMenuForm() != ScrollSelectionFormNoneFactory::getInstance())
                         
                                     {
-                                    this.setMenuInputProcessor(new CommandFormInputProcessor(new BasicArrayListD(),  -1, this, this.getMenuForm()));
+                                    this->setMenuInputProcessor(CommandFormInputProcessor(BasicArrayListD(),  -1, this, this->getMenuForm()));
     
 
                                     }
                                 
-this.open();
+this->open();
     
 }
 
 
-    public open(){
-BasicMotionGesturesHandler.getInstance()!.addListenerInterface(this.getMenuInputProcessor());
+    public: void open(){
+BasicMotionGesturesHandler::getInstance().addListenerInterface(this->getMenuInputProcessor());
     
-GameKeyEventHandler.getInstance()!.addListener(this.getMenuInputProcessor());
-    
-}
-
-
-    public close(){
-BasicMotionGesturesHandler.getInstance()!.removeListener(this.getMenuInputProcessor());
-    
-GameKeyEventHandler.getInstance()!.removeListener(this.getMenuInputProcessor());
+GameKeyEventHandler::getInstance().addListener(this->getMenuInputProcessor());
     
 }
 
 
-    public int32_t getSourceId(){
+    public: void close(){
+BasicMotionGesturesHandler::getInstance().removeListener(this->getMenuInputProcessor());
+    
+GameKeyEventHandler::getInstance().removeListener(this->getMenuInputProcessor());
+    
+}
+
+
+    public: int32_t getSourceId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoCanvas.id;
+                        return DemoCanvas::id;
     
 }
 
 
-    public keyPressed(int32_t keyCode){
-this.keyPressedByDevice(keyCode, 0);
+    public: void keyPressed(int32_t keyCode){
+this->keyPressedByDevice(keyCode, 0);
     
 }
 
 
-    public keyReleased(int32_t keyCode){
-this.keyReleasedByDevice(keyCode, 0);
+    public: void keyReleased(int32_t keyCode){
+this->keyReleasedByDevice(keyCode, 0);
     
 }
 
 
-    public keyRepeated(int32_t keyCode){
-this.keyRepeatedByDevice(keyCode, 0);
+    public: void keyRepeated(int32_t keyCode){
+this->keyRepeatedByDevice(keyCode, 0);
     
 }
 
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId){
-this.addGameKeyEvent(keyCode, false);
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+this->addGameKeyEvent(keyCode, false);
     
 }
 
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
-this.removeGameKeyEvent(keyCode, false);
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
+this->removeGameKeyEvent(keyCode, false);
     
 }
 
 
-    private: isSingleKeyRepeatableProcessing: bool = Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_REPEAT_PRESS)!;
+    private: bool isSingleKeyRepeatableProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS);
 
-    public keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
 
-                        if(this.isSingleKeyRepeatableProcessing)
+                        if(this->isSingleKeyRepeatableProcessing)
                         
                                     {
-                                    this.addGameKeyEvent(keyCode, true);
+                                    this->addGameKeyEvent(keyCode, true);
     
 
                                     }
@@ -807,38 +807,38 @@ this.removeGameKeyEvent(keyCode, false);
 }
 
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: lastKeyNotMapped: int32_t =  -1;
+    private: int32_t lastKeyNotMapped =  -1;
 
-    addGameKeyEvent(int32_t keyCode, bool repeated){
+    private: void addGameKeyEvent(int32_t keyCode, bool repeated){
 
         try {
             
-    gameKey: GameKey = this.inputToGameKeyMapping!.getInstanceForCanvas(this, keyCode)!;;
+    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this, keyCode);;
     
 
-                        if(gameKey != this.NONE)
+                        if(gameKey != this->NONE)
                         
                                     {
                                     
-    gameKeyEvent: GameKeyEvent = this.gameKeyEventFactory!.getInstanceForInput(this, gameKey)!;;
+    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(this, gameKey);;
     
-DownGameKeyEventHandler.getInstance()!.fireEvent(gameKeyEvent);
+DownGameKeyEventHandler::getInstance().fireEvent(gameKeyEvent);
     
 
                                     }
                                 
                         else {
                             
-                        if(this.lastKeyNotMapped != keyCode)
+                        if(this->lastKeyNotMapped != keyCode)
                         
                                     {
-                                    this.lastKeyNotMapped= keyCode;
+                                    this->lastKeyNotMapped= keyCode;
     
-this.logUtil!.putF(new StringMaker().append(this.gameInputStrings!.NO_KEY)!.appendint(keyCode)!.toString(), this, this.gameInputStrings!.ADD_KEY_EVENT);
+this->logUtil.putF(StringMaker().append(this->gameInputStrings.NO_KEY).appendint(keyCode).toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
     
 
                                     }
@@ -850,33 +850,33 @@ this.logUtil!.putF(new StringMaker().append(this.gameInputStrings!.NO_KEY)!.appe
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Key Event Error", this, this.gameInputStrings!.ADD_KEY_EVENT, e);
+this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, e);
     
 }
 
 }
 
 
-    removeGameKeyEvent(int32_t keyCode, bool repeated){
+    private: void removeGameKeyEvent(int32_t keyCode, bool repeated){
 
         try {
             
-    gameKey: GameKey = this.inputToGameKeyMapping!.getInstanceForCanvas(this, keyCode)!;;
+    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this, keyCode);;
     
 
-                        if(gameKey != this.NONE)
+                        if(gameKey != this->NONE)
                         
                                     {
                                     
-    gameKeyEvent: GameKeyEvent = this.gameKeyEventFactory!.getInstanceForInput(this, gameKey)!;;
+    GameKeyEvent gameKeyEvent = this->gameKeyEventFactory.getInstanceForInput(this, gameKey);;
     
-UpGameKeyEventHandler.getInstance()!.fireEvent(gameKeyEvent);
+UpGameKeyEventHandler::getInstance().fireEvent(gameKeyEvent);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF(new StringMaker().append(this.gameInputStrings!.NO_KEY)!.appendint(keyCode)!.toString(), this, this.gameInputStrings!.REMOVE_KEY_EVENT);
+                            this->logUtil.putF(StringMaker().append(this->gameInputStrings.NO_KEY).appendint(keyCode).toString(), this, this->gameInputStrings.REMOVE_KEY_EVENT);
     
 
                         }
@@ -885,7 +885,7 @@ UpGameKeyEventHandler.getInstance()!.fireEvent(gameKeyEvent);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Key Event Error", this, this.gameInputStrings!.REMOVE_KEY_EVENT, e);
+this->logUtil.put("Key Event Error", this, this->gameInputStrings.REMOVE_KEY_EVENT, e);
     
 }
 
@@ -893,34 +893,34 @@ this.logUtil!.put("Key Event Error", this, this.gameInputStrings!.REMOVE_KEY_EVE
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public pause(){
-this.close();
+    public: void pause(){
+this->close();
     
-this.setPaused(true);
+this->setPaused(true);
     
-this.gameRunnable= NullWaitGameRunnable.getInstance();
+this->gameRunnable= NullWaitGameRunnable::getInstance();
     
-this.gameCanvas!.pause();
+this->gameCanvas.pause();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public unPause(){
-this.open();
+    public: void unPause(){
+this->open();
     
-this.gameCanvas!.unPause();
+this->gameCanvas.unPause();
     
-this.gameRunnable= this.gameCanvas!.gameRunnable;
+this->gameRunnable= this->gameCanvas.gameRunnable;
     
-this.setPaused(false);
+this->setPaused(false);
     
 }
 
 
-    public bool isPausable(){
+    public: bool isPausable(){
 
-                        if(CurrentDisplayableFactory.getInstance()!.getUsedRunnable() == NullWaitGameRunnable.getInstance())
+                        if(CurrentDisplayableFactory::getInstance().getUsedRunnable() == NullWaitGameRunnable::getInstance())
                         
                                     {
                                     
@@ -945,8 +945,8 @@ this.setPaused(false);
 }
 
 
-    public bool isGameOver(){
-this.logUtil!.putF(new StringMaker().append(this.commonStrings!.NOT_IMPLEMENTED)!.append(" since not a game")!.toString(), this, "isGameOver");
+    public: bool isGameOver(){
+this->logUtil.putF(StringMaker().append(this->commonStrings.NOT_IMPLEMENTED).append(" since not a game").toString(), this, "isGameOver");
     
 
 
@@ -959,80 +959,80 @@ this.logUtil!.putF(new StringMaker().append(this.commonStrings!.NOT_IMPLEMENTED)
 
                 //@Throws(Exception.constructor)
             
-    public setLoadStateHashtable(Hashtable<any, any> hashtable){
-this.logUtil!.putF("Trying to continue a demo lol - only continue a game canvas not the demo", this, "setLoadStateHashtable");
+    public: void setLoadStateHashtable(Hashtable<any, any> hashtable){
+this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas not the demo", this, "setLoadStateHashtable");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getLoadStateHashtable(){
-this.logUtil!.putF("Trying to continue a demo lol - only continue a game canvas not the demo", this, "getLoadStateHashtable");
+    public: Hashtable<any, any> getLoadStateHashtable(){
+this->logUtil.putF("Trying to continue a demo lol - only continue a game canvas not the demo", this, "getLoadStateHashtable");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nullUtil!.NULL_TABLE;
+                        return this->nullUtil.NULL_TABLE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getCurrentStateHashtable(){
-this.logUtil!.putF("Trying to save the AI lol", this, "getCurrentStateHashtable");
+    public: Hashtable<any, any> getCurrentStateHashtable(){
+this->logUtil.putF("Trying to save the AI lol", this, "getCurrentStateHashtable");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nullUtil!.NULL_TABLE;
+                        return this->nullUtil.NULL_TABLE;
     
 }
 
 
-    public setHighScoreSubmitted(bool isNotUsed){
+    public: void setHighScoreSubmitted(bool isNotUsed){
 }
 
 
-    public paint(Graphics graphics){
-this.paintableInterface!.paint(graphics);
+    public: void paint(Graphics graphics){
+this->paintableInterface.paint(graphics);
     
-this.paintedSpecialAnimationInterface!.paintXY(graphics, 0, 0);
+this->paintedSpecialAnimationInterface.paintXY(graphics, 0, 0);
     
-this.highScoresPaintable!.paint(graphics);
+this->highScoresPaintable.paint(graphics);
     
-this.getBasicGameDemoPaintable()!.paint(graphics);
+this->getBasicGameDemoPaintable().paint(graphics);
     
-this.overlayPaintable!.paint(graphics);
+this->overlayPaintable.paint(graphics);
     
-this.fullscreenPaintable!.paint(graphics);
+this->fullscreenPaintable.paint(graphics);
     
-this.progressPaintable!.paint(graphics);
+this->progressPaintable.paint(graphics);
     
 }
 
 
-    public paintThreed(Graphics graphics){
-this.paintableInterface!.paintThreed(graphics);
+    public: void paintThreed(Graphics graphics){
+this->paintableInterface.paintThreed(graphics);
     
-this.paintedSpecialAnimationInterface!.paintThreedXYZ(graphics, 0, 0, 0);
+this->paintedSpecialAnimationInterface.paintThreedXYZ(graphics, 0, 0, 0);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public processGameOver(){
-this.logUtil!.putF("Not Implemented since not a game", this, "setGameOver");
+    public: void processGameOver(){
+this->logUtil.putF("Not Implemented since not a game", this, "setGameOver");
     
 }
 
 
-    demoStateChange(){
+    protected: void demoStateChange(){
 
-    newState: int32_t = this.state +1;;
+    int32_t newState = this->state +1;;
     
 
                         if(newState > 2)
@@ -1048,7 +1048,7 @@ this.logUtil!.putF("Not Implemented since not a game", this, "setGameOver");
                         
                                     {
                                     
-                        if(!this.highScoresHelper!.isAnyHighScores())
+                        if(!this->highScoresHelper.isAnyHighScores())
                         
                                     {
                                     newState= 0;
@@ -1058,10 +1058,10 @@ this.logUtil!.putF("Not Implemented since not a game", this, "setGameOver");
                                 
                         else {
                             
-    highScores: HighScores = this.highScoresHelper!.getNextHighScores()!;;
+    HighScores highScores = this->highScoresHelper.getNextHighScores();;
     
 
-                        if(highScores == NullHighScoresSingletonFactory.getInstance())
+                        if(highScores == NullHighScoresSingletonFactory::getInstance())
                         
                                     {
                                     newState= 0;
@@ -1070,7 +1070,7 @@ this.logUtil!.putF("Not Implemented since not a game", this, "setGameOver");
                                     }
                                 
                         else {
-                            this.getRealHighScoresPaintable()!.setHighScores(highScores);
+                            this->getRealHighScoresPaintable().setHighScores(highScores);
     
 
                         }
@@ -1081,33 +1081,33 @@ this.logUtil!.putF("Not Implemented since not a game", this, "setGameOver");
 
                                     }
                                 
-this.setState(newState);
+this->setState(newState);
     
-this.updateDemoState();
+this->updateDemoState();
     
 }
 
 
-    private: const SET_STATE: string = "setState";
+    private: const std::string SET_STATE = "setState";
 
-    updateDemoState(){
-PreLogUtil.put(SmallIntegerSingletonFactory.getInstance()!.createInstance(this.state)!.toString(), this, this.SET_STATE);
+    protected: void updateDemoState(){
+PreLogUtil::put(SmallIntegerSingletonFactory::getInstance().createInstance(this->state).toString(), this, this->SET_STATE);
     
-this.getBasicGameDemoPaintable()!.setState(this.state);
+this->getBasicGameDemoPaintable().setState(this->state);
     
 
-                        if(this.state == 0)
+                        if(this->state == 0)
                         
                                     {
-                                    this.highScoresPaintable= NullPaintable.getInstance();
+                                    this->highScoresPaintable= NullPaintable::getInstance();
     
-this.paintedSpecialAnimationInterface= this.getSpecialAnimationInterface();
+this->paintedSpecialAnimationInterface= this->getSpecialAnimationInterface();
     
 
-                        if(!this.demoGameRunnable!.isRunning() && this.gameCanvas!.isInitialized())
+                        if(!this->demoGameRunnable.isRunning() && this->gameCanvas.isInitialized())
                         
                                     {
-                                    this.getSpecialAnimationInterface()!.reset();
+                                    this->getSpecialAnimationInterface().reset();
     
 
                                     }
@@ -1116,109 +1116,109 @@ this.paintedSpecialAnimationInterface= this.getSpecialAnimationInterface();
                                     }
                                 
                              else 
-                        if(this.state == 1)
+                        if(this->state == 1)
                         
                                     {
-                                    this.paintedSpecialAnimationInterface= SpecialAnimation.getInstance();
+                                    this->paintedSpecialAnimationInterface= SpecialAnimation::getInstance();
     
 
                                     }
                                 
                              else 
-                        if(this.state == 2)
+                        if(this->state == 2)
                         
                                     {
-                                    this.highScoresPaintable= this.getRealHighScoresPaintable();
+                                    this->highScoresPaintable= this->getRealHighScoresPaintable();
     
 
                                     }
                                 
 
-    gameAdState: GameAdState = this.gameAdStateFactory!.getCurrentInstance()!;;
+    GameAdState gameAdState = this->gameAdStateFactory.getCurrentInstance();;
     
-gameAdState!.processPageAdState();
+gameAdState.processPageAdState();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    int32_t getNextRandom(){
+    protected: int32_t getNextRandom(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    AllBinaryGameLayerManager createGameLayerManager(int32_t randomValue){
+    protected: AllBinaryGameLayerManager createGameLayerManager(int32_t randomValue){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    GameCanvasRunnableInterface createRunnable(int32_t randomLevel){
+    protected: GameCanvasRunnableInterface createRunnable(int32_t randomLevel){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    create(){
-PreLogUtil.put(this.commonStrings!.START, this, "create");
+    protected: void create(){
+PreLogUtil::put(this->commonStrings.START, this, "create");
     
-this.highScoresPaintable= NullPaintable.getInstance();
-    
-
-    randomLevel: int32_t = this.getNextRandom()!;;
-    
-this.gameCanvas= this.createRunnable(randomLevel) as AllBinaryGameCanvas;
-    
-this.basicColor= this.gameCanvas!.getLayerManager()!.getForegroundBasicColor();
-    
-this.getRealHighScoresPaintable()!.setBasicColorP(this.basicColor);
-    
-this.gameCanvas!.setGameCanvasStartListener(this);
+this->highScoresPaintable= NullPaintable::getInstance();
     
 
-    gameInfo: GameInfo = this.gameCanvas!.getLayerManager()!.getGameInfo()!;;
+    int32_t randomLevel = this->getNextRandom();;
     
-this.getHighScoresFactoryInterface()!.fetchHighScores(gameInfo, this.highScoresHelper);
+this->gameCanvas= this->createRunnable(randomLevel) as AllBinaryGameCanvas;
+    
+this->basicColor= this->gameCanvas.getLayerManager().getForegroundBasicColor();
+    
+this->getRealHighScoresPaintable().setBasicColorP(this->basicColor);
+    
+this->gameCanvas.setGameCanvasStartListener(this);
+    
+
+    GameInfo gameInfo = this->gameCanvas.getLayerManager().getGameInfo();;
+    
+this->getHighScoresFactoryInterface().fetchHighScores(gameInfo, this->highScoresHelper);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    start(){
+    protected: void start(){
 
-    gameCanvas: AllBinaryGameCanvas = this.gameCanvas;;
+    AllBinaryGameCanvas gameCanvas = this->gameCanvas;;
     
-PreLogUtil.put(new StringMaker().append("Game Thread in DemoCanvas: ")!.append(this.stringUtil!.toString(gameCanvas))!.toString(), this, this.commonStrings!.START);
+PreLogUtil::put(StringMaker().append("Game Thread in DemoCanvas: ").append(this->stringUtil.toString(gameCanvas)).toString(), this, this->commonStrings.START);
     
-this.canvasThread= this.threadFactoryUtil!.getInstanceGameCanvasRunnable(gameCanvas);
+this->canvasThread= this->threadFactoryUtil.getInstanceGameCanvasRunnable(gameCanvas);
     
-this.gameCanvas!.setThread(this.canvasThread);
+this->gameCanvas.setThread(this->canvasThread);
     
-this.threadFactoryUtil!.start(this.canvasThread);
+this->threadFactoryUtil.start(this->canvasThread);
     
 
-                        if(this.getWait() == NullWaitGameRunnable.getInstance()!.WAIT)
+                        if(this->getWait() == NullWaitGameRunnable::getInstance().WAIT)
                         
                                     {
-                                    this.setWait(this.getTempWait());
+                                    this->setWait(this->getTempWait());
     
 
                                     }
@@ -1226,20 +1226,20 @@ this.threadFactoryUtil!.start(this.canvasThread);
 }
 
 
-    public preDemoProcess(){
+    public: void preDemoProcess(){
 
-                        if(!this.gameCanvas!.isInitialized() || this.gameCanvas!.getTitle() == NullGameCanvas.NO_GAME)
+                        if(!this->gameCanvas.isInitialized() || this->gameCanvas.getTitle() == NullGameCanvas::NO_GAME)
                         
                                     {
                                     
-                        if(AllBinaryMediaManager.update())
+                        if(AllBinaryMediaManager::update())
                         
                                     {
                                     
-                        if(!PrimaryPlayerQueueFactory.getInstance()!.process())
+                        if(!PrimaryPlayerQueueFactory::getInstance().process())
                         
                                     {
-                                    SecondaryPlayerQueueFactory.getInstance()!.process();
+                                    SecondaryPlayerQueueFactory::getInstance().process();
     
 
                                     }
@@ -1250,78 +1250,78 @@ this.threadFactoryUtil!.start(this.canvasThread);
 
                                     }
                                 
-this.overlayPaintable!.update();
+this->overlayPaintable.update();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    public: void process(){
 super.process();
     
-this.getMenuInputProcessor()!.processInputList();
+this->getMenuInputProcessor().processInputList();
     
-this.preDemoProcess();
+this->preDemoProcess();
     
 
-                        if(this.state == 0)
+                        if(this->state == 0)
                         
                                     {
                                     
-    indexedAnimationBehavior: IndexedAnimationBehavior = (this.getSpecialAnimationInterface()!.getAnimationBehavior() as IndexedAnimationBehavior);;
+    IndexedAnimationBehavior indexedAnimationBehavior = (this->getSpecialAnimationInterface().getAnimationBehavior() as IndexedAnimationBehavior);;
     
 
-                        if(indexedAnimationBehavior!.loopIndex < 1)
+                        if(indexedAnimationBehavior.loopIndex < 1)
                         
                                     {
-                                    this.timeDelayHelper!.setStartTimeTNT();
+                                    this->timeDelayHelper.setStartTimeTNT();
     
 
                                     }
                                 
 
-    demoGameMidlet: DemoGameMidlet = this.getCustomCommandListener() as DemoGameMidlet;;
+    DemoGameMidlet demoGameMidlet = this->getCustomCommandListener() as DemoGameMidlet;;
     
 
-                        if(this.gameCanvas != NullGameCanvas.getInstance() && this.gameCanvas!.isGameOver())
+                        if(this->gameCanvas != NullGameCanvas::getInstance() && this->gameCanvas.isGameOver())
                         
                                     {
-                                    this.stopGameDemo();
+                                    this->stopGameDemo();
     
 
-    randomLevel: int32_t = this.getNextRandom()!;;
+    int32_t randomLevel = this->getNextRandom();;
     
 
-    gameInfo: GameInfo = this.gameCanvas!.getLayerManager()!.getGameInfo()!;;
+    GameInfo gameInfo = this->gameCanvas.getLayerManager().getGameInfo();;
     
-gameInfo!.setCurrentLevel(randomLevel);
+gameInfo.setCurrentLevel(randomLevel);
     
-this.gameCanvas!.setGameOver(false);
+this->gameCanvas.setGameOver(false);
     
-this.start();
+this->start();
     
 
                                     }
                                 
                              else 
-                        if(this.gameCanvas == NullGameCanvas.getInstance() && demoGameMidlet!.isReady())
+                        if(this->gameCanvas == NullGameCanvas::getInstance() && demoGameMidlet.isReady())
                         
                                     {
                                     
-                        if(!this.demoGameRunnable!.isRunning())
+                        if(!this->demoGameRunnable.isRunning())
                         
                                     {
-                                    this.startDemoGame();
+                                    this->startDemoGame();
     
-this.demoGameRunnable!.setRunning(true);
+this->demoGameRunnable.setRunning(true);
     
 
-    thread: Thread = this.threadFactoryUtil!.getInstanceForRunnable(this.demoGameRunnable)!;;
+    Thread thread = this->threadFactoryUtil.getInstanceForRunnable(this->demoGameRunnable);;
     
-this.demoGameRunnable!.setThread(thread);
+this->demoGameRunnable.setThread(thread);
     
-this.threadFactoryUtil!.start(thread);
+this->threadFactoryUtil.start(thread);
     
 
                                     }
@@ -1337,59 +1337,59 @@ this.threadFactoryUtil!.start(thread);
 
                 //@Throws(Exception.constructor)
             
-    startDemoGame(){
-DemoCanvasProgressUtil.showProgress(this);
+    protected: void startDemoGame(){
+DemoCanvasProgressUtil::showProgress(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    stopGameDemo(){
+    protected: void stopGameDemo(){
 
-                        if(this.gameCanvas != NullGameCanvas.getInstance())
+                        if(this->gameCanvas != NullGameCanvas::getInstance())
                         
                                     {
-                                    this.logUtil!.putF("Set Running False", this, "stopGameDemo");
+                                    this->logUtil.putF("Set Running False", this, "stopGameDemo");
     
-this.gameCanvas!.setRunning(false);
+this->gameCanvas.setRunning(false);
     
 
                                     }
                                 
-ThreadUtil.getInstance()!.join(this.canvasThread);
+ThreadUtil::getInstance().join(this->canvasThread);
     
 }
 
 
-    public showGamePaintable(){
+    public: void showGamePaintable(){
 
-    METHOD_NAME: string = "showGamePaintable";;
+    std::string METHOD_NAME = "showGamePaintable";;
     
-PreLogUtil.put(this.commonStrings!.START, this, METHOD_NAME);
-    
-
-    isDefault: bool = J2MEUtil.isHTML()!;;
+PreLogUtil::put(this->commonStrings.START, this, METHOD_NAME);
     
 
-                        if(this.gameCanvas != NullGameCanvas.getInstance() && (this.gameCanvas!.isRunning() || isDefault || SWTUtil.isSWT) && !(this.gameCanvas!.getType() == NullGameCanvas.TYPE))
+    bool isDefault = J2MEUtil::isHTML();;
+    
+
+                        if(this->gameCanvas != NullGameCanvas::getInstance() && (this->gameCanvas.isRunning() || isDefault || SWTUtil::isSWT) && !(this->gameCanvas.getType() == NullGameCanvas::TYPE))
                         
                                     {
-                                    this.gameRunnable= this.gameCanvas!.gameRunnable;
+                                    this->gameRunnable= this->gameCanvas.gameRunnable;
     
-PreLogUtil.put("Showing Game", this, METHOD_NAME);
+PreLogUtil::put("Showing Game", this, METHOD_NAME);
     
-this.setPaintableInterface(this.gameCanvas);
+this->setPaintableInterface(this->gameCanvas);
     
 
                                     }
                                 
                         else {
-                            this.gameRunnable= NullWaitGameRunnable.getInstance();
+                            this->gameRunnable= NullWaitGameRunnable::getInstance();
     
-PreLogUtil.put("Not Showing Game", this, METHOD_NAME);
+PreLogUtil::put("Not Showing Game", this, METHOD_NAME);
     
-this.setPaintableInterface(this.getDefaultPaintableInterface());
+this->setPaintableInterface(this->getDefaultPaintableInterface());
     
 
                         }
@@ -1397,41 +1397,41 @@ this.setPaintableInterface(this.getDefaultPaintableInterface());
 }
 
 
-    bool isReadyForStateChange(){
+    protected: bool isReadyForStateChange(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return !this.demoGameRunnable!.isRunning() && this.gameCanvas!.isInitialized();
+                        return !this->demoGameRunnable.isRunning() && this->gameCanvas.isInitialized();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    processGame(){
-this.gameRunnable!.run();
+    protected: void processGame(){
+this->gameRunnable.run();
     
 
-                        if(!this.specialAnimationInterface!.isComplete() && this.isReadyForStateChange())
+                        if(!this->specialAnimationInterface.isComplete() && this->isReadyForStateChange())
                         
                                     {
-                                    this.specialAnimationInterface!.nextFrame();
+                                    this->specialAnimationInterface.nextFrame();
     
 
                                     }
                                 
 
-                        if(this.timeDelayHelper!.isTimeTNT() && this.isReadyForStateChange())
+                        if(this->timeDelayHelper.isTimeTNT() && this->isReadyForStateChange())
                         
                                     {
-                                    this.demoStateChange();
+                                    this->demoStateChange();
     
 
                                     }
                                 
                         else {
-                            this.process();
+                            this->process();
     
 
                         }
@@ -1439,105 +1439,105 @@ this.gameRunnable!.run();
 }
 
 
-    public run(){
-this.logUtil!.putF(this.commonStrings!.START_RUNNABLE, this, this.commonStrings!.RUN);
+    public: void run(){
+this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
     
 
         try {
             
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
-progressCanvas!.addNormalPortion(50, "Demo Thread");
+progressCanvas.addNormalPortion(50, "Demo Thread");
     
-this.setCurrentThread();
+this->setCurrentThread();
     
-this.setRunning(true);
+this->setRunning(true);
     
 
-                        if(features.isFeature(MainFeatureFactory.getInstance()!.LOAD_ONDEMAND))
+                        if(features.isFeature(MainFeatureFactory::getInstance().LOAD_ONDEMAND))
                         
                                     {
-                                    progressCanvas!.end();
+                                    progressCanvas.end();
     
 
                                     }
                                 
                         else {
-                            progressCanvas!.addNormalPortion(50, "Demo Thread Running");
+                            progressCanvas.addNormalPortion(50, "Demo Thread Running");
     
 
                         }
                             
-this.fullScreenUtil!.initOnRun(this, this.getCustomCommandListener());
+this->fullScreenUtil.initOnRun(this, this->getCustomCommandListener());
     
-this.initMenu();
+this->initMenu();
     
-this.initPostPaint();
+this->initPostPaint();
     
-this.updateDemoState();
+this->updateDemoState();
     
 
-                        if(features.isDefault(openGLFeatureFactory!.OPENGL_AS_GAME_THREAD))
+                        if(features.isDefault(openGLFeatureFactory.OPENGL_AS_GAME_THREAD))
                         
                                     {
                                     
-        while(this.gameCanvas == NullGameCanvas.getInstance() || !this.gameCanvas!.isInitialized())
+        while(this->gameCanvas == NullGameCanvas::getInstance() || !this->gameCanvas.isInitialized())
         {
-this.loopTimeHelper!.setStartTimeTNT();
+this->loopTimeHelper.setStartTimeTNT();
     
-this.processGame();
+this->processGame();
     
-this.processLoopSleep();
+this->processLoopSleep();
     
 }
 
 
-    demoGameRunnable: DemoGameRunnable = new DemoGameRunnable(this);;
+    DemoGameRunnable demoGameRunnable = DemoGameRunnable(this);;
     
 
-    currentDisplayableFactory: CurrentDisplayableFactory = CurrentDisplayableFactory.getInstance()!;;
+    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory!.setRunnable(demoGameRunnable);
+currentDisplayableFactory.setRunnable(demoGameRunnable);
     
-currentDisplayableFactory!.setMyCanvas(this);
+currentDisplayableFactory.setMyCanvas(this);
     
-OpenGLThreadUtil.getInstance()!.onResume();
+OpenGLThreadUtil::getInstance().onResume();
     
 
                                     }
                                 
 
-                        if(features.isDefault(openGLFeatureFactory!.OPENGL_AS_GAME_THREAD) || J2MEUtil.isHTML())
+                        if(features.isDefault(openGLFeatureFactory.OPENGL_AS_GAME_THREAD) || J2MEUtil::isHTML())
                         
                                     {
                                     
-    demoGameRunnable: DemoGameRunnable = new DemoGameRunnable(this);;
+    DemoGameRunnable demoGameRunnable = DemoGameRunnable(this);;
     
 
-    currentDisplayableFactory: CurrentDisplayableFactory = CurrentDisplayableFactory.getInstance()!;;
+    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory!.setRunnable(demoGameRunnable);
+currentDisplayableFactory.setRunnable(demoGameRunnable);
     
-currentDisplayableFactory!.setMyCanvas(this);
+currentDisplayableFactory.setMyCanvas(this);
     
 
                                     }
                                 
                         else {
                             
-        while(this.isRunning())
+        while(this->isRunning())
         {
-this.run3();
+this->run3();
     
 }
 
-this.end();
+this->end();
     
 
                         }
@@ -1546,37 +1546,37 @@ this.end();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 
-this.logUtil!.putF(this.commonStrings!.END_RUNNABLE, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public run3(){
-this.loopTimeHelper!.setStartTimeTNT();
+    public: void run3(){
+this->loopTimeHelper.setStartTimeTNT();
     
-this.processGame();
+this->processGame();
     
-this.processLoopSleep();
+this->processLoopSleep();
     
 }
 
 
-    public setRunning(bool running){
+    public: void setRunning(bool running){
 super.setRunning(running);
     
 
         try {
             
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
                         if(running)
@@ -1587,15 +1587,15 @@ super.setRunning(running);
                                 
                         else {
                             
-                        if((features.isDefault(openGLFeatureFactory!.OPENGL) || J2MEUtil.isHTML()) || SWTUtil.isSWT)
+                        if((features.isDefault(openGLFeatureFactory.OPENGL) || J2MEUtil::isHTML()) || SWTUtil::isSWT)
                         
                                     {
                                     
-    currentDisplayableFactory: CurrentDisplayableFactory = CurrentDisplayableFactory.getInstance()!;;
+    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory!.clearRunnable();
+currentDisplayableFactory.clearRunnable();
     
-this.end();
+this->end();
     
 
                                     }
@@ -1607,78 +1607,78 @@ this.end();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.SET_RUNNING, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->SET_RUNNING, e);
     
 }
 
 }
 
 
-    private: const baseGameStatistics: BaseGameStatistics = GameStatisticsFactory.getInstance()!;
+    private: const BaseGameStatistics baseGameStatistics = GameStatisticsFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public end(){
+    public: void end(){
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
-    
-
-    features: Features = Features.getInstance()!;;
-    
-this.baseGameStatistics!.add(new StringMaker().append(DemoCanvas.BOT_GAME_STATS)!.append(this.baseGameStatistics!.toString())!.append(CommonSeps.getInstance()!.NEW_LINE)!.toString());
-    
-this.baseGameStatistics!.init();
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-                        if(features.isFeature(MainFeatureFactory.getInstance()!.LOAD_ONDEMAND))
+    Features features = Features::getInstance();;
+    
+this->baseGameStatistics.add(StringMaker().append(DemoCanvas::BOT_GAME_STATS).append(this->baseGameStatistics.toString()).append(CommonSeps::getInstance().NEW_LINE).toString());
+    
+this->baseGameStatistics.init();
+    
+
+                        if(features.isFeature(MainFeatureFactory::getInstance().LOAD_ONDEMAND))
                         
                                     {
-                                    progressCanvas!.start();
+                                    progressCanvas.start();
     
 
                                     }
                                 
-this.logUtil!.putF("Demo End", this, this.commonStrings!.RUN);
+this->logUtil.putF("Demo End", this, this->commonStrings.RUN);
     
-this.close();
+this->close();
     
-DisplayChangeEventHandler.getInstance()!.removeListener(this);
+DisplayChangeEventHandler::getInstance().removeListener(this);
     
-this.stopGameDemo();
+this->stopGameDemo();
     
 }
 
 
-    public setGameState(GameState gameState){
+    public: void setGameState(GameState gameState){
 }
 
 
-    public GameState getGameState(){
+    public: GameState getGameState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameStateFactory!.PLAYING_GAME_STATE;
+                        return this->gameStateFactory.PLAYING_GAME_STATE;
     
 }
 
 
-    public AllBinaryGameCanvas getGameCanvasRunnableInterface(){
+    public: AllBinaryGameCanvas getGameCanvasRunnableInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameCanvas;
+                        return this->gameCanvas;
     
 }
 
 
-    public bool isDemoLoading(){
+    public: bool isDemoLoading(){
 
-    gameCanvas: AllBinaryGameCanvas = this.gameCanvas;;
+    AllBinaryGameCanvas gameCanvas = this->gameCanvas;;
     
 
-                        if(gameCanvas == NullGameCanvas.getInstance())
+                        if(gameCanvas == NullGameCanvas::getInstance())
                         
                                     {
                                     
@@ -1691,7 +1691,7 @@ this.stopGameDemo();
                                     }
                                 
                              else 
-                        if(gameCanvas!.isInitialized())
+                        if(gameCanvas.isInitialized())
                         
                                     {
                                     
@@ -1712,24 +1712,24 @@ this.stopGameDemo();
 }
 
 
-    int32_t getState(){
+    protected: int32_t getState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.state;
+                        return this->state;
     
 }
 
 
-    setState(int32_t state){
-this.state= state;
+    protected: void setState(int32_t state){
+this->state= state;
     
 }
 
 
-    public bool isHighScoreSubmitted(){
-this.logUtil!.putF("Wow the AI got a high score!", this, "isHighScoreSubmitted");
+    public: bool isHighScoreSubmitted(){
+this->logUtil.putF("Wow the AI got a high score!", this, "isHighScoreSubmitted");
     
 
 
@@ -1740,179 +1740,179 @@ this.logUtil!.putF("Wow the AI got a high score!", this, "isHighScoreSubmitted")
 }
 
 
-    public HighScoresPaintable getRealHighScoresPaintable(){
+    public: HighScoresPaintable getRealHighScoresPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.realHighScoresPaintable;
+                        return this->realHighScoresPaintable;
     
 }
 
 
-    setSpecialAnimationInterface(SpecialAnimation specialAnimationInterface){
-specialAnimationInterface!.setFrame(0);
+    protected: void setSpecialAnimationInterface(SpecialAnimation specialAnimationInterface){
+specialAnimationInterface.setFrame(0);
     
-this.specialAnimationInterface= specialAnimationInterface;
+this->specialAnimationInterface= specialAnimationInterface;
     
 }
 
 
-    SpecialAnimation getSpecialAnimationInterface(){
+    protected: SpecialAnimation getSpecialAnimationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.specialAnimationInterface;
+                        return this->specialAnimationInterface;
     
 }
 
 
-    setPaintableInterface(PaintableInterface paintableInterface){
-this.paintableInterface= paintableInterface;
+    protected: void setPaintableInterface(PaintableInterface paintableInterface){
+this->paintableInterface= paintableInterface;
     
 }
 
 
-    PaintableInterface getPaintableInterface(){
+    protected: PaintableInterface getPaintableInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paintableInterface;
+                        return this->paintableInterface;
     
 }
 
 
-    setDefaultPaintableInterface(Paintable defaultPaintableInterface){
-this.defaultPaintableInterface= defaultPaintableInterface;
+    protected: void setDefaultPaintableInterface(Paintable defaultPaintableInterface){
+this->defaultPaintableInterface= defaultPaintableInterface;
     
 }
 
 
-    Paintable getDefaultPaintableInterface(){
+    protected: Paintable getDefaultPaintableInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultPaintableInterface;
+                        return this->defaultPaintableInterface;
     
 }
 
 
-    public HighScoresFactoryInterface getHighScoresFactoryInterface(){
+    public: HighScoresFactoryInterface getHighScoresFactoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoresFactoryInterface;
+                        return this->highScoresFactoryInterface;
     
 }
 
 
-    setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor){
-this.menuInputProcessor= menuInputProcessor;
+    protected: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor){
+this->menuInputProcessor= menuInputProcessor;
     
 }
 
 
-    BasicMenuInputProcessor getMenuInputProcessor(){
+    protected: BasicMenuInputProcessor getMenuInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuInputProcessor;
+                        return this->menuInputProcessor;
     
 }
 
 
-    public ScrollSelectionForm getMenuForm(){
+    public: ScrollSelectionForm getMenuForm(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuForm;
+                        return this->menuForm;
     
 }
 
 
-    public setMenuForm(ScrollSelectionForm menuForm){
-this.menuForm= menuForm;
+    public: void setMenuForm(ScrollSelectionForm menuForm){
+this->menuForm= menuForm;
     
 }
 
 
-    public bool isInitialized(){
+    public: bool isInitialized(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized;
+                        return this->initialized;
     
 }
 
 
-    Paintable getOverlayPaintable(){
+    protected: Paintable getOverlayPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.overlayPaintable;
+                        return this->overlayPaintable;
     
 }
 
 
-    setBasicGameDemoPaintable(StatePaintable basicGameDemoPaintable){
-this.basicGameDemoPaintable= basicGameDemoPaintable;
+    protected: void setBasicGameDemoPaintable(StatePaintable basicGameDemoPaintable){
+this->basicGameDemoPaintable= basicGameDemoPaintable;
     
 }
 
 
-    StatePaintable getBasicGameDemoPaintable(){
+    protected: StatePaintable getBasicGameDemoPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicGameDemoPaintable;
+                        return this->basicGameDemoPaintable;
     
 }
 
 
-    public setTempWait(int32_t tempWait){
-this.tempWait= tempWait;
+    public: void setTempWait(int32_t tempWait){
+this->tempWait= tempWait;
     
 }
 
 
-    public int32_t getTempWait(){
+    public: int32_t getTempWait(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tempWait;
+                        return this->tempWait;
     
 }
 
 
-    public bool isSingleThread(){
+    public: bool isSingleThread(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil.getInstance()!.isAnyThreed() || SWTUtil.isSWT;
+                        return OpenGLFeatureUtil::getInstance().isAnyThreed() || SWTUtil::isSWT;
     
 }
 
 
-    public bool isRunningInAnotherThread(){
+    public: bool isRunningInAnotherThread(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(features.isDefault(openGLFeatureFactory!.OPENGL_AS_GAME_THREAD))
+                        if(features.isDefault(openGLFeatureFactory.OPENGL_AS_GAME_THREAD))
                         
                                     {
                                     
@@ -1929,7 +1929,7 @@ this.tempWait= tempWait;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRunning();;
+                        return this->isRunning();;
     
 
                         }
@@ -1937,22 +1937,22 @@ this.tempWait= tempWait;
 }
 
 
-    public BasicBuildGameInitializerFactory getGameInitializationInterfaceFactoryInterface(){
+    public: BasicBuildGameInitializerFactory getGameInitializationInterfaceFactoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInitializationInterfaceFactoryInterface;
+                        return this->gameInitializationInterfaceFactoryInterface;
     
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoCanvas.TYPE;
+                        return DemoCanvas::TYPE;
     
 }
 

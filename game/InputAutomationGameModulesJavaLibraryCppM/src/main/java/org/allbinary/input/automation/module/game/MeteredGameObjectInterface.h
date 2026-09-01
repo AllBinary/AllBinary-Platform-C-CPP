@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECTINTERFACE_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECTINTERFACE_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Double.h"
         
 
@@ -43,7 +45,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MeteredGameObjectInterface {
-        
 
     std::vector<number> getRatios();
 

@@ -42,27 +42,24 @@
 class BackgroundColorData
             : public Object
          {
-        
 
-    private: static const instance: BackgroundColorData = new BackgroundColorData();
+    private: static BackgroundColorData instance() { return BackgroundColorData(); }
 
-    public static BackgroundColorData getInstance(){
+    public: static BackgroundColorData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BackgroundColorData.instance;
+                        return BackgroundColorData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BackgroundColorData(){
+}
 
 
-    public const VALUE: string = "background-color";
+    public: const std::string VALUE = "background-color";
 
 };
 

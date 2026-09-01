@@ -70,45 +70,42 @@
         #include "TableTag.h"
 
 class CategoryTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: xsl: string;
+    private: std::string xsl;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new CategoryHelperFactory());
+public: CategoryTag(){
+this->setTagHelperFactory(CategoryHelperFactory());
     
-this.setTagRequestHelperFactory(new CategoryRequestHelperFactory());
+this->setTagRequestHelperFactory(CategoryRequestHelperFactory());
     
 }
 
 
-    public setXsl(string value){
-this.xsl= value;
+    public: void setXsl(std::string value){
+this->xsl= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string viewCategory(){
+    private: std::string viewCategory(){
 
         try {
             
-    anyType: any = new CategoryRequestHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = CategoryRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("viewCategory", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("viewCategory", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -132,13 +129,13 @@ this.xsl= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to view a Category";;
+    std::string error = "Failed to view a Category";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "viewCategory()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "viewCategory()", e);
     
 
                                     }
@@ -156,21 +153,21 @@ this.xsl= value;
 
                 //@Throws(LicensingException.constructor)
             
-    string viewCategories(){
+    private: std::string viewCategories(){
 
         try {
             
-    anyType: any = new CategoryRequestHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = CategoryRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("viewCategories", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("viewCategories", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -194,13 +191,13 @@ this.xsl= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to view a Categories";;
+    std::string error = "Failed to view a Categories";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "viewCategories()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "viewCategories()", e);
     
 
                                     }
@@ -218,33 +215,33 @@ this.xsl= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.getPropertiesHashMap()!.put(TransformInfoData.getInstance()!.TEMPLATEFILENAME, this.xsl);
+                                    this->getPropertiesHashMap().put(TransformInfoData::getInstance().TEMPLATEFILENAME, this->xsl);
     
 
-                        if(this.getCommand()!.compareTo(CategoryData.getInstance()!.VIEW) == 0)
+                        if(this->getCommand().compareTo(CategoryData::getInstance().VIEW) == 0)
                         
                                     {
                                     
-    output: string = this.viewCategory()!;;
+    std::string output = this->viewCategory();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    pageContext!.getOut()!.print(output);
+                                    pageContext.getOut().print(output);
     
 
                                     }
@@ -253,17 +250,17 @@ this.xsl= value;
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(CategoryData.getInstance()!.VIEW) == 0)
+                        if(this->getCommand().compareTo(CategoryData::getInstance().VIEW) == 0)
                         
                                     {
                                     
-    output: string = this.viewCategories()!;;
+    std::string output = this->viewCategories();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    pageContext!.getOut()!.print(output);
+                                    pageContext.getOut().print(output);
     
 
                                     }
@@ -297,7 +294,7 @@ this.xsl= value;
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -310,7 +307,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

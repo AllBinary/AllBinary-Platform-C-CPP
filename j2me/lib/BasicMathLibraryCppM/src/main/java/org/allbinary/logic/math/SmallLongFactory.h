@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_H
         #define ORG_ALLBINARY_LOGIC_MATH_SMALLLONGFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Long.h"
@@ -47,35 +49,34 @@
 class SmallLongFactory
             : public Object
          {
-        
 
-    private: static const instance: SmallLongFactory = new SmallLongFactory();
+    private: static SmallLongFactory instance() { return SmallLongFactory(); }
 
-    public static SmallLongFactory getInstance();
+    public: static SmallLongFactory getInstance();
 
-    public const NEGATIVE_MAX: int32_t = 500;
+    public: const int32_t NEGATIVE_MAX = 500;
 
-    public const POSITIVE_MAX: int32_t = 0x2D1;
+    public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const INTEGER_ARRAY: std::vector<Long> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<Long> INTEGER_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: const STRING_ARRAY: std::vector<string> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<std::string> STRING_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    public MIN: int32_t = 0;
+    public: int32_t MIN = 0;
 
-    public lastMin: int32_t = 0;
+    public: int32_t lastMin = 0;
 
-    public lastNegativeMin: int32_t = 0;
+    public: int32_t lastNegativeMin = 0;
 
-    public initWithRange(int32_t value, int32_t negativeValue);
+    public: void initWithRange(int32_t value, int32_t negativeValue);
 
-    public init();
+    public: void init();
 
-private constructor ();
+private: SmallLongFactory();
 
-    public Long getInstanceNoThrow(int64_t index);
+    public: Long getInstanceNoThrow(int64_t index);
 
-    public string getString(int32_t index);
+    public: std::string getString(int32_t index);
 
 };
 

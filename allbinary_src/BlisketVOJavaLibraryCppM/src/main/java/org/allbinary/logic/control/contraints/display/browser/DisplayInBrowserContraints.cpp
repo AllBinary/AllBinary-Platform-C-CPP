@@ -46,82 +46,79 @@
 class DisplayInBrowserContraints
             : public Object
         : public DisplayInBrowserContraintsInterface {
-        
 
-    private: frameable: bool= false;
+    private: bool frameable= false;
 
-    private: mountable: bool= false;
+    private: bool mountable= false;
 
-    private: quickFrameable: bool= false;
+    private: bool quickFrameable= false;
 
-    private: mountedLink: string;
+    private: std::string mountedLink;
 
-public constructor (Node node){
-
-            super();
-        }
+public: DisplayInBrowserContraints(Node node){
+}
 
 
-    public bool isMountable(){
+    public: bool isMountable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mountable;
+                        return this->mountable;
     
 }
 
 
-    public setMountable(bool mountable){
-this.mountable= mountable;
+    public: void setMountable(bool mountable){
+this->mountable= mountable;
     
 }
 
 
-    public bool isFrameable(){
+    public: bool isFrameable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frameable;
+                        return this->frameable;
     
 }
 
 
-    public setFrameable(bool frameable){
-this.frameable= frameable;
+    public: void setFrameable(bool frameable){
+this->frameable= frameable;
     
 }
 
 
-    public bool isQuickFrameable(){
+    public: bool isQuickFrameable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.quickFrameable;
+                        return this->quickFrameable;
     
 }
 
 
-    public setQuickFrameable(bool quickFrameable){
-this.quickFrameable= quickFrameable;
+    public: void setQuickFrameable(bool quickFrameable){
+this->quickFrameable= quickFrameable;
     
 }
 
 
-    public string getMountedLink(){
+    public: std::string getMountedLink(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mountedLink;
+                        return this->mountedLink;
     
 }
 
 
-    public setMountedLink(string mountedLink){
-this.mountedLink= mountedLink;
+    public: void setMountedLink(std::string mountedLink){
+this->mountedLink= mountedLink;
     
 }
 

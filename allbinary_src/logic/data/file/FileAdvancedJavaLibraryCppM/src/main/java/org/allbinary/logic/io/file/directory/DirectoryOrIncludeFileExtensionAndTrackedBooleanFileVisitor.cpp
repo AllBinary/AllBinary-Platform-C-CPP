@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/System.h"
@@ -66,57 +68,56 @@
 #include "Process.h"
 
 class DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor: public IncludeFileExtensionsBooleanFileVisitor {
-        
 
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
-    commonFileStrings: CommonDataFileStrings = CommonDataFileStrings.getInstance()!;;
+    CommonDataFileStrings commonFileStrings = CommonDataFileStrings::getInstance();;
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
-list.add(commonFileStrings!.JAVA);
-    
-
-    filePath: string = "G:\\mnt\\bc\\mydev\\games\\ZeptoRacer\\platform\\j2se\\ZeptoRacerStaticPathsJ2SEM\\target\\dependency\\org\\allbinary\\logic\\system\\security\\licensing\\ZeptoRacerPCClientInformation.java";;
+list.add(commonFileStrings.JAVA);
     
 
-    result: bool = new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(list).visit(AbFile.createAbFileFromRawPath(filePath))!;;
+    std::string filePath = "G:\\mnt\\bc\\mydev\\games\\ZeptoRacer\\platform\\j2se\\ZeptoRacerStaticPathsJ2SEM\\target\\dependency\\org\\allbinary\\logic\\system\\security\\licensing\\ZeptoRacerPCClientInformation.java";;
+    
+
+    bool result = DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(list).visit(AbFile::createAbFileFromRawPath(filePath));;
     
 console.log(filePath +" is Tracked: " +result);
     
 }
 
 
-    private: const trackedStrings: TrackedStrings = TrackedStrings.getInstance()!;
+    private: const TrackedStrings trackedStrings = TrackedStrings::getInstance();
 
-    private: const includesString: string;
+    private: std::string includesString;
 
-public constructor (BasicArrayList filterStringBasicArrayList){
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
             super(filterStringBasicArrayList);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.includesString= 
+this->includesString= 
                                         nullptr
                                     ;
     
 }
 
 
-public constructor (BasicArrayList filterStringBasicArrayList, string includesString){
+public: DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(BasicArrayList filterStringBasicArrayList, std::string includesString){
             super(filterStringBasicArrayList);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.includesString= includesString;
+this->includesString= includesString;
     
 }
 
 
-    public Boolean visit(AbFile file){
+    public: Boolean visit(AbFile file){
 
                         if(file.isDirectory())
                         
@@ -125,15 +126,13 @@ this.includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
                                 
 
-                        if(this.includesString == 
-                                    null
-                                 || file.getAbsolutePath()!.indexOf(this.includesString) >= 0)
+                        if(false || file.getAbsolutePath().indexOf(this->includesString) >= 0)
                         
                                     {
                                     
@@ -150,7 +149,7 @@ this.includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                         }
@@ -158,31 +157,31 @@ this.includesString= includesString;
 }
 
 
-    public Boolean visit(AbFile file, string fileNameString){
+    public: Boolean visit(AbFile file, std::string fileNameString){
 
-    filePath: string = file.getPath()!;;
+    std::string filePath = file.getPath();;
     
 
                         if(super.visit(file, fileNameString))
                         
                                     {
                                     
-                        if(!(filePath!.contains(this.trackedStrings!.APPLICATION) || filePath!.contains(this.trackedStrings!.APP) || filePath!.contains(this.trackedStrings!.HTML_TEMP)))
+                        if(!(filePath.contains(this->trackedStrings.APPLICATION) || filePath.contains(this->trackedStrings.APP) || filePath.contains(this->trackedStrings.HTML_TEMP)))
                         
                                     {
                                     
-                        if(!(filePath!.contains(this.trackedStrings!.TARGET_PATH_WINDOWS) || filePath!.contains(this.trackedStrings!.TARGET_PATH_UNIX)))
+                        if(!(filePath.contains(this->trackedStrings.TARGET_PATH_WINDOWS) || filePath.contains(this->trackedStrings.TARGET_PATH_UNIX)))
                         
                                     {
                                     
-                        if(this.isGitTracked(file))
+                        if(this->isGitTracked(file))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -212,24 +211,24 @@ this.includesString= includesString;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 
-    bool isGitTracked(AbFile file){
+    private: bool isGitTracked(AbFile file){
 
         try {
             
-    nativeFile: File = AbFileNativeUtil.get(file)!;;
+    File nativeFile = AbFileNativeUtil::get(file);;
     
 
-    parentFile: File = nativeFile!.getParentFile()!;;
+    File parentFile = nativeFile.getParentFile();;
     
 
-    process: Process = new ProcessBuilder(this.trackedStrings!.GIT_COMMAND, this.trackedStrings!.CHANGE_DIRECTORY_OPTION, parentFile!.getPath(), this.trackedStrings!.LIST_FILES_COMMAND, this.trackedStrings!.ERROR_UNMATCH_OPTION, this.trackedStrings!.PATHSPEC_SEPARATOR, nativeFile!.getName()).redirectErrorStream(true)!.start()!;;
+    Process process = ProcessBuilder(this->trackedStrings.GIT_COMMAND, this->trackedStrings.CHANGE_DIRECTORY_OPTION, parentFile.getPath(), this->trackedStrings.LIST_FILES_COMMAND, this->trackedStrings.ERROR_UNMATCH_OPTION, this->trackedStrings.PATHSPEC_SEPARATOR, nativeFile.getName()).redirectErrorStream(true).start();;
     
-process.getInputStream()!.readAllBytes();
+process.getInputStream().readAllBytes();
     
 
 

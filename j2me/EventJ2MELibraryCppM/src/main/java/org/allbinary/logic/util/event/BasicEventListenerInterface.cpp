@@ -39,7 +39,6 @@
         #include "EventListenerInterface.h"
 
 class BasicEventListenerInterface: public EventListenerInterface {
-        
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Integer.h"
         
 #include <jsinterop/annotations/JsConstructor.h>
@@ -85,16 +87,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AllBinaryGameLayerManager: public AllBinaryLayerManager {
-        
 
-    private: static NULL_ALLBINARY_LAYER_MANAGER: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_ALLBINARY_LAYER_MANAGER = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AllBinaryGameLayerManager getNullInstance(){
+    public: static AllBinaryGameLayerManager getNullInstance(){
 
-                        if(AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER= new AllBinaryGameLayerManager(BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE, GameInfo.NONE);
+                                    AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER= AllBinaryGameLayerManager(BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE, GameInfo::NONE);
     
 
                                     }
@@ -103,142 +104,139 @@ class AllBinaryGameLayerManager: public AllBinaryLayerManager {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameLayerManager.NULL_ALLBINARY_LAYER_MANAGER as AllBinaryGameLayerManager;
+                        return AllBinaryGameLayerManager::NULL_ALLBINARY_LAYER_MANAGER as AllBinaryGameLayerManager;
     
 }
 
 
-    public static const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(22)!;
+    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(22);
 
-    private: backgroundBasicColor: BasicColor;
+    private: BasicColor backgroundBasicColor;
 
-    private: foregroundBasicColor: BasicColor;
+    private: BasicColor foregroundBasicColor;
 
-    private: gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: playerGameInputCompositeInterface: PlayerGameInputCompositeInterface = NullPlayerGameInputComposite.NULL_PLAYER_GAME_INPUT_COMPOSITE;
+    private: PlayerGameInputCompositeInterface playerGameInputCompositeInterface = NullPlayerGameInputComposite::NULL_PLAYER_GAME_INPUT_COMPOSITE;
 
-public constructor (BasicColor backgroundBasicColor, BasicColor foregroundBasicColor, GameInfo gameInfo){
-
-            super();
-        this.backgroundBasicColor= backgroundBasicColor;
+public: AllBinaryGameLayerManager(BasicColor backgroundBasicColor, BasicColor foregroundBasicColor, GameInfo gameInfo){
+this->backgroundBasicColor= backgroundBasicColor;
     
-this.foregroundBasicColor= foregroundBasicColor;
+this->foregroundBasicColor= foregroundBasicColor;
     
 
-    itemColorFactory: ItemColorFactory = ItemColorFactory.getInstance()!;;
+    ItemColorFactory itemColorFactory = ItemColorFactory::getInstance();;
     
-itemColorFactory!.INVERT_PAINT= this.backgroundBasicColor!.intValue();
+itemColorFactory.INVERT_PAINT= this->backgroundBasicColor.intValue();
     
-itemColorFactory!.PAINT= this.foregroundBasicColor!.intValue();
+itemColorFactory.PAINT= this->foregroundBasicColor.intValue();
     
-this.gameInfo= gameInfo;
+this->gameInfo= gameInfo;
     
 }
 
 
-    public AllBinaryLayerManager getLayerManager(){
+    public: AllBinaryLayerManager getLayerManager(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
 
-    public init(){
+    public: void init(){
 }
 
 
-    public BasicColor getBackgroundBasicColor(){
+    public: BasicColor getBackgroundBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.backgroundBasicColor;
+                        return this->backgroundBasicColor;
     
 }
 
 
-    public setBackgroundBasicColor(BasicColor backgroundBasicColor){
-this.backgroundBasicColor= backgroundBasicColor;
+    public: void setBackgroundBasicColor(BasicColor backgroundBasicColor){
+this->backgroundBasicColor= backgroundBasicColor;
     
-ItemColorFactory.getInstance()!.INVERT_PAINT= this.backgroundBasicColor!.intValue();
+ItemColorFactory::getInstance().INVERT_PAINT= this->backgroundBasicColor.intValue();
     
 }
 
 
-    public BasicColor getForegroundBasicColor(){
+    public: BasicColor getForegroundBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.foregroundBasicColor;
+                        return this->foregroundBasicColor;
     
 }
 
 
-    public setForegroundBasicColor(BasicColor foregroundBasicColor){
-this.foregroundBasicColor= foregroundBasicColor;
+    public: void setForegroundBasicColor(BasicColor foregroundBasicColor){
+this->foregroundBasicColor= foregroundBasicColor;
     
-ItemColorFactory.getInstance()!.PAINT= this.foregroundBasicColor!.intValue();
+ItemColorFactory::getInstance().PAINT= this->foregroundBasicColor.intValue();
     
 }
 
 
-    public GameInfo getGameInfo(){
+    public: GameInfo getGameInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInfo;
+                        return this->gameInfo;
     
 }
 
 
-    public setGameInfo(GameInfo gameInfo){
-this.gameInfo= gameInfo;
+    public: void setGameInfo(GameInfo gameInfo){
+this->gameInfo= gameInfo;
     
 }
 
 
-    public setLayerProcessorList(BasicArrayList list){
+    public: void setLayerProcessorList(BasicArrayList list){
 
-    layerProcessorInterfaceArray: std::vector<LayerProcessor> = new Array(list.size());;
+    std::vector<LayerProcessor> layerProcessorInterfaceArray = new Array(list.size());;
     
 
-    size: int32_t = layerProcessorInterfaceArray!.length
-                ;;
+    int32_t size = layerProcessorInterfaceArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 layerProcessorInterfaceArray[index]= list.objectArray[index]! as LayerProcessor;
     
 }
 
-this.setLayerProcessorArray(layerProcessorInterfaceArray);
+this->setLayerProcessorArray(layerProcessorInterfaceArray);
     
 }
 
 
-    public setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface playerGameInputCompositeInterface){
-this.playerGameInputCompositeInterface= playerGameInputCompositeInterface;
+    public: void setPlayerGameInputCompositeInterface(PlayerGameInputCompositeInterface playerGameInputCompositeInterface){
+this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
     
 }
 
 
-    public PlayerGameInputCompositeInterface getPlayerGameInputCompositeInterface(){
+    public: PlayerGameInputCompositeInterface getPlayerGameInputCompositeInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerGameInputCompositeInterface;
+                        return this->playerGameInputCompositeInterface;
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -74,64 +76,63 @@
         #include "OpenGLESImage.h"
 //Many devices don't support this even though it is supposed to
 class OpenGLESGL11ExtImage: public OpenGLESImage {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: a: int32_t= 0;
+    private: int32_t a= 0;
 
-    private: const rectangle: std::vector<int32_t>;
+    private: std::vector<int32_t> rectangle;
 
-public constructor (Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
+public: OpenGLESGL11ExtImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
             super(image, bitmapFactory, textureFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.onDisplayChangeEvent(
+this->onDisplayChangeEvent(
                             nullptr);
     
-this.rectangle= [0,this.getHeight(), this.getWidth(),  -this.getHeight();];
+this->rectangle= [0,this->getHeight(), this->getWidth(),  -this->getHeight();];
     
 }
 
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "onResize");
+            this->logUtil.putF(this->commonStrings.START, this, "onResize");
     
-this.a= DisplayInfoSingleton.getInstance()!.getLastHeight() -this.getHeight();
+this->a= DisplayInfoSingleton::getInstance().getLastHeight() -this->getHeight();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "onResize", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onResize", e);
     
 }
 
 }
 
 
-    public set(GL gl){
-this.onDisplayChangeEvent(
+    public: void set(GL gl){
+this->onDisplayChangeEvent(
                             nullptr);
     
 
-    gl11: GL11 = gl as GL11;;
+    GL11 gl11 = gl as GL11;;
     
 
                         if(super.initTexture(gl11))
                         
                                     {
-                                    this.textureFactory!.load(gl11, GL10.GL_TEXTURE_2D, 0, this, 0, true);
+                                    this->textureFactory.load(gl11, GL10::GL_TEXTURE_2D, 0, this, 0, true);
     
-gl11.glTexParameteriv(GL10.GL_TEXTURE_2D, GL11Ext.GL_TEXTURE_CROP_RECT_OES, this.rectangle, 0);
+gl11.glTexParameteriv(GL10::GL_TEXTURE_2D, GL11Ext::GL_TEXTURE_CROP_RECT_OES, this->rectangle, 0);
     
-gl11.glDisable(GL10.GL_TEXTURE_2D);
+gl11.glDisable(GL10::GL_TEXTURE_2D);
     
-OpenGLLogUtil.getInstance()!.logError(gl11, this);
+OpenGLLogUtil::getInstance().logError(gl11, this);
     
 
                                     }
@@ -139,16 +140,16 @@ OpenGLLogUtil.getInstance()!.logError(gl11, this);
 }
 
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z){
-gl.glEnable(GL10.GL_TEXTURE_2D);
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z){
+gl.glEnable(GL10::GL_TEXTURE_2D);
     
-gl.glBindTexture(GL10.GL_TEXTURE_2D, this.openGLESImageProperties!.textureID);
+gl.glBindTexture(GL10::GL_TEXTURE_2D, this->openGLESImageProperties.textureID);
     
 gl = glgl as GL11Ext
 gl.
-                    glDrawTexfOES(x, this.a -y, z, this.getWidth(), this.getHeight());
+                    glDrawTexfOES(x, this->a -y, z, this->getWidth(), this->getHeight());
     
-gl.glDisable(GL10.GL_TEXTURE_2D);
+gl.glDisable(GL10::GL_TEXTURE_2D);
     
 }
 

@@ -79,42 +79,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StoreThemeCategoryInterface.h"
 
-class StoreThemeCategory: public Category: public StoreThemeCategoryInterface {
-        
+class StoreThemeCategory: public Category, public StoreThemeCategoryInterface {
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-    private: themeVector: Vector;
+    private: Vector themeVector;
 
-public constructor (TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
 
-public constructor (TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
 
-    public TransformInfoInterface getTransformInfoInterface();
-
-                //@Throws(Exception.constructor)
-            
-    public addThemes(Node node);
-
-    public addTheme(ThemeValidation themeValidation);
-
-    public Vector getThemes();
+    public: TransformInfoInterface getTransformInfoInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid();
+    public: void addThemes(Node node);
+
+    public: void addTheme(ThemeValidation themeValidation);
+
+    public: Vector getThemes();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: Boolean isValid();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: HashMap<any, any> toHashMap();
+
+                //@Throws(Exception.constructor)
+            
+    public: Vector toVector();
 
 };
 

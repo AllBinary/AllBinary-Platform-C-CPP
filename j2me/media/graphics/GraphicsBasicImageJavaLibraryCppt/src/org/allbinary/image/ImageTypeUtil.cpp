@@ -46,55 +46,52 @@
 class ImageTypeUtil
             : public Object
          {
-        
 
-    private: static SINGLETON: ImageTypeUtil = new ImageTypeUtil();
+    private: static ImageTypeUtil SINGLETON = ImageTypeUtil();
 
-    public static ImageTypeUtil getInstance(){
+    public: static ImageTypeUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageTypeUtil.SINGLETON;
+                        return ImageTypeUtil::SINGLETON;
     
 }
 
 
-    public const PNG: string = "png";
+    public: const std::string PNG = "png";
 
-    public const JPG: string = "jpg";
+    public: const std::string JPG = "jpg";
 
-    public const GIF: string = "gif";
+    public: const std::string GIF = "gif";
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        this.list.add(JPG);
+private: ImageTypeUtil(){
+this->list.add(JPG);
     
-this.list.add(GIF);
+this->list.add(GIF);
     
-this.list.add(PNG);
+this->list.add(PNG);
     
 }
 
 
-    public bool isSupported(string mediaFileType){
-mediaFileType= mediaFileType!.toLowerCase();
+    public: bool isSupported(std::string mediaFileType){
+mediaFileType= mediaFileType.toLowerCase();
     
 
 
 
 
                         for (
-    index: int32_t = this.list.size() -1;index >= 0; index--)
+    int32_t index = this->list.size() -1;index >= 0; index--)
         {
 
-    name: string = this.list.objectArray[index]! as string;;
+    std::string name = this->list.objectArray[index]! as string;;
     
 
-                        if(mediaFileType!.compareTo(name) == 0)
+                        if(mediaFileType.compareTo(name) == 0)
                         
                                     {
                                     

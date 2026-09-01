@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -52,51 +54,50 @@
         #include "MeteredGameObject.h"
 #include "HitPointGameObjectInterface.h"
 
-class HitPointGameObject: public MeteredGameObject: public HitPointGameObjectInterface {
-        
+class HitPointGameObject: public MeteredGameObject, public HitPointGameObjectInterface {
 
-    private: damaged: bool = false;
+    private: bool damaged = false;
 
-    private: closeDeath: bool = false;
+    private: bool closeDeath = false;
 
-    private: const HP_LABEL: string = "HP: ";
+    private: const std::string HP_LABEL = "HP: ";
 
-    private: const IS_DAMAGED_LABEL: string = "isDamaged: ";
+    private: const std::string IS_DAMAGED_LABEL = "isDamaged: ";
 
-    private: const IS_CLOSE_DEATH_LABEL: string = "isCloseDeath: ";
+    private: const std::string IS_CLOSE_DEATH_LABEL = "isCloseDeath: ";
 
-public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
+public: HitPointGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
             super(bufferedImage, minX, maxX, y);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(this.getRatios()[bufferedImage!.length -1]!.doubleValue() < 1.0F)
+                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() < 1.0F)
                         
                                     {
-                                    this.setDamaged(true);
+                                    this->setDamaged(true);
     
 
                                     }
                                 
                         else {
-                            this.setDamaged(false);
+                            this->setDamaged(false);
     
 
                         }
                             
 
-                        if(this.getRatios()[bufferedImage!.length -1]!.doubleValue() > 0.25F)
+                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() > 0.25F)
                         
                                     {
-                                    this.closeDeath= false;
+                                    this->closeDeath= false;
     
 
                                     }
                                 
                         else {
-                            this.closeDeath= true;
+                            this->closeDeath= true;
     
 
                         }
@@ -104,9 +105,9 @@ public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Inte
 }
 
 
-    public bool isMoreThan(float aFloat){
+    public: bool isMoreThan(float aFloat){
 
-                        if(this.getRatios()[this.getRatios()!.length -1]!.doubleValue() > aFloat)
+                        if(this->getRatios()[this->getRatios().length -1]!.doubleValue() > aFloat)
                         
                                     {
                                     
@@ -131,66 +132,66 @@ public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Inte
 }
 
 
-    public bool isCloseDeath(){
+    public: bool isCloseDeath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.closeDeath;
+                        return this->closeDeath;
     
 }
 
 
-    setCloseDeath(bool closeDeath){
-this.closeDeath= closeDeath;
+    protected: void setCloseDeath(bool closeDeath){
+this->closeDeath= closeDeath;
     
 }
 
 
-    public bool isDamaged(){
+    public: bool isDamaged(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.damaged;
+                        return this->damaged;
     
 }
 
 
-    public setDamaged(bool damaged){
-this.damaged= damaged;
+    public: void setDamaged(bool damaged){
+this->damaged= damaged;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.HP_LABEL);
+stringBuffer.append(this->HP_LABEL);
     
-stringBuffer!.append(super.toString());
+stringBuffer.append(super.toString());
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.IS_DAMAGED_LABEL);
+stringBuffer.append(this->IS_DAMAGED_LABEL);
     
-stringBuffer!.appendboolean(this.isDamaged());
+stringBuffer.appendboolean(this->isDamaged());
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.IS_CLOSE_DEATH_LABEL);
+stringBuffer.append(this->IS_CLOSE_DEATH_LABEL);
     
-stringBuffer!.appendboolean(this.isCloseDeath());
+stringBuffer.appendboolean(this->isCloseDeath());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

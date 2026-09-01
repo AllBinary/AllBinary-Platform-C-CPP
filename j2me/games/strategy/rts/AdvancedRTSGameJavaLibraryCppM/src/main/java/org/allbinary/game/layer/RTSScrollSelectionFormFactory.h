@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSSCROLLSELECTIONFORMFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSSCROLLSELECTIONFORMFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -77,11 +79,10 @@
 class RTSScrollSelectionFormFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ScrollSelectionForm getInstance(string formLabel, std::vector<ABCustomItem> items);
+    public: static ScrollSelectionForm getInstance(std::string formLabel, std::vector<ABCustomItem> items);
 
 };
 

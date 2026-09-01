@@ -65,49 +65,48 @@
 class LevelLayersFinder
             : public Object
          {
-        
 
-    private: static const instance: LevelLayersFinder = new LevelLayersFinder();
+    private: static LevelLayersFinder instance() { return LevelLayersFinder(); }
 
-    public static LevelLayersFinder getInstance(){
+    public: static LevelLayersFinder getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LevelLayersFinder.instance;
+                        return LevelLayersFinder::instance();
     
 }
 
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public BasicArrayList get(Hashtable<any, any> hashtable){
+    public: BasicArrayList get(Hashtable<any, any> hashtable){
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    enumeration: Enumeration<any> = hashtable.keys()!;;
+    Enumeration<any> enumeration = hashtable.keys();;
     
 
-    layerHashtableCanBeNull: Hashtable<any, any>;;
+    Hashtable<any, any> layerHashtableCanBeNull;;
     
 
-    integerCanBeNull: Integer;;
+    Integer integerCanBeNull;;
     
 
-    cachedIntegerCanBeNull: Integer;;
+    Integer cachedIntegerCanBeNull;;
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-layerHashtableCanBeNull= hashtable.get(this.enumerationUtil!.nextElement(enumeration)!) as Hashtable<any, any>;
+layerHashtableCanBeNull= hashtable.get(this->enumerationUtil.nextElement(enumeration)!) as Hashtable<any, any>;
     
-integerCanBeNull= layerHashtableCanBeNull!.get(Layer.ID) as Integer;
+integerCanBeNull= layerHashtableCanBeNull.get(Layer::ID) as Integer;
     
-cachedIntegerCanBeNull= smallIntegerSingletonFactory!.getAt(integerCanBeNull!.intValue());
+cachedIntegerCanBeNull= smallIntegerSingletonFactory.getAt(integerCanBeNull.intValue());
     
 
                         if(!list.contains(cachedIntegerCanBeNull))

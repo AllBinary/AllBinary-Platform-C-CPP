@@ -56,11 +56,10 @@
 #include "Rectangle.h"
 
 class NoMotionRectangleConstraints: public MotionRectangleConstraints {
-        
 
-public constructor ();
+public: NoMotionRectangleConstraints();
 
-    public bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle);
+    public: bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle);
 
 };
 

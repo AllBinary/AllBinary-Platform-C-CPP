@@ -62,69 +62,68 @@
 class AndroidSystemProperties
             : public Object
          {
-        
 
-    private: static const SINGLETON: AndroidSystemProperties = new AndroidSystemProperties(ResourceUtil.getInstance()!.getContext());
+    private: static const AndroidSystemProperties SINGLETON = AndroidSystemProperties(ResourceUtil::getInstance().getContext());
 
-    public static AndroidSystemProperties getInstance();
+    public: static AndroidSystemProperties getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (Context context);
+public: AndroidSystemProperties(Context context);
 
-    public string getDeviceId();
+    public: std::string getDeviceId();
 
-    public string getDeviceSoftwareVersion();
+    public: std::string getDeviceSoftwareVersion();
 
-    public string getLine1Number();
+    public: std::string getLine1Number();
 
-    public string getNetworkCountryIso();
+    public: std::string getNetworkCountryIso();
 
-    public string getNetworkOperator();
+    public: std::string getNetworkOperator();
 
-    public string getNetworkOperatorName();
+    public: std::string getNetworkOperatorName();
 
-    public string getSimCountryIso();
+    public: std::string getSimCountryIso();
 
-    public string getSimOperator();
+    public: std::string getSimOperator();
 
-    public string getSimOperatorName();
+    public: std::string getSimOperatorName();
 
-    public string getSimSerialNumber();
+    public: std::string getSimSerialNumber();
 
-    public string getSubscriberId();
+    public: std::string getSubscriberId();
 
-    public string getVoiceMailAlphaTag();
+    public: std::string getVoiceMailAlphaTag();
 
-    public string getVoiceMailNumber();
+    public: std::string getVoiceMailNumber();
 
-    public int32_t getNetworkType();
+    public: int32_t getNetworkType();
 
-    public int32_t getPhoneType();
+    public: int32_t getPhoneType();
 
-    public string getBoard();
+    public: std::string getBoard();
 
-    public string getBrand();
+    public: std::string getBrand();
 
-    public string getDevice();
+    public: std::string getDevice();
 
-    public string getFingerprint();
+    public: std::string getFingerprint();
 
-    public string getHost();
+    public: std::string getHost();
 
-    public string getId();
+    public: std::string getId();
 
-    public string getModel();
+    public: std::string getModel();
 
-    public string getProduct();
+    public: std::string getProduct();
 
-    public string getTags();
+    public: std::string getTags();
 
-    public int64_t getTime();
+    public: int64_t getTime();
 
-    public string getType();
+    public: std::string getType();
 
-    public string getUser();
+    public: std::string getUser();
 
 };
 

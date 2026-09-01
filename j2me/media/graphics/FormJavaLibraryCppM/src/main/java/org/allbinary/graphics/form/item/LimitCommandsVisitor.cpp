@@ -56,37 +56,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LimitCommandsVisitor: public Visitor {
-        
 
-    private: const isNotSmallDisplay: bool;
+    private: bool isNotSmallDisplay;
 
-public constructor (){
+public: LimitCommandsVisitor(){
 
-            super();
-        
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
-this.isNotSmallDisplay= (displayInfo!.isPortrait() && displayInfo!.getLastHeight() > ScreenInfo.getInstance()!.SMALL_WIDTH) || (!displayInfo!.isPortrait() && displayInfo!.getLastHeight() > ScreenInfo.getInstance()!.SMALL_HEIGHT);
+this->isNotSmallDisplay= (displayInfo.isPortrait() && displayInfo.getLastHeight() > ScreenInfo::getInstance().SMALL_WIDTH) || (!displayInfo.isPortrait() && displayInfo.getLastHeight() > ScreenInfo::getInstance().SMALL_HEIGHT);
     
 }
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
-    command: Command = anyType as Command;;
+    Command command = anyType as Command;;
     
 
-    booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;;
+    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
     
 
-                        if(this.isNotSmallDisplay || command.getPriority() == 1 || command == GameCommandsFactory.getInstance()!.EXIT_COMMAND || command == GameCommandsFactory.getInstance()!.EXIT_WITHOUT_PROGRESS_COMMAND)
+                        if(this->isNotSmallDisplay || command.getPriority() == 1 || command == GameCommandsFactory::getInstance().EXIT_COMMAND || command == GameCommandsFactory::getInstance().EXIT_WITHOUT_PROGRESS_COMMAND)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return booleanFactory!.TRUE;
+                        return booleanFactory.TRUE;
     
 
                                     }
@@ -96,7 +93,7 @@ this.isNotSmallDisplay= (displayInfo!.isPortrait() && displayInfo!.getLastHeight
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return booleanFactory!.FALSE;
+                        return booleanFactory.FALSE;
     
 
                         }

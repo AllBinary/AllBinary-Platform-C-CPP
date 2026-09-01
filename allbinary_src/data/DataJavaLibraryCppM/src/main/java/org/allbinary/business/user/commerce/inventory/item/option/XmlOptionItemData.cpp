@@ -42,11 +42,10 @@
 class XmlOptionItemData
             : public Object
          {
-        
 
-    public static const XML_FILE_STATUS: string = "XMLOPTIONITEM_XML_FILE_STATUS";
+    public: static const std::string XML_FILE_STATUS = "XMLOPTIONITEM_XML_FILE_STATUS";
 
-    public static const OPTION_XML_FILE: string = "XMLOPTIONITEM_OPTION_XML_FILE";
+    public: static const std::string OPTION_XML_FILE = "XMLOPTIONITEM_OPTION_XML_FILE";
 
 };
 

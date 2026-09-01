@@ -45,15 +45,14 @@
 class CreditCardType
             : public Object
          {
-        
 
-    public static const MAXLEN: int32_t = 19;
+    public: static const int32_t MAXLEN = 19;
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string cardType);
+public: CreditCardType(std::string cardType);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

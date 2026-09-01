@@ -47,17 +47,16 @@
 class GeographicMapCellHistoryProgressBase
             : public Object
          {
-        
 
-    private: static const instance: GeographicMapCellHistoryProgressBase = new GeographicMapCellHistoryProgressBase();
+    private: static GeographicMapCellHistoryProgressBase instance() { return GeographicMapCellHistoryProgressBase(); }
 
-    public static GeographicMapCellHistoryProgressBase getInstance();
+    public: static GeographicMapCellHistoryProgressBase getInstance();
 
-public constructor ();
+public: GeographicMapCellHistoryProgressBase();
 
-    public init();
+    public: void init();
 
-    public bool isAnyProgress();
+    public: bool isAnyProgress();
 
 };
 

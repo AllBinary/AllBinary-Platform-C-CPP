@@ -66,13 +66,12 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FallingPickupLayer: public PickupLayer: public TickableInterface {
-        
+class FallingPickupLayer: public PickupLayer, public TickableInterface {
 
-    private: static const NAME: string = "FallingPickupLayer";
+    private: static const std::string NAME = "FallingPickupLayer";
 
-public constructor (RemoteInfo remoteInfo){
-            super(FallingPickupLayer.NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory.getFactoryInstance()!.getInstance(0), new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 0, 0), ViewPosition.getInstanceD());
+public: FallingPickupLayer(RemoteInfo remoteInfo){
+            super(FallingPickupLayer::NAME, remoteInfo, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -80,13 +79,13 @@ public constructor (RemoteInfo remoteInfo){
 }
 
 
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
-this.setPosition(this.x, this.y +1, this.z);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
+this->setPosition(this->x, this->y +1, this->z);
     
 }
 
 
-    public bool implmentsTickableInterface(){
+    public: bool implmentsTickableInterface(){
 
 
 

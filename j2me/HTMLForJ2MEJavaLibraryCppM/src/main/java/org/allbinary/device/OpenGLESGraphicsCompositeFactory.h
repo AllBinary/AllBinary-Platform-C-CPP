@@ -46,17 +46,16 @@
 class OpenGLESGraphicsCompositeFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESGraphicsCompositeFactory = new OpenGLESGraphicsCompositeFactory();
+    private: static OpenGLESGraphicsCompositeFactory instance() { return OpenGLESGraphicsCompositeFactory(); }
 
-    public static OpenGLESGraphicsCompositeFactory getInstance();
+    public: static OpenGLESGraphicsCompositeFactory getInstance();
 
-    private: openGLESGraphicsFactory: OpenGLESGraphicsFactory = new OpenGLESGraphicsFactory();
+    private: OpenGLESGraphicsFactory openGLESGraphicsFactory = OpenGLESGraphicsFactory();
 
-    public set(OpenGLESGraphicsFactory openGLESGraphicsFactory);
+    public: void set(OpenGLESGraphicsFactory openGLESGraphicsFactory);
 
-    public OpenGLESGraphicsFactory get();
+    public: OpenGLESGraphicsFactory get();
 
 };
 

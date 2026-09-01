@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_OPENGLES_GLUTIL_H
         #define ORG_ALLBINARY_OPENGLES_GLUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Math.h"
@@ -59,23 +61,22 @@
 class GLUtil
             : public Object
          {
-        
 
-    private: static const instance: GLUtil = new GLUtil();
+    private: static GLUtil instance() { return GLUtil(); }
 
-    public static GLUtil getInstance();
+    public: static GLUtil getInstance();
 
-    private: const BYTES_PER_FLOAT: int32_t = 4;
+    private: const int32_t BYTES_PER_FLOAT = 4;
 
-    public FloatBuffer makeFloatBuffer3(float p_a, float p_b, float p_c);
+    public: FloatBuffer makeFloatBuffer3(float p_a, float p_b, float p_c);
 
-    public FloatBuffer makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d);
+    public: FloatBuffer makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d);
 
-    public FloatBuffer makeFloatBuffer(ByteBuffer byteBuffer);
+    public: FloatBuffer makeFloatBuffer(ByteBuffer byteBuffer);
 
-    public Buffer position(Buffer buffer, int32_t newPosition);
+    public: Buffer position(Buffer buffer, int32_t newPosition);
 
-    public rotateUVs(std::vector<float> uvs, float angleDegrees, float pivotU, float pivotV);
+    public: void rotateUVs(std::vector<float> uvs, float angleDegrees, float pivotU, float pivotV);
 
 };
 

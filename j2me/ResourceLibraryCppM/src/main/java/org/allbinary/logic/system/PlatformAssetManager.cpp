@@ -50,28 +50,27 @@
 class PlatformAssetManager
             : public Object
          {
-        
 
-    private: static const instance: PlatformAssetManager = new PlatformAssetManager();
+    private: static PlatformAssetManager instance() { return PlatformAssetManager(); }
 
-    public static PlatformAssetManager getInstance(){
+    public: static PlatformAssetManager getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformAssetManager.instance;
+                        return PlatformAssetManager::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resource){
+    public: InputStream getResourceAsStream(std::string resource){
 
-    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    inputStream: InputStream = resourceUtil!.getResourceAsStream(resource)!;;
+    InputStream inputStream = resourceUtil.getResourceAsStream(resource);;
     
 
 

@@ -49,9 +49,8 @@
 class ComparableObject
             : public Object
         : public Comparable<any> {
-        
 
-    public int32_t compareTo(any = {} anyType);
+    public: int32_t compareTo(Object* anyType);
 
 };
 

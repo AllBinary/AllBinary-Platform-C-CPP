@@ -45,31 +45,30 @@
 class BasketData
             : public Object
          {
-        
 
-    public static const BASKET: string = "BASKET";
+    public: static const std::string BASKET = "BASKET";
 
-    public static const NAME: string = "NAME";
+    public: static const std::string NAME = "NAME";
 
-    public static const BASKETREVIEW: string = "BASKET_REVIEW";
+    public: static const std::string BASKETREVIEW = "BASKET_REVIEW";
 
-    public static const TOTALWEIGHT: string = "BASKET_TOTALWEIGTH";
+    public: static const std::string TOTALWEIGHT = "BASKET_TOTALWEIGTH";
 
-    public static const ITEMTOTAL: string = "BASKET_ITEMTOTAL";
+    public: static const std::string ITEMTOTAL = "BASKET_ITEMTOTAL";
 
-    public static const ITEMTOTALINBASKET: string = "BASKET_ITEMTOTALINBASKET";
+    public: static const std::string ITEMTOTALINBASKET = "BASKET_ITEMTOTALINBASKET";
 
-    public static const SUBTOTAL: string = "BASKET_SUBTOTAL";
+    public: static const std::string SUBTOTAL = "BASKET_SUBTOTAL";
 
-    public static const ISEMPTY: string = "BASKET_ISEMPTY";
+    public: static const std::string ISEMPTY = "BASKET_ISEMPTY";
 
-    public static const INSERT: string = "BASKET_INSERT";
+    public: static const std::string INSERT = "BASKET_INSERT";
 
-    public static const DELETE: string = "BASKET_DELETE";
+    public: static const std::string DELETE = "BASKET_DELETE";
 
-    public static const ADJUST: string = "BASKET_ADJUST";
+    public: static const std::string ADJUST = "BASKET_ADJUST";
 
-private constructor ();
+private: BasketData();
 
 };
 

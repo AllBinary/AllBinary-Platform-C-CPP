@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_CREATEICONIMAGESJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_CREATEICONIMAGESJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/System.h"
@@ -96,28 +98,27 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class CreateIconImagesJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class CreateIconImagesJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: CreateIconImagesJPanel(ImageProcessorInput imageProcessorInput);
 
-    public process();
+    public: void process();
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
-    initComponents();
+    private: void initComponents();
 
-    aboveJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: aboveJButton: javax.swing.JButton;
+    private: javax::swing::JButton aboveJButton;
 
 };
 

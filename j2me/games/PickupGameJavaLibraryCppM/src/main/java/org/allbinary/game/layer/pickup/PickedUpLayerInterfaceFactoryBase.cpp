@@ -61,33 +61,32 @@
 class PickedUpLayerInterfaceFactoryBase
             : public Object
         : public PickedUpLayerInterfaceFactoryInterface {
-        
 
-    public static const NULL_PICKED_UP_LAYER_FACTORY_BASE: PickedUpLayerInterfaceFactoryBase = new PickedUpLayerInterfaceFactoryBase();
+    public: static const PickedUpLayerInterfaceFactoryBase NULL_PICKED_UP_LAYER_FACTORY_BASE = PickedUpLayerInterfaceFactoryBase();
 
-    public AllBinaryLayer getIconLayer(){
-
+    public: AllBinaryLayer getIconLayer(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
-    public Animation getAnimationInterface(){
+    public: Animation getAnimationInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public PickedUpLayerType getPickedUpLayerType(){
+    public: PickedUpLayerType getPickedUpLayerType(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

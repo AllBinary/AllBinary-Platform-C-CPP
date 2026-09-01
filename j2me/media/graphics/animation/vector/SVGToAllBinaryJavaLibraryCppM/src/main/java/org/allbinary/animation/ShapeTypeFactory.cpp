@@ -43,11 +43,10 @@
 class ShapeTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: ShapeTypeFactory = new ShapeTypeFactory();
+    private: static ShapeTypeFactory instance() { return ShapeTypeFactory(); }
 
-    public static ShapeTypeFactory getInstance(){
+    public: static ShapeTypeFactory getInstance(){
 
 
 
@@ -57,19 +56,19 @@ class ShapeTypeFactory
 }
 
 
-    public const KEY_LINE: string = "line";
+    public: const std::string KEY_LINE = "line";
 
-    public const KEY_CIRCLE: string = "circle";
+    public: const std::string KEY_CIRCLE = "circle";
 
-    public const KEY_RECTANGLE: string = "rectangle";
+    public: const std::string KEY_RECTANGLE = "rectangle";
 
-    public const KEY_RECT: string = "rect";
+    public: const std::string KEY_RECT = "rect";
 
-    public const LINE: ShapeType = new ShapeType(KEY_LINE);
+    public: const ShapeType LINE = ShapeType(KEY_LINE);
 
-    public const CIRCLE: ShapeType = new ShapeType(KEY_CIRCLE);
+    public: const ShapeType CIRCLE = ShapeType(KEY_CIRCLE);
 
-    public const RECTANGLE: ShapeType = new ShapeType(KEY_RECTANGLE);
+    public: const ShapeType RECTANGLE = ShapeType(KEY_RECTANGLE);
 
 };
 

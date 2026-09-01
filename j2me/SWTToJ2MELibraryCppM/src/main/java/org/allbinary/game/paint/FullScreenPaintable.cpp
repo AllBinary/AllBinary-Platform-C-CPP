@@ -61,60 +61,57 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //SwtToJ2ME
-class FullScreenPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class FullScreenPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public static FullScreenPaintable getInstance(){
+    public: static FullScreenPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new FullScreenPaintable();
+                        return FullScreenPaintable();
     
 }
 
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: const FULLSCREEN_TEXT: string = "F11 - Toggle Fullscreen";
+    private: const std::string FULLSCREEN_TEXT = "F11 - Toggle Fullscreen";
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: Y: int32_t= 0;
+    private: int32_t Y= 0;
 
-    private: beginWidth: int32_t= 0;
+    private: int32_t beginWidth= 0;
 
-private constructor (){
-
-            super();
-        }
+private: FullScreenPaintable(){
+}
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.Y= 4 *font.getHeight();
+this->Y= 4 *font.getHeight();
     
-this.beginWidth= (font.stringWidth(this.FULLSCREEN_TEXT)>>1);
+this->beginWidth= (font.stringWidth(this->FULLSCREEN_TEXT)>>1);
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
-    halfWidth: int32_t = this.displayInfo!.getLastHalfWidth()!;;
+    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
     
 
-    height: int32_t = this.displayInfo!.getLastHeight()!;;
+    int32_t height = this->displayInfo.getLastHeight();;
     
-graphics.drawString(this.FULLSCREEN_TEXT, halfWidth -this.beginWidth, height -this.Y, this.anchor);
+graphics.drawString(this->FULLSCREEN_TEXT, halfWidth -this->beginWidth, height -this->Y, this->anchor);
     
 }
 

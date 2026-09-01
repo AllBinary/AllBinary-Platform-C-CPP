@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEARRAYROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEARRAYROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -57,35 +59,34 @@
 #include "ImageArrayRotationAnimationInfo.h"
 //TWB - Adjustments should be done in the resource creation and not at the animation level
 class AdjustedImageArrayRotationAnimation: public ImageArrayRotationAnimation {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AdjustedImageArrayRotationAnimation createAdjustedImageArrayRotationAnimationInfo(any = {} anyType, AnimationBehavior animationBehavior);
+    public: static AdjustedImageArrayRotationAnimation createAdjustedImageArrayRotationAnimationInfo(Object* anyType, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public static AdjustedImageArrayRotationAnimation createAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior);
+    public: static AdjustedImageArrayRotationAnimation createAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior);
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t dx, int32_t dy);
+    public: void init(int32_t dx, int32_t dy);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public setDx(int32_t dx);
+    public: void setDx(int32_t dx);
 
-    public int32_t getDx();
+    public: int32_t getDx();
 
-    public setDy(int32_t dy);
+    public: void setDy(int32_t dy);
 
-    public int32_t getDy();
+    public: int32_t getDy();
 
 };
 

@@ -54,15 +54,14 @@
 class TouchJ2ME
             : public Object
          {
-        
 
-public constructor ();
+public: TouchJ2ME();
 
-    public pointerDragged(int32_t x, int32_t y);
+    public: void pointerDragged(int32_t x, int32_t y);
 
-    public pointerPressed(int32_t x, int32_t y);
+    public: void pointerPressed(int32_t x, int32_t y);
 
-    public pointerReleased(int32_t x, int32_t y);
+    public: void pointerReleased(int32_t x, int32_t y);
 
 };
 

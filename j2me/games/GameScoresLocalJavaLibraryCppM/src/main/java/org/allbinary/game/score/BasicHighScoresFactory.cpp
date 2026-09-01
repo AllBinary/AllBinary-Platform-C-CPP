@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/GameInfo.h>
@@ -45,9 +47,8 @@
 #include "HighScoresHelperBaseInterface.h"
 
 class BasicHighScoresFactory: public HighScoresBase {
-        
 
-    public static bool loaded(int32_t index2){
+    public: static bool loaded(int32_t index2){
 
                         if(index2 >= 0)
                         
@@ -70,60 +71,58 @@ class BasicHighScoresFactory: public HighScoresBase {
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-public constructor (AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation){
-
-            super();
-        this.abeClientInformation= abeClientInformation;
+public: BasicHighScoresFactory(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation){
+this->abeClientInformation= abeClientInformation;
     
 }
 
 
-    private: const highScoresArray: std::vector<HighScores> = new Array(1);
+    private: const std::vector<HighScores> highScoresArray = new Array(1);
 
-    private: const TOP: string = "Top";
+    private: const std::string TOP = "Top";
 
-    private: const SCORES: string = "Scores";
+    private: const std::string SCORES = "Scores";
 
-    private: const PERSONAL_HIGH_SCORES: string = "Personal Top Scores";
+    private: const std::string PERSONAL_HIGH_SCORES = "Personal Top Scores";
 
-    private: const FETCH: string = "fetchHighScores";
+    private: const std::string FETCH = "fetchHighScores";
 
-    public fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
-this.logUtil!.putF("Getting Local HighScores", this, this.FETCH);
+    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
+this->logUtil.putF("Getting Local HighScores", this, this->FETCH);
     
-this.fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
+this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
     
 }
 
 
-    public fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
+    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
 
         try {
-            this.highScoresArray[0]= RecordStoreHighScores.getInstance(this.abeClientInformation, gameInfo, this.TOP, this.PERSONAL_HIGH_SCORES, this.SCORES, new ScoreComparator(true));
+            this->highScoresArray[0]= RecordStoreHighScores::getInstance(this->abeClientInformation, gameInfo, this->TOP, this->PERSONAL_HIGH_SCORES, this->SCORES, ScoreComparator(true));
     
-highScoresResultsListener!.setHighScoresArray(this.highScoresArray);
+highScoresResultsListener.setHighScoresArray(this->highScoresArray);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.FETCH, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->FETCH, e);
     
 }
 
 }
 
 
-    public HighScoresHelperBaseInterface createHighScoresHelper(){
+    public: HighScoresHelperBaseInterface createHighScoresHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HighScoresHelper2();
+                        return HighScoresHelper2();
     
 }
 

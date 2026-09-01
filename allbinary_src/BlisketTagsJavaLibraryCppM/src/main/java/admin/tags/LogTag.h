@@ -45,9 +45,8 @@
         #include "TableTag.h"
 
 class LogTag: public TableTag {
-        
 
-public constructor ();
+public: LogTag();
 
 };
 

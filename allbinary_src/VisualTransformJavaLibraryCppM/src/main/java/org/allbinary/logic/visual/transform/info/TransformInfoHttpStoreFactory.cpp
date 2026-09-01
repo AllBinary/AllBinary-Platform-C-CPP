@@ -53,34 +53,31 @@
 class TransformInfoHttpStoreFactory
             : public Object
         : public TransformInfoFactoryInterface {
-        
 
-    private: static const instance: TransformInfoHttpStoreFactory = new TransformInfoHttpStoreFactory();
+    private: static TransformInfoHttpStoreFactory instance() { return TransformInfoHttpStoreFactory(); }
 
-    public static TransformInfoHttpStoreFactory getInstance(){
+    public: static TransformInfoHttpStoreFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoHttpStoreFactory.instance;
+                        return TransformInfoHttpStoreFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoHttpStoreFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getInstance(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: TransformInfoInterface getInstance(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformInfoHttpStore(databaseHashMap, propertiesHashMap, pageContext);
+                        return TransformInfoHttpStore(databaseHashMap, propertiesHashMap, pageContext);
     
 }
 

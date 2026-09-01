@@ -72,41 +72,40 @@
 class BasicPaymentType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: value: string;
+    private: std::string value;
 
-    private: paymentGatewayInterfaceFactoryInterface: PaymentGatewayInterfaceFactoryInterface;
+    private: PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface;
 
-    private: paymentGatewayDomNodeFactoryInterface: PaymentGatewayDomNodeFactoryInterface;
+    private: PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface;
 
-protected constructor (string paymentMethod);
+protected: BasicPaymentType(std::string paymentMethod);
 
-protected constructor (string paymentMethod, PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface);
+protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface);
 
-    init(string paymentMethod);
+    private: void init(std::string paymentMethod);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getValue();
-
-                //@Throws(Exception.constructor)
-            
-    public PaymentGatewayInterfaceFactoryInterface getPaymentGatewayInterfaceFactoryInterface();
+    public: std::string getValue();
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayDomNodeFactoryInterface getPaymentGatewayDomNodeFactoryInterface();
+    public: PaymentGatewayInterfaceFactoryInterface getPaymentGatewayInterfaceFactoryInterface();
 
-    public any getKey();
+                //@Throws(Exception.constructor)
+            
+    public: PaymentGatewayDomNodeFactoryInterface getPaymentGatewayDomNodeFactoryInterface();
 
-    public Vector toVector();
+    public: Object* getKey();
 
-    public HashMap<any, any> toHashMap();
+    public: Vector toVector();
 
-    public string toString();
+    public: HashMap<any, any> toHashMap();
+
+    public: std::string toString();
 
 };
 

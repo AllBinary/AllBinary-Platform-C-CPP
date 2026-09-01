@@ -42,88 +42,85 @@
 class PaymentGatewayData
             : public Object
          {
-        
 
-    public static const CRYPTNUM: int32_t = 5;
+    public: static const int32_t CRYPTNUM = 5;
 
-    public static const ID: PaymentGatewayData = new PaymentGatewayData("PAYMENTGATEWAY_ID");
+    public: static const PaymentGatewayData ID = PaymentGatewayData("PAYMENTGATEWAY_ID");
 
-    public static const NAME: PaymentGatewayData = new PaymentGatewayData("PAYMENTGATEWAY_NAME");
+    public: static const PaymentGatewayData NAME = PaymentGatewayData("PAYMENTGATEWAY_NAME");
 
-    public static const VALUE: PaymentGatewayData = new PaymentGatewayData("PAYMENTGATEWAY_VALUE");
+    public: static const PaymentGatewayData VALUE = PaymentGatewayData("PAYMENTGATEWAY_VALUE");
 
-    public static const PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE: PaymentGatewayData = new PaymentGatewayData("PAYMENTGATEWAY_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE");
+    public: static const PaymentGatewayData PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE = PaymentGatewayData("PAYMENTGATEWAY_PAYMENTTRANSACTIONINTERFACEFACTORYINTERFACE");
 
-    public static const PAYMENTPROCESSORINTERFACEFACTORYINTERFACE: PaymentGatewayData = new PaymentGatewayData("PAYMENTGATEWAY_PAYMENTPROCESSORINTERFACEFACTORYINTERFACE");
+    public: static const PaymentGatewayData PAYMENTPROCESSORINTERFACEFACTORYINTERFACE = PaymentGatewayData("PAYMENTGATEWAY_PAYMENTPROCESSORINTERFACEFACTORYINTERFACE");
 
-    public static const MODE: PaymentGatewayData = new PaymentGatewayData("MODE");
+    public: static const PaymentGatewayData MODE = PaymentGatewayData("MODE");
 
-    public static const SERVERPROTOCOL: PaymentGatewayData = new PaymentGatewayData("SERVERPROTOCOL");
+    public: static const PaymentGatewayData SERVERPROTOCOL = PaymentGatewayData("SERVERPROTOCOL");
 
-    public static const SERVER: PaymentGatewayData = new PaymentGatewayData("SERVER");
+    public: static const PaymentGatewayData SERVER = PaymentGatewayData("SERVER");
 
-    public static const SERVERPORT: PaymentGatewayData = new PaymentGatewayData("SERVERPORT");
+    public: static const PaymentGatewayData SERVERPORT = PaymentGatewayData("SERVERPORT");
 
-    public static const SERVERPATH: PaymentGatewayData = new PaymentGatewayData("SERVERPATH");
+    public: static const PaymentGatewayData SERVERPATH = PaymentGatewayData("SERVERPATH");
 
-    public static const TESTPROTOCOL: PaymentGatewayData = new PaymentGatewayData("TESTSERVERPROTOCOL");
+    public: static const PaymentGatewayData TESTPROTOCOL = PaymentGatewayData("TESTSERVERPROTOCOL");
 
-    public static const TESTSERVER: PaymentGatewayData = new PaymentGatewayData("TESTSERVER");
+    public: static const PaymentGatewayData TESTSERVER = PaymentGatewayData("TESTSERVER");
 
-    public static const TESTPORT: PaymentGatewayData = new PaymentGatewayData("TESTPORT");
+    public: static const PaymentGatewayData TESTPORT = PaymentGatewayData("TESTPORT");
 
-    public static const TESTPATH: PaymentGatewayData = new PaymentGatewayData("TESTSERVERPATH");
+    public: static const PaymentGatewayData TESTPATH = PaymentGatewayData("TESTSERVERPATH");
 
-    public static const TIMEOUT: PaymentGatewayData = new PaymentGatewayData("TIMEOUT");
+    public: static const PaymentGatewayData TIMEOUT = PaymentGatewayData("TIMEOUT");
 
-    public static const PROXYPROTOCOL: PaymentGatewayData = new PaymentGatewayData("PROXYPROTOCOL");
+    public: static const PaymentGatewayData PROXYPROTOCOL = PaymentGatewayData("PROXYPROTOCOL");
 
-    public static const PROXYSERVER: PaymentGatewayData = new PaymentGatewayData("PROXYSERVER");
+    public: static const PaymentGatewayData PROXYSERVER = PaymentGatewayData("PROXYSERVER");
 
-    public static const PROXYPATH: PaymentGatewayData = new PaymentGatewayData("PROXYPATH");
+    public: static const PaymentGatewayData PROXYPATH = PaymentGatewayData("PROXYPATH");
 
-    public static const PROXYUSERNAME: PaymentGatewayData = new PaymentGatewayData("PROXYUSERNAME");
+    public: static const PaymentGatewayData PROXYUSERNAME = PaymentGatewayData("PROXYUSERNAME");
 
-    public static const PROXYPASSWORD: PaymentGatewayData = new PaymentGatewayData("PROXYPASSWORD");
+    public: static const PaymentGatewayData PROXYPASSWORD = PaymentGatewayData("PROXYPASSWORD");
 
-    public static const PROXYPORT: PaymentGatewayData = new PaymentGatewayData("PROXYPORT");
+    public: static const PaymentGatewayData PROXYPORT = PaymentGatewayData("PROXYPORT");
 
-    public static const PROXYTIMEOUT: PaymentGatewayData = new PaymentGatewayData("PROXYTIMEOUT");
+    public: static const PaymentGatewayData PROXYTIMEOUT = PaymentGatewayData("PROXYTIMEOUT");
 
-    public static const SPECIAL1: PaymentGatewayData = new PaymentGatewayData("SPECIAL1");
+    public: static const PaymentGatewayData SPECIAL1 = PaymentGatewayData("SPECIAL1");
 
-    public static const SPECIAL2: PaymentGatewayData = new PaymentGatewayData("SPECIAL2");
+    public: static const PaymentGatewayData SPECIAL2 = PaymentGatewayData("SPECIAL2");
 
-    public static const SPECIAL3: PaymentGatewayData = new PaymentGatewayData("SPECIAL3");
+    public: static const PaymentGatewayData SPECIAL3 = PaymentGatewayData("SPECIAL3");
 
-    public static const SPECIAL4: PaymentGatewayData = new PaymentGatewayData("SPECIAL4");
+    public: static const PaymentGatewayData SPECIAL4 = PaymentGatewayData("SPECIAL4");
 
-    public static const SPECIAL5: PaymentGatewayData = new PaymentGatewayData("SPECIAL5");
+    public: static const PaymentGatewayData SPECIAL5 = PaymentGatewayData("SPECIAL5");
 
-    public static const SPECIAL6: PaymentGatewayData = new PaymentGatewayData("SPECIAL6");
+    public: static const PaymentGatewayData SPECIAL6 = PaymentGatewayData("SPECIAL6");
 
-    public static const SPECIAL7: PaymentGatewayData = new PaymentGatewayData("SPECIAL7");
+    public: static const PaymentGatewayData SPECIAL7 = PaymentGatewayData("SPECIAL7");
 
-    public static const SPECIAL8: PaymentGatewayData = new PaymentGatewayData("SPECIAL8");
+    public: static const PaymentGatewayData SPECIAL8 = PaymentGatewayData("SPECIAL8");
 
-    public static const SPECIAL9: PaymentGatewayData = new PaymentGatewayData("SPECIAL9");
+    public: static const PaymentGatewayData SPECIAL9 = PaymentGatewayData("SPECIAL9");
 
-    private: key: string;
+    private: std::string key;
 
-private constructor (string value){
-
-            super();
-        this.key= value;
+private: PaymentGatewayData(std::string value){
+this->key= value;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.key;
+                        return this->key;
     
 }
 

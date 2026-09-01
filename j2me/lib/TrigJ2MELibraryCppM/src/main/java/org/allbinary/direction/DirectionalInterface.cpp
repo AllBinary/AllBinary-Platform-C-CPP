@@ -42,15 +42,14 @@
         #include "Direction.h"
 
 class DirectionalInterface {
-        
 
-    setFrameByDirection(Direction direction)
+    void setFrameByDirection(Direction direction)
 
-    setFrameToAngle(Angle angle)
+    void setFrameToAngle(Angle angle)
 
-    adjustFrameToAngle(Angle newAngle)
+    void adjustFrameToAngle(Angle newAngle)
 
-    adjustFrame(int16_t angle)
+    void adjustFrame(int16_t angle)
 
 };
 

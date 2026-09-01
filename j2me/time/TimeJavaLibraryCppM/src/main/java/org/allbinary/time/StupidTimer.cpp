@@ -55,22 +55,21 @@
 class StupidTimer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const nullUtil: NullUtil = NullUtil.getInstance()!;
+    protected: const NullUtil nullUtil = NullUtil::getInstance();
 
-    private: const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    bool visitBool(Visitor visitorInterface){
+    private: bool visitBool(Visitor visitorInterface){
 
-    result: Boolean = visitorInterface!.visit(this.nullUtil!.NULL_OBJECT) as Boolean;;
+    Boolean result = visitorInterface.visit(this->nullUtil.NULL_OBJECT) as Boolean;;
     
 
-    result2: bool = result.valueOf()!;;
+    bool result2 = result.valueOf();;
     
 
 
@@ -83,26 +82,26 @@ class StupidTimer
 
                 //@Throws(Exception.constructor)
             
-    public visit(Visitor visitorInterface, TimeDelayHelper timeDelayHelper){
+    public: void visit(Visitor visitorInterface, TimeDelayHelper timeDelayHelper){
 
-    tookTooLong: bool = false;;
+    bool tookTooLong = false;;
     
 
-    WAITING_FOR: string = "Waiting for: ";;
+    std::string WAITING_FOR = "Waiting for: ";;
     
-PreLogUtil.put(new StringMaker().append(WAITING_FOR)!.append(StringUtil.getInstance()!.toString(visitorInterface))!.toString(), this, this.commonStrings!.VISIT);
-    
-
-    index: int32_t = 0;;
+PreLogUtil::put(StringMaker().append(WAITING_FOR).append(StringUtil::getInstance().toString(visitorInterface)).toString(), this, this->commonStrings.VISIT);
     
 
-        while(this.visitBool(visitorInterface))
+    int32_t index = 0;;
+    
+
+        while(this->visitBool(visitorInterface))
         {
 
                         if(index % 10 == 0)
                         
                                     {
-                                    PreLogUtil.put(new StringMaker().append(WAITING_FOR)!.appendint(index)!.toString(), this, this.commonStrings!.VISIT);
+                                    PreLogUtil::put(StringMaker().append(WAITING_FOR).appendint(index).toString(), this, this->commonStrings.VISIT);
     
 
                                     }
@@ -116,12 +115,12 @@ index++;
 
         //mutex.withLock
         
-this.threadObjectUtil!.waitObjectFor(this, 1800);
+this->threadObjectUtil.waitObjectFor(this, 1800);
     
 
 
 
-                        if(timeDelayHelper!.isTimeTNT())
+                        if(timeDelayHelper.isTimeTNT())
                         
                                     {
                                     tookTooLong= true;
@@ -138,13 +137,13 @@ break;
                         if(tookTooLong)
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.VISIT, new Exception(new StringMaker().append("Took Too Long: ")!.append(StringUtil.getInstance()!.toString(visitorInterface))!.toString()));
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.VISIT, Exception(StringMaker().append("Took Too Long: ").append(StringUtil::getInstance().toString(visitorInterface)).toString()));
     
 
                                     }
                                 
                         else {
-                            PreLogUtil.put(timeDelayHelper!.toString(), this, this.commonStrings!.VISIT);
+                            PreLogUtil::put(timeDelayHelper.toString(), this, this->commonStrings.VISIT);
     
 
                         }
@@ -154,7 +153,7 @@ break;
 
                 //@Throws(Exception.constructor)
             
-    public stopWaiting(){
+    public: void stopWaiting(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -162,7 +161,7 @@ break;
 
         //mutex.withLock
         
-this.threadObjectUtil!.notifyObject(this);
+this->threadObjectUtil.notifyObject(this);
     
 
 

@@ -74,41 +74,40 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class IconLayer: public AllBinaryLayer {
-        
 
-    public static const NULL_ICON_LAYER: IconLayer = new IconLayer(NullAnimationFactory.getFactoryInstance()!.getInstance(0), 0, 0);
+    public: static const IconLayer NULL_ICON_LAYER = IconLayer(NullAnimationFactory::getFactoryInstance().getInstance(0), 0, 0);
 
-    private: animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface, int32_t width, int32_t height){
-            super(StringUtil.getInstance()!.EMPTY_STRING, new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, width, height), ViewPosition.getInstanceD());
+public: IconLayer(Animation animationInterface, int32_t width, int32_t height){
+            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, width, height), ViewPosition::getInstanceD());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.animationInterface= animationInterface;
+this->animationInterface= animationInterface;
     
 }
 
 
-    public paint(Graphics graphics){
-this.animationInterface!.paintXY(graphics, this.x, this.y);
+    public: void paint(Graphics graphics){
+this->animationInterface.paintXY(graphics, this->x, this->y);
     
 }
 
 
-    public paintThreed(Graphics graphics){
-this.animationInterface!.paintThreedXYZ(graphics, this.x, this.y, this.z);
+    public: void paintThreed(Graphics graphics){
+this->animationInterface.paintThreedXYZ(graphics, this->x, this->y, this->z);
     
 }
 
 
-    public Animation getAnimationInterface(){
+    public: Animation getAnimationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface;
+                        return this->animationInterface;
     
 }
 

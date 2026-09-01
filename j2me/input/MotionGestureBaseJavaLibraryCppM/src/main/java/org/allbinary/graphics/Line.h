@@ -47,33 +47,32 @@
 class Line
             : public Object
          {
-        
 
-    private: p1: GPoint;
+    private: GPoint p1;
 
-    private: p2: GPoint;
+    private: GPoint p2;
 
-    private: deltaX: double= 0.0;
+    private: double deltaX= 0.0;
 
-    private: deltaY: double= 0.0;
+    private: double deltaY= 0.0;
 
-public constructor (GPoint p1, GPoint p2);
+public: Line(GPoint p1, GPoint p2);
 
-    public double getGradient();
+    public: double getGradient();
 
-    update();
+    private: void update();
 
-    public double getDeltaX();
+    public: double getDeltaX();
 
-    public double getDeltaY();
+    public: double getDeltaY();
 
-    public GPoint getP1();
+    public: GPoint getP1();
 
-    public GPoint getP2();
+    public: GPoint getP2();
 
-    public setP1(GPoint p1);
+    public: void setP1(GPoint p1);
 
-    public setP2(GPoint p2);
+    public: void setP2(GPoint p2);
 
 };
 

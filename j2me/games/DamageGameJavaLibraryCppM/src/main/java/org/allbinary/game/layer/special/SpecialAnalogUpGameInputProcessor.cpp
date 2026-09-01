@@ -48,9 +48,8 @@
 #include "CollidableDestroyableDamageableLayer.h"
 
 class SpecialAnalogUpGameInputProcessor: public SpecialGameInputProcessor {
-        
 
-public constructor (CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
+public: SpecialAnalogUpGameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
             super(collidableDestroyableDamageableLayer);
                     
 
@@ -61,8 +60,8 @@ public constructor (CollidableDestroyableDamageableLayer collidableDestroyableDa
 
                 //@Throws(Exception.constructor)
             
-    public processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t yAnalogValue){
-this.collidableDestroyableDamageableLayer!.upAnalog(yAnalogValue);
+    public: void processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t yAnalogValue){
+this->collidableDestroyableDamageableLayer.upAnalog(yAnalogValue);
     
 }
 

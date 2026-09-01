@@ -21,9 +21,9 @@
         #ifndef ORG_ALLBINARY_STRING_COMMONSTRINGS_H
         #define ORG_ALLBINARY_STRING_COMMONSTRINGS_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
-
-#include <vector>
         
 #include <jsinterop/annotations/JsType.h>
 
@@ -97,7 +97,10 @@ class CommonStrings
 
     public: const std::string RIGHT = "right";
 
-        public: const std::vector<std::string> DIRECTION_NAME = {this->DOWN, this->LEFT, this->RIGHT, this->UP};
+    public: const std::vector<std::string> DIRECTION_NAME = 
+                                                        {
+                                                            this->DOWN,this->LEFT,this->RIGHT,this->UP
+                                                        };
 
     public: const std::string CREATE = "Create";
 

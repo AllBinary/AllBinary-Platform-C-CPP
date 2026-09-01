@@ -89,100 +89,99 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class KeyboardActionScriptInputJPanel: public javax.swing.JPanel {
-        
+class KeyboardActionScriptInputJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: keyActionScriptInputInterface: KeyboardActionScriptInputInterface;
+    private: KeyboardActionScriptInputInterface keyActionScriptInputInterface;
 
-public constructor (KeyboardActionScriptInputInterface keyActionScriptInputInterface);
+public: KeyboardActionScriptInputJPanel(KeyboardActionScriptInputInterface keyActionScriptInputInterface);
 
-    set();
-
-                //@Throws(Exception.constructor)
-            
-    updateInputType();
-
-    Integer getSelectedKey();
-
-    updateKeys();
+    private: void set();
 
                 //@Throws(Exception.constructor)
             
-    update();
+    private: void updateInputType();
 
-    public javax.swing.JDialog getKeyActionJDialog();
+    private: Integer getSelectedKey();
 
-    public setKeyActionJDialog(javax.swing.JDialog keyActionJDialog);
+    private: void updateKeys();
 
-    initComponents();
+                //@Throws(Exception.constructor)
+            
+    private: void update();
 
-    prependText(Integer integer);
+    public: javax::swing::JDialog getKeyActionJDialog();
 
-    keyIntegerJComboBoxActionPerformed(java.awt.event.ActionEvent evt);
+    public: void setKeyActionJDialog(javax::swing::JDialog keyActionJDialog);
 
-    sequenceJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void initComponents();
 
-    simultaneousJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void prependText(Integer integer);
 
-    keyNameJComboBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void keyIntegerJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    okJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void sequenceJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    keyActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void simultaneousJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    normalJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void keyNameJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    releaseJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    pressJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void keyActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: addKeyJLabel: javax.swing.JLabel;
+    private: void normalJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: delayBetweenJLabel: javax.swing.JLabel;
+    private: void releaseJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: delayJTextField: javax.swing.JTextField;
+    private: void pressJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: holdTimeJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel addKeyJLabel;
 
-    private: inputAutomationTypeJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JLabel delayBetweenJLabel;
 
-    private: inputTypeJLabel: javax.swing.JLabel;
+    private: javax::swing::JTextField delayJTextField;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel holdTimeJLabel;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JComboBox inputAutomationTypeJComboBox;
 
-    private: keyActionJButton: javax.swing.JButton;
+    private: javax::swing::JLabel inputTypeJLabel;
 
-    private: keyActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JLabel jLabel1;
 
-    private: keyIntegerJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JPanel jPanel1;
 
-    private: keyNameJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JButton keyActionJButton;
 
-    private: normalJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JDialog keyActionJDialog;
 
-    private: okJButton: javax.swing.JButton;
+    private: javax::swing::JComboBox keyIntegerJComboBox;
 
-    private: pressJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JComboBox keyNameJComboBox;
 
-    private: releaseJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JRadioButton normalJRadioButton;
 
-    private: sequenceJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JButton okJButton;
 
-    private: simultaneousJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JRadioButton pressJRadioButton;
 
-    private: testJLabel: javax.swing.JLabel;
+    private: javax::swing::JRadioButton releaseJRadioButton;
 
-    private: textJTextField: javax.swing.JTextField;
+    private: javax::swing::JRadioButton sequenceJRadioButton;
 
-    private: timeJTextField: javax.swing.JTextField;
+    private: javax::swing::JRadioButton simultaneousJRadioButton;
 
-    private: titleJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel testJLabel;
+
+    private: javax::swing::JTextField textJTextField;
+
+    private: javax::swing::JTextField timeJTextField;
+
+    private: javax::swing::JLabel titleJLabel;
 
 };
 

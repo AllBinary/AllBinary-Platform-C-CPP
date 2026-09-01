@@ -67,11 +67,10 @@
 #include "BasicTouchInputFactory.h"
 
 class BasicNeededTouchButtonsBuilder: public BaseTouchInput {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

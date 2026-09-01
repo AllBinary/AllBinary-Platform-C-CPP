@@ -80,87 +80,78 @@
         #include "TagHelper.h"
 
 class BasketRequestHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: const storeFrontInterface: StoreFrontInterface;
+    private: const StoreFrontInterface storeFrontInterface;
 
-    private: const propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: num: string;
+    private: std::string num;
 
-    private: const MAX: int32_t = 200;
+    private: const int32_t MAX = 200;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
-
-            super();
-        this.propertiesHashMap= propertiesHashMap;
+public: BasketRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+this->propertiesHashMap= propertiesHashMap;
     
-this.pageContext= pageContext;
+this->pageContext= pageContext;
     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
 
-    storeName: string = propertiesHashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(storeName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 
                                     }
                                 
                         else {
-                            this.storeFrontInterface= new StoreFront();
+                            this->storeFrontInterface= StoreFront();
     
 
                         }
                             
-this.weblisketSession= new WeblisketSession(propertiesHashMap, pageContext);
+this->weblisketSession= WeblisketSession(propertiesHashMap, pageContext);
     
-this.getFormData();
-    
-}
-
-
-    getFormData(){
-this.id= this.request.getParameter(BasicItemData.ID);
-    
-this.num= this.request.getParameter(BasketData.ITEMTOTALINBASKET);
+this->getFormData();
     
 }
 
 
-    public Boolean addItemToBasket(){
+    private: void getFormData(){
+this->id= this->request.getParameter(BasicItemData::ID);
+    
+this->num= this->request.getParameter(BasketData::ITEMTOTALINBASKET);
+    
+}
+
+
+    public: Boolean addItemToBasket(){
 
         try {
             
-                        if(this.id != 
-                                    null
-                                 && this.num != 
-                                    null
-                                )
+                        if(true && true)
                         
                                     {
                                     
-    basket: BasketInterface = this.weblisketSession!.getOrder()!.getBasket()!;;
+    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
     
 
-                        if(InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.getItem(this.id) == 
-                                    null
+                        if(InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->id) == 
+                                    nullptr
                                 )
                         
                                     {
@@ -168,21 +159,21 @@ this.num= this.request.getParameter(BasketData.ITEMTOTALINBASKET);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
-basket.addItem(this.id, num);
+basket.addItem(this->id, num);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF("Successfully added item to Basket", this, "addItemToBasket()");
+                                    this->logUtil.putF("Successfully added item to Basket", this, "addItemToBasket()");
     
 
                                     }
@@ -191,17 +182,17 @@ basket.addItem(this.id, num);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "addItemToBasket()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "addItemToBasket()", e);
     
 
                                     }
@@ -210,35 +201,33 @@ basket.addItem(this.id, num);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Boolean removeItemFromBasket(){
+    public: Boolean removeItemFromBasket(){
 
         try {
             
-                        if(this.id != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
-    basket: BasketInterface = this.weblisketSession!.getOrder()!.getBasket()!;;
+    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
     
-basket.removeItem(this.id);
+basket.removeItem(this->id);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF("Successfully removed item from Basket", this, "removeItemFromBasket()");
+                                    this->logUtil.putF("Successfully removed item from Basket", this, "removeItemFromBasket()");
     
 
                                     }
@@ -247,17 +236,17 @@ basket.removeItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "removeItemFromBasket()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "removeItemFromBasket()", e);
     
 
                                     }
@@ -266,31 +255,28 @@ basket.removeItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Boolean adjustBasket(){
+    public: Boolean adjustBasket(){
 
         try {
             
-    basket: BasketInterface = this.weblisketSession!.getOrder()!.getBasket()!;;
+    BasketInterface basket = this->weblisketSession.getOrder().getBasket();;
     
 
-                        if(this.id != 
-                                    null
-                                 && this.num != 
-                                    null
-                                )
-                        basket.adjustItem(this.id, this.num)
+                        if(true && true)
+                        basket.adjustItem(this->id, this->num);
+                                
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF("Successfull Adjusted Basket", this, "adjustBasket()");
+                                    this->logUtil.putF("Successfull Adjusted Basket", this, "adjustBasket()");
     
 
                                     }
@@ -299,17 +285,17 @@ basket.removeItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "adjustBasket()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "adjustBasket()", e);
     
 
                                     }
@@ -318,7 +304,7 @@ basket.removeItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

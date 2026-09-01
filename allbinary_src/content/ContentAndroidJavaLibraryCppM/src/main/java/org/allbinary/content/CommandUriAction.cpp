@@ -65,61 +65,60 @@
 class CommandUriAction
             : public Object
          {
-        
 
-    private: static const instance: CommandUriAction = new CommandUriAction();
+    private: static CommandUriAction instance() { return CommandUriAction(); }
 
-    public static CommandUriAction getInstance(){
+    public: static CommandUriAction getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandUriAction.instance;
+                        return CommandUriAction::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public add(Command command, string url){
-this.hashtable.put(command, url);
+    public: void add(Command command, std::string url){
+this->hashtable.put(command, url);
     
 }
 
 
-    public process(Command command){
+    public: void process(Command command){
 
         try {
             
-    intent: Intent = this.getIntent(command)!;;
+    Intent intent = this->getIntent(command);;
     
-ResourceUtil.getInstance()!.getContext()!.startActivity(intent);
+ResourceUtil::getInstance().getContext().startActivity(intent);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.PROCESS, e);
     
 }
 
 }
 
 
-    public Intent getIntent(Command command){
+    public: Intent getIntent(Command command){
 
-    url: string = this.hashtable.get(command) as string;;
+    std::string url = this->hashtable.get(command) as string;;
     
 
-    uri: Uri = Uri.parse(url)!;;
+    Uri uri = Uri::parse(url);;
     
 
-    intent: Intent = new Intent(Intent.ACTION_VIEW, uri);;
+    Intent intent = Intent(Intent::ACTION_VIEW, uri);;
     
 
 

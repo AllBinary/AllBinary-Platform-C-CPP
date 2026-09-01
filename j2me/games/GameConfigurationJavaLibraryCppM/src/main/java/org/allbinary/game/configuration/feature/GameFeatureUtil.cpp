@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -86,87 +88,86 @@
 class GameFeatureUtil
             : public Object
          {
-        
 
-    private: static const instance: GameFeatureUtil = new GameFeatureUtil();
+    private: static GameFeatureUtil instance() { return GameFeatureUtil(); }
 
-    public static GameFeatureUtil getInstance(){
+    public: static GameFeatureUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureUtil.instance;
+                        return GameFeatureUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public const ON_GAME_FEATURE_CHANGE: string = "onGameFeatureChange";
+    public: const std::string ON_GAME_FEATURE_CHANGE = "onGameFeatureChange";
 
-    public const GAME_FEATURE_CHANGED: string = "Game Feature Changed: ";
+    public: const std::string GAME_FEATURE_CHANGED = "Game Feature Changed: ";
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(ChoiceGroup choiceGroup){
+    public: void setDefault(ChoiceGroup choiceGroup){
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-
-    METHOD_NAME: string = "setDefault";;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    SELECTED_ARRAY_RETURN: string = "selectedArray_return[";;
+    std::string METHOD_NAME = "setDefault";;
     
 
-    SELECTED_SEP: string = "] = ";;
+    std::string SELECTED_ARRAY_RETURN = "selectedArray_return[";;
     
 
-    selectedArray_return: std::vector<bool> = new Array(choiceGroup!.size());;
+    std::string SELECTED_SEP = "] = ";;
     
 
-    total: int32_t = choiceGroup!.getSelectedFlags(selectedArray_return)!;;
-    
-stringBuffer!.append("Multiple Total Choices: ");
-    
-stringBuffer!.appendint(total);
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
+    std::vector<bool> selectedArray_return = new Array(choiceGroup.size());;
     
 
-    features: Features = Features.getInstance()!;;
+    int32_t total = choiceGroup.getSelectedFlags(selectedArray_return);;
+    
+stringBuffer.append("Multiple Total Choices: ");
+    
+stringBuffer.appendint(total);
+    
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
+    
+
+    Features features = Features::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < selectedArray_return!.length; index++)
+    int32_t index = 0;index < selectedArray_return.size(); index++)
         {
 
-    isSelected: bool = selectedArray_return[index]!;;
+    bool isSelected = selectedArray_return[index];;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(SELECTED_ARRAY_RETURN);
+stringBuffer.append(SELECTED_ARRAY_RETURN);
     
-stringBuffer!.appendint(index);
+stringBuffer.appendint(index);
     
-stringBuffer!.append(SELECTED_SEP);
+stringBuffer.append(SELECTED_SEP);
     
-stringBuffer!.appendboolean(isSelected);
+stringBuffer.appendboolean(isSelected);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
-    
-
-    selectedChoiceLabel: string = choiceGroup!.getString(index)!;;
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
     
 
-    gameFeature: Feature = Feature.getInstance(selectedChoiceLabel)!;;
+    std::string selectedChoiceLabel = choiceGroup.getString(index);;
+    
+
+    Feature gameFeature = Feature::getInstance(selectedChoiceLabel);;
     
 
                         if(features.isDefault(gameFeature))
@@ -174,7 +175,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
                                     {
                                     features.add(gameFeature);
     
-choiceGroup!.setSelectedIndex(index, true);
+choiceGroup.setSelectedIndex(index, true);
     
 
                                     }
@@ -182,7 +183,7 @@ choiceGroup!.setSelectedIndex(index, true);
                         else {
                             features.remove(gameFeature);
     
-choiceGroup!.setSelectedIndex(index, false);
+choiceGroup.setSelectedIndex(index, false);
     
 
                         }
@@ -194,61 +195,61 @@ choiceGroup!.setSelectedIndex(index, false);
 
                 //@Throws(Exception.constructor)
             
-    public updateMultiple(ChoiceGroup choiceGroup){
+    public: void updateMultiple(ChoiceGroup choiceGroup){
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-
-    METHOD_NAME: string = "updateMultiple";;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    SELECTED_ARRAY_RETURN: string = "selectedArray_return[";;
+    std::string METHOD_NAME = "updateMultiple";;
     
 
-    SELECTED_SEP: string = "] = ";;
+    std::string SELECTED_ARRAY_RETURN = "selectedArray_return[";;
     
 
-    selectedArray_return: std::vector<bool> = new Array(choiceGroup!.size());;
+    std::string SELECTED_SEP = "] = ";;
     
 
-    total: int32_t = choiceGroup!.getSelectedFlags(selectedArray_return)!;;
-    
-stringBuffer!.append("Multiple Total Choices: ");
-    
-stringBuffer!.appendint(total);
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
+    std::vector<bool> selectedArray_return = new Array(choiceGroup.size());;
     
 
-    features: Features = Features.getInstance()!;;
+    int32_t total = choiceGroup.getSelectedFlags(selectedArray_return);;
+    
+stringBuffer.append("Multiple Total Choices: ");
+    
+stringBuffer.appendint(total);
+    
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
+    
+
+    Features features = Features::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < selectedArray_return!.length; index++)
+    int32_t index = 0;index < selectedArray_return.size(); index++)
         {
 
-    isSelected: bool = selectedArray_return[index]!;;
+    bool isSelected = selectedArray_return[index];;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(SELECTED_ARRAY_RETURN);
+stringBuffer.append(SELECTED_ARRAY_RETURN);
     
-stringBuffer!.appendint(index);
+stringBuffer.appendint(index);
     
-stringBuffer!.append(SELECTED_SEP);
+stringBuffer.append(SELECTED_SEP);
     
-stringBuffer!.appendboolean(isSelected);
+stringBuffer.appendboolean(isSelected);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
-    
-
-    selectedChoiceLabel: string = choiceGroup!.getString(index)!;;
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
     
 
-    gameFeature: Feature = Feature.getInstance(selectedChoiceLabel)!;;
+    std::string selectedChoiceLabel = choiceGroup.getString(index);;
+    
+
+    Feature gameFeature = Feature::getInstance(selectedChoiceLabel);;
     
 
                         if(!isSelected && features.isFeature(gameFeature))
@@ -275,61 +276,61 @@ this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
 
                 //@Throws(Exception.constructor)
             
-    public updateExclusiveForChoiceGroup(ChoiceGroup choiceGroup){
+    public: void updateExclusiveForChoiceGroup(ChoiceGroup choiceGroup){
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-
-    METHOD_NAME: string = "updateExclusive";;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    SELECTED_ARRAY_RETURN: string = "selectedArray_return[";;
+    std::string METHOD_NAME = "updateExclusive";;
     
 
-    SELECTED_SEP: string = "] = ";;
+    std::string SELECTED_ARRAY_RETURN = "selectedArray_return[";;
     
 
-    selectedArray_return: std::vector<bool> = new Array(choiceGroup!.size());;
+    std::string SELECTED_SEP = "] = ";;
     
 
-    total: int32_t = choiceGroup!.getSelectedFlags(selectedArray_return)!;;
+    std::vector<bool> selectedArray_return = new Array(choiceGroup.size());;
     
-stringBuffer!.append("Exclusive Total Choices: 1==");
+
+    int32_t total = choiceGroup.getSelectedFlags(selectedArray_return);;
     
-stringBuffer!.appendint(total);
+stringBuffer.append("Exclusive Total Choices: 1==");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
+stringBuffer.appendint(total);
+    
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < selectedArray_return!.length; index++)
+    int32_t index = 0;index < selectedArray_return.size(); index++)
         {
 
-    isSelected: bool = selectedArray_return[index]!;;
+    bool isSelected = selectedArray_return[index];;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(SELECTED_ARRAY_RETURN);
+stringBuffer.append(SELECTED_ARRAY_RETURN);
     
-stringBuffer!.appendint(index);
+stringBuffer.appendint(index);
     
-stringBuffer!.append(SELECTED_SEP);
+stringBuffer.append(SELECTED_SEP);
     
-stringBuffer!.appendboolean(isSelected);
+stringBuffer.appendboolean(isSelected);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
     
 
                         if(isSelected)
                         
                                     {
                                     
-    selectedChoiceLabel: string = choiceGroup!.getString(index)!;;
+    std::string selectedChoiceLabel = choiceGroup.getString(index);;
     
-this.updateExclusive(selectedChoiceLabel);
+this->updateExclusive(selectedChoiceLabel);
     
 
                                     }
@@ -339,20 +340,20 @@ this.updateExclusive(selectedChoiceLabel);
 }
 
 
-    public bool isExclusive(string itemLabel){
+    public: bool isExclusive(std::string itemLabel){
 
-    enumeration: Enumeration<any> = GameFeatureChoiceGroups.getExclusiveInstance()!.get()!.keys()!;;
+    Enumeration<any> enumeration = GameFeatureChoiceGroups::getExclusiveInstance().get().keys();;
     
 
-    name: string;;
+    std::string name;;
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-name= this.enumerationUtil!.nextElement(enumeration)! as string;
+name= this->enumerationUtil.nextElement(enumeration)! as string;
     
 
-                        if(this.tsUtil!.compareTo(itemLabel, name) == 0)
+                        if(this->tsUtil.compareTo(itemLabel, name) == 0)
                         
                                     {
                                     
@@ -377,40 +378,39 @@ name= this.enumerationUtil!.nextElement(enumeration)! as string;
 
                 //@Throws(Exception.constructor)
             
-    updateExclusive(string selectedChoiceLabel){
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.ITEM_LABEL)!.append(selectedChoiceLabel)!.toString(), this, "updateExclusive");
+    private: void updateExclusive(std::string selectedChoiceLabel){
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().ITEM_LABEL).append(selectedChoiceLabel).toString(), this, "updateExclusive");
     
 
-    gameFeature: Feature = Feature.getInstance(selectedChoiceLabel)!;;
+    Feature gameFeature = Feature::getInstance(selectedChoiceLabel);;
     
 
-    hashtable: Hashtable<any, any> = GameFeatureChoiceGroups.getExclusiveInstance()!.get()!;;
+    Hashtable<any, any> hashtable = GameFeatureChoiceGroups::getExclusiveInstance().get();;
     
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(hashtable)!;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
     
 
-    basicArrayList: BasicArrayList;;
+    BasicArrayList basicArrayList;;
     
 
-    anyType: any;;
+    Object* anyType;;
     
 
-    size: int32_t = objectArray!.length
-                ;;
+    int32_t size = objectArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 anyType= objectArray[index]!;
     
 basicArrayList= hashtable.get(anyType) as BasicArrayList;
     
-this.updateExclusiveList(gameFeature, basicArrayList);
+this->updateExclusiveList(gameFeature, basicArrayList);
     
 }
 
@@ -419,26 +419,26 @@ this.updateExclusiveList(gameFeature, basicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    public updateExclusiveList(Feature gameFeature, BasicArrayList list){
+    public: void updateExclusiveList(Feature gameFeature, BasicArrayList list){
 
                         if(list.contains(gameFeature))
                         
                                     {
                                     
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    addIndex: int32_t = list.indexOf(gameFeature)!;;
+    int32_t addIndex = list.indexOf(gameFeature);;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
                         if(addIndex != index)

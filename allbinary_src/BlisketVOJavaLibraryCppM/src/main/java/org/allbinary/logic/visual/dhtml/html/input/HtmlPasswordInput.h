@@ -45,9 +45,8 @@
 #include "HtmlInputData.h"
 
 class HtmlPasswordInput: public HtmlLengthInput {
-        
 
-public constructor (string before, string name, string value, string after);
+public: HtmlPasswordInput(std::string before, std::string name, std::string value, std::string after);
 
 };
 

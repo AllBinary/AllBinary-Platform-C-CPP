@@ -60,61 +60,58 @@
 class AbContext
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: AbContext(HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Properties HashMap: " +propertiesHashMap!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("Properties HashMap: " +propertiesHashMap.toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.propertiesHashMap= propertiesHashMap;
+this->propertiesHashMap= propertiesHashMap;
     
-this.pageContext= pageContext;
-    
-}
-
-
-    public WeblisketSessionInterface getWeblisketSession(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new WeblisketSession(this.propertiesHashMap, pageContext);
+this->pageContext= pageContext;
     
 }
 
 
-    public PageContext getPageContext(){
+    public: WeblisketSessionInterface getWeblisketSession(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pageContext;
+                        return WeblisketSession(this->propertiesHashMap, pageContext);
     
 }
 
 
-    public HashMap<any, any> getPropertiesHashMap(){
+    public: PageContext getPageContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.propertiesHashMap;
+                        return this->pageContext;
+    
+}
+
+
+    public: HashMap<any, any> getPropertiesHashMap(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->propertiesHashMap;
     
 }
 

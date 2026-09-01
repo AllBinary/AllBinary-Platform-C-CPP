@@ -44,15 +44,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ProfileActionScriptInputInterface: public ProfileActionScriptProcessorInterface {
-        
 
-    setInputRobotInterface(InputRobotInterface inputRobotInterface)
+    void setInputRobotInterface(InputRobotInterface inputRobotInterface)
 
     InputRobotInterface getInputRobotInterface()
 
     int32_t getTime()
 
-    setTime(int32_t time)
+    void setTime(int32_t time)
 
 };
 

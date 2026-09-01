@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERINITIALIZER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERINITIALIZER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -61,15 +63,14 @@
 class ShaderInitializer
             : public Object
          {
-        
 
-    private: static const instance: ShaderInitializer = new ShaderInitializer();
+    private: static ShaderInitializer instance() { return ShaderInitializer(); }
 
-    public static ShaderInitializer getInstance();
+    public: static ShaderInitializer getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public int32_t init(GL10 gl, std::vector<Shader> shader, std::vector<string> attributeArray);
+    public: int32_t init(GL10 gl, std::vector<Shader> shader, std::vector<std::string> attributeArray);
 
 };
 

@@ -65,59 +65,58 @@
 class GameKeyFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyFactory getInstance();
+    public: static GameKeyFactory getInstance();
 
-    public const NONE: GameKey = new GameKey(InputFactory.getInstance()!.MAX -1, "None");
+    public: const GameKey NONE = GameKey(InputFactory::getInstance().MAX -1, "None");
 
-    public const UP: GameKey = new GameKey(Canvas.UP, CommonPhoneStrings.getInstance()!.UP);
+    public: const GameKey UP = GameKey(Canvas::UP, CommonPhoneStrings::getInstance().UP);
 
-    public const DOWN: GameKey = new GameKey(Canvas.DOWN, CommonPhoneStrings.getInstance()!.DOWN);
+    public: const GameKey DOWN = GameKey(Canvas::DOWN, CommonPhoneStrings::getInstance().DOWN);
 
-    public const LEFT: GameKey = new GameKey(Canvas.LEFT, CommonPhoneStrings.getInstance()!.LEFT);
+    public: const GameKey LEFT = GameKey(Canvas::LEFT, CommonPhoneStrings::getInstance().LEFT);
 
-    public const RIGHT: GameKey = new GameKey(Canvas.RIGHT, CommonPhoneStrings.getInstance()!.RIGHT);
+    public: const GameKey RIGHT = GameKey(Canvas::RIGHT, CommonPhoneStrings::getInstance().RIGHT);
 
-    public const KEY_POUND: GameKey = new GameKey(Canvas.KEY_POUND, "POUND");
+    public: const GameKey KEY_POUND = GameKey(Canvas::KEY_POUND, "POUND");
 
-    public const KEY_STAR: GameKey = new GameKey(Canvas.KEY_STAR, "STAR");
+    public: const GameKey KEY_STAR = GameKey(Canvas::KEY_STAR, "STAR");
 
-    public const KEY_NUM0: GameKey = new GameKey(Canvas.KEY_NUM0, CommonPhoneStrings.getInstance()!.ZERO);
+    public: const GameKey KEY_NUM0 = GameKey(Canvas::KEY_NUM0, CommonPhoneStrings::getInstance().ZERO);
 
-    public const KEY_NUM1: GameKey = new GameKey(Canvas.KEY_NUM1, CommonPhoneStrings.getInstance()!.ONE);
+    public: const GameKey KEY_NUM1 = GameKey(Canvas::KEY_NUM1, CommonPhoneStrings::getInstance().ONE);
 
-    public const KEY_NUM2: GameKey = new GameKey(Canvas.KEY_NUM2, CommonPhoneStrings.getInstance()!.TWO);
+    public: const GameKey KEY_NUM2 = GameKey(Canvas::KEY_NUM2, CommonPhoneStrings::getInstance().TWO);
 
-    public const KEY_NUM3: GameKey = new GameKey(Canvas.KEY_NUM3, CommonPhoneStrings.getInstance()!.THREE);
+    public: const GameKey KEY_NUM3 = GameKey(Canvas::KEY_NUM3, CommonPhoneStrings::getInstance().THREE);
 
-    public const KEY_NUM4: GameKey = new GameKey(Canvas.KEY_NUM4, CommonPhoneStrings.getInstance()!.FOUR);
+    public: const GameKey KEY_NUM4 = GameKey(Canvas::KEY_NUM4, CommonPhoneStrings::getInstance().FOUR);
 
-    public const KEY_NUM5: GameKey = new GameKey(Canvas.KEY_NUM5, CommonPhoneStrings.getInstance()!.FIVE);
+    public: const GameKey KEY_NUM5 = GameKey(Canvas::KEY_NUM5, CommonPhoneStrings::getInstance().FIVE);
 
-    public const KEY_NUM6: GameKey = new GameKey(Canvas.KEY_NUM6, CommonPhoneStrings.getInstance()!.SIX);
+    public: const GameKey KEY_NUM6 = GameKey(Canvas::KEY_NUM6, CommonPhoneStrings::getInstance().SIX);
 
-    public const KEY_NUM7: GameKey = new GameKey(Canvas.KEY_NUM7, CommonPhoneStrings.getInstance()!.SEVEN);
+    public: const GameKey KEY_NUM7 = GameKey(Canvas::KEY_NUM7, CommonPhoneStrings::getInstance().SEVEN);
 
-    public const KEY_NUM8: GameKey = new GameKey(Canvas.KEY_NUM8, CommonPhoneStrings.getInstance()!.EIGHT);
+    public: const GameKey KEY_NUM8 = GameKey(Canvas::KEY_NUM8, CommonPhoneStrings::getInstance().EIGHT);
 
-    public const KEY_NUM9: GameKey = new GameKey(Canvas.KEY_NUM9, CommonPhoneStrings.getInstance()!.NINE);
+    public: const GameKey KEY_NUM9 = GameKey(Canvas::KEY_NUM9, CommonPhoneStrings::getInstance().NINE);
 
-    public const GAME_A: GameKey = new GameKey(Canvas.GAME_A, "Game A");
+    public: const GameKey GAME_A = GameKey(Canvas::GAME_A, "Game A");
 
-    public const GAME_B: GameKey = new GameKey(Canvas.GAME_B, "Game B");
+    public: const GameKey GAME_B = GameKey(Canvas::GAME_B, "Game B");
 
-    public const GAME_C: GameKey = new GameKey(Canvas.GAME_C, "Game C");
+    public: const GameKey GAME_C = GameKey(Canvas::GAME_C, "Game C");
 
-    public const GAME_D: GameKey = new GameKey(Canvas.GAME_D, "Game D");
+    public: const GameKey GAME_D = GameKey(Canvas::GAME_D, "Game D");
 
-    public const FIRE: GameKey = new GameKey(Canvas.FIRE, CommonPhoneStrings.getInstance()!.FIRE);
+    public: const GameKey FIRE = GameKey(Canvas::FIRE, CommonPhoneStrings::getInstance().FIRE);
 
-    public LEVEL_DOWN: GameKey = new GameKey(Canvas.KEY_NUM9 +1, "Cheat Level Up");
+    public: GameKey LEVEL_DOWN = GameKey(Canvas::KEY_NUM9 +1, "Cheat Level Up");
 
-    public LEVEL_UP: GameKey = new GameKey(Canvas.KEY_NUM9 +2, "Cheat Level Down");
+    public: GameKey LEVEL_UP = GameKey(Canvas::KEY_NUM9 +2, "Cheat Level Down");
 
 };
 

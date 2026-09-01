@@ -61,42 +61,39 @@
 class MotionEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-    private: static index: int32_t = 0;
+    private: static int32_t index = 0;
 
-    private: const source: any;
+    private: Object* source;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-public constructor (any = {} source, int32_t id){
-
-            super();
-        this.source= source;
+public: MotionEventFactory(Object* source, int32_t id){
+this->source= source;
     
-this.id= id;
+this->id= id;
     
-MotionEventFactory.index= TouchMotionGestureFactory.getInstance()!.LAST_MOTION.getId();
+MotionEventFactory::index= TouchMotionGestureFactory::getInstance().LAST_MOTION.getId();
     
 }
 
 
-    public AllBinaryEventObject getInstance(){
+    public: AllBinaryEventObject getInstance(){
 
-    inputFactory: InputFactory = InputFactory.getInstance()!;;
+    InputFactory inputFactory = InputFactory::getInstance();;
     
 
-    input: Input = inputFactory!.getInstanceById(MotionEventFactory.index++)!;;
+    Input input = inputFactory.getInstanceById(MotionEventFactory::index++);;
     
 
-                        if(input == inputFactory!.NO_INPUT)
+                        if(input == inputFactory.NO_INPUT)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MotionGestureEvent(this.source, this.id, TouchMotionGestureFactory.getInstance()!.NO_MOTION as MotionGestureInput);
+                        return MotionGestureEvent(this->source, this->id, TouchMotionGestureFactory::getInstance().NO_MOTION as MotionGestureInput);
     
 
                                     }
@@ -106,7 +103,7 @@ MotionEventFactory.index= TouchMotionGestureFactory.getInstance()!.LAST_MOTION.g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MotionGestureEvent(this.source, this.id, input as MotionGestureInput);
+                        return MotionGestureEvent(this->source, this->id, input as MotionGestureInput);
     
 
                         }

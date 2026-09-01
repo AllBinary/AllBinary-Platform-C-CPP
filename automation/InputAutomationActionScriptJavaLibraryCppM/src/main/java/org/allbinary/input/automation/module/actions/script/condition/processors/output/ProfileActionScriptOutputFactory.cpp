@@ -53,23 +53,22 @@
 class ProfileActionScriptOutputFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ProfileActionScriptOutputInterface getInstance(Node node){
+    public: static ProfileActionScriptOutputInterface getInstance(Node node){
 
-    profileActionScriptOutputInterface: ProfileActionScriptOutputInterface = 
+    ProfileActionScriptOutputInterface profileActionScriptOutputInterface = 
                 null
             ;;
     
 
-                        if(DomSearchHelper.getNodeNoThrow(ImageActionScriptOutputData.NAME, node.getChildNodes()) != 
-                                    null
+                        if(DomSearchHelper::getNodeNoThrow(ImageActionScriptOutputData::NAME, node.getChildNodes()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    profileActionScriptOutputInterface= new ImageActionScriptOutput(node);
+                                    profileActionScriptOutputInterface= ImageActionScriptOutput(node);
     
 
                                     }
@@ -78,7 +77,7 @@ class ProfileActionScriptOutputFactory
                             
 
 
-                            throw new Exception("No Such ActionScript Output");
+                            throw Exception("No Such ActionScript Output");
                     
 
                         }
@@ -92,10 +91,8 @@ class ProfileActionScriptOutputFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ProfileActionScriptOutputFactory(){
+}
 
 
 };

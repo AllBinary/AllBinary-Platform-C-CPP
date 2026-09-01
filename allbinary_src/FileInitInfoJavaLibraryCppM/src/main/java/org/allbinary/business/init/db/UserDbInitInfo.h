@@ -42,13 +42,12 @@
         #include "DbInitInfo.h"
 
 class UserDbInitInfo: public DbInitInfo {
-        
 
-    private: static const INITFILE: string = "userdbinitdata.dat";
+    private: static const std::string INITFILE = "userdbinitdata.dat";
 
-public constructor ();
+public: UserDbInitInfo();
 
-public constructor (bool read);
+public: UserDbInitInfo(bool read);
 
 };
 

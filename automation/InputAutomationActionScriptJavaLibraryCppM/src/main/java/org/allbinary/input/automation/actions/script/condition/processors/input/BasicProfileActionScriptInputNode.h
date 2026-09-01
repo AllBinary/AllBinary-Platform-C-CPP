@@ -57,15 +57,14 @@
 class BasicProfileActionScriptInputNode
             : public Object
          {
-        
 
-public constructor (Node node);
+public: BasicProfileActionScriptInputNode(Node node);
 
-public constructor ();
+public: BasicProfileActionScriptInputNode();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

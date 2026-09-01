@@ -43,27 +43,26 @@
 #include "NoPlayer.h"
 
 class NoSound: public Sound {
-        
 
-    public static NoSound getInstance(){
+    public: static NoSound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoSound.instance;
+                        return NoSound::instance();
     
 }
 
 
-    private: static const instance: NoSound = new NoSound();
+    private: static NoSound instance() { return NoSound(); }
 
-private constructor (){
-            super(StringUtil.getInstance()!.EMPTY_STRING);
+private: NoSound(){
+            super(StringUtil::getInstance().EMPTY_STRING);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setPlayerP(NoPlayer.NO_PLAYER);
+this->setPlayerP(NoPlayer::NO_PLAYER);
     
 }
 

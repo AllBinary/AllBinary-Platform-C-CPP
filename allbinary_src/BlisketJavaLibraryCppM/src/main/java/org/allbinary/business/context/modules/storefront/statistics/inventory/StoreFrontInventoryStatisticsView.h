@@ -64,15 +64,14 @@
 class StoreFrontInventoryStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: storeFrontInventoryStatisticsInterface: StoreFrontInventoryStatisticsInterface;
+    private: StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface;
 
-public constructor (StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface);
+public: StoreFrontInventoryStatisticsView(StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

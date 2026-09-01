@@ -72,11 +72,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcRemoteLogClient: public XmlRpcAbeClient {
-        
 
-    private: const noCrypt: NoCrypt = new NoCrypt();
+    private: const NoCrypt noCrypt = NoCrypt();
 
-public constructor (AbeClientInformationInterface clientInfo){
+public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo){
             super(clientInfo, "SSLLogServ.logUtil");
                     
 
@@ -87,38 +86,38 @@ public constructor (AbeClientInformationInterface clientInfo){
 
                 //@Throws(Exception.constructor)
             
-    public any get(any = {} anyType){
+    public: Object* get(Object* anyType){
 
         try {
             
-    param: Vector = new Vector();;
+    Vector param = Vector();;
     
 
-    serverUrl: string = getClientInfo()!.getLicenseServer(this.getServer())!;;
+    std::string serverUrl = getClientInfo().getLicenseServer(this->getServer());;
     
 
-    index: int32_t = serverUrl!.lastIndexOf("/")!;;
+    int32_t index = serverUrl.lastIndexOf("/");;
     
-serverUrl= serverUrl!.substring(0, index +1) +"logservssl.php";
+serverUrl= serverUrl.substring(0, index +1) +"logservssl.php";
     
 
-    xmlRpcClient: XmlRpcClient = new XmlRpcClient(serverUrl);;
+    XmlRpcClient xmlRpcClient = XmlRpcClient(serverUrl);;
     
-this.setClient(xmlRpcClient);
+this->setClient(xmlRpcClient);
     
-xmlRpcClient!.setBasicAuthentication(
+xmlRpcClient.setBasicAuthentication(
                             nullptr, 
                             nullptr);
     
 
-    hashtable: Hashtable<any, any> = anyType as Hashtable<any, any>;;
+    Hashtable<any, any> hashtable = anyType as Hashtable<any, any>;;
     
 param.add(hashtable);
     
 
-    result: any = xmlRpcClient!.execute(this.getRemoteMethod(), param, this.noCrypt)!;;
+    Object* result = xmlRpcClient.execute(this->getRemoteMethod(), param, this->noCrypt);;
     
-console.log(CommonLabels.getInstance()!.RESULT_ +CommonSeps.getInstance()!.NEW_LINE +result.toString());
+console.log(CommonLabels::getInstance().RESULT_ +CommonSeps::getInstance().NEW_LINE +result->toString());
     
 
 
@@ -133,14 +132,14 @@ console.log(CommonLabels.getInstance()!.RESULT_ +CommonSeps.getInstance()!.NEW_L
 console.log("IOException Trying Other Servers");
     
 
-                        if(!e.getMessage()!.startsWith(HOST_NOT_RESOLVED))
+                        if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 
                                     }
@@ -149,7 +148,7 @@ console.log("IOException Trying Other Servers");
                             
 
 
-                            throw new Exception(HOST_NOT_RESOLVED_MSG);
+                            throw Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -163,7 +162,7 @@ console.log("IOException Trying Other Servers");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 }
 */
@@ -174,7 +173,7 @@ console.log("IOException Trying Other Servers");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 }
 */

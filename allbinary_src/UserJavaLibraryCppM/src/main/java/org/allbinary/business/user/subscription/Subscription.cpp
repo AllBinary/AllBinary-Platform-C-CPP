@@ -42,20 +42,17 @@
 class Subscription
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: Subscription(){
+}
 
 
-    public Boolean isSubscribed(){
+    public: Boolean isSubscribed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 

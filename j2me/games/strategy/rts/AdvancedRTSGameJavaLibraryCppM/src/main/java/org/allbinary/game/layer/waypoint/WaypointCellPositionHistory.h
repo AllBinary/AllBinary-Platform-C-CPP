@@ -57,31 +57,30 @@
 class WaypointCellPositionHistory
             : public Object
          {
-        
 
-    private: static const SINGLETON: WaypointCellPositionHistory = new WaypointCellPositionHistory();
+    private: static const WaypointCellPositionHistory SINGLETON = WaypointCellPositionHistory();
 
-    public static WaypointCellPositionHistory getInstance();
+    public: static WaypointCellPositionHistory getInstance();
 
-    private: positionList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList positionList = BasicArrayListD();
 
-    private: layerList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList layerList = BasicArrayListD();
 
-    public add(CellPosition cellPosition, AllBinaryLayer layerInterface);
+    public: void add(CellPosition cellPosition, AllBinaryLayer layerInterface);
 
-    public addList(BasicArrayList list, AllBinaryLayer layerInterface);
+    public: void addList(BasicArrayList list, AllBinaryLayer layerInterface);
 
-    public remove(CellPosition cellPosition);
+    public: void remove(CellPosition cellPosition);
 
-    public removeLayer(AllBinaryLayer layerInterface);
+    public: void removeLayer(AllBinaryLayer layerInterface);
 
-    public clear();
+    public: void clear();
 
-    public bool isCellPositionWithDrop(CellPosition cellPosition);
+    public: bool isCellPositionWithDrop(CellPosition cellPosition);
 
-    public bool anyCellPositionWithDrop(BasicArrayList list);
+    public: bool anyCellPositionWithDrop(BasicArrayList list);
 
-    public AllBinaryLayer getLayerInterface(CellPosition cellPosition);
+    public: AllBinaryLayer getLayerInterface(CellPosition cellPosition);
 
 };
 

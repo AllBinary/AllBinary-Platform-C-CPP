@@ -60,23 +60,22 @@
 class BaseBasicArrayListCache
             : public Object
          {
-        
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    public string log(){
+    public: std::string log(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("S: ");
+stringBuffer.append("S: ");
     
-stringBuffer!.appendint(this.list.size());
+stringBuffer.appendint(this->list.size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

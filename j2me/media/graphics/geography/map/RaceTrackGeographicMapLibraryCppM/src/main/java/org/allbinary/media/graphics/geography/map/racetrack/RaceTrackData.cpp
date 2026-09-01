@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -56,206 +58,203 @@
 class RaceTrackData
             : public Object
          {
-        
 
-    private: tileSetImage: Image = NullImage.NULL_IMAGE;
+    private: Image tileSetImage = NullImage::NULL_IMAGE;
 
-    private: miniTileSetImage: Image = NullImage.NULL_IMAGE;
+    private: Image miniTileSetImage = NullImage::NULL_IMAGE;
 
-    private: cellWidth: int32_t = 0;
+    private: int32_t cellWidth = 0;
 
-    private: cellHeight: int32_t = 0;
+    private: int32_t cellHeight = 0;
 
-    private: miniCellWidth: int32_t = 0;
+    private: int32_t miniCellWidth = 0;
 
-    private: miniCellHeight: int32_t = 0;
+    private: int32_t miniCellHeight = 0;
 
-    private: mapArray: std::vector<std::vector<int32_t>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int32_t>> mapArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
-    private: cellTypeIdToGeographicMapCellTypeArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    private: std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    private: NO_OVER_PASSES_ARRAY: std::vector<CellPosition> = [];
+    private: std::vector<CellPosition> NO_OVER_PASSES_ARRAY = {};
 
-    private: overPassGeographicMapCellPositionArray: std::vector<CellPosition> = this.NO_OVER_PASSES_ARRAY;
+    private: std::vector<CellPosition> overPassGeographicMapCellPositionArray = this->NO_OVER_PASSES_ARRAY;
 
-    private: id: Integer;
+    private: Integer id;
 
-public constructor (Integer id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray){
-
-            super();
-        this.id= id;
+public: RaceTrackData(Integer id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray){
+this->id= id;
     
-this.cellWidth= cellWidth;
+this->cellWidth= cellWidth;
     
-this.cellHeight= cellHeight;
+this->cellHeight= cellHeight;
     
-this.miniCellWidth= miniCellWidth;
+this->miniCellWidth= miniCellWidth;
     
-this.miniCellHeight= miniCellHeight;
+this->miniCellHeight= miniCellHeight;
     
-this.mapArray= mapArray;
+this->mapArray= mapArray;
     
-this.cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeArray;
+this->cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeArray;
     
 }
 
 
-    setMapArray(std::vector<std::vector<int32_t>> mapArray){
-this.mapArray= mapArray;
+    protected: void setMapArray(std::vector<std::vector<int32_t>> mapArray){
+this->mapArray= mapArray;
     
 }
 
 
-    public std::vector<std::vector<int32_t>> getMapArray(){
+    public: std::vector<std::vector<int32_t>> getMapArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mapArray;
+                        return this->mapArray;
     
 }
 
 
-    setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray){
-this.cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeArray;
+    protected: void setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray){
+this->cellTypeIdToGeographicMapCellTypeArray= cellTypeIdToGeographicMapCellTypeArray;
     
 }
 
 
-    public std::vector<int32_t> getCellTypeIdToGeographicMapCellTypeArray(){
+    public: std::vector<int32_t> getCellTypeIdToGeographicMapCellTypeArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellTypeIdToGeographicMapCellTypeArray;
+                        return this->cellTypeIdToGeographicMapCellTypeArray;
     
 }
 
 
-    setCellWidth(int32_t cellWidth){
-this.cellWidth= cellWidth;
+    private: void setCellWidth(int32_t cellWidth){
+this->cellWidth= cellWidth;
     
 }
 
 
-    public int32_t getCellWidth(){
+    public: int32_t getCellWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellWidth;
+                        return this->cellWidth;
     
 }
 
 
-    setCellHeight(int32_t cellHeight){
-this.cellHeight= cellHeight;
+    private: void setCellHeight(int32_t cellHeight){
+this->cellHeight= cellHeight;
     
 }
 
 
-    public int32_t getCellHeight(){
+    public: int32_t getCellHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellHeight;
+                        return this->cellHeight;
     
 }
 
 
-    public std::vector<CellPosition> getOverPassGeographicMapCellPositionArray(){
+    public: std::vector<CellPosition> getOverPassGeographicMapCellPositionArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.overPassGeographicMapCellPositionArray;
+                        return this->overPassGeographicMapCellPositionArray;
     
 }
 
 
-    public setOverPassGeographicMapCellPositionArray(std::vector<CellPosition> overPassGeographicMapCellPositionArray){
-this.overPassGeographicMapCellPositionArray= overPassGeographicMapCellPositionArray;
+    public: void setOverPassGeographicMapCellPositionArray(std::vector<CellPosition> overPassGeographicMapCellPositionArray){
+this->overPassGeographicMapCellPositionArray= overPassGeographicMapCellPositionArray;
     
 }
 
 
-    public Image getTileSetImage(){
+    public: Image getTileSetImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tileSetImage;
+                        return this->tileSetImage;
     
 }
 
 
-    public setTileSetImage(Image tileSetImage){
-this.tileSetImage= tileSetImage;
+    public: void setTileSetImage(Image tileSetImage){
+this->tileSetImage= tileSetImage;
     
 }
 
 
-    public Image getMiniTileSetImage(){
+    public: Image getMiniTileSetImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.miniTileSetImage;
+                        return this->miniTileSetImage;
     
 }
 
 
-    public setMiniTileSetImage(Image miniTileSetImage){
-this.miniTileSetImage= miniTileSetImage;
+    public: void setMiniTileSetImage(Image miniTileSetImage){
+this->miniTileSetImage= miniTileSetImage;
     
 }
 
 
-    public int32_t getMiniCellWidth(){
+    public: int32_t getMiniCellWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.miniCellWidth;
+                        return this->miniCellWidth;
     
 }
 
 
-    public setMiniCellWidth(int32_t miniCellWidth){
-this.miniCellWidth= miniCellWidth;
+    public: void setMiniCellWidth(int32_t miniCellWidth){
+this->miniCellWidth= miniCellWidth;
     
 }
 
 
-    public int32_t getMiniCellHeight(){
+    public: int32_t getMiniCellHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.miniCellHeight;
+                        return this->miniCellHeight;
     
 }
 
 
-    public setMiniCellHeight(int32_t miniCellHeight){
-this.miniCellHeight= miniCellHeight;
+    public: void setMiniCellHeight(int32_t miniCellHeight){
+this->miniCellHeight= miniCellHeight;
     
 }
 
 
-    public setId(Integer id){
-this.id= id;
+    public: void setId(Integer id){
+this->id= id;
     
 }
 
 
-    public Integer getId(){
+    public: Integer getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 

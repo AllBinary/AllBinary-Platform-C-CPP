@@ -69,36 +69,35 @@
 class BasicRandomAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    visitor: Visitor = hashtable.get(BasicAI.AI_VISITOR) as Visitor;;
+    Visitor visitor = hashtable.get(BasicAI::AI_VISITOR) as Visitor;;
     
 
                         if(visitor == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("No Visitor Provided");
+                            throw Exception("No Visitor Provided");
                     
 
                                     }
                                 
 
-    inputProbability: InputProbability = hashtable.get(InputProbability.INPUT_PROBABILITY) as InputProbability;;
+    InputProbability inputProbability = hashtable.get(InputProbability::INPUT_PROBABILITY) as InputProbability;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicRandomAI(ownerLayerInterface, gameInput, inputProbability, visitor);
+                        return BasicRandomAI(ownerLayerInterface, gameInput, inputProbability, visitor);
     
 }
 

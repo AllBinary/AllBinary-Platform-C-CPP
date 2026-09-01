@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CLAZZ_CLASSUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Class.h"
@@ -59,13 +61,12 @@
 class ClassUtil
             : public Object
          {
-        
 
-    public static string viewAll(any = {} anyType, string lineBreak);
+    public: static std::string viewAll(Object* anyType, std::string lineBreak);
 
-    public static string viewAll(Function myClass, string lineBreak);
+    public: static std::string viewAll(Function myClass, std::string lineBreak);
 
-private constructor ();
+private: ClassUtil();
 
 };
 

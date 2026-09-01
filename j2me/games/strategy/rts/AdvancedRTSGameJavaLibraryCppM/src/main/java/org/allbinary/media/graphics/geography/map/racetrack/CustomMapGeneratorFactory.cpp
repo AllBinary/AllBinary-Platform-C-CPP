@@ -44,16 +44,15 @@
 #include "RaceTrackGeographicMap.h"
 
 class CustomMapGeneratorFactory: public CustomMapGeneratorBaseFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap){
+    public: CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CustomMapGenerator(raceTrackGeographicMap);
+                        return CustomMapGenerator(raceTrackGeographicMap);
     
 }
 

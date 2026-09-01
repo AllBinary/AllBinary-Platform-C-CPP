@@ -49,17 +49,16 @@
 class HtmlTags
             : public Object
          {
-        
 
-    private: htmlTagVector: Vector;
+    private: Vector htmlTagVector;
 
-public constructor ();
+public: HtmlTags();
 
-    public HtmlTag get(int32_t index);
+    public: HtmlTag get(int32_t index);
 
-    public add(HtmlTag htmlTag);
+    public: void add(HtmlTag htmlTag);
 
-    public int32_t size();
+    public: int32_t size();
 
 };
 

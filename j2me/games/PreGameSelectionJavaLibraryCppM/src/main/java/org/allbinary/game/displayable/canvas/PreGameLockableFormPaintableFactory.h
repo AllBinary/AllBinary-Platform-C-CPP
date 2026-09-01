@@ -56,15 +56,14 @@
         #include "PreGameLockablePaintable.h"
 
 class PreGameLockableFormPaintableFactory: public ItemPaintableFactory {
-        
 
-    private: const lockedIndex: int32_t;
+    private: int32_t lockedIndex;
 
-public constructor (int32_t lockedIndex);
+public: PreGameLockableFormPaintableFactory(int32_t lockedIndex);
 
                 //@Throws(Exception.constructor)
             
-    public ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm);
+    public: ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm);
 
 };
 

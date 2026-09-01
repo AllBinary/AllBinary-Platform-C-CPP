@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_SMALLBASICCOLORCACHEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringUtil.h>
@@ -50,25 +52,24 @@
 class SmallBasicColorCacheFactory
             : public Object
          {
-        
 
-    private: static const instance: SmallBasicColorCacheFactory = new SmallBasicColorCacheFactory();
+    private: static SmallBasicColorCacheFactory instance() { return SmallBasicColorCacheFactory(); }
 
-    public static SmallBasicColorCacheFactory getInstance();
+    public: static SmallBasicColorCacheFactory getInstance();
 
-    private: const SIZE: int32_t = 255;
+    private: const int32_t SIZE = 255;
 
-    private: const INDEX_TO_COLOR: std::vector<int32_t> = new Array(this.SIZE);
+    private: const std::vector<int32_t> INDEX_TO_COLOR = new Array(this->SIZE);
 
-    private: const BASIC_COLOR_ARRAY: std::vector<BasicColor> = new Array(this.SIZE);
+    private: const std::vector<BasicColor> BASIC_COLOR_ARRAY = new Array(this->SIZE);
 
-    private: colorIndex: int32_t = 0;
+    private: int32_t colorIndex = 0;
 
-private constructor ();
+private: SmallBasicColorCacheFactory();
 
-    public add(BasicColor basicDefaultColor);
+    public: void add(BasicColor basicDefaultColor);
 
-    public BasicColor getAndOrCreate(int32_t colorAsInt);
+    public: BasicColor getAndOrCreate(int32_t colorAsInt);
 
 };
 

@@ -42,14 +42,11 @@
 class GenericProfileActionScriptConditionData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_IF_NAME";
+    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_IF_NAME";
 
-private constructor (){
-
-            super();
-        }
+private: GenericProfileActionScriptConditionData(){
+}
 
 
 };

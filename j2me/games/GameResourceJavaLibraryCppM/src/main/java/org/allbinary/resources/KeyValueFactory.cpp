@@ -45,30 +45,27 @@
 class KeyValueFactory
             : public Object
          {
-        
 
-    private: static const instance: KeyValueFactory = new KeyValueFactory();
+    private: static KeyValueFactory instance() { return KeyValueFactory(); }
 
-    public static KeyValueFactory getInstance(){
+    public: static KeyValueFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeyValueFactory.instance;
+                        return KeyValueFactory::instance();
     
 }
 
 
-    public const MAP: Hashtable<any, any> = new Hashtable<any, any>();
+    public: const Hashtable<any, any> MAP = Hashtable<any, any>();
 
-    public string get(string key){
+    public: std::string get(std::string key){
 
-    value: string = this.MAP.get(key) as string;;
+    std::string value = this->MAP.get(key) as string;;
     
 
-                        if(value == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     

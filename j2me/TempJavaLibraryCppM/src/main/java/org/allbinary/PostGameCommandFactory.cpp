@@ -47,20 +47,19 @@
 class PostGameCommandFactory
             : public Object
          {
-        
 
-    private: static const instance: PostGameCommandFactory = new PostGameCommandFactory();
+    private: static PostGameCommandFactory instance() { return PostGameCommandFactory(); }
 
-    public static PostGameCommandFactory getInstance(){
-
+    public: static PostGameCommandFactory getInstance(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
-    public addCommands(Canvas canvas){
+    public: void addCommands(Canvas canvas){
 }
 
 

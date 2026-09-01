@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -57,21 +59,10 @@
 class NullGL10
             : public Object
         : public GL10 {
-        
 
-    public static const NULL_GL10: NullGL10 = new NullGL10();
+    public: static const NullGL10 NULL_GL10 = NullGL10();
 
-    public glActiveTexture(int32_t texture){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ;
-    
-}
-
-
-    public glAlphaFunc(int32_t func, float ref){
+    public: void glActiveTexture(int32_t texture){
 
 
 
@@ -81,11 +72,7 @@ class NullGL10
 }
 
 
-    public glAlphaFuncx(int32_t func, int32_t ref){
-}
-
-
-    public glBindTexture(int32_t target, int32_t texture){
+    public: void glAlphaFunc(int32_t func, float ref){
 
 
 
@@ -95,7 +82,11 @@ class NullGL10
 }
 
 
-    public glBlendFunc(int32_t sfactor, int32_t dfactor){
+    public: void glAlphaFuncx(int32_t func, int32_t ref){
+}
+
+
+    public: void glBindTexture(int32_t target, int32_t texture){
 
 
 
@@ -105,7 +96,7 @@ class NullGL10
 }
 
 
-    public glClear(int32_t mask){
+    public: void glBlendFunc(int32_t sfactor, int32_t dfactor){
 
 
 
@@ -115,7 +106,7 @@ class NullGL10
 }
 
 
-    public glClearColor(float red, float green, float blue, float alpha){
+    public: void glClear(int32_t mask){
 
 
 
@@ -125,11 +116,7 @@ class NullGL10
 }
 
 
-    public glClearColorx(int32_t red, int32_t green, int32_t blue, int32_t alpha){
-}
-
-
-    public glClearDepthf(float depth){
+    public: void glClearColor(float red, float green, float blue, float alpha){
 
 
 
@@ -139,11 +126,11 @@ class NullGL10
 }
 
 
-    public glClearDepthx(int32_t depth){
+    public: void glClearColorx(int32_t red, int32_t green, int32_t blue, int32_t alpha){
 }
 
 
-    public glClearStencil(int32_t s){
+    public: void glClearDepthf(float depth){
 
 
 
@@ -153,7 +140,11 @@ class NullGL10
 }
 
 
-    public glClientActiveTexture(int32_t texture){
+    public: void glClearDepthx(int32_t depth){
+}
+
+
+    public: void glClearStencil(int32_t s){
 
 
 
@@ -163,7 +154,7 @@ class NullGL10
 }
 
 
-    public glColor4f(float red, float green, float blue, float alpha){
+    public: void glClientActiveTexture(int32_t texture){
 
 
 
@@ -173,11 +164,7 @@ class NullGL10
 }
 
 
-    public glColor4x(int32_t red, int32_t green, int32_t blue, int32_t alpha){
-}
-
-
-    public glColorMask(bool red, bool green, bool blue, bool alpha){
+    public: void glColor4f(float red, float green, float blue, float alpha){
 
 
 
@@ -187,7 +174,11 @@ class NullGL10
 }
 
 
-    public glColorPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
+    public: void glColor4x(int32_t red, int32_t green, int32_t blue, int32_t alpha){
+}
+
+
+    public: void glColorMask(bool red, bool green, bool blue, bool alpha){
 
 
 
@@ -197,7 +188,7 @@ class NullGL10
 }
 
 
-    public glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, Buffer data){
+    public: void glColorPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
 
 
 
@@ -207,7 +198,7 @@ class NullGL10
 }
 
 
-    public glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, Buffer data){
+    public: void glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, Buffer data){
 
 
 
@@ -217,7 +208,7 @@ class NullGL10
 }
 
 
-    public glCopyTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t x, int32_t y, int32_t width, int32_t height, int32_t border){
+    public: void glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, Buffer data){
 
 
 
@@ -227,7 +218,7 @@ class NullGL10
 }
 
 
-    public glCopyTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t x, int32_t y, int32_t width, int32_t height){
+    public: void glCopyTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t x, int32_t y, int32_t width, int32_t height, int32_t border){
 
 
 
@@ -237,7 +228,7 @@ class NullGL10
 }
 
 
-    public glCullFace(int32_t mode){
+    public: void glCopyTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t x, int32_t y, int32_t width, int32_t height){
 
 
 
@@ -247,7 +238,7 @@ class NullGL10
 }
 
 
-    public glDeleteTextures(int32_t n, std::vector<int32_t> textures, int32_t offset){
+    public: void glCullFace(int32_t mode){
 
 
 
@@ -257,7 +248,7 @@ class NullGL10
 }
 
 
-    public glDeleteTextures(int32_t n, IntBuffer textures){
+    public: void glDeleteTextures(int32_t n, std::vector<int32_t> textures, int32_t offset){
 
 
 
@@ -267,7 +258,7 @@ class NullGL10
 }
 
 
-    public glDepthFunc(int32_t func){
+    public: void glDeleteTextures(int32_t n, IntBuffer textures){
 
 
 
@@ -277,7 +268,7 @@ class NullGL10
 }
 
 
-    public glDepthMask(bool flag){
+    public: void glDepthFunc(int32_t func){
 
 
 
@@ -287,7 +278,7 @@ class NullGL10
 }
 
 
-    public glDepthRangef(float zNear, float zFar){
+    public: void glDepthMask(bool flag){
 
 
 
@@ -297,11 +288,7 @@ class NullGL10
 }
 
 
-    public glDepthRangex(int32_t zNear, int32_t zFar){
-}
-
-
-    public glDisable(int32_t cap){
+    public: void glDepthRangef(float zNear, float zFar){
 
 
 
@@ -311,7 +298,11 @@ class NullGL10
 }
 
 
-    public glDisableClientState(int32_t array){
+    public: void glDepthRangex(int32_t zNear, int32_t zFar){
+}
+
+
+    public: void glDisable(int32_t cap){
 
 
 
@@ -321,7 +312,7 @@ class NullGL10
 }
 
 
-    public glDrawArrays(int32_t mode, int32_t first, int32_t count){
+    public: void glDisableClientState(int32_t array){
 
 
 
@@ -331,7 +322,7 @@ class NullGL10
 }
 
 
-    public glDrawElements(int32_t mode, int32_t count, int32_t type, Buffer indices){
+    public: void glDrawArrays(int32_t mode, int32_t first, int32_t count){
 
 
 
@@ -341,7 +332,7 @@ class NullGL10
 }
 
 
-    public glEnable(int32_t cap){
+    public: void glDrawElements(int32_t mode, int32_t count, int32_t type, Buffer indices){
 
 
 
@@ -351,7 +342,7 @@ class NullGL10
 }
 
 
-    public glEnableClientState(int32_t array){
+    public: void glEnable(int32_t cap){
 
 
 
@@ -361,7 +352,7 @@ class NullGL10
 }
 
 
-    public glFinish(){
+    public: void glEnableClientState(int32_t array){
 
 
 
@@ -371,7 +362,7 @@ class NullGL10
 }
 
 
-    public glFlush(){
+    public: void glFinish(){
 
 
 
@@ -381,7 +372,7 @@ class NullGL10
 }
 
 
-    public glFogf(int32_t pname, float param){
+    public: void glFlush(){
 
 
 
@@ -391,7 +382,7 @@ class NullGL10
 }
 
 
-    public glFogfv(int32_t pname, std::vector<float> params, int32_t offset){
+    public: void glFogf(int32_t pname, float param){
 
 
 
@@ -401,7 +392,7 @@ class NullGL10
 }
 
 
-    public glFogfv(int32_t pname, FloatBuffer params){
+    public: void glFogfv(int32_t pname, std::vector<float> params, int32_t offset){
 
 
 
@@ -411,19 +402,7 @@ class NullGL10
 }
 
 
-    public glFogx(int32_t pname, int32_t param){
-}
-
-
-    public glFogxv(int32_t pname, std::vector<int32_t> params, int32_t offset){
-}
-
-
-    public glFogxv(int32_t pname, IntBuffer params){
-}
-
-
-    public glFrontFace(int32_t mode){
+    public: void glFogfv(int32_t pname, FloatBuffer params){
 
 
 
@@ -433,7 +412,19 @@ class NullGL10
 }
 
 
-    public glFrustumf(float left, float right, float bottom, float top, float zNear, float zFar){
+    public: void glFogx(int32_t pname, int32_t param){
+}
+
+
+    public: void glFogxv(int32_t pname, std::vector<int32_t> params, int32_t offset){
+}
+
+
+    public: void glFogxv(int32_t pname, IntBuffer params){
+}
+
+
+    public: void glFrontFace(int32_t mode){
 
 
 
@@ -443,11 +434,7 @@ class NullGL10
 }
 
 
-    public glFrustumx(int32_t left, int32_t right, int32_t bottom, int32_t top, int32_t zNear, int32_t zFar){
-}
-
-
-    public glGenTextures(int32_t n, std::vector<int32_t> textures, int32_t offset){
+    public: void glFrustumf(float left, float right, float bottom, float top, float zNear, float zFar){
 
 
 
@@ -457,7 +444,11 @@ class NullGL10
 }
 
 
-    public glGenTextures(int32_t n, IntBuffer textures){
+    public: void glFrustumx(int32_t left, int32_t right, int32_t bottom, int32_t top, int32_t zNear, int32_t zFar){
+}
+
+
+    public: void glGenTextures(int32_t n, std::vector<int32_t> textures, int32_t offset){
 
 
 
@@ -467,7 +458,17 @@ class NullGL10
 }
 
 
-    public int32_t glGetError(){
+    public: void glGenTextures(int32_t n, IntBuffer textures){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ;
+    
+}
+
+
+    public: int32_t glGetError(){
 
 
 
@@ -477,7 +478,7 @@ class NullGL10
 }
 
 
-    public glGetIntegerv(int32_t pname, std::vector<int32_t> params, int32_t offset){
+    public: void glGetIntegerv(int32_t pname, std::vector<int32_t> params, int32_t offset){
 
 
 
@@ -487,7 +488,7 @@ class NullGL10
 }
 
 
-    public glGetIntegerv(int32_t pname, IntBuffer params){
+    public: void glGetIntegerv(int32_t pname, IntBuffer params){
 
 
 
@@ -497,27 +498,17 @@ class NullGL10
 }
 
 
-    public string glGetString(int32_t name){
+    public: std::string glGetString(int32_t name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public glHint(int32_t target, int32_t mode){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ;
-    
-}
-
-
-    public glLightModelf(int32_t pname, float param){
+    public: void glHint(int32_t target, int32_t mode){
 
 
 
@@ -527,7 +518,7 @@ class NullGL10
 }
 
 
-    public glLightModelfv(int32_t pname, std::vector<float> params, int32_t offset){
+    public: void glLightModelf(int32_t pname, float param){
 
 
 
@@ -537,7 +528,7 @@ class NullGL10
 }
 
 
-    public glLightModelfv(int32_t pname, FloatBuffer params){
+    public: void glLightModelfv(int32_t pname, std::vector<float> params, int32_t offset){
 
 
 
@@ -547,19 +538,7 @@ class NullGL10
 }
 
 
-    public glLightModelx(int32_t pname, int32_t param){
-}
-
-
-    public glLightModelxv(int32_t pname, std::vector<int32_t> params, int32_t offset){
-}
-
-
-    public glLightModelxv(int32_t pname, IntBuffer params){
-}
-
-
-    public glLightf(int32_t light, int32_t pname, float param){
+    public: void glLightModelfv(int32_t pname, FloatBuffer params){
 
 
 
@@ -569,7 +548,19 @@ class NullGL10
 }
 
 
-    public glLightfv(int32_t light, int32_t pname, std::vector<float> params, int32_t offset){
+    public: void glLightModelx(int32_t pname, int32_t param){
+}
+
+
+    public: void glLightModelxv(int32_t pname, std::vector<int32_t> params, int32_t offset){
+}
+
+
+    public: void glLightModelxv(int32_t pname, IntBuffer params){
+}
+
+
+    public: void glLightf(int32_t light, int32_t pname, float param){
 
 
 
@@ -579,7 +570,7 @@ class NullGL10
 }
 
 
-    public glLightfv(int32_t light, int32_t pname, FloatBuffer params){
+    public: void glLightfv(int32_t light, int32_t pname, std::vector<float> params, int32_t offset){
 
 
 
@@ -589,19 +580,7 @@ class NullGL10
 }
 
 
-    public glLightx(int32_t light, int32_t pname, int32_t param){
-}
-
-
-    public glLightxv(int32_t light, int32_t pname, std::vector<int32_t> params, int32_t offset){
-}
-
-
-    public glLightxv(int32_t light, int32_t pname, IntBuffer params){
-}
-
-
-    public glLineWidth(float width){
+    public: void glLightfv(int32_t light, int32_t pname, FloatBuffer params){
 
 
 
@@ -611,11 +590,19 @@ class NullGL10
 }
 
 
-    public glLineWidthx(int32_t width){
+    public: void glLightx(int32_t light, int32_t pname, int32_t param){
 }
 
 
-    public glLoadIdentity(){
+    public: void glLightxv(int32_t light, int32_t pname, std::vector<int32_t> params, int32_t offset){
+}
+
+
+    public: void glLightxv(int32_t light, int32_t pname, IntBuffer params){
+}
+
+
+    public: void glLineWidth(float width){
 
 
 
@@ -625,7 +612,11 @@ class NullGL10
 }
 
 
-    public glLoadMatrixf(std::vector<float> m, int32_t offset){
+    public: void glLineWidthx(int32_t width){
+}
+
+
+    public: void glLoadIdentity(){
 
 
 
@@ -635,7 +626,7 @@ class NullGL10
 }
 
 
-    public glLoadMatrixf(FloatBuffer m){
+    public: void glLoadMatrixf(std::vector<float> m, int32_t offset){
 
 
 
@@ -645,15 +636,7 @@ class NullGL10
 }
 
 
-    public glLoadMatrixx(std::vector<int32_t> m, int32_t offset){
-}
-
-
-    public glLoadMatrixx(IntBuffer m){
-}
-
-
-    public glLogicOp(int32_t opcode){
+    public: void glLoadMatrixf(FloatBuffer m){
 
 
 
@@ -663,7 +646,15 @@ class NullGL10
 }
 
 
-    public glMaterialf(int32_t face, int32_t pname, float param){
+    public: void glLoadMatrixx(std::vector<int32_t> m, int32_t offset){
+}
+
+
+    public: void glLoadMatrixx(IntBuffer m){
+}
+
+
+    public: void glLogicOp(int32_t opcode){
 
 
 
@@ -673,7 +664,7 @@ class NullGL10
 }
 
 
-    public glMaterialfv(int32_t face, int32_t pname, std::vector<float> params, int32_t offset){
+    public: void glMaterialf(int32_t face, int32_t pname, float param){
 
 
 
@@ -683,7 +674,7 @@ class NullGL10
 }
 
 
-    public glMaterialfv(int32_t face, int32_t pname, FloatBuffer params){
+    public: void glMaterialfv(int32_t face, int32_t pname, std::vector<float> params, int32_t offset){
 
 
 
@@ -693,19 +684,7 @@ class NullGL10
 }
 
 
-    public glMaterialx(int32_t face, int32_t pname, int32_t param){
-}
-
-
-    public glMaterialxv(int32_t face, int32_t pname, std::vector<int32_t> params, int32_t offset){
-}
-
-
-    public glMaterialxv(int32_t face, int32_t pname, IntBuffer params){
-}
-
-
-    public glMatrixMode(int32_t mode){
+    public: void glMaterialfv(int32_t face, int32_t pname, FloatBuffer params){
 
 
 
@@ -715,7 +694,19 @@ class NullGL10
 }
 
 
-    public glMultMatrixf(std::vector<float> m, int32_t offset){
+    public: void glMaterialx(int32_t face, int32_t pname, int32_t param){
+}
+
+
+    public: void glMaterialxv(int32_t face, int32_t pname, std::vector<int32_t> params, int32_t offset){
+}
+
+
+    public: void glMaterialxv(int32_t face, int32_t pname, IntBuffer params){
+}
+
+
+    public: void glMatrixMode(int32_t mode){
 
 
 
@@ -725,7 +716,7 @@ class NullGL10
 }
 
 
-    public glMultMatrixf(FloatBuffer m){
+    public: void glMultMatrixf(std::vector<float> m, int32_t offset){
 
 
 
@@ -735,15 +726,7 @@ class NullGL10
 }
 
 
-    public glMultMatrixx(std::vector<int32_t> m, int32_t offset){
-}
-
-
-    public glMultMatrixx(IntBuffer m){
-}
-
-
-    public glMultiTexCoord4f(int32_t target, float s, float t, float r, float q){
+    public: void glMultMatrixf(FloatBuffer m){
 
 
 
@@ -753,11 +736,15 @@ class NullGL10
 }
 
 
-    public glMultiTexCoord4x(int32_t target, int32_t s, int32_t t, int32_t r, int32_t q){
+    public: void glMultMatrixx(std::vector<int32_t> m, int32_t offset){
 }
 
 
-    public glNormal3f(float nx, float ny, float nz){
+    public: void glMultMatrixx(IntBuffer m){
+}
+
+
+    public: void glMultiTexCoord4f(int32_t target, float s, float t, float r, float q){
 
 
 
@@ -767,11 +754,11 @@ class NullGL10
 }
 
 
-    public glNormal3x(int32_t nx, int32_t ny, int32_t nz){
+    public: void glMultiTexCoord4x(int32_t target, int32_t s, int32_t t, int32_t r, int32_t q){
 }
 
 
-    public glNormalPointer(int32_t type, int32_t stride, Buffer pointer){
+    public: void glNormal3f(float nx, float ny, float nz){
 
 
 
@@ -781,7 +768,11 @@ class NullGL10
 }
 
 
-    public glOrthof(float left, float right, float bottom, float top, float zNear, float zFar){
+    public: void glNormal3x(int32_t nx, int32_t ny, int32_t nz){
+}
+
+
+    public: void glNormalPointer(int32_t type, int32_t stride, Buffer pointer){
 
 
 
@@ -791,11 +782,7 @@ class NullGL10
 }
 
 
-    public glOrthox(int32_t left, int32_t right, int32_t bottom, int32_t top, int32_t zNear, int32_t zFar){
-}
-
-
-    public glPixelStorei(int32_t pname, int32_t param){
+    public: void glOrthof(float left, float right, float bottom, float top, float zNear, float zFar){
 
 
 
@@ -805,7 +792,11 @@ class NullGL10
 }
 
 
-    public glPointSize(float size){
+    public: void glOrthox(int32_t left, int32_t right, int32_t bottom, int32_t top, int32_t zNear, int32_t zFar){
+}
+
+
+    public: void glPixelStorei(int32_t pname, int32_t param){
 
 
 
@@ -815,11 +806,7 @@ class NullGL10
 }
 
 
-    public glPointSizex(int32_t size){
-}
-
-
-    public glPolygonOffset(float factor, float units){
+    public: void glPointSize(float size){
 
 
 
@@ -829,11 +816,11 @@ class NullGL10
 }
 
 
-    public glPolygonOffsetx(int32_t factor, int32_t units){
+    public: void glPointSizex(int32_t size){
 }
 
 
-    public glPopMatrix(){
+    public: void glPolygonOffset(float factor, float units){
 
 
 
@@ -843,7 +830,11 @@ class NullGL10
 }
 
 
-    public glPushMatrix(){
+    public: void glPolygonOffsetx(int32_t factor, int32_t units){
+}
+
+
+    public: void glPopMatrix(){
 
 
 
@@ -853,7 +844,7 @@ class NullGL10
 }
 
 
-    public glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels){
+    public: void glPushMatrix(){
 
 
 
@@ -863,7 +854,7 @@ class NullGL10
 }
 
 
-    public glRotatef(float angle, float x, float y, float z){
+    public: void glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels){
 
 
 
@@ -873,7 +864,7 @@ class NullGL10
 }
 
 
-    public glRotatex(int32_t angle, int32_t x, int32_t y, int32_t z){
+    public: void glRotatef(float angle, float x, float y, float z){
 
 
 
@@ -883,7 +874,7 @@ class NullGL10
 }
 
 
-    public glSampleCoverage(float value, bool invert){
+    public: void glRotatex(int32_t angle, int32_t x, int32_t y, int32_t z){
 
 
 
@@ -893,11 +884,7 @@ class NullGL10
 }
 
 
-    public glSampleCoveragex(int32_t value, bool invert){
-}
-
-
-    public glScalef(float x, float y, float z){
+    public: void glSampleCoverage(float value, bool invert){
 
 
 
@@ -907,7 +894,11 @@ class NullGL10
 }
 
 
-    public glScalex(int32_t x, int32_t y, int32_t z){
+    public: void glSampleCoveragex(int32_t value, bool invert){
+}
+
+
+    public: void glScalef(float x, float y, float z){
 
 
 
@@ -917,7 +908,7 @@ class NullGL10
 }
 
 
-    public glScissor(int32_t x, int32_t y, int32_t width, int32_t height){
+    public: void glScalex(int32_t x, int32_t y, int32_t z){
 
 
 
@@ -927,7 +918,7 @@ class NullGL10
 }
 
 
-    public glShadeModel(int32_t mode){
+    public: void glScissor(int32_t x, int32_t y, int32_t width, int32_t height){
 
 
 
@@ -937,7 +928,7 @@ class NullGL10
 }
 
 
-    public glStencilFunc(int32_t func, int32_t ref, int32_t mask){
+    public: void glShadeModel(int32_t mode){
 
 
 
@@ -947,7 +938,7 @@ class NullGL10
 }
 
 
-    public glStencilMask(int32_t mask){
+    public: void glStencilFunc(int32_t func, int32_t ref, int32_t mask){
 
 
 
@@ -957,7 +948,7 @@ class NullGL10
 }
 
 
-    public glStencilOp(int32_t fail, int32_t zfail, int32_t zpass){
+    public: void glStencilMask(int32_t mask){
 
 
 
@@ -967,7 +958,7 @@ class NullGL10
 }
 
 
-    public glTexCoordPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
+    public: void glStencilOp(int32_t fail, int32_t zfail, int32_t zpass){
 
 
 
@@ -977,7 +968,7 @@ class NullGL10
 }
 
 
-    public glTexEnvf(int32_t target, int32_t pname, float param){
+    public: void glTexCoordPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
 
 
 
@@ -987,7 +978,7 @@ class NullGL10
 }
 
 
-    public glTexEnvfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset){
+    public: void glTexEnvf(int32_t target, int32_t pname, float param){
 
 
 
@@ -997,7 +988,7 @@ class NullGL10
 }
 
 
-    public glTexEnvfv(int32_t target, int32_t pname, FloatBuffer params){
+    public: void glTexEnvfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset){
 
 
 
@@ -1007,19 +998,7 @@ class NullGL10
 }
 
 
-    public glTexEnvx(int32_t target, int32_t pname, int32_t param){
-}
-
-
-    public glTexEnvxv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset){
-}
-
-
-    public glTexEnvxv(int32_t target, int32_t pname, IntBuffer params){
-}
-
-
-    public glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, Buffer pixels){
+    public: void glTexEnvfv(int32_t target, int32_t pname, FloatBuffer params){
 
 
 
@@ -1029,7 +1008,19 @@ class NullGL10
 }
 
 
-    public glTexParameterf(int32_t target, int32_t pname, float param){
+    public: void glTexEnvx(int32_t target, int32_t pname, int32_t param){
+}
+
+
+    public: void glTexEnvxv(int32_t target, int32_t pname, std::vector<int32_t> params, int32_t offset){
+}
+
+
+    public: void glTexEnvxv(int32_t target, int32_t pname, IntBuffer params){
+}
+
+
+    public: void glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, Buffer pixels){
 
 
 
@@ -1039,11 +1030,7 @@ class NullGL10
 }
 
 
-    public glTexParameterx(int32_t target, int32_t pname, int32_t param){
-}
-
-
-    public glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels){
+    public: void glTexParameterf(int32_t target, int32_t pname, float param){
 
 
 
@@ -1053,7 +1040,11 @@ class NullGL10
 }
 
 
-    public glTranslatef(float x, float y, float z){
+    public: void glTexParameterx(int32_t target, int32_t pname, int32_t param){
+}
+
+
+    public: void glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, Buffer pixels){
 
 
 
@@ -1063,11 +1054,7 @@ class NullGL10
 }
 
 
-    public glTranslatex(int32_t x, int32_t y, int32_t z){
-}
-
-
-    public glVertexPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
+    public: void glTranslatef(float x, float y, float z){
 
 
 
@@ -1077,7 +1064,21 @@ class NullGL10
 }
 
 
-    public glViewport(int32_t x, int32_t y, int32_t width, int32_t height){
+    public: void glTranslatex(int32_t x, int32_t y, int32_t z){
+}
+
+
+    public: void glVertexPointer(int32_t size, int32_t type, int32_t stride, Buffer pointer){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return ;
+    
+}
+
+
+    public: void glViewport(int32_t x, int32_t y, int32_t width, int32_t height){
 
 
 

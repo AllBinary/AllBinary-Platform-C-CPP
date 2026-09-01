@@ -47,33 +47,32 @@
 class ImageColorRangeResults
             : public Object
          {
-        
 
-    private: colorRangeInterface: ColorRangeInterface;
+    private: ColorRangeInterface colorRangeInterface;
 
-    private: matchingPixelsChecked: int64_t= 0;
+    private: int64_t matchingPixelsChecked= 0;
 
-    private: totalPixelsChecked: int64_t= 0;
+    private: int64_t totalPixelsChecked= 0;
 
-public constructor ();
+public: ImageColorRangeResults();
 
-    public ColorRangeInterface getColorRangeInterface();
+    public: ColorRangeInterface getColorRangeInterface();
 
-    public setColorRangeInterface(ColorRangeInterface colorRangeInterface);
+    public: void setColorRangeInterface(ColorRangeInterface colorRangeInterface);
 
-    public int64_t getMatchingPixelsChecked();
+    public: int64_t getMatchingPixelsChecked();
 
-    public setMatchingPixelsChecked(int64_t matchingPixelsChecked);
+    public: void setMatchingPixelsChecked(int64_t matchingPixelsChecked);
 
-    public addMatchingPixelsChecked();
+    public: void addMatchingPixelsChecked();
 
-    public int64_t getTotalPixelsChecked();
+    public: int64_t getTotalPixelsChecked();
 
-    public addTotalPixelsChecked();
+    public: void addTotalPixelsChecked();
 
-    public setTotalPixelsChecked(int64_t totalPixelsChecked);
+    public: void setTotalPixelsChecked(int64_t totalPixelsChecked);
 
-    public float getPercent();
+    public: float getPercent();
 
 };
 

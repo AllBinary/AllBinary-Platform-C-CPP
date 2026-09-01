@@ -62,43 +62,42 @@
 class MotionRectangleConstraints
             : public Object
         : public MotionRectangleConstraintsInterface {
-        
 
-    private: minDimension: Dimension;
+    private: Dimension minDimension;
 
-    private: maxDimension: Dimension;
+    private: Dimension maxDimension;
 
-    private: maxMotionRectangles: int32_t= 0;
+    private: int32_t maxMotionRectangles= 0;
 
-    private: minArea: int32_t= 0;
+    private: int32_t minArea= 0;
 
-public constructor ();
+public: MotionRectangleConstraints();
 
-    public Dimension getMinDimension();
+    public: Dimension getMinDimension();
 
-    public Dimension getMaxDimension();
+    public: Dimension getMaxDimension();
 
-    public bool isTooSmall(Rectangle rectangle);
+    public: bool isTooSmall(Rectangle rectangle);
 
-    public bool isAreaTooSmall(Rectangle rectangle);
+    public: bool isAreaTooSmall(Rectangle rectangle);
 
-    public bool isTooBig(Rectangle rectangle);
+    public: bool isTooBig(Rectangle rectangle);
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle);
+    public: bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle);
 
-    public setMinDimension(Dimension minDimension);
+    public: void setMinDimension(Dimension minDimension);
 
-    public setMaxDimension(Dimension maxDimension);
+    public: void setMaxDimension(Dimension maxDimension);
 
-    public int32_t getMaxMotionRectangles();
+    public: int32_t getMaxMotionRectangles();
 
-    public setMaxMotionRectangles(int32_t maxMotionRectangles);
+    public: void setMaxMotionRectangles(int32_t maxMotionRectangles);
 
-    public int32_t getMinArea();
+    public: int32_t getMinArea();
 
-    public setMinArea(int32_t minArea);
+    public: void setMinArea(int32_t minArea);
 
 };
 

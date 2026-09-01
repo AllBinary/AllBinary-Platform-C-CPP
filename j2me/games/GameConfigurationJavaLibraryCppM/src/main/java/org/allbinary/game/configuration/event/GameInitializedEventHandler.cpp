@@ -51,33 +51,30 @@
 #include "GameInitializedEvent.h"
 
 class GameInitializedEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: GameInitializedEventHandler = new GameInitializedEventHandler();
+    private: static const GameInitializedEventHandler gameKeyEventHandler = GameInitializedEventHandler();
 
-    public static GameInitializedEventHandler getInstance(){
+    public: static GameInitializedEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInitializedEventHandler.gameKeyEventHandler;
+                        return GameInitializedEventHandler::gameKeyEventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GameInitializedEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    gameInitializedListenerInterface: GameInitializedListenerInterface = (eventListenerInterface as GameInitializedListenerInterface);;
+    GameInitializedListenerInterface gameInitializedListenerInterface = (eventListenerInterface as GameInitializedListenerInterface);;
     
-gameInitializedListenerInterface!.onGameInitialized(eventObject as GameInitializedEvent);
+gameInitializedListenerInterface.onGameInitialized(eventObject as GameInitializedEvent);
     
 }
 

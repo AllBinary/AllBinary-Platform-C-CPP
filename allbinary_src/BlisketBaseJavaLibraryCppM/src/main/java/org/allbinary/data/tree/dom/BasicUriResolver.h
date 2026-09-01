@@ -84,23 +84,22 @@
 class BasicUriResolver
             : public Object
         : public URIResolver {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const uriResolverStrings: URIResolverStrings = URIResolverStrings.getInstance()!;
+    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: extension: string;
+    private: std::string extension;
 
-public constructor (string extension);
+public: BasicUriResolver(std::string extension);
 
-    public string getExtension();
+    public: std::string getExtension();
 
                 //@Throws(TransformerException.constructor)
             
-    public Source resolve(string href, string base);
+    public: Source resolve(std::string href, std::string base);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

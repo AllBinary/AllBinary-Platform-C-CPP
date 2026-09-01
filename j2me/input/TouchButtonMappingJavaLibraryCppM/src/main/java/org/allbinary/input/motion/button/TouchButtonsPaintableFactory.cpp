@@ -49,14 +49,13 @@
 class TouchButtonsPaintableFactory
             : public Object
          {
-        
 
-    public static Paintable getInstance(BasicColor basicColor){
+    public: static Paintable getInstance(BasicColor basicColor){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TouchButtonsPaintable(basicColor);
+                        return TouchButtonsPaintable(basicColor);
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_NOCACHEWAYPOINT_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_NOCACHEWAYPOINT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AllBinaryGameLayerManager.h>
@@ -106,46 +108,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WaypointBase.h"
 
-class NoCacheWaypoint: public WaypointBase: public BuildingEventListenerInterface {
-        
+class NoCacheWaypoint: public WaypointBase, public BuildingEventListenerInterface {
 
-    const ownerLayer: PathFindingLayerInterface;
+    protected: PathFindingLayerInterface ownerLayer;
 
-public constructor (PathFindingLayerInterface ownerLayer, Sound sound);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
-
-    public releaseCachedPaths();
+public: NoCacheWaypoint(PathFindingLayerInterface ownerLayer, Sound sound);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+
+    public: void releaseCachedPaths();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition);
+    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList createPaths(GeographicMapCellPosition startGeographicMapCellPosition);
-
-    public onEvent(AllBinaryEventObject eventObject);
+    protected: GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public onBuildingEvent(RTSLayerEvent event);
+    private: BasicArrayList createPaths(GeographicMapCellPosition startGeographicMapCellPosition);
 
-    public reset();
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public visit(PathFindingLayerInterface unitLayer);
+    public: void onBuildingEvent(RTSLayerEvent event);
+
+    public: void reset();
+
+                //@Throws(Exception.constructor)
+            
+    public: void visit(PathFindingLayerInterface unitLayer);
 
 };
 

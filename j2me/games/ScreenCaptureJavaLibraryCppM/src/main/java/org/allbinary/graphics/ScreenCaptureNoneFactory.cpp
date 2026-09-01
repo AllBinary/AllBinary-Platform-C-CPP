@@ -43,16 +43,15 @@
 class ScreenCaptureNoneFactory
             : public Object
          {
-        
 
-    private: static const instance: ScreenCapture = new ScreenCapture();
+    private: static ScreenCapture instance() { return ScreenCapture(); }
 
-    public static ScreenCapture getInstance(){
+    public: static ScreenCapture getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenCaptureNoneFactory.instance;
+                        return ScreenCaptureNoneFactory::instance();
     
 }
 

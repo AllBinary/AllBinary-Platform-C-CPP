@@ -42,11 +42,10 @@
 class URIResolverStrings
             : public Object
          {
-        
 
-    private: static const instance: URIResolverStrings = new URIResolverStrings();
+    private: static URIResolverStrings instance() { return URIResolverStrings(); }
 
-    public static URIResolverStrings getInstance(){
+    public: static URIResolverStrings getInstance(){
 
 
 
@@ -56,21 +55,21 @@ class URIResolverStrings
 }
 
 
-    public const IMPORT_URL: string = "/{import url}";
+    public: const std::string IMPORT_URL = "/{import url}";
 
-    public const ATTEMPT: string = "attempt to use xsl:import: href=";
+    public: const std::string ATTEMPT = "attempt to use xsl:import: href=";
 
-    public const BASE: string = "\nBase= ";
+    public: const std::string BASE = "\nBase= ";
 
-    public const NEW_PATH: string = "\nNew path= ";
+    public: const std::string NEW_PATH = "\nNew path= ";
 
-    public const NOTE: string = "\nNote: ";
+    public: const std::string NOTE = "\nNote: ";
 
-    public const URL_GLOBAL: string = " is a urlglobal";
+    public: const std::string URL_GLOBAL = " is a urlglobal";
 
-    public const REQUIRED_EXTENSION: string = "\nRequired Extension: ";
+    public: const std::string REQUIRED_EXTENSION = "\nRequired Extension: ";
 
-    public const RESOLVE: string = "resolve";
+    public: const std::string RESOLVE = "resolve";
 
 };
 

@@ -80,29 +80,28 @@
 #include "MineWeaponResources.h"
 
 class MineCountedPickedUpLayerInterfaceFactory: public CountedPickedUpLayerInterfaceFactory {
-        
 
-    private: static pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
-
-                //@Throws(Exception.constructor)
-            
-    public static init();
-
-    public static PickedUpLayerInterfaceFactoryInterface getInstance();
-
-    private: const weaponLayerCircularStaticPool: WeaponLayerCircularPool = MineLayerCircularStaticPool.getInstance()!;
-
-private constructor ();
-
-    public int32_t getTotal();
-
-    private: const weaponProperties: WeaponProperties = new WeaponProperties( -1,  -1, 0, 8000, 10);
-
-    private: const smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;
+    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: static void init();
+
+    public: static PickedUpLayerInterfaceFactoryInterface getInstance();
+
+    private: const WeaponLayerCircularPool weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
+
+private: MineCountedPickedUpLayerInterfaceFactory();
+
+    public: int32_t getTotal();
+
+    private: const WeaponProperties weaponProperties = WeaponProperties( -1,  -1, 0, 8000, 10);
+
+    private: const SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    public: AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
 
 };
 

@@ -63,73 +63,72 @@
 class GameKeyEventHandler
             : public Object
          {
-        
 
-    private: static const instance: GameKeyEventHandler = new GameKeyEventHandler();
+    private: static GameKeyEventHandler instance() { return GameKeyEventHandler(); }
 
-    public static GameKeyEventHandler getInstance(){
+    public: static GameKeyEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEventHandler.instance;
+                        return GameKeyEventHandler::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const pressGameKeyEventHandler: PressGameKeyEventHandler = PressGameKeyEventHandler.getInstance()!;
+    private: const PressGameKeyEventHandler pressGameKeyEventHandler = PressGameKeyEventHandler::getInstance();
 
-    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!;
+    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners(){
-this.pressGameKeyEventHandler!.removeAllListeners();
+    public: void removeAllListeners(){
+this->pressGameKeyEventHandler.removeAllListeners();
     
-this.upGameKeyEventHandler!.removeAllListeners();
+this->upGameKeyEventHandler.removeAllListeners();
     
-this.downGameKeyEventHandler!.removeAllListeners();
-    
-}
-
-
-    public addListenerForPlayer(EventListenerInterface eventListenerInterface, int32_t playerInputId){
-this.logUtil!.putF(eventListenerInterface!.toString(), this, this.commonStrings!.ADD_LISTENER);
-    
-this.pressGameKeyEventHandler!.addListenerSingleThreaded(eventListenerInterface);
-    
-this.upGameKeyEventHandler!.getInstanceForPlayer(playerInputId)!.addListenerSingleThreaded(eventListenerInterface);
-    
-this.downGameKeyEventHandler!.getInstanceForPlayer(playerInputId)!.addListenerSingleThreaded(eventListenerInterface);
+this->downGameKeyEventHandler.removeAllListeners();
     
 }
 
 
-    public addListener(EventListenerInterface eventListenerInterface){
-this.logUtil!.putF(eventListenerInterface!.toString(), this, this.commonStrings!.ADD_LISTENER);
+    public: void addListenerForPlayer(EventListenerInterface eventListenerInterface, int32_t playerInputId){
+this->logUtil.putF(eventListenerInterface.toString(), this, this->commonStrings.ADD_LISTENER);
     
-this.pressGameKeyEventHandler!.addListenerSingleThreaded(eventListenerInterface);
+this->pressGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
     
-this.upGameKeyEventHandler!.addListenerSingleThreaded(eventListenerInterface);
+this->upGameKeyEventHandler.getInstanceForPlayer(playerInputId).addListenerSingleThreaded(eventListenerInterface);
     
-this.downGameKeyEventHandler!.addListenerSingleThreaded(eventListenerInterface);
+this->downGameKeyEventHandler.getInstanceForPlayer(playerInputId).addListenerSingleThreaded(eventListenerInterface);
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.logUtil!.putF(eventListenerInterface!.toString(), this, this.commonStrings!.REMOVE_LISTENER);
+    public: void addListener(EventListenerInterface eventListenerInterface){
+this->logUtil.putF(eventListenerInterface.toString(), this, this->commonStrings.ADD_LISTENER);
     
-this.pressGameKeyEventHandler!.removeListenerSingleThreaded(eventListenerInterface);
+this->pressGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
     
-this.upGameKeyEventHandler!.removeListenerSingleThreaded(eventListenerInterface);
+this->upGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
     
-this.downGameKeyEventHandler!.removeListenerSingleThreaded(eventListenerInterface);
+this->downGameKeyEventHandler.addListenerSingleThreaded(eventListenerInterface);
+    
+}
+
+
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->logUtil.putF(eventListenerInterface.toString(), this, this->commonStrings.REMOVE_LISTENER);
+    
+this->pressGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface);
+    
+this->upGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface);
+    
+this->downGameKeyEventHandler.removeListenerSingleThreaded(eventListenerInterface);
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -61,53 +63,51 @@
 class ChoiceGroupImageUtil
             : public Object
          {
-        
 
-    private: static const instance: ChoiceGroupImageUtil = new ChoiceGroupImageUtil();
+    private: static ChoiceGroupImageUtil instance() { return ChoiceGroupImageUtil(); }
 
-    public static ChoiceGroupImageUtil getInstance(){
+    public: static ChoiceGroupImageUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ChoiceGroupImageUtil.instance;
+                        return ChoiceGroupImageUtil::instance();
     
 }
 
 
-    public init(){
+    public: void init(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    choiceGroupFactory: ChoiceGroupImageFactory = ChoiceGroupImageFactory.getInstance()!;;
+    ChoiceGroupImageFactory choiceGroupFactory = ChoiceGroupImageFactory::getInstance();;
     
 
-    imageArray: std::vector<Image> = choiceGroupFactory!.getImageArray()!;;
+    std::vector<Image> imageArray = choiceGroupFactory.getImageArray();;
     
 
-                        if(features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     
-    preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;;
+    PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();;
     
 
-    size: int32_t = imageArray!.length
-                ;;
+    int32_t size = imageArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-imageArray[index]= preResourceImageUtil!.encapsulate(imageArray[index]!);
+imageArray[index]= preResourceImageUtil.encapsulate(imageArray[index]!);
     
 }
 
-choiceGroupFactory!.init(imageArray);
+choiceGroupFactory.init(imageArray);
     
 
                                     }
@@ -115,82 +115,80 @@ choiceGroupFactory!.init(imageArray);
 }
 
 
-    public update(GL gl){
+    public: void update(GL gl){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    choiceGroupFactory: ChoiceGroupImageFactory = ChoiceGroupImageFactory.getInstance()!;;
+    ChoiceGroupImageFactory choiceGroupFactory = ChoiceGroupImageFactory::getInstance();;
     
 
-    imageArray: std::vector<Image> = choiceGroupFactory!.getImageArray()!;;
+    std::vector<Image> imageArray = choiceGroupFactory.getImageArray();;
     
 
-                        if(features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     
-    preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;;
+    PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();;
     
 
-    size: int32_t = imageArray!.length
-                ;;
+    int32_t size = imageArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-preResourceImageUtil!.updateGL(gl, imageArray[index]!);
+preResourceImageUtil.updateGL(gl, imageArray[index]!);
     
 }
 
 
                                     }
                                 
-choiceGroupFactory!.init(imageArray);
+choiceGroupFactory.init(imageArray);
     
 }
 
 
-    public update(Graphics graphics){
+    public: void update(Graphics graphics){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    choiceGroupFactory: ChoiceGroupImageFactory = ChoiceGroupImageFactory.getInstance()!;;
+    ChoiceGroupImageFactory choiceGroupFactory = ChoiceGroupImageFactory::getInstance();;
     
 
-    imageArray: std::vector<Image> = choiceGroupFactory!.getImageArray()!;;
+    std::vector<Image> imageArray = choiceGroupFactory.getImageArray();;
     
 
-                        if(features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     
-    preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;;
+    PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();;
     
 
-    size: int32_t = imageArray!.length
-                ;;
+    int32_t size = imageArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-preResourceImageUtil!.update(graphics, imageArray[index]!);
+preResourceImageUtil.update(graphics, imageArray[index]!);
     
 }
 
 
                                     }
                                 
-choiceGroupFactory!.init(imageArray);
+choiceGroupFactory.init(imageArray);
     
 }
 

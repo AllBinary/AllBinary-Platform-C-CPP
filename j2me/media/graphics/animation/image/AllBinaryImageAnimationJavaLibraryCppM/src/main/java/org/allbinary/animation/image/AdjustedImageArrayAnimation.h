@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEARRAYANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ADJUSTEDIMAGEARRAYANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -53,27 +55,26 @@
         #include "ImageArrayAnimation.h"
 
 class AdjustedImageArrayAnimation: public ImageArrayAnimation {
-        
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedImageArrayAnimation(std::vector<Image> imageArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t dx, int32_t dy);
+    public: void init(int32_t dx, int32_t dy);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public setDx(int32_t dx);
+    public: void setDx(int32_t dx);
 
-    public int32_t getDx();
+    public: int32_t getDx();
 
-    public setDy(int32_t dy);
+    public: void setDy(int32_t dy);
 
-    public int32_t getDy();
+    public: int32_t getDy();
 
 };
 

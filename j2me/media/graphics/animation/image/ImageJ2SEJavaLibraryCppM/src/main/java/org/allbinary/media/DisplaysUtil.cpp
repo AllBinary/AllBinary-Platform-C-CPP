@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <java/awt/Dimension.h>
@@ -63,68 +65,66 @@
 class DisplaysUtil
             : public Object
          {
-        
 
-    public static DisplaysUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisplaysUtil.instance;
-    
-}
-
-
-    private: static const instance: DisplaysUtil = new DisplaysUtil();
-
-    public Rectangle getPrimaryScreenSize(){
-
-    dimension: Dimension = Toolkit.getDefaultToolkit()!.getScreenSize()!;;
-    
+    public: static DisplaysUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, dimension.width, dimension.height);
+                        return DisplaysUtil::instance();
     
 }
 
 
-    public std::vector<Rectangle> getScreenSizesAsRectangleArray(){
+    private: static DisplaysUtil instance() { return DisplaysUtil(); }
 
-    graphicsEnvironment: GraphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment()!;;
+    public: Rectangle getPrimaryScreenSize(){
+
+    Dimension dimension = Toolkit::getDefaultToolkit().getScreenSize();;
     
 
-    graphicsDeviceArray: std::vector<GraphicsDevice> = graphicsEnvironment!.getScreenDevices()!;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Rectangle(PointFactory::getInstance().ZERO_ZERO, dimension.width, dimension.height);
+    
+}
+
+
+    public: std::vector<Rectangle> getScreenSizesAsRectangleArray(){
+
+    GraphicsEnvironment graphicsEnvironment = GraphicsEnvironment::getLocalGraphicsEnvironment();;
     
 
-    graphicsDevice: GraphicsDevice;;
+    std::vector<GraphicsDevice> graphicsDeviceArray = graphicsEnvironment.getScreenDevices();;
     
 
-    displayMode: DisplayMode;;
+    GraphicsDevice graphicsDevice;;
     
 
-    rectangle: Rectangle;;
+    DisplayMode displayMode;;
     
 
-    size: int32_t = graphicsDeviceArray!.length
-                ;;
+    Rectangle rectangle;;
     
 
-    rectangleArray: std::vector<Rectangle> = new Array(size);;
+    int32_t size = graphicsDeviceArray.size();;
+    
+
+    std::vector<Rectangle> rectangleArray = new Array(size);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 graphicsDevice= graphicsDeviceArray[index]!;
     
-displayMode= graphicsDevice!.getDisplayMode();
+displayMode= graphicsDevice.getDisplayMode();
     
-rectangle= new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, displayMode!.getWidth(), displayMode!.getHeight());
+rectangle= Rectangle(PointFactory::getInstance().ZERO_ZERO, displayMode.getWidth(), displayMode.getHeight());
     
 rectangleArray[index]= rectangle;
     

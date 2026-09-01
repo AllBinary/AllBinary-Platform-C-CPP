@@ -58,36 +58,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextItemNumberVisitor: public Visitor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: TextItemNumberVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
-    value: string = anyType as string;;
+    std::string value = anyType as string;;
     
 
-                        if(value.length < 2)
+                        if(value.size() < 2)
                         
                                     {
                                     
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil!.isNumber(value))
+                        if(stringValidationUtil.isNumber(value))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return BooleanFactory::getInstance().TRUE;
     
 
                                     }
@@ -95,16 +92,16 @@ public constructor (){
                         else {
                             
         try {
-            TextNotificationUtil.getInstance()!.fireError("Numbers Only");
+            TextNotificationUtil::getInstance().fireError("Numbers Only");
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
     
 }
 
@@ -112,7 +109,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.FALSE;
+                        return BooleanFactory::getInstance().FALSE;
     
 
                         }
@@ -125,7 +122,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.FALSE;
+                        return BooleanFactory::getInstance().FALSE;
     
 
                         }

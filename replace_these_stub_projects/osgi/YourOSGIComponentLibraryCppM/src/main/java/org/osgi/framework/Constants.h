@@ -32,13 +32,12 @@
             // Interfaces do not have static fields, so create a C++ helper class.
             class ConstantsI {
         
-    public static const BUNDLE_SYMBOLICNAME: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: static const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance().EMPTY_STRING;
             }
         
 class Constants {
-        
 
-    //Interfaces do not have static fields - public static const BUNDLE_SYMBOLICNAME: string = StringUtil.getInstance()!.EMPTY_STRING;
+    //Interfaces do not have static fields - public: static const std::string BUNDLE_SYMBOLICNAME = StringUtil::getInstance().EMPTY_STRING;
 
 };
 

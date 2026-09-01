@@ -103,33 +103,32 @@
         #include "AllBinaryGameCanvas.h"
 
 class GameCanvasInputProcessor: public InputProcessor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const allBinaryGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas allBinaryGameCanvas;
 
-    private: const downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!;
+    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const downKeyEventHandler: DownKeyEventHandler = DownKeyEventHandler.getInstance()!;
+    private: const DownKeyEventHandler downKeyEventHandler = DownKeyEventHandler::getInstance();
 
-    private: const smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;
+    private: const SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
 
-    private: const inputToGameKeyMapping: InputToGameKeyMapping = PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping()!;
+    private: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
 
-public constructor (AllBinaryGameCanvas allBinaryGameCanvas);
+public: GameCanvasInputProcessor(AllBinaryGameCanvas allBinaryGameCanvas);
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId);
 
-    removeGameKeyEvent(Canvas canvas, int32_t keyCode, int32_t deviceId, bool repeated);
+    private: void removeGameKeyEvent(Canvas canvas, int32_t keyCode, int32_t deviceId, bool repeated);
 
 };
 

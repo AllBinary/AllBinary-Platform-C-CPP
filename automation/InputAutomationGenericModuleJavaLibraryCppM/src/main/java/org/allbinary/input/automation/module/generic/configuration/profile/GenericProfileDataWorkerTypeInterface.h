@@ -49,13 +49,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GenericProfileDataWorkerTypeInterface {
-        
 
-    string getName();
+    std::string getName();
 
-    setName(string name);
+    void setName(std::string name);
 
-    string toString();
+    std::string toString();
 
                 //@Throws(Exception.constructor)
             

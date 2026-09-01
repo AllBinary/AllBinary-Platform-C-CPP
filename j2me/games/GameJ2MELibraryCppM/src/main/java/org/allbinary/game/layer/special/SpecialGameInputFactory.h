@@ -46,9 +46,8 @@
 class SpecialGameInputFactory
             : public Object
          {
-        
 
-    public static const NO_SPECIAL_GAME_INPUT: SpecialGameInput = new SpecialGameInput();
+    public: static const SpecialGameInput NO_SPECIAL_GAME_INPUT = SpecialGameInput();
 
 };
 

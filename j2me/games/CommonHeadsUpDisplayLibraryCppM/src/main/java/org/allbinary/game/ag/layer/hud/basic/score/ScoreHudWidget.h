@@ -58,15 +58,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScoreHudWidget: public NumberStringHud {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ScoreHudWidget getInstance(int32_t maxscore, int32_t location, int32_t direction);
+    public: static ScoreHudWidget getInstance(int32_t maxscore, int32_t location, int32_t direction);
 
-public constructor (int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
 };
 

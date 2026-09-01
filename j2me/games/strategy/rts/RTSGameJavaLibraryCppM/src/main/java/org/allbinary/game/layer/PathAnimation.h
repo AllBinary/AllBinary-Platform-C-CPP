@@ -87,33 +87,32 @@
 #include "AllBinaryTiledLayer.h"
 
 class PathAnimation: public Animation {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const linePathAnimation: LinePathAnimation;
+    private: LinePathAnimation linePathAnimation;
 
-    private: const pathFindingLayer: PathFindingLayerInterface;
+    private: PathFindingLayerInterface pathFindingLayer;
 
-    allBinaryGameLayerManagerP: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public constructor (PathFindingLayerInterface pathFindingLayer, LinePathAnimation linePathAnimation);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: PathAnimation(PathFindingLayerInterface pathFindingLayer, LinePathAnimation linePathAnimation);
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame();
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
-    private: const startColor: BasicColor = BasicColorFactory.getInstance()!.RED;
+                //@Throws(Exception.constructor)
+            
+    public: void nextFrame();
 
-    private: const middleColor: BasicColor = BasicColorFactory.getInstance()!.BLUE;
+    private: const BasicColor startColor = BasicColorFactory::getInstance().RED;
 
-    private: const endColor: BasicColor = BasicColorFactory.getInstance()!.GREEN;
+    private: const BasicColor middleColor = BasicColorFactory::getInstance().BLUE;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    private: const BasicColor endColor = BasicColorFactory::getInstance().GREEN;
+
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

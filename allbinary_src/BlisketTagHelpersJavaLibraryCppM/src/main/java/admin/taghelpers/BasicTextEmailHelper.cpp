@@ -71,43 +71,40 @@
         #include "TagHelper.h"
 
 class BasicTextEmailHelper: public TagHelper {
-        
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.pageContext= pageContext;
+public: BasicTextEmailHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->pageContext= pageContext;
     
-this.hashMap= hashMap;
+this->hashMap= hashMap;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public send(){
+    public: void send(){
 
-    adminEmailSubject: string = this.hashMap!.get("Subject") as string;;
+    std::string adminEmailSubject = this->hashMap.get("Subject") as string;;
     
 
-    adminEmailTextBody: string = this.hashMap!.get("Body") as string;;
+    std::string adminEmailTextBody = this->hashMap.get("Body") as string;;
     
 
-    adminBasicEmailInfo: BasicEmailInfo = new AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
     
 
-    adminEmailInfo: EmailInfo = new EmailInfo(adminBasicEmailInfo);;
+    EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;
     
 
-    adminUserEmailEventHandler: UserEmailEventHandler = AdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, UserEmailEventNameData.INSTALLER)!;;
+    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::INSTALLER);;
     
-adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.INSTALLER, adminEmailInfo);
+adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::INSTALLER, adminEmailInfo);
     
 }
 

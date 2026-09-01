@@ -50,10 +50,9 @@
         #include "StoreThemeCategoryPathView.h"
 #include "StoreThemeCategoryInterface.h"
 
-class StoreThemeCategoryPathValidationView: public StoreThemeCategoryPathView: public ValidationInterface {
-        
+class StoreThemeCategoryPathValidationView: public StoreThemeCategoryPathView, public ValidationInterface {
 
-public constructor (StoreThemeCategoryInterface categoryInterface){
+public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface categoryInterface){
             super(categoryInterface as StoreThemeCategoryInterface);
                     
 
@@ -64,31 +63,19 @@ public constructor (StoreThemeCategoryInterface categoryInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public Node toValidationInfoNode(Document document){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -100,7 +87,19 @@ public constructor (StoreThemeCategoryInterface categoryInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: Node toValidationInfoNode(Document document){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string validationInfo(){
 
 
 

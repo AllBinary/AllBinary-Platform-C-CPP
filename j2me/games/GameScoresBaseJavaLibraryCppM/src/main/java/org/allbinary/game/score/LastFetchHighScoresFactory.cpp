@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -47,16 +49,15 @@
 class LastFetchHighScoresFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static LastFetchHighScoresFactory getInstance(){
+    public: static LastFetchHighScoresFactory getInstance(){
 
-                        if(LastFetchHighScoresFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(LastFetchHighScoresFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    LastFetchHighScoresFactory.instance= new LastFetchHighScoresFactory();
+                                    LastFetchHighScoresFactory::instance= LastFetchHighScoresFactory();
     
 
                                     }
@@ -65,12 +66,12 @@ class LastFetchHighScoresFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LastFetchHighScoresFactory.instance as LastFetchHighScoresFactory;
+                        return LastFetchHighScoresFactory::instance() as LastFetchHighScoresFactory;
     
 }
 
 
-    public highScoresArray: std::vector<HighScores> = NoHighScoresFactory.getInstance()!.NO_HIGH_SCORES;
+    public: std::vector<HighScores> highScoresArray = NoHighScoresFactory::getInstance().NO_HIGH_SCORES;
 
 };
 

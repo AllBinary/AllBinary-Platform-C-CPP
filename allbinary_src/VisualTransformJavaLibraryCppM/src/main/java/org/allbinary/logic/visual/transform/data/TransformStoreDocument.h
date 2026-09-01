@@ -65,13 +65,12 @@
         #include "TransformHttpRequestDocument.h"
 
 class TransformStoreDocument: public TransformHttpRequestDocument {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (PageContext pageContext, WeblisketSession weblisketSession);
+public: TransformStoreDocument(PageContext pageContext, WeblisketSession weblisketSession);
 
-public constructor (SearchRequest searchRequest);
+public: TransformStoreDocument(SearchRequest searchRequest);
 
 };
 

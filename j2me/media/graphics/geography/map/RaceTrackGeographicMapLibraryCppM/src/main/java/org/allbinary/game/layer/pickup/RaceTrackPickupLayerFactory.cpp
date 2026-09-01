@@ -51,16 +51,15 @@
 class RaceTrackPickupLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance(){
+    public: AllBinaryLayer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new RaceTrackPickupLayer();
+                        return RaceTrackPickupLayer();
     
 }
 

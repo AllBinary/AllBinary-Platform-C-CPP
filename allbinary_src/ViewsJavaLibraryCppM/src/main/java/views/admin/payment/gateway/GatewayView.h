@@ -66,17 +66,16 @@
 #include "PaymentGatewayComponent.h"
 
 class GatewayView: public PaymentGatewayViewAbstract {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: GatewayView(TransformInfoInterface transformInfoInterface);
 
-    public getFormData(HttpServletRequest request);
+    public: void getFormData(HttpServletRequest request);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

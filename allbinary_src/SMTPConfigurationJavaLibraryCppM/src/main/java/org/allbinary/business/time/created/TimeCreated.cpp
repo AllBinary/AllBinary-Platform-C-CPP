@@ -41,9 +41,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TimeCreated: public Time {
-        
 
-public constructor (string time){
+public: TimeCreated(std::string time){
             super(time);
                     
 
@@ -52,7 +51,7 @@ public constructor (string time){
 }
 
 
-public constructor (int64_t time){
+public: TimeCreated(int64_t time){
             super(time);
                     
 

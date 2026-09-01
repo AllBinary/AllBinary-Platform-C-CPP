@@ -69,67 +69,64 @@
 class DamageUtil
             : public Object
          {
-        
 
-    private: static const instance: DamageUtil = new DamageUtil();
+    private: static DamageUtil instance() { return DamageUtil(); }
 
-    public static DamageUtil getInstance(){
+    public: static DamageUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageUtil.instance;
+                        return DamageUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const COLLIDE: string = "collide";
+    public: const std::string COLLIDE = "collide";
 
-private constructor (){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            
-    public process(DamageableInterface damageableInterface, DamageableInterface damageableInterface2){
-damageableInterface!.damage(damageableInterface2!.getDamage(0), 0);
-    
+private: DamageUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public debugDamage(CollidableCompositeLayer collidableInterfaceCompositeInterface1, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void process(DamageableInterface damageableInterface, DamageableInterface damageableInterface2){
+damageableInterface.damage(damageableInterface2.getDamage(0), 0);
+    
+}
 
-    collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface as CollidableDestroyableDamageableLayer;;
+
+                //@Throws(Exception.constructor)
+            
+    public: void debugDamage(CollidableCompositeLayer collidableInterfaceCompositeInterface1, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface as CollidableDestroyableDamageableLayer;;
     
 
-    damage: int32_t = collidableDestroyableDamageableLayer!.getDamage(0)!;;
+    int32_t damage = collidableDestroyableDamageableLayer.getDamage(0);;
     
 
                         if(damage > 20000)
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Collision ");
+stringBuffer.append("Collision ");
     
-stringBuffer!.append(collidableInterfaceCompositeInterface1!.toString());
+stringBuffer.append(collidableInterfaceCompositeInterface1.toString());
     
-stringBuffer!.append(" with: ");
+stringBuffer.append(" with: ");
     
-stringBuffer!.append(collidableInterfaceCompositeInterface!.toString());
+stringBuffer.append(collidableInterfaceCompositeInterface.toString());
     
-stringBuffer!.append(" damage: ");
+stringBuffer.append(" damage: ");
     
-stringBuffer!.appendint(damage);
+stringBuffer.appendint(damage);
     
-this.logUtil!.putF(stringBuffer!.toString(), collidableInterfaceCompositeInterface1, this.COLLIDE);
+this->logUtil.putF(stringBuffer.toString(), collidableInterfaceCompositeInterface1, this->COLLIDE);
     
 
                                     }

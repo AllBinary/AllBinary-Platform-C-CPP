@@ -58,30 +58,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "FontFamilyView.h"
 
-class FontFamilyValidation: public FontFamilyView: public ValidationInterface {
-        
+class FontFamilyValidation: public FontFamilyView, public ValidationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: FontFamilyValidation();
 
-public constructor (Node node);
-
-                //@Throws(Exception.constructor)
-            
-    public Boolean isValid();
+public: FontFamilyValidation(Node node);
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: Boolean isValid();
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc();
+    public: std::string validationInfo();
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node toValidationInfoNode(Document document);
 
 };
 

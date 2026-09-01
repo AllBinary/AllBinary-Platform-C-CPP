@@ -51,19 +51,18 @@
 class CountedPickedUpLayerInterfaceFactoryPool
             : public Object
          {
-        
 
-    private: static SINGLETON: CountedPickedUpLayerInterfaceFactoryPool = new CountedPickedUpLayerInterfaceFactoryPool();
+    private: static CountedPickedUpLayerInterfaceFactoryPool SINGLETON = CountedPickedUpLayerInterfaceFactoryPool();
 
-    public static CountedPickedUpLayerInterfaceFactoryPool getInstance();
+    public: static CountedPickedUpLayerInterfaceFactoryPool getInstance();
 
-    public static init();
+    public: static void init();
 
-    private: list: BasicArrayList;
+    private: BasicArrayList list;
 
-private constructor ();
+private: CountedPickedUpLayerInterfaceFactoryPool();
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

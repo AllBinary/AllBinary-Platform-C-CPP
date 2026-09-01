@@ -62,15 +62,14 @@
 class AllBinaryRendererBase3
             : public Object
          {
-        
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    update(GL10 gl);
+    protected: void update(GL10 gl);
 
-    public add(Image image);
+    public: void add(Image image);
 
 };
 

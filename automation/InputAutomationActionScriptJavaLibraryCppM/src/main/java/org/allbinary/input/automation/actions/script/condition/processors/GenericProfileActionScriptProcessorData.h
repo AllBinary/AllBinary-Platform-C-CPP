@@ -45,11 +45,10 @@
 class GenericProfileActionScriptProcessorData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_PROCESSOR_NAME";
+    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_PROCESSOR_NAME";
 
-private constructor ();
+private: GenericProfileActionScriptProcessorData();
 
 };
 

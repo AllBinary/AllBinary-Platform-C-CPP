@@ -53,10 +53,9 @@
         #include "BasicArrayList.h"
 
 class BasicArrayListS: public BasicArrayList {
-        
 
-public constructor (int32_t size){
-            super(NullUtil.getInstance()!.NULL_OBJECT_ARRAY);
+public: BasicArrayListS(int32_t size){
+            super(NullUtil::getInstance().NULL_OBJECT_ARRAY);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -68,12 +67,12 @@ public constructor (int32_t size){
                                     
 
 
-                            throw new IllegalArgumentException(new StringMaker().append("Init Size Exception: ")!.appendint(size)!.toString());
+                            throw IllegalArgumentException(StringMaker().append("Init Size Exception: ").appendint(size).toString());
                     
 
                                     }
                                 
-this.objectArray= new Array(size);
+this->objectArray= new Array(size);
     
 }
 

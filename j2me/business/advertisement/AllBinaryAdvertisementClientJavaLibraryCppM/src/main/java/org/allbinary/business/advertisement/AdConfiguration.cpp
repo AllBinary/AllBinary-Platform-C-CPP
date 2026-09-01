@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -60,53 +62,50 @@
 class AdConfiguration
             : public Object
          {
-        
 
-    public const INNERACTIVE: string;
+    public: std::string INNERACTIVE;
 
-    public const LEADBOLT: string;
+    public: std::string LEADBOLT;
 
-    public const ADMOB: string;
+    public: std::string ADMOB;
 
-public constructor (std::vector<any> advertIdArray){
-
-            super();
-        this.INNERACTIVE= advertIdArray[0]! as string;
+public: AdConfiguration(std::vector<Object*> advertIdArray){
+this->INNERACTIVE= advertIdArray[0]! as string;
     
-this.ADMOB= advertIdArray[1]! as string;
+this->ADMOB= advertIdArray[1]! as string;
     
-this.LEADBOLT= advertIdArray[2]! as string;
+this->LEADBOLT= advertIdArray[2]! as string;
     
 }
 
 
-    public std::vector<Direction> getValidAdSpots(){
+    public: std::vector<Direction> getValidAdSpots(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 
 
-    public process(GameState gameState){
+    public: void process(GameState gameState){
 }
 
 
-    public processDemo(int32_t state){
+    public: void processDemo(int32_t state){
 }
 
 
-    public setShowAds(){
+    public: void setShowAds(){
 }
 
 
-    public setToggleAds(bool showAds){
+    public: void setToggleAds(bool showAds){
 }
 
 
-    public bool isShowAds(){
+    public: bool isShowAds(){
 
 
 

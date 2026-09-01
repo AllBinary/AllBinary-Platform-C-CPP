@@ -94,48 +94,47 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TransformInfoEntityInterface.h"
 
-class TransformInfoEntity: public AbSqlBean: public TransformInfoEntityInterface {
-        
+class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "transforminfo";
+    protected: const std::string tableName = "transforminfo";
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: const transformInfoFactoryInterface: TransformInfoFactoryInterface;
+    private: TransformInfoFactoryInterface transformInfoFactoryInterface;
 
-    private: const transformInfoObjectConfigAndManipulatorFactoryInterface: TransformInfoObjectConfigAndManipulatorFactoryBase;
+    private: TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface;
 
-    private: const transformInfoObjectConfigGeneratorFactoryInterface: TransformInfoObjectConfigGeneratorFactoryInterface;
+    private: TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface;
 
-public constructor (TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface){
-            super(new UserDbInitInfo());
+public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
-this.transformInfoObjectConfigGeneratorFactoryInterface= transformInfoObjectConfigGeneratorFactoryInterface;
+this->transformInfoObjectConfigGeneratorFactoryInterface= transformInfoObjectConfigGeneratorFactoryInterface;
     
-this.transformInfoObjectConfigAndManipulatorFactoryInterface= transformInfoObjectConfigAndManipulatorFactoryInterface;
+this->transformInfoObjectConfigAndManipulatorFactoryInterface= transformInfoObjectConfigAndManipulatorFactoryInterface;
     
-this.transformInfoFactoryInterface= transformInfoFactoryInterface;
+this->transformInfoFactoryInterface= transformInfoFactoryInterface;
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -145,10 +144,10 @@ this.transformInfoFactoryInterface= transformInfoFactoryInterface;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -158,16 +157,16 @@ this.transformInfoFactoryInterface= transformInfoFactoryInterface;
 }
 
 
-    public delete(string value){
+    public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(TransformInfoData.getInstance()!.NAME, value);
+            super.deleteWhere(TransformInfoData::getInstance().NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, this.commonStrings!.delete);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
@@ -177,10 +176,10 @@ this.transformInfoFactoryInterface= transformInfoFactoryInterface;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }
@@ -192,54 +191,54 @@ this.transformInfoFactoryInterface= transformInfoFactoryInterface;
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface get(string name, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: TransformInfoInterface get(std::string name, HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
-    transformInfoData: TransformInfoData = TransformInfoData.getInstance()!;;
+    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(transformInfoData!.NAME, name);
+keysAndValues.put(transformInfoData.NAME, name);
     
 
-    hashMap: HashMap<any, any> = super.getRow(keysAndValues)!;;
+    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
     
 
                         if(hashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    anyType: any = hashMap!.get(transformInfoData!.OBJECTCONFIG)!;;
+    Object* anyType = hashMap.get(transformInfoData.OBJECTCONFIG);;
     
 
                         if(anyType != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    string: string = anyType as string;;
+    std::string string = anyType as string;;
     
-hashMap!.put(transformInfoData!.OBJECTCONFIG, decode.toCharArray());
+hashMap.put(transformInfoData.OBJECTCONFIG, decode.toCharArray());
     
 
                                     }
                                 
 
-    objectData: any = hashMap!.get(transformInfoData!.DATA)!;;
+    Object* objectData = hashMap.get(transformInfoData.DATA);;
     
 
                         if(objectData != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    string: string = objectData as string;;
+    std::string string = objectData as string;;
     
-hashMap!.put(transformInfoData!.DATA, decode.toCharArray());
+hashMap.put(transformInfoData.DATA, decode.toCharArray());
     
 
                                     }
@@ -248,7 +247,7 @@ hashMap!.put(transformInfoData!.DATA, decode.toCharArray());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformInfoFactoryInterface!.getInstance(hashMap, propertiesHashMap, pageContext);;
+                        return this->transformInfoFactoryInterface.getInstance(hashMap, propertiesHashMap, pageContext);;
     
 
                                     }
@@ -268,29 +267,29 @@ hashMap!.put(transformInfoData!.DATA, decode.toCharArray());
 
                 //@Throws(Exception.constructor)
             
-    public Vector getObjectConfigs(string storeName){
+    public: Vector getObjectConfigs(std::string storeName){
 
-    objectConfigVector: Vector = new Vector();;
+    Vector objectConfigVector = Vector();;
     
 
-    objectConfigColumnVector: Vector = this.getColumnWhere(TransformInfoData.getInstance()!.OBJECTCONFIG, StoreFrontData.getInstance()!.NAME, storeName)!;;
+    Vector objectConfigColumnVector = this->getColumnWhere(TransformInfoData::getInstance().OBJECTCONFIG, StoreFrontData::getInstance().NAME, storeName);;
     
 
-    size: int32_t = objectConfigColumnVector!.length!;;
+    int32_t size = objectConfigColumnVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    objectConfigString: string = objectConfigColumnVector!.get(i) as string;;
+    std::string objectConfigString = objectConfigColumnVector.get(i) as string;;
     
 objectConfigString= decode.toCharArray();
     
-objectConfigVector!.add(this.transformInfoObjectConfigAndManipulatorFactoryInterface!.getInstance(this.abeClientInformation, this as TransformInfoInterface, DomDocumentHelper.create(objectConfigString)));
+objectConfigVector.add(this->transformInfoObjectConfigAndManipulatorFactoryInterface.getInstance(this->abeClientInformation, this as TransformInfoInterface, DomDocumentHelper::create(objectConfigString)));
     
 }
 
@@ -305,27 +304,27 @@ objectConfigVector!.add(this.transformInfoObjectConfigAndManipulatorFactoryInter
 
                 //@Throws(Exception.constructor)
             
-    public Vector getNames(string storeName){
+    public: Vector getNames(std::string storeName){
 
-    viewNameVector: Vector = new Vector();;
+    Vector viewNameVector = Vector();;
     
 
-    columnVector: Vector = this.getColumnWhere(TransformInfoData.getInstance()!.NAME, StoreFrontData.getInstance()!.NAME, storeName)!;;
+    Vector columnVector = this->getColumnWhere(TransformInfoData::getInstance().NAME, StoreFrontData::getInstance().NAME, storeName);;
     
 
-    size: int32_t = columnVector!.length!;;
+    int32_t size = columnVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    viewNameString: string = columnVector!.get(i) as string;;
+    std::string viewNameString = columnVector.get(i) as string;;
     
-viewNameVector!.add(viewNameString);
+viewNameVector.add(viewNameString);
     
 }
 
@@ -338,97 +337,97 @@ viewNameVector!.add(viewNameString);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    transformInfoData: TransformInfoData = TransformInfoData.getInstance()!;;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE);
-    
-stringBuffer!.append(this.tableName);
-    
-stringBuffer!.append(this.sqlStrings!.START);
-    
-stringBuffer!.append(transformInfoData!.NAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(StoreFrontData.getInstance()!.NAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.OBJECTFILENAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.OBJECT);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.OBJECTCONFIGFILENAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.OBJECTCONFIG);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.TEMPLATEFILENAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.TEMPLATE);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.DATAFILENAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(transformInfoData!.DATA);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(EntryData.getInstance()!.LASTMODIFIED);
-    
-stringBuffer!.append(EntryData.getInstance()!.TIMECREATED);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
-    
-stringBuffer!.append(this.sqlStrings!.PRIMARY_KEY);
-    
-stringBuffer!.append(transformInfoData!.NAME);
-    
-stringBuffer!.append(this.sqlStrings!.END);
+    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+    StringMaker stringBuffer = StringMaker();;
     
-}
-
-
-    public string createTable(){
+stringBuffer.append(this->sqlStrings.CREATE_TABLE);
+    
+stringBuffer.append(this->tableName);
+    
+stringBuffer.append(this->sqlStrings.START);
+    
+stringBuffer.append(transformInfoData.NAME);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(StoreFrontData::getInstance().NAME);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.OBJECTFILENAME);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.OBJECT);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.OBJECTCONFIGFILENAME);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.OBJECTCONFIG);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.TEMPLATEFILENAME);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.TEMPLATE);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.DATAFILENAME);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(transformInfoData.DATA);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(EntryData::getInstance().LASTMODIFIED);
+    
+stringBuffer.append(EntryData::getInstance().TIMECREATED);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+    
+stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
+    
+stringBuffer.append(transformInfoData.NAME);
+    
+stringBuffer.append(this->sqlStrings.END);
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public update(HashMap<any, any> updatedValues){
-super.updateWhere(TransformInfoData.getInstance()!.NAME, updatedValues!.get(TransformInfoData.getInstance()!.NAME) as string, updatedValues);
+    public: std::string createTable(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.createTable(this->createTableStatement());;
     
 }
 
 
-    public string dropTable(){
+    public: void update(HashMap<any, any> updatedValues){
+super.updateWhere(TransformInfoData::getInstance().NAME, updatedValues.get(TransformInfoData::getInstance().NAME) as string, updatedValues);
+    
+}
+
+
+    public: std::string dropTable(){
 
 
 

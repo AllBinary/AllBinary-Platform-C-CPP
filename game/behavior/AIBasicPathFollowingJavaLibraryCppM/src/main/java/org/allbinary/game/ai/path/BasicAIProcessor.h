@@ -75,47 +75,46 @@
 class BasicAIProcessor
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: geographicMapCellHistory: GeographicMapCellHistory;
+    private: GeographicMapCellHistory geographicMapCellHistory;
 
-    private: geographicMapCellPositionBasicArrayList: BasicArrayList;
+    private: BasicArrayList geographicMapCellPositionBasicArrayList;
 
-    private: geographicMapCellPathHistoryInfo: GeographicMapCellPathHistoryInfo;
+    private: GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo;
 
-    private: basicAI: BasicDirectionAIHelper;
+    private: BasicDirectionAIHelper basicAI;
 
-public constructor (string name, GeographicMapCellHistory geographicMapCellHistory, GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo, BasicArrayList chosenPathList, AngleInfo angleInfo, int32_t seed);
+public: BasicAIProcessor(std::string name, GeographicMapCellHistory geographicMapCellHistory, GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo, BasicArrayList chosenPathList, AngleInfo angleInfo, int32_t seed);
 
-    setNewPath(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList chosenPathList);
+    private: void setNewPath(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList chosenPathList);
 
-    public init();
+    public: void init();
 
-    private: const geographicMapDirectionUtil: GeographicMapDirectionUtil = GeographicMapDirectionUtil.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    int32_t goTowardNextChosenOnPathPosition(GeographicMapCellPosition currentGeographicMapCellPosition);
-
-    update();
+    private: const GeographicMapDirectionUtil geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processAI(AllBinaryLayerManager myManager, GeographicMapCellPosition currentGeographicMapCellPosition);
+    private: int32_t goTowardNextChosenOnPathPosition(GeographicMapCellPosition currentGeographicMapCellPosition);
 
-    public string getName();
+    private: void update();
 
-    public setName(string name);
+                //@Throws(Exception.constructor)
+            
+    public: int32_t processAI(AllBinaryLayerManager myManager, GeographicMapCellPosition currentGeographicMapCellPosition);
 
-    public GeographicMapCellPathHistoryInfo getGeographicMapCellPathHistoryInfo();
+    public: std::string getName();
 
-    public setGeographicMapCellPathHistoryInfo(GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo);
+    public: void setName(std::string name);
 
-    public GeographicMapCellHistory getGeographicMapCellHistory();
+    public: GeographicMapCellPathHistoryInfo getGeographicMapCellPathHistoryInfo();
 
-    public setGeographicMapCellHistory(GeographicMapCellHistory geographicMapCellHistory);
+    public: void setGeographicMapCellPathHistoryInfo(GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo);
+
+    public: GeographicMapCellHistory getGeographicMapCellHistory();
+
+    public: void setGeographicMapCellHistory(GeographicMapCellHistory geographicMapCellHistory);
 
 };
 

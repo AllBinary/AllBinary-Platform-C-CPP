@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -114,100 +116,99 @@
 class FileUtil
             : public Object
          {
-        
 
-    private: static const instance: FileUtil = new FileUtil();
+    private: static FileUtil instance() { return FileUtil(); }
 
-    public static FileUtil getInstance();
+    public: static FileUtil getInstance();
 
-    static string getNewDirectory(AbFile fromFile);
+    private: static std::string getNewDirectory(AbFile fromFile);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    private: const logConfigTypeFactory: LogConfigTypeFactory = LogConfigTypeFactory.getInstance()!;
+    private: const LogConfigTypeFactory logConfigTypeFactory = LogConfigTypeFactory::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const streamUtil: StreamUtil = StreamUtil.getInstance()!;
+    private: const StreamUtil streamUtil = StreamUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public write(InputStream inputStream, AbFile file);
+private: FileUtil();
 
                 //@Throws(Exception.constructor)
             
-    public write(InputStream inputStream, AbDataOutputStream dataOutputStream);
+    public: void write(InputStream inputStream, AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public write(InputStream inputStream, AbDataOutputStream dataOutputStream, std::vector<int8_t> buffer);
+    public: void write(InputStream inputStream, AbDataOutputStream dataOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    copy(AbFileInputStream dataInputStream, AbDataOutputStream dataOutputStream);
+    public: void write(InputStream inputStream, AbDataOutputStream dataOutputStream, std::vector<int8_t> buffer);
 
                 //@Throws(Exception.constructor)
             
-    AbPath fixPath(AbFile file, AbPath path, AbPath realPath, string cloud);
+    private: void copy(AbFileInputStream dataInputStream, AbDataOutputStream dataOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    public copyToCloud(AbFile file, AbPath path, AbPath realPath, string cloud);
+    private: AbPath fixPath(AbFile file, AbPath path, AbPath realPath, std::string cloud);
 
                 //@Throws(Exception.constructor)
             
-    public copyToCloud(AbFile file, AbPath path, AbPath realPath, string cloud, bool overwriteNewer, bool overwriteAll);
+    public: void copyToCloud(AbFile file, AbPath path, AbPath realPath, std::string cloud);
 
                 //@Throws(Exception.constructor)
             
-    public copyToCloud(AbFile file, AbFile outFile);
+    public: void copyToCloud(AbFile file, AbPath path, AbPath realPath, std::string cloud, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    public copyToCloud(AbFile file, AbFile outFile, bool overwriteNewer, bool overwriteAll);
+    public: void copyToCloud(AbFile file, AbFile outFile);
 
                 //@Throws(Exception.constructor)
             
-    bool copyPrepare(AbFile fromFile, AbFile toFile, bool overwriteNewer, bool overwriteAll);
+    public: void copyToCloud(AbFile file, AbFile outFile, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    copyFile(AbFile fromFile, AbFile toFile);
+    private: bool copyPrepare(AbFile fromFile, AbFile toFile, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    copyFile(AbFile fromFile, AbFile toFile, bool overwriteNewer, bool overwriteAll);
+    private: void copyFile(AbFile fromFile, AbFile toFile);
 
                 //@Throws(Exception.constructor)
             
-    public copyDirectoryPortion(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total);
+    private: void copyFile(AbFile fromFile, AbFile toFile, bool overwriteNewer, bool overwriteAll);
 
                 //@Throws(Exception.constructor)
             
-    copyDirectory(AbFile fromFile, AbFile to);
+    public: void copyDirectoryPortion(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total);
+
+                //@Throws(Exception.constructor)
+            
+    private: void copyDirectory(AbFile fromFile, AbFile to);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool copy(AbPath fromAbPath, AbPath to);
+    public: bool copy(AbPath fromAbPath, AbPath to);
 
-    public bool shouldSkip(AbFile file, std::vector<string> skipFiles);
+    public: bool shouldSkip(AbFile file, std::vector<std::string> skipFiles);
 
-    private: const WRITE_LABEL: string = "Write file: ";
+    private: const std::string WRITE_LABEL = "Write file: ";
 
-    private: const DATA_LABEL: string = " data: ";
+    private: const std::string DATA_LABEL = " data: ";
 
-    private: const WRITE_METHOD: string = "write";
+    private: const std::string WRITE_METHOD = "write";
 
                 //@Throws(Exception.constructor)
             
-    public write(string filePath, string string);
+    public: void write(std::string filePath, std::string string);
 
-    public BasicArrayList loadFileAsList(AbFile file, int32_t max, std::vector<int8_t> byteArray1);
+    public: BasicArrayList loadFileAsList(AbFile file, int32_t max, std::vector<int8_t> byteArray1);
 
 };
 

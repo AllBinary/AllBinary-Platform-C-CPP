@@ -56,30 +56,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ActivityFractureUtilAPI30: public ActivityFractureUtilAPI5 {
-        
 
-    private: static const instance30: ActivityFractureUtilAPI30 = new ActivityFractureUtilAPI30();
+    private: static const ActivityFractureUtilAPI30 instance30 = ActivityFractureUtilAPI30();
 
-    public static ActivityFractureUtilAPI30 getInstance(){
+    public: static ActivityFractureUtilAPI30 getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI30.instance30;
+                        return ActivityFractureUtilAPI30::instance30;
     
 }
 
 
-    public setFullScreen(Activity activity){
+    public: void setFullScreen(Activity activity){
 
-    window: Window = activity.getWindow()!;;
+    Window window = activity.getWindow();;
     
 
-    windowInsetsController: WindowInsetsControllerCompat = WindowCompat.getInsetsController(window, window.getDecorView())!;;
+    WindowInsetsControllerCompat windowInsetsController = WindowCompat::getInsetsController(window, window.getDecorView());;
     
-windowInsetsController!.hide(WindowInsetsCompat.Type.systemBars());
+windowInsetsController.hide(WindowInsetsCompat::Type.systemBars());
     
-windowInsetsController!.setSystemBarsBehavior(WindowInsetsControllerCompat.BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
+windowInsetsController.setSystemBarsBehavior(WindowInsetsControllerCompat::BEHAVIOR_SHOW_TRANSIENT_BARS_BY_SWIPE);
     
 }
 

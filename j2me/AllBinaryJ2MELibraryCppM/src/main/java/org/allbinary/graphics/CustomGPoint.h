@@ -42,33 +42,32 @@
         #include "GPoint.h"
 
 class CustomGPoint: public GPoint {
-        
 
-    public static const NULL_CUSTOM_POINT: CustomGPoint = new CustomGPoint(0, 0, 0);
+    public: static const CustomGPoint NULL_CUSTOM_POINT = CustomGPoint(0, 0, 0);
 
-    public static CustomGPoint getInstance(GPoint point);
+    public: static CustomGPoint getInstance(GPoint point);
 
-    public static CustomGPoint getInstance3(int32_t x, int32_t y);
+    public: static CustomGPoint getInstance3(int32_t x, int32_t y);
 
-    private: cx: int32_t= 0;
+    private: int32_t cx= 0;
 
-    private: cy: int32_t= 0;
+    private: int32_t cy= 0;
 
-    private: cz: int32_t= 0;
+    private: int32_t cz= 0;
 
-public constructor (int32_t x, int32_t y, int32_t z);
+public: CustomGPoint(int32_t x, int32_t y, int32_t z);
 
-    public setX(int32_t x);
+    public: void setX(int32_t x);
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public setY(int32_t y);
+    public: void setY(int32_t y);
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public setZ(int32_t z);
+    public: void setZ(int32_t z);
 
-    public int32_t getZ();
+    public: int32_t getZ();
 
 };
 

@@ -56,19 +56,18 @@
 class NullPlayerGameInputComposite
             : public Object
         : public PlayerGameInputCompositeInterface {
-        
 
-    public static const NULL_PLAYER_GAME_INPUT_COMPOSITE: NullPlayerGameInputComposite = new NullPlayerGameInputComposite();
+    public: static const NullPlayerGameInputComposite NULL_PLAYER_GAME_INPUT_COMPOSITE = NullPlayerGameInputComposite();
 
-    public string getName();
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager layerManager);
 
-    public initInputProcessors();
+    public: void initInputProcessors();
 
-    public PlayerGameInput getPlayerGameInput();
+    public: PlayerGameInput getPlayerGameInput();
 
 };
 

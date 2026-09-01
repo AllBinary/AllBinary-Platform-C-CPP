@@ -41,11 +41,10 @@
         #include "GameState.h"
 
 class GameStateCompositeInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    setGameState(GameState gameState)
+    void setGameState(GameState gameState)
 
     GameState getGameState()
 

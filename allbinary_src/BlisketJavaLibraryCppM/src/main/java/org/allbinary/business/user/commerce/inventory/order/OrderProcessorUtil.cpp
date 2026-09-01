@@ -54,42 +54,41 @@
 class OrderProcessorUtil
             : public Object
          {
-        
 
-    private: static const instance: OrderProcessorUtil = new OrderProcessorUtil();
+    private: static OrderProcessorUtil instance() { return OrderProcessorUtil(); }
 
-    public static OrderProcessorUtil getInstance(){
+    public: static OrderProcessorUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrderProcessorUtil.instance;
+                        return OrderProcessorUtil::instance();
     
 }
 
 
-    private: const ORDER_PROCESSED: string = "Order Processed";
+    private: const std::string ORDER_PROCESSED = "Order Processed";
 
                 //@Throws(Exception.constructor)
             
-    public string process(string userName, Order order){
+    public: std::string process(std::string userName, Order order){
 
-    orderItems: OrderItemsEntity = new OrderItemsEntity();;
+    OrderItemsEntity orderItems = OrderItemsEntity();;
     
 
-    orderHistory: OrderHistoryEntity = new OrderHistoryEntity();;
+    OrderHistoryEntity orderHistory = OrderHistoryEntity();;
     
-order.setId(new OrderIdGenerator().getNext());
+order.setId(OrderIdGenerator().getNext());
     
-orderItems!.insert(userName, order);
+orderItems.insert(userName, order);
     
-orderHistory!.insert(userName, order);
+orderHistory.insert(userName, order);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ORDER_PROCESSED;
+                        return this->ORDER_PROCESSED;
     
 }
 

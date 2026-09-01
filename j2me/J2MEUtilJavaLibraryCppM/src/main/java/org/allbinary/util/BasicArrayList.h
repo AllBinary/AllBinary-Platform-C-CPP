@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_UTIL_BASICARRAYLIST_H
         #define ORG_ALLBINARY_UTIL_BASICARRAYLIST_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/IndexOutOfBoundsException.h"
@@ -58,61 +60,60 @@
 class BasicArrayList
             : public Object
          {
-        
 
-    private: static const SIZE: string = ", Size: ";
+    private: static const std::string SIZE = ", Size: ";
 
-    private: const arrayUtil: ArrayUtil = ArrayUtil.getInstance()!;
+    private: const ArrayUtil arrayUtil = ArrayUtil::getInstance();
 
-    public objectArray: std::vector<any>;
+    public: std::vector<Object*> objectArray;
 
-    private: currentIndex: int32_t = 0;
+    private: int32_t currentIndex = 0;
 
-public constructor (std::vector<any> objectArray);
+public: BasicArrayList(std::vector<Object*> objectArray);
 
-    public addAt(int32_t index, any = {} element);
+    public: void addAt(int32_t index, Object* element);
 
-    public bool add(any = {} anyType);
+    public: bool add(Object* anyType);
 
-    public any removeAt(int32_t index);
+    public: Object* removeAt(int32_t index);
 
-    public bool remove(any = {} anyType);
+    public: bool remove(Object* anyType);
 
-    public bool removeAll2(BasicArrayList list);
+    public: bool removeAll2(BasicArrayList list);
 
-    public bool addAll2(BasicArrayList list);
+    public: bool addAll2(BasicArrayList list);
 
-    public bool addAllList(BasicArrayList list);
+    public: bool addAllList(BasicArrayList list);
 
-    public bool addAll(std::vector<any> newObjectArray);
+    public: bool addAll(std::vector<Object*> newObjectArray);
 
-    public ensureCapacity(int32_t minSize);
+    public: void ensureCapacity(int32_t minSize);
 
-    public trimToSize();
+    public: void trimToSize();
 
-    public int32_t indexOf(any = {} anyType);
+    public: int32_t indexOf(Object* anyType);
 
-    public int32_t lastIndexOf(any = {} anyType);
+    public: int32_t lastIndexOf(Object* anyType);
 
-    public any get(int32_t index);
+    public: Object* get(int32_t index);
 
-    public any set(int32_t index, any = {} element);
+    public: Object* set(int32_t index, Object* element);
 
-    public clear();
+    public: void clear();
 
-    public int32_t size();
+    public: int32_t size();
 
-    public bool isEmpty();
+    public: bool isEmpty();
 
-    public bool contains(any = {} anyType);
+    public: bool contains(Object* anyType);
 
-    public std::vector<any> toArray();
+    public: std::vector<Object*> toArray();
 
-    public std::vector<any> toArrayType(std::vector<any> objectArray);
+    public: std::vector<Object*> toArrayType(std::vector<Object*> objectArray);
 
-    public any clone();
+    public: Object* clone();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

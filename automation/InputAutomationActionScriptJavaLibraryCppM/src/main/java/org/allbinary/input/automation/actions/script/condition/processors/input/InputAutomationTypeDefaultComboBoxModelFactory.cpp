@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Exception.h"
@@ -54,32 +56,30 @@
 class InputAutomationTypeDefaultComboBoxModelFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static DefaultComboBoxModel getInstance(){
+    public: static DefaultComboBoxModel getInstance(){
 
-    defaultComboBoxModel: DefaultComboBoxModel = new DefaultComboBoxModel();;
+    DefaultComboBoxModel defaultComboBoxModel = DefaultComboBoxModel();;
     
 
-    set: Set = InputRobotFactory.getInstance()!.get()!.keySet()!;;
+    Set set = InputRobotFactory::getInstance().get().keySet();;
     
 
-    nameArray: std::vector<any> = set.toArray()!;;
+    std::vector<Object*> nameArray = set.toArray();;
     
 
-    size: int32_t = nameArray!.length
-                ;;
+    int32_t size = nameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-defaultComboBoxModel!.addElement(nameArray[index]! as string);
+defaultComboBoxModel.addElement(nameArray[index]! as string);
     
 }
 
@@ -92,10 +92,8 @@ defaultComboBoxModel!.addElement(nameArray[index]! as string);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InputAutomationTypeDefaultComboBoxModelFactory(){
+}
 
 
 };

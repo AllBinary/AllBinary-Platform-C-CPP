@@ -43,13 +43,12 @@
 #include "Sound.h"
 //Use 8hz16bitmono for most J2ME
 class FireworksSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new FireworksSound();
+    private: static Sound soundInterface = FireworksSound();
 
-    public static Sound getInstance();
+    public: static Sound getInstance();
 
-private constructor ();
+private: FireworksSound();
 
 };
 

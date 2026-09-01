@@ -53,11 +53,10 @@
         #include "InputMappingEvent.h"
 
 class InputMappingEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onInputMappingEvent(InputMappingEvent inputMappingEvent);
+    void onInputMappingEvent(InputMappingEvent inputMappingEvent);
 
 };
 

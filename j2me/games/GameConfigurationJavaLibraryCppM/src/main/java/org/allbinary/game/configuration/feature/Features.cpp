@@ -98,16 +98,15 @@
 class Features
             : public Object
          {
-        
 
-    private: static SINGLETON: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
 
-    public static Features getInstance(){
+    public: static Features getInstance(){
 
-                        if(Features.SINGLETON == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(Features::SINGLETON == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    Features.SINGLETON= new Features();
+                                    Features::SINGLETON= Features();
     
 
                                     }
@@ -116,41 +115,39 @@ class Features
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Features.SINGLETON as Features;
+                        return Features::SINGLETON as Features;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: const defaultList: BasicArrayList;
+    private: BasicArrayList defaultList;
 
-private constructor (){
-
-            super();
-        this.list= new BasicArrayListD();
+private: Features(){
+this->list= BasicArrayListD();
     
-this.defaultList= new BasicArrayListD();
+this->defaultList= BasicArrayListD();
     
-this.init();
+this->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addDefault(Feature gameFeature){
-this.add(gameFeature);
+    public: void addDefault(Feature gameFeature){
+this->add(gameFeature);
     
 
-                        if(!this.defaultList!.contains(gameFeature))
+                        if(!this->defaultList.contains(gameFeature))
                         
                                     {
-                                    this.defaultList!.add(gameFeature);
+                                    this->defaultList.add(gameFeature);
     
 
                                     }
@@ -160,16 +157,16 @@ this.add(gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public add(Feature gameFeature){
+    public: void add(Feature gameFeature){
 
-                        if(!this.list.contains(gameFeature))
+                        if(!this->list.contains(gameFeature))
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append(gameFeature!.toString())!.toString(), this, this.commonStrings!.ADD);
+                                    this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(gameFeature.toString()).toString(), this, this->commonStrings.ADD);
     
-this.list.add(gameFeature);
+this->list.add(gameFeature);
     
-GameFeatureEventHandler.getInstance()!.fireEvent(new GameFeatureEvent(gameFeature, gameFeature!.toString()));
+GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(gameFeature, gameFeature.toString()));
     
 
                                     }
@@ -179,28 +176,28 @@ GameFeatureEventHandler.getInstance()!.fireEvent(new GameFeatureEvent(gameFeatur
 
                 //@Throws(Exception.constructor)
             
-    public removeDefault(Feature gameFeature){
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append(gameFeature!.toString())!.toString(), this, "removeDefault");
+    public: void removeDefault(Feature gameFeature){
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(gameFeature.toString()).toString(), this, "removeDefault");
     
-this.remove(gameFeature);
+this->remove(gameFeature);
     
-this.defaultList!.remove(gameFeature);
+this->defaultList.remove(gameFeature);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public remove(Feature gameFeature){
+    public: void remove(Feature gameFeature){
 
-                        if(this.list.contains(gameFeature))
+                        if(this->list.contains(gameFeature))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.REMOVE);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.REMOVE);
     
-this.list.remove(gameFeature);
+this->list.remove(gameFeature);
     
-GameFeatureEventHandler.getInstance()!.fireEvent(new GameFeatureEvent(gameFeature, gameFeature!.toString()));
+GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(gameFeature, gameFeature.toString()));
     
 
                                     }
@@ -208,110 +205,110 @@ GameFeatureEventHandler.getInstance()!.fireEvent(new GameFeatureEvent(gameFeatur
 }
 
 
-    init(){
+    private: void init(){
 
         try {
             
-    gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;;
+    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
     
 
-    inputFeatureFactory: InputFeatureFactory = InputFeatureFactory.getInstance()!;;
+    InputFeatureFactory inputFeatureFactory = InputFeatureFactory::getInstance();;
     
 
-    sensorFeatureFactory: SensorFeatureFactory = SensorFeatureFactory.getInstance()!;;
+    SensorFeatureFactory sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
 
-    touchFeatureFactory: TouchFeatureFactory = TouchFeatureFactory.getInstance()!;;
+    TouchFeatureFactory touchFeatureFactory = TouchFeatureFactory::getInstance();;
     
-this.addDefault(gameFeatureFactory!.ARTIFICIAL_INTELLEGENCE_PROCESSOR);
+this->addDefault(gameFeatureFactory.ARTIFICIAL_INTELLEGENCE_PROCESSOR);
     
-this.addDefault(gameFeatureFactory!.COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
+this->addDefault(gameFeatureFactory.COLLIDABLE_INTERFACE_LAYER_PROCESSOR);
     
-this.addDefault(gameFeatureFactory!.GAME_INPUT_LAYER_PROCESSOR);
+this->addDefault(gameFeatureFactory.GAME_INPUT_LAYER_PROCESSOR);
     
-this.addDefault(gameFeatureFactory!.TICKABLE_LAYER_PROCESSOR);
+this->addDefault(gameFeatureFactory.TICKABLE_LAYER_PROCESSOR);
     
-this.addDefault(inputFeatureFactory!.MULTI_KEY_PRESS);
+this->addDefault(inputFeatureFactory.MULTI_KEY_PRESS);
     
-this.addDefault(inputFeatureFactory!.REMOVE_DUPLICATE_KEY_PRESSES);
+this->addDefault(inputFeatureFactory.REMOVE_DUPLICATE_KEY_PRESSES);
     
-this.addDefault(gameFeatureFactory!.SCREEN_SHAKE);
+this->addDefault(gameFeatureFactory.SCREEN_SHAKE);
     
-this.addDefault(gameFeatureFactory!.POST_IMAGE_LOADING_MODIFICATION);
-    
-
-    operatingSystemInterface: GenericOperatingSystem = OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!;;
+this->addDefault(gameFeatureFactory.POST_IMAGE_LOADING_MODIFICATION);
     
 
-                        if(operatingSystemInterface!.isOverScan())
+    GenericOperatingSystem operatingSystemInterface = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
+    
+
+                        if(operatingSystemInterface.isOverScan())
                         
                                     {
-                                    this.addDefault(sensorFeatureFactory!.NO_ORIENTATION);
+                                    this->addDefault(sensorFeatureFactory.NO_ORIENTATION);
     
-this.addDefault(touchFeatureFactory!.HIDE_SCREEN_BUTTONS);
+this->addDefault(touchFeatureFactory.HIDE_SCREEN_BUTTONS);
     
 
                                     }
                                 
                         else {
-                            this.addDefault(sensorFeatureFactory!.ORIENTATION_SENSORS);
+                            this->addDefault(sensorFeatureFactory.ORIENTATION_SENSORS);
     
-this.addDefault(touchFeatureFactory!.AUTO_HIDE_SHOW_SCREEN_BUTTONS);
+this->addDefault(touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS);
     
 
                         }
                             
-this.addDefault(touchFeatureFactory!.TOUCH_ENABLED);
+this->addDefault(touchFeatureFactory.TOUCH_ENABLED);
     
-this.addDefault(MainFeatureFactory.getInstance()!.FULL_SCREEN);
+this->addDefault(MainFeatureFactory::getInstance().FULL_SCREEN);
     
-this.addDefault(MainFeatureFactory.getInstance()!.LOAD_ONDEMAND);
+this->addDefault(MainFeatureFactory::getInstance().LOAD_ONDEMAND);
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+PreLogUtil::putOE(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 }
 
 }
 
 
-    public bool isDefault(Feature gameFeature){
+    public: bool isDefault(Feature gameFeature){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultList!.contains(gameFeature);;
+                        return this->defaultList.contains(gameFeature);;
     
 }
 
 
-    public bool isFeature(Feature gameFeature){
+    public: bool isFeature(Feature gameFeature){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.contains(gameFeature);;
+                        return this->list.contains(gameFeature);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public toggle(Feature gameFeature){
+    public: void toggle(Feature gameFeature){
 
-                        if(this.isFeature(gameFeature))
+                        if(this->isFeature(gameFeature))
                         
                                     {
-                                    this.remove(gameFeature);
+                                    this->remove(gameFeature);
     
 
                                     }
                                 
                         else {
-                            this.add(gameFeature);
+                            this->add(gameFeature);
     
 
                         }

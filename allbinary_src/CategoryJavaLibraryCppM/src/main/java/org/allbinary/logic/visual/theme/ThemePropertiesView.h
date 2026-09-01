@@ -61,15 +61,14 @@
 class ThemePropertiesView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: themeInterface: ThemeInterface;
+    private: ThemeInterface themeInterface;
 
-public constructor (ThemeInterface themeInterface);
+public: ThemePropertiesView(ThemeInterface themeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -53,26 +53,25 @@
         #include "StoreThemeCategoryPathView.h"
 #include "StoreThemeCategoryInterface.h"
 
-class StoreThemeCategoryPathValidationView: public StoreThemeCategoryPathView: public ValidationInterface {
-        
+class StoreThemeCategoryPathValidationView: public StoreThemeCategoryPathView, public ValidationInterface {
 
-public constructor (StoreThemeCategoryInterface categoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Boolean isValid();
+public: StoreThemeCategoryPathValidationView(StoreThemeCategoryInterface categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc();
+    public: Boolean isValid();
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string validationInfo();
 
 };
 

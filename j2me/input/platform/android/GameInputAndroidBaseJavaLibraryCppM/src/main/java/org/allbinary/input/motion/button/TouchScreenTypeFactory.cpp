@@ -56,49 +56,48 @@
 class TouchScreenTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: TouchScreenTypeFactory = new TouchScreenTypeFactory();
+    private: static TouchScreenTypeFactory instance() { return TouchScreenTypeFactory(); }
 
-    public static TouchScreenTypeFactory getInstance(){
+    public: static TouchScreenTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenTypeFactory.instance;
+                        return TouchScreenTypeFactory::instance();
     
 }
 
 
-    public update(Activity activity){
+    public: void update(Activity activity){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    touchScreenFactory: TouchScreenFactory = TouchScreenFactory.getInstance()!;;
+    TouchScreenFactory touchScreenFactory = TouchScreenFactory::getInstance();;
     
 
-    touchScreenTypesFactory: TouchScreenTypesFactory = TouchScreenTypesFactory.getInstance()!;;
+    TouchScreenTypesFactory touchScreenTypesFactory = TouchScreenTypesFactory::getInstance();;
     
 
-    configuration: Configuration = activity.getResources()!.getConfiguration()!;;
+    Configuration configuration = activity.getResources().getConfiguration();;
     
 
-    touchScreen: int32_t = configuration.touchscreen;;
+    int32_t touchScreen = configuration.touchscreen;;
     
 
-                        if(touchScreen == Configuration.TOUCHSCREEN_FINGER)
+                        if(touchScreen == Configuration::TOUCHSCREEN_FINGER)
                         
                                     {
-                                    touchScreenFactory!.setTouchScreenType(touchScreenTypesFactory!.FINGER);
+                                    touchScreenFactory.setTouchScreenType(touchScreenTypesFactory.FINGER);
     
 
-                        if(!touchScreenFactory!.isTouch())
+                        if(!touchScreenFactory.isTouch())
                         
                                     {
-                                    PreLogUtil.put("Not Really Exception: This indicates that a touch screen does exist but is not API8 so we will try it", this, commonStrings!.PROCESS);
+                                    PreLogUtil::put("Not Really Exception: This indicates that a touch screen does exist but is not API8 so we will try it", this, commonStrings.PROCESS);
     
-touchScreenFactory!.setTouch(true);
+touchScreenFactory.setTouch(true);
     
 
                                     }
@@ -107,39 +106,39 @@ touchScreenFactory!.setTouch(true);
                                     }
                                 
                              else 
-                        if(touchScreen == Configuration.TOUCHSCREEN_STYLUS)
+                        if(touchScreen == Configuration::TOUCHSCREEN_STYLUS)
                         
                                     {
-                                    touchScreenFactory!.setTouchScreenType(touchScreenTypesFactory!.STYLUS);
+                                    touchScreenFactory.setTouchScreenType(touchScreenTypesFactory.STYLUS);
     
 
-                        if(!touchScreenFactory!.isTouch())
+                        if(!touchScreenFactory.isTouch())
                         
                                     {
-                                    PreLogUtil.put("Not Really Exception: This indicates that a touch screen does exist but is not API8 so we will try it", this, commonStrings!.PROCESS);
+                                    PreLogUtil::put("Not Really Exception: This indicates that a touch screen does exist but is not API8 so we will try it", this, commonStrings.PROCESS);
     
-touchScreenFactory!.setTouch(true);
+touchScreenFactory.setTouch(true);
     
-
-                                    }
-                                
 
                                     }
                                 
-                             else 
-                        if(touchScreen == Configuration.TOUCHSCREEN_NOTOUCH)
-                        
-                                    {
-                                    touchScreenFactory!.setTouchScreenType(touchScreenTypesFactory!.NOTOUCH);
-    
 
                                     }
                                 
                              else 
-                        if(touchScreen == Configuration.TOUCHSCREEN_UNDEFINED)
+                        if(touchScreen == Configuration::TOUCHSCREEN_NOTOUCH)
                         
                                     {
-                                    touchScreenFactory!.setTouchScreenType(touchScreenTypesFactory!.UNDEFINED);
+                                    touchScreenFactory.setTouchScreenType(touchScreenTypesFactory.NOTOUCH);
+    
+
+                                    }
+                                
+                             else 
+                        if(touchScreen == Configuration::TOUCHSCREEN_UNDEFINED)
+                        
+                                    {
+                                    touchScreenFactory.setTouchScreenType(touchScreenTypesFactory.UNDEFINED);
     
 
                                     }

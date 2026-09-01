@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_INPUTROBOTFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -90,51 +92,50 @@
 class InputRobotFactory
             : public Object
          {
-        
 
-    private: static const inputRobotFactory: InputRobotFactory = new InputRobotFactory();
-
-                //@Throws(Exception.constructor)
-            
-    public static InputRobotFactory getInstance();
+    private: static const InputRobotFactory inputRobotFactory = InputRobotFactory();
 
                 //@Throws(Exception.constructor)
             
-    public static loadLibraries(Collection collection);
+    public: static InputRobotFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public static loadLibrary(InputRobotInterface inputRobotInterface);
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
-
-    private: helpSetListenerInterface: HelpSetListener;
-
-private constructor ();
-
-    public addListener(HelpSetListener helpSetListenerInterface);
+    public: static void loadLibraries(Collection collection);
 
                 //@Throws(Exception.constructor)
             
-    public add(InputRobotInterface inputRobotInterface);
+    public: static void loadLibrary(InputRobotInterface inputRobotInterface);
+
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
+
+    private: HelpSetListener helpSetListenerInterface;
+
+private: InputRobotFactory();
+
+    public: void addListener(HelpSetListener helpSetListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public loadLibraries();
+    public: void add(InputRobotInterface inputRobotInterface);
 
                 //@Throws(Exception.constructor)
             
-    public unloadLibraries();
+    public: void loadLibraries();
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> get();
+    public: void unloadLibraries();
 
-    public InputRobotInterface get(string name);
+                //@Throws(Exception.constructor)
+            
+    public: Hashtable<any, any> get();
+
+    public: InputRobotInterface get(std::string name);
 
 };
 

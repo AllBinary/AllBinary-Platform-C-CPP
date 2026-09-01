@@ -96,58 +96,57 @@
         #include "Processor.h"
 #include "RunnableCanvasRefreshHelper.h"
 
-class RunnableCanvas: public MyCanvas: public RunnableInterface {
-        
+class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
-    const nullUtil: NullUtil = NullUtil.getInstance()!;
+    protected: const NullUtil nullUtil = NullUtil::getInstance();
 
-    private: thread: Thread = NullThread.NULL_THREAD;
+    private: Thread thread = NullThread::NULL_THREAD;
 
-    private: currentThread: Thread = NullThread.NULL_THREAD;
+    private: Thread currentThread = NullThread::NULL_THREAD;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    const loopTimeHelper: TimeDelayHelper = new TimeDelayHelper(NullWaitGameRunnable.getInstance()!.WAIT);
+    protected: const TimeDelayHelper loopTimeHelper = TimeDelayHelper(NullWaitGameRunnable::getInstance().WAIT);
 
-    runnableCanvasRefreshHelper: Processor = Processor.getInstance()!;
+    protected: Processor runnableCanvasRefreshHelper = Processor::getInstance();
 
-    const commonLabels: CommonLabels = CommonLabels.getInstance()!;
+    protected: const CommonLabels commonLabels = CommonLabels::getInstance();
 
-    const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    const SET_RUNNING: string = "setRunning";
+    protected: const std::string SET_RUNNING = "setRunning";
 
-    private: const IS_RUNNING: string = "isRunning";
+    private: const std::string IS_RUNNING = "isRunning";
 
-    private: const THREAD: string = "Thread: ";
+    private: const std::string THREAD = "Thread: ";
 
-    private: const NOT_EQUAL: string = " != ";
+    private: const std::string NOT_EQUAL = " != ";
 
-    private: const PAUSE_SLEEP: string = "pause sleep";
+    private: const std::string PAUSE_SLEEP = "pause sleep";
 
-    private: const START_PAUSE: string = "start pause - game thread sleep at: ";
+    private: const std::string START_PAUSE = "start pause - game thread sleep at: ";
 
-    private: const END_PAUSE: string = "end pause - game thread sleep at: ";
+    private: const std::string END_PAUSE = "end pause - game thread sleep at: ";
 
-    private: const PROCESS_LOOP_SLEEP: string = "processLoopSleep";
+    private: const std::string PROCESS_LOOP_SLEEP = "processLoopSleep";
 
-public constructor (CommandListener commandListener, BasicArrayList childNameList, bool hasParam){
-            super(CommonStrings.getInstance()!.UNKNOWN, childNameList);
+public: RunnableCanvas(CommandListener commandListener, BasicArrayList childNameList, bool hasParam){
+            super(CommonStrings::getInstance().UNKNOWN, childNameList);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(new StringMaker().append("delay: ")!.appendint(this.loopTimeHelper!.delay)!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(StringMaker().append("delay: ").appendint(this->loopTimeHelper.delay).toString(), this, this->commonStrings.CONSTRUCTOR);
     
-this.runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
+this->runnableCanvasRefreshHelper= RunnableCanvasRefreshHelper(this);
     
 
                         if(commandListener != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.initCommands(commandListener);
+                                    this->initCommands(commandListener);
     
 
                                     }
@@ -156,7 +155,7 @@ this.runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
                         if(hasParam)
                         
                                     {
-                                    this.logUtil!.putF("commandListener was null", this, "initCommands");
+                                    this->logUtil.putF("commandListener was null", this, "initCommands");
     
 
                                     }
@@ -164,16 +163,16 @@ this.runnableCanvasRefreshHelper= new RunnableCanvasRefreshHelper(this);
 }
 
 
-    public initCommands(CommandListener cmdListener){
-this.logUtil!.putF(this.commonStrings!.NOT_IMPLEMENTED, this, "initCommands");
+    public: void initCommands(CommandListener cmdListener){
+this->logUtil.putF(this->commonStrings.NOT_IMPLEMENTED, this, "initCommands");
     
 }
 
 
-    public bool isMainCanvas(){
+    public: bool isMainCanvas(){
 
-                        if(this.getCustomCommandListener() != 
-                                    null
+                        if(this->getCustomCommandListener() != 
+                                    nullptr
                                 )
                         
                                     {
@@ -199,20 +198,20 @@ this.logUtil!.putF(this.commonStrings!.NOT_IMPLEMENTED, this, "initCommands");
 }
 
 
-    public setThread(Thread thread){
-this.thread= thread;
+    public: void setThread(Thread thread){
+this->thread= thread;
     
 }
 
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 
-                        if(!this.running)
+                        if(!this->running)
                         
                                     {
-                                    this.thread= NullThread.NULL_THREAD;
+                                    this->thread= NullThread::NULL_THREAD;
     
 
         
@@ -221,64 +220,64 @@ this.running= running;
 
         //mutex.withLock
         
-this.threadObjectUtil!.notifyObject(this);
+this->threadObjectUtil.notifyObject(this);
     
 
 
 
                                     }
                                 
-this.logUtil!.putF(new StringMaker().append(this.IS_RUNNING)!.appendboolean(this.running)!.toString(), this, this.SET_RUNNING);
+this->logUtil.putF(StringMaker().append(this->IS_RUNNING).appendboolean(this->running).toString(), this, this->SET_RUNNING);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
-                        if(this.thread == this.currentThread)
+                        if(this->thread == this->currentThread)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 
                                     }
                                 
                         else {
                             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.THREAD);
+stringBuffer.append(this->THREAD);
     
 
-                        if(this.thread != 
-                                    null
+                        if(this->thread != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(this.thread.toString());
+                                    stringBuffer.append(this->thread.toString());
     
 
                                     }
                                 
-stringBuffer!.append(this.NOT_EQUAL);
+stringBuffer.append(this->NOT_EQUAL);
     
 
-                        if(this.currentThread != 
-                                    null
+                        if(this->currentThread != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(StringUtil.getInstance()!.toString(this.currentThread));
+                                    stringBuffer.append(StringUtil::getInstance().toString(this->currentThread));
     
 
                                     }
                                 
-this.logUtil!.putF(stringBuffer!.toString(), this, this.IS_RUNNING);
+this->logUtil.putF(stringBuffer.toString(), this, this->IS_RUNNING);
     
 
 
@@ -292,72 +291,72 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.IS_RUNNING);
 }
 
 
-    public TimeDelayHelper getLoopTimeHelperP(){
+    public: TimeDelayHelper getLoopTimeHelperP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopTimeHelper;
+                        return this->loopTimeHelper;
     
 }
 
 
-    private: pauseWait: int64_t = 0;
+    private: int64_t pauseWait = 0;
 
-    setWait(int32_t wait){
-this.loopTimeHelper!.delay= wait;
+    protected: void setWait(int32_t wait){
+this->loopTimeHelper.delay= wait;
     
-this.pauseWait= wait *3;
+this->pauseWait= wait *3;
     
-this.logUtil!.putF(new StringMaker().append("setWait - delay: ")!.appendint(this.loopTimeHelper!.delay)!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(StringMaker().append("setWait - delay: ").appendint(this->loopTimeHelper.delay).toString(), this, this->commonStrings.CONSTRUCTOR);
     
 }
 
 
-    int32_t getWait(){
+    protected: int32_t getWait(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopTimeHelper!.delay;
+                        return this->loopTimeHelper.delay;
     
 }
 
 
-    public setCurrentThread(){
-this.currentThread= Thread.currentThread();
+    public: void setCurrentThread(){
+this->currentThread= Thread::currentThread();
     
 }
 
 
-    setCurrentThreadFake(){
-this.currentThread= this.thread;
+    protected: void setCurrentThreadFake(){
+this->currentThread= this->thread;
     
 }
 
 
-    showNotify(){
+    protected: void showNotify(){
 
         try {
-            this.stopWaiting();
+            this->stopWaiting();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "showNotify", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "showNotify", e);
     
 }
 
 }
 
 
-    private: notified: bool = false;
+    private: bool notified = false;
 
                 //@Throws(Exception.constructor)
             
-    stopWaiting(){
-this.notified= true;
+    private: void stopWaiting(){
+this->notified= true;
     
 
         
@@ -366,11 +365,11 @@ this.notified= true;
 
         //mutex.withLock
         
-this.threadObjectUtil!.notifyObject(this);
+this->threadObjectUtil.notifyObject(this);
     
 
 
-this.repaint();
+this->repaint();
     
 }
 
@@ -378,22 +377,22 @@ this.repaint();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public waitOnNotify(int64_t wait){
+    public: void waitOnNotify(int64_t wait){
 
-                        if(!this.notified)
+                        if(!this->notified)
                         
                                     {
                                     
                         if(wait > 0)
                         
                                     {
-                                    this.threadObjectUtil!.waitObjectFor(this, wait);
+                                    this->threadObjectUtil.waitObjectFor(this, wait);
     
 
                                     }
                                 
                         else {
-                            this.threadObjectUtil!.waitObject(this);
+                            this->threadObjectUtil.waitObject(this);
     
 
                         }
@@ -406,13 +405,13 @@ this.repaint();
 
                 //@Throws(Exception.constructor)
             
-    public processSleep(){
-Thread.sleep(this.pauseWait);
+    public: void processSleep(){
+Thread::sleep(this->pauseWait);
     
 }
 
 
-    public bool isPausable(){
+    public: bool isPausable(){
 
 
 
@@ -424,44 +423,44 @@ Thread.sleep(this.pauseWait);
 
                 //@Throws(Exception.constructor)
             
-    public processGameSleep(int64_t sleep){
-Thread.sleep(sleep);
+    public: void processGameSleep(int64_t sleep){
+Thread::sleep(sleep);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep(){
-this.runnableCanvasRefreshHelper!.process();
+    public: void processLoopSleep(){
+this->runnableCanvasRefreshHelper.process();
     
 
-                        if(this.isPaused())
+                        if(this->isPaused())
                         
                                     {
                                     
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-                        if(this.isRunning() && !this.isSingleThread())
+                        if(this->isRunning() && !this->isSingleThread())
                         
                                     {
-                                    stringMaker!.delete(0, stringMaker!.length());
+                                    stringMaker.delete(0, stringMaker.length());
     
-this.logUtil!.putF(stringMaker!.append(this.START_PAUSE)!.appendlong(Date.now())!.append(this.PAUSE_SLEEP)!.appendlong(this.pauseWait)!.toString(), this, this.PROCESS_LOOP_SLEEP);
+this->logUtil.putF(stringMaker.append(this->START_PAUSE).appendlong(Date.now()).append(this->PAUSE_SLEEP).appendlong(this->pauseWait).toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
-        while(this.isPaused() && this.isRunning() && !this.isSingleThread())
+        while(this->isPaused() && this->isRunning() && !this->isSingleThread())
         {
-this.processSleep();
+this->processSleep();
     
 
-                        if(!this.isPausable())
+                        if(!this->isPausable())
                         
                                     {
-                                    stringMaker!.delete(0, stringMaker!.length());
+                                    stringMaker.delete(0, stringMaker.length());
     
-this.logUtil!.putF(stringMaker!.append(this.END_PAUSE)!.appendlong(Date.now())!.toString(), this, this.PROCESS_LOOP_SLEEP);
+this->logUtil.putF(stringMaker.append(this->END_PAUSE).appendlong(Date.now()).toString(), this, this->PROCESS_LOOP_SLEEP);
     
 
 
@@ -481,10 +480,10 @@ this.logUtil!.putF(stringMaker!.append(this.END_PAUSE)!.appendlong(Date.now())!.
                                     }
                                 
 
-    elapsedTime: int64_t = this.loopTimeHelper!.getElapsedTNT()!;;
+    int64_t elapsedTime = this->loopTimeHelper.getElapsedTNT();;
     
 
-    wait: int64_t = this.loopTimeHelper!.delay;;
+    int64_t wait = this->loopTimeHelper.delay;;
     
 
                         if(elapsedTime > wait)
@@ -496,7 +495,7 @@ this.logUtil!.putF(stringMaker!.append(this.END_PAUSE)!.appendlong(Date.now())!.
                                     }
                                 
                         else {
-                            this.processGameSleep(wait -elapsedTime);
+                            this->processGameSleep(wait -elapsedTime);
     
 
                         }
@@ -504,7 +503,7 @@ this.logUtil!.putF(stringMaker!.append(this.END_PAUSE)!.appendlong(Date.now())!.
 }
 
 
-    public bool isSingleThread(){
+    public: bool isSingleThread(){
 
 
 
@@ -514,19 +513,19 @@ this.logUtil!.putF(stringMaker!.append(this.END_PAUSE)!.appendlong(Date.now())!.
 }
 
 
-    public run(){
-this.setCurrentThread();
+    public: void run(){
+this->setCurrentThread();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public end2(){
+    public: void end2(){
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 

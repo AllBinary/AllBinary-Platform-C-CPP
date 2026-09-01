@@ -98,20 +98,19 @@
 #include "TouchButtonStrafeRightResource.h"
 
 class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseResourceAnimationInterfaceFactoryInterfaceFactory {
-        
 
-    public static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory(){
+    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("TouchButton Animations");
+                        return TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("TouchButton Animations");
     
 }
 
 
-public constructor (string name){
-            super(name, new Hashtable<any, any>(), new Hashtable<any, any>(), new Hashtable<any, any>());
+public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name){
+            super(name, Hashtable<any, any>(), Hashtable<any, any>(), Hashtable<any, any>());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -121,17 +120,17 @@ public constructor (string name){
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level){
-this.initImageCache(ImageCacheFactory.getInstance(), level);
+    public: void init(int32_t level){
+this->initImageCache(ImageCacheFactory::getInstance(), level);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initImageCache(ImageCache imageCache, int32_t level){
+    protected: void initImageCache(ImageCache imageCache, int32_t level){
 
-                        if(this.isInitialized())
+                        if(this->isInitialized())
                         
                                     {
                                     
@@ -144,174 +143,174 @@ this.initImageCache(ImageCacheFactory.getInstance(), level);
                                     }
                                 
 
-    portion: int32_t = 140;;
+    int32_t portion = 140;;
     
 
-    loadingString: string = new StringMaker().append(this.toString())!.append(" Loading: ")!.toString()!;;
+    std::string loadingString = StringMaker().append(this->toString()).append(" Loading: ").toString();;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.addPortion(portion, loadingString, index++);
-    
-
-    touchButtonBlankResource: TouchButtonResource = TouchButtonBlankResource.getInstance()!;;
+progressCanvas.addPortion(portion, loadingString, index++);
     
 
-    touchButtonGenericActionResource: TouchButtonResource = TouchButtonGenericActionResource.getInstance()!;;
+    TouchButtonResource touchButtonBlankResource = TouchButtonBlankResource::getInstance();;
     
 
-    touchButtonStartResource: TouchButtonResource = TouchButtonStartResource.getInstance()!;;
+    TouchButtonResource touchButtonGenericActionResource = TouchButtonGenericActionResource::getInstance();;
     
 
-    touchButtonUpResource: TouchButtonResource = TouchButtonUpResource.getInstance()!;;
+    TouchButtonResource touchButtonStartResource = TouchButtonStartResource::getInstance();;
     
 
-    touchButtonDownResource: TouchButtonResource = TouchButtonDownResource.getInstance()!;;
+    TouchButtonResource touchButtonUpResource = TouchButtonUpResource::getInstance();;
     
 
-    touchButtonTurnLeftResource: TouchButtonResource = TouchButtonTurnLeftResource.getInstance()!;;
+    TouchButtonResource touchButtonDownResource = TouchButtonDownResource::getInstance();;
     
 
-    touchButtonTurnRightResource: TouchButtonResource = TouchButtonTurnRightResource.getInstance()!;;
+    TouchButtonResource touchButtonTurnLeftResource = TouchButtonTurnLeftResource::getInstance();;
     
 
-    touchButtonStrafeLeftResource: TouchButtonResource = TouchButtonStrafeLeftResource.getInstance()!;;
+    TouchButtonResource touchButtonTurnRightResource = TouchButtonTurnRightResource::getInstance();;
     
 
-    touchButtonStrafeRightResource: TouchButtonResource = TouchButtonStrafeRightResource.getInstance()!;;
+    TouchButtonResource touchButtonStrafeLeftResource = TouchButtonStrafeLeftResource::getInstance();;
     
 
-    touchButtonBlankResourceImage: Image = imageCache!.getWithKey(touchButtonBlankResource!.RESOURCE)!;;
+    TouchButtonResource touchButtonStrafeRightResource = TouchButtonStrafeRightResource::getInstance();;
     
 
-    touchButtonGenericActionResourceImage: Image = imageCache!.getWithKey(touchButtonGenericActionResource!.RESOURCE)!;;
+    Image touchButtonBlankResourceImage = imageCache.getWithKey(touchButtonBlankResource.RESOURCE);;
     
 
-    touchButtonStartResourceImage: Image = imageCache!.getWithKey(touchButtonStartResource!.RESOURCE)!;;
+    Image touchButtonGenericActionResourceImage = imageCache.getWithKey(touchButtonGenericActionResource.RESOURCE);;
     
 
-    touchButtonUpResourceImage: Image = imageCache!.getWithKey(touchButtonUpResource!.RESOURCE)!;;
+    Image touchButtonStartResourceImage = imageCache.getWithKey(touchButtonStartResource.RESOURCE);;
     
 
-    touchButtonDownResourceImage: Image = imageCache!.getWithKey(touchButtonDownResource!.RESOURCE)!;;
+    Image touchButtonUpResourceImage = imageCache.getWithKey(touchButtonUpResource.RESOURCE);;
     
 
-    touchButtonTurnLeftResourceImage: Image = imageCache!.getWithKey(touchButtonTurnLeftResource!.RESOURCE)!;;
+    Image touchButtonDownResourceImage = imageCache.getWithKey(touchButtonDownResource.RESOURCE);;
     
 
-    touchButtonTurnRightResourceImage: Image = imageCache!.getWithKey(touchButtonTurnRightResource!.RESOURCE)!;;
+    Image touchButtonTurnLeftResourceImage = imageCache.getWithKey(touchButtonTurnLeftResource.RESOURCE);;
     
 
-    touchButtonStrafeLeftResourceImage: Image = imageCache!.getWithKey(touchButtonStrafeLeftResource!.RESOURCE)!;;
+    Image touchButtonTurnRightResourceImage = imageCache.getWithKey(touchButtonTurnRightResource.RESOURCE);;
     
 
-    touchButtonStrafeRightResourceImage: Image = imageCache!.getWithKey(touchButtonStrafeRightResource!.RESOURCE)!;;
+    Image touchButtonStrafeLeftResourceImage = imageCache.getWithKey(touchButtonStrafeLeftResource.RESOURCE);;
     
 
-    nullAnimationFactory: NullAnimationFactory = NullAnimationFactory.getFactoryInstance()!;;
+    Image touchButtonStrafeRightResourceImage = imageCache.getWithKey(touchButtonStrafeRightResource.RESOURCE);;
     
 
-                        if(OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!.isOverScan())
+    NullAnimationFactory nullAnimationFactory = NullAnimationFactory::getFactoryInstance();;
+    
+
+                        if(OperatingSystemFactory::getInstance().getOperatingSystemInstance().isOverScan())
                         
                                     {
-                                    imageCache!.getWithKey(TouchButtonStartResource.getInstance()!.HINT);
+                                    imageCache.getWithKey(TouchButtonStartResource::getInstance().HINT);
     
 
                                     }
                                 
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
 
-    imageCompleteUtil: ImageCompleteUtil = ImageCompleteUtil.getInstance()!;;
+    ImageCompleteUtil imageCompleteUtil = ImageCompleteUtil::getInstance();;
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonBlankResourceImage, touchButtonBlankResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonBlankResourceImage, touchButtonBlankResource.RESOURCE);
     
-this.add(touchButtonBlankResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonBlankResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonBlankResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonBlankResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonBlankResource!.HINT, nullAnimationFactory);
+this->add(touchButtonBlankResource.HINT, nullAnimationFactory);
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonGenericActionResourceImage, touchButtonGenericActionResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonGenericActionResourceImage, touchButtonGenericActionResource.RESOURCE);
     
-this.add(touchButtonGenericActionResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonGenericActionResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonGenericActionResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonGenericActionResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonGenericActionResource!.HINT, nullAnimationFactory);
+this->add(touchButtonGenericActionResource.HINT, nullAnimationFactory);
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonStartResourceImage, touchButtonStartResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonStartResourceImage, touchButtonStartResource.RESOURCE);
     
-this.add(touchButtonStartResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonStartResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonStartResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonStartResourceImage, AnimationBehaviorFactory::getInstance()));
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonUpResourceImage, touchButtonUpResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonUpResourceImage, touchButtonUpResource.RESOURCE);
     
-this.add(touchButtonUpResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonUpResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonUpResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonUpResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonUpResource!.HINT, nullAnimationFactory);
+this->add(touchButtonUpResource.HINT, nullAnimationFactory);
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonDownResourceImage, touchButtonDownResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonDownResourceImage, touchButtonDownResource.RESOURCE);
     
-this.add(touchButtonDownResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonDownResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonDownResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonDownResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonDownResource!.HINT, nullAnimationFactory);
+this->add(touchButtonDownResource.HINT, nullAnimationFactory);
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonTurnLeftResourceImage, touchButtonTurnLeftResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonTurnLeftResourceImage, touchButtonTurnLeftResource.RESOURCE);
     
-this.add(touchButtonTurnLeftResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonTurnLeftResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonTurnLeftResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonTurnLeftResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonTurnLeftResource!.HINT, nullAnimationFactory);
+this->add(touchButtonTurnLeftResource.HINT, nullAnimationFactory);
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonTurnRightResourceImage, touchButtonTurnRightResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonTurnRightResourceImage, touchButtonTurnRightResource.RESOURCE);
     
-this.add(touchButtonTurnRightResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonTurnRightResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonTurnRightResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonTurnRightResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonTurnRightResource!.HINT, nullAnimationFactory);
+this->add(touchButtonTurnRightResource.HINT, nullAnimationFactory);
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonStrafeLeftResourceImage, touchButtonStrafeLeftResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonStrafeLeftResourceImage, touchButtonStrafeLeftResource.RESOURCE);
     
-this.add(touchButtonStrafeLeftResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonStrafeLeftResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonStrafeLeftResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonStrafeLeftResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonStrafeLeftResource!.HINT, nullAnimationFactory);
+this->add(touchButtonStrafeLeftResource.HINT, nullAnimationFactory);
     
-progressCanvas!.addPortion(portion, loadingString, index++);
+progressCanvas.addPortion(portion, loadingString, index++);
     
-imageCompleteUtil!.waitForImage(touchButtonStrafeRightResourceImage, touchButtonStrafeRightResource!.RESOURCE);
+imageCompleteUtil.waitForImage(touchButtonStrafeRightResourceImage, touchButtonStrafeRightResource.RESOURCE);
     
-this.add(touchButtonStrafeRightResource!.RESOURCE, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonStrafeRightResourceImage, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonStrafeRightResource.RESOURCE, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonStrafeRightResourceImage, AnimationBehaviorFactory::getInstance()));
     
-this.add(touchButtonStrafeRightResource!.HINT, nullAnimationFactory);
+this->add(touchButtonStrafeRightResource.HINT, nullAnimationFactory);
     
 
-                        if(OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!.isOverScan())
+                        if(OperatingSystemFactory::getInstance().getOperatingSystemInstance().isOverScan())
                         
                                     {
                                     
-    touchButtonStartHintResource: Image = imageCache!.getWithKey(TouchButtonStartResource.getInstance()!.HINT)!;;
+    Image touchButtonStartHintResource = imageCache.getWithKey(TouchButtonStartResource::getInstance().HINT);;
     
-this.add(touchButtonStartResource!.HINT, OneRowSpriteIndexedAnimationFactory.createFactory(touchButtonStartHintResource, AnimationBehaviorFactory.getInstance()));
+this->add(touchButtonStartResource.HINT, OneRowSpriteIndexedAnimationFactory::createFactory(touchButtonStartHintResource, AnimationBehaviorFactory::getInstance()));
     
 
                                     }
                                 
                         else {
-                            this.add(touchButtonStartResource!.HINT, nullAnimationFactory);
+                            this->add(touchButtonStartResource.HINT, nullAnimationFactory);
     
 
                         }
@@ -321,12 +320,12 @@ super.init(level);
 }
 
 
-    public bool isLoadingLevel(int32_t level){
+    public: bool isLoadingLevel(int32_t level){
 
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(level == resourceLoadingLevelFactory!.LOAD_TOUCH.getLevel())
+                        if(level == resourceLoadingLevelFactory.LOAD_TOUCH.getLevel())
                         
                                     {
                                     
@@ -351,9 +350,9 @@ super.init(level);
 }
 
 
-    public bool isFeature(){
+    public: bool isFeature(){
 
-                        if(!Features.getInstance()!.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(!Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     

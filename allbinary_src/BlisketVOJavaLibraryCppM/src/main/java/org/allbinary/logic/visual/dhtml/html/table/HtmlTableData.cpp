@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -45,46 +47,45 @@
 class HtmlTableData
             : public Object
          {
-        
 
-    private: static const instance: HtmlTableData = new HtmlTableData();
+    private: static HtmlTableData instance() { return HtmlTableData(); }
 
-    public static HtmlTableData getInstance(){
+    public: static HtmlTableData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HtmlTableData.instance;
+                        return HtmlTableData::instance();
     
 }
 
 
-    public const LEFT: string = CommonStrings.getInstance()!.LEFT;
+    public: const std::string LEFT = CommonStrings::getInstance().LEFT;
 
-    public const RIGHT: string = CommonStrings.getInstance()!.RIGHT;
+    public: const std::string RIGHT = CommonStrings::getInstance().RIGHT;
 
-    public const NONE: string = "none";
+    public: const std::string NONE = "none";
 
-    public const TOP: string = "top";
+    public: const std::string TOP = "top";
 
-    public const BOTTOM: string = "bottom";
+    public: const std::string BOTTOM = "bottom";
 
-    public const TOPBOT: string = "topbot";
+    public: const std::string TOPBOT = "topbot";
 
-    public const SIDES: string = "sides";
+    public: const std::string SIDES = "sides";
 
-    public const ALL: string = "all";
+    public: const std::string ALL = "all";
 
-    public const BORDERED: string = "border";
+    public: const std::string BORDERED = "border";
 
-    public const BASIC: string = "basic";
+    public: const std::string BASIC = "basic";
 
-    public const ROWS: string = "rows";
+    public: const std::string ROWS = "rows";
 
-    public const FRAMES: std::vector<string> = 
-                                                        [
-                                                            this.NONE,this.TOP,this.BOTTOM,this.TOPBOT,this.SIDES,this.ALL,this.BORDERED
-                                                        ];
+    public: const std::vector<std::string> FRAMES = 
+                                                        {
+                                                            this->NONE,this->TOP,this->BOTTOM,this->TOPBOT,this->SIDES,this->ALL,this->BORDERED
+                                                        };
 
 };
 

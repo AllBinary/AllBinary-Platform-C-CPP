@@ -51,37 +51,36 @@
 class ComponentFactory
             : public Object
          {
-        
 
-    private: static const instance: ComponentFactory = new ComponentFactory();
+    private: static ComponentFactory instance() { return ComponentFactory(); }
 
-    public static ComponentFactory getInstance();
+    public: static ComponentFactory getInstance();
 
-    public const VGA: Component = new Component("VGA");
+    public: const Component VGA = Component("VGA");
 
-    public const IDE: Component = new Component("IDE");
+    public: const Component IDE = Component("IDE");
 
-    public const SCSI: Component = new Component("SCSI");
+    public: const Component SCSI = Component("SCSI");
 
-    public const BRIDGE: Component = new Component("bridge");
+    public: const Component BRIDGE = Component("bridge");
 
-    public const ETHERNET: Component = new Component("Ethernet");
+    public: const Component ETHERNET = Component("Ethernet");
 
-    public const USB: Component = new Component("USB");
+    public: const Component USB = Component("USB");
 
-    public const MULTIMEDIA: Component = new Component("Multimedia");
+    public: const Component MULTIMEDIA = Component("Multimedia");
 
-    public const PCI: Component = new Component("PCI");
+    public: const Component PCI = Component("PCI");
 
-    public const RAID: Component = new Component("RAID");
+    public: const Component RAID = Component("RAID");
 
-    public const SMBUS: Component = new Component("SMBus");
+    public: const Component SMBUS = Component("SMBus");
 
-    public const PIC: Component = new Component("PIC");
+    public: const Component PIC = Component("PIC");
 
-    public const Class: Component = new Component("Class");
+    public: const Component Class = Component("Class");
 
-    public const UNKNOWN: Component = new Component(CommonStrings.getInstance()!.UNKNOWN);
+    public: const Component UNKNOWN = Component(CommonStrings::getInstance().UNKNOWN);
 
 };
 

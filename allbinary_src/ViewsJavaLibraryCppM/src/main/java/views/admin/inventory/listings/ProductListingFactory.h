@@ -58,11 +58,10 @@
 class ProductListingFactory
             : public Object
          {
-        
 
-    public static ProductListingInterface getInstance(SearchRequest searchRequest);
+    public: static ProductListingInterface getInstance(SearchRequest searchRequest);
 
-private constructor ();
+private: ProductListingFactory();
 
 };
 

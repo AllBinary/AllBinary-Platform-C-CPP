@@ -43,16 +43,15 @@
 class NoButtonsTouchInputFactory
             : public Object
          {
-        
 
-    private: static const instance: BaseTouchInput = new BaseTouchInput();
+    private: static BaseTouchInput instance() { return BaseTouchInput(); }
 
-    public static BaseTouchInput getInstance(){
+    public: static BaseTouchInput getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoButtonsTouchInputFactory.instance;
+                        return NoButtonsTouchInputFactory::instance();
     
 }
 

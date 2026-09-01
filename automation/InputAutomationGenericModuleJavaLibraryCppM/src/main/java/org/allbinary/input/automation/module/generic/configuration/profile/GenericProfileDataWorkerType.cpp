@@ -65,64 +65,61 @@
 class GenericProfileDataWorkerType
             : public Object
         : public GenericProfileDataWorkerTypeInterface {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    public static SAVED_CAPTURE: GenericProfileDataWorkerType = SavedCaptureGenericProfileDataWorkerType.SAVED_CAPTURE;
+    public: static GenericProfileDataWorkerType SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType::SAVED_CAPTURE;
 
-    public static SCREEN_CAPTURE: GenericProfileDataWorkerType = new GenericProfileDataWorkerType("Screen " +InputImageType.CAPTURE.getName());
+    public: static GenericProfileDataWorkerType SCREEN_CAPTURE = GenericProfileDataWorkerType("Screen " +InputImageType::CAPTURE.getName());
 
-    public static COMPARISON: GenericProfileDataWorkerType = new GenericProfileDataWorkerType(InputImageType.COMPARISON.getName());
+    public: static GenericProfileDataWorkerType COMPARISON = GenericProfileDataWorkerType(InputImageType::COMPARISON.getName());
 
-    public static MOTION: GenericProfileDataWorkerType = new GenericProfileDataWorkerType(InputImageType.MOTION.getName());
+    public: static GenericProfileDataWorkerType MOTION = GenericProfileDataWorkerType(InputImageType::MOTION.getName());
 
-    public static GenericProfileDataWorkerType getInstance(Node node){
+    public: static GenericProfileDataWorkerType getInstance(Node node){
 
-    name: string = DomNodeHelper.getTextNodeValue(node)!;;
+    std::string name = DomNodeHelper::getTextNodeValue(node);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GenericProfileDataWorkerType.hashMap!.get(name) as GenericProfileDataWorkerType;
+                        return GenericProfileDataWorkerType::hashMap.get(name) as GenericProfileDataWorkerType;
     
 }
 
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string name){
-
-            super();
-        this.setName(name);
+public: GenericProfileDataWorkerType(std::string name){
+this->setName(name);
     
-GenericProfileDataWorkerType.hashMap!.put(this.getName(), this);
+GenericProfileDataWorkerType::hashMap.put(this->getName(), this);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createTextNode(document, GenericProfileDataWorkerData.NAME, this.name)!;;
+    Node node = ModDomHelper::createTextNode(document, GenericProfileDataWorkerData::NAME, this->name);;
     
 
 
@@ -133,12 +130,12 @@ this.name= name;
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "GenericProfileDataWorkerType: " +this.getName();
+                        return "GenericProfileDataWorkerType: " +this->getName();
     
 }
 

@@ -52,10 +52,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasicWorkFlow.h"
 
-class BasicStoreWorkFlow: public BasicWorkFlow: public StoreWorkFlowInterface {
-        
+class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: BasicStoreWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super(propertiesHashMap, pageContext);
                     
 
@@ -66,12 +65,12 @@ public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext
 
                 //@Throws(Exception.constructor)
             
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getPropertiesHashMap()!.get(StoreFrontData.getInstance()!.NAME) as string;
+                        return this->getPropertiesHashMap().get(StoreFrontData::getInstance().NAME) as string;
     
 }
 

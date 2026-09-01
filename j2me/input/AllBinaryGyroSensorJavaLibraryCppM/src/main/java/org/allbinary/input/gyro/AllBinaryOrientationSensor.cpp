@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -67,31 +69,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AllBinaryOrientationSensor: public AllBinarySensor {
-        
 
-    sensorDataFloatArray: std::vector<float> = PrimitiveFloatUtil.getArrayInstance()!;
+    protected: std::vector<float> sensorDataFloatArray = PrimitiveFloatUtil::getArrayInstance();
 
-    listener: CompleteMotionGestureInputEventListenerInterface = NoCompleteMotionGestureInputEventListener.getInstance()!;
+    protected: CompleteMotionGestureInputEventListenerInterface listener = NoCompleteMotionGestureInputEventListener::getInstance();
 
-    public setCompleteMotionGestureInputEventListener(CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface){
-this.listener= completeMotionGestureInputEventListenerInterface;
+    public: void setCompleteMotionGestureInputEventListener(CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface){
+this->listener= completeMotionGestureInputEventListenerInterface;
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
+protected: AllBinaryOrientationSensor(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Orientation getOrientation(){
+    public: Orientation getOrientation(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 

@@ -55,18 +55,17 @@
 #include "UserRoleFactory.h"
 
 class UserRoleB: public UserRole {
-        
 
-    public static roleVector: Vector = new Vector();
+    public: static Vector roleVector = Vector();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static UserRole getRole(string role);
+    public: static UserRole getRole(std::string role);
 
-    public static Vector getAll();
+    public: static Vector getAll();
 
-protected constructor (BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface);
+protected: UserRoleB(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface);
 
 };
 

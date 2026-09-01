@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -97,11 +99,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CombatGameCanvas: public AllBinaryGameCanvas {
-        
 
-    static basicLayerProcessor: std::vector<BasicLayerProcessor> = [];
+    protected: static std::vector<BasicLayerProcessor> basicLayerProcessor = {};
 
-public constructor (CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered){
+public: CombatGameCanvas(CommandListener cmdListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered){
             super(cmdListener, gameLayerManager, highScoresFactoryInterface, gameInitializationInterfaceFactoryInterface, buffered);
                     
 
@@ -110,52 +111,52 @@ public constructor (CommandListener cmdListener, AllBinaryGameLayerManager gameL
 }
 
 
-    CombatGameCanvas_init(){
-DestroyEventCircularStaticPool.getInstance()!.init(this);
+    private: void CombatGameCanvas_init(){
+DestroyEventCircularStaticPool::getInstance().init(this);
     
-ProgressCanvasFactory.getInstance()!.addNormalPortion(50, "Destroy Events");
+ProgressCanvasFactory::getInstance().addNormalPortion(50, "Destroy Events");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initApp(AbeClientInformationInterface abeClientInformation){
-this.CombatGameCanvas_init();
+    protected: void initApp(AbeClientInformationInterface abeClientInformation){
+this->CombatGameCanvas_init();
     
 super.initApp(abeClientInformation);
     
 }
 
 
-    initConfigurablePortion(int32_t portion){
-DestroyedLayerProcessor.init();
+    protected: void initConfigurablePortion(int32_t portion){
+DestroyedLayerProcessor::init();
     
-ProgressCanvasFactory.getInstance()!.addNormalPortion(portion, "Basic Processors");
-    
-
-    features: Features = Features.getInstance()!;;
+ProgressCanvasFactory::getInstance().addNormalPortion(portion, "Basic Processors");
     
 
-    gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(gameFeatureFactory!.DROPPED_ITEMS) && features.isFeature(gameFeatureFactory!.DROPPED_ITEMS_FROM_DEATH))
+    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
+    
+
+                        if(features.isFeature(gameFeatureFactory.DROPPED_ITEMS) && features.isFeature(gameFeatureFactory.DROPPED_ITEMS_FROM_DEATH))
                         
                                     {
-                                    CombatGameCanvas.basicLayerProcessor= new Array(2);
+                                    CombatGameCanvas::basicLayerProcessor= new Array(2);
     
-CombatGameCanvas.basicLayerProcessor[0]= DestroyedLayerProcessor.getInstance();
+CombatGameCanvas::basicLayerProcessor[0]= DestroyedLayerProcessor::getInstance();
     
-CombatGameCanvas.basicLayerProcessor[1]= DropLayerProcessor.getInstance();
+CombatGameCanvas::basicLayerProcessor[1]= DropLayerProcessor::getInstance();
     
 
                                     }
                                 
                         else {
-                            CombatGameCanvas.basicLayerProcessor= new Array(1);
+                            CombatGameCanvas::basicLayerProcessor= new Array(1);
     
-CombatGameCanvas.basicLayerProcessor[0]= DestroyedLayerProcessor.getInstance();
+CombatGameCanvas::basicLayerProcessor[0]= DestroyedLayerProcessor::getInstance();
     
 
                         }
@@ -165,7 +166,7 @@ CombatGameCanvas.basicLayerProcessor[0]= DestroyedLayerProcessor.getInstance();
 
                 //@Throws(Exception.constructor)
             
-    processPlayingGame(){
+    protected: void processPlayingGame(){
 super.processPlayingGame();
     
 
@@ -173,10 +174,9 @@ super.processPlayingGame();
 
 
                         for (
-    index: int32_t = CombatGameCanvas.basicLayerProcessor!.length
-                ;--index >= 0; )
+    int32_t index = CombatGameCanvas::basicLayerProcessor.size();--index >= 0; )
         {
-CombatGameCanvas.basicLayerProcessor[index]!.process(this.gameLayerManager);
+CombatGameCanvas::basicLayerProcessor[index]!.process(this->gameLayerManager);
     
 }
 
@@ -185,7 +185,7 @@ CombatGameCanvas.basicLayerProcessor[index]!.process(this.gameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    cleanupGame(){
+    protected: void cleanupGame(){
 super.cleanupGame();
     
 
@@ -193,28 +193,27 @@ super.cleanupGame();
 
 
                         for (
-    index: int32_t = CombatGameCanvas.basicLayerProcessor!.length
-                ;--index >= 0; )
+    int32_t index = CombatGameCanvas::basicLayerProcessor.size();--index >= 0; )
         {
-CombatGameCanvas.basicLayerProcessor[index]!.getList()!.clear();
+CombatGameCanvas::basicLayerProcessor[index]!.getList().clear();
     
 }
 
-GroupLayerManagerListener.getInstance()!.clear();
+GroupLayerManagerListener::getInstance().clear();
     
-GroupLayerManagerListener.getInstance()!.log();
+GroupLayerManagerListener::getInstance().log();
     
-DestroyedEventHandler.getInstance()!.removeAllListeners();
+DestroyedEventHandler::getInstance().removeAllListeners();
     
-this.cleanupManager();
+this->cleanupManager();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    cleanupManager(){
-this.gameLayerManager!.cleanup();
+    protected: void cleanupManager(){
+this->gameLayerManager.cleanup();
     
 }
 

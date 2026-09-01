@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_H
         #define ORG_ALLBINARY_BUNDLE_LOGIC_SYSTEM_LOADER_CRYPTSERVICE_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -92,19 +94,18 @@
 class CryptService
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abCryptUtil: AbCryptUtil = AbCryptUtil.getInstance()!;
+    private: const AbCryptUtil abCryptUtil = AbCryptUtil::getInstance();
 
-public constructor ();
+public: CryptService();
 
-    public InputStream getDecryptedInputStream(AbeClientInformationInterface abeClientInformation, string name, InputStream inputStream);
+    public: InputStream getDecryptedInputStream(AbeClientInformationInterface abeClientInformation, std::string name, InputStream inputStream);
 
-    showLicenseDialog(AbeClientInformationInterface abeClientInformation, Exception e);
+    private: void showLicenseDialog(AbeClientInformationInterface abeClientInformation, Exception e);
 
 };
 

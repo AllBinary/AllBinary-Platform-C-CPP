@@ -72,21 +72,20 @@
 class FtpConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: ftpConfigurationInterface: FtpConfigurationInterface;
+    private: FtpConfigurationInterface ftpConfigurationInterface;
 
-public constructor (Node node);
+public: FtpConfigurationView(Node node);
 
-public constructor (FtpConfigurationInterface ftpConfigurationInterface);
+public: FtpConfigurationView(FtpConfigurationInterface ftpConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public FtpConfigurationInterface getFtpConfigurationInterface();
+    public: FtpConfigurationInterface getFtpConfigurationInterface();
 
-    public setFtpConfigurationInterface(FtpConfigurationInterface ftpConfigurationInterface);
+    public: void setFtpConfigurationInterface(FtpConfigurationInterface ftpConfigurationInterface);
 
 };
 

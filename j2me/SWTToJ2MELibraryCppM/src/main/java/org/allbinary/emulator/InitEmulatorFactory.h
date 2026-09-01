@@ -45,17 +45,16 @@
 class InitEmulatorFactory
             : public Object
          {
-        
 
-    private: static const instance: InitEmulatorFactory = new InitEmulatorFactory();
+    private: static InitEmulatorFactory instance() { return InitEmulatorFactory(); }
 
-    public static InitEmulatorFactory getInstance();
+    public: static InitEmulatorFactory getInstance();
 
-    public setInitEmulator(bool initEmulator);
+    public: void setInitEmulator(bool initEmulator);
 
-    public bool isInitEmulator();
+    public: bool isInitEmulator();
 
-    private: initEmulator: bool = false;
+    private: bool initEmulator = false;
 
 };
 

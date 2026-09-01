@@ -59,14 +59,13 @@
         #include "JvmStatisticsMapping.h"
 #include "JvmStatisticsData.h"
 
-class JvmStatisticsView: public JvmStatisticsMapping: public DomNodeInterface {
-        
+class JvmStatisticsView: public JvmStatisticsMapping, public DomNodeInterface {
 
-public constructor ();
+public: JvmStatisticsView();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

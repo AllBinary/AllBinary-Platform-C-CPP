@@ -51,15 +51,12 @@
 class CharacterSet
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: CharacterSet(){
+}
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 

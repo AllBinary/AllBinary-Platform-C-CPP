@@ -46,13 +46,12 @@
 class SWTProcessorUtil
             : public Object
          {
-        
 
-    private: static const instance: SWTProcessorUtil = new SWTProcessorUtil();
+    private: static SWTProcessorUtil instance() { return SWTProcessorUtil(); }
 
-    public static SWTProcessorUtil getInstance();
+    public: static SWTProcessorUtil getInstance();
 
-    public swtProcessor: SWTProcessor = SWTProcessor.getInstance()!;
+    public: SWTProcessor swtProcessor = SWTProcessor::getInstance();
 
 };
 

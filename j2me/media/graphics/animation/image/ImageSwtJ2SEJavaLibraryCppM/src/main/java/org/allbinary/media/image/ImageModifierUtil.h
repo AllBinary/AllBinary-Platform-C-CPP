@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -84,33 +86,32 @@
 class ImageModifierUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageModifierUtil = new ImageModifierUtil();
+    private: static ImageModifierUtil instance() { return ImageModifierUtil(); }
 
-    public static ImageModifierUtil getInstanceOrCreate();
+    public: static ImageModifierUtil getInstanceOrCreate();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const imageCopyUtil: ImageCopyUtil = ImageCopyUtil.getInstance()!;
+    private: const ImageCopyUtil imageCopyUtil = ImageCopyUtil::getInstance();
 
-    private: const features: Features = Features.getInstance()!;
+    private: const Features features = Features::getInstance();
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
+    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
 
-    public changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
+    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
 
-    public setAlpha(Image unusedOriginalImage, Image image, int32_t imageIndex, int32_t alphaInt);
+    public: void setAlpha(Image unusedOriginalImage, Image image, int32_t imageIndex, int32_t alphaInt);
 
-    public setAlphaSWT(Image image, int32_t alphaInt);
+    public: void setAlphaSWT(Image image, int32_t alphaInt);
 
-    public std::vector<Image> getImageArray(std::vector<Image> originalImageArray);
+    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray);
 
-    public handleImage(std::vector<Image> imageArray, int32_t index, Image image);
+    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image);
 
-    public reset();
+    public: void reset();
 
 };
 

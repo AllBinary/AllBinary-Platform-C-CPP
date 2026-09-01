@@ -52,17 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OverlayPaintable: public InitUpdatePaintable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: OverlayPaintable(){
+}
 
 
-    public update(){
+    public: void update(){
 
         try {
             
@@ -70,16 +67,16 @@ public constructor (){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.UPDATE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.UPDATE, e);
     
 }
 
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 

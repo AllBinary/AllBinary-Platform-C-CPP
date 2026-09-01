@@ -63,11 +63,10 @@
 class TransformInfoEntityFactory
             : public Object
          {
-        
 
-    public static TransformInfoEntity getInstance(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface);
+    public: static TransformInfoEntity getInstance(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface);
 
-private constructor ();
+private: TransformInfoEntityFactory();
 
 };
 

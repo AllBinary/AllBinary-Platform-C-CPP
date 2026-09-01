@@ -31,23 +31,22 @@
 class FixedPoint
             : public Object
          {
-        
 
-    private: static const instance: FixedPoint = new FixedPoint();
+    private: static FixedPoint instance() { return FixedPoint(); }
 
-    public static FixedPoint getInstance();
+    public: static FixedPoint getInstance();
 
-    public const ONE: int32_t = 1<<16;
+    public: const int32_t ONE = 1<<16;
 
-    public int32_t toFixed(double val);
+    public: int32_t toFixed(double val);
 
-    public int32_t toFixed(float val);
+    public: int32_t toFixed(float val);
 
-    public int32_t mul(int32_t a, int32_t b);
+    public: int32_t mul(int32_t a, int32_t b);
 
-    public int32_t div(int32_t a, int32_t b);
+    public: int32_t div(int32_t a, int32_t b);
 
-    public int32_t toInt(int32_t fixed);
+    public: int32_t toInt(int32_t fixed);
 
 };
 

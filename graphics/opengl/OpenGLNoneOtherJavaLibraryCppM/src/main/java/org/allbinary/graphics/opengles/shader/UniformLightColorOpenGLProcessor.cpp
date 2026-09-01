@@ -43,15 +43,12 @@
 #include "ShaderComposite.h"
 
 class UniformLightColorOpenGLProcessor: public OpenGLObject3dProcessor {
-        
 
-public constructor (ShaderComposite shaderComposite, int32_t handleIndex){
-
-            super();
-        }
+public: UniformLightColorOpenGLProcessor(ShaderComposite shaderComposite, int32_t handleIndex){
+}
 
 
-    public process(GL10 gl, any = {} unused){
+    public: void process(GL10 gl, Object* unused){
 }
 
 

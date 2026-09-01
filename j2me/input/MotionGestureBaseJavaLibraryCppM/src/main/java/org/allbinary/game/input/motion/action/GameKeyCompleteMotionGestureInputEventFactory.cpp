@@ -58,44 +58,43 @@
 class GameKeyCompleteMotionGestureInputEventFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: GameKeyCompleteMotionGestureInputEventFactory = new GameKeyCompleteMotionGestureInputEventFactory();
+    private: static const GameKeyCompleteMotionGestureInputEventFactory SINGLETON = GameKeyCompleteMotionGestureInputEventFactory();
 
-    public static GameKeyCompleteMotionGestureInputEventFactory getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEventFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyCompleteMotionGestureInputEventFactory.SINGLETON;
+                        return GameKeyCompleteMotionGestureInputEventFactory::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const eventList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList eventList = BasicArrayListD();
 
-    public add(GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent){
-this.eventList!.add(gameKeyCompleteMotionGestureInputEvent);
+    public: void add(GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent){
+this->eventList.add(gameKeyCompleteMotionGestureInputEvent);
     
 }
 
 
-    public updateAll(){
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.appendint(this.eventList!.size())!.toString(), this, "updateAll");
+    public: void updateAll(){
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).appendint(this->eventList.size()).toString(), this, "updateAll");
     
 
 
 
 
                         for (
-    index: int32_t = this.eventList!.size() -1;index >= 0; index--)
+    int32_t index = this->eventList.size() -1;index >= 0; index--)
         {
 
-    gameKeyCompleteMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent = this.eventList!.objectArray[index]! as GameKeyCompleteMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = this->eventList.objectArray[index]! as GameKeyCompleteMotionGestureInputEvent;;
     
-gameKeyCompleteMotionGestureInputEvent!.update();
+gameKeyCompleteMotionGestureInputEvent.update();
     
 }
 

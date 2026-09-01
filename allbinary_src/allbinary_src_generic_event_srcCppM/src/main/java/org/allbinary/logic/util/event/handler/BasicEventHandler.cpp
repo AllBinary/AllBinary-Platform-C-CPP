@@ -84,58 +84,55 @@
 class BasicEventHandler
             : public Object
         : public BasicEventHandlerInterface {
-        
 
-    public static const PERFORMANCE_MESSAGE: string = "Use Custom onEvent Methods for needed optimization";
+    public: static const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: eventListenerInterfaceList: BasicArrayList;
+    private: BasicArrayList eventListenerInterfaceList;
 
-public constructor (){
-
-            super();
-        this.eventListenerInterfaceList= new BasicArrayListD();
+public: BasicEventHandler(){
+this->eventListenerInterfaceList= BasicArrayListD();
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-
-    LISTENER: string = " Listener: ";;
-    
-stringBuffer!.append("Total Listeners: ");
-    
-stringBuffer!.appendint(this.eventListenerInterfaceList!.size());
+    StringMaker stringBuffer = StringMaker();;
     
 
-    eventListenerInterface: EventListenerInterface;;
+    std::string LISTENER = " Listener: ";;
+    
+stringBuffer.append("Total Listeners: ");
+    
+stringBuffer.appendint(this->eventListenerInterfaceList.size());
     
 
-    index: int32_t = 0;;
+    EventListenerInterface eventListenerInterface;;
     
 
-        while(index < this.eventListenerInterfaceList!.size())
+    int32_t index = 0;;
+    
+
+        while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this.eventListenerInterfaceList!.objectArray[index]! as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.objectArray[index]! as EventListenerInterface;
     
-stringBuffer!.append(LISTENER);
+stringBuffer.append(LISTENER);
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(eventListenerInterface));
+stringBuffer.append(StringUtil::getInstance().toString(eventListenerInterface));
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.TOSTRING, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.TOSTRING, e);
     
 }
 
@@ -147,24 +144,24 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners(){
-this.eventListenerInterfaceList= new BasicArrayListD();
+    public: void removeAllListeners(){
+this->eventListenerInterfaceList= BasicArrayListD();
     
 }
 
 
-    public addListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+    public: void addListenerSingleThreaded(EventListenerInterface eventListenerInterface){
 
-                        if(!this.eventListenerInterfaceList!.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
                         
                                     {
-                                    this.eventListenerInterfaceList!.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList.add(eventListenerInterface);
     
 
                                     }
@@ -173,12 +170,12 @@ this.eventListenerInterfaceList= new BasicArrayListD();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addListenerInterface(EventListenerInterface eventListenerInterface){
+    public: void addListenerInterface(EventListenerInterface eventListenerInterface){
 
-                        if(!this.eventListenerInterfaceList!.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
                         
                                     {
-                                    this.eventListenerInterfaceList!.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList.add(eventListenerInterface);
     
 
                                     }
@@ -186,15 +183,15 @@ this.eventListenerInterfaceList= new BasicArrayListD();
 }
 
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
-this.eventListenerInterfaceList!.remove(eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+this->eventListenerInterfaceList.remove(eventListenerInterface);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.eventListenerInterfaceList!.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->eventListenerInterfaceList.remove(eventListenerInterface);
     
 }
 
@@ -202,30 +199,30 @@ this.eventListenerInterfaceList!.remove(eventListenerInterface);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    eventListenerInterface: EventListenerInterface;;
+    EventListenerInterface eventListenerInterface;;
     
 
-        while(index < this.eventListenerInterfaceList!.size())
+        while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this.eventListenerInterfaceList!.objectArray[index]! as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.objectArray[index]! as EventListenerInterface;
     
-this.process(eventObject, eventListenerInterface);
+this->process(eventObject, eventListenerInterface);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -238,18 +235,18 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
-eventListenerInterface!.onEvent(eventObject);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+eventListenerInterface.onEvent(eventObject);
     
 }
 
 
-    public BasicArrayList getEventListenerInterfaceListP(){
+    public: BasicArrayList getEventListenerInterfaceListP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.eventListenerInterfaceList;
+                        return this->eventListenerInterfaceList;
     
 }
 

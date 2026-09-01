@@ -48,9 +48,8 @@
 #include "SpecialGameInputInterface.h"
 
 class Special1GameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
-        
 
-public constructor (SpecialGameInputInterface collidableDestroyableDamageableLayer){
+public: Special1GameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer){
             super(collidableDestroyableDamageableLayer);
                     
 
@@ -61,8 +60,8 @@ public constructor (SpecialGameInputInterface collidableDestroyableDamageableLay
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-this.specialGameInputInterface!.special1(allbinaryLayerManager, gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+this->specialGameInputInterface.special1(allbinaryLayerManager, gameKeyEvent);
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_LINEREADER_H
         #define ORG_ALLBINARY_LOGIC_IO_LINEREADER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -60,29 +62,28 @@
 class LineReader
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: fileName: string;
+    private: std::string fileName;
 
-    private: string: string;
+    private: std::string string;
 
-    private: index: int32_t = 0;
+    private: int32_t index = 0;
 
-    private: idFile: AbFileInputStream;
+    private: AbFileInputStream idFile;
 
-    private: idData: DataInputStream;
+    private: DataInputStream idData;
 
-public constructor (string fileName);
+public: LineReader(std::string fileName);
 
-    public bool hasNext();
+    public: bool hasNext();
 
                 //@Throws(Exception.constructor)
             
-    public string next();
+    public: std::string next();
 
 };
 

@@ -47,29 +47,28 @@
 /*actual*/ class SystemProperties
             : public Object
          {
-        
 
-    private: static const instance: SystemProperties = new SystemProperties();
+    private: static SystemProperties instance() { return SystemProperties(); }
 
-    /*actual*/ public static SystemProperties getInstance();
+    /*actual*/ public: static SystemProperties getInstance();
 
-    private: const OS_NAME: string = "os.name";
+    private: const std::string OS_NAME = "os.name";
 
-    private: const OS_ARCH: string = "os.arch";
+    private: const std::string OS_ARCH = "os.arch";
 
-    private: const OS_VERSION: string = "os.version";
+    private: const std::string OS_VERSION = "os.version";
 
-    private: const USER_HOME: string = "user.home";
+    private: const std::string USER_HOME = "user.home";
 
-private constructor ();
+private: SystemProperties();
 
-    /*actual*/ public string getName();
+    /*actual*/ public: std::string getName();
 
-    /*actual*/ public string getArch();
+    /*actual*/ public: std::string getArch();
 
-    /*actual*/ public string getVersion();
+    /*actual*/ public: std::string getVersion();
 
-    public string getUserHomePath();
+    public: std::string getUserHomePath();
 
 };
 

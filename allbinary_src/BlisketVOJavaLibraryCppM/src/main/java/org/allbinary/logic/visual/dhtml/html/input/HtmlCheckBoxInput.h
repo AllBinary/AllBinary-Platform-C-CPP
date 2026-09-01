@@ -45,9 +45,8 @@
 class HtmlCheckBoxInput
             : public Object
          {
-        
 
-public constructor ();
+public: HtmlCheckBoxInput();
 
 };
 

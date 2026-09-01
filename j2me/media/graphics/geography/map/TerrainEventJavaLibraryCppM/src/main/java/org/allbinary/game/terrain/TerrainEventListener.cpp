@@ -45,30 +45,29 @@
 class TerrainEventListener
             : public Object
         : public TerrainEventListenerInterface {
-        
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onTerrainEvent(TerrainEvent terrainEvent){
-this.list.clear();
+    public: void onTerrainEvent(TerrainEvent terrainEvent){
+this->list.clear();
     
-this.list.add(terrainEvent);
+this->list.add(terrainEvent);
     
 }
 
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 

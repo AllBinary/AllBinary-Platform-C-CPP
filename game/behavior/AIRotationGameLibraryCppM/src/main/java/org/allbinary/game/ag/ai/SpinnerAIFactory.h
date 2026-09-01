@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SPINNERAIFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_SPINNERAIFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <java/util/Hashtable.h>
@@ -64,9 +66,8 @@
 class SpinnerAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
 };
 

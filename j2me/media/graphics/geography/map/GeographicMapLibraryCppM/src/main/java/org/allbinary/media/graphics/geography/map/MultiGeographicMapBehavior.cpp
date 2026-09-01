@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -47,24 +49,22 @@
 class MultiGeographicMapBehavior
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<GeographicMapCellType> getCellTypeAt(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
+    public: std::vector<GeographicMapCellType> getCellTypeAt(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
 
-    size: int32_t = geographicMapInterfaceArray!.length
-                ;;
+    int32_t size = geographicMapInterfaceArray.size();;
     
 
-    cellType: GeographicMapCellType = GeographicMapCellType.NULL_GEOGRAPHIC_MAP_CELL_TYPE;;
+    GeographicMapCellType cellType = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;;
     
 
 
 
 
                         for (
-    index: int32_t = size;--index >= 0; )
+    int32_t index = size;--index >= 0; )
         {
 cellType= geographicMapInterfaceArray[index]!.getCellTypeAt(geographicMapCellPosition);
     

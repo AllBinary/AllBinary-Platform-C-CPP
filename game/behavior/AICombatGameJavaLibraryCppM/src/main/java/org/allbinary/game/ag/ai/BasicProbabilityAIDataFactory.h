@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_BASICPROBABILITYAIDATAFACTORY_H
         #define ORG_ALLBINARY_GAME_AG_AI_BASICPROBABILITYAIDATAFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -60,9 +62,8 @@
 class BasicProbabilityAIDataFactory
             : public Object
          {
-        
 
-    public Hashtable<any, any> getInstance();
+    public: Hashtable<any, any> getInstance();
 
 };
 

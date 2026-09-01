@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Thread.h"
@@ -165,77 +167,76 @@
 #include "ActionEvent.h"
 #include "EventQueue.h"
 
-class InputAutomationJFrame: public javax.swing.JFrame: public InputAutomationConfigurationModuleChangeListener, public InputAutomationRobotChangeListener, public HelpSetListener {
-        
+class InputAutomationJFrame: public javax::swing::JFrame, public InputAutomationConfigurationModuleChangeListener, public InputAutomationRobotChangeListener, public HelpSetListener {
 
-    private: static INPUTAUTOMATION_JFRAME: InputAutomationJFrame;
+    private: static InputAutomationJFrame INPUTAUTOMATION_JFRAME;
 
-    public static InputAutomationJFrame getInstance(){
+    public: static InputAutomationJFrame getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationJFrame.INPUTAUTOMATION_JFRAME;
+                        return InputAutomationJFrame::INPUTAUTOMATION_JFRAME;
     
 }
 
 
-    public static destroy(){
-InputAutomationJFrame.INPUTAUTOMATION_JFRAME.setVisible(false);
+    public: static void destroy(){
+InputAutomationJFrame::INPUTAUTOMATION_JFRAME.setVisible(false);
     
 }
 
 
-    public static create(InputAutomationBundleActivatorListenerInterface inputAutomationBundleActivatorListenerInterface){
-LogConfigTypeFactory.getInstance();
+    public: static void create(InputAutomationBundleActivatorListenerInterface inputAutomationBundleActivatorListenerInterface){
+LogConfigTypeFactory::getInstance();
     
 
-    appUrlGlobals: AppUrlGlobals = new AppUrlGlobals();;
+    AppUrlGlobals appUrlGlobals = AppUrlGlobals();;
     
-appUrlGlobals!.setWebappPath("G:/mnt/bc/mydev/work_automation/automation/run/");
+appUrlGlobals.setWebappPath("G:/mnt/bc/mydev/work_automation/automation/run/");
     
-URLGLOBALS.init(appUrlGlobals);
+URLGLOBALS::init(appUrlGlobals);
     
-WebappClassLoaderInfo.setLoader(appUrlGlobals!.constructor.namegetClassLoader());
+WebappClassLoaderInfo::setLoader(appUrlGlobals.constructor.namegetClassLoader());
     
-java.awt.EventQueue.invokeLater(new class extends ARunnable
+java.awt.EventQueue.invokeLater(class extends ARunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
-            logUtil!.putF("Running", this, commonStrings!.RUN);
+            logUtil.putF("Running", this, commonStrings.RUN);
     
-INPUTAUTOMATION_JFRAME= new InputAutomationJFrame();
+INPUTAUTOMATION_JFRAME= InputAutomationJFrame();
     
-InputRobotFactory.getInstance()!.addListener(InputAutomationJFrame.getInstance());
+InputRobotFactory::getInstance().addListener(InputAutomationJFrame::getInstance());
     
 
                         if(inputAutomationBundleActivatorListenerInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    inputAutomationBundleActivatorListenerInterface!.registerAsService();
+                                    inputAutomationBundleActivatorListenerInterface.registerAsService();
     
-inputAutomationBundleActivatorListenerInterface!.useServices();
+inputAutomationBundleActivatorListenerInterface.useServices();
     
 
                                     }
                                 
-INPUTAUTOMATION_JFRAME.setVisible(true);
+INPUTAUTOMATION_JFRAME::setVisible(true);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -249,81 +250,79 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 
                 //@Throws(Exception.constructor)
             
-    public static main(std::vector<string> args){
-InputAutomationJFrame.create(
+    public: static void main(std::vector<std::string> args){
+InputAutomationJFrame::create(
                             nullptr);
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: inputAutomationModuleConfigurations: InputAutomationModuleConfigurations = new InputAutomationModuleConfigurations();
+    private: InputAutomationModuleConfigurations inputAutomationModuleConfigurations = InputAutomationModuleConfigurations();
 
-    private: inputAutomationModuleFactory: InputAutomationModuleFactoryFactory;
+    private: InputAutomationModuleFactoryFactory inputAutomationModuleFactory;
 
-    private: inputAutomationModuleInterface: InputAutomationModuleFactoryInterface;
+    private: InputAutomationModuleFactoryInterface inputAutomationModuleInterface;
 
-    private: runnableInterface: RunnableInterface;
+    private: RunnableInterface runnableInterface;
 
-    private: thread: Thread;
+    private: Thread thread;
 
-    private: helpSet: HelpSet;
+    private: HelpSet helpSet;
 
-    private: const uri: URI = new URI("http://geocities.com/allbinary/");
+    private: const URI uri = URI("http://geocities.com/allbinary/");
 
-public constructor (){
-
-            super();
-        this.initComponents();
+public: InputAutomationJFrame(){
+this->initComponents();
     
 
-    url: URL = this.constructor.name.getResource("/help/Help.hs")!;;
+    URL url = this->constructor.name.getResource("/help/Help.hs");;
     
-this.logUtil!.putF("URL: " +url, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("URL: " +url, this, this->commonStrings.CONSTRUCTOR);
     
-this.helpSet= JavaHelpUtil.getInstance()!.getHelpSet(url);
+this->helpSet= JavaHelpUtil::getInstance().getHelpSet(url);
     
-url= this.constructor.name.getResource("/resources/allbinaryicon8bit.jpg");
+url= this->constructor.name.getResource("/resources/allbinaryicon8bit.jpg");
     
 
-    imageIcon: ImageIcon = new ImageIcon(url);;
+    ImageIcon imageIcon = ImageIcon(url);;
     
-this.setIconImage(imageIcon!.getImage());
+this->setIconImage(imageIcon.getImage());
     
-this.init();
+this->init();
     
 }
 
 
-    public helpSetAdded(HelpSetEvent helpSetEvent){
-this.helpSet!.add(helpSetEvent!.getHelpSet());
+    public: void helpSetAdded(HelpSetEvent helpSetEvent){
+this->helpSet.add(helpSetEvent.getHelpSet());
     
 }
 
 
-    public helpSetRemoved(HelpSetEvent helpSetEvent){
-this.helpSet!.remove(helpSetEvent!.getHelpSet());
+    public: void helpSetRemoved(HelpSetEvent helpSetEvent){
+this->helpSet.remove(helpSetEvent.getHelpSet());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(){
+    private: void init(){
 
-    inputAutomationConfigurationFactory: InputAutomationConfigurationFactory = InputAutomationConfigurationFactory.getInstance()!;;
+    InputAutomationConfigurationFactory inputAutomationConfigurationFactory = InputAutomationConfigurationFactory::getInstance();;
     
-inputAutomationConfigurationFactory!.init(InputAutomationClientInformationFactory.getInstance());
+inputAutomationConfigurationFactory.init(InputAutomationClientInformationFactory::getInstance());
     
 
-    inputAutomationModuleConfigurationList: List<InputAutomationModuleConfiguration> = inputAutomationConfigurationFactory!.inputAutomationConfiguration!.getInputAutomationModuleConfigurationList()!;;
+    List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList = inputAutomationConfigurationFactory.inputAutomationConfiguration.getInputAutomationModuleConfigurationList();;
     
 
                         if(inputAutomationModuleConfigurationList == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -331,91 +330,91 @@ inputAutomationConfigurationFactory!.init(InputAutomationClientInformationFactor
                                     }
                                 
                         else {
-                            this.inputAutomationModuleConfigurations= new InputAutomationModuleConfigurations(inputAutomationModuleConfigurationList);
+                            this->inputAutomationModuleConfigurations= InputAutomationModuleConfigurations(inputAutomationModuleConfigurationList);
     
 
                         }
                             
-this.inputAutomationModuleFactory= new InputAutomationModuleFactoryFactory(inputAutomationModuleConfigurations, this);
+this->inputAutomationModuleFactory= InputAutomationModuleFactoryFactory(inputAutomationModuleConfigurations, this);
     
  = 
 .
                     execute();
     
-this.gameRobotJTabbedPane!.setEnabledAt(1, false);
+this->gameRobotJTabbedPane.setEnabledAt(1, false);
     
-this.gameRobotJTabbedPane!.setSelectedIndex(0);
+this->gameRobotJTabbedPane.setSelectedIndex(0);
     
 }
 
 
-    initComponents(){
-this.noModuleSelectedJDialog= new javax.swing.JDialog();
+    private: void initComponents(){
+this->noModuleSelectedJDialog= javax::swing::JDialog();
     
-this.noModuleSelectedJLabel= new javax.swing.JLabel();
+this->noModuleSelectedJLabel= javax::swing::JLabel();
     
-this.gameRobotJTabbedPane= new javax.swing.JTabbedPane();
+this->gameRobotJTabbedPane= javax::swing::JTabbedPane();
     
-this.inputAutomationModuleJPanel= new javax.swing.JPanel();
+this->inputAutomationModuleJPanel= javax::swing::JPanel();
     
-this.jScrollPane1= new javax.swing.JScrollPane();
+this->jScrollPane1= javax::swing::JScrollPane();
     
-this.inputAutomationModuleJList= new javax.swing.JList();
+this->inputAutomationModuleJList= javax::swing::JList();
     
-this.automationModuleConfigurationJPanel= new javax.swing.JPanel();
+this->automationModuleConfigurationJPanel= javax::swing::JPanel();
     
-this.mainJMenuBar= new javax.swing.JMenuBar();
+this->mainJMenuBar= javax::swing::JMenuBar();
     
-this.processingJMenu= new javax.swing.JMenu();
+this->processingJMenu= javax::swing::JMenu();
     
-this.startJMenuItem= new javax.swing.JMenuItem();
+this->startJMenuItem= javax::swing::JMenuItem();
     
-this.stopJMenuItem= new javax.swing.JMenuItem();
+this->stopJMenuItem= javax::swing::JMenuItem();
     
-this.optionsJMenu= new javax.swing.JMenu();
+this->optionsJMenu= javax::swing::JMenu();
     
-this.stopOnFocusJCheckBoxMenuItem= new javax.swing.JCheckBoxMenuItem();
+this->stopOnFocusJCheckBoxMenuItem= javax::swing::JCheckBoxMenuItem();
     
-this.toolsJMenu= new javax.swing.JMenu();
+this->toolsJMenu= javax::swing::JMenu();
     
-this.helpJMenuItem= new javax.swing.JMenuItem();
+this->helpJMenuItem= javax::swing::JMenuItem();
     
-this.updatesJMenuItem= new javax.swing.JMenuItem();
+this->updatesJMenuItem= javax::swing::JMenuItem();
     
-this.subscriptionJMenuItem= new javax.swing.JMenuItem();
+this->subscriptionJMenuItem= javax::swing::JMenuItem();
     
-this.modulesJMenuItem= new javax.swing.JMenuItem();
+this->modulesJMenuItem= javax::swing::JMenuItem();
     
-this.aboutJMenuItem= new javax.swing.JMenuItem();
+this->aboutJMenuItem= javax::swing::JMenuItem();
     
-this.noModuleSelectedJDialog!.setMinimumSize(new java.awt.Dimension(200, 100));
+this->noModuleSelectedJDialog.setMinimumSize(java::awt::Dimension(200, 100));
     
-this.noModuleSelectedJLabel!.setText("Please Select A Module");
+this->noModuleSelectedJLabel.setText("Please Select A Module");
     
 
-    noModuleSelectedJDialogLayout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this.noModuleSelectedJDialog!.getContentPane());;
+    javax::swing::GroupLayout noModuleSelectedJDialogLayout = javax::swing::GroupLayout(this->noModuleSelectedJDialog.getContentPane());;
     
-this.noModuleSelectedJDialog!.getContentPane()!.setLayout(noModuleSelectedJDialogLayout);
+this->noModuleSelectedJDialog.getContentPane().setLayout(noModuleSelectedJDialogLayout);
     
-noModuleSelectedJDialogLayout!.setHorizontalGroup(noModuleSelectedJDialogLayout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(noModuleSelectedJDialogLayout!.createSequentialGroup()!.addContainerGap()!.addComponent(noModuleSelectedJLabel)!.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+noModuleSelectedJDialogLayout.setHorizontalGroup(noModuleSelectedJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(noModuleSelectedJDialogLayout.createSequentialGroup().addContainerGap().addComponent(noModuleSelectedJLabel).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
     
-noModuleSelectedJDialogLayout!.setVerticalGroup(noModuleSelectedJDialogLayout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addComponent(noModuleSelectedJLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short.MAX_VALUE));
+noModuleSelectedJDialogLayout.setVerticalGroup(noModuleSelectedJDialogLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(noModuleSelectedJLabel, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 48, Short::MAX_VALUE));
     
 setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
     
-this.setMinimumSize(new java.awt.Dimension(325, 215));
+this->setMinimumSize(java::awt::Dimension(325, 215));
     
 setResizable(false);
     
-addWindowFocusListener(new class extends java.awt.event.WindowFocusListener
+addWindowFocusListener(class extends java::awt::event::WindowFocusListener
                                 {
                                 
-    public windowGainedFocus(java.awt.event.WindowEvent evt){
+    public: void windowGainedFocus(java::awt::event::WindowEvent evt){
 formWindowGainedFocus(evt);
     
 }
 
-    public windowLostFocus(java.awt.event.WindowEvent evt){
+    public: void windowLostFocus(java::awt::event::WindowEvent evt){
 formWindowLostFocus(evt);
     
 }
@@ -423,15 +422,15 @@ formWindowLostFocus(evt);
                                 }
                             );
     
-addFocusListener(new class extends java.awt.event.FocusAdapter
+addFocusListener(class extends java::awt::event::FocusAdapter
                                 {
                                 
-    public focusGained(java.awt.event.FocusEvent evt){
+    public: void focusGained(java::awt::event::FocusEvent evt){
 formFocusGained(evt);
     
 }
 
-    public focusLost(java.awt.event.FocusEvent evt){
+    public: void focusLost(java::awt::event::FocusEvent evt){
 formFocusLost(evt);
     
 }
@@ -439,14 +438,14 @@ formFocusLost(evt);
                                 }
                             );
     
-this.gameRobotJTabbedPane!.setMinimumSize(new java.awt.Dimension(320, 200));
+this->gameRobotJTabbedPane.setMinimumSize(java::awt::Dimension(320, 200));
     
-this.inputAutomationModuleJList!.setMinimumSize(new java.awt.Dimension(200, 0));
+this->inputAutomationModuleJList.setMinimumSize(java::awt::Dimension(200, 0));
     
-this.inputAutomationModuleJList!.addListSelectionListener(new class extends javax.swing.event.ListSelectionListener
+this->inputAutomationModuleJList.addListSelectionListener(class extends javax::swing::event::ListSelectionListener
                                 {
                                 
-    public valueChanged(javax.swing.event.ListSelectionEvent evt){
+    public: void valueChanged(javax::swing::event::ListSelectionEvent evt){
 inputAutomationModuleJListValueChanged(evt);
     
 }
@@ -454,40 +453,40 @@ inputAutomationModuleJListValueChanged(evt);
                                 }
                             );
     
-this.jScrollPane1!.setViewportView(this.inputAutomationModuleJList);
+this->jScrollPane1.setViewportView(this->inputAutomationModuleJList);
     
 
-    inputAutomationModuleJPanelLayout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this.inputAutomationModuleJPanel);;
+    javax::swing::GroupLayout inputAutomationModuleJPanelLayout = javax::swing::GroupLayout(this->inputAutomationModuleJPanel);;
     
-this.inputAutomationModuleJPanel!.setLayout(inputAutomationModuleJPanelLayout);
+this->inputAutomationModuleJPanel.setLayout(inputAutomationModuleJPanelLayout);
     
-inputAutomationModuleJPanelLayout!.setHorizontalGroup(inputAutomationModuleJPanelLayout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(inputAutomationModuleJPanelLayout!.createSequentialGroup()!.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)!.addContainerGap(367, Short.MAX_VALUE)));
+inputAutomationModuleJPanelLayout.setHorizontalGroup(inputAutomationModuleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(inputAutomationModuleJPanelLayout.createSequentialGroup().addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap(367, Short::MAX_VALUE)));
     
-inputAutomationModuleJPanelLayout!.setVerticalGroup(inputAutomationModuleJPanelLayout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(inputAutomationModuleJPanelLayout!.createSequentialGroup()!.addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)!.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+inputAutomationModuleJPanelLayout.setVerticalGroup(inputAutomationModuleJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(inputAutomationModuleJPanelLayout.createSequentialGroup().addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
     
-this.gameRobotJTabbedPane!.addTab("Modules", inputAutomationModuleJPanel);
+this->gameRobotJTabbedPane.addTab("Modules", inputAutomationModuleJPanel);
     
 
-    automationModuleConfigurationJPanelLayout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this.automationModuleConfigurationJPanel);;
+    javax::swing::GroupLayout automationModuleConfigurationJPanelLayout = javax::swing::GroupLayout(this->automationModuleConfigurationJPanel);;
     
-this.automationModuleConfigurationJPanel!.setLayout(automationModuleConfigurationJPanelLayout);
+this->automationModuleConfigurationJPanel.setLayout(automationModuleConfigurationJPanelLayout);
     
-automationModuleConfigurationJPanelLayout!.setHorizontalGroup(automationModuleConfigurationJPanelLayout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGap(0, 566, Short.MAX_VALUE));
+automationModuleConfigurationJPanelLayout.setHorizontalGroup(automationModuleConfigurationJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 566, Short::MAX_VALUE));
     
-automationModuleConfigurationJPanelLayout!.setVerticalGroup(automationModuleConfigurationJPanelLayout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGap(0, 334, Short.MAX_VALUE));
+automationModuleConfigurationJPanelLayout.setVerticalGroup(automationModuleConfigurationJPanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 334, Short::MAX_VALUE));
     
-this.gameRobotJTabbedPane!.addTab("Configuration", automationModuleConfigurationJPanel);
+this->gameRobotJTabbedPane.addTab("Configuration", automationModuleConfigurationJPanel);
     
-this.processingJMenu!.setText("Processing");
+this->processingJMenu.setText("Processing");
     
-this.processingJMenu!.setToolTipText("Set module processing state");
+this->processingJMenu.setToolTipText("Set module processing state");
     
-this.startJMenuItem!.setText(this.commonStrings!.START);
+this->startJMenuItem.setText(this->commonStrings.START);
     
-this.startJMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->startJMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 startJMenuItemActionPerformed(evt);
     
 }
@@ -495,14 +494,14 @@ startJMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.processingJMenu!.add(this.startJMenuItem);
+this->processingJMenu.add(this->startJMenuItem);
     
-this.stopJMenuItem!.setText("Stop");
+this->stopJMenuItem.setText("Stop");
     
-this.stopJMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->stopJMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 stopJMenuItemActionPerformed(evt);
     
 }
@@ -510,16 +509,16 @@ stopJMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.processingJMenu!.add(this.stopJMenuItem);
+this->processingJMenu.add(this->stopJMenuItem);
     
-this.mainJMenuBar!.add(this.processingJMenu);
+this->mainJMenuBar.add(this->processingJMenu);
     
-this.optionsJMenu!.setText("Options");
+this->optionsJMenu.setText("Options");
     
-this.optionsJMenu!.addActionListener(new class extends java.awt.event.ActionListener
+this->optionsJMenu.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 optionsJMenuActionPerformed(evt);
     
 }
@@ -527,16 +526,16 @@ optionsJMenuActionPerformed(evt);
                                 }
                             );
     
-this.stopOnFocusJCheckBoxMenuItem!.setSelected(true);
+this->stopOnFocusJCheckBoxMenuItem.setSelected(true);
     
-this.stopOnFocusJCheckBoxMenuItem!.setEnabled(false);
+this->stopOnFocusJCheckBoxMenuItem.setEnabled(false);
     
-this.stopOnFocusJCheckBoxMenuItem!.setLabel("Stop Module On Focus");
+this->stopOnFocusJCheckBoxMenuItem.setLabel("Stop Module On Focus");
     
-this.stopOnFocusJCheckBoxMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->stopOnFocusJCheckBoxMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 stopOnFocusJCheckBoxMenuItemActionPerformed(evt);
     
 }
@@ -544,18 +543,18 @@ stopOnFocusJCheckBoxMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.optionsJMenu!.add(this.stopOnFocusJCheckBoxMenuItem);
+this->optionsJMenu.add(this->stopOnFocusJCheckBoxMenuItem);
     
-this.mainJMenuBar!.add(this.optionsJMenu);
+this->mainJMenuBar.add(this->optionsJMenu);
     
-this.toolsJMenu!.setText("Help");
+this->toolsJMenu.setText("Help");
     
-this.helpJMenuItem!.setText("Help");
+this->helpJMenuItem.setText("Help");
     
-this.helpJMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->helpJMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 helpJMenuItemActionPerformed(evt);
     
 }
@@ -563,14 +562,14 @@ helpJMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.toolsJMenu!.add(this.helpJMenuItem);
+this->toolsJMenu.add(this->helpJMenuItem);
     
-this.updatesJMenuItem!.setText("Updates");
+this->updatesJMenuItem.setText("Updates");
     
-this.updatesJMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->updatesJMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 updatesJMenuItemActionPerformed(evt);
     
 }
@@ -578,14 +577,14 @@ updatesJMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.toolsJMenu!.add(this.updatesJMenuItem);
+this->toolsJMenu.add(this->updatesJMenuItem);
     
-this.subscriptionJMenuItem!.setText("Subscription");
+this->subscriptionJMenuItem.setText("Subscription");
     
-this.subscriptionJMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->subscriptionJMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 subscriptionJMenuItemActionPerformed(evt);
     
 }
@@ -593,14 +592,14 @@ subscriptionJMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.toolsJMenu!.add(this.subscriptionJMenuItem);
+this->toolsJMenu.add(this->subscriptionJMenuItem);
     
-this.modulesJMenuItem!.setText("Module Manager");
+this->modulesJMenuItem.setText("Module Manager");
     
-this.modulesJMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->modulesJMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 modulesJMenuItemActionPerformed(evt);
     
 }
@@ -608,14 +607,14 @@ modulesJMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.toolsJMenu!.add(this.modulesJMenuItem);
+this->toolsJMenu.add(this->modulesJMenuItem);
     
-this.aboutJMenuItem!.setText("About");
+this->aboutJMenuItem.setText("About");
     
-this.aboutJMenuItem!.addActionListener(new class extends java.awt.event.ActionListener
+this->aboutJMenuItem.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 aboutJMenuItemActionPerformed(evt);
     
 }
@@ -623,119 +622,119 @@ aboutJMenuItemActionPerformed(evt);
                                 }
                             );
     
-this.toolsJMenu!.add(this.aboutJMenuItem);
+this->toolsJMenu.add(this->aboutJMenuItem);
     
-this.mainJMenuBar!.add(this.toolsJMenu);
+this->mainJMenuBar.add(this->toolsJMenu);
     
-setJMenuBar(this.mainJMenuBar);
+setJMenuBar(this->mainJMenuBar);
     
 
-    layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(getContentPane());;
+    javax::swing::GroupLayout layout = javax::swing::GroupLayout(getContentPane());;
     
-getContentPane()!.setLayout(layout);
+getContentPane().setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addComponent(gameRobotJTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short.MAX_VALUE));
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(gameRobotJTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 571, Short::MAX_VALUE));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addComponent(gameRobotJTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short.MAX_VALUE));
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(gameRobotJTabbedPane, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 359, Short::MAX_VALUE));
     
 pack();
     
 }
 
 
-    subscriptionJMenuItemActionPerformed(java.awt.event.ActionEvent evt){
+    private: void subscriptionJMenuItemActionPerformed(java::awt::event::ActionEvent evt){
 
         try {
-            Desktop.getDesktop()!.browse(this.uri);
+            Desktop::getDesktop().browse(this->uri);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "subscriptionJMenuItemActionPerformed", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "subscriptionJMenuItemActionPerformed", e);
     
 }
 
 }
 
 
-    updatesJMenuItemActionPerformed(java.awt.event.ActionEvent evt){
+    private: void updatesJMenuItemActionPerformed(java::awt::event::ActionEvent evt){
 
         try {
-            Desktop.getDesktop()!.browse(this.uri);
+            Desktop::getDesktop().browse(this->uri);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "updatesJMenuItemActionPerformed", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "updatesJMenuItemActionPerformed", e);
     
 }
 
 }
 
 
-    aboutJMenuItemActionPerformed(java.awt.event.ActionEvent evt){
+    private: void aboutJMenuItemActionPerformed(java::awt::event::ActionEvent evt){
 
-    textJDialog: JDialog = new BasicTextJDialog("Copyright (c) 2002-2007 AllBinary");;
+    JDialog textJDialog = BasicTextJDialog("Copyright (c) 2002-2007 AllBinary");;
     
-textJDialog!.setVisible(true);
+textJDialog.setVisible(true);
     
-textJDialog!.setLocationRelativeTo(this);
+textJDialog.setLocationRelativeTo(this);
     
 }
 
 
-    modulesJMenuItemActionPerformed(java.awt.event.ActionEvent evt){
+    private: void modulesJMenuItemActionPerformed(java::awt::event::ActionEvent evt){
 
         try {
-            new DesktopBundle().start();
+            DesktopBundle().start();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "modulesJMenuItemActionPerformed", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "modulesJMenuItemActionPerformed", e);
     
 }
 
 }
 
 
-    helpJMenuItemActionPerformed(java.awt.event.ActionEvent evt){
-JavaHelpUtil.getInstance()!.show(this.helpSet);
+    private: void helpJMenuItemActionPerformed(java::awt::event::ActionEvent evt){
+JavaHelpUtil::getInstance().show(this->helpSet);
     
 }
 
 
-    stopOnFocusJCheckBoxMenuItemActionPerformed(java.awt.event.ActionEvent evt){
+    private: void stopOnFocusJCheckBoxMenuItemActionPerformed(java::awt::event::ActionEvent evt){
 }
 
 
-    optionsJMenuActionPerformed(java.awt.event.ActionEvent evt){
+    private: void optionsJMenuActionPerformed(java::awt::event::ActionEvent evt){
 }
 
 
-    formWindowLostFocus(java.awt.event.WindowEvent evt){
-this.logUtil!.putF("Nothing", this, "focusLost");
+    private: void formWindowLostFocus(java::awt::event::WindowEvent evt){
+this->logUtil.putF("Nothing", this, "focusLost");
     
 }
 
 
-    formWindowGainedFocus(java.awt.event.WindowEvent evt){
+    private: void formWindowGainedFocus(java::awt::event::WindowEvent evt){
 
-                        if(this.stopOnFocusJCheckBoxMenuItem!.isSelected())
+                        if(this->stopOnFocusJCheckBoxMenuItem.isSelected())
                         
                                     {
-                                    this.logUtil!.putF("Stopping", this, "focusGained");
+                                    this->logUtil.putF("Stopping", this, "focusGained");
     
 
-                        if(this.runnableInterface != 
-                                    null
+                        if(this->runnableInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.runnableInterface!.setRunning(false);
+                                    this->runnableInterface.setRunning(false);
     
 
                                     }
@@ -746,48 +745,46 @@ this.logUtil!.putF("Nothing", this, "focusLost");
 }
 
 
-    formFocusLost(java.awt.event.FocusEvent evt){
+    private: void formFocusLost(java::awt::event::FocusEvent evt){
 }
 
 
-    formFocusGained(java.awt.event.FocusEvent evt){
+    private: void formFocusGained(java::awt::event::FocusEvent evt){
 }
 
 
-    inputAutomationModuleJListValueChanged(javax.swing.event.ListSelectionEvent evt){
+    private: void inputAutomationModuleJListValueChanged(javax::swing::event::ListSelectionEvent evt){
 
         try {
             
-    gameAutomationRobotModuleNameString: string = this.inputAutomationModuleJList!.getSelectedValue() as string;;
+    std::string gameAutomationRobotModuleNameString = this->inputAutomationModuleJList.getSelectedValue() as string;;
     
 
-                        if(gameAutomationRobotModuleNameString != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.inputAutomationModuleInterface= this.inputAutomationModuleFactory!.getInstance(gameAutomationRobotModuleNameString);
+                                    this->inputAutomationModuleInterface= this->inputAutomationModuleFactory.getInstance(gameAutomationRobotModuleNameString);
     
-this.getAutomationModuleConfigurationJPanel()!.removeAll();
+this->getAutomationModuleConfigurationJPanel().removeAll();
     
 
-    layout: javax.swing.GroupLayout = this.getAutomationModuleConfigurationJPanel()!.getLayout() as javax.swing.GroupLayout;;
+    javax::swing::GroupLayout layout = this->getAutomationModuleConfigurationJPanel().getLayout() as javax::swing::GroupLayout;;
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGap(0, 395, Short.MAX_VALUE)!.addComponent(this.inputAutomationModuleInterface!.getConfigurationJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 395, Short::MAX_VALUE).addComponent(this->inputAutomationModuleInterface.getConfigurationJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGap(0, 256, Short.MAX_VALUE)!.addComponent(this.inputAutomationModuleInterface!.getConfigurationJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 256, Short::MAX_VALUE).addComponent(this->inputAutomationModuleInterface.getConfigurationJPanel(), javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE));
     
-this.gameRobotJTabbedPane!.setEnabledAt(1, true);
+this->gameRobotJTabbedPane.setEnabledAt(1, true);
     
-this.logUtil!.putF("Setting Module: " +gameAutomationRobotModuleNameString +" and Configuration JPanel", this, "gameAutomationRobotModuleJListValueChanged");
+this->logUtil.putF("Setting Module: " +gameAutomationRobotModuleNameString +" and Configuration JPanel", this, "gameAutomationRobotModuleJListValueChanged");
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Module name was null", this, "gameAutomationRobotModuleJListValueChanged");
+                            this->logUtil.putF("Module name was null", this, "gameAutomationRobotModuleJListValueChanged");
     
-this.gameRobotJTabbedPane!.setEnabledAt(1, false);
+this->gameRobotJTabbedPane.setEnabledAt(1, false);
     
 
                         }
@@ -796,29 +793,29 @@ this.gameRobotJTabbedPane!.setEnabledAt(1, false);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "gameAutomationRobotModuleJListValueChanged", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "gameAutomationRobotModuleJListValueChanged", e);
     
 }
 
 }
 
 
-    stopJMenuItemActionPerformed(java.awt.event.ActionEvent evt){
+    private: void stopJMenuItemActionPerformed(java::awt::event::ActionEvent evt){
 
-                        if(this.runnableInterface != 
-                                    null
+                        if(this->runnableInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.runnableInterface!.setRunning(false);
+                                    this->runnableInterface.setRunning(false);
     
 
                                     }
                                 
                         else {
-                            this.noModuleSelectedJDialog!.setVisible(true);
+                            this->noModuleSelectedJDialog.setVisible(true);
     
-this.noModuleSelectedJDialog!.setLocationRelativeTo(this);
+this->noModuleSelectedJDialog.setLocationRelativeTo(this);
     
 
                         }
@@ -826,40 +823,40 @@ this.noModuleSelectedJDialog!.setLocationRelativeTo(this);
 }
 
 
-    startJMenuItemActionPerformed(java.awt.event.ActionEvent evt){
+    private: void startJMenuItemActionPerformed(java::awt::event::ActionEvent evt){
 
         try {
-            this.logUtil!.putF("Starting", this, "startJMenuItemActionPerformed");
+            this->logUtil.putF("Starting", this, "startJMenuItemActionPerformed");
     
 
-                        if(this.inputAutomationModuleInterface != 
-                                    null
+                        if(this->inputAutomationModuleInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.runnableInterface= this.inputAutomationModuleInterface!.getInstance();
+                                    this->runnableInterface= this->inputAutomationModuleInterface.getInstance();
     
 
-                        if(this.runnableInterface != 
-                                    null
+                        if(this->runnableInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.thread= new Thread(this.runnableInterface);
+                                    this->thread= Thread(this->runnableInterface);
     
-this.thread.setPriority(Thread.MIN_PRIORITY +1);
+this->thread.setPriority(Thread::MIN_PRIORITY +1);
     
-this.thread.start();
+this->thread.start();
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Runnnable was null", this, "startJMenuItemActionPerformed");
+                            this->logUtil.putF("Runnnable was null", this, "startJMenuItemActionPerformed");
     
-this.noModuleSelectedJDialog!.setVisible(true);
+this->noModuleSelectedJDialog.setVisible(true);
     
-this.noModuleSelectedJDialog!.setLocationRelativeTo(this);
+this->noModuleSelectedJDialog.setLocationRelativeTo(this);
     
 
                         }
@@ -868,11 +865,11 @@ this.noModuleSelectedJDialog!.setLocationRelativeTo(this);
                                     }
                                 
                         else {
-                            this.logUtil!.putF("InputAutomationModuleInterface was null", this, "startJMenuItemActionPerformed");
+                            this->logUtil.putF("InputAutomationModuleInterface was null", this, "startJMenuItemActionPerformed");
     
-this.noModuleSelectedJDialog!.setVisible(true);
+this->noModuleSelectedJDialog.setVisible(true);
     
-this.noModuleSelectedJDialog!.setLocationRelativeTo(this);
+this->noModuleSelectedJDialog.setLocationRelativeTo(this);
     
 
                         }
@@ -881,173 +878,173 @@ this.noModuleSelectedJDialog!.setLocationRelativeTo(this);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "startJMenuItemActionPerformed", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "startJMenuItemActionPerformed", e);
     
 }
 
 }
 
 
-    public javax.swing.JPanel getAutomationModuleConfigurationJPanel(){
+    public: javax::swing::JPanel getAutomationModuleConfigurationJPanel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.automationModuleConfigurationJPanel;
+                        return this->automationModuleConfigurationJPanel;
     
 }
 
 
-    public setAutomationModuleConfigurationJPanel(javax.swing.JPanel automationModuleConfigurationJPanel){
-this.automationModuleConfigurationJPanel= automationModuleConfigurationJPanel;
+    public: void setAutomationModuleConfigurationJPanel(javax::swing::JPanel automationModuleConfigurationJPanel){
+this->automationModuleConfigurationJPanel= automationModuleConfigurationJPanel;
     
 }
 
 
-    public onAdd(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent){
+    public: void onAdd(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "onAdd");
+            this->logUtil.putF(this->commonStrings.START, this, "onAdd");
     
-InputRobotFactory.getInstance()!.add(inputAutomationRobotChangeEvent!.getInputAutomationRobotInterfaceWrapper()!.getInputRobotInterface());
+InputRobotFactory::getInstance().add(inputAutomationRobotChangeEvent.getInputAutomationRobotInterfaceWrapper().getInputRobotInterface());
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "onAdd", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onAdd", e);
     
 }
 
 }
 
 
-    public onRemove(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent){
+    public: void onRemove(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "onRemove");
+            this->logUtil.putF(this->commonStrings.START, this, "onRemove");
     
-InputRobotFactory.getInstance()!.add(inputAutomationRobotChangeEvent!.getInputAutomationRobotInterfaceWrapper()!.getInputRobotInterface());
+InputRobotFactory::getInstance().add(inputAutomationRobotChangeEvent.getInputAutomationRobotInterfaceWrapper().getInputRobotInterface());
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "onRemove", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onRemove", e);
     
 }
 
 }
 
 
-    public onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent){
+    public: void onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "onAdd");
+            this->logUtil.putF(this->commonStrings.START, this, "onAdd");
     
-this.inputAutomationModuleConfigurations!.add(inputAutomationConfigurationChangeEvent!.getInputAutomationModuleConfiguration());
+this->inputAutomationModuleConfigurations.add(inputAutomationConfigurationChangeEvent.getInputAutomationModuleConfiguration());
     
-this.init();
+this->init();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "onAdd", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onAdd", e);
     
 }
 
 }
 
 
-    public onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent){
+    public: void onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "onRemove");
+            this->logUtil.putF(this->commonStrings.START, this, "onRemove");
     
 
-    inputAutomationConfiguration: InputAutomationConfiguration = InputAutomationConfigurationFactory.getInstance()!.inputAutomationConfiguration;;
+    InputAutomationConfiguration inputAutomationConfiguration = InputAutomationConfigurationFactory::getInstance().inputAutomationConfiguration;;
     
 
-    inputAutomationModuleConfigurationList: java.util.List<InputAutomationModuleConfiguration> = inputAutomationConfiguration!.getInputAutomationModuleConfigurationList()!;;
+    java::util::List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList = inputAutomationConfiguration.getInputAutomationModuleConfigurationList();;
     
 
                         if(inputAutomationModuleConfigurationList == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF("inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, this, commonStrings!.INIT);
+logUtil.putF("inputAutomationModuleConfigurationList: " +inputAutomationModuleConfigurationList, this, commonStrings.INIT);
     
 
 
 
-                            throw new Exception();
+                            throw Exception();
                     
 
                                     }
                                 
 
-    inputAutomationModuleConfigurations: InputAutomationModuleConfigurations = new InputAutomationModuleConfigurations(inputAutomationConfiguration!.getInputAutomationModuleConfigurationList());;
+    InputAutomationModuleConfigurations inputAutomationModuleConfigurations = InputAutomationModuleConfigurations(inputAutomationConfiguration.getInputAutomationModuleConfigurationList());;
     
-inputAutomationModuleConfigurations!.remove(inputAutomationConfigurationChangeEvent!.getInputAutomationModuleConfiguration());
+inputAutomationModuleConfigurations.remove(inputAutomationConfigurationChangeEvent.getInputAutomationModuleConfiguration());
     
-this.init();
+this->init();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "onRemove", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onRemove", e);
     
 }
 
 }
 
 
-    private: aboutJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem aboutJMenuItem;
 
-    private: automationModuleConfigurationJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel automationModuleConfigurationJPanel;
 
-    private: gameRobotJTabbedPane: javax.swing.JTabbedPane;
+    private: javax::swing::JTabbedPane gameRobotJTabbedPane;
 
-    private: helpJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem helpJMenuItem;
 
-    private: inputAutomationModuleJList: javax.swing.JList;
+    private: javax::swing::JList inputAutomationModuleJList;
 
-    private: inputAutomationModuleJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel inputAutomationModuleJPanel;
 
-    private: jScrollPane1: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane jScrollPane1;
 
-    private: mainJMenuBar: javax.swing.JMenuBar;
+    private: javax::swing::JMenuBar mainJMenuBar;
 
-    private: modulesJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem modulesJMenuItem;
 
-    private: noModuleSelectedJDialog: javax.swing.JDialog;
+    private: javax::swing::JDialog noModuleSelectedJDialog;
 
-    private: noModuleSelectedJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel noModuleSelectedJLabel;
 
-    private: optionsJMenu: javax.swing.JMenu;
+    private: javax::swing::JMenu optionsJMenu;
 
-    private: processingJMenu: javax.swing.JMenu;
+    private: javax::swing::JMenu processingJMenu;
 
-    private: startJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem startJMenuItem;
 
-    private: stopJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem stopJMenuItem;
 
-    private: stopOnFocusJCheckBoxMenuItem: javax.swing.JCheckBoxMenuItem;
+    private: javax::swing::JCheckBoxMenuItem stopOnFocusJCheckBoxMenuItem;
 
-    private: subscriptionJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem subscriptionJMenuItem;
 
-    private: toolsJMenu: javax.swing.JMenu;
+    private: javax::swing::JMenu toolsJMenu;
 
-    private: updatesJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem updatesJMenuItem;
 
 };
 

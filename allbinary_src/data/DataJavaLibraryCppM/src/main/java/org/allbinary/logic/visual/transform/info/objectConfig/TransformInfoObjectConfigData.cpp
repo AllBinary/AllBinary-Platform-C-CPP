@@ -45,33 +45,30 @@
 class TransformInfoObjectConfigData
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoObjectConfigData = new TransformInfoObjectConfigData();
+    private: static TransformInfoObjectConfigData instance() { return TransformInfoObjectConfigData(); }
 
-    public static TransformInfoObjectConfigData getInstance(){
+    public: static TransformInfoObjectConfigData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigData.instance;
+                        return TransformInfoObjectConfigData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoObjectConfigData(){
+}
 
 
-    public const NAME: string = "OBJECTCONFIG_NAME";
+    public: const std::string NAME = "OBJECTCONFIG_NAME";
 
-    public const VARKEY: string = "$";
+    public: const std::string VARKEY = "$";
 
-    public const UNCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
 
-    public const ENCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
 
 };
 

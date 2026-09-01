@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -85,154 +87,151 @@
 class CanvasDom
             : public Object
          {
-        
 
-    public static const FRAME: string = "frame";
+    public: static const std::string FRAME = "frame";
 
-    public static const ROTATE: string = "rotate";
+    public: static const std::string ROTATE = "rotate";
 
-    public static const SIZE: string = "size";
+    public: static const std::string SIZE = "size";
 
-    public static const X: string = "X";
+    public: static const std::string X = "X";
 
-    public static const Y: string = "Y";
+    public: static const std::string Y = "Y";
 
-    public static const ZOOM: string = "zoom";
+    public: static const std::string ZOOM = "zoom";
 
-    public static const GRID: string = "grid";
+    public: static const std::string GRID = "grid";
 
-    public static const ENABLED: string = "enabled";
+    public: static const std::string ENABLED = "enabled";
 
-    public static const POSSIBLE: string = "possible";
+    public: static const std::string POSSIBLE = "possible";
 
-    public static const GRAPHICITEMS: string = "graphicItems";
+    public: static const std::string GRAPHICITEMS = "graphicItems";
 
-    public static const REAL_SIZE: string = "realSize";
+    public: static const std::string REAL_SIZE = "realSize";
 
-    public static const WIDTH: string = "width";
+    public: static const std::string WIDTH = "width";
 
-    public static const HEIGHT: string = "height";
+    public: static const std::string HEIGHT = "height";
 
-    private: graphicItemHashMap: HashMap<any, any>;
+    private: HashMap<any, any> graphicItemHashMap;
 
-    private: angle: double;
+    private: double angle;
 
-    private: dimension: IntegerDimension;
+    private: IntegerDimension dimension;
 
-    private: const grid: Grid;
+    private: Grid grid;
 
-public constructor (Node canvasNode){
-
-            super();
-        this.grid= new Grid();
+public: CanvasDom(Node canvasNode){
+this->grid= Grid();
     
-this.grid.grid= PointFactory.getInstance()!.createXY(0, 0);
+this->grid.grid= PointFactory::getInstance().createXY(0, 0);
     
-this.dimension= new IntegerDimension(0, 0);
+this->dimension= IntegerDimension(0, 0);
     
 
-    name: string = canvasNode!.getNodeName()!;;
+    std::string name = canvasNode.getNodeName();;
     
 
-                        if(name.compareTo(CanvasDom.FRAME) == 0)
+                        if(name.compareTo(CanvasDom::FRAME) == 0)
                         
                                     {
-                                    this.graphicItemHashMap= new HashMap<any, any>();
+                                    this->graphicItemHashMap= HashMap<any, any>();
     
 
-    angleNode: Node = DomHelper.getInstance()!.searchNodeList(this.ROTATE, canvasNode!.getChildNodes())!;;
+    Node angleNode = DomHelper::getInstance().searchNodeList(this->ROTATE, canvasNode.getChildNodes());;
     
 
-    angleTextNode: Node = angleNode!.getFirstChild()!;;
+    Node angleTextNode = angleNode.getFirstChild();;
     
 
-    angle: double = new number(angleTextNode!.getNodeValue()).doubleValue()!;;
+    double angle = number(angleTextNode.getNodeValue()).doubleValue();;
     
-this.setAngle(angle);
-    
-
-    sizeNode: Node = DomHelper.getInstance()!.searchNodeList(this.SIZE, canvasNode!.getChildNodes())!;;
+this->setAngle(angle);
     
 
-    xNode: Node = DomHelper.getInstance()!.searchNodeList(this.X, sizeNode!.getChildNodes())!;;
+    Node sizeNode = DomHelper::getInstance().searchNodeList(this->SIZE, canvasNode.getChildNodes());;
     
 
-    xTextNode: Node = xNode!.getFirstChild()!;;
+    Node xNode = DomHelper::getInstance().searchNodeList(this->X, sizeNode.getChildNodes());;
     
 
-    x: int32_t = new Integer(xTextNode!.getNodeValue()).intValue()!;;
+    Node xTextNode = xNode.getFirstChild();;
     
 
-    yNode: Node = DomHelper.getInstance()!.searchNodeList(this.Y, sizeNode!.getChildNodes())!;;
+    int32_t x = Integer(xTextNode.getNodeValue()).intValue();;
     
 
-    yTextNode: Node = yNode!.getFirstChild()!;;
+    Node yNode = DomHelper::getInstance().searchNodeList(this->Y, sizeNode.getChildNodes());;
     
 
-    y: int32_t = new Integer(yTextNode!.getNodeValue()).intValue()!;;
-    
-this.setWorkArea(x, y);
+    Node yTextNode = yNode.getFirstChild();;
     
 
-    zoomNode: Node = DomHelper.getInstance()!.searchNodeList(this.ZOOM, canvasNode!.getChildNodes())!;;
+    int32_t y = Integer(yTextNode.getNodeValue()).intValue();;
+    
+this->setWorkArea(x, y);
     
 
-    zoomTextNode: Node = zoomNode!.getFirstChild()!;;
-    
-this.grid.setZoom(new Integer(zoomTextNode!.getNodeValue()).intValue());
+    Node zoomNode = DomHelper::getInstance().searchNodeList(this->ZOOM, canvasNode.getChildNodes());;
     
 
-    gridNode: Node = DomHelper.getInstance()!.searchNodeList(this.GRID, canvasNode!.getChildNodes())!;;
+    Node zoomTextNode = zoomNode.getFirstChild();;
+    
+this->grid.setZoom(Integer(zoomTextNode.getNodeValue()).intValue());
     
 
-    gridSizeNode: Node = DomHelper.getInstance()!.searchNodeList(this.SIZE, gridNode!.getChildNodes())!;;
+    Node gridNode = DomHelper::getInstance().searchNodeList(this->GRID, canvasNode.getChildNodes());;
     
 
-    gridXNode: Node = DomHelper.getInstance()!.searchNodeList(this.X, gridSizeNode!.getChildNodes())!;;
+    Node gridSizeNode = DomHelper::getInstance().searchNodeList(this->SIZE, gridNode.getChildNodes());;
     
 
-    gridXTextNode: Node = gridXNode!.getFirstChild()!;;
+    Node gridXNode = DomHelper::getInstance().searchNodeList(this->X, gridSizeNode.getChildNodes());;
     
 
-    gridX: int32_t = new Integer(gridXTextNode!.getNodeValue()).intValue()!;;
+    Node gridXTextNode = gridXNode.getFirstChild();;
     
 
-    gridYNode: Node = DomHelper.getInstance()!.searchNodeList(this.Y, gridSizeNode!.getChildNodes())!;;
+    int32_t gridX = Integer(gridXTextNode.getNodeValue()).intValue();;
     
 
-    gridYTextNode: Node = gridYNode!.getFirstChild()!;;
+    Node gridYNode = DomHelper::getInstance().searchNodeList(this->Y, gridSizeNode.getChildNodes());;
     
 
-    gridY: int32_t = new Integer(gridYTextNode!.getNodeValue()).intValue()!;;
-    
-this.setGrid(gridX, gridY);
+    Node gridYTextNode = gridYNode.getFirstChild();;
     
 
-    enableNode: Node = DomHelper.getInstance()!.searchNodeList(this.ENABLED, gridNode!.getChildNodes())!;;
+    int32_t gridY = Integer(gridYTextNode.getNodeValue()).intValue();;
+    
+this->setGrid(gridX, gridY);
     
 
-    enableTextNode: Node = enableNode!.getFirstChild()!;;
-    
-this.grid.showGrid(.valueOf());
+    Node enableNode = DomHelper::getInstance().searchNodeList(this->ENABLED, gridNode.getChildNodes());;
     
 
-    possibleNode: Node = DomHelper.getInstance()!.searchNodeList(this.POSSIBLE, gridNode!.getChildNodes())!;;
+    Node enableTextNode = enableNode.getFirstChild();;
+    
+this->grid.showGrid(.valueOf());
     
 
-    possibleTextNode: Node = possibleNode!.getFirstChild()!;;
-    
-this.grid.isGridPossible= .valueOf();
+    Node possibleNode = DomHelper::getInstance().searchNodeList(this->POSSIBLE, gridNode.getChildNodes());;
     
 
-    graphicItemNodeList: BasicArrayList = DomHelper.getInstance()!.getChildrenWithoutTextNodes(this.GRAPHICITEMS, canvasNode!.getChildNodes())!;;
+    Node possibleTextNode = possibleNode.getFirstChild();;
+    
+this->grid.isGridPossible= .valueOf();
+    
+
+    BasicArrayList graphicItemNodeList = DomHelper::getInstance().getChildrenWithoutTextNodes(this->GRAPHICITEMS, canvasNode.getChildNodes());;
     
 
                         if(graphicItemNodeList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.graphicItemHashMap= GraphicItemFactory.getInstance()!.getInstance(graphicItemNodeList);
+                                    this->graphicItemHashMap= GraphicItemFactory::getInstance().getInstance(graphicItemNodeList);
     
 
                                     }
@@ -244,7 +243,7 @@ this.grid.isGridPossible= .valueOf();
                             
 
 
-                            throw new Exception("Frame Element Not Found but Found: " +name);
+                            throw Exception("Frame Element Not Found but Found: " +name);
                     
 
                         }
@@ -252,90 +251,88 @@ this.grid.isGridPossible= .valueOf();
 }
 
 
-public constructor (CanvasJPanel canvasJPanel){
-
-            super();
-        this.angle= canvasJPanel!.getAngle();
+public: CanvasDom(CanvasJPanel canvasJPanel){
+this->angle= canvasJPanel.getAngle();
     
-this.graphicItemHashMap= canvasJPanel!.getGraphicItemHashMap();
+this->graphicItemHashMap= canvasJPanel.getGraphicItemHashMap();
     
-this.dimension= canvasJPanel!.getCanvasDimension();
+this->dimension= canvasJPanel.getCanvasDimension();
     
-this.grid= new Grid(canvasJPanel!.getGrid());
+this->grid= Grid(canvasJPanel.getGrid());
     
-this.angle= canvasJPanel!.getAngle();
+this->angle= canvasJPanel.getAngle();
     
 }
 
 
-    public double getAngle(){
+    public: double getAngle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angle;
+                        return this->angle;
     
 }
 
 
-    public HashMap<any, any> getGraphicItemHashMap(){
+    public: HashMap<any, any> getGraphicItemHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.graphicItemHashMap;
+                        return this->graphicItemHashMap;
     
 }
 
 
-    public setAngle(double angle){
-this.angle= angle;
+    public: void setAngle(double angle){
+this->angle= angle;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setWorkArea(int32_t x, int32_t y){
-this.setDimension(new IntegerDimension(x, y));
+    public: void setWorkArea(int32_t x, int32_t y){
+this->setDimension(IntegerDimension(x, y));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setGrid(int32_t gridX, int32_t gridY){
-this.grid.grid= PointFactory.getInstance()!.createXY(gridX, gridY);
+    public: void setGrid(int32_t gridX, int32_t gridY){
+this->grid.grid= PointFactory::getInstance().createXY(gridX, gridY);
     
 }
 
 
-    Node getPointNode(GPoint point, string pointName){
+    private: Node getPointNode(GPoint point, std::string pointName){
 
-    document: org.w3c.dom.Document = WorkAreaJPanel.getDocument()!;;
-    
-
-    pointNode: Node = document.createElement(pointName) as Node;;
+    org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    xNode: Node = document.createElement(this.X) as Node;;
+    Node pointNode = document.createElement(pointName) as Node;;
     
 
-    xTextNode: Node = document.createTextNode(Integer.toString(point.getX())) as Node;;
-    
-xNode!.appendChild(xTextNode);
+    Node xNode = document.createElement(this->X) as Node;;
     
 
-    yNode: Node = document.createElement(this.Y) as Node;;
+    Node xTextNode = document.createTextNode(std::to_string(getX)) as Node;;
+    
+xNode.appendChild(xTextNode);
     
 
-    yTextNode: Node = document.createTextNode(Integer.toString(point.getY())) as Node;;
+    Node yNode = document.createElement(this->Y) as Node;;
     
-yNode!.appendChild(yTextNode);
+
+    Node yTextNode = document.createTextNode(std::to_string(getY)) as Node;;
     
-pointNode!.appendChild(xNode);
+yNode.appendChild(yTextNode);
     
-pointNode!.appendChild(yNode);
+pointNode.appendChild(xNode);
+    
+pointNode.appendChild(yNode);
     
 
 
@@ -348,127 +345,126 @@ pointNode!.appendChild(yNode);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom(){
+    public: Node toDom(){
 
-    document: org.w3c.dom.Document = WorkAreaJPanel.getDocument()!;;
-    
-
-    frameNode: Node = document.createElement(this.FRAME) as Node;;
+    org::w3c::dom::Document document = WorkAreaJPanel::getDocument();;
     
 
-    angleNode: Node = document.createElement(this.ROTATE) as Node;;
+    Node frameNode = document.createElement(this->FRAME) as Node;;
     
 
-    angleTextNode: Node = document.createTextNode(new number(this.getAngle()).toString()) as Node;;
-    
-angleNode!.appendChild(angleTextNode);
+    Node angleNode = document.createElement(this->ROTATE) as Node;;
     
 
-    sizeNode: Node = this.getPointNode(PointFactory.getInstance()!.createXY(this.getDimension()!.getWidth(), this.getDimension()!.getHeight()), this.SIZE) as Node;;
+    Node angleTextNode = document.createTextNode(number(this->getAngle()).toString()) as Node;;
+    
+angleNode.appendChild(angleTextNode);
     
 
-    zoomNode: Node = document.createElement(this.ZOOM) as Node;;
+    Node sizeNode = this->getPointNode(PointFactory::getInstance().createXY(this->getDimension().getWidth(), this->getDimension().getHeight()), this->SIZE) as Node;;
     
 
-    zoomTextNode: Node = document.createTextNode(new Integer(this.getGrid()!.getZoom()).toString()) as Node;;
-    
-zoomNode!.appendChild(zoomTextNode);
+    Node zoomNode = document.createElement(this->ZOOM) as Node;;
     
 
-    gridNode: Node = document.createElement(this.GRID) as Node;;
+    Node zoomTextNode = document.createTextNode(Integer(this->getGrid().getZoom()).toString()) as Node;;
+    
+zoomNode.appendChild(zoomTextNode);
     
 
-    gridSizeNode: Node = this.getPointNode(this.getGrid()!.grid, this.SIZE) as Node;;
-    
-gridNode!.appendChild(gridSizeNode);
+    Node gridNode = document.createElement(this->GRID) as Node;;
     
 
-    enableNode: Node = document.createElement(this.ENABLED) as Node;;
+    Node gridSizeNode = this->getPointNode(this->getGrid().grid, this->SIZE) as Node;;
+    
+gridNode.appendChild(gridSizeNode);
     
 
-    enableTextNode: Node = document.createTextNode(.toString()) as Node;;
-    
-enableNode!.appendChild(enableTextNode);
-    
-gridNode!.appendChild(enableNode);
+    Node enableNode = document.createElement(this->ENABLED) as Node;;
     
 
-    possibleNode: Node = document.createElement(this.POSSIBLE) as Node;;
+    Node enableTextNode = document.createTextNode(.toString()) as Node;;
+    
+enableNode.appendChild(enableTextNode);
+    
+gridNode.appendChild(enableNode);
     
 
-    possibleTextNode: Node = document.createTextNode(.toString()) as Node;;
-    
-possibleNode!.appendChild(possibleTextNode);
-    
-gridNode!.appendChild(possibleNode);
+    Node possibleNode = document.createElement(this->POSSIBLE) as Node;;
     
 
-    realSizeNode: Node = document.createElement(REAL_SIZE) as Node;;
+    Node possibleTextNode = document.createTextNode(.toString()) as Node;;
+    
+possibleNode.appendChild(possibleTextNode);
+    
+gridNode.appendChild(possibleNode);
     
 
-    vectorCenterGenerator: VectorCenterGenerator = new VectorCenterGenerator();;
-    
-vectorCenterGenerator!.calculate(this.getGraphicItemHashMap());
+    Node realSizeNode = document.createElement(REAL_SIZE) as Node;;
     
 
-    widthNode: Node = document.createElement(WIDTH) as Node;;
+    VectorCenterGenerator vectorCenterGenerator = VectorCenterGenerator();;
+    
+vectorCenterGenerator.calculate(this->getGraphicItemHashMap());
     
 
-    widthTextNode: Node = document.createTextNode(Integer.toString(vectorCenterGenerator!.getWidth())) as Node;;
-    
-widthNode!.appendChild(widthTextNode);
-    
-realSizeNode!.appendChild(widthNode);
+    Node widthNode = document.createElement(WIDTH) as Node;;
     
 
-    heightNode: Node = document.createElement(HEIGHT) as Node;;
+    Node widthTextNode = document.createTextNode(std::to_string(getWidth)) as Node;;
+    
+widthNode.appendChild(widthTextNode);
+    
+realSizeNode.appendChild(widthNode);
     
 
-    heightTextNode: Node = document.createTextNode(Integer.toString(vectorCenterGenerator!.getHeight())) as Node;;
-    
-heightNode!.appendChild(heightTextNode);
-    
-realSizeNode!.appendChild(heightNode);
-    
-frameNode!.appendChild(angleNode);
-    
-frameNode!.appendChild(sizeNode);
-    
-frameNode!.appendChild(zoomNode);
-    
-frameNode!.appendChild(gridNode);
-    
-frameNode!.appendChild(realSizeNode);
+    Node heightNode = document.createElement(HEIGHT) as Node;;
     
 
-    graphicItemNode: Node = document.createElement(this.GRAPHICITEMS) as Node;;
+    Node heightTextNode = document.createTextNode(std::to_string(getHeight)) as Node;;
+    
+heightNode.appendChild(heightTextNode);
+    
+realSizeNode.appendChild(heightNode);
+    
+frameNode.appendChild(angleNode);
+    
+frameNode.appendChild(sizeNode);
+    
+frameNode.appendChild(zoomNode);
+    
+frameNode.appendChild(gridNode);
+    
+frameNode.appendChild(realSizeNode);
     
 
-    graphicItemArray: std::vector<any> = this.getGraphicItemHashMap()!.keys().()!;;
+    Node graphicItemNode = document.createElement(this->GRAPHICITEMS) as Node;;
     
 
-    size: int32_t = graphicItemArray!.length
-                ;;
+    std::vector<Object*> graphicItemArray = this->getGraphicItemHashMap().keys().();;
+    
+
+    int32_t size = graphicItemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: GraphicItemInterface = this.graphicItemHashMap!.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = this->graphicItemHashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
     
 
-                        if(item.getName() == LinesGraphicItem.getStaticName())
+                        if(item.getName() == LinesGraphicItem::getStaticName())
                         
                                     {
                                     
                         if(item.isValid())
                         
                                     {
-                                    graphicItemNode!.appendChild(item.toDom(this));
+                                    graphicItemNode.appendChild(item.toDom(this));
     
 
                                     }
@@ -478,7 +474,7 @@ frameNode!.appendChild(realSizeNode);
                                 
 }
 
-frameNode!.appendChild(graphicItemNode);
+frameNode.appendChild(graphicItemNode);
     
 
 
@@ -489,28 +485,28 @@ frameNode!.appendChild(graphicItemNode);
 }
 
 
-    public IntegerDimension getDimension(){
+    public: IntegerDimension getDimension(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dimension;
+                        return this->dimension;
     
 }
 
 
-    public setDimension(IntegerDimension dimension){
-this.dimension= dimension;
+    public: void setDimension(IntegerDimension dimension){
+this->dimension= dimension;
     
 }
 
 
-    public Grid getGrid(){
+    public: Grid getGrid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.grid;
+                        return this->grid;
     
 }
 

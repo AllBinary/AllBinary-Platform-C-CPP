@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -55,13 +57,12 @@
 #include "GeographicMapCellPositionFactoryInterface.h"
 
 class GeographicMapInterface {
-        
 
     Integer getId()
 
-    string getName()
+    std::string getName()
 
-    reset()
+    void reset()
 
     AllBinaryTiledLayer getAllBinaryTiledLayer()
 

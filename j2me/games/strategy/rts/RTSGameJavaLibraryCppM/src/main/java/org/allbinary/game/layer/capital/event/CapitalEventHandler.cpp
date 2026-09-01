@@ -50,21 +50,18 @@
 #include "CapitalEvent.h"
 
 class CapitalEventHandler: public BasicEventHandler {
-        
 
-public constructor (){
-
-            super();
-        }
+public: CapitalEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    capitalEventListenerInterface: CapitalEventListenerInterface = (eventListenerInterface as CapitalEventListenerInterface);;
+    CapitalEventListenerInterface capitalEventListenerInterface = (eventListenerInterface as CapitalEventListenerInterface);;
     
-capitalEventListenerInterface!.onCapitalChangeEvent(eventObject as CapitalEvent);
+capitalEventListenerInterface.onCapitalChangeEvent(eventObject as CapitalEvent);
     
 }
 

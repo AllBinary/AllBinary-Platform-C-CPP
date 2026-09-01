@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_H
         #define ORG_ALLBINARY_ANDROID_ACTIVITY_MIDLETACTIVITYBASE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -73,34 +75,33 @@
         #include "SimpleProgressActivityInterface.h"
 #include "KeyInputViewCompositeInterface.h"
 
-class MidletActivityBase: public Activity: public GameFeatureListenerInterface, public GameInitializedListenerInterface, public SimpleProgressActivityInterface, public KeyInputViewCompositeInterface, public GenericMotionEventVerifyInterface {
-        
+class MidletActivityBase: public Activity, public GameFeatureListenerInterface, public GameInitializedListenerInterface, public SimpleProgressActivityInterface, public KeyInputViewCompositeInterface, public GenericMotionEventVerifyInterface {
 
-    public onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
+    public: void onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onGameInitialized(GameInitializedEvent gameInitializedEvent);
-
-                //@Throws(Exception.constructor)
-            
-    public onSetProgress(int32_t value, string text);
+    public: void onGameInitialized(GameInitializedEvent gameInitializedEvent);
 
                 //@Throws(Exception.constructor)
             
-    public onDismissProgress(std::vector<int32_t> animationSequence);
+    public: void onSetProgress(int32_t value, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    public onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence);
+    public: void onDismissProgress(std::vector<int32_t> animationSequence);
 
-    public View getRootView();
+                //@Throws(Exception.constructor)
+            
+    public: void onShowProgress(bool indeterminate, std::vector<int32_t> animationSequence);
 
-    public View getView();
+    public: View getRootView();
 
-    public setKeyInputView(View keyInputView);
+    public: View getView();
 
-    public bool onGenericMotionEvent(MotionEvent event);
+    public: void setKeyInputView(View keyInputView);
+
+    public: bool onGenericMotionEvent(MotionEvent event);
 
 };
 

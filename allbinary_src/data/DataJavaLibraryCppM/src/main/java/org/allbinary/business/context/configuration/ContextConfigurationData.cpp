@@ -45,31 +45,28 @@
 class ContextConfigurationData
             : public Object
          {
-        
 
-    private: static const instance: ContextConfigurationData = new ContextConfigurationData();
+    private: static ContextConfigurationData instance() { return ContextConfigurationData(); }
 
-    public static ContextConfigurationData getInstance(){
+    public: static ContextConfigurationData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ContextConfigurationData.instance;
+                        return ContextConfigurationData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ContextConfigurationData(){
+}
 
 
-    public const NAME: string = "CONTEXT_CONFIGURATION_NAME";
+    public: const std::string NAME = "CONTEXT_CONFIGURATION_NAME";
 
-    public const UNCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
 
-    public const ENCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
 
 };
 

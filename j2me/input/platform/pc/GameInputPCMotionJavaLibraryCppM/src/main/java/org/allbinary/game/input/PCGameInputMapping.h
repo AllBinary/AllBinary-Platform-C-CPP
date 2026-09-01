@@ -63,17 +63,16 @@
 #include "Input.h"
 
 class PCGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor ();
+public: PCGameInputMapping();
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation);
+    public: void init(AbeClientInformationInterface abeClientInformation);
 
-    public bool isDelete(Input input);
+    public: bool isDelete(Input input);
 
-    public bool isSystemInput(Input input);
+    public: bool isSystemInput(Input input);
 
 };
 

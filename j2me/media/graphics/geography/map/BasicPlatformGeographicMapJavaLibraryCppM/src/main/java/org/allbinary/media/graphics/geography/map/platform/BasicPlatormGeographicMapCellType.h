@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_PLATFORM_BASICPLATORMGEOGRAPHICMAPCELLTYPE_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -59,17 +61,16 @@
 class BasicPlatormGeographicMapCellType
             : public Object
          {
-        
 
-    public static BasicPlatormGeographicMapCellType createType(int32_t type);
+    public: static BasicPlatormGeographicMapCellType createType(int32_t type);
 
-    private: const types: std::vector<int32_t>;
+    private: std::vector<int32_t> types;
 
-public constructor (BasicArrayList types);
+public: BasicPlatormGeographicMapCellType(BasicArrayList types);
 
-    public bool isType(GeographicMapCellType type);
+    public: bool isType(GeographicMapCellType type);
 
-    public bool hasType(int32_t type);
+    public: bool hasType(int32_t type);
 
 };
 

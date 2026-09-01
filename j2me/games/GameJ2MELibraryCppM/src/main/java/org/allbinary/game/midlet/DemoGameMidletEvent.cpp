@@ -51,39 +51,38 @@
         #include "DemoGameMidletState.h"
 
 class DemoGameMidletEvent: public AllBinaryEventObject {
-        
 
-    private: demoGameMidletState: DemoGameMidletState;
+    private: DemoGameMidletState demoGameMidletState;
 
-public constructor (any = {} anyType, DemoGameMidletState demoGameMidletState){
+public: DemoGameMidletEvent(Object* anyType, DemoGameMidletState demoGameMidletState){
             super(anyType);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.demoGameMidletState= demoGameMidletState;
+this->demoGameMidletState= demoGameMidletState;
     
 }
 
 
-    public init(any = {} anyType){
-this.setSource(anyType);
+    public: void init(Object* anyType){
+this->setSource(anyType);
     
 }
 
 
-    public setDemoGameMidletState(DemoGameMidletState demoGameMidletState){
-this.demoGameMidletState= demoGameMidletState;
+    public: void setDemoGameMidletState(DemoGameMidletState demoGameMidletState){
+this->demoGameMidletState= demoGameMidletState;
     
 }
 
 
-    public DemoGameMidletState getDemoGameMidletState(){
+    public: DemoGameMidletState getDemoGameMidletState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.demoGameMidletState;
+                        return this->demoGameMidletState;
     
 }
 

@@ -62,23 +62,22 @@
 class WorkAreaDom
             : public Object
          {
-        
 
-    public static const WORKAREA: string = "workArea";
+    public: static const std::string WORKAREA = "workArea";
 
-    public static const NAME: string = "name";
+    public: static const std::string NAME = "name";
 
-    public static const FRAMES: string = "frames";
+    public: static const std::string FRAMES = "frames";
 
-    private: name: string;
+    private: std::string name;
 
-    private: canvasNodeList: BasicArrayList;
+    private: BasicArrayList canvasNodeList;
 
-public constructor (Document document);
+public: WorkAreaDom(Document document);
 
-    public string getName();
+    public: std::string getName();
 
-    public BasicArrayList getCanvasNodes();
+    public: BasicArrayList getCanvasNodes();
 
 };
 

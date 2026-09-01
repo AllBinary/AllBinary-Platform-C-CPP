@@ -71,42 +71,41 @@
 #include "HttpServletResponse.h"
 
 class RequestHandler: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(ServletException.constructor)
             
-    public init(ServletConfig config){
+    public: void init(ServletConfig config){
 super.init(config);
     
 }
 
 
-    public destroy(){
+    public: void destroy(){
 }
 
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    processRequest(HttpServletRequest request, HttpServletResponse response){
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response){
 
         try {
             response.setContentType("text/html");
     
 
-    out: PrintWriter = response.getWriter()!;;
+    PrintWriter out = response.getWriter();;
     
 
-    workflowInterface: WorkFlowInterface = RequestWorkFlowFactory.getInstance(request as ServletRequest, response as ServletResponse, this.getServletConfig(), this.getServletContext())!;;
+    WorkFlowInterface workflowInterface = RequestWorkFlowFactory::getInstance(request as ServletRequest, response as ServletResponse, this->getServletConfig(), this->getServletContext());;
     
 
                         if(workflowInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    out.print(workflowInterface!.process());
+                                    out.print(workflowInterface.process());
     
 
                                     }
@@ -120,10 +119,10 @@ out.close();
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SERVLETERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SERVLETERROR))
                         
                                     {
-                                    this.logUtil!.put("Servlet LicensingException", this, "processRequest()", e);
+                                    this->logUtil.put("Servlet LicensingException", this, "processRequest()", e);
     
 
                                     }
@@ -136,10 +135,10 @@ response.sendRedirect(abcs.globals.URLGLOBALS.LICENSEERRORPAGE);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SERVLETERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SERVLETERROR))
                         
                                     {
-                                    this.logUtil!.put("Servlet Exception", this, "processRequest()", e);
+                                    this->logUtil.put("Servlet Exception", this, "processRequest()", e);
     
 
                                     }
@@ -153,21 +152,21 @@ response.sendRedirect(abcs.globals.URLGLOBALS.ERRORPAGE);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response){
-this.processRequest(request, response);
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response){
+this->processRequest(request, response);
     
 }
 
 
-    public string getServletInfo(){
+    public: std::string getServletInfo(){
 
 
 

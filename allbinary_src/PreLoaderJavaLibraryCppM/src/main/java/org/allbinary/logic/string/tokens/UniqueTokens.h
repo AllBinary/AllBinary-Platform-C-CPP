@@ -76,19 +76,18 @@
 class UniqueTokens
             : public Object
          {
-        
 
-    private: const specialCharacters: Vector = new Vector();
+    private: const Vector specialCharacters = Vector();
 
-public constructor ();
+public: UniqueTokens();
 
                 //@Throws(Exception.constructor)
             
-    public HashSet getWhithoutDashesAndSkipNumberOnlyTokens(Vector stringVector);
+    public: HashSet getWhithoutDashesAndSkipNumberOnlyTokens(Vector stringVector);
 
-    bool numberOnly(string subCleaningString);
+    private: bool numberOnly(std::string subCleaningString);
 
-    bool isSpecialCharacter(string subCleaningString);
+    private: bool isSpecialCharacter(std::string subCleaningString);
 
 };
 

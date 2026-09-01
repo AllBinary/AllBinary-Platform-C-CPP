@@ -69,16 +69,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class FallingPickupLayer: public PickupLayer: public TickableInterface {
-        
+class FallingPickupLayer: public PickupLayer, public TickableInterface {
 
-    private: static const NAME: string = "FallingPickupLayer";
+    private: static const std::string NAME = "FallingPickupLayer";
 
-public constructor (RemoteInfo remoteInfo);
+public: FallingPickupLayer(RemoteInfo remoteInfo);
 
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
-    public bool implmentsTickableInterface();
+    public: bool implmentsTickableInterface();
 
 };
 

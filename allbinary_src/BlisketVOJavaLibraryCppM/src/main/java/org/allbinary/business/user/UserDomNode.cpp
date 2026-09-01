@@ -69,45 +69,42 @@
 class UserDomNode
             : public Object
         : public DomNodeInterface {
-        
 
-    private: dataMappingInterface: TableMappingInterface;
+    private: TableMappingInterface dataMappingInterface;
 
-public constructor (TableMappingInterface dataMappingInterface){
-
-            super();
-        this.dataMappingInterface= dataMappingInterface;
+public: UserDomNode(TableMappingInterface dataMappingInterface){
+this->dataMappingInterface= dataMappingInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
 
-    hashMap: HashMap<any, any> = this.dataMappingInterface!.toHashMap()!;;
+    HashMap<any, any> hashMap = this->dataMappingInterface.toHashMap();;
     
-hashMap!.put(EntryData.getInstance()!.LASTMODIFIED, EMPTY_STRING);
+hashMap.put(EntryData::getInstance().LASTMODIFIED, EMPTY_STRING);
     
-hashMap!.put(EntryData.getInstance()!.ENCRYPTION, EMPTY_STRING);
+hashMap.put(EntryData::getInstance().ENCRYPTION, EMPTY_STRING);
     
-hashMap!.put(UserData.PASSWORD, EMPTY_STRING);
+hashMap.put(UserData::PASSWORD, EMPTY_STRING);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueNodes(document, UserData.NAME, hashMap);;
+                        return ModDomHelper::createNameValueNodes(document, UserData::NAME, hashMap);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
@@ -119,7 +116,7 @@ hashMap!.put(UserData.PASSWORD, EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
 
 

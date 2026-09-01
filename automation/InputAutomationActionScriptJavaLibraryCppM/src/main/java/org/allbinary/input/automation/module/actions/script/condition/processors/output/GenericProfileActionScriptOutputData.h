@@ -45,13 +45,12 @@
 class GenericProfileActionScriptOutputData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_NAME";
+    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_NAME";
 
-    public static TYPE: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_TYPE";
+    public: static std::string TYPE = "GENERIC_CONFIGURATION_PROFILE_ACTION_OUTPUT_TYPE";
 
-private constructor ();
+private: GenericProfileActionScriptOutputData();
 
 };
 

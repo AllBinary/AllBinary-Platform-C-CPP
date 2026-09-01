@@ -53,42 +53,41 @@
 class ColorFromEventUtil
             : public Object
          {
-        
 
-    private: static const instance: ColorFromEventUtil = new ColorFromEventUtil();
+    private: static ColorFromEventUtil instance() { return ColorFromEventUtil(); }
 
-    public static ColorFromEventUtil getInstance(){
+    public: static ColorFromEventUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorFromEventUtil.instance;
+                        return ColorFromEventUtil::instance();
     
 }
 
 
-    private: const YELLOW: BasicColor = BasicColorFactory.getInstance()!.YELLOW;
+    private: const BasicColor YELLOW = BasicColorFactory::getInstance().YELLOW;
 
-    public const COLOR_INT: int32_t = this.YELLOW.intValue()!;
+    public: const int32_t COLOR_INT = this->YELLOW.intValue();
 
-    public BasicColor getForegroundColor(AllBinaryGameCanvas gameCanvasInterface){
+    public: BasicColor getForegroundColor(AllBinaryGameCanvas gameCanvasInterface){
 
-    color: BasicColor = this.YELLOW;;
+    BasicColor color = this->YELLOW;;
     
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = gameCanvasInterface!.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager() as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
                         if(geographicMapInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    foregroundBasicColor: BasicColor = geographicMapInterface!.getForegroundBasicColor()!;;
+    BasicColor foregroundBasicColor = geographicMapInterface.getForegroundBasicColor();;
     
 color= foregroundBasicColor;
     

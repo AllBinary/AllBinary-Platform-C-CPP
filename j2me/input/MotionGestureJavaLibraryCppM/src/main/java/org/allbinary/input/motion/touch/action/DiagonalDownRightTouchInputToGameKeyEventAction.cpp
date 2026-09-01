@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DiagonalDownRightTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(DiagonalDownRightTouchInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(DiagonalDownRightTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    DiagonalDownRightTouchInputToGameKeyEventAction.instance= new DiagonalDownRightTouchInputToGameKeyEventAction();
+                                    DiagonalDownRightTouchInputToGameKeyEventAction::instance= DiagonalDownRightTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class DiagonalDownRightTouchInputToGameKeyEventAction: public GameKeyCompleteMot
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DiagonalDownRightTouchInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return DiagonalDownRightTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Diagonal Down Right Action", TouchMotionGestureFactory.getInstance()!.DIAGONAL_DOWN_RIGHT, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: DiagonalDownRightTouchInputToGameKeyEventAction(){
+            super("Diagonal Down Right Action", TouchMotionGestureFactory::getInstance().DIAGONAL_DOWN_RIGHT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

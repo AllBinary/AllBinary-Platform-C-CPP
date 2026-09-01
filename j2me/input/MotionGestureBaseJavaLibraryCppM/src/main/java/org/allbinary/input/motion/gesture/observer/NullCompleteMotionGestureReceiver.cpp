@@ -54,24 +54,21 @@
 class NullCompleteMotionGestureReceiver
             : public Object
         : public CompleteMotionGestureListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
+public: NullCompleteMotionGestureReceiver(){
 
-            super();
-        
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF("Null Gesture Reciever", this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("Null Gesture Reciever", this, commonStrings.CONSTRUCTOR);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onMotionGestureCompleted(BasicArrayList list){
+    public: void onMotionGestureCompleted(BasicArrayList list){
 }
 
 

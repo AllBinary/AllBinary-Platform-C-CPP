@@ -60,73 +60,70 @@
 class OperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: OperatingSystemFactory = new OperatingSystemFactory();
+    private: static OperatingSystemFactory instance() { return OperatingSystemFactory(); }
 
-    public static OperatingSystemFactory getInstance(){
+    public: static OperatingSystemFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OperatingSystemFactory.instance;
+                        return OperatingSystemFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: genericOperatingSystem: GenericOperatingSystem = NoOperatingSystem.NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-    private: hasDetected: bool = false;
+    private: bool hasDetected = false;
 
-private constructor (){
-
-            super();
-        }
+private: OperatingSystemFactory(){
+}
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem getOperatingSystemInstance(){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    systemProperties: SystemProperties = SystemProperties.getInstance()!;;
+    SystemProperties systemProperties = SystemProperties::getInstance();;
     
 
-    osName: string = systemProperties!.getName()!;;
+    std::string osName = systemProperties.getName();;
     
 
-                        if(!this.hasDetected)
+                        if(!this->hasDetected)
                         
                                     {
-                                    this.hasDetected= true;
+                                    this->hasDetected= true;
     
 
-                        if(osName!.indexOf(OperatingSystems.getInstance()!.ANDROID) >= 0)
+                        if(osName.indexOf(OperatingSystems::getInstance().ANDROID) >= 0)
                         
                                     {
-                                    this.logUtil!.putF("Found a Android OS", this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Found a Android OS", this, commonStrings.GET_INSTANCE);
     
-this.genericOperatingSystem= AndroidOperatingSystemFactory.getInstance()!.getOperatingSystemInstance();
+this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance().getOperatingSystemInstance();
     
-this.logUtil!.putF(new StringMaker().append("Operating System Info: ")!.append(this.genericOperatingSystem!.toString())!.toString(), this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF(StringMaker().append("Operating System Info: ").append(this->genericOperatingSystem.toString()).toString(), this, commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
                              else 
-                        if(osName!.indexOf(OperatingSystems.getInstance()!.HARMONY) >= 0)
+                        if(osName.indexOf(OperatingSystems::getInstance().HARMONY) >= 0)
                         
                                     {
-                                    this.logUtil!.putF("Found a Harmony OS", this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Found a Harmony OS", this, commonStrings.GET_INSTANCE);
     
-this.genericOperatingSystem= AndroidOperatingSystemFactory.getInstance()!.getOperatingSystemInstance();
+this->genericOperatingSystem= AndroidOperatingSystemFactory::getInstance().getOperatingSystemInstance();
     
-this.logUtil!.putF(new StringMaker().append("Operating System Info: ")!.append(this.genericOperatingSystem!.toString())!.toString(), this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF(StringMaker().append("Operating System Info: ").append(this->genericOperatingSystem.toString()).toString(), this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -135,7 +132,7 @@ this.logUtil!.putF(new StringMaker().append("Operating System Info: ")!.append(t
                             
 
 
-                            throw new Exception(new StringMaker().append("OS Not Supported: ")!.append(osName)!.toString());
+                            throw Exception(StringMaker().append("OS Not Supported: ").append(osName).toString());
                     
 
                         }
@@ -147,9 +144,9 @@ this.logUtil!.putF(new StringMaker().append("Operating System Info: ")!.append(t
                 //: 
 } catch(e) 
             {
-this.genericOperatingSystem= NoOperatingSystem.NO_OPERATING_SYSTEM;
+this->genericOperatingSystem= NoOperatingSystem::NO_OPERATING_SYSTEM;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 }
 
@@ -157,7 +154,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericOperatingSystem;
+                        return this->genericOperatingSystem;
     
 }
 

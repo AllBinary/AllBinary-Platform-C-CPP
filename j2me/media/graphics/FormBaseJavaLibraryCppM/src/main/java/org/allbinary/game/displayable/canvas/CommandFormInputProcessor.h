@@ -123,49 +123,48 @@
 #include "CommandRunnable.h"
 //In general allow scrolling of the menu and selection the center item
 class CommandFormInputProcessor: public BasicMenuInputProcessor {
-        
 
-    private: const MOTION_GESTURE_SOURCE_ID: int32_t = GameKeyEventFactory.getInstance()!.MOTION_GESTURE_SOURCE_ID;
+    private: const int32_t MOTION_GESTURE_SOURCE_ID = GameKeyEventFactory::getInstance().MOTION_GESTURE_SOURCE_ID;
 
-    private: const CLICK_DELAY: int32_t = 150;
+    private: const int32_t CLICK_DELAY = 150;
 
-    private: const clickTimeHelper: TimeDelayHelper = new TimeDelayHelper(this.CLICK_DELAY);
+    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
 
-    private: const DOUBLE_CLICK_DELAY: int32_t = 1200;
+    private: const int32_t DOUBLE_CLICK_DELAY = 1200;
 
-    private: const doubleClickTimeHelper: TimeDelayHelper = new TimeDelayHelper(this.DOUBLE_CLICK_DELAY);
+    private: const TimeDelayHelper doubleClickTimeHelper = TimeDelayHelper(this->DOUBLE_CLICK_DELAY);
 
-    const isSingleKeyProcessing: bool = InputFeatureFactory.getInstance()!.isSingleKeyProcessing()!;
+    protected: const bool isSingleKeyProcessing = InputFeatureFactory::getInstance().isSingleKeyProcessing();
 
-    private: form: ScrollSelectionForm;
+    private: ScrollSelectionForm form;
 
-    private: hasPressed: bool = false;
+    private: bool hasPressed = false;
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form);
-
-                //@Throws(Exception.constructor)
-            
-    public int32_t processInput(int32_t key);
-
-    private: const PROCESS_COMMAND: string = "processCommand";
-
-    int32_t processCommand();
+public: CommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList();
+    public: int32_t processInput(int32_t key);
+
+    private: const std::string PROCESS_COMMAND = "processCommand";
+
+    private: int32_t processCommand();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processMotionInputs();
+    public: int32_t processInputList();
 
                 //@Throws(Exception.constructor)
             
-    processMotionInput(MotionGestureEvent motionGestureEvent);
+    public: int32_t processMotionInputs();
 
-    private: const NAME_LABEL: string = " ScrollSelectionForm: ";
+                //@Throws(Exception.constructor)
+            
+    protected: void processMotionInput(MotionGestureEvent motionGestureEvent);
 
-    public string toString();
+    private: const std::string NAME_LABEL = " ScrollSelectionForm: ";
+
+    public: std::string toString();
 
 };
 

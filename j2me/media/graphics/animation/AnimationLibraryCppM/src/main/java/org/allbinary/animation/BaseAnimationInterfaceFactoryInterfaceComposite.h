@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_BASEANIMATIONINTERFACEFACTORYINTERFACECOMPOSITE_H
         #define ORG_ALLBINARY_ANIMATION_BASEANIMATIONINTERFACEFACTORYINTERFACECOMPOSITE_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -54,21 +56,20 @@
 class BaseAnimationInterfaceFactoryInterfaceComposite
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: basicAnimationInterfaceFactoryInterfaceArray: std::vector<BasicAnimationInterfaceFactoryInterface>;
+    private: std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray;
 
-public constructor (std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray);
+public: BaseAnimationInterfaceFactoryInterfaceComposite(std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public std::vector<BasicAnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray();
+    public: std::vector<BasicAnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray();
 
-    public setBasicAnimationInterfaceFactoryInterfaceArray(std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray);
+    public: void setBasicAnimationInterfaceFactoryInterfaceArray(std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

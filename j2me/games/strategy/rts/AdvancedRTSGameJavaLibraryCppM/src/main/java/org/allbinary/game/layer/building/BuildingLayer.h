@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_BUILDING_BUILDINGLAYER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <java/util/Hashtable.h>
@@ -183,108 +185,107 @@
 #include "BuildingPropertiesFactory.h"
 #include "BuildingInfoHudPaintable.h"
 
-class BuildingLayer: public AdvancedRTSGameLayer: public RotationAnimationInterfaceCompositeInterface, public TrackingEventListenerInterface {
-        
+class BuildingLayer: public AdvancedRTSGameLayer, public RotationAnimationInterfaceCompositeInterface, public TrackingEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public static BuildingLayer createSimulated();
+    public: static BuildingLayer createSimulated();
 
-    public static int32_t getStaticType();
+    public: static int32_t getStaticType();
 
-    private: buildingLevelCost: int32_t= 0;
+    private: int32_t buildingLevelCost= 0;
 
-    private: productivity: int32_t= 0;
+    private: int32_t productivity= 0;
 
-    private: efficiency: int32_t;
+    private: int32_t efficiency;
 
-    private: efficiencyPerLevel: int32_t;
+    private: int32_t efficiencyPerLevel;
 
-    private: const trackingEvent: TrackingEvent;
+    private: TrackingEvent trackingEvent;
 
-    private: const damageFloaters: DamageFloaters;
+    private: DamageFloaters damageFloaters;
 
-    private: const damageFloatersPaintableInterface: Paintable;
+    private: Paintable damageFloatersPaintableInterface;
 
-    private: const healthBar: Paintable;
+    private: Paintable healthBar;
 
-    private: const pathsHashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> pathsHashtable;
 
-public constructor (RemoteInfo remoteInfo, BuildingPropertiesFactory buildingPropertiesFactory, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, string rootName, string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
+public: BuildingLayer(RemoteInfo remoteInfo, BuildingPropertiesFactory buildingPropertiesFactory, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
 
-    local: bool= false;
+    protected: bool local= false;
 
-    initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
-
-    public onMovement(TrackingEvent trackingEvent);
-
-    const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(3000);
+    protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public processBuiltTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
 
-    int32_t calculateEfficiency();
+    public: void onMovement(TrackingEvent trackingEvent);
 
-    public int32_t getCost();
-
-    public int32_t getDowngradeCost();
-
-    public int32_t getUpgradeCost();
-
-    public downgrade();
-
-    public upgrade();
-
-    int32_t getBuildingLevelCost();
-
-    setBuildingLevelCost(int32_t buildingLevelCost);
-
-    public int32_t getProductivity();
-
-    public setProductivity(int32_t productivity);
-
-    public int32_t getEfficiency();
-
-    public setEfficiency(int32_t efficiency);
+    protected: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(3000);
 
                 //@Throws(Exception.constructor)
             
-    generateMoveOutOfBuildAreaPaths();
+    public: void processBuiltTick(AllBinaryLayerManager allBinaryLayerManager);
 
-    public BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
+    private: int32_t calculateEfficiency();
 
-    public BasicArrayList getEndGeographicMapCellPositionList();
+    public: int32_t getCost();
 
-    public bool shouldHandleStartSameAsEnd();
+    public: int32_t getDowngradeCost();
 
-    public paint(Graphics graphics);
+    public: int32_t getUpgradeCost();
+
+    public: void downgrade();
+
+    public: void upgrade();
+
+    private: int32_t getBuildingLevelCost();
+
+    protected: void setBuildingLevelCost(int32_t buildingLevelCost);
+
+    public: int32_t getProductivity();
+
+    public: void setProductivity(int32_t productivity);
+
+    public: int32_t getEfficiency();
+
+    public: void setEfficiency(int32_t efficiency);
 
                 //@Throws(Exception.constructor)
             
-    public damage(int32_t damage, int32_t damageType);
+    private: void generateMoveOutOfBuildAreaPaths();
+
+    public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
+
+    public: BasicArrayList getEndGeographicMapCellPositionList();
+
+    public: bool shouldHandleStartSameAsEnd();
+
+    public: void paint(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDamage(int32_t damageType);
-
-    public addVisibility();
-
-    public removeVisibility();
+    public: void damage(int32_t damage, int32_t damageType);
 
                 //@Throws(Exception.constructor)
             
-    public setDestroyed(bool destroyed);
+    public: int32_t getDamage(int32_t damageType);
 
-    public SelectionHudPaintable createHudPaintable();
+    public: void addVisibility();
 
-    public SelectionHudPaintable getHudPaintable();
+    public: void removeVisibility();
 
-    public int32_t getType();
+                //@Throws(Exception.constructor)
+            
+    public: void setDestroyed(bool destroyed);
+
+    public: SelectionHudPaintable createHudPaintable();
+
+    public: SelectionHudPaintable getHudPaintable();
+
+    public: int32_t getType();
 
 };
 

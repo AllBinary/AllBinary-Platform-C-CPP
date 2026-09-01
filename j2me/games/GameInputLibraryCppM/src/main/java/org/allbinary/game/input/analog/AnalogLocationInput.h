@@ -46,37 +46,36 @@
 class AnalogLocationInput
             : public Object
          {
-        
 
-    public static const NULL_ANALOG_LOCATION_INPUT: AnalogLocationInput = new AnalogLocationInput( -1);
+    public: static const AnalogLocationInput NULL_ANALOG_LOCATION_INPUT = AnalogLocationInput( -1);
 
-    private: const playerId: int32_t;
+    private: int32_t playerId;
 
-    private: const customGPoint: CustomGPoint;
+    private: CustomGPoint customGPoint;
 
-    private: rz: int32_t= 0;
+    private: int32_t rz= 0;
 
-    private: rightTrigger: int32_t= 0;
+    private: int32_t rightTrigger= 0;
 
-    private: leftTrigger: int32_t= 0;
+    private: int32_t leftTrigger= 0;
 
- constructor (int32_t playerId);
+: AnalogLocationInput(int32_t playerId);
 
-    public int32_t getPlayerId();
+    public: int32_t getPlayerId();
 
-    public CustomGPoint getCustomGPoint();
+    public: CustomGPoint getCustomGPoint();
 
-    public int32_t getRz();
+    public: int32_t getRz();
 
-    public setRz(int32_t rz);
+    public: void setRz(int32_t rz);
 
-    public int32_t getRightTrigger();
+    public: int32_t getRightTrigger();
 
-    public setRightTrigger(int32_t rightTrigger);
+    public: void setRightTrigger(int32_t rightTrigger);
 
-    public int32_t getLeftTrigger();
+    public: int32_t getLeftTrigger();
 
-    public setLeftTrigger(int32_t leftTrigger);
+    public: void setLeftTrigger(int32_t leftTrigger);
 
 };
 

@@ -73,29 +73,26 @@
 class GenericProfileAction
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: genericProfileActionScript: GenericProfileActionScript;
+    private: GenericProfileActionScript genericProfileActionScript;
 
-    private: genericProfileActionJPanel: GenericProfileActionJPanel;
+    private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel, Node node){
+public: GenericProfileAction(GenericProfileActionJPanel genericProfileActionJPanel, Node node){
 
-            super();
-        
-    actionNameNode: Node = DomSearchHelper.getNode(GenericProfileActionData.NAME, node.getChildNodes())!;;
+    Node actionNameNode = DomSearchHelper::getNode(GenericProfileActionData::NAME, node.getChildNodes());;
     
 
                         if(actionNameNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.name= DomNodeHelper.getTextNodeValue(actionNameNode);
+                                    this->name= DomNodeHelper::getTextNodeValue(actionNameNode);
     
 
                                     }
@@ -104,49 +101,47 @@ public constructor (GenericProfileActionJPanel genericProfileActionJPanel, Node 
                             
 
 
-                            throw new Exception("Profile Action Name Node Null");
+                            throw Exception("Profile Action Name Node Null");
                     
 
                         }
                             
-this.setGenericProfileActionScript(new GenericProfileActionScript(this.genericProfileActionJPanel, node));
+this->setGenericProfileActionScript(GenericProfileActionScript(this->genericProfileActionJPanel, node));
     
 }
 
 
-public constructor (string name){
-
-            super();
-        this.name= name;
+public: GenericProfileAction(std::string name){
+this->name= name;
     
-this.setGenericProfileActionScript(new GenericProfileActionScript(this.genericProfileActionJPanel));
+this->setGenericProfileActionScript(GenericProfileActionScript(this->genericProfileActionJPanel));
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(GenericProfileActionData.NAME, this.name);
+hashMap.put(GenericProfileActionData::NAME, this->name);
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -159,11 +154,11 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createNodeWithValueNodes(document, GenericProfileActionData.NAME, this.toHashMap())!;;
+    Node node = ModDomHelper::createNodeWithValueNodes(document, GenericProfileActionData::NAME, this->toHashMap());;
     
-node.appendChild(getGenericProfileActionScript()!.toXmlNode(document));
+node.appendChild(getGenericProfileActionScript().toXmlNode(document));
     
 
 
@@ -174,18 +169,18 @@ node.appendChild(getGenericProfileActionScript()!.toXmlNode(document));
 }
 
 
-    public GenericProfileActionScript getGenericProfileActionScript(){
+    public: GenericProfileActionScript getGenericProfileActionScript(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericProfileActionScript;
+                        return this->genericProfileActionScript;
     
 }
 
 
-    public setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript){
-this.genericProfileActionScript= genericProfileActionScript;
+    public: void setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript){
+this->genericProfileActionScript= genericProfileActionScript;
     
 }
 

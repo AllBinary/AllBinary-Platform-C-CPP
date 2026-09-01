@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -68,11 +70,10 @@
 class BasicTopViewGeographicMapCellType
             : public Object
          {
-        
 
-    public static BasicTopViewGeographicMapCellType createType(string name, int32_t type, int32_t cost){
+    public: static BasicTopViewGeographicMapCellType createType(std::string name, int32_t type, int32_t cost){
 
-    types: BasicArrayList = new BasicArrayListS(1);;
+    BasicArrayList types = BasicArrayListS(1);;
     
 types.add(type);
     
@@ -80,52 +81,50 @@ types.add(type);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicTopViewGeographicMapCellType(name, types, cost);
+                        return BasicTopViewGeographicMapCellType(name, types, cost);
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const name: string;
+    public: std::string name;
 
-    public const cost: int32_t;
+    public: int32_t cost;
 
-    private: const types: std::vector<int32_t>;
+    private: std::vector<int32_t> types;
 
-public constructor (string name, BasicArrayList types, int32_t cost){
+public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList types, int32_t cost){
 
-            super();
-        
-    size: int32_t = types.size()!;;
+    int32_t size = types.size();;
     
 
-    typeArray: std::vector<int32_t> = new Array(size);;
+    std::vector<int32_t> typeArray = new Array(size);;
     
 
-    typeAsInteger: Integer;;
+    Integer typeAsInteger;;
     
 
-    type: int32_t= 0;;
+    int32_t type= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 typeAsInteger= (types.get(index) as Integer);
     
-type= typeAsInteger!.intValue();
+type= typeAsInteger.intValue();
     
 
-                        if(GeographicMapCellTypeFactory.getInstance()!.getGeographicMapCellTypeArray()[type] == 
-                                    null
+                        if(GeographicMapCellTypeFactory::getInstance().getGeographicMapCellTypeArray()[type] == 
+                                    nullptr
                                 )
                         
                                     {
-                                    new RaceTrackGeographicMapCellType(name, type, cost, 0);
+                                    RaceTrackGeographicMapCellType(name, type, cost, 0);
     
 
                                     }
@@ -138,39 +137,38 @@ typeArray[index]= type;
     
 }
 
-this.name= name;
+this->name= name;
     
-this.cost= cost;
+this->cost= cost;
     
-this.types= typeArray;
+this->types= typeArray;
     
 }
 
 
-    public bool isType(GeographicMapCellType type){
+    public: bool isType(GeographicMapCellType type){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hasType(type.getType());;
+                        return this->hasType(type.getType());;
     
 }
 
 
-    public bool hasType(int32_t type){
+    public: bool hasType(int32_t type){
 
-    size: int32_t = this.types.length
-                ;;
+    int32_t size = this->types.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-                        if(this.types[index] == type)
+                        if(this->types[index] == type)
                         
                                     {
                                     
@@ -193,32 +191,31 @@ this.types= typeArray;
 }
 
 
-    public std::vector<int32_t> getTypes(){
+    public: std::vector<int32_t> getTypes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.types;
+                        return this->types;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    size: int32_t = this.types.length
-                ;;
+    int32_t size = this->types.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringMaker!.appendint(this.types[index]!)!.append(CommonSeps.getInstance()!.COMMA);
+stringMaker.appendint(this->types[index]!).append(CommonSeps::getInstance().COMMA);
     
 }
 
@@ -226,7 +223,7 @@ stringMaker!.appendint(this.types[index]!)!.append(CommonSeps.getInstance()!.COM
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringMaker!.toString();;
+                        return stringMaker.toString();;
     
 }
 

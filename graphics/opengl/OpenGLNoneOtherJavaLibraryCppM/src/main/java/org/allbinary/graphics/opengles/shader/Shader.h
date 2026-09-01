@@ -54,15 +54,14 @@
 class Shader
             : public Object
          {
-        
 
-    public shaderName: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string shaderName = StringUtil::getInstance().EMPTY_STRING;
 
-    public shaderStringList: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    public: BasicArrayList shaderStringList = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    public shaderAsString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string shaderAsString = StringUtil::getInstance().EMPTY_STRING;
 
-    public shaderHandle: int32_t= 0;
+    public: int32_t shaderHandle= 0;
 
 };
 

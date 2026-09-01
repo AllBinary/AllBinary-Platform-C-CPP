@@ -45,17 +45,16 @@
 class GLHolder
             : public Object
          {
-        
 
-    public isCreated: bool = true;
+    public: bool isCreated = true;
 
-public constructor ();
+public: GLHolder();
 
-    public runOnSurfaceCreated(any = {} renderer);
+    public: void runOnSurfaceCreated(Object* renderer);
 
-    public runOnSurfaceChanged(any = {} renderer, int32_t width, int32_t height);
+    public: void runOnSurfaceChanged(Object* renderer, int32_t width, int32_t height);
 
-    public run(any = {} renderer);
+    public: void run(Object* renderer);
 
 };
 

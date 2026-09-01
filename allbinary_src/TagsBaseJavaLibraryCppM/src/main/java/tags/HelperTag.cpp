@@ -47,50 +47,47 @@
         #include "PropertiesTag.h"
 
 class HelperTag: public PropertiesTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tagHelperFactoryInterface: TagHelperFactoryInterface;
+    private: TagHelperFactoryInterface tagHelperFactoryInterface;
 
-    private: anyType: any;
+    private: Object* anyType;
 
-public constructor (TagHelperFactoryInterface tagHelperFactoryInterface){
+public: HelperTag(TagHelperFactoryInterface tagHelperFactoryInterface){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.tagHelperFactoryInterface= tagHelperFactoryInterface;
+this->tagHelperFactoryInterface= tagHelperFactoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    setHelper(){
+    protected: void setHelper(){
 
-                        if(this.anyType == 
-                                    null
+                        if(this->anyType == 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Creating TagHelper with: \n" +this.getPropertiesHashMap()!.toString(), this, "doStartTag");
+                                    this->logUtil.putF("Creating TagHelper with: \n" +this->getPropertiesHashMap().toString(), this, "doStartTag");
     
 
                                     }
                                 
-this.anyType= this.tagHelperFactoryInterface!.getInstance(this.getPropertiesHashMap(), this.pageContext);
+this->anyType= this->tagHelperFactoryInterface.getInstance(this->getPropertiesHashMap(), this->pageContext);
     
 
                                     }
@@ -98,27 +95,27 @@ this.anyType= this.tagHelperFactoryInterface!.getInstance(this.getPropertiesHash
 }
 
 
-    public any getHelper(){
+    public: Object* getHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.anyType;
+                        return this->anyType;
     
 }
 
 
-    public int32_t doEndTag(){
+    public: int32_t doEndTag(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Tag Ended", this, "doEndTag");
+                                    this->logUtil.putF("Tag Ended", this, "doEndTag");
     
 
                                     }
                                 
-this.anyType= 
+this->anyType= 
                                         nullptr
                                     ;
     

@@ -42,25 +42,24 @@
 class ThirdPartyMessageFactory
             : public Object
          {
-        
 
-    private: static const instance: ThirdPartyMessageFactory = new ThirdPartyMessageFactory();
+    private: static ThirdPartyMessageFactory instance() { return ThirdPartyMessageFactory(); }
 
-    public static ThirdPartyMessageFactory getInstance(){
+    public: static ThirdPartyMessageFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThirdPartyMessageFactory.instance;
+                        return ThirdPartyMessageFactory::instance();
     
 }
 
 
-    public const AUTHORIZED: string = "Authorized";
+    public: const std::string AUTHORIZED = "Authorized";
 
-    public const NOT_AUTHORIZED: string = "Not Authorized";
+    public: const std::string NOT_AUTHORIZED = "Not Authorized";
 
-    public const LINKAGE_ERROR: string = "Linkage Error";
+    public: const std::string LINKAGE_ERROR = "Linkage Error";
 
 };
 

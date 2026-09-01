@@ -66,10 +66,9 @@
 class ColorDeltaFactory
             : public Object
          {
-        
 
-    private: static cacheInterface: AutomaticCacheInterface = 
-                null
+    private: static AutomaticCacheInterface cacheInterface = 
+                nullptr
             ;
 
                     static int32_t initResult;
@@ -77,11 +76,11 @@ class ColorDeltaFactory
             
                 //@Throws(Exception.constructor)
             
-    public static ColorDelta getInstance(int32_t rgb1, int32_t rgb2);
+    public: static ColorDelta getInstance(int32_t rgb1, int32_t rgb2);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ColorDeltaFactory();
 
 };
 

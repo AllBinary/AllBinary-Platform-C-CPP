@@ -76,48 +76,47 @@
         #include "BasicPlayer.h"
 
 class AndroidMediaPlayerWrapper: public BasicPlayer {
-        
 
-    public static AndroidMediaPlayerWrapper createPlayerWrapper();
+    public: static AndroidMediaPlayerWrapper createPlayerWrapper();
 
-    public static const NULL_ANDROID_MEDIA_PLAYER_WRAPPER: AndroidMediaPlayerWrapper = AndroidMediaPlayerWrapper.createPlayerWrapper()!;
+    public: static const AndroidMediaPlayerWrapper NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: mediaPlayer: MediaPlayer = NullAndroidCanvas.NULL_MEDIA_PLAYER;
+    private: MediaPlayer mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
 
-public constructor (string resource);
+public: AndroidMediaPlayerWrapper(std::string resource);
 
-    public setLoopCount(int32_t count);
+    public: void setLoopCount(int32_t count);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addPlayerListener(PlayerListener playerListener);
+    public: void addPlayerListener(PlayerListener playerListener);
 
-    public removePlayerListener(PlayerListener playerListener);
+    public: void removePlayerListener(PlayerListener playerListener);
 
-    public int32_t getState();
+    public: int32_t getState();
 
-    public close();
-
-                //@Throws(MediaException.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public start();
+    public: void close();
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public stop();
+    public: void start();
 
-    public update(string event);
+                //@Throws(MediaException.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setVolume(int32_t leftVolume, int32_t rightVolume);
+    public: void stop();
 
-    public int64_t getDuration();
+    public: void update(std::string event);
 
-    public setMediaPlayer(MediaPlayer mediaPlayer);
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume);
 
-    public MediaPlayer getMediaPlayer();
+    public: int64_t getDuration();
+
+    public: void setMediaPlayer(MediaPlayer mediaPlayer);
+
+    public: MediaPlayer getMediaPlayer();
 
 };
 

@@ -63,9 +63,8 @@
 class ColorDeltaFactory
             : public Object
          {
-        
 
-    private: static cacheInterface: AutomaticCacheInterface = 
+    private: static AutomaticCacheInterface cacheInterface = 
                 null
             ;
 
@@ -73,30 +72,30 @@ class ColorDeltaFactory
                 static int32_t init() { 
                     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    STATIC_BLOCK: string = "Static Block";;
+    std::string STATIC_BLOCK = "Static Block";;
     
 
-    instance: string = "ColorDeltaFactory";;
+    std::string instance = "ColorDeltaFactory";;
     
 
         try {
-            logUtil!.putF(commonStrings!.START, instance, STATIC_BLOCK);
+            logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
     
-ColorDeltaFactory.cacheInterface= CacheInterfaceFactory.getInstance(CacheTypeFactory.getInstance()!.CACHE, CachePolicyFactory.getInstance()!.THIRTY_MINUTES_TEN_THOUSAND_MAX) as AutomaticCacheInterface;
+ColorDeltaFactory::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX) as AutomaticCacheInterface;
     
-logUtil!.putF(commonStrings!.END, instance, STATIC_BLOCK);
+logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
+logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
     
 }
 
@@ -107,17 +106,17 @@ logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
             
                 //@Throws(Exception.constructor)
             
-    public static ColorDelta getInstance(int32_t rgb1, int32_t rgb2){
+    public: static ColorDelta getInstance(int32_t rgb1, int32_t rgb2){
 
-    colorDelta: ColorDelta = ColorDeltaFactory.cacheInterface!.get(ColorDelta.getKey(rgb1, rgb2)) as ColorDelta;;
+    ColorDelta colorDelta = ColorDeltaFactory::cacheInterface.get(ColorDelta::getKey(rgb1, rgb2)) as ColorDelta;;
     
 
                         if(colorDelta == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    colorDelta= new ColorDelta(rgb1, rgb2);
+                                    colorDelta= ColorDelta(rgb1, rgb2);
     
 
                                     }
@@ -131,12 +130,10 @@ logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ColorDeltaFactory(){
+}
 
 
 };

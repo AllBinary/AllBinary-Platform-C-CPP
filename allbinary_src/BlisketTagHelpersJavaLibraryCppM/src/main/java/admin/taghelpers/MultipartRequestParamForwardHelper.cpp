@@ -78,56 +78,53 @@
 class MultipartRequestParamForwardHelper
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const requestMapInterface: RequestMapInterface;
+    private: RequestMapInterface requestMapInterface;
 
-    private: const page: string;
+    private: std::string page;
 
-    private: const command: string;
+    private: std::string command;
 
-    private: const paramVector: Vector;
+    private: Vector paramVector;
 
-public constructor (HelperTag parentHelperTag, string page, string command, Vector paramVector, PageContext pageContext){
-
-            super();
-        this.pageContext= pageContext;
+public: MultipartRequestParamForwardHelper(HelperTag parentHelperTag, std::string page, std::string command, Vector paramVector, PageContext pageContext){
+this->pageContext= pageContext;
     
-this.page= page;
+this->page= page;
     
-this.command= command;
+this->command= command;
     
-this.paramVector= paramVector;
+this->paramVector= paramVector;
     
-this.requestMapInterface= InventoryItemViewParentTagHelper.getInstance()!.getRequestMapInterface(parentHelperTag);
+this->requestMapInterface= InventoryItemViewParentTagHelper::getInstance().getRequestMapInterface(parentHelperTag);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public forward(){
+    public: void forward(){
 
         try {
             
-                        if(this.shouldForward())
+                        if(this->shouldForward())
                         
                                     {
                                     
-    params: string = this.getParams()!;;
+    std::string params = this->getParams();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.page);
+stringBuffer.append(this->page);
     
-stringBuffer!.append(params);
+stringBuffer.append(params);
     
-this.pageContext!.forward(stringBuffer!.toString());
+this->pageContext.forward(stringBuffer.toString());
     
 
                                     }
@@ -137,13 +134,13 @@ this.pageContext!.forward(stringBuffer!.toString());
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "forward()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "forward()", e);
     
 
                                     }
@@ -153,61 +150,61 @@ this.pageContext!.forward(stringBuffer!.toString());
 }
 
 
-    string getParams(){
+    private: std::string getParams(){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    AMP: string = commonSeps!.AMPERSAND;;
+    std::string AMP = commonSeps.AMPERSAND;;
     
 
-    QUESTION: string = commonSeps!.QUESTION;;
+    std::string QUESTION = commonSeps.QUESTION;;
     
 
-    EQUALS: string = commonSeps!.EQUALS;;
+    std::string EQUALS = commonSeps.EQUALS;;
     
 
-    hashMap: HashMap<any, any> = this.requestMapInterface!.getRequestHashMap()!;;
+    HashMap<any, any> hashMap = this->requestMapInterface.getRequestHashMap();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    size: int32_t = this.paramVector!.length!;;
+    int32_t size = this->paramVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    key: string = this.paramVector!.get(index) as string;;
+    std::string key = this->paramVector.get(index) as string;;
     
 
-    value: string = hashMap!.get(key) as string;;
+    std::string value = hashMap.get(key) as string;;
     
 
                         if(index != 0)
                         
                                     {
-                                    stringBuffer!.append(AMP);
+                                    stringBuffer.append(AMP);
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append(QUESTION);
+                            stringBuffer.append(QUESTION);
     
 
                         }
                             
-stringBuffer!.append(key);
+stringBuffer.append(key);
     
-stringBuffer!.append(EQUALS);
+stringBuffer.append(EQUALS);
     
-stringBuffer!.append(value);
+stringBuffer.append(value);
     
 }
 
@@ -215,20 +212,20 @@ stringBuffer!.append(value);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    bool shouldForward(){
+    private: bool shouldForward(){
 
-    hashMap: HashMap<any, any> = this.requestMapInterface!.getRequestHashMap()!;;
+    HashMap<any, any> hashMap = this->requestMapInterface.getRequestHashMap();;
     
 
-    requestCommand: string = hashMap!.get(GLOBALS2.ADMINCOMMAND) as string;;
+    std::string requestCommand = hashMap.get(GLOBALS2::ADMINCOMMAND) as string;;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.command) || (!StringValidationUtil.getInstance()!.isEmpty(requestCommand) && this.command.compareTo(requestCommand) == 0))
+                        if(StringValidationUtil::getInstance().isEmpty(this->command) || (!StringValidationUtil::getInstance().isEmpty(requestCommand) && this->command.compareTo(requestCommand) == 0))
                         
                                     {
                                     

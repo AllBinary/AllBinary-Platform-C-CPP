@@ -51,59 +51,56 @@
 class MotionRectangle
             : public Object
         : public Cloneable {
-        
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-    private: pixelDeltaVector: Vector;
+    private: Vector pixelDeltaVector;
 
-public constructor (Rectangle rectangle){
-
-            super();
-        this.setRectangle(rectangle);
+public: MotionRectangle(Rectangle rectangle){
+this->setRectangle(rectangle);
     
-this.setPixelDeltaVector(new Vector());
+this->setPixelDeltaVector(Vector());
     
 }
 
 
-    public Rectangle getRectangle(){
+    public: Rectangle getRectangle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangle;
+                        return this->rectangle;
     
 }
 
 
-    public setRectangle(Rectangle rectangle){
-this.rectangle= rectangle;
+    public: void setRectangle(Rectangle rectangle){
+this->rectangle= rectangle;
     
 }
 
 
-    public Vector getPixelDeltaVector(){
+    public: Vector getPixelDeltaVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pixelDeltaVector;
+                        return this->pixelDeltaVector;
     
 }
 
 
-    public setPixelDeltaVector(Vector pixelDeltaVector){
-this.pixelDeltaVector= pixelDeltaVector;
+    public: void setPixelDeltaVector(Vector pixelDeltaVector){
+this->pixelDeltaVector= pixelDeltaVector;
     
 }
 
 
-    public any clone(){
+    public: Object* clone(){
 
-    motionRectangle: MotionRectangle = new MotionRectangle(this.getRectangle()!.clone() as Rectangle);;
+    MotionRectangle motionRectangle = MotionRectangle(this->getRectangle().clone() as Rectangle);;
     
-motionRectangle!.setPixelDeltaVector(this.getPixelDeltaVector()!.clone() as Vector);
+motionRectangle.setPixelDeltaVector(this->getPixelDeltaVector().clone() as Vector);
     
 
 

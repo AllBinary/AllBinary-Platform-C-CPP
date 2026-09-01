@@ -17,6 +17,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedPlayerOwnedRTSLayers.h>
@@ -103,43 +105,42 @@
         #include "BuildingRTSFormInput.h"
 
 class BuildingAdvancedRTSFormInput: public BuildingRTSFormInput {
-        
 
-    const atLeastOneHouseGameNotificationEvent: GameNotificationEvent;
+    protected: GameNotificationEvent atLeastOneHouseGameNotificationEvent;
 
-public constructor (std::vector<Group> groupInterface, bool isUnitProducer){
+public: BuildingAdvancedRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer){
             super(groupInterface, isUnitProducer);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;;
+    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
     
-this.atLeastOneHouseGameNotificationEvent= new GameNotificationEvent(this, "Build At Least One House First", SmallIntegerSingletonFactory.getInstance()!.getAt(2), basicColorFactory!.WHITE, BooleanFactory.getInstance()!.FALSE);
+this->atLeastOneHouseGameNotificationEvent= GameNotificationEvent(this, "Build At Least One House First", SmallIntegerSingletonFactory::getInstance().getAt(2), basicColorFactory.WHITE, BooleanFactory::getInstance().FALSE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
-this.atLeastOneHouseGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->atLeastOneHouseGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
 }
 
 
-    public bool isPositionBlocked(){
+    public: bool isPositionBlocked(){
 
-                        if(DropCellPositionHistory.getInstance()!.isCellPositionWithDrop(this.getSelectedGeographicCellPosition()) || WaypointCellPositionHistory.getInstance()!.isCellPositionWithDrop(this.getSelectedGeographicCellPosition()))
+                        if(DropCellPositionHistory::getInstance().isCellPositionWithDrop(this->getSelectedGeographicCellPosition()) || WaypointCellPositionHistory::getInstance().isCellPositionWithDrop(this->getSelectedGeographicCellPosition()))
                         
                                     {
                                     
@@ -166,27 +167,27 @@ this.atLeastOneHouseGameNotificationEvent!.setBasicColorP(geographicMapInterface
 
                 //@Throws(Exception.constructor)
             
-    bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface){
+    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface){
 
-    advancedRTSPlayerLayerInterface: AdvancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface;;
+    AdvancedRTSPlayerLayerInterface advancedRTSPlayerLayerInterface = rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface;;
     
 
-    advancedPlayerOwnedRTSLayers: AdvancedPlayerOwnedRTSLayers = advancedRTSPlayerLayerInterface!.getAdvancedPlayerOwnedRTSLayers()!;;
+    AdvancedPlayerOwnedRTSLayers advancedPlayerOwnedRTSLayers = advancedRTSPlayerLayerInterface.getAdvancedPlayerOwnedRTSLayers();;
     
 
-    totalHouses: int32_t = advancedPlayerOwnedRTSLayers!.getHouseList()!.size()!;;
+    int32_t totalHouses = advancedPlayerOwnedRTSLayers.getHouseList().size();;
     
 
-                        if(totalHouses < 1 && layerInterface!.getName()!.indexOf(" House") < 0)
+                        if(totalHouses < 1 && layerInterface.getName().indexOf(" House") < 0)
                         
                                     {
-                                    rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                                    rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.atLeastOneHouseGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->atLeastOneHouseGameNotificationEvent);
     
 
                                     }
@@ -209,20 +210,20 @@ this.atLeastOneHouseGameNotificationEvent!.setBasicColorP(geographicMapInterface
 }
 
 
-    private: const BUILD_BUILDING_RTS_LAYER_EVENT: RTSLayerEvent = new RTSLayerEvent(NullPathFindingLayer.NULL_PATH_FINDING_LAYER);
+    private: const RTSLayerEvent BUILD_BUILDING_RTS_LAYER_EVENT = RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
 
                 //@Throws(Exception.constructor)
             
-    add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface){
-this.BUILD_BUILDING_RTS_LAYER_EVENT.setRtsLayer(layerInterface);
+    protected: void add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface){
+this->BUILD_BUILDING_RTS_LAYER_EVENT.setRtsLayer(layerInterface);
     
-BuildingEventHandler.getInstance()!.fireEvent(this.BUILD_BUILDING_RTS_LAYER_EVENT);
+BuildingEventHandler::getInstance().fireEvent(this->BUILD_BUILDING_RTS_LAYER_EVENT);
     
 
                         if((rtsPlayerLayerInterface as AdvancedRTSPlayerLayerInterface).isLocalPlayer())
                         
                                     {
-                                    LocalPlayerBuildingEventHandler.getInstance()!.fireEvent(this.BUILD_BUILDING_RTS_LAYER_EVENT);
+                                    LocalPlayerBuildingEventHandler::getInstance().fireEvent(this->BUILD_BUILDING_RTS_LAYER_EVENT);
     
 
                                     }

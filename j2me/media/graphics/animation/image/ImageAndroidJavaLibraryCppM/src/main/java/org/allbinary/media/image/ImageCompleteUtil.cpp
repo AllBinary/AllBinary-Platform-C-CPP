@@ -47,23 +47,22 @@
 class ImageCompleteUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCompleteUtil = new ImageCompleteUtil();
+    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
 
-    public static ImageCompleteUtil getInstance(){
+    public: static ImageCompleteUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCompleteUtil.instance;
+                        return ImageCompleteUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public waitForImage(Image image, string name){
+    public: void waitForImage(Image image, std::string name){
 }
 
 

@@ -72,17 +72,16 @@
 class LinuxOperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: LinuxOperatingSystemFactory = new LinuxOperatingSystemFactory();
+    private: static LinuxOperatingSystemFactory instance() { return LinuxOperatingSystemFactory(); }
 
-    public static LinuxOperatingSystemFactory getInstance();
+    public: static LinuxOperatingSystemFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: LinuxOperatingSystemFactory();
 
-    public GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem getOperatingSystemInstance();
 
 };
 

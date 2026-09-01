@@ -77,61 +77,57 @@
 class TouchButtonRecognizer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;
+    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!;
+    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: lastPressedTouchButtonInput: TouchButtonInput = BasicTouchInputFactory.getInstance()!.NONE;
+    private: TouchButtonInput lastPressedTouchButtonInput = BasicTouchInputFactory::getInstance().NONE;
 
-    private: const currentlyPressedTouchButtonSingleton: CurrentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton.getInstance()!;
+    private: const CurrentlyPressedTouchButtonSingleton currentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton::getInstance();
 //CurrentlyPressedTouchButtonSingletonDebug.getInstance();
 //inner= member=true isStatic=
 class ReleaseHelper
             : public Object
          {
-        
 
-    const touchButtonRecognizer: TouchButtonRecognizer;
+    protected: TouchButtonRecognizer touchButtonRecognizer;
 
-public constructor (TouchButtonRecognizer touchButtonRecognizer){
-
-            super();
-        this.touchButtonRecognizer= touchButtonRecognizer;
+public: ReleaseHelper(TouchButtonRecognizer touchButtonRecognizer){
+this->touchButtonRecognizer= touchButtonRecognizer;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public release(TouchButtonInput touchButtonInput, int32_t deviceId){
+    public: void release(TouchButtonInput touchButtonInput, int32_t deviceId){
 
-    nextTouchButtonInput: TouchButtonInput;;
+    TouchButtonInput nextTouchButtonInput;;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
 
 
 
                         for (
-    index: int32_t = this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.size() -1;index >= 0; index--)
+    int32_t index = this->touchButtonRecognizer.currentlyPressedTouchButtonSingleton.size() -1;index >= 0; index--)
         {
-nextTouchButtonInput= this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.get(index);
+nextTouchButtonInput= this->touchButtonRecognizer.currentlyPressedTouchButtonSingleton.get(index);
     
-gameKeyEvent= nextTouchButtonInput!.getGameKeyEvent();
+gameKeyEvent= nextTouchButtonInput.getGameKeyEvent();
     
-this.touchButtonRecognizer!.upGameKeyEventHandler!.fireEvent(gameKeyEvent);
+this->touchButtonRecognizer.upGameKeyEventHandler.fireEvent(gameKeyEvent);
     
-this.touchButtonRecognizer!.upGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+this->touchButtonRecognizer.upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
     
-this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.removeAt(index);
+this->touchButtonRecognizer.currentlyPressedTouchButtonSingleton.removeAt(index);
     
 }
 
@@ -143,9 +139,8 @@ this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.removeAt(index
             
 //inner= member=true isStatic=
 class MultitouchReleaseHelper: public ReleaseHelper {
-        
 
-public constructor (TouchButtonRecognizer touchButtonRecognizer){
+public: MultitouchReleaseHelper(TouchButtonRecognizer touchButtonRecognizer){
             super(touchButtonRecognizer);
                     
 
@@ -156,36 +151,36 @@ public constructor (TouchButtonRecognizer touchButtonRecognizer){
 
                 //@Throws(Exception.constructor)
             
-    public release(TouchButtonInput touchButtonInput, int32_t deviceId){
+    public: void release(TouchButtonInput touchButtonInput, int32_t deviceId){
 
-    cancelTouchButtonInput: TouchButtonInput = CancelTouchButtonInputFactory.getInstance()!.getCancel(touchButtonInput)!;;
+    TouchButtonInput cancelTouchButtonInput = CancelTouchButtonInputFactory::getInstance().getCancel(touchButtonInput);;
     
 
-    nextTouchButtonInput: TouchButtonInput;;
+    TouchButtonInput nextTouchButtonInput;;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
 
 
 
                         for (
-    index: int32_t = this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.size() -1;index >= 0; index--)
+    int32_t index = this->touchButtonRecognizer.currentlyPressedTouchButtonSingleton.size() -1;index >= 0; index--)
         {
-nextTouchButtonInput= this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.get(index);
+nextTouchButtonInput= this->touchButtonRecognizer.currentlyPressedTouchButtonSingleton.get(index);
     
 
                         if(cancelTouchButtonInput == nextTouchButtonInput)
                         
                                     {
-                                    gameKeyEvent= nextTouchButtonInput!.getGameKeyEvent();
+                                    gameKeyEvent= nextTouchButtonInput.getGameKeyEvent();
     
-this.touchButtonRecognizer!.upGameKeyEventHandler!.fireEvent(gameKeyEvent);
+this->touchButtonRecognizer.upGameKeyEventHandler.fireEvent(gameKeyEvent);
     
-this.touchButtonRecognizer!.upGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+this->touchButtonRecognizer.upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
     
-this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.removeAt(index);
+this->touchButtonRecognizer.currentlyPressedTouchButtonSingleton.removeAt(index);
     
 
                                     }
@@ -200,20 +195,18 @@ this.touchButtonRecognizer!.currentlyPressedTouchButtonSingleton!.removeAt(index
             
     private: const releaseHelper;
 
-public constructor (){
+public: TouchButtonRecognizer(){
 
-            super();
-        
-                        if(TouchScreenFactory.getInstance()!.isMultiTouch())
+                        if(TouchScreenFactory::getInstance().isMultiTouch())
                         
                                     {
-                                    this.releaseHelper= new this.MultitouchReleaseHelper(this);
+                                    this->releaseHelper= MultitouchReleaseHelper(this);
     
 
                                     }
                                 
                         else {
-                            this.releaseHelper= new this.ReleaseHelper(this);
+                            this->releaseHelper= ReleaseHelper(this);
     
 
                         }
@@ -223,17 +216,17 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    processRelease(TouchButtonInput touchButtonInput, int32_t deviceId){
-this.releaseHelper!.release(touchButtonInput, deviceId);
+    private: void processRelease(TouchButtonInput touchButtonInput, int32_t deviceId){
+this->releaseHelper.release(touchButtonInput, deviceId);
     
 
-    gameKeyEvent: GameKeyEvent = touchButtonInput!.getGameKeyEvent()!;;
+    GameKeyEvent gameKeyEvent = touchButtonInput.getGameKeyEvent();;
     
-this.upGameKeyEventHandler!.fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler.fireEvent(gameKeyEvent);
     
-this.upGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+this->upGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
     
-this.currentlyPressedTouchButtonSingleton!.remove(touchButtonInput);
+this->currentlyPressedTouchButtonSingleton.remove(touchButtonInput);
     
 }
 
@@ -241,17 +234,17 @@ this.currentlyPressedTouchButtonSingleton!.remove(touchButtonInput);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool releaseTouchButtonInput(int32_t x, int32_t y, int32_t deviceId){
+    public: bool releaseTouchButtonInput(int32_t x, int32_t y, int32_t deviceId){
 
-    touchButtonInput: TouchButtonInput = this.lastPressedTouchButtonInput;;
+    TouchButtonInput touchButtonInput = this->lastPressedTouchButtonInput;;
     
 
-                        if(this.currentlyPressedTouchButtonSingleton!.contains(touchButtonInput))
+                        if(this->currentlyPressedTouchButtonSingleton.contains(touchButtonInput))
                         
                                     {
-                                    this.lastPressedTouchButtonInput= BasicTouchInputFactory.getInstance()!.NONE;
+                                    this->lastPressedTouchButtonInput= BasicTouchInputFactory::getInstance().NONE;
     
-this.processRelease(touchButtonInput, deviceId);
+this->processRelease(touchButtonInput, deviceId);
     
 
 
@@ -264,37 +257,37 @@ this.processRelease(touchButtonInput, deviceId);
                                 
                         else {
                             
-    list: BasicArrayList = TouchButtonFactory.getInstance()!.getList()!;;
+    BasicArrayList list = TouchButtonFactory::getInstance().getList();;
     
 
-    rectangle: Rectangle;;
+    Rectangle rectangle;;
     
 
-    point: GPoint;;
+    GPoint point;;
     
 
-    touchButton: TouchButton;;
+    TouchButton touchButton;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 touchButton= list.objectArray[index]! as TouchButton;
     
-rectangle= touchButton!.getRectangle();
+rectangle= touchButton.getRectangle();
     
 point= rectangle.getPoint();
     
 
-                        if(this.rectangleCollisionUtil!.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
+                        if(this->rectangleCollisionUtil.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
                         
                                     {
-                                    touchButtonInput= touchButton!.getTouchButtonInput();
+                                    touchButtonInput= touchButton.getTouchButtonInput();
     
-this.processRelease(touchButtonInput, deviceId);
+this->processRelease(touchButtonInput, deviceId);
     
 
 
@@ -322,59 +315,59 @@ this.processRelease(touchButtonInput, deviceId);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool pressTouchButtonInput(int32_t x, int32_t y, int32_t deviceId){
+    public: bool pressTouchButtonInput(int32_t x, int32_t y, int32_t deviceId){
 
-    list: BasicArrayList = TouchButtonFactory.getInstance()!.getList()!;;
+    BasicArrayList list = TouchButtonFactory::getInstance().getList();;
     
 
-    rectangle: Rectangle;;
+    Rectangle rectangle;;
     
 
-    point: GPoint;;
+    GPoint point;;
     
 
-    touchButton: TouchButton;;
+    TouchButton touchButton;;
     
 
-    touchButtonInput: TouchButtonInput;;
+    TouchButtonInput touchButtonInput;;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 touchButton= list.objectArray[index]! as TouchButton;
     
-rectangle= touchButton!.getRectangle();
+rectangle= touchButton.getRectangle();
     
 point= rectangle.getPoint();
     
 
-                        if(this.rectangleCollisionUtil!.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
+                        if(this->rectangleCollisionUtil.isInside(point.getX(), point.getY(), rectangle.getMaxX(), rectangle.getMaxY(), x, y))
                         
                                     {
-                                    touchButtonInput= touchButton!.getTouchButtonInput();
+                                    touchButtonInput= touchButton.getTouchButtonInput();
     
 
-                        if(!this.currentlyPressedTouchButtonSingleton!.contains(touchButtonInput))
+                        if(!this->currentlyPressedTouchButtonSingleton.contains(touchButtonInput))
                         
                                     {
-                                    this.releaseHelper!.release(touchButtonInput, deviceId);
+                                    this->releaseHelper.release(touchButtonInput, deviceId);
     
-this.lastPressedTouchButtonInput= touchButtonInput;
+this->lastPressedTouchButtonInput= touchButtonInput;
     
-this.currentlyPressedTouchButtonSingleton!.add(touchButtonInput);
+this->currentlyPressedTouchButtonSingleton.add(touchButtonInput);
     
-gameKeyEvent= touchButtonInput!.getGameKeyEvent();
+gameKeyEvent= touchButtonInput.getGameKeyEvent();
     
-this.downGameKeyEventHandler!.fireEvent(gameKeyEvent);
+this->downGameKeyEventHandler.fireEvent(gameKeyEvent);
     
-this.downGameKeyEventHandler!.getInstanceForDevice(deviceId)!.fireEvent(gameKeyEvent);
+this->downGameKeyEventHandler.getInstanceForDevice(deviceId).fireEvent(gameKeyEvent);
     
 
                                     }

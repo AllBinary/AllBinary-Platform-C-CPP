@@ -58,7 +58,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UserEntityInterface: public BasicDataTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
@@ -82,15 +81,15 @@ class UserEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    UserInterface getUser(string userName)
+    UserInterface getUser(std::string userName)
 
-    string login(string userName, string password)
+    std::string login(std::string userName, std::string password)
 
-    deleteWhere(string key, string value)
+    void deleteWhere(std::string key, std::string value)
 
-    insert(Vector values)
+    void insert(Vector values)
 
-    update(string userName, HashMap<any, any> updatedValues)
+    void update(std::string userName, HashMap<any, any> updatedValues)
 
 };
 

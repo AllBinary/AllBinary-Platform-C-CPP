@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_ALLANIMATIONSEVERYWHERETILEMAPPLACEMENTVISITOR_H
 
+            #include <vector>
+        
 #include <org/mapeditor/core/TiledMap.h>
 
       
@@ -45,9 +47,8 @@
         #include "TileMapPlacementVisitor.h"
 
 class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVisitor {
-        
 
-    public visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
+    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
 
 };
 

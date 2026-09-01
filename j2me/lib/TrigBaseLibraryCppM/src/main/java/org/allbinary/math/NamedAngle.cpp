@@ -48,17 +48,16 @@
         #include "Angle.h"
 
 class NamedAngle: public Angle {
-        
 
-    public const name: string;
+    public: std::string name;
 
-public constructor (int16_t angle, string name){
+public: NamedAngle(int16_t angle, std::string name){
             super(angle);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.name= name;
+this->name= name;
     
 }
 

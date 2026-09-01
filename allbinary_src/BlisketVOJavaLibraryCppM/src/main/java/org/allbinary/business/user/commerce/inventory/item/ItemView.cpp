@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -71,72 +73,68 @@
 class ItemView
             : public Object
          {
-        
 
-    private: const itemInterface: OrderItemInterface;
+    private: OrderItemInterface itemInterface;
 
-    private: const vector: Vector;
+    private: Vector vector;
 
-public constructor (OrderItemInterface itemInterface, Vector vector){
-
-            super();
-        this.itemInterface= itemInterface;
+public: ItemView(OrderItemInterface itemInterface, Vector vector){
+this->itemInterface= itemInterface;
     
-this.vector= vector;
+this->vector= vector;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.itemInterface!.toHashMap()!;;
+    HashMap<any, any> hashMap = this->itemInterface.toHashMap();;
     
 
-    keySet: Set = hashMap!.keys()!;;
+    Set keySet = hashMap.keys();;
     
 
-    node: Node = document.createElement(ItemData.ITEM)!;;
+    Node node = document.createElement(ItemData::ITEM);;
     
 
-    basicItemView: BasicItemView = new BasicItemView(this.itemInterface, this.vector);;
+    BasicItemView basicItemView = BasicItemView(this->itemInterface, this->vector);;
     
-node.appendChild(basicItemView!.toXmlNode(document));
-    
-
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+node.appendChild(basicItemView.toXmlNode(document));
     
 
-    nameArray: std::vector<any> = keySet!.()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    size: int32_t = nameArray!.length
-                ;;
+    std::vector<Object*> nameArray = keySet.();;
+    
+
+    int32_t size = nameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    name: string = nameArray[index]! as string;;
+    std::string name = nameArray[index]! as string;;
     
 
-    value: string = hashMap!.get(name) as string;;
+    std::string value = hashMap.get(name) as string;;
     
-value= stringUtil!.getNonNull(value);
+value= stringUtil.getNonNull(value);
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 
 
-    shippingAddressNode: Node = document.createElement(StreetAddressData.NAME)!;;
+    Node shippingAddressNode = document.createElement(StreetAddressData::NAME);;
     
-shippingAddressNode!.appendChild(this.itemInterface!.getShippingAddress()!.toXmlNode(document));
+shippingAddressNode.appendChild(this->itemInterface.getShippingAddress().toXmlNode(document));
     
 
 

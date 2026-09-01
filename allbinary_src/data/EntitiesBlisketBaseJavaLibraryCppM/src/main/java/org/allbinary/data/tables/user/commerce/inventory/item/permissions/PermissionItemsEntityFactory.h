@@ -54,17 +54,16 @@
 class PermissionItemsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: PermissionItemsEntityFactory = new PermissionItemsEntityFactory();
+    private: static PermissionItemsEntityFactory instance() { return PermissionItemsEntityFactory(); }
 
-    public static PermissionItemsEntityFactory getInstance();
+    public: static PermissionItemsEntityFactory getInstance();
 
-    public static PermissionItemsEntity getPermissionItemsEntityInstance();
+    public: static PermissionItemsEntity getPermissionItemsEntityInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: PermissionItemsEntityFactory();
 
 };
 

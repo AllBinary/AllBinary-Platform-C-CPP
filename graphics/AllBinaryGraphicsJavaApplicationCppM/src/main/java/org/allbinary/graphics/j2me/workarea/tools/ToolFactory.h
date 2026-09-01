@@ -58,29 +58,28 @@
 class ToolFactory
             : public Object
          {
-        
 
-    private: static const instance: ToolFactory = new ToolFactory();
+    private: static ToolFactory instance() { return ToolFactory(); }
 
-    public static ToolFactory getInstance();
+    public: static ToolFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: selectedTool: GraphicsItemInterfaceFactoryInterface = 
-                null
+    private: GraphicsItemInterfaceFactoryInterface selectedTool = 
+                nullptr
             ;
 
-    private: tool: string = 
-                null
+    private: std::string tool = 
+                nullptr
             ;
 
-    private: const SELECTED_LABEL: string = "Selected: ";
+    private: const std::string SELECTED_LABEL = "Selected: ";
 
-    public setSelectedTool(string tool);
+    public: void setSelectedTool(std::string tool);
 
-    public GraphicsItemInterfaceFactoryInterface getSelectedToolFactory();
+    public: GraphicsItemInterfaceFactoryInterface getSelectedToolFactory();
 
 };
 

@@ -24,17 +24,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class Bundle {
-        
 
-    string getSymbolicName()
-
-                //@Throws(BundleException.constructor)
-            
-    start()
+    std::string getSymbolicName()
 
                 //@Throws(BundleException.constructor)
             
-    start(int32_t options)
+    void start()
+
+                //@Throws(BundleException.constructor)
+            
+    void start(int32_t options)
 
 };
 

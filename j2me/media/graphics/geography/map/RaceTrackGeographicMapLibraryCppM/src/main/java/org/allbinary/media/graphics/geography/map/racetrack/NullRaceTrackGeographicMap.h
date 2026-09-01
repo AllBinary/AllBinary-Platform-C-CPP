@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_NULLRACETRACKGEOGRAPHICMAP_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -75,55 +77,54 @@
 class NullRaceTrackGeographicMap
             : public Object
         : public RaceTrackGeographicMapInterface {
-        
 
-    public static const NULL_RACE_TRACK_GEOGRAPHIC_MAP: NullRaceTrackGeographicMap = new NullRaceTrackGeographicMap();
+    public: static const NullRaceTrackGeographicMap NULL_RACE_TRACK_GEOGRAPHIC_MAP = NullRaceTrackGeographicMap();
 
-    public Integer getId();
+    public: Integer getId();
 
-    public string getName();
+    public: std::string getName();
 
-    public reset();
+    public: void reset();
 
-    public AllBinaryTiledLayer getAllBinaryTiledLayer();
-
-                //@Throws(Exception.constructor)
-            
-    public bool getCellPositionsAt(Layer layer, std::vector<std::vector<GeographicMapCellPosition>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition>> cellPositionArray);
+    public: AllBinaryTiledLayer getAllBinaryTiledLayer();
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getCellPositionAtXY(int32_t x, int32_t y);
+    public: bool getCellPositionsAt(Layer layer, std::vector<std::vector<GeographicMapCellPosition>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition>> cellPositionArray);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getCellPositionAtXYNoThrow(int32_t x, int32_t y);
-
-    public int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
+    public: GeographicMapCellPosition getCellPositionAtXY(int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellType getCellTypeAtXY(int32_t x, int32_t y);
+    public: GeographicMapCellPosition getCellPositionAtXYNoThrow(int32_t x, int32_t y);
+
+    public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellType getCellTypeAt(GeographicMapCellPosition geographicMapCellPosition);
+    public: GeographicMapCellType getCellTypeAtXY(int32_t x, int32_t y);
 
-    public BasicGeographicMapCellPositionFactory getGeographicMapCellPositionFactory();
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellType getCellTypeAt(GeographicMapCellPosition geographicMapCellPosition);
 
-    public GeographicMapCellPositionFactoryInterface getGeographicMapCellPositionFactoryInterface();
+    public: BasicGeographicMapCellPositionFactory getGeographicMapCellPositionFactory();
 
-    public BasicColor getForegroundBasicColor();
+    public: GeographicMapCellPositionFactoryInterface getGeographicMapCellPositionFactoryInterface();
 
-    public BasicColor getBackgroundBasicColor();
+    public: BasicColor getForegroundBasicColor();
 
-    public RaceTrackInfo getRaceTrackInfo();
+    public: BasicColor getBackgroundBasicColor();
 
-    public setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo);
+    public: RaceTrackInfo getRaceTrackInfo();
 
-    public RaceTrackData getRaceTrackData();
+    public: void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo);
 
-    public setRaceTrackData(RaceTrackData raceTrackData);
+    public: RaceTrackData getRaceTrackData();
+
+    public: void setRaceTrackData(RaceTrackData raceTrackData);
 
 };
 

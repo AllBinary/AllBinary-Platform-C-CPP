@@ -59,9 +59,8 @@
         #include "BasicTransformer.h"
 
 class StoreTransformer: public BasicTransformer {
-        
 
-public constructor (AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+public: StoreTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
 
 };
 

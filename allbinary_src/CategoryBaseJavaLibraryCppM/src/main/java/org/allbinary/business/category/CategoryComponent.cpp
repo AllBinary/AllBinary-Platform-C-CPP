@@ -56,10 +56,9 @@
         #include "CategoryView.h"
 #include "CategoryInterface.h"
 
-class CategoryComponent: public CategoryView: public TransformInterface {
-        
+class CategoryComponent: public CategoryView, public TransformInterface {
 
-public constructor (CategoryInterface categoryInterface){
+public: CategoryComponent(CategoryInterface categoryInterface){
             super(categoryInterface);
                     
 
@@ -68,19 +67,19 @@ public constructor (CategoryInterface categoryInterface){
 }
 
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId(){
+    public: int32_t getTypeId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NO_TYPE;
+                        return this->NO_TYPE;
     
 }
 
 
-    public TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface getTransformDocumentInterface(){
 
 
 
@@ -92,7 +91,7 @@ public constructor (CategoryInterface categoryInterface){
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface getTransformInfoInterface(){
 
 
 
@@ -102,17 +101,17 @@ public constructor (CategoryInterface categoryInterface){
 }
 
 
-    public setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface){
+    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
-    document: Document = DomDocumentHelper.create()!;;
+    Document document = DomDocumentHelper::create();;
     
-document.appendChild(new CategoryView(this.getCategoryInterface()).toXmlNode(document));
+document.appendChild(CategoryView(this->getCategoryInterface()).toXmlNode(document));
     
 
 
@@ -125,7 +124,7 @@ document.appendChild(new CategoryView(this.getCategoryInterface()).toXmlNode(doc
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
 
 

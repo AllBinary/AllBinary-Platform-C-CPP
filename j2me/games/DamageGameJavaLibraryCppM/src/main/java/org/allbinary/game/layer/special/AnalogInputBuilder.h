@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_SPECIAL_ANALOGINPUTBUILDER_H
         #define ORG_ALLBINARY_GAME_LAYER_SPECIAL_ANALOGINPUTBUILDER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -64,15 +66,14 @@
 class AnalogInputBuilder
             : public Object
          {
-        
 
-    private: static const instance: AnalogInputBuilder = new AnalogInputBuilder();
+    private: static AnalogInputBuilder instance() { return AnalogInputBuilder(); }
 
-    public static AnalogInputBuilder getInstance();
+    public: static AnalogInputBuilder getInstance();
 
-    public disable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+    public: void disable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
 
-    public enable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+    public: void enable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
 
 };
 

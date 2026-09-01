@@ -76,41 +76,40 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasketTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor ();
+public: BasketTag();
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public setStoreName(string value);
-
-                //@Throws(LicensingException.constructor)
-            
-    bool isBasketEmpty();
+    public: void setStoreName(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    bool addItemToBasket();
+    private: bool isBasketEmpty();
 
                 //@Throws(LicensingException.constructor)
             
-    bool removeItemFromBasket();
+    private: bool addItemToBasket();
 
                 //@Throws(LicensingException.constructor)
             
-    bool adjustBasket();
+    private: bool removeItemFromBasket();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: bool adjustBasket();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

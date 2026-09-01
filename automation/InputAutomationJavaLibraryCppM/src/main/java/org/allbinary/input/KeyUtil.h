@@ -48,11 +48,10 @@
 class KeyUtil
             : public Object
          {
-        
 
-    public static bool isNormallyDisplayed(int32_t keyCode);
+    public: static bool isNormallyDisplayed(int32_t keyCode);
 
-public constructor ();
+public: KeyUtil();
 
 };
 

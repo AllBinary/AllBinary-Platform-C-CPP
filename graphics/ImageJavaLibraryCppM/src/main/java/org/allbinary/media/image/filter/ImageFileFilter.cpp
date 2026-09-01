@@ -44,9 +44,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //TWB - replace with file visitor version
 class ImageFileFilter: public FileFilter {
-        
 
-    public bool accept(File f){
+    public: bool accept(File f){
 
                         if(f.isDirectory())
                         
@@ -61,17 +60,17 @@ class ImageFileFilter: public FileFilter {
                                     }
                                 
 
-    s: string = f.getName()!;;
+    std::string s = f.getName();;
     
 
-    i: int32_t = s.lastIndexOf('.')!;;
+    int32_t i = s.lastIndexOf('.');;
     
 
-                        if(i > 0 && i < s.length -1)
+                        if(i > 0 && i < s.size() -1)
                         
                                     {
                                     
-    ext: string = s.substring(i +1)!.toLowerCase()!;;
+    std::string ext = s.substring(i +1).toLowerCase();;
     
 
                         if(ext === "jpg" || ext === "jpeg")
@@ -93,7 +92,7 @@ class ImageFileFilter: public FileFilter {
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 

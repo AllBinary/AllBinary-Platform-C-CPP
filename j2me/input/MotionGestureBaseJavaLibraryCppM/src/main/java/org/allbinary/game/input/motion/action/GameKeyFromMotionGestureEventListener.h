@@ -74,15 +74,14 @@
         #include "GameKeyCompleteMotionGestureInputEvent.h"
 
 class GameKeyFromMotionGestureEventListener: public CompleteMotionGestureInputEventListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: previousGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent previousGameKeyEvent = GameKeyEvent::NONE;
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
 
 };
 

@@ -50,31 +50,28 @@
 class ImageCreationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCreationUtil = new ImageCreationUtil();
+    private: static ImageCreationUtil instance() { return ImageCreationUtil(); }
 
-    public static ImageCreationUtil getInstance(){
+    public: static ImageCreationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCreationUtil.instance;
+                        return ImageCreationUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ImageCreationUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageWH(int32_t width, int32_t height){
+    public: Image createImageWH(int32_t width, int32_t height){
 
-    image: Image = GameFeatureImageCacheFactory.getInstance()!.get(this.constructor.name.toString()!, width, height)!;;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString()!, width, height);;
     
 
 
@@ -87,9 +84,9 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY){
+    public: Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY){
 
-    image: Image = GameFeatureImageCacheFactory.getInstance()!.get(this.constructor.name.toString()!, static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1)!;;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(this->constructor.name.toString()!, static_cast<int32_t>((width *maxScaleX)) +1, static_cast<int32_t>((height *maxScaleY)) +1);;
     
 
 

@@ -71,80 +71,77 @@
 class StoreFrontInventoryStatistics
             : public Object
         : public StoreFrontInventoryStatisticsInterface {
-        
 
-    private: totalNumberOfItems: int64_t= 0;
+    private: int64_t totalNumberOfItems= 0;
 
-    private: totalInventorySaleValueMoney: Money;
+    private: Money totalInventorySaleValueMoney;
 
-public constructor (StoreFrontInterface storeFrontInterface){
-
-            super();
-        this.totalInventorySaleValueMoney= new Money();
+public: StoreFrontInventoryStatistics(StoreFrontInterface storeFrontInterface){
+this->totalInventorySaleValueMoney= Money();
     
 
-    inventoryEntityInterface: InventoryEntityInterface = InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!;;
+    InventoryEntityInterface inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
 
-    itemVector: Vector = inventoryEntityInterface!.getItems(storeFrontInterface)!;;
+    Vector itemVector = inventoryEntityInterface.getItems(storeFrontInterface);;
     
 
-    size: int32_t = itemVector!.length!;;
+    int32_t size = itemVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    itemInterface: ItemInterface = itemVector!.get(index) as ItemInterface;;
+    ItemInterface itemInterface = itemVector.get(index) as ItemInterface;;
     
 
-    numberInStock: int32_t = Integer.valueOf(itemInterface!.getNumber())!.intValue()!;;
+    int32_t numberInStock = Integer::valueOf(itemInterface.getNumber()).intValue();;
     
-this.totalNumberOfItems= this.totalNumberOfItems +numberInStock;
+this->totalNumberOfItems= this->totalNumberOfItems +numberInStock;
     
 
-    itemPriceMoney: Money = itemInterface!.getPrice()!;;
+    Money itemPriceMoney = itemInterface.getPrice();;
     
-itemPriceMoney!.multiply(numberInStock);
+itemPriceMoney.multiply(numberInStock);
     
-this.totalInventorySaleValueMoney!.add(itemPriceMoney!.toString());
+this->totalInventorySaleValueMoney.add(itemPriceMoney.toString());
     
 }
 
 }
 
 
-    public Long getNumber(){
+    public: Long getNumber(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.totalNumberOfItems);
+                        return Long(this->totalNumberOfItems);
     
 }
 
 
-    public Money getTotal(){
+    public: Money getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalInventorySaleValueMoney;
+                        return this->totalInventorySaleValueMoney;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(StoreFrontInventoryStatisticsData.getInstance()!.NUMBEROFITEMS, this.getNumber()!.toString());
+hashMap.put(StoreFrontInventoryStatisticsData::getInstance().NUMBEROFITEMS, this->getNumber().toString());
     
-hashMap!.put(StoreFrontInventoryStatisticsData.getInstance()!.TOTALVALUE, this.getTotal()!.toString());
+hashMap.put(StoreFrontInventoryStatisticsData::getInstance().TOTALVALUE, this->getTotal().toString());
     
 
 
@@ -155,7 +152,7 @@ hashMap!.put(StoreFrontInventoryStatisticsData.getInstance()!.TOTALVALUE, this.g
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
 
 
@@ -165,7 +162,7 @@ hashMap!.put(StoreFrontInventoryStatisticsData.getInstance()!.TOTALVALUE, this.g
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 

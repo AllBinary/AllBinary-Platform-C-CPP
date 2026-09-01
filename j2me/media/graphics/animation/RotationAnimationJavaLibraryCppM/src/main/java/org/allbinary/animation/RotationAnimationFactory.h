@@ -64,25 +64,24 @@
 class RotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    public static RotationAnimationFactory createFactory();
+    public: static RotationAnimationFactory createFactory();
 
-    private: totalAngle: int16_t;
+    private: int16_t totalAngle;
 
-    private: angleIncrement: int16_t;
+    private: int16_t angleIncrement;
 
-public constructor (int16_t totalAngle, int16_t angleIncrement);
-
-                //@Throws(Exception.constructor)
-            
-    public Animation getInstance(int32_t instanceId);
+public: RotationAnimationFactory(int16_t totalAngle, int16_t angleIncrement);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
+
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

@@ -53,17 +53,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderItemsEntityInterface: public BasicDataTableInterface {
-        
 
-    setStatus(string orderId, string groupId, string status);
+    void setStatus(std::string orderId, std::string groupId, std::string status);
 
-    bool isEverythingShipped(string orderId);
+    bool isEverythingShipped(std::string orderId);
 
-    BasketReview getBasketReview(string orderId);
+    BasketReview getBasketReview(std::string orderId);
 
-    insert(string userName, OrderInterface order);
+    void insert(std::string userName, OrderInterface order);
 
-    insert(Vector values);
+    void insert(Vector values);
 
 };
 

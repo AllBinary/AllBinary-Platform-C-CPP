@@ -67,23 +67,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HealthBarAnimation: public Animation {
-        
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    x2: int32_t= 0;
+    protected: int32_t x2= 0;
 
-    thickness: int32_t= 0;
+    protected: int32_t thickness= 0;
 
-    private: location: int32_t;
+    private: int32_t location;
 
-    allbinaryLayer: AllBinaryLayer;
+    protected: AllBinaryLayer allbinaryLayer;
 
-public constructor (AllBinaryLayer layerInterface, int32_t location);
+public: HealthBarAnimation(AllBinaryLayer layerInterface, int32_t location);
 
-    public onHealthChange(int32_t newX2);
+    public: void onHealthChange(int32_t newX2);
 
-    int32_t getY();
+    protected: int32_t getY();
 
 };
 

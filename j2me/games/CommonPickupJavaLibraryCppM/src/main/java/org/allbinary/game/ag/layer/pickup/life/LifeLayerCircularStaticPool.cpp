@@ -56,29 +56,26 @@
         #include "LifeLayer.h"
 
 class LifeLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor (AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
-
-            super();
-        super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
+public: LifeLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
+super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryLayer sourceLayerInterface){
+    public: void visit(AllBinaryLayer sourceLayerInterface){
 
-    lifeLayer: LifeLayer = this.getNextInstance() as LifeLayer;;
+    LifeLayer lifeLayer = this->getNextInstance() as LifeLayer;;
     
 
-    lifeInterfaceCompositeInterface: LifeInterfaceCompositeInterface = sourceLayerInterface as unknown as LifeInterfaceCompositeInterface;;
+    LifeInterfaceCompositeInterface lifeInterfaceCompositeInterface = sourceLayerInterface as unknown as LifeInterfaceCompositeInterface;;
     
 
-    lifeInterface: Life = lifeInterfaceCompositeInterface!.getLifeInterface()!;;
+    Life lifeInterface = lifeInterfaceCompositeInterface.getLifeInterface();;
     
-lifeLayer!.visit(lifeInterface);
+lifeLayer.visit(lifeInterface);
     
 }
 

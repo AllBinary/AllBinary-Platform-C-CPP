@@ -84,82 +84,77 @@
 class UserEmailConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: userEmailConfigurationInterface: UserEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
 
-public constructor (Node node){
+public: UserEmailConfigurationView(Node node){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.userEmailConfigurationInterface= new UserEmailConfiguration() as UserEmailConfigurationInterface;
+this->userEmailConfigurationInterface= UserEmailConfiguration() as UserEmailConfigurationInterface;
     
 
-    childNodeList: NodeList = node.getChildNodes()!;;
+    NodeList childNodeList = node.getChildNodes();;
     
 
-    userEmailEventsConfigurationNode: Node = DomSearchHelper.getNodeNoThrow(UserEmailEventsConfigurationData.NAME, childNodeList)!;;
+    Node userEmailEventsConfigurationNode = DomSearchHelper::getNodeNoThrow(UserEmailEventsConfigurationData::NAME, childNodeList);;
     
 
-    userEmailEventsConfigurationView: UserEmailEventsConfigurationView = new UserEmailEventsConfigurationView(userEmailEventsConfigurationNode);;
+    UserEmailEventsConfigurationView userEmailEventsConfigurationView = UserEmailEventsConfigurationView(userEmailEventsConfigurationNode);;
     
-this.userEmailConfigurationInterface!.setUserEmailEventsConfigurationInterface(userEmailEventsConfigurationView!.getUserEmailEventsConfigurationInterface());
-    
-}
-
-
-public constructor (UserEmailConfigurationInterface userEmailConfigurationInterface){
-
-            super();
-        this.userEmailConfigurationInterface= userEmailConfigurationInterface;
+this->userEmailConfigurationInterface.setUserEmailEventsConfigurationInterface(userEmailEventsConfigurationView.getUserEmailEventsConfigurationInterface());
     
 }
 
 
-    public UserEmailConfigurationInterface getEmailConfigurationInterface(){
+public: UserEmailConfigurationView(UserEmailConfigurationInterface userEmailConfigurationInterface){
+this->userEmailConfigurationInterface= userEmailConfigurationInterface;
+    
+}
+
+
+    public: UserEmailConfigurationInterface getEmailConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userEmailConfigurationInterface;
+                        return this->userEmailConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    emailConfigurationMapping: UserEmailConfigurationMapping = new UserEmailConfigurationMapping(this.userEmailConfigurationInterface);;
+    UserEmailConfigurationMapping emailConfigurationMapping = UserEmailConfigurationMapping(this->userEmailConfigurationInterface);;
     
 
-    hashMap: HashMap<any, any> = emailConfigurationMapping!.toHashMap()!;;
+    HashMap<any, any> hashMap = emailConfigurationMapping.toHashMap();;
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, UserEmailConfigurationData.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, UserEmailConfigurationData::NAME, hashMap);;
     
 
-    userEmailConfigurationInterface: UserEmailConfigurationInterface = this.getEmailConfigurationInterface()!;;
+    UserEmailConfigurationInterface userEmailConfigurationInterface = this->getEmailConfigurationInterface();;
     
 
-    userEmailEventsConfigurationInterface: UserEmailEventsConfigurationInterface = userEmailConfigurationInterface!.getUserEmailEventsConfigurationInterface()!;;
+    UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface = userEmailConfigurationInterface.getUserEmailEventsConfigurationInterface();;
     
 
-    userEmailEventsConfigurationView: UserEmailEventsConfigurationView = new UserEmailEventsConfigurationView(userEmailEventsConfigurationInterface);;
+    UserEmailEventsConfigurationView userEmailEventsConfigurationView = UserEmailEventsConfigurationView(userEmailEventsConfigurationInterface);;
     
-node.appendChild(userEmailEventsConfigurationView!.toXmlNode(document));
+node.appendChild(userEmailEventsConfigurationView.toXmlNode(document));
     
 
 

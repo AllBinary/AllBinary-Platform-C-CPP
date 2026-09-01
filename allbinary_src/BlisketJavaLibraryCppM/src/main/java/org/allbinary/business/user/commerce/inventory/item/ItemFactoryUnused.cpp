@@ -60,36 +60,33 @@
 class ItemFactoryUnused
             : public Object
          {
-        
 
                 //@Throws(MoneyException.constructor)
             
-    public static TableMappingInterface getInstance(HashMap<any, any> hashMap){
+    public: static TableMappingInterface getInstance(HashMap<any, any> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Item(hashMap) as TableMappingInterface;
+                        return Item(hashMap) as TableMappingInterface;
     
 }
 
 
                 //@Throws(Exception.constructor, MoneyException.constructor)
             
-    public static TableMappingInterface getInstance(HttpServletRequest request){
+    public: static TableMappingInterface getInstance(HttpServletRequest request){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Item(new RequestParams(request).toHashMap()) as TableMappingInterface;
+                        return Item(RequestParams(request).toHashMap()) as TableMappingInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ItemFactoryUnused(){
+}
 
 
 };

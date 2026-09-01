@@ -79,127 +79,126 @@
 class Payment
             : public Object
         : public PaymentInterface, public DomNodeInterface {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: expiration: string;
+    private: std::string expiration;
 
-    private: encryption: string;
+    private: std::string encryption;
 
-    private: number: string;
+    private: std::string number;
 
-    private: id: string;
+    private: std::string id;
 
-    private: type: string;
+    private: std::string type;
 
-    private: tenderType: string;
+    private: std::string tenderType;
 
-    private: transactionType: string;
+    private: std::string transactionType;
 
-    private: aba: string;
+    private: std::string aba;
 
-    private: account: string;
+    private: std::string account;
 
-    private: accountType: string;
+    private: std::string accountType;
 
-    private: authorizationCode: string;
+    private: std::string authorizationCode;
 
-    private: checkNumber: string;
+    private: std::string checkNumber;
 
-    private: checkType: string;
+    private: std::string checkType;
 
-    private: driversLicense: string;
+    private: std::string driversLicense;
 
-    private: magneticInkCheckReader: string;
+    private: std::string magneticInkCheckReader;
 
-    private: isDefault: bool = false;
+    private: bool isDefault = false;
 
-public constructor (HashMap<any, any> payment);
+public: Payment(HashMap<any, any> payment);
 
-public constructor (ServletRequest request);
+public: Payment(ServletRequest request);
 
-public constructor ();
+public: Payment();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public setTenderType(string value);
+    public: void setTenderType(std::string value);
 
-    public setTransactionType(string value);
+    public: void setTransactionType(std::string value);
 
-    public setAuthorizationCode(string value);
+    public: void setAuthorizationCode(std::string value);
 
-    public setCheckType(string value);
+    public: void setCheckType(std::string value);
 
-    public setCheckNumber(string value);
+    public: void setCheckNumber(std::string value);
 
-    public setDriversLicense(string value);
+    public: void setDriversLicense(std::string value);
 
-    public setMagneticInkCheckReader(string value);
+    public: void setMagneticInkCheckReader(std::string value);
 
-    public setAba(string value);
+    public: void setAba(std::string value);
 
-    public setAccountType(string value);
+    public: void setAccountType(std::string value);
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public setType(string value);
+    public: void setType(std::string value);
 
-    public setExpiration(string value);
+    public: void setExpiration(std::string value);
 
-    public setNumber(string value);
+    public: void setNumber(std::string value);
 
-    public string getId();
+    public: std::string getId();
 
-    public string getName();
+    public: std::string getName();
 
-    public string getType();
+    public: std::string getType();
 
-    public string getExpiration();
+    public: std::string getExpiration();
 
-    public string getEncryption();
+    public: std::string getEncryption();
 
-    public string getNumber();
+    public: std::string getNumber();
 
-    public string getTenderType();
+    public: std::string getTenderType();
 
-    public string getTransactionType();
+    public: std::string getTransactionType();
 
-    public string getAba();
+    public: std::string getAba();
 
-    public string getAccount();
+    public: std::string getAccount();
 
-    public string getAccountType();
+    public: std::string getAccountType();
 
-    public string getAuthorizationCode();
+    public: std::string getAuthorizationCode();
 
-    public string getCheckNumber();
+    public: std::string getCheckNumber();
 
-    public string getCheckType();
+    public: std::string getCheckType();
 
-    public string getDriversLicense();
+    public: std::string getDriversLicense();
 
-    public string getMagneticInkCheckReader();
+    public: std::string getMagneticInkCheckReader();
 
-    public string getLastFour();
+    public: std::string getLastFour();
 
-    public bool isDefault();
+    public: bool isDefault();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public Document toXmlDoc();
+    public: Document toXmlDoc();
 
-    public string view();
+    public: std::string view();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
 };
 

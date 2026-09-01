@@ -102,66 +102,65 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "UserEntityInterface.h"
 
-class UserEntity: public AbSqlBean: public UserEntityInterface {
-        
+class UserEntity: public AbSqlBean, public UserEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "user";
+    private: const std::string tableName = "user";
 
-    private: const COMMAND_SUCCESS_FOR_USER: string = "Command Success for user: ";
+    private: const std::string COMMAND_SUCCESS_FOR_USER = "Command Success for user: ";
 
-    private: const PASSWORD_LABEL: string = " Password: ";
+    private: const std::string PASSWORD_LABEL = " Password: ";
 
-    private: const EQUALS: string = "==";
+    private: const std::string EQUALS = "==";
 
-    private: const COMMAND_SUCCESS_BUT_LOGIN_FAILED: string = "Command Success but login failed for user: ";
+    private: const std::string COMMAND_SUCCESS_BUT_LOGIN_FAILED = "Command Success but login failed for user: ";
 
-    private: const INVALID_PASSWORD_LABEL: string = " Password: \n\"";
+    private: const std::string INVALID_PASSWORD_LABEL = " Password: \n\"";
 
-    private: const NOT_EQUAL: string = "\"!=\"";
+    private: const std::string NOT_EQUAL = "\"!=\"";
 
-    private: const END_QUOTES: string = CommonSeps.getInstance()!.QUOTE;
+    private: const std::string END_QUOTES = CommonSeps::getInstance().QUOTE;
 
-public constructor ();
+public: UserEntity();
 
-    public insert(Vector values);
-
-                //@Throws(Exception.constructor)
-            
-    public Vector getAdministrators();
+    public: void insert(Vector values);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getStoreManagers(StoreFrontInterface storeFrontInterface);
+    public: Vector getAdministrators();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getCustomers();
+    public: Vector getStoreManagers(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getUsersWithRole(UserRole userRole);
+    public: Vector getCustomers();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getUsers(StoreFrontInterface storeFrontInterface);
+    public: Vector getUsersWithRole(UserRole userRole);
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getUser(string userName);
+    public: Vector getUsers(StoreFrontInterface storeFrontInterface);
 
-    public deleteWhere(string key, string value);
+                //@Throws(Exception.constructor)
+            
+    public: UserInterface getUser(std::string userName);
 
-    public string login(string userName, string password);
+    public: void deleteWhere(std::string key, std::string value);
 
-    public update(string userName, HashMap<any, any> updatedValues);
+    public: std::string login(std::string userName, std::string password);
 
-    public string dropTables();
+    public: void update(std::string userName, HashMap<any, any> updatedValues);
 
-    public string createTableStatement();
+    public: std::string dropTables();
 
-    public string createTable();
+    public: std::string createTableStatement();
+
+    public: std::string createTable();
 
 };
 

@@ -52,13 +52,12 @@
 class OpenGLImageCacheFactory
             : public Object
          {
-        
 
-    private: static const IMAGE_CACHE: ImageCache = new OpenGLImageCache();
+    private: static const ImageCache IMAGE_CACHE = OpenGLImageCache();
 
-    public static ImageCache getInstance();
+    public: static ImageCache getInstance();
 
-    public static init();
+    public: static void init();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -62,47 +64,46 @@
 class PartnerIdentifierFileUtil
             : public Object
          {
-        
 
-    private: static const instance: PartnerIdentifierFileUtil = new PartnerIdentifierFileUtil();
+    private: static PartnerIdentifierFileUtil instance() { return PartnerIdentifierFileUtil(); }
 
-    public static PartnerIdentifierFileUtil getInstance(){
+    public: static PartnerIdentifierFileUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PartnerIdentifierFileUtil.instance;
+                        return PartnerIdentifierFileUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const FILE_NAME: string = "partner.txt";
+    public: const std::string FILE_NAME = "partner.txt";
 
-    public string get(){
+    public: std::string get(){
 
         try {
             
-    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    inputStream: InputStream = resourceUtil!.getResourceAsStream(this.FILE_NAME)!;;
+    InputStream inputStream = resourceUtil.getResourceAsStream(this->FILE_NAME);;
     
 
-    inputStreamReader: InputStreamReader = new InputStreamReader(inputStream);;
+    InputStreamReader inputStreamReader = InputStreamReader(inputStream);;
     
 
-    chars: std::vector<char> = 
+    std::vector<char> chars = 
                                                         
-                                                        new Array(30)
+                                                        std::vector<char>(30)
                                                     ;;
     
 
-    size: int32_t = inputStreamReader!.read(chars)!;;
+    int32_t size = inputStreamReader.read(chars);;
     
 
-    partnerString: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string partnerString = StringUtil::getInstance().EMPTY_STRING;;
     
 
                         if(size > 0)
@@ -113,7 +114,7 @@ class PartnerIdentifierFileUtil
 
                                     }
                                 
-inputStreamReader!.close();
+inputStreamReader.close();
     
 
 
@@ -126,15 +127,15 @@ inputStreamReader!.close();
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.NULL_STRING;
+                        return StringUtil::getInstance().NULL_STRING;
     
 }
 

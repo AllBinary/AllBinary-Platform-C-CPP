@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_GENERICMODULECONFIGURATIONJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_GENERICMODULECONFIGURATIONJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Vector.h>
@@ -90,102 +92,101 @@
 #include "ListSelectionEvent.h"
 #include "Insets.h"
 
-class GenericModuleConfigurationJPanel: public javax.swing.JPanel: public GenericModuleConfigurationInterface {
-        
+class GenericModuleConfigurationJPanel: public javax::swing::JPanel, public GenericModuleConfigurationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: genericProfiles: GenericProfiles;
+    private: GenericProfiles genericProfiles;
 
-    private: selectedGenericProfile: GenericProfile;
+    private: GenericProfile selectedGenericProfile;
 
-public constructor ();
+public: GenericModuleConfigurationJPanel();
 
-    initComponents();
+    private: void initComponents();
 
-    savedCaptureJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void savedCaptureJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    screenCaptureJRadioButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void screenCaptureJRadioButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    captureMotionAnalysisJCheckBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void captureMotionAnalysisJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    captureComparisonJCheckBoxActionPerformed(java.awt.event.ActionEvent evt);
-
-                //@Throws(Exception.constructor)
-            
-    updateProfileUI(string profileNameString);
+    private: void captureComparisonJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
 
                 //@Throws(Exception.constructor)
             
-    selectFirstElement();
+    private: void updateProfileUI(std::string profileNameString);
 
                 //@Throws(Exception.constructor)
             
-    updateProfileOptions();
+    private: void selectFirstElement();
 
-    public javax.swing.JPanel getBlankGenericProfileActionsJPanel();
+                //@Throws(Exception.constructor)
+            
+    private: void updateProfileOptions();
 
-    public setBlankGenericProfileActionsJPanel(javax.swing.JPanel blankGenericProfileActionsJPanel);
+    public: javax::swing::JPanel getBlankGenericProfileActionsJPanel();
 
-    GenericProfiles getGenericProfiles();
+    public: void setBlankGenericProfileActionsJPanel(javax::swing::JPanel blankGenericProfileActionsJPanel);
 
-    setGenericProfiles(GenericProfiles genericProfiles);
+    private: GenericProfiles getGenericProfiles();
 
-    public GenericProfile getSelectedGenericProfile();
+    private: void setGenericProfiles(GenericProfiles genericProfiles);
 
-    public setSelectedGenericProfile(GenericProfile selectedGenericProfile);
+    public: GenericProfile getSelectedGenericProfile();
 
-    genericProfilesJListValueChanged(javax.swing.event.ListSelectionEvent evt);
+    public: void setSelectedGenericProfile(GenericProfile selectedGenericProfile);
 
-    deleteProfileJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void genericProfilesJListValueChanged(javax::swing::event::ListSelectionEvent evt);
 
-    okNewProfileJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void deleteProfileJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    newProfileJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okNewProfileJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: blankGenericProfileActionsJPanel: javax.swing.JPanel;
+    private: void newProfileJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: buttonGroup2: javax.swing.ButtonGroup;
+    private: javax::swing::JPanel blankGenericProfileActionsJPanel;
 
-    private: captureComparisonJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::ButtonGroup buttonGroup2;
 
-    private: captureMotionAnalysisJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox captureComparisonJCheckBox;
 
-    private: deleteProfileJButton: javax.swing.JButton;
+    private: javax::swing::JCheckBox captureMotionAnalysisJCheckBox;
 
-    private: genericJTabbedPane: javax.swing.JTabbedPane;
+    private: javax::swing::JButton deleteProfileJButton;
 
-    private: genericProfilesJList: javax.swing.JList;
+    private: javax::swing::JTabbedPane genericJTabbedPane;
 
-    private: genericProfilesJPanel: javax.swing.JPanel;
+    private: javax::swing::JList genericProfilesJList;
 
-    private: genericProfilesJScrollPane: javax.swing.JScrollPane;
+    private: javax::swing::JPanel genericProfilesJPanel;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JScrollPane genericProfilesJScrollPane;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: newProfileJButton: javax.swing.JButton;
+    private: javax::swing::JPanel jPanel1;
 
-    private: newProfileJDialog: javax.swing.JDialog;
+    private: javax::swing::JButton newProfileJButton;
 
-    private: newProfileNameJLabel: javax.swing.JLabel;
+    private: javax::swing::JDialog newProfileJDialog;
 
-    private: newProfileNameJTextField: javax.swing.JTextField;
+    private: javax::swing::JLabel newProfileNameJLabel;
 
-    private: okNewProfileJButton: javax.swing.JButton;
+    private: javax::swing::JTextField newProfileNameJTextField;
 
-    private: savedCaptureJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JButton okNewProfileJButton;
 
-    private: screenCaptureJRadioButton: javax.swing.JRadioButton;
+    private: javax::swing::JRadioButton savedCaptureJRadioButton;
+
+    private: javax::swing::JRadioButton screenCaptureJRadioButton;
 
 };
 

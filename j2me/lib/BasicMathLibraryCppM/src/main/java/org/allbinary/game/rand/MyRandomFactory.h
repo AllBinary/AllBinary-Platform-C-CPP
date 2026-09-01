@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_H
         #define ORG_ALLBINARY_GAME_RAND_MYRANDOMFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -72,35 +74,34 @@
 class MyRandomFactory
             : public Object
          {
-        
 
-    private: static const instance: MyRandomFactory = new MyRandomFactory();
+    private: static MyRandomFactory instance() { return MyRandomFactory(); }
 
-    public static MyRandomFactory getInstance();
+    public: static MyRandomFactory getInstance();
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    private: rand: Random;
+    private: Random rand;
 
-private constructor ();
+private: MyRandomFactory();
 
-    public setSeed(int64_t seed);
+    public: void setSeed(int64_t seed);
 
-    public int32_t getNextInt(int32_t range);
+    public: int32_t getNextInt(int32_t range);
 
-    public int32_t getAbsoluteNextInt(int32_t range);
+    public: int32_t getAbsoluteNextInt(int32_t range);
 
-    public int32_t getAbsoluteNextIntAllowZero(int32_t range);
+    public: int32_t getAbsoluteNextIntAllowZero(int32_t range);
 
-    public shuffle(std::vector<int32_t> intArray);
+    public: void shuffle(std::vector<int32_t> intArray);
 
-    public shuffleTotal(std::vector<int32_t> intArray, int32_t shuffleTotal);
+    public: void shuffleTotal(std::vector<int32_t> intArray, int32_t shuffleTotal);
 
-    public shuffle2(std::vector<int32_t> intArray, std::vector<int32_t> intArray2);
+    public: void shuffle2(std::vector<int32_t> intArray, std::vector<int32_t> intArray2);
 
-    public shuffle2Total(std::vector<int32_t> intArray, std::vector<int32_t> intArray2, int32_t shuffleTotal);
+    public: void shuffle2Total(std::vector<int32_t> intArray, std::vector<int32_t> intArray2, int32_t shuffleTotal);
 
 };
 

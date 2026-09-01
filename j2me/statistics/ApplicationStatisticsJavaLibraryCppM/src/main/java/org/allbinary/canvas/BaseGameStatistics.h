@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_CANVAS_BASEGAMESTATISTICS_H
         #define ORG_ALLBINARY_CANVAS_BASEGAMESTATISTICS_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Integer.h"
@@ -85,65 +87,64 @@
 class BaseGameStatistics
             : public Object
          {
-        
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(Integer.MAX_VALUE);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(Integer::MAX_VALUE);
 
-    private: const updateDelayHelper: TimeDelayHelper = new TimeDelayHelper(2000);
+    private: const TimeDelayHelper updateDelayHelper = TimeDelayHelper(2000);
 
-    private: totalRefreshes: int64_t= 0;
+    private: int64_t totalRefreshes= 0;
 
-    private: totalFrames: int64_t= 0;
+    private: int64_t totalFrames= 0;
 
-    const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    protected: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public constructor ();
+public: BaseGameStatistics();
 
-    public init();
+    public: void init();
 
-    public add(string string);
+    public: void add(std::string string);
 
-    public process();
+    public: void process();
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public nextRefresh();
+    public: void nextRefresh();
 
-    private: const DEFAULT_SCALE_FACTOR: int32_t = ScaleFactorFactory.getInstance()!.DEFAULT_SCALE_FACTOR;
+    private: const int32_t DEFAULT_SCALE_FACTOR = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
 
-    public int16_t getRefreshRate();
+    public: int16_t getRefreshRate();
 
-    TimeDelayHelper getTimeDelayHelper();
+    protected: TimeDelayHelper getTimeDelayHelper();
 
-    const NOT: string = "Not enough Time to Calculate";
+    protected: const std::string NOT = "Not enough Time to Calculate";
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const STRING_ARRAY: std::vector<string> = 
-                                                        [
-                                                            " Total Time: ",this.EMPTY_STRING," Total Frames: ",this.EMPTY_STRING," Frames/10 Sec: ",this.EMPTY_STRING," Total Paints: ",this.EMPTY_STRING," Paints/10 Sec: ",this.EMPTY_STRING
-                                                        ];
+    private: const std::vector<std::string> STRING_ARRAY = 
+                                                        {
+                                                            " Total Time: ",this->EMPTY_STRING," Total Frames: ",this->EMPTY_STRING," Frames/10 Sec: ",this->EMPTY_STRING," Total Paints: ",this->EMPTY_STRING," Paints/10 Sec: ",this->EMPTY_STRING
+                                                        };
 
-    private: const SPACE_CHAR: char = ' ';
+    private: const char SPACE_CHAR = ' ';
 
-    private: const PLUS_CHAR: char = '+';
+    private: const char PLUS_CHAR = '+';
 
-    private: const X_CHAR: char = 'X';
+    private: const char X_CHAR = 'X';
 
-    private: const CHAR_ARRAY: std::vector<std::vector<char>> = 
-                                                        [
+    private: const std::vector<std::vector<char>> CHAR_ARRAY = 
+                                                        {
                                                             ['F','r','a','m','e','s','/','1','0',' ','S','e','c',':'],['X','X'],['P','a','i','n','t','s','/','1','0',' ','S','e','c',':'],['X','X']
-                                                        ];
+                                                        };
 
-    private: const primitiveLongSingleton: PrimitiveLongSingleton = PrimitiveLongSingleton.getInstance()!;
+    private: const PrimitiveLongSingleton primitiveLongSingleton = PrimitiveLongSingleton::getInstance();
 
-    public std::vector<std::vector<char>> to2DCharArray();
+    public: std::vector<std::vector<char>> to2DCharArray();
 
-    public std::vector<string> toStringArray();
+    public: std::vector<std::string> toStringArray();
 
-    public string toStringAt(int64_t totalTime);
+    public: std::string toStringAt(int64_t totalTime);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

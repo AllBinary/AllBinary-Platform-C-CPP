@@ -52,65 +52,62 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TaxAddressTag: public StoreValidationTransformTag {
-        
 
-public constructor (){
-
-            super();
-        }
+public: TaxAddressTag(){
+}
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.TaxValidationView");
+this->setObjectFile("views.generic.address.shipping.TaxValidationView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.NewValidationView");
+this->setObjectFile("views.generic.address.shipping.NewValidationView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.INSERT) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.AddTaxValidationView");
+this->setObjectFile("views.generic.address.shipping.AddTaxValidationView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.UPDATE) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.UPDATE) == 0)
                         
                                     {
-                                    this.setName("Basic Shipping Address View");
+                                    this->setName("Basic Shipping Address View");
     
-this.setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
+this->setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
     
 
                                     }
@@ -119,7 +116,7 @@ this.setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -136,13 +133,13 @@ this.setObjectFile("views.generic.address.shipping.UpdateTaxValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -155,7 +152,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

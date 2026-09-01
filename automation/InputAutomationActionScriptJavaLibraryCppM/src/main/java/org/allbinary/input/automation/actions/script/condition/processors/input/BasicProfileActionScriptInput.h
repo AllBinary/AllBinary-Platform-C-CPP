@@ -91,34 +91,33 @@
         #include "ProfileActionScriptInputInterface.h"
 #include "GenericProfileActionScriptInputData.h"
 
-class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor: public ProfileActionScriptInputInterface {
-        
+class BasicProfileActionScriptInput: public BasicProfileActionScriptProcessor, public ProfileActionScriptInputInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: inputRobotInterface: InputRobotInterface;
+    private: InputRobotInterface inputRobotInterface;
 
-    private: time: int32_t= 0;
+    private: int32_t time= 0;
 
-public constructor (string label, Node node);
+public: BasicProfileActionScriptInput(std::string label, Node node);
 
-public constructor (string label);
+public: BasicProfileActionScriptInput(std::string label);
 
-    public int32_t getTime();
+    public: int32_t getTime();
 
-    public setTime(int32_t time);
+    public: void setTime(int32_t time);
 
-    public HashMap<any, any> BasicProfileActionScriptInput_toHashMap();
+    public: HashMap<any, any> BasicProfileActionScriptInput_toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public setInputRobotInterface(InputRobotInterface inputRobotInterface);
+    public: void setInputRobotInterface(InputRobotInterface inputRobotInterface);
 
-    public InputRobotInterface getInputRobotInterface();
+    public: InputRobotInterface getInputRobotInterface();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

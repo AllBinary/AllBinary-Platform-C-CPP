@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -42,9 +44,8 @@
 class PrimitiveFloatUtil
             : public Object
          {
-        
 
-    public static std::vector<float> getArrayInstance(){
+    public: static std::vector<float> getArrayInstance(){
 
 
 
@@ -54,10 +55,8 @@ class PrimitiveFloatUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PrimitiveFloatUtil(){
+}
 
 
 };

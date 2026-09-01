@@ -44,40 +44,37 @@
 class GeographicMapCellHistoryProgressBase
             : public Object
          {
-        
 
-    private: static const instance: GeographicMapCellHistoryProgressBase = new GeographicMapCellHistoryProgressBase();
+    private: static GeographicMapCellHistoryProgressBase instance() { return GeographicMapCellHistoryProgressBase(); }
 
-    public static GeographicMapCellHistoryProgressBase getInstance(){
+    public: static GeographicMapCellHistoryProgressBase getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellHistoryProgressBase.instance;
+                        return GeographicMapCellHistoryProgressBase::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: GeographicMapCellHistoryProgressBase(){
+}
 
 
-    public init(){
+    public: void init(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isAnyProgress(){
+    public: bool isAnyProgress(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

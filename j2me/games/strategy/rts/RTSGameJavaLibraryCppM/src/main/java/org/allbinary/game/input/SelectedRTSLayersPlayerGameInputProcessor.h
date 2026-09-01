@@ -43,11 +43,10 @@
 #include "SelectedRTSLayersPlayerGameInput.h"
 
 class SelectedRTSLayersPlayerGameInputProcessor: public GameInputProcessor {
-        
 
-    const selectedRTSLayersPlayerGameInput: SelectedRTSLayersPlayerGameInput;
+    protected: SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput;
 
-public constructor (SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
+public: SelectedRTSLayersPlayerGameInputProcessor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
 
 };
 

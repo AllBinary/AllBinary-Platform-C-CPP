@@ -75,63 +75,58 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MetaValidation: public Validation: public DomNodeInterface {
-        
+class MetaValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: label: string;
+    private: std::string label;
 
-    private: name: string;
+    private: std::string name;
 
-    private: httpEquiv: string;
+    private: std::string httpEquiv;
 
-    private: content: string;
+    private: std::string content;
 
-public constructor (HtmlMetaAttributeData htmlMetaAttributeData, string label, string attributeValue, string contentValue){
-
-            super();
-        this.label= label;
+public: MetaValidation(HtmlMetaAttributeData htmlMetaAttributeData, std::string label, std::string attributeValue, std::string contentValue){
+this->label= label;
     
 
-                        if(htmlMetaAttributeData! === HtmlMetaAttributeDataFactory.getInstance()!.HTTP_EQUIV)
+                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance().HTTP_EQUIV)
                         
                                     {
-                                    this.httpEquiv= attributeValue;
+                                    this->httpEquiv= attributeValue;
     
 
                                     }
                                 
                              else 
-                        if(htmlMetaAttributeData! === HtmlMetaAttributeDataFactory.getInstance()!.NAME)
+                        if(htmlMetaAttributeData === HtmlMetaAttributeDataFactory::getInstance().NAME)
                         
                                     {
-                                    this.name= attributeValue;
+                                    this->name= attributeValue;
     
 
                                     }
                                 
-this.content= contentValue;
+this->content= contentValue;
     
 }
 
 
-public constructor (Document document){
-
-            super();
-        
+public: MetaValidation(Document document){
 
 
-                            throw new Exception(CommonStrings.getInstance()!.NOT_IMPLEMENTED);
+
+                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
                     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
 
@@ -144,10 +139,10 @@ public constructor (Document document){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -156,34 +151,34 @@ public constructor (Document document){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -199,7 +194,7 @@ public constructor (Document document){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -209,7 +204,7 @@ public constructor (Document document){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -219,20 +214,20 @@ public constructor (Document document){
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    htmlMetaAttributeDataFactory: HtmlMetaAttributeDataFactory = HtmlMetaAttributeDataFactory.getInstance()!;;
+    HtmlMetaAttributeDataFactory htmlMetaAttributeDataFactory = HtmlMetaAttributeDataFactory::getInstance();;
     
-hashMap!.put(HtmlMetaData.getInstance()!.LABEL.toString(), this.label);
+hashMap.put(HtmlMetaData::getInstance().LABEL.toString(), this->label);
     
-hashMap!.put(htmlMetaAttributeDataFactory!.NAME.toString(), this.name);
+hashMap.put(htmlMetaAttributeDataFactory.NAME.toString(), this->name);
     
-hashMap!.put(htmlMetaAttributeDataFactory!.HTTP_EQUIV.toString(), this.httpEquiv);
+hashMap.put(htmlMetaAttributeDataFactory.HTTP_EQUIV.toString(), this->httpEquiv);
     
-hashMap!.put(htmlMetaAttributeDataFactory!.CONTENT.toString(), this.content);
+hashMap.put(htmlMetaAttributeDataFactory.CONTENT.toString(), this->content);
     
 
 
@@ -245,9 +240,9 @@ hashMap!.put(htmlMetaAttributeDataFactory!.CONTENT.toString(), this.content);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createNameValueNodes(document, HtmlMetaData.getInstance()!.NAME.toString(), this.toHashMap())!;;
+    Node node = ModDomHelper::createNameValueNodes(document, HtmlMetaData::getInstance().NAME.toString(), this->toHashMap());;
     
 
 

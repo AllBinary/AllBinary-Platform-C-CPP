@@ -51,17 +51,16 @@
 class CommandUriAction
             : public Object
          {
-        
 
-    private: static const instance: CommandUriAction = new CommandUriAction();
+    private: static CommandUriAction instance() { return CommandUriAction(); }
 
-    public static CommandUriAction getInstance();
+    public: static CommandUriAction getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public add(Command command, string url);
+    public: void add(Command command, std::string url);
 
-    public process(Command command);
+    public: void process(Command command);
 
 };
 

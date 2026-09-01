@@ -52,27 +52,26 @@
         #include "AndroidGameStatistics.h"
 
 class ProfilingRefreshHelper: public AndroidGameStatistics {
-        
 
-    private: static const instance: ProfilingRefreshHelper = new ProfilingRefreshHelper();
+    private: static ProfilingRefreshHelper instance() { return ProfilingRefreshHelper(); }
 
-    public static AndroidGameStatistics getInstance();
+    public: static AndroidGameStatistics getInstance();
 
-    private: firstTime: bool = true;
+    private: bool firstTime = true;
 
-    private: bestFrameProcessingTime: int32_t= 0;
+    private: int32_t bestFrameProcessingTime= 0;
 
-    private: worstFrameProcessingTime: int32_t= 0;
+    private: int32_t worstFrameProcessingTime= 0;
 
-    private: frameProcessingTimeElapsed: int64_t= 0;
+    private: int64_t frameProcessingTimeElapsed= 0;
 
-private constructor ();
+private: ProfilingRefreshHelper();
 
-    public initView(View view);
+    public: void initView(View view);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

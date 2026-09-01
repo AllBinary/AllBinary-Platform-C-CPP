@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESRESULTSLISTENER_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -48,9 +50,8 @@
         #include "HighScores.h"
 
 class HighScoresResultsListener {
-        
 
-    setHighScoresArray(std::vector<HighScores> highScoresArrayP);
+    void setHighScoresArray(std::vector<HighScores> highScoresArrayP);
 
 };
 

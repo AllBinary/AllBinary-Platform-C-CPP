@@ -54,16 +54,15 @@
 class FallingPickupLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance(){
+    public: AllBinaryLayer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new FallingPickupLayer(RemoteInfo.REMOTE_INFO);
+                        return FallingPickupLayer(RemoteInfo::REMOTE_INFO);
     
 }
 

@@ -44,11 +44,10 @@
         #include "GameKeyEvent.h"
 
 class PressGameKeyEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onPressGameKeyEvent(GameKeyEvent gameKeyEvent)
+    void onPressGameKeyEvent(GameKeyEvent gameKeyEvent)
 
 };
 

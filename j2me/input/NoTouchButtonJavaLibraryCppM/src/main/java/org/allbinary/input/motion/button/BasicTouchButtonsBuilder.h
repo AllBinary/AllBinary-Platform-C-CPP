@@ -59,15 +59,14 @@
         #include "BaseTouchInput.h"
 
 class BasicTouchButtonsBuilder: public BaseTouchInput {
-        
 
-    private: static const SINGLETON: BasicTouchButtonsBuilder = new BasicTouchButtonsBuilder();
+    private: static const BasicTouchButtonsBuilder SINGLETON = BasicTouchButtonsBuilder();
 
-    public static BaseTouchInput getInstance();
+    public: static BaseTouchInput getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

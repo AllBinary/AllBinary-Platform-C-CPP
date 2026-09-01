@@ -45,11 +45,10 @@
 class PaymentGatewaysData
             : public Object
          {
-        
 
-    public static NAME: string = "PAYMENTGATEWAYS_NAME";
+    public: static std::string NAME = "PAYMENTGATEWAYS_NAME";
 
-private constructor ();
+private: PaymentGatewaysData();
 
 };
 

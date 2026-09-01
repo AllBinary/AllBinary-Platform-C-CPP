@@ -54,15 +54,14 @@
 class PointsLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
-    private: const points: int32_t;
+    private: int32_t points;
 
-public constructor (int32_t points);
+public: PointsLayerFactory(int32_t points);
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance();
+    public: AllBinaryLayer getInstance();
 
 };
 

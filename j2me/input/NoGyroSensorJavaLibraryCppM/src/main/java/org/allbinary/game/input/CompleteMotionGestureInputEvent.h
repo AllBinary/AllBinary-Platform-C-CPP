@@ -73,24 +73,23 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CompleteMotionGestureInputInterface.h"
 
-class CompleteMotionGestureInputEvent: public AllBinaryEventObject: public CompleteMotionGestureInputInterface {
-        
+class CompleteMotionGestureInputEvent: public AllBinaryEventObject, public CompleteMotionGestureInputInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: motionGestureInput: MotionGestureInput = TouchMotionGestureFactory.getInstance()!.NO_MOTION;
+    private: MotionGestureInput motionGestureInput = TouchMotionGestureFactory::getInstance().NO_MOTION;
 
-public constructor (string name, MotionGestureInput motionGestureInput);
+public: CompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput);
 
-    setName(string name);
+    protected: void setName(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
-    public setMotionGestureInput(MotionGestureInput motionGestureInput);
+    public: void setMotionGestureInput(MotionGestureInput motionGestureInput);
 
-    public MotionGestureInput getMotionGestureInput();
+    public: MotionGestureInput getMotionGestureInput();
 
 };
 

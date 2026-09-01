@@ -21,6 +21,8 @@
         #ifndef VIEWS_GENERIC_BASKET_BASKETVIEW_H
         #define VIEWS_GENERIC_BASKET_BASKETVIEW_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -99,24 +101,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasketView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class BasketView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
-
-    public addDomNodeInterfaces();
+public: BasketView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+    public: void addDomNodeInterfaces();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

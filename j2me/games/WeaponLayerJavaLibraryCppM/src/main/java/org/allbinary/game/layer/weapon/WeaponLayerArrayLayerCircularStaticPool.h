@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_H
         #define ORG_ALLBINARY_GAME_LAYER_WEAPON_WEAPONLAYERARRAYLAYERCIRCULARSTATICPOOL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -51,25 +53,24 @@
 class WeaponLayerArrayLayerCircularStaticPool
             : public Object
          {
-        
 
-    private: static const instance: WeaponLayerArrayLayerCircularStaticPool = new WeaponLayerArrayLayerCircularStaticPool();
+    private: static WeaponLayerArrayLayerCircularStaticPool instance() { return WeaponLayerArrayLayerCircularStaticPool(); }
 
-    public static WeaponLayerArrayLayerCircularStaticPool getInstance();
+    public: static WeaponLayerArrayLayerCircularStaticPool getInstance();
 
-    private: const MAX: int32_t = 5;
+    private: const int32_t MAX = 5;
 
-    private: circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(this.MAX)!;
+    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
 
-    private: ALL_WEAPONLAYER_ARRAY: std::vector<std::vector<std::vector<any>>> = new Array(4)
+    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = new Array(4)
                                                         ;
 
-    public init();
+    public: void init();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public std::vector<WeaponLayer> getInstanceArray(int32_t size);
+    public: std::vector<WeaponLayer> getInstanceArray(int32_t size);
 
 };
 

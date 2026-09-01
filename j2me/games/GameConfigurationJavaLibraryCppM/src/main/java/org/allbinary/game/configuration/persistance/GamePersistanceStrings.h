@@ -45,19 +45,18 @@
 class GamePersistanceStrings
             : public Object
          {
-        
 
-    private: static const instance: GamePersistanceStrings = new GamePersistanceStrings();
+    private: static GamePersistanceStrings instance() { return GamePersistanceStrings(); }
 
-    public static GamePersistanceStrings getInstance();
+    public: static GamePersistanceStrings getInstance();
 
-    public const SAVED_GAME_RECORD_ID: string = "_SG";
+    public: const std::string SAVED_GAME_RECORD_ID = "_SG";
 
-    public const SAVED_GAME_CONFIGURATION_RECORD_ID: string = "_SGC";
+    public: const std::string SAVED_GAME_CONFIGURATION_RECORD_ID = "_SGC";
 
-    public const DEFAULT_INPUT_MAPPING_RECORD_ID: string = "_DIM";
+    public: const std::string DEFAULT_INPUT_MAPPING_RECORD_ID = "_DIM";
 
-    public const SAVED_INPUT_CONFIGURATION_RECORD_ID: string = "_SIC";
+    public: const std::string SAVED_INPUT_CONFIGURATION_RECORD_ID = "_SIC";
 
 };
 

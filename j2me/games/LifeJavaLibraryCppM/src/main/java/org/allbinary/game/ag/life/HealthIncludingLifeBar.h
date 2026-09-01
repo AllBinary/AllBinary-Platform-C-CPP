@@ -67,26 +67,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "Life.h"
 
-class HealthIncludingLifeBar: public Paintable: public HealthListenerInterface {
-        
+class HealthIncludingLifeBar: public Paintable, public HealthListenerInterface {
 
-    private: const animationInterface: HealthBarAnimation;
+    private: HealthBarAnimation animationInterface;
 
-    private: const life: Life;
+    private: Life life;
 
-    private: const healthInterface: HealthInterface;
+    private: HealthInterface healthInterface;
 
-    const allbinaryLayer: AllBinaryLayer;
+    protected: AllBinaryLayer allbinaryLayer;
 
-public constructor (AllBinaryLayer layerInterface, Life life, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction);
+public: HealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, HealthBarAnimation animationInterface, int32_t direction);
 
-public constructor (AllBinaryLayer layerInterface, Life life, Health healthInterface, int32_t location, int32_t direction);
+public: HealthIncludingLifeBar(AllBinaryLayer layerInterface, Life life, Health healthInterface, int32_t location, int32_t direction);
 
-    public onHealthChange();
+    public: void onHealthChange();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

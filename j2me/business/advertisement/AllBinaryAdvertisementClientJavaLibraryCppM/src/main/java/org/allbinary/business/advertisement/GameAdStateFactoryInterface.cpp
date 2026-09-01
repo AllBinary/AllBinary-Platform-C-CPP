@@ -44,7 +44,6 @@
         #include "GameAdStateBase.h"
 
 class GameAdStateFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

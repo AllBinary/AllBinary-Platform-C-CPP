@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -60,76 +62,73 @@
 class BasicGeographicMapCellPositionFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const geographicMapCellPositionArray: std::vector<std::vector<GeographicMapCellPosition>>;
+    protected: std::vector<std::vector<GeographicMapCellPosition>> geographicMapCellPositionArray;
 
-    const geographicMapInterface: BasicGeographicMap;
+    protected: BasicGeographicMap geographicMapInterface;
 
-    const geographicMapCellPositionFactoryInterface: GeographicMapCellPositionFactoryInterface;
+    protected: GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface;
 
-    private: const columns: int32_t;
+    private: int32_t columns;
 
-    private: const rows: int32_t;
+    private: int32_t rows;
 
-    private: const tiledLayer: AllBinaryTiledLayer;
+    private: AllBinaryTiledLayer tiledLayer;
 
-public constructor (BasicGeographicMap geographicMapInterface){
-
-            super();
-        this.geographicMapInterface= geographicMapInterface;
+public: BasicGeographicMapCellPositionFactory(BasicGeographicMap geographicMapInterface){
+this->geographicMapInterface= geographicMapInterface;
     
-this.geographicMapCellPositionFactoryInterface= this.geographicMapInterface!.getGeographicMapCellPositionFactoryInterface();
+this->geographicMapCellPositionFactoryInterface= this->geographicMapInterface.getGeographicMapCellPositionFactoryInterface();
     
-this.tiledLayer= this.geographicMapInterface!.getAllBinaryTiledLayer();
+this->tiledLayer= this->geographicMapInterface.getAllBinaryTiledLayer();
     
-this.columns= this.tiledLayer!.getColumns();
+this->columns= this->tiledLayer.getColumns();
     
-this.rows= this.tiledLayer!.getRows();
+this->rows= this->tiledLayer.getRows();
     
-this.geographicMapCellPositionArray= new Array(this.rows).fill(null).map(() => new Array(this.columns).fill(0))
+this->geographicMapCellPositionArray= new Array(this->rows).fill(null).map(() => new Array(this->columns).fill(0))
                                                             ;
     
-this.init();
+this->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(){
+    private: void init(){
 
-    tiledLayer: AllBinaryTiledLayer = this.tiledLayer;;
+    AllBinaryTiledLayer tiledLayer = this->tiledLayer;;
     
 
-    columns: int32_t = this.getColumns()!;;
+    int32_t columns = this->getColumns();;
     
 
-    rows: int32_t = this.getRows()!;;
+    int32_t rows = this->getRows();;
     
 
-    width: int32_t = tiledLayer!.getCellWidth()!;;
+    int32_t width = tiledLayer.getCellWidth();;
     
 
-    height: int32_t = tiledLayer!.getCellHeight()!;;
+    int32_t height = tiledLayer.getCellHeight();;
     
 
 
 
 
                         for (
-    column: int32_t = 0;column < columns; column++)
+    int32_t column = 0;column < columns; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = 0;row < rows; row++)
+    int32_t row = 0;row < rows; row++)
         {
-this.createInstance(column, row, width, height);
+this->createInstance(column, row, width, height);
     
 }
 
@@ -140,38 +139,38 @@ this.createInstance(column, row, width, height);
 
                 //@Throws(Exception.constructor)
             
-    public visit(GeographicMapCellPositionFactoryInitVisitorInterface geographicMapCelPositionFactoryInitVisitorInterface){
+    public: void visit(GeographicMapCellPositionFactoryInitVisitorInterface geographicMapCelPositionFactoryInitVisitorInterface){
 
-    tiledLayer: AllBinaryTiledLayer = this.tiledLayer;;
+    AllBinaryTiledLayer tiledLayer = this->tiledLayer;;
     
 
-    columns: int32_t = this.getColumns()!;;
+    int32_t columns = this->getColumns();;
     
 
-    rows: int32_t = this.getRows()!;;
+    int32_t rows = this->getRows();;
     
 
         try {
             
-    cellPosition: GeographicMapCellPosition;;
+    GeographicMapCellPosition cellPosition;;
     
 
 
 
 
                         for (
-    column: int32_t = 0;column < columns; column++)
+    int32_t column = 0;column < columns; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = 0;row < rows; row++)
+    int32_t row = 0;row < rows; row++)
         {
-cellPosition= this.getAt(column, row);
+cellPosition= this->getAt(column, row);
     
-geographicMapCelPositionFactoryInitVisitorInterface!.visit(tiledLayer, cellPosition);
+geographicMapCelPositionFactoryInitVisitorInterface.visit(tiledLayer, cellPosition);
     
 }
 
@@ -182,9 +181,9 @@ geographicMapCelPositionFactoryInitVisitorInterface!.visit(tiledLayer, cellPosit
 } catch(e) 
             {
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
-this.logUtil!.put(new StringMaker().append(commonSeps!.BRACKET_OPEN)!.appendint(rows)!.append(commonSeps!.BRACKET_CLOSE)!.append(commonSeps!.BRACKET_OPEN)!.appendint(columns)!.append(commonSeps!.BRACKET_CLOSE)!.toString(), this, "visit", e);
+this->logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(rows).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(columns).append(commonSeps.BRACKET_CLOSE).toString(), this, "visit", e);
     
 
 
@@ -198,43 +197,43 @@ this.logUtil!.put(new StringMaker().append(commonSeps!.BRACKET_OPEN)!.appendint(
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getAt(int32_t i_column, int32_t i_row){
+    public: GeographicMapCellPosition getAt(int32_t i_column, int32_t i_row){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionArray[i_row]![i_column]!;
+                        return this->geographicMapCellPositionArray[i_row]![i_column]!;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getInstance(GeographicMapCellPosition anotherMapGeographicMapCellPosition){
+    public: GeographicMapCellPosition getInstance(GeographicMapCellPosition anotherMapGeographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getAt(anotherMapGeographicMapCellPosition!.getColumn(), anotherMapGeographicMapCellPosition!.getRow());;
+                        return this->getAt(anotherMapGeographicMapCellPosition.getColumn(), anotherMapGeographicMapCellPosition.getRow());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
+    public: GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height){
 
-    cellPositionCanBeNull: any = this.geographicMapCellPositionArray[i_row]![i_column];;
+    Object* cellPositionCanBeNull = this->geographicMapCellPositionArray[i_row]![i_column];;
     
 
                         if(cellPositionCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    cellPositionCanBeNull= this.geographicMapCellPositionFactoryInterface!.getInstance(this.geographicMapInterface, i_column, i_row, this.columns, this.rows, width, height);
+                                    cellPositionCanBeNull= this->geographicMapCellPositionFactoryInterface.getInstance(this->geographicMapInterface, i_column, i_row, this->columns, this->rows, width, height);
     
-this.geographicMapCellPositionArray[i_row]![i_column]= cellPositionCanBeNull as GeographicMapCellPosition;
+this->geographicMapCellPositionArray[i_row]![i_column]= cellPositionCanBeNull as GeographicMapCellPosition;
     
 
                                     }
@@ -248,22 +247,22 @@ this.geographicMapCellPositionArray[i_row]![i_column]= cellPositionCanBeNull as 
 }
 
 
-    public int32_t getColumns(){
+    public: int32_t getColumns(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columns;
+                        return this->columns;
     
 }
 
 
-    public int32_t getRows(){
+    public: int32_t getRows(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rows;
+                        return this->rows;
     
 }
 

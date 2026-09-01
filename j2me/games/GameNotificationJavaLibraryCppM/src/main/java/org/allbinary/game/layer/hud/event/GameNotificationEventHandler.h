@@ -60,22 +60,21 @@
 #include "GameNotificationEvent.h"
 
 class GameNotificationEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: GameNotificationEventHandler = new GameNotificationEventHandler();
+    private: static GameNotificationEventHandler instance() { return GameNotificationEventHandler(); }
 
-    public static GameNotificationEventHandler getInstance();
+    public: static GameNotificationEventHandler getInstance();
 
-private constructor ();
+private: GameNotificationEventHandler();
 
-    public enabled: bool = true;
+    public: bool enabled = true;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

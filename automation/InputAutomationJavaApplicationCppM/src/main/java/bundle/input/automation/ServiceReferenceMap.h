@@ -21,6 +21,8 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_SERVICEREFERENCEMAP_H
         #define BUNDLE_INPUT_AUTOMATION_SERVICEREFERENCEMAP_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <java/util/Collection.h>
@@ -60,37 +62,36 @@
 class ServiceReferenceMap
             : public Object
         : public Map {
-        
 
-    public static string toString(Map map);
+    public: static std::string toString(Map map);
 
-    private: serviceReference: ServiceReference;
+    private: ServiceReference serviceReference;
 
-public constructor (ServiceReference serviceReference);
+public: ServiceReferenceMap(ServiceReference serviceReference);
 
-    public int32_t size();
+    public: int32_t size();
 
-    public bool isEmpty();
+    public: bool isEmpty();
 
-    public bool containsKey(any = {} key);
+    public: bool containsKey(Object* key);
 
-    public bool containsValue(any = {} value);
+    public: bool containsValue(Object* value);
 
-    public any get(any = {} key);
+    public: Object* get(Object* key);
 
-    public any put(any = {} key, any = {} value);
+    public: Object* put(Object* key, Object* value);
 
-    public any remove(any = {} key);
+    public: Object* remove(Object* key);
 
-    public putAll(Map m);
+    public: void putAll(Map m);
 
-    public clear();
+    public: void clear();
 
-    public Set keySet();
+    public: Set keySet();
 
-    public Collection<any> values();
+    public: Collection<any> values();
 
-    public Set entrySet();
+    public: Set entrySet();
 
 };
 

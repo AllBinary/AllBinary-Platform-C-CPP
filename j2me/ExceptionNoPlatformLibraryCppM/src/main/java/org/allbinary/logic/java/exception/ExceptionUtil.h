@@ -51,17 +51,16 @@
 // class ExceptionUtil
             : public Object
          {
-        
 
-    private: static const instance: ExceptionUtil
+    private: static ExceptionUtil instance() { return ExceptionUtil(); }
 
-    public static ExceptionUtil getInstance();
-
+    public: static ExceptionUtil getInstance();
 
 
-    public const PRETEND_EXCEPTION: Exception
 
-    public string getStackTrace(Throwable e);
+    public: const Exception PRETEND_EXCEPTION
+
+    public: std::string getStackTrace(Throwable e);
 
 };
 

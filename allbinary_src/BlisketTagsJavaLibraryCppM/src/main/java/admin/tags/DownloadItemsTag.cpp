@@ -58,43 +58,40 @@
 #include "AbTagData.h"
 
 class DownloadItemsTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new DownloadItemsHelperFactory());
+public: DownloadItemsTag(){
+this->setTagHelperFactory(DownloadItemsHelperFactory());
     
-this.setTagRequestHelperFactory(new DownloadItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(DownloadItemsRequestHelperFactory());
     
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.BACKUP) != 0 && this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.RESTORE) != 0 && this.getCommand()!.compareTo(this.commonStrings!.CREATE) != 0 && this.getCommand()!.compareTo(this.commonStrings!.DROP) != 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.BACKUP) != 0 && this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.RESTORE) != 0 && this->getCommand().compareTo(this->commonStrings.CREATE) != 0 && this->getCommand().compareTo(this->commonStrings.DROP) != 0)
                         
                                     {
                                     
-    parentTag: Tag = this.getParent()!;;
+    Tag parentTag = this->getParent();;
     
-ParentInventoryTagHelper.getInstance()!.isValid(this, parentTag);
+ParentInventoryTagHelper::getInstance().isValid(this, parentTag);
     
-this.getPropertiesHashMap()!.put(AbTagData.PARENT, parentTag);
+this->getPropertiesHashMap().put(AbTagData::PARENT, parentTag);
     
 
                                     }
@@ -121,7 +118,7 @@ this.getPropertiesHashMap()!.put(AbTagData.PARENT, parentTag);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

@@ -77,44 +77,41 @@
 class UniqueIdGenerator
             : public Object
         : public IdGeneratorInterface {
-        
 
-    public static const EXT: string = ".unq";
+    public: static const std::string EXT = ".unq";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: newFile: AbFile;
+    private: AbFile newFile;
 
-    private: id: int64_t = 0;
+    private: int64_t id = 0;
 
-public constructor (){
-
-            super();
-        }
+public: UniqueIdGenerator(){
+}
 
 
-    public initialize(int32_t value){
+    public: void initialize(int32_t value){
 
         try {
-            this.newFile!.createNewFile();
+            this->newFile.createNewFile();
     
 
-    idData: AbDataOutputStream = DataOutputStreamFactory.getInstance()!.getInstanceForAbFile(this.newFile)!;;
+    AbDataOutputStream idData = DataOutputStreamFactory::getInstance().getInstanceForAbFile(this->newFile);;
     
-idData!.writeLong(value);
+idData.writeLong(value);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "initialize", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "initialize", e);
     
 
                                     }
@@ -127,8 +124,8 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "initialize", e);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setFile(string filePathName, string name){
-this.newFile= AbFile.createAbFile(filePathName);
+    public: void setFile(std::string filePathName, std::string name){
+this->newFile= AbFile::createAbFile(filePathName);
     
 }
 
@@ -136,54 +133,54 @@ this.newFile= AbFile.createAbFile(filePathName);
                 //@Throws(IOException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string getNext(){
+    public: std::string getNext(){
 
-    idData: AbDataInputStream = 
+    AbDataInputStream idData = 
                 null
             ;;
     
 
-    idOutData: AbDataOutputStream = 
+    AbDataOutputStream idOutData = 
                 null
             ;;
     
 
         try {
             
-    idFile: AbFileInputStream = new AbFileInputStream(this.newFile);;
+    AbFileInputStream idFile = AbFileInputStream(this->newFile);;
     
-idData= new AbDataInputStream(idFile);
+idData= AbDataInputStream(idFile);
     
-this.id= idData!.readLong();
-    
-
-    idOutFile: AbFileOutputStream = AbFileOutputStream.createFromAbFile(this.newFile)!;;
-    
-idOutData= new AbDataOutputStream(idOutFile);
-    
-idOutData!.writeLong(this.id +1);
+this->id= idData.readLong();
     
 
-    idLong: Long = new Long(this.id);;
+    AbFileOutputStream idOutFile = AbFileOutputStream::createFromAbFile(this->newFile);;
+    
+idOutData= AbDataOutputStream(idOutFile);
+    
+idOutData.writeLong(this->id +1);
+    
+
+    Long idLong = Long(this->id);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return idLong!.toString();;
+                        return idLong.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "getNext", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "getNext", e);
     
 
                                     }
@@ -197,9 +194,9 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "getNext", e);
 }
 
          finally {
-            StreamUtil.getInstance()!.close(idData);
+            StreamUtil::getInstance().close(idData);
     
-StreamUtil.getInstance()!.close(idOutData);
+StreamUtil::getInstance().close(idOutData);
     
 
          }

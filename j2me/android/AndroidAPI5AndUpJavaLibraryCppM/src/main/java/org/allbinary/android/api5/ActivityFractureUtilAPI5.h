@@ -59,27 +59,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ActivityFractureUtilAPI5: public ActivityFractureUtilAPI1 {
-        
 
-    private: static const instance5: ActivityFractureUtilAPI5 = new ActivityFractureUtilAPI5();
+    private: static const ActivityFractureUtilAPI5 instance5 = ActivityFractureUtilAPI5();
 
-    public static ActivityFractureUtilAPI5 getInstance();
+    public: static ActivityFractureUtilAPI5 getInstance();
 
-    private: const FEATURE_TOUCHSCREEN_MULTITOUCH: string = "android.hardware.touchscreen.multitouch";
+    private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH = "android.hardware.touchscreen.multitouch";
 
-    private: const FEATURE_TOUCHSCREEN: string = "android.hardware.touchscreen";
+    private: const std::string FEATURE_TOUCHSCREEN = "android.hardware.touchscreen";
 
-    private: const FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT: string = "android.hardware.touchscreen.multitouch.distinct";
+    private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT = "android.hardware.touchscreen.multitouch.distinct";
 
-    public process(Activity activity);
+    public: void process(Activity activity);
 
-    bool isTouch(Activity activity);
+    private: bool isTouch(Activity activity);
 
-    bool isMultiTouch(Activity activity);
+    private: bool isMultiTouch(Activity activity);
 
-    bool isMultiTouchDistinct(Activity activity);
+    private: bool isMultiTouchDistinct(Activity activity);
 
-    bool isFeature(Activity activity, string property);
+    private: bool isFeature(Activity activity, std::string property);
 
 };
 

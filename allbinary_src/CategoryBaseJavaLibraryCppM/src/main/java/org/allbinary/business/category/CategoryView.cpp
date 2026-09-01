@@ -73,68 +73,65 @@
 class CategoryView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: categoryInterface: CategoryInterface;
+    private: CategoryInterface categoryInterface;
 
-public constructor (CategoryInterface categoryInterface){
-
-            super();
-        this.categoryInterface= categoryInterface;
+public: CategoryView(CategoryInterface categoryInterface){
+this->categoryInterface= categoryInterface;
     
 }
 
 
-    public CategoryInterface getCategoryInterface(){
+    public: CategoryInterface getCategoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.categoryInterface;
+                        return this->categoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(CategoryData.getInstance()!.NAME)!;;
+    Node node = document.createElement(CategoryData::getInstance().NAME);;
     
 
-    childCategoryVector: Vector = this.categoryInterface!.getChildNodes()!;;
+    Vector childCategoryVector = this->categoryInterface.getChildNodes();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF("Number Of Children: " +childCategoryVector!.length, this, "toXmlNode");
+                                    this->logUtil.putF("Number Of Children: " +childCategoryVector.length, this, "toXmlNode");
     
 
                                     }
                                 
 
-    size: int32_t = childCategoryVector!.length!;;
+    int32_t size = childCategoryVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    anyType: any = childCategoryVector!.get(i)!;;
+    Object* anyType = childCategoryVector.get(i);;
     
 
-    categoryPropertiesInterface: CategoryPropertiesInterface = 
+    CategoryPropertiesInterface categoryPropertiesInterface = 
                 null
             ;;
     
 
-                        if(InterfaceUtil.isImplemented("CategoryPropertiesInterface", anyType))
+                        if(InterfaceUtil::isImplemented("CategoryPropertiesInterface", anyType))
                         
                                     {
                                     categoryPropertiesInterface= anyType as CategoryPropertiesInterface;
@@ -143,31 +140,31 @@ public constructor (CategoryInterface categoryInterface){
                                     }
                                 
                              else 
-                        if(InterfaceUtil.isImplemented("CategoryInterface", anyType))
+                        if(InterfaceUtil::isImplemented("CategoryInterface", anyType))
                         
                                     {
                                     
-    categoryInterface: CategoryInterface = anyType as CategoryInterface;;
+    CategoryInterface categoryInterface = anyType as CategoryInterface;;
     
-categoryPropertiesInterface= categoryInterface!.getProperties();
+categoryPropertiesInterface= categoryInterface.getProperties();
     
 
                                     }
                                 
                         else {
                             
-    isImpl: string = InterfaceUtil.viewAll(anyType!.constructor, CommonSeps.getInstance()!.NEW_LINE)!;;
+    std::string isImpl = InterfaceUtil::viewAll(anyType->constructor, CommonSeps::getInstance().NEW_LINE);;
     
 
 
 
-                            throw new Exception("CategoryView found unknown object.\n" +"Show Testing:" +isImpl);
+                            throw Exception("CategoryView found unknown object.\n" +"Show Testing:" +isImpl);
                     
 
                         }
                             
 
-    childCategoryNode: Node = new CategoryPropertiesView(categoryPropertiesInterface).toXmlNode(document)!;;
+    Node childCategoryNode = CategoryPropertiesView(categoryPropertiesInterface).toXmlNode(document);;
     
 node.appendChild(childCategoryNode);
     

@@ -61,35 +61,34 @@
 #include "TouchButtonStartResource.h"
 
 class PreGameScrollSelectionTouchButtonsBuilder: public BaseTouchInput {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.GET_LIST);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.GET_LIST);
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    touchButtonLocationHelper: TouchButtonLocationHelper = new TouchButtonLocationHelper();;
+    TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();;
     
 
-    commonButtons: CommonButtons = CommonButtons.getInstance()!;;
+    CommonButtons commonButtons = CommonButtons::getInstance();;
     
 
-    basicTouchButtonCellPositionFactory: BasicTouchButtonCellPositionFactory = new BasicTouchButtonCellPositionFactory();;
+    BasicTouchButtonCellPositionFactory basicTouchButtonCellPositionFactory = BasicTouchButtonCellPositionFactory();;
     
 
-    LEFT: TouchButton = TouchButton.createButton(BasicTouchInputFactory.getInstance()!.LEFT, TouchButtonStrafeLeftResource.getInstance(), commonButtons!.NORMAL_BUTTON, basicTouchButtonCellPositionFactory!.TOP_LEFT, touchButtonLocationHelper!.getColumnsRemainderHalf(), touchButtonLocationHelper!.getRowsRemainderHalf())!;;
+    TouchButton LEFT = TouchButton::createButton(BasicTouchInputFactory::getInstance().LEFT, TouchButtonStrafeLeftResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.TOP_LEFT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
     
 
-    RIGHT: TouchButton = TouchButton.createButton(BasicTouchInputFactory.getInstance()!.RIGHT, TouchButtonStrafeRightResource.getInstance(), commonButtons!.NORMAL_BUTTON, basicTouchButtonCellPositionFactory!.TOP_RIGHT, touchButtonLocationHelper!.getColumnsRemainderHalf(), touchButtonLocationHelper!.getRowsRemainderHalf())!;;
+    TouchButton RIGHT = TouchButton::createButton(BasicTouchInputFactory::getInstance().RIGHT, TouchButtonStrafeRightResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.TOP_RIGHT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
     
 
-    START: TouchButton = TouchButton.createButton(BasicTouchInputFactory.getInstance()!.SPECIAL_BUTTON_FIVE, TouchButtonStartResource.getInstance(), commonButtons!.NORMAL_BUTTON, basicTouchButtonCellPositionFactory!.BOTTOM_RIGHT, touchButtonLocationHelper!.getColumnsRemainderHalf(), touchButtonLocationHelper!.getRowsRemainderHalf())!;;
+    TouchButton START = TouchButton::createButton(BasicTouchInputFactory::getInstance().SPECIAL_BUTTON_FIVE, TouchButtonStartResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.BOTTOM_RIGHT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
     
 list.add(LEFT);
     
@@ -107,13 +106,13 @@ list.add(START);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET_LIST, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil.getInstance()!.getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
     
 }
 

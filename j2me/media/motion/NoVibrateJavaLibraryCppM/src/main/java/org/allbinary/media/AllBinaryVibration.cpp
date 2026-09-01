@@ -43,32 +43,31 @@
 #include "AllBinaryNoVibration.h"
 
 class AllBinaryVibration: public AllBinaryVibrationME {
-        
 
-    private: static VIBRATION: AllBinaryVibrationME = AllBinaryNoVibration.NO_VIBRATION;
+    private: static AllBinaryVibrationME VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
 
-    public static AllBinaryVibrationME getInstance(){
+    public: static AllBinaryVibrationME getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryVibration.VIBRATION;
+                        return AllBinaryVibration::VIBRATION;
     
 }
 
 
-    public static init(){
+    public: static void init(){
 
-                        if(GameConfigurationCentral.getInstance()!.VIBRATION.getValue()!.intValue() == 0)
+                        if(GameConfigurationCentral::getInstance().VIBRATION.getValue().intValue() == 0)
                         
                                     {
-                                    AllBinaryVibration.VIBRATION= AllBinaryNoVibration.NO_VIBRATION;
+                                    AllBinaryVibration::VIBRATION= AllBinaryNoVibration::NO_VIBRATION;
     
 
                                     }
                                 
                         else {
-                            AllBinaryVibration.VIBRATION= new AllBinaryVibration();
+                            AllBinaryVibration::VIBRATION= AllBinaryVibration();
     
 
                         }
@@ -76,13 +75,11 @@ class AllBinaryVibration: public AllBinaryVibrationME {
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AllBinaryVibration(){
+}
 
 
-    public vibrate(int32_t duration, int32_t type, int32_t volume){
+    public: void vibrate(int32_t duration, int32_t type, int32_t volume){
 }
 
 

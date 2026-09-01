@@ -52,32 +52,29 @@
 class RTSGameLayerPositionFinder
             : public Object
         : public LayerPositionFinderInterface {
-        
 
-    private: static const instance: RTSGameLayerPositionFinder = new RTSGameLayerPositionFinder();
+    private: static RTSGameLayerPositionFinder instance() { return RTSGameLayerPositionFinder(); }
 
-    public static RTSGameLayerPositionFinder getInstance(){
+    public: static RTSGameLayerPositionFinder getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSGameLayerPositionFinder.instance;
+                        return RTSGameLayerPositionFinder::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: RTSGameLayerPositionFinder(){
+}
 
 
-    public AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
+    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropCellPositionHistory.getInstance()!.getLayerInterface(geographicMapCellPosition);;
+                        return DropCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);;
     
 }
 

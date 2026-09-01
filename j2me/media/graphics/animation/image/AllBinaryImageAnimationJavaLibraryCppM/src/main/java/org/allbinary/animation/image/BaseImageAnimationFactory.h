@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_BASEIMAGEANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_BASEIMAGEANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -93,41 +95,40 @@
 class BaseImageAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BaseImageAnimationFactory createFactoryBase(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static BaseImageAnimationFactory createFactoryBase(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory);
 
-    const animationFactoryImageScaleUtil: AnimationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil.getInstance()!;
+    protected: const AnimationFactoryImageScaleUtil animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
 
-    private: const image: Image;
+    private: Image image;
 
-    public const animationBehaviorFactory: AnimationBehaviorFactory;
+    public: AnimationBehaviorFactory animationBehaviorFactory;
 
-    private: const sequenceArray: std::vector<int32_t>;
+    private: std::vector<int32_t> sequenceArray;
 
-    const animationFactoryInitializationVisitor: AnimationFactoryInitializationVisitor;
+    protected: AnimationFactoryInitializationVisitor animationFactoryInitializationVisitor;
 
-    scaleProperties: ScaleProperties = ScaleProperties.instance;
+    protected: ScaleProperties scaleProperties = ScaleProperties::instance;
 
-public constructor (Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+public: BaseImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public Image getImage();
+    public: Image getImage();
 
-    public std::vector<int32_t> getSequenceArray();
+    public: std::vector<int32_t> getSequenceArray();
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
-    public AnimationFactoryInitializationVisitor getAnimationFactoryInitializationVisitorP();
+    public: AnimationFactoryInitializationVisitor getAnimationFactoryInitializationVisitorP();
 
-    public ScaleProperties getScalePropertiesP();
+    public: ScaleProperties getScalePropertiesP();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

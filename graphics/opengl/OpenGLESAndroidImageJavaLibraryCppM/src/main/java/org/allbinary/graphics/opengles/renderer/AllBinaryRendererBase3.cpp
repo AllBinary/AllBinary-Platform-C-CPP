@@ -59,26 +59,25 @@
 class AllBinaryRendererBase3
             : public Object
          {
-        
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    update(GL10 gl){
+    protected: void update(GL10 gl){
 
-        while(this.list.size() > 0)
+        while(this->list.size() > 0)
         {
 
-    openGLESImage: OpenGLESImage = this.list.removeAt(0) as OpenGLESImage;;
+    OpenGLESImage openGLESImage = this->list.removeAt(0) as OpenGLESImage;;
     
 
                         if(openGLESImage != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    openGLESImage!.set(gl);
+                                    openGLESImage.set(gl);
     
 
                                     }
@@ -88,8 +87,8 @@ class AllBinaryRendererBase3
 }
 
 
-    public add(Image image){
-this.list.add(image);
+    public: void add(Image image){
+this->list.add(image);
     
 }
 

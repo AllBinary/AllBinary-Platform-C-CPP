@@ -60,43 +60,40 @@
 class InputAutomationServiceFactory
             : public Object
         : public ServiceFactory {
-        
 
-    private: static const inputAutomationServiceFactory: InputAutomationServiceFactory = new InputAutomationServiceFactory();
+    private: static const InputAutomationServiceFactory inputAutomationServiceFactory = InputAutomationServiceFactory();
 
-    public static InputAutomationServiceFactory getInstance(){
+    public: static InputAutomationServiceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationServiceFactory.inputAutomationServiceFactory;
+                        return InputAutomationServiceFactory::inputAutomationServiceFactory;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: InputAutomationServiceFactory(){
+}
 
 
-    public any getService(Bundle bundle, ServiceRegistration registration){
-this.logUtil!.putF(this.commonStrings!.START, this, "getService");
+    public: Object* getService(Bundle bundle, ServiceRegistration registration){
+this->logUtil.putF(this->commonStrings.START, this, "getService");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationJFrame.getInstance();;
+                        return InputAutomationJFrame::getInstance();;
     
 }
 
 
-    public ungetService(Bundle bundle, ServiceRegistration registration, any = {} service){
+    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service){
 }
 
 

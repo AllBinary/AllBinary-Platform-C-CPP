@@ -62,42 +62,41 @@
 class SystemHardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: SystemHardwareFactory = new SystemHardwareFactory();
+    private: static SystemHardwareFactory instance() { return SystemHardwareFactory(); }
 
-    public static SystemHardwareFactory getInstance(){
+    public: static SystemHardwareFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SystemHardwareFactory.instance;
+                        return SystemHardwareFactory::instance();
     
 }
 
 
-    public static string static_toString(){
+    public: static std::string static_toString(){
 
-    systemHardwareFactory: SystemHardwareFactory = SystemHardwareFactory.getInstance()!;;
+    SystemHardwareFactory systemHardwareFactory = SystemHardwareFactory::getInstance();;
     
 
-    osBuffer: StringMaker = new StringMaker();;
+    StringMaker osBuffer = StringMaker();;
     
-osBuffer!.append("Hardware Info: \n");
+osBuffer.append("Hardware Info: \n");
     
 
-                        if(systemHardwareFactory!.hardwareInterface != 
-                                    null
+                        if(systemHardwareFactory.hardwareInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    osBuffer!.append(systemHardwareFactory!.hardwareInterface!.toString());
+                                    osBuffer.append(systemHardwareFactory.hardwareInterface.toString());
     
 
                                     }
                                 
                         else {
-                            osBuffer!.append(StringUtil.getInstance()!.NULL_STRING);
+                            osBuffer.append(StringUtil::getInstance().NULL_STRING);
     
 
                         }
@@ -106,42 +105,40 @@ osBuffer!.append("Hardware Info: \n");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return osBuffer!.toString();;
+                        return osBuffer.toString();;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: hardwareInterface: HardwareInterface = NoHardware.getInstance()!;
+    private: HardwareInterface hardwareInterface = NoHardware::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: SystemHardwareFactory(){
+}
 
 
-    public HardwareInterface getInstance(GenericOperatingSystem operatingSystemInterface){
+    public: HardwareInterface getInstance(GenericOperatingSystem operatingSystemInterface){
 
         try {
             
-                        if(this.hardwareInterface == NoHardware.getInstance())
+                        if(this->hardwareInterface == NoHardware::getInstance())
                         
                                     {
-                                    this.hardwareInterface= HardwareFactory.getInstance()!.getInstance(operatingSystemInterface);
+                                    this->hardwareInterface= HardwareFactory::getInstance().getInstance(operatingSystemInterface);
     
 
                                     }
                                 
-this.logUtil!.putF("Found Hardware", this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("Found Hardware", this, this->commonStrings.CONSTRUCTOR);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 }
 
@@ -149,7 +146,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hardwareInterface;
+                        return this->hardwareInterface;
     
 }
 

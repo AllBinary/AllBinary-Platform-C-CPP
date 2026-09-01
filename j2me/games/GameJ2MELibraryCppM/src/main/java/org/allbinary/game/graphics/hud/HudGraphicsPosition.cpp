@@ -60,52 +60,49 @@
 class HudGraphicsPosition
             : public Object
          {
-        
 
-    public static const NULL_HUD_GRAPHICS_POSITION: HudGraphicsPosition = new HudGraphicsPosition(PointFactory.getInstance()!.ZERO_ZERO, 9);
+    public: static const HudGraphicsPosition NULL_HUD_GRAPHICS_POSITION = HudGraphicsPosition(PointFactory::getInstance().ZERO_ZERO, 9);
 
-    private: anchor: int32_t= 0;
+    private: int32_t anchor= 0;
 
-    private: point: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: GPoint point = PointFactory::getInstance().ZERO_ZERO;
 
-public constructor (GPoint point, int32_t anchor){
-
-            super();
-        this.setAnchor(anchor);
+public: HudGraphicsPosition(GPoint point, int32_t anchor){
+this->setAnchor(anchor);
     
-this.setPoint(point);
+this->setPoint(point);
     
 }
 
 
-    public int32_t getAnchor(){
+    public: int32_t getAnchor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.anchor;
+                        return this->anchor;
     
 }
 
 
-    setAnchor(int32_t anchor){
-this.anchor= anchor;
+    private: void setAnchor(int32_t anchor){
+this->anchor= anchor;
     
 }
 
 
-    public GPoint getPoint(){
+    public: GPoint getPoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point;
+                        return this->point;
     
 }
 
 
-    public setPoint(GPoint point){
-this.point= point;
+    public: void setPoint(GPoint point){
+this->point= point;
     
 }
 

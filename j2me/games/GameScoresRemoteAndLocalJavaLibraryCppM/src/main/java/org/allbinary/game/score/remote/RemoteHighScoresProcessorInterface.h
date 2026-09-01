@@ -50,11 +50,10 @@
         #include "RemoteHighScores.h"
 
 class RemoteHighScoresProcessorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
+    void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
 
 };
 

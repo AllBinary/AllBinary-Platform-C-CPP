@@ -31,13 +31,12 @@
         #include "AndroidKeyFactory.h"
 
 class AndroidAPI1KeyFactory: public AndroidKeyFactory {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AndroidAPI1KeyFactory getInstance();
+    public: static AndroidAPI1KeyFactory getInstance();
 
-protected constructor ();
+protected: AndroidAPI1KeyFactory();
 
 };
 

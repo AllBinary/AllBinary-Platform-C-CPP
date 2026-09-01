@@ -42,14 +42,11 @@
 class MESSAGES
             : public Object
          {
-        
 
-    public static CONTACTADMIN: string = "Please contact the administrator.";
+    public: static std::string CONTACTADMIN = "Please contact the administrator.";
 
-private constructor (){
-
-            super();
-        }
+private: MESSAGES(){
+}
 
 
 };

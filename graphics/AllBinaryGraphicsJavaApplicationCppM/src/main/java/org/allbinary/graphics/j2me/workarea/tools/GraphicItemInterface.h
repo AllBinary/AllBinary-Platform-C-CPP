@@ -68,43 +68,42 @@
 #include "KeyEvent.h"
 
 class GraphicItemInterface {
-        
 
-    string getName();
+    std::string getName();
 
-    setColor(Color color);
+    void setColor(Color color);
 
     MutableTreeNode getTreeNode();
 
     Points getPointsInterface();
 
-    setPointsInterface(Points points);
+    void setPointsInterface(Points points);
 
     bool isValid();
 
     bool isActive();
 
-    deactivate();
+    void deactivate();
 
-    activate();
+    void activate();
 
-    setFulcrumPoint(GPoint point);
+    void setFulcrumPoint(GPoint point);
 
                 //@Throws(Exception.constructor)
             
-    translate(int32_t x, int32_t y);
+    void translate(int32_t x, int32_t y);
 
-    setRotate(double theta);
+    void setRotate(double theta);
 
-    addRotate(double theta);
+    void addRotate(double theta);
 
-    setAngle(double angle);
+    void setAngle(double angle);
 
-    addAngle(double angle);
+    void addAngle(double angle);
 
     double getAngle();
 
-    paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
+    void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
@@ -112,27 +111,27 @@ class GraphicItemInterface {
 
     GPoint removePoint();
 
-    addPoint(GPoint point);
+    void addPoint(GPoint point);
 
-    mouseClicked(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    mouseEntered(java.awt.event.MouseEvent mouseEvent);
+    void mouseEntered(java::awt::event::MouseEvent mouseEvent);
 
-    mouseExited(java.awt.event.MouseEvent mouseEvent);
+    void mouseExited(java::awt::event::MouseEvent mouseEvent);
 
-    mousePressed(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    mouseReleased(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    mouseDragged(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    mouseMoved(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    keyPressed(java.awt.event.KeyEvent keyEvent);
+    void keyPressed(java::awt::event::KeyEvent keyEvent);
 
-    keyReleased(java.awt.event.KeyEvent keyEvent);
+    void keyReleased(java::awt::event::KeyEvent keyEvent);
 
-    keyTyped(java.awt.event.KeyEvent keyEvent);
+    void keyTyped(java::awt::event::KeyEvent keyEvent);
 
                 //@Throws(Exception.constructor)
             

@@ -64,29 +64,28 @@
 #include "CompleteMotionGestureInputEventListenerInterface.h"
 
 class CompleteMotionGestureInputEventHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: CompleteMotionGestureInputEventHandler = new CompleteMotionGestureInputEventHandler();
+    private: static const CompleteMotionGestureInputEventHandler SINGLETON = CompleteMotionGestureInputEventHandler();
 
-    public static CompleteMotionGestureInputEventHandler getInstance();
+    public: static CompleteMotionGestureInputEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: CompleteMotionGestureInputEventHandler();
 
-    public addListener(CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener);
+    public: void addListener(CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    public: void fireEvent(AllBinaryEventObject eventObject);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

@@ -66,19 +66,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentProcessTag: public StoreValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: PaymentProcessTag();
 
                 //@Throws(LicensingException.constructor, Exception.constructor)
             
-    public string process();
+    public: std::string process();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

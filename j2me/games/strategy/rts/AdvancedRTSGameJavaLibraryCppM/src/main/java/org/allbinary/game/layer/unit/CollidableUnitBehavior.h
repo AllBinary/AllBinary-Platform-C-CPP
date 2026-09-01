@@ -99,38 +99,36 @@
 //#include "SimpleSteeringVisitor.h"
 
 class CollidableUnitBehavior: public CollidableRTSBehavior {
-        
 
-    private: const layerPartialCellPositionsUtil: LayerPartialCellPositionsUtil = LayerPartialCellPositionsUtil.getInstance()!;
+    private: const LayerPartialCellPositionsUtil layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
 
-public constructor (bool collidable);
+public: CollidableUnitBehavior(bool collidable);
 
                 //@Throws(Exception.constructor)
             
-    collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    protected: void collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
 
 //inner= member=true isStatic=
 class SimpleSteeringVisitor: public SteeringVisitor {
-        
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
 };
 
             
-    private: const simpleSteeringVisitor = new this.SimpleSteeringVisitor();
+    private: const simpleSteeringVisitor = SimpleSteeringVisitor();
 
                 //@Throws(Exception.constructor)
             
-    bool steer(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    private: bool steer(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    chase(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    private: void chase(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    collideUnit(CollidableCompositeLayer ownerLayer, UnitLayer unitLayer);
+    protected: void collideUnit(CollidableCompositeLayer ownerLayer, UnitLayer unitLayer);
 
 };
 

@@ -63,16 +63,15 @@
 #include "Rectangle.h"
 #include "Color.h"
 
-class NullInputRobot: public AbstractInputRobot: public InputRobotInterface {
-        
+class NullInputRobot: public AbstractInputRobot, public InputRobotInterface {
 
-    public static const LIBRARY_NAME: string = "null";
+    public: static const std::string LIBRARY_NAME = "null";
 
-    public static const NAME: string = "NULL";
+    public: static const std::string NAME = "NULL";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
+public: NullInputRobot(){
             super(
                             nullptr);
                     
@@ -82,67 +81,17 @@ public constructor (){
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullInputRobot.NAME;
+                        return NullInputRobot::NAME;
     
 }
 
 
-    public HelpSet getHelpSet(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public Point getMousePoint(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointFactory.getInstance(0, 0);;
-    
-}
-
-
-    public keyPress(Integer keycode){
-this.logUtil!.putF("KeyCode: " +keycode, this, "keyPress");
-    
-}
-
-
-    public keyRelease(Integer keycode){
-this.logUtil!.putF("KeyCode: " +keycode, this, "keyRelease");
-    
-}
-
-
-    public mouseMove(Integer x, Integer y){
-this.logUtil!.putF("X: " +x +" Y: " +y, this, "mouseMove");
-    
-}
-
-
-    public mousePress(Integer buttons){
-this.logUtil!.putF("Buttons: " +buttons, this, "mousePress");
-    
-}
-
-
-    public mouseRelease(Integer buttons){
-this.logUtil!.putF("Buttons: " +buttons, this, "mouseRelease");
-    
-}
-
-
-    public BufferedImage createScreenCapture(Rectangle screenRect){
+    public: HelpSet getHelpSet(){
 
 
 
@@ -152,11 +101,61 @@ this.logUtil!.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public delay(Integer ms){
+    public: Point getMousePoint(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return PointFactory::getInstance(0, 0);;
+    
 }
 
 
-    public Integer getAutoDelay(){
+    public: void keyPress(Integer keycode){
+this->logUtil.putF("KeyCode: " +keycode, this, "keyPress");
+    
+}
+
+
+    public: void keyRelease(Integer keycode){
+this->logUtil.putF("KeyCode: " +keycode, this, "keyRelease");
+    
+}
+
+
+    public: void mouseMove(Integer x, Integer y){
+this->logUtil.putF("X: " +x +" Y: " +y, this, "mouseMove");
+    
+}
+
+
+    public: void mousePress(Integer buttons){
+this->logUtil.putF("Buttons: " +buttons, this, "mousePress");
+    
+}
+
+
+    public: void mouseRelease(Integer buttons){
+this->logUtil.putF("Buttons: " +buttons, this, "mouseRelease");
+    
+}
+
+
+    public: BufferedImage createScreenCapture(Rectangle screenRect){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+    public: void delay(Integer ms){
+}
+
+
+    public: Integer getAutoDelay(){
 
 
 
@@ -166,7 +165,7 @@ this.logUtil!.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public Color getPixelColor(Integer x, Integer y){
+    public: Color getPixelColor(Integer x, Integer y){
 
 
 
@@ -176,7 +175,7 @@ this.logUtil!.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public bool isAutoWaitForIdle(){
+    public: bool isAutoWaitForIdle(){
 
 
 
@@ -186,19 +185,19 @@ this.logUtil!.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public mouseWheel(Integer wheelAmt){
+    public: void mouseWheel(Integer wheelAmt){
 }
 
 
-    public setAutoDelay(Integer ms){
+    public: void setAutoDelay(Integer ms){
 }
 
 
-    public setAutoWaitForIdle(bool isOn){
+    public: void setAutoWaitForIdle(bool isOn){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
@@ -208,7 +207,7 @@ this.logUtil!.putF("Buttons: " +buttons, this, "mouseRelease");
 }
 
 
-    public waitForIdle(){
+    public: void waitForIdle(){
 }
 
 

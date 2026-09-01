@@ -35,48 +35,45 @@
 class AnalogLocationInputFactory
             : public Object
          {
-        
 
-    private: static const instance: AnalogLocationInputFactory = new AnalogLocationInputFactory();
+    private: static AnalogLocationInputFactory instance() { return AnalogLocationInputFactory(); }
 
-    public static AnalogLocationInputFactory getInstance(){
+    public: static AnalogLocationInputFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogLocationInputFactory.instance;
+                        return AnalogLocationInputFactory::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: AnalogLocationInputFactory(){
+}
 
 
-    public addPlayer(int32_t playerInputId){
+    public: void addPlayer(int32_t playerInputId){
 
-    analogLocationInput: AnalogLocationInput = AnalogLocationInput.NULL_ANALOG_LOCATION_INPUT;;
+    AnalogLocationInput analogLocationInput = AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT;;
     
 
-                        if(playerInputId < this.list.size())
+                        if(playerInputId < this->list.size())
                         
                                     {
-                                    analogLocationInput= this.list.get(playerInputId) as AnalogLocationInput;
+                                    analogLocationInput= this->list.get(playerInputId) as AnalogLocationInput;
     
 
                                     }
                                 
 
-                        if(analogLocationInput == AnalogLocationInput.NULL_ANALOG_LOCATION_INPUT)
+                        if(analogLocationInput == AnalogLocationInput::NULL_ANALOG_LOCATION_INPUT)
                         
                                     {
-                                    analogLocationInput= new AnalogLocationInput(playerInputId);
+                                    analogLocationInput= AnalogLocationInput(playerInputId);
     
-this.list.add(analogLocationInput);
+this->list.add(analogLocationInput);
     
 
                                     }
@@ -84,22 +81,22 @@ this.list.add(analogLocationInput);
 }
 
 
-    public AnalogLocationInput getInstanceForPlayer(int32_t playerInputId){
+    public: AnalogLocationInput getInstanceForPlayer(int32_t playerInputId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.get(playerInputId) as AnalogLocationInput;
+                        return this->list.get(playerInputId) as AnalogLocationInput;
     
 }
 
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 

@@ -78,17 +78,16 @@
 class AuthenticationHelperUtil
             : public Object
          {
-        
 
-    private: static const instance: AuthenticationHelperUtil = new AuthenticationHelperUtil();
+    private: static AuthenticationHelperUtil instance() { return AuthenticationHelperUtil(); }
 
-    public static AuthenticationHelperUtil getInstance();
+    public: static AuthenticationHelperUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public bool isAuthorized(AuthenticationHelper authenticationHelper, string filePath);
+    public: bool isAuthorized(AuthenticationHelper authenticationHelper, std::string filePath);
 
 };
 

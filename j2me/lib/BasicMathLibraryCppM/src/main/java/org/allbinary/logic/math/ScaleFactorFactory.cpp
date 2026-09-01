@@ -42,23 +42,22 @@
 class ScaleFactorFactory
             : public Object
          {
-        
 
-    private: static const instance: ScaleFactorFactory = new ScaleFactorFactory();
+    private: static ScaleFactorFactory instance() { return ScaleFactorFactory(); }
 
-    public static ScaleFactorFactory getInstance(){
+    public: static ScaleFactorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScaleFactorFactory.instance;
+                        return ScaleFactorFactory::instance();
     
 }
 
 
-    public DEFAULT_SCALE_FACTOR: int32_t = 10;
+    public: int32_t DEFAULT_SCALE_FACTOR = 10;
 
-    public DEFAULT_SCALE_VALUE: int32_t = 1024;
+    public: int32_t DEFAULT_SCALE_VALUE = 1024;
 
 };
 

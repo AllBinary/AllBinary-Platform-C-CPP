@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_NULLINDEXEDANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -60,40 +62,38 @@
 class NullIndexedAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    public static const NULL_INDEXED_ANIMATION_ARRAY: std::vector<IndexedAnimationInterface> = [];
+    public: static const std::vector<IndexedAnimationInterface> NULL_INDEXED_ANIMATION_ARRAY = {};
 
-    private: static NULL_INDEXED_ANIMATION_FACTORY: NullIndexedAnimationFactory = new NullIndexedAnimationFactory();
+    private: static NullIndexedAnimationFactory NULL_INDEXED_ANIMATION_FACTORY = NullIndexedAnimationFactory();
 
-    public static NullIndexedAnimationFactory getFactoryInstance();
+    public: static NullIndexedAnimationFactory getFactoryInstance();
 
 //inner= member=true isStatic=
 class NullIndexedAnimationInner: public NullIndexedAnimation {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
- constructor ();
+: NullIndexedAnimationInner();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 
             
-    private: const NULL_ANIMATION: Animation = new this.NullIndexedAnimationInner();
+    private: const Animation NULL_ANIMATION = NullIndexedAnimationInner();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Animation getInstance(int32_t instanceId);
+private: NullIndexedAnimationFactory();
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
+
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

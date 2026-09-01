@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -65,49 +67,46 @@
 class InputAutomationRobotOSGIServiceVisitor
             : public Object
         : public OSGIServiceVisitorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: InputAutomationRobotOSGIServiceVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.visit(anyType as OSGIServiceInterface);;
+                        return this->visit(anyType as OSGIServiceInterface);;
     
 }
 
 
-    public Boolean visit(OSGIServiceInterface osgiServiceInterface){
+    public: Boolean visit(OSGIServiceInterface osgiServiceInterface){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "visit");
+            this->logUtil.putF(this->commonStrings.START, this, "visit");
     
 
-    inputAutomationRobotServiceInterface: InputAutomationRobotServiceInterface = osgiServiceInterface as InputAutomationRobotServiceInterface;;
+    InputAutomationRobotServiceInterface inputAutomationRobotServiceInterface = osgiServiceInterface as InputAutomationRobotServiceInterface;;
     
 
-    inputRobotInterfaceArray: std::vector<InputRobotInterface> = inputAutomationRobotServiceInterface!.getInputRobotInterfaceArray()!;;
+    std::vector<InputRobotInterface> inputRobotInterfaceArray = inputAutomationRobotServiceInterface.getInputRobotInterfaceArray();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < inputRobotInterfaceArray!.length; index++)
+    int32_t index = 0;index < inputRobotInterfaceArray.size(); index++)
         {
-this.logUtil!.putF("Adding: " +inputRobotInterfaceArray[index]!.getName(), this, "visit");
+this->logUtil.putF("Adding: " +inputRobotInterfaceArray[index]!.getName(), this, "visit");
     
-InputRobotFactory.getInstance()!.add(inputRobotInterfaceArray[index]!);
+InputRobotFactory::getInstance().add(inputRobotInterfaceArray[index]!);
     
 }
 
@@ -115,19 +114,19 @@ InputRobotFactory.getInstance()!.add(inputRobotInterfaceArray[index]!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "visit", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "visit", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

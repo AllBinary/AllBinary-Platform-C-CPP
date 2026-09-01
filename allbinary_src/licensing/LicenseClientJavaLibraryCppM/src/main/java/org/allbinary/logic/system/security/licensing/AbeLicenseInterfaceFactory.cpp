@@ -64,43 +64,40 @@
 class AbeLicenseInterfaceFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: AbeLicenseInterfaceFactory = new AbeLicenseInterfaceFactory();
+    private: static const AbeLicenseInterfaceFactory SINGLETON = AbeLicenseInterfaceFactory();
 
-    public static AbeLicenseInterfaceFactory getInstance(){
+    public: static AbeLicenseInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeLicenseInterfaceFactory.SINGLETON;
+                        return AbeLicenseInterfaceFactory::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: time: int64_t = 0;
+    private: int64_t time = 0;
 
-    private: check: bool = false;
+    private: bool check = false;
 
-    private: checkPeriod: int32_t = 36000000;
+    private: int32_t checkPeriod = 36000000;
 
-    private: abeLicenseInterface: AbeLicenseInterface = 
+    private: AbeLicenseInterface abeLicenseInterface = 
                 null
             ;
 
-private constructor (){
-
-            super();
-        }
+private: AbeLicenseInterfaceFactory(){
+}
 
 
                 //@Throws(LicensingException.constructor)
             
-    public AbeLicenseInterface getLicenseInstance(AbeClientInformationInterface abeClientInformation){
+    public: AbeLicenseInterface getLicenseInstance(AbeClientInformationInterface abeClientInformation){
 
                         if(isTimeToGetKey())
                         
@@ -109,7 +106,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.get(abeClientInformation);;
+                        return this->get(abeClientInformation);;
     
 
                                     }
@@ -119,7 +116,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abeLicenseInterface;
+                        return this->abeLicenseInterface;
     
 
                         }
@@ -129,25 +126,25 @@ private constructor (){
 
                 //@Throws(LicensingException.constructor)
             
-    AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation){
+    private: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation){
 
         try {
-            this.logUtil!.putF("Getting Keys", this, this.commonStrings!.GET);
+            this->logUtil.putF("Getting Keys", this, this->commonStrings.GET);
     
-this.abeLicenseInterface= AbeNoLicense.getInstance();
-    
-
-    licenseClient: AbeLicenseClient = new AbeLicenseClient();;
-    
-this.abeLicenseInterface= licenseClient!.get(abeClientInformation);
+this->abeLicenseInterface= AbeNoLicense::getInstance();
     
 
-                        if(this.abeLicenseInterface != 
-                                    null
+    AbeLicenseClient licenseClient = AbeLicenseClient();;
+    
+this->abeLicenseInterface= licenseClient.get(abeClientInformation);
+    
+
+                        if(this->abeLicenseInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("Default Key: " +this.abeLicenseInterface!.getKey(AbeClientInformationData.getInstance()!.KEY), this, this.commonStrings!.GET);
+                                    this->logUtil.putF("Default Key: " +this->abeLicenseInterface.getKey(AbeClientInformationData::getInstance().KEY), this, this->commonStrings.GET);
     
 
                                     }
@@ -156,54 +153,54 @@ this.abeLicenseInterface= licenseClient!.get(abeClientInformation);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abeLicenseInterface;
+                        return this->abeLicenseInterface;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Licensing IO Error", this, this.commonStrings!.GET, e);
+this->logUtil.put("Licensing IO Error", this, this->commonStrings.GET, e);
     
 
 
 
-                            throw new LicensingException("License Server Connection Error");
+                            throw LicensingException("License Server Connection Error");
                     
 }
 
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put("Licensing Failure", this, this.commonStrings!.GET, e);
+this->logUtil.put("Licensing Failure", this, this->commonStrings.GET, e);
     
 
 
 
-                            throw new LicensingException("Unknown License Failure: " +this.constructor.name.toString()!);
+                            throw LicensingException("Unknown License Failure: " +this->constructor.name.toString()!);
                     
 }
 */
 }
 
 
-    bool isTimeToGetKey(){
+    private: bool isTimeToGetKey(){
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    currentTime: int64_t = calendar.getTimeInMillis()!;;
+    int64_t currentTime = calendar.getTimeInMillis();;
     
 
-                        if(this.abeLicenseInterface == 
-                                    null
-                                 || this.abeLicenseInterface == AbeNoLicense.getInstance() || !this.abeLicenseInterface!.hasKey() || isCheck() || currentTime -checkPeriod > time)
+                        if(this->abeLicenseInterface == 
+                                    nullptr
+                                 || this->abeLicenseInterface == AbeNoLicense::getInstance() || !this->abeLicenseInterface.hasKey() || isCheck() || currentTime -checkPeriod > time)
                         
                                     {
-                                    this.abeLicenseInterface= 
+                                    this->abeLicenseInterface= 
                                         nullptr
                                     ;
     
-this.time= currentTime;
+this->time= currentTime;
     
 
 
@@ -220,18 +217,18 @@ this.time= currentTime;
 }
 
 
-    public setCheck(bool check){
-this.check= check;
+    public: void setCheck(bool check){
+this->check= check;
     
 }
 
 
-    bool isCheck(){
+    private: bool isCheck(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.check;
+                        return this->check;
     
 }
 

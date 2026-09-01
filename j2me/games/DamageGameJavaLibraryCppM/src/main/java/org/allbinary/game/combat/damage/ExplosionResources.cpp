@@ -42,33 +42,30 @@
 class ExplosionResources
             : public Object
          {
-        
 
-    private: static const instance: ExplosionResources = new ExplosionResources();
+    private: static ExplosionResources instance() { return ExplosionResources(); }
 
-    public static ExplosionResources getInstance(){
+    public: static ExplosionResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExplosionResources.instance;
+                        return ExplosionResources::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ExplosionResources(){
+}
 
 
-    public const EXPLOSION_90_RESOURCE: string = "/explosion_sprite_90_by_90.png";
+    public: const std::string EXPLOSION_90_RESOURCE = "/explosion_sprite_90_by_90.png";
 
-    public const EXPLOSION_60_RESOURCE: string = "/explosion_sprite_60_by_60.png";
+    public: const std::string EXPLOSION_60_RESOURCE = "/explosion_sprite_60_by_60.png";
 
-    public const HALF_EXPLOSION_RESOURCE: string = "/explosion_sprite_30_by_30.png";
+    public: const std::string HALF_EXPLOSION_RESOURCE = "/explosion_sprite_30_by_30.png";
 
-    public const THIRD_EXPLOSION_RESOURCE: string = "/explosion_sprite_15_by_15.png";
+    public: const std::string THIRD_EXPLOSION_RESOURCE = "/explosion_sprite_15_by_15.png";
 
 };
 

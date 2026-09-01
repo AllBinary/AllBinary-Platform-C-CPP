@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -48,14 +50,13 @@
 class VectorAnimationFactory
             : public Object
         : public VectorAnimationFactoryInterface {
-        
 
-    public VectorAnimation getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor basicColor){
+    public: VectorAnimation getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor basicColor){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new VectorAnimation(points, basicColor, AnimationBehavior.getInstance());
+                        return VectorAnimation(points, basicColor, AnimationBehavior::getInstance());
     
 }
 

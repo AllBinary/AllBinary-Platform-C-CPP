@@ -57,11 +57,10 @@
 class UrlGlobalsViewFactory
             : public Object
          {
-        
 
-    public static DomNodeInterface getInstance();
+    public: static DomNodeInterface getInstance();
 
-private constructor ();
+private: UrlGlobalsViewFactory();
 
 };
 

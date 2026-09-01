@@ -97,55 +97,54 @@
 class OpenGLUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLUtil = new OpenGLUtil();
+    private: static OpenGLUtil instance() { return OpenGLUtil(); }
 
-    public static OpenGLUtil getInstance();
+    public: static OpenGLUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const renderStrings: RendererStrings = RendererStrings.getInstance()!;
+    private: const RendererStrings renderStrings = RendererStrings::getInstance();
 
-    const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;
+    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
 
-    private: const lockObject: SynchObject = new SynchObject();
+    private: const SynchObject lockObject = SynchObject();
 
-    private: const anyType: SynchObject = new SynchObject();
+    private: const SynchObject anyType = SynchObject();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public const runnableList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList runnableList = BasicArrayListD();
 
-    private: created: bool = false;
+    private: bool created = false;
 
-    public onSurfaceCreated(GL10 gl);
+    public: void onSurfaceCreated(GL10 gl);
 
-    public onSurfaceCreated(GL10 gl, LoadTextures loadTextures);
+    public: void onSurfaceCreated(GL10 gl, LoadTextures loadTextures);
 
-    private: surfaceCreatedAndInitialized: bool = false;
-
-                //@Throws(Exception.constructor)
-            
-    public onSurfaceChanged(GL10 gl, OpenGLESGraphics graphics);
-
-    public Image addImage(Image image);
-
-    public clear();
-
-    public addRunnable(Runnable runnable);
-
-    processRunnables();
+    private: bool surfaceCreatedAndInitialized = false;
 
                 //@Throws(Exception.constructor)
             
-    set(GL10 gl);
+    public: void onSurfaceChanged(GL10 gl, OpenGLESGraphics graphics);
+
+    public: Image addImage(Image image);
+
+    public: void clear();
+
+    public: void addRunnable(Runnable runnable);
+
+    private: void processRunnables();
+
+                //@Throws(Exception.constructor)
+            
+    private: void set(GL10 gl);
 
 };
 

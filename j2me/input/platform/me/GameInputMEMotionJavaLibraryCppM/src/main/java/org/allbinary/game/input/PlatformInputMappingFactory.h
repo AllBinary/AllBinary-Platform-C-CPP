@@ -57,17 +57,16 @@
 class PlatformInputMappingFactory
             : public Object
          {
-        
 
-    private: static const instance: PlatformInputMappingFactory = new PlatformInputMappingFactory();
+    private: static PlatformInputMappingFactory instance() { return PlatformInputMappingFactory(); }
 
-    public static PlatformInputMappingFactory getInstance();
+    public: static PlatformInputMappingFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: inputToGameKeyMapping: PersistentInputMapping = PersistentInputMapping.getNullInstance()!;
+    private: PersistentInputMapping inputToGameKeyMapping = PersistentInputMapping::getNullInstance();
 
-    public PersistentInputMapping getPersistentInputMappingInstance();
+    public: PersistentInputMapping getPersistentInputMappingInstance();
 
 };
 

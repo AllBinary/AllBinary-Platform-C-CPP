@@ -46,31 +46,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class VertexAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: VertexAttributePointerOpenGLProcessor = new VertexAttributePointerOpenGLProcessor();
+    private: static VertexAttributePointerOpenGLProcessor instance() { return VertexAttributePointerOpenGLProcessor(); }
 
-    public static VertexAttributePointerOpenGLProcessor getInstance(){
+    public: static VertexAttributePointerOpenGLProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VertexAttributePointerOpenGLProcessor.instance;
+                        return VertexAttributePointerOpenGLProcessor::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: VertexAttributePointerOpenGLProcessor(){
+}
 
 
-    public process(GL10 gl, any = {} anyType){
+    public: void process(GL10 gl, Object* anyType){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

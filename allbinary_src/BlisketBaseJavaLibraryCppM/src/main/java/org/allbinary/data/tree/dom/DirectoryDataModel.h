@@ -79,37 +79,36 @@
 class DirectoryDataModel
             : public Object
         : public DomNodeInterface, public TransformInterface {
-        
 
-    private: const fileBasicArrayList: BasicArrayList;
+    private: BasicArrayList fileBasicArrayList;
 
-    private: transformDocumentInterface: TransformDocumentInterface;
+    private: TransformDocumentInterface transformDocumentInterface;
 
-public constructor (AbFile file);
+public: DirectoryDataModel(AbFile file);
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId();
-
-                //@Throws(Exception.constructor)
-            
-    public TransformInfoInterface getTransformInfoInterface();
-
-    public setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
-
-    public TransformDocumentInterface getTransformDocumentInterface();
+    public: int32_t getTypeId();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: TransformInfoInterface getTransformInfoInterface();
+
+    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
+
+    public: TransformDocumentInterface getTransformDocumentInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Document toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

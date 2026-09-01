@@ -43,11 +43,10 @@
 #include "BasicColor.h"
 
 class ColorChangeEvent: public AllBinaryEventObject {
-        
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-public constructor (any = {} anyType){
+public: ColorChangeEvent(Object* anyType){
             super(anyType);
                     
 
@@ -56,18 +55,18 @@ public constructor (any = {} anyType){
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
 }
 
 
-    public BasicColor getBasicColorP(){
+    public: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_CUSTOMITEMUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -46,13 +48,12 @@
 class CustomItemUtil
             : public Object
          {
-        
 
-    private: static const instance: CustomItemUtil = new CustomItemUtil();
+    private: static CustomItemUtil instance() { return CustomItemUtil(); }
 
-    public static CustomItemUtil getInstance();
+    public: static CustomItemUtil getInstance();
 
-    public const CUSTOM_ITEM_ARRAY: std::vector<ABCustomItem> = [];
+    public: const std::vector<ABCustomItem> CUSTOM_ITEM_ARRAY = {};
 
 };
 

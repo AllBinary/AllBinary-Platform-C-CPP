@@ -57,17 +57,16 @@
 class Vertex
             : public Object
          {
-        
 
-    public x: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal x = BasicDecimal(0);
 
-    public y: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal y = BasicDecimal(0);
 
-    public z: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal z = BasicDecimal(0);
 
-public constructor ();
+public: Vertex();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

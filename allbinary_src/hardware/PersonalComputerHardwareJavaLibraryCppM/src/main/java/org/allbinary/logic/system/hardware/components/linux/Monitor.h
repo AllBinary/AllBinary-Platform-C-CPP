@@ -51,15 +51,14 @@
 class Monitor
             : public Object
         : public HardwareComponentInterface, public MonitorInterface {
-        
 
-    private: data: string;
+    private: std::string data;
 
-public constructor (string data);
+public: Monitor(std::string data);
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface componentInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

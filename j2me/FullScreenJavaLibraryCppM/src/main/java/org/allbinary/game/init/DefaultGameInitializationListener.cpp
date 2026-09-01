@@ -76,66 +76,63 @@
 class DefaultGameInitializationListener
             : public Object
         : public GameInitializedListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const swtJOGLProcessor: SWTJOGLProcessor = SWTJOGLProcessor.getInstance()!;
+    private: const SWTJOGLProcessor swtJOGLProcessor = SWTJOGLProcessor::getInstance();
 
-public constructor (){
+public: DefaultGameInitializationListener(){
 
-            super();
-        
-    gameInitializedEventHandler: GameInitializedEventHandler = GameInitializedEventHandler.getInstance()!;;
+    GameInitializedEventHandler gameInitializedEventHandler = GameInitializedEventHandler::getInstance();;
     
-gameInitializedEventHandler!.removeAllListeners();
+gameInitializedEventHandler.removeAllListeners();
     
-gameInitializedEventHandler!.addListenerInterface(this as GameInitializedListenerInterface);
+gameInitializedEventHandler.addListenerInterface(this as GameInitializedListenerInterface);
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    firstTime: bool = true;
+    bool firstTime = true;
 
-    public onGameInitialized(GameInitializedEvent gameInitializedEvent){
+    public: void onGameInitialized(GameInitializedEvent gameInitializedEvent){
 
-    ON_GAME_INITIALIZED: string = "onGameInitialized";;
+    std::string ON_GAME_INITIALIZED = "onGameInitialized";;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
-            this.logUtil!.putF(commonStrings!.START, this, ON_GAME_INITIALIZED);
+            this->logUtil.putF(commonStrings.START, this, ON_GAME_INITIALIZED);
     
 
-        while(!this.swtJOGLProcessor!.isHolderCreated())
+        while(!this->swtJOGLProcessor.isHolderCreated())
         {
-this.logUtil!.putF(commonStrings!.UPDATE, this, ON_GAME_INITIALIZED);
+this->logUtil.putF(commonStrings.UPDATE, this, ON_GAME_INITIALIZED);
     
-Thread.sleep(20);
+Thread::sleep(20);
     
 }
 
-FeatureResourceInitializationUtil.getInstance()!.init(gameInitializedEvent!.getLevel());
+FeatureResourceInitializationUtil::getInstance().init(gameInitializedEvent.getLevel());
     
 
-                        if(this.firstTime)
+                        if(this->firstTime)
                         
                                     {
-                                    this.firstTime= false;
+                                    this->firstTime= false;
     
 
                                     }
                                 
                         else {
-                            this.swtJOGLProcessor!.onSurfaceChanged();
+                            this->swtJOGLProcessor.onSurfaceChanged();
     
 
                         }
@@ -144,7 +141,7 @@ FeatureResourceInitializationUtil.getInstance()!.init(gameInitializedEvent!.getL
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, ON_GAME_INITIALIZED, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, ON_GAME_INITIALIZED, e);
     
 }
 

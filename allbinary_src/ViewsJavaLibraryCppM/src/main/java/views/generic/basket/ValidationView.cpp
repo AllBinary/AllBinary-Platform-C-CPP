@@ -55,10 +55,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasketView.h"
 
-class ValidationView: public BasketView: public ValidationComponentInterface {
-        
+class ValidationView: public BasketView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -67,17 +66,17 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -87,7 +86,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -97,12 +96,12 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MESSAGES.CONTACTADMIN;
+                        return MESSAGES::CONTACTADMIN;
     
 }
 

@@ -112,28 +112,27 @@
 class ShippingMethodsFactory
             : public Object
          {
-        
 
-    private: static const SHIPPINGMETHODSFILEPATHSTRING: string;
+    private: static const std::string SHIPPINGMETHODSFILEPATHSTRING;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    private: static const SHIPPINGMETHODSFILENAME: string = "shippingMethods.xml";
+    private: static const std::string SHIPPINGMETHODSFILENAME = "shippingMethods.xml";
 
-    private: defaultShippingMethodInterface: ShippingInterface;
+    private: ShippingInterface defaultShippingMethodInterface;
 
-    private: document: Document;
+    private: Document document;
 
-    private: shippingVector: Vector;
+    private: Vector shippingVector;
 
-public constructor (AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
+public: ShippingMethodsFactory(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getInstance();
+    public: Vector getInstance();
 
-    public ShippingInterface getDefaultInstance();
+    public: ShippingInterface getDefaultInstance();
 
 };
 

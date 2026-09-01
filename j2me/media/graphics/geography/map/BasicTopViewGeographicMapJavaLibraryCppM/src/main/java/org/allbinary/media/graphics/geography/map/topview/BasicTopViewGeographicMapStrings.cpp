@@ -42,35 +42,34 @@
 class BasicTopViewGeographicMapStrings
             : public Object
          {
-        
 
-    private: static const instance: BasicTopViewGeographicMapStrings = new BasicTopViewGeographicMapStrings();
+    private: static BasicTopViewGeographicMapStrings instance() { return BasicTopViewGeographicMapStrings(); }
 
-    public static BasicTopViewGeographicMapStrings getInstance(){
+    public: static BasicTopViewGeographicMapStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicTopViewGeographicMapStrings.instance;
+                        return BasicTopViewGeographicMapStrings::instance();
     
 }
 
 
-    public const DEFAULT: string = "Default";
+    public: const std::string DEFAULT = "Default";
 
-    public const OTHER: string = "Other";
+    public: const std::string OTHER = "Other";
 
-    public const WALL: string = "Wall";
+    public: const std::string WALL = "Wall";
 
-    public const OFF_MAP: string = "OffMap";
+    public: const std::string OFF_MAP = "OffMap";
 
-    public const FLOOR: string = "Floor";
+    public: const std::string FLOOR = "Floor";
 
-    public const DOOR: string = "Door";
+    public: const std::string DOOR = "Door";
 
-    public const STAIRS_UP: string = "StairsUp";
+    public: const std::string STAIRS_UP = "StairsUp";
 
-    public const STAIRS_DOWN: string = "StairsDown";
+    public: const std::string STAIRS_DOWN = "StairsDown";
 
 };
 

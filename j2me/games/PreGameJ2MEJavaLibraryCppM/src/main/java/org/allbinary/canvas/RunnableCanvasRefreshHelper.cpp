@@ -51,20 +51,17 @@
         #include "Processor.h"
 
 class RunnableCanvasRefreshHelper: public Processor {
-        
 
-    private: const runnableCanvas: MyCanvas;
+    private: MyCanvas runnableCanvas;
 
-public constructor (MyCanvas runnableCanvas){
-
-            super();
-        this.runnableCanvas= runnableCanvas;
+public: RunnableCanvasRefreshHelper(MyCanvas runnableCanvas){
+this->runnableCanvas= runnableCanvas;
     
 }
 
 
-    public process(){
-this.runnableCanvas!.repaint();
+    public: void process(){
+this->runnableCanvas.repaint();
     
 }
 

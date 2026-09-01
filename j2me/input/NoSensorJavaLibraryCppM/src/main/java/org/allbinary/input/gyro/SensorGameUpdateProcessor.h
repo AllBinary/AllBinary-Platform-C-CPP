@@ -59,25 +59,24 @@
 class SensorGameUpdateProcessor
             : public Object
          {
-        
 
-    private: inputSensor: AllBinarySensor = NoAllBinarySensor.getInstance()!;
+    private: AllBinarySensor inputSensor = NoAllBinarySensor::getInstance();
 
-    setInputSensor(AllBinarySensor inputSensor);
+    protected: void setInputSensor(AllBinarySensor inputSensor);
 
-    public AllBinarySensor getInputSensor();
-
-                //@Throws(Exception.constructor)
-            
-    public process(any = {} anyType);
+    public: AllBinarySensor getInputSensor();
 
                 //@Throws(Exception.constructor)
             
-    public sendNotifications(any = {} anyType);
+    public: void process(Object* anyType);
 
-    public bool isAnySensor();
+                //@Throws(Exception.constructor)
+            
+    public: void sendNotifications(Object* anyType);
 
-    setNoSensors();
+    public: bool isAnySensor();
+
+    protected: void setNoSensors();
 
 };
 

@@ -55,10 +55,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ShippingAddressView.h"
 
-class SelectValidationView: public ShippingAddressView: public ValidationComponentInterface {
-        
+class SelectValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: SelectValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -67,27 +66,27 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MESSAGES.CONTACTADMIN;
+                        return MESSAGES::CONTACTADMIN;
     
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -97,7 +96,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../java/lang/Class.h"
@@ -59,16 +61,15 @@
 class UserEmailEventListenerFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static UserEmailEventListenerInterface getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventConfigurationInterface userEmailEventConfigurationInterface, UserInterface userInterface){
+    public: static UserEmailEventListenerInterface getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventConfigurationInterface userEmailEventConfigurationInterface, UserInterface userInterface){
 
-    params: std::vector<any> = new Array(1);;
+    std::vector<Object*> params = new Array(1);;
     
 
-    classes: std::vector<Function> = new Array(1);;
+    std::vector<Function> classes = new Array(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -80,15 +81,13 @@ params[0]= userInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory.getInstance()!.getInstance(abeClientInformation, userEmailEventConfigurationInterface!.getEventListenerClassPath(), classes, params) as UserEmailEventListenerInterface;
+                        return AbeFactory::getInstance().getInstance(abeClientInformation, userEmailEventConfigurationInterface.getEventListenerClassPath(), classes, params) as UserEmailEventListenerInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: UserEmailEventListenerFactory(){
+}
 
 
 };

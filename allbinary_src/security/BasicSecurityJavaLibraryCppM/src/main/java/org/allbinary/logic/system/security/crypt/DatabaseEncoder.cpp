@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -71,31 +73,30 @@
 class DatabaseEncoder
             : public Object
          {
-        
 
-    public static string encode(std::vector<int8_t> value){
+    public: static std::string encode(std::vector<int8_t> value){
 
         try {
             
-    array: std::vector<int8_t> = value;;
+    std::vector<int8_t> array = value;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < array.length; index++)
+    int32_t index = 0;index < array.size(); index++)
         {
-stringBuffer!.append(Number(array[index]!).toString());
+stringBuffer.append(Number(array[index]!).toString());
     
 
-                        if(index < array.length -1)
+                        if(index < array.size() -1)
                         
                                     {
-                                    stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+                                    stringBuffer.append(CommonSeps::getInstance().SPACE);
     
 
                                     }
@@ -106,78 +107,78 @@ stringBuffer!.append(Number(array[index]!).toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE(commonStrings!.EXCEPTION, "DatabaseEncoder", "decode", e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, "DatabaseEncoder", "decode", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 }
 
 
-    public static std::vector<int8_t> decode(string value){
+    public: static std::vector<int8_t> decode(std::string value){
 
         try {
             
-    tokenizer: Tokenizer = new Tokenizer(CommonSeps.getInstance()!.SPACE);;
+    Tokenizer tokenizer = Tokenizer(CommonSeps::getInstance().SPACE);;
     
 
-    vector: BasicArrayList = tokenizer.getTokensFromString(value, new BasicArrayListD())!;;
+    BasicArrayList vector = tokenizer.getTokensFromString(value, BasicArrayListD());;
     
 
-    byteVector: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList byteVector = BasicArrayListD();;
     
 
-    size: int32_t = vector.size()!;;
+    int32_t size = vector.size();;
     
 
-    byteOfData: string;;
+    std::string byteOfData;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 byteOfData= vector.objectArray[index]! as string;
     
-byteVector!.add(Number(byteOfData));
+byteVector.add(Number(byteOfData));
     
 }
 
 
-    decode: std::vector<int8_t> = new Array(byteVector!.size());;
+    std::vector<int8_t> decode = new Array(byteVector.size());;
     
 
-    decodeIndex: int32_t = 0;;
+    int32_t decodeIndex = 0;;
     
 
-    aByte: number;;
+    number aByte;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-aByte= byteVector!.objectArray[index]! as number;
+aByte= byteVector.objectArray[index]! as number;
     
-decode[decodeIndex]= aByte!;
+decode[decodeIndex]= aByte;
     
 decodeIndex++;
     
@@ -194,25 +195,23 @@ decodeIndex++;
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putSE(commonStrings!.EXCEPTION, "DatabaseEncoder", "decode", e);
+PreLogUtil::putSE(commonStrings.EXCEPTION, "DatabaseEncoder", "decode", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
     
 }
 
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: DatabaseEncoder(){
+}
 
 
 };

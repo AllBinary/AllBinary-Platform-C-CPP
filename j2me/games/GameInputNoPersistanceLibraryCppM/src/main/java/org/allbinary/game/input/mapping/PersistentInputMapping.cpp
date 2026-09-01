@@ -105,16 +105,15 @@
 class PersistentInputMapping
             : public Object
          {
-        
 
-    public static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    public: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PersistentInputMapping getNullInstance(){
+    public: static PersistentInputMapping getNullInstance(){
 
-                        if(PersistentInputMapping.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(PersistentInputMapping::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    PersistentInputMapping.instance= new PersistentInputMapping(GamePersistanceStrings.getInstance()!.SAVED_INPUT_CONFIGURATION_RECORD_ID);
+                                    PersistentInputMapping::instance= PersistentInputMapping(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID);
     
 
                                     }
@@ -123,42 +122,40 @@ class PersistentInputMapping
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PersistentInputMapping.instance as PersistentInputMapping;
+                        return PersistentInputMapping::instance() as PersistentInputMapping;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    private: const inputMapping: InputToGameKeyMapping = new InputToGameKeyMapping();
+    private: const InputToGameKeyMapping inputMapping = InputToGameKeyMapping();
 
-    private: inputMappingEventListenerInterface: InputMappingEventListenerInterface = NullInputMappingEventListener.NULL_INPUT_MAPPING_EVENT_LISTENER;
+    private: InputMappingEventListenerInterface inputMappingEventListenerInterface = NullInputMappingEventListener::NULL_INPUT_MAPPING_EVENT_LISTENER;
 
-    private: const inputPersistance: InputPersistance;
+    private: InputPersistance inputPersistance;
 
-protected constructor (string name){
-
-            super();
-        this.inputPersistance= new InputPersistance(name);
+protected: PersistentInputMapping(std::string name){
+this->inputPersistance= InputPersistance(name);
     
 }
 
 
-    public int32_t getTotalMapped(){
+    public: int32_t getTotalMapped(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInputMapping()!.getHashtable()!.size();;
+                        return this->getInputMapping().getHashtable().size();;
     
 }
 
 
-    bool isDefaultNew(){
+    protected: bool isDefaultNew(){
 
 
 
@@ -168,54 +165,54 @@ protected constructor (string name){
 }
 
 
-    InputToGameKeyMapping getDefault(){
+    protected: InputToGameKeyMapping getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputToGameKeyMapping.getNullInstance();;
+                        return InputToGameKeyMapping::getNullInstance();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(AbeClientInformationInterface abeClientInformation){
-this.getInputMapping()!.removeAll();
+    public: void setDefault(AbeClientInformationInterface abeClientInformation){
+this->getInputMapping().removeAll();
     
-this.getInputMapping()!.addMapping(this.getDefault());
+this->getInputMapping().addMapping(this->getDefault());
     
-this.save(abeClientInformation);
+this->save(abeClientInformation);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(AbeClientInformationInterface abeClientInformation){
-this.inputPersistance!.deleteAll(abeClientInformation);
+    public: void update(AbeClientInformationInterface abeClientInformation){
+this->inputPersistance.deleteAll(abeClientInformation);
     
-this.save(abeClientInformation);
+this->save(abeClientInformation);
     
 }
 
 
-    private: inputMappingEvent: InputMappingEvent = new InputMappingEvent(this);
+    private: InputMappingEvent inputMappingEvent = InputMappingEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation){
-this.inputPersistance!.save(abeClientInformation, this.getInputMapping()!.getHashtable());
+    public: void save(AbeClientInformationInterface abeClientInformation){
+this->inputPersistance.save(abeClientInformation, this->getInputMapping().getHashtable());
     
-this.inputMappingEvent!.setInputToGameKeyMapping(this.getInputMapping());
+this->inputMappingEvent.setInputToGameKeyMapping(this->getInputMapping());
     
 
-                        if(this.getInputMappingEventListenerInterface() != 
-                                    null
+                        if(this->getInputMappingEventListenerInterface() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.getInputMappingEventListenerInterface()!.onInputMappingEvent(this.inputMappingEvent);
+                                    this->getInputMappingEventListenerInterface().onInputMappingEvent(this->inputMappingEvent);
     
 
                                     }
@@ -225,134 +222,134 @@ this.inputMappingEvent!.setInputToGameKeyMapping(this.getInputMapping());
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.INIT);
+    public: void init(AbeClientInformationInterface abeClientInformation){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
 
         try {
-            this.inputPersistance!.loadAll(abeClientInformation);
+            this->inputPersistance.loadAll(abeClientInformation);
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+PreLogUtil::putOE(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
-this.inputPersistance!.deleteRecoreStore(abeClientInformation);
+this->inputPersistance.deleteRecoreStore(abeClientInformation);
     
-this.setDefault(abeClientInformation);
+this->setDefault(abeClientInformation);
     
-this.inputPersistance!.loadAll(abeClientInformation);
+this->inputPersistance.loadAll(abeClientInformation);
     
 }
 
 
-    list: BasicArrayList = this.inputPersistance!.getList()!;;
+    BasicArrayList list = this->inputPersistance.getList();;
     
 
-    totalMappedTo: int32_t = 0;;
+    int32_t totalMappedTo = 0;;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    hashtable: Hashtable<any, any>;;
+    Hashtable<any, any> hashtable;;
     
 
-    enumeration: Enumeration<any>;;
+    Enumeration<any> enumeration;;
     
 
-    mappedToInput: Input;;
+    Input mappedToInput;;
     
 
-    gameActionInput: Input;;
+    Input gameActionInput;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 hashtable= list.objectArray[index]! as Hashtable<any, any>;
     
 enumeration= hashtable.keys();
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-mappedToInput= this.enumerationUtil!.nextElement(enumeration)! as Input;
+mappedToInput= this->enumerationUtil.nextElement(enumeration)! as Input;
     
 gameActionInput= hashtable.get(mappedToInput) as Input;
     
 totalMappedTo++;
     
-this.getInputMapping()!.add(gameActionInput, mappedToInput);
+this->getInputMapping().add(gameActionInput, mappedToInput);
     
 }
 
 }
 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("End - Total Loaded Keys Mapped: ");
+stringBuffer.append("End - Total Loaded Keys Mapped: ");
     
-stringBuffer!.appendint(this.getTotalMapped());
+stringBuffer.appendint(this->getTotalMapped());
     
-stringBuffer!.append(" to: ");
+stringBuffer.append(" to: ");
     
-stringBuffer!.appendint(totalMappedTo);
+stringBuffer.appendint(totalMappedTo);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.INIT);
-    
-}
-
-
-    public setInputMappingEventListenerInterface(InputMappingEventListenerInterface inputMappingEventListenerInterface){
-this.inputMappingEventListenerInterface= inputMappingEventListenerInterface;
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
     
 }
 
 
-    InputMappingEventListenerInterface getInputMappingEventListenerInterface(){
+    public: void setInputMappingEventListenerInterface(InputMappingEventListenerInterface inputMappingEventListenerInterface){
+this->inputMappingEventListenerInterface= inputMappingEventListenerInterface;
+    
+}
+
+
+    private: InputMappingEventListenerInterface getInputMappingEventListenerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputMappingEventListenerInterface;
+                        return this->inputMappingEventListenerInterface;
     
 }
 
 
-    public InputToGameKeyMapping getInputMapping(){
+    public: InputToGameKeyMapping getInputMapping(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputMapping;
+                        return this->inputMapping;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isDelete(Input input){
+    public: bool isDelete(Input input){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isSystemInput(Input input){
+    public: bool isSystemInput(Input input){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 

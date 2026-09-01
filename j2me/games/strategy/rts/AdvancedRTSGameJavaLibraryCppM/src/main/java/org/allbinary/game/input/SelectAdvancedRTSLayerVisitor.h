@@ -69,13 +69,12 @@
         #include "SelectedRTSLayersPlayerGameInput.h"
 
 class SelectAdvancedRTSLayerVisitor: public Visitor {
-        
 
-    private: const selectedRTSLayersPlayerGameInput: SelectedRTSLayersPlayerGameInput;
+    private: SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput;
 
-public constructor (SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
+public: SelectAdvancedRTSLayerVisitor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput);
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
 };
 

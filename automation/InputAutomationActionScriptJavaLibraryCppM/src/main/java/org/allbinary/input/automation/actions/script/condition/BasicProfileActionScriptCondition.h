@@ -112,62 +112,61 @@
 #include "AlwaysActionScriptCondition.h"
 #include "ColorAtActionScriptCondition.h"
 
-class BasicProfileActionScriptCondition: public ProfileActionScriptItem: public ProfileActionScriptConditionInterface {
-        
+class BasicProfileActionScriptCondition: public ProfileActionScriptItem, public ProfileActionScriptConditionInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: profileActionProcessorInterfaceVector: Vector;
+    private: Vector profileActionProcessorInterfaceVector;
 
-    private: profileActionConditionInterfaceVector: Vector;
+    private: Vector profileActionConditionInterfaceVector;
 
-public constructor (string label, Node node);
-
-                //@Throws(Exception.constructor)
-            
-    public addProcessorNodes(Node node);
-
-public constructor (string label);
-
-    init();
-
-    JMenu getConditionJPopupMenu();
-
-    JMenu getInputJPopupMenu();
-
-    JMenu getOutputJPopupMenu();
-
-    public addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
-
-    public removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
-
-    public removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
-
-    public addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+public: BasicProfileActionScriptCondition(std::string label, Node node);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: void addProcessorNodes(Node node);
 
-    public Vector getProfileActionConditionInterfaceVector();
+public: BasicProfileActionScriptCondition(std::string label);
 
-    public setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector);
+    private: void init();
 
-    public actionPerformed(ActionEvent actionEvent);
+    private: JMenu getConditionJPopupMenu();
 
-    public Vector getProfileActionProcessorInterfaceVector();
+    private: JMenu getInputJPopupMenu();
 
-    public setProfileActionProcessorInterfaceVector(Vector profileActionProcessorInterfaceVector);
+    private: JMenu getOutputJPopupMenu();
 
-    updateTree();
+    public: void addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+
+    public: void removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+
+    public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+
+    public: void addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public bool shouldProcess(Long frame);
+    public: Node toXmlNode(Document document);
+
+    public: Vector getProfileActionConditionInterfaceVector();
+
+    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector);
+
+    public: void actionPerformed(ActionEvent actionEvent);
+
+    public: Vector getProfileActionProcessorInterfaceVector();
+
+    public: void setProfileActionProcessorInterfaceVector(Vector profileActionProcessorInterfaceVector);
+
+    private: void updateTree();
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame);
+    public: bool shouldProcess(Long frame);
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(Long frame);
 
 };
 

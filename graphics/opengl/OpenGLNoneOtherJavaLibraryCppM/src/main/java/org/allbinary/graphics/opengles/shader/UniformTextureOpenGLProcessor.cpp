@@ -43,15 +43,12 @@
 #include "ShaderComposite.h"
 
 class UniformTextureOpenGLProcessor: public OpenGLObject3dProcessor {
-        
 
-public constructor (ShaderComposite shaderComposite, int32_t handleIndex){
-
-            super();
-        }
+public: UniformTextureOpenGLProcessor(ShaderComposite shaderComposite, int32_t handleIndex){
+}
 
 
-    public process(GL10 gl, any = {} unused, int32_t index){
+    public: void process(GL10 gl, Object* unused, int32_t index){
 }
 
 

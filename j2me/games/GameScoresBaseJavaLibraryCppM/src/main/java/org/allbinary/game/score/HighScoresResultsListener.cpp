@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -45,9 +47,8 @@
         #include "HighScores.h"
 
 class HighScoresResultsListener {
-        
 
-    setHighScoresArray(std::vector<HighScores> highScoresArrayP)
+    void setHighScoresArray(std::vector<HighScores> highScoresArrayP)
 
 };
 

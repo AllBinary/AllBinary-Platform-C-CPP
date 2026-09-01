@@ -72,28 +72,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BillingAddressView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class BillingAddressView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    streetAddress: StreetAddress;
+    protected: StreetAddress streetAddress;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: BillingAddressView(TransformInfoInterface transformInfoInterface);
 
-    HttpServletRequest getRequest();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
-
-    public addDomNodeInterfaces();
+    protected: HttpServletRequest getRequest();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+    public: void addDomNodeInterfaces();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

@@ -92,148 +92,145 @@
         #include "TouchButtonInput.h"
 
 class TouchButton: public Paintable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const touchButtonInput: TouchButtonInput;
+    private: TouchButtonInput touchButtonInput;
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-    const rawRectangle: Rectangle;
+    protected: Rectangle rawRectangle;
 
-    const xBorder: int32_t;
+    protected: int32_t xBorder;
 
-    const yBorder: int32_t;
+    protected: int32_t yBorder;
 
-    rectangle: Rectangle = RectangleFactory.SINGLETON;
+    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
 
-    const cellPosition: CellPosition;
+    protected: CellPosition cellPosition;
 
-    animationX: int32_t= 0;
+    protected: int32_t animationX= 0;
 
-    animationY: int32_t= 0;
+    protected: int32_t animationY= 0;
 
-public constructor (TouchButtonInput touchButtonInput, AnimationInterface animationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder){
-
-            super();
-        this.touchButtonInput= touchButtonInput;
+public: TouchButton(TouchButtonInput touchButtonInput, AnimationInterface animationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder){
+this->touchButtonInput= touchButtonInput;
     
-this.animationInterface= animationInterface as Animation;
+this->animationInterface= animationInterface as Animation;
     
-this.rawRectangle= rawRectangle;
+this->rawRectangle= rawRectangle;
     
-this.cellPosition= cellPosition;
+this->cellPosition= cellPosition;
     
-this.xBorder= xBorder;
+this->xBorder= xBorder;
     
-this.yBorder= yBorder;
+this->yBorder= yBorder;
     
-this.updateRectangle();
+this->updateRectangle();
     
-this.logUtil!.putF(new StringMaker().append("Created: ")!.append(this.toString())!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(StringMaker().append("Created: ").append(this->toString()).toString(), this, this->commonStrings.CONSTRUCTOR);
     
 }
 
 
-    public paint(Graphics graphics){
-this.animationInterface!.paintXY(graphics, animationX, this.animationY);
+    public: void paint(Graphics graphics){
+this->animationInterface.paintXY(graphics, animationX, this->animationY);
     
 }
 
 
-    updateRectangle(){
+    protected: void updateRectangle(){
 
         try {
             
-    x: int32_t = this.rawRectangle!.getWidth() *this.cellPosition!.getColumn();;
+    int32_t x = this->rawRectangle.getWidth() *this->cellPosition.getColumn();;
     
 
-    y: int32_t = this.rawRectangle!.getHeight() *this.cellPosition!.getRow();;
+    int32_t y = this->rawRectangle.getHeight() *this->cellPosition.getRow();;
     
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
-this.rectangle= new Rectangle(pointFactory!.createXY(x +this.xBorder, y +this.yBorder), this.rawRectangle!.getWidth(), this.rawRectangle!.getHeight());
+this->rectangle= Rectangle(pointFactory.createXY(x +this->xBorder, y +this->yBorder), this->rawRectangle.getWidth(), this->rawRectangle.getHeight());
     
 
-    point: GPoint = this.rectangle.getPoint()!;;
+    GPoint point = this->rectangle.getPoint();;
     
-this.animationX= point.getX();
+this->animationX= point.getX();
     
-this.animationY= point.getY();
+this->animationY= point.getY();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "updateRectangle", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "updateRectangle", e);
     
 }
 
 }
 
 
-    public CellPosition getCellPositionP(){
+    public: CellPosition getCellPositionP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellPosition;
+                        return this->cellPosition;
     
 }
 
 
-    public Rectangle getRectangleP(){
+    public: Rectangle getRectangleP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangle;
+                        return this->rectangle;
     
 }
 
 
-    public TouchButtonInput getTouchButtonInput(){
+    public: TouchButtonInput getTouchButtonInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchButtonInput;
+                        return this->touchButtonInput;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-stringBuffer!.append("TouchButton: ");
+stringBuffer.append("TouchButton: ");
     
-stringBuffer!.append(stringUtil!.toString(this.rectangle));
+stringBuffer.append(stringUtil.toString(this->rectangle));
     
-stringBuffer!.append(" CellPosition: ");
+stringBuffer.append(" CellPosition: ");
     
-stringBuffer!.append(stringUtil!.toString(this.cellPosition));
+stringBuffer.append(stringUtil.toString(this->cellPosition));
     
-stringBuffer!.append(" xBorder: ");
+stringBuffer.append(" xBorder: ");
     
-stringBuffer!.appendint(this.xBorder);
+stringBuffer.appendint(this->xBorder);
     
-stringBuffer!.append(" yBorder: ");
+stringBuffer.append(" yBorder: ");
     
-stringBuffer!.appendint(this.yBorder);
+stringBuffer.appendint(this->yBorder);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

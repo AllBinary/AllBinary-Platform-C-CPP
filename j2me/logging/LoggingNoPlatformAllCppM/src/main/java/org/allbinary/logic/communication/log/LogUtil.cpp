@@ -45,70 +45,67 @@
 class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    public static LogUtil getInstance(){
+    public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    public putL(Log log){
+    public: void putL(Log log){
 
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public putF(string specialMessage, any = {} anyType, string functionName){
+    public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public putF(string specialMessage, string className, string functionName){
+    public: void putF(std::string specialMessage, std::string className, std::string functionName){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

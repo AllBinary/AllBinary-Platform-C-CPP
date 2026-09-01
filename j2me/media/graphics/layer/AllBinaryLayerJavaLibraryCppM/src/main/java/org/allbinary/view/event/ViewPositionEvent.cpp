@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ViewPositionEvent: public AllBinaryEventObject {
-        
 
-public constructor (any = {} anyType){
+public: ViewPositionEvent(Object* anyType){
             super(anyType);
                     
 

@@ -71,21 +71,20 @@
 class GameNotification
             : public Object
          {
-        
 
-    public static const NULL_GAME_NOTIFICATION_EVENT: GameNotificationEvent = new GameNotificationEvent(NullUtil.getInstance()!.NULL_OBJECT, StringUtil.getInstance()!.EMPTY_STRING, new Integer(0), BasicColorFactory.getInstance()!.RED, BooleanFactory.getInstance()!.FALSE);
+    public: static const GameNotificationEvent NULL_GAME_NOTIFICATION_EVENT = GameNotificationEvent(NullUtil::getInstance().NULL_OBJECT, StringUtil::getInstance().EMPTY_STRING, Integer(0), BasicColorFactory::getInstance().RED, BooleanFactory::getInstance().FALSE);
 
-    public const stringList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList stringList = BasicArrayListD();
 
-    public const timeList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList timeList = BasicArrayListD();
 
-    public const colorList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList colorList = BasicArrayListD();
 
-    public add(string string, Integer seconds, BasicColor basicColor);
+    public: void add(std::string string, Integer seconds, BasicColor basicColor);
 
-    public clear();
+    public: void clear();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/identification/Group.h>
@@ -46,32 +48,31 @@
 class WaypointEventHandlerFactory
             : public Object
          {
-        
 
-    private: static const eventHandlerArray: std::vector<WaypointEventHandler> = 
-                                                        [
-                                                            new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler(),new WaypointEventHandler()
-                                                        ];
+    private: static const std::vector<WaypointEventHandler> eventHandlerArray = 
+                                                        {
+                                                            WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler(),WaypointEventHandler()
+                                                        };
 
-    public static WaypointEventHandler getInstance(Group groupInterface){
+    public: static WaypointEventHandler getInstance(Group groupInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointEventHandlerFactory.eventHandlerArray[static_cast<int32_t>(groupInterface!.getGroupId();)]!;
+                        return WaypointEventHandlerFactory::eventHandlerArray[static_cast<int32_t>(groupInterface.getGroupId();)]!;
     
 }
 
 
-    public static removeAll(){
+    public: static void removeAll(){
 
 
 
 
                         for (
-    index: int32_t = WaypointEventHandlerFactory.eventHandlerArray!.length -1;index >= 0; index--)
+    int32_t index = WaypointEventHandlerFactory::eventHandlerArray.size() -1;index >= 0; index--)
         {
-WaypointEventHandlerFactory.eventHandlerArray[index]!.removeAllListeners();
+WaypointEventHandlerFactory::eventHandlerArray[index]!.removeAllListeners();
     
 }
 

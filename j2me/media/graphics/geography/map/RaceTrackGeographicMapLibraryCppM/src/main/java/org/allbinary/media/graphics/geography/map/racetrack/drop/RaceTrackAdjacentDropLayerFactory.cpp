@@ -54,58 +54,55 @@
 class RaceTrackAdjacentDropLayerFactory
             : public Object
          {
-        
 
-    private: static DROP_LAYER_FACTORY: RaceTrackAdjacentDropLayerFactory = new RaceTrackAdjacentDropLayerFactory();
+    private: static RaceTrackAdjacentDropLayerFactory DROP_LAYER_FACTORY = RaceTrackAdjacentDropLayerFactory();
 
-    public static RaceTrackAdjacentDropLayerFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackAdjacentDropLayerFactory.DROP_LAYER_FACTORY;
-    
-}
-
-
-    private: list: BasicArrayList = new BasicArrayListD();
-
-private constructor (){
-
-            super();
-        }
-
-
-    public clear(){
-this.list.clear();
-    
-}
-
-
-    public int32_t getSize(){
+    public: static RaceTrackAdjacentDropLayerFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size();;
+                        return RaceTrackAdjacentDropLayerFactory::DROP_LAYER_FACTORY;
     
 }
 
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: BasicArrayList list = BasicArrayListD();
 
-    public LayerInterfaceFactoryInterface getRandomInstance(){
+private: RaceTrackAdjacentDropLayerFactory(){
+}
+
+
+    public: void clear(){
+this->list.clear();
+    
+}
+
+
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getRandom(this.list) as LayerInterfaceFactoryInterface;
+                        return this->list.size();;
     
 }
 
 
-    public add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-this.list.add(layerInterfaceFactoryInterface);
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+
+    public: LayerInterfaceFactoryInterface getRandomInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->basicArrayListUtil.getRandom(this->list) as LayerInterfaceFactoryInterface;
+    
+}
+
+
+    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+this->list.add(layerInterfaceFactoryInterface);
     
 }
 

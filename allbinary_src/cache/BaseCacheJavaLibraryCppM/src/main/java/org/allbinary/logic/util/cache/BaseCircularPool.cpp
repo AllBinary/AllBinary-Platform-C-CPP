@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -60,20 +62,19 @@
 class BaseCircularPool
             : public Object
          {
-        
 
-    circularIndexUtil: CircularIndexUtil = CircularIndexUtil.NULL_CIRCULAR_INDEX_UTIL;
+    protected: CircularIndexUtil circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-    OBJECT_ARRAY: std::vector<any> = NullUtil.getInstance()!.NULL_OBJECT_ARRAY;
+    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance().NULL_OBJECT_ARRAY;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public any getNextInstance(){
+    public: Object* getNextInstance(){
 
-    anyType: any = this.OBJECT_ARRAY[this.circularIndexUtil!.getIndex()]!;;
+    Object* anyType = this->OBJECT_ARRAY[this->circularIndexUtil.getIndex()];;
     
-this.circularIndexUtil!.next();
+this->circularIndexUtil.next();
     
 
 
@@ -84,20 +85,20 @@ this.circularIndexUtil!.next();
 }
 
 
-    public init(AllBinaryObjectFactoryInterface allBinaryObjectFactoryInterface){
-this.circularIndexUtil!.setIndex(0);
+    public: void init(AllBinaryObjectFactoryInterface allBinaryObjectFactoryInterface){
+this->circularIndexUtil.setIndex(0);
     
 
-    size: int32_t = this.circularIndexUtil!.getSize()!;;
+    int32_t size = this->circularIndexUtil.getSize();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface!.getInstance();
+this->OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface.getInstance();
     
 }
 
@@ -106,12 +107,12 @@ this.OBJECT_ARRAY[index]= allBinaryObjectFactoryInterface!.getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public any getInstance(int32_t index){
+    public: Object* getInstance(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.OBJECT_ARRAY[index]!;
+                        return this->OBJECT_ARRAY[index]!;
     
 }
 

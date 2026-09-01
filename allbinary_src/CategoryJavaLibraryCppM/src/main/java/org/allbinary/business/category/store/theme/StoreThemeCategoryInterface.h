@@ -59,9 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreThemeCategoryInterface: public CategoryInterface, public TableMappingInterface, public ValidationInterface, public CompositeTransformInfoInterface {
-        
 
-    addTheme(ThemeValidation themeValidation);
+    void addTheme(ThemeValidation themeValidation);
 
     Vector getThemes();
 

@@ -62,17 +62,16 @@
 class ValidatedViewHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "taghelpers.ValidationViewHelper";
+    private: static const std::string CLASSNAME = "taghelpers.ValidationViewHelper";
 
-    private: static const FACTORYNAME: string = "taghelpers.ValidationViewHelperFactory";
+    private: static const std::string FACTORYNAME = "taghelpers.ValidationViewHelperFactory";
 
-public constructor ();
+public: ValidatedViewHelperFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

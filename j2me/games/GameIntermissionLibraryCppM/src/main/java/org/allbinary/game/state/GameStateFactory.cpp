@@ -58,16 +58,15 @@
 class GameStateFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameStateFactory getInstance(){
+    public: static GameStateFactory getInstance(){
 
-                        if(GameStateFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(GameStateFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    GameStateFactory.instance= new GameStateFactory();
+                                    GameStateFactory::instance= GameStateFactory();
     
 
                                     }
@@ -76,33 +75,31 @@ class GameStateFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameStateFactory.instance as GameStateFactory;
+                        return GameStateFactory::instance() as GameStateFactory;
     
 }
 
 
-    private: index: int32_t = 0;
+    private: int32_t index = 0;
 
-    public const NO_GAME_STATE: GameState = this.createGameState("NO_GAME_STATE")!;
+    public: const GameState NO_GAME_STATE = this->createGameState("NO_GAME_STATE");
 
-    public const PLAYING_GAME_STATE: GameState = this.createGameState("PLAYING_GAME_STATE")!;
+    public: const GameState PLAYING_GAME_STATE = this->createGameState("PLAYING_GAME_STATE");
 
-    public const SHOW_END_RESULT_GAME_STATE: GameState = this.createGameState("SHOW_END_RESULT_GAME_STATE")!;
+    public: const GameState SHOW_END_RESULT_GAME_STATE = this->createGameState("SHOW_END_RESULT_GAME_STATE");
 
-    public const SHOW_HIGH_SCORE_GAME_STATE: GameState = this.createGameState("SHOW_HIGH_SCORE_GAME_STATE")!;
+    public: const GameState SHOW_HIGH_SCORE_GAME_STATE = this->createGameState("SHOW_HIGH_SCORE_GAME_STATE");
 
-private constructor (){
-
-            super();
-        }
+private: GameStateFactory(){
+}
 
 
-    public GameState createGameState(string name){
+    public: GameState createGameState(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GameState(name, this.index++);
+                        return GameState(name, this->index++);
     
 }
 

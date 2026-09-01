@@ -50,9 +50,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpdateMyFontInterface {
-        
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
 };
 

@@ -94,37 +94,36 @@
 class AndroidHardware
             : public Object
         : public HardwareInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: componentInterfaceVector: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList componentInterfaceVector = BasicArrayListD();
 
-    private: const PROC_BUS_INPUT_DIRECTORY: string = "/proc/bus/input/";
+    private: const std::string PROC_BUS_INPUT_DIRECTORY = "/proc/bus/input/";
 
-    private: const DEVICES: string = this.PROC_BUS_INPUT_DIRECTORY +"devices/";
+    private: const std::string DEVICES = this->PROC_BUS_INPUT_DIRECTORY +"devices/";
 
-    private: const MINHARDWARE: int32_t = 3;
+    private: const int32_t MINHARDWARE = 3;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    init(string filePath);
+public: AndroidHardware();
 
                 //@Throws(Exception.constructor)
             
-    LineNumberReader get(string filePath);
+    private: void init(std::string filePath);
 
-    public HardwareComponentInterface getComponent(int32_t index);
+                //@Throws(Exception.constructor)
+            
+    private: LineNumberReader get(std::string filePath);
 
-    public string toString();
+    public: HardwareComponentInterface getComponent(int32_t index);
 
-    public bool compareTo(HardwareInterface hardwareInterface);
+    public: std::string toString();
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: bool compareTo(HardwareInterface hardwareInterface);
+
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
 
 };
 

@@ -43,13 +43,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PriorityRunnable: public Runnable {
-        
 
     int32_t getPriority();
 
     bool isDone();
 
-    reset();
+    void reset();
 
 };
 

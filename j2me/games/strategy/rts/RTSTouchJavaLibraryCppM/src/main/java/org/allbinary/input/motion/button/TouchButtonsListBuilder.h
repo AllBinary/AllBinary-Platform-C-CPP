@@ -48,13 +48,12 @@
         #include "BaseTouchInput.h"
 
 class TouchButtonsListBuilder: public BaseTouchInput {
-        
 
-    private: const baseTouchInputList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList baseTouchInputList = BasicArrayListD();
 
-    addList(BasicArrayList list);
+    protected: void addList(BasicArrayList list);
 
-    public add(BaseTouchInput baseTouchInput);
+    public: void add(BaseTouchInput baseTouchInput);
 
 };
 

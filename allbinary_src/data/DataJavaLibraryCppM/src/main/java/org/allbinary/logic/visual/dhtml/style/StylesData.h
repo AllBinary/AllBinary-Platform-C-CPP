@@ -45,15 +45,14 @@
 class StylesData
             : public Object
          {
-        
 
-    private: static const instance: StylesData = new StylesData();
+    private: static StylesData instance() { return StylesData(); }
 
-    public static StylesData getInstance();
+    public: static StylesData getInstance();
 
-private constructor ();
+private: StylesData();
 
-    public const NAME: string = "STYLES_NAME";
+    public: const std::string NAME = "STYLES_NAME";
 
 };
 

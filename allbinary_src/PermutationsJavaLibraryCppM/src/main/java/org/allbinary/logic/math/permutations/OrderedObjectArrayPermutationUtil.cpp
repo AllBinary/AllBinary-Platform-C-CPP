@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/System.h"
@@ -55,94 +57,90 @@
 class OrderedObjectArrayPermutationUtil
             : public Object
          {
-        
 
-    private: static const instance: OrderedObjectArrayPermutationUtil = new OrderedObjectArrayPermutationUtil();
+    private: static OrderedObjectArrayPermutationUtil instance() { return OrderedObjectArrayPermutationUtil(); }
 
-    public static OrderedObjectArrayPermutationUtil getInstance(){
+    public: static OrderedObjectArrayPermutationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrderedObjectArrayPermutationUtil.instance;
+                        return OrderedObjectArrayPermutationUtil::instance();
     
 }
 
 
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
-    TOTAL: int32_t = 7;;
+    int32_t TOTAL = 7;;
     
 
-    data: std::vector<any> = new Array(TOTAL);;
+    std::vector<Object*> data = new Array(TOTAL);;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < TOTAL; i++)
+    int32_t i = 0;i < TOTAL; i++)
         {
-data[i]= new ComparableObject();
+data[i]= ComparableObject();
     
 }
 
-Arrays.sort(data);
+Arrays::sort(data);
     
 
-    permutationVisitor: ObjectPermutationVisitor = new ObjectPermutationVisitor(data);;
+    ObjectPermutationVisitor permutationVisitor = ObjectPermutationVisitor(data);;
     
 
-    ORIGINAL_DATA_LABEL: string = "Original Data: ";;
+    std::string ORIGINAL_DATA_LABEL = "Original Data: ";;
     
 console.log(ORIGINAL_DATA_LABEL);
     
-permutationVisitor!.visit(data);
+permutationVisitor.visit(data);
     
-OrderedObjectArrayPermutationUtil.getInstance()!.generate(data, permutationVisitor);
+OrderedObjectArrayPermutationUtil::getInstance().generate(data, permutationVisitor);
     
 }
 
 
-    private: const TOTAL_ITERATIONS_TABLE: string = "Total Iterations: ";
+    private: const std::string TOTAL_ITERATIONS_TABLE = "Total Iterations: ";
 
-    private: const FINISHED: string = "\nFINISHED";
+    private: const std::string FINISHED = "\nFINISHED";
 
-private constructor (){
-
-            super();
-        }
+private: OrderedObjectArrayPermutationUtil(){
+}
 
 
-    public getNext(std::vector<any> data){
+    public: void getNext(std::vector<Object*> data){
 
-    length: int32_t = data.length
-                ;;
+    int32_t length = data.size();;
     
 
-    i: int32_t = length -1;;
+    int32_t i = length -1;;
     
 
-    tsUtil: TsUtil = TsUtil.getInstance()!;;
+    TsUtil tsUtil = TsUtil::getInstance();;
     
 
-        while(tsUtil!.hashCode(data[i -1]!) >= tsUtil!.hashCode(data[i]!))
+        while(tsUtil.hashCode(data[i -1]!) >= tsUtil.hashCode(data[i]!))
         {
 i= i -1;
     
 }
 
 
-    j: int32_t = length;;
+    int32_t j = length;;
     
 
-        while(tsUtil!.hashCode(data[j -1]!) <= tsUtil!.hashCode(data[i -1]!))
+        while(tsUtil.hashCode(data[j -1]!) <= tsUtil.hashCode(data[i -1]!))
         {
 j= j -1;
     
 }
 
-this.swap(data, i -1, j -1);
+this->swap(data, i -1, j -1);
     
 i++;
     
@@ -151,7 +149,7 @@ j= length;
 
         while(i < j)
         {
-this.swap(data, i -1, j -1);
+this->swap(data, i -1, j -1);
     
 i++;
     
@@ -162,9 +160,9 @@ j--;
 }
 
 
-    public swap(std::vector<any> data, int32_t a, int32_t b){
+    public: void swap(std::vector<Object*> data, int32_t a, int32_t b){
 
-    temp: any = data[a]!;;
+    Object* temp = data[a];;
     
 data[a]= data[b]!;
     
@@ -173,9 +171,9 @@ data[b]= temp;
 }
 
 
-    public int64_t factorial(int32_t dataLength){
+    public: int64_t factorial(int32_t dataLength){
 
-    temp: int64_t = 1;;
+    int64_t temp = 1;;
     
 
                         if(dataLength > 1)
@@ -186,7 +184,7 @@ data[b]= temp;
 
 
                         for (
-    i: int32_t = 1;i <= dataLength; i++)
+    int32_t i = 1;i <= dataLength; i++)
         {
 temp *= i;
     
@@ -204,11 +202,11 @@ temp *= i;
 }
 
 
-    public generate(std::vector<any> data, Visitor visitor){
+    public: void generate(std::vector<Object*> data, Visitor visitor){
 
-    iterations: int64_t = this.factorial(data.length)!;;
+    int64_t iterations = this->factorial(data.size());;
     
-console.log(this.TOTAL_ITERATIONS_TABLE);
+console.log(this->TOTAL_ITERATIONS_TABLE);
     
 console.log(iterations);
     
@@ -217,15 +215,15 @@ console.log(iterations);
 
 
                         for (
-    count: int64_t = 0;count < iterations -1; count++)
+    int64_t count = 0;count < iterations -1; count++)
         {
-this.getNext(data);
+this->getNext(data);
     
 visitor.visit(this);
     
 }
 
-console.log(this.FINISHED);
+console.log(this->FINISHED);
     
 }
 

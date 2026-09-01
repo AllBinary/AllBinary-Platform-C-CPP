@@ -72,32 +72,31 @@
 #include "CapturedBufferedImagesCacheSingleton.h"
 #include "CapturedImageWorkerResultsEvent.h"
 
-class ScreenCaptureImagesWorker: public BasicEventHandler: public CaptureWorkerInterface {
-        
+class ScreenCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static index: int64_t;
+    private: static int64_t index;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: screenScavangerRobot: ScreenScavangerRobot;
+    private: ScreenScavangerRobot screenScavangerRobot;
 
-public constructor ();
+public: ScreenCaptureImagesWorker();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread);
+    public: void setThread(Thread thread);
 
-    public run();
+    public: void run();
 
 };
 

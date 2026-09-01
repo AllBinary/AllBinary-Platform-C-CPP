@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_MODELVIEWPROJECTION_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_MODELVIEWPROJECTION_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -48,13 +50,12 @@
 class ModelViewProjection
             : public Object
          {
-        
 
-    private: static const instance: ModelViewProjection = new ModelViewProjection();
+    private: static ModelViewProjection instance() { return ModelViewProjection(); }
 
-    public static ModelViewProjection getInstance();
+    public: static ModelViewProjection getInstance();
 
-    public std::vector<float> get();
+    public: std::vector<float> get();
 
 };
 

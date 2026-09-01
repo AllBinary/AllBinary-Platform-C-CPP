@@ -66,74 +66,73 @@
         #include "DestroyedEventHandler.h"
 
 class DestroyedEvent: public AllBinaryEventObject {
-        
 
-    private: allBinaryGameCanvas: AllBinaryGameCanvas = NullGameCanvas.getInstance()!;
+    private: AllBinaryGameCanvas allBinaryGameCanvas = NullGameCanvas::getInstance();
 
-    private: allBinaryLayerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer allBinaryLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public constructor (AllBinaryGameCanvas combatGameCanvas){
-            super(DestroyedEventHandler.getInstance());
+public: DestroyedEvent(AllBinaryGameCanvas combatGameCanvas){
+            super(DestroyedEventHandler::getInstance());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setAllBinaryGameCanvas(combatGameCanvas);
+this->setAllBinaryGameCanvas(combatGameCanvas);
     
 }
 
 
-    public AllBinaryGameCanvas getAllBinaryGameCanvas(){
+    public: AllBinaryGameCanvas getAllBinaryGameCanvas(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.allBinaryGameCanvas;
+                        return this->allBinaryGameCanvas;
     
 }
 
 
-    public AllBinaryLayer getLayerInterface(){
+    public: AllBinaryLayer getLayerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.allBinaryLayerInterface;
+                        return this->allBinaryLayerInterface;
     
 }
 
 
-    setAllBinaryGameCanvas(AllBinaryGameCanvas allBinaryGameCanvas){
-this.allBinaryGameCanvas= allBinaryGameCanvas;
+    private: void setAllBinaryGameCanvas(AllBinaryGameCanvas allBinaryGameCanvas){
+this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    public setLayerInterfaceForCircularStaticPool(AllBinaryLayer allBinaryLayerInterface){
-this.allBinaryLayerInterface= allBinaryLayerInterface;
+    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer allBinaryLayerInterface){
+this->allBinaryLayerInterface= allBinaryLayerInterface;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("DestroyedEvent: \n");
+stringBuffer.append("DestroyedEvent: \n");
     
-stringBuffer!.append("AllBinaryLayerInterface: ");
+stringBuffer.append("AllBinaryLayerInterface: ");
     
-stringBuffer!.append(this.allBinaryLayerInterface!.toString());
+stringBuffer.append(this->allBinaryLayerInterface.toString());
     
-stringBuffer!.append("\nAllBinaryGameCanvas: ");
+stringBuffer.append("\nAllBinaryGameCanvas: ");
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(this.getAllBinaryGameCanvas()));
+stringBuffer.append(StringUtil::getInstance().toString(this->getAllBinaryGameCanvas()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

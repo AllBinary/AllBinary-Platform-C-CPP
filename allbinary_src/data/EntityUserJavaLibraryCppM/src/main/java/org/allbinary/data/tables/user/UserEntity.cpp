@@ -99,48 +99,47 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "UserEntityInterface.h"
 
-class UserEntity: public AbSqlBean: public UserEntityInterface {
-        
+class UserEntity: public AbSqlBean, public UserEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "user";
+    private: const std::string tableName = "user";
 
-    private: const COMMAND_SUCCESS_FOR_USER: string = "Command Success for user: ";
+    private: const std::string COMMAND_SUCCESS_FOR_USER = "Command Success for user: ";
 
-    private: const PASSWORD_LABEL: string = " Password: ";
+    private: const std::string PASSWORD_LABEL = " Password: ";
 
-    private: const EQUALS: string = "==";
+    private: const std::string EQUALS = "==";
 
-    private: const COMMAND_SUCCESS_BUT_LOGIN_FAILED: string = "Command Success but login failed for user: ";
+    private: const std::string COMMAND_SUCCESS_BUT_LOGIN_FAILED = "Command Success but login failed for user: ";
 
-    private: const INVALID_PASSWORD_LABEL: string = " Password: \n\"";
+    private: const std::string INVALID_PASSWORD_LABEL = " Password: \n\"";
 
-    private: const NOT_EQUAL: string = "\"!=\"";
+    private: const std::string NOT_EQUAL = "\"!=\"";
 
-    private: const END_QUOTES: string = CommonSeps.getInstance()!.QUOTE;
+    private: const std::string END_QUOTES = CommonSeps::getInstance().QUOTE;
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: UserEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -150,10 +149,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -165,50 +164,51 @@ this.setTableName(this.tableName);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getAdministrators(){
+    public: Vector getAdministrators(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getUsersWithRole(UserRoleFactory.getInstance()!.ADMINISTRATOR);;
+                        return this->getUsersWithRole(UserRoleFactory::getInstance().ADMINISTRATOR);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getStoreManagers(StoreFrontInterface storeFrontInterface){
+    public: Vector getStoreManagers(StoreFrontInterface storeFrontInterface){
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
-    
-
-    usersVector: Vector = new Vector();;
-    
-keysAndValues!.put(UserRoleData.NAME.toString(), UserRoleFactory.getInstance()!.STOREMANAGER.toString());
-    
-keysAndValues!.put(UserData.PERMISSIONS, storeFrontInterface!.getName());
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
 
-    usersHashMapVector: Vector = super.getRows(keysAndValues)!;;
+    Vector usersVector = Vector();;
+    
+keysAndValues.put(UserRoleData::NAME.toString(), UserRoleFactory::getInstance().STOREMANAGER.toString());
+    
+keysAndValues.put(UserData::PERMISSIONS, storeFrontInterface.getName());
     
 
-    size: int32_t = usersHashMapVector!.length!;;
+    Vector usersHashMapVector = super.getRows(keysAndValues);;
+    
+
+    int32_t size = usersHashMapVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    userHashMap: HashMap<any, any> = usersHashMapVector!.get(i) as HashMap<any, any>;;
+    HashMap<any, any> userHashMap = usersHashMapVector.get(i) as HashMap<any, any>;;
     
 
                         if(userHashMap != 
-                                    null
+                                    nullptr
                                 )
-                        usersVector!.add(new User(userHashMap))
+                        usersVector.add(User(userHashMap));
+                                
 }
 
 
@@ -222,48 +222,49 @@ keysAndValues!.put(UserData.PERMISSIONS, storeFrontInterface!.getName());
 
                 //@Throws(Exception.constructor)
             
-    public Vector getCustomers(){
+    public: Vector getCustomers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getUsersWithRole(UserRoleFactory.getInstance()!.CUSTOMER);;
+                        return this->getUsersWithRole(UserRoleFactory::getInstance().CUSTOMER);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getUsersWithRole(UserRole userRole){
+    public: Vector getUsersWithRole(UserRole userRole){
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
 
-    usersVector: Vector = new Vector();;
+    Vector usersVector = Vector();;
     
-keysAndValues!.put(UserRoleData.NAME.toString(), userRole!.toString());
-    
-
-    usersHashMapVector: Vector = super.getRows(keysAndValues)!;;
+keysAndValues.put(UserRoleData::NAME.toString(), userRole.toString());
     
 
-    size: int32_t = usersHashMapVector!.length!;;
+    Vector usersHashMapVector = super.getRows(keysAndValues);;
+    
+
+    int32_t size = usersHashMapVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    userHashMap: HashMap<any, any> = usersHashMapVector!.get(index) as HashMap<any, any>;;
+    HashMap<any, any> userHashMap = usersHashMapVector.get(index) as HashMap<any, any>;;
     
 
                         if(userHashMap != 
-                                    null
+                                    nullptr
                                 )
-                        usersVector!.add(new User(userHashMap))
+                        usersVector.add(User(userHashMap));
+                                
 }
 
 
@@ -277,36 +278,37 @@ keysAndValues!.put(UserRoleData.NAME.toString(), userRole!.toString());
 
                 //@Throws(Exception.constructor)
             
-    public Vector getUsers(StoreFrontInterface storeFrontInterface){
+    public: Vector getUsers(StoreFrontInterface storeFrontInterface){
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
 
-    usersVector: Vector = new Vector();;
+    Vector usersVector = Vector();;
     
-keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeFrontInterface!.getName());
-    
-
-    usersHashMapVector: Vector = super.getRows(keysAndValues)!;;
+keysAndValues.put(StoreFrontData::getInstance().NAME, storeFrontInterface.getName());
     
 
-    size: int32_t = usersHashMapVector!.length!;;
+    Vector usersHashMapVector = super.getRows(keysAndValues);;
+    
+
+    int32_t size = usersHashMapVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    userHashMap: HashMap<any, any> = usersHashMapVector!.get(index) as HashMap<any, any>;;
+    HashMap<any, any> userHashMap = usersHashMapVector.get(index) as HashMap<any, any>;;
     
 
                         if(userHashMap != 
-                                    null
+                                    nullptr
                                 )
-                        usersVector!.add(new User(userHashMap))
+                        usersVector.add(User(userHashMap));
+                                
 }
 
 
@@ -320,18 +322,18 @@ keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeFrontInterface!.getN
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getUser(string userName){
+    public: UserInterface getUser(std::string userName){
 
-    row: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> row = HashMap<any, any>();;
     
-row.put(UserData.USERNAME, userName);
+row.put(UserData::USERNAME, userName);
     
 
-    userHashMap: HashMap<any, any> = super.getRow(row)!;;
+    HashMap<any, any> userHashMap = super.getRow(row);;
     
 
                         if(userHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -339,7 +341,7 @@ row.put(UserData.USERNAME, userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CreateUserFactory.getInstance(userHashMap);;
+                        return CreateUserFactory::getInstance(userHashMap);;
     
 
                                     }
@@ -357,16 +359,16 @@ row.put(UserData.USERNAME, userName);
 }
 
 
-    public deleteWhere(string key, string value){
+    public: void deleteWhere(std::string key, std::string value){
 
         try {
             super.deleteWhere(key, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "deleteWhere");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "deleteWhere");
     
 
                                     }
@@ -376,10 +378,10 @@ row.put(UserData.USERNAME, userName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "deleteWhere", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "deleteWhere", e);
     
 
                                     }
@@ -389,29 +391,28 @@ row.put(UserData.USERNAME, userName);
 }
 
 
-    public string login(string userName, string password){
+    public: std::string login(std::string userName, std::string password){
 
         try {
             
-    isUserNameAndPasswordCorrect: int32_t = 0;;
+    int32_t isUserNameAndPasswordCorrect = 0;;
     
 
-    result: string = super.getField(UserData.USERNAME, userName, UserData.PASSWORD)!;;
+    std::string result = super.getField(UserData::USERNAME, userName, UserData::PASSWORD);;
     
 
-    encryption: string = super.getField(UserData.USERNAME, userName, EntryData.getInstance()!.ENCRYPTION)!;;
+    std::string encryption = super.getField(UserData::USERNAME, userName, EntryData::getInstance().ENCRYPTION);;
     
 
-                        if(encryption != 
-                                    null
-                                 && encryption.compareTo(this.stringUtil!.EMPTY_STRING) != 0)
-                        isUserNameAndPasswordCorrect= result.compareTo(new SuperCrypt(new Integer(encryption).intValue()).encrypt(password))
+                        if(true && encryption.compareTo(this->stringUtil.EMPTY_STRING) != 0)
+                        isUserNameAndPasswordCorrect= result.compareTo(SuperCrypt(Integer(encryption).intValue()).encrypt(password));
+                                
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Command Success but login failed for user: " +userName +" because user did not exist", this, "login");
+                                    this->logUtil.putF("Command Success but login failed for user: " +userName +" because user did not exist", this, "login");
     
 
                                     }
@@ -420,7 +421,7 @@ row.put(UserData.USERNAME, userName);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GLOBALS2.LOGINFAILED;
+                        return GLOBALS2::LOGINFAILED;
     
 
                         }
@@ -430,25 +431,25 @@ row.put(UserData.USERNAME, userName);
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.COMMAND_SUCCESS_FOR_USER);
+stringBuffer.append(this->COMMAND_SUCCESS_FOR_USER);
     
-stringBuffer!.append(userName);
+stringBuffer.append(userName);
     
-stringBuffer!.append(this.PASSWORD_LABEL);
+stringBuffer.append(this->PASSWORD_LABEL);
     
-stringBuffer!.append(password);
+stringBuffer.append(password);
     
-stringBuffer!.append(this.EQUALS);
+stringBuffer.append(this->EQUALS);
     
-stringBuffer!.append(result);
+stringBuffer.append(result);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "login");
+this->logUtil.putF(stringBuffer.toString(), this, "login");
     
 
                                     }
@@ -457,34 +458,34 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "login");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GLOBALS2.LOGINSUCCESS;
+                        return GLOBALS2::LOGINSUCCESS;
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.COMMAND_SUCCESS_BUT_LOGIN_FAILED);
+stringBuffer.append(this->COMMAND_SUCCESS_BUT_LOGIN_FAILED);
     
-stringBuffer!.append(userName);
+stringBuffer.append(userName);
     
-stringBuffer!.append(this.INVALID_PASSWORD_LABEL);
+stringBuffer.append(this->INVALID_PASSWORD_LABEL);
     
-stringBuffer!.append(new SuperCrypt(new Integer(encryption).intValue()).encrypt(password));
+stringBuffer.append(SuperCrypt(Integer(encryption).intValue()).encrypt(password));
     
-stringBuffer!.append(this.NOT_EQUAL);
+stringBuffer.append(this->NOT_EQUAL);
     
-stringBuffer!.append(result);
+stringBuffer.append(result);
     
-stringBuffer!.append(this.END_QUOTES);
+stringBuffer.append(this->END_QUOTES);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "login");
+this->logUtil.putF(stringBuffer.toString(), this, "login");
     
 
                                     }
@@ -493,7 +494,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "login");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GLOBALS2.LOGINFAILED;
+                        return GLOBALS2::LOGINFAILED;
     
 
                         }
@@ -503,10 +504,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "login");
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "login", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "login", e);
     
 
                                     }
@@ -522,13 +523,13 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "login");
 }
 
 
-    public update(string userName, HashMap<any, any> updatedValues){
-super.updateWhere(UserData.USERNAME, userName, updatedValues);
+    public: void update(std::string userName, HashMap<any, any> updatedValues){
+super.updateWhere(UserData::USERNAME, userName, updatedValues);
     
 }
 
 
-    public string dropTables(){
+    public: std::string dropTables(){
 
 
 
@@ -538,30 +539,30 @@ super.updateWhere(UserData.USERNAME, userName, updatedValues);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    entryData: EntryData = EntryData.getInstance()!;;
+    EntryData entryData = EntryData::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(tableName)!.append(this.sqlStrings!.START)!.append(UserData.USERNAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(UserData.PREFIXNAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.FIRSTNAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.LASTNAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.MIDDLENAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.SUFFIXNAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.COMPANY)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.POSITIONATCOMPANY)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.MAINEMAIL)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(UserData.SECONDARYEMAIL)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.HOMEPHONE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.CELLPHONE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.WORKPHONE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.OTHERCONTACT)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.ELECTRONICDEVICE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.FAX)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserRoleData.NAME.toString())!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(UserData.CONFIGURATION)!.append(this.sqlTypeStrings!.BLOB_NOT_NULL)!.append(UserData.PERMISSIONS)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(entryData!.ENCRYPTION)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(UserData.SECRET)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(UserData.PASSWORD)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(entryData!.ENABLE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN)!.append(entryData!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(entryData!.LASTMODIFIED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(UserData.USERNAME)!.append(this.sqlStrings!.END);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(UserData::USERNAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(UserData::PREFIXNAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::FIRSTNAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::LASTNAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::MIDDLENAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::SUFFIXNAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::COMPANY).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::POSITIONATCOMPANY).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::MAINEMAIL).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(UserData::SECONDARYEMAIL).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::HOMEPHONE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::CELLPHONE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::WORKPHONE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::OTHERCONTACT).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::ELECTRONICDEVICE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::FAX).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserRoleData::NAME.toString()).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(UserData::CONFIGURATION).append(this->sqlTypeStrings.BLOB_NOT_NULL).append(UserData::PERMISSIONS).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(entryData.ENCRYPTION).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(UserData::SECRET).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(UserData::PASSWORD).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(entryData.ENABLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN).append(entryData.TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(entryData.LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(UserData::USERNAME).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return super.createTable(this->createTableStatement());;
     
 }
 

@@ -44,9 +44,8 @@
         #include "DbConnectionInfo.h"
 //import org.allbinary.logic.communication.log.config.type.LogConfigTypes;
 class DbInitInfo: public DbConnectionInfo {
-        
 
-public constructor (string initFileName, bool read){
+public: DbInitInfo(std::string initFileName, bool read){
             super();
                     
 
@@ -55,11 +54,11 @@ public constructor (string initFileName, bool read){
 }
 
 
-    public string getUrl(){
+    public: std::string getUrl(){
 
-    url: string = super.getUrl()!;;
+    std::string url = super.getUrl();;
     
-PreLogUtil.put("Url: " +url, this, "getUrl");
+PreLogUtil::put("Url: " +url, this, "getUrl");
     
 
 
@@ -73,19 +72,19 @@ PreLogUtil.put("Url: " +url, this, "getUrl");
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public write(){
+    public: void write(){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    load(){
+    private: void load(){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setHasRead(bool value){
+    public: void setHasRead(bool value){
 }
 
 

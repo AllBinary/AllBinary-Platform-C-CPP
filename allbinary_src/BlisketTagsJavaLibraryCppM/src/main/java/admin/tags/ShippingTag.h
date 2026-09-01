@@ -72,29 +72,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShippingTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor ();
+public: ShippingTag();
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    string setShippingType();
+    private: std::string setShippingType();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

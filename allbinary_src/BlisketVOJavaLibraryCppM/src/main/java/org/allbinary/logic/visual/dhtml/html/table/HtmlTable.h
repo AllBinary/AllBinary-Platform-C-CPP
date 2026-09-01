@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLE_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLTABLE_H
 
+            #include <vector>
+        
 #include <java/util/Vector.h>
 
       
@@ -54,67 +56,66 @@
         #include "HtmlRow.h"
 
 class HtmlTable: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const START: string = "<table ";
+    private: const std::string START = "<table ";
 
-    private: const ENDTAG: string = "</table>";
+    private: const std::string ENDTAG = "</table>";
 
-    private: const CLASS: string = "class";
+    private: const std::string CLASS = "class";
 
-    private: const DIRECTION: string = "dir";
+    private: const std::string DIRECTION = "dir";
 
-    private: const ID: string = "id";
+    private: const std::string ID = "id";
 
-    private: const LANG: string = "lang";
+    private: const std::string LANG = "lang";
 
-    private: const UNITS: string = "units";
+    private: const std::string UNITS = "units";
 
-    private: const BORDER: string = "border";
+    private: const std::string BORDER = "border";
 
-    private: const CELLPADDING: string = "cellpadding";
+    private: const std::string CELLPADDING = "cellpadding";
 
-    private: const CELLSPACING: string = "cellspacing";
+    private: const std::string CELLSPACING = "cellspacing";
 
-    private: const COLS: string = "cols";
+    private: const std::string COLS = "cols";
 
-    private: const FLOAT: string = "float";
+    private: const std::string FLOAT = "float";
 
-    private: const FRAME: string = "frame";
+    private: const std::string FRAME = "frame";
 
-    private: const RULES: string = "rules";
+    private: const std::string RULES = "rules";
 
-    private: const WIDTH: string = "width";
+    private: const std::string WIDTH = "width";
 
-    private: const STYLE: string = "style";
+    private: const std::string STYLE = "style";
 
-    public const BORDERCOLLAPSE: string = "border-collapse: collapse";
+    public: const std::string BORDERCOLLAPSE = "border-collapse: collapse";
 
-    private: numberOfColumns: int32_t = 0;
+    private: int32_t numberOfColumns = 0;
 
-    private: before: string;
+    private: std::string before;
 
-    private: border: string;
+    private: std::string border;
 
-    private: cellpadding: string;
+    private: std::string cellpadding;
 
-    private: cellspacing: string;
+    private: std::string cellspacing;
 
-    private: style: string;
+    private: std::string style;
 
-    private: name: string;
+    private: std::string name;
 
-    private: after: string;
+    private: std::string after;
 
-    private: htmlRowsVector: Vector;
+    private: Vector htmlRowsVector;
 
-public constructor (string before, string cellpadding, string cellspacing, string after);
+public: HtmlTable(std::string before, std::string cellpadding, std::string cellspacing, std::string after);
 
-    public addRow(HtmlRow htmlRow);
+    public: void addRow(HtmlRow htmlRow);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

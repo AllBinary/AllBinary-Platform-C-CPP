@@ -51,19 +51,18 @@
         #include "BasicTerrainInfo.h"
 
 class TerrainEvent: public AllBinaryEventObject {
-        
 
-    private: basicTerrainInfo: BasicTerrainInfo = BasicTerrainInfo.NULL_BASIC_TERRAIN_INFO;
+    private: BasicTerrainInfo basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
 
-public constructor (any = {} basicTerrainInfo);
+public: TerrainEvent(Object* basicTerrainInfo);
 
-    public string toString();
+    public: std::string toString();
 
-    public BasicTerrainInfo getBasicTerrainInfo();
+    public: BasicTerrainInfo getBasicTerrainInfo();
 
-    public setBasicTerrainInfo(BasicTerrainInfo basicTerrainInfo);
+    public: void setBasicTerrainInfo(BasicTerrainInfo basicTerrainInfo);
 
-    public setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo basicTerrainInfo);
+    public: void setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo basicTerrainInfo);
 
 };
 

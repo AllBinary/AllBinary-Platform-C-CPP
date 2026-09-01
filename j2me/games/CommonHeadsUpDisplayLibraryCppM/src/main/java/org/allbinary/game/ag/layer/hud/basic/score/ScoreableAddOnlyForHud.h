@@ -45,17 +45,16 @@
         #include "ScoreHudWidget.h"
 
 class ScoreableAddOnlyForHud: public Scoreable {
-        
 
-    private: const scoreHudWidget: ScoreHudWidget;
+    private: ScoreHudWidget scoreHudWidget;
 
-public constructor (ScoreHudWidget scoreVectorGraphic);
+public: ScoreableAddOnlyForHud(ScoreHudWidget scoreVectorGraphic);
 
-    public removePoints(int32_t points);
+    public: void removePoints(int32_t points);
 
-    public addPoints(int32_t points);
+    public: void addPoints(int32_t points);
 
-    public ScoreHudWidget getScoreHudWidget();
+    public: ScoreHudWidget getScoreHudWidget();
 
 };
 

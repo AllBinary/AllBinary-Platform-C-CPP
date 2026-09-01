@@ -44,15 +44,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdvertisementCampaignInterface {
-        
 
-    string getName()
+    std::string getName()
 
-    any getComponent()
+    Object* getComponent()
 
-    setName(string name)
+    void setName(std::string name)
 
-    setComponentName(string name)
+    void setComponentName(std::string name)
 
     AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface)
 

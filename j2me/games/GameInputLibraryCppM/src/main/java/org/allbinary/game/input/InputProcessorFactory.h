@@ -46,15 +46,14 @@
 class InputProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: InputProcessorFactory = new InputProcessorFactory();
+    private: static InputProcessorFactory instance() { return InputProcessorFactory(); }
 
-    public static InputProcessorFactory getInstance();
+    public: static InputProcessorFactory getInstance();
 
-    private: const inputProcessor: InputProcessor = new InputProcessor();
+    private: const InputProcessor inputProcessor = InputProcessor();
 
-    public InputProcessor getInputProcessor();
+    public: InputProcessor getInputProcessor();
 
 };
 

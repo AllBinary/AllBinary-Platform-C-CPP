@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BUFFEREDGAMECANVASPAINTHELPER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -71,27 +73,26 @@
         #include "AllBinaryGameCanvas.h"
 
 class BufferedGameCanvasPaintHelper: public ProcessPaintable {
-        
 
-    private: static const MAX_IMAGES: int32_t = 4;
+    private: static const int32_t MAX_IMAGES = 4;
 
-    private: gameCanvas: Canvas = NullCanvas.NULL_CANVAS;
+    private: Canvas gameCanvas = NullCanvas::NULL_CANVAS;
 
-    private: const offScreenImage: std::vector<Image> = new Array(BufferedGameCanvasPaintHelper.MAX_IMAGES);
+    private: const std::vector<Image> offScreenImage = new Array(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-    private: previousImage: Image = NullImage.NULL_IMAGE;
+    private: Image previousImage = NullImage::NULL_IMAGE;
 
-    private: const circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(BufferedGameCanvasPaintHelper.MAX_IMAGES)!;
+    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-    private: const drawCircularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(BufferedGameCanvasPaintHelper.MAX_IMAGES -1, BufferedGameCanvasPaintHelper.MAX_IMAGES)!;
+    private: const CircularIndexUtil drawCircularIndexUtil = CircularIndexUtil::createInstanceAt(BufferedGameCanvasPaintHelper::MAX_IMAGES -1, BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas gameCanvas);
 
-    public process();
+    public: void process();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

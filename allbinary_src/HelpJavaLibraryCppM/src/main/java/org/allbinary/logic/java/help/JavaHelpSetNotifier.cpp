@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <java/net/URL.h>
@@ -51,45 +53,44 @@
 class JavaHelpSetNotifier
             : public Object
          {
-        
 
-    private: static vector: Vector = new Vector();
+    private: static Vector vector = Vector();
 
-    static Vector get(){
+    private: static Vector get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return JavaHelpSetNotifier.vector;
+                        return JavaHelpSetNotifier::vector;
     
 }
 
 
-    public static bool isNotified(HelpSet helpSet){
+    public: static bool isNotified(HelpSet helpSet){
 
-    isNotified: bool = false;;
+    bool isNotified = false;;
     
 
-    url: URL = helpSet!.getHelpSetURL()!;;
+    URL url = helpSet.getHelpSetURL();;
     
 
-    size: int32_t = JavaHelpSetNotifier.vector.length!;;
+    int32_t size = JavaHelpSetNotifier::vector.length;;
     
 
-    urlArray: std::vector<any> = JavaHelpSetNotifier.vector.toArray()!;;
+    std::vector<Object*> urlArray = JavaHelpSetNotifier::vector.toArray();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    nextURL: URL = urlArray[i]! as URL;;
+    URL nextURL = urlArray[i]! as URL;;
     
 
-                        if(url.toString()!.compareTo(nextURL!.toString()) == 0)
+                        if(url.toString().compareTo(nextURL.toString()) == 0)
                         
                                     {
                                     isNotified= true;
@@ -99,7 +100,7 @@ class JavaHelpSetNotifier
                                 
 }
 
-JavaHelpSetNotifier.vector.add(url);
+JavaHelpSetNotifier::vector.add(url);
     
 
 
@@ -110,10 +111,8 @@ JavaHelpSetNotifier.vector.add(url);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: JavaHelpSetNotifier(){
+}
 
 
 };

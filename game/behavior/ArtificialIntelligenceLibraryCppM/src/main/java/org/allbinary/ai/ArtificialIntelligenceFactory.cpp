@@ -48,15 +48,14 @@
 class ArtificialIntelligenceFactory
             : public Object
         : public ArtificialIntelligenceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligence getInstance(any = {} anyType){
+    public: ArtificialIntelligence getInstance(Object* anyType){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/AdvancedRTSGameLayer.h>
@@ -63,38 +65,34 @@
 #include "RaceTrackGeographicMap.h"
 
 class CustomMapGenerator: public CustomMapGeneratorBase {
-        
 
-    private: const customMapArray: std::vector<std::vector<int32_t>>;
+    private: std::vector<std::vector<int32_t>> customMapArray;
 
-    private: const raceTrackGeographicMap: RaceTrackGeographicMap;
+    private: RaceTrackGeographicMap raceTrackGeographicMap;
 
-    private: const geographicMapCellTypeFactory: GeographicMapCellTypeFactory;
+    private: GeographicMapCellTypeFactory geographicMapCellTypeFactory;
 
-public constructor (RaceTrackGeographicMap raceTrackGeographicMap){
-
-            super();
-        this.raceTrackGeographicMap= raceTrackGeographicMap;
+public: CustomMapGenerator(RaceTrackGeographicMap raceTrackGeographicMap){
+this->raceTrackGeographicMap= raceTrackGeographicMap;
     
-this.geographicMapCellTypeFactory= this.raceTrackGeographicMap!.getGeographicMapCellTypeFactory();
+this->geographicMapCellTypeFactory= this->raceTrackGeographicMap.getGeographicMapCellTypeFactory();
     
 
-    mapArray: std::vector<std::vector<int32_t>> = raceTrackGeographicMap!.getRaceTrackData()!.getMapArray()!;;
+    std::vector<std::vector<int32_t>> mapArray = raceTrackGeographicMap.getRaceTrackData().getMapArray();;
     
 
-    size2: int32_t = mapArray[0]!.length
-                ;;
+    int32_t size2 = mapArray[0]!.size();;
     
-this.customMapArray= new Array(mapArray!.length).fill(null).map(() => new Array(size2).fill(0));
+this->customMapArray= new Array(mapArray.length).fill(null).map(() => new Array(size2).fill(0));
     
 
-                        if(mapArray!.length != this.customMapArray!.length || mapArray[0]!.length != this.customMapArray[0]!.length)
+                        if(mapArray.size() != this->customMapArray.size() || mapArray[0]!.size() != this->customMapArray[0]!.size())
                         
                                     {
                                     
 
 
-                            throw new Exception("Array Incorrect");
+                            throw Exception("Array Incorrect");
                     
 
                                     }
@@ -104,28 +102,28 @@ this.customMapArray= new Array(mapArray!.length).fill(null).map(() => new Array(
 
                 //@Throws(Exception.constructor)
             
-    public copyMapIntoCustomMap(){
+    public: void copyMapIntoCustomMap(){
 
-    mapArray: std::vector<std::vector<int32_t>> = this.raceTrackGeographicMap!.getRaceTrackData()!.getMapArray()!;;
+    std::vector<std::vector<int32_t>> mapArray = this->raceTrackGeographicMap.getRaceTrackData().getMapArray();;
     
 
-    startIndex2: int32_t = mapArray[0]!.length -1;;
+    int32_t startIndex2 = mapArray[0]!.size() -1;;
     
 
 
 
 
                         for (
-    index: int32_t = mapArray!.length -1;index >= 0; index--)
+    int32_t index = mapArray.size() -1;index >= 0; index--)
         {
 
 
 
 
                         for (
-    index2: int32_t = startIndex2;index2 >= 0; index2--)
+    int32_t index2 = startIndex2;index2 >= 0; index2--)
         {
-this.customMapArray[index]![index2]= this.getCustomType(index2, index, mapArray[index]![index2]!);
+this->customMapArray[index]![index2]= this->getCustomType(index2, index, mapArray[index]![index2]!);
     
 }
 
@@ -134,29 +132,29 @@ this.customMapArray[index]![index2]= this.getCustomType(index2, index, mapArray[
 }
 
 
-    private: const dropCellPositionHistory: DropCellPositionHistory = DropCellPositionHistory.getInstance()!;
+    private: const DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getCustomType(int32_t column, int32_t row, int32_t currentType){
+    public: int32_t getCustomType(int32_t column, int32_t row, int32_t currentType){
 
-    emptyType: int32_t = this.geographicMapCellTypeFactory!.getEmptyType()!;;
+    int32_t emptyType = this->geographicMapCellTypeFactory.getEmptyType();;
     
 
-    geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = this.raceTrackGeographicMap!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = this->raceTrackGeographicMap.getGeographicMapCellPositionFactory();;
     
 
-    cellPosition: CellPosition = geographicMapCellPositionFactory!.getAt(column, row)!;;
+    CellPosition cellPosition = geographicMapCellPositionFactory.getAt(column, row);;
     
 
-                        if(this.dropCellPositionHistory!.isCellPositionWithDrop(cellPosition))
+                        if(this->dropCellPositionHistory.isCellPositionWithDrop(cellPosition))
                         
                                     {
                                     
-    layer: AllBinaryLayer = this.dropCellPositionHistory!.getLayerInterface(cellPosition)!;;
+    AllBinaryLayer layer = this->dropCellPositionHistory.getLayerInterface(cellPosition);;
     
 
-                        if(layer == AllBinaryLayer.NULL_ALLBINARY_LAYER)
+                        if(layer == AllBinaryLayer::NULL_ALLBINARY_LAYER)
                         
                                     {
                                     
@@ -169,10 +167,10 @@ this.customMapArray[index]![index2]= this.getCustomType(index2, index, mapArray[
                                     }
                                 
 
-    rtsLayer: AdvancedRTSGameLayer = layer as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsLayer = layer as AdvancedRTSGameLayer;;
     
 
-                        if(!(rtsLayer!.getType() == WaypointLayer.getStaticType()))
+                        if(!(rtsLayer.getType() == WaypointLayer::getStaticType()))
                         
                                     {
                                     
@@ -196,12 +194,12 @@ this.customMapArray[index]![index2]= this.getCustomType(index2, index, mapArray[
 }
 
 
-    public std::vector<std::vector<int32_t>> getCustomMapArray(){
+    public: std::vector<std::vector<int32_t>> getCustomMapArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.customMapArray;
+                        return this->customMapArray;
     
 }
 

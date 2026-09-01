@@ -51,7 +51,6 @@
         #include "PickedUpLayerInterfaceFactoryInterface.h"
 
 class CountedPickedUpLayerInterfaceFactoryInterface: public PickedUpLayerInterfaceFactoryInterface, public LayerInterfaceFactoryInterface {
-        
 
     int32_t getId();
 

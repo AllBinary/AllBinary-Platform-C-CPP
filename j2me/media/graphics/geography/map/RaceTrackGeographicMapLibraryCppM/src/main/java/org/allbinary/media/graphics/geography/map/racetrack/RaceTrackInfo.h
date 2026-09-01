@@ -51,57 +51,56 @@
 class RaceTrackInfo
             : public Object
          {
-        
 
-    private: id: Integer;
+    private: Integer id;
 
-    private: name: string;
+    private: std::string name;
 
-    private: raceTrackFrictionProperties: RaceTrackFrictionProperties;
+    private: RaceTrackFrictionProperties raceTrackFrictionProperties;
 
-    private: foregroundBasicColor: BasicColor;
+    private: BasicColor foregroundBasicColor;
 
-    private: backgroundBasicColor: BasicColor;
+    private: BasicColor backgroundBasicColor;
 
-    private: qualifyTime: int32_t;
+    private: int32_t qualifyTime;
 
-    private: worstContinuePosition: int32_t;
+    private: int32_t worstContinuePosition;
 
-    private: totalLaps: int32_t;
+    private: int32_t totalLaps;
 
-public constructor (Integer id, string name, RaceTrackFrictionProperties raceTrackFrictionProperties, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps);
+public: RaceTrackInfo(Integer id, std::string name, RaceTrackFrictionProperties raceTrackFrictionProperties, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps);
 
-    public Integer getId();
+    public: Integer getId();
 
-    setId(Integer id);
+    private: void setId(Integer id);
 
-    public string getName();
+    public: std::string getName();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public int32_t getQualifyTime();
+    public: int32_t getQualifyTime();
 
-    public setQualifyTime(int32_t qualifyTime);
+    public: void setQualifyTime(int32_t qualifyTime);
 
-    public int32_t getWorstContinuePosition();
+    public: int32_t getWorstContinuePosition();
 
-    public setWorstContinuePosition(int32_t worstContinuePosition);
+    public: void setWorstContinuePosition(int32_t worstContinuePosition);
 
-    public int32_t getTotalLaps();
+    public: int32_t getTotalLaps();
 
-    public setTotalLaps(int32_t totalLaps);
+    public: void setTotalLaps(int32_t totalLaps);
 
-    public BasicColor getForegroundBasicColor();
+    public: BasicColor getForegroundBasicColor();
 
-    public setForegroundBasicColor(BasicColor foregroundBasicColor);
+    public: void setForegroundBasicColor(BasicColor foregroundBasicColor);
 
-    public BasicColor getBackgroundBasicColor();
+    public: BasicColor getBackgroundBasicColor();
 
-    public setBackgroundBasicColor(BasicColor backgroundBasicColor);
+    public: void setBackgroundBasicColor(BasicColor backgroundBasicColor);
 
-    public RaceTrackFrictionProperties getRaceTrackFrictionProperties();
+    public: RaceTrackFrictionProperties getRaceTrackFrictionProperties();
 
-    public setRaceTrackFrictionProperties(RaceTrackFrictionProperties raceTrackFrictionProperties);
+    public: void setRaceTrackFrictionProperties(RaceTrackFrictionProperties raceTrackFrictionProperties);
 
 };
 

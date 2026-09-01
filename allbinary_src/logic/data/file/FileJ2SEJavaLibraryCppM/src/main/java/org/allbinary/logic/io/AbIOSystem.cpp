@@ -42,35 +42,34 @@
 class AbIOSystem
             : public Object
          {
-        
 
-    private: static const instance: AbIOSystem = new AbIOSystem();
+    private: static AbIOSystem instance() { return AbIOSystem(); }
 
-    public static AbIOSystem getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbIOSystem.instance;
-    
-}
-
-
-    private: const type: string = "java.io";
-
-    public string getType(){
+    public: static AbIOSystem getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return AbIOSystem::instance();
     
 }
 
 
-    public bool isType(string type){
+    private: const std::string type = "java.io";
 
-                        if(this.type.compareTo(type) == 0)
+    public: std::string getType(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->type;
+    
+}
+
+
+    public: bool isType(std::string type){
+
+                        if(this->type.compareTo(type) == 0)
                         
                                     {
                                     

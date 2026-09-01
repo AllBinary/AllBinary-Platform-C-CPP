@@ -62,13 +62,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileUpload: public FileUpload {
-        
 
-public constructor (FileItemFactory fileItemFactory);
+public: AbFileUpload(FileItemFactory fileItemFactory);
 
                 //@Throws(FileUploadException.constructor, IOException.constructor)
             
-    public FileItemIterator getItemIterator(HttpServletRequest request);
+    public: FileItemIterator getItemIterator(HttpServletRequest request);
 
 };
 

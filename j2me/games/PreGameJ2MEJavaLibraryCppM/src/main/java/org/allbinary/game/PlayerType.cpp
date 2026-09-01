@@ -54,48 +54,45 @@
 class PlayerType
             : public Object
          {
-        
 
-    private: id: int32_t;
+    private: int32_t id;
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
- constructor (string name, int32_t value){
-
-            super();
-        this.name= name;
+: PlayerType(std::string name, int32_t value){
+this->name= name;
     
-this.id= value;
+this->id= value;
     
 }
 
 
-    public int32_t getId(){
+    public: int32_t getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();;
+                        return this->getName();;
     
 }
 

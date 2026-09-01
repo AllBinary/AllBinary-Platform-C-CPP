@@ -54,17 +54,16 @@
 #include "DisplayChangeEvent.h"
 
 class DisplayChangeEventHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: DisplayChangeEventHandler = new DisplayChangeEventHandler();
+    private: static const DisplayChangeEventHandler SINGLETON = DisplayChangeEventHandler();
 
-    public static DisplayChangeEventHandler getInstance();
+    public: static DisplayChangeEventHandler getInstance();
 
-private constructor ();
+private: DisplayChangeEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

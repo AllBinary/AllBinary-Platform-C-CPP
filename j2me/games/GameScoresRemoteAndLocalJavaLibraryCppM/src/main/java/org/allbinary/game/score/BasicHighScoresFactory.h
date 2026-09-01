@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_BASICHIGHSCORESFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <org/allbinary/thread/ARunnable.h>
@@ -84,35 +86,34 @@
 #include "HighScoresHelperBaseInterface.h"
 
 class BasicHighScoresFactory: public HighScoresBase {
-        
 
-    public static bool loaded(int32_t index2);
+    public: static bool loaded(int32_t index2);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: const softwareInformation: SoftwareInformation;
+    private: SoftwareInformation softwareInformation;
 
-public constructor (AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation);
+public: BasicHighScoresFactory(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation);
 
-    private: const highScoresArray: std::vector<HighScores> = new Array(2);
+    private: const std::vector<HighScores> highScoresArray = new Array(2);
 
-    private: const TOP: string = "Top";
+    private: const std::string TOP = "Top";
 
-    private: const SCORES: string = "Scores";
+    private: const std::string SCORES = "Scores";
 
-    private: const PERSONAL_HIGH_SCORES: string = "Personal Top Scores";
+    private: const std::string PERSONAL_HIGH_SCORES = "Personal Top Scores";
 
-    private: const WORLD_TOP_SCORES: string = "World Top Scores";
+    private: const std::string WORLD_TOP_SCORES = "World Top Scores";
 
-    private: const FETCH: string = "fetchHighScores";
+    private: const std::string FETCH = "fetchHighScores";
 
-    public fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
+    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
 
-    public fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
+    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
 
-    public HighScoresHelperBaseInterface createHighScoresHelper();
+    public: HighScoresHelperBaseInterface createHighScoresHelper();
 
 };
 

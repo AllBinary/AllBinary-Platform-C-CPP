@@ -57,21 +57,20 @@
         #include "TrackingEventHandler.h"
 
 class TrackingEvent: public AllBinaryEventObject {
-        
 
-    private: layerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public constructor (any = {} allBinaryLayerInterface){
+public: TrackingEvent(Object* allBinaryLayerInterface){
             super(allBinaryLayerInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(allBinaryLayerInterface != TrackingEventHandler.getInstance())
+                        if(allBinaryLayerInterface != TrackingEventHandler::getInstance())
                         
                                     {
-                                    this.setLayerInterface(allBinaryLayerInterface as AllBinaryLayer);
+                                    this->setLayerInterface(allBinaryLayerInterface as AllBinaryLayer);
     
 
                                     }
@@ -79,49 +78,49 @@ public constructor (any = {} allBinaryLayerInterface){
 }
 
 
-    public init(any = {} anyType){
-this.setSource(anyType);
+    public: void init(Object* anyType){
+this->setSource(anyType);
     
 }
 
 
-    public AllBinaryLayer getLayerInterface(){
+    public: AllBinaryLayer getLayerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerInterface;
+                        return this->layerInterface;
     
 }
 
 
-    setLayerInterface(AllBinaryLayer layerInterface){
-this.layerInterface= layerInterface;
+    private: void setLayerInterface(AllBinaryLayer layerInterface){
+this->layerInterface= layerInterface;
     
 }
 
 
-    public setLayerInterfaceForCircularStaticPool(AllBinaryLayer layerInterface){
-this.layerInterface= layerInterface;
+    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer layerInterface){
+this->layerInterface= layerInterface;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TrackingEvent: \n");
+stringBuffer.append("TrackingEvent: \n");
     
-stringBuffer!.append("LayerInterface: ");
+stringBuffer.append("LayerInterface: ");
     
-stringBuffer!.append(this.layerInterface!.toString());
+stringBuffer.append(this->layerInterface.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

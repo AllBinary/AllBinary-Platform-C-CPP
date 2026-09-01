@@ -54,53 +54,50 @@
 class PathFindingNodeCostInfo
             : public Object
         : public Comparable<PathFindingNodeCostInfo> {
-        
 
-    private: const pathFindingNodeCostInfoData: PathFindingNodeCostInfoData = PathFindingNodeCostInfoData.getInstance()!;
+    private: const PathFindingNodeCostInfoData pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
 
-    public costFromStartP: int64_t;
+    public: int64_t costFromStartP;
 
-    public costToEndP: int64_t;
+    public: int64_t costToEndP;
 
-    public totalCostP: int64_t= 0;
+    public: int64_t totalCostP= 0;
 
-public constructor (int64_t costFromStart, int64_t costToGoal){
-
-            super();
-        this.costFromStartP= costFromStart;
+public: PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal){
+this->costFromStartP= costFromStart;
     
-this.costToEndP= costToGoal;
+this->costToEndP= costToGoal;
     
-this.setCalculatedTotalCost();
+this->setCalculatedTotalCost();
     
 }
 
 
-    public setCostToEnd(int64_t costToEnd){
-this.costToEndP= costToEnd;
+    public: void setCostToEnd(int64_t costToEnd){
+this->costToEndP= costToEnd;
     
 }
 
 
-    public setTotalCost(int64_t totalCost){
-this.totalCostP= totalCost;
+    public: void setTotalCost(int64_t totalCost){
+this->totalCostP= totalCost;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setCalculatedTotalCost(){
-this.totalCostP= this.costFromStartP +this.costToEndP;
+    public: void setCalculatedTotalCost(){
+this->totalCostP= this->costFromStartP +this->costToEndP;
     
 
-                        if(this.totalCostP > this.pathFindingNodeCostInfoData!.MAX_NODE_COST)
+                        if(this->totalCostP > this->pathFindingNodeCostInfoData.MAX_NODE_COST)
                         
                                     {
                                     
 
 
-                            throw new Exception("Max Cost Exceeded");
+                            throw Exception("Max Cost Exceeded");
                     
 
                                     }
@@ -108,53 +105,53 @@ this.totalCostP= this.costFromStartP +this.costToEndP;
 }
 
 
-    public setCostFromStart(int64_t cost){
-this.costFromStartP= cost;
+    public: void setCostFromStart(int64_t cost){
+this->costFromStartP= cost;
     
 }
 
 
-    public addCostFromStart(int64_t cost){
-this.costFromStartP += cost;
+    public: void addCostFromStart(int64_t cost){
+this->costFromStartP += cost;
     
 }
 
 
-    public int32_t compareTo(PathFindingNodeCostInfo pathFindingNodeCostInfo){
+    public: int32_t compareTo(PathFindingNodeCostInfo pathFindingNodeCostInfo){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return java.lang.Long.compare(this.totalCostP, pathFindingNodeCostInfo!.totalCostP);;
+                        return java.lang.Long.compare(this->totalCostP, pathFindingNodeCostInfo.totalCostP);;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString()!);
     
-stringBuffer!.append(CommonLabels.getInstance()!.COLON_SEP);
+stringBuffer.append(CommonLabels::getInstance().COLON_SEP);
     
-stringBuffer!.append("CostFromStart: ");
+stringBuffer.append("CostFromStart: ");
     
-stringBuffer!.appendlong(this.costFromStartP);
+stringBuffer.appendlong(this->costFromStartP);
     
-stringBuffer!.append(" CostToEnd: ");
+stringBuffer.append(" CostToEnd: ");
     
-stringBuffer!.appendlong(this.costToEndP);
+stringBuffer.appendlong(this->costToEndP);
     
-stringBuffer!.append(" TotalCost: ");
+stringBuffer.append(" TotalCost: ");
     
-stringBuffer!.appendlong(this.totalCostP);
+stringBuffer.appendlong(this->totalCostP);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

@@ -49,137 +49,134 @@
 class TouchButtonLocationHelper
             : public Object
          {
-        
 
-    private: const totalColumns: int32_t;
+    private: int32_t totalColumns;
 
-    private: const totalRows: int32_t;
+    private: int32_t totalRows;
 
-    private: columnsRemainder: int32_t;
+    private: int32_t columnsRemainder;
 
-    private: rowsRemainder: int32_t;
+    private: int32_t rowsRemainder;
 
-    private: columnsRemainderHalf: int32_t;
+    private: int32_t columnsRemainderHalf;
 
-    private: rowsRemainderHalf: int32_t;
+    private: int32_t rowsRemainderHalf;
 
-public constructor (){
+public: TouchButtonLocationHelper(){
 
-            super();
-        
-    buttonSize: int32_t = CommonButtons.getInstance()!.STANDARD_BUTTON_SIZE;;
+    int32_t buttonSize = CommonButtons::getInstance().STANDARD_BUTTON_SIZE;;
     
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
-this.totalColumns= displayInfo!.getLastWidth() /buttonSize;
+this->totalColumns= displayInfo.getLastWidth() /buttonSize;
     
-this.totalRows= displayInfo!.getLastHeight() /buttonSize;
+this->totalRows= displayInfo.getLastHeight() /buttonSize;
     
-this.columnsRemainder= displayInfo!.getLastWidth() % buttonSize;
+this->columnsRemainder= displayInfo.getLastWidth() % buttonSize;
     
-this.columnsRemainderHalf= (this.columnsRemainder>>1);
+this->columnsRemainderHalf= (this->columnsRemainder>>1);
     
-this.rowsRemainder= displayInfo!.getLastHeight() % buttonSize;
+this->rowsRemainder= displayInfo.getLastHeight() % buttonSize;
     
-this.rowsRemainderHalf= (this.rowsRemainder>>1);
+this->rowsRemainderHalf= (this->rowsRemainder>>1);
     
 }
 
 
-    public int32_t getTotalColumns(){
+    public: int32_t getTotalColumns(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalColumns;
+                        return this->totalColumns;
     
 }
 
 
-    public int32_t getTotalRows(){
+    public: int32_t getTotalRows(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalRows;
+                        return this->totalRows;
     
 }
 
 
-    public int32_t getColumnsRemainder(){
+    public: int32_t getColumnsRemainder(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnsRemainder;
+                        return this->columnsRemainder;
     
 }
 
 
-    public int32_t getRowsRemainder(){
+    public: int32_t getRowsRemainder(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rowsRemainder;
+                        return this->rowsRemainder;
     
 }
 
 
-    public int32_t getColumnsRemainderHalf(){
+    public: int32_t getColumnsRemainderHalf(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnsRemainderHalf;
+                        return this->columnsRemainderHalf;
     
 }
 
 
-    public int32_t getRowsRemainderHalf(){
+    public: int32_t getRowsRemainderHalf(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rowsRemainderHalf;
+                        return this->rowsRemainderHalf;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("totalColumns: ");
+stringBuffer.append("totalColumns: ");
     
-stringBuffer!.appendint(this.totalColumns);
+stringBuffer.appendint(this->totalColumns);
     
-stringBuffer!.append(" totalRows: ");
+stringBuffer.append(" totalRows: ");
     
-stringBuffer!.appendint(this.totalRows);
+stringBuffer.appendint(this->totalRows);
     
-stringBuffer!.append(" columnsRemainder: ");
+stringBuffer.append(" columnsRemainder: ");
     
-stringBuffer!.appendint(this.columnsRemainder);
+stringBuffer.appendint(this->columnsRemainder);
     
-stringBuffer!.append(" rowsRemainder: ");
+stringBuffer.append(" rowsRemainder: ");
     
-stringBuffer!.appendint(this.rowsRemainder);
+stringBuffer.appendint(this->rowsRemainder);
     
-stringBuffer!.append(" columnsRemainderHalf: ");
+stringBuffer.append(" columnsRemainderHalf: ");
     
-stringBuffer!.appendint(this.columnsRemainderHalf);
+stringBuffer.appendint(this->columnsRemainderHalf);
     
-stringBuffer!.append(" rowsRemainderHalf: ");
+stringBuffer.append(" rowsRemainderHalf: ");
     
-stringBuffer!.appendint(this.rowsRemainderHalf);
+stringBuffer.appendint(this->rowsRemainderHalf);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

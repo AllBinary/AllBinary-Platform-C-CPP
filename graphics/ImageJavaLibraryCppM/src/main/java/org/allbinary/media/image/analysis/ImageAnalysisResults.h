@@ -47,27 +47,26 @@
 class ImageAnalysisResults
             : public Object
          {
-        
 
-    private: imageColorRangeResults: ImageColorRangeResults;
+    private: ImageColorRangeResults imageColorRangeResults;
 
-    private: imageColorResults: ImageColorResults;
+    private: ImageColorResults imageColorResults;
 
-    private: averageAmbientLevel: float= 0.0;
+    private: float averageAmbientLevel= 0.0;
 
-public constructor ();
+public: ImageAnalysisResults();
 
-    public ImageColorRangeResults getImageColorRangeResults();
+    public: ImageColorRangeResults getImageColorRangeResults();
 
-    public setImageColorRangeResults(ImageColorRangeResults imageColorRangeResults);
+    public: void setImageColorRangeResults(ImageColorRangeResults imageColorRangeResults);
 
-    public float getAverageAmbientLevel();
+    public: float getAverageAmbientLevel();
 
-    public setAverageAmbientLevel(float averageAmbientLevel);
+    public: void setAverageAmbientLevel(float averageAmbientLevel);
 
-    public ImageColorResults getImageColorResults();
+    public: ImageColorResults getImageColorResults();
 
-    public setImageColorResults(ImageColorResults imageColorResults);
+    public: void setImageColorResults(ImageColorResults imageColorResults);
 
 };
 

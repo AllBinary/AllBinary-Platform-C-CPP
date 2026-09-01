@@ -52,33 +52,30 @@
         #include "BuildingEventListenerInterface.h"
 
 class LocalPlayerBuildingEventHandler: public BasicEventHandler {
-        
 
-    private: static eventHandler: LocalPlayerBuildingEventHandler = new LocalPlayerBuildingEventHandler();
+    private: static LocalPlayerBuildingEventHandler eventHandler = LocalPlayerBuildingEventHandler();
 
-    public static LocalPlayerBuildingEventHandler getInstance(){
+    public: static LocalPlayerBuildingEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LocalPlayerBuildingEventHandler.eventHandler;
+                        return LocalPlayerBuildingEventHandler::eventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: LocalPlayerBuildingEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    buildingEventListenerInterface: BuildingEventListenerInterface = (eventListenerInterface as BuildingEventListenerInterface);;
+    BuildingEventListenerInterface buildingEventListenerInterface = (eventListenerInterface as BuildingEventListenerInterface);;
     
-buildingEventListenerInterface!.onBuildingEvent(eventObject as RTSLayerEvent);
+buildingEventListenerInterface.onBuildingEvent(eventObject as RTSLayerEvent);
     
 }
 

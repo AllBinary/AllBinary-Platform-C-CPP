@@ -71,12 +71,11 @@
 #include "WaypointInfoHudPaintable.h"
 
 class WorkWaypoint: public Waypoint {
-        
 
-    public static const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(25)!;
+    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(25);
 
-public constructor (PathFindingLayerInterface ownerLayer){
-            super(ownerLayer, WorkSound.getInstance());
+public: WorkWaypoint(PathFindingLayerInterface ownerLayer){
+            super(ownerLayer, WorkSound::getInstance());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -86,9 +85,9 @@ public constructor (PathFindingLayerInterface ownerLayer){
 
                 //@Throws(Exception.constructor)
             
-    public visit(UnitLayer unitLayer){
+    public: void visit(UnitLayer unitLayer){
 
-                        if(unitLayer!.getGroupInterface()[0] != this.ownerLayer!.getGroupInterface()[0])
+                        if(unitLayer.getGroupInterface()[0] != this->ownerLayer.getGroupInterface()[0])
                         
                                     {
                                     
@@ -101,47 +100,47 @@ public constructor (PathFindingLayerInterface ownerLayer){
                                     }
                                 
 
-    size: int32_t = this.getConnectedWaypointList()!.size()!;;
+    int32_t size = this->getConnectedWaypointList().size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    occupyList: BasicArrayList = this.ownerLayer!.getGeographicMapCellPositionArea()!.getOccupyingGeographicMapCellPositionList()!;;
+    BasicArrayList occupyList = this->ownerLayer.getGeographicMapCellPositionArea().getOccupyingGeographicMapCellPositionList();;
     
 
-    outOfResources: bool = true;;
+    bool outOfResources = true;;
     
 
-    geologicalGeographicMapCellPosition: GeologicalGeographicMapCellPosition;;
+    GeologicalGeographicMapCellPosition geologicalGeographicMapCellPosition;;
     
 
-    geologicalResource: GeologicalResource;;
+    GeologicalResource geologicalResource;;
     
 
 
 
 
                         for (
-    index: int32_t = occupyList!.size()!;--index >= 0; )
+    int32_t index = occupyList.size();--index >= 0; )
         {
-geologicalGeographicMapCellPosition= occupyList!.get(index) as GeologicalGeographicMapCellPosition;
+geologicalGeographicMapCellPosition= occupyList.get(index) as GeologicalGeographicMapCellPosition;
     
-geologicalResource= geologicalGeographicMapCellPosition!.getGeologicalResource();
+geologicalResource= geologicalGeographicMapCellPosition.getGeologicalResource();
     
 
-                        if(geologicalResource!.getTotal() >= 1)
+                        if(geologicalResource.getTotal() >= 1)
                         
                                     {
                                     outOfResources= false;
     
 
-    maxResourceLoad: int32_t = static_cast<int32_t>(unitLayer!.getMaxResourceLoad());;
+    int32_t maxResourceLoad = static_cast<int32_t>(unitLayer.getMaxResourceLoad());;
     
-geologicalResource!.remove(maxResourceLoad);
+geologicalResource.remove(maxResourceLoad);
     
-unitLayer!.setLoad(maxResourceLoad);
+unitLayer.setLoad(maxResourceLoad);
     
 
                                     }
@@ -149,13 +148,13 @@ unitLayer!.setLoad(maxResourceLoad);
 }
 
 
-    waypointInfoHudPaintable: WaypointInfoHudPaintable = this.ownerLayer!.getHudPaintable() as WaypointInfoHudPaintable;;
+    WaypointInfoHudPaintable waypointInfoHudPaintable = this->ownerLayer.getHudPaintable() as WaypointInfoHudPaintable;;
     
 
-                        if(this.ownerLayer == waypointInfoHudPaintable!.getRtsLayer())
+                        if(this->ownerLayer == waypointInfoHudPaintable.getRtsLayer())
                         
                                     {
-                                    waypointInfoHudPaintable!.updateSelectionInfo();
+                                    waypointInfoHudPaintable.updateSelectionInfo();
     
 
                                     }
@@ -165,27 +164,27 @@ unitLayer!.setLoad(maxResourceLoad);
                         
                                     {
                                     
-    unitWaypointBehavior: UnitWaypointBehavior = unitLayer!.getWaypointBehavior() as UnitWaypointBehavior;;
+    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior() as UnitWaypointBehavior;;
     
 
-    rtsLayer: RTSLayer;;
+    RTSLayer rtsLayer;;
     
 
-        while(this.getConnectedWaypointList()!.size() > 0)
+        while(this->getConnectedWaypointList().size() > 0)
         {
-rtsLayer= this.getConnectedWaypointList()!.get(0) as RTSLayer;
+rtsLayer= this->getConnectedWaypointList().get(0) as RTSLayer;
     
 
-                        if(rtsLayer!.isDestroyed())
+                        if(rtsLayer.isDestroyed())
                         
                                     {
-                                    this.getConnectedWaypointList()!.remove(rtsLayer);
+                                    this->getConnectedWaypointList().remove(rtsLayer);
     
 
                                     }
                                 
                         else {
-                            unitWaypointBehavior!.insertWaypoint(0, rtsLayer);
+                            unitWaypointBehavior.insertWaypoint(0, rtsLayer);
     
 break;
 
@@ -204,7 +203,7 @@ break;
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 

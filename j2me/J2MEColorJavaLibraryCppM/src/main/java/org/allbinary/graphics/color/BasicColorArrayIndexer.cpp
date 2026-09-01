@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -55,44 +57,41 @@
 class BasicColorArrayIndexer
             : public Object
          {
-        
 
-    private: basicColorArray: std::vector<BasicColor>;
+    private: std::vector<BasicColor> basicColorArray;
 
-    private: circularIndexUtil: CircularIndexUtil;
+    private: CircularIndexUtil circularIndexUtil;
 
-public constructor (std::vector<BasicColor> basicColorArray){
-
-            super();
-        this.basicColorArray= basicColorArray;
+public: BasicColorArrayIndexer(std::vector<BasicColor> basicColorArray){
+this->basicColorArray= basicColorArray;
     
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.basicColorArray!.length);
+this->circularIndexUtil= CircularIndexUtil::createInstance(this->basicColorArray.size());
     
 }
 
 
-    public next(){
-this.circularIndexUtil!.next();
+    public: void next(){
+this->circularIndexUtil.next();
     
 }
 
 
-    public BasicColor get(){
+    public: BasicColor get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColorArray[this.circularIndexUtil!.getIndex()]!;
+                        return this->basicColorArray[this->circularIndexUtil.getIndex()]!;
     
 }
 
 
-    public std::vector<BasicColor> getBasicColorArray(){
+    public: std::vector<BasicColor> getBasicColorArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColorArray;
+                        return this->basicColorArray;
     
 }
 

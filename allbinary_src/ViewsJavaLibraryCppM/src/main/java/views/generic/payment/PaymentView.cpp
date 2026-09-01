@@ -69,12 +69,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PaymentView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class PaymentView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: PaymentView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -85,31 +84,31 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    paymentNode: Node = document.createElement(PaymentData.PAYMENT)!;;
+    Node paymentNode = document.createElement(PaymentData::PAYMENT);;
     
 document.appendChild(paymentNode);
     
 
-    paymentVector: Vector = PaymentEntityFactory.getInstance()!.getPaymentEntityInstance()!.get(this.getWeblisketSession()!.getUserName())!;;
+    Vector paymentVector = PaymentEntityFactory::getInstance().getPaymentEntityInstance().get(this->getWeblisketSession().getUserName());;
     
 
-    size: int32_t = paymentVector!.length!;;
+    int32_t size = paymentVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    payment: Payment = paymentVector!.get(index) as Payment;;
+    Payment payment = paymentVector.get(index) as Payment;;
     
-paymentNode!.appendChild(payment.toXmlNode(document));
+paymentNode.appendChild(payment.toXmlNode(document));
     
 }
 
@@ -124,10 +123,10 @@ paymentNode!.appendChild(payment.toXmlNode(document));
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -142,16 +141,16 @@ paymentNode!.appendChild(payment.toXmlNode(document));
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -164,13 +163,13 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-    error: string = "Failed to view Payment";;
+    std::string error = "Failed to view Payment";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

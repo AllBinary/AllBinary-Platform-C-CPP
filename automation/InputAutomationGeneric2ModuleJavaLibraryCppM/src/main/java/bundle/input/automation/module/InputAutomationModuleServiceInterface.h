@@ -21,6 +21,8 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_H
         #define BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICEINTERFACE_H
 
+            #include <vector>
+        
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
 
       
@@ -47,7 +49,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationModuleServiceInterface: public OSGIServiceInterface {
-        
 
     std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray();
 

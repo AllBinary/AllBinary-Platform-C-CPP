@@ -21,6 +21,8 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICEINTERFACE_H
         #define BUNDLE_INPUT_AUTOMATION_ROBOT_INPUTAUTOMATIONROBOTSERVICEINTERFACE_H
 
+            #include <vector>
+        
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
 
       
@@ -47,7 +49,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationRobotServiceInterface: public OSGIServiceInterface {
-        
 
     std::vector<InputRobotInterface> getInputRobotInterfaceArray();
 

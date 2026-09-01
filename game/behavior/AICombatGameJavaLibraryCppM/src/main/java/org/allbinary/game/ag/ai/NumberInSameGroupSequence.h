@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_H
         #define ORG_ALLBINARY_GAME_AG_AI_NUMBERINSAMEGROUPSEQUENCE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -50,33 +52,32 @@
 class NumberInSameGroupSequence
             : public Object
          {
-        
 
-    public static NumberInSameGroupSequence getInstance();
+    public: static NumberInSameGroupSequence getInstance();
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_ONE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ONE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_TWO: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_TWO;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_THREE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_THREE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_SIX: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SIX;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_NINE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_NINE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE: std::vector<Integer>;
+    public: std::vector<Integer> NUMBER_ON_SAME_TEAM_SEQUENCE;
 
-private constructor ();
+private: NumberInSameGroupSequence();
 
 };
 

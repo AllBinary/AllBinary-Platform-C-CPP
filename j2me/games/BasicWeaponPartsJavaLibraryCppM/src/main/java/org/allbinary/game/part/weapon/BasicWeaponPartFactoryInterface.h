@@ -44,7 +44,6 @@
         #include "BasicWeaponPart.h"
 
 class BasicWeaponPartFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

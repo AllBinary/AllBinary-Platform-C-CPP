@@ -81,53 +81,52 @@
 class FileLog
             : public Object
          {
-        
 
-    private: static const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: static const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: static const logLength: int64_t = 33000000;
+    private: static const int64_t logLength = 33000000;
 
-    private: static const logPath: string = "g:\\log\\";
+    private: static const std::string logPath = "g:\\log\\";
 
-    private: static const extension: string = .toCharArray();
+    private: static const std::string extension = "dat";
 
-    private: static const fileName: string = .toCharArray();
+    private: static const std::string fileName = .toCharArray();
 
-    private: static const backupFileName: string = FileLog.fileName!.concat(".bak")!;
+    private: static const std::string backupFileName = FileLog::fileName.concat(".bak");
 
-    private: static const ORG_ALLBINARY: string = "org.allbinary: ";
+    private: static const std::string ORG_ALLBINARY = "org.allbinary: ";
 
-    private: static firstTime: bool = true;
+    private: static bool firstTime = true;
 
-    private: static logFile: File = new File(FileLog.logPath, FileLog.fileName);
+    private: static File logFile = File(FileLog::logPath, FileLog::fileName);
 
-    private: static logFileBak: File;
+    private: static File logFileBak;
 
-    private: static fileOut: BufferedWriter;
+    private: static BufferedWriter fileOut;
 
-    private: static backupIndex: int32_t= 0;
+    private: static int32_t backupIndex= 0;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static bool createLogFile();
+    public: static bool createLogFile();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    static bool createLogFileBackup();
+    private: static bool createLogFileBackup();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, any = {} anyType, string functionName);
+    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, any = {} anyType, string functionName, Throwable exception);
+    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName, Throwable exception);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, string className, string functionName);
+    public: static std::string put(std::string specialMessage, std::string className, std::string functionName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, string className, string functionName, Exception exception);
+    public: static std::string put(std::string specialMessage, std::string className, std::string functionName, Exception exception);
 
-    public static string getFilePath();
+    public: static std::string getFilePath();
 
-private constructor ();
+private: FileLog();
 
 };
 

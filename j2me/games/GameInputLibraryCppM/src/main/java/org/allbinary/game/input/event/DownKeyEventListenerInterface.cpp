@@ -52,15 +52,14 @@
         #include "GameKeyEvent.h"
 
 class DownKeyEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onDownKeyEvent(GameKeyEvent keyInteger)
+    void onDownKeyEvent(GameKeyEvent keyInteger)
 
                 //@Throws(Exception.constructor)
             
-    onDownKey(Integer keyInteger)
+    void onDownKey(Integer keyInteger)
 
 };
 

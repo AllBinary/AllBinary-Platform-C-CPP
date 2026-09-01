@@ -42,9 +42,8 @@
         #include "Feature.h"
 
 class InputFeature: public Feature {
-        
 
- constructor (string name);
+: InputFeature(std::string name);
 
 };
 

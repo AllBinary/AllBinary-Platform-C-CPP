@@ -67,53 +67,50 @@
 class AdvertisementAreaConstraints
             : public Object
         : public AdvertisementAreaConstraintsInterface {
-        
 
-    private: displayInBrowserContraintsInterface: DisplayInBrowserContraintsInterface;
+    private: DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface;
 
-    private: twoDimensionConstraintsInterface: TwoDimensionalConstraintInterface;
+    private: TwoDimensionalConstraintInterface twoDimensionConstraintsInterface;
 
-public constructor (Document document){
+public: AdvertisementAreaConstraints(Document document){
 
-            super();
-        
-    node: Node = DomSearchHelper.getNode(AdvertisementAreaData.getInstance()!.NAME, document.getChildNodes())!;;
+    Node node = DomSearchHelper::getNode(AdvertisementAreaData::getInstance().NAME, document.getChildNodes());;
     
-this.displayInBrowserContraintsInterface= new DisplayInBrowserContraints(node);
+this->displayInBrowserContraintsInterface= DisplayInBrowserContraints(node);
     
-this.twoDimensionConstraintsInterface= new TwoDimensionalConstraint(node);
+this->twoDimensionConstraintsInterface= TwoDimensionalConstraint(node);
     
 }
 
 
-    public setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface){
-this.displayInBrowserContraintsInterface= displayInBrowserContraintsInterface;
+    public: void setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface){
+this->displayInBrowserContraintsInterface= displayInBrowserContraintsInterface;
     
 }
 
 
-    public getTwoDimensionContraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface){
-this.twoDimensionConstraintsInterface= twoDimensionConstraintsInterface;
+    public: void getTwoDimensionContraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface){
+this->twoDimensionConstraintsInterface= twoDimensionConstraintsInterface;
     
 }
 
 
-    public DisplayInBrowserContraintsInterface getDisplayInBrowserContraints(){
+    public: DisplayInBrowserContraintsInterface getDisplayInBrowserContraints(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.displayInBrowserContraintsInterface;
+                        return this->displayInBrowserContraintsInterface;
     
 }
 
 
-    public TwoDimensionalConstraintInterface getTwoDimensionContraints(){
+    public: TwoDimensionalConstraintInterface getTwoDimensionContraints(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.twoDimensionConstraintsInterface;
+                        return this->twoDimensionConstraintsInterface;
     
 }
 

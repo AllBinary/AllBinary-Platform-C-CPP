@@ -61,45 +61,44 @@
 class BasicColor
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const value: int32_t;
+    private: int32_t value;
 
-    private: const redComponent: float;
+    private: float redComponent;
 
-    private: const greenComponent: float;
+    private: float greenComponent;
 
-    private: const blueComponent: float;
+    private: float blueComponent;
 
-    private: const alphaComponent: float;
+    private: float alphaComponent;
 
-    public const red: int16_t;
+    public: int16_t red;
 
-    public const green: int16_t;
+    public: int16_t green;
 
-    public const blue: int16_t;
+    public: int16_t blue;
 
-    public const alpha: int16_t;
+    public: int16_t alpha;
 
- constructor (int32_t alphaValue, int32_t value, string name);
+: BasicColor(int32_t alphaValue, int32_t value, std::string name);
 
-    public int32_t intValue();
+    public: int32_t intValue();
 
-    public int32_t toInt();
+    public: int32_t toInt();
 
-    public string toString();
+    public: std::string toString();
 
-    public string getName();
+    public: std::string getName();
 
-    public float getRedComponent();
+    public: float getRedComponent();
 
-    public float getGreenComponent();
+    public: float getGreenComponent();
 
-    public float getBlueComponent();
+    public: float getBlueComponent();
 
-    public float getAlphaComponent();
+    public: float getAlphaComponent();
 
 };
 

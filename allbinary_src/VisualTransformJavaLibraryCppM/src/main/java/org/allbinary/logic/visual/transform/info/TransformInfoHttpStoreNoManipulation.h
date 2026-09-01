@@ -53,17 +53,16 @@
         #include "TransformInfoHttpStore.h"
 
 class TransformInfoHttpStoreNoManipulation: public TransformInfoHttpStore {
-        
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    setObjectConfigFile(string value);
+public: TransformInfoHttpStoreNoManipulation(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfig(string value);
+    protected: void setObjectConfigFile(std::string value);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void setObjectConfig(std::string value);
 
 };
 

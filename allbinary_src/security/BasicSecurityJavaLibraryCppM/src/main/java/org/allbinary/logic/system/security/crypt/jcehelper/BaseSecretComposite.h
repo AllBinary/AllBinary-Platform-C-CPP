@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASESECRETCOMPOSITE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASESECRETCOMPOSITE_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -50,17 +52,16 @@
 class BaseSecretComposite
             : public Object
          {
-        
 
-    public static const NULL_SECRET_COMPOSITE: BaseSecretComposite = new BaseSecretComposite();
-
-                //@Throws(Exception.constructor)
-            
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array);
+    public: static const BaseSecretComposite NULL_SECRET_COMPOSITE = BaseSecretComposite();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
 
 };
 

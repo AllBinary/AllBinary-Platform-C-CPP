@@ -49,56 +49,52 @@
 class ToastUtil
             : public Object
          {
-        
 
-    private: static const instance: ToastUtil = new ToastUtil();
+    private: static ToastUtil instance() { return ToastUtil(); }
 
-    public static ToastUtil getInstance(){
+    public: static ToastUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ToastUtil.instance;
+                        return ToastUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public makeToast(View view, Context context, string message, int32_t time){
+    public: void makeToast(View view, Context context, std::string message, int32_t time){
 
 //inner=true member= isStatic=
 class MakeToast
             : public Object
         : public Runnable {
-        
 
-    const string: string;
+    std::string string;
 
-public constructor (string string){
-
-            super();
-        this.string= string;
+public: MakeToast(std::string string){
+this->string= string;
     
 }
 
 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
-            Toast.makeText(context, this.string, time)!.show();
+            Toast::makeText(context, this->string, time).show();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -108,7 +104,7 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 };
 
             
-view.post(new MakeToast(message));
+view.post(MakeToast(message));
     
 }
 

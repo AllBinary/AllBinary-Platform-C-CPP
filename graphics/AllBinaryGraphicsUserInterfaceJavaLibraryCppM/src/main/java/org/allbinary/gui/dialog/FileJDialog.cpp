@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -56,15 +58,14 @@
 #include "EventQueue.h"
 #include "JFrame.h"
 
-class FileJDialog: public javax.swing.JDialog {
-        
+class FileJDialog: public javax::swing::JDialog {
 
-    public static main(std::vector<string> args){
-java.awt.EventQueue.invokeLater(new class extends ARunnable
+    public: static void main(std::vector<std::string> args){
+java.awt.EventQueue.invokeLater(class extends ARunnable
                                 {
                                 
-    public run(){
-new FileJDialog(new javax.swing.JFrame(), true).setVisible(true);
+    public: void run(){
+FileJDialog(javax::swing::JFrame(), true).setVisible(true);
     
 }
 
@@ -74,51 +75,51 @@ new FileJDialog(new javax.swing.JFrame(), true).setVisible(true);
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: finishedListenerInterface: FileJDialogListenerInterface;
+    private: FileJDialogListenerInterface finishedListenerInterface;
 
-public constructor (){
+public: FileJDialog(){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initComponents();
+this->initComponents();
     
-this.getJFileChooser1()!.setMultiSelectionEnabled(true);
+this->getJFileChooser1().setMultiSelectionEnabled(true);
     
 }
 
 
-public constructor (java.awt.Frame parent, bool modal){
+public: FileJDialog(java::awt::Frame parent, bool modal){
             super(parent, modal);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initComponents();
+this->initComponents();
     
-this.getJFileChooser1()!.setMultiSelectionEnabled(true);
-    
-}
-
-
-    public addFinishedListener(FileJDialogListenerInterface finishedListenerInterface){
-this.finishedListenerInterface= finishedListenerInterface;
+this->getJFileChooser1().setMultiSelectionEnabled(true);
     
 }
 
 
-    initComponents(){
-this.jFileChooser1= new javax.swing.JFileChooser();
+    public: void addFinishedListener(FileJDialogListenerInterface finishedListenerInterface){
+this->finishedListenerInterface= finishedListenerInterface;
+    
+}
+
+
+    private: void initComponents(){
+this->jFileChooser1= javax::swing::JFileChooser();
     
 setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     
-this.jFileChooser1!.addActionListener(new class extends java.awt.event.ActionListener
+this->jFileChooser1.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 jFileChooser1ActionPerformed(evt);
     
 }
@@ -127,45 +128,45 @@ jFileChooser1ActionPerformed(evt);
                             );
     
 
-    layout: org.jdesktop.layout.GroupLayout = new org.jdesktop.layout.GroupLayout(getContentPane());;
+    org::jdesktop::layout::GroupLayout layout = org::jdesktop::layout::GroupLayout(getContentPane());;
     
-getContentPane()!.setLayout(layout);
+getContentPane().setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)!.add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup()!.addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)!.add(jFileChooser1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)!.addContainerGap()));
+layout.setHorizontalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(org.jdesktop.layout.GroupLayout.TRAILING, layout.createSequentialGroup().addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE).add(jFileChooser1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE).addContainerGap()));
     
-layout.setVerticalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING)!.add(layout.createSequentialGroup()!.addContainerGap()!.add(jFileChooser1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 357, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE)!.addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+layout.setVerticalGroup(layout.createParallelGroup(org.jdesktop.layout.GroupLayout.LEADING).add(layout.createSequentialGroup().addContainerGap().add(jFileChooser1, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE, 357, org.jdesktop.layout.GroupLayout.PREFERRED_SIZE).addContainerGap(org.jdesktop.layout.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
     
 pack();
     
 }
 
 
-    jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt){
-this.logUtil!.putF("Starting Action Command: " +evt.getActionCommand(), this, "ActionPerformed");
+    private: void jFileChooser1ActionPerformed(java::awt::event::ActionEvent evt){
+this->logUtil.putF("Starting Action Command: " +evt.getActionCommand(), this, "ActionPerformed");
     
 
-    files: std::vector<File> = this.getJFileChooser1()!.getSelectedFiles()!;;
+    std::vector<File> files = this->getJFileChooser1().getSelectedFiles();;
     
 
-                        if(evt.getActionCommand() == this.getJFileChooser1()!.CANCEL_SELECTION)
+                        if(evt.getActionCommand() == this->getJFileChooser1().CANCEL_SELECTION)
                         
                                     {
-                                    this.setVisible(false);
+                                    this->setVisible(false);
     
 
                                     }
                                 
 
-                        if(evt.getActionCommand() == this.getJFileChooser1()!.APPROVE_SELECTION)
+                        if(evt.getActionCommand() == this->getJFileChooser1().APPROVE_SELECTION)
                         
                                     {
                                     
                         if(files != 
-                                    null
-                                 && files.length > 0)
+                                    nullptr
+                                 && files.size() > 0)
                         
                                     {
-                                    this.finishedListenerInterface!.onFiles(files);
+                                    this->finishedListenerInterface.onFiles(files);
     
 
                                     }
@@ -176,23 +177,23 @@ this.logUtil!.putF("Starting Action Command: " +evt.getActionCommand(), this, "A
 }
 
 
-    public javax.swing.JFileChooser getJFileChooser1(){
+    public: javax::swing::JFileChooser getJFileChooser1(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.jFileChooser1;
+                        return this->jFileChooser1;
     
 }
 
 
-    public setJFileChooser1(javax.swing.JFileChooser jFileChooser1){
-this.jFileChooser1= jFileChooser1;
+    public: void setJFileChooser1(javax::swing::JFileChooser jFileChooser1){
+this->jFileChooser1= jFileChooser1;
     
 }
 
 
-    private: jFileChooser1: javax.swing.JFileChooser;
+    private: javax::swing::JFileChooser jFileChooser1;
 
 };
 

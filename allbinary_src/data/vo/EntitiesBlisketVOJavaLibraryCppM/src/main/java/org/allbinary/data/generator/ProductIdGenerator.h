@@ -53,11 +53,10 @@
         #include "UniqueIdGenerator.h"
 
 class ProductIdGenerator: public UniqueIdGenerator {
-        
 
-    private: const IDFILE: string = "productId";
+    private: const std::string IDFILE = "productId";
 
-public constructor ();
+public: ProductIdGenerator();
 
 };
 

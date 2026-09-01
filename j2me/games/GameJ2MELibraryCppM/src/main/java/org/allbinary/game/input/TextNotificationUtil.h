@@ -73,33 +73,32 @@
 class TextNotificationUtil
             : public Object
          {
-        
 
-    private: static const instance: TextNotificationUtil = new TextNotificationUtil();
+    private: static TextNotificationUtil instance() { return TextNotificationUtil(); }
 
-    public static TextNotificationUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public fireError(string message);
+    public: static TextNotificationUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public fireNew(string message);
+    public: void fireError(std::string message);
 
                 //@Throws(Exception.constructor)
             
-    public fireSuccess(string message);
-
-    private: const TWO: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(2)!;
-
-    private: const FALSE: Boolean = BooleanFactory.getInstance()!.FALSE;
-
-    private: const gameNotificationEventHandler: GameNotificationEventHandler = GameNotificationEventHandler.getInstance()!;
+    public: void fireNew(std::string message);
 
                 //@Throws(Exception.constructor)
             
-    public fire(string message);
+    public: void fireSuccess(std::string message);
+
+    private: const Integer TWO = SmallIntegerSingletonFactory::getInstance().getAt(2);
+
+    private: const Boolean FALSE = BooleanFactory::getInstance().FALSE;
+
+    private: const GameNotificationEventHandler gameNotificationEventHandler = GameNotificationEventHandler::getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    public: void fire(std::string message);
 
 };
 

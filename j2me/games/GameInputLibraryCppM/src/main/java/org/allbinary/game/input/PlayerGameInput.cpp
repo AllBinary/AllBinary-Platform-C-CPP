@@ -80,80 +80,79 @@
         #include "GameInput.h"
 #include "GameInputStrings.h"
 
-class PlayerGameInput: public GameInput: public GameKeyEventListenerInterface {
-        
+class PlayerGameInput: public GameInput, public GameKeyEventListenerInterface {
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    private: const playerInputId: int32_t;
+    private: int32_t playerInputId;
 
-public constructor (BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList, int32_t playerInputId){
+public: PlayerGameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList, int32_t playerInputId){
             super(gameKeyEventList, removalGameKeyEventList);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.playerInputId= playerInputId;
+this->playerInputId= playerInputId;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
-this.add(gameKeyEvent);
+    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
+this->add(gameKeyEvent);
     
-this.addForRemoval(gameKeyEvent);
-    
-}
-
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
-this.add(gameKeyEvent);
+this->addForRemoval(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownKeyEvent(GameKeyEvent gameKeyEvent){
-this.add(gameKeyEvent);
-    
-this.addForRemoval(gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+this->add(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownKey(Integer gameKeyEvent){
-PreLogUtil.put(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append(gameKeyEvent!.toString())!.toString(), this, this.gameInputStrings!.ON_DOWN_GAME_KEY);
+    public: void onDownKeyEvent(GameKeyEvent gameKeyEvent){
+this->add(gameKeyEvent);
+    
+this->addForRemoval(gameKeyEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
-this.addForRemoval(gameKeyEvent);
+    public: void onDownKey(Integer gameKeyEvent){
+PreLogUtil::put(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(gameKeyEvent.toString()).toString(), this, this->gameInputStrings.ON_DOWN_GAME_KEY);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpKeyEvent(Integer gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+this->addForRemoval(gameKeyEvent);
+    
+}
+
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void onUpKeyEvent(Integer gameKeyEvent){
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public int32_t getPlayerInputId(){
+    public: int32_t getPlayerInputId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerInputId;
+                        return this->playerInputId;
     
 }
 

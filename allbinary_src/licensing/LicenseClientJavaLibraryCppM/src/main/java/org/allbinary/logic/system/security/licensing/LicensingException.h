@@ -43,13 +43,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LicensingException: public Exception {
-        
 
-    public static const serialVersionUID: int64_t = 1;
+    public: static const int64_t serialVersionUID = 1;
 
-public constructor ();
+public: LicensingException();
 
-public constructor (string msg);
+public: LicensingException(std::string msg);
 
 };
 

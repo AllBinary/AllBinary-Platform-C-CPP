@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINEWEAPONRESOURCES_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_WEAPON_MINE_MINEWEAPONRESOURCES_H
 
+            #include <vector>
+        
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
 
       
@@ -47,19 +49,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MineWeaponResources: public BasicGameResources {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static MineWeaponResources getInstance();
+    public: static MineWeaponResources getInstance();
 
-    public const DROP_TEXT_RESOURCE: string = "/mine_drop_text_20_by_20.png";
+    public: const std::string DROP_TEXT_RESOURCE = "/mine_drop_text_20_by_20.png";
 
-    public const DROP_RESOURCE: string = "/mine_drop_20_by_20.png";
+    public: const std::string DROP_RESOURCE = "/mine_drop_20_by_20.png";
 
-    public const DROP_ICON_RESOURCE: string = "/mine_drop_icon_20_by_20.png";
+    public: const std::string DROP_ICON_RESOURCE = "/mine_drop_icon_20_by_20.png";
 
-protected constructor ();
+protected: MineWeaponResources();
 
 };
 

@@ -61,19 +61,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LapWidget: public BasicHud {
-        
 
-    private: const LAP_STR: string = "Lap ";
+    private: const std::string LAP_STR = "Lap ";
 
-    private: const OF_STR: string = " of ";
+    private: const std::string OF_STR = " of ";
 
-    private: string: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (int32_t location, int32_t direction, BasicColor basicColor);
+public: LapWidget(int32_t location, int32_t direction, BasicColor basicColor);
 
-    public update(LapInfo lapInfo);
+    public: void update(LapInfo lapInfo);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

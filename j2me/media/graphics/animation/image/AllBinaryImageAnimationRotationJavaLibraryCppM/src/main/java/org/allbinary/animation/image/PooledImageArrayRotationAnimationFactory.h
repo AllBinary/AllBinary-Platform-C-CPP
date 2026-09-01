@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_POOLEDIMAGEARRAYROTATIONANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -76,27 +78,26 @@
 class PooledImageArrayRotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static PooledImageArrayRotationAnimationFactory createFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static PooledImageArrayRotationAnimationFactory createFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static PooledImageArrayRotationAnimationFactory createDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static PooledImageArrayRotationAnimationFactory createDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
-    private: allBinaryImageRotationAnimationInfo: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: Object* allBinaryImageRotationAnimationInfo = NullUtil::getInstance().NULL_OBJECT;
 
-    private: const animationBehaviorFactory: AnimationBehaviorFactory;
+    private: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+public: PooledImageArrayRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

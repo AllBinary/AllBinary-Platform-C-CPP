@@ -62,43 +62,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameKeyEvent: public AllBinaryEventObject {
-        
 
-    public static GameKeyEvent createEvent(any = {} anyType, int32_t sourceId, int32_t key);
+    public: static GameKeyEvent createEvent(Object* anyType, int32_t sourceId, int32_t key);
 
-    public static const NONE: GameKeyEvent = new GameKeyEvent(NullUtil.getInstance()!.NULL_OBJECT,  -1,  -1,  -1,  -1, false);
+    public: static const GameKeyEvent NONE = GameKeyEvent(NullUtil::getInstance().NULL_OBJECT,  -1,  -1,  -1,  -1, false);
 
-    private: const sourceId: int32_t;
+    private: int32_t sourceId;
 
-    private: repeated: bool= false;
+    private: bool repeated= false;
 
-    private: key: int32_t;
+    private: int32_t key;
 
-    private: gameActionKey: int32_t= 0;
+    private: int32_t gameActionKey= 0;
 
-    private: originalKey: int32_t= 0;
+    private: int32_t originalKey= 0;
 
-public constructor (any = {} anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated);
+public: GameKeyEvent(Object* anyType, int32_t sourceId, int32_t originalKey, int32_t gameActionKey, int32_t key, bool repeated);
 
-    public init(any = {} anyType);
+    public: void init(Object* anyType);
 
-    setRepeatEvents(bool repeated);
+    private: void setRepeatEvents(bool repeated);
 
-    public bool hasRepeatEvents();
+    public: bool hasRepeatEvents();
 
-    public int32_t getKey();
+    public: int32_t getKey();
 
-    public string toString();
+    public: std::string toString();
 
-    public int32_t getOriginalKey();
+    public: int32_t getOriginalKey();
 
-    public setOriginalKey(int32_t originalKey);
+    public: void setOriginalKey(int32_t originalKey);
 
-    public int32_t getGameActionKey();
+    public: int32_t getGameActionKey();
 
-    public setGameActionKey(int32_t gameActionKey);
+    public: void setGameActionKey(int32_t gameActionKey);
 
-    public int32_t getSourceId();
+    public: int32_t getSourceId();
 
 };
 

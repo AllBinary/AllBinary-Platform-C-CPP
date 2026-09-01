@@ -45,9 +45,8 @@
 class PlayersSingletonFactory
             : public Object
          {
-        
 
-    public static total: int32_t= 0;
+    public: static int32_t total= 0;
 
 };
 

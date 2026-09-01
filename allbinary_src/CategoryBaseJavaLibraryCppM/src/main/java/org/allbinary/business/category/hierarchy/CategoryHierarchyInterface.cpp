@@ -41,21 +41,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CategoryHierarchyInterface {
-        
 
     int32_t getLevel()
 
-    string getLevelString()
+    std::string getLevelString()
 
     CategoryInterface getRoot()
 
     CategoryInterface getParent()
 
-    setLevel(int32_t level)
+    void setLevel(int32_t level)
 
-    setRoot(CategoryInterface categoryInterface)
+    void setRoot(CategoryInterface categoryInterface)
 
-    setParent(CategoryInterface categoryInterface)
+    void setParent(CategoryInterface categoryInterface)
 
 };
 

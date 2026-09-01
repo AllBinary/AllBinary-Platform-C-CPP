@@ -42,7 +42,6 @@
         #include "SelectedRTSLayersPlayerGameInput.h"
 
 class SelectRTSLayerVisitorFactoryInterface {
-        
 
     Visitor create(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput)
 

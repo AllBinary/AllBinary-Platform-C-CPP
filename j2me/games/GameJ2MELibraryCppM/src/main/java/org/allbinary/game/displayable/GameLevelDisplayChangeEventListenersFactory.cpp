@@ -57,51 +57,50 @@
 class GameLevelDisplayChangeEventListenersFactory
             : public Object
          {
-        
 
-    private: static const instance: GameLevelDisplayChangeEventListenersFactory = new GameLevelDisplayChangeEventListenersFactory();
+    private: static GameLevelDisplayChangeEventListenersFactory instance() { return GameLevelDisplayChangeEventListenersFactory(); }
 
-    public static GameLevelDisplayChangeEventListenersFactory getInstance(){
+    public: static GameLevelDisplayChangeEventListenersFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameLevelDisplayChangeEventListenersFactory.instance;
+                        return GameLevelDisplayChangeEventListenersFactory::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public add(DisplayChangeEventListener displayChangeEventListener){
-this.list.add(displayChangeEventListener);
+    public: void add(DisplayChangeEventListener displayChangeEventListener){
+this->list.add(displayChangeEventListener);
     
-DisplayChangeEventHandler.getInstance()!.addListenerInterface(displayChangeEventListener);
+DisplayChangeEventHandler::getInstance().addListenerInterface(displayChangeEventListener);
     
 }
 
 
-    public clear(){
+    public: void clear(){
 
-    displayChangeEventHandler: BasicEventHandler = DisplayChangeEventHandler.getInstance()!;;
+    BasicEventHandler displayChangeEventHandler = DisplayChangeEventHandler::getInstance();;
     
 
-    displayChangeEventListener: DisplayChangeEventListener;;
+    DisplayChangeEventListener displayChangeEventListener;;
     
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
-displayChangeEventListener= this.list.objectArray[index]! as DisplayChangeEventListener;
+displayChangeEventListener= this->list.objectArray[index]! as DisplayChangeEventListener;
     
-displayChangeEventHandler!.removeListener(displayChangeEventListener);
+displayChangeEventHandler.removeListener(displayChangeEventListener);
     
 }
 
-this.list.clear();
+this->list.clear();
     
 }
 

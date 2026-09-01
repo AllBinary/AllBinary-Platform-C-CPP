@@ -54,13 +54,12 @@
         #include "Processor.h"
 
 class RunnableCanvasRefreshHelper: public Processor {
-        
 
-    private: const runnableCanvas: MyCanvas;
+    private: MyCanvas runnableCanvas;
 
-public constructor (MyCanvas runnableCanvas);
+public: RunnableCanvasRefreshHelper(MyCanvas runnableCanvas);
 
-    public process();
+    public: void process();
 
 };
 

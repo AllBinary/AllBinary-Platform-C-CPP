@@ -42,126 +42,123 @@
 class UnitTechnologySingletonFactory
             : public Object
          {
-        
 
-    private: static const instance: UnitTechnologySingletonFactory = new UnitTechnologySingletonFactory();
+    private: static UnitTechnologySingletonFactory instance() { return UnitTechnologySingletonFactory(); }
 
-    public static UnitTechnologySingletonFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return UnitTechnologySingletonFactory.instance;
-    
-}
-
-
-    private: damage: int32_t= 0;
-
-    private: health: int32_t= 0;
-
-    private: reload: int32_t= 0;
-
-    private: repair: int32_t= 0;
-
-    private: speed: int32_t= 0;
-
-private constructor (){
-
-            super();
-        }
-
-
-    public init(){
-this.setDamage(0);
-    
-this.setHealth(0);
-    
-this.setReload(0);
-    
-this.setRepair(0);
-    
-this.setSpeed(0);
-    
-}
-
-
-    public int32_t getDamage(){
+    public: static UnitTechnologySingletonFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.damage;
+                        return UnitTechnologySingletonFactory::instance();
     
 }
 
 
-    public setDamage(int32_t damage){
-this.damage= damage;
+    private: int32_t damage= 0;
+
+    private: int32_t health= 0;
+
+    private: int32_t reload= 0;
+
+    private: int32_t repair= 0;
+
+    private: int32_t speed= 0;
+
+private: UnitTechnologySingletonFactory(){
+}
+
+
+    public: void init(){
+this->setDamage(0);
+    
+this->setHealth(0);
+    
+this->setReload(0);
+    
+this->setRepair(0);
+    
+this->setSpeed(0);
     
 }
 
 
-    public int32_t getHealth(){
+    public: int32_t getDamage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.health;
+                        return this->damage;
     
 }
 
 
-    public setHealth(int32_t health){
-this.health= health;
+    public: void setDamage(int32_t damage){
+this->damage= damage;
     
 }
 
 
-    public int32_t getReload(){
+    public: int32_t getHealth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.reload;
+                        return this->health;
     
 }
 
 
-    public setReload(int32_t reload){
-this.reload= reload;
+    public: void setHealth(int32_t health){
+this->health= health;
     
 }
 
 
-    public int32_t getRepair(){
+    public: int32_t getReload(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.repair;
+                        return this->reload;
     
 }
 
 
-    public setRepair(int32_t repair){
-this.repair= repair;
+    public: void setReload(int32_t reload){
+this->reload= reload;
     
 }
 
 
-    public int32_t getSpeed(){
+    public: int32_t getRepair(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.speed;
+                        return this->repair;
     
 }
 
 
-    public setSpeed(int32_t speed){
-this.speed= speed;
+    public: void setRepair(int32_t repair){
+this->repair= repair;
+    
+}
+
+
+    public: int32_t getSpeed(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->speed;
+    
+}
+
+
+    public: void setSpeed(int32_t speed){
+this->speed= speed;
     
 }
 

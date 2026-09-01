@@ -82,11 +82,10 @@
 class AllBinaryMediaManager
             : public Object
          {
-        
 
-    private: static const THIS: string = "AllBinaryMediaManagerNoMIPD2";
+    private: static const std::string THIS = "AllBinaryMediaManagerNoMIPD2";
 
-    public static bool isMuted(){
+    public: static bool isMuted(){
 
 
 
@@ -96,11 +95,11 @@ class AllBinaryMediaManager
 }
 
 
-    public static setMuted(bool aMuted){
+    public: static void setMuted(bool aMuted){
 }
 
 
-    public static bool update(){
+    public: static bool update(){
 
 
 
@@ -112,28 +111,28 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public static init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, commonString!.INIT);
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
     
-ProgressCanvasFactory.getInstance()!.addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
     
-new Sounds(soundsFactoryInterface).init();
+Sounds(soundsFactoryInterface).init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static shutdown(SoundsFactoryInterface soundsFactoryInterface){
-new Sounds(soundsFactoryInterface).stopAll();
+    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
+Sounds(soundsFactoryInterface).stopAll();
     
-new Sounds(soundsFactoryInterface).closeAll();
+Sounds(soundsFactoryInterface).closeAll();
     
 System.gc();
     
@@ -142,33 +141,33 @@ System.gc();
 
                 //@Throws(Exception.constructor)
             
-    public static Player createPlayer(string resource){
+    public: static Player createPlayer(std::string resource){
 
-                        if(Features.getInstance()!.isFeature(GameFeatureFactory.getInstance()!.SOUND))
+                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
                         
                                     {
                                     
-                        if(resource.compareTo(Manager.TONE_DEVICE_LOCATOR) == 0)
+                        if(resource.compareTo(Manager::TONE_DEVICE_LOCATOR) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Manager.createPlayer(resource);;
+                        return Manager::createPlayer(resource);;
     
 
                                     }
                                 
                         else {
                             
-    inputStream: InputStream = ResourceUtil.getInstance()!.getResourceAsStream(resource)!;;
+    InputStream inputStream = ResourceUtil::getInstance().getResourceAsStream(resource);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Manager.createPlayer(inputStream, AudioContentTypeDataFactory.getInstance()!.MIME_AUDIO_WAV.getName());;
+                        return Manager::createPlayer(inputStream, AudioContentTypeDataFactory::getInstance().MIME_AUDIO_WAV.getName());;
     
 
                         }
@@ -181,7 +180,7 @@ System.gc();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER;
+                        return NoPlayer::NO_PLAYER;
     
 
                         }
@@ -192,12 +191,12 @@ System.gc();
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static playTone(int32_t frequency, int32_t time, int32_t volume){
+    public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
 
-                        if(Features.getInstance()!.isFeature(GameFeatureFactory.getInstance()!.SOUND))
+                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
                         
                                     {
-                                    Manager.playTone(frequency, time, volume);
+                                    Manager::playTone(frequency, time, volume);
     
 
                                     }
@@ -205,10 +204,8 @@ System.gc();
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AllBinaryMediaManager(){
+}
 
 
 };

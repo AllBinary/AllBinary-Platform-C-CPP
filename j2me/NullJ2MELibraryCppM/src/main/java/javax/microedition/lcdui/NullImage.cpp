@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 
@@ -43,11 +45,10 @@
 class NullImage
             : public Object
          {
-        
 
-    public static const NULL_IMAGE_ARRAY: std::vector<Image> = [];
+    public: static const std::vector<Image> NULL_IMAGE_ARRAY = {};
 
-    public static const NULL_IMAGE: Image = new Image();
+    public: static const Image NULL_IMAGE = Image();
 
 };
 

@@ -46,11 +46,10 @@
 class GameInfoCopyFactory
             : public Object
          {
-        
 
-    public static GameInfo getInstanceMaxLevel(GameInfo gameInfo, int32_t maxLevel);
+    public: static GameInfo getInstanceMaxLevel(GameInfo gameInfo, int32_t maxLevel);
 
-    public static GameInfo getInstance(GameInfo gameInfo);
+    public: static GameInfo getInstance(GameInfo gameInfo);
 
 };
 

@@ -66,39 +66,38 @@
 class FileLockUtil
             : public Object
          {
-        
 
-    private: static const instance: FileLockUtil = new FileLockUtil();
+    private: static FileLockUtil instance() { return FileLockUtil(); }
 
-    public static FileLockUtil getInstance();
+    public: static FileLockUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Vector getAll(Vector vector, bool isReturnOnFailure);
+private: FileLockUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getAllPossible(Vector vector);
+    public: Vector getAll(Vector vector, bool isReturnOnFailure);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getAllOrNone(Vector vector);
+    public: Vector getAllPossible(Vector vector);
 
                 //@Throws(Exception.constructor)
             
-    public FileLock getLock(AbFile file);
+    public: Vector getAllOrNone(Vector vector);
 
                 //@Throws(Exception.constructor)
             
-    public FileLock getLock(AbFileOutputStream fileOutputStream);
+    public: FileLock getLock(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public FileLock getLock(FileChannel fileChannel);
+    public: FileLock getLock(AbFileOutputStream fileOutputStream);
+
+                //@Throws(Exception.constructor)
+            
+    public: FileLock getLock(FileChannel fileChannel);
 
 };
 

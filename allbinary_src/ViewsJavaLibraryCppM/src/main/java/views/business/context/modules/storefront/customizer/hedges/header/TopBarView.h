@@ -63,24 +63,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TopBarView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class TopBarView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    heading: HeadingValidation;
+    protected: HeadingValidation heading;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: TopBarView(TransformInfoInterface transformInfoInterface);
 
-    public addDomNodeInterfaces();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

@@ -38,9 +38,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GroupInterface {
-        
 
-    string getGroupName()
+    std::string getGroupName()
 
     int16_t getGroupId()
 

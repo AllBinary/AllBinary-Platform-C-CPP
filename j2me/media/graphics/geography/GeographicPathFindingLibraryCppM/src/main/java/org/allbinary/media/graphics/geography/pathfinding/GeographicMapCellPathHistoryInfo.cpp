@@ -48,94 +48,93 @@
 class GeographicMapCellPathHistoryInfo
             : public Object
          {
-        
 
-    private: previousGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: previousOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition previousOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: nextUnvisitedOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: nextOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition nextOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: nextChosenOnPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    public GeographicMapCellPosition getPreviousGeographicMapCellPosition(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.previousGeographicMapCellPosition;
-    
-}
-
-
-    public setPreviousGeographicMapCellPosition(GeographicMapCellPosition previousGeographicMapCellPosition){
-this.previousGeographicMapCellPosition= previousGeographicMapCellPosition;
-    
-}
-
-
-    public GeographicMapCellPosition getPreviousOnPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getPreviousGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.previousOnPathGeographicMapCellPosition;
+                        return this->previousGeographicMapCellPosition;
     
 }
 
 
-    public setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition previousOnPathGeographicMapCellPosition){
-this.previousOnPathGeographicMapCellPosition= previousOnPathGeographicMapCellPosition;
+    public: void setPreviousGeographicMapCellPosition(GeographicMapCellPosition previousGeographicMapCellPosition){
+this->previousGeographicMapCellPosition= previousGeographicMapCellPosition;
     
 }
 
 
-    public GeographicMapCellPosition getNextUnvisitedOnPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getPreviousOnPathGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nextUnvisitedOnPathGeographicMapCellPosition;
+                        return this->previousOnPathGeographicMapCellPosition;
     
 }
 
 
-    public setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition){
-this.nextUnvisitedOnPathGeographicMapCellPosition= nextUnvisitedOnPathGeographicMapCellPosition;
+    public: void setPreviousOnPathGeographicMapCellPosition(GeographicMapCellPosition previousOnPathGeographicMapCellPosition){
+this->previousOnPathGeographicMapCellPosition= previousOnPathGeographicMapCellPosition;
     
 }
 
 
-    public GeographicMapCellPosition getNextOnPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getNextUnvisitedOnPathGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nextOnPathGeographicMapCellPosition;
+                        return this->nextUnvisitedOnPathGeographicMapCellPosition;
     
 }
 
 
-    public setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition nextOnPathGeographicMapCellPosition){
-this.nextOnPathGeographicMapCellPosition= nextOnPathGeographicMapCellPosition;
+    public: void setNextUnvisitedOnPathGeographicMapCellPosition(GeographicMapCellPosition nextUnvisitedOnPathGeographicMapCellPosition){
+this->nextUnvisitedOnPathGeographicMapCellPosition= nextUnvisitedOnPathGeographicMapCellPosition;
     
 }
 
 
-    public GeographicMapCellPosition getNextChosenOnPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getNextOnPathGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nextChosenOnPathGeographicMapCellPosition;
+                        return this->nextOnPathGeographicMapCellPosition;
     
 }
 
 
-    public setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition){
-this.nextChosenOnPathGeographicMapCellPosition= nextChosenOnPathGeographicMapCellPosition;
+    public: void setNextOnPathGeographicMapCellPosition(GeographicMapCellPosition nextOnPathGeographicMapCellPosition){
+this->nextOnPathGeographicMapCellPosition= nextOnPathGeographicMapCellPosition;
+    
+}
+
+
+    public: GeographicMapCellPosition getNextChosenOnPathGeographicMapCellPosition(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->nextChosenOnPathGeographicMapCellPosition;
+    
+}
+
+
+    public: void setNextChosenOnPathGeographicMapCellPosition(GeographicMapCellPosition nextChosenOnPathGeographicMapCellPosition){
+this->nextChosenOnPathGeographicMapCellPosition= nextChosenOnPathGeographicMapCellPosition;
     
 }
 

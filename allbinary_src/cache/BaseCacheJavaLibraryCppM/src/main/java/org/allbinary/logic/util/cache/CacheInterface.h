@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEINTERFACE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_CACHEINTERFACE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -50,19 +52,18 @@
         #include "CacheableInterface.h"
 
 class CacheInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    add(CacheableInterface cacheableInterface);
+    void add(CacheableInterface cacheableInterface);
 
                 //@Throws(Exception.constructor)
             
-    addArray(std::vector<CacheableInterface> cacheableInterfaces);
+    void addArray(std::vector<CacheableInterface> cacheableInterfaces);
 
                 //@Throws(Exception.constructor)
             
-    clear();
+    void clear();
 
 };
 

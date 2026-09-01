@@ -104,90 +104,89 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingMethodsView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class ShippingMethodsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: shippingMethods: ShippingMethods;
+    private: ShippingMethods shippingMethods;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ShippingMethodsView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.storeFrontInterface= StoreFrontFactory.getInstance(this.getTransformInfoInterface()!.getStoreName());
+this->storeFrontInterface= StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName());
     
-this.shippingMethods= new ShippingMethods(this.abeClientInformation, this.storeFrontInterface);
+this->shippingMethods= ShippingMethods(this->abeClientInformation, this->storeFrontInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    shippingMethodsNode: Node = document.createElement(ShippingMethodsData.SHIPPINGMETHODSORDERSUMMARIES)!;;
+    Node shippingMethodsNode = document.createElement(ShippingMethodsData::SHIPPINGMETHODSORDERSUMMARIES);;
     
 
-    order: OrderInterface = this.getWeblisketSession()!.getOrder()!;;
+    OrderInterface order = this->getWeblisketSession().getOrder();;
     
 
-    basket: BasketInterface = this.getWeblisketSession()!.getOrder()!.getBasket()!;;
+    BasketInterface basket = this->getWeblisketSession().getOrder().getBasket();;
     
 
-    shippingAddressesEntityInterface: StreetAddressesEntityInterface = ShippingAddressesEntityFactory.getInstance()!.getInstance(this.getWeblisketSession()!.getUserName())!;;
+    StreetAddressesEntityInterface shippingAddressesEntityInterface = ShippingAddressesEntityFactory::getInstance().getInstance(this->getWeblisketSession().getUserName());;
     
 
-    streetAddress: StreetAddress = shippingAddressesEntityInterface!.getDefault()!;;
+    StreetAddress streetAddress = shippingAddressesEntityInterface.getDefault();;
     
 
-    shippingVector: Vector = this.shippingMethods!.get()!;;
+    Vector shippingVector = this->shippingMethods.get();;
     
 
-    size: int32_t = shippingVector!.length!;;
+    int32_t size = shippingVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    shippingMethodNode: Node = document.createElement(ShippingMethodsData.SHIPPINGMETHODORDERSUMMARY)!;;
+    Node shippingMethodNode = document.createElement(ShippingMethodsData::SHIPPINGMETHODORDERSUMMARY);;
     
 
-    shipping: ShippingInterface = shippingVector!.get(index) as ShippingInterface;;
+    ShippingInterface shipping = shippingVector.get(index) as ShippingInterface;;
     
 
-    shippingView: DomNodeInterface = shipping as DomNodeInterface;;
+    DomNodeInterface shippingView = shipping as DomNodeInterface;;
     
-shippingMethodNode!.appendChild(shippingView!.toXmlNode(document));
-    
-
-    shippingCost: Money = shipping.getCost(order)!;;
+shippingMethodNode.appendChild(shippingView.toXmlNode(document));
     
 
-    subTotal: Money = basket.getSubTotal()!;;
+    Money shippingCost = shipping.getCost(order);;
     
 
-    taxRate: number = TaxFactory.getInstance()!.getInstance(this.abeClientInformation, storeFrontInterface)!.getTaxRate(streetAddress, storeFrontInterface)!;;
+    Money subTotal = basket.getSubTotal();;
     
 
-    tax: Money = new Money();;
+    number taxRate = TaxFactory::getInstance().getInstance(this->abeClientInformation, storeFrontInterface).getTaxRate(streetAddress, storeFrontInterface);;
     
 
-    total: Money = new Money();;
+    Money tax = Money();;
     
-total.add(shippingCost!.toString());
+
+    Money total = Money();;
     
-total.add(subTotal!.toString());
+total.add(shippingCost.toString());
+    
+total.add(subTotal.toString());
     
 tax.add(total.toString());
     
@@ -195,19 +194,19 @@ tax.multiply(taxRate);
     
 total.add(tax.toString());
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodsData.SHIPPINGCOST, shippingCost!.toString()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SHIPPINGCOST, shippingCost.toString()));
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodsData.TAXRATE, taxRate!.toString()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAXRATE, taxRate.toString()));
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodsData.SUBTOTAL, subTotal!.toString()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::SUBTOTAL, subTotal.toString()));
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodsData.TAX, tax.toString()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TAX, tax.toString()));
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodsData.TOTAL, total.toString()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodsData::TOTAL, total.toString()));
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, EntryData.getInstance()!.DEFAULT, this.shippingMethods!.getDefault()!.getName()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, EntryData::getInstance().DEFAULT, this->shippingMethods.getDefault().getName()));
     
-shippingMethodsNode!.appendChild(shippingMethodNode);
+shippingMethodsNode.appendChild(shippingMethodNode);
     
 }
 
@@ -222,10 +221,10 @@ shippingMethodsNode!.appendChild(shippingMethodNode);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -240,16 +239,16 @@ shippingMethodsNode!.appendChild(shippingMethodNode);
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -262,13 +261,13 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-    error: string = "Failed to view ShippingMethods";;
+    std::string error = "Failed to view ShippingMethods";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

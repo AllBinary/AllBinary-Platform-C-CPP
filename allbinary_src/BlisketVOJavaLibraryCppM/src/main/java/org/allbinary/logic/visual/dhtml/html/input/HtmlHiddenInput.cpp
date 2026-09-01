@@ -42,12 +42,9 @@
 class HtmlHiddenInput
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: HtmlHiddenInput(){
+}
 
 
 };

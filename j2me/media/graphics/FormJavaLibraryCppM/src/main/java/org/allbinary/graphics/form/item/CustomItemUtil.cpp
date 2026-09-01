@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -43,21 +45,20 @@
 class CustomItemUtil
             : public Object
          {
-        
 
-    private: static const instance: CustomItemUtil = new CustomItemUtil();
+    private: static CustomItemUtil instance() { return CustomItemUtil(); }
 
-    public static CustomItemUtil getInstance(){
+    public: static CustomItemUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomItemUtil.instance;
+                        return CustomItemUtil::instance();
     
 }
 
 
-    public const CUSTOM_ITEM_ARRAY: std::vector<ABCustomItem> = [];
+    public: const std::vector<ABCustomItem> CUSTOM_ITEM_ARRAY = {};
 
 };
 

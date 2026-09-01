@@ -55,21 +55,20 @@
 class DefaultListModelHelper
             : public Object
          {
-        
 
-    private: defaultListModel: DefaultListModel;
+    private: DefaultListModel defaultListModel;
 
-    private: vector: Vector;
+    private: Vector vector;
 
-public constructor ();
+public: DefaultListModelHelper();
 
-    public initDefaultModelList();
+    public: void initDefaultModelList();
 
-    public ListModel getListModel();
+    public: ListModel getListModel();
 
-    public add(string string);
+    public: void add(std::string string);
 
-    public remove(string string);
+    public: void remove(std::string string);
 
 };
 

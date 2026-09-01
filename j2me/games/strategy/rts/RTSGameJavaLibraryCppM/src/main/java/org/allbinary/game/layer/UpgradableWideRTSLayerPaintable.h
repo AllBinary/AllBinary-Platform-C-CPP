@@ -56,19 +56,18 @@
 #include "RTSLayer.h"
 
 class UpgradableWideRTSLayerPaintable: public RTSLayerCompositePaintable {
-        
 
-    private: cost: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string cost = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable);
+public: UpgradableWideRTSLayerPaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable);
 
-    public update(RTSLayer rtsLayer);
+    public: void update(RTSLayer rtsLayer);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    setCost(string cost);
+    protected: void setCost(std::string cost);
 
-    string getCost();
+    protected: std::string getCost();
 
 };
 

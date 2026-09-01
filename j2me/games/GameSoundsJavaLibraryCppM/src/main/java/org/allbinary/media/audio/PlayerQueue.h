@@ -76,25 +76,24 @@
 class PlayerQueue
             : public Object
          {
-        
 
-    private: static const TOTAL: string = "Sounds In Queue: ";
+    private: static const std::string TOTAL = "Sounds In Queue: ";
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: max: int32_t;
+    private: int32_t max;
 
- constructor (int32_t max);
+: PlayerQueue(int32_t max);
 
-    public add(Sound sound);
+    public: void add(Sound sound);
 
-    public bool process();
+    public: bool process();
 
-    public clear();
+    public: void clear();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

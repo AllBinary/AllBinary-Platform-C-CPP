@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATION_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -78,56 +80,55 @@
 #include "VectorAnimationInterface.h"
 #include "AnimationBehavior.h"
 
-class VectorAnimation: public IndexedAnimation: public VectorAnimationInterface {
-        
+class VectorAnimation: public IndexedAnimation, public VectorAnimationInterface {
 
-    public static VectorAnimation createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor basicColor, AnimationBehavior animationBehavior);
+    public: static VectorAnimation createVectorAnimation(std::vector<std::vector<int32_t>> currentPoints2, BasicColor basicColor, AnimationBehavior animationBehavior);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: currentPoints: std::vector<std::vector<std::vector<int32_t>>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    private: circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(0)!;
+    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(0);
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: VectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor basicColor);
 
-    public setAlpha(int32_t alpha);
+    public: void setAlpha(int32_t alpha);
 
-    public setScale(float scaleX, float scaleY);
+    public: void setScale(float scaleX, float scaleY);
 
-    public setMaxScale(float maxScaleX, float maxScaleY);
+    public: void setMaxScale(float maxScaleX, float maxScaleY);
 
-    updateModifiers();
+    private: void updateModifiers();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    paintVectors(Graphics graphics, int32_t x, int32_t y);
+    protected: void paintVectors(Graphics graphics, int32_t x, int32_t y);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public std::vector<std::vector<int32_t>> getPoints(int32_t frame);
+    public: std::vector<std::vector<int32_t>> getPoints(int32_t frame);
 
-    public setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints);
+    public: void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints);
 
 };
 

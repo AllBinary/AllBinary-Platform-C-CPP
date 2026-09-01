@@ -45,49 +45,48 @@
 class FileFactory
             : public Object
          {
-        
 
-    private: static const instance: FileFactory = new FileFactory();
+    private: static FileFactory instance() { return FileFactory(); }
 
-    public static FileFactory getInstance(){
+    public: static FileFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileFactory.instance;
+                        return FileFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbFile getInstance(string filePath){
+    public: AbFile getInstance(std::string filePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFile.createAbFileFromRawPath(filePath);;
+                        return AbFile::createAbFileFromRawPath(filePath);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbFile getInstance(AbFile file, string childFilePath){
+    public: AbFile getInstance(AbFile file, std::string childFilePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFile.createAbFileWithChild(file, childFilePath);;
+                        return AbFile::createAbFileWithChild(file, childFilePath);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isFile(string path){
+    public: bool isFile(std::string path){
 
-    file: AbFile = AbFile.createAbFile(path)!;;
+    AbFile file = AbFile::createAbFile(path);;
     
 
                         if(file.exists())

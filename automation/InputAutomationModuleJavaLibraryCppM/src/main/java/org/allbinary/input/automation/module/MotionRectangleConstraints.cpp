@@ -59,45 +59,42 @@
 class MotionRectangleConstraints
             : public Object
         : public MotionRectangleConstraintsInterface {
-        
 
-    private: minDimension: Dimension;
+    private: Dimension minDimension;
 
-    private: maxDimension: Dimension;
+    private: Dimension maxDimension;
 
-    private: maxMotionRectangles: int32_t= 0;
+    private: int32_t maxMotionRectangles= 0;
 
-    private: minArea: int32_t= 0;
+    private: int32_t minArea= 0;
 
-public constructor (){
-
-            super();
-        }
+public: MotionRectangleConstraints(){
+}
 
 
-    public Dimension getMinDimension(){
+    public: Dimension getMinDimension(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minDimension;
+                        return this->minDimension;
     
 }
 
 
-    public Dimension getMaxDimension(){
+    public: Dimension getMaxDimension(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxDimension;
+                        return this->maxDimension;
     
 }
 
 
-    public bool isTooSmall(Rectangle rectangle){
+    public: bool isTooSmall(Rectangle rectangle){
 
-                        if(rectangle.width < this.getMinDimension()!.width || rectangle.height < this.getMinDimension()!.height)
+                        if(rectangle.width < this->getMinDimension().width || rectangle.height < this->getMinDimension().height)
                         
                                     {
                                     
@@ -122,9 +119,9 @@ public constructor (){
 }
 
 
-    public bool isAreaTooSmall(Rectangle rectangle){
+    public: bool isAreaTooSmall(Rectangle rectangle){
 
-                        if(rectangle.width *rectangle.height < this.getMinArea())
+                        if(rectangle.width *rectangle.height < this->getMinArea())
                         
                                     {
                                     
@@ -149,9 +146,9 @@ public constructor (){
 }
 
 
-    public bool isTooBig(Rectangle rectangle){
+    public: bool isTooBig(Rectangle rectangle){
 
-                        if(rectangle.width > this.getMaxDimension()!.width || rectangle.height > this.getMaxDimension()!.height)
+                        if(rectangle.width > this->getMaxDimension().width || rectangle.height > this->getMaxDimension().height)
                         
                                     {
                                     
@@ -178,55 +175,55 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle){
+    public: bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setMinDimension(Dimension minDimension){
-this.minDimension= minDimension;
+    public: void setMinDimension(Dimension minDimension){
+this->minDimension= minDimension;
     
 }
 
 
-    public setMaxDimension(Dimension maxDimension){
-this.maxDimension= maxDimension;
+    public: void setMaxDimension(Dimension maxDimension){
+this->maxDimension= maxDimension;
     
 }
 
 
-    public int32_t getMaxMotionRectangles(){
+    public: int32_t getMaxMotionRectangles(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxMotionRectangles;
+                        return this->maxMotionRectangles;
     
 }
 
 
-    public setMaxMotionRectangles(int32_t maxMotionRectangles){
-this.maxMotionRectangles= maxMotionRectangles;
+    public: void setMaxMotionRectangles(int32_t maxMotionRectangles){
+this->maxMotionRectangles= maxMotionRectangles;
     
 }
 
 
-    public int32_t getMinArea(){
+    public: int32_t getMinArea(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minArea;
+                        return this->minArea;
     
 }
 
 
-    public setMinArea(int32_t minArea){
-this.minArea= minArea;
+    public: void setMinArea(int32_t minArea){
+this->minArea= minArea;
     
 }
 

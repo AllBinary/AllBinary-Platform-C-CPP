@@ -59,43 +59,42 @@
         #include "BasePatrolAI.h"
 
 class RandomPatrolAI: public BasePatrolAI {
-        
 
-    private: changedDirection: bool = true;
+    private: bool changedDirection = true;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: RandomPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(hashtable, ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.updateRandomDistance();
+this->updateRandomDistance();
     
 }
 
 
-    updateRandomDistance(){
-this.currentDistance= MyRandomFactory.getInstance()!.getAbsoluteNextInt(this.maxDistance!.intValue());
+    private: void updateRandomDistance(){
+this->currentDistance= MyRandomFactory::getInstance().getAbsoluteNextInt(this->maxDistance.intValue());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 super.update();
     
-super.processKeyAI(this.keyDirection);
+super.processKeyAI(this->keyDirection);
     
 
-                        if(this.changedDirection)
+                        if(this->changedDirection)
                         
                                     {
-                                    super.processKeyAI(Canvas.KEY_NUM1);
+                                    super.processKeyAI(Canvas::KEY_NUM1);
     
-this.updateRandomDistance();
+this->updateRandomDistance();
     
-this.changedDirection= false;
+this->changedDirection= false;
     
 
                                     }
@@ -103,10 +102,10 @@ this.changedDirection= false;
 }
 
 
-    nextDirection(){
+    protected: void nextDirection(){
 super.nextDirection();
     
-this.changedDirection= true;
+this->changedDirection= true;
     
 }
 

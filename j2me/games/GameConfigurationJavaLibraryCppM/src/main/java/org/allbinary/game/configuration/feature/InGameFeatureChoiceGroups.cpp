@@ -48,52 +48,49 @@
 class InGameFeatureChoiceGroups
             : public Object
          {
-        
 
-    private: static gameFeatureChoiceGroupsExclusive: InGameFeatureChoiceGroups = new InGameFeatureChoiceGroups();
+    private: static InGameFeatureChoiceGroups gameFeatureChoiceGroupsExclusive = InGameFeatureChoiceGroups();
 
-    private: static gameFeatureChoiceGroupsMultiple: InGameFeatureChoiceGroups = new InGameFeatureChoiceGroups();
+    private: static InGameFeatureChoiceGroups gameFeatureChoiceGroupsMultiple = InGameFeatureChoiceGroups();
 
-    public static InGameFeatureChoiceGroups getExclusiveInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameFeatureChoiceGroups.gameFeatureChoiceGroupsExclusive;
-    
-}
-
-
-    public static InGameFeatureChoiceGroups getMultipleInstance(){
+    public: static InGameFeatureChoiceGroups getExclusiveInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameFeatureChoiceGroups.gameFeatureChoiceGroupsMultiple;
+                        return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsExclusive;
     
 }
 
 
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
-
-private constructor (){
-
-            super();
-        }
-
-
-    public Hashtable<any, any> get(){
+    public: static InGameFeatureChoiceGroups getMultipleInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable;
+                        return InGameFeatureChoiceGroups::gameFeatureChoiceGroupsMultiple;
     
 }
 
 
-    public add(string name, BasicArrayList list){
-this.hashtable.put(name, list);
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
+
+private: InGameFeatureChoiceGroups(){
+}
+
+
+    public: Hashtable<any, any> get(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->hashtable;
+    
+}
+
+
+    public: void add(std::string name, BasicArrayList list){
+this->hashtable.put(name, list);
     
 }
 

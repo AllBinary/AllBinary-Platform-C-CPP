@@ -52,13 +52,12 @@
 class RectangleCollisionPointUtil
             : public Object
          {
-        
 
-    public static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list);
+    public: static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list);
 
-    public static bool allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list, int32_t xCellSize, int32_t yCellSize);
+    public: static bool allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list, int32_t xCellSize, int32_t yCellSize);
 
-private constructor ();
+private: RectangleCollisionPointUtil();
 
 };
 

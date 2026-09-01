@@ -58,142 +58,139 @@
 class TouchScreenFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: TouchScreenFactory = new TouchScreenFactory();
+    private: static const TouchScreenFactory SINGLETON = TouchScreenFactory();
 
-    public static TouchScreenFactory getInstance(){
+    public: static TouchScreenFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenFactory.SINGLETON;
+                        return TouchScreenFactory::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: touch: bool= false;
+    private: bool touch= false;
 
-    private: multiTouch: bool= false;
+    private: bool multiTouch= false;
 
-    private: multiTouchDistinct: bool= false;
+    private: bool multiTouchDistinct= false;
 
-    private: touchScreenType: TouchScreenType = TouchScreenTypesFactory.getInstance()!.NOTOUCH;
+    private: TouchScreenType touchScreenType = TouchScreenTypesFactory::getInstance().NOTOUCH;
 
-private constructor (){
+private: TouchScreenFactory(){
 
-            super();
-        
         try {
-            this.setTouch(true);
+            this->setTouch(true);
     
-this.setMultiTouch(false);
+this->setMultiTouch(false);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, TouchScreenFactory.SINGLETON, commonStrings!.GET_INSTANCE, e);
-    
-}
-
-}
-
-
-    public setMultiTouch(bool multiTouch){
-this.multiTouch= multiTouch;
+this->logUtil.put(commonStrings.EXCEPTION, TouchScreenFactory::SINGLETON, commonStrings.GET_INSTANCE, e);
     
 }
 
+}
 
-    public bool isMultiTouch(){
+
+    public: void setMultiTouch(bool multiTouch){
+this->multiTouch= multiTouch;
+    
+}
+
+
+    public: bool isMultiTouch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.multiTouch;
+                        return this->multiTouch;
     
 }
 
 
-    public setTouch(bool touch){
-this.touch= touch;
+    public: void setTouch(bool touch){
+this->touch= touch;
     
 }
 
 
-    public bool isTouch(){
+    public: bool isTouch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touch;
+                        return this->touch;
     
 }
 
 
-    public setMultiTouchDistinct(bool multiTouchDistinct){
-this.multiTouchDistinct= multiTouchDistinct;
+    public: void setMultiTouchDistinct(bool multiTouchDistinct){
+this->multiTouchDistinct= multiTouchDistinct;
     
 }
 
 
-    public bool isMultiTouchDistinct(){
+    public: bool isMultiTouchDistinct(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.multiTouchDistinct;
+                        return this->multiTouchDistinct;
     
 }
 
 
-    public setTouchScreenType(TouchScreenType touchScreenType){
-this.touchScreenType= touchScreenType;
+    public: void setTouchScreenType(TouchScreenType touchScreenType){
+this->touchScreenType= touchScreenType;
     
 }
 
 
-    public TouchScreenType getTouchScreenType(){
+    public: TouchScreenType getTouchScreenType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchScreenType;
+                        return this->touchScreenType;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TouchScreen: ");
+stringBuffer.append("TouchScreen: ");
     
-stringBuffer!.appendboolean(this.isTouch());
+stringBuffer.appendboolean(this->isTouch());
     
-stringBuffer!.append(" MultiTouch: ");
+stringBuffer.append(" MultiTouch: ");
     
-stringBuffer!.appendboolean(this.isMultiTouch());
+stringBuffer.appendboolean(this->isMultiTouch());
     
-stringBuffer!.append(" Distinct MultiTouch: ");
+stringBuffer.append(" Distinct MultiTouch: ");
     
-stringBuffer!.appendboolean(this.isMultiTouchDistinct());
+stringBuffer.appendboolean(this->isMultiTouchDistinct());
     
-stringBuffer!.append(" TouchScreenType: ");
+stringBuffer.append(" TouchScreenType: ");
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(this.getTouchScreenType()));
+stringBuffer.append(StringUtil::getInstance().toString(this->getTouchScreenType()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

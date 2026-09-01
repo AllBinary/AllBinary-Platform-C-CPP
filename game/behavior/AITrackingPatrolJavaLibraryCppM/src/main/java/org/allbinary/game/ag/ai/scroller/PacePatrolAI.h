@@ -96,32 +96,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasePatrolAI.h"
 
-class PacePatrolAI: public BasePatrolAI: public TrackingEventListenerInterface {
-        
+class PacePatrolAI: public BasePatrolAI, public TrackingEventListenerInterface {
 
-    private: trackingList: BasicArrayList;
+    private: BasicArrayList trackingList;
 
-    private: firingDistance: int32_t= 0;
+    private: int32_t firingDistance= 0;
 
-    isFollowLimitedByTerrain: bool = false;
+    protected: bool isFollowLimitedByTerrain = false;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: PacePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    Direction setFiringDirectionForTargetIfInRange();
+    private: Direction setFiringDirectionForTargetIfInRange();
 
-    public disable();
+    public: void disable();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onMovement(TrackingEvent trackingEvent);
+    public: void onMovement(TrackingEvent trackingEvent);
 
-    public int32_t getFiringDistance();
+    public: int32_t getFiringDistance();
 
-    public setFiringDistance(int32_t firingDistance);
+    public: void setFiringDistance(int32_t firingDistance);
 
 };
 

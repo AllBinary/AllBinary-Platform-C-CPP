@@ -51,13 +51,12 @@
         #include "LinePathAnimation.h"
 
 class LinePathRelativeAnimation: public LinePathAnimation {
-        
 
-    private: static const instanceC: LinePathRelativeAnimation = new LinePathRelativeAnimation();
+    private: static const LinePathRelativeAnimation instanceC = LinePathRelativeAnimation();
 
-    public static LinePathAnimation getInstance();
+    public: static LinePathAnimation getInstance();
 
-    public paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer);
+    public: void paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer);
 
 };
 

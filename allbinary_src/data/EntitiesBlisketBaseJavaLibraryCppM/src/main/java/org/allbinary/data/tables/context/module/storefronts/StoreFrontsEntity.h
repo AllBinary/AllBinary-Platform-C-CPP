@@ -70,32 +70,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StoreFrontsEntityInterface.h"
 
-class StoreFrontsEntity: public AbSqlBean: public StoreFrontsEntityInterface {
-        
+class StoreFrontsEntity: public AbSqlBean, public StoreFrontsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "storefronts";
+    protected: const std::string tableName = "storefronts";
 
-public constructor ();
+public: StoreFrontsEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string value);
+    public: void delete_(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public StoreFront getStoreFrontInterface(string name);
+    public: StoreFront getStoreFrontInterface(std::string name);
 
-    public Vector getStoreFrontNames();
+    public: Vector getStoreFrontNames();
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

@@ -41,11 +41,10 @@
         #include "AllBinaryLayer.h"
 
 class LayerInterfaceVisitor {
-        
 
                 //@Throws(Exception.constructor)
             
-    visit(AllBinaryLayer layerInterface)
+    void visit(AllBinaryLayer layerInterface)
 
 };
 

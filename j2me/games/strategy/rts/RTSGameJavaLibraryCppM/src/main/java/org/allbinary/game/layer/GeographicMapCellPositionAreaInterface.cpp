@@ -49,7 +49,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GeographicMapCellPositionAreaInterface {
-        
 
     GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition()
 
@@ -59,7 +58,7 @@ class GeographicMapCellPositionAreaInterface {
 
                 //@Throws(Exception.constructor)
             
-    update(BasicGeographicMap geographicMapInterface)
+    void update(BasicGeographicMap geographicMapInterface)
 
 };
 

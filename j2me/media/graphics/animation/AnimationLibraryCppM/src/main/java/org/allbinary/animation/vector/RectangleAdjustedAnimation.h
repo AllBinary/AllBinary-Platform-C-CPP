@@ -52,30 +52,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleAdjustedAnimation: public Animation: public ColorCompositeInterface {
-        
+class RectangleAdjustedAnimation: public Animation, public ColorCompositeInterface {
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-    private: offsetX: int32_t;
+    private: int32_t offsetX;
 
-    private: offsetY: int32_t;
+    private: int32_t offsetY;
 
-public constructor (int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor);
+public: RectangleAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public setWidth(int32_t width);
+    public: void setWidth(int32_t width);
 
-    public setHeight(int32_t height);
+    public: void setHeight(int32_t height);
 
-    public setOffsetX(int32_t offsetX);
+    public: void setOffsetX(int32_t offsetX);
 
-    public setOffsetY(int32_t offsetY);
+    public: void setOffsetY(int32_t offsetY);
 
 };
 

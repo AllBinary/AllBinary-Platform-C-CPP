@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -28,19 +30,8 @@
 class Encoder
             : public Object
          {
-        
 
-    public static string encode(std::vector<int8_t> value){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return nullptr;
-    
-}
-
-
-    public static std::vector<int8_t> decode(string value){
+    public: static std::string encode(std::vector<int8_t> value){
 
 
 
@@ -50,10 +41,18 @@ class Encoder
 }
 
 
-private constructor (){
+    public: static std::vector<int8_t> decode(std::string value){
 
-            super();
-        }
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return nullptr;
+    
+}
+
+
+private: Encoder(){
+}
 
 
 };

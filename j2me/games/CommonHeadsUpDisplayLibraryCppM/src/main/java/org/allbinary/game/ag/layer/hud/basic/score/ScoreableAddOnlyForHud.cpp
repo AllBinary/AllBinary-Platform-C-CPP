@@ -42,41 +42,40 @@
         #include "ScoreHudWidget.h"
 
 class ScoreableAddOnlyForHud: public Scoreable {
-        
 
-    private: const scoreHudWidget: ScoreHudWidget;
+    private: ScoreHudWidget scoreHudWidget;
 
-public constructor (ScoreHudWidget scoreVectorGraphic){
+public: ScoreableAddOnlyForHud(ScoreHudWidget scoreVectorGraphic){
             super(0);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.scoreHudWidget= scoreVectorGraphic;
+this->scoreHudWidget= scoreVectorGraphic;
     
-this.getScoreHudWidget()!.set(0);
+this->getScoreHudWidget().set(0);
     
 }
 
 
-    public removePoints(int32_t points){
+    public: void removePoints(int32_t points){
 }
 
 
-    public addPoints(int32_t points){
+    public: void addPoints(int32_t points){
 super.addPoints(points);
     
-this.getScoreHudWidget()!.add(points);
+this->getScoreHudWidget().add(points);
     
 }
 
 
-    public ScoreHudWidget getScoreHudWidget(){
+    public: ScoreHudWidget getScoreHudWidget(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scoreHudWidget;
+                        return this->scoreHudWidget;
     
 }
 

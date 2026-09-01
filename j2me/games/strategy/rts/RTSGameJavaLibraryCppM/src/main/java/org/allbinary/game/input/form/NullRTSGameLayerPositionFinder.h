@@ -57,15 +57,14 @@
 class NullRTSGameLayerPositionFinder
             : public Object
         : public LayerPositionFinderInterface {
-        
 
-    private: static const instance: NullRTSGameLayerPositionFinder = new NullRTSGameLayerPositionFinder();
+    private: static NullRTSGameLayerPositionFinder instance() { return NullRTSGameLayerPositionFinder(); }
 
-    public static NullRTSGameLayerPositionFinder getInstance();
+    public: static NullRTSGameLayerPositionFinder getInstance();
 
-protected constructor ();
+protected: NullRTSGameLayerPositionFinder();
 
-    public AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
+    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
 
 };
 

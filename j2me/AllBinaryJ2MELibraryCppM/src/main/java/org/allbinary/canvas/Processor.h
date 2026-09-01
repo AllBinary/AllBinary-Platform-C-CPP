@@ -53,19 +53,18 @@
 class Processor
             : public Object
          {
-        
 
-    private: static const SINGLETON: Processor = new Processor();
+    private: static const Processor SINGLETON = Processor();
 
-    public static Processor getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public process();
+    public: static Processor getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public processt(int64_t timeDelta);
+    public: void process();
+
+                //@Throws(Exception.constructor)
+            
+    public: void processt(int64_t timeDelta);
 
 };
 

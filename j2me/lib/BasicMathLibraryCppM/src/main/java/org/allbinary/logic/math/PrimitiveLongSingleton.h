@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_H
         #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVELONGSINGLETON_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -59,31 +61,30 @@
 class PrimitiveLongSingleton
             : public Object
          {
-        
 
-    private: static const instance: PrimitiveLongSingleton = new PrimitiveLongSingleton();
+    private: static PrimitiveLongSingleton instance() { return PrimitiveLongSingleton(); }
 
-    public static PrimitiveLongSingleton getInstance();
+    public: static PrimitiveLongSingleton getInstance();
 
-    public const UNK: std::vector<char> = ['U','n','k'];
+    public: const std::vector<char> UNK = ['U','n','k'];
 
-    public const NUMBER_ARRAY: std::vector<int8_t> = [0,1,2,3,4,5,6,7,8,9];
+    public: const std::vector<int8_t> NUMBER_ARRAY = {0,1,2,3,4,5,6,7,8,9};
 
-    public const NUMBER_CHAR_ARRAY: std::vector<char> = ['0','1','2','3','4','5','6','7','8','9'];
+    public: const std::vector<char> NUMBER_CHAR_ARRAY = ['0','1','2','3','4','5','6','7','8','9'];
 
-    public const NUMBER_CHAR_ARRAYS: std::vector<std::vector<char>> = 
-                                                        [
+    public: const std::vector<std::vector<char>> NUMBER_CHAR_ARRAYS = 
+                                                        {
                                                             ['0'],['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8'],['9']
-                                                        ];
+                                                        };
 
-    public const ZERO: std::vector<char> = 
+    public: const std::vector<char> ZERO = 
                                                         
-                                                        [this.NUMBER_CHAR_ARRAY[0]]
+                                                        [this->NUMBER_CHAR_ARRAY[0]]
                                                     ;
 
                 //@Throws(Exception.constructor)
             
-    public int8_t getNumberFromChar(char numberAsChar);
+    public: int8_t getNumberFromChar(char numberAsChar);
 
 };
 

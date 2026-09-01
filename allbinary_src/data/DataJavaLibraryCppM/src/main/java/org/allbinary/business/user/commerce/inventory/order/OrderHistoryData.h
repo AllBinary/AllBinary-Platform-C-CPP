@@ -45,89 +45,88 @@
 class OrderHistoryData
             : public Object
          {
-        
 
-    public static MAXIDLEN: int32_t = 19;
+    public: static int32_t MAXIDLEN = 19;
 
-    public static const DATEDELTA: string = "DATE_DELTA";
+    public: static const std::string DATEDELTA = "DATE_DELTA";
 
-    public static const DATETYPE: string = "DATE_TYPE";
+    public: static const std::string DATETYPE = "DATE_TYPE";
 
-    public static const TYPELONG: string = "TYPE_LONG";
+    public: static const std::string TYPELONG = "TYPE_LONG";
 
-    public static const TYPECAESAR: string = "TYPE_CAESAR";
+    public: static const std::string TYPECAESAR = "TYPE_CAESAR";
 
-    public static const TODATE: string = "TO_DATE";
+    public: static const std::string TODATE = "TO_DATE";
 
-    public static const FROMHOUR: string = "FROM_HOUR";
+    public: static const std::string FROMHOUR = "FROM_HOUR";
 
-    public static const FROMDAY: string = "FROM_DAY";
+    public: static const std::string FROMDAY = "FROM_DAY";
 
-    public static const FROMMONTH: string = "FROM_MONTH";
+    public: static const std::string FROMMONTH = "FROM_MONTH";
 
-    public static const FROMYEAR: string = "FROM_YEAR";
+    public: static const std::string FROMYEAR = "FROM_YEAR";
 
-    public static const TOHOUR: string = "TO_HOUR";
+    public: static const std::string TOHOUR = "TO_HOUR";
 
-    public static const TODAY: string = "TO_DAY";
+    public: static const std::string TODAY = "TO_DAY";
 
-    public static const TOMONTH: string = "TO_MONTH";
+    public: static const std::string TOMONTH = "TO_MONTH";
 
-    public static const TOYEAR: string = "TO_YEAR";
+    public: static const std::string TOYEAR = "TO_YEAR";
 
-    public static const ORDERHISTORY: string = "ORDERHISTORY";
+    public: static const std::string ORDERHISTORY = "ORDERHISTORY";
 
-    public static const SHIPPEDDATE: string = "ORDERHISTORY_SHIPPED_DATE";
+    public: static const std::string SHIPPEDDATE = "ORDERHISTORY_SHIPPED_DATE";
 
-    public static const ORDERDATE: string = "ORDERHISTORY_ORDER_DATE";
+    public: static const std::string ORDERDATE = "ORDERHISTORY_ORDER_DATE";
 
-    public static const TRANSDATE: string = "ORDERHISTORY_TRANS_DATE";
+    public: static const std::string TRANSDATE = "ORDERHISTORY_TRANS_DATE";
 
-    public static const CANCELDATE: string = "ORDERHISTORY_CANCEL_DATE";
+    public: static const std::string CANCELDATE = "ORDERHISTORY_CANCEL_DATE";
 
-    public static const SHIPPEDDATEFORMATTED: string = "ORDERHISTORY_SHIPPED_DATE_FORMATTED";
+    public: static const std::string SHIPPEDDATEFORMATTED = "ORDERHISTORY_SHIPPED_DATE_FORMATTED";
 
-    public static const ORDERDATEFORMATTED: string = "ORDERHISTORY_ORDER_DATE_FORMATTED";
+    public: static const std::string ORDERDATEFORMATTED = "ORDERHISTORY_ORDER_DATE_FORMATTED";
 
-    public static const TRANSDATEFORMATTED: string = "ORDERHISTORY_TRANS_DATE_FORMATTED";
+    public: static const std::string TRANSDATEFORMATTED = "ORDERHISTORY_TRANS_DATE_FORMATTED";
 
-    public static const CANCELDATEFORMATTED: string = "ORDERHISTORY_CANCEL_DATE_FORMATTED";
+    public: static const std::string CANCELDATEFORMATTED = "ORDERHISTORY_CANCEL_DATE_FORMATTED";
 
-    public static const SUBTOTAL: string = "ORDERHISTORY_SUB_TOTAL";
+    public: static const std::string SUBTOTAL = "ORDERHISTORY_SUB_TOTAL";
 
-    public static const SHIPPINGCOST: string = "ORDERHISTORY_SHIPPING_COST";
+    public: static const std::string SHIPPINGCOST = "ORDERHISTORY_SHIPPING_COST";
 
-    public static const TAX: string = "ORDERHISTORY_TAX";
+    public: static const std::string TAX = "ORDERHISTORY_TAX";
 
-    public static const TOTAL: string = "ORDERHISTORY_TOTAL";
+    public: static const std::string TOTAL = "ORDERHISTORY_TOTAL";
 
-    public static const CANCELINFO: string = "ORDERHISTORY_CANCEL_INFO";
+    public: static const std::string CANCELINFO = "ORDERHISTORY_CANCEL_INFO";
 
-    public static const CANCELTYPE: string = "ORDERHISTORY_CANCEL_TYPE";
+    public: static const std::string CANCELTYPE = "ORDERHISTORY_CANCEL_TYPE";
 
-    public static const STATUS: string = "ORDERHISTORY_STATUS";
+    public: static const std::string STATUS = "ORDERHISTORY_STATUS";
 
-    public static const PREPROCESSINGNAME: string = "PREPROCESSING";
+    public: static const std::string PREPROCESSINGNAME = "PREPROCESSING";
 
-    public static const PROCESSINGNAME: string = "PROCESSING";
+    public: static const std::string PROCESSINGNAME = "PROCESSING";
 
-    public static const CANCELLEDNAME: string = "CANCELLED";
+    public: static const std::string CANCELLEDNAME = "CANCELLED";
 
-    public static const PARTIALLYSHIPPEDNAME: string = "PARTIALLYSHIPPED";
+    public: static const std::string PARTIALLYSHIPPEDNAME = "PARTIALLYSHIPPED";
 
-    public static const SHIPPEDNAME: string = "SHIPPED";
+    public: static const std::string SHIPPEDNAME = "SHIPPED";
 
-    public static const PREPROCESSING: string = "Order Preprocessing";
+    public: static const std::string PREPROCESSING = "Order Preprocessing";
 
-    public static const PROCESSING: string = "Order Processing";
+    public: static const std::string PROCESSING = "Order Processing";
 
-    public static const CANCELLED: string = "Order Cancelled";
+    public: static const std::string CANCELLED = "Order Cancelled";
 
-    public static const PARTIALLYSHIPPED: string = "Order Partially Shipped";
+    public: static const std::string PARTIALLYSHIPPED = "Order Partially Shipped";
 
-    public static const SHIPPED: string = "Order Shipped";
+    public: static const std::string SHIPPED = "Order Shipped";
 
-    public static const SETSTATUS: string = "Set Status";
+    public: static const std::string SETSTATUS = "Set Status";
 
 };
 

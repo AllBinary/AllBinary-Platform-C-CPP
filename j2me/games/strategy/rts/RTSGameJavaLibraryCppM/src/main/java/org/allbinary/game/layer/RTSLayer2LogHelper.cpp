@@ -43,57 +43,56 @@
 class RTSLayer2LogHelper
             : public Object
          {
-        
 
-    private: static const instance: RTSLayer2LogHelper = new RTSLayer2LogHelper();
+    private: static RTSLayer2LogHelper instance() { return RTSLayer2LogHelper(); }
 
-    public static RTSLayer2LogHelper getInstance(){
+    public: static RTSLayer2LogHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSLayer2LogHelper.instance;
+                        return RTSLayer2LogHelper::instance();
     
 }
 
 
-    public steeringUp(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void steeringUp(PathFindingLayerInterface pathFindingLayerInterface){
 }
 
 
-    public steeringFireOrStop(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void steeringFireOrStop(PathFindingLayerInterface pathFindingLayerInterface){
 }
 
 
-    public buildingAbove(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void buildingAbove(PathFindingLayerInterface pathFindingLayerInterface){
 }
 
 
-    public buildingChaseLeft(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
+    public: void buildingChaseLeft(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
 }
 
 
-    public buildingChaseRight(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
+    public: void buildingChaseRight(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
 }
 
 
-    public buildingDown(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void buildingDown(PathFindingLayerInterface pathFindingLayerInterface){
 }
 
 
-    public buildingChaseDown(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
+    public: void buildingChaseDown(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
 }
 
 
-    public buildingChaseUp(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
+    public: void buildingChaseUp(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle){
 }
 
 
-    public buildingLeft(){
+    public: void buildingLeft(){
 }
 
 
-    public buildingRight(){
+    public: void buildingRight(){
 }
 
 

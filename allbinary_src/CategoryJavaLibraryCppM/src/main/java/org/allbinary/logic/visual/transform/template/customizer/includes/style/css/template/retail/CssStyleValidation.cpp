@@ -75,70 +75,63 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CssStyleValidation: public Validation: public DomNodeInterface {
-        
+class CssStyleValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    cssStyleElementVector: Vector;
+    protected: Vector cssStyleElementVector;
 
-public constructor (){
-
-            super();
-        this.cssStyleElementVector= new Vector();
+public: CssStyleValidation(){
+this->cssStyleElementVector= Vector();
     
 }
 
 
-public constructor (Document document){
-
-            super();
-        this.cssStyleElementVector= StylesValidationFactory.getInstance()!.getInstance(document);
+public: CssStyleValidation(Document document){
+this->cssStyleElementVector= StylesValidationFactory::getInstance().getInstance(document);
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.cssStyleElementVector= StylesValidationFactory.getInstance(hashMap);
+public: CssStyleValidation(HashMap<any, any> hashMap){
+this->cssStyleElementVector= StylesValidationFactory::getInstance(hashMap);
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    isValid: Boolean = Boolean.TRUE;;
+    Boolean isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-    size: int32_t = this.cssStyleElementVector!.length!;;
+    int32_t size = this->cssStyleElementVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    styleValidationInterface: ValidationInterface = this.cssStyleElementVector!.get(i) as ValidationInterface;;
+    ValidationInterface styleValidationInterface = this->cssStyleElementVector.get(i) as ValidationInterface;;
     
 
-                        if(!styleValidationInterface!.isValid().valueOf())
+                        if(!styleValidationInterface.isValid().valueOf())
                         
                                     {
-                                    isValid= Boolean.FALSE;
+                                    isValid= Boolean::FALSE;
     
 
                                     }
@@ -146,10 +139,10 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("End: " +isValid, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("End: " +isValid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -165,10 +158,10 @@ public constructor (HashMap<any, any> hashMap){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -177,34 +170,34 @@ public constructor (HashMap<any, any> hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -220,7 +213,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -230,7 +223,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -242,29 +235,29 @@ public constructor (HashMap<any, any> hashMap){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(StylesData.getInstance()!.NAME)!;;
+    Node node = document.createElement(StylesData::getInstance().NAME);;
     
 
-    styleNode: Node = document.createElement(StyleData.getInstance()!.NAME)!;;
+    Node styleNode = document.createElement(StyleData::getInstance().NAME);;
     
 node.appendChild(styleNode);
     
 
-    size: int32_t = this.cssStyleElementVector!.length!;;
+    int32_t size = this->cssStyleElementVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    styleDomNodeInterface: DomNodeInterface = this.cssStyleElementVector!.get(i) as DomNodeInterface;;
+    DomNodeInterface styleDomNodeInterface = this->cssStyleElementVector.get(i) as DomNodeInterface;;
     
-styleNode!.appendChild(styleDomNodeInterface!.toXmlNode(document));
+styleNode.appendChild(styleDomNodeInterface.toXmlNode(document));
     
 }
 

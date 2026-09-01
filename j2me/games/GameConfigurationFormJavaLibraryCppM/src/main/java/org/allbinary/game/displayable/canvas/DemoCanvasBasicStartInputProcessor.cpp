@@ -65,9 +65,8 @@
         #include "BasicMenuInputProcessor.h"
 
 class DemoCanvasBasicStartInputProcessor: public BasicMenuInputProcessor {
-        
 
-public constructor (BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas){
+public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas){
             super(gameKeyEventList,  -1, gameCanvas);
                     
 
@@ -78,30 +77,30 @@ public constructor (BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas){
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList(){
+    public: int32_t processInputList(){
 
-    list: BasicArrayList = this.getGameKeyEventList()!;;
+    BasicArrayList list = this->getGameKeyEventList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
     
-this.logUtil!.putF(new StringMaker().append("Start GameKey: ")!.append(StringUtil.getInstance()!.toString(gameKeyEvent))!.toString(), this, GameInputStrings.getInstance()!.PROCESS_INPUT);
+this->logUtil.putF(StringMaker().append("Start GameKey: ").append(StringUtil::getInstance().toString(gameKeyEvent)).toString(), this, GameInputStrings::getInstance().PROCESS_INPUT);
     
 }
 
-this.getCanvas()!.getCustomCommandListener()!.commandAction(GameCommandsFactory.getInstance()!.START_COMMAND, NullCanvas.NULL_CANVAS);
+this->getCanvas().getCustomCommandListener().commandAction(GameCommandsFactory::getInstance().START_COMMAND, NullCanvas::NULL_CANVAS);
     
 
 

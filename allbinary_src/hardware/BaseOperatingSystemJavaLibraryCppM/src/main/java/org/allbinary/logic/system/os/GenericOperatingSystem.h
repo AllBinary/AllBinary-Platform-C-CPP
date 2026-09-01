@@ -74,39 +74,38 @@
 class GenericOperatingSystem
             : public Object
         : public OperatingSystemInterface {
-        
 
-    private: const osName: string;
+    private: const std::string osName;
 
-    private: const osArch: string;
+    private: const std::string osArch;
 
-    private: const osVersion: string;
+    private: const std::string osVersion;
 
-    private: const characterSet: CharacterSet = new CharacterSet();
+    private: const CharacterSet characterSet = CharacterSet();
 
-    scalable: bool = false;
+    protected: bool scalable = false;
 
-public constructor ();
+public: GenericOperatingSystem();
 
-    public string getName();
+    public: std::string getName();
 
-    public string getVersion();
+    public: std::string getVersion();
 
-    public string getArch();
+    public: std::string getArch();
 
-    public CharacterSet getCharacterSet();
+    public: CharacterSet getCharacterSet();
 
-    public bool isOverScan();
+    public: bool isOverScan();
 
-    public int32_t getOverScanXPercent();
+    public: int32_t getOverScanXPercent();
 
-    public int32_t getOverScanYPercent();
+    public: int32_t getOverScanYPercent();
 
-    public bool isScalable();
+    public: bool isScalable();
 
-    public bool isAutoHide();
+    public: bool isAutoHide();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

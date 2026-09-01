@@ -50,62 +50,59 @@
         #include "GraphicsInterface.h"
 #include "NullGL10.h"
 
-class OpenGLESGraphics: public Graphics: public OpenGLSurfaceChangedInterface, public GraphicsInterface {
-        
+class OpenGLESGraphics: public Graphics, public OpenGLSurfaceChangedInterface, public GraphicsInterface {
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    gl: GL10 = NullGL10.NULL_GL10;
+    protected: GL10 gl = NullGL10::NULL_GL10;
 
-public constructor (){
-
-            super();
-        }
-
-
-    public updateGL(GL gl){
+public: OpenGLESGraphics(){
 }
 
 
-    public set(GL gl){
+    public: void updateGL(GL gl){
 }
 
 
-                //@Throws(Exception.constructor)
-            
-    public init(){
+    public: void set(GL gl){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(){
+    public: void init(){
 }
 
 
-    public setOrthoginalMode(){
+                //@Throws(Exception.constructor)
+            
+    public: void update(){
 }
 
 
-    public setCameraMode(){
+    public: void setOrthoginalMode(){
 }
 
 
-    public GL10 getGl10(){
+    public: void setCameraMode(){
+}
+
+
+    public: GL10 getGl10(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gl;
+                        return this->gl;
     
 }
 
 
-    public setFontDebug(Font font, FontDebugBase fontDebug){
+    public: void setFontDebug(Font font, FontDebugBase fontDebug){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

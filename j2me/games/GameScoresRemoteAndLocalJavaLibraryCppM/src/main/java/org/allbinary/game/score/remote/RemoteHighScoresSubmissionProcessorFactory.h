@@ -47,11 +47,10 @@
 class RemoteHighScoresSubmissionProcessorFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: RemoteHighScoresSubmissionProcessorInterface = new RemoteHighScoresSubmissionProcessor();
+    private: static const RemoteHighScoresSubmissionProcessorInterface SINGLETON = RemoteHighScoresSubmissionProcessor();
 
-    public static RemoteHighScoresSubmissionProcessorInterface getInstance();
+    public: static RemoteHighScoresSubmissionProcessorInterface getInstance();
 
 };
 

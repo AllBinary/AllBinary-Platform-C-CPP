@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CONSTRUCTORUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_CONSTRUCTORUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -56,13 +58,12 @@
 class ConstructorUtil
             : public Object
          {
-        
 
-    public static string viewAll(Function myClass, string lineBreak);
+    public: static std::string viewAll(Function myClass, std::string lineBreak);
 
-    public static string view(Constructor constructor, string lineBreak);
+    public: static std::string view(Constructor constructor, std::string lineBreak);
 
-private constructor ();
+private: ConstructorUtil();
 
 };
 

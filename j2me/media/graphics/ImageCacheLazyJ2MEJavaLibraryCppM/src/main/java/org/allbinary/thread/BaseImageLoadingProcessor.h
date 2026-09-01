@@ -45,13 +45,12 @@
 class BaseImageLoadingProcessor
             : public Object
          {
-        
 
-    private: static const instance: BaseImageLoadingProcessor = new BaseImageLoadingProcessor();
+    private: static BaseImageLoadingProcessor instance() { return BaseImageLoadingProcessor(); }
 
-    public static BaseImageLoadingProcessor getInstance();
+    public: static BaseImageLoadingProcessor getInstance();
 
-    public runTask();
+    public: void runTask();
 
 };
 

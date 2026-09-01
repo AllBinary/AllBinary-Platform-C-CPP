@@ -56,29 +56,26 @@
         #include "AllBinaryLayerFactoryInterface.h"
 
 class AllBinaryLayerCircularPool: public BaseCircularPool {
-        
 
-protected constructor (){
-
-            super();
-        }
+protected: AllBinaryLayerCircularPool(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
-this.circularIndexUtil= CircularIndexUtil.createInstance(total);
+    public: void initAllBinaryLayerCircularPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
+this->circularIndexUtil= CircularIndexUtil::createInstance(total);
     
-this.OBJECT_ARRAY= new Array(total);
+this->OBJECT_ARRAY= new Array(total);
     
 
 
 
 
                         for (
-    localIndex: int32_t = 0;localIndex < total; localIndex++)
+    int32_t localIndex = 0;localIndex < total; localIndex++)
         {
-this.OBJECT_ARRAY[localIndex]= allbinaryLayerFactoryInterface!.getInstance();
+this->OBJECT_ARRAY[localIndex]= allbinaryLayerFactoryInterface.getInstance();
     
 }
 

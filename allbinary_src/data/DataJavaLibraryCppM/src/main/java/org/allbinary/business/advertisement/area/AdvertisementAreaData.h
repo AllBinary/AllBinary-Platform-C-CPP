@@ -45,19 +45,18 @@
 class AdvertisementAreaData
             : public Object
          {
-        
 
-    private: static const instance: AdvertisementAreaData = new AdvertisementAreaData();
+    private: static AdvertisementAreaData instance() { return AdvertisementAreaData(); }
 
-    public static AdvertisementAreaData getInstance();
+    public: static AdvertisementAreaData getInstance();
 
-private constructor ();
+private: AdvertisementAreaData();
 
-    public const NAME: string = "ADVERTISEMENT_NAME";
+    public: const std::string NAME = "ADVERTISEMENT_NAME";
 
-    public const DESCRIPTION: string = "ADVERTISEMENT_DESCRIPTION";
+    public: const std::string DESCRIPTION = "ADVERTISEMENT_DESCRIPTION";
 
-    public const CONSTRAINTS: string = "ADVERTISEMENT_CONSTRAINTS";
+    public: const std::string CONSTRAINTS = "ADVERTISEMENT_CONSTRAINTS";
 
 };
 

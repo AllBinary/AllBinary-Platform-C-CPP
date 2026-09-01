@@ -60,15 +60,14 @@
 class AdvancedRTSGameLayerPositionFinder
             : public Object
         : public LayerPositionFinderInterface {
-        
 
-    private: static const instance: AdvancedRTSGameLayerPositionFinder = new AdvancedRTSGameLayerPositionFinder();
+    private: static AdvancedRTSGameLayerPositionFinder instance() { return AdvancedRTSGameLayerPositionFinder(); }
 
-    public static AdvancedRTSGameLayerPositionFinder getInstance();
+    public: static AdvancedRTSGameLayerPositionFinder getInstance();
 
-private constructor ();
+private: AdvancedRTSGameLayerPositionFinder();
 
-    public AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
+    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
 
 };
 

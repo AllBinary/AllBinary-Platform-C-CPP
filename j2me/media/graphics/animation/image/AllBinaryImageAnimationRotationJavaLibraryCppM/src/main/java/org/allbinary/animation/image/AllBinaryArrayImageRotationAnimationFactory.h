@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYARRAYIMAGEROTATIONANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -73,35 +75,34 @@
 #include "AdjustedImageArrayRotationAnimation.h"
 
 class AllBinaryArrayImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryArrayImageRotationAnimationFactory createFactory(Image image, int32_t dx, int32_t dy);
+    public: static AllBinaryArrayImageRotationAnimationFactory createFactory(Image image, int32_t dx, int32_t dy);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryArrayImageRotationAnimationFactory createFactoryA(Image image, int32_t dx, int32_t dy, int32_t angleIncrement);
+    public: static AllBinaryArrayImageRotationAnimationFactory createFactoryA(Image image, int32_t dx, int32_t dy, int32_t angleIncrement);
 
-    private: imageArray: std::vector<Image> = NullImage.NULL_IMAGE_ARRAY;
+    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
-    private: angleIncrement: int32_t;
+    private: int32_t angleIncrement;
 
-public constructor (Image image, int32_t width, int32_t height, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
-
-                //@Throws(Exception.constructor)
-            
-    init();
-
-    initDXY(int32_t dx, int32_t dy);
+public: AllBinaryArrayImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    private: void init();
 
-    setImageArray(std::vector<Image> imageArray);
+    private: void initDXY(int32_t dx, int32_t dy);
 
-    int32_t getAngleIncrement();
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstance(int32_t instanceId);
+
+    protected: void setImageArray(std::vector<Image> imageArray);
+
+    protected: int32_t getAngleIncrement();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYJ2SEIMAGEROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Throwable.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -82,71 +84,70 @@
 #include "AlphaProcessor.h"
 
 class AllBinaryJ2SEImageRotationAnimation: public ImageBaseRotationAnimation {
-        
 
-    private: const imageRotationUtil: ImageRotationUtil = ImageRotationUtil.getInstance()!;
+    private: const ImageRotationUtil imageRotationUtil = ImageRotationUtil::getInstance();
 
-    private: const imageModifierUtil: ImageModifierUtil = ImageModifierUtil.getInstanceOrCreate()!;
+    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const realOriginalImage: Image;
+    private: Image realOriginalImage;
 
-    private: const originalImageArray: std::vector<Image> = new Array(1);
+    private: const std::vector<Image> originalImageArray = new Array(1);
 
-    private: const twoImages: std::vector<Image> = new Array(2);
+    private: const std::vector<Image> twoImages = new Array(2);
 
-    private: imageToShow: Image;
+    private: Image imageToShow;
 
-    private: bufferedImageIndex: int32_t= 0;
+    private: int32_t bufferedImageIndex= 0;
 
-    private: lastScaleX: float = 1.0;
+    private: float lastScaleX = 1.0;
 
-    private: lastScaleY: float = 1.0;
+    private: float lastScaleY = 1.0;
 
-    private: scaleX: float = 1.0;
+    private: float scaleX = 1.0;
 
-    private: scaleY: float = 1.0;
+    private: float scaleY = 1.0;
 
-    private: maxScaleX: float= 0.0;
+    private: float maxScaleX= 0.0;
 
-    private: maxScaleY: float= 0.0;
+    private: float maxScaleY= 0.0;
 
-    private: alphaProcessor: ModifierBaseProcessor = ModifierBaseProcessor.getInstance()!;
+    private: ModifierBaseProcessor alphaProcessor = ModifierBaseProcessor::getInstance();
 
-    private: setColorProcessor: ModifierBaseProcessor = ModifierBaseProcessor.getInstance()!;
+    private: ModifierBaseProcessor setColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: changeColorProcessor: ModifierBaseProcessor = ModifierBaseProcessor.getInstance()!;
+    private: ModifierBaseProcessor changeColorProcessor = ModifierBaseProcessor::getInstance();
 
-    private: scaleProcessor: ScaleBaseProcessor = ScaleProcessor.getInstance()!;
+    private: ScaleBaseProcessor scaleProcessor = ScaleProcessor::getInstance();
 
-public constructor (Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+public: AllBinaryJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor basicColor);
 
-    public setAlpha(int32_t alpha);
+    public: void setAlpha(int32_t alpha);
 
-    public setScale(float scaleX, float scaleY);
+    public: void setScale(float scaleX, float scaleY);
 
-    public setMaxScale(float maxScaleX, float maxScaleY);
+    public: void setMaxScale(float maxScaleX, float maxScaleY);
 
-    public nextRotation();
+    public: void nextRotation();
 
-    public previousRotation();
+    public: void previousRotation();
 
-    updateImage();
+    private: void updateImage();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public swap();
+    public: void swap();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public close();
+    public: void close();
 
                 //@Throws(Throwable.constructor)
             
-    finalize();
+    protected: void finalize();
 
 };
 

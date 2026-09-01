@@ -55,73 +55,72 @@
 class DbConnectionInfo
             : public Object
         : public DatabaseConnectionInfoInterface {
-        
 
-    private: jdbcDriver: string;
+    private: std::string jdbcDriver;
 
-    private: name: string;
+    private: std::string name;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: schema: string;
+    private: std::string schema;
 
-    private: server: string;
+    private: std::string server;
 
-    private: port: string;
+    private: std::string port;
 
-    private: url: string;
+    private: std::string url;
 
-    private: host: string;
+    private: std::string host;
 
-    private: const SCHEMA_SEP: string = "://";
+    private: const std::string SCHEMA_SEP = "://";
 
-    private: const USER_NAME_KEY: string = "?user=";
+    private: const std::string USER_NAME_KEY = "?user=";
 
-    private: const PASSWORD_KEY: string = "&password=";
+    private: const std::string PASSWORD_KEY = "&password=";
 
-public constructor ();
+public: DbConnectionInfo();
 
-    updateUrl();
+    private: void updateUrl();
 
-    public string getUrl();
+    public: std::string getUrl();
 
-    public string getJdbcDriver();
+    public: std::string getJdbcDriver();
 
-    public string getName();
+    public: std::string getName();
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getPassword();
+    public: std::string getPassword();
 
-    updateHost();
+    private: void updateHost();
 
-    public string getHost();
+    public: std::string getHost();
 
-    public string getSchema();
+    public: std::string getSchema();
 
-    public string getServer();
+    public: std::string getServer();
 
-    public string getPort();
+    public: std::string getPort();
 
-    public setJdbcDriver(string value);
+    public: void setJdbcDriver(std::string value);
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public setUserName(string value);
+    public: void setUserName(std::string value);
 
-    public setPassword(string value);
+    public: void setPassword(std::string value);
 
-    public setSchema(string value);
+    public: void setSchema(std::string value);
 
-    public setServer(string value);
+    public: void setServer(std::string value);
 
-    public setPort(string value);
+    public: void setPort(std::string value);
 
-    public string getUserNameKey();
+    public: std::string getUserNameKey();
 
-    public string getPasswordKey();
+    public: std::string getPasswordKey();
 
 };
 

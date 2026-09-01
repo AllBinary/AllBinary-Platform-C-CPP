@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTINPUTAUTOMATIONCAPTUREWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_TEST_TESTINPUTAUTOMATIONCAPTUREWORKER_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -82,33 +84,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: genericProfileActions: GenericProfileActions;
+    private: GenericProfileActions genericProfileActions;
 
-    private: const MESSAGE: string = "GenericInputAutomationCaptureWorker";
+    private: const std::string MESSAGE = "GenericInputAutomationCaptureWorker";
 
-    private: const PROCESS_DATA_WORKER_RESULTS: string = "processDataWorkerResults";
+    private: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
 
-    private: const IMAGE_AVAILABLE_SO_PROCESSING: string = "Image Available so processing";
+    private: const std::string IMAGE_AVAILABLE_SO_PROCESSING = "Image Available so processing";
 
-    private: const IMAGE_NOT_AVAILABLE: string = "Image Not Available";
+    private: const std::string IMAGE_NOT_AVAILABLE = "Image Not Available";
 
-public constructor (InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public processDataWorkerResults();
+public: TestInputAutomationCaptureWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void processDataWorkerResults();
 
-    public GenericProfileActions getGenericProfileActions();
+                //@Throws(Exception.constructor)
+            
+    public: void process();
 
-    public setGenericProfileActions(GenericProfileActions genericProfileActions);
+    public: GenericProfileActions getGenericProfileActions();
+
+    public: void setGenericProfileActions(GenericProfileActions genericProfileActions);
 
 };
 

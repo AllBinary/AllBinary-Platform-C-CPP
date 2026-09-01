@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
@@ -46,30 +48,27 @@
 class InputAutomationModuleService
             : public Object
         : public InputAutomationModuleServiceInterface {
-        
 
-    private: inputAutomationModuleInterfaceArray: std::vector<InputAutomationModuleFactoryInterface>;
+    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray;
 
-public constructor (std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray){
-
-            super();
-        this.setInputAutomationModuleInterfaceArray(inputAutomationModuleInterfaceArray);
+public: InputAutomationModuleService(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray){
+this->setInputAutomationModuleInterfaceArray(inputAutomationModuleInterfaceArray);
     
 }
 
 
-    public std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray(){
+    public: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputAutomationModuleInterfaceArray;
+                        return this->inputAutomationModuleInterfaceArray;
     
 }
 
 
-    public setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray){
-this.inputAutomationModuleInterfaceArray= inputAutomationModuleInterfaceArray;
+    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray){
+this->inputAutomationModuleInterfaceArray= inputAutomationModuleInterfaceArray;
     
 }
 

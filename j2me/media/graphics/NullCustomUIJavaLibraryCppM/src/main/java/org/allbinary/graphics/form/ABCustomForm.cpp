@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/RuntimeException.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -57,29 +59,26 @@
         #include "CustomScreen.h"
 
 class ABCustomForm: public CustomScreen {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-
-            super();
-        }
+public: ABCustomForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+}
 
 
-    public std::vector<ABCustomItem> getAllitems(){
+    public: std::vector<ABCustomItem> getAllitems(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 
 
-    public int32_t size(){
+    public: int32_t size(){
 
 
 
@@ -89,11 +88,11 @@ public constructor (string title, std::vector<ABCustomItem> items, BasicColor ba
 }
 
 
-    public setSelectedIndex(int32_t index){
+    public: void setSelectedIndex(int32_t index){
 }
 
 
-    public int32_t getSelectedIndex(){
+    public: int32_t getSelectedIndex(){
 
 
 
@@ -103,15 +102,15 @@ public constructor (string title, std::vector<ABCustomItem> items, BasicColor ba
 }
 
 
-    public deleteAll(){
+    public: void deleteAll(){
 }
 
 
-    public delete(int32_t itemNum){
+    public: void delete_(int32_t itemNum){
 }
 
 
-    public int32_t append(ABCustomItem item){
+    public: int32_t append(ABCustomItem item){
 
 
 
@@ -121,43 +120,43 @@ public constructor (string title, std::vector<ABCustomItem> items, BasicColor ba
 }
 
 
-    public insert(int32_t itemNum, ABCustomItem item){
+    public: void insert(int32_t itemNum, ABCustomItem item){
 }
 
 
-    public set(int32_t itemNum, ABCustomItem item){
+    public: void set(int32_t itemNum, ABCustomItem item){
 }
 
 
-    public ABCustomItem get(int32_t itemNum){
+    public: ABCustomItem get(int32_t itemNum){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem.getNullInstance();;
+                        return ABCustomItem::getNullInstance();;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public string getTitle(){
+    public: std::string getTitle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

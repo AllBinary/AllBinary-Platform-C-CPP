@@ -76,27 +76,26 @@
 #include "AllBinaryAdjustedJ2SEImageRotationAnimation.h"
 
 class AllBinaryJ2SEImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryJ2SEImageRotationAnimationFactory createDXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
+    public: static AllBinaryJ2SEImageRotationAnimationFactory createDXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
 
-    const angleIncrementP: int16_t;
+    protected: int16_t angleIncrementP;
 
-    private: const resizeCanvasForRotation: bool;
+    private: bool resizeCanvasForRotation;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
-
-                //@Throws(Exception.constructor)
-            
-    Image getCanvasImage();
+public: AllBinaryJ2SEImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    private: Image getCanvasImage();
 
-    int16_t getAngleIncrement();
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstance(int32_t instanceId);
+
+    protected: int16_t getAngleIncrement();
 
 };
 

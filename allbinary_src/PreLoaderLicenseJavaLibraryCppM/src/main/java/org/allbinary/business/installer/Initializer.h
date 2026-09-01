@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Class.h"
@@ -86,107 +88,106 @@
 class Initializer
             : public Object
          {
-        
 
-    private: static const MAXDB: int32_t = 30;
+    private: static const int32_t MAXDB = 30;
 
-    private: static const MAX: int32_t = 16;
+    private: static const int32_t MAX = 16;
 
-    private: static const MIN: int32_t = 4;
+    private: static const int32_t MIN = 4;
 
-    private: static const MINPASSWORD: int32_t = 0;
+    private: static const int32_t MINPASSWORD = 0;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userJdbcDriver: string;
+    private: std::string userJdbcDriver;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: userUserName: string;
+    private: std::string userUserName;
 
-    private: userPassword: string;
+    private: std::string userPassword;
 
-    private: userSchema: string;
+    private: std::string userSchema;
 
-    private: userServer: string;
+    private: std::string userServer;
 
-    private: userPort: string;
+    private: std::string userPort;
 
-    private: historyJdbcDriver: string;
+    private: std::string historyJdbcDriver;
 
-    private: historyName: string;
+    private: std::string historyName;
 
-    private: historyUserName: string;
+    private: std::string historyUserName;
 
-    private: historyPassword: string;
+    private: std::string historyPassword;
 
-    private: historySchema: string;
+    private: std::string historySchema;
 
-    private: historyServer: string;
+    private: std::string historyServer;
 
-    private: historyPort: string;
+    private: std::string historyPort;
 
-    private: logJdbcDriver: string;
+    private: std::string logJdbcDriver;
 
-    private: logName: string;
+    private: std::string logName;
 
-    private: logUserName: string;
+    private: std::string logUserName;
 
-    private: logPassword: string;
+    private: std::string logPassword;
 
-    private: logSchema: string;
+    private: std::string logSchema;
 
-    private: logServer: string;
+    private: std::string logServer;
 
-    private: logPort: string;
+    private: std::string logPort;
 
-    private: inventoryJdbcDriver: string;
+    private: std::string inventoryJdbcDriver;
 
-    private: inventoryName: string;
+    private: std::string inventoryName;
 
-    private: inventoryUserName: string;
+    private: std::string inventoryUserName;
 
-    private: inventoryPassword: string;
+    private: std::string inventoryPassword;
 
-    private: inventorySchema: string;
+    private: std::string inventorySchema;
 
-    private: inventoryServer: string;
+    private: std::string inventoryServer;
 
-    private: inventoryPort: string;
+    private: std::string inventoryPort;
 
-    private: staticPagesJdbcDriver: string;
+    private: std::string staticPagesJdbcDriver;
 
-    private: staticPagesName: string;
+    private: std::string staticPagesName;
 
-    private: staticPagesUserName: string;
+    private: std::string staticPagesUserName;
 
-    private: staticPagesPassword: string;
+    private: std::string staticPagesPassword;
 
-    private: staticPagesSchema: string;
+    private: std::string staticPagesSchema;
 
-    private: staticPagesServer: string;
+    private: std::string staticPagesServer;
 
-    private: staticPagesPort: string;
+    private: std::string staticPagesPort;
 
-public constructor (Map map);
+public: Initializer(Map map);
 
-public constructor (HashMap<any, any> initHashMap);
+public: Initializer(HashMap<any, any> initHashMap);
 
-    public getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<any, any> hashMap);
 
-    bool isJdbcDriverValid(string jdbcDriverClassPathString);
+    private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString);
 
-    public bool isValid();
+    public: bool isValid();
 
-    string getJdbcDriverValidationInfo(string jdbcDriver);
+    private: std::string getJdbcDriverValidationInfo(std::string jdbcDriver);
 
-    string getJdbcDriverSolutionInfo();
+    private: std::string getJdbcDriverSolutionInfo();
 
-    public string getInvalidInfo();
+    public: std::string getInvalidInfo();
 
                 //@Throws(Exception.constructor)
             
-    public set();
+    public: void set();
 
 };
 

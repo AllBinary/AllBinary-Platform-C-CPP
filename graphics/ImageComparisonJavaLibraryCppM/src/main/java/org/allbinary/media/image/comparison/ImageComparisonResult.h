@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_IMAGECOMPARISONRESULT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Long.h"
@@ -68,57 +70,56 @@
 class ImageComparisonResult
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const bufferedImages: std::vector<BufferedImage> = new Array(2);
+    private: const std::vector<BufferedImage> bufferedImages = new Array(2);
 
-    public const name: string;
+    public: std::string name;
 
-    public const isSameHeight: bool= false;
+    public: const bool isSameHeight= false;
 
-    public const isSameWidth: bool= false;
+    public: const bool isSameWidth= false;
 
-    public const imageHeight: int32_t;
+    public: int32_t imageHeight;
 
-    public const imageWidth: int32_t;
+    public: int32_t imageWidth;
 
-    private: const nonMatchingPixelVector: Vector;
+    private: Vector nonMatchingPixelVector;
 
-    private: const frameOne: Long;
+    private: Long frameOne;
 
-    private: const frameTwo: Long;
+    private: Long frameTwo;
 
-    public pixelsThatMatch: int32_t= 0;
+    public: int32_t pixelsThatMatch= 0;
 
-    public pixelsIgnored: int32_t= 0;
+    public: int32_t pixelsIgnored= 0;
 
-    private: tolerance: int32_t= 0;
+    private: int32_t tolerance= 0;
 
-    private: matchingPercent: float =  -1;
+    private: float matchingPercent =  -1;
 
-public constructor (string name, BufferedImage bufferedImage, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance);
+public: ImageComparisonResult(std::string name, BufferedImage bufferedImage, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance);
 
-    public float getMatchingPercent();
+    public: float getMatchingPercent();
 
-    public add(PixelDelta pixel);
+    public: void add(PixelDelta pixel);
 
-    public Vector getNonMatchingPixelVector();
+    public: Vector getNonMatchingPixelVector();
 
-    public string toString();
+    public: std::string toString();
 
-    public std::vector<BufferedImage> getBufferedImages();
+    public: std::vector<BufferedImage> getBufferedImages();
 
-    public int32_t getTolerance();
+    public: int32_t getTolerance();
 
-    setTolerance(int32_t tolerance);
+    private: void setTolerance(int32_t tolerance);
 
-    public Long getFrameOne();
+    public: Long getFrameOne();
 
-    public Long getFrameTwo();
+    public: Long getFrameTwo();
 
 };
 

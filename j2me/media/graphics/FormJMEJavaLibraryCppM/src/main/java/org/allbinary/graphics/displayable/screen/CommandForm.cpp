@@ -94,17 +94,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ScreenRepaintProcessorFactory.h"
 
-class CommandForm: public Form: public MyCommandInterface, public MenuListener {
-        
+class CommandForm: public Form, public MyCommandInterface, public MenuListener {
 
-    private: static NULL_COMMAND_FORM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_COMMAND_FORM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static CommandForm getNullCommandForm(){
+    public: static CommandForm getNullCommandForm(){
 
-                        if(CommandForm.NULL_COMMAND_FORM == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(CommandForm::NULL_COMMAND_FORM == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    CommandForm.NULL_COMMAND_FORM= new CommandForm(NullCommandListener.NULL_COMMAND_LISTENER, StringUtil.getInstance()!.EMPTY_STRING, BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+                                    CommandForm::NULL_COMMAND_FORM= CommandForm(NullCommandListener::NULL_COMMAND_LISTENER, StringUtil::getInstance().EMPTY_STRING, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
     
 
                                     }
@@ -113,67 +112,67 @@ class CommandForm: public Form: public MyCommandInterface, public MenuListener {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandForm.NULL_COMMAND_FORM as CommandForm;
+                        return CommandForm::NULL_COMMAND_FORM as CommandForm;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const repaintProcessor: Processor = ScreenRepaintProcessorFactory.getInstance()!.create(this)!;
+    private: const Processor repaintProcessor = ScreenRepaintProcessorFactory::getInstance().create(this);
 
-    private: commandStack: Stack<any>;
+    private: Stack<any> commandStack;
 
-public constructor (CommandListener commandListener, string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+public: CommandForm(CommandListener commandListener, std::string formTitle, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
             super(formTitle);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.commandStack= new Stack<any>();
+this->commandStack= Stack<any>();
     
 
         try {
-            this.repaintProcessor!.process();
+            this->repaintProcessor.process();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 }
 
 }
 
 
-    public initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener cmdListener){
 }
 
 
-    public open(){
-this.logUtil!.putF(this.commonStrings!.START, this, "open");
+    public: void open(){
+this->logUtil.putF(this->commonStrings.START, this, "open");
     
 }
 
 
-    public close(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CLOSE);
+    public: void close(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CLOSE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(){
-this.repaintProcessor!.process();
+    public: void update(){
+this->repaintProcessor.process();
     
 }
 
 
-    public int32_t getSourceId(){
+    public: int32_t getSourceId(){
 
 
 
@@ -183,26 +182,26 @@ this.repaintProcessor!.process();
 }
 
 
-    public addCommand(Command command){
-this.commandStack!.push(command);
+    public: void addCommand(Command command){
+this->commandStack.push(command);
     
 super.addCommand(command);
     
 }
 
 
-    public removeAllCommands(){
+    public: void removeAllCommands(){
 
-    size: int32_t = this.commandStack!.length!;;
+    int32_t size = this->commandStack.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-super.removeCommand(this.commandStack!.pop() as Command);
+super.removeCommand(this->commandStack.pop() as Command);
     
 }
 

@@ -53,15 +53,14 @@
         #include "TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
 
 class TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory: public TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory {
-        
 
-public constructor ();
+public: TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level);
+    public: void init(int32_t level);
 
-    public bool isFeature();
+    public: bool isFeature();
 
 };
 

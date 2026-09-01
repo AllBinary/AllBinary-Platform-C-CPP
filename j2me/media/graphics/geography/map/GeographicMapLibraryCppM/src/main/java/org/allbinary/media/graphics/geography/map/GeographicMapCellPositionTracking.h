@@ -58,31 +58,30 @@
 class GeographicMapCellPositionTracking
             : public Object
          {
-        
 
-    private: currentGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition currentGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: previousGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: newGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition newGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: currentCellType: GeographicMapCellType = GeographicMapCellType.NULL_GEOGRAPHIC_MAP_CELL_TYPE;
+    private: GeographicMapCellType currentCellType = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public GeographicMapCellType getCurrentOverCellType(BasicGeographicMap geographicMap);
+public: GeographicMapCellPositionTracking();
 
                 //@Throws(Exception.constructor)
             
-    public bool updateStart(AllBinaryGameCanvasInterface gameCanvasInterface, AllBinaryLayer layer);
+    public: GeographicMapCellType getCurrentOverCellType(BasicGeographicMap geographicMap);
 
-    public bool updateEnd();
+                //@Throws(Exception.constructor)
+            
+    public: bool updateStart(AllBinaryGameCanvasInterface gameCanvasInterface, AllBinaryLayer layer);
 
-    public GeographicMapCellPosition getPreviousGeographicMapCellPosition();
+    public: bool updateEnd();
 
-    public GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: GeographicMapCellPosition getPreviousGeographicMapCellPosition();
+
+    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition();
 
 };
 

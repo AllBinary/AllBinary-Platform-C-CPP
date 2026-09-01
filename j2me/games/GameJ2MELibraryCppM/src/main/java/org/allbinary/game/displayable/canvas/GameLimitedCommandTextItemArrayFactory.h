@@ -57,15 +57,14 @@
 class GameLimitedCommandTextItemArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: GameLimitedCommandTextItemArrayFactory = new GameLimitedCommandTextItemArrayFactory();
+    private: static GameLimitedCommandTextItemArrayFactory instance() { return GameLimitedCommandTextItemArrayFactory(); }
 
-    public static GameLimitedCommandTextItemArrayFactory getInstance();
+    public: static GameLimitedCommandTextItemArrayFactory getInstance();
 
-    private: const commandTextItemArrayFactory: CommandTextItemArrayFactory = new CommandTextItemArrayFactory(new LimitCommandsVisitor());
+    private: const CommandTextItemArrayFactory commandTextItemArrayFactory = CommandTextItemArrayFactory(LimitCommandsVisitor());
 
-    public CommandTextItemArrayFactory getCommandTextItemArrayFactory();
+    public: CommandTextItemArrayFactory getCommandTextItemArrayFactory();
 
 };
 

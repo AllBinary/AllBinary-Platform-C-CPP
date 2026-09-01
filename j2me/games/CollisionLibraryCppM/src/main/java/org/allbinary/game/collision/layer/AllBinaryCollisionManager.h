@@ -59,21 +59,20 @@
 class AllBinaryCollisionManager
             : public Object
          {
-        
 
-    private: static allBinaryCollisionManager: AllBinaryCollisionManager = new AllBinaryCollisionManager();
+    private: static AllBinaryCollisionManager allBinaryCollisionManager = AllBinaryCollisionManager();
 
-    public static AllBinaryCollisionManager getInstance();
+    public: static AllBinaryCollisionManager getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public process(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, int32_t startIndex);
+private: AllBinaryCollisionManager();
 
                 //@Throws(Exception.constructor)
             
-    collide(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2);
+    public: void process(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, int32_t startIndex);
+
+                //@Throws(Exception.constructor)
+            
+    private: void collide(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2);
 
 };
 

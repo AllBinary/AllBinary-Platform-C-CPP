@@ -42,7 +42,6 @@
         #include "MeteredGameObjectInterface.h"
 
 class HitPointGameObjectInterface: public MeteredGameObjectInterface {
-        
 
     bool isMoreThan(float aFloat);
 

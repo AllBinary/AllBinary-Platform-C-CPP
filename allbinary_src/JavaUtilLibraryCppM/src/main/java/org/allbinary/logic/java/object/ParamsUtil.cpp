@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -47,28 +49,27 @@
 class ParamsUtil
             : public Object
          {
-        
 
-    public static string viewParams(std::vector<Function> params){
+    public: static std::string viewParams(std::vector<Function> params){
 
                         if(params != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < params.length; index++)
+    int32_t index = 0;index < params.size(); index++)
         {
-stringBuffer!.append(" ");
+stringBuffer.append(" ");
     
-stringBuffer!.append(params[index]!.getName());
+stringBuffer.append(params[index]!.getName());
     
 }
 
@@ -76,7 +77,7 @@ stringBuffer!.append(params[index]!.getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                                     }
@@ -87,10 +88,8 @@ stringBuffer!.append(params[index]!.getName());
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ParamsUtil(){
+}
 
 
 };

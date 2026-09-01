@@ -69,60 +69,55 @@
 class FtpConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: ftpConfigurationInterface: FtpConfigurationInterface;
+    private: FtpConfigurationInterface ftpConfigurationInterface;
 
-public constructor (Node node){
-
-            super();
-        this.setFtpConfigurationInterface(new FtpConfiguration() as FtpConfigurationInterface);
+public: FtpConfigurationView(Node node){
+this->setFtpConfigurationInterface(FtpConfiguration() as FtpConfigurationInterface);
     
 
-    chileNodeList: NodeList = node.getChildNodes()!;;
+    NodeList chileNodeList = node.getChildNodes();;
     
 
-    server: string = DomNodeHelper.getTextNodeValue(FtpConfigurationData.SERVER, chileNodeList)!;;
+    std::string server = DomNodeHelper::getTextNodeValue(FtpConfigurationData::SERVER, chileNodeList);;
     
-this.getFtpConfigurationInterface()!.setServer(server);
-    
-
-    userName: string = DomNodeHelper.getTextNodeValue(FtpConfigurationData.USERNAME, chileNodeList)!;;
-    
-this.getFtpConfigurationInterface()!.setUserName(userName);
+this->getFtpConfigurationInterface().setServer(server);
     
 
-    password: string = DomNodeHelper.getTextNodeValue(FtpConfigurationData.PASSWORD, chileNodeList)!;;
+    std::string userName = DomNodeHelper::getTextNodeValue(FtpConfigurationData::USERNAME, chileNodeList);;
     
-this.getFtpConfigurationInterface()!.setPassword(password);
+this->getFtpConfigurationInterface().setUserName(userName);
     
 
-    path: string = DomNodeHelper.getTextNodeValue(FtpConfigurationData.PATH, chileNodeList)!;;
+    std::string password = DomNodeHelper::getTextNodeValue(FtpConfigurationData::PASSWORD, chileNodeList);;
     
-this.getFtpConfigurationInterface()!.setPath(path);
+this->getFtpConfigurationInterface().setPassword(password);
+    
+
+    std::string path = DomNodeHelper::getTextNodeValue(FtpConfigurationData::PATH, chileNodeList);;
+    
+this->getFtpConfigurationInterface().setPath(path);
     
 }
 
 
-public constructor (FtpConfigurationInterface ftpConfigurationInterface){
-
-            super();
-        this.setFtpConfigurationInterface(ftpConfigurationInterface);
+public: FtpConfigurationView(FtpConfigurationInterface ftpConfigurationInterface){
+this->setFtpConfigurationInterface(ftpConfigurationInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    ftpConfigurationMapping: FtpConfigurationMapping = new FtpConfigurationMapping(this.getFtpConfigurationInterface());;
+    FtpConfigurationMapping ftpConfigurationMapping = FtpConfigurationMapping(this->getFtpConfigurationInterface());;
     
 
-    hashMap: HashMap<any, any> = ftpConfigurationMapping!.toHashMap()!;;
+    HashMap<any, any> hashMap = ftpConfigurationMapping.toHashMap();;
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, FtpConfigurationData.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, FtpConfigurationData::NAME, hashMap);;
     
 
 
@@ -133,18 +128,18 @@ public constructor (FtpConfigurationInterface ftpConfigurationInterface){
 }
 
 
-    public FtpConfigurationInterface getFtpConfigurationInterface(){
+    public: FtpConfigurationInterface getFtpConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpConfigurationInterface;
+                        return this->ftpConfigurationInterface;
     
 }
 
 
-    public setFtpConfigurationInterface(FtpConfigurationInterface ftpConfigurationInterface){
-this.ftpConfigurationInterface= ftpConfigurationInterface;
+    public: void setFtpConfigurationInterface(FtpConfigurationInterface ftpConfigurationInterface){
+this->ftpConfigurationInterface= ftpConfigurationInterface;
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_BASICPLAYER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_BASICPLAYER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/media/Control.h>
@@ -72,78 +74,77 @@
 class BasicPlayer
             : public Object
         : public Player, public TimeBaseInterface, public Controllable2 {
-        
 
-    public static CONTROL_TYPE: string = "ToneControl";
+    public: static std::string CONTROL_TYPE = "ToneControl";
 
-    const listenersList: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList listenersList = BasicArrayListD();
 
-    private: timeBase: TimeBase;
+    private: TimeBase timeBase;
 
-    stateP: int32_t= 0;
+    protected: int32_t stateP= 0;
 
-    loopCountP: int32_t= 0;
+    protected: int32_t loopCountP= 0;
 
-public constructor ();
+public: BasicPlayer();
 
-    public string getContentType();
+    public: std::string getContentType();
 
-    public Control getControl(string controlType);
+    public: Control getControl(std::string controlType);
 
-    public std::vector<Control> getControls();
+    public: std::vector<Control> getControls();
 
-    public close();
+    public: void close();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addPlayerListener(PlayerListener playerListener);
+    public: void addPlayerListener(PlayerListener playerListener);
 
-    public removePlayerListener(PlayerListener playerListener);
+    public: void removePlayerListener(PlayerListener playerListener);
 
-    public int32_t getState();
+    public: int32_t getState();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setState(int32_t state);
+    public: void setState(int32_t state);
 
-    public int64_t getDuration();
+    public: int64_t getDuration();
 
-    public int64_t getMediaTime();
+    public: int64_t getMediaTime();
 
-    public TimeBase getTimeBase();
+    public: TimeBase getTimeBase();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setTimeBase(TimeBase timeBase);
+    public: void setTimeBase(TimeBase timeBase);
 
-    public deallocate();
+    public: void deallocate();
 
                 //@Throws(MediaException.constructor)
             
-    public prefetch();
+    public: void prefetch();
 
                 //@Throws(MediaException.constructor)
             
-    public realize();
+    public: void realize();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setLoopCount(int32_t count);
+    public: void setLoopCount(int32_t count);
 
-    int32_t getLoopCount();
-
-                //@Throws(MediaException.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public int64_t setMediaTime(int64_t now);
+    protected: int32_t getLoopCount();
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public start();
+    public: int64_t setMediaTime(int64_t now);
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public stop();
+    public: void start();
 
-    public setVolume(int32_t leftVolume, int32_t rightVolume);
+                //@Throws(MediaException.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void stop();
+
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume);
 
 };
 

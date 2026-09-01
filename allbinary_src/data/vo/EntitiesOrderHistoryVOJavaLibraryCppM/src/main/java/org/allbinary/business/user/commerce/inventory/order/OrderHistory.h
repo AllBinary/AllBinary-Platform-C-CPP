@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORY_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ORDER_ORDERHISTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../../java/lang/Long.h"
@@ -105,98 +107,97 @@
 #include "OrderData.h"
 #include "OrderHistoryData.h"
 
-class OrderHistory: public Order: public OrderHistoryInterface {
-        
+class OrderHistory: public Order, public OrderHistoryInterface {
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: shippingAddress: StreetAddress;
+    private: StreetAddress shippingAddress;
 
-    private: billingAddress: StreetAddress;
+    private: StreetAddress billingAddress;
 
-    private: payment: Payment;
+    private: Payment payment;
 
-    private: shipDate: string;
+    private: std::string shipDate;
 
-    private: orderDate: string;
+    private: std::string orderDate;
 
-    private: transDate: string;
+    private: std::string transDate;
 
-    private: cancelDate: string;
+    private: std::string cancelDate;
 
-    private: status: string;
+    private: std::string status;
 
-    private: subTotal: Money;
+    private: Money subTotal;
 
-    private: shippingCost: Money;
+    private: Money shippingCost;
 
-    private: taxes: Money;
+    private: Money taxes;
 
-    private: total: Money;
+    private: Money total;
 
-public constructor (BasketInterface basketInterface);
+public: OrderHistory(BasketInterface basketInterface);
 
-public constructor (BasketInterface basketInterface, OrderHistory orderHistory);
+public: OrderHistory(BasketInterface basketInterface, OrderHistory orderHistory);
 
-public constructor (BasketInterface basketInterface, HashMap<any, any> orderHistoryHashMap);
+public: OrderHistory(BasketInterface basketInterface, HashMap<any, any> orderHistoryHashMap);
 
-    public setUserName(string value);
+    public: void setUserName(std::string value);
 
-    public setDefaultShippingAddress(StreetAddress shippingAddress);
+    public: void setDefaultShippingAddress(StreetAddress shippingAddress);
 
-    public setBillingAddress(StreetAddress billingAddress);
+    public: void setBillingAddress(StreetAddress billingAddress);
 
-    public setPaymentInfo(Payment payment);
+    public: void setPaymentInfo(Payment payment);
 
-    public setShipDate(string value);
+    public: void setShipDate(std::string value);
 
-    public setOrderDate(string value);
+    public: void setOrderDate(std::string value);
 
-    public setTransDate(string value);
+    public: void setTransDate(std::string value);
 
-    public setCancelDate(string value);
+    public: void setCancelDate(std::string value);
 
-    public setStatus(string value);
+    public: void setStatus(std::string value);
 
-    public setSubTotal(Money value);
+    public: void setSubTotal(Money value);
 
-    public setShippingCost(Money value);
+    public: void setShippingCost(Money value);
 
-    public setTaxes(Money value);
+    public: void setTaxes(Money value);
 
-    public setTotal(Money value);
+    public: void setTotal(Money value);
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public StreetAddress getShippingAddress();
+    public: StreetAddress getShippingAddress();
 
-    public StreetAddress getBillingAddress();
+    public: StreetAddress getBillingAddress();
 
-    public Payment getPaymentInfo();
+    public: Payment getPaymentInfo();
 
-    public string getShipDate();
+    public: std::string getShipDate();
 
-    public string getOrderDate();
+    public: std::string getOrderDate();
 
-    public string getTransDate();
+    public: std::string getTransDate();
 
-    public string getCancelDate();
+    public: std::string getCancelDate();
 
-    public string getStatus();
+    public: std::string getStatus();
 
-    public Money getSubTotal();
+    public: Money getSubTotal();
 
-    public Money getShippingCost();
+    public: Money getShippingCost();
 
-    public Money getTaxes();
+    public: Money getTaxes();
 
-    public Money getTotal();
+    public: Money getTotal();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

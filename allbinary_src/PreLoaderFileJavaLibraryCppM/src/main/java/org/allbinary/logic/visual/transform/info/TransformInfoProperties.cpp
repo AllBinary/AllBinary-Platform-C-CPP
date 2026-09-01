@@ -44,124 +44,121 @@
 class TransformInfoProperties
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: label: string;
+    private: std::string label;
 
-    private: description: string;
+    private: std::string description;
 
-    private: objectFileName: string;
+    private: std::string objectFileName;
 
-    private: objectConfigFileName: string;
+    private: std::string objectConfigFileName;
 
-    private: templateFileName: string;
+    private: std::string templateFileName;
 
-public constructor (string name, string label, string description, string objectFileName, string objectConfigFileName, string templateFileName){
-
-            super();
-        this.name= name;
+public: TransformInfoProperties(std::string name, std::string label, std::string description, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName){
+this->name= name;
     
-this.label= label;
+this->label= label;
     
-this.description= description;
+this->description= description;
     
-this.objectFileName= objectFileName;
+this->objectFileName= objectFileName;
     
-this.templateFileName= templateFileName;
+this->templateFileName= templateFileName;
     
-this.objectConfigFileName= objectConfigFileName;
+this->objectConfigFileName= objectConfigFileName;
     
 }
 
 
-    public setName(string value){
-this.name= value;
+    public: void setName(std::string value){
+this->name= value;
     
 }
 
 
-    public setDescription(string value){
-this.description= value;
+    public: void setDescription(std::string value){
+this->description= value;
     
 }
 
 
-    public setViewFile(string value){
-this.objectFileName= value;
+    public: void setViewFile(std::string value){
+this->objectFileName= value;
     
 }
 
 
-    public setTemplateFile(string value){
-this.templateFileName= value;
+    public: void setTemplateFile(std::string value){
+this->templateFileName= value;
     
 }
 
 
-    public setObjectConfigFile(string value){
-this.objectConfigFileName= value;
+    public: void setObjectConfigFile(std::string value){
+this->objectConfigFileName= value;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getLabel(){
+    public: std::string getLabel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.label;
+                        return this->label;
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public string getViewFile(){
+    public: std::string getViewFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.objectFileName;
+                        return this->objectFileName;
     
 }
 
 
-    public string getTemplateFile(){
+    public: std::string getTemplateFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.templateFileName;
+                        return this->templateFileName;
     
 }
 
 
-    public string getObjectConfigFile(){
+    public: std::string getObjectConfigFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.objectConfigFileName;
+                        return this->objectConfigFileName;
     
 }
 

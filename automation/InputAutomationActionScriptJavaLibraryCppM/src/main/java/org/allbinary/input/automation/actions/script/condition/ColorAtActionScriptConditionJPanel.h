@@ -65,110 +65,109 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ColorAtActionScriptConditionJPanel: public javax.swing.JPanel {
-        
+class ColorAtActionScriptConditionJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: colorAtActionScriptConditionInterface: ColorAtActionScriptConditionInterface;
+    private: ColorAtActionScriptConditionInterface colorAtActionScriptConditionInterface;
 
-public constructor (ColorAtActionScriptConditionInterface colorAtActionScriptConditionInterface);
+public: ColorAtActionScriptConditionJPanel(ColorAtActionScriptConditionInterface colorAtActionScriptConditionInterface);
 
-    set();
+    private: void set();
 
-    update();
+    private: void update();
 
-    public javax.swing.JTextField getColorAtXJTextField();
+    public: javax::swing::JTextField getColorAtXJTextField();
 
-    public setColorAtXJTextField(javax.swing.JTextField colorAtXJTextField);
+    public: void setColorAtXJTextField(javax::swing::JTextField colorAtXJTextField);
 
-    public javax.swing.JTextField getColorAtYJTextField();
+    public: javax::swing::JTextField getColorAtYJTextField();
 
-    public setColorAtYJTextField(javax.swing.JTextField colorAtYJTextField);
+    public: void setColorAtYJTextField(javax::swing::JTextField colorAtYJTextField);
 
-    public javax.swing.JTextField getMaxBlueJTextField();
+    public: javax::swing::JTextField getMaxBlueJTextField();
 
-    public setMaxBlueJTextField(javax.swing.JTextField maxBlueJTextField);
+    public: void setMaxBlueJTextField(javax::swing::JTextField maxBlueJTextField);
 
-    public javax.swing.JTextField getMaxGreenJTextField();
+    public: javax::swing::JTextField getMaxGreenJTextField();
 
-    public setMaxGreenJTextField(javax.swing.JTextField maxGreenJTextField);
+    public: void setMaxGreenJTextField(javax::swing::JTextField maxGreenJTextField);
 
-    public javax.swing.JTextField getMaxRedJTextField();
+    public: javax::swing::JTextField getMaxRedJTextField();
 
-    public setMaxRedJTextField(javax.swing.JTextField maxRedJTextField);
+    public: void setMaxRedJTextField(javax::swing::JTextField maxRedJTextField);
 
-    public javax.swing.JTextField getMinBlueJTextField();
+    public: javax::swing::JTextField getMinBlueJTextField();
 
-    public setMinBlueJTextField(javax.swing.JTextField minBlueJTextField);
+    public: void setMinBlueJTextField(javax::swing::JTextField minBlueJTextField);
 
-    public javax.swing.JTextField getMinGreenJTextField();
+    public: javax::swing::JTextField getMinGreenJTextField();
 
-    public setMinGreenJTextField(javax.swing.JTextField minGreenJTextField);
+    public: void setMinGreenJTextField(javax::swing::JTextField minGreenJTextField);
 
-    public javax.swing.JTextField getMinRedJTextField();
+    public: javax::swing::JTextField getMinRedJTextField();
 
-    public setMinRedJTextField(javax.swing.JTextField minRedJTextField);
+    public: void setMinRedJTextField(javax::swing::JTextField minRedJTextField);
 
-    public javax.swing.JLabel getYJLabel();
+    public: javax::swing::JLabel getYJLabel();
 
-    public setYJLabel(javax.swing.JLabel yJLabel);
+    public: void setYJLabel(javax::swing::JLabel yJLabel);
 
-    public javax.swing.JDialog getColorAtActionJDialog();
+    public: javax::swing::JDialog getColorAtActionJDialog();
 
-    public setColorAtActionJDialog(javax.swing.JDialog colorAtActionJDialog);
+    public: void setColorAtActionJDialog(javax::swing::JDialog colorAtActionJDialog);
 
-    initComponents();
+    private: void initComponents();
 
-    okJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    colorAtActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void colorAtActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: blueJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel blueJLabel;
 
-    private: colorAtActionJButton: javax.swing.JButton;
+    private: javax::swing::JButton colorAtActionJButton;
 
-    private: colorAtActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JDialog colorAtActionJDialog;
 
-    private: colorAtXJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField colorAtXJTextField;
 
-    private: colorAtYJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField colorAtYJTextField;
 
-    private: colorRangeJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel colorRangeJLabel;
 
-    private: greenJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel greenJLabel;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: locationJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel locationJLabel;
 
-    private: maxBlueJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxBlueJTextField;
 
-    private: maxGreenJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxGreenJTextField;
 
-    private: maxJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel maxJLabel;
 
-    private: maxRedJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxRedJTextField;
 
-    private: minBlueJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minBlueJTextField;
 
-    private: minGreenJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minGreenJTextField;
 
-    private: minJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel minJLabel;
 
-    private: minRedJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minRedJTextField;
 
-    private: okJButton: javax.swing.JButton;
+    private: javax::swing::JButton okJButton;
 
-    private: redJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel redJLabel;
 
-    private: titleJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel titleJLabel;
 
-    private: xJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel xJLabel;
 
-    private: yJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel yJLabel;
 
 };
 

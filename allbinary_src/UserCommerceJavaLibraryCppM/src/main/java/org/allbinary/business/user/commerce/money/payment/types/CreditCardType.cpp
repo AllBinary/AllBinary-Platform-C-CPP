@@ -42,26 +42,23 @@
 class CreditCardType
             : public Object
          {
-        
 
-    public static const MAXLEN: int32_t = 19;
+    public: static const int32_t MAXLEN = 19;
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string cardType){
-
-            super();
-        this.name= cardType;
+public: CreditCardType(std::string cardType){
+this->name= cardType;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

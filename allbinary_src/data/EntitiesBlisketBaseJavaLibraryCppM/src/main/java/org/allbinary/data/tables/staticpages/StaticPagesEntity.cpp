@@ -70,34 +70,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StaticPagesEntityInterface.h"
 
-class StaticPagesEntity: public AbSqlBean: public StaticPagesEntityInterface {
-        
+class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const TABLENAME: string = "staticpages";
+    private: const std::string TABLENAME = "staticpages";
 
-public constructor (){
-            super(new StaticPagesDbInitInfo());
+public: StaticPagesEntity(){
+            super(StaticPagesDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.TABLENAME);
+this->setTableName(this->TABLENAME);
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -107,10 +106,10 @@ this.setTableName(this.TABLENAME);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -120,16 +119,16 @@ this.setTableName(this.TABLENAME);
 }
 
 
-    public string getFile(string store, string keywords){
+    public: std::string getFile(std::string store, std::string keywords){
 
-    whereHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = HashMap<any, any>();;
     
-whereHashMap!.put(StoreFrontData.getInstance()!.NAME, store);
+whereHashMap.put(StoreFrontData::getInstance().NAME, store);
     
-whereHashMap!.put(BasicItemData.KEYWORDS, keywords);
+whereHashMap.put(BasicItemData::KEYWORDS, keywords);
     
 
-    file: string = super.getField(whereHashMap, SearchData.PAGE)!;;
+    std::string file = super.getField(whereHashMap, SearchData::PAGE);;
     
 
 
@@ -140,15 +139,15 @@ whereHashMap!.put(BasicItemData.KEYWORDS, keywords);
 }
 
 
-    public delete(string keywords){
-super.deleteWhere(BasicItemData.KEYWORDS, keywords);
+    public: void delete_(std::string keywords){
+super.deleteWhere(BasicItemData::KEYWORDS, keywords);
     
 }
 
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
-    returnStr: string = super.dropTable()!;;
+    std::string returnStr = super.dropTable();;
     
 
 
@@ -159,33 +158,33 @@ super.deleteWhere(BasicItemData.KEYWORDS, keywords);
 }
 
 
-    public update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData.KEYWORDS, updatedValues!.get(BasicItemData.KEYWORDS) as string, updatedValues);
+    public: void update(HashMap<any, any> updatedValues){
+super.updateWhere(BasicItemData::KEYWORDS, updatedValues.get(BasicItemData::KEYWORDS) as string, updatedValues);
     
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(TABLENAME)!.append(this.sqlStrings!.START)!.append(StoreFrontData.getInstance()!.NAME)!.append(this.sqlTypeStrings!.SIXTY_CHAR_COLUMN_NOT_NULL)!.append(BasicItemData.KEYWORDS)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(SearchData.PAGE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(StoreFrontData.getInstance()!.NAME)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.append(BasicItemData.KEYWORDS)!.append(this.sqlStrings!.END);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(TABLENAME).append(this->sqlStrings.START).append(StoreFrontData::getInstance().NAME).append(this->sqlTypeStrings.SIXTY_CHAR_COLUMN_NOT_NULL).append(BasicItemData::KEYWORDS).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(SearchData::PAGE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(StoreFrontData::getInstance().NAME).append(CommonSeps::getInstance().COMMA_SEP).append(BasicItemData::KEYWORDS).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return super.createTable(this->createTableStatement());;
     
 }
 

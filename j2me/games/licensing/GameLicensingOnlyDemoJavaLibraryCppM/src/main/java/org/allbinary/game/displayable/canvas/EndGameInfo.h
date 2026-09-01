@@ -63,27 +63,26 @@
 class EndGameInfo
             : public Object
          {
-        
 
-    const NORMAL_GAME_OVER_WIN: string = "You Won";
+    protected: const std::string NORMAL_GAME_OVER_WIN = "You Won";
 
-    private: const TEASER_DEMO_GAME_END_LAST_LEVEL: string = "End of Demo.";
+    private: const std::string TEASER_DEMO_GAME_END_LAST_LEVEL = "End of Demo.";
 
-    private: const TEASER_DEMO_GAME_END: string = "Demo Game Over.";
+    private: const std::string TEASER_DEMO_GAME_END = "Demo Game Over.";
 
-    private: gameOverStr: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string gameOverStr = StringUtil::getInstance().EMPTY_STRING;
 
-    private: winStr: string = this.gameOverStr;
+    private: std::string winStr = this->gameOverStr;
 
-    public update(GameInfo gameInfo, MyCanvas myCanvas);
+    public: void update(GameInfo gameInfo, MyCanvas myCanvas);
 
-    public string getGameOverStr();
+    public: std::string getGameOverStr();
 
-    public setGameOverStr(string gameOverStr);
+    public: void setGameOverStr(std::string gameOverStr);
 
-    public string getWinStr();
+    public: std::string getWinStr();
 
-    public setWinStr(string winStr);
+    public: void setWinStr(std::string winStr);
 
 };
 

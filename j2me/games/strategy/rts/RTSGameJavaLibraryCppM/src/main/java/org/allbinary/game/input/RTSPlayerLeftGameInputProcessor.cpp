@@ -48,9 +48,8 @@
 #include "RTSPlayerGameInput.h"
 
 class RTSPlayerLeftGameInputProcessor: public RTSPlayerGameInputProcessor {
-        
 
-public constructor (RTSPlayerGameInput rtsPlayerGameInput){
+public: RTSPlayerLeftGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput){
             super(rtsPlayerGameInput);
                     
 
@@ -61,8 +60,8 @@ public constructor (RTSPlayerGameInput rtsPlayerGameInput){
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-this.rtsPlayerGameInput!.left();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+this->rtsPlayerGameInput.left();
     
 }
 

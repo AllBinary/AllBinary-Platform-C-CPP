@@ -61,21 +61,20 @@
 class MirrorMotionGestureEventUtil
             : public Object
          {
-        
 
-    private: static const instance: MirrorMotionGestureEventUtil = new MirrorMotionGestureEventUtil();
+    private: static MirrorMotionGestureEventUtil instance() { return MirrorMotionGestureEventUtil(); }
 
-    public static MirrorMotionGestureEventUtil getInstance();
+    public: static MirrorMotionGestureEventUtil getInstance();
 
-    private: const motionEventCircularPool: MotionEventCircularPool;
+    private: MotionEventCircularPool motionEventCircularPool;
 
-private constructor ();
+private: MirrorMotionGestureEventUtil();
 
                 //@Throws(Exception.constructor)
             
-    public MotionGestureEvent mirrorVerticle(MotionGestureEvent motionGestureEvent, int32_t halfWidth);
+    public: MotionGestureEvent mirrorVerticle(MotionGestureEvent motionGestureEvent, int32_t halfWidth);
 
-    public int32_t getNewX(int32_t x, int32_t halfWidth);
+    public: int32_t getNewX(int32_t x, int32_t halfWidth);
 
 };
 

@@ -45,9 +45,8 @@
         #include "Feature.h"
 
 class TouchFeature: public Feature {
-        
 
- constructor (string name){
+: TouchFeature(std::string name){
             super(name);
                     
 

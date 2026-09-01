@@ -47,16 +47,15 @@
 class Life
             : public Object
         : public LifeInterface {
-        
 
-    public static Life createLife(){
+    public: static Life createLife(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Life(0, 0);
+                        return Life(0, 0);
     
 
                 //: 
@@ -65,83 +64,81 @@ class Life
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    public static const NO_LIFE: Life = Life.createLife()!;
+    public: static const Life NO_LIFE = Life::createLife();
 
-    private: lives: int16_t;
+    private: int16_t lives;
 
-    private: startLives: int16_t;
+    private: int16_t startLives;
 
-    private: maxlives: int16_t;
+    private: int16_t maxlives;
 
-public constructor (int16_t lives, int16_t maxlives){
-
-            super();
-        this.maxlives= maxlives;
+public: Life(int16_t lives, int16_t maxlives){
+this->maxlives= maxlives;
     
 
-                        if(lives > this.maxlives)
+                        if(lives > this->maxlives)
                         
                                     {
                                     
 
 
-                            throw new Exception("To Many Lives");
+                            throw Exception("To Many Lives");
                     
 
                                     }
                                 
-this.lives= lives;
+this->lives= lives;
     
-this.startLives= lives;
+this->startLives= lives;
     
 }
 
 
-    public int16_t get(){
+    public: int16_t get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lives;
+                        return this->lives;
     
 }
 
 
-    public set(int16_t lives){
-this.lives= lives;
+    public: void set(int16_t lives){
+this->lives= lives;
     
 }
 
 
-    public reset(){
-this.lives= this.startLives;
+    public: void reset(){
+this->lives= this->startLives;
     
 }
 
 
-    public add(int16_t lives){
+    public: void add(int16_t lives){
 
-                        if(!this.reachedLimit())
+                        if(!this->reachedLimit())
                         
                                     {
                                     
-                        if(this.lives +lives <= this.getMaxlives())
+                        if(this->lives +lives <= this->getMaxlives())
                         
                                     {
-                                    this.lives= (this.lives +lives);
+                                    this->lives= (this->lives +lives);
     
 
                                     }
                                 
                         else {
-                            this.lives= this.getMaxlives();
+                            this->lives= this->getMaxlives();
     
 
                         }
@@ -152,9 +149,9 @@ this.lives= this.startLives;
 }
 
 
-    public bool isAlive(){
+    public: bool isAlive(){
 
-                        if(this.lives <= 0)
+                        if(this->lives <= 0)
                         
                                     {
                                     
@@ -179,19 +176,19 @@ this.lives= this.startLives;
 }
 
 
-    public int16_t getMaxlives(){
+    public: int16_t getMaxlives(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxlives;
+                        return this->maxlives;
     
 }
 
 
-    bool reachedLimit(){
+    private: bool reachedLimit(){
 
-                        if(this.lives > this.maxlives || this.lives < 0)
+                        if(this->lives > this->maxlives || this->lives < 0)
                         
                                     {
                                     
@@ -216,22 +213,22 @@ this.lives= this.startLives;
 }
 
 
-    public deaths(int16_t lives){
+    public: void deaths(int16_t lives){
 
-                        if(!this.reachedLimit())
+                        if(!this->reachedLimit())
                         
                                     {
                                     
-                        if(this.lives -lives >= 0)
+                        if(this->lives -lives >= 0)
                         
                                     {
-                                    this.lives= (this.lives -lives);
+                                    this->lives= (this->lives -lives);
     
 
                                     }
                                 
                         else {
-                            this.lives= 0;
+                            this->lives= 0;
     
 
                         }
@@ -242,18 +239,18 @@ this.lives= this.startLives;
 }
 
 
-    public int16_t getStartLives(){
+    public: int16_t getStartLives(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startLives;
+                        return this->startLives;
     
 }
 
 
-    public setStartLives(int16_t startLives){
-this.startLives= startLives;
+    public: void setStartLives(int16_t startLives){
+this->startLives= startLives;
     
 }
 

@@ -47,7 +47,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SpriteFactoryInterface {
-        
 
     Sprite createSprite(Image image, int32_t frameWidth, int32_t frameHeight);
 

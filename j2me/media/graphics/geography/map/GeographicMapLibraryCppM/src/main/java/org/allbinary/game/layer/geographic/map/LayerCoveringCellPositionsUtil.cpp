@@ -59,59 +59,60 @@
 class LayerCoveringCellPositionsUtil
             : public Object
          {
-        
 
-    private: static const instance: LayerCoveringCellPositionsUtil = new LayerCoveringCellPositionsUtil();
+    private: static LayerCoveringCellPositionsUtil instance() { return LayerCoveringCellPositionsUtil(); }
 
-    public static LayerCoveringCellPositionsUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerCoveringCellPositionsUtil.instance;
-    
-}
-
-
-    private: const cellPositionsUtil: CellPositionsUtil = CellPositionsUtil.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList getAllXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t x, int32_t y, BasicArrayList reusableList){
-
-    topLeftGeographicMapCellPosition: GeographicMapCellPosition = geographicMapInterface!.getCellPositionAtXY(x, y)!;;
-    
+    public: static LayerCoveringCellPositionsUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getAll(geographicMapInterface, topLeftGeographicMapCellPosition, layerInterface, reusableList);;
+                        return LayerCoveringCellPositionsUtil::instance();
+    
+}
+
+
+    private: const CellPositionsUtil cellPositionsUtil = CellPositionsUtil::getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getAllXY(BasicGeographicMap geographicMapInterface, AllBinaryLayer layerInterface, int32_t x, int32_t y, BasicArrayList reusableList){
+
+    GeographicMapCellPosition topLeftGeographicMapCellPosition = geographicMapInterface.getCellPositionAtXY(x, y);;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->getAll(geographicMapInterface, topLeftGeographicMapCellPosition, layerInterface, reusableList);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topLeftGeographicMapCellPosition, AllBinaryLayer layerInterface, BasicArrayList reusableList){
-reusableList!.clear();
+    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topLeftGeographicMapCellPosition, AllBinaryLayer layerInterface, BasicArrayList reusableList){
+reusableList.clear();
     
 
-    columns: int32_t = layerInterface!.getWidth() /geographicMapInterface!.getAllBinaryTiledLayer()!.getCellWidth();;
+    int32_t columns = layerInterface.getWidth() /geographicMapInterface.getAllBinaryTiledLayer().getCellWidth();;
     
 
-    rows: int32_t = layerInterface!.getHeight() /geographicMapInterface!.getAllBinaryTiledLayer()!.getCellHeight();;
+    int32_t rows = layerInterface.getHeight() /geographicMapInterface.getAllBinaryTiledLayer().getCellHeight();;
     
 
                         if(columns == 0)
-                        columns= 1
+                        columns= 1;
+                                
 
                         if(rows == 0)
-                        rows= 1
+                        rows= 1;
+                                
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellPositionsUtil!.getAll(geographicMapInterface, topLeftGeographicMapCellPosition, columns, rows, reusableList);;
+                        return this->cellPositionsUtil.getAll(geographicMapInterface, topLeftGeographicMapCellPosition, columns, rows, reusableList);;
     
 }
 

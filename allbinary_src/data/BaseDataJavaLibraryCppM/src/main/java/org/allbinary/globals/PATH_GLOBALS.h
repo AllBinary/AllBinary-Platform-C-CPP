@@ -54,23 +54,22 @@
 class PATH_GLOBALS
             : public Object
          {
-        
 
-    private: static const instance: PATH_GLOBALS = new PATH_GLOBALS();
+    private: static PATH_GLOBALS instance() { return PATH_GLOBALS(); }
 
-    public static PATH_GLOBALS getInstance();
+    public: static PATH_GLOBALS getInstance();
 
-private constructor ();
+private: PATH_GLOBALS();
 
-    public const DATA_PATH: string;
+    public: std::string DATA_PATH;
 
-    public const INIT_PATH: string;
+    public: std::string INIT_PATH;
 
-    public const VIEWS_PATH: string;
+    public: std::string VIEWS_PATH;
 
-    public const LOG_PATH: string;
+    public: std::string LOG_PATH;
 
-    public const BACKUP_PATH: string;
+    public: std::string BACKUP_PATH;
 
 };
 

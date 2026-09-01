@@ -98,33 +98,32 @@
 class BlisketBackupFactory
             : public Object
          {
-        
 
-    private: static const instance: BlisketBackupFactory = new BlisketBackupFactory();
+    private: static BlisketBackupFactory instance() { return BlisketBackupFactory(); }
 
-    public static BlisketBackupFactory getInstance();
+    public: static BlisketBackupFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getFileBasicArrayList(string pathString);
+    private: BasicArrayList getFileBasicArrayList(std::string pathString);
 
-    public backup();
+    public: void backup();
 
-    public backupViews();
+    public: void backupViews();
 
-    public backupResources();
+    public: void backupResources();
 
-    public backupJsps();
+    public: void backupJsps();
 
-    public backup(BasicArrayList fileBasicArrayList, string zipFile);
+    public: void backup(BasicArrayList fileBasicArrayList, std::string zipFile);
 
 };
 

@@ -48,60 +48,57 @@
 class MotionGestureToMotionGestureActionAssociation
             : public Object
          {
-        
 
-    private: list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: motionGestureAction: CompleteMotionGestureInputEvent;
+    private: CompleteMotionGestureInputEvent motionGestureAction;
 
-public constructor (BasicArrayList list, CompleteMotionGestureInputEvent commandAction){
-
-            super();
-        this.list= list;
+public: MotionGestureToMotionGestureActionAssociation(BasicArrayList list, CompleteMotionGestureInputEvent commandAction){
+this->list= list;
     
-this.motionGestureAction= commandAction;
+this->motionGestureAction= commandAction;
     
 }
 
 
-    public BasicArrayList getMotionGesture(){
+    public: BasicArrayList getMotionGesture(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 
 
-    public setMotionGestures(BasicArrayList list){
-this.list= list;
+    public: void setMotionGestures(BasicArrayList list){
+this->list= list;
     
 }
 
 
-    public CompleteMotionGestureInputEvent getCommandAction(){
+    public: CompleteMotionGestureInputEvent getCommandAction(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionGestureAction;
+                        return this->motionGestureAction;
     
 }
 
 
-    public setMotionGestureAction(CompleteMotionGestureInputEvent commandAction){
-this.motionGestureAction= commandAction;
+    public: void setMotionGestureAction(CompleteMotionGestureInputEvent commandAction){
+this->motionGestureAction= commandAction;
     
 }
 
 
-    public bool isMotionGestureArrayEquals(BasicArrayList aList){
+    public: bool isMotionGestureArrayEquals(BasicArrayList aList){
 
-    size: int32_t = aList!.size()!;;
+    int32_t size = aList.size();;
     
 
-                        if(this.list.size() != size)
+                        if(this->list.size() != size)
                         
                                     {
                                     
@@ -118,10 +115,10 @@ this.motionGestureAction= commandAction;
 
 
                         for (
-    i: int32_t = size -1;i >= 0; i--)
+    int32_t i = size -1;i >= 0; i--)
         {
 
-                        if(aList!.objectArray[i] != this.list.objectArray[i])
+                        if(aList.objectArray[i] != this->list.objectArray[i])
                         
                                     {
                                     

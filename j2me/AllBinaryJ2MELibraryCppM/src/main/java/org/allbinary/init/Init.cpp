@@ -57,13 +57,12 @@
 class Init
             : public Object
         : public InitInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public init(){
+    public: void init(){
 }
 
 

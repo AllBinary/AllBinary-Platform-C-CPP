@@ -42,25 +42,24 @@
 class ThreadPoolStrings
             : public Object
          {
-        
 
-    private: static const instance: ThreadPoolStrings = new ThreadPoolStrings();
+    private: static ThreadPoolStrings instance() { return ThreadPoolStrings(); }
 
-    public static ThreadPoolStrings getInstance(){
+    public: static ThreadPoolStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadPoolStrings.instance;
+                        return ThreadPoolStrings::instance();
     
 }
 
 
-    public const ADD_TASK: string = "addTask";
+    public: const std::string ADD_TASK = "addTask";
 
-    public const START_TASK: string = "Started Task: ";
+    public: const std::string START_TASK = "Started Task: ";
 
-    public const COMPLETE_TASK: string = "Completed Task: ";
+    public: const std::string COMPLETE_TASK = "Completed Task: ";
 
 };
 

@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -62,30 +64,29 @@
 class MediaUtil
             : public Object
          {
-        
 
-    private: static const instance: MediaUtil = new MediaUtil();
+    private: static MediaUtil instance() { return MediaUtil(); }
 
-    public static MediaUtil getInstance(){
+    public: static MediaUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaUtil.instance;
+                        return MediaUtil::instance();
     
 }
 
 
-    static HashMap<any, any> getImageBufferPropertyHashMap(BufferedImage bufferedImage){
+    private: static HashMap<any, any> getImageBufferPropertyHashMap(BufferedImage bufferedImage){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    propertyStringArray: std::vector<string> = bufferedImage!.getPropertyNames()!;;
+    std::vector<std::string> propertyStringArray = bufferedImage.getPropertyNames();;
     
 
                         if(propertyStringArray != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -94,12 +95,12 @@ class MediaUtil
 
 
                         for (
-    index: int32_t = 0;index < propertyStringArray!.length; index++)
+    int32_t index = 0;index < propertyStringArray.size(); index++)
         {
 
-    propertyObject: any = bufferedImage!.getProperty(propertyStringArray[index]!)!;;
+    Object* propertyObject = bufferedImage.getProperty(propertyStringArray[index]!);;
     
-hashMap!.put(propertyStringArray[index]!, propertyObject!.toString());
+hashMap.put(propertyStringArray[index]!, propertyObject->toString());
     
 }
 
@@ -115,73 +116,71 @@ hashMap!.put(propertyStringArray[index]!, propertyObject!.toString());
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: MediaUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public saveImageFile(AbFile originalImageFile, string newImageFileName, string category, MediaData mediaData, int32_t newWidth, int32_t newHeight){
+    public: void saveImageFile(AbFile originalImageFile, std::string newImageFileName, std::string category, MediaData mediaData, int32_t newWidth, int32_t newHeight){
 
                         if(originalImageFile == 
-                                    null
-                                 || !originalImageFile!.isFile())
+                                    nullptr
+                                 || !originalImageFile.isFile())
                         
                                     {
                                     
 
 
-                            throw new Exception("Original Image File Does Not Exist.");
+                            throw Exception("Original Image File Does Not Exist.");
                     
 
                                     }
                                 
 
-    bufferedImage: BufferedImage = ImageIOUtil.read(originalImageFile)!;;
+    BufferedImage bufferedImage = ImageIOUtil::read(originalImageFile);;
     
 
                         if(bufferedImage == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Unable to find ImageReader for this file.");
+                            throw Exception("Unable to find ImageReader for this file.");
                     
 
                                     }
                                 
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().VIEW))
                         
                                     {
                                     
-    hashMap: HashMap<any, any> = this.getImageBufferPropertyHashMap(bufferedImage)!;;
+    HashMap<any, any> hashMap = this->getImageBufferPropertyHashMap(bufferedImage);;
     
-this.logUtil!.putF("Image Properties: " +hashMap!.toString(), this, "saveImageFile()");
+this->logUtil.putF("Image Properties: " +hashMap.toString(), this, "saveImageFile()");
     
 
                                     }
                                 
 
-    imageFile: AbFile = AbFile.createAbFile(category +newImageFileName)!;;
+    AbFile imageFile = AbFile::createAbFile(category +newImageFileName);;
     
-imageFile!.createNewFile();
-    
-
-    imageUtil: ImageUtil = ImageUtil.getInstance()!;;
+imageFile.createNewFile();
     
 
-    newBufferedImage: BufferedImage = imageUtil!.createBufferedImageForSave(bufferedImage, newWidth, newHeight)!;;
+    ImageUtil imageUtil = ImageUtil::getInstance();;
     
 
-    isWritten: bool = ImageIOUtil.write(newBufferedImage as RenderedImage, mediaData!.getName(), imageFile)!;;
+    BufferedImage newBufferedImage = imageUtil.createBufferedImageForSave(bufferedImage, newWidth, newHeight);;
+    
+
+    bool isWritten = ImageIOUtil::write(newBufferedImage as RenderedImage, mediaData.getName(), imageFile);;
     
 
                         if(!isWritten)
@@ -190,54 +189,54 @@ imageFile!.createNewFile();
                                     
 
 
-                            throw new Exception("Unable to write.");
+                            throw Exception("Unable to write.");
                     
 
                                     }
                                 
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().VIEW))
                         
                                     {
                                     
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Get Path: ");
+stringBuffer.append("Get Path: ");
     
-stringBuffer!.append(originalImageFile!.getPath());
+stringBuffer.append(originalImageFile.getPath());
     
-stringBuffer!.append("\nNewImageFileName: ");
+stringBuffer.append("\nNewImageFileName: ");
     
-stringBuffer!.append(newImageFileName);
+stringBuffer.append(newImageFileName);
     
-stringBuffer!.append("\nCategory: ");
+stringBuffer.append("\nCategory: ");
     
-stringBuffer!.append(category);
+stringBuffer.append(category);
     
-stringBuffer!.append("\nSave File Type: ");
+stringBuffer.append("\nSave File Type: ");
     
-stringBuffer!.append(mediaData!.getName());
+stringBuffer.append(mediaData.getName());
     
-stringBuffer!.append("\nNew")!.append(commonLabels!.WIDTH_LABEL);
+stringBuffer.append("\nNew").append(commonLabels.WIDTH_LABEL);
     
-stringBuffer!.appendint(newWidth);
+stringBuffer.appendint(newWidth);
     
-stringBuffer!.append("\nNew")!.append(commonLabels!.HEIGHT_LABEL);
+stringBuffer.append("\nNew").append(commonLabels.HEIGHT_LABEL);
     
-stringBuffer!.appendint(newHeight);
+stringBuffer.appendint(newHeight);
     
-stringBuffer!.append("\nFile Length: ");
+stringBuffer.append("\nFile Length: ");
     
-stringBuffer!.appendlong(originalImageFile!.length());
+stringBuffer.appendlong(originalImageFile.length());
     
-stringBuffer!.append("\nNew File Length: ");
+stringBuffer.append("\nNew File Length: ");
     
-stringBuffer!.appendlong(imageFile!.length());
+stringBuffer.appendlong(imageFile.length());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "saveImageFile()");
+this->logUtil.putF(stringBuffer.toString(), this, "saveImageFile()");
     
 
                                     }

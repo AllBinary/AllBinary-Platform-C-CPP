@@ -63,21 +63,20 @@
 class ArtificialIntelligence
             : public Object
         : public ArtificialIntelligenceInterface {
-        
 
-    public static const AI_ID: int32_t = 2;
+    public: static const int32_t AI_ID = 2;
 
-    private: static const instance: ArtificialIntelligence = new ArtificialIntelligence();
+    private: static ArtificialIntelligence instance() { return ArtificialIntelligence(); }
 
-    public static ArtificialIntelligence getInstance();
+    public: static ArtificialIntelligence getInstance();
 
-public constructor ();
+public: ArtificialIntelligence();
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager layerManager);
+    public: void processAI(AllBinaryLayerManager layerManager);
 
-    public int32_t getId();
+    public: int32_t getId();
 
 };
 

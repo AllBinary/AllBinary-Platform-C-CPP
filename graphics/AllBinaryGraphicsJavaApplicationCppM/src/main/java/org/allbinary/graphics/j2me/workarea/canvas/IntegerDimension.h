@@ -45,21 +45,20 @@
 class IntegerDimension
             : public Object
          {
-        
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-public constructor (int32_t width, int32_t height);
+public: IntegerDimension(int32_t width, int32_t height);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public setWidth(int32_t width);
+    public: void setWidth(int32_t width);
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public setHeight(int32_t height);
+    public: void setHeight(int32_t height);
 
 };
 

@@ -39,21 +39,20 @@
 class ContextConfigurationPathUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AbFile getAbFile(string contextName);
+    public: static AbFile getAbFile(std::string contextName);
 
                 //@Throws(Exception.constructor)
             
-    public static AbPath getAbPath(string contextName);
+    public: static AbPath getAbPath(std::string contextName);
 
                 //@Throws(Exception.constructor)
             
-    static string getPath();
+    private: static std::string getPath();
 
-    static string getFileName(string contextName);
+    private: static std::string getFileName(std::string contextName);
 
 };
 

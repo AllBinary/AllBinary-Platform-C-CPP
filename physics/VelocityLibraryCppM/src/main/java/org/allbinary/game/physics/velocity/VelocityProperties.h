@@ -42,58 +42,57 @@
         #include "BasicVelocityProperties.h"
 #include "VelocityInterface.h"
 
-class VelocityProperties: public BasicVelocityProperties: public VelocityInterface {
-        
+class VelocityProperties: public BasicVelocityProperties, public VelocityInterface {
 
-    public static const NULL_VELOCITY_PROPERTIES: VelocityProperties = new VelocityProperties(0, 0);
+    public: static const VelocityProperties NULL_VELOCITY_PROPERTIES = VelocityProperties(0, 0);
 
-    private: maxForwardVelocity: int32_t= 0;
+    private: int32_t maxForwardVelocity= 0;
 
-    private: maxReverseVelocity: int32_t= 0;
+    private: int32_t maxReverseVelocity= 0;
 
-public constructor (int32_t maxForwardVelocity, int32_t maxReverseVelocity);
+public: VelocityProperties(int32_t maxForwardVelocity, int32_t maxReverseVelocity);
 
-    public int32_t getMaxForwardVelocity();
+    public: int32_t getMaxForwardVelocity();
 
-    public setMaxForwardVelocity(int32_t maxForwardVelocity);
+    public: void setMaxForwardVelocity(int32_t maxForwardVelocity);
 
-    public int32_t getMaxReverseVelocity();
+    public: int32_t getMaxReverseVelocity();
 
-    public setMaxReverseVelocity(int32_t maxReverseVelocity);
+    public: void setMaxReverseVelocity(int32_t maxReverseVelocity);
 
-    public limitMaxXYForwardVelocity();
+    public: void limitMaxXYForwardVelocity();
 
-    public limitMaxXYReverseVelocity();
+    public: void limitMaxXYReverseVelocity();
 
-    public limitMaxYForwardVelocity();
+    public: void limitMaxYForwardVelocity();
 
-    public limitMaxYReverseVelocity();
+    public: void limitMaxYReverseVelocity();
 
-    public limitMaxXForwardVelocity();
+    public: void limitMaxXForwardVelocity();
 
-    public limitMaxXReverseVelocity();
+    public: void limitMaxXReverseVelocity();
 
-    public bool isOverXYMaxForwardVelocity();
+    public: bool isOverXYMaxForwardVelocity();
 
-    public bool isOverXYMaxReverseVelocity();
+    public: bool isOverXYMaxReverseVelocity();
 
-    public limitXYToForwardAndReverseMaxVelocity();
+    public: void limitXYToForwardAndReverseMaxVelocity();
 
-    public limitMaxXYVelocity(int32_t maxVelocity);
+    public: void limitMaxXYVelocity(int32_t maxVelocity);
 
-    public limitMaxPositiveYVelocity(int32_t maxVelocity);
+    public: void limitMaxPositiveYVelocity(int32_t maxVelocity);
 
-    public limitMaxNegativeYVelocity(int32_t maxVelocity);
+    public: void limitMaxNegativeYVelocity(int32_t maxVelocity);
 
-    public limitMaxYVelocity(int32_t maxVelocity);
+    public: void limitMaxYVelocity(int32_t maxVelocity);
 
-    public limitMaxXVelocity(int32_t maxVelocity);
+    public: void limitMaxXVelocity(int32_t maxVelocity);
 
-    public bool isOverXYMaxVelocity(int32_t maxVelocity);
+    public: bool isOverXYMaxVelocity(int32_t maxVelocity);
 
-    public setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
+    public: void setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
 
-    public addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
+    public: void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
 
 };
 

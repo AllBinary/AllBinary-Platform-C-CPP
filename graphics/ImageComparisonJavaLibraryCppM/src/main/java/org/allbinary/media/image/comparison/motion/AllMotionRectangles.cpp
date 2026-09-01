@@ -55,41 +55,40 @@
 #include "Rectangle.h"
 
 class AllMotionRectangles: public MotionRectangles {
-        
 
-    private: static const NAME: string = "allMotionRectangles_";
+    private: static const std::string NAME = "allMotionRectangles_";
 
-public constructor (ImageComparisonResult imageComparisonResult){
+public: AllMotionRectangles(ImageComparisonResult imageComparisonResult){
             super(NAME, imageComparisonResult);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.createMotionRectangles(imageComparisonResult);
+this->createMotionRectangles(imageComparisonResult);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    createMotionRectangles(ImageComparisonResult imageComparisonInfo){
+    private: void createMotionRectangles(ImageComparisonResult imageComparisonInfo){
 
-    vector: Vector = imageComparisonInfo!.getNonMatchingPixelVector()!;;
+    Vector vector = imageComparisonInfo.getNonMatchingPixelVector();;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    pixelDelta: PixelDelta = vector.get(index) as PixelDelta;;
+    PixelDelta pixelDelta = vector.get(index) as PixelDelta;;
     
-this.addPixelDeltaToAMotionRectangle(pixelDelta);
+this->addPixelDeltaToAMotionRectangle(pixelDelta);
     
 }
 
@@ -98,52 +97,52 @@ this.addPixelDeltaToAMotionRectangle(pixelDelta);
 
                 //@Throws(Exception.constructor)
             
-    bool addPixelDeltaToExistingMotionRectangle(PixelDelta pixelDelta){
+    private: bool addPixelDeltaToExistingMotionRectangle(PixelDelta pixelDelta){
 
-    vector: Vector = this.getVector()!;;
+    Vector vector = this->getVector();;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    motionRectangle: MotionRectangle = vector.get(index) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector.get(index) as MotionRectangle;;
     
 
                         if(shouldPixelDeltaPartOfMotionRectangle(motionRectangle, pixelDelta))
                         
                                     {
                                     
-    newWidth: int32_t = pixelDelta!.getPoint()!.getX() -motionRectangle!.getRectangle()!.x;;
+    int32_t newWidth = pixelDelta.getPoint().getX() -motionRectangle.getRectangle().x;;
     
 
-    newHeight: int32_t = pixelDelta!.getPoint()!.getY() -motionRectangle!.getRectangle()!.y;;
+    int32_t newHeight = pixelDelta.getPoint().getY() -motionRectangle.getRectangle().y;;
     
 
-                        if(newWidth < motionRectangle!.getRectangle()!.width)
+                        if(newWidth < motionRectangle.getRectangle().width)
                         
                                     {
-                                    newWidth= motionRectangle!.getRectangle()!.width;
+                                    newWidth= motionRectangle.getRectangle().width;
     
 
                                     }
                                 
 
-                        if(newHeight < motionRectangle!.getRectangle()!.height)
+                        if(newHeight < motionRectangle.getRectangle().height)
                         
                                     {
-                                    newHeight= motionRectangle!.getRectangle()!.height;
+                                    newHeight= motionRectangle.getRectangle().height;
     
 
                                     }
                                 
-motionRectangle!.getRectangle()!.setSize(newWidth, newHeight);
+motionRectangle.getRectangle().setSize(newWidth, newHeight);
     
 
 
@@ -167,20 +166,20 @@ motionRectangle!.getRectangle()!.setSize(newWidth, newHeight);
 
                 //@Throws(Exception.constructor)
             
-    addPixelDeltaToAMotionRectangle(PixelDelta pixelDelta){
+    private: void addPixelDeltaToAMotionRectangle(PixelDelta pixelDelta){
 
                         if(!addPixelDeltaToExistingMotionRectangle(pixelDelta))
                         
                                     {
                                     
-    newRectangle: Rectangle = new Rectangle(pixelDelta!.getPoint()!.getX(), pixelDelta!.getPoint()!.getY(), 1, 1);;
+    Rectangle newRectangle = Rectangle(pixelDelta.getPoint().getX(), pixelDelta.getPoint().getY(), 1, 1);;
     
 
-    motionRectangle: MotionRectangle = new MotionRectangle(newRectangle);;
+    MotionRectangle motionRectangle = MotionRectangle(newRectangle);;
     
-motionRectangle!.getPixelDeltaVector()!.add(pixelDelta);
+motionRectangle.getPixelDeltaVector().add(pixelDelta);
     
-this.getVector()!.add(motionRectangle);
+this->getVector().add(motionRectangle);
     
 
                                     }
@@ -190,24 +189,24 @@ this.getVector()!.add(motionRectangle);
 
                 //@Throws(Exception.constructor)
             
-    bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta){
+    private: bool shouldPixelDeltaPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta){
 
-    isPixelLeftOfTheRectangle: bool = false;;
+    bool isPixelLeftOfTheRectangle = false;;
     
 
-                        if(motionRectangle!.getRectangle()!.y > pixelDelta!.getPoint()!.getY())
+                        if(motionRectangle.getRectangle().y > pixelDelta.getPoint().getY())
                         
                                     {
                                     
 
 
-                            throw new Exception("PixelAboveTheRectangle");
+                            throw Exception("PixelAboveTheRectangle");
                     
 
                                     }
                                 
 
-                        if(motionRectangle!.getRectangle()!.x > pixelDelta!.getPoint()!.getX())
+                        if(motionRectangle.getRectangle().x > pixelDelta.getPoint().getX())
                         
                                     {
                                     isPixelLeftOfTheRectangle= true;
@@ -223,7 +222,7 @@ this.getVector()!.add(motionRectangle);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isPixelDeltaLikelyPartOfMotionRectangle(motionRectangle, pixelDelta);;
+                        return this->isPixelDeltaLikelyPartOfMotionRectangle(motionRectangle, pixelDelta);;
     
 
                                     }
@@ -239,21 +238,21 @@ this.getVector()!.add(motionRectangle);
 
                 //@Throws(Exception.constructor)
             
-    bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta){
+    private: bool isPixelDeltaLikelyPartOfMotionRectangle(MotionRectangle motionRectangle, PixelDelta pixelDelta){
 
-    maxX: int32_t = motionRectangle!.getRectangle()!.x +motionRectangle!.getRectangle()!.width;;
+    int32_t maxX = motionRectangle.getRectangle().x +motionRectangle.getRectangle().width;;
     
 
-    maxY: int32_t = motionRectangle!.getRectangle()!.y +motionRectangle!.getRectangle()!.height;;
+    int32_t maxY = motionRectangle.getRectangle().y +motionRectangle.getRectangle().height;;
     
 
-    horizontalDistance: int32_t = pixelDelta!.getPoint()!.getX() -maxX;;
+    int32_t horizontalDistance = pixelDelta.getPoint().getX() -maxX;;
     
 
-    verticalDistance: int32_t = pixelDelta!.getPoint()!.getY() -maxY;;
+    int32_t verticalDistance = pixelDelta.getPoint().getY() -maxY;;
     
 
-                        if(horizontalDistance < this.MAX_PIXEL_DISTANCE_THRESHOLD && verticalDistance < this.MAX_PIXEL_DISTANCE_THRESHOLD)
+                        if(horizontalDistance < this->MAX_PIXEL_DISTANCE_THRESHOLD && verticalDistance < this->MAX_PIXEL_DISTANCE_THRESHOLD)
                         
                                     {
                                     

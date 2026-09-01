@@ -37,23 +37,22 @@
         #include "BasicGeographicMapExtractedPathCacheFactory.h"
 
 class BasicGeographicMapExtractedPathsCacheFactory: public BaseBasicArrayListCache {
-        
 
-    private: static const instance: BasicGeographicMapExtractedPathsCacheFactory = new BasicGeographicMapExtractedPathsCacheFactory();
+    private: static BasicGeographicMapExtractedPathsCacheFactory instance() { return BasicGeographicMapExtractedPathsCacheFactory(); }
 
-    public static BasicGeographicMapExtractedPathsCacheFactory getInstance();
+    public: static BasicGeographicMapExtractedPathsCacheFactory getInstance();
 
-    private: maxConcurrentPaths: int32_t= 0;
+    private: int32_t maxConcurrentPaths= 0;
 
-    private: maxPaths: int32_t= 0;
+    private: int32_t maxPaths= 0;
 
-private constructor ();
+private: BasicGeographicMapExtractedPathsCacheFactory();
 
-    public init(int32_t maxConcurrentPaths, int32_t maxPaths);
+    public: void init(int32_t maxConcurrentPaths, int32_t maxPaths);
 
-    public BasicArrayList getPaths();
+    public: BasicArrayList getPaths();
 
-    public release(BasicArrayList list);
+    public: void release(BasicArrayList list);
 
 };
 

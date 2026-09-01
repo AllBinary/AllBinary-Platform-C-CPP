@@ -84,53 +84,50 @@
 class RemoteHighScoresProcessor
             : public Object
         : public RemoteHighScoresProcessorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const noCrypt: NoCrypt = new NoCrypt();
+    private: const NoCrypt noCrypt = NoCrypt();
 
-public constructor (){
-
-            super();
-        }
+public: RemoteHighScoresProcessor(){
+}
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo){
-this.logUtil!.putF("Begin Remote HighScores Retrieval", this, this.commonStrings!.PROCESS);
+    public: void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo){
+this->logUtil.putF("Begin Remote HighScores Retrieval", this, this->commonStrings.PROCESS);
     
 
-    gameInfoData: GameInfoData = GameInfoData.getInstance()!;;
+    GameInfoData gameInfoData = GameInfoData::getInstance();;
     
 
-    hashtable: Hashtable<any, any> = abeClientInformation!.toHashtable()!;;
+    Hashtable<any, any> hashtable = abeClientInformation.toHashtable();;
     
-HashtableUtil.getInstance()!.putAll(gameInfo!.toHashtable(), hashtable);
+HashtableUtil::getInstance().putAll(gameInfo.toHashtable(), hashtable);
     
-hashtable.put(gameInfoData!.SOFTWARE_INFORMATION, remoteHighScores!.getSoftwareInformation()!.toString());
+hashtable.put(gameInfoData.SOFTWARE_INFORMATION, remoteHighScores.getSoftwareInformation().toString());
     
-hashtable.put(remoteHighScores!.ASCENDING, remoteHighScores!.getAscending()!.toString());
-    
-
-    displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
-    
-hashtable.put(displayInfoSingleton!.ORIENTATION, BooleanFactory.getInstance()!.toStringb(displayInfoSingleton!.isPortrait()));
-    
-hashtable.put(RemoteHighScoresData.getInstance()!.GAME_CONFIGURATION, GameConfigurationCentral.getInstance()!.toString());
+hashtable.put(remoteHighScores.ASCENDING, remoteHighScores.getAscending().toString());
     
 
-                        if(XmlRpcAbeClient.isOnline)
+    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    
+hashtable.put(displayInfoSingleton.ORIENTATION, BooleanFactory::getInstance().toStringb(displayInfoSingleton.isPortrait()));
+    
+hashtable.put(RemoteHighScoresData::getInstance().GAME_CONFIGURATION, GameConfigurationCentral::getInstance().toString());
+    
+
+                        if(XmlRpcAbeClient::isOnline)
                         
                                     {
                                     
-    resultHashtable: Hashtable<any, any> = new XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresservicessl.php", "HighScoresService.process").get(hashtable, this.noCrypt) as Hashtable<any, any>;;
+    Hashtable<any, any> resultHashtable = XmlRpcRemoteHighScoresClient(abeClientInformation, "highscoresservicessl.php", "HighScoresService.process").get(hashtable, this->noCrypt) as Hashtable<any, any>;;
     
-remoteHighScores!.update(resultHashtable);
+remoteHighScores.update(resultHashtable);
     
 
                                     }

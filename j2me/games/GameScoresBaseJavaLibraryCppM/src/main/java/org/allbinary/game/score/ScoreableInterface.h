@@ -47,13 +47,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScoreableInterface {
-        
 
     int32_t getPoints();
 
-    addPoints(int32_t points);
+    void addPoints(int32_t points);
 
-    removePoints(int32_t points);
+    void removePoints(int32_t points);
 
 };
 

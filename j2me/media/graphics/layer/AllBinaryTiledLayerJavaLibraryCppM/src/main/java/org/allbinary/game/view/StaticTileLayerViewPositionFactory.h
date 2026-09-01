@@ -54,11 +54,10 @@
 class StaticTileLayerViewPositionFactory
             : public Object
         : public ViewPositionFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ViewPositionBase getInstance();
+    public: ViewPositionBase getInstance();
 
 };
 

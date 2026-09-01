@@ -86,42 +86,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StreetAddressesEntityInterface.h"
 
-class StreetAddressesEntity: public AbSqlBean: public StreetAddressesEntityInterface {
-        
+class StreetAddressesEntity: public AbSqlBean, public StreetAddressesEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userName: string;
+    private: std::string userName;
 
-public constructor ();
+public: StreetAddressesEntity();
 
-public constructor (string userName);
+public: StreetAddressesEntity(std::string userName);
 
-    public remove(Integer index);
+    public: void remove(Integer index);
 
-    public add(StreetAddress address);
+    public: void add(StreetAddress address);
 
-    add(StreetAddress address, string index);
+    private: void add(StreetAddress address, std::string index);
 
-    public update(StreetAddress address);
+    public: void update(StreetAddress address);
 
-    public string getLastId();
+    public: std::string getLastId();
 
-    public Vector get();
+    public: Vector get();
 
-    public StreetAddress get(Integer index);
+    public: StreetAddress get(Integer index);
 
-    public StreetAddress getDefault();
+    public: StreetAddress getDefault();
 
-    public setDefault(string value);
+    public: void setDefault(std::string value);
 
-    string getUserName();
+    protected: std::string getUserName();
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string drop();
+    public: std::string drop();
 
 };
 

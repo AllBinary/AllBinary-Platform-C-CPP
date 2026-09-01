@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -57,16 +59,15 @@
 #include "CacheInterface.h"
 #include "CacheableInterface.h"
 
-class IndexedBasicArrayListCache: public BaseBasicArrayListCache: public CacheInterface {
-        
+class IndexedBasicArrayListCache: public BaseBasicArrayListCache, public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
-    public static IndexedBasicArrayListCache createCache(int32_t size){
+    public: static IndexedBasicArrayListCache createCache(int32_t size){
 
-    indexedBasicArrayListCache: IndexedBasicArrayListCache = new IndexedBasicArrayListCache();;
+    IndexedBasicArrayListCache indexedBasicArrayListCache = IndexedBasicArrayListCache();;
     
-indexedBasicArrayListCache!.init(size);
+indexedBasicArrayListCache.init(size);
     
 
 
@@ -77,39 +78,37 @@ indexedBasicArrayListCache!.init(size);
 }
 
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: size: int32_t = 0;
+    private: int32_t size = 0;
 
-    index: int32_t = 0;
+    protected: int32_t index = 0;
 
-public constructor (){
-
-            super();
-        }
+public: IndexedBasicArrayListCache(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t size){
+    public: void init(int32_t size){
 
-                        if(this.size < size)
+                        if(this->size < size)
                         
                                     {
-                                    this.list.ensureCapacity(size);
+                                    this->list.ensureCapacity(size);
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= this.size; index--)
+    int32_t index = size -1;index >= this->size; index--)
         {
-this.addDefault();
+this->addDefault();
     
 }
 
-this.size= size;
+this->size= size;
     
 
                                     }
@@ -117,51 +116,51 @@ this.size= size;
 }
 
 
-    public any getAt(int32_t index){
+    public: Object* getAt(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.objectArray[index]!;
+                        return this->list.objectArray[index]!;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addDefault(){
+    public: void addDefault(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addObject(Object anyType){
-this.list.add(anyType);
+    public: void addObject(Object anyType){
+this->list.add(anyType);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public add(CacheableInterface cacheableInterface){
-this.list.add(cacheableInterface);
+    public: void add(CacheableInterface cacheableInterface){
+this->list.add(cacheableInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addArray(std::vector<CacheableInterface> cacheableInterfaces){
+    public: void addArray(std::vector<CacheableInterface> cacheableInterfaces){
 
 
 
-                            throw new Exception("No Imple");
+                            throw Exception("No Imple");
                     
 }
 
 
-    public clear(){
-this.index= 0;
+    public: void clear(){
+this->index= 0;
     
 }
 

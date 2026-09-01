@@ -56,9 +56,8 @@
         #include "ImageAnimation.h"
 
 class ImageAnimationSingletonInterfaceFactory: public SingletonAnimationInterfaceFactory {
-        
 
-public constructor (Animation animationInterface, int32_t width, int32_t height);
+public: ImageAnimationSingletonInterfaceFactory(Animation animationInterface, int32_t width, int32_t height);
 
 };
 

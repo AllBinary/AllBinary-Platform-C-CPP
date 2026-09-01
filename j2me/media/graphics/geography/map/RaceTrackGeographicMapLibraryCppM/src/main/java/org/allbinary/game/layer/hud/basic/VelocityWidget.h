@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_VELOCITYWIDGET_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_VELOCITYWIDGET_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -70,42 +72,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class VelocityWidget: public BasicHud {
-        
 
-    private: const KILOMETERS_PER_HOUR_STR: std::vector<char> = [' ','k','m','/','h'];
+    private: const std::vector<char> KILOMETERS_PER_HOUR_STR = [' ','k','m','/','h'];
 
-    private: const totalChars: int32_t = this.KILOMETERS_PER_HOUR_STR.length
+    private: const int32_t totalChars = this->KILOMETERS_PER_HOUR_STR.length
                 ;
 
-    private: velocity: int32_t;
+    private: int32_t velocity;
 
-    private: maxVelocity: int32_t;
+    private: int32_t maxVelocity;
 
-    private: string: std::vector<char> = PrimitiveLongSingleton.getInstance()!.ZERO;
+    private: std::vector<char> string = PrimitiveLongSingleton::getInstance().ZERO;
 
-    private: totalDigits: int32_t = 1;
+    private: int32_t totalDigits = 1;
 
-    private: const powerOfTenVelocity: int32_t;
+    private: int32_t powerOfTenVelocity;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-    private: offset: int32_t = 0;
+    private: int32_t offset = 0;
 
-    private: offset2: int32_t = 0;
+    private: int32_t offset2 = 0;
 
-public constructor (int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor basicColor);
+public: VelocityWidget(int32_t powerOfTenVelocity, int32_t location, int32_t direction, BasicColor basicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public int32_t get();
+    public: int32_t get();
 
-    public add(int32_t value);
+    public: void add(int32_t value);
 
-    public set(int32_t value);
+    public: void set(int32_t value);
 
-    public reduce(int32_t value);
+    public: void reduce(int32_t value);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

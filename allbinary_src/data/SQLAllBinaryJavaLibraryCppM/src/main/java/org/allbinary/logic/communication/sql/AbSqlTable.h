@@ -50,31 +50,30 @@
         #include "AbSqlBasic.h"
 
 class AbSqlTable: public AbSqlBasic {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: tableName: string;
+    private: std::string tableName;
 
-    private: const METHOD_CREATED_TABLE: string = "createTable()";
+    private: const std::string METHOD_CREATED_TABLE = "createTable()";
 
-    private: const METHOD_DROP_TABLE: string = "dropTable()";
+    private: const std::string METHOD_DROP_TABLE = "dropTable()";
 
-    private: const TABLE_CREATION_SUCCESS: string = "Table Creation Successful: ";
+    private: const std::string TABLE_CREATION_SUCCESS = "Table Creation Successful: ";
 
-    private: const DROPPED_SUCCESS: string = " Dropped Successfully";
+    private: const std::string DROPPED_SUCCESS = " Dropped Successfully";
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlTable(DbConnectionInfo databaseConnectionInfoInterface);
 
-    public setTableName(string tableName);
+    public: void setTableName(std::string tableName);
 
-    public string getTableName();
+    public: std::string getTableName();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string createTable(string data);
+    public: std::string createTable(std::string data);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

@@ -59,29 +59,28 @@
 class ColorDelta
             : public Object
         : public CacheableInterface {
-        
 
-    public static any getKey(int32_t rgb1, int32_t rgb2);
+    public: static Object* getKey(int32_t rgb1, int32_t rgb2);
 
-    private: rgb1: int32_t= 0;
+    private: int32_t rgb1= 0;
 
-    private: rgb2: int32_t= 0;
+    private: int32_t rgb2= 0;
 
-    private: key: any;
+    private: Object* key;
 
-public constructor (int32_t rgb1, int32_t rgb2);
+public: ColorDelta(int32_t rgb1, int32_t rgb2);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public int32_t getRgb1();
+    public: int32_t getRgb1();
 
-    setRgb1(int32_t rgb1);
+    protected: void setRgb1(int32_t rgb1);
 
-    public int32_t getRgb2();
+    public: int32_t getRgb2();
 
-    setRgb2(int32_t rgb2);
+    protected: void setRgb2(int32_t rgb2);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

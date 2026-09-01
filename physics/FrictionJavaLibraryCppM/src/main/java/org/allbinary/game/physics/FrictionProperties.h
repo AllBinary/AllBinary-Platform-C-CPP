@@ -54,11 +54,10 @@
 class FrictionProperties
             : public Object
          {
-        
 
-public constructor ();
+public: FrictionProperties();
 
-    public friction(VelocityProperties velocityProperties, int32_t nominator);
+    public: void friction(VelocityProperties velocityProperties, int32_t nominator);
 
 };
 

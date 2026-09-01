@@ -64,15 +64,14 @@
 class SpriteFactory
             : public Object
         : public SpriteFactoryInterface {
-        
 
-    private: static const instance: SpriteFactory = new SpriteFactory();
+    private: static SpriteFactory instance() { return SpriteFactory(); }
 
-    public static SpriteFactory getInstance();
+    public: static SpriteFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public Sprite createSprite(Image image, int32_t frameWidth, int32_t frameHeight);
+    public: Sprite createSprite(Image image, int32_t frameWidth, int32_t frameHeight);
 
 };
 

@@ -65,21 +65,20 @@
 class TestInputAutomationWorker
             : public Object
          {
-        
 
-    private: captureWorker: ScreenCaptureImagesWorker;
+    private: ScreenCaptureImagesWorker captureWorker;
 
-    private: imageComparisonWorker: ImageComparisonWorker;
+    private: ImageComparisonWorker imageComparisonWorker;
 
-    private: motionRectanglesWorker: MotionRectanglesWorker;
+    private: MotionRectanglesWorker motionRectanglesWorker;
 
-    private: changedPixelsImageComparisonResultsWorker: SaveImageComparisonWorker;
+    private: SaveImageComparisonWorker changedPixelsImageComparisonResultsWorker;
 
-    private: saveMotionRectanglesAsImagesWorker: SaveMotionRectanglesResultsWorker;
+    private: SaveMotionRectanglesResultsWorker saveMotionRectanglesAsImagesWorker;
 
-    private: moveMouseToFirstMotionRectanglesResultsWorker: TestInputForMotionRectanglesResultsWorker;
+    private: TestInputForMotionRectanglesResultsWorker moveMouseToFirstMotionRectanglesResultsWorker;
 
-public constructor ();
+public: TestInputAutomationWorker();
 
 };
 

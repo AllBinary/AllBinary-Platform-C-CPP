@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESCROLLSELECTIONFORM_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_PREGAMESCROLLSELECTIONFORM_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
@@ -61,13 +63,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PreGameScrollSelectionForm: public ScrollCurrentSelectionForm {
-        
 
-public constructor (string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle);
+    public: void init(Rectangle rectangle);
 
 };
 

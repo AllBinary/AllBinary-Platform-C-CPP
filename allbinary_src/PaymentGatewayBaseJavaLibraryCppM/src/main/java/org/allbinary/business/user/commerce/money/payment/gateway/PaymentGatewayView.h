@@ -71,25 +71,24 @@
 class PaymentGatewayView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: paymentGatewayInterface: PaymentGatewayInterface;
+    private: PaymentGatewayInterface paymentGatewayInterface;
 
-public constructor (PaymentGatewayInterface paymentGatewayInterface);
+public: PaymentGatewayView(PaymentGatewayInterface paymentGatewayInterface);
 
-    public PaymentGatewayInterface getPaymentGatewayInterface();
-
-                //@Throws(Exception.constructor)
-            
-    public HashMap<any, any> toHashMap();
+    public: PaymentGatewayInterface getPaymentGatewayInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node toXmlNode(Document document);
 
 };
 

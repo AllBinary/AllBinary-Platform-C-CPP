@@ -42,27 +42,24 @@
 class CssPropertyValueData
             : public Object
          {
-        
 
-    private: static const instance: CssPropertyValueData = new CssPropertyValueData();
+    private: static CssPropertyValueData instance() { return CssPropertyValueData(); }
 
-    public static CssPropertyValueData getInstance(){
+    public: static CssPropertyValueData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CssPropertyValueData.instance;
+                        return CssPropertyValueData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CssPropertyValueData(){
+}
 
 
-    public const NAME: string = "CSS_PROPERTY_VALUE";
+    public: const std::string NAME = "CSS_PROPERTY_VALUE";
 
 };
 

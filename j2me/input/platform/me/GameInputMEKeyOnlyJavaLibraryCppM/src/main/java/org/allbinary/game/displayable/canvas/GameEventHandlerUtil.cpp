@@ -48,12 +48,11 @@
 class GameEventHandlerUtil
             : public Object
          {
-        
 
-    public static removeAllListeners(){
-UpGameKeyEventHandler.getInstance()!.removeAllListeners();
+    public: static void removeAllListeners(){
+UpGameKeyEventHandler::getInstance().removeAllListeners();
     
-DownGameKeyEventHandler.getInstance()!.removeAllListeners();
+DownGameKeyEventHandler::getInstance().removeAllListeners();
     
 }
 

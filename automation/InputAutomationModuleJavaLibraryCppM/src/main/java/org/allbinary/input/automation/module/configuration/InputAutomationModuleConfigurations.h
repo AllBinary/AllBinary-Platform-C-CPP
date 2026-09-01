@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_CONFIGURATION_INPUTAUTOMATIONMODULECONFIGURATIONS_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -84,27 +86,26 @@
 class InputAutomationModuleConfigurations
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (AbeClientInformationInterface abeClientInformation, File file);
+public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, File file);
 
-public constructor (AbeClientInformationInterface abeClientInformation, Document document);
+public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, Document document);
 
-public constructor (List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList);
+public: InputAutomationModuleConfigurations(List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList);
 
-public constructor ();
+public: InputAutomationModuleConfigurations();
 
-    public add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    public: void add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
 
-    public remove(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    public: void remove(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
 
-    public HashMap<any, any> getHashMap();
+    public: HashMap<any, any> getHashMap();
 
-    public setHashMap(HashMap<any, any> hashMap);
+    public: void setHashMap(HashMap<any, any> hashMap);
 
 };
 

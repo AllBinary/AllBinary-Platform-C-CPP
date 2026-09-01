@@ -69,30 +69,29 @@
 #include "CapturedImageWorkerResultsEvent.h"
 #include "CapturedImageInputOutput.h"
 
-class SaveCapturedImageWorker: public BasicEventHandler: public CapturedImageWorkerResultsListener {
-        
+class SaveCapturedImageWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: capturedImageWorkerResultsEventVector: Vector = new Vector();
+    private: Vector capturedImageWorkerResultsEventVector = Vector();
 
-public constructor ();
+public: SaveCapturedImageWorker();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageEvent);
+    public: void onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageEvent);
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
 
-    public run();
+    public: void run();
 
 };
 

@@ -51,49 +51,46 @@
 class DownloadItemsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: DownloadItemsEntityFactory = new DownloadItemsEntityFactory();
+    private: static DownloadItemsEntityFactory instance() { return DownloadItemsEntityFactory(); }
 
-    public static DownloadItemsEntityFactory getInstance(){
+    public: static DownloadItemsEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownloadItemsEntityFactory.instance;
+                        return DownloadItemsEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: DownloadItemsEntityFactory(){
+}
 
 
-    public DownloadItemsEntity getDownloadItemsEntityInstance(){
+    public: DownloadItemsEntity getDownloadItemsEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.user.commerce.inventory.item.downloads.DownloadItemsEntity();
+                        return org::allbinary::data::tables::user::commerce::inventory::item::downloads::DownloadItemsEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

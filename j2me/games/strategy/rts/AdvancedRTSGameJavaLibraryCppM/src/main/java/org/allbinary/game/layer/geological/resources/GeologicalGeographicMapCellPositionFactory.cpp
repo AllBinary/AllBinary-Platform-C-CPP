@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -61,32 +63,29 @@
 class GeologicalGeographicMapCellPositionFactory
             : public Object
         : public GeographicMapCellPositionFactoryInterface {
-        
 
-    private: const resourcePerMapCellType: std::vector<int32_t>;
+    private: std::vector<int32_t> resourcePerMapCellType;
 
-public constructor (std::vector<int32_t> resourcePerMapCellType){
-
-            super();
-        this.resourcePerMapCellType= resourcePerMapCellType;
+public: GeologicalGeographicMapCellPositionFactory(std::vector<int32_t> resourcePerMapCellType){
+this->resourcePerMapCellType= resourcePerMapCellType;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getInstance(BasicGeographicMap geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height){
+    public: GeographicMapCellPosition getInstance(BasicGeographicMap geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height){
 
-    tiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
 
-    resources: int32_t = this.resourcePerMapCellType[tiledLayer!.getCell(i_column, i_row)] +MyRandomFactory.getInstance()!.getAbsoluteNextInt(1000);;
+    int32_t resources = this->resourcePerMapCellType[tiledLayer.getCell(i_column, i_row)] +MyRandomFactory::getInstance().getAbsoluteNextInt(1000);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GeologicalGeographicMapCellPosition(i_column, i_row, columns, rows, width, height, new GeologicalResource(resources));
+                        return GeologicalGeographicMapCellPosition(i_column, i_row, columns, rows, width, height, GeologicalResource(resources));
     
 }
 

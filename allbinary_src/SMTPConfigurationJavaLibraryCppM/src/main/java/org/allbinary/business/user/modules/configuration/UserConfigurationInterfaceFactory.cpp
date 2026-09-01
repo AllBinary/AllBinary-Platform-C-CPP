@@ -78,62 +78,59 @@
 class UserConfigurationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const configurationName: string = "DefaultUserConfiguration";
+    private: static const std::string configurationName = "DefaultUserConfiguration";
 
                 //@Throws(Exception.constructor)
             
-    public static UserConfigurationInterface getInstance(Document document){
+    public: static UserConfigurationInterface getInstance(Document document){
 
-    configurationNode: Node = DomSearchHelper.getNode(UserConfigurationData.NAME, document.getChildNodes())!;;
+    Node configurationNode = DomSearchHelper::getNode(UserConfigurationData::NAME, document.getChildNodes());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new UserConfigurationView(configurationNode).getUserConfigurationInterface() as UserConfigurationInterface;
+                        return UserConfigurationView(configurationNode).getUserConfigurationInterface() as UserConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static UserConfigurationInterface getInstance(UserRole userRole){
+    public: static UserConfigurationInterface getInstance(UserRole userRole){
 
-    abPath: AbPath = new AbPath(URLGLOBALS.getMainPath() +FREEBLISKET_PATH_GLOBALS.getInstance()!.USERCONFIGURATIONPATH, UserConfigurationInterfaceFactory.configurationName +userRole!.toString() +AbPathData.getInstance()!.EXTENSION_SEP +UserConfigurationData.UNCRYPTED_EXTENSION);;
+    AbPath abPath = AbPath(URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().USERCONFIGURATIONPATH, UserConfigurationInterfaceFactory::configurationName +userRole.toString() +AbPathData::getInstance().EXTENSION_SEP +UserConfigurationData::UNCRYPTED_EXTENSION);;
     
 
-    documentString: string = new CryptFileReader(UserConfigurationData.UNCRYPTED_EXTENSION, UserConfigurationData.ENCRYPTED_EXTENSION).get(abPath)!;;
+    std::string documentString = CryptFileReader(UserConfigurationData::UNCRYPTED_EXTENSION, UserConfigurationData::ENCRYPTED_EXTENSION).get(abPath);;
     
 
-    document: Document = DomDocumentHelper.create(documentString)!;;
+    Document document = DomDocumentHelper::create(documentString);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserConfigurationInterfaceFactory.getInstance(document);;
+                        return UserConfigurationInterfaceFactory::getInstance(document);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static UserConfigurationInterface getInstance(){
+    public: static UserConfigurationInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new UserConfiguration();
+                        return UserConfiguration();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: UserConfigurationInterfaceFactory(){
+}
 
 
 };

@@ -49,15 +49,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class EmailInterface: public DomNodeInterface, public DomDocumentMappingInterface {
-        
 
-    string getDebugInfo()
+    std::string getDebugInfo()
 
     MimeMessage getMimeMessage()
 
                 //@Throws(Exception.constructor)
             
-    string log()
+    std::string log()
 
 };
 

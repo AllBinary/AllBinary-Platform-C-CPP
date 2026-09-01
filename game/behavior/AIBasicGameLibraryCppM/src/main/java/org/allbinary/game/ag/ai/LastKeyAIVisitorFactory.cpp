@@ -43,16 +43,15 @@
 class LastKeyAIVisitorFactory
             : public Object
          {
-        
 
-    private: static const instance: LastKeyAIVisitor = new LastKeyAIVisitor();
+    private: static LastKeyAIVisitor instance() { return LastKeyAIVisitor(); }
 
-    public static LastKeyAIVisitor getInstance(){
+    public: static LastKeyAIVisitor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LastKeyAIVisitorFactory.instance;
+                        return LastKeyAIVisitorFactory::instance();
     
 }
 

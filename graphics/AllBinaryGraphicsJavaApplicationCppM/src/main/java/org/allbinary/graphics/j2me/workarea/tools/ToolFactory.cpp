@@ -55,70 +55,67 @@
 class ToolFactory
             : public Object
          {
-        
 
-    private: static const instance: ToolFactory = new ToolFactory();
+    private: static ToolFactory instance() { return ToolFactory(); }
 
-    public static ToolFactory getInstance(){
+    public: static ToolFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ToolFactory.instance;
+                        return ToolFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: selectedTool: GraphicsItemInterfaceFactoryInterface = 
+    private: GraphicsItemInterfaceFactoryInterface selectedTool = 
                 null
             ;
 
-    private: tool: string = 
+    private: std::string tool = 
                 null
             ;
 
-    private: const SELECTED_LABEL: string = "Selected: ";
+    private: const std::string SELECTED_LABEL = "Selected: ";
 
-    public setSelectedTool(string tool){
+    public: void setSelectedTool(std::string tool){
 
         try {
-            StatusFactory.getInstance()!.setStatus(this.SELECTED_LABEL +tool);
+            StatusFactory::getInstance().setStatus(this->SELECTED_LABEL +tool);
     
-this.tool= tool;
+this->tool= tool;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setSelectionTool", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "setSelectionTool", e);
     
 }
 
 }
 
 
-    public GraphicsItemInterfaceFactoryInterface getSelectedToolFactory(){
-StatusFactory.getInstance()!.setStatus("Tool In Use: " +this.tool);
+    public: GraphicsItemInterfaceFactoryInterface getSelectedToolFactory(){
+StatusFactory::getInstance().setStatus("Tool In Use: " +this->tool);
     
 
-                        if(this.tool != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.selectedTool= GraphicItemFactory.getInstance()!.getInstance(this.tool);
+                                    this->selectedTool= GraphicItemFactory::getInstance().getInstance(this->tool);
     
-this.logUtil!.putF("New Tool: " +this.selectedTool, this, "getSelectedToolFactory");
+this->logUtil.putF("New Tool: " +this->selectedTool, this, "getSelectedToolFactory");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.selectedTool;
+                        return this->selectedTool;
     
 
                                     }

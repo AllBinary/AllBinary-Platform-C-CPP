@@ -68,21 +68,20 @@
         #include "MotionEventProcessor.h"
 
 class TrackballGameInputMotionEventProcessor: public MotionEventProcessor {
-        
 
-    private: static PROCESSOR: TrackballGameInputMotionEventProcessor = new TrackballGameInputMotionEventProcessor();
+    private: static TrackballGameInputMotionEventProcessor PROCESSOR = TrackballGameInputMotionEventProcessor();
 
-    public static TrackballGameInputMotionEventProcessor getInstance();
+    public: static TrackballGameInputMotionEventProcessor getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const listener: SingleKeyPressGameKeyFromMotionGestureEventListener = new SingleKeyPressGameKeyFromMotionGestureEventListener();
+    private: const SingleKeyPressGameKeyFromMotionGestureEventListener listener = SingleKeyPressGameKeyFromMotionGestureEventListener();
 
-private constructor ();
+private: TrackballGameInputMotionEventProcessor();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public process(MotionEvent motionEvent);
+    public: void process(MotionEvent motionEvent);
 
 };
 

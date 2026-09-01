@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -42,10 +44,9 @@
 class HealthVectorData
             : public Object
          {
-        
 
-    public static points: std::vector<std::vector<std::vector<int32_t>>> = 
-                                                        [
+    public: static std::vector<std::vector<std::vector<int32_t>>> points = 
+                                                        {
                                                             [[2,1]
 ,[3,2]
 ,[3,2]
@@ -68,7 +69,7 @@ class HealthVectorData
 ,[2,1]
 ,[1000,1000]
 ]
-                                                        ];
+                                                        };
 
 };
 

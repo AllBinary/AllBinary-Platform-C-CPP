@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -62,56 +64,55 @@
 #include "CustomMapGeneratorBaseFactory.h"
 
 class RaceTrackGeographicMap: public BaseRaceTrackGeographicMap {
-        
 
-    private: const customMapGenerator: CustomMapGeneratorBase;
+    private: CustomMapGeneratorBase customMapGenerator;
 
-public constructor (RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory customMapGeneratorBaseFactory){
-            super(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface!.getInstance(raceTrackInfo, raceTrackData), new BasicGeographicMapFactory().getInstance(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface, geographicMapCellPositionFactoryInterface, geographicMapCellTypeFactory), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory);
+public: RaceTrackGeographicMap(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory, CustomMapGeneratorBaseFactory customMapGeneratorBaseFactory){
+            super(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface.getInstance(raceTrackInfo, raceTrackData), BasicGeographicMapFactory().getInstance(raceTrackInfo, raceTrackData, tiledLayerFactoryInterface, geographicMapCellPositionFactoryInterface, geographicMapCellTypeFactory), geographicMapCellPositionFactoryInterface, geographicMapCellPositionBaseFactory, geographicMapCellTypeFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.customMapGenerator= customMapGeneratorBaseFactory!.create(this);
+this->customMapGenerator= customMapGeneratorBaseFactory.create(this);
     
 }
 
 
-    public CustomMapGeneratorBase getCustomMapGenerator(){
+    public: CustomMapGeneratorBase getCustomMapGenerator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.customMapGenerator;
+                        return this->customMapGenerator;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool isValid(GeographicMapCellPosition geographicMapCellPosition){
 
-    customMapArray: std::vector<std::vector<int32_t>> = this.customMapGenerator!.getCustomMapArray()!;;
+    std::vector<std::vector<int32_t>> customMapArray = this->customMapGenerator.getCustomMapArray();;
     
 
-                        if(geographicMapCellPosition!.getColumn() >= customMapArray[0]!.length)
+                        if(geographicMapCellPosition.getColumn() >= customMapArray[0]!.size())
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Column: ");
+stringBuffer.append("Column: ");
     
-stringBuffer!.appendint(geographicMapCellPosition!.getColumn());
+stringBuffer.appendint(geographicMapCellPosition.getColumn());
     
-stringBuffer!.append(" not in: ");
+stringBuffer.append(" not in: ");
     
-stringBuffer!.appendint(customMapArray[0]!.length);
+stringBuffer.appendint(customMapArray[0]!.size());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     
 
-                        if(geographicMapCellPosition!.getColumn() == customMapArray[0]!.length)
+                        if(geographicMapCellPosition.getColumn() == customMapArray[0]!.size())
                         
                                     {
                                     
@@ -137,24 +138,24 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
                                     }
                                 
                              else 
-                        if(geographicMapCellPosition!.getRow() > customMapArray!.length)
+                        if(geographicMapCellPosition.getRow() > customMapArray.size())
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Row: ");
+stringBuffer.append("Row: ");
     
-stringBuffer!.appendint(geographicMapCellPosition!.getRow());
+stringBuffer.appendint(geographicMapCellPosition.getRow());
     
-stringBuffer!.append(" not in: ");
+stringBuffer.append(" not in: ");
     
-stringBuffer!.appendint(customMapArray!.length);
+stringBuffer.appendint(customMapArray.size());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     
 
-                        if(geographicMapCellPosition!.getRow() == customMapArray!.length)
+                        if(geographicMapCellPosition.getRow() == customMapArray.size())
                         
                                     {
                                     

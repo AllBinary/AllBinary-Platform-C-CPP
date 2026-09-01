@@ -48,15 +48,14 @@
 class FileUnamedUtil
             : public Object
          {
-        
 
-    private: static const instance: FileUnamedUtil = new FileUnamedUtil();
+    private: static FileUnamedUtil instance() { return FileUnamedUtil(); }
 
-    public static FileUnamedUtil getInstance();
+    public: static FileUnamedUtil getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    public string process(string string);
+    public: std::string process(std::string string);
 
 };
 

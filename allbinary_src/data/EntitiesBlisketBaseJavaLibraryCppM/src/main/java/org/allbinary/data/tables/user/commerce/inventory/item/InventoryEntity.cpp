@@ -79,34 +79,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryEntityInterface.h"
 
-class InventoryEntity: public AbSqlBean: public InventoryEntityInterface {
-        
+class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "basicinventory";
+    private: const std::string tableName = "basicinventory";
 
-public constructor (){
-            super(new InventoryDbInitInfo());
+public: InventoryEntity(){
+            super(InventoryDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -116,10 +115,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -129,16 +128,16 @@ this.setTableName(this.tableName);
 }
 
 
-    public delete(string value){
+    public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(BasicItemData.ID, value);
+            super.deleteWhere(BasicItemData::ID, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, this.commonStrings!.delete);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
@@ -148,10 +147,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }
@@ -163,52 +162,52 @@ this.setTableName(this.tableName);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getItems(StoreFrontInterface storeFrontInterface){
+    public: Vector getItems(StoreFrontInterface storeFrontInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Getting Items For: " +storeFrontInterface!.getName(), this, "getItems");
+                                    this->logUtil.putF("Getting Items For: " +storeFrontInterface.getName(), this, "getItems");
     
 
                                     }
                                 
 
-    itemVector: Vector = new Vector();;
+    Vector itemVector = Vector();;
     
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
 
-    itemHashMapVector: Vector = super.getRows(keysAndValues)!;;
+    Vector itemHashMapVector = super.getRows(keysAndValues);;
     
 
-    size: int32_t = itemHashMapVector!.length!;;
+    int32_t size = itemHashMapVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    itemHashMap: HashMap<any, any> = itemHashMapVector!.get(i) as HashMap<any, any>;;
+    HashMap<any, any> itemHashMap = itemHashMapVector.get(i) as HashMap<any, any>;;
     
 
                         if(itemHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    category: string = itemHashMap!.get(BasicItemData.CATEGORY) as string;;
+    std::string category = itemHashMap.get(BasicItemData::CATEGORY) as string;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(category) && category.startsWith(storeFrontInterface!.getCategoryPath()))
+                        if(!StringValidationUtil::getInstance().isEmpty(category) && category.startsWith(storeFrontInterface.getCategoryPath()))
                         
                                     {
-                                    itemVector!.add(new BasicItem(itemHashMap));
+                                    itemVector.add(BasicItem(itemHashMap));
     
 
                                     }
@@ -229,18 +228,18 @@ this.setTableName(this.tableName);
 
                 //@Throws(MoneyException.constructor)
             
-    public ItemInterface getItem(string id){
+    public: ItemInterface getItem(std::string id){
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(BasicItemData.ID, id);
+keysAndValues.put(BasicItemData::ID, id);
     
 
-    itemHashMap: HashMap<any, any> = super.getRow(keysAndValues)!;;
+    HashMap<any, any> itemHashMap = super.getRow(keysAndValues);;
     
 
                         if(itemHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -248,7 +247,7 @@ keysAndValues!.put(BasicItemData.ID, id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicItem(itemHashMap);
+                        return BasicItem(itemHashMap);
     
 
                                     }
@@ -266,174 +265,174 @@ keysAndValues!.put(BasicItemData.ID, id);
 }
 
 
-    public string getWeight(string id){
+    public: std::string getWeight(std::string id){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getField(BasicItemData.ID, id, BasicItemData.WEIGHT);;
+                        return super.getField(BasicItemData::ID, id, BasicItemData::WEIGHT);;
     
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer!.append(this.tableName);
+stringBuffer.append(this->tableName);
     
-stringBuffer!.append(this.sqlStrings!.START);
+stringBuffer.append(this->sqlStrings.START);
     
-stringBuffer!.append(BasicItemData.ID);
+stringBuffer.append(BasicItemData::ID);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.NUMBER);
+stringBuffer.append(BasicItemData::NUMBER);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.INBASKETS);
+stringBuffer.append(BasicItemData::INBASKETS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.WEIGHT);
+stringBuffer.append(BasicItemData::WEIGHT);
     
-stringBuffer!.append(" VARCHAR(20) NOT NULL,");
+stringBuffer.append(" VARCHAR(20) NOT NULL,");
     
-stringBuffer!.append(EntryData.getInstance()!.ENABLE);
+stringBuffer.append(EntryData::getInstance().ENABLE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.NEWORUSED);
+stringBuffer.append(BasicItemData::NEWORUSED);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.SUMMARY);
+stringBuffer.append(BasicItemData::SUMMARY);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.DISTRIBUTOR);
+stringBuffer.append(BasicItemData::DISTRIBUTOR);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.IDUSEDBYDISTRIBUTOR);
+stringBuffer.append(BasicItemData::IDUSEDBYDISTRIBUTOR);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.PRODUCEDBY);
+stringBuffer.append(BasicItemData::PRODUCEDBY);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.PRODUCTIONDATE);
+stringBuffer.append(BasicItemData::PRODUCTIONDATE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.STARTPRODUCTIONDATE);
+stringBuffer.append(BasicItemData::STARTPRODUCTIONDATE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.DESCRIPTION);
+stringBuffer.append(BasicItemData::DESCRIPTION);
     
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.KEYWORDS);
+stringBuffer.append(BasicItemData::KEYWORDS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.CATEGORY);
+stringBuffer.append(BasicItemData::CATEGORY);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.TYPE);
+stringBuffer.append(BasicItemData::TYPE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.SMALLIMAGE);
+stringBuffer.append(BasicItemData::SMALLIMAGE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.MEDIUMIMAGE);
+stringBuffer.append(BasicItemData::MEDIUMIMAGE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.LARGEIMAGE);
+stringBuffer.append(BasicItemData::LARGEIMAGE);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(EntryData.getInstance()!.LASTMODIFIED);
+stringBuffer.append(EntryData::getInstance().LASTMODIFIED);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(EntryData.getInstance()!.TIMECREATED);
+stringBuffer.append(EntryData::getInstance().TIMECREATED);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.PRICE);
+stringBuffer.append(BasicItemData::PRICE);
     
-stringBuffer!.append(" VARCHAR(20) NOT NULL,");
+stringBuffer.append(" VARCHAR(20) NOT NULL,");
     
-stringBuffer!.append(BasicItemData.COMMENT);
+stringBuffer.append(BasicItemData::COMMENT);
     
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.CUSTOMS);
+stringBuffer.append(BasicItemData::CUSTOMS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.DOWNLOADS);
+stringBuffer.append(BasicItemData::DOWNLOADS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.GROUPS);
+stringBuffer.append(BasicItemData::GROUPS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.OPTIONS);
+stringBuffer.append(BasicItemData::OPTIONS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.PERMISSIONS);
+stringBuffer.append(BasicItemData::PERMISSIONS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(BasicItemData.SPECIALS);
+stringBuffer.append(BasicItemData::SPECIALS);
     
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
     
-stringBuffer!.append(this.sqlStrings!.PRIMARY_KEY);
+stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
     
-stringBuffer!.append(BasicItemData.ID);
+stringBuffer.append(BasicItemData::ID);
     
-stringBuffer!.append(this.sqlStrings!.END);
+stringBuffer.append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return super.createTable(this->createTableStatement());;
     
 }
 
 
-    public update(HashMap<any, any> updatedValues){
-super.updateWhere(BasicItemData.ID, updatedValues!.get(BasicItemData.ID) as string, updatedValues);
+    public: void update(HashMap<any, any> updatedValues){
+super.updateWhere(BasicItemData::ID, updatedValues.get(BasicItemData::ID) as string, updatedValues);
     
 }
 
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
 
 

@@ -81,23 +81,22 @@
 class UserConfigurationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const configurationName: string = "DefaultUserConfiguration";
-
-                //@Throws(Exception.constructor)
-            
-    public static UserConfigurationInterface getInstance(Document document);
+    private: static const std::string configurationName = "DefaultUserConfiguration";
 
                 //@Throws(Exception.constructor)
             
-    public static UserConfigurationInterface getInstance(UserRole userRole);
+    public: static UserConfigurationInterface getInstance(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public static UserConfigurationInterface getInstance();
+    public: static UserConfigurationInterface getInstance(UserRole userRole);
 
-private constructor ();
+                //@Throws(Exception.constructor)
+            
+    public: static UserConfigurationInterface getInstance();
+
+private: UserConfigurationInterfaceFactory();
 
 };
 

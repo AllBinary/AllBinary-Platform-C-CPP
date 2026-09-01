@@ -64,45 +64,44 @@
 class TableSearchRequest
             : public Object
          {
-        
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-    private: pageName: string;
+    private: std::string pageName;
 
-    private: contentType: string;
+    private: std::string contentType;
 
-    private: keywords: string;
+    private: std::string keywords;
 
-    private: searchParams: SearchParams;
+    private: SearchParams searchParams;
 
-public constructor (string keywords, SearchParams searchParams, string xslFile, string contentType);
+public: TableSearchRequest(std::string keywords, SearchParams searchParams, std::string xslFile, std::string contentType);
 
-    public setKeywords(string value);
+    public: void setKeywords(std::string value);
 
-    public setParams(SearchParams searchParams);
+    public: void setParams(SearchParams searchParams);
 
-    public setXslFile(string value);
+    public: void setXslFile(std::string value);
 
-    public setFileBaseName(string value);
+    public: void setFileBaseName(std::string value);
 
-    public setContentType(string value);
+    public: void setContentType(std::string value);
 
-    public string getKeywords();
+    public: std::string getKeywords();
 
-    public SearchParams getParams();
-
-                //@Throws(Exception.constructor)
-            
-    public string getXslFile();
-
-    public string getFileBaseName();
-
-    public string getContentType();
+    public: SearchParams getParams();
 
                 //@Throws(Exception.constructor)
             
-    public Node getFileBaseNameNode(Document document);
+    public: std::string getXslFile();
+
+    public: std::string getFileBaseName();
+
+    public: std::string getContentType();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node getFileBaseNameNode(Document document);
 
 };
 

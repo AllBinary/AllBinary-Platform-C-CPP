@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_RESOURCE_BASERESOURCEANIMATIONINTERFACEFACTORYINTERFACEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -93,73 +95,72 @@
 class BaseResourceAnimationInterfaceFactoryInterfaceFactory
             : public Object
         : public FeatureResourceAnimationInterfaceFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const hashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> hashtable;
 
-    private: const rectangleHashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> rectangleHashtable;
 
-    private: const rectangleArrayOfArraysHashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> rectangleArrayOfArraysHashtable;
 
-    private: const name: string;
+    private: std::string name;
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-public constructor (string name, Hashtable<any, any> hashtable, Hashtable<any, any> rectangleHashtable, Hashtable<any, any> rectangleArrayHashtable);
+public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, Hashtable<any, any> hashtable, Hashtable<any, any> rectangleHashtable, Hashtable<any, any> rectangleArrayHashtable);
 
-    public string getName();
-
-                //@Throws(Exception.constructor)
-            
-    public init(int32_t level);
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    initImageCache(ImageCache imageCache, int32_t level);
+    public: void init(int32_t level);
 
                 //@Throws(Exception.constructor)
             
-    public add(string resource, BasicAnimationInterfaceFactoryInterface animationInterfaceFactoryInterface);
+    protected: void initImageCache(ImageCache imageCache, int32_t level);
 
                 //@Throws(Exception.constructor)
             
-    public BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(string resource);
+    public: void add(std::string resource, BasicAnimationInterfaceFactoryInterface animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Rectangle getRectangle(string resource);
+    public: BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public addRectangle(string resource, Rectangle rectangle);
+    public: Rectangle getRectangle(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(string resource);
+    public: void addRectangle(std::string resource, Rectangle rectangle);
 
                 //@Throws(Exception.constructor)
             
-    public addRectangleArrayOfArrays(string resource, std::vector<std::vector<Rectangle>> rectangleArrayOfArrays);
+    public: std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(std::string resource);
 
-    public bool isFeature();
+                //@Throws(Exception.constructor)
+            
+    public: void addRectangleArrayOfArrays(std::string resource, std::vector<std::vector<Rectangle>> rectangleArrayOfArrays);
 
-    public bool isLoadingLevel(int32_t level);
+    public: bool isFeature();
 
-    public string toString();
+    public: bool isLoadingLevel(int32_t level);
 
-    public Hashtable<any, any> getHashtable();
+    public: std::string toString();
 
-    public Hashtable<any, any> getRectangleHashtable();
+    public: Hashtable<any, any> getHashtable();
 
-    public Hashtable<any, any> getRectangleArrayOfArraysHashtable();
+    public: Hashtable<any, any> getRectangleHashtable();
 
-    setInitialized(bool initialized);
+    public: Hashtable<any, any> getRectangleArrayOfArraysHashtable();
 
-    public bool isInitialized();
+    protected: void setInitialized(bool initialized);
+
+    public: bool isInitialized();
 
 };
 

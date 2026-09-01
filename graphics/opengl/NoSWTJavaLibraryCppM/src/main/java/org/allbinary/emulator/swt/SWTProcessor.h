@@ -62,15 +62,14 @@
 class SWTProcessor
             : public Object
          {
-        
 
-    private: static const instance: SWTProcessor = new SWTProcessor();
+    private: static SWTProcessor instance() { return SWTProcessor(); }
 
-    public static SWTProcessor getInstance();
+    public: static SWTProcessor getInstance();
 
-    public runnable: Runnable = NullRunnable.getInstance()!;
+    public: Runnable runnable = NullRunnable::getInstance();
 
-    public process(Display display);
+    public: void process(Display display);
 
 };
 

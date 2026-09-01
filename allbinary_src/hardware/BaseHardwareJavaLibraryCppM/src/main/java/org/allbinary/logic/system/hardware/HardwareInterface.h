@@ -53,11 +53,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HardwareInterface {
-        
 
     HardwareComponentInterface getComponent(int32_t index);
 
-    string toString();
+    std::string toString();
 
     bool compareTo(HardwareInterface hardwareInterface);
 

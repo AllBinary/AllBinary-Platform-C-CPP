@@ -59,159 +59,156 @@
 class AndroidSystemProperties
             : public Object
          {
-        
 
-    private: static const SINGLETON: AndroidSystemProperties = new AndroidSystemProperties(ResourceUtil.getInstance()!.getContext());
+    private: static const AndroidSystemProperties SINGLETON = AndroidSystemProperties(ResourceUtil::getInstance().getContext());
 
-    public static AndroidSystemProperties getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidSystemProperties.SINGLETON;
-    
-}
-
-
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-public constructor (Context context){
-
-            super();
-        }
-
-
-    public string getDeviceId(){
+    public: static AndroidSystemProperties getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return AndroidSystemProperties::SINGLETON;
     
 }
 
 
-    public string getDeviceSoftwareVersion(){
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+public: AndroidSystemProperties(Context context){
+}
+
+
+    public: std::string getDeviceId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public string getLine1Number(){
+    public: std::string getDeviceSoftwareVersion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getNetworkCountryIso(){
+    public: std::string getLine1Number(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getNetworkOperator(){
+    public: std::string getNetworkCountryIso(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getNetworkOperatorName(){
+    public: std::string getNetworkOperator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getSimCountryIso(){
+    public: std::string getNetworkOperatorName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getSimOperator(){
+    public: std::string getSimCountryIso(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getSimOperatorName(){
+    public: std::string getSimOperator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getSimSerialNumber(){
+    public: std::string getSimOperatorName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getSubscriberId(){
+    public: std::string getSimSerialNumber(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getVoiceMailAlphaTag(){
+    public: std::string getSubscriberId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public string getVoiceMailNumber(){
+    public: std::string getVoiceMailAlphaTag(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.DISABLE;
+                        return this->commonStrings.DISABLE;
     
 }
 
 
-    public int32_t getNetworkType(){
+    public: std::string getVoiceMailNumber(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->commonStrings.DISABLE;
+    
+}
+
+
+    public: int32_t getNetworkType(){
 
 
 
@@ -221,7 +218,7 @@ public constructor (Context context){
 }
 
 
-    public int32_t getPhoneType(){
+    public: int32_t getPhoneType(){
 
 
 
@@ -231,122 +228,122 @@ public constructor (Context context){
 }
 
 
-    public string getBoard(){
+    public: std::string getBoard(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.BOARD;
+                        return Build::BOARD;
     
 }
 
 
-    public string getBrand(){
+    public: std::string getBrand(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.BRAND;
+                        return Build::BRAND;
     
 }
 
 
-    public string getDevice(){
+    public: std::string getDevice(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.DEVICE;
+                        return Build::DEVICE;
     
 }
 
 
-    public string getFingerprint(){
+    public: std::string getFingerprint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.FINGERPRINT;
+                        return Build::FINGERPRINT;
     
 }
 
 
-    public string getHost(){
+    public: std::string getHost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.HOST;
+                        return Build::HOST;
     
 }
 
 
-    public string getId(){
+    public: std::string getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.ID;
+                        return Build::ID;
     
 }
 
 
-    public string getModel(){
+    public: std::string getModel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.MODEL;
+                        return Build::MODEL;
     
 }
 
 
-    public string getProduct(){
+    public: std::string getProduct(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.PRODUCT;
+                        return Build::PRODUCT;
     
 }
 
 
-    public string getTags(){
+    public: std::string getTags(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.TAGS;
+                        return Build::TAGS;
     
 }
 
 
-    public int64_t getTime(){
+    public: int64_t getTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.TIME;
+                        return Build::TIME;
     
 }
 
 
-    public string getType(){
+    public: std::string getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.TYPE;
+                        return Build::TYPE;
     
 }
 
 
-    public string getUser(){
+    public: std::string getUser(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Build.USER;
+                        return Build::USER;
     
 }
 

@@ -61,26 +61,23 @@
 class StoreFrontAdvertisementsStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: storeFrontAdvertisementsStatisticsInterface: StoreFrontAdvertisementsStatisticsInterface;
+    private: StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface;
 
-public constructor (StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface){
-
-            super();
-        this.storeFrontAdvertisementsStatisticsInterface= storeFrontAdvertisementsStatisticsInterface;
+public: StoreFrontAdvertisementsStatisticsView(StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface){
+this->storeFrontAdvertisementsStatisticsInterface= storeFrontAdvertisementsStatisticsInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.storeFrontAdvertisementsStatisticsInterface!.toHashMap()!;;
+    HashMap<any, any> hashMap = this->storeFrontAdvertisementsStatisticsInterface.toHashMap();;
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, StoreFrontAdvertisementsStatisticsData.getInstance()!.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, StoreFrontAdvertisementsStatisticsData::getInstance().NAME, hashMap);;
     
 
 

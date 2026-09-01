@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_LOCALPLAYERINPUTIDFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
@@ -54,41 +56,40 @@
 class LocalPlayerInputIdFactory
             : public Object
          {
-        
 
-    private: static const instance: LocalPlayerInputIdFactory = new LocalPlayerInputIdFactory();
+    private: static LocalPlayerInputIdFactory instance() { return LocalPlayerInputIdFactory(); }
 
-    public static LocalPlayerInputIdFactory getInstance();
+    public: static LocalPlayerInputIdFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const MAX_NUMBER_OF_PLAYERS: int32_t = 6;
+    public: const int32_t MAX_NUMBER_OF_PLAYERS = 6;
 
-    private: const MAX_FAST_DEVICEID: int32_t = 65;
+    private: const int32_t MAX_FAST_DEVICEID = 65;
 
-    private: const deviceIdToplayerId: std::vector<int32_t> = new Array(this.MAX_FAST_DEVICEID);
+    private: const std::vector<int32_t> deviceIdToplayerId = new Array(this->MAX_FAST_DEVICEID);
 
-    private: const playerIdToDeviceId: std::vector<int32_t> = new Array(this.MAX_NUMBER_OF_PLAYERS);
+    private: const std::vector<int32_t> playerIdToDeviceId = new Array(this->MAX_NUMBER_OF_PLAYERS);
 
-    private: const playersInPlay: std::vector<bool> = new Array(this.MAX_NUMBER_OF_PLAYERS);
+    private: const std::vector<bool> playersInPlay = new Array(this->MAX_NUMBER_OF_PLAYERS);
 
-    private: totalDevicesMapped: int32_t = 0;
+    private: int32_t totalDevicesMapped = 0;
 
-private constructor ();
+private: LocalPlayerInputIdFactory();
 
-    public int32_t getDeviceId(int32_t playerInputId);
+    public: int32_t getDeviceId(int32_t playerInputId);
 
-    public int32_t getPlayerForDevice(int32_t deviceId);
+    public: int32_t getPlayerForDevice(int32_t deviceId);
 
-    public int32_t getTotalDevicesInPlay();
+    public: int32_t getTotalDevicesInPlay();
 
-    public bool isPlayerInPlay(int32_t playerInputId);
+    public: bool isPlayerInPlay(int32_t playerInputId);
 
-    public setPlayerInPlay(int32_t playerInputId);
+    public: void setPlayerInPlay(int32_t playerInputId);
 
-    public setPlayerOutOfPlay(int32_t playerInputId);
+    public: void setPlayerOutOfPlay(int32_t playerInputId);
 
-    public std::vector<bool> getPlayersInPlay();
+    public: std::vector<bool> getPlayersInPlay();
 
 };
 

@@ -55,13 +55,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MiniBasketTag: public StoreValidationTransformTag {
-        
 
-public constructor ();
+public: MiniBasketTag();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

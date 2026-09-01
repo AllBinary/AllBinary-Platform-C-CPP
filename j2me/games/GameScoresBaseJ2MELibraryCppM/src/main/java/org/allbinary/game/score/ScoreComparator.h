@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_SCORECOMPARATOR_H
         #define ORG_ALLBINARY_GAME_SCORE_SCORECOMPARATOR_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,21 +72,20 @@
 class ScoreComparator
             : public Object
         : public RecordComparator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const isHighestBest: bool;
+    private: bool isHighestBest;
 
-public constructor (bool isHighestBest);
+public: ScoreComparator(bool isHighestBest);
 
-    public int64_t getBestScore();
+    public: int64_t getBestScore();
 
-    public int32_t compare(std::vector<int8_t> recordOne, std::vector<int8_t> recordTwo);
+    public: int32_t compare(std::vector<int8_t> recordOne, std::vector<int8_t> recordTwo);
 
-    public int32_t getHighTooLow(int64_t scoreOne, int64_t scoreTwo);
+    public: int32_t getHighTooLow(int64_t scoreOne, int64_t scoreTwo);
 
-    public int32_t getLowTooHigh(int64_t scoreOne, int64_t scoreTwo);
+    public: int32_t getLowTooHigh(int64_t scoreOne, int64_t scoreTwo);
 
 };
 

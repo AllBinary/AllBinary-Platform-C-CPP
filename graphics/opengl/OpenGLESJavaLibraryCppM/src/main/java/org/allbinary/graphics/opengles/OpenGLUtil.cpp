@@ -94,52 +94,51 @@
 class OpenGLUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLUtil = new OpenGLUtil();
+    private: static OpenGLUtil instance() { return OpenGLUtil(); }
 
-    public static OpenGLUtil getInstance(){
+    public: static OpenGLUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLUtil.instance;
+                        return OpenGLUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const renderStrings: RendererStrings = RendererStrings.getInstance()!;
+    private: const RendererStrings renderStrings = RendererStrings::getInstance();
 
-    const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;
+    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
 
-    private: const lockObject: SynchObject = new SynchObject();
+    private: const SynchObject lockObject = SynchObject();
 
-    private: const anyType: SynchObject = new SynchObject();
+    private: const SynchObject anyType = SynchObject();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public const runnableList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList runnableList = BasicArrayListD();
 
-    private: created: bool = false;
+    private: bool created = false;
 
-    public onSurfaceCreated(GL10 gl){
+    public: void onSurfaceCreated(GL10 gl){
 
         try {
             
-                        if(!this.created)
+                        if(!this->created)
                         
                                     {
-                                    this.created= true;
+                                    this->created= true;
     
-PreLogUtil.put(CommonLabels.getInstance()!.START_LABEL +OpenGLCapabilities.getInstance()!.toString(), this, this.renderStrings!.ON_SURFACE_CREATED);
+PreLogUtil::put(CommonLabels::getInstance().START_LABEL +OpenGLCapabilities::getInstance().toString(), this, this->renderStrings.ON_SURFACE_CREATED);
     
 
                                     }
@@ -148,43 +147,43 @@ PreLogUtil.put(CommonLabels.getInstance()!.START_LABEL +OpenGLCapabilities.getIn
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.renderStrings!.ON_SURFACE_CREATED, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->renderStrings.ON_SURFACE_CREATED, e);
     
 }
 
 }
 
 
-    public onSurfaceCreated(GL10 gl, LoadTextures loadTextures){
+    public: void onSurfaceCreated(GL10 gl, LoadTextures loadTextures){
 
         try {
-            loadTextures!.load(gl);
+            loadTextures.load(gl);
     
-OpenGLLogUtil.getInstance()!.logError(gl);
+OpenGLLogUtil::getInstance().logError(gl);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.renderStrings!.ON_SURFACE_CREATED, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->renderStrings.ON_SURFACE_CREATED, e);
     
 }
 
 }
 
 
-    private: surfaceCreatedAndInitialized: bool = false;
+    private: bool surfaceCreatedAndInitialized = false;
 
                 //@Throws(Exception.constructor)
             
-    public onSurfaceChanged(GL10 gl, OpenGLESGraphics graphics){
+    public: void onSurfaceChanged(GL10 gl, OpenGLESGraphics graphics){
 
-                        if(!this.surfaceCreatedAndInitialized)
+                        if(!this->surfaceCreatedAndInitialized)
                         
                                     {
                                     graphics.init();
     
-this.surfaceCreatedAndInitialized= true;
+this->surfaceCreatedAndInitialized= true;
     
 
                                     }
@@ -192,24 +191,24 @@ this.surfaceCreatedAndInitialized= true;
 graphics.update();
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.update(graphics);
+progressCanvas.update(graphics);
     
-getInstance = OpenGLImageCacheFactory.getInstance()getInstance as OpenGLImageCache
+getInstance = OpenGLImageCacheFactory::getInstance()getInstance as OpenGLImageCache
 getInstance.
                     update(gl);
     
-this.processRunnables();
+this->processRunnables();
     
-this.set(gl);
+this->set(gl);
     
 }
 
 
-    public Image addImage(Image image){
+    public: Image addImage(Image image){
 
-    encapsulateImage: Image = this.preResourceImageUtil!.encapsulate(image)!;;
+    Image encapsulateImage = this->preResourceImageUtil.encapsulate(image);;
     
 
                         if(encapsulateImage != image)
@@ -218,11 +217,11 @@ this.set(gl);
                                     
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.anyType) 
+        //synchronized(this->anyType) 
 
         //mutex.withLock
         
-this.list.add(encapsulateImage);
+this->list.add(encapsulateImage);
     
 
 
@@ -244,36 +243,36 @@ this.list.add(encapsulateImage);
 }
 
 
-    public clear(){
+    public: void clear(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.anyType) 
+        //synchronized(this->anyType) 
 
         //mutex.withLock
         
-this.list.clear();
+this->list.clear();
     
 
 
 }
 
 
-    public addRunnable(Runnable runnable){
+    public: void addRunnable(Runnable runnable){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.lockObject) 
+        //synchronized(this->lockObject) 
 
         //mutex.withLock
         
 
-                        if(!this.runnableList!.contains(runnable))
+                        if(!this->runnableList.contains(runnable))
                         
                                     {
-                                    this.runnableList!.add(runnable);
+                                    this->runnableList.add(runnable);
     
-this.displayInfoSingleton!.add(this.canvasStrings!.SCALED_IMAGES);
+this->displayInfoSingleton.add(this->canvasStrings.SCALED_IMAGES);
     
 
                                     }
@@ -283,34 +282,34 @@ this.displayInfoSingleton!.add(this.canvasStrings!.SCALED_IMAGES);
 }
 
 
-    processRunnables(){
+    private: void processRunnables(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.lockObject) 
+        //synchronized(this->lockObject) 
 
         //mutex.withLock
         
 
-    runnable: Runnable;;
+    Runnable runnable;;
     
 
-    size: int32_t = this.runnableList!.size()!;;
+    int32_t size = this->runnableList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-runnable= this.runnableList!.get(index) as Runnable;
+runnable= this->runnableList.get(index) as Runnable;
     
 runnable.run();
     
 }
 
-this.runnableList!.clear();
+this->runnableList.clear();
     
 
 
@@ -319,21 +318,21 @@ this.runnableList!.clear();
 
                 //@Throws(Exception.constructor)
             
-    set(GL10 gl){
+    private: void set(GL10 gl){
 
-    size: int32_t = this.list.size()!;;
+    int32_t size = this->list.size();;
     
 
-    image: any;;
+    Object* image;;
     
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size; index2++)
+    int32_t index2 = 0;index2 < size; index2++)
         {
-image= this.list.get(index2);
+image= this->list.get(index2);
     
 image = imageimage as OpenGLESImage
 image.

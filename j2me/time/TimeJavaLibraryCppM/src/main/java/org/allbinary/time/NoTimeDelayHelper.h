@@ -42,19 +42,18 @@
         #include "TimeDelayHelper.h"
 
 class NoTimeDelayHelper: public TimeDelayHelper {
-        
 
-    public static const SINGLETON: NoTimeDelayHelper = new NoTimeDelayHelper();
+    public: static const NoTimeDelayHelper SINGLETON = NoTimeDelayHelper();
 
-public constructor ();
+public: NoTimeDelayHelper();
 
-    public bool isTimeTNT();
+    public: bool isTimeTNT();
 
-    public bool isTimeSinceTNT(int32_t delay);
+    public: bool isTimeSinceTNT(int32_t delay);
 
-    public bool isTime(int64_t currentTime);
+    public: bool isTime(int64_t currentTime);
 
-    public bool isTimeSince(int32_t delay, int64_t currentTime);
+    public: bool isTimeSince(int32_t delay, int64_t currentTime);
 
 };
 

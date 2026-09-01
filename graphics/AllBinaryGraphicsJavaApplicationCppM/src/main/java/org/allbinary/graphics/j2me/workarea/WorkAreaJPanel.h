@@ -119,132 +119,131 @@
 #include "KeyAdapter.h"
 #include "KeyEvent.h"
 
-class WorkAreaJPanel: public JPanel: public WorkAreaJPanelInterface, public MyCanvasEventListener, public EventListener, public Runnable {
-        
+class WorkAreaJPanel: public JPanel, public WorkAreaJPanelInterface, public MyCanvasEventListener, public EventListener, public Runnable {
 
-    private: static document: org.w3c.dom.Document;
+    private: static org::w3c::dom::Document document;
 
-    public static Document getDocument();
+    public: static Document getDocument();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: canvasJPanelList: LinkedList;
+    private: LinkedList canvasJPanelList;
 
-    private: canvasHolderJPanel: JPanel;
+    private: JPanel canvasHolderJPanel;
 
-    private: name: string;
+    private: std::string name;
 
-    private: selectedFrame: int32_t= 0;
+    private: int32_t selectedFrame= 0;
 
-    private: propertiesJPanel: PropertiesJPanel;
+    private: PropertiesJPanel propertiesJPanel;
 
-    private: workAreaJTreeJPanel: WorkAreaJTreeJPanel;
+    private: WorkAreaJTreeJPanel workAreaJTreeJPanel;
 
-    private: isPlaying: bool = false;
+    private: bool isPlaying = false;
 
-public constructor (string name, Dimension dimension, int32_t x, int32_t y);
+public: WorkAreaJPanel(std::string name, Dimension dimension, int32_t x, int32_t y);
 
-public constructor (WorkAreaDom workAreaDom, Dimension dimension);
+public: WorkAreaJPanel(WorkAreaDom workAreaDom, Dimension dimension);
 
-    initMyComponents(Dimension dimension);
+    private: void initMyComponents(Dimension dimension);
 
-    HashMap<any, any> getCanvasHashMap();
+    private: HashMap<any, any> getCanvasHashMap();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public play();
+    public: void play();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public stop();
+    public: void stop();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isPlaying();
+    public: bool isPlaying();
 
-    public string getName();
+    public: std::string getName();
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public disableCanvas();
+    public: void disableCanvas();
 
-    public enableCanvas();
+    public: void enableCanvas();
 
-    public deselect();
+    public: void deselect();
 
-    public select();
+    public: void select();
 
-    public changeZoom(int32_t factor);
+    public: void changeZoom(int32_t factor);
 
-    public CanvasJPanel getCurrentFrame();
+    public: CanvasJPanel getCurrentFrame();
 
-    initDuplicate(CanvasJPanel newCanvasJPanel);
-
-                //@Throws(Exception.constructor)
-            
-    duplicate(MutableTreeNode treeNode);
+    private: void initDuplicate(CanvasJPanel newCanvasJPanel);
 
                 //@Throws(Exception.constructor)
             
-    public autoRotate(int32_t increments, int32_t totalAngle);
-
-    public explodeAll();
+    private: void duplicate(MutableTreeNode treeNode);
 
                 //@Throws(Exception.constructor)
             
-    public autoExplode(int32_t numberOfFrames, int32_t explodeType);
+    public: void autoRotate(int32_t increments, int32_t totalAngle);
+
+    public: void explodeAll();
 
                 //@Throws(Exception.constructor)
             
-    public autoMirror();
+    public: void autoExplode(int32_t numberOfFrames, int32_t explodeType);
+
+                //@Throws(Exception.constructor)
+            
+    public: void autoMirror();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    select(int32_t index);
+    private: void select(int32_t index);
 
-    select(MutableTreeNode treeNode);
-
-                //@Throws(Exception.constructor)
-            
-    public Document toDocument();
-
-    initComponents();
-
-    innerJPanelKeyReleased(java.awt.event.KeyEvent evt);
-
-    innerJPanelKeyPressed(java.awt.event.KeyEvent evt);
-
-    innerJPanelKeyTyped(java.awt.event.KeyEvent evt);
-
-    public keyPressed(java.awt.event.KeyEvent keyEvent);
-
-    public keyReleased(java.awt.event.KeyEvent keyEvent);
-
-    public keyTyped(java.awt.event.KeyEvent keyEvent);
-
-    public delete(MyCanvasEvent evt);
+    private: void select(MutableTreeNode treeNode);
 
                 //@Throws(Exception.constructor)
             
-    public duplicate(MyCanvasEvent evt);
+    public: Document toDocument();
 
-    public select(MyCanvasEvent evt);
+    private: void initComponents();
 
-    public rotate(MyCanvasEvent evt);
+    private: void innerJPanelKeyReleased(java::awt::event::KeyEvent evt);
 
-    public explode(MyCanvasEvent evt);
+    private: void innerJPanelKeyPressed(java::awt::event::KeyEvent evt);
+
+    private: void innerJPanelKeyTyped(java::awt::event::KeyEvent evt);
+
+    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
+
+    public: void delete_(MyCanvasEvent evt);
 
                 //@Throws(Exception.constructor)
             
-    public autoExplode(MyCanvasEvent evt);
+    public: void duplicate(MyCanvasEvent evt);
+
+    public: void select(MyCanvasEvent evt);
+
+    public: void rotate(MyCanvasEvent evt);
+
+    public: void explode(MyCanvasEvent evt);
 
                 //@Throws(Exception.constructor)
             
-    public center();
+    public: void autoExplode(MyCanvasEvent evt);
 
                 //@Throws(Exception.constructor)
             
-    public center(MyCanvasEvent evt);
+    public: void center();
 
-    public run();
+                //@Throws(Exception.constructor)
+            
+    public: void center(MyCanvasEvent evt);
 
-    private: innerJPanel: javax.swing.JPanel;
+    public: void run();
+
+    private: javax::swing::JPanel innerJPanel;
 
 };
 

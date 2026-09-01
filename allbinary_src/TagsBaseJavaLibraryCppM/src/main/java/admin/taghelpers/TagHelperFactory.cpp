@@ -59,17 +59,16 @@
 class TagHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

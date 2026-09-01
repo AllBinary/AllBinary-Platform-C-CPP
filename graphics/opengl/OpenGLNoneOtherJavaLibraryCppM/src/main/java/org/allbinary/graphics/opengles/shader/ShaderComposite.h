@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_SHADERCOMPOSITE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -63,57 +65,56 @@
 class ShaderComposite
             : public Object
          {
-        
 
-    public const disableProgramShaderOpenGLProcessor: OpenGLProcessor;
+    public: OpenGLProcessor disableProgramShaderOpenGLProcessor;
 
-    public const requiresOpenGLVersion: string;
+    public: std::string requiresOpenGLVersion;
 
-    public const shaderArray: std::vector<Shader>;
+    public: std::vector<Shader> shaderArray;
 
-    public const shaderInitializer: ShaderInitializer;
+    public: ShaderInitializer shaderInitializer;
 
-    public const compositeShaderUpdater: CompositeShaderUpdater;
+    public: CompositeShaderUpdater compositeShaderUpdater;
 
-    public const modelViewProjection: ModelViewProjection;
+    public: ModelViewProjection modelViewProjection;
 
-    public const colorOpenGLProcessor: OpenGLProcessor;
+    public: OpenGLProcessor colorOpenGLProcessor;
 
-    public const vertexOpenGLProcessor: OpenGLProcessor;
+    public: OpenGLProcessor vertexOpenGLProcessor;
 
-    public useProgramShaderOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor useProgramShaderOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public shaderMatrixOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor shaderMatrixOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public colorEnableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor colorEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public normalEnableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor normalEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public vertexEnableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor vertexEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public textureEnableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor textureEnableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public colorDisableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor colorDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public normalDisableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor normalDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public vertexDisableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor vertexDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public textureDisableVertexAttribArrayOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor textureDisableVertexAttribArrayOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public uniformLightPositionOpenGLProcessor: OpenGLObject3dProcessor = NullOpenGLTextureProcessor.getInstance()!;
+    public: OpenGLObject3dProcessor uniformLightPositionOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
 
-    public uniformLightColorOpenGLProcessor: OpenGLObject3dProcessor = NullOpenGLTextureProcessor.getInstance()!;
+    public: OpenGLObject3dProcessor uniformLightColorOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
 
-    public uniformCameraPositionOpenGLProcessor: OpenGLObject3dProcessor = NullOpenGLTextureProcessor.getInstance()!;
+    public: OpenGLObject3dProcessor uniformCameraPositionOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
 
-    public uniformTextureUnitOpenGLProcessor: OpenGLObject3dProcessor = NullOpenGLTextureProcessor.getInstance()!;
+    public: OpenGLObject3dProcessor uniformTextureUnitOpenGLProcessor = NullOpenGLTextureProcessor::getInstance();
 
-    public programHandle: int32_t= 0;
+    public: int32_t programHandle= 0;
 
-public constructor (string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor, OpenGLProcessor disableProgramShaderOpenGLProcessor);
+public: ShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor, OpenGLProcessor disableProgramShaderOpenGLProcessor);
 
-    public init(GL10 gl);
+    public: void init(GL10 gl);
 
 };
 

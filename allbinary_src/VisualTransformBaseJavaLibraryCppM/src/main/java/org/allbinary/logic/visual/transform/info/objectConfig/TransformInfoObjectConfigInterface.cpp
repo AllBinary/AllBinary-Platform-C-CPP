@@ -49,17 +49,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInfoObjectConfigInterface: public DomDocumentMappingInterface {
-        
 
     bool containsView(TransformInfoInterface transformInfoInterface)
 
                 //@Throws(Exception.constructor)
             
-    string getName()
+    std::string getName()
 
                 //@Throws(Exception.constructor)
             
-    Vector getTransformsGroup(string group)
+    Vector getTransformsGroup(std::string group)
 
                 //@Throws(Exception.constructor)
             
@@ -75,23 +74,23 @@ class TransformInfoObjectConfigInterface: public DomDocumentMappingInterface {
 
                 //@Throws(Exception.constructor)
             
-    string getOutputTypeName()
+    std::string getOutputTypeName()
 
-    setOutputTypeName(string value)
-
-                //@Throws(Exception.constructor)
-            
-    string getInputOutputTypeName()
+    void setOutputTypeName(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    string getInputOutputTypeFile()
+    std::string getInputOutputTypeName()
 
                 //@Throws(Exception.constructor)
             
-    string getImportUriPath()
+    std::string getInputOutputTypeFile()
 
-    string toString()
+                //@Throws(Exception.constructor)
+            
+    std::string getImportUriPath()
+
+    std::string toString()
 
 };
 

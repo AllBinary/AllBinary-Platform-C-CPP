@@ -68,19 +68,18 @@
         #include "NoTemplateTransformInfoObjectConfig.h"
 
 class InsertTemplateCustomizerTransformInfoObjectConfig: public NoTemplateTransformInfoObjectConfig {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object transformInfoInterface);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface);
 
-public constructor (Object transformInfoInterface, Object document);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, Object document);
 
-public constructor (Object transformInfoInterface, string name, string type);
+public: InsertTemplateCustomizerTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    public set(string aParentViewName);
+    public: void set(std::string aParentViewName);
 
 };
 

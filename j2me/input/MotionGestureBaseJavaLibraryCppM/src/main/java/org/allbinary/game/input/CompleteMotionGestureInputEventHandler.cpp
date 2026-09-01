@@ -61,34 +61,31 @@
 #include "CompleteMotionGestureInputEventListenerInterface.h"
 
 class CompleteMotionGestureInputEventHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: CompleteMotionGestureInputEventHandler = new CompleteMotionGestureInputEventHandler();
+    private: static const CompleteMotionGestureInputEventHandler SINGLETON = CompleteMotionGestureInputEventHandler();
 
-    public static CompleteMotionGestureInputEventHandler getInstance(){
+    public: static CompleteMotionGestureInputEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompleteMotionGestureInputEventHandler.SINGLETON;
+                        return CompleteMotionGestureInputEventHandler::SINGLETON;
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: CompleteMotionGestureInputEventHandler(){
+}
 
 
-    public addListener(CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener){
+    public: void addListener(CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener){
 
-                        if(!this.list.contains(completeMotionGestureInputEventListener))
+                        if(!this->list.contains(completeMotionGestureInputEventListener))
                         
                                     {
-                                    this.list.add(completeMotionGestureInputEventListener);
+                                    this->list.add(completeMotionGestureInputEventListener);
     
 
                                     }
@@ -96,16 +93,16 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -114,26 +111,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    completeMotionGestureInputEventListener: CompleteMotionGestureInputEventListener = this.list.objectArray[index]! as CompleteMotionGestureInputEventListener;;
+    CompleteMotionGestureInputEventListener completeMotionGestureInputEventListener = this->list.objectArray[index]! as CompleteMotionGestureInputEventListener;;
     
-completeMotionGestureInputEventListener!.onCompleteMotionGestureInputEvent(eventObject as CompleteMotionGestureInputEvent);
+completeMotionGestureInputEventListener.onCompleteMotionGestureInputEvent(eventObject as CompleteMotionGestureInputEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -146,11 +143,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    completeMotionGestureInputEventListenerInterface: CompleteMotionGestureInputEventListenerInterface = eventListenerInterface as CompleteMotionGestureInputEventListenerInterface;;
+    CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface = eventListenerInterface as CompleteMotionGestureInputEventListenerInterface;;
     
-completeMotionGestureInputEventListenerInterface!.onCompleteMotionGestureInputEvent(eventObject as CompleteMotionGestureInputEvent);
+completeMotionGestureInputEventListenerInterface.onCompleteMotionGestureInputEvent(eventObject as CompleteMotionGestureInputEvent);
     
 }
 

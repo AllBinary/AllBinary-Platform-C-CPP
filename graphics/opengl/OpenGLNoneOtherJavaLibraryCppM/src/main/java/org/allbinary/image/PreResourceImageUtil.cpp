@@ -51,21 +51,20 @@
 class PreResourceImageUtil
             : public Object
          {
-        
 
-    private: static const instance: PreResourceImageUtil = new PreResourceImageUtil();
+    private: static PreResourceImageUtil instance() { return PreResourceImageUtil(); }
 
-    public static PreResourceImageUtil getInstance(){
+    public: static PreResourceImageUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PreResourceImageUtil.instance;
+                        return PreResourceImageUtil::instance();
     
 }
 
 
-    public Image encapsulate(Image image){
+    public: Image encapsulate(Image image){
 
 
 
@@ -75,11 +74,11 @@ class PreResourceImageUtil
 }
 
 
-    public updateGL(GL gl, Image image){
+    public: void updateGL(GL gl, Image image){
 }
 
 
-    public update(Graphics graphics, Image image){
+    public: void update(Graphics graphics, Image image){
 }
 
 

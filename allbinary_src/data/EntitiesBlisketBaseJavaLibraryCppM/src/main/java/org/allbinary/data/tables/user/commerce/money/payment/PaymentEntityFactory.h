@@ -54,17 +54,16 @@
 class PaymentEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: PaymentEntityFactory = new PaymentEntityFactory();
+    private: static PaymentEntityFactory instance() { return PaymentEntityFactory(); }
 
-    public static PaymentEntityFactory getInstance();
+    public: static PaymentEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: PaymentEntityFactory();
 
-    public PaymentEntity getPaymentEntityInstance();
+    public: PaymentEntity getPaymentEntityInstance();
 
 };
 

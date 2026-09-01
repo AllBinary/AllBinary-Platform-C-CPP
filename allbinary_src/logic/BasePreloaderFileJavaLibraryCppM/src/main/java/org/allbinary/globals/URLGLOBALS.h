@@ -49,21 +49,20 @@
 class URLGLOBALS
             : public Object
          {
-        
 
-    private: static urlGlobalsInterface: UrlGlobalsInterface = AppUrlGlobals.NULL_APP_URL_GLOBALS;
+    private: static UrlGlobalsInterface urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
 
-    public static init(UrlGlobalsInterface urlGlobalsInterface);
+    public: static void init(UrlGlobalsInterface urlGlobalsInterface);
 
-    public static bool isTestingMode();
+    public: static bool isTestingMode();
 
-    public static string getWebappPath();
+    public: static std::string getWebappPath();
 
-    public static string getTestHtmlPath();
+    public: static std::string getTestHtmlPath();
 
                 //@Throws(Exception.constructor)
             
-    public static string getMainPath();
+    public: static std::string getMainPath();
 
 };
 

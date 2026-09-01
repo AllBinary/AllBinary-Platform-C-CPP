@@ -44,11 +44,10 @@
         #include "ArtificialIntelligence.h"
 
 class ArtificialIntelligenceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    ArtificialIntelligence getInstance(any anyType);
+    ArtificialIntelligence getInstance(Object* anyType);
 
 };
 

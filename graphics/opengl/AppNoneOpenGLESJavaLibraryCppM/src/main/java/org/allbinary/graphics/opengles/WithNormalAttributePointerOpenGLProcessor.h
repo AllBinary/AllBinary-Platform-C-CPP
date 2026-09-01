@@ -49,15 +49,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WithNormalAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: WithNormalAttributePointerOpenGLProcessor = new WithNormalAttributePointerOpenGLProcessor();
+    private: static WithNormalAttributePointerOpenGLProcessor instance() { return WithNormalAttributePointerOpenGLProcessor(); }
 
-    public static WithNormalAttributePointerOpenGLProcessor getInstance();
+    public: static WithNormalAttributePointerOpenGLProcessor getInstance();
 
-public constructor ();
+public: WithNormalAttributePointerOpenGLProcessor();
 
-    public process(GL10 gl, any = {} aObject3d);
+    public: void process(GL10 gl, Object* aObject3d);
 
 };
 

@@ -45,13 +45,12 @@
 class TaxData
             : public Object
          {
-        
 
-    public static const NAME: string = "TAX_NAME";
+    public: static const std::string NAME = "TAX_NAME";
 
-    public static const RATE: string = "TAX_RATE";
+    public: static const std::string RATE = "TAX_RATE";
 
-private constructor ();
+private: TaxData();
 
 };
 

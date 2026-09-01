@@ -57,9 +57,8 @@
 class CustomGameMenuUtil
             : public Object
          {
-        
 
-    public static add(MyCanvas canvas);
+    public: static void add(MyCanvas canvas);
 
 };
 

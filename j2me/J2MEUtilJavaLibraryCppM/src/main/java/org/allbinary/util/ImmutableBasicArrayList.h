@@ -45,17 +45,16 @@
         #include "BasicArrayListS.h"
 
 class ImmutableBasicArrayList: public BasicArrayListS {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name, int32_t size);
+public: ImmutableBasicArrayList(std::string name, int32_t size);
 
-    public bool add(any = {} e);
+    public: bool add(Object* e);
 
-    public addAt(int32_t index, any = {} element);
+    public: void addAt(int32_t index, Object* element);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -43,39 +43,38 @@
 class ThreadObjectUtil
             : public Object
          {
-        
 
-    private: static const instance: ThreadObjectUtil = new ThreadObjectUtil();
+    private: static ThreadObjectUtil instance() { return ThreadObjectUtil(); }
 
-    public static ThreadObjectUtil getInstance(){
+    public: static ThreadObjectUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadObjectUtil.instance;
+                        return ThreadObjectUtil::instance();
     
 }
 
 
-    public const NULL_PRIORITY_RUNNABLE: PriorityRunnable = new NullPriorityRunnable();
+    public: const PriorityRunnable NULL_PRIORITY_RUNNABLE = NullPriorityRunnable();
 
-    public notifyObject(Object anyType){
+    public: void notifyObject(Object anyType){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public waitObject(Object anyType){
+    public: void waitObject(Object anyType){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public waitObjectFor(Object anyType, int64_t delay){
+    public: void waitObjectFor(Object anyType, int64_t delay){
 }
 
 
-    public processThread(Runnable runnable){
+    public: void processThread(Runnable runnable){
 runnable.run();
     
 }

@@ -45,9 +45,8 @@
         #include "AbSqlBasic.h"
 
 class AbSqlTablePresentation: public AbSqlBasic {
-        
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlTablePresentation(DbConnectionInfo databaseConnectionInfoInterface);
 
 };
 

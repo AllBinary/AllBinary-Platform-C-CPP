@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORENAMEPERSISTANCESINGLETON_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORENAMEPERSISTANCESINGLETON_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -118,43 +120,42 @@
 class HighScoreNamePersistanceSingleton
             : public Object
          {
-        
 
-    private: static SINGLETON: HighScoreNamePersistanceSingleton = new HighScoreNamePersistanceSingleton();
+    private: static HighScoreNamePersistanceSingleton SINGLETON = HighScoreNamePersistanceSingleton();
 
-    public static HighScoreNamePersistanceSingleton getInstance();
+    public: static HighScoreNamePersistanceSingleton getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const platformRecordIdUtil: PlatformRecordIdUtil = PlatformRecordIdUtil.getInstance()!;
+    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
-    private: const RECORD_ID: string = "_SN";
+    private: const std::string RECORD_ID = "_SN";
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: nameBasicArrayList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList nameBasicArrayList = BasicArrayListD();
 
-    public clear();
-
-                //@Throws(Exception.constructor)
-            
-    public deleteAll(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
-
-    string getRecordId(AbeClientInformationInterface abeClientInformation);
+    public: void clear();
 
                 //@Throws(Exception.constructor)
             
-    public delete(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, int32_t deleteId);
+    public: void deleteAll(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
 
-    public BasicArrayList getIds();
+    private: std::string getRecordId(AbeClientInformationInterface abeClientInformation);
 
-    public string load(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
+                //@Throws(Exception.constructor)
+            
+    public: void delete_(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, int32_t deleteId);
 
-    public save(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, string name);
+    public: BasicArrayList getIds();
+
+    public: std::string load(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
+
+    public: void save(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string name);
 
 };
 

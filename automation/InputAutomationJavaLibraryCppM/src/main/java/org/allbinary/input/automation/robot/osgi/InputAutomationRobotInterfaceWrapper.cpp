@@ -45,30 +45,27 @@
 class InputAutomationRobotInterfaceWrapper
             : public Object
          {
-        
 
-    private: inputRobotInterface: InputRobotInterface;
+    private: InputRobotInterface inputRobotInterface;
 
-public constructor (InputRobotInterface inputRobotInterface){
-
-            super();
-        this.setInputRobotInterface(inputRobotInterface);
+public: InputAutomationRobotInterfaceWrapper(InputRobotInterface inputRobotInterface){
+this->setInputRobotInterface(inputRobotInterface);
     
 }
 
 
-    public InputRobotInterface getInputRobotInterface(){
+    public: InputRobotInterface getInputRobotInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputRobotInterface;
+                        return this->inputRobotInterface;
     
 }
 
 
-    public setInputRobotInterface(InputRobotInterface inputRobotInterface){
-this.inputRobotInterface= inputRobotInterface;
+    public: void setInputRobotInterface(InputRobotInterface inputRobotInterface){
+this->inputRobotInterface= inputRobotInterface;
     
 }
 

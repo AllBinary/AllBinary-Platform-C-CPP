@@ -74,23 +74,22 @@
 class TransformGeneratorUtil
             : public Object
          {
-        
 
-    private: static const instance: TransformGeneratorUtil = new TransformGeneratorUtil();
+    private: static TransformGeneratorUtil instance() { return TransformGeneratorUtil(); }
 
-    public static TransformGeneratorUtil getInstance();
+    public: static TransformGeneratorUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, TransformInfoInterface ownerTransformInfoInterface);
+private: TransformGeneratorUtil();
 
                 //@Throws(Exception.constructor)
             
-    public generate(AbeClientInformationInterface abeClientInformation, TransformInfoDomNode transformInfoDomNode, TransformInfoInterface ownerTransformInfoInterface);
+    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, TransformInfoInterface ownerTransformInfoInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoDomNode transformInfoDomNode, TransformInfoInterface ownerTransformInfoInterface);
 
 };
 

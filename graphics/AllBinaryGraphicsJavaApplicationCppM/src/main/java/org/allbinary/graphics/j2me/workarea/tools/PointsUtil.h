@@ -61,15 +61,14 @@
 class PointsUtil
             : public Object
          {
-        
 
-    private: static const instance: PointsUtil = new PointsUtil();
+    private: static PointsUtil instance() { return PointsUtil(); }
 
-    public static PointsUtil getInstance();
+    public: static PointsUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList doTransforms(BasicArrayList pointVector, number angle, GPoint fulcrumPoint);
+    public: BasicArrayList doTransforms(BasicArrayList pointVector, number angle, GPoint fulcrumPoint);
 
 };
 

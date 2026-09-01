@@ -53,11 +53,10 @@
         #include "UniqueIdGenerator.h"
 
 class OrderItemIdGenerator: public UniqueIdGenerator {
-        
 
-    private: const IDFILE: string = "orderitemId.unq";
+    private: const std::string IDFILE = "orderitemId.unq";
 
-public constructor ();
+public: OrderItemIdGenerator();
 
 };
 

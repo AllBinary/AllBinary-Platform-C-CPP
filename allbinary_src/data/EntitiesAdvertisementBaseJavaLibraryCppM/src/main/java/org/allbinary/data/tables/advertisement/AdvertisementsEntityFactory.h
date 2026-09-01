@@ -55,13 +55,12 @@
 class AdvertisementsEntityFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "org.allbinary.data.tables.AdvertisementEntity";
+    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
 
-    public static AdvertisementsEntityInterface getInstance();
+    public: static AdvertisementsEntityInterface getInstance();
 
-private constructor ();
+private: AdvertisementsEntityFactory();
 
 };
 

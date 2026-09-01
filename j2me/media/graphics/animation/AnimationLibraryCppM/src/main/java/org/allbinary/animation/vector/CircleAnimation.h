@@ -67,20 +67,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CircleAnimation: public Animation: public ColorCompositeInterface {
-        
+class CircleAnimation: public Animation, public ColorCompositeInterface {
 
-    const TOTAL_ANGLE: int32_t = static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE);
+    protected: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);
 
-    width: int32_t;
+    protected: int32_t width;
 
-    height: int32_t;
+    protected: int32_t height;
 
-public constructor (int32_t width, int32_t height, BasicColor basicColor);
+public: CircleAnimation(int32_t width, int32_t height, BasicColor basicColor);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

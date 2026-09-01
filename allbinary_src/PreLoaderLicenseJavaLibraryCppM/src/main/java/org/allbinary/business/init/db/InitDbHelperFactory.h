@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_INITDBHELPERFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -57,19 +59,18 @@
 class InitDbHelperFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "org.allbinary.business.installer.InitDbCrypted";
-
-                //@Throws(LicensingException.constructor)
-            
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+    private: static const std::string CLASSNAME = "org.allbinary.business.installer.InitDbCrypted";
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation);
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
 
-private constructor ();
+                //@Throws(LicensingException.constructor)
+            
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation);
+
+private: InitDbHelperFactory();
 
 };
 

@@ -48,17 +48,16 @@
 class GravityUtil
             : public Object
          {
-        
 
-    private: static const instance: GravityUtil = new GravityUtil();
+    private: static GravityUtil instance() { return GravityUtil(); }
 
-    public static GravityUtil getInstance();
+    public: static GravityUtil getInstance();
 
-    public const GAME_GRAVITY_VELOCITY: int32_t = 1800;
+    public: const int32_t GAME_GRAVITY_VELOCITY = 1800;
 
-    public const MAX_GAME_VELOCITY: int32_t = 18000;
+    public: const int32_t MAX_GAME_VELOCITY = 18000;
 
-    public process(BasicVelocityProperties velocityProperties, int32_t customGravity);
+    public: void process(BasicVelocityProperties velocityProperties, int32_t customGravity);
 
 };
 

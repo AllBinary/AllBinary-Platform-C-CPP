@@ -74,37 +74,36 @@
 class GenericProfile
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: vector: Vector;
+    private: Vector vector;
 
-    private: genericProfileActions: GenericProfileActions;
+    private: GenericProfileActions genericProfileActions;
 
-public constructor (Node node);
+public: GenericProfile(Node node);
 
-public constructor (string name);
+public: GenericProfile(std::string name);
 
-    public Vector getGenericProfileDataWorkerTypeVector();
+    public: Vector getGenericProfileDataWorkerTypeVector();
 
-    public add(GenericProfileDataWorkerType genericProfileDataWorkerType);
+    public: void add(GenericProfileDataWorkerType genericProfileDataWorkerType);
 
-    public remove(GenericProfileDataWorkerType genericProfileDataWorkerType);
+    public: void remove(GenericProfileDataWorkerType genericProfileDataWorkerType);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public string getName();
+    public: std::string getName();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public GenericProfileActions getGenericProfileActions();
+    public: GenericProfileActions getGenericProfileActions();
 
-    public setGenericProfileActions(GenericProfileActions genericProfileActions);
+    public: void setGenericProfileActions(GenericProfileActions genericProfileActions);
 
 };
 

@@ -60,56 +60,55 @@
 #include "ThreadPool.h"
 
 class PooledThread: public Thread {
-        
 
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
+    private: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: const threadPool: ThreadPool;
+    private: ThreadPool threadPool;
 
-public constructor (ThreadPool threadPool){
-            super(threadPool!.createName());
+public: PooledThread(ThreadPool threadPool){
+            super(threadPool.createName());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, this->commonStrings.CONSTRUCTOR);
     
-this.threadPool= threadPool;
+this->threadPool= threadPool;
     
 }
 
 
-    private: const INTERRUPT_EXCEPTION: string = "Exit InterruptedException";
+    private: const std::string INTERRUPT_EXCEPTION = "Exit InterruptedException";
 
-    public run(){
-this.threadPool!.threadStarted();
+    public: void run(){
+this->threadPool.threadStarted();
     
 
         while(true)
         {
 
-    task2: Runnable = this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;;
+    Runnable task2 = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;;
     
 
         try {
-            task2= this.threadPool!.getTask();
+            task2= this->threadPool.getTask();
     
-this.threadPool!.runningTask= true;
+this->threadPool.runningTask= true;
     
-this.threadPool!.startTask(task2);
+this->threadPool.startTask(task2);
     
 
                 //: 
 } catch(ex) 
             {
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF(this.INTERRUPT_EXCEPTION, this, this.commonStrings!.RUN);
+logUtil.putF(this->INTERRUPT_EXCEPTION, this, this->commonStrings.RUN);
     
 break;
 
@@ -117,7 +116,7 @@ break;
 }
 
 
-                        if(task2 == this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE)
+                        if(task2 == this->threadObjectUtil.NULL_PRIORITY_RUNNABLE)
                         
                                     {
                                     break;
@@ -130,24 +129,24 @@ break;
         try {
             task2.run();
     
-this.threadPool!.completedTask(task2);
+this->threadPool.completedTask(task2);
     
-this.threadPool!.runningTask= false;
+this->threadPool.runningTask= false;
     
 
                 //: 
 } catch(e) 
             {
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.put(new StringMaker().append(this.commonStrings!.EXCEPTION_LABEL)!.append(StringUtil.getInstance()!.toString(task2))!.toString(), this, this.commonStrings!.RUN, e);
+logUtil.put(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append(StringUtil::getInstance().toString(task2)).toString(), this, this->commonStrings.RUN, e);
     
 }
 
 }
 
-this.threadPool!.threadStopped();
+this->threadPool.threadStopped();
     
 }
 

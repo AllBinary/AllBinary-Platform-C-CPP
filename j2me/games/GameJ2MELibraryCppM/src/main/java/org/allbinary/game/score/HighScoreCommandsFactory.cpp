@@ -43,25 +43,24 @@
 #include "HighScoreCommands.h"
 
 class HighScoreCommandsFactory: public HighScoreCommandsBaseFactory {
-        
 
-    private: static const instance: HighScoreCommandsFactory = new HighScoreCommandsFactory();
+    private: static HighScoreCommandsFactory instance() { return HighScoreCommandsFactory(); }
 
-    public static HighScoreCommandsFactory getInstance(){
+    public: static HighScoreCommandsFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoreCommandsFactory.instance;
+                        return HighScoreCommandsFactory::instance();
     
 }
 
 
-private constructor (){
+private: HighScoreCommandsFactory(){
             super(
-                                                [
-                                                    HighScoreCommands.getInstance()!.PERSONAL,HighScoreCommands.getInstance()!.WORLD
-                                                ]);
+                                                {
+                                                    HighScoreCommands::getInstance().PERSONAL,HighScoreCommands::getInstance().WORLD
+                                                });
                     
 
                             //For kotlin this is before the body of the constructor.

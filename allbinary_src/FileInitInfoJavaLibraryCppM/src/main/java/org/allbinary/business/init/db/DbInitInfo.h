@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_DB_DBINITINFO_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/globals/FREEBLISKET_PATH_GLOBALS.h>
@@ -98,49 +100,48 @@
         #include "DbConnectionInfo.h"
 
 class DbInitInfo: public DbConnectionInfo {
-        
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    private: const httpData: HttpData = HttpData.getInstance()!;
+    private: const HttpData httpData = HttpData::getInstance();
 
-    private: const GET_URL: string = "getUrl";
+    private: const std::string GET_URL = "getUrl";
 
-    private: const PACKAGE: string = FREEBLISKET_PATH_GLOBALS.getInstance()!.DBINITPATH;
+    private: const std::string PACKAGE = FREEBLISKET_PATH_GLOBALS::getInstance().DBINITPATH;
 
-    private: initFileName: string;
+    private: std::string initFileName;
 
-    private: hasRead: bool = false;
+    private: bool hasRead = false;
 
-public constructor (string initFileName, bool read);
+public: DbInitInfo(std::string initFileName, bool read);
 
-    public string getUrl();
-
-                //@Throws(Exception.constructor)
-            
-    public write();
+    public: std::string getUrl();
 
                 //@Throws(Exception.constructor)
             
-    load();
+    public: void write();
 
-    public setHasRead(bool value);
+                //@Throws(Exception.constructor)
+            
+    private: void load();
 
-    updateIfNeeded();
+    public: void setHasRead(bool value);
 
-    public string getName();
+    private: void updateIfNeeded();
 
-    public string getUserName();
+    public: std::string getName();
 
-    public string getPassword();
+    public: std::string getUserName();
 
-    public string getSchema();
+    public: std::string getPassword();
 
-    public string getServer();
+    public: std::string getSchema();
 
-    public string getPort();
+    public: std::string getServer();
+
+    public: std::string getPort();
 
 };
 

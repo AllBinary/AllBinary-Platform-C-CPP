@@ -48,13 +48,12 @@
 class ImageJ2SEUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageJ2SEUtil = new ImageJ2SEUtil();
+    private: static ImageJ2SEUtil instance() { return ImageJ2SEUtil(); }
 
-    public static ImageJ2SEUtil getInstance();
+    public: static ImageJ2SEUtil getInstance();
 
-    public const TRANSPARENT_COLOR: Color = new Color(0, 0, 0, 0);
+    public: const Color TRANSPARENT_COLOR = Color(0, 0, 0, 0);
 
 };
 

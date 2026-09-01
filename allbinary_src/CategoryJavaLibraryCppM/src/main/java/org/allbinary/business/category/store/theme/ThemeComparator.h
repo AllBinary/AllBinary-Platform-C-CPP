@@ -48,11 +48,10 @@
 class ThemeComparator
             : public Object
         : public Comparator {
-        
 
-public constructor ();
+public: ThemeComparator();
 
-    public int32_t compare(any = {} anyType, any = {} object2);
+    public: int32_t compare(Object* anyType, Object* object2);
 
 };
 

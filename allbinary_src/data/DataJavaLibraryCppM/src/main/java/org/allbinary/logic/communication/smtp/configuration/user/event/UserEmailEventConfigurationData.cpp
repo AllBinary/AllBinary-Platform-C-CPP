@@ -42,16 +42,13 @@
 class UserEmailEventConfigurationData
             : public Object
          {
-        
 
-    public static const NAME: string = "EMAIL_EVENT_CONFIGURATION_NAME";
+    public: static const std::string NAME = "EMAIL_EVENT_CONFIGURATION_NAME";
 
-    public static const LISTENER_CLASSPATH: string = "EMAIL_EVENT_CONFIGURATION_LISTENER_CLASSPATH";
+    public: static const std::string LISTENER_CLASSPATH = "EMAIL_EVENT_CONFIGURATION_LISTENER_CLASSPATH";
 
-private constructor (){
-
-            super();
-        }
+private: UserEmailEventConfigurationData(){
+}
 
 
 };

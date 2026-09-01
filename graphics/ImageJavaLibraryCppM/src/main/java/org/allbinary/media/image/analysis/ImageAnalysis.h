@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_ANALYSIS_IMAGEANALYSIS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -75,27 +77,26 @@
 class ImageAnalysis
             : public Object
          {
-        
 
-    private: static const instance: ImageAnalysis = new ImageAnalysis();
+    private: static ImageAnalysis instance() { return ImageAnalysis(); }
 
-    public static ImageAnalysis getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public static ImageAnalysisResults process(BufferedImage bufferedImage, ColorRangeInterface colorRangeInterface);
-
-    static processColorRangeResults(ImageAnalysisResults imageAnalysisResults, ColorRangeInterface colorRangeInterface, Color color);
-
-    static processImageColorResults(ImageColorResults imageColorResults, ColorRangeInterface colorRangeInterface, Color color);
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-private constructor ();
+    public: static ImageAnalysis getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<ImageAnalysisResults> process(std::vector<BufferedImage> bufferedImageArray, ColorRangeInterface colorRangeInterface);
+    public: static ImageAnalysisResults process(BufferedImage bufferedImage, ColorRangeInterface colorRangeInterface);
+
+    private: static void processColorRangeResults(ImageAnalysisResults imageAnalysisResults, ColorRangeInterface colorRangeInterface, Color color);
+
+    private: static void processImageColorResults(ImageColorResults imageColorResults, ColorRangeInterface colorRangeInterface, Color color);
+
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+private: ImageAnalysis();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::vector<ImageAnalysisResults> process(std::vector<BufferedImage> bufferedImageArray, ColorRangeInterface colorRangeInterface);
 
 };
 

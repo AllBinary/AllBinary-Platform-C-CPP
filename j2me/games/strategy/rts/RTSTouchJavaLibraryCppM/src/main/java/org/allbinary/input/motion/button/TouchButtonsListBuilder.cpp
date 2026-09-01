@@ -45,35 +45,34 @@
         #include "BaseTouchInput.h"
 
 class TouchButtonsListBuilder: public BaseTouchInput {
-        
 
-    private: const baseTouchInputList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList baseTouchInputList = BasicArrayListD();
 
-    addList(BasicArrayList list){
+    protected: void addList(BasicArrayList list){
 
-    size: int32_t = this.baseTouchInputList!.size()!;;
+    int32_t size = this->baseTouchInputList.size();;
     
 
-    baseTouchInput: BaseTouchInput;;
+    BaseTouchInput baseTouchInput;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-baseTouchInput= this.baseTouchInputList!.get(index) as BaseTouchInput;
+baseTouchInput= this->baseTouchInputList.get(index) as BaseTouchInput;
     
-list.addAllList(baseTouchInput!.getList());
+list.addAllList(baseTouchInput.getList());
     
 }
 
 }
 
 
-    public add(BaseTouchInput baseTouchInput){
-this.baseTouchInputList!.add(baseTouchInput);
+    public: void add(BaseTouchInput baseTouchInput){
+this->baseTouchInputList.add(baseTouchInput);
     
 }
 

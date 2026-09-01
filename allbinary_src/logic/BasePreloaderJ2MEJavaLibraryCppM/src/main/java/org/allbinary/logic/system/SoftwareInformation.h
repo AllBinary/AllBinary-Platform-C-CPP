@@ -63,23 +63,22 @@
 class SoftwareInformation
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const shortName: string;
+    private: std::string shortName;
 
-    private: const version: string;
+    private: std::string version;
 
-public constructor (string name, string version, string shortName);
+public: SoftwareInformation(std::string name, std::string version, std::string shortName);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getVersion();
+    public: std::string getVersion();
 
-    public string toShortString();
+    public: std::string toShortString();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

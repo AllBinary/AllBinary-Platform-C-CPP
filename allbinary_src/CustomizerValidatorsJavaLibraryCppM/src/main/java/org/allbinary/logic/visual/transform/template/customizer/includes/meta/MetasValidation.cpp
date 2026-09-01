@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Vector.h>
@@ -79,59 +81,54 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "MetaValidation.h"
 
-class MetasValidation: public Validation: public DomNodeInterface {
-        
+class MetasValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: metaValidationVector: Vector;
+    private: Vector metaValidationVector;
 
-public constructor (string storeName){
-
-            super();
-        this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+public: MetasValidation(std::string storeName){
+this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
-this.metaValidationVector= new Vector();
+this->metaValidationVector= Vector();
     
 
-    contentValue: string = this.storeFrontInterface!.getName() +" E-Commerce Site";;
+    std::string contentValue = this->storeFrontInterface.getName() +" E-Commerce Site";;
     
 
-    keywordsMetaValidation: MetaValidation = new MetaValidation(HtmlMetaAttributeDataFactory.getInstance()!.NAME, "Keywords", HtmlMetaAttributeValuesData.getInstance()!.KEYWORDS, contentValue);;
+    MetaValidation keywordsMetaValidation = MetaValidation(HtmlMetaAttributeDataFactory::getInstance().NAME, "Keywords", HtmlMetaAttributeValuesData::getInstance().KEYWORDS, contentValue);;
     
 
-    abstractMetaValidation: MetaValidation = new MetaValidation(HtmlMetaAttributeDataFactory.getInstance()!.NAME, "Abstract", HtmlMetaAttributeValuesData.getInstance()!.ABSTRACT, contentValue);;
+    MetaValidation abstractMetaValidation = MetaValidation(HtmlMetaAttributeDataFactory::getInstance().NAME, "Abstract", HtmlMetaAttributeValuesData::getInstance().ABSTRACT, contentValue);;
     
 
-    descriptionMetaValidation: MetaValidation = new MetaValidation(HtmlMetaAttributeDataFactory.getInstance()!.NAME, "Description", HtmlMetaAttributeValuesData.getInstance()!.DESCRIPTION, contentValue);;
+    MetaValidation descriptionMetaValidation = MetaValidation(HtmlMetaAttributeDataFactory::getInstance().NAME, "Description", HtmlMetaAttributeValuesData::getInstance().DESCRIPTION, contentValue);;
     
-this.metaValidationVector!.add(keywordsMetaValidation);
+this->metaValidationVector.add(keywordsMetaValidation);
     
-this.metaValidationVector!.add(abstractMetaValidation);
+this->metaValidationVector.add(abstractMetaValidation);
     
-this.metaValidationVector!.add(descriptionMetaValidation);
+this->metaValidationVector.add(descriptionMetaValidation);
     
 }
 
 
-public constructor (Document document){
-
-            super();
-        
+public: MetasValidation(Document document){
 
 
-                            throw new Exception(CommonStrings.getInstance()!.NOT_IMPLEMENTED);
+
+                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
                     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
 
@@ -144,10 +141,10 @@ public constructor (Document document){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -156,34 +153,34 @@ public constructor (Document document){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -199,7 +196,7 @@ public constructor (Document document){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -209,7 +206,7 @@ public constructor (Document document){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -221,28 +218,27 @@ public constructor (Document document){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(HtmlMetasData.getInstance()!.NAME)!;;
+    Node node = document.createElement(HtmlMetasData::getInstance().NAME);;
     
 
-    metaArray: std::vector<MetaValidation> = this.metaValidationVector!.toArray([]) as MetaValidation[];;
+    std::vector<MetaValidation> metaArray = this->metaValidationVector.toArray({}) as MetaValidation[];;
     
 
-    size: int32_t = metaArray!.length
-                ;;
+    int32_t size = metaArray.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    metaValidation: MetaValidation = metaArray[i]!;;
+    MetaValidation metaValidation = metaArray[i];;
     
-node.appendChild(metaValidation!.toXmlNode(document));
+node.appendChild(metaValidation.toXmlNode(document));
     
 }
 

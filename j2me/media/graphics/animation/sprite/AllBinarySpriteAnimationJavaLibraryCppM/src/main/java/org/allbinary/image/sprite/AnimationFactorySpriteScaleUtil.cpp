@@ -83,87 +83,86 @@
 class AnimationFactorySpriteScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: AnimationFactorySpriteScaleUtil = new AnimationFactorySpriteScaleUtil();
+    private: static AnimationFactorySpriteScaleUtil instance() { return AnimationFactorySpriteScaleUtil(); }
 
-    public static AnimationFactorySpriteScaleUtil getInstance(){
+    public: static AnimationFactorySpriteScaleUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationFactorySpriteScaleUtil.instance;
+                        return AnimationFactorySpriteScaleUtil::instance();
     
 }
 
 
-    private: const imageCache: ImageCache = ImageCacheFactory.getInstance()!;
+    private: const ImageCache imageCache = ImageCacheFactory::getInstance();
 
-    private: const imageScaleUtil: ImageScaleUtil = ImageScaleUtil.getInstance()!;
+    private: const ImageScaleUtil imageScaleUtil = ImageScaleUtil::getInstance();
 
-    private: const openGLUtil: OpenGLUtil = OpenGLUtil.getInstance()!;
+    private: const OpenGLUtil openGLUtil = OpenGLUtil::getInstance();
 
-    private: const j2seMath: J2SEMath = J2SEMath.getInstance()!;
+    private: const J2SEMath j2seMath = J2SEMath::getInstance();
 
-    private: const openGLESImageExclusionUtil: OpenGLESImageExclusionUtil = OpenGLESImageExclusionUtil.getInstance()!;
+    private: const OpenGLESImageExclusionUtil openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Sprite createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
+    public: Sprite createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight){
 
-    spriteFactory: SpriteFactory = SpriteFactory.getInstance()!;;
+    SpriteFactory spriteFactory = SpriteFactory::getInstance();;
     
 
-    sprite: Sprite;;
+    Sprite sprite;;
     
 
-    scaledImage: Image;;
+    Image scaledImage;;
     
 
                         if(scaleWidth != 0 && scaleHeight != 0)
                         
                                     {
                                     
-    scaleX: float = (scaleWidth) /(width);;
+    float scaleX = (scaleWidth) /(width);;
     
 
-    scaleY: float = (scaleHeight) /(height);;
+    float scaleY = (scaleHeight) /(height);;
     
 
                         if((scaleX == 1.0 && scaleY == 1.0) || (scaleX == 0.0 || scaleY == 0.0))
                         
                                     {
-                                    scaledImage= this.openGLUtil!.addImage(image);
+                                    scaledImage= this->openGLUtil.addImage(image);
     
-sprite= spriteFactory!.createSprite(scaledImage, width, height);
+sprite= spriteFactory.createSprite(scaledImage, width, height);
     
 
                                     }
                                 
                         else {
                             
-                        if(this.openGLESImageExclusionUtil!.isCustomScaling(image))
+                        if(this->openGLESImageExclusionUtil.isCustomScaling(image))
                         
                                     {
                                     
-    width2: int32_t = this.j2seMath!.round((scaleWidth) -0.5)!;;
+    int32_t width2 = this->j2seMath.round((scaleWidth) -0.5);;
     
 
-    height2: int32_t = this.j2seMath!.round((scaleHeight) -0.5)!;;
+    int32_t height2 = this->j2seMath.round((scaleHeight) -0.5);;
     
 
-    multiplesOf16Width: int32_t = width2 /16;;
+    int32_t multiplesOf16Width = width2 /16;;
     
 
-    by16Width: int32_t = multiplesOf16Width *16;;
+    int32_t by16Width = multiplesOf16Width *16;;
     
 scaleX= (by16Width) /width;
     
 
-    multiplesOf16Height: int32_t = height2 /16;;
+    int32_t multiplesOf16Height = height2 /16;;
     
 
-    by16Height: int32_t = multiplesOf16Height *16;;
+    int32_t by16Height = multiplesOf16Height *16;;
     
 scaleY= (by16Height) /height;
     
@@ -188,9 +187,9 @@ scaleY= (by16Height) /height;
 
                                     }
                                 
-scaledImage= this.imageScaleUtil!.createImage2(this.imageCache, image, scaleX, 1.0, scaleY, 1.0, true);
+scaledImage= this->imageScaleUtil.createImage2(this->imageCache, image, scaleX, 1.0, scaleY, 1.0, true);
     
-sprite= spriteFactory!.createSprite(scaledImage, static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
+sprite= spriteFactory.createSprite(scaledImage, static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
     
 
                         }
@@ -199,9 +198,9 @@ sprite= spriteFactory!.createSprite(scaledImage, static_cast<int32_t>((width *sc
                                     }
                                 
                         else {
-                            scaledImage= this.openGLUtil!.addImage(image);
+                            scaledImage= this->openGLUtil.addImage(image);
     
-sprite= spriteFactory!.createSprite(scaledImage, width, height);
+sprite= spriteFactory.createSprite(scaledImage, width, height);
     
 
                         }

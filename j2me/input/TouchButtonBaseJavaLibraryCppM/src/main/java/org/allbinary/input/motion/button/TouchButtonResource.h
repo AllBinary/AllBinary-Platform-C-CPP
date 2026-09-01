@@ -46,13 +46,12 @@
 class TouchButtonResource
             : public Object
          {
-        
 
-    public const RESOURCE: string;
+    public: std::string RESOURCE;
 
-    public const HINT: string;
+    public: std::string HINT;
 
-protected constructor (string resource, string hint);
+protected: TouchButtonResource(std::string resource, std::string hint);
 
 };
 

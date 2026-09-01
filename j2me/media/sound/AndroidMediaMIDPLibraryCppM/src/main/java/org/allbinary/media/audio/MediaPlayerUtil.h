@@ -55,17 +55,16 @@
 class MediaPlayerUtil
             : public Object
          {
-        
 
-    private: static const instance: MediaPlayerUtil = new MediaPlayerUtil();
+    private: static MediaPlayerUtil instance() { return MediaPlayerUtil(); }
 
-    public static MediaPlayerUtil getInstance();
+    public: static MediaPlayerUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public waitForMediaPlayer(MediaPlayer mediaPlayer);
+    public: void waitForMediaPlayer(MediaPlayer mediaPlayer);
 
 };
 

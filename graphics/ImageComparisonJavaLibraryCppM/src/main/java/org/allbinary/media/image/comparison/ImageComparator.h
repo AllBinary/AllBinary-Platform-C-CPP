@@ -83,23 +83,22 @@
 class ImageComparator
             : public Object
          {
-        
 
-    private: const imageComparatorConstraintsInterface: ImageComparatorConstraintsInterface;
+    private: ImageComparatorConstraintsInterface imageComparatorConstraintsInterface;
 
-public constructor (ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
-
-                //@Throws(Exception.constructor)
-            
-    process(ImageComparisonResult imageComparisonInfo, GPoint point);
+public: ImageComparator(ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance);
+    private: void process(ImageComparisonResult imageComparisonInfo, GPoint point);
 
                 //@Throws(Exception.constructor)
             
-    public ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance, string name);
+    public: ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance);
+
+                //@Throws(Exception.constructor)
+            
+    public: ImageComparisonResult compare(BufferedImage bufferedImage1, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance, std::string name);
 
 };
 

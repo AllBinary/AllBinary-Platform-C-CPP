@@ -42,13 +42,12 @@
         #include "InitUpdatePaintable.h"
 
 class NullInitUpdatePaintable: public InitUpdatePaintable {
-        
 
-    private: static const SINGLETON: NullInitUpdatePaintable = new NullInitUpdatePaintable();
+    private: static const NullInitUpdatePaintable SINGLETON = NullInitUpdatePaintable();
 
-    public static InitUpdatePaintable getInstance();
+    public: static InitUpdatePaintable getInstance();
 
-private constructor ();
+private: NullInitUpdatePaintable();
 
 };
 

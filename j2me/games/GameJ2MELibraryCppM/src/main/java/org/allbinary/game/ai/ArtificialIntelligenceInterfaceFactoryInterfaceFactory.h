@@ -61,19 +61,18 @@
 class ArtificialIntelligenceInterfaceFactoryInterfaceFactory
             : public Object
          {
-        
 
-    private: static SINGLETON: ArtificialIntelligenceInterfaceFactoryInterfaceFactory = new ArtificialIntelligenceInterfaceFactoryInterfaceFactory();
+    private: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory SINGLETON = ArtificialIntelligenceInterfaceFactoryInterfaceFactory();
 
-    public static ArtificialIntelligenceInterfaceFactoryInterfaceFactory getInstance();
+    public: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory getInstance();
 
-    private: list: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    public clear();
+    public: void clear();
 
-    public ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(Hashtable<any, any> hashtable);
+    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(Hashtable<any, any> hashtable);
 
-    public add(ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface);
+    public: void add(ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface);
 
 };
 

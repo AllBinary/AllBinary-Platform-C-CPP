@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -95,151 +97,148 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameCanvas.h"
 
-class StartIntermissionPaintable: public InitUpdatePaintable: public UpdateMyFontInterface {
-        
+class StartIntermissionPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    const fontDebugFactory: FontDebugFactory = FontDebugFactory.getInstance()!;
+    protected: const FontDebugFactory fontDebugFactory = FontDebugFactory::getInstance();
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    const gameCanvas: AllBinaryGameCanvas;
+    protected: AllBinaryGameCanvas gameCanvas;
 
-    const stringArray: std::vector<string>;
+    protected: std::vector<std::string> stringArray;
 
-    const fontSize: int32_t;
+    protected: int32_t fontSize;
 
-    const font: Font;
+    protected: Font font;
 
-    public const lastWidth: std::vector<int32_t>;
+    public: std::vector<int32_t> lastWidth;
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: color: int32_t;
+    private: int32_t color;
 
-    lineYOffsetArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    protected: std::vector<int32_t> lineYOffsetArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    private: hasChanged: bool = true;
+    private: bool hasChanged = true;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    fontHeightP: int32_t= 0;
+    protected: int32_t fontHeightP= 0;
 
-public constructor (AllBinaryGameCanvas gameCanvas, std::vector<string> stringArray, BasicColor basicColor, Font font){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: StartIntermissionPaintable(AllBinaryGameCanvas gameCanvas, std::vector<std::string> stringArray, BasicColor basicColor, Font font){
+this->gameCanvas= gameCanvas;
     
-this.stringArray= stringArray;
+this->stringArray= stringArray;
     
-this.lastWidth= new Array(this.stringArray!.length);
+this->lastWidth= new Array(this->stringArray.length);
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
-this.color= basicColor!.intValue();
+this->color= basicColor.intValue();
     
-this.fontSize= font.getSize();
+this->fontSize= font.getSize();
     
-this.font= font;
+this->font= font;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.fontHeightP= font.getHeight();
+this->fontHeightP= font.getHeight();
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
-    existingFont: Font = graphics.getFont()!;;
+    Font existingFont = graphics.getFont();;
     
-this.fontDebugFactory!.setFont(this.font, graphics);
-    
-
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
-    
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.basicColor, this.color);
+this->fontDebugFactory.setFont(this->font, graphics);
     
 
-    beginWidth: int32_t= 0;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
+    
+this->basicSetColorUtil.setBasicColorP3(graphics, this->basicColor, this->color);
+    
+
+    int32_t beginWidth= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = this.lineYOffsetArray!.length -1;index >= 0; index--)
+    int32_t index = this->lineYOffsetArray.size() -1;index >= 0; index--)
         {
 
-                        if(this.hasChanged)
+                        if(this->hasChanged)
                         
                                     {
-                                    this.lastWidth[index]= (graphics.getFont()!.stringWidth(this.stringArray[index]!)>>1);
+                                    this->lastWidth[index]= (graphics.getFont().stringWidth(this->stringArray[index]!)>>1);
     
 
                                     }
                                 
-beginWidth= this.lastWidth[index]!;
+beginWidth= this->lastWidth[index]!;
     
-graphics.drawString(this.stringArray[index]!, displayInfo!.getLastHalfWidth() -beginWidth, displayInfo!.getLastHalfHeight() -this.lineYOffsetArray[index], this.anchor);
-    
-}
-
-this.hasChanged= false;
-    
-this.fontDebugFactory!.setFont(existingFont, graphics);
+graphics.drawString(this->stringArray[index]!, displayInfo.getLastHalfWidth() -beginWidth, displayInfo.getLastHalfHeight() -this->lineYOffsetArray[index], this->anchor);
     
 }
 
-
-    private: const BEGIN_LEVEL: string = "Begin Level ";
-
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
-
-    public update(){
-
-    level: int32_t = this.gameCanvas!.getLayerManager()!.getGameInfo()!.getCurrentLevel()!;;
+this->hasChanged= false;
     
-this.stringArray[0]= new StringMaker().append(this.BEGIN_LEVEL)!.appendint(level)!.toString();
+this->fontDebugFactory.setFont(existingFont, graphics);
+    
+}
+
+
+    private: const std::string BEGIN_LEVEL = "Begin Level ";
+
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
+
+    public: void update(){
+
+    int32_t level = this->gameCanvas.getLayerManager().getGameInfo().getCurrentLevel();;
+    
+this->stringArray[0]= StringMaker().append(this->BEGIN_LEVEL).appendint(level).toString();
     
 
 
 
 
                         for (
-    index: int32_t = this.stringArray!.length -1;index >= 1; index--)
+    int32_t index = this->stringArray.size() -1;index >= 1; index--)
         {
-this.stringArray[index]= this.EMPTY_STRING;
+this->stringArray[index]= this->EMPTY_STRING;
     
 }
 
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
 }
 
 
-    public BasicColor getBasicColorP(){
+    public: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 

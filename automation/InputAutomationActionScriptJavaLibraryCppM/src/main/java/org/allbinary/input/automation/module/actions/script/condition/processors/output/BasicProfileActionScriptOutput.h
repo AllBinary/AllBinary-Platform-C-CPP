@@ -53,16 +53,15 @@
         #include "ProfileActionScriptOutputInterface.h"
 #include "GenericProfileActionScriptOutputData.h"
 
-class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor: public ProfileActionScriptOutputInterface {
-        
+class BasicProfileActionScriptOutput: public BasicProfileActionScriptProcessor, public ProfileActionScriptOutputInterface {
 
-public constructor (string label, Node node);
+public: BasicProfileActionScriptOutput(std::string label, Node node);
 
-public constructor (string label);
+public: BasicProfileActionScriptOutput(std::string label);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

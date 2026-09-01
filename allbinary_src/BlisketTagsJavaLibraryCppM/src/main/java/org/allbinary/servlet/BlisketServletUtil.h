@@ -60,13 +60,12 @@
 class BlisketServletUtil
             : public Object
          {
-        
 
-    private: static const instance: BlisketServletUtil = new BlisketServletUtil();
+    private: static BlisketServletUtil instance() { return BlisketServletUtil(); }
 
-    public static BlisketServletUtil getInstance();
+    public: static BlisketServletUtil getInstance();
 
-    public init(HttpServletRequest request);
+    public: void init(HttpServletRequest request);
 
 };
 

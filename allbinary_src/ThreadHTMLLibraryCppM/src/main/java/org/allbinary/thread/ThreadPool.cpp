@@ -76,54 +76,51 @@
 class ThreadPool
             : public Object
          {
-        
 
-    public static const NORMAL_PRIORITY: int32_t = 5;
+    public: static const int32_t NORMAL_PRIORITY = 5;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const NULL_RUNNABLE: NullRunnable = NullRunnable.getInstance()!;
+    protected: const NullRunnable NULL_RUNNABLE = NullRunnable::getInstance();
 
-    const threadPoolStrings: ThreadPoolStrings = ThreadPoolStrings.getInstance()!;
+    protected: const ThreadPoolStrings threadPoolStrings = ThreadPoolStrings::getInstance();
 
-    const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: isAlive: bool= false;
+    private: bool isAlive= false;
 
-    private: taskQueue: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList taskQueue = BasicArrayListD();
 
-    private: numThreads: int32_t= 0;
+    private: int32_t numThreads= 0;
 
-    private: runningTask: bool= false;
+    private: bool runningTask= false;
 
-public constructor (string poolName, int32_t numThreads, int32_t priority){
-
-            super();
-        }
+public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
+}
 
 
-    private: currentPriorityRunnable: PriorityRunnable = this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
+    private: PriorityRunnable currentPriorityRunnable = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;
 
                 //@Throws(Exception.constructor)
             
-    public runAPriorityTask(){
+    public: void runAPriorityTask(){
 
-                        if(!this.currentPriorityRunnable!.isDone())
+                        if(!this->currentPriorityRunnable.isDone())
                         
                                     {
-                                    this.currentPriorityRunnable!.run();
+                                    this->currentPriorityRunnable.run();
     
 
                                     }
                                 
                         else {
                             
-    runnable: Runnable = this.getTask()!;;
+    Runnable runnable = this->getTask();;
     
 
-                        if(runnable == this.NULL_RUNNABLE)
+                        if(runnable == this->NULL_RUNNABLE)
                         
                                     {
                                     
@@ -135,15 +132,15 @@ public constructor (string poolName, int32_t numThreads, int32_t priority){
 
                                     }
                                 
-this.currentPriorityRunnable= runnable as PriorityRunnable;
+this->currentPriorityRunnable= runnable as PriorityRunnable;
     
 
-                        if(!(this.currentPriorityRunnable == this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE))
+                        if(!(this->currentPriorityRunnable == this->threadObjectUtil.NULL_PRIORITY_RUNNABLE))
                         
                                     {
-                                    this.currentPriorityRunnable!.reset();
+                                    this->currentPriorityRunnable.reset();
     
-this.currentPriorityRunnable!.run();
+this->currentPriorityRunnable.run();
     
 
                                     }
@@ -156,13 +153,13 @@ this.currentPriorityRunnable!.run();
 
                 //@Throws(Exception.constructor)
             
-    public runATask(){
+    public: void runATask(){
 
-    runnable: Runnable = this.getTask()!;;
+    Runnable runnable = this->getTask();;
     
 
                         if(runnable != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -174,14 +171,14 @@ this.currentPriorityRunnable!.run();
 }
 
 
-    public init(){
+    public: void init(){
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
-                                    this.isAlive= true;
+                                    this->isAlive= true;
     
-this.taskQueue= new BasicArrayListD();
+this->taskQueue= BasicArrayListD();
     
 
                                     }
@@ -190,39 +187,39 @@ this.taskQueue= new BasicArrayListD();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public runTaskWithPriority(PriorityRunnable task){
+    public: void runTaskWithPriority(PriorityRunnable task){
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
-                                    this.init();
+                                    this->init();
     
 
                                     }
                                 
 
                         if(task != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    size: int32_t = this.taskQueue!.size()!;;
+    int32_t size = this->taskQueue.size();;
     
 
-    runnable: PriorityRunnable;;
+    PriorityRunnable runnable;;
     
 
-    lowerPriorityRunnable: PriorityRunnable = this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;;
+    PriorityRunnable lowerPriorityRunnable = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-runnable= this.taskQueue!.get(index) as PriorityRunnable;
+runnable= this->taskQueue.get(index) as PriorityRunnable;
     
 
                         if(runnable.getPriority() > task.getPriority())
@@ -239,19 +236,19 @@ break;
 }
 
 
-                        if(lowerPriorityRunnable == this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE)
+                        if(lowerPriorityRunnable == this->threadObjectUtil.NULL_PRIORITY_RUNNABLE)
                         
                                     {
-                                    this.taskQueue!.add(task);
+                                    this->taskQueue.add(task);
     
 
                                     }
                                 
                         else {
                             
-    index: int32_t = this.taskQueue!.indexOf(lowerPriorityRunnable)!;;
+    int32_t index = this->taskQueue.indexOf(lowerPriorityRunnable);;
     
-this.taskQueue!.addAt(index, task);
+this->taskQueue.addAt(index, task);
     
 
                         }
@@ -263,23 +260,23 @@ this.taskQueue!.addAt(index, task);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public runTask(Runnable task){
+    public: void runTask(Runnable task){
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
-                                    this.init();
+                                    this->init();
     
 
                                     }
                                 
 
                         if(task != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.taskQueue!.add(task);
+                                    this->taskQueue.add(task);
     
 
                                     }
@@ -290,16 +287,16 @@ this.taskQueue!.addAt(index, task);
                 //@Throws(InterruptedException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    Runnable getTask(){
+    protected: Runnable getTask(){
 
-                        if(this.taskQueue!.isEmpty())
+                        if(this->taskQueue.isEmpty())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_RUNNABLE;
+                        return this->NULL_RUNNABLE;
     
 
                                     }
@@ -308,29 +305,29 @@ this.taskQueue!.addAt(index, task);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.taskQueue!.removeAt(0) as Runnable;
+                        return this->taskQueue.removeAt(0) as Runnable;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public clear(){
-this.taskQueue!.clear();
+    public: void clear(){
+this->taskQueue.clear();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public close(){
+    public: void close(){
 
-                        if(this.isAlive)
+                        if(this->isAlive)
                         
                                     {
-                                    this.isAlive= false;
+                                    this->isAlive= false;
     
-this.taskQueue!.clear();
+this->taskQueue.clear();
     
-this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
+this->currentPriorityRunnable= this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;
     
 
                                     }
@@ -338,19 +335,19 @@ this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
 }
 
 
-    public join(){
-this.isAlive= false;
+    public: void join(){
+this->isAlive= false;
     
-this.taskQueue!.clear();
+this->taskQueue.clear();
     
-this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
+this->currentPriorityRunnable= this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;
     
 }
 
 
-    public bool isBusy(){
+    public: bool isBusy(){
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
                                     
@@ -363,7 +360,7 @@ this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
                                     }
                                 
 
-                        if(this.taskQueue!.size() > 0)
+                        if(this->taskQueue.size() > 0)
                         
                                     {
                                     
@@ -376,7 +373,7 @@ this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
                                     }
                                 
 
-                        if(this.runningTask)
+                        if(this->runningTask)
                         
                                     {
                                     
@@ -397,20 +394,20 @@ this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
 }
 
 
-    threadStarted(){
+    protected: void threadStarted(){
 }
 
 
-    threadStopped(){
+    protected: void threadStopped(){
 
-                        if(this.numThreads == 1)
+                        if(this->numThreads == 1)
                         
                                     {
-                                    this.isAlive= false;
+                                    this->isAlive= false;
     
-this.taskQueue!.clear();
+this->taskQueue.clear();
     
-this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
+this->currentPriorityRunnable= this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;
     
 
                                     }
@@ -418,11 +415,11 @@ this.currentPriorityRunnable= this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;
 }
 
 
-    startTask(Runnable task){
+    protected: void startTask(Runnable task){
 }
 
 
-    completedTask(Runnable task){
+    protected: void completedTask(Runnable task){
 }
 
 

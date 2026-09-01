@@ -45,26 +45,25 @@
 class LicenseUtil
             : public Object
          {
-        
 
-    private: static const instance: LicenseUtil = new LicenseUtil();
+    private: static LicenseUtil instance() { return LicenseUtil(); }
 
-    public static LicenseUtil getInstance(){
+    public: static LicenseUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseUtil.instance;
+                        return LicenseUtil::instance();
     
 }
 
 
-    public init(){
+    public: void init(){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
@@ -75,16 +74,16 @@ class LicenseUtil
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
+    public: void setRunning(bool running){
 }
 
 
-    public bool shouldWait(CommandListener commandListener){
+    public: bool shouldWait(CommandListener commandListener){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRunning();;
+                        return this->isRunning();;
     
 }
 

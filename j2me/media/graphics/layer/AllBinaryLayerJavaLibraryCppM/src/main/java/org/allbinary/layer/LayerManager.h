@@ -68,51 +68,50 @@
 class LayerManager
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const layerManagerLogging: LayerManagerLoggingBase;
+    private: LayerManagerLoggingBase layerManagerLogging;
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: const anyType: SynchObject = new SynchObject();
+    private: const SynchObject anyType = SynchObject();
 
-public constructor (LayerManagerLoggingBase layerManagerLogging);
+public: LayerManager(LayerManagerLoggingBase layerManagerLogging);
 
-    public bool contains(AllBinaryLayer layerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public update(AllBinaryLayer layerInterface);
+    public: bool contains(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public insert(AllBinaryLayer layerInterface);
+    public: void update(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public append(AllBinaryLayer layerInterface);
+    public: void insert(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public appendAt(AllBinaryLayer layerInterface, int32_t index);
+    public: void append(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public remove(AllBinaryLayer layerInterface);
-
-    public Layer getLayerAt(int32_t index);
-
-    public int32_t getSize();
+    public: void appendAt(AllBinaryLayer layerInterface, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public cleanup();
+    public: void remove(AllBinaryLayer layerInterface);
 
-    public paint(Graphics g, int32_t x, int32_t y);
+    public: Layer getLayerAt(int32_t index);
+
+    public: int32_t getSize();
+
+                //@Throws(Exception.constructor)
+            
+    public: void cleanup();
+
+    public: void paint(Graphics g, int32_t x, int32_t y);
 
 };
 

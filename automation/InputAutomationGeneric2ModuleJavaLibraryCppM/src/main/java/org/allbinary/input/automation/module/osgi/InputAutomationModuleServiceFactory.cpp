@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/osgi/framework/Bundle.h>
@@ -63,48 +65,45 @@
 class InputAutomationModuleServiceFactory
             : public Object
         : public ServiceFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: inputAutomationModuleInterfaceArray: std::vector<InputAutomationModuleFactoryInterface>;
+    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray;
 
-public constructor (){
-
-            super();
-        }
+public: InputAutomationModuleServiceFactory(){
+}
 
 
-    public any getService(Bundle bundle, ServiceRegistration registration){
-this.logUtil!.putF(this.commonStrings!.START, this, "getService");
+    public: Object* getService(Bundle bundle, ServiceRegistration registration){
+this->logUtil.putF(this->commonStrings.START, this, "getService");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new InputAutomationModuleService(this.getInputAutomationModuleInterfaceArray());
+                        return InputAutomationModuleService(this->getInputAutomationModuleInterfaceArray());
     
 }
 
 
-    public ungetService(Bundle bundle, ServiceRegistration registration, any = {} service){
+    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service){
 }
 
 
-    public std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray(){
+    public: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputAutomationModuleInterfaceArray;
+                        return this->inputAutomationModuleInterfaceArray;
     
 }
 
 
-    public setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray){
-this.inputAutomationModuleInterfaceArray= inputAutomationModuleInterfaceArray;
+    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray){
+this->inputAutomationModuleInterfaceArray= inputAutomationModuleInterfaceArray;
     
 }
 

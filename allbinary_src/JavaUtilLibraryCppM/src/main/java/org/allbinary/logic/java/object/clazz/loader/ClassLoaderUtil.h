@@ -49,13 +49,12 @@
 class ClassLoaderUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static string getName(any = {} anyType);
+    public: static std::string getName(Object* anyType);
 
-private constructor ();
+private: ClassLoaderUtil();
 
 };
 

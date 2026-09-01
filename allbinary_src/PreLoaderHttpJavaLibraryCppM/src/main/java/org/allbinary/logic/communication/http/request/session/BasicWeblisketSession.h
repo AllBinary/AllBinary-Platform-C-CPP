@@ -75,55 +75,54 @@
 class BasicWeblisketSession
             : public Object
          {
-        
 
-    private: session: HttpSession;
+    private: HttpSession session;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (PageContext pageContext);
+public: BasicWeblisketSession(PageContext pageContext);
 
-    public setRole(BasicUserRole aRole);
+    public: void setRole(BasicUserRole aRole);
 
-    public BasicUserRole getRole();
+    public: BasicUserRole getRole();
 
-    public setPassword(string password);
+    public: void setPassword(std::string password);
 
-    public setUserName(string userName);
+    public: void setUserName(std::string userName);
 
-    public setPaymentMethod(string value);
+    public: void setPaymentMethod(std::string value);
 
-    public setAuthenticated();
+    public: void setAuthenticated();
 
-    public setAttempts(Integer value);
+    public: void setAttempts(Integer value);
 
-    public setTimeout(string value);
+    public: void setTimeout(std::string value);
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
-    public string getWebAppPath();
+    public: std::string getWebAppPath();
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getPassword();
+    public: std::string getPassword();
 
-    public string getPaymentMethod();
+    public: std::string getPaymentMethod();
 
-    public string getAuthentication();
+    public: std::string getAuthentication();
 
-    public Integer getAttempts();
+    public: Integer getAttempts();
 
-    public string getTimeout();
+    public: std::string getTimeout();
 
-    public string getStoreName();
+    public: std::string getStoreName();
 
-    public setAuthenticated(bool value);
+    public: void setAuthenticated(bool value);
 
-    public clear();
+    public: void clear();
 
-    public int64_t getCreationTime();
+    public: int64_t getCreationTime();
 
-    public int64_t getLastAccessedTime();
+    public: int64_t getLastAccessedTime();
 
 };
 

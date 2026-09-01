@@ -53,7 +53,6 @@
 #include "Rectangle.h"
 
 class MotionRectangleConstraintsInterface {
-        
 
     int32_t getMaxMotionRectangles();
 

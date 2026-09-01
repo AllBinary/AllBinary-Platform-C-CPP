@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/graphics/form/item/ABCustomItem.h>
@@ -58,9 +60,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PreGameScrollSelectionForm: public ScrollCurrentSelectionForm {
-        
 
-public constructor (string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: PreGameScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(title, items, formPaintableFactory, 0, 3, false, backgroundBasicColor, foregroundBasicColor);
                     
 
@@ -71,8 +72,8 @@ public constructor (string title, std::vector<ABCustomItem> items, ItemPaintable
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle){
-super.init(rectangle, FormTypeFactory.getInstance()!.TEMP_HORIZONTAL_FORM);
+    public: void init(Rectangle rectangle){
+super.init(rectangle, FormTypeFactory::getInstance().TEMP_HORIZONTAL_FORM);
     
 }
 

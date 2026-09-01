@@ -80,29 +80,28 @@
         #include "BasicTable.h"
 
 class StoreFrontsHelper: public BasicTable {
-        
 
-    private: static const CLASS: string = "class";
+    private: static const std::string CLASS = "class";
 
-    private: static const TEXT: string = "text";
+    private: static const std::string TEXT = "text";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: StoreFrontsHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string drop();
+    public: std::string drop();
 
-    public string create();
+    public: std::string create();
 
-    public string restore();
+    public: std::string restore();
 
-    public string backup();
+    public: std::string backup();
 
-    private: const commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;
+    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
-    public string generateSelect();
+    public: std::string generateSelect();
 
 };
 

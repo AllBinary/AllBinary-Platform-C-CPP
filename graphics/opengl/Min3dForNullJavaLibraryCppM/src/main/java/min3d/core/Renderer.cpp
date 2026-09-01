@@ -44,13 +44,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class Renderer {
-        
 
-    onSurfaceCreated(GL10 gl, EGLConfig config)
+    void onSurfaceCreated(GL10 gl, EGLConfig config)
 
-    onSurfaceChanged(GL10 gl, int32_t width, int32_t height)
+    void onSurfaceChanged(GL10 gl, int32_t width, int32_t height)
 
-    onDrawFrame(GL10 gl)
+    void onDrawFrame(GL10 gl)
 
 };
 

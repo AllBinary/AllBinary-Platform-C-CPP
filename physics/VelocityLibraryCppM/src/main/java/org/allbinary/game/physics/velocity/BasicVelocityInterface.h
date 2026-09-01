@@ -56,31 +56,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicVelocityInterface {
-        
 
     BasicDecimal getVelocityXBasicDecimalP();
 
     BasicDecimal getVelocityYBasicDecimalP();
 
-    zero();
+    void zero();
 
-    setVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
+    void setVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
 
-    addVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
+    void addVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
 
-    setVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
+    void setVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
 
-    addVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
+    void addVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
 
-    setVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
+    void setVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
 
-    addVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
+    void addVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
 
-    setVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
+    void setVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
 
-    addVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
+    void addVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
 
-    addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
+    void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
 
       
@@ -45,57 +47,54 @@
         #include "UpKeyEventHandlerBase.h"
 
 class UpKeyEventHandler: public UpKeyEventHandlerBase {
-        
 
-    private: static const instance: UpKeyEventHandler = new UpKeyEventHandler();
+    private: static UpKeyEventHandler instance() { return UpKeyEventHandler(); }
 
-    private: static const instanceArray: std::vector<UpKeyEventHandlerBase> = 
-                                                        [
-                                                            new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase()
-                                                        ];
+    private: static const std::vector<UpKeyEventHandlerBase> instanceArray = 
+                                                        {
+                                                            UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase()
+                                                        };
 
-    public static UpKeyEventHandler getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpKeyEventHandler.instance;
-    
-}
-
-
-    private: const playerInputIdFactory: LocalPlayerInputIdFactory = LocalPlayerInputIdFactory.getInstance()!;
-
-    public UpKeyEventHandlerBase getInstanceForDevice(int32_t deviceId){
-
-    playerInputId: int32_t = this.playerInputIdFactory!.getPlayerForDevice(deviceId)!;;
-    
+    public: static UpKeyEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpKeyEventHandler.instanceArray[playerInputId]!;
+                        return UpKeyEventHandler::instance();
     
 }
 
 
-    public UpKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId){
+    private: const LocalPlayerInputIdFactory playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
+
+    public: UpKeyEventHandlerBase getInstanceForDevice(int32_t deviceId){
+
+    int32_t playerInputId = this->playerInputIdFactory.getPlayerForDevice(deviceId);;
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpKeyEventHandler.instanceArray[playerInputId]!;
+                        return UpKeyEventHandler::instanceArray[playerInputId]!;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+    public: UpKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId){
 
 
-    public removeAllListeners(){
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return UpKeyEventHandler::instanceArray[playerInputId]!;
+    
+}
+
+
+private: UpKeyEventHandler(){
+}
+
+
+    public: void removeAllListeners(){
 super.removeAllListeners();
     
 
@@ -103,16 +102,16 @@ super.removeAllListeners();
 
 
                         for (
-    index: int32_t = UpKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = UpKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpKeyEventHandler.instanceArray[index]!.removeAllListeners();
+UpKeyEventHandler::instanceArray[index]!.removeAllListeners();
     
 }
 
 }
 
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
 super.removeListenerSingleThreaded(eventListenerInterface);
     
 
@@ -120,16 +119,16 @@ super.removeListenerSingleThreaded(eventListenerInterface);
 
 
                         for (
-    index: int32_t = UpKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = UpKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpKeyEventHandler.instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
+UpKeyEventHandler::instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
+    public: void removeListener(EventListenerInterface eventListenerInterface){
 super.removeListener(eventListenerInterface);
     
 
@@ -137,9 +136,9 @@ super.removeListener(eventListenerInterface);
 
 
                         for (
-    index: int32_t = UpKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = UpKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpKeyEventHandler.instanceArray[index]!.removeListener(eventListenerInterface);
+UpKeyEventHandler::instanceArray[index]!.removeListener(eventListenerInterface);
     
 }
 

@@ -127,39 +127,38 @@
         #include "BasicTable.h"
 
 class QuoteHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: const weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: const storeFrontInterface: StoreFrontInterface;
+    private: const StoreFrontInterface storeFrontInterface;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    emailUser(QuoteRequest quoteRequest);
+public: QuoteHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    emailAdmins(QuoteRequest quoteRequest);
+    private: void emailUser(QuoteRequest quoteRequest);
 
                 //@Throws(Exception.constructor)
             
-    public string email();
+    private: void emailAdmins(QuoteRequest quoteRequest);
 
-    public string drop();
+                //@Throws(Exception.constructor)
+            
+    public: std::string email();
 
-    public string create();
+    public: std::string drop();
 
-    public string restore();
+    public: std::string create();
 
-    public string backup();
+    public: std::string restore();
+
+    public: std::string backup();
 
 };
 

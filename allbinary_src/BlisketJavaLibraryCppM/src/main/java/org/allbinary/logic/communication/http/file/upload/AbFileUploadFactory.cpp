@@ -74,52 +74,49 @@
 class AbFileUploadFactory
             : public Object
          {
-        
 
-    private: static const instance: AbFileUploadFactory = new AbFileUploadFactory();
+    private: static AbFileUploadFactory instance() { return AbFileUploadFactory(); }
 
-    public static AbFileUploadFactory getInstance(){
+    public: static AbFileUploadFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileUploadFactory.instance;
+                        return AbFileUploadFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: AbFileUploadFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public List getFileItemStreamList(HttpServletRequest httpServletRequest){
+    public: List getFileItemStreamList(HttpServletRequest httpServletRequest){
 
         try {
             
-    fileUpload: AbFileUpload = new AbFileUpload(new AbFileItemFactory());;
+    AbFileUpload fileUpload = AbFileUpload(AbFileItemFactory());;
     
 
-    iterator: FileItemIterator = fileUpload!.getItemIterator(httpServletRequest)!;;
+    FileItemIterator iterator = fileUpload.getItemIterator(httpServletRequest);;
     
 
-    items: List = new ArrayList();;
+    List items = ArrayList();;
     
 
         while(iterator.hasNext())
         {
 
-    fileItemStream: FileItemStream = iterator.next()!;;
+    FileItemStream fileItemStream = iterator.next();;
     
-HttpFileUploadUtil.log(fileItemStream);
+HttpFileUploadUtil::log(fileItemStream);
     
 
-    fileItem: AbFileItem = new AbFileItem(fileItemStream!.getName(), fileItemStream!.getFieldName(), FileItemUtil.getInstance()!.getBytes(fileItemStream));;
+    AbFileItem fileItem = AbFileItem(fileItemStream.getName(), fileItemStream.getFieldName(), FileItemUtil::getInstance().getBytes(fileItemStream));;
     
 items.add(fileItem);
     
@@ -136,13 +133,13 @@ items.add(fileItem);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "get()", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "get()", e);
     
 
                                     }
@@ -159,30 +156,30 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "get()", e);
 
                 //@Throws(Exception.constructor)
             
-    public List getFileItemList(HttpServletRequest httpServletRequest){
+    public: List getFileItemList(HttpServletRequest httpServletRequest){
 
         try {
             
-    abFileUpload: AbFileUpload = new AbFileUpload(new AbFileItemFactory());;
+    AbFileUpload abFileUpload = AbFileUpload(AbFileItemFactory());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return abFileUpload!.parseRequest(httpServletRequest);;
+                        return abFileUpload.parseRequest(httpServletRequest);;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "get()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "get()", e);
     
 
                                     }

@@ -46,11 +46,10 @@
 #include "YAxisMathVectorUtil.h"
 
 class XAxisMathVector: public MathVector {
-        
 
-public constructor (BasicDecimal magnitudeBasicDecimal, int32_t direction);
+public: XAxisMathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction);
 
-    calculate();
+    private: void calculate();
 
 };
 

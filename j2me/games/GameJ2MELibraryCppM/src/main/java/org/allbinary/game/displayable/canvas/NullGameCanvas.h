@@ -73,51 +73,50 @@
         #include "AllBinaryGameCanvas.h"
 
 class NullGameCanvas: public AllBinaryGameCanvas {
-        
 
-    static NullGameCanvas createNull();
+    private: static NullGameCanvas createNull();
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static NullGameCanvas getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public static NullGameCanvas createCanvas(AllBinaryGameLayerManager gameLayerManager);
-
-    public static const NO_GAME: string = "No Background Game";
-
-    public static const TYPE: int32_t = 1;
-
-protected constructor (AllBinaryGameLayerManager gameLayerManager);
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public bool isGameOver();
-
-    private: runningNull: bool = true;
-
-    public setRunning(bool running);
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public bool isRunning();
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public pause();
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public unPause();
-
-    public initCommands(CommandListener cmdListener);
+    public: static NullGameCanvas getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public buildGameInit(bool isProgress);
+    public: static NullGameCanvas createCanvas(AllBinaryGameLayerManager gameLayerManager);
 
-    public draw(Graphics graphics);
+    public: static const std::string NO_GAME = "No Background Game";
 
-    public run();
+    public: static const int32_t TYPE = 1;
 
-    public int32_t getType();
+protected: NullGameCanvas(AllBinaryGameLayerManager gameLayerManager);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: bool isGameOver();
+
+    private: bool runningNull = true;
+
+    public: void setRunning(bool running);
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: bool isRunning();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void pause();
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void unPause();
+
+    public: void initCommands(CommandListener cmdListener);
+
+                //@Throws(Exception.constructor)
+            
+    public: void buildGameInit(bool isProgress);
+
+    public: void draw(Graphics graphics);
+
+    public: void run();
+
+    public: int32_t getType();
 
 };
 

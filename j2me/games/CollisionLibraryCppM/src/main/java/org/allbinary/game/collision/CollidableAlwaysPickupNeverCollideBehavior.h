@@ -47,11 +47,10 @@
 #include "CollisionType.h"
 
 class CollidableAlwaysPickupNeverCollideBehavior: public CollidableNeverCollideBehavior {
-        
 
- constructor ();
+: CollidableAlwaysPickupNeverCollideBehavior();
 
-    public CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
+    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
 
 };
 

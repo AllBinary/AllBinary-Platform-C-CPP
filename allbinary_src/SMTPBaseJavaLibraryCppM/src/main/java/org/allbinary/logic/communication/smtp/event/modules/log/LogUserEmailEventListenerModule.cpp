@@ -53,27 +53,24 @@
 class LogUserEmailEventListenerModule
             : public Object
         : public UserEmailEventListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: LogUserEmailEventListenerModule(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public onEmailSendRequest(EmailEvent userEmailInfoEvent){
+    public: void onEmailSendRequest(EmailEvent userEmailInfoEvent){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    message: string = "Logging EmailEvent - Temporary Listener for debugging.\n\n" +userEmailInfoEvent!.toString();;
+    std::string message = "Logging EmailEvent - Temporary Listener for debugging.\n\n" +userEmailInfoEvent.toString();;
     
-this.logUtil!.putF(message, this, "onEmailSendRequest");
+this->logUtil.putF(message, this, "onEmailSendRequest");
     
 
                                     }

@@ -55,25 +55,24 @@
 class GameConfigurationSingleton
             : public Object
          {
-        
 
-    private: static SINGLETON: GameConfigurationSingleton = new GameConfigurationSingleton();
+    private: static GameConfigurationSingleton SINGLETON = GameConfigurationSingleton();
 
-    public static GameConfigurationSingleton getInstance();
+    public: static GameConfigurationSingleton getInstance();
 
-    private: list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: hashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> hashtable;
 
-private constructor ();
+private: GameConfigurationSingleton();
 
-    public GameConfiguration getInstanceByName(string name);
+    public: GameConfiguration getInstanceByName(std::string name);
 
-    public BasicArrayList getOptionsBasicArrayList();
+    public: BasicArrayList getOptionsBasicArrayList();
 
-    public add(GameConfiguration gameConfiguration);
+    public: void add(GameConfiguration gameConfiguration);
 
-    public Hashtable<any, any> getHashtable();
+    public: Hashtable<any, any> getHashtable();
 
 };
 

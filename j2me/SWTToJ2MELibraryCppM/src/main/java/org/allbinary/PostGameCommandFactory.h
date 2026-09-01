@@ -51,13 +51,12 @@
 class PostGameCommandFactory
             : public Object
          {
-        
 
-    private: static const instance: PostGameCommandFactory = new PostGameCommandFactory();
+    private: static PostGameCommandFactory instance() { return PostGameCommandFactory(); }
 
-    public static PostGameCommandFactory getInstance();
+    public: static PostGameCommandFactory getInstance();
 
-    public addCommands(MyCanvas canvas);
+    public: void addCommands(MyCanvas canvas);
 
 };
 

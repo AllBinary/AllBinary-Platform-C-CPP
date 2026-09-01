@@ -55,15 +55,14 @@
 class RTSGameLayerPositionFinder
             : public Object
         : public LayerPositionFinderInterface {
-        
 
-    private: static const instance: RTSGameLayerPositionFinder = new RTSGameLayerPositionFinder();
+    private: static RTSGameLayerPositionFinder instance() { return RTSGameLayerPositionFinder(); }
 
-    public static RTSGameLayerPositionFinder getInstance();
+    public: static RTSGameLayerPositionFinder getInstance();
 
-private constructor ();
+private: RTSGameLayerPositionFinder();
 
-    public AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
+    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition);
 
 };
 

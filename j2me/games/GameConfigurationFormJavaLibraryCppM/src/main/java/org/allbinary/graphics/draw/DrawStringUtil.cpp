@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -74,66 +76,65 @@
 class DrawStringUtil
             : public Object
          {
-        
 
-    private: static const instance: DrawStringUtil = new DrawStringUtil();
+    private: static DrawStringUtil instance() { return DrawStringUtil(); }
 
-    public static DrawStringUtil getInstance(){
+    public: static DrawStringUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DrawStringUtil.instance;
+                        return DrawStringUtil::instance();
     
 }
 
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public drawCenterString(Graphics graphics, string string, int32_t offset, int32_t length, int32_t x, int32_t y){
+    public: void drawCenterString(Graphics graphics, std::string string, int32_t offset, int32_t length, int32_t x, int32_t y){
 
-    width: int32_t = (graphics.getFont()!.substringWidth(string, offset, length)>>1);;
+    int32_t width = (graphics.getFont().substringWidth(string, offset, length)>>1);;
     
 
         try {
-            graphics.drawSubstring(string, offset, length, x -width, y, this.anchor);
+            graphics.drawSubstring(string, offset, length, x -width, y, this->anchor);
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.put(new StringMaker().append("Exception: stringLength: ")!.appendint(string.length)!.append(" offset: ")!.appendint(offset)!.append(" currentLength: ")!.appendint(length)!.toString(), this, "drawCenterString");
+PreLogUtil::put(StringMaker().append("Exception: stringLength: ").appendint(string.size()).append(" offset: ").appendint(offset).append(" currentLength: ").appendint(length).toString(), this, "drawCenterString");
     
 }
 
 }
 
 
-    public drawCenterStrings(Graphics graphics, std::vector<string> stringArray, int32_t maxWidth, int32_t charHeight, int32_t x, int32_t y){
+    public: void drawCenterStrings(Graphics graphics, std::vector<std::string> stringArray, int32_t maxWidth, int32_t charHeight, int32_t x, int32_t y){
 
-    extraLines: int32_t = 0;;
+    int32_t extraLines = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < stringArray!.length; index++)
+    int32_t index = 0;index < stringArray.size(); index++)
         {
 
-    string: string = stringArray[index]!;;
+    std::string string = stringArray[index];;
     
 
-                        if(string != this.EMPTY_STRING)
+                        if(string != this->EMPTY_STRING)
                         
                                     {
                                     
-    width: int32_t = graphics.getFont()!.stringWidth(string)!;;
+    int32_t width = graphics.getFont().stringWidth(string);;
     
 
-    minTotalLines: int32_t = 1;;
+    int32_t minTotalLines = 1;;
     
 
                         if(width > maxWidth)
@@ -145,16 +146,16 @@ PreLogUtil.put(new StringMaker().append("Exception: stringLength: ")!.appendint(
                                     }
                                 
 
-    linePortion: int32_t = string.length /minTotalLines;;
+    int32_t linePortion = string.size() /minTotalLines;;
     
 
-    offset: int32_t = 0;;
+    int32_t offset = 0;;
     
 
-    currentLength: int32_t = linePortion;;
+    int32_t currentLength = linePortion;;
     
 
-    size: int32_t = string.length!;;
+    int32_t size = string.size();;
     
 
         while(offset < size)
@@ -191,7 +192,7 @@ currentLength--;
 
                                     }
                                 
-this.drawCenterString(graphics, string, offset, currentLength, x, y +((index +extraLines++) *charHeight));
+this->drawCenterString(graphics, string, offset, currentLength, x, y +((index +extraLines++) *charHeight));
     
 offset= offset +currentLength;
     

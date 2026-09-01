@@ -40,19 +40,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class FullScreenInterface {
-        
 
     bool isFullScreenMode()
 
-    setFullScreenMode(bool mode)
+    void setFullScreenMode(bool mode)
 
                 //@Throws(Exception.constructor)
             
-    stopWaiting()
+    void stopWaiting()
 
                 //@Throws(Exception.constructor)
             
-    waitOnNotify(int32_t wait)
+    void waitOnNotify(int32_t wait)
 
 };
 

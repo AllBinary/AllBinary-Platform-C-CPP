@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_H
         #define ORG_ALLBINARY_INPUT_GYRO_ALLBINARYORIENTATIONSENSOR_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -70,19 +72,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AllBinaryOrientationSensor: public AllBinarySensor {
-        
 
-    sensorDataFloatArray: std::vector<float> = PrimitiveFloatUtil.getArrayInstance()!;
+    protected: std::vector<float> sensorDataFloatArray = PrimitiveFloatUtil::getArrayInstance();
 
-    listener: CompleteMotionGestureInputEventListenerInterface = NoCompleteMotionGestureInputEventListener.getInstance()!;
+    protected: CompleteMotionGestureInputEventListenerInterface listener = NoCompleteMotionGestureInputEventListener::getInstance();
 
-    public setCompleteMotionGestureInputEventListener(CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface);
+    public: void setCompleteMotionGestureInputEventListener(CompleteMotionGestureInputEventListenerInterface completeMotionGestureInputEventListenerInterface);
 
-protected constructor ();
+protected: AllBinaryOrientationSensor();
 
                 //@Throws(Exception.constructor)
             
-    public Orientation getOrientation();
+    public: Orientation getOrientation();
 
 };
 

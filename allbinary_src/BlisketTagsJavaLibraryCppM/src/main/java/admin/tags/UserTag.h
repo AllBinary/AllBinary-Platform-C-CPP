@@ -59,21 +59,20 @@
         #include "TableTag.h"
 
 class UserTag: public TableTag {
-        
 
-    private: role: string;
+    private: std::string role;
 
-    private: enable: string;
+    private: std::string enable;
 
-public constructor ();
+public: UserTag();
 
-    public setRole(string value);
+    public: void setRole(std::string value);
 
-    public setEnable(string value);
+    public: void setEnable(std::string value);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

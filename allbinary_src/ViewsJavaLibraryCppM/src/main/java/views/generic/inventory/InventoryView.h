@@ -89,20 +89,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class InventoryView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: InventoryView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public addDomNodeInterfaces();
+    public: void addDomNodeInterfaces();
 
-    public string view();
+    public: std::string view();
 
 };
 

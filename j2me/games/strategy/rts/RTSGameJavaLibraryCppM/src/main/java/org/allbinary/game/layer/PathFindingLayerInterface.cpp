@@ -58,7 +58,6 @@
 #include "RTSLayer2LogHelper.h"
 
 class PathFindingLayerInterface: public WaypointLayerInterface, public GameKeyEventSourceInterface, public GroupInterfaceCompositeInterface, public DestroyableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
@@ -72,7 +71,7 @@ class PathFindingLayerInterface: public WaypointLayerInterface, public GameKeyEv
 
                 //@Throws(Exception.constructor)
             
-    handleCost(PathFindingLayerInterface ownerLayer)
+    void handleCost(PathFindingLayerInterface ownerLayer)
 
     PathFindingLayerInterface getParentLayer()
 
@@ -80,7 +79,7 @@ class PathFindingLayerInterface: public WaypointLayerInterface, public GameKeyEv
 
                 //@Throws(Exception.constructor)
             
-    setTarget(PathFindingLayerInterface targetGameLayer)
+    void setTarget(PathFindingLayerInterface targetGameLayer)
 
 };
 

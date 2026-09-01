@@ -57,26 +57,23 @@
 class VisitorFileFilter
             : public Object
         : public FileFilter {
-        
 
-    private: booleanVisitorInterface: VisitorInterface;
+    private: VisitorInterface booleanVisitorInterface;
 
-public constructor (VisitorInterface booleanVisitorInterface){
-
-            super();
-        this.booleanVisitorInterface= booleanVisitorInterface;
+public: VisitorFileFilter(VisitorInterface booleanVisitorInterface){
+this->booleanVisitorInterface= booleanVisitorInterface;
     
 }
 
 
-    public bool accept(File file){
+    public: bool accept(File file){
 
-    abFile: AbFile = FileWrapperUtil.wrapFile(file)!;;
+    AbFile abFile = FileWrapperUtil::wrapFile(file);;
     
 
-    isFileAcceptable: bool = visit = this.booleanVisitorInterface!.visit(abFile)visit as Boolean
+    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(abFile)visit as Boolean
 visit.
-                    .valueOf()!;;
+                    .valueOf();;
     
 
 
@@ -87,11 +84,11 @@ visit.
 }
 
 
-    public bool accept(AbFile file){
+    public: bool accept(AbFile file){
 
-    isFileAcceptable: bool = visit = this.booleanVisitorInterface!.visit(file)visit as Boolean
+    bool isFileAcceptable = visit = this->booleanVisitorInterface.visit(file)visit as Boolean
 visit.
-                    .valueOf()!;;
+                    .valueOf();;
     
 
 

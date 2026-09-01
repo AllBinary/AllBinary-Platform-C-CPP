@@ -85,51 +85,48 @@
 class QuoteRequest
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: id: string;
+    private: std::string id;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: projectInfo: string;
+    private: std::string projectInfo;
 
-    private: userComments: string;
+    private: std::string userComments;
 
-    private: budget: string;
+    private: std::string budget;
 
-    private: timeFrame: string;
+    private: std::string timeFrame;
 
-    private: comments: string;
+    private: std::string comments;
 
-public constructor (string userName, HttpServletRequest request){
+public: QuoteRequest(std::string userName, HttpServletRequest request){
 
-            super();
-        
-    quoteRequestData: QuoteRequestData = QuoteRequestData.getInstance()!;;
+    QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
     
-this.id= new QuoteRequestIdGenerator().getNext();
+this->id= QuoteRequestIdGenerator().getNext();
     
-this.setUserName(userName);
+this->setUserName(userName);
     
-this.setProjectInfo(request.getParameter(quoteRequestData!.PROJECT_INFO) as string);
+this->setProjectInfo(request.getParameter(quoteRequestData.PROJECT_INFO) as string);
     
-this.setUserComments(request.getParameter(quoteRequestData!.CUSTOMER_COMMENTS) as string);
+this->setUserComments(request.getParameter(quoteRequestData.CUSTOMER_COMMENTS) as string);
     
-this.setBudget(request.getParameter(quoteRequestData!.BUDGET) as string);
+this->setBudget(request.getParameter(quoteRequestData.BUDGET) as string);
     
-this.setTimeFrame(request.getParameter(quoteRequestData!.TIMEFRAME) as string);
+this->setTimeFrame(request.getParameter(quoteRequestData.TIMEFRAME) as string);
     
-this.setComments(request.getParameter(quoteRequestData!.COMMENTS) as string);
+this->setComments(request.getParameter(quoteRequestData.COMMENTS) as string);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Created with: " +this.toHashMap(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("Created with: " +this->toHashMap(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -137,31 +134,29 @@ this.setComments(request.getParameter(quoteRequestData!.COMMENTS) as string);
 }
 
 
-public constructor (HashMap<any, any> hashMap){
+public: QuoteRequest(HashMap<any, any> hashMap){
 
-            super();
-        
-    quoteRequestData: QuoteRequestData = QuoteRequestData.getInstance()!;;
+    QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
     
-this.id= hashMap!.get(quoteRequestData!.ID) as string;
+this->id= hashMap.get(quoteRequestData.ID) as string;
     
-this.setUserName(hashMap!.get(UserData.USERNAME) as string);
+this->setUserName(hashMap.get(UserData::USERNAME) as string);
     
-this.setProjectInfo(hashMap!.get(quoteRequestData!.PROJECT_INFO) as string);
+this->setProjectInfo(hashMap.get(quoteRequestData.PROJECT_INFO) as string);
     
-this.setUserComments(hashMap!.get(quoteRequestData!.CUSTOMER_COMMENTS) as string);
+this->setUserComments(hashMap.get(quoteRequestData.CUSTOMER_COMMENTS) as string);
     
-this.setBudget(hashMap!.get(quoteRequestData!.BUDGET) as string);
+this->setBudget(hashMap.get(quoteRequestData.BUDGET) as string);
     
-this.setTimeFrame(hashMap!.get(quoteRequestData!.TIMEFRAME) as string);
+this->setTimeFrame(hashMap.get(quoteRequestData.TIMEFRAME) as string);
     
-this.setComments(hashMap!.get(quoteRequestData!.COMMENTS) as string);
+this->setComments(hashMap.get(quoteRequestData.COMMENTS) as string);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Created with: " +this.toHashMap(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("Created with: " +this->toHashMap(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -169,74 +164,62 @@ this.setComments(hashMap!.get(quoteRequestData!.COMMENTS) as string);
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(this.userName == 
-                                    null
-                                 || this.userName!.length < 4 || this.userName!.length > 250)
+                        if(false || userName.size() < 4 || userName.size() > 250)
                         
                                     {
-                                    valid= Boolean.FALSE;
-    
-
-                                    }
-                                
-
-                        if(this.projectInfo == 
-                                    null
-                                 || this.projectInfo!.length < 0 || this.projectInfo!.length > AbSqlData.MAXBLOB)
-                        
-                                    {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(this.userComments == 
-                                    null
-                                 || this.userComments!.length < 0 || this.userComments!.length > AbSqlData.MAXBLOB)
+                        if(false || projectInfo.size() < 0 || projectInfo.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(this.budget == 
-                                    null
-                                 || this.budget.length < 0 || this.budget.length > AbSqlData.MAXBLOB)
+                        if(false || userComments.size() < 0 || userComments.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(this.timeFrame == 
-                                    null
-                                 || this.timeFrame!.length < 0 || this.timeFrame!.length > AbSqlData.MAXBLOB)
+                        if(false || budget.size() < 0 || budget.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(this.comments == 
-                                    null
-                                 || this.comments.length < 0 || this.comments.length > AbSqlData.MAXBLOB)
+                        if(false || timeFrame.size() < 0 || timeFrame.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
+    
+
+                                    }
+                                
+
+                        if(false || comments.size() < 0 || comments.size() > AbSqlData::MAXBLOB)
+                        
+                                    {
+                                    valid= Boolean::FALSE;
     
 
                                     }
@@ -252,10 +235,10 @@ this.setComments(hashMap!.get(quoteRequestData!.COMMENTS) as string);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -264,81 +247,69 @@ this.setComments(hashMap!.get(quoteRequestData!.COMMENTS) as string);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.userName == 
-                                    null
-                                 || this.userName!.length < 4 || this.userName!.length > 250)
+                        if(false || userName.size() < 4 || userName.size() > 250)
                         
                                     {
-                                    stringBuffer!.append("Please enter a User Name with more than 4 characters.<br>");
-    
-
-                                    }
-                                
-
-                        if(this.projectInfo == 
-                                    null
-                                 || this.projectInfo!.length < 0 || this.projectInfo!.length > AbSqlData.MAXBLOB)
-                        
-                                    {
-                                    stringBuffer!.append("Please enter Project Info with less than " +AbSqlData.MAXBLOB +" characters.<br>");
+                                    stringBuffer.append("Please enter a User Name with more than 4 characters.<br>");
     
 
                                     }
                                 
 
-                        if(this.userComments == 
-                                    null
-                                 || this.userComments!.length < 0 || this.userComments!.length > AbSqlData.MAXBLOB)
+                        if(false || projectInfo.size() < 0 || projectInfo.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer!.append("Please enter User Comments with less than " +AbSqlData.MAXBLOB +" characters.<br>");
+                                    stringBuffer.append("Please enter Project Info with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
                                 
 
-                        if(this.budget == 
-                                    null
-                                 || this.budget.length < 0 || this.budget.length > AbSqlData.MAXBLOB)
+                        if(false || userComments.size() < 0 || userComments.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer!.append("Please enter Budget with less than " +AbSqlData.MAXBLOB +" characters.<br>");
+                                    stringBuffer.append("Please enter User Comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
                                 
 
-                        if(this.timeFrame == 
-                                    null
-                                 || this.timeFrame!.length < 0 || this.timeFrame!.length > AbSqlData.MAXBLOB)
+                        if(false || budget.size() < 0 || budget.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer!.append("Please enter time frame with less than " +AbSqlData.MAXBLOB +" characters.<br>");
+                                    stringBuffer.append("Please enter Budget with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
                                 
 
-                        if(this.comments == 
-                                    null
-                                 || this.comments.length < 0 || this.comments.length > AbSqlData.MAXBLOB)
+                        if(false || timeFrame.size() < 0 || timeFrame.size() > AbSqlData::MAXBLOB)
                         
                                     {
-                                    stringBuffer!.append("Please enter comments with less than " +AbSqlData.MAXBLOB +" characters.<br>");
+                                    stringBuffer.append("Please enter time frame with less than " +AbSqlData::MAXBLOB +" characters.<br>");
+    
+
+                                    }
+                                
+
+                        if(false || comments.size() < 0 || comments.size() > AbSqlData::MAXBLOB)
+                        
+                                    {
+                                    stringBuffer.append("Please enter comments with less than " +AbSqlData::MAXBLOB +" characters.<br>");
     
 
                                     }
@@ -347,17 +318,17 @@ this.setComments(hashMap!.get(quoteRequestData!.COMMENTS) as string);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -373,29 +344,29 @@ this.setComments(hashMap!.get(quoteRequestData!.COMMENTS) as string);
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
-values.add(this.id);
+values.add(this->id);
     
-values.add(this.userName);
+values.add(this->userName);
     
-values.add(this.projectInfo);
+values.add(this->projectInfo);
     
-values.add(this.userComments);
+values.add(this->userComments);
     
-values.add(this.budget);
+values.add(this->budget);
     
-values.add(this.timeFrame);
+values.add(this->timeFrame);
     
-values.add(this.comments);
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+values.add(this->comments);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
+    
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 values.add(time);
     
@@ -410,32 +381,32 @@ values.add(time);
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    quoteRequestData: QuoteRequestData = QuoteRequestData.getInstance()!;;
-    
-
-    values: HashMap<any, any> = new HashMap<any, any>();;
-    
-values.put(UserData.USERNAME, userName);
-    
-values.put(quoteRequestData!.PROJECT_INFO, this.projectInfo);
-    
-values.put(quoteRequestData!.CUSTOMER_COMMENTS, this.userComments);
-    
-values.put(quoteRequestData!.BUDGET, this.budget);
-    
-values.put(quoteRequestData!.TIMEFRAME, this.timeFrame);
-    
-values.put(quoteRequestData!.COMMENTS, this.comments);
+    QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    HashMap<any, any> values = HashMap<any, any>();;
+    
+values.put(UserData::USERNAME, userName);
+    
+values.put(quoteRequestData.PROJECT_INFO, this->projectInfo);
+    
+values.put(quoteRequestData.CUSTOMER_COMMENTS, this->userComments);
+    
+values.put(quoteRequestData.BUDGET, this->budget);
+    
+values.put(quoteRequestData.TIMEFRAME, this->timeFrame);
+    
+values.put(quoteRequestData.COMMENTS, this->comments);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-values.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+values.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -446,106 +417,105 @@ values.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public setUserName(string value){
-this.userName= value;
+    public: void setUserName(std::string value){
+this->userName= value;
     
 }
 
 
-    public setProjectInfo(string value){
-this.projectInfo= value;
+    public: void setProjectInfo(std::string value){
+this->projectInfo= value;
     
 }
 
 
-    public setUserComments(string value){
-this.userComments= value;
+    public: void setUserComments(std::string value){
+this->userComments= value;
     
 }
 
 
-    public setBudget(string value){
-this.budget= value;
+    public: void setBudget(std::string value){
+this->budget= value;
     
 }
 
 
-    public setTimeFrame(string value){
-this.timeFrame= value;
+    public: void setTimeFrame(std::string value){
+this->timeFrame= value;
     
 }
 
 
-    public setComments(string value){
-this.comments= value;
+    public: void setComments(std::string value){
+this->comments= value;
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-                        if(this.comments == 
-                                    null
-                                )
-                        this.comments= stringUtil!.EMPTY_STRING
+                        if(false)
+                        this->comments= stringUtil.EMPTY_STRING;
+                                
 }
 
 
-    public string getUserName(){
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userName;
+                        return this->userName;
     
 }
 
 
-    public string getProjectInfo(){
+    public: std::string getProjectInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.projectInfo;
+                        return this->projectInfo;
     
 }
 
 
-    public string getUserComments(){
+    public: std::string getUserComments(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userComments;
+                        return this->userComments;
     
 }
 
 
-    public string getBudget(){
+    public: std::string getBudget(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.budget;
+                        return this->budget;
     
 }
 
 
-    public string getTimeFrame(){
+    public: std::string getTimeFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeFrame;
+                        return this->timeFrame;
     
 }
 
 
-    public string getComments(){
+    public: std::string getComments(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.comments;
+                        return this->comments;
     
 }
 

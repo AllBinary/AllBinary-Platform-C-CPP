@@ -62,15 +62,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LurchRotationAI: public LurchAI {
-        
 
-    private: rotationAnimationInterface: IndexedAnimation;
+    private: IndexedAnimation rotationAnimationInterface;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: LurchRotationAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
-    reverse();
+    protected: void reverse();
 
-    update();
+    private: void update();
 
 };
 

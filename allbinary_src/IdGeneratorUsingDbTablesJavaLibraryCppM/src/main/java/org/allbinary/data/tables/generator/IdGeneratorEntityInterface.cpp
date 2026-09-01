@@ -51,17 +51,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class IdGeneratorEntityInterface: public BasicDataTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    Long get(string name)
+    Long get(std::string name)
 
-    deleteWhere(string key, string value)
+    void deleteWhere(std::string key, std::string value)
 
-    insert(Vector values)
+    void insert(Vector values)
 
-    update(HashMap<any, any> updatedValues)
+    void update(HashMap<any, any> updatedValues)
 
 };
 

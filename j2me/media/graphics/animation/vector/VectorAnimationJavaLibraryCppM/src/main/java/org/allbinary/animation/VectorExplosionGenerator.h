@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_H
         #define ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONGENERATOR_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -70,41 +72,40 @@
 class VectorExplosionGenerator
             : public Object
          {
-        
 
-    private: static const instance: VectorExplosionGenerator = new VectorExplosionGenerator();
+    private: static VectorExplosionGenerator instance() { return VectorExplosionGenerator(); }
 
-    public static VectorExplosionGenerator getInstance();
+    public: static VectorExplosionGenerator getInstance();
 
-    public const RANDOM: VectorExplosionType = new VectorExplosionType();
+    public: const VectorExplosionType RANDOM = VectorExplosionType();
 
-    public const ROTATION: VectorExplosionType = new VectorExplosionType();
+    public: const VectorExplosionType ROTATION = VectorExplosionType();
 
-    private: const vectorAnimationUtil: VectorAnimationUtil = VectorAnimationUtil.getInstance()!;
+    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList createList(BasicArrayList list, int32_t howMuch, VectorExplosionType type);
+private: VectorExplosionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type);
+    public: BasicArrayList createList(BasicArrayList list, int32_t howMuch, VectorExplosionType type);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type, bool startFrame);
-
-    private: const randomRotationFactory: RandomRotationFactory = RandomRotationFactory.getInstance()!;
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type);
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList createListFromPoints(BasicArrayList tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type);
+    public: BasicArrayList getInstanceStartFrame(std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type, bool startFrame);
+
+    private: const RandomRotationFactory randomRotationFactory = RandomRotationFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList createPointsBasicArrayList(std::vector<std::vector<int32_t>> points);
+    private: BasicArrayList createListFromPoints(BasicArrayList tempBasicArrayList, std::vector<std::vector<int32_t>> points, int32_t howMuch, VectorExplosionType type);
+
+                //@Throws(Exception.constructor)
+            
+    private: BasicArrayList createPointsBasicArrayList(std::vector<std::vector<int32_t>> points);
 
 };
 

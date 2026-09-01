@@ -57,15 +57,14 @@
 class MineLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
-    private: viewPositionFactoryInterface: ViewPositionFactoryInterface;
+    private: ViewPositionFactoryInterface viewPositionFactoryInterface;
 
-public constructor (ViewPositionFactoryInterface viewPositionFactoryInterface);
+public: MineLayerFactory(ViewPositionFactoryInterface viewPositionFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance();
+    public: AllBinaryLayer getInstance();
 
 };
 

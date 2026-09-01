@@ -21,9 +21,6 @@
             #include "../../java/lang/Object.h"
         
             #include "../../java/lang/InterruptedException.h"
-
-#include <chrono>
-#include <thread>
         
 
 
@@ -47,13 +44,10 @@
 class TsUtil
             : public Object
          {
-        
 
-private:
-    static TsUtil instance() { return TsUtil(); }
+    private: static TsUtil instance() { return TsUtil(); }
 
-public:
-    static TsUtil getInstance(){
+    public: static TsUtil getInstance(){
 
 
 
@@ -63,21 +57,23 @@ public:
 }
 
 
-    int32_t hashCode(Object* object){
+    public: int32_t hashCode(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return object == nullptr ? 0 : object->hashCode();
+                        return anyType->hashCode();;
     
 }
 
 
                 //@Throws(InterruptedException.constructor)
             
-    void waitFor(Object* object, int64_t timeoutMillis){
-    (void) object;
-    std::this_thread::sleep_for(std::chrono::milliseconds(timeoutMillis));
+    public: void waitFor(Object* any, int64_t timeoutMillis){
+
+    Object* anyType = any;;
+    
+;
     
 }
 

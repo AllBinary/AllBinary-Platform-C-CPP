@@ -51,46 +51,43 @@
 class CommonButtons
             : public Object
          {
-        
 
-    private: static const instance: CommonButtons = new CommonButtons();
+    private: static CommonButtons instance() { return CommonButtons(); }
 
-    public static CommonButtons getInstance(){
+    public: static CommonButtons getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonButtons.instance;
+                        return CommonButtons::instance();
     
 }
 
 
-    public const STANDARD_BUTTON_SIZE: int32_t;
+    public: int32_t STANDARD_BUTTON_SIZE;
 
-    public const NORMAL_BUTTON: Rectangle;
+    public: Rectangle NORMAL_BUTTON;
 
-    public const LARGE_BUTTON: Rectangle;
+    public: Rectangle LARGE_BUTTON;
 
-private constructor (){
+private: CommonButtons(){
 
-            super();
-        
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    commonButtonSize: int32_t = 128;;
+    int32_t commonButtonSize = 128;;
     
 
         while(commonButtonSize > 64)
         {
 
-    totalColumns: int32_t = displayInfo!.getLastWidth() /commonButtonSize;;
+    int32_t totalColumns = displayInfo.getLastWidth() /commonButtonSize;;
     
 
-    totalRows: int32_t = displayInfo!.getLastHeight() /commonButtonSize;;
+    int32_t totalRows = displayInfo.getLastHeight() /commonButtonSize;;
     
 
-    max: int32_t = totalColumns;;
+    int32_t max = totalColumns;;
     
 
                         if(totalRows > max)
@@ -115,11 +112,11 @@ commonButtonSize= commonButtonSize>>1;
     
 }
 
-this.STANDARD_BUTTON_SIZE= commonButtonSize;
+this->STANDARD_BUTTON_SIZE= commonButtonSize;
     
-this.NORMAL_BUTTON= new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, this.STANDARD_BUTTON_SIZE, this.STANDARD_BUTTON_SIZE);
+this->NORMAL_BUTTON= Rectangle(PointFactory::getInstance().ZERO_ZERO, this->STANDARD_BUTTON_SIZE, this->STANDARD_BUTTON_SIZE);
     
-this.LARGE_BUTTON= new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, this.STANDARD_BUTTON_SIZE<<1, this.STANDARD_BUTTON_SIZE<<1);
+this->LARGE_BUTTON= Rectangle(PointFactory::getInstance().ZERO_ZERO, this->STANDARD_BUTTON_SIZE<<1, this->STANDARD_BUTTON_SIZE<<1);
     
 }
 

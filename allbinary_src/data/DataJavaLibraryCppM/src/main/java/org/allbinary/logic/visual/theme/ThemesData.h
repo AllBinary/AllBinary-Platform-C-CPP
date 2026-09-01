@@ -45,15 +45,14 @@
 class ThemesData
             : public Object
          {
-        
 
-    private: static const instance: ThemesData = new ThemesData();
+    private: static ThemesData instance() { return ThemesData(); }
 
-    public static ThemesData getInstance();
+    public: static ThemesData getInstance();
 
-private constructor ();
+private: ThemesData();
 
-    public const NAME: string = "THEMES_NAME";
+    public: const std::string NAME = "THEMES_NAME";
 
 };
 

@@ -45,9 +45,8 @@
 class HtmlAnchor
             : public Object
          {
-        
 
-public constructor ();
+public: HtmlAnchor();
 
 };
 

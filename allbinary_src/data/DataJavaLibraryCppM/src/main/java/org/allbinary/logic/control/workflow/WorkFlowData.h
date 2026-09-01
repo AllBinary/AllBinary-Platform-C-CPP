@@ -45,21 +45,20 @@
 class WorkFlowData
             : public Object
          {
-        
 
-    private: static const instance: WorkFlowData = new WorkFlowData();
+    private: static WorkFlowData instance() { return WorkFlowData(); }
 
-    public static WorkFlowData getInstance();
+    public: static WorkFlowData getInstance();
 
-private constructor ();
+private: WorkFlowData();
 
-    public WORKFLOWS: string = "WORKFLOWS";
+    public: std::string WORKFLOWS = "WORKFLOWS";
 
-    public WORKFLOW: string = "WORKFLOW";
+    public: std::string WORKFLOW = "WORKFLOW";
 
-    public NAME: string = "WORKFLOW_NAME";
+    public: std::string NAME = "WORKFLOW_NAME";
 
-    public DATA: string = "WORKFLOW_DATA";
+    public: std::string DATA = "WORKFLOW_DATA";
 
 };
 

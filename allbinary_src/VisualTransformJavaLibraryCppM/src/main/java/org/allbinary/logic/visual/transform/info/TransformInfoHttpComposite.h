@@ -64,25 +64,24 @@
 class TransformInfoHttpComposite
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: transformInfoInterface: TransformInfoHttpInterface;
+    private: TransformInfoHttpInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: TransformInfoHttpComposite(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterface();
+    public: TransformInfoInterface getTransformInfoInterface();
 
-    public WeblisketSession getWeblisketSession();
+    public: WeblisketSession getWeblisketSession();
 
-    public PageContext getPageContext();
+    public: PageContext getPageContext();
 
-    public HashMap<any, any> getPropertiesHashMap();
+    public: HashMap<any, any> getPropertiesHashMap();
 
 };
 

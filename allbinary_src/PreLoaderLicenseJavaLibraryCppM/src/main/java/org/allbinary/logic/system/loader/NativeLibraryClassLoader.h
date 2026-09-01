@@ -43,11 +43,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NativeLibraryClassLoader: public ClassLoader {
-        
 
-    private: message: string = "This Class Loader Does Not Load Classes - Only For Loading and Unloading of Native Libraries";
+    private: std::string message = "This Class Loader Does Not Load Classes - Only For Loading and Unloading of Native Libraries";
 
-public constructor (ClassLoader parent);
+public: NativeLibraryClassLoader(ClassLoader parent);
 
 };
 

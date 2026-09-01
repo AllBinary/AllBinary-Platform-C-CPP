@@ -72,37 +72,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasePatrolAI: public BasicAI {
-        
 
-    public static const MAX_DISTANCE: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(2)!;
+    public: static const Integer MAX_DISTANCE = SmallIntegerSingletonFactory::getInstance().getAt(2);
 
-    public static const DIRECTION_ARRAY: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(3)!;
+    public: static const Integer DIRECTION_ARRAY = SmallIntegerSingletonFactory::getInstance().getAt(3);
 
-    public static const FIRING_DISTANCE: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(4)!;
+    public: static const Integer FIRING_DISTANCE = SmallIntegerSingletonFactory::getInstance().getAt(4);
 
-    public static SPEED: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(5)!;
+    public: static Integer SPEED = SmallIntegerSingletonFactory::getInstance().getAt(5);
 
-    maxDistance: Integer;
+    protected: Integer maxDistance;
 
-    currentDistance: int32_t;
+    protected: int32_t currentDistance;
 
-    xTotalDistance: int32_t= 0;
+    protected: int32_t xTotalDistance= 0;
 
-    lastKeyDirection: int32_t = Canvas.RIGHT;
+    protected: int32_t lastKeyDirection = Canvas::RIGHT;
 
-    keyDirection: int32_t = Canvas.RIGHT;
+    protected: int32_t keyDirection = Canvas::RIGHT;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: BasePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
-    update();
+    protected: void update();
 
-    updateTotalDistance();
+    private: void updateTotalDistance();
 
-    changeDirectionIfReachedPacingAreaMax();
+    private: void changeDirectionIfReachedPacingAreaMax();
 
-    nextDirection();
+    protected: void nextDirection();
 
-    public disable();
+    public: void disable();
 
 };
 

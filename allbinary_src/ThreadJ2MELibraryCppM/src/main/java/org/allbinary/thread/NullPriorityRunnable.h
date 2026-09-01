@@ -46,15 +46,14 @@
 class NullPriorityRunnable
             : public Object
         : public PriorityRunnable {
-        
 
-    public int32_t getPriority();
+    public: int32_t getPriority();
 
-    public bool isDone();
+    public: bool isDone();
 
-    public reset();
+    public: void reset();
 
-    public run();
+    public: void run();
 
 };
 

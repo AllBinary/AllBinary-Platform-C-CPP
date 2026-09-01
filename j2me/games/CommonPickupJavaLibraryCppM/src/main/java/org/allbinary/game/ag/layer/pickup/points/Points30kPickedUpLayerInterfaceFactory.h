@@ -72,26 +72,25 @@
 #include "PointsLayerFactory.h"
 #include "PointsResources.h"
 
-class Points30kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory: public PickupProcessorInterface {
-        
+class Points30kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
-
-                //@Throws(Exception.constructor)
-            
-    public static init();
-
-    public static PickedUpLayerInterfaceFactoryInterface getInstance();
-
-    private: pool: PointsLayerCircularStaticPool = new PointsLayerCircularStaticPool(new PointsLayerFactory(GameConfigurationUtil.getInstance()!.getCompetitionValue() *30000), 1);
-
-private constructor ();
-
-    public int32_t getTotal();
+    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayer sourceLayerInterface);
+    public: static void init();
+
+    public: static PickedUpLayerInterfaceFactoryInterface getInstance();
+
+    private: PointsLayerCircularStaticPool pool = PointsLayerCircularStaticPool(PointsLayerFactory(GameConfigurationUtil::getInstance().getCompetitionValue() *30000), 1);
+
+private: Points30kPickedUpLayerInterfaceFactory();
+
+    public: int32_t getTotal();
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(AllBinaryLayer sourceLayerInterface);
 
 };
 

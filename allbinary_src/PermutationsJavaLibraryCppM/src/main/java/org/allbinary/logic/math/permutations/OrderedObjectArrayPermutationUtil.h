@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_ORDEREDOBJECTARRAYPERMUTATIONUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/System.h"
@@ -58,27 +60,26 @@
 class OrderedObjectArrayPermutationUtil
             : public Object
          {
-        
 
-    private: static const instance: OrderedObjectArrayPermutationUtil = new OrderedObjectArrayPermutationUtil();
+    private: static OrderedObjectArrayPermutationUtil instance() { return OrderedObjectArrayPermutationUtil(); }
 
-    public static OrderedObjectArrayPermutationUtil getInstance();
+    public: static OrderedObjectArrayPermutationUtil getInstance();
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    private: const TOTAL_ITERATIONS_TABLE: string = "Total Iterations: ";
+    private: const std::string TOTAL_ITERATIONS_TABLE = "Total Iterations: ";
 
-    private: const FINISHED: string = "\nFINISHED";
+    private: const std::string FINISHED = "\nFINISHED";
 
-private constructor ();
+private: OrderedObjectArrayPermutationUtil();
 
-    public getNext(std::vector<any> data);
+    public: void getNext(std::vector<Object*> data);
 
-    public swap(std::vector<any> data, int32_t a, int32_t b);
+    public: void swap(std::vector<Object*> data, int32_t a, int32_t b);
 
-    public int64_t factorial(int32_t dataLength);
+    public: int64_t factorial(int32_t dataLength);
 
-    public generate(std::vector<any> data, Visitor visitor);
+    public: void generate(std::vector<Object*> data, Visitor visitor);
 
 };
 

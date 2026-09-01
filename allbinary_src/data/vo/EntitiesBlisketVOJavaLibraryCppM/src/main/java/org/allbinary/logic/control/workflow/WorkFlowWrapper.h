@@ -61,29 +61,28 @@
 class WorkFlowWrapper
             : public Object
         : public WorkFlowInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: anyType: any;
+    private: Object* anyType;
 
-public constructor (any = {} anyType);
+public: WorkFlowWrapper(Object* anyType);
 
-    any getWorkFlowObject();
-
-                //@Throws(Exception.constructor)
-            
-    public string getName();
+    protected: Object* getWorkFlowObject();
 
                 //@Throws(Exception.constructor)
             
-    public string getStoreName();
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public Integer process();
+    public: std::string getStoreName();
+
+                //@Throws(Exception.constructor)
+            
+    public: Integer process();
 
 };
 

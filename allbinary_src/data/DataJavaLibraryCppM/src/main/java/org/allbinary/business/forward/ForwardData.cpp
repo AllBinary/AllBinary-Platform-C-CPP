@@ -42,31 +42,28 @@
 class ForwardData
             : public Object
          {
-        
 
-    private: static const instance: ForwardData = new ForwardData();
+    private: static ForwardData instance() { return ForwardData(); }
 
-    public static ForwardData getInstance(){
+    public: static ForwardData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ForwardData.instance;
+                        return ForwardData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ForwardData(){
+}
 
 
-    public const PAGE: string = "FORWARD_PAGE";
+    public: const std::string PAGE = "FORWARD_PAGE";
 
-    public const NAME: string = "FORWARD_NAME";
+    public: const std::string NAME = "FORWARD_NAME";
 
-    public const VALUE: string = "FORWARD_VALUE";
+    public: const std::string VALUE = "FORWARD_VALUE";
 
 };
 

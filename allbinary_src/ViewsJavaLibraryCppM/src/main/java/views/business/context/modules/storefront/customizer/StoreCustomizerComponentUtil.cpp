@@ -66,72 +66,69 @@
 class StoreCustomizerComponentUtil
             : public Object
          {
-        
 
-    private: static const instance: StoreCustomizerComponentUtil = new StoreCustomizerComponentUtil();
+    private: static StoreCustomizerComponentUtil instance() { return StoreCustomizerComponentUtil(); }
 
-    public static StoreCustomizerComponentUtil getInstance(){
+    public: static StoreCustomizerComponentUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StoreCustomizerComponentUtil.instance;
+                        return StoreCustomizerComponentUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: StoreCustomizerComponentUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public string generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+    public: std::string generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Generating Modified Views For: " +transformInfoInterface!.getName(), this, "generateModifiedViews()");
+                                    this->logUtil.putF("Generating Modified Views For: " +transformInfoInterface.getName(), this, "generateModifiedViews()");
     
 
                                     }
                                 
 
-    customizerUtil: CustomizerUtil = CustomizerUtil.getInstance()!;;
+    CustomizerUtil customizerUtil = CustomizerUtil::getInstance();;
     
 
-    allCustomizedViews: Vector = customizerUtil!.getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface)!;;
+    Vector allCustomizedViews = customizerUtil.getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
     
 
-    size: int32_t = allCustomizedViews!.length!;;
+    int32_t size = allCustomizedViews.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    nextTransformInfoInterface: TransformInfo = allCustomizedViews!.get(index) as TransformInfo;;
+    TransformInfo nextTransformInfoInterface = allCustomizedViews.get(index) as TransformInfo;;
     
 
-    allViewsToBeModified: Vector = customizerUtil!.getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface)!;;
+    Vector allViewsToBeModified = customizerUtil.getTransformInfoObjectConfigComponentNodesToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View or component that was modified by a Customizer: " +nextTransformInfoInterface!.getName(), this, "generateModifiedViews()");
+                                    this->logUtil.putF("View or component that was modified by a Customizer: " +nextTransformInfoInterface.getName(), this, "generateModifiedViews()");
     
 
                                     }
                                 
-this.generate(abeClientInformation, transformInfoInterface, allViewsToBeModified);
+this->generate(abeClientInformation, transformInfoInterface, allViewsToBeModified);
     
 }
 
@@ -139,43 +136,43 @@ this.generate(abeClientInformation, transformInfoInterface, allViewsToBeModified
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Vector allViewsToBeModifiedVector){
+    private: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Vector allViewsToBeModifiedVector){
 
-    customizerUtil: CustomizerUtil = CustomizerUtil.getInstance()!;;
+    CustomizerUtil customizerUtil = CustomizerUtil::getInstance();;
     
 
-    size: int32_t = allViewsToBeModifiedVector!.length!;;
+    int32_t size = allViewsToBeModifiedVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    nextTransformInfoInterface: TransformInfo = allViewsToBeModifiedVector!.get(index) as TransformInfo;;
+    TransformInfo nextTransformInfoInterface = allViewsToBeModifiedVector.get(index) as TransformInfo;;
     
 
-    specifiedTransformInfoInterface: TransformInfoInterface = customizerUtil!.getTransformInfoInterfaceToCustomize(transformInfoInterface, nextTransformInfoInterface)!;;
+    TransformInfoInterface specifiedTransformInfoInterface = customizerUtil.getTransformInfoInterfaceToCustomize(transformInfoInterface, nextTransformInfoInterface);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Retrieved: " +specifiedTransformInfoInterface!.getName(), this, "generateModifiedViews()");
+                                    this->logUtil.putF("Retrieved: " +specifiedTransformInfoInterface.getName(), this, "generateModifiedViews()");
     
 
                                     }
                                 
-TransformGeneratorUtil.getInstance()!.generate(abeClientInformation, nextTransformInfoInterface, specifiedTransformInfoInterface);
+TransformGeneratorUtil::getInstance().generate(abeClientInformation, nextTransformInfoInterface, specifiedTransformInfoInterface);
     
 }
 

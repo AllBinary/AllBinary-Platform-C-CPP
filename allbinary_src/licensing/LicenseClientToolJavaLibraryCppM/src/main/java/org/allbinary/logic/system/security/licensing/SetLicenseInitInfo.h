@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SETLICENSEINITINFO_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_SETLICENSEINITINFO_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -81,23 +83,22 @@
 class SetLicenseInitInfo
             : public Object
          {
-        
 
-    private: static stdinput: BufferedReader = new BufferedReader(new InputStreamReader(System.in));
-
-                //@Throws(Exception.constructor)
-            
-    public static main(std::vector<string> args);
-
-    private: vector: BasicArrayList = new BasicArrayListD();
-
-public constructor (std::vector<string> options);
+    private: static BufferedReader stdinput = BufferedReader(InputStreamReader(System::in));
 
                 //@Throws(Exception.constructor)
             
-    public LicenseInitInfo getLicenseInitInfo();
+    public: static void main(std::vector<std::string> args);
 
-    public createNewLicenseInitInfo(BasicArrayList licenceServerVector);
+    private: BasicArrayList vector = BasicArrayListD();
+
+public: SetLicenseInitInfo(std::vector<std::string> options);
+
+                //@Throws(Exception.constructor)
+            
+    public: LicenseInitInfo getLicenseInitInfo();
+
+    public: void createNewLicenseInitInfo(BasicArrayList licenceServerVector);
 
 };
 

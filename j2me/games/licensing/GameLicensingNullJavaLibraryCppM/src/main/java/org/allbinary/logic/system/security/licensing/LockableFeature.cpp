@@ -51,24 +51,21 @@
 class LockableFeature
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name){
-
-            super();
-        this.name= name;
+public: LockableFeature(std::string name){
+this->name= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

@@ -54,21 +54,20 @@
         #include "BasicMenuInputProcessor.h"
 
 class NoMenuInputProcessor: public BasicMenuInputProcessor {
-        
 
-    private: static const SINGLETON: NoMenuInputProcessor = new NoMenuInputProcessor();
+    private: static const NoMenuInputProcessor SINGLETON = NoMenuInputProcessor();
 
-    public static NoMenuInputProcessor getInstance();
+    public: static NoMenuInputProcessor getInstance();
 
-private constructor ();
+private: NoMenuInputProcessor();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
 
-    public onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
 
 };
 

@@ -62,17 +62,16 @@
 class OSGIActivatorUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static registerAsService(BundleContext bundleContext, any = {} anyType, string serviceName);
+    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName);
 
                 //@Throws(Exception.constructor)
             
-    public static registerAsService(BundleContext bundleContext, any = {} anyType, string serviceName, Hashtable<any, any> properties);
+    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, Hashtable<any, any> properties);
 
-private constructor ();
+private: OSGIActivatorUtil();
 
 };
 

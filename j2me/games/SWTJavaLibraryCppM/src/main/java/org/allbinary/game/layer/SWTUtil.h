@@ -45,11 +45,10 @@
 class SWTUtil
             : public Object
          {
-        
 
-    public static isSWT: bool = true;
+    public: static bool isSWT = true;
 
-    public static SWT: string = "SWT";
+    public: static std::string SWT = "SWT";
 
 };
 

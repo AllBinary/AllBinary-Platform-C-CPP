@@ -52,11 +52,10 @@
         #include "WorkFlowWrapper.h"
 
 class StoreWorkFlowWrapper: public WorkFlowWrapper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (any = {} anyType){
+public: StoreWorkFlowWrapper(Object* anyType){
             super(anyType);
                     
 
@@ -67,18 +66,18 @@ public constructor (any = {} anyType){
 
                 //@Throws(Exception.constructor)
             
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
         try {
             
-    helperClass: Function = this.getWorkFlowObject()!.constructor!;;
+    Function helperClass = this->getWorkFlowObject().constructor;;
     
 
-    method: Method = helperClass!.getMethod("getStoreName", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("getStoreName", 
+                            nullptr);;
     
 
-    result: string = method.invoke(this.getWorkFlowObject(), 
+    std::string result = method.invoke(this->getWorkFlowObject(), 
                             nullptr) as string;;
     
 
@@ -92,16 +91,16 @@ public constructor (any = {} anyType){
 } catch(e) 
             {
 
-    error: string = "Reflection Exception";;
+    std::string error = "Reflection Exception";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "getStoreName()", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "getStoreName()", e);
     
 
                                     }
@@ -109,7 +108,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "getStoreName()", e);
 
 
 
-                            throw new Exception(error);
+                            throw Exception(error);
                     
 }
 

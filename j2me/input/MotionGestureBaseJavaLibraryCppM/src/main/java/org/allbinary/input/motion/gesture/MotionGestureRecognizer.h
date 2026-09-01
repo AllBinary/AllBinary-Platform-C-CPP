@@ -99,51 +99,50 @@
 class MotionGestureRecognizer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const j2seMath: J2SEMath = J2SEMath.getInstance()!;
+    private: const J2SEMath j2seMath = J2SEMath::getInstance();
 
-    private: const origin: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: const GPoint origin = PointFactory::getInstance().ZERO_ZERO;
 
-    private: previous: GPoint = this.origin;
+    private: GPoint previous = this->origin;
 
-    private: intermediate: GPoint = this.origin;
+    private: GPoint intermediate = this->origin;
 
-    private: const line: Line = new Line(this.origin, this.origin);
+    private: const Line line = Line(this->origin, this->origin);
 
-    private: const motionGesturesHandler: BasicMotionGesturesHandler;
+    private: BasicMotionGesturesHandler motionGesturesHandler;
 
-    private: const movedMotionGesturesHandler: BasicEventHandler;
+    private: BasicEventHandler movedMotionGesturesHandler;
 
-    private: const scrolledMotionGesturesHandler: BasicEventHandler;
+    private: BasicEventHandler scrolledMotionGesturesHandler;
 
-    private: const motionEventCircularPool: MotionEventCircularPool;
+    private: MotionEventCircularPool motionEventCircularPool;
 
-public constructor (int32_t id);
-
-                //@Throws(Exception.constructor)
-            
-    public bool processPressedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+public: MotionGestureRecognizer(int32_t id);
 
                 //@Throws(Exception.constructor)
             
-    public bool processReleasedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+    public: bool processPressedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(GPoint current, int32_t deviceId, int32_t buttonMask);
+    public: bool processReleasedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
 
                 //@Throws(Exception.constructor)
             
-    public bool processMovedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+    public: void processDraggedMotionEvent(GPoint current, int32_t deviceId, int32_t buttonMask);
 
                 //@Throws(Exception.constructor)
             
-    public bool processScrolledMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+    public: bool processMovedMotionEvent(GPoint current, int32_t deviceId, int32_t button);
 
-    public BasicMotionGesturesHandler getMotionGesturesHandler();
+                //@Throws(Exception.constructor)
+            
+    public: bool processScrolledMotionEvent(GPoint current, int32_t deviceId, int32_t button);
+
+    public: BasicMotionGesturesHandler getMotionGesturesHandler();
 
 };
 

@@ -48,7 +48,6 @@
         #include "CategoryInterface.h"
 
 class CategoryFactoryInterface {
-        
 
     CategoryInterface getRootInstance()
 
@@ -56,7 +55,7 @@ class CategoryFactoryInterface {
 
     CategoryInterface getRootInstanceFromNode(Node node)
 
-    CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, string name)
+    CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string name)
 
     CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node)
 

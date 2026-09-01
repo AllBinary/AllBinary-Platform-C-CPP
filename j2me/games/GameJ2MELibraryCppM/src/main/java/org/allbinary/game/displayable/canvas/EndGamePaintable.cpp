@@ -54,20 +54,17 @@
         #include "AllBinaryGameCanvas.h"
 
 class EndGamePaintable: public Paintable {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: EndGamePaintable(AllBinaryGameCanvas gameCanvas){
+this->gameCanvas= gameCanvas;
     
 }
 
 
-    public paint(Graphics graphics){
-this.gameCanvas!.paintGameOver(graphics);
+    public: void paint(Graphics graphics){
+this->gameCanvas.paintGameOver(graphics);
     
 }
 

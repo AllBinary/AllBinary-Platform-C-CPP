@@ -55,21 +55,20 @@
 #include "ImageArrayRotationAnimationCacheable.h"
 
 class ImageArrayRotationAnimationPool: public BasicArrayListResetablePool {
-        
 
-    private: static IMAGE_ROTATION_ANIMATION_POOL: PoolInterface = new ImageArrayRotationAnimationPool(new ImageArrayRotationAnimationCacheableInterfaceFactory());
+    private: static PoolInterface IMAGE_ROTATION_ANIMATION_POOL = ImageArrayRotationAnimationPool(ImageArrayRotationAnimationCacheableInterfaceFactory());
 
-    public static PoolInterface getInstance(){
+    public: static PoolInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageArrayRotationAnimationPool.IMAGE_ROTATION_ANIMATION_POOL;
+                        return ImageArrayRotationAnimationPool::IMAGE_ROTATION_ANIMATION_POOL;
     
 }
 
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
+public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface){
             super(cacheableInterfaceFactoryInterface);
                     
 
@@ -80,17 +79,17 @@ public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactory
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface remove(any = {} key){
+    public: CacheableInterface remove(Object* key){
 
-    cacheableInterface: CacheableInterface = super.remove(key)!;;
+    CacheableInterface cacheableInterface = super.remove(key);;
     
 
-    allBinaryImageRotationAnimationInfo: ImageArrayRotationAnimationInfo = key as ImageArrayRotationAnimationInfo;;
+    ImageArrayRotationAnimationInfo allBinaryImageRotationAnimationInfo = key as ImageArrayRotationAnimationInfo;;
     
 
-    imageArrayRotationAnimationCacheable: ImageArrayRotationAnimationCacheable = (cacheableInterface as ImageArrayRotationAnimationCacheable);;
+    ImageArrayRotationAnimationCacheable imageArrayRotationAnimationCacheable = (cacheableInterface as ImageArrayRotationAnimationCacheable);;
     
-imageArrayRotationAnimationCacheable!.setImageArray(allBinaryImageRotationAnimationInfo!.getImageArray());
+imageArrayRotationAnimationCacheable.setImageArray(allBinaryImageRotationAnimationInfo.getImageArray());
     
 
 

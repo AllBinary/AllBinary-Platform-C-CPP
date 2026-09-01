@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETREVIEW_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_BASKET_BASKETREVIEW_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -73,33 +75,32 @@
 class BasketReview
             : public Object
          {
-        
 
-    items: Vector = new Vector();
+    Vector items = Vector();
 
-public constructor ();
+public: BasketReview();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public addItem(Item item);
+    public: void addItem(Item item);
 
-    public Vector getItems();
+    public: Vector getItems();
 
-    public removeItem(string id);
+    public: void removeItem(std::string id);
 
-    public adjustItem(string id, string num);
+    public: void adjustItem(std::string id, std::string num);
 
-    public string getTotalWeight();
+    public: std::string getTotalWeight();
 
-    public Integer getNumberOfItems();
+    public: Integer getNumberOfItems();
 
-    public Set getIds();
+    public: Set getIds();
 
-    public Integer getNumberOf(string id);
+    public: Integer getNumberOf(std::string id);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

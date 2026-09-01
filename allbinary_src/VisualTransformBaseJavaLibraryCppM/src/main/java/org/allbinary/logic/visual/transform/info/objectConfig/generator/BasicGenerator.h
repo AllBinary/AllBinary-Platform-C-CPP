@@ -45,13 +45,12 @@
         #include "TransformInfoObjectConfigGenerator.h"
 
 class BasicGenerator: public TransformInfoObjectConfigGenerator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: BasicGenerator();
 
-    public string process(string input);
+    public: std::string process(std::string input);
 
 };
 

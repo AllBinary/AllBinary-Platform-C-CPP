@@ -133,29 +133,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Warning you must have sql root access
 class InitDbCrypted: public AbDatabaseManagement {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userDbInitInfo: UserDbInitInfo;
+    private: UserDbInitInfo userDbInitInfo;
 
-    private: inventoryDbInitInfo: InventoryDbInitInfo;
+    private: InventoryDbInitInfo inventoryDbInitInfo;
 
-    private: historyDbInitInfo: HistoryDbInitInfo;
+    private: HistoryDbInitInfo historyDbInitInfo;
 
-    private: staticpagesDbInitInfo: StaticPagesDbInitInfo;
+    private: StaticPagesDbInitInfo staticpagesDbInitInfo;
 
-    private: logDbInitInfo: LogDbInitInfo;
+    private: LogDbInitInfo logDbInitInfo;
 
-    private: const SQL_FILE: string = "initWeblisket.sql";
+    private: const std::string SQL_FILE = "initWeblisket.sql";
 
-public constructor (DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+public: InitDbCrypted(DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
 
-    public Boolean addUsers();
+    public: Boolean addUsers();
 
-    public Boolean addDatabases();
+    public: Boolean addDatabases();
 
-    public Boolean addTables();
+    public: Boolean addTables();
 
 };
 

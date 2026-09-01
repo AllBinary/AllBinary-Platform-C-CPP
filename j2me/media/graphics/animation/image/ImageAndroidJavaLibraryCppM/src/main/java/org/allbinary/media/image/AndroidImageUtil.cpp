@@ -65,25 +65,24 @@
 class AndroidImageUtil
             : public Object
          {
-        
 
-    private: static const instance: AndroidImageUtil = new AndroidImageUtil();
+    private: static AndroidImageUtil instance() { return AndroidImageUtil(); }
 
-    public static AndroidImageUtil getInstance(){
+    public: static AndroidImageUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidImageUtil.instance;
+                        return AndroidImageUtil::instance();
     
 }
 
 
-    public paintBitmap(Bitmap bitmap, Bitmap originalBitmap, Paint paint){
-bitmap.eraseColor(Color.TRANSPARENT);
+    public: void paintBitmap(Bitmap bitmap, Bitmap originalBitmap, Paint paint){
+bitmap.eraseColor(Color::TRANSPARENT);
     
 
-    canvas: Canvas = new android.graphics.Canvas();;
+    Canvas canvas = android::graphics::Canvas();;
     
 canvas.setBitmap(bitmap);
     
@@ -92,38 +91,38 @@ canvas.drawBitmap(originalBitmap, 0.0, 0.0, paint);
 }
 
 
-    public paint(Image image, Image originalImage, Paint paint){
+    public: void paint(Image image, Image originalImage, Paint paint){
 
-    androidImage: AndroidImageInterface = image as AndroidImageInterface;;
+    AndroidImageInterface androidImage = image as AndroidImageInterface;;
     
-androidImage!.getBitmap()!.eraseColor(Color.TRANSPARENT);
-    
-
-    canvas: Canvas = androidImage!.getCanvas()!;;
+androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
     
 
-    originalAndroidImage: AndroidImageInterface = originalImage as AndroidImageInterface;;
+    Canvas canvas = androidImage.getCanvas();;
     
-canvas.drawBitmap(originalAndroidImage!.getBitmap(), 0.0, 0.0, paint);
+
+    AndroidImageInterface originalAndroidImage = originalImage as AndroidImageInterface;;
+    
+canvas.drawBitmap(originalAndroidImage.getBitmap(), 0.0, 0.0, paint);
     
 }
 
 
-    public rotate(Image image, Image originalImage, Matrix matrix, Paint paint){
+    public: void rotate(Image image, Image originalImage, Matrix matrix, Paint paint){
 
-    androidImage: AndroidImageInterface = image as AndroidImageInterface;;
+    AndroidImageInterface androidImage = image as AndroidImageInterface;;
     
-androidImage!.getBitmap()!.eraseColor(Color.TRANSPARENT);
+androidImage.getBitmap().eraseColor(Color::TRANSPARENT);
     
 
-    canvas: Canvas = androidImage!.getCanvas()!;;
+    Canvas canvas = androidImage.getCanvas();;
     
 canvas.concat(matrix);
     
 
-    originalAndroidImage: AndroidImageInterface = originalImage as AndroidImageInterface;;
+    AndroidImageInterface originalAndroidImage = originalImage as AndroidImageInterface;;
     
-canvas.drawBitmap(originalAndroidImage!.getBitmap(), 0.0, 0.0, paint);
+canvas.drawBitmap(originalAndroidImage.getBitmap(), 0.0, 0.0, paint);
     
 }
 

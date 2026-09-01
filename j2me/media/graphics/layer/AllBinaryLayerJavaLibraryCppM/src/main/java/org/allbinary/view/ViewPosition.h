@@ -54,27 +54,26 @@
         #include "ViewPositionBase.h"
 
 class ViewPosition: public ViewPositionBase {
-        
 
-    public static ViewPosition getInstanceD();
+    public: static ViewPosition getInstanceD();
 
-    private: allbinaryLayer: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer allbinaryLayer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-protected constructor (int32_t x, int32_t y, int32_t z);
+protected: ViewPosition(int32_t x, int32_t y, int32_t z);
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public int32_t getZ();
+    public: int32_t getZ();
 
-    public int32_t getX2();
+    public: int32_t getX2();
 
-    public int32_t getY2();
+    public: int32_t getY2();
 
-    public int32_t getZ2();
+    public: int32_t getZ2();
 
-    public setAllbinaryLayer(any = {} allbinaryLayer);
+    public: void setAllbinaryLayer(Object* allbinaryLayer);
 
 };
 

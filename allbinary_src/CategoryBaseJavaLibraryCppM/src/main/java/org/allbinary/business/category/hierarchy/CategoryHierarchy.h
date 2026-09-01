@@ -60,33 +60,32 @@
 class CategoryHierarchy
             : public Object
         : public CategoryHierarchyInterface {
-        
 
-    private: rootCategoryInterface: CategoryInterface;
+    private: CategoryInterface rootCategoryInterface;
 
-    private: parentCategoryInterface: CategoryInterface;
+    private: CategoryInterface parentCategoryInterface;
 
-    private: level: int32_t;
+    private: int32_t level;
 
-public constructor (CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface);
+public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface);
 
-public constructor (CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, int32_t level);
+public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, int32_t level);
 
-public constructor (CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
+public: CategoryHierarchy(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
 
-    public int32_t getLevel();
+    public: int32_t getLevel();
 
-    public string getLevelString();
+    public: std::string getLevelString();
 
-    public setLevel(int32_t level);
+    public: void setLevel(int32_t level);
 
-    public setParent(CategoryInterface categoryInterface);
+    public: void setParent(CategoryInterface categoryInterface);
 
-    public setRoot(CategoryInterface categoryInterface);
+    public: void setRoot(CategoryInterface categoryInterface);
 
-    public CategoryInterface getRoot();
+    public: CategoryInterface getRoot();
 
-    public CategoryInterface getParent();
+    public: CategoryInterface getParent();
 
 };
 

@@ -51,29 +51,28 @@
         #include "InitialJumpBehavior.h"
 
 class TopViewGameLayerBehavior: public GameLayerBehavior {
-        
 
-    public const maxGravityActionIndex: int32_t;
+    public: int32_t maxGravityActionIndex;
 
-    public isJumpAction: bool = true;
+    public: bool isJumpAction = true;
 
-    public isJumpOver: bool = false;
+    public: bool isJumpOver = false;
 
-    public isFallingWithoutJumpAttempt: bool = false;
+    public: bool isFallingWithoutJumpAttempt = false;
 
-    public gravityActionIndex: int32_t = 0;
+    public: int32_t gravityActionIndex = 0;
 
-public constructor (int32_t maxGravityActionIndex);
+public: TopViewGameLayerBehavior(int32_t maxGravityActionIndex);
 
-    public gravity();
+    public: void gravity();
 
-    public land(VelocityProperties velocityProperties);
+    public: void land(VelocityProperties velocityProperties);
 
-    public landReset();
+    public: void landReset();
 
-    public up(VelocityProperties velocityProperties, BasicAccelerationProperties acceleration, InitialJumpBehavior jumpBehavior, int32_t accelerationMultiplier);
+    public: void up(VelocityProperties velocityProperties, BasicAccelerationProperties acceleration, InitialJumpBehavior jumpBehavior, int32_t accelerationMultiplier);
 
-    public inputFrames(VelocityProperties velocityProperties);
+    public: void inputFrames(VelocityProperties velocityProperties);
 
 };
 

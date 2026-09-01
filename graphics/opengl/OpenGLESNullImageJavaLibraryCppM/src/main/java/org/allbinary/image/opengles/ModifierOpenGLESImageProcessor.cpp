@@ -39,16 +39,15 @@
         #include "OpenGLESImageProcessor.h"
 
 class ModifierOpenGLESImageProcessor: public OpenGLESImageProcessor {
-        
 
-    private: static const instanceC: ModifierOpenGLESImageProcessor = new ModifierOpenGLESImageProcessor();
+    private: static const ModifierOpenGLESImageProcessor instanceC = ModifierOpenGLESImageProcessor();
 
-    public static ModifierOpenGLESImageProcessor getInstance(){
+    public: static ModifierOpenGLESImageProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModifierOpenGLESImageProcessor.instanceC;
+                        return ModifierOpenGLESImageProcessor::instanceC;
     
 }
 

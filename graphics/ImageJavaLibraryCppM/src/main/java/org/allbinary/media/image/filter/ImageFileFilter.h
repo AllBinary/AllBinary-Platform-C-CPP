@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //TWB - replace with file visitor version
 class ImageFileFilter: public FileFilter {
-        
 
-    public bool accept(File f);
+    public: bool accept(File f);
 
-    public string getDescription();
+    public: std::string getDescription();
 
 };
 

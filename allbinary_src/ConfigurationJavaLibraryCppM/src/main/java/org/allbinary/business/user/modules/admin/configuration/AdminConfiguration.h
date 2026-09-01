@@ -85,32 +85,31 @@
 class AdminConfiguration
             : public Object
         : public AdminConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor ();
+public: AdminConfiguration();
 
-public constructor (HttpServletRequest request);
+public: AdminConfiguration(HttpServletRequest request);
 
-public constructor (HashMap<any, any> storeHashMap);
+public: AdminConfiguration(HashMap<any, any> storeHashMap);
 
                 //@Throws(Exception.constructor)
             
-    getFormData(HashMap<any, any> storeHashMap);
+    private: void getFormData(HashMap<any, any> storeHashMap);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public write();
+    public: void write();
 
-    public ContextConfigurationInterface getContextConfigurationInterface();
+    public: ContextConfigurationInterface getContextConfigurationInterface();
 
-    public setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
+    public: void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
 
 };
 

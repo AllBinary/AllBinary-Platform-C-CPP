@@ -60,84 +60,81 @@
 class PixelDelta
             : public Object
         : public CacheableInterface {
-        
 
-    public static any getKey(GPoint point, ColorDelta colorDelta){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().appendint(TsUtil.getInstance()!.hashCode(point))!.append(CommonSeps.getInstance()!.UNDERSCORE)!.append(colorDelta!.getKey()!.toString())!.toString();;
-    
-}
-
-
-    private: point: GPoint;
-
-    private: colorDelta: ColorDelta;
-
-    private: key: any;
-
-public constructor (GPoint point, ColorDelta colorDelta){
-
-            super();
-        this.setPoint(point);
-    
-this.setColorDelta(colorDelta);
-    
-this.key= PixelDelta.getKey(this.getPoint(), this.getColorDelta());
-    
-}
-
-
-    public any getKey(){
+    public: static Object* getKey(GPoint point, ColorDelta colorDelta){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.key;
+                        return StringMaker().appendint(TsUtil::getInstance().hashCode(point)).append(CommonSeps::getInstance().UNDERSCORE).append(colorDelta.getKey().toString()).toString();;
     
 }
 
 
-    public GPoint getPoint(){
+    private: GPoint point;
+
+    private: ColorDelta colorDelta;
+
+    private: Object* key;
+
+public: PixelDelta(GPoint point, ColorDelta colorDelta){
+this->setPoint(point);
+    
+this->setColorDelta(colorDelta);
+    
+this->key= PixelDelta::getKey(this->getPoint(), this->getColorDelta());
+    
+}
+
+
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point;
+                        return this->key;
     
 }
 
 
-    public setPoint(GPoint point){
-this.point= point;
-    
-}
-
-
-    public ColorDelta getColorDelta(){
+    public: GPoint getPoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorDelta;
+                        return this->point;
     
 }
 
 
-    public setColorDelta(ColorDelta colorDelta){
-this.colorDelta= colorDelta;
+    public: void setPoint(GPoint point){
+this->point= point;
     
 }
 
 
-    public string toString(){
+    public: ColorDelta getColorDelta(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append("PixelDelta: Point: ")!.append(this.point.toString())!.append(CommonSeps.getInstance()!.SPACE)!.append(this.colorDelta!.toString())!.toString();;
+                        return this->colorDelta;
+    
+}
+
+
+    public: void setColorDelta(ColorDelta colorDelta){
+this->colorDelta= colorDelta;
+    
+}
+
+
+    public: std::string toString(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringMaker().append("PixelDelta: Point: ").append(this->point.toString()).append(CommonSeps::getInstance().SPACE).append(this->colorDelta.toString()).toString();;
     
 }
 

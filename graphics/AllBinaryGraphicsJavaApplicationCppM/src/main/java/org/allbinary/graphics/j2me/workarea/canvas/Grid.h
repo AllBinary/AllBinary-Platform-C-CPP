@@ -48,33 +48,32 @@
 class Grid
             : public Object
          {
-        
 
-    public grid: GPoint;
+    public: GPoint grid;
 
-    public isGridOn: bool = true;
+    public: bool isGridOn = true;
 
-    public isGridPossible: bool = false;
+    public: bool isGridPossible = false;
 
-    private: zoom: int32_t = 3;
+    private: int32_t zoom = 3;
 
-    public isChanged: bool = true;
+    public: bool isChanged = true;
 
-public constructor ();
+public: Grid();
 
-public constructor (Grid grid);
+public: Grid(Grid grid);
 
-    public bool isGridOn();
+    public: bool isGridOn();
 
-    public bool isGridPossible();
+    public: bool isGridPossible();
 
-    public GPoint getGrid();
+    public: GPoint getGrid();
 
-    public int32_t getZoom();
+    public: int32_t getZoom();
 
-    public showGrid(bool value);
+    public: void showGrid(bool value);
 
-    public setZoom(int32_t zoom);
+    public: void setZoom(int32_t zoom);
 
 };
 

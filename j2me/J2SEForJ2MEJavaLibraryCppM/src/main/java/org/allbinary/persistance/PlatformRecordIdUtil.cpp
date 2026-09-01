@@ -51,28 +51,27 @@
 class PlatformRecordIdUtil
             : public Object
          {
-        
 
-    private: static const instance: PlatformRecordIdUtil = new PlatformRecordIdUtil();
+    private: static PlatformRecordIdUtil instance() { return PlatformRecordIdUtil(); }
 
-    public static PlatformRecordIdUtil getInstance(){
+    public: static PlatformRecordIdUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformRecordIdUtil.instance;
+                        return PlatformRecordIdUtil::instance();
     
 }
 
 
-    private: const PLATFORM_SHORT_NAME: string = "JSE";
+    private: const std::string PLATFORM_SHORT_NAME = "JSE";
 
-    public string getRecordId(AbeClientInformationInterface abeClientInformation, string baseRecordId){
+    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation, std::string baseRecordId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(abeClientInformation!.toShortString())!.append(CommonSeps.getInstance()!.UNDERSCORE)!.append(this.PLATFORM_SHORT_NAME)!.append(baseRecordId)!.toString();;
+                        return StringMaker().append(abeClientInformation.toShortString()).append(CommonSeps::getInstance().UNDERSCORE).append(this->PLATFORM_SHORT_NAME).append(baseRecordId).toString();;
     
 }
 

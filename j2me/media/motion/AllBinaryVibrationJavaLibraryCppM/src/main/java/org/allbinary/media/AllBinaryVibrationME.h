@@ -51,9 +51,8 @@
 class AllBinaryVibrationME
             : public Object
          {
-        
 
-    public vibrate(int32_t duration, int32_t type, int32_t volume);
+    public: void vibrate(int32_t duration, int32_t type, int32_t volume);
 
 };
 

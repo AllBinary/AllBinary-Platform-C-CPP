@@ -42,12 +42,9 @@
 class StatisticalMatchConstraints
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: StatisticalMatchConstraints(){
+}
 
 
 };

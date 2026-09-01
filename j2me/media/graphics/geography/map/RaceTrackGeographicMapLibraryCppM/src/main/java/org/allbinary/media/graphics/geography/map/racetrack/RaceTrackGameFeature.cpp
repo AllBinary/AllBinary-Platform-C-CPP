@@ -41,13 +41,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RaceTrackGameFeature: public GameFeature {
-        
 
-    public static const MINI_MAP: GameFeature = new RaceTrackGameFeature("Mini Map");
+    public: static const GameFeature MINI_MAP = RaceTrackGameFeature("Mini Map");
 
-    public static const AUTO_FINISH_AI: GameFeature = new RaceTrackGameFeature("Auto Finish AI");
+    public: static const GameFeature AUTO_FINISH_AI = RaceTrackGameFeature("Auto Finish AI");
 
-protected constructor (string name){
+protected: RaceTrackGameFeature(std::string name){
             super(name);
                     
 

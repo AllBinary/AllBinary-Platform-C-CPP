@@ -28,16 +28,15 @@
 class E
             : public Object
          {
-        
 
-    private: static const e: E = new E();
+    private: static const E e = E();
 
-    public E newInstance(){
+    public: E newInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return E.e;
+                        return E::e;
     
 }
 

@@ -60,15 +60,14 @@
 #include "AllBinaryCollisionManager.h"
 
 class CollidableInterfaceLayerProcessor: public LayerProcessor {
-        
 
-public constructor ();
+public: CollidableInterfaceLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
 
-    public bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
 
 };
 

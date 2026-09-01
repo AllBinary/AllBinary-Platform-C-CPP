@@ -76,76 +76,75 @@
 class AbstractInputAutomationWorker
             : public Object
         : public RunnableInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: index: int64_t= 0;
+    private: int64_t index= 0;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: inputAutomationActionInterface: InputAutomationActionInterface;
+    private: InputAutomationActionInterface inputAutomationActionInterface;
 
-    private: captureWorkerInterface: CaptureWorkerInterface;
+    private: CaptureWorkerInterface captureWorkerInterface;
 
-    private: imageComparisonWorker: ImageComparisonWorker;
+    private: ImageComparisonWorker imageComparisonWorker;
 
-    private: motionRectanglesWorker: MotionRectanglesWorker;
+    private: MotionRectanglesWorker motionRectanglesWorker;
 
-    private: captureThread: Thread;
+    private: Thread captureThread;
 
-public constructor (InputAutomationActionInterface inputAutomationActionInterface);
+public: AbstractInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface);
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread);
+    public: void setThread(Thread thread);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    bool isAnyDataWorkerRunning();
+    protected: bool isAnyDataWorkerRunning();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    startDataWorkers();
+    protected: void startDataWorkers();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    waitForDataWorkers();
+    protected: void waitForDataWorkers();
 
                 //@Throws(Exception.constructor)
             
-    stopDataWorkers();
+    protected: void stopDataWorkers();
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
-    public run();
+    public: void run();
 
-    public InputAutomationActionInterface getInputAutomationActionInterface();
+    public: InputAutomationActionInterface getInputAutomationActionInterface();
 
-    public setInputAutomationActionInterface(InputAutomationActionInterface inputAutomationActionInterface);
+    public: void setInputAutomationActionInterface(InputAutomationActionInterface inputAutomationActionInterface);
 
-    CaptureWorkerInterface getCaptureWorker();
+    protected: CaptureWorkerInterface getCaptureWorker();
 
-    setCaptureWorker(CaptureWorkerInterface captureWorkerInterface);
+    protected: void setCaptureWorker(CaptureWorkerInterface captureWorkerInterface);
 
-    ImageComparisonWorker getImageComparisonWorker();
+    protected: ImageComparisonWorker getImageComparisonWorker();
 
-    setImageComparisonWorker(ImageComparisonWorker imageComparisonWorker);
+    protected: void setImageComparisonWorker(ImageComparisonWorker imageComparisonWorker);
 
-    MotionRectanglesWorker getMotionRectanglesWorker();
+    protected: MotionRectanglesWorker getMotionRectanglesWorker();
 
-    setMotionRectanglesWorker(MotionRectanglesWorker motionRectanglesWorker);
+    protected: void setMotionRectanglesWorker(MotionRectanglesWorker motionRectanglesWorker);
 
 };
 

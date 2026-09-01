@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -47,15 +49,14 @@
         #include "Sound.h"
 
 class SoundsFactoryInterface {
-        
 
-    init()
+    void init()
 
                 //@Throws(Exception.constructor)
             
     std::vector<Sound> getSoundInterfaceArray()
 
-    setInitialized(bool initialized)
+    void setInitialized(bool initialized)
 
     bool isInitialized()
 

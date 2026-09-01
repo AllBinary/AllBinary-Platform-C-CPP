@@ -46,9 +46,8 @@
 #include "ABStringComponent.h"
 
 class SelectableTextItem: public ABTextItem {
-        
 
-public constructor (string label, int32_t layout, string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(label, layout, altText, backgroundBasicColor, foregroundBasicColor);
                     
 
@@ -57,7 +56,7 @@ public constructor (string label, int32_t layout, string altText, BasicColor bac
 }
 
 
-    public bool isFocusable(){
+    public: bool isFocusable(){
 
 
 
@@ -67,24 +66,24 @@ public constructor (string label, int32_t layout, string altText, BasicColor bac
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.myFontProcessor!.process(graphics);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->myFontProcessor.process(graphics);
     
 
-    stringComponent: ABStringComponent = this.getLabelStringComponent()!;;
+    ABStringComponent stringComponent = this->getLabelStringComponent();;
     
 
                         if(stringComponent != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    graphics.setColor(stringComponent!.getForegroundBasicColor()!.intValue());
+                                    graphics.setColor(stringComponent.getForegroundBasicColor().intValue());
     
 
                                     }
                                 
-graphics.drawString(this.getLabel(), x +2, y, 0);
+graphics.drawString(this->getLabel(), x +2, y, 0);
     
 }
 

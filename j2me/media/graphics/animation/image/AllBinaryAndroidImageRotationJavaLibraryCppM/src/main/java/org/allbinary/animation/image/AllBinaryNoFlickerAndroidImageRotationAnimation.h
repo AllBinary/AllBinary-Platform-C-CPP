@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_ALLBINARYNOFLICKERANDROIDIMAGEROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <android/graphics/Matrix.h>
@@ -71,47 +73,46 @@
         #include "ImageBaseRotationAnimation.h"
 
 class AllBinaryNoFlickerAndroidImageRotationAnimation: public ImageBaseRotationAnimation {
-        
 
-    private: const imageModifierUtil: ImageModifierUtil = ImageModifierUtil.getInstanceOrCreate()!;
+    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const androidImageUtil: AndroidImageUtil = AndroidImageUtil.getInstance()!;
+    private: const AndroidImageUtil androidImageUtil = AndroidImageUtil::getInstance();
 
-    private: const matrix: Matrix = new Matrix();
+    private: const Matrix matrix = Matrix();
 
-    private: const halfWidth: int32_t;
+    private: int32_t halfWidth;
 
-    private: const halfHeight: int32_t;
+    private: int32_t halfHeight;
 
-    private: const increment: int16_t;
+    private: int16_t increment;
 
-    private: const originalImage: Image;
+    private: Image originalImage;
 
-    private: const twoImages: std::vector<Image> = new Array(2);
+    private: const std::vector<Image> twoImages = new Array(2);
 
-    private: imageToShow: Image;
+    private: Image imageToShow;
 
-    private: bufferedImageIndex: int32_t= 0;
+    private: int32_t bufferedImageIndex= 0;
 
-protected constructor (Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+protected: AllBinaryNoFlickerAndroidImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public changeBasicColor(BasicColor basicColor);
+    public: void changeBasicColor(BasicColor basicColor);
 
-    public setAlpha(int32_t alpha);
+    public: void setAlpha(int32_t alpha);
 
-    public nextRotation();
+    public: void nextRotation();
 
-    public previousRotation();
+    public: void previousRotation();
 
-    updateImage();
+    private: void updateImage();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public swap();
+    public: void swap();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

@@ -45,9 +45,8 @@
 class Display
             : public Object
          {
-        
 
-    public sleep();
+    public: void sleep();
 
 };
 

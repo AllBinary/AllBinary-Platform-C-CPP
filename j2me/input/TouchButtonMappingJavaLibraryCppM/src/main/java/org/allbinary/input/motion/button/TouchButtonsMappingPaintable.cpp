@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -63,40 +65,37 @@
 #include "TouchButtonBlankResource.h"
 
 class TouchButtonsMappingPaintable: public Paintable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    foregroundColor: int32_t;
+    protected: int32_t foregroundColor;
 
-    private: paintableTable: std::vector<std::vector<Paintable>> = new Array(0).fill(null).map(() => new Array(0).fill(0))
+    private: std::vector<std::vector<Paintable>> paintableTable = new Array(0).fill(null).map(() => new Array(0).fill(0))
                                                             ;
 
-    private: touchButtonLocationHelper: TouchButtonLocationHelper = new TouchButtonLocationHelper();
+    private: TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();
 
-public constructor (BasicColor basicColor){
-
-            super();
-        this.foregroundColor= basicColor!.intValue();
+public: TouchButtonsMappingPaintable(BasicColor basicColor){
+this->foregroundColor= basicColor.intValue();
     
-this.init();
+this->init();
     
 }
 
 
-    init(){
+    private: void init(){
 
         try {
-            this.paintableTable= this.createPaintableTable();
+            this->paintableTable= this->createPaintableTable();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "updateRectangle", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "updateRectangle", e);
     
 }
 
@@ -105,38 +104,38 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "updateRectangle", e);
 
                 //@Throws(Exception.constructor)
             
-    std::vector<std::vector<Paintable>> createPaintableTable(){
+    private: std::vector<std::vector<Paintable>> createPaintableTable(){
 
-    totalColumns: int32_t = this.touchButtonLocationHelper!.getTotalColumns()!;;
+    int32_t totalColumns = this->touchButtonLocationHelper.getTotalColumns();;
     
 
-    totalRows: int32_t = this.touchButtonLocationHelper!.getTotalRows()!;;
+    int32_t totalRows = this->touchButtonLocationHelper.getTotalRows();;
     
 
-    paintableTable: std::vector<std::vector<Paintable>> = new Array(totalColumns).fill(null).map(() => new Array(totalRows).fill(0))
+    std::vector<std::vector<Paintable>> paintableTable = new Array(totalColumns).fill(null).map(() => new Array(totalRows).fill(0))
                                                             ;;
     
 
-    cellPositionFactory: CellPositionFactory = CellPositionFactory.getInstance()!;;
+    CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();;
     
 
-    commonButtons: CommonButtons = CommonButtons.getInstance()!;;
+    CommonButtons commonButtons = CommonButtons::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = totalColumns -1;index >= 0; index--)
+    int32_t index = totalColumns -1;index >= 0; index--)
         {
 
 
 
 
                         for (
-    rowIndex: int32_t = totalRows -1;rowIndex >= 0; rowIndex--)
+    int32_t rowIndex = totalRows -1;rowIndex >= 0; rowIndex--)
         {
-this.paintableTable[index]![rowIndex]= TouchButton.createButton(BasicTouchInputFactory.getInstance()!.NONE, TouchButtonBlankResource.getInstance(), commonButtons!.NORMAL_BUTTON, cellPositionFactory!.getInstanceColRow(index, rowIndex), this.touchButtonLocationHelper!.getColumnsRemainderHalf(), this.touchButtonLocationHelper!.getRowsRemainderHalf());
+this->paintableTable[index]![rowIndex]= TouchButton::createButton(BasicTouchInputFactory::getInstance().NONE, TouchButtonBlankResource::getInstance(), commonButtons.NORMAL_BUTTON, cellPositionFactory.getInstanceColRow(index, rowIndex), this->touchButtonLocationHelper.getColumnsRemainderHalf(), this->touchButtonLocationHelper.getRowsRemainderHalf());
     
 }
 
@@ -151,28 +150,28 @@ this.paintableTable[index]![rowIndex]= TouchButton.createButton(BasicTouchInputF
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-    totalColumns: int32_t = this.touchButtonLocationHelper!.getTotalColumns()!;;
+    int32_t totalColumns = this->touchButtonLocationHelper.getTotalColumns();;
     
 
-    totalRows: int32_t = this.touchButtonLocationHelper!.getTotalRows()!;;
+    int32_t totalRows = this->touchButtonLocationHelper.getTotalRows();;
     
 
 
 
 
                         for (
-    index: int32_t = totalColumns -1;index >= 0; index--)
+    int32_t index = totalColumns -1;index >= 0; index--)
         {
 
 
 
 
                         for (
-    rowIndex: int32_t = totalRows -1;rowIndex >= 0; rowIndex--)
+    int32_t rowIndex = totalRows -1;rowIndex >= 0; rowIndex--)
         {
-this.paintableTable[index]![rowIndex]!.paint(graphics);
+this->paintableTable[index]![rowIndex]!.paint(graphics);
     
 }
 

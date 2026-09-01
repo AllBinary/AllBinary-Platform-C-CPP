@@ -53,19 +53,18 @@
         #include "RightToLeftImageAnimation.h"
 
 class AdjustedRightToLeftImageAnimation: public RightToLeftImageAnimation {
-        
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedRightToLeftImageAnimation(Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t dx, int32_t dy);
+    public: void init(int32_t dx, int32_t dy);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

@@ -52,36 +52,33 @@
 class GeographicMapCellPositionEventUtil
             : public Object
          {
-        
 
-    private: const geographicMapCellPositionEvent: GeographicMapCellPositionEvent;
+    private: GeographicMapCellPositionEvent geographicMapCellPositionEvent;
 
-    private: const geographicMapCellPositionEventHandler: GeographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler.getInstance()!;
+    private: const GeographicMapCellPositionEventHandler geographicMapCellPositionEventHandler = GeographicMapCellPositionEventHandler::getInstance();
 
-public constructor (any = {} anyType){
-
-            super();
-        this.geographicMapCellPositionEvent= new GeographicMapCellPositionEvent(anyType, CellPositionFactory.getInstance()!.NONE);
+public: GeographicMapCellPositionEventUtil(Object* anyType){
+this->geographicMapCellPositionEvent= GeographicMapCellPositionEvent(anyType, CellPositionFactory::getInstance().NONE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(GeographicMapCellPositionTracking geographicMapCellPositionTracking){
-this.geographicMapCellPositionEvent!.setGeographicMapCellPosition(geographicMapCellPositionTracking!.getCurrentGeographicMapCellPosition());
+    public: void update(GeographicMapCellPositionTracking geographicMapCellPositionTracking){
+this->geographicMapCellPositionEvent.setGeographicMapCellPosition(geographicMapCellPositionTracking.getCurrentGeographicMapCellPosition());
     
-this.geographicMapCellPositionEventHandler!.fireEvent(this.geographicMapCellPositionEvent);
+this->geographicMapCellPositionEventHandler.fireEvent(this->geographicMapCellPositionEvent);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public remove(GeographicMapCellPositionTracking geographicMapCellPositionTracking){
-this.geographicMapCellPositionEvent!.setGeographicMapCellPosition(geographicMapCellPositionTracking!.getCurrentGeographicMapCellPosition());
+    public: void remove(GeographicMapCellPositionTracking geographicMapCellPositionTracking){
+this->geographicMapCellPositionEvent.setGeographicMapCellPosition(geographicMapCellPositionTracking.getCurrentGeographicMapCellPosition());
     
-this.geographicMapCellPositionEventHandler!.fireRemoveEvent(this.geographicMapCellPositionEvent);
+this->geographicMapCellPositionEventHandler.fireRemoveEvent(this->geographicMapCellPositionEvent);
     
 }
 

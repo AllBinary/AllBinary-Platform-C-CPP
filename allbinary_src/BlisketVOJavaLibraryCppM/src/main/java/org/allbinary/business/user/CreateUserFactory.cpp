@@ -60,32 +60,31 @@
 class CreateUserFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance(HashMap<any, any> hashMap){
+    public: static UserInterface getInstance(HashMap<any, any> hashMap){
 
                         if(hashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    roleString: string = hashMap!.get(UserRoleData.NAME.toString()) as string;;
+    std::string roleString = hashMap.get(UserRoleData::NAME.toString()) as string;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(roleString))
+                        if(!StringValidationUtil::getInstance().isEmpty(roleString))
                         
                                     {
                                     
-    role: UserRole = UserRoleB.getRole(roleString)!;;
+    UserRole role = UserRoleB::getRole(roleString);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return role.getUserFactory()!.getInstance(hashMap);;
+                        return role.getUserFactory().getInstance(hashMap);;
     
 
                                     }
@@ -94,7 +93,7 @@ class CreateUserFactory
                             
 
 
-                            throw new Exception("No Role Specified");
+                            throw Exception("No Role Specified");
                     
 
                         }
@@ -106,7 +105,7 @@ class CreateUserFactory
                             
 
 
-                            throw new Exception("Null HashMap");
+                            throw Exception("Null HashMap");
                     
 
                         }
@@ -114,10 +113,8 @@ class CreateUserFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CreateUserFactory(){
+}
 
 
 };

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -75,32 +77,31 @@
 class NumberOnOwnGroupSequenceAIFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    integerArray: std::vector<Integer> = NumberInSameGroupSequence.getInstance()!.NUMBER_ON_SAME_TEAM_SEQUENCE;;
+    std::vector<Integer> integerArray = NumberInSameGroupSequence::getInstance().NUMBER_ON_SAME_TEAM_SEQUENCE;;
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < integerArray!.length; index++)
+    int32_t index = 0;index < integerArray.size(); index++)
         {
 
-    integerCanBeNull: any = hashtable.get(integerArray[index]!);;
+    Object* integerCanBeNull = hashtable.get(integerArray[index]!);;
     
 
                         if(integerCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -115,56 +116,56 @@ list.add(integerCanBeNull);
 }
 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Total AI Properties: ");
+stringBuffer.append("Total AI Properties: ");
     
-stringBuffer!.appendint(list.size());
+stringBuffer.appendint(list.size());
     
-stringBuffer!.append(" == Total AI: ");
+stringBuffer.append(" == Total AI: ");
     
-stringBuffer!.appendint(artificialIntelligenceInterface!.length);
+stringBuffer.appendint(artificialIntelligenceInterface.size());
     
-stringBuffer!.append(" + 1");
-    
-
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.GET_INSTANCE);
+stringBuffer.append(" + 1");
     
 
-                        if(artificialIntelligenceInterface!.length -1 > list.size())
+    CommonStrings commonStrings = CommonStrings::getInstance();;
+    
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
+    
+
+                        if(artificialIntelligenceInterface.size() -1 > list.size())
                         
                                     {
                                     
 
 
-                            throw new Exception("Not enough AI properties.");
+                            throw Exception("Not enough AI properties.");
                     
 
                                     }
                                 
 
-                        if(artificialIntelligenceInterface!.length -1 < list.size())
+                        if(artificialIntelligenceInterface.size() -1 < list.size())
                         
                                     {
                                     
 
 
-                            throw new Exception("Too Many AI properties.");
+                            throw Exception("Too Many AI properties.");
                     
 
                                     }
                                 
 
-    numberOnSameTeam: std::vector<Integer> = new Array(list.size());;
+    std::vector<Integer> numberOnSameTeam = new Array(list.size());;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOnSameTeam!.length; index++)
+    int32_t index = 0;index < numberOnSameTeam.size(); index++)
         {
 numberOnSameTeam[index]= list.objectArray[index]! as Integer;
     
@@ -174,7 +175,7 @@ numberOnSameTeam[index]= list.objectArray[index]! as Integer;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NumberOnOwnGroupSequenceAI(numberOnSameTeam, artificialIntelligenceInterface, ownerLayerInterface, gameInput);
+                        return NumberOnOwnGroupSequenceAI(numberOnSameTeam, artificialIntelligenceInterface, ownerLayerInterface, gameInput);
     
 }
 

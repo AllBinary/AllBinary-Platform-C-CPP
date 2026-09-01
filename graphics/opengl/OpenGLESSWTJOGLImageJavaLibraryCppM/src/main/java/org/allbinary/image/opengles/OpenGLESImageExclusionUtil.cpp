@@ -51,36 +51,33 @@
 class OpenGLESImageExclusionUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESImageExclusionUtil = new OpenGLESImageExclusionUtil();
+    private: static OpenGLESImageExclusionUtil instance() { return OpenGLESImageExclusionUtil(); }
 
-    public static OpenGLESImageExclusionUtil getInstance(){
+    public: static OpenGLESImageExclusionUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageExclusionUtil.instance;
+                        return OpenGLESImageExclusionUtil::instance();
     
 }
 
 
-    private: const EXCLUSION: string = "font";
+    private: const std::string EXCLUSION = "font";
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: OpenGLESImageExclusionUtil(){
+}
 
 
-    public bool isCustomScaling(Image image){
+    public: bool isCustomScaling(Image image){
 
-    imageName: string = image.getName()!;;
+    std::string imageName = image.getName();;
     
 
-    isNormalScaling: bool = this.list.size() == 0 || imageName!.startsWith(this.EXCLUSION);;
+    bool isNormalScaling = this->list.size() == 0 || imageName.startsWith(this->EXCLUSION);;
     
 
                         if(isNormalScaling)
@@ -97,22 +94,22 @@ private constructor (){
                                 
                         else {
                             
-    size: int32_t = this.list.size()!;;
+    int32_t size = this->list.size();;
     
 
-    name: string;;
+    std::string name;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-name= this.list.get(index) as string;
+name= this->list.get(index) as string;
     
 
-                        if(imageName!.startsWith(name))
+                        if(imageName.startsWith(name))
                         
                                     {
                                     isNormalScaling= true;

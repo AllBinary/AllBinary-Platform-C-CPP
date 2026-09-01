@@ -57,58 +57,55 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    /*actual*/ public putL(Log log){
+    /*actual*/ public: void putL(Log log){
 
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
-this.put(specialMessage, anyType, functionName, exception);
+this->put(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName){
-FileLog.put(specialMessage, anyType, functionName);
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
+FileLog::put(specialMessage, anyType, functionName);
     
 }
 
 
-    /*actual*/ public putFS(string specialMessage, string className, string functionName){
-FileLog.put(specialMessage, className, functionName);
+    /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
+FileLog::put(specialMessage, className, functionName);
     
 }
 
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
-FileLog.put(specialMessage, anyType, functionName, exception as Throwable);
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+FileLog::put(specialMessage, anyType, functionName, exception as Throwable);
     
 }
 

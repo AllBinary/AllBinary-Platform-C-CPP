@@ -127,187 +127,186 @@
 class User
             : public Object
         : public UserInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: prefixName: string;
+    private: std::string prefixName;
 
-    private: firstName: string;
+    private: std::string firstName;
 
-    private: lastName: string;
+    private: std::string lastName;
 
-    private: middleName: string;
+    private: std::string middleName;
 
-    private: suffixName: string;
+    private: std::string suffixName;
 
-    private: company: string;
+    private: std::string company;
 
-    private: positionAtCompany: string;
+    private: std::string positionAtCompany;
 
-    private: mainEmail: string;
+    private: std::string mainEmail;
 
-    private: secondaryEmail: string;
+    private: std::string secondaryEmail;
 
-    private: homePhone: string;
+    private: std::string homePhone;
 
-    private: cellPhone: string;
+    private: std::string cellPhone;
 
-    private: workPhone: string;
+    private: std::string workPhone;
 
-    private: otherContact: string;
+    private: std::string otherContact;
 
-    private: electronicDevice: string;
+    private: std::string electronicDevice;
 
-    private: fax: string;
+    private: std::string fax;
 
-    private: role: UserRole;
+    private: UserRole role;
 
-    private: encryption: string;
+    private: std::string encryption;
 
-    private: secret: string;
+    private: std::string secret;
 
-    private: password: Password;
+    private: Password password;
 
-    private: enable: string;
+    private: std::string enable;
 
-    private: permissions: string;
+    private: std::string permissions;
 
-    private: userConfigurationInterface: UserConfigurationInterface;
+    private: UserConfigurationInterface userConfigurationInterface;
 
-public constructor ();
+public: User();
 
-public constructor (HttpServletRequest request);
+public: User(HttpServletRequest request);
 
-public constructor (HashMap<any, any> userHashMap);
+public: User(HashMap<any, any> userHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public getFormData(HashMap<any, any> userHashMap);
+    public: void getFormData(HashMap<any, any> userHashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public setUserName(string value);
+    public: void setUserName(std::string value);
 
-    public setPrefixName(string value);
+    public: void setPrefixName(std::string value);
 
-    public setFirstName(string value);
+    public: void setFirstName(std::string value);
 
-    public setLastName(string value);
+    public: void setLastName(std::string value);
 
-    public setMiddleName(string value);
+    public: void setMiddleName(std::string value);
 
-    public setSuffixName(string value);
+    public: void setSuffixName(std::string value);
 
-    public setCompany(string value);
+    public: void setCompany(std::string value);
 
-    public setPositionAtCompany(string value);
+    public: void setPositionAtCompany(std::string value);
 
-    public setMainEmail(string value);
+    public: void setMainEmail(std::string value);
 
-    public setSecondaryEmail(string value);
+    public: void setSecondaryEmail(std::string value);
 
-    public setHomePhone(string value);
+    public: void setHomePhone(std::string value);
 
-    public setCellPhone(string value);
+    public: void setCellPhone(std::string value);
 
-    public setWorkPhone(string value);
+    public: void setWorkPhone(std::string value);
 
-    public setOtherContact(string value);
+    public: void setOtherContact(std::string value);
 
-    public setElectronicContact(string value);
+    public: void setElectronicContact(std::string value);
 
-    public setFax(string value);
+    public: void setFax(std::string value);
 
-    public setRole(UserRole role);
+    public: void setRole(UserRole role);
 
-    public setPermissions(string value);
+    public: void setPermissions(std::string value);
 
-    public setEncryption(string value);
+    public: void setEncryption(std::string value);
 
-    public setSecret(string value);
+    public: void setSecret(std::string value);
 
-    public setPassword(string value);
+    public: void setPassword(std::string value);
 
-    public enable();
+    public: void enable();
 
-    public disable();
+    public: void disable();
 
-    public setEnable(string enable);
+    public: void setEnable(std::string enable);
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getPrefixName();
+    public: std::string getPrefixName();
 
-    public string getFirstName();
+    public: std::string getFirstName();
 
-    public string getLastName();
+    public: std::string getLastName();
 
-    public string getMiddleName();
+    public: std::string getMiddleName();
 
-    public string getSuffixName();
+    public: std::string getSuffixName();
 
-    public string getCompany();
+    public: std::string getCompany();
 
-    public string getPositionAtCompany();
+    public: std::string getPositionAtCompany();
 
-    public string getMainEmail();
+    public: std::string getMainEmail();
 
-    public string getSecondaryEmail();
+    public: std::string getSecondaryEmail();
 
-    public string getHomePhone();
+    public: std::string getHomePhone();
 
-    public string getCellPhone();
+    public: std::string getCellPhone();
 
-    public string getWorkPhone();
+    public: std::string getWorkPhone();
 
-    public string getOtherContact();
+    public: std::string getOtherContact();
 
-    public string getElectronicContact();
+    public: std::string getElectronicContact();
 
-    public string getFax();
+    public: std::string getFax();
 
-    public UserRole getRole();
+    public: UserRole getRole();
 
-    public string getPermissions();
+    public: std::string getPermissions();
 
-    public string getEncryption();
+    public: std::string getEncryption();
 
-    public string getSecret();
+    public: std::string getSecret();
 
-    public string getPassword();
-
-                //@Throws(Exception.constructor)
-            
-    public Vector toVector();
+    public: std::string getPassword();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
-
-    public HashMap<any, any> toPasswordHashMap();
-
-    public validateSession(WeblisketSessionInterface weblisketSession);
-
-    public updateSession(WeblisketSessionInterface weblisketSession);
-
-    public Boolean isSessionValid();
+    public: Vector toVector();
 
                 //@Throws(Exception.constructor)
             
-    public any getKey();
+    public: HashMap<any, any> toHashMap();
 
-    public Document toValidationInfoDoc();
+    public: HashMap<any, any> toPasswordHashMap();
 
-    public Node toValidationInfoNode(Document document);
+    public: void validateSession(WeblisketSessionInterface weblisketSession);
 
-    public UserConfigurationInterface getUserConfigurationInterface();
+    public: void updateSession(WeblisketSessionInterface weblisketSession);
 
-    public setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface);
+    public: Boolean isSessionValid();
+
+                //@Throws(Exception.constructor)
+            
+    public: Object* getKey();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+    public: UserConfigurationInterface getUserConfigurationInterface();
+
+    public: void setUserConfigurationInterface(UserConfigurationInterface userConfigurationInterface);
 
 };
 

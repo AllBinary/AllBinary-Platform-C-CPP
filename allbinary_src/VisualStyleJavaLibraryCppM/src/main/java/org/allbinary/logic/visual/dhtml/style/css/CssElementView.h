@@ -94,37 +94,36 @@
 class CssElementView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const TITLE: string = "title";
+    private: const std::string TITLE = "title";
 
-    private: const DESCRIPTION: string = "description";
+    private: const std::string DESCRIPTION = "description";
 
-    private: value: string;
+    private: std::string value;
 
-    private: title: string;
+    private: std::string title;
 
-    private: description: string;
+    private: std::string description;
 
-    cssElementVector: Vector;
+    protected: Vector cssElementVector;
 
-    cssPropertyVector: Vector;
+    protected: Vector cssPropertyVector;
 
-public constructor ();
+public: CssElementView();
 
-public constructor (Node node);
+public: CssElementView(Node node);
 
-    public string getValue();
+    public: std::string getValue();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

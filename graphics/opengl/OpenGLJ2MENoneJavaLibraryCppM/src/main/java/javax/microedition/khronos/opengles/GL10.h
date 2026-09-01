@@ -31,7 +31,6 @@
         #include "GL.h"
 
 class GL10: public GL {
-        
 
 };
 

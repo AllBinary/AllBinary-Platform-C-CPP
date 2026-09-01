@@ -52,11 +52,10 @@
 #include "AndroidBasicTitleProgressBar.h"
 
 class TitleProgressBarPortionSetProgressRunnable: public ProgressRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Activity midletActivity, ProgressCanvas progressCanvas){
+public: TitleProgressBarPortionSetProgressRunnable(Activity midletActivity, ProgressCanvas progressCanvas){
             super(midletActivity, progressCanvas);
                     
 
@@ -65,22 +64,22 @@ public constructor (Activity midletActivity, ProgressCanvas progressCanvas){
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
             
-    progressCanvas: AndroidBasicTitleProgressBar = this.progressCanvas as AndroidBasicTitleProgressBar;;
+    AndroidBasicTitleProgressBar progressCanvas = this->progressCanvas as AndroidBasicTitleProgressBar;;
     
-this.midletActivity!.onSetProgress(static_cast<int32_t>((this.progressCanvas!.getValue() +this.progressCanvas!.getMaxValue() /progressCanvas!.getPortion())), this.progressCanvas!.getText());
+this->midletActivity.onSetProgress(static_cast<int32_t>((this->progressCanvas.getValue() +this->progressCanvas.getMaxValue() /progressCanvas.getPortion())), this->progressCanvas.getText());
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 

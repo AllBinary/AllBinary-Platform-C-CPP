@@ -76,15 +76,14 @@
 class HideVirtualKeyboardRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const activity: Activity;
+    private: Activity activity;
 
-public constructor (Activity activity);
+public: HideVirtualKeyboardRunnable(Activity activity);
 
-    public run();
+    public: void run();
 
 };
 

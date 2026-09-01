@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../../../../java/lang/Integer.h"
@@ -90,35 +92,34 @@
 #include "KeyboardActionScriptInputData.h"
 #include "KeyboardInputAutomationProcessor.h"
 
-class KeyboardActionScriptInput: public BasicProfileActionScriptInput: public KeyboardActionScriptInputInterface {
-        
+class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public KeyboardActionScriptInputInterface {
 
-    private: static const NAME: string = "Keyboard";
+    private: static const std::string NAME = "Keyboard";
 
-    static string getText(std::vector<Integer> integerArray){
+    private: static std::string getText(std::vector<Integer> integerArray){
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-        while(index < integerArray!.length)
+        while(index < integerArray.size())
         {
 
-    nextInteger: Integer = integerArray[index]!;;
+    Integer nextInteger = integerArray[index];;
     
 
-                        if(KeyUtil.isNormallyDisplayed(nextInteger))
+                        if(KeyUtil::isNormallyDisplayed(nextInteger))
                         
                                     {
-                                    stringBuffer!.append(KeyEvent.getKeyText(nextInteger));
+                                    stringBuffer.append(KeyEvent::getKeyText(nextInteger));
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append("&#" +nextInteger +";");
+                            stringBuffer.append("&#" +nextInteger +";");
     
 
                         }
@@ -131,65 +132,65 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: keyArray: std::vector<Integer> = 
-                                                        [
-                                                            KeySingletonFactory.getInstance(KeyEvent.VK_0)
-                                                        ];
+    private: std::vector<Integer> keyArray = 
+                                                        {
+                                                            KeySingletonFactory::getInstance(KeyEvent::VK_0)
+                                                        };
 
-    private: keyboardActionScriptInputJPanel: KeyboardActionScriptInputJPanel;
+    private: KeyboardActionScriptInputJPanel keyboardActionScriptInputJPanel;
 
-    private: press: bool= false;
+    private: bool press= false;
 
-    private: release: bool= false;
+    private: bool release= false;
 
-    private: delayBetweenKeys: int32_t= 0;
+    private: int32_t delayBetweenKeys= 0;
 
-public constructor (Node node){
+public: KeyboardActionScriptInput(Node node){
             super(NAME, node);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    actionNode: Node = DomSearchHelper.getNode(KeyboardActionScriptInputData.NAME, node.getChildNodes())!;;
+    Node actionNode = DomSearchHelper::getNode(KeyboardActionScriptInputData::NAME, node.getChildNodes());;
     
 
                         if(actionNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    nodeList: NodeList = actionNode!.getChildNodes()!;;
+    NodeList nodeList = actionNode.getChildNodes();;
     
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    childNode: Node = nodeList!.item(index)!;;
+    Node childNode = nodeList.item(index);;
     
 
-                        if(childNode!.getNodeName()!.startsWith(KeyboardActionScriptInputData.KEY))
+                        if(childNode.getNodeName().startsWith(KeyboardActionScriptInputData::KEY))
                         
                                     {
                                     
-    keyString: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string keyString = DomNodeHelper::getTextNodeValue(childNode);;
     
 vector.add(keyString.valueOf());
     
@@ -197,37 +198,37 @@ vector.add(keyString.valueOf());
                                     }
                                 
                              else 
-                        if(childNode!.getNodeName()!.compareTo(KeyboardActionScriptInputData.DELAY_BETWEEN_KEYS) == 0)
+                        if(childNode.getNodeName().compareTo(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS) == 0)
                         
                                     {
                                     
-    time: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string time = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setDelayBetweenKeys(Integer.valueOf(time)!.intValue());
+this->setDelayBetweenKeys(Integer::valueOf(time).intValue());
     
 
                                     }
                                 
                              else 
-                        if(childNode!.getNodeName()!.compareTo(KeyboardActionScriptInputData.PRESS) == 0)
+                        if(childNode.getNodeName().compareTo(KeyboardActionScriptInputData::PRESS) == 0)
                         
                                     {
                                     
-    value: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string value = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setPress(value.slice(, ).join(''));
+this->setPress(value.slice(, ).join(''));
     
 
                                     }
                                 
                              else 
-                        if(childNode!.getNodeName()!.compareTo(KeyboardActionScriptInputData.RELEASE) == 0)
+                        if(childNode.getNodeName().compareTo(KeyboardActionScriptInputData::RELEASE) == 0)
                         
                                     {
                                     
-    value: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string value = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setRelease(value.slice(, ).join(''));
+this->setRelease(value.slice(, ).join(''));
     
 
                                     }
@@ -236,14 +237,14 @@ this.setRelease(value.slice(, ).join(''));
                             
 
 
-                            throw new Exception("Action Script Input Unknown Node");
+                            throw Exception("Action Script Input Unknown Node");
                     
 
                         }
                             
 }
 
-this.setKeyArray(vector.toArray(new Array(vector.length)) as Integer[]);
+this->setKeyArray(vector.toArray(new Array(vector.length)) as Integer[]);
     
 
                                     }
@@ -252,179 +253,180 @@ this.setKeyArray(vector.toArray(new Array(vector.length)) as Integer[]);
                             
 
 
-                            throw new Exception("Action Script Input Node Null");
+                            throw Exception("Action Script Input Node Null");
                     
 
                         }
                             
-this.setAllowsChildren(false);
+this->setAllowsChildren(false);
     
 
-                        if(!this.isPress() && !this.isRelease())
+                        if(!this->isPress() && !this->isRelease())
                         
                                     {
-                                    this.setNormal();
+                                    this->setNormal();
     
 
                                     }
                                 
-this.keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this);
+this->keyboardActionScriptInputJPanel= KeyboardActionScriptInputJPanel(this);
     
 }
 
 
-public constructor (){
+public: KeyboardActionScriptInput(){
             super(NAME);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(!this.isPress() && !this.isRelease())
+                        if(!this->isPress() && !this->isRelease())
                         
                                     {
-                                    this.setNormal();
+                                    this->setNormal();
     
 
                                     }
                                 
-this.setAllowsChildren(false);
+this->setAllowsChildren(false);
     
-this.setTime(120);
+this->setTime(120);
     
-this.keyboardActionScriptInputJPanel= new KeyboardActionScriptInputJPanel(this);
+this->keyboardActionScriptInputJPanel= KeyboardActionScriptInputJPanel(this);
     
 }
 
 
-    public int32_t getDelayBetweenKeys(){
+    public: int32_t getDelayBetweenKeys(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.delayBetweenKeys;
+                        return this->delayBetweenKeys;
     
 }
 
 
-    public setDelayBetweenKeys(int32_t delayBetweenKeys){
-this.delayBetweenKeys= delayBetweenKeys;
+    public: void setDelayBetweenKeys(int32_t delayBetweenKeys){
+this->delayBetweenKeys= delayBetweenKeys;
     
 }
 
 
-    public bool isPress(){
+    public: bool isPress(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.press;
+                        return this->press;
     
 }
 
 
-    public setPress(bool press){
-this.press= press;
+    public: void setPress(bool press){
+this->press= press;
     
 }
 
 
-    public bool isRelease(){
+    public: bool isRelease(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.release;
+                        return this->release;
     
 }
 
 
-    public setRelease(bool release){
-this.release= release;
+    public: void setRelease(bool release){
+this->release= release;
     
 }
 
 
-    public bool isNormal(){
+    public: bool isNormal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRelease() && this.isPress();
+                        return this->isRelease() && this->isPress();
     
 }
 
 
-    public setNormal(){
-this.setPress(true);
+    public: void setNormal(){
+this->setPress(true);
     
-this.setRelease(true);
+this->setRelease(true);
     
 }
 
 
-    public std::vector<Integer> getKeyArray(){
+    public: std::vector<Integer> getKeyArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.keyArray;
+                        return this->keyArray;
     
 }
 
 
-    public setKeyArray(std::vector<Integer> keyArray){
+    public: void setKeyArray(std::vector<Integer> keyArray){
 
                         if(keyArray != 
-                                    null
+                                    nullptr
                                 )
-                        this.logUtil!.putF(CommonLabels.getInstance()!.START +keyArray!.length, this, "setKeyArray")
-this.keyArray= keyArray;
+                        this->logUtil.putF(CommonLabels::getInstance().START +keyArray.size(), this, "setKeyArray");
+                                
+this->keyArray= keyArray;
     
 }
 
 
-    public showDialog(){
-this.keyboardActionScriptInputJPanel!.getKeyActionJDialog()!.setVisible(true);
+    public: void showDialog(){
+this->keyboardActionScriptInputJPanel.getKeyActionJDialog().setVisible(true);
     
 }
 
 
-    public string getText(){
+    public: std::string getText(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getText(this.getKeyArray());;
+                        return this->getText(this->getKeyArray());;
     
 }
 
 
-    public setText(string text){
-this.logUtil!.putF(CommonLabels.getInstance()!.START +text, this, "setText");
+    public: void setText(std::string text){
+this->logUtil.putF(CommonLabels::getInstance().START +text, this, "setText");
     
 
-    integerArray: std::vector<Integer> = this.integerArrayValue(text)!;;
+    std::vector<Integer> integerArray = this->integerArrayValue(text);;
     
-this.setKeyArray(integerArray);
+this->setKeyArray(integerArray);
     
 }
 
 
-    std::vector<Integer> integerArrayValue(string text){
-this.logUtil!.putF(CommonLabels.getInstance()!.START +text, this, "integerArrayValue");
+    private: std::vector<Integer> integerArrayValue(std::string text){
+this->logUtil.putF(CommonLabels::getInstance().START +text, this, "integerArrayValue");
     
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while(index < text.length)
+        while(index < text.size())
         {
 
-    aChar: char = text[index]!;;
+    char aChar = text[index];;
     
 
                         if(aChar == '&')
@@ -435,20 +437,20 @@ this.logUtil!.putF(CommonLabels.getInstance()!.START +text, this, "integerArrayV
                         
                                     {
                                     
-    endIndex: int32_t = text.indexOf(';', index +1)!;;
+    int32_t endIndex = text.indexOf(';', index +1);;
     
 
                         if(endIndex !=  -1)
                         
                                     {
                                     
-    nextCharString: string = text.substring(index +2, endIndex)!;;
+    std::string nextCharString = text.substring(index +2, endIndex);;
     
-this.logUtil!.putF("Next Char String: " +nextCharString, this, "integerArrayValue");
+this->logUtil.putF("Next Char String: " +nextCharString, this, "integerArrayValue");
     
 vector.add(substring.valueOf());
     
-index= index +nextCharString!.length +3;
+index= index +nextCharString.size() +3;
     
 
 
@@ -463,14 +465,14 @@ index= index +nextCharString!.length +3;
 
                                     }
                                 
-vector.add(KeySingletonFactory.getHashtable()!.get(aChar.slice(, ).join('')));
+vector.add(KeySingletonFactory::getHashtable().get(aChar.slice(, ).join('')));
     
 index++;
     
 }
 
 
-    integerArray: std::vector<Integer> = vector.toArray(new Array(vector.length)) as Integer[];;
+    std::vector<Integer> integerArray = vector.toArray(new Array(vector.length)) as Integer[];;
     
 
 
@@ -481,28 +483,28 @@ index++;
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.getKeyArray()!.length; index++)
+    int32_t index = 0;index < this->getKeyArray().length; index++)
         {
-hashMap!.put(KeyboardActionScriptInputData.KEY +index, Integer.toString(this.getKeyArray()[index]!));
+hashMap.put(KeyboardActionScriptInputData::KEY +index, std::to_string());
     
 }
 
-hashMap!.put(KeyboardActionScriptInputData.DELAY_BETWEEN_KEYS, Integer.toString(this.getDelayBetweenKeys()));
+hashMap.put(KeyboardActionScriptInputData::DELAY_BETWEEN_KEYS, std::to_string(getDelayBetweenKeys));
     
-hashMap!.put(KeyboardActionScriptInputData.PRESS, Boolean.toString(this.isPress()));
+hashMap.put(KeyboardActionScriptInputData::PRESS, Boolean::toString(this->isPress()));
     
-hashMap!.put(KeyboardActionScriptInputData.RELEASE, Boolean.toString(this.isRelease()));
+hashMap.put(KeyboardActionScriptInputData::RELEASE, Boolean::toString(this->isRelease()));
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -515,11 +517,11 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = super.toXmlNode(document)!;;
+    Node node = super.toXmlNode(document);;
     
-node.appendChild(ModDomHelper.createNodeWithValueNodes(document, KeyboardActionScriptInputData.NAME, this.toHashMap()));
+node.appendChild(ModDomHelper::createNodeWithValueNodes(document, KeyboardActionScriptInputData::NAME, this->toHashMap()));
     
 
 
@@ -532,45 +534,45 @@ node.appendChild(ModDomHelper.createNodeWithValueNodes(document, KeyboardActionS
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame){
-KeyboardInputAutomationProcessor.process(this);
+    public: void process(Long frame){
+KeyboardInputAutomationProcessor::process(this);
     
 }
 
 
-    public log(){
-this.logUtil!.putF(this.toString(), this, "log");
+    public: void log(){
+this->logUtil.putF(this->toString(), this, "log");
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(super.toString());
+stringBuffer.append(super.toString());
     
-stringBuffer!.append(" Text: ");
+stringBuffer.append(" Text: ");
     
-stringBuffer!.append(this.getText());
+stringBuffer.append(this->getText());
     
-stringBuffer!.append(" isPress: ");
+stringBuffer.append(" isPress: ");
     
-stringBuffer!.appendboolean(this.isPress());
+stringBuffer.appendboolean(this->isPress());
     
-stringBuffer!.append(" isRelease: ");
+stringBuffer.append(" isRelease: ");
     
-stringBuffer!.appendboolean(this.isRelease());
+stringBuffer.appendboolean(this->isRelease());
     
-stringBuffer!.append(" Between Key Delay: ");
+stringBuffer.append(" Between Key Delay: ");
     
-stringBuffer!.appendint(this.getDelayBetweenKeys());
+stringBuffer.appendint(this->getDelayBetweenKeys());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

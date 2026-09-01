@@ -49,9 +49,8 @@
 class OnDemandResourcesFactory
             : public Object
          {
-        
 
-    public int32_t size(){
+    public: int32_t size(){
 
 
 
@@ -61,12 +60,12 @@ class OnDemandResourcesFactory
 }
 
 
-    public OnDemandResources remove(int32_t layerId){
+    public: OnDemandResources remove(int32_t layerId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OnDemandResources.NULL_ON_DEMAND_RESOURCES;
+                        return OnDemandResources::NULL_ON_DEMAND_RESOURCES;
     
 }
 

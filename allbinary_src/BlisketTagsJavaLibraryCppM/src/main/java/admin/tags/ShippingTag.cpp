@@ -69,51 +69,48 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShippingTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
-
-            super();
-        }
+public: ShippingTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string setShippingType(){
+    private: std::string setShippingType(){
 
         try {
             
-    anyType: any = new ShippingHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = ShippingHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("setShippingType", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("setShippingType", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -137,13 +134,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to view Shipping Type";;
+    std::string error = "Failed to view Shipping Type";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setShippingType()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setShippingType()", e);
     
 
                                     }
@@ -161,24 +158,22 @@ this.storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.command != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.propertiesHashMap= new HashMap<any, any>();
+                                    this->propertiesHashMap= HashMap<any, any>();
     
-this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.SETSHIPPINGTYPE) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.SETSHIPPINGTYPE) == 0)
                         
                                     {
-                                    this.setShippingType();
+                                    this->setShippingType();
     
 
                                     }
@@ -196,7 +191,7 @@ this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -209,7 +204,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

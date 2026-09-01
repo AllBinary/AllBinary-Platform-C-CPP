@@ -72,12 +72,11 @@
 #include "CountedPickedUpLayerInterfaceFactory.h"
 
 class RaceTrackPickupLayer: public PickupLayer {
-        
 
-    private: static const NAME: string = "RaceTrackPickupLayer";
+    private: static const std::string NAME = "RaceTrackPickupLayer";
 
-public constructor (){
-            super(NAME, RemoteInfo.REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory.getFactoryInstance()!.getInstance(0), new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 0, 0), new TileLayerPositionIntoViewPosition());
+public: RaceTrackPickupLayer(){
+            super(NAME, RemoteInfo::REMOTE_INFO, 0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY, NullAnimationFactory::getFactoryInstance().getInstance(0), Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), TileLayerPositionIntoViewPosition());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -85,27 +84,27 @@ public constructor (){
 }
 
 
-    private: const viewPositionEventHandler: ViewPositionEventHandler = ViewPositionEventHandler.getInstance()!;
+    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
-    public setTiledLayer(AllBinaryTiledLayer tiledLayer){
+    public: void setTiledLayer(AllBinaryTiledLayer tiledLayer){
 
-    viewPosition: TileLayerPositionIntoViewPosition = this.getViewPosition() as TileLayerPositionIntoViewPosition;;
+    TileLayerPositionIntoViewPosition viewPosition = this->getViewPosition() as TileLayerPositionIntoViewPosition;;
     
-viewPosition!.setTiledLayer(tiledLayer);
+viewPosition.setTiledLayer(tiledLayer);
     
-this.viewPositionEventHandler!.addListener(this as AllBinaryLayer);
+this->viewPositionEventHandler.addListener(this as AllBinaryLayer);
     
 }
 
 
-    public setDestroyed(bool destroyed){
+    public: void setDestroyed(bool destroyed){
 super.setDestroyed(destroyed);
     
 
-                        if(this.isDestroyed())
+                        if(this->isDestroyed())
                         
                                     {
-                                    this.viewPositionEventHandler!.removeListener(this);
+                                    this->viewPositionEventHandler.removeListener(this);
     
 
                                     }

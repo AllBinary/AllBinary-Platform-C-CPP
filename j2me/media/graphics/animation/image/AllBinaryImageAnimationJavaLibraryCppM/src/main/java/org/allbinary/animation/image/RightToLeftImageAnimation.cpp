@@ -68,59 +68,58 @@
         #include "ImageSegmentAnimation.h"
 
 class RightToLeftImageAnimation: public ImageSegmentAnimation {
-        
 
-    private: startWidth: int32_t= 0;
+    private: int32_t startWidth= 0;
 
-    private: currentWidth: int32_t= 0;
+    private: int32_t currentWidth= 0;
 
-public constructor (Image image, AnimationBehavior animationBehavior){
-            super(image, PrimitiveIntUtil.getArrayInstance(), animationBehavior);
+public: RightToLeftImageAnimation(Image image, AnimationBehavior animationBehavior){
+            super(image, PrimitiveIntUtil::getArrayInstance(), animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setFrame(this.getSize() -1);
+this->setFrame(this->getSize() -1);
     
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 super.previousFrame();
     
-this.update();
+this->update();
     
 }
 
 
-    public previousFrame(){
+    public: void previousFrame(){
 super.nextFrame();
     
-this.update();
+this->update();
     
 }
 
 
-    public setFrame(int32_t index){
+    public: void setFrame(int32_t index){
 super.setFrame(index);
     
-this.update();
+this->update();
     
 }
 
 
-    update(){
-this.startWidth= this.getDrawWidth() *this.getFrame() /this.getSize();
+    private: void update(){
+this->startWidth= this->getDrawWidth() *this->getFrame() /this->getSize();
     
-this.currentWidth= this.getDrawWidth() -this.startWidth;
+this->currentWidth= this->getDrawWidth() -this->startWidth;
     
 }
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawRegion(this.getImage(), this.startWidth, this.getStartY(), this.currentWidth, this.getDrawHeight(), Sprite.TRANS_NONE, x +this.startWidth, y, this.anchor);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+graphics.drawRegion(this->getImage(), this->startWidth, this->getStartY(), this->currentWidth, this->getDrawHeight(), Sprite::TRANS_NONE, x +this->startWidth, y, this->anchor);
     
 }
 

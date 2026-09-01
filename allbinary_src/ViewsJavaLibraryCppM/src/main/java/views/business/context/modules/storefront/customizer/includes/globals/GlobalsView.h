@@ -63,24 +63,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GlobalsView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class GlobalsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    globalsValidation: GlobalsValidation;
+    protected: GlobalsValidation globalsValidation;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: GlobalsView(TransformInfoInterface transformInfoInterface);
 
-    public addDomNodeInterfaces();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

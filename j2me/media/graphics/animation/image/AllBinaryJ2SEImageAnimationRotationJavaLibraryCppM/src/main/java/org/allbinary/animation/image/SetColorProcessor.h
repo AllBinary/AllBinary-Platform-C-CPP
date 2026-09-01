@@ -51,13 +51,12 @@
         #include "ModifierBaseProcessor.h"
 
 class SetColorProcessor: public ModifierBaseProcessor {
-        
 
-    private: static const instanceC: SetColorProcessor = new SetColorProcessor();
+    private: static const SetColorProcessor instanceC = SetColorProcessor();
 
-    public static SetColorProcessor getInstance();
+    public: static SetColorProcessor getInstance();
 
-    public updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor);
+    public: void updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor);
 
 };
 

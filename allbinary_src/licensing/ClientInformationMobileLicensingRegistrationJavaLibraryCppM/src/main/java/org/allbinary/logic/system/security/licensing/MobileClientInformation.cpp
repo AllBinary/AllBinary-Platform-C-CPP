@@ -69,49 +69,48 @@
 #include "PartnerIdentifierFileUtil.h"
 
 class MobileClientInformation: public AbeClientInformation {
-        
 
-    static const DESC: string = "Mobile";
+    protected: static const std::string DESC = "Mobile";
 
-    static const ANDROID_DESC: string = "Android" +MobileClientInformation.DESC;
+    protected: static const std::string ANDROID_DESC = "Android" +MobileClientInformation::DESC;
 
-public constructor (string name, string version, string specialName, string shortName){
-            super(name, version, new StringMaker().append(specialName)!.append(CommonSeps.getInstance()!.SPACE)!.append(PartnerIdentifierFileUtil.getInstance()!.get())!.toString(), shortName);
+public: MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName){
+            super(name, version, StringMaker().append(specialName).append(CommonSeps::getInstance().SPACE).append(PartnerIdentifierFileUtil::getInstance().get()).toString(), shortName);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    string: string = this.getSpecialName()!;;
+    std::string string = this->getSpecialName();;
     
 
-    number: string = string.substring(string.length -1)!;;
+    std::string number = string.substring(string.size() -1);;
     
 
-                        if(Integer.getInteger(number) == 
-                                    null
+                        if(Integer::getInteger(number) == 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.setHardSale(false);
+                                    this->setHardSale(false);
     
 
                                     }
                                 
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(this.isHardSale())
+                        if(this->isHardSale())
                         
                                     {
-                                    this.logUtil!.putF("Use Hard Coded Selling", this, commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("Use Hard Coded Selling", this, commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Don't Use Hard Coded Selling", this, commonStrings!.CONSTRUCTOR);
+                            this->logUtil.putF("Don't Use Hard Coded Selling", this, commonStrings.CONSTRUCTOR);
     
 
                         }
@@ -119,14 +118,14 @@ public constructor (string name, string version, string specialName, string shor
 }
 
 
-    public Hashtable<any, any> toHashtable(){
+    public: Hashtable<any, any> toHashtable(){
 
-    hashtable: Hashtable<any, any> = super.toHashtable()!;;
+    Hashtable<any, any> hashtable = super.toHashtable();;
     
 
-    registrationConfiguration: RegistrationConfiguration = RegistrationConfiguration.getInstance()!;;
+    RegistrationConfiguration registrationConfiguration = RegistrationConfiguration::getInstance();;
     
-hashtable.put(registrationConfiguration!.NAME, registrationConfiguration!.getRegistrationCode());
+hashtable.put(registrationConfiguration.NAME, registrationConfiguration.getRegistrationCode());
     
 
 

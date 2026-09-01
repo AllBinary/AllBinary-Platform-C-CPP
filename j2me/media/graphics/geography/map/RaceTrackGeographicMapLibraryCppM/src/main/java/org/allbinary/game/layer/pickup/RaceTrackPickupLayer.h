@@ -75,17 +75,16 @@
 #include "CountedPickedUpLayerInterfaceFactory.h"
 
 class RaceTrackPickupLayer: public PickupLayer {
-        
 
-    private: static const NAME: string = "RaceTrackPickupLayer";
+    private: static const std::string NAME = "RaceTrackPickupLayer";
 
-public constructor ();
+public: RaceTrackPickupLayer();
 
-    private: const viewPositionEventHandler: ViewPositionEventHandler = ViewPositionEventHandler.getInstance()!;
+    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
-    public setTiledLayer(AllBinaryTiledLayer tiledLayer);
+    public: void setTiledLayer(AllBinaryTiledLayer tiledLayer);
 
-    public setDestroyed(bool destroyed);
+    public: void setDestroyed(bool destroyed);
 
 };
 

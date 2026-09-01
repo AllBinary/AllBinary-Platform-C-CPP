@@ -74,36 +74,31 @@
         #include "ModifyTable.h"
 //TWB - Am I missing the correct Quote Request? Probably not
 class QuoteRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: quoteRequest: QuoteRequest;
+    private: QuoteRequest quoteRequest;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
+public: QuoteRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
 
-            super();
-        
-    request: HttpServletRequest = pageContext!.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = pageContext.getRequest() as HttpServletRequest;;
     
-this.weblisketSession= new WeblisketSession(hashMap, pageContext);
+this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
-this.quoteRequest= new QuoteRequest(this.weblisketSession!.getUserName(), request);
+this->quoteRequest= QuoteRequest(this->weblisketSession.getUserName(), request);
     
 
-    storeName: string = hashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(storeName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 
                                     }
@@ -111,42 +106,42 @@ this.quoteRequest= new QuoteRequest(this.weblisketSession!.getUserName(), reques
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.quoteRequest!.isValid();;
+                        return this->quoteRequest.isValid();;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.quoteRequest!.validationInfo();;
+                        return this->quoteRequest.validationInfo();;
     
 }
 
 
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    values: Vector = this.quoteRequest!.toVector()!;;
+    Vector values = this->quoteRequest.toVector();;
     
-QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.insert(values);
-    
-
-    success: string = "New QuoteRequest Successfully added to the QuoteRequest Table";;
+QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = "New QuoteRequest Successfully added to the QuoteRequest Table";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "add()");
+                                    this->logUtil.putF(success, this, "add()");
     
 
                                     }
@@ -162,13 +157,13 @@ QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.insert
 } catch(e) 
             {
 
-    error: string = "Failed to add QuoteRequest";;
+    std::string error = "Failed to add QuoteRequest";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "add()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "add()", e);
     
 
                                     }
@@ -184,22 +179,22 @@ QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.insert
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    values: HashMap<any, any> = this.quoteRequest!.toHashMap()!;;
+    HashMap<any, any> values = this->quoteRequest.toHashMap();;
     
-QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.update(this.quoteRequest!.getUserName(), values);
-    
-
-    success: string = "New QuoteRequest Successfully updated";;
+QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().update(this->quoteRequest.getUserName(), values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = "New QuoteRequest Successfully updated";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "update()");
+                                    this->logUtil.putF(success, this, "update()");
     
 
                                     }
@@ -215,13 +210,13 @@ QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.update
 } catch(e) 
             {
 
-    error: string = "Failed to update QuoteRequest";;
+    std::string error = "Failed to update QuoteRequest";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }
@@ -237,12 +232,12 @@ QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.update
 }
 
 
-    public string delete(){
+    public: std::string delete_(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonStrings!.NOT_IMPLEMENTED;
+                        return commonStrings.NOT_IMPLEMENTED;
     
 }
 

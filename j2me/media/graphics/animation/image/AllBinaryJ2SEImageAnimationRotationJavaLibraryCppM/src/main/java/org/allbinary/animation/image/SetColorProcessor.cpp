@@ -48,22 +48,21 @@
         #include "ModifierBaseProcessor.h"
 
 class SetColorProcessor: public ModifierBaseProcessor {
-        
 
-    private: static const instanceC: SetColorProcessor = new SetColorProcessor();
+    private: static const SetColorProcessor instanceC = SetColorProcessor();
 
-    public static SetColorProcessor getInstance(){
+    public: static SetColorProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SetColorProcessor.instanceC;
+                        return SetColorProcessor::instanceC;
     
 }
 
 
-    public updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor){
-imageModifierUtil!.setColor(originalImage, imageToShow, index, basicColor);
+    public: void updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor){
+imageModifierUtil.setColor(originalImage, imageToShow, index, basicColor);
     
 }
 

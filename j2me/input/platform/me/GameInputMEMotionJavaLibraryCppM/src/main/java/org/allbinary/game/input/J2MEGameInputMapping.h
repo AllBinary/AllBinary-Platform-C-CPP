@@ -55,17 +55,16 @@
 #include "Input.h"
 
 class J2MEGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor ();
+public: J2MEGameInputMapping();
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation);
+    public: void init(AbeClientInformationInterface abeClientInformation);
 
-    public bool isDelete(Input input);
+    public: bool isDelete(Input input);
 
-    public bool isSystemInput(Input input);
+    public: bool isSystemInput(Input input);
 
 };
 

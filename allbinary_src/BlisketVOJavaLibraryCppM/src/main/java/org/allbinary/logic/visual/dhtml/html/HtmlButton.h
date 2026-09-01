@@ -45,9 +45,8 @@
 class HtmlButton
             : public Object
          {
-        
 
-public constructor ();
+public: HtmlButton();
 
 };
 

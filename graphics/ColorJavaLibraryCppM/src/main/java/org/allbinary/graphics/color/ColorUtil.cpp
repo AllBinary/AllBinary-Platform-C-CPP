@@ -48,23 +48,22 @@
 class ColorUtil
             : public Object
          {
-        
 
-    private: static const instance: ColorUtil = new ColorUtil();
+    private: static ColorUtil instance() { return ColorUtil(); }
 
-    public static ColorUtil getInstance(){
+    public: static ColorUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorUtil.instance;
+                        return ColorUtil::instance();
     
 }
 
 
-    public bool isGreyishOrWhiteLike(Color color){
+    public: bool isGreyishOrWhiteLike(Color color){
 
-                        if(Math.abs(color.getRed() -color.getGreen()) > 20 || Math.abs(color.getRed() -color.getBlue()) > 20 || Math.abs(color.getGreen() -color.getBlue()) > 20)
+                        if(Math::abs(color.getRed() -color.getGreen()) > 20 || Math::abs(color.getRed() -color.getBlue()) > 20 || Math::abs(color.getGreen() -color.getBlue()) > 20)
                         
                                     {
                                     
@@ -85,7 +84,7 @@ class ColorUtil
 }
 
 
-    public bool isDark(Color color){
+    public: bool isDark(Color color){
 
                         if(color.getRed() < 0x77 && color.getRed() < 0x77 && color.getRed() < 0x77)
                         

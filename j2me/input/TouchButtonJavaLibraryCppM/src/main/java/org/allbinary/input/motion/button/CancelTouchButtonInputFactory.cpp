@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -50,16 +52,15 @@
 class CancelTouchButtonInputFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static CancelTouchButtonInputFactory getInstance(){
+    public: static CancelTouchButtonInputFactory getInstance(){
 
-                        if(CancelTouchButtonInputFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(CancelTouchButtonInputFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    CancelTouchButtonInputFactory.instance= new CancelTouchButtonInputFactory();
+                                    CancelTouchButtonInputFactory::instance= CancelTouchButtonInputFactory();
     
 
                                     }
@@ -68,47 +69,45 @@ class CancelTouchButtonInputFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CancelTouchButtonInputFactory.instance as CancelTouchButtonInputFactory;
+                        return CancelTouchButtonInputFactory::instance() as CancelTouchButtonInputFactory;
     
 }
 
 
-    private: const cancelInputArray: std::vector<TouchButtonInput> = new Array(InputFactory.getInstance()!.MAX);
+    private: const std::vector<TouchButtonInput> cancelInputArray = new Array(InputFactory::getInstance().MAX);
 
-private constructor (){
+private: CancelTouchButtonInputFactory(){
 
-            super();
-        
-    basicTouchInputFactory: BasicTouchInputFactory = BasicTouchInputFactory.getInstance()!;;
+    BasicTouchInputFactory basicTouchInputFactory = BasicTouchInputFactory::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = this.cancelInputArray!.length -1;index >= 0; index--)
+    int32_t index = this->cancelInputArray.size() -1;index >= 0; index--)
         {
-this.cancelInputArray[index]= basicTouchInputFactory!.NONE;
+this->cancelInputArray[index]= basicTouchInputFactory.NONE;
     
 }
 
-this.cancelInputArray[basicTouchInputFactory!.UP.getSourceId()]= basicTouchInputFactory!.DOWN;
+this->cancelInputArray[basicTouchInputFactory.UP.getSourceId()]= basicTouchInputFactory.DOWN;
     
-this.cancelInputArray[basicTouchInputFactory!.DOWN.getSourceId()]= basicTouchInputFactory!.UP;
+this->cancelInputArray[basicTouchInputFactory.DOWN.getSourceId()]= basicTouchInputFactory.UP;
     
-this.cancelInputArray[basicTouchInputFactory!.LEFT.getSourceId()]= basicTouchInputFactory!.RIGHT;
+this->cancelInputArray[basicTouchInputFactory.LEFT.getSourceId()]= basicTouchInputFactory.RIGHT;
     
-this.cancelInputArray[basicTouchInputFactory!.RIGHT.getSourceId()]= basicTouchInputFactory!.LEFT;
+this->cancelInputArray[basicTouchInputFactory.RIGHT.getSourceId()]= basicTouchInputFactory.LEFT;
     
 }
 
 
-    public TouchButtonInput getCancel(TouchButtonInput touchButtonInput){
+    public: TouchButtonInput getCancel(TouchButtonInput touchButtonInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cancelInputArray[touchButtonInput!.getSourceId()]!;
+                        return this->cancelInputArray[touchButtonInput.getSourceId()]!;
     
 }
 

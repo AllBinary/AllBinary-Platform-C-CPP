@@ -48,17 +48,16 @@
 class AllBinaryMediaManagerShutdown
             : public Object
          {
-        
 
-    private: static const instance: AllBinaryMediaManagerShutdown = new AllBinaryMediaManagerShutdown();
+    private: static AllBinaryMediaManagerShutdown instance() { return AllBinaryMediaManagerShutdown(); }
 
                 //@Throws(Exception.constructor)
             
-    public static shutdown(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF("No Media Shutdown for Android Process", AllBinaryMediaManagerShutdown.instance, "shutdown");
+logUtil.putF("No Media Shutdown for Android Process", AllBinaryMediaManagerShutdown::instance(), "shutdown");
     
 }
 

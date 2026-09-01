@@ -46,9 +46,8 @@
 #include "MotionLaptopDefaultGameInputMapping.h"
 
 class MotionLaptopGameInputMapping: public PCGameInputMapping {
-        
 
-    InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping getDefault();
 
 };
 

@@ -48,95 +48,94 @@
 class InitializerData
             : public Object
          {
-        
 
-    private: static const instance: InitializerData = new InitializerData();
+    private: static InitializerData instance() { return InitializerData(); }
 
-    public static InitializerData getInstance();
+    public: static InitializerData getInstance();
 
-    public const DBUSER: string = "DBUSER";
+    public: const std::string DBUSER = "DBUSER";
 
-    public const DBPASSWORD: string = "DBPASSWORD";
+    public: const std::string DBPASSWORD = "DBPASSWORD";
 
-    public const ADMINJDBCDRIVER: string = "ADMIN_JDBCDRIVER";
+    public: const std::string ADMINJDBCDRIVER = "ADMIN_JDBCDRIVER";
 
-    public const ADMINSCHEMA: string = "ADMINSCHEMA";
+    public: const std::string ADMINSCHEMA = "ADMINSCHEMA";
 
-    public const ADMINSERVER: string = "ADMINSERVER";
+    public: const std::string ADMINSERVER = "ADMINSERVER";
 
-    public const ADMINPORT: string = "ADMINPORT";
+    public: const std::string ADMINPORT = "ADMINPORT";
 
-    public const CUSTOMERJDBCDRIVER: string = "CUSTOMER_JDBCDRIVER";
+    public: const std::string CUSTOMERJDBCDRIVER = "CUSTOMER_JDBCDRIVER";
 
-    public const CUSTOMERNAME: string = "CUSTOMERNAME";
+    public: const std::string CUSTOMERNAME = "CUSTOMERNAME";
 
-    public const CUSTOMERUSERNAME: string = "CUSTOMERUSERNAME";
+    public: const std::string CUSTOMERUSERNAME = "CUSTOMERUSERNAME";
 
-    public const CUSTOMERPASSWORD: string = "CUSTOMERPASSWORD";
+    public: const std::string CUSTOMERPASSWORD = "CUSTOMERPASSWORD";
 
-    public const CUSTOMERSCHEMA: string = "CUSTOMERSCHEMA";
+    public: const std::string CUSTOMERSCHEMA = "CUSTOMERSCHEMA";
 
-    public const CUSTOMERSERVER: string = "CUSTOMERSERVER";
+    public: const std::string CUSTOMERSERVER = "CUSTOMERSERVER";
 
-    public const CUSTOMERPORT: string = "CUSTOMERPORT";
+    public: const std::string CUSTOMERPORT = "CUSTOMERPORT";
 
-    public const HISTORYJDBCDRIVER: string = "HISTORY_JDBCDRIVER";
+    public: const std::string HISTORYJDBCDRIVER = "HISTORY_JDBCDRIVER";
 
-    public const HISTORYNAME: string = "HISTORYNAME";
+    public: const std::string HISTORYNAME = "HISTORYNAME";
 
-    public const HISTORYUSERNAME: string = "HISTORYUSERNAME";
+    public: const std::string HISTORYUSERNAME = "HISTORYUSERNAME";
 
-    public const HISTORYPASSWORD: string = "HISTORYPASSWORD";
+    public: const std::string HISTORYPASSWORD = "HISTORYPASSWORD";
 
-    public const HISTORYSCHEMA: string = "HISTORYSCHEMA";
+    public: const std::string HISTORYSCHEMA = "HISTORYSCHEMA";
 
-    public const HISTORYSERVER: string = "HISTORYSERVER";
+    public: const std::string HISTORYSERVER = "HISTORYSERVER";
 
-    public const HISTORYPORT: string = "HISTORYPORT";
+    public: const std::string HISTORYPORT = "HISTORYPORT";
 
-    public const LOGJDBCDRIVER: string = "LOG_JDBCDRIVER";
+    public: const std::string LOGJDBCDRIVER = "LOG_JDBCDRIVER";
 
-    public const LOGNAME: string = "LOGNAME";
+    public: const std::string LOGNAME = "LOGNAME";
 
-    public const LOGUSERNAME: string = "LOGUSERNAME";
+    public: const std::string LOGUSERNAME = "LOGUSERNAME";
 
-    public const LOGPASSWORD: string = "LOGPASSWORD";
+    public: const std::string LOGPASSWORD = "LOGPASSWORD";
 
-    public const LOGSCHEMA: string = "LOGSCHEMA";
+    public: const std::string LOGSCHEMA = "LOGSCHEMA";
 
-    public const LOGSERVER: string = "LOGSERVER";
+    public: const std::string LOGSERVER = "LOGSERVER";
 
-    public const LOGPORT: string = "LOGPORT";
+    public: const std::string LOGPORT = "LOGPORT";
 
-    public const INVENTORYJDBCDRIVER: string = "INVENTORY_JDBCDRIVER";
+    public: const std::string INVENTORYJDBCDRIVER = "INVENTORY_JDBCDRIVER";
 
-    public const INVENTORYNAME: string = "INVENTORYNAME";
+    public: const std::string INVENTORYNAME = "INVENTORYNAME";
 
-    public const INVENTORYUSERNAME: string = "INVENTORYUSERNAME";
+    public: const std::string INVENTORYUSERNAME = "INVENTORYUSERNAME";
 
-    public const INVENTORYPASSWORD: string = "INVENTORYPASSWORD";
+    public: const std::string INVENTORYPASSWORD = "INVENTORYPASSWORD";
 
-    public const INVENTORYSCHEMA: string = "INVENTORYSCHEMA";
+    public: const std::string INVENTORYSCHEMA = "INVENTORYSCHEMA";
 
-    public const INVENTORYSERVER: string = "INVENTORYSERVER";
+    public: const std::string INVENTORYSERVER = "INVENTORYSERVER";
 
-    public const INVENTORYPORT: string = "INVENTORYPORT";
+    public: const std::string INVENTORYPORT = "INVENTORYPORT";
 
-    public const STATICPAGESJDBCDRIVER: string = "STATICPAGES_JDBCDRIVER";
+    public: const std::string STATICPAGESJDBCDRIVER = "STATICPAGES_JDBCDRIVER";
 
-    public const STATICPAGESNAME: string = "STATICPAGESNAME";
+    public: const std::string STATICPAGESNAME = "STATICPAGESNAME";
 
-    public const STATICPAGESUSERNAME: string = "STATICPAGESUSERNAME";
+    public: const std::string STATICPAGESUSERNAME = "STATICPAGESUSERNAME";
 
-    public const STATICPAGESPASSWORD: string = "STATICPAGESPASSWORD";
+    public: const std::string STATICPAGESPASSWORD = "STATICPAGESPASSWORD";
 
-    public const STATICPAGESSCHEMA: string = "STATICPAGESSCHEMA";
+    public: const std::string STATICPAGESSCHEMA = "STATICPAGESSCHEMA";
 
-    public const STATICPAGESSERVER: string = "STATICPAGESSERVER";
+    public: const std::string STATICPAGESSERVER = "STATICPAGESSERVER";
 
-    public const STATICPAGESPORT: string = "STATICPAGESPORT";
+    public: const std::string STATICPAGESPORT = "STATICPAGESPORT";
 
-    public string getJdbcDriverSolutionInfo();
+    public: std::string getJdbcDriverSolutionInfo();
 
 };
 

@@ -45,13 +45,12 @@
         #include "OpenGLESImageProcessor.h"
 
 class ModifierOpenGLESImageProcessor: public OpenGLESImageProcessor {
-        
 
-    private: static const instanceC: ModifierOpenGLESImageProcessor = new ModifierOpenGLESImageProcessor();
+    private: static const ModifierOpenGLESImageProcessor instanceC = ModifierOpenGLESImageProcessor();
 
-    public static ModifierOpenGLESImageProcessor getInstance();
+    public: static ModifierOpenGLESImageProcessor getInstance();
 
-    public colorMask(GL10 gl, float red, float green, float blue, float alpha);
+    public: void colorMask(GL10 gl, float red, float green, float blue, float alpha);
 
 };
 

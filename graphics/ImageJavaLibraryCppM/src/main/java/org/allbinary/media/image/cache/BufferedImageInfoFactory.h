@@ -52,13 +52,12 @@
 class BufferedImageInfoFactory
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    public static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type);
+    public: static BufferedImageInfo getInstance(int32_t width, int32_t height, int32_t type);
 
-private constructor ();
+private: BufferedImageInfoFactory();
 
 };
 

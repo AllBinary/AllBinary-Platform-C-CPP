@@ -55,10 +55,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BillingAddressView.h"
 
-class AddValidationView: public BillingAddressView: public ValidationComponentInterface {
-        
+class AddValidationView: public BillingAddressView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: AddValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -69,18 +68,18 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid(){
-this.streetAddress= new StreetAddress(this.getRequest());
+    public: Boolean isValid(){
+this->streetAddress= StreetAddress(this->getRequest());
     
 
-                        if(this.streetAddress!.isValid() == Boolean.FALSE)
+                        if(this->streetAddress.isValid() == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -89,22 +88,22 @@ this.streetAddress= new StreetAddress(this.getRequest());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.streetAddress!.validationInfo();;
+                        return this->streetAddress.validationInfo();;
     
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -114,7 +113,7 @@ this.streetAddress= new StreetAddress(this.getRequest());
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

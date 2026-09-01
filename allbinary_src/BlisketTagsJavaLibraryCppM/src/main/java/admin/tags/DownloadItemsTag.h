@@ -61,13 +61,12 @@
 #include "AbTagData.h"
 
 class DownloadItemsTag: public TableTag {
-        
 
-public constructor ();
+public: DownloadItemsTag();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

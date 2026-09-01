@@ -79,60 +79,57 @@
 class RequestWorkFlowFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public static WorkFlowInterface getInstance(ServletRequest request, ServletResponse response, ServletConfig servletConfig, ServletContext servletContext){
+    public: static WorkFlowInterface getInstance(ServletRequest request, ServletResponse response, ServletConfig servletConfig, ServletContext servletContext){
 
-    httpRequest: HttpServletRequest = request as HttpServletRequest;;
+    HttpServletRequest httpRequest = request as HttpServletRequest;;
     
 
-    requestCommand: string = httpRequest!.getPathInfo()!;;
+    std::string requestCommand = httpRequest.getPathInfo();;
     
 
-    index: int32_t = requestCommand!.indexOf(AbPathData.getInstance()!.SEPARATOR)!;;
+    int32_t index = requestCommand.indexOf(AbPathData::getInstance().SEPARATOR);;
     
 
-    storeName: string = requestCommand!.substring(0, index)!;;
+    std::string storeName = requestCommand.substring(0, index);;
     
 
-    requestName: string = requestCommand!.substring(index, requestCommand!.length)!;;
+    std::string requestName = requestCommand.substring(index, requestCommand.size());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowEntityFactory.getInstance()!.create2()!.get(requestName, storeName);;
+                        return WorkFlowEntityFactory::getInstance().create2().get(requestName, storeName);;
     
 }
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public static WorkFlowInterface getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: static WorkFlowInterface getInstance(HashMap<any, any> hashMap, PageContext pageContext){
 
-    workFlowName: string = pageContext!.getRequest()!.getParameter(WorkFlowData.getInstance()!.NAME) as string;;
+    std::string workFlowName = pageContext.getRequest().getParameter(WorkFlowData::getInstance().NAME) as string;;
     
 
-    weblisketSession: WeblisketSession = new WeblisketSession(hashMap, pageContext);;
+    WeblisketSession weblisketSession = WeblisketSession(hashMap, pageContext);;
     
 
-    storeName: string = weblisketSession!.getStoreName()!;;
+    std::string storeName = weblisketSession.getStoreName();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkFlowEntityFactory.getInstance()!.create2()!.get(workFlowName, storeName);;
+                        return WorkFlowEntityFactory::getInstance().create2().get(workFlowName, storeName);;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: RequestWorkFlowFactory(){
+}
 
 
 };

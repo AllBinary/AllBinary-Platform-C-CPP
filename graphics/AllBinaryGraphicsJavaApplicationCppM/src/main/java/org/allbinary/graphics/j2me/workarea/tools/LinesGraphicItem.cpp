@@ -117,117 +117,112 @@
 class LinesGraphicItem
             : public Object
         : public GraphicItemInterface {
-        
 
-    private: static const RECT: string = "rect";
+    private: static const std::string RECT = "rect";
 
-    private: static const ARC: string = "arc";
+    private: static const std::string ARC = "arc";
 
-    private: static const STRING: string = "string";
+    private: static const std::string STRING = "string";
 
-    private: static const CHAR: string = "char";
+    private: static const std::string CHAR = "char";
 
-    private: static const IMAGE: string = "image";
+    private: static const std::string IMAGE = "image";
 
-    private: static item: int32_t = 0;
+    private: static int32_t item = 0;
 
-    private: static const NAME: string = "Line Tool";
+    private: static const std::string NAME = "Line Tool";
 
-    public static string getStaticName(){
+    public: static std::string getStaticName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinesGraphicItem.NAME;
+                        return LinesGraphicItem::NAME;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    private: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    private: treeNode: DefaultMutableTreeNode;
+    private: DefaultMutableTreeNode treeNode;
 
-    private: pointTreeNodeVector: Vector;
+    private: Vector pointTreeNodeVector;
 
-    private: currentMousePoint: GPoint;
+    private: GPoint currentMousePoint;
 
-    private: fulcrumPoint: GPoint;
+    private: GPoint fulcrumPoint;
 
-    private: active: bool = false;
+    private: bool active = false;
 
-    private: theta: double = 0;
+    private: double theta = 0;
 
-    private: color: Color = new Color(BasicColorFactory.getInstance()!.WHITE.intValue());
+    private: Color color = Color(BasicColorFactory::getInstance().WHITE.intValue());
 
-    private: points: Points;
+    private: Points points;
 
-public constructor (){
-
-            super();
-        this.points= new Points();
+public: LinesGraphicItem(){
+this->points= Points();
     
 
         try {
-            this.init();
+            this->init();
     
-this.active= true;
+this->active= true;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 }
 
 }
 
 
-public constructor (Node linesNode){
-
-            super();
-        this.points= new Points();
+public: LinesGraphicItem(Node linesNode){
+this->points= Points();
     
-this.init();
+this->init();
     
-this.active= false;
+this->active= false;
     
 
-    lineNodes: BasicArrayList = DomHelper.getInstance()!.getWithoutTextNodes(linesNode!.getChildNodes())!;;
+    BasicArrayList lineNodes = DomHelper::getInstance().getWithoutTextNodes(linesNode.getChildNodes());;
     
 
-    numberOfLines: int32_t = lineNodes!.size()!;;
+    int32_t numberOfLines = lineNodes.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfLines; index++)
+    int32_t index = 0;index < numberOfLines; index++)
         {
 
-    lineNode: Node = lineNodes!.get(index) as Node;;
+    Node lineNode = lineNodes.get(index) as Node;;
     
 
-    pointNodes: BasicArrayList = DomHelper.getInstance()!.getWithoutTextNodes(lineNode!.getChildNodes())!;;
+    BasicArrayList pointNodes = DomHelper::getInstance().getWithoutTextNodes(lineNode.getChildNodes());;
     
 
-    pointOneNode: Node = DomHelper.getInstance()!.searchNodeList(PointsDomUtil.getInstance()!.POINTONE, pointNodes)!;;
+    Node pointOneNode = DomHelper::getInstance().searchNodeList(PointsDomUtil::getInstance().POINTONE, pointNodes);;
     
-this.addPoint(pointOneNode!.getChildNodes());
+this->addPoint(pointOneNode.getChildNodes());
     
 
                         if(index == numberOfLines -1)
                         
                                     {
                                     
-    pointTwoNode: Node = DomHelper.getInstance()!.searchNodeList(PointsDomUtil.getInstance()!.POINTTWO, pointNodes)!;;
+    Node pointTwoNode = DomHelper::getInstance().searchNodeList(PointsDomUtil::getInstance().POINTTWO, pointNodes);;
     
-this.addPoint(pointTwoNode!.getChildNodes());
+this->addPoint(pointTwoNode.getChildNodes());
     
 
                                     }
@@ -241,7 +236,7 @@ this.addPoint(pointTwoNode!.getChildNodes());
                                     
 
 
-                            throw new Exception("Lines node does not contain a line");
+                            throw Exception("Lines node does not contain a line");
                     
 
                                     }
@@ -251,91 +246,91 @@ this.addPoint(pointTwoNode!.getChildNodes());
 
                 //@Throws(Exception.constructor)
             
-    public init(){
-this.treeNode= new DefaultMutableTreeNode(PointsDomUtil.getInstance()!.LINES +LinesGraphicItem.item);
+    public: void init(){
+this->treeNode= DefaultMutableTreeNode(PointsDomUtil::getInstance().LINES +LinesGraphicItem::item);
     
-LinesGraphicItem.item++;
+LinesGraphicItem::item++;
     
-this.points.init();
+this->points.init();
     
-this.pointTreeNodeVector= new Vector();
+this->pointTreeNodeVector= Vector();
     
-this.fulcrumPoint= PointFactory.getInstance()!.createXY(0, 0);
+this->fulcrumPoint= PointFactory::getInstance().createXY(0, 0);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public translate(int32_t x, int32_t y){
-StatusFactory.getInstance()!.setStatus("Translating: " +this.points.getPoints());
+    public: void translate(int32_t x, int32_t y){
+StatusFactory::getInstance().setStatus("Translating: " +this->points.getPoints());
     
 
-    basicGraphicsPipeline: BasicGraphicsPipeline = new BasicGraphicsPipeline(this.points.getPoints());;
+    BasicGraphicsPipeline basicGraphicsPipeline = BasicGraphicsPipeline(this->points.getPoints());;
     
-basicGraphicsPipeline!.translate(x, y);
+basicGraphicsPipeline.translate(x, y);
     
-this.points= new Points();
+this->points= Points();
     
-this.points.addPoints(basicGraphicsPipeline!.getMatrix());
+this->points.addPoints(basicGraphicsPipeline.getMatrix());
     
 }
 
 
-    public setRotate(double theta){
+    public: void setRotate(double theta){
 
-        while(theta > 2 *Math.PI)
+        while(theta > 2 *Math::PI)
         {
-theta -= 2 *Math.PI;
+theta -= 2 *Math::PI;
     
 }
 
 
         while(theta < 0)
         {
-theta += 2 *Math.PI;
+theta += 2 *Math::PI;
     
 }
 
-this.theta= theta;
-    
-}
-
-
-    public addRotate(double theta){
-this.setRotate(this.theta +theta);
+this->theta= theta;
     
 }
 
 
-    public setAngle(double angle){
-this.setRotate(Math.toRadians(angle));
+    public: void addRotate(double theta){
+this->setRotate(this->theta +theta);
     
 }
 
 
-    public addAngle(double angle){
-this.setRotate(this.theta +Math.toRadians(angle));
+    public: void setAngle(double angle){
+this->setRotate(Math::toRadians(angle));
     
 }
 
 
-    public MutableTreeNode getTreeNode(){
+    public: void addAngle(double angle){
+this->setRotate(this->theta +Math::toRadians(angle));
+    
+}
+
+
+    public: MutableTreeNode getTreeNode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.treeNode as MutableTreeNode;
+                        return this->treeNode as MutableTreeNode;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinesGraphicItem.NAME;
+                        return LinesGraphicItem::NAME;
     
 }
 
@@ -343,75 +338,75 @@ this.setRotate(this.theta +Math.toRadians(angle));
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    addPoint(NodeList pointNodes){
+    private: void addPoint(NodeList pointNodes){
 
-    list: BasicArrayList = DomHelper.getInstance()!.getWithoutTextNodes(pointNodes)!;;
-    
-
-    xNode: Node = DomHelper.getInstance()!.searchNodeList(PositionStrings.getInstance()!.X, list)!;;
+    BasicArrayList list = DomHelper::getInstance().getWithoutTextNodes(pointNodes);;
     
 
-    xTextNode: Node = xNode!.getFirstChild()!;;
+    Node xNode = DomHelper::getInstance().searchNodeList(PositionStrings::getInstance().X, list);;
     
 
-    xInteger: Integer = new Integer(xTextNode!.getNodeValue());;
+    Node xTextNode = xNode.getFirstChild();;
     
 
-    yNode: Node = DomHelper.getInstance()!.searchNodeList(PositionStrings.getInstance()!.Y, list)!;;
+    Integer xInteger = Integer(xTextNode.getNodeValue());;
     
 
-    yTextNode: Node = yNode!.getFirstChild()!;;
+    Node yNode = DomHelper::getInstance().searchNodeList(PositionStrings::getInstance().Y, list);;
     
 
-    yInteger: Integer = new Integer(yTextNode!.getNodeValue());;
+    Node yTextNode = yNode.getFirstChild();;
     
 
-    point: GPoint = PointFactory.getInstance()!.createXY(xInteger!.intValue(), yInteger!.intValue())!;;
+    Integer yInteger = Integer(yTextNode.getNodeValue());;
     
-this.addPoint(point);
-    
-}
 
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public addPoint(GPoint point){
-this.points.getPoints()!.add(point);
+    GPoint point = PointFactory::getInstance().createXY(xInteger.intValue(), yInteger.intValue());;
     
-this.logUtil!.putF(point.toString(), this, "addPoint");
-    
-this.pointTreeNodeVector!.add(new DefaultMutableTreeNode(point.toString()));
-    
-this.treeNode!.add(this.pointTreeNodeVector!.get(this.pointTreeNodeVector!.length -1) as DefaultMutableTreeNode);
+this->addPoint(point);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public GPoint removePoint(){
+    public: void addPoint(GPoint point){
+this->points.getPoints().add(point);
+    
+this->logUtil.putF(point.toString(), this, "addPoint");
+    
+this->pointTreeNodeVector.add(DefaultMutableTreeNode(point.toString()));
+    
+this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.length -1) as DefaultMutableTreeNode);
+    
+}
 
-    point: GPoint = 
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: GPoint removePoint(){
+
+    GPoint point = 
                 null
             ;;
     
 
-                        if(this.points.getSize() > 0)
+                        if(this->points.getSize() > 0)
                         
                                     {
                                     
-    lastPoint: int32_t = this.points.getSize() -1;;
+    int32_t lastPoint = this->points.getSize() -1;;
     
-point= this.points.getPoints()!.removeAt(lastPoint) as GPoint;
+point= this->points.getPoints().removeAt(lastPoint) as GPoint;
     
 
-    index: int32_t = this.pointTreeNodeVector!.length -1;;
+    int32_t index = this->pointTreeNodeVector.length -1;;
     
 
                         if(index > 0)
                         
                                     {
-                                    this.treeNode!.remove(this.pointTreeNodeVector!.get(index) as DefaultMutableTreeNode);
+                                    this->treeNode.remove(this->pointTreeNodeVector.get(index) as DefaultMutableTreeNode);
     
-this.pointTreeNodeVector!.remove(index);
+this->pointTreeNodeVector.remove(index);
     
 
                                     }
@@ -428,55 +423,55 @@ this.pointTreeNodeVector!.remove(index);
 }
 
 
-    public bool isActive(){
+    public: bool isActive(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.active;
+                        return this->active;
     
 }
 
 
-    public deactivate(){
-this.active= false;
+    public: void deactivate(){
+this->active= false;
     
 }
 
 
-    public activate(){
-this.active= true;
+    public: void activate(){
+this->active= true;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public duplicatePoints(BasicArrayList list){
+    public: void duplicatePoints(BasicArrayList list){
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    point: GPoint = list.get(index) as GPoint;;
+    GPoint point = list.get(index) as GPoint;;
     
 
                         if(point != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.points.getPoints()!.add(PointFactory.getInstance()!.createXY(point.getX(), point.getY()));
+                                    this->points.getPoints().add(PointFactory::getInstance().createXY(point.getX(), point.getY()));
     
-this.pointTreeNodeVector!.add(new DefaultMutableTreeNode(point.toString()));
+this->pointTreeNodeVector.add(DefaultMutableTreeNode(point.toString()));
     
-this.treeNode!.add(this.pointTreeNodeVector!.get(this.pointTreeNodeVector!.length -1) as DefaultMutableTreeNode);
+this->treeNode.add(this->pointTreeNodeVector.get(this->pointTreeNodeVector.length -1) as DefaultMutableTreeNode);
     
 
                                     }
@@ -488,13 +483,13 @@ this.treeNode!.add(this.pointTreeNodeVector!.get(this.pointTreeNodeVector!.lengt
 
                 //@Throws(Exception.constructor)
             
-    public GraphicItemInterface duplicate(){
+    public: GraphicItemInterface duplicate(){
 
-    linesGraphicItem: LinesGraphicItem = new LinesGraphicItem();;
+    LinesGraphicItem linesGraphicItem = LinesGraphicItem();;
     
-linesGraphicItem!.duplicatePoints(this.points.getPoints());
+linesGraphicItem.duplicatePoints(this->points.getPoints());
     
-linesGraphicItem!.deactivate();
+linesGraphicItem.deactivate();
     
 
 
@@ -505,62 +500,62 @@ linesGraphicItem!.deactivate();
 }
 
 
-    public double getAngle(){
+    public: double getAngle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Math.toDegrees(this.theta);;
+                        return Math::toDegrees(this->theta);;
     
 }
 
 
-    public setFulcrumPoint(GPoint point){
-this.fulcrumPoint= point;
+    public: void setFulcrumPoint(GPoint point){
+this->fulcrumPoint= point;
     
 }
 
 
-    public paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y){
+    public: void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y){
 
         try {
             
-    graphics: Graphics2D = g as Graphics2D;;
+    Graphics2D graphics = g as Graphics2D;;
     
 graphics.setColor(getColor());
     
-graphics.setStroke(new BasicStroke(x));
+graphics.setStroke(BasicStroke(x));
     
 
-                        if(this.isActive() && this.currentMousePoint != 
-                                    null
+                        if(this->isActive() && this->currentMousePoint != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.points.getPoints()!.add(this.currentMousePoint);
+                                    this->points.getPoints().add(this->currentMousePoint);
     
 
                                     }
                                 
 
-    tempPointVector: BasicArrayList = PointsUtil.getInstance()!.doTransforms(this.points.getPoints(), canvasAngle, PointFactory.getInstance()!.createXY(dimension.getWidth(), dimension.getHeight()))!;;
+    BasicArrayList tempPointVector = PointsUtil::getInstance().doTransforms(this->points.getPoints(), canvasAngle, PointFactory::getInstance().createXY(dimension.getWidth(), dimension.getHeight()));;
     
 
-                        if(this.isActive() && this.currentMousePoint != 
-                                    null
+                        if(this->isActive() && this->currentMousePoint != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.currentMousePoint= this.points.getPoints()!.removeAt(this.points.getSize() -1) as GPoint;
+                                    this->currentMousePoint= this->points.getPoints().removeAt(this->points.getSize() -1) as GPoint;
     
 
                                     }
                                 
 
-    size: int32_t = tempPointVector!.size()!;;
+    int32_t size = tempPointVector.size();;
     
 
-    firstPoint: GPoint = 
+    GPoint firstPoint = 
                 null
             ;;
     
@@ -568,7 +563,7 @@ graphics.setStroke(new BasicStroke(x));
                         if(size > 0)
                         
                                     {
-                                    firstPoint= tempPointVector!.get(0) as GPoint;
+                                    firstPoint= tempPointVector.get(0) as GPoint;
     
 
                                     }
@@ -578,12 +573,12 @@ graphics.setStroke(new BasicStroke(x));
 
 
                         for (
-    index: int32_t = 1;index < size; index++)
+    int32_t index = 1;index < size; index++)
         {
 
-    secondPoint: GPoint = tempPointVector!.get(index) as GPoint;;
+    GPoint secondPoint = tempPointVector.get(index) as GPoint;;
     
-graphics.drawLine((firstPoint!.getX() *x) -(x /4), (firstPoint!.getY() *y) -(y /4), (secondPoint!.getX() *x) -(x /4), (secondPoint!.getY() *y) -(y /4));
+graphics.drawLine((firstPoint.getX() *x) -(x /4), (firstPoint.getY() *y) -(y /4), (secondPoint.getX() *x) -(x /4), (secondPoint.getY() *y) -(y /4));
     
 firstPoint= secondPoint;
     
@@ -593,7 +588,7 @@ firstPoint= secondPoint;
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "mouseMoved", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "mouseMoved", e);
     
 }
 
@@ -602,193 +597,193 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "mouseMoved", e);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom(CanvasDom canvasDom){
+    public: Node toDom(CanvasDom canvasDom){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsDomUtil.getInstance()!.toDom(canvasDom, this.points.getPoints());;
+                        return PointsDomUtil::getInstance().toDom(canvasDom, this->points.getPoints());;
     
 }
 
 
-    public bool isValid(){
+    public: bool isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.points.isValid();;
+                        return this->points.isValid();;
     
 }
 
 
-    public Points getPointsInterface(){
+    public: Points getPointsInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.points;
+                        return this->points;
     
 }
 
 
-    public setPointsInterface(Points points){
-this.points= points;
+    public: void setPointsInterface(Points points){
+this->points= points;
     
 }
 
 
-    public Color getColor(){
+    public: Color getColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.color;
+                        return this->color;
     
 }
 
 
-    public setColor(Color color){
-this.color= color;
+    public: void setColor(Color color){
+this->color= color;
     
 }
 
 
-    public mouseClicked(java.awt.event.MouseEvent mouseEvent, int32_t x, int32_t y){
+    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t x, int32_t y){
 
         try {
             
-    mousePoint: GPoint = PointFactory.getInstance()!.createXY(mouseEvent!.getPoint()!.x, mouseEvent!.getPoint()!.y)!;;
+    GPoint mousePoint = PointFactory::getInstance().createXY(mouseEvent.getPoint().x, mouseEvent.getPoint().y);;
     
 
-                        if((mouseEvent!.getModifiers()&mouseEvent!.BUTTON1_MASK) == mouseEvent!.BUTTON1_MASK)
+                        if((mouseEvent.getModifiers()&mouseEvent.BUTTON1_MASK) == mouseEvent.BUTTON1_MASK)
                         
                                     {
                                     
-    point: GPoint = PointFactory.getInstance()!.createXY(mousePoint!.getX() /x, mousePoint!.getY() /y)!;;
+    GPoint point = PointFactory::getInstance().createXY(mousePoint.getX() /x, mousePoint.getY() /y);;
     
-StatusFactory.getInstance()!.setStatus("Line Point Added: " +point.toString());
+StatusFactory::getInstance().setStatus("Line Point Added: " +point.toString());
     
-this.addPoint(point);
+this->addPoint(point);
     
 
                                     }
                                 
                              else 
-                        if((mouseEvent!.getModifiers()&mouseEvent!.BUTTON3_MASK) == mouseEvent!.BUTTON3_MASK)
+                        if((mouseEvent.getModifiers()&mouseEvent.BUTTON3_MASK) == mouseEvent.BUTTON3_MASK)
                         
                                     {
-                                    StatusFactory.getInstance()!.setStatus("Line Point Removed");
+                                    StatusFactory::getInstance().setStatus("Line Point Removed");
     
-this.removePoint();
+this->removePoint();
     
 
                                     }
                                 
-this.currentMousePoint= mousePoint;
+this->currentMousePoint= mousePoint;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "mouseMoved", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "mouseMoved", e);
     
 }
 
 }
 
 
-    public mouseEntered(java.awt.event.MouseEvent mouseEvent){
+    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent){
 }
 
 
-    public mouseExited(java.awt.event.MouseEvent mouseEvent){
+    public: void mouseExited(java::awt::event::MouseEvent mouseEvent){
 }
 
 
-    public mousePressed(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    public: void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
 }
 
 
-    public mouseReleased(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
 }
 
 
-    public mouseDragged(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
+    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell){
 }
 
 
-    public mouseMoved(java.awt.event.MouseEvent mouseEvent, int32_t x, int32_t y){
+    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t x, int32_t y){
 
         try {
             
-    mousePoint: GPoint = PointFactory.getInstance()!.createXY(mouseEvent!.getPoint()!.x, mouseEvent!.getPoint()!.y)!;;
+    GPoint mousePoint = PointFactory::getInstance().createXY(mouseEvent.getPoint().x, mouseEvent.getPoint().y);;
     
 
-    point: GPoint = PointFactory.getInstance()!.createXY(mousePoint!.getX() /x, mousePoint!.getY() /y)!;;
+    GPoint point = PointFactory::getInstance().createXY(mousePoint.getX() /x, mousePoint.getY() /y);;
     
-this.currentMousePoint= point;
+this->currentMousePoint= point;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "mouseMoved", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "mouseMoved", e);
     
 }
 
 }
 
 
-    public keyPressed(java.awt.event.KeyEvent keyEvent){
+    public: void keyPressed(java::awt::event::KeyEvent keyEvent){
 
         try {
             
-    keyCode: int32_t = keyEvent!.getKeyCode()!;;
+    int32_t keyCode = keyEvent.getKeyCode();;
     
 
-                        if(keyCode == keyEvent!.VK_ESCAPE)
+                        if(keyCode == keyEvent.VK_ESCAPE)
                         
                                     {
-                                    StatusFactory.getInstance()!.setStatus("Deactivated");
+                                    StatusFactory::getInstance().setStatus("Deactivated");
     
-this.deactivate();
-    
-
-                                    }
-                                
-                             else 
-                        if(keyCode == keyEvent!.VK_UP)
-                        
-                                    {
-                                    this.translate(0,  -1);
+this->deactivate();
     
 
                                     }
                                 
                              else 
-                        if(keyCode == keyEvent!.VK_DOWN)
+                        if(keyCode == keyEvent.VK_UP)
                         
                                     {
-                                    this.translate(0, 1);
+                                    this->translate(0,  -1);
     
 
                                     }
                                 
                              else 
-                        if(keyCode == keyEvent!.VK_LEFT)
+                        if(keyCode == keyEvent.VK_DOWN)
                         
                                     {
-                                    this.translate( -1, 0);
+                                    this->translate(0, 1);
     
 
                                     }
                                 
                              else 
-                        if(keyCode == keyEvent!.VK_RIGHT)
+                        if(keyCode == keyEvent.VK_LEFT)
                         
                                     {
-                                    this.translate(1, 0);
+                                    this->translate( -1, 0);
+    
+
+                                    }
+                                
+                             else 
+                        if(keyCode == keyEvent.VK_RIGHT)
+                        
+                                    {
+                                    this->translate(1, 0);
     
 
                                     }
@@ -797,18 +792,18 @@ this.deactivate();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, gameInputStrings!.KEY_PRESSED, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, gameInputStrings.KEY_PRESSED, e);
     
 }
 
 }
 
 
-    public keyReleased(java.awt.event.KeyEvent keyEvent){
+    public: void keyReleased(java::awt::event::KeyEvent keyEvent){
 }
 
 
-    public keyTyped(java.awt.event.KeyEvent keyEvent){
+    public: void keyTyped(java::awt::event::KeyEvent keyEvent){
 }
 
 

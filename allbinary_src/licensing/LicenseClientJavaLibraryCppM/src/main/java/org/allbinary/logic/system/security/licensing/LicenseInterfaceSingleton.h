@@ -47,13 +47,12 @@
 class LicenseInterfaceSingleton
             : public Object
          {
-        
 
-    private: static licenseInterface: AbeLicenseInterface = AbeNoLicense.getInstance()!;
+    private: static AbeLicenseInterface licenseInterface = AbeNoLicense::getInstance();
 
-    public static AbeLicenseInterface getInstance();
+    public: static AbeLicenseInterface getInstance();
 
-    public static init(AbeLicenseInterface licenseInterface);
+    public: static void init(AbeLicenseInterface licenseInterface);
 
 };
 

@@ -72,48 +72,47 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingAddressView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class ShippingAddressView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    streetAddress: StreetAddress;
+    protected: StreetAddress streetAddress;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ShippingAddressView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = this.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
     
-this.request= httpTransformInfoInterface!.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= httpTransformInfoInterface.getPageContext().getRequest() as HttpServletRequest;
     
 }
 
 
-    HttpServletRequest getRequest(){
+    protected: HttpServletRequest getRequest(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.request;
+                        return this->request;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    formNode: Node = document.createElement(StreetAddressData.FORM)!;;
+    Node formNode = document.createElement(StreetAddressData::FORM);;
     
-formNode!.appendChild(this.streetAddress!.toXmlNode(document));
+formNode.appendChild(this->streetAddress.toXmlNode(document));
     
 
 
@@ -126,10 +125,10 @@ formNode!.appendChild(this.streetAddress!.toXmlNode(document));
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -144,20 +143,20 @@ formNode!.appendChild(this.streetAddress!.toXmlNode(document));
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
-this.addDomNodeInterface(new StatesView() as DomNodeInterface);
+this->addDomNodeInterface(StatesView() as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -170,10 +169,10 @@ this.addDomNodeInterface(new StatesView() as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

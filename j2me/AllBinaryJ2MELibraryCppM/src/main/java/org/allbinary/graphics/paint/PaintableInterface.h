@@ -50,11 +50,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaintableInterface {
-        
 
-    paint(Graphics graphics);
+    void paint(Graphics graphics);
 
-    paintThreed(Graphics graphics);
+    void paintThreed(Graphics graphics);
 
 };
 

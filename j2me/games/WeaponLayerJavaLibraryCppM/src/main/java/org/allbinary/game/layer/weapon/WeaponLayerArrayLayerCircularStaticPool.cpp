@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -48,38 +50,37 @@
 class WeaponLayerArrayLayerCircularStaticPool
             : public Object
          {
-        
 
-    private: static const instance: WeaponLayerArrayLayerCircularStaticPool = new WeaponLayerArrayLayerCircularStaticPool();
+    private: static WeaponLayerArrayLayerCircularStaticPool instance() { return WeaponLayerArrayLayerCircularStaticPool(); }
 
-    public static WeaponLayerArrayLayerCircularStaticPool getInstance(){
+    public: static WeaponLayerArrayLayerCircularStaticPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WeaponLayerArrayLayerCircularStaticPool.instance;
+                        return WeaponLayerArrayLayerCircularStaticPool::instance();
     
 }
 
 
-    private: const MAX: int32_t = 5;
+    private: const int32_t MAX = 5;
 
-    private: circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(this.MAX)!;
+    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(this->MAX);
 
-    private: ALL_WEAPONLAYER_ARRAY: std::vector<std::vector<std::vector<any>>> = new Array(4)
+    private: std::vector<std::vector<std::vector<Object*>>> ALL_WEAPONLAYER_ARRAY = new Array(4)
                                                         ;
 
-    public init(){
+    public: void init(){
 
-    WEAPONLAYER_ARRAY: std::vector<std::vector<any>> = new Array(this.MAX *2)
+    std::vector<std::vector<Object*>> WEAPONLAYER_ARRAY = new Array(this->MAX *2)
                                                             ;;
     
 
-    TWO_WEAPONLAYER_ARRAY: std::vector<std::vector<any>> = new Array(this.MAX)
+    std::vector<std::vector<Object*>> TWO_WEAPONLAYER_ARRAY = new Array(this->MAX)
                                                             ;;
     
 
-    THREE_WEAPONLAYER_ARRAY: std::vector<std::vector<any>> = new Array(this.MAX)
+    std::vector<std::vector<Object*>> THREE_WEAPONLAYER_ARRAY = new Array(this->MAX)
                                                             ;;
     
 
@@ -87,7 +88,7 @@ class WeaponLayerArrayLayerCircularStaticPool
 
 
                         for (
-    index: int32_t = 0;index < this.MAX; index++)
+    int32_t index = 0;index < this->MAX; index++)
         {
 WEAPONLAYER_ARRAY[index]= new Array(1);
     
@@ -97,11 +98,11 @@ THREE_WEAPONLAYER_ARRAY[index]= new Array(3);
     
 }
 
-this.ALL_WEAPONLAYER_ARRAY[1]= WEAPONLAYER_ARRAY;
+this->ALL_WEAPONLAYER_ARRAY[1]= WEAPONLAYER_ARRAY;
     
-this.ALL_WEAPONLAYER_ARRAY[2]= TWO_WEAPONLAYER_ARRAY;
+this->ALL_WEAPONLAYER_ARRAY[2]= TWO_WEAPONLAYER_ARRAY;
     
-this.ALL_WEAPONLAYER_ARRAY[3]= THREE_WEAPONLAYER_ARRAY;
+this->ALL_WEAPONLAYER_ARRAY[3]= THREE_WEAPONLAYER_ARRAY;
     
 }
 
@@ -109,11 +110,11 @@ this.ALL_WEAPONLAYER_ARRAY[3]= THREE_WEAPONLAYER_ARRAY;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public std::vector<WeaponLayer> getInstanceArray(int32_t size){
+    public: std::vector<WeaponLayer> getInstanceArray(int32_t size){
 
-    weaponLayerArray: std::vector<WeaponLayer> = this.ALL_WEAPONLAYER_ARRAY[size]![this.circularIndexUtil!.getIndex()]! as WeaponLayer[];;
+    std::vector<WeaponLayer> weaponLayerArray = this->ALL_WEAPONLAYER_ARRAY[size]![this->circularIndexUtil.getIndex()]! as WeaponLayer[];;
     
-this.circularIndexUtil!.next();
+this->circularIndexUtil.next();
     
 
 

@@ -45,11 +45,10 @@
 class GeneratorTransformInfoData
             : public Object
          {
-        
 
-    public static const NAME: string = "GENERATOR_TRANSFORM_INFO_NAME";
+    public: static const std::string NAME = "GENERATOR_TRANSFORM_INFO_NAME";
 
-private constructor ();
+private: GeneratorTransformInfoData();
 
 };
 

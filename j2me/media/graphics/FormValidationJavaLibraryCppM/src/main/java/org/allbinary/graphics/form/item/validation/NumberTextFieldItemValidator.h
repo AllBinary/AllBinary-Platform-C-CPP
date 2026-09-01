@@ -69,25 +69,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NumberTextFieldItemValidator: public ValidatorBase {
-        
 
-    private: const textFieldItem: ABTextFieldItem;
+    private: ABTextFieldItem textFieldItem;
 
-    private: const min: int32_t;
+    private: int32_t min;
 
-    private: const max: int32_t;
+    private: int32_t max;
 
-    private: const maxChars: int32_t;
+    private: int32_t maxChars;
 
-public constructor (ABTextFieldItem textFieldItem, int32_t maxChars, int32_t min, int32_t max);
+public: NumberTextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t maxChars, int32_t min, int32_t max);
 
-    Boolean isNumberValid(Integer value);
+    protected: Boolean isNumberValid(Integer value);
 
-    Vector<any> toNumberVector(Integer value);
+    protected: Vector<any> toNumberVector(Integer value);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public BasicArrayList toList();
+    public: BasicArrayList toList();
 
 };
 

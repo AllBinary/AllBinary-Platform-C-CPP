@@ -78,47 +78,44 @@
 #include "InventoryItemViewParentTagHelper.h"
 
 class InventoryRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const itemInterface: ItemInterface;
+    private: ItemInterface itemInterface;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: InventoryRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
-            super();
-        
-    inventoryTag: HelperTag = propertiesHashMap!.get(AbTagData.PARENT) as HelperTag;;
+    HelperTag inventoryTag = propertiesHashMap.get(AbTagData::PARENT) as HelperTag;;
     
 
-    itemView: InventoryItemView = InventoryItemViewParentTagHelper.getInstance()!.getInventoryItemView(inventoryTag)!;;
+    InventoryItemView itemView = InventoryItemViewParentTagHelper::getInstance().getInventoryItemView(inventoryTag);;
     
-this.itemInterface= itemView!.getItemInterface();
+this->itemInterface= itemView.getItemInterface();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    dataMappingInterface: TableMappingInterface = this.getItemInterface() as TableMappingInterface;;
+    TableMappingInterface dataMappingInterface = this->getItemInterface() as TableMappingInterface;;
     
 
-    values: Vector = dataMappingInterface!.toVector()!;;
+    Vector values = dataMappingInterface.toVector();;
     
-InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.insert(values);
-    
-
-    success: string = "Successfully Added Product";;
+InventoryEntityFactory::getInstance().getInventoryEntityInstance().insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = "Successfully Added Product";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "insert()");
+                                    this->logUtil.putF(success, this, "insert()");
     
 
                                     }
@@ -134,13 +131,13 @@ InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.insert(value
 } catch(e) 
             {
 
-    error: string = "Failed to add item to Inventory";;
+    std::string error = "Failed to add item to Inventory";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "insert()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
     
 
                                     }
@@ -156,38 +153,38 @@ InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.insert(value
 }
 
 
-    public string delete(){
+    public: std::string delete_(){
 
         try {
             
-    dataMappingInterface: TableMappingInterface = this.getItemInterface() as TableMappingInterface;;
+    TableMappingInterface dataMappingInterface = this->getItemInterface() as TableMappingInterface;;
     
 
-    id: string = dataMappingInterface!.getKey() as string;;
+    std::string id = dataMappingInterface.getKey() as string;;
     
-InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.deleteWhere(BasicItemData.ID, id);
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("Successfully Removed the item with ");
-    
-stringBuffer!.append(BasicItemData.ID);
-    
-stringBuffer!.append("=");
-    
-stringBuffer!.append(id);
-    
-stringBuffer!.append(" from to the Inventory table");
+InventoryEntityFactory::getInstance().getInventoryEntityInstance().deleteWhere(BasicItemData::ID, id);
     
 
-    success: string = stringBuffer!.toString()!;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("Successfully Removed the item with ");
+    
+stringBuffer.append(BasicItemData::ID);
+    
+stringBuffer.append("=");
+    
+stringBuffer.append(id);
+    
+stringBuffer.append(" from to the Inventory table");
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = stringBuffer.toString();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF(success, this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -203,13 +200,13 @@ stringBuffer!.append(" from to the Inventory table");
 } catch(e) 
             {
 
-    error: string = "Failed to remove item with from Inventory";;
+    std::string error = "Failed to remove item with from Inventory";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, tagStrings!.DO_START_TAG, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, tagStrings.DO_START_TAG, e);
     
 
                                     }
@@ -225,21 +222,21 @@ stringBuffer!.append(" from to the Inventory table");
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
-            this.delete();
+            this->delete();
     
-this.insert();
-    
-
-    success: string = "Item Successfully Updated";;
+this->insert();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = "Item Successfully Updated";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "update()");
+                                    this->logUtil.putF(success, this, "update()");
     
 
                                     }
@@ -255,13 +252,13 @@ this.insert();
 } catch(e) 
             {
 
-    error: string = "Failed To Update Item";;
+    std::string error = "Failed To Update Item";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }
@@ -277,12 +274,12 @@ this.insert();
 }
 
 
-    public ItemInterface getItemInterface(){
+    public: ItemInterface getItemInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.itemInterface;
+                        return this->itemInterface;
     
 }
 

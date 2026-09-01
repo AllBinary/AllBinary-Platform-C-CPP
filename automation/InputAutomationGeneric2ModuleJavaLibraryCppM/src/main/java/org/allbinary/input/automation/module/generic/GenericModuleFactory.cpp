@@ -66,12 +66,11 @@
 #include "GenericInputAutomationWorker.h"
 
 class GenericModuleFactory: public AbstractInputAutomationFactory {
-        
 
-    private: static NAME: string = "Generic" +InputAutomationModuleData.MODULE_NAME_END;
+    private: static std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
 
-public constructor (){
-            super(NAME, new GenericModuleConfigurationJPanel());
+public: GenericModuleFactory(){
+            super(NAME, GenericModuleConfigurationJPanel());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -82,18 +81,18 @@ public constructor (){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public RunnableInterface getInstance(){
+    public: RunnableInterface getInstance(){
 
-    genericProfile: GenericProfile = (getConfigurationJPanel as GenericModuleConfigurationJPanel).getSelectedGenericProfile()!;;
+    GenericProfile genericProfile = (getConfigurationJPanel as GenericModuleConfigurationJPanel).getSelectedGenericProfile();;
     
 
-    inputAutomationActionInterface: InputAutomationActionInterface = new GenericInputAutomationAction() as InputAutomationActionInterface;;
+    InputAutomationActionInterface inputAutomationActionInterface = GenericInputAutomationAction() as InputAutomationActionInterface;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GenericInputAutomationWorker(inputAutomationActionInterface, genericProfile, new NoMotionRectangleConstraints(), new NoImageComparatorConstraints()) as RunnableInterface;
+                        return GenericInputAutomationWorker(inputAutomationActionInterface, genericProfile, NoMotionRectangleConstraints(), NoImageComparatorConstraints()) as RunnableInterface;
     
 }
 

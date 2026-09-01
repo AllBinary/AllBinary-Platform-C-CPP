@@ -59,21 +59,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInitializedEvent: public AllBinaryEventObject {
-        
 
-    private: resourceLoadingLevel: ResourceLoadingLevel = ResourceLoadingLevelFactory.getInstance()!.LEVEL;
+    private: ResourceLoadingLevel resourceLoadingLevel = ResourceLoadingLevelFactory::getInstance().LEVEL;
 
-    private: level: int32_t= 0;
+    private: int32_t level= 0;
 
-public constructor (any = {} anyType);
+public: GameInitializedEvent(Object* anyType);
 
-    public setLevel(int32_t level);
+    public: void setLevel(int32_t level);
 
-    public int32_t getLevel();
+    public: int32_t getLevel();
 
-    public setResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel);
+    public: void setResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel);
 
-    public ResourceLoadingLevel getResourceLoadingLevel();
+    public: ResourceLoadingLevel getResourceLoadingLevel();
 
 };
 

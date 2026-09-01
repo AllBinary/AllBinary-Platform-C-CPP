@@ -54,28 +54,27 @@
 class CustomGameMenuUtil
             : public Object
          {
-        
 
-    public static add(MyCanvas canvas){
+    public: static void add(MyCanvas canvas){
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-                        if(AppletUtil.isAppletLoader(canvas))
+                        if(AppletUtil::isAppletLoader(canvas))
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(J2MEUtil.isHTML())
+                        if(J2MEUtil::isHTML())
                         
                                     {
                                     
                                     }
                                 
                         else {
-                            canvas.addCommand(gameCommandsFactory!.EXIT_COMMAND);
+                            canvas.addCommand(gameCommandsFactory.EXIT_COMMAND);
     
 
                         }

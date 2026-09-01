@@ -54,17 +54,16 @@
 class RectangleCollisionUtil
             : public Object
          {
-        
 
-    private: static const instance: RectangleCollisionUtil = new RectangleCollisionUtil();
+    private: static RectangleCollisionUtil instance() { return RectangleCollisionUtil(); }
 
-    public static RectangleCollisionUtil getInstance();
+    public: static RectangleCollisionUtil getInstance();
 
-private constructor ();
+private: RectangleCollisionUtil();
 
-    public bool isCollision(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2);
+    public: bool isCollision(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2);
 
-    public bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t x, int32_t y);
+    public: bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t x, int32_t y);
 
 };
 

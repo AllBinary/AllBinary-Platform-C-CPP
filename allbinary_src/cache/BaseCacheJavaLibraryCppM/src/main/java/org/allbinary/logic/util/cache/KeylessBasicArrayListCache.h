@@ -56,19 +56,18 @@
         #include "IndexedBasicArrayListCache.h"
 
 class KeylessBasicArrayListCache: public IndexedBasicArrayListCache {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    protected: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-public constructor ();
+public: KeylessBasicArrayListCache();
 
-    public BasicArrayList get();
+    public: BasicArrayList get();
 
-    public clear();
+    public: void clear();
 
-    public string log();
+    public: std::string log();
 
 };
 

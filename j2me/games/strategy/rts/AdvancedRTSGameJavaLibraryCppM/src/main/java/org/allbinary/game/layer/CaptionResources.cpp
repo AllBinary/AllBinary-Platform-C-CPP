@@ -42,27 +42,24 @@
 class CaptionResources
             : public Object
          {
-        
 
-    private: static const instance: CaptionResources = new CaptionResources();
+    private: static CaptionResources instance() { return CaptionResources(); }
 
-    public static CaptionResources getInstance(){
+    public: static CaptionResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CaptionResources.instance;
+                        return CaptionResources::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CaptionResources(){
+}
 
 
-    public const RESOURCE: string = "/unit_message_bubbled_box.png";
+    public: const std::string RESOURCE = "/unit_message_bubbled_box.png";
 
 };
 

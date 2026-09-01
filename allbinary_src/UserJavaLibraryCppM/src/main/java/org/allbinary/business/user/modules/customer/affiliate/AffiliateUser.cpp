@@ -52,52 +52,51 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AffiliateUser: public User {
-        
 
-    private: affiliateSales: AffiliateSales;
+    private: AffiliateSales affiliateSales;
 
-public constructor (){
+public: AffiliateUser(){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.affiliateSales= new AffiliateSales();
+this->affiliateSales= AffiliateSales();
     
 }
 
 
-public constructor (HashMap<any, any> userHashMap){
+public: AffiliateUser(HashMap<any, any> userHashMap){
             super(userHashMap);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.affiliateSales= new AffiliateSales();
+this->affiliateSales= AffiliateSales();
     
 }
 
 
-    public validateSession(WeblisketSessionInterface weblisketSession){
+    public: void validateSession(WeblisketSessionInterface weblisketSession){
 super.validateSession(weblisketSession);
     
-this.updateSession(weblisketSession);
+this->updateSession(weblisketSession);
     
 }
 
 
-    public updateSession(WeblisketSessionInterface weblisketSession){
-weblisketSession!.setStoreName(this.getPermissions());
+    public: void updateSession(WeblisketSessionInterface weblisketSession){
+weblisketSession.setStoreName(this->getPermissions());
     
 }
 
 
-    public Boolean isSessionValid(){
+    public: Boolean isSessionValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.affiliateSales!.isValid();;
+                        return this->affiliateSales.isValid();;
     
 }
 

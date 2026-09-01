@@ -46,67 +46,64 @@
 /*actual*/ class SystemProperties
             : public Object
          {
-        
 
-    private: static const instance: SystemProperties = new SystemProperties();
+    private: static SystemProperties instance() { return SystemProperties(); }
 
-    /*actual*/ public static SystemProperties getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return SystemProperties.instance;
-    
-}
-
-
-    private: const OS_NAME: string = "os.name";
-
-    private: const OS_ARCH: string = "os.arch";
-
-    private: const OS_VERSION: string = "os.version";
-
-private constructor (){
-
-            super();
-        }
-
-
-    /*actual*/ public string getName(){
+    /*actual*/ public: static SystemProperties getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return System.getProperty(this.OS_NAME);;
+                        return SystemProperties::instance();
     
 }
 
 
-    /*actual*/ public string getArch(){
+    private: const std::string OS_NAME = "os.name";
+
+    private: const std::string OS_ARCH = "os.arch";
+
+    private: const std::string OS_VERSION = "os.version";
+
+private: SystemProperties(){
+}
+
+
+    /*actual*/ public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return System.getProperty(this.OS_ARCH);;
+                        return System.getProperty(this->OS_NAME);;
     
 }
 
 
-    /*actual*/ public string getVersion(){
+    /*actual*/ public: std::string getArch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return System.getProperty(this.OS_VERSION);;
+                        return System.getProperty(this->OS_ARCH);;
     
 }
 
 
-    public string getUserHomePath(){
+    /*actual*/ public: std::string getVersion(){
 
 
 
-                            throw new RuntimeException();
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return System.getProperty(this->OS_VERSION);;
+    
+}
+
+
+    public: std::string getUserHomePath(){
+
+
+
+                            throw RuntimeException();
                     
 }
 

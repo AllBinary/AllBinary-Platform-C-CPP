@@ -62,12 +62,11 @@
         #include "TitleView.h"
 #include "TitleData.h"
 
-class TitleValidation: public TitleView: public ValidationInterface {
-        
+class TitleValidation: public TitleView, public ValidationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
+public: TitleValidation(){
             super();
                     
 
@@ -76,7 +75,7 @@ public constructor (){
 }
 
 
-public constructor (Node node){
+public: TitleValidation(Node node){
             super(node);
                     
 
@@ -85,7 +84,7 @@ public constructor (Node node){
 }
 
 
-public constructor (HashMap<any, any> hashMap){
+public: TitleValidation(HashMap<any, any> hashMap){
             super(hashMap);
                     
 
@@ -94,35 +93,35 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("TitleValidation", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("TitleValidation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isValidRequired(this.getTitle(), 1, TitleData.getInstance()!.MAXLEN))
+                        if(!StringValidationUtil::getInstance().isValidRequired(this->getTitle(), 1, TitleData::getInstance().MAXLEN))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("TitleValidation: " +valid, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("TitleValidation: " +valid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -138,10 +137,10 @@ public constructor (HashMap<any, any> hashMap){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -150,36 +149,36 @@ public constructor (HashMap<any, any> hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Title is not valid.");
+stringBuffer.append("Title is not valid.");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -195,7 +194,7 @@ stringBuffer!.append("Title is not valid.");
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -205,7 +204,7 @@ stringBuffer!.append("Title is not valid.");
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

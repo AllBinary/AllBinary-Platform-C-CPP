@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameFeatureCanvas: public Canvas {
-        
 
-public constructor ();
+public: GameFeatureCanvas();
 
-    paint(Graphics graphics);
+    protected: void paint(Graphics graphics);
 
 };
 

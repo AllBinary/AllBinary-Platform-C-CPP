@@ -40,58 +40,55 @@
 class PlacedLayerFactory
             : public Object
          {
-        
 
-    private: static const instance: PlacedLayerFactory = new PlacedLayerFactory();
+    private: static PlacedLayerFactory instance() { return PlacedLayerFactory(); }
 
-    public static PlacedLayerFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlacedLayerFactory.instance;
-    
-}
-
-
-    private: const list: BasicArrayList = new BasicArrayListD();
-
-private constructor (){
-
-            super();
-        }
-
-
-    public clear(){
-this.list.clear();
-    
-}
-
-
-    public int32_t getSize(){
+    public: static PlacedLayerFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size();;
+                        return PlacedLayerFactory::instance();
     
 }
 
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public AllBinaryLayerFactoryInterface getRandomInstance(){
+private: PlacedLayerFactory(){
+}
+
+
+    public: void clear(){
+this->list.clear();
+    
+}
+
+
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getRandom(this.list) as AllBinaryLayerFactoryInterface;
+                        return this->list.size();;
     
 }
 
 
-    public add(AllBinaryLayerFactoryInterface layerInterfaceFactoryInterface){
-this.list.add(layerInterfaceFactoryInterface);
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
+
+    public: AllBinaryLayerFactoryInterface getRandomInstance(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->basicArrayListUtil.getRandom(this->list) as AllBinaryLayerFactoryInterface;
+    
+}
+
+
+    public: void add(AllBinaryLayerFactoryInterface layerInterfaceFactoryInterface){
+this->list.add(layerInterfaceFactoryInterface);
     
 }
 

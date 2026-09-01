@@ -55,13 +55,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TaxAddressTag: public StoreValidationTransformTag {
-        
 
-public constructor ();
+public: TaxAddressTag();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

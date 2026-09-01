@@ -42,7 +42,6 @@
         #include "Movement.h"
 
 class MovementCompositeInterface {
-        
 
     Movement getMovement();
 

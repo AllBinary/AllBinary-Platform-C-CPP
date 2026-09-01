@@ -58,16 +58,15 @@
 class ProgressCanvasFactory
             : public Object
          {
-        
 
-    private: static PROGRESS_FORM_SCREEN: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* PROGRESS_FORM_SCREEN = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ProgressCanvas getInstance(){
+    public: static ProgressCanvas getInstance(){
 
-                        if(ProgressCanvasFactory.PROGRESS_FORM_SCREEN == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(ProgressCanvasFactory::PROGRESS_FORM_SCREEN == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    ProgressCanvasFactory.PROGRESS_FORM_SCREEN= new ProgressCanvas(StringUtil.getInstance()!.EMPTY_STRING, BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+                                    ProgressCanvasFactory::PROGRESS_FORM_SCREEN= ProgressCanvas(StringUtil::getInstance().EMPTY_STRING, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
     
 
                                     }
@@ -76,17 +75,17 @@ class ProgressCanvasFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProgressCanvasFactory.PROGRESS_FORM_SCREEN as ProgressCanvas;
+                        return ProgressCanvasFactory::PROGRESS_FORM_SCREEN as ProgressCanvas;
     
 }
 
 
-    public static PaintableInterface getLazyInstance(){
+    public: static PaintableInterface getLazyInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullPaintable.getInstance();;
+                        return NullPaintable::getInstance();;
     
 }
 

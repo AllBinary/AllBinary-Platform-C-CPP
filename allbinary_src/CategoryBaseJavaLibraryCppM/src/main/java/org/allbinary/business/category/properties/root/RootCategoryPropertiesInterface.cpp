@@ -43,11 +43,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RootCategoryPropertiesInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    setRootFilePath(AbPath value)
+    void setRootFilePath(AbPath value)
 
                 //@Throws(Exception.constructor)
             

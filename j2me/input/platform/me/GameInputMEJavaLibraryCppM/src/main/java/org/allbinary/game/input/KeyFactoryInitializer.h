@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class KeyFactoryInitializer: public Init {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public init();
+    public: void init();
 
 };
 

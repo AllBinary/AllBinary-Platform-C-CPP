@@ -58,35 +58,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UnitGameResources: public BasicGameResources {
-        
 
-    private: static const ICON: string = "_icon";
+    private: static const std::string ICON = "_icon";
 
-    private: static const BUILD: string = "_build";
+    private: static const std::string BUILD = "_build";
 
-    private: static const DESTROY: string = "_destroy";
+    private: static const std::string DESTROY = "_destroy";
 
-    private: static const ICON_BUILD: string = "_icon" +UnitGameResources.BUILD;
+    private: static const std::string ICON_BUILD = "_icon" +UnitGameResources::BUILD;
 
-    public NAME: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string NAME = StringUtil::getInstance().EMPTY_STRING;
 
-    public RESOURCE_ICON_ANIMATION: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string RESOURCE_ICON_ANIMATION = StringUtil::getInstance().EMPTY_STRING;
 
-    public RESOURCE_ICON_BUILD: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string RESOURCE_ICON_BUILD = StringUtil::getInstance().EMPTY_STRING;
 
-    public RESOURCE_ICON: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string RESOURCE_ICON = StringUtil::getInstance().EMPTY_STRING;
 
-protected constructor ();
+protected: UnitGameResources();
 
-    private: const ICON_SIZE: string = "_64_by_64.png";
-
-                //@Throws(Exception.constructor)
-            
-    append(string ROOT, string sizeString);
+    private: const std::string ICON_SIZE = "_64_by_64.png";
 
                 //@Throws(Exception.constructor)
             
-    string getString();
+    protected: void append(std::string ROOT, std::string sizeString);
+
+                //@Throws(Exception.constructor)
+            
+    protected: std::string getString();
 
 };
 

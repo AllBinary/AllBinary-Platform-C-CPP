@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMVIEW_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMVIEW_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -74,17 +76,16 @@
 class ItemView
             : public Object
          {
-        
 
-    private: const itemInterface: OrderItemInterface;
+    private: OrderItemInterface itemInterface;
 
-    private: const vector: Vector;
+    private: Vector vector;
 
-public constructor (OrderItemInterface itemInterface, Vector vector);
+public: ItemView(OrderItemInterface itemInterface, Vector vector);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

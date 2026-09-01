@@ -47,21 +47,20 @@
 class ImageUnifierCell
             : public Object
          {
-        
 
-    private: width: Integer;
+    private: Integer width;
 
-    private: height: Integer;
+    private: Integer height;
 
-public constructor (Integer width, Integer height);
+public: ImageUnifierCell(Integer width, Integer height);
 
-    public Integer getWidth();
+    public: Integer getWidth();
 
-    public setWidth(Integer width);
+    public: void setWidth(Integer width);
 
-    public Integer getHeight();
+    public: Integer getHeight();
 
-    public setHeight(Integer height);
+    public: void setHeight(Integer height);
 
 };
 

@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Class.h"
@@ -50,52 +52,36 @@
 class ArrayUtil
             : public Object
          {
-        
 
-    private: static const instance: ArrayUtil = new ArrayUtil();
+    private: static ArrayUtil instance() { return ArrayUtil(); }
 
-    public static ArrayUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArrayUtil.instance;
-    
-}
-
-
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
-
-    public std::vector<any> copyOf(std::vector<any> original, int32_t newLength){
+    public: static ArrayUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.copyOfType(original, newLength, original.constructor);;
+                        return ArrayUtil::instance();
     
 }
 
 
-    public std::vector<any> copyOfType(std::vector<any> original, int32_t newLength, Function newType){
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    copy: std::vector<any> = new Array(newLength);;
-    
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
-    
+    public: std::vector<Object*> copyOf(std::vector<Object*> original, int32_t newLength){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return copy;
+                        return this->copyOfType(original, newLength, original.constructor);;
     
 }
 
 
-    public std::vector<int8_t> copyOfbyte(std::vector<int8_t> original, int32_t newLength){
+    public: std::vector<Object*> copyOfType(std::vector<Object*> original, int32_t newLength, Function newType){
 
-    copy: std::vector<int8_t> = new Array(newLength);;
+    std::vector<Object*> copy = new Array(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
     
 
 
@@ -106,26 +92,11 @@ System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLe
 }
 
 
-    public std::vector<int16_t> copyOfshort(std::vector<int16_t> original, int32_t newLength){
+    public: std::vector<int8_t> copyOfbyte(std::vector<int8_t> original, int32_t newLength){
 
-    copy: std::vector<int16_t> = new Array(newLength);;
+    std::vector<int8_t> copy = new Array(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return copy;
-    
-}
-
-
-    public std::vector<int32_t> copyOfint(std::vector<int32_t> original, int32_t newLength){
-
-    copy: std::vector<int32_t> = new Array(newLength);;
-    
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
     
 
 
@@ -136,11 +107,11 @@ System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLe
 }
 
 
-    public std::vector<int64_t> copyOflong(std::vector<int64_t> original, int32_t newLength){
+    public: std::vector<int16_t> copyOfshort(std::vector<int16_t> original, int32_t newLength){
 
-    copy: std::vector<int64_t> = new Array(newLength);;
+    std::vector<int16_t> copy = new Array(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
     
 
 
@@ -151,14 +122,44 @@ System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLe
 }
 
 
-    public std::vector<char> copyOfchar(std::vector<char> original, int32_t newLength){
+    public: std::vector<int32_t> copyOfint(std::vector<int32_t> original, int32_t newLength){
 
-    copy: std::vector<char> = 
+    std::vector<int32_t> copy = new Array(newLength);;
+    
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return copy;
+    
+}
+
+
+    public: std::vector<int64_t> copyOflong(std::vector<int64_t> original, int32_t newLength){
+
+    std::vector<int64_t> copy = new Array(newLength);;
+    
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return copy;
+    
+}
+
+
+    public: std::vector<char> copyOfchar(std::vector<char> original, int32_t newLength){
+
+    std::vector<char> copy = 
                                                         
-                                                        new Array(newLength)
+                                                        std::vector<char>(newLength)
                                                     ;;
     
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
     
 
 
@@ -169,26 +170,11 @@ System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLe
 }
 
 
-    public std::vector<float> copyOffloat(std::vector<float> original, int32_t newLength){
+    public: std::vector<float> copyOffloat(std::vector<float> original, int32_t newLength){
 
-    copy: std::vector<float> = new Array(newLength);;
+    std::vector<float> copy = new Array(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return copy;
-    
-}
-
-
-    public std::vector<double> copyOfdouble(std::vector<double> original, int32_t newLength){
-
-    copy: std::vector<double> = new Array(newLength);;
-    
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
     
 
 
@@ -199,11 +185,11 @@ System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLe
 }
 
 
-    public std::vector<bool> copyOfboolean(std::vector<bool> original, int32_t newLength){
+    public: std::vector<double> copyOfdouble(std::vector<double> original, int32_t newLength){
 
-    copy: std::vector<bool> = new Array(newLength);;
+    std::vector<double> copy = new Array(newLength);;
     
-System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLength));
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
     
 
 
@@ -214,22 +200,37 @@ System.arraycopy(original, 0, copy, 0, this.mathUtil!.min(original.length, newLe
 }
 
 
-    public reverse(std::vector<int32_t> intArray){
+    public: std::vector<bool> copyOfboolean(std::vector<bool> original, int32_t newLength){
 
-    length: int32_t = intArray!.length -1;;
+    std::vector<bool> copy = new Array(newLength);;
+    
+std::copy(original.begin() + 0, original.begin() + 0 + min, copy.begin() + 0);
     
 
-    temp: int32_t= 0;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return copy;
+    
+}
+
+
+    public: void reverse(std::vector<int32_t> intArray){
+
+    int32_t length = intArray.size() -1;;
     
 
-    size: int32_t = length /2;;
+    int32_t temp= 0;;
+    
+
+    int32_t size = length /2;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index <= size; index++)
+    int32_t index = 0;index <= size; index++)
         {
 temp= intArray[index]!;
     
@@ -242,32 +243,32 @@ intArray[length -index]= temp;
 }
 
 
-    public flip(std::vector<int32_t> intArray, int32_t width, int32_t height){
+    public: void flip(std::vector<int32_t> intArray, int32_t width, int32_t height){
 
-    length: int32_t = height -1;;
+    int32_t length = height -1;;
     
 
-    temp: int32_t= 0;;
+    int32_t temp= 0;;
     
 
-    index: int32_t= 0;;
+    int32_t index= 0;;
     
 
-    rowIndex: int32_t= 0;;
+    int32_t rowIndex= 0;;
     
 
 
 
 
                         for (
-    y: int32_t = 0;y <= length /2; y++)
+    int32_t y = 0;y <= length /2; y++)
         {
 
 
 
 
                         for (
-    x: int32_t = 0;x < width; x++)
+    int32_t x = 0;x < width; x++)
         {
 rowIndex= ((length -y) *width);
     
@@ -286,46 +287,44 @@ intArray[rowIndex +x]= temp;
 }
 
 
-    public string toStringFromTwoDimensionaArray(std::vector<std::vector<int32_t>> twoDimensionalIntArray){
+    public: std::string toStringFromTwoDimensionaArray(std::vector<std::vector<int32_t>> twoDimensionalIntArray){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    endIndex: int32_t = twoDimensionalIntArray!.length
-                ;;
+    int32_t endIndex = twoDimensionalIntArray.size();;
     
 
-    endIndex2: int32_t = twoDimensionalIntArray[0]!.length
-                ;;
-    
-
-
-
-
-                        for (
-    index: int32_t = 0;index < endIndex; index++)
-        {
-stringBuffer!.append(commonSeps!.BRACE_OPEN);
+    int32_t endIndex2 = twoDimensionalIntArray[0]!.size();;
     
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < endIndex2; index2++)
+    int32_t index = 0;index < endIndex; index++)
         {
-stringBuffer!.appendint(twoDimensionalIntArray[index]![index2]!);
+stringBuffer.append(commonSeps.BRACE_OPEN);
     
-stringBuffer!.append(commonSeps!.COMMA_SEP);
+
+
+
+
+                        for (
+    int32_t index2 = 0;index2 < endIndex2; index2++)
+        {
+stringBuffer.appendint(twoDimensionalIntArray[index]![index2]!);
+    
+stringBuffer.append(commonSeps.COMMA_SEP);
     
 }
 
-stringBuffer!.append(commonSeps!.BRACE_CLOSE);
+stringBuffer.append(commonSeps.BRACE_CLOSE);
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
 }
 
@@ -333,28 +332,28 @@ stringBuffer!.append(commonSeps!.NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string toStringFromObjectArray(std::vector<any> objectArray){
+    public: std::string toStringFromObjectArray(std::vector<Object*> objectArray){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < objectArray!.length; index++)
+    int32_t index = 0;index < objectArray.size(); index++)
         {
-stringBuffer!.append(StringUtil.getInstance()!.toString(objectArray[index]!));
+stringBuffer.append(StringUtil::getInstance().toString(objectArray[index]!));
     
-stringBuffer!.append(commonSeps!.COMMA_SEP);
+stringBuffer.append(commonSeps.COMMA_SEP);
     
 }
 
@@ -362,28 +361,28 @@ stringBuffer!.append(commonSeps!.COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string toStringFromByteArray(std::vector<int8_t> byteArray){
+    public: std::string toStringFromByteArray(std::vector<int8_t> byteArray){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < byteArray!.length; index++)
+    int32_t index = 0;index < byteArray.size(); index++)
         {
-stringBuffer!.appendbyte(byteArray[index]!);
+stringBuffer.appendbyte(byteArray[index]!);
     
-stringBuffer!.append(commonSeps!.COMMA_SEP);
+stringBuffer.append(commonSeps.COMMA_SEP);
     
 }
 
@@ -391,7 +390,7 @@ stringBuffer!.append(commonSeps!.COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

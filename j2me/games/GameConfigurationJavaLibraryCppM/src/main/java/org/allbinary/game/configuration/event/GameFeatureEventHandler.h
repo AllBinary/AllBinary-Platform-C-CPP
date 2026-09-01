@@ -54,17 +54,16 @@
 #include "GameFeatureEvent.h"
 
 class GameFeatureEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: GameFeatureEventHandler = new GameFeatureEventHandler();
+    private: static const GameFeatureEventHandler gameKeyEventHandler = GameFeatureEventHandler();
 
-    public static GameFeatureEventHandler getInstance();
+    public: static GameFeatureEventHandler getInstance();
 
-private constructor ();
+private: GameFeatureEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

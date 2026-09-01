@@ -51,48 +51,47 @@
 class AxisMathVectorUtil
             : public Object
          {
-        
 
-    private: static const instance: AxisMathVectorUtil = new AxisMathVectorUtil();
+    private: static AxisMathVectorUtil instance() { return AxisMathVectorUtil(); }
 
-    public static AxisMathVectorUtil getInstance(){
+    public: static AxisMathVectorUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AxisMathVectorUtil.instance;
+                        return AxisMathVectorUtil::instance();
     
 }
 
 
-    private: const noDecimalTrigTable: NoDecimalTrigTable = NoDecimalTrigTable.getInstance()!;
+    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
-    public int64_t calculateX(int64_t magnitude, int32_t angle){
+    public: int64_t calculateX(int64_t magnitude, int32_t angle){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return magnitude *this.noDecimalTrigTable!.cos(angle) /10;
+                        return magnitude *this->noDecimalTrigTable.cos(angle) /10;
     
 }
 
 
-    public int64_t calculateY(int64_t magnitude, int32_t angle){
+    public: int64_t calculateY(int64_t magnitude, int32_t angle){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return magnitude *this.noDecimalTrigTable!.sin(angle) /10;
+                        return magnitude *this->noDecimalTrigTable.sin(angle) /10;
     
 }
 
 
-    public int64_t calculateZ(int64_t magnitude, int32_t otherAngle){
+    public: int64_t calculateZ(int64_t magnitude, int32_t otherAngle){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return magnitude *this.noDecimalTrigTable!.sin(otherAngle) /10;
+                        return magnitude *this->noDecimalTrigTable.sin(otherAngle) /10;
     
 }
 

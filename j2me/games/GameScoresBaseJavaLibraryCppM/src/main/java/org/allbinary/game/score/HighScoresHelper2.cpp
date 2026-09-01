@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/util/CircularIndexUtil.h>
 
       
@@ -44,44 +46,43 @@
 #include "HighScores.h"
 
 class HighScoresHelper2: public HighScoresHelperBase {
-        
 
-    private: const circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(0, 0)!;
+    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
 
-    private: selectedHighScores: HighScores = NullHighScoresSingletonFactory.getInstance()!;
+    private: HighScores selectedHighScores = NullHighScoresSingletonFactory::getInstance();
 
-    public setSelectedHighScores(HighScores selectedHighScores){
-this.selectedHighScores= selectedHighScores;
+    public: void setSelectedHighScores(HighScores selectedHighScores){
+this->selectedHighScores= selectedHighScores;
     
 }
 
 
-    public HighScores getSelectedHighScores(){
+    public: HighScores getSelectedHighScores(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.selectedHighScores;
+                        return this->selectedHighScores;
     
 }
 
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArrayP){
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP){
 super.setHighScoresArray(highScoresArrayP);
     
-this.circularIndexUtil!.setSize(this.highScoresArrayP!.length);
+this->circularIndexUtil.setSize(this->highScoresArrayP.size());
     
-this.selectHighScores();
+this->selectHighScores();
     
 }
 
 
-    public selectHighScores(){
+    public: void selectHighScores(){
 
-                        if(this.highScoresArrayP!.length == 0)
+                        if(this->highScoresArrayP.size() == 0)
                         
                                     {
-                                    this.setSelectedHighScores(NullHighScoresSingletonFactory.getInstance());
+                                    this->setSelectedHighScores(NullHighScoresSingletonFactory::getInstance());
     
 
 
@@ -92,24 +93,24 @@ this.selectHighScores();
 
                                     }
                                 
-this.circularIndexUtil!.next();
+this->circularIndexUtil.next();
     
 
-    highScores: HighScores = this.highScoresArrayP[this.circularIndexUtil!.getIndex()]!;;
+    HighScores highScores = this->highScoresArrayP[this->circularIndexUtil.getIndex()];;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while(highScores!.getTotal() < 1 && index < this.highScoresArrayP!.length)
+        while(highScores.getTotal() < 1 && index < this->highScoresArrayP.size())
         {
-highScores= this.highScoresArrayP[this.circularIndexUtil!.next()]!;
+highScores= this->highScoresArrayP[this->circularIndexUtil.next()]!;
     
 index++;
     
 }
 
-this.setSelectedHighScores(highScores);
+this->setSelectedHighScores(highScores);
     
 }
 

@@ -79,41 +79,38 @@
         #include "OpenGLESImage.h"
 //ImageCacheOpenGLESJavaLibrary
 class OpenGLImageCache: public ImageCache {
-        
 
-    private: const imageCache: ImageCache = ImageCacheFactory.getInstance()!;
+    private: const ImageCache imageCache = ImageCacheFactory::getInstance();
 
-    private: const preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;
+    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
 
-    private: gl: GL10 = NullGL10.NULL_GL10;
+    private: GL10 gl = NullGL10::NULL_GL10;
 
-    private: const lock: SynchObject = new SynchObject();
+    private: const SynchObject lock = SynchObject();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: renderer: AllBinaryRendererBase3 = new AllBinaryRendererBase3();
+    private: AllBinaryRendererBase3 renderer = AllBinaryRendererBase3();
 
-public constructor (){
-
-            super();
-        }
+public: OpenGLImageCache(){
+}
 
 
-    public addListener(any = {} renderer){
-this.renderer= renderer as AllBinaryRendererBase3;
+    public: void addListener(Object* renderer){
+this->renderer= renderer as AllBinaryRendererBase3;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(GL10 gl){
-this.gl= gl;
+    public: void update(GL10 gl){
+this->gl= gl;
     
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.lock) 
+        //synchronized(this->lock) 
 
         //mutex.withLock
         
@@ -122,16 +119,16 @@ this.gl= gl;
 
 
                         for (
-    index: int32_t = this.list.size() -1;index >= 0; index--)
+    int32_t index = this->list.size() -1;index >= 0; index--)
         {
 
-    openGLESImage: OpenGLESImage = (this.list.objectArray[index]! as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (this->list.objectArray[index]! as OpenGLESImage);;
     
 
-                        if(openGLESImage != OpenGLESImage.NULL_OPENGL_IMAGE)
+                        if(openGLESImage != OpenGLESImage::NULL_OPENGL_IMAGE)
                         
                                     {
-                                    openGLESImage!.set(gl);
+                                    openGLESImage.set(gl);
     
 
                                     }
@@ -145,9 +142,9 @@ this.gl= gl;
 
                 //@Throws(Exception.constructor)
             
-    Image createImage(string caller, int32_t width, int32_t height){
+    protected: Image createImage(std::string caller, int32_t width, int32_t height){
 
-    textureSize: int32_t = width;;
+    int32_t textureSize = width;;
     
 
                         if(height > width)
@@ -170,23 +167,23 @@ width= textureSize;
 height= textureSize;
     
 
-    image2: Image = this.imageCache!.get(caller, width, height)!;;
+    Image image2 = this->imageCache.get(caller, width, height);;
     
 
-    image: Image = this.preResourceImageUtil!.encapsulate(image2)!;;
+    Image image = this->preResourceImageUtil.encapsulate(image2);;
     
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.lock) 
+        //synchronized(this->lock) 
 
         //mutex.withLock
         
 
-                        if(image != NullImage.NULL_IMAGE)
+                        if(image != NullImage::NULL_IMAGE)
                         
                                     {
-                                    this.list.add(image);
+                                    this->list.add(image);
     
 
                                     }
@@ -204,25 +201,25 @@ height= textureSize;
 
                 //@Throws(Exception.constructor)
             
-    Image createImageFromInputStream(any = {} key, InputStream inputStream){
+    protected: Image createImageFromInputStream(Object* key, InputStream inputStream){
 
-    cachedImage: Image = this.imageCache!.getWithKey(key)!;;
+    Image cachedImage = this->imageCache.getWithKey(key);;
     
 
-    image: Image = this.preResourceImageUtil!.encapsulate(cachedImage)!;;
+    Image image = this->preResourceImageUtil.encapsulate(cachedImage);;
     
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.lock) 
+        //synchronized(this->lock) 
 
         //mutex.withLock
         
 
-                        if(image != NullImage.NULL_IMAGE)
+                        if(image != NullImage::NULL_IMAGE)
                         
                                     {
-                                    this.list.add(image);
+                                    this->list.add(image);
     
 
                                     }
@@ -238,49 +235,49 @@ height= textureSize;
 }
 
 
-    public GL10 getGlP(){
+    public: GL10 getGlP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gl;
+                        return this->gl;
     
 }
 
 
-    public init(Image image){
+    public: void init(Image image){
 
         try {
             
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.lock) 
+        //synchronized(this->lock) 
 
         //mutex.withLock
         
 
-                        if(this.list.contains(image))
+                        if(this->list.contains(image))
                         
                                     {
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
                                 
-this.list.add(image);
+this->list.add(image);
     
 
 
-this.renderer.add(image);
+this->renderer.add(image);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 }
 

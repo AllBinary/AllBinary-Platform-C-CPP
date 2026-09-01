@@ -51,19 +51,18 @@
 class NullTickable
             : public Object
         : public TickableInterface {
-        
 
-    private: static const SINGLETON: NullTickable = new NullTickable();
+    private: static const NullTickable SINGLETON = NullTickable();
 
-    public static NullTickable getInstance();
+    public: static NullTickable getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
-    private: const NAME: string = "NulLTickable";
+    private: const std::string NAME = "NulLTickable";
 
-    public string getName();
+    public: std::string getName();
 
 };
 

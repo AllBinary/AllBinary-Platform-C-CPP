@@ -48,19 +48,18 @@
 class OpenGLVersionValidator
             : public Object
          {
-        
 
-    private: static const instance: OpenGLVersionValidator = new OpenGLVersionValidator();
+    private: static OpenGLVersionValidator instance() { return OpenGLVersionValidator(); }
 
-    public static OpenGLVersionValidator getInstance();
+    public: static OpenGLVersionValidator getInstance();
 
-    public bool isGL31OrHigher();
+    public: bool isGL31OrHigher();
 
-    public bool isAvailable(string glVersionRequired);
+    public: bool isAvailable(std::string glVersionRequired);
 
-    public setShaderComposite(ShaderComposite shaderComposite, any = {} anyType);
+    public: void setShaderComposite(ShaderComposite shaderComposite, Object* anyType);
 
-    public EGL_CONTEXT_CLIENT_VERSION_VALUE: int32_t =  -1;
+    public: int32_t EGL_CONTEXT_CLIENT_VERSION_VALUE =  -1;
 
 };
 

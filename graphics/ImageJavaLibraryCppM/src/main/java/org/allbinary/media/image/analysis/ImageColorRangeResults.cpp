@@ -44,88 +44,85 @@
 class ImageColorRangeResults
             : public Object
          {
-        
 
-    private: colorRangeInterface: ColorRangeInterface;
+    private: ColorRangeInterface colorRangeInterface;
 
-    private: matchingPixelsChecked: int64_t= 0;
+    private: int64_t matchingPixelsChecked= 0;
 
-    private: totalPixelsChecked: int64_t= 0;
+    private: int64_t totalPixelsChecked= 0;
 
-public constructor (){
-
-            super();
-        this.setColorRangeInterface(new ColorRange() as ColorRangeInterface);
+public: ImageColorRangeResults(){
+this->setColorRangeInterface(ColorRange() as ColorRangeInterface);
     
 }
 
 
-    public ColorRangeInterface getColorRangeInterface(){
+    public: ColorRangeInterface getColorRangeInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorRangeInterface;
+                        return this->colorRangeInterface;
     
 }
 
 
-    public setColorRangeInterface(ColorRangeInterface colorRangeInterface){
-this.colorRangeInterface= colorRangeInterface;
+    public: void setColorRangeInterface(ColorRangeInterface colorRangeInterface){
+this->colorRangeInterface= colorRangeInterface;
     
 }
 
 
-    public int64_t getMatchingPixelsChecked(){
+    public: int64_t getMatchingPixelsChecked(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.matchingPixelsChecked;
+                        return this->matchingPixelsChecked;
     
 }
 
 
-    public setMatchingPixelsChecked(int64_t matchingPixelsChecked){
-this.matchingPixelsChecked= matchingPixelsChecked;
+    public: void setMatchingPixelsChecked(int64_t matchingPixelsChecked){
+this->matchingPixelsChecked= matchingPixelsChecked;
     
 }
 
 
-    public addMatchingPixelsChecked(){
-this.matchingPixelsChecked++;
+    public: void addMatchingPixelsChecked(){
+this->matchingPixelsChecked++;
     
 }
 
 
-    public int64_t getTotalPixelsChecked(){
+    public: int64_t getTotalPixelsChecked(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalPixelsChecked;
+                        return this->totalPixelsChecked;
     
 }
 
 
-    public addTotalPixelsChecked(){
-this.totalPixelsChecked++;
+    public: void addTotalPixelsChecked(){
+this->totalPixelsChecked++;
     
 }
 
 
-    public setTotalPixelsChecked(int64_t totalPixelsChecked){
-this.totalPixelsChecked= totalPixelsChecked;
+    public: void setTotalPixelsChecked(int64_t totalPixelsChecked){
+this->totalPixelsChecked= totalPixelsChecked;
     
 }
 
 
-    public float getPercent(){
+    public: float getPercent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (this.getMatchingPixelsChecked() /this.getTotalPixelsChecked());
+                        return (this->getMatchingPixelsChecked() /this->getTotalPixelsChecked());
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -56,59 +58,57 @@
 class PrimitiveLongSingleton
             : public Object
          {
-        
 
-    private: static const instance: PrimitiveLongSingleton = new PrimitiveLongSingleton();
+    private: static PrimitiveLongSingleton instance() { return PrimitiveLongSingleton(); }
 
-    public static PrimitiveLongSingleton getInstance(){
+    public: static PrimitiveLongSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveLongSingleton.instance;
+                        return PrimitiveLongSingleton::instance();
     
 }
 
 
-    public const UNK: std::vector<char> = ['U','n','k'];
+    public: const std::vector<char> UNK = ['U','n','k'];
 
-    public const NUMBER_ARRAY: std::vector<int8_t> = [0,1,2,3,4,5,6,7,8,9];
+    public: const std::vector<int8_t> NUMBER_ARRAY = {0,1,2,3,4,5,6,7,8,9};
 
-    public const NUMBER_CHAR_ARRAY: std::vector<char> = ['0','1','2','3','4','5','6','7','8','9'];
+    public: const std::vector<char> NUMBER_CHAR_ARRAY = ['0','1','2','3','4','5','6','7','8','9'];
 
-    public const NUMBER_CHAR_ARRAYS: std::vector<std::vector<char>> = 
-                                                        [
+    public: const std::vector<std::vector<char>> NUMBER_CHAR_ARRAYS = 
+                                                        {
                                                             ['0'],['1'],['2'],['3'],['4'],['5'],['6'],['7'],['8'],['9']
-                                                        ];
+                                                        };
 
-    public const ZERO: std::vector<char> = 
+    public: const std::vector<char> ZERO = 
                                                         
-                                                        [this.NUMBER_CHAR_ARRAY[0]]
+                                                        [this->NUMBER_CHAR_ARRAY[0]]
                                                     ;
 
                 //@Throws(Exception.constructor)
             
-    public int8_t getNumberFromChar(char numberAsChar){
+    public: int8_t getNumberFromChar(char numberAsChar){
 
-    size: int32_t = this.NUMBER_CHAR_ARRAY.length
-                ;;
+    int32_t size = this->NUMBER_CHAR_ARRAY.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-                        if(this.NUMBER_CHAR_ARRAY[index] == numberAsChar)
+                        if(this->NUMBER_CHAR_ARRAY[index] == numberAsChar)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NUMBER_ARRAY[index]!;
+                        return this->NUMBER_ARRAY[index]!;
     
 
                                     }
@@ -118,7 +118,7 @@ class PrimitiveLongSingleton
 
 
 
-                            throw new Exception(new StringMaker().append("numberAsChar was not in array: ")!.appendchar(numberAsChar)!.toString());
+                            throw Exception(StringMaker().append("numberAsChar was not in array: ").appendchar(numberAsChar).toString());
                     
 }
 

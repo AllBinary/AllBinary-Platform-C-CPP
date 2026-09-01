@@ -72,21 +72,20 @@
 class LockedFeatureNotificationUtil
             : public Object
          {
-        
 
-    private: static const instance: LockedFeatureNotificationUtil = new LockedFeatureNotificationUtil();
+    private: static LockedFeatureNotificationUtil instance() { return LockedFeatureNotificationUtil(); }
 
-    public static LockedFeatureNotificationUtil getInstance();
+    public: static LockedFeatureNotificationUtil getInstance();
 
-    private: const gameNotificationEvent: GameNotificationEvent = new GameNotificationEvent(this, LicenseStrings.getInstance()!.LOCKED, SmallIntegerSingletonFactory.getInstance()!.getAt(3), BasicColorFactory.getInstance()!.RED, BooleanFactory.getInstance()!.FALSE);
-
-                //@Throws(Exception.constructor)
-            
-    public fire();
+    private: const GameNotificationEvent gameNotificationEvent = GameNotificationEvent(this, LicenseStrings::getInstance().LOCKED, SmallIntegerSingletonFactory::getInstance().getAt(3), BasicColorFactory::getInstance().RED, BooleanFactory::getInstance().FALSE);
 
                 //@Throws(Exception.constructor)
             
-    public fireWithColor(BasicColor basicColor);
+    public: void fire();
+
+                //@Throws(Exception.constructor)
+            
+    public: void fireWithColor(BasicColor basicColor);
 
 };
 

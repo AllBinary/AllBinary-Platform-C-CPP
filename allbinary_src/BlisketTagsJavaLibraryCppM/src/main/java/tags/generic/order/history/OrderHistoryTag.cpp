@@ -66,41 +66,38 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderHistoryTag: public StoreValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: status: string;
+    private: std::string status;
 
-public constructor (){
-
-            super();
-        }
+public: OrderHistoryTag(){
+}
 
 
-    public setStatus(string value){
-this.status= value;
+    public: void setStatus(std::string value){
+this->status= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string setOrderStatus(){
+    private: std::string setOrderStatus(){
 
         try {
             
-    anyType: any = new OrderHistoryHelperFactory().getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = OrderHistoryHelperFactory().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("setOrderStatus", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("setOrderStatus", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -124,13 +121,13 @@ this.status= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to view order table";;
+    std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setOrderStatus()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", e);
     
 
                                     }
@@ -148,32 +145,32 @@ this.status= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
-            this.setName("Basic Order History View");
+            this->setName("Basic Order History View");
     
-this.setObjectFile("views.generic.order.history.ValidationView");
+this->setObjectFile("views.generic.order.history.ValidationView");
     
 
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(OrderHistoryData.SETSTATUS) == 0)
+                        if(this->getCommand().compareTo(OrderHistoryData::SETSTATUS) == 0)
                         
                                     {
-                                    this.getPropertiesHashMap()!.put(OrderHistoryData.STATUS, this.status);
+                                    this->getPropertiesHashMap().put(OrderHistoryData::STATUS, this->status);
     
-pageContext!.getOut()!.print(this.setOrderStatus());
+pageContext.getOut().print(this->setOrderStatus());
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
@@ -183,7 +180,7 @@ pageContext!.getOut()!.print(this.setOrderStatus());
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -200,13 +197,13 @@ pageContext!.getOut()!.print(this.setOrderStatus());
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -219,7 +216,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

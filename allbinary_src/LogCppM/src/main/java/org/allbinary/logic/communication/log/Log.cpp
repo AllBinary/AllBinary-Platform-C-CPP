@@ -50,82 +50,79 @@
 class Log
             : public Object
          {
-        
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    private: const specialMessage: string;
+    private: std::string specialMessage;
 
-    private: const anyType: any;
+    private: Object* anyType;
 
-    private: const functionName: string;
+    private: std::string functionName;
 
-    private: const exception: any;
+    private: Object* exception;
 
-public constructor (string specialMessage, any = {} anyType, string functionName, any = {} exception){
-
-            super();
-        this.specialMessage= specialMessage;
+public: Log(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+this->specialMessage= specialMessage;
     
-this.anyType= anyType;
+this->anyType= anyType;
     
-this.functionName= functionName;
+this->functionName= functionName;
     
-this.exception= exception;
+this->exception= exception;
     
 }
 
 
-    public string getSpecialMessage(){
+    public: std::string getSpecialMessage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.specialMessage;
+                        return this->specialMessage;
     
 }
 
 
-    public any getObject(){
+    public: Object* getObject(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.anyType;
+                        return this->anyType;
     
 }
 
 
-    public string getFunctionName(){
+    public: std::string getFunctionName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.functionName;
+                        return this->functionName;
     
 }
 
 
-    public any getThrowable(){
+    public: Object* getThrowable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.exception;
+                        return this->exception;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-    clazz: Function = this.anyType!.constructor!;;
+    Function clazz = this->anyType.constructor;;
     
 
                         if(clazz.toString()! != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -138,7 +135,7 @@ this.exception= exception;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.logFormatUtil!.get(className, this.functionName, this.specialMessage, this.exception);;
+                        return this->logFormatUtil.get(className, this->functionName, this->specialMessage, this->exception);;
     
 }
 

@@ -62,13 +62,12 @@
 class MouseInputAutomationProcessor
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static process(MouseActionScriptInputInterface mouseActionScriptInputInterface);
+    public: static void process(MouseActionScriptInputInterface mouseActionScriptInputInterface);
 
-private constructor ();
+private: MouseInputAutomationProcessor();
 
 };
 

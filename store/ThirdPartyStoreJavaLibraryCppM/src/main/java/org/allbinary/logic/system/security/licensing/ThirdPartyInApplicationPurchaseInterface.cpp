@@ -39,29 +39,28 @@
         #include "LockableFeature.h"
 
 class ThirdPartyInApplicationPurchaseInterface {
-        
 
     bool isPurchased(LockableFeature lockableFeature)
 
-    onCreate(any anyType, any stateObject)
+    void onCreate(Object* anyType, Object* stateObject)
 
-    onDestroy()
+    void onDestroy()
 
-    onStart()
+    void onStart()
 
-    onActivityResult(int32_t requestCode, int32_t resultCode, any dataObject)
+    void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject)
 
-    onSaveInstanceState(any anyType)
+    void onSaveInstanceState(Object* anyType)
 
-    onStop()
+    void onStop()
 
-    requestPurchase(LockableFeature lockableFeature)
+    void requestPurchase(LockableFeature lockableFeature)
 
-    requestReceipts()
+    void requestReceipts()
 
-    add(LockableFeature lockableFeature)
+    void add(LockableFeature lockableFeature)
 
-    string getUserName()
+    std::string getUserName()
 
     bool isEnabled()
 

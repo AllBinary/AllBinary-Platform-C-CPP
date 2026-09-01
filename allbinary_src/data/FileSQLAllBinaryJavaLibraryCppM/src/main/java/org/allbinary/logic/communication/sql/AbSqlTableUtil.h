@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLTABLEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -109,77 +111,76 @@
 class AbSqlTableUtil
             : public Object
          {
-        
 
-    private: static const instance: AbSqlTableUtil = new AbSqlTableUtil();
+    private: static AbSqlTableUtil instance() { return AbSqlTableUtil(); }
 
-    public static AbSqlTableUtil getInstance();
+    public: static AbSqlTableUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: EXTENSION: string = ".adb";
+    private: std::string EXTENSION = ".adb";
 
-    private: const END: string = "')\n";
+    private: const std::string END = "')\n";
 
-    private: const SAVING_BACKUP_PATH: string = "Saving Backup: Path: ";
+    private: const std::string SAVING_BACKUP_PATH = "Saving Backup: Path: ";
 
-    private: const FILE_LABEL: string = " File: ";
+    private: const std::string FILE_LABEL = " File: ";
 
-    private: const METHOD_RESTORE_TABLE: string = "restoreTable()";
+    private: const std::string METHOD_RESTORE_TABLE = "restoreTable()";
 
-    private: const METHOD_BACKUP_TABLE: string = "backupTable()";
+    private: const std::string METHOD_BACKUP_TABLE = "backupTable()";
 
-    private: const METHOD_BACKUP_FILE: string = "backupFile()";
+    private: const std::string METHOD_BACKUP_FILE = "backupFile()";
 
-    private: const METHOD_GET_OUTPUT_STREAM: string = "getOutputStream()";
+    private: const std::string METHOD_GET_OUTPUT_STREAM = "getOutputStream()";
 
-    private: const TABLE_CREATION_SUCCESS: string = "Table Creation Successful: ";
+    private: const std::string TABLE_CREATION_SUCCESS = "Table Creation Successful: ";
 
-    private: const DROPPED_SUCCESS: string = " Dropped Successfully";
+    private: const std::string DROPPED_SUCCESS = " Dropped Successfully";
 
-    private: const SAVING: string = "Saving: ";
+    private: const std::string SAVING = "Saving: ";
 
-    private: const APPENDING: string = "Appending: ";
+    private: const std::string APPENDING = "Appending: ";
 
-    private: const TABLE_LABEL: string = "Table: ";
+    private: const std::string TABLE_LABEL = "Table: ";
 
-    private: const BACKUP_SUCCESS: string = " Backup Success";
+    private: const std::string BACKUP_SUCCESS = " Backup Success";
 
-    private: const ERROR_CREATING: string = "Error Creating: ";
+    private: const std::string ERROR_CREATING = "Error Creating: ";
 
-    private: const TOTAL_LABEL: string = " Total: ";
+    private: const std::string TOTAL_LABEL = " Total: ";
 
-    private: const SECTION_LABEL: string = " Section: ";
+    private: const std::string SECTION_LABEL = " Section: ";
 
-    private: const DASH: string = " - ";
+    private: const std::string DASH = " - ";
 
-    private: const PORTION_RESTORED: string = " Portion Restored";
+    private: const std::string PORTION_RESTORED = " Portion Restored";
 
-    private: const specialCharArray: std::vector<char> = ['\n','\f','\r'];
+    private: const std::vector<char> specialCharArray = ['\n','\f','\r'];
 
-    private: const NEW_LINE: string = "\\n";
+    private: const std::string NEW_LINE = "\\n";
 
-    const stringUtil: StringUtil = StringUtil.getInstance()!;
+    protected: const StringUtil stringUtil = StringUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    const sqlStrings: SqlStrings = SqlStrings.getInstance()!;
+    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    OutputStream getOutputStream(string backupPath, string tableName);
+    private: OutputStream getOutputStream(std::string backupPath, std::string tableName);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    bool backupFile(AbPath path, string backupPath, string tableName);
+    private: bool backupFile(AbPath path, std::string backupPath, std::string tableName);
 
-    string convertNewLines(string value);
+    private: std::string convertNewLines(std::string value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string backupTable(AbSqlTable abSqlTable);
+    public: std::string backupTable(AbSqlTable abSqlTable);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string restoreTable(AbSqlTable abSqlTable, Portion portion);
+    public: std::string restoreTable(AbSqlTable abSqlTable, Portion portion);
 
 };
 

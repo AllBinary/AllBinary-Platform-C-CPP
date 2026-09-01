@@ -68,23 +68,22 @@
         #include "TagHelper.h"
 
 class BasketHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const MAX: int32_t = 200;
+    private: const int32_t MAX = 200;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: BasketHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public Boolean isBasketEmpty();
+    public: Boolean isBasketEmpty();
 
 };
 

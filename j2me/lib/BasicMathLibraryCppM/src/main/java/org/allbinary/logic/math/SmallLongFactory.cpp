@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Long.h"
@@ -44,43 +46,42 @@
 class SmallLongFactory
             : public Object
          {
-        
 
-    private: static const instance: SmallLongFactory = new SmallLongFactory();
+    private: static SmallLongFactory instance() { return SmallLongFactory(); }
 
-    public static SmallLongFactory getInstance(){
+    public: static SmallLongFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallLongFactory.instance;
+                        return SmallLongFactory::instance();
     
 }
 
 
-    public const NEGATIVE_MAX: int32_t = 500;
+    public: const int32_t NEGATIVE_MAX = 500;
 
-    public const POSITIVE_MAX: int32_t = 0x2D1;
+    public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const INTEGER_ARRAY: std::vector<Long> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<Long> INTEGER_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: const STRING_ARRAY: std::vector<string> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<std::string> STRING_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    public MIN: int32_t = 0;
+    public: int32_t MIN = 0;
 
-    public lastMin: int32_t = 0;
+    public: int32_t lastMin = 0;
 
-    public lastNegativeMin: int32_t = 0;
+    public: int32_t lastNegativeMin = 0;
 
-    public initWithRange(int32_t value, int32_t negativeValue){
+    public: void initWithRange(int32_t value, int32_t negativeValue){
 
 
 
 
                         for (
-    index: int32_t = value -1;index >= this.lastMin; index--)
+    int32_t index = value -1;index >= this->lastMin; index--)
         {
-this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Long(index);
+this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Long(index);
     
 }
 
@@ -89,28 +90,28 @@ this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Long(index);
 
 
                         for (
-    index: int32_t = negativeValue -1;index >= this.lastNegativeMin; index--)
+    int32_t index = negativeValue -1;index >= this->lastNegativeMin; index--)
         {
-this.INTEGER_ARRAY[index]= new Long( -index);
+this->INTEGER_ARRAY[index]= Long( -index);
     
 }
 
 
-                        if(this.lastMin < value)
+                        if(this->lastMin < value)
                         
                                     {
-                                    this.lastMin= value;
+                                    this->lastMin= value;
     
-this.MIN= value;
+this->MIN= value;
     
 
                                     }
                                 
 
-                        if(this.lastNegativeMin < negativeValue)
+                        if(this->lastNegativeMin < negativeValue)
                         
                                     {
-                                    this.lastNegativeMin= negativeValue;
+                                    this->lastNegativeMin= negativeValue;
     
 
                                     }
@@ -118,15 +119,15 @@ this.MIN= value;
 }
 
 
-    public init(){
+    public: void init(){
 
-                        if(this.INTEGER_ARRAY[0] == 
-                                    null
+                        if(this->INTEGER_ARRAY[0] == 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.lastMin < this.POSITIVE_MAX || this.lastNegativeMin < this.NEGATIVE_MAX)
+                        if(this->lastMin < this->POSITIVE_MAX || this->lastNegativeMin < this->NEGATIVE_MAX)
                         
                                     {
                                     
@@ -134,9 +135,9 @@ this.MIN= value;
 
 
                         for (
-    index: int32_t = this.POSITIVE_MAX -1;index >= this.lastMin; index--)
+    int32_t index = this->POSITIVE_MAX -1;index >= this->lastMin; index--)
         {
-this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Long(index);
+this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Long(index);
     
 }
 
@@ -145,15 +146,15 @@ this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Long(index);
 
 
                         for (
-    index: int32_t = this.NEGATIVE_MAX -1;index >= this.lastNegativeMin; index--)
+    int32_t index = this->NEGATIVE_MAX -1;index >= this->lastNegativeMin; index--)
         {
-this.INTEGER_ARRAY[index]= new Long( -index);
+this->INTEGER_ARRAY[index]= Long( -index);
     
 }
 
-this.lastMin= this.POSITIVE_MAX;
+this->lastMin= this->POSITIVE_MAX;
     
-this.lastNegativeMin= this.NEGATIVE_MAX;
+this->lastNegativeMin= this->NEGATIVE_MAX;
     
 
                                     }
@@ -164,22 +165,20 @@ this.lastNegativeMin= this.NEGATIVE_MAX;
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: SmallLongFactory(){
+}
 
 
-    public Long getInstanceNoThrow(int64_t index){
+    public: Long getInstanceNoThrow(int64_t index){
 
-                        if(index +this.NEGATIVE_MAX > this.INTEGER_ARRAY.length -1)
+                        if(index +this->NEGATIVE_MAX > this->INTEGER_ARRAY.size() -1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.INTEGER_ARRAY[ -1 +this.NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[ -1 +this->NEGATIVE_MAX]!;
     
 
                                     }
@@ -188,22 +187,22 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.INTEGER_ARRAY[(static_cast<int32_t>(index)) +this.NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[(static_cast<int32_t>(index)) +this->NEGATIVE_MAX]!;
     
 }
 
 
-    public string getString(int32_t index){
+    public: std::string getString(int32_t index){
 
-    i: int32_t = index +this.NEGATIVE_MAX;;
+    int32_t i = index +this->NEGATIVE_MAX;;
     
 
-                        if(this.STRING_ARRAY[i] == 
-                                    null
+                        if(this->STRING_ARRAY[i] == 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.STRING_ARRAY[i]= this.INTEGER_ARRAY[i]!.toString();
+                                    this->STRING_ARRAY[i]= this->INTEGER_ARRAY[i]!.toString();
     
 
                                     }
@@ -212,7 +211,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.STRING_ARRAY[i]!;
+                        return this->STRING_ARRAY[i]!;
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -60,45 +62,42 @@
 class DesktopBundle
             : public Object
          {
-        
 
-    private: static const DESKTOP_SYMBOLIC_NAME: string = "org.knopflerfish.bundle.desktop";
+    private: static const std::string DESKTOP_SYMBOLIC_NAME = "org.knopflerfish.bundle.desktop";
 
-    private: bundle: Bundle;
+    private: Bundle bundle;
 
-public constructor (){
+public: DesktopBundle(){
 
-            super();
-        
-    bundleContext: BundleContext = InputAutomationBundleActivator.getBundleContext()!;;
+    BundleContext bundleContext = InputAutomationBundleActivator::getBundleContext();;
     
 
                         if(bundleContext != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    bundleArray: std::vector<Bundle> = bundleContext!.getBundles()!;;
+    std::vector<Bundle> bundleArray = bundleContext.getBundles();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < bundleArray!.length; index++)
+    int32_t index = 0;index < bundleArray.size(); index++)
         {
 
-    bundle: Bundle = bundleArray[index]!;;
+    Bundle bundle = bundleArray[index];;
     
 
-    symbolicName: string = bundle.getSymbolicName()!;;
+    std::string symbolicName = bundle.getSymbolicName();;
     
 
-                        if(symbolicName!.compareTo(DesktopBundle.DESKTOP_SYMBOLIC_NAME) == 0)
+                        if(symbolicName.compareTo(DesktopBundle::DESKTOP_SYMBOLIC_NAME) == 0)
                         
                                     {
-                                    this.bundle= bundle;
+                                    this->bundle= bundle;
     
 
                                     }
@@ -110,9 +109,9 @@ public constructor (){
                                 
                         else {
                             
-    textJDialog: JDialog = new BasicTextJDialog("BundlContext is Null");;
+    JDialog textJDialog = BasicTextJDialog("BundlContext is Null");;
     
-textJDialog!.setVisible(true);
+textJDialog.setVisible(true);
     
 
                         }
@@ -122,8 +121,8 @@ textJDialog!.setVisible(true);
 
                 //@Throws(Exception.constructor)
             
-    public start(){
-this.bundle.start();
+    public: void start(){
+this->bundle.start();
     
 }
 

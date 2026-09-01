@@ -66,49 +66,48 @@
 class SqlConnectionPool
             : public Object
          {
-        
 
-    private: static const instance: SqlConnectionPool = new SqlConnectionPool();
+    private: static SqlConnectionPool instance() { return SqlConnectionPool(); }
 
-    public static SqlConnectionPool getInstance();
+    public: static SqlConnectionPool getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: connectionHashMap: HashMap<any, any> = 
-                null
+    private: HashMap<any, any> connectionHashMap = 
+                nullptr
             ;
 
-    private: const FIRST_NEW_CONNECTION_CREATED: string = "First New Connection Created: ";
+    private: const std::string FIRST_NEW_CONNECTION_CREATED = "First New Connection Created: ";
 
-    private: const FIRST: string = "First ";
+    private: const std::string FIRST = "First ";
 
-    private: const NEW_CONNECTION_FOR: string = "New Connection For ";
+    private: const std::string NEW_CONNECTION_FOR = "New Connection For ";
 
-    private: const CREATED: string = " Created";
+    private: const std::string CREATED = " Created";
 
-    private: const NUMBER_OF_SQL_CONNECTIONS_FOR: string = "Number Of Sql Connections for: ";
+    private: const std::string NUMBER_OF_SQL_CONNECTIONS_FOR = "Number Of Sql Connections for: ";
 
-    private: const NUMBER_OF_SQL_CONNECTION_VECTORS: string = "Number Of Sql Connection Vectors: ";
+    private: const std::string NUMBER_OF_SQL_CONNECTION_VECTORS = "Number Of Sql Connection Vectors: ";
 
-    private: const IS: string = " is ";
+    private: const std::string IS = " is ";
 
-    private: const CONNECTION_ALLREADY_CLOSED: string = "Connection AllReady Closed";
+    private: const std::string CONNECTION_ALLREADY_CLOSED = "Connection AllReady Closed";
 
-    private: const METHOD_GET: string = "get()";
+    private: const std::string METHOD_GET = "get()";
 
-    private: const METHOD_ADD: string = "add()";
+    private: const std::string METHOD_ADD = "add()";
 
-private constructor ();
-
-                //@Throws(SQLException.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public Connection get(string url);
+private: SqlConnectionPool();
 
                 //@Throws(SQLException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public add(string url, Connection sqlConnection);
+    public: Connection get(std::string url);
+
+                //@Throws(SQLException.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void add(std::string url, Connection sqlConnection);
 
 };
 

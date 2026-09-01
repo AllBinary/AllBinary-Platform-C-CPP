@@ -58,30 +58,27 @@
         #include "TransformTag.h"
 
 class XmlValidationTransformTag: public TransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: XmlValidationTransformTag(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    bool isValid(){
+    private: bool isValid(){
 
         try {
             
-    helperClass: Function = this.getHelper()!.constructor!;;
+    Function helperClass = this->getHelper().constructor;;
     
 
-    method: Method = helperClass!.getMethod(commonStrings!.IS_VALID, 
-                            nullptr)!;;
+    Method method = helperClass.getMethod(commonStrings.IS_VALID, 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(this.getHelper(), 
+    Boolean result = method.invoke(this->getHelper(), 
                             nullptr) as Boolean;;
     
 
@@ -95,10 +92,10 @@ public constructor (){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -115,13 +112,13 @@ public constructor (){
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
-            this.setHelper();
+            this->setHelper();
     
 
-                        if(this.isValid())
+                        if(this->isValid())
                         
                                     {
                                     super.doStartTag();
@@ -130,7 +127,7 @@ public constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
 
                                     }
@@ -142,7 +139,7 @@ public constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.SKIP_BODY;
+                        return this->SKIP_BODY;
     
 
                         }
@@ -151,7 +148,7 @@ public constructor (){
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -164,7 +161,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

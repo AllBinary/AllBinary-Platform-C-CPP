@@ -45,14 +45,13 @@
 /*actual*/ class Memory
             : public Object
          {
-        
 
-    /*actual*/ public static string getInfo(){
+    /*actual*/ public: static std::string getInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

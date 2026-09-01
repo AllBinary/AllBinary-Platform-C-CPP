@@ -61,19 +61,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GeneratorStoreFrontContextView: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    string view(string group);
+public: GeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    protected: std::string view(std::string group);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

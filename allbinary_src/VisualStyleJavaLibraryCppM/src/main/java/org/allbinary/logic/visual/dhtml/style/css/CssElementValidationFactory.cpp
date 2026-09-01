@@ -51,24 +51,21 @@
 class CssElementValidationFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ValidationInterface getInstance(Node node){
+    public: static ValidationInterface getInstance(Node node){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CssElementValidation(node) as ValidationInterface;
+                        return CssElementValidation(node) as ValidationInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CssElementValidationFactory(){
+}
 
 
 };

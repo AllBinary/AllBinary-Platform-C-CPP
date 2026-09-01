@@ -48,22 +48,21 @@
 class PostGameCommandFactory
             : public Object
          {
-        
 
-    private: static const instance: PostGameCommandFactory = new PostGameCommandFactory();
+    private: static PostGameCommandFactory instance() { return PostGameCommandFactory(); }
 
-    public static PostGameCommandFactory getInstance(){
+    public: static PostGameCommandFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PostGameCommandFactory.instance;
+                        return PostGameCommandFactory::instance();
     
 }
 
 
-    public addCommands(MyCanvas canvas){
-MultiPlayerGameFeatureFactory.getInstance()!.addCommands(canvas);
+    public: void addCommands(MyCanvas canvas){
+MultiPlayerGameFeatureFactory::getInstance().addCommands(canvas);
     
 }
 

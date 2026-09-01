@@ -49,23 +49,20 @@
 #include "AnalogLocationInputProcessor.h"
 
 class SingleAnalogControllerVisitor: public AnalogControllerVisitor {
-        
 
-    private: const playerInputId: int32_t;
+    private: int32_t playerInputId;
 
-public constructor (int32_t playerInputId){
-
-            super();
-        this.playerInputId= playerInputId;
+public: SingleAnalogControllerVisitor(int32_t playerInputId){
+this->playerInputId= playerInputId;
     
 }
 
 
-    public process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor){
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor){
 
-    analogLocationInput: AnalogLocationInput = AnalogLocationInputFactory.getInstance()!.getInstanceForPlayer(this.playerInputId)!;;
+    AnalogLocationInput analogLocationInput = AnalogLocationInputFactory::getInstance().getInstanceForPlayer(this->playerInputId);;
     
-analogLocationInputProcessor!.process(allbinaryLayerManager, analogLocationInput);
+analogLocationInputProcessor.process(allbinaryLayerManager, analogLocationInput);
     
 }
 

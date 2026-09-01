@@ -51,11 +51,10 @@
         #include "PickedUpLayerInterfaceFactoryInterface.h"
 
 class PickedUpLayerInterface: public LayerInterface {
-        
 
     PickedUpLayerInterfaceFactoryInterface getPickedUpLayerInterfaceFactoryInterface();
 
-    setPickedUp();
+    void setPickedUp();
 
 };
 

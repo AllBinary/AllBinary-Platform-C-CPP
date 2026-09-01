@@ -47,22 +47,19 @@
         #include "ScreenRepaintUtil.h"
 
 class ScreenRepaintProcessor: public Processor {
-        
 
-    private: const displayable: Displayable;
+    private: Displayable displayable;
 
-public constructor (Displayable displayable){
-
-            super();
-        this.displayable= displayable;
+public: ScreenRepaintProcessor(Displayable displayable){
+this->displayable= displayable;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-ScreenRepaintUtil.repaint(this.displayable);
+    public: void process(){
+ScreenRepaintUtil::repaint(this->displayable);
     
 }
 

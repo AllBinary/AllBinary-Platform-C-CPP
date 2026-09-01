@@ -78,62 +78,61 @@
 class FileLog
             : public Object
          {
-        
 
-    private: static const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: static const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: static const logLength: int64_t = 33000000;
+    private: static const int64_t logLength = 33000000;
 
-    private: static const logPath: string = "g:\\log\\";
+    private: static const std::string logPath = "g:\\log\\";
 
-    private: static const extension: string = .toCharArray();
+    private: static const std::string extension = "dat";
 
-    private: static const fileName: string = .toCharArray();
+    private: static const std::string fileName = .toCharArray();
 
-    private: static const backupFileName: string = FileLog.fileName!.concat(".bak")!;
+    private: static const std::string backupFileName = FileLog::fileName.concat(".bak");
 
-    private: static const ORG_ALLBINARY: string = "org.allbinary: ";
+    private: static const std::string ORG_ALLBINARY = "org.allbinary: ";
 
-    private: static firstTime: bool = true;
+    private: static bool firstTime = true;
 
-    private: static logFile: File = new File(FileLog.logPath, FileLog.fileName);
+    private: static File logFile = File(FileLog::logPath, FileLog::fileName);
 
-    private: static logFileBak: File;
+    private: static File logFileBak;
 
-    private: static fileOut: BufferedWriter;
+    private: static BufferedWriter fileOut;
 
-    private: static backupIndex: int32_t= 0;
+    private: static int32_t backupIndex= 0;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static bool createLogFile(){
+    public: static bool createLogFile(){
 
         try {
-            FileLog.logFile= new File(logPath, fileName);
+            FileLog::logFile= File(logPath, fileName);
     
 
-                        if(!FileLog.firstTime)
+                        if(!FileLog::firstTime)
                         
                                     {
-                                    FileLog.fileOut= new BufferedWriter(new FileWriter(logFile));
+                                    FileLog::fileOut= BufferedWriter(FileWriter(logFile));
     
 
                                     }
                                 
                         else {
-                            FileLog.firstTime= false;
+                            FileLog::firstTime= false;
     
 
-    raFile: RandomAccessFile = new RandomAccessFile(logFile, "rw");;
+    RandomAccessFile raFile = RandomAccessFile(logFile, "rw");;
     
-raFile!.seek(raFile!.length());
+raFile.seek(raFile.length());
     
-FileLog.fileOut= new BufferedWriter(new FileWriter(raFile!.getFD()));
+FileLog::fileOut= BufferedWriter(FileWriter(raFile.getFD()));
     
 
                         }
                             
 
-    canWrite: bool = FileLog.logFile!.canWrite()!;;
+    bool canWrite = FileLog::logFile.canWrite();;
     
 
 
@@ -159,52 +158,52 @@ console.log("Error Creating Log: " +e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    static bool createLogFileBackup(){
+    private: static bool createLogFileBackup(){
 
         try {
             
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
-FileLog.logFileBak= new File(logPath, stringMaker!.append(backupFileName)!.append(CommonSeps.getInstance()!.PERIOD)!.appendint(backupIndex)!.toString());
+FileLog::logFileBak= File(logPath, stringMaker.append(backupFileName).append(CommonSeps::getInstance().PERIOD).appendint(backupIndex).toString());
     
 
-        while(FileLog.logFileBak!.isFile())
+        while(FileLog::logFileBak.isFile())
         {
-FileLog.backupIndex++;
+FileLog::backupIndex++;
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-FileLog.logFileBak= new File(logPath, stringMaker!.append(backupFileName)!.append(CommonSeps.getInstance()!.PERIOD)!.appendint(backupIndex)!.toString());
+FileLog::logFileBak= File(logPath, stringMaker.append(backupFileName).append(CommonSeps::getInstance().PERIOD).appendint(backupIndex).toString());
     
 }
 
 
-    line: string = .toCharArray();;
+    std::string line = .toCharArray();;
     
 
-    tmpOut: BufferedWriter = new BufferedWriter(new FileWriter(logFileBak));;
+    BufferedWriter tmpOut = BufferedWriter(FileWriter(logFileBak));;
     
 
-    tmpIn: BufferedReader = new BufferedReader(new FileReader(logFile));;
+    BufferedReader tmpIn = BufferedReader(FileReader(logFile));;
     
 
-        while((line= tmpIn!.readLine()) != 
-                                    null
+        while((line= tmpIn.readLine()) != 
+                                    nullptr
                                 )
         {
-tmpOut!.write(line, 0, line.length);
+tmpOut.write(line, 0, line.size());
     
-tmpOut!.newLine();
+tmpOut.newLine();
     
 }
 
-tmpOut!.flush();
+tmpOut.flush();
     
-tmpOut!.close();
+tmpOut.close();
     
-tmpIn!.close();
+tmpIn.close();
     
-FileLog.logFile!.delete();
+FileLog::logFile.delete();
     
 
 
@@ -230,26 +229,26 @@ console.log("Error Creating Backup: " +e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, any = {} anyType, string functionName){
+    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileLog.put(specialMessage, anyType, functionName, 
+                        return FileLog::put(specialMessage, anyType, functionName, 
                             nullptr);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, any = {} anyType, string functionName, Throwable exception){
+    public: static std::string put(std::string specialMessage, Object* anyType, std::string functionName, Throwable exception){
 
         try {
             
-                        if(FileLog.firstTime == true)
+                        if(FileLog::firstTime == true)
                         
                                     {
-                                    FileLog.createLogFileBackup();
+                                    FileLog::createLogFileBackup();
     
 
                         if(createLogFile() == false)
@@ -259,7 +258,7 @@ console.log("Error Creating Backup: " +e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return .toCharArray();
+                        return "Log File Creation Error";
     
 
                                     }
@@ -268,10 +267,10 @@ console.log("Error Creating Backup: " +e);
                                     }
                                 
 
-    length: int64_t = FileLog.logFile!.length()!;;
+    int64_t length = FileLog::logFile.length();;
     
 
-                        if(length > FileLog.logLength)
+                        if(length > FileLog::logLength)
                         
                                     {
                                     
@@ -282,7 +281,7 @@ console.log("Error Creating Backup: " +e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return .toCharArray();
+                        return "Couldn't Create a Backup file";
     
 
                                     }
@@ -291,31 +290,30 @@ console.log("Error Creating Backup: " +e);
                                     }
                                 
 
-    className: string = NULL_STRING.toCharArray();;
+    std::string className = NULL_STRING.toCharArray();;
     
 
-                        if(functionName == 
-                                    null
+                        if(false)
+                        functionName= NULL_STRING.toCharArray();
+                                
+
+                        if(false)
+                        specialMessage= NULL_STRING.toCharArray();
+                                
+
+                        if(anyType->constructor.name.toString()! != 
+                                    nullptr
                                 )
-                        functionName= NULL_STRING.toCharArray()
+                        className= anyType->constructor.name.toString()!;
+                                
 
-                        if(specialMessage == 
-                                    null
-                                )
-                        specialMessage= NULL_STRING.toCharArray()
-
-                        if(anyType!.constructor.name.toString()! != 
-                                    null
-                                )
-                        className= anyType!.constructor.name.toString()!
-
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
-FileLog.fileOut!.write(message, 0, message.length);
+FileLog::fileOut.write(message, 0, message.size());
     
-FileLog.fileOut!.newLine();
+FileLog::fileOut.newLine();
     
-FileLog.fileOut!.flush();
+FileLog::fileOut.flush();
     
 
 
@@ -339,26 +337,26 @@ FileLog.fileOut!.flush();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, string className, string functionName){
+    public: static std::string put(std::string specialMessage, std::string className, std::string functionName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileLog.put(specialMessage, className, functionName, 
+                        return FileLog::put(specialMessage, className, functionName, 
                             nullptr);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string put(string specialMessage, string className, string functionName, Exception exception){
+    public: static std::string put(std::string specialMessage, std::string className, std::string functionName, Exception exception){
 
         try {
             
-                        if(FileLog.firstTime == true)
+                        if(FileLog::firstTime == true)
                         
                                     {
-                                    FileLog.createLogFileBackup();
+                                    FileLog::createLogFileBackup();
     
 
                         if(createLogFile() == false)
@@ -368,7 +366,7 @@ FileLog.fileOut!.flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return .toCharArray();
+                        return "Log File Creation Error";
     
 
                                     }
@@ -377,10 +375,10 @@ FileLog.fileOut!.flush();
                                     }
                                 
 
-    length: int64_t = FileLog.logFile!.length()!;;
+    int64_t length = FileLog::logFile.length();;
     
 
-                        if(length > FileLog.logLength)
+                        if(length > FileLog::logLength)
                         
                                     {
                                     
@@ -391,7 +389,7 @@ FileLog.fileOut!.flush();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return .toCharArray();
+                        return "Couldn't Create a Backup file";
     
 
                                     }
@@ -400,23 +398,21 @@ FileLog.fileOut!.flush();
                                     }
                                 
 
-                        if(functionName == 
-                                    null
-                                )
-                        functionName= NULL_STRING.toCharArray()
+                        if(false)
+                        functionName= NULL_STRING.toCharArray();
+                                
 
-                        if(specialMessage == 
-                                    null
-                                )
-                        specialMessage= NULL_STRING.toCharArray()
+                        if(false)
+                        specialMessage= NULL_STRING.toCharArray();
+                                
 
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
-FileLog.fileOut!.write(message, 0, message.length);
+FileLog::fileOut.write(message, 0, message.size());
     
-FileLog.fileOut!.newLine();
+FileLog::fileOut.newLine();
     
-FileLog.fileOut!.flush();
+FileLog::fileOut.flush();
     
 
 
@@ -439,20 +435,18 @@ FileLog.fileOut!.flush();
 }
 
 
-    public static string getFilePath(){
+    public: static std::string getFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileLog.logPath +FileLog.fileName;
+                        return FileLog::logPath +FileLog::fileName;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: FileLog(){
+}
 
 
 };

@@ -50,35 +50,34 @@
 class FtpConfiguration
             : public Object
         : public FtpConfigurationInterface {
-        
 
-    private: ftpServer: string;
+    private: std::string ftpServer;
 
-    private: ftpPath: string;
+    private: std::string ftpPath;
 
-    private: ftpUserName: string;
+    private: std::string ftpUserName;
 
-    private: ftpPassword: string;
+    private: std::string ftpPassword;
 
-public constructor ();
+public: FtpConfiguration();
 
-public constructor (HashMap<any, any> hashMap);
+public: FtpConfiguration(HashMap<any, any> hashMap);
 
-    public string getServer();
+    public: std::string getServer();
 
-    public string getPath();
+    public: std::string getPath();
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getPassword();
+    public: std::string getPassword();
 
-    public setServer(string value);
+    public: void setServer(std::string value);
 
-    public setPath(string value);
+    public: void setPath(std::string value);
 
-    public setUserName(string value);
+    public: void setUserName(std::string value);
 
-    public setPassword(string value);
+    public: void setPassword(std::string value);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_H
         #define ORG_ALLBINARY_BUSINESS_CONTEXT_MODULES_STOREFRONT_STOREFRONT_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -150,289 +152,288 @@
 class StoreFront
             : public Object
         : public StoreFrontInterface {
-        
 
-    private: static const RESOURCES: string = " Resources" +AbPathData.getInstance()!.SEPARATOR;
+    private: static const std::string RESOURCES = " Resources" +AbPathData::getInstance().SEPARATOR;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const abPathUtil: AbPathUtil = AbPathUtil.getInstance()!;
+    private: const AbPathUtil abPathUtil = AbPathUtil::getInstance();
 
-    private: name: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string name = this->stringUtil.EMPTY_STRING;
 
-    private: basketName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string basketName = this->stringUtil.EMPTY_STRING;
 
-    private: homeHostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string homeHostName = this->stringUtil.EMPTY_STRING;
 
-    private: homeHostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath homeHostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: hostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string hostName = this->stringUtil.EMPTY_STRING;
 
-    private: hostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath hostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: testHomeHostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testHomeHostName = this->stringUtil.EMPTY_STRING;
 
-    private: testHomeHostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath testHomeHostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: testHostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testHostName = this->stringUtil.EMPTY_STRING;
 
-    private: testHostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath testHostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: imagePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath imagePath = this->abPathUtil.NO_ABPATH;
 
-    private: staticPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath staticPath = this->abPathUtil.NO_ABPATH;
 
-    private: categoryPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath categoryPath = this->abPathUtil.NO_ABPATH;
 
-    private: inventoryControl: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string inventoryControl = this->stringUtil.EMPTY_STRING;
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-    private: subStores: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string subStores = this->stringUtil.EMPTY_STRING;
 
-    private: tagLocation: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string tagLocation = this->stringUtil.EMPTY_STRING;
 
-    private: packageLocation: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string packageLocation = this->stringUtil.EMPTY_STRING;
 
-    private: ftp: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string ftp = this->stringUtil.EMPTY_STRING;
 
-    private: ftpPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath ftpPath = this->abPathUtil.NO_ABPATH;
 
-    private: ftpUserName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string ftpUserName = this->stringUtil.EMPTY_STRING;
 
-    private: ftpPassword: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string ftpPassword = this->stringUtil.EMPTY_STRING;
 
-    private: testFtp: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testFtp = this->stringUtil.EMPTY_STRING;
 
-    private: testFtpPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath testFtpPath = this->abPathUtil.NO_ABPATH;
 
-    private: testFtpUserName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testFtpUserName = this->stringUtil.EMPTY_STRING;
 
-    private: testFtpPassword: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testFtpPassword = this->stringUtil.EMPTY_STRING;
 
-    private: timeCreated: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string timeCreated = this->stringUtil.EMPTY_STRING;
 
-    private: lastModified: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string lastModified = this->stringUtil.EMPTY_STRING;
 
-    private: const MINCHAR: int32_t = 0;
+    private: const int32_t MINCHAR = 0;
 
-    private: const MINSTORENAMELENGTH: int32_t = 1;
+    private: const int32_t MINSTORENAMELENGTH = 1;
 
-    private: const MAXCHAR: int32_t = 255;
+    private: const int32_t MAXCHAR = 255;
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const ONE_EMPTY_STRING_ARRAY: std::vector<string> = StringUtil.getInstance()!.ONE_EMPTY_STRING_ARRAY;
+    private: const std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
 
-public constructor ();
+public: StoreFront();
 
-public constructor (HttpServletRequest request);
+public: StoreFront(HttpServletRequest request);
 
-public constructor (HashMap<any, any> hashMap);
+public: StoreFront(HashMap<any, any> hashMap);
 
-    bool isColumn(string columnName);
-
-                //@Throws(Exception.constructor)
-            
-    AbPath createPath(string key, HashMap<any, any> hashMap);
+    private: bool isColumn(std::string columnName);
 
                 //@Throws(Exception.constructor)
             
-    AbPath createPath(string append, string key, HashMap<any, any> hashMap);
-
-    string get(string key, HashMap<any, any> hashMap);
-
-    string create(string append, string key, HashMap<any, any> hashMap);
+    private: AbPath createPath(std::string key, HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    getFormData(HashMap<any, any> storeHashMap);
+    private: AbPath createPath(std::string append, std::string key, HashMap<any, any> hashMap);
 
-    public Boolean isNameValid();
+    private: std::string get(std::string key, HashMap<any, any> hashMap);
 
-    public Boolean isValid();
-
-    public string nameValidationInfo();
-
-    public string validationInfo();
-
-    public string getTestHtmlPath();
-
-    public string getCurrentHostName();
-
-    public string getCurrentHostNamePath();
-
-    public string getCurrentHomeHostName();
-
-    public string getCurrentHomeHostNamePath();
-
-    public string getName();
-
-    public string getBasketName();
-
-    public string getHomeHostName();
-
-    public string getHomeHostNamePath();
-
-    public string getHostName();
-
-    public string getHostNamePath();
-
-    public string getTestHomeHostName();
-
-    public string getTestHomeHostNamePath();
-
-    public string getTestHostName();
-
-    public string getTestHostNamePath();
-
-    public string getStaticPath();
-
-    public string getCategoryPath();
-
-    public string getInventoryControl();
+    private: std::string create(std::string append, std::string key, HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getSubStores();
+    private: void getFormData(HashMap<any, any> storeHashMap);
 
-    public string getTagLocation();
+    public: Boolean isNameValid();
 
-    public string getPackageLocation();
+    public: Boolean isValid();
 
-    public string getFtp();
+    public: std::string nameValidationInfo();
 
-    public string getFtpUserName();
+    public: std::string validationInfo();
 
-    public string getFtpPassword();
+    public: std::string getTestHtmlPath();
 
-    public string getTestFtp();
+    public: std::string getCurrentHostName();
 
-    public string getTestFtpUserName();
+    public: std::string getCurrentHostNamePath();
 
-    public string getTestFtpPassword();
+    public: std::string getCurrentHomeHostName();
 
-    public string getFtpPath();
+    public: std::string getCurrentHomeHostNamePath();
 
-    public string getTestFtpPath();
+    public: std::string getName();
 
-    public string getTimeCreated();
+    public: std::string getBasketName();
 
-    public string getLastModified();
+    public: std::string getHomeHostName();
 
-    public setName(string value);
+    public: std::string getHomeHostNamePath();
 
-    public setBasketName(string value);
+    public: std::string getHostName();
 
-    public setHomeHostName(string value);
+    public: std::string getHostNamePath();
 
-                //@Throws(Exception.constructor)
-            
-    public setHomeHostNamePath(string value);
+    public: std::string getTestHomeHostName();
 
-    public setHostName(string value);
+    public: std::string getTestHomeHostNamePath();
 
-                //@Throws(Exception.constructor)
-            
-    public setHostNamePath(string value);
+    public: std::string getTestHostName();
 
-    public setTestHomeHostName(string value);
+    public: std::string getTestHostNamePath();
 
-                //@Throws(Exception.constructor)
-            
-    public setTestHomeHostNamePath(string value);
+    public: std::string getStaticPath();
 
-    public setTestHostName(string value);
+    public: std::string getCategoryPath();
+
+    public: std::string getInventoryControl();
 
                 //@Throws(Exception.constructor)
             
-    public setTestHostNamePath(string value);
+    public: BasicArrayList getSubStores();
+
+    public: std::string getTagLocation();
+
+    public: std::string getPackageLocation();
+
+    public: std::string getFtp();
+
+    public: std::string getFtpUserName();
+
+    public: std::string getFtpPassword();
+
+    public: std::string getTestFtp();
+
+    public: std::string getTestFtpUserName();
+
+    public: std::string getTestFtpPassword();
+
+    public: std::string getFtpPath();
+
+    public: std::string getTestFtpPath();
+
+    public: std::string getTimeCreated();
+
+    public: std::string getLastModified();
+
+    public: void setName(std::string value);
+
+    public: void setBasketName(std::string value);
+
+    public: void setHomeHostName(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public setImagePath(string value);
+    public: void setHomeHostNamePath(std::string value);
+
+    public: void setHostName(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public setStaticPath(string value);
+    public: void setHostNamePath(std::string value);
+
+    public: void setTestHomeHostName(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public setCategoryPath(string value);
+    public: void setTestHomeHostNamePath(std::string value);
 
-    public setSubStores(string value);
-
-    public setTagLocation(string value);
-
-    public setPackageLocation(string value);
-
-    public setInventoryControl(string value);
-
-    public getPackageLocation(string value);
-
-    public setFtp(string value);
-
-    public setFtpUserName(string value);
-
-    public setFtpPassword(string value);
-
-    public setTestFtp(string value);
-
-    public setTestFtpUserName(string value);
-
-    public setTestFtpPassword(string value);
-
-    public setTimeCreated(string value);
-
-    public setLastModified(string value);
+    public: void setTestHostName(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public setFtpPath(string value);
+    public: void setTestHostNamePath(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public setTestFtpPath(string value);
+    public: void setImagePath(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    bool createDirectories();
+    public: void setStaticPath(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public install(int32_t current, int32_t total);
+    public: void setCategoryPath(std::string value);
+
+    public: void setSubStores(std::string value);
+
+    public: void setTagLocation(std::string value);
+
+    public: void setPackageLocation(std::string value);
+
+    public: void setInventoryControl(std::string value);
+
+    public: void getPackageLocation(std::string value);
+
+    public: void setFtp(std::string value);
+
+    public: void setFtpUserName(std::string value);
+
+    public: void setFtpPassword(std::string value);
+
+    public: void setTestFtp(std::string value);
+
+    public: void setTestFtpUserName(std::string value);
+
+    public: void setTestFtpPassword(std::string value);
+
+    public: void setTimeCreated(std::string value);
+
+    public: void setLastModified(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    installViews(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, int32_t current, int32_t total);
+    public: void setFtpPath(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    installResources(AbPath fromDirectoryAbPath, int32_t current, int32_t total);
+    public: void setTestFtpPath(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    installMedia(AbPath fromDirectoryAbPath, int32_t current, int32_t total);
+    private: bool createDirectories();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: void install(int32_t current, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    private: void installViews(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, int32_t current, int32_t total);
 
-    public any getKey();
+                //@Throws(Exception.constructor)
+            
+    private: void installResources(AbPath fromDirectoryAbPath, int32_t current, int32_t total);
 
-    public ContextConfigurationInterface getContextConfigurationInterface();
+                //@Throws(Exception.constructor)
+            
+    private: void installMedia(AbPath fromDirectoryAbPath, int32_t current, int32_t total);
 
-    public setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
+                //@Throws(Exception.constructor)
+            
+    public: Vector toVector();
+
+                //@Throws(Exception.constructor)
+            
+    public: HashMap<any, any> toHashMap();
+
+    public: Object* getKey();
+
+    public: ContextConfigurationInterface getContextConfigurationInterface();
+
+    public: void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface);
 
 };
 

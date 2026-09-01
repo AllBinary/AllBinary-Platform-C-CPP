@@ -44,53 +44,52 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransactionResultInterface {
-        
 
-    string toString();
+    std::string toString();
 
     Vector getValues();
 
-    string getResult();
+    std::string getResult();
 
-    string getPnRef();
+    std::string getPnRef();
 
-    string getRespMsg();
+    std::string getRespMsg();
 
-    string getAvsAddr();
+    std::string getAvsAddr();
 
-    string getAvsZip();
+    std::string getAvsZip();
 
-    string getOrigResult();
+    std::string getOrigResult();
 
-    string getStatus();
+    std::string getStatus();
 
-    string getFraudCode();
+    std::string getFraudCode();
 
-    string getFraudMsg();
+    std::string getFraudMsg();
 
-    string getErrCode();
+    std::string getErrCode();
 
-    string getScore();
+    std::string getScore();
 
-    string getReason1();
+    std::string getReason1();
 
-    string getReason2();
+    std::string getReason2();
 
-    string getReason3();
+    std::string getReason3();
 
-    string getException1();
+    std::string getException1();
 
-    string getException2();
+    std::string getException2();
 
-    string getException3();
+    std::string getException3();
 
-    string getException4();
+    std::string getException4();
 
-    string getException5();
+    std::string getException5();
 
-    string getException6();
+    std::string getException6();
 
-    string getException7();
+    std::string getException7();
 
 };
 

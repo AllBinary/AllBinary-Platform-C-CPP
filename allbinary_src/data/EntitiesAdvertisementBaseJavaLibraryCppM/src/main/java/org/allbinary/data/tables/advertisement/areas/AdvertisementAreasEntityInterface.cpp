@@ -52,21 +52,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdvertisementAreasEntityInterface: public BasicDataTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    Vector get(string storeName)
+    Vector get(std::string storeName)
 
                 //@Throws(Exception.constructor)
             
-    AdvertisementAreaInterface get(string storeName, string advertisementAreaName)
+    AdvertisementAreaInterface get(std::string storeName, std::string advertisementAreaName)
 
-    delete(string value)
+    void delete_(std::string value)
 
-    insert(Vector values)
+    void insert(Vector values)
 
-    update(HashMap<any, any> updatedValues)
+    void update(HashMap<any, any> updatedValues)
 
 };
 

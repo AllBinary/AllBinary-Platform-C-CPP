@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_STORE_THEME_STORETHEMECATEGORYVIEW_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
@@ -62,14 +64,13 @@
         #include "StoreThemeCategoryInterface.h"
 #include "ThemeComparator.h"
 
-class StoreThemeCategoryView: public CategoryView: public DomNodeInterface {
-        
+class StoreThemeCategoryView: public CategoryView, public DomNodeInterface {
 
-public constructor (StoreThemeCategoryInterface categoryInterface);
+public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

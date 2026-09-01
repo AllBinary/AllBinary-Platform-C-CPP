@@ -39,16 +39,15 @@
         #include "ShaderInitializer.h"
 
 class SimpleShaderInitializer: public ShaderInitializer {
-        
 
-    private: static const instanceC: SimpleShaderInitializer = new SimpleShaderInitializer();
+    private: static const SimpleShaderInitializer instanceC = SimpleShaderInitializer();
 
-    public static SimpleShaderInitializer getInstance(){
+    public: static SimpleShaderInitializer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleShaderInitializer.instanceC;
+                        return SimpleShaderInitializer::instanceC;
     
 }
 

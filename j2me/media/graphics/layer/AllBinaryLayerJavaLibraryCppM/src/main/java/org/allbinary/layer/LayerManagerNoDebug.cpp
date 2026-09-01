@@ -39,16 +39,15 @@
         #include "LayerManagerLoggingBase.h"
 
 class LayerManagerNoDebug: public LayerManagerLoggingBase {
-        
 
-    private: static const instance: LayerManagerNoDebug = new LayerManagerNoDebug();
+    private: static LayerManagerNoDebug instance() { return LayerManagerNoDebug(); }
 
-    public static LayerManagerNoDebug getInstance(){
+    public: static LayerManagerNoDebug getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerManagerNoDebug.instance;
+                        return LayerManagerNoDebug::instance();
     
 }
 

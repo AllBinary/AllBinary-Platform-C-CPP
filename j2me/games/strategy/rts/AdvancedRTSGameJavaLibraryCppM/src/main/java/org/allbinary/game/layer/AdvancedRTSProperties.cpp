@@ -67,46 +67,43 @@
 class AdvancedRTSProperties
             : public Object
          {
-        
 
-    public static AdvancedRTSProperties createPropertiesSimulated(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdvancedRTSProperties(NoShakeAnimationListener.NO_SHAKE_ANIMATION_LISTENER, AllBinaryNoVibration.NO_VIBRATION, 0, new WaypointBehaviorBase());
-    
-}
-
-
-    public static AdvancedRTSProperties createProperties(){
+    public: static AdvancedRTSProperties createPropertiesSimulated(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdvancedRTSProperties(ShakeAnimationListenerFactory.getInstance(), AllBinaryVibration.getInstance(), GameConfigurationCentral.getInstance()!.VIBRATION.getValue()!.intValue() *100, new WaypointBehaviorBase());
+                        return AdvancedRTSProperties(NoShakeAnimationListener::NO_SHAKE_ANIMATION_LISTENER, AllBinaryNoVibration::NO_VIBRATION, 0, WaypointBehaviorBase());
     
 }
 
 
-    public const shakeListener: ShakeAnimationListener;
+    public: static AdvancedRTSProperties createProperties(){
 
-    public const vibration: AllBinaryVibrationME;
 
-    public const duration: int32_t;
 
-    public waypointBehaviorBase: TickableInterface;
-
-public constructor (ShakeAnimationListener shakeListener, AllBinaryVibrationME vibration, int32_t duration, TickableInterface waypointBehaviorBase){
-
-            super();
-        this.shakeListener= shakeListener;
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AdvancedRTSProperties(ShakeAnimationListenerFactory::getInstance(), AllBinaryVibration::getInstance(), GameConfigurationCentral::getInstance().VIBRATION.getValue().intValue() *100, WaypointBehaviorBase());
     
-this.vibration= vibration;
+}
+
+
+    public: ShakeAnimationListener shakeListener;
+
+    public: AllBinaryVibrationME vibration;
+
+    public: int32_t duration;
+
+    public: TickableInterface waypointBehaviorBase;
+
+public: AdvancedRTSProperties(ShakeAnimationListener shakeListener, AllBinaryVibrationME vibration, int32_t duration, TickableInterface waypointBehaviorBase){
+this->shakeListener= shakeListener;
     
-this.duration= duration;
+this->vibration= vibration;
     
-this.waypointBehaviorBase= waypointBehaviorBase;
+this->duration= duration;
+    
+this->waypointBehaviorBase= waypointBehaviorBase;
     
 }
 

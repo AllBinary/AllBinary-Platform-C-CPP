@@ -58,25 +58,24 @@
 class OrientationToGameKeyEvent
             : public Object
          {
-        
 
-    private: allBinaryGyroSensor: AllBinaryOrientationSensor;
+    private: AllBinaryOrientationSensor allBinaryGyroSensor;
 
-    private: const MIN: int32_t = 15;
+    private: const int32_t MIN = 15;
 
-public constructor ();
+public: OrientationToGameKeyEvent();
 
-    public setAllBinaryGyroSensor(AllBinaryOrientationSensor allBinaryGyroSensor);
+    public: void setAllBinaryGyroSensor(AllBinaryOrientationSensor allBinaryGyroSensor);
 
-    public AllBinaryOrientationSensor getAllBinaryGyroSensor();
-
-                //@Throws(Exception.constructor)
-            
-    public process();
+    public: AllBinaryOrientationSensor getAllBinaryGyroSensor();
 
                 //@Throws(Exception.constructor)
             
-    updateGameKeyEvents(Orientation orientation, int32_t yaw, int32_t pitch, int32_t roll);
+    public: void process();
+
+                //@Throws(Exception.constructor)
+            
+    private: void updateGameKeyEvents(Orientation orientation, int32_t yaw, int32_t pitch, int32_t roll);
 
 };
 

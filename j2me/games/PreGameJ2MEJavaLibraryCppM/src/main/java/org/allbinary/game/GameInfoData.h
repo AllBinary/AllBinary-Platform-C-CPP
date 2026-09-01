@@ -45,25 +45,24 @@
 class GameInfoData
             : public Object
          {
-        
 
-    private: static const instance: GameInfoData = new GameInfoData();
+    private: static GameInfoData instance() { return GameInfoData(); }
 
-    public static GameInfoData getInstance();
+    public: static GameInfoData getInstance();
 
-private constructor ();
+private: GameInfoData();
 
-    public const GAME_TYPE: string = "GAME_TYPE";
+    public: const std::string GAME_TYPE = "GAME_TYPE";
 
-    public const GAME_MODE: string = "GAME_MODE";
+    public: const std::string GAME_MODE = "GAME_MODE";
 
-    public const PLAYER_TYPE: string = "PLAYER_TYPE";
+    public: const std::string PLAYER_TYPE = "PLAYER_TYPE";
 
-    public const HIGHEST_LEVEL: string = "HIGHEST_LEVEL";
+    public: const std::string HIGHEST_LEVEL = "HIGHEST_LEVEL";
 
-    public const CURRENT_LEVEL: string = "CURRENT_LEVEL";
+    public: const std::string CURRENT_LEVEL = "CURRENT_LEVEL";
 
-    public const SOFTWARE_INFORMATION: string = "SOFTWARE_INFORMATION";
+    public: const std::string SOFTWARE_INFORMATION = "SOFTWARE_INFORMATION";
 
 };
 

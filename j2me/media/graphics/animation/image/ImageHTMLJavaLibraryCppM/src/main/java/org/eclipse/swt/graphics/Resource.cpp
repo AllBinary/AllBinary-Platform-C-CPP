@@ -28,13 +28,12 @@
 class Resource
             : public Object
          {
-        
 
-    public dispose(){
+    public: void dispose(){
 }
 
 
-    public bool isDisposed(){
+    public: bool isDisposed(){
 
 
 

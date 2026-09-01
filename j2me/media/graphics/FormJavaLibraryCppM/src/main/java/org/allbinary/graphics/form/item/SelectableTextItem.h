@@ -49,13 +49,12 @@
 #include "ABStringComponent.h"
 
 class SelectableTextItem: public ABTextItem {
-        
 
-public constructor (string label, int32_t layout, string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: SelectableTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public bool isFocusable();
+    public: bool isFocusable();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

@@ -42,9 +42,8 @@
         #include "AbeClientInformation.h"
 
 class InputAutomationClientInformation: public AbeClientInformation {
-        
 
-public constructor ();
+public: InputAutomationClientInformation();
 
 };
 

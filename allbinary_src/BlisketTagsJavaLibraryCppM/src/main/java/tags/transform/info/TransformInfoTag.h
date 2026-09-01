@@ -70,65 +70,64 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInfoTag: public ModifyTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: objectFile: string;
+    private: std::string objectFile;
 
-    private: anyType: string;
+    private: std::string anyType;
 
-    private: objectConfigFile: string;
+    private: std::string objectConfigFile;
 
-    private: objectConfig: string;
+    private: std::string objectConfig;
 
-    private: templateFile: string;
+    private: std::string templateFile;
 
-    private: template: string;
+    private: std::string template;
 
-    private: dataFile: string;
+    private: std::string dataFile;
 
-    private: data: string;
+    private: std::string data;
 
-    private: type: string;
+    private: std::string type;
 
-public constructor ();
+public: TransformInfoTag();
 
-public constructor (TagHelperFactoryInterface tagHelperFactoryInterface);
+public: TransformInfoTag(TagHelperFactoryInterface tagHelperFactoryInterface);
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
-    public setObjectFile(string value);
+    public: void setObjectFile(std::string value);
 
-    public setObject(string value);
+    public: void setObject(std::string value);
 
-    public setTemplateFile(string value);
+    public: void setTemplateFile(std::string value);
 
-    public setTemplate(string value);
+    public: void setTemplate(std::string value);
 
-    public setDataFile(string value);
+    public: void setDataFile(std::string value);
 
-    public setData(string value);
+    public: void setData(std::string value);
 
-    public setObjectConfigFile(string value);
+    public: void setObjectConfigFile(std::string value);
 
-    public setObjectConfig(string value);
+    public: void setObjectConfig(std::string value);
 
-    public setType(string value);
+    public: void setType(std::string value);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getObjectFile();
+    public: std::string getObjectFile();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

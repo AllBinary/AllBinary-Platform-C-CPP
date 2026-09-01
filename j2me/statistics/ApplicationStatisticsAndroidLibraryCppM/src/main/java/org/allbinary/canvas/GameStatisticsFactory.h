@@ -45,17 +45,16 @@
         #include "AndroidGameStatistics.h"
 //ActualPlatform
 /*actual*/ class GameStatisticsFactory: public AndroidGameStatistics {
-        
 
-    private: static const SINGLETON: AndroidGameStatistics = new GameStatisticsFactory();
+    private: static const AndroidGameStatistics SINGLETON = GameStatisticsFactory();
 
-    /*actual*/ public static AndroidGameStatistics getInstance();
+    /*actual*/ public: static AndroidGameStatistics getInstance();
 
-    private: stringBuffer: StringMaker = new StringMaker();
+    private: StringMaker stringBuffer = StringMaker();
 
-    public add(string string);
+    public: void add(std::string string);
 
-    /*actual*/ public string toString();
+    /*actual*/ public: std::string toString();
 
 };
 

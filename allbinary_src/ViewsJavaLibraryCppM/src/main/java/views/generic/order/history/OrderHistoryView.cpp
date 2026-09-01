@@ -81,101 +81,100 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class OrderHistoryView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class OrderHistoryView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: shipped: string;
+    private: std::string shipped;
 
-    private: partiallyShipped: string;
+    private: std::string partiallyShipped;
 
-    private: processing: string;
+    private: std::string processing;
 
-    private: preprocessing: string;
+    private: std::string preprocessing;
 
-    private: cancelled: string;
+    private: std::string cancelled;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: OrderHistoryView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
-this.preprocessing= this.request.getParameter(OrderHistoryData.PREPROCESSINGNAME);
+this->preprocessing= this->request.getParameter(OrderHistoryData::PREPROCESSINGNAME);
     
-this.shipped= this.request.getParameter(OrderHistoryData.SHIPPEDNAME);
+this->shipped= this->request.getParameter(OrderHistoryData::SHIPPEDNAME);
     
-this.partiallyShipped= this.request.getParameter(OrderHistoryData.PARTIALLYSHIPPEDNAME);
+this->partiallyShipped= this->request.getParameter(OrderHistoryData::PARTIALLYSHIPPEDNAME);
     
-this.processing= this.request.getParameter(OrderHistoryData.PROCESSINGNAME);
+this->processing= this->request.getParameter(OrderHistoryData::PROCESSINGNAME);
     
-this.cancelled= this.request.getParameter(OrderHistoryData.CANCELLEDNAME);
+this->cancelled= this->request.getParameter(OrderHistoryData::CANCELLEDNAME);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    node: Node = document.createElement(OrderData.ORDERS)!;;
+    Node node = document.createElement(OrderData::ORDERS);;
     
 
-    orderHistoryEntity: OrderHistoryEntity = new OrderHistoryEntity();;
+    OrderHistoryEntity orderHistoryEntity = OrderHistoryEntity();;
     
 
-    orderReviewVector: Vector = orderHistoryEntity!.getOrders(this.getWeblisketSession()!.getUserName())!;;
+    Vector orderReviewVector = orderHistoryEntity.getOrders(this->getWeblisketSession().getUserName());;
     
 
-    size: int32_t = orderReviewVector!.length!;;
+    int32_t size = orderReviewVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    orderHistory: OrderHistory = orderReviewVector!.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderReviewVector.get(index) as OrderHistory;;
     
 
-    orderHistoryNode: Node = orderHistory!.toXmlNode(document)!;;
+    Node orderHistoryNode = orderHistory.toXmlNode(document);;
     
 
-    orderNode: Node = document.createElement(orderHistory!.getPaymentMethod())!;;
+    Node orderNode = document.createElement(orderHistory.getPaymentMethod());;
     
-node.appendChild(orderHistory!.toXmlNode(document));
+node.appendChild(orderHistory.toXmlNode(document));
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Attempt to View a users order history", this, "view");
+                                    this->logUtil.putF("Attempt to View a users order history", this, "view");
     
 
                                     }
                                 
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PREPROCESSINGNAME, OrderHistoryData.PREPROCESSING));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PREPROCESSINGNAME, OrderHistoryData::PREPROCESSING));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PROCESSINGNAME, OrderHistoryData.PROCESSING));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PROCESSINGNAME, OrderHistoryData::PROCESSING));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.CANCELLEDNAME, OrderHistoryData.CANCELLED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::CANCELLEDNAME, OrderHistoryData::CANCELLED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PARTIALLYSHIPPEDNAME, OrderHistoryData.PARTIALLYSHIPPED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PARTIALLYSHIPPEDNAME, OrderHistoryData::PARTIALLYSHIPPED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.SHIPPEDNAME, OrderHistoryData.SHIPPED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::SHIPPEDNAME, OrderHistoryData::SHIPPED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, GLOBALS2.VIEW));
+node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME, GLOBALS2::VIEW));
     
 
 
@@ -188,10 +187,10 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -206,18 +205,18 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -230,10 +229,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

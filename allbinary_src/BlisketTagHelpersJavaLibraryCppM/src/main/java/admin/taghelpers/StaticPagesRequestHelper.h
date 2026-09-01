@@ -127,32 +127,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TagHelperInterface.h"
 
-class StaticPagesRequestHelper: public AbContext: public TagHelperInterface {
-        
+class StaticPagesRequestHelper: public AbContext, public TagHelperInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: searchParams: SearchParams;
+    private: SearchParams searchParams;
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: StaticPagesRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
                 //@Throws(Exception.constructor)
             
-    email();
+    private: void email();
 
-    public string generateStaticPages();
+    public: std::string generateStaticPages();
 
-    public string makePublic();
+    public: std::string makePublic();
 
 };
 

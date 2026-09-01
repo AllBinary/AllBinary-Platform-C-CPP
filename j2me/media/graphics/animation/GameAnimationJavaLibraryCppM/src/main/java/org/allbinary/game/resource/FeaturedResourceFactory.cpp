@@ -90,67 +90,64 @@
 class FeaturedResourceFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-public constructor (){
-
-            super();
-        }
+public: FeaturedResourceFactory(){
+}
 
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const ANIMATION_FEATURES: string = "Animation Features: Vector: ";
+    private: const std::string ANIMATION_FEATURES = "Animation Features: Vector: ";
 
-    private: const IMAGE_LABEL: string = " Image: ";
+    private: const std::string IMAGE_LABEL = " Image: ";
 
-    private: const IMAGE_GRAPHICS_ARRAY: string = "Image Array: ";
+    private: const std::string IMAGE_GRAPHICS_ARRAY = "Image Array: ";
 
-    private: const IMAGE_GRAPHICS_ROTATION: string = "Image Rotate: ";
+    private: const std::string IMAGE_GRAPHICS_ROTATION = "Image Rotate: ";
 
-    private: const SPRITE_QUARTER: string = " Sprite Quarter: ";
+    private: const std::string SPRITE_QUARTER = " Sprite Quarter: ";
 
-    private: const SPRITE_FULL: string = " Sprite Full: ";
+    private: const std::string SPRITE_FULL = " Sprite Full: ";
 
-    private: const IS_LOADING_LEVEL_LABEL: string = " isLoadingLevel ";
+    private: const std::string IS_LOADING_LEVEL_LABEL = " isLoadingLevel ";
 
-    private: const IS_FEATURE: string = " isFeature: ";
+    private: const std::string IS_FEATURE = " isFeature: ";
 
-    private: const GAME_FEATURE_CONTROLLED: string = "GameFeatureControlledInterface: ";
+    private: const std::string GAME_FEATURE_CONTROLLED = "GameFeatureControlledInterface: ";
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level){
+    public: void init(int32_t level){
 
-    size: int32_t = this.list.size()!;;
+    int32_t size = this->list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    featureInterface: GameFeatureControlledInterface = this.list.objectArray[index]! as GameFeatureControlledInterface;;
+    GameFeatureControlledInterface featureInterface = this->list.objectArray[index]! as GameFeatureControlledInterface;;
     
 
-    isLoadingLevel: bool = featureInterface!.isLoadingLevel(level)!;;
+    bool isLoadingLevel = featureInterface.isLoadingLevel(level);;
     
 
-    isFeature: bool = featureInterface!.isFeature()!;;
+    bool isFeature = featureInterface.isFeature();;
     
-this.logUtil!.putF(new StringMaker().append(this.GAME_FEATURE_CONTROLLED)!.append(featureInterface!.toString())!.append(this.IS_LOADING_LEVEL_LABEL)!.append(ResourceLoadingLevelFactory.getInstance()!.getLevelString(level))!.append(CommonSeps.getInstance()!.COLON_SEP)!.appendboolean(isLoadingLevel)!.append(this.IS_FEATURE)!.appendboolean(isFeature)!.toString(), this, this.commonStrings!.INIT);
+this->logUtil.putF(StringMaker().append(this->GAME_FEATURE_CONTROLLED).append(featureInterface.toString()).append(this->IS_LOADING_LEVEL_LABEL).append(ResourceLoadingLevelFactory::getInstance().getLevelString(level)).append(CommonSeps::getInstance().COLON_SEP).appendboolean(isLoadingLevel).append(this->IS_FEATURE).appendboolean(isFeature).toString(), this, this->commonStrings.INIT);
     
 
                         if(isLoadingLevel && isFeature)
                         
                                     {
-                                    featureInterface!.init(level);
+                                    featureInterface.init(level);
     
 
                                     }
@@ -158,47 +155,47 @@ this.logUtil!.putF(new StringMaker().append(this.GAME_FEATURE_CONTROLLED)!.appen
 }
 
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    graphicsFeatureFactory: GraphicsFeatureFactory = GraphicsFeatureFactory.getInstance()!;;
+    GraphicsFeatureFactory graphicsFeatureFactory = GraphicsFeatureFactory::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.ANIMATION_FEATURES);
+stringBuffer.append(this->ANIMATION_FEATURES);
     
-stringBuffer!.appendboolean(features.isFeature(graphicsFeatureFactory!.VECTOR_GRAPHICS));
+stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.VECTOR_GRAPHICS));
     
-stringBuffer!.append(this.IMAGE_LABEL);
+stringBuffer.append(this->IMAGE_LABEL);
     
-stringBuffer!.appendboolean(features.isFeature(graphicsFeatureFactory!.IMAGE_GRAPHICS));
+stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.INIT);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
     
 
-                        if(features.isFeature(graphicsFeatureFactory!.IMAGE_GRAPHICS))
+                        if(features.isFeature(graphicsFeatureFactory.IMAGE_GRAPHICS))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(this.IMAGE_GRAPHICS_ARRAY);
+stringBuffer.append(this->IMAGE_GRAPHICS_ARRAY);
     
-stringBuffer!.appendboolean(features.isFeature(graphicsFeatureFactory!.IMAGE_TO_ARRAY_GRAPHICS));
+stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS));
     
-stringBuffer!.append(this.IMAGE_GRAPHICS_ROTATION);
+stringBuffer.append(this->IMAGE_GRAPHICS_ROTATION);
     
-stringBuffer!.appendboolean(features.isFeature(graphicsFeatureFactory!.IMAGE_TO_ARRAY_GRAPHICS));
+stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.IMAGE_TO_ARRAY_GRAPHICS));
     
-stringBuffer!.append(this.SPRITE_QUARTER);
+stringBuffer.append(this->SPRITE_QUARTER);
     
-stringBuffer!.appendboolean(features.isFeature(graphicsFeatureFactory!.SPRITE_QUARTER_ROTATION_GRAPHICS));
+stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.SPRITE_QUARTER_ROTATION_GRAPHICS));
     
-stringBuffer!.append(this.SPRITE_FULL);
+stringBuffer.append(this->SPRITE_FULL);
     
-stringBuffer!.appendboolean(features.isFeature(graphicsFeatureFactory!.SPRITE_FULL_GRAPHICS));
+stringBuffer.appendboolean(features.isFeature(graphicsFeatureFactory.SPRITE_FULL_GRAPHICS));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.INIT);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.INIT);
     
 
                                     }
@@ -206,26 +203,26 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.INIT);
 }
 
 
-    public clear(){
-this.list.clear();
+    public: void clear(){
+this->list.clear();
     
 }
 
 
-    public add(GameFeatureControlledInterface featureInterface){
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append(StringUtil.getInstance()!.toString(featureInterface))!.toString(), this, this.commonStrings!.ADD);
+    public: void add(GameFeatureControlledInterface featureInterface){
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(featureInterface)).toString(), this, this->commonStrings.ADD);
     
-this.list.add(featureInterface);
+this->list.add(featureInterface);
     
 }
 
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 

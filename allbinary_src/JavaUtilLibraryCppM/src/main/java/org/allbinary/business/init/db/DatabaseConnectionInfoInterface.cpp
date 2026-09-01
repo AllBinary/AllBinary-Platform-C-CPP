@@ -38,43 +38,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DatabaseConnectionInfoInterface {
-        
 
-    string getUrl()
+    std::string getUrl()
 
-    string getJdbcDriver()
+    std::string getJdbcDriver()
 
-    string getName()
+    std::string getName()
 
-    string getUserName()
+    std::string getUserName()
 
-    string getPassword()
+    std::string getPassword()
 
-    string getHost()
+    std::string getHost()
 
-    string getSchema()
+    std::string getSchema()
 
-    string getServer()
+    std::string getServer()
 
-    string getPort()
+    std::string getPort()
 
-    setJdbcDriver(string value)
+    void setJdbcDriver(std::string value)
 
-    setName(string value)
+    void setName(std::string value)
 
-    setUserName(string value)
+    void setUserName(std::string value)
 
-    setPassword(string value)
+    void setPassword(std::string value)
 
-    setSchema(string value)
+    void setSchema(std::string value)
 
-    setServer(string value)
+    void setServer(std::string value)
 
-    setPort(string value)
+    void setPort(std::string value)
 
-    string getUserNameKey()
+    std::string getUserNameKey()
 
-    string getPasswordKey()
+    std::string getPasswordKey()
 
 };
 

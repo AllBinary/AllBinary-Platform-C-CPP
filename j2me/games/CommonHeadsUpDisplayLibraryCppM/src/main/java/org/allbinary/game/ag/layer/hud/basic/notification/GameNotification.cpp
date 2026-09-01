@@ -68,26 +68,25 @@
 class GameNotification
             : public Object
          {
-        
 
-    public static const NULL_GAME_NOTIFICATION_EVENT: GameNotificationEvent = new GameNotificationEvent(NullUtil.getInstance()!.NULL_OBJECT, StringUtil.getInstance()!.EMPTY_STRING, new Integer(0), BasicColorFactory.getInstance()!.RED, BooleanFactory.getInstance()!.FALSE);
+    public: static const GameNotificationEvent NULL_GAME_NOTIFICATION_EVENT = GameNotificationEvent(NullUtil::getInstance().NULL_OBJECT, StringUtil::getInstance().EMPTY_STRING, Integer(0), BasicColorFactory::getInstance().RED, BooleanFactory::getInstance().FALSE);
 
-    public const stringList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList stringList = BasicArrayListD();
 
-    public const timeList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList timeList = BasicArrayListD();
 
-    public const colorList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList colorList = BasicArrayListD();
 
-    public add(string string, Integer seconds, BasicColor basicColor){
+    public: void add(std::string string, Integer seconds, BasicColor basicColor){
 
-                        if(!this.stringList!.contains(string))
+                        if(!this->stringList.contains(string))
                         
                                     {
-                                    this.stringList!.add(string);
+                                    this->stringList.add(string);
     
-this.timeList!.add(seconds);
+this->timeList.add(seconds);
     
-this.colorList!.add(basicColor);
+this->colorList.add(basicColor);
     
 
                                     }
@@ -95,22 +94,22 @@ this.colorList!.add(basicColor);
 }
 
 
-    public clear(){
-this.stringList!.clear();
+    public: void clear(){
+this->stringList.clear();
     
-this.timeList!.clear();
+this->timeList.clear();
     
-this.colorList!.clear();
+this->colorList.clear();
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.stringList!.size();;
+                        return this->stringList.size();;
     
 }
 

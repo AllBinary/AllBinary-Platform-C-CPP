@@ -41,11 +41,10 @@
         #include "WorkFlowInterface.h"
 //extends ValidationComponentInterface, ValidationInterface, ComponentInterface, DomNodeInterface, DataMappingInterface
 class StoreWorkFlowInterface: public WorkFlowInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    string getStoreName()
+    std::string getStoreName()
 
 };
 

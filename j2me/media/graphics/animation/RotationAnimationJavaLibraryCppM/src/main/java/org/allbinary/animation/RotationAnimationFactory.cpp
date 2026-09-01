@@ -61,60 +61,57 @@
 class RotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    public static RotationAnimationFactory createFactory(){
+    public: static RotationAnimationFactory createFactory(){
 
-    totalAngle: int16_t = AngleFactory.getInstance()!.TOTAL_ANGLE;;
+    int16_t totalAngle = AngleFactory::getInstance().TOTAL_ANGLE;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new RotationAnimationFactory(totalAngle, (totalAngle /GameConfigurationCentral.getInstance()!.getGameControlFidelity()));
+                        return RotationAnimationFactory(totalAngle, (totalAngle /GameConfigurationCentral::getInstance().getGameControlFidelity()));
     
 }
 
 
-    private: totalAngle: int16_t;
+    private: int16_t totalAngle;
 
-    private: angleIncrement: int16_t;
+    private: int16_t angleIncrement;
 
-public constructor (int16_t totalAngle, int16_t angleIncrement){
-
-            super();
-        this.totalAngle= totalAngle;
+public: RotationAnimationFactory(int16_t totalAngle, int16_t angleIncrement){
+this->totalAngle= totalAngle;
     
-this.angleIncrement= angleIncrement;
+this->angleIncrement= angleIncrement;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRotationAnimation.createTotalAngle(AngleInfo.getInstance(this.angleIncrement), this.totalAngle, AnimationBehavior.getInstance());;
+                        return NullRotationAnimation::createTotalAngle(AngleInfo::getInstance(this->angleIncrement), this->totalAngle, AnimationBehavior::getInstance());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRotationAnimation.createTotalAngle(AngleInfo.getInstance(this.angleIncrement), this.totalAngle, AnimationBehavior.getInstance());;
+                        return NullRotationAnimation::createTotalAngle(AngleInfo::getInstance(this->angleIncrement), this->totalAngle, AnimationBehavior::getInstance());;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

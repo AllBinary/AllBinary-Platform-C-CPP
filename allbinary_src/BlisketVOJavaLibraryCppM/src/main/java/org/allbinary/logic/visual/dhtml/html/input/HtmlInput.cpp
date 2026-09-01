@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -44,67 +46,63 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HtmlInput: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const STARTINPUT: string = "<INPUT ";
+    private: const std::string STARTINPUT = "<INPUT ";
 
-    private: const ENDINPUT: string = "</INPUT>";
+    private: const std::string ENDINPUT = "</INPUT>";
 
-    private: const TYPE: string = "TYPE=\"";
+    private: const std::string TYPE = "TYPE=\"";
 
-    private: const NAME: string = "NAME=\"";
+    private: const std::string NAME = "NAME=\"";
 
-    private: before: string;
+    private: std::string before;
 
-    private: type: string;
+    private: std::string type;
 
-    private: name: string;
+    private: std::string name;
 
-    private: after: string;
+    private: std::string after;
 
-public constructor (string before, string type, string name, string after){
-
-            super();
-        this.before= before;
+public: HtmlInput(std::string before, std::string type, std::string name, std::string after){
+this->before= before;
     
-this.type= type;
+this->type= type;
     
-this.name= name;
+this->name= name;
     
-this.after= after;
+this->after= after;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
-    
-
-    result: string = stringUtil!.EMPTY_STRING;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    attributeKeys: std::vector<any> = this.otherAttributes!.keySet()!.()!;;
+    std::string result = stringUtil.EMPTY_STRING;;
     
 
-    attributeSize: int32_t = attributeKeys!.length
-                ;;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
     
-result= this.before;
+
+    int32_t attributeSize = attributeKeys.size();;
     
-result += this.STARTINPUT;
+result= this->before;
     
-result += this.TYPE;
+result += this->STARTINPUT;
     
-result += this.type;
+result += this->TYPE;
+    
+result += this->type;
     
 result += "\" ";
     
-result += this.NAME;
+result += this->NAME;
     
-result += this.name;
+result += this->name;
     
 result += "\" ";
     
@@ -113,18 +111,16 @@ result += "\" ";
 
 
                         for (
-    i: int32_t = 0;i < attributeSize; i++)
+    int32_t i = 0;i < attributeSize; i++)
         {
 
-    key: string = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i]! as string;;
     
 
-    value: string = otherAttributes!.get(key) as string;;
+    std::string value = otherAttributes.get(key) as string;;
     
 
-                        if(value != 
-                                    null
-                                 && value.compareTo(stringUtil!.EMPTY_STRING) != 0)
+                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;
@@ -140,11 +136,11 @@ result += "\" ";
                                 
 }
 
-result += this.END;
+result += this->END;
     
-result += this.ENDINPUT;
+result += this->ENDINPUT;
     
-result += this.after;
+result += this->after;
     
 
 

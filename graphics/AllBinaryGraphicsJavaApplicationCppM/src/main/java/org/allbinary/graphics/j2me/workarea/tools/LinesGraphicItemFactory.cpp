@@ -48,14 +48,13 @@
 class LinesGraphicItemFactory
             : public Object
         : public GraphicsItemInterfaceFactoryInterface {
-        
 
-    public GraphicItemInterface getInstance(CanvasJPanel canvasJPanel){
+    public: GraphicItemInterface getInstance(CanvasJPanel canvasJPanel){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LinesGraphicItem();
+                        return LinesGraphicItem();
     
 }
 

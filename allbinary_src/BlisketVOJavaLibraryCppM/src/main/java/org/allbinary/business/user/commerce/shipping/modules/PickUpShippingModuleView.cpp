@@ -56,18 +56,15 @@
         #include "PickUpShippingModule.h"
 #include "Document.h"
 
-class PickUpShippingModuleView: public PickUpShippingModule: public DomNodeInterface {
-        
+class PickUpShippingModuleView: public PickUpShippingModule, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: PickUpShippingModuleView(){
+}
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
@@ -77,7 +74,7 @@ public constructor (){
 }
 
 
-    public org.w3c.dom.Document toValidationInfoDoc(){
+    public: org::w3c::dom::Document toValidationInfoDoc(){
 
 
 
@@ -87,7 +84,7 @@ public constructor (){
 }
 
 
-    public org.w3c.dom.Node toValidationInfoNode(org.w3c.dom.Document document){
+    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document){
 
 
 
@@ -97,7 +94,7 @@ public constructor (){
 }
 
 
-    public org.w3c.dom.Document toXmlDoc(){
+    public: org::w3c::dom::Document toXmlDoc(){
 
 
 
@@ -107,15 +104,15 @@ public constructor (){
 }
 
 
-    public org.w3c.dom.Node toXmlNode(org.w3c.dom.Document document){
+    public: org::w3c::dom::Node toXmlNode(org::w3c::dom::Document document){
 
         try {
             
-    shippingMethodNode: Node = document.createElement(ShippingMethodData.NAME)!;;
+    Node shippingMethodNode = document.createElement(ShippingMethodData::NAME);;
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodData.NAME, this.getName()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::NAME, this->getName()));
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodData.DESCRIPTION, this.getDescription()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::DESCRIPTION, this->getDescription()));
     
 
 
@@ -128,10 +125,10 @@ shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, Ship
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode", e);
     
 
                                     }
@@ -147,7 +144,7 @@ shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, Ship
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -157,7 +154,7 @@ shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, Ship
 }
 
 
-    public string view(){
+    public: std::string view(){
 
 
 

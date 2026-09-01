@@ -58,21 +58,20 @@
 class ContextConfigurationTableMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor (ContextConfigurationInterface contextConfigurationInterface);
+public: ContextConfigurationTableMapping(ContextConfigurationInterface contextConfigurationInterface);
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public any getKey();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Object* getKey();
+
+                //@Throws(Exception.constructor)
+            
+    public: Vector toVector();
 
 };
 

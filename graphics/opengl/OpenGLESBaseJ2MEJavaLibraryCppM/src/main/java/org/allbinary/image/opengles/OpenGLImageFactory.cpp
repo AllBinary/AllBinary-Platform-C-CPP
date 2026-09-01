@@ -53,15 +53,14 @@
 class OpenGLImageFactory
             : public Object
          {
-        
 
-    public static const NULL_OPENGL_IMAGE_FACTORY: OpenGLImageFactory = new OpenGLImageFactory();
+    public: static const OpenGLImageFactory NULL_OPENGL_IMAGE_FACTORY = OpenGLImageFactory();
 
-    public Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
-
+    public: Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 

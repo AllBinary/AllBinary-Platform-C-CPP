@@ -107,43 +107,42 @@
         #include "ModifyTable.h"
 
 class StoreFrontsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: const weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: modifyingStoreFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface modifyingStoreFrontInterface;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    getFormData();
-
-    public string update();
+public: StoreFrontsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public sendStoreCreatedEmails();
+    private: void getFormData();
+
+    public: std::string update();
+
+                //@Throws(Exception.constructor)
+            
+    public: void sendStoreCreatedEmails();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string install();
+    public: std::string install();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
 };
 

@@ -54,19 +54,18 @@
         #include "AnimationBehavior.h"
 
 class IndexedAnimationBehavior: public AnimationBehavior {
-        
 
-    public frameDelayTime: int64_t;
+    public: int64_t frameDelayTime;
 
-    public loopTotal: int32_t;
+    public: int32_t loopTotal;
 
-    public elapsedTime: int64_t= 0;
+    public: int64_t elapsedTime= 0;
 
-    public loopIndex: int32_t= 0;
+    public: int32_t loopIndex= 0;
 
-public constructor (int32_t loopTotal, int64_t frameDelayTime);
+public: IndexedAnimationBehavior(int32_t loopTotal, int64_t frameDelayTime);
 
-    public reset();
+    public: void reset();
 
 };
 

@@ -57,15 +57,14 @@
 class StoreFrontAdvertisementsStatistics
             : public Object
         : public StoreFrontAdvertisementsStatisticsInterface {
-        
 
-public constructor (StoreFrontInterface storeFrontInterface);
+public: StoreFrontAdvertisementsStatistics(StoreFrontInterface storeFrontInterface);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public any getKey();
+    public: Object* getKey();
 
 };
 

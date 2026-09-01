@@ -79,25 +79,24 @@
 class Password
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: password: string;
+    private: std::string password;
 
-public constructor (string password);
+public: Password(std::string password);
 
-    public set(string value);
+    public: void set(std::string value);
 
-    public string get();
+    public: std::string get();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string getValidationInfo();
+    public: std::string getValidationInfo();
 
-    public Vector toVector(string secret);
+    public: Vector toVector(std::string secret);
 
-    public HashMap<any, any> toHashMap(string secret);
+    public: HashMap<any, any> toHashMap(std::string secret);
 
 };
 

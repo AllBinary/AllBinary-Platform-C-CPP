@@ -68,11 +68,10 @@
 class BasicGeographicMapFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public BasicGeographicMap getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory geographicMapCellTypeFactory);
+    public: BasicGeographicMap getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory geographicMapCellTypeFactory);
 
 };
 

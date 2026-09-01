@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -48,16 +50,15 @@
 class GameKeyMappingFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyMappingFactory getInstance(){
+    public: static GameKeyMappingFactory getInstance(){
 
-                        if(GameKeyMappingFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(GameKeyMappingFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    GameKeyMappingFactory.instance= new GameKeyMappingFactory();
+                                    GameKeyMappingFactory::instance= GameKeyMappingFactory();
     
 
                                     }
@@ -66,82 +67,80 @@ class GameKeyMappingFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyMappingFactory.instance as GameKeyMappingFactory;
+                        return GameKeyMappingFactory::instance() as GameKeyMappingFactory;
     
 }
 
 
-    private: intKeyToGameKey: std::vector<GameKey> = new Array(InputFactory.getInstance()!.MAX);
+    private: std::vector<GameKey> intKeyToGameKey = new Array(InputFactory::getInstance().MAX);
 
-private constructor (){
+private: GameKeyMappingFactory(){
 
-            super();
-        
-    gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;;
+    GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();;
     
-this.setGameKey(gameKeyFactory!.NONE);
+this->setGameKey(gameKeyFactory.NONE);
     
-this.setGameKey(gameKeyFactory!.UP);
+this->setGameKey(gameKeyFactory.UP);
     
-this.setGameKey(gameKeyFactory!.DOWN);
+this->setGameKey(gameKeyFactory.DOWN);
     
-this.setGameKey(gameKeyFactory!.LEFT);
+this->setGameKey(gameKeyFactory.LEFT);
     
-this.setGameKey(gameKeyFactory!.RIGHT);
+this->setGameKey(gameKeyFactory.RIGHT);
     
-this.setGameKey(gameKeyFactory!.KEY_POUND);
+this->setGameKey(gameKeyFactory.KEY_POUND);
     
-this.setGameKey(gameKeyFactory!.KEY_STAR);
+this->setGameKey(gameKeyFactory.KEY_STAR);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM0);
+this->setGameKey(gameKeyFactory.KEY_NUM0);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM1);
+this->setGameKey(gameKeyFactory.KEY_NUM1);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM2);
+this->setGameKey(gameKeyFactory.KEY_NUM2);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM3);
+this->setGameKey(gameKeyFactory.KEY_NUM3);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM4);
+this->setGameKey(gameKeyFactory.KEY_NUM4);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM5);
+this->setGameKey(gameKeyFactory.KEY_NUM5);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM6);
+this->setGameKey(gameKeyFactory.KEY_NUM6);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM7);
+this->setGameKey(gameKeyFactory.KEY_NUM7);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM8);
+this->setGameKey(gameKeyFactory.KEY_NUM8);
     
-this.setGameKey(gameKeyFactory!.KEY_NUM9);
+this->setGameKey(gameKeyFactory.KEY_NUM9);
     
-this.setGameKey(gameKeyFactory!.GAME_A);
+this->setGameKey(gameKeyFactory.GAME_A);
     
-this.setGameKey(gameKeyFactory!.GAME_B);
+this->setGameKey(gameKeyFactory.GAME_B);
     
-this.setGameKey(gameKeyFactory!.GAME_C);
+this->setGameKey(gameKeyFactory.GAME_C);
     
-this.setGameKey(gameKeyFactory!.GAME_D);
+this->setGameKey(gameKeyFactory.GAME_D);
     
-this.setGameKey(gameKeyFactory!.FIRE);
+this->setGameKey(gameKeyFactory.FIRE);
     
-this.setGameKey(gameKeyFactory!.LEVEL_DOWN);
+this->setGameKey(gameKeyFactory.LEVEL_DOWN);
     
-this.setGameKey(gameKeyFactory!.LEVEL_UP);
+this->setGameKey(gameKeyFactory.LEVEL_UP);
     
 }
 
 
-    public GameKey getGameKey(int32_t key){
+    public: GameKey getGameKey(int32_t key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.intKeyToGameKey[key]!;
+                        return this->intKeyToGameKey[key]!;
     
 }
 
 
-    setGameKey(GameKey gameKey){
-this.intKeyToGameKey[gameKey!.getId()]= gameKey;
+    private: void setGameKey(GameKey gameKey){
+this->intKeyToGameKey[gameKey.getId()]= gameKey;
     
 }
 

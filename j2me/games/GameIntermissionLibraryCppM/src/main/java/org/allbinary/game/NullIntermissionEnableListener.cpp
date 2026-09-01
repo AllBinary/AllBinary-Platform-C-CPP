@@ -43,27 +43,24 @@
 class NullIntermissionEnableListener
             : public Object
         : public IntermissionEnableListenerInterface {
-        
 
-    private: static const SINGLETON: IntermissionEnableListenerInterface = new NullIntermissionEnableListener();
+    private: static const IntermissionEnableListenerInterface SINGLETON = NullIntermissionEnableListener();
 
-    public static IntermissionEnableListenerInterface getInstance(){
+    public: static IntermissionEnableListenerInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullIntermissionEnableListener.SINGLETON;
+                        return NullIntermissionEnableListener::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NullIntermissionEnableListener(){
+}
 
 
-    public notifyIntermission(bool enable){
+    public: void notifyIntermission(bool enable){
 }
 
 

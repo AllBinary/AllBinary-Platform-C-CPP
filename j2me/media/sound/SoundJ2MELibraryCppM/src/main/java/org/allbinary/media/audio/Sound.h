@@ -72,27 +72,26 @@
 class Sound
             : public Object
         : public SoundInterface, public Runnable {
-        
 
-    private: resource: string;
+    private: std::string resource;
 
-    player: Player = NoPlayer.NO_PLAYER;
+    protected: Player player = NoPlayer::NO_PLAYER;
 
-protected constructor (string resource);
+protected: Sound(std::string resource);
 
-    public string getResource();
+    public: std::string getResource();
 
-    public Player getPlayerP();
+    public: Player getPlayerP();
 
-    public setPlayerP(Player player);
+    public: void setPlayerP(Player player);
 
                 //@Throws(Exception.constructor)
             
-    public init();
+    public: void init();
 
-    public int32_t getDuration();
+    public: int32_t getDuration();
 
-    public run();
+    public: void run();
 
 };
 

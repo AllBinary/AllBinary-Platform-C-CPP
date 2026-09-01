@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -47,30 +49,29 @@
 class BaseSecretComposite
             : public Object
          {
-        
 
-    public static const NULL_SECRET_COMPOSITE: BaseSecretComposite = new BaseSecretComposite();
+    public: static const BaseSecretComposite NULL_SECRET_COMPOSITE = BaseSecretComposite();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_BYTE_ARRAY;
+                        return NullUtil::getInstance().NULL_BYTE_ARRAY;
     
 }
 

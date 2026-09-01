@@ -71,54 +71,53 @@
 class BufferedWriterUtil
             : public Object
          {
-        
 
-    private: static const instance: BufferedWriterUtil = new BufferedWriterUtil();
+    private: static BufferedWriterUtil instance() { return BufferedWriterUtil(); }
 
-    public static BufferedWriterUtil getInstance(){
+    public: static BufferedWriterUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BufferedWriterUtil.instance;
+                        return BufferedWriterUtil::instance();
     
 }
 
 
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
+    private: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonLabels: CommonLabels = CommonLabels.getInstance()!;
+    private: const CommonLabels commonLabels = CommonLabels::getInstance();
 
-    private: const REMOVING_OLD: string = "Remove old for overwritting: ";
+    private: const std::string REMOVING_OLD = "Remove old for overwritting: ";
 
                 //@Throws(Exception.constructor)
             
-    public overwrite(string path, string data){
+    public: void overwrite(std::string path, std::string data){
 
-    abFile: AbFile = AbFile.createAbFile(path)!;;
+    AbFile abFile = AbFile::createAbFile(path);;
     
 
-                        if(abFile!.exists())
+                        if(abFile.exists())
                         
                                     {
-                                    this.logUtil!.putF(this.REMOVING_OLD +path, this, this.commonStrings!.CREATE);
+                                    this->logUtil.putF(this->REMOVING_OLD +path, this, this->commonStrings.CREATE);
     
-abFile!.delete();
+abFile.delete();
     
 
                                     }
                                 
                         else {
                             
-    name: string = AbPathData.getInstance()!.removeNameFromPath(path)!;;
+    std::string name = AbPathData::getInstance().removeNameFromPath(path);;
     
 
-    abFileDirectory: AbFile = AbFile.createAbFile(name)!;;
+    AbFile abFileDirectory = AbFile::createAbFile(name);;
     
 
-                        if(abFileDirectory!.exists())
+                        if(abFileDirectory.exists())
                         
                                     {
                                     
@@ -126,51 +125,51 @@ abFile!.delete();
                                 
                         else {
                             
-    stringBuilder: StringMaker = new StringMaker();;
+    StringMaker stringBuilder = StringMaker();;
     
-this.logUtil!.putF(stringBuilder!.append(this.commonStrings!.CREATE)!.append(this.commonLabels!.COLON_SEP)!.append(name)!.toString(), this, this.commonStrings!.CREATE);
-    
-
-    result: bool = abFileDirectory!.mkdirs()!;;
-    
-stringBuilder!.delete(0, stringBuilder!.length());
-    
-this.logUtil!.putF(stringBuilder!.append(this.commonLabels!.RESULT_)!.appendboolean(result)!.toString(), this, this.commonStrings!.CREATE);
+this->logUtil.putF(stringBuilder.append(this->commonStrings.CREATE).append(this->commonLabels.COLON_SEP).append(name).toString(), this, this->commonStrings.CREATE);
     
 
-                        }
-                            
+    bool result = abFileDirectory.mkdirs();;
+    
+stringBuilder.delete(0, stringBuilder.length());
+    
+this->logUtil.putF(stringBuilder.append(this->commonLabels.RESULT_).appendboolean(result).toString(), this, this->commonStrings.CREATE);
+    
 
                         }
                             
-this.write(abFile, data);
+
+                        }
+                            
+this->write(abFile, data);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public overwrite(AbFile abFile, string data){
+    public: void overwrite(AbFile abFile, std::string data){
 
-                        if(abFile!.exists())
+                        if(abFile.exists())
                         
                                     {
-                                    this.logUtil!.putF(this.REMOVING_OLD +abFile!.getPath(), this, this.commonStrings!.CREATE);
+                                    this->logUtil.putF(this->REMOVING_OLD +abFile.getPath(), this, this->commonStrings.CREATE);
     
-abFile!.delete();
+abFile.delete();
     
 
                                     }
                                 
                         else {
                             
-    name: string = AbPathData.getInstance()!.removeNameFromPath(abFile!.getAbsolutePath())!;;
+    std::string name = AbPathData::getInstance().removeNameFromPath(abFile.getAbsolutePath());;
     
 
-    abFileDirectory: AbFile = AbFile.createAbFile(name)!;;
+    AbFile abFileDirectory = AbFile::createAbFile(name);;
     
 
-                        if(abFileDirectory!.exists())
+                        if(abFileDirectory.exists())
                         
                                     {
                                     
@@ -178,39 +177,39 @@ abFile!.delete();
                                 
                         else {
                             
-    stringBuilder: StringMaker = new StringMaker();;
+    StringMaker stringBuilder = StringMaker();;
     
-this.logUtil!.putF(stringBuilder!.append(this.commonStrings!.CREATE)!.append(this.commonLabels!.COLON_SEP)!.append(name)!.toString(), this, this.commonStrings!.CREATE);
-    
-
-    result: bool = abFileDirectory!.mkdirs()!;;
-    
-stringBuilder!.delete(0, stringBuilder!.length());
-    
-this.logUtil!.putF(stringBuilder!.append(this.commonLabels!.RESULT_)!.appendboolean(result)!.toString(), this, this.commonStrings!.CREATE);
+this->logUtil.putF(stringBuilder.append(this->commonStrings.CREATE).append(this->commonLabels.COLON_SEP).append(name).toString(), this, this->commonStrings.CREATE);
     
 
-                        }
-                            
+    bool result = abFileDirectory.mkdirs();;
+    
+stringBuilder.delete(0, stringBuilder.length());
+    
+this->logUtil.putF(stringBuilder.append(this->commonLabels.RESULT_).appendboolean(result).toString(), this, this->commonStrings.CREATE);
+    
 
                         }
                             
-this.write(abFile, data);
+
+                        }
+                            
+this->write(abFile, data);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(AbFile abFile, string data){
+    public: void write(AbFile abFile, std::string data){
 
-    fileOut: BufferedWriter = new BufferedWriter(new FileWriter(AbFileNativeUtil.get(abFile)));;
+    BufferedWriter fileOut = BufferedWriter(FileWriter(AbFileNativeUtil::get(abFile)));;
     
-fileOut!.write(data, 0, data.length);
+fileOut.write(data, 0, data.size());
     
-fileOut!.newLine();
+fileOut.newLine();
     
-fileOut!.flush();
+fileOut.flush();
     
 }
 

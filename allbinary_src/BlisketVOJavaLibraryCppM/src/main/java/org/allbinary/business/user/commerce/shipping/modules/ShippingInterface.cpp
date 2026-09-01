@@ -44,13 +44,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShippingInterface {
-        
 
     Money getCost(OrderInterface order)
 
-    string getName()
+    std::string getName()
 
-    string getDescription()
+    std::string getDescription()
 
 };
 

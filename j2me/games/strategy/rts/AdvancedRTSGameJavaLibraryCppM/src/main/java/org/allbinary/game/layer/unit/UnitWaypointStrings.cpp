@@ -42,45 +42,44 @@
 class UnitWaypointStrings
             : public Object
          {
-        
 
-    private: static const instance: UnitWaypointStrings = new UnitWaypointStrings();
+    private: static UnitWaypointStrings instance() { return UnitWaypointStrings(); }
 
-    public static UnitWaypointStrings getInstance(){
+    public: static UnitWaypointStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UnitWaypointStrings.instance;
+                        return UnitWaypointStrings::instance();
     
 }
 
 
-    public const WANDERING: string = "Order?";
+    public: const std::string WANDERING = "Order?";
 
-    public const THINKING: string = "Thinking";
+    public: const std::string THINKING = "Thinking";
 
-    public const THINKING_ABOUT_TARGET: string = "Hmmm";
+    public: const std::string THINKING_ABOUT_TARGET = "Hmmm";
 
-    public const TARGET: string = "Target";
+    public: const std::string TARGET = "Target";
 
-    public const KILL: string = "Kill!";
+    public: const std::string KILL = "Kill!";
 
-    public const STOP: string = "Stop";
+    public: const std::string STOP = "Stop";
 
-    public const WAYPOINT_DESTROYED_SHORT: string = "Uh Oh";
+    public: const std::string WAYPOINT_DESTROYED_SHORT = "Uh Oh";
 
-    public const WAYPOINT_DESTROYED: string = "Waypoint Destroyed";
+    public: const std::string WAYPOINT_DESTROYED = "Waypoint Destroyed";
 
-    public const ALL_VISITED_SHORT: string = "Arrived";
+    public: const std::string ALL_VISITED_SHORT = "Arrived";
 
-    public const ALL_VISITED: string = "All Visited";
+    public: const std::string ALL_VISITED = "All Visited";
 
-    public const ALREADY_THERE_SHORT: string = "Again?";
+    public: const std::string ALREADY_THERE_SHORT = "Again?";
 
-    public const ALREADY_THERE: string = "Already There";
+    public: const std::string ALREADY_THERE = "Already There";
 
-    public const NEXT_PATH_NODE: string = "Next Path Node";
+    public: const std::string NEXT_PATH_NODE = "Next Path Node";
 
 };
 

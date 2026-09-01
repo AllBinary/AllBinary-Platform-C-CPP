@@ -54,85 +54,84 @@
 class SpecialGameInput
             : public Object
         : public SpecialGameInputInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public up(){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public down(){
+    public: void up(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public right(){
+    public: void down(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public left(){
+    public: void right(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public strafeLeft(){
+    public: void left(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public strafeRight(){
+    public: void strafeLeft(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void strafeRight(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
-    public paint(Graphics graphics){
+                //@Throws(Exception.constructor)
+            
+    public: void special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paint(Graphics graphics){
+}
+
+
+    public: void paintThreed(Graphics graphics){
 }
 
 

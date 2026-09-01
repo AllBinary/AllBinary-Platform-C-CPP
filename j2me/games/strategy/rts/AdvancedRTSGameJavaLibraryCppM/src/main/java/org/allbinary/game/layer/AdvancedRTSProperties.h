@@ -70,21 +70,20 @@
 class AdvancedRTSProperties
             : public Object
          {
-        
 
-    public static AdvancedRTSProperties createPropertiesSimulated();
+    public: static AdvancedRTSProperties createPropertiesSimulated();
 
-    public static AdvancedRTSProperties createProperties();
+    public: static AdvancedRTSProperties createProperties();
 
-    public const shakeListener: ShakeAnimationListener;
+    public: ShakeAnimationListener shakeListener;
 
-    public const vibration: AllBinaryVibrationME;
+    public: AllBinaryVibrationME vibration;
 
-    public const duration: int32_t;
+    public: int32_t duration;
 
-    public waypointBehaviorBase: TickableInterface;
+    public: TickableInterface waypointBehaviorBase;
 
-public constructor (ShakeAnimationListener shakeListener, AllBinaryVibrationME vibration, int32_t duration, TickableInterface waypointBehaviorBase);
+public: AdvancedRTSProperties(ShakeAnimationListener shakeListener, AllBinaryVibrationME vibration, int32_t duration, TickableInterface waypointBehaviorBase);
 
 };
 

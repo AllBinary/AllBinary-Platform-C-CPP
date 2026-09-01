@@ -58,48 +58,47 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LapWidget: public BasicHud {
-        
 
-    private: const LAP_STR: string = "Lap ";
+    private: const std::string LAP_STR = "Lap ";
 
-    private: const OF_STR: string = " of ";
+    private: const std::string OF_STR = " of ";
 
-    private: string: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (int32_t location, int32_t direction, BasicColor basicColor){
+public: LapWidget(int32_t location, int32_t direction, BasicColor basicColor){
             super(location, direction, 2, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.updateMaxHeight= 15;
+this->updateMaxHeight= 15;
     
-this.updateMaxWidth= 40;
-    
-}
-
-
-    public update(LapInfo lapInfo){
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append(this.LAP_STR);
-    
-stringBuffer!.appendint(lapInfo!.getCurrentLap());
-    
-stringBuffer!.append(this.OF_STR);
-    
-stringBuffer!.appendint(lapInfo!.getTotalLaps());
-    
-this.string= stringBuffer!.toString();
+this->updateMaxWidth= 40;
     
 }
 
 
-    public paint(Graphics graphics){
-super.paintString(graphics, this.string);
+    public: void update(LapInfo lapInfo){
+
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append(this->LAP_STR);
+    
+stringBuffer.appendint(lapInfo.getCurrentLap());
+    
+stringBuffer.append(this->OF_STR);
+    
+stringBuffer.appendint(lapInfo.getTotalLaps());
+    
+this->string= stringBuffer.toString();
+    
+}
+
+
+    public: void paint(Graphics graphics){
+super.paintString(graphics, this->string);
     
 }
 

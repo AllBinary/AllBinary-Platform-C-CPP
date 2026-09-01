@@ -42,16 +42,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ABCustomItem.h"
 
-class CustomCustomItem: public ABCustomItem: public UpdateMyFontInterface {
-        
+class CustomCustomItem: public ABCustomItem, public UpdateMyFontInterface {
 
-    const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-protected constructor (string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+protected: CustomCustomItem(std::string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
 };
 

@@ -75,29 +75,28 @@
 class ImageScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageScaleUtil = new ImageScaleUtil();
+    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
 
-    public static ImageScaleUtil getInstance();
+    public: static ImageScaleUtil getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
+private: ImageScaleUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
+    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached);
+    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageInternal(Image originalImage, float scaleX, float scaleY);
+    public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageInternal(Image originalImage, float scaleX, float scaleY);
 
 };
 

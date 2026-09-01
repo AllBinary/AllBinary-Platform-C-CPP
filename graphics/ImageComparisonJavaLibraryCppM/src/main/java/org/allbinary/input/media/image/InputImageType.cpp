@@ -48,82 +48,79 @@
 class InputImageType
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    private: static const TYPE_VECTOR: Vector = new Vector();
+    private: static const Vector TYPE_VECTOR = Vector();
 
-    public static CAPTURE: InputImageType = new InputImageType("Capture", 0);
+    public: static InputImageType CAPTURE = InputImageType("Capture", 0);
 
-    public static COMPARISON: InputImageType = new InputImageType("Comparison", 1);
+    public: static InputImageType COMPARISON = InputImageType("Comparison", 1);
 
-    public static MOTION: InputImageType = new InputImageType("Motion", 2);
+    public: static InputImageType MOTION = InputImageType("Motion", 2);
 
-    public static InputImageType getInstance(string imageTypeString){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputImageType.hashMap!.get(imageTypeString) as InputImageType;
-    
-}
-
-
-    public static Vector getAllAsVector(){
+    public: static InputImageType getInstance(std::string imageTypeString){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputImageType.TYPE_VECTOR;
+                        return InputImageType::hashMap.get(imageTypeString) as InputImageType;
     
 }
 
 
-    private: const name: string;
-
-    private: const index: int32_t;
-
-private constructor (string name, int32_t index){
-
-            super();
-        this.name= name;
-    
-this.index= index;
-    
-InputImageType.TYPE_VECTOR.add(this);
-    
-InputImageType.hashMap!.put(this.getName(), this);
-    
-}
-
-
-    public string toString(){
+    public: static Vector getAllAsVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "ImageType: " +this.getName();
+                        return InputImageType::TYPE_VECTOR;
     
 }
 
 
-    public string getName(){
+    private: std::string name;
 
+    private: int32_t index;
 
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+private: InputImageType(std::string name, int32_t index){
+this->name= name;
+    
+this->index= index;
+    
+InputImageType::TYPE_VECTOR.add(this);
+    
+InputImageType::hashMap.put(this->getName(), this);
     
 }
 
 
-    public int32_t getIndex(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.index;
+                        return "ImageType: " +this->getName();
+    
+}
+
+
+    public: std::string getName(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->name;
+    
+}
+
+
+    public: int32_t getIndex(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->index;
     
 }
 

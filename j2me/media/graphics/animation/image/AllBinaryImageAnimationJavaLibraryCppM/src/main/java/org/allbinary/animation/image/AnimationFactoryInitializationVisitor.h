@@ -66,23 +66,22 @@
 class AnimationFactoryInitializationVisitor
             : public Object
          {
-        
 
-    public width: int32_t= 0;
+    public: int32_t width= 0;
 
-    public height: int32_t= 0;
+    public: int32_t height= 0;
 
-    public dx: int32_t= 0;
+    public: int32_t dx= 0;
 
-    public dy: int32_t= 0;
+    public: int32_t dy= 0;
 
-    public originalDx: int32_t= 0;
+    public: int32_t originalDx= 0;
 
-    public originalDy: int32_t= 0;
+    public: int32_t originalDy= 0;
 
-    public visit();
+    public: void visit();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

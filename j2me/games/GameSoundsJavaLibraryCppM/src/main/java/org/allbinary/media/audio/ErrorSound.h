@@ -43,13 +43,12 @@
 #include "Sound.h"
 
 class ErrorSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new ErrorSound();
+    private: static Sound soundInterface = ErrorSound();
 
-    public static Sound getInstance();
+    public: static Sound getInstance();
 
-private constructor ();
+private: ErrorSound();
 
 };
 

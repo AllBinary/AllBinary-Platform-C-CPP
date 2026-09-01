@@ -45,9 +45,8 @@
 class ItemData
             : public Object
          {
-        
 
-    public static const ITEM: string = "ITEM";
+    public: static const std::string ITEM = "ITEM";
 
 };
 

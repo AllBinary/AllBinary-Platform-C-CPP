@@ -66,25 +66,24 @@
         #include "HelperTag.h"
 //and hidden field removal
 class StoreWorkFlowTag: public HelperTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: viewName: string;
+    private: std::string viewName;
 
-    private: viewFile: string;
+    private: std::string viewFile;
 
-public constructor (){
-            super(new StoreTagWorkFlowHelperFactory());
+public: StoreWorkFlowTag(){
+            super(StoreTagWorkFlowHelperFactory());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -92,37 +91,37 @@ public constructor (){
 }
 
 
-    public setName(string value){
-this.viewName= value;
+    public: void setName(std::string value){
+this->viewName= value;
     
-this.getPropertiesHashMap()!.put(TransformInfoData.getInstance()!.NAME, this.viewName);
+this->getPropertiesHashMap().put(TransformInfoData::getInstance().NAME, this->viewName);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    int32_t process(){
+    private: int32_t process(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.PROCESS);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
                                     }
                                 
 
-    helperClass: Function = this.getHelper()!.constructor!;;
+    Function helperClass = this->getHelper().constructor;;
     
 
-    method: Method = helperClass!.getMethod(commonStrings!.PROCESS, 
-                            nullptr)!;;
+    Method method = helperClass.getMethod(commonStrings.PROCESS, 
+                            nullptr);;
     
 
-    result: Integer = method.invoke(this.getHelper(), 
+    Integer result = method.invoke(this->getHelper(), 
                             nullptr) as Integer;;
     
 
@@ -136,10 +135,10 @@ this.getPropertiesHashMap()!.put(TransformInfoData.getInstance()!.NAME, this.vie
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 
                                     }
@@ -156,31 +155,31 @@ this.getPropertiesHashMap()!.put(TransformInfoData.getInstance()!.NAME, this.vie
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-this.setHelper();
+this->setHelper();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.process();;
+                        return this->process();;
     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -193,7 +192,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

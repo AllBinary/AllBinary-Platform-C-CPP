@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -36,46 +38,44 @@
 class BufferedImageUtil2
             : public Object
          {
-        
 
-    private: static const instance: BufferedImageUtil2 = new BufferedImageUtil2();
+    private: static BufferedImageUtil2 instance() { return BufferedImageUtil2(); }
 
-    public static BufferedImageUtil2 getInstance(){
+    public: static BufferedImageUtil2 getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BufferedImageUtil2.instance;
+                        return BufferedImageUtil2::instance();
     
 }
 
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    public BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray){
+    public: BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray){
 
-    columns: int32_t = bufferedImageArray!.length
-                ;;
+    int32_t columns = bufferedImageArray.size();;
     
 
-    max: int32_t = columns;;
+    int32_t max = columns;;
     
 
-    rows: int32_t = 0;;
+    int32_t rows = 0;;
     
 
-                        if(bufferedImageArray!.length < columns)
+                        if(bufferedImageArray.size() < columns)
                         
                                     {
-                                    columns= bufferedImageArray!.length;
+                                    columns= bufferedImageArray.size();
     
 
                                     }
                                 
-rows= (bufferedImageArray!.length /columns);
+rows= (bufferedImageArray.size() /columns);
     
 
-                        if(bufferedImageArray!.length % columns != 0)
+                        if(bufferedImageArray.size() % columns != 0)
                         
                                     {
                                     rows++;
@@ -84,25 +84,25 @@ rows= (bufferedImageArray!.length /columns);
                                     }
                                 
 
-    bufferedImage: BufferedImage = this.imageUtil!.create(bufferedImageArray[0]!.getWidth(
+    BufferedImage bufferedImage = this->imageUtil.create(bufferedImageArray[0]!.getWidth(
                             nullptr) *columns, bufferedImageArray[0]!.getHeight(
-                            nullptr) *rows)!;;
+                            nullptr) *rows);;
     
 
-    g: Graphics2D = bufferedImage!.createGraphics()!;;
+    Graphics2D g = bufferedImage.createGraphics();;
     
 
-    columnIndex: int32_t = 0;;
+    int32_t columnIndex = 0;;
     
 
-    rowIndex: int32_t = 0;;
+    int32_t rowIndex = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < bufferedImageArray!.length; index++)
+    int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
                         if(index /max != 0 && index % max == 0)

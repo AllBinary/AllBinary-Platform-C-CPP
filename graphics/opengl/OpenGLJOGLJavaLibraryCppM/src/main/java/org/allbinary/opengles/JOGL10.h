@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_OPENGLES_JOGL10_H
         #define ORG_ALLBINARY_OPENGLES_JOGL10_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <com/jogamp/opengl/glu/GLU.h>
@@ -53,230 +55,229 @@
 //JOGLEToKhronosGL10
 class JOGL10
             : public Object
-        : public javax.microedition.khronos.opengles.GL10 {
-        
+        : public javax::microedition::khronos::opengles::GL10 {
 
-    const RED: string = "red: ";
+    protected: const std::string RED = "red: ";
 
-    const GREEN: string = " green: ";
+    protected: const std::string GREEN = " green: ";
 
-    const BLUE: string = " blue: ";
+    protected: const std::string BLUE = " blue: ";
 
-    const ALPHA: string = " alpha: ";
+    protected: const std::string ALPHA = " alpha: ";
 
-    const PNAME: string = "pname: ";
+    protected: const std::string PNAME = "pname: ";
 
-    const _PNAME: string = " pname: ";
+    protected: const std::string _PNAME = " pname: ";
 
-    const PARAM: string = " param: ";
+    protected: const std::string PARAM = " param: ";
 
-    const PARAMS: string = " params: ";
+    protected: const std::string PARAMS = " params: ";
 
-    const LIGHT: string = "light: ";
+    protected: const std::string LIGHT = "light: ";
 
-    const FACE: string = "face: ";
+    protected: const std::string FACE = "face: ";
 
-    const TARGET: string = "target: ";
+    protected: const std::string TARGET = "target: ";
 
-    private: const gl10: com.jogamp.opengl.GL2;
+    private: com::jogamp::opengl::GL2 gl10;
 
-    public const glu: GLU;
+    public: GLU glu;
 
-    public const GL_LINE: int32_t;
+    public: int32_t GL_LINE;
 
-    public const GL_QUAD_STRIP: int32_t;
+    public: int32_t GL_QUAD_STRIP;
 
-public constructor (com.jogamp.opengl.GL gl, com.jogamp.opengl.GL2 gl2);
+public: JOGL10(com::jogamp::opengl::GL gl, com::jogamp::opengl::GL2 gl2);
 
-    public com.jogamp.opengl.GL2 getJOGLGL();
+    public: com::jogamp::opengl::GL2 getJOGLGL();
 
-    public glActiveTexture(int32_t texture);
+    public: void glActiveTexture(int32_t texture);
 
-    public glAlphaFunc(int32_t func, float ref);
+    public: void glAlphaFunc(int32_t func, float ref);
 
-    public glBindTexture(int32_t target, int32_t texture);
+    public: void glBindTexture(int32_t target, int32_t texture);
 
-    public glBlendFunc(int32_t sfactor, int32_t dfactor);
+    public: void glBlendFunc(int32_t sfactor, int32_t dfactor);
 
-    public glClear(int32_t mask);
+    public: void glClear(int32_t mask);
 
-    public glClearColor(float red, float green, float blue, float alpha);
+    public: void glClearColor(float red, float green, float blue, float alpha);
 
-    public glClearDepthf(float depth);
+    public: void glClearDepthf(float depth);
 
-    public glClearStencil(int32_t s);
+    public: void glClearStencil(int32_t s);
 
-    public glClientActiveTexture(int32_t texture);
+    public: void glClientActiveTexture(int32_t texture);
 
-    public glColor4f(float red, float green, float blue, float alpha);
+    public: void glColor4f(float red, float green, float blue, float alpha);
 
-    public glColorMask(bool red, bool green, bool blue, bool alpha);
+    public: void glColorMask(bool red, bool green, bool blue, bool alpha);
 
-    public glColorPointer(int32_t size, int32_t type, int32_t stride, java.nio.Buffer pointer);
+    public: void glColorPointer(int32_t size, int32_t type, int32_t stride, java::nio::Buffer pointer);
 
-    public glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, java.nio.Buffer data);
+    public: void glCompressedTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t imageSize, java::nio::Buffer data);
 
-    public glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, java.nio.Buffer data);
+    public: void glCompressedTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t imageSize, java::nio::Buffer data);
 
-    public glCopyTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t x, int32_t y, int32_t width, int32_t height, int32_t border);
+    public: void glCopyTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t x, int32_t y, int32_t width, int32_t height, int32_t border);
 
-    public glCopyTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t x, int32_t y, int32_t width, int32_t height);
+    public: void glCopyTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t x, int32_t y, int32_t width, int32_t height);
 
-    public glCullFace(int32_t mode);
+    public: void glCullFace(int32_t mode);
 
-    public glDeleteTextures(int32_t n, std::vector<int32_t> textures, int32_t offset);
+    public: void glDeleteTextures(int32_t n, std::vector<int32_t> textures, int32_t offset);
 
-    public glDeleteTextures(int32_t n, java.nio.IntBuffer textures);
+    public: void glDeleteTextures(int32_t n, java::nio::IntBuffer textures);
 
-    public glDepthFunc(int32_t func);
+    public: void glDepthFunc(int32_t func);
 
-    public glDepthMask(bool flag);
+    public: void glDepthMask(bool flag);
 
-    public glDepthRangef(float zNear, float zFar);
+    public: void glDepthRangef(float zNear, float zFar);
 
-    public glDisable(int32_t cap);
+    public: void glDisable(int32_t cap);
 
-    public glDisableClientState(int32_t array);
+    public: void glDisableClientState(int32_t array);
 
-    public glDrawArrays(int32_t mode, int32_t first, int32_t count);
+    public: void glDrawArrays(int32_t mode, int32_t first, int32_t count);
 
-    public glDrawElements(int32_t mode, int32_t count, int32_t type, java.nio.Buffer indices);
+    public: void glDrawElements(int32_t mode, int32_t count, int32_t type, java::nio::Buffer indices);
 
-    public glEnable(int32_t cap);
+    public: void glEnable(int32_t cap);
 
-    public glEnableClientState(int32_t array);
+    public: void glEnableClientState(int32_t array);
 
-    public glFinish();
+    public: void glFinish();
 
-    public glFlush();
+    public: void glFlush();
 
-    public glFogf(int32_t pname, float param);
+    public: void glFogf(int32_t pname, float param);
 
-    public glFogfv(int32_t pname, std::vector<float> params, int32_t offset);
+    public: void glFogfv(int32_t pname, std::vector<float> params, int32_t offset);
 
-    public glFogfv(int32_t pname, java.nio.FloatBuffer params);
+    public: void glFogfv(int32_t pname, java::nio::FloatBuffer params);
 
-    public glFrontFace(int32_t mode);
+    public: void glFrontFace(int32_t mode);
 
-    public glFrustumf(float left, float right, float bottom, float top, float zNear, float zFar);
+    public: void glFrustumf(float left, float right, float bottom, float top, float zNear, float zFar);
 
-    public glGenTextures(int32_t n, std::vector<int32_t> textures, int32_t offset);
+    public: void glGenTextures(int32_t n, std::vector<int32_t> textures, int32_t offset);
 
-    public glGenTextures(int32_t n, java.nio.IntBuffer textures);
+    public: void glGenTextures(int32_t n, java::nio::IntBuffer textures);
 
-    public int32_t glGetError();
+    public: int32_t glGetError();
 
-    public glGetIntegerv(int32_t pname, std::vector<int32_t> params, int32_t offset);
+    public: void glGetIntegerv(int32_t pname, std::vector<int32_t> params, int32_t offset);
 
-    public glGetIntegerv(int32_t pname, java.nio.IntBuffer params);
+    public: void glGetIntegerv(int32_t pname, java::nio::IntBuffer params);
 
-    public string glGetString(int32_t name);
+    public: std::string glGetString(int32_t name);
 
-    public glHint(int32_t target, int32_t mode);
+    public: void glHint(int32_t target, int32_t mode);
 
-    public glLightModelf(int32_t pname, float param);
+    public: void glLightModelf(int32_t pname, float param);
 
-    public glLightModelfv(int32_t pname, std::vector<float> params, int32_t offset);
+    public: void glLightModelfv(int32_t pname, std::vector<float> params, int32_t offset);
 
-    public glLightModelfv(int32_t pname, java.nio.FloatBuffer params);
+    public: void glLightModelfv(int32_t pname, java::nio::FloatBuffer params);
 
-    public glLightf(int32_t light, int32_t pname, float param);
+    public: void glLightf(int32_t light, int32_t pname, float param);
 
-    public glLightfv(int32_t light, int32_t pname, std::vector<float> params, int32_t offset);
+    public: void glLightfv(int32_t light, int32_t pname, std::vector<float> params, int32_t offset);
 
-    public glLightfv(int32_t light, int32_t pname, java.nio.FloatBuffer params);
+    public: void glLightfv(int32_t light, int32_t pname, java::nio::FloatBuffer params);
 
-    public glLineWidth(float width);
+    public: void glLineWidth(float width);
 
-    public glLoadIdentity();
+    public: void glLoadIdentity();
 
-    public glLoadMatrixf(std::vector<float> m, int32_t offset);
+    public: void glLoadMatrixf(std::vector<float> m, int32_t offset);
 
-    public glLoadMatrixf(java.nio.FloatBuffer m);
+    public: void glLoadMatrixf(java::nio::FloatBuffer m);
 
-    public glLogicOp(int32_t opcode);
+    public: void glLogicOp(int32_t opcode);
 
-    public glMaterialf(int32_t face, int32_t pname, float param);
+    public: void glMaterialf(int32_t face, int32_t pname, float param);
 
-    public glMaterialfv(int32_t face, int32_t pname, std::vector<float> params, int32_t offset);
+    public: void glMaterialfv(int32_t face, int32_t pname, std::vector<float> params, int32_t offset);
 
-    public glMaterialfv(int32_t face, int32_t pname, java.nio.FloatBuffer params);
+    public: void glMaterialfv(int32_t face, int32_t pname, java::nio::FloatBuffer params);
 
-    public glMatrixMode(int32_t mode);
+    public: void glMatrixMode(int32_t mode);
 
-    public glMultMatrixf(std::vector<float> m, int32_t offset);
+    public: void glMultMatrixf(std::vector<float> m, int32_t offset);
 
-    public glMultMatrixf(java.nio.FloatBuffer m);
+    public: void glMultMatrixf(java::nio::FloatBuffer m);
 
-    public glMultiTexCoord4f(int32_t target, float s, float t, float r, float q);
+    public: void glMultiTexCoord4f(int32_t target, float s, float t, float r, float q);
 
-    public glNormal3f(float nx, float ny, float nz);
+    public: void glNormal3f(float nx, float ny, float nz);
 
-    public glNormalPointer(int32_t type, int32_t stride, java.nio.Buffer pointer);
+    public: void glNormalPointer(int32_t type, int32_t stride, java::nio::Buffer pointer);
 
-    public glOrthof(float left, float right, float bottom, float top, float zNear, float zFar);
+    public: void glOrthof(float left, float right, float bottom, float top, float zNear, float zFar);
 
-    public glPixelStorei(int32_t pname, int32_t param);
+    public: void glPixelStorei(int32_t pname, int32_t param);
 
-    public glPointSize(float size);
+    public: void glPointSize(float size);
 
-    public glPolygonOffset(float factor, float units);
+    public: void glPolygonOffset(float factor, float units);
 
-    public glPopMatrix();
+    public: void glPopMatrix();
 
-    public glPushMatrix();
+    public: void glPushMatrix();
 
-    public glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, java.nio.Buffer pixels);
+    public: void glReadPixels(int32_t x, int32_t y, int32_t width, int32_t height, int32_t format, int32_t type, java::nio::Buffer pixels);
 
-    public glRotatef(float angle, float x, float y, float z);
+    public: void glRotatef(float angle, float x, float y, float z);
 
-    public glRotatex(int32_t angle, int32_t x, int32_t y, int32_t z);
+    public: void glRotatex(int32_t angle, int32_t x, int32_t y, int32_t z);
 
-    public glSampleCoverage(float value, bool invert);
+    public: void glSampleCoverage(float value, bool invert);
 
-    public glScalef(float x, float y, float z);
+    public: void glScalef(float x, float y, float z);
 
-    public glScalex(int32_t x, int32_t y, int32_t z);
+    public: void glScalex(int32_t x, int32_t y, int32_t z);
 
-    public glScissor(int32_t x, int32_t y, int32_t width, int32_t height);
+    public: void glScissor(int32_t x, int32_t y, int32_t width, int32_t height);
 
-    public glShadeModel(int32_t mode);
+    public: void glShadeModel(int32_t mode);
 
-    public glStencilFunc(int32_t func, int32_t ref, int32_t mask);
+    public: void glStencilFunc(int32_t func, int32_t ref, int32_t mask);
 
-    public glStencilMask(int32_t mask);
+    public: void glStencilMask(int32_t mask);
 
-    public glStencilOp(int32_t fail, int32_t zfail, int32_t zpass);
+    public: void glStencilOp(int32_t fail, int32_t zfail, int32_t zpass);
 
-    public glTexCoordPointer(int32_t size, int32_t type, int32_t stride, java.nio.Buffer pointer);
+    public: void glTexCoordPointer(int32_t size, int32_t type, int32_t stride, java::nio::Buffer pointer);
 
-    public glTexEnvf(int32_t target, int32_t pname, float param);
+    public: void glTexEnvf(int32_t target, int32_t pname, float param);
 
-    public glTexEnvfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset);
+    public: void glTexEnvfv(int32_t target, int32_t pname, std::vector<float> params, int32_t offset);
 
-    public glTexEnvfv(int32_t target, int32_t pname, java.nio.FloatBuffer params);
+    public: void glTexEnvfv(int32_t target, int32_t pname, java::nio::FloatBuffer params);
 
-    public glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, java.nio.Buffer pixels);
+    public: void glTexImage2D(int32_t target, int32_t level, int32_t internalformat, int32_t width, int32_t height, int32_t border, int32_t format, int32_t type, java::nio::Buffer pixels);
 
-    public glTexParameterf(int32_t target, int32_t pname, float param);
+    public: void glTexParameterf(int32_t target, int32_t pname, float param);
 
-    public glTexParameteri(int32_t target, int32_t pname, int32_t param);
+    public: void glTexParameteri(int32_t target, int32_t pname, int32_t param);
 
-    public glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, java.nio.Buffer pixels);
+    public: void glTexSubImage2D(int32_t target, int32_t level, int32_t xoffset, int32_t yoffset, int32_t width, int32_t height, int32_t format, int32_t type, java::nio::Buffer pixels);
 
-    public glTranslatef(float x, float y, float z);
+    public: void glTranslatef(float x, float y, float z);
 
-    public glVertexPointer(int32_t size, int32_t type, int32_t stride, java.nio.Buffer pointer);
+    public: void glVertexPointer(int32_t size, int32_t type, int32_t stride, java::nio::Buffer pointer);
 
-    public glViewport(int32_t x, int32_t y, int32_t width, int32_t height);
+    public: void glViewport(int32_t x, int32_t y, int32_t width, int32_t height);
 
-    public glBegin(int32_t i);
+    public: void glBegin(int32_t i);
 
-    public glEnd();
+    public: void glEnd();
 
-    public glVertex3f(float f, float f2, float f3);
+    public: void glVertex3f(float f, float f2, float f3);
 
-    public glPolygonMode(int32_t i, int32_t i1);
+    public: void glPolygonMode(int32_t i, int32_t i1);
 
 };
 

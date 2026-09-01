@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../java/lang/Object.h"
         
             #include "../../java/lang/Class.h"
@@ -70,35 +72,34 @@
 class HelperFactory
             : public Object
          {
-        
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    params: std::vector<any> = new Array(2);;
+    std::vector<Object*> params = new Array(2);;
     
 
-    classes: std::vector<Function> = new Array(2);;
+    std::vector<Function> classes = new Array(2);;
     
 
-    abeFactory: AbeFactory = AbeFactory.getInstance()!;;
+    AbeFactory abeFactory = AbeFactory::getInstance();;
     
-classes[0]= hashMap!.constructor;
+classes[0]= hashMap.constructor;
     
-classes[1]= abeFactory!.constructor;
+classes[1]= abeFactory.constructor;
     
 params[0]= hashMap;
     
 params[1]= httpServletRequest;
     
 
-    anyType: any = abeFactory!.getInstance(abeClientInformation, className, classes, params)!;;
+    Object* anyType = abeFactory.getInstance(abeClientInformation, className, classes, params);;
     
 
 
@@ -111,13 +112,13 @@ params[1]= httpServletRequest;
 } catch(e) 
             {
 
-    error: string = "Failed To Get Instance Args: HashMap=" +hashMap!.toString() +" HttpServletRequest=" +httpServletRequest;;
+    std::string error = "Failed To Get Instance Args: HashMap=" +hashMap.toString() +" HttpServletRequest=" +httpServletRequest;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
-                                    logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+                                    logUtil.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -133,13 +134,13 @@ params[1]= httpServletRequest;
 /* catch(e) 
             {
 
-    error: string = "Failed To Get Instance";;
+    std::string error = "Failed To Get Instance";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
-                                    logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+                                    logUtil.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -157,31 +158,31 @@ params[1]= httpServletRequest;
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, PageContext pageContext){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, PageContext pageContext){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    params: std::vector<any> = new Array(2);;
+    std::vector<Object*> params = new Array(2);;
     
 
-    classes: std::vector<Function> = new Array(2);;
+    std::vector<Function> classes = new Array(2);;
     
 
-    abeFactory: AbeFactory = AbeFactory.getInstance()!;;
+    AbeFactory abeFactory = AbeFactory::getInstance();;
     
-classes[0]= hashMap!.constructor;
+classes[0]= hashMap.constructor;
     
-classes[1]= abeFactory!.constructor;
+classes[1]= abeFactory.constructor;
     
 params[0]= hashMap;
     
 params[1]= pageContext;
     
 
-    anyType: any = abeFactory!.getInstance(abeClientInformation, className, classes, params)!;;
+    Object* anyType = abeFactory.getInstance(abeClientInformation, className, classes, params);;
     
 
 
@@ -194,13 +195,13 @@ params[1]= pageContext;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    error: string = "Failed To Get Instance Args: HashMap=" +hashMap!.toString() +" PageContext=" +pageContext;;
+    std::string error = "Failed To Get Instance Args: HashMap=" +hashMap.toString() +" PageContext=" +pageContext;;
     
-logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+logUtil.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -216,13 +217,13 @@ logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String,
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+logUtil.put(commonStrings.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -240,26 +241,26 @@ logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInsta
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className, HashMap<any, any> hashMap, HashMap<any, any> specialhashMap, PageContext pageContext){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className, HashMap<any, any> hashMap, HashMap<any, any> specialhashMap, PageContext pageContext){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    params: std::vector<any> = new Array(3);;
+    std::vector<Object*> params = new Array(3);;
     
 
-    classes: std::vector<Function> = new Array(3);;
+    std::vector<Function> classes = new Array(3);;
     
 
-    abeFactory: AbeFactory = AbeFactory.getInstance()!;;
+    AbeFactory abeFactory = AbeFactory::getInstance();;
     
-classes[0]= hashMap!.constructor;
+classes[0]= hashMap.constructor;
     
-classes[1]= specialhashMap!.constructor;
+classes[1]= specialhashMap.constructor;
     
-classes[2]= abeFactory!.constructor;
+classes[2]= abeFactory.constructor;
     
 params[0]= hashMap;
     
@@ -268,7 +269,7 @@ params[1]= specialhashMap;
 params[2]= pageContext;
     
 
-    anyType: any = abeFactory!.getInstance(abeClientInformation, className, classes, params)!;;
+    Object* anyType = abeFactory.getInstance(abeClientInformation, className, classes, params);;
     
 
 
@@ -281,13 +282,13 @@ params[2]= pageContext;
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    error: string = "Failed To Get Instance Args: HashMap=" +hashMap!.toString() +" PageContext=" +pageContext;;
+    std::string error = "Failed To Get Instance Args: HashMap=" +hashMap.toString() +" PageContext=" +pageContext;;
     
-logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+logUtil.put(error, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -303,13 +304,13 @@ logUtil!.put(error, factoryName +"->HelperFactory", "getInstance(String, String,
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+logUtil.put(commonStrings.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -327,14 +328,14 @@ logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInsta
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(AbeClientInformationInterface abeClientInformation, string factoryName, string className){
+    public: static Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string factoryName, std::string className){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    anyType: any = AbeFactory.getInstance()!.getInstance(abeClientInformation, className)!;;
+    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, className);;
     
 
 
@@ -347,13 +348,13 @@ logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInsta
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+logUtil.put(commonStrings.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -369,13 +370,13 @@ logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInsta
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
+logUtil.put(commonStrings.EXCEPTION, factoryName +"->HelperFactory", "getInstance(String, String, HashMap, PageContext)", e);
     
 
                                     }
@@ -391,12 +392,10 @@ logUtil!.put(commonStrings!.EXCEPTION, factoryName +"->HelperFactory", "getInsta
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: HelperFactory(){
+}
 
 
 };

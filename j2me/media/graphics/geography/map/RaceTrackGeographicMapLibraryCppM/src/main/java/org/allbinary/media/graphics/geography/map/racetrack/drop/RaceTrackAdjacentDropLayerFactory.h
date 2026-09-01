@@ -57,25 +57,24 @@
 class RaceTrackAdjacentDropLayerFactory
             : public Object
          {
-        
 
-    private: static DROP_LAYER_FACTORY: RaceTrackAdjacentDropLayerFactory = new RaceTrackAdjacentDropLayerFactory();
+    private: static RaceTrackAdjacentDropLayerFactory DROP_LAYER_FACTORY = RaceTrackAdjacentDropLayerFactory();
 
-    public static RaceTrackAdjacentDropLayerFactory getInstance();
+    public: static RaceTrackAdjacentDropLayerFactory getInstance();
 
-    private: list: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: RaceTrackAdjacentDropLayerFactory();
 
-    public clear();
+    public: void clear();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public LayerInterfaceFactoryInterface getRandomInstance();
+    public: LayerInterfaceFactoryInterface getRandomInstance();
 
-    public add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 
 };
 

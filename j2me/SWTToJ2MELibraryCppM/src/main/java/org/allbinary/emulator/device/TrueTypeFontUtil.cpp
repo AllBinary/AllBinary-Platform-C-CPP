@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -103,50 +105,49 @@
         #include "TrueTypeFontUtilBase.h"
 //TTF
 class TrueTypeFontUtil: public TrueTypeFontUtilBase {
-        
 
-    private: static const instance: TrueTypeFontUtil = new TrueTypeFontUtil();
+    private: static TrueTypeFontUtil instance() { return TrueTypeFontUtil(); }
 
-    public static TrueTypeFontUtil getInstance(){
+    public: static TrueTypeFontUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrueTypeFontUtil.instance;
+                        return TrueTypeFontUtil::instance();
     
 }
 
 
-    private: const preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;
+    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
 
-    private: const widthFloatArray: std::vector<float>;
+    private: const std::vector<float> widthFloatArray;
 
-    public fontImage: OpenGLESImage = OpenGLESImage.NULL_OPENGL_IMAGE;
+    public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
-    private: const widthScale: float;
+    private: float widthScale;
 
-private constructor (){
+private: TrueTypeFontUtil(){
             super(2);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(AvianUtil.isAvian())
+                        if(AvianUtil::isAvian())
                         
                                     {
-                                    this.widthFloatArray= new Array();
+                                    this->widthFloatArray= new Array();
     
 
                                     }
                                 
                         else {
-                            this.widthFloatArray= new Array();
+                            this->widthFloatArray= new Array();
     
 
                         }
                             
-this.widthScale= (this.scale == 2)
+this->widthScale= (this->scale == 2)
                         ?       
                                 
                                         //Otherwise - thenExpr - DoubleLiteralExpr
@@ -162,63 +163,63 @@ this.widthScale= (this.scale == 2)
 }
 
 
-    public Image getFontBitmapGL(GL10 gl, string filename, int32_t cellSize, BasicColor basicColor){
+    public: Image getFontBitmapGL(GL10 gl, std::string filename, int32_t cellSize, BasicColor basicColor){
 
         try {
             
-                        if(this.fontImage == OpenGLESImage.NULL_OPENGL_IMAGE)
+                        if(this->fontImage == OpenGLESImage::NULL_OPENGL_IMAGE)
                         
                                     {
                                     
-    canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;;
+    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
     
 
-    openGLCapabilities: OpenGLCapabilities = OpenGLCapabilities.getInstance()!;;
+    OpenGLCapabilities openGLCapabilities = OpenGLCapabilities::getInstance();;
     
 
-                        if(openGLCapabilities!.isTextureSizeValid(1024) && this.scale == 2)
+                        if(openGLCapabilities.isTextureSizeValid(1024) && this->scale == 2)
                         
                                     {
                                     
-    FONT_ATLAS_1024: string = "/font_1024.png";;
+    std::string FONT_ATLAS_1024 = "/font_1024.png";;
     
 
-    image: Image = Image.createImage(ResourceUtil.getInstance()!.getResourceAsStream(FONT_ATLAS_1024))!;;
+    Image image = Image::createImage(ResourceUtil::getInstance().getResourceAsStream(FONT_ATLAS_1024));;
     
-image.setName(canvasStrings!.FONT_ATLAS);
+image.setName(canvasStrings.FONT_ATLAS);
     
-this.fontImage= this.preResourceImageUtil!.encapsulate(image) as OpenGLESImage;
+this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
     
 
                                     }
                                 
                              else 
-                        if(openGLCapabilities!.isTextureSizeValid(512))
+                        if(openGLCapabilities.isTextureSizeValid(512))
                         
                                     {
                                     
-    FONT_ATLAS_512: string = "/font_512.png";;
+    std::string FONT_ATLAS_512 = "/font_512.png";;
     
 
-    image: Image = Image.createImage(ResourceUtil.getInstance()!.getResourceAsStream(FONT_ATLAS_512))!;;
+    Image image = Image::createImage(ResourceUtil::getInstance().getResourceAsStream(FONT_ATLAS_512));;
     
-image.setName(canvasStrings!.FONT_ATLAS);
+image.setName(canvasStrings.FONT_ATLAS);
     
-this.fontImage= this.preResourceImageUtil!.encapsulate(image) as OpenGLESImage;
+this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
     
 
                                     }
                                 
                         else {
                             
-    FONT_ATLAS_512: string = "/font_512.png";;
+    std::string FONT_ATLAS_512 = "/font_512.png";;
     
 
-    image: Image = Image.createImage(ResourceUtil.getInstance()!.getResourceAsStream(FONT_ATLAS_512))!;;
+    Image image = Image::createImage(ResourceUtil::getInstance().getResourceAsStream(FONT_ATLAS_512));;
     
-image.setName(canvasStrings!.FONT_ATLAS);
+image.setName(canvasStrings.FONT_ATLAS);
     
-this.fontImage= this.preResourceImageUtil!.encapsulate(image) as OpenGLESImage;
+this->fontImage= this->preResourceImageUtil.encapsulate(image) as OpenGLESImage;
     
 
                         }
@@ -227,7 +228,7 @@ this.fontImage= this.preResourceImageUtil!.encapsulate(image) as OpenGLESImage;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fontImage;
+                        return this->fontImage;
     
 
                                     }
@@ -237,7 +238,7 @@ this.fontImage= this.preResourceImageUtil!.encapsulate(image) as OpenGLESImage;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fontImage;
+                        return this->fontImage;
     
 
                         }
@@ -247,99 +248,100 @@ this.fontImage= this.preResourceImageUtil!.encapsulate(image) as OpenGLESImage;
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.EXCEPTION, e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.EXCEPTION, e);
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    public saveFontAtlasAsFile(){
+    public: void saveFontAtlasAsFile(){
 
-    image: Image = this.getFontBitmap(
-                            nullptr, cellSize, BasicColorFactory.getInstance()!.WHITE)!;;
+    Image image = this->getFontBitmap(
+                            nullptr, cellSize, BasicColorFactory::getInstance().WHITE);;
     
 
-    imageLoader: ImageLoader = new ImageLoader();;
+    ImageLoader imageLoader = ImageLoader();;
     
 
-    imageData: ImageData = image = imageimage as SwtMutableImage
+    ImageData imageData = image = imageimage as SwtMutableImage
 image.
-                    image.getImageData()!;;
+                    image.getImageData();;
     
-imageData!.transparentPixel= imageData!.getPixel(0, 0);
+imageData.transparentPixel= imageData.getPixel(0, 0);
     
-imageLoader!.data= 
-                                                [
+imageLoader.data= 
+                                                {
                                                     imageData
-                                                ];
+                                                };
     
-imageLoader!.save(CommonSeps.getInstance()!.PERIOD +CanvasStrings.getInstance()!.FONT_ATLAS, SWT.IMAGE_PNG);
+imageLoader.save(CommonSeps::getInstance().PERIOD +CanvasStrings::getInstance().FONT_ATLAS, SWT::IMAGE_PNG);
     
 }
 
 
-    public Image getFontBitmap(string filename, int32_t cellSize, BasicColor basicColor){
+    public: Image getFontBitmap(std::string filename, int32_t cellSize, BasicColor basicColor){
 
-    cellsPerRow2: int32_t = this.CELLS_PER_ROW *2;;
+    int32_t cellsPerRow2 = this->CELLS_PER_ROW *2;;
     
 
-    cellsPerRow3: int32_t = this.CELLS_PER_ROW *3;;
+    int32_t cellsPerRow3 = this->CELLS_PER_ROW *3;;
     
 
-    cellsPerRow4: int32_t = this.CELLS_PER_ROW *4;;
+    int32_t cellsPerRow4 = this->CELLS_PER_ROW *4;;
     
 
-    cellsPerRow5: int32_t = this.CELLS_PER_ROW *5;;
+    int32_t cellsPerRow5 = this->CELLS_PER_ROW *5;;
     
 
-    cellsPerRow6: int32_t = this.CELLS_PER_ROW *6;;
+    int32_t cellsPerRow6 = this->CELLS_PER_ROW *6;;
     
 
-    cellsPerRow7: int32_t = this.CELLS_PER_ROW *7;;
+    int32_t cellsPerRow7 = this->CELLS_PER_ROW *7;;
     
 
-    image: Image = Image.createImage(textureSize, textureSize)!;;
+    Image image = Image::createImage(textureSize, textureSize);;
     
 
-    graphics: Graphics = image.getGraphics()!;;
+    Graphics graphics = image.getGraphics();;
     
-graphics.setColor(basicColor!.intValue());
-    
-
-    biggestHeight: int32_t = 0;;
+graphics.setColor(basicColor.intValue());
     
 
-    bounds: Rectangle = new Rectangle(PointFactory.getInstance()!.createXY(0, 0), cellSize, cellSize);;
+    int32_t biggestHeight = 0;;
     
 
-    x: int32_t= 0;;
+    Rectangle bounds = Rectangle(PointFactory::getInstance().createXY(0, 0), cellSize, cellSize);;
     
 
-    y: int32_t= 0;;
+    int32_t x= 0;;
+    
+
+    int32_t y= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.characterArray[0]= pattern[index];
+this->characterArray[0]= pattern[index];
     
 _characterWidth[index]= bounds.getMaxX();
     
 
-                        if(bounds.getMaxY() -bounds.getPoint()!.getX() > biggestHeight)
-                        biggestHeight= bounds.getMaxY() -bounds.getPoint()!.getX()
-x= (index % this.CELLS_PER_ROW) *cellSize;
+                        if(bounds.getMaxY() -bounds.getPoint().getX() > biggestHeight)
+                        biggestHeight= bounds.getMaxY() -bounds.getPoint().getX();
+                                
+x= (index % this->CELLS_PER_ROW) *cellSize;
     
 x += (cellSize>>1);
     
@@ -348,31 +350,38 @@ x -= (_characterWidth[index]>>1);
 y=  -(cellSize>>1);
     
 
-                        if(index >= this.CELLS_PER_ROW)
-                        y += cellSize
+                        if(index >= this->CELLS_PER_ROW)
+                        y += cellSize;
+                                
 
                         if(index >= cellsPerRow2)
-                        y += cellSize
+                        y += cellSize;
+                                
 
                         if(index >= cellsPerRow3)
-                        y += cellSize
+                        y += cellSize;
+                                
 
                         if(index >= cellsPerRow4)
-                        y += cellSize
+                        y += cellSize;
+                                
 
                         if(index >= cellsPerRow5)
-                        y += cellSize
+                        y += cellSize;
+                                
 
                         if(index >= cellsPerRow6)
-                        y += cellSize
+                        y += cellSize;
+                                
 
                         if(index >= cellsPerRow7)
-                        y += cellSize
+                        y += cellSize;
+                                
 y += cellSize;
     
 y -= (cellSize>>2);
     
-graphics.drawChar(this.characterArray[0]!, x, y, 0);
+graphics.drawChar(this->characterArray[0]!, x, y, 0);
     
 }
 
@@ -385,21 +394,21 @@ graphics.drawChar(this.characterArray[0]!, x, y, 0);
 }
 
 
-    public std::vector<int32_t> getFontWidths(string filename, int32_t fontSize){
+    public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.characterArray[0]= pattern[index];
+this->characterArray[0]= pattern[index];
     
 
-                        if(this.characterArray[0] == ' ')
+                        if(this->characterArray[0] == ' ')
                         
                                     {
                                     _characterWidth[index]= (fontSize /4);
@@ -409,35 +418,41 @@ this.characterArray[0]= pattern[index];
                                 
                         else {
                             
-    shortPatternIndex: int32_t = this.shortPattern!.indexOf(this.characterArray[0]!)!;;
+    int32_t shortPatternIndex = this->shortPattern.indexOf(this->characterArray[0]!);;
     
 
-    w: int32_t = static_cast<int32_t>((this.widthFloatArray[shortPatternIndex] /75)) +19;;
+    int32_t w = static_cast<int32_t>((this->widthFloatArray[shortPatternIndex] /75)) +19;;
     
 _characterWidth[index]= static_cast<int32_t>(w);
     
 
-                        if(this.characterArray[0] == '.' || this.characterArray[0] == '1')
-                        _characterWidth[index] += 4
+                        if(this->characterArray[0] == '.' || this->characterArray[0] == '1')
+                        _characterWidth[index] += 4;
+                                
 
-                        if(this.characterArray[0] >= 'a' && this.characterArray[0] < 'k')
-                        _characterWidth[index] -= 2
+                        if(this->characterArray[0] >= 'a' && this->characterArray[0] < 'k')
+                        _characterWidth[index] -= 2;
+                                
 
-                        if(this.characterArray[0] >= 'k' && this.characterArray[0] < 'v')
-                        _characterWidth[index] -= 4
+                        if(this->characterArray[0] >= 'k' && this->characterArray[0] < 'v')
+                        _characterWidth[index] -= 4;
+                                
 
-                        if(this.characterArray[0] >= 'v' && this.characterArray[0] < 'z')
-                        _characterWidth[index] -= 8
+                        if(this->characterArray[0] >= 'v' && this->characterArray[0] < 'z')
+                        _characterWidth[index] -= 8;
+                                
 
-                        if(this.characterArray[0] == 'D')
-                        _characterWidth[index] -= 4
+                        if(this->characterArray[0] == 'D')
+                        _characterWidth[index] -= 4;
+                                
 
-                        if(this.characterArray[0] >= 'A' && this.characterArray[0] <= 'Z')
-                        _characterWidth[index] -= 2
+                        if(this->characterArray[0] >= 'A' && this->characterArray[0] <= 'Z')
+                        _characterWidth[index] -= 2;
+                                
 
                         }
                             
-_characterWidth[index] *= this.widthScale;
+_characterWidth[index] *= this->widthScale;
     
 }
 

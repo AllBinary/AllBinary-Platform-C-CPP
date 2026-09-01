@@ -65,19 +65,18 @@
         #include "MiniMapLayer.h"
 
 class ImageMiniMapLayer: public MiniMapLayer {
-        
 
-    private: image: Image = NullImage.NULL_IMAGE;
+    private: Image image = NullImage::NULL_IMAGE;
 
-public constructor (BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition);
+public: ImageMiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    init();
+    protected: void init();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

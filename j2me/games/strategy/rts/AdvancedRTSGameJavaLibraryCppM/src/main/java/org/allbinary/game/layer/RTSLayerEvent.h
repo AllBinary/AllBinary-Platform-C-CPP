@@ -48,17 +48,16 @@
 #include "PathFindingLayerInterface.h"
 
 class RTSLayerEvent: public AllBinaryEventObject {
-        
 
-    private: rtsLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-public constructor (PathFindingLayerInterface rtsLayer);
+public: RTSLayerEvent(PathFindingLayerInterface rtsLayer);
 
-    public string toString();
+    public: std::string toString();
 
-    public PathFindingLayerInterface getRtsLayer();
+    public: PathFindingLayerInterface getRtsLayer();
 
-    public setRtsLayer(PathFindingLayerInterface rtsLayer);
+    public: void setRtsLayer(PathFindingLayerInterface rtsLayer);
 
 };
 

@@ -71,46 +71,45 @@
 #include "ActionListener.h"
 #include "ActionEvent.h"
 
-class GenericProfileActionJPanel: public javax.swing.JPanel {
-        
+class GenericProfileActionJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: genericProfileAction: GenericProfileAction;
+    private: GenericProfileAction genericProfileAction;
 
-    private: genericProfileActionScriptJPanel: GenericProfileActionScriptJPanel;
+    private: GenericProfileActionScriptJPanel genericProfileActionScriptJPanel;
 
-public constructor ();
+public: GenericProfileActionJPanel();
 
-    public updateProfileActionUI();
+    public: void updateProfileActionUI();
 
-    public GenericProfileAction getGenericProfileAction();
+    public: GenericProfileAction getGenericProfileAction();
 
-    public setGenericProfileAction(GenericProfileAction genericProfileAction);
+    public: void setGenericProfileAction(GenericProfileAction genericProfileAction);
 
-    public GenericProfileActionScriptJPanel getGenericProfileActionScriptJPanel();
+    public: GenericProfileActionScriptJPanel getGenericProfileActionScriptJPanel();
 
-    public setGenericProfileActionScriptJPanel(GenericProfileActionScriptJPanel genericProfileActionScriptJPanel);
+    public: void setGenericProfileActionScriptJPanel(GenericProfileActionScriptJPanel genericProfileActionScriptJPanel);
 
-    initComponents();
+    private: void initComponents();
 
-    newTimeIntervalJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void newTimeIntervalJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    newAlwaysJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void newAlwaysJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    newColorAtJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void newColorAtJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: blankProfileActionScriptJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel blankProfileActionScriptJPanel;
 
-    private: genericProfileActionScriptJScrollPane: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane genericProfileActionScriptJScrollPane;
 
-    private: ifJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel ifJLabel;
 
-    private: newAlwaysJButton: javax.swing.JButton;
+    private: javax::swing::JButton newAlwaysJButton;
 
-    private: newColorAtJButton: javax.swing.JButton;
+    private: javax::swing::JButton newColorAtJButton;
 
-    private: newTimeIntervalJButton: javax.swing.JButton;
+    private: javax::swing::JButton newTimeIntervalJButton;
 
 };
 

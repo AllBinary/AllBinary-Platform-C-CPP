@@ -50,9 +50,8 @@
 // class Memory
             : public Object
          {
-        
 
-    public static string getInfo();
+    public: static std::string getInfo();
 
 };
 

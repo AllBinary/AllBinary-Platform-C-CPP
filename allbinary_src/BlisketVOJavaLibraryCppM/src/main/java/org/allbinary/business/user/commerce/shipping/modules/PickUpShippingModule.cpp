@@ -52,46 +52,43 @@
 class PickUpShippingModule
             : public Object
         : public ShippingInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const name: string = "No Shipping (For Pickup Orders Only)";
+    private: const std::string name = "No Shipping (For Pickup Orders Only)";
 
-    private: const description: string = "This shipping method is for pickup orders only.";
+    private: const std::string description = "This shipping method is for pickup orders only.";
 
-public constructor (){
-
-            super();
-        }
+public: PickUpShippingModule(){
+}
 
 
-    public Money getCost(OrderInterface order){
+    public: Money getCost(OrderInterface order){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Money();
+                        return Money();
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

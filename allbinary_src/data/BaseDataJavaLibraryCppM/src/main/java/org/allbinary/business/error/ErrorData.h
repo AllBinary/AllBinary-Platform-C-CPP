@@ -45,17 +45,16 @@
 class ErrorData
             : public Object
          {
-        
 
-    private: static const instance: ErrorData = new ErrorData();
+    private: static ErrorData instance() { return ErrorData(); }
 
-    public static ErrorData getInstance();
+    public: static ErrorData getInstance();
 
-private constructor ();
+private: ErrorData();
 
-    public const NAME: string = "ERROR_NAME";
+    public: const std::string NAME = "ERROR_NAME";
 
-    public const TEXT: string = "ERROR_TEXT";
+    public: const std::string TEXT = "ERROR_TEXT";
 
 };
 

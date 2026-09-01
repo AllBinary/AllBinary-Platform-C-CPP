@@ -59,15 +59,14 @@
 class ItemIndexPaintable
             : public Object
          {
-        
 
-    private: static const instance: ItemIndexPaintable = new ItemIndexPaintable();
+    private: static ItemIndexPaintable instance() { return ItemIndexPaintable(); }
 
-    public static ItemIndexPaintable getInstance();
+    public: static ItemIndexPaintable getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
 
 };
 

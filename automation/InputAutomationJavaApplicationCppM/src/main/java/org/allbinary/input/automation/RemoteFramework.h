@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RemoteFramework {
-        
 
-    BundleContext connect(string host);
+    BundleContext connect(std::string host);
 
-    disconnect(BundleContext bc);
+    void disconnect(BundleContext bc);
 
     Map getSystemProperties(BundleContext bc);
 

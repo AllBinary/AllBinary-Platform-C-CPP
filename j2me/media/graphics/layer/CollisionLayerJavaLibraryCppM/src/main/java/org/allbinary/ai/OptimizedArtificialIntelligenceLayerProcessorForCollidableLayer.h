@@ -56,17 +56,16 @@
         #include "OptimizedArtificialIntelligenceLayerManager.h"
 
 class OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer: public LayerProcessor {
-        
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer();
 
                 //@Throws(Exception.constructor)
             
-    public bool isProcessorLayer(AllBinaryLayer layerInterface);
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index);
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface);
 
 };
 

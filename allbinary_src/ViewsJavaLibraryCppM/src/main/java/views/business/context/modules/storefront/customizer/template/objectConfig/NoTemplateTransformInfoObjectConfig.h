@@ -76,19 +76,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NoTemplateTransformInfoObjectConfig: public TransformInfoObjectConfig {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object transformInfoInterface);
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface);
 
-public constructor (Object transformInfoInterface, Object document);
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, Object document);
 
-public constructor (Object transformInfoInterface, string name, string type);
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    Document generate(Document objectConfigDocument);
+    protected: Document generate(Document objectConfigDocument);
 
 };
 

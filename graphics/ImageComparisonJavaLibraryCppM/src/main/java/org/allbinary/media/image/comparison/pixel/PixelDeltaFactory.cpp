@@ -75,9 +75,8 @@
 class PixelDeltaFactory
             : public Object
          {
-        
 
-    private: static cacheInterface: AutomaticCacheInterface = 
+    private: static AutomaticCacheInterface cacheInterface = 
                 null
             ;
 
@@ -85,30 +84,30 @@ class PixelDeltaFactory
                 static int32_t init() { 
                     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    STATIC_BLOCK: string = "Static Block";;
+    std::string STATIC_BLOCK = "Static Block";;
     
 
-    instance: string = "PixelDeltaFactory";;
+    std::string instance = "PixelDeltaFactory";;
     
 
         try {
-            logUtil!.putF(commonStrings!.START, instance, STATIC_BLOCK);
+            logUtil.putF(commonStrings.START, instance, STATIC_BLOCK);
     
-PixelDeltaFactory.cacheInterface= CacheInterfaceFactory.getInstance(CacheTypeFactory.getInstance()!.CACHE, CachePolicyFactory.getInstance()!.THIRTY_MINUTES_TEN_THOUSAND_MAX) as AutomaticCacheInterface;
+PixelDeltaFactory::cacheInterface= CacheInterfaceFactory::getInstance(CacheTypeFactory::getInstance().CACHE, CachePolicyFactory::getInstance().THIRTY_MINUTES_TEN_THOUSAND_MAX) as AutomaticCacheInterface;
     
-logUtil!.putF(commonStrings!.END, instance, STATIC_BLOCK);
+logUtil.putF(commonStrings.END, instance, STATIC_BLOCK);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
+logUtil.put(commonStrings.EXCEPTION, instance, STATIC_BLOCK, e);
     
 }
 
@@ -119,23 +118,23 @@ logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
             
                 //@Throws(Exception.constructor)
             
-    public static PixelDelta getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2){
+    public: static PixelDelta getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2){
 
-    point: GPoint = PointFactory.getInstance()!.createXY(x, y)!;;
+    GPoint point = PointFactory::getInstance().createXY(x, y);;
     
 
-    colorDelta: ColorDelta = ColorDeltaFactory.getInstance(rgb1, rgb2)!;;
+    ColorDelta colorDelta = ColorDeltaFactory::getInstance(rgb1, rgb2);;
     
 
-    pixelDelta: PixelDelta = PixelDeltaFactory.cacheInterface!.get(PixelDelta.getKey(point, colorDelta)) as PixelDelta;;
+    PixelDelta pixelDelta = PixelDeltaFactory::cacheInterface.get(PixelDelta::getKey(point, colorDelta)) as PixelDelta;;
     
 
                         if(pixelDelta == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    pixelDelta= new PixelDelta(point, colorDelta);
+                                    pixelDelta= PixelDelta(point, colorDelta);
     
 
                                     }
@@ -149,12 +148,10 @@ logUtil!.put(commonStrings!.EXCEPTION, instance, STATIC_BLOCK, e);
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: PixelDeltaFactory(){
+}
 
 
 };

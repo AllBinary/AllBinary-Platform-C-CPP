@@ -59,13 +59,12 @@
         #include "HealLayer.h"
 
 class HealLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor (AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+public: HealLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryLayer sourceLayerInterface);
+    public: void visit(AllBinaryLayer sourceLayerInterface);
 
 };
 

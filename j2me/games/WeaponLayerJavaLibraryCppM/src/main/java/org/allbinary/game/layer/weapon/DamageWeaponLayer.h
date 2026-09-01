@@ -60,9 +60,8 @@
 #include "CollidableDamageWeaponBehavior.h"
 
 class DamageWeaponLayer: public WeaponLayer {
-        
 
-public constructor (string name, RemoteInfo remoteInfo, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition, string username, int32_t actorSessionId, int32_t id, int32_t multiPlayerType);
+public: DamageWeaponLayer(std::string name, RemoteInfo remoteInfo, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition, std::string username, int32_t actorSessionId, int32_t id, int32_t multiPlayerType);
 
 };
 

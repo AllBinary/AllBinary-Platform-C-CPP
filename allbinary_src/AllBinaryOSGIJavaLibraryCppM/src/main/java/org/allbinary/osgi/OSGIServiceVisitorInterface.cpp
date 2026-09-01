@@ -42,7 +42,6 @@
         #include "OSGIServiceInterface.h"
 
 class OSGIServiceVisitorInterface: public VisitorInterface {
-        
 
     Boolean visit(OSGIServiceInterface osgiServiceInterface)
 

@@ -73,90 +73,87 @@
 #include "JPopupMenu.h"
 #include "JComponent.h"
 
-class GenericProfileActionScriptJPanel: public javax.swing.JPanel: public JTreeInterface {
-        
+class GenericProfileActionScriptJPanel: public javax::swing::JPanel, public JTreeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: defaultMutableTreeNode: DefaultMutableTreeNode = new DefaultMutableTreeNode("Root");
+    private: DefaultMutableTreeNode defaultMutableTreeNode = DefaultMutableTreeNode("Root");
 
-    private: genericProfileActionScript: GenericProfileActionScript;
+    private: GenericProfileActionScript genericProfileActionScript;
 
-public constructor (){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: GenericProfileActionScriptJPanel(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.initComponents();
+this->initComponents();
     
 }
 
 
-    public updateJTree(){
+    public: void updateJTree(){
 
-    defaultTreeModel: DefaultTreeModel = new DefaultTreeModel(this.getGenericProfileActionScript());;
+    DefaultTreeModel defaultTreeModel = DefaultTreeModel(this->getGenericProfileActionScript());;
     
-this.getActionScriptJTree()!.setModel(defaultTreeModel);
+this->getActionScriptJTree().setModel(defaultTreeModel);
     
-this.repaint();
+this->repaint();
     
-this.logUtil!.putF("Updated UI", this, "updateJTree");
+this->logUtil.putF("Updated UI", this, "updateJTree");
     
 }
 
 
-    public GenericProfileActionScript getGenericProfileActionScript(){
+    public: GenericProfileActionScript getGenericProfileActionScript(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericProfileActionScript;
+                        return this->genericProfileActionScript;
     
 }
 
 
-    public setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript){
-this.genericProfileActionScript= genericProfileActionScript;
+    public: void setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript){
+this->genericProfileActionScript= genericProfileActionScript;
     
 }
 
 
-    public javax.swing.JTree getActionScriptJTree(){
+    public: javax::swing::JTree getActionScriptJTree(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.actionScriptJTree;
+                        return this->actionScriptJTree;
     
 }
 
 
-    public setActionScriptJTree(javax.swing.JTree actionScriptJTree){
-this.actionScriptJTree= actionScriptJTree;
+    public: void setActionScriptJTree(javax::swing::JTree actionScriptJTree){
+this->actionScriptJTree= actionScriptJTree;
     
 }
 
 
-    initComponents(){
-this.jScrollPane1= new javax.swing.JScrollPane();
+    private: void initComponents(){
+this->jScrollPane1= javax::swing::JScrollPane();
     
-this.actionScriptJTree= new javax.swing.JTree();
+this->actionScriptJTree= javax::swing::JTree();
     
-setLayout(new java.awt.GridLayout(1, 0));
+setLayout(java::awt::GridLayout(1, 0));
     
-this.actionScriptJTree!.setPreferredSize(new java.awt.Dimension(500, 500));
+this->actionScriptJTree.setPreferredSize(java::awt::Dimension(500, 500));
     
-this.actionScriptJTree!.addMouseListener(new class extends java.awt.event.MouseAdapter
+this->actionScriptJTree.addMouseListener(class extends java::awt::event::MouseAdapter
                                 {
                                 
-    public mouseClicked(java.awt.event.MouseEvent evt){
+    public: void mouseClicked(java::awt::event::MouseEvent evt){
 actionScriptJTreeMouseClicked(evt);
     
 }
 
-    public mouseReleased(java.awt.event.MouseEvent evt){
+    public: void mouseReleased(java::awt::event::MouseEvent evt){
 actionScriptJTreeMouseReleased(evt);
     
 }
@@ -164,44 +161,44 @@ actionScriptJTreeMouseReleased(evt);
                                 }
                             );
     
-this.jScrollPane1!.setViewportView(this.actionScriptJTree);
+this->jScrollPane1.setViewportView(this->actionScriptJTree);
     
-add(this.jScrollPane1);
+add(this->jScrollPane1);
     
 }
 
 
-    actionScriptJTreeMouseReleased(java.awt.event.MouseEvent evt){
+    private: void actionScriptJTreeMouseReleased(java::awt::event::MouseEvent evt){
 
-    button: int32_t = evt.getButton()!;;
+    int32_t button = evt.getButton();;
     
 
-                        if(button == MouseEvent.BUTTON3)
+                        if(button == MouseEvent::BUTTON3)
                         
                                     {
                                     
-    treePath: TreePath = this.getActionScriptJTree()!.getSelectionPath()!;;
+    TreePath treePath = this->getActionScriptJTree().getSelectionPath();;
     
 
                         if(treePath != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    anyType: any = treePath!.getLastPathComponent()!;;
+    Object* anyType = treePath.getLastPathComponent();;
     
 
                         if(anyType instanceof CustomTreeNodeInterface)
                         
                                     {
                                     
-    customTreeNodeInterface: CustomTreeNodeInterface = anyType as CustomTreeNodeInterface;;
+    CustomTreeNodeInterface customTreeNodeInterface = anyType as CustomTreeNodeInterface;;
     
 
-    jPopupMenu: JPopupMenu = customTreeNodeInterface!.getJPopupMenu()!;;
+    JPopupMenu jPopupMenu = customTreeNodeInterface.getJPopupMenu();;
     
-jPopupMenu!.show(evt.getSource() as JComponent, evt.getX(), evt.getY());
+jPopupMenu.show(evt.getSource() as JComponent, evt.getX(), evt.getY());
     
 
                                     }
@@ -215,13 +212,13 @@ jPopupMenu!.show(evt.getSource() as JComponent, evt.getX(), evt.getY());
 }
 
 
-    actionScriptJTreeMouseClicked(java.awt.event.MouseEvent evt){
+    private: void actionScriptJTreeMouseClicked(java::awt::event::MouseEvent evt){
 }
 
 
-    private: actionScriptJTree: javax.swing.JTree;
+    private: javax::swing::JTree actionScriptJTree;
 
-    private: jScrollPane1: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane jScrollPane1;
 
 };
 

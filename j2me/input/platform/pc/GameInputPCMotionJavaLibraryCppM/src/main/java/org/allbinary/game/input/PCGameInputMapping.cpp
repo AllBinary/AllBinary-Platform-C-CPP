@@ -60,10 +60,9 @@
 #include "Input.h"
 
 class PCGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor (){
-            super(GamePersistanceStrings.getInstance()!.SAVED_INPUT_CONFIGURATION_RECORD_ID);
+public: PCGameInputMapping(){
+            super(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -73,26 +72,26 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.INIT);
+    public: void init(AbeClientInformationInterface abeClientInformation){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
-PCKeyFactory.getInstance();
+PCKeyFactory::getInstance();
     
-TouchMotionGestureFactory.getInstance();
+TouchMotionGestureFactory::getInstance();
     
-TrackballMotionGestureFactory.getInstance();
+TrackballMotionGestureFactory::getInstance();
     
-BasicTouchInputFactory.getInstance();
+BasicTouchInputFactory::getInstance();
     
 super.init(abeClientInformation);
     
 
-                        if(this.getTotalMapped() == 0 || this.isDefaultNew())
+                        if(this->getTotalMapped() == 0 || this->isDefaultNew())
                         
                                     {
-                                    this.getInputMapping()!.addMapping(this.getDefault());
+                                    this->getInputMapping().addMapping(this->getDefault());
     
-this.save(abeClientInformation);
+this->save(abeClientInformation);
     
 
                                     }
@@ -100,9 +99,9 @@ this.save(abeClientInformation);
 }
 
 
-    public bool isDelete(Input input){
+    public: bool isDelete(Input input){
 
-                        if(input == PCKeyFactory.getInstance()!.DEL)
+                        if(input == PCKeyFactory::getInstance().DEL)
                         
                                     {
                                     
@@ -127,7 +126,7 @@ this.save(abeClientInformation);
 }
 
 
-    public bool isSystemInput(Input input){
+    public: bool isSystemInput(Input input){
 
 
 

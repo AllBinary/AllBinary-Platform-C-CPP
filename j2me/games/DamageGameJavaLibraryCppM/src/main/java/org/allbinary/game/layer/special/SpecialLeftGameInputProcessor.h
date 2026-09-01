@@ -51,13 +51,12 @@
 #include "CollidableDestroyableDamageableLayer.h"
 
 class SpecialLeftGameInputProcessor: public SpecialGameInputProcessor {
-        
 
-public constructor (CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+public: SpecialLeftGameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
 
 };
 

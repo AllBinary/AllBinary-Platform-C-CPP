@@ -47,11 +47,10 @@
 class ScreenCaptureFactory
             : public Object
          {
-        
 
-    private: static const instance: ScreenCapture = ScreenCaptureNoneFactory.getInstance()!;
+    private: static const ScreenCapture instance = ScreenCaptureNoneFactory::getInstance();
 
-    public static ScreenCapture getInstance();
+    public: static ScreenCapture getInstance();
 
 };
 

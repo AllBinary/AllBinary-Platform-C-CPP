@@ -77,21 +77,20 @@
         #include "MineWeaponResources.h"
 
 class MineLayer: public SimpleWeaponLayer {
-        
 
-    private: static const NAME: string = "MineLayer";
+    private: static const std::string NAME = "MineLayer";
 
-public constructor (ViewPositionBase viewPosition);
+public: MineLayer(ViewPositionBase viewPosition);
 
-    private: const viewPositionEventHandler: ViewPositionEventHandler = ViewPositionEventHandler.getInstance()!;
+    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
-    public initXYZ(int32_t x, int32_t y, int32_t z);
+    public: void initXYZ(int32_t x, int32_t y, int32_t z);
 
-    public damage(int32_t damage, int32_t damageType);
+    public: void damage(int32_t damage, int32_t damageType);
 
-    public int32_t getDamage(int32_t damageType);
+    public: int32_t getDamage(int32_t damageType);
 
-    public setDestroyed(bool destroyed);
+    public: void setDestroyed(bool destroyed);
 
 };
 

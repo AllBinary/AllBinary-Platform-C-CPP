@@ -54,17 +54,16 @@
 /*actual*/ class TimeStampUtil
             : public Object
          {
-        
 
-    private: static const instance: TimeStampUtil = new TimeStampUtil();
+    private: static TimeStampUtil instance() { return TimeStampUtil(); }
 
-    /*actual*/ public static TimeStampUtil getInstance();
+    /*actual*/ public: static TimeStampUtil getInstance();
 
-    private: const simpleDataFormat: SimpleDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
+    private: const SimpleDateFormat simpleDataFormat = SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS");
 
-private constructor ();
+private: TimeStampUtil();
 
-    /*actual*/ public string getAsString();
+    /*actual*/ public: std::string getAsString();
 
 };
 

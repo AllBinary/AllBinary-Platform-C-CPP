@@ -44,22 +44,19 @@
         #include "AllBinaryGameCanvas.h"
 
 class EndLevelIntermissionProcessor: public Processor {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: EndLevelIntermissionProcessor(AllBinaryGameCanvas gameCanvas){
+this->gameCanvas= gameCanvas;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.gameCanvas!.processEndLevelIntermissionGameState();
+    public: void process(){
+this->gameCanvas.processEndLevelIntermissionGameState();
     
 }
 

@@ -68,13 +68,12 @@
         #include "BasicMenuInputProcessor.h"
 
 class DemoCanvasBasicStartInputProcessor: public BasicMenuInputProcessor {
-        
 
-public constructor (BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas);
+public: DemoCanvasBasicStartInputProcessor(BasicArrayList gameKeyEventList, RunnableCanvas gameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList();
+    public: int32_t processInputList();
 
 };
 

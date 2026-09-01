@@ -86,27 +86,26 @@
         #include "TagHelper.h"
 
 class OrderHistoryRequestHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: groupId: string;
+    private: std::string groupId;
 
-    private: status: string;
+    private: std::string status;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: OrderHistoryRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
-    public string setOrderStatus();
+    public: std::string setOrderStatus();
 
-    public string setOrderStatus(string newStatus);
+    public: std::string setOrderStatus(std::string newStatus);
 
 };
 

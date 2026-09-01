@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -53,27 +55,26 @@
 class FileItemUtil
             : public Object
          {
-        
 
-    private: static const instance: FileItemUtil = new FileItemUtil();
+    private: static FileItemUtil instance() { return FileItemUtil(); }
 
-    public static FileItemUtil getInstance(){
+    public: static FileItemUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileItemUtil.instance;
+                        return FileItemUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const DEFAULT_CHARSET: string = "ISO-8859-1";
+    public: const std::string DEFAULT_CHARSET = "ISO-8859-1";
 
                 //@Throws(Exception.constructor)
             
-    public string getString(std::vector<int8_t> byteArray){
+    public: std::string getString(std::vector<int8_t> byteArray){
 
 
 
@@ -85,7 +86,7 @@ class FileItemUtil
 
                 //@Throws(Exception.constructor)
             
-    public string getString(FileItemStream fileItem){
+    public: std::string getString(FileItemStream fileItem){
 
 
 
@@ -97,65 +98,65 @@ class FileItemUtil
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> getBytes(FileItemStream fileItem){
+    public: std::vector<int8_t> getBytes(FileItemStream fileItem){
 
-    streamUtil: StreamUtil = StreamUtil.getInstance()!;;
+    StreamUtil streamUtil = StreamUtil::getInstance();;
     
 
-    inputStream: InputStream = 
+    InputStream inputStream = 
                 null
             ;;
     
 
-    outputStream: ByteArrayOutputStream = 
+    ByteArrayOutputStream outputStream = 
                 null
             ;;
     
 
         try {
-            inputStream= fileItem!.openStream();
+            inputStream= fileItem.openStream();
     
-outputStream= new ByteArrayOutputStream();
+outputStream= ByteArrayOutputStream();
     
 
-                        if(fileItem!.isFormField())
+                        if(fileItem.isFormField())
                         
                                     {
-                                    this.logUtil!.putF("FileItemStream FieldName: " +fileItem!.getFieldName(), this, "write()");
+                                    this->logUtil.putF("FileItemStream FieldName: " +fileItem.getFieldName(), this, "write()");
     
 
                                     }
                                 
                         else {
                             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Uploaded File FieldName: ");
+stringBuffer.append("Uploaded File FieldName: ");
     
-stringBuffer!.append(fileItem!.getFieldName());
+stringBuffer.append(fileItem.getFieldName());
     
-stringBuffer!.append(" name = ");
+stringBuffer.append(" name = ");
     
-stringBuffer!.append(fileItem!.getName());
+stringBuffer.append(fileItem.getName());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "write()");
+this->logUtil.putF(stringBuffer.toString(), this, "write()");
     
 
                         }
                             
-outputStream= streamUtil!.get(inputStream, outputStream, new Array(16384)) as ByteArrayOutputStream;
+outputStream= streamUtil.get(inputStream, outputStream, new Array(16384)) as ByteArrayOutputStream;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return outputStream!.toByteArray();;
+                        return outputStream.toByteArray();;
     
 
          finally {
-            streamUtil!.close(outputStream);
+            streamUtil.close(outputStream);
     
-streamUtil!.close(inputStream);
+streamUtil.close(inputStream);
     
 
          }
@@ -165,8 +166,8 @@ streamUtil!.close(inputStream);
 
                 //@Throws(Exception.constructor)
             
-    public write(FileItem fileItem, AbFile file){
-fileItem!.write(AbFileNativeUtil.get(file));
+    public: void write(FileItem fileItem, AbFile file){
+fileItem.write(AbFileNativeUtil::get(file));
     
 }
 

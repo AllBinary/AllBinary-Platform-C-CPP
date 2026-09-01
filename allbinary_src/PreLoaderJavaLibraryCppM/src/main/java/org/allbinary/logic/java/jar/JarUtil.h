@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_JAR_JARUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -64,17 +66,16 @@
 class JarUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    private: jarURL: URL;
+    private: URL jarURL;
 
-public constructor (URL jarURL);
+public: JarUtil(URL jarURL);
 
-    public show();
+    public: void show();
 
 };
 

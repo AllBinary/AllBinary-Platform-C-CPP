@@ -72,19 +72,18 @@
 class EmailServerConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor (Node node);
+public: EmailServerConfigurationView(Node node);
 
-public constructor (EmailServerConfigurationInterface emailServerConfigurationInterface);
+public: EmailServerConfigurationView(EmailServerConfigurationInterface emailServerConfigurationInterface);
 
-    public EmailServerConfigurationInterface getEmailConfigurationInterface();
+    public: EmailServerConfigurationInterface getEmailConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -58,21 +58,20 @@
 class EmailServerConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor (EmailServerConfigurationInterface emailServerConfigurationInterface);
+public: EmailServerConfigurationMapping(EmailServerConfigurationInterface emailServerConfigurationInterface);
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public any getKey();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Object* getKey();
+
+                //@Throws(Exception.constructor)
+            
+    public: Vector toVector();
 
 };
 

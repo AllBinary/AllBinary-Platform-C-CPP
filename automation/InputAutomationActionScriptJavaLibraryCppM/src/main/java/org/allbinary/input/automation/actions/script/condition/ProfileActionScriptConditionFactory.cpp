@@ -57,45 +57,44 @@
 class ProfileActionScriptConditionFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ProfileActionScriptConditionInterface getInstance(Node node){
+    public: static ProfileActionScriptConditionInterface getInstance(Node node){
 
-    profileActionScriptConditionInterface: ProfileActionScriptConditionInterface = 
+    ProfileActionScriptConditionInterface profileActionScriptConditionInterface = 
                 null
             ;;
     
 
-                        if(DomSearchHelper.getNodeNoThrow(ColorAtActionScriptConditionData.NAME, node.getChildNodes()) != 
-                                    null
+                        if(DomSearchHelper::getNodeNoThrow(ColorAtActionScriptConditionData::NAME, node.getChildNodes()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    profileActionScriptConditionInterface= new ColorAtActionScriptCondition(node);
+                                    profileActionScriptConditionInterface= ColorAtActionScriptCondition(node);
     
 
                                     }
                                 
                              else 
-                        if(DomSearchHelper.getNodeNoThrow(TimeIntervalActionScriptConditionData.NAME, node.getChildNodes()) != 
-                                    null
+                        if(DomSearchHelper::getNodeNoThrow(TimeIntervalActionScriptConditionData::NAME, node.getChildNodes()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    profileActionScriptConditionInterface= new TimeIntervalActionScriptCondition(node);
+                                    profileActionScriptConditionInterface= TimeIntervalActionScriptCondition(node);
     
 
                                     }
                                 
                              else 
-                        if(DomSearchHelper.getNodeNoThrow(AlwaysActionScriptConditionData.NAME, node.getChildNodes()) != 
-                                    null
+                        if(DomSearchHelper::getNodeNoThrow(AlwaysActionScriptConditionData::NAME, node.getChildNodes()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    profileActionScriptConditionInterface= new AlwaysActionScriptCondition(node);
+                                    profileActionScriptConditionInterface= AlwaysActionScriptCondition(node);
     
 
                                     }
@@ -109,10 +108,8 @@ class ProfileActionScriptConditionFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ProfileActionScriptConditionFactory(){
+}
 
 
 };

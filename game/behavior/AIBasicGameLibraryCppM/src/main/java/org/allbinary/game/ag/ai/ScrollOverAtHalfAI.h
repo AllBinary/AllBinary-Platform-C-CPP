@@ -58,13 +58,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScrollOverAtHalfAI: public BasicAI {
-        
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: ScrollOverAtHalfAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

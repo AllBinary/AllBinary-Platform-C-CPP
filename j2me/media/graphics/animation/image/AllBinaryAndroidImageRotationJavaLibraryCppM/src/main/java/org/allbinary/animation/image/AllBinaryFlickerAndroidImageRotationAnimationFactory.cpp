@@ -75,68 +75,65 @@
 class AllBinaryFlickerAndroidImageRotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: image: Image = NullImage.NULL_IMAGE;
+    private: Image image = NullImage::NULL_IMAGE;
 
-    private: const angleIncrement: int16_t;
+    private: int16_t angleIncrement;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.setImage(image);
+public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
+this->setImage(image);
     
-this.angleIncrement= angleIncrement;
+this->angleIncrement= angleIncrement;
     
-this.animationBehaviorFactory= animationBehaviorFactory;
+this->animationBehaviorFactory= animationBehaviorFactory;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    image: Image = ImageCopyUtil.getInstance()!.createImage(this.getImage())!;;
+    Image image = ImageCopyUtil::getInstance().createImage(this->getImage());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryFlickerAndroidImageRotationAnimation(this.getImage(), image, AngleInfo.getInstance(this.angleIncrement), AngleFactory.getInstance()!.TOTAL_ANGLE, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AllBinaryFlickerAndroidImageRotationAnimation(this->getImage(), image, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance().TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 
 
-    int16_t getAngleIncrement(){
+    protected: int16_t getAngleIncrement(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angleIncrement;
+                        return this->angleIncrement;
     
 }
 
 
-    setImage(Image image){
-this.image= image;
+    protected: void setImage(Image image){
+this->image= image;
     
 }
 
 
-    Image getImage(){
+    protected: Image getImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image;
+                        return this->image;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

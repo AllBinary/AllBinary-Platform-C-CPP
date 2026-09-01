@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DebugInterface {
-        
 
-    start();
+    void start();
 
-    stop();
+    void stop();
 
     int64_t getStartTime();
 

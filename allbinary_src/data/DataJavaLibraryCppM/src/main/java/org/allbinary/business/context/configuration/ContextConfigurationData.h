@@ -48,19 +48,18 @@
 class ContextConfigurationData
             : public Object
          {
-        
 
-    private: static const instance: ContextConfigurationData = new ContextConfigurationData();
+    private: static ContextConfigurationData instance() { return ContextConfigurationData(); }
 
-    public static ContextConfigurationData getInstance();
+    public: static ContextConfigurationData getInstance();
 
-private constructor ();
+private: ContextConfigurationData();
 
-    public const NAME: string = "CONTEXT_CONFIGURATION_NAME";
+    public: const std::string NAME = "CONTEXT_CONFIGURATION_NAME";
 
-    public const UNCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
 
-    public const ENCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
 
 };
 

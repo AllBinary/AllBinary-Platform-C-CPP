@@ -57,10 +57,9 @@
 #include "TransformInfoInterface.h"
 #include "TransformInfoData.h"
 
-class TransformInfoDomNodeView: public TransformInfoDomNode: public DomNodeInterface {
-        
+class TransformInfoDomNodeView: public TransformInfoDomNode, public DomNodeInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface, string mapping){
+public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface, std::string mapping){
             super(transformInfoInterface, mapping);
                     
 
@@ -69,7 +68,7 @@ public constructor (TransformInfoInterface transformInfoInterface, string mappin
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: TransformInfoDomNodeView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -78,7 +77,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-public constructor (string name, string mappedName){
+public: TransformInfoDomNodeView(std::string name, std::string mappedName){
             super(name, mappedName);
                     
 
@@ -87,7 +86,7 @@ public constructor (string name, string mappedName){
 }
 
 
-public constructor (string name){
+public: TransformInfoDomNodeView(std::string name){
             super(name, 
                             nullptr);
                     
@@ -99,35 +98,35 @@ public constructor (string name){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    transformInfoData: TransformInfoData = TransformInfoData.getInstance()!;;
-    
-
-    subViewNode: Node = document.createElement(transformInfoData!.NAME)!;;
+    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    viewNameAttr: Attr = document.createAttribute(transformInfoData!.NAME)!;;
-    
-viewNameAttr!.setValue(this.getTransformInfoInterface()!.getName());
+    Node subViewNode = document.createElement(transformInfoData.NAME);;
     
 
-    componentNodeAttributes: NamedNodeMap = subViewNode!.getAttributes()!;;
+    Attr viewNameAttr = document.createAttribute(transformInfoData.NAME);;
     
-componentNodeAttributes!.setNamedItem(viewNameAttr);
+viewNameAttr.setValue(this->getTransformInfoInterface().getName());
     
 
-                        if(this.getMappedName() != 
-                                    null
+    NamedNodeMap componentNodeAttributes = subViewNode.getAttributes();;
+    
+componentNodeAttributes.setNamedItem(viewNameAttr);
+    
+
+                        if(this->getMappedName() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-    mappedNameAttr: Attr = document.createAttribute(transformInfoData!.MAPPED)!;;
+    Attr mappedNameAttr = document.createAttribute(transformInfoData.MAPPED);;
     
-mappedNameAttr!.setValue(this.getMappedName());
+mappedNameAttr.setValue(this->getMappedName());
     
-componentNodeAttributes!.setNamedItem(mappedNameAttr);
+componentNodeAttributes.setNamedItem(mappedNameAttr);
     
 
                                     }

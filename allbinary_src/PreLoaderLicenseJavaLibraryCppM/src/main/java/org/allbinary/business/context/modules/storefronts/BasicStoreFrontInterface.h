@@ -46,73 +46,72 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicStoreFrontInterface {
-        
 
-    string getTestHtmlPath();
+    std::string getTestHtmlPath();
 
-    string getCurrentHostName();
+    std::string getCurrentHostName();
 
-    string getCurrentHostNamePath();
+    std::string getCurrentHostNamePath();
 
-    string getCurrentHomeHostName();
+    std::string getCurrentHomeHostName();
 
-    string getCurrentHomeHostNamePath();
+    std::string getCurrentHomeHostNamePath();
 
-    string getName();
+    std::string getName();
 
-    string getUserName();
+    std::string getUserName();
 
-    string getBasketName();
+    std::string getBasketName();
 
-    string getHomeHostName();
+    std::string getHomeHostName();
 
-    string getHomeHostNamePath();
+    std::string getHomeHostNamePath();
 
-    string getHostName();
+    std::string getHostName();
 
-    string getHostNamePath();
+    std::string getHostNamePath();
 
-    string getTestHomeHostName();
+    std::string getTestHomeHostName();
 
-    string getTestHomeHostNamePath();
+    std::string getTestHomeHostNamePath();
 
-    string getTestHostName();
+    std::string getTestHostName();
 
-    string getTestHostNamePath();
+    std::string getTestHostNamePath();
 
-    string getStaticPath();
+    std::string getStaticPath();
 
-    string getCategoryPath();
+    std::string getCategoryPath();
 
                 //@Throws(Exception.constructor)
             
     BasicArrayList getSubStores();
 
-    string getTagLocation();
+    std::string getTagLocation();
 
-    string getPackageLocation();
+    std::string getPackageLocation();
 
-    string getInventoryControl();
+    std::string getInventoryControl();
 
-    string getFtp();
+    std::string getFtp();
 
-    string getFtpPath();
+    std::string getFtpPath();
 
-    string getFtpUserName();
+    std::string getFtpUserName();
 
-    string getFtpPassword();
+    std::string getFtpPassword();
 
-    string getTestFtp();
+    std::string getTestFtp();
 
-    string getTestFtpPath();
+    std::string getTestFtpPath();
 
-    string getTestFtpUserName();
+    std::string getTestFtpUserName();
 
-    string getTestFtpPassword();
+    std::string getTestFtpPassword();
 
-    string getTimeCreated();
+    std::string getTimeCreated();
 
-    string getLastModified();
+    std::string getLastModified();
 
 };
 

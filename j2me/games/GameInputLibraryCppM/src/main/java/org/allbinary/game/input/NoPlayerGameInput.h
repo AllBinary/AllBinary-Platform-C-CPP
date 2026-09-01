@@ -48,19 +48,18 @@
         #include "PlayerGameInput.h"
 
 class NoPlayerGameInput: public PlayerGameInput {
-        
 
-    private: static const SINGLETON: NoPlayerGameInput = new NoPlayerGameInput();
+    private: static const NoPlayerGameInput SINGLETON = NoPlayerGameInput();
 
-    public static NoPlayerGameInput getInstance();
+    public: static NoPlayerGameInput getInstance();
 
-private constructor ();
+private: NoPlayerGameInput();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent);
 
 };
 

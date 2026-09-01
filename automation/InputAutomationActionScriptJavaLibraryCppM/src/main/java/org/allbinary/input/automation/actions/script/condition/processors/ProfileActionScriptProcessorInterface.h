@@ -53,7 +53,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ProfileActionScriptProcessorInterface: public CustomTreeNodeInterface, public DomNodeInterface, public MutableTreeNode, public ProfileActionScriptItemInterface {
-        
 
 };
 

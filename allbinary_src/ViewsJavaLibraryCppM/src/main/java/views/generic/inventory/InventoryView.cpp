@@ -86,12 +86,11 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class InventoryView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class InventoryView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: InventoryView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -102,58 +101,58 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Starting", this, "toXmlNode");
+                                    this->logUtil.putF("Starting", this, "toXmlNode");
     
 
                                     }
                                 
 
-    inventoryEntityInterface: InventoryEntity = InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!;;
+    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
 
-    inventoryNode: Node = document.createElement(InventoryData.INVENTORY)!;;
+    Node inventoryNode = document.createElement(InventoryData::INVENTORY);;
     
 
-    itemVector: Vector = inventoryEntityInterface!.getItems(StoreFrontFactory.getInstance(this.getTransformInfoInterface()!.getStoreName()))!;;
+    Vector itemVector = inventoryEntityInterface.getItems(StoreFrontFactory::getInstance(this->getTransformInfoInterface().getStoreName()));;
     
-inventoryNode!.appendChild(ModDomHelper.createNameValueNodes(document, SearchData.TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, new Integer(itemVector!.length).toString()));
+inventoryNode.appendChild(ModDomHelper::createNameValueNodes(document, SearchData::TOTAL_NUMBER_ITEMS_ON_THIS_PAGE, Integer(itemVector.length).toString()));
     
 
-    size: int32_t = itemVector!.length!;;
+    int32_t size = itemVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    itemInterface: ItemInterface = itemVector!.get(index) as ItemInterface;;
+    ItemInterface itemInterface = itemVector.get(index) as ItemInterface;;
     
 
                         if(itemInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    node: Node = new BasicItemView(itemInterface, new Vector()).toXmlNode(document)!;;
+    Node node = BasicItemView(itemInterface, Vector()).toXmlNode(document);;
     
-inventoryNode!.appendChild(node);
+inventoryNode.appendChild(node);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Inventory", this, "toXmlNode");
+                            this->logUtil.putF("Inventory", this, "toXmlNode");
     
 
                         }
@@ -171,10 +170,10 @@ inventoryNode!.appendChild(node);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -189,16 +188,16 @@ inventoryNode!.appendChild(node);
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -211,13 +210,13 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-    error: string = "Failed to view Inventory";;
+    std::string error = "Failed to view Inventory";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

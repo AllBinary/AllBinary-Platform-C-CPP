@@ -66,69 +66,68 @@
         #include "TextInterface.h"
 #include "TextChangeListener.h"
 
-class CustomTextBoxIndexedAnimation: public IndexedAnimation: public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
-        
+class CustomTextBoxIndexedAnimation: public IndexedAnimation, public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
 
-    private: const customTextBox: CustomTextBox;
+    private: CustomTextBox customTextBox;
 
-    private: lastText: string = StringUtil.getInstance()!.INIT_STRING;
+    private: std::string lastText = StringUtil::getInstance().INIT_STRING;
 
-    hasChanged: bool = true;
+    protected: bool hasChanged = true;
 
-    private: textChangeListener: TextChangeListener = TextChangeListener.getInstance()!;
+    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
 
-public constructor (CustomTextBox customTextBox){
-            super(AnimationBehavior.getInstance());
+public: CustomTextBoxIndexedAnimation(CustomTextBox customTextBox){
+            super(AnimationBehavior::getInstance());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.customTextBox= customTextBox;
+this->customTextBox= customTextBox;
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.customTextBox!.getTextFieldItem()!.setForegroundBasicColorP(basicColor);
+    public: void setBasicColorP(BasicColor basicColor){
+this->customTextBox.getTextFieldItem().setForegroundBasicColorP(basicColor);
     
 }
 
 
-    public setBackgroundBasicColorP(BasicColor basicColor){
-this.customTextBox!.getTextFieldItem()!.setBackgroundBasicColorP(basicColor);
+    public: void setBackgroundBasicColorP(BasicColor basicColor){
+this->customTextBox.getTextFieldItem().setBackgroundBasicColorP(basicColor);
     
 }
 
 
-    public setTextWithOnMeasure(string text, TextChangeListener textChangeListener){
-this.setText(text);
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener){
+this->setText(text);
     
-this.textChangeListener= textChangeListener;
-    
-}
-
-
-    public updateMeasurement(Graphics graphics){
-
-    font: Font = graphics.getFont()!;;
-    
-this.textChangeListener!.onMeasure();
-    
-this.textChangeListener= TextChangeListener.getInstance();
+this->textChangeListener= textChangeListener;
     
 }
 
 
-    public setText(string text){
+    public: void updateMeasurement(Graphics graphics){
 
-                        if(this.lastText != text)
+    Font font = graphics.getFont();;
+    
+this->textChangeListener.onMeasure();
+    
+this->textChangeListener= TextChangeListener::getInstance();
+    
+}
+
+
+    public: void setText(std::string text){
+
+                        if(this->lastText != text)
                         
                                     {
-                                    this.hasChanged= true;
+                                    this->hasChanged= true;
     
-this.lastText= text;
+this->lastText= text;
     
-this.customTextBox!.getTextFieldItem()!.setString(text);
+this->customTextBox.getTextFieldItem().setString(text);
     
 
                                     }
@@ -136,39 +135,39 @@ this.customTextBox!.getTextFieldItem()!.setString(text);
 }
 
 
-    public string getText(){
+    public: std::string getText(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.customTextBox!.getTextFieldItem()!.getString();;
+                        return this->customTextBox.getTextFieldItem().getString();;
     
 }
 
 
-    public onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
-this.customTextBox!.onEventRaw(keyCode, deviceId, repeated);
+    public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
+this->customTextBox.onEventRaw(keyCode, deviceId, repeated);
     
 }
 
 
-    public int32_t getFontHeight(){
+    public: int32_t getFontHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.customTextBox!.getTextFieldItem()!.getFontHeight();;
+                        return this->customTextBox.getTextFieldItem().getFontHeight();;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.customTextBox!.paintXY(graphics, x, y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->customTextBox.paintXY(graphics, x, y);
     
 }
 
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
 }
 
 

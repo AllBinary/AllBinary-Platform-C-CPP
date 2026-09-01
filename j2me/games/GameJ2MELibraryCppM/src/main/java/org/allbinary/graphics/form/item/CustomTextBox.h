@@ -94,34 +94,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ABTextFieldItem.h"
 
-class CustomTextBox: public GameCommandCanvas: public RawKeyEventListener {
-        
+class CustomTextBox: public GameCommandCanvas, public RawKeyEventListener {
 
-    private: const textFieldItem: ABTextFieldItem;
+    private: ABTextFieldItem textFieldItem;
 
-public constructor (CommandListener cmdListener, string label, string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: CustomTextBox(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public submit();
+    public: void submit();
 
-    private: const inputFactory: InputFactory = InputFactory.getInstance()!;
+    private: const InputFactory inputFactory = InputFactory::getInstance();
 
-    public onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
+    public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
 
-    public keyPressed(int32_t keyCode);
+    public: void keyPressed(int32_t keyCode);
 
-    public keyReleased(int32_t keyCode);
+    public: void keyReleased(int32_t keyCode);
 
-    public keyRepeated(int32_t keyCode);
+    public: void keyRepeated(int32_t keyCode);
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public ABTextFieldItem getTextFieldItem();
+    public: ABTextFieldItem getTextFieldItem();
 
 };
 

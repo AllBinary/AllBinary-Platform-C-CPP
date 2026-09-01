@@ -56,32 +56,31 @@
 class PartnerIdentifierFileUtil
             : public Object
          {
-        
 
-    private: static const instance: PartnerIdentifierFileUtil = new PartnerIdentifierFileUtil();
+    private: static PartnerIdentifierFileUtil instance() { return PartnerIdentifierFileUtil(); }
 
-    public static PartnerIdentifierFileUtil getInstance(){
+    public: static PartnerIdentifierFileUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PartnerIdentifierFileUtil.instance;
+                        return PartnerIdentifierFileUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const FILE_NAME: string = "partner.txt";
+    public: const std::string FILE_NAME = "partner.txt";
 
-    public string get(){
+    public: std::string get(){
 
         try {
             
-    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    partnerString: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string partnerString = StringUtil::getInstance().EMPTY_STRING;;
     
 
 
@@ -94,15 +93,15 @@ class PartnerIdentifierFileUtil
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.NULL_STRING;
+                        return StringUtil::getInstance().NULL_STRING;
     
 }
 

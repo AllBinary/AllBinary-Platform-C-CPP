@@ -42,14 +42,11 @@
 class GenericProfileData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_PROFILE_NAME";
+    public: static std::string NAME = "GENERIC_PROFILE_NAME";
 
-private constructor (){
-
-            super();
-        }
+private: GenericProfileData(){
+}
 
 
 };

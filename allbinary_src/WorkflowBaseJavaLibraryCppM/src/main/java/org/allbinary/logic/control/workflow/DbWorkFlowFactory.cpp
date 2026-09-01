@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -69,67 +71,64 @@
 class DbWorkFlowFactory
             : public Object
          {
-        
 
-    private: static const instance: DbWorkFlowFactory = new DbWorkFlowFactory();
+    private: static DbWorkFlowFactory instance() { return DbWorkFlowFactory(); }
 
-    public static DbWorkFlowFactory getInstance(){
+    public: static DbWorkFlowFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DbWorkFlowFactory.instance;
+                        return DbWorkFlowFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: DbWorkFlowFactory(){
+}
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap){
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap){
 
         try {
             
-    className: string = hashMap!.get(DynamicObjectData.NAME) as string;;
+    std::string className = hashMap.get(DynamicObjectData::NAME) as string;;
     
 
-    params: std::vector<any> = new Array(1);;
+    std::vector<Object*> params = new Array(1);;
     
 
-    classes: std::vector<Function> = new Array(1);;
+    std::vector<Function> classes = new Array(1);;
     
-classes[0]= hashMap!.constructor;
+classes[0]= hashMap.constructor;
     
 params[0]= hashMap;
     
 
-    anyType: any = AbeFactory.getInstance()!.getInstance(abeClientInformation, className, classes, params)!;;
+    Object* anyType = AbeFactory::getInstance().getInstance(abeClientInformation, className, classes, params);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new WorkFlowWrapper(anyType) as WorkFlowInterface;
+                        return WorkFlowWrapper(anyType) as WorkFlowInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "getInstance(HashMap)", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
     
 
                                     }
@@ -145,13 +144,13 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "getInstance(HashMap)", e);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "getInstance(HashMap)", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HashMap)", e);
     
 
                                     }

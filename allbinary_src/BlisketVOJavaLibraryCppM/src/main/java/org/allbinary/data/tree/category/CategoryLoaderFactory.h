@@ -58,11 +58,10 @@
 class CategoryLoaderFactory
             : public Object
          {
-        
 
-    public static CategoryLoaderInterface getInstance(CategoryFactoryInterface categoryFactoryInterface);
+    public: static CategoryLoaderInterface getInstance(CategoryFactoryInterface categoryFactoryInterface);
 
-private constructor ();
+private: CategoryLoaderFactory();
 
 };
 

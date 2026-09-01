@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -53,33 +55,32 @@
         #include "SequenceAI.h"
 
 class NumberLayersSequenceAI: public SequenceAI {
-        
 
-    private: numberOfLayersLeft: int32_t;
+    private: int32_t numberOfLayersLeft;
 
-public constructor (int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: NumberLayersSequenceAI(int32_t numberOfEnemiesLeft, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.numberOfLayersLeft= numberOfEnemiesLeft;
+this->numberOfLayersLeft= numberOfEnemiesLeft;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-                        if(this.getIndex() == 0)
+                        if(this->getIndex() == 0)
                         
                                     {
                                     
-                        if(allBinaryLayerManager!.getSize() < this.numberOfLayersLeft)
+                        if(allBinaryLayerManager.getSize() < this->numberOfLayersLeft)
                         
                                     {
-                                    this.setIndex(1);
+                                    this->setIndex(1);
     
 
                                     }

@@ -89,33 +89,32 @@
 #include "NullAnimationFactory.h"
 
 class FeaturedAnimationInterfaceFactoryInterfaceFactory: public FeaturedResourceFactory {
-        
 
-    private: static INSTANCE: FeaturedAnimationInterfaceFactoryInterfaceFactory = new FeaturedAnimationInterfaceFactoryInterfaceFactory();
+    private: static FeaturedAnimationInterfaceFactoryInterfaceFactory INSTANCE = FeaturedAnimationInterfaceFactoryInterfaceFactory();
 
-    public static FeaturedAnimationInterfaceFactoryInterfaceFactory getInstance();
+    public: static FeaturedAnimationInterfaceFactoryInterfaceFactory getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Rectangle getRectangle(string resource);
+private: FeaturedAnimationInterfaceFactoryInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public Rectangle getRectangleXY(string resource, int32_t x, int32_t y);
+    public: Rectangle getRectangle(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public ProceduralAnimationInterfaceFactoryInterface getProcedural(string resource);
+    public: Rectangle getRectangleXY(std::string resource, int32_t x, int32_t y);
 
                 //@Throws(Exception.constructor)
             
-    public AnimationInterfaceFactoryInterface get(string resource);
+    public: ProceduralAnimationInterfaceFactoryInterface getProcedural(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(string resource);
+    public: AnimationInterfaceFactoryInterface get(std::string resource);
+
+                //@Throws(Exception.constructor)
+            
+    private: BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource);
 
 };
 

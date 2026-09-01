@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LIFE_LIVESHUDWIDGET_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LIFE_LIVESHUDWIDGET_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -63,28 +65,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LivesHudWidget: public BasicHud: public PaintableInterface {
-        
+class LivesHudWidget: public BasicHud, public PaintableInterface {
 
-    private: const lifeInterface: Life;
+    private: Life lifeInterface;
 
-    private: const xArray: std::vector<int32_t>;
+    private: std::vector<int32_t> xArray;
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction);
+public: LivesHudWidget(Animation animationInterface, Life lifeInterface, int32_t location, int32_t direction);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
 
-    public setX(int32_t x);
+    public: void setX(int32_t x);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
-    public Life getLifeInterface();
+    public: Life getLifeInterface();
 
 };
 

@@ -45,7 +45,6 @@
         #include "MultiplayerBehavior.h"
 
 class MultiPlayerGameLayerInterface {
-        
 
     MultiplayerBehavior getMultiplayerBehavior()
 

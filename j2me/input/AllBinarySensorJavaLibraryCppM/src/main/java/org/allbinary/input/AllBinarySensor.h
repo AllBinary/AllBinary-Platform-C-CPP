@@ -69,33 +69,32 @@
 class AllBinarySensor
             : public Object
         : public AllBinarySensorListener {
-        
 
-    public static const NULL_ALLBINARY_SENSOR: AllBinarySensor = new AllBinarySensor();
+    public: static const AllBinarySensor NULL_ALLBINARY_SENSOR = AllBinarySensor();
 
-    private: static max: int32_t = 100;
+    private: static int32_t max = 100;
 
-    public static setMax(int32_t max);
+    public: static void setMax(int32_t max);
 
-    public static int32_t getMax();
+    public: static int32_t getMax();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor ();
+protected: AllBinarySensor();
 
-    public init();
+    public: void init();
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void update();
 
-    public int32_t getId();
+    public: int32_t getId();
 
-    public shutdown();
+    public: void shutdown();
 
-    public onSensorChange();
+    public: void onSensorChange();
 
 };
 

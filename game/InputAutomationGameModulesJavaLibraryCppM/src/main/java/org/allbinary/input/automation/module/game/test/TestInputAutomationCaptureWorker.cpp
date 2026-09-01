@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -79,89 +81,87 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TestInputAutomationCaptureWorker: public AbstractInputAutomationWorker {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: genericProfileActions: GenericProfileActions;
+    private: GenericProfileActions genericProfileActions;
 
-    private: const MESSAGE: string = "GenericInputAutomationCaptureWorker";
+    private: const std::string MESSAGE = "GenericInputAutomationCaptureWorker";
 
-    private: const PROCESS_DATA_WORKER_RESULTS: string = "processDataWorkerResults";
+    private: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
 
-    private: const IMAGE_AVAILABLE_SO_PROCESSING: string = "Image Available so processing";
+    private: const std::string IMAGE_AVAILABLE_SO_PROCESSING = "Image Available so processing";
 
-    private: const IMAGE_NOT_AVAILABLE: string = "Image Not Available";
+    private: const std::string IMAGE_NOT_AVAILABLE = "Image Not Available";
 
-public constructor (InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
+public: TestInputAutomationCaptureWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfileActions genericProfileActions, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
             super(inputAutomationActionInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.MESSAGE, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->MESSAGE, this, this->commonStrings.CONSTRUCTOR);
     
-this.setGenericProfileActions(genericProfileActions);
+this->setGenericProfileActions(genericProfileActions);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processDataWorkerResults(){
+    public: void processDataWorkerResults(){
 
-    cacheInterface: J2SECacheInterface = CapturedBufferedImagesCacheSingleton.getInstance() as J2SECacheInterface;;
+    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance() as J2SECacheInterface;;
     
 
-                        if(cacheInterface!.keySet()!.size() > 0)
+                        if(cacheInterface.keySet().size() > 0)
                         
                                     {
-                                    this.logUtil!.putF(this.IMAGE_AVAILABLE_SO_PROCESSING, this, this.PROCESS_DATA_WORKER_RESULTS);
+                                    this->logUtil.putF(this->IMAGE_AVAILABLE_SO_PROCESSING, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    anyType: any = cacheInterface!.keySet()!.()[0]!;;
+    Object* anyType = cacheInterface.keySet().()[0];;
     
 
-    hashMap: HashMap<any, any> = this.getGenericProfileActions()!.getHashMap()!;;
+    HashMap<any, any> hashMap = this->getGenericProfileActions().getHashMap();;
     
 
-    set: Set = hashMap!.keys()!;;
+    Set set = hashMap.keys();;
     
 
-    actionNameArray: std::vector<any> = set.toArray()!;;
+    std::vector<Object*> actionNameArray = set.toArray();;
     
 
-    size: int32_t = actionNameArray!.length
-                ;;
+    int32_t size = actionNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    actionNameString: string = actionNameArray[index]! as string;;
+    std::string actionNameString = actionNameArray[index]! as string;;
     
 
-    genericProfileAction: GenericProfileAction = hashMap!.get(actionNameString) as GenericProfileAction;;
+    GenericProfileAction genericProfileAction = hashMap.get(actionNameString) as GenericProfileAction;;
     
 
-    genericProfileActionScript: GenericProfileActionScript = genericProfileAction!.getGenericProfileActionScript()!;;
+    GenericProfileActionScript genericProfileActionScript = genericProfileAction.getGenericProfileActionScript();;
     
 
-    vector: Vector = genericProfileActionScript!.getProfileActionConditionInterfaceVector()!;;
+    Vector vector = genericProfileActionScript.getProfileActionConditionInterfaceVector();;
     
 }
 
-cacheInterface!.get(anyType);
+cacheInterface.get(anyType);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF(this.IMAGE_NOT_AVAILABLE, this, this.PROCESS_DATA_WORKER_RESULTS);
+                            this->logUtil.putF(this->IMAGE_NOT_AVAILABLE, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
                         }
@@ -171,28 +171,28 @@ cacheInterface!.get(anyType);
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.PROCESS);
+    public: void process(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
-this.startDataWorkers();
+this->startDataWorkers();
     
-this.processDataWorkerResults();
+this->processDataWorkerResults();
     
 }
 
 
-    public GenericProfileActions getGenericProfileActions(){
+    public: GenericProfileActions getGenericProfileActions(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericProfileActions;
+                        return this->genericProfileActions;
     
 }
 
 
-    public setGenericProfileActions(GenericProfileActions genericProfileActions){
-this.genericProfileActions= genericProfileActions;
+    public: void setGenericProfileActions(GenericProfileActions genericProfileActions){
+this->genericProfileActions= genericProfileActions;
     
 }
 

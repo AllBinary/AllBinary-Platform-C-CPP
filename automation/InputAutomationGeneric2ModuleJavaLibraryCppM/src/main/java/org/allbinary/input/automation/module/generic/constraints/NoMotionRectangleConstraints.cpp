@@ -53,23 +53,20 @@
 #include "Rectangle.h"
 
 class NoMotionRectangleConstraints: public MotionRectangleConstraints {
-        
 
-public constructor (){
-
-            super();
-        this.setMinDimension(new Dimension(0, 0));
+public: NoMotionRectangleConstraints(){
+this->setMinDimension(Dimension(0, 0));
     
-this.setMinArea(0);
+this->setMinArea(0);
     
-this.setMaxDimension(new Dimension(Integer.MAX_VALUE, Integer.MAX_VALUE));
+this->setMaxDimension(Dimension(Integer::MAX_VALUE, Integer::MAX_VALUE));
     
-this.setMaxMotionRectangles(.MAX_VALUE());
+this->setMaxMotionRectangles(.MAX_VALUE());
     
 }
 
 
-    public bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle){
+    public: bool isValid(Long frame, BufferedImage bufferedImage, Rectangle rectangle){
 
 
 

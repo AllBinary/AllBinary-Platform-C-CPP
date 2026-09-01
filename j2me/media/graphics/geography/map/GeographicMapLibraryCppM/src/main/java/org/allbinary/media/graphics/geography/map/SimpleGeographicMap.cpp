@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -61,93 +63,90 @@
 class SimpleGeographicMap
             : public Object
          {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const id: Integer;
+    private: Integer id;
 
-    private: const name: string;
+    private: std::string name;
 
-    const cellTypeIdToGeographicMapCellType: std::vector<int32_t>;
+    protected: std::vector<int32_t> cellTypeIdToGeographicMapCellType;
 
-    private: const tiledLayer: AllBinaryTiledLayer;
+    private: AllBinaryTiledLayer tiledLayer;
 
-    private: foregroundBasicColor: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    private: BasicColor foregroundBasicColor = BasicColorFactory::getInstance().NULL_COLOR;
 
-    private: backgroundBasicColor: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    private: BasicColor backgroundBasicColor = BasicColorFactory::getInstance().NULL_COLOR;
 
-public constructor (Integer id, string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor){
-
-            super();
-        this.id= id;
+public: SimpleGeographicMap(Integer id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor){
+this->id= id;
     
-this.name= name;
+this->name= name;
     
-this.cellTypeIdToGeographicMapCellType= cellTypeIdToGeographicMapCellType;
+this->cellTypeIdToGeographicMapCellType= cellTypeIdToGeographicMapCellType;
     
-this.tiledLayer= tiledLayer;
+this->tiledLayer= tiledLayer;
     
-this.setBackgroundBasicColor(backgroundBasicColor);
+this->setBackgroundBasicColor(backgroundBasicColor);
     
-this.setForegroundBasicColor(foregroundBasicColor);
+this->setForegroundBasicColor(foregroundBasicColor);
     
 }
 
 
-    public Integer getId(){
+    public: Integer getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public reset(){
+    public: void reset(){
 }
 
 
-    public AllBinaryTiledLayer getAllBinaryTiledLayer(){
+    public: AllBinaryTiledLayer getAllBinaryTiledLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tiledLayer;
+                        return this->tiledLayer;
     
 }
 
 
-    private: const geographicMapCellTypeFactory: GeographicMapCellTypeFactory = GeographicMapCellTypeFactory.getInstance()!;
+    private: const GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellType getCellTypeAt(GeographicMapCellPosition cellPosition){
+    public: GeographicMapCellType getCellTypeAt(GeographicMapCellPosition cellPosition){
 
-    i_column: int32_t = cellPosition!.getColumn()!;;
+    int32_t i_column = cellPosition.getColumn();;
     
 
-    i_row: int32_t = cellPosition!.getRow()!;;
+    int32_t i_row = cellPosition.getRow();;
     
 
-    cellTypeId: int32_t = this.tiledLayer!.getCell(i_column, i_row)!;;
+    int32_t cellTypeId = this->tiledLayer.getCell(i_column, i_row);;
     
 
                         if(cellTypeId < 0)
                         
                                     {
-                                    cellTypeId= this.tiledLayer!.getAnimatedTile(cellTypeId);
+                                    cellTypeId= this->tiledLayer.getAnimatedTile(cellTypeId);
     
 
                                     }
@@ -156,49 +155,49 @@ this.setForegroundBasicColor(foregroundBasicColor);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellTypeFactory!.get(this.cellTypeIdToGeographicMapCellType[cellTypeId]!);;
+                        return this->geographicMapCellTypeFactory.get(this->cellTypeIdToGeographicMapCellType[cellTypeId]!);;
     
 }
 
 
-    public int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId){
+    public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellTypeIdToGeographicMapCellType[cellTypeId]!;
+                        return this->cellTypeIdToGeographicMapCellType[cellTypeId]!;
     
 }
 
 
-    public BasicColor getForegroundBasicColor(){
+    public: BasicColor getForegroundBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.foregroundBasicColor;
+                        return this->foregroundBasicColor;
     
 }
 
 
-    setForegroundBasicColor(BasicColor foregroundBasicColor){
-this.foregroundBasicColor= foregroundBasicColor;
+    private: void setForegroundBasicColor(BasicColor foregroundBasicColor){
+this->foregroundBasicColor= foregroundBasicColor;
     
 }
 
 
-    public BasicColor getBackgroundBasicColor(){
+    public: BasicColor getBackgroundBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.backgroundBasicColor;
+                        return this->backgroundBasicColor;
     
 }
 
 
-    setBackgroundBasicColor(BasicColor backgroundBasicColor){
-this.backgroundBasicColor= backgroundBasicColor;
+    private: void setBackgroundBasicColor(BasicColor backgroundBasicColor){
+this->backgroundBasicColor= backgroundBasicColor;
     
 }
 

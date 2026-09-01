@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_COMBAT_DAMAGE_PTSDAMAGEFLOATERS_H
         #define ORG_ALLBINARY_GAME_COMBAT_DAMAGE_PTSDAMAGEFLOATERS_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -78,34 +80,33 @@
         #include "DamageFloaters.h"
 
 class PtsDamageFloaters: public DamageFloaters {
-        
 
-    private: static const basicColorArrayIndexer: BasicColorArrayIndexer = new BasicColorArrayIndexer(
-                                                [
-                                                    BasicColorFactory.getInstance()!.WHITE,BasicColorFactory.getInstance()!.RED,BasicColorFactory.getInstance()!.YELLOW,BasicColorFactory.getInstance()!.BLUE
-                                                ]);
+    private: static const BasicColorArrayIndexer basicColorArrayIndexer = BasicColorArrayIndexer(
+                                                {
+                                                    BasicColorFactory::getInstance().WHITE,BasicColorFactory::getInstance().RED,BasicColorFactory::getInstance().YELLOW,BasicColorFactory::getInstance().BLUE
+                                                });
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: layerInterface: AllBinaryLayer;
+    private: AllBinaryLayer layerInterface;
 
-    private: lastDamage: std::vector<int32_t> = new Array(5);
+    private: std::vector<int32_t> lastDamage = new Array(5);
 
-    private: lastDamageString: std::vector<std::vector<char>> = new Array(5).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> lastDamageString = new Array(5).fill(null).map(() => new Array(0).fill(0));
 
-    private: lastDamageStringSizeArray: std::vector<int32_t> = new Array(5);
+    private: std::vector<int32_t> lastDamageStringSizeArray = new Array(5);
 
-    private: circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(5)!;
+    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(5);
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-public constructor (AllBinaryLayer layerInterface);
+public: PtsDamageFloaters(AllBinaryLayer layerInterface);
 
-    public add(int32_t damage);
+    public: void add(int32_t damage);
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

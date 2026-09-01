@@ -56,16 +56,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "LogTableEntityInterface.h"
 
-class LogTableEntity: public AbSqlBean: public LogTableEntityInterface {
-        
+class LogTableEntity: public AbSqlBean, public LogTableEntityInterface {
 
-    private: const tableName: string = "log";
+    private: const std::string tableName = "log";
 
-public constructor ();
+public: LogTableEntity();
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
 };
 

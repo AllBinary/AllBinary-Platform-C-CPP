@@ -54,34 +54,31 @@
 class ReviewOrderStoreAdminUserFactory
             : public Object
         : public UserFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: ReviewOrderStoreAdminUserFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getInstance(){
+    public: UserInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ReviewOrderStoreAdminUser();
+                        return ReviewOrderStoreAdminUser();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getInstance(HashMap<any, any> hashMap){
+    public: UserInterface getInstance(HashMap<any, any> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ReviewOrderStoreAdminUser(hashMap);
+                        return ReviewOrderStoreAdminUser(hashMap);
     
 }
 

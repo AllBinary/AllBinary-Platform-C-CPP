@@ -48,13 +48,12 @@
 class GameKeyUtil
             : public Object
          {
-        
 
-    private: static const instance: GameKeyUtil = new GameKeyUtil();
+    private: static GameKeyUtil instance() { return GameKeyUtil(); }
 
-    public static GameKeyUtil getInstance();
+    public: static GameKeyUtil getInstance();
 
-    public bool isDirectionKey(int32_t key);
+    public: bool isDirectionKey(int32_t key);
 
 };
 

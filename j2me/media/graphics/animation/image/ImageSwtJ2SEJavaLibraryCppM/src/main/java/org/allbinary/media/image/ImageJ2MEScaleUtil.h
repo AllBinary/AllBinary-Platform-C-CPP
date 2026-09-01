@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEJ2MESCALEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -51,21 +53,20 @@
 class ImageJ2MEScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageJ2MEScaleUtil = new ImageJ2MEScaleUtil();
+    private: static ImageJ2MEScaleUtil instance() { return ImageJ2MEScaleUtil(); }
 
-    public static ImageJ2MEScaleUtil getInstance();
+    public: static ImageJ2MEScaleUtil getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height);
+private: ImageJ2MEScaleUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Image scale(Image image, int32_t width, int32_t height);
+    public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image scale(Image image, int32_t width, int32_t height);
 
 };
 

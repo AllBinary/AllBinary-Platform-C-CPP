@@ -68,15 +68,14 @@
 class NumberStringHudFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!;
+    private: static Object* instance = NullUtil::getInstance();
 
-    public static NumberStringHudFactory getInstance();
+    public: static NumberStringHudFactory getInstance();
 
-    public NumberStringHud createHud();
+    public: NumberStringHud createHud();
 
-    public const NULL_NUMBER_STRING_HUD: NumberStringHud = this.createHud()!;
+    public: const NumberStringHud NULL_NUMBER_STRING_HUD = this->createHud();
 
 };
 

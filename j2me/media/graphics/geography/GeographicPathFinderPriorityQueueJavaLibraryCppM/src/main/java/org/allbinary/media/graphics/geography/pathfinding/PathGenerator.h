@@ -62,37 +62,36 @@
 class PathGenerator
             : public Object
         : public PathGeneratorInterface {
-        
 
-    private: static const SINGLETON: PathGenerator = new PathGenerator();
+    private: static const PathGenerator SINGLETON = PathGenerator();
 
-    public static PathGenerator getInstance();
+    public: static PathGenerator getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public init(any = {} geographicMapInterface, int32_t totalPaths);
+private: PathGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getInstanceNoCache(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths);
+    public: void init(Object* geographicMapInterface, int32_t totalPaths);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths);
+    public: BasicArrayList getInstanceNoCache(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths);
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList create(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths);
+    public: BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList createN(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths, MultipassState multipassState);
+    private: BasicArrayList create(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths);
 
                 //@Throws(Exception.constructor)
             
-    bool isValid(BasicArrayList pathList, GeographicMapCellHistory geographicMapCellHistory);
+    public: BasicArrayList createN(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t totalPaths, MultipassState multipassState);
+
+                //@Throws(Exception.constructor)
+            
+    private: bool isValid(BasicArrayList pathList, GeographicMapCellHistory geographicMapCellHistory);
 
 };
 

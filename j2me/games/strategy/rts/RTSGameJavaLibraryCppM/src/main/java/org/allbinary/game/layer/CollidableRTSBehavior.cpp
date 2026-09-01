@@ -50,9 +50,8 @@
         #include "CollidableCompositeLayer.h"
 
 class CollidableRTSBehavior: public CollidableDestroyableDamageableBehavior {
-        
 
-public constructor (bool collidable){
+public: CollidableRTSBehavior(bool collidable){
             super(collidable);
                     
 
@@ -61,22 +60,22 @@ public constructor (bool collidable){
 }
 
 
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    collisionTypeFactory: CollisionTypeFactory = CollisionTypeFactory.getInstance()!;;
+    CollisionTypeFactory collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
 
-    collisionType: CollisionType = collidableInterfaceCompositeInterface!.getCollidableInferface()!.getCollisionTypeWith(ownerLayer)!;;
+    CollisionType collisionType = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer);;
     
 
-                        if(collisionType == collisionTypeFactory!.PICKUP)
+                        if(collisionType == collisionTypeFactory.PICKUP)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(collisionType == collisionTypeFactory!.COLLISION)
+                        if(collisionType == collisionTypeFactory.COLLISION)
                         
                                     {
                                     
@@ -90,7 +89,7 @@ public constructor (bool collidable){
                                 
                         else {
                             
-                        if(collidableInterfaceCompositeInterface!.getX2() <= ownerLayer!.getXP() || collidableInterfaceCompositeInterface!.getY2() <= ownerLayer!.getYP() || collidableInterfaceCompositeInterface!.getYP() >= ownerLayer!.getY2() || collidableInterfaceCompositeInterface!.getXP() >= ownerLayer!.getX2())
+                        if(collidableInterfaceCompositeInterface.getX2() <= ownerLayer.getXP() || collidableInterfaceCompositeInterface.getY2() <= ownerLayer.getYP() || collidableInterfaceCompositeInterface.getYP() >= ownerLayer.getY2() || collidableInterfaceCompositeInterface.getXP() >= ownerLayer.getX2())
                         
                                     {
                                     
@@ -126,22 +125,22 @@ public constructor (bool collidable){
 
                 //@Throws(Exception.constructor)
             
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    collisionTypeFactory: CollisionTypeFactory = CollisionTypeFactory.getInstance()!;;
+    CollisionTypeFactory collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
 
-    collisionType: CollisionType = collidableInterfaceCompositeInterface!.getCollidableInferface()!.getCollisionTypeWith(ownerLayer)!;;
+    CollisionType collisionType = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer);;
     
 
-                        if(collisionType == collisionTypeFactory!.PICKUP)
+                        if(collisionType == collisionTypeFactory.PICKUP)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(collisionType == collisionTypeFactory!.COLLISION)
+                        if(collisionType == collisionTypeFactory.COLLISION)
                         
                                     {
                                     super.collide(ownerLayer, collidableInterfaceCompositeInterface);
@@ -150,7 +149,7 @@ public constructor (bool collidable){
                                     }
                                 
                         else {
-                            this.collideNone(ownerLayer, collidableInterfaceCompositeInterface);
+                            this->collideNone(ownerLayer, collidableInterfaceCompositeInterface);
     
 
                         }
@@ -160,7 +159,7 @@ public constructor (bool collidable){
 
                 //@Throws(Exception.constructor)
             
-    collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterface){
+    protected: void collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterface){
 }
 
 

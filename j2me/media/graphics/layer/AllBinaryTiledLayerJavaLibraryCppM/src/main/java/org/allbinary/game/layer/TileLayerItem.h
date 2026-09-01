@@ -56,30 +56,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryTiledLayer.h"
 
-class TileLayerItem: public ABCustomItem: public ABCustomItemInterface {
-        
+class TileLayerItem: public ABCustomItem, public ABCustomItemInterface {
 
-    private: const tiledLayer: AllBinaryTiledLayer;
+    private: AllBinaryTiledLayer tiledLayer;
 
-public constructor (string label, AllBinaryTiledLayer tiledLayer, int32_t layout, string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: TileLayerItem(std::string label, AllBinaryTiledLayer tiledLayer, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public setOwner(Screen owner);
+    public: void setOwner(Screen owner);
 
-    public int32_t getMinimumWidth();
+    public: int32_t getMinimumWidth();
 
-    public int32_t getMinimumHeight();
+    public: int32_t getMinimumHeight();
 
-    int32_t getMinContentHeight();
+    protected: int32_t getMinContentHeight();
 
-    int32_t getMinContentWidth();
+    protected: int32_t getMinContentWidth();
 
-    int32_t getPrefContentHeight(int32_t width);
+    protected: int32_t getPrefContentHeight(int32_t width);
 
-    int32_t getPrefContentWidth(int32_t height);
+    protected: int32_t getPrefContentWidth(int32_t height);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public paintUnselected(Graphics graphics, int32_t x, int32_t y);
+    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y);
 
 };
 

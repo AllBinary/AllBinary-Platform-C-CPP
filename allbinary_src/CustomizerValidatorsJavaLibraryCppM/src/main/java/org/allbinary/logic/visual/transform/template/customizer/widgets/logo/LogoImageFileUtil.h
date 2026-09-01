@@ -65,19 +65,18 @@
 class LogoImageFileUtil
             : public Object
          {
-        
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    private: const fileName: string;
+    private: std::string fileName;
 
-    private: const imageFileAbPath: AbPath;
+    private: AbPath imageFileAbPath;
 
-public constructor (AbPath imageAbPath, string imageFile);
+public: LogoImageFileUtil(AbPath imageAbPath, std::string imageFile);
 
                 //@Throws(Exception.constructor)
             
-    public saveFiles(FileItem fileItem);
+    public: void saveFiles(FileItem fileItem);
 
 };
 

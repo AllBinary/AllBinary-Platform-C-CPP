@@ -46,17 +46,16 @@
 #include "DestroyedLayerProcessor.h"
 
 class DestroyableSimpleBehavior: public DestroyableBaseBehavior {
-        
 
-    const ownerLayer: CollidableCompositeLayer;
+    protected: CollidableCompositeLayer ownerLayer;
 
-    private: destroyed: bool = false;
+    private: bool destroyed = false;
 
-public constructor (CollidableCompositeLayer ownerLayer);
+public: DestroyableSimpleBehavior(CollidableCompositeLayer ownerLayer);
 
-    public bool isDestroyed();
+    public: bool isDestroyed();
 
-    public setDestroyed(bool destroyed);
+    public: void setDestroyed(bool destroyed);
 
 };
 

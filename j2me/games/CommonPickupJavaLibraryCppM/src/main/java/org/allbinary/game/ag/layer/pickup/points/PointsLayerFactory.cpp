@@ -51,26 +51,23 @@
 class PointsLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
-    private: const points: int32_t;
+    private: int32_t points;
 
-public constructor (int32_t points){
-
-            super();
-        this.points= points;
+public: PointsLayerFactory(int32_t points){
+this->points= points;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance(){
+    public: AllBinaryLayer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PointsLayer(this.points);
+                        return PointsLayer(this->points);
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_DIRECTIONALANALOGLOCATIONINPUTPROCESSOR_H
         #define ORG_ALLBINARY_INPUT_DIRECTIONALANALOGLOCATIONINPUTPROCESSOR_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <org/allbinary/android/input/motion/AnalogLocationInputProcessor.h>
@@ -75,32 +77,31 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DirectionalAnalogLocationInputProcessor: public AnalogLocationInputProcessor: public GameKeyEventSourceInterface {
-        
+class DirectionalAnalogLocationInputProcessor: public AnalogLocationInputProcessor, public GameKeyEventSourceInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const inputProcessorArray: std::vector<GameInputProcessor>;
+    private: std::vector<GameInputProcessor> inputProcessorArray;
 
-    private: const gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;
+    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: leftGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent leftGameKeyEvent = GameKeyEvent::NONE;
 
-    private: rightGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent rightGameKeyEvent = GameKeyEvent::NONE;
 
-    private: upGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent upGameKeyEvent = GameKeyEvent::NONE;
 
-    private: downGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent downGameKeyEvent = GameKeyEvent::NONE;
 
-    private: leftTriggerGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent leftTriggerGameKeyEvent = GameKeyEvent::NONE;
 
-    private: rightTriggerGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent rightTriggerGameKeyEvent = GameKeyEvent::NONE;
 
-public constructor (std::vector<GameInputProcessor> inputProcessorArray);
+public: DirectionalAnalogLocationInputProcessor(std::vector<GameInputProcessor> inputProcessorArray);
 
-    public process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInput analogLocationInput);
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInput analogLocationInput);
 
-    public int32_t getSourceId();
+    public: int32_t getSourceId();
 
 };
 

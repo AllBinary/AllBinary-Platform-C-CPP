@@ -63,17 +63,16 @@
 #include "MotionGestureEvent.h"
 
 class BasicMotionGesturesHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: BasicMotionGesturesHandler = new BasicMotionGesturesHandler();
+    private: static const BasicMotionGesturesHandler SINGLETON = BasicMotionGesturesHandler();
 
-    public static BasicMotionGesturesHandler getInstance();
+    public: static BasicMotionGesturesHandler getInstance();
 
-protected constructor ();
+protected: BasicMotionGesturesHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

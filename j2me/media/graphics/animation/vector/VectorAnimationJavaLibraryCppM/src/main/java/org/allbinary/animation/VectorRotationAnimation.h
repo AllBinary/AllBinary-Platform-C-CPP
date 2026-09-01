@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTORROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -60,19 +62,18 @@
 #include "AnimationBehavior.h"
 
 class VectorRotationAnimation: public VectorBaseRotationAnimation {
-        
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
 
-    public setFrameByDirection(Direction direction);
+    public: void setFrameByDirection(Direction direction);
 
-    public setFrameToAngle(Angle angle);
+    public: void setFrameToAngle(Angle angle);
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public adjustFrame(int16_t newAngle);
+    public: void adjustFrame(int16_t newAngle);
 
-    public adjustFrameToAngle(Angle newAngle);
+    public: void adjustFrameToAngle(Angle newAngle);
 
 };
 

@@ -42,29 +42,26 @@
 class XslData
             : public Object
          {
-        
 
-    private: static const instance: XslData = new XslData();
+    private: static XslData instance() { return XslData(); }
 
-    public static XslData getInstance(){
+    public: static XslData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XslData.instance;
+                        return XslData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: XslData(){
+}
 
 
-    public NAME: string = "XSL_NAME";
+    public: std::string NAME = "XSL_NAME";
 
-    public ROOT_IMPORT_URI: string = "ROOT_IMPORT_URI";
+    public: std::string ROOT_IMPORT_URI = "ROOT_IMPORT_URI";
 
 };
 

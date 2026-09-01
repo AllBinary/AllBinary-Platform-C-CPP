@@ -51,51 +51,50 @@
 class GameInputStrings
             : public Object
          {
-        
 
-    private: static const instance: GameInputStrings = new GameInputStrings();
+    private: static GameInputStrings instance() { return GameInputStrings(); }
 
-    public static GameInputStrings getInstance(){
+    public: static GameInputStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputStrings.instance;
+                        return GameInputStrings::instance();
     
 }
 
 
-    public const PROCESS_INPUT: string = "processInput";
+    public: const std::string PROCESS_INPUT = "processInput";
 
-    public const KEY_PRESSED: string = "keyPressed";
+    public: const std::string KEY_PRESSED = "keyPressed";
 
-    public const KEY_RELEASED: string = "keyReleased";
+    public: const std::string KEY_RELEASED = "keyReleased";
 
-    public const KEY_REPEATED: string = "keyRepeated";
+    public: const std::string KEY_REPEATED = "keyRepeated";
 
-    public const ON_PRESS_GAME_KEY: string = "onPressGameKeyEvent";
+    public: const std::string ON_PRESS_GAME_KEY = "onPressGameKeyEvent";
 
-    public const ON_DOWN_GAME_KEY: string = "onDownGameKeyEvent";
+    public: const std::string ON_DOWN_GAME_KEY = "onDownGameKeyEvent";
 
-    public const ON_UP_GAME_KEY: string = "onUpGameKeyEvent";
+    public: const std::string ON_UP_GAME_KEY = "onUpGameKeyEvent";
 
-    public const NO_KEY: string = "Key Code Not Mapped For Game: ";
+    public: const std::string NO_KEY = "Key Code Not Mapped For Game: ";
 
-    public const ADD_KEY_EVENT: string = "addGameKeyEvent";
+    public: const std::string ADD_KEY_EVENT = "addGameKeyEvent";
 
-    public const REMOVE_KEY_EVENT: string = "removeGameKeyEvent";
+    public: const std::string REMOVE_KEY_EVENT = "removeGameKeyEvent";
 
-    public const STRAFE_LEFT: string = "strafeLeft";
+    public: const std::string STRAFE_LEFT = "strafeLeft";
 
-    public const STRAFE_RIGHT: string = "strafeRight";
+    public: const std::string STRAFE_RIGHT = "strafeRight";
 
-    public const PROCESS_MOTION_INPUT: string = "processMotionInput";
+    public: const std::string PROCESS_MOTION_INPUT = "processMotionInput";
 
-    public const UDPATE_CURRENT_TOUCH_INPUT_FACTORY: string = "updateCurrentTouchInputFactory";
+    public: const std::string UDPATE_CURRENT_TOUCH_INPUT_FACTORY = "updateCurrentTouchInputFactory";
 
-    public const ENABLE_PLAYER_GAME_INPUTS: string = "Enabling PlayerGameInputs: ";
+    public: const std::string ENABLE_PLAYER_GAME_INPUTS = "Enabling PlayerGameInputs: ";
 
-    public const ENABLE_PLAYER_GAME_INPUT: string = "Enabling PlayerGameInput: ";
+    public: const std::string ENABLE_PLAYER_GAME_INPUT = "Enabling PlayerGameInput: ";
 
 };
 

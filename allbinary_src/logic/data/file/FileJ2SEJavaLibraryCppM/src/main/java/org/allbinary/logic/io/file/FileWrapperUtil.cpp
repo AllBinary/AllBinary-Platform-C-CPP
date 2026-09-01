@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -51,22 +53,21 @@
 class FileWrapperUtil
             : public Object
          {
-        
 
-    public static std::vector<AbFile> wrapFiles(std::vector<any> files){
+    public: static std::vector<AbFile> wrapFiles(std::vector<Object*> files){
 
         try {
             
-    abFileArray: std::vector<AbFile> = new Array(files.length);;
+    std::vector<AbFile> abFileArray = new Array(files.length);;
     
 
 
 
 
                         for (
-    index: int32_t = files.length -1;index >= 0; index--)
+    int32_t index = files.size() -1;index >= 0; index--)
         {
-abFileArray[index]= new AbFile(files[index]! as File);
+abFileArray[index]= AbFile(files[index]! as File);
     
 }
 
@@ -80,39 +81,39 @@ abFileArray[index]= new AbFile(files[index]! as File);
                 //: 
 } catch(e) 
             {
-PreLogUtil.putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", e);
+PreLogUtil::putSE("Exception Wrapping Files", "FileWrapperUtil", "wrapFiles", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 
 }
 
 
-    public static AbFile wrapFile(File file){
+    public: static AbFile wrapFile(File file){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFile(file);
+                        return AbFile(file);
     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putSE("Exception Wrapping File", "FileWrapperUtil", "wrapFile", e);
+PreLogUtil::putSE("Exception Wrapping File", "FileWrapperUtil", "wrapFile", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFile.NULL_FILE;
+                        return AbFile::NULL_FILE;
     
 }
 

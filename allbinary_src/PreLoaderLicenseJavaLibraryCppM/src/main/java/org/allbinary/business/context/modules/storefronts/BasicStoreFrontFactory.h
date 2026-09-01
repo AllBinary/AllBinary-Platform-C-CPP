@@ -55,19 +55,18 @@
 class BasicStoreFrontFactory
             : public Object
          {
-        
 
-    private: static const instance: BasicStoreFrontFactory = new BasicStoreFrontFactory();
+    private: static BasicStoreFrontFactory instance() { return BasicStoreFrontFactory(); }
 
-    public static BasicStoreFrontFactory getInstance();
+    public: static BasicStoreFrontFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: BasicStoreFrontFactory();
 
                 //@Throws(Exception.constructor)
             
-    public BasicStoreFrontInterface getInstance(string storeName);
+    public: BasicStoreFrontInterface getInstance(std::string storeName);
 
 };
 

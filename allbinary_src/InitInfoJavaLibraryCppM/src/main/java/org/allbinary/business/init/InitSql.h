@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INITSQL_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INITSQL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Class.h"
@@ -112,85 +114,84 @@
 class InitSql
             : public Object
          {
-        
 
-    const stringUtil: StringUtil = StringUtil.getInstance()!;
+    protected: const StringUtil stringUtil = StringUtil::getInstance();
 
-    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    const sqlTypeStrings: SqlTypeStrings = SqlTypeStrings.getInstance()!;
+    protected: const SqlTypeStrings sqlTypeStrings = SqlTypeStrings::getInstance();
 
-    const sqlStrings: SqlStrings = SqlStrings.getInstance()!;
+    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
 
-    const INSERT: string = "insert";
+    protected: const std::string INSERT = "insert";
 
-    const UPDATE: string = "update";
+    protected: const std::string UPDATE = "update";
 
-    private: databaseConnectionInfoInterface: DbConnectionInfo;
+    private: DbConnectionInfo databaseConnectionInfoInterface;
 
-    private: userid: string;
+    private: std::string userid;
 
-    private: password: string;
+    private: std::string password;
 
-    private: tableName: string;
+    private: std::string tableName;
 
-    private: conn: Connection;
+    private: Connection conn;
 
-    private: useridAndPassword: bool= false;
+    private: bool useridAndPassword= false;
 
-    const SUCCESS_SQL_STATEMENT: string = "Success\nSQL Statement: ";
+    protected: const std::string SUCCESS_SQL_STATEMENT = "Success\nSQL Statement: ";
 
-    const FAILED_SQL_STATEMENT: string = "Failed\nSQL Statement: ";
+    protected: const std::string FAILED_SQL_STATEMENT = "Failed\nSQL Statement: ";
 
-    private: const INIT_SQL: string = "InitSql";
+    private: const std::string INIT_SQL = "InitSql";
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const EQUAL_QUOTE: string = "=\"";
+    private: const std::string EQUAL_QUOTE = "=\"";
 
-    private: const METHOD_GET_ROW: string = "getRow()";
+    private: const std::string METHOD_GET_ROW = "getRow()";
 
-    private: const METHOD_UPDATE_WHERE: string = "updateWhere()";
+    private: const std::string METHOD_UPDATE_WHERE = "updateWhere()";
 
-    private: const ROW_VALUE_LABEL: string = "Row Value: ";
+    private: const std::string ROW_VALUE_LABEL = "Row Value: ";
 
-    private: const NO_RESULTS_IN_RESULT_SET: string = "No Results in ResultSet";
+    private: const std::string NO_RESULTS_IN_RESULT_SET = "No Results in ResultSet";
 
-    private: const INSERT_END: string = "')";
+    private: const std::string INSERT_END = "')";
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface);
+public: InitSql(DbConnectionInfo databaseConnectionInfoInterface);
 
-    public setTable(string tableName);
+    public: void setTable(std::string tableName);
 
-    public setDatabaseConnectionInfoInterface(DbConnectionInfo databaseConnectionInfoInterface);
+    public: void setDatabaseConnectionInfoInterface(DbConnectionInfo databaseConnectionInfoInterface);
 
-    public bool createTable(string tableData);
+    public: bool createTable(std::string tableData);
 
-    public bool dropTable();
+    public: bool dropTable();
 
-    public HashMap<any, any> getRow(HashMap<any, any> keysAndValues);
+    public: HashMap<any, any> getRow(HashMap<any, any> keysAndValues);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public updateWhere(string key, string value, HashMap<any, any> updatedKeyValuePairs);
+    public: void updateWhere(std::string key, std::string value, HashMap<any, any> updatedKeyValuePairs);
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    string getValue(string value);
+    private: std::string getValue(std::string value);
 
                 //@Throws(Exception.constructor, SQLException.constructor)
             
-    public ResultSet executeSQLStatement(string statement);
+    public: ResultSet executeSQLStatement(std::string statement);
 
                 //@Throws(SQLException.constructor)
             
-    createConnection();
+    private: void createConnection();
 
                 //@Throws(Exception.constructor)
             
-    initialize();
+    private: void initialize();
 
-    public DatabaseConnectionInfoInterface getDatabaseConnectionInfoInterface();
+    public: DatabaseConnectionInfoInterface getDatabaseConnectionInfoInterface();
 
 };
 

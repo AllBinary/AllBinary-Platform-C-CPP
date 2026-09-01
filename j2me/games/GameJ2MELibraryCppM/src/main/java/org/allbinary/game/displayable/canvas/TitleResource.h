@@ -45,9 +45,8 @@
 class TitleResource
             : public Object
          {
-        
 
-    public static const RESOURCE_TITLE: string = "/title_sprite_100_by_100.png";
+    public: static const std::string RESOURCE_TITLE = "/title_sprite_100_by_100.png";
 
 };
 

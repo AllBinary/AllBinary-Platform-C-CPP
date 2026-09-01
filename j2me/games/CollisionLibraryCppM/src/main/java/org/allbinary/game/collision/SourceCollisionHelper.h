@@ -48,11 +48,10 @@
         #include "CollisionHelper.h"
 
 class SourceCollisionHelper: public CollisionHelper {
-        
 
-public constructor (AllBinaryLayer layerInterface);
+public: SourceCollisionHelper(AllBinaryLayer layerInterface);
 
-    public bool isCollidable(CollidableCompositeLayer layerInterface);
+    public: bool isCollidable(CollidableCompositeLayer layerInterface);
 
 };
 

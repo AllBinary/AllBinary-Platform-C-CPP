@@ -55,13 +55,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AnimationInterface: public LocationPaintableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    nextFrame();
+    void nextFrame();
 
-    paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

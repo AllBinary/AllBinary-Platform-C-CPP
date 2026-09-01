@@ -48,13 +48,12 @@
 class DisposalUtil
             : public Object
          {
-        
 
-    private: static const instance: DisposalUtil = new DisposalUtil();
+    private: static DisposalUtil instance() { return DisposalUtil(); }
 
-    public static DisposalUtil getInstance();
+    public: static DisposalUtil getInstance();
 
-    public dispose(Resource resource);
+    public: void dispose(Resource resource);
 
 };
 

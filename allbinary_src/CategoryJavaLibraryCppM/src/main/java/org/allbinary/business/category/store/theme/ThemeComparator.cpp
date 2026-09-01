@@ -45,20 +45,17 @@
 class ThemeComparator
             : public Object
         : public Comparator {
-        
 
-public constructor (){
-
-            super();
-        }
+public: ThemeComparator(){
+}
 
 
-    public int32_t compare(any = {} anyType, any = {} object2){
+    public: int32_t compare(Object* anyType, Object* object2){
 
-    string: string = anyType as string;;
+    std::string string = anyType as string;;
     
 
-    string2: string = object2 as string;;
+    std::string string2 = object2 as string;;
     
 
 

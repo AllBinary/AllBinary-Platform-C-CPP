@@ -31,15 +31,14 @@
 class OpenGLStrings
             : public Object
          {
-        
 
-    private: static const instance: OpenGLStrings = new OpenGLStrings();
+    private: static OpenGLStrings instance() { return OpenGLStrings(); }
 
-    public static OpenGLStrings getInstance();
+    public: static OpenGLStrings getInstance();
 
-    public const GL_ERROR_LABEL: string = "GLError: ";
+    public: const std::string GL_ERROR_LABEL = "GLError: ";
 
-    public const SET: string = "set(GL10)";
+    public: const std::string SET = "set(GL10)";
 
 };
 

@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PositionInterface {
-        
 
-    setPosition(int32_t x, int32_t y, int32_t z);
+    void setPosition(int32_t x, int32_t y, int32_t z);
 
 };
 

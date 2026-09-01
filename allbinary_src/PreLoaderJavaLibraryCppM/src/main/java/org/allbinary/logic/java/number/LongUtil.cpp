@@ -49,51 +49,48 @@
 class LongUtil
             : public Object
          {
-        
 
-    public static string fillIn(string end){
+    public: static std::string fillIn(std::string end){
 
-    frameStringBuffer: StringMaker = new StringMaker();;
+    StringMaker frameStringBuffer = StringMaker();;
     
 
-                        if(frameStringBuffer!.length() < LongData.MAX_LONG_LENGTH)
+                        if(frameStringBuffer.length() < LongData::MAX_LONG_LENGTH)
                         
                                     {
                                     
-    commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;;
+    CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();;
     
 
-    size: int32_t = LongData.MAX_LONG_LENGTH -frameStringBuffer!.length();;
+    int32_t size = LongData::MAX_LONG_LENGTH -frameStringBuffer.length();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-frameStringBuffer!.append(commonPhoneStrings!.ZERO);
+frameStringBuffer.append(commonPhoneStrings.ZERO);
     
 }
 
 
                                     }
                                 
-frameStringBuffer!.append(end);
+frameStringBuffer.append(end);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return frameStringBuffer!.toString();;
+                        return frameStringBuffer.toString();;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: LongUtil(){
+}
 
 
 };

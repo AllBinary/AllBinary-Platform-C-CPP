@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -62,38 +64,35 @@
 class StreamUtil
             : public Object
          {
-        
 
-    private: static const instance: StreamUtil = new StreamUtil();
+    private: static StreamUtil instance() { return StreamUtil(); }
 
-    public static StreamUtil getInstance(){
+    public: static StreamUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StreamUtil.instance;
+                        return StreamUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: StreamUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public OutputStream get(InputStream inputStream, OutputStream outputStream, std::vector<int8_t> buffer){
+    public: OutputStream get(InputStream inputStream, OutputStream outputStream, std::vector<int8_t> buffer){
 
-    len: int32_t = 0;;
+    int32_t len = 0;;
     
 
         while(true)
         {
-len= inputStream!.read(buffer, 0, buffer.length);
+len= inputStream.read(buffer, 0, buffer.size());
     
 
                         if(len !=  -1)
@@ -109,7 +108,7 @@ len= inputStream!.read(buffer, 0, buffer.length);
 
                         }
                             
-outputStream!.write(buffer, 0, len);
+outputStream.write(buffer, 0, len);
     
 }
 
@@ -124,19 +123,19 @@ outputStream!.write(buffer, 0, len);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> getByteArray(InputStream inputStream, ByteArrayOutputStream outputStream2, std::vector<int8_t> byteArray){
+    public: std::vector<int8_t> getByteArray(InputStream inputStream, ByteArrayOutputStream outputStream2, std::vector<int8_t> byteArray){
 
-    outputStream: ByteArrayOutputStream = outputStream2;;
+    ByteArrayOutputStream outputStream = outputStream2;;
     
 
         try {
-            this.get(inputStream, outputStream, byteArray);
+            this->get(inputStream, outputStream, byteArray);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return outputStream!.toByteArray();;
+                        return outputStream.toByteArray();;
     
 
                 //: 
@@ -150,7 +149,7 @@ outputStream!.write(buffer, 0, len);
 }
 
          finally {
-            this.close(outputStream);
+            this->close(outputStream);
     
 
          }
@@ -158,12 +157,12 @@ outputStream!.write(buffer, 0, len);
 }
 
 
-    public bool close(Closeable closeable){
+    public: bool close(Closeable closeable){
 
         try {
             
                         if(closeable != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -183,9 +182,9 @@ outputStream!.write(buffer, 0, len);
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CLOSE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CLOSE, e);
     
 
 

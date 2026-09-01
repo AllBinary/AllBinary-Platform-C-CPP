@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -59,72 +61,71 @@
 class ImageArrayRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageArrayRotationUtil = new ImageArrayRotationUtil();
+    private: static ImageArrayRotationUtil instance() { return ImageArrayRotationUtil(); }
 
-    public static ImageArrayRotationUtil getInstance(){
+    public: static ImageArrayRotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageArrayRotationUtil.instance;
+                        return ImageArrayRotationUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const TOTAL_ANGLE: string = "totalAngle: ";
+    private: const std::string TOTAL_ANGLE = "totalAngle: ";
 
                 //@Throws(IOException.constructor)
             
-    public process(ImageProcessorInput imageProcessorInput, string input, ImageProcessedVisitor visitor){
+    public: void process(ImageProcessorInput imageProcessorInput, std::string input, ImageProcessedVisitor visitor){
 
-    totalAngle: Integer;;
+    Integer totalAngle;;
     
 
-                        if(input == this.commonStrings!.UP)
+                        if(input == this->commonStrings.UP)
                         
                                     {
-                                    totalAngle= Integer.valueOf( -90);
+                                    totalAngle= Integer::valueOf( -90);
     
 
                                     }
                                 
                              else 
-                        if(input == this.commonStrings!.DOWN)
+                        if(input == this->commonStrings.DOWN)
                         
                                     {
-                                    totalAngle= Integer.valueOf(90);
+                                    totalAngle= Integer::valueOf(90);
     
 
                                     }
                                 
                         else {
-                            totalAngle= Integer.valueOf(input);
+                            totalAngle= Integer::valueOf(input);
     
 
                         }
                             
 
-    generatedBufferedImage: BufferedImage;;
+    BufferedImage generatedBufferedImage;;
     
 
-    bufferedImageArray: std::vector<BufferedImage> = imageProcessorInput!.getBufferedImageArray()!;;
+    std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < bufferedImageArray!.length; index++)
+    int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
-this.logUtil!.putF(this.TOTAL_ANGLE +totalAngle, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->TOTAL_ANGLE +totalAngle, this, this->commonStrings.RUN);
     
-generatedBufferedImage= ImageJ2SERotationUtil.getInstance()!.getRotatedImage(bufferedImageArray[index]!, totalAngle!.intValue());
+generatedBufferedImage= ImageJ2SERotationUtil::getInstance().getRotatedImage(bufferedImageArray[index]!, totalAngle.intValue());
     
 visitor.visit(generatedBufferedImage, input, index);
     

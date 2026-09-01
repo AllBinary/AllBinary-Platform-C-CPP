@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -89,72 +91,67 @@
 class Order
             : public Object
         : public OrderInterface, public Serializable {
-        
 
-    private: const basket: BasketInterface;
+    private: BasketInterface basket;
 
-    private: paymentMethod: string;
+    private: std::string paymentMethod;
 
-    private: shippingType: string;
+    private: std::string shippingType;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: special: string;
+    private: std::string special;
 
-    private: id: string;
+    private: std::string id;
 
-    private: userComment: string;
+    private: std::string userComment;
 
-    private: userCancelComment: string;
+    private: std::string userCancelComment;
 
-    private: storeComment: string;
+    private: std::string storeComment;
 
-    private: storeCancelComment: string;
+    private: std::string storeCancelComment;
 
-public constructor (BasketInterface basket){
-
-            super();
-        this.basket= basket;
+public: Order(BasketInterface basket){
+this->basket= basket;
     
-this.id= 
+this->id= 
                                         nullptr
                                     ;
     
-this.shippingType= StringUtil.getInstance()!.EMPTY_STRING;
+this->shippingType= StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-public constructor (string storeName, BasketInterface basket, string id, string shippingType, string special, string paymentMethod){
-
-            super();
-        this.storeName= storeName;
+public: Order(std::string storeName, BasketInterface basket, std::string id, std::string shippingType, std::string special, std::string paymentMethod){
+this->storeName= storeName;
     
-this.basket= basket;
+this->basket= basket;
     
-this.id= id;
+this->id= id;
     
-this.shippingType= shippingType;
+this->shippingType= shippingType;
     
-this.special= special;
+this->special= special;
     
-this.paymentMethod= paymentMethod;
+this->paymentMethod= paymentMethod;
     
 }
 
 
-    public Boolean isIdValid(){
+    public: Boolean isIdValid(){
 
-                        if(this.getId() == 
-                                    null
-                                 || this.getId()!.compareTo(StringUtil.getInstance()!.EMPTY_STRING) == 0 || this.getId()!.length() > OrderHistoryData.MAXIDLEN || !StringValidationUtil.getInstance()!.isNumber(this.getId()))
+                        if(this->getId() == 
+                                    nullptr
+                                 || this->getId().compareTo(StringUtil::getInstance().EMPTY_STRING) == 0 || this->getId().length() > OrderHistoryData::MAXIDLEN || !StringValidationUtil::getInstance().isNumber(this->getId()))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -163,36 +160,36 @@ this.paymentMethod= paymentMethod;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public string getIdValidationInfo(){
+    public: std::string getIdValidationInfo(){
 
-    EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(this.getId() == 
-                                    null
-                                 || this.getId()!.compareTo(EMPTY_STRING) == 0 || this.getId()!.length() > OrderHistoryData.MAXIDLEN || !StringValidationUtil.getInstance()!.isNumber(this.getId()))
+                        if(this->getId() == 
+                                    nullptr
+                                 || this->getId().compareTo(EMPTY_STRING) == 0 || this->getId().length() > OrderHistoryData::MAXIDLEN || !StringValidationUtil::getInstance().isNumber(this->getId()))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Please enter a valid order Id < " +OrderHistoryData.MAXIDLEN +" digits in length.<br>";
+                        return "Please enter a valid order Id < " +OrderHistoryData::MAXIDLEN +" digits in length.<br>";
     
 
                                     }
@@ -206,161 +203,161 @@ this.paymentMethod= paymentMethod;
 }
 
 
-    public setShippingMethod(string shippingType){
-this.shippingType= shippingType;
+    public: void setShippingMethod(std::string shippingType){
+this->shippingType= shippingType;
     
 }
 
 
-    public setPaymentMethod(string value){
-this.paymentMethod= value;
+    public: void setPaymentMethod(std::string value){
+this->paymentMethod= value;
     
 }
 
 
-    public setSpecial(string special){
-this.special= special;
+    public: void setSpecial(std::string special){
+this->special= special;
     
 }
 
 
-    public setId(string value){
-this.id= value;
+    public: void setId(std::string value){
+this->id= value;
     
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
 }
 
 
-    public setUserComments(string value){
-this.userComment= value;
+    public: void setUserComments(std::string value){
+this->userComment= value;
     
 }
 
 
-    public setUserCancelComments(string value){
-this.userCancelComment= value;
+    public: void setUserCancelComments(std::string value){
+this->userCancelComment= value;
     
 }
 
 
-    public setStoreComments(string value){
-this.storeComment= value;
+    public: void setStoreComments(std::string value){
+this->storeComment= value;
     
 }
 
 
-    public setStoreCancelComments(string value){
-this.storeCancelComment= value;
+    public: void setStoreCancelComments(std::string value){
+this->storeCancelComment= value;
     
 }
 
 
-    public BasketInterface getBasket(){
+    public: BasketInterface getBasket(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basket;
+                        return this->basket;
     
 }
 
 
-    public string getShippingMethod(){
+    public: std::string getShippingMethod(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingType;
+                        return this->shippingType;
     
 }
 
 
-    public string getPaymentMethod(){
+    public: std::string getPaymentMethod(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentMethod;
+                        return this->paymentMethod;
     
 }
 
 
-    public string getSpecial(){
+    public: std::string getSpecial(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.special;
+                        return this->special;
     
 }
 
 
-    public string getId(){
+    public: std::string getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeName;
+                        return this->storeName;
     
 }
 
 
-    public string getUserComments(){
+    public: std::string getUserComments(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userComment;
+                        return this->userComment;
     
 }
 
 
-    public string getUserCancelComments(){
+    public: std::string getUserCancelComments(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userCancelComment;
+                        return this->userCancelComment;
     
 }
 
 
-    public string getStoreComments(){
+    public: std::string getStoreComments(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeComment;
+                        return this->storeComment;
     
 }
 
 
-    public string getStoreCancelComments(){
+    public: std::string getStoreCancelComments(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeCancelComment;
+                        return this->storeCancelComment;
     
 }
 
 
-    public string reviewOrder(string paymentMethod){
+    public: std::string reviewOrder(std::string paymentMethod){
 
 
 
@@ -370,7 +367,7 @@ this.storeCancelComment= value;
 }
 
 
-    public string viewOrder(string paymentMethod){
+    public: std::string viewOrder(std::string paymentMethod){
 
 
 
@@ -380,7 +377,7 @@ this.storeCancelComment= value;
 }
 
 
-    public string emailOrder(string userName, string paymentMethod, StoreFrontInterface storeFrontInterface){
+    public: std::string emailOrder(std::string userName, std::string paymentMethod, StoreFrontInterface storeFrontInterface){
 
 
 
@@ -390,27 +387,27 @@ this.storeCancelComment= value;
 }
 
 
-    public HashMap<any, any> toHashMapOrder(){
+    public: HashMap<any, any> toHashMapOrder(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(PaymentData.METHOD, this.paymentMethod);
+hashMap.put(PaymentData::METHOD, this->paymentMethod);
     
-hashMap!.put(ShippingMethodData.NAME, this.shippingType);
+hashMap.put(ShippingMethodData::NAME, this->shippingType);
     
-hashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+hashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
-hashMap!.put(EntryData.getInstance()!.SPECIAL, this.special);
+hashMap.put(EntryData::getInstance().SPECIAL, this->special);
     
-hashMap!.put(OrderData.ID, this.id);
+hashMap.put(OrderData::ID, this->id);
     
-hashMap!.put(OrderData.CUSTOMERCOMMENT, this.userComment);
+hashMap.put(OrderData::CUSTOMERCOMMENT, this->userComment);
     
-hashMap!.put(OrderData.CUSTOMERCANCELCOMMENT, this.userCancelComment);
+hashMap.put(OrderData::CUSTOMERCANCELCOMMENT, this->userCancelComment);
     
-hashMap!.put(OrderData.STORECOMMENT, this.storeComment);
+hashMap.put(OrderData::STORECOMMENT, this->storeComment);
     
-hashMap!.put(OrderData.STORECANCELCOMMENT, this.storeCancelComment);
+hashMap.put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
     
 
 
@@ -423,39 +420,38 @@ hashMap!.put(OrderData.STORECANCELCOMMENT, this.storeCancelComment);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.toHashMapOrder()!;;
+    HashMap<any, any> hashMap = this->toHashMapOrder();;
     
 
-    keySet: Set = hashMap!.keys()!;;
+    Set keySet = hashMap.keys();;
     
 
-    keyArray: std::vector<any> = keySet!.()!;;
+    std::vector<Object*> keyArray = keySet.();;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    int32_t size = keyArray.size();;
     
 
-    node: Node = document.createElement(OrderData.ORDER)!;;
+    Node node = document.createElement(OrderData::ORDER);;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    name: string = keyArray[i]! as string;;
+    std::string name = keyArray[i]! as string;;
     
 
-    value: string = hashMap!.get(name) as string;;
+    std::string value = hashMap.get(name) as string;;
     
-value= StringUtil.getInstance()!.getNonNull(value);
+value= StringUtil::getInstance().getNonNull(value);
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 

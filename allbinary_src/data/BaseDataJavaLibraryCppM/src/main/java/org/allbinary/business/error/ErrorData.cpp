@@ -42,29 +42,26 @@
 class ErrorData
             : public Object
          {
-        
 
-    private: static const instance: ErrorData = new ErrorData();
+    private: static ErrorData instance() { return ErrorData(); }
 
-    public static ErrorData getInstance(){
+    public: static ErrorData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ErrorData.instance;
+                        return ErrorData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ErrorData(){
+}
 
 
-    public const NAME: string = "ERROR_NAME";
+    public: const std::string NAME = "ERROR_NAME";
 
-    public const TEXT: string = "ERROR_TEXT";
+    public: const std::string TEXT = "ERROR_TEXT";
 
 };
 

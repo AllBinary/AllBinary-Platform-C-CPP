@@ -93,44 +93,43 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UserNameOrderHistoryView: public HttpStoreComponentView: public ValidationComponentInterface, public DomNodeInterface {
-        
+class UserNameOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: shipped: string;
+    private: std::string shipped;
 
-    private: partiallyShipped: string;
+    private: std::string partiallyShipped;
 
-    private: processing: string;
+    private: std::string processing;
 
-    private: preprocessing: string;
+    private: std::string preprocessing;
 
-    private: cancelled: string;
+    private: std::string cancelled;
 
-    private: const ON: string = "on";
+    private: const std::string ON = "on";
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: UserNameOrderHistoryView(TransformInfoInterface transformInfoInterface);
 
-    public addDomNodeInterfaces();
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
 };
 

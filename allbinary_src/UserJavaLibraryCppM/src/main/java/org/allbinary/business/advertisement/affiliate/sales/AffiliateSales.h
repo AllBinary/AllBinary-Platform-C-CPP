@@ -45,11 +45,10 @@
 class AffiliateSales
             : public Object
          {
-        
 
-public constructor ();
+public: AffiliateSales();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
 };
 

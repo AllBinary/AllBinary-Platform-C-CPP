@@ -62,11 +62,10 @@
 class TrackingEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-public constructor ();
+public: TrackingEventFactory();
 
-    public AllBinaryEventObject getInstance();
+    public: AllBinaryEventObject getInstance();
 
 };
 

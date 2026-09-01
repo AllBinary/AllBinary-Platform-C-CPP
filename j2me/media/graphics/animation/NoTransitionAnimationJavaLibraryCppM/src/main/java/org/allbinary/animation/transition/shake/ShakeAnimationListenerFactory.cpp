@@ -44,14 +44,13 @@
 class ShakeAnimationListenerFactory
             : public Object
          {
-        
 
-    public static ShakeAnimationListener getInstance(){
+    public: static ShakeAnimationListener getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NoShakeAnimationListener();
+                        return NoShakeAnimationListener();
     
 }
 

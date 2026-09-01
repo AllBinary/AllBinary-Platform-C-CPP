@@ -58,46 +58,41 @@
 class ContextConfiguration
             : public Object
         : public ContextConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor (){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, "ContextConfiguration");
+public: ContextConfiguration(){
+this->logUtil.putF(this->commonStrings.START, this, "ContextConfiguration");
     
-this.setEmailServerConfigurationInterface(new EmailServerConfiguration() as EmailServerConfigurationInterface);
+this->setEmailServerConfigurationInterface(EmailServerConfiguration() as EmailServerConfigurationInterface);
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, "ContextConfiguration(HashMap)");
+public: ContextConfiguration(HashMap<any, any> hashMap){
+this->logUtil.putF(this->commonStrings.START, this, "ContextConfiguration(HashMap)");
     
-this.setEmailServerConfigurationInterface(new EmailServerConfiguration(hashMap) as EmailServerConfigurationInterface);
+this->setEmailServerConfigurationInterface(EmailServerConfiguration(hashMap) as EmailServerConfigurationInterface);
     
 }
 
 
-    public EmailServerConfigurationInterface getEmailServerConfigurationInterface(){
+    public: EmailServerConfigurationInterface getEmailServerConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.emailServerConfigurationInterface;
+                        return this->emailServerConfigurationInterface;
     
 }
 
 
-    public setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface){
-this.emailServerConfigurationInterface= emailServerConfigurationInterface;
+    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface){
+this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 

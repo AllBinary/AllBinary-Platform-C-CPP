@@ -49,15 +49,14 @@
 class GyroSensorFactory
             : public Object
          {
-        
 
-    private: static allBinaryGyroSensor: AllBinaryOrientationSensor = AllBinaryOrientationSensor.NULL_ALLBINARY_ORIENTATION_SENSOR;
+    private: static AllBinaryOrientationSensor allBinaryGyroSensor = AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR;
 
                 //@Throws(Exception.constructor)
             
-    public static init();
+    public: static void init();
 
-    public static AllBinaryOrientationSensor getInstance();
+    public: static AllBinaryOrientationSensor getInstance();
 
 };
 

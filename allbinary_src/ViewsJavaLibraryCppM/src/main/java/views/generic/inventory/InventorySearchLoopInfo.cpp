@@ -45,43 +45,42 @@
 class InventorySearchLoopInfo
             : public Object
          {
-        
 
-    public lastPage: int32_t =  -1;
+    public: int32_t lastPage =  -1;
 
-    public currentPage: int32_t =  -1;
+    public: int32_t currentPage =  -1;
 
-    public numberOfResultsOnCurrentPage: int32_t = 0;
+    public: int32_t numberOfResultsOnCurrentPage = 0;
 
-    public numberOfResults: int32_t = 0;
+    public: int32_t numberOfResults = 0;
 
-    private: const CURRENT: string = "current: ";
+    private: const std::string CURRENT = "current: ";
 
-    private: const NUM: string = " num: ";
+    private: const std::string NUM = " num: ";
 
-    private: const LAST: string = " last: ";
+    private: const std::string LAST = " last: ";
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.CURRENT);
+stringBuffer.append(this->CURRENT);
     
-stringBuffer!.appendint(this.currentPage);
+stringBuffer.appendint(this->currentPage);
     
-stringBuffer!.append(this.NUM);
+stringBuffer.append(this->NUM);
     
-stringBuffer!.appendint(this.numberOfResults);
+stringBuffer.appendint(this->numberOfResults);
     
-stringBuffer!.append(this.LAST);
+stringBuffer.append(this->LAST);
     
-stringBuffer!.appendint(this.lastPage);
+stringBuffer.appendint(this->lastPage);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

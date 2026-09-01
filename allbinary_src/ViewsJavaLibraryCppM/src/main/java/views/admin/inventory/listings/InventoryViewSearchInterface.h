@@ -21,6 +21,8 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_INVENTORYVIEWSEARCHINTERFACE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 
@@ -43,23 +45,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InventoryViewSearchInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    string searchSingleStaticPage();
+    std::string searchSingleStaticPage();
 
                 //@Throws(Exception.constructor)
             
-    string searchSingleDynamicPage();
+    std::string searchSingleDynamicPage();
 
                 //@Throws(Exception.constructor)
             
-    std::vector<string> search();
+    std::vector<std::string> search();
 
                 //@Throws(Exception.constructor)
             
-    string getProduct(string product);
+    std::string getProduct(std::string product);
 
 };
 

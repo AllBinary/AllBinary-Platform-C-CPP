@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_H
         #define ORG_ALLBINARY_IMAGE_GUI_IMAGETOOLJFRAME_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -117,138 +119,137 @@
 #include "MirrorSpriteImageJPanel.h"
 #include "MirrorImageJPanel.h"
 
-class ImageToolJFrame: public javax.swing.JFrame: public FileJDialogListenerInterface {
-        
+class ImageToolJFrame: public javax::swing::JFrame, public FileJDialogListenerInterface {
 
-    private: static imageProcessorInputCompositeInterface: ImageProcessorInputCompositeInterface;
+    private: static ImageProcessorInputCompositeInterface imageProcessorInputCompositeInterface;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: fileJDialog: FileJDialog;
+    private: FileJDialog fileJDialog;
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-public constructor ();
+public: ImageToolJFrame();
 
-    initComponents();
+    private: void initComponents();
 
-    createStripImageJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void createStripImageJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    okJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    processingJMenuActionPerformed(java.awt.event.ActionEvent evt);
+    private: void processingJMenuActionPerformed(java::awt::event::ActionEvent evt);
 
-    openImageJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void openImageJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    public onFiles(std::vector<File> files);
+    public: void onFiles(std::vector<File> files);
 
-    fileJMenuActionPerformed(java.awt.event.ActionEvent evt);
+    private: void fileJMenuActionPerformed(java::awt::event::ActionEvent evt);
 
-    analyzeJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void analyzeJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    generateRotationSpriteJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateRotationSpriteJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    generateSpriteSplitterMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateSpriteSplitterMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    generateRotationMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateRotationMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    scaleImagesJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void scaleImagesJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    createIconsJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void createIconsJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    canvasImagesJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void canvasImagesJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    generateMirrorSpriteMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateMirrorSpriteMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    mirrorJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void mirrorJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    ColorRangeInterface getColorRangeInterface();
+    private: ColorRangeInterface getColorRangeInterface();
 
-    public javax.swing.JTextField getMaxBlueJTextField();
+    public: javax::swing::JTextField getMaxBlueJTextField();
 
-    public setMaxBlueJTextField(javax.swing.JTextField maxBlueJTextField);
+    public: void setMaxBlueJTextField(javax::swing::JTextField maxBlueJTextField);
 
-    public javax.swing.JTextField getMaxGreenJTextField();
+    public: javax::swing::JTextField getMaxGreenJTextField();
 
-    public setMaxGreenJTextField(javax.swing.JTextField maxGreenJTextField);
+    public: void setMaxGreenJTextField(javax::swing::JTextField maxGreenJTextField);
 
-    public javax.swing.JTextField getMaxRedJTextField();
+    public: javax::swing::JTextField getMaxRedJTextField();
 
-    public setMaxRedJTextField(javax.swing.JTextField maxRedJTextField);
+    public: void setMaxRedJTextField(javax::swing::JTextField maxRedJTextField);
 
-    public javax.swing.JTextField getMinBlueJTextField();
+    public: javax::swing::JTextField getMinBlueJTextField();
 
-    public setMinBlueJTextField(javax.swing.JTextField minBlueJTextField);
+    public: void setMinBlueJTextField(javax::swing::JTextField minBlueJTextField);
 
-    public javax.swing.JTextField getMinGreenJTextField();
+    public: javax::swing::JTextField getMinGreenJTextField();
 
-    public setMinGreenJTextField(javax.swing.JTextField minGreenJTextField);
+    public: void setMinGreenJTextField(javax::swing::JTextField minGreenJTextField);
 
-    public javax.swing.JTextField getMinRedJTextField();
+    public: javax::swing::JTextField getMinRedJTextField();
 
-    public setMinRedJTextField(javax.swing.JTextField minRedJTextField);
+    public: void setMinRedJTextField(javax::swing::JTextField minRedJTextField);
 
-    private: analysisActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JDialog analysisActionJDialog;
 
-    private: analyzeJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem analyzeJMenuItem;
 
-    private: blueJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel blueJLabel;
 
-    private: colorRangeJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel colorRangeJLabel;
 
-    private: createStripImageJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem createStripImageJMenuItem;
 
-    private: fileJMenu: javax.swing.JMenu;
+    private: javax::swing::JMenu fileJMenu;
 
-    private: generateSpriteSplitterMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem generateSpriteSplitterMenuItem;
 
-    private: generateRotationMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem generateRotationMenuItem;
 
-    private: generateMirrorSpriteMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem generateMirrorSpriteMenuItem;
 
-    private: generateRotationSpriteJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem generateRotationSpriteJMenuItem;
 
-    private: greenJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel greenJLabel;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: mainJMenuBar: javax.swing.JMenuBar;
+    private: javax::swing::JMenuBar mainJMenuBar;
 
-    private: maxBlueJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxBlueJTextField;
 
-    private: maxGreenJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxGreenJTextField;
 
-    private: maxJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel maxJLabel;
 
-    private: maxRedJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxRedJTextField;
 
-    private: minBlueJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minBlueJTextField;
 
-    private: minGreenJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minGreenJTextField;
 
-    private: minJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel minJLabel;
 
-    private: minRedJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minRedJTextField;
 
-    private: mirrorJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem mirrorJMenuItem;
 
-    private: okJButton: javax.swing.JButton;
+    private: javax::swing::JButton okJButton;
 
-    private: openImageJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem openImageJMenuItem;
 
-    private: processingJMenu: javax.swing.JMenu;
+    private: javax::swing::JMenu processingJMenu;
 
-    private: redJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel redJLabel;
 
-    private: scaleImagesJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem scaleImagesJMenuItem;
 
-    private: canvasImagesJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem canvasImagesJMenuItem;
 
-    private: createIconImagesJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem createIconImagesJMenuItem;
 
-    private: titleJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel titleJLabel;
 
 };
 

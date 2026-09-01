@@ -39,24 +39,21 @@
         #include "InitUpdatePaintable.h"
 
 class NullInitUpdatePaintable: public InitUpdatePaintable {
-        
 
-    private: static const SINGLETON: NullInitUpdatePaintable = new NullInitUpdatePaintable();
+    private: static const NullInitUpdatePaintable SINGLETON = NullInitUpdatePaintable();
 
-    public static InitUpdatePaintable getInstance(){
+    public: static InitUpdatePaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullInitUpdatePaintable.SINGLETON;
+                        return NullInitUpdatePaintable::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NullInitUpdatePaintable(){
+}
 
 
 };

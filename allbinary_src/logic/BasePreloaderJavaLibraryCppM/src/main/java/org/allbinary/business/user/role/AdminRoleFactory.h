@@ -49,57 +49,56 @@
 class AdminRoleFactory
             : public Object
          {
-        
 
-    private: static const instance: AdminRoleFactory = new AdminRoleFactory();
+    private: static AdminRoleFactory instance() { return AdminRoleFactory(); }
 
-    public static AdminRoleFactory getInstance();
+    public: static AdminRoleFactory getInstance();
 
-    private: const adminRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> adminRoles = Vector<any>();
 
-    private: const storeAdminRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> storeAdminRoles = Vector<any>();
 
-    private: const storeManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> storeManagementRoles = Vector<any>();
 
-    private: const productManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> productManagementRoles = Vector<any>();
 
-    private: const reviewManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> reviewManagementRoles = Vector<any>();
 
-    private: const customerManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> customerManagementRoles = Vector<any>();
 
-    private: const workflowManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> workflowManagementRoles = Vector<any>();
 
-    private: const orderManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> orderManagementRoles = Vector<any>();
 
-    private: const adjusterManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> adjusterManagementRoles = Vector<any>();
 
-    private: const shippingManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> shippingManagementRoles = Vector<any>();
 
-    private: const webManagementRoles: Vector<any> = new Vector<any>();
+    private: const Vector<any> webManagementRoles = Vector<any>();
 
-private constructor ();
+private: AdminRoleFactory();
 
-    public Vector<any> getProductManagementRoles();
+    public: Vector<any> getProductManagementRoles();
 
-    public Vector<any> getAdminRoles();
+    public: Vector<any> getAdminRoles();
 
-    public Vector<any> getStoreAdminRoles();
+    public: Vector<any> getStoreAdminRoles();
 
-    public Vector<any> getStoreManagementRoles();
+    public: Vector<any> getStoreManagementRoles();
 
-    public Vector<any> getReviewManagementRoles();
+    public: Vector<any> getReviewManagementRoles();
 
-    public Vector<any> getCustomerManagementRoles();
+    public: Vector<any> getCustomerManagementRoles();
 
-    public Vector<any> getWorkflowManagementRoles();
+    public: Vector<any> getWorkflowManagementRoles();
 
-    public Vector<any> getWebManagementRoles();
+    public: Vector<any> getWebManagementRoles();
 
-    public Vector<any> getShippingManagementRoles();
+    public: Vector<any> getShippingManagementRoles();
 
-    public Vector<any> getAdjusterManagementRoles();
+    public: Vector<any> getAdjusterManagementRoles();
 
-    public Vector<any> getOrderManagementRoles();
+    public: Vector<any> getOrderManagementRoles();
 
 };
 

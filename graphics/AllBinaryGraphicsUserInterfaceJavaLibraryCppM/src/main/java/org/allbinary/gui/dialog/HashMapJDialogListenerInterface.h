@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HashMapJDialogListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onHashMap(HashMap<any, any> hashMap);
+    void onHashMap(HashMap<any, any> hashMap);
 
 };
 

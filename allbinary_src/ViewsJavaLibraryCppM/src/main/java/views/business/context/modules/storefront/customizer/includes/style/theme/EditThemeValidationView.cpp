@@ -85,12 +85,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ThemeCustomizerView.h"
 
-class EditThemeValidationView: public ThemeCustomizerView: public ValidationComponentInterface {
-        
+class EditThemeValidationView: public ThemeCustomizerView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: EditThemeValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -99,49 +98,49 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    isValid: Boolean = Boolean.TRUE;;
+    Boolean isValid = Boolean::TRUE;;
     
 
-    categoryFactoryInterface: CategoryFactoryInterface = new StoreThemeCategoryFactory(this.getTransformInfoInterface());;
+    CategoryFactoryInterface categoryFactoryInterface = StoreThemeCategoryFactory(this->getTransformInfoInterface());;
     
 
-    categoryLoaderInterface: CategoryLoaderInterface = CategoryLoaderFactory.getInstance(categoryFactoryInterface)!;;
+    CategoryLoaderInterface categoryLoaderInterface = CategoryLoaderFactory::getInstance(categoryFactoryInterface);;
     
 
-    rootStoreThemeCategoryInterface: StoreThemeCategoryInterface = categoryFactoryInterface!.getRootInstance() as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface rootStoreThemeCategoryInterface = categoryFactoryInterface.getRootInstance() as StoreThemeCategoryInterface;;
     
 
-    storeThemeCategoryInterface: StoreThemeCategoryInterface = categoryLoaderInterface!.getAll(rootStoreThemeCategoryInterface as CategoryInterface) as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface storeThemeCategoryInterface = categoryLoaderInterface.getAll(rootStoreThemeCategoryInterface as CategoryInterface) as StoreThemeCategoryInterface;;
     
-this.validationInterface= new StoreThemeCategoryPathValidationView(storeThemeCategoryInterface as StoreThemeCategoryInterface);
+this->validationInterface= StoreThemeCategoryPathValidationView(storeThemeCategoryInterface as StoreThemeCategoryInterface);
     
-isValid= this.validationInterface!.isValid();
-    
-
-    domNodeInterface: DomNodeInterface = this.validationInterface as DomNodeInterface;;
+isValid= this->validationInterface.isValid();
     
 
-    document: Document = DomDocumentHelper.create()!;;
-    
-document.appendChild(domNodeInterface!.toXmlNode(document));
+    DomNodeInterface domNodeInterface = this->validationInterface as DomNodeInterface;;
     
 
-    documentString: string = DomDocumentHelper.toString(document)!;;
+    Document document = DomDocumentHelper::create();;
+    
+document.appendChild(domNodeInterface.toXmlNode(document));
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+    std::string documentString = DomDocumentHelper::toString(document);;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF("Setting Data: " +documentString, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("Setting Data: " +documentString, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.getTransformInfoInterface()!.setData(documentString);
+this->getTransformInfoInterface().setData(documentString);
     
 
 
@@ -154,10 +153,10 @@ this.getTransformInfoInterface()!.setData(documentString);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -166,36 +165,36 @@ this.getTransformInfoInterface()!.setData(documentString);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.validationInterface!.validationInfo());
+stringBuffer.append(this->validationInterface.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -211,7 +210,7 @@ stringBuffer!.append(this.validationInterface!.validationInfo());
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -221,7 +220,7 @@ stringBuffer!.append(this.validationInterface!.validationInfo());
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -60,64 +62,61 @@
 class NativeLibraryHelperWrapper
             : public Object
          {
-        
 
-    private: libraryName: string;
+    private: std::string libraryName;
 
-    private: loader: ClassLoader;
+    private: ClassLoader loader;
 
-    private: anyType: any;
+    private: Object* anyType;
 
-public constructor (string libraryName){
-
-            super();
-        this.setLibraryName(libraryName);
+public: NativeLibraryHelperWrapper(std::string libraryName){
+this->setLibraryName(libraryName);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public load(){
+    public: void load(){
 
-    params: std::vector<any> = new Array(1);;
+    std::vector<Object*> params = new Array(1);;
     
-params[0]= this.getLibraryName();
-    
-
-    classes: std::vector<Function> = new Array(1);;
-    
-classes[0]= this.getLibraryName()!.constructor;
-    
-this.loader= new NativeLibraryClassLoader(this.constructor.namegetClassLoader());
+params[0]= this->getLibraryName();
     
 
-    myClass: Function = this.loader.loadClass("dynamic.NativeLibraryHelper")!;;
+    std::vector<Function> classes = new Array(1);;
+    
+classes[0]= this->getLibraryName().constructor;
+    
+this->loader= NativeLibraryClassLoader(this->constructor.namegetClassLoader());
     
 
-    constructor: Constructor = myClass!.getConstructor(classes)!;;
-    
-this.anyType= constructor.newInstance(params);
+    Function myClass = this->loader.loadClass("dynamic.NativeLibraryHelper");;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    Constructor constructor = myClass.getConstructor(classes);;
+    
+this->anyType= constructor.newInstance(params);
     
 
-    method: Method = this.anyType!.constructor.name.getMethod(commonStrings!.LOAD, 
-                            nullptr)!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-method.invoke(this.anyType, 
+
+    Method method = this->anyType.constructor.name.getMethod(commonStrings.LOAD, 
+                            nullptr);;
+    
+method.invoke(this->anyType, 
                             nullptr);
     
 }
 
 
-    public unload(){
-this.anyType= 
+    public: void unload(){
+this->anyType= 
                                         nullptr
                                     ;
     
-this.loader= 
+this->loader= 
                                         nullptr
                                     ;
     
@@ -128,28 +127,28 @@ System.gc();
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Library: " +this.getLibraryName();
+                        return "Library: " +this->getLibraryName();
     
 }
 
 
-    public string getLibraryName(){
+    public: std::string getLibraryName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.libraryName;
+                        return this->libraryName;
     
 }
 
 
-    public setLibraryName(string libraryName){
-this.libraryName= libraryName;
+    public: void setLibraryName(std::string libraryName){
+this->libraryName= libraryName;
     
 }
 

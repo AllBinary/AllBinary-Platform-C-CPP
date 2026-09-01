@@ -77,43 +77,40 @@
 class NotificationUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: NotificationUtil = new NotificationUtil();
+    private: static const NotificationUtil SINGLETON = NotificationUtil();
 
-    public static NotificationUtil getInstance(){
+    public: static NotificationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil.SINGLETON;
+                        return NotificationUtil::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: notificationManager: NotificationManager = ResourceUtil.getInstance()!.getContext()!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager;
+    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE) as NotificationManager;
 
-    private: const notificationBuilder: NotificationBuilder;
+    private: const NotificationBuilder notificationBuilder;
 
-private constructor (){
+private: NotificationUtil(){
 
-            super();
-        
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
                         if(SDK_VERSION > 22)
                         
                                     {
-                                    this.notificationBuilder= new NotificationBuilderAPI23();
+                                    this->notificationBuilder= NotificationBuilderAPI23();
     
 
                                     }
                                 
                         else {
-                            this.notificationBuilder= NotificationBuilder.NULL_NOTIFICATION_BUILDER;
+                            this->notificationBuilder= NotificationBuilder::NULL_NOTIFICATION_BUILDER;
     
 
                         }
@@ -121,42 +118,42 @@ private constructor (){
 }
 
 
-    public notify(Command command, string resource, string message){
+    public: void notify(Command command, std::string resource, std::string message){
 
-    context: Context = ResourceUtil.getInstance()!.getContext()!;;
+    Context context = ResourceUtil::getInstance().getContext();;
     
 
-    intent: Intent = CommandUriAction.getInstance()!.getIntent(command)!;;
+    Intent intent = CommandUriAction::getInstance().getIntent(command);;
     
 
-    integer: Integer = ResourceUtil.getInstance()!.getResourceId(resource)!;;
+    Integer integer = ResourceUtil::getInstance().getResourceId(resource);;
     
 
-    FLAG_IMMUTABLE: int32_t = 1<<26;;
+    int32_t FLAG_IMMUTABLE = 1<<26;;
     
 
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
-    pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, SDK_VERSION > 22
+    PendingIntent pendingIntent = PendingIntent::getActivity(context, 0, intent, SDK_VERSION > 22
                         ?       
                                 FLAG_IMMUTABLE
                                 :
 
                             0;
 
-    )!;;
+    );;
     
 
-                        if(this.notificationBuilder == 
-                                    null
+                        if(this->notificationBuilder == 
+                                    nullptr
                                 )
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.EXCEPTION, this, commonStrings!.NOT_IMPLEMENTED);
+this->logUtil.putF(commonStrings.EXCEPTION, this, commonStrings.NOT_IMPLEMENTED);
     
 
 
@@ -167,7 +164,7 @@ this.logUtil!.putF(commonStrings!.EXCEPTION, this, commonStrings!.NOT_IMPLEMENTE
 
                                     }
                                 
-this.notificationBuilder!.build(context, command, message, integer, pendingIntent);
+this->notificationBuilder.build(context, command, message, integer, pendingIntent);
     
 }
 

@@ -42,27 +42,26 @@
 class BasicGroupItemData
             : public Object
          {
-        
 
-    public static const ITEM_ONE: string = "BASICGROUPITEM_ONE";
+    public: static const std::string ITEM_ONE = "BASICGROUPITEM_ONE";
 
-    public static const ITEM_TWO: string = "BASICGROUPITEM_TWO";
+    public: static const std::string ITEM_TWO = "BASICGROUPITEM_TWO";
 
-    public static const ITEM_THREE: string = "BASICGROUPITEM_THREE";
+    public: static const std::string ITEM_THREE = "BASICGROUPITEM_THREE";
 
-    public static const ITEM_FOUR: string = "BASICGROUPITEM_FOUR";
+    public: static const std::string ITEM_FOUR = "BASICGROUPITEM_FOUR";
 
-    public static const ITEM_FIVE: string = "BASICGROUPITEM_FIVE";
+    public: static const std::string ITEM_FIVE = "BASICGROUPITEM_FIVE";
 
-    public static const ITEM_SIX: string = "BASICGROUPITEM_SIX";
+    public: static const std::string ITEM_SIX = "BASICGROUPITEM_SIX";
 
-    public static const ITEM_SEVEN: string = "BASICGROUPITEM_SEVEN";
+    public: static const std::string ITEM_SEVEN = "BASICGROUPITEM_SEVEN";
 
-    public static const ITEM_EIGHT: string = "BASICGROUPITEM_EIGHT";
+    public: static const std::string ITEM_EIGHT = "BASICGROUPITEM_EIGHT";
 
-    public static const ITEM_NINE: string = "BASICGROUPITEM_NINE";
+    public: static const std::string ITEM_NINE = "BASICGROUPITEM_NINE";
 
-    public static const ITEM_TEN: string = "BASICGROUPITEM_TEN";
+    public: static const std::string ITEM_TEN = "BASICGROUPITEM_TEN";
 
 };
 

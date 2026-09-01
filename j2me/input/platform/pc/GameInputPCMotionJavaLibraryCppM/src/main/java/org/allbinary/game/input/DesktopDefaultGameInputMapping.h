@@ -58,9 +58,8 @@
 #include "GameKeyFactory.h"
 
 class DesktopDefaultGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor ();
+public: DesktopDefaultGameInputMapping();
 
 };
 

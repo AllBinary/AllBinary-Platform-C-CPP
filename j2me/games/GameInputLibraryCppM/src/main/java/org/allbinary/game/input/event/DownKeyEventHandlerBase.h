@@ -77,42 +77,41 @@
 #include "DownKeyEventListenerInterface.h"
 
 class DownKeyEventHandlerBase: public BasicEventHandler {
-        
 
-    private: static const TOTAL_LISTENERS: string = " Total PlayerGameInput Listeners: ";
+    private: static const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 
-    private: static const LISTENER_LABEL: string = " PlayerGameInput Listener: ";
+    private: static const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
- constructor ();
+: DownKeyEventHandlerBase();
 
-    public addListener(PlayerGameInput playerGameInput);
+    public: void addListener(PlayerGameInput playerGameInput);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEventI(Integer eventObject);
+    public: void fireEventI(Integer eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public fireEventForGameKeyEvent(GameKeyEvent eventObject);
+    public: void fireEventForGameKeyEvent(GameKeyEvent eventObject);
 
                 //@Throws(Exception.constructor)
             
-    processI(Integer eventObject, EventListenerInterface eventListenerInterface);
+    protected: void processI(Integer eventObject, EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    processEvent(GameKeyEvent eventObject, EventListenerInterface eventListenerInterface);
+    protected: void processEvent(GameKeyEvent eventObject, EventListenerInterface eventListenerInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

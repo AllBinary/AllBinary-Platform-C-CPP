@@ -59,45 +59,44 @@
 class GameSkill
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    public static GameSkill getInstance(GameSkillType gameSkillType, string extra);
+    public: static GameSkill getInstance(GameSkillType gameSkillType, std::string extra);
 
-    private: gameSkillType: GameSkillType;
+    private: GameSkillType gameSkillType;
 
-    private: extra: string;
+    private: std::string extra;
 
-    private: time: int32_t= 0;
+    private: int32_t time= 0;
 
-    private: vector: Vector;
+    private: Vector vector;
 
-    private: const GAME_SKILL_LABEL: string = "GameSkill: ";
+    private: const std::string GAME_SKILL_LABEL = "GameSkill: ";
 
-    private: const EXTRA_LABEL: string = "Extra: ";
+    private: const std::string EXTRA_LABEL = "Extra: ";
 
-    private: const TIME_LABEL: string = "Time: ";
+    private: const std::string TIME_LABEL = "Time: ";
 
-public constructor (GameSkillType gameSkillType, string extra, int32_t time);
+public: GameSkill(GameSkillType gameSkillType, std::string extra, int32_t time);
 
-    public GameSkillType getGameSkillType();
+    public: GameSkillType getGameSkillType();
 
-    public setGameSkillType(GameSkillType gameSkillType);
+    public: void setGameSkillType(GameSkillType gameSkillType);
 
-    public string getExtra();
+    public: std::string getExtra();
 
-    public setExtra(string extra);
+    public: void setExtra(std::string extra);
 
-    public int32_t getTime();
+    public: int32_t getTime();
 
-    public setTime(int32_t time);
+    public: void setTime(int32_t time);
 
-    public addProperty(GameSkillPropertyInterface gameSkillPropertyInterface);
+    public: void addProperty(GameSkillPropertyInterface gameSkillPropertyInterface);
 
-    public Vector getProperties();
+    public: Vector getProperties();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

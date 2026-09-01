@@ -41,19 +41,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BoundsVisitorInterface {
-        
 
     int32_t getX();
 
     int32_t getY();
 
-    maxX();
+    void maxX();
 
-    maxY();
+    void maxY();
 
-    minX();
+    void minX();
 
-    minY();
+    void minY();
 
 };
 

@@ -40,21 +40,20 @@
 #include "Sound.h"
 //Use 8hz16bitmono for most J2ME
 class GameBeginSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new GameBeginSound();
+    private: static Sound soundInterface = GameBeginSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameBeginSound.soundInterface;
+                        return GameBeginSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: GameBeginSound(){
             super("resource:/wav/begin.wav");
                     
 

@@ -76,38 +76,37 @@
 #include "JPopupMenu.h"
 #include "JComponent.h"
 
-class GenericProfileActionScriptJPanel: public javax.swing.JPanel: public JTreeInterface {
-        
+class GenericProfileActionScriptJPanel: public javax::swing::JPanel, public JTreeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: defaultMutableTreeNode: DefaultMutableTreeNode = new DefaultMutableTreeNode("Root");
+    private: DefaultMutableTreeNode defaultMutableTreeNode = DefaultMutableTreeNode("Root");
 
-    private: genericProfileActionScript: GenericProfileActionScript;
+    private: GenericProfileActionScript genericProfileActionScript;
 
-public constructor ();
+public: GenericProfileActionScriptJPanel();
 
-    public updateJTree();
+    public: void updateJTree();
 
-    public GenericProfileActionScript getGenericProfileActionScript();
+    public: GenericProfileActionScript getGenericProfileActionScript();
 
-    public setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript);
+    public: void setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript);
 
-    public javax.swing.JTree getActionScriptJTree();
+    public: javax::swing::JTree getActionScriptJTree();
 
-    public setActionScriptJTree(javax.swing.JTree actionScriptJTree);
+    public: void setActionScriptJTree(javax::swing::JTree actionScriptJTree);
 
-    initComponents();
+    private: void initComponents();
 
-    actionScriptJTreeMouseReleased(java.awt.event.MouseEvent evt);
+    private: void actionScriptJTreeMouseReleased(java::awt::event::MouseEvent evt);
 
-    actionScriptJTreeMouseClicked(java.awt.event.MouseEvent evt);
+    private: void actionScriptJTreeMouseClicked(java::awt::event::MouseEvent evt);
 
-    private: actionScriptJTree: javax.swing.JTree;
+    private: javax::swing::JTree actionScriptJTree;
 
-    private: jScrollPane1: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane jScrollPane1;
 
 };
 

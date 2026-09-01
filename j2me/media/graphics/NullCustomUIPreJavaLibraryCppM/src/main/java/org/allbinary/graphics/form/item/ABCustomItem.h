@@ -58,39 +58,38 @@
 class ABCustomItem
             : public Object
          {
-        
 
-    public static NULL_CUSTOM_ITEM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    public: static Object* NULL_CUSTOM_ITEM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ABCustomItem getNullInstance();
+    public: static ABCustomItem getNullInstance();
 
-protected constructor (string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+protected: ABCustomItem(std::string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public setOwner(Screen owner);
+    public: void setOwner(Screen owner);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public paintUnselected(Graphics graphics, int32_t x, int32_t y);
+    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y);
 
-    public bool isFocusable();
+    public: bool isFocusable();
 
-    public string getLabel();
+    public: std::string getLabel();
 
-    public setLabel(string label);
+    public: void setLabel(std::string label);
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public setHeight(int32_t height);
+    public: void setHeight(int32_t height);
 
-    public float getValue();
+    public: float getValue();
 
-    public setValue(float value);
+    public: void setValue(float value);
 
-    public int32_t getMinimumWidth();
+    public: int32_t getMinimumWidth();
 
-    public int32_t getMinimumHeight();
+    public: int32_t getMinimumHeight();
 
-    public preMeasurement(Graphics graphics);
+    public: void preMeasurement(Graphics graphics);
 
 };
 

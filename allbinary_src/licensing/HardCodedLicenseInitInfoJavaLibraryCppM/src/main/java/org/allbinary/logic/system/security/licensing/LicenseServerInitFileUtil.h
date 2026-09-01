@@ -51,11 +51,10 @@
 class LicenseServerInitFileUtil
             : public Object
          {
-        
 
-    public init();
+    public: void init();
 
-    write();
+    private: void write();
 
 };
 

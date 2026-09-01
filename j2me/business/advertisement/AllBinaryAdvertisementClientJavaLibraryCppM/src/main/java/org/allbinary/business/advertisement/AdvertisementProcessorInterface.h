@@ -51,13 +51,12 @@
 class AdvertisementProcessorInterface
             : public Object
          {
-        
 
-    public process();
+    public: void process();
 
-    public start();
+    public: void start();
 
-    public stop();
+    public: void stop();
 
 };
 

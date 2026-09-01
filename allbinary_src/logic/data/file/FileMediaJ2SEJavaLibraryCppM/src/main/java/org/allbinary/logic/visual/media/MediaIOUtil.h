@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAIOUTIL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAIOUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/imageio/ImageIO.h>
@@ -34,15 +36,14 @@
 class MediaIOUtil
             : public Object
          {
-        
 
-    private: static const instance: MediaIOUtil = new MediaIOUtil();
+    private: static MediaIOUtil instance() { return MediaIOUtil(); }
 
-    public static MediaIOUtil getInstance();
+    public: static MediaIOUtil getInstance();
 
-    public std::vector<string> getReaderFormatNames();
+    public: std::vector<std::string> getReaderFormatNames();
 
-    public std::vector<string> getWriterFormatNames();
+    public: std::vector<std::string> getWriterFormatNames();
 
 };
 

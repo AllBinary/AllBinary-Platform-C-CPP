@@ -57,17 +57,16 @@
         #include "SimpleWeaponLayer.h"
 
 class TempExplosionWeaponLayer: public SimpleWeaponLayer {
-        
 
-    public const weaponProperties: WeaponProperties = new WeaponProperties( -1,  -1, 0, 1000, 0);
+    public: const WeaponProperties weaponProperties = WeaponProperties( -1,  -1, 0, 1000, 0);
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
 
-public constructor (string name, Movement movement, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition, int32_t timeDelay);
+public: TempExplosionWeaponLayer(std::string name, Movement movement, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition, int32_t timeDelay);
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

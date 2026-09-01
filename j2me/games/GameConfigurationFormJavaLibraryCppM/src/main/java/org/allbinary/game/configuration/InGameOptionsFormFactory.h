@@ -78,19 +78,18 @@
 class InGameOptionsFormFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static InGameOptionsFormFactory getInstance();
+    public: static InGameOptionsFormFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: SINGLETON: CommandForm = CommandForm.getNullCommandForm()!;
+    private: CommandForm SINGLETON = CommandForm::getNullCommandForm();
 
-    public init(CommandListener commandListener, Init initInterface, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+    public: void init(CommandListener commandListener, Init initInterface, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public CommandForm get();
+    public: CommandForm get();
 
 };
 

@@ -57,72 +57,73 @@
 class ReverseVelocityBoundsVisitor
             : public Object
         : public BoundsVisitorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    velocityInterface: VelocityInterface;
+    protected: VelocityInterface velocityInterface;
 
-    private: layerInterface: LayerInterface;
+    private: LayerInterface layerInterface;
 
-public constructor (LayerInterface layerInterface){
-
-            super();
-        this.layerInterface= layerInterface;
+public: ReverseVelocityBoundsVisitor(LayerInterface layerInterface){
+this->layerInterface= layerInterface;
     
 
-    velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface = layerInterface as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = layerInterface as VelocityInterfaceCompositeInterface;;
     
-this.velocityInterface= velocityInterfaceCompositeInterface!.getVelocityProperties() as VelocityInterface;
+this->velocityInterface= velocityInterfaceCompositeInterface.getVelocityProperties() as VelocityInterface;
     
 }
 
 
-    public int32_t getX(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerInterface!.getXP();;
+                        return this->layerInterface.getXP();;
     
 }
 
 
-    public int32_t getY(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerInterface!.getYP();;
+                        return this->layerInterface.getYP();;
     
 }
 
 
-    public minX(){
+    public: void minX(){
 
-                        if(this.velocityInterface!.getVelocityXBasicDecimalP()!.getUnscaled() < 0)
-                        this.velocityInterface!.getVelocityXBasicDecimalP()!.multiplyint( -1)
+                        if(this->velocityInterface.getVelocityXBasicDecimalP().getUnscaled() < 0)
+                        this->velocityInterface.getVelocityXBasicDecimalP().multiplyint( -1);
+                                
 }
 
 
-    public maxX(){
+    public: void maxX(){
 
-                        if(this.velocityInterface!.getVelocityXBasicDecimalP()!.getUnscaled() > 0)
-                        this.velocityInterface!.getVelocityXBasicDecimalP()!.multiplyint( -1)
+                        if(this->velocityInterface.getVelocityXBasicDecimalP().getUnscaled() > 0)
+                        this->velocityInterface.getVelocityXBasicDecimalP().multiplyint( -1);
+                                
 }
 
 
-    public minY(){
+    public: void minY(){
 
-                        if(this.velocityInterface!.getVelocityYBasicDecimalP()!.getUnscaled() < 0)
-                        this.velocityInterface!.getVelocityYBasicDecimalP()!.multiplyint( -1)
+                        if(this->velocityInterface.getVelocityYBasicDecimalP().getUnscaled() < 0)
+                        this->velocityInterface.getVelocityYBasicDecimalP().multiplyint( -1);
+                                
 }
 
 
-    public maxY(){
+    public: void maxY(){
 
-                        if(this.velocityInterface!.getVelocityYBasicDecimalP()!.getUnscaled() > 0)
-                        this.velocityInterface!.getVelocityYBasicDecimalP()!.multiplyint( -1)
+                        if(this->velocityInterface.getVelocityYBasicDecimalP().getUnscaled() > 0)
+                        this->velocityInterface.getVelocityYBasicDecimalP().multiplyint( -1);
+                                
 }
 
 

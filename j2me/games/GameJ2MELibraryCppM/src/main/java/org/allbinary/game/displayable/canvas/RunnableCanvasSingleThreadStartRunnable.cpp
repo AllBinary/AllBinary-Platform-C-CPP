@@ -50,33 +50,30 @@
         #include "GameRunnable.h"
 
 class RunnableCanvasSingleThreadStartRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const runnableCanvas: RunnableCanvas;
+    private: RunnableCanvas runnableCanvas;
 
-public constructor (RunnableCanvas demoCanvas){
-
-            super();
-        this.runnableCanvas= demoCanvas;
+public: RunnableCanvasSingleThreadStartRunnable(RunnableCanvas demoCanvas){
+this->runnableCanvas= demoCanvas;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.runnableCanvas!.run();
+            this->runnableCanvas.run();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -85,8 +82,8 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep(){
-this.runnableCanvas!.processLoopSleep();
+    public: void processLoopSleep(){
+this->runnableCanvas.processLoopSleep();
     
 }
 

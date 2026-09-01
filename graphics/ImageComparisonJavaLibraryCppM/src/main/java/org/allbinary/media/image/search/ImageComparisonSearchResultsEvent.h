@@ -45,15 +45,14 @@
         #include "ImageComparisonSearch.h"
 
 class ImageComparisonSearchResultsEvent: public AllBinaryEventObject {
-        
 
-    private: imageComparisonSearch: ImageComparisonSearch;
+    private: ImageComparisonSearch imageComparisonSearch;
 
-public constructor (any = {} anyType, ImageComparisonSearch imageComparisonSearch);
+public: ImageComparisonSearchResultsEvent(Object* anyType, ImageComparisonSearch imageComparisonSearch);
 
-    public ImageComparisonSearch getImageComparisonSearch();
+    public: ImageComparisonSearch getImageComparisonSearch();
 
-    setImageComparisonSearch(ImageComparisonSearch imageComparisonSearch);
+    private: void setImageComparisonSearch(ImageComparisonSearch imageComparisonSearch);
 
 };
 

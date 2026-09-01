@@ -67,65 +67,60 @@
 class TransformInfoPropertiesFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoPropertiesFactory = new TransformInfoPropertiesFactory();
+    private: static TransformInfoPropertiesFactory instance() { return TransformInfoPropertiesFactory(); }
 
-    public static TransformInfoPropertiesFactory getInstance(){
+    public: static TransformInfoPropertiesFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoPropertiesFactory.instance;
+                        return TransformInfoPropertiesFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoPropertiesFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoProperties getInstance(Node node){
+    public: TransformInfoProperties getInstance(Node node){
 
-    transformInfoChildNodeList: NodeList = node.getChildNodes()!;;
+    NodeList transformInfoChildNodeList = node.getChildNodes();;
     
 
-    transformInfoData: TransformInfoData = TransformInfoData.getInstance()!;;
+    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    attributes: NamedNodeMap = node.getAttributes()!;;
+    NamedNodeMap attributes = node.getAttributes();;
     
 
-    attrNode: Attr = attributes.getNamedItem(transformInfoData!.NAME) as Attr;;
+    Attr attrNode = attributes.getNamedItem(transformInfoData.NAME) as Attr;;
     
 
-    name: string = attrNode!.getValue()!;;
+    std::string name = attrNode.getValue();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Next View Name: " +name, this, "toTransformInfoPropertiesHashMap()");
+                                    this->logUtil.putF("Next View Name: " +name, this, "toTransformInfoPropertiesHashMap()");
     
 
                                     }
                                 
 
-    labelNode: Node = DomSearchHelper.getNodeNoThrow(transformInfoData!.LABEL, transformInfoChildNodeList)!;;
+    Node labelNode = DomSearchHelper::getNodeNoThrow(transformInfoData.LABEL, transformInfoChildNodeList);;
     
 
-    label: string = DomNodeHelper.getTextNodesValue(labelNode)!;;
+    std::string label = DomNodeHelper::getTextNodesValue(labelNode);;
     
 
-                        if(label == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     label= name;
@@ -134,31 +129,31 @@ private constructor (){
                                     }
                                 
 
-    descriptionNode: Node = DomSearchHelper.getNode(transformInfoData!.DESCRIPTION, transformInfoChildNodeList)!;;
+    Node descriptionNode = DomSearchHelper::getNode(transformInfoData.DESCRIPTION, transformInfoChildNodeList);;
     
 
-    description: string = DomNodeHelper.getTextNodesValue(descriptionNode)!;;
+    std::string description = DomNodeHelper::getTextNodesValue(descriptionNode);;
     
 
-    objectFileNode: Node = DomSearchHelper.getNode(transformInfoData!.OBJECTFILENAME, transformInfoChildNodeList)!;;
+    Node objectFileNode = DomSearchHelper::getNode(transformInfoData.OBJECTFILENAME, transformInfoChildNodeList);;
     
 
-    objectFileName: string = DomNodeHelper.getTextNodeValue(objectFileNode)!;;
+    std::string objectFileName = DomNodeHelper::getTextNodeValue(objectFileNode);;
     
 
-    objectConfigFileNode: Node = DomSearchHelper.getNode(transformInfoData!.OBJECTCONFIGFILENAME, transformInfoChildNodeList)!;;
+    Node objectConfigFileNode = DomSearchHelper::getNode(transformInfoData.OBJECTCONFIGFILENAME, transformInfoChildNodeList);;
     
 
-    objectConfigFileName: string = DomNodeHelper.getTextNodeValue(objectConfigFileNode)!;;
+    std::string objectConfigFileName = DomNodeHelper::getTextNodeValue(objectConfigFileNode);;
     
 
-    templateFileNode: Node = DomSearchHelper.getNode(transformInfoData!.TEMPLATEFILENAME, transformInfoChildNodeList)!;;
+    Node templateFileNode = DomSearchHelper::getNode(transformInfoData.TEMPLATEFILENAME, transformInfoChildNodeList);;
     
 
-    templateFileName: string = DomNodeHelper.getTextNodeValue(templateFileNode)!;;
+    std::string templateFileName = DomNodeHelper::getTextNodeValue(templateFileNode);;
     
 
-    transformInfoProperties: TransformInfoProperties = new TransformInfoProperties(name, label, description, objectFileName, objectConfigFileName, templateFileName);;
+    TransformInfoProperties transformInfoProperties = TransformInfoProperties(name, label, description, objectFileName, objectConfigFileName, templateFileName);;
     
 
 

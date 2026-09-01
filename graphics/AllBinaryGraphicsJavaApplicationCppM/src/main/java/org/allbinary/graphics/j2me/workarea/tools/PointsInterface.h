@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PointsInterface {
-        
 
     BasicArrayList getPoints();
 
-    addPoints(BasicArrayList vector);
+    void addPoints(BasicArrayList vector);
 
 };
 

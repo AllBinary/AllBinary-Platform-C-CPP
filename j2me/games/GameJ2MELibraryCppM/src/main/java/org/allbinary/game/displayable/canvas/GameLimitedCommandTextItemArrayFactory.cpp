@@ -54,28 +54,27 @@
 class GameLimitedCommandTextItemArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: GameLimitedCommandTextItemArrayFactory = new GameLimitedCommandTextItemArrayFactory();
+    private: static GameLimitedCommandTextItemArrayFactory instance() { return GameLimitedCommandTextItemArrayFactory(); }
 
-    public static GameLimitedCommandTextItemArrayFactory getInstance(){
+    public: static GameLimitedCommandTextItemArrayFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameLimitedCommandTextItemArrayFactory.instance;
+                        return GameLimitedCommandTextItemArrayFactory::instance();
     
 }
 
 
-    private: const commandTextItemArrayFactory: CommandTextItemArrayFactory = new CommandTextItemArrayFactory(new LimitCommandsVisitor());
+    private: const CommandTextItemArrayFactory commandTextItemArrayFactory = CommandTextItemArrayFactory(LimitCommandsVisitor());
 
-    public CommandTextItemArrayFactory getCommandTextItemArrayFactory(){
+    public: CommandTextItemArrayFactory getCommandTextItemArrayFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandTextItemArrayFactory;
+                        return this->commandTextItemArrayFactory;
     
 }
 

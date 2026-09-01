@@ -53,24 +53,23 @@
 class DomSearchHelper
             : public Object
          {
-        
 
-    public static Node getNodeNoThrow(string nodeName, NodeList nodeList){
+    public: static Node getNodeNoThrow(std::string nodeName, NodeList nodeList){
 
-    numberOfNodes: int32_t = nodeList!.getLength()!;;
+    int32_t numberOfNodes = nodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfNodes; index++)
+    int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
 
-                        if(node.getNodeName()!.compareTo(nodeName) == 0)
+                        if(node.getNodeName().compareTo(nodeName) == 0)
                         
                                     {
                                     
@@ -95,13 +94,13 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public static Node getNode(string nodeName, NodeList nodeList){
+    public: static Node getNode(std::string nodeName, NodeList nodeList){
 
-    node: Node = DomSearchHelper.getNodeNoThrow(nodeName, nodeList)!;;
+    Node node = DomSearchHelper::getNodeNoThrow(nodeName, nodeList);;
     
 
                         if(node != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -118,7 +117,7 @@ class DomSearchHelper
                             
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(nodeName +" Node Not Found in search");
                     
 
                         }
@@ -128,9 +127,9 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public static NodeList getChildNodeList(string nodeName, NodeList nodeList){
+    public: static NodeList getChildNodeList(std::string nodeName, NodeList nodeList){
 
-    node: Node = DomSearchHelper.getNode(nodeName, nodeList)!;;
+    Node node = DomSearchHelper::getNode(nodeName, nodeList);;
     
 
 
@@ -143,20 +142,20 @@ class DomSearchHelper
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getAllNodes(string nodeName, NodeList nodeList){
+    public: static Vector getAllNodes(std::string nodeName, NodeList nodeList){
 
-    vector: Vector = DomSearchHelper.getAllNodesNoThrow(nodeName, nodeList)!;;
+    Vector vector = DomSearchHelper::getAllNodesNoThrow(nodeName, nodeList);;
     
 
                         if(vector == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception(nodeName +" Node Not Found in search");
+                            throw Exception(nodeName +" Node Not Found in search");
                     
 
                                     }
@@ -174,28 +173,28 @@ class DomSearchHelper
 }
 
 
-    public static Vector getAllNodesNoThrow(string nodeName, NodeList nodeList){
+    public: static Vector getAllNodesNoThrow(std::string nodeName, NodeList nodeList){
 
-    nodeVector: Vector = new Vector();;
+    Vector nodeVector = Vector();;
     
 
-    numberOfNodes: int32_t = nodeList!.getLength()!;;
+    int32_t numberOfNodes = nodeList.getLength();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfNodes; index++)
+    int32_t index = 0;index < numberOfNodes; index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
 
-                        if(node.getNodeName()!.compareTo(nodeName) == 0)
+                        if(node.getNodeName().compareTo(nodeName) == 0)
                         
                                     {
-                                    nodeVector!.add(node);
+                                    nodeVector.add(node);
     
 
                                     }
@@ -211,10 +210,8 @@ class DomSearchHelper
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: DomSearchHelper(){
+}
 
 
 };

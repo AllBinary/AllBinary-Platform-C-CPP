@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_H
         #define ORG_ALLBINARY_GAME_PART_MAKECOUNTEDPARTSSINGLETONARRAYFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -73,19 +75,18 @@
 class MakeCountedPartsSingletonArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: MakeCountedPartsSingletonArrayFactory = new MakeCountedPartsSingletonArrayFactory();
+    private: static MakeCountedPartsSingletonArrayFactory instance() { return MakeCountedPartsSingletonArrayFactory(); }
 
-    public static MakeCountedPartsSingletonArrayFactory getInstance();
+    public: static MakeCountedPartsSingletonArrayFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: list: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<PartInterface> getUpdated(std::vector<PartInterface> partInterfaceArray);
+    public: std::vector<PartInterface> getUpdated(std::vector<PartInterface> partInterfaceArray);
 
 };
 

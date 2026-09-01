@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -51,39 +53,36 @@
 class ShaderManager
             : public Object
          {
-        
 
-    private: static const instance: ShaderManager = new ShaderManager( -1,  -1);
+    private: static ShaderManager instance() { return ShaderManager(); }
 
-    public static ShaderManager getInstance(){
+    public: static ShaderManager getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderManager.instance;
+                        return ShaderManager::instance();
     
 }
 
 
-    const LOAD_SHADER: string = "loadShader";
+    protected: const std::string LOAD_SHADER = "loadShader";
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const GL_VERTEX_SHADER: int32_t;
+    public: int32_t GL_VERTEX_SHADER;
 
-    public const GL_FRAGMENT_SHADER: int32_t;
+    public: int32_t GL_FRAGMENT_SHADER;
 
-public constructor (int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER){
-
-            super();
-        this.GL_VERTEX_SHADER= GL_VERTEX_SHADER;
+public: ShaderManager(int32_t GL_VERTEX_SHADER, int32_t GL_FRAGMENT_SHADER){
+this->GL_VERTEX_SHADER= GL_VERTEX_SHADER;
     
-this.GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
+this->GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
     
 }
 
 
-    public int32_t load(GL10 gl, string resource, std::vector<string> shaderAsStringArray, int32_t shaderType){
+    public: int32_t load(GL10 gl, std::string resource, std::vector<std::string> shaderAsStringArray, int32_t shaderType){
 
 
 
@@ -93,7 +92,7 @@ this.GL_FRAGMENT_SHADER= GL_FRAGMENT_SHADER;
 }
 
 
-    public int32_t loadShader(GL10 gl, string resource, BasicArrayList stringList, int32_t shaderType){
+    public: int32_t loadShader(GL10 gl, std::string resource, BasicArrayList stringList, int32_t shaderType){
 
 
 

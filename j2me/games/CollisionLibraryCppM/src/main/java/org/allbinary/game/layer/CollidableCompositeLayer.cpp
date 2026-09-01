@@ -89,17 +89,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameLayer.h"
 
-class CollidableCompositeLayer: public AllBinaryGameLayer: public CollidableInterfaceCompositeInterface {
-        
+class CollidableCompositeLayer: public AllBinaryGameLayer, public CollidableInterfaceCompositeInterface {
 
-    private: static NULL_COLLIDABLE_COMPOSITE_LAYER: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_COLLIDABLE_COMPOSITE_LAYER = NullUtil::getInstance().NULL_OBJECT;
 
-    public static CollidableCompositeLayer getNullInstance(){
+    public: static CollidableCompositeLayer getNullInstance(){
 
-                        if(CollidableCompositeLayer.NULL_COLLIDABLE_COMPOSITE_LAYER == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    CollidableCompositeLayer.NULL_COLLIDABLE_COMPOSITE_LAYER= new CollidableCompositeLayer(StringUtil.getInstance()!.EMPTY_STRING, RectangleFactory.SINGLETON, ViewPositionBase.NULL_VIEW_POSITION, CollidableNeverCollideBehaviorFactory.getInstance());
+                                    CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER= CollidableCompositeLayer(StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION, CollidableNeverCollideBehaviorFactory::getInstance());
     
 
                                     }
@@ -108,24 +107,24 @@ class CollidableCompositeLayer: public AllBinaryGameLayer: public CollidableInte
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableCompositeLayer.NULL_COLLIDABLE_COMPOSITE_LAYER as CollidableCompositeLayer;
+                        return CollidableCompositeLayer::NULL_COLLIDABLE_COMPOSITE_LAYER as CollidableCompositeLayer;
     
 }
 
 
-    private: collidableInferface: CollidableBaseBehavior = CollidableNeverCollideBehaviorFactory.getInstance()!.createBehavior()!;
+    private: CollidableBaseBehavior collidableInferface = CollidableNeverCollideBehaviorFactory::getInstance().createBehavior();
 
-public constructor (string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory){
+public: CollidableCompositeLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition, CollidableBaseBehaviorFactory collidableBaseBehaviorFactory){
             super(name, layerInfo, viewPosition);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(collidableBaseBehaviorFactory != CollidableNeverCollideBehaviorFactory.getInstance())
+                        if(collidableBaseBehaviorFactory != CollidableNeverCollideBehaviorFactory::getInstance())
                         
                                     {
-                                    this.setCollidableInferface(collidableBaseBehaviorFactory!.createBehavior());
+                                    this->setCollidableInferface(collidableBaseBehaviorFactory.createBehavior());
     
 
                                     }
@@ -133,35 +132,35 @@ public constructor (string name, Rectangle layerInfo, ViewPositionBase viewPosit
 }
 
 
-    public ArtificialIntelligenceInterface getArtificialIntelligenceInterface(){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    public: ArtificialIntelligenceInterface getArtificialIntelligenceInterface(){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArtificialIntelligence.getInstance();;
+                        return ArtificialIntelligence::getInstance();;
     
 }
 
 
-    public CollidableBaseBehavior getCollidableInferface(){
+    public: CollidableBaseBehavior getCollidableInferface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.collidableInferface;
+                        return this->collidableInferface;
     
 }
 
 
-    public setCollidableInferface(CollidableBaseBehavior collidableInferface){
-this.collidableInferface= collidableInferface;
+    public: void setCollidableInferface(CollidableBaseBehavior collidableInferface){
+this->collidableInferface= collidableInferface;
     
 }
 
 
-    public bool implmentsCollidableInterface(){
+    public: bool implmentsCollidableInterface(){
 
 
 
@@ -171,30 +170,30 @@ this.collidableInferface= collidableInferface;
 }
 
 
-    public toStringAppend(StringMaker stringBuffer){
+    public: void toStringAppend(StringMaker stringBuffer){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 super.toStringAppend(stringBuffer);
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.getCollidableInferface()!.toString());
+stringBuffer.append(this->getCollidableInferface().toString());
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-this.toStringAppend(stringBuffer);
+this->toStringAppend(stringBuffer);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

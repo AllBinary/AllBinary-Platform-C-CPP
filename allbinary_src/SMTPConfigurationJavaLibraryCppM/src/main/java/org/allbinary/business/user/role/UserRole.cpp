@@ -51,70 +51,67 @@
 class UserRole
             : public Object
         : public Serializable {
-        
 
-    private: basicUserRole: BasicUserRole;
+    private: BasicUserRole basicUserRole;
 
-    private: userFactoryInterface: UserFactoryInterface;
+    private: UserFactoryInterface userFactoryInterface;
 
-protected constructor (BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface){
-
-            super();
-        this.basicUserRole= aBasicUserRole;
+protected: UserRole(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface){
+this->basicUserRole= aBasicUserRole;
     
-this.userFactoryInterface= aUserFactoryInterface;
+this->userFactoryInterface= aUserFactoryInterface;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicUserRole!.toString();;
+                        return this->basicUserRole.toString();;
     
 }
 
 
-    public BasicUserRole getBasicUserRole(){
+    public: BasicUserRole getBasicUserRole(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicUserRole;
+                        return this->basicUserRole;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public UserFactoryInterface getUserFactory(){
+    public: UserFactoryInterface getUserFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userFactoryInterface;
+                        return this->userFactoryInterface;
     
 }
 
 
-    public int64_t getSessionTimeout(){
+    public: int64_t getSessionTimeout(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicUserRole!.getSessionTimeout();;
+                        return this->basicUserRole.getSessionTimeout();;
     
 }
 
 
-    public int64_t getSessionInactivityTimeout(){
+    public: int64_t getSessionInactivityTimeout(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicUserRole!.getSessionInactivityTimeout();;
+                        return this->basicUserRole.getSessionInactivityTimeout();;
     
 }
 

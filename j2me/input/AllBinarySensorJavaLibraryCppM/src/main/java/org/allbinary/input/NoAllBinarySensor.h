@@ -42,13 +42,12 @@
         #include "AllBinarySensor.h"
 
 class NoAllBinarySensor: public AllBinarySensor {
-        
 
-    private: static const instance: NoAllBinarySensor = new NoAllBinarySensor();
+    private: static NoAllBinarySensor instance() { return NoAllBinarySensor(); }
 
-    public static NoAllBinarySensor getInstance();
+    public: static NoAllBinarySensor getInstance();
 
-private constructor ();
+private: NoAllBinarySensor();
 
 };
 

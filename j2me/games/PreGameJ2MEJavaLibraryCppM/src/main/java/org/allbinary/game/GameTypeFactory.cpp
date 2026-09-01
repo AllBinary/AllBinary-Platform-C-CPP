@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -55,29 +57,28 @@
 class GameTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: GameTypeFactory = new GameTypeFactory();
+    private: static GameTypeFactory instance() { return GameTypeFactory(); }
 
-    public static GameTypeFactory getInstance(){
+    public: static GameTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameTypeFactory.instance;
+                        return GameTypeFactory::instance();
     
 }
 
 
-    public NULL_GAME_TYPE_ARRAY: std::vector<GameType> = [];
+    public: std::vector<GameType> NULL_GAME_TYPE_ARRAY = {};
 
-    public NONE: GameType = new GameType(StringUtil.getInstance()!.NULL_STRING);
+    public: GameType NONE = GameType(StringUtil::getInstance().NULL_STRING);
 
-    public SINGLE_PLAYER: GameType = new GameType("Single Player");
+    public: GameType SINGLE_PLAYER = GameType("Single Player");
 
-    public MULTI_PLAYER: GameType = new GameType("Multi Player");
+    public: GameType MULTI_PLAYER = GameType("Multi Player");
 
-    public BOT: GameType = new GameType("Artificial Player");
+    public: GameType BOT = GameType("Artificial Player");
 
 };
 

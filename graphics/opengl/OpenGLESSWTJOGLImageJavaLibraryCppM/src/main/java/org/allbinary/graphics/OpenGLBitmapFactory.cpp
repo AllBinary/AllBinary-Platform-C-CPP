@@ -41,16 +41,15 @@
 #include "OpenGLBitmap.h"
 
 class OpenGLBitmapFactory: public PlatformBitmapBaseFactory {
-        
 
-    private: static const instance: OpenGLBitmapFactory = new OpenGLBitmapFactory();
+    private: static OpenGLBitmapFactory instance() { return OpenGLBitmapFactory(); }
 
-    public static OpenGLBitmapFactory getInstance(){
+    public: static OpenGLBitmapFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLBitmapFactory.instance;
+                        return OpenGLBitmapFactory::instance();
     
 }
 
@@ -59,16 +58,13 @@ class OpenGLBitmapFactory: public PlatformBitmapBaseFactory {
 class Config
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    public const bitmapConfig: any;
+    public: Object* bitmapConfig;
 
-private constructor (any = {} bitmapConfig){
-
-            super();
-        this.bitmapConfig= bitmapConfig;
+private: Config(Object* bitmapConfig){
+this->bitmapConfig= bitmapConfig;
     
 }
 
@@ -76,37 +72,37 @@ private constructor (any = {} bitmapConfig){
 };
 
             
-    public const ARGB_8888 = new this.Config(
+    public: const ARGB_8888 = Config(
                             nullptr);
 
-    public OpenGLBitmap createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory.Config config){
+    public: OpenGLBitmap createBitmap(int32_t width, int32_t height, OpenGLBitmapFactory::Config config){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new OpenGLBitmap(Image.createImage(width, height));
+                        return OpenGLBitmap(Image::createImage(width, height));
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public OpenGLBitmap decodeStream(InputStream inputStream){
+    public: OpenGLBitmap decodeStream(InputStream inputStream){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new OpenGLBitmap(Image.createImage(inputStream));
+                        return OpenGLBitmap(Image::createImage(inputStream));
     
 }
 
 
-    public PlatformBitmapBase createBitmap(Image image){
+    public: PlatformBitmapBase createBitmap(Image image){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new OpenGLBitmap(image);
+                        return OpenGLBitmap(image);
     
 }
 

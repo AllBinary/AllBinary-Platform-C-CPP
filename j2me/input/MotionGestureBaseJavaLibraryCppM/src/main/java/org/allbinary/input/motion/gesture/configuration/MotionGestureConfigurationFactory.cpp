@@ -43,24 +43,21 @@
 class MotionGestureConfigurationFactory
             : public Object
          {
-        
 
-    private: static config: MotionGestureConfiguration = new MotionGestureConfiguration();
+    private: static MotionGestureConfiguration config = MotionGestureConfiguration();
 
-    public static MotionGestureConfiguration getInstance(){
+    public: static MotionGestureConfiguration getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MotionGestureConfigurationFactory.config;
+                        return MotionGestureConfigurationFactory::config;
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: MotionGestureConfigurationFactory(){
+}
 
 
 };

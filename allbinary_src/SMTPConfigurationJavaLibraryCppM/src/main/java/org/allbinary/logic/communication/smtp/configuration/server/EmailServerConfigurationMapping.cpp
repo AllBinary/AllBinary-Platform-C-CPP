@@ -55,27 +55,24 @@
 class EmailServerConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor (EmailServerConfigurationInterface emailServerConfigurationInterface){
-
-            super();
-        this.emailServerConfigurationInterface= emailServerConfigurationInterface;
+public: EmailServerConfigurationMapping(EmailServerConfigurationInterface emailServerConfigurationInterface){
+this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(EmailServerConfigurationData.SERVER, this.emailServerConfigurationInterface!.getSmtpServer());
+hashMap.put(EmailServerConfigurationData::SERVER, this->emailServerConfigurationInterface.getSmtpServer());
     
-hashMap!.put(EmailServerConfigurationData.ACCOUNT, this.emailServerConfigurationInterface!.getAccountName());
+hashMap.put(EmailServerConfigurationData::ACCOUNT, this->emailServerConfigurationInterface.getAccountName());
     
-hashMap!.put(EmailServerConfigurationData.PASSWORD, this.emailServerConfigurationInterface!.getPassword());
+hashMap.put(EmailServerConfigurationData::PASSWORD, this->emailServerConfigurationInterface.getPassword());
     
 
 
@@ -88,23 +85,23 @@ hashMap!.put(EmailServerConfigurationData.PASSWORD, this.emailServerConfiguratio
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EmailServerConfigurationData.NAME;
+                        return EmailServerConfigurationData::NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(this.emailServerConfigurationInterface!.getSmtpServer());
+vector.add(this->emailServerConfigurationInterface.getSmtpServer());
     
 
 

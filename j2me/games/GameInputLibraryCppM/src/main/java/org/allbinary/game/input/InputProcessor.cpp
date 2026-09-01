@@ -55,15 +55,14 @@
 class InputProcessor
             : public Object
          {
-        
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
 }
 
 
-    public keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId){
+    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId){
 }
 
 

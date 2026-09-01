@@ -48,38 +48,37 @@
 class InitInfo2
             : public Object
          {
-        
 
-    private: static const instance: InitInfo2 = new InitInfo2();
+    private: static InitInfo2 instance() { return InitInfo2(); }
 
-    public static InitInfo2 getInstance(){
+    public: static InitInfo2 getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo2.instance;
+                        return InitInfo2::instance();
     
 }
 
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    public bool isTestHtmlPathValid(AbPath value){
+    public: bool isTestHtmlPathValid(AbPath value){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directory.create(value);;
+                        return this->directory.create(value);;
     
 }
 
 
-    public bool isMainPathValid(AbPath value){
+    public: bool isMainPathValid(AbPath value){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directory.create(value);;
+                        return this->directory.create(value);;
     
 }
 

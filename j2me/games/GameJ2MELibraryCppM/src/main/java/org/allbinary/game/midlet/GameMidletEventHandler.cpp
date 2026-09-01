@@ -50,33 +50,30 @@
         #include "GameMidletEventListener.h"
 
 class GameMidletEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: GameMidletEventHandler = new GameMidletEventHandler();
+    private: static const GameMidletEventHandler gameKeyEventHandler = GameMidletEventHandler();
 
-    public static GameMidletEventHandler getInstance(){
+    public: static GameMidletEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameMidletEventHandler.gameKeyEventHandler;
+                        return GameMidletEventHandler::gameKeyEventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GameMidletEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    gameMidletEventListener: GameMidletEventListener = eventListenerInterface as GameMidletEventListener;;
+    GameMidletEventListener gameMidletEventListener = eventListenerInterface as GameMidletEventListener;;
     
-gameMidletEventListener!.onGameEnd(eventObject);
+gameMidletEventListener.onGameEnd(eventObject);
     
 }
 

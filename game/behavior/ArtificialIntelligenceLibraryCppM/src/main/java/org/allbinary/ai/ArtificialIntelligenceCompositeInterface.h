@@ -44,7 +44,6 @@
         #include "ArtificialIntelligenceInterface.h"
 
 class ArtificialIntelligenceCompositeInterface {
-        
 
                 //@Throws(Exception.constructor)
             

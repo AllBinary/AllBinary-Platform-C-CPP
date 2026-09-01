@@ -43,25 +43,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InitInfoInterface {
-        
 
     bool isTesting()
 
-    string getTesting()
+    std::string getTesting()
 
-    string getTestHtmlPath()
+    std::string getTestHtmlPath()
 
-    string getMainPath()
+    std::string getMainPath()
 
-    setTesting(string value)
+    void setTesting(std::string value)
 
-    setTestHtmlPath(AbPath value)
+    void setTestHtmlPath(AbPath value)
 
-    setMainPath(AbPath value)
+    void setMainPath(AbPath value)
 
                 //@Throws(Exception.constructor)
             
-    bool isTestingValid(string testing)
+    bool isTestingValid(std::string testing)
 
     bool isTestHtmlPathValid(AbPath value)
 

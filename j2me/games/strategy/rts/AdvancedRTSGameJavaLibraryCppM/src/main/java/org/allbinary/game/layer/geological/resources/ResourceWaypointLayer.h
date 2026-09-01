@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_RESOURCEWAYPOINTLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_RESOURCEWAYPOINTLAYER_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/SelectionHudPaintable.h>
@@ -69,13 +71,12 @@
 #include "GeologicalResourceInfoHudPaintable.h"
 
 class ResourceWaypointLayer: public WaypointLayer {
-        
 
-public constructor (RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, string rootName, string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
+public: ResourceWaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
 
-    public SelectionHudPaintable createHudPaintable();
+    public: SelectionHudPaintable createHudPaintable();
 
-    public SelectionHudPaintable getHudPaintable();
+    public: SelectionHudPaintable getHudPaintable();
 
 };
 

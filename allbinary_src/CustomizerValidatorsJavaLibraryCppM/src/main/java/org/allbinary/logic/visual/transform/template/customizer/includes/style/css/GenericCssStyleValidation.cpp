@@ -75,60 +75,53 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericCssStyleValidation: public Validation: public DomNodeInterface {
-        
+class GenericCssStyleValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: GenericCssStyleValidation(){
+}
 
 
-public constructor (Document document){
+public: GenericCssStyleValidation(Document document){
 
-            super();
-        
-    nodeList: NodeList = document.getElementsByTagName(StylesData.getInstance()!.NAME)!;;
+    NodeList nodeList = document.getElementsByTagName(StylesData::getInstance().NAME);;
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.getFormData(hashMap);
+public: GenericCssStyleValidation(HashMap<any, any> hashMap){
+this->getFormData(hashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public getFormData(HashMap<any, any> hashMap){
+    public: void getFormData(HashMap<any, any> hashMap){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    isValid: Boolean = Boolean.TRUE;;
+    Boolean isValid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("End: " +isValid, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("End: " +isValid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -144,10 +137,10 @@ public constructor (HashMap<any, any> hashMap){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -156,34 +149,34 @@ public constructor (HashMap<any, any> hashMap){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -199,7 +192,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -209,7 +202,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -221,9 +214,9 @@ public constructor (HashMap<any, any> hashMap){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createNameValueNodes(document, BodyData.getInstance()!.NAME, StringUtil.getInstance()!.EMPTY_STRING)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, BodyData::getInstance().NAME, StringUtil::getInstance().EMPTY_STRING);;
     
 
 

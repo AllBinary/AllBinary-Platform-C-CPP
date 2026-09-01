@@ -47,11 +47,10 @@
         #include "VirtualKeyboardEvent.h"
 
 class VirtualKeyboardEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
+    void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
 
 };
 

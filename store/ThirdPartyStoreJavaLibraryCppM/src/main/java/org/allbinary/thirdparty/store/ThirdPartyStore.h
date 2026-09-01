@@ -57,21 +57,20 @@
 class ThirdPartyStore
             : public Object
          {
-        
 
-    private: authorized: bool= false;
+    private: bool authorized= false;
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: ThirdPartyStore(std::string name);
 
-    public authorize(AbeClientInformationInterface clientInformationInterface);
+    public: void authorize(AbeClientInformationInterface clientInformationInterface);
 
-    public bool isAuthorized();
+    public: bool isAuthorized();
 
-    setAuthorized(bool authorized);
+    protected: void setAuthorized(bool authorized);
 
-    public string getName();
+    public: std::string getName();
 
 };
 

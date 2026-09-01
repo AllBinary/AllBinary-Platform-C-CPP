@@ -70,21 +70,20 @@
 class AdvertisementAreaConstraints
             : public Object
         : public AdvertisementAreaConstraintsInterface {
-        
 
-    private: displayInBrowserContraintsInterface: DisplayInBrowserContraintsInterface;
+    private: DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface;
 
-    private: twoDimensionConstraintsInterface: TwoDimensionalConstraintInterface;
+    private: TwoDimensionalConstraintInterface twoDimensionConstraintsInterface;
 
-public constructor (Document document);
+public: AdvertisementAreaConstraints(Document document);
 
-    public setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface);
+    public: void setDisplayInBrowserContraints(DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface);
 
-    public getTwoDimensionContraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface);
+    public: void getTwoDimensionContraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface);
 
-    public DisplayInBrowserContraintsInterface getDisplayInBrowserContraints();
+    public: DisplayInBrowserContraintsInterface getDisplayInBrowserContraints();
 
-    public TwoDimensionalConstraintInterface getTwoDimensionContraints();
+    public: TwoDimensionalConstraintInterface getTwoDimensionContraints();
 
 };
 

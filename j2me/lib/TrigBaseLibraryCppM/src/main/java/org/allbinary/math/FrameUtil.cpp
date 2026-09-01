@@ -52,63 +52,60 @@
 class FrameUtil
             : public Object
          {
-        
 
-    private: static const instance: FrameUtil = new FrameUtil();
+    private: static FrameUtil instance() { return FrameUtil(); }
 
-    public static FrameUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return FrameUtil.instance;
-    
-}
-
-
-private constructor (){
-
-            super();
-        }
-
-
-    public int32_t getFrameForAngle(int16_t angle, int32_t angleIncrement){
+    public: static FrameUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adjustAngleToFrameAngle(static_cast<int32_t>(angle)) /angleIncrement;
+                        return FrameUtil::instance();
     
 }
 
 
-    public int32_t getFrameAngle(int32_t frame, int32_t angleIncrement){
+private: FrameUtil(){
+}
 
-    frameAngle: int32_t = angleIncrement *frame -90;;
+
+    public: int32_t getFrameForAngle(int16_t angle, int32_t angleIncrement){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->adjustAngleToFrameAngle(static_cast<int32_t>(angle)) /angleIncrement;
+    
+}
+
+
+    public: int32_t getFrameAngle(int32_t frame, int32_t angleIncrement){
+
+    int32_t frameAngle = angleIncrement *frame -90;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adjustAngleToFrameAngle(frameAngle);;
+                        return this->adjustAngleToFrameAngle(frameAngle);;
     
 }
 
 
-    public int32_t adjustAngleToFrameAngle(int32_t currentAngle){
+    public: int32_t adjustAngleToFrameAngle(int32_t currentAngle){
 
-    angleFactory: AngleFactory = AngleFactory.getInstance()!;;
+    AngleFactory angleFactory = AngleFactory::getInstance();;
     
 
                         if(currentAngle > 359)
                         
                                     {
-                                    currentAngle= (currentAngle -angleFactory!.TOTAL_ANGLE);
+                                    currentAngle= (currentAngle -angleFactory.TOTAL_ANGLE);
     
 
         while(currentAngle > 359)
         {
-currentAngle= (currentAngle -angleFactory!.TOTAL_ANGLE);
+currentAngle= (currentAngle -angleFactory.TOTAL_ANGLE);
     
 }
 
@@ -119,12 +116,12 @@ currentAngle= (currentAngle -angleFactory!.TOTAL_ANGLE);
                         if(currentAngle < 0)
                         
                                     {
-                                    currentAngle= (currentAngle +angleFactory!.TOTAL_ANGLE);
+                                    currentAngle= (currentAngle +angleFactory.TOTAL_ANGLE);
     
 
         while(currentAngle < 0)
         {
-currentAngle= (currentAngle +angleFactory!.TOTAL_ANGLE);
+currentAngle= (currentAngle +angleFactory.TOTAL_ANGLE);
     
 }
 

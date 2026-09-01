@@ -59,64 +59,61 @@
 class RegistrationConfiguration
             : public Object
          {
-        
 
-    private: static const SINGLETON: RegistrationConfiguration = new RegistrationConfiguration();
+    private: static const RegistrationConfiguration SINGLETON = RegistrationConfiguration();
 
-    public static RegistrationConfiguration getInstance(){
+    public: static RegistrationConfiguration getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RegistrationConfiguration.SINGLETON;
+                        return RegistrationConfiguration::SINGLETON;
     
 }
 
 
-    private: registrationCode: string = "No Registration Code";
+    private: std::string registrationCode = "No Registration Code";
 
-    public const NAME: string = "registrationid";
+    public: const std::string NAME = "registrationid";
 
-private constructor (){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            
-    read(){
+private: RegistrationConfiguration(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(){
+    private: void read(){
 }
 
 
-    public string toString(){
+                //@Throws(Exception.constructor)
+            
+    public: void write(){
+}
+
+
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append("Registration Code: ")!.append(this.getRegistrationCode())!.toString();;
+                        return StringMaker().append("Registration Code: ").append(this->getRegistrationCode()).toString();;
     
 }
 
 
-    public setRegistrationCode(string registrationCode){
-this.registrationCode= registrationCode;
+    public: void setRegistrationCode(std::string registrationCode){
+this->registrationCode= registrationCode;
     
 }
 
 
-    public string getRegistrationCode(){
+    public: std::string getRegistrationCode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.registrationCode;
+                        return this->registrationCode;
     
 }
 

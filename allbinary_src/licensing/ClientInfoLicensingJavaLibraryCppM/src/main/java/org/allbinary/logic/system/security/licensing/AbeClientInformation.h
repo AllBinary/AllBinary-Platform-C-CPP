@@ -80,13 +80,12 @@
         #include "ClientInformation.h"
 // This is the information sent to the license server
 class AbeClientInformation: public ClientInformation {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (string name, string version, string specialName, string shortName);
+public: AbeClientInformation(std::string name, std::string version, std::string specialName, std::string shortName);
 
-    public init();
+    public: void init();
 
 };
 

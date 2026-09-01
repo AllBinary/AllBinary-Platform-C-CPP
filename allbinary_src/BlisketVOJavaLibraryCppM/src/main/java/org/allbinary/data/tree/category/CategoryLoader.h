@@ -86,33 +86,32 @@
         #include "CategoryModifierTree.h"
 #include "CategoryLoaderInterface.h"
 
-class CategoryLoader: public CategoryModifierTree: public CategoryLoaderInterface {
-        
+class CategoryLoader: public CategoryModifierTree, public CategoryLoaderInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (CategoryFactoryInterface categoryFactoryInterface);
+public: CategoryLoader(CategoryFactoryInterface categoryFactoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Document getDoc(CategoryInterface categoryInterface);
+    public: Document getDoc(CategoryInterface categoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public CategoryInterface get(CategoryInterface categoryInterface);
+    public: CategoryInterface get(CategoryInterface categoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public CategoryInterface get(Document document);
+    public: CategoryInterface get(Document document);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public CategoryInterface getAll(CategoryInterface categoryInterface);
+    public: CategoryInterface getAll(CategoryInterface categoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    CategoryInterface getAll(Document document);
+    private: CategoryInterface getAll(Document document);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    CategoryInterface getAll(CategoryInterface parentCategoryInterface, NodeList categoryNodeList);
+    private: CategoryInterface getAll(CategoryInterface parentCategoryInterface, NodeList categoryNodeList);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    CategoryInterface addProperties(CategoryInterface loadedCategoryInterface, NodeList categoryNodeList);
+    private: CategoryInterface addProperties(CategoryInterface loadedCategoryInterface, NodeList categoryNodeList);
 
 };
 

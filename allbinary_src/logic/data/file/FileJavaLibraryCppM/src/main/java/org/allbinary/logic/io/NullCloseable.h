@@ -51,11 +51,10 @@
 class NullCloseable
             : public Object
         : public Closeable {
-        
 
-    public static const NULL_CLOSEABLE: NullCloseable = new NullCloseable();
+    public: static const NullCloseable NULL_CLOSEABLE = NullCloseable();
 
-    public close();
+    public: void close();
 
 };
 

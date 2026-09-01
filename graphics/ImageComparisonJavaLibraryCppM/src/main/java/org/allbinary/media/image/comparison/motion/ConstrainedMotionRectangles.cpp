@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -56,60 +58,59 @@
 #include "Rectangle.h"
 
 class ConstrainedMotionRectangles: public MotionRectangles {
-        
 
-    private: static const NAME: string = "constrainedMotionRectangles_";
+    private: static const std::string NAME = "constrainedMotionRectangles_";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: motionRectangleConstraintsInterface: MotionRectangleConstraintsInterface;
+    private: MotionRectangleConstraintsInterface motionRectangleConstraintsInterface;
 
-public constructor (MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, MotionRectangles motionRectangles){
-            super(NAME, motionRectangles!.getImageComparisonResult());
+public: ConstrainedMotionRectangles(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, MotionRectangles motionRectangles){
+            super(NAME, motionRectangles.getImageComparisonResult());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setMotionRectangleConstraintsInterface(motionRectangleConstraintsInterface);
+this->setMotionRectangleConstraintsInterface(motionRectangleConstraintsInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public applyMotionRectangleConstraints(MotionRectangles motionRectangles){
-this.logUtil!.putF("Start - Size Before: " +motionRectangles!.getVector()!.size(), this, "applyMotionRectangleConstraints");
+    public: void applyMotionRectangleConstraints(MotionRectangles motionRectangles){
+this->logUtil.putF("Start - Size Before: " +motionRectangles.getVector().size(), this, "applyMotionRectangleConstraints");
     
 
-    bufferedImageArray: std::vector<BufferedImage> = motionRectangles!.getImageComparisonResult()!.getBufferedImages()!;;
+    std::vector<BufferedImage> bufferedImageArray = motionRectangles.getImageComparisonResult().getBufferedImages();;
     
 
-    bufferedImage: BufferedImage = bufferedImageArray[1]!;;
+    BufferedImage bufferedImage = bufferedImageArray[1];;
     
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
-    vector2: Vector = motionRectangles!.getVector()!;;
+    Vector vector2 = motionRectangles.getVector();;
     
 
-    size: int32_t = vector2.length!;;
+    int32_t size = vector2.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    motionRectangle: MotionRectangle = vector2.get(index) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector2.get(index) as MotionRectangle;;
     
 
-    rectangle: Rectangle = motionRectangle!.getRectangle()!;;
+    Rectangle rectangle = motionRectangle.getRectangle();;
     
 
-    isTooSmall: bool = this.getMotionRectangleConstraintsInterface()!.isTooSmall(rectangle)!;;
+    bool isTooSmall = this->getMotionRectangleConstraintsInterface().isTooSmall(rectangle);;
     
 
                         if(isTooSmall)
@@ -123,7 +124,7 @@ this.logUtil!.putF("Start - Size Before: " +motionRectangles!.getVector()!.size(
                                     }
                                 
 
-    isAreaTooSmall: bool = this.getMotionRectangleConstraintsInterface()!.isAreaTooSmall(rectangle)!;;
+    bool isAreaTooSmall = this->getMotionRectangleConstraintsInterface().isAreaTooSmall(rectangle);;
     
 
                         if(isAreaTooSmall)
@@ -137,7 +138,7 @@ this.logUtil!.putF("Start - Size Before: " +motionRectangles!.getVector()!.size(
                                     }
                                 
 
-    isTooBig: bool = this.getMotionRectangleConstraintsInterface()!.isTooBig(rectangle)!;;
+    bool isTooBig = this->getMotionRectangleConstraintsInterface().isTooBig(rectangle);;
     
 
                         if(isTooBig)
@@ -151,7 +152,7 @@ this.logUtil!.putF("Start - Size Before: " +motionRectangles!.getVector()!.size(
                                     }
                                 
 
-    isValid: bool = this.getMotionRectangleConstraintsInterface()!.isValid(this.getImageComparisonResult()!.getFrameTwo(), bufferedImage, motionRectangle!.getRectangle())!;;
+    bool isValid = this->getMotionRectangleConstraintsInterface().isValid(this->getImageComparisonResult().getFrameTwo(), bufferedImage, motionRectangle.getRectangle());;
     
 
                         if(!isValid)
@@ -166,26 +167,27 @@ this.logUtil!.putF("Start - Size Before: " +motionRectangles!.getVector()!.size(
                                 
 
                         if(!isTooSmall && !isAreaTooSmall && !isTooBig && isValid)
-                        vector.add(motionRectangle)
+                        vector.add(motionRectangle);
+                                
 }
 
-this.setVector(vector);
+this->setVector(vector);
     
 }
 
 
-    public MotionRectangleConstraintsInterface getMotionRectangleConstraintsInterface(){
+    public: MotionRectangleConstraintsInterface getMotionRectangleConstraintsInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionRectangleConstraintsInterface;
+                        return this->motionRectangleConstraintsInterface;
     
 }
 
 
-    public setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
-this.motionRectangleConstraintsInterface= motionRectangleConstraintsInterface;
+    public: void setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
+this->motionRectangleConstraintsInterface= motionRectangleConstraintsInterface;
     
 }
 

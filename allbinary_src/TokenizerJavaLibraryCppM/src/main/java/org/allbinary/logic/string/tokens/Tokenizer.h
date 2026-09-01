@@ -62,23 +62,22 @@
 class Tokenizer
             : public Object
          {
-        
 
-    private: sep: string;
+    private: std::string sep;
 
-    private: endSep: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string endSep = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string sep);
+public: Tokenizer(std::string sep);
 
-    public setSep(string sep);
+    public: void setSep(std::string sep);
 
-    public setEndSep(string endSep);
+    public: void setEndSep(std::string endSep);
 
-    public BasicArrayList getInsideSep(string string);
+    public: BasicArrayList getInsideSep(std::string string);
 
-    public BasicArrayList getTokensFromString(string string, BasicArrayList tokenVector);
+    public: BasicArrayList getTokensFromString(std::string string, BasicArrayList tokenVector);
 
-    public Hashtable<any, any> getTokens(BasicArrayList stringVector);
+    public: Hashtable<any, any> getTokens(BasicArrayList stringVector);
 
 };
 

@@ -43,16 +43,15 @@
 class RendererInitializedStupidTimerFactory
             : public Object
          {
-        
 
-    private: static const instance: StupidTimer = new StupidTimer();
+    private: static StupidTimer instance() { return StupidTimer(); }
 
-    public static StupidTimer getInstance(){
+    public: static StupidTimer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RendererInitializedStupidTimerFactory.instance;
+                        return RendererInitializedStupidTimerFactory::instance();
     
 }
 

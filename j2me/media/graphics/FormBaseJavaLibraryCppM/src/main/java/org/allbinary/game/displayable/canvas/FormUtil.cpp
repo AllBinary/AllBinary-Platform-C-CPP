@@ -60,29 +60,28 @@
 class FormUtil
             : public Object
          {
-        
 
-    private: static const instance: FormUtil = new FormUtil();
+    private: static FormUtil instance() { return FormUtil(); }
 
-    public static FormUtil getInstance(){
+    public: static FormUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FormUtil.instance;
+                        return FormUtil::instance();
     
 }
 
 
-    public Rectangle createFormRectangle(){
+    public: Rectangle createFormRectangle(){
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-    rectangle: Rectangle = new Rectangle(pointFactory!.createXY(30, 10), displayInfo!.getLastWidth() -30, displayInfo!.getLastHeight() -35);;
+    Rectangle rectangle = Rectangle(pointFactory.createXY(30, 10), displayInfo.getLastWidth() -30, displayInfo.getLastHeight() -35);;
     
 
 

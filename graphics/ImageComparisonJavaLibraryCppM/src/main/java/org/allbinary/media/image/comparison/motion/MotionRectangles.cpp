@@ -50,66 +50,63 @@
 class MotionRectangles
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: rectangleVector: Vector;
+    private: Vector rectangleVector;
 
-    private: imageComparisonResult: ImageComparisonResult;
+    private: ImageComparisonResult imageComparisonResult;
 
-    const MAX_PIXEL_DISTANCE_THRESHOLD: int32_t = 2;
+    protected: const int32_t MAX_PIXEL_DISTANCE_THRESHOLD = 2;
 
-public constructor (string name, ImageComparisonResult imageComparisonResult){
-
-            super();
-        this.name= name;
+public: MotionRectangles(std::string name, ImageComparisonResult imageComparisonResult){
+this->name= name;
     
-this.setImageComparisonResult(imageComparisonResult);
+this->setImageComparisonResult(imageComparisonResult);
     
-this.setVector(new Vector());
+this->setVector(Vector());
     
 }
 
 
-    public Vector getVector(){
+    public: Vector getVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangleVector;
+                        return this->rectangleVector;
     
 }
 
 
-    public setVector(Vector rectangleVector){
-this.rectangleVector= rectangleVector;
+    public: void setVector(Vector rectangleVector){
+this->rectangleVector= rectangleVector;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public ImageComparisonResult getImageComparisonResult(){
+    public: ImageComparisonResult getImageComparisonResult(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageComparisonResult;
+                        return this->imageComparisonResult;
     
 }
 
 
-    public setImageComparisonResult(ImageComparisonResult imageComparisonResult){
-this.imageComparisonResult= imageComparisonResult;
+    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult){
+this->imageComparisonResult= imageComparisonResult;
     
 }
 

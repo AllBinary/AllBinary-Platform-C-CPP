@@ -55,55 +55,54 @@
 #include "TouchButtonInput.h"
 
 class CurrentlyPressedTouchButtonSingletonDebug: public CurrentlyPressedTouchButtonSingleton {
-        
 
-    private: static const instanceC: CurrentlyPressedTouchButtonSingletonDebug = new CurrentlyPressedTouchButtonSingletonDebug();
+    private: static const CurrentlyPressedTouchButtonSingletonDebug instanceC = CurrentlyPressedTouchButtonSingletonDebug();
 
-    public static CurrentlyPressedTouchButtonSingleton getInstance();
+    public: static CurrentlyPressedTouchButtonSingleton getInstance();
 
-    private: string: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-    private: listString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string listString = StringUtil::getInstance().EMPTY_STRING;
 
-    private: append: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string append = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const PRESSED_AND_FIRED: string = "pressed & fired";
+    private: const std::string PRESSED_AND_FIRED = "pressed & fired";
 
-    private: const PRESSED_AND_NOT_FIRED: string = "pressed in button but not fired";
+    private: const std::string PRESSED_AND_NOT_FIRED = "pressed in button but not fired";
 
-    private: const ASSOCIATED_RELEASED_AND_FIRED: string = "assoc. rel & fired";
+    private: const std::string ASSOCIATED_RELEASED_AND_FIRED = "assoc. rel & fired";
 
-    private: const RELEASED_AND_FIRED: string = "rel & fired 1";
+    private: const std::string RELEASED_AND_FIRED = "rel & fired 1";
 
-    private: const RELEASED_AND_FIRED_2: string = "rel & fired 2";
+    private: const std::string RELEASED_AND_FIRED_2 = "rel & fired 2";
 
-    private: const RELEASED_AND_NOT_FIRED: string = "rel & not fired";
+    private: const std::string RELEASED_AND_NOT_FIRED = "rel & not fired";
 
-    appendTouchButtonInput(string append, TouchButtonInput touchButtonInput);
+    private: void appendTouchButtonInput(std::string append, TouchButtonInput touchButtonInput);
 
-    append(string append);
+    private: void append(std::string append);
 
-    public clearLog(int32_t x, int32_t y);
+    public: void clearLog(int32_t x, int32_t y);
 
-    public releaseAndNotFired();
+    public: void releaseAndNotFired();
 
-    public releaseAndFired(TouchButtonInput touchButtonInput);
+    public: void releaseAndFired(TouchButtonInput touchButtonInput);
 
-    public releaseAndFired2(TouchButtonInput touchButtonInput);
+    public: void releaseAndFired2(TouchButtonInput touchButtonInput);
 
-    public releaseAndFiredAssociated(TouchButtonInput touchButtonInput);
+    public: void releaseAndFiredAssociated(TouchButtonInput touchButtonInput);
 
-    public pressedAndFired(TouchButtonInput touchButtonInput);
+    public: void pressedAndFired(TouchButtonInput touchButtonInput);
 
-    public pressedAndNotFired(TouchButtonInput touchButtonInput);
+    public: void pressedAndNotFired(TouchButtonInput touchButtonInput);
 
-    public TouchButtonInput removeAt(int32_t index);
+    public: TouchButtonInput removeAt(int32_t index);
 
-    public bool remove(TouchButtonInput touchButtonInput);
+    public: bool remove(TouchButtonInput touchButtonInput);
 
-    public add(TouchButtonInput touchButtonInput);
+    public: void add(TouchButtonInput touchButtonInput);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

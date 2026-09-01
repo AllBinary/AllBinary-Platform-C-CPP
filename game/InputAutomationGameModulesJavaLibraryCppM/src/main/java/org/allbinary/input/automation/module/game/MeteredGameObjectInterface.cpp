@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Double.h"
         
 
@@ -40,7 +42,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MeteredGameObjectInterface {
-        
 
     std::vector<number> getRatios()
 

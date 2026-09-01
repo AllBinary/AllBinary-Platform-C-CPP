@@ -42,7 +42,6 @@
         #include "LayerPlacementInterfaceBasicArrayListFactoryInterface.h"
 
 class GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory {
-        
 
     LayerPlacementInterfaceBasicArrayListFactoryInterface getInstance(int32_t level);
 

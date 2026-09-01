@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_DISPLAYSUTIL_H
         #define ORG_ALLBINARY_MEDIA_DISPLAYSUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <java/awt/Dimension.h>
@@ -66,15 +68,14 @@
 class DisplaysUtil
             : public Object
          {
-        
 
-    public static DisplaysUtil getInstance();
+    public: static DisplaysUtil getInstance();
 
-    private: static const instance: DisplaysUtil = new DisplaysUtil();
+    private: static DisplaysUtil instance() { return DisplaysUtil(); }
 
-    public Rectangle getPrimaryScreenSize();
+    public: Rectangle getPrimaryScreenSize();
 
-    public std::vector<Rectangle> getScreenSizesAsRectangleArray();
+    public: std::vector<Rectangle> getScreenSizesAsRectangleArray();
 
 };
 

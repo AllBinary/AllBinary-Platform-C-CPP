@@ -45,14 +45,13 @@
 class ViewPositionFactory
             : public Object
         : public ViewPositionFactoryInterface {
-        
 
-    public ViewPositionBase getInstance(){
+    public: ViewPositionBase getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ViewPosition.getInstanceD();;
+                        return ViewPosition::getInstanceD();;
     
 }
 

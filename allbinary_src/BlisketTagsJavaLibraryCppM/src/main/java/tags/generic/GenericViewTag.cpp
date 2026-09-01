@@ -47,22 +47,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GenericViewTag: public TransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: output: string;
+    private: std::string output;
 
-    private: file: string;
+    private: std::string file;
 
-public constructor (){
+public: GenericViewTag(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -70,18 +67,18 @@ public constructor (){
 }
 
 
-    public setOutput(string value){
-this.output= value;
+    public: void setOutput(std::string value){
+this->output= value;
     
-this.getPropertiesHashMap()!.put(InputOutputTypeData.getInstance()!.NAME, this.output);
+this->getPropertiesHashMap().put(InputOutputTypeData::getInstance().NAME, this->output);
     
 }
 
 
-    public setFile(string value){
-this.file= value;
+    public: void setFile(std::string value){
+this->file= value;
     
-this.getPropertiesHashMap()!.put(InputOutputTypeData.getInstance()!.FILE, this.file);
+this->getPropertiesHashMap().put(InputOutputTypeData::getInstance().FILE, this->file);
     
 }
 

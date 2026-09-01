@@ -53,45 +53,44 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentGatewayViewAbstract: public TransformInfoHttpComposite {
-        
 
-    private: paymentGatewayPrimaryKey: PaymentGatewayPrimaryKey;
+    private: PaymentGatewayPrimaryKey paymentGatewayPrimaryKey;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: PaymentGatewayViewAbstract(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.getFormData(this.getPageContext()!.getRequest() as HttpServletRequest);
+this->getFormData(this->getPageContext().getRequest() as HttpServletRequest);
     
 }
 
 
-    public getFormData(HttpServletRequest request){
+    public: void getFormData(HttpServletRequest request){
 
-    storeName: string = this.getWeblisketSession()!.getStoreName()!;;
+    std::string storeName = this->getWeblisketSession().getStoreName();;
     
 
-    gatewayName: string = request.getParameter(PaymentGatewayData.NAME.toString())!;;
+    std::string gatewayName = request.getParameter(PaymentGatewayData::NAME.toString());;
     
-this.setPaymentGatewayPrimaryKey(new PaymentGatewayPrimaryKey(storeName, gatewayName));
+this->setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey(storeName, gatewayName));
     
 }
 
 
-    public PaymentGatewayPrimaryKey getPaymentGatewayPrimaryKey(){
+    public: PaymentGatewayPrimaryKey getPaymentGatewayPrimaryKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentGatewayPrimaryKey;
+                        return this->paymentGatewayPrimaryKey;
     
 }
 
 
-    public setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey paymentGatewayPrimaryKey){
-this.paymentGatewayPrimaryKey= paymentGatewayPrimaryKey;
+    public: void setPaymentGatewayPrimaryKey(PaymentGatewayPrimaryKey paymentGatewayPrimaryKey){
+this->paymentGatewayPrimaryKey= paymentGatewayPrimaryKey;
     
 }
 

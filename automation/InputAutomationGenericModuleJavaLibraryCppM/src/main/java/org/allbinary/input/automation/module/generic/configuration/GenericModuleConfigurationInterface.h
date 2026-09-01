@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GenericModuleConfigurationInterface {
-        
 
     GenericProfile getSelectedGenericProfile();
 
-    setSelectedGenericProfile(GenericProfile selectedGenericProfile);
+    void setSelectedGenericProfile(GenericProfile selectedGenericProfile);
 
 };
 

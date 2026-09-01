@@ -45,11 +45,10 @@
 #include "PathFindingLayerInterface.h"
 
 class RTSLayerEvent: public AllBinaryEventObject {
-        
 
-    private: rtsLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface rtsLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-public constructor (PathFindingLayerInterface rtsLayer){
+public: RTSLayerEvent(PathFindingLayerInterface rtsLayer){
             super(rtsLayer);
                     
 
@@ -58,37 +57,37 @@ public constructor (PathFindingLayerInterface rtsLayer){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("RTSLayerEvent: \n");
+stringBuffer.append("RTSLayerEvent: \n");
     
-stringBuffer!.append("RTSLayer: ");
+stringBuffer.append("RTSLayer: ");
     
-stringBuffer!.append(this.getRtsLayer()!.toString());
+stringBuffer.append(this->getRtsLayer().toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public PathFindingLayerInterface getRtsLayer(){
+    public: PathFindingLayerInterface getRtsLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rtsLayer;
+                        return this->rtsLayer;
     
 }
 
 
-    public setRtsLayer(PathFindingLayerInterface rtsLayer){
-this.rtsLayer= rtsLayer;
+    public: void setRtsLayer(PathFindingLayerInterface rtsLayer){
+this->rtsLayer= rtsLayer;
     
 }
 

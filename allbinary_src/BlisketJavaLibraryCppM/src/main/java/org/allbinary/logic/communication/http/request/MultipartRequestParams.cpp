@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -68,95 +70,93 @@
         #include "RequestParams.h"
 
 class MultipartRequestParams: public RequestParams {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: special: bool = false;
+    private: bool special = false;
 
-public constructor (HttpServletRequest request){
+public: MultipartRequestParams(HttpServletRequest request){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.processMultipartRequest(request);
+this->processMultipartRequest(request);
     
 }
 
 
-public constructor (PageContext pageContext){
+public: MultipartRequestParams(PageContext pageContext){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.processMultipartRequest(pageContext!.getRequest() as HttpServletRequest);
+this->processMultipartRequest(pageContext.getRequest() as HttpServletRequest);
     
 }
 
 
-    setSpecial(){
-this.special= true;
+    protected: void setSpecial(){
+this->special= true;
     
 }
 
 
-    processMultipartRequest(HttpServletRequest request){
+    private: void processMultipartRequest(HttpServletRequest request){
 
         try {
             
-    specialRequest: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> specialRequest = HashMap<any, any>();;
     
 
-    multipartRequestList: List = AbFileUploadFactory.getInstance()!.getFileItemStreamList(request)!;;
+    List multipartRequestList = AbFileUploadFactory::getInstance().getFileItemStreamList(request);;
     
 
                         if(multipartRequestList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this.logUtil!.putF("FileItem List Size: " +multipartRequestList!.length, this, "processMultipartRequest()");
+                                    this->logUtil.putF("FileItem List Size: " +multipartRequestList.length, this, "processMultipartRequest()");
     
 
                                     }
                                 
 
-    fileItemArray: std::vector<any> = multipartRequestList!.toArray()!;;
+    std::vector<Object*> fileItemArray = multipartRequestList.toArray();;
     
 
-    size: int32_t = fileItemArray!.length
-                ;;
+    int32_t size = fileItemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    fileItem: FileItem = fileItemArray[index]! as FileItem;;
+    FileItem fileItem = fileItemArray[index]! as FileItem;;
     
 
-    name: string = fileItem!.getName()!;;
+    std::string name = fileItem.getName();;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(name))
+                        if(StringValidationUtil::getInstance().isEmpty(name))
                         
                                     {
-                                    specialRequest!.put(fileItem!.getFieldName(), fileItem!.getString());
+                                    specialRequest.put(fileItem.getFieldName(), fileItem.getString());
     
 
                                     }
                                 
                         else {
-                            specialRequest!.put(fileItem!.getFieldName(), fileItem);
+                            specialRequest.put(fileItem.getFieldName(), fileItem);
     
 
                         }
@@ -164,17 +164,17 @@ this.special= true;
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this.logUtil!.putF("Special Request Data: " +specialRequest!.toString(), this, "processMultipartRequest()");
+                                    this->logUtil.putF("Special Request Data: " +specialRequest.toString(), this, "processMultipartRequest()");
     
 
                                     }
                                 
-this.setSpecial();
+this->setSpecial();
     
-this.setMap(specialRequest);
+this->setMap(specialRequest);
     
 
                                     }
@@ -184,10 +184,10 @@ this.setMap(specialRequest);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPREQUEST))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    this.logUtil!.putF("Using Normal RequestParams", this, "processMultipartRequest()");
+                                    this->logUtil.putF("Using Normal RequestParams", this, "processMultipartRequest()");
     
 
                                     }
@@ -200,10 +200,10 @@ super.setMap(request.getParameterMap());
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPREQUESTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUESTERROR))
                         
                                     {
-                                    this.logUtil!.putF("Should Not Occur", this, "processMultipartRequest()");
+                                    this->logUtil.putF("Should Not Occur", this, "processMultipartRequest()");
     
 
                                     }
@@ -217,16 +217,16 @@ super.setMap(request.getParameterMap());
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-                        if(this.special)
+                        if(this->special)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getMap() as HashMap<any, any>;
+                        return this->getMap() as HashMap<any, any>;
     
 
                                     }

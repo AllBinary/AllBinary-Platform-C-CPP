@@ -76,9 +76,8 @@
 #include "CreateGameRunnable.h"
 
 class DemoGameMidlet: public GameMidlet {
-        
 
-public constructor (ClientInformationFactory clientInformationFactory){
+public: DemoGameMidlet(ClientInformationFactory clientInformationFactory){
             super(clientInformationFactory);
                     
 
@@ -89,13 +88,13 @@ public constructor (ClientInformationFactory clientInformationFactory){
 
                 //@Throws(Exception.constructor)
             
-    bool isContinue(){
+    protected: bool isContinue(){
 
-    hashtable: Hashtable<any, any> = this.getStartStateHashtable()!;;
+    Hashtable<any, any> hashtable = this->getStartStateHashtable();;
     
 
                         if(hashtable != 
-                                    null
+                                    nullptr
                                  && hashtable.length > 0)
                         
                                     {
@@ -121,7 +120,7 @@ public constructor (ClientInformationFactory clientInformationFactory){
 }
 
 
-    public int32_t getHighestLevel(){
+    public: int32_t getHighestLevel(){
 
 
 
@@ -133,89 +132,89 @@ public constructor (ClientInformationFactory clientInformationFactory){
 
                 //@Throws(Exception.constructor)
             
-    public GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface(){
+    public: GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    GameCanvasRunnableInterface createGameCanvasRunnable(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    protected: GameCanvasRunnableInterface createGameCanvasRunnable(AllBinaryGameLayerManager allBinaryGameLayerManager){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    GameCanvasRunnableInterface createGameCanvasRunnableInterface(){
+    protected: GameCanvasRunnableInterface createGameCanvasRunnableInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createGameCanvasRunnable(this.createGameLayerManager());;
+                        return this->createGameCanvasRunnable(this->createGameLayerManager());;
     
 }
 
 
-    public demoSetup(){
+    public: void demoSetup(){
 }
 
 
-    public postDemoSetup(){
-}
-
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public setDemo(){
-this.logUtil!.putF(this.commonStrings!.START, this, "setDemo");
-    
-
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
-    
-progressCanvas!.start();
-    
-PrimaryThreadPool.getInstance()!.runTask(new DemoRunnable(this));
-    
+    public: void postDemoSetup(){
 }
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public createGame(){
-
-    CREATE_GAME: string = "createGame";;
-    
-this.logUtil!.putF(this.commonStrings!.START, this, CREATE_GAME);
+    public: void setDemo(){
+this->logUtil.putF(this->commonStrings.START, this, "setDemo");
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.start();
+progressCanvas.start();
     
-
-    hashtable: Hashtable<any, any> = this.getStartStateHashtable()!;;
-    
-this.setStartStateHashtable(NullUtil.getInstance()!.NULL_TABLE);
-    
-PrimaryThreadPool.getInstance()!.runTask(new CreateGameRunnable(this, hashtable));
-    
-this.logUtil!.putF(this.commonStrings!.END, this, CREATE_GAME);
+PrimaryThreadPool::getInstance().runTask(DemoRunnable(this));
     
 }
 
 
-    public bool isReady(){
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void createGame(){
+
+    std::string CREATE_GAME = "createGame";;
+    
+this->logUtil.putF(this->commonStrings.START, this, CREATE_GAME);
+    
+
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    
+progressCanvas.start();
+    
+
+    Hashtable<any, any> hashtable = this->getStartStateHashtable();;
+    
+this->setStartStateHashtable(NullUtil::getInstance().NULL_TABLE);
+    
+PrimaryThreadPool::getInstance().runTask(CreateGameRunnable(this, hashtable));
+    
+this->logUtil.putF(this->commonStrings.END, this, CREATE_GAME);
+    
+}
+
+
+    public: bool isReady(){
 
 
 

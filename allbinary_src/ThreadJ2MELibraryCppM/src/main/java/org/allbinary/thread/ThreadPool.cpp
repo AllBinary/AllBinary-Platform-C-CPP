@@ -75,72 +75,69 @@
 class ThreadPool
             : public Object
          {
-        
 
-    private: static const ROOT_NAME: string = "-PooledThread-";
+    private: static const std::string ROOT_NAME = "-PooledThread-";
 
-    public static const NORMAL_PRIORITY: int32_t = Thread.NORM_PRIORITY;
+    public: static const int32_t NORMAL_PRIORITY = Thread::NORM_PRIORITY;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const NULL_RUNNABLE: NullRunnable = NullRunnable.getInstance()!;
+    protected: const NullRunnable NULL_RUNNABLE = NullRunnable::getInstance();
 
-    const threadPoolStrings: ThreadPoolStrings = ThreadPoolStrings.getInstance()!;
+    protected: const ThreadPoolStrings threadPoolStrings = ThreadPoolStrings::getInstance();
 
-    const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    private: const poolName: string;
+    private: std::string poolName;
 
-    private: const priority: int32_t;
+    private: int32_t priority;
 
-    private: isAlive: bool = false;
+    private: bool isAlive = false;
 
-    private: taskQueue: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList taskQueue = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: threadID: int32_t= 0;
+    private: int32_t threadID= 0;
 
-    private: numThreads: int32_t;
+    private: int32_t numThreads;
 
-    runningTask: bool= false;
+    protected: bool runningTask= false;
 
-public constructor (string poolName, int32_t numThreads, int32_t priority){
-
-            super();
-        this.poolName= poolName;
+public: ThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
+this->poolName= poolName;
     
-this.priority= priority;
+this->priority= priority;
     
-this.numThreads= numThreads;
+this->numThreads= numThreads;
     
 }
 
 
-    public init(){
+    public: void init(){
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
-                                    this.isAlive= true;
+                                    this->isAlive= true;
     
-this.taskQueue= new BasicArrayListD();
+this->taskQueue= BasicArrayListD();
     
 
-    pooledThread: PooledThread;;
+    PooledThread pooledThread;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < this.numThreads; i++)
+    int32_t i = 0;i < this->numThreads; i++)
         {
-pooledThread= new PooledThread(this);
+pooledThread= PooledThread(this);
     
-pooledThread!.setPriority(this.priority);
+pooledThread.setPriority(this->priority);
     
-pooledThread!.start();
+pooledThread.start();
     
 }
 
@@ -152,16 +149,16 @@ pooledThread!.start();
 
                 //@Throws(Exception.constructor)
             
-    public runAPriorityTask(){
+    public: void runAPriorityTask(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public runTaskWithPriority(PriorityRunnable task){
+    public: void runTaskWithPriority(PriorityRunnable task){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -170,37 +167,37 @@ pooledThread!.start();
         //mutex.withLock
         
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
-                                    this.init();
+                                    this->init();
     
 
                                     }
                                 
 
                         if(task != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    size: int32_t = this.taskQueue!.size()!;;
+    int32_t size = this->taskQueue.size();;
     
 
-    runnable: PriorityRunnable;;
+    PriorityRunnable runnable;;
     
 
-    lowerPriorityRunnable: PriorityRunnable = this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE;;
+    PriorityRunnable lowerPriorityRunnable = this->threadObjectUtil.NULL_PRIORITY_RUNNABLE;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-runnable= this.taskQueue!.get(index) as PriorityRunnable;
+runnable= this->taskQueue.get(index) as PriorityRunnable;
     
 
                         if(runnable.getPriority() > task.getPriority())
@@ -217,24 +214,24 @@ break;
 }
 
 
-                        if(lowerPriorityRunnable == this.threadObjectUtil!.NULL_PRIORITY_RUNNABLE)
+                        if(lowerPriorityRunnable == this->threadObjectUtil.NULL_PRIORITY_RUNNABLE)
                         
                                     {
-                                    this.taskQueue!.add(task);
+                                    this->taskQueue.add(task);
     
 
                                     }
                                 
                         else {
                             
-    index: int32_t = this.taskQueue!.indexOf(lowerPriorityRunnable)!;;
+    int32_t index = this->taskQueue.indexOf(lowerPriorityRunnable);;
     
-this.taskQueue!.addAt(index, task);
+this->taskQueue.addAt(index, task);
     
 
                         }
                             
-this.notify();
+this->notify();
     
 
                                     }
@@ -244,7 +241,7 @@ this.notify();
 }
 
 
-    public runTask(Runnable task){
+    public: void runTask(Runnable task){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -253,23 +250,23 @@ this.notify();
         //mutex.withLock
         
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
-                                    this.init();
+                                    this->init();
     
 
                                     }
                                 
 
                         if(task != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.taskQueue!.add(task);
+                                    this->taskQueue.add(task);
     
-this.notify();
+this->notify();
     
 
                                     }
@@ -281,7 +278,7 @@ this.notify();
 
                 //@Throws(InterruptedException.constructor)
             
-    Runnable getTask(){
+    protected: Runnable getTask(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -290,27 +287,27 @@ this.notify();
         //mutex.withLock
         
 
-        while(this.taskQueue!.size() == 0)
+        while(this->taskQueue.size() == 0)
         {
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_RUNNABLE;
+                        return this->NULL_RUNNABLE;
     
 
                                     }
                                 
-this.wait();
+this->wait();
     
 }
 
 
-    runnable: Runnable = this.taskQueue!.removeAt(0) as Runnable;;
+    Runnable runnable = this->taskQueue.removeAt(0) as Runnable;;
     
 
 
@@ -323,7 +320,7 @@ this.wait();
 }
 
 
-    public clear(){
+    public: void clear(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -332,10 +329,10 @@ this.wait();
         //mutex.withLock
         
 
-                        if(this.isAlive)
+                        if(this->isAlive)
                         
                                     {
-                                    this.taskQueue!.clear();
+                                    this->taskQueue.clear();
     
 
                                     }
@@ -345,7 +342,7 @@ this.wait();
 }
 
 
-    public close(){
+    public: void close(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -354,12 +351,12 @@ this.wait();
         //mutex.withLock
         
 
-                        if(this.isAlive)
+                        if(this->isAlive)
                         
                                     {
-                                    this.isAlive= false;
+                                    this->isAlive= false;
     
-this.taskQueue!.clear();
+this->taskQueue.clear();
     
 
                                     }
@@ -369,7 +366,7 @@ this.taskQueue!.clear();
 }
 
 
-    public join(){
+    public: void join(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -377,20 +374,20 @@ this.taskQueue!.clear();
 
         //mutex.withLock
         
-this.isAlive= false;
+this->isAlive= false;
     
-this.taskQueue!.clear();
+this->taskQueue.clear();
     
-this.notifyAll();
+this->notifyAll();
     
 
 
 }
 
 
-    public bool isBusy(){
+    public: bool isBusy(){
 
-                        if(!this.isAlive)
+                        if(!this->isAlive)
                         
                                     {
                                     
@@ -403,7 +400,7 @@ this.notifyAll();
                                     }
                                 
 
-                        if(this.taskQueue!.size() > 0)
+                        if(this->taskQueue.size() > 0)
                         
                                     {
                                     
@@ -416,7 +413,7 @@ this.notifyAll();
                                     }
                                 
 
-                        if(this.runningTask)
+                        if(this->runningTask)
                         
                                     {
                                     
@@ -437,18 +434,18 @@ this.notifyAll();
 }
 
 
-    threadStarted(){
+    protected: void threadStarted(){
 }
 
 
-    threadStopped(){
+    protected: void threadStopped(){
 
-                        if(this.numThreads == 1)
+                        if(this->numThreads == 1)
                         
                                     {
-                                    this.isAlive= false;
+                                    this->isAlive= false;
     
-this.taskQueue!.clear();
+this->taskQueue.clear();
     
 
                                     }
@@ -456,20 +453,20 @@ this.taskQueue!.clear();
 }
 
 
-    startTask(Runnable task){
+    protected: void startTask(Runnable task){
 }
 
 
-    completedTask(Runnable task){
+    protected: void completedTask(Runnable task){
 }
 
 
-    public string createName(){
+    public: std::string createName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(this.poolName)!.append(ThreadPool.ROOT_NAME)!.appendint(this.threadID++)!.toString();;
+                        return StringMaker().append(this->poolName).append(ThreadPool::ROOT_NAME).appendint(this->threadID++).toString();;
     
 }
 

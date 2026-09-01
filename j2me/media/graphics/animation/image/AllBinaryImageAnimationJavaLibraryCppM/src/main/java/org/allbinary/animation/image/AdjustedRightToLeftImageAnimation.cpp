@@ -50,35 +50,34 @@
         #include "RightToLeftImageAnimation.h"
 
 class AdjustedRightToLeftImageAnimation: public RightToLeftImageAnimation {
-        
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
+public: AdjustedRightToLeftImageAnimation(Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
             super(image, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init(dx, dy);
+this->init(dx, dy);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t dx, int32_t dy){
-this.dx= dx;
+    public: void init(int32_t dx, int32_t dy){
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this.dx, y +this.dy);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 

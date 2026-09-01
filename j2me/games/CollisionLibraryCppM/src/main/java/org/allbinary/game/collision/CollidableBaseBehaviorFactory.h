@@ -55,9 +55,8 @@
 class CollidableBaseBehaviorFactory
             : public Object
         : public CollidableBaseBehaviorFactoryInterface {
-        
 
-    public CollidableBaseBehavior createBehavior();
+    public: CollidableBaseBehavior createBehavior();
 
 };
 

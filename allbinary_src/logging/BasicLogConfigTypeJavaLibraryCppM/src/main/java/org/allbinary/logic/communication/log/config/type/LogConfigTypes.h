@@ -51,11 +51,10 @@
 class LogConfigTypes
             : public Object
          {
-        
 
-    public static LOGGING: BasicArrayList = new BasicArrayListD();
+    public: static BasicArrayList LOGGING = BasicArrayListD();
 
-private constructor ();
+private: LogConfigTypes();
 
 };
 

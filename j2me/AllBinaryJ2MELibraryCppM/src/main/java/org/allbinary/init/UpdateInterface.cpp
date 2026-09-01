@@ -40,11 +40,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpdateInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    update()
+    void update()
 
 };
 

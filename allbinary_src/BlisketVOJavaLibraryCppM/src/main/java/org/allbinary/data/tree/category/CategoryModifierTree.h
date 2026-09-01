@@ -65,22 +65,21 @@
         #include "CategoryPrivateTree.h"
 #include "CategoryModifierTreeInterface.h"
 
-class CategoryModifierTree: public CategoryPrivateTree: public CategoryModifierTreeInterface {
-        
+class CategoryModifierTree: public CategoryPrivateTree, public CategoryModifierTreeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-public constructor (CategoryFactoryInterface categoryFactoryInterface);
+public: CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface);
+    public: void insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public delete(CategoryInterface parentCategoryInterface, CategoryInterface existingChildCategoryInterface);
+    public: void delete_(CategoryInterface parentCategoryInterface, CategoryInterface existingChildCategoryInterface);
 
 };
 

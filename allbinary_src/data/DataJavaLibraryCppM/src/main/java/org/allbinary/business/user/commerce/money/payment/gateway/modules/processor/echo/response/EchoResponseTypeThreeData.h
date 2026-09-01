@@ -45,11 +45,10 @@
 class EchoResponseTypeThreeData
             : public Object
          {
-        
 
-    public static NAME: string = "ECHOTYPE3";
+    public: static std::string NAME = "ECHOTYPE3";
 
-private constructor ();
+private: EchoResponseTypeThreeData();
 
 };
 

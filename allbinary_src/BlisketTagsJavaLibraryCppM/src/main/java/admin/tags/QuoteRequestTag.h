@@ -70,23 +70,22 @@
         #include "TableTag.h"
 
 class QuoteRequestTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeName: string;
+    private: std::string storeName;
 
-public constructor ();
+public: QuoteRequestTag();
 
-    public setStoreName(string storeName);
+    public: void setStoreName(std::string storeName);
 
                 //@Throws(LicensingException.constructor)
             
-    string email();
+    private: std::string email();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

@@ -74,19 +74,18 @@
         #include "BaseDropCellPositionGenerator.h"
 
 class AnyRandomDropCellPositionGenerator: public BaseDropCellPositionGenerator {
-        
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    geographicMapInterface: any = NullUtil.getInstance()!.NULL_OBJECT;
-
-                //@Throws(Exception.constructor)
-            
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+    protected: Object* geographicMapInterface = NullUtil::getInstance().NULL_OBJECT;
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

@@ -42,137 +42,136 @@
 class GLOBALS2
             : public Object
          {
-        
 
-    public static const GETCURRENTLOCATION: string = "Get Current Location";
+    public: static const std::string GETCURRENTLOCATION = "Get Current Location";
 
-    public static const GETCURRENTHOMELOCATION: string = "Get Current Home Location";
+    public: static const std::string GETCURRENTHOMELOCATION = "Get Current Home Location";
 
-    public static const GENERATEALLSTORES: string = "Generate All Stores";
+    public: static const std::string GENERATEALLSTORES = "Generate All Stores";
 
-    public static const LICENSEAGREEMENT: string = "License Agreement";
+    public: static const std::string LICENSEAGREEMENT = "License Agreement";
 
-    public static const CREATEDATABASES: string = "Create Databases";
+    public: static const std::string CREATEDATABASES = "Create Databases";
 
-    public static const VIEWNAME: string = "VIEW_NAME";
+    public: static const std::string VIEWNAME = "VIEW_NAME";
 
-    public static const SETSHIPPINGTYPE: string = "Set Shipping Type";
+    public: static const std::string SETSHIPPINGTYPE = "Set Shipping Type";
 
-    public static const VIEWSUMMARY: string = "View Summary";
+    public: static const std::string VIEWSUMMARY = "View Summary";
 
-    public static const SET: string = "Set";
+    public: static const std::string SET = "Set";
 
-    public static const SELECT: string = "Select";
+    public: static const std::string SELECT = "Select";
 
-    public static const SELECTNEW: string = "Select New";
+    public: static const std::string SELECTNEW = "Select New";
 
-    public static const SELECTEXISTING: string = "Select Existing";
+    public: static const std::string SELECTEXISTING = "Select Existing";
 
-    public static const PROCESS: string = "Process";
+    public: static const std::string PROCESS = "Process";
 
-    public static const LOGINSUCCESS: string = "Login Successful";
+    public: static const std::string LOGINSUCCESS = "Login Successful";
 
-    public static const LOGINFAILED: string = "Login Failed";
+    public: static const std::string LOGINFAILED = "Login Failed";
 
-    public static const NONE: string = "None";
+    public: static const std::string NONE = "None";
 
-    public static const TOP: string = "Top";
+    public: static const std::string TOP = "Top";
 
-    public static const LEFT: string = "Left";
+    public: static const std::string LEFT = "Left";
 
-    public static const RIGHT: string = "Right";
+    public: static const std::string RIGHT = "Right";
 
-    public static const BACK: string = "Back";
+    public: static const std::string BACK = "Back";
 
-    public static const BOTTOM: string = "Bottom";
+    public: static const std::string BOTTOM = "Bottom";
 
-    public static const FRONT: string = "Front";
+    public: static const std::string FRONT = "Front";
 
-    public static const AUTHORIZE: string = "Authorize";
+    public: static const std::string AUTHORIZE = "Authorize";
 
-    public static const AUTHORIZEANDEVALBODY: string = "Authorize AND EVAL BODY";
+    public: static const std::string AUTHORIZEANDEVALBODY = "Authorize AND EVAL BODY";
 
-    public static const AUTHORIZEANDEVALBODYONERROR: string = "Authorize AND EVAL BODY On Error";
+    public: static const std::string AUTHORIZEANDEVALBODYONERROR = "Authorize AND EVAL BODY On Error";
 
-    public static const AUTHORIZEORDEREVALBODYONERROR: string = "Authorize Order Eval On Error";
+    public: static const std::string AUTHORIZEORDEREVALBODYONERROR = "Authorize Order Eval On Error";
 
-    public static const AUTHORIZEFORMEVALBODYONERROR: string = "Authorize Form Eval On Error";
+    public: static const std::string AUTHORIZEFORMEVALBODYONERROR = "Authorize Form Eval On Error";
 
-    public static const AUTHORIZEORDERANDSKIPBODY: string = "Authorize Order Skip";
+    public: static const std::string AUTHORIZEORDERANDSKIPBODY = "Authorize Order Skip";
 
-    public static const AUTHORIZEORDERANDEVALBODY: string = "Authorize Order Eval";
+    public: static const std::string AUTHORIZEORDERANDEVALBODY = "Authorize Order Eval";
 
-    public static const EDITPRICING: string = "Edit Pricing";
+    public: static const std::string EDITPRICING = "Edit Pricing";
 
-    public static const UPDATEPRICING: string = "Update Pricing";
+    public: static const std::string UPDATEPRICING = "Update Pricing";
 
-    public static const SETPAYMENTMETHOD: string = "Set Payment Method";
+    public: static const std::string SETPAYMENTMETHOD = "Set Payment Method";
 
-    public static const BACKUP: string = "Backup";
+    public: static const std::string BACKUP = "Backup";
 
-    public static const RESTORE: string = "Restore";
+    public: static const std::string RESTORE = "Restore";
 
-    public static const SUMMARY: string = "Summary";
+    public: static const std::string SUMMARY = "Summary";
 
-    public static const DESCRIPTION: string = "Description";
+    public: static const std::string DESCRIPTION = "Description";
 
-    public static const IMG: string = "img";
+    public: static const std::string IMG = "img";
 
-    public static const HREF: string = "href";
+    public: static const std::string HREF = "href";
 
-    public static const KEYWORD: string = "keyword";
+    public: static const std::string KEYWORD = "keyword";
 
-    public static const TYPE: string = "TYPE";
+    public: static const std::string TYPE = "TYPE";
 
-    public static const DATA: string = "DATA";
+    public: static const std::string DATA = "DATA";
 
-    public static const NUM: string = "NUM";
+    public: static const std::string NUM = "NUM";
 
-    public static const PRICE: string = "PRICE";
+    public: static const std::string PRICE = "PRICE";
 
-    public static const REGISTER: string = "Register";
+    public: static const std::string REGISTER = "Register";
 
-    public static const CHECKOUT: string = "Checkout";
+    public: static const std::string CHECKOUT = "Checkout";
 
-    public static const ADMINCOMMAND: string = "AdminCommand";
+    public: static const std::string ADMINCOMMAND = "AdminCommand";
 
-    public static const PROCESSBODYIFNOTAUTHENTICATED: string = "Not Authenticated";
+    public: static const std::string PROCESSBODYIFNOTAUTHENTICATED = "Not Authenticated";
 
-    public static const PROCESSBODYIFAUTHENTICATED: string = "Authenticated";
+    public: static const std::string PROCESSBODYIFAUTHENTICATED = "Authenticated";
 
-    public static const PROCESSTRANSACTION: string = "Process Transaction";
+    public: static const std::string PROCESSTRANSACTION = "Process Transaction";
 
-    public static const NEWPASSWORD: string = "New Password";
+    public: static const std::string NEWPASSWORD = "New Password";
 
-    public static const CHANGEPASSWORD: string = "Change Password";
+    public: static const std::string CHANGEPASSWORD = "Change Password";
 
-    public static const JDBCDRIVER: string = "Jdbc Driver";
+    public: static const std::string JDBCDRIVER = "Jdbc Driver";
 
-    public static const WEBAPPPATH: string = "Webapp Path";
+    public: static const std::string WEBAPPPATH = "Webapp Path";
 
-    public static const AMOUNTVALUE: string = "Amount Value";
+    public: static const std::string AMOUNTVALUE = "Amount Value";
 
-    public static const GETORDERIDFROMSESSION: string = "Get Order Id From Session";
+    public: static const std::string GETORDERIDFROMSESSION = "Get Order Id From Session";
 
-    public static const SETUPPAYMENTMETHODS: string = "Setup Payment Methods";
+    public: static const std::string SETUPPAYMENTMETHODS = "Setup Payment Methods";
 
-    public static const CANCELSTOREFRONT: string = "Cancel Store Front";
+    public: static const std::string CANCELSTOREFRONT = "Cancel Store Front";
 
-    public static const ADJUST: string = "Adjust";
+    public: static const std::string ADJUST = "Adjust";
 
-    public static const ISASUBSET: string = "Is a Subset";
+    public: static const std::string ISASUBSET = "Is a Subset";
 
-    public static const NOTASUBSET: string = "Not a Subset";
+    public: static const std::string NOTASUBSET = "Not a Subset";
 
-    public static const GENERATE: string = "Generate";
+    public: static const std::string GENERATE = "Generate";
 
-    public static const VIEW: string = "View";
+    public: static const std::string VIEW = "View";
 
-    public static const EDIT: string = "Edit";
+    public: static const std::string EDIT = "Edit";
 
-    public static const NEW: string = "New";
+    public: static const std::string NEW = "New";
 
-    public static const SEARCH: string = "Search";
+    public: static const std::string SEARCH = "Search";
 
 };
 

@@ -51,15 +51,14 @@
 class ColorUtil
             : public Object
          {
-        
 
-    private: static const instance: ColorUtil = new ColorUtil();
+    private: static ColorUtil instance() { return ColorUtil(); }
 
-    public static ColorUtil getInstance();
+    public: static ColorUtil getInstance();
 
-    public bool isGreyishOrWhiteLike(Color color);
+    public: bool isGreyishOrWhiteLike(Color color);
 
-    public bool isDark(Color color);
+    public: bool isDark(Color color);
 
 };
 

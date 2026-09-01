@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/System.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -38,65 +40,61 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class IntPermutationVisitor: public Visitor {
-        
 
-    const data: std::vector<int32_t>;
+    protected: std::vector<int32_t> data;
 
-public constructor (std::vector<int32_t> data){
-
-            super();
-        this.data= data;
+public: IntPermutationVisitor(std::vector<int32_t> data){
+this->data= data;
     
 }
 
 
-    private: stringBuilder: StringMaker = new StringMaker();
+    private: StringMaker stringBuilder = StringMaker();
 
-    public any visit(any = {} anyType){
-this.stringBuilder!.delete(0, stringBuilder!.length());
+    public: Object* visit(Object* anyType){
+this->stringBuilder.delete(0, stringBuilder.length());
     
-this.print(this.data, stringBuilder);
+this->print(this->data, stringBuilder);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 
 
-    public print(std::vector<int32_t> data){
+    public: void print(std::vector<int32_t> data){
 
-    stringBuilder: StringMaker = new StringMaker();;
+    StringMaker stringBuilder = StringMaker();;
     
-this.print(data, stringBuilder);
+this->print(data, stringBuilder);
     
 }
 
 
-    public print(std::vector<int32_t> data, StringMaker stringBuilder){
+    public: void print(std::vector<int32_t> data, StringMaker stringBuilder){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    size: int32_t = data.length
-                ;;
+    int32_t size = data.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
-stringBuilder!.appendint(data[i]!);
+stringBuilder.appendint(data[i]!);
     
-stringBuilder!.append(commonSeps!.SPACE);
+stringBuilder.append(commonSeps.SPACE);
     
 }
 
-console.log(stringBuilder!.toString());
+console.log(stringBuilder.toString());
     
 }
 

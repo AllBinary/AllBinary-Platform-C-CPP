@@ -48,9 +48,8 @@
 #include "CollidableDestroyableDamageableLayer.h"
 
 class SpecialFireGameInputProcessor: public SpecialGameInputProcessor {
-        
 
-public constructor (CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
+public: SpecialFireGameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
             super(collidableDestroyableDamageableLayer);
                     
 
@@ -61,8 +60,8 @@ public constructor (CollidableDestroyableDamageableLayer collidableDestroyableDa
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-this.collidableDestroyableDamageableLayer!.fire(allbinaryLayerManager, gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+this->collidableDestroyableDamageableLayer.fire(allbinaryLayerManager, gameKeyEvent);
     
 }
 

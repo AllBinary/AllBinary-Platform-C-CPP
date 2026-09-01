@@ -58,27 +58,26 @@
         #include "AndroidSystemProperties.h"
 
 class AndroidOS: public GenericOperatingSystem {
-        
 
-    private: stringBuffer: StringMaker = new StringMaker();
+    private: StringMaker stringBuffer = StringMaker();
 
-    private: const DEVICE_ID: string = "DeviceId";
+    private: const std::string DEVICE_ID = "DeviceId";
 
-    private: const DEVICE_SOFTWARE_VERSION: string = "DeviceSoftwareVersion";
+    private: const std::string DEVICE_SOFTWARE_VERSION = "DeviceSoftwareVersion";
 
-    private: const LINE_1_NUMBER: string = "Line1Number";
+    private: const std::string LINE_1_NUMBER = "Line1Number";
 
-public constructor ();
+public: AndroidOS();
 
-    private: const OUYA: string = "ouya";
+    private: const std::string OUYA = "ouya";
 
-    public bool isOverScan();
+    public: bool isOverScan();
 
-    public int32_t getOverScanXPercent();
+    public: int32_t getOverScanXPercent();
 
-    public int32_t getOverScanYPercent();
+    public: int32_t getOverScanYPercent();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

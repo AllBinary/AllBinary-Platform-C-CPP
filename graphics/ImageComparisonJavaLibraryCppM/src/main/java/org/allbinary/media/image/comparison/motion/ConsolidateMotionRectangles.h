@@ -55,17 +55,16 @@
 #include "Rectangle.h"
 
 class ConsolidateMotionRectangles: public MotionRectangles {
-        
 
-    private: static const NAME: string = "consolidatedMotionRectangles_";
+    private: static const std::string NAME = "consolidatedMotionRectangles_";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (MotionRectangles motionRectangles);
+public: ConsolidateMotionRectangles(MotionRectangles motionRectangles);
 
-    consolidateMotionRectangles();
+    private: void consolidateMotionRectangles();
 
-    remove(Vector removeVector);
+    private: void remove(Vector removeVector);
 
 };
 

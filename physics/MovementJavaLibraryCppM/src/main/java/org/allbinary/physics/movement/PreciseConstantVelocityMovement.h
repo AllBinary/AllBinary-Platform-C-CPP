@@ -45,23 +45,22 @@
         #include "BasicConstantVelocityMovement.h"
 
 class PreciseConstantVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-    private: accumulatedX: int32_t= 0;
+    private: int32_t accumulatedX= 0;
 
-    private: accumulatedY: int32_t= 0;
+    private: int32_t accumulatedY= 0;
 
-    private: accumulatedZ: int32_t= 0;
+    private: int32_t accumulatedZ= 0;
 
-public constructor (BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
+public: PreciseConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
 
-    public init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
-    private: const factorValue: int32_t = ScaleFactorFactory.getInstance()!.DEFAULT_SCALE_VALUE;
+    private: const int32_t factorValue = ScaleFactorFactory::getInstance().DEFAULT_SCALE_VALUE;
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
 };
 

@@ -42,14 +42,11 @@
 class SensorAction
             : public Object
          {
-        
 
-    public const name: string;
+    public: std::string name;
 
-public constructor (string name){
-
-            super();
-        this.name= name;
+public: SensorAction(std::string name){
+this->name= name;
     
 }
 

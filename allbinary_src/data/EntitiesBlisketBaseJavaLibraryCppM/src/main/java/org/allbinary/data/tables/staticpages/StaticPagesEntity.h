@@ -73,28 +73,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StaticPagesEntityInterface.h"
 
-class StaticPagesEntity: public AbSqlBean: public StaticPagesEntityInterface {
-        
+class StaticPagesEntity: public AbSqlBean, public StaticPagesEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const TABLENAME: string = "staticpages";
+    private: const std::string TABLENAME = "staticpages";
 
-public constructor ();
+public: StaticPagesEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public string getFile(string store, string keywords);
+    public: std::string getFile(std::string store, std::string keywords);
 
-    public delete(string keywords);
+    public: void delete_(std::string keywords);
 
-    public string dropTable();
+    public: std::string dropTable();
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
 };
 

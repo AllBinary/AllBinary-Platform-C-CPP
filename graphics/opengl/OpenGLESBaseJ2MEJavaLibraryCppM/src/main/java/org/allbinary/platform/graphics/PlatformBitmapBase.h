@@ -51,9 +51,8 @@
 class PlatformBitmapBase
             : public Object
          {
-        
 
-    public Image getImage();
+    public: Image getImage();
 
 };
 

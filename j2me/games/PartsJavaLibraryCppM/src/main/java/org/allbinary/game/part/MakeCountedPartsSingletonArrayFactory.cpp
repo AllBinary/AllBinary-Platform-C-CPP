@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,93 +72,91 @@
 class MakeCountedPartsSingletonArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: MakeCountedPartsSingletonArrayFactory = new MakeCountedPartsSingletonArrayFactory();
+    private: static MakeCountedPartsSingletonArrayFactory instance() { return MakeCountedPartsSingletonArrayFactory(); }
 
-    public static MakeCountedPartsSingletonArrayFactory getInstance(){
+    public: static MakeCountedPartsSingletonArrayFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MakeCountedPartsSingletonArrayFactory.instance;
+                        return MakeCountedPartsSingletonArrayFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: list: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<PartInterface> getUpdated(std::vector<PartInterface> partInterfaceArray){
-this.list= new BasicArrayListD();
+    public: std::vector<PartInterface> getUpdated(std::vector<PartInterface> partInterfaceArray){
+this->list= BasicArrayListD();
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < partInterfaceArray!.length; index++)
+    int32_t index = 0;index < partInterfaceArray.size(); index++)
         {
-this.list.add(partInterfaceArray[index]!);
+this->list.add(partInterfaceArray[index]!);
     
 }
 
 
-    countedBasicArrayList: BasicArrayList = CountedPickedUpLayerInterfaceFactoryPool.getInstance()!.getList()!;;
+    BasicArrayList countedBasicArrayList = CountedPickedUpLayerInterfaceFactoryPool::getInstance().getList();;
     
 
-    layerInterfaceFactoryInterface: CountedPickedUpLayerInterfaceFactory;;
+    CountedPickedUpLayerInterfaceFactory layerInterfaceFactoryInterface;;
     
 
-    size: int32_t = countedBasicArrayList!.size()!;;
+    int32_t size = countedBasicArrayList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-layerInterfaceFactoryInterface= countedBasicArrayList!.objectArray[index]! as CountedPickedUpLayerInterfaceFactory;
+layerInterfaceFactoryInterface= countedBasicArrayList.objectArray[index]! as CountedPickedUpLayerInterfaceFactory;
     
-this.list.add(new CountedLayerInterfaceFactoryPart(0, layerInterfaceFactoryInterface));
+this->list.add(CountedLayerInterfaceFactoryPart(0, layerInterfaceFactoryInterface));
     
 }
 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Total Parts: ");
+stringBuffer.append("Total Parts: ");
     
-stringBuffer!.appendint(this.list.size());
+stringBuffer.appendint(this->list.size());
     
-stringBuffer!.append(" Counted: ");
+stringBuffer.append(" Counted: ");
     
-stringBuffer!.appendint(countedBasicArrayList!.size());
-    
-
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.GET_INSTANCE);
+stringBuffer.appendint(countedBasicArrayList.size());
     
 
-    newPartInterfaceArray: std::vector<PartInterface> = new Array(this.list.size());;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
+    
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.GET_INSTANCE);
     
 
-    newSize: int32_t = newPartInterfaceArray!.length
-                ;;
+    std::vector<PartInterface> newPartInterfaceArray = new Array(this->list.size());;
+    
+
+    int32_t newSize = newPartInterfaceArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < newSize; index++)
+    int32_t index = 0;index < newSize; index++)
         {
-newPartInterfaceArray[index]= this.list.get(index) as PartInterface;
+newPartInterfaceArray[index]= this->list.get(index) as PartInterface;
     
 }
 

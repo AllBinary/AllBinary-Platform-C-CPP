@@ -71,27 +71,26 @@
 class UserEmailEventsConfiguration
             : public Object
         : public UserEmailEventsConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: emailEventHashMap: HashMap<any, any>;
+    private: HashMap<any, any> emailEventHashMap;
 
-public constructor ();
+public: UserEmailEventsConfiguration();
 
-public constructor (HashMap<any, any> hashMap);
+public: UserEmailEventsConfiguration(HashMap<any, any> hashMap);
 
-    init();
+    private: void init();
 
-    public HashMap<any, any> getEventConfigurationHashMap();
+    public: HashMap<any, any> getEventConfigurationHashMap();
 
-    public addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
+    public: void addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public UserEmailEventListenerInterface getEventListener(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
+    public: UserEmailEventListenerInterface getEventListener(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
 
 };
 

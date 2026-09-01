@@ -49,36 +49,33 @@
 class LogConfigTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: LogConfigTypeFactory = new LogConfigTypeFactory();
+    private: static LogConfigTypeFactory instance() { return LogConfigTypeFactory(); }
 
-    public static LogConfigTypeFactory getInstance(){
+    public: static LogConfigTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogConfigTypeFactory.instance;
+                        return LogConfigTypeFactory::instance();
     
 }
 
 
-    private: const NO_DESCRIPTION: string = "No Description";
+    private: const std::string NO_DESCRIPTION = "No Description";
 
-    public const INIT_SERVER: LogConfigType = new LogConfigType("Init Server", this.NO_DESCRIPTION);
+    public: const LogConfigType INIT_SERVER = LogConfigType("Init Server", this->NO_DESCRIPTION);
 
-    public const LOBBY_SERVER: LogConfigType = new LogConfigType("Lobby Server", this.NO_DESCRIPTION);
+    public: const LogConfigType LOBBY_SERVER = LogConfigType("Lobby Server", this->NO_DESCRIPTION);
 
-    public const GAME_SERVER: LogConfigType = new LogConfigType("Game Server", this.NO_DESCRIPTION);
+    public: const LogConfigType GAME_SERVER = LogConfigType("Game Server", this->NO_DESCRIPTION);
 
-    public const GAME_SIMULATOR: LogConfigType = new LogConfigType("Game Simulator", this.NO_DESCRIPTION);
+    public: const LogConfigType GAME_SIMULATOR = LogConfigType("Game Simulator", this->NO_DESCRIPTION);
 
-    public const CUSTOM_TYPES: LogConfigType = new LogConfigType("Custom Types", this.NO_DESCRIPTION);
+    public: const LogConfigType CUSTOM_TYPES = LogConfigType("Custom Types", this->NO_DESCRIPTION);
 
-private constructor (){
-
-            super();
-        LogConfigTypes.LOGGING.add(this.INIT_SERVER);
+private: LogConfigTypeFactory(){
+LogConfigTypes::LOGGING.add(this->INIT_SERVER);
     
 }
 

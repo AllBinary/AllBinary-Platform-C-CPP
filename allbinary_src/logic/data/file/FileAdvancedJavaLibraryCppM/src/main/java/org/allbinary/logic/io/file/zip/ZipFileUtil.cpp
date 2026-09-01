@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -86,71 +88,70 @@
 class ZipFileUtil
             : public Object
          {
-        
 
-    private: static const instance: ZipFileUtil = new ZipFileUtil();
+    private: static ZipFileUtil instance() { return ZipFileUtil(); }
 
-    public static ZipFileUtil getInstance(){
+    public: static ZipFileUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ZipFileUtil.instance;
+                        return ZipFileUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public create(string outFilename, BasicArrayList fileBasicArrayList){
+    public: void create(std::string outFilename, BasicArrayList fileBasicArrayList){
 
         try {
             
-    zipFile: AbFile = AbFile.createAbFile(outFilename)!;;
+    AbFile zipFile = AbFile::createAbFile(outFilename);;
     
 
-                        if(zipFile!.exists())
+                        if(zipFile.exists())
                         
                                     {
-                                    zipFile!.delete();
+                                    zipFile.delete();
     
 
                                     }
                                 
-zipFile!.createNewFile();
+zipFile.createNewFile();
     
 
-    outputStream: ZipOutputStream = new ZipOutputStream(AbFileOutputStream.createFromAbFile(zipFile));;
+    ZipOutputStream outputStream = ZipOutputStream(AbFileOutputStream::createFromAbFile(zipFile));;
     
 
-    streamUtil: StreamUtil = StreamUtil.getInstance()!;;
+    StreamUtil streamUtil = StreamUtil::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    byteArray: std::vector<int8_t> = new Array(16384);;
+    std::vector<int8_t> byteArray = new Array(16384);;
     
 
-    fileInputStream: AbFileInputStream;;
+    AbFileInputStream fileInputStream;;
     
 
-    size: int32_t = fileBasicArrayList!.size()!;;
+    int32_t size = fileBasicArrayList.size();;
     
 
-    current: int32_t = 0;;
+    int32_t current = 0;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    file: AbFile = fileBasicArrayList!.get(i) as AbFile;;
+    AbFile file = fileBasicArrayList.get(i) as AbFile;;
     
 
                         if(file.isDirectory())
@@ -163,33 +164,33 @@ zipFile!.createNewFile();
                         if(file.isFile())
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.appendint(current);
+stringBuffer.appendint(current);
     
-stringBuffer!.append(" Creating Zip File Entry: ");
+stringBuffer.append(" Creating Zip File Entry: ");
     
-stringBuffer!.append(file.getPath());
+stringBuffer.append(file.getPath());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "create()");
+this->logUtil.putF(stringBuffer.toString(), this, "create()");
     
 
         try {
-            fileInputStream= new AbFileInputStream(file);
+            fileInputStream= AbFileInputStream(file);
     
-outputStream!.putNextEntry(new ZipEntry(file.getPath()));
+outputStream.putNextEntry(ZipEntry(file.getPath()));
     
-streamUtil!.get(fileInputStream, outputStream, byteArray);
+streamUtil.get(fileInputStream, outputStream, byteArray);
     
-outputStream!.closeEntry();
+outputStream.closeEntry();
     
-streamUtil!.close(fileInputStream);
+streamUtil.close(fileInputStream);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.putF("Skipping File (Probably Local): " +file.getPath(), this, "create()");
+this->logUtil.putF("Skipping File (Probably Local): " +file.getPath(), this, "create()");
     
 }
 
@@ -200,13 +201,13 @@ current++;
     
 }
 
-streamUtil!.close(outputStream);
+streamUtil.close(outputStream);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "create", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "create", e);
     
 }
 
@@ -215,38 +216,38 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "create", e);
 
                 //@Throws(Exception.constructor)
             
-    public unzip(string path, AbFile zipFile, string fileName){
+    public: void unzip(std::string path, AbFile zipFile, std::string fileName){
 
-    buffer: std::vector<int8_t> = new Array(16384);;
+    std::vector<int8_t> buffer = new Array(16384);;
     
 
-    inputStream: ZipInputStream = 
+    ZipInputStream inputStream = 
                 null
             ;;
     
 
         try {
-            inputStream= new ZipInputStream(new AbFileInputStream(zipFile));
+            inputStream= ZipInputStream(AbFileInputStream(zipFile));
     
 
-    zipEntry: ZipEntry;;
+    ZipEntry zipEntry;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    fileUtil: FileUtil = FileUtil.getInstance()!;;
+    FileUtil fileUtil = FileUtil::getInstance();;
     
 
-        while((zipEntry= inputStream!.getNextEntry()) != 
-                                    null
+        while((zipEntry= inputStream.getNextEntry()) != 
+                                    nullptr
                                 )
         {
 
-    entryName: string = zipEntry!.getName()!;;
+    std::string entryName = zipEntry.getName();;
     
 
-                        if(zipEntry!.isDirectory())
+                        if(zipEntry.isDirectory())
                         
                                     {
                                     
@@ -254,43 +255,43 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "create", e);
                                 
                         else {
                             
-    entryFile: AbFile = AbFile.createAbFile(path +entryName)!;;
+    AbFile entryFile = AbFile::createAbFile(path +entryName);;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("ZipEntry Name: ");
+stringBuffer.append("ZipEntry Name: ");
     
-stringBuffer!.append(entryName);
+stringBuffer.append(entryName);
     
-stringBuffer!.append(" isFile: ");
+stringBuffer.append(" isFile: ");
     
-stringBuffer!.appendboolean(entryFile!.isFile());
+stringBuffer.appendboolean(entryFile.isFile());
     
-stringBuffer!.append(" isDirectory: ");
+stringBuffer.append(" isDirectory: ");
     
-stringBuffer!.appendboolean(entryFile!.isDirectory());
+stringBuffer.appendboolean(entryFile.isDirectory());
     
-stringBuffer!.append(" getParent: ");
+stringBuffer.append(" getParent: ");
     
-stringBuffer!.append(entryFile!.getParent());
+stringBuffer.append(entryFile.getParent());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "unzip");
+this->logUtil.putF(stringBuffer.toString(), this, "unzip");
     
 
-    dataOutputStream: AbDataOutputStream = DataOutputStreamFactory.getInstance()!.getInstanceForAbFile(entryFile)!;;
+    AbDataOutputStream dataOutputStream = DataOutputStreamFactory::getInstance().getInstanceForAbFile(entryFile);;
     
-fileUtil!.write(inputStream, dataOutputStream, buffer);
+fileUtil.write(inputStream, dataOutputStream, buffer);
     
 
                         }
                             
-inputStream!.closeEntry();
+inputStream.closeEntry();
     
 }
 
 
          finally {
-            StreamUtil.getInstance()!.close(inputStream);
+            StreamUtil::getInstance().close(inputStream);
     
 
          }

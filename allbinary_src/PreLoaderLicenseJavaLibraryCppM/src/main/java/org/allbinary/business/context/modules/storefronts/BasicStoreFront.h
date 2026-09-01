@@ -72,133 +72,132 @@
 class BasicStoreFront
             : public Object
         : public BasicStoreFrontInterface {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: basketName: string;
+    private: std::string basketName;
 
-    private: homeHostName: string;
+    private: std::string homeHostName;
 
-    private: homeHostNamePath: string;
+    private: std::string homeHostNamePath;
 
-    private: hostName: string;
+    private: std::string hostName;
 
-    private: hostNamePath: string;
+    private: std::string hostNamePath;
 
-    private: testHomeHostName: string;
+    private: std::string testHomeHostName;
 
-    private: testHomeHostNamePath: string;
+    private: std::string testHomeHostNamePath;
 
-    private: testHostName: string;
+    private: std::string testHostName;
 
-    private: testHostNamePath: string;
+    private: std::string testHostNamePath;
 
-    private: imagePath: string;
+    private: std::string imagePath;
 
-    private: staticPath: string;
+    private: std::string staticPath;
 
-    private: categoryPath: string;
+    private: std::string categoryPath;
 
-    private: inventoryControl: string;
+    private: std::string inventoryControl;
 
-    private: subStores: string;
+    private: std::string subStores;
 
-    private: tagLocation: string;
+    private: std::string tagLocation;
 
-    private: packageLocation: string;
+    private: std::string packageLocation;
 
-    private: ftp: string;
+    private: std::string ftp;
 
-    private: ftpPath: string;
+    private: std::string ftpPath;
 
-    private: ftpUserName: string;
+    private: std::string ftpUserName;
 
-    private: ftpPassword: string;
+    private: std::string ftpPassword;
 
-    private: testFtp: string;
+    private: std::string testFtp;
 
-    private: testFtpPath: string;
+    private: std::string testFtpPath;
 
-    private: testFtpUserName: string;
+    private: std::string testFtpUserName;
 
-    private: testFtpPassword: string;
+    private: std::string testFtpPassword;
 
-    private: timeCreated: string;
+    private: std::string timeCreated;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor ();
+public: BasicStoreFront();
 
-public constructor (HashMap<any, any> storeHashMap);
+public: BasicStoreFront(HashMap<any, any> storeHashMap);
 
-    public string getTestHtmlPath();
+    public: std::string getTestHtmlPath();
 
-    public string getCurrentHostName();
+    public: std::string getCurrentHostName();
 
-    public string getCurrentHostNamePath();
+    public: std::string getCurrentHostNamePath();
 
-    public string getCurrentHomeHostName();
+    public: std::string getCurrentHomeHostName();
 
-    public string getCurrentHomeHostNamePath();
+    public: std::string getCurrentHomeHostNamePath();
 
-    public string getName();
+    public: std::string getName();
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getBasketName();
+    public: std::string getBasketName();
 
-    public string getHomeHostName();
+    public: std::string getHomeHostName();
 
-    public string getHomeHostNamePath();
+    public: std::string getHomeHostNamePath();
 
-    public string getHostName();
+    public: std::string getHostName();
 
-    public string getHostNamePath();
+    public: std::string getHostNamePath();
 
-    public string getTestHomeHostName();
+    public: std::string getTestHomeHostName();
 
-    public string getTestHomeHostNamePath();
+    public: std::string getTestHomeHostNamePath();
 
-    public string getTestHostName();
+    public: std::string getTestHostName();
 
-    public string getTestHostNamePath();
+    public: std::string getTestHostNamePath();
 
-    public string getStaticPath();
+    public: std::string getStaticPath();
 
-    public string getCategoryPath();
+    public: std::string getCategoryPath();
 
-    public string getInventoryControl();
+    public: std::string getInventoryControl();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getSubStores();
+    public: BasicArrayList getSubStores();
 
-    public string getTagLocation();
+    public: std::string getTagLocation();
 
-    public string getPackageLocation();
+    public: std::string getPackageLocation();
 
-    public string getFtp();
+    public: std::string getFtp();
 
-    public string getFtpUserName();
+    public: std::string getFtpUserName();
 
-    public string getFtpPassword();
+    public: std::string getFtpPassword();
 
-    public string getTestFtp();
+    public: std::string getTestFtp();
 
-    public string getTestFtpUserName();
+    public: std::string getTestFtpUserName();
 
-    public string getTestFtpPassword();
+    public: std::string getTestFtpPassword();
 
-    public string getFtpPath();
+    public: std::string getFtpPath();
 
-    public string getTestFtpPath();
+    public: std::string getTestFtpPath();
 
-    public string getTimeCreated();
+    public: std::string getTimeCreated();
 
-    public string getLastModified();
+    public: std::string getLastModified();
 
 };
 

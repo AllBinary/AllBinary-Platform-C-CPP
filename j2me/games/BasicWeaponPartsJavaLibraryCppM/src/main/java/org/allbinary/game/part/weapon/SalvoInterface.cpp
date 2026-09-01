@@ -55,15 +55,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SalvoInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle)
+    void process(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle)
 
                 //@Throws(Exception.constructor)
             
-    processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface)
+    void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface)
 
 };
 

@@ -90,72 +90,71 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class MouseActionScriptInputJPanel: public javax.swing.JPanel {
-        
+class MouseActionScriptInputJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: mouseActionScriptInputInterface: MouseActionScriptInputInterface;
+    private: MouseActionScriptInputInterface mouseActionScriptInputInterface;
 
-public constructor (MouseActionScriptInputInterface mouseActionScriptInputInterface);
+public: MouseActionScriptInputJPanel(MouseActionScriptInputInterface mouseActionScriptInputInterface);
 
-    set();
-
-                //@Throws(Exception.constructor)
-            
-    updateInputType();
+    private: void set();
 
                 //@Throws(Exception.constructor)
             
-    update();
+    private: void updateInputType();
 
-    public javax.swing.JDialog getMouseActionJDialog();
+                //@Throws(Exception.constructor)
+            
+    private: void update();
 
-    public setMouseActionJDialog(javax.swing.JDialog mouseActionJDialog);
+    public: javax::swing::JDialog getMouseActionJDialog();
 
-    initComponents();
+    public: void setMouseActionJDialog(javax::swing::JDialog mouseActionJDialog);
 
-    button2JCheckBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void initComponents();
 
-    okJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void button2JCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    mouseActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: button1JCheckBox: javax.swing.JCheckBox;
+    private: void mouseActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: button2JCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox button1JCheckBox;
 
-    private: inputAutomationTypeJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JCheckBox button2JCheckBox;
 
-    private: inputTypeJLabel: javax.swing.JLabel;
+    private: javax::swing::JComboBox inputAutomationTypeJComboBox;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel inputTypeJLabel;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLabel4: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: jLabel5: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel4;
 
-    private: jLabel6: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel5;
 
-    private: mouseActionJButton: javax.swing.JButton;
+    private: javax::swing::JLabel jLabel6;
 
-    private: mouseActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JButton mouseActionJButton;
 
-    private: mouseDelayJTextField: javax.swing.JTextField;
+    private: javax::swing::JDialog mouseActionJDialog;
 
-    private: mouseXJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField mouseDelayJTextField;
 
-    private: mouseYJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField mouseXJTextField;
 
-    private: okJButton: javax.swing.JButton;
+    private: javax::swing::JTextField mouseYJTextField;
 
-    private: titleJLabel: javax.swing.JLabel;
+    private: javax::swing::JButton okJButton;
+
+    private: javax::swing::JLabel titleJLabel;
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_H
         #define ORG_ALLBINARY_MATH_NODECIMALTRIGTABLE_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -79,37 +81,36 @@
 class NoDecimalTrigTable
             : public Object
          {
-        
 
-    private: static const instance: NoDecimalTrigTable = new NoDecimalTrigTable();
+    private: static NoDecimalTrigTable instance() { return NoDecimalTrigTable(); }
 
-    public static NoDecimalTrigTable getInstance();
+    public: static NoDecimalTrigTable getInstance();
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    private: const noDecimalSin: std::vector<int64_t>;
+    private: std::vector<int64_t> noDecimalSin;
 
-    private: const noDecimalCos: std::vector<int64_t>;
+    private: std::vector<int64_t> noDecimalCos;
 
-    private: const noDecimalTan: std::vector<int64_t>;
+    private: std::vector<int64_t> noDecimalTan;
 
-private constructor ();
+private: NoDecimalTrigTable();
 
-    public int64_t sin(int32_t angle);
+    public: int64_t sin(int32_t angle);
 
-    public int64_t cos(int32_t angle);
+    public: int64_t cos(int32_t angle);
 
-    public int64_t tan(int32_t angle);
+    public: int64_t tan(int32_t angle);
 
-    public SCALE: int32_t = 10000;
-
-                //@Throws(Exception.constructor)
-            
-    public int16_t antiTan(int32_t dx, int32_t dy);
+    public: int32_t SCALE = 10000;
 
                 //@Throws(Exception.constructor)
             
-    public int16_t antiTanDebug(int32_t screenX, int32_t screenY, int32_t targetX, int32_t targetY);
+    public: int16_t antiTan(int32_t dx, int32_t dy);
+
+                //@Throws(Exception.constructor)
+            
+    public: int16_t antiTanDebug(int32_t screenX, int32_t screenY, int32_t targetX, int32_t targetY);
 
 };
 

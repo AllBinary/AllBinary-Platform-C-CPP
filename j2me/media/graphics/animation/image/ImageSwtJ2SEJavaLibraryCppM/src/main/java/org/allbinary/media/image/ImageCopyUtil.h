@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOPYUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -101,55 +103,54 @@
 class ImageCopyUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCopyUtil = new ImageCopyUtil();
+    private: static ImageCopyUtil instance() { return ImageCopyUtil(); }
 
-    public static ImageCopyUtil getInstance();
+    public: static ImageCopyUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ImageCopyUtil();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;
+    private: const GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();
 
-    private: const features: Features = Features.getInstance()!;
+    private: const Features features = Features::getInstance();
 
-    private: const openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;
+    private: const OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
 
-    private: const openGLUtil: OpenGLUtil = OpenGLUtil.getInstance()!;
+    private: const OpenGLUtil openGLUtil = OpenGLUtil::getInstance();
 
-    private: const openGLESImageExclusionUtil: OpenGLESImageExclusionUtil = OpenGLESImageExclusionUtil.getInstance()!;
+    private: const OpenGLESImageExclusionUtil openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
 
-    private: const NO_COPY: string = "SWT should not copy images after initial loading as the alpha is not honored";
+    private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
 
-    private: const UNABLE: string = "Unable to scale image without dimensions";
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImageForRotation(Image originalImage);
+    private: const std::string UNABLE = "Unable to scale image without dimensions";
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(Image originalImage);
+    public: Image createImageForRotation(Image originalImage);
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageWH(Image originalImage, int32_t width, int32_t height, bool mutable);
-
-    private: const INFORMATION: string = "about_";
-
-    private: const LEADERBOARD: string = "leaderboard";
+    public: Image createImage(Image originalImage);
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage2(Image originalImage, int32_t width, int32_t height, bool mutable);
+    public: Image createImageWH(Image originalImage, int32_t width, int32_t height, bool mutable);
+
+    private: const std::string INFORMATION = "about_";
+
+    private: const std::string LEADERBOARD = "leaderboard";
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageScale(Image originalImage, float canvasScale, bool resize);
+    public: Image createImage2(Image originalImage, int32_t width, int32_t height, bool mutable);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageScale(Image originalImage, float canvasScale, bool resize);
 
 };
 

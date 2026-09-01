@@ -33,19 +33,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShaderOpenGLProcessor: public OpenGLProcessor {
-        
 
-public constructor ();
+public: ShaderOpenGLProcessor();
 
-    public process0(GL10 gl);
+    public: void process0(GL10 gl);
 
-    public process1(GL10 gl);
+    public: void process1(GL10 gl);
 
-    public process(GL10 gl);
+    public: void process(GL10 gl);
 
-    public process2(GL10 gl);
+    public: void process2(GL10 gl);
 
-    public process3(GL10 gl);
+    public: void process3(GL10 gl);
 
 };
 

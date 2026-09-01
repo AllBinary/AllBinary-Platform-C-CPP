@@ -66,64 +66,61 @@
 class ContextConfigurationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: ContextConfigurationInterfaceFactory = new ContextConfigurationInterfaceFactory();
+    private: static ContextConfigurationInterfaceFactory instance() { return ContextConfigurationInterfaceFactory(); }
 
-    public static ContextConfigurationInterfaceFactory getInstance(){
+    public: static ContextConfigurationInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ContextConfigurationInterfaceFactory.instance;
+                        return ContextConfigurationInterfaceFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ContextConfigurationInterfaceFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public ContextConfigurationInterface getInstance(Document document){
+    public: ContextConfigurationInterface getInstance(Document document){
 
-    contextConfigurationData: ContextConfigurationData = ContextConfigurationData.getInstance()!;;
+    ContextConfigurationData contextConfigurationData = ContextConfigurationData::getInstance();;
     
 
-    contextConfigurationNode: Node = DomSearchHelper.getNode(contextConfigurationData!.NAME, document.getChildNodes())!;;
+    Node contextConfigurationNode = DomSearchHelper::getNode(contextConfigurationData.NAME, document.getChildNodes());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ContextConfigurationView(contextConfigurationNode).getContextConfigurationInterface() as ContextConfigurationInterface;
+                        return ContextConfigurationView(contextConfigurationNode).getContextConfigurationInterface() as ContextConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public ContextConfigurationInterface getInstance(string contextName){
+    public: ContextConfigurationInterface getInstance(std::string contextName){
 
-    abPath: AbPath = ContextConfigurationPathUtil.getAbPath(contextName)!;;
+    AbPath abPath = ContextConfigurationPathUtil::getAbPath(contextName);;
     
 
-    contextConfigurationData: ContextConfigurationData = ContextConfigurationData.getInstance()!;;
+    ContextConfigurationData contextConfigurationData = ContextConfigurationData::getInstance();;
     
 
-    documentString: string = new CryptFileReader(contextConfigurationData!.UNCRYPTED_EXTENSION, contextConfigurationData!.ENCRYPTED_EXTENSION).get(abPath)!;;
+    std::string documentString = CryptFileReader(contextConfigurationData.UNCRYPTED_EXTENSION, contextConfigurationData.ENCRYPTED_EXTENSION).get(abPath);;
     
 
-    document: Document = DomDocumentHelper.create(documentString)!;;
+    Document document = DomDocumentHelper::create(documentString);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstance(document);;
+                        return this->getInstance(document);;
     
 }
 

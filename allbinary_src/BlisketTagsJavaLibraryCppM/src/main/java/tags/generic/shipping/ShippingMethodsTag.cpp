@@ -52,31 +52,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ShippingMethodsTag: public StoreValidationTransformTag {
-        
 
-public constructor (){
-
-            super();
-        }
+public: ShippingMethodsTag(){
+}
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.setName("Basic Shipping View");
+                                    this->setName("Basic Shipping View");
     
-this.setObjectFile("views.generic.shipping.ValidationView");
+this->setObjectFile("views.generic.shipping.ValidationView");
     
 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
@@ -86,7 +83,7 @@ this.setObjectFile("views.generic.shipping.ValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -103,13 +100,13 @@ this.setObjectFile("views.generic.shipping.ValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -122,7 +119,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

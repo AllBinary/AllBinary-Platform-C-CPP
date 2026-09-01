@@ -51,39 +51,38 @@
 class GameStrings
             : public Object
          {
-        
 
-    private: static const instance: GameStrings = new GameStrings();
+    private: static GameStrings instance() { return GameStrings(); }
 
-    public static GameStrings getInstance(){
+    public: static GameStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameStrings.instance;
+                        return GameStrings::instance();
     
 }
 
 
-    public const PROCESS_TICK: string = "processTick";
+    public: const std::string PROCESS_TICK = "processTick";
 
-    public const ON_GAME_INITIALIZED: string = "onGameInitialized";
+    public: const std::string ON_GAME_INITIALIZED = "onGameInitialized";
 
-    public const UPDATESURFACE: string = "updateSurface";
+    public: const std::string UPDATESURFACE = "updateSurface";
 
-    public const ON_SET_DISPLAYABLE: string = "onSetDisplayable";
+    public: const std::string ON_SET_DISPLAYABLE = "onSetDisplayable";
 
-    public const UNPAUSE: string = "unPause";
+    public: const std::string UNPAUSE = "unPause";
 
-    public const TOGGLE_MENU: string = "toggleMenu";
+    public: const std::string TOGGLE_MENU = "toggleMenu";
 
-    public const SET_GAME_OVER: string = "setGameOver";
+    public: const std::string SET_GAME_OVER = "setGameOver";
 
-    public const GAME_STATE: string = "Game State: ";
+    public: const std::string GAME_STATE = "Game State: ";
 
-    public const SET_GAME_STATE: string = "setGameState";
+    public: const std::string SET_GAME_STATE = "setGameState";
 
-    public const STOP_GAME_CANVAS_RUNNABLE_INTERFACE: string = "stopGameCanvasRunnableInterface";
+    public: const std::string STOP_GAME_CANVAS_RUNNABLE_INTERFACE = "stopGameCanvasRunnableInterface";
 
 };
 

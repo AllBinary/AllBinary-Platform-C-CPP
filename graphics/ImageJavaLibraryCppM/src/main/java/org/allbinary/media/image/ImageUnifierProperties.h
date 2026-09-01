@@ -48,31 +48,30 @@
 class ImageUnifierProperties
             : public Object
          {
-        
 
-    private: rows: Integer;
+    private: Integer rows;
 
-    private: columns: Integer;
+    private: Integer columns;
 
-    private: imageUnifierCell: ImageUnifierCell;
+    private: ImageUnifierCell imageUnifierCell;
 
-public constructor ();
+public: ImageUnifierProperties();
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public Integer getRows();
+    public: Integer getRows();
 
-    public setRows(Integer rows);
+    public: void setRows(Integer rows);
 
-    public Integer getColumns();
+    public: Integer getColumns();
 
-    public setColumns(Integer columns);
+    public: void setColumns(Integer columns);
 
-    public ImageUnifierCell getImageUnifierCell();
+    public: ImageUnifierCell getImageUnifierCell();
 
-    public setImageUnifierCell(ImageUnifierCell imageUnifierCell);
+    public: void setImageUnifierCell(ImageUnifierCell imageUnifierCell);
 
 };
 

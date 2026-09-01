@@ -43,23 +43,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicTableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    string drop();
+    std::string drop();
 
                 //@Throws(Exception.constructor)
             
-    string create();
+    std::string create();
 
                 //@Throws(Exception.constructor)
             
-    string restore();
+    std::string restore();
 
                 //@Throws(Exception.constructor)
             
-    string backup();
+    std::string backup();
 
 };
 

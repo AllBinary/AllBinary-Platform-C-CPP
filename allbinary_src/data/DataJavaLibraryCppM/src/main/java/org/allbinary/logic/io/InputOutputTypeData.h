@@ -45,35 +45,34 @@
 class InputOutputTypeData
             : public Object
          {
-        
 
-    private: static const instance: InputOutputTypeData = new InputOutputTypeData();
+    private: static InputOutputTypeData instance() { return InputOutputTypeData(); }
 
-    public static InputOutputTypeData getInstance();
+    public: static InputOutputTypeData getInstance();
 
-private constructor ();
+private: InputOutputTypeData();
 
-    public const NAME: string = "INPUT_OUTPUT_TYPE_NAME";
+    public: const std::string NAME = "INPUT_OUTPUT_TYPE_NAME";
 
-    public const FILE: string = "INPUT_OUTPUT_TYPE_FILE";
+    public: const std::string FILE = "INPUT_OUTPUT_TYPE_FILE";
 
-    public const RESPONSE: string = "INPUT_OUTPUT_TYPE_RESPONSE";
+    public: const std::string RESPONSE = "INPUT_OUTPUT_TYPE_RESPONSE";
 
-    public const DB: string = "INPUT_OUTPUT_TYPE_DB";
+    public: const std::string DB = "INPUT_OUTPUT_TYPE_DB";
 
-    public const JSP: string = "jsp";
+    public: const std::string JSP = "jsp";
 
-    public const JSP_FRAGMENT: string = "jspf";
+    public: const std::string JSP_FRAGMENT = "jspf";
 
-    public const PHP: string = "php";
+    public: const std::string PHP = "php";
 
-    public const ASP: string = "asp";
+    public: const std::string ASP = "asp";
 
-    public const PL: string = "pl";
+    public: const std::string PL = "pl";
 
-    public const DEFAULT: string = this.JSP;
+    public: const std::string DEFAULT = this->JSP;
 
-    public const DEFAULT_FRAGMENT: string = this.JSP_FRAGMENT;
+    public: const std::string DEFAULT_FRAGMENT = this->JSP_FRAGMENT;
 
 };
 

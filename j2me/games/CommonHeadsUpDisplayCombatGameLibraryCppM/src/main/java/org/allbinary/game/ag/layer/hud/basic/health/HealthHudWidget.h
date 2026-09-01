@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_HEALTH_HEALTHHUDWIDGET_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -75,40 +77,39 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HealthHudWidget: public BasicHud: public PaintableInterface, public HealthListenerInterface {
-        
+class HealthHudWidget: public BasicHud, public PaintableInterface, public HealthListenerInterface {
 
-    private: healthScale: int32_t;
+    private: int32_t healthScale;
 
-    animationInterface: Animation;
+    protected: Animation animationInterface;
 
-    healthInterface: Health;
+    protected: Health healthInterface;
 
-    max: int32_t= 0;
+    int32_t max= 0;
 
-    private: xArray: std::vector<int32_t>;
+    private: std::vector<int32_t> xArray;
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public constructor (Animation animationInterface, Health healthInterface, int32_t location, int32_t direction);
+public: HealthHudWidget(Animation animationInterface, Health healthInterface, int32_t location, int32_t direction);
 
-    update();
+    private: void update();
 
-    public setX(int32_t x);
+    public: void setX(int32_t x);
 
-    private: timeDelayHelper: TimeDelayHelper = NoTimeDelayHelper.SINGLETON;
+    private: TimeDelayHelper timeDelayHelper = NoTimeDelayHelper::SINGLETON;
 
-    private: const slowBeatTimeDelayHelper: TimeDelayHelper = new TimeDelayHelper(1280);
+    private: const TimeDelayHelper slowBeatTimeDelayHelper = TimeDelayHelper(1280);
 
-    private: const mediumBeatTimeDelayHelper: TimeDelayHelper = new TimeDelayHelper(640);
+    private: const TimeDelayHelper mediumBeatTimeDelayHelper = TimeDelayHelper(640);
 
-    private: const fastBeatTimeDelayHelper: TimeDelayHelper = new TimeDelayHelper(320);
+    private: const TimeDelayHelper fastBeatTimeDelayHelper = TimeDelayHelper(320);
 
-    public onHealthChange();
+    public: void onHealthChange();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

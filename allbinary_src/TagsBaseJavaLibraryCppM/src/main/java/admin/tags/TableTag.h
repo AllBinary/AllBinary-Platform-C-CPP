@@ -83,77 +83,76 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TableTag: public PropertiesTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: enabled: string;
+    private: std::string enabled;
 
-    private: tagHelperFactoryInterface: TagHelperFactoryInterface;
+    private: TagHelperFactoryInterface tagHelperFactoryInterface;
 
-    private: tagRequestHelperFactoryInterface: TagHelperFactoryInterface;
+    private: TagHelperFactoryInterface tagRequestHelperFactoryInterface;
 
-    private: requestObject: any;
+    private: Object* requestObject;
 
-    private: current: Integer;
+    private: Integer current;
 
-    private: total: Integer;
+    private: Integer total;
 
-public constructor ();
+public: TableTag();
 
-    public setIsSelected(string enabled);
+    public: void setIsSelected(std::string enabled);
 
                 //@Throws(Exception.constructor)
             
-    public bool isEnabled();
+    public: bool isEnabled();
 
-    setTagHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface);
+    protected: void setTagHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface);
 
-    TagHelperFactoryInterface getTagHelperFactoryInterface();
+    protected: TagHelperFactoryInterface getTagHelperFactoryInterface();
 
-    setTagRequestHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface);
+    protected: void setTagRequestHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface);
 
-    TagHelperFactoryInterface getTagRequestHelperFactoryInterface();
+    protected: TagHelperFactoryInterface getTagRequestHelperFactoryInterface();
 
-    public setCurrent(Integer current);
+    public: void setCurrent(Integer current);
 
-    public Integer getCurrent();
+    public: Integer getCurrent();
 
-    public setTotal(Integer total);
+    public: void setTotal(Integer total);
 
-    public Integer getTotal();
-
-                //@Throws(LicensingException.constructor)
-            
-    public string drop();
+    public: Integer getTotal();
 
                 //@Throws(LicensingException.constructor)
             
-    public string create();
+    public: std::string drop();
 
                 //@Throws(LicensingException.constructor)
             
-    public string restore();
+    public: std::string create();
 
                 //@Throws(LicensingException.constructor)
             
-    public string backup();
+    public: std::string restore();
 
                 //@Throws(LicensingException.constructor)
             
-    public string insert();
+    public: std::string backup();
 
                 //@Throws(LicensingException.constructor)
             
-    public string delete();
+    public: std::string insert();
 
                 //@Throws(LicensingException.constructor)
             
-    public string update();
+    public: std::string delete_();
+
+                //@Throws(LicensingException.constructor)
+            
+    public: std::string update();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

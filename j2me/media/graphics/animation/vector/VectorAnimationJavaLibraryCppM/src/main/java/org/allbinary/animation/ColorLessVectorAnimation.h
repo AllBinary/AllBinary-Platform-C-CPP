@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COLORLESSVECTORANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_COLORLESSVECTORANIMATION_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -49,11 +51,10 @@
 #include "AnimationBehavior.h"
 
 class ColorLessVectorAnimation: public VectorAnimation {
-        
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, AnimationBehavior animationBehavior);
+public: ColorLessVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, AnimationBehavior animationBehavior);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

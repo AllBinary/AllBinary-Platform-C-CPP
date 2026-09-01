@@ -73,23 +73,22 @@
 class BasicLayerProcessor
             : public Object
          {
-        
 
-    public static const NULL_LAYER_PROCESSOR: BasicLayerProcessor = new BasicLayerProcessor();
+    public: static const BasicLayerProcessor NULL_LAYER_PROCESSOR = BasicLayerProcessor();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-protected constructor ();
+protected: BasicLayerProcessor();
 
-    public add(AllBinaryLayer layerInterface);
+    public: void add(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager);
+    public: void process(AllBinaryLayerManager allBinaryLayerManager);
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

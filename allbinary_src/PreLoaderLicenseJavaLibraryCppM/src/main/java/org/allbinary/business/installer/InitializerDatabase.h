@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATABASE_H
         #define ORG_ALLBINARY_BUSINESS_INSTALLER_INITIALIZERDATABASE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Class.h"
@@ -84,75 +86,74 @@
 class InitializerDatabase
             : public Object
          {
-        
 
-    private: static const MAXDB: int32_t = 30;
+    private: static const int32_t MAXDB = 30;
 
-    private: static const MAX: int32_t = 16;
+    private: static const int32_t MAX = 16;
 
-    private: static const MIN: int32_t = 4;
+    private: static const int32_t MIN = 4;
 
-    private: static const MINPASSWORD: int32_t = 0;
+    private: static const int32_t MINPASSWORD = 0;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: adminDbUserName: string;
+    private: std::string adminDbUserName;
 
-    private: adminDbPassword: string;
+    private: std::string adminDbPassword;
 
-    private: adminJdbcDriver: string;
+    private: std::string adminJdbcDriver;
 
-    private: adminSchema: string;
+    private: std::string adminSchema;
 
-    private: adminServer: string;
+    private: std::string adminServer;
 
-    private: adminPort: string;
+    private: std::string adminPort;
 
-    private: initDb: DynamicInitDb;
+    private: DynamicInitDb initDb;
 
-public constructor (AbeClientInformationInterface abeClientInformation, Map map);
+public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, Map map);
 
-public constructor (AbeClientInformationInterface abeClientInformation, HashMap<any, any> initHashMap);
+public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, HashMap<any, any> initHashMap);
 
-    public getFormData(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap);
+    public: void getFormData(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap);
 
-    bool isJdbcDriverValid(string jdbcDriverClassPathString);
+    private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString);
 
-    public bool isValid();
+    public: bool isValid();
 
-    string getJdbcDriverValidationInfo(string jdbcDriver);
+    private: std::string getJdbcDriverValidationInfo(std::string jdbcDriver);
 
-    public string getInvalidInfo();
+    public: std::string getInvalidInfo();
 
-    public bool createUsers();
+    public: bool createUsers();
 
-    public bool createDatabases();
+    public: bool createDatabases();
 
-    public bool createTables();
+    public: bool createTables();
 
-    public string getAdminDbUserName();
+    public: std::string getAdminDbUserName();
 
-    public setAdminDbUserName(string adminDbUserName);
+    public: void setAdminDbUserName(std::string adminDbUserName);
 
-    public string getAdminDbPassword();
+    public: std::string getAdminDbPassword();
 
-    public setAdminDbPassword(string adminDbPassword);
+    public: void setAdminDbPassword(std::string adminDbPassword);
 
-    public string getAdminJdbcDriver();
+    public: std::string getAdminJdbcDriver();
 
-    public setAdminJdbcDriver(string adminJdbcDriver);
+    public: void setAdminJdbcDriver(std::string adminJdbcDriver);
 
-    public string getAdminSchema();
+    public: std::string getAdminSchema();
 
-    public setAdminSchema(string adminSchema);
+    public: void setAdminSchema(std::string adminSchema);
 
-    public string getAdminServer();
+    public: std::string getAdminServer();
 
-    public setAdminServer(string adminServer);
+    public: void setAdminServer(std::string adminServer);
 
-    public string getAdminPort();
+    public: std::string getAdminPort();
 
-    public setAdminPort(string adminPort);
+    public: void setAdminPort(std::string adminPort);
 
 };
 

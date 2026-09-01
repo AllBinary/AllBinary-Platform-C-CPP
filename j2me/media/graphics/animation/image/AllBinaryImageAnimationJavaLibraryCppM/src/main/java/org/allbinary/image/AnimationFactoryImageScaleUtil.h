@@ -68,21 +68,20 @@
 class AnimationFactoryImageScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: AnimationFactoryImageScaleUtil = new AnimationFactoryImageScaleUtil();
+    private: static AnimationFactoryImageScaleUtil instance() { return AnimationFactoryImageScaleUtil(); }
 
-    public static AnimationFactoryImageScaleUtil getInstance();
+    public: static AnimationFactoryImageScaleUtil getInstance();
 
-    private: const imageScaleUtil: ImageJ2MEScaleUtil = ImageJ2MEScaleUtil.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
+    private: const ImageJ2MEScaleUtil imageScaleUtil = ImageJ2MEScaleUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public processAdjust(BaseImageAnimationFactory baseImageAnimationFactory);
+    public: Image createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processAdjust(BaseImageAnimationFactory baseImageAnimationFactory);
 
 };
 

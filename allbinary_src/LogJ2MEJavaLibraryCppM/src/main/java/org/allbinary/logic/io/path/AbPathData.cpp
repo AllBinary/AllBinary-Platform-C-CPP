@@ -51,30 +51,27 @@
 class AbPathData
             : public Object
          {
-        
 
-    private: static const instance: AbPathData = new AbPathData();
+    private: static AbPathData instance() { return AbPathData(); }
 
-    public static AbPathData getInstance(){
+    public: static AbPathData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPathData.instance;
+                        return AbPathData::instance();
     
 }
 
 
-    public const EXTENSION_SEP: string = CommonSeps.getInstance()!.PERIOD;
+    public: const std::string EXTENSION_SEP = CommonSeps::getInstance().PERIOD;
 
-    public const SEPARATORCHAR: char = '/';
+    public: const char SEPARATORCHAR = '/';
 
-    public const SEPARATOR: string = CommonSeps.getInstance()!.FORWARD_SLASH;
+    public: const std::string SEPARATOR = CommonSeps::getInstance().FORWARD_SLASH;
 
-private constructor (){
-
-            super();
-        }
+private: AbPathData(){
+}
 
 
 };

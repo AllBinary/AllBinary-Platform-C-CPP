@@ -41,12 +41,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AllBinaryMagneticFieldSensor: public AllBinarySensor {
-        
 
-protected constructor (){
-
-            super();
-        }
+protected: AllBinaryMagneticFieldSensor(){
+}
 
 
 };

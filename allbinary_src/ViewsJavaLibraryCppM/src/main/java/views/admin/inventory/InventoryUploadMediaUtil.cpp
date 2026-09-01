@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -89,180 +91,177 @@
 class InventoryUploadMediaUtil
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const mediaUtil: MediaUtil = MediaUtil.getInstance()!;
+    private: const MediaUtil mediaUtil = MediaUtil::getInstance();
 
-    private: const LARGEWIDTH: int32_t = 1024;
+    private: const int32_t LARGEWIDTH = 1024;
 
-    private: const LARGEHEIGHT: int32_t = 1024;
+    private: const int32_t LARGEHEIGHT = 1024;
 
-    private: const MEDIUMWIDTH: int32_t = 256;
+    private: const int32_t MEDIUMWIDTH = 256;
 
-    private: const MEDIUMHEIGHT: int32_t = 256;
+    private: const int32_t MEDIUMHEIGHT = 256;
 
-    private: const SMALLWIDTH: int32_t = 128;
+    private: const int32_t SMALLWIDTH = 128;
 
-    private: const SMALLHEIGHT: int32_t = 128;
+    private: const int32_t SMALLHEIGHT = 128;
 
-    private: const SMALL: string = "Small";
+    private: const std::string SMALL = "Small";
 
-    private: const MEDIUM: string = "Medium";
+    private: const std::string MEDIUM = "Medium";
 
-    private: const LARGE: string = "Large";
+    private: const std::string LARGE = "Large";
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: itemInterface: ItemInterface;
+    private: ItemInterface itemInterface;
 
-public constructor (StoreFrontInterface storeFrontInterface, ItemInterface itemInterface){
-
-            super();
-        this.storeFrontInterface= storeFrontInterface;
+public: InventoryUploadMediaUtil(StoreFrontInterface storeFrontInterface, ItemInterface itemInterface){
+this->storeFrontInterface= storeFrontInterface;
     
-this.itemInterface= itemInterface;
+this->itemInterface= itemInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public ItemInterface saveFiles(std::vector<int8_t> byteArray, string fileName, MediaData mediaData){
+    public: ItemInterface saveFiles(std::vector<int8_t> byteArray, std::string fileName, MediaData mediaData){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF("Start FileName: " +fileName, this, "saveFiles()");
+                                    this->logUtil.putF("Start FileName: " +fileName, this, "saveFiles()");
     
 
                                     }
                                 
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(fileName))
-                        
-                                    {
-                                    
-
-
-                            throw new Exception("Image File Name Was Null");
-                    
-
-                                    }
-                                
-
-    fileUtil: FileUtil = FileUtil.getInstance()!;;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(URLGLOBALS.getWebappPath());
-    
-stringBuffer!.append(this.storeFrontInterface!.getCurrentHostNamePath());
-    
-stringBuffer!.append(this.itemInterface!.getCategory());
-    
-
-    fullPath: string = stringBuffer!.toString()!;;
-    
-
-    imageDirectoryFile: AbFile = AbFile.createAbFile(fullPath)!;;
-    
-
-                        if(!imageDirectoryFile!.isDirectory())
+                        if(StringValidationUtil::getInstance().isEmpty(fileName))
                         
                                     {
                                     
 
 
-                            throw new Exception("Unable to save file to non existant directory");
+                            throw Exception("Image File Name Was Null");
                     
 
                                     }
                                 
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append(fullPath);
-    
-stringBuffer!.append(fileName);
-    
-stringBuffer!.append(AbPathData.getInstance()!.EXTENSION_SEP);
-    
-stringBuffer!.append(mediaData!.getName());
+
+    FileUtil fileUtil = FileUtil::getInstance();;
     
 
-    originalImageFile: AbFile = AbFile.createAbFile(stringBuffer!.toString())!;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append(URLGLOBALS::getWebappPath());
+    
+stringBuffer.append(this->storeFrontInterface.getCurrentHostNamePath());
+    
+stringBuffer.append(this->itemInterface.getCategory());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+    std::string fullPath = stringBuffer.toString();;
+    
+
+    AbFile imageDirectoryFile = AbFile::createAbFile(fullPath);;
+    
+
+                        if(!imageDirectoryFile.isDirectory())
                         
                                     {
-                                    this.logUtil!.putF("Saving Original Image: " +originalImageFile, this, "saveFiles()");
+                                    
+
+
+                            throw Exception("Unable to save file to non existant directory");
+                    
+
+                                    }
+                                
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append(fullPath);
+    
+stringBuffer.append(fileName);
+    
+stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
+    
+stringBuffer.append(mediaData.getName());
+    
+
+    AbFile originalImageFile = AbFile::createAbFile(stringBuffer.toString());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
+                        
+                                    {
+                                    this->logUtil.putF("Saving Original Image: " +originalImageFile, this, "saveFiles()");
     
 
                                     }
                                 
-originalImageFile!.createNewFile();
+originalImageFile.createNewFile();
     
-fileUtil!.write(new ByteArrayInputStream(byteArray), originalImageFile);
-    
-
-    uploadMedia: UploadMediaSingleton = UploadMediaSingleton.getInstance()!;;
+fileUtil.write(ByteArrayInputStream(byteArray), originalImageFile);
     
 
-    isMediaSupported: bool = uploadMedia!.isWriterSupported(mediaData!.getName()) || uploadMedia!.isReaderSupported(mediaData!.getName());;
+    UploadMediaSingleton uploadMedia = UploadMediaSingleton::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+    bool isMediaSupported = uploadMedia.isWriterSupported(mediaData.getName()) || uploadMedia.isReaderSupported(mediaData.getName());;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("Is Image Type: ");
+stringBuffer.append("Is Image Type: ");
     
-stringBuffer!.append(mediaData!.getName());
+stringBuffer.append(mediaData.getName());
     
-stringBuffer!.append(" supported: ");
+stringBuffer.append(" supported: ");
     
-stringBuffer!.appendboolean(isMediaSupported);
+stringBuffer.appendboolean(isMediaSupported);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "saveFiles()");
+this->logUtil.putF(stringBuffer.toString(), this, "saveFiles()");
     
 
                                     }
                                 
 
-    defaultMediaData: MediaData = MediaData.getDefault()!;;
+    MediaData defaultMediaData = MediaData::getDefault();;
     
-this.setFileNames(fileName);
+this->setFileNames(fileName);
     
 
                         if(isMediaSupported)
                         
                                     {
                                     
-    isMediaResizable: bool = uploadMedia!.isWriterMedia(mediaData!.getName(), MediaTypeData.getInstance()!.RESIZABLE_MEDIA)!;;
+    bool isMediaResizable = uploadMedia.isWriterMedia(mediaData.getName(), MediaTypeData::getInstance().RESIZABLE_MEDIA);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("Is ");
+stringBuffer.append("Is ");
     
-stringBuffer!.append(mediaData!.toString());
+stringBuffer.append(mediaData.toString());
     
-stringBuffer!.append(" Image Resize Supported:");
+stringBuffer.append(" Image Resize Supported:");
     
-stringBuffer!.appendboolean(uploadMedia!.isSupported(mediaData!.getName()));
+stringBuffer.appendboolean(uploadMedia.isSupported(mediaData.getName()));
     
-stringBuffer!.append(" WriterMedia: ");
+stringBuffer.append(" WriterMedia: ");
     
-stringBuffer!.appendboolean(isMediaResizable);
+stringBuffer.appendboolean(isMediaResizable);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "saveFiles()");
+this->logUtil.putF(stringBuffer.toString(), this, "saveFiles()");
     
 
                                     }
@@ -272,46 +271,46 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "saveFiles()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF("Saving Small Image: " +this.itemInterface!.getSmallImage(), this, "saveFiles()");
+                                    this->logUtil.putF("Saving Small Image: " +this->itemInterface.getSmallImage(), this, "saveFiles()");
     
 
                                     }
                                 
-this.mediaUtil!.saveImageFile(originalImageFile, this.itemInterface!.getSmallImage(), fullPath, mediaData, this.SMALLWIDTH, this.SMALLHEIGHT);
+this->mediaUtil.saveImageFile(originalImageFile, this->itemInterface.getSmallImage(), fullPath, mediaData, this->SMALLWIDTH, this->SMALLHEIGHT);
     
-this.mediaUtil!.saveImageFile(originalImageFile, this.itemInterface!.getMediumImage(), fullPath, mediaData, this.MEDIUMWIDTH, this.MEDIUMHEIGHT);
+this->mediaUtil.saveImageFile(originalImageFile, this->itemInterface.getMediumImage(), fullPath, mediaData, this->MEDIUMWIDTH, this->MEDIUMHEIGHT);
     
-this.mediaUtil!.saveImageFile(originalImageFile, this.itemInterface!.getLargeImage(), fullPath, mediaData, this.LARGEWIDTH, this.LARGEHEIGHT);
+this->mediaUtil.saveImageFile(originalImageFile, this->itemInterface.getLargeImage(), fullPath, mediaData, this->LARGEWIDTH, this->LARGEHEIGHT);
     
 
                                     }
                                 
                         else {
                             
-    isConvertable: bool = mediaData!.isConvertableTo(defaultMediaData)!;;
+    bool isConvertable = mediaData.isConvertableTo(defaultMediaData);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("Converting: ");
+stringBuffer.append("Converting: ");
     
-stringBuffer!.append(defaultMediaData!.getName());
+stringBuffer.append(defaultMediaData.getName());
     
-stringBuffer!.append(" into ");
+stringBuffer.append(" into ");
     
-stringBuffer!.append(mediaData!.getName());
+stringBuffer.append(mediaData.getName());
     
-stringBuffer!.append(" if Convertable is it: ");
+stringBuffer.append(" if Convertable is it: ");
     
-stringBuffer!.appendboolean(isConvertable);
+stringBuffer.appendboolean(isConvertable);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "saveFiles()");
+this->logUtil.putF(stringBuffer.toString(), this, "saveFiles()");
     
 
                                     }
@@ -321,44 +320,44 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "saveFiles()");
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF("Saving Small Image: " +this.itemInterface!.getSmallImage(), this, "saveFiles()");
+                                    this->logUtil.putF("Saving Small Image: " +this->itemInterface.getSmallImage(), this, "saveFiles()");
     
 
                                     }
                                 
-this.mediaUtil!.saveImageFile(originalImageFile, this.itemInterface!.getSmallImage(), fullPath, defaultMediaData, this.SMALLWIDTH, this.SMALLHEIGHT);
+this->mediaUtil.saveImageFile(originalImageFile, this->itemInterface.getSmallImage(), fullPath, defaultMediaData, this->SMALLWIDTH, this->SMALLHEIGHT);
     
-this.mediaUtil!.saveImageFile(originalImageFile, this.itemInterface!.getMediumImage(), fullPath, defaultMediaData, this.MEDIUMWIDTH, this.MEDIUMHEIGHT);
+this->mediaUtil.saveImageFile(originalImageFile, this->itemInterface.getMediumImage(), fullPath, defaultMediaData, this->MEDIUMWIDTH, this->MEDIUMHEIGHT);
     
-this.mediaUtil!.saveImageFile(originalImageFile, this.itemInterface!.getLargeImage(), fullPath, defaultMediaData, this.LARGEWIDTH, this.LARGEHEIGHT);
+this->mediaUtil.saveImageFile(originalImageFile, this->itemInterface.getLargeImage(), fullPath, defaultMediaData, this->LARGEWIDTH, this->LARGEHEIGHT);
     
 
                                     }
                                 
                         else {
                             
-    smallImageFile: AbFile = AbFile.createAbFile(this.itemInterface!.getSmallImage())!;;
+    AbFile smallImageFile = AbFile::createAbFile(this->itemInterface.getSmallImage());;
     
-smallImageFile!.createNewFile();
+smallImageFile.createNewFile();
     
-fileUtil!.write(new ByteArrayInputStream(byteArray), smallImageFile);
-    
-
-    mediumImageFile: AbFile = AbFile.createAbFile(this.itemInterface!.getMediumImage())!;;
-    
-smallImageFile!.createNewFile();
-    
-fileUtil!.write(new ByteArrayInputStream(byteArray), mediumImageFile);
+fileUtil.write(ByteArrayInputStream(byteArray), smallImageFile);
     
 
-    largeImageFile: AbFile = AbFile.createAbFile(this.itemInterface!.getSmallImage())!;;
+    AbFile mediumImageFile = AbFile::createAbFile(this->itemInterface.getMediumImage());;
     
-largeImageFile!.createNewFile();
+smallImageFile.createNewFile();
     
-fileUtil!.write(new ByteArrayInputStream(byteArray), largeImageFile);
+fileUtil.write(ByteArrayInputStream(byteArray), mediumImageFile);
+    
+
+    AbFile largeImageFile = AbFile::createAbFile(this->itemInterface.getSmallImage());;
+    
+largeImageFile.createNewFile();
+    
+fileUtil.write(ByteArrayInputStream(byteArray), largeImageFile);
     
 
                         }
@@ -370,13 +369,13 @@ fileUtil!.write(new ByteArrayInputStream(byteArray), largeImageFile);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.END, this, "saveFiles()");
+this->logUtil.putF(commonStrings.END, this, "saveFiles()");
     
 
                                     }
@@ -385,60 +384,60 @@ this.logUtil!.putF(commonStrings!.END, this, "saveFiles()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.itemInterface;
+                        return this->itemInterface;
     
 }
 
 
-    setFileNames(string fileName){
+    private: void setFileNames(std::string fileName){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.itemInterface!.getId());
+stringBuffer.append(this->itemInterface.getId());
     
-stringBuffer!.append(AbPathData.getInstance()!.EXTENSION_SEP);
+stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
     
-stringBuffer!.append(MediaData.getDefault()!.getName());
-    
-
-    END: string = stringBuffer!.toString()!;;
-    
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append(fileName);
-    
-stringBuffer!.append(this.SMALL);
-    
-stringBuffer!.append(END);
+stringBuffer.append(MediaData::getDefault().getName());
     
 
-    newImageFileName: string = stringBuffer!.toString()!;;
+    std::string END = stringBuffer.toString();;
     
-this.itemInterface!.setSmallImage(newImageFileName);
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.append(fileName);
     
-stringBuffer!.append(fileName);
+stringBuffer.append(this->SMALL);
     
-stringBuffer!.append(this.MEDIUM);
+stringBuffer.append(END);
     
-stringBuffer!.append(END);
+
+    std::string newImageFileName = stringBuffer.toString();;
     
-newImageFileName= stringBuffer!.toString();
+this->itemInterface.setSmallImage(newImageFileName);
     
-this.itemInterface!.setMediumImage(newImageFileName);
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.append(fileName);
     
-stringBuffer!.append(fileName);
+stringBuffer.append(this->MEDIUM);
     
-stringBuffer!.append(this.LARGE);
+stringBuffer.append(END);
     
-stringBuffer!.append(END);
+newImageFileName= stringBuffer.toString();
     
-newImageFileName= stringBuffer!.toString();
+this->itemInterface.setMediumImage(newImageFileName);
     
-this.itemInterface!.setLargeImage(newImageFileName);
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append(fileName);
+    
+stringBuffer.append(this->LARGE);
+    
+stringBuffer.append(END);
+    
+newImageFileName= stringBuffer.toString();
+    
+this->itemInterface.setLargeImage(newImageFileName);
     
 }
 

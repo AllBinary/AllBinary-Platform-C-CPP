@@ -59,17 +59,16 @@
         #include "BasicConstantVelocityMovement.h"
 
 class DelayedConstantVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(60);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(60);
 
-public constructor (BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
+public: DelayedConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
 
-    public init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
 };
 

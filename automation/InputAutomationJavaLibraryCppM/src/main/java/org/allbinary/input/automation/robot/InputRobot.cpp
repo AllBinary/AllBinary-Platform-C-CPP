@@ -74,33 +74,30 @@
 class InputRobot
             : public Object
         : public InputRobotInterface {
-        
 
-    public static const NAME: string = "Java Robot";
+    public: static const std::string NAME = "Java Robot";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: robot: Robot;
+    private: Robot robot;
 
-public constructor (GraphicsDevice graphicsDevice){
-
-            super();
-        this.robot= new Robot(graphicsDevice);
+public: InputRobot(GraphicsDevice graphicsDevice){
+this->robot= Robot(graphicsDevice);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputRobot.NAME;
+                        return InputRobot::NAME;
     
 }
 
 
-    public HelpSet getHelpSet(){
+    public: HelpSet getHelpSet(){
 
 
 
@@ -110,9 +107,9 @@ public constructor (GraphicsDevice graphicsDevice){
 }
 
 
-    public Point getMousePoint(){
+    public: Point getMousePoint(){
 
-    point: Point = MouseInfo.getPointerInfo()!.getLocation()!;;
+    Point point = MouseInfo::getPointerInfo().getLocation();;
     
 
 
@@ -125,160 +122,160 @@ public constructor (GraphicsDevice graphicsDevice){
 
                 //@Throws(Exception.constructor)
             
-    public mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y){
+    public: void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y){
 
-    point: Point = PointHelper.getCenterPoint(rectangle)!;;
+    Point point = PointHelper::getCenterPoint(rectangle);;
     
-this.robot.mouseMove(point.x +x, point.y +y);
+this->robot.mouseMove(point.x +x, point.y +y);
     
 
-    message: string = new StringMaker().append("Moved Mouse To: x: ")!.appendint(point.x)!.append(" y: ")!.appendint(point.y)!.append(" in the middle of: ")!.append(StringUtil.getInstance()!.toString(rectangle))!.toString()!;;
+    std::string message = StringMaker().append("Moved Mouse To: x: ").appendint(point.x).append(" y: ").appendint(point.y).append(" in the middle of: ").append(StringUtil::getInstance().toString(rectangle)).toString();;
     
-this.logUtil!.putF(message, this, "moveMouseToTarget");
-    
-}
-
-
-    public mouseMove(Point point){
-this.mouseMove(point.x, point.y);
+this->logUtil.putF(message, this, "moveMouseToTarget");
     
 }
 
 
-    public mouseMove(int32_t x, int32_t y){
-this.robot.mouseMove(x, y);
+    public: void mouseMove(Point point){
+this->mouseMove(point.x, point.y);
+    
+}
+
+
+    public: void mouseMove(int32_t x, int32_t y){
+this->robot.mouseMove(x, y);
     
 
-    message: string = new StringMaker().append("Moved Mouse To: x: ")!.appendint(x)!.append(" y: ")!.appendint(y)!.toString()!;;
+    std::string message = StringMaker().append("Moved Mouse To: x: ").appendint(x).append(" y: ").appendint(y).toString();;
     
-this.logUtil!.putF(message, this, "moveMouse");
+this->logUtil.putF(message, this, "moveMouse");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public mouseMoveToTarget(Rectangle rectangle){
-this.mouseMoveToTarget(rectangle, 0, 0);
+    public: void mouseMoveToTarget(Rectangle rectangle){
+this->mouseMoveToTarget(rectangle, 0, 0);
     
 }
 
 
-    public BufferedImage createScreenCapture(Rectangle screenRect){
+    public: BufferedImage createScreenCapture(Rectangle screenRect){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.robot.createScreenCapture(screenRect);;
+                        return this->robot.createScreenCapture(screenRect);;
     
 }
 
 
-    public delay(Integer ms){
-this.robot.delay(ms);
+    public: void delay(Integer ms){
+this->robot.delay(ms);
     
 }
 
 
-    public Integer getAutoDelay(){
+    public: Integer getAutoDelay(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.robot.getAutoDelay();;
+                        return this->robot.getAutoDelay();;
     
 }
 
 
-    public Color getPixelColor(Integer x, Integer y){
+    public: Color getPixelColor(Integer x, Integer y){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.robot.getPixelColor(x, y);;
+                        return this->robot.getPixelColor(x, y);;
     
 }
 
 
-    public bool isAutoWaitForIdle(){
+    public: bool isAutoWaitForIdle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.robot.isAutoWaitForIdle();;
+                        return this->robot.isAutoWaitForIdle();;
     
 }
 
 
-    public keyPress(Integer keycode){
-this.robot.keyPress(keycode);
+    public: void keyPress(Integer keycode){
+this->robot.keyPress(keycode);
     
 }
 
 
-    public keyRelease(Integer keycode){
-this.robot.keyRelease(keycode);
+    public: void keyRelease(Integer keycode){
+this->robot.keyRelease(keycode);
     
 }
 
 
-    public mouseMove(Integer x, Integer y){
-this.robot.mouseMove(x, y);
+    public: void mouseMove(Integer x, Integer y){
+this->robot.mouseMove(x, y);
     
 }
 
 
-    public mousePress(Integer buttons){
-this.robot.mousePress(buttons);
+    public: void mousePress(Integer buttons){
+this->robot.mousePress(buttons);
     
 }
 
 
-    public mouseRelease(Integer buttons){
-this.robot.mouseRelease(buttons);
+    public: void mouseRelease(Integer buttons){
+this->robot.mouseRelease(buttons);
     
 }
 
 
-    public mouseWheel(Integer wheelAmt){
-this.robot.mouseWheel(wheelAmt);
+    public: void mouseWheel(Integer wheelAmt){
+this->robot.mouseWheel(wheelAmt);
     
 }
 
 
-    public setAutoDelay(Integer ms){
-this.robot.setAutoDelay(ms);
+    public: void setAutoDelay(Integer ms){
+this->robot.setAutoDelay(ms);
     
 }
 
 
-    public setAutoWaitForIdle(bool isOn){
-this.robot.setAutoWaitForIdle(isOn);
+    public: void setAutoWaitForIdle(bool isOn){
+this->robot.setAutoWaitForIdle(isOn);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.robot.toString();;
+                        return this->robot.toString();;
     
 }
 
 
-    public waitForIdle(){
-this.robot.waitForIdle();
+    public: void waitForIdle(){
+this->robot.waitForIdle();
     
 }
 
 
-    public on(){
+    public: void on(){
 }
 
 
-    public off(){
+    public: void off(){
 }
 
 

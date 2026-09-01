@@ -46,22 +46,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputProcessor: public Processor {
-        
 
-    private: const playerGameInputCompositeInterface: PlayerGameInputCompositeInterface;
+    private: PlayerGameInputCompositeInterface playerGameInputCompositeInterface;
 
-public constructor (PlayerGameInputCompositeInterface playerGameInputCompositeInterface){
-
-            super();
-        this.playerGameInputCompositeInterface= playerGameInputCompositeInterface;
+public: InputProcessor(PlayerGameInputCompositeInterface playerGameInputCompositeInterface){
+this->playerGameInputCompositeInterface= playerGameInputCompositeInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.playerGameInputCompositeInterface!.getPlayerGameInput()!.update();
+    public: void process(){
+this->playerGameInputCompositeInterface.getPlayerGameInput().update();
     
 }
 

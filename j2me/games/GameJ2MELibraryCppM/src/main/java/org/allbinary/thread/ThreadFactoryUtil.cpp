@@ -91,74 +91,73 @@
 class ThreadFactoryUtil
             : public Object
          {
-        
 
-    private: static const instance: ThreadFactoryUtil = new ThreadFactoryUtil();
+    private: static ThreadFactoryUtil instance() { return ThreadFactoryUtil(); }
 
-    public static ThreadFactoryUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadFactoryUtil.instance;
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    public Thread getInstanceGameCanvasRunnable(GameCanvasRunnableInterface runnable){
+    public: static ThreadFactoryUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstanceType(runnable, runnable.getType());;
+                        return ThreadFactoryUtil::instance();
     
 }
 
 
-    public Thread getInstanceForRunnable(ABRunnable runnable){
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    public: Thread getInstanceGameCanvasRunnable(GameCanvasRunnableInterface runnable){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstanceType(runnable, runnable.getType());;
+                        return this->getInstanceType(runnable, runnable.getType());;
     
 }
 
 
-    Thread getInstanceType(Runnable runnable, int32_t type){
+    public: Thread getInstanceForRunnable(ABRunnable runnable){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->getInstanceType(runnable, runnable.getType());;
+    
+}
+
+
+    private: Thread getInstanceType(Runnable runnable, int32_t type){
+
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(J2MEUtil.isHTML())
+                        if(J2MEUtil::isHTML())
                         
                                     {
                                     
-                        if(type == DemoCanvas.TYPE || type == AllBinaryGameCanvas.TYPE)
+                        if(type == DemoCanvas::TYPE || type == AllBinaryGameCanvas::TYPE)
                         
                                     {
                                     
-    demoGameSingleThreadStartRunnable: RunnableCanvasSingleThreadStartRunnable = new RunnableCanvasSingleThreadStartRunnable(runnable as RunnableCanvas);;
+    RunnableCanvasSingleThreadStartRunnable demoGameSingleThreadStartRunnable = RunnableCanvasSingleThreadStartRunnable(runnable as RunnableCanvas);;
     
-PreLogUtil.put(new StringMaker().append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ")!.append(StringUtil.getInstance()!.toString(runnable))!.toString(), this, commonStrings!.CONSTRUCTOR);
+PreLogUtil::put(StringMaker().append("Using Pseudo Thread for DemoCanvas/AllBinaryGameCanvas under PlayN/HTML5: ").append(StringUtil::getInstance().toString(runnable)).toString(), this, commonStrings.CONSTRUCTOR);
     
 
-    primaryThreadPool: ThreadPool = PrimaryThreadPool.getInstance()!;;
+    ThreadPool primaryThreadPool = PrimaryThreadPool::getInstance();;
     
-primaryThreadPool!.runTask(demoGameSingleThreadStartRunnable);
+primaryThreadPool.runTask(demoGameSingleThreadStartRunnable);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil.put(new StringMaker().append("Using Pseudo Thread for Runnable under PlayN/HTML5: ")!.append(StringUtil.getInstance()!.toString(runnable))!.toString(), this, commonStrings!.CONSTRUCTOR);
+                            PreLogUtil::put(StringMaker().append("Using Pseudo Thread for Runnable under PlayN/HTML5: ").append(StringUtil::getInstance().toString(runnable)).toString(), this, commonStrings.CONSTRUCTOR);
     
 
-    primaryThreadPool: ThreadPool = PrimaryThreadPool.getInstance()!;;
+    ThreadPool primaryThreadPool = PrimaryThreadPool::getInstance();;
     
-primaryThreadPool!.runTask(runnable);
+primaryThreadPool.runTask(runnable);
     
 
                         }
@@ -167,9 +166,9 @@ primaryThreadPool!.runTask(runnable);
                                     }
                                 
 
-    thread: Thread = new Thread(runnable, runnable.toString());;
+    Thread thread = Thread(runnable, runnable.toString());;
     
-this.logUtil!.putF(thread.toString(), this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(thread.toString(), this, commonStrings.CONSTRUCTOR);
     
 
 
@@ -180,7 +179,7 @@ this.logUtil!.putF(thread.toString(), this, commonStrings!.CONSTRUCTOR);
 }
 
 
-    public start(Thread thread){
+    public: void start(Thread thread){
 thread.start();
     
 }

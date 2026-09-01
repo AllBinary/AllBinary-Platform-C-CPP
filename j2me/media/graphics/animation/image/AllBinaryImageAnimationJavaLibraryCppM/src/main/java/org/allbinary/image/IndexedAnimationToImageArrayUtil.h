@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_H
         #define ORG_ALLBINARY_IMAGE_INDEXEDANIMATIONTOIMAGEARRAYUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -54,11 +56,10 @@
 class IndexedAnimationToImageArrayUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static std::vector<Image> getInstance(int32_t width, int32_t height, IndexedAnimation sequentialAnimationInterface);
+    public: static std::vector<Image> getInstance(int32_t width, int32_t height, IndexedAnimation sequentialAnimationInterface);
 
 };
 

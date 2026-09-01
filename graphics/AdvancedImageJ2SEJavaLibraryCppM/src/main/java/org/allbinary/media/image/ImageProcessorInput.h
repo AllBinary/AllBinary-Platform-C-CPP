@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEPROCESSORINPUT_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -53,17 +55,16 @@
 class ImageProcessorInput
             : public Object
          {
-        
 
-    private: bufferedImageArray: std::vector<BufferedImage>;
+    private: std::vector<BufferedImage> bufferedImageArray;
 
-    private: files: std::vector<File>;
+    private: std::vector<File> files;
 
-public constructor (std::vector<File> files, std::vector<BufferedImage> bufferedImageArray);
+public: ImageProcessorInput(std::vector<File> files, std::vector<BufferedImage> bufferedImageArray);
 
-    public std::vector<BufferedImage> getBufferedImageArray();
+    public: std::vector<BufferedImage> getBufferedImageArray();
 
-    public std::vector<File> getFiles();
+    public: std::vector<File> getFiles();
 
 };
 

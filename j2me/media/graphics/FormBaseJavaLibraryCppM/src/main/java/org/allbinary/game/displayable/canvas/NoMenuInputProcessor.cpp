@@ -51,22 +51,21 @@
         #include "BasicMenuInputProcessor.h"
 
 class NoMenuInputProcessor: public BasicMenuInputProcessor {
-        
 
-    private: static const SINGLETON: NoMenuInputProcessor = new NoMenuInputProcessor();
+    private: static const NoMenuInputProcessor SINGLETON = NoMenuInputProcessor();
 
-    public static NoMenuInputProcessor getInstance(){
+    public: static NoMenuInputProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMenuInputProcessor.SINGLETON;
+                        return NoMenuInputProcessor::SINGLETON;
     
 }
 
 
-private constructor (){
-            super(BasicArrayListUtil.getInstance()!.getImmutableInstance(),  -1, NullCanvas.NULL_CANVAS);
+private: NoMenuInputProcessor(){
+            super(BasicArrayListUtil::getInstance().getImmutableInstance(),  -1, NullCanvas::NULL_CANVAS);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -75,16 +74,16 @@ private constructor (){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
 }
 
 
-    public onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
 }
 
 

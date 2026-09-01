@@ -62,25 +62,24 @@
         #include "Movement.h"
 
 class ConstantVelocityNotifyViewChangeMovement: public Movement {
-        
 
-    basicVelocityProperties: BasicVelocityProperties;
+    protected: BasicVelocityProperties basicVelocityProperties;
 
-    private: speedBasicDecimal: BasicDecimal;
+    private: BasicDecimal speedBasicDecimal;
 
-    private: const axisMathVectorUtil: AxisMathVectorUtil = AxisMathVectorUtil.getInstance()!;
+    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
-public constructor ();
+public: ConstantVelocityNotifyViewChangeMovement();
 
-    public init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
-    public moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle);
+    public: void moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
-    public stop();
+    public: void stop();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONACTIONWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_TESTINPUTAUTOMATIONACTIONWORKER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Thread.h"
@@ -68,21 +70,20 @@
 #include "InputAutomationActionInterface.h"
 
 class TestInputAutomationActionWorker: public AbstractInputAutomationWorker {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: sleep: int32_t;
+    private: int32_t sleep;
 
-public constructor (int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public processBetweenWorkers();
+public: TestInputAutomationActionWorker(int32_t sleep, InputAutomationActionInterface inputAutomationActionInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void processBetweenWorkers();
+
+                //@Throws(Exception.constructor)
+            
+    public: void process();
 
 };
 

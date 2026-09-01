@@ -84,36 +84,35 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericProfileActionScript: public DefaultMutableTreeNode: public ProfileActionScriptNodeInterface {
-        
+class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileActionScriptNodeInterface {
 
-    private: static const NAME: string = "Root";
+    private: static const std::string NAME = "Root";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: genericProfileActionJPanel: GenericProfileActionJPanel;
+    private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-    private: profileActionConditionInterfaceVector: Vector;
+    private: Vector profileActionConditionInterfaceVector;
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel, Node node);
+public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node);
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel);
+public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel);
 
-    public addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+    public: void addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
 
-    public removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
+    public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public Vector getProfileActionConditionInterfaceVector();
+    public: Vector getProfileActionConditionInterfaceVector();
 
-    public setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector);
+    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

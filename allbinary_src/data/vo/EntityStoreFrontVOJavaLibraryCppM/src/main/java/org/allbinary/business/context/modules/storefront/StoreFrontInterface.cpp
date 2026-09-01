@@ -49,155 +49,154 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontInterface: public TableMappingInterface {
-        
 
     Boolean isNameValid()
 
     Boolean isValid()
 
-    string nameValidationInfo()
+    std::string nameValidationInfo()
 
-    string validationInfo()
+    std::string validationInfo()
 
-    string getTestHtmlPath()
+    std::string getTestHtmlPath()
 
-    string getCurrentHostName()
+    std::string getCurrentHostName()
 
-    string getCurrentHostNamePath()
+    std::string getCurrentHostNamePath()
 
-    string getCurrentHomeHostName()
+    std::string getCurrentHomeHostName()
 
-    string getCurrentHomeHostNamePath()
+    std::string getCurrentHomeHostNamePath()
 
-    string getName()
+    std::string getName()
 
-    string getBasketName()
+    std::string getBasketName()
 
-    string getHomeHostName()
+    std::string getHomeHostName()
 
-    string getHomeHostNamePath()
+    std::string getHomeHostNamePath()
 
-    string getHostName()
+    std::string getHostName()
 
-    string getHostNamePath()
+    std::string getHostNamePath()
 
-    string getTestHomeHostName()
+    std::string getTestHomeHostName()
 
-    string getTestHomeHostNamePath()
+    std::string getTestHomeHostNamePath()
 
-    string getTestHostName()
+    std::string getTestHostName()
 
-    string getTestHostNamePath()
+    std::string getTestHostNamePath()
 
-    string getStaticPath()
+    std::string getStaticPath()
 
-    string getCategoryPath()
+    std::string getCategoryPath()
 
                 //@Throws(Exception.constructor)
             
     BasicArrayList getSubStores()
 
-    string getTagLocation()
+    std::string getTagLocation()
 
-    string getPackageLocation()
+    std::string getPackageLocation()
 
-    string getInventoryControl()
+    std::string getInventoryControl()
 
     ContextConfigurationInterface getContextConfigurationInterface()
 
-    setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface)
+    void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface)
 
-    string getFtp()
+    std::string getFtp()
 
-    string getFtpPath()
+    std::string getFtpPath()
 
-    string getFtpUserName()
+    std::string getFtpUserName()
 
-    string getFtpPassword()
+    std::string getFtpPassword()
 
-    string getTestFtp()
+    std::string getTestFtp()
 
-    string getTestFtpPath()
+    std::string getTestFtpPath()
 
-    string getTestFtpUserName()
+    std::string getTestFtpUserName()
 
-    string getTestFtpPassword()
+    std::string getTestFtpPassword()
 
-    string getTimeCreated()
+    std::string getTimeCreated()
 
-    string getLastModified()
+    std::string getLastModified()
 
-    setName(string value)
+    void setName(std::string value)
 
-    setBasketName(string value)
+    void setBasketName(std::string value)
 
-    setHomeHostName(string value)
-
-                //@Throws(Exception.constructor)
-            
-    setHomeHostNamePath(string value)
-
-    setHostName(string value)
+    void setHomeHostName(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    setHostNamePath(string value)
+    void setHomeHostNamePath(std::string value)
 
-    setTestHomeHostName(string value)
-
-                //@Throws(Exception.constructor)
-            
-    setTestHomeHostNamePath(string value)
-
-    setTestHostName(string value)
+    void setHostName(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    setTestHostNamePath(string value)
+    void setHostNamePath(std::string value)
+
+    void setTestHomeHostName(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    setImagePath(string value)
+    void setTestHomeHostNamePath(std::string value)
+
+    void setTestHostName(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    setStaticPath(string value)
+    void setTestHostNamePath(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    setCategoryPath(string value)
-
-    setPackageLocation(string value)
-
-    setInventoryControl(string value)
-
-    setFtp(string value)
+    void setImagePath(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    setFtpPath(string value)
-
-    setFtpUserName(string value)
-
-    setFtpPassword(string value)
-
-    setTestFtp(string value)
+    void setStaticPath(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    setTestFtpPath(string value)
+    void setCategoryPath(std::string value)
 
-    setTestFtpUserName(string value)
+    void setPackageLocation(std::string value)
 
-    setTestFtpPassword(string value)
+    void setInventoryControl(std::string value)
 
-    setTimeCreated(string value)
-
-    setLastModified(string value)
+    void setFtp(std::string value)
 
                 //@Throws(Exception.constructor)
             
-    install(int32_t current, int32_t total)
+    void setFtpPath(std::string value)
+
+    void setFtpUserName(std::string value)
+
+    void setFtpPassword(std::string value)
+
+    void setTestFtp(std::string value)
+
+                //@Throws(Exception.constructor)
+            
+    void setTestFtpPath(std::string value)
+
+    void setTestFtpUserName(std::string value)
+
+    void setTestFtpPassword(std::string value)
+
+    void setTimeCreated(std::string value)
+
+    void setLastModified(std::string value)
+
+                //@Throws(Exception.constructor)
+            
+    void install(int32_t current, int32_t total)
 
 };
 

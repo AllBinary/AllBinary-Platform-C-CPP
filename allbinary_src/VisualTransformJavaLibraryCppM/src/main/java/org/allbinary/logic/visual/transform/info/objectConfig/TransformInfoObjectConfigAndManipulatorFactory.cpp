@@ -69,51 +69,48 @@
 #include "GenericStoreTransformInfoObjectConfig.h"
 
 class TransformInfoObjectConfigAndManipulatorFactory: public TransformInfoObjectConfigAndManipulatorFactoryBase {
-        
 
-    private: static const instance: TransformInfoObjectConfigAndManipulatorFactory = new TransformInfoObjectConfigAndManipulatorFactory();
+    private: static TransformInfoObjectConfigAndManipulatorFactory instance() { return TransformInfoObjectConfigAndManipulatorFactory(); }
 
-    public static TransformInfoObjectConfigAndManipulatorFactory getInstance(){
+    public: static TransformInfoObjectConfigAndManipulatorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigAndManipulatorFactory.instance;
+                        return TransformInfoObjectConfigAndManipulatorFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoObjectConfigAndManipulatorFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath){
+    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, AbPath objectConfigFileAbPath){
 
         try {
             
-    data: string = new CryptFileReader(TransformInfoObjectConfigData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoObjectConfigData.getInstance()!.ENCRYPTED_EXTENSION).get(objectConfigFileAbPath)!;;
+    std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(objectConfigFileAbPath);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstance(abeClientInformation, transformInfoInterface, DomDocumentHelper.create(data));;
+                        return this->getInstance(abeClientInformation, transformInfoInterface, DomDocumentHelper::create(data));;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Could Not Load Object Config", getInstance(), this.commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put("Could Not Load Object Config", getInstance(), this->commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -130,23 +127,23 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
 
         try {
             
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
                         if(transformInfoInterface != 
-                                    null
-                                 && !stringValidationUtil!.isEmpty(transformInfoInterface!.getStoreName()))
+                                    nullptr
+                                 && !stringValidationUtil.isEmpty(transformInfoInterface.getStoreName()))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface) as TransformInfoObjectConfigInterface;
+                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface) as TransformInfoObjectConfigInterface;
     
 
                                     }
@@ -156,7 +153,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformInfoObjectConfig(transformInfoInterface) as TransformInfoObjectConfigInterface;
+                        return TransformInfoObjectConfig(transformInfoInterface) as TransformInfoObjectConfigInterface;
     
 
                         }
@@ -166,24 +163,24 @@ private constructor (){
 } catch(e) 
             {
 
-    error: string = "Failed To Get Instance: ";;
+    std::string error = "Failed To Get Instance: ";;
     
 
                         if(transformInfoInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface!.getName();
+                                    error= error +transformInfoInterface.getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, getInstance(), commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, getInstance(), commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -200,23 +197,23 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document){
+    public: TransformInfoObjectConfigInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Document document){
 
         try {
             
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
                         if(transformInfoInterface != 
-                                    null
-                                 && !stringValidationUtil!.isEmpty(transformInfoInterface!.getStoreName()))
+                                    nullptr
+                                 && !stringValidationUtil.isEmpty(transformInfoInterface.getStoreName()))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document) as TransformInfoObjectConfigInterface;
+                        return GenericStoreTransformInfoObjectConfig(abeClientInformation, transformInfoInterface, document) as TransformInfoObjectConfigInterface;
     
 
                                     }
@@ -226,7 +223,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformInfoObjectConfig(transformInfoInterface, document) as TransformInfoObjectConfigInterface;
+                        return TransformInfoObjectConfig(transformInfoInterface, document) as TransformInfoObjectConfigInterface;
     
 
                         }
@@ -236,24 +233,24 @@ private constructor (){
 } catch(e) 
             {
 
-    error: string = "Failed To Get Instance: ";;
+    std::string error = "Failed To Get Instance: ";;
     
 
                         if(transformInfoInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface!.getName();
+                                    error= error +transformInfoInterface.getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, getInstance(), "getInstance(document)", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, getInstance(), "getInstance(document)", e);
     
 
                                     }

@@ -52,9 +52,8 @@
 #include "GameKeyFactory.h"
 
 class LaptopDefaultGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor ();
+public: LaptopDefaultGameInputMapping();
 
 };
 

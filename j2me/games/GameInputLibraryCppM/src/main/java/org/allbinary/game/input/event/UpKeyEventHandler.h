@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTHANDLER_H
         #define ORG_ALLBINARY_GAME_INPUT_EVENT_UPKEYEVENTHANDLER_H
 
+            #include <vector>
+        
 #include <org/allbinary/game/input/LocalPlayerInputIdFactory.h>
 
       
@@ -48,30 +50,29 @@
         #include "UpKeyEventHandlerBase.h"
 
 class UpKeyEventHandler: public UpKeyEventHandlerBase {
-        
 
-    private: static const instance: UpKeyEventHandler = new UpKeyEventHandler();
+    private: static UpKeyEventHandler instance() { return UpKeyEventHandler(); }
 
-    private: static const instanceArray: std::vector<UpKeyEventHandlerBase> = 
-                                                        [
-                                                            new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase(),new UpKeyEventHandlerBase()
-                                                        ];
+    private: static const std::vector<UpKeyEventHandlerBase> instanceArray = 
+                                                        {
+                                                            UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase(),UpKeyEventHandlerBase()
+                                                        };
 
-    public static UpKeyEventHandler getInstance();
+    public: static UpKeyEventHandler getInstance();
 
-    private: const playerInputIdFactory: LocalPlayerInputIdFactory = LocalPlayerInputIdFactory.getInstance()!;
+    private: const LocalPlayerInputIdFactory playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
 
-    public UpKeyEventHandlerBase getInstanceForDevice(int32_t deviceId);
+    public: UpKeyEventHandlerBase getInstanceForDevice(int32_t deviceId);
 
-    public UpKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId);
+    public: UpKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId);
 
-private constructor ();
+private: UpKeyEventHandler();
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
 };
 

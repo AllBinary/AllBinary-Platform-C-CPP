@@ -49,37 +49,36 @@
 #include "PathFindingLayerInterface.h"
 
 class RTSLayer2SelectedLogHelper: public RTSLayer2LogHelper {
-        
 
-    private: static const instanceC: RTSLayer2SelectedLogHelper = new RTSLayer2SelectedLogHelper();
+    private: static const RTSLayer2SelectedLogHelper instanceC = RTSLayer2SelectedLogHelper();
 
-    public static RTSLayer2SelectedLogHelper getInstance();
+    public: static RTSLayer2SelectedLogHelper getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const TRACK_TO_FIRE_OR_MOVE: string = "trackTo:fireOrMove";
+    private: const std::string TRACK_TO_FIRE_OR_MOVE = "trackTo:fireOrMove";
 
-    private: const BUILDING_CHASE: string = "buildingChase";
+    private: const std::string BUILDING_CHASE = "buildingChase";
 
-    public steeringUp(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void steeringUp(PathFindingLayerInterface pathFindingLayerInterface);
 
-    public steeringFireOrStop(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void steeringFireOrStop(PathFindingLayerInterface pathFindingLayerInterface);
 
-    public buildingAbove(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void buildingAbove(PathFindingLayerInterface pathFindingLayerInterface);
 
-    public buildingChaseLeft(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseLeft(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
 
-    public buildingChaseRight(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseRight(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
 
-    public buildingDown(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void buildingDown(PathFindingLayerInterface pathFindingLayerInterface);
 
-    public buildingChaseDown(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseDown(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
 
-    public buildingChaseUp(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
+    public: void buildingChaseUp(PathFindingLayerInterface pathFindingLayerInterface, int32_t angle);
 
-    public buildingLeft(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void buildingLeft(PathFindingLayerInterface pathFindingLayerInterface);
 
-    public buildingRight(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void buildingRight(PathFindingLayerInterface pathFindingLayerInterface);
 
 };
 

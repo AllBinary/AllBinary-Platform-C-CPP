@@ -63,13 +63,12 @@
         #include "ColorFillBasePaintable.h"
 
 class ColorFillPaintable: public ColorFillBasePaintable {
-        
 
-    const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public constructor (BasicColor basicColor);
+public: ColorFillPaintable(BasicColor basicColor);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

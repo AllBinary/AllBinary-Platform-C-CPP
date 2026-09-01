@@ -77,31 +77,30 @@
 class AbResponseHandler
             : public Object
          {
-        
 
                 //@Throws(JspTagException.constructor)
             
-    public static sendJspTagRedirect(PageContext pageContext, Exception e);
+    public: static void sendJspTagRedirect(PageContext pageContext, Exception e);
 
                 //@Throws(ServletException.constructor)
             
-    public static sendServletRedirect(PageContext pageContext, Exception e);
+    public: static void sendServletRedirect(PageContext pageContext, Exception e);
 
                 //@Throws(JspTagException.constructor)
             
-    public static sendJspTagLicensingRedirect(PageContext pageContext, Exception e);
+    public: static void sendJspTagLicensingRedirect(PageContext pageContext, Exception e);
 
                 //@Throws(ServletException.constructor)
             
-    public static sendServletLicensingRedirect(PageContext pageContext, Exception e);
+    public: static void sendServletLicensingRedirect(PageContext pageContext, Exception e);
 
                 //@Throws(Exception.constructor)
             
-    public static sendRedirect(PageContext pageContext, string page);
+    public: static void sendRedirect(PageContext pageContext, std::string page);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: AbResponseHandler();
 
 };
 

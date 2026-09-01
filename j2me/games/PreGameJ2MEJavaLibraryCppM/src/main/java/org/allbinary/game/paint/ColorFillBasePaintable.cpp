@@ -64,56 +64,53 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorFillBasePaintable: public Paintable: public ColorCompositeInterface {
-        
+class ColorFillBasePaintable: public Paintable, public ColorCompositeInterface {
 
-    basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    colorP: int32_t= 0;
+    protected: int32_t colorP= 0;
 
-public constructor (BasicColor basicColor){
-
-            super();
-        this.setBasicColorP(basicColor);
+public: ColorFillBasePaintable(BasicColor basicColor){
+this->setBasicColorP(basicColor);
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
-this.setColor(this.getBasicColorP()!.intValue());
+this->setColor(this->getBasicColorP().intValue());
     
 }
 
 
-    public BasicColor getBasicColorP(){
+    public: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 
 
-    int32_t getColor(){
+    protected: int32_t getColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorP;
+                        return this->colorP;
     
 }
 
 
-    setColor(int32_t color){
-this.colorP= color;
+    protected: void setColor(int32_t color){
+this->colorP= color;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 

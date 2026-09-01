@@ -39,22 +39,21 @@
         #include "ABRunnable.h"
 
 class NullABRunnable: public ABRunnable {
-        
 
-    private: static const instance: NullABRunnable = new NullABRunnable();
+    private: static NullABRunnable instance() { return NullABRunnable(); }
 
-    public static NullABRunnable getInstance(){
+    public: static NullABRunnable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullABRunnable.instance;
+                        return NullABRunnable::instance();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 

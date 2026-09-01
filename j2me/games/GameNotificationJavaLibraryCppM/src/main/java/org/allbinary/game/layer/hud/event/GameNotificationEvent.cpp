@@ -61,81 +61,80 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameNotificationEvent: public AllBinaryEventObject {
-        
 
-    private: string: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const seconds: Integer;
+    private: Integer seconds;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: const removeable: Boolean;
+    private: Boolean removeable;
 
-public constructor (any = {} anyType, string string, Integer seconds, BasicColor basicColor, Boolean permanent){
+public: GameNotificationEvent(Object* anyType, std::string string, Integer seconds, BasicColor basicColor, Boolean permanent){
             super(anyType);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setString(string);
+this->setString(string);
     
-this.seconds= seconds;
+this->seconds= seconds;
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
-this.removeable= permanent;
+this->removeable= permanent;
     
 }
 
 
-    public string getString(){
+    public: std::string getString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.string;
+                        return this->string;
     
 }
 
 
-    public Integer getSeconds(){
+    public: Integer getSeconds(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.seconds;
+                        return this->seconds;
     
 }
 
 
-    public BasicColor getBasicColorP(){
+    public: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 
 
-    public Boolean getPermanent(){
+    public: Boolean getPermanent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.removeable;
+                        return this->removeable;
     
 }
 
 
-    public setString(string string){
-this.string= string;
+    public: void setString(std::string string){
+this->string= string;
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
 }
 

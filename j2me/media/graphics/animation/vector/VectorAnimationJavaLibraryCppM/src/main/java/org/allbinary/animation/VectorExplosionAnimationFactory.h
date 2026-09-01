@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_VECTOREXPLOSIONANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -59,23 +61,22 @@
 class VectorExplosionAnimationFactory
             : public Object
         : public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: const vectorExplosionGenerator: VectorExplosionGenerator = VectorExplosionGenerator.getInstance()!;
+    private: const VectorExplosionGenerator vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
+public: VectorExplosionAnimationFactory(BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstanceAnimation(Animation animationInterface);
 
-    setBasicColorP(BasicColor basicColor);
+    private: void setBasicColorP(BasicColor basicColor);
 
-    BasicColor getBasicColorP();
+    private: BasicColor getBasicColorP();
 
 };
 

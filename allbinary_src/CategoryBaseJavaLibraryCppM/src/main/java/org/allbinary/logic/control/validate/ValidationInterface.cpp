@@ -46,7 +46,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ValidationInterface {
-        
 
                 //@Throws(Exception.constructor)
             
@@ -62,7 +61,7 @@ class ValidationInterface {
 
                 //@Throws(Exception.constructor)
             
-    string validationInfo()
+    std::string validationInfo()
 
 };
 

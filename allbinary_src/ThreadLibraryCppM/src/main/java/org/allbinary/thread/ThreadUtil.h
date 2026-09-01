@@ -52,21 +52,20 @@
 class ThreadUtil
             : public Object
          {
-        
 
-    private: static const instance: ThreadUtil = new ThreadUtil();
+    private: static ThreadUtil instance() { return ThreadUtil(); }
 
-    public static ThreadUtil getInstance();
+    public: static ThreadUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const JOIN: string = "join";
+    public: const std::string JOIN = "join";
 
-    public bool isRunning(Thread thread);
+    public: bool isRunning(Thread thread);
 
                 //@Throws(Exception.constructor)
             
-    public join(Thread thread);
+    public: void join(Thread thread);
 
 };
 

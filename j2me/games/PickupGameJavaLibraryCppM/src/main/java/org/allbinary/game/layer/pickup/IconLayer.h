@@ -77,19 +77,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class IconLayer: public AllBinaryLayer {
-        
 
-    public static const NULL_ICON_LAYER: IconLayer = new IconLayer(NullAnimationFactory.getFactoryInstance()!.getInstance(0), 0, 0);
+    public: static const IconLayer NULL_ICON_LAYER = IconLayer(NullAnimationFactory::getFactoryInstance().getInstance(0), 0, 0);
 
-    private: animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface, int32_t width, int32_t height);
+public: IconLayer(Animation animationInterface, int32_t width, int32_t height);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
-    public Animation getAnimationInterface();
+    public: Animation getAnimationInterface();
 
 };
 

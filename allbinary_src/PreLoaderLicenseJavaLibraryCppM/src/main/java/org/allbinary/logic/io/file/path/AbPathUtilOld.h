@@ -68,65 +68,64 @@
 class AbPathUtilOld
             : public Object
          {
-        
 
-    private: static const instance: AbPathUtilOld = new AbPathUtilOld();
+    private: static AbPathUtilOld instance() { return AbPathUtilOld(); }
 
-    public static AbPathUtilOld getInstance();
+    public: static AbPathUtilOld getInstance();
 
-    private: static const MIN: int32_t = 4;
+    private: static const int32_t MIN = 4;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abPathData: AbPathData = AbPathData.getInstance()!;
+    private: const AbPathData abPathData = AbPathData::getInstance();
 
-    private: const filePathData: FilePathData = FilePathData.getInstance()!;
+    private: const FilePathData filePathData = FilePathData::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public string getExtension(AbFilePath abFilePath);
+private: AbPathUtilOld();
 
                 //@Throws(Exception.constructor)
             
-    public string getExtension(AbPath abPath);
+    public: std::string getExtension(AbFilePath abFilePath);
 
                 //@Throws(Exception.constructor)
             
-    public string getExtension(string filePath);
+    public: std::string getExtension(AbPath abPath);
 
                 //@Throws(Exception.constructor)
             
-    public string getWithoutExtension(AbFilePath abFilePath);
+    public: std::string getExtension(std::string filePath);
 
                 //@Throws(Exception.constructor)
             
-    public string getWithoutExtension(AbPath abPath);
+    public: std::string getWithoutExtension(AbFilePath abFilePath);
 
                 //@Throws(Exception.constructor)
             
-    public string getWithoutExtension(string filePath);
+    public: std::string getWithoutExtension(AbPath abPath);
 
-    public bool isValid(string path);
+                //@Throws(Exception.constructor)
+            
+    public: std::string getWithoutExtension(std::string filePath);
 
-    bool isValidStart(string path);
+    public: bool isValid(std::string path);
 
-    bool isValidEnd(string path);
+    private: bool isValidStart(std::string path);
 
-    public string adjustStart(string path);
+    private: bool isValidEnd(std::string path);
 
-    public string adjustEnd(string path);
+    public: std::string adjustStart(std::string path);
 
-    public string adjust(string path);
+    public: std::string adjustEnd(std::string path);
+
+    public: std::string adjust(std::string path);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string getNameFromPath(string categoryPath);
+    public: std::string getNameFromPath(std::string categoryPath);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public AbPath removeNameFromPath(string categoryPath);
+    public: AbPath removeNameFromPath(std::string categoryPath);
 
 };
 

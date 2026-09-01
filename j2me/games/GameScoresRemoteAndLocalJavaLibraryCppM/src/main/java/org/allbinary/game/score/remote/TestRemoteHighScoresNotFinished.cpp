@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -44,22 +46,19 @@
 class TestRemoteHighScoresNotFinished
             : public Object
          {
-        
 
-    public static const PATH: string = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
+    public: static const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
                 //@Throws(Exception.constructor)
             
-    public static main(std::vector<string> args){
-new TestRemoteHighScoresNotFinished();
+    public: static void main(std::vector<std::string> args){
+TestRemoteHighScoresNotFinished();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: TestRemoteHighScoresNotFinished(){
+}
 
 
 };

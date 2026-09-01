@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -66,85 +68,84 @@
 class HighScoresHelperBase
             : public Object
         : public HighScoresHelperBaseInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    highScoresArrayP: std::vector<HighScores> = LastFetchHighScoresFactory.getInstance()!.highScoresArray;
+    protected: std::vector<HighScores> highScoresArrayP = LastFetchHighScoresFactory::getInstance().highScoresArray;
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArrayP){
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP){
 
                         if(highScoresArrayP != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(new StringMaker().append(commonStrings!.START)!.appendint(highScoresArrayP!.length)!.toString(), this, "setHighScoresArray");
+this->logUtil.putF(StringMaker().append(commonStrings.START).appendint(highScoresArrayP.size()).toString(), this, "setHighScoresArray");
     
 
                                     }
                                 
                         else {
                             
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, "setHighScoresArray");
+this->logUtil.putF(commonStrings.START, this, "setHighScoresArray");
     
 
                         }
                             
-this.highScoresArrayP= highScoresArrayP;
+this->highScoresArrayP= highScoresArrayP;
     
 }
 
 
-    public HighScores getNextHighScores(){
+    public: HighScores getNextHighScores(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullHighScoresSingletonFactory.getInstance();;
+                        return NullHighScoresSingletonFactory::getInstance();;
     
 }
 
 
-    public bool isAnyHighScores(){
+    public: bool isAnyHighScores(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setSelectedHighScores(HighScores selectedHighScores){
+    public: void setSelectedHighScores(HighScores selectedHighScores){
 }
 
 
-    public HighScores getSelectedHighScores(){
+    public: HighScores getSelectedHighScores(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullHighScoresSingletonFactory.getInstance();;
+                        return NullHighScoresSingletonFactory::getInstance();;
     
 }
 
 
-    public std::vector<HighScores> getHighScoresArray(){
+    public: std::vector<HighScores> getHighScoresArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoresArrayP;
+                        return this->highScoresArrayP;
     
 }
 
 
-    public selectHighScores(){
+    public: void selectHighScores(){
 }
 
 

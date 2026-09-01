@@ -52,63 +52,60 @@
 class DefaultListModelHelper
             : public Object
          {
-        
 
-    private: defaultListModel: DefaultListModel;
+    private: DefaultListModel defaultListModel;
 
-    private: vector: Vector;
+    private: Vector vector;
 
-public constructor (){
-
-            super();
-        this.vector= new Vector();
+public: DefaultListModelHelper(){
+this->vector= Vector();
     
-this.defaultListModel= new DefaultListModel();
+this->defaultListModel= DefaultListModel();
     
 }
 
 
-    public initDefaultModelList(){
-this.defaultListModel= new DefaultListModel();
+    public: void initDefaultModelList(){
+this->defaultListModel= DefaultListModel();
     
 
-    size: int32_t = this.vector.length!;;
+    int32_t size = this->vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    moduleName: string = this.vector.get(index) as string;;
+    std::string moduleName = this->vector.get(index) as string;;
     
-this.defaultListModel!.addElement(moduleName);
+this->defaultListModel.addElement(moduleName);
     
 }
 
 }
 
 
-    public ListModel getListModel(){
+    public: ListModel getListModel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultListModel as ListModel;
+                        return this->defaultListModel as ListModel;
     
 }
 
 
-    public add(string string){
-this.vector.add(string);
+    public: void add(std::string string){
+this->vector.add(string);
     
 }
 
 
-    public remove(string string){
-this.vector.remove(string);
+    public: void remove(std::string string){
+this->vector.remove(string);
     
 }
 

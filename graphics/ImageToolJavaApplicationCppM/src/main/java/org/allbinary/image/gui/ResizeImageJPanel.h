@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_RESIZEIMAGEJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/System.h"
@@ -91,60 +93,59 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ResizeImageJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class ResizeImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: ResizeImageJPanel(ImageProcessorInput imageProcessorInput);
 
-    public process();
+    public: void process();
 
-    public update();
+    public: void update();
 
-    public updateFor16Above();
+    public: void updateFor16Above();
 
-    public updateFor16Below();
+    public: void updateFor16Below();
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
-    initComponents();
+    private: void initComponents();
 
-    aboveJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    updateJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void updateJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    adjustFor16AboveJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void adjustFor16AboveJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    adjustFor16BelowJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void adjustFor16BelowJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: aboveJButton: javax.swing.JButton;
+    private: javax::swing::JButton aboveJButton;
 
-    private: adjustFor16AboveJButton: javax.swing.JButton;
+    private: javax::swing::JButton adjustFor16AboveJButton;
 
-    private: adjustFor16BelowJButton: javax.swing.JButton;
+    private: javax::swing::JButton adjustFor16BelowJButton;
 
-    private: floatPercentJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField floatPercentJTextField;
 
-    private: jComboBox1: javax.swing.JComboBox<string>;
+    private: javax::swing::JComboBox<string> jComboBox1;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: jTextField1: javax.swing.JTextField;
+    private: javax::swing::JTextField jTextField1;
 
-    private: jTextField2: javax.swing.JTextField;
+    private: javax::swing::JTextField jTextField2;
 
-    private: updateJButton: javax.swing.JButton;
+    private: javax::swing::JButton updateJButton;
 
 };
 

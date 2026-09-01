@@ -37,27 +37,26 @@
 class TimeTypeUtil
             : public Object
          {
-        
 
-    private: static const instance: TimeTypeUtil = new TimeTypeUtil();
+    private: static TimeTypeUtil instance() { return TimeTypeUtil(); }
 
-    public static TimeTypeUtil getInstance();
+    public: static TimeTypeUtil getInstance();
 
-    public const NIGHT: string = "Night";
+    public: const std::string NIGHT = "Night";
 
-    public const DAY: string = "Day";
+    public: const std::string DAY = "Day";
 
-    public bool isNight();
+    public: bool isNight();
 
-    public int32_t getHourOfDay();
+    public: int32_t getHourOfDay();
 
-    public string getNightOrDay();
+    public: std::string getNightOrDay();
 
-    public int32_t getHourOfDay(int64_t timeInMillis);
+    public: int32_t getHourOfDay(int64_t timeInMillis);
 
-    public bool isNight(int64_t timeInMillis);
+    public: bool isNight(int64_t timeInMillis);
 
-    public string getNightOrDay(int64_t timeInMillis);
+    public: std::string getNightOrDay(int64_t timeInMillis);
 
 };
 

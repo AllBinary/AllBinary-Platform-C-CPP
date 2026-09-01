@@ -38,11 +38,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameSkillPropertyInterface {
-        
 
-    string getName()
+    std::string getName()
 
-    string getValue()
+    std::string getValue()
 
 };
 

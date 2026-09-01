@@ -60,79 +60,74 @@
 /*actual*/ class PreLogUtil
             : public Object
          {
-        
 
-    /*actual*/ public static put(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName){
 
-    className: string = PreLogUtil.getClassName(anyType)!;;
+    std::string className = PreLogUtil::getClassName(anyType);;
     
 
-                        if(className == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    className= CommonStrings.getInstance()!.EMPTY;
+                                    className= CommonStrings::getInstance().EMPTY;
     
 
                                     }
                                 
-className= new StringMaker().append(className)!.append(CommonSeps.getInstance()!.FORWARD_SLASH)!.append(StringUtil.getInstance()!.toString(anyType))!.toString();
+className= StringMaker().append(className).append(CommonSeps::getInstance().FORWARD_SLASH).append(StringUtil::getInstance().toString(anyType)).toString();
     
 
-    message: string = LogFormatUtil.getInstance()!.getS(className, functionName, specialMessage)!;;
+    std::string message = LogFormatUtil::getInstance().getS(className, functionName, specialMessage);;
     
-PlayN.getInstance()!.log()!.debug(PreLogUtil.LOG_SUCCESS +message);
+PlayN::getInstance().log().debug(PreLogUtil::LOG_SUCCESS +message);
     
 }
 
 
-    private: static const LOG_SUCCESS: string = "org.allbinary: ";
+    private: static const std::string LOG_SUCCESS = "org.allbinary: ";
 
-    /*actual*/ public static putOE(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
-    className: string = PreLogUtil.getClassName(anyType)!;;
+    std::string className = PreLogUtil::getClassName(anyType);;
     
 
-                        if(className == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    className= CommonStrings.getInstance()!.EMPTY;
+                                    className= CommonStrings::getInstance().EMPTY;
     
 
                                     }
                                 
-className= new StringMaker().append(className)!.append(CommonSeps.getInstance()!.FORWARD_SLASH)!.append(StringUtil.getInstance()!.toString(anyType))!.toString();
+className= StringMaker().append(className).append(CommonSeps::getInstance().FORWARD_SLASH).append(StringUtil::getInstance().toString(anyType)).toString();
     
 
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
-PlayN.getInstance()!.log()!.error(PreLogUtil.LOG_SUCCESS +message, exception as Throwable);
-    
-}
-
-
-    /*actual*/ public static putS(string specialMessage, string className, string functionName){
-
-    message: string = LogFormatUtil.getInstance()!.getS(className, functionName, specialMessage)!;;
-    
-PlayN.getInstance()!.log()!.debug(PreLogUtil.LOG_SUCCESS +message);
+PlayN::getInstance().log().error(PreLogUtil::LOG_SUCCESS +message, exception as Throwable);
     
 }
 
 
-    /*actual*/ public static putSE(string specialMessage, string className, string functionName, any = {} exception){
+    /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName){
 
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().getS(className, functionName, specialMessage);;
     
-PlayN.getInstance()!.log()!.error(PreLogUtil.LOG_SUCCESS +message, exception as Throwable);
+PlayN::getInstance().log().debug(PreLogUtil::LOG_SUCCESS +message);
     
 }
 
 
-    /*actual*/ public static string getClassName(any = {} anyType)
+    /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
+
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    
+PlayN::getInstance().log().error(PreLogUtil::LOG_SUCCESS +message, exception as Throwable);
+    
+}
+
+
+    /*actual*/ public: static std::string getClassName(Object* anyType)
                 //native - START
                 {
                     
@@ -143,10 +138,8 @@ PlayN.getInstance()!.log()!.error(PreLogUtil.LOG_SUCCESS +message, exception as 
                 //native - END
                 
 
-public constructor (){
-
-            super();
-        }
+public: PreLogUtil(){
+}
 
 
 };

@@ -49,28 +49,27 @@
 class AndroidInfoFactory
             : public Object
          {
-        
 
-    private: static const instance: AndroidInfoFactory = new AndroidInfoFactory();
+    private: static AndroidInfoFactory instance() { return AndroidInfoFactory(); }
 
-    public static AndroidInfoFactory getInstance(){
+    public: static AndroidInfoFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidInfoFactory.instance;
+                        return AndroidInfoFactory::instance();
     
 }
 
 
-    private: const version: int32_t = Integer.parseInt(Build.VERSION.SDK)!;
+    private: const int32_t version = Integer::parseInt(Build::VERSION.SDK);
 
-    public int32_t getVersion(){
+    public: int32_t getVersion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.version;
+                        return this->version;
     
 }
 

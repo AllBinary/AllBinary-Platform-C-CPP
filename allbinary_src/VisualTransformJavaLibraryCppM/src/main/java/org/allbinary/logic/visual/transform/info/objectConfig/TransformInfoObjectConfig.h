@@ -106,101 +106,100 @@
 class TransformInfoObjectConfig
             : public Object
         : public TransformInfoObjectConfigInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const ownerTransformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface ownerTransformInfoInterface;
 
-    private: document: Document;
+    private: Document document;
 
-    private: outputTypeName: string;
+    private: std::string outputTypeName;
 
-public constructor (Object transformInfoInterface);
+public: TransformInfoObjectConfig(Object transformInfoInterface);
 
-public constructor (Object transformInfoInterface, Object document);
+public: TransformInfoObjectConfig(Object transformInfoInterface, Object document);
 
-public constructor (Object transformInfoInterface, string name, string type);
+public: TransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type);
 
-    createDocument();
+    private: void createDocument();
 
-    TransformInfoInterface getTransformInfoInterface();
-
-                //@Throws(Exception.constructor)
-            
-    public Document toXmlDoc();
-
-    setDocument(Document document);
-
-    public bool containsView(TransformInfoInterface transformInfoInterface);
+    protected: TransformInfoInterface getTransformInfoInterface();
 
                 //@Throws(Exception.constructor)
             
-    NamedNodeMap getTemplateAttributes();
+    public: Document toXmlDoc();
+
+    protected: void setDocument(Document document);
+
+    public: bool containsView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string getName();
+    private: NamedNodeMap getTemplateAttributes();
 
                 //@Throws(Exception.constructor)
             
-    public setName(string name);
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    Vector getNodeVector(string nodeName);
+    public: void setName(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    Vector getTransformDomNodes(string nodeName);
+    private: Vector getNodeVector(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransforms(string nodeName);
+    private: Vector getTransformDomNodes(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformsGroup(string group);
+    public: Vector getTransforms(std::string nodeName);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformDomNodes();
+    public: Vector getTransformsGroup(std::string group);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransforms();
+    public: Vector getTransformDomNodes();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getGroupTransforms();
+    public: Vector getTransforms();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getParentTransforms();
-
-    Node getRootNode();
-
-    public setOutputTypeName(string outputTypeName);
+    public: Vector getGroupTransforms();
 
                 //@Throws(Exception.constructor)
             
-    public string getOutputTypeName();
+    public: Vector getParentTransforms();
+
+    private: Node getRootNode();
+
+    public: void setOutputTypeName(std::string outputTypeName);
 
                 //@Throws(Exception.constructor)
             
-    public string getInputOutputTypeName();
+    public: std::string getOutputTypeName();
 
                 //@Throws(Exception.constructor)
             
-    public string getInputOutputTypeFile();
+    public: std::string getInputOutputTypeName();
 
                 //@Throws(Exception.constructor)
             
-    public string getImportUriPath();
+    public: std::string getInputOutputTypeFile();
 
-    public string toString();
+                //@Throws(Exception.constructor)
+            
+    public: std::string getImportUriPath();
+
+    public: std::string toString();
 
 };
 

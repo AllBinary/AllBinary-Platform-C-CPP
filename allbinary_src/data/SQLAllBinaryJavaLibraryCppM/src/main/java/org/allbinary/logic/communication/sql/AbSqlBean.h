@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBEAN_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SQL_ABSQLBEAN_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <java/sql/ResultSet.h>
@@ -62,21 +64,20 @@
         #include "AbSqlRow.h"
 
 class AbSqlBean: public AbSqlRow {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const METHOD_GET_FIELD: string = "getField";
+    private: const std::string METHOD_GET_FIELD = "getField";
 
-    private: const METHOD_IS_SUBSET_OF_ENTRY: string = "isSubsetOfEntry";
+    private: const std::string METHOD_IS_SUBSET_OF_ENTRY = "isSubsetOfEntry";
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface);
+public: AbSqlBean(DbConnectionInfo databaseConnectionInfoInterface);
 
-    public string getField(string key, string value, string requestedField);
+    public: std::string getField(std::string key, std::string value, std::string requestedField);
 
-    public string getField(HashMap<any, any> keysAndValues, string requestedField);
+    public: std::string getField(HashMap<any, any> keysAndValues, std::string requestedField);
 
-    public string isSubsetOfEntry(string key, string value, HashMap<any, any> columnsAndValues);
+    public: std::string isSubsetOfEntry(std::string key, std::string value, HashMap<any, any> columnsAndValues);
 
 };
 

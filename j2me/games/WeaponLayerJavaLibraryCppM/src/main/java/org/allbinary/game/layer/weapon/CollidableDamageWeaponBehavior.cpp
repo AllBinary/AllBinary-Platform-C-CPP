@@ -67,42 +67,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CollidableDamageWeaponBehavior: public CollidableDestroyableDamageableBehavior {
-        
 
-    private: collided: bool= false;
+    private: bool collided= false;
 
-    collisionHelper: CollisionHelper;
+    protected: CollisionHelper collisionHelper;
 
-public constructor (bool collidable){
+public: CollidableDamageWeaponBehavior(bool collidable){
             super(collidable);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setCollided(false);
+this->setCollided(false);
     
-this.setCollidable(true);
+this->setCollidable(true);
     
-this.collisionHelper= CollidableHelperFactory.getInstance();
-    
-}
-
-
-    public init(AllBinaryLayer sourceLayerInterface){
-this.setCollided(false);
-    
-this.collisionHelper!.setOwnerLayerInterface(sourceLayerInterface);
+this->collisionHelper= CollidableHelperFactory::getInstance();
     
 }
 
 
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
+    public: void init(AllBinaryLayer sourceLayerInterface){
+this->setCollided(false);
+    
+this->collisionHelper.setOwnerLayerInterface(sourceLayerInterface);
+    
+}
 
-                        if(this.collisionHelper!.isCollidable(collisionLayer))
+
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
+
+                        if(this->collisionHelper.isCollidable(collisionLayer))
                         
                                     {
                                     
-                        if(ownerLayer!.getGroupInterface()[0] != collisionLayer!.getGroupInterface()[0])
+                        if(ownerLayer.getGroupInterface()[0] != collisionLayer.getGroupInterface()[0])
                         
                                     {
                                     
@@ -128,28 +127,28 @@ this.collisionHelper!.setOwnerLayerInterface(sourceLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
 super.collide(ownerLayer, collisionLayer);
     
-this.collided= true;
+this->collided= true;
     
 }
 
 
-    public bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
 
-                        if(this.collisionHelper!.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
+                        if(this->collisionHelper.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
                         
                                     {
                                     
-    layerInterface: AllBinaryLayer = collidableInterfaceCompositeInterface as AllBinaryLayer;;
+    AllBinaryLayer layerInterface = collidableInterfaceCompositeInterface as AllBinaryLayer;;
     
 
-                        if(ownerLayer!.getGroupInterface()[0] != layerInterface!.getGroupInterface()[0])
+                        if(ownerLayer.getGroupInterface()[0] != layerInterface.getGroupInterface()[0])
                         
                                     {
                                     
-                        if(this.layerCollisionUtil!.isCollision(ownerLayer, layerInterface))
+                        if(this->layerCollisionUtil.isCollision(ownerLayer, layerInterface))
                         
                                     {
                                     
@@ -178,36 +177,36 @@ this.collided= true;
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
-this.damageUtil!.process(ownerLayer as DamageableInterface, collidableInterfaceCompositeInterface as DamageableInterface);
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+this->damageUtil.process(ownerLayer as DamageableInterface, collidableInterfaceCompositeInterface as DamageableInterface);
     
-this.collided= true;
+this->collided= true;
     
 }
 
 
-    public CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface){
+    public: CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollisionTypeFactory.getInstance()!.COLLISION;
+                        return CollisionTypeFactory::getInstance().COLLISION;
     
 }
 
 
-    public bool isCollided(){
+    public: bool isCollided(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.collided;
+                        return this->collided;
     
 }
 
 
-    setCollided(bool collided){
-this.collided= collided;
+    private: void setCollided(bool collided){
+this->collided= collided;
     
 }
 

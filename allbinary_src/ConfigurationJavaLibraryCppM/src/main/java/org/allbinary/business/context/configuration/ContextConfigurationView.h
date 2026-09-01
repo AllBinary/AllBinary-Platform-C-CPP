@@ -74,19 +74,18 @@
 class ContextConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor (Node node);
+public: ContextConfigurationView(Node node);
 
-public constructor (ContextConfigurationInterface contextConfigurationInterface);
+public: ContextConfigurationView(ContextConfigurationInterface contextConfigurationInterface);
 
-    public ContextConfigurationInterface getContextConfigurationInterface();
+    public: ContextConfigurationInterface getContextConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

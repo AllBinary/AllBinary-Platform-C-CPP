@@ -51,15 +51,14 @@
 #include "PaintableForm.h"
 
 class ItemPaintableFactory: public ItemPaintable {
-        
 
-    private: static const instance: ItemPaintableFactory = new ItemPaintableFactory();
+    private: static ItemPaintableFactory instance() { return ItemPaintableFactory(); }
 
-    public static ItemPaintableFactory getInstance();
+    public: static ItemPaintableFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm);
+    public: ItemPaintable getInstanceItemPaintable(PaintableForm paintableForm);
 
 };
 

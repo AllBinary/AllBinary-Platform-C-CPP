@@ -68,27 +68,26 @@
 class UserName
             : public Object
          {
-        
 
-    private: static const instance: UserName = new UserName();
+    private: static UserName instance() { return UserName(); }
 
-    public static UserName getInstance();
+    public: static UserName getInstance();
 
-    public static string getValidationInfo(string aUserName);
+    public: static std::string getValidationInfo(std::string aUserName);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userName: string;
+    private: std::string userName;
 
-private constructor ();
+private: UserName();
 
-public constructor (HashMap<any, any> hashMap);
+public: UserName(HashMap<any, any> hashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string get();
+    public: std::string get();
 
-    public Boolean isValid(string aUserName);
+    public: Boolean isValid(std::string aUserName);
 
 };
 

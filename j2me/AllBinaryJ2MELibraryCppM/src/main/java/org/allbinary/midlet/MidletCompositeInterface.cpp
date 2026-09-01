@@ -51,9 +51,8 @@
         #include "AllBinaryMidlet.h"
 
 class MidletCompositeInterface {
-        
 
-    setMidlet(MIDlet midlet)
+    void setMidlet(MIDlet midlet)
 
     AllBinaryMidlet getMidlet()
 

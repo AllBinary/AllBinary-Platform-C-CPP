@@ -45,14 +45,11 @@
 class FileEmailQueue
             : public Object
          {
-        
 
-    private: domDocumentQueueInterface: DomDocumentQueueInterface;
+    private: DomDocumentQueueInterface domDocumentQueueInterface;
 
-public constructor (){
-
-            super();
-        }
+public: FileEmailQueue(){
+}
 
 
 };

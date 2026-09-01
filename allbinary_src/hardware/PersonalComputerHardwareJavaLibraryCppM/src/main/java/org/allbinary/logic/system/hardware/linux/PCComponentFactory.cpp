@@ -86,139 +86,134 @@
 class PCComponentFactory
             : public Object
          {
-        
 
-    private: static const instance: PCComponentFactory = new PCComponentFactory();
+    private: static PCComponentFactory instance() { return PCComponentFactory(); }
 
-    public static PCComponentFactory getInstance(){
+    public: static PCComponentFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PCComponentFactory.instance;
+                        return PCComponentFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const componentFactory: ComponentFactory = ComponentFactory.getInstance()!;
+    private: const ComponentFactory componentFactory = ComponentFactory::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: PCComponentFactory(){
+}
 
 
-    public HardwareComponentInterface getInstance(string component, string componentData){
+    public: HardwareComponentInterface getInstance(std::string component, std::string componentData){
 
         try {
             
-                        if(component != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
-                        if(component.compareTo(this.componentFactory!.ETHERNET.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.ETHERNET.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Ethernet(componentData) as HardwareComponentInterface;
+                        return Ethernet(componentData) as HardwareComponentInterface;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.BRIDGE.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.BRIDGE.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Bridge(componentData) as HardwareComponentInterface;
+                        return Bridge(componentData) as HardwareComponentInterface;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.IDE.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.IDE.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HardDriveController(componentData) as HardwareComponentInterface;
+                        return HardDriveController(componentData) as HardwareComponentInterface;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.MULTIMEDIA.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.MULTIMEDIA.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Media(componentData) as HardwareComponentInterface;
+                        return Media(componentData) as HardwareComponentInterface;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.SCSI.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.SCSI.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HardDriveController(componentData) as HardwareComponentInterface;
+                        return HardDriveController(componentData) as HardwareComponentInterface;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.USB.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.USB.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Usb(componentData) as HardwareComponentInterface;
+                        return Usb(componentData) as HardwareComponentInterface;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.VGA.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.VGA.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Video(componentData) as HardwareComponentInterface;
+                        return Video(componentData) as HardwareComponentInterface;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.PCI.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.PCI.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PCI(componentData) as HardwareComponentInterface;
+                        return PCI(componentData) as HardwareComponentInterface;
     
 
                                     }
@@ -230,20 +225,20 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Unknown(componentData) as HardwareComponentInterface;
+                        return Unknown(componentData) as HardwareComponentInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -252,114 +247,114 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Unknown(commonStrings!.EXCEPTION);
+                        return Unknown(commonStrings.EXCEPTION);
     
 }
 
 }
 
 
-    public string getComponentType(string component){
+    public: std::string getComponentType(std::string component){
 
-                        if(component.indexOf(this.componentFactory!.ETHERNET.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.ETHERNET.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.ETHERNET.toString();;
+                        return this->componentFactory.ETHERNET.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.BRIDGE.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.BRIDGE.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.BRIDGE.toString();;
+                        return this->componentFactory.BRIDGE.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.IDE.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.IDE.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.IDE.toString();;
+                        return this->componentFactory.IDE.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.MULTIMEDIA.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.MULTIMEDIA.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.MULTIMEDIA.toString();;
+                        return this->componentFactory.MULTIMEDIA.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.SCSI.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.SCSI.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.SCSI.toString();;
+                        return this->componentFactory.SCSI.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.USB.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.USB.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.USB.toString();;
+                        return this->componentFactory.USB.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.indexOf(this.componentFactory!.VGA.toString()) >= 0)
+                        if(component.indexOf(this->componentFactory.VGA.toString()) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.VGA.toString();;
+                        return this->componentFactory.VGA.toString();;
     
 
                                     }
                                 
                              else 
-                        if(component.compareTo(this.componentFactory!.PCI.toString()) == 0)
+                        if(component.compareTo(this->componentFactory.PCI.toString()) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.PCI.toString();;
+                        return this->componentFactory.PCI.toString();;
     
 
                                     }
@@ -368,7 +363,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentFactory!.UNKNOWN.toString();;
+                        return this->componentFactory.UNKNOWN.toString();;
     
 }
 

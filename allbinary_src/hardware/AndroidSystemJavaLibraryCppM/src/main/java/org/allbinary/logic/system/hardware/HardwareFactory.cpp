@@ -64,60 +64,57 @@
 class HardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: HardwareFactory = new HardwareFactory();
+    private: static HardwareFactory instance() { return HardwareFactory(); }
 
-    public static HardwareFactory getInstance(){
+    public: static HardwareFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HardwareFactory.instance;
+                        return HardwareFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: HardwareFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public HardwareInterface getInstance(GenericOperatingSystem os){
+    public: HardwareInterface getInstance(GenericOperatingSystem os){
 
         try {
             
-    operatingSystems: OperatingSystems = OperatingSystems.getInstance()!;;
+    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
     
 
-                        if(this.tsUtil!.compareTo(os.getName(), operatingSystems!.ANDROID) == 0)
+                        if(this->tsUtil.compareTo(os.getName(), operatingSystems.ANDROID) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AndroidHardware();
+                        return AndroidHardware();
     
 
                                     }
                                 
                              else 
-                        if(this.tsUtil!.compareTo(os.getName(), operatingSystems!.HARMONY) == 0)
+                        if(this->tsUtil.compareTo(os.getName(), operatingSystems.HARMONY) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AndroidHardware();
+                        return AndroidHardware();
     
 
                                     }
@@ -125,22 +122,22 @@ private constructor (){
 
 
 
-                            throw new Exception("No Hardware Imp for: " +os.getName());
+                            throw Exception("No Hardware Imp for: " +os.getName());
                     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put("Ignoring Exception Returning NoHardware", this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put("Ignoring Exception Returning NoHardware", this, commonStrings.GET_INSTANCE, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NoHardware();
+                        return NoHardware();
     
 }
 

@@ -100,34 +100,33 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SavedCaptureImagesWorker: public BasicEventHandler: public CaptureWorkerInterface {
-        
+class SavedCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static index: int64_t;
+    private: static int64_t index;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: screenScavangerRobot: ScreenScavangerRobot;
+    private: ScreenScavangerRobot screenScavangerRobot;
 
-    private: savedCaptureGenericProfileDataWorkerType: SavedCaptureGenericProfileDataWorkerType;
+    private: SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType;
 
-public constructor (SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType);
+public: SavedCaptureImagesWorker(SavedCaptureGenericProfileDataWorkerType savedCaptureGenericProfileDataWorkerType);
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread);
+    public: void setThread(Thread thread);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public run();
+    public: void run();
 
 };
 

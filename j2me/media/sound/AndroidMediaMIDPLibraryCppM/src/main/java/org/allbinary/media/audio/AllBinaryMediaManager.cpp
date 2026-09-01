@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -83,13 +85,12 @@
 class AllBinaryMediaManager
             : public Object
          {
-        
 
-    private: static const THIS: string = "AllBinaryMediaManagerAndroid";
+    private: static const std::string THIS = "AllBinaryMediaManagerAndroid";
 
-    private: static mostUsedTotal: int32_t = 0;
+    private: static int32_t mostUsedTotal = 0;
 
-    public static bool isMuted(){
+    public: static bool isMuted(){
 
 
 
@@ -99,11 +100,11 @@ class AllBinaryMediaManager
 }
 
 
-    public static setMuted(bool aMuted){
+    public: static void setMuted(bool aMuted){
 }
 
 
-    public static bool update(){
+    public: static bool update(){
 
 
 
@@ -115,67 +116,67 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public static init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, commonString!.INIT);
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
     
-AllBinaryMediaManager.shutdown(soundsFactoryInterface);
+AllBinaryMediaManager::shutdown(soundsFactoryInterface);
     
-ProgressCanvasFactory.getInstance()!.addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
     
 System.gc();
     
-new Sounds(soundsFactoryInterface).init();
+Sounds(soundsFactoryInterface).init();
     
-logUtil!.putF(commonString!.END, AllBinaryMediaManager.THIS, commonString!.INIT);
+logUtil.putF(commonString.END, AllBinaryMediaManager::THIS, commonString.INIT);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    static shutdown(SoundsFactoryInterface soundsFactoryInterface){
+    static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "shutdown");
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "shutdown");
     
 
-                        if(soundsFactoryInterface!.isInitialized())
+                        if(soundsFactoryInterface.isInitialized())
                         
                                     {
-                                    new Sounds(soundsFactoryInterface).stopAll();
+                                    Sounds(soundsFactoryInterface).stopAll();
     
 
-    soundInterfaceArray: std::vector<Sound> = soundsFactoryInterface!.getSoundInterfaceArray()!;;
+    std::vector<Sound> soundInterfaceArray = soundsFactoryInterface.getSoundInterfaceArray();;
     
 
-    player: Player;;
+    Player player;;
     
 
-    player2: Player;;
+    Player player2;;
     
 
-    androidMediaPlayerWrapper: AndroidMediaPlayerWrapper;;
+    AndroidMediaPlayerWrapper androidMediaPlayerWrapper;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < soundInterfaceArray!.length; i++)
+    int32_t i = 0;i < soundInterfaceArray.size(); i++)
         {
 
                         if(soundInterfaceArray[i] != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -183,7 +184,7 @@ logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "shutdown");
     
 
                         if(player != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -195,7 +196,7 @@ logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "shutdown");
                                     {
                                     androidMediaPlayerWrapper= player2 as AndroidMediaPlayerWrapper;
     
-MediaPlayerUtil.getInstance()!.waitForMediaPlayer(androidMediaPlayerWrapper!.getMediaPlayer());
+MediaPlayerUtil::getInstance().waitForMediaPlayer(androidMediaPlayerWrapper.getMediaPlayer());
     
 
                                     }
@@ -204,7 +205,7 @@ MediaPlayerUtil.getInstance()!.waitForMediaPlayer(androidMediaPlayerWrapper!.get
                             
 
 
-                            throw new Exception("Unknown Property Player: " +player.constructor.name.toString()!);
+                            throw Exception("Unknown Property Player: " +player.constructor.name.toString()!);
                     
 
                         }
@@ -217,32 +218,32 @@ MediaPlayerUtil.getInstance()!.waitForMediaPlayer(androidMediaPlayerWrapper!.get
                                 
 }
 
-new Sounds(soundsFactoryInterface).closeAll();
+Sounds(soundsFactoryInterface).closeAll();
     
 System.gc();
     
-soundsFactoryInterface!.setInitialized(false);
+soundsFactoryInterface.setInitialized(false);
     
-AllBinaryMediaManager.mostUsedTotal= 0;
+AllBinaryMediaManager::mostUsedTotal= 0;
     
 
                                     }
                                 
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "shutdown");
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "shutdown");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Player createPlayer(string resource){
-AllBinaryMediaManager.mostUsedTotal++;
+    public: static Player createPlayer(std::string resource){
+AllBinaryMediaManager::mostUsedTotal++;
     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-                        if(Features.getInstance()!.isFeature(GameFeatureFactory.getInstance()!.SOUND))
+                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
                         
                                     {
                                     
@@ -251,19 +252,19 @@ AllBinaryMediaManager.mostUsedTotal++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AndroidMediaPlayerWrapper(resource);
+                        return AndroidMediaPlayerWrapper(resource);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +CommonLabels.getInstance()!.TOTAL_LABEL +AllBinaryMediaManager.mostUsedTotal, AllBinaryMediaManager.THIS, "createPlayer", e);
+logUtil.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +CommonLabels::getInstance().TOTAL_LABEL +AllBinaryMediaManager::mostUsedTotal, AllBinaryMediaManager::THIS, "createPlayer", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER;
+                        return NoPlayer::NO_PLAYER;
     
 }
 
@@ -275,7 +276,7 @@ logUtil!.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +Co
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER;
+                        return NoPlayer::NO_PLAYER;
     
 
                         }
@@ -285,11 +286,11 @@ logUtil!.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +Co
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public static Player createPlayerFromInputStream(InputStream stream, string type){
+    public: static Player createPlayerFromInputStream(InputStream stream, std::string type){
 
 
 
-                            throw new MediaException("No Input Stream Player");
+                            throw MediaException("No Input Stream Player");
                     
 }
 
@@ -297,16 +298,16 @@ logUtil!.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +Co
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static playTone(int32_t frequency, int32_t time, int32_t volume){
+    public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
 
 
 
-                            throw new MediaException("No Tone Player");
+                            throw MediaException("No Tone Player");
                     
 }
 
 
-    public static bool isInitialized(){
+    public: static bool isInitialized(){
 
 
 
@@ -316,10 +317,8 @@ logUtil!.put("Could not create AndroidMediaPlayerWrapper using NoPlayer at " +Co
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AllBinaryMediaManager(){
+}
 
 
 };

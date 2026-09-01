@@ -48,11 +48,10 @@
 class ExitCloseListener
             : public Object
         : public CloseJDialogListenerInterface {
-        
 
-public constructor ();
+public: ExitCloseListener();
 
-    public onClose();
+    public: void onClose();
 
 };
 

@@ -82,214 +82,211 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SelectionHudPaintable: public InitUpdatePaintable: public UpdateMyFontInterface {
-        
+class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    const y: int32_t = CommonButtons.getInstance()!.STANDARD_BUTTON_SIZE +17;
+    protected: const int32_t y = CommonButtons::getInstance().STANDARD_BUTTON_SIZE +17;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-    const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = updateMyFontProcessor;
 
-    private: x: int32_t= 0;
+    private: int32_t x= 0;
 
-    textX: int32_t= 0;
+    protected: int32_t textX= 0;
 
-    imageX: int32_t= 0;
+    protected: int32_t imageX= 0;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: color: int32_t= 0;
+    private: int32_t color= 0;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    private: const backgroundColor: int32_t = BasicColorFactory.getInstance()!.GREY.intValue()!;
+    private: const int32_t backgroundColor = BasicColorFactory::getInstance().GREY.intValue();
 
-protected constructor (){
-
-            super();
-        this.update();
+protected: SelectionHudPaintable(){
+this->update();
     
-this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(10000);
+this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(10000);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    commonButtons: CommonButtons = CommonButtons.getInstance()!;;
-    
-
-    font: Font = graphics.getFont()!;;
-    
-this.setHeight(commonButtons!.STANDARD_BUTTON_SIZE +font.getHeight());
-    
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public update(){
-
-    commonButtons: CommonButtons = CommonButtons.getInstance()!;;
+    CommonButtons commonButtons = CommonButtons::getInstance();;
     
 
-    touchButtonLocationHelper: TouchButtonLocationHelper = new TouchButtonLocationHelper();;
+    Font font = graphics.getFont();;
     
-
-    displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+this->setHeight(commonButtons.STANDARD_BUTTON_SIZE +font.getHeight());
     
-this.x= commonButtons!.STANDARD_BUTTON_SIZE +touchButtonLocationHelper!.getColumnsRemainderHalf();
-    
-this.textX= this.getX() +4;
-    
-this.width= displayInfoSingleton!.getLastWidth() -this.getX() *2;
-    
-this.imageX= this.getWidth() +touchButtonLocationHelper!.getColumnsRemainderHalf() -10;
-    
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public updateSelectionInfo(){
+    public: void update(){
+
+    CommonButtons commonButtons = CommonButtons::getInstance();;
+    
+
+    TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();;
+    
+
+    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    
+this->x= commonButtons.STANDARD_BUTTON_SIZE +touchButtonLocationHelper.getColumnsRemainderHalf();
+    
+this->textX= this->getX() +4;
+    
+this->width= displayInfoSingleton.getLastWidth() -this->getX() *2;
+    
+this->imageX= this->getWidth() +touchButtonLocationHelper.getColumnsRemainderHalf() -10;
+    
+this->myFontProcessor= this->updateMyFontProcessor;
+    
 }
 
 
-    public updateInfo(){
+    public: void updateSelectionInfo(){
 }
 
 
-    PrimitiveLongUtil getPrimitiveLongUtil(){
+    public: void updateInfo(){
+}
+
+
+    protected: PrimitiveLongUtil getPrimitiveLongUtil(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.primitiveLongUtil;
+                        return this->primitiveLongUtil;
     
 }
 
 
-    setAnimationInterface(Animation animationInterface){
-this.animationInterface= animationInterface;
+    protected: void setAnimationInterface(Animation animationInterface){
+this->animationInterface= animationInterface;
     
 }
 
 
-    Animation getAnimationInterface(){
+    protected: Animation getAnimationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface;
+                        return this->animationInterface;
     
 }
 
 
-    setName(string name){
-this.name= name;
+    protected: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    string getName(){
+    protected: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
-this.setColor(basicColor!.intValue());
+this->setColor(basicColor.intValue());
     
 }
 
 
-    BasicColor getBasicColorP(){
+    protected: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 
 
-    public setColor(int32_t color){
-this.color= color;
+    public: void setColor(int32_t color){
+this->color= color;
     
 }
 
 
-    public int32_t getColor(){
+    public: int32_t getColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.color;
+                        return this->color;
     
 }
 
 
-    int32_t getWidth(){
+    protected: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    setHeight(int32_t height){
-this.height= height;
+    protected: void setHeight(int32_t height){
+this->height= height;
     
 }
 
 
-    int32_t getHeight(){
+    protected: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    int32_t getX(){
+    protected: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.x;
+                        return this->x;
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
-graphics.setColor(this.backgroundColor);
+graphics.setColor(this->backgroundColor);
     
-graphics.drawRect(this.getX(), this.y, this.getWidth(), this.getHeight());
+graphics.drawRect(this->getX(), this->y, this->getWidth(), this->getHeight());
     
-graphics.setColor(this.getColor());
+graphics.setColor(this->getColor());
     
-graphics.drawString(this.getName(), this.textX, this.y, 0);
+graphics.drawString(this->getName(), this->textX, this->y, 0);
     
 }
 

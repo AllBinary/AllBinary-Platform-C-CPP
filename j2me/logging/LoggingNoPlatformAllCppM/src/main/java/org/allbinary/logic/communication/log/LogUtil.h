@@ -48,21 +48,20 @@
 class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    public static LogUtil getInstance();
+    public: static LogUtil getInstance();
 
-private constructor ();
+private: LogUtil();
 
-    public putL(Log log);
+    public: void putL(Log log);
 
-    public putF(string specialMessage, any = {} anyType, string functionName);
+    public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
 
-    public putF(string specialMessage, string className, string functionName);
+    public: void putF(std::string specialMessage, std::string className, std::string functionName);
 
-    public put(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
 };
 

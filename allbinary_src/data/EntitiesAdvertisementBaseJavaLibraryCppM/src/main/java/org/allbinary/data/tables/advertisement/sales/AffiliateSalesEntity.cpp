@@ -67,34 +67,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AffiliateSalesEntityInterface.h"
 
-class AffiliateSalesEntity: public AbSqlBean: public AffiliateSalesEntityInterface {
-        
+class AffiliateSalesEntity: public AbSqlBean, public AffiliateSalesEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "affiliate";
+    protected: const std::string tableName = "affiliate";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: AffiliateSalesEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public delete(string value){
+    public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(StoreFrontData.getInstance()!.NAME, value);
+            super.deleteWhere(StoreFrontData::getInstance().NAME, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, this.commonStrings!.delete);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
@@ -104,10 +103,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }
@@ -117,33 +116,33 @@ this.setTableName(this.tableName);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    entryData: EntryData = EntryData.getInstance()!;;
+    EntryData entryData = EntryData::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer!.append(this.getTableName());
+stringBuffer.append(this->getTableName());
     
-stringBuffer!.append(this.sqlStrings!.START);
+stringBuffer.append(this->sqlStrings.START);
     
-stringBuffer!.append(entryData!.ID)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(StoreFrontData.getInstance()!.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(GroupData.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DynamicObjectData.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(entryData!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(entryData!.LASTMODIFIED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(entryData!.ID)!.append(this.sqlStrings!.END);
+stringBuffer.append(entryData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(StoreFrontData::getInstance().NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(GroupData::NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DynamicObjectData::NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(entryData.TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(entryData.LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(entryData.ID).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
-    returnStr: string = super.createTable(this.createTableStatement())!;;
+    std::string returnStr = super.createTable(this->createTableStatement());;
     
 
 
@@ -154,13 +153,13 @@ stringBuffer!.append(entryData!.ID)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNS
 }
 
 
-    public update(HashMap<any, any> updatedValues){
-super.updateWhere(EntryData.getInstance()!.ID, updatedValues!.get(EntryData.getInstance()!.ID) as string, updatedValues);
+    public: void update(HashMap<any, any> updatedValues){
+super.updateWhere(EntryData::getInstance().ID, updatedValues.get(EntryData::getInstance().ID) as string, updatedValues);
     
 }
 
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
 
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_SPRITESPLITTERIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_SPRITESPLITTERIMAGEJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -106,86 +108,85 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class SpriteSplitterImageJPanel: public javax.swing.JPanel: public ImageProcessedVisitor {
-        
+class SpriteSplitterImageJPanel: public javax::swing::JPanel, public ImageProcessedVisitor {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const imageStrings: ImageStrings = ImageStrings.getInstance()!;
+    private: const ImageStrings imageStrings = ImageStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-    private: result: BufferedImage;
+    private: BufferedImage result;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: SpriteSplitterImageJPanel(ImageProcessorInput imageProcessorInput);
 
-    public process();
+    public: void process();
 
-    initComponents();
+    private: void initComponents();
 
-    writeOverOriginalJCheckBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void writeOverOriginalJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    generateJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    spriteTypeJComboBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void spriteTypeJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    totalAnimationsJComboBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void totalAnimationsJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    totalFramesJComboBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void totalFramesJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    widthReductionTextFieldActionPerformed(java.awt.event.ActionEvent evt);
+    private: void widthReductionTextFieldActionPerformed(java::awt::event::ActionEvent evt);
 
-    increaseWidthTextFieldActionPerformed(java.awt.event.ActionEvent evt);
+    private: void increaseWidthTextFieldActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: generateJButton: javax.swing.JButton;
+    private: javax::swing::JButton generateJButton;
 
-    private: heightReductionTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField heightReductionTextField;
 
-    private: increaseHeightTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField increaseHeightTextField;
 
-    private: increaseWidthTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField increaseWidthTextField;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: jLabel4: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel4;
 
-    private: jLabel5: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel5;
 
-    private: jLabel6: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel6;
 
-    private: jLabel7: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel7;
 
-    private: jLabel8: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel8;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: jPanel2: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel2;
 
-    private: spriteTypeJComboBox: javax.swing.JComboBox<string>;
+    private: javax::swing::JComboBox<string> spriteTypeJComboBox;
 
-    private: totalAnimationsJComboBox: javax.swing.JComboBox<string>;
+    private: javax::swing::JComboBox<string> totalAnimationsJComboBox;
 
-    private: totalFramesJComboBox: javax.swing.JComboBox<string>;
+    private: javax::swing::JComboBox<string> totalFramesJComboBox;
 
-    private: widthReductionTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField widthReductionTextField;
 
-    private: writeOverOriginalJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox writeOverOriginalJCheckBox;
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
                 //@Throws(IOException.constructor)
             
-    public visit(BufferedImage generatedBufferedImage, string name, int32_t index);
+    public: void visit(BufferedImage generatedBufferedImage, std::string name, int32_t index);
 
 };
 

@@ -61,23 +61,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InventoryEntityInterface: public BasicDataTableInterface {
-        
 
                 //@Throws(MoneyException.constructor)
             
-    ItemInterface getItem(string id);
+    ItemInterface getItem(std::string id);
 
                 //@Throws(Exception.constructor)
             
     Vector getItems(StoreFrontInterface storeFrontInterface);
 
-    string getWeight(string id);
+    std::string getWeight(std::string id);
 
-    deleteWhere(string key, string value);
+    void deleteWhere(std::string key, std::string value);
 
-    insert(Vector values);
+    void insert(Vector values);
 
-    update(HashMap<any, any> updatedValues);
+    void update(HashMap<any, any> updatedValues);
 
 };
 

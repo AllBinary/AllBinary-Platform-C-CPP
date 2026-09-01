@@ -74,67 +74,66 @@
 class RootCategoryPropertiesAbstract
             : public Object
         : public RootCategoryPropertiesInterface {
-        
 
-    private: const category: string = CategoryData.getInstance()!.ROOTCATEGORY;
+    private: const std::string category = CategoryData::getInstance().ROOTCATEGORY;
 
-    private: const fileName: string = this.category +AbPathData.getInstance()!.EXTENSION_SEP +CategoryData.getInstance()!.UNCRYPTED_EXTENSION;
+    private: const std::string fileName = this->category +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
 
-public constructor ();
+public: RootCategoryPropertiesAbstract();
 
-    public any getKey();
+    public: Object* getKey();
 
-    public string getValue();
-
-                //@Throws(Exception.constructor)
-            
-    public setValue(string value);
+    public: std::string getValue();
 
                 //@Throws(Exception.constructor)
             
-    public setRootFilePath(AbPath value);
+    public: void setValue(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public setRootFilePath(string value);
+    public: void setRootFilePath(AbPath value);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getRootFilePath();
+    public: void setRootFilePath(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public bool isRealRoot();
+    public: AbPath getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public bool isRoot();
+    public: bool isRealRoot();
 
                 //@Throws(Exception.constructor)
             
-    public string getWebAppPath(CategoryHierarchyInterface categoryHierarchyInterface);
-
-    public AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface);
-
-    public string getFileName();
-
-    public Boolean isValid();
-
-    public HashMap<any, any> toHashMap();
-
-    public Vector toVector();
+    public: bool isRoot();
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc();
+    public: std::string getWebAppPath(CategoryHierarchyInterface categoryHierarchyInterface);
+
+    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface);
+
+    public: std::string getFileName();
+
+    public: Boolean isValid();
+
+    public: HashMap<any, any> toHashMap();
+
+    public: Vector toVector();
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string validationInfo();
 
 };
 

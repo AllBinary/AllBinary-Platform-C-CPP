@@ -44,21 +44,20 @@
 class LockedUtil
             : public Object
         : public LockedUtilInterface {
-        
 
-    private: static const instance: LockedUtil = new LockedUtil();
+    private: static LockedUtil instance() { return LockedUtil(); }
 
-    public static LockedUtil getInstance(){
+    public: static LockedUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockedUtil.instance;
+                        return LockedUtil::instance();
     
 }
 
 
-    public bool isLocked(){
+    public: bool isLocked(){
 
 
 
@@ -68,7 +67,7 @@ class LockedUtil
 }
 
 
-    public bool isLockedFeature(LockableFeature lockableFeatrue){
+    public: bool isLockedFeature(LockableFeature lockableFeatrue){
 
 
 

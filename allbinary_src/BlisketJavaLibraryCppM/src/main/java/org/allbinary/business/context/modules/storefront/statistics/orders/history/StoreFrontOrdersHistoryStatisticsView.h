@@ -64,15 +64,14 @@
 class StoreFrontOrdersHistoryStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: storeFrontOrdersHistoryStatisticsInterface: StoreFrontOrdersHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface;
 
-public constructor (StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface);
+public: StoreFrontOrdersHistoryStatisticsView(StoreFrontOrdersHistoryStatisticsInterface storeFrontOrdersHistoryStatisticsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

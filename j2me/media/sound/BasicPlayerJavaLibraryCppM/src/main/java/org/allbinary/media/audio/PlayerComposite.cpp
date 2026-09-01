@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -74,143 +76,140 @@
 class PlayerComposite
             : public Object
         : public Controllable, public Player {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const player: Player;
+    private: Player player;
 
-    private: const timeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeElapsedHelper = TimeDelayHelper(0);
 
-public constructor (Player player, int32_t repeatTime){
-
-            super();
-        this.player= player;
+public: PlayerComposite(Player player, int32_t repeatTime){
+this->player= player;
     
-this.timeElapsedHelper!.delay= repeatTime;
+this->timeElapsedHelper.delay= repeatTime;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addPlayerListener(PlayerListener playerListener){
-this.player.addPlayerListener(playerListener);
+    public: void addPlayerListener(PlayerListener playerListener){
+this->player.addPlayerListener(playerListener);
     
 }
 
 
-    public removePlayerListener(PlayerListener playerListener){
-this.player.removePlayerListener(playerListener);
+    public: void removePlayerListener(PlayerListener playerListener){
+this->player.removePlayerListener(playerListener);
     
 }
 
 
-    public close(){
-this.player.close();
+    public: void close(){
+this->player.close();
     
 }
 
 
-    public deallocate(){
-this.player.deallocate();
+    public: void deallocate(){
+this->player.deallocate();
     
 }
 
 
-    public string getContentType(){
+    public: std::string getContentType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getContentType();;
+                        return this->player.getContentType();;
     
 }
 
 
-    public int64_t getDuration(){
+    public: int64_t getDuration(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getDuration();;
+                        return this->player.getDuration();;
     
 }
 
 
-    public int64_t getMediaTime(){
+    public: int64_t getMediaTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getMediaTime();;
+                        return this->player.getMediaTime();;
     
 }
 
 
-    public prefetch(){
+    public: void prefetch(){
 
         try {
-            this.player.prefetch();
+            this->player.prefetch();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "prefetch", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "prefetch", e);
     
 }
 
 }
 
 
-    public realize(){
+    public: void realize(){
 
         try {
-            this.player.realize();
+            this->player.realize();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "realize", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "realize", e);
     
 }
 
 }
 
 
-    public int32_t getState(){
+    public: int32_t getState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getState();;
+                        return this->player.getState();;
     
 }
 
 
-    public setLoopCount(int32_t count){
-this.player.setLoopCount(count);
+    public: void setLoopCount(int32_t count){
+this->player.setLoopCount(count);
     
 }
 
 
-    public int64_t setMediaTime(int64_t now){
+    public: int64_t setMediaTime(int64_t now){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.setMediaTime(now);;
+                        return this->player.setMediaTime(now);;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setMediaTime", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "setMediaTime", e);
     
 
 
@@ -223,16 +222,16 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setMediaTime", e);
 }
 
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    public start(){
+    public: void start(){
 
         try {
             
-                        if(this.timeElapsedHelper!.isTime(this.gameTickTimeDelayHelper!.startTime))
+                        if(this->timeElapsedHelper.isTime(this->gameTickTimeDelayHelper.startTime))
                         
                                     {
-                                    this.player.start();
+                                    this->player.start();
     
 
                                     }
@@ -241,63 +240,63 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setMediaTime", e);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.START_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, e);
     
 }
 
 }
 
 
-    public stop(){
+    public: void stop(){
 
         try {
-            this.player.stop();
+            this->player.stop();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "stop", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "stop", e);
     
 }
 
 }
 
 
-    public Control getControl(string controlType){
+    public: Control getControl(std::string controlType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player.getControl(controlType);;
+                        return this->player.getControl(controlType);;
     
 }
 
 
-    public std::vector<Control> getControls(){
+    public: std::vector<Control> getControls(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setVolume(int32_t leftVolume, int32_t rightVolume){
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
 
-    controllable2: Controllable2 = (this.player as unknown as Controllable2);;
+    Controllable2 controllable2 = (this->player as unknown as Controllable2);;
     
 controllable2.setVolume(leftVolume, rightVolume);
     
 }
 
 
-    public Player getPlayerP(){
+    public: Player getPlayerP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.player;
+                        return this->player;
     
 }
 

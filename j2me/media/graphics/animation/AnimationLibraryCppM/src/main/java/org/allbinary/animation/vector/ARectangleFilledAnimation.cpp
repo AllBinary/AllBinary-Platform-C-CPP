@@ -31,14 +31,13 @@
         #include "RectangleFilledAnimation.h"
 
 class ARectangleFilledAnimation: public RectangleFilledAnimation {
-        
 
-    public x: int32_t= 0;
+    public: int32_t x= 0;
 
-    public y: int32_t= 0;
+    public: int32_t y= 0;
 
-public constructor (){
-            super(0, 0, BasicColorFactory.getInstance()!.BLACK);
+public: ARectangleFilledAnimation(){
+            super(0, 0, BasicColorFactory::getInstance().BLACK);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -46,12 +45,12 @@ public constructor (){
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    public paintXY(Graphics graphics, int32_t unusedX, int32_t unusedY){
-super.paintXY(graphics, this.x, this.y);
+    public: void paintXY(Graphics graphics, int32_t unusedX, int32_t unusedY){
+super.paintXY(graphics, this->x, this->y);
     
 }
 

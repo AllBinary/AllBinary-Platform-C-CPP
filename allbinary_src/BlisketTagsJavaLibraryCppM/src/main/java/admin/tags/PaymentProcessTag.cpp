@@ -63,33 +63,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentProcessTag: public StoreValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: PaymentProcessTag(){
+}
 
 
                 //@Throws(LicensingException.constructor, Exception.constructor)
             
-    public string process(){
+    public: std::string process(){
 
         try {
             
-    anyType: any = new PaymentProcessHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = PaymentProcessHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod(commonStrings!.PROCESS, 
-                            nullptr)!;;
+    Method method = helperClass.getMethod(commonStrings.PROCESS, 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -103,10 +100,10 @@ public constructor (){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LICENSINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LICENSINGERROR))
                         
                                     {
-                                    this.logUtil!.put("LicensingException", this, this.commonStrings!.PROCESS, e);
+                                    this->logUtil.put("LicensingException", this, this->commonStrings.PROCESS, e);
     
 
                                     }
@@ -122,10 +119,10 @@ public constructor (){
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 
                                     }
@@ -142,22 +139,22 @@ public constructor (){
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0 || this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDERANDEVALBODY) == 0 || this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0 || this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDERANDEVALBODY) == 0 || this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
-                                    this.pageContext!.getOut()!.print(this.process() +"<br />");
+                                    this->pageContext.getOut().print(this->process() +"<br />");
     
 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0)
                         
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.SKIP_BODY;
+                        return this->SKIP_BODY;
     
                              else 
                         if()
@@ -169,7 +166,7 @@ public constructor (){
                             
 
 
-                            throw new Exception("No Such Payment Processing Command");
+                            throw Exception("No Such Payment Processing Command");
                     
 
                         }
@@ -178,7 +175,7 @@ public constructor (){
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

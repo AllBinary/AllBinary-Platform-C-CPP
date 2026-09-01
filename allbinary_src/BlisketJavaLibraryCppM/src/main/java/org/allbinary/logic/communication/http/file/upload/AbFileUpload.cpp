@@ -59,9 +59,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileUpload: public FileUpload {
-        
 
-public constructor (FileItemFactory fileItemFactory){
+public: AbFileUpload(FileItemFactory fileItemFactory){
             super(fileItemFactory);
                     
 
@@ -72,12 +71,12 @@ public constructor (FileItemFactory fileItemFactory){
 
                 //@Throws(FileUploadException.constructor, IOException.constructor)
             
-    public FileItemIterator getItemIterator(HttpServletRequest request){
+    public: FileItemIterator getItemIterator(HttpServletRequest request){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getItemIterator(new ServletRequestContext(request));;
+                        return super.getItemIterator(ServletRequestContext(request));;
     
 }
 

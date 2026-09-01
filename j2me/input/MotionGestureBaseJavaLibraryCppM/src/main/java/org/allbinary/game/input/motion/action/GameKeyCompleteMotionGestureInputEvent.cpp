@@ -73,93 +73,92 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GameKeyCompleteMotionGestureInputEventFactory.h"
 
-class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent: public GameKeyEventSourceInterface {
-        
+class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const SOURCE_ID: int32_t = this.gameKeyEventFactory!.MOTION_GESTURE_SOURCE_ID;
+    private: const int32_t SOURCE_ID = this->gameKeyEventFactory.MOTION_GESTURE_SOURCE_ID;
 
-    private: gameKey: GameKey = GameKey.NULL_GAME_KEY;
+    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
 
-    private: gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-    private: inputToGameKeyMapping: InputToGameKeyMapping;
+    private: InputToGameKeyMapping inputToGameKeyMapping;
 
-public constructor (string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping){
+public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping){
             super(name, motionGestureInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.inputToGameKeyMapping= inputToGameKeyMapping;
+this->inputToGameKeyMapping= inputToGameKeyMapping;
     
-GameKeyCompleteMotionGestureInputEventFactory.getInstance()!.add(this);
+GameKeyCompleteMotionGestureInputEventFactory::getInstance().add(this);
     
-this.update();
+this->update();
     
 }
 
 
-    public int32_t getSourceId(){
+    public: int32_t getSourceId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.SOURCE_ID;
+                        return this->SOURCE_ID;
     
 }
 
 
-    public update(){
+    public: void update(){
 
         try {
-            this.setGameKey(this.inputToGameKeyMapping!.getInstance(this.getMotionGestureInput()!.getId()));
+            this->setGameKey(this->inputToGameKeyMapping.getInstance(this->getMotionGestureInput().getId()));
     
-this.setGameKeyEvent(this.gameKeyEventFactory!.getInstanceForInput(this, this.getGameKey()));
+this->setGameKeyEvent(this->gameKeyEventFactory.getInstanceForInput(this, this->getGameKey()));
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.UPDATE, e);
-    
-}
-
-}
-
-
-    setGameKeyEvent(GameKeyEvent gameKeyEvent){
-this.gameKeyEvent= gameKeyEvent;
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.UPDATE, e);
     
 }
 
+}
 
-    public GameKeyEvent getGameKeyEvent(){
+
+    protected: void setGameKeyEvent(GameKeyEvent gameKeyEvent){
+this->gameKeyEvent= gameKeyEvent;
+    
+}
+
+
+    public: GameKeyEvent getGameKeyEvent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyEvent;
+                        return this->gameKeyEvent;
     
 }
 
 
-    setGameKey(GameKey gameKey){
-this.gameKey= gameKey;
+    protected: void setGameKey(GameKey gameKey){
+this->gameKey= gameKey;
     
 }
 
 
-    public GameKey getGameKey(){
+    public: GameKey getGameKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKey;
+                        return this->gameKey;
     
 }
 

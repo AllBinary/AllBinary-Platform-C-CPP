@@ -43,11 +43,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CapitalEvent: public AllBinaryEventObject {
-        
 
-    private: value: int32_t= 0;
+    private: int32_t value= 0;
 
-public constructor (any = {} anyType){
+public: CapitalEvent(Object* anyType){
             super(anyType);
                     
 
@@ -56,35 +55,35 @@ public constructor (any = {} anyType){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("CapitalEvent: Value: \n");
+stringBuffer.append("CapitalEvent: Value: \n");
     
-stringBuffer!.appendint(this.getValue());
+stringBuffer.appendint(this->getValue());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public int32_t getValue(){
+    public: int32_t getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 
 
-    public setValue(int32_t value){
-this.value= value;
+    public: void setValue(int32_t value){
+this->value= value;
     
 }
 

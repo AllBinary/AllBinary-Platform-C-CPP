@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/logic/NullUtil.h>
 
       
@@ -43,52 +45,48 @@
 #include "GeographicMapCellHistory.h"
 
 class GeographicMapCellHistoryProgress: public GeographicMapCellHistoryProgressBase {
-        
 
-    private: totalVisitedArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    private: std::vector<int32_t> totalVisitedArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    private: geographicMapCellHistoryArray: std::vector<GeographicMapCellHistory> = GeographicMapCellHistory.NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY;
+    private: std::vector<GeographicMapCellHistory> geographicMapCellHistoryArray = GeographicMapCellHistory::NULL_GEOGRPAHIC_MAP_HISTORY_ARRAY;
 
-public constructor (std::vector<GeographicMapCellHistory> geographicMapCellHistoryArray){
-
-            super();
-        this.geographicMapCellHistoryArray= geographicMapCellHistoryArray;
+public: GeographicMapCellHistoryProgress(std::vector<GeographicMapCellHistory> geographicMapCellHistoryArray){
+this->geographicMapCellHistoryArray= geographicMapCellHistoryArray;
     
-this.init();
+this->init();
     
 }
 
 
-    public init(){
-this.totalVisitedArray= new Array(this.geographicMapCellHistoryArray!.length);
+    public: void init(){
+this->totalVisitedArray= new Array(this->geographicMapCellHistoryArray.length);
     
 }
 
 
-    public bool isAnyProgress(){
+    public: bool isAnyProgress(){
 
-    isProgressing: bool = false;;
+    bool isProgressing = false;;
     
 
-    size: int32_t = this.geographicMapCellHistoryArray!.length
-                ;;
+    int32_t size = this->geographicMapCellHistoryArray.size();;
     
 
-    currentTotalVisited: int32_t= 0;;
+    int32_t currentTotalVisited= 0;;
     
 
-    totalVisited: int32_t= 0;;
+    int32_t totalVisited= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-totalVisited= this.geographicMapCellHistoryArray[index]!.getTotalVisited();
+totalVisited= this->geographicMapCellHistoryArray[index]!.getTotalVisited();
     
-currentTotalVisited= this.totalVisitedArray[index]!;
+currentTotalVisited= this->totalVisitedArray[index]!;
     
 
                         if(currentTotalVisited < totalVisited)
@@ -96,7 +94,7 @@ currentTotalVisited= this.totalVisitedArray[index]!;
                                     {
                                     isProgressing= true;
     
-this.totalVisitedArray[index]= totalVisited;
+this->totalVisitedArray[index]= totalVisited;
     
 
                                     }

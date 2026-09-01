@@ -62,27 +62,22 @@
 class CustomLoaderHelper
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        }
+public: CustomLoaderHelper(HashMap<any, any> hashMap, PageContext pageContext){
+}
 
 
-public constructor (){
-
-            super();
-        }
+public: CustomLoaderHelper(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public string getWebappPath(){
+    public: std::string getWebappPath(){
 
         try {
             
@@ -108,25 +103,25 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public setWebappPath(string path){
+    public: void setWebappPath(std::string path){
 
         try {
             
-    urlGlobals: AppUrlGlobals = new AppUrlGlobals();;
+    AppUrlGlobals urlGlobals = AppUrlGlobals();;
     
-urlGlobals!.setWebappPath(path);
+urlGlobals.setWebappPath(path);
     
-URLGLOBALS.init(urlGlobals);
+URLGLOBALS::init(urlGlobals);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setWebappPath()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setWebappPath()", e);
     
 
                                     }

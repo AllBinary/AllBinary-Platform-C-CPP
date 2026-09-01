@@ -39,7 +39,6 @@
         #include "VehicleProperties.h"
 
 class VehiclePropertiesCompositeInterface {
-        
 
     VehicleProperties getVehicleProperties()
 

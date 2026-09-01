@@ -49,26 +49,25 @@
 /*actual*/ class LogFactory
             : public Object
          {
-        
 
-    public static const LOG: Log = new Log(StringUtil.getInstance()!.EMPTY_STRING, NullUtil.getInstance()!.NULL_OBJECT, StringUtil.getInstance()!.EMPTY_STRING, NullUtil.getInstance()!.NULL_OBJECT);
+    public: static const Log LOG = Log(StringUtil::getInstance().EMPTY_STRING, NullUtil::getInstance().NULL_OBJECT, StringUtil::getInstance().EMPTY_STRING, NullUtil::getInstance().NULL_OBJECT);
 
-    /*actual*/ public static Log getInstance(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: static Log getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Log(specialMessage, anyType, functionName, exception);
+                        return Log(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public static Log getInstanceF(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: static Log getInstanceF(std::string specialMessage, Object* anyType, std::string functionName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogFactory.LOG;
+                        return LogFactory::LOG;
     
 }
 

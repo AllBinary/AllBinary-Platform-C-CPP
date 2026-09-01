@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLES_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_MOTION_CONSTRAINEDMOTIONRECTANGLES_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <java/awt.h>
@@ -59,23 +61,22 @@
 #include "Rectangle.h"
 
 class ConstrainedMotionRectangles: public MotionRectangles {
-        
 
-    private: static const NAME: string = "constrainedMotionRectangles_";
+    private: static const std::string NAME = "constrainedMotionRectangles_";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: motionRectangleConstraintsInterface: MotionRectangleConstraintsInterface;
+    private: MotionRectangleConstraintsInterface motionRectangleConstraintsInterface;
 
-public constructor (MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, MotionRectangles motionRectangles);
+public: ConstrainedMotionRectangles(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, MotionRectangles motionRectangles);
 
                 //@Throws(Exception.constructor)
             
-    public applyMotionRectangleConstraints(MotionRectangles motionRectangles);
+    public: void applyMotionRectangleConstraints(MotionRectangles motionRectangles);
 
-    public MotionRectangleConstraintsInterface getMotionRectangleConstraintsInterface();
+    public: MotionRectangleConstraintsInterface getMotionRectangleConstraintsInterface();
 
-    public setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
+    public: void setMotionRectangleConstraintsInterface(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
 
 };
 

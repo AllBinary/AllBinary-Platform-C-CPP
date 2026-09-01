@@ -7,6 +7,8 @@
         #ifndef ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_H
         #define ORG_APACHE_COMMONS_FILEUPLOAD_FILEITEMUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -56,31 +58,30 @@
 class FileItemUtil
             : public Object
          {
-        
 
-    private: static const instance: FileItemUtil = new FileItemUtil();
+    private: static FileItemUtil instance() { return FileItemUtil(); }
 
-    public static FileItemUtil getInstance();
+    public: static FileItemUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const DEFAULT_CHARSET: string = "ISO-8859-1";
-
-                //@Throws(Exception.constructor)
-            
-    public string getString(std::vector<int8_t> byteArray);
+    public: const std::string DEFAULT_CHARSET = "ISO-8859-1";
 
                 //@Throws(Exception.constructor)
             
-    public string getString(FileItemStream fileItem);
+    public: std::string getString(std::vector<int8_t> byteArray);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> getBytes(FileItemStream fileItem);
+    public: std::string getString(FileItemStream fileItem);
 
                 //@Throws(Exception.constructor)
             
-    public write(FileItem fileItem, AbFile file);
+    public: std::vector<int8_t> getBytes(FileItemStream fileItem);
+
+                //@Throws(Exception.constructor)
+            
+    public: void write(FileItem fileItem, AbFile file);
 
 };
 

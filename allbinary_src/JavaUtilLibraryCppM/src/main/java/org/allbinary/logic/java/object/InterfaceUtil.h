@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_INTERFACEUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_INTERFACEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -53,19 +55,18 @@
 class InterfaceUtil
             : public Object
          {
-        
 
-    public static string viewAll(Function myClass, string lineBreak);
+    public: static std::string viewAll(Function myClass, std::string lineBreak);
 
-    public static Function constructor(string interfaceName, std::vector<Function> interfaces);
+    public: static Function constructor(std::string interfaceName, std::vector<Function> interfaces);
 
-    public static bool isImplemented(Function clazz, any = {} anyType);
+    public: static bool isImplemented(Function clazz, Object* anyType);
 
-    public static bool isImplemented(string className, any = {} anyType);
+    public: static bool isImplemented(std::string className, Object* anyType);
 
-    public static string isImplementedView(Function clazz, any = {} anyType);
+    public: static std::string isImplementedView(Function clazz, Object* anyType);
 
-private constructor ();
+private: InterfaceUtil();
 
 };
 

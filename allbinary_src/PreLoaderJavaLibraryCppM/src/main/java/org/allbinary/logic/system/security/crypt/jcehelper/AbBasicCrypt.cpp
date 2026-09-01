@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -73,95 +75,92 @@
 class AbBasicCrypt
             : public Object
         : public CryptInterface {
-        
 
-    private: cipher: Cipher;
+    private: Cipher cipher;
 
-    private: secretKey: SecretKey;
+    private: SecretKey secretKey;
 
-    private: algorithm: string;
+    private: std::string algorithm;
 
-    private: key: std::vector<int8_t>;
+    private: std::vector<int8_t> key;
 
-public constructor (string algorithm, string key){
+public: AbBasicCrypt(std::string algorithm, std::string key){
 
-            super();
-        
         try {
-            this.algorithm= algorithm;
+            this->algorithm= algorithm;
     
-this.key= key.getBytes();
+this->key= key.getBytes();
     
-this.init();
+this->init();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, "AbCrypt(alg,key)", e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, "AbCrypt(alg,key)", e);
     
 }
 
 }
 
 
-    init(){
+    private: void init(){
 
         try {
             
-    sunJce: Provider = new com.sun.crypto.provider.SunJCE();;
+    Provider sunJce = com::sun::crypto::provider::SunJCE();;
     
-Security.addProvider(sunJce);
-    
-
-    keySpec: KeySpec = KeySpecFactory.getInstance()!.getInstance(this.algorithm, this.key)!;;
+Security::addProvider(sunJce);
     
 
-    keyFactory: SecretKeyFactory = SecretKeyFactory.getInstance(this.algorithm)!;;
+    KeySpec keySpec = KeySpecFactory::getInstance().getInstance(this->algorithm, this->key);;
     
-this.secretKey= keyFactory!.generateSecret(keySpec);
+
+    SecretKeyFactory keyFactory = SecretKeyFactory::getInstance(this->algorithm);;
     
-this.cipher= Cipher.getInstance(this.algorithm);
+this->secretKey= keyFactory.generateSecret(keySpec);
+    
+this->cipher= Cipher::getInstance(this->algorithm);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE("init Failed", this, commonStrings!.INIT, e);
+PreLogUtil::putOE("init Failed", this, commonStrings.INIT, e);
     
 }
 
 }
 
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array){
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array){
 
         try {
-            this.cipher.init(Cipher.ENCRYPT_MODE, secretKey);
+            this->cipher.init(Cipher::ENCRYPT_MODE, secretKey);
     
 
-    ivArray: std::vector<int8_t> = this.secretKey!.getEncoded()!;;
+    std::vector<int8_t> ivArray = this->secretKey.getEncoded();;
     
 
-    encrypted: std::vector<int8_t> = this.cipher.doFinal(array)!;;
+    std::vector<int8_t> encrypted = this->cipher.doFinal(array);;
     
 
-    result: std::vector<int8_t> = new Array(ivArray!.length +encrypted.length);;
+    std::vector<int8_t> result = new Array(ivArray.size() +encrypted.size());;
     
-PreLogUtil.put("ivArray Length: " +ivArray!.length, this, "encrypt");
+PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < ivArray!.length; index++)
+    int32_t index = 0;index < ivArray.size(); index++)
         {
 result[index]= ivArray[index]!;
     
@@ -172,9 +171,9 @@ result[index]= ivArray[index]!;
 
 
                         for (
-    index: int32_t = 0;index < encrypted.length; index++)
+    int32_t index = 0;index < encrypted.size(); index++)
         {
-result[index +ivArray!.length]= encrypted[index]!;
+result[index +ivArray.size()]= encrypted[index]!;
     
 }
 
@@ -188,7 +187,7 @@ result[index +ivArray!.length]= encrypted[index]!;
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("Encrypt Failed", this, "encrypt", e);
+PreLogUtil::putOE("Encrypt Failed", this, "encrypt", e);
     
 
 
@@ -201,44 +200,43 @@ PreLogUtil.putOE("Encrypt Failed", this, "encrypt", e);
 }
 
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array){
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array){
 
         try {
-            this.cipher.init(Cipher.DECRYPT_MODE, secretKey);
+            this->cipher.init(Cipher::DECRYPT_MODE, secretKey);
     
 
-    ivArray: std::vector<int8_t> = new Array(8);;
+    std::vector<int8_t> ivArray = new Array(8);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < 8; index++)
+    int32_t index = 0;index < 8; index++)
         {
 ivArray[index]= array[index]!;
     
 }
 
-PreLogUtil.put("ivArray Length: " +ivArray!.length, this, "encrypt");
+PreLogUtil::put("ivArray Length: " +ivArray.size(), this, "encrypt");
     
 
-    result: std::vector<int8_t> = new Array(array.length -ivArray!.length);;
+    std::vector<int8_t> result = new Array(array.size() -ivArray.size());;
     
 
 
 
 
                         for (
-    index: int32_t = ivArray!.length
-                ;index < array.length; index++)
+    int32_t index = ivArray.size();index < array.size(); index++)
         {
-result[index -ivArray!.length]= array[index]!;
+result[index -ivArray.size()]= array[index]!;
     
 }
 
 
-    decrypted: std::vector<int8_t> = this.cipher.doFinal(result)!;;
+    std::vector<int8_t> decrypted = this->cipher.doFinal(result);;
     
 
 
@@ -250,7 +248,7 @@ result[index -ivArray!.length]= array[index]!;
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE("decrypt Failed", this, "decrypt", e);
+PreLogUtil::putOE("decrypt Failed", this, "decrypt", e);
     
 
 

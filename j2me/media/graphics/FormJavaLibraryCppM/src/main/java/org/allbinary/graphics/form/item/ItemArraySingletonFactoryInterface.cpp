@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 
@@ -41,7 +43,6 @@
         #include "ABCustomItem.h"
 
 class ItemArraySingletonFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

@@ -60,28 +60,25 @@
 class CategoryPropertiesView
             : public Object
         : public DomNodeInterface {
-        
 
-    categoryPropertiesInterface: CategoryPropertiesInterface;
+    protected: CategoryPropertiesInterface categoryPropertiesInterface;
 
-public constructor (CategoryPropertiesInterface categoryPropertiesInterface){
-
-            super();
-        this.categoryPropertiesInterface= categoryPropertiesInterface;
+public: CategoryPropertiesView(CategoryPropertiesInterface categoryPropertiesInterface){
+this->categoryPropertiesInterface= categoryPropertiesInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    categoryNode: Node = document.createElement(CategoryData.getInstance()!.NAME)!;;
+    Node categoryNode = document.createElement(CategoryData::getInstance().NAME);;
     
 
-    newCategoryNode: Element = categoryNode as Element;;
+    Element newCategoryNode = categoryNode as Element;;
     
-newCategoryNode!.setAttribute(CategoryData.getInstance()!.LABEL, this.categoryPropertiesInterface!.getValue());
+newCategoryNode.setAttribute(CategoryData::getInstance().LABEL, this->categoryPropertiesInterface.getValue());
     
 
 

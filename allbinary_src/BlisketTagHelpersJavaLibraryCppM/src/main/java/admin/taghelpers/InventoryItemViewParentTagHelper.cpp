@@ -65,54 +65,53 @@
 class InventoryItemViewParentTagHelper
             : public Object
          {
-        
 
-    private: static const instance: InventoryItemViewParentTagHelper = new InventoryItemViewParentTagHelper();
+    private: static InventoryItemViewParentTagHelper instance() { return InventoryItemViewParentTagHelper(); }
 
-    public static InventoryItemViewParentTagHelper getInstance(){
+    public: static InventoryItemViewParentTagHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventoryItemViewParentTagHelper.instance;
+                        return InventoryItemViewParentTagHelper::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public InventoryItemView getInventoryItemView(HelperTag inventoryTag){
+    public: InventoryItemView getInventoryItemView(HelperTag inventoryTag){
 
                         if(inventoryTag != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.checkForValidationViewHelper(inventoryTag!.getHelper());
+                                    this->checkForValidationViewHelper(inventoryTag.getHelper());
     
 
-    validationViewHelper: ValidationViewHelper = inventoryTag!.getHelper() as ValidationViewHelper;;
+    ValidationViewHelper validationViewHelper = inventoryTag.getHelper() as ValidationViewHelper;;
     
 
-    viewObject: TransformInterface = validationViewHelper!.getViewObject()!;;
+    TransformInterface viewObject = validationViewHelper.getViewObject();;
     
 
-                        if(viewObject!.getTypeId() != InventoryItemView.TYPE_ID)
+                        if(viewObject.getTypeId() != InventoryItemView::TYPE_ID)
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Must have ");
+stringBuffer.append("Must have ");
     
-stringBuffer!.append("InventoryItemView and not: ");
+stringBuffer.append("InventoryItemView and not: ");
     
-stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
+stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
     
 
 
 
-                            throw new Exception(stringBuffer!.toString());
+                            throw Exception(stringBuffer.toString());
                     
 
                                     }
@@ -130,7 +129,7 @@ stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
                             
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                         }
@@ -140,38 +139,38 @@ stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
 
                 //@Throws(Exception.constructor)
             
-    public DownloadableInventoryItemView getDownloadableInventoryItemView(HelperTag inventoryTag){
+    public: DownloadableInventoryItemView getDownloadableInventoryItemView(HelperTag inventoryTag){
 
                         if(inventoryTag != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.checkForValidationViewHelper(inventoryTag!.getHelper());
+                                    this->checkForValidationViewHelper(inventoryTag.getHelper());
     
 
-    validationViewHelper: ValidationViewHelper = inventoryTag!.getHelper() as ValidationViewHelper;;
+    ValidationViewHelper validationViewHelper = inventoryTag.getHelper() as ValidationViewHelper;;
     
 
-    viewObject: TransformInterface = validationViewHelper!.getViewObject()!;;
+    TransformInterface viewObject = validationViewHelper.getViewObject();;
     
 
-                        if(viewObject!.getTypeId() != DownloadableInventoryItemView.TYPE_ID)
+                        if(viewObject.getTypeId() != DownloadableInventoryItemView::TYPE_ID)
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Must have ");
+stringBuffer.append("Must have ");
     
-stringBuffer!.append("DownloadableInventoryItemView and not: ");
+stringBuffer.append("DownloadableInventoryItemView and not: ");
     
-stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
+stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
     
 
 
 
-                            throw new Exception(stringBuffer!.toString());
+                            throw Exception(stringBuffer.toString());
                     
 
                                     }
@@ -189,7 +188,7 @@ stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
                             
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                         }
@@ -199,38 +198,38 @@ stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
 
                 //@Throws(Exception.constructor)
             
-    public RequestMapInterface getRequestMapInterface(HelperTag inventoryTag){
+    public: RequestMapInterface getRequestMapInterface(HelperTag inventoryTag){
 
                         if(inventoryTag != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.checkForValidationViewHelper(inventoryTag!.getHelper());
+                                    this->checkForValidationViewHelper(inventoryTag.getHelper());
     
 
-    validationViewHelper: ValidationViewHelper = inventoryTag!.getHelper() as ValidationViewHelper;;
+    ValidationViewHelper validationViewHelper = inventoryTag.getHelper() as ValidationViewHelper;;
     
 
-    viewObject: TransformInterface = validationViewHelper!.getViewObject()!;;
+    TransformInterface viewObject = validationViewHelper.getViewObject();;
     
 
-                        if(viewObject!.getTypeId() != InventoryItemView.TYPE_ID && viewObject!.getTypeId() != DownloadableInventoryItemView.TYPE_ID)
+                        if(viewObject.getTypeId() != InventoryItemView::TYPE_ID && viewObject.getTypeId() != DownloadableInventoryItemView::TYPE_ID)
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Must have ");
+stringBuffer.append("Must have ");
     
-stringBuffer!.append("specific TYPE_ID and not: ");
+stringBuffer.append("specific TYPE_ID and not: ");
     
-stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
+stringBuffer.append(inventoryTag.getHelper().constructor.name.toString()!);
     
 
 
 
-                            throw new Exception(stringBuffer!.toString());
+                            throw Exception(stringBuffer.toString());
                     
 
                                     }
@@ -248,7 +247,7 @@ stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
                             
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                         }
@@ -258,26 +257,26 @@ stringBuffer!.append(inventoryTag!.getHelper()!.constructor.name.toString()!);
 
                 //@Throws(Exception.constructor)
             
-    public checkForValidationViewHelper(any = {} helperObject){
+    public: void checkForValidationViewHelper(Object* helperObject){
 
                         if(!(helperObject instanceof ValidationViewHelper))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Must have ");
+stringBuffer.append("Must have ");
     
-stringBuffer!.append("ValidationViewHelper");
+stringBuffer.append("ValidationViewHelper");
     
-stringBuffer!.append("and not: ");
+stringBuffer.append("and not: ");
     
-stringBuffer!.append(helperObject!.constructor.name.toString()!);
+stringBuffer.append(helperObject->constructor.name.toString()!);
     
 
 
 
-                            throw new Exception(stringBuffer!.toString());
+                            throw Exception(stringBuffer.toString());
                     
 
                                     }

@@ -74,19 +74,18 @@
 class DomDocumentHelper
             : public Object
          {
-        
 
-    public static Document create(){
+    public: static Document create(){
 
         try {
             
-    factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()!;;
+    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
     
 
-    builder: DocumentBuilder = factory.newDocumentBuilder()!;;
+    DocumentBuilder builder = factory.newDocumentBuilder();;
     
 
-    document: Document = builder.newDocument()!;;
+    Document document = builder.newDocument();;
     
 
 
@@ -111,17 +110,17 @@ class DomDocumentHelper
 
                 //@Throws(Exception.constructor)
             
-    public static Document create(InputStream inputStream){
+    public: static Document create(InputStream inputStream){
 
         try {
             
-    factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()!;;
+    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
     
 
-    builder: DocumentBuilder = factory.newDocumentBuilder()!;;
+    DocumentBuilder builder = factory.newDocumentBuilder();;
     
 
-    document: Document = builder.parse(inputStream)!;;
+    Document document = builder.parse(inputStream);;
     
 
 
@@ -145,17 +144,17 @@ class DomDocumentHelper
 
                 //@Throws(Exception.constructor)
             
-    public static Document create(string xmlString){
+    public: static Document create(std::string xmlString){
 
         try {
             
-    factory: DocumentBuilderFactory = DocumentBuilderFactory.newInstance()!;;
+    DocumentBuilderFactory factory = DocumentBuilderFactory::newInstance();;
     
 
-    builder: DocumentBuilder = factory.newDocumentBuilder()!;;
+    DocumentBuilder builder = factory.newDocumentBuilder();;
     
 
-    document: Document = builder.parse(new StringBufferInputStream(xmlString))!;;
+    Document document = builder.parse(StringBufferInputStream(xmlString));;
     
 
 
@@ -179,31 +178,31 @@ class DomDocumentHelper
 
                 //@Throws(Exception.constructor)
             
-    public static string toString(Document document){
+    public: static std::string toString(Document document){
 
         try {
             
-    domSource: DOMSource = new DOMSource(document);;
+    DOMSource domSource = DOMSource(document);;
     
 
-    byteArrayOutputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
     
 
-    streamResult: StreamResult = new StreamResult(byteArrayOutputStream);;
+    StreamResult streamResult = StreamResult(byteArrayOutputStream);;
     
 
-    copyTransformerFactory: TransformerFactory = TransformerFactory.newInstance()!;;
+    TransformerFactory copyTransformerFactory = TransformerFactory::newInstance();;
     
 
-    copyTransformer: Transformer = copyTransformerFactory!.newTransformer()!;;
+    Transformer copyTransformer = copyTransformerFactory.newTransformer();;
     
-copyTransformer!.transform(domSource, streamResult);
+copyTransformer.transform(domSource, streamResult);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream!.toString();;
+                        return byteArrayOutputStream.toString();;
     
 
                 //: 
@@ -219,10 +218,8 @@ copyTransformer!.transform(domSource, streamResult);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: DomDocumentHelper(){
+}
 
 
 };

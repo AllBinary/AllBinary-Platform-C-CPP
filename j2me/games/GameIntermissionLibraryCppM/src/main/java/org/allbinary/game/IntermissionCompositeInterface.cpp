@@ -45,7 +45,6 @@
         #include "IntermissionInterface.h"
 
 class IntermissionCompositeInterface {
-        
 
     IntermissionInterface getStartIntermissionInterface()
 

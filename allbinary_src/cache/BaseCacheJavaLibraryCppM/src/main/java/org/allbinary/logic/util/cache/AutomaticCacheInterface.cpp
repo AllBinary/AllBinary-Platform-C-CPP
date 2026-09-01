@@ -42,11 +42,10 @@
 #include "CacheableInterface.h"
 
 class AutomaticCacheInterface: public CacheInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    CacheableInterface get(any key)
+    CacheableInterface get(Object* key)
 
 };
 

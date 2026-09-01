@@ -42,22 +42,19 @@
 class ImageActionScriptOutputData
             : public Object
          {
-        
 
-    public static NAME: string = "IMAGE_ACTION_OUTPUT_NAME";
+    public: static std::string NAME = "IMAGE_ACTION_OUTPUT_NAME";
 
-    public static SAVE: string = "SAVE_IMAGE_ACTION_OUTPUT_NAME";
+    public: static std::string SAVE = "SAVE_IMAGE_ACTION_OUTPUT_NAME";
 
-    public static DISPLAY: string = "DISPLAY_IMAGE_ACTION_OUTPUT_NAME";
+    public: static std::string DISPLAY = "DISPLAY_IMAGE_ACTION_OUTPUT_NAME";
 
-    public static TYPE: string = "TYPE_IMAGE_ACTION_OUTPUT_NAME";
+    public: static std::string TYPE = "TYPE_IMAGE_ACTION_OUTPUT_NAME";
 
-    public static TYPES: string = "TYPES_IMAGE_ACTION_OUTPUT_NAME";
+    public: static std::string TYPES = "TYPES_IMAGE_ACTION_OUTPUT_NAME";
 
-private constructor (){
-
-            super();
-        }
+private: ImageActionScriptOutputData(){
+}
 
 
 };

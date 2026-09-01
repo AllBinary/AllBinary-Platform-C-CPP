@@ -53,10 +53,9 @@
         #include "OptimizedArtificialIntelligenceLayerManager.h"
 
 class OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer: public LayerProcessor {
-        
 
-public constructor (){
-            super(new OptimizedArtificialIntelligenceLayerManager());
+public: OptimizedArtificialIntelligenceLayerProcessorForCollidableLayer(){
+            super(OptimizedArtificialIntelligenceLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -66,20 +65,20 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    artificialIntelligenceCompositeInterface: CollidableCompositeLayer = layerInterface as CollidableCompositeLayer;;
+    CollidableCompositeLayer artificialIntelligenceCompositeInterface = layerInterface as CollidableCompositeLayer;;
     
-artificialIntelligenceCompositeInterface!.getArtificialIntelligenceInterface()!.processAI(allBinaryLayerManager);
+artificialIntelligenceCompositeInterface.getArtificialIntelligenceInterface().processAI(allBinaryLayerManager);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
-                        if(layerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(layerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
                                     

@@ -113,23 +113,22 @@
 class TaxFactory
             : public Object
          {
-        
 
-    private: static const instance: TaxFactory = new TaxFactory();
+    private: static TaxFactory instance() { return TaxFactory(); }
 
-    public static TaxFactory getInstance();
+    public: static TaxFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const TAXATIONFILENAME: string = "taxationMethod.xml";
+    private: const std::string TAXATIONFILENAME = "taxationMethod.xml";
 
-private constructor ();
+private: TaxFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TaxModuleInterface getInstance(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
+    public: TaxModuleInterface getInstance(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
 
 };
 

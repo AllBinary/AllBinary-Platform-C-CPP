@@ -47,9 +47,8 @@
         #include "BasePathFinderGraphVisitor.h"
 //1.4.2
 class PathFinderGraphHackVisitor: public BasePathFinderGraphVisitor {
-        
 
-public constructor (BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+public: PathFinderGraphHackVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
             super(geographicMapInterface, edgeMinimum, minPathWeight, maxPathWeight);
                     
 
@@ -60,47 +59,47 @@ public constructor (BasicGeographicMap geographicMapInterface, int32_t edgeMinim
 
                 //@Throws(Exception.constructor)
             
-    public visit(any = {} graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
-this.fixStart(graph, startPathFindingNodeList);
+    public: void visit(Object* graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+this->fixStart(graph, startPathFindingNodeList);
     
-this.fixEnd(graph, endPathFindingNodeList);
+this->fixEnd(graph, endPathFindingNodeList);
     
-this.fixOverPassEdges(graph);
+this->fixOverPassEdges(graph);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    fixStart(any = {} graph, BasicArrayList startPathFindingNodeList){
+    private: void fixStart(Object* graph, BasicArrayList startPathFindingNodeList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    fixEnd(any = {} graph, BasicArrayList endPathFindingNodeList){
+    private: void fixEnd(Object* graph, BasicArrayList endPathFindingNodeList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    fixOverPassEdges(any = {} graph){
+    private: void fixOverPassEdges(Object* graph){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
+    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    removeOverPassEdges(BasicArrayList pathList){
+    private: void removeOverPassEdges(BasicArrayList pathList){
 }
 
 
-    public bool isValid(any = {} graphPath){
+    public: bool isValid(Object* graphPath){
 
 
 

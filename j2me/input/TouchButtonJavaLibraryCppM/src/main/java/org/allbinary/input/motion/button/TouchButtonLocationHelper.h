@@ -52,35 +52,34 @@
 class TouchButtonLocationHelper
             : public Object
          {
-        
 
-    private: const totalColumns: int32_t;
+    private: int32_t totalColumns;
 
-    private: const totalRows: int32_t;
+    private: int32_t totalRows;
 
-    private: columnsRemainder: int32_t;
+    private: int32_t columnsRemainder;
 
-    private: rowsRemainder: int32_t;
+    private: int32_t rowsRemainder;
 
-    private: columnsRemainderHalf: int32_t;
+    private: int32_t columnsRemainderHalf;
 
-    private: rowsRemainderHalf: int32_t;
+    private: int32_t rowsRemainderHalf;
 
-public constructor ();
+public: TouchButtonLocationHelper();
 
-    public int32_t getTotalColumns();
+    public: int32_t getTotalColumns();
 
-    public int32_t getTotalRows();
+    public: int32_t getTotalRows();
 
-    public int32_t getColumnsRemainder();
+    public: int32_t getColumnsRemainder();
 
-    public int32_t getRowsRemainder();
+    public: int32_t getRowsRemainder();
 
-    public int32_t getColumnsRemainderHalf();
+    public: int32_t getColumnsRemainderHalf();
 
-    public int32_t getRowsRemainderHalf();
+    public: int32_t getRowsRemainderHalf();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

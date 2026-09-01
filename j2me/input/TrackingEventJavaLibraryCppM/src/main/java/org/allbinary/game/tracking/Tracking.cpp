@@ -54,15 +54,12 @@
 class Tracking
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: Tracking(){
+}
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 

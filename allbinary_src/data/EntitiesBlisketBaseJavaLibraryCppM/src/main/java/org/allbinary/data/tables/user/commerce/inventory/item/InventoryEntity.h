@@ -82,36 +82,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryEntityInterface.h"
 
-class InventoryEntity: public AbSqlBean: public InventoryEntityInterface {
-        
+class InventoryEntity: public AbSqlBean, public InventoryEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "basicinventory";
+    private: const std::string tableName = "basicinventory";
 
-public constructor ();
+public: InventoryEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string value);
+    public: void delete_(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getItems(StoreFrontInterface storeFrontInterface);
+    public: Vector getItems(StoreFrontInterface storeFrontInterface);
 
                 //@Throws(MoneyException.constructor)
             
-    public ItemInterface getItem(string id);
+    public: ItemInterface getItem(std::string id);
 
-    public string getWeight(string id);
+    public: std::string getWeight(std::string id);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

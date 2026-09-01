@@ -63,50 +63,45 @@
 class TimeCreatedView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: timeCreated: TimeCreated;
+    private: TimeCreated timeCreated;
 
-public constructor (TimeCreated timeCreated){
-
-            super();
-        this.setTimeCreated(timeCreated);
+public: TimeCreatedView(TimeCreated timeCreated){
+this->setTimeCreated(timeCreated);
     
 }
 
 
-public constructor (Node node){
-
-            super();
-        this.setTimeCreated(new TimeCreated(DomNodeHelper.getTextNodeValue(node)));
+public: TimeCreatedView(Node node){
+this->setTimeCreated(TimeCreated(DomNodeHelper::getTextNodeValue(node)));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createTextNode(document, EntryData.getInstance()!.TIMECREATED, this.getTimeCreated()!.toString());;
+                        return ModDomHelper::createTextNode(document, EntryData::getInstance().TIMECREATED, this->getTimeCreated().toString());;
     
 }
 
 
-    public TimeCreated getTimeCreated(){
+    public: TimeCreated getTimeCreated(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeCreated;
+                        return this->timeCreated;
     
 }
 
 
-    public setTimeCreated(TimeCreated timeCreated){
-this.timeCreated= timeCreated;
+    public: void setTimeCreated(TimeCreated timeCreated){
+this->timeCreated= timeCreated;
     
 }
 

@@ -69,23 +69,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderHistoryTag: public StoreValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: status: string;
+    private: std::string status;
 
-public constructor ();
+public: OrderHistoryTag();
 
-    public setStatus(string value);
+    public: void setStatus(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    string setOrderStatus();
+    private: std::string setOrderStatus();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

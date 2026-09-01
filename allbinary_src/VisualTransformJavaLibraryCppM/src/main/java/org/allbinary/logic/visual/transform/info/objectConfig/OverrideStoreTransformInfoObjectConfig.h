@@ -53,17 +53,16 @@
         #include "GenericStoreTransformInfoObjectConfig.h"
 
 class OverrideStoreTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
-        
 
-public constructor (Object abeClientInformation, Object transformInfoInterface);
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface);
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, Object document);
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document);
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, string name, string type);
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    Document generate(Document objectConfigDocument);
+    protected: Document generate(Document objectConfigDocument);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTION_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTION_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -57,31 +59,30 @@
 class Direction
             : public Object
          {
-        
 
-    private: static directionArray: std::vector<Direction> = new Array(13);
+    private: static std::vector<Direction> directionArray = new Array(13);
 
-    public static Direction getInstance(int32_t direction);
+    public: static Direction getInstance(int32_t direction);
 
-    private: name: string;
+    private: std::string name;
 
-    private: otherName: string;
+    private: std::string otherName;
 
-    private: value: int32_t;
+    private: int32_t value;
 
-    private: frameFactor: int32_t;
+    private: int32_t frameFactor;
 
- constructor (string name, string otherName, int32_t value, int32_t frameFactor);
+: Direction(std::string name, std::string otherName, int32_t value, int32_t frameFactor);
 
-    public int32_t getValue();
+    public: int32_t getValue();
 
-    public int32_t getFrameFactor();
+    public: int32_t getFrameFactor();
 
-    public string getOtherName();
+    public: std::string getOtherName();
 
-    public string getName();
+    public: std::string getName();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

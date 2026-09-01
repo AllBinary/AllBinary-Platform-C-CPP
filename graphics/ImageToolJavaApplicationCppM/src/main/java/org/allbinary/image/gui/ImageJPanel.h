@@ -59,24 +59,23 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ImageJPanel: public javax.swing.JPanel {
-        
+class ImageJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    private: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    private: isDrawn: bool = false;
+    private: bool isDrawn = false;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (BufferedImage bufferedImage);
+public: ImageJPanel(BufferedImage bufferedImage);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    initComponents();
+    private: void initComponents();
 
 };
 

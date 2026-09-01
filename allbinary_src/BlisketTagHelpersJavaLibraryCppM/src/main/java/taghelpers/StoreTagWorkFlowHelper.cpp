@@ -66,41 +66,38 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreTagWorkFlowHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: storeWorkFlowInterface: StoreWorkFlowInterface;
+    private: StoreWorkFlowInterface storeWorkFlowInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
+public: StoreTagWorkFlowHelper(HashMap<any, any> hashMap, PageContext pageContext){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Properties: " +hashMap!.toString(), this, "StoreTagWorkFlowHelper()");
+                                    this->logUtil.putF("Properties: " +hashMap.toString(), this, "StoreTagWorkFlowHelper()");
     
 
                                     }
                                 
-this.storeWorkFlowInterface= StoreTagWorkFlowFactory.getInstance()!.getInstance(this.abeClientInformation, hashMap, pageContext);
+this->storeWorkFlowInterface= StoreTagWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Integer process(){
+    public: Integer process(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Process", this, this.commonStrings!.PROCESS);
+                                    this->logUtil.putF("Process", this, this->commonStrings.PROCESS);
     
 
                                     }
@@ -109,20 +106,20 @@ this.storeWorkFlowInterface= StoreTagWorkFlowFactory.getInstance()!.getInstance(
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeWorkFlowInterface!.process();;
+                        return this->storeWorkFlowInterface.process();;
     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed to process workflow: ";;
+    std::string error = "Failed to process workflow: ";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

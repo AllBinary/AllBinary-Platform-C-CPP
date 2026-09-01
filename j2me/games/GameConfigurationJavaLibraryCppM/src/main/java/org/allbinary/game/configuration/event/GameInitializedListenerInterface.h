@@ -45,9 +45,8 @@
         #include "GameInitializedEvent.h"
 
 class GameInitializedListenerInterface: public EventListenerInterface {
-        
 
-    onGameInitialized(GameInitializedEvent gameInitializedEvent);
+    void onGameInitialized(GameInitializedEvent gameInitializedEvent);
 
 };
 

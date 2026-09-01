@@ -77,15 +77,14 @@
 class StatesView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor ();
+public: StatesView();
 
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

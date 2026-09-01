@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -88,9 +90,8 @@
 #include "WaypointCellPositionHistory.h"
 
 class WaypointLayer: public AdvancedRTSGameLayer {
-        
 
-    public static int32_t getStaticType(){
+    public: static int32_t getStaticType(){
 
 
 
@@ -100,32 +101,32 @@ class WaypointLayer: public AdvancedRTSGameLayer {
 }
 
 
-protected constructor (RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, string rootName, string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y){
-            super(remoteInfo, parentLayer, AdvancedRTSProperties.createProperties(), groupInterface, rootName, name, new Health(1000), NullRTSFormInputFactory.getInstance(), animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, new TileLayerPositionIntoViewPosition());
+protected: WaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y){
+            super(remoteInfo, parentLayer, AdvancedRTSProperties::createProperties(), groupInterface, rootName, name, Health(1000), NullRTSFormInputFactory::getInstance(), animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, animationInterfaceFactoryInterface, proceduralAnimationInterfaceFactoryInterface, rectangle, x, y, TileLayerPositionIntoViewPosition());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setCollidableInferface(new CollidableWaypointBehavior(true));
+this->setCollidableInferface(CollidableWaypointBehavior(true));
     
-this.getWaypointBehavior()!.setWaypoint(new Waypoint(this, AttackSound.getInstance()));
+this->getWaypointBehavior().setWaypoint(Waypoint(this, AttackSound::getInstance()));
     
-this.setAnimationInterface(this.indexedButShouldBeRotationAnimationInterface);
-    
-}
-
-
-    public construct(RTSPlayerLayerInterface rtsPlayerLayerInterface){
-this.percentCompleteP= 100;
-    
-this.initVisibility(rtsPlayerLayerInterface);
+this->setAnimationInterface(this->indexedButShouldBeRotationAnimationInterface);
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface){
+this->percentCompleteP= 100;
+    
+this->initVisibility(rtsPlayerLayerInterface);
+    
+}
 
-                        if(this.isVisible())
+
+    public: void paint(Graphics graphics){
+
+                        if(this->isVisible())
                         
                                     {
                                     super.paint(graphics);
@@ -136,29 +137,29 @@ this.initVisibility(rtsPlayerLayerInterface);
 }
 
 
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 
         try {
-            this.indexedButShouldBeRotationAnimationInterface!.nextFrame();
+            this->indexedButShouldBeRotationAnimationInterface.nextFrame();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "processTick", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "processTick", e);
     
 }
 
 }
 
 
-    public damage(int32_t damage, int32_t damageType){
+    public: void damage(int32_t damage, int32_t damageType){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDamage(int32_t damageType){
+    public: int32_t getDamage(int32_t damageType){
 
 
 
@@ -170,14 +171,14 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "processTick", e);
 
                 //@Throws(Exception.constructor)
             
-    public setDestroyed(bool destroyed){
+    public: void setDestroyed(bool destroyed){
 super.setDestroyed(destroyed);
     
 
-                        if(this.isDestroyed())
+                        if(this->isDestroyed())
                         
                                     {
-                                    WaypointCellPositionHistory.getInstance()!.removeLayer(this);
+                                    WaypointCellPositionHistory::getInstance().removeLayer(this);
     
 
                                     }
@@ -185,17 +186,17 @@ super.setDestroyed(destroyed);
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointLayer.getStaticType();;
+                        return WaypointLayer::getStaticType();;
     
 }
 
 
-    public bool isSelfUpgradeable(){
+    public: bool isSelfUpgradeable(){
 
 
 

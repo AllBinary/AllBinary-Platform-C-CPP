@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERHUDPAINTABLE_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -63,34 +65,33 @@
         #include "SelectionHudPaintable.h"
 #include "RTSLayer.h"
 
-class RTSLayerHudPaintable: public SelectionHudPaintable: public UpdateMyFontInterface {
-        
+class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInterface {
 
-    private: static const instance: RTSLayerHudPaintable = new RTSLayerHudPaintable();
+    private: static RTSLayerHudPaintable instance() { return RTSLayerHudPaintable(); }
 
-    public static RTSLayerHudPaintable getInstance();
+    public: static RTSLayerHudPaintable getInstance();
 
-    private: weaponProperties: std::vector<string> = StringUtil.getInstance()!.getArrayInstance()!;
+    private: std::vector<std::string> weaponProperties = StringUtil::getInstance().getArrayInstance();
 
-    private: rtsLayer: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    private: CollidableDestroyableDamageableLayer rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
-    costY: int32_t= 0;
+    protected: int32_t costY= 0;
 
-    costY1: int32_t= 0;
+    protected: int32_t costY1= 0;
 
-    private: fontHeight: int32_t= 0;
+    private: int32_t fontHeight= 0;
 
-private constructor ();
+private: RTSLayerHudPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public updateSelectionInfo();
+    public: void updateSelectionInfo();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public setRtsLayer(RTSLayer rtsLayer);
+    public: void setRtsLayer(RTSLayer rtsLayer);
 
-    CollidableDestroyableDamageableLayer getRtsLayer();
+    private: CollidableDestroyableDamageableLayer getRtsLayer();
 
 };
 

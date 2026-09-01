@@ -45,19 +45,18 @@
 class DisplayInBrowserContraintsData
             : public Object
          {
-        
 
-    public static const NAME: string = "DISPLAYBROWSERCONSTRAINTS_NAME";
+    public: static const std::string NAME = "DISPLAYBROWSERCONSTRAINTS_NAME";
 
-    public static const FRAMEABLE: string = "DISPLAYBROWSERCONSTRAINTS_FRAMEABLE";
+    public: static const std::string FRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_FRAMEABLE";
 
-    public static const MOUNTABLE: string = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLE";
+    public: static const std::string MOUNTABLE = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLE";
 
-    public static const QUICKFRAMEABLE: string = "DISPLAYBROWSERCONSTRAINTS_QUICKFRAMEABLE";
+    public: static const std::string QUICKFRAMEABLE = "DISPLAYBROWSERCONSTRAINTS_QUICKFRAMEABLE";
 
-    public static const MOUNTABLELINK: string = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLELINK";
+    public: static const std::string MOUNTABLELINK = "DISPLAYBROWSERCONSTRAINTS_MOUNTABLELINK";
 
-private constructor ();
+private: DisplayInBrowserContraintsData();
 
 };
 

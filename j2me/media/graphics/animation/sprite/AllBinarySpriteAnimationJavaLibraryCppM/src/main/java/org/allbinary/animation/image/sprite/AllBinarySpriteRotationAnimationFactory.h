@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ALLBINARYSPRITEROTATIONANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -71,48 +73,47 @@
         #include "AllBinarySpriteRotationAnimation.h"
 #include "AllBinaryAdjustedSpriteRotationAnimation.h"
 
-class AllBinarySpriteRotationAnimationFactory: public BaseImageAnimationFactory: public ProceduralAnimationInterfaceFactoryInterface {
-        
+class AllBinarySpriteRotationAnimationFactory: public BaseImageAnimationFactory, public ProceduralAnimationInterfaceFactoryInterface {
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinarySpriteRotationAnimationFactory createWHDY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinarySpriteRotationAnimationFactory createWHDY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinarySpriteRotationAnimationFactory createWH(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinarySpriteRotationAnimationFactory createWH(Image image, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinarySpriteRotationAnimationFactory createDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinarySpriteRotationAnimationFactory createDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinarySpriteRotationAnimationFactory createDXYQ(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinarySpriteRotationAnimationFactory createDXYQ(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinarySpriteRotationAnimationFactory createQ(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinarySpriteRotationAnimationFactory createQ(Image image, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinarySpriteRotationAnimationFactory createWHF(Image image, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static AllBinarySpriteRotationAnimationFactory createWHF(Image image, AnimationBehaviorFactory animationBehaviorFactory);
 
-    private: const animationFactorySpriteScaleUtil: AnimationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil.getInstance()!;
+    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
 
-public constructor (Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+public: AllBinarySpriteRotationAnimationFactory(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
-    public init(int32_t dx, int32_t dy);
+    public: void init(int32_t dx, int32_t dy);
 
-    initWH(int32_t dx, int32_t dy);
-
-                //@Throws(Exception.constructor)
-            
-    public Animation getInstance(int32_t instanceId);
+    private: void initWH(int32_t dx, int32_t dy);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstance(int32_t instanceId);
+
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
 
 };
 

@@ -45,9 +45,8 @@
         #include "TableTag.h"
 
 class UpdateOrderTag: public TableTag {
-        
 
-public constructor ();
+public: UpdateOrderTag();
 
 };
 

@@ -69,53 +69,48 @@
 class UserEmailEventConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: userEmailEventConfigurationInterface: UserEmailEventConfigurationInterface;
+    private: UserEmailEventConfigurationInterface userEmailEventConfigurationInterface;
 
-public constructor (Node node){
+public: UserEmailEventConfigurationView(Node node){
 
-            super();
-        
-    childNodeList: NodeList = node.getChildNodes()!;;
+    NodeList childNodeList = node.getChildNodes();;
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    name: string = DomNodeHelper.getTextNodeValue(UserEmailEventConfigurationData.NAME, childNodeList)!;;
+    std::string name = DomNodeHelper::getTextNodeValue(UserEmailEventConfigurationData::NAME, childNodeList);;
     
-hashMap!.put(UserEmailEventConfigurationData.NAME, name);
+hashMap.put(UserEmailEventConfigurationData::NAME, name);
     
 
-    eventListenerClassPath: string = DomNodeHelper.getTextNodeValue(UserEmailEventConfigurationData.LISTENER_CLASSPATH, childNodeList)!;;
+    std::string eventListenerClassPath = DomNodeHelper::getTextNodeValue(UserEmailEventConfigurationData::LISTENER_CLASSPATH, childNodeList);;
     
-hashMap!.put(UserEmailEventConfigurationData.LISTENER_CLASSPATH, eventListenerClassPath);
+hashMap.put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, eventListenerClassPath);
     
-this.setUserEmailEventConfigurationInterface(new UserEmailEventConfiguration(hashMap) as UserEmailEventConfigurationInterface);
+this->setUserEmailEventConfigurationInterface(UserEmailEventConfiguration(hashMap) as UserEmailEventConfigurationInterface);
     
 }
 
 
-public constructor (UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
-
-            super();
-        this.setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterface);
+public: UserEmailEventConfigurationView(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+this->setUserEmailEventConfigurationInterface(userEmailEventConfigurationInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    userEmailEventConfigurationMapping: UserEmailEventConfigurationMapping = new UserEmailEventConfigurationMapping(this.getUserEmailEventConfigurationInterface());;
+    UserEmailEventConfigurationMapping userEmailEventConfigurationMapping = UserEmailEventConfigurationMapping(this->getUserEmailEventConfigurationInterface());;
     
 
-    hashMap: HashMap<any, any> = userEmailEventConfigurationMapping!.toHashMap()!;;
+    HashMap<any, any> hashMap = userEmailEventConfigurationMapping.toHashMap();;
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, UserEmailEventConfigurationData.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, UserEmailEventConfigurationData::NAME, hashMap);;
     
 
 
@@ -126,18 +121,18 @@ public constructor (UserEmailEventConfigurationInterface userEmailEventConfigura
 }
 
 
-    public UserEmailEventConfigurationInterface getUserEmailEventConfigurationInterface(){
+    public: UserEmailEventConfigurationInterface getUserEmailEventConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userEmailEventConfigurationInterface;
+                        return this->userEmailEventConfigurationInterface;
     
 }
 
 
-    public setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
-this.userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
+    public: void setUserEmailEventConfigurationInterface(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+this->userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
     
 }
 

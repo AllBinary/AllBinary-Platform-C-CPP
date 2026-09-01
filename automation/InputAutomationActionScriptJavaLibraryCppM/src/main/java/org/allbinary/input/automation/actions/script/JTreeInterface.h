@@ -28,11 +28,10 @@
         #include "JTree.h"
 
 class JTreeInterface {
-        
 
-    updateJTree();
+    void updateJTree();
 
-    javax.swing.JTree getActionScriptJTree();
+    javax::swing::JTree getActionScriptJTree();
 
 };
 

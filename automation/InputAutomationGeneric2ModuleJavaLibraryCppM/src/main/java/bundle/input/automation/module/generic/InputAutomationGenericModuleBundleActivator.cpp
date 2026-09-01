@@ -46,23 +46,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationGenericModuleBundleActivator: public InputAutomationModuleBundleActivator {
-        
 
-public constructor (){
-
-            super();
-        }
+public: InputAutomationGenericModuleBundleActivator(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public init(){
+    public: void init(){
 
-    inputAutomationGenericModuleServiceFactory: InputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory.getInstance()!;;
+    InputAutomationGenericModuleServiceFactory inputAutomationGenericModuleServiceFactory = InputAutomationGenericModuleServiceFactory::getInstance();;
     
-this.setInputAutomationModuleInterface(inputAutomationGenericModuleServiceFactory!.getInputAutomationModuleInterfaceArray());
+this->setInputAutomationModuleInterface(inputAutomationGenericModuleServiceFactory.getInputAutomationModuleInterfaceArray());
     
-this.setServiceFactory(inputAutomationGenericModuleServiceFactory);
+this->setServiceFactory(inputAutomationGenericModuleServiceFactory);
     
 }
 

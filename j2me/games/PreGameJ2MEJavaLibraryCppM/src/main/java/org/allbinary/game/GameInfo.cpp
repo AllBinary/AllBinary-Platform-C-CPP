@@ -77,139 +77,137 @@
 class GameInfo
             : public Object
          {
-        
 
-    public static const NONE: GameInfo = new GameInfo(GameTypeFactory.getInstance()!.NONE, GameMode.NONE, PlayerTypesFactory.getInstance()!.PLAYER_TYPE_ONE,  -1,  -1);
+    public: static const GameInfo NONE = GameInfo(GameTypeFactory::getInstance().NONE, GameMode::NONE, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE,  -1,  -1);
 
-    public static const LEVEL_NAME: string = "LEVEL";
+    public: static const std::string LEVEL_NAME = "LEVEL";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameInfoData: GameInfoData = GameInfoData.getInstance()!;
+    private: const GameInfoData gameInfoData = GameInfoData::getInstance();
 
-    private: const gameType: GameType;
+    private: GameType gameType;
 
-    private: const gameMode: GameMode;
+    private: GameMode gameMode;
 
-    private: const playerType: PlayerType;
+    private: PlayerType playerType;
 
-    private: highestLevel: int32_t= 0;
+    private: int32_t highestLevel= 0;
 
-    private: currentLevel: int32_t;
+    private: int32_t currentLevel;
 
-public constructor (GameType gameType, GameMode gameMode, PlayerType playerType, int32_t highestLevel, int32_t currentLevel){
-
-            super();
-        this.gameType= gameType;
+public: GameInfo(GameType gameType, GameMode gameMode, PlayerType playerType, int32_t highestLevel, int32_t currentLevel){
+this->gameType= gameType;
     
-this.gameMode= gameMode;
+this->gameMode= gameMode;
     
-this.setHighestLevel(highestLevel);
+this->setHighestLevel(highestLevel);
     
-this.currentLevel= currentLevel;
+this->currentLevel= currentLevel;
     
-this.playerType= playerType;
+this->playerType= playerType;
     
 }
 
 
-    public GameType getGameType(){
+    public: GameType getGameType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameType;
+                        return this->gameType;
     
 }
 
 
-    public GameMode getGameMode(){
+    public: GameMode getGameMode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameMode;
+                        return this->gameMode;
     
 }
 
 
-    public PlayerType getPlayerType(){
+    public: PlayerType getPlayerType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerType;
+                        return this->playerType;
     
 }
 
 
-    public int32_t getHighestLevel(){
+    public: int32_t getHighestLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highestLevel;
+                        return this->highestLevel;
     
 }
 
 
-    public setHighestLevel(int32_t highestLevel){
-this.highestLevel= highestLevel;
+    public: void setHighestLevel(int32_t highestLevel){
+this->highestLevel= highestLevel;
     
 }
 
 
-    public int32_t getCurrentLevel(){
+    public: int32_t getCurrentLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentLevel;
+                        return this->currentLevel;
     
 }
 
 
-    private: const NEW_LEVEL: string = "New Level: ";
+    private: const std::string NEW_LEVEL = "New Level: ";
 
-    private: const SET_CURRENT_LEVEL: string = "setCurrentLevel";
+    private: const std::string SET_CURRENT_LEVEL = "setCurrentLevel";
 
-    public setCurrentLevel(int32_t currentLevel){
-this.currentLevel= currentLevel;
+    public: void setCurrentLevel(int32_t currentLevel){
+this->currentLevel= currentLevel;
     
-this.logUtil!.putF(new StringMaker().append(this.NEW_LEVEL)!.appendint(this.getCurrentLevel())!.toString(), this, this.SET_CURRENT_LEVEL);
+this->logUtil.putF(StringMaker().append(this->NEW_LEVEL).appendint(this->getCurrentLevel()).toString(), this, this->SET_CURRENT_LEVEL);
     
 }
 
 
-    private: const NEXT: string = "Next ";
+    private: const std::string NEXT = "Next ";
 
-    private: const NEXT_GAME_LEVEL: string = "nextGameLevel";
+    private: const std::string NEXT_GAME_LEVEL = "nextGameLevel";
 
-    public nextGameLevel(){
+    public: void nextGameLevel(){
 
-                        if(this.getCurrentLevel() < this.getHighestLevel())
+                        if(this->getCurrentLevel() < this->getHighestLevel())
                         
                                     {
-                                    this.currentLevel++;
+                                    this->currentLevel++;
     
 
                                     }
                                 
-this.logUtil!.putF(new StringMaker().append(this.NEXT)!.append(this.NEW_LEVEL)!.appendint(this.getCurrentLevel())!.toString(), this, this.NEXT_GAME_LEVEL);
+this->logUtil.putF(StringMaker().append(this->NEXT).append(this->NEW_LEVEL).appendint(this->getCurrentLevel()).toString(), this, this->NEXT_GAME_LEVEL);
     
 }
 
 
-    public previousGameLevel(){
+    public: void previousGameLevel(){
 
-                        if(this.getCurrentLevel() > 1)
-                        this.currentLevel--
+                        if(this->getCurrentLevel() > 1)
+                        this->currentLevel--;
+                                
 }
 
 
-    public bool isLastLevel(){
+    public: bool isLastLevel(){
 
-                        if(this.getCurrentLevel() >= this.getHighestLevel())
+                        if(this->getCurrentLevel() >= this->getHighestLevel())
                         
                                     {
                                     
@@ -234,19 +232,19 @@ this.logUtil!.putF(new StringMaker().append(this.NEXT)!.append(this.NEW_LEVEL)!.
 }
 
 
-    public Hashtable<any, any> toHashtable(){
+    public: Hashtable<any, any> toHashtable(){
 
-    hashtable: Hashtable<any, any> = new Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = Hashtable<any, any>();;
     
-hashtable.put(this.gameInfoData!.GAME_TYPE, this.getGameType()!.toString());
+hashtable.put(this->gameInfoData.GAME_TYPE, this->getGameType().toString());
     
-hashtable.put(this.gameInfoData!.GAME_MODE, this.gameMode!.toString());
+hashtable.put(this->gameInfoData.GAME_MODE, this->gameMode.toString());
     
-hashtable.put(this.gameInfoData!.PLAYER_TYPE, this.playerType!.toString());
+hashtable.put(this->gameInfoData.PLAYER_TYPE, this->playerType.toString());
     
-hashtable.put(this.gameInfoData!.HIGHEST_LEVEL, Integer.toString(this.getHighestLevel()));
+hashtable.put(this->gameInfoData.HIGHEST_LEVEL, std::to_string(getHighestLevel));
     
-hashtable.put(this.gameInfoData!.CURRENT_LEVEL, this.currentLevel.toString());
+hashtable.put(this->gameInfoData.CURRENT_LEVEL, std::to_string(currentLevel));
     
 
 
@@ -257,56 +255,56 @@ hashtable.put(this.gameInfoData!.CURRENT_LEVEL, this.currentLevel.toString());
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
-stringBuffer!.append(this.gameInfoData!.GAME_TYPE);
+stringBuffer.append(this->gameInfoData.GAME_TYPE);
     
-stringBuffer!.append(commonSeps!.EQUALS);
+stringBuffer.append(commonSeps.EQUALS);
     
-stringBuffer!.append(this.getGameType()!.toString());
+stringBuffer.append(this->getGameType().toString());
     
-stringBuffer!.append(commonSeps!.COMMA_SEP);
+stringBuffer.append(commonSeps.COMMA_SEP);
     
-stringBuffer!.append(this.gameInfoData!.GAME_MODE);
+stringBuffer.append(this->gameInfoData.GAME_MODE);
     
-stringBuffer!.append(commonSeps!.EQUALS);
+stringBuffer.append(commonSeps.EQUALS);
     
-stringBuffer!.append(this.gameMode!.toString());
+stringBuffer.append(this->gameMode.toString());
     
-stringBuffer!.append(commonSeps!.COMMA_SEP);
+stringBuffer.append(commonSeps.COMMA_SEP);
     
-stringBuffer!.append(this.gameInfoData!.PLAYER_TYPE);
+stringBuffer.append(this->gameInfoData.PLAYER_TYPE);
     
-stringBuffer!.append(commonSeps!.EQUALS);
+stringBuffer.append(commonSeps.EQUALS);
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(this.playerType));
+stringBuffer.append(StringUtil::getInstance().toString(this->playerType));
     
-stringBuffer!.append(commonSeps!.COMMA_SEP);
+stringBuffer.append(commonSeps.COMMA_SEP);
     
-stringBuffer!.append(this.gameInfoData!.HIGHEST_LEVEL);
+stringBuffer.append(this->gameInfoData.HIGHEST_LEVEL);
     
-stringBuffer!.append(commonSeps!.EQUALS);
+stringBuffer.append(commonSeps.EQUALS);
     
-stringBuffer!.appendint(this.getHighestLevel());
+stringBuffer.appendint(this->getHighestLevel());
     
-stringBuffer!.append(commonSeps!.COMMA_SEP);
+stringBuffer.append(commonSeps.COMMA_SEP);
     
-stringBuffer!.append(this.gameInfoData!.CURRENT_LEVEL);
+stringBuffer.append(this->gameInfoData.CURRENT_LEVEL);
     
-stringBuffer!.append(commonSeps!.EQUALS);
+stringBuffer.append(commonSeps.EQUALS);
     
-stringBuffer!.appendint(this.currentLevel);
+stringBuffer.appendint(this->currentLevel);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

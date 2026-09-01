@@ -43,17 +43,16 @@
 #include "TagStrings.h"
 
 class CommandTag: public CustomTagSupport {
-        
 
-    const tagStrings: TagStrings = TagStrings.getInstance()!;
+    protected: const TagStrings tagStrings = TagStrings::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-public constructor ();
+public: CommandTag();
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public string getCommand();
+    public: std::string getCommand();
 
 };
 

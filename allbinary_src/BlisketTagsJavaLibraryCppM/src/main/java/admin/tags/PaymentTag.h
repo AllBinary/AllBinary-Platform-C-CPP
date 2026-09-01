@@ -73,25 +73,24 @@
         #include "TableTag.h"
 
 class PaymentTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor ();
+public: PaymentTag();
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    string select();
+    private: std::string select();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

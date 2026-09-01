@@ -47,13 +47,12 @@
 class EmailQueueFactory
             : public Object
          {
-        
 
-    private: static emailQueueInterface: EmailQueueInterface = BasicEmailQueue.getInstance() as EmailQueueInterface;
+    private: static EmailQueueInterface emailQueueInterface = BasicEmailQueue::getInstance() as EmailQueueInterface;
 
-    public static EmailQueueInterface getInstance();
+    public: static EmailQueueInterface getInstance();
 
-private constructor ();
+private: EmailQueueFactory();
 
 };
 

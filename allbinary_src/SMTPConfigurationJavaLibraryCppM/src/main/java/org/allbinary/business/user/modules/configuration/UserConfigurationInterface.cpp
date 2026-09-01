@@ -47,19 +47,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UserConfigurationInterface {
-        
 
     UserEmailConfigurationInterface getUserEmailConfigurationInterface()
 
-    setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface)
+    void setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface)
 
     TimeCreated getTimeCreated()
 
     TimeLastModified getTimeLastModified()
 
-    setTimeCreated(TimeCreated timeCreated)
+    void setTimeCreated(TimeCreated timeCreated)
 
-    setTimeLastModified(TimeLastModified timeLastModified)
+    void setTimeLastModified(TimeLastModified timeLastModified)
 
 };
 

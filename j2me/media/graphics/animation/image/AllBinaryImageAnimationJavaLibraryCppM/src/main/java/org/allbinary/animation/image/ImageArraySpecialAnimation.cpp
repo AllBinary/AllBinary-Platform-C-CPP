@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,64 +63,63 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ImageArrayAnimation.h"
 
-class ImageArraySpecialAnimation: public ImageArrayAnimation: public SpecialAnimationInterface {
-        
+class ImageArraySpecialAnimation: public ImageArrayAnimation, public SpecialAnimationInterface {
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(270);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(270);
 
-public constructor (std::vector<Image> imageArray, AnimationBehavior animationBehavior){
+public: ImageArraySpecialAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior){
             super(imageArray, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.reset();
+this->reset();
     
 }
 
 
-    private: loopCount: int32_t = 0;
+    private: int32_t loopCount = 0;
 
-    public int32_t getLoopCount(){
+    public: int32_t getLoopCount(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopCount;
+                        return this->loopCount;
     
 }
 
 
-    public setLastFrame(){
-this.circularIndexUtil!.setIndex(this.circularIndexUtil!.getSize() -1);
+    public: void setLastFrame(){
+this->circularIndexUtil.setIndex(this->circularIndexUtil.getSize() -1);
     
 }
 
 
-    public reset(){
-this.setFrame(this.getSize() -1);
+    public: void reset(){
+this->setFrame(this->getSize() -1);
     
-this.loopCount= 0;
+this->loopCount= 0;
     
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 
-                        if(this.getFrame() > 0)
+                        if(this->getFrame() > 0)
                         
                                     {
                                     
-                        if(this.timeDelayHelper!.isTime(GameTickTimeDelayHelperFactory.getInstance()!.startTime))
+                        if(this->timeDelayHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime))
                         
                                     {
-                                    this.previousFrame();
+                                    this->previousFrame();
     
 
-                        if(this.getFrame() == 0)
+                        if(this->getFrame() == 0)
                         
                                     {
-                                    this.loopCount++;
+                                    this->loopCount++;
     
 
                                     }
@@ -132,11 +133,11 @@ this.loopCount= 0;
 }
 
 
-    private: const loopCountTotal: int32_t = 1;
+    private: const int32_t loopCountTotal = 1;
 
-    public bool isComplete(){
+    public: bool isComplete(){
 
-                        if(this.loopCount < this.loopCountTotal || this.getFrame() != 0)
+                        if(this->loopCount < this->loopCountTotal || this->getFrame() != 0)
                         
                                     {
                                     
@@ -161,8 +162,8 @@ this.loopCount= 0;
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-x= DisplayInfoSingleton.getInstance()!.getLastHalfWidth() -(this.getImage(this.circularIndexUtil!.getIndex())!.getWidth()>>1);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+x= DisplayInfoSingleton::getInstance().getLastHalfWidth() -(this->getImage(this->circularIndexUtil.getIndex()).getWidth()>>1);
     
 y= 5;
     

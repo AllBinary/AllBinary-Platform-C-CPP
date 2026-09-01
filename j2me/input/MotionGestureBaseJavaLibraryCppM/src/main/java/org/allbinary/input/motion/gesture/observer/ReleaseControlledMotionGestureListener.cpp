@@ -77,129 +77,126 @@
 class ReleaseControlledMotionGestureListener
             : public Object
         : public MotionGestureEventListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: currentMotionGesture: MotionGestureInput = TouchMotionGestureFactory.getInstance()!.NO_MOTION;
+    private: MotionGestureInput currentMotionGesture = TouchMotionGestureFactory::getInstance().NO_MOTION;
 
-    private: isMouseGestureOccurring: bool = false;
+    private: bool isMouseGestureOccurring = false;
 
-    private: motionGestureCollection: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList motionGestureCollection = BasicArrayListD();
 
-    private: signed: CompleteMotionGestureListenerInterface;
+    private: CompleteMotionGestureListenerInterface signed;
 
-public constructor (CompleteMotionGestureListenerInterface signed){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: ReleaseControlledMotionGestureListener(CompleteMotionGestureListenerInterface signed){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.signed= signed;
+this->signed= signed;
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 }
 
 
-    public onUpMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onUpMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDownMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDownMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onLeftMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onLeftMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onRightMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onRightMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onPressedMotionGestureEvent(MotionGestureEvent ev){
-this.isMouseGestureOccurring= true;
+    public: void onPressedMotionGestureEvent(MotionGestureEvent ev){
+this->isMouseGestureOccurring= true;
     
-this.currentMotionGesture= TouchMotionGestureFactory.getInstance()!.NO_MOTION;
+this->currentMotionGesture= TouchMotionGestureFactory::getInstance().NO_MOTION;
     
-this.onMotionGestureEvent(ev);
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
 }
 
 
-    public released(MotionGestureEvent ev){
+    public: void released(MotionGestureEvent ev){
 
         try {
             
-                        if(this.isMouseGestureOccurring == false)
+                        if(this->isMouseGestureOccurring == false)
                         
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
                         return ;
     
-this.isMouseGestureOccurring= false;
+this->isMouseGestureOccurring= false;
     
-this.signed.onMotionGestureCompleted(this.motionGestureCollection);
+this->signed.onMotionGestureCompleted(this->motionGestureCollection);
     
-this.motionGestureCollection!.clear();
+this->motionGestureCollection.clear();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(new StringMaker().append(this.commonStrings!.EXCEPTION_LABEL)!.append(StringUtil.getInstance()!.toString(ev.getMotionGesture()))!.toString(), this, "release", e);
+this->logUtil.put(StringMaker().append(this->commonStrings.EXCEPTION_LABEL).append(StringUtil::getInstance().toString(ev.getMotionGesture())).toString(), this, "release", e);
     
 }
 
 }
 
 
-    public onMotionGestureEvent(MotionGestureEvent ev){
+    public: void onMotionGestureEvent(MotionGestureEvent ev){
 
-                        if(this.isMouseGestureOccurring == false)
+                        if(this->isMouseGestureOccurring == false)
                         
 
 
@@ -207,34 +204,34 @@ this.logUtil!.put(new StringMaker().append(this.commonStrings!.EXCEPTION_LABEL)!
                         return ;
     
 
-    motionGestureInput: MotionGestureInput = ev.getMotionGesture()!;;
+    MotionGestureInput motionGestureInput = ev.getMotionGesture();;
     
 
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!.PRESSED)
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().PRESSED)
                         
                                     {
-                                    this.onPressedMotionGestureEvent(ev);
+                                    this->onPressedMotionGestureEvent(ev);
     
 
                                     }
                                 
                              else 
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!.RELEASED)
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().RELEASED)
                         
                                     {
-                                    this.released(ev);
+                                    this->released(ev);
     
 
                                     }
                                 
                         else {
                             
-                        if(this.currentMotionGesture != motionGestureInput)
+                        if(this->currentMotionGesture != motionGestureInput)
                         
                                     {
-                                    this.currentMotionGesture= motionGestureInput;
+                                    this->currentMotionGesture= motionGestureInput;
     
-this.motionGestureCollection!.add(ev.getMotionGesture());
+this->motionGestureCollection.add(ev.getMotionGesture());
     
 
                                     }

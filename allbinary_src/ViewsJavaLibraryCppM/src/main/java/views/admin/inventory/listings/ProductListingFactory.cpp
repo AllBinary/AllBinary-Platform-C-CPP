@@ -55,11 +55,10 @@
 class ProductListingFactory
             : public Object
          {
-        
 
-    public static ProductListingInterface getInstance(SearchRequest searchRequest){
+    public: static ProductListingInterface getInstance(SearchRequest searchRequest){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -67,20 +66,20 @@ class ProductListingFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new views.admin.inventory.listings.ProductListing(searchRequest) as ProductListingInterface;
+                        return views::admin::inventory::listings::ProductListing(searchRequest) as ProductListingInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, "ProductListingFactory", commonStrings!.GET_INSTANCE, e);
+logUtil.put(commonStrings.EXCEPTION, "ProductListingFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -96,10 +95,8 @@ logUtil!.put(commonStrings!.EXCEPTION, "ProductListingFactory", commonStrings!.G
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ProductListingFactory(){
+}
 
 
 };

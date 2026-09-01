@@ -77,31 +77,30 @@
 class GameGraphicsResourceUtil
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameGraphicsResourceUtil getInstance();
+    public: static GameGraphicsResourceUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const SPRITE: string = "_sprite";
+    public: const std::string SPRITE = "_sprite";
 
-    public const QUARTER: string = "_quarter";
+    public: const std::string QUARTER = "_quarter";
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    string getString();
+public: GameGraphicsResourceUtil();
 
                 //@Throws(Exception.constructor)
             
-    public string getStringForFeature(GraphicsFeature graphicsFeature);
+    private: std::string getString();
 
-    public string getName();
+                //@Throws(Exception.constructor)
+            
+    public: std::string getStringForFeature(GraphicsFeature graphicsFeature);
+
+    public: std::string getName();
 
 };
 

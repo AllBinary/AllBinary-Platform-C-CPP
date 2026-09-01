@@ -53,13 +53,12 @@
 class GraphicItemBuilder
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static GraphicItemInterface getInstance(Node node);
+    public: static GraphicItemInterface getInstance(Node node);
 
-private constructor ();
+private: GraphicItemBuilder();
 
 };
 

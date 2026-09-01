@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Class.h"
@@ -68,50 +70,47 @@
 class TransformInfoObjectFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoObjectFactory = new TransformInfoObjectFactory();
+    private: static TransformInfoObjectFactory instance() { return TransformInfoObjectFactory(); }
 
-    public static TransformInfoObjectFactory getInstance(){
+    public: static TransformInfoObjectFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectFactory.instance;
+                        return TransformInfoObjectFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoObjectFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF("Creating View: " +transformInfoInterface!.getName(), this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF("Creating View: " +transformInfoInterface.getName(), this, commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
 
-    params: std::vector<any> = new Array(1);;
+    std::vector<Object*> params = new Array(1);;
     
 
-    classes: std::vector<Function> = new Array(1);;
+    std::vector<Function> classes = new Array(1);;
     
 classes[0]= 
                                     //Otherwise - expression - AssignExpr - value - ClassExpr
@@ -120,35 +119,35 @@ classes[0]=
 params[0]= transformInfoInterface;
     
 
-    anyType: TransformInterface = AbeFactory.getInstance()!.getInstance(abeClientInformation, transformInfoInterface!.getObjectFile(), classes, params) as TransformInterface;;
+    TransformInterface anyType = AbeFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface.getObjectFile(), classes, params) as TransformInterface;;
     
 
                         if(anyType == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
                         if(transformInfoInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("\nNo Such View Name: ");
+stringBuffer.append("\nNo Such View Name: ");
     
-stringBuffer!.append(transformInfoInterface!.getName());
+stringBuffer.append(transformInfoInterface.getName());
     
-stringBuffer!.append("\nNo Such View Object: ");
+stringBuffer.append("\nNo Such View Object: ");
     
-stringBuffer!.append(transformInfoInterface!.getObjectFile());
+stringBuffer.append(transformInfoInterface.getObjectFile());
     
 
 
 
-                            throw new Exception(stringBuffer!.toString());
+                            throw Exception(stringBuffer.toString());
                     
 
                                     }
@@ -157,7 +156,7 @@ stringBuffer!.append(transformInfoInterface!.getObjectFile());
                             
 
 
-                            throw new Exception("No Such View Object since transformInfo is null");
+                            throw Exception("No Such View Object since transformInfo is null");
                     
 
                         }
@@ -176,27 +175,27 @@ stringBuffer!.append(transformInfoInterface!.getObjectFile());
 } catch(e) 
             {
 
-    error: string = "Failed To Get Instance: ";;
+    std::string error = "Failed To Get Instance: ";;
     
 
                         if(transformInfoInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface!.getName();
+                                    error= error +transformInfoInterface.getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(error, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(error, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -212,27 +211,27 @@ this.logUtil!.put(error, this, commonStrings!.GET_INSTANCE, e);
 /* catch(e) 
             {
 
-    error: string = "Failed To Get Instance: ";;
+    std::string error = "Failed To Get Instance: ";;
     
 
                         if(transformInfoInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    error= error +transformInfoInterface!.getName();
+                                    error= error +transformInfoInterface.getName();
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(error, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(error, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

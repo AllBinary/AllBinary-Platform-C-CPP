@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <java/util/Hashtable.h>
@@ -61,17 +63,16 @@
 class SpinnerAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    direction: std::vector<int32_t> = [Canvas.LEFT];;
+    std::vector<int32_t> direction = {Canvas::LEFT};;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SpinnerAI(direction, ownerLayerInterface, gameInput);
+                        return SpinnerAI(direction, ownerLayerInterface, gameInput);
     
 }
 

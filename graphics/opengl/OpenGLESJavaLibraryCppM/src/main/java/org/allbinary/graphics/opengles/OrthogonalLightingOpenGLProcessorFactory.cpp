@@ -44,23 +44,22 @@
 class OrthogonalLightingOpenGLProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: OrthogonalLightingOpenGLProcessorFactory = new OrthogonalLightingOpenGLProcessorFactory();
+    private: static OrthogonalLightingOpenGLProcessorFactory instance() { return OrthogonalLightingOpenGLProcessorFactory(); }
 
-    public static OrthogonalLightingOpenGLProcessorFactory getInstance(){
+    public: static OrthogonalLightingOpenGLProcessorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrthogonalLightingOpenGLProcessorFactory.instance;
+                        return OrthogonalLightingOpenGLProcessorFactory::instance();
     
 }
 
 
-    public sceneLightingOrthogonalModeOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor sceneLightingOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
-    public sceneLightsOrthogonalModeOpenGLProcessor: OpenGLProcessor = NullOpenGLProcessorFactory.getInstance()!;
+    public: OpenGLProcessor sceneLightsOrthogonalModeOpenGLProcessor = NullOpenGLProcessorFactory::getInstance();
 
 };
 

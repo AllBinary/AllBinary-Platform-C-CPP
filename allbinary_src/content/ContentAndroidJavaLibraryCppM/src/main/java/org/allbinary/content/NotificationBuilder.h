@@ -62,11 +62,10 @@
 class NotificationBuilder
             : public Object
          {
-        
 
-    public static const NULL_NOTIFICATION_BUILDER: NotificationBuilder = new NotificationBuilder();
+    public: static const NotificationBuilder NULL_NOTIFICATION_BUILDER = NotificationBuilder();
 
-    public Parcelable build(Context context, Command command, string message, Integer integer, PendingIntent pendingIntent);
+    public: Parcelable build(Context context, Command command, std::string message, Integer integer, PendingIntent pendingIntent);
 
 };
 

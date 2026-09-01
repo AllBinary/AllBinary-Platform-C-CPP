@@ -47,19 +47,18 @@
 class ScreenListenerHandler
             : public Object
          {
-        
 
-    private: static const instance: ScreenListenerHandler = new ScreenListenerHandler();
+    private: static ScreenListenerHandler instance() { return ScreenListenerHandler(); }
 
-    public static ScreenListenerHandler getInstance();
+    public: static ScreenListenerHandler getInstance();
 
-    private: screenListenerInterface: ScreenListenerInterface = new ScreenEmptyListener();
+    private: ScreenListenerInterface screenListenerInterface = ScreenEmptyListener();
 
-    public setListener(ScreenListenerInterface screenListenerInterface);
+    public: void setListener(ScreenListenerInterface screenListenerInterface);
 
-    public fireWithState(bool isFullScreen);
+    public: void fireWithState(bool isFullScreen);
 
-    public fire();
+    public: void fire();
 
 };
 

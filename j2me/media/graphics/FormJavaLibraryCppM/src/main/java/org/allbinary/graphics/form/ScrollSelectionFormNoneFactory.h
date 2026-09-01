@@ -46,9 +46,8 @@
 class ScrollSelectionFormNoneFactory
             : public Object
          {
-        
 
-    public static ScrollSelectionForm getInstance();
+    public: static ScrollSelectionForm getInstance();
 
 };
 

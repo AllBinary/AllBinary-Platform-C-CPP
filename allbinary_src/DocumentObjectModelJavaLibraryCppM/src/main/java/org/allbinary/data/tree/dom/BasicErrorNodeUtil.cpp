@@ -54,17 +54,16 @@
 class BasicErrorNodeUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Node get(Document document, string errorText){
+    public: static Node get(Document document, std::string errorText){
 
         try {
             
-    node: Node = document.createElement(ErrorData.getInstance()!.NAME)!;;
+    Node node = document.createElement(ErrorData::getInstance().NAME);;
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, ErrorData.getInstance()!.TEXT, errorText));
+node.appendChild(ModDomHelper::createNameValueNodes(document, ErrorData::getInstance().TEXT, errorText));
     
 
 
@@ -79,17 +78,15 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, ErrorData.getInstan
 
 
 
-                            throw new Exception("Error Node Creation Failure");
+                            throw Exception("Error Node Creation Failure");
                     
 }
 
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BasicErrorNodeUtil(){
+}
 
 
 };

@@ -64,29 +64,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameNotificationEvent: public AllBinaryEventObject {
-        
 
-    private: string: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const seconds: Integer;
+    private: Integer seconds;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: const removeable: Boolean;
+    private: Boolean removeable;
 
-public constructor (any = {} anyType, string string, Integer seconds, BasicColor basicColor, Boolean permanent);
+public: GameNotificationEvent(Object* anyType, std::string string, Integer seconds, BasicColor basicColor, Boolean permanent);
 
-    public string getString();
+    public: std::string getString();
 
-    public Integer getSeconds();
+    public: Integer getSeconds();
 
-    public BasicColor getBasicColorP();
+    public: BasicColor getBasicColorP();
 
-    public Boolean getPermanent();
+    public: Boolean getPermanent();
 
-    public setString(string string);
+    public: void setString(std::string string);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
 };
 

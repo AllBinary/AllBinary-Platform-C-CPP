@@ -101,120 +101,119 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DateRangeOrderHistoryView: public HttpStoreComponentView: public ValidationComponentInterface, public DomNodeInterface {
-        
+class DateRangeOrderHistoryView: public HttpStoreComponentView, public ValidationComponentInterface, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const VIEWALLORDERS: string = "View All";
+    private: const std::string VIEWALLORDERS = "View All";
 
-    private: const VIEWORDERSINLASTHOUR: string = "Last Hour";
+    private: const std::string VIEWORDERSINLASTHOUR = "Last Hour";
 
-    private: const VIEWORDERSINLASTDAY: string = "Last Day";
+    private: const std::string VIEWORDERSINLASTDAY = "Last Day";
 
-    private: const VIEWORDERSINLASTWEEK: string = "Last Week";
+    private: const std::string VIEWORDERSINLASTWEEK = "Last Week";
 
-    private: const VIEWORDERSINLAST30DAYS: string = "30 Days";
+    private: const std::string VIEWORDERSINLAST30DAYS = "30 Days";
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: shipped: string;
+    private: std::string shipped;
 
-    private: partiallyShipped: string;
+    private: std::string partiallyShipped;
 
-    private: processing: string;
+    private: std::string processing;
 
-    private: preprocessing: string;
+    private: std::string preprocessing;
 
-    private: cancelled: string;
+    private: std::string cancelled;
 
-    private: dateType: string;
+    private: std::string dateType;
 
-    private: toDate: string;
+    private: std::string toDate;
 
-    private: fromDate: string;
+    private: std::string fromDate;
 
-    private: fromYear: string;
+    private: std::string fromYear;
 
-    private: fromMonth: string;
+    private: std::string fromMonth;
 
-    private: fromDay: string;
+    private: std::string fromDay;
 
-    private: fromHour: string;
+    private: std::string fromHour;
 
-    private: toYear: string;
+    private: std::string toYear;
 
-    private: toMonth: string;
+    private: std::string toMonth;
 
-    private: toDay: string;
+    private: std::string toDay;
 
-    private: toHour: string;
+    private: std::string toHour;
 
-    private: command: string;
+    private: std::string command;
 
-    private: const ON: string = "on";
+    private: const std::string ON = "on";
 
-    private: MAXLEN: int32_t = 15;
+    private: int32_t MAXLEN = 15;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: DateRangeOrderHistoryView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
-this.getFormData();
-    
-}
-
-
-    getFormData(){
-this.dateType= this.request.getParameter(OrderHistoryData.DATETYPE);
-    
-this.preprocessing= this.request.getParameter(OrderHistoryData.PREPROCESSINGNAME);
-    
-this.shipped= this.request.getParameter(OrderHistoryData.SHIPPEDNAME);
-    
-this.partiallyShipped= this.request.getParameter(OrderHistoryData.PARTIALLYSHIPPEDNAME);
-    
-this.processing= this.request.getParameter(OrderHistoryData.PROCESSINGNAME);
-    
-this.cancelled= this.request.getParameter(OrderHistoryData.CANCELLEDNAME);
-    
-this.fromYear= this.request.getParameter(OrderHistoryData.FROMYEAR);
-    
-this.fromMonth= this.request.getParameter(OrderHistoryData.FROMMONTH);
-    
-this.fromDay= this.request.getParameter(OrderHistoryData.FROMDAY);
-    
-this.fromHour= this.request.getParameter(OrderHistoryData.FROMHOUR);
-    
-this.toYear= this.request.getParameter(OrderHistoryData.TOYEAR);
-    
-this.toMonth= this.request.getParameter(OrderHistoryData.TOMONTH);
-    
-this.toDay= this.request.getParameter(OrderHistoryData.TODAY);
-    
-this.toHour= this.request.getParameter(OrderHistoryData.TOHOUR);
-    
-this.command= this.request.getParameter(GLOBALS2.ADMINCOMMAND);
+this->getFormData();
     
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    private: void getFormData(){
+this->dateType= this->request.getParameter(OrderHistoryData::DATETYPE);
+    
+this->preprocessing= this->request.getParameter(OrderHistoryData::PREPROCESSINGNAME);
+    
+this->shipped= this->request.getParameter(OrderHistoryData::SHIPPEDNAME);
+    
+this->partiallyShipped= this->request.getParameter(OrderHistoryData::PARTIALLYSHIPPEDNAME);
+    
+this->processing= this->request.getParameter(OrderHistoryData::PROCESSINGNAME);
+    
+this->cancelled= this->request.getParameter(OrderHistoryData::CANCELLEDNAME);
+    
+this->fromYear= this->request.getParameter(OrderHistoryData::FROMYEAR);
+    
+this->fromMonth= this->request.getParameter(OrderHistoryData::FROMMONTH);
+    
+this->fromDay= this->request.getParameter(OrderHistoryData::FROMDAY);
+    
+this->fromHour= this->request.getParameter(OrderHistoryData::FROMHOUR);
+    
+this->toYear= this->request.getParameter(OrderHistoryData::TOYEAR);
+    
+this->toMonth= this->request.getParameter(OrderHistoryData::TOMONTH);
+    
+this->toDay= this->request.getParameter(OrderHistoryData::TODAY);
+    
+this->toHour= this->request.getParameter(OrderHistoryData::TOHOUR);
+    
+this->command= this->request.getParameter(GLOBALS2::ADMINCOMMAND);
+    
+}
+
+
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -227,10 +226,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -245,66 +244,64 @@ this.addDomNodeInterface(this as DomNodeInterface);
 }
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Attempt to View orders in (fromDate=");
+stringBuffer.append("Attempt to View orders in (fromDate=");
     
-stringBuffer!.append(this.fromDate);
+stringBuffer.append(this->fromDate);
     
-stringBuffer!.append(",toDate=");
+stringBuffer.append(",toDate=");
     
-stringBuffer!.append(this.toDate);
+stringBuffer.append(this->toDate);
     
-stringBuffer!.append(") and status");
+stringBuffer.append(") and status");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "view");
+this->logUtil.putF(stringBuffer.toString(), this, "view");
     
 
                                     }
                                 
 
-    node: Node = document.createElement(OrderData.ORDERS)!;;
+    Node node = document.createElement(OrderData::ORDERS);;
     
 
-                        if(this.preprocessing != 
-                                    null
-                                 && this.preprocessing.compareTo(this.ON) == 0)
+                        if(true && this->preprocessing.compareTo(this->ON) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Adding Preprocessing Orders", this, "toXmlNode");
+                                    this->logUtil.putF("Adding Preprocessing Orders", this, "toXmlNode");
     
 
                                     }
                                 
 
-    orderHistoryVector: Vector = OrderHistoryEntityFactory.getInstance()!.getOrders(OrderHistoryData.PREPROCESSING, fromDate, toDate)!;;
+    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PREPROCESSING, fromDate, toDate);;
     
 
-    size: int32_t = orderHistoryVector!.length!;;
+    int32_t size = orderHistoryVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    orderHistory: OrderHistory = orderHistoryVector!.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
     
-node.appendChild(orderHistory!.toXmlNode(document));
+node.appendChild(orderHistory.toXmlNode(document));
     
 }
 
@@ -312,37 +309,35 @@ node.appendChild(orderHistory!.toXmlNode(document));
                                     }
                                 
 
-                        if(this.shipped != 
-                                    null
-                                 && this.shipped.compareTo(this.ON) == 0)
+                        if(true && this->shipped.compareTo(this->ON) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Adding Shipped Orders", this, "toXmlNode");
+                                    this->logUtil.putF("Adding Shipped Orders", this, "toXmlNode");
     
 
                                     }
                                 
 
-    orderHistoryVector: Vector = OrderHistoryEntityFactory.getInstance()!.getOrders(OrderHistoryData.SHIPPED, fromDate, toDate)!;;
+    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::SHIPPED, fromDate, toDate);;
     
 
-    size: int32_t = orderHistoryVector!.length!;;
+    int32_t size = orderHistoryVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    orderHistory: OrderHistory = orderHistoryVector!.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
     
-node.appendChild(orderHistory!.toXmlNode(document));
+node.appendChild(orderHistory.toXmlNode(document));
     
 }
 
@@ -350,37 +345,35 @@ node.appendChild(orderHistory!.toXmlNode(document));
                                     }
                                 
 
-                        if(this.partiallyShipped != 
-                                    null
-                                 && this.partiallyShipped!.compareTo(this.ON) == 0)
+                        if(true && this->partiallyShipped.compareTo(this->ON) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Adding Partially Shipped Orders", this, "toDomNode");
+                                    this->logUtil.putF("Adding Partially Shipped Orders", this, "toDomNode");
     
 
                                     }
                                 
 
-    orderHistoryVector: Vector = OrderHistoryEntityFactory.getInstance()!.getOrders(OrderHistoryData.PARTIALLYSHIPPED, fromDate, toDate)!;;
+    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PARTIALLYSHIPPED, fromDate, toDate);;
     
 
-    size: int32_t = orderHistoryVector!.length!;;
+    int32_t size = orderHistoryVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    orderHistory: OrderHistory = orderHistoryVector!.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
     
-node.appendChild(orderHistory!.toXmlNode(document));
+node.appendChild(orderHistory.toXmlNode(document));
     
 }
 
@@ -388,37 +381,35 @@ node.appendChild(orderHistory!.toXmlNode(document));
                                     }
                                 
 
-                        if(this.processing != 
-                                    null
-                                 && this.processing.compareTo(this.ON) == 0)
+                        if(true && this->processing.compareTo(this->ON) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Adding Processing Orders", this, "toXmlNode");
+                                    this->logUtil.putF("Adding Processing Orders", this, "toXmlNode");
     
 
                                     }
                                 
 
-    orderHistoryVector: Vector = OrderHistoryEntityFactory.getInstance()!.getOrders(OrderHistoryData.PROCESSING, fromDate, toDate)!;;
+    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::PROCESSING, fromDate, toDate);;
     
 
-    size: int32_t = orderHistoryVector!.length!;;
+    int32_t size = orderHistoryVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    orderHistory: OrderHistory = orderHistoryVector!.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
     
-node.appendChild(orderHistory!.toXmlNode(document));
+node.appendChild(orderHistory.toXmlNode(document));
     
 }
 
@@ -426,54 +417,52 @@ node.appendChild(orderHistory!.toXmlNode(document));
                                     }
                                 
 
-                        if(this.cancelled != 
-                                    null
-                                 && this.cancelled.compareTo(this.ON) == 0)
+                        if(true && this->cancelled.compareTo(this->ON) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Adding Cancelled Orders", this, "view");
+                                    this->logUtil.putF("Adding Cancelled Orders", this, "view");
     
 
                                     }
                                 
 
-    orderHistoryVector: Vector = OrderHistoryEntityFactory.getInstance()!.getOrders(OrderHistoryData.CANCELLED, fromDate, toDate)!;;
+    Vector orderHistoryVector = OrderHistoryEntityFactory::getInstance().getOrders(OrderHistoryData::CANCELLED, fromDate, toDate);;
     
 
-    size: int32_t = orderHistoryVector!.length!;;
+    int32_t size = orderHistoryVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    orderHistory: OrderHistory = orderHistoryVector!.get(index) as OrderHistory;;
+    OrderHistory orderHistory = orderHistoryVector.get(index) as OrderHistory;;
     
-node.appendChild(orderHistory!.toXmlNode(document));
+node.appendChild(orderHistory.toXmlNode(document));
     
 }
 
 
                                     }
                                 
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PREPROCESSINGNAME, OrderHistoryData.PREPROCESSING));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PREPROCESSINGNAME, OrderHistoryData::PREPROCESSING));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PROCESSINGNAME, OrderHistoryData.PROCESSING));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PROCESSINGNAME, OrderHistoryData::PROCESSING));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.CANCELLEDNAME, OrderHistoryData.CANCELLED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::CANCELLEDNAME, OrderHistoryData::CANCELLED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.PARTIALLYSHIPPEDNAME, OrderHistoryData.PARTIALLYSHIPPED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::PARTIALLYSHIPPEDNAME, OrderHistoryData::PARTIALLYSHIPPED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, OrderHistoryData.SHIPPEDNAME, OrderHistoryData.SHIPPED));
+node.appendChild(ModDomHelper::createNameValueNodes(document, OrderHistoryData::SHIPPEDNAME, OrderHistoryData::SHIPPED));
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, GLOBALS2.VIEW));
+node.appendChild(ModDomHelper::createNameValueNodes(document, GLOBALS2::VIEWNAME, GLOBALS2::VIEW));
     
 
 
@@ -486,10 +475,10 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -505,144 +494,140 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, GLOBALS2.VIEWNAME, 
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    isValid: Boolean = Boolean.TRUE;;
+    Boolean isValid = Boolean::TRUE;;
     
 
-                        if(this.dateType == 
-                                    null
-                                 || (this.dateType!.compareTo(OrderHistoryData.TYPELONG) != 0 && this.dateType!.compareTo(OrderHistoryData.TYPECAESAR) != 0))
+                        if(false || (this->dateType.compareTo(OrderHistoryData::TYPELONG) != 0 && this->dateType.compareTo(OrderHistoryData::TYPECAESAR) != 0))
                         
                                     {
-                                    isValid= Boolean.FALSE;
+                                    isValid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(this.dateType != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
-                        if(this.dateType!.compareTo(OrderHistoryData.TYPELONG) == 0)
+                        if(this->dateType.compareTo(OrderHistoryData::TYPELONG) == 0)
                         
                                     {
                                     
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    currentTime: int64_t = calendar.getTimeInMillis()!;;
+    int64_t currentTime = calendar.getTimeInMillis();;
     
 
-    rangeDate: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string rangeDate = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(this.command.compareTo(this.VIEWORDERSINLASTHOUR) == 0)
+                        if(this->command.compareTo(this->VIEWORDERSINLASTHOUR) == 0)
                         
                                     {
                                     
-    oneHour: int64_t = 60 *60 *1000;;
+    int64_t oneHour = 60 *60 *1000;;
     
-rangeDate= new Long(oneHour).toString();
+rangeDate= Long(oneHour).toString();
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(this.VIEWORDERSINLASTDAY) == 0)
+                        if(this->command.compareTo(this->VIEWORDERSINLASTDAY) == 0)
                         
                                     {
                                     
-    oneDay: int64_t = 24 *60 *60 *1000;;
+    int64_t oneDay = 24 *60 *60 *1000;;
     
-rangeDate= new Long(oneDay).toString();
+rangeDate= Long(oneDay).toString();
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(this.VIEWORDERSINLASTWEEK) == 0)
+                        if(this->command.compareTo(this->VIEWORDERSINLASTWEEK) == 0)
                         
                                     {
                                     
-    oneWeek: int64_t = 7 *24 *60 *60 *1000;;
+    int64_t oneWeek = 7 *24 *60 *60 *1000;;
     
-rangeDate= new Long(oneWeek).toString();
+rangeDate= Long(oneWeek).toString();
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(this.VIEWORDERSINLAST30DAYS) == 0)
+                        if(this->command.compareTo(this->VIEWORDERSINLAST30DAYS) == 0)
                         
                                     {
                                     
-    thirtyDays: int64_t = 30 *24 *60 *60 *1000;;
+    int64_t thirtyDays = 30 *24 *60 *60 *1000;;
     
-rangeDate= new Long(thirtyDays).toString();
+rangeDate= Long(thirtyDays).toString();
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(this.VIEWALLORDERS) == 0)
+                        if(this->command.compareTo(this->VIEWALLORDERS) == 0)
                         
                                     {
-                                    rangeDate= new Long(currentTime).toString();
+                                    rangeDate= Long(currentTime).toString();
     
 
                                     }
                                 
 
-    rangeDateLong: int64_t = new Long(rangeDate).longValue()!;;
+    int64_t rangeDateLong = Long(rangeDate).longValue();;
     
-this.fromDate= new Long(currentTime -rangeDateLong).toString();
+this->fromDate= Long(currentTime -rangeDateLong).toString();
     
 
-    time: string = new Long(currentTime).toString();;
+    std::string time = Long(currentTime).toString();;
     
-this.toDate= time;
+this->toDate= time;
     
 
                                     }
                                 
                              else 
-                        if(this.dateType!.compareTo(OrderHistoryData.TYPECAESAR) == 0)
+                        if(this->dateType.compareTo(OrderHistoryData::TYPECAESAR) == 0)
                         
                                     {
                                     
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
-TimeUtil.getInstance()!.setCalendar(calendar, this.fromYear, this.fromMonth, this.fromDay, this.fromHour);
+TimeUtil::getInstance().setCalendar(calendar, this->fromYear, this->fromMonth, this->fromDay, this->fromHour);
     
-this.fromDate= new Long(calendar.getTimeInMillis()).toString();
+this->fromDate= Long(calendar.getTimeInMillis()).toString();
     
-TimeUtil.getInstance()!.setCalendar(calendar, this.toYear, this.toMonth, this.toDay, this.toHour);
+TimeUtil::getInstance().setCalendar(calendar, this->toYear, this->toMonth, this->toDay, this->toHour);
     
-this.toDate= new Long(calendar.getTimeInMillis()).toString();
+this->toDate= Long(calendar.getTimeInMillis()).toString();
     
 
                                     }
                                 
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.toDate) || this.toDate!.length > this.MAXLEN)
+                        if(StringValidationUtil::getInstance().isEmpty(this->toDate) || toDate.size() > this->MAXLEN)
                         
                                     {
-                                    isValid= Boolean.FALSE;
+                                    isValid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.fromDate) || this.fromDate!.length > this.MAXLEN)
+                        if(StringValidationUtil::getInstance().isEmpty(this->fromDate) || fromDate.size() > this->MAXLEN)
                         
                                     {
-                                    isValid= Boolean.FALSE;
+                                    isValid= Boolean::FALSE;
     
 
                                     }
@@ -651,23 +636,23 @@ this.toDate= new Long(calendar.getTimeInMillis()).toString();
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Attempt to View orders in (fromDate=");
+stringBuffer.append("Attempt to View orders in (fromDate=");
     
-stringBuffer!.append(this.fromDate);
+stringBuffer.append(this->fromDate);
     
-stringBuffer!.append(",toDate=");
+stringBuffer.append(",toDate=");
     
-stringBuffer!.append(this.toDate);
+stringBuffer.append(this->toDate);
     
-stringBuffer!.append(")");
+stringBuffer.append(")");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -683,10 +668,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.put("Exception in validation", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Exception in validation", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -695,14 +680,14 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -712,7 +697,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -724,16 +709,14 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    result: StringMaker = new StringMaker();;
+    StringMaker result = StringMaker();;
     
 
-                        if(this.dateType == 
-                                    null
-                                 || (this.dateType!.compareTo(OrderHistoryData.TYPELONG) != 0 && this.dateType!.compareTo(OrderHistoryData.TYPECAESAR) != 0))
+                        if(false || (this->dateType.compareTo(OrderHistoryData::TYPELONG) != 0 && this->dateType.compareTo(OrderHistoryData::TYPECAESAR) != 0))
                         
                                     {
                                     result.append("DATETYPE not recognized");
@@ -742,7 +725,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
                                     }
                                 
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.toDate) || this.toDate!.length > this.MAXLEN)
+                        if(StringValidationUtil::getInstance().isEmpty(this->toDate) || toDate.size() > this->MAXLEN)
                         
                                     {
                                     result.append("Invalid To Date");
@@ -751,7 +734,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
                                     }
                                 
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.fromDate) || this.fromDate!.length > this.MAXLEN)
+                        if(StringValidationUtil::getInstance().isEmpty(this->fromDate) || fromDate.size() > this->MAXLEN)
                         
                                     {
                                     result.append("Invalid From Date");
@@ -770,10 +753,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }

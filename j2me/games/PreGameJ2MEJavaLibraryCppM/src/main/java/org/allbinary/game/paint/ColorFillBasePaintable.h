@@ -67,24 +67,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ColorFillBasePaintable: public Paintable: public ColorCompositeInterface {
-        
+class ColorFillBasePaintable: public Paintable, public ColorCompositeInterface {
 
-    basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    colorP: int32_t= 0;
+    protected: int32_t colorP= 0;
 
-public constructor (BasicColor basicColor);
+public: ColorFillBasePaintable(BasicColor basicColor);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public BasicColor getBasicColorP();
+    public: BasicColor getBasicColorP();
 
-    int32_t getColor();
+    protected: int32_t getColor();
 
-    setColor(int32_t color);
+    protected: void setColor(int32_t color);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

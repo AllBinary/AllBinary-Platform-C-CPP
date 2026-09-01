@@ -42,16 +42,13 @@
 class GenericProfileActionData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_NAME";
+    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTION_NAME";
 
-    public static SCRIPT: string = "GENERIC_CONFIGURATION_PROFILE_ACTION_SCRIPT";
+    public: static std::string SCRIPT = "GENERIC_CONFIGURATION_PROFILE_ACTION_SCRIPT";
 
-private constructor (){
-
-            super();
-        }
+private: GenericProfileActionData(){
+}
 
 
 };

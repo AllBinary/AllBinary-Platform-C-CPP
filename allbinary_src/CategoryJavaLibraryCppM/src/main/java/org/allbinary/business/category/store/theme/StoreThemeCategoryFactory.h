@@ -87,33 +87,32 @@
 class StoreThemeCategoryFactory
             : public Object
         : public CategoryFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: StoreThemeCategoryFactory(TransformInfoInterface transformInfoInterface);
 
-    public CategoryInterface getRootInstance();
+    public: CategoryInterface getRootInstance();
 
-    public CategoryInterface getRootInstance(AbPath categoryAbPath);
+    public: CategoryInterface getRootInstance(AbPath categoryAbPath);
 
-    public CategoryInterface getRootInstanceFromNode(Node node);
+    public: CategoryInterface getRootInstanceFromNode(Node node);
 
-    public CategoryInterface getInstance(string categoryPath, int32_t level);
+    public: CategoryInterface getInstance(std::string categoryPath, int32_t level);
 
-    public CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, string categoryPath);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string categoryPath);
 
-    public CategoryInterface getInstance(Node node, int32_t level);
+    public: CategoryInterface getInstance(Node node, int32_t level);
 
-    public CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
 
-    public CategoryInterface getInstance(HashMap<any, any> categoryPropertiesHashMap, int32_t level);
+    public: CategoryInterface getInstance(HashMap<any, any> categoryPropertiesHashMap, int32_t level);
 
-    public CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
 
 };
 

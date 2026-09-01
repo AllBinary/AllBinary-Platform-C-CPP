@@ -73,98 +73,95 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ImageComparisonSearchConstraintsInterface.h"
 
-class ImageComparisonSearchWorker: public BasicEventHandler: public ImageComparisonResultsListener {
-        
+class ImageComparisonSearchWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageComparisonInfoVector: Vector;
+    private: Vector imageComparisonInfoVector;
 
-    private: index: int64_t= 0;
+    private: int64_t index= 0;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: imageSearchConstraintsInterface: ImageComparisonSearchConstraintsInterface;
+    private: ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface;
 
-public constructor (ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface){
-
-            super();
-        this.imageComparisonInfoVector= new Vector();
+public: ImageComparisonSearchWorker(ImageComparisonSearchConstraintsInterface imageSearchConstraintsInterface){
+this->imageComparisonInfoVector= Vector();
     
-this.imageSearchConstraintsInterface= imageSearchConstraintsInterface;
+this->imageSearchConstraintsInterface= imageSearchConstraintsInterface;
     
 }
 
 
-    public onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
-this.imageComparisonInfoVector!.add(imageComparisonResultsEvent!.getImageComparisonResult());
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
+this->imageComparisonInfoVector.add(imageComparisonResultsEvent.getImageComparisonResult());
     
-this.run();
+this->run();
     
 }
 
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject){
-this.onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
+this->onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
-    
-timeHelper!.setStartTimeTNT();
+this->setRunning(true);
     
 
-    imageComparisonInfo: ImageComparisonResult = this.imageComparisonInfoVector!.get(0) as ImageComparisonResult;;
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
     
-this.logUtil!.putF(imageComparisonInfo!.toString(), this, this.commonStrings!.RUN);
+timeHelper.setStartTimeTNT();
     
 
-    latestBufferedImage: BufferedImage = imageComparisonInfo!.getBufferedImages()[1]!;;
+    ImageComparisonResult imageComparisonInfo = this->imageComparisonInfoVector.get(0) as ImageComparisonResult;;
     
-this.imageComparisonInfoVector!.remove(imageComparisonInfo);
+this->logUtil.putF(imageComparisonInfo.toString(), this, this->commonStrings.RUN);
     
-this.index++;
+
+    BufferedImage latestBufferedImage = imageComparisonInfo.getBufferedImages()[1];;
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->imageComparisonInfoVector.remove(imageComparisonInfo);
     
-this.setRunning(false);
+this->index++;
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+    
+this->setRunning(false);
+    
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

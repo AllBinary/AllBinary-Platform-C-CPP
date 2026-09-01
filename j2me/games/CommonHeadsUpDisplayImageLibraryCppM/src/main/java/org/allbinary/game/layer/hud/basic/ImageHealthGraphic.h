@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_IMAGEHEALTHGRAPHIC_H
         #define ORG_ALLBINARY_GAME_LAYER_HUD_BASIC_IMAGEHEALTHGRAPHIC_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -62,13 +64,12 @@
         #include "HealthGraphic.h"
 
 class ImageHealthGraphic: public HealthGraphic {
-        
 
-    private: image: std::vector<Image>;
+    private: std::vector<Image> image;
 
-public constructor (AnimationInterface animationInterface, HealthInterface healthInterface, int32_t location, int32_t direction);
+public: ImageHealthGraphic(AnimationInterface animationInterface, HealthInterface healthInterface, int32_t location, int32_t direction);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

@@ -64,48 +64,47 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryVibrationME.h"
 
-class AllBinaryVisualDebugVibration: public AllBinaryVibrationME: public UpdateMyFontInterface {
-        
+class AllBinaryVisualDebugVibration: public AllBinaryVibrationME, public UpdateMyFontInterface {
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(Integer.MAX_VALUE);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(Integer::MAX_VALUE);
 
-    private: const VIBRATING: string = "Vibrating";
+    private: const std::string VIBRATING = "Vibrating";
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.width= font.stringWidth(this.VIBRATING);
+this->width= font.stringWidth(this->VIBRATING);
     
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public vibrate(int32_t duration, int32_t type, int32_t volume){
-this.timeDelayHelper!.delay= duration;
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void vibrate(int32_t duration, int32_t type, int32_t volume){
+this->timeDelayHelper.delay= duration;
+    
+}
 
-                        if(this.timeDelayHelper!.isTimeTNT())
+
+    public: void paint(Graphics graphics){
+
+                        if(this->timeDelayHelper.isTimeTNT())
                         
                                     {
-                                    this.timeDelayHelper!.delay= Integer.MAX_VALUE;
+                                    this->timeDelayHelper.delay= Integer::MAX_VALUE;
     
-this.myFontProcessor!.process(graphics);
+this->myFontProcessor.process(graphics);
     
-graphics.drawString(this.VIBRATING, this.displayInfoSingleton!.getLastHalfWidth() -(width>>1), 0, this.anchor);
+graphics.drawString(this->VIBRATING, this->displayInfoSingleton.getLastHalfWidth() -(width>>1), 0, this->anchor);
     
 
                                     }

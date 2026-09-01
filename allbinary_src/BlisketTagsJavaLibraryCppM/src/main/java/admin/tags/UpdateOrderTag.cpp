@@ -42,14 +42,11 @@
         #include "TableTag.h"
 
 class UpdateOrderTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new UpdateOrderHelperFactory());
+public: UpdateOrderTag(){
+this->setTagHelperFactory(UpdateOrderHelperFactory());
     
-this.setTagRequestHelperFactory(new UpdateOrderHelperFactory());
+this->setTagRequestHelperFactory(UpdateOrderHelperFactory());
     
 }
 

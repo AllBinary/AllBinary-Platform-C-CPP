@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITLAYER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Math.h"
@@ -379,244 +381,243 @@
 #include "UnitWaypointBehavior2.h"
 #include "UnitWaypointBehavior.h"
 
-class UnitLayer: public AdvancedRTSGameLayer: public BuildingEventListenerInterface, public TrackingEventListenerInterface {
-        
+class UnitLayer: public AdvancedRTSGameLayer, public BuildingEventListenerInterface, public TrackingEventListenerInterface {
 
-    private: static const partialPositionList: BasicArrayList = new BasicArrayListS(4);
+    private: static const BasicArrayList partialPositionList = BasicArrayListS(4);
 
-    private: static const SENSOR_RANGE_MULTIPLIER: int32_t = 6;
+    private: static const int32_t SENSOR_RANGE_MULTIPLIER = 6;
 
-    private: static const MOVE: string = "Moving";
+    private: static const std::string MOVE = "Moving";
 
-    public static int32_t getStaticType();
+    public: static int32_t getStaticType();
 
-    public static BasicArrayList getPartialpositionlist();
+    public: static BasicArrayList getPartialpositionlist();
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    private: const groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;
+    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const layerPartialCellPositionsUtil: LayerPartialCellPositionsUtil = LayerPartialCellPositionsUtil.getInstance()!;
+    private: const LayerPartialCellPositionsUtil layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
 
-    private: const layerDistanceUtil: LayerDistanceUtil = LayerDistanceUtil.getInstance()!;
+    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    private: const angleFactory: AngleFactory = AngleFactory.getInstance()!;
+    private: const AngleFactory angleFactory = AngleFactory::getInstance();
 
-    private: const cellPositionFactory: CellPositionFactory = CellPositionFactory.getInstance()!;
+    private: const CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();
 
-    private: const maxResourceLoad: int16_t;
+    private: int16_t maxResourceLoad;
 
-    private: const vehicleProperties: VehicleProperties;
+    private: VehicleProperties vehicleProperties;
 
-    accelerationBasicDecimal: BasicDecimal = new BasicDecimal(1600);
+    protected: BasicDecimal accelerationBasicDecimal = BasicDecimal(1600);
 
-    decelerationBasicDecimal: BasicDecimal = new BasicDecimal( -1000);
+    protected: BasicDecimal decelerationBasicDecimal = BasicDecimal( -1000);
 
-    private: const trackingEvent: TrackingEvent;
+    private: TrackingEvent trackingEvent;
 
-    private: const damageFloaters: DamageFloaters;
+    private: const DamageFloaters damageFloaters;
 
-    private: const damageFloatersPaintableInterface: Paintable;
+    private: const Paintable damageFloatersPaintableInterface;
 
-    private: const healthBar: Paintable;
+    private: const Paintable healthBar;
 
-    private: const moveSoundInterface: Sound;
+    private: Sound moveSoundInterface;
 
-    private: const initResourceAnimation: RotationAnimation;
+    private: RotationAnimation initResourceAnimation;
 
-    private: resourceAnimation: IndexedAnimation = NullIndexedAnimationFactory.getFactoryInstance()!.getInstance(0) as IndexedAnimation;
+    private: IndexedAnimation resourceAnimation = NullIndexedAnimationFactory::getFactoryInstance().getInstance(0) as IndexedAnimation;
 
-    private: const initPathAnimation: PathAnimation;
+    private: PathAnimation initPathAnimation;
 
-    private: pathAnimation: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation pathAnimation = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    private: const captionAnimationHelper: CaptionAnimationHelperBase = new CaptionAnimationHelper(FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(CaptionResources.getInstance()!.RESOURCE)!.getInstance(0),  -23,  -25, 6, 0);
+    private: const CaptionAnimationHelperBase captionAnimationHelper = CaptionAnimationHelper(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(CaptionResources::getInstance().RESOURCE).getInstance(0),  -23,  -25, 6, 0);
 
-    private: const decalAnimation: RotationAnimation;
+    private: RotationAnimation decalAnimation;
 
-    private: const waypointLayerInterfaceFactoryInterface: LayerInterfaceFactoryInterface;
+    private: LayerInterfaceFactoryInterface waypointLayerInterfaceFactoryInterface;
 
-    private: resourceLoad: int32_t = 0;
+    private: int32_t resourceLoad = 0;
 
-    private: weaponRange: int32_t= 0;
+    private: int32_t weaponRange= 0;
 
-    rtsLogHelper: RTSLayerLogHelper = RTSLayerLogHelper.getInstance()!;
+    protected: RTSLayerLogHelper rtsLogHelper = RTSLayerLogHelper::getInstance();
 
-    rotationAnimationInterfaceP: RotationAnimation;
+    protected: RotationAnimation rotationAnimationInterfaceP;
 
-    private: movementAngle: NamedAngle = this.angleFactory!.NOT_ANGLE;
+    private: NamedAngle movementAngle = this->angleFactory.NOT_ANGLE;
 
-    private: steeringInsideGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition steeringInsideGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-protected constructor (RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, string rootName, string name, VehicleProperties vehicleProperties, Health healthInterface, Integer maxResourceLoad, Sound moveSoundInterface, LayerInterfaceFactoryInterface waypointLayerInterfaceFactoryInterface, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface decalAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface resourceAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, Direction direction, int32_t x, int32_t y, int32_t z, ViewPositionBase viewPosition);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+protected: UnitLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, VehicleProperties vehicleProperties, Health healthInterface, Integer maxResourceLoad, Sound moveSoundInterface, LayerInterfaceFactoryInterface waypointLayerInterfaceFactoryInterface, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface decalAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface resourceAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, Direction direction, int32_t x, int32_t y, int32_t z, ViewPositionBase viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public updateWaypointBehavior(BasicGeographicMap geographicMapInterface);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
-
-    private: const sensorGeographicMapCellPositionList: BasicArrayList = new BasicArrayListD();
+    public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
-    public updateSensorGeographicMapCellPositionList();
+    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
 
-    public BasicArrayList getSensorGeographicMapCellPositionList();
-
-    public select();
-
-    public deselect();
-
-    setSelected(bool selected);
+    private: const BasicArrayList sensorGeographicMapCellPositionList = BasicArrayListD();
 
                 //@Throws(Exception.constructor)
             
-    public setClosestGeographicMapCellHistory(BasicArrayList pathsList);
+    public: void updateSensorGeographicMapCellPositionList();
+
+    public: BasicArrayList getSensorGeographicMapCellPositionList();
+
+    public: void select();
+
+    public: void deselect();
+
+    protected: void setSelected(bool selected);
 
                 //@Throws(Exception.constructor)
             
-    public init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
-
-    public onMovement(TrackingEvent trackingEvent);
+    public: void setClosestGeographicMapCellHistory(BasicArrayList pathsList);
 
                 //@Throws(Exception.constructor)
             
-    public onMovementFound(TrackingEvent trackingEvent);
+    public: void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
 
-    public initRangeHack();
-
-                //@Throws(Exception.constructor)
-            
-    public processBuiltTick(AllBinaryLayerManager allBinaryLayerManager);
-
-    public teleportTo(GeographicMapCellPosition geographicMapCellPosition);
+    public: void onMovement(TrackingEvent trackingEvent);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: void onMovementFound(TrackingEvent trackingEvent);
+
+    public: void initRangeHack();
 
                 //@Throws(Exception.constructor)
             
-    public fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
+    public: void processBuiltTick(AllBinaryLayerManager allBinaryLayerManager);
+
+    public: void teleportTo(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public left();
+    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition();
 
                 //@Throws(Exception.constructor)
             
-    public right();
-
-    public down();
-
-    public up();
-
-    public initInputProcessors();
+    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent);
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager);
-
-    public accelerate(BasicDecimal accelerate);
+    public: void left();
 
                 //@Throws(Exception.constructor)
             
-    fireAll(AllBinaryLayerManager layerManager);
+    public: void right();
 
-    public downgrade();
+    public: void down();
 
-    public upgrade();
+    public: void up();
 
-    groundFriction();
-
-                //@Throws(Exception.constructor)
-            
-    public trackTo(string reason);
+    public: void initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public trackToDXY(int32_t dx, int32_t dy);
+    public: void processInput(AllBinaryLayerManager layerManager);
+
+    public: void accelerate(BasicDecimal accelerate);
 
                 //@Throws(Exception.constructor)
             
-    bool turnTo(int32_t dx, int32_t dy, int32_t targetAngle);
+    protected: void fireAll(AllBinaryLayerManager layerManager);
 
-    handleDeltalX(int32_t dx, int32_t dy);
+    public: void downgrade();
 
-    handleDeltalY(int32_t dx, int32_t dy);
+    public: void upgrade();
 
-                //@Throws(Exception.constructor)
-            
-    trackToDXYTargetAngle(int32_t dx, int32_t dy, int32_t targetAngle);
+    protected: void groundFriction();
 
                 //@Throws(Exception.constructor)
             
-    fireOrMove();
-
-    public move();
-
-    public allStop();
-
-    public paint(Graphics graphics);
+    public: void trackTo(std::string reason);
 
                 //@Throws(Exception.constructor)
             
-    public onBuildingEvent(RTSLayerEvent event);
-
-    public VehicleProperties getVehicleProperties();
+    public: void trackToDXY(int32_t dx, int32_t dy);
 
                 //@Throws(Exception.constructor)
             
-    public damage(int32_t damage, int32_t damageType);
+    private: bool turnTo(int32_t dx, int32_t dy, int32_t targetAngle);
+
+    private: void handleDeltalX(int32_t dx, int32_t dy);
+
+    private: void handleDeltalY(int32_t dx, int32_t dy);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDamage(int32_t damageType);
+    private: void trackToDXYTargetAngle(int32_t dx, int32_t dy, int32_t targetAngle);
 
                 //@Throws(Exception.constructor)
             
-    public setDestroyed(bool destroyed);
+    protected: void fireOrMove();
 
-    public int32_t getLoad();
+    public: void move();
 
-                //@Throws(Exception.constructor)
-            
-    public clearResourceAnimation();
+    public: void allStop();
 
-                //@Throws(Exception.constructor)
-            
-    public setLoad(int32_t resource);
-
-    public addLoad(int32_t resource);
-
-    private: const CAPITAL_EVENT: CapitalEvent = new CapitalEvent(this);
+    public: void paint(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    public handleCost(PathFindingLayerInterface ownerLayer);
+    public: void onBuildingEvent(RTSLayerEvent event);
 
-    public SelectionHudPaintable createHudPaintable();
+    public: VehicleProperties getVehicleProperties();
 
-    public SelectionHudPaintable getHudPaintable();
+                //@Throws(Exception.constructor)
+            
+    public: void damage(int32_t damage, int32_t damageType);
 
-    public int32_t getType();
+                //@Throws(Exception.constructor)
+            
+    public: int32_t getDamage(int32_t damageType);
 
-    UnitWaypointBehavior getUnitWaypointBehavior();
+                //@Throws(Exception.constructor)
+            
+    public: void setDestroyed(bool destroyed);
 
-    public TrackingEvent getTrackingEvent();
+    public: int32_t getLoad();
 
-    public CaptionAnimationHelperBase getCaptionAnimationHelper();
+                //@Throws(Exception.constructor)
+            
+    public: void clearResourceAnimation();
 
-    public bool isSelfUpgradeable();
+                //@Throws(Exception.constructor)
+            
+    public: void setLoad(int32_t resource);
 
-    public int16_t getMaxResourceLoad();
+    public: void addLoad(int32_t resource);
+
+    private: const CapitalEvent CAPITAL_EVENT = CapitalEvent(this);
+
+                //@Throws(Exception.constructor)
+            
+    public: void handleCost(PathFindingLayerInterface ownerLayer);
+
+    public: SelectionHudPaintable createHudPaintable();
+
+    public: SelectionHudPaintable getHudPaintable();
+
+    public: int32_t getType();
+
+    protected: UnitWaypointBehavior getUnitWaypointBehavior();
+
+    public: TrackingEvent getTrackingEvent();
+
+    public: CaptionAnimationHelperBase getCaptionAnimationHelper();
+
+    public: bool isSelfUpgradeable();
+
+    public: int16_t getMaxResourceLoad();
 
 };
 

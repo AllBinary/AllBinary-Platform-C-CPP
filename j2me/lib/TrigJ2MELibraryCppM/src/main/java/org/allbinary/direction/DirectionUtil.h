@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_H
         #define ORG_ALLBINARY_DIRECTION_DIRECTIONUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -62,21 +64,20 @@
 class DirectionUtil
             : public Object
          {
-        
 
-    private: static const instance: DirectionUtil = new DirectionUtil();
+    private: static DirectionUtil instance() { return DirectionUtil(); }
 
-    public static DirectionUtil getInstance();
+    public: static DirectionUtil getInstance();
 
-    private: directionArray: std::vector<Angle> = new Array(10);
+    private: std::vector<Angle> directionArray = new Array(10);
 
-    private: directionArray2: std::vector<Angle> = new Array(10);
+    private: std::vector<Angle> directionArray2 = new Array(10);
 
-private constructor ();
+private: DirectionUtil();
 
-    public Angle getAngle(Direction direction);
+    public: Angle getAngle(Direction direction);
 
-    public Angle getFrameAngle(Direction direction);
+    public: Angle getFrameAngle(Direction direction);
 
 };
 

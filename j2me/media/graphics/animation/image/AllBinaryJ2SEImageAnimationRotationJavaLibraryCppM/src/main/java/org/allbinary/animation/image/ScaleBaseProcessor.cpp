@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -45,21 +47,20 @@
 class ScaleBaseProcessor
             : public Object
          {
-        
 
-    private: static const instance: ScaleBaseProcessor = new ScaleBaseProcessor();
+    private: static ScaleBaseProcessor instance() { return ScaleBaseProcessor(); }
 
-    public static ScaleBaseProcessor getInstance(){
+    public: static ScaleBaseProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScaleBaseProcessor.instance;
+                        return ScaleBaseProcessor::instance();
     
 }
 
 
-    public update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    public: void update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
 }
 
 

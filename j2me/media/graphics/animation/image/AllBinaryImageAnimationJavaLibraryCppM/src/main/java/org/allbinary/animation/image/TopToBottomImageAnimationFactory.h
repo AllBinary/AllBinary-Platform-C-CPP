@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_TOPTOBOTTOMIMAGEANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -54,13 +56,12 @@
 #include "TopToBottomImageAnimation.h"
 
 class TopToBottomImageAnimationFactory: public BaseImageAnimationFactory {
-        
 
-public constructor (Image image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory animationBehaviorFactory);
+public: TopToBottomImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
 };
 

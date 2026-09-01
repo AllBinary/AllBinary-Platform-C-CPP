@@ -40,13 +40,12 @@
 #include "AnimationBehavior.h"
 
 class NullIndexedAnimation: public IndexedAnimation {
-        
 
-public constructor (AnimationBehavior animationBehavior);
+public: NullIndexedAnimation(AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
 };
 

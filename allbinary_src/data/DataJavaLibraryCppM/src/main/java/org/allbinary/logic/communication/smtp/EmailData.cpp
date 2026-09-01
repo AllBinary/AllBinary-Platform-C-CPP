@@ -42,28 +42,25 @@
 class EmailData
             : public Object
          {
-        
 
-    public static const SERVER: string = "EMAIL_SERVER";
+    public: static const std::string SERVER = "EMAIL_SERVER";
 
-    public static const NAME: string = "EMAIL_NAME";
+    public: static const std::string NAME = "EMAIL_NAME";
 
-    public static const FROM: string = "EMAIL_FROM";
+    public: static const std::string FROM = "EMAIL_FROM";
 
-    public static const TO: string = "EMAIL_TO";
+    public: static const std::string TO = "EMAIL_TO";
 
-    public static const CC: string = "EMAIL_CC";
+    public: static const std::string CC = "EMAIL_CC";
 
-    public static const BCC: string = "EMAIL_BCC";
+    public: static const std::string BCC = "EMAIL_BCC";
 
-    public static const SUBJECT: string = "EMAIL_SUBJECT";
+    public: static const std::string SUBJECT = "EMAIL_SUBJECT";
 
-    public static const CONTENT: string = "EMAIL_CONTENT";
+    public: static const std::string CONTENT = "EMAIL_CONTENT";
 
-private constructor (){
-
-            super();
-        }
+private: EmailData(){
+}
 
 
 };

@@ -45,17 +45,16 @@
 class TransformInfoTemplateData
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoTemplateData = new TransformInfoTemplateData();
+    private: static TransformInfoTemplateData instance() { return TransformInfoTemplateData(); }
 
-    public static TransformInfoTemplateData getInstance();
+    public: static TransformInfoTemplateData getInstance();
 
-private constructor ();
+private: TransformInfoTemplateData();
 
-    public const UNCRYPTED_EXTENSION: string = "xsl";
+    public: const std::string UNCRYPTED_EXTENSION = "xsl";
 
-    public const ENCRYPTED_EXTENSION: string = "abv";
+    public: const std::string ENCRYPTED_EXTENSION = "abv";
 
 };
 

@@ -49,17 +49,16 @@
 #include "AnimationBehavior.h"
 
 class NullRotationAnimation: public RotationAnimation {
-        
 
-    public static NullRotationAnimation createTotalAngle(AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
+    public: static NullRotationAnimation createTotalAngle(AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior);
 
-    public static NullRotationAnimation createQuarter(AnimationBehavior animationBehavior);
+    public: static NullRotationAnimation createQuarter(AnimationBehavior animationBehavior);
 
-protected constructor (AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior);
+protected: NullRotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
 };
 

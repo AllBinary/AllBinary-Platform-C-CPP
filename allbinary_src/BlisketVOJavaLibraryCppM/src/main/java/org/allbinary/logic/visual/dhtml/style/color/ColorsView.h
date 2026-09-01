@@ -69,25 +69,24 @@
 class ColorsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: const commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;
+    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
-    private: const HEXRADIX: int32_t = 16;
+    private: const int32_t HEXRADIX = 16;
 
-    private: const MAX: int32_t = 255;
+    private: const int32_t MAX = 255;
 
-    const delta: int32_t = 20;
+    const int32_t delta = 20;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Node getColorNode(Document document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex);
+public: ColorsView();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node getColorNode(Document document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex);
+
+                //@Throws(Exception.constructor)
+            
+    public: Node toXmlNode(Document document);
 
 };
 

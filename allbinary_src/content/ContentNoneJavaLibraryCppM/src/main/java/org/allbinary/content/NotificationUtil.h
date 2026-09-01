@@ -48,13 +48,12 @@
 class NotificationUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: NotificationUtil = new NotificationUtil();
+    private: static const NotificationUtil SINGLETON = NotificationUtil();
 
-    public static NotificationUtil getInstance();
+    public: static NotificationUtil getInstance();
 
-    public notify(Command command, string resource, string message);
+    public: void notify(Command command, std::string resource, std::string message);
 
 };
 

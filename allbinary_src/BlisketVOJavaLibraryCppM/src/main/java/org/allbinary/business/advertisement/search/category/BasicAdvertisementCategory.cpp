@@ -43,24 +43,21 @@
 class BasicAdvertisementCategory
             : public Object
         : public AdvertisementCategoryInterface {
-        
 
-    private: categoryId: string;
+    private: std::string categoryId;
 
-public constructor (string categoryId){
-
-            super();
-        this.categoryId= categoryId;
+public: BasicAdvertisementCategory(std::string categoryId){
+this->categoryId= categoryId;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.categoryId;
+                        return this->categoryId;
     
 }
 

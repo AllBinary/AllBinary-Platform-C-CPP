@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -50,33 +52,32 @@
 class InterfaceUtil
             : public Object
          {
-        
 
-    public static string viewAll(Function myClass, string lineBreak){
+    public: static std::string viewAll(Function myClass, std::string lineBreak){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    interfaces: std::vector<Function> = myClass!.getInterfaces()!;;
+    std::vector<Function> interfaces = myClass.getInterfaces();;
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
-stringBuffer!.append("Interfaces: ");
+stringBuffer.append("Interfaces: ");
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < interfaces.length; index++)
+    int32_t index = 0;index < interfaces.size(); index++)
         {
-stringBuffer!.append("Interface: ");
+stringBuffer.append("Interface: ");
     
-stringBuffer!.append(interfaces[index]!.getName());
+stringBuffer.append(interfaces[index]!.getName());
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 }
 
@@ -84,18 +85,16 @@ stringBuffer!.append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public static Function constructor(string interfaceName, std::vector<Function> interfaces){
+    public: static Function constructor(std::string interfaceName, std::vector<Function> interfaces){
 
-                        if(interfaceName != 
-                                    null
-                                 && interfaces != 
-                                    null
-                                 && interfaces.length > 0)
+                        if(true && interfaces != 
+                                    nullptr
+                                 && interfaces.size() > 0)
                         
                                     {
                                     
@@ -103,10 +102,10 @@ stringBuffer!.append(lineBreak);
 
 
                         for (
-    index: int32_t = 0;index < interfaces.length; index++)
+    int32_t index = 0;index < interfaces.size(); index++)
         {
 
-                        if(interfaces[index]!.getName()!.indexOf(interfaceName) >= 0)
+                        if(interfaces[index]!.getName().indexOf(interfaceName) >= 0)
                         
                                     {
                                     
@@ -132,16 +131,16 @@ stringBuffer!.append(lineBreak);
 }
 
 
-    public static bool isImplemented(Function clazz, any = {} anyType){
+    public: static bool isImplemented(Function clazz, Object* anyType){
 
-    classes: std::vector<Function> = anyType!.constructor.name.getInterfaces()!;;
+    std::vector<Function> classes = anyType->constructor.name.getInterfaces();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < classes.length; index++)
+    int32_t index = 0;index < classes.size(); index++)
         {
 
                         if(clazz.toString()!.compareTo(classes[index]!.getName()) == 0)
@@ -162,19 +161,19 @@ stringBuffer!.append(lineBreak);
 }
 
 
-    public static bool isImplemented(string className, any = {} anyType){
+    public: static bool isImplemented(std::string className, Object* anyType){
 
-    classes: std::vector<Function> = anyType!.constructor.name.getInterfaces()!;;
+    std::vector<Function> classes = anyType->constructor.name.getInterfaces();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < classes.length; index++)
+    int32_t index = 0;index < classes.size(); index++)
         {
 
-                        if(classes[index]!.getName()!.indexOf(className) == 0)
+                        if(classes[index]!.getName().indexOf(className) == 0)
                         
                                     {
                                     
@@ -197,31 +196,31 @@ stringBuffer!.append(lineBreak);
 }
 
 
-    public static string isImplementedView(Function clazz, any = {} anyType){
+    public: static std::string isImplementedView(Function clazz, Object* anyType){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    classes: std::vector<Function> = anyType!.constructor.name.getInterfaces()!;;
+    std::vector<Function> classes = anyType->constructor.name.getInterfaces();;
     
-stringBuffer!.append("isImplementedView: \n");
+stringBuffer.append("isImplementedView: \n");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < classes.length; index++)
+    int32_t index = 0;index < classes.size(); index++)
         {
-stringBuffer!.append(clazz.toString()!);
+stringBuffer.append(clazz.toString()!);
     
-stringBuffer!.append(" should be = ");
+stringBuffer.append(" should be = ");
     
-stringBuffer!.append(classes[index]!.getName());
+stringBuffer.append(classes[index]!.getName());
     
-stringBuffer!.append(classes[index]!.getName());
+stringBuffer.append(classes[index]!.getName());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
 }
 
@@ -229,15 +228,13 @@ stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InterfaceUtil(){
+}
 
 
 };

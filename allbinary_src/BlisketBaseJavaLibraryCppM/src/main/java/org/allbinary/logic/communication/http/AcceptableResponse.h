@@ -52,13 +52,12 @@
 class AcceptableResponse
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor (string candidate, string tagName, int32_t index);
+protected: AcceptableResponse(std::string candidate, std::string tagName, int32_t index);
 
 };
 

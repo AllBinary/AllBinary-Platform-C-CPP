@@ -54,53 +54,52 @@
 #include "GameInputProcessorInterface.h"
 
 class GameInputProcessorComposite: public PlayerGameInput {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const gameInputProcessorInterface: GameInputProcessorInterface;
+    private: GameInputProcessorInterface gameInputProcessorInterface;
 
-public constructor (string name, GameInputProcessorInterface gameInputProcessorInterface){
-            super(new BasicArrayListD(), new BasicArrayListD(),  -1);
+public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface gameInputProcessorInterface){
+            super(BasicArrayListD(), BasicArrayListD(),  -1);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.name= name;
+this->name= name;
     
-this.gameInputProcessorInterface= gameInputProcessorInterface;
+this->gameInputProcessorInterface= gameInputProcessorInterface;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public update(){
+    public: void update(){
 
         try {
             
-    list: BasicArrayList = this.getGameKeyEventList()!;;
+    BasicArrayList list = this->getGameKeyEventList();;
     
-this.gameInputProcessorInterface!.onInput(list);
+this->gameInputProcessorInterface.onInput(list);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.UPDATE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, e);
     
 }
 
 }
 
 
-    private: const NAME_LABEL: string = " GameInputProcessorInterface: ";
+    private: const std::string NAME_LABEL = " GameInputProcessorInterface: ";
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(super.toString())!.append(this.NAME_LABEL)!.append(this.name)!.toString();;
+                        return StringMaker().append(super.toString()).append(this->NAME_LABEL).append(this->name).toString();;
     
 }
 

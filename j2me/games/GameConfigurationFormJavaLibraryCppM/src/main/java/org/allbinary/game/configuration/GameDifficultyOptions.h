@@ -78,35 +78,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameDifficultyOptions: public CommandForm {
-        
 
-    private: const list: BasicArrayList;
+    private: BasicArrayList list;
 
-public constructor (CommandListener commandListener, string title, BasicArrayList list, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: GameDifficultyOptions(CommandListener commandListener, std::string title, BasicArrayList list, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public open();
+    public: void open();
 
-    public close();
-
-                //@Throws(Exception.constructor)
-            
-    public save();
-
-    public initCommands(CommandListener cmdListener);
+    public: void close();
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void save();
 
-    add(BasicArrayList list, string name, int32_t option);
+    public: void initCommands(CommandListener cmdListener);
 
-    ChoiceGroup getChoiceGroup(BasicArrayList list, string name, int32_t option);
+                //@Throws(Exception.constructor)
+            
+    public: void update();
 
-    public setSelectedId(int32_t id);
+    private: void add(BasicArrayList list, std::string name, int32_t option);
 
-    public int32_t getSelectedId();
+    private: ChoiceGroup getChoiceGroup(BasicArrayList list, std::string name, int32_t option);
 
-    public int32_t getSelectedText();
+    public: void setSelectedId(int32_t id);
+
+    public: int32_t getSelectedId();
+
+    public: int32_t getSelectedText();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHUTIL_H
         #define VIEWS_GENERIC_INVENTORY_INVENTORYSEARCHUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -146,27 +148,26 @@
 class InventorySearchUtil
             : public Object
          {
-        
 
-    private: static const instance: InventorySearchUtil = new InventorySearchUtil();
+    private: static InventorySearchUtil instance() { return InventorySearchUtil(); }
 
-    public static InventorySearchUtil getInstance();
+    public: static InventorySearchUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public Vector getBasicItemIdColumn(SearchRequest searchRequest);
+    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    string getNoResults(TransformDocumentInterface viewDocumentInterface, Node inventoryNode);
+    public: Vector getBasicItemIdColumn(SearchRequest searchRequest);
 
-    public std::vector<string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, Vector column);
+                //@Throws(Exception.constructor)
+            
+    private: std::string getNoResults(TransformDocumentInterface viewDocumentInterface, Node inventoryNode);
+
+    public: std::vector<std::string> search(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, Vector column);
 
 };
 

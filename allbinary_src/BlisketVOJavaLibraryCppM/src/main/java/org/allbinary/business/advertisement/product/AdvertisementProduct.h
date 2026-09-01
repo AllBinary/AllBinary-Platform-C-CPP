@@ -49,25 +49,24 @@
 class AdvertisementProduct
             : public Object
         : public AdvertisementProductInterface {
-        
 
-    private: type: string;
+    private: std::string type;
 
-    private: link: string;
+    private: std::string link;
 
-    private: number: int32_t= 0;
+    private: int32_t number= 0;
 
-    private: constraint: TwoDimensionalConstraintInterface;
+    private: TwoDimensionalConstraintInterface constraint;
 
-public constructor ();
+public: AdvertisementProduct();
 
-    public string getType();
+    public: std::string getType();
 
-    public string getLink();
+    public: std::string getLink();
 
-    public int32_t getNumber();
+    public: int32_t getNumber();
 
-    public TwoDimensionalConstraintInterface getTwoDimensionalConstraint();
+    public: TwoDimensionalConstraintInterface getTwoDimensionalConstraint();
 
 };
 

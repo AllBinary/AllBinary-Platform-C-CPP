@@ -42,24 +42,21 @@
 class FrictionData
             : public Object
          {
-        
 
-    private: static const FRICTION_DENOMINATOR: int32_t = 100;
+    private: static const int32_t FRICTION_DENOMINATOR = 100;
 
-    public static int32_t getFrictionDenominator(){
+    public: static int32_t getFrictionDenominator(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FrictionData.FRICTION_DENOMINATOR;
+                        return FrictionData::FRICTION_DENOMINATOR;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: FrictionData(){
+}
 
 
 };

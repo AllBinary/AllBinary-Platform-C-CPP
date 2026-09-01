@@ -40,15 +40,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InitException: public Exception {
-        
 
-public constructor (){
-
-            super();
-        }
+public: InitException(){
+}
 
 
-public constructor (string msg){
+public: InitException(std::string msg){
             super(msg);
                     
 

@@ -45,9 +45,8 @@
 class HtmlResetInput
             : public Object
          {
-        
 
-public constructor ();
+public: HtmlResetInput();
 
 };
 

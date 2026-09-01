@@ -43,25 +43,24 @@
 class PlayerTypesFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: PlayerTypesFactory = new PlayerTypesFactory();
+    private: static const PlayerTypesFactory SINGLETON = PlayerTypesFactory();
 
-    public static PlayerTypesFactory getInstance(){
+    public: static PlayerTypesFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlayerTypesFactory.SINGLETON;
+                        return PlayerTypesFactory::SINGLETON;
     
 }
 
 
-    public const PLAYER_TYPE_ONE: PlayerType = new PlayerType("Player Type One", 0);
+    public: const PlayerType PLAYER_TYPE_ONE = PlayerType("Player Type One", 0);
 
-    public const PLAYER_TYPE_TWO: PlayerType = new PlayerType("Player Type Two", 1);
+    public: const PlayerType PLAYER_TYPE_TWO = PlayerType("Player Type Two", 1);
 
-    public const PLAYER_TYPE_THREE: PlayerType = new PlayerType("Player Type Three", 2);
+    public: const PlayerType PLAYER_TYPE_THREE = PlayerType("Player Type Three", 2);
 
 };
 

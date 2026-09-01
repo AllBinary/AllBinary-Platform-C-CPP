@@ -42,12 +42,9 @@
 class HtmlButton
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: HtmlButton(){
+}
 
 
 };

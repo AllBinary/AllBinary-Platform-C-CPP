@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -93,53 +95,52 @@
 class ImageUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageUtil = new ImageUtil();
+    private: static ImageUtil instance() { return ImageUtil(); }
 
-    public static ImageUtil getInstance();
+    public: static ImageUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: IIOIMAGE_POOL_NAME: string = "IIOIMAGE_POOL_NAME";
+    private: std::string IIOIMAGE_POOL_NAME = "IIOIMAGE_POOL_NAME";
 
-    private: const CREATE_BUFFERED_IMAGE: string = "createBufferedImage";
+    private: const std::string CREATE_BUFFERED_IMAGE = "createBufferedImage";
 
-private constructor ();
+private: ImageUtil();
 
-    public org.eclipse.swt.graphics.Image create(int32_t width, int32_t height);
-
-                //@Throws(Exception.constructor)
-            
-    public std::vector<org.eclipse.swt.graphics.Image> createBufferedImage(std::vector<org.eclipse.swt.graphics.Image> bufferedImageArray, int32_t percent, bool scale);
+    public: org::eclipse::swt::graphics::Image create(int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<org.eclipse.swt.graphics.Image> createBufferedImage2(std::vector<org.eclipse.swt.graphics.Image> bufferedImageArray, float percent, bool scale);
+    public: std::vector<org::eclipse::swt::graphics::Image> createBufferedImage(std::vector<org::eclipse::swt::graphics::Image> bufferedImageArray, int32_t percent, bool scale);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<org.eclipse.swt.graphics.Image> createBufferedImage3(std::vector<org.eclipse.swt.graphics.Image> bufferedImageArray, int32_t width, int32_t height, bool scale);
+    public: std::vector<org::eclipse::swt::graphics::Image> createBufferedImage2(std::vector<org::eclipse::swt::graphics::Image> bufferedImageArray, float percent, bool scale);
 
                 //@Throws(Exception.constructor)
             
-    public org.eclipse.swt.graphics.Image createBufferedImage4(org.eclipse.swt.graphics.Image bufferedImage, int32_t newWidth, int32_t newHeight);
+    public: std::vector<org::eclipse::swt::graphics::Image> createBufferedImage3(std::vector<org::eclipse::swt::graphics::Image> bufferedImageArray, int32_t width, int32_t height, bool scale);
 
                 //@Throws(Exception.constructor)
             
-    public org.eclipse.swt.graphics.Image createBufferedImage5(org.eclipse.swt.graphics.Image bufferedImage, int32_t newWidth, int32_t newHeight, bool scale);
+    public: org::eclipse::swt::graphics::Image createBufferedImage4(org::eclipse::swt::graphics::Image bufferedImage, int32_t newWidth, int32_t newHeight);
 
                 //@Throws(Exception.constructor)
             
-    public org.eclipse.swt.graphics.Image createBufferedImage6(org.eclipse.swt.graphics.Image bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate);
+    public: org::eclipse::swt::graphics::Image createBufferedImage5(org::eclipse::swt::graphics::Image bufferedImage, int32_t newWidth, int32_t newHeight, bool scale);
 
-    public Canvas drawTransformedImage(org.eclipse.swt.graphics.Image image, Composite parent, int32_t dx, int32_t dy, int32_t width, int32_t height);
+                //@Throws(Exception.constructor)
+            
+    public: org::eclipse::swt::graphics::Image createBufferedImage6(org::eclipse::swt::graphics::Image bufferedImage, int32_t newWidth, int32_t newHeight, bool scale, bool allowTranslate);
 
-    public string toString(org.eclipse.swt.graphics.Image bufferedImage);
+    public: Canvas drawTransformedImage(org::eclipse::swt::graphics::Image image, Composite parent, int32_t dx, int32_t dy, int32_t width, int32_t height);
+
+    public: std::string toString(org::eclipse::swt::graphics::Image bufferedImage);
 
 };
 

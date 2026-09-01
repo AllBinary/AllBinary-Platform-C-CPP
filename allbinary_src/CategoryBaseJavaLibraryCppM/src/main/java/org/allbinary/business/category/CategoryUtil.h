@@ -73,15 +73,14 @@
 class CategoryUtil
             : public Object
          {
-        
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static int32_t getPathLevel(AbPath categoryPath);
+    public: static int32_t getPathLevel(AbPath categoryPath);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static string getNameFromNode(Node node);
+    public: static std::string getNameFromNode(Node node);
 
-private constructor ();
+private: CategoryUtil();
 
 };
 

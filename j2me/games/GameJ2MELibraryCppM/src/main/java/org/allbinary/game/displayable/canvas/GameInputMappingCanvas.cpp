@@ -118,140 +118,139 @@
         #include "GameCommandCanvas.h"
 #include "GameInputMappingInstructionsCanvas.h"
 
-class GameInputMappingCanvas: public GameCommandCanvas: public InputMappingInterface {
-        
+class GameInputMappingCanvas: public GameCommandCanvas, public InputMappingInterface {
 
-    public static const NAME: string = "GameInputMappingCanvas";
+    public: static const std::string NAME = "GameInputMappingCanvas";
 
-    public static const DISPLAY: Command = new Command("Controls", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: static const Command DISPLAY = Command("Controls", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    public static const DEFAULT: Command = new Command("Default", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: static const Command DEFAULT = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    private: const paintable: ProcessPaintable;
+    private: ProcessPaintable paintable;
 
-    private: const helpPaintable: InputMappingHelpPaintable;
+    private: InputMappingHelpPaintable helpPaintable;
 
-    const colorFillPaintable: ColorFillBasePaintable;
+    protected: ColorFillBasePaintable colorFillPaintable;
 
-    private: const inputMapping: PersistentInputMapping;
+    private: PersistentInputMapping inputMapping;
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: selectedGameKey: GameKey = this.NONE;
+    private: GameKey selectedGameKey = this->NONE;
 
-    private: selectedInput: Input = this.NONE;
+    private: Input selectedInput = this->NONE;
 
-public constructor (AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable){
-            super(commandListener, GameInputMappingCanvas.NAME, allBinaryGameLayerManager!.getBackgroundBasicColor(), allBinaryGameLayerManager!.getForegroundBasicColor());
+public: GameInputMappingCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, HelpPaintable helpPaintable){
+            super(commandListener, GameInputMappingCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                         if(helpPaintable == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Help Paintable Exception");
+                            throw Exception("Help Paintable Exception");
                     
 
                                     }
                                 
-this.abeClientInformation= abeClientInformation;
+this->abeClientInformation= abeClientInformation;
     
-this.helpPaintable= helpPaintable as InputMappingHelpPaintable;
+this->helpPaintable= helpPaintable as InputMappingHelpPaintable;
     
-this.inputMapping= PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance();
+this->inputMapping= PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance();
     
-this.paintable= new ProcessPaintable();
+this->paintable= ProcessPaintable();
     
-this.colorFillPaintable= ColorFillPaintableFactory.getInstance()!.getInstance(allBinaryGameLayerManager!.getBackgroundBasicColor(), false);
+this->colorFillPaintable= ColorFillPaintableFactory::getInstance().getInstance(allBinaryGameLayerManager.getBackgroundBasicColor(), false);
     
 }
 
 
-    public close(){
+    public: void close(){
 super.close();
     
-this.paintable.process();
+this->paintable.process();
     
-this.selectedGameKey= this.NONE;
+this->selectedGameKey= this->NONE;
     
-this.selectedInput= this.NONE;
+this->selectedInput= this->NONE;
     
-this.update();
-    
-}
-
-
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
-    
-this.addCommand(GameCommandsFactory.getInstance()!.CLOSE_AND_SHOW_GAME_CANVAS);
-    
-this.addCommand(GameInputMappingCanvas.DEFAULT);
-    
-this.addCommand(GameInputMappingInstructionsCanvas.DISPLAY);
-    
-this.setCommandListener(cmdListener);
+this->update();
     
 }
 
 
-    public keyPressed(int32_t keyCode){
-this.keyPressedByDevice(keyCode, 0);
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
+    
+this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
+    
+this->addCommand(GameInputMappingCanvas::DEFAULT);
+    
+this->addCommand(GameInputMappingInstructionsCanvas::DISPLAY);
+    
+this->setCommandListener(cmdListener);
     
 }
 
 
-    public keyReleased(int32_t keyCode){
-this.keyReleasedByDevice(keyCode, 0);
+    public: void keyPressed(int32_t keyCode){
+this->keyPressedByDevice(keyCode, 0);
     
 }
 
 
-    public keyRepeated(int32_t keyCode){
-this.keyRepeatedByDevice(keyCode, 0);
+    public: void keyReleased(int32_t keyCode){
+this->keyReleasedByDevice(keyCode, 0);
     
 }
 
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId){
-this.addGameKey(keyCode, false);
+    public: void keyRepeated(int32_t keyCode){
+this->keyRepeatedByDevice(keyCode, 0);
+    
+}
+
+
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+this->addGameKey(keyCode, false);
     
 super.keyPressedByDevice(keyCode, 0);
     
 }
 
 
-    private: const inputFactory: InputFactory = InputFactory.getInstance()!;
+    private: const InputFactory inputFactory = InputFactory::getInstance();
 
-    addGameKey(int32_t keyCode, bool repeated){
+    private: void addGameKey(int32_t keyCode, bool repeated){
 
         try {
-            this.logUtil!.putF(new StringMaker().append("Raw Device Key Code: ")!.append(Integer.toHexString(keyCode))!.toString(), this, this.gameInputStrings!.ADD_KEY_EVENT);
+            this->logUtil.putF(StringMaker().append("Raw Device Key Code: ").append(Integer::toHexString(keyCode)).toString(), this, this->gameInputStrings.ADD_KEY_EVENT);
     
 
-    gameKey: GameKey = this.inputToGameKeyMapping!.getInstanceForCanvas(this, keyCode)!;;
+    GameKey gameKey = this->inputToGameKeyMapping.getInstanceForCanvas(this, keyCode);;
     
 
-    input: Input = this.inputFactory!.getInstanceById(keyCode)!;;
+    Input input = this->inputFactory.getInstanceById(keyCode);;
     
-this.processInputMapping(gameKey, input);
+this->processInputMapping(gameKey, input);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Key Event Error", this, this.gameInputStrings!.ADD_KEY_EVENT, e);
+this->logUtil.put("Key Event Error", this, this->gameInputStrings.ADD_KEY_EVENT, e);
     
 }
 
@@ -260,31 +259,31 @@ this.logUtil!.put("Key Event Error", this, this.gameInputStrings!.ADD_KEY_EVENT,
 
                 //@Throws(Exception.constructor)
             
-    public processInputMapping(GameKey gameKey, Input input){
+    public: void processInputMapping(GameKey gameKey, Input input){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Start Passed GameKey: ");
+stringBuffer.append("Start Passed GameKey: ");
     
-stringBuffer!.append(this.stringUtil!.toString(gameKey));
+stringBuffer.append(this->stringUtil.toString(gameKey));
     
-stringBuffer!.append(" Input: ");
+stringBuffer.append(" Input: ");
     
-stringBuffer!.append(this.stringUtil!.toString(input));
+stringBuffer.append(this->stringUtil.toString(input));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.PROCESS);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.PROCESS);
     
 
-                        if(this.selectedGameKey != this.NONE)
+                        if(this->selectedGameKey != this->NONE)
                         
                                     {
-                                    this.gameActionCrud(gameKey, input);
+                                    this->gameActionCrud(gameKey, input);
     
 
                                     }
                                 
                         else {
-                            this.setSelectedAction(gameKey);
+                            this->setSelectedAction(gameKey);
     
 
                         }
@@ -292,63 +291,63 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.PROCESS);
 }
 
 
-    setSelectedAction(GameKey gameKey){
-this.logUtil!.putF(new StringMaker().append("Selected GameKey: ")!.append(this.stringUtil!.toString(gameKey))!.toString(), this, "setSelectedAction");
+    private: void setSelectedAction(GameKey gameKey){
+this->logUtil.putF(StringMaker().append("Selected GameKey: ").append(this->stringUtil.toString(gameKey)).toString(), this, "setSelectedAction");
     
-this.selectedGameKey= gameKey;
+this->selectedGameKey= gameKey;
     
-this.selectedInput= this.NONE;
+this->selectedInput= this->NONE;
     
-this.helpPaintable!.update(this.selectedGameKey, this.selectedInput);
+this->helpPaintable.update(this->selectedGameKey, this->selectedInput);
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    gameActionCrud(GameKey gameKey, Input input){
+    private: void gameActionCrud(GameKey gameKey, Input input){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Start GameKey: ");
+stringBuffer.append("Start GameKey: ");
     
-stringBuffer!.append(this.stringUtil!.toString(this.selectedGameKey));
+stringBuffer.append(this->stringUtil.toString(this->selectedGameKey));
     
-stringBuffer!.append(" Input: ");
+stringBuffer.append(" Input: ");
     
-stringBuffer!.append(this.stringUtil!.toString(this.selectedInput));
+stringBuffer.append(this->stringUtil.toString(this->selectedInput));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "gameActionCrud");
+this->logUtil.putF(stringBuffer.toString(), this, "gameActionCrud");
     
 
-                        if(this.selectedInput == this.NONE)
+                        if(this->selectedInput == this->NONE)
                         
                                     {
                                     
-    list: BasicArrayList = this.inputMapping!.getInputMapping()!.getMappedInput(this.selectedGameKey)!;;
+    BasicArrayList list = this->inputMapping.getInputMapping().getMappedInput(this->selectedGameKey);;
     
 
-    isInputAlreadyMappedToSelectedAction: bool = list.contains(input)!;;
+    bool isInputAlreadyMappedToSelectedAction = list.contains(input);;
     
 
                         if(isInputAlreadyMappedToSelectedAction)
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append("Already Mapped Input: ")!.append(this.stringUtil!.toString(input))!.toString(), this, "gameActionCrud");
+                                    this->logUtil.putF(StringMaker().append("Already Mapped Input: ").append(this->stringUtil.toString(input)).toString(), this, "gameActionCrud");
     
-this.selectedInput= input;
+this->selectedInput= input;
     
-this.helpPaintable!.update(this.selectedGameKey, this.selectedInput);
+this->helpPaintable.update(this->selectedGameKey, this->selectedInput);
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 
                                     }
                                 
                         else {
-                            this.addNewMapping(gameKey, input);
+                            this->addNewMapping(gameKey, input);
     
 
                         }
@@ -357,16 +356,16 @@ this.repaintBehavior!.onChangeRepaint(this);
                                     }
                                 
                              else 
-                        if(this.inputMapping!.isDelete(input))
+                        if(this->inputMapping.isDelete(input))
                         
                                     {
-                                    this.deleteCurrentMapping();
+                                    this->deleteCurrentMapping();
     
 
                                     }
                                 
                         else {
-                            this.setSelectedAction(gameKey);
+                            this->setSelectedAction(gameKey);
     
 
                         }
@@ -376,45 +375,45 @@ this.repaintBehavior!.onChangeRepaint(this);
 
                 //@Throws(Exception.constructor)
             
-    addNewMapping(GameKey gameKey, Input input){
+    private: void addNewMapping(GameKey gameKey, Input input){
 
-    METHOD_NAME: string = "addNewMapping";;
+    std::string METHOD_NAME = "addNewMapping";;
     
-this.logUtil!.putF(this.commonStrings!.START, this, METHOD_NAME);
-    
-
-    isInputAlreadyMapped: bool = this.inputMapping!.getInputMapping()!.isMapped(input)!;;
+this->logUtil.putF(this->commonStrings.START, this, METHOD_NAME);
     
 
-                        if(!isInputAlreadyMapped && !this.inputMapping!.isSystemInput(input))
+    bool isInputAlreadyMapped = this->inputMapping.getInputMapping().isMapped(input);;
+    
+
+                        if(!isInputAlreadyMapped && !this->inputMapping.isSystemInput(input))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Add Key Mapping : GameKey: ");
+stringBuffer.append("Add Key Mapping : GameKey: ");
     
-stringBuffer!.append(this.stringUtil!.toString(this.selectedGameKey));
+stringBuffer.append(this->stringUtil.toString(this->selectedGameKey));
     
-stringBuffer!.append(" Input: ");
+stringBuffer.append(" Input: ");
     
-stringBuffer!.append(this.stringUtil!.toString(this.selectedInput));
+stringBuffer.append(this->stringUtil.toString(this->selectedInput));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
     
-this.inputMapping!.getInputMapping()!.add(this.selectedGameKey, input);
+this->inputMapping.getInputMapping().add(this->selectedGameKey, input);
     
-this.selectedInput= input;
+this->selectedInput= input;
     
-this.update();
+this->update();
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Unable to add Mapping since one already exists or is MENU, HOME, or BACK key and setting selected action to what it is already mapped to", this, METHOD_NAME);
+                            this->logUtil.putF("Unable to add Mapping since one already exists or is MENU, HOME, or BACK key and setting selected action to what it is already mapped to", this, METHOD_NAME);
     
-this.setSelectedAction(gameKey);
+this->setSelectedAction(gameKey);
     
 
                         }
@@ -424,43 +423,43 @@ this.setSelectedAction(gameKey);
 
                 //@Throws(Exception.constructor)
             
-    deleteCurrentMapping(){
+    private: void deleteCurrentMapping(){
 
-    METHOD_NAME: string = "deleteCurrentMapping";;
+    std::string METHOD_NAME = "deleteCurrentMapping";;
     
 
-    list: BasicArrayList = this.inputMapping!.getInputMapping()!.getMappedInput(this.selectedGameKey)!;;
+    BasicArrayList list = this->inputMapping.getInputMapping().getMappedInput(this->selectedGameKey);;
     
 
                         if(list.size() > 1)
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Start GameKey: ");
+stringBuffer.append("Start GameKey: ");
     
-stringBuffer!.append("Remove Key Mapping: GameKey: ");
+stringBuffer.append("Remove Key Mapping: GameKey: ");
     
-stringBuffer!.append(this.stringUtil!.toString(this.selectedGameKey));
+stringBuffer.append(this->stringUtil.toString(this->selectedGameKey));
     
-stringBuffer!.append(" Input: ");
+stringBuffer.append(" Input: ");
     
-stringBuffer!.append(this.stringUtil!.toString(this.selectedInput));
+stringBuffer.append(this->stringUtil.toString(this->selectedInput));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, METHOD_NAME);
+this->logUtil.putF(stringBuffer.toString(), this, METHOD_NAME);
     
-this.inputMapping!.getInputMapping()!.remove(this.selectedGameKey, this.selectedInput);
+this->inputMapping.getInputMapping().remove(this->selectedGameKey, this->selectedInput);
     
-this.selectedInput= this.NONE;
+this->selectedInput= this->NONE;
     
-this.update();
+this->update();
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Can't Remove Last Key Mapping", this, METHOD_NAME);
+                            this->logUtil.putF("Can't Remove Last Key Mapping", this, METHOD_NAME);
     
 
                         }
@@ -470,34 +469,34 @@ this.update();
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(){
-this.inputMapping!.setDefault(this.abeClientInformation);
+    public: void setDefault(){
+this->inputMapping.setDefault(this->abeClientInformation);
     
-this.helpPaintable!.update(this.NONE, this.NONE);
+this->helpPaintable.update(this->NONE, this->NONE);
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(){
-this.inputMapping!.update(this.abeClientInformation);
+    public: void update(){
+this->inputMapping.update(this->abeClientInformation);
     
-this.helpPaintable!.update(this.selectedGameKey, this.selectedInput);
+this->helpPaintable.update(this->selectedGameKey, this->selectedInput);
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 }
 
 
-    public paint(Graphics graphics){
-this.colorFillPaintable!.paint(graphics);
+    public: void paint(Graphics graphics){
+this->colorFillPaintable.paint(graphics);
     
-this.helpPaintable!.paint(graphics);
+this->helpPaintable.paint(graphics);
     
-this.paintable.paint(graphics);
+this->paintable.paint(graphics);
     
 super.paint(graphics);
     

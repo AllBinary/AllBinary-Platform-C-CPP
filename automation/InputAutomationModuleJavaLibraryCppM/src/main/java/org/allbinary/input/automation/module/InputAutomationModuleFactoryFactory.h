@@ -85,23 +85,22 @@
 class InputAutomationModuleFactoryFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: defaultListModelHelper: DefaultListModelHelper;
+    private: DefaultListModelHelper defaultListModelHelper;
 
-    private: helpSetListenerInterface: HelpSetListener;
+    private: HelpSetListener helpSetListenerInterface;
 
-public constructor (InputAutomationModuleConfigurations inputAutomationModuleConfigurations, HelpSetListener helpSetListenerInterface);
+public: InputAutomationModuleFactoryFactory(InputAutomationModuleConfigurations inputAutomationModuleConfigurations, HelpSetListener helpSetListenerInterface);
 
-    add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    private: void add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
 
-    public ListModel getListModel();
+    public: ListModel getListModel();
 
-    public InputAutomationModuleFactoryInterface getInstance(string moduleName);
+    public: InputAutomationModuleFactoryInterface getInstance(std::string moduleName);
 
 };
 

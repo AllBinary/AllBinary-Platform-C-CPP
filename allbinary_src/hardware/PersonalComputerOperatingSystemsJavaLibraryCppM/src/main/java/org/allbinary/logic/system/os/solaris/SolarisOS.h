@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SolarisOS: public GenericOperatingSystem {
-        
 
-public constructor ();
+public: SolarisOS();
 
-    public bool isAutoHide();
+    public: bool isAutoHide();
 
 };
 

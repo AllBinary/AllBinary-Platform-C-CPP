@@ -39,7 +39,6 @@
         #include "GameNotificationHud.h"
 
 class GameNotificationHudCompositeInterface {
-        
 
     GameNotificationHud getGameNotificationHud()
 

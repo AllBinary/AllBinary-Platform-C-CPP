@@ -70,62 +70,59 @@
 class ValidatorBase
             : public Object
         : public ValidatorBaseInterface {
-        
 
-    private: static const instance: ValidatorBase = new ValidatorBase();
+    private: static ValidatorBase instance() { return ValidatorBase(); }
 
-    public static ValidatorBase getInstance(){
+    public: static ValidatorBase getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ValidatorBase.instance;
+                        return ValidatorBase::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: ValidatorBase(){
+}
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return BooleanFactory::getInstance().TRUE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public Hashtable<any, any> toHashtable(){
+    public: Hashtable<any, any> toHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 
 
-    public BasicArrayList toList(){
+    public: BasicArrayList toList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil.getInstance()!.getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
     
 }
 

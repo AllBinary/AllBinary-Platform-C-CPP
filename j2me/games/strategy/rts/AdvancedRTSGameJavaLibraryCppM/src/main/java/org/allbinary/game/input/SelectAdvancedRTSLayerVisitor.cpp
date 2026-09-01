@@ -66,59 +66,56 @@
         #include "SelectedRTSLayersPlayerGameInput.h"
 
 class SelectAdvancedRTSLayerVisitor: public Visitor {
-        
 
-    private: const selectedRTSLayersPlayerGameInput: SelectedRTSLayersPlayerGameInput;
+    private: SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput;
 
-public constructor (SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
-
-            super();
-        this.selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
+public: SelectAdvancedRTSLayerVisitor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+this->selectedRTSLayersPlayerGameInput= selectedRTSLayersPlayerGameInput;
     
 }
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
-    selectedLayer: CollidableDestroyableDamageableLayer = anyType as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer selectedLayer = anyType as CollidableDestroyableDamageableLayer;;
     
 
-                        if(selectedLayer != CollidableDestroyableDamageableLayer.getNullInstance() && selectedLayer!.getType() == BuildingLayer.getStaticType())
+                        if(selectedLayer != CollidableDestroyableDamageableLayer::getNullInstance() && selectedLayer.getType() == BuildingLayer::getStaticType())
                         
                                     {
                                     
-    rtsGameLayer: AdvancedRTSGameLayer = selectedLayer as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsGameLayer = selectedLayer as AdvancedRTSGameLayer;;
     
 
-    assignWaypointsUtil: AssignWaypointsUtil = AssignWaypointsUtil.getInstance()!;;
+    AssignWaypointsUtil assignWaypointsUtil = AssignWaypointsUtil::getInstance();;
     
 
-    list: BasicArrayList = this.selectedRTSLayersPlayerGameInput!.getSelectedBasicArrayList()!;;
+    BasicArrayList list = this->selectedRTSLayersPlayerGameInput.getSelectedBasicArrayList();;
     
 
-    currentRTSLayer: RTSLayer;;
+    RTSLayer currentRTSLayer;;
     
 
-    unitLayer: UnitLayer;;
+    UnitLayer unitLayer;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 currentRTSLayer= list.get(index) as RTSLayer;
     
 
-                        if(currentRTSLayer!.getType() == UnitLayer.getStaticType())
+                        if(currentRTSLayer.getType() == UnitLayer::getStaticType())
                         
                                     {
                                     unitLayer= currentRTSLayer as UnitLayer;
     
-unitLayer!.setParentLayer(rtsGameLayer);
+unitLayer.setParentLayer(rtsGameLayer);
     
-assignWaypointsUtil!.set(unitLayer, rtsGameLayer);
+assignWaypointsUtil.set(unitLayer, rtsGameLayer);
     
 
                                     }
@@ -132,7 +129,7 @@ assignWaypointsUtil!.set(unitLayer, rtsGameLayer);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 

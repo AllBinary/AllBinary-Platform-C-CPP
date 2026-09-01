@@ -54,17 +54,16 @@
 #include "DemoGameMidletEvent.h"
 
 class DemoGameMidletEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: DemoGameMidletEventHandler = new DemoGameMidletEventHandler();
+    private: static const DemoGameMidletEventHandler gameKeyEventHandler = DemoGameMidletEventHandler();
 
-    public static DemoGameMidletEventHandler getInstance();
+    public: static DemoGameMidletEventHandler getInstance();
 
-private constructor ();
+private: DemoGameMidletEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

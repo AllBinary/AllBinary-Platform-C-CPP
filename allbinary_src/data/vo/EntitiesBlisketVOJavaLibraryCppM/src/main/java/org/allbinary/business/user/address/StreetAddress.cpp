@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -84,184 +86,169 @@
 class StreetAddress
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: id: string;
+    private: std::string id;
 
-    private: name: string;
+    private: std::string name;
 
-    private: street: string;
+    private: std::string street;
 
-    private: city: string;
+    private: std::string city;
 
-    private: state: string;
+    private: std::string state;
 
-    private: code: string;
+    private: std::string code;
 
-    private: country: string;
+    private: std::string country;
 
-    private: isDefault: bool = false;
+    private: bool isDefault = false;
 
-public constructor (){
-
-            super();
-        }
+public: StreetAddress(){
+}
 
 
-public constructor (Node node){
+public: StreetAddress(Node node){
 
-            super();
-        
-    nameNode: Node = DomSearchHelper.getNode(StreetAddressData.NAME, node.getChildNodes())!;;
+    Node nameNode = DomSearchHelper::getNode(StreetAddressData::NAME, node.getChildNodes());;
     
-this.name= DomNodeHelper.getTextNodeValue(nameNode);
+this->name= DomNodeHelper::getTextNodeValue(nameNode);
     
 
-    streetNode: Node = DomSearchHelper.getNode(StreetAddressData.STREET, node.getChildNodes())!;;
+    Node streetNode = DomSearchHelper::getNode(StreetAddressData::STREET, node.getChildNodes());;
     
-this.street= DomNodeHelper.getTextNodeValue(streetNode);
-    
-
-    cityNode: Node = DomSearchHelper.getNode(StreetAddressData.CITY, node.getChildNodes())!;;
-    
-this.city= DomNodeHelper.getTextNodeValue(cityNode);
+this->street= DomNodeHelper::getTextNodeValue(streetNode);
     
 
-    stateNode: Node = DomSearchHelper.getNode(StreetAddressData.STATE, node.getChildNodes())!;;
+    Node cityNode = DomSearchHelper::getNode(StreetAddressData::CITY, node.getChildNodes());;
     
-this.state= DomNodeHelper.getTextNodeValue(stateNode);
-    
-
-    codeNode: Node = DomSearchHelper.getNode(StreetAddressData.CODE, node.getChildNodes())!;;
-    
-this.code= DomNodeHelper.getTextNodeValue(codeNode);
+this->city= DomNodeHelper::getTextNodeValue(cityNode);
     
 
-    countryNode: Node = DomSearchHelper.getNode(StreetAddressData.COUNTRY, node.getChildNodes())!;;
+    Node stateNode = DomSearchHelper::getNode(StreetAddressData::STATE, node.getChildNodes());;
     
-this.country= DomNodeHelper.getTextNodeValue(countryNode);
+this->state= DomNodeHelper::getTextNodeValue(stateNode);
     
-this.log();
+
+    Node codeNode = DomSearchHelper::getNode(StreetAddressData::CODE, node.getChildNodes());;
+    
+this->code= DomNodeHelper::getTextNodeValue(codeNode);
+    
+
+    Node countryNode = DomSearchHelper::getNode(StreetAddressData::COUNTRY, node.getChildNodes());;
+    
+this->country= DomNodeHelper::getTextNodeValue(countryNode);
+    
+this->log();
     
 }
 
 
-public constructor (StreetAddress streetAddress){
-
-            super();
-        this.id= streetAddress!.getId();
+public: StreetAddress(StreetAddress streetAddress){
+this->id= streetAddress.getId();
     
-this.name= streetAddress!.getName();
+this->name= streetAddress.getName();
     
-this.street= streetAddress!.getStreet();
+this->street= streetAddress.getStreet();
     
-this.city= streetAddress!.getCity();
+this->city= streetAddress.getCity();
     
-this.state= streetAddress!.getState();
+this->state= streetAddress.getState();
     
-this.code= streetAddress!.getCode();
+this->code= streetAddress.getCode();
     
-this.country= streetAddress!.getCountry();
+this->country= streetAddress.getCountry();
     
-this.isDefault= streetAddress!.isDefault();
+this->isDefault= streetAddress.isDefault();
     
-this.log();
+this->log();
     
 }
 
 
-public constructor (HttpServletRequest request){
-
-            super();
-        this.setId(request.getParameter(StreetAddressData.ID));
+public: StreetAddress(HttpServletRequest request){
+this->setId(request.getParameter(StreetAddressData::ID));
     
-this.setName(request.getParameter(StreetAddressData.NAME));
+this->setName(request.getParameter(StreetAddressData::NAME));
     
-this.setStreet(request.getParameter(StreetAddressData.STREET));
+this->setStreet(request.getParameter(StreetAddressData::STREET));
     
-this.setCity(request.getParameter(StreetAddressData.CITY));
+this->setCity(request.getParameter(StreetAddressData::CITY));
     
-this.setState(request.getParameter(StreetAddressData.STATE));
+this->setState(request.getParameter(StreetAddressData::STATE));
     
-this.setCode(request.getParameter(StreetAddressData.CODE));
+this->setCode(request.getParameter(StreetAddressData::CODE));
     
-this.setCountry(request.getParameter(StreetAddressData.COUNTRY));
+this->setCountry(request.getParameter(StreetAddressData::COUNTRY));
     
-this.log();
+this->log();
     
 }
 
 
-public constructor (string name, string street, string city, string state, string code, string country){
-
-            super();
-        this.name= name;
+public: StreetAddress(std::string name, std::string street, std::string city, std::string state, std::string code, std::string country){
+this->name= name;
     
-this.street= street;
+this->street= street;
     
-this.city= city;
+this->city= city;
     
-this.state= state;
+this->state= state;
     
-this.code= code;
+this->code= code;
     
-this.country= country;
+this->country= country;
     
-this.log();
+this->log();
     
 }
 
 
-public constructor (HashMap<any, any> address){
-
-            super();
-        this.id= address.get(StreetAddressData.ID) as string;
+public: StreetAddress(HashMap<any, any> address){
+this->id= address.get(StreetAddressData::ID) as string;
     
-this.name= address.get(StreetAddressData.NAME) as string;
+this->name= address.get(StreetAddressData::NAME) as string;
     
-this.street= address.get(StreetAddressData.STREET) as string;
+this->street= address.get(StreetAddressData::STREET) as string;
     
-this.city= address.get(StreetAddressData.CITY) as string;
+this->city= address.get(StreetAddressData::CITY) as string;
     
-this.state= address.get(StreetAddressData.STATE) as string;
+this->state= address.get(StreetAddressData::STATE) as string;
     
-this.code= address.get(StreetAddressData.CODE) as string;
+this->code= address.get(StreetAddressData::CODE) as string;
     
-this.country= address.get(StreetAddressData.COUNTRY) as string;
+this->country= address.get(StreetAddressData::COUNTRY) as string;
     
 
-    def: string = address.get(StreetAddressData.DEFAULT) as string;;
+    std::string def = address.get(StreetAddressData::DEFAULT) as string;;
     
 
-                        if(def != 
-                                    null
-                                 && def.compareTo(StreetAddressData.DEFAULT) == 0)
+                        if(true && def.compareTo(StreetAddressData::DEFAULT) == 0)
                         
                                     {
-                                    this.isDefault= true;
+                                    this->isDefault= true;
     
 
                                     }
                                 
                         else {
-                            this.isDefault= false;
+                            this->isDefault= false;
     
 
                         }
                             
-this.log();
+this->log();
     
 }
 
 
-    log(){
+    private: void log(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Created Address: \n" +this.toHashMap(), this, "log");
+                                    this->logUtil.putF("Created Address: \n" +this->toHashMap(), this, "log");
     
 
                                     }
@@ -269,191 +256,153 @@ this.log();
 }
 
 
-    public setId(string id){
-this.id= id;
+    public: void setId(std::string id){
+this->id= id;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public setStreet(string value){
-this.street= value;
+    public: void setStreet(std::string value){
+this->street= value;
     
 }
 
 
-    public setCity(string value){
-this.city= value;
+    public: void setCity(std::string value){
+this->city= value;
     
 }
 
 
-    public setState(string value){
-this.state= value;
+    public: void setState(std::string value){
+this->state= value;
     
 }
 
 
-    public setCode(string value){
-this.code= value;
+    public: void setCode(std::string value){
+this->code= value;
     
 }
 
 
-    public setCountry(string value){
-this.country= value;
+    public: void setCountry(std::string value){
+this->country= value;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getStreet(){
+    public: std::string getStreet(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.street;
+                        return this->street;
     
 }
 
 
-    public string getCity(){
+    public: std::string getCity(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.city;
+                        return this->city;
     
 }
 
 
-    public string getState(){
+    public: std::string getState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.state;
+                        return this->state;
     
 }
 
 
-    public string getCode(){
+    public: std::string getCode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.code;
+                        return this->code;
     
 }
 
 
-    public string getCountry(){
+    public: std::string getCountry(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.country;
+                        return this->country;
     
 }
 
 
-    public string getId(){
+    public: std::string getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public bool isDefault(){
+    public: bool isDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isDefault;
+                        return this->isDefault;
     
 }
 
 
-    public Boolean isEmpty(){
+    public: Boolean isEmpty(){
 
-    EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(this.getName() == 
-                                    null
-                                 && this.getName()!.compareTo(EMPTY_STRING) == 0 && this.getStreet() == 
-                                    null
-                                 && this.getStreet()!.compareTo(EMPTY_STRING) == 0 && this.getCity() == 
-                                    null
-                                 && this.getCity()!.compareTo(EMPTY_STRING) == 0 && this.getState() == 
-                                    null
-                                 && this.getState()!.compareTo(EMPTY_STRING) == 0 && this.getCode() == 
-                                    null
-                                 && this.getCode()!.compareTo(EMPTY_STRING) == 0 && this.getCountry() == 
-                                    null
-                                 && this.getCountry()!.compareTo(EMPTY_STRING) == 0)
-                        
-                                    {
-                                    
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
-    
-}
-
-
-    public Boolean isValid(){
-
-    EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;;
-    
-
-                        if(this.getName() == 
-                                    null
-                                 || this.getName()!.compareTo(EMPTY_STRING) == 0 || this.getStreet() == 
-                                    null
-                                 || this.getStreet()!.compareTo(EMPTY_STRING) == 0 || this.getCity() == 
-                                    null
-                                 || this.getCity()!.compareTo(EMPTY_STRING) == 0 || this.getState() == 
-                                    null
-                                 || this.getState()!.compareTo(EMPTY_STRING) == 0 || this.getCode() == 
-                                    null
-                                 || this.getCode()!.compareTo(EMPTY_STRING) == 0 || this.getCountry() == 
-                                    null
-                                 || this.getCountry()!.compareTo(EMPTY_STRING) == 0)
+                        if(this->getName() == 
+                                    nullptr
+                                 && this->getName().compareTo(EMPTY_STRING) == 0 && this->getStreet() == 
+                                    nullptr
+                                 && this->getStreet().compareTo(EMPTY_STRING) == 0 && this->getCity() == 
+                                    nullptr
+                                 && this->getCity().compareTo(EMPTY_STRING) == 0 && this->getState() == 
+                                    nullptr
+                                 && this->getState().compareTo(EMPTY_STRING) == 0 && this->getCode() == 
+                                    nullptr
+                                 && this->getCode().compareTo(EMPTY_STRING) == 0 && this->getCountry() == 
+                                    nullptr
+                                 && this->getCountry().compareTo(EMPTY_STRING) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -462,82 +411,36 @@ this.country= value;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::FALSE;
     
 }
 
 
-    public string validationInfo(){
+    public: Boolean isValid(){
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("Address Failed To Validate - All fields must contain data.<br></br>");
+    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
-    
-
-                        if(!stringValidationUtil!.isValidRequired(this.getName(), StreetAddressData.MIN, StreetAddressData.MAX))
+                        if(this->getName() == 
+                                    nullptr
+                                 || this->getName().compareTo(EMPTY_STRING) == 0 || this->getStreet() == 
+                                    nullptr
+                                 || this->getStreet().compareTo(EMPTY_STRING) == 0 || this->getCity() == 
+                                    nullptr
+                                 || this->getCity().compareTo(EMPTY_STRING) == 0 || this->getState() == 
+                                    nullptr
+                                 || this->getState().compareTo(EMPTY_STRING) == 0 || this->getCode() == 
+                                    nullptr
+                                 || this->getCode().compareTo(EMPTY_STRING) == 0 || this->getCountry() == 
+                                    nullptr
+                                 || this->getCountry().compareTo(EMPTY_STRING) == 0)
                         
                                     {
-                                    stringBuffer!.append("Please enter a valid name");
-    
-stringBuffer!.append("<br></br>");
-    
+                                    
 
-                                    }
-                                
 
-                        if(!stringValidationUtil!.isValidRequired(this.getStreet(), StreetAddressData.MIN, StreetAddressData.MAX))
-                        
-                                    {
-                                    stringBuffer!.append("Please enter a valid street");
-    
-stringBuffer!.append("<br></br>");
-    
-
-                                    }
-                                
-
-                        if(!stringValidationUtil!.isValidRequired(this.getCity(), StreetAddressData.MIN, StreetAddressData.MAX))
-                        
-                                    {
-                                    stringBuffer!.append("Please enter a valid city");
-    
-stringBuffer!.append("<br></br>");
-    
-
-                                    }
-                                
-
-                        if(!stringValidationUtil!.isValidRequired(this.getState(), StreetAddressData.MIN, StreetAddressData.MAX))
-                        
-                                    {
-                                    stringBuffer!.append("Please enter a valid state");
-    
-stringBuffer!.append("<br></br>");
-    
-
-                                    }
-                                
-
-                        if(!stringValidationUtil!.isValidRequired(this.getCode(), StreetAddressData.MIN, StreetAddressData.MAX))
-                        
-                                    {
-                                    stringBuffer!.append("Please enter a valid zipcode");
-    
-stringBuffer!.append("<br></br>");
-    
-
-                                    }
-                                
-
-                        if(!stringValidationUtil!.isValidRequired(this.getCountry(), StreetAddressData.MIN, StreetAddressData.MAX))
-                        
-                                    {
-                                    stringBuffer!.append("Please enter a valid country");
-    
-stringBuffer!.append("<br></br>");
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return Boolean::FALSE;
     
 
                                     }
@@ -546,12 +449,96 @@ stringBuffer!.append("<br></br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return Boolean::TRUE;
     
 }
 
 
-    Document toValidationInfoDoc(){
+    public: std::string validationInfo(){
+
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("Address Failed To Validate - All fields must contain data.<br></br>");
+    
+
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(!stringValidationUtil.isValidRequired(this->getName(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        
+                                    {
+                                    stringBuffer.append("Please enter a valid name");
+    
+stringBuffer.append("<br></br>");
+    
+
+                                    }
+                                
+
+                        if(!stringValidationUtil.isValidRequired(this->getStreet(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        
+                                    {
+                                    stringBuffer.append("Please enter a valid street");
+    
+stringBuffer.append("<br></br>");
+    
+
+                                    }
+                                
+
+                        if(!stringValidationUtil.isValidRequired(this->getCity(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        
+                                    {
+                                    stringBuffer.append("Please enter a valid city");
+    
+stringBuffer.append("<br></br>");
+    
+
+                                    }
+                                
+
+                        if(!stringValidationUtil.isValidRequired(this->getState(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        
+                                    {
+                                    stringBuffer.append("Please enter a valid state");
+    
+stringBuffer.append("<br></br>");
+    
+
+                                    }
+                                
+
+                        if(!stringValidationUtil.isValidRequired(this->getCode(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        
+                                    {
+                                    stringBuffer.append("Please enter a valid zipcode");
+    
+stringBuffer.append("<br></br>");
+    
+
+                                    }
+                                
+
+                        if(!stringValidationUtil.isValidRequired(this->getCountry(), StreetAddressData::MIN, StreetAddressData::MAX))
+                        
+                                    {
+                                    stringBuffer.append("Please enter a valid country");
+    
+stringBuffer.append("<br></br>");
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer.toString();;
+    
+}
+
+
+    private: Document toValidationInfoDoc(){
 
 
 
@@ -561,13 +548,13 @@ stringBuffer!.append("<br></br>");
 }
 
 
-    Node toValidationInfoNode(Document document){
+    private: Node toValidationInfoNode(Document document){
 
         try {
             
-    node: Node = document.createElement(StreetAddressData.FORM)!;;
+    Node node = document.createElement(StreetAddressData::FORM);;
     
-node.appendChild(this.toXmlNode(document));
+node.appendChild(this->toXmlNode(document));
     
 
 
@@ -580,13 +567,13 @@ node.appendChild(this.toXmlNode(document));
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "toValidationInfoNode", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "toValidationInfoNode", e);
     
 
                                     }
@@ -602,23 +589,23 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "toValidationInfoNode", e);
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(StreetAddressData.ID, this.id);
+hashMap.put(StreetAddressData::ID, this->id);
     
-hashMap!.put(StreetAddressData.NAME, this.name);
+hashMap.put(StreetAddressData::NAME, this->name);
     
-hashMap!.put(StreetAddressData.STREET, this.street);
+hashMap.put(StreetAddressData::STREET, this->street);
     
-hashMap!.put(StreetAddressData.CITY, this.city);
+hashMap.put(StreetAddressData::CITY, this->city);
     
-hashMap!.put(StreetAddressData.STATE, this.state);
+hashMap.put(StreetAddressData::STATE, this->state);
     
-hashMap!.put(StreetAddressData.CODE, this.code);
+hashMap.put(StreetAddressData::CODE, this->code);
     
-hashMap!.put(StreetAddressData.COUNTRY, this.country);
+hashMap.put(StreetAddressData::COUNTRY, this->country);
     
 
 
@@ -631,40 +618,39 @@ hashMap!.put(StreetAddressData.COUNTRY, this.country);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    hashMap: HashMap<any, any> = this.toHashMap()!;;
+    HashMap<any, any> hashMap = this->toHashMap();;
     
 
-    keySet: Set = hashMap!.keys()!;;
+    Set keySet = hashMap.keys();;
     
 
-    keyArray: std::vector<any> = keySet!.()!;;
+    std::vector<Object*> keyArray = keySet.();;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    int32_t size = keyArray.size();;
     
 
-    node: Node = document.createElement(StreetAddressData.ADDRESS)!;;
+    Node node = document.createElement(StreetAddressData::ADDRESS);;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    name: string = keyArray[i]! as string;;
+    std::string name = keyArray[i]! as string;;
     
 
-    value: string = stringUtil!.getNonNull(hashMap!.get(name) as string)!;;
+    std::string value = stringUtil.getNonNull(hashMap.get(name) as string);;
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 

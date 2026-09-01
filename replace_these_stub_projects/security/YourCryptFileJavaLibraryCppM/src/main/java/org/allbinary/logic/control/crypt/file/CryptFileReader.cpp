@@ -36,17 +36,14 @@
 class CryptFileReader
             : public Object
          {
-        
 
-public constructor (string decryptedExtension, string encryptedExtension){
-
-            super();
-        }
+public: CryptFileReader(std::string decryptedExtension, std::string encryptedExtension){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public string get(AbPath fileAbPath){
+    public: std::string get(AbPath fileAbPath){
 
 
 
@@ -58,7 +55,7 @@ public constructor (string decryptedExtension, string encryptedExtension){
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getInputStream(AbPath fileAbPath){
+    public: InputStream getInputStream(AbPath fileAbPath){
 
 
 

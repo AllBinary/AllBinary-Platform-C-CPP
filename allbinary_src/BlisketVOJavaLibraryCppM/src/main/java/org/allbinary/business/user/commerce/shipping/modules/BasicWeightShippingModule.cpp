@@ -55,26 +55,23 @@
 class BasicWeightShippingModule
             : public Object
         : public ShippingInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const name: string = "Basic Shipping (5 to 7 working days)";
+    private: const std::string name = "Basic Shipping (5 to 7 working days)";
 
-    private: const description: string = "We will soon provide a variety of shipping methods.";
+    private: const std::string description = "We will soon provide a variety of shipping methods.";
 
-public constructor (){
-
-            super();
-        }
+public: BasicWeightShippingModule(){
+}
 
 
-    public Money getCost(OrderInterface order){
+    public: Money getCost(OrderInterface order){
 
-    basket: BasketInterface = order.getBasket()!;;
+    BasketInterface basket = order.getBasket();;
     
 
-    money: Money = new Money();;
+    Money money = Money();;
     
 money.add(basket.getTotalWeight());
     
@@ -91,22 +88,22 @@ money.add("3.50");
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

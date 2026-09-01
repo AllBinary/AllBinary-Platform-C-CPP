@@ -31,7 +31,6 @@
 class TextFieldItemHelper
             : public Object
          {
-        
 
 };
 

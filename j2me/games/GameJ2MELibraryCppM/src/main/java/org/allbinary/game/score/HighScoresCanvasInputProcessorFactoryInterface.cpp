@@ -48,7 +48,6 @@
         #include "HighScoresCanvasInputProcessor.h"
 
 class HighScoresCanvasInputProcessorFactoryInterface {
-        
 
     HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas)
 

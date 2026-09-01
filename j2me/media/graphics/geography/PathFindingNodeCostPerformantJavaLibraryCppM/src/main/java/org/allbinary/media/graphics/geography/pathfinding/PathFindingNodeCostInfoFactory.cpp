@@ -53,40 +53,37 @@
         #include "PathFindingNodeCostInfoFactoryBase.h"
 
 class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase {
-        
 
-public constructor (int32_t max){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            
-    public create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+public: PathFindingNodeCostInfoFactory(int32_t max){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition){
+    public: void create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd){
+}
 
-    geographicMapCellType: GeographicMapCellType = geographicMapInterface!.getCellTypeAt(comingFromGeographicMapCellPosition)!;;
+
+                //@Throws(Exception.constructor)
+            
+    public: int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition){
+
+    GeographicMapCellType geographicMapCellType = geographicMapInterface.getCellTypeAt(comingFromGeographicMapCellPosition);;
     
 
-    geographicMapCellType2: GeographicMapCellType = geographicMapInterface!.getCellTypeAt(geographicMapCellPosition)!;;
+    GeographicMapCellType geographicMapCellType2 = geographicMapInterface.getCellTypeAt(geographicMapCellPosition);;
     
 
-    raceTrackGeographicMapCellType: RaceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
     
 
-    raceTrackGeographicMapCellType2: RaceTrackGeographicMapCellType = geographicMapCellType2 as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType2 = geographicMapCellType2 as RaceTrackGeographicMapCellType;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return raceTrackGeographicMapCellType!.getTravelCost() +raceTrackGeographicMapCellType2!.getTravelCost();
+                        return raceTrackGeographicMapCellType.getTravelCost() +raceTrackGeographicMapCellType2.getTravelCost();
     
 }
 

@@ -56,45 +56,42 @@
         #include "TableTag.h"
 
 class UserTag: public TableTag {
-        
 
-    private: role: string;
+    private: std::string role;
 
-    private: enable: string;
+    private: std::string enable;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new UserHelperFactory());
+public: UserTag(){
+this->setTagHelperFactory(UserHelperFactory());
     
-this.setTagRequestHelperFactory(new UserHelperFactory());
+this->setTagRequestHelperFactory(UserHelperFactory());
     
 }
 
 
-    public setRole(string value){
-this.role= value;
+    public: void setRole(std::string value){
+this->role= value;
     
-this.getPropertiesHashMap()!.put(UserRoleData.NAME, this.role);
+this->getPropertiesHashMap().put(UserRoleData::NAME, this->role);
     
 }
 
 
-    public setEnable(string value){
-this.enable= value;
+    public: void setEnable(std::string value){
+this->enable= value;
     
-this.getPropertiesHashMap()!.put(EntryData.getInstance()!.ENABLE, this.enable);
+this->getPropertiesHashMap().put(EntryData::getInstance().ENABLE, this->enable);
     
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
@@ -116,7 +113,7 @@ this.getPropertiesHashMap()!.put(EntryData.getInstance()!.ENABLE, this.enable);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

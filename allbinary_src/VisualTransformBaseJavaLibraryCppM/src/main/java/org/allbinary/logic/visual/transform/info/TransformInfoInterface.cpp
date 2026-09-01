@@ -55,65 +55,64 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInfoInterface: public TableMappingInterface {
-        
 
-    string log()
+    std::string log()
 
                 //@Throws(Exception.constructor)
             
-    override(HashMap<any, any> hashMap)
+    void override(HashMap<any, any> hashMap)
 
-    string getName()
+    std::string getName()
 
-    setStoreName(string value)
+    void setStoreName(std::string value)
 
-    string getStoreName()
+    std::string getStoreName()
 
-    string getObjectFile()
+    std::string getObjectFile()
 
-    any getObject()
+    Object* getObject()
 
                 //@Throws(Exception.constructor)
             
     AbPath getTemplateFilePath()
 
-    string getTemplateFile()
+    std::string getTemplateFile()
 
-    string getTemplate()
+    std::string getTemplate()
 
                 //@Throws(Exception.constructor)
             
     AbPath getDataFilePath()
 
-    string getDataFile()
+    std::string getDataFile()
 
                 //@Throws(Exception.constructor)
             
     Document getDataDocument()
 
-    setName(string value)
+    void setName(std::string value)
 
-    setObjectFile(string value)
+    void setObjectFile(std::string value)
 
-    setObject(Object anyType)
+    void setObject(Object anyType)
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfigInterface(Object transformInfoObjectConfigInterface)
+    void setObjectConfigInterface(Object transformInfoObjectConfigInterface)
 
                 //@Throws(Exception.constructor)
             
     TransformInfoObjectConfigInterface getObjectConfigInterface()
 
-    setTemplateFile(string value)
+    void setTemplateFile(std::string value)
 
-    setTemplate(string value)
+    void setTemplate(std::string value)
 
-    setDataFile(string value)
+    void setDataFile(std::string value)
 
-    setData(string value)
+    void setData(std::string value)
 
-    setChild()
+    void setChild()
 
     bool isChild()
 

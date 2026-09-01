@@ -55,13 +55,12 @@
 #include "UpdateMyFontInterface.h"
 
 class UpdateMyFontProcessor: public MyFontProcessor {
-        
 
-    private: const updateMeasurementProcessor: UpdateMyFontInterface;
+    private: UpdateMyFontInterface updateMeasurementProcessor;
 
-public constructor (UpdateMyFontInterface keyValueDrawCharArray);
+public: UpdateMyFontProcessor(UpdateMyFontInterface keyValueDrawCharArray);
 
-    public process(Graphics graphics);
+    public: void process(Graphics graphics);
 
 };
 

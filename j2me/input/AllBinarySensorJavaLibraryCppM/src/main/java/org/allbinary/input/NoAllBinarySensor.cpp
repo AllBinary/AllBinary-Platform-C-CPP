@@ -39,24 +39,21 @@
         #include "AllBinarySensor.h"
 
 class NoAllBinarySensor: public AllBinarySensor {
-        
 
-    private: static const instance: NoAllBinarySensor = new NoAllBinarySensor();
+    private: static NoAllBinarySensor instance() { return NoAllBinarySensor(); }
 
-    public static NoAllBinarySensor getInstance(){
+    public: static NoAllBinarySensor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoAllBinarySensor.instance;
+                        return NoAllBinarySensor::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NoAllBinarySensor(){
+}
 
 
 };

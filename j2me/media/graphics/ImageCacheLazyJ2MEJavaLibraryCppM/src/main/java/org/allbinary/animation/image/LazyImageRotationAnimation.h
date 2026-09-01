@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_LAZYIMAGEROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -98,105 +100,104 @@
         #include "BaseImageAnimationFactory.h"
 
 class LazyImageRotationAnimation: public RotationAnimation {
-        
 
-    private: static const SET_REAL_ANIMATION: string = "setRealAnimation";
+    private: static const std::string SET_REAL_ANIMATION = "setRealAnimation";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const layoutIndex: int32_t;
+    public: int32_t layoutIndex;
 
-    public const instanceId: int32_t;
+    public: int32_t instanceId;
 
-    public const animationInterfaceFactoryInterface: BaseImageAnimationFactory;
+    public: BaseImageAnimationFactory animationInterfaceFactoryInterface;
 
-    private: const NULL_INDEX_ANIMATION: IndexedAnimation;
+    private: IndexedAnimation NULL_INDEX_ANIMATION;
 
-    private: animation: IndexedAnimation;
+    private: IndexedAnimation animation;
 
-    public scaleProperties: ScaleProperties = ScaleProperties.instance;
+    public: ScaleProperties scaleProperties = ScaleProperties::instance;
 
-public constructor (int32_t layoutIndex, int32_t instanceId, ScaleProperties scaleProperties, BaseImageAnimationFactory animationInterfaceFactoryInterface, AnimationBehavior animationBehavior);
+public: LazyImageRotationAnimation(int32_t layoutIndex, int32_t instanceId, ScaleProperties scaleProperties, BaseImageAnimationFactory animationInterfaceFactoryInterface, AnimationBehavior animationBehavior);
 
-    public setRealAnimation();
+    public: void setRealAnimation();
 
-    public setScale(float scaleX, float scaleY);
+    public: void setScale(float scaleX, float scaleY);
 
-    public AnimationBehavior getAnimationBehavior();
-
-                //@Throws(Exception.constructor)
-            
-    public set(GL gl);
-
-    public setAlpha(int32_t alpha);
-
-    public setDx(int32_t dx);
-
-    public setDy(int32_t dy);
-
-    public setMaxScale(float maxScaleX, float maxScaleY);
-
-    public nextRotation();
-
-    public previousRotation();
-
-    public nextRotationX();
-
-    public previousRotationX();
-
-    public nextRotationZ();
-
-    public previousRotationZ();
-
-    public changeBasicColor(BasicColor basicColor);
-
-    public BasicColor getBasicColorP();
-
-    public BasicColor getChangeBasicColor();
-
-    public int32_t getChangeColor();
-
-    public int32_t getColor();
-
-    public int32_t getDx();
-
-    public int32_t getDy();
-
-    public bool isThreed();
+    public: AnimationBehavior getAnimationBehavior();
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame();
+    public: void set(GL gl);
 
-    public reset();
+    public: void setAlpha(int32_t alpha);
 
-    public setFrame(int32_t index);
+    public: void setDx(int32_t dx);
 
-    public int32_t getFrame();
+    public: void setDy(int32_t dy);
+
+    public: void setMaxScale(float maxScaleX, float maxScaleY);
+
+    public: void nextRotation();
+
+    public: void previousRotation();
+
+    public: void nextRotationX();
+
+    public: void previousRotationX();
+
+    public: void nextRotationZ();
+
+    public: void previousRotationZ();
+
+    public: void changeBasicColor(BasicColor basicColor);
+
+    public: BasicColor getBasicColorP();
+
+    public: BasicColor getChangeBasicColor();
+
+    public: int32_t getChangeColor();
+
+    public: int32_t getColor();
+
+    public: int32_t getDx();
+
+    public: int32_t getDy();
+
+    public: bool isThreed();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: void nextFrame();
 
-    public int32_t getSize();
+    public: void reset();
 
-    public previousFrame();
+    public: void setFrame(int32_t index);
 
-    public bool isLastFrame();
+    public: int32_t getFrame();
 
-    public setSequence(std::vector<int32_t> sequence);
+                //@Throws(Exception.constructor)
+            
+    public: int32_t getAnimationSize();
 
-    public std::vector<int32_t> getSequence();
+    public: int32_t getSize();
 
-    public int32_t getWidth();
+    public: void previousFrame();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: bool isLastFrame();
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public string toString();
+    public: std::vector<int32_t> getSequence();
+
+    public: int32_t getWidth();
+
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+
+    public: std::string toString();
 
 };
 

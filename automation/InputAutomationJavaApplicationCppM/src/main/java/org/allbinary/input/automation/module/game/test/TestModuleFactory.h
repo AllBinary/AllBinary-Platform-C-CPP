@@ -59,22 +59,21 @@
         #include "JPanel.h"
 
 class TestModuleFactory: public AbstractInputAutomationFactory {
-        
 
-    private: static NAME: string = "Test New Game" +InputAutomationModuleData.MODULE_NAME_END;
+    private: static std::string NAME = "Test New Game" +InputAutomationModuleData::MODULE_NAME_END;
 
-    private: blankModuleConfigurationJPanel: BlankModuleConfigurationJPanel;
+    private: BlankModuleConfigurationJPanel blankModuleConfigurationJPanel;
 
-public constructor ();
+public: TestModuleFactory();
 
-    public string getName();
+    public: std::string getName();
 
-    public JPanel getConfigurationJPanel();
+    public: JPanel getConfigurationJPanel();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public RunnableInterface getInstance();
+    public: RunnableInterface getInstance();
 
 };
 

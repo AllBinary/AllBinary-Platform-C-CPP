@@ -51,33 +51,30 @@
 #include "InputMappingEvent.h"
 
 class InputMappingEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: InputMappingEventHandler = new InputMappingEventHandler();
+    private: static const InputMappingEventHandler gameKeyEventHandler = InputMappingEventHandler();
 
-    public static InputMappingEventHandler getInstance(){
+    public: static InputMappingEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputMappingEventHandler.gameKeyEventHandler;
+                        return InputMappingEventHandler::gameKeyEventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InputMappingEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    inputMappingEventListenerInterface: InputMappingEventListenerInterface = eventListenerInterface as InputMappingEventListenerInterface;;
+    InputMappingEventListenerInterface inputMappingEventListenerInterface = eventListenerInterface as InputMappingEventListenerInterface;;
     
-inputMappingEventListenerInterface!.onInputMappingEvent(eventObject as InputMappingEvent);
+inputMappingEventListenerInterface.onInputMappingEvent(eventObject as InputMappingEvent);
     
 }
 

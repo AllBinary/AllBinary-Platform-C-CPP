@@ -51,38 +51,35 @@
 class AbPathData
             : public Object
          {
-        
 
-    private: static const instance: AbPathData = new AbPathData();
+    private: static AbPathData instance() { return AbPathData(); }
 
-    public static AbPathData getInstance(){
+    public: static AbPathData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPathData.instance;
+                        return AbPathData::instance();
     
 }
 
 
-    public const EXTENSION_SEP: string = CommonSeps.getInstance()!.PERIOD;
+    public: const std::string EXTENSION_SEP = CommonSeps::getInstance().PERIOD;
 
-    public const SEPARATORCHAR: char = '/';
+    public: const char SEPARATORCHAR = '/';
 
-    public const SEPARATOR: string = CommonSeps.getInstance()!.FORWARD_SLASH;
+    public: const std::string SEPARATOR = CommonSeps::getInstance().FORWARD_SLASH;
 
-private constructor (){
-
-            super();
-        }
+private: AbPathData(){
+}
 
 
-    public int32_t getExtensionIndex(string filePath){
+    public: int32_t getExtensionIndex(std::string filePath){
 
-    indexOfFileExtensionDelmiter: int32_t = filePath!.lastIndexOf(this.EXTENSION_SEP)!;;
+    int32_t indexOfFileExtensionDelmiter = filePath.lastIndexOf(this->EXTENSION_SEP);;
     
 
-    indexOfLatDelimiter: int32_t = filePath!.lastIndexOf(this.SEPARATORCHAR)!;;
+    int32_t indexOfLatDelimiter = filePath.lastIndexOf(this->SEPARATORCHAR);;
     
 
                         if(indexOfFileExtensionDelmiter < 0)
@@ -119,18 +116,18 @@ private constructor (){
 }
 
 
-    public string getExtensionWithDot(string filePath){
+    public: std::string getExtensionWithDot(std::string filePath){
 
-    indexOfFileExtensionDelmiter: int32_t = this.getExtensionIndex(filePath)!;;
+    int32_t indexOfFileExtensionDelmiter = this->getExtensionIndex(filePath);;
     
 
-    extension: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string extension = StringUtil::getInstance().EMPTY_STRING;;
     
 
                         if(indexOfFileExtensionDelmiter >= 0)
                         
                                     {
-                                    extension= filePath!.substring(indexOfFileExtensionDelmiter);
+                                    extension= filePath.substring(indexOfFileExtensionDelmiter);
     
 
                                     }
@@ -144,18 +141,18 @@ private constructor (){
 }
 
 
-    public string getExtension(string filePath){
+    public: std::string getExtension(std::string filePath){
 
-    indexOfFileExtensionDelmiter: int32_t = this.getExtensionIndex(filePath)!;;
+    int32_t indexOfFileExtensionDelmiter = this->getExtensionIndex(filePath);;
     
 
-    extension: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string extension = StringUtil::getInstance().EMPTY_STRING;;
     
 
                         if(indexOfFileExtensionDelmiter >= 0)
                         
                                     {
-                                    extension= filePath!.substring(indexOfFileExtensionDelmiter +1);
+                                    extension= filePath.substring(indexOfFileExtensionDelmiter +1);
     
 
                                     }
@@ -169,15 +166,15 @@ private constructor (){
 }
 
 
-    public string getNameFromPath(string path){
+    public: std::string getNameFromPath(std::string path){
 
-    endIndex: int32_t = path.lastIndexOf(this.SEPARATORCHAR)!;;
+    int32_t endIndex = path.lastIndexOf(this->SEPARATORCHAR);;
     
 
                         if(endIndex < 0)
                         
                                     {
-                                    endIndex= path.lastIndexOf(FilePathData.getInstance()!.SEPARATORCHAR);
+                                    endIndex= path.lastIndexOf(FilePathData::getInstance().SEPARATORCHAR);
     
 
                                     }
@@ -196,24 +193,24 @@ private constructor (){
                                     }
                                 
 
-                        if(path.length == endIndex +1)
+                        if(path.size() == endIndex +1)
                         
                                     {
                                     
-    categoryName: string = path.substring(0, endIndex)!;;
+    std::string categoryName = path.substring(0, endIndex);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getNameFromPath(categoryName);;
+                        return this->getNameFromPath(categoryName);;
     
 
                                     }
                                 
                         else {
                             
-    categoryName: string = path.substring(endIndex +1)!;;
+    std::string categoryName = path.substring(endIndex +1);;
     
 
 
@@ -227,15 +224,15 @@ private constructor (){
 }
 
 
-    public string removeNameFromPath(string path){
+    public: std::string removeNameFromPath(std::string path){
 
-    endIndex: int32_t = path.lastIndexOf(this.SEPARATORCHAR)!;;
+    int32_t endIndex = path.lastIndexOf(this->SEPARATORCHAR);;
     
 
                         if(endIndex < 0)
                         
                                     {
-                                    endIndex= path.lastIndexOf(FilePathData.getInstance()!.SEPARATORCHAR);
+                                    endIndex= path.lastIndexOf(FilePathData::getInstance().SEPARATORCHAR);
     
 
                                     }
@@ -248,27 +245,27 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 
                                     }
                                 
 
-                        if(path.length == endIndex +1)
+                        if(path.size() == endIndex +1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.removeNameFromPath(path.substring(0, endIndex -1));;
+                        return this->removeNameFromPath(path.substring(0, endIndex -1));;
     
 
                                     }
                                 
                         else {
                             
-    pathWithoutName: string = path.substring(0, endIndex)!;;
+    std::string pathWithoutName = path.substring(0, endIndex);;
     
 
 

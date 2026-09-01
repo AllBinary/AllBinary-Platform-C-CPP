@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORECOMMANDSBASEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -68,19 +70,18 @@
 class HighScoreCommandsBaseFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const HIGH_SCORE_COMMANDS: std::vector<Command>;
+    public: std::vector<Command> HIGH_SCORE_COMMANDS;
 
-protected constructor (std::vector<Command> HIGH_SCORE_COMMANDS);
+protected: HighScoreCommandsBaseFactory(std::vector<Command> HIGH_SCORE_COMMANDS);
 
-    public bool isHighScoreCommand(Command command);
+    public: bool isHighScoreCommand(Command command);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getIndex(Command command);
+    public: int32_t getIndex(Command command);
 
 };
 

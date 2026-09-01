@@ -58,9 +58,8 @@
 class LicenseCheckRunnableFactory
             : public Object
          {
-        
 
-    public ABRunnable getInstance(SpecialDemoGameMidlet specialDemoGameMidlet);
+    public: ABRunnable getInstance(SpecialDemoGameMidlet specialDemoGameMidlet);
 
 };
 

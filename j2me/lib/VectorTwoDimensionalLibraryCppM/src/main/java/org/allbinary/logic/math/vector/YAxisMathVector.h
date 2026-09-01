@@ -46,13 +46,12 @@
 #include "YAxisMathVectorUtil.h"
 
 class YAxisMathVector: public MathVector {
-        
 
-public constructor (BasicDecimal magnitudeBasicDecimal, int32_t direction);
+public: YAxisMathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction);
 
-    public BasicDecimal getResult();
+    public: BasicDecimal getResult();
 
-    calculate();
+    private: void calculate();
 
 };
 

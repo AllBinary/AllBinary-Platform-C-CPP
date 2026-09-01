@@ -60,34 +60,33 @@
 class EndGameInfo
             : public Object
          {
-        
 
-    const NORMAL_GAME_OVER_WIN: string = "You Won";
+    protected: const std::string NORMAL_GAME_OVER_WIN = "You Won";
 
-    private: const TEASER_DEMO_GAME_END_LAST_LEVEL: string = "End of Demo.";
+    private: const std::string TEASER_DEMO_GAME_END_LAST_LEVEL = "End of Demo.";
 
-    private: const TEASER_DEMO_GAME_END: string = "Demo Game Over.";
+    private: const std::string TEASER_DEMO_GAME_END = "Demo Game Over.";
 
-    private: gameOverStr: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string gameOverStr = StringUtil::getInstance().EMPTY_STRING;
 
-    private: winStr: string = this.gameOverStr;
+    private: std::string winStr = this->gameOverStr;
 
-    public update(GameInfo gameInfo, MyCanvas myCanvas){
+    public: void update(GameInfo gameInfo, MyCanvas myCanvas){
 
-                        if(gameInfo!.isLastLevel())
+                        if(gameInfo.isLastLevel())
                         
                                     {
-                                    this.setWinStr(this.TEASER_DEMO_GAME_END_LAST_LEVEL);
+                                    this->setWinStr(this->TEASER_DEMO_GAME_END_LAST_LEVEL);
     
-this.setGameOverStr(this.TEASER_DEMO_GAME_END_LAST_LEVEL);
+this->setGameOverStr(this->TEASER_DEMO_GAME_END_LAST_LEVEL);
     
 
                                     }
                                 
                         else {
-                            this.setWinStr(this.NORMAL_GAME_OVER_WIN);
+                            this->setWinStr(this->NORMAL_GAME_OVER_WIN);
     
-this.setGameOverStr(this.TEASER_DEMO_GAME_END);
+this->setGameOverStr(this->TEASER_DEMO_GAME_END);
     
 
                         }
@@ -95,34 +94,34 @@ this.setGameOverStr(this.TEASER_DEMO_GAME_END);
 }
 
 
-    public string getGameOverStr(){
+    public: std::string getGameOverStr(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameOverStr;
+                        return this->gameOverStr;
     
 }
 
 
-    public setGameOverStr(string gameOverStr){
-this.gameOverStr= gameOverStr;
+    public: void setGameOverStr(std::string gameOverStr){
+this->gameOverStr= gameOverStr;
     
 }
 
 
-    public string getWinStr(){
+    public: std::string getWinStr(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.winStr;
+                        return this->winStr;
     
 }
 
 
-    public setWinStr(string winStr){
-this.winStr= winStr;
+    public: void setWinStr(std::string winStr){
+this->winStr= winStr;
     
 }
 

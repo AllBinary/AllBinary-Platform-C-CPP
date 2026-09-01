@@ -77,90 +77,89 @@
         #include "HealthBarAnimation.h"
 
 class HealthBarThreedAnimation: public HealthBarAnimation {
-        
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-public constructor (AllBinaryLayer layerInterface, int32_t location){
+public: HealthBarThreedAnimation(AllBinaryLayer layerInterface, int32_t location){
             super(layerInterface, location);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.basicColor= this.basicColorFactory!.GREEN;
+this->basicColor= this->basicColorFactory.GREEN;
     
-this.colorP= this.basicColor!.intValue();
+this->colorP= this->basicColor.intValue();
     
-this.rectangle= new Rectangle(0, 0, 1, 1, this.basicColor);
+this->rectangle= Rectangle(0, 0, 1, 1, this->basicColor);
     
-this.rectangle.setDoubleSidedEnabled(true);
+this->rectangle.setDoubleSidedEnabled(true);
     
-this.rectangle.setNormalsEnabled(false);
+this->rectangle.setNormalsEnabled(false);
     
-this.rectangle.setTexturesEnabled(false);
+this->rectangle.setTexturesEnabled(false);
     
 }
 
 
-    updateColor(){
+    private: void updateColor(){
 
-    colorBufferList: ColorBufferList = this.rectangle.getVertices()!.getColor4BufferList()!;;
+    ColorBufferList colorBufferList = this->rectangle.getVertices().getColor4BufferList();;
     
 
-    size: int32_t = colorBufferList!.size()!;;
+    int32_t size = colorBufferList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = size;--index >= 0; )
+    int32_t index = size;--index >= 0; )
         {
-colorBufferList!.set(index, this.basicColor);
+colorBufferList.set(index, this->basicColor);
     
 }
 
 }
 
 
-    updateSize(){
+    private: void updateSize(){
 
-    number3dBufferList: Number3dBufferList = this.rectangle.getVertices()!.getPointsOnFacesNumber3dBufferList()!;;
+    Number3dBufferList number3dBufferList = this->rectangle.getVertices().getPointsOnFacesNumber3dBufferList();;
     
 
-    width: int32_t = this.x2;;
+    int32_t width = this->x2;;
     
 
-    height: int32_t = this.thickness *2;;
+    int32_t height = this->thickness *2;;
     
 
-    segsH: int32_t = 1;;
+    int32_t segsH = 1;;
     
 
-    segsW: int32_t = 1;;
+    int32_t segsW = 1;;
     
 
-    row: int32_t= 0;;
+    int32_t row= 0;;
     
 
-    col: int32_t= 0;;
+    int32_t col= 0;;
     
 
-    w: float = width /segsW;;
+    float w = width /segsW;;
     
 
-    h: float = height /segsH;;
+    float h = height /segsH;;
     
 
-    width5: float = width /2;;
+    float width5 = width /2;;
     
 
-    height5: float = height /2;;
+    float height5 = height /2;;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
 
@@ -176,7 +175,7 @@ colorBufferList!.set(index, this.basicColor);
                         for (
     col= 0; col <= segsW; col++)
         {
-number3dBufferList!.set(index++, col *w -width5, row *h -height5, 0);
+number3dBufferList.set(index++, col *w -width5, row *h -height5, 0);
     
 }
 
@@ -185,38 +184,38 @@ number3dBufferList!.set(index++, col *w -width5, row *h -height5, 0);
 }
 
 
-    public onHealthChange(int32_t newX2){
+    public: void onHealthChange(int32_t newX2){
 super.onHealthChange(newX2);
     
-this.updateColor();
+this->updateColor();
     
-this.updateSize();
+this->updateSize();
     
 }
 
 
-    private: const object3dProcessor: Object3dProcessor = Object3dProcessorUtil.getInstance()!.getInstanceObject3dProcessor()!;
+    private: const Object3dProcessor object3dProcessor = Object3dProcessorUtil::getInstance().getInstanceObject3dProcessor();
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
 
-    openGLESGraphics: OpenGLESGraphics = graphics as OpenGLESGraphics;;
-    
-
-    gl: GL10 = openGLESGraphics!.getGl10()!;;
+    OpenGLESGraphics openGLESGraphics = graphics as OpenGLESGraphics;;
     
 
-    viewPosition: ViewPositionBase = this.allbinaryLayer!.getViewPosition()!;;
+    GL10 gl = openGLESGraphics.getGl10();;
     
 
-    positionNumber3d: Number3d = this.rectangle.getPosition()!;;
+    ViewPositionBase viewPosition = this->allbinaryLayer.getViewPosition();;
     
-positionNumber3d!.x=  -(viewPosition!.getX());
+
+    Number3d positionNumber3d = this->rectangle.getPosition();;
     
-positionNumber3d!.z=  -(viewPosition!.getY());
+positionNumber3d.x=  -(viewPosition.getX());
     
-positionNumber3d!.y= viewPosition!.getZ() +this.allbinaryLayer!.getHeight();
+positionNumber3d.z=  -(viewPosition.getY());
     
-this.object3dProcessor!.drawObject(gl, this.rectangle);
+positionNumber3d.y= viewPosition.getZ() +this->allbinaryLayer.getHeight();
+    
+this->object3dProcessor.drawObject(gl, this->rectangle);
     
 }
 

@@ -45,17 +45,16 @@
 class CssPropertyData
             : public Object
          {
-        
 
-    private: static const instance: CssPropertyData = new CssPropertyData();
+    private: static CssPropertyData instance() { return CssPropertyData(); }
 
-    public static CssPropertyData getInstance();
+    public: static CssPropertyData getInstance();
 
-private constructor ();
+private: CssPropertyData();
 
-    public const NAME: string = "CSS_PROPERTY_NAME";
+    public: const std::string NAME = "CSS_PROPERTY_NAME";
 
-    public const VALUES: string = "CSS_PROPERTY_VALUES";
+    public: const std::string VALUES = "CSS_PROPERTY_VALUES";
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -60,58 +62,55 @@
         #include "SelectionHudPaintable.h"
 #include "RTSLayer.h"
 
-class RTSLayerHudPaintable: public SelectionHudPaintable: public UpdateMyFontInterface {
-        
+class RTSLayerHudPaintable: public SelectionHudPaintable, public UpdateMyFontInterface {
 
-    private: static const instance: RTSLayerHudPaintable = new RTSLayerHudPaintable();
+    private: static RTSLayerHudPaintable instance() { return RTSLayerHudPaintable(); }
 
-    public static RTSLayerHudPaintable getInstance(){
+    public: static RTSLayerHudPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSLayerHudPaintable.instance;
+                        return RTSLayerHudPaintable::instance();
     
 }
 
 
-    private: weaponProperties: std::vector<string> = StringUtil.getInstance()!.getArrayInstance()!;
+    private: std::vector<std::string> weaponProperties = StringUtil::getInstance().getArrayInstance();
 
-    private: rtsLayer: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    private: CollidableDestroyableDamageableLayer rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
-    costY: int32_t= 0;
+    protected: int32_t costY= 0;
 
-    costY1: int32_t= 0;
+    protected: int32_t costY1= 0;
 
-    private: fontHeight: int32_t= 0;
+    private: int32_t fontHeight= 0;
 
-private constructor (){
-
-            super();
-        }
+private: RTSLayerHudPaintable(){
+}
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.fontHeight= font.getHeight();
+this->fontHeight= font.getHeight();
     
-this.costY1= (this.y +((this.weaponProperties!.length +1) *this.fontHeight));
+this->costY1= (this->y +((this->weaponProperties.size() +1) *this->fontHeight));
     
 
-                        if(!AndroidUtil.isAndroid())
+                        if(!AndroidUtil::isAndroid())
                         
                                     {
-                                    this.costY= this.costY1;
+                                    this->costY= this->costY1;
     
 
                                     }
                                 
                         else {
-                            this.costY= (this.y +((this.weaponProperties!.length +2) *this.fontHeight));
+                            this->costY= (this->y +((this->weaponProperties.size() +2) *this->fontHeight));
     
 
                         }
@@ -119,52 +118,51 @@ this.costY1= (this.y +((this.weaponProperties!.length +1) *this.fontHeight));
 }
 
 
-    public updateSelectionInfo(){
-this.setName(this.getRtsLayer()!.getName());
+    public: void updateSelectionInfo(){
+this->setName(this->getRtsLayer().getName());
     
 
-    partInterface: BasicWeaponPart = this.getRtsLayer()!.getPartInterfaceArray()[0]! as BasicWeaponPart;;
+    BasicWeaponPart partInterface = this->getRtsLayer().getPartInterfaceArray()[0]! as BasicWeaponPart;;
     
-this.weaponProperties= partInterface!.getWeaponProperties()!.toStringArray();
+this->weaponProperties= partInterface.getWeaponProperties().toStringArray();
     
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
 
-    size: int32_t = this.weaponProperties!.length
-                ;;
+    int32_t size = this->weaponProperties.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this.weaponProperties[index]!, this.textX, this.y +((index +1) *this.fontHeight), 0);
+graphics.drawString(this->weaponProperties[index]!, this->textX, this->y +((index +1) *this->fontHeight), 0);
     
 }
 
 }
 
 
-    public setRtsLayer(RTSLayer rtsLayer){
-this.rtsLayer= rtsLayer;
+    public: void setRtsLayer(RTSLayer rtsLayer){
+this->rtsLayer= rtsLayer;
     
 }
 
 
-    CollidableDestroyableDamageableLayer getRtsLayer(){
+    private: CollidableDestroyableDamageableLayer getRtsLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rtsLayer;
+                        return this->rtsLayer;
     
 }
 

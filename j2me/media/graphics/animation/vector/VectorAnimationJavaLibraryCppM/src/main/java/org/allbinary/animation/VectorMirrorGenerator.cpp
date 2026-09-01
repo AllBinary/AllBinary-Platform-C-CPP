@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -66,77 +68,73 @@
 class VectorMirrorGenerator
             : public Object
          {
-        
 
-    private: static const instance: VectorMirrorGenerator = new VectorMirrorGenerator();
+    private: static VectorMirrorGenerator instance() { return VectorMirrorGenerator(); }
 
-    public static VectorMirrorGenerator getInstance(){
+    public: static VectorMirrorGenerator getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorMirrorGenerator.instance;
+                        return VectorMirrorGenerator::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const vectorAnimationUtil: VectorAnimationUtil = VectorAnimationUtil.getInstance()!;
+    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: VectorMirrorGenerator(){
+}
 
 
-    public std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<std::vector<int32_t>>> points, int32_t width){
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<std::vector<int32_t>>> points, int32_t width){
 
         try {
             
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-    pointBasicArrayList: BasicArrayList;;
+    BasicArrayList pointBasicArrayList;;
     
 
-    nextPoints: std::vector<std::vector<int32_t>>;;
+    std::vector<std::vector<int32_t>> nextPoints;;
     
 
-    size2: int32_t= 0;;
+    int32_t size2= 0;;
     
 
-    size: int32_t = points.length
-                ;;
+    int32_t size = points.size();;
     
 
-    pointsBasicArrayList: BasicArrayList = new BasicArrayListS(size);;
+    BasicArrayList pointsBasicArrayList = BasicArrayListS(size);;
     
 
 
 
 
                         for (
-    frame: int32_t = 0;frame < size; frame++)
+    int32_t frame = 0;frame < size; frame++)
         {
 nextPoints= points[frame]!;
     
-size2= nextPoints!.length;
+size2= nextPoints.size();
     
-pointBasicArrayList= new BasicArrayListS(size2);
+pointBasicArrayList= BasicArrayListS(size2);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size2; index++)
+    int32_t index = 0;index < size2; index++)
         {
-pointBasicArrayList!.add(pointFactory!.createXY(nextPoints[index]![0]!, nextPoints[index]![1]!));
+pointBasicArrayList.add(pointFactory.createXY(nextPoints[index]![0]!, nextPoints[index]![1]!));
     
 }
 
-pointsBasicArrayList!.add(pointBasicArrayList);
+pointsBasicArrayList.add(pointBasicArrayList);
     
 }
 
@@ -145,14 +143,14 @@ pointsBasicArrayList!.add(pointBasicArrayList);
 
 
                         for (
-    index: int32_t = 0;index < points.length; index++)
+    int32_t index = 0;index < points.size(); index++)
         {
-pointsBasicArrayList!.add(this.getInstance(pointsBasicArrayList!.objectArray[index]! as BasicArrayList, width));
+pointsBasicArrayList.add(this->getInstance(pointsBasicArrayList.objectArray[index]! as BasicArrayList, width));
     
 }
 
 
-    newPoints: std::vector<std::vector<std::vector<int32_t>>> = this.vectorAnimationUtil!.toAnimationArrayFromListOfPointList(pointsBasicArrayList)!;;
+    std::vector<std::vector<std::vector<int32_t>>> newPoints = this->vectorAnimationUtil.toAnimationArrayFromListOfPointList(pointsBasicArrayList);;
     
 
 
@@ -165,15 +163,15 @@ pointsBasicArrayList!.add(this.getInstance(pointsBasicArrayList!.objectArray[ind
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY_ARRAY;
+                        return NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
     
 }
 
@@ -182,19 +180,19 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getInstance(BasicArrayList pointBasicArrayList, int32_t width){
+    public: BasicArrayList getInstance(BasicArrayList pointBasicArrayList, int32_t width){
 
-    graphicsPipe: BasicGraphicsPipeline = new BasicGraphicsPipeline(pointBasicArrayList);;
+    BasicGraphicsPipeline graphicsPipe = BasicGraphicsPipeline(pointBasicArrayList);;
     
-graphicsPipe!.createMatrix();
+graphicsPipe.createMatrix();
     
-graphicsPipe!.mirror(width);
+graphicsPipe.mirror(width);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe!.getMatrix();;
+                        return graphicsPipe.getMatrix();;
     
 }
 

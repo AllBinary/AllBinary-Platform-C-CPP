@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_UTIL_HASHTABLEUTIL_H
         #define ORG_ALLBINARY_UTIL_HASHTABLEUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <java/util/Enumeration.h>
@@ -54,19 +56,18 @@
 class HashtableUtil
             : public Object
          {
-        
 
-    private: static const instance: HashtableUtil = new HashtableUtil();
+    private: static HashtableUtil instance() { return HashtableUtil(); }
 
-    public static HashtableUtil getInstance();
+    public: static HashtableUtil getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public putAll(Hashtable<any, any> fromHashtable, Hashtable<any, any> hashtable);
+    public: void putAll(Hashtable<any, any> fromHashtable, Hashtable<any, any> hashtable);
 
-    public std::vector<any> getKeysAsArray(Hashtable<any, any> hashtable);
+    public: std::vector<Object*> getKeysAsArray(Hashtable<any, any> hashtable);
 
-    public BasicArrayList getKeysAsList(Hashtable<any, any> hashtable);
+    public: BasicArrayList getKeysAsList(Hashtable<any, any> hashtable);
 
 };
 

@@ -53,11 +53,10 @@
         #include "UniqueIdGenerator.h"
 
 class QuoteRequestIdGenerator: public UniqueIdGenerator {
-        
 
-    private: const IDFILE: string = "quoterequestId";
+    private: const std::string IDFILE = "quoterequestId";
 
-public constructor ();
+public: QuoteRequestIdGenerator();
 
 };
 

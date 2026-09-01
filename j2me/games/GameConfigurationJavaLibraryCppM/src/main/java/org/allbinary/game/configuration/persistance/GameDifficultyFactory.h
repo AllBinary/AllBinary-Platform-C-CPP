@@ -45,17 +45,16 @@
 class GameDifficultyFactory
             : public Object
          {
-        
 
-    private: static const instance: GameDifficultyFactory = new GameDifficultyFactory();
+    private: static GameDifficultyFactory instance() { return GameDifficultyFactory(); }
 
-    public static GameDifficultyFactory getInstance();
+    public: static GameDifficultyFactory getInstance();
 
-    private: level: int32_t = 0;
+    private: int32_t level = 0;
 
-    public setLevel(int32_t level);
+    public: void setLevel(int32_t level);
 
-    public int32_t getLevel();
+    public: int32_t getLevel();
 
 };
 

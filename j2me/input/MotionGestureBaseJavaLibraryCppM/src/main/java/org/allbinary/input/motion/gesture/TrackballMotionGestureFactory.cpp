@@ -49,16 +49,15 @@
 class TrackballMotionGestureFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static TrackballMotionGestureFactory getInstance(){
+    public: static TrackballMotionGestureFactory getInstance(){
 
-                        if(TrackballMotionGestureFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(TrackballMotionGestureFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    TrackballMotionGestureFactory.instance= new TrackballMotionGestureFactory();
+                                    TrackballMotionGestureFactory::instance= TrackballMotionGestureFactory();
     
 
                                     }
@@ -67,32 +66,30 @@ class TrackballMotionGestureFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackballMotionGestureFactory.instance as TrackballMotionGestureFactory;
+                        return TrackballMotionGestureFactory::instance() as TrackballMotionGestureFactory;
     
 }
 
 
-    public const LEFT: MotionGestureInput;
+    public: MotionGestureInput LEFT;
 
-    public const RIGHT: MotionGestureInput;
+    public: MotionGestureInput RIGHT;
 
-    public const UP: MotionGestureInput;
+    public: MotionGestureInput UP;
 
-    public const DOWN: MotionGestureInput;
+    public: MotionGestureInput DOWN;
 
-private constructor (){
+private: TrackballMotionGestureFactory(){
 
-            super();
-        
-    MAX: int32_t = InputFactory.getInstance()!.MAX;;
+    int32_t MAX = InputFactory::getInstance().MAX;;
     
-this.LEFT= new MotionGestureInput(MAX -26, "L Trackball");
+this->LEFT= MotionGestureInput(MAX -26, "L Trackball");
     
-this.RIGHT= new MotionGestureInput(MAX -27, "R Trackball");
+this->RIGHT= MotionGestureInput(MAX -27, "R Trackball");
     
-this.UP= new MotionGestureInput(MAX -28, "Up Trackball");
+this->UP= MotionGestureInput(MAX -28, "Up Trackball");
     
-this.DOWN= new MotionGestureInput(MAX -29, "D Trackball");
+this->DOWN= MotionGestureInput(MAX -29, "D Trackball");
     
 }
 

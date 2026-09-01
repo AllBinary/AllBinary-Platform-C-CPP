@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONVIEW_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_SMTP_CONFIGURATION_USER_EVENT_USEREMAILEVENTSCONFIGURATIONVIEW_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../java/lang/Exception.h"
@@ -84,23 +86,22 @@
 class UserEmailEventsConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: userEmailEventsConfigurationInterface: UserEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
 
-public constructor (Node node);
+public: UserEmailEventsConfigurationView(Node node);
 
-public constructor (UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface);
+public: UserEmailEventsConfigurationView(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface);
 
-    public UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
+    public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -52,17 +52,16 @@
 class ShakeAnimationListener
             : public Object
          {
-        
 
-    public onSmallShakeEvent();
+    public: void onSmallShakeEvent();
 
-    public onMediumShakeEvent();
+    public: void onMediumShakeEvent();
 
-    public onLargeShakeEvent();
+    public: void onLargeShakeEvent();
 
-    public onShakeEvent(ShakeEvent shakeEvent);
+    public: void onShakeEvent(ShakeEvent shakeEvent);
 
-    public int32_t getType();
+    public: int32_t getType();
 
 };
 

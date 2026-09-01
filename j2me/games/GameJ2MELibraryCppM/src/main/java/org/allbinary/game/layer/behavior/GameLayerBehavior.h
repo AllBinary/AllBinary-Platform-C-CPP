@@ -45,7 +45,6 @@
 class GameLayerBehavior
             : public Object
          {
-        
 
 };
 

@@ -64,22 +64,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleFilledAnimation: public Animation: public ColorCompositeInterface {
-        
+class RectangleFilledAnimation: public Animation, public ColorCompositeInterface {
 
-    widthP: int32_t;
+    protected: int32_t widthP;
 
-    heightP: int32_t;
+    protected: int32_t heightP;
 
-public constructor (int32_t width, int32_t height, BasicColor basicColor);
+public: RectangleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public setWidth(int32_t width);
+    public: void setWidth(int32_t width);
 
-    public setHeight(int32_t height);
+    public: void setHeight(int32_t height);
 
 };
 

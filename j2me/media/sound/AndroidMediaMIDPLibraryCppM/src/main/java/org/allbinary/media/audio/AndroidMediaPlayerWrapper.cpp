@@ -73,16 +73,15 @@
         #include "BasicPlayer.h"
 
 class AndroidMediaPlayerWrapper: public BasicPlayer {
-        
 
-    public static AndroidMediaPlayerWrapper createPlayerWrapper(){
+    public: static AndroidMediaPlayerWrapper createPlayerWrapper(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AndroidMediaPlayerWrapper(StringUtil.getInstance()!.EMPTY_STRING);
+                        return AndroidMediaPlayerWrapper(StringUtil::getInstance().EMPTY_STRING);
     
 
                 //: 
@@ -91,26 +90,24 @@ class AndroidMediaPlayerWrapper: public BasicPlayer {
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    public static const NULL_ANDROID_MEDIA_PLAYER_WRAPPER: AndroidMediaPlayerWrapper = AndroidMediaPlayerWrapper.createPlayerWrapper()!;
+    public: static const AndroidMediaPlayerWrapper NULL_ANDROID_MEDIA_PLAYER_WRAPPER = AndroidMediaPlayerWrapper::createPlayerWrapper();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: mediaPlayer: MediaPlayer = NullAndroidCanvas.NULL_MEDIA_PLAYER;
+    private: MediaPlayer mediaPlayer = NullAndroidCanvas::NULL_MEDIA_PLAYER;
 
-public constructor (string resource){
+public: AndroidMediaPlayerWrapper(std::string resource){
 
-            super();
-        
         try {
             
-                        if(resource == StringUtil.getInstance()!.EMPTY_STRING)
+                        if(resource == StringUtil::getInstance().EMPTY_STRING)
                         
                                     {
                                     
@@ -118,28 +115,28 @@ public constructor (string resource){
                                 
                         else {
                             
-    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    mediaPlayer: MediaPlayer = MediaPlayer.create(resourceUtil!.getContext(), resourceUtil!.getResourceId(resource)!.intValue())!;;
+    MediaPlayer mediaPlayer = MediaPlayer::create(resourceUtil.getContext(), resourceUtil.getResourceId(resource).intValue());;
     
 
                         if(mediaPlayer == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception(new StringMaker().append("Failed to create media player for: ")!.append(resource)!.append(" with id: ")!.append(resourceUtil!.getResourceId(resource)!.toString())!.toString());
+                            throw Exception(StringMaker().append("Failed to create media player for: ").append(resource).append(" with id: ").append(resourceUtil.getResourceId(resource).toString()).toString());
                     
 
                                     }
                                 
-this.setMediaPlayer(mediaPlayer);
+this->setMediaPlayer(mediaPlayer);
     
-this.mediaPlayer!.setLooping(false);
+this->mediaPlayer.setLooping(false);
     
 
                         }
@@ -148,7 +145,7 @@ this.mediaPlayer!.setLooping(false);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION_LABEL +resource, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.CONSTRUCTOR, e);
     
 
 
@@ -160,12 +157,12 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION_LABEL +resource, this, this.comm
 }
 
 
-    public setLoopCount(int32_t count){
+    public: void setLoopCount(int32_t count){
 super.setLoopCount(count);
     
 
-                        if(this.mediaPlayer != NullAndroidCanvas.NULL_MEDIA_PLAYER && this.mediaPlayer != 
-                                    null
+                        if(this->mediaPlayer != NullAndroidCanvas::NULL_MEDIA_PLAYER && this->mediaPlayer != 
+                                    nullptr
                                 )
                         
                                     {
@@ -173,7 +170,7 @@ super.setLoopCount(count);
                         if(count == 0)
                         
                                     {
-                                    this.mediaPlayer!.setLooping(false);
+                                    this->mediaPlayer.setLooping(false);
     
 
                                     }
@@ -189,28 +186,28 @@ super.setLoopCount(count);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addPlayerListener(PlayerListener playerListener){
+    public: void addPlayerListener(PlayerListener playerListener){
 super.addPlayerListener(playerListener);
     
 }
 
 
-    public removePlayerListener(PlayerListener playerListener){
+    public: void removePlayerListener(PlayerListener playerListener){
 super.removePlayerListener(playerListener);
     
 }
 
 
-    public int32_t getState(){
+    public: int32_t getState(){
 
-                        if(this.mediaPlayer!.isPlaying())
+                        if(this->mediaPlayer.isPlaying())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlayerI.STARTED;
+                        return Player::STARTED;
     
 
                                     }
@@ -220,7 +217,7 @@ super.removePlayerListener(playerListener);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlayerI.PREFETCHED;
+                        return Player::PREFETCHED;
     
 
                         }
@@ -228,18 +225,18 @@ super.removePlayerListener(playerListener);
 }
 
 
-    public close(){
+    public: void close(){
 
         try {
-            this.mediaPlayer!.release();
+            this->mediaPlayer.release();
     
-this.mediaPlayer= NullAndroidCanvas.NULL_MEDIA_PLAYER;
+this->mediaPlayer= NullAndroidCanvas::NULL_MEDIA_PLAYER;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CLOSE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, e);
     
 }
 
@@ -249,21 +246,21 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CLOSE
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public start(){
+    public: void start(){
 
         try {
             
-                        if(this.mediaPlayer!.isPlaying())
+                        if(this->mediaPlayer.isPlaying())
                         
                                     {
-                                    this.mediaPlayer!.pause();
+                                    this->mediaPlayer.pause();
     
-this.mediaPlayer!.seekTo(0);
+this->mediaPlayer.seekTo(0);
     
 
                                     }
                                 
-this.mediaPlayer!.start();
+this->mediaPlayer.start();
     
 super.start();
     
@@ -271,7 +268,7 @@ super.start();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.START_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, e);
     
 }
 
@@ -281,12 +278,12 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.START
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public stop(){
+    public: void stop(){
 
         try {
-            this.mediaPlayer!.stop();
+            this->mediaPlayer.stop();
     
-this.mediaPlayer!.prepare();
+this->mediaPlayer.prepare();
     
 super.stop();
     
@@ -294,64 +291,64 @@ super.stop();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "stop", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "stop", e);
     
 }
 
 }
 
 
-    public update(string event){
-this.logUtil!.putF("LineEvent: " +event, this, this.commonStrings!.UPDATE);
+    public: void update(std::string event){
+this->logUtil.putF("LineEvent: " +event, this, this->commonStrings.UPDATE);
     
 
-    size: int32_t = this.listenersList!.size()!;;
+    int32_t size = this->listenersList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    listener: PlayerListener = this.listenersList!.objectArray[index]! as PlayerListener;;
+    PlayerListener listener = this->listenersList.objectArray[index]! as PlayerListener;;
     
-listener.playerUpdate(this, event, NullUtil.getInstance()!.NULL_OBJECT);
-    
-}
-
-}
-
-
-    public setVolume(int32_t leftVolume, int32_t rightVolume){
-this.mediaPlayer!.setVolume((leftVolume) /100.0, (rightVolume) /100.0);
+listener.playerUpdate(this, event, NullUtil::getInstance().NULL_OBJECT);
     
 }
 
+}
 
-    public int64_t getDuration(){
+
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
+this->mediaPlayer.setVolume((leftVolume) /100.0, (rightVolume) /100.0);
+    
+}
+
+
+    public: int64_t getDuration(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mediaPlayer!.getDuration();
+                        return this->mediaPlayer.getDuration();
     
 }
 
 
-    public setMediaPlayer(MediaPlayer mediaPlayer){
-this.mediaPlayer= mediaPlayer;
+    public: void setMediaPlayer(MediaPlayer mediaPlayer){
+this->mediaPlayer= mediaPlayer;
     
 }
 
 
-    public MediaPlayer getMediaPlayer(){
+    public: MediaPlayer getMediaPlayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mediaPlayer;
+                        return this->mediaPlayer;
     
 }
 

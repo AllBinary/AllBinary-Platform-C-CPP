@@ -45,15 +45,14 @@
 class InputTypeData
             : public Object
          {
-        
 
-    private: static const instance: InputTypeData = new InputTypeData();
+    private: static InputTypeData instance() { return InputTypeData(); }
 
-    public static InputTypeData getInstance();
+    public: static InputTypeData getInstance();
 
-private constructor ();
+private: InputTypeData();
 
-    public const NAME: string = "INPUT_TYPE_NAME";
+    public: const std::string NAME = "INPUT_TYPE_NAME";
 
 };
 

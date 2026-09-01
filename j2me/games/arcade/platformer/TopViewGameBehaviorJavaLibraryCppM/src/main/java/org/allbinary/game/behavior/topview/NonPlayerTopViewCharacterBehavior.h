@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_NONPLAYERTOPVIEWCHARACTERBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_NONPLAYERTOPVIEWCHARACTERBEHAVIOR_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
@@ -83,17 +85,16 @@
         #include "TopViewCharacterBehavior.h"
 
 class NonPlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
-        
 
-    private: const geographicMapBehavior: MultiGeographicMapBehavior = new MultiGeographicMapBehavior();
+    private: const MultiGeographicMapBehavior geographicMapBehavior = MultiGeographicMapBehavior();
 
-    private: const CLIFF: BasicTerrainInfo = new BasicTerrainInfo(AngleFactory.getInstance()!.DOWN);
+    private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(AngleFactory::getInstance().DOWN);
 
                 //@Throws(Exception.constructor)
             
-    public terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition);
+    public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition);
 
-    public terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y);
+    public: void terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y);
 
 };
 

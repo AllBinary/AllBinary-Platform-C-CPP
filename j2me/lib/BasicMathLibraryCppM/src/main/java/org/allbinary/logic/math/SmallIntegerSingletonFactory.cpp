@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -67,37 +69,36 @@
 class SmallIntegerSingletonFactory
             : public Object
          {
-        
 
-    private: static const instance: SmallIntegerSingletonFactory = new SmallIntegerSingletonFactory();
+    private: static SmallIntegerSingletonFactory instance() { return SmallIntegerSingletonFactory(); }
 
-    public static SmallIntegerSingletonFactory getInstance(){
+    public: static SmallIntegerSingletonFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SmallIntegerSingletonFactory.instance;
+                        return SmallIntegerSingletonFactory::instance();
     
 }
 
 
-    public const NEGATIVE_MAX: int32_t = 500;
+    public: const int32_t NEGATIVE_MAX = 500;
 
-    public const POSITIVE_MAX: int32_t = 0x2D1;
+    public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const INTEGER_ARRAY: std::vector<Integer> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<Integer> INTEGER_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: const STRING_ARRAY: std::vector<string> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<std::string> STRING_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: MIN: int32_t = 0;
+    private: int32_t MIN = 0;
 
-    private: lastMin: int32_t = 0;
+    private: int32_t lastMin = 0;
 
-    private: lastNegativeMin: int32_t = 0;
+    private: int32_t lastNegativeMin = 0;
 
-    public int32_t getMin(){
+    public: int32_t getMin(){
 
-    minAllowed: int32_t = (J2MEUtil.isJ2ME()
+    int32_t minAllowed = (J2MEUtil::isJ2ME()
                         ?       
                                 0
                                 :
@@ -109,37 +110,37 @@ class SmallIntegerSingletonFactory
     );;
     
 
-                        if(this.MIN <= minAllowed)
+                        if(this->MIN <= minAllowed)
                         
                                     {
                                     
-                        if(J2MEUtil.isJ2ME())
+                        if(J2MEUtil::isJ2ME())
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(AndroidUtil.isAndroid())
+                        if(AndroidUtil::isAndroid())
                         
                                     {
                                     
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF("Android InputFactory was initialized before GameMidlet: " +this.MIN, this, "getMin");
+logUtil.putF("Android InputFactory was initialized before GameMidlet: " +this->MIN, this, "getMin");
     
-this.initWithRange(0x291, 6);
+this->initWithRange(0x291, 6);
     
 
                                     }
                                 
                         else {
                             
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: " +this.MIN, this, "getMin");
+logUtil.putF("InputFactory was initialized before GameMidlet or KeyFactoryInitializer - Currently this is occurs on JS build by TouchMotionGestureFactory constructor: " +this->MIN, this, "getMin");
     
-this.initWithRange(0x2D0, 6);
+this->initWithRange(0x2D0, 6);
     
 
                         }
@@ -148,13 +149,13 @@ this.initWithRange(0x2D0, 6);
                                     }
                                 
 
-                        if(this.MIN <= minAllowed)
+                        if(this->MIN <= minAllowed)
                         
                                     {
                                     
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.put("This means you loaded the InputFactory before determining the platform input size requirements.", this, "getMin", new Exception());
+logUtil.put("This means you loaded the InputFactory before determining the platform input size requirements.", this, "getMin", Exception());
     
 
                                     }
@@ -163,20 +164,20 @@ logUtil!.put("This means you loaded the InputFactory before determining the plat
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.MIN;
+                        return this->MIN;
     
 }
 
 
-    public initWithRange(int32_t value, int32_t negativeValue){
+    public: void initWithRange(int32_t value, int32_t negativeValue){
 
 
 
 
                         for (
-    index: int32_t = value -1;index >= this.lastMin; index--)
+    int32_t index = value -1;index >= this->lastMin; index--)
         {
-this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Integer(index);
+this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Integer(index);
     
 }
 
@@ -185,28 +186,28 @@ this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Integer(index);
 
 
                         for (
-    index: int32_t = negativeValue -1;index >= this.lastNegativeMin; index--)
+    int32_t index = negativeValue -1;index >= this->lastNegativeMin; index--)
         {
-this.INTEGER_ARRAY[index]= new Integer( -index);
+this->INTEGER_ARRAY[index]= Integer( -index);
     
 }
 
 
-                        if(this.lastMin < value)
+                        if(this->lastMin < value)
                         
                                     {
-                                    this.lastMin= value;
+                                    this->lastMin= value;
     
-this.MIN= value;
+this->MIN= value;
     
 
                                     }
                                 
 
-                        if(this.lastNegativeMin < negativeValue)
+                        if(this->lastNegativeMin < negativeValue)
                         
                                     {
-                                    this.lastNegativeMin= negativeValue;
+                                    this->lastNegativeMin= negativeValue;
     
 
                                     }
@@ -214,9 +215,9 @@ this.MIN= value;
 }
 
 
-    public init(){
+    public: void init(){
 
-                        if(this.lastMin < this.POSITIVE_MAX || this.lastNegativeMin < this.NEGATIVE_MAX)
+                        if(this->lastMin < this->POSITIVE_MAX || this->lastNegativeMin < this->NEGATIVE_MAX)
                         
                                     {
                                     
@@ -224,9 +225,9 @@ this.MIN= value;
 
 
                         for (
-    index: int32_t = this.POSITIVE_MAX -1;index >= this.lastMin; index--)
+    int32_t index = this->POSITIVE_MAX -1;index >= this->lastMin; index--)
         {
-this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Integer(index);
+this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]= Integer(index);
     
 }
 
@@ -235,17 +236,17 @@ this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]= new Integer(index);
 
 
                         for (
-    index: int32_t = this.NEGATIVE_MAX -1;index >= this.lastNegativeMin; index--)
+    int32_t index = this->NEGATIVE_MAX -1;index >= this->lastNegativeMin; index--)
         {
-this.INTEGER_ARRAY[index]= new Integer( -index);
+this->INTEGER_ARRAY[index]= Integer( -index);
     
 }
 
-this.lastMin= this.POSITIVE_MAX;
+this->lastMin= this->POSITIVE_MAX;
     
-this.MIN= this.lastMin;
+this->MIN= this->lastMin;
     
-this.lastNegativeMin= this.NEGATIVE_MAX;
+this->lastNegativeMin= this->NEGATIVE_MAX;
     
 
                                     }
@@ -253,34 +254,32 @@ this.lastNegativeMin= this.NEGATIVE_MAX;
 }
 
 
-private constructor (){
-
-            super();
-        this.initWithRange(23, 0);
+private: SmallIntegerSingletonFactory(){
+this->initWithRange(23, 0);
     
 }
 
 
-    public Integer getAt(int32_t index){
+    public: Integer getAt(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]!;
     
 }
 
 
-    public Integer getAtNoThrow(int32_t index){
+    public: Integer getAtNoThrow(int32_t index){
 
-                        if(index +this.NEGATIVE_MAX > this.INTEGER_ARRAY.length -1)
+                        if(index +this->NEGATIVE_MAX > this->INTEGER_ARRAY.size() -1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.INTEGER_ARRAY[ -1 +this.NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[ -1 +this->NEGATIVE_MAX]!;
     
 
                                     }
@@ -289,22 +288,22 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.INTEGER_ARRAY[index +this.NEGATIVE_MAX]!;
+                        return this->INTEGER_ARRAY[index +this->NEGATIVE_MAX]!;
     
 }
 
 
-    public Integer createInstance(int32_t index){
+    public: Integer createInstance(int32_t index){
 
-    integer: Integer = this.getAt(index)!;;
+    Integer integer = this->getAt(index);;
     
 
                         if(integer == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    integer= new Integer(index);
+                                    integer= Integer(index);
     
 
                                     }
@@ -318,17 +317,17 @@ private constructor (){
 }
 
 
-    public string getString(int32_t index){
+    public: std::string getString(int32_t index){
 
-    i: int32_t = index +this.NEGATIVE_MAX;;
+    int32_t i = index +this->NEGATIVE_MAX;;
     
 
-                        if(this.STRING_ARRAY[i] == 
-                                    null
+                        if(this->STRING_ARRAY[i] == 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.STRING_ARRAY[i]= this.INTEGER_ARRAY[i]!.toString();
+                                    this->STRING_ARRAY[i]= this->INTEGER_ARRAY[i]!.toString();
     
 
                                     }
@@ -337,7 +336,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.STRING_ARRAY[i]!;
+                        return this->STRING_ARRAY[i]!;
     
 }
 

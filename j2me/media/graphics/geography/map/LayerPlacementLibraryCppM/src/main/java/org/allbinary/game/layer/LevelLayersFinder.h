@@ -68,15 +68,14 @@
 class LevelLayersFinder
             : public Object
          {
-        
 
-    private: static const instance: LevelLayersFinder = new LevelLayersFinder();
+    private: static LevelLayersFinder instance() { return LevelLayersFinder(); }
 
-    public static LevelLayersFinder getInstance();
+    public: static LevelLayersFinder getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public BasicArrayList get(Hashtable<any, any> hashtable);
+    public: BasicArrayList get(Hashtable<any, any> hashtable);
 
 };
 

@@ -56,11 +56,10 @@
         #include "ProgressCanvas.h"
 
 class LazyProgressCanvas: public ProgressCanvas {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-protected constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+protected: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(title, backgroundBasicColor, foregroundBasicColor);
                     
 
@@ -69,58 +68,58 @@ protected constructor (string title, BasicColor backgroundBasicColor, BasicColor
 }
 
 
-    public start(){
+    public: void start(){
 super.start();
     
-this.hasPainted= false;
+this->hasPainted= false;
     
 }
 
 
-    public end(){
+    public: void end(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.END_METHOD_NAME);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
     
-this.endActual();
+this->endActual();
     
-this.paintable= GAUGE_PAINTABLE;
+this->paintable= GAUGE_PAINTABLE;
     
-ImageCacheFactory.getInstance()!.runTask();
+ImageCacheFactory::getInstance().runTask();
     
-ImageCacheFactory.getInstance()!.progressEnded();
+ImageCacheFactory::getInstance().progressEnded();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.putF(this.commonStrings!.EXCEPTION, this, this.commonStrings!.END_METHOD_NAME);
+this->logUtil.putF(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME);
     
 }
 
 }
 
 
-    public inGame(){
-inGameProcessor= Processor.getInstance();
+    public: void inGame(){
+inGameProcessor= Processor::getInstance();
     
 }
 
 
-    public endFromInitialLazyLoadingComplete(){
+    public: void endFromInitialLazyLoadingComplete(){
 super.endFromInitialLazyLoadingComplete();
     
-this.paintable= NullPaintable.getInstance();
+this->paintable= NullPaintable::getInstance();
     
 }
 
 
-    public endIfPaintedSinceStart(){
+    public: void endIfPaintedSinceStart(){
 
-                        if(this.paintable == GAUGE_PAINTABLE && this.hasPainted)
+                        if(this->paintable == GAUGE_PAINTABLE && this->hasPainted)
                         
                                     {
-                                    this.endFromInitialLazyLoadingComplete();
+                                    this->endFromInitialLazyLoadingComplete();
     
 
                                     }

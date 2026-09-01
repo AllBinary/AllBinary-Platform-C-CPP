@@ -45,15 +45,14 @@
 class TempInputRobotNames
             : public Object
          {
-        
 
-    public static const LOW_NAME: string = "Low Level";
+    public: static const std::string LOW_NAME = "Low Level";
 
-    public static const SYS_NAME: string = "System Drivers";
+    public: static const std::string SYS_NAME = "System Drivers";
 
-    public static const DX_NAME: string = "DirectX";
+    public: static const std::string DX_NAME = "DirectX";
 
-public constructor ();
+public: TempInputRobotNames();
 
 };
 

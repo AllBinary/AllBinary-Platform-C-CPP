@@ -71,40 +71,37 @@
         #include "ModifyTable.h"
 
 class WorkFlowRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: workFlowInterface: WorkFlowInterface;
+    private: WorkFlowInterface workFlowInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.workFlowInterface= NewWorkFlowFactory.getInstance()!.getInstance(this.abeClientInformation, hashMap, pageContext);
+public: WorkFlowRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string delete(){
+    public: std::string delete_(){
 
         try {
             
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-WorkFlowEntityFactory.getInstance()!.create2()!.delete(this.workFlowInterface!.getName(), stringUtil!.EMPTY_STRING);
-    
-
-    success: string = "Successfully Removed the workflow with " +WorkFlowData.getInstance()!.NAME +"= " +this.workFlowInterface!.getName() +" from ";;
+WorkFlowEntityFactory::getInstance().create2().delete(this->workFlowInterface.getName(), stringUtil.EMPTY_STRING);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = "Successfully Removed the workflow with " +WorkFlowData::getInstance().NAME +"= " +this->workFlowInterface.getName() +" from ";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "delete()");
+                                    this->logUtil.putF(success, this, "delete()");
     
 
                                     }
@@ -122,13 +119,13 @@ WorkFlowEntityFactory.getInstance()!.create2()!.delete(this.workFlowInterface!.g
 
         try {
             
-    error: string = "Failed to remove workflow with " +WorkFlowData.getInstance()!.NAME +"= " +this.workFlowInterface!.getName() +" from ";;
+    std::string error = "Failed to remove workflow with " +WorkFlowData::getInstance().NAME +"= " +this->workFlowInterface.getName() +" from ";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
     
 
                                     }
@@ -136,20 +133,20 @@ WorkFlowEntityFactory.getInstance()!.create2()!.delete(this.workFlowInterface!.g
 
 
 
-                            throw new Exception(e);
+                            throw Exception(e);
                     
 
                 //: 
 } catch(e2) 
             {
 
-    error: string = "Failed to get data from workflowinterface to set error string";;
+    std::string error = "Failed to get data from workflowinterface to set error string";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e2);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e2);
     
 
                                     }
@@ -167,17 +164,17 @@ WorkFlowEntityFactory.getInstance()!.create2()!.delete(this.workFlowInterface!.g
 }
 
 
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    success: string = "New User Successfully added to the Users Table";;
+    std::string success = "New User Successfully added to the Users Table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "add()");
+                                    this->logUtil.putF(success, this, "add()");
     
 
                                     }
@@ -193,13 +190,13 @@ WorkFlowEntityFactory.getInstance()!.create2()!.delete(this.workFlowInterface!.g
 } catch(e) 
             {
 
-    error: string = "Failed to add User";;
+    std::string error = "Failed to add User";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "add()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "add()", e);
     
 
                                     }
@@ -215,17 +212,17 @@ WorkFlowEntityFactory.getInstance()!.create2()!.delete(this.workFlowInterface!.g
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    success: string = "Updated WorkFlow Successfully";;
+    std::string success = "Updated WorkFlow Successfully";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "update()");
+                                    this->logUtil.putF(success, this, "update()");
     
 
                                     }
@@ -241,13 +238,13 @@ WorkFlowEntityFactory.getInstance()!.create2()!.delete(this.workFlowInterface!.g
 } catch(e) 
             {
 
-    error: string = "Failed to update WorkFlow";;
+    std::string error = "Failed to update WorkFlow";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }

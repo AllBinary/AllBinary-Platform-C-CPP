@@ -46,15 +46,14 @@
 #include "CacheableInterface.h"
 
 class BasicArrayListResetablePool: public AbstractArrayListPool {
-        
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
+public: BasicArrayListResetablePool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
 
-    public clear();
+    public: void clear();
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface remove(any = {} key);
+    public: CacheableInterface remove(Object* key);
 
 };
 

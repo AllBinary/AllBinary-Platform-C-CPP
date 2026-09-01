@@ -59,43 +59,40 @@
 class SingletonAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface){
-
-            super();
-        this.animationInterface= animationInterface;
+public: SingletonAnimationInterfaceFactory(Animation animationInterface){
+this->animationInterface= animationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface;
+                        return this->animationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface;
+                        return this->animationInterface;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

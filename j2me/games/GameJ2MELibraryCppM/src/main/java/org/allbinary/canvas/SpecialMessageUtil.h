@@ -61,13 +61,12 @@
 class SpecialMessageUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: SpecialMessageUtil = new SpecialMessageUtil();
+    private: static const SpecialMessageUtil SINGLETON = SpecialMessageUtil();
 
-    public static SpecialMessageUtil getInstance();
+    public: static SpecialMessageUtil getInstance();
 
-    public string get();
+    public: std::string get();
 
 };
 

@@ -55,40 +55,39 @@
 class CloudStreamUtil
             : public Object
          {
-        
 
-    private: static const instance: CloudStreamUtil = new CloudStreamUtil();
+    private: static CloudStreamUtil instance() { return CloudStreamUtil(); }
 
-    public static CloudStreamUtil getInstance(){
+    public: static CloudStreamUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CloudStreamUtil.instance;
+                        return CloudStreamUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getFile(AbFile file){
+    public: InputStream getFile(AbFile file){
 
-    inputStream: InputStream = new AbFileInputStream(file);;
+    InputStream inputStream = AbFileInputStream(file);;
     
 
-    available: int32_t = inputStream!.available()!;;
+    int32_t available = inputStream.available();;
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Cloud File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil.putF("Cloud File Bytes: " +available, this, "processRequest()");
     
 
                                     }
@@ -107,22 +106,22 @@ class CloudStreamUtil
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getFileAnyWhere(AbFile file){
+    public: InputStream getFileAnyWhere(AbFile file){
 
-    inputStream: InputStream = new AbFileLocalInputStream(file);;
+    InputStream inputStream = AbFileLocalInputStream(file);;
     
 
-    available: int32_t = inputStream!.available()!;;
+    int32_t available = inputStream.available();;
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Local File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil.putF("Local File Bytes: " +available, this, "processRequest()");
     
 
                                     }
@@ -131,19 +130,19 @@ class CloudStreamUtil
                                     }
                                 
                         else {
-                            inputStream= new AbFileInputStream(file);
+                            inputStream= AbFileInputStream(file);
     
-available= inputStream!.available();
+available= inputStream.available();
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF("Cloud File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil.putF("Cloud File Bytes: " +available, this, "processRequest()");
     
 
                                     }
@@ -165,22 +164,22 @@ available= inputStream!.available();
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getFileLocal(AbFile file){
+    public: InputStream getFileLocal(AbFile file){
 
-    inputStream: InputStream = new AbFileLocalInputStream(file);;
+    InputStream inputStream = AbFileLocalInputStream(file);;
     
 
-    available: int32_t = inputStream!.available()!;;
+    int32_t available = inputStream.available();;
     
 
                         if(available > 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Local File Bytes: " +available, this, "processRequest()");
+                                    this->logUtil.putF("Local File Bytes: " +available, this, "processRequest()");
     
 
                                     }

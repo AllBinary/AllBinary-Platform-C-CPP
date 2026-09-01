@@ -50,13 +50,12 @@
 class CacheInterfaceFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static CacheInterface getInstance(CacheType cacheType, CachePolicy cachePolicy);
+    public: static CacheInterface getInstance(CacheType cacheType, CachePolicy cachePolicy);
 
-private constructor ();
+private: CacheInterfaceFactory();
 
 };
 

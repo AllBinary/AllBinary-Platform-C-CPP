@@ -45,13 +45,12 @@
 class AndroidUtil
             : public Object
          {
-        
 
-    public static bool isMemoryRestrictive();
+    public: static bool isMemoryRestrictive();
 
-    public static bool isAndroid();
+    public: static bool isAndroid();
 
-private constructor ();
+private: AndroidUtil();
 
 };
 

@@ -53,41 +53,40 @@
 class ModifyTable
             : public Object
         : public ModifyTableInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const tagStrings: TagStrings = TagStrings.getInstance()!;
+    protected: const TagStrings tagStrings = TagStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string insert(){
+    public: std::string insert(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string delete(){
+    public: std::string delete_(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string update(){
+    public: std::string update(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

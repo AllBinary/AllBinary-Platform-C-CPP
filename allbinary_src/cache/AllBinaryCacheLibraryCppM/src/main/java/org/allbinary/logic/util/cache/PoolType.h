@@ -46,15 +46,14 @@
 class PoolType
             : public Object
          {
-        
 
-    private: const cacheType: CacheType;
+    private: CacheType cacheType;
 
-public constructor (CacheType cacheType);
+public: PoolType(CacheType cacheType);
 
-    public CacheType getCacheType();
+    public: CacheType getCacheType();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

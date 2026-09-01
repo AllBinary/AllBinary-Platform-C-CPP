@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -50,41 +52,38 @@
 class AnimationInterfaceFactoryInterfaceComposite
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: const animationInterfaceFactoryInterfaceArray: std::vector<AnimationInterfaceFactoryInterface>;
+    private: std::vector<AnimationInterfaceFactoryInterface> animationInterfaceFactoryInterfaceArray;
 
-public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray){
-
-            super();
-        this.animationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
+public: AnimationInterfaceFactoryInterfaceComposite(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray){
+this->animationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.getFactoryInstance()!.getInstance(0);;
+                        return NullAnimationFactory::getFactoryInstance().getInstance(0);;
     
 }
 
 
-    public std::vector<AnimationInterfaceFactoryInterface> getAnimationInterfaceFactoryInterfaceArray(){
+    public: std::vector<AnimationInterfaceFactoryInterface> getAnimationInterfaceFactoryInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceFactoryInterfaceArray;
+                        return this->animationInterfaceFactoryInterfaceArray;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

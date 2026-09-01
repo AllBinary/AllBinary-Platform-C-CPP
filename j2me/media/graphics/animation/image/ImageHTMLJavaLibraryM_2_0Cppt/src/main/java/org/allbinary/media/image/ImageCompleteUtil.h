@@ -71,31 +71,30 @@
 class ImageCompleteUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCompleteUtil = new ImageCompleteUtil();
+    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
 
-    public static ImageCompleteUtil getInstance();
+    public: static ImageCompleteUtil getInstance();
 
-    const ISREADY: string = "isReady";
-
-                //@Throws(Exception.constructor)
-            
-    public waitForImage(Image image, string name);
-
-    private: const COMPLETE: string = "Image loading complete for: ";
+    protected: const std::string ISREADY = "isReady";
 
                 //@Throws(Exception.constructor)
             
-    public bool isReady(Image image, string name, TimeDelayHelper timeDelayHelper);
+    public: void waitForImage(Image image, std::string name);
+
+    private: const std::string COMPLETE = "Image loading complete for: ";
 
                 //@Throws(Exception.constructor)
             
-    public handleTimeout(string name);
+    public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public waitForAll();
+    public: void handleTimeout(std::string name);
+
+                //@Throws(Exception.constructor)
+            
+    public: void waitForAll();
 
 };
 

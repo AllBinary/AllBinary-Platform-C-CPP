@@ -48,27 +48,26 @@
 class CommandUriAction
             : public Object
          {
-        
 
-    private: static const instance: CommandUriAction = new CommandUriAction();
+    private: static CommandUriAction instance() { return CommandUriAction(); }
 
-    public static CommandUriAction getInstance(){
+    public: static CommandUriAction getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandUriAction.instance;
+                        return CommandUriAction::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public add(Command command, string url){
+    public: void add(Command command, std::string url){
 }
 
 
-    public process(Command command){
+    public: void process(Command command){
 }
 
 

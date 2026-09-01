@@ -120,40 +120,39 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicPopupMenuPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class BasicPopupMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: static const NAME: string = "MENU";
+    private: static const std::string NAME = "MENU";
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const drawStringUtil: DrawVerticalStringUtil = DrawVerticalStringUtil.getInstance()!;
+    private: const DrawVerticalStringUtil drawStringUtil = DrawVerticalStringUtil::getInstance();
 
-    private: const label: string;
+    private: std::string label;
 
-    private: const foregroundBasicColor: BasicColor;
+    private: BasicColor foregroundBasicColor;
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-    private: BORDER: int32_t= 0;
+    private: int32_t BORDER= 0;
 
-    private: heightOffset: int32_t= 0;
+    private: int32_t heightOffset= 0;
 
-    private: offset: int32_t= 0;
+    private: int32_t offset= 0;
 
-    private: animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Rectangle rectangle, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: BasicPopupMenuPaintable(Rectangle rectangle, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle);
+    public: void init(Rectangle rectangle);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

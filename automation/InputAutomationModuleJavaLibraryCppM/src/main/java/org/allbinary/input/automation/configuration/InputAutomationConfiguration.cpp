@@ -98,85 +98,82 @@
 class InputAutomationConfiguration
             : public Object
          {
-        
 
-    private: static const FILENAME: string = "InputAutomationConfig.xml";
+    private: static const std::string FILENAME = "InputAutomationConfig.xml";
 
-    public static File getFile(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new File(FILENAME);
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    private: installed: bool= false;
-
-    private: inputAutomationModuleConfigurationList: List<InputAutomationModuleConfiguration>;
-
-public constructor (){
-
-            super();
-        }
-
-
-    public bool isInstalled(){
+    public: static File getFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.installed;
+                        return File(FILENAME);
     
 }
 
 
-    public setInstalled(bool installed){
-this.installed= installed;
-    
-this.logUtil!.putF("Installed: " +installed, this, "setIntalled");
-    
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    private: bool installed= false;
+
+    private: List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList;
+
+public: InputAutomationConfiguration(){
 }
 
 
-    public List<InputAutomationModuleConfiguration> getInputAutomationModuleConfigurationList(){
+    public: bool isInstalled(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputAutomationModuleConfigurationList;
+                        return this->installed;
+    
+}
+
+
+    public: void setInstalled(bool installed){
+this->installed= installed;
+    
+this->logUtil.putF("Installed: " +installed, this, "setIntalled");
+    
+}
+
+
+    public: List<InputAutomationModuleConfiguration> getInputAutomationModuleConfigurationList(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->inputAutomationModuleConfigurationList;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public save(){
+    public: void save(){
 
-    document: Document = DomDocumentHelper.create()!;;
+    Document document = DomDocumentHelper::create();;
     
 
                     //Otherwise - statement - EmptyStmt
 
 
-    file: File = new File(FILENAME);;
+    File file = File(FILENAME);;
     
-FileUtil.getInstance()!.copy(new AbPath(file.getAbsolutePath(), StringUtil.getInstance()!.EMPTY_STRING), new AbPath(file.getAbsolutePath() +".bak.xml", StringUtil.getInstance()!.EMPTY_STRING));
-    
-
-    jaxbContext: JAXBContext = JAXBContext.newInstance(InputAutomationConfiguration.constructor)!;;
+FileUtil::getInstance().copy(AbPath(file.getAbsolutePath(), StringUtil::getInstance().EMPTY_STRING), AbPath(file.getAbsolutePath() +".bak.xml", StringUtil::getInstance().EMPTY_STRING));
     
 
-    marshaller: Marshaller = jaxbContext!.createMarshaller()!;;
+    JAXBContext jaxbContext = JAXBContext::newInstance(InputAutomationConfiguration.constructor);;
     
-marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, true);
+
+    Marshaller marshaller = jaxbContext.createMarshaller();;
+    
+marshaller.setProperty(Marshaller::JAXB_FORMATTED_OUTPUT, true);
     
 marshaller.marshal(this, document);
     
-DomDocumentFileHelper.save(FileWrapperUtil.wrapFile(file), document);
+DomDocumentFileHelper::save(FileWrapperUtil::wrapFile(file), document);
     
 }
 

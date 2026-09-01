@@ -87,20 +87,19 @@
 class RemoteHighScoresProcessor
             : public Object
         : public RemoteHighScoresProcessorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const noCrypt: NoCrypt = new NoCrypt();
+    private: const NoCrypt noCrypt = NoCrypt();
 
-public constructor ();
+public: RemoteHighScoresProcessor();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
+    public: void process(RemoteHighScores remoteHighScores, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo);
 
 };
 

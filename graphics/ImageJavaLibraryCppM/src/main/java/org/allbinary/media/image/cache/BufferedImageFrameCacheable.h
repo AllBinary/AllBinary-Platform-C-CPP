@@ -56,25 +56,24 @@
 class BufferedImageFrameCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: frame: Long;
+    private: Long frame;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (BufferedImage bufferedImage, Long frame);
+public: BufferedImageFrameCacheable(BufferedImage bufferedImage, Long frame);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public BufferedImage getBufferedImage();
+    public: BufferedImage getBufferedImage();
 
-    setBufferedImage(BufferedImage bufferedImage);
+    private: void setBufferedImage(BufferedImage bufferedImage);
 
-    public Long getFrame();
+    public: Long getFrame();
 
-    public setFrame(Long frame);
+    public: void setFrame(Long frame);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

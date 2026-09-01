@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LeftOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(LeftOrientationInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(LeftOrientationInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    LeftOrientationInputToGameKeyEventAction.instance= new LeftOrientationInputToGameKeyEventAction();
+                                    LeftOrientationInputToGameKeyEventAction::instance= LeftOrientationInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class LeftOrientationInputToGameKeyEventAction: public GameKeyCompleteMotionGest
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LeftOrientationInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return LeftOrientationInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Left Action", OrientationMotionGestureFactory.getInstance()!.LEFT, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: LeftOrientationInputToGameKeyEventAction(){
+            super("Left Action", OrientationMotionGestureFactory::getInstance().LEFT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

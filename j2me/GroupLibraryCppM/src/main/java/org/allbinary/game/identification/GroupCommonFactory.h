@@ -53,21 +53,20 @@
 class GroupCommonFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GroupCommonFactory getInstance();
+    public: static GroupCommonFactory getInstance();
 
-    public const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(10)!;
+    public: const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(10);
 
-    public const GROUP_NAME_LABEL: string = "Group Name: ";
+    public: const std::string GROUP_NAME_LABEL = "Group Name: ";
 
-    public const ID_LABEL: string = " Id: ";
+    public: const std::string ID_LABEL = " Id: ";
 
-    public const ADDING_LABEL: string = "Adding: ";
+    public: const std::string ADDING_LABEL = "Adding: ";
 
-    public const TO_LABEL: string = " to: ";
+    public: const std::string TO_LABEL = " to: ";
 
 };
 

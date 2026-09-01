@@ -77,55 +77,54 @@
 class GameConfiguration
             : public Object
          {
-        
 
-    private: static const MIN_VALUE: Integer = new Integer(Integer.MIN_VALUE);
+    private: static const Integer MIN_VALUE = Integer(Integer::MIN_VALUE);
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: defaultValue: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer defaultValue = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: value: Integer = GameConfiguration.MIN_VALUE;
+    private: Integer value = GameConfiguration::MIN_VALUE;
 
-    private: minValue: Integer = this.defaultValue;
+    private: Integer minValue = this->defaultValue;
 
-    private: maxValue: Integer = this.defaultValue;
+    private: Integer maxValue = this->defaultValue;
 
-    private: modifiable: Boolean = BooleanFactory.getInstance()!.TRUE;
+    private: Boolean modifiable = BooleanFactory::getInstance().TRUE;
 
-public constructor (string name, Integer defaultValue, Integer minValue, Integer maxValue);
-
-                //@Throws(Exception.constructor)
-            
-    public setValue(Integer value);
-
-    public Integer getValue();
-
-    public setMaxValue(Integer maxValue);
-
-    public Integer getMaxValue();
-
-    public setMinValue(Integer minValue);
-
-    public Integer getMinValue();
-
-    public setName(string name);
-
-    public string getName();
-
-    public setDefaultValue(Integer defaultValue);
-
-    Integer getDefaultValue();
+public: GameConfiguration(std::string name, Integer defaultValue, Integer minValue, Integer maxValue);
 
                 //@Throws(Exception.constructor)
             
-    public setDefault();
+    public: void setValue(Integer value);
 
-    public string toString();
+    public: Integer getValue();
 
-    public setModifiable(Boolean modifiable);
+    public: void setMaxValue(Integer maxValue);
 
-    public Boolean isModifiable();
+    public: Integer getMaxValue();
+
+    public: void setMinValue(Integer minValue);
+
+    public: Integer getMinValue();
+
+    public: void setName(std::string name);
+
+    public: std::string getName();
+
+    public: void setDefaultValue(Integer defaultValue);
+
+    protected: Integer getDefaultValue();
+
+                //@Throws(Exception.constructor)
+            
+    public: void setDefault();
+
+    public: std::string toString();
+
+    public: void setModifiable(Boolean modifiable);
+
+    public: Boolean isModifiable();
 
 };
 

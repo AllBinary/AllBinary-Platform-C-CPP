@@ -54,17 +54,16 @@
 class ResourceLoadingLevel
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const level: int32_t;
+    private: int32_t level;
 
- constructor (string name, int32_t level);
+: ResourceLoadingLevel(std::string name, int32_t level);
 
-    public int32_t getLevel();
+    public: int32_t getLevel();
 
-    public string getName();
+    public: std::string getName();
 
 };
 

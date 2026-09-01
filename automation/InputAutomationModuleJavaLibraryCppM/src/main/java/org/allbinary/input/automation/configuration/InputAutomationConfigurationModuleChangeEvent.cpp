@@ -45,30 +45,27 @@
 class InputAutomationConfigurationModuleChangeEvent
             : public Object
          {
-        
 
-    private: inputAutomationModuleConfiguration: InputAutomationModuleConfiguration;
+    private: InputAutomationModuleConfiguration inputAutomationModuleConfiguration;
 
-public constructor (InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
-
-            super();
-        this.setInputAutomationModuleConfiguration(inputAutomationModuleConfiguration);
+public: InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+this->setInputAutomationModuleConfiguration(inputAutomationModuleConfiguration);
     
 }
 
 
-    public InputAutomationModuleConfiguration getInputAutomationModuleConfiguration(){
+    public: InputAutomationModuleConfiguration getInputAutomationModuleConfiguration(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputAutomationModuleConfiguration;
+                        return this->inputAutomationModuleConfiguration;
     
 }
 
 
-    setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
-this.inputAutomationModuleConfiguration= inputAutomationModuleConfiguration;
+    private: void setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+this->inputAutomationModuleConfiguration= inputAutomationModuleConfiguration;
     
 }
 

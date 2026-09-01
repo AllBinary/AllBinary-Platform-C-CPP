@@ -49,15 +49,14 @@
 class GyroSensorFactory
             : public Object
          {
-        
 
-    private: static allBinaryGyroSensor: AllBinaryOrientationSensor;
+    private: static AllBinaryOrientationSensor allBinaryGyroSensor;
 
                 //@Throws(Exception.constructor)
             
-    public static init();
+    public: static void init();
 
-    public static AllBinaryOrientationSensor getInstance();
+    public: static AllBinaryOrientationSensor getInstance();
 
 };
 

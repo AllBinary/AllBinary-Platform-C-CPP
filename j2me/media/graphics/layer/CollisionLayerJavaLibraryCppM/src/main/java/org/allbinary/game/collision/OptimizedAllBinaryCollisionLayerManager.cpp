@@ -44,10 +44,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OptimizedAllBinaryCollisionLayerManager: public LayerManager {
-        
 
-public constructor (){
-            super(LayerManagerNoDebug.getInstance());
+public: OptimizedAllBinaryCollisionLayerManager(){
+            super(LayerManagerNoDebug::getInstance());
                     
 
                             //For kotlin this is before the body of the constructor.

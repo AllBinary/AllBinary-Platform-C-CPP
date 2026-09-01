@@ -52,31 +52,30 @@
 class GameTickDisplayInfoSingleton
             : public Object
          {
-        
 
-    private: static const instance: GameTickDisplayInfoSingleton = new GameTickDisplayInfoSingleton();
+    private: static GameTickDisplayInfoSingleton instance() { return GameTickDisplayInfoSingleton(); }
 
-    public static GameTickDisplayInfoSingleton getInstance();
+    public: static GameTickDisplayInfoSingleton getInstance();
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: lastWidth: int32_t = this.displayInfoSingleton!.getLastWidth()!;
+    private: int32_t lastWidth = this->displayInfoSingleton.getLastWidth();
 
-    private: lastHeight: int32_t = this.displayInfoSingleton!.getLastHeight()!;
+    private: int32_t lastHeight = this->displayInfoSingleton.getLastHeight();
 
-    private: lastHalfWidth: int32_t = this.displayInfoSingleton!.getLastHalfWidth()!;
+    private: int32_t lastHalfWidth = this->displayInfoSingleton.getLastHalfWidth();
 
-    private: lastHalfHeight: int32_t = this.displayInfoSingleton!.getLastHalfHeight()!;
+    private: int32_t lastHalfHeight = this->displayInfoSingleton.getLastHalfHeight();
 
-    public update();
+    public: void update();
 
-    public int32_t getLastWidth();
+    public: int32_t getLastWidth();
 
-    public int32_t getLastHeight();
+    public: int32_t getLastHeight();
 
-    public int32_t getLastHalfWidth();
+    public: int32_t getLastHalfWidth();
 
-    public int32_t getLastHalfHeight();
+    public: int32_t getLastHalfHeight();
 
 };
 

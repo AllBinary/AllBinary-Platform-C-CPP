@@ -42,27 +42,24 @@
 class InputTypeData
             : public Object
          {
-        
 
-    private: static const instance: InputTypeData = new InputTypeData();
+    private: static InputTypeData instance() { return InputTypeData(); }
 
-    public static InputTypeData getInstance(){
+    public: static InputTypeData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputTypeData.instance;
+                        return InputTypeData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InputTypeData(){
+}
 
 
-    public const NAME: string = "INPUT_TYPE_NAME";
+    public: const std::string NAME = "INPUT_TYPE_NAME";
 
 };
 

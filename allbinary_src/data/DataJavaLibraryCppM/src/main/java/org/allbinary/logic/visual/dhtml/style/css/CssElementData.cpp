@@ -42,27 +42,24 @@
 class CssElementData
             : public Object
          {
-        
 
-    private: static const instance: CssElementData = new CssElementData();
+    private: static CssElementData instance() { return CssElementData(); }
 
-    public static CssElementData getInstance(){
+    public: static CssElementData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CssElementData.instance;
+                        return CssElementData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CssElementData(){
+}
 
 
-    public const NAME: string = "CSS_ELEMENT_NAME";
+    public: const std::string NAME = "CSS_ELEMENT_NAME";
 
 };
 

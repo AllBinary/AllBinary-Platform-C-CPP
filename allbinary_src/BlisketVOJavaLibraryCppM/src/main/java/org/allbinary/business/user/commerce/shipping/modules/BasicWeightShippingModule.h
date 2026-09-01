@@ -58,21 +58,20 @@
 class BasicWeightShippingModule
             : public Object
         : public ShippingInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const name: string = "Basic Shipping (5 to 7 working days)";
+    private: const std::string name = "Basic Shipping (5 to 7 working days)";
 
-    private: const description: string = "We will soon provide a variety of shipping methods.";
+    private: const std::string description = "We will soon provide a variety of shipping methods.";
 
-public constructor ();
+public: BasicWeightShippingModule();
 
-    public Money getCost(OrderInterface order);
+    public: Money getCost(OrderInterface order);
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public string getName();
+    public: std::string getName();
 
 };
 

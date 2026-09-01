@@ -42,55 +42,54 @@
         #include "GenericProfileDataWorkerType.h"
 
 class SavedCaptureGenericProfileDataWorkerType: public GenericProfileDataWorkerType {
-        
 
-    public static SAVED_CAPTURE: SavedCaptureGenericProfileDataWorkerType = new SavedCaptureGenericProfileDataWorkerType("Saved " +InputImageType.CAPTURE.getName(), "c:\\share\\captures\\2\\", 100);
+    public: static SavedCaptureGenericProfileDataWorkerType SAVED_CAPTURE = SavedCaptureGenericProfileDataWorkerType("Saved " +InputImageType::CAPTURE.getName(), "c:\\share\\captures\\2\\", 100);
 
-    private: path: string;
+    private: std::string path;
 
-    private: lastFrame: int32_t= 0;
+    private: int32_t lastFrame= 0;
 
-public constructor (string name, string path, int32_t lastFrame){
+public: SavedCaptureGenericProfileDataWorkerType(std::string name, std::string path, int32_t lastFrame){
             super(name);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setPath(path);
+this->setPath(path);
     
-this.setLastFrame(lastFrame);
+this->setLastFrame(lastFrame);
     
 }
 
 
-    public string getPath(){
+    public: std::string getPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.path;
+                        return this->path;
     
 }
 
 
-    public setPath(string path){
-this.path= path;
+    public: void setPath(std::string path){
+this->path= path;
     
 }
 
 
-    public int32_t getLastFrame(){
+    public: int32_t getLastFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastFrame;
+                        return this->lastFrame;
     
 }
 
 
-    public setLastFrame(int32_t lastFrame){
-this.lastFrame= lastFrame;
+    public: void setLastFrame(int32_t lastFrame){
+this->lastFrame= lastFrame;
     
 }
 

@@ -63,17 +63,16 @@
 #include "CollidableDestroyableDamageableLayer.h"
 
 class CollidableCharacterNoDamageBehavior: public CollidableDestroyableDamageableBehavior {
-        
 
-public constructor (bool collidable);
-
-                //@Throws(Exception.constructor)
-            
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+public: CollidableCharacterNoDamageBehavior(bool collidable);
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
 
 };
 

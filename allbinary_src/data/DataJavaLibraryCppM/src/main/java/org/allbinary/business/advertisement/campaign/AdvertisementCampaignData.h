@@ -45,19 +45,18 @@
 class AdvertisementCampaignData
             : public Object
          {
-        
 
-    private: static const instance: AdvertisementCampaignData = new AdvertisementCampaignData();
+    private: static AdvertisementCampaignData instance() { return AdvertisementCampaignData(); }
 
-    public static AdvertisementCampaignData getInstance();
+    public: static AdvertisementCampaignData getInstance();
 
-private constructor ();
+private: AdvertisementCampaignData();
 
-    public const NAME: string = "ADVERTISEMENTCAMPAIGN_NAME";
+    public: const std::string NAME = "ADVERTISEMENTCAMPAIGN_NAME";
 
-    public const DESCRIPTION: string = "ADVERTISEMENTCAMPAIGN_DESCRIPTION";
+    public: const std::string DESCRIPTION = "ADVERTISEMENTCAMPAIGN_DESCRIPTION";
 
-    public const CONFIG: string = "ADVERTISEMENTCAMPAIGN_CONFIG";
+    public: const std::string CONFIG = "ADVERTISEMENTCAMPAIGN_CONFIG";
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <org/allbinary/graphics/color/BasicColor.h>
@@ -51,9 +53,8 @@
 class VectorAnimationFactory
             : public Object
         : public VectorAnimationFactoryInterface {
-        
 
-    public VectorAnimation getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor basicColor);
+    public: VectorAnimation getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor basicColor);
 
 };
 

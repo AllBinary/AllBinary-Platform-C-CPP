@@ -72,40 +72,39 @@
 #include "AlwaysActionScriptConditionJPanel.h"
 #include "AlwaysActionScriptConditionData.h"
 
-class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition: public AlwaysActionScriptConditionInterface {
-        
+class AlwaysActionScriptCondition: public BasicProfileActionScriptCondition, public AlwaysActionScriptConditionInterface {
 
-    private: static const NAME: string = "Always On/Off";
+    private: static const std::string NAME = "Always On/Off";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: alwaysActionScriptConditionJPanel: AlwaysActionScriptConditionJPanel;
+    private: AlwaysActionScriptConditionJPanel alwaysActionScriptConditionJPanel;
 
-    private: isOn: bool= false;
+    private: bool isOn= false;
 
-public constructor (Node node);
+public: AlwaysActionScriptCondition(Node node);
 
-public constructor ();
+public: AlwaysActionScriptCondition();
 
-    init();
+    private: void init();
 
-    public bool isIsOn();
+    public: bool isIsOn();
 
-    public setIsOn(bool isOn);
+    public: void setIsOn(bool isOn);
 
-    public showDialog();
+    public: void showDialog();
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public bool shouldProcess(Long frame);
+    public: Node toXmlNode(Document document);
 
-    public log();
+                //@Throws(Exception.constructor)
+            
+    public: bool shouldProcess(Long frame);
+
+    public: void log();
 
 };
 

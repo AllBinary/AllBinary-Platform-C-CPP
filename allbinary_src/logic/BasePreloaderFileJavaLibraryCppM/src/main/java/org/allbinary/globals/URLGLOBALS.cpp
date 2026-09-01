@@ -46,54 +46,53 @@
 class URLGLOBALS
             : public Object
          {
-        
 
-    private: static urlGlobalsInterface: UrlGlobalsInterface = AppUrlGlobals.NULL_APP_URL_GLOBALS;
+    private: static UrlGlobalsInterface urlGlobalsInterface = AppUrlGlobals::NULL_APP_URL_GLOBALS;
 
-    public static init(UrlGlobalsInterface urlGlobalsInterface){
-URLGLOBALS.urlGlobalsInterface= urlGlobalsInterface;
+    public: static void init(UrlGlobalsInterface urlGlobalsInterface){
+URLGLOBALS::urlGlobalsInterface= urlGlobalsInterface;
     
 }
 
 
-    public static bool isTestingMode(){
+    public: static bool isTestingMode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!.isTestingMode();;
+                        return URLGLOBALS::urlGlobalsInterface.isTestingMode();;
     
 }
 
 
-    public static string getWebappPath(){
+    public: static std::string getWebappPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!.getWebappPath();;
+                        return URLGLOBALS::urlGlobalsInterface.getWebappPath();;
     
 }
 
 
-    public static string getTestHtmlPath(){
+    public: static std::string getTestHtmlPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!.getTestHtmlPath();;
+                        return URLGLOBALS::urlGlobalsInterface.getTestHtmlPath();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static string getMainPath(){
+    public: static std::string getMainPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.urlGlobalsInterface!.getMainPath();;
+                        return URLGLOBALS::urlGlobalsInterface.getMainPath();;
     
 }
 

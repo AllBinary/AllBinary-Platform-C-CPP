@@ -68,59 +68,56 @@
 class AndroidOperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: AndroidOperatingSystemFactory = new AndroidOperatingSystemFactory();
+    private: static AndroidOperatingSystemFactory instance() { return AndroidOperatingSystemFactory(); }
 
-    public static AndroidOperatingSystemFactory getInstance(){
+    public: static AndroidOperatingSystemFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidOperatingSystemFactory.instance;
+                        return AndroidOperatingSystemFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: AndroidOperatingSystemFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem getOperatingSystemInstance(){
 
         try {
             
-    GenericOperatingSystem: GenericOperatingSystem;;
+    GenericOperatingSystem GenericOperatingSystem;;
     
 
-    systemProperties: SystemProperties = SystemProperties.getInstance()!;;
+    SystemProperties systemProperties = SystemProperties::getInstance();;
     
 
-    osName: string = systemProperties!.getName()!;;
+    std::string osName = systemProperties.getName();;
     
 
-                        if(this.tsUtil!.compareTo(osName, OperatingSystems.getInstance()!.ANDROID) == 0)
+                        if(this->tsUtil.compareTo(osName, OperatingSystems::getInstance().ANDROID) == 0)
                         
                                     {
-                                    GenericOperatingSystem= new AndroidOS();
+                                    GenericOperatingSystem= AndroidOS();
     
 
                                     }
                                 
                         else {
                             
-                        if(OperatingSystems.getInstance()!.isUnknownSpecificOSAllowed())
+                        if(OperatingSystems::getInstance().isUnknownSpecificOSAllowed())
                         
                                     {
-                                    GenericOperatingSystem= new AndroidOS();
+                                    GenericOperatingSystem= AndroidOS();
     
 
                                     }
@@ -129,7 +126,7 @@ private constructor (){
                             
 
 
-                            throw new Exception("Specific Android OS Not Supported: " +osName);
+                            throw Exception("Specific Android OS Not Supported: " +osName);
                     
 
                         }
@@ -148,15 +145,15 @@ private constructor (){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put("Failed to get OperatingSystem returning NoOperatingSystem", this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put("Failed to get OperatingSystem returning NoOperatingSystem", this, commonStrings.GET_INSTANCE, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoOperatingSystem.NO_OPERATING_SYSTEM;
+                        return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }
 

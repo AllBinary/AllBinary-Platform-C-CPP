@@ -48,170 +48,167 @@
 class RaceTrackInfo
             : public Object
          {
-        
 
-    private: id: Integer;
+    private: Integer id;
 
-    private: name: string;
+    private: std::string name;
 
-    private: raceTrackFrictionProperties: RaceTrackFrictionProperties;
+    private: RaceTrackFrictionProperties raceTrackFrictionProperties;
 
-    private: foregroundBasicColor: BasicColor;
+    private: BasicColor foregroundBasicColor;
 
-    private: backgroundBasicColor: BasicColor;
+    private: BasicColor backgroundBasicColor;
 
-    private: qualifyTime: int32_t;
+    private: int32_t qualifyTime;
 
-    private: worstContinuePosition: int32_t;
+    private: int32_t worstContinuePosition;
 
-    private: totalLaps: int32_t;
+    private: int32_t totalLaps;
 
-public constructor (Integer id, string name, RaceTrackFrictionProperties raceTrackFrictionProperties, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps){
-
-            super();
-        this.id= id;
+public: RaceTrackInfo(Integer id, std::string name, RaceTrackFrictionProperties raceTrackFrictionProperties, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, int32_t qualifyTime, int32_t worstContinuePosition, int32_t totalLaps){
+this->id= id;
     
-this.name= name;
+this->name= name;
     
-this.raceTrackFrictionProperties= raceTrackFrictionProperties;
+this->raceTrackFrictionProperties= raceTrackFrictionProperties;
     
-this.backgroundBasicColor= backgroundBasicColor;
+this->backgroundBasicColor= backgroundBasicColor;
     
-this.foregroundBasicColor= foregroundBasicColor;
+this->foregroundBasicColor= foregroundBasicColor;
     
-this.qualifyTime= qualifyTime;
+this->qualifyTime= qualifyTime;
     
-this.worstContinuePosition= worstContinuePosition;
+this->worstContinuePosition= worstContinuePosition;
     
-this.totalLaps= totalLaps;
+this->totalLaps= totalLaps;
     
 }
 
 
-    public Integer getId(){
+    public: Integer getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    setId(Integer id){
-this.id= id;
+    private: void setId(Integer id){
+this->id= id;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public int32_t getQualifyTime(){
+    public: int32_t getQualifyTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.qualifyTime;
+                        return this->qualifyTime;
     
 }
 
 
-    public setQualifyTime(int32_t qualifyTime){
-this.qualifyTime= qualifyTime;
+    public: void setQualifyTime(int32_t qualifyTime){
+this->qualifyTime= qualifyTime;
     
 }
 
 
-    public int32_t getWorstContinuePosition(){
+    public: int32_t getWorstContinuePosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.worstContinuePosition;
+                        return this->worstContinuePosition;
     
 }
 
 
-    public setWorstContinuePosition(int32_t worstContinuePosition){
-this.worstContinuePosition= worstContinuePosition;
+    public: void setWorstContinuePosition(int32_t worstContinuePosition){
+this->worstContinuePosition= worstContinuePosition;
     
 }
 
 
-    public int32_t getTotalLaps(){
+    public: int32_t getTotalLaps(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalLaps;
+                        return this->totalLaps;
     
 }
 
 
-    public setTotalLaps(int32_t totalLaps){
-this.totalLaps= totalLaps;
+    public: void setTotalLaps(int32_t totalLaps){
+this->totalLaps= totalLaps;
     
 }
 
 
-    public BasicColor getForegroundBasicColor(){
+    public: BasicColor getForegroundBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.foregroundBasicColor;
+                        return this->foregroundBasicColor;
     
 }
 
 
-    public setForegroundBasicColor(BasicColor foregroundBasicColor){
-this.foregroundBasicColor= foregroundBasicColor;
+    public: void setForegroundBasicColor(BasicColor foregroundBasicColor){
+this->foregroundBasicColor= foregroundBasicColor;
     
 }
 
 
-    public BasicColor getBackgroundBasicColor(){
+    public: BasicColor getBackgroundBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.backgroundBasicColor;
+                        return this->backgroundBasicColor;
     
 }
 
 
-    public setBackgroundBasicColor(BasicColor backgroundBasicColor){
-this.backgroundBasicColor= backgroundBasicColor;
+    public: void setBackgroundBasicColor(BasicColor backgroundBasicColor){
+this->backgroundBasicColor= backgroundBasicColor;
     
 }
 
 
-    public RaceTrackFrictionProperties getRaceTrackFrictionProperties(){
+    public: RaceTrackFrictionProperties getRaceTrackFrictionProperties(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.raceTrackFrictionProperties;
+                        return this->raceTrackFrictionProperties;
     
 }
 
 
-    public setRaceTrackFrictionProperties(RaceTrackFrictionProperties raceTrackFrictionProperties){
-this.raceTrackFrictionProperties= raceTrackFrictionProperties;
+    public: void setRaceTrackFrictionProperties(RaceTrackFrictionProperties raceTrackFrictionProperties){
+this->raceTrackFrictionProperties= raceTrackFrictionProperties;
     
 }
 

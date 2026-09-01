@@ -324,159 +324,158 @@
 #include "DemoGameMidletEvent.h"
 #include "DemoGameMidletStateFactory.h"
 
-class GameMidlet: public ProgressMidlet: public CommandListener {
-        
+class GameMidlet: public ProgressMidlet, public CommandListener {
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    protected: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    const features: Features = Features.getInstance()!;
+    protected: const Features features = Features::getInstance();
 
-    const midletStrings: MidletStrings = MidletStrings.getInstance()!;
+    protected: const MidletStrings midletStrings = MidletStrings::getInstance();
 
-    const myCommandsFactory: MyCommandsFactory = MyCommandsFactory.getInstance()!;
+    protected: const MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();
 
-    const gameStrings: GameStrings = GameStrings.getInstance()!;
+    protected: const GameStrings gameStrings = GameStrings::getInstance();
 
-    const gameAdStateFactory: GameAdStateFactory = GameAdStateFactory.getInstance()!;
+    protected: const GameAdStateFactory gameAdStateFactory = GameAdStateFactory::getInstance();
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    const tsUtil: TsUtil = TsUtil.getInstance()!;
+    protected: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const DISPLAYABLE: string = " Displayable: ";
+    private: const std::string DISPLAYABLE = " Displayable: ";
 
-    private: const COMMAND_NAME: string = "command Name/Label: ";
+    private: const std::string COMMAND_NAME = "command Name/Label: ";
 
-    private: const NO_COMMAND: string = "No Command";
+    private: const std::string NO_COMMAND = "No Command";
 
-    private: const NO_DISPLAYABLE: string = "No Displayable";
+    private: const std::string NO_DISPLAYABLE = "No Displayable";
 
-    private: const COMMAND_ACTION: string = new StringMaker().append("GameMidlet::")!.append(this.midletStrings!.COMMAND_ACTION)!.toString()!;
+    private: const std::string COMMAND_ACTION = StringMaker().append("GameMidlet::").append(this->midletStrings.COMMAND_ACTION).toString();
 
-    private: const PAUSE_APP_BACKGROUND: string = "pauseAppBackground";
+    private: const std::string PAUSE_APP_BACKGROUND = "pauseAppBackground";
 
-    private: const UN_PAUSE_APP_BACKGROUND: string = "unPauseAppBackground";
+    private: const std::string UN_PAUSE_APP_BACKGROUND = "unPauseAppBackground";
 
-    private: const aboutCommandProcessor: AboutCommandProcessor = AboutCommandProcessor.getInstance()!;
+    private: const AboutCommandProcessor aboutCommandProcessor = AboutCommandProcessor::getInstance();
 
-    private: const webCommandProcessor: WebCommandProcessor = WebCommandProcessor.getInstance()!;
+    private: const WebCommandProcessor webCommandProcessor = WebCommandProcessor::getInstance();
 
-    private: const gameMidletStateFactory: GameMidletStateFactory = GameMidletStateFactory.getInstance()!;
+    private: const GameMidletStateFactory gameMidletStateFactory = GameMidletStateFactory::getInstance();
 
-    const gameStartTimeHelper: TimeDelayHelper = new TimeDelayHelper(240);
+    protected: const TimeDelayHelper gameStartTimeHelper = TimeDelayHelper(240);
 
-    private: const fullScreenUtil: FullScreenUtil = FullScreenUtil.getInstance()!;
+    private: const FullScreenUtil fullScreenUtil = FullScreenUtil::getInstance();
 
-    private: const debugInterface: DebugInterface;
+    private: DebugInterface debugInterface;
 
-    private: allbinaryGameCanvasRunnableInterface: GameCanvasRunnableInterface = NullGameCanvasRunnable.NULL_GAME_CANVAS_RUNNABLE;
+    private: GameCanvasRunnableInterface allbinaryGameCanvasRunnableInterface = NullGameCanvasRunnable::NULL_GAME_CANVAS_RUNNABLE;
 
-    private: thread: Thread = NullThread.NULL_THREAD;
+    private: Thread thread = NullThread::NULL_THREAD;
 
-    private: loadGameForm: CommandForm;
+    private: CommandForm loadGameForm;
 
-    private: isFullScreen: bool= false;
+    private: bool isFullScreen= false;
 
-    private: resized: bool= false;
+    private: bool resized= false;
 
-public constructor (ClientInformationFactory clientInformationFactory);
+public: GameMidlet(ClientInformationFactory clientInformationFactory);
 
-    init();
-
-                //@Throws(Exception.constructor)
-            
-    setDemo();
+    protected: void init();
 
                 //@Throws(Exception.constructor)
             
-    createGame();
+    protected: void setDemo();
 
                 //@Throws(Exception.constructor)
             
-    mediaShutdown();
+    protected: void createGame();
 
-    public stopAll();
+                //@Throws(Exception.constructor)
+            
+    protected: void mediaShutdown();
 
-    pauseApp();
+    public: void stopAll();
 
-    pauseAppBackground(bool background);
+    protected: void pauseApp();
 
-    unPauseApp();
+    protected: void pauseAppBackground(bool background);
 
-    unPauseAppBackground(bool background);
+    protected: void unPauseApp();
 
-    destroyAppInRunnable(bool unconditional, bool isProgress);
+    protected: void unPauseAppBackground(bool background);
 
-    destroyApp(bool unconditional);
+    protected: void destroyAppInRunnable(bool unconditional, bool isProgress);
+
+    protected: void destroyApp(bool unconditional);
 
                 //@Throws(MIDletStateChangeException.constructor)
             
-    startApp();
+    protected: void startApp();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public commandAction(Command command, Displayable displayable);
+    public: void commandAction(Command command, Displayable displayable);
 
-    updateFullScreen();
+    private: void updateFullScreen();
 
-    public onEvent(AllBinaryEventObject eventObject);
-
-                //@Throws(Exception.constructor)
-            
-    MyCanvas getInputMappingInstructionsCanvas();
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    MyCanvas getInputMappingCanvas();
+    protected: MyCanvas getInputMappingInstructionsCanvas();
 
                 //@Throws(Exception.constructor)
             
-    MyCanvas getAboutCanvas();
+    protected: MyCanvas getInputMappingCanvas();
 
                 //@Throws(Exception.constructor)
             
-    HelpPaintable getHelpPaintable();
+    protected: MyCanvas getAboutCanvas();
 
                 //@Throws(Exception.constructor)
             
-    HighScoresCanvas createHighScoresCanvas();
+    protected: HelpPaintable getHelpPaintable();
 
                 //@Throws(Exception.constructor)
             
-    public startGameCanvasRunnableInterface();
+    protected: HighScoresCanvas createHighScoresCanvas();
 
                 //@Throws(Exception.constructor)
             
-    stopGameCanvasRunnableInterface();
-
-    public GameCanvasRunnableInterface getGameCanvasRunnableInterface();
-
-    public setGameCanvasRunnableInterface(GameCanvasRunnableInterface gameCanvasRunnableInterface);
-
-    AllBinaryGameLayerManager createGameLayerManager();
-
-    CommandForm getGameOptionsForm();
+    public: void startGameCanvasRunnableInterface();
 
                 //@Throws(Exception.constructor)
             
-    public save();
+    protected: void stopGameCanvasRunnableInterface();
+
+    public: GameCanvasRunnableInterface getGameCanvasRunnableInterface();
+
+    public: void setGameCanvasRunnableInterface(GameCanvasRunnableInterface gameCanvasRunnableInterface);
+
+    protected: AllBinaryGameLayerManager createGameLayerManager();
+
+    protected: CommandForm getGameOptionsForm();
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getCurrentStateHashtable();
+    public: void save();
 
-    public setLoadGameForm(LoadGameForm loadGameForm);
+                //@Throws(Exception.constructor)
+            
+    public: Hashtable<any, any> getCurrentStateHashtable();
 
-    public CommandForm getLoadGameForm();
+    public: void setLoadGameForm(LoadGameForm loadGameForm);
 
-    public setResized(bool resized);
+    public: CommandForm getLoadGameForm();
 
-    public bool isResized();
+    public: void setResized(bool resized);
 
-    private: startedBefore: bool = false;
+    public: bool isResized();
 
-    public bool isDemoLoading();
+    private: bool startedBefore = false;
+
+    public: bool isDemoLoading();
 
 };
 

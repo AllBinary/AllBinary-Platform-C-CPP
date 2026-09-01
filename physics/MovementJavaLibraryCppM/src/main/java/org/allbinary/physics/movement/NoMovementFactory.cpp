@@ -43,28 +43,27 @@
 class NoMovementFactory
             : public Object
          {
-        
 
-    private: static const instance: NoMovementFactory = new NoMovementFactory();
+    private: static NoMovementFactory instance() { return NoMovementFactory(); }
 
-    public static NoMovementFactory getInstance(){
+    public: static NoMovementFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMovementFactory.instance;
+                        return NoMovementFactory::instance();
     
 }
 
 
-    private: const movement: Movement = new Movement();
+    private: const Movement movement = Movement();
 
-    public Movement getMovmentInstance(){
+    public: Movement getMovmentInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.movement;
+                        return this->movement;
     
 }
 

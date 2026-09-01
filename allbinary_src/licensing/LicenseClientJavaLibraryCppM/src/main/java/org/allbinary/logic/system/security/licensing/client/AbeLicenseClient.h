@@ -75,20 +75,19 @@
 class AbeLicenseClient
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const MINSERVERS: int32_t = 3;
+    private: const int32_t MINSERVERS = 3;
 
-public constructor ();
+public: AbeLicenseClient();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation);
+    public: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation);
 
 };
 

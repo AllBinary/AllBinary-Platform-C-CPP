@@ -56,14 +56,13 @@
         #include "AdjustedImageArrayRotationAnimation.h"
 #include "ImageArrayRotationAnimationInfo.h"
 
-class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation: public CacheableInterface {
-        
+class ImageArrayRotationAnimationCacheable: public AdjustedImageArrayRotationAnimation, public CacheableInterface {
 
-public constructor (any = {} anyType, AnimationBehavior animationBehavior);
+public: ImageArrayRotationAnimationCacheable(Object* anyType, AnimationBehavior animationBehavior);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -70,19 +70,18 @@
         #include "TimeFiredInterface.h"
 
 class TimedFireAI: public BasicAI {
-        
 
-    public static const TIME: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(1)!;
+    public: static const Integer TIME = SmallIntegerSingletonFactory::getInstance().getAt(1);
 
-    const maxFireDelayTimeHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    protected: const TimeDelayHelper maxFireDelayTimeHelper = TimeDelayHelper(0);
 
-    private: const delay: int32_t;
+    private: int32_t delay;
 
-public constructor (int32_t delay, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: TimedFireAI(int32_t delay, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

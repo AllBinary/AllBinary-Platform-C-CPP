@@ -43,20 +43,19 @@
 #include "YAxisMathVectorUtil.h"
 
 class YAxisMathVector: public MathVector {
-        
 
-public constructor (BasicDecimal magnitudeBasicDecimal, int32_t direction){
+public: YAxisMathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction){
             super(magnitudeBasicDecimal, direction);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.calculate();
+this->calculate();
     
 }
 
 
-    public BasicDecimal getResult(){
+    public: BasicDecimal getResult(){
 
 
 
@@ -66,11 +65,11 @@ this.calculate();
 }
 
 
-    calculate(){
+    private: void calculate(){
 
-    result: int64_t = YAxisMathVectorUtil.calculate(this.getMagnitude()!.getUnscaled(), this.getDirection())!;;
+    int64_t result = YAxisMathVectorUtil::calculate(this->getMagnitude().getUnscaled(), this->getDirection());;
     
-this.resultBasicDecimal= new BasicDecimal(result);
+this->resultBasicDecimal= BasicDecimal(result);
     
 }
 

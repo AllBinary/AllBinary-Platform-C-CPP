@@ -65,35 +65,34 @@
 class EmulatorCustomRenderer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const renderStrings: RendererStrings = RendererStrings.getInstance()!;
+    protected: const RendererStrings renderStrings = RendererStrings::getInstance();
 
-    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig){
-this.logUtil!.putF(this.commonStrings!.START, this, this.renderStrings!.ON_SURFACE_CREATED);
+    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig){
+this->logUtil.putF(this->commonStrings.START, this, this->renderStrings.ON_SURFACE_CREATED);
     
 
-    initEmulatorFactory: InitEmulatorFactory = InitEmulatorFactory.getInstance()!;;
+    InitEmulatorFactory initEmulatorFactory = InitEmulatorFactory::getInstance();;
     
 
-                        if(!initEmulatorFactory!.isInitEmulator())
+                        if(!initEmulatorFactory.isInitEmulator())
                         
                                     {
                                     
         try {
             
-    WAIT_FOR_EMULATOR: string = "Waiting on Emulator Initialization";;
+    std::string WAIT_FOR_EMULATOR = "Waiting on Emulator Initialization";;
     
 
-        while(!initEmulatorFactory!.isInitEmulator())
+        while(!initEmulatorFactory.isInitEmulator())
         {
-PreLogUtil.put(WAIT_FOR_EMULATOR, this, this.renderStrings!.ON_SURFACE_CREATED);
+PreLogUtil::put(WAIT_FOR_EMULATOR, this, this->renderStrings.ON_SURFACE_CREATED);
     
-Thread.sleep(180);
+Thread::sleep(180);
     
 }
 
@@ -101,7 +100,7 @@ Thread.sleep(180);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.renderStrings!.ON_SURFACE_CREATED, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->renderStrings.ON_SURFACE_CREATED, e);
     
 }
 

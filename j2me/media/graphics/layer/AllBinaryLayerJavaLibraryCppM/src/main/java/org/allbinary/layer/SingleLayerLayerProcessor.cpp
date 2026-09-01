@@ -45,10 +45,9 @@
 #include "AllBinaryLayerManager.h"
 
 class SingleLayerLayerProcessor: public LayerProcessor {
-        
 
-public constructor (){
-            super(new SingleLayerLayerManager());
+public: SingleLayerLayerProcessor(){
+            super(SingleLayerLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -58,11 +57,11 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager allBinaryLayerManager){
 
-    layerManager: LayerManager = this.getLayerManager()!;;
+    LayerManager layerManager = this->getLayerManager();;
     
-this.processAt(allBinaryLayerManager, layerManager!.getLayerAt(0) as AllBinaryLayer, 0);
+this->processAt(allBinaryLayerManager, layerManager.getLayerAt(0) as AllBinaryLayer, 0);
     
 }
 

@@ -64,15 +64,14 @@
 class PickedUpLayerInterfaceFactoryBase
             : public Object
         : public PickedUpLayerInterfaceFactoryInterface {
-        
 
-    public static const NULL_PICKED_UP_LAYER_FACTORY_BASE: PickedUpLayerInterfaceFactoryBase = new PickedUpLayerInterfaceFactoryBase();
+    public: static const PickedUpLayerInterfaceFactoryBase NULL_PICKED_UP_LAYER_FACTORY_BASE = PickedUpLayerInterfaceFactoryBase();
 
-    public AllBinaryLayer getIconLayer();
+    public: AllBinaryLayer getIconLayer();
 
-    public Animation getAnimationInterface();
+    public: Animation getAnimationInterface();
 
-    public PickedUpLayerType getPickedUpLayerType();
+    public: PickedUpLayerType getPickedUpLayerType();
 
 };
 

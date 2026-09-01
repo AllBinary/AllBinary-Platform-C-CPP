@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/input/analog/AnalogLocationInputFactory.h>
@@ -51,71 +53,68 @@
 class LocalPlayerInputIdFactory
             : public Object
          {
-        
 
-    private: static const instance: LocalPlayerInputIdFactory = new LocalPlayerInputIdFactory();
+    private: static LocalPlayerInputIdFactory instance() { return LocalPlayerInputIdFactory(); }
 
-    public static LocalPlayerInputIdFactory getInstance(){
+    public: static LocalPlayerInputIdFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LocalPlayerInputIdFactory.instance;
+                        return LocalPlayerInputIdFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const MAX_NUMBER_OF_PLAYERS: int32_t = 6;
+    public: const int32_t MAX_NUMBER_OF_PLAYERS = 6;
 
-    private: const MAX_FAST_DEVICEID: int32_t = 65;
+    private: const int32_t MAX_FAST_DEVICEID = 65;
 
-    private: const deviceIdToplayerId: std::vector<int32_t> = new Array(this.MAX_FAST_DEVICEID);
+    private: const std::vector<int32_t> deviceIdToplayerId = new Array(this->MAX_FAST_DEVICEID);
 
-    private: const playerIdToDeviceId: std::vector<int32_t> = new Array(this.MAX_NUMBER_OF_PLAYERS);
+    private: const std::vector<int32_t> playerIdToDeviceId = new Array(this->MAX_NUMBER_OF_PLAYERS);
 
-    private: const playersInPlay: std::vector<bool> = new Array(this.MAX_NUMBER_OF_PLAYERS);
+    private: const std::vector<bool> playersInPlay = new Array(this->MAX_NUMBER_OF_PLAYERS);
 
-    private: totalDevicesMapped: int32_t = 0;
+    private: int32_t totalDevicesMapped = 0;
 
-private constructor (){
+private: LocalPlayerInputIdFactory(){
 
-            super();
-        
 
 
 
                         for (
-    index: int32_t = this.deviceIdToplayerId!.length -1;index >= 0; index--)
+    int32_t index = this->deviceIdToplayerId.size() -1;index >= 0; index--)
         {
-this.deviceIdToplayerId[index]=  -1;
+this->deviceIdToplayerId[index]=  -1;
     
 }
 
 }
 
 
-    public int32_t getDeviceId(int32_t playerInputId){
+    public: int32_t getDeviceId(int32_t playerInputId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerIdToDeviceId[playerInputId]!;
+                        return this->playerIdToDeviceId[playerInputId]!;
     
 }
 
 
-    public int32_t getPlayerForDevice(int32_t deviceId){
+    public: int32_t getPlayerForDevice(int32_t deviceId){
 
-    index: int32_t= 0;;
+    int32_t index= 0;;
     
 
-                        if(deviceId < this.MAX_FAST_DEVICEID)
+                        if(deviceId < this->MAX_FAST_DEVICEID)
                         
                                     {
                                     
-    playerInputId: int32_t = this.deviceIdToplayerId[deviceId]!;;
+    int32_t playerInputId = this->deviceIdToplayerId[deviceId];;
     
 
                         if(playerInputId !=  -1)
@@ -139,10 +138,10 @@ this.deviceIdToplayerId[index]=  -1;
 
 
                         for (
-    index= this.totalDevicesMapped -1; index >= 0; index--)
+    index= this->totalDevicesMapped -1; index >= 0; index--)
         {
 
-                        if(this.playerIdToDeviceId[index] == deviceId)
+                        if(this->playerIdToDeviceId[index] == deviceId)
                         
                                     {
                                     
@@ -159,30 +158,30 @@ this.deviceIdToplayerId[index]=  -1;
 
                         }
                             
-index= this.totalDevicesMapped;
+index= this->totalDevicesMapped;
     
 
-                        if(deviceId < this.MAX_FAST_DEVICEID)
+                        if(deviceId < this->MAX_FAST_DEVICEID)
                         
                                     {
-                                    this.deviceIdToplayerId[deviceId]= index;
+                                    this->deviceIdToplayerId[deviceId]= index;
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF(new StringMaker().append("Added DeviceId: ")!.appendint(deviceId)!.append(" beyond fast Id list")!.toString(), this, "getPlayerForDevice");
+                            this->logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).append(" beyond fast Id list").toString(), this, "getPlayerForDevice");
     
 
                         }
                             
-this.playerIdToDeviceId[index]= deviceId;
+this->playerIdToDeviceId[index]= deviceId;
     
-AnalogLocationInputFactory.getInstance()!.addPlayer(this.totalDevicesMapped);
+AnalogLocationInputFactory::getInstance().addPlayer(this->totalDevicesMapped);
     
-this.totalDevicesMapped++;
+this->totalDevicesMapped++;
     
-this.logUtil!.putF(new StringMaker().append("Added DeviceId: ")!.appendint(deviceId)!.append(" at: ")!.appendint(index)!.append(" Total: ")!.appendint(this.totalDevicesMapped)!.toString(), this, "getPlayerForDevice");
+this->logUtil.putF(StringMaker().append("Added DeviceId: ").appendint(deviceId).append(" at: ").appendint(index).append(" Total: ").appendint(this->totalDevicesMapped).toString(), this, "getPlayerForDevice");
     
 
 
@@ -193,19 +192,19 @@ this.logUtil!.putF(new StringMaker().append("Added DeviceId: ")!.appendint(devic
 }
 
 
-    public int32_t getTotalDevicesInPlay(){
+    public: int32_t getTotalDevicesInPlay(){
 
-    total: int32_t = 0;;
+    int32_t total = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = this.totalDevicesMapped -1;index >= 0; index--)
+    int32_t index = this->totalDevicesMapped -1;index >= 0; index--)
         {
 
-                        if(this.playersInPlay[index] == true)
+                        if(this->playersInPlay[index] == true)
                         
                                     {
                                     total++;
@@ -224,38 +223,38 @@ this.logUtil!.putF(new StringMaker().append("Added DeviceId: ")!.appendint(devic
 }
 
 
-    public bool isPlayerInPlay(int32_t playerInputId){
+    public: bool isPlayerInPlay(int32_t playerInputId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playersInPlay[playerInputId]!;
+                        return this->playersInPlay[playerInputId]!;
     
 }
 
 
-    public setPlayerInPlay(int32_t playerInputId){
-this.logUtil!.putF(new StringMaker().append("Setting PlayerInPlay with playerInputId: ")!.appendint(playerInputId)!.toString(), this, "setPlayerInPlay");
+    public: void setPlayerInPlay(int32_t playerInputId){
+this->logUtil.putF(StringMaker().append("Setting PlayerInPlay with playerInputId: ").appendint(playerInputId).toString(), this, "setPlayerInPlay");
     
-this.playersInPlay[playerInputId]= true;
-    
-}
-
-
-    public setPlayerOutOfPlay(int32_t playerInputId){
-this.logUtil!.putF(new StringMaker().append("Setting PlayerOutOfPlay with playerInputId: ")!.appendint(playerInputId)!.toString(), this, "setPlayerOutOfPlay");
-    
-this.playersInPlay[playerInputId]= false;
+this->playersInPlay[playerInputId]= true;
     
 }
 
 
-    public std::vector<bool> getPlayersInPlay(){
+    public: void setPlayerOutOfPlay(int32_t playerInputId){
+this->logUtil.putF(StringMaker().append("Setting PlayerOutOfPlay with playerInputId: ").appendint(playerInputId).toString(), this, "setPlayerOutOfPlay");
+    
+this->playersInPlay[playerInputId]= false;
+    
+}
+
+
+    public: std::vector<bool> getPlayersInPlay(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playersInPlay;
+                        return this->playersInPlay;
     
 }
 

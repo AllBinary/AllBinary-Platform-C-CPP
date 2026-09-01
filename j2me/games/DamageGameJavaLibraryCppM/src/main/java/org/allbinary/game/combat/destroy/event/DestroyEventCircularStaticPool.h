@@ -58,21 +58,20 @@
 class DestroyEventCircularStaticPool
             : public Object
          {
-        
 
-    private: static const instance: DestroyEventCircularStaticPool = new DestroyEventCircularStaticPool();
+    private: static DestroyEventCircularStaticPool instance() { return DestroyEventCircularStaticPool(); }
 
-    public static DestroyEventCircularStaticPool getInstance();
+    public: static DestroyEventCircularStaticPool getInstance();
 
-    private: EVENT_POOL: AllBinaryEventCircularPool = new AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
 
-private constructor ();
+private: DestroyEventCircularStaticPool();
 
-    public init(AllBinaryGameCanvas combatGameCanvas);
+    public: void init(AllBinaryGameCanvas combatGameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public DestroyedEvent getInstanceForLayer(AllBinaryLayer layerInterface);
+    public: DestroyedEvent getInstanceForLayer(AllBinaryLayer layerInterface);
 
 };
 

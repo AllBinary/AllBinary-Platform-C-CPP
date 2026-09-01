@@ -61,26 +61,23 @@
 class StoreFrontInventoryStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: storeFrontInventoryStatisticsInterface: StoreFrontInventoryStatisticsInterface;
+    private: StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface;
 
-public constructor (StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface){
-
-            super();
-        this.storeFrontInventoryStatisticsInterface= storeFrontInventoryStatisticsInterface;
+public: StoreFrontInventoryStatisticsView(StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface){
+this->storeFrontInventoryStatisticsInterface= storeFrontInventoryStatisticsInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.storeFrontInventoryStatisticsInterface!.toHashMap()!;;
+    HashMap<any, any> hashMap = this->storeFrontInventoryStatisticsInterface.toHashMap();;
     
 
-    node: Node = ModDomHelper.createNameValueNodes(document, StoreFrontInventoryStatisticsData.getInstance()!.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNameValueNodes(document, StoreFrontInventoryStatisticsData::getInstance().NAME, hashMap);;
     
 
 

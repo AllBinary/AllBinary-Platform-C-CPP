@@ -73,22 +73,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameLayer.h"
 
-class PlayerGameInputGameLayer: public AllBinaryGameLayer: public PlayerGameInputCompositeInterface {
-        
+class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInputCompositeInterface {
 
-    private: playerGameInput: PlayerGameInput;
+    private: PlayerGameInput playerGameInput;
 
-public constructor (int32_t playerInputId);
+public: PlayerGameInputGameLayer(int32_t playerInputId);
 
-    public PlayerGameInput getPlayerGameInput();
+    public: PlayerGameInput getPlayerGameInput();
 
-    public initInputProcessors();
+    public: void initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager myManager);
+    public: void processInput(AllBinaryLayerManager myManager);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

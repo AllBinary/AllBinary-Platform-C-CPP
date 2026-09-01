@@ -82,66 +82,63 @@
 class StylesValidationFactory
             : public Object
          {
-        
 
-    private: static const instance: StylesValidationFactory = new StylesValidationFactory();
+    private: static StylesValidationFactory instance() { return StylesValidationFactory(); }
 
-    public static StylesValidationFactory getInstance(){
+    public: static StylesValidationFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StylesValidationFactory.instance;
+                        return StylesValidationFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getInstance(HashMap<any, any> hashMap){
+    public: static Vector getInstance(HashMap<any, any> hashMap){
 
-    stylesDocument: Document = hashMap!.get(NameSpaceRequestParamData.DOCUMENT) as Document;;
+    Document stylesDocument = hashMap.get(NameSpaceRequestParamData::DOCUMENT) as Document;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StylesValidationFactory.getInstance()!.getInstance(stylesDocument);;
+                        return StylesValidationFactory::getInstance().getInstance(stylesDocument);;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: StylesValidationFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getInstance(Document document){
+    public: Vector getInstance(Document document){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    nodeList: NodeList = document.getElementsByTagName(StylesData.getInstance()!.NAME)!;;
+    NodeList nodeList = document.getElementsByTagName(StylesData::getInstance().NAME);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Style Present: " +DomDocumentHelper.toString(document), this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Style Present: " +DomDocumentHelper::toString(document), this, commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Styles Present: " +nodeList!.getLength(), this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Styles Present: " +nodeList.getLength(), this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -151,19 +148,19 @@ private constructor (){
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    stylesNode: Node = nodeList!.item(index)!;;
+    Node stylesNode = nodeList.item(index);;
     
 
-    styleNodeList: Vector = DomSearchHelper.getAllNodes(StyleData.getInstance()!.NAME, stylesNode!.getChildNodes())!;;
+    Vector styleNodeList = DomSearchHelper::getAllNodes(StyleData::getInstance().NAME, stylesNode.getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Number Of Style Nodes Present: " +styleNodeList!.length, this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Number Of Style Nodes Present: " +styleNodeList.length, this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -173,19 +170,19 @@ private constructor (){
 
 
                         for (
-    styleNodesIndex: int32_t = 0;styleNodesIndex < styleNodeList!.length; styleNodesIndex++)
+    int32_t styleNodesIndex = 0;styleNodesIndex < styleNodeList.length; styleNodesIndex++)
         {
 
-    styleNode: Node = styleNodeList!.get(styleNodesIndex) as Node;;
+    Node styleNode = styleNodeList.get(styleNodesIndex) as Node;;
     
 
-    cssElementStyleNodeList: Vector = DomSearchHelper.getAllNodes(CssElementData.getInstance()!.NAME, styleNode!.getChildNodes())!;;
+    Vector cssElementStyleNodeList = DomSearchHelper::getAllNodes(CssElementData::getInstance().NAME, styleNode.getChildNodes());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Number Of Element Nodes Present: " +cssElementStyleNodeList!.length, this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Number Of Element Nodes Present: " +cssElementStyleNodeList.length, this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -194,17 +191,17 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CssElementsValidationFactory.getInstance(cssElementStyleNodeList);;
+                        return CssElementsValidationFactory::getInstance(cssElementStyleNodeList);;
     
 }
 
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("No Style Present", this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("No Style Present", this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -213,7 +210,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Vector();
+                        return Vector();
     
 }
 

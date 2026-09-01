@@ -47,59 +47,58 @@
         #include "UrlGlobalsInterface.h"
 
 class WebAppUrlGlobals: public UrlGlobalsInterface {
-        
 
-    private: path: string;
+    private: std::string path;
 
-    private: isWebappPathSet: bool = false;
+    private: bool isWebappPathSet = false;
 
-    public bool isTestingMode(){
+    public: bool isTestingMode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo.getInstance()!.isTesting();;
+                        return InitInfo::getInstance().isTesting();;
     
 }
 
 
-    public string getWebappPath(){
+    public: std::string getWebappPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.path;
+                        return this->path;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setWebappPath(string path){
+    public: void setWebappPath(std::string path){
 path= path;
     
-this.isWebappPathSet= true;
+this->isWebappPathSet= true;
     
 }
 
 
-    public string getTestHtmlPath(){
+    public: std::string getTestHtmlPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InitInfo.getInstance()!.getTestHtmlPath();;
+                        return InitInfo::getInstance().getTestHtmlPath();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getMainPath(){
+    public: std::string getMainPath(){
 
-    mainPath: string = InitInfo.getInstance()!.getMainPath()!;;
+    std::string mainPath = InitInfo::getInstance().getMainPath();;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(mainPath))
+                        if(!StringValidationUtil::getInstance().isEmpty(mainPath))
                         
                                     {
                                     
@@ -112,14 +111,14 @@ this.isWebappPathSet= true;
                                     }
                                 
                              else 
-                        if(this.isWebappPathSet)
+                        if(this->isWebappPathSet)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getWebappPath();;
+                        return this->getWebappPath();;
     
 
                                     }
@@ -128,7 +127,7 @@ this.isWebappPathSet= true;
                             
 
 
-                            throw new Exception("Webapp Path is not set");
+                            throw Exception("Webapp Path is not set");
                     
 
                         }

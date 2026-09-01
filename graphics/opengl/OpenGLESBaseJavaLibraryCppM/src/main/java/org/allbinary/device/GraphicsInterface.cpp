@@ -44,9 +44,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GraphicsInterface {
-        
 
-    setFontDebug(Font font, FontDebugBase fontDebug)
+    void setFontDebug(Font font, FontDebugBase fontDebug)
 
 };
 

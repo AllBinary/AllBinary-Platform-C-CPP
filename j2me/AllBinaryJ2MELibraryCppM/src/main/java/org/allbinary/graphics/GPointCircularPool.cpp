@@ -45,23 +45,20 @@
         #include "CustomGPoint.h"
 
 class GPointCircularPool: public BaseCircularPool {
-        
 
-public constructor (int32_t size){
-
-            super();
-        this.circularIndexUtil= CircularIndexUtil.createInstance(size);
+public: GPointCircularPool(int32_t size){
+this->circularIndexUtil= CircularIndexUtil::createInstance(size);
     
-this.OBJECT_ARRAY= new Array(size);
+this->OBJECT_ARRAY= new Array(size);
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
-this.OBJECT_ARRAY[index]= CustomGPoint.getInstance3(0, 0);
+this->OBJECT_ARRAY[index]= CustomGPoint::getInstance3(0, 0);
     
 }
 

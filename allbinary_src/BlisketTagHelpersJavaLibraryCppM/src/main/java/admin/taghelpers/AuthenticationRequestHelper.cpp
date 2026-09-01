@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -98,49 +100,44 @@
         #include "TagHelper.h"
 
 class AuthenticationRequestHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.weblisketSession= new WeblisketSession(hashMap, pageContext);
+public: AuthenticationRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
 }
 
 
-public constructor (HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
-
-            super();
-        this.weblisketSession= new WeblisketSession(hashMap, httpServletRequest);
+public: AuthenticationRequestHelper(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest){
+this->weblisketSession= WeblisketSession(hashMap, httpServletRequest);
     
-this.request= httpServletRequest;
+this->request= httpServletRequest;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    string generateNewPassword(){
+    private: std::string generateNewPassword(){
 
-                        if(this.weblisketSession != 
-                                    null
-                                 && this.weblisketSession!.getId() != 
-                                    null
+                        if(this->weblisketSession != 
+                                    nullptr
+                                 && this->weblisketSession.getId() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-    startIndex: int32_t = this.weblisketSession!.getId()!.length()!;;
+    int32_t startIndex = this->weblisketSession.getId().length();;
     
 
                         if(startIndex >= 8)
@@ -150,7 +147,7 @@ this.request= httpServletRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.weblisketSession!.getId()!.substring(startIndex -8);;
+                        return this->weblisketSession.getId().substring(startIndex -8);;
     
 
                                     }
@@ -159,7 +156,7 @@ this.request= httpServletRequest;
                             
 
 
-                            throw new Exception("Error Generating New Password");
+                            throw Exception("Error Generating New Password");
                     
 
                         }
@@ -171,7 +168,7 @@ this.request= httpServletRequest;
                             
 
 
-                            throw new Exception("No Session Available For Generating New Password");
+                            throw Exception("No Session Available For Generating New Password");
                     
 
                         }
@@ -179,45 +176,45 @@ this.request= httpServletRequest;
 }
 
 
-    public Boolean newPassword(){
+    public: Boolean newPassword(){
 
         try {
             
-    userName: string = this.request.getParameter(WeblisketSessionData.REMOVABLEUSERNAME)!;;
+    std::string userName = this->request.getParameter(WeblisketSessionData::REMOVABLEUSERNAME);;
     
 
-    email: string = this.request.getParameter(UserData.MAINEMAIL)!;;
+    std::string email = this->request.getParameter(UserData::MAINEMAIL);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Generating New Password For: " +userName, this, "newPassword()");
+                                    this->logUtil.putF("Generating New Password For: " +userName, this, "newPassword()");
     
 
                                     }
                                 
 
-    userEntityInterface: UserEntityInterface = UserEntityFactory.getInstance()!;;
+    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    userInterface: UserInterface = userEntityInterface!.getUser(userName)!;;
+    UserInterface userInterface = userEntityInterface.getUser(userName);;
     
 
-                        if(userInterface!.getMainEmail()!.compareTo(email) != 0)
+                        if(userInterface.getMainEmail().compareTo(email) != 0)
                         
                                     {
                                     
-                        if(userInterface!.getSecondaryEmail() != 
-                                    null
-                                 && userInterface!.getSecondaryEmail()!.compareTo(email) != 0)
+                        if(userInterface.getSecondaryEmail() != 
+                                    nullptr
+                                 && userInterface.getSecondaryEmail().compareTo(email) != 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Requested Email Is Not In User Profile", this, "newPassword()");
+                                    this->logUtil.putF("Requested Email Is Not In User Profile", this, "newPassword()");
     
 
                                     }
@@ -226,7 +223,7 @@ this.request= httpServletRequest;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -235,22 +232,22 @@ this.request= httpServletRequest;
                                     }
                                 
 
-    newPassword: string = this.generateNewPassword()!;;
+    std::string newPassword = this->generateNewPassword();;
     
-userInterface!.setPassword(newPassword);
-    
-
-    newPasswordHashMap: HashMap<any, any> = userInterface!.toPasswordHashMap()!;;
-    
-UserEntityFactory.getInstance()!.update(userName, newPasswordHashMap);
-    
-new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).process();
+userInterface.setPassword(newPassword);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+    HashMap<any, any> newPasswordHashMap = userInterface.toPasswordHashMap();;
+    
+UserEntityFactory::getInstance().update(userName, newPasswordHashMap);
+    
+NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process();
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Generated New Password For: " +userName, this, "newPassword()");
+                                    this->logUtil.putF("Generated New Password For: " +userName, this, "newPassword()");
     
 
                                     }
@@ -259,17 +256,17 @@ new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).proc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "newPassword()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "newPassword()", e);
     
 
                                     }
@@ -278,49 +275,49 @@ new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).proc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Boolean changePassword(){
+    public: Boolean changePassword(){
 
         try {
             
-    userName: string = this.request.getParameter(WeblisketSessionData.REMOVABLEUSERNAME)!;;
+    std::string userName = this->request.getParameter(WeblisketSessionData::REMOVABLEUSERNAME);;
     
 
-    passwordString: string = this.request.getParameter(WeblisketSessionData.REMOVABLEPASSWORD)!;;
+    std::string passwordString = this->request.getParameter(WeblisketSessionData::REMOVABLEPASSWORD);;
     
 
-    newPassword: string = this.request.getParameter(WeblisketSessionData.REMOVABLENEWPASSWORD)!;;
+    std::string newPassword = this->request.getParameter(WeblisketSessionData::REMOVABLENEWPASSWORD);;
     
 
-    newReenteredPassword: string = this.request.getParameter(WeblisketSessionData.REMOVABLEREENTERNEWPASSWORD)!;;
+    std::string newReenteredPassword = this->request.getParameter(WeblisketSessionData::REMOVABLEREENTERNEWPASSWORD);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Changing Password For User: " +userName, this, "changePassword()");
+                                    this->logUtil.putF("Changing Password For User: " +userName, this, "changePassword()");
     
 
                                     }
                                 
 
-    password: Password = new Password(newPassword);;
+    Password password = Password(newPassword);;
     
 
                         if(!password.isValid().valueOf())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("New Password Is Not Valid", this, "changePassword()");
+                                    this->logUtil.putF("New Password Is Not Valid", this, "changePassword()");
     
 
                                     }
@@ -329,20 +326,20 @@ new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).proc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(newPassword!.compareTo(newReenteredPassword) != 0)
+                        if(newPassword.compareTo(newReenteredPassword) != 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("New Password Fields Do Not Match", this, "changePassword()");
+                                    this->logUtil.putF("New Password Fields Do Not Match", this, "changePassword()");
     
 
                                     }
@@ -351,58 +348,58 @@ new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).proc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    sessionPassword: string = this.weblisketSession!.getPassword()!;;
+    std::string sessionPassword = this->weblisketSession.getPassword();;
     
 
-    userEntityInterface: UserEntityInterface = UserEntityFactory.getInstance()!;;
+    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    userInterface: UserInterface = userEntityInterface!.getUser(userName)!;;
+    UserInterface userInterface = userEntityInterface.getUser(userName);;
     
 
-    login: string = userEntityInterface!.login(userName, passwordString)!;;
+    std::string login = userEntityInterface.login(userName, passwordString);;
     
 
-                        if(login.compareTo(GLOBALS2.LOGINSUCCESS) == 0)
+                        if(login.compareTo(GLOBALS2::LOGINSUCCESS) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Authentication Successful", this, "changePassword()");
+                                    this->logUtil.putF("Authentication Successful", this, "changePassword()");
     
 
                                     }
                                 
 
-    newPasswordHashMap: HashMap<any, any> = password.toHashMap(
-                            nullptr)!;;
+    HashMap<any, any> newPasswordHashMap = password.toHashMap(
+                            nullptr);;
     
-UserEntityFactory.getInstance()!.update(userName, newPasswordHashMap);
+UserEntityFactory::getInstance().update(userName, newPasswordHashMap);
     
-new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).process();
+NewPasswordEmail(this->abeClientInformation, userInterface, newPassword).process();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Authentication Failed", this, "changePassword()");
+                                    this->logUtil.putF("Authentication Failed", this, "changePassword()");
     
 
                                     }
@@ -411,17 +408,17 @@ new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).proc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put("Authentication Failed", this, "changePassword()", e);
+                                    this->logUtil.put("Authentication Failed", this, "changePassword()", e);
     
 
                                     }
@@ -430,33 +427,33 @@ new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).proc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Boolean isRoleValid(string userName, string password, Vector roles){
+    public: Boolean isRoleValid(std::string userName, std::string password, Vector roles){
 
         try {
             
-    userEntityInterface: UserEntityInterface = UserEntityFactory.getInstance()!;;
+    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    userInterface: UserInterface = userEntityInterface!.getUser(userName)!;;
+    UserInterface userInterface = userEntityInterface.getUser(userName);;
     
 
-                        if(userInterface!.getRole() == 
-                                    null
+                        if(userInterface.getRole() == 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
-                                    this.logUtil!.putF("Role is null: " +userInterface!.getRole() +" Valid Roles: " +roles.toString(), this, "isRoleValid()");
+                                    this->logUtil.putF("Role is null: " +userInterface.getRole() +" Valid Roles: " +roles.toString(), this, "isRoleValid()");
     
 
                                     }
@@ -465,43 +462,42 @@ new NewPasswordEmail(this.abeClientInformation, userInterface, newPassword).proc
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    basicUserRoleArray: std::vector<any> = roles.toArray()!;;
+    std::vector<Object*> basicUserRoleArray = roles.toArray();;
     
 
-    size: int32_t = basicUserRoleArray!.length
-                ;;
+    int32_t size = basicUserRoleArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    nextRole: BasicUserRole = basicUserRoleArray[index]! as BasicUserRole;;
+    BasicUserRole nextRole = basicUserRoleArray[index]! as BasicUserRole;;
     
 
-                        if(userInterface!.getRole()!.getBasicUserRole()! === nextRole)
+                        if(userInterface.getRole().getBasicUserRole() === nextRole)
                         
                                     {
-                                    userInterface!.validateSession(this.weblisketSession as WeblisketSessionInterface);
+                                    userInterface.validateSession(this->weblisketSession as WeblisketSessionInterface);
     
-this.request.removeAttribute(WeblisketSessionData.REMOVABLEUSERNAME);
+this->request.removeAttribute(WeblisketSessionData::REMOVABLEUSERNAME);
     
-this.request.removeAttribute(WeblisketSessionData.REMOVABLEPASSWORD);
+this->request.removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -509,21 +505,21 @@ this.request.removeAttribute(WeblisketSessionData.REMOVABLEPASSWORD);
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPER))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Role is not valid: ");
+stringBuffer.append("Role is not valid: ");
     
-stringBuffer!.append(userInterface!.getRole()!.toString());
+stringBuffer.append(userInterface.getRole().toString());
     
-stringBuffer!.append(" Valid Roles: ");
+stringBuffer.append(" Valid Roles: ");
     
-stringBuffer!.append(roles.toString());
+stringBuffer.append(roles.toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "isRoleValid()");
+this->logUtil.putF(stringBuffer.toString(), this, "isRoleValid()");
     
 
                                     }
@@ -532,17 +528,17 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isRoleValid()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isRoleValid()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isRoleValid()", e);
     
 
                                     }
@@ -551,7 +547,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isRoleValid()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

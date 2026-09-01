@@ -49,13 +49,12 @@
 class RemoteInfo
             : public Object
          {
-        
 
-    public static const NEW_PLAYER_ID: int32_t = 0;
+    public: static const int32_t NEW_PLAYER_ID = 0;
 
-    public static const REMOTE_INFO: RemoteInfo = new RemoteInfo(StringUtil.getInstance()!.EMPTY_STRING,  -1,  -1, RemoteInfo.NEW_PLAYER_ID);
+    public: static const RemoteInfo REMOTE_INFO = RemoteInfo(StringUtil::getInstance().EMPTY_STRING,  -1,  -1, RemoteInfo::NEW_PLAYER_ID);
 
-public constructor (string username, int32_t actorSessionId, int32_t playerInputId, int32_t id);
+public: RemoteInfo(std::string username, int32_t actorSessionId, int32_t playerInputId, int32_t id);
 
 };
 

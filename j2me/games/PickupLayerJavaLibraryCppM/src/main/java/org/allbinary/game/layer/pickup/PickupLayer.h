@@ -91,40 +91,39 @@
 #include "CountedPickedUpLayerInterfaceFactory.h"
 #include "PickedUpLayerInterfaceFactoryInterface.h"
 
-class PickupLayer: public MultiPlayerGameLayer: public PickedUpLayerInterface, public PickupableInterface {
-        
+class PickupLayer: public MultiPlayerGameLayer, public PickedUpLayerInterface, public PickupableInterface {
 
-    private: pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
-    private: destroyed: bool= false;
+    private: bool destroyed= false;
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-public constructor (string name, RemoteInfo remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
+public: PickupLayer(std::string name, RemoteInfo remoteInfo, int32_t total, PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
 
-    public init(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface);
+    public: void init(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, Animation animationInterface);
 
-    public initXYZ(int32_t x, int32_t y, int32_t z);
+    public: void initXYZ(int32_t x, int32_t y, int32_t z);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
-    public PickedUpLayerInterfaceFactoryInterface getPickedUpLayerInterfaceFactoryInterface();
+    public: PickedUpLayerInterfaceFactoryInterface getPickedUpLayerInterfaceFactoryInterface();
 
-    public setPickedUp();
+    public: void setPickedUp();
 
-    public bool isDestroyed();
+    public: bool isDestroyed();
 
-    public setDestroyed(bool destroyed);
+    public: void setDestroyed(bool destroyed);
 
-    public damage(int32_t damage, int32_t damageType);
+    public: void damage(int32_t damage, int32_t damageType);
 
-    public int32_t getDamage(int32_t damageType);
+    public: int32_t getDamage(int32_t damageType);
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl);
+    public: void set(GL gl);
 
 };
 

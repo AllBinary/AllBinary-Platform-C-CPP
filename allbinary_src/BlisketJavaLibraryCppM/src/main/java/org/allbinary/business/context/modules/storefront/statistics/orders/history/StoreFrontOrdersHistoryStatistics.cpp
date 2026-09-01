@@ -69,136 +69,133 @@
 class StoreFrontOrdersHistoryStatistics
             : public Object
         : public StoreFrontOrdersHistoryStatisticsInterface {
-        
 
-    private: numberOfOrdersLong: Long;
+    private: Long numberOfOrdersLong;
 
-    private: subTotalMoney: Money;
+    private: Money subTotalMoney;
 
-    private: shippingCostMoney: Money;
+    private: Money shippingCostMoney;
 
-    private: taxesMoney: Money;
+    private: Money taxesMoney;
 
-    private: totalMoney: Money;
+    private: Money totalMoney;
 
-public constructor (StoreFrontInterface storeFrontInterface){
-
-            super();
-        this.subTotalMoney= new Money();
+public: StoreFrontOrdersHistoryStatistics(StoreFrontInterface storeFrontInterface){
+this->subTotalMoney= Money();
     
-this.shippingCostMoney= new Money();
+this->shippingCostMoney= Money();
     
-this.taxesMoney= new Money();
+this->taxesMoney= Money();
     
-this.totalMoney= new Money();
+this->totalMoney= Money();
     
 
-    orderHistoryEntityInterface: OrderHistoryEntityInterface = OrderHistoryEntityFactory.getInstance()!;;
+    OrderHistoryEntityInterface orderHistoryEntityInterface = OrderHistoryEntityFactory::getInstance();;
     
 
-    orderHistoryInterfaceVector: Vector = orderHistoryEntityInterface!.getStoreOrders(storeFrontInterface)!;;
+    Vector orderHistoryInterfaceVector = orderHistoryEntityInterface.getStoreOrders(storeFrontInterface);;
     
 
-    numberOfOrders: int64_t = 0;;
+    int64_t numberOfOrders = 0;;
     
 
-    orderHistoryInterface: OrderHistoryInterface;;
+    OrderHistoryInterface orderHistoryInterface;;
     
 
-    size: int32_t = orderHistoryInterfaceVector!.length!;;
+    int32_t size = orderHistoryInterfaceVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-orderHistoryInterface= orderHistoryInterfaceVector!.get(index) as OrderHistoryInterface;
+orderHistoryInterface= orderHistoryInterfaceVector.get(index) as OrderHistoryInterface;
     
 numberOfOrders= numberOfOrders +1;
     
-this.subTotalMoney!.add(orderHistoryInterface!.getSubTotal());
+this->subTotalMoney.add(orderHistoryInterface.getSubTotal());
     
-this.shippingCostMoney!.add(orderHistoryInterface!.getShippingCost());
+this->shippingCostMoney.add(orderHistoryInterface.getShippingCost());
     
-this.taxesMoney!.add(orderHistoryInterface!.getTaxes());
+this->taxesMoney.add(orderHistoryInterface.getTaxes());
     
-this.totalMoney!.add(orderHistoryInterface!.getTotal());
-    
-}
-
-this.numberOfOrdersLong= new Long(numberOfOrders);
+this->totalMoney.add(orderHistoryInterface.getTotal());
     
 }
 
+this->numberOfOrdersLong= Long(numberOfOrders);
+    
+}
 
-    public Long getNumberOfOrders(){
+
+    public: Long getNumberOfOrders(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.numberOfOrdersLong;
+                        return this->numberOfOrdersLong;
     
 }
 
 
-    public Money getSubTotal(){
+    public: Money getSubTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.subTotalMoney;
+                        return this->subTotalMoney;
     
 }
 
 
-    public Money getShippingCost(){
+    public: Money getShippingCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingCostMoney;
+                        return this->shippingCostMoney;
     
 }
 
 
-    public Money getTaxes(){
+    public: Money getTaxes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.taxesMoney;
+                        return this->taxesMoney;
     
 }
 
 
-    public Money getTotal(){
+    public: Money getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalMoney;
+                        return this->totalMoney;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    storeFrontOrdersHistoryStatisticsData: StoreFrontOrdersHistoryStatisticsData = StoreFrontOrdersHistoryStatisticsData.getInstance()!;;
+    StoreFrontOrdersHistoryStatisticsData storeFrontOrdersHistoryStatisticsData = StoreFrontOrdersHistoryStatisticsData::getInstance();;
     
-hashMap!.put(storeFrontOrdersHistoryStatisticsData!.NUMBEROFORDERS, this.getNumberOfOrders()!.toString());
+hashMap.put(storeFrontOrdersHistoryStatisticsData.NUMBEROFORDERS, this->getNumberOfOrders().toString());
     
-hashMap!.put(storeFrontOrdersHistoryStatisticsData!.SUBTOTAL, this.getSubTotal()!.toString());
+hashMap.put(storeFrontOrdersHistoryStatisticsData.SUBTOTAL, this->getSubTotal().toString());
     
-hashMap!.put(storeFrontOrdersHistoryStatisticsData!.SHIPPINGCOST, this.getShippingCost()!.toString());
+hashMap.put(storeFrontOrdersHistoryStatisticsData.SHIPPINGCOST, this->getShippingCost().toString());
     
-hashMap!.put(storeFrontOrdersHistoryStatisticsData!.TAXES, this.getTaxes()!.toString());
+hashMap.put(storeFrontOrdersHistoryStatisticsData.TAXES, this->getTaxes().toString());
     
-hashMap!.put(storeFrontOrdersHistoryStatisticsData!.TOTAL, this.getTotal()!.toString());
+hashMap.put(storeFrontOrdersHistoryStatisticsData.TOTAL, this->getTotal().toString());
     
 
 
@@ -209,7 +206,7 @@ hashMap!.put(storeFrontOrdersHistoryStatisticsData!.TOTAL, this.getTotal()!.toSt
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
 
 
@@ -219,7 +216,7 @@ hashMap!.put(storeFrontOrdersHistoryStatisticsData!.TOTAL, this.getTotal()!.toSt
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 

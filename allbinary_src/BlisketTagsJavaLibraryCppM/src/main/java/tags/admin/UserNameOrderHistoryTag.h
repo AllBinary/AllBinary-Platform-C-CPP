@@ -52,17 +52,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UserNameOrderHistoryTag: public StoreValidationTransformTag {
-        
 
-    private: status: string;
+    private: std::string status;
 
-public constructor ();
+public: UserNameOrderHistoryTag();
 
-    public setStatus(string value);
+    public: void setStatus(std::string value);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

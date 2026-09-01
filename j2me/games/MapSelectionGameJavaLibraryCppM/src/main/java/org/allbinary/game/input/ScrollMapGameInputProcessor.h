@@ -43,11 +43,10 @@
 #include "ScrollMapPlayerGameInput.h"
 
 class ScrollMapGameInputProcessor: public GameInputProcessor {
-        
 
-    const scrollMapPlayerGameInput: ScrollMapPlayerGameInput;
+    protected: ScrollMapPlayerGameInput scrollMapPlayerGameInput;
 
-public constructor (ScrollMapPlayerGameInput scrollMapPlayerGameInput);
+public: ScrollMapGameInputProcessor(ScrollMapPlayerGameInput scrollMapPlayerGameInput);
 
 };
 

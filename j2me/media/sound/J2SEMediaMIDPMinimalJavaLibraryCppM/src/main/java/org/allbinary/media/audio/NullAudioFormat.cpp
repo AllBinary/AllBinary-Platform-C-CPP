@@ -45,9 +45,8 @@
 class NullAudioFormat
             : public Object
          {
-        
 
-    public static const NULL_AUDIO_FORMAT: AudioFormat = new AudioFormat(AudioFormat.Encoding.PCM_UNSIGNED, 0.0, 0, 0, 0, 0.0, false);
+    public: static const AudioFormat NULL_AUDIO_FORMAT = AudioFormat(AudioFormat::Encoding.PCM_UNSIGNED, 0.0, 0, 0, 0, 0.0, false);
 
 };
 

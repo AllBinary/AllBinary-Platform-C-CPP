@@ -54,25 +54,14 @@
 class PlatformBitmapBase
             : public Object
          {
-        
 
-    public static const NULL_PLATFORM_BITMAP_BASE: PlatformBitmapBase = new PlatformBitmapBase();
+    public: static const PlatformBitmapBase NULL_PLATFORM_BITMAP_BASE = PlatformBitmapBase();
 
-    public alpha: int32_t = 255;
+    public: int32_t alpha = 255;
 
-    public basicColor: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    public: BasicColor basicColor = BasicColorFactory::getInstance().NULL_COLOR;
 
-    public int32_t getWidth(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0;
-    
-}
-
-
-    public int32_t getHeight(){
+    public: int32_t getWidth(){
 
 
 
@@ -82,12 +71,22 @@ class PlatformBitmapBase
 }
 
 
-    public Image getImage(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullImage.NULL_IMAGE;
+                        return 0;
+    
+}
+
+
+    public: Image getImage(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullImage::NULL_IMAGE;
     
 }
 

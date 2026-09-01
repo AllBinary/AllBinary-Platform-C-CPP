@@ -47,11 +47,10 @@
         #include "GeographicMapCellPosition.h"
 
 class GeographicMapCellPositionFactoryInitVisitorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition);
+    void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition);
 
 };
 

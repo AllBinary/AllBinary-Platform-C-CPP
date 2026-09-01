@@ -38,15 +38,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MinMaxIntConstraintInterface {
-        
 
     int32_t getMax()
 
     int32_t getMin()
 
-    setMax(int32_t max)
+    void setMax(int32_t max)
 
-    setMin(int32_t min)
+    void setMin(int32_t min)
 
 };
 

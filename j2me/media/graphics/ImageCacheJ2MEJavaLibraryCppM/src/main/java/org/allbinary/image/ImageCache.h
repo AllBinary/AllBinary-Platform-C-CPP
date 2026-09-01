@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHE_H
         #define ORG_ALLBINARY_IMAGE_IMAGECACHE_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -77,35 +79,34 @@
         #include "ImageCacheBase.h"
 
 class ImageCache: public ImageCacheBase {
-        
 
-    public static const NULL_IMAGE_CACHE: ImageCache = new ImageCache();
+    public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor ();
+public: ImageCache();
 
-    public addListener(any = {} renderer);
+    public: void addListener(Object* renderer);
 
-    public int32_t getIndex(any = {} key);
-
-                //@Throws(Exception.constructor)
-            
-    public Image get(string caller, int32_t width, int32_t height);
+    public: int32_t getIndex(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    public Image getWithKey(any = {} key);
+    public: Image get(std::string caller, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    public loadImageForAnimation();
+    public: Image getWithKey(Object* key);
 
-    public progressEnded();
+                //@Throws(Exception.constructor)
+            
+    public: void loadImageForAnimation();
 
-    public runTask();
+    public: void progressEnded();
 
-    public bool isLazy();
+    public: void runTask();
+
+    public: bool isLazy();
 
 };
 

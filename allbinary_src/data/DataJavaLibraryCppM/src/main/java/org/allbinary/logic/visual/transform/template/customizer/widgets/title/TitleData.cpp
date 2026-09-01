@@ -42,33 +42,30 @@
 class TitleData
             : public Object
          {
-        
 
-    private: static const instance: TitleData = new TitleData();
+    private: static TitleData instance() { return TitleData(); }
 
-    public static TitleData getInstance(){
+    public: static TitleData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TitleData.instance;
+                        return TitleData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TitleData(){
+}
 
 
-    public const NAME: string = "TITLE_NAME";
+    public: const std::string NAME = "TITLE_NAME";
 
-    public const TEXT: string = "TITLE_TEXT";
+    public: const std::string TEXT = "TITLE_TEXT";
 
-    public const VIEWNAMEKEY: string = "Title";
+    public: const std::string VIEWNAMEKEY = "Title";
 
-    public const MAXLEN: int32_t = 255;
+    public: const int32_t MAXLEN = 255;
 
 };
 

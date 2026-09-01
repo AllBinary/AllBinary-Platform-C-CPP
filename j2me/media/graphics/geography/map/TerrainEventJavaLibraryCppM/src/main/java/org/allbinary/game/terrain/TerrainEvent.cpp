@@ -48,58 +48,57 @@
         #include "BasicTerrainInfo.h"
 
 class TerrainEvent: public AllBinaryEventObject {
-        
 
-    private: basicTerrainInfo: BasicTerrainInfo = BasicTerrainInfo.NULL_BASIC_TERRAIN_INFO;
+    private: BasicTerrainInfo basicTerrainInfo = BasicTerrainInfo::NULL_BASIC_TERRAIN_INFO;
 
-public constructor (any = {} basicTerrainInfo){
+public: TerrainEvent(Object* basicTerrainInfo){
             super(basicTerrainInfo);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setBasicTerrainInfo(this.basicTerrainInfo);
+this->setBasicTerrainInfo(this->basicTerrainInfo);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TerrainEvent: \n");
+stringBuffer.append("TerrainEvent: \n");
     
-stringBuffer!.append("LayerInterface: ");
+stringBuffer.append("LayerInterface: ");
     
-stringBuffer!.append(this.basicTerrainInfo!.toString());
+stringBuffer.append(this->basicTerrainInfo.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public BasicTerrainInfo getBasicTerrainInfo(){
+    public: BasicTerrainInfo getBasicTerrainInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicTerrainInfo;
+                        return this->basicTerrainInfo;
     
 }
 
 
-    public setBasicTerrainInfo(BasicTerrainInfo basicTerrainInfo){
-this.basicTerrainInfo= basicTerrainInfo;
+    public: void setBasicTerrainInfo(BasicTerrainInfo basicTerrainInfo){
+this->basicTerrainInfo= basicTerrainInfo;
     
 }
 
 
-    public setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo basicTerrainInfo){
-this.basicTerrainInfo= basicTerrainInfo;
+    public: void setBasicTerrainInfoForCircularStaticPool(BasicTerrainInfo basicTerrainInfo){
+this->basicTerrainInfo= basicTerrainInfo;
     
 }
 

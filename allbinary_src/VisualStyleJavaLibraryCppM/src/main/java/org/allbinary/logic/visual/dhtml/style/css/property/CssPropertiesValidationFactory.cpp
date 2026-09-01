@@ -61,32 +61,31 @@
 class CssPropertiesValidationFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getInstance(NodeList nodeList){
+    public: static Vector getInstance(NodeList nodeList){
 
-    propertiesVector: Vector = new Vector();;
+    Vector propertiesVector = Vector();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
 
-                        if(node.getNodeName()!.compareTo(CssPropertyData.getInstance()!.NAME) == 0)
+                        if(node.getNodeName().compareTo(CssPropertyData::getInstance().NAME) == 0)
                         
                                     {
                                     
-    cssPropertyValidationInterface: ValidationInterface = CssPropertyValidationFactory.getInstance(node) as ValidationInterface;;
+    ValidationInterface cssPropertyValidationInterface = CssPropertyValidationFactory::getInstance(node) as ValidationInterface;;
     
-propertiesVector!.add(cssPropertyValidationInterface);
+propertiesVector.add(cssPropertyValidationInterface);
     
 
                                     }
@@ -102,9 +101,9 @@ propertiesVector!.add(cssPropertyValidationInterface);
 }
 
 
-    public static Vector getInstance(HashMap<any, any> hashMap){
+    public: static Vector getInstance(HashMap<any, any> hashMap){
 
-    styles: Vector = new Vector();;
+    Vector styles = Vector();;
     
 
 
@@ -115,10 +114,8 @@ propertiesVector!.add(cssPropertyValidationInterface);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CssPropertiesValidationFactory(){
+}
 
 
 };

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/util/Vector.h>
 
       
@@ -48,72 +50,68 @@
         #include "HtmlCell.h"
 
 class HtmlRow: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const START: string = "<tr ";
+    private: const std::string START = "<tr ";
 
-    private: const ENDTAG: string = "</tr>";
+    private: const std::string ENDTAG = "</tr>";
 
-    private: numberOfColumns: int32_t = 0;
+    private: int32_t numberOfColumns = 0;
 
-    private: before: string;
+    private: std::string before;
 
-    private: after: string;
+    private: std::string after;
 
-    private: htmlCellsVector: Vector;
+    private: Vector htmlCellsVector;
 
-public constructor (string before, string after){
-
-            super();
-        this.before= before.toCharArray().slice(0, ).join('');
+public: HtmlRow(std::string before, std::string after){
+this->before= before.toCharArray().slice(0, ).join('');
     
-this.after= after.toCharArray().slice(0, ).join('');
+this->after= after.toCharArray().slice(0, ).join('');
     
-this.htmlCellsVector= new Vector();
+this->htmlCellsVector= Vector();
     
 }
 
 
-    public addCell(HtmlCell htmlCell){
-this.htmlCellsVector!.add(htmlCell);
+    public: void addCell(HtmlCell htmlCell){
+this->htmlCellsVector.add(htmlCell);
     
-this.numberOfColumns++;
+this->numberOfColumns++;
     
 }
 
 
-    public int32_t getNumberOfColumns(){
+    public: int32_t getNumberOfColumns(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.numberOfColumns;
+                        return this->numberOfColumns;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
-    
-
-    result: string = stringUtil!.EMPTY_STRING;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    attributeKeys: std::vector<any> = this.otherAttributes!.keySet()!.()!;;
+    std::string result = stringUtil.EMPTY_STRING;;
     
 
-    attributeSize: int32_t = attributeKeys!.length
-                ;;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
     
 
-    cellSize: int32_t = this.htmlCellsVector!.length!;;
+    int32_t attributeSize = attributeKeys.size();;
     
-result= this.before;
+
+    int32_t cellSize = this->htmlCellsVector.length;;
     
-result += this.START;
+result= this->before;
+    
+result += this->START;
     
 result += " ";
     
@@ -122,18 +120,16 @@ result += " ";
 
 
                         for (
-    i: int32_t = 0;i < attributeSize; i++)
+    int32_t i = 0;i < attributeSize; i++)
         {
 
-    key: string = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i]! as string;;
     
 
-    value: string = otherAttributes!.get(key) as string;;
+    std::string value = otherAttributes.get(key) as string;;
     
 
-                        if(value != 
-                                    null
-                                 && value.compareTo(stringUtil!.EMPTY_STRING) != 0)
+                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;
@@ -149,24 +145,24 @@ result += "\" ";
                                 
 }
 
-result += this.END;
+result += this->END;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < cellSize; i++)
+    int32_t i = 0;i < cellSize; i++)
         {
-result += this.htmlCellsVector!.get(i)!.toString();
+result += this->htmlCellsVector.get(i).toString();
     
 result += " ";
     
 }
 
-result += this.ENDTAG;
+result += this->ENDTAG;
     
-result += this.after;
+result += this->after;
     
 
 

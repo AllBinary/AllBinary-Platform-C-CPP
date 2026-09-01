@@ -63,15 +63,14 @@
 class CategoryPropertiesView
             : public Object
         : public DomNodeInterface {
-        
 
-    categoryPropertiesInterface: CategoryPropertiesInterface;
+    protected: CategoryPropertiesInterface categoryPropertiesInterface;
 
-public constructor (CategoryPropertiesInterface categoryPropertiesInterface);
+public: CategoryPropertiesView(CategoryPropertiesInterface categoryPropertiesInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

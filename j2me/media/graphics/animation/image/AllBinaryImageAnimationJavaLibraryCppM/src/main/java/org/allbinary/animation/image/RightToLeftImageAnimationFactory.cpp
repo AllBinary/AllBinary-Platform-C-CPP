@@ -55,10 +55,9 @@
 #include "AdjustedRightToLeftImageAnimation.h"
 
 class RightToLeftImageAnimationFactory: public BaseImageAnimationFactory {
-        
 
-public constructor (Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, PrimitiveIntUtil.getArrayInstance(), image.getWidth(), image.getHeight(), dx, dy, animationBehaviorFactory);
+public: RightToLeftImageAnimationFactory(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
+            super(image, PrimitiveIntUtil::getArrayInstance(), image.getWidth(), image.getHeight(), dx, dy, animationBehaviorFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -68,21 +67,21 @@ public constructor (Image image, int32_t dx, int32_t dy, AnimationBehaviorFactor
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    scaledImage: Image = this.animationFactoryImageScaleUtil!.createImage(this.getImage(), this.animationFactoryInitializationVisitor!.width, this.animationFactoryInitializationVisitor!.height, this.scaleProperties!.scaleWidth, this.scaleProperties!.scaleHeight)!;;
+    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
-                        if(this.animationFactoryInitializationVisitor!.dx != 0 || this.animationFactoryInitializationVisitor!.dy != 0)
+                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
                         
                                     {
-                                    this.animationFactoryImageScaleUtil!.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil.processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedRightToLeftImageAnimation(scaledImage, this.animationFactoryInitializationVisitor!.dx, this.animationFactoryInitializationVisitor!.dy, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AdjustedRightToLeftImageAnimation(scaledImage, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -92,7 +91,7 @@ public constructor (Image image, int32_t dx, int32_t dy, AnimationBehaviorFactor
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new RightToLeftImageAnimation(scaledImage, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return RightToLeftImageAnimation(scaledImage, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }

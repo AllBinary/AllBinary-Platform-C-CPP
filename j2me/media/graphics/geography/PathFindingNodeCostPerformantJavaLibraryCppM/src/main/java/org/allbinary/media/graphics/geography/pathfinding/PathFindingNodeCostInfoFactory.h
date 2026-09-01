@@ -56,17 +56,16 @@
         #include "PathFindingNodeCostInfoFactoryBase.h"
 
 class PathFindingNodeCostInfoFactory: public PathFindingNodeCostInfoFactoryBase {
-        
 
-public constructor (int32_t max);
-
-                //@Throws(Exception.constructor)
-            
-    public create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+public: PathFindingNodeCostInfoFactory(int32_t max);
 
                 //@Throws(Exception.constructor)
             
-    public int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition);
+    public: void create(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition goingToGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition, int64_t costFromStart, int64_t costToEnd);
+
+                //@Throws(Exception.constructor)
+            
+    public: int64_t getTotalCost(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition comingFromGeographicMapCellPosition, GeographicMapCellPosition geographicMapCellPosition);
 
 };
 

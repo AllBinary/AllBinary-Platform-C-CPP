@@ -49,13 +49,12 @@
 class TransformDocumentFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TransformDocumentInterface getInstance();
+    public: static TransformDocumentInterface getInstance();
 
-private constructor ();
+private: TransformDocumentFactory();
 
 };
 

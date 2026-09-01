@@ -54,15 +54,14 @@
 class GeologicalGeographicMapCellPositionFactoryInitVisitor
             : public Object
         : public GeographicMapCellPositionFactoryInitVisitorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
+    public: void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
 
-    geologicalGeographicMapCellPosition: GeologicalGeographicMapCellPosition = (cellPosition as GeologicalGeographicMapCellPosition);;
+    GeologicalGeographicMapCellPosition geologicalGeographicMapCellPosition = (cellPosition as GeologicalGeographicMapCellPosition);;
     
-geologicalGeographicMapCellPosition!.getGeologicalResource()!.init();
+geologicalGeographicMapCellPosition.getGeologicalResource().init();
     
 }
 

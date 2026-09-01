@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_MIRRORSPRITEIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_MIRRORSPRITEIMAGEJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Thread.h"
@@ -90,52 +92,51 @@
 #include "ActionListener.h"
 #include "ActionEvent.h"
 
-class MirrorSpriteImageJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class MirrorSpriteImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageStrings: ImageStrings = ImageStrings.getInstance()!;
+    private: const ImageStrings imageStrings = ImageStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-    private: result: BufferedImage;
+    private: BufferedImage result;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: MirrorSpriteImageJPanel(ImageProcessorInput imageProcessorInput);
 
-    public process();
+    public: void process();
 
-    initComponents();
+    private: void initComponents();
 
-    generateJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    imageHeightIsFrameSizeJCheckBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void imageHeightIsFrameSizeJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: generateJButton: javax.swing.JButton;
+    private: javax::swing::JButton generateJButton;
 
-    private: horizontalJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox horizontalJCheckBox;
 
-    private: imageHeightIsFrameSizeJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox imageHeightIsFrameSizeJCheckBox;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLayeredPane1: javax.swing.JLayeredPane;
+    private: javax::swing::JLayeredPane jLayeredPane1;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: jPanel2: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel2;
 
-    private: jPanel3: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel3;
 
-    private: verticleJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox verticleJCheckBox;
 
-    private: writeOverOriginalJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox writeOverOriginalJCheckBox;
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
 };
 

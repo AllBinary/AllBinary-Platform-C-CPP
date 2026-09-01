@@ -54,48 +54,45 @@
 class Vertex
             : public Object
          {
-        
 
-    public x: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal x = BasicDecimal(0);
 
-    public y: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal y = BasicDecimal(0);
 
-    public z: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal z = BasicDecimal(0);
 
-public constructor (){
-
-            super();
-        }
+public: Vertex(){
+}
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    positionStrings: PositionStrings = PositionStrings.getInstance()!;;
+    PositionStrings positionStrings = PositionStrings::getInstance();;
     
-stringBuffer!.append(positionStrings!.X_LABEL);
+stringBuffer.append(positionStrings.X_LABEL);
     
-stringBuffer!.append(this.x.toString());
+stringBuffer.append(this->x.toString());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(positionStrings!.Y_LABEL);
+stringBuffer.append(positionStrings.Y_LABEL);
     
-stringBuffer!.append(this.y.toString());
+stringBuffer.append(this->y.toString());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(positionStrings!.Z_LABEL);
+stringBuffer.append(positionStrings.Z_LABEL);
     
-stringBuffer!.append(this.z.toString());
+stringBuffer.append(this->z.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

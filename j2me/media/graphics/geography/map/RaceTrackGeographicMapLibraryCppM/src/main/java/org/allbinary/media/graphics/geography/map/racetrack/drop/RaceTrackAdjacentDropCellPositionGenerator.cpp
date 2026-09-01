@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Hashtable.h>
@@ -114,75 +116,71 @@
 #include "RaceTrackAdjacentDropLayerFactory.h"
 
 class RaceTrackAdjacentDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
-        
 
-    private: static SINGLETON: RaceTrackAdjacentDropCellPositionGenerator = new RaceTrackAdjacentDropCellPositionGenerator();
+    private: static RaceTrackAdjacentDropCellPositionGenerator SINGLETON = RaceTrackAdjacentDropCellPositionGenerator();
 
-    public static DropCellPositionGeneratorInterface getInstance(){
+    public: static DropCellPositionGeneratorInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackAdjacentDropCellPositionGenerator.SINGLETON;
+                        return RaceTrackAdjacentDropCellPositionGenerator::SINGLETON;
     
 }
 
 
-    private: const layerCoveringCellPositionsUtil: LayerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil.getInstance()!;
+    private: const LayerCoveringCellPositionsUtil layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
 
-    private: const groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;
+    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: surroundingCellPositions: std::vector<GeographicMapCellPosition> = new Array(4);
+    private: std::vector<GeographicMapCellPosition> surroundingCellPositions = new Array(4);
 
-private constructor (){
-
-            super();
-        }
+private: RaceTrackAdjacentDropCellPositionGenerator(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    GeographicMapCellPosition getFirstNonRoadAdjacentCellPosition(int32_t column, int32_t row){
+    private: GeographicMapCellPosition getFirstNonRoadAdjacentCellPosition(int32_t column, int32_t row){
 
-    nonRoadGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
-    
-
-    geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = this.raceTrackGeographicMap!.getGeographicMapCellPositionFactory()!;;
-    
-this.surroundingCellPositions[0]= geographicMapCellPositionFactory!.getAt(column, row -1);
-    
-this.surroundingCellPositions[1]= geographicMapCellPositionFactory!.getAt(column, row +1);
-    
-this.surroundingCellPositions[2]= geographicMapCellPositionFactory!.getAt(column -1, row);
-    
-this.surroundingCellPositions[3]= geographicMapCellPositionFactory!.getAt(column +1, row);
+    GeographicMapCellPosition nonRoadGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
     
 
-    baseRaceTrackGeographicMap: BaseRaceTrackGeographicMap = this.raceTrackGeographicMap as BaseRaceTrackGeographicMap;;
+    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = this->raceTrackGeographicMap.getGeographicMapCellPositionFactory();;
+    
+this->surroundingCellPositions[0]= geographicMapCellPositionFactory.getAt(column, row -1);
+    
+this->surroundingCellPositions[1]= geographicMapCellPositionFactory.getAt(column, row +1);
+    
+this->surroundingCellPositions[2]= geographicMapCellPositionFactory.getAt(column -1, row);
+    
+this->surroundingCellPositions[3]= geographicMapCellPositionFactory.getAt(column +1, row);
     
 
-    raceTrackGeographicMapCellTypeFactory: RaceTrackGeographicMapCellTypeFactory = baseRaceTrackGeographicMap!.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = this->raceTrackGeographicMap as BaseRaceTrackGeographicMap;;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = baseRaceTrackGeographicMap.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
     
 
-    raceTrackGeographicMapCellType: RaceTrackGeographicMapCellType;;
+    GeographicMapCellPosition geographicMapCellPosition;;
+    
+
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType;;
     
 
 
 
 
                         for (
-    index: int32_t = this.surroundingCellPositions!.length
-                ;--index >= 0; )
+    int32_t index = this->surroundingCellPositions.size();--index >= 0; )
         {
-geographicMapCellPosition= this.surroundingCellPositions[index]!;
+geographicMapCellPosition= this->surroundingCellPositions[index]!;
     
-raceTrackGeographicMapCellType= this.raceTrackGeographicMap!.getCellTypeAt(geographicMapCellPosition) as RaceTrackGeographicMapCellType;
+raceTrackGeographicMapCellType= this->raceTrackGeographicMap.getCellTypeAt(geographicMapCellPosition) as RaceTrackGeographicMapCellType;
     
 
-                        if(!raceTrackGeographicMapCellTypeFactory!.isPath(raceTrackGeographicMapCellType))
+                        if(!raceTrackGeographicMapCellTypeFactory.isPath(raceTrackGeographicMapCellType))
                         
                                     {
                                     nonRoadGeographicMapCellPosition= geographicMapCellPosition;
@@ -204,32 +202,32 @@ break;
 }
 
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
-this.hashtable.put(AllBinaryGameLayerManager.ID, allBinaryGameLayerManager);
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+this->hashtable.put(AllBinaryGameLayerManager::ID, allBinaryGameLayerManager);
     
 super.update(allBinaryGameLayerManager, geographicMapInterface);
     
 }
 
 
-    private: const geographicMapDirectionUtil: GeographicMapDirectionUtil = GeographicMapDirectionUtil.getInstance()!;
+    private: const GeographicMapDirectionUtil geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
+    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
 
-    geographicMapCellPosition: GeographicMapCellPosition = this.list.get(index) as GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = this->list.get(index) as GeographicMapCellPosition;;
     
 
-    randomGeographicMapCellPosition: GeographicMapCellPosition = this.getFirstNonRoadAdjacentCellPosition(geographicMapCellPosition!.getColumn(), geographicMapCellPosition!.getRow())!;;
+    GeographicMapCellPosition randomGeographicMapCellPosition = this->getFirstNonRoadAdjacentCellPosition(geographicMapCellPosition.getColumn(), geographicMapCellPosition.getRow());;
     
 
                         if(randomGeographicMapCellPosition == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -243,21 +241,21 @@ super.update(allBinaryGameLayerManager, geographicMapInterface);
                                     }
                                 
 
-    dropCellPositionHistory: DropCellPositionHistory = DropCellPositionHistory.getInstance()!;;
+    DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();;
     
 
-                        if(!dropCellPositionHistory!.isCellPositionWithDrop(geographicMapCellPosition))
+                        if(!dropCellPositionHistory.isCellPositionWithDrop(geographicMapCellPosition))
                         
                                     {
                                     
-    direction: Direction = this.geographicMapDirectionUtil!.getDirectionFromCellPositionToAdjacentCellPosition(randomGeographicMapCellPosition, geographicMapCellPosition)!;;
+    Direction direction = this->geographicMapDirectionUtil.getDirectionFromCellPositionToAdjacentCellPosition(randomGeographicMapCellPosition, geographicMapCellPosition);;
     
 
-    objectCanBeNull: any = this.hashtable.get(this.groupCommonFactory!.ID);;
+    Object* objectCanBeNull = this->hashtable.get(this->groupCommonFactory.ID);;
     
 
                         if(objectCanBeNull != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -265,36 +263,36 @@ super.update(allBinaryGameLayerManager, geographicMapInterface);
                                     }
                                 
                         else {
-                            this.hashtable.put(this.groupCommonFactory!.ID, BasicGroupFactory.getInstance()!.NONE_ARRAY);
+                            this->hashtable.put(this->groupCommonFactory.ID, BasicGroupFactory::getInstance().NONE_ARRAY);
     
 
                         }
                             
-this.hashtable.put(DirectionFactory.getInstance()!.NAME, direction);
+this->hashtable.put(DirectionFactory::getInstance().NAME, direction);
     
 
-    point: GPoint = randomGeographicMapCellPosition!.getPoint()!;;
+    GPoint point = randomGeographicMapCellPosition.getPoint();;
     
 
-    x: int32_t = point.getX()!;;
+    int32_t x = point.getX();;
     
 
-    y: int32_t = point.getY()!;;
+    int32_t y = point.getY();;
     
 
-    z: int32_t = point.getZ()!;;
+    int32_t z = point.getZ();;
     
 
-    layerInterface: AllBinaryLayer = RaceTrackAdjacentDropLayerFactory.getInstance()!.getRandomInstance()!.getNextInstance(hashtable, x, y, z)!;;
+    AllBinaryLayer layerInterface = RaceTrackAdjacentDropLayerFactory::getInstance().getRandomInstance().getNextInstance(hashtable, x, y, z);;
     
 
-    baseRaceTrackGeographicMap: BaseRaceTrackGeographicMap = this.raceTrackGeographicMap as BaseRaceTrackGeographicMap;;
+    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = this->raceTrackGeographicMap as BaseRaceTrackGeographicMap;;
     
 
-    list: BasicArrayList = this.layerCoveringCellPositionsUtil!.getAll(baseRaceTrackGeographicMap, randomGeographicMapCellPosition, layerInterface, new BasicArrayListD())!;;
+    BasicArrayList list = this->layerCoveringCellPositionsUtil.getAll(baseRaceTrackGeographicMap, randomGeographicMapCellPosition, layerInterface, BasicArrayListD());;
     
 
-                        if(dropCellPositionHistory!.anyCellPositionWithDrop(list))
+                        if(dropCellPositionHistory.anyCellPositionWithDrop(list))
                         
                                     {
                                     
@@ -307,19 +305,19 @@ this.hashtable.put(DirectionFactory.getInstance()!.NAME, direction);
                                     }
                                 
 
-    geographicMapCellType: GeographicMapCellType;;
+    GeographicMapCellType geographicMapCellType;;
     
 
 
 
 
                         for (
-    index2: int32_t = list.size()!;--index2 >= 0; )
+    int32_t index2 = list.size();--index2 >= 0; )
         {
-geographicMapCellType= this.raceTrackGeographicMap!.getCellTypeAt(list.get(index2) as GeographicMapCellPosition);
+geographicMapCellType= this->raceTrackGeographicMap.getCellTypeAt(list.get(index2) as GeographicMapCellPosition);
     
 
-                        if(this.raceTrackGeographicMapCellTypeFactory!.isPath(geographicMapCellType))
+                        if(this->raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellType))
                         
                                     {
                                     
@@ -333,9 +331,9 @@ geographicMapCellType= this.raceTrackGeographicMap!.getCellTypeAt(list.get(index
                                 
 }
 
-dropCellPositionHistory!.addAll(list, layerInterface);
+dropCellPositionHistory.addAll(list, layerInterface);
     
-allBinaryLayerManager!.append(layerInterface);
+allBinaryLayerManager.append(layerInterface);
     
 
                                     }

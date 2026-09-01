@@ -61,66 +61,63 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-    private: const logger: Logger = Logger.getLogger(LogUtil.constructor.toString()!)!;
+    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString()!);
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    /*actual*/ public init(){
-PreLogUtil.put("Loggin Initialized", this, "init()");
+    /*actual*/ public: void init(){
+PreLogUtil::put("Loggin Initialized", this, "init()");
     
 }
 
 
-    /*actual*/ public putL(Log log){
+    /*actual*/ public: void putL(Log log){
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
 
         try {
             
                         if(exception != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-    clazz: Function = anyType!.constructor!;;
+    Function clazz = anyType->constructor;;
     
 
                         if(clazz.toString()! != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -130,9 +127,9 @@ PreLogUtil.put("Loggin Initialized", this, "init()");
                                     }
                                 
 
-    message: string = this.logFormatUtil!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
     
-this.logger.log(Level.INFO, message);
+this->logger.log(Level::INFO, message);
     
 
                                     }
@@ -146,18 +143,18 @@ this.logger.log(Level.INFO, message);
 }
 
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
         try {
             
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
 
-    clazz: Function = anyType!.constructor!;;
+    Function clazz = anyType->constructor;;
     
 
                         if(clazz.toString()! != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -167,21 +164,21 @@ this.logger.log(Level.INFO, message);
                                     }
                                 
 
-    message: string = this.logFormatUtil!.getS(className, functionName, specialMessage)!;;
+    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
     
 
                         if(exception != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logger.log(Level.SEVERE, message, exception);
+                                    this->logger.log(Level::SEVERE, message, exception);
     
 
                                     }
                                 
                         else {
-                            this.logger.log(Level.INFO, message);
+                            this->logger.log(Level::INFO, message);
     
 
                         }

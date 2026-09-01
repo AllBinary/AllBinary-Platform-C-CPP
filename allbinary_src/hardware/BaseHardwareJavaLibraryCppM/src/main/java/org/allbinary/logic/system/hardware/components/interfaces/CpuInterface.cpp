@@ -38,23 +38,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CpuInterface {
-        
 
-    string getProcessor()
+    std::string getProcessor()
 
-    string getVendorId()
+    std::string getVendorId()
 
-    string getCpuFamily()
+    std::string getCpuFamily()
 
-    string getModel()
+    std::string getModel()
 
-    string getModelName()
+    std::string getModelName()
 
-    string getStepping()
+    std::string getStepping()
 
-    string getCpuSpeed()
+    std::string getCpuSpeed()
 
-    string getCacheSize()
+    std::string getCacheSize()
 
     bool compareTo(CpuInterface cpuInterface)
 

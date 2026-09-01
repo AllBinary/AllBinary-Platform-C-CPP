@@ -50,11 +50,10 @@
         #include "FontFamilyData.h"
 
 class FontFamilyView: public CssPropertyView {
-        
 
-public constructor ();
+public: FontFamilyView();
 
-public constructor (Node node);
+public: FontFamilyView(Node node);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASPROGRESSUTIL_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_DEMOCANVASPROGRESSUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
@@ -58,11 +60,10 @@
 class DemoCanvasProgressUtil
             : public Object
          {
-        
 
-    public static showProgress(DemoCanvas demoCanvas);
+    public: static void showProgress(DemoCanvas demoCanvas);
 
-    public static showProgressOptionallyInTheBackground(DemoCanvas demoCanvas, bool background);
+    public: static void showProgressOptionallyInTheBackground(DemoCanvas demoCanvas, bool background);
 
 };
 

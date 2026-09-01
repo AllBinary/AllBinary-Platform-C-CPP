@@ -43,7 +43,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CostLayerInterfaceFactoryInterface: public LayerInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

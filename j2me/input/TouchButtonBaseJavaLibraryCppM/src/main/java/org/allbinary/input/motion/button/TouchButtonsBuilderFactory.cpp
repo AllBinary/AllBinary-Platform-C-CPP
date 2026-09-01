@@ -44,16 +44,15 @@
 class TouchButtonsBuilderFactory
             : public Object
          {
-        
 
-    public static const NO_TOUCH_BUTTON_BUILDER_FACTORY: TouchButtonsBuilderFactory = new TouchButtonsBuilderFactory();
+    public: static const TouchButtonsBuilderFactory NO_TOUCH_BUTTON_BUILDER_FACTORY = TouchButtonsBuilderFactory();
 
-    public BaseTouchInput getInstance(){
+    public: BaseTouchInput getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoButtonsTouchInputFactory.getInstance();;
+                        return NoButtonsTouchInputFactory::getInstance();;
     
 }
 

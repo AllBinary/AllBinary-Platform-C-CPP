@@ -45,15 +45,14 @@
 class HealthResources
             : public Object
          {
-        
 
-    private: static const SINGLETON: HealthResources = new HealthResources();
+    private: static const HealthResources SINGLETON = HealthResources();
 
-    public static HealthResources getInstance();
+    public: static HealthResources getInstance();
 
-    public RESOURCE: string = "health_drop_20_by_20.png";
+    public: std::string RESOURCE = "health_drop_20_by_20.png";
 
-private constructor ();
+private: HealthResources();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_INDEXEDANIMATION_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -63,42 +65,41 @@
 #include "IndexedAnimationInterface.h"
 #include "AnimationBehavior.h"
 
-class IndexedAnimation: public Animation: public IndexedAnimationInterface {
-        
+class IndexedAnimation: public Animation, public IndexedAnimationInterface {
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const animationBehaviorP: AnimationBehavior;
+    protected: AnimationBehavior animationBehaviorP;
 
-protected constructor (AnimationBehavior animationBehavior);
+protected: IndexedAnimation(AnimationBehavior animationBehavior);
 
-    public AnimationBehavior getAnimationBehavior();
+    public: AnimationBehavior getAnimationBehavior();
 
-    public reset();
+    public: void reset();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public bool isLastFrame();
+    public: bool isLastFrame();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    public setState(IndexedAnimation indexedAnimation);
+    public: void setState(IndexedAnimation indexedAnimation);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
 };
 

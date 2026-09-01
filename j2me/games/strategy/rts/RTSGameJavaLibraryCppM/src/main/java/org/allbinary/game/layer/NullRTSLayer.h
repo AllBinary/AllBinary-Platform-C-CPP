@@ -77,48 +77,47 @@
 #include "RTSPlayerLayerInterface.h"
 #include "PlayerOwnedRTSLayers.h"
 
-class NullRTSLayer: public NullPathFindingLayer: public RTSPlayerLayerInterface {
-        
+class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface {
 
-    public static const NULL_RTS_LAYER: NullRTSLayer = new NullRTSLayer();
+    public: static const NullRTSLayer NULL_RTS_LAYER = NullRTSLayer();
 
-    public string getName();
-
-                //@Throws(Exception.constructor)
-            
-    public processInput(AllBinaryLayerManager layerManager);
-
-    public initInputProcessors();
-
-    public GameNotificationHud getGameNotificationHud();
-
-    public ScrollSelectionForm getCurrentScrollSelectionForm();
-
-    public setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm);
-
-    public ScrollSelectionForm getBuildingScrollSelectionForm();
-
-    public PlayerGameInput getPlayerGameInput();
-
-    public onEvent(AllBinaryEventObject eventObject);
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public onDestroyed(DestroyedEvent destroyedEvent);
+    public: void processInput(AllBinaryLayerManager layerManager);
+
+    public: void initInputProcessors();
+
+    public: GameNotificationHud getGameNotificationHud();
+
+    public: ScrollSelectionForm getCurrentScrollSelectionForm();
+
+    public: void setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm);
+
+    public: ScrollSelectionForm getBuildingScrollSelectionForm();
+
+    public: PlayerGameInput getPlayerGameInput();
+
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void onDestroyed(DestroyedEvent destroyedEvent);
 
-    public Capital getCapital();
+                //@Throws(Exception.constructor)
+            
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
-    public RTSFormInput getRTSFormInput();
+    public: Capital getCapital();
 
-    public add(Sound sound);
+    public: RTSFormInput getRTSFormInput();
 
-    public PlayerOwnedRTSLayers getPlayerOwnedRTSLayers();
+    public: void add(Sound sound);
 
-    public bool implmentsArtificialIntelligenceCompositeInterface();
+    public: PlayerOwnedRTSLayers getPlayerOwnedRTSLayers();
+
+    public: bool implmentsArtificialIntelligenceCompositeInterface();
 
 };
 

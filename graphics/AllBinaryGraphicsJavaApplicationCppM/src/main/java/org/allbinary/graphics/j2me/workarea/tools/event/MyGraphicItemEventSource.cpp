@@ -45,68 +45,63 @@
 class MyGraphicItemEventSource
             : public Object
          {
-        
 
-    private: command: string;
+    private: std::string command;
 
-    private: treeNode: MutableTreeNode;
+    private: MutableTreeNode treeNode;
 
-    private: angle: double = 0;
+    private: double angle = 0;
 
-public constructor (string command, MutableTreeNode treeNode){
-
-            super();
-        this.command= command;
+public: MyGraphicItemEventSource(std::string command, MutableTreeNode treeNode){
+this->command= command;
     
-this.treeNode= treeNode;
+this->treeNode= treeNode;
     
 }
 
 
-public constructor (string command, double angle, MutableTreeNode treeNode){
-
-            super();
-        this.command= command;
+public: MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode treeNode){
+this->command= command;
     
-this.treeNode= treeNode;
+this->treeNode= treeNode;
     
-this.setAngle(angle);
+this->setAngle(angle);
     
 }
 
 
-    public string getCommand(){
+    public: std::string getCommand(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.command;
+                        return this->command;
     
 }
 
 
-    public MutableTreeNode getTreeNode(){
+    public: MutableTreeNode getTreeNode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.treeNode;
+                        return this->treeNode;
     
 }
 
 
-    public double getAngle(){
+    public: double getAngle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angle;
+                        return this->angle;
     
 }
 
 
-    public setAngle(double angle){
-this.angle= angle;
+    public: void setAngle(double angle){
+this->angle= angle;
     
 }
 

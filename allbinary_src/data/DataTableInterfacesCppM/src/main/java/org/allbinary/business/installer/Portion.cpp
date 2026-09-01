@@ -47,38 +47,35 @@
 class Portion
             : public Object
          {
-        
 
-    private: const current: Integer;
+    private: Integer current;
 
-    private: const total: Integer;
+    private: Integer total;
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.current= hashMap!.get("current") as Integer;
+public: Portion(HashMap<any, any> hashMap){
+this->current= hashMap.get("current") as Integer;
     
-this.total= hashMap!.get("total") as Integer;
+this->total= hashMap.get("total") as Integer;
     
 }
 
 
-    public Integer getCurrent(){
+    public: Integer getCurrent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.current;
+                        return this->current;
     
 }
 
 
-    public Integer getTotal(){
+    public: Integer getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.total;
+                        return this->total;
     
 }
 

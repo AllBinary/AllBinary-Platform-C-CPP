@@ -57,19 +57,18 @@
 class AcceptableResponseGenerator
             : public Object
          {
-        
 
-    private: static const instance: AcceptableResponseGenerator = new AcceptableResponseGenerator();
+    private: static AcceptableResponseGenerator instance() { return AcceptableResponseGenerator(); }
 
-    public static AcceptableResponseGenerator getInstance();
+    public: static AcceptableResponseGenerator getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: AcceptableResponseGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public string get(HttpServletRequest httpServletRequest);
+    public: std::string get(HttpServletRequest httpServletRequest);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -89,11 +91,10 @@
         #include "Input.h"
 //GameInputNoPersistanceLibrary
 class InputPersistance: public BasicPersitance {
-        
 
-    private: const hashtableUtil: HashtableUtil = HashtableUtil.getInstance()!;
+    private: const HashtableUtil hashtableUtil = HashtableUtil::getInstance();
 
-public constructor (string name){
+public: InputPersistance(std::string name){
             super(name);
                     
 
@@ -104,77 +105,76 @@ public constructor (string name){
 
                 //@Throws(Exception.constructor)
             
-    public loadAll(AbeClientInformationInterface abeClientInformation){
+    public: void loadAll(AbeClientInformationInterface abeClientInformation){
 
-    recordStore: RecordStore = RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true)!;;
+    RecordStore recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
     
 
-    recordEnum: RecordEnumeration = recordStore!.enumerateRecords(NullRecordFilter.NULL_RECORD_FILTER, NullRecordComparator.NULL_RECORD_COMPARATOR, true)!;;
+    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    hashtable: Hashtable<any, any>;;
+    Hashtable<any, any> hashtable;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    id: int32_t= 0;;
+    int32_t id= 0;;
     
 
-        while(recordEnum!.hasNextElement())
+        while(recordEnum.hasNextElement())
         {
-id= recordEnum!.nextRecordId();
+id= recordEnum.nextRecordId();
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-this.logUtil!.putF(stringBuffer!.append(this.persistanceStrings!.LOADING_ID)!.appendint(id)!.toString(), this, this.persistanceStrings!.LOAD_ALL);
+this->logUtil.putF(stringBuffer.append(this->persistanceStrings.LOADING_ID).appendint(id).toString(), this, this->persistanceStrings.LOAD_ALL);
     
-hashtable= new Hashtable<any, any>();
+hashtable= Hashtable<any, any>();
     
-this.valueList!.add(hashtable);
+this->valueList.add(hashtable);
     
-this.idList!.add(smallIntegerSingletonFactory!.getAt(id));
+this->idList.add(smallIntegerSingletonFactory.getAt(id));
     
 }
 
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable){
-PreLogUtil.put(new StringMaker().append(this.persistanceStrings!.NOT_SAVING)!.append(StringUtil.getInstance()!.toString(hashtable))!.toString(), this, this.commonStrings!.SAVE);
+    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable){
+PreLogUtil::put(StringMaker().append(this->persistanceStrings.NOT_SAVING).append(StringUtil::getInstance().toString(hashtable)).toString(), this, this->commonStrings.SAVE);
     
 
-    recordStore: RecordStore = RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true)!;;
+    RecordStore recordStore = RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);;
     
 
-    gameActionInput: Input;;
+    Input gameActionInput;;
     
 
-    list: BasicArrayList;;
+    BasicArrayList list;;
     
 
-    input: Input;;
+    Input input;;
     
 
-    inputObjectArray: std::vector<any> = this.hashtableUtil!.getKeysAsArray(hashtable)!;;
+    std::vector<Object*> inputObjectArray = this->hashtableUtil.getKeysAsArray(hashtable);;
     
 
-    size: int32_t = inputObjectArray!.length
-                ;;
+    int32_t size = inputObjectArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 gameActionInput= inputObjectArray[index]! as Input;
     
@@ -185,7 +185,7 @@ list= hashtable.get(inputObjectArray[index]!) as BasicArrayList;
 
 
                         for (
-    index2: int32_t = 0;index2 < list.size(); index2++)
+    int32_t index2 = 0;index2 < list.size(); index2++)
         {
 input= list.get(index2) as Input;
     
@@ -193,7 +193,7 @@ input= list.get(index2) as Input;
 
 }
 
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 }
 

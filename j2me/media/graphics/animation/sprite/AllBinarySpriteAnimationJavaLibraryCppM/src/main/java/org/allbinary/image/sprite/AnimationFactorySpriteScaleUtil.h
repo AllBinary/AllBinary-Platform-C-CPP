@@ -86,25 +86,24 @@
 class AnimationFactorySpriteScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: AnimationFactorySpriteScaleUtil = new AnimationFactorySpriteScaleUtil();
+    private: static AnimationFactorySpriteScaleUtil instance() { return AnimationFactorySpriteScaleUtil(); }
 
-    public static AnimationFactorySpriteScaleUtil getInstance();
+    public: static AnimationFactorySpriteScaleUtil getInstance();
 
-    private: const imageCache: ImageCache = ImageCacheFactory.getInstance()!;
+    private: const ImageCache imageCache = ImageCacheFactory::getInstance();
 
-    private: const imageScaleUtil: ImageScaleUtil = ImageScaleUtil.getInstance()!;
+    private: const ImageScaleUtil imageScaleUtil = ImageScaleUtil::getInstance();
 
-    private: const openGLUtil: OpenGLUtil = OpenGLUtil.getInstance()!;
+    private: const OpenGLUtil openGLUtil = OpenGLUtil::getInstance();
 
-    private: const j2seMath: J2SEMath = J2SEMath.getInstance()!;
+    private: const J2SEMath j2seMath = J2SEMath::getInstance();
 
-    private: const openGLESImageExclusionUtil: OpenGLESImageExclusionUtil = OpenGLESImageExclusionUtil.getInstance()!;
+    private: const OpenGLESImageExclusionUtil openGLESImageExclusionUtil = OpenGLESImageExclusionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Sprite createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
+    public: Sprite createImage(Image image, int32_t width, int32_t height, int32_t scaleWidth, int32_t scaleHeight);
 
 };
 

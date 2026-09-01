@@ -43,29 +43,28 @@
 class ShakeEventFactory
             : public Object
          {
-        
 
-    private: static const instance: ShakeEventFactory = new ShakeEventFactory();
+    private: static ShakeEventFactory instance() { return ShakeEventFactory(); }
 
-    public static ShakeEventFactory getInstance(){
+    public: static ShakeEventFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShakeEventFactory.instance;
+                        return ShakeEventFactory::instance();
     
 }
 
 
-    public MICRO: ShakeEvent = new ShakeEvent();
+    public: ShakeEvent MICRO = ShakeEvent();
 
-    public SMALL: ShakeEvent = new ShakeEvent();
+    public: ShakeEvent SMALL = ShakeEvent();
 
-    public MEDIUM: ShakeEvent = new ShakeEvent();
+    public: ShakeEvent MEDIUM = ShakeEvent();
 
-    public LARGE: ShakeEvent = new ShakeEvent();
+    public: ShakeEvent LARGE = ShakeEvent();
 
-    public init(){
+    public: void init(){
 }
 
 

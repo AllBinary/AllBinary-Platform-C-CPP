@@ -42,24 +42,21 @@
 class Component
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string componentName){
-
-            super();
-        this.name= componentName;
+public: Component(std::string componentName){
+this->name= componentName;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

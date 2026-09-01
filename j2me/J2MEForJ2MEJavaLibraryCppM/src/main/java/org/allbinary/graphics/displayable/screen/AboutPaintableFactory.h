@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_DISPLAYABLE_SCREEN_ABOUTPAINTABLEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/paint/AboutPaintable.h>
@@ -57,18 +59,17 @@
 class AboutPaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: AboutPaintableFactory = new AboutPaintableFactory();
+    private: static AboutPaintableFactory instance() { return AboutPaintableFactory(); }
 
-    public static AboutPaintableFactory getInstance();
+    public: static AboutPaintableFactory getInstance();
 
-private constructor ();
+private: AboutPaintableFactory();
 
-    public paintableArray: std::vector<Paintable> = 
-                                                [
-                                                    NullPaintable.getInstance()
-                                                ];
+    public: std::vector<Paintable> paintableArray = 
+                                                {
+                                                    NullPaintable::getInstance()
+                                                };
 
 };
 

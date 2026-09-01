@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NULLCLIP_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/io/IOException.h>
@@ -77,75 +79,74 @@
 class NullClip
             : public Object
         : public Clip {
-        
 
-    public static const NULL_CONTROL: NullJ2SEControl = new NullJ2SEControl(BooleanControl.Type.MUTE);
+    public: static const NullJ2SEControl NULL_CONTROL = NullJ2SEControl(BooleanControl::Type.MUTE);
 
                 //@Throws(LineUnavailableException.constructor)
             
-    public open(AudioFormat format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize);
+    public: void open(AudioFormat format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize);
 
                 //@Throws(LineUnavailableException.constructor, IOException.constructor)
             
-    public open(AudioInputStream stream);
+    public: void open(AudioInputStream stream);
 
-    public int32_t getFrameLength();
+    public: int32_t getFrameLength();
 
-    public int64_t getMicrosecondLength();
+    public: int64_t getMicrosecondLength();
 
-    public setFramePosition(int32_t frames);
+    public: void setFramePosition(int32_t frames);
 
-    public setMicrosecondPosition(int64_t microseconds);
+    public: void setMicrosecondPosition(int64_t microseconds);
 
-    public setLoopPoints(int32_t start, int32_t end);
+    public: void setLoopPoints(int32_t start, int32_t end);
 
-    public loop(int32_t count);
+    public: void loop(int32_t count);
 
-    public drain();
+    public: void drain();
 
-    public flush();
+    public: void flush();
 
-    public start();
+    public: void start();
 
-    public stop();
+    public: void stop();
 
-    public bool isRunning();
+    public: bool isRunning();
 
-    public bool isActive();
+    public: bool isActive();
 
-    public AudioFormat getFormat();
+    public: AudioFormat getFormat();
 
-    public int32_t getBufferSize();
+    public: int32_t getBufferSize();
 
-    public int32_t available();
+    public: int32_t available();
 
-    public int32_t getFramePosition();
+    public: int32_t getFramePosition();
 
-    public int64_t getLongFramePosition();
+    public: int64_t getLongFramePosition();
 
-    public int64_t getMicrosecondPosition();
+    public: int64_t getMicrosecondPosition();
 
-    public float getLevel();
+    public: float getLevel();
 
-    public Info getLineInfo();
+    public: Info getLineInfo();
 
                 //@Throws(LineUnavailableException.constructor)
             
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 
-    public bool isOpen();
+    public: bool isOpen();
 
-    public std::vector<Control> getControls();
+    public: std::vector<Control> getControls();
 
-    public bool isControlSupported(Type control);
+    public: bool isControlSupported(Type control);
 
-    public Control getControl(Type control);
+    public: Control getControl(Type control);
 
-    public addLineListener(LineListener listener);
+    public: void addLineListener(LineListener listener);
 
-    public removeLineListener(LineListener listener);
+    public: void removeLineListener(LineListener listener);
 
 };
 

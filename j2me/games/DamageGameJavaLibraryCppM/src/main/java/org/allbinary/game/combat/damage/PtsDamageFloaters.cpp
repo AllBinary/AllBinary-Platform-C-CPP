@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -75,102 +77,99 @@
         #include "DamageFloaters.h"
 
 class PtsDamageFloaters: public DamageFloaters {
-        
 
-    private: static const basicColorArrayIndexer: BasicColorArrayIndexer = new BasicColorArrayIndexer(
-                                                [
-                                                    BasicColorFactory.getInstance()!.WHITE,BasicColorFactory.getInstance()!.RED,BasicColorFactory.getInstance()!.YELLOW,BasicColorFactory.getInstance()!.BLUE
-                                                ]);
+    private: static const BasicColorArrayIndexer basicColorArrayIndexer = BasicColorArrayIndexer(
+                                                {
+                                                    BasicColorFactory::getInstance().WHITE,BasicColorFactory::getInstance().RED,BasicColorFactory::getInstance().YELLOW,BasicColorFactory::getInstance().BLUE
+                                                });
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: layerInterface: AllBinaryLayer;
+    private: AllBinaryLayer layerInterface;
 
-    private: lastDamage: std::vector<int32_t> = new Array(5);
+    private: std::vector<int32_t> lastDamage = new Array(5);
 
-    private: lastDamageString: std::vector<std::vector<char>> = new Array(5).fill(null).map(() => new Array(0).fill(0));
+    private: std::vector<std::vector<char>> lastDamageString = new Array(5).fill(null).map(() => new Array(0).fill(0));
 
-    private: lastDamageStringSizeArray: std::vector<int32_t> = new Array(5);
+    private: std::vector<int32_t> lastDamageStringSizeArray = new Array(5);
 
-    private: circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(5)!;
+    private: CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(5);
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-public constructor (AllBinaryLayer layerInterface){
-
-            super();
-        this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(100000);
+public: PtsDamageFloaters(AllBinaryLayer layerInterface){
+this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(100000);
     
-this.layerInterface= layerInterface;
+this->layerInterface= layerInterface;
     
 
-    CHAR_ARRAY: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;;
+    std::vector<char> CHAR_ARRAY = CharArrayFactory::getInstance().getZeroCharArray();;
     
 
 
 
 
                         for (
-    index: int32_t = this.lastDamageString!.length -1;index >= 0; index--)
+    int32_t index = this->lastDamageString.size() -1;index >= 0; index--)
         {
-this.lastDamageString[index]= CHAR_ARRAY;
+this->lastDamageString[index]= CHAR_ARRAY;
     
 }
 
 }
 
 
-    public add(int32_t damage){
+    public: void add(int32_t damage){
 
-    index: int32_t = this.circularIndexUtil!.getIndex()!;;
+    int32_t index = this->circularIndexUtil.getIndex();;
     
-this.lastDamage[index]= damage;
+this->lastDamage[index]= damage;
     
-this.lastDamageString[index]= this.primitiveLongUtil!.getCharArray(this.lastDamage[index]!);
+this->lastDamageString[index]= this->primitiveLongUtil.getCharArray(this->lastDamage[index]!);
     
-this.lastDamageStringSizeArray[index]= this.primitiveLongUtil!.getCurrentTotalDigits();
+this->lastDamageStringSizeArray[index]= this->primitiveLongUtil.getCurrentTotalDigits();
     
-this.circularIndexUtil!.next();
+this->circularIndexUtil.next();
     
 }
 
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-    viewPosition: ViewPositionBase = this.layerInterface!.getViewPosition()!;;
+    ViewPositionBase viewPosition = this->layerInterface.getViewPosition();;
     
 
-    x: int32_t = viewPosition!.getX()!;;
+    int32_t x = viewPosition.getX();;
     
 
-    y: int32_t = viewPosition!.getY()!;;
+    int32_t y = viewPosition.getY();;
     
 
 
 
 
                         for (
-    index: int32_t = this.lastDamage!.length -1;index >= 0; index--)
+    int32_t index = this->lastDamage.size() -1;index >= 0; index--)
         {
 
-                        if(this.lastDamage[index] != 0)
+                        if(this->lastDamage[index] != 0)
                         
                                     {
                                     
-    delta: int32_t = 10 *(index +2);;
+    int32_t delta = 10 *(index +2);;
     
-this.basicSetColorUtil!.setBasicColorP(graphics, PtsDamageFloaters.basicColorArrayIndexer!.get());
+this->basicSetColorUtil.setBasicColorP(graphics, PtsDamageFloaters::basicColorArrayIndexer.get());
     
-graphics.drawChars(this.lastDamageString[index]!, 0, this.lastDamageStringSizeArray[index]!, x -this.myRandomFactory!.getNextInt(delta), y -delta, 0);
+graphics.drawChars(this->lastDamageString[index]!, 0, this->lastDamageStringSizeArray[index]!, x -this->myRandomFactory.getNextInt(delta), y -delta, 0);
     
-PtsDamageFloaters.basicColorArrayIndexer!.next();
+PtsDamageFloaters::basicColorArrayIndexer.next();
     
 
                                     }
                                 
-this.lastDamage[index]= 0;
+this->lastDamage[index]= 0;
     
 }
 

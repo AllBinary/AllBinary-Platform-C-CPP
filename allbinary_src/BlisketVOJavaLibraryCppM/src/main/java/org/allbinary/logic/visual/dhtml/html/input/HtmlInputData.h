@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_INPUT_HTMLINPUTDATA_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 
@@ -45,32 +47,31 @@
 class HtmlInputData
             : public Object
          {
-        
 
-    private: static const instance: HtmlInputData = new HtmlInputData();
+    private: static HtmlInputData instance() { return HtmlInputData(); }
 
-    public static HtmlInputData getInstance();
+    public: static HtmlInputData getInstance();
 
-    public const TEXT: string = "text";
+    public: const std::string TEXT = "text";
 
-    public const RADIO: string = "radio";
+    public: const std::string RADIO = "radio";
 
-    public const CHECKBOX: string = "checkbox";
+    public: const std::string CHECKBOX = "checkbox";
 
-    public const HIDDEN: string = "hidden";
+    public: const std::string HIDDEN = "hidden";
 
-    public const IMAGE: string = "image";
+    public: const std::string IMAGE = "image";
 
-    public const PASSWORD: string = "password";
+    public: const std::string PASSWORD = "password";
 
-    public const RESET: string = "reset";
+    public: const std::string RESET = "reset";
 
-    public const SUBMIT: string = "submit";
+    public: const std::string SUBMIT = "submit";
 
-    public const TYPES: std::vector<string> = 
-                                                        [
-                                                            this.TEXT,this.RADIO,this.CHECKBOX,this.HIDDEN,this.IMAGE,this.PASSWORD,this.RADIO,this.RESET,this.SUBMIT
-                                                        ];
+    public: const std::vector<std::string> TYPES = 
+                                                        {
+                                                            this->TEXT,this->RADIO,this->CHECKBOX,this->HIDDEN,this->IMAGE,this->PASSWORD,this->RADIO,this->RESET,this->SUBMIT
+                                                        };
 
 };
 

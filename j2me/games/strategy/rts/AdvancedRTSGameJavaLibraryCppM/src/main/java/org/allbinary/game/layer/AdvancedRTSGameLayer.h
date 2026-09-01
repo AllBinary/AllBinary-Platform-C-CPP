@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSGAMELAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_ADVANCEDRTSGAMELAYER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -182,68 +184,67 @@
 #include "RTSPlayerLayerInterface.h"
 #include "RTSLayerUtil.h"
 
-class AdvancedRTSGameLayer: public RTSLayer: public DestroyedEventListenerInterface {
-        
+class AdvancedRTSGameLayer: public RTSLayer, public DestroyedEventListenerInterface {
 
                 //@Throws(Exception.constructor)
             
-    public static AdvancedRTSGameLayer createSimulated();
+    public: static AdvancedRTSGameLayer createSimulated();
 
-    const shakeListener: ShakeAnimationListener;
+    protected: ShakeAnimationListener shakeListener;
 
-    const vibration: AllBinaryVibrationME;
+    protected: AllBinaryVibrationME vibration;
 
-    const duration: int32_t;
+    protected: int32_t duration;
 
-    private: parentLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface parentLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    waypointBehaviorBase: TickableInterface = NullTickable.getInstance()!;
+    protected: TickableInterface waypointBehaviorBase = NullTickable::getInstance();
 
-public constructor (RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, string rootName, string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition);
-
-                //@Throws(Exception.constructor)
-            
-    public updateWaypointBehavior(BasicGeographicMap geographicMapInterface);
-
-    initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+public: AdvancedRTSGameLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, AdvancedRTSProperties advancedRTSProperties, std::vector<Group> groupInterface, std::string rootName, std::string name, Health healthInterface, RTSFormInput rtsFormInput, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface emptyAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface baseAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface buildAnimationInterfaceFactoryInterface, AnimationInterfaceFactoryInterface verticleBuildAnimationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y, ViewPositionBase viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    public: void updateWaypointBehavior(BasicGeographicMap geographicMapInterface);
+
+    protected: void initVisibility(RTSPlayerLayerInterface rtsPlayerLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public setDestroyed(bool destroyed);
-
-    public PathFindingLayerInterface getParentLayer();
-
-    public setParentLayer(PathFindingLayerInterface parentLayer);
-
-    public WaypointBehaviorBase getWaypointBehavior();
-
-    setWaypointBehavior(WaypointBehaviorBase unitWaypointHelper);
-
-    public WaypointLogHelper getWaypointLogHelper();
-
-    public Waypoint2LogHelper getWaypoint2LogHelper();
-
-    public WaypointRunnableLogHelper getWaypointRunnableLogHelper();
-
-    public bool shouldAddWaypointFromBuilding();
-
-    public bool isWaypointListEmptyOrOnlyTargets();
+    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    public: void setDestroyed(bool destroyed);
+
+    public: PathFindingLayerInterface getParentLayer();
+
+    public: void setParentLayer(PathFindingLayerInterface parentLayer);
+
+    public: WaypointBehaviorBase getWaypointBehavior();
+
+    protected: void setWaypointBehavior(WaypointBehaviorBase unitWaypointHelper);
+
+    public: WaypointLogHelper getWaypointLogHelper();
+
+    public: Waypoint2LogHelper getWaypoint2LogHelper();
+
+    public: WaypointRunnableLogHelper getWaypointRunnableLogHelper();
+
+    public: bool shouldAddWaypointFromBuilding();
+
+    public: bool isWaypointListEmptyOrOnlyTargets();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
 
-    setSelected(bool selected);
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
 
-    public onDestroyed(DestroyedEvent destroyedEvent);
+    protected: void setSelected(bool selected);
+
+    public: void onDestroyed(DestroyedEvent destroyedEvent);
 
 };
 

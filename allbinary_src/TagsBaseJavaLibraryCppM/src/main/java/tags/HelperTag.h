@@ -50,23 +50,22 @@
         #include "PropertiesTag.h"
 
 class HelperTag: public PropertiesTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tagHelperFactoryInterface: TagHelperFactoryInterface;
+    private: TagHelperFactoryInterface tagHelperFactoryInterface;
 
-    private: anyType: any;
+    private: Object* anyType;
 
-public constructor (TagHelperFactoryInterface tagHelperFactoryInterface);
+public: HelperTag(TagHelperFactoryInterface tagHelperFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    setHelper();
+    protected: void setHelper();
 
-    public any getHelper();
+    public: Object* getHelper();
 
-    public int32_t doEndTag();
+    public: int32_t doEndTag();
 
 };
 

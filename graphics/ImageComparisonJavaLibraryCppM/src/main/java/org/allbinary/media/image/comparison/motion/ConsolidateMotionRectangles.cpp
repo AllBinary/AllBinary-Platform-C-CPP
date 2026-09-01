@@ -52,98 +52,97 @@
 #include "Rectangle.h"
 
 class ConsolidateMotionRectangles: public MotionRectangles {
-        
 
-    private: static const NAME: string = "consolidatedMotionRectangles_";
+    private: static const std::string NAME = "consolidatedMotionRectangles_";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (MotionRectangles motionRectangles){
-            super(NAME, motionRectangles!.getImageComparisonResult());
+public: ConsolidateMotionRectangles(MotionRectangles motionRectangles){
+            super(NAME, motionRectangles.getImageComparisonResult());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    vector: Vector = motionRectangles!.getVector()!;;
+    Vector vector = motionRectangles.getVector();;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    motionRectangle: MotionRectangle = vector.get(index) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector.get(index) as MotionRectangle;;
     
-vector.add(motionRectangle!.clone());
+vector.add(motionRectangle.clone());
     
 }
 
-this.consolidateMotionRectangles();
+this->consolidateMotionRectangles();
     
 }
 
 
-    consolidateMotionRectangles(){
+    private: void consolidateMotionRectangles(){
 
-    vector: Vector = this.getVector()!;;
+    Vector vector = this->getVector();;
     
-this.logUtil!.putF("Start - Size Before: " +vector.length, this, "consolidateMotionRectangleConstraints");
-    
-
-    removeVector: Vector = new Vector();;
+this->logUtil.putF("Start - Size Before: " +vector.length, this, "consolidateMotionRectangleConstraints");
     
 
-    size: int32_t = vector.length!;;
+    Vector removeVector = Vector();;
     
 
-
-
-
-                        for (
-    index: int32_t = 0;index < size; index++)
-        {
-
-    motionRectangle: MotionRectangle = vector.get(index) as MotionRectangle;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = index +1;i < vector.length; i++)
+    int32_t index = 0;index < size; index++)
         {
 
-    motionRectangle2: MotionRectangle = vector.get(i) as MotionRectangle;;
+    MotionRectangle motionRectangle = vector.get(index) as MotionRectangle;;
     
 
-    rectangle: Rectangle = motionRectangle!.getRectangle()!;;
+
+
+
+                        for (
+    int32_t i = index +1;i < vector.length; i++)
+        {
+
+    MotionRectangle motionRectangle2 = vector.get(i) as MotionRectangle;;
     
 
-    rectangle2: Rectangle = motionRectangle2!.getRectangle()!;;
+    Rectangle rectangle = motionRectangle.getRectangle();;
     
 
-    x2: int32_t = rectangle.x +rectangle.width;;
+    Rectangle rectangle2 = motionRectangle2.getRectangle();;
     
 
-    y2: int32_t = rectangle.y +rectangle.height;;
+    int32_t x2 = rectangle.x +rectangle.width;;
     
 
-    rightX: int32_t = rectangle2.x +rectangle2.width;;
+    int32_t y2 = rectangle.y +rectangle.height;;
     
 
-    bottomY: int32_t = rectangle2.y +rectangle2.height;;
+    int32_t rightX = rectangle2.x +rectangle2.width;;
+    
+
+    int32_t bottomY = rectangle2.y +rectangle2.height;;
     
 
                         if(rectangle.x <= rectangle2.x && rectangle.y <= rectangle2.y && x2 >= rightX && y2 >= bottomY)
                         
                                     {
-                                    removeVector!.add(motionRectangle2);
+                                    removeVector.add(motionRectangle2);
     
 
                                     }
@@ -152,26 +151,26 @@ this.logUtil!.putF("Start - Size Before: " +vector.length, this, "consolidateMot
 
 }
 
-this.remove(removeVector);
+this->remove(removeVector);
     
 }
 
 
-    remove(Vector removeVector){
+    private: void remove(Vector removeVector){
 
-    vector: Vector = this.getVector()!;;
+    Vector vector = this->getVector();;
     
 
-    size: int32_t = removeVector!.length!;;
+    int32_t size = removeVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-vector.remove(removeVector!.get(index));
+vector.remove(removeVector.get(index));
     
 }
 

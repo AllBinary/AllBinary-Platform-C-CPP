@@ -54,13 +54,12 @@
 class GameLayerUtil
             : public Object
          {
-        
 
-    public static bool isOnScreen(AllBinaryLayer layer);
+    public: static bool isOnScreen(AllBinaryLayer layer);
 
-    public static bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2);
+    public: static bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2);
 
-private constructor ();
+private: GameLayerUtil();
 
 };
 

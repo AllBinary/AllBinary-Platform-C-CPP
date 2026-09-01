@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INIT_BASEGAMEINITIALIZATION_H
         #define ORG_ALLBINARY_GAME_INIT_BASEGAMEINITIALIZATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -114,59 +116,58 @@
 class BaseGameInitialization
             : public Object
         : public GameInitializationInterface {
-        
 
-    public static const NULL_BASE_GAME_INITIALIZATION: BaseGameInitialization = new BaseGameInitialization([], 0);
+    public: static const BaseGameInitialization NULL_BASE_GAME_INITIALIZATION = BaseGameInitialization({}, 0);
 
-    const resourceInitializationArray: std::vector<ResourceInitialization>;
+    protected: std::vector<ResourceInitialization> resourceInitializationArray;
 
-    private: const portion: int32_t;
+    private: int32_t portion;
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-    const EARLY_RESOURCES: int32_t = 0;
+    protected: const int32_t EARLY_RESOURCES = 0;
 
-    const GAME_RESOURCES: int32_t = 1;
+    protected: const int32_t GAME_RESOURCES = 1;
 
-    const EARLY_CHANGABLE_RESOURCES: int32_t = 2;
+    protected: const int32_t EARLY_CHANGABLE_RESOURCES = 2;
 
-    const GAME_CHANGABLE_RESOURCES: int32_t = 3;
+    protected: const int32_t GAME_CHANGABLE_RESOURCES = 3;
 
-public constructor (std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion);
-
-                //@Throws(Exception.constructor)
-            
-    public initKey(int32_t portion);
+public: BaseGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion);
 
                 //@Throws(Exception.constructor)
             
-    initKeyMapping(AbeClientInformationInterface abeClientInformation, int32_t portion);
+    public: void initKey(int32_t portion);
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
-
-    private: gameInitialized: bool= false;
-
-    private: allLoaded: bool= false;
+    protected: void initKeyMapping(AbeClientInformationInterface abeClientInformation, int32_t portion);
 
                 //@Throws(Exception.constructor)
             
-    public resourceInitialization(int32_t level);
+    public: void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
 
-    public bool resourceAnimationChange();
+    private: bool gameInitialized= false;
 
-    clearResources();
+    private: bool allLoaded= false;
 
-    setGameInitialized(bool gameInitialized);
+                //@Throws(Exception.constructor)
+            
+    public: void resourceInitialization(int32_t level);
 
-    bool isGameInitialized();
+    public: bool resourceAnimationChange();
 
-    int32_t getPortion();
+    private: void clearResources();
 
-    public setInitialized(bool initialized);
+    protected: void setGameInitialized(bool gameInitialized);
 
-    public bool isInitialized();
+    protected: bool isGameInitialized();
+
+    protected: int32_t getPortion();
+
+    public: void setInitialized(bool initialized);
+
+    public: bool isInitialized();
 
 };
 

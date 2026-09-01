@@ -85,19 +85,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RootStoreThemeCategoryProperties: public RootStoreCategoryProperties {
-        
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface);
 
-public constructor (TransformInfoInterface transformInfoInterface, AbPath abPath);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath abPath);
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, Node node);
 
-public constructor (TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap);
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public initPath();
+    public: void initPath();
 
 };
 

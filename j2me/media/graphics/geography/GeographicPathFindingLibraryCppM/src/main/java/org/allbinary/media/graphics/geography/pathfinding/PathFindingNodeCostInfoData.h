@@ -47,17 +47,16 @@
 class PathFindingNodeCostInfoData
             : public Object
          {
-        
 
-    private: static const instance: PathFindingNodeCostInfoData = new PathFindingNodeCostInfoData();
+    private: static PathFindingNodeCostInfoData instance() { return PathFindingNodeCostInfoData(); }
 
-    public static PathFindingNodeCostInfoData getInstance();
+    public: static PathFindingNodeCostInfoData getInstance();
 
-private constructor ();
+private: PathFindingNodeCostInfoData();
 
-    public MAX_TOTAL_COST: int32_t = Integer.MAX_VALUE;
+    public: int32_t MAX_TOTAL_COST = Integer::MAX_VALUE;
 
-    public MAX_NODE_COST: int32_t = Integer.MAX_VALUE /10000;
+    public: int32_t MAX_NODE_COST = Integer::MAX_VALUE /10000;
 
 };
 

@@ -47,96 +47,95 @@
 class TimeUtil
             : public Object
          {
-        
 
-    private: static const instance: TimeUtil = new TimeUtil();
+    private: static TimeUtil instance() { return TimeUtil(); }
 
-    public static TimeUtil getInstance(){
+    public: static TimeUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeUtil.instance;
+                        return TimeUtil::instance();
     
 }
 
 
-    private: static const calendar: Calendar = Calendar.getInstance()!;
+    private: static const Calendar calendar = Calendar::getInstance();
 
-    public setCalendar(Calendar calendar, string yearString, string monthString, string dayString, string hourString){
+    public: void setCalendar(Calendar calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString){
 
-    year: int32_t = new Integer(yearString).intValue()!;;
+    int32_t year = Integer(yearString).intValue();;
     
 
-    month: int32_t = new Integer(monthString).intValue()!;;
+    int32_t month = Integer(monthString).intValue();;
     
 
-    day: int32_t = new Integer(dayString).intValue()!;;
+    int32_t day = Integer(dayString).intValue();;
     
 
-    hour: int32_t = new Integer(hourString).intValue()!;;
+    int32_t hour = Integer(hourString).intValue();;
     
 calendar.set(year, month, day, hour, 0);
     
 }
 
 
-    public setCalendar(Calendar calendar, string yearString, string monthString, string dayString, string hourString, string minuteString, string secondString){
+    public: void setCalendar(Calendar calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString){
 
-    year: int32_t = new Integer(yearString).intValue()!;;
+    int32_t year = Integer(yearString).intValue();;
     
 
-    month: int32_t = new Integer(monthString).intValue()!;;
+    int32_t month = Integer(monthString).intValue();;
     
 
-    day: int32_t = new Integer(dayString).intValue()!;;
+    int32_t day = Integer(dayString).intValue();;
     
 
-    hour: int32_t = new Integer(hourString).intValue()!;;
+    int32_t hour = Integer(hourString).intValue();;
     
 
-    minute: int32_t = new Integer(minuteString).intValue()!;;
+    int32_t minute = Integer(minuteString).intValue();;
     
 
-    second: int32_t = new Integer(secondString).intValue()!;;
-    
-calendar.set(year, month, day, hour, minute, second);
-    
-}
-
-
-    public setExpirationCalendar(Calendar calendar, string yearsString, string monthsString, string daysString, string hoursString, string minutesString, string secondsString){
-
-    year: int32_t = calendar.get(Calendar.YEAR) +new Integer(yearsString).intValue();;
-    
-
-    month: int32_t = calendar.get(Calendar.MONTH) +new Integer(monthsString).intValue();;
-    
-
-    day: int32_t = calendar.get(Calendar.DAY_OF_MONTH) +new Integer(daysString).intValue();;
-    
-
-    hour: int32_t = calendar.get(Calendar.HOUR) +new Integer(hoursString).intValue();;
-    
-
-    minute: int32_t = calendar.get(Calendar.MINUTE) +new Integer(minutesString).intValue();;
-    
-
-    second: int32_t = calendar.get(Calendar.SECOND) +new Integer(secondsString).intValue();;
+    int32_t second = Integer(secondString).intValue();;
     
 calendar.set(year, month, day, hour, minute, second);
     
 }
 
 
-    public int64_t getTotalTime(string yearString, string monthString, string dayString, string hourString, string minuteString, string secondString){
+    public: void setExpirationCalendar(Calendar calendar, std::string yearsString, std::string monthsString, std::string daysString, std::string hoursString, std::string minutesString, std::string secondsString){
 
-    time: int64_t = TimeUtil.calendar.getTimeInMillis()!;;
-    
-this.setExpirationCalendar(TimeUtil.calendar, yearString, monthString, dayString, hourString, minuteString, secondString);
+    int32_t year = calendar.get(Calendar::YEAR) +Integer(yearsString).intValue();;
     
 
-    timeDelta: int64_t = TimeUtil.calendar.getTimeInMillis()!;;
+    int32_t month = calendar.get(Calendar::MONTH) +Integer(monthsString).intValue();;
+    
+
+    int32_t day = calendar.get(Calendar::DAY_OF_MONTH) +Integer(daysString).intValue();;
+    
+
+    int32_t hour = calendar.get(Calendar::HOUR) +Integer(hoursString).intValue();;
+    
+
+    int32_t minute = calendar.get(Calendar::MINUTE) +Integer(minutesString).intValue();;
+    
+
+    int32_t second = calendar.get(Calendar::SECOND) +Integer(secondsString).intValue();;
+    
+calendar.set(year, month, day, hour, minute, second);
+    
+}
+
+
+    public: int64_t getTotalTime(std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString){
+
+    int64_t time = TimeUtil::calendar.getTimeInMillis();;
+    
+this->setExpirationCalendar(TimeUtil::calendar, yearString, monthString, dayString, hourString, minuteString, secondString);
+    
+
+    int64_t timeDelta = TimeUtil::calendar.getTimeInMillis();;
     
 
 

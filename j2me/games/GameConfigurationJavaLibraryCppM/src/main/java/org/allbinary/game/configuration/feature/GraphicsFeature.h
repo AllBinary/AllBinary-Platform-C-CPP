@@ -48,9 +48,8 @@
         #include "Feature.h"
 
 class GraphicsFeature: public Feature {
-        
 
- constructor (string name);
+: GraphicsFeature(std::string name);
 
 };
 

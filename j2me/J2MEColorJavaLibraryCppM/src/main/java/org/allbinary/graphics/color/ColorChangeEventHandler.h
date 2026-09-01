@@ -44,14 +44,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ColorChangeEventHandler: public BasicEventHandler {
-        
 
-    private: static const eventHandler: ColorChangeEventHandler = new ColorChangeEventHandler();
+    private: static const ColorChangeEventHandler eventHandler = ColorChangeEventHandler();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static ColorChangeEventHandler getInstance();
+    public: static ColorChangeEventHandler getInstance();
 
-private constructor ();
+private: ColorChangeEventHandler();
 
 };
 

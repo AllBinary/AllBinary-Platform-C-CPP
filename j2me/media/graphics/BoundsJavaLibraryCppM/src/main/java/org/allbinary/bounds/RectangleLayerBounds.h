@@ -46,11 +46,10 @@
 #include "BoundsVisitorInterface.h"
 
 class RectangleLayerBounds: public LayerBounds {
-        
 
-public constructor (Rectangle rectangle);
+public: RectangleLayerBounds(Rectangle rectangle);
 
-    public visit(BoundsVisitorInterface boundsVisitorInterface);
+    public: void visit(BoundsVisitorInterface boundsVisitorInterface);
 
 };
 

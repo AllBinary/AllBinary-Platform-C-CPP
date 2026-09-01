@@ -45,24 +45,21 @@
         #include "AllBinaryGameCanvas.h"
 
 class GameCanvasPaintHelper: public ProcessPaintable {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: GameCanvasPaintHelper(AllBinaryGameCanvas gameCanvas){
+this->gameCanvas= gameCanvas;
     
 }
 
 
-    public process(){
+    public: void process(){
 }
 
 
-    public paint(Graphics graphics){
-this.gameCanvas!.draw(graphics);
+    public: void paint(Graphics graphics){
+this->gameCanvas.draw(graphics);
     
 }
 

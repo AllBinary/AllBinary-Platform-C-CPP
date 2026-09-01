@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Class.h"
@@ -81,148 +83,142 @@
 class InitializerDatabase
             : public Object
          {
-        
 
-    private: static const MAXDB: int32_t = 30;
+    private: static const int32_t MAXDB = 30;
 
-    private: static const MAX: int32_t = 16;
+    private: static const int32_t MAX = 16;
 
-    private: static const MIN: int32_t = 4;
+    private: static const int32_t MIN = 4;
 
-    private: static const MINPASSWORD: int32_t = 0;
+    private: static const int32_t MINPASSWORD = 0;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: adminDbUserName: string;
+    private: std::string adminDbUserName;
 
-    private: adminDbPassword: string;
+    private: std::string adminDbPassword;
 
-    private: adminJdbcDriver: string;
+    private: std::string adminJdbcDriver;
 
-    private: adminSchema: string;
+    private: std::string adminSchema;
 
-    private: adminServer: string;
+    private: std::string adminServer;
 
-    private: adminPort: string;
+    private: std::string adminPort;
 
-    private: initDb: DynamicInitDb;
+    private: DynamicInitDb initDb;
 
-public constructor (AbeClientInformationInterface abeClientInformation, Map map){
+public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, Map map){
 
-            super();
-        
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    keys: Set = map.keySet()!;;
+    Set keys = map.keySet();;
     
 
-    keyArray: std::vector<any> = keys.toArray()!;;
+    std::vector<Object*> keyArray = keys.toArray();;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    int32_t size = keyArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    key: string = keyArray[index]! as string;;
+    std::string key = keyArray[index]! as string;;
     
 
-    values: std::vector<string> = map.get(key) as string[];;
+    std::vector<std::string> values = map.get(key) as string[];;
     
-hashMap!.put(key.toCharArray().slice(0, ).join(''), .toCharArray());
+hashMap.put(key.toCharArray().slice(0, ).join(''), .toCharArray());
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append("key: ");
+stringBuffer.append("key: ");
     
-stringBuffer!.append(key);
+stringBuffer.append(key);
     
-stringBuffer!.append(" Value: ");
+stringBuffer.append(" Value: ");
     
-stringBuffer!.append(values[0]!);
+stringBuffer.append(values[0]!);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "getFormData()");
+this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
     
 }
 
-this.getFormData(abeClientInformation, hashMap);
-    
-}
-
-
-public constructor (AbeClientInformationInterface abeClientInformation, HashMap<any, any> initHashMap){
-
-            super();
-        this.getFormData(abeClientInformation, initHashMap);
+this->getFormData(abeClientInformation, hashMap);
     
 }
 
 
-    public getFormData(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap){
+public: InitializerDatabase(AbeClientInformationInterface abeClientInformation, HashMap<any, any> initHashMap){
+this->getFormData(abeClientInformation, initHashMap);
+    
+}
+
+
+    public: void getFormData(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap){
 
         try {
             
-    initializerData: InitializerData = InitializerData.getInstance()!;;
+    InitializerData initializerData = InitializerData::getInstance();;
     
-this.setAdminDbUserName(hashMap!.get(initializerData!.DBUSER) as string);
+this->setAdminDbUserName(hashMap.get(initializerData.DBUSER) as string);
     
-this.setAdminDbPassword(hashMap!.get(initializerData!.DBPASSWORD) as string);
+this->setAdminDbPassword(hashMap.get(initializerData.DBPASSWORD) as string);
     
-this.setAdminJdbcDriver(hashMap!.get(initializerData!.ADMINJDBCDRIVER) as string);
+this->setAdminJdbcDriver(hashMap.get(initializerData.ADMINJDBCDRIVER) as string);
     
-this.setAdminSchema(hashMap!.get(initializerData!.ADMINSCHEMA) as string);
+this->setAdminSchema(hashMap.get(initializerData.ADMINSCHEMA) as string);
     
-this.setAdminServer(hashMap!.get(initializerData!.ADMINSERVER) as string);
+this->setAdminServer(hashMap.get(initializerData.ADMINSERVER) as string);
     
-this.setAdminPort(hashMap!.get(initializerData!.ADMINPORT) as string);
-    
-
-    dbConnectionInfo: DbConnectionInfo = new DbConnectionInfo();;
+this->setAdminPort(hashMap.get(initializerData.ADMINPORT) as string);
     
 
-    adminDbName: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    DbConnectionInfo dbConnectionInfo = DbConnectionInfo();;
     
-dbConnectionInfo!.setJdbcDriver(getAdminJdbcDriver());
+
+    std::string adminDbName = StringUtil::getInstance().EMPTY_STRING;;
     
-dbConnectionInfo!.setName(adminDbName);
+dbConnectionInfo.setJdbcDriver(getAdminJdbcDriver());
     
-dbConnectionInfo!.setUserName(getAdminDbUserName());
+dbConnectionInfo.setName(adminDbName);
     
-dbConnectionInfo!.setPassword(getAdminDbPassword());
+dbConnectionInfo.setUserName(getAdminDbUserName());
     
-dbConnectionInfo!.setSchema(getAdminSchema());
+dbConnectionInfo.setPassword(getAdminDbPassword());
     
-dbConnectionInfo!.setServer(getAdminServer());
+dbConnectionInfo.setSchema(getAdminSchema());
     
-dbConnectionInfo!.setPort(getAdminPort());
+dbConnectionInfo.setServer(getAdminServer());
     
-this.initDb= new DynamicInitDb(abeClientInformation, dbConnectionInfo as DatabaseConnectionInfoInterface);
+dbConnectionInfo.setPort(getAdminPort());
+    
+this->initDb= DynamicInitDb(abeClientInformation, dbConnectionInfo as DatabaseConnectionInfoInterface);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Unable to get form data", this, "getFormData()", e);
+this->logUtil.put("Unable to get form data", this, "getFormData()", e);
     
 }
 
 }
 
 
-    bool isJdbcDriverValid(string jdbcDriverClassPathString){
+    private: bool isJdbcDriverValid(std::string jdbcDriverClassPathString){
 
         try {
-            Class.forName(jdbcDriverClassPathString)!.newInstance();
+            Class::forName(jdbcDriverClassPathString).newInstance();
     
 
 
@@ -235,13 +231,13 @@ this.logUtil!.put("Unable to get form data", this, "getFormData()", e);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADERERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.IS_VALID, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.IS_VALID, e);
     
 
                                     }
@@ -257,12 +253,12 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.IS_VALID, e);
 }
 
 
-    public bool isValid(){
+    public: bool isValid(){
 
-    isValid: bool = true;;
+    bool isValid = true;;
     
 
-                        if(!this.isJdbcDriverValid(this.adminJdbcDriver))
+                        if(!this->isJdbcDriverValid(this->adminJdbcDriver))
                         
                                     {
                                     isValid= false;
@@ -271,10 +267,10 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.IS_VALID, e);
                                     }
                                 
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil!.isValidRequired(this.adminDbUserName, InitializerDatabase.MIN, InitializerDatabase.MAX))
+                        if(!stringValidationUtil.isValidRequired(this->adminDbUserName, InitializerDatabase::MIN, InitializerDatabase::MAX))
                         
                                     {
                                     isValid= false;
@@ -283,7 +279,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.IS_VALID, e);
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.adminDbPassword, InitializerDatabase.MINPASSWORD, InitializerDatabase.MAX))
+                        if(!stringValidationUtil.isValidNotRequired(this->adminDbPassword, InitializerDatabase::MINPASSWORD, InitializerDatabase::MAX))
                         
                                     {
                                     isValid= false;
@@ -300,63 +296,63 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.IS_VALID, e);
 }
 
 
-    string getJdbcDriverValidationInfo(string jdbcDriver){
+    private: std::string getJdbcDriverValidationInfo(std::string jdbcDriver){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("The JDBC driver (");
+stringBuffer.append("The JDBC driver (");
     
-stringBuffer!.append(jdbcDriver);
+stringBuffer.append(jdbcDriver);
     
-stringBuffer!.append(") you have provided is not valid.<br/>");
+stringBuffer.append(") you have provided is not valid.<br/>");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string getInvalidInfo(){
+    public: std::string getInvalidInfo(){
 
-    isValid: bool = true;;
+    bool isValid = true;;
     
 
-    isJdbcDriversValid: bool = true;;
+    bool isJdbcDriversValid = true;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(!this.isJdbcDriverValid(this.adminJdbcDriver))
+                        if(!this->isJdbcDriverValid(this->adminJdbcDriver))
                         
                                     {
                                     isJdbcDriversValid= false;
     
-stringBuffer!.append(this.getJdbcDriverValidationInfo(this.getAdminJdbcDriver()));
+stringBuffer.append(this->getJdbcDriverValidationInfo(this->getAdminJdbcDriver()));
     
 
                                     }
                                 
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil!.isValidRequired(this.adminDbUserName, InitializerDatabase.MIN, InitializerDatabase.MAX))
+                        if(!stringValidationUtil.isValidRequired(this->adminDbUserName, InitializerDatabase::MIN, InitializerDatabase::MAX))
                         
                                     {
-                                    stringBuffer!.append("Admin username should be < " +InitializerDatabase.MAX +" and > " +InitializerDatabase.MIN +" characters in length.<br />");
+                                    stringBuffer.append("Admin username should be < " +InitializerDatabase::MAX +" and > " +InitializerDatabase::MIN +" characters in length.<br />");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.adminDbPassword, InitializerDatabase.MINPASSWORD, InitializerDatabase.MAX))
+                        if(!stringValidationUtil.isValidNotRequired(this->adminDbPassword, InitializerDatabase::MINPASSWORD, InitializerDatabase::MAX))
                         
                                     {
-                                    stringBuffer!.append("Admin password should be < " +InitializerDatabase.MAX +" and > " +InitializerDatabase.MINPASSWORD +" characters in length.<br />");
+                                    stringBuffer.append("Admin password should be < " +InitializerDatabase::MAX +" and > " +InitializerDatabase::MINPASSWORD +" characters in length.<br />");
     
 
                                     }
@@ -365,7 +361,7 @@ stringBuffer!.append(this.getJdbcDriverValidationInfo(this.getAdminJdbcDriver())
                         if(!isJdbcDriversValid)
                         
                                     {
-                                    stringBuffer!.append(InitializerData.getInstance()!.getJdbcDriverSolutionInfo());
+                                    stringBuffer.append(InitializerData::getInstance().getJdbcDriverSolutionInfo());
     
 
                                     }
@@ -374,15 +370,15 @@ stringBuffer!.append(this.getJdbcDriverValidationInfo(this.getAdminJdbcDriver())
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public bool createUsers(){
+    public: bool createUsers(){
 
         try {
-            this.initDb!.addUsers();
+            this->initDb.addUsers();
     
 
 
@@ -394,7 +390,7 @@ stringBuffer!.append(this.getJdbcDriverValidationInfo(this.getAdminJdbcDriver())
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Unable to Create Users", this, "createUsers()", e);
+this->logUtil.put("Unable to Create Users", this, "createUsers()", e);
     
 
 
@@ -407,10 +403,10 @@ this.logUtil!.put("Unable to Create Users", this, "createUsers()", e);
 }
 
 
-    public bool createDatabases(){
+    public: bool createDatabases(){
 
         try {
-            this.initDb!.addDatabases();
+            this->initDb.addDatabases();
     
 
 
@@ -422,7 +418,7 @@ this.logUtil!.put("Unable to Create Users", this, "createUsers()", e);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Unable to Create Databases", this, "createDatabases()", e);
+this->logUtil.put("Unable to Create Databases", this, "createDatabases()", e);
     
 
 
@@ -435,10 +431,10 @@ this.logUtil!.put("Unable to Create Databases", this, "createDatabases()", e);
 }
 
 
-    public bool createTables(){
+    public: bool createTables(){
 
         try {
-            this.initDb!.addTables();
+            this->initDb.addTables();
     
 
 
@@ -450,7 +446,7 @@ this.logUtil!.put("Unable to Create Databases", this, "createDatabases()", e);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Unable to Create Tables", this, "createTables()", e);
+this->logUtil.put("Unable to Create Tables", this, "createTables()", e);
     
 
 
@@ -463,98 +459,98 @@ this.logUtil!.put("Unable to Create Tables", this, "createTables()", e);
 }
 
 
-    public string getAdminDbUserName(){
+    public: std::string getAdminDbUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adminDbUserName;
+                        return this->adminDbUserName;
     
 }
 
 
-    public setAdminDbUserName(string adminDbUserName){
-this.adminDbUserName= adminDbUserName;
+    public: void setAdminDbUserName(std::string adminDbUserName){
+this->adminDbUserName= adminDbUserName;
     
 }
 
 
-    public string getAdminDbPassword(){
+    public: std::string getAdminDbPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adminDbPassword;
+                        return this->adminDbPassword;
     
 }
 
 
-    public setAdminDbPassword(string adminDbPassword){
-this.adminDbPassword= adminDbPassword;
+    public: void setAdminDbPassword(std::string adminDbPassword){
+this->adminDbPassword= adminDbPassword;
     
 }
 
 
-    public string getAdminJdbcDriver(){
+    public: std::string getAdminJdbcDriver(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adminJdbcDriver;
+                        return this->adminJdbcDriver;
     
 }
 
 
-    public setAdminJdbcDriver(string adminJdbcDriver){
-this.adminJdbcDriver= adminJdbcDriver;
+    public: void setAdminJdbcDriver(std::string adminJdbcDriver){
+this->adminJdbcDriver= adminJdbcDriver;
     
 }
 
 
-    public string getAdminSchema(){
+    public: std::string getAdminSchema(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adminSchema;
+                        return this->adminSchema;
     
 }
 
 
-    public setAdminSchema(string adminSchema){
-this.adminSchema= adminSchema;
+    public: void setAdminSchema(std::string adminSchema){
+this->adminSchema= adminSchema;
     
 }
 
 
-    public string getAdminServer(){
+    public: std::string getAdminServer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adminServer;
+                        return this->adminServer;
     
 }
 
 
-    public setAdminServer(string adminServer){
-this.adminServer= adminServer;
+    public: void setAdminServer(std::string adminServer){
+this->adminServer= adminServer;
     
 }
 
 
-    public string getAdminPort(){
+    public: std::string getAdminPort(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.adminPort;
+                        return this->adminPort;
     
 }
 
 
-    public setAdminPort(string adminPort){
-this.adminPort= adminPort;
+    public: void setAdminPort(std::string adminPort){
+this->adminPort= adminPort;
     
 }
 

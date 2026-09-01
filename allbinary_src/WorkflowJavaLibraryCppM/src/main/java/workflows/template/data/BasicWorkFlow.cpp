@@ -79,108 +79,105 @@
 class BasicWorkFlow
             : public Object
         : public WorkFlowInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: validationDomNodeInterface: ValidationComponentInterface;
+    private: ValidationComponentInterface validationDomNodeInterface;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: BasicWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.WORKFLOW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().WORKFLOW))
                         
                                     {
-                                    this.logUtil!.putF("Properties: " +propertiesHashMap!.toString(), this, "BasicWorkFlow()");
+                                    this->logUtil.putF("Properties: " +propertiesHashMap.toString(), this, "BasicWorkFlow()");
     
 
                                     }
                                 
-this.propertiesHashMap= propertiesHashMap;
+this->propertiesHashMap= propertiesHashMap;
     
-this.pageContext= pageContext;
+this->pageContext= pageContext;
     
-this.validationDomNodeInterface= TransformFactory.getInstance()!.getInstance(this.abeClientInformation, propertiesHashMap, pageContext) as ValidationComponentInterface;
+this->validationDomNodeInterface= TransformFactory::getInstance().getInstance(this->abeClientInformation, propertiesHashMap, pageContext) as ValidationComponentInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getPropertiesHashMap()!.get(WorkFlowData.getInstance()!.NAME) as string;
+                        return this->getPropertiesHashMap().get(WorkFlowData::getInstance().NAME) as string;
     
 }
 
 
-    HashMap<any, any> getPropertiesHashMap(){
+    protected: HashMap<any, any> getPropertiesHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.propertiesHashMap;
+                        return this->propertiesHashMap;
     
 }
 
 
-    PageContext getPageContext(){
+    protected: PageContext getPageContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pageContext;
+                        return this->pageContext;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Integer process(){
+    public: Integer process(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.WORKFLOW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().WORKFLOW))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.PROCESS);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
                                     }
                                 
 
-                        if(this.validationDomNodeInterface!.isValid().valueOf())
+                        if(this->validationDomNodeInterface.isValid().valueOf())
                         
                                     {
-                                    this.pageContext!.getOut()!.print(this.validationDomNodeInterface!.view());
+                                    this->pageContext.getOut().print(this->validationDomNodeInterface.view());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer.valueOf(TagSupport.EVAL_BODY_INCLUDE);;
+                        return Integer::valueOf(TagSupport::EVAL_BODY_INCLUDE);;
     
 
                                     }
                                 
                         else {
-                            this.pageContext!.getOut()!.print(this.validationDomNodeInterface!.validationInfo());
+                            this->pageContext.getOut().print(this->validationDomNodeInterface.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer.valueOf(TagSupport.SKIP_BODY);;
+                        return Integer::valueOf(TagSupport::SKIP_BODY);;
     
 
                         }

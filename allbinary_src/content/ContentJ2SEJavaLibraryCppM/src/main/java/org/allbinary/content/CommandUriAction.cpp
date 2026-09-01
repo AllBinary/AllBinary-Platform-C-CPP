@@ -57,49 +57,48 @@
 class CommandUriAction
             : public Object
          {
-        
 
-    private: static const instance: CommandUriAction = new CommandUriAction();
+    private: static CommandUriAction instance() { return CommandUriAction(); }
 
-    public static CommandUriAction getInstance(){
+    public: static CommandUriAction getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandUriAction.instance;
+                        return CommandUriAction::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public add(Command command, string url){
-this.hashtable.put(command, url);
+    public: void add(Command command, std::string url){
+this->hashtable.put(command, url);
     
 }
 
 
-    public process(Command command){
+    public: void process(Command command){
 
         try {
             
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 }
 
 }
 
 
-    public Intent getIntent(Command command){
+    public: Intent getIntent(Command command){
 
-    url: string = this.hashtable.get(command) as string;;
+    std::string url = this->hashtable.get(command) as string;;
     
 
 

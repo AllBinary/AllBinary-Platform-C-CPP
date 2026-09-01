@@ -48,11 +48,10 @@
 class SimpleGeographicMapCellPositionFactory
             : public Object
         : public GeographicMapCellPositionFactoryInterface {
-        
 
-    public static const NULL_GEOGRAPHIC_MAP_CELL_POSITION: GeographicMapCellPosition = new GeographicMapCellPosition( -1,  -1,  -1,  -1,  -1,  -1);
+    public: static const GeographicMapCellPosition NULL_GEOGRAPHIC_MAP_CELL_POSITION = GeographicMapCellPosition( -1,  -1,  -1,  -1,  -1,  -1);
 
-    public GeographicMapCellPosition getInstance(BasicGeographicMap geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height);
+    public: GeographicMapCellPosition getInstance(BasicGeographicMap geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height);
 
 };
 

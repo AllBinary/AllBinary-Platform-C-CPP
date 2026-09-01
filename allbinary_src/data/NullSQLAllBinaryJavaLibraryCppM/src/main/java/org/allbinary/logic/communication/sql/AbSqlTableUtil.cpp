@@ -59,63 +59,62 @@
 class AbSqlTableUtil
             : public Object
          {
-        
 
-    private: static const instance: AbSqlTableUtil = new AbSqlTableUtil();
+    private: static AbSqlTableUtil instance() { return AbSqlTableUtil(); }
 
-    public static AbSqlTableUtil getInstance(){
+    public: static AbSqlTableUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbSqlTableUtil.instance;
+                        return AbSqlTableUtil::instance();
     
 }
 
 
-    private: const TABLE_LABEL: string = "Table: ";
+    private: const std::string TABLE_LABEL = "Table: ";
 
-    const stringUtil: StringUtil = StringUtil.getInstance()!;
+    protected: const StringUtil stringUtil = StringUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    const sqlStrings: SqlStrings = SqlStrings.getInstance()!;
+    protected: const SqlStrings sqlStrings = SqlStrings::getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string backupTable(AbSqlTable abSqlTable){
+    public: std::string backupTable(AbSqlTable abSqlTable){
 
-    tableName: string = abSqlTable!.getTableName()!;;
+    std::string tableName = abSqlTable.getTableName();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.TABLE_LABEL +tableName +" Backup Failed";
+                        return this->TABLE_LABEL +tableName +" Backup Failed";
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string restoreTable(AbSqlTable abSqlTable, Portion portion){
+    public: std::string restoreTable(AbSqlTable abSqlTable, Portion portion){
 
-    tableName: string = abSqlTable!.getTableName()!;;
+    std::string tableName = abSqlTable.getTableName();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.TABLE_LABEL);
+stringBuffer.append(this->TABLE_LABEL);
     
-stringBuffer!.append(tableName);
+stringBuffer.append(tableName);
     
-stringBuffer!.append(" Restoration Failed");
+stringBuffer.append(" Restoration Failed");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

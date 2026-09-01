@@ -51,9 +51,8 @@
 class TouchButtonsPaintableFactory
             : public Object
          {
-        
 
-    public static Paintable getInstance(BasicColor basicColor);
+    public: static Paintable getInstance(BasicColor basicColor);
 
 };
 

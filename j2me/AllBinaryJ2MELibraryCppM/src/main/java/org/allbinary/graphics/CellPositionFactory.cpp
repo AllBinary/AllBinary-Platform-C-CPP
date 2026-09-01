@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -54,76 +56,73 @@
 class CellPositionFactory
             : public Object
          {
-        
 
-    private: static SINGLETON: CellPositionFactory = new CellPositionFactory();
+    private: static CellPositionFactory SINGLETON = CellPositionFactory();
 
-    public static CellPositionFactory getInstance(){
+    public: static CellPositionFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CellPositionFactory.SINGLETON;
+                        return CellPositionFactory::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const NONE: CellPosition = new CellPosition( -1,  -1,  -1,  -1);
+    public: const CellPosition NONE = CellPosition( -1,  -1,  -1,  -1);
 
-    private: cellPositionArray: std::vector<std::vector<CellPosition>> = new Array(0).fill(null).map(() => new Array(0).fill(0))
+    private: std::vector<std::vector<CellPosition>> cellPositionArray = new Array(0).fill(null).map(() => new Array(0).fill(0))
                                                             ;
 
-    private: columns: int32_t= 0;
+    private: int32_t columns= 0;
 
-    private: rows: int32_t= 0;
+    private: int32_t rows= 0;
 
-private constructor (){
-
-            super();
-        }
+private: CellPositionFactory(){
+}
 
 
-    public init(int32_t columns, int32_t rows){
-this.cellPositionArray= new Array(columns).fill(null).map(() => new Array(rows).fill(0))
+    public: void init(int32_t columns, int32_t rows){
+this->cellPositionArray= new Array(columns).fill(null).map(() => new Array(rows).fill(0))
                                                             ;
     
-this.columns= columns;
+this->columns= columns;
     
-this.rows= rows;
-    
-
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+this->rows= rows;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-stringBuffer!.append("Init: columns: ");
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.appendint(columns);
+stringBuffer.append("Init: columns: ");
     
-stringBuffer!.append(" rows: ");
+stringBuffer.appendint(columns);
     
-stringBuffer!.appendint(rows);
+stringBuffer.append(" rows: ");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, commonStrings!.INIT);
+stringBuffer.appendint(rows);
+    
+this->logUtil.putF(stringBuffer.toString(), this, commonStrings.INIT);
     
 
 
 
 
                         for (
-    column: int32_t = 0;column < columns; column++)
+    int32_t column = 0;column < columns; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = 0;row < rows; row++)
+    int32_t row = 0;row < rows; row++)
         {
-this.createInstance(column, row);
+this->createInstance(column, row);
     
 }
 
@@ -132,48 +131,48 @@ this.createInstance(column, row);
 }
 
 
-    public CellPosition getInstanceColRow(int32_t i_column, int32_t i_row){
+    public: CellPosition getInstanceColRow(int32_t i_column, int32_t i_row){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellPositionArray[i_column]![i_row]!;
+                        return this->cellPositionArray[i_column]![i_row]!;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(new StringMaker().append("columns: ")!.appendint(this.getColumns())!.append(" rows: ")!.appendint(this.getRows())!.append(" col: ")!.appendint(i_column)!.append(" row: ")!.appendint(i_row)!.toString(), this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(StringMaker().append("columns: ").appendint(this->getColumns()).append(" rows: ").appendint(this->getRows()).append(" col: ").appendint(i_column).append(" row: ").appendint(i_row).toString(), this, commonStrings.GET_INSTANCE, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NONE;
+                        return this->NONE;
     
 }
 
 }
 
 
-    public CellPosition createInstance(int32_t i_column, int32_t i_row){
+    public: CellPosition createInstance(int32_t i_column, int32_t i_row){
 
-    cellPositionCanBeNull: CellPosition = this.cellPositionArray[i_column]![i_row];;
+    CellPosition cellPositionCanBeNull = this->cellPositionArray[i_column]![i_row];;
     
 
                         if(cellPositionCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    cellPositionCanBeNull= new CellPosition(i_column, i_row, this.columns, this.rows);
+                                    cellPositionCanBeNull= CellPosition(i_column, i_row, this->columns, this->rows);
     
-this.cellPositionArray[i_column]![i_row]= cellPositionCanBeNull;
+this->cellPositionArray[i_column]![i_row]= cellPositionCanBeNull;
     
 
                                     }
@@ -187,22 +186,22 @@ this.cellPositionArray[i_column]![i_row]= cellPositionCanBeNull;
 }
 
 
-    public int32_t getColumns(){
+    public: int32_t getColumns(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columns;
+                        return this->columns;
     
 }
 
 
-    public int32_t getRows(){
+    public: int32_t getRows(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rows;
+                        return this->rows;
     
 }
 

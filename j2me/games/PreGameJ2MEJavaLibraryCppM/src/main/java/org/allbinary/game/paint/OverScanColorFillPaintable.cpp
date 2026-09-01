@@ -45,9 +45,8 @@
         #include "ColorFillPaintable.h"
 
 class OverScanColorFillPaintable: public ColorFillPaintable {
-        
 
-public constructor (BasicColor basicColor){
+public: OverScanColorFillPaintable(BasicColor basicColor){
             super(basicColor);
                     
 
@@ -56,10 +55,10 @@ public constructor (BasicColor basicColor){
 }
 
 
-    public paint(Graphics graphics){
-graphics.setColor(this.colorP);
+    public: void paint(Graphics graphics){
+graphics.setColor(this->colorP);
     
-graphics.fillRect( -graphics.getClipX(),  -graphics.getClipY(), this.displayInfoSingleton!.getLastWidth() +(graphics.getClipX() *2), this.displayInfoSingleton!.getLastHeight() +(graphics.getClipY() *2));
+graphics.fillRect( -graphics.getClipX(),  -graphics.getClipY(), this->displayInfoSingleton.getLastWidth() +(graphics.getClipX() *2), this->displayInfoSingleton.getLastHeight() +(graphics.getClipY() *2));
     
 }
 

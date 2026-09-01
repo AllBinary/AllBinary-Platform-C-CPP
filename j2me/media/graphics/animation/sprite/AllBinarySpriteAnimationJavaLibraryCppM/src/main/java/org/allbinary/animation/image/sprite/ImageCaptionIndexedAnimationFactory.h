@@ -93,43 +93,42 @@
 class ImageCaptionIndexedAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    const animationFactoryImageScaleUtil: AnimationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil.getInstance()!;
+    protected: const AnimationFactoryImageScaleUtil animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
 
-    private: const animationFactorySpriteScaleUtil: AnimationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil.getInstance()!;
+    private: const AnimationFactorySpriteScaleUtil animationFactorySpriteScaleUtil = AnimationFactorySpriteScaleUtil::getInstance();
 
-    private: captionImage: Image;
+    private: Image captionImage;
 
-    private: spriteMovieImage: Image;
+    private: Image spriteMovieImage;
 
-    private: frameWidth: int32_t;
+    private: int32_t frameWidth;
 
-    private: frameHeight: int32_t;
+    private: int32_t frameHeight;
 
-    private: captionDx: int32_t;
+    private: int32_t captionDx;
 
-    private: captionDy: int32_t;
+    private: int32_t captionDy;
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-    private: time: int32_t;
+    private: int32_t time;
 
-    private: soundInterface: Sound;
+    private: Sound soundInterface;
 
-    public scaleProperties: ScaleProperties = ScaleProperties.instance;
+    public: ScaleProperties scaleProperties = ScaleProperties::instance;
 
-    private: const animationBehaviorFactory: AnimationBehaviorFactory;
+    private: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (Image captionImage, Image spriteMovieImage, Sound soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory animationBehaviorFactory);
+public: ImageCaptionIndexedAnimationFactory(Image captionImage, Image spriteMovieImage, Sound soundInterface, int32_t frameWidth, int32_t frameHeight, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

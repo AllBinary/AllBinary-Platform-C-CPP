@@ -45,19 +45,18 @@
 class MouseActionScriptInputData
             : public Object
          {
-        
 
-    public static NAME: string = "MOUSE_ACTION_INPUT_NAME";
+    public: static std::string NAME = "MOUSE_ACTION_INPUT_NAME";
 
-    public static BUTTONS: string = "MOUSE_ACTION_INPUT_BUTTONS";
+    public: static std::string BUTTONS = "MOUSE_ACTION_INPUT_BUTTONS";
 
-    public static MOVE: string = "MOUSE_ACTION_INPUT_MOVE";
+    public: static std::string MOVE = "MOUSE_ACTION_INPUT_MOVE";
 
-    public static MOVE_X: string = "MOUSE_ACTION_INPUT_MOVE_X";
+    public: static std::string MOVE_X = "MOUSE_ACTION_INPUT_MOVE_X";
 
-    public static MOVE_Y: string = "MOUSE_ACTION_INPUT_MOVE_Y";
+    public: static std::string MOVE_Y = "MOUSE_ACTION_INPUT_MOVE_Y";
 
-private constructor ();
+private: MouseActionScriptInputData();
 
 };
 

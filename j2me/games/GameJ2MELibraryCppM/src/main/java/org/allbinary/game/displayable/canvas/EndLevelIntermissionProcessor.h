@@ -47,15 +47,14 @@
         #include "AllBinaryGameCanvas.h"
 
 class EndLevelIntermissionProcessor: public Processor {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: EndLevelIntermissionProcessor(AllBinaryGameCanvas gameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 

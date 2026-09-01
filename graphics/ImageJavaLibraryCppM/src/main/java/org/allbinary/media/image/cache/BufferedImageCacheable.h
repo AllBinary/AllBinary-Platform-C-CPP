@@ -55,21 +55,20 @@
 class BufferedImageCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: key: BufferedImageInfo;
+    private: BufferedImageInfo key;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (BufferedImageInfo key);
+public: BufferedImageCacheable(BufferedImageInfo key);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public BufferedImage getBufferedImage();
+    public: BufferedImage getBufferedImage();
 
-    setBufferedImage(BufferedImage bufferedImage);
+    private: void setBufferedImage(BufferedImage bufferedImage);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

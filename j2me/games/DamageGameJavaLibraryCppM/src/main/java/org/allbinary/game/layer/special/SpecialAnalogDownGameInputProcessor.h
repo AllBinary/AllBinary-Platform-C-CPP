@@ -51,13 +51,12 @@
 #include "CollidableDestroyableDamageableLayer.h"
 
 class SpecialAnalogDownGameInputProcessor: public SpecialGameInputProcessor {
-        
 
-public constructor (CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+public: SpecialAnalogDownGameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
 
                 //@Throws(Exception.constructor)
             
-    public processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t yAnalogValue);
+    public: void processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t yAnalogValue);
 
 };
 

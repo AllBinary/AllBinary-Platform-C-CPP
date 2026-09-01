@@ -57,50 +57,49 @@
 class HardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: HardwareFactory = new HardwareFactory();
+    private: static HardwareFactory instance() { return HardwareFactory(); }
 
-    public static HardwareFactory getInstance(){
+    public: static HardwareFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HardwareFactory.instance;
+                        return HardwareFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static HardwareInterface getInstance(GenericOperatingSystem os){
+    public: static HardwareInterface getInstance(GenericOperatingSystem os){
 
         try {
             
-    operatingSystems: OperatingSystems = OperatingSystems.getInstance()!;;
+    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
     
 
-                        if(os.getName()!.compareTo(operatingSystems!.LINUX) == 0)
+                        if(os.getName().compareTo(operatingSystems.LINUX) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LinuxHardware() as HardwareInterface;
+                        return LinuxHardware() as HardwareInterface;
     
 
                                     }
                                 
                              else 
-                        if(os.getName()!.indexOf(operatingSystems!.WINDOWS) >= 0)
+                        if(os.getName().indexOf(operatingSystems.WINDOWS) >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new WindowsHardware() as HardwareInterface;
+                        return WindowsHardware() as HardwareInterface;
     
 
                                     }
@@ -108,7 +107,7 @@ class HardwareFactory
 
 
 
-                            throw new Exception("No Hardware Imp for: " +os.getName());
+                            throw Exception("No Hardware Imp for: " +os.getName());
                     
 
                 //: 
@@ -124,10 +123,8 @@ class HardwareFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: HardwareFactory(){
+}
 
 
 };

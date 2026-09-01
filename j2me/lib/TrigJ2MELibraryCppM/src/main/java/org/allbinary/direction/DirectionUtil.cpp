@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -59,68 +61,65 @@
 class DirectionUtil
             : public Object
          {
-        
 
-    private: static const instance: DirectionUtil = new DirectionUtil();
+    private: static DirectionUtil instance() { return DirectionUtil(); }
 
-    public static DirectionUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DirectionUtil.instance;
-    
-}
-
-
-    private: directionArray: std::vector<Angle> = new Array(10);
-
-    private: directionArray2: std::vector<Angle> = new Array(10);
-
-private constructor (){
-
-            super();
-        
-    angleFactory: AngleFactory = AngleFactory.getInstance()!;;
-    
-
-    directionFactory: DirectionFactory = DirectionFactory.getInstance()!;;
-    
-this.directionArray[directionFactory!.LEFT.getValue()]= angleFactory!.LEFT;
-    
-this.directionArray[directionFactory!.RIGHT.getValue()]= angleFactory!.RIGHT;
-    
-this.directionArray[directionFactory!.UP.getValue()]= angleFactory!.UP;
-    
-this.directionArray[directionFactory!.DOWN.getValue()]= angleFactory!.DOWN;
-    
-this.directionArray2[directionFactory!.LEFT.getValue()]= angleFactory!.LEFT;
-    
-this.directionArray2[directionFactory!.RIGHT.getValue()]= angleFactory!.RIGHT;
-    
-this.directionArray2[directionFactory!.UP.getValue()]= angleFactory!.UP;
-    
-this.directionArray2[directionFactory!.DOWN.getValue()]= angleFactory!.DOWN;
-    
-}
-
-
-    public Angle getAngle(Direction direction){
+    public: static DirectionUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directionArray2[direction.getValue()]!;
+                        return DirectionUtil::instance();
     
 }
 
 
-    public Angle getFrameAngle(Direction direction){
+    private: std::vector<Angle> directionArray = new Array(10);
+
+    private: std::vector<Angle> directionArray2 = new Array(10);
+
+private: DirectionUtil(){
+
+    AngleFactory angleFactory = AngleFactory::getInstance();;
+    
+
+    DirectionFactory directionFactory = DirectionFactory::getInstance();;
+    
+this->directionArray[directionFactory.LEFT.getValue()]= angleFactory.LEFT;
+    
+this->directionArray[directionFactory.RIGHT.getValue()]= angleFactory.RIGHT;
+    
+this->directionArray[directionFactory.UP.getValue()]= angleFactory.UP;
+    
+this->directionArray[directionFactory.DOWN.getValue()]= angleFactory.DOWN;
+    
+this->directionArray2[directionFactory.LEFT.getValue()]= angleFactory.LEFT;
+    
+this->directionArray2[directionFactory.RIGHT.getValue()]= angleFactory.RIGHT;
+    
+this->directionArray2[directionFactory.UP.getValue()]= angleFactory.UP;
+    
+this->directionArray2[directionFactory.DOWN.getValue()]= angleFactory.DOWN;
+    
+}
+
+
+    public: Angle getAngle(Direction direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directionArray[direction.getValue()]!;
+                        return this->directionArray2[direction.getValue()]!;
+    
+}
+
+
+    public: Angle getFrameAngle(Direction direction){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->directionArray[direction.getValue()]!;
     
 }
 

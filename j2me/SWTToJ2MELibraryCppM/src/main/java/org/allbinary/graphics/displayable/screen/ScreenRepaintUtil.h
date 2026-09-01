@@ -51,9 +51,8 @@
 class ScreenRepaintUtil
             : public Object
          {
-        
 
-    public static repaint(Displayable displayable);
+    public: static void repaint(Displayable displayable);
 
 };
 

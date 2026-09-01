@@ -55,13 +55,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontStatisticsTag: public StoreValidationTransformTag {
-        
 
-public constructor ();
+public: StoreFrontStatisticsTag();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

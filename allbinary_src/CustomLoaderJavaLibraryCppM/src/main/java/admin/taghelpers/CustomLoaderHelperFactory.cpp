@@ -59,41 +59,38 @@
 class CustomLoaderHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.CustomLoaderHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.CustomLoaderHelper";
 
-    private: static const FACTORYNAME: string = "CustomLoaderHelperFactory";
+    private: static const std::string FACTORYNAME = "CustomLoaderHelperFactory";
 
-public constructor (){
-
-            super();
-        }
+public: CustomLoaderHelperFactory(){
+}
 
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
 
-    abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;;
+    AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HelperFactory.getInstance(abeClientInformation, FACTORYNAME, CLASSNAME, hashMap, pageContext);;
+                        return HelperFactory::getInstance(abeClientInformation, FACTORYNAME, CLASSNAME, hashMap, pageContext);;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(AbeClientInformationInterface abeClientInformation){
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HelperFactory.getInstance(abeClientInformation, FACTORYNAME, CustomLoaderHelperFactory.CLASSNAME);;
+                        return HelperFactory::getInstance(abeClientInformation, FACTORYNAME, CustomLoaderHelperFactory::CLASSNAME);;
     
 }
 

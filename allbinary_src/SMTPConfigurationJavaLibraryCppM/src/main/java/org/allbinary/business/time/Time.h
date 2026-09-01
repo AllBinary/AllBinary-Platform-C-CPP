@@ -47,19 +47,18 @@
 class Time
             : public Object
          {
-        
 
-    private: timeLong: Long;
+    private: Long timeLong;
 
-public constructor (string time);
+public: Time(std::string time);
 
-public constructor (int64_t time);
+public: Time(int64_t time);
 
-    public Long getLong();
+    public: Long getLong();
 
-    public int64_t getlong();
+    public: int64_t getlong();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

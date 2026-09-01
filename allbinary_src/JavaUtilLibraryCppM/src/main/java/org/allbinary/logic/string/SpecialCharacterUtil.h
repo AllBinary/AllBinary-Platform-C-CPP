@@ -58,9 +58,8 @@
 class SpecialCharacterUtil
             : public Object
          {
-        
 
-    public static HashMap<any, any> getHashMap();
+    public: static HashMap<any, any> getHashMap();
 
 };
 

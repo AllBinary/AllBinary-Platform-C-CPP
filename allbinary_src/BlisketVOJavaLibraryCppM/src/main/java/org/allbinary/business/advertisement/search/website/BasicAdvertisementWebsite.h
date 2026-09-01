@@ -46,13 +46,12 @@
 class BasicAdvertisementWebsite
             : public Object
         : public AdvertisementWebsiteInterface {
-        
 
-    private: websiteId: string;
+    private: std::string websiteId;
 
-public constructor (string websiteId);
+public: BasicAdvertisementWebsite(std::string websiteId);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

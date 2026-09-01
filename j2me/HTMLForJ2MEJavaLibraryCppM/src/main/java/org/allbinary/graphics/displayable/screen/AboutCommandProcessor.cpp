@@ -57,22 +57,21 @@
 class AboutCommandProcessor
             : public Object
          {
-        
 
-    private: static const instance: AboutCommandProcessor = new AboutCommandProcessor();
+    private: static AboutCommandProcessor instance() { return AboutCommandProcessor(); }
 
-    public static AboutCommandProcessor getInstance(){
+    public: static AboutCommandProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AboutCommandProcessor.instance;
+                        return AboutCommandProcessor::instance();
     
 }
 
 
-    public process(CommandListener midletCommandListener, Command command, Canvas canvas){
-midletCommandListener!.commandAction(command, canvas);
+    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas){
+midletCommandListener.commandAction(command, canvas);
     
 }
 

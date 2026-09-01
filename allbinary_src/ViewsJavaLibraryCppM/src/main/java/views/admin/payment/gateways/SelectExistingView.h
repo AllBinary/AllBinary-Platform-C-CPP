@@ -62,15 +62,14 @@
         #include "PaymentGatewaysView.h"
 
 class SelectExistingView: public PaymentGatewayViewAbstract {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: SelectExistingView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

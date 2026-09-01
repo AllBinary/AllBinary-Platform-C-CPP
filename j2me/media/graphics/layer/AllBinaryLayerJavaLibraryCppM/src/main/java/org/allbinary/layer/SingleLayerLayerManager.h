@@ -43,9 +43,8 @@
 #include "LayerManagerNoDebug.h"
 
 class SingleLayerLayerManager: public LayerManager {
-        
 
-public constructor ();
+public: SingleLayerLayerManager();
 
 };
 

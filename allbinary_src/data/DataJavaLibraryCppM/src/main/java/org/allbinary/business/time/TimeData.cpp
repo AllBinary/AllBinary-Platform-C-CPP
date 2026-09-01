@@ -42,31 +42,28 @@
 class TimeData
             : public Object
          {
-        
 
-    private: static const instance: TimeData = new TimeData();
+    private: static TimeData instance() { return TimeData(); }
 
-    public static TimeData getInstance(){
+    public: static TimeData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeData.instance;
+                        return TimeData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TimeData(){
+}
 
 
-    public const NAME: string = "TIME_NAME";
+    public: const std::string NAME = "TIME_NAME";
 
-    public const START: string = "TIME_START";
+    public: const std::string START = "TIME_START";
 
-    public const END: string = "TIME_END";
+    public: const std::string END = "TIME_END";
 
 };
 

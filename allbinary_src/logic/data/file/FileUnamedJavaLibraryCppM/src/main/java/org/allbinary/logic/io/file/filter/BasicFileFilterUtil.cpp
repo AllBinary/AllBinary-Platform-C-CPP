@@ -55,30 +55,27 @@
 class BasicFileFilterUtil
             : public Object
          {
-        
 
-    public static FileFilter getInstance(string extension){
+    public: static FileFilter getInstance(std::string extension){
 
-    vector: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList vector = BasicArrayListD();;
     
 vector.add(extension);
     
 
-    includeFileExtensionsBooleanFileVisitor: IncludeFileExtensionsBooleanFileVisitor = new IncludeFileExtensionsBooleanFileVisitor(vector);;
+    IncludeFileExtensionsBooleanFileVisitor includeFileExtensionsBooleanFileVisitor = IncludeFileExtensionsBooleanFileVisitor(vector);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new VisitorFileFilter(includeFileExtensionsBooleanFileVisitor) as FileFilter;
+                        return VisitorFileFilter(includeFileExtensionsBooleanFileVisitor) as FileFilter;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BasicFileFilterUtil(){
+}
 
 
 };

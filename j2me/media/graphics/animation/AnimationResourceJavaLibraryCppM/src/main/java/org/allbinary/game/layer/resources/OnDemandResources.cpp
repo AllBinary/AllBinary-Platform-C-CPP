@@ -65,33 +65,30 @@
 class OnDemandResources
             : public Object
          {
-        
 
-    public static const NULL_ON_DEMAND_RESOURCES: OnDemandResources = new OnDemandResources();
+    public: static const OnDemandResources NULL_ON_DEMAND_RESOURCES = OnDemandResources();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-protected constructor (){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            
-    public waitFor(){
+protected: OnDemandResources(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(){
+    public: void waitFor(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t initAt(ImageCache imageCache, BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory, int32_t portion, string loadingString, int32_t index){
+    public: void init(){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: int32_t initAt(ImageCache imageCache, BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory, int32_t portion, std::string loadingString, int32_t index){
 
 
 

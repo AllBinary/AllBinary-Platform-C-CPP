@@ -49,16 +49,15 @@
 class InputAutomationRobotUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static InputAutomationRobotChangeEvent getChangeEvent(InputRobotInterface inputRobotInterface){
+    public: static InputAutomationRobotChangeEvent getChangeEvent(InputRobotInterface inputRobotInterface){
 
-    inputAutomationRobotInterfaceWrapper: InputAutomationRobotInterfaceWrapper = new InputAutomationRobotInterfaceWrapper(inputRobotInterface);;
+    InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper = InputAutomationRobotInterfaceWrapper(inputRobotInterface);;
     
 
-    inputAutomationRobotChangeEvent: InputAutomationRobotChangeEvent = new InputAutomationRobotChangeEvent(inputAutomationRobotInterfaceWrapper);;
+    InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent = InputAutomationRobotChangeEvent(inputAutomationRobotInterfaceWrapper);;
     
 
 
@@ -69,10 +68,8 @@ class InputAutomationRobotUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InputAutomationRobotUtil(){
+}
 
 
 };

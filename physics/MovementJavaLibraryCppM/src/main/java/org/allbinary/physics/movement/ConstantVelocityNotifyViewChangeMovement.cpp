@@ -59,47 +59,44 @@
         #include "Movement.h"
 
 class ConstantVelocityNotifyViewChangeMovement: public Movement {
-        
 
-    basicVelocityProperties: BasicVelocityProperties;
+    protected: BasicVelocityProperties basicVelocityProperties;
 
-    private: speedBasicDecimal: BasicDecimal;
+    private: BasicDecimal speedBasicDecimal;
 
-    private: const axisMathVectorUtil: AxisMathVectorUtil = AxisMathVectorUtil.getInstance()!;
+    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
-public constructor (){
-
-            super();
-        this.speedBasicDecimal= BasicDecimal.ZERO_BIGDECIMAL;
+public: ConstantVelocityNotifyViewChangeMovement(){
+this->speedBasicDecimal= BasicDecimal::ZERO_BIGDECIMAL;
     
-this.basicVelocityProperties= new BasicVelocityProperties();
+this->basicVelocityProperties= BasicVelocityProperties();
     
 }
 
 
-    public init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle){
-this.speedBasicDecimal= speedBasicDecimal;
+    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle){
+this->speedBasicDecimal= speedBasicDecimal;
     
 
-    angleFactory: AngleFactory = AngleFactory.getInstance()!;;
+    AngleFactory angleFactory = AngleFactory::getInstance();;
     
-this.basicVelocityProperties!.setVelocityWithBigDecimal(speedBasicDecimal, angleFactory!.getAt(angle), angleFactory!.getAt(otherAngle));
+this->basicVelocityProperties.setVelocityWithBigDecimal(speedBasicDecimal, angleFactory.getAt(angle), angleFactory.getAt(otherAngle));
     
 }
 
 
-    public moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle){
+    public: void moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle){
 
-    scaleFactorValue: int32_t = this.speedBasicDecimal!.getScaledFactorValue()!;;
+    int32_t scaleFactorValue = this->speedBasicDecimal.getScaledFactorValue();;
     
 
-    xVector: int32_t = static_cast<int32_t>((this.axisMathVectorUtil!.calculateX(radius, angle) /scaleFactorValue));;
+    int32_t xVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateX(radius, angle) /scaleFactorValue));;
     
 
-    yVector: int32_t = static_cast<int32_t>((this.axisMathVectorUtil!.calculateY(radius, angle) /scaleFactorValue));;
+    int32_t yVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateY(radius, angle) /scaleFactorValue));;
     
 
-    zVector: int32_t = static_cast<int32_t>((this.axisMathVectorUtil!.calculateZ(radius, otherAngle) /scaleFactorValue));;
+    int32_t zVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateZ(radius, otherAngle) /scaleFactorValue));;
     
 layer.moveDXYZ(xVector, yVector, zVector);
     
@@ -108,15 +105,15 @@ layer.moveDXYZ(xVector, yVector, zVector);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer layer){
 
-    x: int32_t = this.basicVelocityProperties!.getVelocityXBasicDecimalP()!.getScaled()!;;
+    int32_t x = this->basicVelocityProperties.getVelocityXBasicDecimalP().getScaled();;
     
 
-    y: int32_t = this.basicVelocityProperties!.getVelocityYBasicDecimalP()!.getScaled()!;;
+    int32_t y = this->basicVelocityProperties.getVelocityYBasicDecimalP().getScaled();;
     
 
-    z: int32_t = this.basicVelocityProperties!.getVelocityZBasicDecimalP()!.getScaled()!;;
+    int32_t z = this->basicVelocityProperties.getVelocityZBasicDecimalP().getScaled();;
     
 layer.moveDXYZ(x, y, z);
     
@@ -132,8 +129,8 @@ layer.moveDXYZ(x, y, z);
 }
 
 
-    public stop(){
-this.basicVelocityProperties!.zero();
+    public: void stop(){
+this->basicVelocityProperties.zero();
     
 }
 

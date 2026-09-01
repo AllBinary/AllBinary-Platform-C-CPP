@@ -52,13 +52,12 @@
 class VelocityBehaviorBase
             : public Object
          {
-        
 
-    public reduce(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
+    public: void reduce(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
 
-    public reduceX(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
+    public: void reduceX(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
 
-    public reduceY(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
+    public: void reduceY(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator);
 
 };
 

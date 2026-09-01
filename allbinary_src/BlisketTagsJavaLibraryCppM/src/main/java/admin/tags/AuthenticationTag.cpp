@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../java/lang/Class.h"
         
             #include "../../java/lang/Exception.h"
@@ -89,82 +91,79 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AuthenticationTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: newPassword: string;
+    private: std::string newPassword;
 
-    private: roles: Vector;
+    private: Vector roles;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
+public: AuthenticationTag(){
 
-            super();
-        
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-this.userName= stringUtil!.EMPTY_STRING;
+this->userName= stringUtil.EMPTY_STRING;
     
-this.password= stringUtil!.EMPTY_STRING;
+this->password= stringUtil.EMPTY_STRING;
     
 }
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setUserName(string userName){
-this.userName= userName;
+    public: void setUserName(std::string userName){
+this->userName= userName;
     
 }
 
 
-    public setPassword(string value){
-this.password= value;
+    public: void setPassword(std::string value){
+this->password= value;
     
 }
 
 
-    public setNewPassword(string value){
-this.newPassword= value;
+    public: void setNewPassword(std::string value){
+this->newPassword= value;
     
 }
 
 
-    public setRoles(Vector values){
-this.roles= values;
+    public: void setRoles(Vector values){
+this->roles= values;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    bool changePassword(){
+    private: bool changePassword(){
 
         try {
             
-    anyType: any = new AuthenticationRequestHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("changePassword", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("changePassword", 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(anyType, 
+    Boolean result = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -188,10 +187,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "changePassword()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "changePassword()", e);
     
 
                                     }
@@ -209,21 +208,21 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    bool newPassword(){
+    private: bool newPassword(){
 
         try {
             
-    anyType: any = new AuthenticationRequestHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("newPassword", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("newPassword", 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(anyType, 
+    Boolean result = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -247,10 +246,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "newPassword()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "newPassword()", e);
     
 
                                     }
@@ -268,28 +267,28 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    int32_t invalidateSession(){
+    private: int32_t invalidateSession(){
 
         try {
             
-    anyType: any = new AuthenticationHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("invalidateSession", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("invalidateSession", 
+                            nullptr);;
     
 
-    resultInteger: Integer = method.invoke(anyType, 
+    Integer resultInteger = method.invoke(anyType, 
                             nullptr) as Integer;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return resultInteger!.intValue();;
+                        return resultInteger.intValue();;
     
 
                 //: 
@@ -306,10 +305,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "invalidateSession()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "invalidateSession()", e);
     
 
                                     }
@@ -318,7 +317,7 @@ this.roles= values;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 }
 */
@@ -327,21 +326,21 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    bool isSessionOld(){
+    private: bool isSessionOld(){
 
         try {
             
-    anyType: any = new AuthenticationHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("isSessionOld", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("isSessionOld", 
+                            nullptr);;
     
 
-    resultBoolean: Boolean = method.invoke(anyType, 
+    Boolean resultBoolean = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -365,10 +364,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isSessionOld()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isSessionOld()", e);
     
 
                                     }
@@ -386,32 +385,32 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    bool isRoleValid(){
+    private: bool isRoleValid(){
 
         try {
             
-    anyType: any = new AuthenticationRequestHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    methodParams: std::vector<Function> = 
-                                                        [
-                                                            this.userName!.constructor, this.password.constructor, this.roles.constructor
-                                                        ];;
+    std::vector<Function> methodParams = 
+                                                        {
+                                                            this->userName.constructor, this->password.constructor, this->roles.constructor
+                                                        };;
     
 
-    method: Method = addressHelperClass!.getMethod("isRoleValid", methodParams)!;;
+    Method method = addressHelperClass.getMethod("isRoleValid", methodParams);;
     
 
-    methodArgs: std::vector<any> = 
-                                                        [
-                                                            this.userName,this.password,this.roles
-                                                        ];;
+    std::vector<Object*> methodArgs = 
+                                                        {
+                                                            this->userName,this->password,this->roles
+                                                        };;
     
 
-    resultBoolean: Boolean = method.invoke(anyType, methodArgs) as Boolean;;
+    Boolean resultBoolean = method.invoke(anyType, methodArgs) as Boolean;;
     
 
 
@@ -434,10 +433,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isRoleValid()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isRoleValid()", e);
     
 
                                     }
@@ -455,21 +454,21 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    string validRole(){
+    private: std::string validRole(){
 
         try {
             
-    anyType: any = new AuthenticationHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("validRole", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("validRole", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -493,13 +492,13 @@ this.roles= values;
 /* catch(e) 
             {
 
-    error: string = "Failed to set valid role";;
+    std::string error = "Failed to set valid role";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "validRole()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "validRole()", e);
     
 
                                     }
@@ -517,21 +516,21 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    string invalidRole(){
+    private: std::string invalidRole(){
 
         try {
             
-    anyType: any = new AuthenticationHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("invalidRole", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("invalidRole", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -555,13 +554,13 @@ this.roles= values;
 /* catch(e) 
             {
 
-    error: string = "Failed to set role invalid";;
+    std::string error = "Failed to set role invalid";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "invalidRole()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "invalidRole()", e);
     
 
                                     }
@@ -579,32 +578,32 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    bool isAuthenticationSessionValid(){
+    private: bool isAuthenticationSessionValid(){
 
         try {
             
-    anyType: any = new AuthenticationHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    methodParams: std::vector<Function> = 
-                                                        [
-                                                            this.roles.constructor
-                                                        ];;
+    std::vector<Function> methodParams = 
+                                                        {
+                                                            this->roles.constructor
+                                                        };;
     
 
-    method: Method = addressHelperClass!.getMethod("isAuthenticationSessionValid", methodParams)!;;
+    Method method = addressHelperClass.getMethod("isAuthenticationSessionValid", methodParams);;
     
 
-    methodArgs: std::vector<any> = 
-                                                        [
-                                                            this.roles
-                                                        ];;
+    std::vector<Object*> methodArgs = 
+                                                        {
+                                                            this->roles
+                                                        };;
     
 
-    resultBoolean: Boolean = method.invoke(anyType, methodArgs) as Boolean;;
+    Boolean resultBoolean = method.invoke(anyType, methodArgs) as Boolean;;
     
 
 
@@ -627,10 +626,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isAuthenticationSessionValid()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isAuthenticationSessionValid()", e);
     
 
                                     }
@@ -648,32 +647,32 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    bool processIfNewLogin(){
+    private: bool processIfNewLogin(){
 
         try {
             
-    anyType: any = new AuthenticationHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    methodParams: std::vector<Function> = 
-                                                        [
-                                                            this.userName!.constructor, this.password.constructor
-                                                        ];;
+    std::vector<Function> methodParams = 
+                                                        {
+                                                            this->userName.constructor, this->password.constructor
+                                                        };;
     
 
-    method: Method = helperClass!.getMethod("processIfNewLogin", methodParams)!;;
+    Method method = helperClass.getMethod("processIfNewLogin", methodParams);;
     
 
-    methodArgs: std::vector<any> = 
-                                                        [
-                                                            this.userName,this.password
-                                                        ];;
+    std::vector<Object*> methodArgs = 
+                                                        {
+                                                            this->userName,this->password
+                                                        };;
     
 
-    resultBoolean: Boolean = method.invoke(anyType, methodArgs) as Boolean;;
+    Boolean resultBoolean = method.invoke(anyType, methodArgs) as Boolean;;
     
 
 
@@ -696,10 +695,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "processIfNewLogin()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processIfNewLogin()", e);
     
 
                                     }
@@ -717,21 +716,21 @@ this.roles= values;
 
                 //@Throws(LicensingException.constructor)
             
-    bool processInvalidation(){
+    private: bool processInvalidation(){
 
         try {
             
-    anyType: any = new AuthenticationHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = AuthenticationHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("processInvalidation", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("processInvalidation", 
+                            nullptr);;
     
 
-    resultBoolean: Boolean = method.invoke(anyType, 
+    Boolean resultBoolean = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -755,10 +754,10 @@ this.roles= values;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isSetToInvalidate()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isSetToInvalidate()", e);
     
 
                                     }
@@ -776,57 +775,55 @@ this.roles= values;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
                                     
-    request: HttpServletRequest = this.pageContext!.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = this->pageContext.getRequest() as HttpServletRequest;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(" Request URI: ");
+stringBuffer.append(" Request URI: ");
     
-stringBuffer!.append(request.getRequestURI());
+stringBuffer.append(request.getRequestURI());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, tagStrings!.DO_START_TAG);
+this->logUtil.putF(stringBuffer.toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.propertiesHashMap= new HashMap<any, any>();
+                                    this->propertiesHashMap= HashMap<any, any>();
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.NEWPASSWORD) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.NEWPASSWORD) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("New Password", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("New Password", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(!this.newPassword())
+                        if(!this->newPassword())
                         
                                     {
-                                    pageContext!.getOut()!.print("New Password Request Failed.<p/>");
+                                    pageContext.getOut().print("New Password Request Failed.<p/>");
     
 
 
@@ -838,7 +835,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, tagStrings!.DO_START_TAG);
                                     }
                                 
                         else {
-                            pageContext!.getOut()!.print("New Password Was Sent.<p/>");
+                            pageContext.getOut().print("New Password Was Sent.<p/>");
     
 
 
@@ -853,23 +850,23 @@ this.logUtil!.putF(stringBuffer!.toString(), this, tagStrings!.DO_START_TAG);
                                     }
                                 
                              else 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.CHANGEPASSWORD) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.CHANGEPASSWORD) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Change Password", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Change Password", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(!this.changePassword())
+                        if(!this->changePassword())
                         
                                     {
-                                    pageContext!.getOut()!.print("Password Change Attempt Failed.<p/>");
+                                    pageContext.getOut().print("Password Change Attempt Failed.<p/>");
     
 
 
@@ -881,7 +878,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, tagStrings!.DO_START_TAG);
                                     }
                                 
                         else {
-                            pageContext!.getOut()!.print("Password Changed Successfully.<p/>");
+                            pageContext.getOut().print("Password Changed Successfully.<p/>");
     
 
 
@@ -896,14 +893,14 @@ this.logUtil!.putF(stringBuffer!.toString(), this, tagStrings!.DO_START_TAG);
                                     }
                                 
                              else 
-                        if(this.command.compareTo(WeblisketSessionData.INVALIDATESESSION) == 0)
+                        if(this->command.compareTo(WeblisketSessionData::INVALIDATESESSION) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("INVALIDATESESSION", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("INVALIDATESESSION", this, tagStrings.DO_START_TAG);
     
 
                                     }
@@ -912,40 +909,40 @@ this.logUtil!.putF(stringBuffer!.toString(), this, tagStrings!.DO_START_TAG);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.invalidateSession();;
+                        return this->invalidateSession();;
     
 
                                     }
                                 
                         else {
                             
-                        if(this.isSessionOld())
+                        if(this->isSessionOld())
                         
                                     {
                                     
-                        if(this.processInvalidation())
+                        if(this->processInvalidation())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Processing Invalidation", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Processing Invalidation", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext!.getOut()!.print("Please login again.<p>");
+pageContext.getOut().print("Please login again.<p>");
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                                     }
@@ -955,7 +952,7 @@ pageContext!.getOut()!.print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                         }
@@ -965,23 +962,23 @@ pageContext!.getOut()!.print("Please login again.<p>");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Preparing session for invalidation", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Preparing session for invalidation", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                                     }
@@ -991,7 +988,7 @@ pageContext!.getOut()!.print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                         }
@@ -1003,33 +1000,29 @@ pageContext!.getOut()!.print("Please login again.<p>");
                                     }
                                 
 
-                        if((this.userName == 
-                                    null
-                                 || this.userName!.compareTo(stringUtil!.EMPTY_STRING) == 0) && (this.password == 
-                                    null
-                                 || this.password.compareTo(stringUtil!.EMPTY_STRING) == 0) && this.roles != 
-                                    null
-                                 && this.isAuthenticationSessionValid())
+                        if((false || this->userName.compareTo(stringUtil.EMPTY_STRING) == 0) && (false || this->password.compareTo(stringUtil.EMPTY_STRING) == 0) && this->roles != 
+                                    nullptr
+                                 && this->isAuthenticationSessionValid())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Authenticated session is valid", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Authenticated session is valid", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                                     }
@@ -1039,7 +1032,7 @@ pageContext!.getOut()!.print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                         }
@@ -1048,39 +1041,35 @@ pageContext!.getOut()!.print("Please login again.<p>");
                                     }
                                 
 
-                        if(this.userName != 
-                                    null
-                                 && this.password != 
-                                    null
-                                 && this.processIfNewLogin())
+                        if(true && true && this->processIfNewLogin())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Processing new login.", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Processing new login.", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.isRoleValid())
+                        if(this->isRoleValid())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Role is valid - Processing new login", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Role is valid - Processing new login", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext!.getOut()!.print(validRole());
+pageContext.getOut().print(validRole());
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1107,18 +1096,18 @@ pageContext!.getOut()!.print(validRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Role is not valid - Processing new login", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Role is not valid - Processing new login", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext!.getOut()!.print(invalidRole());
+pageContext.getOut().print(invalidRole());
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1148,23 +1137,19 @@ pageContext!.getOut()!.print(invalidRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Invalid Login", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Invalid Login", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.userName != 
-                                    null
-                                 && this.userName!.compareTo(stringUtil!.EMPTY_STRING) != 0 && this.password != 
-                                    null
-                                 && this.password.compareTo(stringUtil!.EMPTY_STRING) != 0)
+                        if(true && this->userName.compareTo(stringUtil.EMPTY_STRING) != 0 && true && this->password.compareTo(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
-                                    pageContext!.getOut()!.print("Sorry your username and/or password is invalid.<p/>");
+                                    pageContext.getOut().print("Sorry your username and/or password is invalid.<p/>");
     
 
                                     }
@@ -1173,23 +1158,23 @@ pageContext!.getOut()!.print(invalidRole());
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append("Major authentication error - userName: ")!.append(this.userName)!.append(" Password: ")!.append(this.password)!.append(" Command: ")!.append(this.command)!.toString(), this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF(StringMaker().append("Major authentication error - userName: ").append(this->userName).append(" Password: ").append(this->password).append(" Command: ").append(this->command).toString(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                                     }
@@ -1199,7 +1184,7 @@ pageContext!.getOut()!.print(invalidRole());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                         }
@@ -1220,7 +1205,7 @@ pageContext!.getOut()!.print(invalidRole());
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -1233,7 +1218,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

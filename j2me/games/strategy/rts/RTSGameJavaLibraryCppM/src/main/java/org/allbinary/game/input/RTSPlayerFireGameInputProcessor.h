@@ -51,13 +51,12 @@
 #include "RTSPlayerGameInput.h"
 
 class RTSPlayerFireGameInputProcessor: public RTSPlayerGameInputProcessor {
-        
 
-public constructor (RTSPlayerGameInput rtsPlayerGameInput);
+public: RTSPlayerFireGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
 
 };
 

@@ -55,19 +55,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DateRangeOrderHistoryTag: public StoreValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: status: string;
+    private: std::string status;
 
-public constructor ();
+public: DateRangeOrderHistoryTag();
 
-    public setStatus(string value);
+    public: void setStatus(std::string value);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

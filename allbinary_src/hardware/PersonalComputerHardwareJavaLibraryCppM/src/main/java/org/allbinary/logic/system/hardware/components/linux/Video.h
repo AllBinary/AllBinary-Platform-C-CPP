@@ -51,15 +51,14 @@
 class Video
             : public Object
         : public HardwareComponentInterface, public VideoInterface {
-        
 
-    private: data: string;
+    private: std::string data;
 
-public constructor (string data);
+public: Video(std::string data);
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface componentInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -73,48 +73,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasketTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
-
-            super();
-        }
+public: BasketTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    bool isBasketEmpty(){
+    private: bool isBasketEmpty(){
 
         try {
             
-    anyType: any = new BasketHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = BasketHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("isBasketEmpty", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("isBasketEmpty", 
+                            nullptr);;
     
 
-    emptyBoolean: Boolean = method.invoke(anyType, 
+    Boolean emptyBoolean = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -138,10 +135,10 @@ this.storeName= value;
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isBasketEmpty()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isBasketEmpty()", e);
     
 
                                     }
@@ -159,18 +156,18 @@ this.storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    bool addItemToBasket(){
+    private: bool addItemToBasket(){
 
         try {
             
-    anyType: any = new BasketRequestHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = BasketRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("addItemToBasket", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("addItemToBasket", 
+                            nullptr);;
     
 
-    emptyBoolean: Boolean = method.invoke(anyType, 
+    Boolean emptyBoolean = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -194,13 +191,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to add item from Basket";;
+    std::string error = "Failed to add item from Basket";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "addItemToBasket()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "addItemToBasket()", e);
     
 
                                     }
@@ -218,18 +215,18 @@ this.storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    bool removeItemFromBasket(){
+    private: bool removeItemFromBasket(){
 
         try {
             
-    anyType: any = new BasketRequestHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = BasketRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("removeItemFromBasket", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("removeItemFromBasket", 
+                            nullptr);;
     
 
-    emptyBoolean: Boolean = method.invoke(anyType, 
+    Boolean emptyBoolean = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -253,13 +250,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to remove item from Basket";;
+    std::string error = "Failed to remove item from Basket";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "removeItemFromBasket()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "removeItemFromBasket()", e);
     
 
                                     }
@@ -277,18 +274,18 @@ this.storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    bool adjustBasket(){
+    private: bool adjustBasket(){
 
         try {
             
-    anyType: any = new BasketRequestHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = BasketRequestHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("adjustBasket", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("adjustBasket", 
+                            nullptr);;
     
 
-    emptyBoolean: Boolean = method.invoke(anyType, 
+    Boolean emptyBoolean = method.invoke(anyType, 
                             nullptr) as Boolean;;
     
 
@@ -312,13 +309,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to Adjust Basket";;
+    std::string error = "Failed to Adjust Basket";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "adjustBasket()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "adjustBasket()", e);
     
 
                                     }
@@ -336,28 +333,26 @@ this.storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.command != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.propertiesHashMap= new HashMap<any, any>();
+                                    this->propertiesHashMap= HashMap<any, any>();
     
-this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this.command.compareTo(BasketData.INSERT) == 0)
+                        if(this->command.compareTo(BasketData::INSERT) == 0)
                         
                                     {
                                     
-                        if(!this.addItemToBasket())
+                        if(!this->addItemToBasket())
                         
                                     {
-                                    this.pageContext!.getOut()!.println("Item is not currently being sold.<p/>");
+                                    this->pageContext.getOut().println("Item is not currently being sold.<p/>");
     
 
                                     }
@@ -366,34 +361,34 @@ this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
                                     }
                                 
                              else 
-                        if(this.command.compareTo(BasketData.DELETE) == 0)
+                        if(this->command.compareTo(BasketData::DELETE) == 0)
                         
                                     {
-                                    this.removeItemFromBasket();
+                                    this->removeItemFromBasket();
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(BasketData.ADJUST) == 0)
+                        if(this->command.compareTo(BasketData::ADJUST) == 0)
                         
                                     {
-                                    this.adjustBasket();
+                                    this->adjustBasket();
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(BasketData.ISEMPTY) == 0)
+                        if(this->command.compareTo(BasketData::ISEMPTY) == 0)
                         
                                     {
                                     
-                        if(this.isBasketEmpty())
+                        if(this->isBasketEmpty())
                         
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
                              else 
                         if()
@@ -414,7 +409,7 @@ this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -427,7 +422,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

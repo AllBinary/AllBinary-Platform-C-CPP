@@ -48,13 +48,12 @@
 #include "AllBinaryLayerManager.h"
 
 class SingleLayerLayerProcessor: public LayerProcessor {
-        
 
-public constructor ();
+public: SingleLayerLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager);
+    public: void process(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

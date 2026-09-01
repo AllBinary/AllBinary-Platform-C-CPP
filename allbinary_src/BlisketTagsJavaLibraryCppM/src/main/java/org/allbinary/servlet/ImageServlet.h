@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_SERVLET_IMAGESERVLET_H
         #define ORG_ALLBINARY_SERVLET_IMAGESERVLET_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayOutputStream.h>
@@ -83,25 +85,24 @@
         #include "BlisketServletUtil.h"
 
 class ImageServlet: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(ServletException.constructor, IOException.constructor)
-            
-    processRequest(HttpServletRequest request, HttpServletResponse response);
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response);
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response);
 
-    public string getServletInfo();
+                //@Throws(ServletException.constructor, IOException.constructor)
+            
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response);
+
+    public: std::string getServletInfo();
 
 };
 

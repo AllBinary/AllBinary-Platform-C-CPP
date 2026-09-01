@@ -42,34 +42,31 @@
 class FinalPositionRaceTrackFactory
             : public Object
          {
-        
 
-    public static const FIRST_POSITION: int32_t = 1;
+    public: static const int32_t FIRST_POSITION = 1;
 
-    private: static index: int32_t = FinalPositionRaceTrackFactory.FIRST_POSITION;
+    private: static int32_t index = FinalPositionRaceTrackFactory::FIRST_POSITION;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static int32_t getInstance(){
+    public: static int32_t getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FinalPositionRaceTrackFactory.index++;
+                        return FinalPositionRaceTrackFactory::index++;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static reset(){
-FinalPositionRaceTrackFactory.index= FinalPositionRaceTrackFactory.FIRST_POSITION;
+    public: static void reset(){
+FinalPositionRaceTrackFactory::index= FinalPositionRaceTrackFactory::FIRST_POSITION;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: FinalPositionRaceTrackFactory(){
+}
 
 
 };

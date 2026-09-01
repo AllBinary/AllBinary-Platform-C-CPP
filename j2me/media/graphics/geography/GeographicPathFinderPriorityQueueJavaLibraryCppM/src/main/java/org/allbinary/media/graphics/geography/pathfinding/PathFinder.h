@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDER_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/RuntimeException.h"
@@ -95,57 +97,56 @@
 #include "MultipassState.h"
 
 class PathFinder: public GeographicPathFinderBase {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    private: const openPriorityQueue: PriorityQueue<PathFindingNodeCost> = new PriorityQueue<PathFindingNodeCost>();
+    private: const PriorityQueue<PathFindingNodeCost> openPriorityQueue = PriorityQueue<PathFindingNodeCost>();
 
-    private: const closedSet: HashSet<PathFindingNodeCost> = new HashSet<PathFindingNodeCost>();
+    private: const HashSet<PathFindingNodeCost> closedSet = HashSet<PathFindingNodeCost>();
 
-    private: geographicMapInterface: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: Object* geographicMapInterface = NullUtil::getInstance().NULL_OBJECT;
 
-    private: costArray: std::vector<std::vector<PathFindingNodeCost>> = PathFindingNodeCost.NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
-
-                //@Throws(Exception.constructor)
-            
-    public init(BasicGeographicMap geographicMapInterface);
-
-    public BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths);
+    private: std::vector<std::vector<PathFindingNodeCost>> costArray = PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState);
+    public: void init(BasicGeographicMap geographicMapInterface);
+
+    public: BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList search(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode);
+    public: BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public searchStart(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState);
+    public: BasicArrayList search(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList searchN(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState);
+    public: void searchStart(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList findPath(GeographicMapCellPosition start, GeographicMapCellPosition target);
+    public: BasicArrayList searchN(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public findPathStart(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState);
+    public: BasicArrayList findPath(GeographicMapCellPosition start, GeographicMapCellPosition target);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList findPathEnd(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState);
+    public: void findPathStart(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState);
 
-    BasicArrayList extractPath(GeographicMapCellPosition start, PathFindingNodeCost current);
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList findPathEnd(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState);
+
+    private: BasicArrayList extractPath(GeographicMapCellPosition start, PathFindingNodeCost current);
 
 };
 

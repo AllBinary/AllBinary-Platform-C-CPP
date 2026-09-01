@@ -17,6 +17,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -52,15 +54,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameLayerManager.h"
 
-class FakeLayerManager: public AllBinaryGameLayerManager: public GeographicMapCompositeInterface {
-        
+class FakeLayerManager: public AllBinaryGameLayerManager, public GeographicMapCompositeInterface {
 
-    private: geographicMapInterfaceArray: std::vector<BasicGeographicMap> = BasicGeographicMap.NULL_BASIC_GEOGRAPHIC_MAP_ARRAY;
+    private: std::vector<BasicGeographicMap> geographicMapInterfaceArray = BasicGeographicMap::NULL_BASIC_GEOGRAPHIC_MAP_ARRAY;
 
-    private: geographicMapCellTypeArray: std::vector<GeographicMapCellType> = GeographicMapCellType.NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
+    private: std::vector<GeographicMapCellType> geographicMapCellTypeArray = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE_ARRAY;
 
-public constructor (GameInfo gameInfo){
-            super(BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE, gameInfo);
+public: FakeLayerManager(GameInfo gameInfo){
+            super(BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE, gameInfo);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -68,30 +69,30 @@ public constructor (GameInfo gameInfo){
 }
 
 
-    public std::vector<BasicGeographicMap> getGeographicMapInterface(){
+    public: std::vector<BasicGeographicMap> getGeographicMapInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapInterfaceArray;
+                        return this->geographicMapInterfaceArray;
     
 }
 
 
-    public setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterfaceArray){
-this.geographicMapInterfaceArray= geographicMapInterfaceArray;
+    public: void setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterfaceArray){
+this->geographicMapInterfaceArray= geographicMapInterfaceArray;
     
-this.geographicMapCellTypeArray= new Array(this.geographicMapInterfaceArray!.length);
+this->geographicMapCellTypeArray= new Array(this->geographicMapInterfaceArray.length);
     
 }
 
 
-    public std::vector<GeographicMapCellType> geographicMapCellTypeArray(){
+    public: std::vector<GeographicMapCellType> geographicMapCellTypeArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellTypeArray;
+                        return this->geographicMapCellTypeArray;
     
 }
 

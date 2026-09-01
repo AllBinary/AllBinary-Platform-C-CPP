@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILESYSTEM_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -68,27 +70,26 @@
 class AbFileSystem
             : public Object
          {
-        
 
-    private: static const instance: AbFileSystem = new AbFileSystem();
+    private: static AbFileSystem instance() { return AbFileSystem(); }
 
-    public static AbFileSystem getInstance();
+    public: static AbFileSystem getInstance();
 
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
+    private: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public bool isDirectoryOrFile(string path);
+    public: bool isDirectoryOrFile(std::string path);
 
-    public bool isDirectory(string path);
+    public: bool isDirectory(std::string path);
 
-    public std::vector<string> getFilesAsStringArrayForPath(string currentDirPath);
+    public: std::vector<std::string> getFilesAsStringArrayForPath(std::string currentDirPath);
 
-    public string readAsString(string fileName);
+    public: std::string readAsString(std::string fileName);
 
-    public string readAsString(string fileName, std::vector<int8_t> bytes);
+    public: std::string readAsString(std::string fileName, std::vector<int8_t> bytes);
 
-    public bool close(any = {} closeable);
+    public: bool close(Object* closeable);
 
 };
 

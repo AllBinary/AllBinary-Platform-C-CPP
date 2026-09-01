@@ -58,13 +58,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderHistoryEntityInterface: public BasicDataTableInterface {
-        
 
-    insert(string userName, Order order)
+    void insert(std::string userName, Order order)
 
-    setStatus(string orderId, string status)
+    void setStatus(std::string orderId, std::string status)
 
-    setPaymentMethod(string orderId, string status)
+    void setPaymentMethod(std::string orderId, std::string status)
 
                 //@Throws(Exception.constructor)
             
@@ -72,19 +71,19 @@ class OrderHistoryEntityInterface: public BasicDataTableInterface {
 
                 //@Throws(Exception.constructor)
             
-    Vector getOrders(string userName)
+    Vector getOrders(std::string userName)
 
                 //@Throws(Exception.constructor)
             
-    Vector getOrders(string status, string fromDate, string toDate)
+    Vector getOrders(std::string status, std::string fromDate, std::string toDate)
 
                 //@Throws(Exception.constructor)
             
-    OrderHistory getOrder(string id)
+    OrderHistory getOrder(std::string id)
 
                 //@Throws(Exception.constructor)
             
-    update(HashMap<any, any> whereHashMap, HashMap<any, any> orderHashMap)
+    void update(HashMap<any, any> whereHashMap, HashMap<any, any> orderHashMap)
 
 };
 

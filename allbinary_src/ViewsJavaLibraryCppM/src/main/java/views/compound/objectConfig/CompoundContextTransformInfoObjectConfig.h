@@ -21,6 +21,8 @@
         #ifndef VIEWS_COMPOUND_OBJECTCONFIG_COMPOUNDCONTEXTTRANSFORMINFOOBJECTCONFIG_H
         #define VIEWS_COMPOUND_OBJECTCONFIG_COMPOUNDCONTEXTTRANSFORMINFOOBJECTCONFIG_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -100,23 +102,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CompoundContextTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object abeClientInformation, Object transformInfoInterface);
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface);
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, Object document);
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document);
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, string name, string type);
-
-                //@Throws(Exception.constructor)
-            
-    public string get();
+public: CompoundContextTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type);
 
                 //@Throws(Exception.constructor)
             
-    public InputStream createInputStream();
+    public: std::string get();
+
+                //@Throws(Exception.constructor)
+            
+    public: InputStream createInputStream();
 
 };
 

@@ -70,48 +70,47 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameLayer.h"
 
-class PlayerGameInputGameLayer: public AllBinaryGameLayer: public PlayerGameInputCompositeInterface {
-        
+class PlayerGameInputGameLayer: public AllBinaryGameLayer, public PlayerGameInputCompositeInterface {
 
-    private: playerGameInput: PlayerGameInput;
+    private: PlayerGameInput playerGameInput;
 
-public constructor (int32_t playerInputId){
-            super(StringUtil.getInstance()!.EMPTY_STRING, new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 0, 0), new StaticViewPosition(0, 0, 0));
+public: PlayerGameInputGameLayer(int32_t playerInputId){
+            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), StaticViewPosition(0, 0, 0));
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.playerGameInput= new PlayerGameInput(this.getGameKeyEventList(), new BasicArrayListD(), playerInputId);
+this->playerGameInput= PlayerGameInput(this->getGameKeyEventList(), BasicArrayListD(), playerInputId);
     
 
-    canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;;
+    CanvasStrings canvasStrings = CanvasStrings::getInstance();;
     
-this.logUtil!.putF("Danger Danger Danger: Should Not Be Called Except For Testing Input", this, canvasStrings!.PAINT);
+this->logUtil.putF("Danger Danger Danger: Should Not Be Called Except For Testing Input", this, canvasStrings.PAINT);
     
 }
 
 
-    public PlayerGameInput getPlayerGameInput(){
+    public: PlayerGameInput getPlayerGameInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.playerGameInput;
+                        return this->playerGameInput;
     
 }
 
 
-    public initInputProcessors(){
+    public: void initInputProcessors(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager myManager){
+    public: void processInput(AllBinaryLayerManager myManager){
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 

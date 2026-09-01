@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_TECHNOLOGYRTSINTERFACEIMAGEITEM_H
         #define ORG_ALLBINARY_GAME_LAYER_TECHNOLOGYRTSINTERFACEIMAGEITEM_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -76,48 +78,47 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "RTSInterface.h"
 
-class TechnologyRTSInterfaceImageItem: public ABCustomImageItem: public UpdateMyFontInterface {
-        
+class TechnologyRTSInterfaceImageItem: public ABCustomImageItem, public UpdateMyFontInterface {
 
-    private: const rtsInterface: RTSInterface;
+    private: RTSInterface rtsInterface;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil = PrimitiveLongUtil.createPowerOfTen(10000)!;
+    private: const PrimitiveLongUtil primitiveLongUtil = PrimitiveLongUtil::createPowerOfTen(10000);
 
-    private: const LEVEL: string = "Level";
+    private: const std::string LEVEL = "Level";
 
-    private: const COST: string = "Cost";
+    private: const std::string COST = "Cost";
 
-    private: const DOLLAR: string = "$";
+    private: const std::string DOLLAR = "$";
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: costString: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;
+    private: std::vector<char> costString = CharArrayFactory::getInstance().getZeroCharArray();
 
-    private: costLength: int32_t= 0;
+    private: int32_t costLength= 0;
 
-    private: levelString: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;
+    private: std::vector<char> levelString = CharArrayFactory::getInstance().getZeroCharArray();
 
-    private: levelLength: int32_t= 0;
+    private: int32_t levelLength= 0;
 
-    private: adjustedCostLabelY: int32_t= 0;
+    private: int32_t adjustedCostLabelY= 0;
 
-    private: adjustedCostX: int32_t= 0;
+    private: int32_t adjustedCostX= 0;
 
-    private: adjustedCostY: int32_t= 0;
+    private: int32_t adjustedCostY= 0;
 
-    private: adjustedLevelX: int32_t= 0;
+    private: int32_t adjustedLevelX= 0;
 
-    private: adjustedLevelY: int32_t= 0;
+    private: int32_t adjustedLevelY= 0;
 
-public constructor (string label, Image img, int32_t layout, string altText, BasicColor basicColor, RTSInterface rtsInterface);
+public: TechnologyRTSInterfaceImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, RTSInterface rtsInterface);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public RTSInterface getRtsInterface();
+    public: RTSInterface getRtsInterface();
 
-    public update();
+    public: void update();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

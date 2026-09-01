@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Long.h"
         
 #include <android/view/View.h>
@@ -56,100 +58,97 @@
         #include "BaseGameStatistics.h"
 
 class AndroidGameStatistics: public BaseGameStatistics {
-        
 
-    private: view: BaseViewWrapper = BaseViewWrapper.NULL_VIEW_WRAPPER;
+    private: BaseViewWrapper view = BaseViewWrapper::NULL_VIEW_WRAPPER;
 
-    private: totalOnDraws: int64_t= 0;
+    private: int64_t totalOnDraws= 0;
 
-    private: const ANDROID_STRING_ARRAY: std::vector<string> = new Array(14);
+    private: const std::vector<std::string> ANDROID_STRING_ARRAY = new Array(14);
 
-public constructor (){
+public: AndroidGameStatistics(){
 
-            super();
-        
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.ANDROID_STRING_ARRAY.length; index++)
+    int32_t index = 0;index < this->ANDROID_STRING_ARRAY.size(); index++)
         {
-this.ANDROID_STRING_ARRAY[index]= stringUtil!.EMPTY_STRING;
+this->ANDROID_STRING_ARRAY[index]= stringUtil.EMPTY_STRING;
     
 }
 
 }
 
 
-    public initView(View view){
+    public: void initView(View view){
 super.init();
     
-this.view= new ViewWrapper(view);
+this->view= ViewWrapper(view);
     
-this.totalOnDraws= 0;
-    
-}
-
-
-    public process(){
-this.view.postInvalidate();
+this->totalOnDraws= 0;
     
 }
 
 
-    public nextOnDraw(){
-this.totalOnDraws++;
+    public: void process(){
+this->view.postInvalidate();
     
 }
 
 
-    private: const TOTAL_ONDRAWS: string = " Total onDraws: ";
+    public: void nextOnDraw(){
+this->totalOnDraws++;
+    
+}
 
-    private: const ONDRAWS_RATE: string = " onDraws(/10) Sec: ";
 
-    public std::vector<string> toStringArray(){
+    private: const std::string TOTAL_ONDRAWS = " Total onDraws: ";
 
-    stringArray: std::vector<string> = super.toStringArray()!;;
+    private: const std::string ONDRAWS_RATE = " onDraws(/10) Sec: ";
+
+    public: std::vector<std::string> toStringArray(){
+
+    std::vector<std::string> stringArray = super.toStringArray();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < stringArray!.length; index++)
+    int32_t index = 0;index < stringArray.size(); index++)
         {
-this.ANDROID_STRING_ARRAY[index]= stringArray[index]!;
+this->ANDROID_STRING_ARRAY[index]= stringArray[index]!;
     
 }
 
 
-    totalTime: int64_t = this.getTimeDelayHelper()!.getElapsed(this.gameTickTimeDelayHelper!.startTime)!;;
+    int64_t totalTime = this->getTimeDelayHelper().getElapsed(this->gameTickTimeDelayHelper.startTime);;
     
 totalTime= (totalTime /10000);
     
-this.ANDROID_STRING_ARRAY[10]= this.TOTAL_ONDRAWS;
+this->ANDROID_STRING_ARRAY[10]= this->TOTAL_ONDRAWS;
     
-this.ANDROID_STRING_ARRAY[11]= (this.totalOnDraws).toString();
+this->ANDROID_STRING_ARRAY[11]= std::to_string(totalOnDraws);
     
-this.ANDROID_STRING_ARRAY[12]= this.ONDRAWS_RATE;
+this->ANDROID_STRING_ARRAY[12]= this->ONDRAWS_RATE;
     
-this.ANDROID_STRING_ARRAY[13]= (this.totalOnDraws /totalTime).toString();
+this->ANDROID_STRING_ARRAY[13]= std::to_string();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ANDROID_STRING_ARRAY;
+                        return this->ANDROID_STRING_ARRAY;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    totalTime: int64_t = this.getTimeDelayHelper()!.getElapsed(this.gameTickTimeDelayHelper!.startTime)!;;
+    int64_t totalTime = this->getTimeDelayHelper().getElapsed(this->gameTickTimeDelayHelper.startTime);;
     
 totalTime= (totalTime /1000);
     
@@ -158,24 +157,24 @@ totalTime= (totalTime /1000);
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(super.toStringAt(totalTime));
+stringBuffer.append(super.toStringAt(totalTime));
     
 
-                        if(this.totalOnDraws > 0)
+                        if(this->totalOnDraws > 0)
                         
                                     {
-                                    stringBuffer!.append(this.TOTAL_ONDRAWS);
+                                    stringBuffer.append(this->TOTAL_ONDRAWS);
     
-stringBuffer!.append(this.totalOnDraws.toString());
+stringBuffer.append(std::to_string(totalOnDraws));
     
-stringBuffer!.append(this.ONDRAWS_RATE);
+stringBuffer.append(this->ONDRAWS_RATE);
     
 
-    drawsOverTime: string = (this.totalOnDraws /totalTime).toString()!;;
+    std::string drawsOverTime = std::to_string();;
     
-stringBuffer!.append(drawsOverTime);
+stringBuffer.append(drawsOverTime);
     
 
                                     }
@@ -184,7 +183,7 @@ stringBuffer!.append(drawsOverTime);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                                     }
@@ -194,7 +193,7 @@ stringBuffer!.append(drawsOverTime);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NOT;
+                        return this->NOT;
     
 
                         }

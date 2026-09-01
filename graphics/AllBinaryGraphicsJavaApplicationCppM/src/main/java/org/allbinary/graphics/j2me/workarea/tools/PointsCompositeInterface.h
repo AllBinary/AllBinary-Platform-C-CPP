@@ -42,7 +42,6 @@
         #include "PointsInterface.h"
 
 class PointsCompositeInterface {
-        
 
     PointsInterface getPointsInterface();
 

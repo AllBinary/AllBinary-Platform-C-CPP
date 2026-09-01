@@ -63,11 +63,10 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LifeLayer: public AllBinaryLayer: public LifeVisitorInterface {
-        
+class LifeLayer: public AllBinaryLayer, public LifeVisitorInterface {
 
-public constructor (){
-            super(StringUtil.getInstance()!.EMPTY_STRING, new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 0, 0), ViewPosition.getInstanceD());
+public: LifeLayer(){
+            super(StringUtil::getInstance().EMPTY_STRING, Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0), ViewPosition::getInstanceD());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -75,12 +74,12 @@ public constructor (){
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public visit(Life lifeInterface){
-lifeInterface!.add(1);
+    public: void visit(Life lifeInterface){
+lifeInterface.add(1);
     
 }
 

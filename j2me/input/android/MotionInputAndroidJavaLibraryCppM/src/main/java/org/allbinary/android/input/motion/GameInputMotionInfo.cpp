@@ -42,18 +42,15 @@
 class GameInputMotionInfo
             : public Object
          {
-        
 
-    public const MAX_API: int32_t;
+    public: int32_t MAX_API;
 
-    public const MAX_POINTERS: int32_t;
+    public: int32_t MAX_POINTERS;
 
-protected constructor (int32_t maxApi, int32_t maxPointers){
-
-            super();
-        this.MAX_API= maxApi;
+protected: GameInputMotionInfo(int32_t maxApi, int32_t maxPointers){
+this->MAX_API= maxApi;
     
-this.MAX_POINTERS= maxPointers;
+this->MAX_POINTERS= maxPointers;
     
 }
 

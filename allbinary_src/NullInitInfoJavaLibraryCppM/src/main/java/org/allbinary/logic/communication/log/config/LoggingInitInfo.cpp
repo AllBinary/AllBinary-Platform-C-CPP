@@ -51,21 +51,20 @@
 class LoggingInitInfo
             : public Object
          {
-        
 
-    private: static logConfigInfoList: BasicArrayList = 
+    private: static BasicArrayList logConfigInfoList = 
                 null
             ;
 
-    private: static hasRead: bool = false;
+    private: static bool hasRead = false;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static write(){
+    public: static void write(){
 
         try {
-            LoggingInitInfo.hasRead= false;
+            LoggingInitInfo::hasRead= false;
     
 
                 //: 
@@ -84,7 +83,7 @@ class LoggingInitInfo
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    static read(){
+    private: static void read(){
 
         try {
             
@@ -102,8 +101,8 @@ class LoggingInitInfo
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static setHasRead(bool value){
-LoggingInitInfo.hasRead= value;
+    public: static void setHasRead(bool value){
+LoggingInitInfo::hasRead= value;
     
 }
 
@@ -111,25 +110,25 @@ LoggingInitInfo.hasRead= value;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    static updateIfNeeded(){
+    private: static void updateIfNeeded(){
 
-                        if(!LoggingInitInfo.hasRead)
+                        if(!LoggingInitInfo::hasRead)
                         
                                     {
-                                    LoggingInitInfo.read();
+                                    LoggingInitInfo::read();
     
-LoggingInitInfo.hasRead= true;
+LoggingInitInfo::hasRead= true;
     
 
-                        if(LoggingInitInfo.logConfigInfoList == 
-                                    null
+                        if(LoggingInitInfo::logConfigInfoList == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Read Failed");
+                            throw Exception("Read Failed");
                     
 
                                     }
@@ -141,55 +140,55 @@ LoggingInitInfo.hasRead= true;
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static set(BasicArrayList logConfigInfoList){
-LoggingInitInfo.logConfigInfoList= logConfigInfoList;
+    public: static void set(BasicArrayList logConfigInfoList){
+LoggingInitInfo::logConfigInfoList= logConfigInfoList;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList get(){
-LoggingInitInfo.updateIfNeeded();
+    public: static BasicArrayList get(){
+LoggingInitInfo::updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LoggingInitInfo.logConfigInfoList;
+                        return LoggingInitInfo::logConfigInfoList;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList getTypeList(){
-LoggingInitInfo.updateIfNeeded();
+    public: static BasicArrayList getTypeList(){
+LoggingInitInfo::updateIfNeeded();
     
 
-    allLogTypeVector: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList allLogTypeVector = BasicArrayListD();;
     
 
-    size: int32_t = LoggingInitInfo.logConfigInfoList!.size()!;;
+    int32_t size = LoggingInitInfo::logConfigInfoList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    logConfigInfo: LogConfig = LoggingInitInfo.logConfigInfoList!.objectArray[index]! as LogConfig;;
+    LogConfig logConfigInfo = LoggingInitInfo::logConfigInfoList.objectArray[index]! as LogConfig;;
     
 
-    logTypeVector: BasicArrayList = logConfigInfo!.getTypeVector()!;;
+    BasicArrayList logTypeVector = logConfigInfo.getTypeVector();;
     
 
-                        if(logConfigInfo!.isEnabled())
+                        if(logConfigInfo.isEnabled())
                         
                                     {
-                                    allLogTypeVector!.addAllList(logTypeVector);
+                                    allLogTypeVector.addAllList(logTypeVector);
     
 
                                     }
@@ -205,13 +204,11 @@ LoggingInitInfo.updateIfNeeded();
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: LoggingInitInfo(){
+}
 
 
-    public bool isValid(){
+    public: bool isValid(){
 
         try {
             
@@ -237,17 +234,17 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getNumberOfLogConfigs(){
+    public: int32_t getNumberOfLogConfigs(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LoggingInitInfo.logConfigInfoList!.size();;
+                        return LoggingInitInfo::logConfigInfoList.size();;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
         try {
             

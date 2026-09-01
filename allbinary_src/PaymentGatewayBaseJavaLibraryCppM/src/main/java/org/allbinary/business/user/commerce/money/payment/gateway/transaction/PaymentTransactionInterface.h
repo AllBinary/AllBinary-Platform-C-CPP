@@ -50,7 +50,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentTransactionInterface: public TableMappingInterface, public DomNodeInterface {
-        
 
     OrderHistory getOrderHistory();
 

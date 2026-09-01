@@ -54,13 +54,12 @@
 class PickedUpLayerType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
- constructor (string name);
+: PickedUpLayerType(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

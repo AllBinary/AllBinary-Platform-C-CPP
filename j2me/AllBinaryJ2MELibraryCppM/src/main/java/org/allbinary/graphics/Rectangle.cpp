@@ -61,125 +61,122 @@
 class Rectangle
             : public Object
          {
-        
 
-    private: point: GPoint;
+    private: GPoint point;
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-public constructor (GPoint point, int32_t width, int32_t height){
-
-            super();
-        this.point= point;
+public: Rectangle(GPoint point, int32_t width, int32_t height){
+this->point= point;
     
-this.width= width;
+this->width= width;
     
-this.height= height;
+this->height= height;
     
 }
 
 
-    public GPoint getPoint(){
+    public: GPoint getPoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point;
+                        return this->point;
     
 }
 
 
-    public setPoint(GPoint point){
-this.point= point;
+    public: void setPoint(GPoint point){
+this->point= point;
     
 }
 
 
-    public int32_t getMaxX(){
+    public: int32_t getMaxX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point.getX() +this.width;
+                        return this->point.getX() +this->width;
     
 }
 
 
-    public int32_t getMaxY(){
+    public: int32_t getMaxY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.point.getY() +this.height;
+                        return this->point.getY() +this->height;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    public setWidth(int32_t width){
-this.width= width;
+    public: void setWidth(int32_t width){
+this->width= width;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    public setHeight(int32_t height){
-this.height= height;
+    public: void setHeight(int32_t height){
+this->height= height;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getPoint()!.toString());
+stringBuffer.append(this->getPoint().toString());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(CommonLabels.getInstance()!.WIDTH_LABEL);
+stringBuffer.append(CommonLabels::getInstance().WIDTH_LABEL);
     
-stringBuffer!.appendint(this.getWidth());
+stringBuffer.appendint(this->getWidth());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(CommonLabels.getInstance()!.HEIGHT_LABEL);
+stringBuffer.append(CommonLabels::getInstance().HEIGHT_LABEL);
     
-stringBuffer!.appendint(this.getHeight());
+stringBuffer.appendint(this->getHeight());
     
-stringBuffer!.append(" MaxX: ");
+stringBuffer.append(" MaxX: ");
     
-stringBuffer!.appendint(this.getMaxX());
+stringBuffer.appendint(this->getMaxX());
     
-stringBuffer!.append(" MaxY: ");
+stringBuffer.append(" MaxY: ");
     
-stringBuffer!.appendint(this.getMaxY());
+stringBuffer.appendint(this->getMaxY());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

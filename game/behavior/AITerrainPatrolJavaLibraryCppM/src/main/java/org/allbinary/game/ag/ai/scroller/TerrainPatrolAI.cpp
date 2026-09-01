@@ -76,71 +76,70 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TerrainPatrolAI: public PacePatrolAI {
-        
 
-    private: const terrainEventListener: TerrainEventListener = new TerrainEventListener();
+    private: const TerrainEventListener terrainEventListener = TerrainEventListener();
 
-    private: const DOWN: Angle = AngleFactory.getInstance()!.DOWN;
+    private: const Angle DOWN = AngleFactory::getInstance().DOWN;
 
-    private: const CLIFF: BasicTerrainInfo = new BasicTerrainInfo(this.DOWN);
+    private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(this->DOWN);
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: TerrainPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(hashtable, ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-TerrainEventHandler.getInstance(ownerLayerInterface)!.addListener(this.terrainEventListener);
+TerrainEventHandler::getInstance(ownerLayerInterface).addListener(this->terrainEventListener);
     
-this.terrainEventListener!.onTerrainEvent(TerrainEventCircularStaticPool.getInstance()!.getNext(this.CLIFF));
+this->terrainEventListener.onTerrainEvent(TerrainEventCircularStaticPool::getInstance().getNext(this->CLIFF));
     
 }
 
 
-    update(){
+    protected: void update(){
 super.update();
     
-this.changeDirectionIfCliffReached();
+this->changeDirectionIfCliffReached();
     
 }
 
 
-    changeDirectionIfCliffReached(){
+    private: void changeDirectionIfCliffReached(){
 
-    list: BasicArrayList = this.terrainEventListener!.getList()!;;
+    BasicArrayList list = this->terrainEventListener.getList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    terrainEvent: TerrainEvent = list.removeAt(index) as TerrainEvent;;
+    TerrainEvent terrainEvent = list.removeAt(index) as TerrainEvent;;
     
 
-    basicTerrainInfo: BasicTerrainInfo = terrainEvent!.getBasicTerrainInfo()!;;
+    BasicTerrainInfo basicTerrainInfo = terrainEvent.getBasicTerrainInfo();;
     
 
-    angle: Angle = basicTerrainInfo!.getAngle()!;;
+    Angle angle = basicTerrainInfo.getAngle();;
     
 
-                        if(angle == this.DOWN)
+                        if(angle == this->DOWN)
                         
                                     {
-                                    this.nextDirection();
+                                    this->nextDirection();
     
 
-                        if(!this.isFollowLimitedByTerrain)
+                        if(!this->isFollowLimitedByTerrain)
                         
                                     {
-                                    this.logUtil!.putF("Following Limited", this, "onTerrainEvent");
+                                    this->logUtil.putF("Following Limited", this, "onTerrainEvent");
     
-this.isFollowLimitedByTerrain= true;
+this->isFollowLimitedByTerrain= true;
     
 
                                     }

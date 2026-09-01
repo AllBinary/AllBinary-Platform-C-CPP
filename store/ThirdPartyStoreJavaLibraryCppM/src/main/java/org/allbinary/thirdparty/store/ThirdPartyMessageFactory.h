@@ -45,17 +45,16 @@
 class ThirdPartyMessageFactory
             : public Object
          {
-        
 
-    private: static const instance: ThirdPartyMessageFactory = new ThirdPartyMessageFactory();
+    private: static ThirdPartyMessageFactory instance() { return ThirdPartyMessageFactory(); }
 
-    public static ThirdPartyMessageFactory getInstance();
+    public: static ThirdPartyMessageFactory getInstance();
 
-    public const AUTHORIZED: string = "Authorized";
+    public: const std::string AUTHORIZED = "Authorized";
 
-    public const NOT_AUTHORIZED: string = "Not Authorized";
+    public: const std::string NOT_AUTHORIZED = "Not Authorized";
 
-    public const LINKAGE_ERROR: string = "Linkage Error";
+    public: const std::string LINKAGE_ERROR = "Linkage Error";
 
 };
 

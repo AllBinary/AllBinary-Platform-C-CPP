@@ -70,21 +70,20 @@
 class NewUserFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance();
+    public: static UserInterface getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance(TransformInfoInterface transformInfoInterface);
+    public: static UserInterface getInstance(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<any, any> propertiesHashMap);
+    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<any, any> propertiesHashMap);
 
-private constructor ();
+private: NewUserFactory();
 
 };
 

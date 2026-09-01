@@ -57,13 +57,12 @@
 class OrderHistoryFactory
             : public Object
          {
-        
 
-    public static OrderHistory getInstance(string id);
+    public: static OrderHistory getInstance(std::string id);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: OrderHistoryFactory();
 
 };
 

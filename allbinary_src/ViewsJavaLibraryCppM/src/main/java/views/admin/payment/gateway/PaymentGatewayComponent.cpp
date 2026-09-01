@@ -64,44 +64,43 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentGatewayComponent: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: paymentGatewayInterface: PaymentGatewayInterface;
+    private: PaymentGatewayInterface paymentGatewayInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface){
+public: PaymentGatewayComponent(TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.paymentGatewayInterface= paymentGatewayInterface;
+this->paymentGatewayInterface= paymentGatewayInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addDomNodeInterfaces(){
+    public: void addDomNodeInterfaces(){
 
-    paymentType: BasicPaymentType = BasicPaymentTypeUtil.getInstance()!.get(this.paymentGatewayInterface!.getName())!;;
+    BasicPaymentType paymentType = BasicPaymentTypeUtil::getInstance().get(this->paymentGatewayInterface.getName());;
     
 
-    paymentGatewayDomNodeFactoryInterface: PaymentGatewayDomNodeFactoryInterface = paymentType!.getPaymentGatewayDomNodeFactoryInterface()!;;
+    PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface = paymentType.getPaymentGatewayDomNodeFactoryInterface();;
     
 
-    domNodeInterface: DomNodeInterface = paymentGatewayDomNodeFactoryInterface!.getInstance(this.paymentGatewayInterface) as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = paymentGatewayDomNodeFactoryInterface.getInstance(this->paymentGatewayInterface) as DomNodeInterface;;
     
-this.addDomNodeInterface(domNodeInterface);
+this->addDomNodeInterface(domNodeInterface);
     
 }
 
 
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -114,13 +113,13 @@ this.addDomNodeInterface(domNodeInterface);
 } catch(e) 
             {
 
-    error: string = "Failed to view payment gateway";;
+    std::string error = "Failed to view payment gateway";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

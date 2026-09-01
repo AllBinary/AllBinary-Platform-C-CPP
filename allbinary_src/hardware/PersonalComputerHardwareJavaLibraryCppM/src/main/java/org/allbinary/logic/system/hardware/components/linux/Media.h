@@ -51,15 +51,14 @@
 class Media
             : public Object
         : public HardwareComponentInterface, public MediaInterface {
-        
 
-    private: data: string;
+    private: std::string data;
 
-public constructor (string data);
+public: Media(std::string data);
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface componentInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -56,9 +56,8 @@
 class CollidableHelperFactory
             : public Object
          {
-        
 
-    public static CollisionHelper getInstance();
+    public: static CollisionHelper getInstance();
 
 };
 

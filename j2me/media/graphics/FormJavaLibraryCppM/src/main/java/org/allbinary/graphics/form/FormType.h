@@ -54,13 +54,12 @@
 class FormType
             : public Object
          {
-        
 
-    const name: string;
+    std::string name;
 
-public constructor (string name);
+public: FormType(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

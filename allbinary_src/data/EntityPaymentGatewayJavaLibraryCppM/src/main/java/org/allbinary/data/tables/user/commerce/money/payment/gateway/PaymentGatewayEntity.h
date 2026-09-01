@@ -102,30 +102,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "PaymentGatewayEntityInterface.h"
 
-class PaymentGatewayEntity: public AbSqlBean: public PaymentGatewayEntityInterface {
-        
+class PaymentGatewayEntity: public AbSqlBean, public PaymentGatewayEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "paymentgateways";
+    private: const std::string tableName = "paymentgateways";
 
-public constructor ();
+public: PaymentGatewayEntity();
 
-    public add(PaymentGatewayInterface paymentGatewayInterface);
+    public: void add(PaymentGatewayInterface paymentGatewayInterface);
 
-    public update(PaymentGatewayInterface paymentGatewayInterface);
+    public: void update(PaymentGatewayInterface paymentGatewayInterface);
 
-    public PaymentGatewayInterface getPaymentGatewayInterface(string storeName, BasicPaymentType paymentType);
+    public: PaymentGatewayInterface getPaymentGatewayInterface(std::string storeName, BasicPaymentType paymentType);
 
-    public Vector findPaymentTypeVectorByStore(string storeName);
+    public: Vector findPaymentTypeVectorByStore(std::string storeName);
 
-    public remove(string storeName, BasicPaymentType paymentType);
+    public: void remove(std::string storeName, BasicPaymentType paymentType);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

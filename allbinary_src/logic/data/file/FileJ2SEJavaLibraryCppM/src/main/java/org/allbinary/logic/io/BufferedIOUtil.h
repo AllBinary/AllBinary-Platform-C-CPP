@@ -68,11 +68,10 @@
 class BufferedIOUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static copy(AbFile backupFile, AbFile backupFileBak);
+    public: static void copy(AbFile backupFile, AbFile backupFileBak);
 
 };
 

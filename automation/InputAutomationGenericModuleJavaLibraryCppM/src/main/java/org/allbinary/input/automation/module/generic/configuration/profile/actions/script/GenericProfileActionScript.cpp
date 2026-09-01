@@ -81,56 +81,55 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericProfileActionScript: public DefaultMutableTreeNode: public ProfileActionScriptNodeInterface {
-        
+class GenericProfileActionScript: public DefaultMutableTreeNode, public ProfileActionScriptNodeInterface {
 
-    private: static const NAME: string = "Root";
+    private: static const std::string NAME = "Root";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: genericProfileActionJPanel: GenericProfileActionJPanel;
+    private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-    private: profileActionConditionInterfaceVector: Vector;
+    private: Vector profileActionConditionInterfaceVector;
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel, Node node){
+public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel, Node node){
             super(NAME);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.genericProfileActionJPanel= genericProfileActionJPanel;
+this->genericProfileActionJPanel= genericProfileActionJPanel;
     
-this.setProfileActionConditionInterfaceVector(new Vector());
+this->setProfileActionConditionInterfaceVector(Vector());
     
 
-    actionScriptNode: Node = DomSearchHelper.getNode(GenericProfileActionData.SCRIPT, node.getChildNodes())!;;
+    Node actionScriptNode = DomSearchHelper::getNode(GenericProfileActionData::SCRIPT, node.getChildNodes());;
     
 
                         if(actionScriptNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    nodeList: NodeList = actionScriptNode!.getChildNodes()!;;
+    NodeList nodeList = actionScriptNode.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    actionConditionNode: Node = nodeList!.item(index)!;;
+    Node actionConditionNode = nodeList.item(index);;
     
 
-                        if(actionConditionNode!.getNodeType() == Node.ELEMENT_NODE)
+                        if(actionConditionNode.getNodeType() == Node::ELEMENT_NODE)
                         
                                     {
-                                    this.addCondition(ProfileActionScriptConditionFactory.getInstance(actionConditionNode));
+                                    this->addCondition(ProfileActionScriptConditionFactory::getInstance(actionConditionNode));
     
 
                                     }
@@ -144,7 +143,7 @@ this.setProfileActionConditionInterfaceVector(new Vector());
                             
 
 
-                            throw new Exception("Profile Action Script Node Null");
+                            throw Exception("Profile Action Script Node Null");
                     
 
                         }
@@ -152,41 +151,39 @@ this.setProfileActionConditionInterfaceVector(new Vector());
 }
 
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel){
-
-            super();
-        this.genericProfileActionJPanel= genericProfileActionJPanel;
+public: GenericProfileActionScript(GenericProfileActionJPanel genericProfileActionJPanel){
+this->genericProfileActionJPanel= genericProfileActionJPanel;
     
-this.setProfileActionConditionInterfaceVector(new Vector());
+this->setProfileActionConditionInterfaceVector(Vector());
     
 }
 
 
-    public addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
-this.logUtil!.putF(this.commonStrings!.START, this, "addCondition");
+    public: void addCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
+this->logUtil.putF(this->commonStrings.START, this, "addCondition");
     
-this.getProfileActionConditionInterfaceVector()!.add(profileActionScriptNodeInterface);
+this->getProfileActionConditionInterfaceVector().add(profileActionScriptNodeInterface);
     
-this.add(profileActionScriptNodeInterface);
-    
-}
-
-
-    public removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
-this.logUtil!.putF(this.commonStrings!.START, this, "removeCondition");
-    
-this.getProfileActionConditionInterfaceVector()!.remove(profileActionScriptNodeInterface);
-    
-this.remove(profileActionScriptNodeInterface);
+this->add(profileActionScriptNodeInterface);
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
-
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    public: void removeCondition(ProfileActionScriptNodeInterface profileActionScriptNodeInterface){
+this->logUtil.putF(this->commonStrings.START, this, "removeCondition");
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->getProfileActionConditionInterfaceVector().remove(profileActionScriptNodeInterface);
+    
+this->remove(profileActionScriptNodeInterface);
+    
+}
+
+
+    public: HashMap<any, any> toHashMap(){
+
+    HashMap<any, any> hashMap = HashMap<any, any>();;
+    
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -197,45 +194,45 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 }
 
 
-    public Vector getProfileActionConditionInterfaceVector(){
+    public: Vector getProfileActionConditionInterfaceVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.profileActionConditionInterfaceVector;
+                        return this->profileActionConditionInterfaceVector;
     
 }
 
 
-    public setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector){
-this.profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
+    public: void setProfileActionConditionInterfaceVector(Vector profileActionConditionInterfaceVector){
+this->profileActionConditionInterfaceVector= profileActionConditionInterfaceVector;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(GenericProfileActionData.SCRIPT)!;;
+    Node node = document.createElement(GenericProfileActionData::SCRIPT);;
     
 
-    vector: Vector = this.getProfileActionConditionInterfaceVector()!;;
+    Vector vector = this->getProfileActionConditionInterfaceVector();;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    profileActionConditionInterface: ProfileActionScriptConditionInterface = vector.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index) as ProfileActionScriptConditionInterface;;
     
-node.appendChild(profileActionConditionInterface!.toXmlNode(document));
+node.appendChild(profileActionConditionInterface.toXmlNode(document));
     
 }
 

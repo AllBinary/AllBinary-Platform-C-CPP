@@ -63,29 +63,28 @@
 class AbstractInputRobot
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: helpSet: HelpSet;
+    private: HelpSet helpSet;
 
-public constructor (HelpSet helpSet);
+public: AbstractInputRobot(HelpSet helpSet);
 
-    public HelpSet getHelpSet();
+    public: HelpSet getHelpSet();
 
-    public mouseMove(Point point);
-
-                //@Throws(Exception.constructor)
-            
-    public mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y);
+    public: void mouseMove(Point point);
 
                 //@Throws(Exception.constructor)
             
-    public mouseMoveToTarget(Rectangle rectangle);
+    public: void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y);
 
-    public mouseMove(Integer x, Integer y);
+                //@Throws(Exception.constructor)
+            
+    public: void mouseMoveToTarget(Rectangle rectangle);
 
-    setHelpSet(HelpSet helpSet);
+    public: void mouseMove(Integer x, Integer y);
+
+    private: void setHelpSet(HelpSet helpSet);
 
 };
 

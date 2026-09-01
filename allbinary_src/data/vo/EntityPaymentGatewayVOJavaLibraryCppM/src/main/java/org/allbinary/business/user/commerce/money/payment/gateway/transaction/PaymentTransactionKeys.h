@@ -45,13 +45,12 @@
 class PaymentTransactionKeys
             : public Object
          {
-        
 
-    private: key: string;
+    private: std::string key;
 
-protected constructor (string value);
+protected: PaymentTransactionKeys(std::string value);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

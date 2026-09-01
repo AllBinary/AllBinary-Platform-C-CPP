@@ -43,30 +43,27 @@
 class InputAutomationRobotChangeEvent
             : public Object
          {
-        
 
-    private: inputAutomationRobotInterfaceWrapper: InputAutomationRobotInterfaceWrapper;
+    private: InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper;
 
-public constructor (InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper){
-
-            super();
-        this.setInputAutomationRobotInterfaceWrapper(inputAutomationRobotInterfaceWrapper);
+public: InputAutomationRobotChangeEvent(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper){
+this->setInputAutomationRobotInterfaceWrapper(inputAutomationRobotInterfaceWrapper);
     
 }
 
 
-    public InputAutomationRobotInterfaceWrapper getInputAutomationRobotInterfaceWrapper(){
+    public: InputAutomationRobotInterfaceWrapper getInputAutomationRobotInterfaceWrapper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputAutomationRobotInterfaceWrapper;
+                        return this->inputAutomationRobotInterfaceWrapper;
     
 }
 
 
-    public setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper){
-this.inputAutomationRobotInterfaceWrapper= inputAutomationRobotInterfaceWrapper;
+    public: void setInputAutomationRobotInterfaceWrapper(InputAutomationRobotInterfaceWrapper inputAutomationRobotInterfaceWrapper){
+this->inputAutomationRobotInterfaceWrapper= inputAutomationRobotInterfaceWrapper;
     
 }
 

@@ -58,16 +58,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcessor {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameInputMotionEventProcessorAPI1 getInstance(){
+    public: static GameInputMotionEventProcessorAPI1 getInstance(){
 
-                        if(GameInputMotionEventProcessorAPI1.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(GameInputMotionEventProcessorAPI1::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    GameInputMotionEventProcessorAPI1.instance= new GameInputMotionEventProcessorAPI1();
+                                    GameInputMotionEventProcessorAPI1::instance= GameInputMotionEventProcessorAPI1();
     
 
                                     }
@@ -76,56 +75,54 @@ class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcesso
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionEventProcessorAPI1.instance as GameInputMotionEventProcessorAPI1;
+                        return GameInputMotionEventProcessorAPI1::instance() as GameInputMotionEventProcessorAPI1;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const motionRecognizer: MotionRecognizer = new AllMotionRecognizer();
+    private: const MotionRecognizer motionRecognizer = AllMotionRecognizer();
 
-private constructor (){
-
-            super();
-        }
+private: GameInputMotionEventProcessorAPI1(){
+}
 
 
-    public process(MotionEvent motionEvent){
+    public: void process(MotionEvent motionEvent){
 
         try {
             
-    x: int32_t = static_cast<int32_t>(motionEvent!.getX());;
+    int32_t x = static_cast<int32_t>(motionEvent.getX());;
     
 
-    y: int32_t = static_cast<int32_t>(motionEvent!.getY());;
+    int32_t y = static_cast<int32_t>(motionEvent.getY());;
     
 
-    action: int32_t = motionEvent!.getAction()!;;
+    int32_t action = motionEvent.getAction();;
     
 
-                        if(action == MotionEvent.ACTION_DOWN)
+                        if(action == MotionEvent::ACTION_DOWN)
                         
                                     {
-                                    this.motionRecognizer!.processStartMotionEvent(x, y, motionEvent!.getDeviceId(), 0);
+                                    this->motionRecognizer.processStartMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
                                 
                              else 
-                        if(action == MotionEvent.ACTION_UP || action == MotionEvent.ACTION_CANCEL)
+                        if(action == MotionEvent::ACTION_UP || action == MotionEvent::ACTION_CANCEL)
                         
                                     {
-                                    this.motionRecognizer!.processEndMotionEvent(x, y, motionEvent!.getDeviceId(), 0);
+                                    this->motionRecognizer.processEndMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
                                 
                              else 
-                        if(action == MotionEvent.ACTION_MOVE)
+                        if(action == MotionEvent::ACTION_MOVE)
                         
                                     {
-                                    this.motionRecognizer!.processDraggedMotionEvent(x, y, motionEvent!.getDeviceId(), 0);
+                                    this->motionRecognizer.processDraggedMotionEvent(x, y, motionEvent.getDeviceId(), 0);
     
 
                                     }
@@ -134,7 +131,7 @@ private constructor (){
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 }
 

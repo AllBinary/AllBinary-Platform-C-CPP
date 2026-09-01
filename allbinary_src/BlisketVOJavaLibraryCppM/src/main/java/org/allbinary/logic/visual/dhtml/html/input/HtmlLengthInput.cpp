@@ -41,17 +41,16 @@
         #include "HtmlValueInput.h"
 
 class HtmlLengthInput: public HtmlValueInput {
-        
 
-    private: const MAXLENGTH: string = "MAXLENGTH";
+    private: const std::string MAXLENGTH = "MAXLENGTH";
 
-    private: const SIZE: string = "SIZE";
+    private: const std::string SIZE = "SIZE";
 
-    private: length: string;
+    private: std::string length;
 
-    private: size: string;
+    private: std::string size;
 
-public constructor (string before, string type, string name, string value, string after){
+public: HtmlLengthInput(std::string before, std::string type, std::string name, std::string value, std::string after){
             super(before, type, name, value, after);
                     
 
@@ -60,18 +59,18 @@ public constructor (string before, string type, string name, string value, strin
 }
 
 
-    public setMaxLength(Integer length){
-this.length= length.toString();
+    public: void setMaxLength(Integer length){
+this->length= length.toString();
     
-addAttribute(this.MAXLENGTH, this.length);
+addAttribute(this->MAXLENGTH, this->length);
     
 }
 
 
-    public setSize(Integer size){
-this.size= size.toString();
+    public: void setSize(Integer size){
+this->size= size.toString();
     
-addAttribute(this.MAXLENGTH, this.size);
+addAttribute(this->MAXLENGTH, this->size);
     
 }
 

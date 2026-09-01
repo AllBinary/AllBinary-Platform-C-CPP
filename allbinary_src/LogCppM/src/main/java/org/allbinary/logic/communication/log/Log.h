@@ -53,29 +53,28 @@
 class Log
             : public Object
          {
-        
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    private: const specialMessage: string;
+    private: std::string specialMessage;
 
-    private: const anyType: any;
+    private: Object* anyType;
 
-    private: const functionName: string;
+    private: std::string functionName;
 
-    private: const exception: any;
+    private: Object* exception;
 
-public constructor (string specialMessage, any = {} anyType, string functionName, any = {} exception);
+public: Log(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
-    public string getSpecialMessage();
+    public: std::string getSpecialMessage();
 
-    public any getObject();
+    public: Object* getObject();
 
-    public string getFunctionName();
+    public: std::string getFunctionName();
 
-    public any getThrowable();
+    public: Object* getThrowable();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -45,9 +45,8 @@
         #include "MotionRectanglesResultsEvent.h"
 
 class MotionRectanglesResultsListener: public BasicEventListenerInterface {
-        
 
-    onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent);
+    void onMotionRectanglesImageComparisonResultsEvent(MotionRectanglesResultsEvent motionRectanglesImageComparisonResultsEvent);
 
 };
 

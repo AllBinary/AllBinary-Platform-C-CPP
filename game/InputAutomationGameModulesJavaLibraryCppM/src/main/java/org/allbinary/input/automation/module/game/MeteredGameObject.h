@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GAME_METEREDGAMEOBJECT_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -62,59 +64,58 @@
 class MeteredGameObject
             : public Object
         : public MeteredGameObjectInterface {
-        
 
-    private: ratios: std::vector<number>;
+    private: std::vector<number> ratios;
 
-    private: good: bool = false;
+    private: bool good = false;
 
-    private: dropping: bool = false;
+    private: bool dropping = false;
 
-    private: minX: Integer;
+    private: Integer minX;
 
-    private: maxX: Integer;
+    private: Integer maxX;
 
-    private: y: Integer;
+    private: Integer y;
 
-    private: size: Integer;
+    private: Integer size;
 
-    private: const RATIOS_LABEL: string = "Ratios: ";
+    private: const std::string RATIOS_LABEL = "Ratios: ";
 
-    private: const IS_GOOD_LABEL: string = "isGood: ";
+    private: const std::string IS_GOOD_LABEL = "isGood: ";
 
-    private: const IS_DROPPPING_LABEL: string = "isDropping: ";
+    private: const std::string IS_DROPPPING_LABEL = "isDropping: ";
 
-public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
+public: MeteredGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y);
 
-    public bool isGood();
+    public: bool isGood();
 
-    setGood(bool good);
+    protected: void setGood(bool good);
 
-    public bool isDropping();
+    public: bool isDropping();
 
-    setDropping(bool dropping);
+    protected: void setDropping(bool dropping);
 
-    public std::vector<number> getRatios();
+    public: std::vector<number> getRatios();
 
-    public string toString();
+    public: std::string toString();
 
-    public setRatios(std::vector<number> ratios);
+    public: void setRatios(std::vector<number> ratios);
 
-    public Integer getMinX();
+    public: Integer getMinX();
 
-    public setMinX(Integer minX);
+    public: void setMinX(Integer minX);
 
-    public Integer getMaxX();
+    public: Integer getMaxX();
 
-    public setMaxX(Integer maxX);
+    public: void setMaxX(Integer maxX);
 
-    public Integer getY();
+    public: Integer getY();
 
-    public setY(Integer y);
+    public: void setY(Integer y);
 
-    public Integer getSize();
+    public: Integer getSize();
 
-    public setSize(Integer size);
+    public: void setSize(Integer size);
 
 };
 

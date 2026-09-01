@@ -50,17 +50,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentGatewayEntityInterface: public BasicDataTableInterface {
-        
 
-    PaymentGatewayInterface getPaymentGatewayInterface(string storeName, BasicPaymentType paymentType)
+    PaymentGatewayInterface getPaymentGatewayInterface(std::string storeName, BasicPaymentType paymentType)
 
-    Vector findPaymentTypeVectorByStore(string storeName)
+    Vector findPaymentTypeVectorByStore(std::string storeName)
 
-    remove(string storeName, BasicPaymentType paymentType)
+    void remove(std::string storeName, BasicPaymentType paymentType)
 
-    add(PaymentGatewayInterface paymentGatewayInterface)
+    void add(PaymentGatewayInterface paymentGatewayInterface)
 
-    update(PaymentGatewayInterface paymentGatewayInterface)
+    void update(PaymentGatewayInterface paymentGatewayInterface)
 
 };
 

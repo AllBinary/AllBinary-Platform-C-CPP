@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../java/lang/Class.h"
         
             #include "../../java/lang/Exception.h"
@@ -67,51 +69,46 @@
         #include "TableTag.h"
 
 class OrderItemsTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: status: string;
+    private: std::string status;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new OrderItemsHelperFactory());
+public: OrderItemsTag(){
+this->setTagHelperFactory(OrderItemsHelperFactory());
     
-this.setTagRequestHelperFactory(new OrderItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(OrderItemsRequestHelperFactory());
     
 }
 
 
-    public setStatus(string value){
-this.status= value;
+    public: void setStatus(std::string value){
+this->status= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string setOrderStatus(){
+    private: std::string setOrderStatus(){
 
         try {
             
-    anyType: any = new OrderItemsRequestHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = OrderItemsRequestHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-                        if(this.status == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod("setOrderStatus", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("setOrderStatus", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -125,25 +122,25 @@ this.status= value;
                                 
                         else {
                             
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    methodParams: std::vector<Function> = 
-                                                        [
-                                                            this.status.constructor
-                                                        ];;
+    std::vector<Function> methodParams = 
+                                                        {
+                                                            this->status.constructor
+                                                        };;
     
 
-    method: Method = helperClass!.getMethod("setOrderStatus", methodParams)!;;
+    Method method = helperClass.getMethod("setOrderStatus", methodParams);;
     
 
-    methodArgs: std::vector<any> = 
-                                                        [
-                                                            this.status
-                                                        ];;
+    std::vector<Object*> methodArgs = 
+                                                        {
+                                                            this->status
+                                                        };;
     
 
-    result: string = method.invoke(anyType, methodArgs) as string;;
+    std::string result = method.invoke(anyType, methodArgs) as string;;
     
 
 
@@ -169,13 +166,13 @@ this.status= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to set Order status to: " +this.status;;
+    std::string error = "Failed to set Order status to: " +this->status;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setOrderStatus()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", e);
     
 
                                     }
@@ -193,26 +190,26 @@ this.status= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.getPropertiesHashMap()!.put(OrderHistoryData.STATUS, this.status);
+                                    this->getPropertiesHashMap().put(OrderHistoryData::STATUS, this->status);
     
 
-                        if(this.getCommand()!.compareTo(OrderHistoryData.SETSTATUS) == 0)
+                        if(this->getCommand().compareTo(OrderHistoryData::SETSTATUS) == 0)
                         
                                     {
-                                    this.pageContext!.getOut()!.print(this.setOrderStatus());
+                                    this->pageContext.getOut().print(this->setOrderStatus());
     
 
                                     }
@@ -243,7 +240,7 @@ this.status= value;
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -256,7 +253,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

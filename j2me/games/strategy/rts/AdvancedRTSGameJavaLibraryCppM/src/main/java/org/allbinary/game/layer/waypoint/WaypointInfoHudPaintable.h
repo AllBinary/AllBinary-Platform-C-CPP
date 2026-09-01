@@ -62,25 +62,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WaypointInfoHudPaintable: public SelectionHudPaintable {
-        
 
-    private: const keyvalueDrawString: KeyValueDrawString;
+    private: KeyValueDrawString keyvalueDrawString;
 
-    rtsLayerP: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface rtsLayerP = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    private: textLine2Y: int32_t= 0;
+    private: int32_t textLine2Y= 0;
 
-public constructor ();
+public: WaypointInfoHudPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public updateSelectionInfo();
+    public: void updateSelectionInfo();
 
-    public setRtsLayer(RTSLayer rtsLayer);
+    public: void setRtsLayer(RTSLayer rtsLayer);
 
-    public PathFindingLayerInterface getRtsLayer();
+    public: PathFindingLayerInterface getRtsLayer();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

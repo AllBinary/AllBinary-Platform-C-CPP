@@ -53,15 +53,14 @@
 class HttpFilePermissionsUtil
             : public Object
          {
-        
 
-    private: static const instance: HttpFilePermissionsUtil = new HttpFilePermissionsUtil();
+    private: static HttpFilePermissionsUtil instance() { return HttpFilePermissionsUtil(); }
 
-    public static HttpFilePermissionsUtil getInstance();
+    public: static HttpFilePermissionsUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public create(AbPath path);
+    public: void create(AbPath path);
 
 };
 

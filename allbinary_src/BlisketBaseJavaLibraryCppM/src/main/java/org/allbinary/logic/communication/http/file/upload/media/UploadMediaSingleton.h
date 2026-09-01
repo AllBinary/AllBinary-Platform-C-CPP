@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_MEDIA_UPLOADMEDIASINGLETON_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -69,36 +71,35 @@
 class UploadMediaSingleton
             : public Object
          {
-        
 
-    private: static uploadMedia: UploadMediaSingleton;
+    private: static UploadMediaSingleton uploadMedia;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static UploadMediaSingleton getInstance();
+    public: static UploadMediaSingleton getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: readerFileTypesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> readerFileTypesHashMap;
 
-    private: writerFileTypesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> writerFileTypesHashMap;
 
-private constructor ();
+private: UploadMediaSingleton();
 
-    public bool isReaderSupported(string mediaFileType);
+    public: bool isReaderSupported(std::string mediaFileType);
 
-    public bool isWriterSupported(string mediaFileType);
+    public: bool isWriterSupported(std::string mediaFileType);
 
-    public bool isSupported(string mediaFileType);
+    public: bool isSupported(std::string mediaFileType);
 
-    public bool isMedia(string mediaFileType, string aMediaType);
+    public: bool isMedia(std::string mediaFileType, std::string aMediaType);
 
-    public bool isReaderMedia(string mediaFileType, string aMediaType);
+    public: bool isReaderMedia(std::string mediaFileType, std::string aMediaType);
 
-    public bool isWriterMedia(string mediaFileType, string aMediaType);
+    public: bool isWriterMedia(std::string mediaFileType, std::string aMediaType);
 
-    bool isMedia(string mediaFileType, string aMediaType, HashMap<any, any> hashMap);
+    private: bool isMedia(std::string mediaFileType, std::string aMediaType, HashMap<any, any> hashMap);
 
 };
 

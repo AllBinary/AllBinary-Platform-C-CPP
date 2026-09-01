@@ -64,16 +64,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CssStyleValidation.h"
 
-class EditCssStyleValidation: public CssStyleValidation: public ValidationInterface, public DomNodeInterface {
-        
+class EditCssStyleValidation: public CssStyleValidation, public ValidationInterface, public DomNodeInterface {
 
-public constructor (){
-
-            super();
-        }
+public: EditCssStyleValidation(){
+}
 
 
-public constructor (Document document){
+public: EditCssStyleValidation(Document document){
             super(document);
                     
 
@@ -82,7 +79,7 @@ public constructor (Document document){
 }
 
 
-public constructor (HashMap<any, any> hashMap){
+public: EditCssStyleValidation(HashMap<any, any> hashMap){
             super(hashMap);
                     
 
@@ -91,7 +88,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
@@ -101,7 +98,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -111,7 +108,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -121,7 +118,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -133,31 +130,31 @@ public constructor (HashMap<any, any> hashMap){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(StylesData.getInstance()!.NAME)!;;
+    Node node = document.createElement(StylesData::getInstance().NAME);;
     
 
-    styleNode: Node = document.createElement(StyleData.getInstance()!.NAME)!;;
+    Node styleNode = document.createElement(StyleData::getInstance().NAME);;
     
 node.appendChild(styleNode);
     
-styleNode!.appendChild(new ColorsView().toXmlNode(document));
+styleNode.appendChild(ColorsView().toXmlNode(document));
     
 
-    size: int32_t = this.cssStyleElementVector!.size()!;;
+    int32_t size = this->cssStyleElementVector.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    styleDomNodeInterface: DomNodeInterface = cssStyleElementVector!.get(i) as DomNodeInterface;;
+    DomNodeInterface styleDomNodeInterface = cssStyleElementVector.get(i) as DomNodeInterface;;
     
-styleNode!.appendChild(styleDomNodeInterface!.toXmlNode(document));
+styleNode.appendChild(styleDomNodeInterface.toXmlNode(document));
     
 }
 

@@ -42,19 +42,18 @@
 class PermissionItemData
             : public Object
          {
-        
 
-    public static const WHO: string = "PERMISSIONSITEM_WHO";
+    public: static const std::string WHO = "PERMISSIONSITEM_WHO";
 
-    public static const WHAT: string = "PERMISSIONSITEM_WHAT";
+    public: static const std::string WHAT = "PERMISSIONSITEM_WHAT";
 
-    public static const TYPE: string = "PERMISSIONSITEM_TYPE";
+    public: static const std::string TYPE = "PERMISSIONSITEM_TYPE";
 
-    public static const START_TIME: string = "PERMISSIONSITEM_START_TIME";
+    public: static const std::string START_TIME = "PERMISSIONSITEM_START_TIME";
 
-    public static const END_TIME: string = "PERMISSIONSITEM_END_TIME";
+    public: static const std::string END_TIME = "PERMISSIONSITEM_END_TIME";
 
-    public static const REMOTE_ADDR: string = "PERMISSIONSITEM_REMOTE_ADDR";
+    public: static const std::string REMOTE_ADDR = "PERMISSIONSITEM_REMOTE_ADDR";
 
 };
 

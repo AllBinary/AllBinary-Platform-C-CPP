@@ -118,102 +118,101 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CollidableWeaponBehavior.h"
 
-class WeaponLayer: public MultiPlayerGameLayer: public TickableInterface {
-        
+class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
 
-    public static int32_t getStaticType();
+    public: static int32_t getStaticType();
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    initAnimationInterface: Animation;
+    protected: Animation initAnimationInterface;
 
-    private: destroyedAnimationInterface: Animation;
+    private: Animation destroyedAnimationInterface;
 
-    private: sourceLayerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer sourceLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    totalDamage: int32_t= 0;
+    protected: int32_t totalDamage= 0;
 
-    private: initDamage: int32_t= 0;
+    private: int32_t initDamage= 0;
 
-    private: destroyed: bool = true;
+    private: bool destroyed = true;
 
-    scoreableInterface: ScoreableInterface = NoScoreable.getInstance()!;
+    protected: ScoreableInterface scoreableInterface = NoScoreable::getInstance();
 
-    private: movement: Movement;
+    private: Movement movement;
 
-    private: weaponProperties: WeaponProperties = WeaponProperties.NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
 
-    private: const multiPlayerType: int32_t;
+    private: int32_t multiPlayerType;
 
-protected constructor (string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
+protected: WeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
 
-    private: collidableWeaponBehavior: CollidableWeaponBehavior = CollidableWeaponBehavior.getNullInstance()!;
+    private: CollidableWeaponBehavior collidableWeaponBehavior = CollidableWeaponBehavior::getNullInstance();
 
-    public setCollidableInferface(CollidableBaseBehavior collidableInferface);
-
-                //@Throws(Exception.constructor)
-            
-    public initXYZ(int32_t x, int32_t y, int32_t z);
+    public: void setCollidableInferface(CollidableBaseBehavior collidableInferface);
 
                 //@Throws(Exception.constructor)
             
-    public init(AllBinaryLayer sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable);
-
-    setGroupInterfaces();
+    public: void initXYZ(int32_t x, int32_t y, int32_t z);
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void init(AllBinaryLayer sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable);
 
-    public bool isDestroyed();
-
-    public damage(int32_t damage, int32_t damageType);
-
-    givePoints(int32_t total);
-
-    bool isExhausted();
-
-    public int32_t getDamage(int32_t damageType);
-
-    public setDestroyed(bool destroyed);
-
-    int32_t getInitDamage();
-
-    setAnimationInterface(Animation animationInterface);
-
-    Animation getAnimationInterface();
-
-    public Animation getInitAnimationInterfaceP();
-
-    public setInitAnimationInterfaceP(Animation initAnimationInterface);
-
-    public Animation getDestroyedAnimationInterface();
-
-    public AllBinaryLayer getOwnerLayerInterface();
-
-    public setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface);
-
-    public paint(Graphics graphics);
-
-    public paintThreed(Graphics graphics);
-
-    public Movement getMovement();
-
-    public setMovement(Movement movement);
-
-    public int32_t getType();
-
-    public int32_t getMultiPlayerType();
-
-    public setWeaponPropertiesP(WeaponProperties weaponProperties);
-
-    public WeaponProperties getWeaponPropertiesP();
-
-    public bool implmentsTickableInterface();
+    protected: void setGroupInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+
+    public: bool isDestroyed();
+
+    public: void damage(int32_t damage, int32_t damageType);
+
+    protected: void givePoints(int32_t total);
+
+    protected: bool isExhausted();
+
+    public: int32_t getDamage(int32_t damageType);
+
+    public: void setDestroyed(bool destroyed);
+
+    protected: int32_t getInitDamage();
+
+    protected: void setAnimationInterface(Animation animationInterface);
+
+    protected: Animation getAnimationInterface();
+
+    public: Animation getInitAnimationInterfaceP();
+
+    public: void setInitAnimationInterfaceP(Animation initAnimationInterface);
+
+    public: Animation getDestroyedAnimationInterface();
+
+    public: AllBinaryLayer getOwnerLayerInterface();
+
+    public: void setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface);
+
+    public: void paint(Graphics graphics);
+
+    public: void paintThreed(Graphics graphics);
+
+    public: Movement getMovement();
+
+    public: void setMovement(Movement movement);
+
+    public: int32_t getType();
+
+    public: int32_t getMultiPlayerType();
+
+    public: void setWeaponPropertiesP(WeaponProperties weaponProperties);
+
+    public: WeaponProperties getWeaponPropertiesP();
+
+    public: bool implmentsTickableInterface();
+
+                //@Throws(Exception.constructor)
+            
+    public: void set(GL gl);
 
 };
 

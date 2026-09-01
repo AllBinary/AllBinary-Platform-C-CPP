@@ -21,6 +21,8 @@
         #ifndef ADMIN_TAGS_ORDERHISTORYTAG_H
         #define ADMIN_TAGS_ORDERHISTORYTAG_H
 
+            #include <vector>
+        
             #include "../../java/lang/Class.h"
         
             #include "../../java/lang/Exception.h"
@@ -73,23 +75,22 @@
         #include "TableTag.h"
 
 class OrderHistoryTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: status: string;
+    private: std::string status;
 
-public constructor ();
+public: OrderHistoryTag();
 
-    public setStatus(string value);
+    public: void setStatus(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    string setOrderStatus();
+    private: std::string setOrderStatus();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

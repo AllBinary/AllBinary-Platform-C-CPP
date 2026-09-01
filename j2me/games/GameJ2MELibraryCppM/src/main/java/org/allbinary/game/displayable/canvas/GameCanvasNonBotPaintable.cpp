@@ -45,20 +45,17 @@
         #include "AllBinaryGameCanvas.h"
 
 class GameCanvasNonBotPaintable: public Paintable {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        this.gameCanvas= gameCanvas;
+public: GameCanvasNonBotPaintable(AllBinaryGameCanvas gameCanvas){
+this->gameCanvas= gameCanvas;
     
 }
 
 
-    public paint(Graphics graphics){
-this.gameCanvas!.nonBotPaint(graphics);
+    public: void paint(Graphics graphics){
+this->gameCanvas.nonBotPaint(graphics);
     
 }
 

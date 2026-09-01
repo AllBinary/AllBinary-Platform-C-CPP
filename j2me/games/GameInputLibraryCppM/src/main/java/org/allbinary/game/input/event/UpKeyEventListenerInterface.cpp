@@ -51,11 +51,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpKeyEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onUpKeyEvent(Integer keyAsInteger)
+    void onUpKeyEvent(Integer keyAsInteger)
 
 };
 

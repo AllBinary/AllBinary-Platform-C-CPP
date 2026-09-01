@@ -45,9 +45,8 @@
         #include "TableTag.h"
 
 class PaymentTransactionResultTag: public TableTag {
-        
 
-public constructor ();
+public: PaymentTransactionResultTag();
 
 };
 

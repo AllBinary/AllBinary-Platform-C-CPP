@@ -42,21 +42,20 @@
 class LicenseLevelUtil
             : public Object
          {
-        
 
-    private: static const instance: LicenseLevelUtil = new LicenseLevelUtil();
+    private: static LicenseLevelUtil instance() { return LicenseLevelUtil(); }
 
-    public static LicenseLevelUtil getInstance(){
+    public: static LicenseLevelUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseLevelUtil.instance;
+                        return LicenseLevelUtil::instance();
     
 }
 
 
-    public int32_t getMaxLevel(int32_t maxLevel, int32_t demoLevel){
+    public: int32_t getMaxLevel(int32_t maxLevel, int32_t demoLevel){
 
 
 

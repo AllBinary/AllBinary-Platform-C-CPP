@@ -56,41 +56,38 @@
 class ValidationOnlyTempUtil
             : public Object
          {
-        
 
-    private: static const instance: ValidationOnlyTempUtil = new ValidationOnlyTempUtil();
+    private: static ValidationOnlyTempUtil instance() { return ValidationOnlyTempUtil(); }
 
-    public static ValidationOnlyTempUtil getInstance(){
+    public: static ValidationOnlyTempUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ValidationOnlyTempUtil.instance;
+                        return ValidationOnlyTempUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ValidationOnlyTempUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(ValidationComponentInterface validationComponentInterface){
+    public: std::string view(ValidationComponentInterface validationComponentInterface){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +validationComponentInterface!.getTransformInfoInterface()!.getName(), this, "view()");
+                                    this->logUtil.putF("View Name: " +validationComponentInterface.getTransformInfoInterface().getName(), this, "view()");
     
 
                                     }
@@ -99,17 +96,17 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

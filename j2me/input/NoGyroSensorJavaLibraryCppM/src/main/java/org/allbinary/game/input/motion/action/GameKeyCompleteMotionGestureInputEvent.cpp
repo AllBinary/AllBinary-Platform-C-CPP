@@ -55,14 +55,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent: public GameKeyEventSourceInterface {
-        
+class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
 
-    private: gameKey: GameKey = GameKey.NULL_GAME_KEY;
+    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
 
-    private: gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-public constructor (string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping){
+public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping){
             super(name, motionGestureInput);
                     
 
@@ -71,7 +70,7 @@ public constructor (string name, MotionGestureInput motionGestureInput, InputToG
 }
 
 
-    public int32_t getSourceId(){
+    public: int32_t getSourceId(){
 
 
 
@@ -81,38 +80,38 @@ public constructor (string name, MotionGestureInput motionGestureInput, InputToG
 }
 
 
-    public update(){
+    public: void update(){
 }
 
 
-    setGameKeyEvent(GameKeyEvent gameKeyEvent){
-this.gameKeyEvent= gameKeyEvent;
+    protected: void setGameKeyEvent(GameKeyEvent gameKeyEvent){
+this->gameKeyEvent= gameKeyEvent;
     
 }
 
 
-    public GameKeyEvent getGameKeyEvent(){
+    public: GameKeyEvent getGameKeyEvent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyEvent;
+                        return this->gameKeyEvent;
     
 }
 
 
-    setGameKey(GameKey gameKey){
-this.gameKey= gameKey;
+    protected: void setGameKey(GameKey gameKey){
+this->gameKey= gameKey;
     
 }
 
 
-    public GameKey getGameKey(){
+    public: GameKey getGameKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKey;
+                        return this->gameKey;
     
 }
 

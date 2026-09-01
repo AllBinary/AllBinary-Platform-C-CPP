@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_NAMESPACEREQUESTPARAMS_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -94,51 +96,50 @@
 #include "NameSpaceRequestParam.h"
 //containing string values and other hashmaps of the like
 class NameSpaceRequestParams: public RequestParams {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: NameSpaceRequestParams();
 
-public constructor (HttpServletRequest httpServletRequest);
+public: NameSpaceRequestParams(HttpServletRequest httpServletRequest);
 
-public constructor (PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    Node createPackageNode(Document document, string packageName, HashMap<any, any> packagePropertiesHashMap);
+public: NameSpaceRequestParams(PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    Node createPackageMultiNode(Document document, NameSpaceRequestParam nameSpaceRequestParam, string packageName, HashMap<any, any> packagePropertiesHashMap);
+    private: Node createPackageNode(Document document, std::string packageName, HashMap<any, any> packagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    Node getRootNode(string rootElementPackage, HashMap<any, any> packagePropertiesHashMap, Document document);
+    private: Node createPackageMultiNode(Document document, NameSpaceRequestParam nameSpaceRequestParam, std::string packageName, HashMap<any, any> packagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    Node addNewProperties(Document document, Node node, HashMap<any, any> nextPackagePropertiesHashMap);
+    private: Node getRootNode(std::string rootElementPackage, HashMap<any, any> packagePropertiesHashMap, Document document);
 
                 //@Throws(Exception.constructor)
             
-    bool isElementValueTextNodeEqual(HashMap<any, any> nextPackagePropertiesHashMap, Node node);
+    private: Node addNewProperties(Document document, Node node, HashMap<any, any> nextPackagePropertiesHashMap);
 
                 //@Throws(Exception.constructor)
             
-    int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, Vector elementNodeVector);
+    private: bool isElementValueTextNodeEqual(HashMap<any, any> nextPackagePropertiesHashMap, Node node);
 
                 //@Throws(Exception.constructor)
             
-    Document addChildren(Document document, Node rootNode, NameSpaceRequestParam nameSpaceRequestParam);
+    private: int32_t isElementValueTextNodeUnique(HashMap<any, any> nextPackagePropertiesHashMap, Vector elementNodeVector);
 
                 //@Throws(Exception.constructor)
             
-    Document addNameSpace(string key, string value, Document document);
+    private: Document addChildren(Document document, Node rootNode, NameSpaceRequestParam nameSpaceRequestParam);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    private: Document addNameSpace(std::string key, std::string value, Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: HashMap<any, any> toHashMap();
 
 };
 

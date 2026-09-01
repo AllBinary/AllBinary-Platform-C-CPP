@@ -82,11 +82,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcAbeLicenseRetrievalClient: public XmlRpcAbeClient {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (AbeClientInformationInterface clientInfo){
+public: XmlRpcAbeLicenseRetrievalClient(AbeClientInformationInterface clientInfo){
             super(clientInfo, "LicServ.getLicense");
                     
 
@@ -97,71 +96,71 @@ public constructor (AbeClientInformationInterface clientInfo){
 
                 //@Throws(Exception.constructor)
             
-    public any get(any = {} anyType, CryptInterface cryptInterface){
+    public: Object* get(Object* anyType, CryptInterface cryptInterface){
 
         try {
             
-    server: string = getClientInfo()!.getLicenseServer(this.getServer())!;;
+    std::string server = getClientInfo().getLicenseServer(this->getServer());;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(TRYING);
+stringBuffer.append(TRYING);
     
-stringBuffer!.appendint(this.getServer());
+stringBuffer.appendint(this->getServer());
     
-stringBuffer!.append(SEP);
+stringBuffer.append(SEP);
     
-stringBuffer!.append(server);
+stringBuffer.append(server);
     
-this.logUtil!.putF(CommonLabels.getInstance()!.START_LABEL +stringBuffer!.toString(), this, this.commonStrings!.GET);
-    
-
-    param: Vector = new Vector();;
+this->logUtil.putF(CommonLabels::getInstance().START_LABEL +stringBuffer.toString(), this, this->commonStrings.GET);
     
 
-    xmlRpcClient: XmlRpcClient = new XmlRpcClient(server);;
+    Vector param = Vector();;
     
-this.setClient(xmlRpcClient);
+
+    XmlRpcClient xmlRpcClient = XmlRpcClient(server);;
     
-xmlRpcClient!.setBasicAuthentication(
+this->setClient(xmlRpcClient);
+    
+xmlRpcClient.setBasicAuthentication(
                             nullptr, 
                             nullptr);
     
 
-    hashtable: Hashtable<any, any> = this.getClientInfo()!.toHashtable()!;;
+    Hashtable<any, any> hashtable = this->getClientInfo().toHashtable();;
     
-this.logUtil!.putF(CLIENT_INFO +hashtable.toString(), this, this.commonStrings!.GET);
+this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
     
 param.add(hashtable);
     
 
-    result: any = xmlRpcClient!.execute(this.getRemoteMethod(), param, cryptInterface)!;;
+    Object* result = xmlRpcClient.execute(this->getRemoteMethod(), param, cryptInterface);;
     
-this.logUtil!.putF(RESULT +result.toString(), this, this.commonStrings!.GET);
-    
-
-    resultHashtable: Hashtable<any, any> = result as Hashtable<any, any>;;
+this->logUtil.putF(RESULT +result->toString(), this, this->commonStrings.GET);
     
 
-                        if(!AbeClientLicense.hasRequiredKeys(resultHashtable))
+    Hashtable<any, any> resultHashtable = result as Hashtable<any, any>;;
+    
+
+                        if(!AbeClientLicense::hasRequiredKeys(resultHashtable))
                         
                                     {
-                                    this.logUtil!.putF(INVALID, this, this.commonStrings!.GET);
+                                    this->logUtil.putF(INVALID, this, this->commonStrings.GET);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 
                                     }
                                 
 
-    abeLicenseInterface: AbeLicenseInterface = new AbeClientLicense(resultHashtable);;
+    AbeLicenseInterface abeLicenseInterface = AbeClientLicense(resultHashtable);;
     
-this.logUtil!.putF(this.commonStrings!.END +stringBuffer!.toString(), this, this.commonStrings!.GET);
+this->logUtil.putF(this->commonStrings.END +stringBuffer.toString(), this, this->commonStrings.GET);
     
 isOnline= true;
     
@@ -175,19 +174,19 @@ isOnline= true;
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(EXCEPTION_IN_CLIENT, this, this.commonStrings!.GET, e);
+this->logUtil.put(EXCEPTION_IN_CLIENT, this, this->commonStrings.GET, e);
     
-this.logUtil!.putF(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!.getStackTrace(e), this, this.commonStrings!.GET);
+this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTrace(e), this, this->commonStrings.GET);
     
 
-                        if(!e.getMessage()!.startsWith(HOST_NOT_RESOLVED))
+                        if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 
                                     }
@@ -198,7 +197,7 @@ this.logUtil!.putF(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!.getStackTr
 
 
 
-                            throw new Exception(HOST_NOT_RESOLVED_MSG);
+                            throw Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -208,26 +207,26 @@ this.logUtil!.putF(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!.getStackTr
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(SERVER_REPORTED_ERROR, this, this.commonStrings!.GET, e);
+this->logUtil.put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 }
 */
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(UNKNOWN_ERROR, this, this.commonStrings!.GET, e);
+this->logUtil.put(UNKNOWN_ERROR, this, this->commonStrings.GET, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 }
 */

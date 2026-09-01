@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_COLOR_BASICCOLORUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -46,27 +48,26 @@
 class BasicColorUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicColorUtil = new BasicColorUtil();
+    private: static BasicColorUtil instance() { return BasicColorUtil(); }
 
-    public static BasicColorUtil getInstance();
+    public: static BasicColorUtil getInstance();
 
-    public const ZERO_ARRAY: std::vector<BasicColor> = [];
+    public: const std::vector<BasicColor> ZERO_ARRAY = {};
 
-    public const ALPHA: int32_t = static_cast<int32_t>(0xFF000000);
+    public: const int32_t ALPHA = static_cast<int32_t>(0xFF000000);
 
-    public const isAlpha: bool = true;
+    public: const bool isAlpha = true;
 
-    public const ffOpaque: bool = true;
+    public: const bool ffOpaque = true;
 
-    public int32_t getRGB(int32_t red, int32_t green, int32_t blue);
+    public: int32_t getRGB(int32_t red, int32_t green, int32_t blue);
 
-    public int32_t getARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b);
+    public: int32_t getARGB(int32_t alphaValue, int32_t r, int32_t g, int32_t b);
 
-    public int32_t get(int32_t alphaValue, int32_t color);
+    public: int32_t get(int32_t alphaValue, int32_t color);
 
-    public int32_t invert(int32_t color);
+    public: int32_t invert(int32_t color);
 
 };
 

@@ -50,230 +50,229 @@
 #include "AllBinaryGameLayer.h"
 
 class AdvancedPlayerOwnedRTSLayers: public PlayerOwnedRTSLayers {
-        
 
-    private: const unitsList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList unitsList = BasicArrayListD();
 
-    private: const waypointsList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList waypointsList = BasicArrayListD();
 
-    private: const buildingList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList buildingList = BasicArrayListD();
 
-    private: const baseList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList baseList = BasicArrayListD();
 
-    private: const garrisonList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList garrisonList = BasicArrayListD();
 
-    private: const houseList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList houseList = BasicArrayListD();
 
-    private: const labList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList labList = BasicArrayListD();
 
-    private: const factoryList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList factoryList = BasicArrayListD();
 
-    public addUnit(RTSLayer rtsLayer){
-this.unitsList!.add(rtsLayer);
+    public: void addUnit(RTSLayer rtsLayer){
+this->unitsList.add(rtsLayer);
     
-this.rtsLayerList!.add(rtsLayer);
-    
-}
-
-
-    public addWaypoint(RTSLayer rtsLayer){
-this.waypointsList!.add(rtsLayer);
-    
-this.rtsLayerList!.add(rtsLayer);
+this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public addBase(RTSLayer rtsLayer){
-this.baseList!.add(rtsLayer);
+    public: void addWaypoint(RTSLayer rtsLayer){
+this->waypointsList.add(rtsLayer);
     
-this.buildingList!.add(rtsLayer);
-    
-this.rtsLayerList!.add(rtsLayer);
+this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public addGarrison(RTSLayer rtsLayer){
-this.garrisonList!.add(rtsLayer);
+    public: void addBase(RTSLayer rtsLayer){
+this->baseList.add(rtsLayer);
     
-this.buildingList!.add(rtsLayer);
+this->buildingList.add(rtsLayer);
     
-this.rtsLayerList!.add(rtsLayer);
-    
-}
-
-
-    public addHouse(RTSLayer rtsLayer){
-this.houseList!.add(rtsLayer);
-    
-this.buildingList!.add(rtsLayer);
-    
-this.rtsLayerList!.add(rtsLayer);
+this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public addLab(RTSLayer rtsLayer){
-this.labList!.add(rtsLayer);
+    public: void addGarrison(RTSLayer rtsLayer){
+this->garrisonList.add(rtsLayer);
     
-this.buildingList!.add(rtsLayer);
+this->buildingList.add(rtsLayer);
     
-this.rtsLayerList!.add(rtsLayer);
-    
-}
-
-
-    public addFactory(RTSLayer rtsLayer){
-this.factoryList!.add(rtsLayer);
-    
-this.buildingList!.add(rtsLayer);
-    
-this.rtsLayerList!.add(rtsLayer);
+this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public removeUnit(AllBinaryGameLayer gameLayer){
-this.unitsList!.remove(gameLayer);
+    public: void addHouse(RTSLayer rtsLayer){
+this->houseList.add(rtsLayer);
     
-this.rtsLayerList!.remove(gameLayer);
+this->buildingList.add(rtsLayer);
     
-}
-
-
-    public removeWaypoint(AllBinaryGameLayer gameLayer){
-this.waypointsList!.remove(gameLayer);
-    
-this.rtsLayerList!.remove(gameLayer);
+this->rtsLayerList.add(rtsLayer);
     
 }
 
 
-    public BasicArrayList getUnitsList(){
+    public: void addLab(RTSLayer rtsLayer){
+this->labList.add(rtsLayer);
+    
+this->buildingList.add(rtsLayer);
+    
+this->rtsLayerList.add(rtsLayer);
+    
+}
+
+
+    public: void addFactory(RTSLayer rtsLayer){
+this->factoryList.add(rtsLayer);
+    
+this->buildingList.add(rtsLayer);
+    
+this->rtsLayerList.add(rtsLayer);
+    
+}
+
+
+    public: void removeUnit(AllBinaryGameLayer gameLayer){
+this->unitsList.remove(gameLayer);
+    
+this->rtsLayerList.remove(gameLayer);
+    
+}
+
+
+    public: void removeWaypoint(AllBinaryGameLayer gameLayer){
+this->waypointsList.remove(gameLayer);
+    
+this->rtsLayerList.remove(gameLayer);
+    
+}
+
+
+    public: BasicArrayList getUnitsList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.unitsList;
+                        return this->unitsList;
     
 }
 
 
-    public BasicArrayList getWaypointsList(){
+    public: BasicArrayList getWaypointsList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.waypointsList;
+                        return this->waypointsList;
     
 }
 
 
-    public BasicArrayList getBaseList(){
+    public: BasicArrayList getBaseList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.baseList;
+                        return this->baseList;
     
 }
 
 
-    public BasicArrayList getGarrisonList(){
+    public: BasicArrayList getGarrisonList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.garrisonList;
+                        return this->garrisonList;
     
 }
 
 
-    public BasicArrayList getHouseList(){
+    public: BasicArrayList getHouseList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.houseList;
+                        return this->houseList;
     
 }
 
 
-    public BasicArrayList getLabList(){
+    public: BasicArrayList getLabList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.labList;
+                        return this->labList;
     
 }
 
 
-    public BasicArrayList getFactoryList(){
+    public: BasicArrayList getFactoryList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.factoryList;
+                        return this->factoryList;
     
 }
 
 
-    public int32_t getTotalBuildings(){
+    public: int32_t getTotalBuildings(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.baseList!.size() +this.garrisonList!.size() +this.houseList!.size() +this.labList!.size() +this.factoryList!.size();
+                        return this->baseList.size() +this->garrisonList.size() +this->houseList.size() +this->labList.size() +this->factoryList.size();
     
 }
 
 
-    public removeBuilding(AllBinaryGameLayer layerInterface){
-this.buildingList!.add(layerInterface);
+    public: void removeBuilding(AllBinaryGameLayer layerInterface){
+this->buildingList.add(layerInterface);
     
 
-                        if(this.getBaseList()!.remove(layerInterface))
+                        if(this->getBaseList().remove(layerInterface))
                         
                                     {
-                                    this.rtsLayerList!.remove(layerInterface);
+                                    this->rtsLayerList.remove(layerInterface);
     
 
                                     }
                                 
                              else 
-                        if(this.getFactoryList()!.remove(layerInterface))
+                        if(this->getFactoryList().remove(layerInterface))
                         
                                     {
-                                    this.rtsLayerList!.remove(layerInterface);
+                                    this->rtsLayerList.remove(layerInterface);
     
 
                                     }
                                 
                              else 
-                        if(this.getGarrisonList()!.remove(layerInterface))
+                        if(this->getGarrisonList().remove(layerInterface))
                         
                                     {
-                                    this.rtsLayerList!.remove(layerInterface);
+                                    this->rtsLayerList.remove(layerInterface);
     
 
                                     }
                                 
                              else 
-                        if(this.getLabList()!.remove(layerInterface))
+                        if(this->getLabList().remove(layerInterface))
                         
                                     {
-                                    this.rtsLayerList!.remove(layerInterface);
+                                    this->rtsLayerList.remove(layerInterface);
     
 
                                     }
                                 
                              else 
-                        if(this.getHouseList()!.remove(layerInterface))
+                        if(this->getHouseList().remove(layerInterface))
                         
                                     {
-                                    this.rtsLayerList!.remove(layerInterface);
+                                    this->rtsLayerList.remove(layerInterface);
     
 
                                     }
@@ -281,55 +280,55 @@ this.buildingList!.add(layerInterface);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(super.toString());
+stringBuffer.append(super.toString());
     
-stringBuffer!.append(" Bases: ");
+stringBuffer.append(" Bases: ");
     
-stringBuffer!.appendint(this.getBaseList()!.size());
+stringBuffer.appendint(this->getBaseList().size());
     
-stringBuffer!.append(" Factory: ");
+stringBuffer.append(" Factory: ");
     
-stringBuffer!.appendint(this.getFactoryList()!.size());
+stringBuffer.appendint(this->getFactoryList().size());
     
-stringBuffer!.append(" Garrison: ");
+stringBuffer.append(" Garrison: ");
     
-stringBuffer!.appendint(this.getGarrisonList()!.size());
+stringBuffer.appendint(this->getGarrisonList().size());
     
-stringBuffer!.append(" Labs: ");
+stringBuffer.append(" Labs: ");
     
-stringBuffer!.appendint(this.getLabList()!.size());
+stringBuffer.appendint(this->getLabList().size());
     
-stringBuffer!.append(" Houses: ");
+stringBuffer.append(" Houses: ");
     
-stringBuffer!.appendint(this.getHouseList()!.size());
+stringBuffer.appendint(this->getHouseList().size());
     
-stringBuffer!.append(" Waypoints: ");
+stringBuffer.append(" Waypoints: ");
     
-stringBuffer!.appendint(this.getWaypointsList()!.size());
+stringBuffer.appendint(this->getWaypointsList().size());
     
-stringBuffer!.append(" Units: ");
+stringBuffer.append(" Units: ");
     
-stringBuffer!.appendint(this.getUnitsList()!.size());
+stringBuffer.appendint(this->getUnitsList().size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public BasicArrayList getBuildingList(){
+    public: BasicArrayList getBuildingList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buildingList;
+                        return this->buildingList;
     
 }
 

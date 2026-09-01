@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_STOREAPPCLIENTINFORMATION_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -53,14 +55,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AbeClientInformation.h"
 
-class StoreAppClientInformation: public AbeClientInformation: public LongArrayIdentifierInterface {
-        
+class StoreAppClientInformation: public AbeClientInformation, public LongArrayIdentifierInterface {
 
-    private: const longArrayIdentifier: std::vector<int64_t>;
+    private: std::vector<int64_t> longArrayIdentifier;
 
-public constructor (string name, string version, string specialName, string shortName, std::vector<int64_t> longArrayIdentifier);
+public: StoreAppClientInformation(std::string name, std::string version, std::string specialName, std::string shortName, std::vector<int64_t> longArrayIdentifier);
 
-    public std::vector<int64_t> getLongArrayIdentifier();
+    public: std::vector<int64_t> getLongArrayIdentifier();
 
 };
 

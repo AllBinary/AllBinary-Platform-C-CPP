@@ -53,11 +53,10 @@
 class ImageOutputData
             : public Object
          {
-        
 
-    public static const SAVE_PATH: string = new StringMaker().append(System.getProperty("user.dir"))!.appendchar(FilePathData.getInstance()!.SEPARATORCHAR)!.append("saves")!.appendchar(FilePathData.getInstance()!.SEPARATORCHAR)!.toString()!;
+    public: static const std::string SAVE_PATH = StringMaker().append(System::getProperty("user.dir")).appendchar(FilePathData::getInstance().SEPARATORCHAR).append("saves").appendchar(FilePathData::getInstance().SEPARATORCHAR).toString();
 
-private constructor ();
+private: ImageOutputData();
 
 };
 

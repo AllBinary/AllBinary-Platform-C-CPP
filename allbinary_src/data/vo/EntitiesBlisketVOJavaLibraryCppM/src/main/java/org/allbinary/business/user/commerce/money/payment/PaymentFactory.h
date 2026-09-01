@@ -58,11 +58,10 @@
 class PaymentFactory
             : public Object
          {
-        
 
-    public static PaymentInterface getInstance(ServletRequest request);
+    public: static PaymentInterface getInstance(ServletRequest request);
 
-private constructor ();
+private: PaymentFactory();
 
 };
 

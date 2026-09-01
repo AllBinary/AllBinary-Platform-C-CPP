@@ -102,65 +102,64 @@
 class WeblisketSession
             : public Object
         : public WeblisketSessionInterface {
-        
 
-    private: session: HttpSession;
+    private: HttpSession session;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: WeblisketSession(HashMap<any, any> hashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+public: WeblisketSession(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
 
-    public string getId();
+    public: std::string getId();
 
-    public setPassword(string password);
+    public: void setPassword(std::string password);
 
-    public setUserName(string userName);
+    public: void setUserName(std::string userName);
 
-    public setPaymentMethod(string value);
+    public: void setPaymentMethod(std::string value);
 
-    public setAuthenticated();
+    public: void setAuthenticated();
 
-    public setRole(UserRole aRole);
+    public: void setRole(UserRole aRole);
 
-    public setAttempts(Integer value);
+    public: void setAttempts(Integer value);
 
-    public setTimeout(string value);
+    public: void setTimeout(std::string value);
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
-    public string getWebAppPath();
+    public: std::string getWebAppPath();
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getPassword();
+    public: std::string getPassword();
 
-    public string getPaymentMethod();
+    public: std::string getPaymentMethod();
 
-    public string getAuthentication();
+    public: std::string getAuthentication();
 
-    public Integer getAttempts();
+    public: Integer getAttempts();
 
-    public string getTimeout();
+    public: std::string getTimeout();
 
-    public string getStoreName();
-
-                //@Throws(Exception.constructor)
-            
-    public UserRole getRole();
+    public: std::string getStoreName();
 
                 //@Throws(Exception.constructor)
             
-    public OrderInterface getOrder();
+    public: UserRole getRole();
 
-    public setAuthenticated(bool value);
+                //@Throws(Exception.constructor)
+            
+    public: OrderInterface getOrder();
 
-    public clear();
+    public: void setAuthenticated(bool value);
 
-    public int64_t getCreationTime();
+    public: void clear();
 
-    public int64_t getLastAccessedTime();
+    public: int64_t getCreationTime();
 
-    public removeBasket();
+    public: int64_t getLastAccessedTime();
+
+    public: void removeBasket();
 
 };
 

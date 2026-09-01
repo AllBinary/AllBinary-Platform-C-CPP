@@ -73,30 +73,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "DownloadItemsEntityInterface.h"
 
-class DownloadItemsEntity: public AbSqlBean: public DownloadItemsEntityInterface {
-        
+class DownloadItemsEntity: public AbSqlBean, public DownloadItemsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "downloaditems";
+    protected: const std::string tableName = "downloaditems";
 
-public constructor ();
+public: DownloadItemsEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string value);
+    public: void delete_(std::string value);
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public Vector getForItem(string id);
+    public: Vector getForItem(std::string id);
 
-    public Vector getForItem(string id, string downloadItemId);
+    public: Vector getForItem(std::string id, std::string downloadItemId);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

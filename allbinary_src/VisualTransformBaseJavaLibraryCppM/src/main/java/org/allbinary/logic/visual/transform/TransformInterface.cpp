@@ -49,17 +49,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInterface: public DomDocumentMappingInterface, public CompositeTransformInfoInterface {
-        
 
     int32_t getTypeId()
 
-    setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface)
+    void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface)
 
     TransformDocumentInterface getTransformDocumentInterface()
 
                 //@Throws(Exception.constructor)
             
-    string view()
+    std::string view()
 
 };
 

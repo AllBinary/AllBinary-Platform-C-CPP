@@ -79,19 +79,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TerrainPatrolAI: public PacePatrolAI {
-        
 
-    private: const terrainEventListener: TerrainEventListener = new TerrainEventListener();
+    private: const TerrainEventListener terrainEventListener = TerrainEventListener();
 
-    private: const DOWN: Angle = AngleFactory.getInstance()!.DOWN;
+    private: const Angle DOWN = AngleFactory::getInstance().DOWN;
 
-    private: const CLIFF: BasicTerrainInfo = new BasicTerrainInfo(this.DOWN);
+    private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(this->DOWN);
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: TerrainPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
-    update();
+    protected: void update();
 
-    changeDirectionIfCliffReached();
+    private: void changeDirectionIfCliffReached();
 
 };
 

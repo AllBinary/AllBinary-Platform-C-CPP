@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_CHOICEGROUPIMAGEUTIL_H
         #define ORG_ALLBINARY_IMAGE_CHOICEGROUPIMAGEUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -64,17 +66,16 @@
 class ChoiceGroupImageUtil
             : public Object
          {
-        
 
-    private: static const instance: ChoiceGroupImageUtil = new ChoiceGroupImageUtil();
+    private: static ChoiceGroupImageUtil instance() { return ChoiceGroupImageUtil(); }
 
-    public static ChoiceGroupImageUtil getInstance();
+    public: static ChoiceGroupImageUtil getInstance();
 
-    public init();
+    public: void init();
 
-    public update(GL gl);
+    public: void update(GL gl);
 
-    public update(Graphics graphics);
+    public: void update(Graphics graphics);
 
 };
 

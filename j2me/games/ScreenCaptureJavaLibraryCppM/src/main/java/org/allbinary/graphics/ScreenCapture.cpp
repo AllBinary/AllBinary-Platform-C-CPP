@@ -48,17 +48,16 @@
 class ScreenCapture
             : public Object
          {
-        
 
-    public saveFrame(){
+    public: void saveFrame(){
 }
 
 
-    public startRecording(){
+    public: void startRecording(){
 }
 
 
-    public endRecording(){
+    public: void endRecording(){
 }
 
 

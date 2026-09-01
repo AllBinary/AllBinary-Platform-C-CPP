@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTOR_VECTORCENTERGENERATOR_H
         #define ORG_ALLBINARY_ANIMATION_VECTOR_VECTORCENTERGENERATOR_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -85,53 +87,52 @@
 class VectorCenterGenerator
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList translate(BasicArrayList list, int32_t x, int32_t y);
+    public: static BasicArrayList translate(BasicArrayList list, int32_t x, int32_t y);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    minX: int32_t = Integer.MAX_VALUE;
+    int32_t minX = Integer::MAX_VALUE;
 
-    minY: int32_t = Integer.MAX_VALUE;
+    int32_t minY = Integer::MAX_VALUE;
 
-    maxX: int32_t = Integer.MIN_VALUE;
+    int32_t maxX = Integer::MIN_VALUE;
 
-    maxY: int32_t = Integer.MIN_VALUE;
+    int32_t maxY = Integer::MIN_VALUE;
 
-    private: dx: int32_t = 0;
+    private: int32_t dx = 0;
 
-    private: dy: int32_t = 0;
+    private: int32_t dy = 0;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public calculate(HashMap<any, any> hashMap);
+public: VectorCenterGenerator();
 
                 //@Throws(Exception.constructor)
             
-    public transform(HashMap<any, any> hashMap);
+    public: void calculate(HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    getInstance(BasicArrayList pointVector);
+    public: void transform(HashMap<any, any> hashMap);
 
-    public int32_t getWidth();
+                //@Throws(Exception.constructor)
+            
+    private: void getInstance(BasicArrayList pointVector);
 
-    public setWidth(int32_t width);
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: void setWidth(int32_t width);
 
-    public setHeight(int32_t height);
+    public: int32_t getHeight();
+
+    public: void setHeight(int32_t height);
 
 };
 

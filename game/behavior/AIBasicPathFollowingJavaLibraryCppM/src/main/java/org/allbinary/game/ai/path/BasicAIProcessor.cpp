@@ -72,84 +72,81 @@
 class BasicAIProcessor
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: geographicMapCellHistory: GeographicMapCellHistory;
+    private: GeographicMapCellHistory geographicMapCellHistory;
 
-    private: geographicMapCellPositionBasicArrayList: BasicArrayList;
+    private: BasicArrayList geographicMapCellPositionBasicArrayList;
 
-    private: geographicMapCellPathHistoryInfo: GeographicMapCellPathHistoryInfo;
+    private: GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo;
 
-    private: basicAI: BasicDirectionAIHelper;
+    private: BasicDirectionAIHelper basicAI;
 
-public constructor (string name, GeographicMapCellHistory geographicMapCellHistory, GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo, BasicArrayList chosenPathList, AngleInfo angleInfo, int32_t seed){
-
-            super();
-        this.name= name;
+public: BasicAIProcessor(std::string name, GeographicMapCellHistory geographicMapCellHistory, GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo, BasicArrayList chosenPathList, AngleInfo angleInfo, int32_t seed){
+this->name= name;
     
-this.geographicMapCellHistory= geographicMapCellHistory;
+this->geographicMapCellHistory= geographicMapCellHistory;
     
-this.geographicMapCellPositionBasicArrayList= chosenPathList;
+this->geographicMapCellPositionBasicArrayList= chosenPathList;
     
-this.geographicMapCellPathHistoryInfo= geographicMapCellPathHistoryInfo;
+this->geographicMapCellPathHistoryInfo= geographicMapCellPathHistoryInfo;
     
-this.setName(name);
+this->setName(name);
     
-this.setNewPath(geographicMapCellHistory, chosenPathList);
+this->setNewPath(geographicMapCellHistory, chosenPathList);
     
-this.basicAI= new BasicDirectionAIHelper(this.getName(), angleInfo);
+this->basicAI= BasicDirectionAIHelper(this->getName(), angleInfo);
     
 }
 
 
-    setNewPath(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList chosenPathList){
-this.setGeographicMapCellHistory(geographicMapCellHistory);
+    private: void setNewPath(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList chosenPathList){
+this->setGeographicMapCellHistory(geographicMapCellHistory);
     
-this.geographicMapCellPositionBasicArrayList= chosenPathList;
+this->geographicMapCellPositionBasicArrayList= chosenPathList;
     
-this.init();
-    
-}
-
-
-    public init(){
-this.geographicMapCellPathHistoryInfo= new GeographicMapCellPathHistoryInfo();
-    
-this.geographicMapCellPathHistoryInfo!.setPreviousOnPathGeographicMapCellPosition(this.geographicMapCellPositionBasicArrayList!.get(this.geographicMapCellPositionBasicArrayList!.size() -1) as GeographicMapCellPosition);
-    
-this.geographicMapCellPathHistoryInfo!.setNextOnPathGeographicMapCellPosition(this.geographicMapCellPositionBasicArrayList!.get(this.geographicMapCellPositionBasicArrayList!.size() -1) as GeographicMapCellPosition);
-    
-this.update();
+this->init();
     
 }
 
 
-    private: const geographicMapDirectionUtil: GeographicMapDirectionUtil = GeographicMapDirectionUtil.getInstance()!;
+    public: void init(){
+this->geographicMapCellPathHistoryInfo= GeographicMapCellPathHistoryInfo();
+    
+this->geographicMapCellPathHistoryInfo.setPreviousOnPathGeographicMapCellPosition(this->geographicMapCellPositionBasicArrayList.get(this->geographicMapCellPositionBasicArrayList.size() -1) as GeographicMapCellPosition);
+    
+this->geographicMapCellPathHistoryInfo.setNextOnPathGeographicMapCellPosition(this->geographicMapCellPositionBasicArrayList.get(this->geographicMapCellPositionBasicArrayList.size() -1) as GeographicMapCellPosition);
+    
+this->update();
+    
+}
+
+
+    private: const GeographicMapDirectionUtil geographicMapDirectionUtil = GeographicMapDirectionUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    int32_t goTowardNextChosenOnPathPosition(GeographicMapCellPosition currentGeographicMapCellPosition){
+    private: int32_t goTowardNextChosenOnPathPosition(GeographicMapCellPosition currentGeographicMapCellPosition){
 
-    keyDirection: int32_t =  -1;;
+    int32_t keyDirection =  -1;;
     
 
-    goToGeographicMapCellPosition: GeographicMapCellPosition = this.geographicMapCellPathHistoryInfo!.getNextChosenOnPathGeographicMapCellPosition()!;;
+    GeographicMapCellPosition goToGeographicMapCellPosition = this->geographicMapCellPathHistoryInfo.getNextChosenOnPathGeographicMapCellPosition();;
     
 
-    geographicMapDirectionData: Direction = this.geographicMapDirectionUtil!.getDirectionFromCellPositionToAdjacentCellPosition(currentGeographicMapCellPosition, goToGeographicMapCellPosition)!;;
+    Direction geographicMapDirectionData = this->geographicMapDirectionUtil.getDirectionFromCellPositionToAdjacentCellPosition(currentGeographicMapCellPosition, goToGeographicMapCellPosition);;
     
 
-                        if(geographicMapDirectionData == DirectionFactory.getInstance()!.NOT_BORDERED_WITH)
+                        if(geographicMapDirectionData == DirectionFactory::getInstance().NOT_BORDERED_WITH)
                         
                                     {
-                                    geographicMapDirectionData= this.geographicMapDirectionUtil!.getDirectionFromCellPositionToCellPosition(currentGeographicMapCellPosition, goToGeographicMapCellPosition);
+                                    geographicMapDirectionData= this->geographicMapDirectionUtil.getDirectionFromCellPositionToCellPosition(currentGeographicMapCellPosition, goToGeographicMapCellPosition);
     
 
                                     }
                                 
-keyDirection= this.basicAI!.getAIKeyPressedFromDirection(geographicMapDirectionData);
+keyDirection= this->basicAI.getAIKeyPressedFromDirection(geographicMapDirectionData);
     
 
 
@@ -160,35 +157,35 @@ keyDirection= this.basicAI!.getAIKeyPressedFromDirection(geographicMapDirectionD
 }
 
 
-    update(){
-this.geographicMapCellPathHistoryInfo!.setNextUnvisitedOnPathGeographicMapCellPosition(this.getGeographicMapCellHistory()!.getFirstUnvisited());
+    private: void update(){
+this->geographicMapCellPathHistoryInfo.setNextUnvisitedOnPathGeographicMapCellPosition(this->getGeographicMapCellHistory().getFirstUnvisited());
     
-this.geographicMapCellPathHistoryInfo!.setNextChosenOnPathGeographicMapCellPosition(this.geographicMapCellPathHistoryInfo!.getNextUnvisitedOnPathGeographicMapCellPosition());
+this->geographicMapCellPathHistoryInfo.setNextChosenOnPathGeographicMapCellPosition(this->geographicMapCellPathHistoryInfo.getNextUnvisitedOnPathGeographicMapCellPosition());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processAI(AllBinaryLayerManager myManager, GeographicMapCellPosition currentGeographicMapCellPosition){
+    public: int32_t processAI(AllBinaryLayerManager myManager, GeographicMapCellPosition currentGeographicMapCellPosition){
 
-    keyDirection: int32_t =  -1;;
+    int32_t keyDirection =  -1;;
     
 
-                        if(this.geographicMapCellPositionBasicArrayList!.contains(currentGeographicMapCellPosition))
+                        if(this->geographicMapCellPositionBasicArrayList.contains(currentGeographicMapCellPosition))
                         
                                     {
-                                    this.update();
+                                    this->update();
     
-keyDirection= this.goTowardNextChosenOnPathPosition(currentGeographicMapCellPosition);
+keyDirection= this->goTowardNextChosenOnPathPosition(currentGeographicMapCellPosition);
     
-this.geographicMapCellPathHistoryInfo!.setPreviousOnPathGeographicMapCellPosition(currentGeographicMapCellPosition);
+this->geographicMapCellPathHistoryInfo.setPreviousOnPathGeographicMapCellPosition(currentGeographicMapCellPosition);
     
 
                                     }
                                 
                         else {
-                            keyDirection= this.goTowardNextChosenOnPathPosition(currentGeographicMapCellPosition);
+                            keyDirection= this->goTowardNextChosenOnPathPosition(currentGeographicMapCellPosition);
     
 
                         }
@@ -202,50 +199,50 @@ this.geographicMapCellPathHistoryInfo!.setPreviousOnPathGeographicMapCellPositio
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public GeographicMapCellPathHistoryInfo getGeographicMapCellPathHistoryInfo(){
+    public: GeographicMapCellPathHistoryInfo getGeographicMapCellPathHistoryInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPathHistoryInfo;
+                        return this->geographicMapCellPathHistoryInfo;
     
 }
 
 
-    public setGeographicMapCellPathHistoryInfo(GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo){
-this.geographicMapCellPathHistoryInfo= geographicMapCellPathHistoryInfo;
+    public: void setGeographicMapCellPathHistoryInfo(GeographicMapCellPathHistoryInfo geographicMapCellPathHistoryInfo){
+this->geographicMapCellPathHistoryInfo= geographicMapCellPathHistoryInfo;
     
 }
 
 
-    public GeographicMapCellHistory getGeographicMapCellHistory(){
+    public: GeographicMapCellHistory getGeographicMapCellHistory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellHistory;
+                        return this->geographicMapCellHistory;
     
 }
 
 
-    public setGeographicMapCellHistory(GeographicMapCellHistory geographicMapCellHistory){
-this.geographicMapCellHistory= geographicMapCellHistory;
+    public: void setGeographicMapCellHistory(GeographicMapCellHistory geographicMapCellHistory){
+this->geographicMapCellHistory= geographicMapCellHistory;
     
 }
 

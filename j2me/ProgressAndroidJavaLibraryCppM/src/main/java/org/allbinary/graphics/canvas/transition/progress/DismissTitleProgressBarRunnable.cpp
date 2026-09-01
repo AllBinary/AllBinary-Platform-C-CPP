@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/animation/transition/TransistionTypes.h>
@@ -54,11 +56,10 @@
 #include "ProgressCanvas.h"
 
 class DismissTitleProgressBarRunnable: public ProgressRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Activity midletActivity, ProgressCanvas progressCanvas){
+public: DismissTitleProgressBarRunnable(Activity midletActivity, ProgressCanvas progressCanvas){
             super(midletActivity, progressCanvas);
                     
 
@@ -67,21 +68,21 @@ public constructor (Activity midletActivity, ProgressCanvas progressCanvas){
 }
 
 
-    private: const ZOOM_OUT_AND_IN: std::vector<int32_t> = [TransistionTypes.getInstance()!.ZOOM_OUT,TransistionTypes.getInstance()!.ZOOM_IN];
+    private: const std::vector<int32_t> ZOOM_OUT_AND_IN = {TransistionTypes::getInstance().ZOOM_OUT,TransistionTypes::getInstance().ZOOM_IN};
 
-    public run(){
+    public: void run(){
 
         try {
-            this.midletActivity!.onDismissProgress(this.ZOOM_OUT_AND_IN);
+            this->midletActivity.onDismissProgress(this->ZOOM_OUT_AND_IN);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 

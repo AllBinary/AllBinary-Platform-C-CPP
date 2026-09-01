@@ -46,11 +46,10 @@
 class ComparableObject
             : public Object
         : public Comparable<any> {
-        
 
-    public int32_t compareTo(any = {} anyType){
+    public: int32_t compareTo(Object* anyType){
 
-                        if(TsUtil.getInstance()!.hashCode(this) < TsUtil.getInstance()!.hashCode(anyType))
+                        if(TsUtil::getInstance().hashCode(this) < TsUtil::getInstance().hashCode(anyType))
                         
                                     {
                                     
@@ -63,7 +62,7 @@ class ComparableObject
                                     }
                                 
                              else 
-                        if(TsUtil.getInstance()!.hashCode(this) > TsUtil.getInstance()!.hashCode(anyType))
+                        if(TsUtil::getInstance().hashCode(this) > TsUtil::getInstance().hashCode(anyType))
                         
                                     {
                                     

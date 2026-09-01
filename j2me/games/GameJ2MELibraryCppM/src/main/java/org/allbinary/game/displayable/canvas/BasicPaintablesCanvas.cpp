@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -68,38 +70,37 @@
         #include "GameCommandCanvas.h"
 
 class BasicPaintablesCanvas: public GameCommandCanvas {
-        
 
-    private: const paintableArray: std::vector<Paintable>;
+    private: std::vector<Paintable> paintableArray;
 
-    private: const colorFillPaintable: ColorFillBasePaintable;
+    private: ColorFillBasePaintable colorFillPaintable;
 
-public constructor (CommandListener cmdListener, string name, AllBinaryGameLayerManager allBinaryGameLayerManager, std::vector<Paintable> paintableArray){
-            super(cmdListener, name, allBinaryGameLayerManager!.getBackgroundBasicColor(), allBinaryGameLayerManager!.getForegroundBasicColor());
+public: BasicPaintablesCanvas(CommandListener cmdListener, std::string name, AllBinaryGameLayerManager allBinaryGameLayerManager, std::vector<Paintable> paintableArray){
+            super(cmdListener, name, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.paintableArray= paintableArray;
+this->paintableArray= paintableArray;
     
-this.colorFillPaintable= ColorFillPaintableFactory.getInstance()!.getInstance(allBinaryGameLayerManager!.getBackgroundBasicColor(), false);
+this->colorFillPaintable= ColorFillPaintableFactory::getInstance().getInstance(allBinaryGameLayerManager.getBackgroundBasicColor(), false);
     
 }
 
 
-    public paint(Graphics graphics){
-this.colorFillPaintable!.paint(graphics);
+    public: void paint(Graphics graphics){
+this->colorFillPaintable.paint(graphics);
     
-graphics.setColor(this.foregroundColor);
+graphics.setColor(this->foregroundColor);
     
 
 
 
 
                         for (
-    index: int32_t = this.paintableArray!.length -1;index >= 0; index--)
+    int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this.paintableArray[index]!.paint(graphics);
+this->paintableArray[index]!.paint(graphics);
     
 }
 

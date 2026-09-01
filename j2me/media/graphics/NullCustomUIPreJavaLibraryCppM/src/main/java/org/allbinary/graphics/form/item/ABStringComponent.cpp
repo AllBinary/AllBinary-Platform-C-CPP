@@ -46,37 +46,34 @@
 class ABStringComponent
             : public Object
          {
-        
 
-    public static const NULL_STRING_COMPONENT: ABStringComponent = new ABStringComponent(BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+    public: static const ABStringComponent NULL_STRING_COMPONENT = ABStringComponent(BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
 
-    public BasicColor getBackgroundBasicColor(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory.getInstance()!.WHITE;
-    
-}
-
-
-public constructor (BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-
-            super();
-        }
-
-
-    public BasicColor getForegroundBasicColor(){
+    public: BasicColor getBackgroundBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorFactory.getInstance()!.WHITE;
+                        return BasicColorFactory::getInstance().WHITE;
     
 }
 
 
-    public setForegroundBasicColor(BasicColor foregroundBasicColor){
+public: ABStringComponent(BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+}
+
+
+    public: BasicColor getForegroundBasicColor(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return BasicColorFactory::getInstance().WHITE;
+    
+}
+
+
+    public: void setForegroundBasicColor(BasicColor foregroundBasicColor){
 }
 
 

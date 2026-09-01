@@ -52,20 +52,17 @@
 class TerrainEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: TerrainEventFactory(){
+}
 
 
-    public AllBinaryEventObject getInstance(){
+    public: AllBinaryEventObject getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TerrainEvent(NullUtil.getInstance()!.NULL_OBJECT);
+                        return TerrainEvent(NullUtil::getInstance().NULL_OBJECT);
     
 }
 

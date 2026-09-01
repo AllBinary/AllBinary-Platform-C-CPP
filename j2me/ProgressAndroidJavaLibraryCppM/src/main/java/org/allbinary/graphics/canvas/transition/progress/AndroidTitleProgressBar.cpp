@@ -65,43 +65,39 @@
 //#include "TitleProgressBarSetProgressRunnable.h"
 
 class AndroidTitleProgressBar: public ProgressCanvas {
-        
 
 //inner= member=true isStatic=
 class TitleProgressBarSetProgressRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar){
-
-            super();
-        this.androidTitleProgressBar= androidTitleProgressBar;
+: TitleProgressBarSetProgressRunnable(AndroidTitleProgressBar androidTitleProgressBar){
+this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    value: int32_t = static_cast<int32_t>(this.androidTitleProgressBar!.getValue());;
+    int32_t value = static_cast<int32_t>(this->androidTitleProgressBar.getValue());;
     
-this.androidTitleProgressBar!.progressActivity!.onTitleProgressBarSetProgress(value);
+this->androidTitleProgressBar.progressActivity.onTitleProgressBarSetProgress(value);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -115,37 +111,34 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 class TitleProgressBarPortionSetProgressRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar){
-
-            super();
-        this.androidTitleProgressBar= androidTitleProgressBar;
+: TitleProgressBarPortionSetProgressRunnable(AndroidTitleProgressBar androidTitleProgressBar){
+this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    value: int32_t = static_cast<int32_t>((this.androidTitleProgressBar!.getValue() +this.androidTitleProgressBar!.getMaxValue() /this.androidTitleProgressBar!.portion));;
+    int32_t value = static_cast<int32_t>((this->androidTitleProgressBar.getValue() +this->androidTitleProgressBar.getMaxValue() /this->androidTitleProgressBar.portion));;
     
-this.androidTitleProgressBar!.progressActivity!.onTitleProgressBarSetProgress(value);
+this->androidTitleProgressBar.progressActivity.onTitleProgressBarSetProgress(value);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -159,37 +152,34 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 class ShowTitleProgressBarRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar){
-
-            super();
-        this.androidTitleProgressBar= androidTitleProgressBar;
+: ShowTitleProgressBarRunnable(AndroidTitleProgressBar androidTitleProgressBar){
+this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    maxValue: int32_t = static_cast<int32_t>(this.androidTitleProgressBar!.getMaxValue());;
+    int32_t maxValue = static_cast<int32_t>(this->androidTitleProgressBar.getMaxValue());;
     
-this.androidTitleProgressBar!.progressActivity!.onShowTitleProgressBar(maxValue, false);
+this->androidTitleProgressBar.progressActivity.onShowTitleProgressBar(maxValue, false);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -203,34 +193,31 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 class DismissTitleProgressBarRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const androidTitleProgressBar: AndroidTitleProgressBar;
+    private: AndroidTitleProgressBar androidTitleProgressBar;
 
- constructor (AndroidTitleProgressBar androidTitleProgressBar){
-
-            super();
-        this.androidTitleProgressBar= androidTitleProgressBar;
+: DismissTitleProgressBarRunnable(AndroidTitleProgressBar androidTitleProgressBar){
+this->androidTitleProgressBar= androidTitleProgressBar;
     
 }
 
 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
-            this.androidTitleProgressBar!.progressActivity!.onDismissTitleProgressBar();
+            this->androidTitleProgressBar.progressActivity.onDismissTitleProgressBar();
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -240,19 +227,19 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 };
 
             
-    private: showTitleProgressBarRunnable = new this.ShowTitleProgressBarRunnable(this);
+    private: showTitleProgressBarRunnable = ShowTitleProgressBarRunnable(this);
 
-    private: dismissTitleProgressBarRunnable = new this.DismissTitleProgressBarRunnable(this);
+    private: dismissTitleProgressBarRunnable = DismissTitleProgressBarRunnable(this);
 
-    private: progressDialogPortionSetProgressRunnable = new this.TitleProgressBarPortionSetProgressRunnable(this);
+    private: progressDialogPortionSetProgressRunnable = TitleProgressBarPortionSetProgressRunnable(this);
 
-    private: progressDialogSetProgressRunnable = new this.TitleProgressBarSetProgressRunnable(this);
+    private: progressDialogSetProgressRunnable = TitleProgressBarSetProgressRunnable(this);
 
-    private: progressActivity: ProgressActivityInterface = NullProgressActivity.NULL_PROGRESS_ACTIVITY;
+    private: ProgressActivityInterface progressActivity = NullProgressActivity::NULL_PROGRESS_ACTIVITY;
 
-    private: portion: int32_t = 0;
+    private: int32_t portion = 0;
 
-protected constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+protected: AndroidTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(title, backgroundBasicColor, foregroundBasicColor);
                     
 
@@ -261,15 +248,15 @@ protected constructor (string title, BasicColor backgroundBasicColor, BasicColor
 }
 
 
-    public init(ProgressActivityInterface activity){
-this.progressActivity= activity;
+    public: void init(ProgressActivityInterface activity){
+this->progressActivity= activity;
     
 }
 
 
-    public bool isInitialized(){
+    public: bool isInitialized(){
 
-                        if(this.progressActivity != NullProgressActivity.NULL_PROGRESS_ACTIVITY)
+                        if(this->progressActivity != NullProgressActivity::NULL_PROGRESS_ACTIVITY)
                         
                                     {
                                     
@@ -294,32 +281,32 @@ this.progressActivity= activity;
 }
 
 
-    public start(){
+    public: void start(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.START_METHOD_NAME);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START_METHOD_NAME);
     
 super.start();
     
-this.progressActivity!.runOnUiThread(this.showTitleProgressBarRunnable);
+this->progressActivity.runOnUiThread(this->showTitleProgressBarRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.START_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, e);
     
 }
 
 }
 
 
-    public end(){
+    public: void end(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.END_METHOD_NAME);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
     
-this.progressActivity!.runOnUiThread(this.dismissTitleProgressBarRunnable);
+this->progressActivity.runOnUiThread(this->dismissTitleProgressBarRunnable);
     
 super.end();
     
@@ -327,76 +314,76 @@ super.end();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.END_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME, e);
     
 }
 
 }
 
 
-    public addPortion(int32_t value, string text, int32_t index){
+    public: void addPortion(int32_t value, std::string text, int32_t index){
 
         try {
             super.addPortion(value, text, index);
     
-this.portion= value;
+this->portion= value;
     
-this.progressActivity!.runOnUiThread(this.progressDialogPortionSetProgressRunnable);
+this->progressActivity.runOnUiThread(this->progressDialogPortionSetProgressRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
     
 }
 
 }
 
 
-    public addNormalPortion(int32_t value, string text){
+    public: void addNormalPortion(int32_t value, std::string text){
 
         try {
             super.addNormalPortion(value, text);
     
-this.portion= value;
+this->portion= value;
     
-this.progressActivity!.runOnUiThread(this.progressDialogPortionSetProgressRunnable);
+this->progressActivity.runOnUiThread(this->progressDialogPortionSetProgressRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
     
 }
 
 }
 
 
-    setValue(int32_t value){
+    protected: void setValue(int32_t value){
 
         try {
             super.setValue(value);
     
-this.progressActivity!.runOnUiThread(this.progressDialogSetProgressRunnable);
+this->progressActivity.runOnUiThread(this->progressDialogSetProgressRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setValue", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", e);
     
 }
 
 }
 
 
-    public waitUntilDisplayed(){
+    public: void waitUntilDisplayed(){
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 

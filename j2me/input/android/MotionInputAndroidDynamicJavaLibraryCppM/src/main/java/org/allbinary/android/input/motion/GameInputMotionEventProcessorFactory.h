@@ -55,9 +55,8 @@
 class GameInputMotionEventProcessorFactory
             : public Object
          {
-        
 
-    public static BaseGameInputMotionEventProcessor getInstance();
+    public: static BaseGameInputMotionEventProcessor getInstance();
 
 };
 

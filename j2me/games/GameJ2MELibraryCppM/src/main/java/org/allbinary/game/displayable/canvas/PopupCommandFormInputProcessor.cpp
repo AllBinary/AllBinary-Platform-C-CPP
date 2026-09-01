@@ -63,9 +63,8 @@
 #include "PopupMenuInputProcessor.h"
 
 class PopupCommandFormInputProcessor: public CommandFormInputProcessor {
-        
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form, PopupMenuInputProcessor popupMenuInputProcessor){
+public: PopupCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form, PopupMenuInputProcessor popupMenuInputProcessor){
             super(gameKeyEventList, playerInputId, gameCanvas, form);
                     
 
@@ -76,7 +75,7 @@ public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCa
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInput(int32_t key){
+    public: int32_t processInput(int32_t key){
 
 
 
@@ -88,7 +87,7 @@ public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCa
 
                 //@Throws(Exception.constructor)
             
-    processMotionInput(MotionGestureEvent motionGestureEvent){
+    protected: void processMotionInput(MotionGestureEvent motionGestureEvent){
 super.processMotionInput(motionGestureEvent);
     
 }

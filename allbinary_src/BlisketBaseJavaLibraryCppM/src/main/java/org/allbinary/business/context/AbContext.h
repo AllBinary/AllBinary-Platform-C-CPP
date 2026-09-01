@@ -63,23 +63,22 @@
 class AbContext
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: AbContext(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    public WeblisketSessionInterface getWeblisketSession();
+    public: WeblisketSessionInterface getWeblisketSession();
 
-    public PageContext getPageContext();
+    public: PageContext getPageContext();
 
-    public HashMap<any, any> getPropertiesHashMap();
+    public: HashMap<any, any> getPropertiesHashMap();
 
 };
 

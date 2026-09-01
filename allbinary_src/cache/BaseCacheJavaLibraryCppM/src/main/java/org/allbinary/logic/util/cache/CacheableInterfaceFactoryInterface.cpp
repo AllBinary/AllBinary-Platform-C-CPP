@@ -41,11 +41,10 @@
         #include "CacheableInterface.h"
 
 class CacheableInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    CacheableInterface getInstance(any key)
+    CacheableInterface getInstance(Object* key)
 
 };
 

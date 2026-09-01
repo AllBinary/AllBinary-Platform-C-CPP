@@ -54,42 +54,41 @@
 class DestroyableBaseBehavior
             : public Object
         : public DestroyableInterface {
-        
 
-    private: static const instance: DestroyableBaseBehavior = new DestroyableBaseBehavior();
+    private: static DestroyableBaseBehavior instance() { return DestroyableBaseBehavior(); }
 
-    public static DestroyableBaseBehavior getInstance(){
+    public: static DestroyableBaseBehavior getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DestroyableBaseBehavior.instance;
+                        return DestroyableBaseBehavior::instance();
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.constructor.name.toString()!;;
+                        return this->constructor.name.toString()!;;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isDestroyed(){
+    public: bool isDestroyed(){
 
 
 
-                            throw new Exception(CommonStrings.getInstance()!.NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
                     
 }
 
 
-    public setDestroyed(bool destroyed){
+    public: void setDestroyed(bool destroyed){
 }
 
 

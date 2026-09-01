@@ -48,28 +48,27 @@
 class LockableFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: LockableFeatureFactory = new LockableFeatureFactory();
+    private: static LockableFeatureFactory instance() { return LockableFeatureFactory(); }
 
-    public static LockableFeatureFactory getInstance(){
+    public: static LockableFeatureFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LockableFeatureFactory.instance;
+                        return LockableFeatureFactory::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 

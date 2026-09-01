@@ -32,13 +32,12 @@
 #include "InputFactory.h"
 
 class AndroidGameKey: public Input {
-        
 
-    public static string getString(int32_t keyCode);
+    public: static std::string getString(int32_t keyCode);
 
- constructor (int32_t keyCode, string name);
+: AndroidGameKey(int32_t keyCode, std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

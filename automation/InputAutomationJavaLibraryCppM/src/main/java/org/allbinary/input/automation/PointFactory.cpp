@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -46,22 +48,21 @@
 class PointFactory
             : public Object
          {
-        
 
-    private: static pointArray: std::vector<std::vector<Point>> = new Array(3000).fill(null).map(() => new Array(3000).fill(0))
+    private: static std::vector<std::vector<Point>> pointArray = new Array(3000).fill(null).map(() => new Array(3000).fill(0))
                                                             ;
 
-    public static Point getInstance(int32_t x, int32_t y){
+    public: static Point getInstance(int32_t x, int32_t y){
 
-    point: Point = PointFactory.pointArray[x]![y]!;;
+    Point point = PointFactory::pointArray[x]![y];;
     
 
                         if(point == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    point= PointFactory.pointArray[x]![y]= new Point(x, y);
+                                    point= PointFactory::pointArray[x]![y]= Point(x, y);
     
 
                                     }
@@ -75,10 +76,8 @@ class PointFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PointFactory(){
+}
 
 
 };

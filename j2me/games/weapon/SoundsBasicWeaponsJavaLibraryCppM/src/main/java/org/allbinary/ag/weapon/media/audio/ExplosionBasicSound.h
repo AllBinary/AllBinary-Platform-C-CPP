@@ -47,13 +47,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ExplosionBasicSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new ExplosionBasicSound();
+    private: static Sound soundInterface = ExplosionBasicSound();
 
-    public static Sound getInstance();
+    public: static Sound getInstance();
 
-private constructor ();
+private: ExplosionBasicSound();
 
 };
 

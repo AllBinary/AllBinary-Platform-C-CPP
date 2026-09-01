@@ -58,44 +58,43 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class AlwaysActionScriptConditionJPanel: public javax.swing.JPanel {
-        
+class AlwaysActionScriptConditionJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: alwaysActionScriptConditionInterface: AlwaysActionScriptConditionInterface;
+    private: AlwaysActionScriptConditionInterface alwaysActionScriptConditionInterface;
 
-public constructor (AlwaysActionScriptConditionInterface alwaysActionScriptConditionInterface);
+public: AlwaysActionScriptConditionJPanel(AlwaysActionScriptConditionInterface alwaysActionScriptConditionInterface);
 
-    set();
+    private: void set();
 
-    update();
+    private: void update();
 
-    public javax.swing.JDialog getAlwaysActionJDialog();
+    public: javax::swing::JDialog getAlwaysActionJDialog();
 
-    public setAlwaysActionJDialog(javax.swing.JDialog alwaysActionJDialog);
+    public: void setAlwaysActionJDialog(javax::swing::JDialog alwaysActionJDialog);
 
-    initComponents();
+    private: void initComponents();
 
-    okJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    alwaysActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void alwaysActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: alwaysActionJButton: javax.swing.JButton;
+    private: javax::swing::JButton alwaysActionJButton;
 
-    private: alwaysActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JDialog alwaysActionJDialog;
 
-    private: alwaysJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JComboBox alwaysJComboBox;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: okJButton: javax.swing.JButton;
+    private: javax::swing::JButton okJButton;
 
-    private: titleJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel titleJLabel;
 
 };
 

@@ -66,27 +66,26 @@
 class DropLayerFactory
             : public Object
          {
-        
 
-    private: static const DROP_LAYER_FACTORY: DropLayerFactory = new DropLayerFactory();
+    private: static const DropLayerFactory DROP_LAYER_FACTORY = DropLayerFactory();
 
-    public static DropLayerFactory getInstance();
+    public: static DropLayerFactory getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: DropLayerFactory();
 
-    public clear();
+    public: void clear();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public PickedUpLayerInterfaceFactoryInterface getRandomInstance();
+    public: PickedUpLayerInterfaceFactoryInterface getRandomInstance();
 
-    public add(PickedUpLayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+    public: void add(PickedUpLayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

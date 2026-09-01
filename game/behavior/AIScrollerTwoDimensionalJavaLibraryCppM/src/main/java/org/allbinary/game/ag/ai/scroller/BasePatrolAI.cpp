@@ -69,71 +69,70 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasePatrolAI: public BasicAI {
-        
 
-    public static const MAX_DISTANCE: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(2)!;
+    public: static const Integer MAX_DISTANCE = SmallIntegerSingletonFactory::getInstance().getAt(2);
 
-    public static const DIRECTION_ARRAY: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(3)!;
+    public: static const Integer DIRECTION_ARRAY = SmallIntegerSingletonFactory::getInstance().getAt(3);
 
-    public static const FIRING_DISTANCE: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(4)!;
+    public: static const Integer FIRING_DISTANCE = SmallIntegerSingletonFactory::getInstance().getAt(4);
 
-    public static SPEED: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(5)!;
+    public: static Integer SPEED = SmallIntegerSingletonFactory::getInstance().getAt(5);
 
-    maxDistance: Integer;
+    protected: Integer maxDistance;
 
-    currentDistance: int32_t;
+    protected: int32_t currentDistance;
 
-    xTotalDistance: int32_t= 0;
+    protected: int32_t xTotalDistance= 0;
 
-    lastKeyDirection: int32_t = Canvas.RIGHT;
+    protected: int32_t lastKeyDirection = Canvas::RIGHT;
 
-    keyDirection: int32_t = Canvas.RIGHT;
+    protected: int32_t keyDirection = Canvas::RIGHT;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: BasePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.maxDistance= hashtable.get(BasePatrolAI.MAX_DISTANCE) as Integer;
+this->maxDistance= hashtable.get(BasePatrolAI::MAX_DISTANCE) as Integer;
     
-this.currentDistance= this.maxDistance!.intValue();
-    
-}
-
-
-    update(){
-this.updateTotalDistance();
-    
-this.changeDirectionIfReachedPacingAreaMax();
+this->currentDistance= this->maxDistance.intValue();
     
 }
 
 
-    updateTotalDistance(){
-
-    velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface = this.getOwnerLayerInterface() as VelocityInterfaceCompositeInterface;;
+    protected: void update(){
+this->updateTotalDistance();
     
-
-    velocityProperties: BasicVelocityProperties = velocityInterfaceCompositeInterface!.getVelocityProperties()!;;
-    
-this.xTotalDistance += velocityProperties!.getVelocityXBasicDecimalP()!.getScaled();
+this->changeDirectionIfReachedPacingAreaMax();
     
 }
 
 
-    changeDirectionIfReachedPacingAreaMax(){
+    private: void updateTotalDistance(){
 
-    mathUtil: MathUtil = MathUtil.getInstance()!;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = this->getOwnerLayerInterface() as VelocityInterfaceCompositeInterface;;
     
 
-    totalDistance: int32_t = mathUtil!.abs(this.xTotalDistance)!;;
+    BasicVelocityProperties velocityProperties = velocityInterfaceCompositeInterface.getVelocityProperties();;
+    
+this->xTotalDistance += velocityProperties.getVelocityXBasicDecimalP().getScaled();
+    
+}
+
+
+    private: void changeDirectionIfReachedPacingAreaMax(){
+
+    MathUtil mathUtil = MathUtil::getInstance();;
     
 
-                        if(totalDistance > this.currentDistance)
+    int32_t totalDistance = mathUtil.abs(this->xTotalDistance);;
+    
+
+                        if(totalDistance > this->currentDistance)
                         
                                     {
-                                    this.nextDirection();
+                                    this->nextDirection();
     
 
                                     }
@@ -141,29 +140,29 @@ this.xTotalDistance += velocityProperties!.getVelocityXBasicDecimalP()!.getScale
 }
 
 
-    nextDirection(){
+    protected: void nextDirection(){
 
-                        if(this.lastKeyDirection == Canvas.LEFT)
+                        if(this->lastKeyDirection == Canvas::LEFT)
                         
                                     {
-                                    this.keyDirection= Canvas.RIGHT;
+                                    this->keyDirection= Canvas::RIGHT;
     
-this.lastKeyDirection= this.keyDirection;
+this->lastKeyDirection= this->keyDirection;
     
-this.xTotalDistance= 0;
+this->xTotalDistance= 0;
     
 
                                     }
                                 
                              else 
-                        if(this.lastKeyDirection == Canvas.RIGHT)
+                        if(this->lastKeyDirection == Canvas::RIGHT)
                         
                                     {
-                                    this.keyDirection= Canvas.LEFT;
+                                    this->keyDirection= Canvas::LEFT;
     
-this.lastKeyDirection= this.keyDirection;
+this->lastKeyDirection= this->keyDirection;
     
-this.xTotalDistance= 0;
+this->xTotalDistance= 0;
     
 
                                     }
@@ -171,7 +170,7 @@ this.xTotalDistance= 0;
 }
 
 
-    public disable(){
+    public: void disable(){
 }
 
 

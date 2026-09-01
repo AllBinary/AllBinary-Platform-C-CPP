@@ -55,61 +55,58 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //1.4.2
 class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
-        
 
-    geographicMapInterface: BasicGeographicMap;
+    protected: BasicGeographicMap geographicMapInterface;
 
-    const edgeMinimum: int32_t;
+    protected: int32_t edgeMinimum;
 
-    const minPathWeight: int32_t;
+    protected: int32_t minPathWeight;
 
-    const maxPathWeight: int32_t;
+    protected: int32_t maxPathWeight;
 
-public constructor (BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
-
-            super();
-        this.geographicMapInterface= geographicMapInterface;
+public: BasePathFinderGraphVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+this->geographicMapInterface= geographicMapInterface;
     
-this.edgeMinimum= edgeMinimum;
+this->edgeMinimum= edgeMinimum;
     
-this.minPathWeight= minPathWeight;
+this->minPathWeight= minPathWeight;
     
-this.maxPathWeight= maxPathWeight;
+this->maxPathWeight= maxPathWeight;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public visit(any = {} graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+    public: void visit(Object* graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
+    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
 
-    startPathFindingNode: PathFindingNode;;
+    PathFindingNode startPathFindingNode;;
     
 
 
 
 
                         for (
-    index: int32_t = startPathFindingNodeList!.size() -1;index >= 0; index--)
+    int32_t index = startPathFindingNodeList.size() -1;index >= 0; index--)
         {
-startPathFindingNode= startPathFindingNodeList!.get(index) as PathFindingNode;
+startPathFindingNode= startPathFindingNodeList.get(index) as PathFindingNode;
     
-pathList!.remove(startPathFindingNode!.geographicMapCellPosition);
+pathList.remove(startPathFindingNode.geographicMapCellPosition);
     
-pathList!.addAt(0, startPathFindingNode!.geographicMapCellPosition);
+pathList.addAt(0, startPathFindingNode.geographicMapCellPosition);
     
 }
 
 }
 
 
-    public bool isValid(any = {} graphPath){
+    public: bool isValid(Object* graphPath){
 
 
 
@@ -119,12 +116,12 @@ pathList!.addAt(0, startPathFindingNode!.geographicMapCellPosition);
 }
 
 
-    public string getInvalidReason(any = {} graphPath){
+    public: std::string getInvalidReason(Object* graphPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

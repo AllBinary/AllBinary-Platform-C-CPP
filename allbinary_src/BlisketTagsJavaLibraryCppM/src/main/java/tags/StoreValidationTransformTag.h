@@ -56,19 +56,18 @@
         #include "ValidationTransformTag.h"
 
 class StoreValidationTransformTag: public ValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeName: string;
+    private: std::string storeName;
 
-public constructor ();
+public: StoreValidationTransformTag();
 
-    public setStoreName(string value);
+    public: void setStoreName(std::string value);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

@@ -48,9 +48,8 @@
 class BasicPaymentTypeUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicPaymentTypeUtil = new BasicPaymentTypeUtil();
+    private: static BasicPaymentTypeUtil instance() { return BasicPaymentTypeUtil(); }
 
                     static int32_t initResult = BasicPaymentTypeUtil::init();
                 static int32_t init() { 
@@ -60,48 +59,46 @@ class BasicPaymentTypeUtil
                     return 0;
                 }
             
-    public static BasicPaymentTypeUtil getInstance(){
+    public: static BasicPaymentTypeUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicPaymentTypeUtil.instance;
+                        return BasicPaymentTypeUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BasicPaymentTypeUtil(){
+}
 
 
-    private: paymentTypeVector: Vector = new Vector();
+    private: Vector paymentTypeVector = Vector();
 
-    public add(BasicPaymentType paymentType){
-this.paymentTypeVector!.add(paymentType);
+    public: void add(BasicPaymentType paymentType){
+this->paymentTypeVector.add(paymentType);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicPaymentType get(string paymentTypeString){
+    public: BasicPaymentType get(std::string paymentTypeString){
 
-    size: int32_t = this.paymentTypeVector!.length!;;
+    int32_t size = this->paymentTypeVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    paymentType: BasicPaymentType = this.paymentTypeVector!.get(i) as BasicPaymentType;;
+    BasicPaymentType paymentType = this->paymentTypeVector.get(i) as BasicPaymentType;;
     
 
-                        if(paymentType!.getName()!.compareTo(paymentTypeString) == 0)
+                        if(paymentType.getName().compareTo(paymentTypeString) == 0)
                         
                                     {
                                     
@@ -118,41 +115,42 @@ this.paymentTypeVector!.add(paymentType);
 
 
 
-                            throw new Exception("Unknown PaymentType: " +paymentTypeString);
+                            throw Exception("Unknown PaymentType: " +paymentTypeString);
                     
 }
 
 
-    public bool isContain(BasicPaymentType paymentType){
+    public: bool isContain(BasicPaymentType paymentType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentTypeVector!.contains(paymentType);;
+                        return this->paymentTypeVector.contains(paymentType);;
     
 }
 
 
-    public Vector difference(Vector a_PaymentTypeVector){
+    public: Vector difference(Vector a_PaymentTypeVector){
 
-    diff: Vector = new Vector();;
+    Vector diff = Vector();;
     
 
-    size: int32_t = this.paymentTypeVector!.length!;;
+    int32_t size = this->paymentTypeVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    paymentType: BasicPaymentType = this.paymentTypeVector!.get(i) as BasicPaymentType;;
+    BasicPaymentType paymentType = this->paymentTypeVector.get(i) as BasicPaymentType;;
     
 
-                        if(!a_PaymentTypeVector!.contains(paymentType))
-                        diff.add(paymentType)
+                        if(!a_PaymentTypeVector.contains(paymentType))
+                        diff.add(paymentType);
+                                
 }
 
 

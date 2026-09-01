@@ -109,100 +109,97 @@
         //#include "SetAndRemoveProcessor.h"
 //#include "NextUnremoveableProcessor.h"
 
-class PlayerGameNotificationHud: public GameNotificationHud: public UpdateMyFontInterface {
-        
+class PlayerGameNotificationHud: public GameNotificationHud, public UpdateMyFontInterface {
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
 
-    private: const circularIndexUtil: CircularIndexUtil;
+    private: CircularIndexUtil circularIndexUtil;
 
-    private: const gameNotification: GameNotification = new GameNotification();
+    private: const GameNotification gameNotification = GameNotification();
 
-    private: const permanentGameNotification: GameNotification = new GameNotification();
+    private: const GameNotification permanentGameNotification = GameNotification();
 
 //inner= member=true isStatic=
 class SetAndRemoveProcessor: public Processor {
-        
 
-    private: const updateMeasurementProcessor: PlayerGameNotificationHud;
+    private: PlayerGameNotificationHud updateMeasurementProcessor;
 
-public constructor (PlayerGameNotificationHud updateMeasurementProcessor);
+public: SetAndRemoveProcessor(PlayerGameNotificationHud updateMeasurementProcessor);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 
             
 //inner= member=true isStatic=
 class NextUnremoveableProcessor: public Processor {
-        
 
-    private: const updateMeasurementProcessor: PlayerGameNotificationHud;
+    private: PlayerGameNotificationHud updateMeasurementProcessor;
 
-public constructor (PlayerGameNotificationHud updateMeasurementProcessor);
+public: NextUnremoveableProcessor(PlayerGameNotificationHud updateMeasurementProcessor);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 
             
-    private: const setAndRemoveProcessor: Processor = new this.SetAndRemoveProcessor(this);
+    private: const Processor setAndRemoveProcessor = SetAndRemoveProcessor(this);
 
-    private: const nextUnremoveableProcessor: Processor = new this.NextUnremoveableProcessor(this);
+    private: const Processor nextUnremoveableProcessor = NextUnremoveableProcessor(this);
 
-    private: processor: Processor = Processor.getInstance()!;
+    private: Processor processor = Processor::getInstance();
 
-    private: const PERMANENT_GAME_NOTIFICATION: string = "Permanent Game Notification: ";
+    private: const std::string PERMANENT_GAME_NOTIFICATION = "Permanent Game Notification: ";
 
-    private: lastString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string lastString = StringUtil::getInstance().EMPTY_STRING;
 
-    private: string: string = this.EMPTY_STRING;
+    private: std::string string = this->EMPTY_STRING;
 
-    private: point: CustomGPoint = CustomGPoint.NULL_CUSTOM_POINT;
+    private: CustomGPoint point = CustomGPoint::NULL_CUSTOM_POINT;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-public constructor (int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
+public: PlayerGameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    GPoint getPoint(int32_t x, int32_t y);
+    protected: GPoint getPoint(int32_t x, int32_t y);
 
-    add(string string, Integer seconds, BasicColor basicColor, Boolean permanent);
-
-                //@Throws(Exception.constructor)
-            
-    public processTick();
+    protected: void add(std::string string, Integer seconds, BasicColor basicColor, Boolean permanent);
 
                 //@Throws(Exception.constructor)
             
-    setAndRemove();
+    public: void processTick();
 
                 //@Throws(Exception.constructor)
             
-    setAndRemoveProcess();
+    private: void setAndRemove();
 
                 //@Throws(Exception.constructor)
             
-    setNextUnremoveable();
+    private: void setAndRemoveProcess();
 
                 //@Throws(Exception.constructor)
             
-    setNextUnremoveableProcess();
+    private: void setNextUnremoveable();
 
-    public clear();
+                //@Throws(Exception.constructor)
+            
+    private: void setNextUnremoveableProcess();
 
-    public paint(Graphics graphics);
+    public: void clear();
+
+    public: void paint(Graphics graphics);
 
 };
 

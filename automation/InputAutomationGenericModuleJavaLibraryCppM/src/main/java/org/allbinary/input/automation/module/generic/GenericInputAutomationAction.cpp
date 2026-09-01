@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -50,21 +52,18 @@
 class GenericInputAutomationAction
             : public Object
         : public InputAutomationActionInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: GenericInputAutomationAction(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public test(){
+    public: void test(){
 }
 
 
-    public std::vector<InputRobotInterface> getInputRobotInterfaceArray(){
+    public: std::vector<InputRobotInterface> getInputRobotInterfaceArray(){
 
 
 

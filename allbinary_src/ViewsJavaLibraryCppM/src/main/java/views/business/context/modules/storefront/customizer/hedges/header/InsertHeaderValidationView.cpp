@@ -85,38 +85,37 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TopBarView.h"
 
-class InsertHeaderValidationView: public TopBarView: public ValidationComponentInterface {
-        
+class InsertHeaderValidationView: public TopBarView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const LOGOPATH: string = "logo/";
+    private: const std::string LOGOPATH = "logo/";
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: InsertHeaderValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    multipartRequestHashMap: HashMap<any, any> = new MultipartRequestParams(this.getPageContext()).toHashMap()!;;
+    HashMap<any, any> multipartRequestHashMap = MultipartRequestParams(this->getPageContext()).toHashMap();;
     
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getWeblisketSession()!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
     
 
-    fullPath: string = URLGLOBALS.getWebappPath() +storeFrontInterface!.getCurrentHostNamePath() +this.LOGOPATH;;
+    std::string fullPath = URLGLOBALS::getWebappPath() +storeFrontInterface.getCurrentHostNamePath() +this->LOGOPATH;;
     
-multipartRequestHashMap!.put(LogoData.getInstance()!.IMAGEPATH, fullPath);
+multipartRequestHashMap.put(LogoData::getInstance().IMAGEPATH, fullPath);
     
-this.heading= new HeadingValidation(multipartRequestHashMap);
+this->heading= HeadingValidation(multipartRequestHashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
@@ -126,26 +125,26 @@ this.heading= new HeadingValidation(multipartRequestHashMap);
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("topbarValidation", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("topbarValidation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-    isValid: Boolean = this.heading.isValid()!;;
+    Boolean isValid = this->heading.isValid();;
     
 
-                        if(isValid == Boolean.TRUE)
+                        if(isValid == Boolean::TRUE)
                         
                                     {
-                                    CustomizerUtil.getInstance()!.insert(this.getTransformInfoInterface(), this as DomNodeInterface);
+                                    CustomizerUtil::getInstance().insert(this->getTransformInfoInterface(), this as DomNodeInterface);
     
 
                                     }
@@ -161,10 +160,10 @@ this.heading= new HeadingValidation(multipartRequestHashMap);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -173,36 +172,36 @@ this.heading= new HeadingValidation(multipartRequestHashMap);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.heading.validationInfo());
+stringBuffer.append(this->heading.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -218,7 +217,7 @@ stringBuffer!.append(this.heading.validationInfo());
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -228,7 +227,7 @@ stringBuffer!.append(this.heading.validationInfo());
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

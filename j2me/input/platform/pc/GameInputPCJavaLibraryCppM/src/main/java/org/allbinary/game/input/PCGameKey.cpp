@@ -43,15 +43,14 @@
 #include "InputFactory.h"
 
 class PCGameKey: public Input {
-        
 
-    public static string getString(int32_t keyCode){
+    public: static std::string getString(int32_t keyCode){
 
-    input: Input = InputFactory.getInstance()!.getInstanceById(keyCode)!;;
+    Input input = InputFactory::getInstance().getInstanceById(keyCode);;
     
 
                         if(input != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -69,7 +68,7 @@ class PCGameKey: public Input {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 
                         }
@@ -77,20 +76,20 @@ class PCGameKey: public Input {
 }
 
 
- constructor (int32_t keyCode, string name){
+: PCGameKey(int32_t keyCode, std::string name){
             super(keyCode, name);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    id: int32_t = this.getId()!;;
+    int32_t id = this->getId();;
     
 
                         if(id >= 0)
                         
                                     {
-                                    InputFactory.getInstance()!.add(id, this);
+                                    InputFactory::getInstance().add(id, this);
     
 
                                     }
@@ -98,7 +97,7 @@ class PCGameKey: public Input {
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 

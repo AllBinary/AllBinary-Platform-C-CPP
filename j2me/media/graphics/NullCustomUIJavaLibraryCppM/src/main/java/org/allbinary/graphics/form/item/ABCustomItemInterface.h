@@ -36,17 +36,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ABCustomItemInterface {
-        
 
     int32_t getMinimumWidth();
 
     int32_t getMinimumHeight();
 
-    string getLabel();
+    std::string getLabel();
 
-    paintXY(Graphics graphics, int32_t x, int32_t y);
+    void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    paintUnselected(Graphics graphics, int32_t x, int32_t y);
+    void paintUnselected(Graphics graphics, int32_t x, int32_t y);
 
 };
 

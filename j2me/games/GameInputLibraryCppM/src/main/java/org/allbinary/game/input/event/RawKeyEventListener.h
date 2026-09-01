@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RawKeyEventListener {
-        
 
-    onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
+    void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
 
 };
 

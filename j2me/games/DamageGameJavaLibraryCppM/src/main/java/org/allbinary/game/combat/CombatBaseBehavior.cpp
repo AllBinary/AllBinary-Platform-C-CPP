@@ -48,58 +48,55 @@
 class CombatBaseBehavior
             : public Object
          {
-        
 
-    public static const NULL_COMBAT_BEHAVIOR: CombatBaseBehavior = new CombatBaseBehavior(DamageableBaseBehavior.getInstance(), DestroyableBaseBehavior.getInstance());
+    public: static const CombatBaseBehavior NULL_COMBAT_BEHAVIOR = CombatBaseBehavior(DamageableBaseBehavior::getInstance(), DestroyableBaseBehavior::getInstance());
 
-    private: const damageableBaseBehavior: DamageableBaseBehavior;
+    private: DamageableBaseBehavior damageableBaseBehavior;
 
-    private: const destroyableBaseBehavior: DestroyableBaseBehavior;
+    private: DestroyableBaseBehavior destroyableBaseBehavior;
 
-    private: readyForExplosion: bool= false;
+    private: bool readyForExplosion= false;
 
-public constructor (DamageableBaseBehavior damageableBaseBehavior, DestroyableBaseBehavior destroyableBaseBehavior){
-
-            super();
-        this.damageableBaseBehavior= damageableBaseBehavior;
+public: CombatBaseBehavior(DamageableBaseBehavior damageableBaseBehavior, DestroyableBaseBehavior destroyableBaseBehavior){
+this->damageableBaseBehavior= damageableBaseBehavior;
     
-this.destroyableBaseBehavior= destroyableBaseBehavior;
+this->destroyableBaseBehavior= destroyableBaseBehavior;
     
 }
 
 
-    public DamageableBaseBehavior getDamageableBaseBehavior(){
+    public: DamageableBaseBehavior getDamageableBaseBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.damageableBaseBehavior;
+                        return this->damageableBaseBehavior;
     
 }
 
 
-    public DestroyableBaseBehavior getDestroyableBaseBehavior(){
+    public: DestroyableBaseBehavior getDestroyableBaseBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.destroyableBaseBehavior;
+                        return this->destroyableBaseBehavior;
     
 }
 
 
-    public bool isReadyForExplosion(){
+    public: bool isReadyForExplosion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readyForExplosion;
+                        return this->readyForExplosion;
     
 }
 
 
-    public setReadyForExplosion(bool readyForExplosion){
-this.readyForExplosion= readyForExplosion;
+    public: void setReadyForExplosion(bool readyForExplosion){
+this->readyForExplosion= readyForExplosion;
     
 }
 

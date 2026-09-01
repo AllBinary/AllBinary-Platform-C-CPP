@@ -78,39 +78,38 @@
 class WebCommandProcessor
             : public Object
          {
-        
 
-    private: static const instance: WebCommandProcessor = new WebCommandProcessor();
+    private: static WebCommandProcessor instance() { return WebCommandProcessor(); }
 
-    public static WebCommandProcessor getInstance(){
+    public: static WebCommandProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WebCommandProcessor.instance;
+                        return WebCommandProcessor::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const aboutCommandProcessor: AboutCommandProcessor = AboutCommandProcessor.getInstance()!;
+    private: const AboutCommandProcessor aboutCommandProcessor = AboutCommandProcessor::getInstance();
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
-    public process(CommandListener midletCommandListener, Command command, Canvas canvas){
+    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas){
 
         try {
-            PlayN.openURL(this.list.removeAt(0) as string);
+            PlayN::openURL(this->list.removeAt(0) as string);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.PROCESS, e);
     
 }
 

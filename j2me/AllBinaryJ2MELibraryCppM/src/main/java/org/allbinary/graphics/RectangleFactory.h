@@ -47,9 +47,8 @@
 class RectangleFactory
             : public Object
          {
-        
 
-    public static const SINGLETON: Rectangle = new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 0, 0);
+    public: static const Rectangle SINGLETON = Rectangle(PointFactory::getInstance().ZERO_ZERO, 0, 0);
 
 };
 

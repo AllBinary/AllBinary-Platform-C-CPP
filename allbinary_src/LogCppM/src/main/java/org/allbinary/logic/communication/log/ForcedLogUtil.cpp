@@ -50,21 +50,20 @@
 class ForcedLogUtil
             : public Object
          {
-        
 
-    public static log(string message, any = {} anyType){
+    public: static void log(std::string message, Object* anyType){
 
         try {
             
 
 
-                            throw new Exception(message);
+                            throw Exception(message);
                     
 
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(CommonStrings.getInstance()!.EXCEPTION, anyType, "log", e);
+PreLogUtil::putOE(CommonStrings::getInstance().EXCEPTION, anyType, "log", e);
     
 }
 

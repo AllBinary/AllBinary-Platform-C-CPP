@@ -44,21 +44,20 @@
 // class SystemProperties
             : public Object
          {
-        
 
-    private: static const instance: SystemProperties
+    private: static SystemProperties instance() { return SystemProperties(); }
 
-    public static SystemProperties getInstance()
-
+    public: static SystemProperties getInstance()
 
 
-    public string getName()
 
-    public string getArch()
+    public: std::string getName()
 
-    public string getVersion()
+    public: std::string getArch()
 
-    public string getUserHomePath()
+    public: std::string getVersion()
+
+    public: std::string getUserHomePath()
 
 };
 

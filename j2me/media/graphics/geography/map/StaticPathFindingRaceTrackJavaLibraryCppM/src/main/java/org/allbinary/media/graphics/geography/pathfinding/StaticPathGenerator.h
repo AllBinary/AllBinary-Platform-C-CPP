@@ -97,25 +97,24 @@
 class StaticPathGenerator
             : public Object
         : public PathGeneratorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-protected constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public init(any = {} geographicMapInterface, int32_t totalPaths);
+protected: StaticPathGenerator();
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory, BasicArrayList pathList);
+    public: void init(Object* geographicMapInterface, int32_t totalPaths);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths);
+    private: BasicArrayList getGeographicMapCellPositionListFromBasicGeographicMapCellPositionList(BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory, BasicArrayList pathList);
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList createList(BasicGeographicMap geographicMapInterface, GeographicMapCellHistory geographicMapCellHistory, PathFindingInfo pathFindingInfo, int32_t totalPaths);
 
 };
 

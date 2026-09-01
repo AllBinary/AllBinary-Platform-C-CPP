@@ -46,9 +46,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TechEventListenerInterface: public EventListenerInterface {
-        
 
-    onTechEvent(AllBinaryEventObject event);
+    void onTechEvent(AllBinaryEventObject event);
 
 };
 

@@ -60,15 +60,14 @@
 class VisitorFileFilter
             : public Object
         : public FileFilter {
-        
 
-    private: booleanVisitorInterface: VisitorInterface;
+    private: VisitorInterface booleanVisitorInterface;
 
-public constructor (VisitorInterface booleanVisitorInterface);
+public: VisitorFileFilter(VisitorInterface booleanVisitorInterface);
 
-    public bool accept(File file);
+    public: bool accept(File file);
 
-    public bool accept(AbFile file);
+    public: bool accept(AbFile file);
 
 };
 

@@ -47,23 +47,22 @@
 class GeologicalResource
             : public Object
          {
-        
 
-    private: total: int32_t= 0;
+    private: int32_t total= 0;
 
-    private: initTotal: int32_t;
+    private: int32_t initTotal;
 
-public constructor (int32_t initTotal);
+public: GeologicalResource(int32_t initTotal);
 
-    public init();
+    public: void init();
 
-    public add(int32_t value);
+    public: void add(int32_t value);
 
-    public remove(int32_t value);
+    public: void remove(int32_t value);
 
-    public int32_t getTotal();
+    public: int32_t getTotal();
 
-    setTotal(int32_t total);
+    protected: void setTotal(int32_t total);
 
 };
 

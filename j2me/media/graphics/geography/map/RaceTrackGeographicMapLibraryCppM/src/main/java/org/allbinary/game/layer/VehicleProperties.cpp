@@ -46,44 +46,41 @@
 class VehicleProperties
             : public Object
          {
-        
 
-    private: const velocityProperties: VelocityProperties;
+    private: VelocityProperties velocityProperties;
 
-    private: vehicleFrictionProperties: VehicleFrictionProperties;
+    private: VehicleFrictionProperties vehicleFrictionProperties;
 
-public constructor (VelocityProperties velocityProperties, VehicleFrictionProperties vehicleFrictionProperties){
-
-            super();
-        this.velocityProperties= velocityProperties;
+public: VehicleProperties(VelocityProperties velocityProperties, VehicleFrictionProperties vehicleFrictionProperties){
+this->velocityProperties= velocityProperties;
     
-this.vehicleFrictionProperties= vehicleFrictionProperties;
+this->vehicleFrictionProperties= vehicleFrictionProperties;
     
 }
 
 
-    public VehicleFrictionProperties getVehicleFrictionProperties(){
+    public: VehicleFrictionProperties getVehicleFrictionProperties(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vehicleFrictionProperties;
+                        return this->vehicleFrictionProperties;
     
 }
 
 
-    public setVehicleFrictionProperties(VehicleFrictionProperties vehicleFrictionProperties){
-this.vehicleFrictionProperties= vehicleFrictionProperties;
+    public: void setVehicleFrictionProperties(VehicleFrictionProperties vehicleFrictionProperties){
+this->vehicleFrictionProperties= vehicleFrictionProperties;
     
 }
 
 
-    public VelocityProperties getVelocityProperties(){
+    public: VelocityProperties getVelocityProperties(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.velocityProperties;
+                        return this->velocityProperties;
     
 }
 

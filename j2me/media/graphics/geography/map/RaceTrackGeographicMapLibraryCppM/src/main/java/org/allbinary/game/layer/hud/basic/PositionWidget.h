@@ -60,21 +60,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //super.paint(graphics, positionString, currentPostString, offset2, offset);
 class PositionWidget: public BasicHud {
-        
 
-    public static string toString(int32_t position);
+    public: static std::string toString(int32_t position);
 
-    private: position: int32_t= 0;
+    private: int32_t position= 0;
 
-    private: positionString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string positionString = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (int32_t position, int32_t location, int32_t direction, BasicColor basicColor);
+public: PositionWidget(int32_t position, int32_t location, int32_t direction, BasicColor basicColor);
 
-    public int32_t get();
+    public: int32_t get();
 
-    public set(int32_t position);
+    public: void set(int32_t position);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

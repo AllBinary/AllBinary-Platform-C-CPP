@@ -48,25 +48,24 @@
 class HighScoreCommands
             : public Object
          {
-        
 
-    private: static const instance: HighScoreCommands = new HighScoreCommands();
+    private: static HighScoreCommands instance() { return HighScoreCommands(); }
 
-    public static HighScoreCommands getInstance(){
+    public: static HighScoreCommands getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HighScoreCommands.instance;
+                        return HighScoreCommands::instance();
     
 }
 
 
-    public const DISPLAY: Command = new Command("Scores", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command DISPLAY = Command("Scores", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const PERSONAL: Command = new Command("Personal", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command PERSONAL = Command("Personal", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public const WORLD: Command = new Command("World", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: const Command WORLD = Command("World", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
 };
 

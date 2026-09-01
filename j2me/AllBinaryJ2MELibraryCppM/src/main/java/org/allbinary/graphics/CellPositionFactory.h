@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_CELLPOSITIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -57,34 +59,33 @@
 class CellPositionFactory
             : public Object
          {
-        
 
-    private: static SINGLETON: CellPositionFactory = new CellPositionFactory();
+    private: static CellPositionFactory SINGLETON = CellPositionFactory();
 
-    public static CellPositionFactory getInstance();
+    public: static CellPositionFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const NONE: CellPosition = new CellPosition( -1,  -1,  -1,  -1);
+    public: const CellPosition NONE = CellPosition( -1,  -1,  -1,  -1);
 
-    private: cellPositionArray: std::vector<std::vector<CellPosition>> = new Array(0).fill(null).map(() => new Array(0).fill(0))
+    private: std::vector<std::vector<CellPosition>> cellPositionArray = new Array(0).fill(null).map(() => new Array(0).fill(0))
                                                             ;
 
-    private: columns: int32_t= 0;
+    private: int32_t columns= 0;
 
-    private: rows: int32_t= 0;
+    private: int32_t rows= 0;
 
-private constructor ();
+private: CellPositionFactory();
 
-    public init(int32_t columns, int32_t rows);
+    public: void init(int32_t columns, int32_t rows);
 
-    public CellPosition getInstanceColRow(int32_t i_column, int32_t i_row);
+    public: CellPosition getInstanceColRow(int32_t i_column, int32_t i_row);
 
-    public CellPosition createInstance(int32_t i_column, int32_t i_row);
+    public: CellPosition createInstance(int32_t i_column, int32_t i_row);
 
-    public int32_t getColumns();
+    public: int32_t getColumns();
 
-    public int32_t getRows();
+    public: int32_t getRows();
 
 };
 

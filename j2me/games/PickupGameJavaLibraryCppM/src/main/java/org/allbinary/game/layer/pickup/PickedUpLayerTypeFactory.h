@@ -49,31 +49,30 @@
 class PickedUpLayerTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: PickedUpLayerTypeFactory = new PickedUpLayerTypeFactory();
+    private: static PickedUpLayerTypeFactory instance() { return PickedUpLayerTypeFactory(); }
 
-    public static PickedUpLayerTypeFactory getInstance();
+    public: static PickedUpLayerTypeFactory getInstance();
 
-    public NONE: PickedUpLayerType = new PickedUpLayerType(StringUtil.getInstance()!.NULL_STRING);
+    public: PickedUpLayerType NONE = PickedUpLayerType(StringUtil::getInstance().NULL_STRING);
 
-    public BEAM: PickedUpLayerType = new PickedUpLayerType("BEAM");
+    public: PickedUpLayerType BEAM = PickedUpLayerType("BEAM");
 
-    public MINE: PickedUpLayerType = new PickedUpLayerType("MINE");
+    public: PickedUpLayerType MINE = PickedUpLayerType("MINE");
 
-    public PROJECTILE: PickedUpLayerType = new PickedUpLayerType("PROJECTILE");
+    public: PickedUpLayerType PROJECTILE = PickedUpLayerType("PROJECTILE");
 
-    public ENHANCEMENT: PickedUpLayerType = new PickedUpLayerType("Enhancement");
+    public: PickedUpLayerType ENHANCEMENT = PickedUpLayerType("Enhancement");
 
-    public MORPH: PickedUpLayerType = new PickedUpLayerType("Morph");
+    public: PickedUpLayerType MORPH = PickedUpLayerType("Morph");
 
-    public PART: PickedUpLayerType = new PickedUpLayerType("Part");
+    public: PickedUpLayerType PART = PickedUpLayerType("Part");
 
-    public HEAL: PickedUpLayerType = new PickedUpLayerType("Heal");
+    public: PickedUpLayerType HEAL = PickedUpLayerType("Heal");
 
-    public LIFE: PickedUpLayerType = new PickedUpLayerType("Life");
+    public: PickedUpLayerType LIFE = PickedUpLayerType("Life");
 
-    public POINTS: PickedUpLayerType = new PickedUpLayerType("Points");
+    public: PickedUpLayerType POINTS = PickedUpLayerType("Points");
 
 };
 

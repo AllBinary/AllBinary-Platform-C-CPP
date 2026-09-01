@@ -51,13 +51,12 @@
 class PlatformTextureBaseFactory
             : public Object
          {
-        
 
-    public static const NULL_PLATFORM_TEXTURE_BASE_FACTORY: PlatformTextureBaseFactory = new PlatformTextureBaseFactory();
+    public: static const PlatformTextureBaseFactory NULL_PLATFORM_TEXTURE_BASE_FACTORY = PlatformTextureBaseFactory();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public load(GL10 gl, int32_t target, int32_t level, Image image, int32_t border, bool flip){
+    public: void load(GL10 gl, int32_t target, int32_t level, Image image, int32_t border, bool flip){
 }
 
 

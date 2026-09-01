@@ -74,23 +74,22 @@
         #include "ModifyTable.h"
 
 class WorkFlowRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: workFlowInterface: WorkFlowInterface;
+    private: WorkFlowInterface workFlowInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: WorkFlowRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public string delete();
+    public: std::string delete_();
 
-    public string insert();
+    public: std::string insert();
 
-    public string update();
+    public: std::string update();
 
 };
 

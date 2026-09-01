@@ -67,19 +67,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentGatewayComponent: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: paymentGatewayInterface: PaymentGatewayInterface;
+    private: PaymentGatewayInterface paymentGatewayInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface);
+public: PaymentGatewayComponent(TransformInfoInterface transformInfoInterface, PaymentGatewayInterface paymentGatewayInterface);
 
                 //@Throws(Exception.constructor)
             
-    public addDomNodeInterfaces();
+    public: void addDomNodeInterfaces();
 
-    public string view();
+    public: std::string view();
 
 };
 

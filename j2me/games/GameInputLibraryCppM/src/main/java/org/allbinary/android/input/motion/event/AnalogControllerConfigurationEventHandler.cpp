@@ -60,34 +60,31 @@
 #include "AnalogControllerConfigurationEvent.h"
 
 class AnalogControllerConfigurationEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: AnalogControllerConfigurationEventHandler = new AnalogControllerConfigurationEventHandler();
+    private: static AnalogControllerConfigurationEventHandler instance() { return AnalogControllerConfigurationEventHandler(); }
 
-    public static AnalogControllerConfigurationEventHandler getInstance(){
+    public: static AnalogControllerConfigurationEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogControllerConfigurationEventHandler.instance;
+                        return AnalogControllerConfigurationEventHandler::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: AnalogControllerConfigurationEventHandler(){
+}
 
 
-    public addListener(AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface){
+    public: void addListener(AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface){
 
-                        if(!this.list.contains(analogControllerConfigurationEventListenerInterface))
+                        if(!this->list.contains(analogControllerConfigurationEventListenerInterface))
                         
                                     {
-                                    this.list.add(analogControllerConfigurationEventListenerInterface);
+                                    this->list.add(analogControllerConfigurationEventListenerInterface);
     
 
                                     }
@@ -95,16 +92,16 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -113,26 +110,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    playerGameInput: AnalogControllerConfigurationEventListenerInterface = this.list.objectArray[index]! as AnalogControllerConfigurationEventListenerInterface;;
+    AnalogControllerConfigurationEventListenerInterface playerGameInput = this->list.objectArray[index]! as AnalogControllerConfigurationEventListenerInterface;;
     
-playerGameInput!.onAnalogControllerConfigurationEvent(eventObject as AnalogControllerConfigurationEvent);
+playerGameInput.onAnalogControllerConfigurationEvent(eventObject as AnalogControllerConfigurationEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -145,11 +142,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    analogControllerConfigurationEventListenerInterface: AnalogControllerConfigurationEventListenerInterface = (eventListenerInterface as AnalogControllerConfigurationEventListenerInterface);;
+    AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface = (eventListenerInterface as AnalogControllerConfigurationEventListenerInterface);;
     
-analogControllerConfigurationEventListenerInterface!.onAnalogControllerConfigurationEvent(eventObject as AnalogControllerConfigurationEvent);
+analogControllerConfigurationEventListenerInterface.onAnalogControllerConfigurationEvent(eventObject as AnalogControllerConfigurationEvent);
     
 }
 

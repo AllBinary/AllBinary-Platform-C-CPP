@@ -64,41 +64,40 @@
 class Money
             : public Object
          {
-        
 
-    private: units: Long;
+    private: Long units;
 
-    private: const DEFAULT_CURRENCY: string = "USD";
+    private: const std::string DEFAULT_CURRENCY = "USD";
 
-public constructor (Money money);
+public: Money(Money money);
 
-public constructor ();
+public: Money();
 
-public constructor (string usDollarStr);
+public: Money(std::string usDollarStr);
 
-public constructor (int64_t units);
+public: Money(int64_t units);
 
-    public bool isValid();
+    public: bool isValid();
 
-    public add(Money moreMoney);
+    public: void add(Money moreMoney);
 
-    public add(string usDollarStr);
+    public: void add(std::string usDollarStr);
 
-    public subtract(string usDollarStr);
+    public: void subtract(std::string usDollarStr);
 
-    public multiply(number multiplier);
+    public: void multiply(number multiplier);
 
-    public multiply(int32_t multiplier);
+    public: void multiply(int32_t multiplier);
 
-    string convertUnitsTo(string currency);
+    private: std::string convertUnitsTo(std::string currency);
 
-    int64_t convertUsdToUnits(string usDollarStr);
+    private: int64_t convertUsdToUnits(std::string usDollarStr);
 
-    public int64_t getUnits();
+    public: int64_t getUnits();
 
-    public Long getUnitsLong();
+    public: Long getUnitsLong();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

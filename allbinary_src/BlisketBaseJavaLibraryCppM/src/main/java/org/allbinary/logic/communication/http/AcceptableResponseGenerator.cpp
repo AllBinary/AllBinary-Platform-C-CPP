@@ -54,75 +54,70 @@
 class AcceptableResponseGenerator
             : public Object
          {
-        
 
-    private: static const instance: AcceptableResponseGenerator = new AcceptableResponseGenerator();
+    private: static AcceptableResponseGenerator instance() { return AcceptableResponseGenerator(); }
 
-    public static AcceptableResponseGenerator getInstance(){
+    public: static AcceptableResponseGenerator getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AcceptableResponseGenerator.instance;
+                        return AcceptableResponseGenerator::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: AcceptableResponseGenerator(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public string get(HttpServletRequest httpServletRequest){
+    public: std::string get(HttpServletRequest httpServletRequest){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    acceptableResponseUtil: AcceptableResponseUtil = AcceptableResponseUtil.getInstance()!;;
+    AcceptableResponseUtil acceptableResponseUtil = AcceptableResponseUtil::getInstance();;
     
 
-    acceptable: string = httpServletRequest!.getHeader("accept")!;;
+    std::string acceptable = httpServletRequest.getHeader("accept");;
     
 
-    result: string = acceptableResponseUtil!.getTagName(0)!;;
+    std::string result = acceptableResponseUtil.getTagName(0);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTP))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTP))
                         
                                     {
-                                    this.logUtil!.putF("Request Type: " +acceptable, this, commonStrings!.GET);
+                                    this->logUtil.putF("Request Type: " +acceptable, this, commonStrings.GET);
     
 
                                     }
                                 
 
-                        if(acceptable != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
-    size: int32_t = acceptableResponseUtil!.size()!;;
+    int32_t size = acceptableResponseUtil.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-                        if(acceptable.compareTo(acceptableResponseUtil!.get(index)) == 0)
+                        if(acceptable.compareTo(acceptableResponseUtil.get(index)) == 0)
                         
                                     {
-                                    result= acceptableResponseUtil!.getTagName(index);
+                                    result= acceptableResponseUtil.getTagName(index);
     
 
                                     }
@@ -133,10 +128,10 @@ private constructor (){
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTP))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTP))
                         
                                     {
-                                    this.logUtil!.putF("Response Type: " +result, this, commonStrings!.GET);
+                                    this->logUtil.putF("Response Type: " +result, this, commonStrings.GET);
     
 
                                     }
@@ -152,10 +147,10 @@ private constructor (){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET, e);
     
 
                                     }

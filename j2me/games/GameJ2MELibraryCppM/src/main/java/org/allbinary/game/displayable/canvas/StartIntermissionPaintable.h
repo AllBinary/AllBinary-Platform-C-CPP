@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTINTERMISSIONPAINTABLE_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -98,54 +100,53 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryGameCanvas.h"
 
-class StartIntermissionPaintable: public InitUpdatePaintable: public UpdateMyFontInterface {
-        
+class StartIntermissionPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    const fontDebugFactory: FontDebugFactory = FontDebugFactory.getInstance()!;
+    protected: const FontDebugFactory fontDebugFactory = FontDebugFactory::getInstance();
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    const gameCanvas: AllBinaryGameCanvas;
+    protected: AllBinaryGameCanvas gameCanvas;
 
-    const stringArray: std::vector<string>;
+    protected: std::vector<std::string> stringArray;
 
-    const fontSize: int32_t;
+    protected: int32_t fontSize;
 
-    const font: Font;
+    protected: Font font;
 
-    public const lastWidth: std::vector<int32_t>;
+    public: std::vector<int32_t> lastWidth;
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: color: int32_t;
+    private: int32_t color;
 
-    lineYOffsetArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    protected: std::vector<int32_t> lineYOffsetArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    private: hasChanged: bool = true;
+    private: bool hasChanged = true;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    fontHeightP: int32_t= 0;
+    protected: int32_t fontHeightP= 0;
 
-public constructor (AllBinaryGameCanvas gameCanvas, std::vector<string> stringArray, BasicColor basicColor, Font font);
+public: StartIntermissionPaintable(AllBinaryGameCanvas gameCanvas, std::vector<std::string> stringArray, BasicColor basicColor, Font font);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    private: const BEGIN_LEVEL: string = "Begin Level ";
+    private: const std::string BEGIN_LEVEL = "Begin Level ";
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    public update();
+    public: void update();
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public BasicColor getBasicColorP();
+    public: BasicColor getBasicColorP();
 
 };
 

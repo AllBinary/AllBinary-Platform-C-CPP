@@ -48,100 +48,97 @@
 class BufferedImageInfo
             : public Object
          {
-        
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-    private: type: int32_t;
+    private: int32_t type;
 
-public constructor (int32_t width, int32_t height, int32_t type){
-
-            super();
-        this.width= width;
+public: BufferedImageInfo(int32_t width, int32_t height, int32_t type){
+this->width= width;
     
-this.height= height;
+this->height= height;
     
-this.type= type;
+this->type= type;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    public setWidth(int32_t width){
-this.width= width;
+    public: void setWidth(int32_t width){
+this->width= width;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    public setHeight(int32_t height){
-this.height= height;
+    public: void setHeight(int32_t height){
+this->height= height;
     
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return this->type;
     
 }
 
 
-    public setType(int32_t type){
-this.type= type;
+    public: void setType(int32_t type){
+this->type= type;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("BufferedImageInfo -");
+stringBuffer.append("BufferedImageInfo -");
     
-stringBuffer!.append(commonLabels!.WIDTH_LABEL);
+stringBuffer.append(commonLabels.WIDTH_LABEL);
     
-stringBuffer!.appendint(this.getWidth());
+stringBuffer.appendint(this->getWidth());
     
-stringBuffer!.append(commonLabels!.HEIGHT_LABEL);
+stringBuffer.append(commonLabels.HEIGHT_LABEL);
     
-stringBuffer!.appendint(this.getHeight());
+stringBuffer.appendint(this->getHeight());
     
-stringBuffer!.append(" Type: ");
+stringBuffer.append(" Type: ");
     
-stringBuffer!.appendint(this.getType());
+stringBuffer.appendint(this->getType());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

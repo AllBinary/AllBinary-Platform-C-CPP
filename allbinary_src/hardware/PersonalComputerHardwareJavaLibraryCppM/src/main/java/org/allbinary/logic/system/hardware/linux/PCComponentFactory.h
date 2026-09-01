@@ -89,21 +89,20 @@
 class PCComponentFactory
             : public Object
          {
-        
 
-    private: static const instance: PCComponentFactory = new PCComponentFactory();
+    private: static PCComponentFactory instance() { return PCComponentFactory(); }
 
-    public static PCComponentFactory getInstance();
+    public: static PCComponentFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const componentFactory: ComponentFactory = ComponentFactory.getInstance()!;
+    private: const ComponentFactory componentFactory = ComponentFactory::getInstance();
 
-private constructor ();
+private: PCComponentFactory();
 
-    public HardwareComponentInterface getInstance(string component, string componentData);
+    public: HardwareComponentInterface getInstance(std::string component, std::string componentData);
 
-    public string getComponentType(string component);
+    public: std::string getComponentType(std::string component);
 
 };
 

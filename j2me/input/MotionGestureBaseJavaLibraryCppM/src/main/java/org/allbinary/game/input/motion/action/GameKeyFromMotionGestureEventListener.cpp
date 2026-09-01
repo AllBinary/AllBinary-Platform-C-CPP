@@ -71,49 +71,48 @@
         #include "GameKeyCompleteMotionGestureInputEvent.h"
 
 class GameKeyFromMotionGestureEventListener: public CompleteMotionGestureInputEventListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: previousGameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent previousGameKeyEvent = GameKeyEvent::NONE;
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
 
         try {
             
-    gameKeyCompleteMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent as GameKeyCompleteMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent as GameKeyCompleteMotionGestureInputEvent;;
     
 
-    gameKeyEvent: GameKeyEvent = gameKeyCompleteMotionGestureInputEvent!.getGameKeyEvent()!;;
+    GameKeyEvent gameKeyEvent = gameKeyCompleteMotionGestureInputEvent.getGameKeyEvent();;
     
 
-                        if(gameKeyEvent != this.previousGameKeyEvent)
+                        if(gameKeyEvent != this->previousGameKeyEvent)
                         
                                     {
                                     
-                        if(this.previousGameKeyEvent != GameKeyEvent.NONE)
+                        if(this->previousGameKeyEvent != GameKeyEvent::NONE)
                         
                                     {
-                                    UpGameKeyEventHandler.getInstance()!.fireEvent(this.previousGameKeyEvent);
+                                    UpGameKeyEventHandler::getInstance().fireEvent(this->previousGameKeyEvent);
     
 
                                     }
                                 
-this.previousGameKeyEvent= gameKeyEvent;
+this->previousGameKeyEvent= gameKeyEvent;
     
 
                         if(gameKeyEvent != 
-                                    null
-                                 && gameKeyEvent != GameKeyEvent.NONE)
+                                    nullptr
+                                 && gameKeyEvent != GameKeyEvent::NONE)
                         
                                     {
-                                    DownGameKeyEventHandler.getInstance()!.fireEvent(gameKeyEvent);
+                                    DownGameKeyEventHandler::getInstance().fireEvent(gameKeyEvent);
     
 
                                     }
@@ -126,9 +125,9 @@ this.previousGameKeyEvent= gameKeyEvent;
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "onCompleteMotionGestureInputEvent", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "onCompleteMotionGestureInputEvent", e);
     
 }
 

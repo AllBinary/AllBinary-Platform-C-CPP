@@ -51,33 +51,32 @@
 class ParentInventoryTagHelper
             : public Object
          {
-        
 
-    private: static const instance: ParentInventoryTagHelper = new ParentInventoryTagHelper();
+    private: static ParentInventoryTagHelper instance() { return ParentInventoryTagHelper(); }
 
-    public static ParentInventoryTagHelper getInstance(){
+    public: static ParentInventoryTagHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ParentInventoryTagHelper.instance;
+                        return ParentInventoryTagHelper::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public isValid(any = {} tagClass, Tag parentTag){
+    public: void isValid(Object* tagClass, Tag parentTag){
 
                         if(parentTag == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Must have parent tag.");
+                            throw Exception("Must have parent tag.");
                     
 
                                     }
@@ -87,22 +86,22 @@ class ParentInventoryTagHelper
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Must have at least a ");
+stringBuffer.append("Must have at least a ");
     
-stringBuffer!.append("tags.HelperTag");
+stringBuffer.append("tags.HelperTag");
     
-stringBuffer!.append(" as parent");
+stringBuffer.append(" as parent");
     
-stringBuffer!.append("and not: ");
+stringBuffer.append("and not: ");
     
-stringBuffer!.append(parentTag!.constructor.name.toString()!);
+stringBuffer.append(parentTag.constructor.name.toString()!);
     
 
 
 
-                            throw new Exception(stringBuffer!.toString());
+                            throw Exception(stringBuffer.toString());
                     
 
                                     }

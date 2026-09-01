@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTPARAMS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_REQUESTPARAMS_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -81,33 +83,32 @@
 class RequestParams
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: map: Map;
+    private: Map map;
 
-public constructor ();
+public: RequestParams();
 
-public constructor (HttpServletRequest request);
+public: RequestParams(HttpServletRequest request);
 
-public constructor (PageContext pageContext);
+public: RequestParams(PageContext pageContext);
 
-    setMap(Map map);
+    protected: void setMap(Map map);
 
-    Map getMap();
+    protected: Map getMap();
 
-    private: const KEY: string = "Key: ";
+    private: const std::string KEY = "Key: ";
 
-    private: const VALUE: string = " Value: ";
+    private: const std::string VALUE = " Value: ";
 
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
 };
 

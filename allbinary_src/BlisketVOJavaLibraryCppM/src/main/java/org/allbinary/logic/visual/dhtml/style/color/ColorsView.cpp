@@ -66,63 +66,60 @@
 class ColorsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: const commonPhoneStrings: CommonPhoneStrings = CommonPhoneStrings.getInstance()!;
+    private: const CommonPhoneStrings commonPhoneStrings = CommonPhoneStrings::getInstance();
 
-    private: const HEXRADIX: int32_t = 16;
+    private: const int32_t HEXRADIX = 16;
 
-    private: const MAX: int32_t = 255;
+    private: const int32_t MAX = 255;
 
-    const delta: int32_t = 20;
+    const int32_t delta = 20;
 
-public constructor (){
-
-            super();
-        }
+public: ColorsView(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Node getColorNode(Document document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex){
+    public: Node getColorNode(Document document, int32_t redIndex, int32_t greenIndex, int32_t blueIndex){
 
-    hexColorStringBuffer: StringMaker = new StringMaker();;
+    StringMaker hexColorStringBuffer = StringMaker();;
     
 
-                        if(redIndex < this.HEXRADIX)
+                        if(redIndex < this->HEXRADIX)
                         
                                     {
-                                    hexColorStringBuffer!.append(this.commonPhoneStrings!.ZERO);
+                                    hexColorStringBuffer.append(this->commonPhoneStrings.ZERO);
     
 
                                     }
                                 
-hexColorStringBuffer!.append(redIndex, HEXRADIX.toString());
+hexColorStringBuffer.append(std::to_string(redIndex));
     
 
-                        if(greenIndex < this.HEXRADIX)
+                        if(greenIndex < this->HEXRADIX)
                         
                                     {
-                                    hexColorStringBuffer!.append(this.commonPhoneStrings!.ZERO);
+                                    hexColorStringBuffer.append(this->commonPhoneStrings.ZERO);
     
 
                                     }
                                 
-hexColorStringBuffer!.append(greenIndex, HEXRADIX.toString());
+hexColorStringBuffer.append(std::to_string(greenIndex));
     
 
-                        if(blueIndex < this.HEXRADIX)
+                        if(blueIndex < this->HEXRADIX)
                         
                                     {
-                                    hexColorStringBuffer!.append(this.commonPhoneStrings!.ZERO);
+                                    hexColorStringBuffer.append(this->commonPhoneStrings.ZERO);
     
 
                                     }
                                 
-hexColorStringBuffer!.append(blueIndex, HEXRADIX.toString());
+hexColorStringBuffer.append(std::to_string(blueIndex));
     
 
-    colorNode: Node = ModDomHelper.createNameValueNodes(document, ColorData.getInstance()!.NAME, hexColorStringBuffer!.toString())!;;
+    Node colorNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance().NAME, hexColorStringBuffer.toString());;
     
 
 
@@ -135,12 +132,12 @@ hexColorStringBuffer!.append(blueIndex, HEXRADIX.toString());
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createNameValueNodes(document, ColorsData.getInstance()!.NAME, "RGB Colors In Hex")!;;
+    Node node = ModDomHelper::createNameValueNodes(document, ColorsData::getInstance().NAME, "RGB Colors In Hex");;
     
 
-    blackNode: Node = ModDomHelper.createNameValueNodes(document, ColorData.getInstance()!.NAME, "000000")!;;
+    Node blackNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance().NAME, "000000");;
     
 node.appendChild(blackNode);
     
@@ -149,53 +146,53 @@ node.appendChild(blackNode);
 
 
                         for (
-    index: int32_t = 0;index < this.MAX; )
+    int32_t index = 0;index < this->MAX; )
         {
 
-    hexColorStringBuffer: StringMaker = new StringMaker();;
+    StringMaker hexColorStringBuffer = StringMaker();;
     
 
-                        if(index < this.HEXRADIX)
+                        if(index < this->HEXRADIX)
                         
                                     {
-                                    hexColorStringBuffer!.append(this.commonPhoneStrings!.ZERO);
+                                    hexColorStringBuffer.append(this->commonPhoneStrings.ZERO);
     
 
                                     }
                                 
-hexColorStringBuffer!.append(index, HEXRADIX.toString());
+hexColorStringBuffer.append(std::to_string(index));
     
 
-                        if(index < this.HEXRADIX)
+                        if(index < this->HEXRADIX)
                         
                                     {
-                                    hexColorStringBuffer!.append(this.commonPhoneStrings!.ZERO);
+                                    hexColorStringBuffer.append(this->commonPhoneStrings.ZERO);
     
 
                                     }
                                 
-hexColorStringBuffer!.append(index, HEXRADIX.toString());
+hexColorStringBuffer.append(std::to_string(index));
     
 
-                        if(index < this.HEXRADIX)
+                        if(index < this->HEXRADIX)
                         
                                     {
-                                    hexColorStringBuffer!.append(this.commonPhoneStrings!.ZERO);
+                                    hexColorStringBuffer.append(this->commonPhoneStrings.ZERO);
     
 
                                     }
                                 
-hexColorStringBuffer!.append(index, HEXRADIX.toString());
+hexColorStringBuffer.append(std::to_string(index));
     
 
-    colorNode: Node = ModDomHelper.createNameValueNodes(document, ColorData.getInstance()!.NAME, hexColorStringBuffer!.toString())!;;
+    Node colorNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance().NAME, hexColorStringBuffer.toString());;
     
 node.appendChild(colorNode);
     
 }
 
 
-    whiteNode: Node = ModDomHelper.createNameValueNodes(document, ColorData.getInstance()!.NAME, "FFFFFF")!;;
+    Node whiteNode = ModDomHelper::createNameValueNodes(document, ColorData::getInstance().NAME, "FFFFFF");;
     
 node.appendChild(whiteNode);
     
@@ -204,23 +201,23 @@ node.appendChild(whiteNode);
 
 
                         for (
-    blueIndex: int32_t = this.MAX /2;blueIndex < this.MAX; )
+    int32_t blueIndex = this->MAX /2;blueIndex < this->MAX; )
         {
 
 
 
 
                         for (
-    greenIndex: int32_t = 0;greenIndex < this.MAX /2; )
+    int32_t greenIndex = 0;greenIndex < this->MAX /2; )
         {
 
 
 
 
                         for (
-    redIndex: int32_t = 0;redIndex < this.MAX /2; )
+    int32_t redIndex = 0;redIndex < this->MAX /2; )
         {
-node.appendChild(this.getColorNode(document, redIndex, greenIndex, blueIndex));
+node.appendChild(this->getColorNode(document, redIndex, greenIndex, blueIndex));
     
 }
 
@@ -233,23 +230,23 @@ node.appendChild(this.getColorNode(document, redIndex, greenIndex, blueIndex));
 
 
                         for (
-    redIndex: int32_t = this.MAX /2;redIndex < this.MAX; )
+    int32_t redIndex = this->MAX /2;redIndex < this->MAX; )
         {
 
 
 
 
                         for (
-    greenIndex: int32_t = 0;greenIndex < this.MAX /2; )
+    int32_t greenIndex = 0;greenIndex < this->MAX /2; )
         {
 
 
 
 
                         for (
-    blueIndex: int32_t = 0;blueIndex < this.MAX /2; )
+    int32_t blueIndex = 0;blueIndex < this->MAX /2; )
         {
-node.appendChild(this.getColorNode(document, redIndex, greenIndex, blueIndex));
+node.appendChild(this->getColorNode(document, redIndex, greenIndex, blueIndex));
     
 }
 
@@ -262,23 +259,23 @@ node.appendChild(this.getColorNode(document, redIndex, greenIndex, blueIndex));
 
 
                         for (
-    greenIndex: int32_t = this.MAX /2;greenIndex < this.MAX; )
+    int32_t greenIndex = this->MAX /2;greenIndex < this->MAX; )
         {
 
 
 
 
                         for (
-    redIndex: int32_t = 0;redIndex < this.MAX /2; )
+    int32_t redIndex = 0;redIndex < this->MAX /2; )
         {
 
 
 
 
                         for (
-    blueIndex: int32_t = 0;blueIndex < this.MAX /2; )
+    int32_t blueIndex = 0;blueIndex < this->MAX /2; )
         {
-node.appendChild(this.getColorNode(document, redIndex, greenIndex, blueIndex));
+node.appendChild(this->getColorNode(document, redIndex, greenIndex, blueIndex));
     
 }
 
@@ -291,23 +288,23 @@ node.appendChild(this.getColorNode(document, redIndex, greenIndex, blueIndex));
 
 
                         for (
-    greenIndex: int32_t = 0;greenIndex < this.MAX; )
+    int32_t greenIndex = 0;greenIndex < this->MAX; )
         {
 
 
 
 
                         for (
-    redIndex: int32_t = 0;redIndex < this.MAX; )
+    int32_t redIndex = 0;redIndex < this->MAX; )
         {
 
 
 
 
                         for (
-    blueIndex: int32_t = 0;blueIndex < this.MAX; )
+    int32_t blueIndex = 0;blueIndex < this->MAX; )
         {
-node.appendChild(this.getColorNode(document, redIndex, greenIndex, blueIndex));
+node.appendChild(this->getColorNode(document, redIndex, greenIndex, blueIndex));
     
 }
 

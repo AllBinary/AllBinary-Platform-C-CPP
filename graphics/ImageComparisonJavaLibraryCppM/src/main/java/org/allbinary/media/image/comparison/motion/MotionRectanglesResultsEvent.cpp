@@ -44,47 +44,46 @@
         #include "MotionRectangles.h"
 
 class MotionRectanglesResultsEvent: public AllBinaryEventObject {
-        
 
-    private: const frame: Long;
+    private: Long frame;
 
-    private: motionRectangles: MotionRectangles;
+    private: MotionRectangles motionRectangles;
 
-public constructor (any = {} anyType, Long frame, MotionRectangles motionRectangles){
+public: MotionRectanglesResultsEvent(Object* anyType, Long frame, MotionRectangles motionRectangles){
             super(anyType);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.frame= frame;
+this->frame= frame;
     
-this.setMotionRectangles(motionRectangles);
+this->setMotionRectangles(motionRectangles);
     
 }
 
 
-    public MotionRectangles getMotionRectangles(){
+    public: MotionRectangles getMotionRectangles(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionRectangles;
+                        return this->motionRectangles;
     
 }
 
 
-    public setMotionRectangles(MotionRectangles motionRectangles){
-this.motionRectangles= motionRectangles;
+    public: void setMotionRectangles(MotionRectangles motionRectangles){
+this->motionRectangles= motionRectangles;
     
 }
 
 
-    public Long getFrame(){
+    public: Long getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 

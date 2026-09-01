@@ -43,38 +43,35 @@
 #include "DestroyedLayerProcessor.h"
 
 class DestroyableSimpleBehavior: public DestroyableBaseBehavior {
-        
 
-    const ownerLayer: CollidableCompositeLayer;
+    protected: CollidableCompositeLayer ownerLayer;
 
-    private: destroyed: bool = false;
+    private: bool destroyed = false;
 
-public constructor (CollidableCompositeLayer ownerLayer){
-
-            super();
-        this.ownerLayer= ownerLayer;
+public: DestroyableSimpleBehavior(CollidableCompositeLayer ownerLayer){
+this->ownerLayer= ownerLayer;
     
 }
 
 
-    public bool isDestroyed(){
+    public: bool isDestroyed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.destroyed;
+                        return this->destroyed;
     
 }
 
 
-    public setDestroyed(bool destroyed){
-this.destroyed= destroyed;
+    public: void setDestroyed(bool destroyed){
+this->destroyed= destroyed;
     
 
-                        if(this.isDestroyed())
+                        if(this->isDestroyed())
                         
                                     {
-                                    DestroyedLayerProcessor.getInstance()!.add(this.ownerLayer);
+                                    DestroyedLayerProcessor::getInstance().add(this->ownerLayer);
     
 
                                     }

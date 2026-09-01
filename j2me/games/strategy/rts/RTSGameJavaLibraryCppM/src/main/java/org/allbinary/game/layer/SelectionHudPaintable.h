@@ -85,74 +85,73 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class SelectionHudPaintable: public InitUpdatePaintable: public UpdateMyFontInterface {
-        
+class SelectionHudPaintable: public InitUpdatePaintable, public UpdateMyFontInterface {
 
-    const y: int32_t = CommonButtons.getInstance()!.STANDARD_BUTTON_SIZE +17;
+    protected: const int32_t y = CommonButtons::getInstance().STANDARD_BUTTON_SIZE +17;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-    const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = updateMyFontProcessor;
 
-    private: x: int32_t= 0;
+    private: int32_t x= 0;
 
-    textX: int32_t= 0;
+    protected: int32_t textX= 0;
 
-    imageX: int32_t= 0;
+    protected: int32_t imageX= 0;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: color: int32_t= 0;
+    private: int32_t color= 0;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    private: const backgroundColor: int32_t = BasicColorFactory.getInstance()!.GREY.intValue()!;
+    private: const int32_t backgroundColor = BasicColorFactory::getInstance().GREY.intValue();
 
-protected constructor ();
+protected: SelectionHudPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public update();
+    public: void update();
 
-    public updateSelectionInfo();
+    public: void updateSelectionInfo();
 
-    public updateInfo();
+    public: void updateInfo();
 
-    PrimitiveLongUtil getPrimitiveLongUtil();
+    protected: PrimitiveLongUtil getPrimitiveLongUtil();
 
-    setAnimationInterface(Animation animationInterface);
+    protected: void setAnimationInterface(Animation animationInterface);
 
-    Animation getAnimationInterface();
+    protected: Animation getAnimationInterface();
 
-    setName(string name);
+    protected: void setName(std::string name);
 
-    string getName();
+    protected: std::string getName();
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    BasicColor getBasicColorP();
+    protected: BasicColor getBasicColorP();
 
-    public setColor(int32_t color);
+    public: void setColor(int32_t color);
 
-    public int32_t getColor();
+    public: int32_t getColor();
 
-    int32_t getWidth();
+    protected: int32_t getWidth();
 
-    setHeight(int32_t height);
+    protected: void setHeight(int32_t height);
 
-    int32_t getHeight();
+    protected: int32_t getHeight();
 
-    int32_t getX();
+    protected: int32_t getX();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

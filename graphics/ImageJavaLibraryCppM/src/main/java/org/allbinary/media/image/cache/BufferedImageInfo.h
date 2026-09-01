@@ -51,29 +51,28 @@
 class BufferedImageInfo
             : public Object
          {
-        
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-    private: type: int32_t;
+    private: int32_t type;
 
-public constructor (int32_t width, int32_t height, int32_t type);
+public: BufferedImageInfo(int32_t width, int32_t height, int32_t type);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public setWidth(int32_t width);
+    public: void setWidth(int32_t width);
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public setHeight(int32_t height);
+    public: void setHeight(int32_t height);
 
-    public int32_t getType();
+    public: int32_t getType();
 
-    public setType(int32_t type);
+    public: void setType(int32_t type);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

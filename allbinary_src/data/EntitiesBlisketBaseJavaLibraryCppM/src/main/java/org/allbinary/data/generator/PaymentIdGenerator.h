@@ -53,11 +53,10 @@
         #include "UniqueIdGenerator.h"
 
 class PaymentIdGenerator: public UniqueIdGenerator {
-        
 
-    private: const IDFILE: string = "paymentId";
+    private: const std::string IDFILE = "paymentId";
 
-public constructor ();
+public: PaymentIdGenerator();
 
 };
 

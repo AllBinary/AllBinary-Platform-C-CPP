@@ -75,70 +75,69 @@
         #include "BasicGameDemoPaintable.h"
 #include "MainGameDemoStatePaintable.h"
 
-class GameScrollMenuPaintable: public BasicGameDemoPaintable: public ColorChangeListener {
-        
+class GameScrollMenuPaintable: public BasicGameDemoPaintable, public ColorChangeListener {
 
-public constructor (Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface, BasicColor basicColor){
+public: GameScrollMenuPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface, BasicColor basicColor){
             super(mainDemoStatePaintable, ownershipPaintable, helpPaintableInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setColor(basicColor);
+this->setColor(basicColor);
     
-ColorChangeEventHandler.getInstance()!.addListenerInterface(this);
-    
-}
-
-
-    public setState(int32_t state){
-this.setCurrentStatePaintable(this.getMainDemoStatePaintable());
+ColorChangeEventHandler::getInstance().addListenerInterface(this);
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
+    public: void setState(int32_t state){
+this->setCurrentStatePaintable(this->getMainDemoStatePaintable());
+    
 }
 
 
-    setColor(BasicColor basicColor){
+    public: void onEvent(AllBinaryEventObject eventObject){
+}
 
-    mainGameDemoStatePaintable: MainGameDemoStatePaintable = this.getMainDemoStatePaintable() as MainGameDemoStatePaintable;;
-    
 
-    formPaintable: FormPaintable = mainGameDemoStatePaintable!.getMenuPaintableInterface() as FormPaintable;;
-    
+    protected: void setColor(BasicColor basicColor){
 
-    scrollSelectionForm: ScrollSelectionForm = formPaintable!.getForm() as ScrollSelectionForm;;
-    
-mainGameDemoStatePaintable!.getOwnershipPaintableInterface()!.setBasicColorP(basicColor);
-    
-scrollSelectionForm!.setButtonBasicColor(basicColor);
+    MainGameDemoStatePaintable mainGameDemoStatePaintable = this->getMainDemoStatePaintable() as MainGameDemoStatePaintable;;
     
 
-    item: ABTextItem;;
+    FormPaintable formPaintable = mainGameDemoStatePaintable.getMenuPaintableInterface() as FormPaintable;;
     
 
-    stringComponent: ABStringComponent;;
+    ScrollSelectionForm scrollSelectionForm = formPaintable.getForm() as ScrollSelectionForm;;
+    
+mainGameDemoStatePaintable.getOwnershipPaintableInterface().setBasicColorP(basicColor);
+    
+scrollSelectionForm.setButtonBasicColor(basicColor);
+    
+
+    ABTextItem item;;
+    
+
+    ABStringComponent stringComponent;;
     
 
 
 
 
                         for (
-    index: int32_t = scrollSelectionForm!.size() -1;index >= 0; index--)
+    int32_t index = scrollSelectionForm.size() -1;index >= 0; index--)
         {
-item= scrollSelectionForm!.get(index) as ABTextItem;
+item= scrollSelectionForm.get(index) as ABTextItem;
     
 stringComponent= item.getLabelStringComponent();
     
 
                         if(stringComponent != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    stringComponent!.setForegroundBasicColor(basicColor);
+                                    stringComponent.setForegroundBasicColor(basicColor);
     
 
                                     }

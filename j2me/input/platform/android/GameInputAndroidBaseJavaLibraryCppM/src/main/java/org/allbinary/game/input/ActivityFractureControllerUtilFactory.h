@@ -38,9 +38,8 @@
 class ActivityFractureControllerUtilFactory
             : public Object
          {
-        
 
-    public static AndroidKeyFactory getInstance();
+    public: static AndroidKeyFactory getInstance();
 
 };
 

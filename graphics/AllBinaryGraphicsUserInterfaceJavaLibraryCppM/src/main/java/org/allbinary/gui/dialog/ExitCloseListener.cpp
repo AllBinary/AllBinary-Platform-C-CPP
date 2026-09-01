@@ -45,15 +45,12 @@
 class ExitCloseListener
             : public Object
         : public CloseJDialogListenerInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: ExitCloseListener(){
+}
 
 
-    public onClose(){
+    public: void onClose(){
 System.exit( -1);
     
 }

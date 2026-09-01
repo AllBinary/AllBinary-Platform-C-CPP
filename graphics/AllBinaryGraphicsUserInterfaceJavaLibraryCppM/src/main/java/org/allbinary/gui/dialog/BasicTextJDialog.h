@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GUI_DIALOG_BASICTEXTJDIALOG_H
         #define ORG_ALLBINARY_GUI_DIALOG_BASICTEXTJDIALOG_H
 
+            #include <vector>
+        
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -54,28 +56,27 @@
 #include "EventQueue.h"
 #include "JFrame.h"
 
-class BasicTextJDialog: public javax.swing.JDialog {
-        
+class BasicTextJDialog: public javax::swing::JDialog {
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    private: closeListenerInterface: CloseJDialogListenerInterface;
+    private: CloseJDialogListenerInterface closeListenerInterface;
 
-public constructor (java.awt.Frame parent, bool modal, string text);
+public: BasicTextJDialog(java::awt::Frame parent, bool modal, std::string text);
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    public addCloseListener(CloseJDialogListenerInterface closeListenerInterface);
+    public: void addCloseListener(CloseJDialogListenerInterface closeListenerInterface);
 
-public constructor (string text);
+public: BasicTextJDialog(std::string text);
 
-    initComponents();
+    private: void initComponents();
 
-    jButton1ActionPerformed(java.awt.event.ActionEvent evt);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: jButton1: javax.swing.JButton;
+    private: javax::swing::JButton jButton1;
 
-    private: textJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel textJLabel;
 
 };
 

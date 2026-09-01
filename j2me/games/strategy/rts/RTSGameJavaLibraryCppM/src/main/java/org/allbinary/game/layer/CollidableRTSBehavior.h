@@ -53,19 +53,18 @@
         #include "CollidableCompositeLayer.h"
 
 class CollidableRTSBehavior: public CollidableDestroyableDamageableBehavior {
-        
 
-public constructor (bool collidable);
+public: CollidableRTSBehavior(bool collidable);
 
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
 
                 //@Throws(Exception.constructor)
             
-    collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterface);
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterface);
 
 };
 

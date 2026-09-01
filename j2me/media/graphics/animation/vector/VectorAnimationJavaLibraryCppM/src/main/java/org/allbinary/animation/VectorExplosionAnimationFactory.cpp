@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -56,60 +58,57 @@
 class VectorExplosionAnimationFactory
             : public Object
         : public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: const vectorExplosionGenerator: VectorExplosionGenerator = VectorExplosionGenerator.getInstance()!;
+    private: const VectorExplosionGenerator vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.animationBehaviorFactory= animationBehaviorFactory;
+public: VectorExplosionAnimationFactory(BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory){
+this->animationBehaviorFactory= animationBehaviorFactory;
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
-    vectorRotationAnimationInterface: VectorAnimationInterface = animationInterface as unknown as VectorAnimationInterface;;
+    VectorAnimationInterface vectorRotationAnimationInterface = animationInterface as unknown as VectorAnimationInterface;;
     
 
-    frame: int32_t = vectorRotationAnimationInterface!.getFrame()!;;
+    int32_t frame = vectorRotationAnimationInterface.getFrame();;
     
 
-    framePoints: std::vector<std::vector<int32_t>> = vectorRotationAnimationInterface!.getPoints(frame)!;;
+    std::vector<std::vector<int32_t>> framePoints = vectorRotationAnimationInterface.getPoints(frame);;
     
 
-    points: std::vector<std::vector<std::vector<int32_t>>> = this.vectorExplosionGenerator!.getInstance(framePoints, 6, this.vectorExplosionGenerator!.ROTATION)!;;
+    std::vector<std::vector<std::vector<int32_t>>> points = this->vectorExplosionGenerator.getInstance(framePoints, 6, this->vectorExplosionGenerator.ROTATION);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new VectorRotationAnimation(points, this.getBasicColorP(), this.animationBehaviorFactory!.getOrCreateInstance());
+                        return VectorRotationAnimation(points, this->getBasicColorP(), this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 
 
-    setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
+    private: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
     
 }
 
 
-    BasicColor getBasicColorP(){
+    private: BasicColor getBasicColorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return this->basicColor;
     
 }
 

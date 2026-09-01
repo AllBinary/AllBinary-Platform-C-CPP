@@ -85,70 +85,67 @@
 class CustomUriResolver
             : public Object
         : public URIResolver {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const uriResolverStrings: URIResolverStrings = URIResolverStrings.getInstance()!;
+    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: path: string;
+    private: std::string path;
 
-    private: basicURIResolver: BasicUriResolver;
+    private: BasicUriResolver basicURIResolver;
 
-public constructor (string path, BasicUriResolver basicURIResolver){
-
-            super();
-        this.path= path;
+public: CustomUriResolver(std::string path, BasicUriResolver basicURIResolver){
+this->path= path;
     
-this.basicURIResolver= basicURIResolver;
+this->basicURIResolver= basicURIResolver;
     
 }
 
 
                 //@Throws(TransformerException.constructor)
             
-    public Source resolve(string href, string base){
+    public: Source resolve(std::string href, std::string base){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.path);
+stringBuffer.append(this->path);
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
-stringBuffer!.append(href);
-    
-
-    fileAbPath: AbPath = new AbFilePath(stringBuffer!.toString()) as AbPath;;
+stringBuffer.append(href);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XMLLOGGING))
+    AbPath fileAbPath = AbFilePath(stringBuffer.toString()) as AbPath;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(this.uriResolverStrings!.ATTEMPT);
+stringBuffer.append(this->uriResolverStrings.ATTEMPT);
     
-stringBuffer!.append(href);
+stringBuffer.append(href);
     
-stringBuffer!.append(this.uriResolverStrings!.BASE);
+stringBuffer.append(this->uriResolverStrings.BASE);
     
-stringBuffer!.append(base);
+stringBuffer.append(base);
     
-stringBuffer!.append(this.uriResolverStrings!.NEW_PATH);
+stringBuffer.append(this->uriResolverStrings.NEW_PATH);
     
-stringBuffer!.append(fileAbPath!.toString());
+stringBuffer.append(fileAbPath.toString());
     
-stringBuffer!.append(this.uriResolverStrings!.NOTE);
+stringBuffer.append(this->uriResolverStrings.NOTE);
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(this.uriResolverStrings!.URL_GLOBAL);
+stringBuffer.append(this->uriResolverStrings.URL_GLOBAL);
     
-stringBuffer!.append(this.uriResolverStrings!.REQUIRED_EXTENSION);
+stringBuffer.append(this->uriResolverStrings.REQUIRED_EXTENSION);
     
-stringBuffer!.append(this.basicURIResolver!.getExtension());
+stringBuffer.append(this->basicURIResolver.getExtension());
     
 
                                     }
@@ -157,7 +154,7 @@ stringBuffer!.append(this.basicURIResolver!.getExtension());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StreamSource(new CryptFileReader(TransformInfoTemplateData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoTemplateData.getInstance()!.ENCRYPTED_EXTENSION).getInputStream(fileAbPath));
+                        return StreamSource(CryptFileReader(TransformInfoTemplateData::getInstance().UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION).getInputStream(fileAbPath));
     
 
                 //: 
@@ -176,19 +173,19 @@ stringBuffer!.append(this.basicURIResolver!.getExtension());
 
 
 
-                            throw new TransformerException(e);
+                            throw TransformerException(e);
                     
 }
 */
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.path;
+                        return this->path;
     
 }
 

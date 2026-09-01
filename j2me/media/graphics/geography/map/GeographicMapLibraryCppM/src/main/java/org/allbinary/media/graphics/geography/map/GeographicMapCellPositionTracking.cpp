@@ -55,33 +55,30 @@
 class GeographicMapCellPositionTracking
             : public Object
          {
-        
 
-    private: currentGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition currentGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: previousGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition previousGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: newGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition newGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: currentCellType: GeographicMapCellType = GeographicMapCellType.NULL_GEOGRAPHIC_MAP_CELL_TYPE;
+    private: GeographicMapCellType currentCellType = GeographicMapCellType::NULL_GEOGRAPHIC_MAP_CELL_TYPE;
 
-public constructor (){
-
-            super();
-        }
+public: GeographicMapCellPositionTracking(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellType getCurrentOverCellType(BasicGeographicMap geographicMap){
+    public: GeographicMapCellType getCurrentOverCellType(BasicGeographicMap geographicMap){
 
-    geographicMapCellPosition: GeographicMapCellPosition = this.currentGeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = this->currentGeographicMapCellPosition;;
     
 
-                        if(geographicMapCellPosition != this.previousGeographicMapCellPosition)
+                        if(geographicMapCellPosition != this->previousGeographicMapCellPosition)
                         
                                     {
-                                    this.currentCellType= geographicMap!.getCellTypeAt(geographicMapCellPosition);
+                                    this->currentCellType= geographicMap.getCellTypeAt(geographicMapCellPosition);
     
 
                                     }
@@ -90,31 +87,31 @@ public constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentCellType;
+                        return this->currentCellType;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool updateStart(AllBinaryGameCanvasInterface gameCanvasInterface, AllBinaryLayer layer){
+    public: bool updateStart(AllBinaryGameCanvasInterface gameCanvasInterface, AllBinaryLayer layer){
 
-                        if(gameCanvasInterface != SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION)
+                        if(gameCanvasInterface != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = gameCanvasInterface!.getLayerManager() as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = gameCanvasInterface.getLayerManager() as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
-this.newGeographicMapCellPosition= geographicMapInterface!.getCellPositionAtXY(layer.getXP() +layer.getHalfWidth(), layer.getYP() +layer.getHalfHeight());
+this->newGeographicMapCellPosition= geographicMapInterface.getCellPositionAtXY(layer.getXP() +layer.getHalfWidth(), layer.getYP() +layer.getHalfHeight());
     
 
-                        if(this.newGeographicMapCellPosition != this.currentGeographicMapCellPosition)
+                        if(this->newGeographicMapCellPosition != this->currentGeographicMapCellPosition)
                         
                                     {
-                                    this.currentGeographicMapCellPosition= this.newGeographicMapCellPosition;
+                                    this->currentGeographicMapCellPosition= this->newGeographicMapCellPosition;
     
 
 
@@ -137,12 +134,12 @@ this.newGeographicMapCellPosition= geographicMapInterface!.getCellPositionAtXY(l
 }
 
 
-    public bool updateEnd(){
+    public: bool updateEnd(){
 
-                        if(this.currentGeographicMapCellPosition != this.previousGeographicMapCellPosition)
+                        if(this->currentGeographicMapCellPosition != this->previousGeographicMapCellPosition)
                         
                                     {
-                                    this.previousGeographicMapCellPosition= this.currentGeographicMapCellPosition;
+                                    this->previousGeographicMapCellPosition= this->currentGeographicMapCellPosition;
     
 
 
@@ -162,22 +159,22 @@ this.newGeographicMapCellPosition= geographicMapInterface!.getCellPositionAtXY(l
 }
 
 
-    public GeographicMapCellPosition getPreviousGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getPreviousGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.previousGeographicMapCellPosition;
+                        return this->previousGeographicMapCellPosition;
     
 }
 
 
-    public GeographicMapCellPosition getCurrentGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentGeographicMapCellPosition;
+                        return this->currentGeographicMapCellPosition;
     
 }
 

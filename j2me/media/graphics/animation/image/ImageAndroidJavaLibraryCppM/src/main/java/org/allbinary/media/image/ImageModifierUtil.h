@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEMODIFIERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <android/graphics/Paint.h>
@@ -60,23 +62,22 @@
 class ImageModifierUtil
             : public Object
          {
-        
 
-    public static ImageModifierUtil getInstanceOrCreate();
+    public: static ImageModifierUtil getInstanceOrCreate();
 
-    public const paint: Paint = new Paint(Paint.ANTI_ALIAS_FLAG);
+    public: const Paint paint = Paint(Paint::ANTI_ALIAS_FLAG);
 
-    public setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
+    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
 
-    public changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
+    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor);
 
-    public setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alphaInt);
+    public: void setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alphaInt);
 
-    public std::vector<Image> getImageArray(std::vector<Image> originalImageArray);
+    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray);
 
-    public handleImage(std::vector<Image> imageArray, int32_t index, Image image);
+    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image);
 
-    public reset();
+    public: void reset();
 
 };
 

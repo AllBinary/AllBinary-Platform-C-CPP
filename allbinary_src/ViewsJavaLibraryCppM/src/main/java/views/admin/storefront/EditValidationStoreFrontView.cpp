@@ -61,12 +61,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StoreFrontComponent.h"
 
-class EditValidationStoreFrontView: public StoreFrontComponent: public ValidationComponentInterface {
-        
+class EditValidationStoreFrontView: public StoreFrontComponent, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: EditValidationStoreFrontView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -75,33 +74,33 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(this.newStoreFrontInterface!.isNameValid() == Boolean.FALSE)
+                        if(this->newStoreFrontInterface.isNameValid() == Boolean::FALSE)
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory.getInstance(this.newStoreFrontInterface!.getName()) == 
-                                    null
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) == 
+                                    nullptr
                                 )
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
-this.newStoreFrontInterface= StoreFrontFactory.getInstance(this.newStoreFrontInterface!.getName());
+this->newStoreFrontInterface= StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName());
     
 
 
@@ -114,10 +113,10 @@ this.newStoreFrontInterface= StoreFrontFactory.getInstance(this.newStoreFrontInt
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -126,35 +125,35 @@ this.newStoreFrontInterface= StoreFrontFactory.getInstance(this.newStoreFrontInt
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.newStoreFrontInterface!.isNameValid() == Boolean.FALSE)
+                        if(this->newStoreFrontInterface.isNameValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append(this.newStoreFrontInterface!.nameValidationInfo());
+                                    stringBuffer.append(this->newStoreFrontInterface.nameValidationInfo());
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory.getInstance(this.newStoreFrontInterface!.getName()) == 
-                                    null
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) == 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(this.newStoreFrontInterface +" does not exist.<br>");
+                                    stringBuffer.append(this->newStoreFrontInterface +" does not exist.<br>");
     
 
                                     }
@@ -170,10 +169,10 @@ this.newStoreFrontInterface= StoreFrontFactory.getInstance(this.newStoreFrontInt
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -189,7 +188,7 @@ this.newStoreFrontInterface= StoreFrontFactory.getInstance(this.newStoreFrontInt
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -199,7 +198,7 @@ this.newStoreFrontInterface= StoreFrontFactory.getInstance(this.newStoreFrontInt
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

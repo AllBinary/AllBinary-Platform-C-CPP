@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVIEW_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_BASICITEMVIEW_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -79,25 +81,24 @@
 class BasicItemView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const itemInterface: ItemInterface;
+    private: ItemInterface itemInterface;
 
-    private: const vector: Vector;
+    private: Vector vector;
 
-public constructor (ItemInterface itemInterface, Vector vector);
+public: BasicItemView(ItemInterface itemInterface, Vector vector);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public Document toXmlDoc();
+    public: Document toXmlDoc();
 
-    public string view();
+    public: std::string view();
 
 };
 

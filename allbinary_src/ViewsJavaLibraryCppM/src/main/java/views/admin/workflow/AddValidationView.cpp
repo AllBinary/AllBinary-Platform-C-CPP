@@ -70,42 +70,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WorkFlowView.h"
 
-class AddValidationView: public WorkFlowView: public ValidationComponentInterface {
-        
+class AddValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: AddValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.workFlowInterface= NewWorkFlowFactory.getInstance()!.getInstance(this.abeClientInformation, this.getPropertiesHashMap(), this.getPageContext());
+this->workFlowInterface= NewWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, this->getPropertiesHashMap(), this->getPageContext());
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -114,35 +113,35 @@ this.workFlowInterface= NewWorkFlowFactory.getInstance()!.getInstance(this.abeCl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(WorkFlowEntityFactory.getInstance()!.create2()!.get(this.workFlowInterface!.getName(), this.getTransformInfoInterface()!.getStoreName()) != 
-                                    null
+                        if(WorkFlowEntityFactory::getInstance().create2().get(this->workFlowInterface.getName(), this->getTransformInfoInterface().getStoreName()) != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Workflow already exist", this, "validationInfo()");
+                                    this->logUtil.putF("Workflow already exist", this, "validationInfo()");
     
 
                                     }
                                 
-stringBuffer!.append("The WorkFlow name you selected is already in use.<br/>  Please select another Name.<br />");
+stringBuffer.append("The WorkFlow name you selected is already in use.<br/>  Please select another Name.<br />");
     
 
                                     }
@@ -151,17 +150,17 @@ stringBuffer!.append("The WorkFlow name you selected is already in use.<br/>  Pl
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -177,7 +176,7 @@ stringBuffer!.append("The WorkFlow name you selected is already in use.<br/>  Pl
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -187,7 +186,7 @@ stringBuffer!.append("The WorkFlow name you selected is already in use.<br/>  Pl
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -55,19 +57,18 @@
 #include "CompoundRotationAnimation.h"
 
 class CompoundRotationAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
-        
 
-public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory){
+public: CompoundRotationAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory){
             super(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(animationBehaviorFactory == AnimationBehaviorFactory.getInstance())
+                        if(animationBehaviorFactory == AnimationBehaviorFactory::getInstance())
                         
                                     {
-                                    ForcedLogUtil.log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", this);
+                                    ForcedLogUtil::log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", this);
     
 
                                     }
@@ -75,7 +76,7 @@ public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimati
 }
 
 
-    std::vector<Animation> createArray(int32_t size){
+    protected: std::vector<Animation> createArray(int32_t size){
 
 
 
@@ -85,12 +86,12 @@ public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimati
 }
 
 
-    Animation createAnimation(std::vector<Animation> animationInterfaceArray){
+    protected: Animation createAnimation(std::vector<Animation> animationInterfaceArray){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this.animationBehaviorFactory!.getOrCreateInstance());
+                        return CompoundRotationAnimation(animationInterfaceArray as RotationAnimation[], this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 

@@ -51,7 +51,6 @@
         #include "PickedUpLayerType.h"
 
 class PickedUpLayerInterfaceFactoryInterface {
-        
 
     PickedUpLayerType getPickedUpLayerType()
 

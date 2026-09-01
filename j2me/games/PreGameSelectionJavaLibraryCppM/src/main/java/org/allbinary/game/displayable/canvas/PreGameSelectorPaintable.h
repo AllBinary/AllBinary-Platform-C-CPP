@@ -57,21 +57,20 @@
         #include "PreGameScrollSelectionForm.h"
 
 class PreGameSelectorPaintable: public InitUpdatePaintable {
-        
 
-    private: const title: string;
+    private: std::string title;
 
-    private: canvasDrawLineString: CanvasDrawLineString;
+    private: CanvasDrawLineString canvasDrawLineString;
 
-    private: const preGameScrollSelectionForm: PreGameScrollSelectionForm;
+    private: PreGameScrollSelectionForm preGameScrollSelectionForm;
 
-public constructor (string title, PreGameScrollSelectionForm preGameScrollSelectionForm);
+public: PreGameSelectorPaintable(std::string title, PreGameScrollSelectionForm preGameScrollSelectionForm);
 
-    public update();
+    public: void update();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public PreGameScrollSelectionForm getPreGameSelectionForm();
+    public: PreGameScrollSelectionForm getPreGameSelectionForm();
 
 };
 

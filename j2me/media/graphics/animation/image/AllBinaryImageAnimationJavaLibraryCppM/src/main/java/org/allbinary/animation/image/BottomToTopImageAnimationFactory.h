@@ -57,13 +57,12 @@
 #include "BottomToTopImageAnimation.h"
 
 class BottomToTopImageAnimationFactory: public BaseImageAnimationFactory {
-        
 
-public constructor (Image image, AnimationBehaviorFactory animationBehaviorFactory);
+public: BottomToTopImageAnimationFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
 };
 

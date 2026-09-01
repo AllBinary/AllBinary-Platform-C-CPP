@@ -70,17 +70,16 @@
         #include "RepaintBehavior.h"
 
 class AlwaysRepaintBehavior: public RepaintBehavior {
-        
 
-    private: static const instanceC: AlwaysRepaintBehavior = new AlwaysRepaintBehavior();
+    private: static const AlwaysRepaintBehavior instanceC = AlwaysRepaintBehavior();
 
-    public static AlwaysRepaintBehavior getInstance();
+    public: static AlwaysRepaintBehavior getInstance();
 
-    private: const NAME: string = "AlwaysRepaintBehavior";
+    private: const std::string NAME = "AlwaysRepaintBehavior";
 
-    public repaint(Canvas canvas);
+    public: void repaint(Canvas canvas);
 
-    public onChangeRepaint(Canvas canvas);
+    public: void onChangeRepaint(Canvas canvas);
 
 };
 

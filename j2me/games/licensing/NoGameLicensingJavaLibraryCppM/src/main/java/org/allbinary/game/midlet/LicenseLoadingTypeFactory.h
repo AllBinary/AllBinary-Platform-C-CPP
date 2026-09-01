@@ -46,19 +46,18 @@
 class LicenseLoadingTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: LicenseLoadingTypeFactory = new LicenseLoadingTypeFactory();
+    private: static LicenseLoadingTypeFactory instance() { return LicenseLoadingTypeFactory(); }
 
-    public static LicenseLoadingTypeFactory getIntance();
+    public: static LicenseLoadingTypeFactory getIntance();
 
-    public const INITIAL_LOADING: LicenseLoadingType = new LicenseLoadingType("Initial Loading");
+    public: const LicenseLoadingType INITIAL_LOADING = LicenseLoadingType("Initial Loading");
 
-    public const GAME_START: LicenseLoadingType = new LicenseLoadingType("Game Start");
+    public: const LicenseLoadingType GAME_START = LicenseLoadingType("Game Start");
 
-    public const LOGIN: LicenseLoadingType = new LicenseLoadingType("Login");
+    public: const LicenseLoadingType LOGIN = LicenseLoadingType("Login");
 
-    public const OTHER: LicenseLoadingType = new LicenseLoadingType("Other/Usually The First Non Demo Level");
+    public: const LicenseLoadingType OTHER = LicenseLoadingType("Other/Usually The First Non Demo Level");
 
 };
 

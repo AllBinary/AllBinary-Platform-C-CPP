@@ -94,23 +94,22 @@
 class StoreUriResolver
             : public Object
         : public URIResolver {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const uriResolverStrings: URIResolverStrings = URIResolverStrings.getInstance()!;
+    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: basicURIResolver: BasicUriResolver;
+    private: BasicUriResolver basicURIResolver;
 
-    private: parentTransformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface parentTransformInfoInterface;
 
-public constructor (TransformInfoInterface parentTransformInfoInterface, BasicUriResolver basicURIResolver);
+public: StoreUriResolver(TransformInfoInterface parentTransformInfoInterface, BasicUriResolver basicURIResolver);
 
                 //@Throws(TransformerException.constructor)
             
-    public Source resolve(string href, string base);
+    public: Source resolve(std::string href, std::string base);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -83,21 +83,20 @@
 class CreateGameRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const demoGameMidlet: DemoGameMidlet;
+    private: DemoGameMidlet demoGameMidlet;
 
-    private: const hashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> hashtable;
 
-    private: const startGameMidletEvent: DemoGameMidletEvent;
+    private: DemoGameMidletEvent startGameMidletEvent;
 
-public constructor (DemoGameMidlet demoGameMidlet, Hashtable<any, any> hashtable);
+public: CreateGameRunnable(DemoGameMidlet demoGameMidlet, Hashtable<any, any> hashtable);
 
-    public run();
+    public: void run();
 
 };
 

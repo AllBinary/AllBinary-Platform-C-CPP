@@ -53,42 +53,41 @@
 class BasicUserRole
             : public Object
         : public Serializable {
-        
 
-    private: static const roleVector: Vector<any> = new Vector<any>();
+    private: static const Vector<any> roleVector = Vector<any>();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static BasicUserRole getRole(string role);
+    public: static BasicUserRole getRole(std::string role);
 
-    public static Vector<any> getAll();
+    public: static Vector<any> getAll();
 
-    private: const m_int_RoleId: int32_t;
+    private: int32_t m_int_RoleId;
 
-    private: const role: string;
+    private: std::string role;
 
-    private: const displayValue: string;
+    private: std::string displayValue;
 
-    private: const sessionTimeout: int64_t;
+    private: int64_t sessionTimeout;
 
-    private: const sessionInactivityTimeout: int64_t;
+    private: int64_t sessionInactivityTimeout;
 
- constructor (string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
+: BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
 
- constructor (string aRole, string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
+: BasicUserRole(std::string aRole, std::string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout);
 
-    int32_t getRoleId();
+    private: int32_t getRoleId();
 
-    public string getRole();
+    public: std::string getRole();
 
-    public int64_t getSessionTimeout();
+    public: int64_t getSessionTimeout();
 
-    public int64_t getSessionInactivityTimeout();
+    public: int64_t getSessionInactivityTimeout();
 
-    public bool equals(BasicUserRole basicUserRole);
+    public: bool equals(BasicUserRole basicUserRole);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

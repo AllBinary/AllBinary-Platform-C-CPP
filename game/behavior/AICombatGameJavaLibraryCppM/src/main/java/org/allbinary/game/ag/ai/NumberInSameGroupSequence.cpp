@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -47,70 +49,67 @@
 class NumberInSameGroupSequence
             : public Object
          {
-        
 
-    public static NumberInSameGroupSequence getInstance(){
+    public: static NumberInSameGroupSequence getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NumberInSameGroupSequence();
+                        return NumberInSameGroupSequence();
     
 }
 
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_ONE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_ONE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_TWO: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_TWO;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_THREE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_THREE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_SIX: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SIX;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE_NINE: Integer;
+    public: Integer NUMBER_ON_SAME_TEAM_SEQUENCE_NINE;
 
-    public NUMBER_ON_SAME_TEAM_SEQUENCE: std::vector<Integer>;
+    public: std::vector<Integer> NUMBER_ON_SAME_TEAM_SEQUENCE;
 
-private constructor (){
+private: NumberInSameGroupSequence(){
 
-            super();
-        
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO= smallIntegerSingletonFactory!.getAt(100);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO= smallIntegerSingletonFactory.getAt(100);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_ONE= smallIntegerSingletonFactory!.getAt(101);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_ONE= smallIntegerSingletonFactory.getAt(101);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_TWO= smallIntegerSingletonFactory!.getAt(102);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_TWO= smallIntegerSingletonFactory.getAt(102);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_THREE= smallIntegerSingletonFactory!.getAt(103);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_THREE= smallIntegerSingletonFactory.getAt(103);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR= smallIntegerSingletonFactory!.getAt(104);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR= smallIntegerSingletonFactory.getAt(104);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE= smallIntegerSingletonFactory!.getAt(105);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE= smallIntegerSingletonFactory.getAt(105);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_SIX= smallIntegerSingletonFactory!.getAt(106);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_SIX= smallIntegerSingletonFactory.getAt(106);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN= smallIntegerSingletonFactory!.getAt(107);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN= smallIntegerSingletonFactory.getAt(107);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT= smallIntegerSingletonFactory!.getAt(108);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT= smallIntegerSingletonFactory.getAt(108);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE_NINE= smallIntegerSingletonFactory!.getAt(109);
+this->NUMBER_ON_SAME_TEAM_SEQUENCE_NINE= smallIntegerSingletonFactory.getAt(109);
     
-this.NUMBER_ON_SAME_TEAM_SEQUENCE= 
-                                                [
-                                                    this.NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO,this.NUMBER_ON_SAME_TEAM_SEQUENCE_ONE,this.NUMBER_ON_SAME_TEAM_SEQUENCE_THREE,this.NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR,this.NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE,this.NUMBER_ON_SAME_TEAM_SEQUENCE_SIX,this.NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN,this.NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT,this.NUMBER_ON_SAME_TEAM_SEQUENCE_NINE
-                                                ];
+this->NUMBER_ON_SAME_TEAM_SEQUENCE= 
+                                                {
+                                                    this->NUMBER_ON_SAME_TEAM_SEQUENCE_ZERO,this->NUMBER_ON_SAME_TEAM_SEQUENCE_ONE,this->NUMBER_ON_SAME_TEAM_SEQUENCE_THREE,this->NUMBER_ON_SAME_TEAM_SEQUENCE_FOUR,this->NUMBER_ON_SAME_TEAM_SEQUENCE_FIVE,this->NUMBER_ON_SAME_TEAM_SEQUENCE_SIX,this->NUMBER_ON_SAME_TEAM_SEQUENCE_SEVEN,this->NUMBER_ON_SAME_TEAM_SEQUENCE_EIGHT,this->NUMBER_ON_SAME_TEAM_SEQUENCE_NINE
+                                                };
     
 }
 

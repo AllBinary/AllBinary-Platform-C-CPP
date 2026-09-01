@@ -84,138 +84,135 @@
 #include "AllBinaryTiledLayer.h"
 
 class PathAnimation: public Animation {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const linePathAnimation: LinePathAnimation;
+    private: LinePathAnimation linePathAnimation;
 
-    private: const pathFindingLayer: PathFindingLayerInterface;
+    private: PathFindingLayerInterface pathFindingLayer;
 
-    allBinaryGameLayerManagerP: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public constructor (PathFindingLayerInterface pathFindingLayer, LinePathAnimation linePathAnimation){
-
-            super();
-        this.pathFindingLayer= pathFindingLayer;
+public: PathAnimation(PathFindingLayerInterface pathFindingLayer, LinePathAnimation linePathAnimation){
+this->pathFindingLayer= pathFindingLayer;
     
-this.linePathAnimation= linePathAnimation;
+this->linePathAnimation= linePathAnimation;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
-this.allBinaryGameLayerManagerP= allBinaryGameLayerManager;
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    private: const startColor: BasicColor = BasicColorFactory.getInstance()!.RED;
+    private: const BasicColor startColor = BasicColorFactory::getInstance().RED;
 
-    private: const middleColor: BasicColor = BasicColorFactory.getInstance()!.BLUE;
+    private: const BasicColor middleColor = BasicColorFactory::getInstance().BLUE;
 
-    private: const endColor: BasicColor = BasicColorFactory.getInstance()!.GREEN;
+    private: const BasicColor endColor = BasicColorFactory::getInstance().GREEN;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 
         try {
             
-    waypointBehaviorBase: WaypointBehaviorBase = this.pathFindingLayer!.getWaypointBehavior()!;;
+    WaypointBehaviorBase waypointBehaviorBase = this->pathFindingLayer.getWaypointBehavior();;
     
 
                         if(waypointBehaviorBase != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    geographicMapCellHistory: GeographicMapCellHistory = waypointBehaviorBase!.getCurrentGeographicMapCellHistory()!;;
+    GeographicMapCellHistory geographicMapCellHistory = waypointBehaviorBase.getCurrentGeographicMapCellHistory();;
     
 
-    list: BasicArrayList = geographicMapCellHistory!.getTracked()!;;
+    BasicArrayList list = geographicMapCellHistory.getTracked();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = this.allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = this->allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
-    tiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer tiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
+    GeographicMapCellPosition geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;;
     
 
-    nextPoint: GPoint;;
+    GPoint nextPoint;;
     
 
-    point: GPoint;;
+    GPoint point;;
     
 
-    start: int32_t = size -2;;
+    int32_t start = size -2;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size -1; index++)
+    int32_t index = 0;index < size -1; index++)
         {
 
                         if(index == start)
                         
                                     {
-                                    this.setBasicColorP(this.startColor);
+                                    this->setBasicColorP(this->startColor);
     
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
                                     }
                                 
                              else 
-                        if(geographicMapCellHistory!.isVisited(geographicMapCellPosition))
+                        if(geographicMapCellHistory.isVisited(geographicMapCellPosition))
                         
                                     {
-                                    this.setBasicColorP(this.endColor);
+                                    this->setBasicColorP(this->endColor);
     
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
                                     }
                                 
                         else {
-                            this.setBasicColorP(this.middleColor);
+                            this->setBasicColorP(this->middleColor);
     
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
                         }
                             
 geographicMapCellPosition= list.get(index) as GeographicMapCellPosition;
     
-point= geographicMapCellPosition!.getMidPoint();
+point= geographicMapCellPosition.getMidPoint();
     
 geographicMapCellPosition= list.get(index +1) as GeographicMapCellPosition;
     
-nextPoint= geographicMapCellPosition!.getMidPoint();
+nextPoint= geographicMapCellPosition.getMidPoint();
     
-this.linePathAnimation!.paint(graphics, point, nextPoint, tiledLayer);
+this->linePathAnimation.paint(graphics, point, nextPoint, tiledLayer);
     
 }
 
@@ -229,7 +226,7 @@ this.linePathAnimation!.paint(graphics, point, nextPoint, tiledLayer);
                 //: 
 } catch(e) 
             {
-this.logUtil!.putF("Cleared Target", this, CanvasStrings.getInstance()!.PAINT);
+this->logUtil.putF("Cleared Target", this, CanvasStrings::getInstance().PAINT);
     
 }
 

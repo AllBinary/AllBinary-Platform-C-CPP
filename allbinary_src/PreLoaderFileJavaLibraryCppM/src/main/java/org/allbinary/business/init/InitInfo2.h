@@ -51,17 +51,16 @@
 class InitInfo2
             : public Object
          {
-        
 
-    private: static const instance: InitInfo2 = new InitInfo2();
+    private: static InitInfo2 instance() { return InitInfo2(); }
 
-    public static InitInfo2 getInstance();
+    public: static InitInfo2 getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    public bool isTestHtmlPathValid(AbPath value);
+    public: bool isTestHtmlPathValid(AbPath value);
 
-    public bool isMainPathValid(AbPath value);
+    public: bool isMainPathValid(AbPath value);
 
 };
 

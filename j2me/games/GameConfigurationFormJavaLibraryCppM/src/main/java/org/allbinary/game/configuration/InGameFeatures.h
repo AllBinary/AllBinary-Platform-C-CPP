@@ -74,13 +74,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InGameFeatures: public Init {
-        
 
-    public init();
+    public: void init();
 
-    addToInGameMenu();
+    private: void addToInGameMenu();
 
-    public bool isAny();
+    public: bool isAny();
 
 };
 

@@ -100,29 +100,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InventoryHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: response: HttpServletResponse;
+    private: HttpServletResponse response;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: streetAddress: StreetAddress;
+    private: StreetAddress streetAddress;
 
-    private: id: string;
+    private: std::string id;
 
-    private: searchRequest: SearchRequest;
+    private: SearchRequest searchRequest;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: InventoryHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
-    public string viewSummary();
+    public: std::string viewSummary();
 
-    public string search();
+    public: std::string search();
 
 };
 

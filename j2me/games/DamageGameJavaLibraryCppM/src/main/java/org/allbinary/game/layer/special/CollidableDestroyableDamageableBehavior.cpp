@@ -68,11 +68,10 @@
         #include "CollidableDestroyableDamageableLayer.h"
 
 class CollidableDestroyableDamageableBehavior: public CollidableBaseBehavior {
-        
 
-    const damageUtil: DamageUtil = DamageUtil.getInstance()!;
+    protected: const DamageUtil damageUtil = DamageUtil::getInstance();
 
-public constructor (bool collidable){
+public: CollidableDestroyableDamageableBehavior(bool collidable){
             super(collidable);
                     
 
@@ -81,9 +80,9 @@ public constructor (bool collidable){
 }
 
 
-    public bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
+    public: bool isCollision(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collisionLayer){
 
-                        if(ownerLayer!.getGroupInterface()[0] != collisionLayer!.getGroupInterface()[0])
+                        if(ownerLayer.getGroupInterface()[0] != collisionLayer.getGroupInterface()[0])
                         
                                     {
                                     
@@ -106,20 +105,20 @@ public constructor (bool collidable){
 
                 //@Throws(Exception.constructor)
             
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    ownerCollidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer = ownerLayer as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer ownerCollidableDestroyableDamageableLayer = ownerLayer as CollidableDestroyableDamageableLayer;;
     
 
-    collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = collidableInterfaceCompositeInterface as CollidableDestroyableDamageableLayer;;
     
-ownerCollidableDestroyableDamageableLayer!.damage(collidableDestroyableDamageableLayer!.getDamage(0), 0);
+ownerCollidableDestroyableDamageableLayer.damage(collidableDestroyableDamageableLayer.getDamage(0), 0);
     
 }
 
 
-    public bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
-ForcedLogUtil.log("No Longer Used", this);
+    public: bool isCollisionInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+ForcedLogUtil::log("No Longer Used", this);
     
 
 
@@ -132,8 +131,8 @@ ForcedLogUtil.log("No Longer Used", this);
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
-ForcedLogUtil.log("No Longer Used", this);
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+ForcedLogUtil::log("No Longer Used", this);
     
 }
 

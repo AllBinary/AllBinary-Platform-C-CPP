@@ -51,13 +51,12 @@
 class PoolInterfaceFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static PoolInterface getInstance(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface, PoolType poolType, CachePolicy cachePolicy);
+    public: static PoolInterface getInstance(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface, PoolType poolType, CachePolicy cachePolicy);
 
-private constructor ();
+private: PoolInterfaceFactory();
 
 };
 

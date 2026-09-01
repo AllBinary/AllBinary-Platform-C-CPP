@@ -54,17 +54,16 @@
 class InventoryEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: InventoryEntityFactory = new InventoryEntityFactory();
+    private: static InventoryEntityFactory instance() { return InventoryEntityFactory(); }
 
-    public static InventoryEntityFactory getInstance();
+    public: static InventoryEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: InventoryEntityFactory();
 
-    public InventoryEntity getInventoryEntityInstance();
+    public: InventoryEntity getInventoryEntityInstance();
 
 };
 

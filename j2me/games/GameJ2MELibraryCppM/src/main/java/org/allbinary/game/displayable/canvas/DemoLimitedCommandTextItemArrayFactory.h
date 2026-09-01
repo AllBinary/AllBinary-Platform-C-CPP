@@ -51,15 +51,14 @@
 class DemoLimitedCommandTextItemArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: DemoLimitedCommandTextItemArrayFactory = new DemoLimitedCommandTextItemArrayFactory();
+    private: static DemoLimitedCommandTextItemArrayFactory instance() { return DemoLimitedCommandTextItemArrayFactory(); }
 
-    public static DemoLimitedCommandTextItemArrayFactory getInstance();
+    public: static DemoLimitedCommandTextItemArrayFactory getInstance();
 
-    private: const commandTextItemArrayFactory: CommandTextItemArrayFactory = new CommandTextItemArrayFactory(new LimitCommandsVisitor());
+    private: const CommandTextItemArrayFactory commandTextItemArrayFactory = CommandTextItemArrayFactory(LimitCommandsVisitor());
 
-    public CommandTextItemArrayFactory getCommandTextItemArrayFactory();
+    public: CommandTextItemArrayFactory getCommandTextItemArrayFactory();
 
 };
 

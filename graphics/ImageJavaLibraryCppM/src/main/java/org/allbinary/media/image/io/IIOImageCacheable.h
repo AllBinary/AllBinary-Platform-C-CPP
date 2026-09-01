@@ -57,23 +57,22 @@
 class IIOImageCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: key: string;
+    private: std::string key;
 
-    private: iioImage: IIOImage;
+    private: IIOImage iioImage;
 
-public constructor (string key);
+public: IIOImageCacheable(std::string key);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public setBufferedImage(BufferedImage bufferedImage);
+    public: void setBufferedImage(BufferedImage bufferedImage);
 
-    public IIOImage getIioImage();
+    public: IIOImage getIioImage();
 
-    setIioImage(IIOImage iioImage);
+    private: void setIioImage(IIOImage iioImage);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

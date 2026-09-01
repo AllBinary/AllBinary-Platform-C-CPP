@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_DIVEANDDIRECTIONALTRACKINGAI_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -132,106 +134,105 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DiveAndDirectionalTrackingAI: public BasicAI: public TrackingEventListenerInterface, public DestroyedEventListenerInterface {
-        
+class DiveAndDirectionalTrackingAI: public BasicAI, public TrackingEventListenerInterface, public DestroyedEventListenerInterface {
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    private: const directionFactory: DirectionFactory = DirectionFactory.getInstance()!;
+    private: const DirectionFactory directionFactory = DirectionFactory::getInstance();
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(500);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(500);
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: const directionalInterface: DirectionalInterface;
+    private: DirectionalInterface directionalInterface;
 
-    private: const velocityInterface: BasicVelocityProperties;
+    private: BasicVelocityProperties velocityInterface;
 
-    private: const directionToKeyMap: std::vector<int32_t> = [Canvas.LEFT,Canvas.DOWN,Canvas.UP,Canvas.RIGHT];
+    private: const std::vector<int32_t> directionToKeyMap = {Canvas::LEFT,Canvas::DOWN,Canvas::UP,Canvas::RIGHT};
 
-    private: initialDropped: bool= false;
+    private: bool initialDropped= false;
 
-    private: diveP: bool= false;
+    private: bool diveP= false;
 
-    private: directionOfTarget: Direction = Direction.getInstance(0)!;
+    private: Direction directionOfTarget = Direction::getInstance(0);
 
-    private: const MIN_DISTANCE: int32_t = 40;
+    private: const int32_t MIN_DISTANCE = 40;
 
-    private: lastTrackingLayerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer lastTrackingLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: const artificialIntelligenceInterface: ArtificialIntelligenceInterface;
+    private: ArtificialIntelligenceInterface artificialIntelligenceInterface;
 
-    private: const aiVistor: Visitor;
+    private: Visitor aiVistor;
 
-    private: lastDirection: Direction = DirectionFactory.getInstance()!.NO_DIRECTION;
+    private: Direction lastDirection = DirectionFactory::getInstance().NO_DIRECTION;
 
-public constructor (AllBinaryLayer ownerLayerInterface, ArtificialIntelligenceInterface artificialIntelligenceInterface, GameInput gameInput, Visitor visitor);
-
-                //@Throws(Exception.constructor)
-            
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
-
-    init();
+public: DiveAndDirectionalTrackingAI(AllBinaryLayer ownerLayerInterface, ArtificialIntelligenceInterface artificialIntelligenceInterface, GameInput gameInput, Visitor visitor);
 
                 //@Throws(Exception.constructor)
             
-    target(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
+
+    private: void init();
 
                 //@Throws(Exception.constructor)
             
-    verticalTargeting(int32_t x);
+    private: void target(AllBinaryLayerManager allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    horizontalTargeting(int32_t y);
-
-    setDive();
+    private: void verticalTargeting(int32_t x);
 
                 //@Throws(Exception.constructor)
             
-    moveRight();
+    private: void horizontalTargeting(int32_t y);
+
+    private: void setDive();
 
                 //@Throws(Exception.constructor)
             
-    moveLeft();
+    private: void moveRight();
 
                 //@Throws(Exception.constructor)
             
-    moveDown();
+    private: void moveLeft();
 
                 //@Throws(Exception.constructor)
             
-    moveUp();
+    private: void moveDown();
 
                 //@Throws(Exception.constructor)
             
-    dive();
+    private: void moveUp();
 
                 //@Throws(Exception.constructor)
             
-    attack();
+    private: void dive();
 
                 //@Throws(Exception.constructor)
             
-    drop();
+    private: void attack();
 
-    bool isBeyondTarget();
+                //@Throws(Exception.constructor)
+            
+    private: void drop();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    private: bool isBeyondTarget();
 
-    public onMovement(TrackingEvent trackingEvent);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onDestroyed(DestroyedEvent destroyedEvent);
+    public: void onMovement(TrackingEvent trackingEvent);
 
-    public setLastDirection(Direction lastDirection);
+    public: void onDestroyed(DestroyedEvent destroyedEvent);
 
-    public setLastKey(int32_t lastKey);
+    public: void setLastDirection(Direction lastDirection);
 
-    public Direction getLastDirection();
+    public: void setLastKey(int32_t lastKey);
 
-    public string toString();
+    public: Direction getLastDirection();
+
+    public: std::string toString();
 
 };
 

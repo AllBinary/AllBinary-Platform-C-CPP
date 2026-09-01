@@ -63,11 +63,10 @@
 class BaseBasicArrayListCache
             : public Object
          {
-        
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    public string log();
+    public: std::string log();
 
 };
 

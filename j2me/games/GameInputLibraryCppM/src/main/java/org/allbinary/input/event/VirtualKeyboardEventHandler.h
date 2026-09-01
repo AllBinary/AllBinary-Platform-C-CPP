@@ -71,25 +71,24 @@
 #include "VirtualKeyboardEventListenerInterface.h"
 
 class VirtualKeyboardEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: VirtualKeyboardEventHandler = new VirtualKeyboardEventHandler();
+    private: static const VirtualKeyboardEventHandler gameKeyEventHandler = VirtualKeyboardEventHandler();
 
-    public static VirtualKeyboardEventHandler getInstance();
+    public: static VirtualKeyboardEventHandler getInstance();
 
-private constructor ();
+private: VirtualKeyboardEventHandler();
 
-    public const SHOW_EVENT: VirtualKeyboardEvent = new VirtualKeyboardEvent(BooleanFactory.getInstance()!.TRUE);
+    public: const VirtualKeyboardEvent SHOW_EVENT = VirtualKeyboardEvent(BooleanFactory::getInstance().TRUE);
 
-    public const HIDE_EVENT: VirtualKeyboardEvent = new VirtualKeyboardEvent(BooleanFactory.getInstance()!.FALSE);
+    public: const VirtualKeyboardEvent HIDE_EVENT = VirtualKeyboardEvent(BooleanFactory::getInstance().FALSE);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 
 };
 

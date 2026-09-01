@@ -58,29 +58,28 @@
 class SensorFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: SensorFeatureFactory = new SensorFeatureFactory();
+    private: static SensorFeatureFactory instance() { return SensorFeatureFactory(); }
 
-    public static SensorFeatureFactory getInstance();
+    public: static SensorFeatureFactory getInstance();
 
-private constructor ();
+private: SensorFeatureFactory();
 
-    public const NO_ORIENTATION: SensorFeature = new SensorFeature("No Orientation");
+    public: const SensorFeature NO_ORIENTATION = SensorFeature("No Orientation");
 
-    public const ORIENTATION_SENSORS: SensorFeature = new SensorFeature("Orientation Sensors");
+    public: const SensorFeature ORIENTATION_SENSORS = SensorFeature("Orientation Sensors");
 
-    public const SIMULATED_ORIENTATION_SENSORS: SensorFeature = new SensorFeature("Simulated Orientation Sensors");
+    public: const SensorFeature SIMULATED_ORIENTATION_SENSORS = SensorFeature("Simulated Orientation Sensors");
 
-    public const YAW: SensorFeature = new SensorFeature("Yaw");
+    public: const SensorFeature YAW = SensorFeature("Yaw");
 
-    public const YAW_MINUS_RIGHT_PLUS_LEFT: SensorFeature = new SensorFeature("Yaw -Right +Left");
+    public: const SensorFeature YAW_MINUS_RIGHT_PLUS_LEFT = SensorFeature("Yaw -Right +Left");
 
-    public const YAW_MINUS_LEFT_PLUS_RIGHT: SensorFeature = new SensorFeature("Yaw -Left +Right ");
+    public: const SensorFeature YAW_MINUS_LEFT_PLUS_RIGHT = SensorFeature("Yaw -Left +Right ");
 
-    public const PITCH: SensorFeature = new SensorFeature("Pitch");
+    public: const SensorFeature PITCH = SensorFeature("Pitch");
 
-    public const ROLL: SensorFeature = new SensorFeature("Roll");
+    public: const SensorFeature ROLL = SensorFeature("Roll");
 
 };
 

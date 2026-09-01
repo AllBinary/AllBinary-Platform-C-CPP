@@ -69,16 +69,15 @@
 #include "GenericInputAutomationWorker.h"
 
 class GenericModuleFactory: public AbstractInputAutomationFactory {
-        
 
-    private: static NAME: string = "Generic" +InputAutomationModuleData.MODULE_NAME_END;
+    private: static std::string NAME = "Generic" +InputAutomationModuleData::MODULE_NAME_END;
 
-public constructor ();
+public: GenericModuleFactory();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public RunnableInterface getInstance();
+    public: RunnableInterface getInstance();
 
 };
 

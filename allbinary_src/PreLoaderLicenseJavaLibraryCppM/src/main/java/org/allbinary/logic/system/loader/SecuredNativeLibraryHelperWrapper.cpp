@@ -49,29 +49,28 @@
 #include "SecuredNativeLibraryInterface.h"
 
 class SecuredNativeLibraryHelperWrapper: public NativeLibraryHelperWrapper {
-        
 
-    private: securedNativeLibraryInterface: SecuredNativeLibraryInterface;
+    private: SecuredNativeLibraryInterface securedNativeLibraryInterface;
 
-public constructor (SecuredNativeLibraryInterface securedNativeLibraryInterface){
-            super(securedNativeLibraryInterface!.getLibraryName());
+public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface securedNativeLibraryInterface){
+            super(securedNativeLibraryInterface.getLibraryName());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.securedNativeLibraryInterface= securedNativeLibraryInterface;
+this->securedNativeLibraryInterface= securedNativeLibraryInterface;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public bool unlock(AbeClientInformationInterface abeClientInformation){
+    public: bool unlock(AbeClientInformationInterface abeClientInformation){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.securedNativeLibraryInterface!.unlock(AbKeys.getInstance()!.getKey(abeClientInformation, this.securedNativeLibraryInterface!.getName()));;
+                        return this->securedNativeLibraryInterface.unlock(AbKeys::getInstance().getKey(abeClientInformation, this->securedNativeLibraryInterface.getName()));;
     
 }
 

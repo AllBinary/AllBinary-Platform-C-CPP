@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASICCRYPT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_BASICCRYPT_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -65,19 +67,18 @@
 class BasicCrypt
             : public Object
         : public CryptInterface {
-        
 
-    private: const byteUtil: ByteUtil = ByteUtil.getInstance()!;
+    private: const ByteUtil byteUtil = ByteUtil::getInstance();
 
-    private: const key: std::vector<int8_t>;
+    private: std::vector<int8_t> key;
 
-public constructor (string keyAsString);
+public: BasicCrypt(std::string keyAsString);
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
 
-    public std::vector<int8_t> mutilate(std::vector<int8_t> array);
+    public: std::vector<int8_t> mutilate(std::vector<int8_t> array);
 
 };
 

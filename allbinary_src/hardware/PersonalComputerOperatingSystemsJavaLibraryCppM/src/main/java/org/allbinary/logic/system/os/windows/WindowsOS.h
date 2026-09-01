@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WindowsOS: public GenericOperatingSystem {
-        
 
-public constructor ();
+public: WindowsOS();
 
-    public bool isAutoHide();
+    public: bool isAutoHide();
 
 };
 

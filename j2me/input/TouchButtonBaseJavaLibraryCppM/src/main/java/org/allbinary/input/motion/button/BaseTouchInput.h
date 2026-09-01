@@ -66,17 +66,16 @@
 class BaseTouchInput
             : public Object
          {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-public constructor ();
+public: BaseTouchInput();
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -69,96 +69,93 @@
 #include "CapturedBufferedImagesCacheSingleton.h"
 #include "CapturedImageWorkerResultsEvent.h"
 
-class ScreenCaptureImagesWorker: public BasicEventHandler: public CaptureWorkerInterface {
-        
+class ScreenCaptureImagesWorker: public BasicEventHandler, public CaptureWorkerInterface {
 
-    private: static index: int64_t;
+    private: static int64_t index;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: screenScavangerRobot: ScreenScavangerRobot;
+    private: ScreenScavangerRobot screenScavangerRobot;
 
-public constructor (){
-
-            super();
-        screenScavangerRobot= new ScreenScavangerRobot();
+public: ScreenCaptureImagesWorker(){
+screenScavangerRobot= ScreenScavangerRobot();
     
-ScreenCaptureImagesWorker.index= ProcessingFrameIndexFactory.next();
+ScreenCaptureImagesWorker::index= ProcessingFrameIndexFactory::next();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread){
+    public: void setThread(Thread thread){
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
+this->setRunning(true);
     
 
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
     
 
         while(isRunning())
         {
-timeHelper!.setStartTimeTNT();
+timeHelper.setStartTimeTNT();
     
 
-    bufferedImage: BufferedImage = this.screenScavangerRobot!.getScreenAsBufferedImages()[0]!;;
+    BufferedImage bufferedImage = this->screenScavangerRobot.getScreenAsBufferedImages()[0];;
     
 
-    frame: Long = new Long(index);;
+    Long frame = Long(index);;
     
-ScreenCaptureImagesWorker.index++;
+ScreenCaptureImagesWorker::index++;
     
-CapturedBufferedImagesCacheSingleton.getInstance()!.add(new BufferedImageFrameCacheable(bufferedImage, frame));
+CapturedBufferedImagesCacheSingleton::getInstance().add(BufferedImageFrameCacheable(bufferedImage, frame));
     
 
-    capturedImageEvent: CapturedImageWorkerResultsEvent = new CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
+    CapturedImageWorkerResultsEvent capturedImageEvent = CapturedImageWorkerResultsEvent(this, frame, bufferedImage);;
     
 fireEvent(capturedImageEvent);
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
     
-this.setRunning(false);
+this->setRunning(false);
     
 }
 
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_TOPVIEW_BASICTOPVIEWGEOGRAPHICMAPCELLTYPE_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -71,27 +73,26 @@
 class BasicTopViewGeographicMapCellType
             : public Object
          {
-        
 
-    public static BasicTopViewGeographicMapCellType createType(string name, int32_t type, int32_t cost);
+    public: static BasicTopViewGeographicMapCellType createType(std::string name, int32_t type, int32_t cost);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const name: string;
+    public: std::string name;
 
-    public const cost: int32_t;
+    public: int32_t cost;
 
-    private: const types: std::vector<int32_t>;
+    private: std::vector<int32_t> types;
 
-public constructor (string name, BasicArrayList types, int32_t cost);
+public: BasicTopViewGeographicMapCellType(std::string name, BasicArrayList types, int32_t cost);
 
-    public bool isType(GeographicMapCellType type);
+    public: bool isType(GeographicMapCellType type);
 
-    public bool hasType(int32_t type);
+    public: bool hasType(int32_t type);
 
-    public std::vector<int32_t> getTypes();
+    public: std::vector<int32_t> getTypes();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

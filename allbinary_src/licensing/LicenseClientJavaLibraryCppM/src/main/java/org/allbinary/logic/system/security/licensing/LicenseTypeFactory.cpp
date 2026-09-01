@@ -46,49 +46,48 @@
 class LicenseTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: LicenseTypeFactory = new LicenseTypeFactory();
+    private: static LicenseTypeFactory instance() { return LicenseTypeFactory(); }
 
-    public static LicenseTypeFactory getInstance(){
+    public: static LicenseTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseTypeFactory.instance;
+                        return LicenseTypeFactory::instance();
     
 }
 
 
-    public const UNKNOWN: LicenseType = new LicenseType(CommonStrings.getInstance()!.UNKNOWN);
+    public: const LicenseType UNKNOWN = LicenseType(CommonStrings::getInstance().UNKNOWN);
 
-    public const DEMO: LicenseType = new LicenseType("Demo");
+    public: const LicenseType DEMO = LicenseType("Demo");
 
-    public const NORMAL: LicenseType = new LicenseType("Normal");
+    public: const LicenseType NORMAL = LicenseType("Normal");
 
-    public LicenseType getInstance(string name){
+    public: LicenseType getInstance(std::string name){
 
-                        if(this.DEMO.getName()!.compareTo(name) == 0)
+                        if(this->DEMO.getName().compareTo(name) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.DEMO;
+                        return this->DEMO;
     
 
                                     }
                                 
                              else 
-                        if(this.NORMAL.getName()!.compareTo(name) == 0)
+                        if(this->NORMAL.getName().compareTo(name) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NORMAL;
+                        return this->NORMAL;
     
 
                                     }
@@ -97,7 +96,7 @@ class LicenseTypeFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.UNKNOWN;
+                        return this->UNKNOWN;
     
 }
 

@@ -45,24 +45,21 @@
 class RaceTrackRoadsGeographicMapCellHistoryFactory
             : public Object
          {
-        
 
-    private: static geographicMapCellHistory: GeographicMapCellHistory = new GeographicMapCellHistory();
+    private: static GeographicMapCellHistory geographicMapCellHistory = GeographicMapCellHistory();
 
-    public static GeographicMapCellHistory getInstance(){
+    public: static GeographicMapCellHistory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceTrackRoadsGeographicMapCellHistoryFactory.geographicMapCellHistory;
+                        return RaceTrackRoadsGeographicMapCellHistoryFactory::geographicMapCellHistory;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: RaceTrackRoadsGeographicMapCellHistoryFactory(){
+}
 
 
 };

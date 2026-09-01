@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_STREAMUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -65,25 +67,24 @@
 class StreamUtil
             : public Object
          {
-        
 
-    private: static const instance: StreamUtil = new StreamUtil();
+    private: static StreamUtil instance() { return StreamUtil(); }
 
-    public static StreamUtil getInstance();
+    public: static StreamUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public OutputStream get(InputStream inputStream, OutputStream outputStream, std::vector<int8_t> buffer);
+private: StreamUtil();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> getByteArray(InputStream inputStream, ByteArrayOutputStream outputStream2, std::vector<int8_t> byteArray);
+    public: OutputStream get(InputStream inputStream, OutputStream outputStream, std::vector<int8_t> buffer);
 
-    public bool close(Closeable closeable);
+                //@Throws(Exception.constructor)
+            
+    public: std::vector<int8_t> getByteArray(InputStream inputStream, ByteArrayOutputStream outputStream2, std::vector<int8_t> byteArray);
+
+    public: bool close(Closeable closeable);
 
 };
 

@@ -42,9 +42,8 @@
         #include "TextFieldItemValidator.h"
 
 class UsernameValidator: public TextFieldItemValidator {
-        
 
-public constructor (ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
+public: UsernameValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
             super(textFieldItem, min, max, allowOnEmpty);
                     
 

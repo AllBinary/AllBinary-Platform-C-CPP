@@ -59,19 +59,18 @@
 class GeographicMapCellPositionAreaBase
             : public Object
         : public GeographicMapCellPositionAreaInterface {
-        
 
-    public static const NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE: GeographicMapCellPositionAreaBase = new GeographicMapCellPositionAreaBase();
+    public: static const GeographicMapCellPositionAreaBase NULL_GEOGRPAHIC_MAP_POSITION_AREA_BASE = GeographicMapCellPositionAreaBase();
 
-    public GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition();
+    public: GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition();
 
-    public BasicArrayList getOccupyingGeographicMapCellPositionList();
+    public: BasicArrayList getOccupyingGeographicMapCellPositionList();
 
-    public BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
 
                 //@Throws(Exception.constructor)
             
-    public update(BasicGeographicMap geographicMapInterface);
+    public: void update(BasicGeographicMap geographicMapInterface);
 
 };
 

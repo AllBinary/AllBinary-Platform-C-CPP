@@ -78,49 +78,44 @@
 class TitleView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: static const NAME: string = "None";
+    private: static const std::string NAME = "None";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: title: string;
+    private: std::string title;
 
-public constructor (){
-
-            super();
-        this.title= TitleView.NAME;
+public: TitleView(){
+this->title= TitleView::NAME;
     
 }
 
 
-public constructor (Node node){
+public: TitleView(Node node){
 
-            super();
-        
-    titleTextNode: Node = DomSearchHelper.getNode(TitleData.getInstance()!.TEXT, node.getChildNodes())!;;
+    Node titleTextNode = DomSearchHelper::getNode(TitleData::getInstance().TEXT, node.getChildNodes());;
     
 
-    valueNode: Node = DomSearchHelper.getNode(DomData.VALUE, titleTextNode!.getChildNodes())!;;
+    Node valueNode = DomSearchHelper::getNode(DomData::VALUE, titleTextNode.getChildNodes());;
     
-this.title= DomNodeHelper.getTextNodeValue(valueNode);
+this->title= DomNodeHelper::getTextNodeValue(valueNode);
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.title))
+                        if(StringValidationUtil::getInstance().isEmpty(this->title))
                         
                                     {
-                                    this.title= TitleView.NAME;
+                                    this->title= TitleView::NAME;
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Title: " +this.getTitle(), this, "Consructor()");
+                                    this->logUtil.putF("Title: " +this->getTitle(), this, "Consructor()");
     
 
                                     }
@@ -128,41 +123,39 @@ this.title= DomNodeHelper.getTextNodeValue(valueNode);
 }
 
 
-public constructor (HashMap<any, any> hashMap){
+public: TitleView(HashMap<any, any> hashMap){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("HashMap: " +hashMap.toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.getFormData(hashMap);
+this->getFormData(hashMap);
     
 }
 
 
-    public string getTitle(){
+    public: std::string getTitle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.title;
+                        return this->title;
     
 }
 
 
-    public getFormData(HashMap<any, any> hashMap){
-this.title= hashMap!.get(TitleData.getInstance()!.TEXT) as string;
+    public: void getFormData(HashMap<any, any> hashMap){
+this->title= hashMap.get(TitleData::getInstance().TEXT) as string;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.title))
+                        if(StringValidationUtil::getInstance().isEmpty(this->title))
                         
                                     {
-                                    this.title= TitleView.NAME;
+                                    this->title= TitleView::NAME;
     
 
                                     }
@@ -170,11 +163,11 @@ this.title= hashMap!.get(TitleData.getInstance()!.TEXT) as string;
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(TitleData.getInstance()!.TEXT, this.getTitle());
+hashMap.put(TitleData::getInstance().TEXT, this->getTitle());
     
 
 
@@ -187,15 +180,15 @@ hashMap!.put(TitleData.getInstance()!.TEXT, this.getTitle());
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.toHashMap()!;;
+    HashMap<any, any> hashMap = this->toHashMap();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("TitleView HashMap: " +hashMap!.toString(), this, "toXmlNode()");
+                                    this->logUtil.putF("TitleView HashMap: " +hashMap.toString(), this, "toXmlNode()");
     
 
                                     }
@@ -204,7 +197,7 @@ hashMap!.put(TitleData.getInstance()!.TEXT, this.getTitle());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueNodes(document, TitleData.getInstance()!.NAME, hashMap);;
+                        return ModDomHelper::createNameValueNodes(document, TitleData::getInstance().NAME, hashMap);;
     
 }
 

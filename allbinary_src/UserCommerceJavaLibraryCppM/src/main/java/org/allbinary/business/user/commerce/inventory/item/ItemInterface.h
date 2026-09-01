@@ -47,123 +47,122 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ItemInterface: public TableMappingInterface {
-        
 
-    setId(string itemId);
+    void setId(std::string itemId);
 
-    setNumber(string number);
+    void setNumber(std::string number);
 
-    setInBaskets(string value);
+    void setInBaskets(std::string value);
 
-    setWeight(string value);
+    void setWeight(std::string value);
 
-    setEnabled(string value);
+    void setEnabled(std::string value);
 
-    setNewOrUsed(string value);
+    void setNewOrUsed(std::string value);
 
-    setSummary(string value);
+    void setSummary(std::string value);
 
-    setDistributor(string value);
+    void setDistributor(std::string value);
 
-    setIdUsedByDistributor(string value);
+    void setIdUsedByDistributor(std::string value);
 
-    setProducedBy(string value);
+    void setProducedBy(std::string value);
 
-    setProductionDate(string value);
+    void setProductionDate(std::string value);
 
-    setStartProductionDate(string value);
+    void setStartProductionDate(std::string value);
 
-    setDescription(string value);
+    void setDescription(std::string value);
 
-    setKeywords(string value);
+    void setKeywords(std::string value);
 
-    setCategory(string value);
+    void setCategory(std::string value);
 
-    setType(string value);
+    void setType(std::string value);
 
-    setSmallImage(string value);
+    void setSmallImage(std::string value);
 
-    setMediumImage(string value);
+    void setMediumImage(std::string value);
 
-    setLargeImage(string value);
+    void setLargeImage(std::string value);
 
-    setTimeEntered(string value);
+    void setTimeEntered(std::string value);
 
-    setLastModified(string value);
+    void setLastModified(std::string value);
 
-    setPrice(Money value);
+    void setPrice(Money value);
 
-    setComment(string value);
+    void setComment(std::string value);
 
-    setCustoms(string value);
+    void setCustoms(std::string value);
 
-    setDownloads(string value);
+    void setDownloads(std::string value);
 
-    setGroups(string value);
+    void setGroups(std::string value);
 
-    setOptions(string value);
+    void setOptions(std::string value);
 
-    setPermissions(string value);
+    void setPermissions(std::string value);
 
-    setSpecials(string value);
+    void setSpecials(std::string value);
 
-    string getId();
+    std::string getId();
 
-    string getNumber();
+    std::string getNumber();
 
-    string getInBaskets();
+    std::string getInBaskets();
 
-    string getWeight();
+    std::string getWeight();
 
-    string getEnabled();
+    std::string getEnabled();
 
-    string getNewOrUsed();
+    std::string getNewOrUsed();
 
-    string getSummary();
+    std::string getSummary();
 
-    string getDistributor();
+    std::string getDistributor();
 
-    string getIdUsedByDistributor();
+    std::string getIdUsedByDistributor();
 
-    string getProducedBy();
+    std::string getProducedBy();
 
-    string getProductionDate();
+    std::string getProductionDate();
 
-    string getStartProductionDate();
+    std::string getStartProductionDate();
 
-    string getDescription();
+    std::string getDescription();
 
-    string getKeywords();
+    std::string getKeywords();
 
-    string getCategory();
+    std::string getCategory();
 
-    string getType();
+    std::string getType();
 
-    string getSmallImage();
+    std::string getSmallImage();
 
-    string getMediumImage();
+    std::string getMediumImage();
 
-    string getLargeImage();
+    std::string getLargeImage();
 
-    string getTimeEntered();
+    std::string getTimeEntered();
 
-    string getLastModified();
+    std::string getLastModified();
 
     Money getPrice();
 
-    string getComment();
+    std::string getComment();
 
-    string getCustoms();
+    std::string getCustoms();
 
-    string getDownloads();
+    std::string getDownloads();
 
-    string getGroups();
+    std::string getGroups();
 
-    string getOptions();
+    std::string getOptions();
 
-    string getPermissions();
+    std::string getPermissions();
 
-    string getSpecials();
+    std::string getSpecials();
 
     Money getTotal();
 

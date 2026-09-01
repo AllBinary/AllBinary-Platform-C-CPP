@@ -55,23 +55,22 @@
 #include "JPanel.h"
 
 class AbstractInputAutomationFactory: public InputAutomationModuleFactoryInterface {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: jPanel: JPanel;
+    private: JPanel jPanel;
 
-    private: helpSet: HelpSet;
+    private: HelpSet helpSet;
 
-public constructor (string name, JPanel jPanel, HelpSet helpSet);
+public: AbstractInputAutomationFactory(std::string name, JPanel jPanel, HelpSet helpSet);
 
-public constructor (string name, JPanel jPanel);
+public: AbstractInputAutomationFactory(std::string name, JPanel jPanel);
 
-    public string getName();
+    public: std::string getName();
 
-    public JPanel getConfigurationJPanel();
+    public: JPanel getConfigurationJPanel();
 
-    public HelpSet getHelpSet();
+    public: HelpSet getHelpSet();
 
 };
 

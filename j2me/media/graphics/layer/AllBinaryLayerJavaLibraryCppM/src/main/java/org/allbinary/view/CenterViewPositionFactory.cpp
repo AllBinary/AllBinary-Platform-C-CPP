@@ -39,7 +39,6 @@
         #include "CenterStaticViewPositionFactory.h"
 
 class CenterViewPositionFactory: public CenterStaticViewPositionFactory {
-        
 
 };
 

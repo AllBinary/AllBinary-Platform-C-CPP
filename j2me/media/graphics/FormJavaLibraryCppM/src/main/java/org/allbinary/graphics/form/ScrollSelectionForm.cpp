@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -106,20 +108,19 @@
 #include "FormType.h"
 
 class ScrollSelectionForm: public PaintableForm {
-        
 
-    static ScrollSelectionForm createForm(string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+    private: static ScrollSelectionForm createForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
 
         try {
             
-                        if(formPaintableFactory == ItemPaintableFactory.getInstance())
+                        if(formPaintableFactory == ItemPaintableFactory::getInstance())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ScrollSelectionForm(title, items, formPaintableFactory, border,  -3, backgroundBasicColor, foregroundBasicColor);
+                        return ScrollSelectionForm(title, items, formPaintableFactory, border,  -3, backgroundBasicColor, foregroundBasicColor);
     
 
                                     }
@@ -128,7 +129,7 @@ class ScrollSelectionForm: public PaintableForm {
                             
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                         }
@@ -140,21 +141,21 @@ class ScrollSelectionForm: public PaintableForm {
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    private: static NULL_SCROLL_SELECTION_FORM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_SCROLL_SELECTION_FORM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ScrollSelectionForm getNullScrollSelectionForm(){
+    public: static ScrollSelectionForm getNullScrollSelectionForm(){
 
-                        if(ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM= ScrollSelectionForm.createForm(StringUtil.getInstance()!.EMPTY_STRING, [], ItemPaintableFactory.getInstance(), 0, BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+                                    ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM= ScrollSelectionForm::createForm(StringUtil::getInstance().EMPTY_STRING, {}, ItemPaintableFactory::getInstance(), 0, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
     
 
                                     }
@@ -163,19 +164,19 @@ class ScrollSelectionForm: public PaintableForm {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm.NULL_SCROLL_SELECTION_FORM as ScrollSelectionForm;
+                        return ScrollSelectionForm::NULL_SCROLL_SELECTION_FORM as ScrollSelectionForm;
     
 }
 
 
-    private: static NULL_SCROLL_SELECTION_HORIZONTAL_FORM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_SCROLL_SELECTION_HORIZONTAL_FORM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ScrollSelectionForm getNullScrollSelectionFormHorizontal(){
+    public: static ScrollSelectionForm getNullScrollSelectionFormHorizontal(){
 
-                        if(ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM= ScrollSelectionForm.createForm(StringUtil.getInstance()!.EMPTY_STRING, [], ItemPaintableFactory.getInstance(), 0, BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+                                    ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM= ScrollSelectionForm::createForm(StringUtil::getInstance().EMPTY_STRING, {}, ItemPaintableFactory::getInstance(), 0, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
     
 
                                     }
@@ -184,41 +185,38 @@ class ScrollSelectionForm: public PaintableForm {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionForm.NULL_SCROLL_SELECTION_HORIZONTAL_FORM as ScrollSelectionForm;
+                        return ScrollSelectionForm::NULL_SCROLL_SELECTION_HORIZONTAL_FORM as ScrollSelectionForm;
     
 }
 
 
-    private: static const INSIDE_FORM: string = " inside form";
+    private: static const std::string INSIDE_FORM = " inside form";
 
-    private: static const IS_IN_FORM: string = "isInForm";
+    private: static const std::string IS_IN_FORM = "isInForm";
 
-    private: static const GET_SELECTED_INDEX: string = "getSelectedIndexForPoint";
+    private: static const std::string GET_SELECTED_INDEX = "getSelectedIndexForPoint";
 
 //inner= member=true isStatic=
 class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
- constructor (ScrollSelectionForm scrollSelectionForm){
-
-            super();
-        this.scrollSelectionForm= scrollSelectionForm;
+: ScrollSelectionFormHorizontalPaintable(ScrollSelectionForm scrollSelectionForm){
+this->scrollSelectionForm= scrollSelectionForm;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionForm!.paintItemHorizontal(graphics, index, item, dx, dy);;
+                        return this->scrollSelectionForm.paintItemHorizontal(graphics, index, item, dx, dy);;
     
 }
 
@@ -228,28 +226,25 @@ class ScrollSelectionFormHorizontalPaintable: public ItemIndexPaintable {
             
 //inner= member=true isStatic=
 class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
- constructor (ScrollSelectionForm scrollSelectionForm){
-
-            super();
-        this.scrollSelectionForm= scrollSelectionForm;
+: ScrollSelectionFormVerticalPaintable(ScrollSelectionForm scrollSelectionForm){
+this->scrollSelectionForm= scrollSelectionForm;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionForm!.paintItemVertical(graphics, index, item, dx, dy);;
+                        return this->scrollSelectionForm.paintItemVertical(graphics, index, item, dx, dy);;
     
 }
 
@@ -259,28 +254,25 @@ class ScrollSelectionFormVerticalPaintable: public ItemIndexPaintable {
             
 //inner= member=true isStatic=
 class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
- constructor (ScrollSelectionForm scrollSelectionForm){
-
-            super();
-        this.scrollSelectionForm= scrollSelectionForm;
+: ScrollSelectionFormTempHorizontalPaintable(ScrollSelectionForm scrollSelectionForm){
+this->scrollSelectionForm= scrollSelectionForm;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t paint(Graphics graphics, int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionForm!.paintItemTempHorizontal(graphics, index, item, dx, dy);;
+                        return this->scrollSelectionForm.paintItemTempHorizontal(graphics, index, item, dx, dy);;
     
 }
 
@@ -290,28 +282,25 @@ class ScrollSelectionFormTempHorizontalPaintable: public ItemIndexPaintable {
             
 //inner= member=true isStatic=
 class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
- constructor (ScrollSelectionForm multipleScrollSelectionForm){
-
-            super();
-        this.scrollSelectionForm= multipleScrollSelectionForm;
+: ScrollSelectionFormHorizontalDx(ScrollSelectionForm multipleScrollSelectionForm){
+this->scrollSelectionForm= multipleScrollSelectionForm;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionForm!.getSelectedIndexForPointHorizontalDx(index, item, dx, dy);;
+                        return this->scrollSelectionForm.getSelectedIndexForPointHorizontalDx(index, item, dx, dy);;
     
 }
 
@@ -321,28 +310,25 @@ class ScrollSelectionFormHorizontalDx: public ItemIndexDx {
             
 //inner= member=true isStatic=
 class ScrollSelectionFormVericalDx: public ItemIndexDx {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
- constructor (ScrollSelectionForm multipleScrollSelectionForm){
-
-            super();
-        this.scrollSelectionForm= multipleScrollSelectionForm;
+: ScrollSelectionFormVericalDx(ScrollSelectionForm multipleScrollSelectionForm){
+this->scrollSelectionForm= multipleScrollSelectionForm;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionForm!.getSelectedIndexForPointVerticalDx(index, item, dx, dy);;
+                        return this->scrollSelectionForm.getSelectedIndexForPointVerticalDx(index, item, dx, dy);;
     
 }
 
@@ -352,28 +338,25 @@ class ScrollSelectionFormVericalDx: public ItemIndexDx {
             
 //inner= member=true isStatic=
 class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
- constructor (ScrollSelectionForm multipleScrollSelectionForm){
-
-            super();
-        this.scrollSelectionForm= multipleScrollSelectionForm;
+: ScrollSelectionFormTempHorizontalDx(ScrollSelectionForm multipleScrollSelectionForm){
+this->scrollSelectionForm= multipleScrollSelectionForm;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionForm!.getSelectedIndexForPointTempHorizontalDx(index, item, dx, dy);;
+                        return this->scrollSelectionForm.getSelectedIndexForPointTempHorizontalDx(index, item, dx, dy);;
     
 }
 
@@ -381,84 +364,84 @@ class ScrollSelectionFormTempHorizontalDx: public ItemIndexDx {
 };
 
             
-    private: const rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;
+    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    const border: int32_t;
+    protected: int32_t border;
 
-    const halfBorder: int32_t;
+    protected: int32_t halfBorder;
 
-    private: buttonBasicColor: BasicColor;
+    private: BasicColor buttonBasicColor;
 
-    scrollSelectionFormFormTypeItemIndexPaintable: ItemIndexPaintable = ItemIndexPaintable.getInstance()!;
+    protected: ItemIndexPaintable scrollSelectionFormFormTypeItemIndexPaintable = ItemIndexPaintable::getInstance();
 
-    private: formTypeItemIndexDx: ItemIndexDx = ItemIndexDx.getInstance()!;
+    private: ItemIndexDx formTypeItemIndexDx = ItemIndexDx::getInstance();
 
-    paintable: ItemPaintable = ItemPaintableFactory.getInstance()!;
+    protected: ItemPaintable paintable = ItemPaintableFactory::getInstance();
 
-    private: const adjustedExtraBorder: int32_t;
+    private: int32_t adjustedExtraBorder;
 
-public constructor (string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: ScrollSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(title, items, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.adjustedExtraBorder= adjustedExtraBorder;
+this->adjustedExtraBorder= adjustedExtraBorder;
     
-this.buttonBasicColor= foregroundBasicColor;
+this->buttonBasicColor= foregroundBasicColor;
     
-this.border= border;
+this->border= border;
     
-this.halfBorder= (border>>1);
+this->halfBorder= (border>>1);
     
-this.paintable= formPaintableFactory!.getInstanceItemPaintable(this);
+this->paintable= formPaintableFactory.getInstanceItemPaintable(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle, FormType formType){
+    public: void init(Rectangle rectangle, FormType formType){
 super.init(rectangle, formType);
     
 
-    formTypeFactory: FormTypeFactory = FormTypeFactory.getInstance()!;;
+    FormTypeFactory formTypeFactory = FormTypeFactory::getInstance();;
     
 
-                        if(formType == formTypeFactory!.HORIZONTAL_FORM)
+                        if(formType == formTypeFactory.HORIZONTAL_FORM)
                         
                                     {
-                                    this.scrollSelectionFormFormTypeItemIndexPaintable= new this.ScrollSelectionFormHorizontalPaintable(this);
+                                    this->scrollSelectionFormFormTypeItemIndexPaintable= ScrollSelectionFormHorizontalPaintable(this);
     
-this.formTypeItemIndexDx= new this.ScrollSelectionFormHorizontalDx(this);
+this->formTypeItemIndexDx= ScrollSelectionFormHorizontalDx(this);
     
 
                                     }
                                 
                              else 
-                        if(formType == formTypeFactory!.VERTICAL_CENTER_FORM)
+                        if(formType == formTypeFactory.VERTICAL_CENTER_FORM)
                         
                                     {
-                                    this.scrollSelectionFormFormTypeItemIndexPaintable= new this.ScrollSelectionFormVerticalPaintable(this);
+                                    this->scrollSelectionFormFormTypeItemIndexPaintable= ScrollSelectionFormVerticalPaintable(this);
     
-this.formTypeItemIndexDx= new this.ScrollSelectionFormVericalDx(this);
+this->formTypeItemIndexDx= ScrollSelectionFormVericalDx(this);
     
 
                                     }
                                 
                              else 
-                        if(formType == formTypeFactory!.TEMP_HORIZONTAL_FORM)
+                        if(formType == formTypeFactory.TEMP_HORIZONTAL_FORM)
                         
                                     {
-                                    this.scrollSelectionFormFormTypeItemIndexPaintable= new this.ScrollSelectionFormTempHorizontalPaintable(this);
+                                    this->scrollSelectionFormFormTypeItemIndexPaintable= ScrollSelectionFormTempHorizontalPaintable(this);
     
-this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
+this->formTypeItemIndexDx= ScrollSelectionFormTempHorizontalDx(this);
     
 
                                     }
                                 
                              else 
-                        if(formType == formTypeFactory!.NULL_FORM_TYPE)
+                        if(formType == formTypeFactory.NULL_FORM_TYPE)
                         
                                     {
                                     
@@ -468,7 +451,7 @@ this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
                             
 
 
-                            throw new Exception(formTypeFactory!.UNK);
+                            throw Exception(formTypeFactory.UNK);
                     
 
                         }
@@ -476,33 +459,33 @@ this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public int32_t paintItemHorizontal(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
+    public: int32_t paintItemHorizontal(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
 
-    width: int32_t = item.getMinimumWidth()!;;
+    int32_t width = item.getMinimumWidth();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return x +width +this.border;
+                        return x +width +this->border;
     
 }
 
 
-    public int32_t paintItemVertical(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
+    public: int32_t paintItemVertical(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
 
-    height: int32_t = item.getMinimumHeight()!;;
+    int32_t height = item.getMinimumHeight();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return y +height +this.border;
+                        return y +height +this->border;
     
 }
 
 
-    public int32_t paintItemTempHorizontal(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
+    public: int32_t paintItemTempHorizontal(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
 
 
 
@@ -512,37 +495,37 @@ this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
 }
 
 
-    public int32_t getSelectedIndexForPointHorizontalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getSelectedIndexForPointHorizontalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return dx -this.halfBorder;
+                        return dx -this->halfBorder;
     
 }
 
 
-    public int32_t getSelectedIndexForPointVerticalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getSelectedIndexForPointVerticalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return dx +this.getDiffX(item);
+                        return dx +this->getDiffX(item);
     
 }
 
 
-    public int32_t getSelectedIndexForPointTempHorizontalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
+    public: int32_t getSelectedIndexForPointTempHorizontalDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return dx +this.getDiffX(item);
+                        return dx +this->getDiffX(item);
     
 }
 
 
-    public int32_t append(ABCustomItem item){
+    public: int32_t append(ABCustomItem item){
 
 
 
@@ -554,9 +537,9 @@ this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
 
                 //@Throws(Exception.constructor)
             
-    public ABCustomItem getSelectedItem(GPoint point){
+    public: ABCustomItem getSelectedItem(GPoint point){
 
-    index: int32_t = this.getSelectedIndexForPoint(point)!;;
+    int32_t index = this->getSelectedIndexForPoint(point);;
     
 
                         if(index !=  -1)
@@ -566,7 +549,7 @@ this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.get(index);;
+                        return this->get(index);;
     
 
                                     }
@@ -576,7 +559,7 @@ this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem.getNullInstance();;
+                        return ABCustomItem::getNullInstance();;
     
 
                         }
@@ -586,21 +569,21 @@ this.formTypeItemIndexDx= new this.ScrollSelectionFormTempHorizontalDx(this);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getItemIndex(ABCustomItem item){
+    public: int32_t getItemIndex(ABCustomItem item){
 
-    nextItem: ABCustomItem;;
+    ABCustomItem nextItem;;
     
 
-    size: int32_t = this.size()!;;
+    int32_t size = this->size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-nextItem= this.get(index) as ABCustomItem;
+nextItem= this->get(index) as ABCustomItem;
     
 
                         if(nextItem == item)
@@ -626,7 +609,7 @@ nextItem= this.get(index) as ABCustomItem;
 }
 
 
-    public int32_t getStartIndex(){
+    public: int32_t getStartIndex(){
 
 
 
@@ -638,84 +621,84 @@ nextItem= this.get(index) as ABCustomItem;
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getSelectedIndexForPoint(GPoint point){
+    public: int32_t getSelectedIndexForPoint(GPoint point){
 
-    start: int32_t = this.getStartIndex()!;;
-    
-
-    size: int32_t = this.size()!;;
+    int32_t start = this->getStartIndex();;
     
 
-    dx: int32_t = this.getDx()!;;
+    int32_t size = this->size();;
     
 
-    dy: int32_t = this.getDy()!;;
+    int32_t dx = this->getDx();;
     
 
-    formTypeFactory: FormTypeFactory = FormTypeFactory.getInstance()!;;
+    int32_t dy = this->getDy();;
     
 
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    FormTypeFactory formTypeFactory = FormTypeFactory::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(commonLabels!.START_LABEL);
-    
-stringBuffer!.appendint(start);
-    
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
-    
-stringBuffer!.append(commonLabels!.TOTAL_LABEL);
-    
-stringBuffer!.appendint(size);
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELECTED_INDEX);
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
 
-    item: ABCustomItem;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append(commonLabels.START_LABEL);
+    
+stringBuffer.appendint(start);
+    
+stringBuffer.append(CommonSeps::getInstance().SPACE);
+    
+stringBuffer.append(commonLabels.TOTAL_LABEL);
+    
+stringBuffer.appendint(size);
+    
+this->logUtil.putF(stringBuffer.toString(), this, ScrollSelectionForm::GET_SELECTED_INDEX);
     
 
-    width: int32_t= 0;;
+    ABCustomItem item;;
     
 
-    height: int32_t= 0;;
+    int32_t width= 0;;
     
 
-    diffX: int32_t= 0;;
+    int32_t height= 0;;
+    
+
+    int32_t diffX= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = start;index < size; index++)
+    int32_t index = start;index < size; index++)
         {
-item= this.get(index);
+item= this->get(index);
     
 width= item.getMinimumWidth();
     
 height= item.getMinimumHeight();
     
-diffX= this.formTypeItemIndexDx!.getDx(index, item, dx, dy);
+diffX= this->formTypeItemIndexDx.getDx(index, item, dx, dy);
     
 
-                        if(this.rectangleCollisionUtil!.isInside(diffX, dy -this.halfBorder, diffX +width +this.border, dy +height +this.halfBorder +1, point.getX(), point.getY()))
+                        if(this->rectangleCollisionUtil.isInside(diffX, dy -this->halfBorder, diffX +width +this->border, dy +height +this->halfBorder +1, point.getX(), point.getY()))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(commonLabels!.ITEM_LABEL);
+stringBuffer.append(commonLabels.ITEM_LABEL);
     
-stringBuffer!.append(item.getLabel());
+stringBuffer.append(item.getLabel());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(commonLabels!.INDEX_LABEL);
+stringBuffer.append(commonLabels.INDEX_LABEL);
     
-stringBuffer!.appendint(index);
+stringBuffer.appendint(index);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELECTED_INDEX);
+this->logUtil.putF(stringBuffer.toString(), this, ScrollSelectionForm::GET_SELECTED_INDEX);
     
 
 
@@ -727,13 +710,13 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
 
-                        if(this.formType == formTypeFactory!.HORIZONTAL_FORM)
+                        if(this->formType == formTypeFactory.HORIZONTAL_FORM)
                         
                                     {
-                                    dx= dx +width +this.border;
+                                    dx= dx +width +this->border;
     
 
-                        if(dx > this.rectangle.getMaxX())
+                        if(dx > this->rectangle.getMaxX())
                         
                                     {
                                     break;
@@ -746,13 +729,13 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
                              else 
-                        if(this.formType == formTypeFactory!.VERTICAL_CENTER_FORM)
+                        if(this->formType == formTypeFactory.VERTICAL_CENTER_FORM)
                         
                                     {
-                                    dy= dy +height +this.border;
+                                    dy= dy +height +this->border;
     
 
-                        if(dy > this.rectangle.getMaxY())
+                        if(dy > this->rectangle.getMaxY())
                         
                                     {
                                     break;
@@ -765,7 +748,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
                              else 
-                        if(this.formType == formTypeFactory!.NULL_FORM_TYPE)
+                        if(this->formType == formTypeFactory.NULL_FORM_TYPE)
                         
                                     {
                                     
@@ -775,7 +758,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                             
 
 
-                            throw new Exception(formTypeFactory!.UNK);
+                            throw Exception(formTypeFactory.UNK);
                     
 
                         }
@@ -793,12 +776,12 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputKey(int32_t gameKeyCode){
+    public: int32_t processInputKey(int32_t gameKeyCode){
 
-    formTypeFactory: FormTypeFactory = FormTypeFactory.getInstance()!;;
+    FormTypeFactory formTypeFactory = FormTypeFactory::getInstance();;
     
 
-                        if(this.size() == 0)
+                        if(this->size() == 0)
                         
                                     {
                                     
@@ -811,14 +794,14 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
 
-    index: int32_t = this.getSelectedIndex()!;;
+    int32_t index = this->getSelectedIndex();;
     
 
-                        if(this.formType == formTypeFactory!.HORIZONTAL_FORM || this.formType == formTypeFactory!.TEMP_HORIZONTAL_FORM)
+                        if(this->formType == formTypeFactory.HORIZONTAL_FORM || this->formType == formTypeFactory.TEMP_HORIZONTAL_FORM)
                         
                                     {
                                     
-                        if(gameKeyCode == Canvas.RIGHT)
+                        if(gameKeyCode == Canvas::RIGHT)
                         
                                     {
                                     index++;
@@ -827,7 +810,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
                              else 
-                        if(gameKeyCode == Canvas.LEFT)
+                        if(gameKeyCode == Canvas::LEFT)
                         
                                     {
                                     index--;
@@ -839,11 +822,11 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
                              else 
-                        if(this.formType == formTypeFactory!.VERTICAL_CENTER_FORM)
+                        if(this->formType == formTypeFactory.VERTICAL_CENTER_FORM)
                         
                                     {
                                     
-                        if(gameKeyCode == Canvas.DOWN)
+                        if(gameKeyCode == Canvas::DOWN)
                         
                                     {
                                     index++;
@@ -852,7 +835,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
                              else 
-                        if(gameKeyCode == Canvas.UP)
+                        if(gameKeyCode == Canvas::UP)
                         
                                     {
                                     index--;
@@ -864,7 +847,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                                     }
                                 
                              else 
-                        if(this.formType == formTypeFactory!.NULL_FORM_TYPE)
+                        if(this->formType == formTypeFactory.NULL_FORM_TYPE)
                         
                                     {
                                     
@@ -874,19 +857,19 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                             
 
 
-                            throw new Exception(formTypeFactory!.UNK);
+                            throw Exception(formTypeFactory.UNK);
                     
 
                         }
                             
 
-    max: int32_t = this.size() -1;;
+    int32_t max = this->size() -1;;
     
 
                         if(index < 0)
                         
                                     {
-                                    this.setSelectedIndex(0);
+                                    this->setSelectedIndex(0);
     
 
                                     }
@@ -895,13 +878,13 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
                         if(index > max)
                         
                                     {
-                                    this.setSelectedIndex(max);
+                                    this->setSelectedIndex(max);
     
 
                                     }
                                 
                         else {
-                            this.setSelectedIndex(index);
+                            this->setSelectedIndex(index);
     
 
                         }
@@ -915,12 +898,12 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
 }
 
 
-    public bool isInForm(GPoint point){
+    public: bool isInForm(GPoint point){
 
-                        if(this.rectangleCollisionUtil!.isInside(this.x, this.y -this.halfBorder, this.rectangle.getMaxX() +this.border, this.rectangle.getMaxY() +this.border, point.getX(), point.getY()))
+                        if(this->rectangleCollisionUtil.isInside(this->x, this->y -this->halfBorder, this->rectangle.getMaxX() +this->border, this->rectangle.getMaxY() +this->border, point.getX(), point.getY()))
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append(StringUtil.getInstance()!.toString(point))!.append(ScrollSelectionForm.INSIDE_FORM)!.toString(), this, ScrollSelectionForm.IS_IN_FORM);
+                                    this->logUtil.putF(StringMaker().append(StringUtil::getInstance().toString(point)).append(ScrollSelectionForm::INSIDE_FORM).toString(), this, ScrollSelectionForm::IS_IN_FORM);
     
 
 
@@ -942,35 +925,35 @@ this.logUtil!.putF(stringBuffer!.toString(), this, ScrollSelectionForm.GET_SELEC
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
+    public: int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
 item.paintXY(graphics, x, y);
     
 
-    width: int32_t = item.getMinimumWidth()!;;
+    int32_t width = item.getMinimumWidth();;
     
 
-    height: int32_t = item.getMinimumHeight()!;;
+    int32_t height = item.getMinimumHeight();;
     
-graphics.setColor(this.getButtonBasicColor()!.intValue());
+graphics.setColor(this->getButtonBasicColor().intValue());
     
 
-    adjustedBorder: int32_t = 3;;
+    int32_t adjustedBorder = 3;;
     
-graphics.drawRect(x -this.halfBorder -adjustedBorder, y -this.halfBorder -adjustedBorder, width +this.border +this.adjustedExtraBorder, height +this.border +this.adjustedExtraBorder);
+graphics.drawRect(x -this->halfBorder -adjustedBorder, y -this->halfBorder -adjustedBorder, width +this->border +this->adjustedExtraBorder, height +this->border +this->adjustedExtraBorder);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionFormFormTypeItemIndexPaintable!.paint(graphics, index, item, x, y);;
+                        return this->scrollSelectionFormFormTypeItemIndexPaintable.paint(graphics, index, item, x, y);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
-graphics.setColor(this.getButtonBasicColor()!.intValue());
+    public: int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y){
+graphics.setColor(this->getButtonBasicColor().intValue());
     
 item.paintUnselected(graphics, x, y);
     
@@ -978,12 +961,12 @@ item.paintUnselected(graphics, x, y);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionFormFormTypeItemIndexPaintable!.paint(graphics, index, item, x, y);;
+                        return this->scrollSelectionFormFormTypeItemIndexPaintable.paint(graphics, index, item, x, y);;
     
 }
 
 
-    int32_t getDiffX(ABCustomItem item){
+    protected: int32_t getDiffX(ABCustomItem item){
 
 
 
@@ -993,38 +976,38 @@ item.paintUnselected(graphics, x, y);
 }
 
 
-    public int32_t getDx(){
+    public: int32_t getDx(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.x;
+                        return this->x;
     
 }
 
 
-    public int32_t getDy(){
+    public: int32_t getDy(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.y;
+                        return this->y;
     
 }
 
 
-    public setButtonBasicColor(BasicColor buttonBasicColor){
-this.buttonBasicColor= buttonBasicColor;
+    public: void setButtonBasicColor(BasicColor buttonBasicColor){
+this->buttonBasicColor= buttonBasicColor;
     
 }
 
 
-    BasicColor getButtonBasicColor(){
+    private: BasicColor getButtonBasicColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.buttonBasicColor;
+                        return this->buttonBasicColor;
     
 }
 

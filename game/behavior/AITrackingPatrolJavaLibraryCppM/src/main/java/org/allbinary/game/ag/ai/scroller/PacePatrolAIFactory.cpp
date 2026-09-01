@@ -64,18 +64,17 @@
 class PacePatrolAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
-hashtable.put(BasePatrolAI.MAX_DISTANCE, SmallIntegerSingletonFactory.getInstance()!.getAt(220));
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+hashtable.put(BasePatrolAI::MAX_DISTANCE, SmallIntegerSingletonFactory::getInstance().getAt(220));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PacePatrolAI(hashtable, ownerLayerInterface, gameInput);
+                        return PacePatrolAI(hashtable, ownerLayerInterface, gameInput);
     
 }
 

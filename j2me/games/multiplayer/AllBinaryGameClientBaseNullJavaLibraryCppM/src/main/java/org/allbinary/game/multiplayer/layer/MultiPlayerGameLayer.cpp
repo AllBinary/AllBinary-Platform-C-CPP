@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -61,10 +63,9 @@
 #include "RemoteInfo.h"
 #include "MultiplayerBehavior.h"
 
-class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer: public MultiPlayerGameLayerInterface {
-        
+class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer, public MultiPlayerGameLayerInterface {
 
-public constructor (RemoteInfo remoteInfo, std::vector<Group> groupInterface, string name, Rectangle layerInfo, ViewPositionBase viewPosition){
+public: MultiPlayerGameLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition){
             super(groupInterface, name, layerInfo, viewPosition);
                     
 
@@ -73,25 +74,25 @@ public constructor (RemoteInfo remoteInfo, std::vector<Group> groupInterface, st
 }
 
 
-    public MultiplayerBehavior getMultiplayerBehavior(){
+    public: MultiplayerBehavior getMultiplayerBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MultiplayerBehavior.NULL_MULTIPLAYER_BEHAVIOR;
+                        return MultiplayerBehavior::NULL_MULTIPLAYER_BEHAVIOR;
     
 }
 
 
-    public setPingInfo(bool show){
+    public: void setPingInfo(bool show){
 }
 
 
-    setFiring(int16_t firing){
+    protected: void setFiring(int16_t firing){
 }
 
 
-    int16_t getFiring(){
+    protected: int16_t getFiring(){
 
 
 

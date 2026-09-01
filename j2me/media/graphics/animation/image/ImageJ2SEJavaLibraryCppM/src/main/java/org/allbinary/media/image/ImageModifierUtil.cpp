@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,97 +72,96 @@
 class ImageModifierUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageModifierUtil = new ImageModifierUtil();
+    private: static ImageModifierUtil instance() { return ImageModifierUtil(); }
 
-    public static ImageModifierUtil getInstanceOrCreate(){
+    public: static ImageModifierUtil getInstanceOrCreate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageModifierUtil.instance;
+                        return ImageModifierUtil::instance();
     
 }
 
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    public setBasicColorP(BasicColor basicColor){
+    public: void setBasicColorP(BasicColor basicColor){
 }
 
 
-    private: const colorArray: std::vector<int32_t> = new Array(1);
+    private: const std::vector<int32_t> colorArray = new Array(1);
 
-    public setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
 
-    newBufferedImage: BufferedImage = this.imageUtil!.getBufferedImage(image)!;;
+    BufferedImage newBufferedImage = this->imageUtil.getBufferedImage(image);;
     
 
-    r: int16_t = basicColor!.red;;
+    int16_t r = basicColor.red;;
     
 
-    g: int16_t = basicColor!.green;;
+    int16_t g = basicColor.green;;
     
 
-    b: int16_t = basicColor!.blue;;
+    int16_t b = basicColor.blue;;
     
 
-    width: int32_t = image.getWidth()!;;
+    int32_t width = image.getWidth();;
     
 
-    height: int32_t = image.getHeight()!;;
+    int32_t height = image.getHeight();;
     
 
-    colorModel: ColorModel;;
+    ColorModel colorModel;;
     
 
-    dataElements: any;;
+    Object* dataElements;;
     
 
-    ax: int32_t= 0;;
+    int32_t ax= 0;;
     
 
-    rx: int32_t= 0;;
+    int32_t rx= 0;;
     
 
-    gx: int32_t= 0;;
+    int32_t gx= 0;;
     
 
-    bx: int32_t= 0;;
+    int32_t bx= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < width; index++)
+    int32_t index = 0;index < width; index++)
         {
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < height; index2++)
+    int32_t index2 = 0;index2 < height; index2++)
         {
-colorModel= newBufferedImage!.getColorModel();
+colorModel= newBufferedImage.getColorModel();
     
-dataElements= newBufferedImage!.getRaster()!.getDataElements(index, index2, 
+dataElements= newBufferedImage.getRaster().getDataElements(index, index2, 
                             nullptr);
     
-ax= colorModel!.getAlpha(dataElements);
+ax= colorModel.getAlpha(dataElements);
     
-rx= colorModel!.getRed(dataElements);
+rx= colorModel.getRed(dataElements);
     
-gx= colorModel!.getGreen(dataElements);
+gx= colorModel.getGreen(dataElements);
     
-bx= colorModel!.getBlue(dataElements);
+bx= colorModel.getBlue(dataElements);
     
 
                         if(rx != 0 || gx != 0 || bx != 0)
                         
                                     {
-                                    newBufferedImage!.setRGB(index, index2, (ax<<24) | (r<<16) | (g<<8) | (b));
+                                    newBufferedImage.setRGB(index, index2, (ax<<24) | (r<<16) | (g<<8) | (b));
     
 
                                     }
@@ -172,72 +173,72 @@ bx= colorModel!.getBlue(dataElements);
 }
 
 
-    public changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
 
-    newBufferedImage: BufferedImage = this.imageUtil!.getBufferedImage(image)!;;
+    BufferedImage newBufferedImage = this->imageUtil.getBufferedImage(image);;
     
 
-    MAX: float = 255;;
+    float MAX = 255;;
     
 
-    r: float = (basicColor!.red) /MAX;;
+    float r = (basicColor.red) /MAX;;
     
 
-    g: float = (basicColor!.green) /MAX;;
+    float g = (basicColor.green) /MAX;;
     
 
-    b: float = (basicColor!.blue) /MAX;;
+    float b = (basicColor.blue) /MAX;;
     
 
-    width: int32_t = image.getWidth()!;;
+    int32_t width = image.getWidth();;
     
 
-    height: int32_t = image.getHeight()!;;
+    int32_t height = image.getHeight();;
     
 
-    colorModel: ColorModel;;
+    ColorModel colorModel;;
     
 
-    dataElements: any;;
+    Object* dataElements;;
     
 
-    ax: int32_t= 0;;
+    int32_t ax= 0;;
     
 
-    rx: int32_t= 0;;
+    int32_t rx= 0;;
     
 
-    gx: int32_t= 0;;
+    int32_t gx= 0;;
     
 
-    bx: int32_t= 0;;
+    int32_t bx= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < width; index++)
+    int32_t index = 0;index < width; index++)
         {
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < height; index2++)
+    int32_t index2 = 0;index2 < height; index2++)
         {
-colorModel= newBufferedImage!.getColorModel();
+colorModel= newBufferedImage.getColorModel();
     
-dataElements= newBufferedImage!.getRaster()!.getDataElements(index, index2, 
+dataElements= newBufferedImage.getRaster().getDataElements(index, index2, 
                             nullptr);
     
-ax= colorModel!.getAlpha(dataElements);
+ax= colorModel.getAlpha(dataElements);
     
-rx= colorModel!.getRed(dataElements);
+rx= colorModel.getRed(dataElements);
     
-gx= colorModel!.getGreen(dataElements);
+gx= colorModel.getGreen(dataElements);
     
-bx= colorModel!.getBlue(dataElements);
+bx= colorModel.getBlue(dataElements);
     
 rx *= r;
     
@@ -245,7 +246,7 @@ gx *= g;
     
 bx *= b;
     
-newBufferedImage!.setRGB(index, index2, (ax<<24) | (rx<<16) | (gx<<8) | (bx));
+newBufferedImage.setRGB(index, index2, (ax<<24) | (rx<<16) | (gx<<8) | (bx));
     
 }
 
@@ -254,41 +255,41 @@ newBufferedImage!.setRGB(index, index2, (ax<<24) | (rx<<16) | (gx<<8) | (bx));
 }
 
 
-    public setAlpha(Image unusedOriginalImage, Image image, int32_t imageIndex, int32_t alphaInt){
+    public: void setAlpha(Image unusedOriginalImage, Image image, int32_t imageIndex, int32_t alphaInt){
 
-    alpha: int8_t = alphaInt;;
+    int8_t alpha = alphaInt;;
     
 
-    newBufferedImage: BufferedImage = this.imageUtil!.getBufferedImage(image)!;;
+    BufferedImage newBufferedImage = this->imageUtil.getBufferedImage(image);;
     
 
-    width: int32_t = image.getWidth()!;;
+    int32_t width = image.getWidth();;
     
 
-    height: int32_t = image.getHeight()!;;
+    int32_t height = image.getHeight();;
     
 
-    raster: WritableRaster = newBufferedImage!.getAlphaRaster()!;;
+    WritableRaster raster = newBufferedImage.getAlphaRaster();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < width; index++)
+    int32_t index = 0;index < width; index++)
         {
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < height; index2++)
+    int32_t index2 = 0;index2 < height; index2++)
         {
-raster.getPixel(index, index2, this.colorArray);
+raster.getPixel(index, index2, this->colorArray);
     
-this.colorArray[0]= alpha&this.colorArray[0];
+this->colorArray[0]= alpha&this->colorArray[0];
     
-raster.setPixel(index, index2, this.colorArray);
+raster.setPixel(index, index2, this->colorArray);
     
 }
 
@@ -297,32 +298,31 @@ raster.setPixel(index, index2, this.colorArray);
 }
 
 
-    public std::vector<Image> getImageArray(std::vector<Image> originalImageArray){
+    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray){
 
         try {
             
-    newImageArray: std::vector<Image> = new Array(originalImageArray!.length);;
+    std::vector<Image> newImageArray = new Array(originalImageArray.length);;
     
 
-    size: int32_t = newImageArray!.length
-                ;;
+    int32_t size = newImageArray.size();;
     
 
-    originalImage: Image;;
+    Image originalImage;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 originalImage= originalImageArray[index]!;
     
 
-    image: Image = ImageCreationUtil.getInstance()!.createImageWH(originalImage!.getWidth(), originalImage!.getHeight())!;;
+    Image image = ImageCreationUtil::getInstance().createImageWH(originalImage.getWidth(), originalImage.getHeight());;
     
-image.getGraphics()!.drawImage(originalImage, 0, 0, Anchor.TOP_LEFT);
+image.getGraphics().drawImage(originalImage, 0, 0, Anchor::TOP_LEFT);
     
 newImageArray[index]= image;
     
@@ -339,9 +339,9 @@ newImageArray[index]= image;
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, "getImageArray", e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, "getImageArray", e);
     
 
 
@@ -354,11 +354,11 @@ PreLogUtil.putOE(commonStrings!.EXCEPTION, this, "getImageArray", e);
 }
 
 
-    public handleImage(std::vector<Image> imageArray, int32_t index, Image image){
+    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image){
 }
 
 
-    public reset(){
+    public: void reset(){
 }
 
 

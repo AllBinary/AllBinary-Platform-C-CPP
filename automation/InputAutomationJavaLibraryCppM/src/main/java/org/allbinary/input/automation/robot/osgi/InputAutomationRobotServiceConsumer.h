@@ -51,9 +51,8 @@
         #include "InputAutomationRobotOSGIServiceVisitor.h"
 
 class InputAutomationRobotServiceConsumer: public InputAutomationServiceConsumer {
-        
 
-public constructor (BundleContext bundleContext);
+public: InputAutomationRobotServiceConsumer(BundleContext bundleContext);
 
 };
 

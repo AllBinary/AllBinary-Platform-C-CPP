@@ -42,14 +42,11 @@
         #include "UnitLayer.h"
 
 class UnitGameInputProcessor: public GameInputProcessor {
-        
 
-    const unitLayer: UnitLayer;
+    protected: UnitLayer unitLayer;
 
-public constructor (UnitLayer unitLayer){
-
-            super();
-        this.unitLayer= unitLayer;
+public: UnitGameInputProcessor(UnitLayer unitLayer){
+this->unitLayer= unitLayer;
     
 }
 

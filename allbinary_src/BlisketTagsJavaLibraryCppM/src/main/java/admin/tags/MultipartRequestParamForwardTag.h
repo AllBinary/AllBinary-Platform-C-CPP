@@ -72,23 +72,22 @@
 #include "AbTagData.h"
 
 class MultipartRequestParamForwardTag: public CustomTagSupport {
-        
 
-    private: page: string;
+    private: std::string page;
 
-    private: command: string;
+    private: std::string command;
 
-    private: paramVector: Vector;
+    private: Vector paramVector;
 
-    public setPage(string page);
+    public: void setPage(std::string page);
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public setParamVector(Vector paramVector);
+    public: void setParamVector(Vector paramVector);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

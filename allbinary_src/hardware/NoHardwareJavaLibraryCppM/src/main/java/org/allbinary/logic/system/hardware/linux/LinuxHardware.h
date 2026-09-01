@@ -97,41 +97,40 @@
 class LinuxHardware
             : public Object
         : public HardwareInterface {
-        
 
-public constructor ();
+public: LinuxHardware();
 
-    public MediaInterface getMultimedia(int32_t index);
+    public: MediaInterface getMultimedia(int32_t index);
 
-    public BridgeInterface getBridge(int32_t index);
+    public: BridgeInterface getBridge(int32_t index);
 
-    public CpuInterface getCpu(int32_t index);
+    public: CpuInterface getCpu(int32_t index);
 
-    public EthernetInterface getEthernet(int32_t index);
+    public: EthernetInterface getEthernet(int32_t index);
 
-    public FireWireInterface getFireWire(int32_t index);
+    public: FireWireInterface getFireWire(int32_t index);
 
-    public HardDriveControllerInterface getHardDriveController(int32_t index);
+    public: HardDriveControllerInterface getHardDriveController(int32_t index);
 
-    public HardDriveInterface getHardDrive(int32_t index);
+    public: HardDriveInterface getHardDrive(int32_t index);
 
-    public MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index);
+    public: MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index);
 
-    public MonitorInterface getMonitor(int32_t index);
+    public: MonitorInterface getMonitor(int32_t index);
 
-    public UsbInterface getUsb(int32_t index);
+    public: UsbInterface getUsb(int32_t index);
 
-    public VideoInterface getVideo(int32_t index);
+    public: VideoInterface getVideo(int32_t index);
 
-    public HardwareComponentInterface getComponent(int32_t index);
+    public: HardwareComponentInterface getComponent(int32_t index);
 
-    public string toString();
+    public: std::string toString();
 
-    public bool compareTo(HardwareInterface hardwareInterface);
+    public: bool compareTo(HardwareInterface hardwareInterface);
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
 
-    public bool isNextHardware(string nextLine);
+    public: bool isNextHardware(std::string nextLine);
 
 };
 

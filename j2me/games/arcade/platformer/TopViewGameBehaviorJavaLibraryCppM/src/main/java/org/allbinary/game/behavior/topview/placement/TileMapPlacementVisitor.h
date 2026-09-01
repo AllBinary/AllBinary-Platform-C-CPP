@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_TILEMAPPLACEMENTVISITOR_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/mapeditor/core/TiledMap.h>
@@ -48,9 +50,8 @@
 class TileMapPlacementVisitor
             : public Object
          {
-        
 
-    public visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
+    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
 
 };
 

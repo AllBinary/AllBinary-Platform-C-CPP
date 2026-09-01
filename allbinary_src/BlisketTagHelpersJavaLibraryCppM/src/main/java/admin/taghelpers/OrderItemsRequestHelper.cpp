@@ -65,56 +65,52 @@
         #include "TagHelper.h"
 
 class OrderItemsRequestHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: groupId: string;
+    private: std::string groupId;
 
-    private: status: string;
+    private: std::string status;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.request= pageContext!.getRequest() as HttpServletRequest;
+public: OrderItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    getFormData(){
-this.id= this.request.getParameter(OrderData.ID);
+    private: void getFormData(){
+this->id= this->request.getParameter(OrderData::ID);
     
-this.groupId= this.request.getParameter(ShippingMethodData.GROUP);
+this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
     
-this.status= this.request.getParameter(OrderHistoryData.STATUS);
+this->status= this->request.getParameter(OrderHistoryData::STATUS);
     
 }
 
 
-    public string setOrderStatus(string newStatus){
+    public: std::string setOrderStatus(std::string newStatus){
 
         try {
             
-                        if(newStatus == 
-                                    null
-                                )
-                        newStatus= this.status
+                        if(false)
+                        newStatus= this->status;
+                                
 
-    success: string = "Status successfully set to: " +newStatus;;
+    std::string success = "Status successfully set to: " +newStatus;;
     
-OrderItemsEntityFactory.getInstance()!.setStatus(this.id, this.groupId, newStatus);
+OrderItemsEntityFactory::getInstance().setStatus(this->id, this->groupId, newStatus);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "setOrderStatus(newStatus)");
+                                    this->logUtil.putF(success, this, "setOrderStatus(newStatus)");
     
 
                                     }
@@ -130,13 +126,13 @@ OrderItemsEntityFactory.getInstance()!.setStatus(this.id, this.groupId, newStatu
 } catch(e) 
             {
 
-    error: string = "Failed to view order table";;
+    std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setOrderStatus(newStatus)", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus(newStatus)", e);
     
 
                                     }
@@ -152,19 +148,19 @@ OrderItemsEntityFactory.getInstance()!.setStatus(this.id, this.groupId, newStatu
 }
 
 
-    public string setOrderStatus(){
+    public: std::string setOrderStatus(){
 
         try {
             
-    success: string = "Status successfully set to: " +this.status;;
+    std::string success = "Status successfully set to: " +this->status;;
     
-OrderItemsEntityFactory.getInstance()!.setStatus(this.id, this.groupId, this.status);
+OrderItemsEntityFactory::getInstance().setStatus(this->id, this->groupId, this->status);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "setOrderStatus(newStatus)");
+                                    this->logUtil.putF(success, this, "setOrderStatus(newStatus)");
     
 
                                     }
@@ -180,13 +176,13 @@ OrderItemsEntityFactory.getInstance()!.setStatus(this.id, this.groupId, this.sta
 } catch(e) 
             {
 
-    error: string = "Failed to view order table";;
+    std::string error = "Failed to view order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setOrderStatus(newStatus)", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus(newStatus)", e);
     
 
                                     }

@@ -53,37 +53,36 @@
 class Table
             : public Object
         : public TableInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public string drop();
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string create();
+    public: std::string drop();
 
                 //@Throws(Exception.constructor)
             
-    public string restore();
+    public: std::string create();
 
                 //@Throws(Exception.constructor)
             
-    public string backup();
+    public: std::string restore();
 
                 //@Throws(Exception.constructor)
             
-    public string insert();
+    public: std::string backup();
 
                 //@Throws(Exception.constructor)
             
-    public string delete();
+    public: std::string insert();
 
                 //@Throws(Exception.constructor)
             
-    public string update();
+    public: std::string delete_();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string update();
 
 };
 

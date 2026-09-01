@@ -45,11 +45,10 @@
 class GenericProfileActionsData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_CONFIGURATION_PROFILE_ACTIONS_NAME";
+    public: static std::string NAME = "GENERIC_CONFIGURATION_PROFILE_ACTIONS_NAME";
 
-private constructor ();
+private: GenericProfileActionsData();
 
 };
 

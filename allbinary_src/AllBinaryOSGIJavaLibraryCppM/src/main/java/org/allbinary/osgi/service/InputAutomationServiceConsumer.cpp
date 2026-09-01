@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -66,65 +68,62 @@
 class InputAutomationServiceConsumer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const osgiServiceUtil: OSGIServiceUtil = OSGIServiceUtil.getInstance()!;
+    protected: const OSGIServiceUtil osgiServiceUtil = OSGIServiceUtil::getInstance();
 
-    private: registryName: string;
+    private: std::string registryName;
 
-    private: bundleContext: BundleContext;
+    private: BundleContext bundleContext;
 
-    private: osgiServiceVisitorInterface: OSGIServiceVisitorInterface;
+    private: OSGIServiceVisitorInterface osgiServiceVisitorInterface;
 
-public constructor (string registryName, BundleContext bundleContext, OSGIServiceVisitorInterface osgiServiceVisitorInterface){
-
-            super();
-        this.setRegistryName(registryName);
+public: InputAutomationServiceConsumer(std::string registryName, BundleContext bundleContext, OSGIServiceVisitorInterface osgiServiceVisitorInterface){
+this->setRegistryName(registryName);
     
-this.setBundleContext(bundleContext);
+this->setBundleContext(bundleContext);
     
-this.setOsgiServiceVisitorInterface(osgiServiceVisitorInterface);
+this->setOsgiServiceVisitorInterface(osgiServiceVisitorInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.PROCESS);
+    public: void process(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
 
-    vector: Vector = this.osgiServiceUtil!.getServicesObjectVector(this.getBundleContext(), this.getServiceReferences())!;;
+    Vector vector = this->osgiServiceUtil.getServicesObjectVector(this->getBundleContext(), this->getServiceReferences());;
     
-this.logUtil!.putF("Processing " +vector.length +" Services", this, this.commonStrings!.PROCESS);
-    
-
-    size: int32_t = vector.length!;;
+this->logUtil.putF("Processing " +vector.length +" Services", this, this->commonStrings.PROCESS);
     
 
-    osgiServiceInterface: OSGIServiceInterface;;
+    int32_t size = vector.length;;
+    
+
+    OSGIServiceInterface osgiServiceInterface;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 osgiServiceInterface= vector.get(index) as OSGIServiceInterface;
     
 
-                        if(!getOsgiServiceVisitorInterface()!.visit(osgiServiceInterface))
+                        if(!getOsgiServiceVisitorInterface().visit(osgiServiceInterface))
                         
                                     {
                                     
 
 
-                            throw new Exception("Unable to process service: " +osgiServiceInterface);
+                            throw Exception("Unable to process service: " +osgiServiceInterface);
                     
 
                                     }
@@ -136,61 +135,61 @@ osgiServiceInterface= vector.get(index) as OSGIServiceInterface;
 
                 //@Throws(Exception.constructor)
             
-    std::vector<ServiceReference> getServiceReferences(){
+    private: std::vector<ServiceReference> getServiceReferences(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getBundleContext()!.getServiceReferences(this.getRegistryName(), 
+                        return this->getBundleContext().getServiceReferences(this->getRegistryName(), 
                             nullptr);;
     
 }
 
 
-    public BundleContext getBundleContext(){
+    public: BundleContext getBundleContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bundleContext;
+                        return this->bundleContext;
     
 }
 
 
-    public setBundleContext(BundleContext aBundleContext){
-this.bundleContext= aBundleContext;
+    public: void setBundleContext(BundleContext aBundleContext){
+this->bundleContext= aBundleContext;
     
 }
 
 
-    public string getRegistryName(){
+    public: std::string getRegistryName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.registryName;
+                        return this->registryName;
     
 }
 
 
-    public setRegistryName(string registryName){
-this.registryName= registryName;
+    public: void setRegistryName(std::string registryName){
+this->registryName= registryName;
     
 }
 
 
-    public OSGIServiceVisitorInterface getOsgiServiceVisitorInterface(){
+    public: OSGIServiceVisitorInterface getOsgiServiceVisitorInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.osgiServiceVisitorInterface;
+                        return this->osgiServiceVisitorInterface;
     
 }
 
 
-    public setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface osgiServiceVisitorInterface){
-this.osgiServiceVisitorInterface= osgiServiceVisitorInterface;
+    public: void setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface osgiServiceVisitorInterface){
+this->osgiServiceVisitorInterface= osgiServiceVisitorInterface;
     
 }
 

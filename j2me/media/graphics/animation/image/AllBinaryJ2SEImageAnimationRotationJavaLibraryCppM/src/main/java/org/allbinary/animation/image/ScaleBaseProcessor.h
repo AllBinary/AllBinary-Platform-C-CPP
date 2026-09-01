@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SCALEBASEPROCESSOR_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -48,13 +50,12 @@
 class ScaleBaseProcessor
             : public Object
          {
-        
 
-    private: static const instance: ScaleBaseProcessor = new ScaleBaseProcessor();
+    private: static ScaleBaseProcessor instance() { return ScaleBaseProcessor(); }
 
-    public static ScaleBaseProcessor getInstance();
+    public: static ScaleBaseProcessor getInstance();
 
-    public update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
+    public: void update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> imageToShowArray, int32_t index, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
 
 };
 

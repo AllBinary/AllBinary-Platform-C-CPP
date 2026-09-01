@@ -45,15 +45,14 @@
 class LicenseType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-protected constructor (string name);
+protected: LicenseType(std::string name);
 
-    setName(string name);
+    private: void setName(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
 };
 

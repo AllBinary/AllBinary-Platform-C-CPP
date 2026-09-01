@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -55,34 +57,26 @@
 #include "ModelViewProjection.h"
 
 class NullShaderComposite: public ShaderComposite {
-        
 
-    private: static const instance: NullShaderComposite = new class extends NullShaderComposite
-                                {
-                                
-    public init(GL10 gl){
-}
+    private: static NullShaderComposite instance() { return NullShaderComposite(); }
 
-                                }
-                            ;
-
-    public static ShaderComposite getInstance(){
+    public: static ShaderComposite getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullShaderComposite.instance;
+                        return NullShaderComposite::instance();
     
 }
 
 
-public constructor (string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor, OpenGLProcessor disableProgramShaderOpenGLProcessor){
+public: NullShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor, OpenGLProcessor disableProgramShaderOpenGLProcessor){
             super(requiresOpenGLVersion, shaderArray, compositeShaderUpdater, shaderInitializer, modelViewProjection, colorOpenGLProcessor, vertexOpenGLProcessor, disableProgramShaderOpenGLProcessor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.useProgramShaderOpenGLProcessor= NullOpenGLProcessorFactory.getInstance();
+this->useProgramShaderOpenGLProcessor= NullOpenGLProcessorFactory::getInstance();
     
 }
 

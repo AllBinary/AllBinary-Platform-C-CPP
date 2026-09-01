@@ -52,52 +52,47 @@
 /*actual*/ class ExceptionUtil
             : public Object
          {
-        
 
-    private: static const instance: ExceptionUtil = new ExceptionUtil();
+    private: static ExceptionUtil instance() { return ExceptionUtil(); }
 
-    /*actual*/ public static ExceptionUtil getInstance(){
+    /*actual*/ public: static ExceptionUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExceptionUtil.instance;
+                        return ExceptionUtil::instance();
     
 }
 
 
-    /*actual*/ public static const PRETEND_EXCEPTION: Exception = new Exception("Not Really An Exception");
+    /*actual*/ public: static const Exception PRETEND_EXCEPTION = Exception("Not Really An Exception");
 
-private constructor (){
-
-            super();
-        }
+private: ExceptionUtil(){
+}
 
 
-    private: const NONE: string = "No Stack Trace";
+    private: const std::string NONE = "No Stack Trace";
 
-    /*actual*/ public string getStackTrace(Throwable e){
+    /*actual*/ public: std::string getStackTrace(Throwable e){
 
                         if(e != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    byteArrayOutputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
     
 
-    printStream: PrintStream = new PrintStream(byteArrayOutputStream);;
+    PrintStream printStream = PrintStream(byteArrayOutputStream);;
     
 e.printStackTrace(printStream);
     
 
-    output: string = byteArrayOutputStream!.toString()!;;
+    std::string output = byteArrayOutputStream.toString();;
     
 
-                        if(output != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
@@ -116,7 +111,7 @@ e.printStackTrace(printStream);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NONE;
+                        return this->NONE;
     
 }
 

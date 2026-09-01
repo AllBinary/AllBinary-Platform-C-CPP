@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/RuntimeException.h"
@@ -48,76 +50,75 @@
 class GeographicMapCellTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: GeographicMapCellTypeFactory = new GeographicMapCellTypeFactory();
+    private: static GeographicMapCellTypeFactory instance() { return GeographicMapCellTypeFactory(); }
 
-    public static GeographicMapCellTypeFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellTypeFactory.instance;
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    private: const geographicMapCellTypeArray: std::vector<GeographicMapCellType> = new Array(512);
-
-    public GeographicMapCellType get(int32_t type){
+    public: static GeographicMapCellTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellTypeArray[type]!;
+                        return GeographicMapCellTypeFactory::instance();
     
 }
 
 
-    public std::vector<GeographicMapCellType> getGeographicMapCellTypeArray(){
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    private: const std::vector<GeographicMapCellType> geographicMapCellTypeArray = new Array(512);
+
+    public: GeographicMapCellType get(int32_t type){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellTypeArray;
+                        return this->geographicMapCellTypeArray[type]!;
     
 }
 
 
-    public int32_t getStartType(){
+    public: std::vector<GeographicMapCellType> getGeographicMapCellTypeArray(){
 
 
 
-                            throw new RuntimeException();
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->geographicMapCellTypeArray;
+    
+}
+
+
+    public: int32_t getStartType(){
+
+
+
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getEndType(){
+    public: int32_t getEndType(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getEmptyType(){
+    public: int32_t getEmptyType(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isPath(GeographicMapCellType cellType){
+    public: bool isPath(GeographicMapCellType cellType){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

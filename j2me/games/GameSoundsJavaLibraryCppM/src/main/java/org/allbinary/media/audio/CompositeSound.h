@@ -55,13 +55,12 @@
 #include "AllBinaryMediaManager.h"
 
 class CompositeSound: public Sound {
-        
 
-protected constructor (string resource);
+protected: CompositeSound(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    public init();
+    public: void init();
 
 };
 

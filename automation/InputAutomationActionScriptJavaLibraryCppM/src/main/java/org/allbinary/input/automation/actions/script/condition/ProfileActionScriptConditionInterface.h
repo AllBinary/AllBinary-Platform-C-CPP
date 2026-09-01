@@ -55,11 +55,10 @@
         #include "CustomTreeNodeInterface.h"
 
 class ProfileActionScriptConditionInterface: public ProfileActionScriptNodeInterface, public CustomTreeNodeInterface, public ProfileActionScriptItemInterface {
-        
 
-    addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+    void addProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
 
-    removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
+    void removeProcessor(ProfileActionScriptProcessorInterface profileActionProcessorInterface);
 
                 //@Throws(Exception.constructor)
             

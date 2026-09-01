@@ -48,24 +48,23 @@
 class CompleteMotionGestureInputToGameMotionGestureInput
             : public Object
          {
-        
 
-    private: static const instance: CompleteMotionGestureInputToGameMotionGestureInput = new CompleteMotionGestureInputToGameMotionGestureInput();
+    private: static CompleteMotionGestureInputToGameMotionGestureInput instance() { return CompleteMotionGestureInputToGameMotionGestureInput(); }
 
-    public static CompleteMotionGestureInputToGameMotionGestureInput getInstance(){
+    public: static CompleteMotionGestureInputToGameMotionGestureInput getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompleteMotionGestureInputToGameMotionGestureInput.instance;
+                        return CompleteMotionGestureInputToGameMotionGestureInput::instance();
     
 }
 
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public init(){
-PreLogUtil.put("No Touch Button = No Compound Motion Gestures", this, this.commonStrings!.INIT);
+    public: void init(){
+PreLogUtil::put("No Touch Button = No Compound Motion Gestures", this, this->commonStrings.INIT);
     
 }
 

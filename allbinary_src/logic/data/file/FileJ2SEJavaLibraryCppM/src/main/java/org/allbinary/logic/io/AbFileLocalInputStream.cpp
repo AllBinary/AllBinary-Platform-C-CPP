@@ -48,10 +48,9 @@
         #include "AbFileInputStream.h"
 
 class AbFileLocalInputStream: public AbFileInputStream {
-        
 
-public constructor (AbFile file){
-            super(AbFileNativeUtil.get(file));
+public: AbFileLocalInputStream(AbFile file){
+            super(AbFileNativeUtil::get(file));
                     
 
                             //For kotlin this is before the body of the constructor.

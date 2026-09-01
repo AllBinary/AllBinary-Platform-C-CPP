@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -80,78 +82,74 @@
 class BasePathFindingInfoFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public init(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
+    public: void init(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, std::vector<std::vector<int32_t>> mapArray){
 
 //inner=true member= isStatic=
 class RaceTrackGeographicMapCellPositionFactoryInitVisitor
             : public Object
         : public GeographicMapCellPositionFactoryInitVisitorInterface {
-        
 
-    private: startLineId: int32_t;
+    private: int32_t startLineId;
 
-    private: finishLineId: int32_t;
+    private: int32_t finishLineId;
 
-public constructor (){
+public: RaceTrackGeographicMapCellPositionFactoryInitVisitor(){
 
-            super();
-        
-    raceTrackGeographicMapCellTypeFactory: GeographicMapCellTypeFactory = geographicMapInterface!.getGeographicMapCellTypeFactory()!;;
+    GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory();;
     
-this.startLineId= raceTrackGeographicMapCellTypeFactory!.getStartType();
+this->startLineId= raceTrackGeographicMapCellTypeFactory.getStartType();
     
-this.finishLineId= raceTrackGeographicMapCellTypeFactory!.getEndType();
+this->finishLineId= raceTrackGeographicMapCellTypeFactory.getEndType();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
+    public: void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
 
-    row: int32_t = cellPosition!.getRow()!;;
+    int32_t row = cellPosition.getRow();;
     
 
-    column: int32_t = cellPosition!.getColumn()!;;
+    int32_t column = cellPosition.getColumn();;
     
 
         try {
             
-    cellTypeId: int32_t = mapArray[row]![column]!;;
+    int32_t cellTypeId = mapArray[row]![column];;
     
 
-    geographicCellType: int32_t = geographicMapInterface!.getCellTypeFromMapCellTypeInt(cellTypeId)!;;
+    int32_t geographicCellType = geographicMapInterface.getCellTypeFromMapCellTypeInt(cellTypeId);;
     
 
-                        if(geographicCellType == this.startLineId)
+                        if(geographicCellType == this->startLineId)
                         
                                     {
-                                    this::.addStartPathFindingNode(pathFindingInfo, cellPosition);
+                                    this->addStartPathFindingNode(pathFindingInfo, cellPosition);
     
 
                                     }
                                 
 
-                        if(geographicCellType == this.finishLineId)
+                        if(geographicCellType == this->finishLineId)
                         
                                     {
                                     
-                        if(geographicCellType == this.startLineId)
+                        if(geographicCellType == this->startLineId)
                         
                                     {
-                                    this::.addEndPathFindingNode(pathFindingInfo, geographicMapInterface!.getGeographicMapCellPositionFactoryInterface()!.getInstance(geographicMapInterface, cellPosition!.getColumn(), cellPosition!.getRow(), tiledLayer!.getColumns(), tiledLayer!.getRows(), tiledLayer!.getCellWidth(), tiledLayer!.getCellHeight()));
+                                    this->addEndPathFindingNode(pathFindingInfo, geographicMapInterface.getGeographicMapCellPositionFactoryInterface().getInstance(geographicMapInterface, cellPosition.getColumn(), cellPosition.getRow(), tiledLayer.getColumns(), tiledLayer.getRows(), tiledLayer.getCellWidth(), tiledLayer.getCellHeight()));
     
 
                                     }
                                 
                         else {
-                            this::.addEndPathFindingNode(pathFindingInfo, cellPosition);
+                            this->addEndPathFindingNode(pathFindingInfo, cellPosition);
     
 
                         }
@@ -160,16 +158,16 @@ this.finishLineId= raceTrackGeographicMapCellTypeFactory!.getEndType();
                                     }
                                 
 
-    raceTrackGeographicMapCellTypeFactory: GeographicMapCellTypeFactory = geographicMapInterface!.getGeographicMapCellTypeFactory()!;;
+    GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory();;
     
 
-    geographicMapCellTypeFactory: GeographicMapCellTypeFactory = GeographicMapCellTypeFactory.getInstance()!;;
+    GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();;
     
 
-                        if(raceTrackGeographicMapCellTypeFactory!.isPath(geographicMapCellTypeFactory!.get(geographicCellType)))
+                        if(raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellTypeFactory.get(geographicCellType)))
                         
                                     {
-                                    RaceTrackRoadsGeographicMapCellHistoryFactory.getInstance()!.track(cellPosition);
+                                    RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance().track(cellPosition);
     
 
                                     }
@@ -183,9 +181,9 @@ this.finishLineId= raceTrackGeographicMapCellTypeFactory!.getEndType();
 } catch(e) 
             {
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
-logUtil!.put(new StringMaker().append(commonSeps!.BRACKET_OPEN)!.appendint(row)!.append(commonSeps!.BRACKET_CLOSE)!.append(commonSeps!.BRACKET_OPEN)!.appendint(column)!.append("] in [")!.appendint(mapArray!.length)!.append(commonSeps!.BRACKET_CLOSE)!.append(commonSeps!.BRACKET_OPEN)!.appendint(mapArray[0]!.length)!.append(commonSeps!.BRACKET_CLOSE)!.toString(), this, "visit", e);
+logUtil.put(StringMaker().append(commonSeps.BRACKET_OPEN).appendint(row).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(column).append("] in [").appendint(mapArray.size()).append(commonSeps.BRACKET_CLOSE).append(commonSeps.BRACKET_OPEN).appendint(mapArray[0]!.size()).append(commonSeps.BRACKET_CLOSE).toString(), this, "visit", e);
     
 
 
@@ -200,34 +198,34 @@ logUtil!.put(new StringMaker().append(commonSeps!.BRACKET_OPEN)!.appendint(row)!
 };
 
             
-geographicMapInterface!.getGeographicMapCellPositionFactory()!.visit(new RaceTrackGeographicMapCellPositionFactoryInitVisitor());
+geographicMapInterface.getGeographicMapCellPositionFactory().visit(RaceTrackGeographicMapCellPositionFactoryInitVisitor());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    addStartPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition startGeographicMapCellPosition){
-pathFindingInfo!.addStartPathFindingNode(new PathFindingNode(NullUtil.getInstance()!.NULL_OBJECT, startGeographicMapCellPosition));
+    private: void addStartPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition startGeographicMapCellPosition){
+pathFindingInfo.addStartPathFindingNode(PathFindingNode(NullUtil::getInstance().NULL_OBJECT, startGeographicMapCellPosition));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    addEndPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition endGeographicMapCellPosition){
-pathFindingInfo!.addEndPathFindingNode(new PathFindingNode(NullUtil.getInstance()!.NULL_OBJECT, endGeographicMapCellPosition));
+    private: void addEndPathFindingNode(PathFindingInfo pathFindingInfo, GeographicMapCellPosition endGeographicMapCellPosition){
+pathFindingInfo.addEndPathFindingNode(PathFindingNode(NullUtil::getInstance().NULL_OBJECT, endGeographicMapCellPosition));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
+    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

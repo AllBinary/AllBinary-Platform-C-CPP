@@ -53,34 +53,33 @@
         #include "BasicConstantVelocityMovement.h"
 
 class CustomGravityConstantVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-    private: customGravity: int32_t;
+    private: int32_t customGravity;
 
-public constructor (BasicDecimal speedBasicDecimal, int32_t customGravity){
-            super(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal!.getUnscaled()), static_cast<int32_t>(speedBasicDecimal!.getUnscaled())));
+public: CustomGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal, int32_t customGravity){
+            super(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled())));
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.customGravity= customGravity;
+this->customGravity= customGravity;
     
 }
 
 
-    private: const gravityUtil: GravityUtil = GravityUtil.getInstance()!;
+    private: const GravityUtil gravityUtil = GravityUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer layer){
 super.process(layer);
     
-this.gravityUtil!.process(this.getVelocityProperties(), this.customGravity);
+this->gravityUtil.process(this->getVelocityProperties(), this->customGravity);
     
 
-    velocityProperties: VelocityProperties = this.getVelocityProperties() as VelocityProperties;;
+    VelocityProperties velocityProperties = this->getVelocityProperties() as VelocityProperties;;
     
-velocityProperties!.limitMaxYForwardVelocity();
+velocityProperties.limitMaxYForwardVelocity();
     
 }
 

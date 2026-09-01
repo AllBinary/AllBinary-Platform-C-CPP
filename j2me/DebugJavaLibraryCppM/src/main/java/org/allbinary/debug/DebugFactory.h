@@ -47,9 +47,8 @@
 class DebugFactory
             : public Object
          {
-        
 
-    public static DebugInterface getInstance();
+    public: static DebugInterface getInstance();
 
 };
 

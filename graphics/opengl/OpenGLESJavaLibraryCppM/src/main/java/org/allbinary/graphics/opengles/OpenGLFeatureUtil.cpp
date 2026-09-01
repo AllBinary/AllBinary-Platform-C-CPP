@@ -47,45 +47,42 @@
 class OpenGLFeatureUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLFeatureUtil = new OpenGLFeatureUtil();
+    private: static OpenGLFeatureUtil instance() { return OpenGLFeatureUtil(); }
 
-    public static OpenGLFeatureUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil.instance;
-    
-}
-
-
-    private: const anyThreed: bool;
-
-public constructor (){
-
-            super();
-        
-    openGLConfiguration: OpenGLConfiguration = OpenGLConfiguration.getInstance()!;;
-    
-
-    features: Features = Features.getInstance()!;;
-    
-
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
-    
-this.anyThreed= openGLConfiguration!.isOpenGL() && (features.isFeature(openGLFeatureFactory!.OPENGL_2D_AND_3D) || features.isFeature(openGLFeatureFactory!.OPENGL_3D));
-    
-}
-
-
-    public bool isAnyThreed(){
+    public: static OpenGLFeatureUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.anyThreed;
+                        return OpenGLFeatureUtil::instance();
+    
+}
+
+
+    private: bool anyThreed;
+
+public: OpenGLFeatureUtil(){
+
+    OpenGLConfiguration openGLConfiguration = OpenGLConfiguration::getInstance();;
+    
+
+    Features features = Features::getInstance();;
+    
+
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    
+this->anyThreed= openGLConfiguration.isOpenGL() && (features.isFeature(openGLFeatureFactory.OPENGL_2D_AND_3D) || features.isFeature(openGLFeatureFactory.OPENGL_3D));
+    
+}
+
+
+    public: bool isAnyThreed(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->anyThreed;
     
 }
 

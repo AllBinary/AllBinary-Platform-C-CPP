@@ -62,32 +62,29 @@
 class FileDomDataModel
             : public Object
         : public DomNodeInterface {
-        
 
-    private: file: AbFile;
+    private: AbFile file;
 
-public constructor (AbFile file){
-
-            super();
-        this.file= file;
+public: FileDomDataModel(AbFile file){
+this->file= file;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    tableMappingInterface: TableMappingInterface = new FileTableMapping(this.file) as TableMappingInterface;;
+    TableMappingInterface tableMappingInterface = FileTableMapping(this->file) as TableMappingInterface;;
     
 
-    hashMap: HashMap<any, any> = tableMappingInterface!.toHashMap()!;;
+    HashMap<any, any> hashMap = tableMappingInterface.toHashMap();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNodeWithValueNodes(document, "file", hashMap);;
+                        return ModDomHelper::createNodeWithValueNodes(document, "file", hashMap);;
     
 }
 

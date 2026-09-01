@@ -92,21 +92,20 @@
 class InventorySearchProductUtil
             : public Object
          {
-        
 
-    private: static const instance: InventorySearchProductUtil = new InventorySearchProductUtil();
+    private: static InventorySearchProductUtil instance() { return InventorySearchProductUtil(); }
 
-    public static InventorySearchProductUtil getInstance();
+    public: static InventorySearchProductUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const ITEM_NOT_FOUND: string = "Item Not Found.";
+    private: const std::string ITEM_NOT_FOUND = "Item Not Found.";
 
                 //@Throws(Exception.constructor)
             
-    public string getProduct(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, string product);
+    public: std::string getProduct(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, std::string product);
 
 };
 

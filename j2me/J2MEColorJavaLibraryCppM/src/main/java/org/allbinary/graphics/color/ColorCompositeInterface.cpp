@@ -46,7 +46,6 @@
 #include "BasicColor.h"
 
 class ColorCompositeInterface: public BasicColorCompositeSetterInterface {
-        
 
     BasicColor getBasicColorP()
 

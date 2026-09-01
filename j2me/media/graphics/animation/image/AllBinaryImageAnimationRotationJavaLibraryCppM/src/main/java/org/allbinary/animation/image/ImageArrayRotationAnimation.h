@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -54,21 +56,20 @@
 #include "ImageArrayRotationAnimationInfo.h"
 
 class ImageArrayRotationAnimation: public ImageArrayBaseRotationAnimation {
-        
 
                 //@Throws(Exception.constructor)
             
-    static ImageArrayRotationAnimation createAnimation(any = {} anyType, AnimationBehavior animationBehavior);
+    protected: static ImageArrayRotationAnimation createAnimation(Object* anyType, AnimationBehavior animationBehavior);
 
-    private: expectedTotalFrames: int32_t= 0;
+    private: int32_t expectedTotalFrames= 0;
 
-public constructor (std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior);
+public: ImageArrayRotationAnimation(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    init(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle);
+    private: void init(std::vector<Image> imageArray, AngleInfo angleInfo, int32_t totalAngle);
 
-    public setImageArray(std::vector<Image> imageArray);
+    public: void setImageArray(std::vector<Image> imageArray);
 
 };
 

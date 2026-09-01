@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_ALLBINARYGAMECANVAS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/System.h"
@@ -475,583 +477,582 @@
 #include "GameCanvasInputProcessor.h"
 #include "FormInputProcessor.h"
 
-class AllBinaryGameCanvas: public RunnableCanvas: public AllBinaryGameCanvasInterface, public GameCanvasRunnableInterface, public MenuListener, public IntermissionCompositeInterface, public IntermissionEnableListenerInterface, public PopupMenuInterface, public DisplayChangeEventListener, public UpdateMyFontInterface {
-        
+class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInterface, public GameCanvasRunnableInterface, public MenuListener, public IntermissionCompositeInterface, public IntermissionEnableListenerInterface, public PopupMenuInterface, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
-    private: static const id: int32_t = 0;
+    private: static const int32_t id = 0;
 
-    public static const TYPE: int32_t = 2;
+    public: static const int32_t TYPE = 2;
 
-    const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    protected: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    const touchFeatureFactory: TouchFeatureFactory = TouchFeatureFactory.getInstance()!;
+    protected: const TouchFeatureFactory touchFeatureFactory = TouchFeatureFactory::getInstance();
 
-    const openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;
+    protected: const OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
 
-    const touchButtonFactory: TouchButtonFactory = TouchButtonFactory.getInstance()!;
+    protected: const TouchButtonFactory touchButtonFactory = TouchButtonFactory::getInstance();
 
-    const gameAdStateFactory: GameAdStateFactory = GameAdStateFactory.getInstance()!;
+    protected: const GameAdStateFactory gameAdStateFactory = GameAdStateFactory::getInstance();
 
-    const gameStrings: GameStrings = GameStrings.getInstance()!;
+    protected: const GameStrings gameStrings = GameStrings::getInstance();
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()!;
+    private: const GameTickDisplayInfoSingleton gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
 
-    public const gameRunnable: GameCanvasRunnable = new GameCanvasRunnable(this);
+    public: const GameCanvasRunnable gameRunnable = GameCanvasRunnable(this);
 
-    public const gamePauseRunnable: GameCanvasPauseRunnable = new GameCanvasPauseRunnable(this);
+    public: const GameCanvasPauseRunnable gamePauseRunnable = GameCanvasPauseRunnable(this);
 
-    const formUtil: FormUtil = FormUtil.getInstance()!;
+    protected: const FormUtil formUtil = FormUtil::getInstance();
 
-    const myFormUtil: MyFormUtil = MyFormUtil.getInstance()!;
+    protected: const MyFormUtil myFormUtil = MyFormUtil::getInstance();
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    gameSpecificPaintable: Paintable = NullPaintable.getInstance()!;
+    protected: Paintable gameSpecificPaintable = NullPaintable::getInstance();
 
-    private: const sensorGameUpdateProcessor: SensorGameUpdateProcessor = new SingleSensorGameUpdateProcessor();
+    private: const SensorGameUpdateProcessor sensorGameUpdateProcessor = SingleSensorGameUpdateProcessor();
 
-    endGameInfo: EndGameInfo = new EndGameInfo();
+    protected: EndGameInfo endGameInfo = EndGameInfo();
 
-    private: const startIntermissionInterface: IntermissionInterface = new Intermission();
+    private: const IntermissionInterface startIntermissionInterface = Intermission();
 
-    private: const endLevelIntermissionInterface: IntermissionInterface = new Intermission();
+    private: const IntermissionInterface endLevelIntermissionInterface = Intermission();
 
-    gameLayerManager: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    protected: AllBinaryGameLayerManager gameLayerManager = AllBinaryGameLayerManager::getNullInstance();
 
-    private: gameState: GameState = this.gameStateFactory!.NO_GAME_STATE;
+    private: GameState gameState = this->gameStateFactory.NO_GAME_STATE;
 
-    private: gameOver: bool= false;
+    private: bool gameOver= false;
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-    private: const gameStateTimeHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper gameStateTimeHelper = TimeDelayHelper(0);
 
-    const highScoresHelper: HighScoresHelperBaseInterface;
+    protected: HighScoresHelperBaseInterface highScoresHelper;
 
-    private: highScoreSubmitted: bool= false;
+    private: bool highScoreSubmitted= false;
 
-    private: const realHighScoresPaintable: HighScoresPaintable = new HighScoresPaintable();
+    private: const HighScoresPaintable realHighScoresPaintable = HighScoresPaintable();
 
-    private: highScoresPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable highScoresPaintable = NullPaintable::getInstance();
 
-    private: localPlayerGameInputList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList localPlayerGameInputList = BasicArrayListD();
 
-    private: isCheating: bool= false;
+    private: bool isCheating= false;
 
-    private: hashtable: Hashtable<any, any> = this.nullUtil!.NULL_TABLE;
+    private: Hashtable<any, any> hashtable = this->nullUtil.NULL_TABLE;
 
-    private: isSingleKeyRepeatableProcessing: bool= false;
+    private: bool isSingleKeyRepeatableProcessing= false;
 
-    private: gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory = BasicBuildGameInitializerFactory.NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY;
+    private: BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface = BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY;
 
-    private: touchButtonsPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable touchButtonsPaintable = NullPaintable::getInstance();
 
-    touchPaintable: Paintable = NullPaintable.getInstance()!;
+    protected: Paintable touchPaintable = NullPaintable::getInstance();
 
-    private: cheatProcessor: PlayerGameInput = NoPlayerGameInput.getInstance()!;
+    private: PlayerGameInput cheatProcessor = NoPlayerGameInput::getInstance();
 
-    private: gameInputProcessor: Processor = Processor.getInstance()!;
+    private: Processor gameInputProcessor = Processor::getInstance();
 
-    private: endGameProcessor: Processor = Processor.getInstance()!;
+    private: Processor endGameProcessor = Processor::getInstance();
 
-    private: realEndGameProcessor: Processor = Processor.getInstance()!;
+    private: Processor realEndGameProcessor = Processor::getInstance();
 
-    private: startIntermissionProcessor: Processor = Processor.getInstance()!;
+    private: Processor startIntermissionProcessor = Processor::getInstance();
 
-    private: realStartIntermissionProcessor: Processor = Processor.getInstance()!;
+    private: Processor realStartIntermissionProcessor = Processor::getInstance();
 
-    private: endGamePaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable endGamePaintable = NullPaintable::getInstance();
 
-    private: endGameStatePaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable endGameStatePaintable = NullPaintable::getInstance();
 
-    nonBotPaintable: Paintable = NullPaintable.getInstance()!;
+    protected: Paintable nonBotPaintable = NullPaintable::getInstance();
 
-    private: intermissionPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable intermissionPaintable = NullPaintable::getInstance();
 
-    private: startIntermissionPaintable: InitUpdatePaintable = NullInitUpdatePaintable.getInstance()!;
+    private: InitUpdatePaintable startIntermissionPaintable = NullInitUpdatePaintable::getInstance();
 
-    private: mainStateProcessor: Processor = Processor.getInstance()!;
+    private: Processor mainStateProcessor = Processor::getInstance();
 
-    private: processGameProcessor: Processor = Processor.getInstance()!;
+    private: Processor processGameProcessor = Processor::getInstance();
 
-    private: const highScoresFactoryInterface: HighScoresFactoryInterface;
+    private: HighScoresFactoryInterface highScoresFactoryInterface;
 
-    private: startLevel: int32_t= 0;
+    private: int32_t startLevel= 0;
 
-    private: mainMenuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor mainMenuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: popupMenuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor popupMenuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: menuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: menuForm: ScrollSelectionForm = ScrollSelectionForm.getNullScrollSelectionForm()!;
+    private: ScrollSelectionForm menuForm = ScrollSelectionForm::getNullScrollSelectionForm();
 
-    private: formPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable formPaintable = NullPaintable::getInstance();
 
-    private: openMenuPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable openMenuPaintable = NullPaintable::getInstance();
 
-    private: menuPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable menuPaintable = NullPaintable::getInstance();
 
-    private: currentTouchInputFactory: BaseTouchInput = NoButtonsTouchInputFactory.getInstance()!;
+    private: BaseTouchInput currentTouchInputFactory = NoButtonsTouchInputFactory::getInstance();
 
-    colorFillPaintable: ColorFillBasePaintable = ColorFillPaintableFactory.getInstance()!.getInstance(this.basicColorFactory!.BLACK, true)!;
+    protected: ColorFillBasePaintable colorFillPaintable = ColorFillPaintableFactory::getInstance().getInstance(this->basicColorFactory.BLACK, true);
 
-    private: const baseGameStatistics: BaseGameStatistics = GameStatisticsFactory.getInstance()!;
+    private: const BaseGameStatistics baseGameStatistics = GameStatisticsFactory::getInstance();
 
-    private: const primaryPlayerQueue: PlayerQueue = PrimaryPlayerQueueFactory.getInstance()!;
+    private: const PlayerQueue primaryPlayerQueue = PrimaryPlayerQueueFactory::getInstance();
 
-    private: const secondaryPlayerQueue: PlayerQueue = SecondaryPlayerQueueFactory.getInstance()!;
+    private: const PlayerQueue secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
 
-    const BUILD_GAME: string = "buildGame";
+    protected: const std::string BUILD_GAME = "buildGame";
 
-    const gameTypeFactory: GameTypeFactory = GameTypeFactory.getInstance()!;
+    protected: const GameTypeFactory gameTypeFactory = GameTypeFactory::getInstance();
 
-    const screenCapture: ScreenCapture = ScreenCaptureFactory.getInstance()!;
+    protected: const ScreenCapture screenCapture = ScreenCaptureFactory::getInstance();
 
-    private: const basicMotionGesturesHandler: BasicMotionGesturesHandler = BasicMotionGesturesHandler.getInstance()!;
+    private: const BasicMotionGesturesHandler basicMotionGesturesHandler = BasicMotionGesturesHandler::getInstance();
 
-    private: const gameKeyEventHandler: GameKeyEventHandler = GameKeyEventHandler.getInstance()!;
+    private: const GameKeyEventHandler gameKeyEventHandler = GameKeyEventHandler::getInstance();
 
-    private: const gameBehavior: DemoGameBehavior;
+    private: const DemoGameBehavior gameBehavior;
 
-    private: const menuBehavior: BaseMenuBehavior;
+    private: const BaseMenuBehavior menuBehavior;
 
-    private: progressPaintable: PaintableInterface = ProgressCanvasFactory.getLazyInstance()!;
+    private: PaintableInterface progressPaintable = ProgressCanvasFactory::getLazyInstance();
 
-    fontHeightP: int32_t= 0;
+    protected: int32_t fontHeightP= 0;
 
-public constructor (CommandListener commandListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered);
+public: AllBinaryGameCanvas(CommandListener commandListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public BaseMenuBehavior getInGameMenuBehavior();
+    public: BaseMenuBehavior getInGameMenuBehavior();
 
-    public setCurrentThread();
+    public: void setCurrentThread();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
 
                 //@Throws(Exception.constructor)
             
-    public updateMenuFromEvent(DisplayChangeEvent displayChangeEvent);
+    public: void updateMenuFromEvent(DisplayChangeEvent displayChangeEvent);
 
                 //@Throws(Exception.constructor)
             
-    public processSleep();
+    public: void processSleep();
 
                 //@Throws(Exception.constructor)
             
-    initPopupMenu();
+    protected: void initPopupMenu();
 
-    initMenu();
-
-                //@Throws(Exception.constructor)
-            
-    initMenu2();
-
-    public updateMenu();
+    protected: void initMenu();
 
                 //@Throws(Exception.constructor)
             
-    public updateMenu2();
+    protected: void initMenu2();
+
+    public: void updateMenu();
+
+                //@Throws(Exception.constructor)
+            
+    public: void updateMenu2();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public pause();
+    public: void pause();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public unPause();
+    public: void unPause();
 
-    public bool isPausable();
-
-                //@Throws(Exception.constructor)
-            
-    public popupMenu();
+    public: bool isPausable();
 
                 //@Throws(Exception.constructor)
             
-    public popupMenu2();
+    public: void popupMenu();
 
                 //@Throws(Exception.constructor)
             
-    public toggleMenu();
-
-    public closeMenu();
-
-    public closeMenu2();
-
-    public open();
-
-    public close();
+    public: void popupMenu2();
 
                 //@Throws(Exception.constructor)
             
-    processorInit();
+    public: void toggleMenu();
 
-    initSpecialPaint();
+    public: void closeMenu();
+
+    public: void closeMenu2();
+
+    public: void open();
+
+    public: void close();
 
                 //@Throws(Exception.constructor)
             
-    init(AllBinaryGameLayerManager gameLayerManager, bool buffered);
+    protected: void processorInit();
 
-    public notifyIntermission(bool enable);
+    protected: void initSpecialPaint();
 
                 //@Throws(Exception.constructor)
             
-    public mediaInit();
+    private: void init(AllBinaryGameLayerManager gameLayerManager, bool buffered);
+
+    public: void notifyIntermission(bool enable);
+
+                //@Throws(Exception.constructor)
+            
+    public: void mediaInit();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    initConfigurable(AbeClientInformationInterface abeClientInformation);
+    protected: void initConfigurable(AbeClientInformationInterface abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    initApp(AbeClientInformationInterface abeClientInformation);
+    protected: void initApp(AbeClientInformationInterface abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    initTouch();
+    protected: void initTouch();
 
                 //@Throws(Exception.constructor)
             
-    public updateCurrentTouchInputFactory(BaseTouchInput nextTouchInput);
+    public: void updateCurrentTouchInputFactory(BaseTouchInput nextTouchInput);
 
                 //@Throws(Exception.constructor)
             
-    updateTouch();
+    protected: void updateTouch();
 
                 //@Throws(Exception.constructor)
             
-    updateTouch2();
+    protected: void updateTouch2();
 
                 //@Throws(Exception.constructor)
             
-    postInitTouch();
+    protected: void postInitTouch();
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    public addCommands();
+    public: void addCommands();
 
-    public itemStateChanged(Item item);
+    public: void itemStateChanged(Item item);
 
                 //@Throws(Exception.constructor)
             
-    public updateScreenButtonPaintable();
+    public: void updateScreenButtonPaintable();
 
-    public updateScreenButtonPaintable2();
+    public: void updateScreenButtonPaintable2();
 
-    public AllBinaryGameLayerManager getLayerManager();
+    public: AllBinaryGameLayerManager getLayerManager();
 
-    public setLayerManager(AllBinaryGameLayerManager layerManager);
+    public: void setLayerManager(AllBinaryGameLayerManager layerManager);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isGameOver();
+    public: bool isGameOver();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setGameOver(bool gameOver);
+    public: void setGameOver(bool gameOver);
 
                 //@Throws(Exception.constructor)
             
-    public processGameOver();
+    public: void processGameOver();
 
-    public bool isHighScoreSubmitted();
-
-                //@Throws(Exception.constructor)
-            
-    public setHighScoreSubmitted(bool highScoreSubmitted);
-
-    public GameState getGameState();
+    public: bool isHighScoreSubmitted();
 
                 //@Throws(Exception.constructor)
             
-    public setGameState(GameState gameState);
+    public: void setHighScoreSubmitted(bool highScoreSubmitted);
+
+    public: GameState getGameState();
 
                 //@Throws(Exception.constructor)
             
-    public updateGameState();
-
-    updateGameKeyEventProcessor();
-
-    removeAllGameKeyInputListenersOnBuild();
-
-    removeAllGameKeyInputListeners();
-
-    removeAllGameKeyInputListeners2();
-
-    public removeKeyInputListener(PlayerGameInput playerGameInput);
+    public: void setGameState(GameState gameState);
 
                 //@Throws(Exception.constructor)
             
-    updateEndGameProcessor();
+    public: void updateGameState();
+
+    private: void updateGameKeyEventProcessor();
+
+    protected: void removeAllGameKeyInputListenersOnBuild();
+
+    protected: void removeAllGameKeyInputListeners();
+
+    protected: void removeAllGameKeyInputListeners2();
+
+    public: void removeKeyInputListener(PlayerGameInput playerGameInput);
 
                 //@Throws(Exception.constructor)
             
-    updateEndGameProcessor2();
+    protected: void updateEndGameProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public buildGameInit(bool isPortion);
+    protected: void updateEndGameProcessor2();
 
                 //@Throws(Exception.constructor)
             
-    cleanupGame();
+    public: void buildGameInit(bool isPortion);
 
                 //@Throws(Exception.constructor)
             
-    public loadResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel);
+    protected: void cleanupGame();
 
                 //@Throws(Exception.constructor)
             
-    public loadResources(int32_t level);
+    public: void loadResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel);
 
                 //@Throws(Exception.constructor)
             
-    public updateColor();
+    public: void loadResources(int32_t level);
 
                 //@Throws(Exception.constructor)
             
-    public buildGame(int32_t portion);
-
-    public buildGame2();
-
-    public addKeyInputListener(PlayerGameInput playerGameInput);
-
-    private: gameCanvasStartListener: DemoPaintableInterface = NullDemoPaintable.NULL_DEMO_PAINTABLE;
-
-    public setGameCanvasStartListener(DemoPaintableInterface gameCanvasStartListener);
+    public: void updateColor();
 
                 //@Throws(Exception.constructor)
             
-    public loadState();
+    public: void buildGame(int32_t portion);
+
+    public: void buildGame2();
+
+    public: void addKeyInputListener(PlayerGameInput playerGameInput);
+
+    private: DemoPaintableInterface gameCanvasStartListener = NullDemoPaintable::NULL_DEMO_PAINTABLE;
+
+    public: void setGameCanvasStartListener(DemoPaintableInterface gameCanvasStartListener);
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getLoadStateHashtable();
-
-    public setLoadStateHashtable(Hashtable<any, any> hashtable);
-
-    public Hashtable<any, any> getCurrentStateHashtable();
-
-    public paintGameOver(Graphics graphics);
-
-    public draw(Graphics graphics);
-
-    public clear(Graphics graphics);
-
-    public paint(Graphics graphics);
-
-    public paintThreed(Graphics graphics);
+    public: void loadState();
 
                 //@Throws(Exception.constructor)
             
-    public processEndLevelIntermissionGameState();
+    public: Hashtable<any, any> getLoadStateHashtable();
 
-    public nonBotPaint(Graphics graphics);
+    public: void setLoadStateHashtable(Hashtable<any, any> hashtable);
 
-    public paintIntermission(Graphics graphics);
+    public: Hashtable<any, any> getCurrentStateHashtable();
 
-    private: const rawGameInputProcessor: InputProcessor = new GameCanvasInputProcessor(this);
+    public: void paintGameOver(Graphics graphics);
 
-    private: const rawInputProcessor: InputProcessor = new FormInputProcessor(this);
+    public: void draw(Graphics graphics);
 
-    private: inputProcessor: InputProcessor = this.getRawGameInputProcessor()!;
+    public: void clear(Graphics graphics);
 
-    public keyPressed(int32_t keyCode);
+    public: void paint(Graphics graphics);
 
-    public keyReleased(int32_t keyCode);
-
-    public keyRepeated(int32_t keyCode);
-
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
-
-    public keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
-
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void paintThreed(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    public handleRawKey(int32_t keyCode, int32_t deviceId, bool repeated);
+    public: void processEndLevelIntermissionGameState();
 
-    int32_t endProgress(bool isProgress);
+    public: void nonBotPaint(Graphics graphics);
 
-                //@Throws(Exception.constructor)
-            
-    processPlayingGame();
+    public: void paintIntermission(Graphics graphics);
 
-                //@Throws(Exception.constructor)
-            
-    threadInit();
+    private: const InputProcessor rawGameInputProcessor = GameCanvasInputProcessor(this);
 
-                //@Throws(Exception.constructor)
-            
-    processGame();
+    private: const InputProcessor rawInputProcessor = FormInputProcessor(this);
 
-    public notifyDonePainting();
+    private: InputProcessor inputProcessor = this->getRawGameInputProcessor();
 
-    private: const YIELD_SLEEP: int64_t = 100;
+    public: void keyPressed(int32_t keyCode);
 
-                //@Throws(Exception.constructor)
-            
-    public shouldWait();
+    public: void keyReleased(int32_t keyCode);
 
-    public run();
+    public: void keyRepeated(int32_t keyCode);
+
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+
+    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
+
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
                 //@Throws(Exception.constructor)
             
-    public run2();
+    public: void handleRawKey(int32_t keyCode, int32_t deviceId, bool repeated);
+
+    protected: int32_t endProgress(bool isProgress);
 
                 //@Throws(Exception.constructor)
             
-    public run3();
-
-    public setRunning(bool running);
+    protected: void processPlayingGame();
 
                 //@Throws(Exception.constructor)
             
-    public end();
+    protected: void threadInit();
 
                 //@Throws(Exception.constructor)
             
-    public endGameThread();
+    protected: void processGame();
 
-    public HighScore createHighScore(int64_t score);
+    public: void notifyDonePainting();
 
-                //@Throws(Exception.constructor)
-            
-    public setHighScore(AbeClientInformationInterface abeClientInformation, string name, int64_t score, bool autoSubmit, bool isLast);
+    private: const int64_t YIELD_SLEEP = 100;
 
                 //@Throws(Exception.constructor)
             
-    public setHighScore2(AbeClientInformationInterface abeClientInformation, string name, int64_t score, bool autoSubmit, bool isLast);
+    public: void shouldWait();
 
-    TimeDelayHelper getGameStateTimeHelper();
+    public: void run();
 
-    setInitialized(bool initialized);
+                //@Throws(Exception.constructor)
+            
+    public: void run2();
 
-    public bool isInitialized();
+                //@Throws(Exception.constructor)
+            
+    public: void run3();
 
-    public int32_t getSourceId();
+    public: void setRunning(bool running);
 
-    public setProgressPaintable(PaintableInterface paintable);
+                //@Throws(Exception.constructor)
+            
+    public: void end();
 
-    public IntermissionInterface getStartIntermissionInterface();
+                //@Throws(Exception.constructor)
+            
+    public: void endGameThread();
 
-    public IntermissionInterface getEndLevelIntermissionInterface();
+    public: HighScore createHighScore(int64_t score);
 
-    setTouchPaintableP(Paintable paintable);
+                //@Throws(Exception.constructor)
+            
+    public: void setHighScore(AbeClientInformationInterface abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast);
 
-    public Paintable getTouchPaintableP();
+                //@Throws(Exception.constructor)
+            
+    public: void setHighScore2(AbeClientInformationInterface abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast);
 
-    setEndGamePaintable(Paintable endGamePaintable);
+    protected: TimeDelayHelper getGameStateTimeHelper();
 
-    public Paintable getEndGamePaintable();
+    protected: void setInitialized(bool initialized);
 
-    setIntermissionPaintable(Paintable intermissionPaintable);
+    public: bool isInitialized();
 
-    public Paintable getIntermissionPaintable();
+    public: int32_t getSourceId();
 
-    public EndGameInfo getEndGameInfoP();
+    public: void setProgressPaintable(PaintableInterface paintable);
 
-    public setHighScoresPaintable(Paintable highScoresPaintable);
+    public: IntermissionInterface getStartIntermissionInterface();
 
-    public Paintable getHighScoresPaintable();
+    public: IntermissionInterface getEndLevelIntermissionInterface();
 
-    HighScoresPaintable getRealHighScoresPaintable();
+    protected: void setTouchPaintableP(Paintable paintable);
 
-    clearPlayerGameInputList();
+    public: Paintable getTouchPaintableP();
 
-    addPlayerGameInput(PlayerGameInput playerGameInput);
+    protected: void setEndGamePaintable(Paintable endGamePaintable);
 
-    setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor);
+    public: Paintable getEndGamePaintable();
 
-    BasicMenuInputProcessor getMenuInputProcessor();
+    protected: void setIntermissionPaintable(Paintable intermissionPaintable);
 
-    public ScrollSelectionForm getMenuForm();
+    public: Paintable getIntermissionPaintable();
 
-    public setMenuForm(ScrollSelectionForm menuForm);
+    public: EndGameInfo getEndGameInfoP();
 
-    public int32_t getStartLevel();
+    public: void setHighScoresPaintable(Paintable highScoresPaintable);
 
-    public setStartLevel(int32_t startLevel);
+    public: Paintable getHighScoresPaintable();
 
-    setTouchButtonsPaintable(Paintable touchButtonsPaintable);
+    protected: HighScoresPaintable getRealHighScoresPaintable();
 
-    Paintable getTouchButtonsPaintable();
+    protected: void clearPlayerGameInputList();
 
-    public setGameInputProcessor(Processor gameInputProcessor);
+    protected: void addPlayerGameInput(PlayerGameInput playerGameInput);
 
-    Processor getGameInputProcessor();
+    protected: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor);
 
-    setEndGameProcessor(Processor endGameProcessor);
+    protected: BasicMenuInputProcessor getMenuInputProcessor();
 
-    Processor getEndGameProcessor();
+    public: ScrollSelectionForm getMenuForm();
 
-    setEndGameStatePaintable(Paintable endGameStatePaintable);
+    public: void setMenuForm(ScrollSelectionForm menuForm);
 
-    Paintable getEndGameStatePaintable();
+    public: int32_t getStartLevel();
 
-    setNonBotPaintableP(Paintable nonBotPaintable);
+    public: void setStartLevel(int32_t startLevel);
 
-    Paintable getNonBotPaintableP();
+    protected: void setTouchButtonsPaintable(Paintable touchButtonsPaintable);
 
-    setStartIntermissionPaintable(InitUpdatePaintable startIntermissionPaintable);
+    protected: Paintable getTouchButtonsPaintable();
 
-    InitUpdatePaintable getStartIntermissionPaintable();
+    public: void setGameInputProcessor(Processor gameInputProcessor);
 
-    public setMainStateProcessor(Processor mainStateProcessor);
+    protected: Processor getGameInputProcessor();
 
-    Processor getMainStateProcessor();
+    protected: void setEndGameProcessor(Processor endGameProcessor);
 
-    setProcessGameProcessor(Processor processGameProcessor);
+    protected: Processor getEndGameProcessor();
 
-    public Processor getProcessGameProcessor();
+    protected: void setEndGameStatePaintable(Paintable endGameStatePaintable);
 
-    setOpenMenuPaintable(Paintable openMenuPaintable);
+    protected: Paintable getEndGameStatePaintable();
 
-    Paintable getOpenMenuPaintable();
+    protected: void setNonBotPaintableP(Paintable nonBotPaintable);
 
-    setPopupMenuInputProcessor(BasicMenuInputProcessor popupMenuInputProcessor);
+    protected: Paintable getNonBotPaintableP();
 
-    BasicMenuInputProcessor getPopupMenuInputProcessor();
+    protected: void setStartIntermissionPaintable(InitUpdatePaintable startIntermissionPaintable);
 
-    public SensorGameUpdateProcessor getSensorGameUpdateProcessor();
+    protected: InitUpdatePaintable getStartIntermissionPaintable();
 
-    public InputProcessor getRawGameInputProcessor();
+    public: void setMainStateProcessor(Processor mainStateProcessor);
 
-    public InputProcessor getRawInputProcessor();
+    protected: Processor getMainStateProcessor();
 
-    public setInputProcessor(InputProcessor inputProcessor);
+    protected: void setProcessGameProcessor(Processor processGameProcessor);
 
-    InputProcessor getInputProcessor();
+    public: Processor getProcessGameProcessor();
 
-    setMenuPaintable(Paintable menuPaintable);
+    protected: void setOpenMenuPaintable(Paintable openMenuPaintable);
 
-    Paintable getMenuPaintable();
+    protected: Paintable getOpenMenuPaintable();
 
-    setFormPaintable(Paintable formPaintable);
+    protected: void setPopupMenuInputProcessor(BasicMenuInputProcessor popupMenuInputProcessor);
 
-    Paintable getFormPaintable();
+    protected: BasicMenuInputProcessor getPopupMenuInputProcessor();
 
-    public setGameSpecificPaintableP(Paintable gameSpecificPaintable);
+    public: SensorGameUpdateProcessor getSensorGameUpdateProcessor();
 
-    Paintable getGameSpecificPaintableP();
+    public: InputProcessor getRawGameInputProcessor();
 
-    public bool isSingleThread();
+    public: InputProcessor getRawInputProcessor();
 
-    public bool isRunningInAnotherThread();
+    public: void setInputProcessor(InputProcessor inputProcessor);
 
-    public int32_t getType();
+    protected: InputProcessor getInputProcessor();
+
+    protected: void setMenuPaintable(Paintable menuPaintable);
+
+    protected: Paintable getMenuPaintable();
+
+    private: void setFormPaintable(Paintable formPaintable);
+
+    protected: Paintable getFormPaintable();
+
+    public: void setGameSpecificPaintableP(Paintable gameSpecificPaintable);
+
+    protected: Paintable getGameSpecificPaintableP();
+
+    public: bool isSingleThread();
+
+    public: bool isRunningInAnotherThread();
+
+    public: int32_t getType();
 
 };
 

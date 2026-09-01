@@ -69,15 +69,14 @@
 class ImageActionScriptOutputProcessor
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static process(ImageActionScriptOutputInterface imageActionScriptOutputInterface, Long frame);
+    public: static void process(ImageActionScriptOutputInterface imageActionScriptOutputInterface, Long frame);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ImageActionScriptOutputProcessor();
 
 };
 

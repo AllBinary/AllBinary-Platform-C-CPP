@@ -45,25 +45,24 @@
 class QuoteRequestData
             : public Object
          {
-        
 
-    private: static const instance: QuoteRequestData = new QuoteRequestData();
+    private: static QuoteRequestData instance() { return QuoteRequestData(); }
 
-    public static QuoteRequestData getInstance();
+    public: static QuoteRequestData getInstance();
 
-private constructor ();
+private: QuoteRequestData();
 
-    public const ID: string = "QUOTEREQUEST_ID";
+    public: const std::string ID = "QUOTEREQUEST_ID";
 
-    public const PROJECT_INFO: string = "QUOTEREQUEST_PROJECT_INFO";
+    public: const std::string PROJECT_INFO = "QUOTEREQUEST_PROJECT_INFO";
 
-    public const CUSTOMER_COMMENTS: string = "QUOTEREQUEST_CUSTOMER_COMMENTS";
+    public: const std::string CUSTOMER_COMMENTS = "QUOTEREQUEST_CUSTOMER_COMMENTS";
 
-    public const BUDGET: string = "QUOTEREQUEST_BUDGET";
+    public: const std::string BUDGET = "QUOTEREQUEST_BUDGET";
 
-    public const TIMEFRAME: string = "QUOTEREQUEST_TIMEFRAME";
+    public: const std::string TIMEFRAME = "QUOTEREQUEST_TIMEFRAME";
 
-    public const COMMENTS: string = "QUOTEREQUEST_COMMENTS";
+    public: const std::string COMMENTS = "QUOTEREQUEST_COMMENTS";
 
 };
 

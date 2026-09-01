@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORROTATIONGENERATOR_H
         #define ORG_ALLBINARY_ANIMATION_VECTORROTATIONGENERATOR_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -78,27 +80,26 @@
 class VectorRotationGenerator
             : public Object
          {
-        
 
-    private: static const instance: VectorRotationGenerator = new VectorRotationGenerator();
+    private: static VectorRotationGenerator instance() { return VectorRotationGenerator(); }
 
-    public static VectorRotationGenerator getInstance();
+    public: static VectorRotationGenerator getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const vectorAnimationUtil: VectorAnimationUtil = VectorAnimationUtil.getInstance()!;
+    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
-private constructor ();
+private: VectorRotationGenerator();
 
-    public std::vector<std::vector<std::vector<int32_t>>> getInstance(VectorInfo vectorRotationInfo);
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(VectorInfo vectorRotationInfo);
 
-    private: const angleFactory: AngleFactory = AngleFactory.getInstance()!;
+    private: const AngleFactory angleFactory = AngleFactory::getInstance();
 
-    public std::vector<std::vector<std::vector<int32_t>>> getInstanceFrames(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t frames);
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstanceFrames(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t frames);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getListAtAngle(int32_t width, int32_t height, BasicArrayList pointBasicArrayList, Angle angle);
+    public: BasicArrayList getListAtAngle(int32_t width, int32_t height, BasicArrayList pointBasicArrayList, Angle angle);
 
 };
 

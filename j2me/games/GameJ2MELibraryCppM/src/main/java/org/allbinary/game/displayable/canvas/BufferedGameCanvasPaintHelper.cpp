@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -68,50 +70,47 @@
         #include "AllBinaryGameCanvas.h"
 
 class BufferedGameCanvasPaintHelper: public ProcessPaintable {
-        
 
-    private: static const MAX_IMAGES: int32_t = 4;
+    private: static const int32_t MAX_IMAGES = 4;
 
-    private: gameCanvas: Canvas = NullCanvas.NULL_CANVAS;
+    private: Canvas gameCanvas = NullCanvas::NULL_CANVAS;
 
-    private: const offScreenImage: std::vector<Image> = new Array(BufferedGameCanvasPaintHelper.MAX_IMAGES);
+    private: const std::vector<Image> offScreenImage = new Array(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-    private: previousImage: Image = NullImage.NULL_IMAGE;
+    private: Image previousImage = NullImage::NULL_IMAGE;
 
-    private: const circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(BufferedGameCanvasPaintHelper.MAX_IMAGES)!;
+    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstance(BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-    private: const drawCircularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(BufferedGameCanvasPaintHelper.MAX_IMAGES -1, BufferedGameCanvasPaintHelper.MAX_IMAGES)!;
+    private: const CircularIndexUtil drawCircularIndexUtil = CircularIndexUtil::createInstanceAt(BufferedGameCanvasPaintHelper::MAX_IMAGES -1, BufferedGameCanvasPaintHelper::MAX_IMAGES);
 
-public constructor (AllBinaryGameCanvas gameCanvas){
-
-            super();
-        
+public: BufferedGameCanvasPaintHelper(AllBinaryGameCanvas gameCanvas){
 
 
-                            throw new Exception("No Longer Used");
+
+                            throw Exception("No Longer Used");
                     
 }
 
 
-    public process(){
+    public: void process(){
 
-    myCanvas: MyCanvas = (this.gameCanvas as MyCanvas);;
+    MyCanvas myCanvas = (this->gameCanvas as MyCanvas);;
     
-myCanvas!.draw(this.offScreenImage[this.circularIndexUtil!.getIndex()]!.getGraphics());
+myCanvas.draw(this->offScreenImage[this->circularIndexUtil.getIndex()]!.getGraphics());
     
-this.circularIndexUtil!.next();
+this->circularIndexUtil.next();
     
-this.drawCircularIndexUtil!.next();
+this->drawCircularIndexUtil.next();
     
 }
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paint(Graphics graphics){
-this.previousImage= this.offScreenImage[this.drawCircularIndexUtil!.getIndex()]!;
+    public: void paint(Graphics graphics){
+this->previousImage= this->offScreenImage[this->drawCircularIndexUtil.getIndex()]!;
     
-graphics.drawImage(this.previousImage, 0, 0, this.anchor);
+graphics.drawImage(this->previousImage, 0, 0, this->anchor);
     
 }
 

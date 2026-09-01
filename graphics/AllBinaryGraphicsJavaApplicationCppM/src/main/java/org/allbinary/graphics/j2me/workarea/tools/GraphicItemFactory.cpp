@@ -62,41 +62,38 @@
 class GraphicItemFactory
             : public Object
          {
-        
 
-    private: static const instance: GraphicItemFactory = new GraphicItemFactory();
+    private: static GraphicItemFactory instance() { return GraphicItemFactory(); }
 
-    public static GraphicItemFactory getInstance(){
+    public: static GraphicItemFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GraphicItemFactory.instance;
+                        return GraphicItemFactory::instance();
     
 }
 
 
-    private: const graphicItems: HashMap<any, any>;
+    private: HashMap<any, any> graphicItems;
 
-    private: const DEFAULT: GraphicsItemInterfaceFactoryInterface = new SelectionToolFactory();
+    private: const GraphicsItemInterfaceFactoryInterface DEFAULT = SelectionToolFactory();
 
-private constructor (){
-
-            super();
-        this.graphicItems= new HashMap<any, any>();
+private: GraphicItemFactory(){
+this->graphicItems= HashMap<any, any>();
     
-this.graphicItems!.put(LinesGraphicItem.getStaticName(), new LinesGraphicItemFactory());
+this->graphicItems.put(LinesGraphicItem::getStaticName(), LinesGraphicItemFactory());
     
 }
 
 
-    public GraphicsItemInterfaceFactoryInterface getInstance(string itemName){
+    public: GraphicsItemInterfaceFactoryInterface getInstance(std::string itemName){
 
-    graphicsItemInterfaceFactoryInterface: GraphicsItemInterfaceFactoryInterface = this.graphicItems!.get(itemName) as GraphicsItemInterfaceFactoryInterface;;
+    GraphicsItemInterfaceFactoryInterface graphicsItemInterfaceFactoryInterface = this->graphicItems.get(itemName) as GraphicsItemInterfaceFactoryInterface;;
     
 
                         if(graphicsItemInterfaceFactoryInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -116,15 +113,15 @@ this.graphicItems!.put(LinesGraphicItem.getStaticName(), new LinesGraphicItemFac
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> getInstance(BasicArrayList graphicItemNodeList){
+    public: HashMap<any, any> getInstance(BasicArrayList graphicItemNodeList){
 
-    numberOfItems: int32_t = graphicItemNodeList!.size()!;;
+    int32_t numberOfItems = graphicItemNodeList.size();;
     
 
-    graphicItemHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> graphicItemHashMap = HashMap<any, any>();;
     
 
-                        if(LOGGING.contains(LOGGING.MENUEVENT))
+                        if(LOGGING::contains(LOGGING::MENUEVENT))
                         
                                     {
                                     
@@ -135,12 +132,12 @@ this.graphicItems!.put(LinesGraphicItem.getStaticName(), new LinesGraphicItemFac
 
 
                         for (
-    index: int32_t = 0;index < numberOfItems; index++)
+    int32_t index = 0;index < numberOfItems; index++)
         {
 
-    graphicItem: GraphicItemInterface = GraphicItemBuilder.getInstance(graphicItemNodeList!.get(index) as Node)!;;
+    GraphicItemInterface graphicItem = GraphicItemBuilder::getInstance(graphicItemNodeList.get(index) as Node);;
     
-graphicItemHashMap!.put(graphicItem!.getTreeNode(), graphicItem);
+graphicItemHashMap.put(graphicItem.getTreeNode(), graphicItem);
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -82,157 +84,152 @@
 class VectorCenterGenerator
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList translate(BasicArrayList list, int32_t x, int32_t y){
+    public: static BasicArrayList translate(BasicArrayList list, int32_t x, int32_t y){
 
-    graphicsPipe: BasicGraphicsPipeline = new BasicGraphicsPipeline(list);;
+    BasicGraphicsPipeline graphicsPipe = BasicGraphicsPipeline(list);;
     
-graphicsPipe!.createMatrix();
+graphicsPipe.createMatrix();
     
-graphicsPipe!.translate(x, y);
+graphicsPipe.translate(x, y);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe!.getMatrix();;
+                        return graphicsPipe.getMatrix();;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    minX: int32_t = Integer.MAX_VALUE;
+    int32_t minX = Integer::MAX_VALUE;
 
-    minY: int32_t = Integer.MAX_VALUE;
+    int32_t minY = Integer::MAX_VALUE;
 
-    maxX: int32_t = Integer.MIN_VALUE;
+    int32_t maxX = Integer::MIN_VALUE;
 
-    maxY: int32_t = Integer.MIN_VALUE;
+    int32_t maxY = Integer::MIN_VALUE;
 
-    private: dx: int32_t = 0;
+    private: int32_t dx = 0;
 
-    private: dy: int32_t = 0;
+    private: int32_t dy = 0;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-public constructor (){
-
-            super();
-        }
+public: VectorCenterGenerator(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public calculate(HashMap<any, any> hashMap){
+    public: void calculate(HashMap<any, any> hashMap){
 
-    graphicItemArray: std::vector<any> = hashMap!.keys().()!;;
+    std::vector<Object*> graphicItemArray = hashMap.keys().();;
     
 
-    size: int32_t = graphicItemArray!.length
-                ;;
+    int32_t size = graphicItemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: GraphicItemInterface = hashMap!.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = hashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
     
 
-                        if(item.getName() == LinesGraphicItem.getStaticName())
+                        if(item.getName() == LinesGraphicItem::getStaticName())
                         
                                     {
-                                    this.getInstance(item.getPointsInterface()!.getPoints());
+                                    this->getInstance(item.getPointsInterface().getPoints());
     
 
                                     }
                                 
 }
 
-this.logUtil!.putF("minX: " +this.minX +" minY: " +this.minY +" maxX: " +this.maxX +" maxY: " +this.maxY, this, this.commonStrings!.GET_INSTANCE);
+this->logUtil.putF("minX: " +this->minX +" minY: " +this->minY +" maxX: " +this->maxX +" maxY: " +this->maxY, this, this->commonStrings.GET_INSTANCE);
     
-this.setWidth(this.maxX -this.minX);
+this->setWidth(this->maxX -this->minX);
     
-this.setHeight(this.maxY -this.minY);
+this->setHeight(this->maxY -this->minY);
     
 
-    max: int32_t = this.getWidth()!;;
+    int32_t max = this->getWidth();;
     
 
                         if(getHeight() > max)
                         
                                     {
-                                    max= this.getHeight();
+                                    max= this->getHeight();
     
 
                                     }
                                 
 
-    middle: int32_t = max /2;;
+    int32_t middle = max /2;;
     
 
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
 
-    s: string = new StringMaker().append(commonLabels!.WIDTH_LABEL)!.appendint(getWidth())!.append(commonLabels!.HEIGHT_LABEL)!.appendint(getHeight())!.append(" max: ")!.appendint(max)!.append(" middle: ")!.appendint(middle)!.toString()!;;
+    std::string s = StringMaker().append(commonLabels.WIDTH_LABEL).appendint(getWidth()).append(commonLabels.HEIGHT_LABEL).appendint(getHeight()).append(" max: ").appendint(max).append(" middle: ").appendint(middle).toString();;
     
-this.logUtil!.putF(s, this, this.commonStrings!.GET_INSTANCE);
-    
-
-    currentMiddleX: int32_t = this.minX +this.getWidth() /2;;
+this->logUtil.putF(s, this, this->commonStrings.GET_INSTANCE);
     
 
-    currentMiddleY: int32_t = this.minY +this.getHeight() /2;;
+    int32_t currentMiddleX = this->minX +this->getWidth() /2;;
     
-this.dx= middle -currentMiddleX;
+
+    int32_t currentMiddleY = this->minY +this->getHeight() /2;;
     
-this.dy= middle -currentMiddleY;
+this->dx= middle -currentMiddleX;
+    
+this->dy= middle -currentMiddleY;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public transform(HashMap<any, any> hashMap){
-this.calculate(hashMap);
+    public: void transform(HashMap<any, any> hashMap){
+this->calculate(hashMap);
     
-this.logUtil!.putF(new StringMaker().append(" dx: ")!.appendint(this.dx)!.append(" dy: ")!.appendint(this.dy)!.toString(), this, this.commonStrings!.GET_INSTANCE);
-    
-
-    graphicItemArray: std::vector<any> = hashMap!.keys().()!;;
+this->logUtil.putF(StringMaker().append(" dx: ").appendint(this->dx).append(" dy: ").appendint(this->dy).toString(), this, this->commonStrings.GET_INSTANCE);
     
 
-    size: int32_t = graphicItemArray!.length
-                ;;
+    std::vector<Object*> graphicItemArray = hashMap.keys().();;
+    
+
+    int32_t size = graphicItemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: GraphicItemInterface = hashMap!.get(graphicItemArray[index]!) as GraphicItemInterface;;
+    GraphicItemInterface item = hashMap.get(graphicItemArray[index]!) as GraphicItemInterface;;
     
 
-    list: BasicArrayList = VectorCenterGenerator.translate(item.getPointsInterface()!.getPoints(), dx, dy)!;;
+    BasicArrayList list = VectorCenterGenerator::translate(item.getPointsInterface().getPoints(), dx, dy);;
     
 
-    newPoints: Points = new Points();;
+    Points newPoints = Points();;
     
-newPoints!.addPoints(list);
+newPoints.addPoints(list);
     
 item.setPointsInterface(newPoints);
     
@@ -243,57 +240,57 @@ item.setPointsInterface(newPoints);
 
                 //@Throws(Exception.constructor)
             
-    getInstance(BasicArrayList pointVector){
+    private: void getInstance(BasicArrayList pointVector){
 
         try {
             
-    newVector: Vector = new Vector();;
+    Vector newVector = Vector();;
     
 
-    size: int32_t = pointVector!.size()!;;
+    int32_t size = pointVector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    point: GPoint = pointVector!.get(index) as GPoint;;
+    GPoint point = pointVector.get(index) as GPoint;;
     
 
-                        if(point.getX() < this.minX)
+                        if(point.getX() < this->minX)
                         
                                     {
-                                    this.minX= point.getX();
-    
-
-                                    }
-                                
-
-                        if(point.getX() > this.maxX)
-                        
-                                    {
-                                    this.maxX= point.getX();
+                                    this->minX= point.getX();
     
 
                                     }
                                 
 
-                        if(point.getY() < this.minY)
+                        if(point.getX() > this->maxX)
                         
                                     {
-                                    this.minY= point.getY();
+                                    this->maxX= point.getX();
     
 
                                     }
                                 
 
-                        if(point.getY() > this.maxY)
+                        if(point.getY() < this->minY)
                         
                                     {
-                                    this.maxY= point.getY();
+                                    this->minY= point.getY();
+    
+
+                                    }
+                                
+
+                        if(point.getY() > this->maxY)
+                        
+                                    {
+                                    this->maxY= point.getY();
     
 
                                     }
@@ -304,7 +301,7 @@ item.setPointsInterface(newPoints);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, e);
     
 
 
@@ -316,34 +313,34 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET_I
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    public setWidth(int32_t width){
-this.width= width;
+    public: void setWidth(int32_t width){
+this->width= width;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    public setHeight(int32_t height){
-this.height= height;
+    public: void setHeight(int32_t height){
+this->height= height;
     
 }
 

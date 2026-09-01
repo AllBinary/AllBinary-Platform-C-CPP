@@ -62,240 +62,237 @@
 class BasicGraphicsPipeline
             : public Object
          {
-        
 
-    pointBasicArrayList: BasicArrayList;
+    protected: BasicArrayList pointBasicArrayList;
 
-public constructor (BasicArrayList points){
-
-            super();
-        this.pointBasicArrayList= points;
+public: BasicGraphicsPipeline(BasicArrayList points){
+this->pointBasicArrayList= points;
     
 }
 
 
-    public setInitMatrix(BasicArrayList points){
-this.pointBasicArrayList= points;
+    public: void setInitMatrix(BasicArrayList points){
+this->pointBasicArrayList= points;
     
 }
 
 
-    public createMatrix(){
+    public: void createMatrix(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public translate(int32_t x, int32_t y){
+    public: void translate(int32_t x, int32_t y){
 
-    newBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList newBasicArrayList = BasicArrayListD();;
     
 
-    size: int32_t = this.pointBasicArrayList!.size()!;;
+    int32_t size = this->pointBasicArrayList.size();;
     
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-    secondPoint: GPoint;;
+    GPoint secondPoint;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-secondPoint= this.pointBasicArrayList!.objectArray[index]! as GPoint;
+secondPoint= this->pointBasicArrayList.objectArray[index]! as GPoint;
     
 
-                        if(secondPoint!.getX() != 1000)
+                        if(secondPoint.getX() != 1000)
                         
                                     {
-                                    newBasicArrayList!.add(pointFactory!.createXY(secondPoint!.getX() +x, secondPoint!.getY() +y));
+                                    newBasicArrayList.add(pointFactory.createXY(secondPoint.getX() +x, secondPoint.getY() +y));
     
 
                                     }
                                 
                         else {
-                            newBasicArrayList!.add(secondPoint);
+                            newBasicArrayList.add(secondPoint);
     
 
                         }
                             
 }
 
-this.pointBasicArrayList= newBasicArrayList;
+this->pointBasicArrayList= newBasicArrayList;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public rotateToAngle(Angle angle){
-this.rotate(static_cast<int32_t>(angle.getValue()));
+    public: void rotateToAngle(Angle angle){
+this->rotate(static_cast<int32_t>(angle.getValue()));
     
 }
 
 
-    private: const noDecimalTrigTable: NoDecimalTrigTable = NoDecimalTrigTable.getInstance()!;
+    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    rotate(int32_t angle){
+    private: void rotate(int32_t angle){
 
-    newBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList newBasicArrayList = BasicArrayListD();;
     
 
-    secondPoint: GPoint;;
+    GPoint secondPoint;;
     
 
-    y: int64_t= 0;;
+    int64_t y= 0;;
     
 
-    secondX: int64_t= 0;;
+    int64_t secondX= 0;;
     
 
-    secondY: int64_t= 0;;
+    int64_t secondY= 0;;
     
 
-    point: GPoint;;
+    GPoint point;;
     
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-    size: int32_t = this.pointBasicArrayList!.size()!;;
+    int32_t size = this->pointBasicArrayList.size();;
     
 
-    sin: int64_t= 0;;
+    int64_t sin= 0;;
     
 
-    cos: int64_t= 0;;
+    int64_t cos= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-secondPoint= this.pointBasicArrayList!.objectArray[index]! as GPoint;
+secondPoint= this->pointBasicArrayList.objectArray[index]! as GPoint;
     
 
-                        if(secondPoint!.getX() != 1000)
+                        if(secondPoint.getX() != 1000)
                         
                                     {
-                                    sin= this.noDecimalTrigTable!.sin(angle);
+                                    sin= this->noDecimalTrigTable.sin(angle);
     
-cos= this.noDecimalTrigTable!.cos(angle);
+cos= this->noDecimalTrigTable.cos(angle);
     
-y= secondPoint!.getY() *sin;
+y= secondPoint.getY() *sin;
     
-secondX= (secondPoint!.getX() *cos) -y;
+secondX= (secondPoint.getX() *cos) -y;
     
-secondY= (secondPoint!.getX() *sin) +(secondPoint!.getY() *cos);
+secondY= (secondPoint.getX() *sin) +(secondPoint.getY() *cos);
     
-point= pointFactory!.createXY(static_cast<int32_t>(secondX) /10000, static_cast<int32_t>(secondY) /10000);
+point= pointFactory.createXY(static_cast<int32_t>(secondX) /10000, static_cast<int32_t>(secondY) /10000);
     
-newBasicArrayList!.add(point);
+newBasicArrayList.add(point);
     
 
                                     }
                                 
                         else {
-                            newBasicArrayList!.add(secondPoint);
+                            newBasicArrayList.add(secondPoint);
     
 
                         }
                             
 }
 
-this.pointBasicArrayList= newBasicArrayList;
+this->pointBasicArrayList= newBasicArrayList;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public mirror(int32_t width){
+    public: void mirror(int32_t width){
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-    halfWidth: int32_t = (width>>1);;
+    int32_t halfWidth = (width>>1);;
     
 
-    newBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList newBasicArrayList = BasicArrayListD();;
     
 
-    secondPoint: GPoint;;
+    GPoint secondPoint;;
     
 
-    newX: int32_t= 0;;
+    int32_t newX= 0;;
     
 
-    point: GPoint;;
+    GPoint point;;
     
 
-    size: int32_t = this.pointBasicArrayList!.size()!;;
+    int32_t size = this->pointBasicArrayList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-secondPoint= this.pointBasicArrayList!.objectArray[index]! as GPoint;
+secondPoint= this->pointBasicArrayList.objectArray[index]! as GPoint;
     
 
-                        if(secondPoint!.getX() != 1000)
+                        if(secondPoint.getX() != 1000)
                         
                                     {
                                     newX= 0;
     
 
-                        if(secondPoint!.getX() > halfWidth)
+                        if(secondPoint.getX() > halfWidth)
                         
                                     {
-                                    newX= halfWidth -(secondPoint!.getX() -halfWidth);
+                                    newX= halfWidth -(secondPoint.getX() -halfWidth);
     
 
                                     }
                                 
                         else {
-                            newX= halfWidth +(halfWidth -secondPoint!.getX());
+                            newX= halfWidth +(halfWidth -secondPoint.getX());
     
 
                         }
                             
-point= pointFactory!.createXY(newX, secondPoint!.getY());
+point= pointFactory.createXY(newX, secondPoint.getY());
     
-newBasicArrayList!.add(point);
+newBasicArrayList.add(point);
     
 
                                     }
                                 
                         else {
-                            newBasicArrayList!.add(secondPoint);
+                            newBasicArrayList.add(secondPoint);
     
 
                         }
                             
 }
 
-this.pointBasicArrayList= newBasicArrayList;
+this->pointBasicArrayList= newBasicArrayList;
     
 }
 
 
-    public BasicArrayList getMatrix(){
+    public: BasicArrayList getMatrix(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pointBasicArrayList;
+                        return this->pointBasicArrayList;
     
 }
 

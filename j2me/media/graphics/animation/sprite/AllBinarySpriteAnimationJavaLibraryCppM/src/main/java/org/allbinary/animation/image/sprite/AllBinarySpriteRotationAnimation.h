@@ -72,23 +72,22 @@
         #include "HackRotationSpriteIndexedAnimation.h"
 
 class AllBinarySpriteRotationAnimation: public HackRotationSpriteIndexedAnimation {
-        
 
-public constructor (Sprite sprite, Image image, AnimationBehavior animationBehavior);
+public: AllBinarySpriteRotationAnimation(Sprite sprite, Image image, AnimationBehavior animationBehavior);
 
-    public nextRotation();
+    public: void nextRotation();
 
-    public previousRotation();
+    public: void previousRotation();
 
-    public setFrameByDirection(Direction direction);
+    public: void setFrameByDirection(Direction direction);
 
-    public setFrameToAngle(Angle angle);
+    public: void setFrameToAngle(Angle angle);
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public adjustFrameToAngle(Angle angle);
+    public: void adjustFrameToAngle(Angle angle);
 
-    public adjustFrame(int16_t angle);
+    public: void adjustFrame(int16_t angle);
 
 };
 

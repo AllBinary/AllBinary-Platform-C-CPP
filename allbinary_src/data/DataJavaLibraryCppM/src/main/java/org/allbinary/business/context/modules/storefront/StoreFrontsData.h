@@ -45,25 +45,24 @@
 class StoreFrontsData
             : public Object
          {
-        
 
-    private: static const instance: StoreFrontsData = new StoreFrontsData();
+    private: static StoreFrontsData instance() { return StoreFrontsData(); }
 
-    public static StoreFrontsData getInstance();
+    public: static StoreFrontsData getInstance();
 
-    public const TYPE: string = "STOREFRONTS_TYPE";
+    public: const std::string TYPE = "STOREFRONTS_TYPE";
 
-    public const RETAIL: string = "STOREFRONTS_RETAIL";
+    public: const std::string RETAIL = "STOREFRONTS_RETAIL";
 
-    public const SUBSCRIPTION: string = "STOREFRONTS_SUBSCRIPTION";
+    public: const std::string SUBSCRIPTION = "STOREFRONTS_SUBSCRIPTION";
 
-    public const AUCTION: string = "STOREFRONTS_AUCTION";
+    public: const std::string AUCTION = "STOREFRONTS_AUCTION";
 
-    public const NEWS: string = "STOREFRONTS_NEWS";
+    public: const std::string NEWS = "STOREFRONTS_NEWS";
 
-    public const BLOG: string = "STOREFRONTS_BLOG";
+    public: const std::string BLOG = "STOREFRONTS_BLOG";
 
-    public const FORUM: string = "STOREFRONTS_FORUM";
+    public: const std::string FORUM = "STOREFRONTS_FORUM";
 
 };
 

@@ -54,47 +54,44 @@
 class Health
             : public Object
         : public HealthInterface {
-        
 
-    public static const NULL_HEALTH: Health = new Health(0);
+    public: static const Health NULL_HEALTH = Health(0);
 
-    public static const NAME: string = "Health Resource";
+    public: static const std::string NAME = "Health Resource";
 
-    private: static const HEALTH_LABEL: string = "Health: ";
+    private: static const std::string HEALTH_LABEL = "Health: ";
 
-    private: static const MAX_HEALTH_LABEL: string = " Max: ";
+    private: static const std::string MAX_HEALTH_LABEL = " Max: ";
 
-    private: health: int32_t= 0;
+    private: int32_t health= 0;
 
-    private: maxHealth: int32_t= 0;
+    private: int32_t maxHealth= 0;
 
-    private: healthListenerInterface: HealthListenerInterface = NullHealthListener.NULL_HEALTH_LISTENER;
+    private: HealthListenerInterface healthListenerInterface = NullHealthListener::NULL_HEALTH_LISTENER;
 
-public constructor (int32_t maxHealth){
-
-            super();
-        this.setMaxHealth(maxHealth);
+public: Health(int32_t maxHealth){
+this->setMaxHealth(maxHealth);
     
-this.setHealth(maxHealth);
+this->setHealth(maxHealth);
     
 }
 
 
-    public heal(int32_t ahealth){
+    public: void heal(int32_t ahealth){
 
-    newHealth: int32_t = this.getHealth() +ahealth;;
+    int32_t newHealth = this->getHealth() +ahealth;;
     
 
-                        if(newHealth > this.getMaxHealth())
+                        if(newHealth > this->getMaxHealth())
                         
                                     {
-                                    this.setHealth(this.getMaxHealth());
+                                    this->setHealth(this->getMaxHealth());
     
 
                                     }
                                 
                         else {
-                            this.setHealth(newHealth);
+                            this->setHealth(newHealth);
     
 
                         }
@@ -102,15 +99,15 @@ this.setHealth(maxHealth);
 }
 
 
-    public healMax(){
-this.setHealth(this.getMaxHealth());
+    public: void healMax(){
+this->setHealth(this->getMaxHealth());
     
 }
 
 
-    public bool isDamaged(){
+    public: bool isDamaged(){
 
-                        if(this.getHealth() != this.getMaxHealth())
+                        if(this->getHealth() != this->getMaxHealth())
                         
                                     {
                                     
@@ -135,23 +132,23 @@ this.setHealth(this.getMaxHealth());
 }
 
 
-    public damage(int32_t ahealth){
+    public: void damage(int32_t ahealth){
 
                         if(ahealth < 0)
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("******* Trying to heal when damaging. Damage: ");
+stringBuffer.append("******* Trying to heal when damaging. Damage: ");
     
-stringBuffer!.appendint(ahealth);
+stringBuffer.appendint(ahealth);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(this.toString());
+stringBuffer.append(this->toString());
     
-ForcedLogUtil.log(stringBuffer!.toString(), this);
+ForcedLogUtil::log(stringBuffer.toString(), this);
     
 
 
@@ -163,16 +160,16 @@ ForcedLogUtil.log(stringBuffer!.toString(), this);
                                     }
                                 
 
-    health: int32_t = this.getHealth() -ahealth;;
+    int32_t health = this->getHealth() -ahealth;;
     
-this.setHealth(health);
+this->setHealth(health);
     
 }
 
 
-    public bool isAlive(){
+    public: bool isAlive(){
 
-                        if(this.getHealth() <= 0)
+                        if(this->getHealth() <= 0)
                         
                                     {
                                     
@@ -197,28 +194,28 @@ this.setHealth(health);
 }
 
 
-    public int32_t getMaxHealth(){
+    public: int32_t getMaxHealth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxHealth;
+                        return this->maxHealth;
     
 }
 
 
-    public setMaxHealth(int32_t maxHealth){
-this.maxHealth= maxHealth;
+    public: void setMaxHealth(int32_t maxHealth){
+this->maxHealth= maxHealth;
     
 }
 
 
-    public setHealth(int32_t health){
+    public: void setHealth(int32_t health){
 
-                        if(health > this.getMaxHealth())
+                        if(health > this->getMaxHealth())
                         
                                     {
-                                    this.health= this.getMaxHealth();
+                                    this->health= this->getMaxHealth();
     
 
                                     }
@@ -227,24 +224,24 @@ this.maxHealth= maxHealth;
                         if(health < 0)
                         
                                     {
-                                    this.health= 0;
+                                    this->health= 0;
     
 
                                     }
                                 
                         else {
-                            this.health= health;
+                            this->health= health;
     
 
                         }
                             
 
-                        if(this.healthListenerInterface != 
-                                    null
+                        if(this->healthListenerInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.healthListenerInterface!.onHealthChange();
+                                    this->healthListenerInterface.onHealthChange();
     
 
                                     }
@@ -252,39 +249,39 @@ this.maxHealth= maxHealth;
 }
 
 
-    public int32_t getHealth(){
+    public: int32_t getHealth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.health;
+                        return this->health;
     
 }
 
 
-    public addListener(HealthListenerInterface healthGraphic){
-this.healthListenerInterface= healthGraphic;
+    public: void addListener(HealthListenerInterface healthGraphic){
+this->healthListenerInterface= healthGraphic;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(Health.HEALTH_LABEL);
+stringBuffer.append(Health::HEALTH_LABEL);
     
-stringBuffer!.appendint(this.health);
+stringBuffer.appendint(this->health);
     
-stringBuffer!.append(Health.MAX_HEALTH_LABEL);
+stringBuffer.append(Health::MAX_HEALTH_LABEL);
     
-stringBuffer!.appendint(this.maxHealth);
+stringBuffer.appendint(this->maxHealth);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

@@ -79,105 +79,102 @@
         #include "ModifyTable.h"
 
 class PermissionItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: enabled: string;
+    private: std::string enabled;
 
-    private: number: string;
+    private: std::string number;
 
-    private: who: string;
+    private: std::string who;
 
-    private: what: string;
+    private: std::string what;
 
-    private: type: string;
+    private: std::string type;
 
-    private: remoteAddr: string;
+    private: std::string remoteAddr;
 
-    private: startTime: string;
+    private: std::string startTime;
 
-    private: endTime: string;
+    private: std::string endTime;
 
-    private: price: string;
+    private: std::string price;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.request= pageContext!.getRequest() as HttpServletRequest;
+public: PermissionItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    public getFormData(){
-this.id= this.request.getParameter(BasicItemData.ID);
+    public: void getFormData(){
+this->id= this->request.getParameter(BasicItemData::ID);
     
-this.number= this.request.getParameter(BasicItemData.NUMBER);
+this->number= this->request.getParameter(BasicItemData::NUMBER);
     
-this.enabled= this.request.getParameter(EntryData.getInstance()!.ENABLE);
+this->enabled= this->request.getParameter(EntryData::getInstance().ENABLE);
     
-this.who= this.request.getParameter(PermissionItemData.WHO);
+this->who= this->request.getParameter(PermissionItemData::WHO);
     
-this.what= this.request.getParameter(PermissionItemData.WHAT);
+this->what= this->request.getParameter(PermissionItemData::WHAT);
     
-this.type= this.request.getParameter(PermissionItemData.TYPE);
+this->type= this->request.getParameter(PermissionItemData::TYPE);
     
-this.remoteAddr= this.request.getParameter(PermissionItemData.REMOTE_ADDR);
+this->remoteAddr= this->request.getParameter(PermissionItemData::REMOTE_ADDR);
     
-this.startTime= this.request.getParameter(PermissionItemData.START_TIME);
+this->startTime= this->request.getParameter(PermissionItemData::START_TIME);
     
-this.endTime= this.request.getParameter(PermissionItemData.END_TIME);
+this->endTime= this->request.getParameter(PermissionItemData::END_TIME);
     
-this.price= this.request.getParameter(BasicItemData.PRICE);
+this->price= this->request.getParameter(BasicItemData::PRICE);
     
-this.timeEntered= this.request.getParameter(EntryData.getInstance()!.TIMECREATED);
+this->timeEntered= this->request.getParameter(EntryData::getInstance().TIMECREATED);
     
-this.lastModified= this.request.getParameter(EntryData.getInstance()!.LASTMODIFIED);
+this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODIFIED);
     
 }
 
 
-    HashMap<any, any> getHashMap(){
+    private: HashMap<any, any> getHashMap(){
 
-    values: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> values = HashMap<any, any>();;
     
-values.put(BasicItemData.ID, this.id);
+values.put(BasicItemData::ID, this->id);
     
-values.put(BasicItemData.NUMBER, this.number);
+values.put(BasicItemData::NUMBER, this->number);
     
-values.put(EntryData.getInstance()!.ENABLE, this.enabled);
+values.put(EntryData::getInstance().ENABLE, this->enabled);
     
-values.put(PermissionItemData.WHO, this.who);
+values.put(PermissionItemData::WHO, this->who);
     
-values.put(PermissionItemData.WHAT, this.what);
+values.put(PermissionItemData::WHAT, this->what);
     
-values.put(PermissionItemData.TYPE, this.type);
+values.put(PermissionItemData::TYPE, this->type);
     
-values.put(PermissionItemData.REMOTE_ADDR, this.remoteAddr);
+values.put(PermissionItemData::REMOTE_ADDR, this->remoteAddr);
     
-values.put(PermissionItemData.START_TIME, this.startTime);
+values.put(PermissionItemData::START_TIME, this->startTime);
     
-values.put(PermissionItemData.END_TIME, this.endTime);
+values.put(PermissionItemData::END_TIME, this->endTime);
     
-values.put(BasicItemData.PRICE, this.price);
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+values.put(BasicItemData::PRICE, this->price);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-values.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+values.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -188,52 +185,52 @@ values.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
-values.add(this.id);
+values.add(this->id);
     
-values.add(this.number);
+values.add(this->number);
     
-values.add(this.enabled);
+values.add(this->enabled);
     
-values.add(this.who);
+values.add(this->who);
     
-values.add(this.what);
+values.add(this->what);
     
-values.add(this.type);
+values.add(this->type);
     
-values.add(this.remoteAddr);
+values.add(this->remoteAddr);
     
-values.add(this.startTime);
+values.add(this->startTime);
     
-values.add(this.endTime);
+values.add(this->endTime);
     
-values.add(this.price);
+values.add(this->price);
     
 values.add(time);
     
 values.add(time);
     
-PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.insert(values);
+PermissionItemsEntityFactory::getInstance().getPermissionItemsEntityInstance().insert(values);
     
 
-    success: string = "Successfully inserted " +this.id +" into items table";;
+    std::string success = "Successfully inserted " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "insert()");
+                                    this->logUtil.putF(success, this, "insert()");
     
 
                                     }
@@ -249,13 +246,13 @@ PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.
 } catch(e) 
             {
 
-    error: string = "Failed to insert " +this.id +" into items table";;
+    std::string error = "Failed to insert " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "inserts()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "inserts()", e);
     
 
                                     }
@@ -271,19 +268,19 @@ PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.
 }
 
 
-    public string delete(){
+    public: std::string delete_(){
 
         try {
-            PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.delete(this.id);
+            PermissionItemsEntityFactory::getInstance().getPermissionItemsEntityInstance().delete(this->id);
     
 
-    success: string = "Successfully deleted";;
+    std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "delete()");
+                                    this->logUtil.putF(success, this, "delete()");
     
 
                                     }
@@ -299,13 +296,13 @@ PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.
 } catch(e) 
             {
 
-    error: string = "Failed to delete";;
+    std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
     
 
                                     }
@@ -321,22 +318,22 @@ PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    success: string = "Update Pricing Successful";;
+    std::string success = "Update Pricing Successful";;
     
 
-    values: HashMap<any, any> = this.getHashMap()!;;
+    HashMap<any, any> values = this->getHashMap();;
     
-PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.update(values);
+PermissionItemsEntityFactory::getInstance().getPermissionItemsEntityInstance().update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append(this.id)!.append(CommonSeps.getInstance()!.SPACE)!.append(success)!.toString(), this, "update()");
+                                    this->logUtil.putF(StringMaker().append(this->id).append(CommonSeps::getInstance().SPACE).append(success).toString(), this, "update()");
     
 
                                     }
@@ -352,13 +349,13 @@ PermissionItemsEntityFactory.getInstance()!.getPermissionItemsEntityInstance()!.
 } catch(e) 
             {
 
-    error: string = "Failed to update: " +this.id;;
+    std::string error = "Failed to update: " +this->id;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }

@@ -67,48 +67,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
-
-            super();
-        }
+public: StoreFrontTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string getCurrentLocation(){
+    private: std::string getCurrentLocation(){
 
         try {
             
-    anyType: any = new StoreFrontHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = StoreFrontHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("getCurrentLocation", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("getCurrentLocation", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -132,13 +129,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to retrieve current location";;
+    std::string error = "Failed to retrieve current location";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getCurrentLocation()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getCurrentLocation()", e);
     
 
                                     }
@@ -156,18 +153,18 @@ this.storeName= value;
 
                 //@Throws(LicensingException.constructor)
             
-    string getCurrentHomeLocation(){
+    private: std::string getCurrentHomeLocation(){
 
         try {
             
-    anyType: any = new StoreFrontHelperFactory().getInstance(this.propertiesHashMap, this.pageContext)!;;
+    Object* anyType = StoreFrontHelperFactory().getInstance(this->propertiesHashMap, this->pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("getCurrentHomeLocation", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("getCurrentHomeLocation", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -191,13 +188,13 @@ this.storeName= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to retrieve current home location";;
+    std::string error = "Failed to retrieve current home location";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getCurrentHomeLocation()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getCurrentHomeLocation()", e);
     
 
                                     }
@@ -215,33 +212,31 @@ this.storeName= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.command != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.propertiesHashMap= new HashMap<any, any>();
+                                    this->propertiesHashMap= HashMap<any, any>();
     
-this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+this->propertiesHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.GETCURRENTLOCATION) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.GETCURRENTLOCATION) == 0)
                         
                                     {
-                                    pageContext!.getOut()!.print(this.getCurrentLocation());
+                                    pageContext.getOut().print(this->getCurrentLocation());
     
 
                                     }
                                 
                              else 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.GETCURRENTHOMELOCATION) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.GETCURRENTHOMELOCATION) == 0)
                         
                                     {
-                                    pageContext!.getOut()!.print(this.getCurrentHomeLocation());
+                                    pageContext.getOut().print(this->getCurrentHomeLocation());
     
 
                                     }
@@ -259,7 +254,7 @@ this.propertiesHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -272,7 +267,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

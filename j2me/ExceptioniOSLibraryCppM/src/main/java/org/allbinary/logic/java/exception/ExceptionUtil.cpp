@@ -49,43 +49,38 @@
 /*actual*/ class ExceptionUtil
             : public Object
          {
-        
 
-    private: static const instance: ExceptionUtil = new ExceptionUtil();
+    private: static ExceptionUtil instance() { return ExceptionUtil(); }
 
-    /*actual*/ public static ExceptionUtil getInstance(){
+    /*actual*/ public: static ExceptionUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExceptionUtil.instance;
+                        return ExceptionUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ExceptionUtil(){
+}
 
 
-    /*actual*/ public const PRETEND_EXCEPTION: Exception = new Exception("Not Really An Exception");
+    /*actual*/ public: const Exception PRETEND_EXCEPTION = Exception("Not Really An Exception");
 
-    private: const NONE: string = "No Stack Trace";
+    private: const std::string NONE = "No Stack Trace";
 
-    /*actual*/ public string getStackTrace(Throwable e){
+    /*actual*/ public: std::string getStackTrace(Throwable e){
 
-    bs: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream bs = ByteArrayOutputStream();;
     
 e.printStackTrace();
     
 
-    output: string = bs.toString()!;;
+    std::string output = bs.toString();;
     
 
-                        if(output != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
@@ -101,7 +96,7 @@ e.printStackTrace();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NONE;
+                        return this->NONE;
     
 }
 

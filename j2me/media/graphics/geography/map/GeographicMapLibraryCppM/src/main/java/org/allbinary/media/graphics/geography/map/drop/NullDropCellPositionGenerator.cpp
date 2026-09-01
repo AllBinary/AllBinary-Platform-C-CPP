@@ -39,16 +39,15 @@
         #include "BaseDropCellPositionGenerator.h"
 
 class NullDropCellPositionGenerator: public BaseDropCellPositionGenerator {
-        
 
-    private: static const instance: NullDropCellPositionGenerator = new NullDropCellPositionGenerator();
+    private: static NullDropCellPositionGenerator instance() { return NullDropCellPositionGenerator(); }
 
-    public static NullDropCellPositionGenerator getInstance(){
+    public: static NullDropCellPositionGenerator getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullDropCellPositionGenerator.instance;
+                        return NullDropCellPositionGenerator::instance();
     
 }
 

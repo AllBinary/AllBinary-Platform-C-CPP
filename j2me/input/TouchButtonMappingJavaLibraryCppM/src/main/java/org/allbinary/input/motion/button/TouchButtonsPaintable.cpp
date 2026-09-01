@@ -55,45 +55,42 @@
 #include "TouchButton.h"
 
 class TouchButtonsPaintable: public Paintable {
-        
 
-    const foregroundBasicColor: BasicColor;
+    protected: BasicColor foregroundBasicColor;
 
-    const foregroundColor: int32_t;
+    protected: int32_t foregroundColor;
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const touchButtonFactory: TouchButtonFactory = TouchButtonFactory.getInstance()!;
+    private: const TouchButtonFactory touchButtonFactory = TouchButtonFactory::getInstance();
 
-public constructor (BasicColor basicColor){
-
-            super();
-        this.foregroundBasicColor= basicColor;
+public: TouchButtonsPaintable(BasicColor basicColor){
+this->foregroundBasicColor= basicColor;
     
-this.foregroundColor= basicColor!.intValue();
+this->foregroundColor= basicColor.intValue();
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-    list: BasicArrayList = this.touchButtonFactory!.getList()!;;
+    BasicArrayList list = this->touchButtonFactory.getList();;
     
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.foregroundBasicColor, this.foregroundColor);
+this->basicSetColorUtil.setBasicColorP3(graphics, this->foregroundBasicColor, this->foregroundColor);
     
 
-    touchButton: TouchButton;;
+    TouchButton touchButton;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size()!;--index >= 0; )
+    int32_t index = list.size();--index >= 0; )
         {
 touchButton= list.objectArray[index]! as TouchButton;
     
-touchButton!.paint(graphics);
+touchButton.paint(graphics);
     
 }
 
@@ -102,11 +99,11 @@ touchButton!.paint(graphics);
 
 
                         for (
-    index: int32_t = list.size()!;--index >= 0; )
+    int32_t index = list.size();--index >= 0; )
         {
 touchButton= list.objectArray[index]! as TouchButton;
     
-touchButton!.paintHint(graphics);
+touchButton.paintHint(graphics);
     
 }
 

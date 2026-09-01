@@ -54,17 +54,16 @@
 class QuoteRequestEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: QuoteRequestEntityFactory = new QuoteRequestEntityFactory();
+    private: static QuoteRequestEntityFactory instance() { return QuoteRequestEntityFactory(); }
 
-    public static QuoteRequestEntityFactory getInstance();
+    public: static QuoteRequestEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: QuoteRequestEntityFactory();
 
-    public QuoteRequestEntity getQuoteRequestEntityInstance();
+    public: QuoteRequestEntity getQuoteRequestEntityInstance();
 
 };
 

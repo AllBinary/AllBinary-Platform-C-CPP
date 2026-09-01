@@ -51,13 +51,12 @@
 #include "Animation.h"
 
 class AnimationInterfaceFactoryInterface: public BasicAnimationInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
     Animation getInstance(int32_t instanceId)
 
-    setInitialScale(ScaleProperties scaleProperties)
+    void setInitialScale(ScaleProperties scaleProperties)
 
 };
 

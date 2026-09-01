@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -51,39 +53,38 @@
 class MethodUtil
             : public Object
          {
-        
 
-    public static string viewAll(Function myClass, string lineBreak){
+    public: static std::string viewAll(Function myClass, std::string lineBreak){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    method: std::vector<Method> = myClass!.getMethods()!;;
+    std::vector<Method> method = myClass.getMethods();;
     
-stringBuffer!.append("Methods: ");
+stringBuffer.append("Methods: ");
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < method.length; index++)
+    int32_t index = 0;index < method.size(); index++)
         {
-stringBuffer!.append(method[index]!.getReturnType()!.getName());
+stringBuffer.append(method[index]!.getReturnType().getName());
     
-stringBuffer!.append(" ");
+stringBuffer.append(" ");
     
-stringBuffer!.append(method[index]!.getName());
+stringBuffer.append(method[index]!.getName());
     
-stringBuffer!.append("(");
+stringBuffer.append("(");
     
-ParamsUtil.viewParams(method[index]!.getParameterTypes());
+ParamsUtil::viewParams(method[index]!.getParameterTypes());
     
-stringBuffer!.append(")");
+stringBuffer.append(")");
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 }
 
@@ -91,15 +92,13 @@ stringBuffer!.append(lineBreak);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: MethodUtil(){
+}
 
 
 };

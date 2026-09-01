@@ -52,15 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CustomTextBox2: public CustomTextBox {
-        
 
-public constructor (CommandListener cmdListener, string label, string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: CustomTextBox2(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(cmdListener, label, text, maxSize, constraints, font, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.getTextFieldItem()!.setFocus(true);
+this->getTextFieldItem().setFocus(true);
     
 }
 

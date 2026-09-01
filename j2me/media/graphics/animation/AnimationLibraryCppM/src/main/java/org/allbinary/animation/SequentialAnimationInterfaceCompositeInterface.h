@@ -42,7 +42,6 @@
         #include "IndexedAnimationInterfaceCompositeInterface.h"
 
 class SequentialAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
-        
 
 };
 

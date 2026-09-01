@@ -46,13 +46,12 @@
 #include "HighScoreCommands.h"
 
 class HighScoreCommandsFactory: public HighScoreCommandsBaseFactory {
-        
 
-    private: static const instance: HighScoreCommandsFactory = new HighScoreCommandsFactory();
+    private: static HighScoreCommandsFactory instance() { return HighScoreCommandsFactory(); }
 
-    public static HighScoreCommandsFactory getInstance();
+    public: static HighScoreCommandsFactory getInstance();
 
-private constructor ();
+private: HighScoreCommandsFactory();
 
 };
 

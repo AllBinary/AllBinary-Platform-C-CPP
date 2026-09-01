@@ -49,13 +49,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationGenericModuleBundleActivator: public InputAutomationModuleBundleActivator {
-        
 
-public constructor ();
+public: InputAutomationGenericModuleBundleActivator();
 
                 //@Throws(Exception.constructor)
             
-    public init();
+    public: void init();
 
 };
 

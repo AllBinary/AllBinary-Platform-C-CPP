@@ -65,23 +65,22 @@
 class GraphicItemFactory
             : public Object
          {
-        
 
-    private: static const instance: GraphicItemFactory = new GraphicItemFactory();
+    private: static GraphicItemFactory instance() { return GraphicItemFactory(); }
 
-    public static GraphicItemFactory getInstance();
+    public: static GraphicItemFactory getInstance();
 
-    private: const graphicItems: HashMap<any, any>;
+    private: HashMap<any, any> graphicItems;
 
-    private: const DEFAULT: GraphicsItemInterfaceFactoryInterface = new SelectionToolFactory();
+    private: const GraphicsItemInterfaceFactoryInterface DEFAULT = SelectionToolFactory();
 
-private constructor ();
+private: GraphicItemFactory();
 
-    public GraphicsItemInterfaceFactoryInterface getInstance(string itemName);
+    public: GraphicsItemInterfaceFactoryInterface getInstance(std::string itemName);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> getInstance(BasicArrayList graphicItemNodeList);
+    public: HashMap<any, any> getInstance(BasicArrayList graphicItemNodeList);
 
 };
 

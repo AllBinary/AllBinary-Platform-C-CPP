@@ -48,27 +48,26 @@
 class IntermissionFactory
             : public Object
          {
-        
 
-    private: static const instance: IntermissionFactory = new IntermissionFactory();
+    private: static IntermissionFactory instance() { return IntermissionFactory(); }
 
-    public static IntermissionFactory getInstance(){
+    public: static IntermissionFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return IntermissionFactory.instance;
+                        return IntermissionFactory::instance();
     
 }
 
 
-    public const START_LEVEL_INTERMISSION_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("START_LEVEL_INTERMISSION_GAME_STATE")!;
+    public: const GameState START_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("START_LEVEL_INTERMISSION_GAME_STATE");
 
-    public const WAIT_LEVEL_INTERMISSION_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("WAIT_LEVEL_INTERMISSION_GAME_STATE")!;
+    public: const GameState WAIT_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("WAIT_LEVEL_INTERMISSION_GAME_STATE");
 
-    public const SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE")!;
+    public: const GameState SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("SHOW_RESULTS_LEVEL_INTERMISSION_GAME_STATE");
 
-    public const SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE")!;
+    public: const GameState SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE = GameStateFactory::getInstance().createGameState("SHOW_HIGH_SCORE_LEVEL_INTERMISSION_GAME_STATE");
 
 };
 

@@ -57,33 +57,30 @@
 class NoCompleteMotionGestureInputEventListener
             : public Object
         : public CompleteMotionGestureInputEventListenerInterface {
-        
 
-    private: static const instance: NoCompleteMotionGestureInputEventListener = new NoCompleteMotionGestureInputEventListener();
+    private: static NoCompleteMotionGestureInputEventListener instance() { return NoCompleteMotionGestureInputEventListener(); }
 
-    public static NoCompleteMotionGestureInputEventListener getInstance(){
+    public: static NoCompleteMotionGestureInputEventListener getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoCompleteMotionGestureInputEventListener.instance;
+                        return NoCompleteMotionGestureInputEventListener::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NoCompleteMotionGestureInputEventListener(){
+}
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
 }
 
 

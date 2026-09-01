@@ -42,11 +42,10 @@
         #include "LocationPaintable.h"
 
 class NullLocationPaintable: public LocationPaintable {
-        
 
-    private: static const instanceC: NullLocationPaintable = new NullLocationPaintable();
+    private: static const NullLocationPaintable instanceC = NullLocationPaintable();
 
-    public static NullLocationPaintable getInstance();
+    public: static NullLocationPaintable getInstance();
 
 };
 

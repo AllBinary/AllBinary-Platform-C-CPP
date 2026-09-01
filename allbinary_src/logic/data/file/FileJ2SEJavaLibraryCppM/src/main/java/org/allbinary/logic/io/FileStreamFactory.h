@@ -58,25 +58,24 @@
 class FileStreamFactory
             : public Object
          {
-        
 
-    private: static SINGLETON: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
 
-    public static FileStreamFactory getInstance();
+    public: static FileStreamFactory getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public AbFileInputStream getFileInputStreamInstance(string path, string fileName);
+private: FileStreamFactory();
 
                 //@Throws(Exception.constructor)
             
-    public AbFileOutputStream getFileOutputStreamInstance(string path, string fileName);
+    public: AbFileInputStream getFileInputStreamInstance(std::string path, std::string fileName);
 
                 //@Throws(Exception.constructor)
             
-    public delete(string path, string fileName);
+    public: AbFileOutputStream getFileOutputStreamInstance(std::string path, std::string fileName);
+
+                //@Throws(Exception.constructor)
+            
+    public: void delete_(std::string path, std::string fileName);
 
 };
 

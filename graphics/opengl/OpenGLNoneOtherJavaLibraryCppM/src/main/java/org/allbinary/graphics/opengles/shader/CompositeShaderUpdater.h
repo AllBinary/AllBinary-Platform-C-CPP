@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
 
+            #include <vector>
+        
 #include <javax/microedition/khronos/egl/EGLConfig.h>
 
       
@@ -57,19 +59,18 @@
         #include "ShaderUpdater.h"
 
 class CompositeShaderUpdater: public ShaderUpdater {
-        
 
-    private: static const instanceC: CompositeShaderUpdater = new CompositeShaderUpdater(StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), NullUtil.getInstance()!.NULL_INT_ARRAY);
+    private: static const CompositeShaderUpdater instanceC = CompositeShaderUpdater(StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), NullUtil::getInstance().NULL_INT_ARRAY);
 
-    public static CompositeShaderUpdater getInstance();
+    public: static CompositeShaderUpdater getInstance();
 
-    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-public constructor (std::vector<string> uniformBlockArray, std::vector<string> uniformArray, std::vector<string> attributeArray, std::vector<int32_t> attributeHandleArray);
+public: CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray);
 
-    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle);
+    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle);
 
-    public onSurfaceDestroyed(GL10 gl);
+    public: void onSurfaceDestroyed(GL10 gl);
 
 };
 

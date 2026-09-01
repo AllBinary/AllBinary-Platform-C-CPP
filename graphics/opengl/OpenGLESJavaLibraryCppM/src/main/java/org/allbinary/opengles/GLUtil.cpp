@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Math.h"
@@ -56,30 +58,29 @@
 class GLUtil
             : public Object
          {
-        
 
-    private: static const instance: GLUtil = new GLUtil();
+    private: static GLUtil instance() { return GLUtil(); }
 
-    public static GLUtil getInstance(){
+    public: static GLUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GLUtil.instance;
+                        return GLUtil::instance();
     
 }
 
 
-    private: const BYTES_PER_FLOAT: int32_t = 4;
+    private: const int32_t BYTES_PER_FLOAT = 4;
 
-    public FloatBuffer makeFloatBuffer3(float p_a, float p_b, float p_c){
+    public: FloatBuffer makeFloatBuffer3(float p_a, float p_b, float p_c){
 
-    b: ByteBuffer = ByteBuffer.allocateDirect(3 *this.BYTES_PER_FLOAT)!;;
+    ByteBuffer b = ByteBuffer::allocateDirect(3 *this->BYTES_PER_FLOAT);;
     
-b.order(ByteOrder.nativeOrder());
+b.order(ByteOrder::nativeOrder());
     
 
-    buffer: FloatBuffer = b.asFloatBuffer()!;;
+    FloatBuffer buffer = b.asFloatBuffer();;
     
 buffer.put(p_a);
     
@@ -87,7 +88,7 @@ buffer.put(p_b);
     
 buffer.put(p_c);
     
-this.position(buffer, 0);
+this->position(buffer, 0);
     
 
 
@@ -98,14 +99,14 @@ this.position(buffer, 0);
 }
 
 
-    public FloatBuffer makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d){
+    public: FloatBuffer makeFloatBuffer4(float p_a, float p_b, float p_c, float p_d){
 
-    b: ByteBuffer = ByteBuffer.allocateDirect(4 *this.BYTES_PER_FLOAT)!;;
+    ByteBuffer b = ByteBuffer::allocateDirect(4 *this->BYTES_PER_FLOAT);;
     
-b.order(ByteOrder.nativeOrder());
+b.order(ByteOrder::nativeOrder());
     
 
-    buffer: FloatBuffer = b.asFloatBuffer()!;;
+    FloatBuffer buffer = b.asFloatBuffer();;
     
 buffer.put(p_a);
     
@@ -115,7 +116,7 @@ buffer.put(p_c);
     
 buffer.put(p_d);
     
-this.position(buffer, 0);
+this->position(buffer, 0);
     
 
 
@@ -126,25 +127,25 @@ this.position(buffer, 0);
 }
 
 
-    public FloatBuffer makeFloatBuffer(ByteBuffer byteBuffer){
+    public: FloatBuffer makeFloatBuffer(ByteBuffer byteBuffer){
 
-    b: ByteBuffer = ByteBuffer.allocateDirect(byteBuffer!.limit() *this.BYTES_PER_FLOAT)!;;
+    ByteBuffer b = ByteBuffer::allocateDirect(byteBuffer.limit() *this->BYTES_PER_FLOAT);;
     
-b.order(ByteOrder.nativeOrder());
-    
-
-    buffer: FloatBuffer = b.asFloatBuffer()!;;
+b.order(ByteOrder::nativeOrder());
     
 
-    unsigned: int32_t= 0;;
+    FloatBuffer buffer = b.asFloatBuffer();;
     
 
-    v: float= 0.0;;
+    int32_t unsigned= 0;;
     
 
-        while(byteBuffer!.hasRemaining())
+    float v= 0.0;;
+    
+
+        while(byteBuffer.hasRemaining())
         {
-unsigned= byteBuffer!.get()&0xFF;
+unsigned= byteBuffer.get()&0xFF;
     
 v= (unsigned) /255;
     
@@ -152,7 +153,7 @@ buffer.put(v);
     
 }
 
-this.position(buffer, 0);
+this->position(buffer, 0);
     
 
 
@@ -163,7 +164,7 @@ this.position(buffer, 0);
 }
 
 
-    public Buffer position(Buffer buffer, int32_t newPosition){
+    public: Buffer position(Buffer buffer, int32_t newPosition){
 
 
 
@@ -173,40 +174,40 @@ this.position(buffer, 0);
 }
 
 
-    public rotateUVs(std::vector<float> uvs, float angleDegrees, float pivotU, float pivotV){
+    public: void rotateUVs(std::vector<float> uvs, float angleDegrees, float pivotU, float pivotV){
 
-    angleRad: double = Math.toRadians(angleDegrees)!;;
+    double angleRad = Math::toRadians(angleDegrees);;
     
 
-    cosA: double = Math.cos(angleRad)!;;
+    double cosA = Math::cos(angleRad);;
     
 
-    sinA: double = Math.sin(angleRad)!;;
+    double sinA = Math::sin(angleRad);;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < uvs.length; )
+    int32_t i = 0;i < uvs.size(); )
         {
 
-    u: float = uvs[i]!;;
+    float u = uvs[i];;
     
 
-    v: float = uvs[i +1]!;;
+    float v = uvs[i +1];;
     
 
-    du: float = u -pivotU;;
+    float du = u -pivotU;;
     
 
-    dv: float = v -pivotV;;
+    float dv = v -pivotV;;
     
 
-    ru: float = (du *cosA -dv *sinA) +pivotU;;
+    float ru = (du *cosA -dv *sinA) +pivotU;;
     
 
-    rv: float = (du *sinA +dv *cosA) +pivotV;;
+    float rv = (du *sinA +dv *cosA) +pivotV;;
     
 uvs[i]= ru;
     

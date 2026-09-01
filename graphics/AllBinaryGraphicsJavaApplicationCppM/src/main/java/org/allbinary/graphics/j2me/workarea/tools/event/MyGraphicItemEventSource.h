@@ -48,25 +48,24 @@
 class MyGraphicItemEventSource
             : public Object
          {
-        
 
-    private: command: string;
+    private: std::string command;
 
-    private: treeNode: MutableTreeNode;
+    private: MutableTreeNode treeNode;
 
-    private: angle: double = 0;
+    private: double angle = 0;
 
-public constructor (string command, MutableTreeNode treeNode);
+public: MyGraphicItemEventSource(std::string command, MutableTreeNode treeNode);
 
-public constructor (string command, double angle, MutableTreeNode treeNode);
+public: MyGraphicItemEventSource(std::string command, double angle, MutableTreeNode treeNode);
 
-    public string getCommand();
+    public: std::string getCommand();
 
-    public MutableTreeNode getTreeNode();
+    public: MutableTreeNode getTreeNode();
 
-    public double getAngle();
+    public: double getAngle();
 
-    public setAngle(double angle);
+    public: void setAngle(double angle);
 
 };
 

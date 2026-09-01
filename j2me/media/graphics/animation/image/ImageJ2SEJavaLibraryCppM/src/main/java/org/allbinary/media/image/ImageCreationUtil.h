@@ -53,21 +53,20 @@
 class ImageCreationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCreationUtil = new ImageCreationUtil();
+    private: static ImageCreationUtil instance() { return ImageCreationUtil(); }
 
-    public static ImageCreationUtil getInstance();
+    public: static ImageCreationUtil getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImageWH(int32_t width, int32_t height);
+private: ImageCreationUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY);
+    public: Image createImageWH(int32_t width, int32_t height);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImage(int32_t width, int32_t height, float maxScaleX, float maxScaleY);
 
 };
 

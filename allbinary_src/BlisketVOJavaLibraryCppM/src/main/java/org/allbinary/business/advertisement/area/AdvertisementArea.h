@@ -66,39 +66,38 @@
 class AdvertisementArea
             : public Object
         : public AdvertisementAreaInterface {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: description: string;
+    private: std::string description;
 
-    private: advertisementAreaConstraintsInterface: AdvertisementAreaConstraintsInterface;
+    private: AdvertisementAreaConstraintsInterface advertisementAreaConstraintsInterface;
 
-    private: campaign: string;
+    private: std::string campaign;
 
-public constructor (HashMap<any, any> hashMap);
+public: AdvertisementArea(HashMap<any, any> hashMap);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getStoreName();
+    public: std::string getStoreName();
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public AdvertisementAreaConstraintsInterface getConstraints();
+    public: AdvertisementAreaConstraintsInterface getConstraints();
 
-    public string getCampaign();
+    public: std::string getCampaign();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public setStoreName(string storeName);
+    public: void setStoreName(std::string storeName);
 
-    public setDescription(string description);
+    public: void setDescription(std::string description);
 
-    public setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface);
+    public: void setConstraints(AdvertisementAreaConstraintsInterface advertisementConstraintsInterface);
 
-    public setCampaign(string campaign);
+    public: void setCampaign(std::string campaign);
 
 };
 

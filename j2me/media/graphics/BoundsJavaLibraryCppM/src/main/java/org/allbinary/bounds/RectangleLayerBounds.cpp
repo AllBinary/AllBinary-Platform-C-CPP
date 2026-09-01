@@ -43,9 +43,8 @@
 #include "BoundsVisitorInterface.h"
 
 class RectangleLayerBounds: public LayerBounds {
-        
 
-public constructor (Rectangle rectangle){
+public: RectangleLayerBounds(Rectangle rectangle){
             super(rectangle);
                     
 
@@ -54,39 +53,39 @@ public constructor (Rectangle rectangle){
 }
 
 
-    public visit(BoundsVisitorInterface boundsVisitorInterface){
+    public: void visit(BoundsVisitorInterface boundsVisitorInterface){
 
-                        if(boundsVisitorInterface!.getX() > this.rectangle.getMaxX())
+                        if(boundsVisitorInterface.getX() > this->rectangle.getMaxX())
                         
                                     {
-                                    boundsVisitorInterface!.maxX();
+                                    boundsVisitorInterface.maxX();
     
 
                                     }
                                 
 
-                        if(boundsVisitorInterface!.getY() > this.rectangle.getMaxY())
+                        if(boundsVisitorInterface.getY() > this->rectangle.getMaxY())
                         
                                     {
-                                    boundsVisitorInterface!.maxY();
+                                    boundsVisitorInterface.maxY();
     
 
                                     }
                                 
 
-                        if(boundsVisitorInterface!.getX() < this.rectangle.getPoint()!.getX())
+                        if(boundsVisitorInterface.getX() < this->rectangle.getPoint().getX())
                         
                                     {
-                                    boundsVisitorInterface!.minX();
+                                    boundsVisitorInterface.minX();
     
 
                                     }
                                 
 
-                        if(boundsVisitorInterface!.getY() < this.rectangle.getPoint()!.getY())
+                        if(boundsVisitorInterface.getY() < this->rectangle.getPoint().getY())
                         
                                     {
-                                    boundsVisitorInterface!.minY();
+                                    boundsVisitorInterface.minY();
     
 
                                     }

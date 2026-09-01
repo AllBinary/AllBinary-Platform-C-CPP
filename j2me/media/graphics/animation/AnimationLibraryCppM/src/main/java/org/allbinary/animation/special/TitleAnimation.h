@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_SPECIAL_TITLEANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/System.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -73,63 +75,62 @@
         #include "SpecialAnimation.h"
 
 class TitleAnimation: public SpecialAnimation {
-        
 
-    public static TitleAnimation createAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width);
+    public: static TitleAnimation createAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public deltaX: float= 0.0;
+    public: float deltaX= 0.0;
 
-    public deltaY: float= 0.0;
+    public: float deltaY= 0.0;
 
-    public deltaZ: float= 0.0;
+    public: float deltaZ= 0.0;
 
-    const basicColorArray: std::vector<BasicColor>;
+    protected: std::vector<BasicColor> basicColorArray;
 
-    const dxArray: std::vector<int32_t>;
+    protected: std::vector<int32_t> dxArray;
 
-    const dyArray: std::vector<int32_t>;
+    protected: std::vector<int32_t> dyArray;
 
-    const widthP: int32_t;
+    protected: int32_t widthP;
 
-    const animationInterfaceArray: std::vector<IndexedAnimation>;
+    protected: std::vector<IndexedAnimation> animationInterfaceArray;
 
-    const sizeP: int32_t;
+    protected: int32_t sizeP;
 
-    const y: int32_t;
+    protected: int32_t y;
 
-    private: lastFrameStartTime: int64_t;
+    private: int64_t lastFrameStartTime;
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-public constructor (std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior);
+public: TitleAnimation(std::vector<IndexedAnimation> animationInterfaceArray, std::vector<BasicColor> basicColorArray, std::vector<int32_t> dxArray, std::vector<int32_t> dyArray, int32_t y, int32_t width, AnimationBehavior animationBehavior);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public bool isComplete();
+    public: bool isComplete();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public setFrame(int32_t frame);
+    public: void setFrame(int32_t frame);
 
-    public setLastFrame();
+    public: void setLastFrame();
 
-    public reset();
+    public: void reset();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public paintFrameXY(Graphics graphics, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrameXY(Graphics graphics, int32_t frame, int32_t x, int32_t y);
 
-    const CLEAR_COLOR: BasicColor = BasicColorFactory.getInstance()!.CLEAR_COLOR;
+    protected: const BasicColor CLEAR_COLOR = BasicColorFactory::getInstance().CLEAR_COLOR;
 
-    public paintXY(Graphics graphics, int32_t ax, int32_t ay);
+    public: void paintXY(Graphics graphics, int32_t ax, int32_t ay);
 
 };
 

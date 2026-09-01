@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Class.h"
@@ -50,34 +52,33 @@
 class MyCanvasEventService
             : public Object
          {
-        
 
-    private: static listenerList: javax.swing.event.EventListenerList = new javax.swing.event.EventListenerList();
+    private: static javax::swing::event::EventListenerList listenerList = javax::swing::event::EventListenerList();
 
-    public static DELETE: string = "delete";
+    public: static std::string DELETE = "delete";
 
-    public static DUPLICATE: string = "duplicate";
+    public: static std::string DUPLICATE = "duplicate";
 
-    public static SELECT: string = "select";
+    public: static std::string SELECT = "select";
 
-    public static ROTATE: string = "rotate";
+    public: static std::string ROTATE = "rotate";
 
-    public static EXPLODE: string = "explode";
+    public: static std::string EXPLODE = "explode";
 
-    public static AUTOEXPLODE: string = "autoExplode";
+    public: static std::string AUTOEXPLODE = "autoExplode";
 
-    public static CENTER: string = "center";
+    public: static std::string CENTER = "center";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static addListener(MyCanvasEventListener listener){
-MyCanvasEventService.listenerList!.add(listener.constructor as Class<any>, listener as java.util.EventListener);
+    public: static void addListener(MyCanvasEventListener listener){
+MyCanvasEventService::listenerList.add(listener.constructor as Class<any>, listener as java::util::EventListener);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static removeListener(MyCanvasEventListener listener){
-MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, listener as java.util.EventListener);
+    public: static void removeListener(MyCanvasEventListener listener){
+MyCanvasEventService::listenerList.remove(listener.constructor as Class<any>, listener as java::util::EventListener);
     
 }
 
@@ -85,23 +86,23 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static fire(MyCanvasEvent evt){
+    public: static void fire(MyCanvasEvent evt){
 
-    listeners: std::vector<any> = listenerList!.getListenerList()!;;
+    std::vector<Object*> listeners = listenerList.getListenerList();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < listeners.length; )
+    int32_t i = 0;i < listeners.size(); )
         {
 
                         if(listeners[i] == listeners[i +1]!.constructor)
                         
                                     {
                                     
-                        if(evt.getCommand()!.compareTo(MyCanvasEventService.DELETE) == 0)
+                        if(evt.getCommand().compareTo(MyCanvasEventService::DELETE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyCanvasEventListener
@@ -112,7 +113,7 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyCanvasEventService.DUPLICATE) == 0)
+                        if(evt.getCommand().compareTo(MyCanvasEventService::DUPLICATE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyCanvasEventListener
@@ -123,7 +124,7 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyCanvasEventService.SELECT) == 0)
+                        if(evt.getCommand().compareTo(MyCanvasEventService::SELECT) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyCanvasEventListener
@@ -134,7 +135,7 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyCanvasEventService.ROTATE) == 0)
+                        if(evt.getCommand().compareTo(MyCanvasEventService::ROTATE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyCanvasEventListener
@@ -145,7 +146,7 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyCanvasEventService.EXPLODE) == 0)
+                        if(evt.getCommand().compareTo(MyCanvasEventService::EXPLODE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyCanvasEventListener
@@ -156,7 +157,7 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyCanvasEventService.AUTOEXPLODE) == 0)
+                        if(evt.getCommand().compareTo(MyCanvasEventService::AUTOEXPLODE) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyCanvasEventListener
@@ -167,7 +168,7 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
                                     }
                                 
                              else 
-                        if(evt.getCommand()!.compareTo(MyCanvasEventService.CENTER) == 0)
+                        if(evt.getCommand().compareTo(MyCanvasEventService::CENTER) == 0)
                         
                                     {
                                      = listeners[i +1]! as MyCanvasEventListener
@@ -185,10 +186,8 @@ MyCanvasEventService.listenerList!.remove(listener.constructor as Class<any>, li
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: MyCanvasEventService(){
+}
 
 
 };

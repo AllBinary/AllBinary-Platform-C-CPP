@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_CANCELTOUCHBUTTONINPUTFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/input/InputFactory.h>
@@ -53,17 +55,16 @@
 class CancelTouchButtonInputFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static CancelTouchButtonInputFactory getInstance();
+    public: static CancelTouchButtonInputFactory getInstance();
 
-    private: const cancelInputArray: std::vector<TouchButtonInput> = new Array(InputFactory.getInstance()!.MAX);
+    private: const std::vector<TouchButtonInput> cancelInputArray = new Array(InputFactory::getInstance().MAX);
 
-private constructor ();
+private: CancelTouchButtonInputFactory();
 
-    public TouchButtonInput getCancel(TouchButtonInput touchButtonInput);
+    public: TouchButtonInput getCancel(TouchButtonInput touchButtonInput);
 
 };
 

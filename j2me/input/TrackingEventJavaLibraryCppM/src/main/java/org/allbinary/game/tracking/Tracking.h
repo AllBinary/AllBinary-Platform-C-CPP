@@ -57,11 +57,10 @@
 class Tracking
             : public Object
          {
-        
 
-public constructor ();
+public: Tracking();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

@@ -99,91 +99,90 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class FileAuthenticationTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: attemptsInteger: Integer;
+    private: Integer attemptsInteger;
 
-    private: weblisketSession: BasicWeblisketSession;
+    private: BasicWeblisketSession weblisketSession;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: command: string;
+    private: std::string command;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: newPassword: string;
+    private: std::string newPassword;
 
-    private: authenticated: string;
+    private: std::string authenticated;
 
-    private: sessionUserName: string;
+    private: std::string sessionUserName;
 
-    private: role: BasicUserRole;
+    private: BasicUserRole role;
 
-    private: timeout: string;
+    private: std::string timeout;
 
-    private: roles: Vector;
+    private: Vector roles;
 
-public constructor ();
+public: FileAuthenticationTag();
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public setUserName(string userName);
+    public: void setUserName(std::string userName);
 
-    public setPassword(string value);
+    public: void setPassword(std::string value);
 
-    public setNewPassword(string value);
+    public: void setNewPassword(std::string value);
 
-    public setRoles(Vector values);
+    public: void setRoles(Vector values);
 
-    makeSessionValid(BasicUserRole storedRole, string userName);
+    private: void makeSessionValid(BasicUserRole storedRole, std::string userName);
 
-    getFormData();
+    private: void getFormData();
 
-    public nextAttempt();
-
-                //@Throws(LicensingException.constructor)
-            
-    bool changePassword();
-
-    int32_t invalidateSession();
+    public: void nextAttempt();
 
                 //@Throws(LicensingException.constructor)
             
-    bool isSessionOld();
+    private: bool changePassword();
 
-    Boolean isRarelyUsedSession();
-
-                //@Throws(LicensingException.constructor)
-            
-    bool isRoleValid();
+    private: int32_t invalidateSession();
 
                 //@Throws(LicensingException.constructor)
             
-    string validRole();
+    private: bool isSessionOld();
+
+    private: Boolean isRarelyUsedSession();
 
                 //@Throws(LicensingException.constructor)
             
-    string invalidRole();
+    private: bool isRoleValid();
 
                 //@Throws(LicensingException.constructor)
             
-    bool isAuthenticationSessionValid();
+    private: std::string validRole();
 
                 //@Throws(LicensingException.constructor)
             
-    bool processIfNewLogin();
+    private: std::string invalidRole();
 
                 //@Throws(LicensingException.constructor)
             
-    bool processInvalidation();
+    private: bool isAuthenticationSessionValid();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: bool processIfNewLogin();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: bool processInvalidation();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

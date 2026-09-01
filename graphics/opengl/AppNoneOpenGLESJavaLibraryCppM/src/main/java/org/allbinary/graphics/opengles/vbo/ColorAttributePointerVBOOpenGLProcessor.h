@@ -49,15 +49,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ColorAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: ColorAttributePointerVBOOpenGLProcessor = new ColorAttributePointerVBOOpenGLProcessor();
+    private: static ColorAttributePointerVBOOpenGLProcessor instance() { return ColorAttributePointerVBOOpenGLProcessor(); }
 
-    public static ColorAttributePointerVBOOpenGLProcessor getInstance();
+    public: static ColorAttributePointerVBOOpenGLProcessor getInstance();
 
-public constructor ();
+public: ColorAttributePointerVBOOpenGLProcessor();
 
-    public process(GL10 gl, any = {} anyType);
+    public: void process(GL10 gl, Object* anyType);
 
 };
 

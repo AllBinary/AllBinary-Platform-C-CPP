@@ -72,52 +72,49 @@
 class AbeLicenseClient
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const MINSERVERS: int32_t = 3;
+    private: const int32_t MINSERVERS = 3;
 
-public constructor (){
-
-            super();
-        }
+public: AbeLicenseClient(){
+}
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation){
+    public: AbeLicenseInterface get(AbeClientInformationInterface abeClientInformation){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.GET);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.GET);
     
 
-    xmlRpcAbeLicenseClient: XmlRpcAbeClient = new XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
+    XmlRpcAbeClient xmlRpcAbeLicenseClient = XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
     
 
-    abeLicenseInterface: AbeLicenseInterface = xmlRpcAbeLicenseClient!.get(
+    AbeLicenseInterface abeLicenseInterface = xmlRpcAbeLicenseClient.get(
                             nullptr) as AbeLicenseInterface;;
     
 
-    licenseId: string = abeLicenseInterface!.getLicenseId()!;;
+    std::string licenseId = abeLicenseInterface.getLicenseId();;
     
 
-    servers: BasicArrayList = abeLicenseInterface!.getServers()!;;
+    BasicArrayList servers = abeLicenseInterface.getServers();;
     
 
-    isNewLicenseId: bool = false;;
+    bool isNewLicenseId = false;;
     
 
-    isBetterServerList: bool = false;;
+    bool isBetterServerList = false;;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil!.isEmpty(abeClientInformation!.getLicenseId()) && !abeClientInformation!.isSameId(licenseId))
+                        if(stringValidationUtil.isEmpty(abeClientInformation.getLicenseId()) && !abeClientInformation.isSameId(licenseId))
                         
                                     {
                                     isNewLicenseId= true;
@@ -126,7 +123,7 @@ public constructor (){
                                     }
                                 
 
-                        if(servers.size() >= this.MINSERVERS && abeClientInformation!.isLargerOrDifferentServerList(servers))
+                        if(servers.size() >= this->MINSERVERS && abeClientInformation.isLargerOrDifferentServerList(servers))
                         
                                     {
                                     isBetterServerList= true;
@@ -139,20 +136,20 @@ public constructor (){
                         
                                     {
                                     
-    initInfo: LicenseInitInfo = LicenseInitInfoUtil.getInstance()!.read()!;;
+    LicenseInitInfo initInfo = LicenseInitInfoUtil::getInstance().read();;
     
-initInfo!.setLicenseId(licenseId);
+initInfo.setLicenseId(licenseId);
     
-initInfo!.setServerList(servers);
+initInfo.setServerList(servers);
     
-LicenseInitInfoUtil.getInstance()!.write(initInfo);
+LicenseInitInfoUtil::getInstance().write(initInfo);
     
-abeClientInformation!.init();
+abeClientInformation.init();
     
 
                                     }
                                 
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.GET);
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.GET);
     
 
 

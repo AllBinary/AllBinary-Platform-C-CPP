@@ -54,61 +54,60 @@
         #include "AbSqlBean.h"
 
 class AbDatabaseManagement: public AbSqlBean {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const sqlCommandLog: StringMaker = new StringMaker();
+    protected: const StringMaker sqlCommandLog = StringMaker();
 
-    private: const GRANT_ALL: string = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
+    private: const std::string GRANT_ALL = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
 
-    private: const DOT_STAR: string = ".*";
+    private: const std::string DOT_STAR = ".*";
 
-    private: const TO: string = " TO ";
+    private: const std::string TO = " TO ";
 
-    private: const AT_LOCALHOST: string = "@localhost";
+    private: const std::string AT_LOCALHOST = "@localhost";
 
-    private: const IDENTIFIED_BY: string = " IDENTIFIED BY '";
+    private: const std::string IDENTIFIED_BY = " IDENTIFIED BY '";
 
-    private: const WITH_GRANT_OPTION: string = "' WITH GRANT OPTION";
+    private: const std::string WITH_GRANT_OPTION = "' WITH GRANT OPTION";
 
-    private: const FAILED: string = "Failed";
+    private: const std::string FAILED = "Failed";
 
-    private: const GET_HOST_NAME: string = "getHostName()";
+    private: const std::string GET_HOST_NAME = "getHostName()";
 
-    private: const METHOD_ADD_USER: string = "addUser()";
+    private: const std::string METHOD_ADD_USER = "addUser()";
 
-    const METHOD_ADD_USERS: string = "addUsers()";
+    protected: const std::string METHOD_ADD_USERS = "addUsers()";
 
-    private: const METHOD_ADD_DB: string = "addDb()";
+    private: const std::string METHOD_ADD_DB = "addDb()";
 
-    const METHOD_ADD_DATABASES: string = "addDatabases()";
+    protected: const std::string METHOD_ADD_DATABASES = "addDatabases()";
 
-    const METHOD_ADD_TABLES: string = "addTables()";
+    protected: const std::string METHOD_ADD_TABLES = "addTables()";
 
-    const UNABLE_TO_CREATE_USER: string = "Unable to Create User: ";
+    protected: const std::string UNABLE_TO_CREATE_USER = "Unable to Create User: ";
 
-    const UNABLE_TO_CREATE_DATABASE: string = "Unable to Create Database: ";
+    protected: const std::string UNABLE_TO_CREATE_DATABASE = "Unable to Create Database: ";
 
-    const UNABLE_TO_CREATE_TABLES: string = "Unable to Create Tables";
+    protected: const std::string UNABLE_TO_CREATE_TABLES = "Unable to Create Tables";
 
-    const ADD_TABLES_RESULTS_LABEL: string = "Add Table Results: ";
+    protected: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
 
-public constructor (DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
 
-public constructor (DbConnectionInfo connectionInfo);
+public: AbDatabaseManagement(DbConnectionInfo connectionInfo);
 
-    string getHostName();
+    private: std::string getHostName();
 
                 //@Throws(Exception.constructor)
             
-    bool addDbUser(string hostName, string db, string userName, string password);
+    protected: bool addDbUser(std::string hostName, std::string db, std::string userName, std::string password);
 
-    bool addDbUser(string db, string userName, string password);
+    protected: bool addDbUser(std::string db, std::string userName, std::string password);
 
-    Boolean addDb(string db);
+    protected: Boolean addDb(std::string db);
 
 };
 

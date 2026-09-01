@@ -60,14 +60,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WorkFlowView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class WorkFlowView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    workFlowInterface: WorkFlowInterface;
+    protected: WorkFlowInterface workFlowInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: WorkFlowView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -76,7 +75,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
@@ -90,10 +89,10 @@ public constructor (TransformInfoInterface transformInfoInterface){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toXmlNode()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode()", e);
     
 
                                     }
@@ -109,18 +108,18 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -133,10 +132,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

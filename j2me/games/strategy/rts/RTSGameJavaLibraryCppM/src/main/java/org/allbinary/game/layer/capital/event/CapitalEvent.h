@@ -46,17 +46,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CapitalEvent: public AllBinaryEventObject {
-        
 
-    private: value: int32_t= 0;
+    private: int32_t value= 0;
 
-public constructor (any = {} anyType);
+public: CapitalEvent(Object* anyType);
 
-    public string toString();
+    public: std::string toString();
 
-    public int32_t getValue();
+    public: int32_t getValue();
 
-    public setValue(int32_t value);
+    public: void setValue(int32_t value);
 
 };
 

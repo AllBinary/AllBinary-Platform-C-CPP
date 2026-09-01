@@ -45,14 +45,11 @@
         #include "TableTag.h"
 
 class PermissionItemsTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new PermissionItemsHelperFactory());
+public: PermissionItemsTag(){
+this->setTagHelperFactory(PermissionItemsHelperFactory());
     
-this.setTagRequestHelperFactory(new PermissionItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(PermissionItemsRequestHelperFactory());
     
 }
 

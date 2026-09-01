@@ -60,17 +60,16 @@
 class TransformInfoRequestHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "taghelpers.transform.info.TransformInfoRequestHelper";
+    private: static const std::string CLASSNAME = "taghelpers.transform.info.TransformInfoRequestHelper";
 
-    private: static const FACTORYNAME: string = "TransformInfoRequestHelperFactory";
+    private: static const std::string FACTORYNAME = "TransformInfoRequestHelperFactory";
 
-public constructor ();
+public: TransformInfoRequestHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

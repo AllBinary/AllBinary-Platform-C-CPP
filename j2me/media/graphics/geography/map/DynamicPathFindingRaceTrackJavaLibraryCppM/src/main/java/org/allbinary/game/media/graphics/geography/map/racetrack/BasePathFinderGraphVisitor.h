@@ -64,29 +64,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasePathFinderGraphVisitor: public PathFinderGraphVisitorBase {
-        
 
-    geographicMapInterface: BasicGeographicMap;
+    protected: BasicGeographicMap geographicMapInterface;
 
-    const edgeMinimum: int32_t;
+    protected: int32_t edgeMinimum;
 
-    const minPathWeight: int32_t;
+    protected: int32_t minPathWeight;
 
-    const maxPathWeight: int32_t;
+    protected: int32_t maxPathWeight;
 
-public constructor (BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
-
-                //@Throws(Exception.constructor)
-            
-    public visit(SimpleWeightedGraph graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
+public: BasePathFinderGraphVisitor(BasicGeographicMap geographicMapInterface, int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight);
 
                 //@Throws(Exception.constructor)
             
-    public fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList);
+    public: void visit(SimpleWeightedGraph graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
 
-    public bool isValid(GraphPath graphPath);
+                //@Throws(Exception.constructor)
+            
+    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList);
 
-    public string getInvalidReason(GraphPath graphPath);
+    public: bool isValid(GraphPath graphPath);
+
+    public: std::string getInvalidReason(GraphPath graphPath);
 
 };
 

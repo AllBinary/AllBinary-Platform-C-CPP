@@ -60,58 +60,55 @@
 class CircularIndexUtil
             : public Object
          {
-        
 
-    public static const NULL_CIRCULAR_INDEX_UTIL: CircularIndexUtil = new CircularIndexUtil(0, 0);
+    public: static const CircularIndexUtil NULL_CIRCULAR_INDEX_UTIL = CircularIndexUtil(0, 0);
 
-    public static CircularIndexUtil createInstance(int32_t max){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CircularIndexUtil(0, max);
-    
-}
-
-
-    public static CircularIndexUtil createInstanceAt(int32_t index, int32_t max){
+    public: static CircularIndexUtil createInstance(int32_t max){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CircularIndexUtil(index, max);
+                        return CircularIndexUtil(0, max);
     
 }
 
 
-    private: index: int32_t = 0;
+    public: static CircularIndexUtil createInstanceAt(int32_t index, int32_t max){
 
-    private: lastIndex: int32_t = 0;
 
-    private: size: int32_t = 0;
 
-private constructor (int32_t index, int32_t size){
-
-            super();
-        this.setSize(size);
-    
-this.setIndex(index);
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return CircularIndexUtil(index, max);
     
 }
 
 
-    public int32_t next(){
+    private: int32_t index = 0;
 
-                        if(this.index >= this.lastIndex)
+    private: int32_t lastIndex = 0;
+
+    private: int32_t size = 0;
+
+private: CircularIndexUtil(int32_t index, int32_t size){
+this->setSize(size);
+    
+this->setIndex(index);
+    
+}
+
+
+    public: int32_t next(){
+
+                        if(this->index >= this->lastIndex)
                         
                                     {
-                                    this.index= 0;
+                                    this->index= 0;
     
 
                                     }
                                 
                         else {
-                            this.index++;
+                            this->index++;
     
 
                         }
@@ -120,23 +117,23 @@ this.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.index;
+                        return this->index;
     
 }
 
 
-    public int32_t previous(){
+    public: int32_t previous(){
 
-                        if(this.index < 1)
+                        if(this->index < 1)
                         
                                     {
-                                    this.index= this.lastIndex;
+                                    this->index= this->lastIndex;
     
 
                                     }
                                 
                         else {
-                            this.index--;
+                            this->index--;
     
 
                         }
@@ -145,14 +142,14 @@ this.setIndex(index);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.index;
+                        return this->index;
     
 }
 
 
-    public setIndex(int32_t index){
+    public: void setIndex(int32_t index){
 
-                        if(index > this.lastIndex)
+                        if(index > this->lastIndex)
                         
                                     {
                                     
@@ -164,47 +161,47 @@ this.setIndex(index);
 
                                     }
                                 
-this.index= index;
+this->index= index;
     
 }
 
 
-    public int32_t getIndex(){
+    public: int32_t getIndex(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.index;
+                        return this->index;
     
 }
 
 
-    public setSize(int32_t size){
-this.size= size;
+    public: void setSize(int32_t size){
+this->size= size;
     
-this.lastIndex= size -1;
+this->lastIndex= size -1;
     
-this.index= 0;
+this->index= 0;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.size;
+                        return this->size;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(CommonLabels.getInstance()!.INDEX_LABEL)!.appendint(this.index)!.append("lastIndex: ")!.appendint(this.lastIndex)!.append("size: ")!.appendint(this.size)!.toString();;
+                        return StringMaker().append(CommonLabels::getInstance().INDEX_LABEL).appendint(this->index).append("lastIndex: ").appendint(this->lastIndex).append("size: ").appendint(this->size).toString();;
     
 }
 

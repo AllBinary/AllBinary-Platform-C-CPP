@@ -43,9 +43,8 @@
 #include "HtmlInputData.h"
 
 class HtmlSubmitInput: public HtmlValueInput {
-        
 
-public constructor (string before, string name, string value, string after);
+public: HtmlSubmitInput(std::string before, std::string name, std::string value, std::string after);
 
 };
 

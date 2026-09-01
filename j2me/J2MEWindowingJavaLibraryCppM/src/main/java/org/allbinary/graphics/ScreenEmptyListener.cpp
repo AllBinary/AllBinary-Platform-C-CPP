@@ -43,13 +43,12 @@
 class ScreenEmptyListener
             : public Object
         : public ScreenListenerInterface {
-        
 
-    public onFullScreen(bool isFullScreen){
+    public: void onFullScreen(bool isFullScreen){
 }
 
 
-    public onFullScreenDisplay(){
+    public: void onFullScreenDisplay(){
 }
 
 

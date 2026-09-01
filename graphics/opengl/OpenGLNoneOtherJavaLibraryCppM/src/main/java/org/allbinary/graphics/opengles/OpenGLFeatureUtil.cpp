@@ -42,27 +42,24 @@
 class OpenGLFeatureUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLFeatureUtil = new OpenGLFeatureUtil();
+    private: static OpenGLFeatureUtil instance() { return OpenGLFeatureUtil(); }
 
-    public static OpenGLFeatureUtil getInstance(){
+    public: static OpenGLFeatureUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil.instance;
+                        return OpenGLFeatureUtil::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: OpenGLFeatureUtil(){
+}
 
 
-    public bool isAnyThreed(){
+    public: bool isAnyThreed(){
 
 
 

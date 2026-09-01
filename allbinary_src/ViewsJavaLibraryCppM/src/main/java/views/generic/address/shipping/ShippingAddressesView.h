@@ -83,28 +83,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingAddressesView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class ShippingAddressesView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    streetAddressList: Vector;
+    protected: Vector streetAddressList;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: ShippingAddressesView(TransformInfoInterface transformInfoInterface);
 
-    HttpServletRequest getRequest();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
-
-    public addDomNodeInterfaces();
+    protected: HttpServletRequest getRequest();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+    public: void addDomNodeInterfaces();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

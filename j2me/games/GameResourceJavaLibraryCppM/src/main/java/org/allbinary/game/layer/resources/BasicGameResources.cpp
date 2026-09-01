@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -72,33 +74,30 @@
 class BasicGameResources
             : public Object
          {
-        
 
-    static const stringBuffer: StringMaker = new StringMaker();
+    protected: static const StringMaker stringBuffer = StringMaker();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public RESOURCE: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string RESOURCE = StringUtil::getInstance().EMPTY_STRING;
 
-    public RESOURCE_DESTROY: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string RESOURCE_DESTROY = StringUtil::getInstance().EMPTY_STRING;
 
-protected constructor (){
-
-            super();
-        }
+protected: BasicGameResources(){
+}
 
 
-    public init(string ROOT, std::vector<string> SIZE){
+    public: void init(std::string ROOT, std::vector<std::string> SIZE){
 
         try {
             
-    scale: int32_t = GameConfigurationCentral.getInstance()!.SCALE.getValue()!.intValue()!;;
+    int32_t scale = GameConfigurationCentral::getInstance().SCALE.getValue().intValue();;
     
 
-                        if(scale > 1 && scale -1 < SIZE.length)
+                        if(scale > 1 && scale -1 < SIZE::size())
                         
                                     {
-                                    this.append(ROOT, SIZE[scale -1]!);
+                                    this->append(ROOT, SIZE[scale -1]!);
     
 
                                     }
@@ -107,7 +106,7 @@ protected constructor (){
                             
 
 
-                            throw new Exception(new StringMaker().append("Invalid Value: ")!.appendint(scale)!.toString());
+                            throw Exception(StringMaker().append("Invalid Value: ").appendint(scale).toString());
                     
 
                         }
@@ -117,57 +116,57 @@ protected constructor (){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.INIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
     
 }
 
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    append(string ROOT, string sizeString){
-
-    DESTROY: string = "_destroy";;
-    
-
-    string: string = this.getString()!;;
-    
-BasicGameResources.stringBuffer!.delete(0, BasicGameResources.stringBuffer!.length());
-    
-BasicGameResources.stringBuffer!.append(ROOT);
-    
-BasicGameResources.stringBuffer!.append(string);
-    
-BasicGameResources.stringBuffer!.append(sizeString);
-    
-this.RESOURCE= BasicGameResources.stringBuffer!.toString();
-    
-BasicGameResources.stringBuffer!.delete(0, BasicGameResources.stringBuffer!.length());
-    
-BasicGameResources.stringBuffer!.append(ROOT);
-    
-BasicGameResources.stringBuffer!.append(DESTROY);
-    
-BasicGameResources.stringBuffer!.append(string);
-    
-BasicGameResources.stringBuffer!.append(sizeString);
-    
-this.RESOURCE_DESTROY= BasicGameResources.stringBuffer!.toString();
-    
 }
 
 
                 //@Throws(Exception.constructor)
             
-    string getString(){
+    protected: void append(std::string ROOT, std::string sizeString){
+
+    std::string DESTROY = "_destroy";;
+    
+
+    std::string string = this->getString();;
+    
+BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+    
+BasicGameResources::stringBuffer.append(ROOT);
+    
+BasicGameResources::stringBuffer.append(string);
+    
+BasicGameResources::stringBuffer.append(sizeString);
+    
+this->RESOURCE= BasicGameResources::stringBuffer.toString();
+    
+BasicGameResources::stringBuffer.delete(0, BasicGameResources::stringBuffer.length());
+    
+BasicGameResources::stringBuffer.append(ROOT);
+    
+BasicGameResources::stringBuffer.append(DESTROY);
+    
+BasicGameResources::stringBuffer.append(string);
+    
+BasicGameResources::stringBuffer.append(sizeString);
+    
+this->RESOURCE_DESTROY= BasicGameResources::stringBuffer.toString();
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    protected: std::string getString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGraphicsResourceUtil.getInstance()!.getName();;
+                        return GameGraphicsResourceUtil::getInstance().getName();;
     
 }
 

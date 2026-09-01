@@ -45,39 +45,38 @@
 class ShippingAddressData
             : public Object
          {
-        
 
-    public static const SETTOBILLINGADDRESS: string = "Set To Billing Address";
+    public: static const std::string SETTOBILLINGADDRESS = "Set To Billing Address";
 
-    public static const SELECT: string = "Select Shipping Address";
+    public: static const std::string SELECT = "Select Shipping Address";
 
-    public static const SELECTNAME: string = "SELECTSHIPPINGADDRESS";
+    public: static const std::string SELECTNAME = "SELECTSHIPPINGADDRESS";
 
-    public static const MULTIPLE: string = "SHIPPINGADDRESSES";
+    public: static const std::string MULTIPLE = "SHIPPINGADDRESSES";
 
-    public static const SHIPPINGADDRESSES: string = "SHIPPINGADDRESSES";
+    public: static const std::string SHIPPINGADDRESSES = "SHIPPINGADDRESSES";
 
-    public static const SHIPPINGADDRESS: string = "SHIPPINGADDRESS";
+    public: static const std::string SHIPPINGADDRESS = "SHIPPINGADDRESS";
 
-    public static const ID: string = "SHIPPINGADDRESS_ID";
+    public: static const std::string ID = "SHIPPINGADDRESS_ID";
 
-    public static const ADDRESS: string = "SHIPPINGADDRESS_ADDRESS";
+    public: static const std::string ADDRESS = "SHIPPINGADDRESS_ADDRESS";
 
-    public static const NAME: string = "SHIPPINGADDRESS_NAME";
+    public: static const std::string NAME = "SHIPPINGADDRESS_NAME";
 
-    public static const STREET: string = "SHIPPINGADDRESS_STREET";
+    public: static const std::string STREET = "SHIPPINGADDRESS_STREET";
 
-    public static const CITY: string = "SHIPPINGADDRESS_CITY";
+    public: static const std::string CITY = "SHIPPINGADDRESS_CITY";
 
-    public static const STATE: string = "SHIPPINGADDRESS_STATE";
+    public: static const std::string STATE = "SHIPPINGADDRESS_STATE";
 
-    public static const CODE: string = "SHIPPINGADDRESS_CODE";
+    public: static const std::string CODE = "SHIPPINGADDRESS_CODE";
 
-    public static const COUNTRY: string = "SHIPPINGADDRESS_COUNTRY";
+    public: static const std::string COUNTRY = "SHIPPINGADDRESS_COUNTRY";
 
-    public static const TAX: string = "SHIPPINGADDRESS_TAX";
+    public: static const std::string TAX = "SHIPPINGADDRESS_TAX";
 
-private constructor ();
+private: ShippingAddressData();
 
 };
 

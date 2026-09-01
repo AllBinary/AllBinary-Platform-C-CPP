@@ -62,17 +62,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RelativeLayerRelationship: public RelativeRelationship {
-        
 
-    private: layer: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public constructor (AllBinaryLayer layer, GPoint point, BasicArrayList typesAllowedList);
+public: RelativeLayerRelationship(AllBinaryLayer layer, GPoint point, BasicArrayList typesAllowedList);
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public int32_t getZ();
+    public: int32_t getZ();
 
 };
 

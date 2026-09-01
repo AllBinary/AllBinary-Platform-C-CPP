@@ -54,30 +54,27 @@
         #include "PaintableForm.h"
 
 class FormPaintable: public Paintable {
-        
 
-    private: const form: PaintableForm;
+    private: PaintableForm form;
 
-public constructor (PaintableForm form){
-
-            super();
-        this.form= form;
+public: FormPaintable(PaintableForm form){
+this->form= form;
     
 }
 
 
-    public paint(Graphics graphics){
-this.form.paint(graphics);
+    public: void paint(Graphics graphics){
+this->form.paint(graphics);
     
 }
 
 
-    public PaintableForm getForm(){
+    public: PaintableForm getForm(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.form;
+                        return this->form;
     
 }
 

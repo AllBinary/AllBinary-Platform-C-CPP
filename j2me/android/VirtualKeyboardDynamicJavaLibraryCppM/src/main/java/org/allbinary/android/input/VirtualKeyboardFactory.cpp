@@ -55,25 +55,24 @@
 class VirtualKeyboardFactory
             : public Object
          {
-        
 
-    private: static virtualKeyboard: VirtualKeyboard = VirtualKeyboard.NULL_VIRTUAL_KEYBOARD;
+    private: static VirtualKeyboard virtualKeyboard = VirtualKeyboard::NULL_VIRTUAL_KEYBOARD;
 
-    public static init(Activity activity){
+    public: static void init(Activity activity){
 
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
                         if(SDK_VERSION <= 2)
                         
                                     {
-                                    VirtualKeyboardFactory.virtualKeyboard= new VirtualKeyboardAPI1(activity);
+                                    VirtualKeyboardFactory::virtualKeyboard= VirtualKeyboardAPI1(activity);
     
 
                                     }
                                 
                         else {
-                            VirtualKeyboardFactory.virtualKeyboard= new VirtualKeyboardAPI3(activity);
+                            VirtualKeyboardFactory::virtualKeyboard= VirtualKeyboardAPI3(activity);
     
 
                         }
@@ -81,12 +80,12 @@ class VirtualKeyboardFactory
 }
 
 
-    public static VirtualKeyboard getInstance(){
+    public: static VirtualKeyboard getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VirtualKeyboardFactory.virtualKeyboard;
+                        return VirtualKeyboardFactory::virtualKeyboard;
     
 }
 

@@ -59,9 +59,8 @@
         #include "BasicTransformer.h"
 
 class ContextTransformer: public BasicTransformer {
-        
 
-public constructor (AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+public: ContextTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
 
 };
 

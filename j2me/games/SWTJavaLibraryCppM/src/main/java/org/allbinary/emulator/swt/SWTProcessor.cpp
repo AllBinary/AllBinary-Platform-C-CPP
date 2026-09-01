@@ -50,29 +50,26 @@
 class SWTProcessor
             : public Object
          {
-        
 
-    private: static const instance: SWTProcessor = new SWTProcessor();
+    private: static SWTProcessor instance() { return SWTProcessor(); }
 
-    public static SWTProcessor getInstance(){
+    public: static SWTProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SWTProcessor.instance;
+                        return SWTProcessor::instance();
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
+protected: SWTProcessor(){
+}
 
 
-    public runnable: Runnable = NullRunnable.getInstance()!;
+    public: Runnable runnable = NullRunnable::getInstance();
 
-    public process(Display display){
+    public: void process(Display display){
 display.sleep();
     
 }

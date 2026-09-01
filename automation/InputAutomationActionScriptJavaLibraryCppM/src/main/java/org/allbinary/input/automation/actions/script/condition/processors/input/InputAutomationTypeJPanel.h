@@ -46,20 +46,19 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class InputAutomationTypeJPanel: public javax.swing.JPanel {
-        
+class InputAutomationTypeJPanel: public javax::swing::JPanel {
 
-public constructor ();
+public: InputAutomationTypeJPanel();
 
-    public javax.swing.JComboBox getInputAutomationTypeJComboBox();
+    public: javax::swing::JComboBox getInputAutomationTypeJComboBox();
 
-    public setInputAutomationTypeJComboBox(javax.swing.JComboBox inputAutomationTypeJComboBox);
+    public: void setInputAutomationTypeJComboBox(javax::swing::JComboBox inputAutomationTypeJComboBox);
 
-    initComponents();
+    private: void initComponents();
 
-    private: inputAutomationTypeJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JComboBox inputAutomationTypeJComboBox;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -53,36 +55,35 @@
         #include "ScaleBaseProcessor.h"
 
 class ScaleProcessor: public ScaleBaseProcessor {
-        
 
-    private: static const instanceC: ScaleProcessor = new ScaleProcessor();
+    private: static const ScaleProcessor instanceC = ScaleProcessor();
 
-    public static ScaleBaseProcessor getInstance(){
+    public: static ScaleBaseProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScaleProcessor.instanceC;
+                        return ScaleProcessor::instanceC;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageScaleUtil: ImageScaleUtil = ImageScaleUtil.getInstance()!;
+    private: const ImageScaleUtil imageScaleUtil = ImageScaleUtil::getInstance();
 
-    public update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    public: void update(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
 
         try {
-            this.imageScaleUtil!.scale2(originalImage, originalImageArray, ximageToShowArray, unused, scaleX, scaleY, maxScaleX, maxScaleY);
+            this->imageScaleUtil.scale2(originalImage, originalImageArray, ximageToShowArray, unused, scaleX, scaleY, maxScaleX, maxScaleY);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.UPDATE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, e);
     
 }
 

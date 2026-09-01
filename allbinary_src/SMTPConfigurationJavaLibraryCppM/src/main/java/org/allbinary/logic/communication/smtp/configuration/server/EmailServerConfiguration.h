@@ -59,37 +59,36 @@
 class EmailServerConfiguration
             : public Object
         : public EmailServerConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: accountName: string;
+    private: std::string accountName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: smtpServer: string;
+    private: std::string smtpServer;
 
-public constructor ();
+public: EmailServerConfiguration();
 
-public constructor (HashMap<any, any> hashMap);
+public: EmailServerConfiguration(HashMap<any, any> hashMap);
 
-public constructor (string account, string password, string server);
+public: EmailServerConfiguration(std::string account, std::string password, std::string server);
 
-    public setSmtpServer(string value);
+    public: void setSmtpServer(std::string value);
 
-    public string getSmtpServer();
+    public: std::string getSmtpServer();
 
-    public string getAccountName();
+    public: std::string getAccountName();
 
-    public setAccountName(string accountName);
+    public: void setAccountName(std::string accountName);
 
-    public string getPassword();
+    public: std::string getPassword();
 
-    public setPassword(string password);
+    public: void setPassword(std::string password);
 
-    public log();
+    public: void log();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

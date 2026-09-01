@@ -42,10 +42,9 @@
         #include "EventObject.h"
 #include "MyCanvasEventSource.h"
 
-class MyCanvasEvent: public java.util.EventObject {
-        
+class MyCanvasEvent: public java::util::EventObject {
 
-public constructor (any = {} source){
+public: MyCanvasEvent(Object* source){
             super(source);
                     
 
@@ -54,7 +53,7 @@ public constructor (any = {} source){
 }
 
 
-    public any getSource(){
+    public: Object* getSource(){
 
 
 
@@ -64,7 +63,7 @@ public constructor (any = {} source){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
@@ -74,41 +73,41 @@ public constructor (any = {} source){
 }
 
 
-    public string getCommand(){
+    public: std::string getCommand(){
 
-    myEventSource: MyCanvasEventSource = this.getSource() as MyCanvasEventSource;;
+    MyCanvasEventSource myEventSource = this->getSource() as MyCanvasEventSource;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return myEventSource!.getCommand();;
+                        return myEventSource.getCommand();;
     
 }
 
 
-    public MutableTreeNode getTreeNode(){
+    public: MutableTreeNode getTreeNode(){
 
-    myEventSource: MyCanvasEventSource = this.getSource() as MyCanvasEventSource;;
+    MyCanvasEventSource myEventSource = this->getSource() as MyCanvasEventSource;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return myEventSource!.getTreeNode();;
+                        return myEventSource.getTreeNode();;
     
 }
 
 
-    public double getAngle(){
+    public: double getAngle(){
 
-    myEventSource: MyCanvasEventSource = this.getSource() as MyCanvasEventSource;;
+    MyCanvasEventSource myEventSource = this->getSource() as MyCanvasEventSource;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return myEventSource!.getAngle();;
+                        return myEventSource.getAngle();;
     
 }
 

@@ -42,19 +42,18 @@
 class TimeTypeTest
             : public Object
          {
-        
 
-    static int64_t millisForHourLocal(int32_t hour){
+    private: static int64_t millisForHourLocal(int32_t hour){
 
-    cal: Calendar = Calendar.getInstance()!;;
+    Calendar cal = Calendar::getInstance();;
     
-cal.set(Calendar.HOUR_OF_DAY, hour);
+cal.set(Calendar::HOUR_OF_DAY, hour);
     
-cal.set(Calendar.MINUTE, 0);
+cal.set(Calendar::MINUTE, 0);
     
-cal.set(Calendar.SECOND, 0);
+cal.set(Calendar::SECOND, 0);
     
-cal.set(Calendar.MILLISECOND, 0);
+cal.set(Calendar::MILLISECOND, 0);
     
 
 
@@ -67,26 +66,23 @@ cal.set(Calendar.MILLISECOND, 0);
 
 //inner= member=true isStatic=static
 class TestableTimeTypeUtil: public TimeTypeUtil {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const hour: int32_t;
+    private: int32_t hour;
 
- constructor (int32_t hour){
-
-            super();
-        this.hour= hour;
+: TestableTimeTypeUtil(int32_t hour){
+this->hour= hour;
     
 }
 
 
-    public int32_t getHourOfDay(){
+    public: int32_t getHourOfDay(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hour;
+                        return this->hour;
     
 }
 
@@ -94,84 +90,44 @@ class TestableTimeTypeUtil: public TimeTypeUtil {
 };
 
             
-    isNight_returnsTrue_for_hours_less_than_6(){
+    void isNight_returnsTrue_for_hours_less_than_6(){
 
                     //Otherwise - statement - ForEachStmt
 
 }
 
 
-    isNight_returnsTrue_for_hours_greater_than_18(){
+    void isNight_returnsTrue_for_hours_greater_than_18(){
 
                     //Otherwise - statement - ForEachStmt
 
 }
 
 
-    isNight_returnsFalse_for_boundary_hours_6_and_18(){
+    void isNight_returnsFalse_for_boundary_hours_6_and_18(){
 
                     //Otherwise - statement - ForEachStmt
 
 }
 
 
-    getNightOrDay_returns_expected_label(){
+    void getNightOrDay_returns_expected_label(){
 
-    nightUtil: TimeTypeUtil = new this.TestableTimeTypeUtil(0);;
+    TimeTypeUtil nightUtil = TestableTimeTypeUtil(0);;
     
-Assertions.assertEquals(nightUtil!.NIGHT, nightUtil!.getNightOrDay());
-    
-
-    dayUtil: TimeTypeUtil = new this.TestableTimeTypeUtil(12);;
-    
-Assertions.assertEquals(dayUtil!.DAY, dayUtil!.getNightOrDay());
-    
-}
-
-
-    getHourOfDay_long_converts_epoch_to_local_hour(){
-
-    util: TimeTypeUtil = new TimeTypeUtil();;
+Assertions::assertEquals(nightUtil.NIGHT, nightUtil.getNightOrDay());
     
 
-                    //Otherwise - statement - ForEachStmt
-
-}
-
-
-    isNight_long_expected_ranges(){
-
-    util: TimeTypeUtil = new TimeTypeUtil();;
+    TimeTypeUtil dayUtil = TestableTimeTypeUtil(12);;
     
-
-                    //Otherwise - statement - ForEachStmt
-
-
-                    //Otherwise - statement - ForEachStmt
-
-}
-
-
-    getNightOrDay_long_consistency(){
-
-    util: TimeTypeUtil = new TimeTypeUtil();;
-    
-
-    nightMillis: int64_t = TimeTypeTest.millisForHourLocal(0)!;;
-    
-
-    dayMillis: int64_t = TimeTypeTest.millisForHourLocal(12)!;;
-    
-Assertions.assertEquals(util.NIGHT, util.getNightOrDay(nightMillis));
-    
-Assertions.assertEquals(util.DAY, util.getNightOrDay(dayMillis));
+Assertions::assertEquals(dayUtil.DAY, dayUtil.getNightOrDay());
     
 }
 
 
-    boundaries_day_for_long_based_api(){
+    void getHourOfDay_long_converts_epoch_to_local_hour(){
 
-    util: TimeTypeUtil = new TimeTypeUtil();;
+    TimeTypeUtil util = TimeTypeUtil();;
     
 
                     //Otherwise - statement - ForEachStmt
@@ -179,25 +135,65 @@ Assertions.assertEquals(util.DAY, util.getNightOrDay(dayMillis));
 }
 
 
-    constants_accessible_and_stable(){
+    void isNight_long_expected_ranges(){
 
-    util: TimeTypeUtil = new TimeTypeUtil();;
+    TimeTypeUtil util = TimeTypeUtil();;
     
-Assertions.assertEquals("Night", util.NIGHT);
+
+                    //Otherwise - statement - ForEachStmt
+
+
+                    //Otherwise - statement - ForEachStmt
+
+}
+
+
+    void getNightOrDay_long_consistency(){
+
+    TimeTypeUtil util = TimeTypeUtil();;
     
-Assertions.assertEquals("Day", util.DAY);
+
+    int64_t nightMillis = TimeTypeTest::millisForHourLocal(0);;
+    
+
+    int64_t dayMillis = TimeTypeTest::millisForHourLocal(12);;
+    
+Assertions::assertEquals(util.NIGHT, util.getNightOrDay(nightMillis));
+    
+Assertions::assertEquals(util.DAY, util.getNightOrDay(dayMillis));
     
 }
 
 
-    getInstance_returns_same_singleton(){
+    void boundaries_day_for_long_based_api(){
 
-    a: TimeTypeUtil = TimeTypeUtil.getInstance()!;;
+    TimeTypeUtil util = TimeTypeUtil();;
     
 
-    b: TimeTypeUtil = TimeTypeUtil.getInstance()!;;
+                    //Otherwise - statement - ForEachStmt
+
+}
+
+
+    void constants_accessible_and_stable(){
+
+    TimeTypeUtil util = TimeTypeUtil();;
     
-Assertions.assertSame(a, b);
+Assertions::assertEquals("Night", util.NIGHT);
+    
+Assertions::assertEquals("Day", util.DAY);
+    
+}
+
+
+    void getInstance_returns_same_singleton(){
+
+    TimeTypeUtil a = TimeTypeUtil::getInstance();;
+    
+
+    TimeTypeUtil b = TimeTypeUtil::getInstance();;
+    
+Assertions::assertSame(a, b);
     
 }
 

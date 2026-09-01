@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNIT3DECALGAMERESOURCES_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNIT3DECALGAMERESOURCES_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
@@ -55,21 +57,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class Unit3DecalGameResources: public BasicGameResources {
-        
 
-    private: static const instance: Unit3DecalGameResources = new Unit3DecalGameResources();
+    private: static Unit3DecalGameResources instance() { return Unit3DecalGameResources(); }
 
-    public static BasicGameResources getInstance();
+    public: static BasicGameResources getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    append(string ROOT, string sizeString);
+private: Unit3DecalGameResources();
 
                 //@Throws(Exception.constructor)
             
-    string getString();
+    protected: void append(std::string ROOT, std::string sizeString);
+
+                //@Throws(Exception.constructor)
+            
+    protected: std::string getString();
 
 };
 

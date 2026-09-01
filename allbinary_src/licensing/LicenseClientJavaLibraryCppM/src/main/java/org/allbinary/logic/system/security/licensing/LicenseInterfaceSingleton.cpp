@@ -44,28 +44,27 @@
 class LicenseInterfaceSingleton
             : public Object
          {
-        
 
-    private: static licenseInterface: AbeLicenseInterface = AbeNoLicense.getInstance()!;
+    private: static AbeLicenseInterface licenseInterface = AbeNoLicense::getInstance();
 
-    public static AbeLicenseInterface getInstance(){
+    public: static AbeLicenseInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseInterfaceSingleton.licenseInterface;
+                        return LicenseInterfaceSingleton::licenseInterface;
     
 }
 
 
-    public static init(AbeLicenseInterface licenseInterface){
+    public: static void init(AbeLicenseInterface licenseInterface){
 
                         if(licenseInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    LicenseInterfaceSingleton.licenseInterface= licenseInterface;
+                                    LicenseInterfaceSingleton::licenseInterface= licenseInterface;
     
 
                                     }

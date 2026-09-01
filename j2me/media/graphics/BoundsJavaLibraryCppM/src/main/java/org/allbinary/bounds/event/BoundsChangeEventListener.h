@@ -45,9 +45,8 @@
         #include "BoundsChangeEvent.h"
 
 class BoundsChangeEventListener: public EventListenerInterface {
-        
 
-    onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent);
+    void onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent);
 
 };
 

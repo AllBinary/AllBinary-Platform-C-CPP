@@ -43,24 +43,21 @@
 class BasicAdvertisementWebsite
             : public Object
         : public AdvertisementWebsiteInterface {
-        
 
-    private: websiteId: string;
+    private: std::string websiteId;
 
-public constructor (string websiteId){
-
-            super();
-        this.websiteId= websiteId;
+public: BasicAdvertisementWebsite(std::string websiteId){
+this->websiteId= websiteId;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.websiteId;
+                        return this->websiteId;
     
 }
 

@@ -73,36 +73,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "Movement.h"
 
-class BasicConstantVelocityMovement: public Movement: public VelocityInterfaceCompositeInterface {
-        
+class BasicConstantVelocityMovement: public Movement, public VelocityInterfaceCompositeInterface {
 
-    private: velocityProperties: BasicVelocityProperties;
+    private: BasicVelocityProperties velocityProperties;
 
-    private: speedBasicDecimal: BasicDecimal = BasicDecimal.ZERO_BIGDECIMAL;
+    private: BasicDecimal speedBasicDecimal = BasicDecimal::ZERO_BIGDECIMAL;
 
-    private: const axisMathVectorUtil: AxisMathVectorUtil = AxisMathVectorUtil.getInstance()!;
+    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
-public constructor (BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
+public: BasicConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties);
 
-    public init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
-    public moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle);
+    public: void moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
-    public string toString();
+    public: std::string toString();
 
-    public stop();
+    public: void stop();
 
-    public BasicVelocityProperties getVelocityProperties();
+    public: BasicVelocityProperties getVelocityProperties();
 
-    public setVelocityProperties(BasicVelocityProperties velocityProperties);
+    public: void setVelocityProperties(BasicVelocityProperties velocityProperties);
 
-    setSpeedBasicDecimal(BasicDecimal speedBasicDecimal);
+    protected: void setSpeedBasicDecimal(BasicDecimal speedBasicDecimal);
 
-    BasicDecimal getSpeedBasicDecimal();
+    protected: BasicDecimal getSpeedBasicDecimal();
 
 };
 

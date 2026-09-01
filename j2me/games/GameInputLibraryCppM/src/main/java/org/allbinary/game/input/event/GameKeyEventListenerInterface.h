@@ -47,7 +47,6 @@
 #include "PressGameKeyEventListenerInterface.h"
 
 class GameKeyEventListenerInterface: public DownGameKeyEventListenerInterface, public UpGameKeyEventListenerInterface, public PressGameKeyEventListenerInterface {
-        
 
 };
 

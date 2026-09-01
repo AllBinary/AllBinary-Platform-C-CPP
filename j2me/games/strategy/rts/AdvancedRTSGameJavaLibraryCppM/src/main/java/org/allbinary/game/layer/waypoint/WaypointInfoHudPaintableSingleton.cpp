@@ -43,16 +43,15 @@
 class WaypointInfoHudPaintableSingleton
             : public Object
          {
-        
 
-    private: static const instance: WaypointInfoHudPaintable = new WaypointInfoHudPaintable();
+    private: static WaypointInfoHudPaintable instance() { return WaypointInfoHudPaintable(); }
 
-    public static WaypointInfoHudPaintable getInstance(){
+    public: static WaypointInfoHudPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointInfoHudPaintableSingleton.instance;
+                        return WaypointInfoHudPaintableSingleton::instance();
     
 }
 

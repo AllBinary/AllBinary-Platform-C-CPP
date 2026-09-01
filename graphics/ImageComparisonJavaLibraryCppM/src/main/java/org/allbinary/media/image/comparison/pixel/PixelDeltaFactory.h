@@ -78,10 +78,9 @@
 class PixelDeltaFactory
             : public Object
          {
-        
 
-    private: static cacheInterface: AutomaticCacheInterface = 
-                null
+    private: static AutomaticCacheInterface cacheInterface = 
+                nullptr
             ;
 
                     static int32_t initResult;
@@ -89,11 +88,11 @@ class PixelDeltaFactory
             
                 //@Throws(Exception.constructor)
             
-    public static PixelDelta getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2);
+    public: static PixelDelta getInstance(int32_t x, int32_t y, int32_t rgb1, int32_t rgb2);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: PixelDeltaFactory();
 
 };
 

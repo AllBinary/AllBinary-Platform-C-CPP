@@ -64,23 +64,22 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance();
+    /*actual*/ public: static LogUtil getInstance();
 
-    private: const logger: Logger = Logger.getLogger(LogUtil.constructor.toString()!)!;
+    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString()!);
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-private constructor ();
+private: LogUtil();
 
-    /*actual*/ public init();
+    /*actual*/ public: void init();
 
-    /*actual*/ public putL(Log log);
+    /*actual*/ public: void putL(Log log);
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
 };
 

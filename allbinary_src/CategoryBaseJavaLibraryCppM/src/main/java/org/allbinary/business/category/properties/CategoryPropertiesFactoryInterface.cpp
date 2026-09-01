@@ -39,7 +39,6 @@
         #include "CategoryPropertiesInterface.h"
 
 class CategoryPropertiesFactoryInterface {
-        
 
     CategoryPropertiesInterface getInstance()
 

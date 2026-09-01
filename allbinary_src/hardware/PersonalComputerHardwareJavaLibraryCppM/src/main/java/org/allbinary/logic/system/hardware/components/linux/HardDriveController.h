@@ -51,15 +51,14 @@
 class HardDriveController
             : public Object
         : public HardwareComponentInterface, public HardDriveControllerInterface {
-        
 
-    private: data: string;
+    private: std::string data;
 
-public constructor (string data);
+public: HardDriveController(std::string data);
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface componentInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

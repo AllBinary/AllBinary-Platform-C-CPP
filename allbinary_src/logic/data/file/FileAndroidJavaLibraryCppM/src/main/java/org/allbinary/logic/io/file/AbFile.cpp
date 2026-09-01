@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -69,436 +71,433 @@
 class AbFile
             : public Object
         : public AbFileInterface {
-        
 
-    public static const NULL_FILE: AbFile = AbFile.createAbFileFromRawPath(StringUtil.getInstance()!.EMPTY_STRING)!;
+    public: static const AbFile NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInstance().EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public static AbFile createAbFileWithChild(AbFile file, string childPathName){
+    public: static AbFile createAbFileWithChild(AbFile file, std::string childPathName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFile(new File(file.getFile(), childPathName));
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public static AbFile createAbFile(string filePath){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFile(new File(new AbPath(filePath, StringUtil.getInstance()!.EMPTY_STRING).toFileSystemString()));
+                        return AbFile(File(file.getFile(), childPathName));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static AbFile createAbFilePathAndName(string filePath, string fileName){
+    public: static AbFile createAbFile(std::string filePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFile(new File(new AbPath(filePath, StringUtil.getInstance()!.EMPTY_STRING).toFileSystemString(), fileName));
+                        return AbFile(File(AbPath(filePath, StringUtil::getInstance().EMPTY_STRING).toFileSystemString()));
     
 }
 
 
-    public static AbFile createAbFileFromAbPath(AbPath abPath){
+                //@Throws(Exception.constructor)
+            
+    public: static AbFile createAbFilePathAndName(std::string filePath, std::string fileName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFile(new File(abPath!.toFileSystemString()));
+                        return AbFile(File(AbPath(filePath, StringUtil::getInstance().EMPTY_STRING).toFileSystemString(), fileName));
     
 }
 
 
-    public static AbFile createAbFileFromRawPath(string filePath){
+    public: static AbFile createAbFileFromAbPath(AbPath abPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFile(new File(filePath));
+                        return AbFile(File(abPath.toFileSystemString()));
     
 }
 
 
-    private: const file: File;
-
-protected constructor (File file){
-
-            super();
-        this.file= file;
-    
-}
-
-
-    File getFile(){
+    public: static AbFile createAbFileFromRawPath(std::string filePath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file;
+                        return AbFile(File(filePath));
     
 }
 
 
-    public string getName(){
+    private: File file;
 
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getName();;
+protected: AbFile(File file){
+this->file= file;
     
 }
 
 
-    public string getParent(){
+    protected: File getFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getParent();;
+                        return this->file;
     
 }
 
 
-    public File getParentFile(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getParentFile();;
+                        return this->file.getName();;
     
 }
 
 
-    public string getPath(){
+    public: std::string getParent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getPath();;
+                        return this->file.getParent();;
     
 }
 
 
-    public bool isAbsolute(){
+    public: File getParentFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.isAbsolute();;
+                        return this->file.getParentFile();;
     
 }
 
 
-    public string getAbsolutePath(){
+    public: std::string getPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getAbsolutePath();;
+                        return this->file.getPath();;
     
 }
 
 
-    public File getAbsoluteFile(){
+    public: bool isAbsolute(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getAbsoluteFile();;
+                        return this->file.isAbsolute();;
+    
+}
+
+
+    public: std::string getAbsolutePath(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->file.getAbsolutePath();;
+    
+}
+
+
+    public: File getAbsoluteFile(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->file.getAbsoluteFile();;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public string getCanonicalPath(){
+    public: std::string getCanonicalPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getCanonicalPath();;
+                        return this->file.getCanonicalPath();;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public File getCanonicalFile(){
+    public: File getCanonicalFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getCanonicalFile();;
+                        return this->file.getCanonicalFile();;
     
 }
 
 
-    public URI toURI(){
+    public: URI toURI(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.toURI();;
+                        return this->file.toURI();;
     
 }
 
 
-    public bool canRead(){
+    public: bool canRead(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.canRead();;
+                        return this->file.canRead();;
     
 }
 
 
-    public bool canWrite(){
+    public: bool canWrite(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.canWrite();;
+                        return this->file.canWrite();;
     
 }
 
 
-    public bool exists(){
+    public: bool exists(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.exists();;
+                        return this->file.exists();;
     
 }
 
 
-    public bool isDirectory(){
+    public: bool isDirectory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.isDirectory();;
+                        return this->file.isDirectory();;
     
 }
 
 
-    public bool isFile(){
+    public: bool isFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.isFile();;
+                        return this->file.isFile();;
     
 }
 
 
-    public bool isHidden(){
+    public: bool isHidden(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.isHidden();;
+                        return this->file.isHidden();;
     
 }
 
 
-    public int64_t lastModified(){
+    public: int64_t lastModified(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.lastModified();;
+                        return this->file.lastModified();;
     
 }
 
 
-    public int64_t length(){
+    public: int64_t length(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.length();;
-    
-}
-
-
-                //@Throws(IOException.constructor)
-            
-    public bool createNewFile(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.createNewFile();;
+                        return this->file.length();;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public bool delete(){
+    public: bool createNewFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.delete();;
+                        return this->file.createNewFile();;
     
 }
 
 
-    public deleteOnExit(){
-this.file.deleteOnExit();
-    
-}
-
-
-    public std::vector<string> list(){
+                //@Throws(IOException.constructor)
+            
+    public: bool delete_(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.list();;
+                        return this->file.delete_();;
     
 }
 
 
-    public std::vector<string> listWithFilter(FilenameFilter filter){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.list(filter);;
+    public: void deleteOnExit(){
+this->file.deleteOnExit();
     
 }
 
 
-    public std::vector<any> listFiles(){
+    public: std::vector<std::string> list(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.listFiles() as any[];
+                        return this->file.list();;
     
 }
 
 
-    public std::vector<any> listFilesFileNameFilter(FilenameFilter filter){
+    public: std::vector<std::string> listWithFilter(FilenameFilter filter){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.listFiles(filter) as any[];
+                        return this->file.list(filter);;
     
 }
 
 
-    public std::vector<any> listFilesFileFilter(FileFilter filter){
+    public: std::vector<Object*> listFiles(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.listFiles(filter) as any[];
+                        return this->file.listFiles() as any[];
     
 }
 
 
-    public bool mkdir(){
+    public: std::vector<Object*> listFilesFileNameFilter(FilenameFilter filter){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.mkdir();;
+                        return this->file.listFiles(filter) as any[];
     
 }
 
 
-    public bool mkdirs(){
+    public: std::vector<Object*> listFilesFileFilter(FileFilter filter){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.mkdirs();;
+                        return this->file.listFiles(filter) as any[];
     
 }
 
 
-    public bool renameTo(AbFile dest){
+    public: bool mkdir(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.renameTo(dest.getFile());;
+                        return this->file.mkdir();;
     
 }
 
 
-    public bool setLastModified(int64_t time){
+    public: bool mkdirs(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.setLastModified(time);;
+                        return this->file.mkdirs();;
     
 }
 
 
-    public bool setReadOnly(){
+    public: bool renameTo(AbFile dest){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.setReadOnly();;
+                        return this->file.renameTo(dest.getFile());;
     
 }
 
 
-    public int32_t compareTo(File pathname){
+    public: bool setLastModified(int64_t time){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.compareTo(pathname);;
+                        return this->file.setLastModified(time);;
     
 }
 
 
-    public bool equals(any = {} obj){
+    public: bool setReadOnly(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TsUtil.getInstance()!.equalsNotstring(this.file, obj);;
+                        return this->file.setReadOnly();;
     
 }
 
 
-    public int32_t hashCode(){
+    public: int32_t compareTo(File pathname){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.hashCode();;
+                        return this->file.compareTo(pathname);;
     
 }
 
 
-    public string toString(){
+    public: bool equals(Object* obj){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.toString();;
+                        return TsUtil::getInstance().equalsNotstring(this->file, obj);;
+    
+}
+
+
+    public: int32_t hashCode(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->file.hashCode();;
+    
+}
+
+
+    public: std::string toString(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->file.toString();;
     
 }
 

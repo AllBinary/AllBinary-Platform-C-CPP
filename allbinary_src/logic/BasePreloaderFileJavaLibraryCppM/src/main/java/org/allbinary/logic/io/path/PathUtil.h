@@ -59,49 +59,48 @@
 class PathUtil
             : public Object
          {
-        
 
-    private: static const instance: PathUtil = new PathUtil();
+    private: static PathUtil instance() { return PathUtil(); }
 
-    public static PathUtil getInstance();
+    public: static PathUtil getInstance();
 
-    private: const abPathData: AbPathData = AbPathData.getInstance()!;
+    private: const AbPathData abPathData = AbPathData::getInstance();
 
-    private: const filePathData: FilePathData = FilePathData.getInstance()!;
+    private: const FilePathData filePathData = FilePathData::getInstance();
 
-private constructor ();
+private: PathUtil();
 
-    public string getExtensionWithAbFilePath(AbFilePath abFilePath);
+    public: std::string getExtensionWithAbFilePath(AbFilePath abFilePath);
 
-    public string getExtensionWithAbPath(AbPath abPath);
-
-                //@Throws(Exception.constructor)
-            
-    public string getWithoutExtensionWithAbFilePath(AbFilePath abFilePath);
+    public: std::string getExtensionWithAbPath(AbPath abPath);
 
                 //@Throws(Exception.constructor)
             
-    public string getWithoutExtensionWithAbPath(AbPath abPath);
+    public: std::string getWithoutExtensionWithAbFilePath(AbFilePath abFilePath);
 
                 //@Throws(Exception.constructor)
             
-    public string getWithoutExtension(string filePath);
-
-    public bool isValid(string path);
-
-    bool isValidStart(string path);
-
-    bool isValidEnd(string path);
-
-    public string adjustStart(string path);
-
-    public string adjustEnd(string path);
-
-    public string adjust(string path);
+    public: std::string getWithoutExtensionWithAbPath(AbPath abPath);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath removeNameFromPath(string path);
+    public: std::string getWithoutExtension(std::string filePath);
+
+    public: bool isValid(std::string path);
+
+    private: bool isValidStart(std::string path);
+
+    private: bool isValidEnd(std::string path);
+
+    public: std::string adjustStart(std::string path);
+
+    public: std::string adjustEnd(std::string path);
+
+    public: std::string adjust(std::string path);
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath removeNameFromPath(std::string path);
 
 };
 

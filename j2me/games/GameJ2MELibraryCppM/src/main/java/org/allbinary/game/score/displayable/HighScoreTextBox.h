@@ -116,35 +116,34 @@
         #include "HighScoreUtil.h"
 
 class HighScoreTextBox: public CustomTextBox {
-        
 
-    private: const virtualKeyboardEventHandler: VirtualKeyboardEventHandler = VirtualKeyboardEventHandler.getInstance()!;
+    private: const VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();
 
-    private: const highScoreUtil: HighScoreUtil;
+    private: HighScoreUtil highScoreUtil;
 
-    private: const pleaseWait: Paintable = new SimpleTextPaintable(this.commonStrings!.PLEASE_WAIT, BasicColorFactory.getInstance()!.WHITE);
+    private: const Paintable pleaseWait = SimpleTextPaintable(this->commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
 
-    private: paintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable paintable = NullPaintable::getInstance();
 
-    public submitted: bool = false;
+    public: bool submitted = false;
 
-public constructor (HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: HighScoreTextBox(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void update();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public saveHighScore();
+    public: void saveHighScore();
 
-    public submit();
+    public: void submit();
 
 };
 

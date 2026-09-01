@@ -57,19 +57,18 @@
 class DestroyableBaseBehavior
             : public Object
         : public DestroyableInterface {
-        
 
-    private: static const instance: DestroyableBaseBehavior = new DestroyableBaseBehavior();
+    private: static DestroyableBaseBehavior instance() { return DestroyableBaseBehavior(); }
 
-    public static DestroyableBaseBehavior getInstance();
+    public: static DestroyableBaseBehavior getInstance();
 
-    public string getName();
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public bool isDestroyed();
+    public: bool isDestroyed();
 
-    public setDestroyed(bool destroyed);
+    public: void setDestroyed(bool destroyed);
 
 };
 

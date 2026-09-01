@@ -56,26 +56,23 @@
         #include "ItemPaintable.h"
 
 class LockablePaintable: public ItemPaintable {
-        
 
-    private: const animation: Animation = FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(LockedResources.getInstance()!.LOCKED_DEMO_GAME_FEATURE_RESOURCE)!.getInstance(0)!;
+    private: const Animation animation = FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(LockedResources::getInstance().LOCKED_DEMO_GAME_FEATURE_RESOURCE).getInstance(0);
 
-    private: const lockedIndex: int32_t;
+    private: int32_t lockedIndex;
 
-public constructor (int32_t lockedIndex){
-
-            super();
-        this.lockedIndex= lockedIndex;
+public: LockablePaintable(int32_t lockedIndex){
+this->lockedIndex= lockedIndex;
     
 }
 
 
-    public paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y){
+    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y){
 
-                        if(LockedUtil.getInstance()!.isLocked() && currentIndex >= this.getLockedIndex())
+                        if(LockedUtil::getInstance().isLocked() && currentIndex >= this->getLockedIndex())
                         
                                     {
-                                    this.getAnimation()!.paintXY(graphics, x, y);
+                                    this->getAnimation().paintXY(graphics, x, y);
     
 
                                     }
@@ -83,22 +80,22 @@ public constructor (int32_t lockedIndex){
 }
 
 
-    int32_t getLockedIndex(){
+    protected: int32_t getLockedIndex(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lockedIndex;
+                        return this->lockedIndex;
     
 }
 
 
-    Animation getAnimation(){
+    protected: Animation getAnimation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animation;
+                        return this->animation;
     
 }
 

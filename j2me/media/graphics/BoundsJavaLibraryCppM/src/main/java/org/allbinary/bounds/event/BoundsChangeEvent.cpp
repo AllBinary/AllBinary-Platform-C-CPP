@@ -44,9 +44,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BoundsChangeEvent: public AllBinaryEventObject {
-        
 
-public constructor (Rectangle rectangle){
+public: BoundsChangeEvent(Rectangle rectangle){
             super(rectangle);
                     
 
@@ -55,12 +54,12 @@ public constructor (Rectangle rectangle){
 }
 
 
-    public Rectangle getRectangle(){
+    public: Rectangle getRectangle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSource() as Rectangle;
+                        return this->getSource() as Rectangle;
     
 }
 

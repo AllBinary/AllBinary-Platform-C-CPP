@@ -55,15 +55,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasketInterface {
-        
 
-    addItem(string id, string num);
+    void addItem(std::string id, std::string num);
 
-    removeItem(string id);
+    void removeItem(std::string id);
 
-    adjustItem(string id, string num);
+    void adjustItem(std::string id, std::string num);
 
-    string getTotalWeight();
+    std::string getTotalWeight();
 
     Integer getNumberOfItems();
 
@@ -71,7 +70,7 @@ class BasketInterface {
 
     HashMap<any, any> getItems();
 
-    Integer getNumberOf(string product);
+    Integer getNumberOf(std::string product);
 
                 //@Throws(MoneyException.constructor)
             

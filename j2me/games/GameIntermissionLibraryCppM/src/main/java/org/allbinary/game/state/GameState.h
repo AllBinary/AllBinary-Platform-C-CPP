@@ -54,13 +54,12 @@
 class GameState
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string name, int32_t state);
+public: GameState(std::string name, int32_t state);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

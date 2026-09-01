@@ -55,16 +55,15 @@
 class FileStreamFactory
             : public Object
          {
-        
 
-    private: static SINGLETON: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
 
-    public static FileStreamFactory getInstance(){
+    public: static FileStreamFactory getInstance(){
 
-                        if(FileStreamFactory.SINGLETON == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(FileStreamFactory::SINGLETON == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    FileStreamFactory.SINGLETON= new FileStreamFactory();
+                                    FileStreamFactory::SINGLETON= FileStreamFactory();
     
 
                                     }
@@ -73,43 +72,41 @@ class FileStreamFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileStreamFactory.SINGLETON as FileStreamFactory;
+                        return FileStreamFactory::SINGLETON as FileStreamFactory;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: FileStreamFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public AbFileInputStream getFileInputStreamInstance(string path, string fileName){
+    public: AbFileInputStream getFileInputStreamInstance(std::string path, std::string fileName){
 
-    FILEABPATH: AbPath = new AbPath(path, fileName);;
+    AbPath FILEABPATH = AbPath(path, fileName);;
     
 
-    file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileInputStream(file);
+                        return AbFileInputStream(file);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbFileOutputStream getFileOutputStreamInstance(string path, string fileName){
+    public: AbFileOutputStream getFileOutputStreamInstance(std::string path, std::string fileName){
 
-    FILEABPATH: AbPath = new AbPath(path, fileName);;
+    AbPath FILEABPATH = AbPath(path, fileName);;
     
 
-    file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
                         if(file.exists())
@@ -126,19 +123,19 @@ file.createNewFile();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileOutputStream.createFromAbFile(file);;
+                        return AbFileOutputStream::createFromAbFile(file);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public delete(string path, string fileName){
+    public: void delete_(std::string path, std::string fileName){
 
-    FILEABPATH: AbPath = new AbPath(path, fileName);;
+    AbPath FILEABPATH = AbPath(path, fileName);;
     
 
-    file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 file.delete();
     

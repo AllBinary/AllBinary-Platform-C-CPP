@@ -21,6 +21,8 @@
         #ifndef BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICE_H
         #define BUNDLE_INPUT_AUTOMATION_MODULE_INPUTAUTOMATIONMODULESERVICE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
@@ -49,15 +51,14 @@
 class InputAutomationModuleService
             : public Object
         : public InputAutomationModuleServiceInterface {
-        
 
-    private: inputAutomationModuleInterfaceArray: std::vector<InputAutomationModuleFactoryInterface>;
+    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray;
 
-public constructor (std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
+public: InputAutomationModuleService(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
 
-    public std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray();
+    public: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray();
 
-    public setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
+    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
 
 };
 

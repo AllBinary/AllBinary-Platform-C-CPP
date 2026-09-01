@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -67,64 +69,61 @@
 #include "RTSLayer.h"
 
 class MultiSelectPaintable: public SelectionHudPaintable {
-        
 
-    private: const rootNameList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList rootNameList = BasicArrayListD();
 
-    private: totalCharArray: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> totalCharArray = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: rootNamesString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string rootNamesString = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const TOTAL: string = "Total Selected: ";
+    private: const std::string TOTAL = "Total Selected: ";
 
-    private: const backgroundColor: int32_t = BasicColorFactory.getInstance()!.GREY.intValue()!;
+    private: const int32_t backgroundColor = BasicColorFactory::getInstance().GREY.intValue();
 
-    private: totalWidth: int32_t= 0;
+    private: int32_t totalWidth= 0;
 
-    private: textLine2Y: int32_t= 0;
+    private: int32_t textLine2Y= 0;
 
-public constructor (){
-
-            super();
-        }
+public: MultiSelectPaintable(){
+}
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.totalWidth= font.stringWidth(this.TOTAL);
+this->totalWidth= font.stringWidth(this->TOTAL);
     
-this.textLine2Y= (this.y +font.getHeight());
+this->textLine2Y= (this->y +font.getHeight());
     
 }
 
 
-    public update(BasicArrayList list){
-this.clear();
+    public: void update(BasicArrayList list){
+this->clear();
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
-this.totalCharArray= this.getPrimitiveLongUtil()!.getCharArray(size);
+this->totalCharArray= this->getPrimitiveLongUtil().getCharArray(size);
     
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    rtsLayer: RTSLayer = list.get(index) as RTSLayer;;
+    RTSLayer rtsLayer = list.get(index) as RTSLayer;;
     
 
-                        if(!this.rootNameList!.contains(rtsLayer!.getRootName()))
+                        if(!this->rootNameList.contains(rtsLayer.getRootName()))
                         
                                     {
-                                    this.rootNameList!.add(rtsLayer!.getRootName());
+                                    this->rootNameList.add(rtsLayer.getRootName());
     
 
                                     }
@@ -132,57 +131,57 @@ this.totalCharArray= this.getPrimitiveLongUtil()!.getCharArray(size);
 }
 
 
-    COMMA_SEP: string = CommonSeps.getInstance()!.COMMA_SEP;;
+    std::string COMMA_SEP = CommonSeps::getInstance().COMMA_SEP;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
 
                         for (
-    index: int32_t = this.rootNameList!.size() -1;index >= 0; index--)
+    int32_t index = this->rootNameList.size() -1;index >= 0; index--)
         {
 
-    rootName: string = this.rootNameList!.get(index) as string;;
+    std::string rootName = this->rootNameList.get(index) as string;;
     
-stringBuffer!.append(rootName);
+stringBuffer.append(rootName);
     
 
                         if(index != 0)
                         
                                     {
-                                    stringBuffer!.append(COMMA_SEP);
+                                    stringBuffer.append(COMMA_SEP);
     
 
                                     }
                                 
 }
 
-this.rootNamesString= stringBuffer!.toString();
+this->rootNamesString= stringBuffer.toString();
     
 }
 
 
-    clear(){
-this.rootNameList!.clear();
+    private: void clear(){
+this->rootNameList.clear();
     
 }
 
 
-    public paint(Graphics graphics){
-graphics.setColor(this.backgroundColor);
+    public: void paint(Graphics graphics){
+graphics.setColor(this->backgroundColor);
     
-graphics.drawRect(this.getX(), this.y, this.getWidth(), this.getHeight());
+graphics.drawRect(this->getX(), this->y, this->getWidth(), this->getHeight());
     
-graphics.setColor(this.getColor());
+graphics.setColor(this->getColor());
     
-graphics.drawString(this.TOTAL, this.textX, this.y, 0);
+graphics.drawString(this->TOTAL, this->textX, this->y, 0);
     
-graphics.drawChars(this.totalCharArray, 0, this.getPrimitiveLongUtil()!.getCurrentTotalDigits(), this.textX +this.totalWidth, this.y, 0);
+graphics.drawChars(this->totalCharArray, 0, this->getPrimitiveLongUtil().getCurrentTotalDigits(), this->textX +this->totalWidth, this->y, 0);
     
-graphics.drawString(this.rootNamesString, this.textX, this.textLine2Y, 0);
+graphics.drawString(this->rootNamesString, this->textX, this->textLine2Y, 0);
     
 }
 

@@ -60,21 +60,20 @@
 class CssPropertyView
             : public Object
         : public DomNodeInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: cssProperty: CssProperty;
+    private: CssProperty cssProperty;
 
-public constructor (string name);
+public: CssPropertyView(std::string name);
 
-public constructor (Node node);
+public: CssPropertyView(Node node);
 
-    public CssProperty getProperty();
+    public: CssProperty getProperty();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

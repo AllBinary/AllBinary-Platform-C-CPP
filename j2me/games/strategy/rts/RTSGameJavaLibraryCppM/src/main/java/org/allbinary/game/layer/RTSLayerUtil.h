@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RTSLAYERUTIL_H
         #define ORG_ALLBINARY_GAME_LAYER_RTSLAYERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -91,39 +93,38 @@
 class RTSLayerUtil
             : public Object
          {
-        
 
-    private: static const instance: RTSLayerUtil = new RTSLayerUtil();
+    private: static RTSLayerUtil instance() { return RTSLayerUtil(); }
 
-    public static RTSLayerUtil getInstance();
+    public: static RTSLayerUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;
+    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    WeaponProperties createWeaponProperties(WeaponProperties weaponProperties, int32_t currentLevel, int32_t lastLevel);
+    private: WeaponProperties createWeaponProperties(WeaponProperties weaponProperties, int32_t currentLevel, int32_t lastLevel);
 
-    public downgrade(RTSLayer rtsLayer);
+    public: void downgrade(RTSLayer rtsLayer);
 
-    public upgrade(RTSLayer rtsLayer);
+    public: void upgrade(RTSLayer rtsLayer);
 
-    private: const MAX_RELOAD_TIME: int64_t = Integer.MAX_VALUE /100000;
+    private: const int64_t MAX_RELOAD_TIME = Integer::MAX_VALUE /100000;
 
-    public int64_t getCostExponential(int64_t cost);
+    public: int64_t getCostExponential(int64_t cost);
 
-    int32_t getWeaponPropertiesCost(WeaponProperties weaponProperties);
+    private: int32_t getWeaponPropertiesCost(WeaponProperties weaponProperties);
 
-    public int32_t getCost(RTSLayer rtsLayer);
+    public: int32_t getCost(RTSLayer rtsLayer);
 
-    public int32_t getDowngradeCost(RTSLayer rtsLayer);
+    public: int32_t getDowngradeCost(RTSLayer rtsLayer);
 
-    public int32_t getUpgradeCost(RTSLayer rtsLayer);
+    public: int32_t getUpgradeCost(RTSLayer rtsLayer);
 
                 //@Throws(Exception.constructor)
             
-    public destroyAndClear(BasicArrayList list);
+    public: void destroyAndClear(BasicArrayList list);
 
-    public Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
+    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
 
 };
 

@@ -54,19 +54,18 @@
 class AxisMathVectorUtil
             : public Object
          {
-        
 
-    private: static const instance: AxisMathVectorUtil = new AxisMathVectorUtil();
+    private: static AxisMathVectorUtil instance() { return AxisMathVectorUtil(); }
 
-    public static AxisMathVectorUtil getInstance();
+    public: static AxisMathVectorUtil getInstance();
 
-    private: const noDecimalTrigTable: NoDecimalTrigTable = NoDecimalTrigTable.getInstance()!;
+    private: const NoDecimalTrigTable noDecimalTrigTable = NoDecimalTrigTable::getInstance();
 
-    public int64_t calculateX(int64_t magnitude, int32_t angle);
+    public: int64_t calculateX(int64_t magnitude, int32_t angle);
 
-    public int64_t calculateY(int64_t magnitude, int32_t angle);
+    public: int64_t calculateY(int64_t magnitude, int32_t angle);
 
-    public int64_t calculateZ(int64_t magnitude, int32_t otherAngle);
+    public: int64_t calculateZ(int64_t magnitude, int32_t otherAngle);
 
 };
 

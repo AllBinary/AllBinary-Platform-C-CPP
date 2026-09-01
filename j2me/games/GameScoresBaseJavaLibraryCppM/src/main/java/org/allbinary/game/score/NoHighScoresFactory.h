@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_NOHIGHSCORESFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_NOHIGHSCORESFACTORY_H
 
+            #include <vector>
+        
 #include <org/allbinary/game/GameInfo.h>
 
       
@@ -52,21 +54,20 @@
 #include "HighScoresHelperBaseInterface.h"
 
 class NoHighScoresFactory: public HighScoresBase {
-        
 
-    private: static const instance: NoHighScoresFactory = new NoHighScoresFactory();
+    private: static NoHighScoresFactory instance() { return NoHighScoresFactory(); }
 
-    public static NoHighScoresFactory getInstance();
+    public: static NoHighScoresFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const NO_HIGH_SCORES: std::vector<HighScores> = [];
+    public: const std::vector<HighScores> NO_HIGH_SCORES = {};
 
-private constructor ();
+private: NoHighScoresFactory();
 
-    public fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
+    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
 
-    public HighScoresHelperBaseInterface createHighScoresHelper();
+    public: HighScoresHelperBaseInterface createHighScoresHelper();
 
 };
 

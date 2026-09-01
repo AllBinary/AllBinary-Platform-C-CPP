@@ -42,31 +42,28 @@
 class BodyData
             : public Object
          {
-        
 
-    private: static const instance: BodyData = new BodyData();
+    private: static BodyData instance() { return BodyData(); }
 
-    public static BodyData getInstance(){
+    public: static BodyData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BodyData.instance;
+                        return BodyData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: BodyData(){
+}
 
 
-    public const NAME: string = "BODY_NAME";
+    public: const std::string NAME = "BODY_NAME";
 
-    public const VIEWNAMEKEY: string = "Body";
+    public: const std::string VIEWNAMEKEY = "Body";
 
-    public const MIN: int32_t = 0;
+    public: const int32_t MIN = 0;
 
 };
 

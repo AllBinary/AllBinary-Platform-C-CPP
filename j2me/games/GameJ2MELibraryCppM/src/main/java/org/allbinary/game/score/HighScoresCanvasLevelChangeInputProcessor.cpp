@@ -74,20 +74,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "HighScoresCanvasInputProcessor.h"
 
-class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor: public UpdateMyFontInterface {
-        
+class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor, public UpdateMyFontInterface {
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const INSTRUCTIONS: string = "(Right = Next Track, Left = Previous Track)";
+    private: const std::string INSTRUCTIONS = "(Right = Next Track, Left = Previous Track)";
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (HighScoresCanvas highScoresCanvas){
+public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCanvas){
             super(highScoresCanvas);
                     
 
@@ -96,69 +95,69 @@ public constructor (HighScoresCanvas highScoresCanvas){
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.fontHeight= font.getHeight();
+this->fontHeight= font.getHeight();
     
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public open(){
-GameKeyEventHandler.getInstance()!.addListener(this);
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public close(){
-GameKeyEventHandler.getInstance()!.removeListener(this);
+    public: void open(){
+GameKeyEventHandler::getInstance().addListener(this);
+    
+}
+
+
+    public: void close(){
+GameKeyEventHandler::getInstance().removeListener(this);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public update(){
+    public: void update(){
 
-    list: BasicArrayList = this.getGameKeyEventList()!;;
+    BasicArrayList list = this->getGameKeyEventList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    anyType: any = list.objectArray[index]!;;
+    Object* anyType = list.objectArray[index];;
     
 
-    key: int32_t = GameKeyEventUtil.getKey(anyType)!;;
+    int32_t key = GameKeyEventUtil::getKey(anyType);;
     
 
-                        if(key == Canvas.RIGHT)
+                        if(key == Canvas::RIGHT)
                         
                                     {
-                                    this.getHighScoresCanvas()!.getGameInfo()!.nextGameLevel();
+                                    this->getHighScoresCanvas().getGameInfo().nextGameLevel();
     
 
                                     }
                                 
                              else 
-                        if(key == Canvas.LEFT)
+                        if(key == Canvas::LEFT)
                         
                                     {
-                                    this.getHighScoresCanvas()!.getGameInfo()!.previousGameLevel();
+                                    this->getHighScoresCanvas().getGameInfo().previousGameLevel();
     
 
                                     }
                                 
-this.getHighScoresCanvas()!.executeUpdate();
+this->getHighScoresCanvas().executeUpdate();
     
 }
 
@@ -167,16 +166,16 @@ list.clear();
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
-    width: int32_t = this.displayInfoSingleton!.getLastWidth()!;;
+    int32_t width = this->displayInfoSingleton.getLastWidth();;
     
 
-    topScoresWidth: int32_t = (graphics.getFont()!.stringWidth(this.INSTRUCTIONS)>>1);;
+    int32_t topScoresWidth = (graphics.getFont().stringWidth(this->INSTRUCTIONS)>>1);;
     
-graphics.drawString(this.INSTRUCTIONS, (width>>1) -topScoresWidth, this.fontHeight *2, this.anchor);
+graphics.drawString(this->INSTRUCTIONS, (width>>1) -topScoresWidth, this->fontHeight *2, this->anchor);
     
 }
 

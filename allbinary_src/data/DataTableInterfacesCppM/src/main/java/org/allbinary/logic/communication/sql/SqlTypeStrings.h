@@ -37,73 +37,72 @@
 class SqlTypeStrings
             : public Object
          {
-        
 
-    private: static const instance: SqlTypeStrings = new SqlTypeStrings();
+    private: static SqlTypeStrings instance() { return SqlTypeStrings(); }
 
-    public static SqlTypeStrings getInstance();
+    public: static SqlTypeStrings getInstance();
 
-    public const CHAR_COLUMN: string = "VARCHAR";
+    public: const std::string CHAR_COLUMN = "VARCHAR";
 
-    public const INT_COLUMN: string = "VARCHAR";
+    public: const std::string INT_COLUMN = "VARCHAR";
 
-    public const MAX_SIZE: string = "(255)";
+    public: const std::string MAX_SIZE = "(255)";
 
-    public const SIXTY_SIZE: string = "(60)";
+    public: const std::string SIXTY_SIZE = "(60)";
 
-    public const NOT_NULL: string = "NOT NULL";
+    public: const std::string NOT_NULL = "NOT NULL";
 
-    public const ONE_SIZE: string = "(1)";
+    public: const std::string ONE_SIZE = "(1)";
 
-    public const TWO_SIZE: string = "(2)";
+    public: const std::string TWO_SIZE = "(2)";
 
-    public const THREE_SIZE: string = "(3)";
+    public: const std::string THREE_SIZE = "(3)";
 
-    public const SIX_SIZE: string = "(6)";
+    public: const std::string SIX_SIZE = "(6)";
 
-    public const ELEVEN_SIZE: string = "(11)";
+    public: const std::string ELEVEN_SIZE = "(11)";
 
-    public const TWELVE_SIZE: string = "(12)";
+    public: const std::string TWELVE_SIZE = "(12)";
 
-    public const ONE_KB_CHAR_COLUMN: string = new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.append(CHAR_COLUMN)!.append("(1024)")!.append(CommonSeps.getInstance()!.COMMA_SEP)!.toString()!;
+    public: const std::string ONE_KB_CHAR_COLUMN = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append("(1024)").append(CommonSeps::getInstance().COMMA_SEP).toString();
 
-    public const MAX_CHAR_COLUMN: string = new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.append(CHAR_COLUMN)!.append(MAX_SIZE)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.toString()!;
+    public: const std::string MAX_CHAR_COLUMN = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(MAX_SIZE).append(CommonSeps::getInstance().COMMA_SEP).toString();
 
-    public const MAX_CHAR_COLUMN_NOT_NULL: string = new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.append(CHAR_COLUMN)!.append(MAX_SIZE)!.append(CommonSeps.getInstance()!.SPACE)!.append(NOT_NULL)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.toString()!;
+    public: const std::string MAX_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(MAX_SIZE).append(CommonSeps::getInstance().SPACE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
 
-    public const SIXTY_CHAR_COLUMN_NOT_NULL: string = new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.append(CHAR_COLUMN)!.append(SIXTY_SIZE)!.append(NOT_NULL)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.toString()!;
+    public: const std::string SIXTY_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(SIXTY_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
 
-    public const ONE_CHAR_COLUMN_NOT_NULL: string = new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.append(CHAR_COLUMN)!.append(ONE_SIZE)!.append(NOT_NULL)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.toString()!;
+    public: const std::string ONE_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(ONE_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
 
-    public const SIX_CHAR_COLUMN_NOT_NULL: string = new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.append(CHAR_COLUMN)!.append(SIX_SIZE)!.append(NOT_NULL)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.toString()!;
+    public: const std::string SIX_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(SIX_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
 
-    public const TWELVE_CHAR_COLUMN_NOT_NULL: string = new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.append(CHAR_COLUMN)!.append(this.TWELVE_SIZE)!.append(NOT_NULL)!.append(CommonSeps.getInstance()!.COMMA_SEP)!.toString()!;
+    public: const std::string TWELVE_CHAR_COLUMN_NOT_NULL = StringMaker().append(CommonSeps::getInstance().SPACE).append(CHAR_COLUMN).append(this->TWELVE_SIZE).append(NOT_NULL).append(CommonSeps::getInstance().COMMA_SEP).toString();
 
-    public const TWO_INT_NOT_NULL: string = " INT(2) NOT NULL, ";
+    public: const std::string TWO_INT_NOT_NULL = " INT(2) NOT NULL, ";
 
-    public const THREE_INT_NOT_NULL: string = " INT(3) NOT NULL, ";
+    public: const std::string THREE_INT_NOT_NULL = " INT(3) NOT NULL, ";
 
-    public const FOUR_INT_NOT_NULL: string = " INT(4) NOT NULL, ";
+    public: const std::string FOUR_INT_NOT_NULL = " INT(4) NOT NULL, ";
 
-    public const MAX_INT_NOT_NULL: string = " INT(11) NOT NULL, ";
+    public: const std::string MAX_INT_NOT_NULL = " INT(11) NOT NULL, ";
 
-    public const MAX_INT_UNSIGNED: string = " INT(11) UNSIGNED, ";
+    public: const std::string MAX_INT_UNSIGNED = " INT(11) UNSIGNED, ";
 
-    public const MAX_INT_UNSIGNED_NOT_NULL: string = " INT(11) UNSIGNED NOT NULL, ";
+    public: const std::string MAX_INT_UNSIGNED_NOT_NULL = " INT(11) UNSIGNED NOT NULL, ";
 
-    public const MAX_BIG_INT_NOT_NULL: string = " BIGINT(19) NOT NULL, ";
+    public: const std::string MAX_BIG_INT_NOT_NULL = " BIGINT(19) NOT NULL, ";
 
-    public const MAX_BIG_INT_UNSIGNED: string = " BIGINT(19) UNSIGNED, ";
+    public: const std::string MAX_BIG_INT_UNSIGNED = " BIGINT(19) UNSIGNED, ";
 
-    public const MAX_BIG_INT_UNSIGNED_NOT_NULL: string = " BIGINT(19) UNSIGNED NOT NULL, ";
+    public: const std::string MAX_BIG_INT_UNSIGNED_NOT_NULL = " BIGINT(19) UNSIGNED NOT NULL, ";
 
-    public const MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL: string = " BIGINT(19) UNSIGNED AUTO_INCREMENT NOT NULL,";
+    public: const std::string MAX_BIG_INT_UNSIGNED_AUTO_INCREMENT_NOT_NULL = " BIGINT(19) UNSIGNED AUTO_INCREMENT NOT NULL,";
 
-    public const LONG_BLOB: string = " LONGBLOB, ";
+    public: const std::string LONG_BLOB = " LONGBLOB, ";
 
-    public const BLOB: string = " BLOB, ";
+    public: const std::string BLOB = " BLOB, ";
 
-    public const BLOB_NOT_NULL: string = " BLOB NOT NULL, ";
+    public: const std::string BLOB_NOT_NULL = " BLOB NOT NULL, ";
 
 };
 

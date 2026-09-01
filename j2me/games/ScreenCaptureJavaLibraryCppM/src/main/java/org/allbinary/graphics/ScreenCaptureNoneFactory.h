@@ -46,11 +46,10 @@
 class ScreenCaptureNoneFactory
             : public Object
          {
-        
 
-    private: static const instance: ScreenCapture = new ScreenCapture();
+    private: static ScreenCapture instance() { return ScreenCapture(); }
 
-    public static ScreenCapture getInstance();
+    public: static ScreenCapture getInstance();
 
 };
 

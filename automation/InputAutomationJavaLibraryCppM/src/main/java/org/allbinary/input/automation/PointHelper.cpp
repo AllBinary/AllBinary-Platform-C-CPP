@@ -48,30 +48,27 @@
 class PointHelper
             : public Object
          {
-        
 
-    private: static const two: double = 2;
+    private: static const double two = 2;
 
-    public static Point getCenterPoint(Rectangle rectangle){
+    public: static Point getCenterPoint(Rectangle rectangle){
 
-    x: double = rectangle.getX() +rectangle.getWidth() /PointHelper.two;;
+    double x = rectangle.getX() +rectangle.getWidth() /PointHelper::two;;
     
 
-    y: double = rectangle.getY() +rectangle.getHeight() /PointHelper.two;;
+    double y = rectangle.getY() +rectangle.getHeight() /PointHelper::two;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointFactory.getInstance(static_cast<int32_t>(x), static_cast<int32_t>(y));;
+                        return PointFactory::getInstance(static_cast<int32_t>(x), static_cast<int32_t>(y));;
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: PointHelper(){
+}
 
 
 };

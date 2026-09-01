@@ -50,9 +50,8 @@
         #include "GenericStoreTransformInfoObjectConfig.h"
 
 class OverrideStoreTransformInfoObjectConfig: public GenericStoreTransformInfoObjectConfig {
-        
 
-public constructor (Object abeClientInformation, Object transformInfoInterface){
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface){
             super(abeClientInformation, transformInfoInterface);
                     
 
@@ -61,33 +60,33 @@ public constructor (Object abeClientInformation, Object transformInfoInterface){
 }
 
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, Object document){
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, Object document){
             super(abeClientInformation, transformInfoInterface, document);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
-public constructor (Object abeClientInformation, Object transformInfoInterface, string name, string type){
+public: OverrideStoreTransformInfoObjectConfig(Object abeClientInformation, Object transformInfoInterface, std::string name, std::string type){
             super(abeClientInformation, transformInfoInterface, name, type);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Document generate(Document objectConfigDocument){
+    protected: Document generate(Document objectConfigDocument){
 
-    newObjectConfigDocument: Document = super.generate(objectConfigDocument)!;;
+    Document newObjectConfigDocument = super.generate(objectConfigDocument);;
     
 
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONWORKER_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_GENERICINPUTAUTOMATIONWORKER_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Long.h"
@@ -95,35 +97,34 @@
 #include "CaptureWorkerUtil.h"
 
 class GenericInputAutomationWorker: public AbstractInputAutomationWorker {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const PROCESS_DATA_WORKER_RESULTS: string = "processDataWorkerResults";
+    protected: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
 
-    private: lastFrame: Long = new Long( -1);
+    private: Long lastFrame = Long( -1);
 
-    private: frame: Long;
+    private: Long frame;
 
-    private: genericProfile: GenericProfile;
+    private: GenericProfile genericProfile;
 
-public constructor (InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public processDataWorkerResults();
+public: GenericInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void processDataWorkerResults();
 
-    public GenericProfile getGenericProfile();
+                //@Throws(Exception.constructor)
+            
+    public: void process();
 
-    public setGenericProfile(GenericProfile genericProfile);
+    public: GenericProfile getGenericProfile();
 
-    Long getFrame();
+    public: void setGenericProfile(GenericProfile genericProfile);
 
-    setFrame(Long frame);
+    protected: Long getFrame();
+
+    protected: void setFrame(Long frame);
 
 };
 

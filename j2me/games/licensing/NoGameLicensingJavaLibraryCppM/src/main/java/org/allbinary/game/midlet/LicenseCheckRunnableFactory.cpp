@@ -55,14 +55,13 @@
 class LicenseCheckRunnableFactory
             : public Object
          {
-        
 
-    public ABRunnable getInstance(SpecialDemoGameMidlet specialDemoGameMidlet){
+    public: ABRunnable getInstance(SpecialDemoGameMidlet specialDemoGameMidlet){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullABRunnable.getInstance();;
+                        return NullABRunnable::getInstance();;
     
 }
 

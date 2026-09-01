@@ -53,9 +53,8 @@
         #include "RelativeLayerRelationship.h"
 
 class MiddleRelativeLayerRelationship: public RelativeLayerRelationship {
-        
 
-public constructor (AllBinaryLayer layer);
+public: MiddleRelativeLayerRelationship(AllBinaryLayer layer);
 
 };
 

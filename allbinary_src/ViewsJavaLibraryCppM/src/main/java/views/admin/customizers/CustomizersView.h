@@ -21,6 +21,8 @@
         #ifndef VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVIEW_H
         #define VIEWS_ADMIN_CUSTOMIZERS_CUSTOMIZERSVIEW_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
@@ -99,24 +101,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomizersView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class CustomizersView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const customizersVector: Vector;
+    protected: Vector customizersVector;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: CustomizersView(TransformInfoInterface transformInfoInterface);
 
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public addDomNodeInterfaces();
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

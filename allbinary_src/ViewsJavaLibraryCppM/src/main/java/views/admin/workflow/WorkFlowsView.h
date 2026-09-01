@@ -75,22 +75,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class WorkFlowsView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class WorkFlowsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: workFlowsVector: Vector;
+    private: Vector workFlowsVector;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: WorkFlowsView(TransformInfoInterface transformInfoInterface);
 
-    public addDomNodeInterfaces();
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

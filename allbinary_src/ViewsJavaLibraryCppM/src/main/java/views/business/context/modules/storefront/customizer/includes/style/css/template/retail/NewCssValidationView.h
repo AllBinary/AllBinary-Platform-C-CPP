@@ -72,28 +72,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class NewCssValidationView: public CssCustomizerView: public ValidationComponentInterface {
-        
+class NewCssValidationView: public CssCustomizerView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Document toXmlDoc();
-
-    public Boolean isValid();
-
-    public string validationInfo();
-
-    public Document toValidationInfoDoc();
-
-    public Node toValidationInfoNode(Document document);
+public: NewCssValidationView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Document toXmlDoc();
+
+    public: Boolean isValid();
+
+    public: std::string validationInfo();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

@@ -78,17 +78,16 @@
 class DomDocumentFileHelper
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Document createDocument(AbFile xmlFile);
+    public: static Document createDocument(AbFile xmlFile);
 
                 //@Throws(Exception.constructor)
             
-    public static save(AbFile file, Document document);
+    public: static void save(AbFile file, Document document);
 
-private constructor ();
+private: DomDocumentFileHelper();
 
 };
 

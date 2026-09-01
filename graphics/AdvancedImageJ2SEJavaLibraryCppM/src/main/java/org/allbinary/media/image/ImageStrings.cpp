@@ -42,23 +42,22 @@
 class ImageStrings
             : public Object
          {
-        
 
-    private: static const instance: ImageStrings = new ImageStrings();
+    private: static ImageStrings instance() { return ImageStrings(); }
 
-    public static ImageStrings getInstance(){
+    public: static ImageStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageStrings.instance;
+                        return ImageStrings::instance();
     
 }
 
 
-    public const PNG: string = "PNG";
+    public: const std::string PNG = "PNG";
 
-    public const PNG_EXTENSION: string = ".png";
+    public: const std::string PNG_EXTENSION = ".png";
 
 };
 

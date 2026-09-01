@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -78,26 +80,25 @@
 class Replace
             : public Object
          {
-        
 
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
         try {
             
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    appUrlGlobals: AppUrlGlobals = new AppUrlGlobals();;
+    AppUrlGlobals appUrlGlobals = AppUrlGlobals();;
     
-appUrlGlobals!.setWebappPath("G:/mnt/bc/mydev/work/allbinary_src/ToolsJavaLibrary/tools");
+appUrlGlobals.setWebappPath("G:/mnt/bc/mydev/work/allbinary_src/ToolsJavaLibrary/tools");
     
-URLGLOBALS.init(appUrlGlobals);
-    
-
-    testString: string = "\"super gun\" big tank \"goodgunriflegun";;
+URLGLOBALS::init(appUrlGlobals);
     
 
-    replace: Replace = new Replace("gun", "abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz");;
+    std::string testString = "\"super gun\" big tank \"goodgunriflegun";;
+    
+
+    Replace replace = Replace("gun", "abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz");;
     
 console.log("Old String: " +testString);
     
@@ -106,9 +107,9 @@ testString= replace.all(testString);
 console.log("New String: " +testString);
     
 
-    replaceCat: Replace = new Replace("abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz", stringUtil!.EMPTY_STRING);;
+    Replace replaceCat = Replace("abcdefghijklmnopqrstuxwxyzabcdefghijklmnopqrstuxwxyz", stringUtil.EMPTY_STRING);;
     
-testString= replaceCat!.all(testString);
+testString= replaceCat.all(testString);
     
 console.log("New String: " +testString);
     
@@ -121,116 +122,109 @@ console.log("New String: " +testString);
 }
 
 
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
+    private: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const j2seUtil: J2SEUtil = J2SEUtil.getInstance()!;
+    private: const J2SEUtil j2seUtil = J2SEUtil::getInstance();
 
-    private: const REPLACERS_: string = "Replacers: ";
+    private: const std::string REPLACERS_ = "Replacers: ";
 
-    private: const ALL: string = "all";
+    private: const std::string ALL = "all";
 
-    private: const FOUND_KEY: string = "found key total: ";
+    private: const std::string FOUND_KEY = "found key total: ";
 
-    private: const hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (string key, string value){
-
-            super();
-        this.hashMap= new HashMap<any, any>();
+public: Replace(std::string key, std::string value){
+this->hashMap= HashMap<any, any>();
     
-this.hashMap!.put(
-                                                [
+this->hashMap.put(
+                                                {
                                                     key
-                                                ], 
-                                                [
+                                                }, 
+                                                {
                                                     value
-                                                ]);
+                                                });
     
 }
 
 
-public constructor (std::vector<string> keys, std::vector<string> values){
-
-            super();
-        this.hashMap= new HashMap<any, any>();
+public: Replace(std::vector<std::string> keys, std::vector<std::string> values){
+this->hashMap= HashMap<any, any>();
     
-this.hashMap!.put(keys, values);
+this->hashMap.put(keys, values);
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.hashMap= hashMap;
+public: Replace(HashMap<any, any> hashMap){
+this->hashMap= hashMap;
     
 }
 
 
-    public string all(string replace){
+    public: std::string all(std::string replace){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.upTo(replace, Integer.MIN_VALUE);;
+                        return this->upTo(replace, Integer::MIN_VALUE);;
     
 }
 
 
-    public string upTo(string replace, int32_t total){
+    public: std::string upTo(std::string replace, int32_t total){
 
-    newStringBuffer: StringMaker = new StringMaker();;
+    StringMaker newStringBuffer = StringMaker();;
     
 
-    totalNumberOfReplaces: int32_t = 0;;
+    int32_t totalNumberOfReplaces = 0;;
     
 
-    keys: std::vector<string>;;
+    std::vector<std::string> keys;;
     
 
-    values: std::vector<string>;;
+    std::vector<std::string> values;;
     
 
-    keyArray: std::vector<any> = this.j2seUtil!.getHashMapAsArray(this.hashMap)!;;
+    std::vector<Object*> keyArray = this->j2seUtil.getHashMapAsArray(this->hashMap);;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    int32_t size = keyArray.size();;
     
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size; index2++)
+    int32_t index2 = 0;index2 < size; index2++)
         {
 keys= keyArray[index2]! as string[];
     
-values= this.hashMap!.get(keys) as string[];
+values= this->hashMap.get(keys) as string[];
     
 
-    foundTotal: int64_t = 0;;
+    int64_t foundTotal = 0;;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    nextKey: string;;
+    std::string nextKey;;
     
 
-    end: int32_t= 0;;
+    int32_t end= 0;;
     
 
-    nextSecondKey: string;;
+    std::string nextSecondKey;;
     
 
-    begin2: int32_t= 0;;
+    int32_t begin2= 0;;
     
 
-        while(index < replace.length)
+        while(index < replace.size())
         {
 
-    begin: int32_t = replace.indexOf(keys[0]!, index)!;;
+    int32_t begin = replace.indexOf(keys[0]!, index);;
     
 
                         if(begin !=  -1)
@@ -242,29 +236,29 @@ values= this.hashMap!.get(keys) as string[];
                         if(foundTotal % 100 == 0)
                         
                                     {
-                                    console.log(this.FOUND_KEY +foundTotal);
+                                    console.log(this->FOUND_KEY +foundTotal);
     
 
                                     }
                                 
 nextKey= keys[0]!;
     
-end= begin +nextKey!.length;
+end= begin +nextKey.size();
     
-newStringBuffer!.delete(0, newStringBuffer!.length());
+newStringBuffer.delete(0, newStringBuffer.length());
     
-newStringBuffer!.append(replace.substring(0, begin));
+newStringBuffer.append(replace.substring(0, begin));
     
-newStringBuffer!.append(values[0]!);
+newStringBuffer.append(values[0]!);
     
-index= newStringBuffer!.length();
+index= newStringBuffer.length();
     
-newStringBuffer!.append(replace.substring(end, replace.length));
+newStringBuffer.append(replace.substring(end, replace.size()));
     
-replace= newStringBuffer!.toString();
+replace= newStringBuffer.toString();
     
 
-                        if(keys.length > 1)
+                        if(keys.size() > 1)
                         
                                     {
                                     nextSecondKey= keys[1]!;
@@ -276,19 +270,19 @@ begin2= replace.indexOf(nextSecondKey, index);
                         
                                     {
                                     
-    end2: int32_t = begin2 +nextSecondKey!.length;;
+    int32_t end2 = begin2 +nextSecondKey.size();;
     
-newStringBuffer!.delete(0, newStringBuffer!.length());
+newStringBuffer.delete(0, newStringBuffer.length());
     
-newStringBuffer!.append(replace.substring(0, begin2));
+newStringBuffer.append(replace.substring(0, begin2));
     
-newStringBuffer!.append(values[1]!);
+newStringBuffer.append(values[1]!);
     
-index= newStringBuffer!.length();
+index= newStringBuffer.length();
     
-newStringBuffer!.append(replace.substring(end2, replace.length));
+newStringBuffer.append(replace.substring(end2, replace.size()));
     
-replace= newStringBuffer!.toString();
+replace= newStringBuffer.toString();
     
 
                                     }
@@ -299,7 +293,7 @@ replace= newStringBuffer!.toString();
 totalNumberOfReplaces++;
     
 
-                        if(total != Integer.MIN_VALUE && totalNumberOfReplaces >= total)
+                        if(total != Integer::MIN_VALUE && totalNumberOfReplaces >= total)
                         
                                     {
                                     break;
@@ -327,10 +321,10 @@ totalNumberOfReplaces++;
                         
                                     {
                                     
-                        if(LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.REPLACE))
+                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().REPLACE))
                         
                                     {
-                                    this.logUtil!.putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this.ALL);
+                                    this->logUtil.putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
     
 
                                     }
@@ -347,68 +341,67 @@ totalNumberOfReplaces++;
 }
 
 
-    public string line(string replace){
+    public: std::string line(std::string replace){
 
-    newStringBuffer: StringMaker = new StringMaker();;
+    StringMaker newStringBuffer = StringMaker();;
     
 
-    totalNumberOfReplaces: int32_t = 0;;
+    int32_t totalNumberOfReplaces = 0;;
     
 
-    key: string;;
+    std::string key;;
     
 
-    value: string;;
+    std::string value;;
     
 
-    keyArray: std::vector<any> = this.j2seUtil!.getHashMapAsArray(this.hashMap)!;;
+    std::vector<Object*> keyArray = this->j2seUtil.getHashMapAsArray(this->hashMap);;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    int32_t size = keyArray.size();;
     
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size; index2++)
+    int32_t index2 = 0;index2 < size; index2++)
         {
 key= keyArray[index2]! as string;
     
-value= this.hashMap!.get(key) as string;
+value= this->hashMap.get(key) as string;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while(index < replace.length)
+        while(index < replace.size())
         {
-newStringBuffer!.delete(0, newStringBuffer!.length());
+newStringBuffer.delete(0, newStringBuffer.length());
     
 
-    begin: int32_t = replace.indexOf(key, index)!;;
+    int32_t begin = replace.indexOf(key, index);;
     
 
                         if(begin !=  -1)
                         
                                     {
-                                    console.log(this.FOUND_KEY);
+                                    console.log(this->FOUND_KEY);
     
 
-    end: int32_t = replace.indexOf('\n', begin +key.length) +1;;
+    int32_t end = replace.indexOf('\n', begin +key.size()) +1;;
     
 
                         if(end >= 0)
                         
                                     {
-                                    newStringBuffer!.append(replace.substring(0, begin));
+                                    newStringBuffer.append(replace.substring(0, begin));
     
-index= newStringBuffer!.length();
+index= newStringBuffer.length();
     
-newStringBuffer!.append(replace.substring(end, replace.length));
+newStringBuffer.append(replace.substring(end, replace.size()));
     
-replace= newStringBuffer!.toString();
+replace= newStringBuffer.toString();
     
 totalNumberOfReplaces++;
     
@@ -430,10 +423,10 @@ totalNumberOfReplaces++;
 }
 
 
-                        if(LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.REPLACE))
+                        if(LogConfigTypes::LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().REPLACE))
                         
                                     {
-                                    this.logUtil!.putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this.ALL);
+                                    this->logUtil.putF("Total Number Of Replaces: " +totalNumberOfReplaces, this, this->ALL);
     
 
                                     }

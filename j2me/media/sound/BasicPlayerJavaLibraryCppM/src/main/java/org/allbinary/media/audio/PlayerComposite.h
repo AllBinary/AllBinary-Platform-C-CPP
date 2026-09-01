@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PLAYERCOMPOSITE_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PLAYERCOMPOSITE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -77,56 +79,55 @@
 class PlayerComposite
             : public Object
         : public Controllable, public Player {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const player: Player;
+    private: Player player;
 
-    private: const timeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeElapsedHelper = TimeDelayHelper(0);
 
-public constructor (Player player, int32_t repeatTime);
+public: PlayerComposite(Player player, int32_t repeatTime);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addPlayerListener(PlayerListener playerListener);
+    public: void addPlayerListener(PlayerListener playerListener);
 
-    public removePlayerListener(PlayerListener playerListener);
+    public: void removePlayerListener(PlayerListener playerListener);
 
-    public close();
+    public: void close();
 
-    public deallocate();
+    public: void deallocate();
 
-    public string getContentType();
+    public: std::string getContentType();
 
-    public int64_t getDuration();
+    public: int64_t getDuration();
 
-    public int64_t getMediaTime();
+    public: int64_t getMediaTime();
 
-    public prefetch();
+    public: void prefetch();
 
-    public realize();
+    public: void realize();
 
-    public int32_t getState();
+    public: int32_t getState();
 
-    public setLoopCount(int32_t count);
+    public: void setLoopCount(int32_t count);
 
-    public int64_t setMediaTime(int64_t now);
+    public: int64_t setMediaTime(int64_t now);
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    public start();
+    public: void start();
 
-    public stop();
+    public: void stop();
 
-    public Control getControl(string controlType);
+    public: Control getControl(std::string controlType);
 
-    public std::vector<Control> getControls();
+    public: std::vector<Control> getControls();
 
-    public setVolume(int32_t leftVolume, int32_t rightVolume);
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume);
 
-    public Player getPlayerP();
+    public: Player getPlayerP();
 
 };
 

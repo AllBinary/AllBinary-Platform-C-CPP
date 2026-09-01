@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -61,56 +63,53 @@
 class PrintLicenseInitInfo
             : public Object
          {
-        
 
-    public static const PATH: string = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
+    public: static const std::string PATH = "G:\\mnt\\bc\\mydev\\work\\allbinary_src\\licensing\\data\\";
 
                 //@Throws(Exception.constructor)
             
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
-    initInfo: PrintLicenseInitInfo = new PrintLicenseInitInfo(args);;
+    PrintLicenseInitInfo initInfo = PrintLicenseInitInfo(args);;
     
-initInfo!.printInitInfo();
+initInfo.printInitInfo();
     
 }
 
 
-public constructor (std::vector<string> options){
-
-            super();
-        LicenseInitInfoUtil.getInstance()!.setFilePath(PrintLicenseInitInfo.PATH +PATH_GLOBALS.getInstance()!.INIT_PATH);
+public: PrintLicenseInitInfo(std::vector<std::string> options){
+LicenseInitInfoUtil::getInstance().setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance().INIT_PATH);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public LicenseInitInfo getLicenseInitInfo(){
+    public: LicenseInitInfo getLicenseInitInfo(){
 
-    licenseInitInfoUtil: LicenseInitInfoUtil = LicenseInitInfoUtil.getInstance()!;;
+    LicenseInitInfoUtil licenseInitInfoUtil = LicenseInitInfoUtil::getInstance();;
     
 
-                        if(FileFactory.getInstance()!.isFile(licenseInitInfoUtil!.getFilePath()))
+                        if(FileFactory::getInstance().isFile(licenseInitInfoUtil.getFilePath()))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return licenseInitInfoUtil!.read();;
+                        return licenseInitInfoUtil.read();;
     
 
                                     }
                                 
                         else {
-                            console.log("No Licence File at: " +licenseInitInfoUtil!.getFilePath());
+                            console.log("No Licence File at: " +licenseInitInfoUtil.getFilePath());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LicenseInitInfo();
+                        return LicenseInitInfo();
     
 
                         }
@@ -118,26 +117,26 @@ public constructor (std::vector<string> options){
 }
 
 
-    public printInitInfo(){
+    public: void printInitInfo(){
 
         try {
             
-    licenseInitInfo: LicenseInitInfo = this.getLicenseInitInfo()!;;
+    LicenseInitInfo licenseInitInfo = this->getLicenseInitInfo();;
     
-console.log("License ID: " +licenseInitInfo!.getLicenseId());
-    
-
-    list: BasicArrayList = licenseInitInfo!.getServerList()!;;
+console.log("License ID: " +licenseInitInfo.getLicenseId());
     
 
-    size: int32_t = list.size()!;;
+    BasicArrayList list = licenseInitInfo.getServerList();;
+    
+
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 console.log("Lic Serv: " +list.get(index));
     

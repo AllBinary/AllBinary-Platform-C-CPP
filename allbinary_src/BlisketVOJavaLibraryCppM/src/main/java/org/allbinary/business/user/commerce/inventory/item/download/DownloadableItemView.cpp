@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../java/lang/Exception.h"
@@ -78,125 +80,121 @@
 class DownloadableItemView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: downloadableItem: DownloadableItem;
+    private: DownloadableItem downloadableItem;
 
-public constructor (DownloadableItem downloadableItem){
-
-            super();
-        this.downloadableItem= downloadableItem;
+public: DownloadableItemView(DownloadableItem downloadableItem){
+this->downloadableItem= downloadableItem;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "toXmlNode");
+                                    this->logUtil.putF(this->commonStrings.START, this, "toXmlNode");
     
 
                                     }
                                 
 
-    hashMap: HashMap<any, any> = this.downloadableItem!.toHashMap()!;;
+    HashMap<any, any> hashMap = this->downloadableItem.toHashMap();;
     
 
-    totalTime: int64_t = this.downloadableItem!.getValidTime()!.longValue()!;;
+    int64_t totalTime = this->downloadableItem.getValidTime().longValue();;
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    year: int32_t = calendar.get(Calendar.YEAR)!;;
+    int32_t year = calendar.get(Calendar::YEAR);;
     
 
-    month: int32_t = calendar.get(Calendar.MONTH)!;;
+    int32_t month = calendar.get(Calendar::MONTH);;
     
 
-    day: int32_t = calendar.get(Calendar.DAY_OF_MONTH)!;;
+    int32_t day = calendar.get(Calendar::DAY_OF_MONTH);;
     
 
-    hour: int32_t = calendar.get(Calendar.HOUR)!;;
+    int32_t hour = calendar.get(Calendar::HOUR);;
     
 
-    minute: int32_t = calendar.get(Calendar.MINUTE)!;;
+    int32_t minute = calendar.get(Calendar::MINUTE);;
     
 
-    second: int32_t = calendar.get(Calendar.SECOND)!;;
+    int32_t second = calendar.get(Calendar::SECOND);;
     
 calendar.setTimeInMillis(calendar.getTimeInMillis() +totalTime);
     
 
-    yearDelta: int32_t = calendar.get(Calendar.YEAR)!;;
+    int32_t yearDelta = calendar.get(Calendar::YEAR);;
     
 
-    monthDelta: int32_t = calendar.get(Calendar.MONTH)!;;
+    int32_t monthDelta = calendar.get(Calendar::MONTH);;
     
 
-    dayDelta: int32_t = calendar.get(Calendar.DAY_OF_MONTH)!;;
+    int32_t dayDelta = calendar.get(Calendar::DAY_OF_MONTH);;
     
 
-    hourDelta: int32_t = calendar.get(Calendar.HOUR)!;;
+    int32_t hourDelta = calendar.get(Calendar::HOUR);;
     
 
-    minuteDelta: int32_t = calendar.get(Calendar.MINUTE)!;;
+    int32_t minuteDelta = calendar.get(Calendar::MINUTE);;
     
 
-    secondDelta: int32_t = calendar.get(Calendar.SECOND)!;;
+    int32_t secondDelta = calendar.get(Calendar::SECOND);;
     
-hashMap!.put(DownloadItemData.VALID_TIME_YEARS, Integer.valueOf(yearDelta -year));
+hashMap.put(DownloadItemData::VALID_TIME_YEARS, Integer::valueOf(yearDelta -year));
     
-hashMap!.put(DownloadItemData.VALID_TIME_MONTHS, Integer.valueOf(monthDelta -month));
+hashMap.put(DownloadItemData::VALID_TIME_MONTHS, Integer::valueOf(monthDelta -month));
     
-hashMap!.put(DownloadItemData.VALID_TIME_DAYS, Integer.valueOf(dayDelta -day));
+hashMap.put(DownloadItemData::VALID_TIME_DAYS, Integer::valueOf(dayDelta -day));
     
-hashMap!.put(DownloadItemData.VALID_TIME_HOURS, Integer.valueOf(hourDelta -hour));
+hashMap.put(DownloadItemData::VALID_TIME_HOURS, Integer::valueOf(hourDelta -hour));
     
-hashMap!.put(DownloadItemData.VALID_TIME_MINUTES, Integer.valueOf(minuteDelta -minute));
+hashMap.put(DownloadItemData::VALID_TIME_MINUTES, Integer::valueOf(minuteDelta -minute));
     
-hashMap!.put(DownloadItemData.VALID_TIME_SECONDS, Integer.valueOf(secondDelta -second));
-    
-
-    keySet: Set = hashMap!.keys()!;;
+hashMap.put(DownloadItemData::VALID_TIME_SECONDS, Integer::valueOf(secondDelta -second));
     
 
-    node: Node = document.createElement(DownloadItemData.NAME)!;;
+    Set keySet = hashMap.keys();;
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    Node node = document.createElement(DownloadItemData::NAME);;
     
 
-    nameArray: std::vector<any> = keySet!.()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    size: int32_t = nameArray!.length
-                ;;
+    std::vector<Object*> nameArray = keySet.();;
+    
+
+    int32_t size = nameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    name: string = nameArray[index]! as string;;
+    std::string name = nameArray[index]! as string;;
     
 
-    value: string = hashMap!.get(name) as string;;
+    std::string value = hashMap.get(name) as string;;
     
-value= stringUtil!.getNonNull(value);
+value= stringUtil.getNonNull(value);
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 
@@ -209,7 +207,7 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
 }
 
 
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
@@ -219,7 +217,7 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
 }
 
 
-    public string view(){
+    public: std::string view(){
 
 
 

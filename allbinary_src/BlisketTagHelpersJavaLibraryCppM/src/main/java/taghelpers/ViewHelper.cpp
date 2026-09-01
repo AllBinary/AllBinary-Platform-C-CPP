@@ -77,67 +77,65 @@
 class ViewHelper
             : public Object
         : public TransformInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: componentInterface: TransformInterface;
+    private: TransformInterface componentInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.componentInterface= TransformFactory.getInstance()!.getInstance(this.abeClientInformation, hashMap, pageContext);
+public: ViewHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->componentInterface= TransformFactory::getInstance().getInstance(this->abeClientInformation, hashMap, pageContext);
     
 }
 
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId(){
+    public: int32_t getTypeId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NO_TYPE;
+                        return this->NO_TYPE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentInterface!.view();;
+                        return this->componentInterface.view();;
     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed to View: ";;
+    std::string error = "Failed to View: ";;
     
 
-                        if(this.componentInterface != 
-                                    null
+                        if(this->componentInterface != 
+                                    nullptr
                                 )
-                        error += this.componentInterface!.constructor.name.toString()!
+                        error += this->componentInterface.constructor.name.toString()!;
+                                
                              else 
                         if()
                         
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -154,34 +152,35 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
         try {
             
 
 
-                            throw new Exception("Hmm: " +this.componentInterface!.getTransformDocumentInterface()!.getDoc());
+                            throw Exception("Hmm: " +this->componentInterface.getTransformDocumentInterface().getDoc());
                     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed to View: ";;
+    std::string error = "Failed to View: ";;
     
 
-                        if(this.componentInterface != 
-                                    null
+                        if(this->componentInterface != 
+                                    nullptr
                                 )
-                        error += this.componentInterface!.constructor.name.toString()!
+                        error += this->componentInterface.constructor.name.toString()!;
+                                
                              else 
                         if()
                         
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -196,29 +195,29 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public TransformInterface getViewObject(){
+    public: TransformInterface getViewObject(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentInterface;
+                        return this->componentInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface getTransformInfoInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentInterface!.getTransformInfoInterface();;
+                        return this->componentInterface.getTransformInfoInterface();;
     
 }
 
 
-    public TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface getTransformDocumentInterface(){
 
 
 
@@ -228,7 +227,7 @@ public constructor (HashMap<any, any> hashMap, PageContext pageContext){
 }
 
 
-    public setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface){
+    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface){
 
 
 

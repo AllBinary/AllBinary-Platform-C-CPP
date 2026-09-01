@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/System.h"
@@ -472,263 +474,262 @@
 #include "GameCanvasInputProcessor.h"
 #include "FormInputProcessor.h"
 
-class AllBinaryGameCanvas: public RunnableCanvas: public AllBinaryGameCanvasInterface, public GameCanvasRunnableInterface, public MenuListener, public IntermissionCompositeInterface, public IntermissionEnableListenerInterface, public PopupMenuInterface, public DisplayChangeEventListener, public UpdateMyFontInterface {
-        
+class AllBinaryGameCanvas: public RunnableCanvas, public AllBinaryGameCanvasInterface, public GameCanvasRunnableInterface, public MenuListener, public IntermissionCompositeInterface, public IntermissionEnableListenerInterface, public PopupMenuInterface, public DisplayChangeEventListener, public UpdateMyFontInterface {
 
-    private: static const id: int32_t = 0;
+    private: static const int32_t id = 0;
 
-    public static const TYPE: int32_t = 2;
+    public: static const int32_t TYPE = 2;
 
-    const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    protected: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    const touchFeatureFactory: TouchFeatureFactory = TouchFeatureFactory.getInstance()!;
+    protected: const TouchFeatureFactory touchFeatureFactory = TouchFeatureFactory::getInstance();
 
-    const openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;
+    protected: const OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
 
-    const touchButtonFactory: TouchButtonFactory = TouchButtonFactory.getInstance()!;
+    protected: const TouchButtonFactory touchButtonFactory = TouchButtonFactory::getInstance();
 
-    const gameAdStateFactory: GameAdStateFactory = GameAdStateFactory.getInstance()!;
+    protected: const GameAdStateFactory gameAdStateFactory = GameAdStateFactory::getInstance();
 
-    const gameStrings: GameStrings = GameStrings.getInstance()!;
+    protected: const GameStrings gameStrings = GameStrings::getInstance();
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()!;
+    private: const GameTickDisplayInfoSingleton gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
 
-    public const gameRunnable: GameCanvasRunnable = new GameCanvasRunnable(this);
+    public: const GameCanvasRunnable gameRunnable = GameCanvasRunnable(this);
 
-    public const gamePauseRunnable: GameCanvasPauseRunnable = new GameCanvasPauseRunnable(this);
+    public: const GameCanvasPauseRunnable gamePauseRunnable = GameCanvasPauseRunnable(this);
 
-    const formUtil: FormUtil = FormUtil.getInstance()!;
+    protected: const FormUtil formUtil = FormUtil::getInstance();
 
-    const myFormUtil: MyFormUtil = MyFormUtil.getInstance()!;
+    protected: const MyFormUtil myFormUtil = MyFormUtil::getInstance();
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    gameSpecificPaintable: Paintable = NullPaintable.getInstance()!;
+    protected: Paintable gameSpecificPaintable = NullPaintable::getInstance();
 
-    private: const sensorGameUpdateProcessor: SensorGameUpdateProcessor = new SingleSensorGameUpdateProcessor();
+    private: const SensorGameUpdateProcessor sensorGameUpdateProcessor = SingleSensorGameUpdateProcessor();
 
-    endGameInfo: EndGameInfo = new EndGameInfo();
+    protected: EndGameInfo endGameInfo = EndGameInfo();
 
-    private: const startIntermissionInterface: IntermissionInterface = new Intermission();
+    private: const IntermissionInterface startIntermissionInterface = Intermission();
 
-    private: const endLevelIntermissionInterface: IntermissionInterface = new Intermission();
+    private: const IntermissionInterface endLevelIntermissionInterface = Intermission();
 
-    gameLayerManager: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    protected: AllBinaryGameLayerManager gameLayerManager = AllBinaryGameLayerManager::getNullInstance();
 
-    private: gameState: GameState = this.gameStateFactory!.NO_GAME_STATE;
+    private: GameState gameState = this->gameStateFactory.NO_GAME_STATE;
 
-    private: gameOver: bool= false;
+    private: bool gameOver= false;
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-    private: const gameStateTimeHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper gameStateTimeHelper = TimeDelayHelper(0);
 
-    const highScoresHelper: HighScoresHelperBaseInterface;
+    protected: HighScoresHelperBaseInterface highScoresHelper;
 
-    private: highScoreSubmitted: bool= false;
+    private: bool highScoreSubmitted= false;
 
-    private: const realHighScoresPaintable: HighScoresPaintable = new HighScoresPaintable();
+    private: const HighScoresPaintable realHighScoresPaintable = HighScoresPaintable();
 
-    private: highScoresPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable highScoresPaintable = NullPaintable::getInstance();
 
-    private: localPlayerGameInputList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList localPlayerGameInputList = BasicArrayListD();
 
-    private: isCheating: bool= false;
+    private: bool isCheating= false;
 
-    private: hashtable: Hashtable<any, any> = this.nullUtil!.NULL_TABLE;
+    private: Hashtable<any, any> hashtable = this->nullUtil.NULL_TABLE;
 
-    private: isSingleKeyRepeatableProcessing: bool= false;
+    private: bool isSingleKeyRepeatableProcessing= false;
 
-    private: gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory = BasicBuildGameInitializerFactory.NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY;
+    private: BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface = BasicBuildGameInitializerFactory::NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY;
 
-    private: touchButtonsPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable touchButtonsPaintable = NullPaintable::getInstance();
 
-    touchPaintable: Paintable = NullPaintable.getInstance()!;
+    protected: Paintable touchPaintable = NullPaintable::getInstance();
 
-    private: cheatProcessor: PlayerGameInput = NoPlayerGameInput.getInstance()!;
+    private: PlayerGameInput cheatProcessor = NoPlayerGameInput::getInstance();
 
-    private: gameInputProcessor: Processor = Processor.getInstance()!;
+    private: Processor gameInputProcessor = Processor::getInstance();
 
-    private: endGameProcessor: Processor = Processor.getInstance()!;
+    private: Processor endGameProcessor = Processor::getInstance();
 
-    private: realEndGameProcessor: Processor = Processor.getInstance()!;
+    private: Processor realEndGameProcessor = Processor::getInstance();
 
-    private: startIntermissionProcessor: Processor = Processor.getInstance()!;
+    private: Processor startIntermissionProcessor = Processor::getInstance();
 
-    private: realStartIntermissionProcessor: Processor = Processor.getInstance()!;
+    private: Processor realStartIntermissionProcessor = Processor::getInstance();
 
-    private: endGamePaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable endGamePaintable = NullPaintable::getInstance();
 
-    private: endGameStatePaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable endGameStatePaintable = NullPaintable::getInstance();
 
-    nonBotPaintable: Paintable = NullPaintable.getInstance()!;
+    protected: Paintable nonBotPaintable = NullPaintable::getInstance();
 
-    private: intermissionPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable intermissionPaintable = NullPaintable::getInstance();
 
-    private: startIntermissionPaintable: InitUpdatePaintable = NullInitUpdatePaintable.getInstance()!;
+    private: InitUpdatePaintable startIntermissionPaintable = NullInitUpdatePaintable::getInstance();
 
-    private: mainStateProcessor: Processor = Processor.getInstance()!;
+    private: Processor mainStateProcessor = Processor::getInstance();
 
-    private: processGameProcessor: Processor = Processor.getInstance()!;
+    private: Processor processGameProcessor = Processor::getInstance();
 
-    private: const highScoresFactoryInterface: HighScoresFactoryInterface;
+    private: HighScoresFactoryInterface highScoresFactoryInterface;
 
-    private: startLevel: int32_t= 0;
+    private: int32_t startLevel= 0;
 
-    private: mainMenuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor mainMenuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: popupMenuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor popupMenuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: menuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: menuForm: ScrollSelectionForm = ScrollSelectionForm.getNullScrollSelectionForm()!;
+    private: ScrollSelectionForm menuForm = ScrollSelectionForm::getNullScrollSelectionForm();
 
-    private: formPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable formPaintable = NullPaintable::getInstance();
 
-    private: openMenuPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable openMenuPaintable = NullPaintable::getInstance();
 
-    private: menuPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable menuPaintable = NullPaintable::getInstance();
 
-    private: currentTouchInputFactory: BaseTouchInput = NoButtonsTouchInputFactory.getInstance()!;
+    private: BaseTouchInput currentTouchInputFactory = NoButtonsTouchInputFactory::getInstance();
 
-    colorFillPaintable: ColorFillBasePaintable = ColorFillPaintableFactory.getInstance()!.getInstance(this.basicColorFactory!.BLACK, true)!;
+    protected: ColorFillBasePaintable colorFillPaintable = ColorFillPaintableFactory::getInstance().getInstance(this->basicColorFactory.BLACK, true);
 
-    private: const baseGameStatistics: BaseGameStatistics = GameStatisticsFactory.getInstance()!;
+    private: const BaseGameStatistics baseGameStatistics = GameStatisticsFactory::getInstance();
 
-    private: const primaryPlayerQueue: PlayerQueue = PrimaryPlayerQueueFactory.getInstance()!;
+    private: const PlayerQueue primaryPlayerQueue = PrimaryPlayerQueueFactory::getInstance();
 
-    private: const secondaryPlayerQueue: PlayerQueue = SecondaryPlayerQueueFactory.getInstance()!;
+    private: const PlayerQueue secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
 
-    const BUILD_GAME: string = "buildGame";
+    protected: const std::string BUILD_GAME = "buildGame";
 
-    const gameTypeFactory: GameTypeFactory = GameTypeFactory.getInstance()!;
+    protected: const GameTypeFactory gameTypeFactory = GameTypeFactory::getInstance();
 
-    const screenCapture: ScreenCapture = ScreenCaptureFactory.getInstance()!;
+    protected: const ScreenCapture screenCapture = ScreenCaptureFactory::getInstance();
 
-    private: const basicMotionGesturesHandler: BasicMotionGesturesHandler = BasicMotionGesturesHandler.getInstance()!;
+    private: const BasicMotionGesturesHandler basicMotionGesturesHandler = BasicMotionGesturesHandler::getInstance();
 
-    private: const gameKeyEventHandler: GameKeyEventHandler = GameKeyEventHandler.getInstance()!;
+    private: const GameKeyEventHandler gameKeyEventHandler = GameKeyEventHandler::getInstance();
 
-    private: const gameBehavior: DemoGameBehavior;
+    private: const DemoGameBehavior gameBehavior;
 
-    private: const menuBehavior: BaseMenuBehavior;
+    private: const BaseMenuBehavior menuBehavior;
 
-    private: progressPaintable: PaintableInterface = ProgressCanvasFactory.getLazyInstance()!;
+    private: PaintableInterface progressPaintable = ProgressCanvasFactory::getLazyInstance();
 
-    fontHeightP: int32_t= 0;
+    protected: int32_t fontHeightP= 0;
 
-public constructor (CommandListener commandListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered){
-            super(commandListener, CanvasStrings.getInstance()!.EMPTY_CHILD_NAME_LIST, true);
+public: AllBinaryGameCanvas(CommandListener commandListener, AllBinaryGameLayerManager gameLayerManager, HighScoresFactoryInterface highScoresFactoryInterface, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool buffered){
+            super(commandListener, CanvasStrings::getInstance().EMPTY_CHILD_NAME_LIST, true);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.highScoresHelper= highScoresFactoryInterface!.createHighScoresHelper();
+this->highScoresHelper= highScoresFactoryInterface.createHighScoresHelper();
     
-this.gameInitializationInterfaceFactoryInterface= gameInitializationInterfaceFactoryInterface;
+this->gameInitializationInterfaceFactoryInterface= gameInitializationInterfaceFactoryInterface;
     
-this.init(gameLayerManager, buffered);
+this->init(gameLayerManager, buffered);
     
-this.highScoresFactoryInterface= highScoresFactoryInterface;
+this->highScoresFactoryInterface= highScoresFactoryInterface;
     
 
-                        if(this.gameLayerManager!.getGameInfo()!.getGameType() == this.gameTypeFactory!.BOT || this.gameLayerManager!.getGameInfo()!.getGameType() == this.gameTypeFactory!.NONE)
+                        if(this->gameLayerManager.getGameInfo().getGameType() == this->gameTypeFactory.BOT || this->gameLayerManager.getGameInfo().getGameType() == this->gameTypeFactory.NONE)
                         
                                     {
-                                    this.gameBehavior= DemoGameBehavior.getInstance();
+                                    this->gameBehavior= DemoGameBehavior::getInstance();
     
-this.menuBehavior= BaseMenuBehavior.getInstance();
+this->menuBehavior= BaseMenuBehavior::getInstance();
     
 
                                     }
                                 
                         else {
-                            this.gameBehavior= BaseGameBehavior.getInstance();
+                            this->gameBehavior= BaseGameBehavior::getInstance();
     
-this.menuBehavior= this.getInGameMenuBehavior();
+this->menuBehavior= this->getInGameMenuBehavior();
     
 
                         }
                             
-this.initPopupMenu();
+this->initPopupMenu();
     
-this.initMenu();
+this->initMenu();
     
-this.initSpecialPaint();
+this->initSpecialPaint();
     
-DisplayChangeEventHandler.getInstance()!.addListenerInterface(this);
+DisplayChangeEventHandler::getInstance().addListenerInterface(this);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
         try {
             
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.logUtil!.putF(new StringMaker().append(this.commonStrings!.START)!.append(this.canvasStrings!.FD_WIDTH)!.appendint(MyFontProcessor.defaultCharWidth(font))!.append(this.canvasStrings!.FD_HEIGHT)!.appendint(font.getHeight())!.toString(), this, this.canvasStrings!.UPDATE_MEASUREMENT);
+this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(this->canvasStrings.FD_WIDTH).appendint(MyFontProcessor::defaultCharWidth(font)).append(this->canvasStrings.FD_HEIGHT).appendint(font.getHeight()).toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
     
-this.fontHeightP= font.getHeight();
+this->fontHeightP= font.getHeight();
     
-this.myFormUtil!.updateMeasurement(graphics);
-    
-
-    popupMenuRectangle: Rectangle = this.myFormUtil!.getPopupMenuRectangle()!;;
+this->myFormUtil.updateMeasurement(graphics);
     
 
-    basicPopupMenuPaintable: BasicPopupMenuPaintable = (this.getOpenMenuPaintable() as BasicPopupMenuPaintable);;
-    
-basicPopupMenuPaintable!.init(popupMenuRectangle);
+    Rectangle popupMenuRectangle = this->myFormUtil.getPopupMenuRectangle();;
     
 
-                        if(this.getPopupMenuInputProcessor() != NoMenuInputProcessor.getInstance())
+    BasicPopupMenuPaintable basicPopupMenuPaintable = (this->getOpenMenuPaintable() as BasicPopupMenuPaintable);;
+    
+basicPopupMenuPaintable.init(popupMenuRectangle);
+    
+
+                        if(this->getPopupMenuInputProcessor() != NoMenuInputProcessor::getInstance())
                         
                                     {
                                     
-    popupMenuInputProcessor: PopupMenuInputProcessor = (this.getPopupMenuInputProcessor() as PopupMenuInputProcessor);;
+    PopupMenuInputProcessor popupMenuInputProcessor = (this->getPopupMenuInputProcessor() as PopupMenuInputProcessor);;
     
-popupMenuInputProcessor!.init(popupMenuRectangle);
+popupMenuInputProcessor.init(popupMenuRectangle);
     
 
                                     }
                                 
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.canvasStrings!.ON_DISPLAY_CHANGE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, e);
     
 }
 
 }
 
 
-    public BaseMenuBehavior getInGameMenuBehavior(){
+    public: BaseMenuBehavior getInGameMenuBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameMenuBehavior.getInstance();;
+                        return InGameMenuBehavior::getInstance();;
     
 }
 
 
-    public setCurrentThread(){
+    public: void setCurrentThread(){
 
-                        if(J2MEUtil.isHTML())
+                        if(J2MEUtil::isHTML())
                         
                                     {
                                     super.setCurrentThreadFake();
@@ -745,26 +746,26 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.canvasStrings!.ON_DI
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
 
         try {
-            this.logUtil!.putF(new StringMaker().append(this.commonStrings!.START)!.append(DisplayInfoSingleton.getInstance()!.toString())!.toString(), this, this.canvasStrings!.UPDATE_MEASUREMENT);
+            this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(DisplayInfoSingleton::getInstance().toString()).toString(), this, this->canvasStrings.UPDATE_MEASUREMENT);
     
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= this->updateMyFontProcessor;
     
-this.menuBehavior!.onDisplayChangeEvent(this, displayChangeEvent);
+this->menuBehavior.onDisplayChangeEvent(this, displayChangeEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.canvasStrings!.ON_DISPLAY_CHANGE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT, e);
     
 }
 
@@ -773,43 +774,43 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.canvasStrings!.ON_DI
 
                 //@Throws(Exception.constructor)
             
-    public updateMenuFromEvent(DisplayChangeEvent displayChangeEvent){
+    public: void updateMenuFromEvent(DisplayChangeEvent displayChangeEvent){
 
-    formType: FormType = FormTypeFactory.getInstance()!.getFormType()!;;
+    FormType formType = FormTypeFactory::getInstance().getFormType();;
     
 
-    rectangle: Rectangle = this.formUtil!.createFormRectangle()!;;
+    Rectangle rectangle = this->formUtil.createFormRectangle();;
     
-this.menuForm!.init(rectangle, formType);
+this->menuForm.init(rectangle, formType);
     
 
-                        if(this.currentTouchInputFactory != NoButtonsTouchInputFactory.getInstance())
+                        if(this->currentTouchInputFactory != NoButtonsTouchInputFactory::getInstance())
                         
                                     {
-                                    this.touchButtonFactory!.toggle(this.isPaused(), this.currentTouchInputFactory!.getList());
+                                    this->touchButtonFactory.toggle(this->isPaused(), this->currentTouchInputFactory.getList());
     
 
                                     }
                                 
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processSleep(){
+    public: void processSleep(){
 super.processSleep();
     
 
-                        if(AllBinaryMediaManager.update())
+                        if(AllBinaryMediaManager::update())
                         
                                     {
                                     
-                        if(!this.primaryPlayerQueue!.process())
+                        if(!this->primaryPlayerQueue.process())
                         
                                     {
-                                    this.secondaryPlayerQueue!.process();
+                                    this->secondaryPlayerQueue.process();
     
 
                                     }
@@ -818,10 +819,10 @@ super.processSleep();
                                     }
                                 
 
-                        if(this.menuInputProcessor!.processInputList() !=  -1)
+                        if(this->menuInputProcessor.processInputList() !=  -1)
                         
                                     {
-                                    this.runnableCanvasRefreshHelper!.process();
+                                    this->runnableCanvasRefreshHelper.process();
     
 
                                     }
@@ -831,24 +832,24 @@ super.processSleep();
 
                 //@Throws(Exception.constructor)
             
-    initPopupMenu(){
+    protected: void initPopupMenu(){
 
-                        if(this.popupMenuInputProcessor == NoMenuInputProcessor.getInstance())
+                        if(this->popupMenuInputProcessor == NoMenuInputProcessor::getInstance())
                         
                                     {
                                     
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    popupMenuRectangle: Rectangle = this.myFormUtil!.getPopupMenuRectangle()!;;
+    Rectangle popupMenuRectangle = this->myFormUtil.getPopupMenuRectangle();;
     
 
-                        if(features.isFeature(this.touchFeatureFactory!.TOUCH_ENABLED))
+                        if(features.isFeature(this->touchFeatureFactory.TOUCH_ENABLED))
                         
                                     {
-                                    this.setOpenMenuPaintable(new BasicPopupMenuPaintable(popupMenuRectangle, this.gameLayerManager!.getBackgroundBasicColor(), this.gameLayerManager!.getForegroundBasicColor()));
+                                    this->setOpenMenuPaintable(BasicPopupMenuPaintable(popupMenuRectangle, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor()));
     
-this.setPopupMenuInputProcessor(new PopupMenuInputProcessor(new BasicArrayListD(),  -1, this, popupMenuRectangle));
+this->setPopupMenuInputProcessor(PopupMenuInputProcessor(BasicArrayListD(),  -1, this, popupMenuRectangle));
     
 
                                     }
@@ -863,16 +864,16 @@ this.setPopupMenuInputProcessor(new PopupMenuInputProcessor(new BasicArrayListD(
 }
 
 
-    initMenu(){
+    protected: void initMenu(){
 
         try {
-            this.menuBehavior!.initMenu(this);
+            this->menuBehavior.initMenu(this);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "initMenu", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "initMenu", e);
     
 }
 
@@ -881,37 +882,37 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "initMenu", e);
 
                 //@Throws(Exception.constructor)
             
-    initMenu2(){
-this.closeMenu();
+    protected: void initMenu2(){
+this->closeMenu();
     
 
-    formType: FormType = FormTypeFactory.getInstance()!.getFormType()!;;
+    FormType formType = FormTypeFactory::getInstance().getFormType();;
     
 
-    gameLimitedCommandTextItemArrayFactory: GameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory.getInstance()!;;
+    GameLimitedCommandTextItemArrayFactory gameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory::getInstance();;
     
 
-    commandTextItemArrayFactory: CommandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory!.getCommandTextItemArrayFactory()!;;
+    CommandTextItemArrayFactory commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory();;
     
 
-    items: std::vector<ABCustomItem> = commandTextItemArrayFactory!.getInstance(this.getCommandStack() as Vector<any>, this.gameLayerManager!.getBackgroundBasicColor(), this.gameLayerManager!.getForegroundBasicColor())!;;
+    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack() as Vector<any>, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
     
 
-    rectangle: Rectangle = this.formUtil!.createFormRectangle()!;;
+    Rectangle rectangle = this->formUtil.createFormRectangle();;
     
-this.setMenuForm(CommandCurrentSelectionFormFactory.getInstance(StringUtil.getInstance()!.EMPTY_STRING, items, rectangle, formType, 25, false, this.gameLayerManager!.getBackgroundBasicColor(), this.gameLayerManager!.getForegroundBasicColor()));
-    
-
-    scrollSelectionForm: ScrollSelectionForm = this.getMenuForm()!;;
+this->setMenuForm(CommandCurrentSelectionFormFactory::getInstance(StringUtil::getInstance().EMPTY_STRING, items, rectangle, formType, 25, false, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor()));
     
 
-    features: Features = Features.getInstance()!;;
+    ScrollSelectionForm scrollSelectionForm = this->getMenuForm();;
     
 
-                        if(features.isFeature(this.touchFeatureFactory!.TOUCH_ENABLED))
+    Features features = Features::getInstance();;
+    
+
+                        if(features.isFeature(this->touchFeatureFactory.TOUCH_ENABLED))
                         
                                     {
-                                    this.mainMenuInputProcessor= new PopupCommandFormInputProcessor(new BasicArrayListD(),  -1, this, scrollSelectionForm, this.getPopupMenuInputProcessor() as PopupMenuInputProcessor);
+                                    this->mainMenuInputProcessor= PopupCommandFormInputProcessor(BasicArrayListD(),  -1, this, scrollSelectionForm, this->getPopupMenuInputProcessor() as PopupMenuInputProcessor);
     
 
                                     }
@@ -920,13 +921,13 @@ this.setMenuForm(CommandCurrentSelectionFormFactory.getInstance(StringUtil.getIn
                             
                         }
                             
-this.setMenuInputProcessor(this.getPopupMenuInputProcessor());
+this->setMenuInputProcessor(this->getPopupMenuInputProcessor());
     
 
-                        if(scrollSelectionForm != ScrollSelectionFormNoneFactory.getInstance())
+                        if(scrollSelectionForm != ScrollSelectionFormNoneFactory::getInstance())
                         
                                     {
-                                    this.setFormPaintable(new FormPaintable(scrollSelectionForm));
+                                    this->setFormPaintable(FormPaintable(scrollSelectionForm));
     
 
                                     }
@@ -935,21 +936,21 @@ this.setMenuInputProcessor(this.getPopupMenuInputProcessor());
                             
                         }
                             
-this.closeMenu();
+this->closeMenu();
     
 }
 
 
-    public updateMenu(){
+    public: void updateMenu(){
 
         try {
-            this.menuBehavior!.updateMenu(this);
+            this->menuBehavior.updateMenu(this);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "initMenu", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "initMenu", e);
     
 }
 
@@ -958,56 +959,55 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "initMenu", e);
 
                 //@Throws(Exception.constructor)
             
-    public updateMenu2(){
+    public: void updateMenu2(){
 
-    scrollSelectionForm: ScrollSelectionForm = this.getMenuForm()!;;
+    ScrollSelectionForm scrollSelectionForm = this->getMenuForm();;
     
-scrollSelectionForm!.deleteAll();
-    
-
-    gameLimitedCommandTextItemArrayFactory: GameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory.getInstance()!;;
+scrollSelectionForm.deleteAll();
     
 
-    commandTextItemArrayFactory: CommandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory!.getCommandTextItemArrayFactory()!;;
+    GameLimitedCommandTextItemArrayFactory gameLimitedCommandTextItemArrayFactory = GameLimitedCommandTextItemArrayFactory::getInstance();;
     
 
-    items: std::vector<ABCustomItem> = commandTextItemArrayFactory!.getInstance(this.getCommandStack() as Vector<any>, this.gameLayerManager!.getBackgroundBasicColor(), this.gameLayerManager!.getForegroundBasicColor())!;;
+    CommandTextItemArrayFactory commandTextItemArrayFactory = gameLimitedCommandTextItemArrayFactory.getCommandTextItemArrayFactory();;
     
 
-    size: int32_t = items.length
-                ;;
+    std::vector<ABCustomItem> items = commandTextItemArrayFactory.getInstance(this->getCommandStack() as Vector<any>, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
+    
+
+    int32_t size = items.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-scrollSelectionForm!.append(items[index]!);
+scrollSelectionForm.append(items[index]!);
     
 }
 
 
-    formType: FormType = FormTypeFactory.getInstance()!.getFormType()!;;
+    FormType formType = FormTypeFactory::getInstance().getFormType();;
     
 
-    rectangle: Rectangle = this.formUtil!.createFormRectangle()!;;
+    Rectangle rectangle = this->formUtil.createFormRectangle();;
     
-scrollSelectionForm!.init(rectangle, formType);
+scrollSelectionForm.init(rectangle, formType);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public pause(){
-this.gameBehavior!.pause(this);
+    public: void pause(){
+this->gameBehavior.pause(this);
     
-this.closeMenu();
+this->closeMenu();
     
 super.pause();
     
-this.touchButtonFactory!.toggle(this.isPaused(), BasicArrayListUtil.getInstance()!.getImmutableInstance());
+this->touchButtonFactory.toggle(this->isPaused(), BasicArrayListUtil::getInstance().getImmutableInstance());
     
 System.gc();
     
@@ -1015,25 +1015,25 @@ System.gc();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public unPause(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.gameStrings!.UNPAUSE);
+    public: void unPause(){
+this->logUtil.putF(this->commonStrings.START, this, this->gameStrings.UNPAUSE);
     
-this.closeMenu();
+this->closeMenu();
     
 System.gc();
     
 super.unPause();
     
-this.touchButtonFactory!.toggle(this.isPaused(), BasicArrayListUtil.getInstance()!.getImmutableInstance());
+this->touchButtonFactory.toggle(this->isPaused(), BasicArrayListUtil::getInstance().getImmutableInstance());
     
-this.gameBehavior!.unPause(this);
+this->gameBehavior.unPause(this);
     
 }
 
 
-    public bool isPausable(){
+    public: bool isPausable(){
 
-                        if(CurrentDisplayableFactory.getInstance()!.getUsedRunnable() == NullWaitGameRunnable.getInstance())
+                        if(CurrentDisplayableFactory::getInstance().getUsedRunnable() == NullWaitGameRunnable::getInstance())
                         
                                     {
                                     
@@ -1060,53 +1060,53 @@ this.gameBehavior!.unPause(this);
 
                 //@Throws(Exception.constructor)
             
-    public popupMenu(){
-this.menuBehavior!.popupMenu(this);
+    public: void popupMenu(){
+this->menuBehavior.popupMenu(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public popupMenu2(){
-this.primaryPlayerQueue!.add(SelectSound.getInstance());
+    public: void popupMenu2(){
+this->primaryPlayerQueue.add(SelectSound::getInstance());
     
-this.setMenuPaintable(this.getFormPaintable());
+this->setMenuPaintable(this->getFormPaintable());
     
-this.setMenuInputProcessor(this.mainMenuInputProcessor);
+this->setMenuInputProcessor(this->mainMenuInputProcessor);
     
-this.basicMotionGesturesHandler!.addListenerInterface(this.mainMenuInputProcessor);
+this->basicMotionGesturesHandler.addListenerInterface(this->mainMenuInputProcessor);
     
-this.gameKeyEventHandler!.addListener(this.mainMenuInputProcessor);
+this->gameKeyEventHandler.addListener(this->mainMenuInputProcessor);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public toggleMenu(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.gameStrings!.TOGGLE_MENU);
+    public: void toggleMenu(){
+this->logUtil.putF(this->commonStrings.START, this, this->gameStrings.TOGGLE_MENU);
     
 
-                        if(this.getMenuPaintable() == this.getOpenMenuPaintable())
+                        if(this->getMenuPaintable() == this->getOpenMenuPaintable())
                         
                                     {
-                                    this.pause();
+                                    this->pause();
     
-this.updateMenu();
+this->updateMenu();
     
-this.popupMenu();
+this->popupMenu();
     
 
                                     }
                                 
                              else 
-                        if(this.getMenuPaintable() == this.getFormPaintable())
+                        if(this->getMenuPaintable() == this->getFormPaintable())
                         
                                     {
-                                    this.primaryPlayerQueue!.add(SelectSound.getInstance());
+                                    this->primaryPlayerQueue.add(SelectSound::getInstance());
     
-this.unPause();
+this->unPause();
     
 
                                     }
@@ -1114,77 +1114,77 @@ this.unPause();
 }
 
 
-    public closeMenu(){
-this.menuBehavior!.closeMenu(this);
+    public: void closeMenu(){
+this->menuBehavior.closeMenu(this);
     
 }
 
 
-    public closeMenu2(){
-this.setMenuPaintable(this.getOpenMenuPaintable());
+    public: void closeMenu2(){
+this->setMenuPaintable(this->getOpenMenuPaintable());
     
-this.basicMotionGesturesHandler!.removeListener(this.mainMenuInputProcessor);
+this->basicMotionGesturesHandler.removeListener(this->mainMenuInputProcessor);
     
-this.gameKeyEventHandler!.removeListener(this.mainMenuInputProcessor);
+this->gameKeyEventHandler.removeListener(this->mainMenuInputProcessor);
     
-this.setMenuInputProcessor(this.getPopupMenuInputProcessor());
-    
-}
-
-
-    public open(){
-this.basicMotionGesturesHandler!.addListenerInterface(this.menuInputProcessor);
-    
-this.gameKeyEventHandler!.addListener(this.menuInputProcessor);
+this->setMenuInputProcessor(this->getPopupMenuInputProcessor());
     
 }
 
 
-    public close(){
-this.basicMotionGesturesHandler!.removeListener(this.menuInputProcessor);
+    public: void open(){
+this->basicMotionGesturesHandler.addListenerInterface(this->menuInputProcessor);
     
-this.gameKeyEventHandler!.removeListener(this.menuInputProcessor);
-    
-this.primaryPlayerQueue!.clear();
-    
-this.secondaryPlayerQueue!.clear();
+this->gameKeyEventHandler.addListener(this->menuInputProcessor);
     
 }
 
 
-                //@Throws(Exception.constructor)
-            
-    processorInit(){
-this.setMainStateProcessor(Processor.getInstance());
+    public: void close(){
+this->basicMotionGesturesHandler.removeListener(this->menuInputProcessor);
     
-this.setProcessGameProcessor(new GameProcessor(this));
+this->gameKeyEventHandler.removeListener(this->menuInputProcessor);
     
-}
-
-
-    initSpecialPaint(){
-this.menuBehavior!.initSpecialPaint(this);
+this->primaryPlayerQueue.clear();
+    
+this->secondaryPlayerQueue.clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(AllBinaryGameLayerManager gameLayerManager, bool buffered){
-this.gameStateTimeHelper!.setStartTimeTNT();
+    protected: void processorInit(){
+this->setMainStateProcessor(Processor::getInstance());
     
-this.setHighScoreSubmitted(false);
+this->setProcessGameProcessor(GameProcessor(this));
     
-this.setLayerManager(gameLayerManager);
+}
+
+
+    protected: void initSpecialPaint(){
+this->menuBehavior.initSpecialPaint(this);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    private: void init(AllBinaryGameLayerManager gameLayerManager, bool buffered){
+this->gameStateTimeHelper.setStartTimeTNT();
+    
+this->setHighScoreSubmitted(false);
+    
+this->setLayerManager(gameLayerManager);
     
 
                         if(!buffered)
                         
                                     {
                                     
-    BUFF_MESSAGE: string = "XXX Not Buffering Causes Concurrency Issues XXX";;
+    std::string BUFF_MESSAGE = "XXX Not Buffering Causes Concurrency Issues XXX";;
     
-this.logUtil!.putF(BUFF_MESSAGE, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(BUFF_MESSAGE, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -1193,68 +1193,68 @@ this.logUtil!.putF(BUFF_MESSAGE, this, this.commonStrings!.CONSTRUCTOR);
                             
 
 
-                            throw new Exception("Buffering is disabled");
+                            throw Exception("Buffering is disabled");
                     
 
                         }
                             
-this.setGameInputProcessor(Processor.getInstance());
+this->setGameInputProcessor(Processor::getInstance());
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(GameFeatureFactory.getInstance()!.CHEATING))
+                        if(features.isFeature(GameFeatureFactory::getInstance().CHEATING))
                         
                                     {
-                                    this.isCheating= true;
+                                    this->isCheating= true;
     
-this.cheatProcessor= new CheatGameInputProcessor(this);
+this->cheatProcessor= CheatGameInputProcessor(this);
     
-this.gameKeyEventHandler!.addListener(this.cheatProcessor);
+this->gameKeyEventHandler.addListener(this->cheatProcessor);
     
 
                                     }
                                 
                         else {
-                            this.isCheating= false;
+                            this->isCheating= false;
     
-this.cheatProcessor= NoPlayerGameInput.getInstance();
+this->cheatProcessor= NoPlayerGameInput::getInstance();
     
 
                         }
                             
-this.realEndGameProcessor= new EndGameProcessor(this);
+this->realEndGameProcessor= EndGameProcessor(this);
     
-this.setEndGameProcessor(Processor.getInstance());
+this->setEndGameProcessor(Processor::getInstance());
     
-this.realStartIntermissionProcessor= new StartIntermissionProcessor(this);
+this->realStartIntermissionProcessor= StartIntermissionProcessor(this);
     
-this.startIntermissionProcessor= Processor.getInstance();
+this->startIntermissionProcessor= Processor::getInstance();
     
-this.setEndGameStatePaintable(new EndGamePaintable(this));
+this->setEndGameStatePaintable(EndGamePaintable(this));
     
-this.setEndGamePaintable(NullPaintable.getInstance());
+this->setEndGamePaintable(NullPaintable::getInstance());
     
-this.setIntermissionPaintable(NullPaintable.getInstance());
+this->setIntermissionPaintable(NullPaintable::getInstance());
     
-this.getStartIntermissionInterface()!.setListener(this);
+this->getStartIntermissionInterface().setListener(this);
     
 }
 
 
-    public notifyIntermission(bool enable){
+    public: void notifyIntermission(bool enable){
 
                         if(enable)
                         
                                     {
-                                    this.startIntermissionProcessor= this.realStartIntermissionProcessor;
+                                    this->startIntermissionProcessor= this->realStartIntermissionProcessor;
     
 
                                     }
                                 
                         else {
-                            this.startIntermissionProcessor= Processor.getInstance();
+                            this->startIntermissionProcessor= Processor::getInstance();
     
 
                         }
@@ -1263,13 +1263,13 @@ this.getStartIntermissionInterface()!.setListener(this);
                         if(enable)
                         
                                     {
-                                    this.setIntermissionPaintable(this.getStartIntermissionPaintable());
+                                    this->setIntermissionPaintable(this->getStartIntermissionPaintable());
     
 
                                     }
                                 
                         else {
-                            this.setIntermissionPaintable(NullPaintable.getInstance());
+                            this->setIntermissionPaintable(NullPaintable::getInstance());
     
 
                         }
@@ -1279,8 +1279,8 @@ this.getStartIntermissionInterface()!.setListener(this);
 
                 //@Throws(Exception.constructor)
             
-    public mediaInit(){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    public: void mediaInit(){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 }
 
@@ -1288,110 +1288,110 @@ ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    initConfigurable(AbeClientInformationInterface abeClientInformation){
+    protected: void initConfigurable(AbeClientInformationInterface abeClientInformation){
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.addNormalPortion(50, "Setting Configurables");
+progressCanvas.addNormalPortion(50, "Setting Configurables");
     
-GameInitializationUtil.getInstance()!.initGame(abeClientInformation, this, this.gameInitializationInterfaceFactoryInterface);
-    
-
-    gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;;
+GameInitializationUtil::getInstance().initGame(abeClientInformation, this, this->gameInitializationInterfaceFactoryInterface);
     
 
-    changedGameFeatureListener: ChangedGameFeatureListener = ChangedGameFeatureListener.getInstance()!;;
+    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
     
 
-                        if(changedGameFeatureListener!.isChangedFeature(gameFeatureFactory!.SOUND))
+    ChangedGameFeatureListener changedGameFeatureListener = ChangedGameFeatureListener::getInstance();;
+    
+
+                        if(changedGameFeatureListener.isChangedFeature(gameFeatureFactory.SOUND))
                         
                                     {
                                     
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
-this.logUtil!.putF(new StringMaker().append("Sound Changing To: ")!.appendboolean(features.isFeature(gameFeatureFactory!.SOUND))!.toString(), this, "initConfigurable");
+this->logUtil.putF(StringMaker().append("Sound Changing To: ").appendboolean(features.isFeature(gameFeatureFactory.SOUND)).toString(), this, "initConfigurable");
     
-this.mediaInit();
+this->mediaInit();
     
-changedGameFeatureListener!.remove(gameFeatureFactory!.SOUND);
+changedGameFeatureListener.remove(gameFeatureFactory.SOUND);
     
 
                                     }
                                 
 
-    sensorFeatureFactory: SensorFeatureFactory = SensorFeatureFactory.getInstance()!;;
+    SensorFeatureFactory sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
 
-                        if(changedGameFeatureListener!.isChangedFeature(sensorFeatureFactory!.ORIENTATION_SENSORS) || changedGameFeatureListener!.isChangedFeature(sensorFeatureFactory!.NO_ORIENTATION) || changedGameFeatureListener!.isChangedFeature(sensorFeatureFactory!.SIMULATED_ORIENTATION_SENSORS))
+                        if(changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.ORIENTATION_SENSORS) || changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.NO_ORIENTATION) || changedGameFeatureListener.isChangedFeature(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS))
                         
                                     {
-                                    changedGameFeatureListener!.remove(sensorFeatureFactory!.NO_ORIENTATION);
+                                    changedGameFeatureListener.remove(sensorFeatureFactory.NO_ORIENTATION);
     
-changedGameFeatureListener!.remove(sensorFeatureFactory!.ORIENTATION_SENSORS);
+changedGameFeatureListener.remove(sensorFeatureFactory.ORIENTATION_SENSORS);
     
-changedGameFeatureListener!.remove(sensorFeatureFactory!.SIMULATED_ORIENTATION_SENSORS);
+changedGameFeatureListener.remove(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS);
     
 
                                     }
                                 
 
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-this.loadResourceLoadingLevel(resourceLoadingLevelFactory!.LOAD_GAME);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    initApp(AbeClientInformationInterface abeClientInformation){
-this.initConfigurable(abeClientInformation);
-    
-this.processorInit();
-    
-this.sensorGameUpdateProcessor!.process(this.gameLayerManager);
-    
-this.sensorGameUpdateProcessor!.sendNotifications(this.gameLayerManager);
-    
-this.initTouch();
+this->loadResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_GAME);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initTouch(){
-
-    gameInitializedEvent: GameInitializedEvent = GameInitializationUtil.getInstance()!.EVENT;;
+    protected: void initApp(AbeClientInformationInterface abeClientInformation){
+this->initConfigurable(abeClientInformation);
     
-
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+this->processorInit();
     
-gameInitializedEvent!.setResourceLoadingLevel(resourceLoadingLevelFactory!.LOAD_TOUCH);
+this->sensorGameUpdateProcessor.process(this->gameLayerManager);
     
-GameInitializedEventHandler.getInstance()!.fireEvent(gameInitializedEvent);
+this->sensorGameUpdateProcessor.sendNotifications(this->gameLayerManager);
     
-this.touchButtonFactory!.defaultList();
-    
-this.updateTouch();
-    
-this.postInitTouch();
+this->initTouch();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updateCurrentTouchInputFactory(BaseTouchInput nextTouchInput){
+    protected: void initTouch(){
 
-                        if(nextTouchInput != this.currentTouchInputFactory)
+    GameInitializedEvent gameInitializedEvent = GameInitializationUtil::getInstance().EVENT;;
+    
+
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
+    
+gameInitializedEvent.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_TOUCH);
+    
+GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
+    
+this->touchButtonFactory.defaultList();
+    
+this->updateTouch();
+    
+this->postInitTouch();
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void updateCurrentTouchInputFactory(BaseTouchInput nextTouchInput){
+
+                        if(nextTouchInput != this->currentTouchInputFactory)
                         
                                     {
-                                    this.currentTouchInputFactory= nextTouchInput;
+                                    this->currentTouchInputFactory= nextTouchInput;
     
-PreLogUtil.put(this.currentTouchInputFactory!.toString(), this, this.gameInputStrings!.UDPATE_CURRENT_TOUCH_INPUT_FACTORY);
+PreLogUtil::put(this->currentTouchInputFactory.toString(), this, this->gameInputStrings.UDPATE_CURRENT_TOUCH_INPUT_FACTORY);
     
-this.touchButtonFactory!.toggle(this.isPaused(), this.currentTouchInputFactory!.getList());
+this->touchButtonFactory.toggle(this->isPaused(), this->currentTouchInputFactory.getList());
     
 
                                     }
@@ -1401,27 +1401,27 @@ this.touchButtonFactory!.toggle(this.isPaused(), this.currentTouchInputFactory!.
 
                 //@Throws(Exception.constructor)
             
-    updateTouch(){
-this.gameBehavior!.updateTouch(this);
+    protected: void updateTouch(){
+this->gameBehavior.updateTouch(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    updateTouch2(){
+    protected: void updateTouch2(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(this.touchFeatureFactory!.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
+                        if(features.isFeature(this->touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
                         
                                     {
                                     
-                        if(this.gameLayerManager!.getGameInfo()!.getCurrentLevel() -this.getStartLevel() == 1)
+                        if(this->gameLayerManager.getGameInfo().getCurrentLevel() -this->getStartLevel() == 1)
                         
                                     {
-                                    this.setTouchPaintableP(NullPaintable.getInstance());
+                                    this->setTouchPaintableP(NullPaintable::getInstance());
     
 
                                     }
@@ -1434,58 +1434,58 @@ this.gameBehavior!.updateTouch(this);
 
                 //@Throws(Exception.constructor)
             
-    postInitTouch(){
-this.setTouchButtonsPaintable(TouchButtonsPaintableFactory.getInstance(this.gameLayerManager!.getForegroundBasicColor()));
+    protected: void postInitTouch(){
+this->setTouchButtonsPaintable(TouchButtonsPaintableFactory::getInstance(this->gameLayerManager.getForegroundBasicColor()));
     
-this.updateScreenButtonPaintable();
-    
-}
-
-
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
-    
-this.addCommands();
-    
-this.setCommandListener(cmdListener);
+this->updateScreenButtonPaintable();
     
 }
 
 
-    public addCommands(){
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
+    
+this->addCommands();
+    
+this->setCommandListener(cmdListener);
+    
+}
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+
+    public: void addCommands(){
+
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-    myCommandsFactory: MyCommandsFactory = MyCommandsFactory.getInstance()!;;
+    MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();;
     
 
-                        if(DebugFactory.getInstance() != NoDebug.getInstance())
+                        if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    this.addCommand(gameCommandsFactory!.START_TRACE);
+                                    this->addCommand(gameCommandsFactory.START_TRACE);
     
 
                                     }
                                 
-this.addCommand(gameCommandsFactory!.RESTART_COMMAND);
+this->addCommand(gameCommandsFactory.RESTART_COMMAND);
     
-this.addCommand(myCommandsFactory!.PAUSE_COMMAND);
+this->addCommand(myCommandsFactory.PAUSE_COMMAND);
     
-this.addCommand(gameCommandsFactory!.QUIT_COMMAND);
-    
-
-    isOverScan: bool = OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!.isOverScan()!;;
+this->addCommand(gameCommandsFactory.QUIT_COMMAND);
     
 
-                        if(J2MEUtil.isHTML())
+    bool isOverScan = OperatingSystemFactory::getInstance().getOperatingSystemInstance().isOverScan();;
+    
+
+                        if(J2MEUtil::isHTML())
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(SWTUtil.isSWT)
+                        if(SWTUtil::isSWT)
                         
                                     {
                                     
@@ -1496,17 +1496,17 @@ this.addCommand(gameCommandsFactory!.QUIT_COMMAND);
                         
                                     {
                                     
-                        if(TouchScreenFactory.getInstance()!.isTouch() && new InGameFeatures().isAny())
+                        if(TouchScreenFactory::getInstance().isTouch() && InGameFeatures().isAny())
                         
                                     {
-                                    this.addCommand(InGameOptionsForm.DISPLAY);
+                                    this->addCommand(InGameOptionsForm::DISPLAY);
     
 
                                     }
                                 
-this.addCommand(gameCommandsFactory!.SAVE);
+this->addCommand(gameCommandsFactory.SAVE);
     
-this.addCommand(gameCommandsFactory!.DISPLAY_LOAD_FORM);
+this->addCommand(gameCommandsFactory.DISPLAY_LOAD_FORM);
     
 
                                     }
@@ -1514,32 +1514,32 @@ this.addCommand(gameCommandsFactory!.DISPLAY_LOAD_FORM);
 }
 
 
-    public itemStateChanged(Item item){
+    public: void itemStateChanged(Item item){
 
         try {
             
-    itemLabel: string = item.getLabel()!;;
+    std::string itemLabel = item.getLabel();;
     
-this.logUtil!.putF(new StringMaker().append(this.commonLabels!.ITEM_LABEL)!.append(itemLabel)!.toString(), this, "itemStateChanged");
+this->logUtil.putF(StringMaker().append(this->commonLabels.ITEM_LABEL).append(itemLabel).toString(), this, "itemStateChanged");
     
 
                         if(item instanceof ChoiceGroup)
                         
                                     {
                                     
-    gameFeatureUtil: GameFeatureUtil = GameFeatureUtil.getInstance()!;;
+    GameFeatureUtil gameFeatureUtil = GameFeatureUtil::getInstance();;
     
 
-                        if(gameFeatureUtil!.isExclusive(itemLabel))
+                        if(gameFeatureUtil.isExclusive(itemLabel))
                         
                                     {
-                                    gameFeatureUtil!.updateExclusiveForChoiceGroup(item as ChoiceGroup);
+                                    gameFeatureUtil.updateExclusiveForChoiceGroup(item as ChoiceGroup);
     
 
                                     }
                                 
                         else {
-                            gameFeatureUtil!.updateMultiple(item as ChoiceGroup);
+                            gameFeatureUtil.updateMultiple(item as ChoiceGroup);
     
 
                         }
@@ -1547,19 +1547,19 @@ this.logUtil!.putF(new StringMaker().append(this.commonLabels!.ITEM_LABEL)!.appe
 
                                     }
                                 
-this.sensorGameUpdateProcessor!.process(this.gameLayerManager);
+this->sensorGameUpdateProcessor.process(this->gameLayerManager);
     
-this.updateTouch();
+this->updateTouch();
     
-this.updateScreenButtonPaintable();
+this->updateScreenButtonPaintable();
     
-this.sensorGameUpdateProcessor!.sendNotifications(this.gameLayerManager);
+this->sensorGameUpdateProcessor.sendNotifications(this->gameLayerManager);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "itemStateChanged", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "itemStateChanged", e);
     
 }
 
@@ -1568,47 +1568,47 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "itemStateChanged", e);
 
                 //@Throws(Exception.constructor)
             
-    public updateScreenButtonPaintable(){
-this.gameBehavior!.updateScreenButtonPaintable(this);
+    public: void updateScreenButtonPaintable(){
+this->gameBehavior.updateScreenButtonPaintable(this);
     
 }
 
 
-    public updateScreenButtonPaintable2(){
+    public: void updateScreenButtonPaintable2(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(this.touchFeatureFactory!.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
+                        if(features.isFeature(this->touchFeatureFactory.AUTO_HIDE_SHOW_SCREEN_BUTTONS))
                         
                                     {
-                                    this.setTouchPaintableP(this.getTouchButtonsPaintable());
+                                    this->setTouchPaintableP(this->getTouchButtonsPaintable());
     
-this.setStartLevel(this.gameLayerManager!.getGameInfo()!.getCurrentLevel());
+this->setStartLevel(this->gameLayerManager.getGameInfo().getCurrentLevel());
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(this.touchFeatureFactory!.SHOW_SCREEN_BUTTONS))
+                        if(features.isFeature(this->touchFeatureFactory.SHOW_SCREEN_BUTTONS))
                         
                                     {
-                                    this.setTouchPaintableP(this.getTouchButtonsPaintable());
+                                    this->setTouchPaintableP(this->getTouchButtonsPaintable());
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(this.touchFeatureFactory!.HIDE_SCREEN_BUTTONS))
+                        if(features.isFeature(this->touchFeatureFactory.HIDE_SCREEN_BUTTONS))
                         
                                     {
-                                    this.setTouchPaintableP(NullPaintable.getInstance());
+                                    this->setTouchPaintableP(NullPaintable::getInstance());
     
 
                                     }
                                 
                         else {
-                            this.setTouchPaintableP(NullPaintable.getInstance());
+                            this->setTouchPaintableP(NullPaintable::getInstance());
     
 
                         }
@@ -1616,126 +1616,126 @@ this.setStartLevel(this.gameLayerManager!.getGameInfo()!.getCurrentLevel());
 }
 
 
-    public AllBinaryGameLayerManager getLayerManager(){
+    public: AllBinaryGameLayerManager getLayerManager(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameLayerManager;
+                        return this->gameLayerManager;
     
 }
 
 
-    public setLayerManager(AllBinaryGameLayerManager layerManager){
-this.gameLayerManager= layerManager;
+    public: void setLayerManager(AllBinaryGameLayerManager layerManager){
+this->gameLayerManager= layerManager;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isGameOver(){
+    public: bool isGameOver(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameOver;
+                        return this->gameOver;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setGameOver(bool gameOver){
-this.gameOver= gameOver;
+    public: void setGameOver(bool gameOver){
+this->gameOver= gameOver;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processGameOver(){
-PreLogUtil.put(this.commonStrings!.START, this, this.gameStrings!.SET_GAME_OVER);
+    public: void processGameOver(){
+PreLogUtil::put(this->commonStrings.START, this, this->gameStrings.SET_GAME_OVER);
     
-this.setGameOver(true);
+this->setGameOver(true);
     
-this.removePauseCommand();
+this->removePauseCommand();
     
-this.setGameState(this.gameStateFactory!.SHOW_END_RESULT_GAME_STATE);
+this->setGameState(this->gameStateFactory.SHOW_END_RESULT_GAME_STATE);
     
-this.setEndGamePaintable(this.getEndGameStatePaintable());
+this->setEndGamePaintable(this->getEndGameStatePaintable());
     
 }
 
 
-    public bool isHighScoreSubmitted(){
+    public: bool isHighScoreSubmitted(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoreSubmitted;
+                        return this->highScoreSubmitted;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setHighScoreSubmitted(bool highScoreSubmitted){
-this.highScoreSubmitted= highScoreSubmitted;
+    public: void setHighScoreSubmitted(bool highScoreSubmitted){
+this->highScoreSubmitted= highScoreSubmitted;
     
 
                         if(highScoreSubmitted)
                         
                                     {
-                                    this.highScoresHelper!.setSelectedHighScores(NullHighScoresSingletonFactory.getInstance());
+                                    this->highScoresHelper.setSelectedHighScores(NullHighScoresSingletonFactory::getInstance());
     
 
                                     }
                                 
-this.logUtil!.putF(new StringMaker().append("isHighScoreSubmitted: ")!.appendboolean(highScoreSubmitted)!.toString(), this, "setHighScoreSubmitted");
+this->logUtil.putF(StringMaker().append("isHighScoreSubmitted: ").appendboolean(highScoreSubmitted).toString(), this, "setHighScoreSubmitted");
     
 }
 
 
-    public GameState getGameState(){
+    public: GameState getGameState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameState;
+                        return this->gameState;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setGameState(GameState gameState){
-this.logUtil!.putF(new StringMaker().append(this.gameStrings!.GAME_STATE)!.append(this.stringUtil!.toString(gameState))!.toString(), this, this.gameStrings!.SET_GAME_STATE);
+    public: void setGameState(GameState gameState){
+this->logUtil.putF(StringMaker().append(this->gameStrings.GAME_STATE).append(this->stringUtil.toString(gameState)).toString(), this, this->gameStrings.SET_GAME_STATE);
     
-this.gameState= gameState;
+this->gameState= gameState;
     
-this.gameStateTimeHelper!.setStartTimeTNT();
+this->gameStateTimeHelper.setStartTimeTNT();
     
-this.updateEndGameProcessor();
+this->updateEndGameProcessor();
     
-this.updateGameKeyEventProcessor();
+this->updateGameKeyEventProcessor();
     
-this.gameBehavior!.setGameState(this);
+this->gameBehavior.setGameState(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updateGameState(){
+    public: void updateGameState(){
 
-    gameAdState: GameAdState = this.gameAdStateFactory!.getCurrentInstance()!;;
+    GameAdState gameAdState = this->gameAdStateFactory.getCurrentInstance();;
     
-gameAdState!.processAdState(this.gameState, this.gameLayerManager!.getGameInfo()!.getGameType());
+gameAdState.processAdState(this->gameState, this->gameLayerManager.getGameInfo().getGameType());
     
 
-                        if(this.gameState != this.gameStateFactory!.PLAYING_GAME_STATE)
+                        if(this->gameState != this->gameStateFactory.PLAYING_GAME_STATE)
                         
                                     {
-                                    gameAdState!.processPageAdState();
+                                    gameAdState.processPageAdState();
     
 
                                     }
@@ -1743,9 +1743,9 @@ gameAdState!.processAdState(this.gameState, this.gameLayerManager!.getGameInfo()
 }
 
 
-    updateGameKeyEventProcessor(){
+    private: void updateGameKeyEventProcessor(){
 
-                        if(this.getGameState() != this.gameStateFactory!.PLAYING_GAME_STATE || this.isCheating)
+                        if(this->getGameState() != this->gameStateFactory.PLAYING_GAME_STATE || this->isCheating)
                         
                                     {
                                     
@@ -1758,68 +1758,68 @@ gameAdState!.processAdState(this.gameState, this.gameLayerManager!.getGameInfo()
 }
 
 
-    removeAllGameKeyInputListenersOnBuild(){
-this.removeAllGameKeyInputListeners();
+    protected: void removeAllGameKeyInputListenersOnBuild(){
+this->removeAllGameKeyInputListeners();
     
 }
 
 
-    removeAllGameKeyInputListeners(){
-this.gameBehavior!.removeAllGameKeyInputListeners(this);
+    protected: void removeAllGameKeyInputListeners(){
+this->gameBehavior.removeAllGameKeyInputListeners(this);
     
 }
 
 
-    removeAllGameKeyInputListeners2(){
-this.logUtil!.putF("Remove PlayerInput Listeners", this, "removeAllGameKeyInputListeners");
+    protected: void removeAllGameKeyInputListeners2(){
+this->logUtil.putF("Remove PlayerInput Listeners", this, "removeAllGameKeyInputListeners");
     
 
 
 
 
                         for (
-    index: int32_t = this.localPlayerGameInputList!.size() -1;index >= 0; index--)
+    int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
         {
 
-    playerGameInput: PlayerGameInput = this.localPlayerGameInputList!.get(index) as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->localPlayerGameInputList.get(index) as PlayerGameInput;;
     
-this.removeKeyInputListener(playerGameInput);
+this->removeKeyInputListener(playerGameInput);
     
-playerGameInput!.removeNonAIInputGameKeyEvents();
-    
-}
-
-}
-
-
-    public removeKeyInputListener(PlayerGameInput playerGameInput){
-this.gameKeyEventHandler!.removeListener(playerGameInput);
+playerGameInput.removeNonAIInputGameKeyEvents();
     
 }
 
+}
 
-                //@Throws(Exception.constructor)
-            
-    updateEndGameProcessor(){
-this.gameBehavior!.updateEndGameProcessor(this);
+
+    public: void removeKeyInputListener(PlayerGameInput playerGameInput){
+this->gameKeyEventHandler.removeListener(playerGameInput);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    updateEndGameProcessor2(){
+    protected: void updateEndGameProcessor(){
+this->gameBehavior.updateEndGameProcessor(this);
+    
+}
 
-                        if(this.getGameState() == this.gameStateFactory!.SHOW_END_RESULT_GAME_STATE || this.getGameState() == this.gameStateFactory!.SHOW_HIGH_SCORE_GAME_STATE)
+
+                //@Throws(Exception.constructor)
+            
+    protected: void updateEndGameProcessor2(){
+
+                        if(this->getGameState() == this->gameStateFactory.SHOW_END_RESULT_GAME_STATE || this->getGameState() == this->gameStateFactory.SHOW_HIGH_SCORE_GAME_STATE)
                         
                                     {
-                                    this.setEndGameProcessor(this.realEndGameProcessor);
+                                    this->setEndGameProcessor(this->realEndGameProcessor);
     
 
                                     }
                                 
                         else {
-                            this.setEndGameProcessor(Processor.getInstance());
+                            this->setEndGameProcessor(Processor::getInstance());
     
 
                         }
@@ -1829,102 +1829,102 @@ this.gameBehavior!.updateEndGameProcessor(this);
 
                 //@Throws(Exception.constructor)
             
-    public buildGameInit(bool isPortion){
+    public: void buildGameInit(bool isPortion){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    cleanupGame(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CLEANUP);
+    protected: void cleanupGame(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CLEANUP);
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.addNormalPortion(10, "Cleaning Up");
+progressCanvas.addNormalPortion(10, "Cleaning Up");
     
-this.primaryPlayerQueue!.clear();
+this->primaryPlayerQueue.clear();
     
-this.secondaryPlayerQueue!.clear();
+this->secondaryPlayerQueue.clear();
     
-GameLevelDisplayChangeEventListenersFactory.getInstance()!.clear();
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public loadResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel){
-
-    gameInitializedEvent: GameInitializedEvent = GameInitializationUtil.getInstance()!.EVENT;;
-    
-gameInitializedEvent!.setResourceLoadingLevel(resourceLoadingLevel);
-    
-GameInitializedEventHandler.getInstance()!.fireEvent(gameInitializedEvent);
+GameLevelDisplayChangeEventListenersFactory::getInstance().clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public loadResources(int32_t level){
+    public: void loadResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel){
 
-    gameInitializedEvent: GameInitializedEvent = GameInitializationUtil.getInstance()!.EVENT;;
+    GameInitializedEvent gameInitializedEvent = GameInitializationUtil::getInstance().EVENT;;
     
-gameInitializedEvent!.setLevel(level);
+gameInitializedEvent.setResourceLoadingLevel(resourceLoadingLevel);
     
-GameInitializedEventHandler.getInstance()!.fireEvent(gameInitializedEvent);
+GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updateColor(){
+    public: void loadResources(int32_t level){
+
+    GameInitializedEvent gameInitializedEvent = GameInitializationUtil::getInstance().EVENT;;
+    
+gameInitializedEvent.setLevel(level);
+    
+GameInitializedEventHandler::getInstance().fireEvent(gameInitializedEvent);
+    
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public buildGame(int32_t portion){
-this.screenCapture!.endRecording();
+    public: void updateColor(){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void buildGame(int32_t portion){
+this->screenCapture.endRecording();
     
-this.screenCapture!.startRecording();
+this->screenCapture.startRecording();
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
-progressCanvas!.addNormalPortion(portion, "Generic Build");
+progressCanvas.addNormalPortion(portion, "Generic Build");
     
-this.removeAllGameKeyInputListenersOnBuild();
+this->removeAllGameKeyInputListenersOnBuild();
     
-this.updateTouch();
+this->updateTouch();
     
-progressCanvas!.addNormalPortion(portion, "High Scores");
+progressCanvas.addNormalPortion(portion, "High Scores");
     
-this.highScoresFactoryInterface!.fetchHighScores(this.gameLayerManager!.getGameInfo(), this.highScoresHelper);
+this->highScoresFactoryInterface.fetchHighScores(this->gameLayerManager.getGameInfo(), this->highScoresHelper);
     
-this.setHighScoresPaintable(NullPaintable.getInstance());
+this->setHighScoresPaintable(NullPaintable::getInstance());
     
-progressCanvas!.addNormalPortion(portion, "Finishing.");
+progressCanvas.addNormalPortion(portion, "Finishing.");
     
-this.getEndGameInfoP()!.update(this.getLayerManager()!.getGameInfo(), this);
+this->getEndGameInfoP().update(this->getLayerManager().getGameInfo(), this);
     
-this.isSingleKeyRepeatableProcessing= features.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_REPEAT_PRESS);
+this->isSingleKeyRepeatableProcessing= features.isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS);
     
-this.setGameOver(false);
+this->setGameOver(false);
     
-progressCanvas!.addNormalPortion(portion, "Finishing..");
+progressCanvas.addNormalPortion(portion, "Finishing..");
     
-this.updateColor();
+this->updateColor();
     
-this.getStartIntermissionPaintable()!.update();
+this->getStartIntermissionPaintable().update();
     
 
-                        if(!this.isRunningInAnotherThread())
+                        if(!this->isRunningInAnotherThread())
                         
                                     {
                                     
@@ -1936,23 +1936,23 @@ this.getStartIntermissionPaintable()!.update();
 
                                     }
                                 
-progressCanvas!.addNormalPortion(portion, "Finishing...");
+progressCanvas.addNormalPortion(portion, "Finishing...");
     
 
-                        if(this.isMainCanvas() || !this.isInitialized())
+                        if(this->isMainCanvas() || !this->isInitialized())
                         
                                     {
                                     
-                        if(features.isFeature(MainFeatureFactory.getInstance()!.LOAD_ONDEMAND))
+                        if(features.isFeature(MainFeatureFactory::getInstance().LOAD_ONDEMAND))
                         
                                     {
                                     
-                        if(this.getCustomCommandListener() != 
-                                    null
+                        if(this->getCustomCommandListener() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    progressCanvas!.end();
+                                    progressCanvas.end();
     
 
                                     }
@@ -1961,104 +1961,104 @@ progressCanvas!.addNormalPortion(portion, "Finishing...");
                                     }
                                 
                         else {
-                            progressCanvas!.end();
+                            progressCanvas.end();
     
 
                         }
                             
-this.setInitialized(true);
+this->setInitialized(true);
     
 
                                     }
                                 
 
-                        if(this.getCustomCommandListener() == NullCommandListener.NULL_COMMAND_LISTENER)
+                        if(this->getCustomCommandListener() == NullCommandListener::NULL_COMMAND_LISTENER)
                         
                                     {
-                                    this.logUtil!.putF("Show Game Paintable in DemoCanvas Thread", this, this.BUILD_GAME);
+                                    this->logUtil.putF("Show Game Paintable in DemoCanvas Thread", this, this->BUILD_GAME);
     
-this.gameCanvasStartListener!.showGamePaintable();
+this->gameCanvasStartListener.showGamePaintable();
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("No GameCanvasStartListener", this, this.BUILD_GAME);
+                            this->logUtil.putF("No GameCanvasStartListener", this, this->BUILD_GAME);
     
 
                         }
                             
-this.colorFillPaintable!.setBasicColorP(this.gameLayerManager!.getBackgroundBasicColor());
+this->colorFillPaintable.setBasicColorP(this->gameLayerManager.getBackgroundBasicColor());
     
-this.gameBehavior!.buildGame(this);
+this->gameBehavior.buildGame(this);
     
 }
 
 
-    public buildGame2(){
-PreLogUtil.put(new StringMaker().append(this.gameInputStrings!.ENABLE_PLAYER_GAME_INPUTS)!.appendint(this.localPlayerGameInputList!.size())!.toString(), this, this.BUILD_GAME);
+    public: void buildGame2(){
+PreLogUtil::put(StringMaker().append(this->gameInputStrings.ENABLE_PLAYER_GAME_INPUTS).appendint(this->localPlayerGameInputList.size()).toString(), this, this->BUILD_GAME);
     
 
-    playerGameInput: PlayerGameInput;;
+    PlayerGameInput playerGameInput;;
     
 
 
 
 
                         for (
-    index: int32_t = this.localPlayerGameInputList!.size() -1;index >= 0; index--)
+    int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
         {
-playerGameInput= this.localPlayerGameInputList!.get(index) as PlayerGameInput;
+playerGameInput= this->localPlayerGameInputList.get(index) as PlayerGameInput;
     
-PreLogUtil.put(new StringMaker().append(this.gameInputStrings!.ENABLE_PLAYER_GAME_INPUT)!.append(playerGameInput!.toString())!.toString(), this, this.BUILD_GAME);
+PreLogUtil::put(StringMaker().append(this->gameInputStrings.ENABLE_PLAYER_GAME_INPUT).append(playerGameInput.toString()).toString(), this, this->BUILD_GAME);
     
-playerGameInput!.removeNonAIInputGameKeyEvents();
+playerGameInput.removeNonAIInputGameKeyEvents();
     
-this.addKeyInputListener(playerGameInput);
-    
-}
-
-}
-
-
-    public addKeyInputListener(PlayerGameInput playerGameInput){
-GameKeyEventHandler.getInstance()!.addListenerForPlayer(playerGameInput, playerGameInput!.getPlayerInputId());
+this->addKeyInputListener(playerGameInput);
     
 }
 
+}
 
-    private: gameCanvasStartListener: DemoPaintableInterface = NullDemoPaintable.NULL_DEMO_PAINTABLE;
 
-    public setGameCanvasStartListener(DemoPaintableInterface gameCanvasStartListener){
-this.gameCanvasStartListener= gameCanvasStartListener;
+    public: void addKeyInputListener(PlayerGameInput playerGameInput){
+GameKeyEventHandler::getInstance().addListenerForPlayer(playerGameInput, playerGameInput.getPlayerInputId());
+    
+}
+
+
+    private: DemoPaintableInterface gameCanvasStartListener = NullDemoPaintable::NULL_DEMO_PAINTABLE;
+
+    public: void setGameCanvasStartListener(DemoPaintableInterface gameCanvasStartListener){
+this->gameCanvasStartListener= gameCanvasStartListener;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public loadState(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.LOAD);
+    public: void loadState(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.LOAD);
     
 
-    hashtable: Hashtable<any, any> = this.getLoadStateHashtable()!;;
+    Hashtable<any, any> hashtable = this->getLoadStateHashtable();;
     
 
                         if(hashtable != 
-                                    null
+                                    nullptr
                                  && hashtable.length > 0)
                         
                                     {
                                     
-    levelAsString: string = hashtable.get(GameInfo.LEVEL_NAME) as string;;
+    std::string levelAsString = hashtable.get(GameInfo::LEVEL_NAME) as string;;
     
 
-    level: int32_t = Integer.valueOf(levelAsString)!.intValue()!;;
+    int32_t level = Integer::valueOf(levelAsString).intValue();;
     
 
-    gameInfo: GameInfo = this.gameLayerManager!.getGameInfo()!;;
+    GameInfo gameInfo = this->gameLayerManager.getGameInfo();;
     
-gameInfo!.setCurrentLevel(level);
+gameInfo.setCurrentLevel(level);
     
 
                                     }
@@ -2068,36 +2068,36 @@ gameInfo!.setCurrentLevel(level);
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getLoadStateHashtable(){
-this.logUtil!.putF(new StringMaker().append(this.commonLabels!.START_LABEL)!.append(this.stringUtil!.toString(this.hashtable))!.toString(), this, "getLoadStateHashtable");
+    public: Hashtable<any, any> getLoadStateHashtable(){
+this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(this->stringUtil.toString(this->hashtable)).toString(), this, "getLoadStateHashtable");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable;
+                        return this->hashtable;
     
 }
 
 
-    public setLoadStateHashtable(Hashtable<any, any> hashtable){
-this.logUtil!.putF(new StringMaker().append(this.commonLabels!.START_LABEL)!.append(this.stringUtil!.toString(hashtable))!.toString(), this, "setLoadStateHashtable");
+    public: void setLoadStateHashtable(Hashtable<any, any> hashtable){
+this->logUtil.putF(StringMaker().append(this->commonLabels.START_LABEL).append(this->stringUtil.toString(hashtable)).toString(), this, "setLoadStateHashtable");
     
-this.hashtable= hashtable;
+this->hashtable= hashtable;
     
 }
 
 
-    public Hashtable<any, any> getCurrentStateHashtable(){
+    public: Hashtable<any, any> getCurrentStateHashtable(){
 
-    hashtable: Hashtable<any, any> = new Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = Hashtable<any, any>();;
     
 
-    level: int32_t = this.gameLayerManager!.getGameInfo()!.getCurrentLevel()!;;
+    int32_t level = this->gameLayerManager.getGameInfo().getCurrentLevel();;
     
-hashtable.put(GameInfo.LEVEL_NAME.toString(), level.toString());
+hashtable.put(GameInfo::LEVEL_NAME.toString(), std::to_string(level));
     
-this.logUtil!.putF(new StringMaker().append("End: ")!.append(this.stringUtil!.toString(hashtable))!.toString(), this, "getCurrentStateHashtable");
+this->logUtil.putF(StringMaker().append("End: ").append(this->stringUtil.toString(hashtable)).toString(), this, "getCurrentStateHashtable");
     
 
 
@@ -2108,104 +2108,104 @@ this.logUtil!.putF(new StringMaker().append("End: ")!.append(this.stringUtil!.to
 }
 
 
-    public paintGameOver(Graphics graphics){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    public: void paintGameOver(Graphics graphics){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 }
 
 
-    public draw(Graphics graphics){
-this.colorFillPaintable!.paint(graphics);
+    public: void draw(Graphics graphics){
+this->colorFillPaintable.paint(graphics);
     
-this.basicSetColorUtil!.setBasicColorP(graphics, this.gameLayerManager!.getForegroundBasicColor());
+this->basicSetColorUtil.setBasicColorP(graphics, this->gameLayerManager.getForegroundBasicColor());
     
-this.gameSpecificPaintable!.paint(graphics);
-    
-}
-
-
-    public clear(Graphics graphics){
-this.colorFillPaintable!.paint(graphics);
+this->gameSpecificPaintable.paint(graphics);
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
-    
-this.baseGameStatistics!.nextRefresh();
-    
-this.draw(graphics);
-    
-this.menuPaintable!.paint(graphics);
-    
-this.progressPaintable!.paint(graphics);
+    public: void clear(Graphics graphics){
+this->colorFillPaintable.paint(graphics);
     
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
+    
+this->baseGameStatistics.nextRefresh();
+    
+this->draw(graphics);
+    
+this->menuPaintable.paint(graphics);
+    
+this->progressPaintable.paint(graphics);
+    
+}
+
+
+    public: void paintThreed(Graphics graphics){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processEndLevelIntermissionGameState(){
+    public: void processEndLevelIntermissionGameState(){
 }
 
 
-    public nonBotPaint(Graphics graphics){
-this.endGamePaintable!.paint(graphics);
+    public: void nonBotPaint(Graphics graphics){
+this->endGamePaintable.paint(graphics);
     
-this.intermissionPaintable!.paint(graphics);
+this->intermissionPaintable.paint(graphics);
     
-this.paintIntermission(graphics);
+this->paintIntermission(graphics);
     
-this.touchPaintable!.paint(graphics);
-    
-}
-
-
-    public paintIntermission(Graphics graphics){
-}
-
-
-    private: const rawGameInputProcessor: InputProcessor = new GameCanvasInputProcessor(this);
-
-    private: const rawInputProcessor: InputProcessor = new FormInputProcessor(this);
-
-    private: inputProcessor: InputProcessor = this.getRawGameInputProcessor()!;
-
-    public keyPressed(int32_t keyCode){
-this.keyPressedByDevice(keyCode, 0);
+this->touchPaintable.paint(graphics);
     
 }
 
 
-    public keyReleased(int32_t keyCode){
-this.keyReleasedByDevice(keyCode, 0);
+    public: void paintIntermission(Graphics graphics){
+}
+
+
+    private: const InputProcessor rawGameInputProcessor = GameCanvasInputProcessor(this);
+
+    private: const InputProcessor rawInputProcessor = FormInputProcessor(this);
+
+    private: InputProcessor inputProcessor = this->getRawGameInputProcessor();
+
+    public: void keyPressed(int32_t keyCode){
+this->keyPressedByDevice(keyCode, 0);
     
 }
 
 
-    public keyRepeated(int32_t keyCode){
-this.keyRepeatedByDevice(keyCode, 0);
+    public: void keyReleased(int32_t keyCode){
+this->keyReleasedByDevice(keyCode, 0);
     
 }
 
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId){
-this.inputProcessor!.keyPressedByDevice(keyCode, deviceId);
+    public: void keyRepeated(int32_t keyCode){
+this->keyRepeatedByDevice(keyCode, 0);
     
 }
 
 
-    public keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+this->inputProcessor.keyPressedByDevice(keyCode, deviceId);
+    
+}
 
-                        if(this.isSingleKeyRepeatableProcessing)
+
+    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId){
+
+                        if(this->isSingleKeyRepeatableProcessing)
                         
                                     {
-                                    this.inputProcessor!.keyPressedByDevice(keyCode, deviceId);
+                                    this->inputProcessor.keyPressedByDevice(keyCode, deviceId);
     
 
                                     }
@@ -2213,35 +2213,35 @@ this.inputProcessor!.keyPressedByDevice(keyCode, deviceId);
 }
 
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
-this.inputProcessor!.keyReleasedByDevice(this, keyCode, deviceId);
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
+this->inputProcessor.keyReleasedByDevice(this, keyCode, deviceId);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public handleRawKey(int32_t keyCode, int32_t deviceId, bool repeated){
+    public: void handleRawKey(int32_t keyCode, int32_t deviceId, bool repeated){
 }
 
 
-    int32_t endProgress(bool isProgress){
+    protected: int32_t endProgress(bool isProgress){
 
-    portion: int32_t = 30;;
+    int32_t portion = 30;;
     
 
-                        if(isProgress && this.isMainCanvas())
+                        if(isProgress && this->isMainCanvas())
                         
                                     {
                                     
-    myCommandsFactory: MyCommandsFactory = MyCommandsFactory.getInstance()!;;
+    MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();;
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.start();
+progressCanvas.start();
     
-this.getCustomCommandListener()!.commandAction(myCommandsFactory!.SET_DISPLAYABLE, progressCanvas);
+this->getCustomCommandListener().commandAction(myCommandsFactory.SET_DISPLAYABLE, progressCanvas);
     
 portion= 4;
     
@@ -2259,40 +2259,40 @@ portion= 4;
 
                 //@Throws(Exception.constructor)
             
-    processPlayingGame(){
-this.cheatProcessor!.update();
+    protected: void processPlayingGame(){
+this->cheatProcessor.update();
     
-this.sensorGameUpdateProcessor!.getInputSensor()!.update();
+this->sensorGameUpdateProcessor.getInputSensor().update();
     
-this.gameInputProcessor!.process();
+this->gameInputProcessor.process();
     
-this.gameLayerManager!.process();
+this->gameLayerManager.process();
     
-this.startIntermissionProcessor!.process();
+this->startIntermissionProcessor.process();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    threadInit(){
+    protected: void threadInit(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    processGame(){
+    protected: void processGame(){
 super.process();
     
 
-                        if(AllBinaryMediaManager.update())
+                        if(AllBinaryMediaManager::update())
                         
                                     {
                                     
-                        if(!this.primaryPlayerQueue!.process())
+                        if(!this->primaryPlayerQueue.process())
                         
                                     {
-                                    this.secondaryPlayerQueue!.process();
+                                    this->secondaryPlayerQueue.process();
     
 
                                     }
@@ -2300,18 +2300,18 @@ super.process();
 
                                     }
                                 
-this.mainStateProcessor!.process();
+this->mainStateProcessor.process();
     
-this.menuInputProcessor!.processInputList();
+this->menuInputProcessor.processInputList();
     
-this.endGameProcessor!.process();
+this->endGameProcessor.process();
     
-this.baseGameStatistics!.nextFrame();
+this->baseGameStatistics.nextFrame();
     
 }
 
 
-    public notifyDonePainting(){
+    public: void notifyDonePainting(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
@@ -2319,30 +2319,30 @@ this.baseGameStatistics!.nextFrame();
 
         //mutex.withLock
         
-this.threadObjectUtil!.notifyObject(this);
+this->threadObjectUtil.notifyObject(this);
     
 
 
 }
 
 
-    private: const YIELD_SLEEP: int64_t = 100;
+    private: const int64_t YIELD_SLEEP = 100;
 
                 //@Throws(Exception.constructor)
             
-    public shouldWait(){
+    public: void shouldWait(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(AndroidUtil.isAndroid())
+                        if(AndroidUtil::isAndroid())
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(features.isFeature(this.openGLFeatureFactory!.OPENGL_2D))
+                        if(features.isFeature(this->openGLFeatureFactory.OPENGL_2D))
                         
                                     {
                                     
@@ -2350,16 +2350,16 @@ this.threadObjectUtil!.notifyObject(this);
                                 
                         else {
                             
-                        if(features.isDefault(this.openGLFeatureFactory!.OPENGL))
+                        if(features.isDefault(this->openGLFeatureFactory.OPENGL))
                         
                                     {
                                     
-    openGLImageSpecificFactory: OpenGLImageSpecificFactory = OpenGLImageSpecificFactory.getInstance()!;;
+    OpenGLImageSpecificFactory openGLImageSpecificFactory = OpenGLImageSpecificFactory::getInstance();;
     
 
-        while(openGLImageSpecificFactory!.updating)
+        while(openGLImageSpecificFactory.updating)
         {
-Thread.sleep(this.YIELD_SLEEP);
+Thread::sleep(this->YIELD_SLEEP);
     
 }
 
@@ -2372,60 +2372,60 @@ Thread.sleep(this.YIELD_SLEEP);
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START_RUNNABLE, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
     
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.addNormalPortion(50, "Game Thread");
+progressCanvas.addNormalPortion(50, "Game Thread");
     
-this.setCurrentThread();
+this->setCurrentThread();
     
-this.setRunning(true);
+this->setRunning(true);
     
 
-                        if(this.getCustomCommandListener() == NullCommandListener.NULL_COMMAND_LISTENER)
+                        if(this->getCustomCommandListener() == NullCommandListener::NULL_COMMAND_LISTENER)
                         
                                     {
-                                    Thread.sleep(this.YIELD_SLEEP);
+                                    Thread::sleep(this->YIELD_SLEEP);
     
 
                                     }
                                 
-this.shouldWait();
+this->shouldWait();
     
-this.threadInit();
+this->threadInit();
     
 
-                        if(this.getCustomCommandListener() == NullCommandListener.NULL_COMMAND_LISTENER)
+                        if(this->getCustomCommandListener() == NullCommandListener::NULL_COMMAND_LISTENER)
                         
                                     {
-                                    Thread.sleep(this.YIELD_SLEEP);
+                                    Thread::sleep(this->YIELD_SLEEP);
     
 
                                     }
                                 
-this.open();
+this->open();
     
 
-    gameAdState: GameAdState = this.gameAdStateFactory!.getCurrentInstance()!;;
+    GameAdState gameAdState = this->gameAdStateFactory.getCurrentInstance();;
     
-gameAdState!.init();
+gameAdState.init();
     
-gameAdState!.setGameIsReady(true);
+gameAdState.setGameIsReady(true);
     
-this.gameBehavior!.run(this);
+this->gameBehavior.run(this);
     
-this.logUtil!.putF(this.commonStrings!.END_RUNNABLE, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 
@@ -2434,75 +2434,75 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, 
 
                 //@Throws(Exception.constructor)
             
-    public run2(){
+    public: void run2(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isDefault(this.openGLFeatureFactory!.OPENGL_AS_GAME_THREAD) || J2MEUtil.isHTML())
+                        if(features.isDefault(this->openGLFeatureFactory.OPENGL_AS_GAME_THREAD) || J2MEUtil::isHTML())
                         
                                     {
                                     
-                        if(features.isDefault(this.openGLFeatureFactory!.OPENGL_AS_GAME_THREAD))
+                        if(features.isDefault(this->openGLFeatureFactory.OPENGL_AS_GAME_THREAD))
                         
                                     {
-                                    this.logUtil!.putF(this.openGLFeatureFactory!.OPENGL_AS_GAME_THREAD.getName(), this, this.commonStrings!.RUN);
+                                    this->logUtil.putF(this->openGLFeatureFactory.OPENGL_AS_GAME_THREAD.getName(), this, this->commonStrings.RUN);
     
 
                                     }
                                 
 
-                        if(J2MEUtil.isHTML())
+                        if(J2MEUtil::isHTML())
                         
                                     {
-                                    this.logUtil!.putF(GraphicsStrings.getInstance()!.HTML, this, this.commonStrings!.RUN);
+                                    this->logUtil.putF(GraphicsStrings::getInstance().HTML, this, this->commonStrings.RUN);
     
 
                                     }
                                 
 
-    currentDisplayableFactory: CurrentDisplayableFactory = CurrentDisplayableFactory.getInstance()!;;
+    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory!.setRunnable(this.gameRunnable);
+currentDisplayableFactory.setRunnable(this->gameRunnable);
     
-currentDisplayableFactory!.setDisplayable(this);
+currentDisplayableFactory.setDisplayable(this);
     
-OpenGLThreadUtil.getInstance()!.onResume();
+OpenGLThreadUtil::getInstance().onResume();
     
 
                                     }
                                 
                              else 
-                        if(features.isDefault(this.openGLFeatureFactory!.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS))
+                        if(features.isDefault(this->openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS))
                         
                                     {
-                                    this.logUtil!.putF(this.openGLFeatureFactory!.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName(), this, this.commonStrings!.RUN);
+                                    this->logUtil.putF(this->openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName(), this, this->commonStrings.RUN);
     
-OpenGLThreadUtil.getInstance()!.onResume();
+OpenGLThreadUtil::getInstance().onResume();
     
 
-        while(this.isRunning())
+        while(this->isRunning())
         {
-this.run3();
+this->run3();
     
 }
 
-this.end();
+this->end();
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("this thread", this, this.commonStrings!.RUN);
+                            this->logUtil.putF("this thread", this, this->commonStrings.RUN);
     
 
-        while(this.isRunning())
+        while(this->isRunning())
         {
-this.run3();
+this->run3();
     
 }
 
-this.end();
+this->end();
     
 
                         }
@@ -2512,25 +2512,25 @@ this.end();
 
                 //@Throws(Exception.constructor)
             
-    public run3(){
-this.loopTimeHelper!.setStartTime(this.gameTickTimeDelayHelper!.setStartTime());
+    public: void run3(){
+this->loopTimeHelper.setStartTime(this->gameTickTimeDelayHelper.setStartTime());
     
-this.gameTickDisplayInfoSingleton!.update();
+this->gameTickDisplayInfoSingleton.update();
     
-this.processGame();
+this->processGame();
     
-this.processLoopSleep();
+this->processLoopSleep();
     
 }
 
 
-    public setRunning(bool running){
+    public: void setRunning(bool running){
 super.setRunning(running);
     
 
         try {
             
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
                         if(running)
@@ -2541,22 +2541,22 @@ super.setRunning(running);
                                 
                         else {
                             
-                        if(features.isDefault(this.openGLFeatureFactory!.OPENGL) || SWTUtil.isSWT)
+                        if(features.isDefault(this->openGLFeatureFactory.OPENGL) || SWTUtil::isSWT)
                         
                                     {
                                     
-                        if(this.gameLayerManager!.getGameInfo()!.getGameType() != this.gameTypeFactory!.BOT)
+                        if(this->gameLayerManager.getGameInfo().getGameType() != this->gameTypeFactory.BOT)
                         
                                     {
                                     
-    currentDisplayableFactory: CurrentDisplayableFactory = CurrentDisplayableFactory.getInstance()!;;
+    CurrentDisplayableFactory currentDisplayableFactory = CurrentDisplayableFactory::getInstance();;
     
-currentDisplayableFactory!.clearRunnable();
+currentDisplayableFactory.clearRunnable();
     
 
                                     }
                                 
-this.end();
+this->end();
     
 
                                     }
@@ -2568,7 +2568,7 @@ this.end();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.SET_RUNNING, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->SET_RUNNING, e);
     
 }
 
@@ -2577,74 +2577,74 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.SET_RUNNING, e);
 
                 //@Throws(Exception.constructor)
             
-    public end(){
-this.screenCapture!.endRecording();
+    public: void end(){
+this->screenCapture.endRecording();
     
-this.baseGameStatistics!.add(new StringMaker().append(this.baseGameStatistics!.toString())!.append(CommonSeps.getInstance()!.NEW_LINE)!.toString());
+this->baseGameStatistics.add(StringMaker().append(this->baseGameStatistics.toString()).append(CommonSeps::getInstance().NEW_LINE).toString());
     
-this.baseGameStatistics!.init();
+this->baseGameStatistics.init();
     
-this.gameKeyEventHandler!.removeListener(this.cheatProcessor);
+this->gameKeyEventHandler.removeListener(this->cheatProcessor);
     
-this.close();
+this->close();
     
-this.removeAllGameKeyInputListeners();
+this->removeAllGameKeyInputListeners();
     
-this.endGameThread();
+this->endGameThread();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public endGameThread(){
-DisplayChangeEventHandler.getInstance()!.removeListener(this);
+    public: void endGameThread(){
+DisplayChangeEventHandler::getInstance().removeListener(this);
     
-GameLevelDisplayChangeEventListenersFactory.getInstance()!.clear();
+GameLevelDisplayChangeEventListenersFactory::getInstance().clear();
     
 
-    gameAdState: GameAdState = this.gameAdStateFactory!.getCurrentInstance()!;;
+    GameAdState gameAdState = this->gameAdStateFactory.getCurrentInstance();;
     
-gameAdState!.notPlayingAdState();
+gameAdState.notPlayingAdState();
     
 }
 
 
-    public HighScore createHighScore(int64_t score){
+    public: HighScore createHighScore(int64_t score){
 
-    gameInfo: GameInfo = this.gameLayerManager!.getGameInfo()!;;
+    GameInfo gameInfo = this->gameLayerManager.getGameInfo();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HighScore(0, "NONE", new GameInfo(gameInfo!.getGameType(), gameInfo!.getGameMode(), PlayerTypesFactory.getInstance()!.PLAYER_TYPE_ONE, 0, 0), score);
+                        return HighScore(0, "NONE", GameInfo(gameInfo.getGameType(), gameInfo.getGameMode(), PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE, 0, 0), score);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setHighScore(AbeClientInformationInterface abeClientInformation, string name, int64_t score, bool autoSubmit, bool isLast){
-this.gameBehavior!.setHighScore(abeClientInformation, this, name, score, autoSubmit, isLast);
+    public: void setHighScore(AbeClientInformationInterface abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast){
+this->gameBehavior.setHighScore(abeClientInformation, this, name, score, autoSubmit, isLast);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setHighScore2(AbeClientInformationInterface abeClientInformation, string name, int64_t score, bool autoSubmit, bool isLast){
+    public: void setHighScore2(AbeClientInformationInterface abeClientInformation, std::string name, int64_t score, bool autoSubmit, bool isLast){
 
-    highScore: HighScore = this.createHighScore(score)!;;
+    HighScore highScore = this->createHighScore(score);;
     
 
-    textBox: HighScoreTextBox = new HighScoreTextBox(this.highScoresFactoryInterface, this.highScoresHelper, abeClientInformation, this.gameLayerManager!.getGameInfo(), this.getCustomCommandListener(), name, highScore, this.gameLayerManager!.getBackgroundBasicColor(), this.gameLayerManager!.getForegroundBasicColor());;
+    HighScoreTextBox textBox = HighScoreTextBox(this->highScoresFactoryInterface, this->highScoresHelper, abeClientInformation, this->gameLayerManager.getGameInfo(), this->getCustomCommandListener(), name, highScore, this->gameLayerManager.getBackgroundBasicColor(), this->gameLayerManager.getForegroundBasicColor());;
     
 
                         if(isLast)
                         
                                     {
-                                    this.getCustomCommandListener()!.commandAction(GameCommandsFactory.getInstance()!.SET_MENU_DISPLAYABLE, textBox);
+                                    this->getCustomCommandListener().commandAction(GameCommandsFactory::getInstance().SET_MENU_DISPLAYABLE, textBox);
     
 
                                     }
@@ -2658,13 +2658,12 @@ this.gameBehavior!.setHighScore(abeClientInformation, this, name, score, autoSub
 class SaveHighScoreRunnable
             : public Object
         : public Runnable {
-        
 
-    private: const progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;
+    private: const ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();
 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -2672,13 +2671,13 @@ class SaveHighScoreRunnable
                         if(isLast)
                         
                                     {
-                                    textBox!.submit();
+                                    textBox.submit();
     
 
                                     }
                                 
                         else {
-                            textBox!.saveHighScore();
+                            textBox.saveHighScore();
     
 
                         }
@@ -2688,11 +2687,11 @@ class SaveHighScoreRunnable
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, this, "run", e);
+logUtil.put(commonStrings.EXCEPTION, this, "run", e);
     
-this.progressCanvas!.end();
+this->progressCanvas.end();
     
 }
 
@@ -2702,7 +2701,7 @@ this.progressCanvas!.end();
 };
 
             
-SecondaryThreadPool.getInstance()!.runTask(new SaveHighScoreRunnable());
+SecondaryThreadPool::getInstance().runTask(SaveHighScoreRunnable());
     
 
                                     }
@@ -2710,501 +2709,501 @@ SecondaryThreadPool.getInstance()!.runTask(new SaveHighScoreRunnable());
 }
 
 
-    TimeDelayHelper getGameStateTimeHelper(){
+    protected: TimeDelayHelper getGameStateTimeHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameStateTimeHelper;
+                        return this->gameStateTimeHelper;
     
 }
 
 
-    setInitialized(bool initialized){
-this.initialized= initialized;
+    protected: void setInitialized(bool initialized){
+this->initialized= initialized;
     
 }
 
 
-    public bool isInitialized(){
+    public: bool isInitialized(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized;
+                        return this->initialized;
     
 }
 
 
-    public int32_t getSourceId(){
+    public: int32_t getSourceId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameCanvas.id;
+                        return AllBinaryGameCanvas::id;
     
 }
 
 
-    public setProgressPaintable(PaintableInterface paintable){
-this.progressPaintable= paintable;
+    public: void setProgressPaintable(PaintableInterface paintable){
+this->progressPaintable= paintable;
     
 }
 
 
-    public IntermissionInterface getStartIntermissionInterface(){
+    public: IntermissionInterface getStartIntermissionInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startIntermissionInterface;
+                        return this->startIntermissionInterface;
     
 }
 
 
-    public IntermissionInterface getEndLevelIntermissionInterface(){
+    public: IntermissionInterface getEndLevelIntermissionInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endLevelIntermissionInterface;
+                        return this->endLevelIntermissionInterface;
     
 }
 
 
-    setTouchPaintableP(Paintable paintable){
-this.touchPaintable= paintable;
+    protected: void setTouchPaintableP(Paintable paintable){
+this->touchPaintable= paintable;
     
 }
 
 
-    public Paintable getTouchPaintableP(){
+    public: Paintable getTouchPaintableP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchPaintable;
+                        return this->touchPaintable;
     
 }
 
 
-    setEndGamePaintable(Paintable endGamePaintable){
-this.endGamePaintable= endGamePaintable;
+    protected: void setEndGamePaintable(Paintable endGamePaintable){
+this->endGamePaintable= endGamePaintable;
     
 }
 
 
-    public Paintable getEndGamePaintable(){
+    public: Paintable getEndGamePaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGamePaintable;
+                        return this->endGamePaintable;
     
 }
 
 
-    setIntermissionPaintable(Paintable intermissionPaintable){
-this.intermissionPaintable= intermissionPaintable;
+    protected: void setIntermissionPaintable(Paintable intermissionPaintable){
+this->intermissionPaintable= intermissionPaintable;
     
 }
 
 
-    public Paintable getIntermissionPaintable(){
+    public: Paintable getIntermissionPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.intermissionPaintable;
+                        return this->intermissionPaintable;
     
 }
 
 
-    public EndGameInfo getEndGameInfoP(){
+    public: EndGameInfo getEndGameInfoP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGameInfo;
+                        return this->endGameInfo;
     
 }
 
 
-    public setHighScoresPaintable(Paintable highScoresPaintable){
-this.highScoresPaintable= highScoresPaintable;
+    public: void setHighScoresPaintable(Paintable highScoresPaintable){
+this->highScoresPaintable= highScoresPaintable;
     
 }
 
 
-    public Paintable getHighScoresPaintable(){
+    public: Paintable getHighScoresPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoresPaintable;
+                        return this->highScoresPaintable;
     
 }
 
 
-    HighScoresPaintable getRealHighScoresPaintable(){
+    protected: HighScoresPaintable getRealHighScoresPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.realHighScoresPaintable;
+                        return this->realHighScoresPaintable;
     
 }
 
 
-    clearPlayerGameInputList(){
+    protected: void clearPlayerGameInputList(){
 
-    playerGameInput: PlayerGameInput;;
+    PlayerGameInput playerGameInput;;
     
 
 
 
 
                         for (
-    index: int32_t = this.localPlayerGameInputList!.size() -1;index >= 0; index--)
+    int32_t index = this->localPlayerGameInputList.size() -1;index >= 0; index--)
         {
-playerGameInput= this.localPlayerGameInputList!.get(index) as PlayerGameInput;
+playerGameInput= this->localPlayerGameInputList.get(index) as PlayerGameInput;
     
-this.gameKeyEventHandler!.removeListener(playerGameInput);
-    
-}
-
-this.localPlayerGameInputList!.clear();
+this->gameKeyEventHandler.removeListener(playerGameInput);
     
 }
 
-
-    addPlayerGameInput(PlayerGameInput playerGameInput){
-this.localPlayerGameInputList!.add(playerGameInput);
+this->localPlayerGameInputList.clear();
     
 }
 
 
-    setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor){
-this.menuInputProcessor= menuInputProcessor;
+    protected: void addPlayerGameInput(PlayerGameInput playerGameInput){
+this->localPlayerGameInputList.add(playerGameInput);
     
 }
 
 
-    BasicMenuInputProcessor getMenuInputProcessor(){
+    protected: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor){
+this->menuInputProcessor= menuInputProcessor;
+    
+}
+
+
+    protected: BasicMenuInputProcessor getMenuInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuInputProcessor;
+                        return this->menuInputProcessor;
     
 }
 
 
-    public ScrollSelectionForm getMenuForm(){
+    public: ScrollSelectionForm getMenuForm(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuForm;
+                        return this->menuForm;
     
 }
 
 
-    public setMenuForm(ScrollSelectionForm menuForm){
-this.menuForm= menuForm;
+    public: void setMenuForm(ScrollSelectionForm menuForm){
+this->menuForm= menuForm;
     
 }
 
 
-    public int32_t getStartLevel(){
+    public: int32_t getStartLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startLevel;
+                        return this->startLevel;
     
 }
 
 
-    public setStartLevel(int32_t startLevel){
-this.startLevel= startLevel;
+    public: void setStartLevel(int32_t startLevel){
+this->startLevel= startLevel;
     
 }
 
 
-    setTouchButtonsPaintable(Paintable touchButtonsPaintable){
-this.touchButtonsPaintable= touchButtonsPaintable;
+    protected: void setTouchButtonsPaintable(Paintable touchButtonsPaintable){
+this->touchButtonsPaintable= touchButtonsPaintable;
     
 }
 
 
-    Paintable getTouchButtonsPaintable(){
+    protected: Paintable getTouchButtonsPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchButtonsPaintable;
+                        return this->touchButtonsPaintable;
     
 }
 
 
-    public setGameInputProcessor(Processor gameInputProcessor){
-this.gameInputProcessor= gameInputProcessor;
+    public: void setGameInputProcessor(Processor gameInputProcessor){
+this->gameInputProcessor= gameInputProcessor;
     
 }
 
 
-    Processor getGameInputProcessor(){
+    protected: Processor getGameInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInputProcessor;
+                        return this->gameInputProcessor;
     
 }
 
 
-    setEndGameProcessor(Processor endGameProcessor){
-this.endGameProcessor= endGameProcessor;
+    protected: void setEndGameProcessor(Processor endGameProcessor){
+this->endGameProcessor= endGameProcessor;
     
 }
 
 
-    Processor getEndGameProcessor(){
+    protected: Processor getEndGameProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGameProcessor;
+                        return this->endGameProcessor;
     
 }
 
 
-    setEndGameStatePaintable(Paintable endGameStatePaintable){
-this.endGameStatePaintable= endGameStatePaintable;
+    protected: void setEndGameStatePaintable(Paintable endGameStatePaintable){
+this->endGameStatePaintable= endGameStatePaintable;
     
 }
 
 
-    Paintable getEndGameStatePaintable(){
+    protected: Paintable getEndGameStatePaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.endGameStatePaintable;
+                        return this->endGameStatePaintable;
     
 }
 
 
-    setNonBotPaintableP(Paintable nonBotPaintable){
-this.nonBotPaintable= nonBotPaintable;
+    protected: void setNonBotPaintableP(Paintable nonBotPaintable){
+this->nonBotPaintable= nonBotPaintable;
     
 }
 
 
-    Paintable getNonBotPaintableP(){
+    protected: Paintable getNonBotPaintableP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nonBotPaintable;
+                        return this->nonBotPaintable;
     
 }
 
 
-    setStartIntermissionPaintable(InitUpdatePaintable startIntermissionPaintable){
-this.startIntermissionPaintable= startIntermissionPaintable;
+    protected: void setStartIntermissionPaintable(InitUpdatePaintable startIntermissionPaintable){
+this->startIntermissionPaintable= startIntermissionPaintable;
     
 }
 
 
-    InitUpdatePaintable getStartIntermissionPaintable(){
+    protected: InitUpdatePaintable getStartIntermissionPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startIntermissionPaintable;
+                        return this->startIntermissionPaintable;
     
 }
 
 
-    public setMainStateProcessor(Processor mainStateProcessor){
-this.mainStateProcessor= mainStateProcessor;
+    public: void setMainStateProcessor(Processor mainStateProcessor){
+this->mainStateProcessor= mainStateProcessor;
     
 }
 
 
-    Processor getMainStateProcessor(){
+    protected: Processor getMainStateProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.mainStateProcessor;
+                        return this->mainStateProcessor;
     
 }
 
 
-    setProcessGameProcessor(Processor processGameProcessor){
-this.processGameProcessor= processGameProcessor;
+    protected: void setProcessGameProcessor(Processor processGameProcessor){
+this->processGameProcessor= processGameProcessor;
     
 }
 
 
-    public Processor getProcessGameProcessor(){
+    public: Processor getProcessGameProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.processGameProcessor;
+                        return this->processGameProcessor;
     
 }
 
 
-    setOpenMenuPaintable(Paintable openMenuPaintable){
-this.openMenuPaintable= openMenuPaintable;
+    protected: void setOpenMenuPaintable(Paintable openMenuPaintable){
+this->openMenuPaintable= openMenuPaintable;
     
 }
 
 
-    Paintable getOpenMenuPaintable(){
+    protected: Paintable getOpenMenuPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.openMenuPaintable;
+                        return this->openMenuPaintable;
     
 }
 
 
-    setPopupMenuInputProcessor(BasicMenuInputProcessor popupMenuInputProcessor){
-this.popupMenuInputProcessor= popupMenuInputProcessor;
+    protected: void setPopupMenuInputProcessor(BasicMenuInputProcessor popupMenuInputProcessor){
+this->popupMenuInputProcessor= popupMenuInputProcessor;
     
 }
 
 
-    BasicMenuInputProcessor getPopupMenuInputProcessor(){
+    protected: BasicMenuInputProcessor getPopupMenuInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.popupMenuInputProcessor;
+                        return this->popupMenuInputProcessor;
     
 }
 
 
-    public SensorGameUpdateProcessor getSensorGameUpdateProcessor(){
+    public: SensorGameUpdateProcessor getSensorGameUpdateProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sensorGameUpdateProcessor;
+                        return this->sensorGameUpdateProcessor;
     
 }
 
 
-    public InputProcessor getRawGameInputProcessor(){
+    public: InputProcessor getRawGameInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rawGameInputProcessor;
+                        return this->rawGameInputProcessor;
     
 }
 
 
-    public InputProcessor getRawInputProcessor(){
+    public: InputProcessor getRawInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rawInputProcessor;
+                        return this->rawInputProcessor;
     
 }
 
 
-    public setInputProcessor(InputProcessor inputProcessor){
-this.inputProcessor= inputProcessor;
+    public: void setInputProcessor(InputProcessor inputProcessor){
+this->inputProcessor= inputProcessor;
     
 }
 
 
-    InputProcessor getInputProcessor(){
+    protected: InputProcessor getInputProcessor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputProcessor;
+                        return this->inputProcessor;
     
 }
 
 
-    setMenuPaintable(Paintable menuPaintable){
-this.menuPaintable= menuPaintable;
+    protected: void setMenuPaintable(Paintable menuPaintable){
+this->menuPaintable= menuPaintable;
     
 }
 
 
-    Paintable getMenuPaintable(){
+    protected: Paintable getMenuPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.menuPaintable;
+                        return this->menuPaintable;
     
 }
 
 
-    setFormPaintable(Paintable formPaintable){
-this.formPaintable= formPaintable;
+    private: void setFormPaintable(Paintable formPaintable){
+this->formPaintable= formPaintable;
     
 }
 
 
-    Paintable getFormPaintable(){
+    protected: Paintable getFormPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.formPaintable;
+                        return this->formPaintable;
     
 }
 
 
-    public setGameSpecificPaintableP(Paintable gameSpecificPaintable){
-this.gameSpecificPaintable= gameSpecificPaintable;
+    public: void setGameSpecificPaintableP(Paintable gameSpecificPaintable){
+this->gameSpecificPaintable= gameSpecificPaintable;
     
 }
 
 
-    Paintable getGameSpecificPaintableP(){
+    protected: Paintable getGameSpecificPaintableP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameSpecificPaintable;
+                        return this->gameSpecificPaintable;
     
 }
 
 
-    public bool isSingleThread(){
+    public: bool isSingleThread(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLFeatureUtil.getInstance()!.isAnyThreed() || SWTUtil.isSWT;
+                        return OpenGLFeatureUtil::getInstance().isAnyThreed() || SWTUtil::isSWT;
     
 }
 
 
-    public bool isRunningInAnotherThread(){
+    public: bool isRunningInAnotherThread(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(features.isDefault(openGLFeatureFactory!.OPENGL_AS_GAME_THREAD))
+                        if(features.isDefault(openGLFeatureFactory.OPENGL_AS_GAME_THREAD))
                         
                                     {
                                     
@@ -3221,7 +3220,7 @@ this.gameSpecificPaintable= gameSpecificPaintable;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRunning();;
+                        return this->isRunning();;
     
 
                         }
@@ -3229,12 +3228,12 @@ this.gameSpecificPaintable= gameSpecificPaintable;
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryGameCanvas.TYPE;
+                        return AllBinaryGameCanvas::TYPE;
     
 }
 

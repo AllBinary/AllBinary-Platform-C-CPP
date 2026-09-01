@@ -45,13 +45,12 @@
 class CanvasTreeLabel
             : public Object
          {
-        
 
-    private: label: string;
+    private: std::string label;
 
-public constructor (string str);
+public: CanvasTreeLabel(std::string str);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

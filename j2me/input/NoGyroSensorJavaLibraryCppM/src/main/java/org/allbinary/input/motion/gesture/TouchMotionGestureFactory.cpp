@@ -61,16 +61,15 @@
 class TouchMotionGestureFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static TouchMotionGestureFactory getInstance(){
+    public: static TouchMotionGestureFactory getInstance(){
 
-                        if(TouchMotionGestureFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(TouchMotionGestureFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    TouchMotionGestureFactory.instance= new TouchMotionGestureFactory();
+                                    TouchMotionGestureFactory::instance= TouchMotionGestureFactory();
     
 
                                     }
@@ -79,72 +78,70 @@ class TouchMotionGestureFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchMotionGestureFactory.instance as TouchMotionGestureFactory;
+                        return TouchMotionGestureFactory::instance() as TouchMotionGestureFactory;
     
 }
 
 
-    public const LEFT: MotionGestureInput;
+    public: MotionGestureInput LEFT;
 
-    public const RIGHT: MotionGestureInput;
+    public: MotionGestureInput RIGHT;
 
-    public const UP: MotionGestureInput;
+    public: MotionGestureInput UP;
 
-    public const DOWN: MotionGestureInput;
+    public: MotionGestureInput DOWN;
 
-    public const PRESSED: MotionGestureInput;
+    public: MotionGestureInput PRESSED;
 
-    public const RELEASED: MotionGestureInput;
+    public: MotionGestureInput RELEASED;
 
-    public const DIAGONAL_DOWN_RIGHT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_DOWN_RIGHT;
 
-    public const DIAGONAL_DOWN_LEFT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_DOWN_LEFT;
 
-    public const DIAGONAL_UP_RIGHT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_UP_RIGHT;
 
-    public const DIAGONAL_UP_LEFT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_UP_LEFT;
 
-    public const SCROLL_UP: MotionGestureInput;
+    public: MotionGestureInput SCROLL_UP;
 
-    public const SCROLL_DOWN: MotionGestureInput;
+    public: MotionGestureInput SCROLL_DOWN;
 
-    public const NO_MOTION: MotionGestureInput;
+    public: MotionGestureInput NO_MOTION;
 
-    public const LAST_MOTION: MotionGestureInput;
+    public: MotionGestureInput LAST_MOTION;
 
-private constructor (){
+private: TouchMotionGestureFactory(){
 
-            super();
-        
-    MAX: int32_t = InputFactory.getInstance()!.MAX;;
+    int32_t MAX = InputFactory::getInstance().MAX;;
     
-this.LEFT= new MotionGestureInput(MAX -3, "Left Touch");
+this->LEFT= MotionGestureInput(MAX -3, "Left Touch");
     
-this.RIGHT= new MotionGestureInput(MAX -4, "Right Touch");
+this->RIGHT= MotionGestureInput(MAX -4, "Right Touch");
     
-this.UP= new MotionGestureInput(MAX -5, "Up Touch");
+this->UP= MotionGestureInput(MAX -5, "Up Touch");
     
-this.DOWN= new MotionGestureInput(MAX -6, "Down Touch");
+this->DOWN= MotionGestureInput(MAX -6, "Down Touch");
     
-this.PRESSED= new MotionGestureInput(MAX -7, "Screen Press");
+this->PRESSED= MotionGestureInput(MAX -7, "Screen Press");
     
-this.RELEASED= new MotionGestureInput(MAX -8, "Released");
+this->RELEASED= MotionGestureInput(MAX -8, "Released");
     
-this.DIAGONAL_DOWN_RIGHT= new MotionGestureInput(MAX -9, "Diagonal Dn R");
+this->DIAGONAL_DOWN_RIGHT= MotionGestureInput(MAX -9, "Diagonal Dn R");
     
-this.DIAGONAL_DOWN_LEFT= new MotionGestureInput(MAX -10, "Diagonal Dn L");
+this->DIAGONAL_DOWN_LEFT= MotionGestureInput(MAX -10, "Diagonal Dn L");
     
-this.DIAGONAL_UP_RIGHT= new MotionGestureInput(MAX -11, "Diagonal Up R");
+this->DIAGONAL_UP_RIGHT= MotionGestureInput(MAX -11, "Diagonal Up R");
     
-this.DIAGONAL_UP_LEFT= new MotionGestureInput(MAX -12, "Diagonal Up L");
+this->DIAGONAL_UP_LEFT= MotionGestureInput(MAX -12, "Diagonal Up L");
     
-this.SCROLL_UP= new MotionGestureInput(MAX -13, "Scroll Up");
+this->SCROLL_UP= MotionGestureInput(MAX -13, "Scroll Up");
     
-this.SCROLL_DOWN= new MotionGestureInput(MAX -14, "Scroll Down");
+this->SCROLL_DOWN= MotionGestureInput(MAX -14, "Scroll Down");
     
-this.NO_MOTION= new MotionGestureInput(MAX -2, "No Motion");
+this->NO_MOTION= MotionGestureInput(MAX -2, "No Motion");
     
-this.LAST_MOTION= new MotionGestureInput(MAX -19, "Last Motion");
+this->LAST_MOTION= MotionGestureInput(MAX -19, "Last Motion");
     
 }
 

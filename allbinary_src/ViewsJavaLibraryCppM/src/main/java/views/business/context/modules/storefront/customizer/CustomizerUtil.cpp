@@ -80,51 +80,48 @@
 class CustomizerUtil
             : public Object
          {
-        
 
-    private: static const instance: CustomizerUtil = new CustomizerUtil();
+    private: static CustomizerUtil instance() { return CustomizerUtil(); }
 
-    public static CustomizerUtil getInstance(){
+    public: static CustomizerUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CustomizerUtil.instance;
+                        return CustomizerUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: CustomizerUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterfaceToCustomize(TransformInfoInterface customizerTransformInfoInterface, TransformInfoInterface transformInfoInterface){
+    public: TransformInfoInterface getTransformInfoInterfaceToCustomize(TransformInfoInterface customizerTransformInfoInterface, TransformInfoInterface transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +customizerTransformInfoInterface!.getName(), this, "getTransformInfoInterfaceToCustomize()");
+                                    this->logUtil.putF("View Name: " +customizerTransformInfoInterface.getName(), this, "getTransformInfoInterfaceToCustomize()");
     
 
                                     }
                                 
 
-    transformInfoEntityInterface: TransformInfoEntity = TransformInfoEntityBuilder.getInstance()!;;
+    TransformInfoEntity transformInfoEntityInterface = TransformInfoEntityBuilder::getInstance();;
     
 
-    viewName: string = transformInfoInterface!.getName()!;;
+    std::string viewName = transformInfoInterface.getName();;
     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = customizerTransformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = customizerTransformInfoInterface as TransformInfoHttpInterface;;
     
 
-    customizedTransformInfoInterface: TransformInfoInterface = transformInfoEntityInterface!.get(viewName, httpTransformInfoInterface!.getPropertiesHashMap(), httpTransformInfoInterface!.getPageContext())!;;
+    TransformInfoInterface customizedTransformInfoInterface = transformInfoEntityInterface.get(viewName, httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
     
 
 
@@ -137,193 +134,193 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface){
+    public: Vector getTransformInfoObjectConfigComponentNodesToCustomize(Object customizerTransformInfoInterface, Object transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +customizerTransformInfoInterface!.getName(), this, "getTransformInfoObjectConfigComponentNodesToCustomize()");
+                                    this->logUtil.putF("View Name: " +customizerTransformInfoInterface.getName(), this, "getTransformInfoObjectConfigComponentNodesToCustomize()");
     
 
                                     }
                                 
 
-    transformInfoEntityInterface: TransformInfoEntity = TransformInfoEntityBuilder.getInstance()!;;
+    TransformInfoEntity transformInfoEntityInterface = TransformInfoEntityBuilder::getInstance();;
     
 
-    viewName: string = transformInfoInterface!.getName()!;;
+    std::string viewName = transformInfoInterface.getName();;
     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = customizerTransformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = customizerTransformInfoInterface as TransformInfoHttpInterface;;
     
 
-    customizedTransformInfoInterface: TransformInfoInterface = transformInfoEntityInterface!.get(viewName, httpTransformInfoInterface!.getPropertiesHashMap(), httpTransformInfoInterface!.getPageContext())!;;
+    TransformInfoInterface customizedTransformInfoInterface = transformInfoEntityInterface.get(viewName, httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransformInfoObjectConfigComponentNodes(customizedTransformInfoInterface);;
+                        return this->getTransformInfoObjectConfigComponentNodes(customizedTransformInfoInterface);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface){
+    public: Vector getTransformInfoObjectConfigComponentNodes(Object transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, "getTransformInfoObjectConfigComponentNodes()");
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "getTransformInfoObjectConfigComponentNodes()");
     
 
                                     }
                                 
 
-    transformInfoObjectConfigInterface: TransformInfoObjectConfigInterface = transformInfoInterface!.getObjectConfigInterface()!;;
+    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = transformInfoInterface.getObjectConfigInterface();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return transformInfoObjectConfigInterface!.getTransforms();;
+                        return transformInfoObjectConfigInterface.getTransforms();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface){
+    public: Vector getTransformInfoObjectConfigGroupComponentNodes(Object transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, "getTransformInfoObjectConfigComponentNodes()");
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "getTransformInfoObjectConfigComponentNodes()");
     
 
                                     }
                                 
 
-    transformInfoObjectConfigInterface: TransformInfoObjectConfigInterface = transformInfoInterface!.getObjectConfigInterface()!;;
+    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = transformInfoInterface.getObjectConfigInterface();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return transformInfoObjectConfigInterface!.getGroupTransforms();;
+                        return transformInfoObjectConfigInterface.getGroupTransforms();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public insert(TransformInfoInterface transformInfoInterface, DomNodeInterface domNodeInterface){
+    public: void insert(TransformInfoInterface transformInfoInterface, DomNodeInterface domNodeInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, "insert()");
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "insert()");
     
 
                                     }
                                 
 
-    transformInfoEntityInterface: TransformInfoEntity = TransformInfoEntityBuilder.getInstance()!;;
+    TransformInfoEntity transformInfoEntityInterface = TransformInfoEntityBuilder::getInstance();;
     
 
-    allViewsToBeModified: Vector = this.getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface)!;;
+    Vector allViewsToBeModified = this->getTransformInfoObjectConfigGroupComponentNodes(transformInfoInterface);;
     
 
-    document: Document = DomDocumentHelper.create()!;;
+    Document document = DomDocumentHelper::create();;
     
-document.appendChild(domNodeInterface!.toXmlNode(document));
-    
-
-    documentString: string = DomDocumentHelper.toString(document)!;;
+document.appendChild(domNodeInterface.toXmlNode(document));
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    std::string documentString = DomDocumentHelper::toString(document);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+    StringMaker stringBuffer = StringMaker();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    stringBuffer!.append("Total Views For Modification: ");
+                                    stringBuffer.append("Total Views For Modification: ");
     
-stringBuffer!.appendint(allViewsToBeModified!.length);
+stringBuffer.appendint(allViewsToBeModified.length);
     
-stringBuffer!.append(" New Xml/Data: ");
+stringBuffer.append(" New Xml/Data: ");
     
-stringBuffer!.append(documentString);
+stringBuffer.append(documentString);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "insert()");
+this->logUtil.putF(stringBuffer.toString(), this, "insert()");
     
 
                                     }
                                 
-transformInfoInterface!.setData(documentString);
+transformInfoInterface.setData(documentString);
     
 
-    size: int32_t = allViewsToBeModified!.length!;;
+    int32_t size = allViewsToBeModified.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    transformInfo: TransformInfo = allViewsToBeModified!.get(index) as TransformInfo;;
+    TransformInfo transformInfo = allViewsToBeModified.get(index) as TransformInfo;;
     
 
-    viewNameOfViewToBeModified: string = transformInfo!.getName()!;;
+    std::string viewNameOfViewToBeModified = transformInfo.getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(transformInfoInterface!.getName());
+stringBuffer.append(transformInfoInterface.getName());
     
-stringBuffer!.append(" is modifying view: ");
+stringBuffer.append(" is modifying view: ");
     
-stringBuffer!.append(viewNameOfViewToBeModified);
+stringBuffer.append(viewNameOfViewToBeModified);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "insert()");
+this->logUtil.putF(stringBuffer.toString(), this, "insert()");
     
 
                                     }
                                 
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
     
 
-    specifiedTransformInfoInterface: TransformInfoInterface = transformInfoEntityInterface!.get(viewNameOfViewToBeModified, httpTransformInfoInterface!.getPropertiesHashMap(), httpTransformInfoInterface!.getPageContext())!;;
+    TransformInfoInterface specifiedTransformInfoInterface = transformInfoEntityInterface.get(viewNameOfViewToBeModified, httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
     
 
                         if(specifiedTransformInfoInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(transformInfoInterface!.getName());
+stringBuffer.append(transformInfoInterface.getName());
     
-stringBuffer!.append(" is unable to add data to view: ");
+stringBuffer.append(" is unable to add data to view: ");
     
-stringBuffer!.append(viewNameOfViewToBeModified);
+stringBuffer.append(viewNameOfViewToBeModified);
     
-stringBuffer!.append(" since it does not exist");
+stringBuffer.append(" since it does not exist");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "insert()");
+this->logUtil.putF(stringBuffer.toString(), this, "insert()");
     
 
                                     }
@@ -333,36 +330,36 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "insert()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF(transformInfoInterface!.getName() +" is adding data to view: " +viewNameOfViewToBeModified, this, "insert()");
+                                    this->logUtil.putF(transformInfoInterface.getName() +" is adding data to view: " +viewNameOfViewToBeModified, this, "insert()");
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(viewNameOfViewToBeModified);
+stringBuffer.append(viewNameOfViewToBeModified);
     
-stringBuffer!.append(" is changing data in ");
+stringBuffer.append(" is changing data in ");
     
-stringBuffer!.append(specifiedTransformInfoInterface!.getDataFilePath()!.toString());
+stringBuffer.append(specifiedTransformInfoInterface.getDataFilePath().toString());
     
-stringBuffer!.append(" to the following data:\n");
+stringBuffer.append(" to the following data:\n");
     
-stringBuffer!.append(documentString);
+stringBuffer.append(documentString);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "insert()");
+this->logUtil.putF(stringBuffer.toString(), this, "insert()");
     
 
                                     }
                                 
-this.write(specifiedTransformInfoInterface, documentString);
+this->write(specifiedTransformInfoInterface, documentString);
     
 
                         }
@@ -374,81 +371,81 @@ this.write(specifiedTransformInfoInterface, documentString);
 
                 //@Throws(Exception.constructor)
             
-    public write(TransformInfoInterface specifiedTransformInfoInterface, string documentString){
+    public: void write(TransformInfoInterface specifiedTransformInfoInterface, std::string documentString){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +specifiedTransformInfoInterface!.getName(), this, "write()");
+                                    this->logUtil.putF("View Name: " +specifiedTransformInfoInterface.getName(), this, "write()");
     
 
                                     }
                                 
 
-    transformInfoEntityInterface: TransformInfoEntity = TransformInfoEntityBuilder.getInstance()!;;
+    TransformInfoEntity transformInfoEntityInterface = TransformInfoEntityBuilder::getInstance();;
     
-specifiedTransformInfoInterface!.setData(documentString);
+specifiedTransformInfoInterface.setData(documentString);
     
-transformInfoEntityInterface!.update(specifiedTransformInfoInterface!.toHashMap());
+transformInfoEntityInterface.update(specifiedTransformInfoInterface.toHashMap());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document getViewDataForComponentsInObjectConfig(Object transformInfoInterface){
+    public: Document getViewDataForComponentsInObjectConfig(Object transformInfoInterface){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, "getViewDataForComponentsInObjectConfig()");
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "getViewDataForComponentsInObjectConfig()");
     
 
                                     }
                                 
 
-    transformInfoObjectConfigInterface: TransformInfoObjectConfigInterface = transformInfoInterface!.getObjectConfigInterface()!;;
+    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = transformInfoInterface.getObjectConfigInterface();;
     
 
-    allViewsToBeModified: Vector = transformInfoObjectConfigInterface!.getGroupTransforms()!;;
+    Vector allViewsToBeModified = transformInfoObjectConfigInterface.getGroupTransforms();;
     
 
-    transformInfoEntityInterface: TransformInfoEntity = TransformInfoEntityBuilder.getInstance()!;;
+    TransformInfoEntity transformInfoEntityInterface = TransformInfoEntityBuilder::getInstance();;
     
 
-    size: int32_t = allViewsToBeModified!.length!;;
+    int32_t size = allViewsToBeModified.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    nextTransformInfoInterface: TransformInfo = allViewsToBeModified!.get(index) as TransformInfo;;
+    TransformInfo nextTransformInfoInterface = allViewsToBeModified.get(index) as TransformInfo;;
     
 
-    viewNameOfViewToBeModified: string = nextTransformInfoInterface!.getName()!;;
+    std::string viewNameOfViewToBeModified = nextTransformInfoInterface.getName();;
     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
     
 
-    specifiedTransformInfoInterface: TransformInfoInterface = transformInfoEntityInterface!.get(viewNameOfViewToBeModified, httpTransformInfoInterface!.getPropertiesHashMap(), httpTransformInfoInterface!.getPageContext())!;;
+    TransformInfoInterface specifiedTransformInfoInterface = transformInfoEntityInterface.get(viewNameOfViewToBeModified, httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return specifiedTransformInfoInterface!.getDataDocument();;
+                        return specifiedTransformInfoInterface.getDataDocument();;
     
 }
 
 
 
 
-                            throw new Exception("No Components Specified in ObjectConfig");
+                            throw Exception("No Components Specified in ObjectConfig");
                     
 }
 

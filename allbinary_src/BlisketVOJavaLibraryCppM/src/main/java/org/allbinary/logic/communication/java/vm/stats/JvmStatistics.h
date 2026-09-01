@@ -51,73 +51,72 @@
 class JvmStatistics
             : public Object
          {
-        
 
-    private: runtime: Runtime;
+    private: Runtime runtime;
 
-public constructor ();
+public: JvmStatistics();
 
-    public int64_t getFreeMemoryBytes();
+    public: int64_t getFreeMemoryBytes();
 
-    public int64_t getFreeMemoryKilobytes();
+    public: int64_t getFreeMemoryKilobytes();
 
-    public int64_t getFreeMemoryMegabytes();
+    public: int64_t getFreeMemoryMegabytes();
 
-    public int64_t getMaxMemoryBytes();
+    public: int64_t getMaxMemoryBytes();
 
-    public int64_t getMaxMemoryKilobytes();
+    public: int64_t getMaxMemoryKilobytes();
 
-    public int64_t getMaxMemoryMegabytes();
+    public: int64_t getMaxMemoryMegabytes();
 
-    public int64_t getTotalMemoryBytes();
+    public: int64_t getTotalMemoryBytes();
 
-    public int64_t getTotalMemoryKilobytes();
+    public: int64_t getTotalMemoryKilobytes();
 
-    public int64_t getTotalMemoryMegabytes();
+    public: int64_t getTotalMemoryMegabytes();
 
-    public Long getFreeMemoryBytesLong();
+    public: Long getFreeMemoryBytesLong();
 
-    public Long getFreeMemoryKilobytesLong();
+    public: Long getFreeMemoryKilobytesLong();
 
-    public Long getFreeMemoryMegabytesLong();
+    public: Long getFreeMemoryMegabytesLong();
 
-    public Long getMaxMemoryBytesLong();
+    public: Long getMaxMemoryBytesLong();
 
-    public Long getMaxMemoryKilobytesLong();
+    public: Long getMaxMemoryKilobytesLong();
 
-    public Long getMaxMemoryMegabytesLong();
+    public: Long getMaxMemoryMegabytesLong();
 
-    public Long getTotalMemoryBytesLong();
+    public: Long getTotalMemoryBytesLong();
 
-    public Long getTotalMemoryKilobytesLong();
+    public: Long getTotalMemoryKilobytesLong();
 
-    public Long getTotalMemoryMegabytesLong();
+    public: Long getTotalMemoryMegabytesLong();
 
-    public string getFreeMemoryBytesString();
+    public: std::string getFreeMemoryBytesString();
 
-    public string getFreeMemoryKilobytesString();
+    public: std::string getFreeMemoryKilobytesString();
 
-    public string getFreeMemoryMegabytesString();
+    public: std::string getFreeMemoryMegabytesString();
 
-    public string getMaxMemoryBytesString();
+    public: std::string getMaxMemoryBytesString();
 
-    public string getMaxMemoryKilobytesString();
+    public: std::string getMaxMemoryKilobytesString();
 
-    public string getMaxMemoryMegabytesString();
+    public: std::string getMaxMemoryMegabytesString();
 
-    public string getTotalMemoryBytesString();
+    public: std::string getTotalMemoryBytesString();
 
-    public string getTotalMemoryKilobytesString();
+    public: std::string getTotalMemoryKilobytesString();
 
-    public string getTotalMemoryMegabytesString();
+    public: std::string getTotalMemoryMegabytesString();
 
-    public int64_t getNumberOfThreads();
+    public: int64_t getNumberOfThreads();
 
-    public Long getNumberOfThreadsLong();
+    public: Long getNumberOfThreadsLong();
 
-    public string getNumberOfThreadsString();
+    public: std::string getNumberOfThreadsString();
 
-    public collectGarbage();
+    public: void collectGarbage();
 
 };
 

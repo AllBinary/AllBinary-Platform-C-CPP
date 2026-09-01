@@ -70,33 +70,32 @@
         #include "TransformTag.h"
 
 class ValidationTransformTag: public TransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-    private: logic: bool;
+    private: bool logic;
 
-public constructor ();
+public: ValidationTransformTag();
 
-    public setXsl(string value);
+    public: void setXsl(std::string value);
 
-    public setLogic(bool logic);
-
-                //@Throws(Exception.constructor)
-            
-    bool isValid();
+    public: void setLogic(bool logic);
 
                 //@Throws(Exception.constructor)
             
-    string validationInfo();
+    private: bool isValid();
+
+                //@Throws(Exception.constructor)
+            
+    private: std::string validationInfo();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
-    public int32_t doEndTag();
+    public: int32_t doEndTag();
 
 };
 

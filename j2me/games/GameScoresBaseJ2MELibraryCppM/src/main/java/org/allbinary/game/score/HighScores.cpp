@@ -70,105 +70,102 @@
 class HighScores
             : public Object
         : public HighScoresInterface {
-        
 
-    private: orderedHighScoresList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList orderedHighScoresList = BasicArrayListD();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const heading: string;
+    private: std::string heading;
 
-    private: const columnOneHeading: string = "Name";
+    private: const std::string columnOneHeading = "Name";
 
-    private: const columnTwoHeading: string;
+    private: std::string columnTwoHeading;
 
-public constructor (string name, string heading, string columnTwoHeading){
-
-            super();
-        this.name= name;
+public: HighScores(std::string name, std::string heading, std::string columnTwoHeading){
+this->name= name;
     
-this.heading= heading;
+this->heading= heading;
     
-this.columnTwoHeading= columnTwoHeading;
+this->columnTwoHeading= columnTwoHeading;
     
 }
 
 
-    public setList(BasicArrayList orderedHighScoresList){
-this.orderedHighScoresList= orderedHighScoresList;
+    public: void setList(BasicArrayList orderedHighScoresList){
+this->orderedHighScoresList= orderedHighScoresList;
     
 }
 
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.orderedHighScoresList;
+                        return this->orderedHighScoresList;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getList()!.size();;
+                        return this->getList().size();;
     
 }
 
 
-    public addHighScore(HighScore newHighScore){
-this.orderedHighScoresList!.add(newHighScore);
+    public: void addHighScore(HighScore newHighScore){
+this->orderedHighScoresList.add(newHighScore);
     
 }
 
 
-    public string getHeading(){
+    public: std::string getHeading(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.heading;
+                        return this->heading;
     
 }
 
 
-    public string getColumnOneHeading(){
+    public: std::string getColumnOneHeading(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnOneHeading;
+                        return this->columnOneHeading;
     
 }
 
 
-    public string getColumnTwoHeading(){
+    public: std::string getColumnTwoHeading(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.columnTwoHeading;
+                        return this->columnTwoHeading;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isBestScore(HighScore newHighScore){
+    public: bool isBestScore(HighScore newHighScore){
 
 
 
@@ -178,25 +175,25 @@ this.orderedHighScoresList!.add(newHighScore);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("HighScores: ");
+stringBuffer.append("HighScores: ");
     
-stringBuffer!.append(this.heading);
+stringBuffer.append(this->heading);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(CommonLabels.getInstance()!.TOTAL_LABEL);
+stringBuffer.append(CommonLabels::getInstance().TOTAL_LABEL);
     
-stringBuffer!.appendint(this.orderedHighScoresList!.size());
+stringBuffer.appendint(this->orderedHighScoresList.size());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

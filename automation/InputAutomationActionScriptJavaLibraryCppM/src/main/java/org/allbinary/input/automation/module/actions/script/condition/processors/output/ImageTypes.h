@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGETYPES_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../../java/lang/Exception.h"
@@ -72,23 +74,22 @@
 class ImageTypes
             : public Object
          {
-        
 
-    public static ImageTypes valueOf(std::vector<any> anyType);
+    public: static ImageTypes valueOf(std::vector<Object*> anyType);
 
-    private: vector: Vector = new Vector();
+    private: Vector vector = Vector();
 
-public constructor ();
+public: ImageTypes();
 
-public constructor (Node node);
+public: ImageTypes(Node node);
 
-    public Vector getVector();
+    public: Vector getVector();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

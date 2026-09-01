@@ -63,13 +63,12 @@
 class FormUtil
             : public Object
          {
-        
 
-    private: static const instance: FormUtil = new FormUtil();
+    private: static FormUtil instance() { return FormUtil(); }
 
-    public static FormUtil getInstance();
+    public: static FormUtil getInstance();
 
-    public Rectangle createFormRectangle();
+    public: Rectangle createFormRectangle();
 
 };
 

@@ -37,19 +37,18 @@
 class FontDebugBase
             : public Object
          {
-        
 
-    private: static const instanceBase: FontDebugBase = new FontDebugBase();
+    private: static const FontDebugBase instanceBase = FontDebugBase();
 
-    public static FontDebugBase getInstance();
+    public: static FontDebugBase getInstance();
 
-    public const SET_FONT: string = "setFont";
+    public: const std::string SET_FONT = "setFont";
 
-    public debugMetrics(Font currentFont, float convertedTextSize, any = {} displayMetrics, StringMaker stringBuffer);
+    public: void debugMetrics(Font currentFont, float convertedTextSize, Object* displayMetrics, StringMaker stringBuffer);
 
-    public debugDpi(int32_t densityDpi, StringMaker stringBuffer);
+    public: void debugDpi(int32_t densityDpi, StringMaker stringBuffer);
 
-    public debugDimension(Font currentFont, float convertedTextSize, int32_t longestDimensionTotalPixels, StringMaker stringBuffer);
+    public: void debugDimension(Font currentFont, float convertedTextSize, int32_t longestDimensionTotalPixels, StringMaker stringBuffer);
 
 };
 

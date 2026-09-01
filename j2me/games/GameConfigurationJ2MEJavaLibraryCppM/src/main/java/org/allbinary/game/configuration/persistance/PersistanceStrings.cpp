@@ -51,41 +51,40 @@
 class PersistanceStrings
             : public Object
          {
-        
 
-    private: static const instance: PersistanceStrings = new PersistanceStrings();
+    private: static PersistanceStrings instance() { return PersistanceStrings(); }
 
-    public static PersistanceStrings getInstance(){
+    public: static PersistanceStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PersistanceStrings.instance;
+                        return PersistanceStrings::instance();
     
 }
 
 
-    public const SAVING: string = "Saving: ";
+    public: const std::string SAVING = "Saving: ";
 
-    public const NUMBER_OF_RECORDS: string = "Number of records: ";
+    public: const std::string NUMBER_OF_RECORDS = "Number of records: ";
 
-    public const LOADING_ID: string = "Loading data with id: ";
+    public: const std::string LOADING_ID = "Loading data with id: ";
 
-    public const LOAD_ALL: string = "loadAll";
+    public: const std::string LOAD_ALL = "loadAll";
 
-    public const DELETING_WITH_ID: string = "Deleting data with id: ";
+    public: const std::string DELETING_WITH_ID = "Deleting data with id: ";
 
-    public const CLOSING_RECORDSTORE: string = "Closing RecordStore";
+    public: const std::string CLOSING_RECORDSTORE = "Closing RecordStore";
 
-    public const NOT_SAVING: string = "Not Saving: ";
+    public: const std::string NOT_SAVING = "Not Saving: ";
 
-    public const ERROR_LOADING: string = "Error Loading gameActionInput: ";
+    public: const std::string ERROR_LOADING = "Error Loading gameActionInput: ";
 
-    public const ERROR_LOADING_ID: string = "Error Loading id: ";
+    public: const std::string ERROR_LOADING_ID = "Error Loading id: ";
 
-    public const ID: string = " id: ";
+    public: const std::string ID = " id: ";
 
-    public const GAME_ACTION_INPUT: string = " GameActionInput: ";
+    public: const std::string GAME_ACTION_INPUT = " GameActionInput: ";
 
 };
 

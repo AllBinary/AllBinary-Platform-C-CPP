@@ -63,13 +63,12 @@
 class UrlGlobalsView
             : public Object
         : public DomNodeInterface {
-        
 
-public constructor ();
+public: UrlGlobalsView();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_SERVLET_FILE_UPLOADFILESERVLET_H
         #define ORG_ALLBINARY_SERVLET_FILE_UPLOADFILESERVLET_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/io/IOException.h>
@@ -112,33 +114,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UploadFileServlet: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    requestHashMap: HashMap<any, any>;
+    protected: HashMap<any, any> requestHashMap;
 
-    private: fileName: string;
+    private: std::string fileName;
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    processRequest(HttpServletRequest request, HttpServletResponse response);
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response);
 
                 //@Throws(Exception.constructor)
             
-    saveFile(string filePath);
+    private: void saveFile(std::string filePath);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response);
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response);
 
-    public string getServletInfo();
+    public: std::string getServletInfo();
 
 };
 

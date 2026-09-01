@@ -57,57 +57,52 @@
 class KeyValueDrawString
             : public Object
         : public UpdateMyFontInterface {
-        
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: const LABEL: string;
+    private: std::string LABEL;
 
-    private: const labelX: int32_t;
+    private: int32_t labelX;
 
-    private: valueX: int32_t= 0;
+    private: int32_t valueX= 0;
 
-    private: value: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string value = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string label, int32_t x){
-
-            super();
-        this.LABEL= label;
+public: KeyValueDrawString(std::string label, int32_t x){
+this->LABEL= label;
     
-this.labelX= x;
+this->labelX= x;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    labelWidth: int32_t = graphics.getFont()!.stringWidth(this.LABEL) -this.LABEL.length;;
+    int32_t labelWidth = graphics.getFont().stringWidth(this->LABEL) -LABEL.size();;
     
-this.valueX= labelWidth +this.labelX;
+this->valueX= labelWidth +this->labelX;
     
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public paint(Graphics graphics, int32_t y){
-this.myFontProcessor!.process(graphics);
-    
-graphics.drawString(this.LABEL, this.labelX, y, 0);
-    
-graphics.drawString(this.value, this.valueX, y, 0);
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public update(string value){
+    public: void paint(Graphics graphics, int32_t y){
+this->myFontProcessor.process(graphics);
+    
+graphics.drawString(this->LABEL, this->labelX, y, 0);
+    
+graphics.drawString(this->value, this->valueX, y, 0);
+    
+}
 
-                        if(value != 
-                                    null
-                                )
+
+    public: void update(std::string value){
+
+                        if(true)
                         
                                     {
-                                    this.value= value;
+                                    this->value= value;
     
 
                                     }

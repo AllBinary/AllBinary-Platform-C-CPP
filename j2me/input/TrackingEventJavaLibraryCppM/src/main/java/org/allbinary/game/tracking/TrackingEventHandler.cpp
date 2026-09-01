@@ -60,33 +60,30 @@
 #include "TrackingEvent.h"
 
 class TrackingEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: TrackingEventHandler = new TrackingEventHandler();
+    private: static TrackingEventHandler instance() { return TrackingEventHandler(); }
 
-    public static TrackingEventHandler getInstance(){
+    public: static TrackingEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackingEventHandler.instance;
+                        return TrackingEventHandler::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TrackingEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    trackingEventListenerInterface: TrackingEventListenerInterface = eventListenerInterface as TrackingEventListenerInterface;;
+    TrackingEventListenerInterface trackingEventListenerInterface = eventListenerInterface as TrackingEventListenerInterface;;
     
-trackingEventListenerInterface!.onMovement(eventObject as TrackingEvent);
+trackingEventListenerInterface.onMovement(eventObject as TrackingEvent);
     
 }
 

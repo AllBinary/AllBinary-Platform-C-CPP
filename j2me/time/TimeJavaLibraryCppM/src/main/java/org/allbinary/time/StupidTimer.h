@@ -58,25 +58,24 @@
 class StupidTimer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const nullUtil: NullUtil = NullUtil.getInstance()!;
+    protected: const NullUtil nullUtil = NullUtil::getInstance();
 
-    private: const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    private: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    bool visitBool(Visitor visitorInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public visit(Visitor visitorInterface, TimeDelayHelper timeDelayHelper);
+    private: bool visitBool(Visitor visitorInterface);
 
                 //@Throws(Exception.constructor)
             
-    public stopWaiting();
+    public: void visit(Visitor visitorInterface, TimeDelayHelper timeDelayHelper);
+
+                //@Throws(Exception.constructor)
+            
+    public: void stopWaiting();
 
 };
 

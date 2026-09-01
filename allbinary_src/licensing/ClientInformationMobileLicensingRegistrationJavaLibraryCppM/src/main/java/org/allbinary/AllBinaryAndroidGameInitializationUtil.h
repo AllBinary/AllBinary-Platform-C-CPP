@@ -57,9 +57,8 @@
 class AllBinaryAndroidGameInitializationUtil
             : public Object
          {
-        
 
-    public static init();
+    public: static void init();
 
 };
 

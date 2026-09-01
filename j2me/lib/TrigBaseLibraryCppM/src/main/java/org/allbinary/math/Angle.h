@@ -54,13 +54,12 @@
 class Angle
             : public Object
          {
-        
 
-    private: value: int16_t;
+    private: int16_t value;
 
-public constructor (int16_t angle);
+public: Angle(int16_t angle);
 
-    public int16_t getValue();
+    public: int16_t getValue();
 
 };
 

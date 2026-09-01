@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/IllegalArgumentException.h"
@@ -129,77 +131,75 @@
 #include "TitleProgressBarSetProgressRunnable.h"
 #include "TitleProgressBarPortionSetProgressRunnable.h"
 
-class AndroidBasicTitleProgressBar: public ProgressCanvas: public DisplayChangeEventListener {
-        
+class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeEventListener {
 
-    public static const RESOURCE: string = "ProgressImage";
+    public: static const std::string RESOURCE = "ProgressImage";
 
-    private: static background: int32_t= 0;
+    private: static int32_t background= 0;
 
-    public static setBackgroundResource(int32_t background){
-AndroidBasicTitleProgressBar.background= background;
+    public: static void setBackgroundResource(int32_t background){
+AndroidBasicTitleProgressBar::background= background;
     
 }
 
 
-    private: showTitleProgressBarRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable showTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: dismissTitleProgressBarRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable dismissTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: titleProgressDialogPortionSetProgressRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable titleProgressDialogPortionSetProgressRunnable = NullRunnable::getInstance();
 
-    private: titleProgressDialogSetProgressRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable titleProgressDialogSetProgressRunnable = NullRunnable::getInstance();
 
-    private: midletActivity: Activity = AndroidUtil.NULL_ACTIVITY;
+    private: Activity midletActivity = AndroidUtil::NULL_ACTIVITY;
 
-    private: portion: int32_t = 0;
+    private: int32_t portion = 0;
 
-    private: const IMAGE: std::vector<Image> = new Array(4);
+    private: const std::vector<Image> IMAGE = new Array(4);
 
-    private: image: Image = NullImage.NULL_IMAGE;
+    private: Image image = NullImage::NULL_IMAGE;
 
-    private: animation: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
- constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+: AndroidBasicTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(title, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init();
+this->init();
     
-DisplayChangeEventHandler.getInstance()!.addListenerInterface(this);
+DisplayChangeEventHandler::getInstance().addListenerInterface(this);
     
 
-    size: int32_t = this.IMAGE.length
-                ;;
+    int32_t size = this->IMAGE.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.IMAGE[index]= NullImage.NULL_IMAGE;
+this->IMAGE[index]= NullImage::NULL_IMAGE;
     
 }
 
 }
 
 
-    init(){
+    private: void init(){
 
         try {
             
-                        if(AndroidBasicTitleProgressBar.background != 0)
+                        if(AndroidBasicTitleProgressBar::background != 0)
                         
                                     {
-                                    ResourceUtil.getInstance()!.addResource(AndroidBasicTitleProgressBar.RESOURCE, new Integer(AndroidBasicTitleProgressBar.background));
+                                    ResourceUtil::getInstance().addResource(AndroidBasicTitleProgressBar::RESOURCE, Integer(AndroidBasicTitleProgressBar::background));
     
-GameFeatureImageCacheFactory.init();
+GameFeatureImageCacheFactory::init();
     
-this.image= ImageCacheFactory.getInstance()!.getWithKey(AndroidBasicTitleProgressBar.RESOURCE);
+this->image= ImageCacheFactory::getInstance().getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
     
 
                                     }
@@ -208,98 +208,98 @@ this.image= ImageCacheFactory.getInstance()!.getWithKey(AndroidBasicTitleProgres
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 }
 
 }
 
 
-    public initActivity(Activity activity){
+    public: void initActivity(Activity activity){
 
         try {
             
-                        if(this.midletActivity != activity)
+                        if(this->midletActivity != activity)
                         
                                     {
-                                    this.midletActivity= activity;
+                                    this->midletActivity= activity;
     
-this.showTitleProgressBarRunnable= new ShowTitleProgressBarRunnable(this.midletActivity, this);
+this->showTitleProgressBarRunnable= ShowTitleProgressBarRunnable(this->midletActivity, this);
     
-this.dismissTitleProgressBarRunnable= new DismissTitleProgressBarRunnable(this.midletActivity, this);
+this->dismissTitleProgressBarRunnable= DismissTitleProgressBarRunnable(this->midletActivity, this);
     
-this.titleProgressDialogSetProgressRunnable= new TitleProgressBarSetProgressRunnable(this.midletActivity, this);
+this->titleProgressDialogSetProgressRunnable= TitleProgressBarSetProgressRunnable(this->midletActivity, this);
     
-this.titleProgressDialogPortionSetProgressRunnable= new TitleProgressBarPortionSetProgressRunnable(this.midletActivity, this);
+this->titleProgressDialogPortionSetProgressRunnable= TitleProgressBarPortionSetProgressRunnable(this->midletActivity, this);
     
-this.loadProgressImages();
+this->loadProgressImages();
     
 
                                     }
                                 
-this.updateCurrent();
+this->updateCurrent();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 }
 
 }
 
 
-    updateCurrent(){
+    private: void updateCurrent(){
 
         try {
             
-                        if(!this.isBackground())
+                        if(!this->isBackground())
                         
                                     {
-                                    this.animation= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
+                                    this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
     
 
                                     }
                                 
                              else 
-                        if(AndroidBasicTitleProgressBar.background != 0)
+                        if(AndroidBasicTitleProgressBar::background != 0)
                         
                                     {
                                     
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    currentImage: Image;;
+    Image currentImage;;
     
 
-                        if(displayInfo!.isPortrait())
+                        if(displayInfo.isPortrait())
                         
                                     {
-                                    currentImage= this.getImage(0);
+                                    currentImage= this->getImage(0);
     
 
                                     }
                                 
                         else {
-                            currentImage= this.getImage(2);
+                            currentImage= this->getImage(2);
     
 
                         }
                             
 
                         if(currentImage == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.animation= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
+                                    this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
     
 
                                     }
                                 
                         else {
-                            this.animation= new ImageAnimation(currentImage, AnimationBehavior.getInstance());
+                            this->animation= ImageAnimation(currentImage, AnimationBehavior::getInstance());
     
 
                         }
@@ -311,62 +311,62 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT,
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.UPDATE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, e);
     
 }
 
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent){
 
         try {
-            this.loadProgressImages();
+            this->loadProgressImages();
     
-this.updateCurrent();
+this->updateCurrent();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.putF(this.commonStrings!.EXCEPTION_LABEL +ExceptionUtil.getInstance()!.getStackTrace(e), this, this.canvasStrings!.ON_DISPLAY_CHANGE_EVENT);
+this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance().getStackTrace(e), this, this->canvasStrings.ON_DISPLAY_CHANGE_EVENT);
     
-this.animation= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
+this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
     
 }
 
 }
 
 
-    loadProgressImages(){
+    private: void loadProgressImages(){
 
         try {
             
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    lastWidth: int32_t = displayInfo!.getLastWidth()!;;
+    int32_t lastWidth = displayInfo.getLastWidth();;
     
 
-    lastHeight: int32_t = displayInfo!.getLastHeight()!;;
+    int32_t lastHeight = displayInfo.getLastHeight();;
     
 
-                        if(displayInfo!.isPortraitWH(lastWidth, lastHeight))
+                        if(displayInfo.isPortraitWH(lastWidth, lastHeight))
                         
                                     {
-                                    this.setImages(0, lastWidth, lastHeight);
+                                    this->setImages(0, lastWidth, lastHeight);
     
 
                                     }
                                 
                         else {
-                            this.setImages(2, lastWidth, lastHeight);
+                            this->setImages(2, lastWidth, lastHeight);
     
 
                         }
@@ -375,27 +375,27 @@ this.animation= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
                 //: 
 } catch(e) 
             {
-this.logUtil!.putF("IllegalArgumentException " +ExceptionUtil.getInstance()!.getStackTrace(e), this, "loadProgressImages");
+this->logUtil.putF("IllegalArgumentException " +ExceptionUtil::getInstance().getStackTrace(e), this, "loadProgressImages");
     
-this.animation= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
+this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
     
 }
 
                 //: 
 /* catch(e) 
             {
-this.logUtil!.putF(this.commonStrings!.EXCEPTION_LABEL +ExceptionUtil.getInstance()!.getStackTrace(e), this, "loadProgressImages");
+this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +ExceptionUtil::getInstance().getStackTrace(e), this, "loadProgressImages");
     
-this.animation= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
+this->animation= NullAnimationFactory::getFactoryInstance().getInstance(0);
     
 }
 */
 }
 
 
-    public bool isInitialized(){
+    public: bool isInitialized(){
 
-                        if(this.midletActivity != AndroidUtil.NULL_ACTIVITY)
+                        if(this->midletActivity != AndroidUtil::NULL_ACTIVITY)
                         
                                     {
                                     
@@ -420,32 +420,32 @@ this.animation= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
 }
 
 
-    public start(){
+    public: void start(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.START_METHOD_NAME);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START_METHOD_NAME);
     
 super.start();
     
-this.midletActivity!.runOnUiThread(this.showTitleProgressBarRunnable);
+this->midletActivity.runOnUiThread(this->showTitleProgressBarRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.START_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START_METHOD_NAME, e);
     
 }
 
 }
 
 
-    public end(){
+    public: void end(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.END_METHOD_NAME);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.END_METHOD_NAME);
     
-this.midletActivity!.runOnUiThread(this.dismissTitleProgressBarRunnable);
+this->midletActivity.runOnUiThread(this->dismissTitleProgressBarRunnable);
     
 super.end();
     
@@ -453,25 +453,25 @@ super.end();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.END_METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.END_METHOD_NAME, e);
     
 }
 
 }
 
 
-    public addEarlyPortion(int32_t value, string text, int32_t index){
+    public: void addEarlyPortion(int32_t value, std::string text, int32_t index){
 
         try {
-            this.portion= value;
+            this->portion= value;
     
 super.addEarlyPortion(value, text, index);
     
 
-                        if(this.midletActivity != AndroidUtil.NULL_ACTIVITY)
+                        if(this->midletActivity != AndroidUtil::NULL_ACTIVITY)
                         
                                     {
-                                    this.midletActivity!.runOnUiThread(this.titleProgressDialogPortionSetProgressRunnable);
+                                    this->midletActivity.runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
 
                                     }
@@ -480,94 +480,94 @@ super.addEarlyPortion(value, text, index);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
     
 }
 
 }
 
 
-    public addPortion(int32_t value, string text, int32_t index){
+    public: void addPortion(int32_t value, std::string text, int32_t index){
 
         try {
-            this.portion= value;
+            this->portion= value;
     
 super.addPortion(value, text, index);
     
-this.midletActivity!.runOnUiThread(this.titleProgressDialogPortionSetProgressRunnable);
+this->midletActivity.runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
     
 }
 
 }
 
 
-    public addNormalPortion(int32_t value, string text){
+    public: void addNormalPortion(int32_t value, std::string text){
 
         try {
-            this.portion= value;
+            this->portion= value;
     
 super.addNormalPortion(value, text);
     
-this.midletActivity!.runOnUiThread(this.titleProgressDialogPortionSetProgressRunnable);
+this->midletActivity.runOnUiThread(this->titleProgressDialogPortionSetProgressRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.ADD_PORTION, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->ADD_PORTION, e);
     
 }
 
 }
 
 
-    setValue(int32_t value){
+    protected: void setValue(int32_t value){
 
         try {
             super.setValue(value);
     
-this.midletActivity!.runOnUiThread(this.titleProgressDialogSetProgressRunnable);
+this->midletActivity.runOnUiThread(this->titleProgressDialogSetProgressRunnable);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setValue", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "setValue", e);
     
 }
 
 }
 
 
-    public waitUntilDisplayed(){
+    public: void waitUntilDisplayed(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    setImages(int32_t index, int32_t lastWidth, int32_t lastHeight){
+    private: void setImages(int32_t index, int32_t lastWidth, int32_t lastHeight){
 
-    image: Image = this.image;;
+    Image image = this->image;;
     
 
-                        if(image != NullImage.NULL_IMAGE)
+                        if(image != NullImage::NULL_IMAGE)
                         
                                     {
                                     
-                        if(Features.getInstance()!.isFeature(MainFeatureFactory.getInstance()!.FULL_SCREEN))
+                        if(Features::getInstance().isFeature(MainFeatureFactory::getInstance().FULL_SCREEN))
                         
                                     {
                                     
-                        if(this.IMAGE[index] == NullImage.NULL_IMAGE)
+                        if(this->IMAGE[index] == NullImage::NULL_IMAGE)
                         
                                     {
-                                    this.IMAGE[index]= ImageScaleUtil.getInstance()!.createImage2(ImageCacheFactory.getInstance(), image, lastWidth, image.getWidth(), lastHeight -20, image.getHeight(), false);
+                                    this->IMAGE[index]= ImageScaleUtil::getInstance().createImage2(ImageCacheFactory::getInstance(), image, lastWidth, image.getWidth(), lastHeight -20, image.getHeight(), false);
     
 
                                     }
@@ -577,13 +577,13 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setValue", e);
                                 
                         else {
                             
-    nextIndex: int32_t = index +1;;
+    int32_t nextIndex = index +1;;
     
 
-                        if(this.IMAGE[nextIndex] == NullImage.NULL_IMAGE)
+                        if(this->IMAGE[nextIndex] == NullImage::NULL_IMAGE)
                         
                                     {
-                                    this.IMAGE[nextIndex]= ImageScaleUtil.getInstance()!.createImage2(ImageCacheFactory.getInstance(), image, lastWidth, image.getWidth(), lastHeight -28, image.getHeight(), false);
+                                    this->IMAGE[nextIndex]= ImageScaleUtil::getInstance().createImage2(ImageCacheFactory::getInstance(), image, lastWidth, image.getWidth(), lastHeight -28, image.getHeight(), false);
     
 
                                     }
@@ -599,69 +599,67 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setValue", e);
 
                 //@Throws(Exception.constructor)
             
-    public initOpenGL(Graphics graphics){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.INIT);
+    public: void initOpenGL(Graphics graphics){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
-this.image= GameFeatureImageCacheFactory.getInstance()!.getWithKey(AndroidBasicTitleProgressBar.RESOURCE);
-    
-
-    preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;;
+this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
     
 
-    size: int32_t = this.IMAGE.length
-                ;;
+    PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();;
     
 
-
-
-
-                        for (
-    index: int32_t = 0;index < size; index++)
-        {
-
-                        if(this.IMAGE[index] != NullImage.NULL_IMAGE)
-                        
-                                    {
-                                    this.IMAGE[index]= preResourceImageUtil!.encapsulate(this.IMAGE[index]!);
-    
-
-                                    }
-                                
-}
-
-this.updateCurrent();
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public update(Graphics graphics){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.UPDATE);
-    
-this.initOpenGL(graphics);
-    
-this.image= GameFeatureImageCacheFactory.getInstance()!.getWithKey(AndroidBasicTitleProgressBar.RESOURCE);
-    
-
-    preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;;
-    
-
-    size: int32_t = this.IMAGE.length
-                ;;
+    int32_t size = this->IMAGE.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-                        if(this.IMAGE[index] != NullImage.NULL_IMAGE)
+                        if(this->IMAGE[index] != NullImage::NULL_IMAGE)
                         
                                     {
-                                    preResourceImageUtil!.update(graphics, this.IMAGE[index]!);
+                                    this->IMAGE[index]= preResourceImageUtil.encapsulate(this->IMAGE[index]!);
+    
+
+                                    }
+                                
+}
+
+this->updateCurrent();
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void update(Graphics graphics){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.UPDATE);
+    
+this->initOpenGL(graphics);
+    
+this->image= GameFeatureImageCacheFactory::getInstance().getWithKey(AndroidBasicTitleProgressBar::RESOURCE);
+    
+
+    PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();;
+    
+
+    int32_t size = this->IMAGE.size();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+
+                        if(this->IMAGE[index] != NullImage::NULL_IMAGE)
+                        
+                                    {
+                                    preResourceImageUtil.update(graphics, this->IMAGE[index]!);
     
 
                                     }
@@ -673,21 +671,21 @@ this.image= GameFeatureImageCacheFactory.getInstance()!.getWithKey(AndroidBasicT
 
                 //@Throws(Exception.constructor)
             
-    Image getImage(int32_t index){
+    private: Image getImage(int32_t index){
 
-    image: Image = NullImage.NULL_IMAGE;;
+    Image image = NullImage::NULL_IMAGE;;
     
 
-                        if(Features.getInstance()!.isFeature(MainFeatureFactory.getInstance()!.FULL_SCREEN))
+                        if(Features::getInstance().isFeature(MainFeatureFactory::getInstance().FULL_SCREEN))
                         
                                     {
-                                    image= this.IMAGE[index]!;
+                                    image= this->IMAGE[index]!;
     
 
                                     }
                                 
                         else {
-                            image= this.IMAGE[index +1]!;
+                            image= this->IMAGE[index +1]!;
     
 
                         }
@@ -701,10 +699,10 @@ this.image= GameFeatureImageCacheFactory.getInstance()!.getWithKey(AndroidBasicT
 }
 
 
-    public paint2(Graphics graphics){
+    public: void paint2(Graphics graphics){
 
         try {
-            this.animation.paintXY(graphics, 0, 20);
+            this->animation.paintXY(graphics, 0, 20);
     
 super.paint2(graphics);
     
@@ -712,33 +710,33 @@ super.paint2(graphics);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.canvasStrings!.PAINT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->canvasStrings.PAINT, e);
     
 }
 
 }
 
 
-    setBackground(bool background){
+    protected: void setBackground(bool background){
 super.setBackground(background);
     
-this.updateCurrent();
+this->updateCurrent();
     
 }
 
 
-    setPortion(int32_t portion){
-this.portion= portion;
+    protected: void setPortion(int32_t portion){
+this->portion= portion;
     
 }
 
 
-    int32_t getPortion(){
+    protected: int32_t getPortion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.portion;
+                        return this->portion;
     
 }
 

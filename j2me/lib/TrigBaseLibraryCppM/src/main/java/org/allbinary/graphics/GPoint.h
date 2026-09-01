@@ -63,35 +63,34 @@
 class GPoint
             : public Object
          {
-        
 
-    public static GPoint getInstance(GPoint point);
+    public: static GPoint getInstance(GPoint point);
 
-    private: static const POINT_LABEL: string = "Point: ";
+    private: static const std::string POINT_LABEL = "Point: ";
 
-    public static string toStringStatic(int32_t x, int32_t y, int32_t z);
+    public: static std::string toStringStatic(int32_t x, int32_t y, int32_t z);
 
-    private: const x: int32_t;
+    private: int32_t x;
 
-    private: const y: int32_t;
+    private: int32_t y;
 
-    private: const z: int32_t;
+    private: int32_t z;
 
-public constructor (int32_t x, int32_t y, int32_t z);
+public: GPoint(int32_t x, int32_t y, int32_t z);
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public int32_t getZ();
+    public: int32_t getZ();
 
-    public int32_t getRawX();
+    public: int32_t getRawX();
 
-    public int32_t getRawY();
+    public: int32_t getRawY();
 
-    public int32_t getRawZ();
+    public: int32_t getRawZ();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -49,11 +49,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MenuListener: public GameKeyEventSourceInterface {
-        
 
-    open()
+    void open()
 
-    close()
+    void close()
 
 };
 

@@ -53,19 +53,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdvertisementInterface {
-        
 
-    string getArtist()
+    std::string getArtist()
 
-    string getArtistLink()
+    std::string getArtistLink()
 
-    string getTitle()
+    std::string getTitle()
 
-    string getDateAdded()
+    std::string getDateAdded()
 
-    string getDirectory()
+    std::string getDirectory()
 
-    string getFramedLink()
+    std::string getFramedLink()
 
     Money getListPrice()
 
@@ -81,25 +80,25 @@ class AdvertisementInterface {
 
     DisplayInBrowserContraintsInterface getDisplayInBrowserContraintsInterface()
 
-    setArtist(string artist)
+    void setArtist(std::string artist)
 
-    setArtistLink(string artistLink)
+    void setArtistLink(std::string artistLink)
 
-    setTitle(string title)
+    void setTitle(std::string title)
 
-    setDateAdded(string dateAdded)
+    void setDateAdded(std::string dateAdded)
 
-    setDirectory(string directory)
+    void setDirectory(std::string directory)
 
-    setFramedLink(string framedLink)
+    void setFramedLink(std::string framedLink)
 
-    setRank(int32_t rank)
+    void setRank(int32_t rank)
 
-    setImage(AdvertisementImageInterface AdvertisementImageInterface)
+    void setImage(AdvertisementImageInterface AdvertisementImageInterface)
 
-    setProduct(AdvertisementProductInterface AdvertisementProductInterface)
+    void setProduct(AdvertisementProductInterface AdvertisementProductInterface)
 
-    setThumbnail(AdvertisementThumbnailInterface AdvertisementThumbnailInterface)
+    void setThumbnail(AdvertisementThumbnailInterface AdvertisementThumbnailInterface)
 
 };
 

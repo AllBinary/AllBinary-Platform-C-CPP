@@ -66,66 +66,63 @@
 class AllBinarySensor
             : public Object
         : public AllBinarySensorListener {
-        
 
-    public static const NULL_ALLBINARY_SENSOR: AllBinarySensor = new AllBinarySensor();
+    public: static const AllBinarySensor NULL_ALLBINARY_SENSOR = AllBinarySensor();
 
-    private: static max: int32_t = 100;
+    private: static int32_t max = 100;
 
-    public static setMax(int32_t max){
-AllBinarySensor.max= max;
+    public: static void setMax(int32_t max){
+AllBinarySensor::max= max;
     
 }
 
 
-    public static int32_t getMax(){
+    public: static int32_t getMax(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinarySensor.max;
+                        return AllBinarySensor::max;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor (){
-
-            super();
-        }
+protected: AllBinarySensor(){
+}
 
 
-    public init(){
+    public: void init(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(){
+    public: void update(){
 }
 
 
-    public int32_t getId(){
+    public: int32_t getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinarySensor.getMax();;
+                        return AllBinarySensor::getMax();;
     
 }
 
 
-    public shutdown(){
-this.logUtil!.putF(this.commonStrings!.START, this, "shutdown");
+    public: void shutdown(){
+this->logUtil.putF(this->commonStrings.START, this, "shutdown");
     
 }
 
 
-    public onSensorChange(){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    public: void onSensorChange(){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 }
 

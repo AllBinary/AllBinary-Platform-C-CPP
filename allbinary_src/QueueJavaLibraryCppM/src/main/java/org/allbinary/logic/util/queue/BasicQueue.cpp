@@ -47,21 +47,18 @@
 class BasicQueue
             : public Object
          {
-        
 
-    const queueVector: Vector = new Vector();
+    protected: const Vector queueVector = Vector();
 
-protected constructor (){
-
-            super();
-        }
+protected: BasicQueue(){
+}
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    bool offer(any = {} anyType){
-this.queueVector!.add(anyType);
+    protected: bool offer(Object* anyType){
+this->queueVector.add(anyType);
     
 
 
@@ -73,18 +70,18 @@ this.queueVector!.add(anyType);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    remove(any = {} anyType){
-this.queueVector!.remove(anyType);
+    protected: void remove(Object* anyType){
+this->queueVector.remove(anyType);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    any removeLast(){
+    protected: Object* removeLast(){
 
-    anyType: any = this.queueVector!.lastElement()!;;
+    Object* anyType = this->queueVector.lastElement();;
     
-this.queueVector!.remove(anyType);
+this->queueVector.remove(anyType);
     
 
 

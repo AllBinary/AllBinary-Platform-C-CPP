@@ -58,13 +58,12 @@
 class ProfileActionScriptInputFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ProfileActionScriptInputInterface getInstance(Node node);
+    public: static ProfileActionScriptInputInterface getInstance(Node node);
 
-private constructor ();
+private: ProfileActionScriptInputFactory();
 
 };
 

@@ -87,40 +87,39 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpComponentView: public TransformInfoHttpComposite: public TransformInterface {
-        
+class HttpComponentView: public TransformInfoHttpComposite, public TransformInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: domNodeInterfaceVector: Vector;
+    private: Vector domNodeInterfaceVector;
 
-    private: transformDocumentInterface: TransformDocumentInterface;
+    private: TransformDocumentInterface transformDocumentInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: HttpComponentView(TransformInfoInterface transformInfoInterface);
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId();
+    public: int32_t getTypeId();
 
-    public TransformDocumentInterface getTransformDocumentInterface();
+    public: TransformDocumentInterface getTransformDocumentInterface();
 
-    public setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
+    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface);
 
-    public addDomNodeInterface(DomNodeInterface domNodeInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Document toXmlDoc();
+    public: void addDomNodeInterface(DomNodeInterface domNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Document getDoc();
+    public: Document toXmlDoc();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Document getDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

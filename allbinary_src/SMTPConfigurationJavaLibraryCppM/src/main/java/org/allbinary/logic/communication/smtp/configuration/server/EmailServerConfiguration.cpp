@@ -56,142 +56,135 @@
 class EmailServerConfiguration
             : public Object
         : public EmailServerConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: accountName: string;
+    private: std::string accountName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: smtpServer: string;
+    private: std::string smtpServer;
 
-public constructor (){
+public: EmailServerConfiguration(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.setSmtpServer(StringUtil.getInstance()!.EMPTY_STRING);
+this->setSmtpServer(StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
+public: EmailServerConfiguration(HashMap<any, any> hashMap){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, "EmailServerConfiguration(HashMap)");
+this->logUtil.putF(commonStrings.START, this, "EmailServerConfiguration(HashMap)");
     
 
                                     }
                                 
-this.setAccountName(hashMap!.get(EmailServerConfigurationData.ACCOUNT) as string);
+this->setAccountName(hashMap.get(EmailServerConfigurationData::ACCOUNT) as string);
     
-this.setPassword(hashMap!.get(EmailServerConfigurationData.PASSWORD) as string);
+this->setPassword(hashMap.get(EmailServerConfigurationData::PASSWORD) as string);
     
-this.setSmtpServer(hashMap!.get(EmailServerConfigurationData.SERVER) as string);
+this->setSmtpServer(hashMap.get(EmailServerConfigurationData::SERVER) as string);
     
-this.log();
+this->log();
     
 }
 
 
-public constructor (string account, string password, string server){
+public: EmailServerConfiguration(std::string account, std::string password, std::string server){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, "EmailServerConfiguration(HashMap)");
+this->logUtil.putF(commonStrings.START, this, "EmailServerConfiguration(HashMap)");
     
 
                                     }
                                 
-this.setAccountName(account);
+this->setAccountName(account);
     
-this.setPassword(password);
+this->setPassword(password);
     
-this.setSmtpServer(server);
+this->setSmtpServer(server);
     
-this.log();
-    
-}
-
-
-    public setSmtpServer(string value){
-this.smtpServer= value;
+this->log();
     
 }
 
 
-    public string getSmtpServer(){
+    public: void setSmtpServer(std::string value){
+this->smtpServer= value;
+    
+}
+
+
+    public: std::string getSmtpServer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.smtpServer;
+                        return this->smtpServer;
     
 }
 
 
-    public string getAccountName(){
+    public: std::string getAccountName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.accountName;
+                        return this->accountName;
     
 }
 
 
-    public setAccountName(string accountName){
-this.accountName= accountName;
+    public: void setAccountName(std::string accountName){
+this->accountName= accountName;
     
 }
 
 
-    public string getPassword(){
+    public: std::string getPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.password;
+                        return this->password;
     
 }
 
 
-    public setPassword(string password){
-this.password= password;
+    public: void setPassword(std::string password){
+this->password= password;
     
 }
 
 
-    public log(){
+    public: void log(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.toString(), this, "EmailServerConfiguration");
+                                    this->logUtil.putF(this->toString(), this, "EmailServerConfiguration");
     
 
                                     }
@@ -199,12 +192,12 @@ this.password= password;
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Email Server Configuration:\n" +"Smtp Server: \n" +this.getSmtpServer() +"\nAccount Name: " +this.getAccountName() +"\nPassword: " +this.getPassword();
+                        return "Email Server Configuration:\n" +"Smtp Server: \n" +this->getSmtpServer() +"\nAccount Name: " +this->getAccountName() +"\nPassword: " +this->getPassword();
     
 }
 

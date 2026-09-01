@@ -39,9 +39,8 @@
         #include "AbeClientInformation.h"
 
 class InputAutomationClientInformation: public AbeClientInformation {
-        
 
-public constructor (){
+public: InputAutomationClientInformation(){
             super("InputAutomationTool", "0.0.1", "InputAutomationTool 0.0.1", "IA");
                     
 

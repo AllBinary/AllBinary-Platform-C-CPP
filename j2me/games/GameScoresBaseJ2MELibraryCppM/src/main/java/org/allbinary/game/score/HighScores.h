@@ -73,41 +73,40 @@
 class HighScores
             : public Object
         : public HighScoresInterface {
-        
 
-    private: orderedHighScoresList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList orderedHighScoresList = BasicArrayListD();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const heading: string;
+    private: std::string heading;
 
-    private: const columnOneHeading: string = "Name";
+    private: const std::string columnOneHeading = "Name";
 
-    private: const columnTwoHeading: string;
+    private: std::string columnTwoHeading;
 
-public constructor (string name, string heading, string columnTwoHeading);
+public: HighScores(std::string name, std::string heading, std::string columnTwoHeading);
 
-    public setList(BasicArrayList orderedHighScoresList);
+    public: void setList(BasicArrayList orderedHighScoresList);
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
-    public string getName();
+    public: std::string getName();
 
-    public int32_t getTotal();
+    public: int32_t getTotal();
 
-    public addHighScore(HighScore newHighScore);
+    public: void addHighScore(HighScore newHighScore);
 
-    public string getHeading();
+    public: std::string getHeading();
 
-    public string getColumnOneHeading();
+    public: std::string getColumnOneHeading();
 
-    public string getColumnTwoHeading();
+    public: std::string getColumnTwoHeading();
 
                 //@Throws(Exception.constructor)
             
-    public bool isBestScore(HighScore newHighScore);
+    public: bool isBestScore(HighScore newHighScore);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

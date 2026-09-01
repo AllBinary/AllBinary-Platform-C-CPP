@@ -52,11 +52,10 @@
 #include "HighScoresHelperBaseInterface.h"
 
 class HighScoresFactoryInterface {
-        
 
-    fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
+    void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
 
-    fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
+    void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
 
     HighScoresHelperBaseInterface createHighScoresHelper();
 

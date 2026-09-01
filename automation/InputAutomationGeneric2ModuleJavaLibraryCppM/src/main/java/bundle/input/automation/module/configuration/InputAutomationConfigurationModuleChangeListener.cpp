@@ -41,11 +41,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationConfigurationModuleChangeListener {
-        
 
-    onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent)
+    void onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent)
 
-    onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent)
+    void onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent)
 
 };
 

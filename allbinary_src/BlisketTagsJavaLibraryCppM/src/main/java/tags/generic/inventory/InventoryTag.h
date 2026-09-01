@@ -66,23 +66,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InventoryTag: public StoreValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
-
-                //@Throws(LicensingException.constructor)
-            
-    search();
+public: InventoryTag();
 
                 //@Throws(LicensingException.constructor)
             
-    viewSummary();
+    private: void search();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: void viewSummary();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

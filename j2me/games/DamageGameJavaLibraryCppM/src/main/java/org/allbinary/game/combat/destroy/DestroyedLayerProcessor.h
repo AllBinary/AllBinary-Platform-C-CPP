@@ -73,19 +73,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DestroyedLayerProcessor: public BasicLayerProcessor {
-        
 
-    private: static DESTROYED_LAYER_PROCESSOR: BasicLayerProcessor = BasicLayerProcessor.NULL_LAYER_PROCESSOR;
+    private: static BasicLayerProcessor DESTROYED_LAYER_PROCESSOR = BasicLayerProcessor::NULL_LAYER_PROCESSOR;
 
-    public static init();
+    public: static void init();
 
-    public static BasicLayerProcessor getInstance();
+    public: static BasicLayerProcessor getInstance();
 
-private constructor ();
+private: DestroyedLayerProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager);
+    public: void process(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

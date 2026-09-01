@@ -54,35 +54,34 @@
 class OrderHistoryFactory
             : public Object
          {
-        
 
-    public static OrderHistory getInstance(string id){
+    public: static OrderHistory getInstance(std::string id){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    orderHistoryEntityInterface: OrderHistoryEntity = new org.allbinary.data.tables.user.commerce.inventory.order.OrderHistoryEntity();;
+    OrderHistoryEntity orderHistoryEntityInterface = org::allbinary::data::tables::user::commerce::inventory::order::OrderHistoryEntity();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return orderHistoryEntityInterface!.getOrder(id) as OrderHistory;
+                        return orderHistoryEntityInterface.getOrder(id) as OrderHistory;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
                         
                                     {
-                                    logUtil!.put(commonStrings!.EXCEPTION, "OrderHistoryFactory", commonStrings!.GET_INSTANCE, e);
+                                    logUtil.put(commonStrings.EXCEPTION, "OrderHistoryFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -98,12 +97,10 @@ class OrderHistoryFactory
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: OrderHistoryFactory(){
+}
 
 
 };

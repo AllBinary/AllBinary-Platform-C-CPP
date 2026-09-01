@@ -55,14 +55,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasicWorkFlow.h"
 
-class BasicStoreWorkFlow: public BasicWorkFlow: public StoreWorkFlowInterface {
-        
+class BasicStoreWorkFlow: public BasicWorkFlow, public StoreWorkFlowInterface {
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: BasicStoreWorkFlow(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public string getStoreName();
+    public: std::string getStoreName();
 
 };
 

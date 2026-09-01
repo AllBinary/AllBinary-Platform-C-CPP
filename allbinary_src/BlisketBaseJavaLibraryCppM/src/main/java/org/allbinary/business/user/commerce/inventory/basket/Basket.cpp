@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -71,40 +73,37 @@
 class Basket
             : public Object
         : public BasketInterface, public Serializable {
-        
 
-    private: items: HashMap<any, any> = new HashMap<any, any>();
+    private: HashMap<any, any> items = HashMap<any, any>();
 
-public constructor (){
-
-            super();
-        }
+public: Basket(){
+}
 
 
-    public addItem(string id, string num){
+    public: void addItem(std::string id, std::string num){
 
-                        if(this.items.containsKey(id))
+                        if(this->items.containsKey(id))
                         
                                     {
                                     
-    oldNumStr: string = .toCharArray();;
+    std::string oldNumStr = .toCharArray();;
     
 
-    oldNumInt: Integer = Integer.valueOf(oldNumStr)!;;
+    Integer oldNumInt = Integer::valueOf(oldNumStr);;
     
 
-    numInt: Integer = Integer.valueOf(num)!;;
+    Integer numInt = Integer::valueOf(num);;
     
 
-    newNumInt: Integer = new Integer(oldNumInt!.intValue() +numInt!.intValue());;
+    Integer newNumInt = Integer(oldNumInt.intValue() +numInt.intValue());;
     
-this.items.put(id, newNumInt!.toString());
+this->items.put(id, newNumInt.toString());
     
 
                                     }
                                 
                         else {
-                            this.items.put(id, num);
+                            this->items.put(id, num);
     
 
                         }
@@ -112,24 +111,24 @@ this.items.put(id, newNumInt!.toString());
 }
 
 
-    public removeItem(string id){
-this.items.remove(id);
+    public: void removeItem(std::string id){
+this->items.remove(id);
     
 }
 
 
-    public adjustItem(string id, string num){
+    public: void adjustItem(std::string id, std::string num){
 
-                        if(Integer.valueOf(num)!.intValue() > 0)
+                        if(Integer::valueOf(num).intValue() > 0)
                         
                                     {
-                                    this.items.put(id, num);
+                                    this->items.put(id, num);
     
 
                                     }
                                 
                         else {
-                            this.items.remove(id);
+                            this->items.remove(id);
     
 
                         }
@@ -137,47 +136,46 @@ this.items.remove(id);
 }
 
 
-    public string getTotalWeight(){
+    public: std::string getTotalWeight(){
 
-    itemsAndNumberInBasket: HashMap<any, any> = this.getItems()!;;
+    HashMap<any, any> itemsAndNumberInBasket = this->getItems();;
     
 
-    totalWeight: Money = new Money();;
+    Money totalWeight = Money();;
     
 
-                        if(itemsAndNumberInBasket!.size() > 0)
+                        if(itemsAndNumberInBasket.size() > 0)
                         
                                     {
                                     
-    items: Set = itemsAndNumberInBasket!.keySet()!;;
+    Set items = itemsAndNumberInBasket.keySet();;
     
 
-    product: string;;
+    std::string product;;
     
 
-    weightFloat: number;;
+    number weightFloat;;
     
 
-    itemArray: std::vector<any> = items.toArray()!;;
+    std::vector<Object*> itemArray = items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 product= .toCharArray();
     
-weightFloat= new number(new InventoryEntity().getWeight(product));
+weightFloat= number(InventoryEntity().getWeight(product));
     
-weightFloat= new number(getNumberOf(product)! *weightFloat!);
+weightFloat= number(getNumberOf(product) *weightFloat);
     
-totalWeight!.add(weightFloat!.toString());
+totalWeight.add(weightFloat.toString());
     
 }
 
@@ -188,24 +186,24 @@ totalWeight!.add(weightFloat!.toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return totalWeight!.toString();;
+                        return totalWeight.toString();;
     
 }
 
 
-    public Integer getNumberOfItems(){
+    public: Integer getNumberOfItems(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Integer(this.items.size());
+                        return Integer(this->items.size());
     
 }
 
 
-    public Set getIds(){
+    public: Set getIds(){
 
-    set: Set = this.items.keySet()!;;
+    Set set = this->items.keySet();;
     
 
 
@@ -216,77 +214,76 @@ totalWeight!.add(weightFloat!.toString());
 }
 
 
-    public HashMap<any, any> getItems(){
+    public: HashMap<any, any> getItems(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.items;
+                        return this->items;
     
 }
 
 
-    public Integer getNumberOf(string product){
+    public: Integer getNumberOf(std::string product){
 
-    numStr: string = this.items.get(product) as string;;
+    std::string numStr = this->items.get(product) as string;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Integer.valueOf(numStr);;
+                        return Integer::valueOf(numStr);;
     
 }
 
 
                 //@Throws(MoneyException.constructor)
             
-    public Money getSubTotal(){
+    public: Money getSubTotal(){
 
-    itemsAndNumberInBasket: HashMap<any, any> = this.getItems()!;;
+    HashMap<any, any> itemsAndNumberInBasket = this->getItems();;
     
 
-    subTotal: Money = new Money();;
+    Money subTotal = Money();;
     
 
-                        if(itemsAndNumberInBasket!.size() > 0)
+                        if(itemsAndNumberInBasket.size() > 0)
                         
                                     {
                                     
-    items: Set = itemsAndNumberInBasket!.keySet()!;;
+    Set items = itemsAndNumberInBasket.keySet();;
     
 
-    inventoryEntityFactory: InventoryEntityFactory = InventoryEntityFactory.getInstance()!;;
+    InventoryEntityFactory inventoryEntityFactory = InventoryEntityFactory::getInstance();;
     
 
-    inventoryEntity: InventoryEntity = inventoryEntityFactory!.getInventoryEntityInstance() as InventoryEntity;;
+    InventoryEntity inventoryEntity = inventoryEntityFactory.getInventoryEntityInstance() as InventoryEntity;;
     
 
-    itemArray: std::vector<any> = items.toArray()!;;
+    std::vector<Object*> itemArray = items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    product: string = .toCharArray();;
+    std::string product = .toCharArray();;
     
 
-    itemInterface: ItemInterface = inventoryEntity!.getItem(product)!;;
+    ItemInterface itemInterface = inventoryEntity.getItem(product);;
     
 
-    productTotal: Money = itemInterface!.getPrice()!;;
+    Money productTotal = itemInterface.getPrice();;
     
-productTotal!.multiply(getNumberOf(product)!.intValue());
+productTotal.multiply(getNumberOf(product).intValue());
     
-subTotal!.add(productTotal!.toString());
+subTotal.add(productTotal.toString());
     
 }
 

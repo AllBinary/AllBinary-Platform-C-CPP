@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_SIMULTANEOUSCOMPOUNDINDEXEDANIMATIONINTERFACEFACTORY_H
 
+            #include <vector>
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -55,13 +57,12 @@
 #include "SimultaneousCompoundIndexedAnimation.h"
 
 class SimultaneousCompoundIndexedAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
-        
 
-public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory);
+public: SimultaneousCompoundIndexedAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory);
 
-    std::vector<Animation> createArray(int32_t size);
+    protected: std::vector<Animation> createArray(int32_t size);
 
-    Animation createAnimation(std::vector<Animation> animationArray);
+    protected: Animation createAnimation(std::vector<Animation> animationArray);
 
 };
 

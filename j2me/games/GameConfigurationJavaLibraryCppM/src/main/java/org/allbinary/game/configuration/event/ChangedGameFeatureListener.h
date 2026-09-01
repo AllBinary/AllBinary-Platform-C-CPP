@@ -51,13 +51,12 @@
         #include "BaseChangedGameFeatureListener.h"
 
 class ChangedGameFeatureListener: public BaseChangedGameFeatureListener {
-        
 
-    private: static const gameFeatureListener: ChangedGameFeatureListener = new ChangedGameFeatureListener();
+    private: static const ChangedGameFeatureListener gameFeatureListener = ChangedGameFeatureListener();
 
-    public static ChangedGameFeatureListener getInstance();
+    public: static ChangedGameFeatureListener getInstance();
 
-    public bool isChangedGameConfiguration(GameConfiguration gameConfiguration);
+    public: bool isChangedGameConfiguration(GameConfiguration gameConfiguration);
 
 };
 

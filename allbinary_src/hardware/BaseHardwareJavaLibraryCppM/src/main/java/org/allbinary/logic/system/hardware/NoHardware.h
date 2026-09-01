@@ -58,19 +58,18 @@
 class NoHardware
             : public Object
         : public HardwareInterface {
-        
 
-    private: static const instance: HardwareInterface = new NoHardware();
+    private: static const HardwareInterface instance = NoHardware();
 
-    public static HardwareInterface getInstance();
+    public: static HardwareInterface getInstance();
 
-    public HardwareComponentInterface getComponent(int32_t index);
+    public: HardwareComponentInterface getComponent(int32_t index);
 
-    public string toString();
+    public: std::string toString();
 
-    public bool compareTo(HardwareInterface hardwareInterface);
+    public: bool compareTo(HardwareInterface hardwareInterface);
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
 
 };
 

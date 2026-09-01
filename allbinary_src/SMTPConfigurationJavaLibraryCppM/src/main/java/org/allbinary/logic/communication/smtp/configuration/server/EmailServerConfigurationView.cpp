@@ -69,59 +69,54 @@
 class EmailServerConfigurationView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    private: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor (Node node){
+public: EmailServerConfigurationView(Node node){
 
-            super();
-        
-    childNodeList: NodeList = node.getChildNodes()!;;
+    NodeList childNodeList = node.getChildNodes();;
     
 
-    server: string = DomNodeHelper.getTextNodeValue(EmailServerConfigurationData.SERVER, childNodeList)!;;
+    std::string server = DomNodeHelper::getTextNodeValue(EmailServerConfigurationData::SERVER, childNodeList);;
     
 
-    accountName: string = DomNodeHelper.getTextNodeValue(EmailServerConfigurationData.ACCOUNT, childNodeList)!;;
+    std::string accountName = DomNodeHelper::getTextNodeValue(EmailServerConfigurationData::ACCOUNT, childNodeList);;
     
 
-    password: string = DomNodeHelper.getTextNodeValue(EmailServerConfigurationData.PASSWORD, childNodeList)!;;
+    std::string password = DomNodeHelper::getTextNodeValue(EmailServerConfigurationData::PASSWORD, childNodeList);;
     
-this.emailServerConfigurationInterface= new EmailServerConfiguration(accountName, password, server) as EmailServerConfigurationInterface;
+this->emailServerConfigurationInterface= EmailServerConfiguration(accountName, password, server) as EmailServerConfigurationInterface;
     
 }
 
 
-public constructor (EmailServerConfigurationInterface emailServerConfigurationInterface){
-
-            super();
-        this.emailServerConfigurationInterface= emailServerConfigurationInterface;
+public: EmailServerConfigurationView(EmailServerConfigurationInterface emailServerConfigurationInterface){
+this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public EmailServerConfigurationInterface getEmailConfigurationInterface(){
+    public: EmailServerConfigurationInterface getEmailConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.emailServerConfigurationInterface;
+                        return this->emailServerConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    emailConfigurationMapping: EmailServerConfigurationMapping = new EmailServerConfigurationMapping(this.emailServerConfigurationInterface);;
+    EmailServerConfigurationMapping emailConfigurationMapping = EmailServerConfigurationMapping(this->emailServerConfigurationInterface);;
     
 
-    hashMap: HashMap<any, any> = emailConfigurationMapping!.toHashMap()!;;
+    HashMap<any, any> hashMap = emailConfigurationMapping.toHashMap();;
     
 
-    node: Node = ModDomHelper.createNodeWithValueNodes(document, EmailServerConfigurationData.NAME, hashMap)!;;
+    Node node = ModDomHelper::createNodeWithValueNodes(document, EmailServerConfigurationData::NAME, hashMap);;
     
 
 

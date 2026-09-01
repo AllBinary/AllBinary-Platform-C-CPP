@@ -51,38 +51,35 @@
 class ResourceLoadingLevel
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const level: int32_t;
+    private: int32_t level;
 
- constructor (string name, int32_t level){
-
-            super();
-        this.name= name;
+: ResourceLoadingLevel(std::string name, int32_t level){
+this->name= name;
     
-this.level= level;
+this->level= level;
     
 }
 
 
-    public int32_t getLevel(){
+    public: int32_t getLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level;
+                        return this->level;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

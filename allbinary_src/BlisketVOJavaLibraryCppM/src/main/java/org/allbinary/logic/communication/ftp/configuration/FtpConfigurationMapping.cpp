@@ -55,29 +55,26 @@
 class FtpConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: ftpConfigurationInterface: FtpConfigurationInterface;
+    private: FtpConfigurationInterface ftpConfigurationInterface;
 
-public constructor (FtpConfigurationInterface ftpConfigurationInterface){
-
-            super();
-        this.ftpConfigurationInterface= ftpConfigurationInterface;
+public: FtpConfigurationMapping(FtpConfigurationInterface ftpConfigurationInterface){
+this->ftpConfigurationInterface= ftpConfigurationInterface;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(FtpConfigurationData.SERVER, this.ftpConfigurationInterface!.getServer());
+hashMap.put(FtpConfigurationData::SERVER, this->ftpConfigurationInterface.getServer());
     
-hashMap!.put(FtpConfigurationData.USERNAME, this.ftpConfigurationInterface!.getUserName());
+hashMap.put(FtpConfigurationData::USERNAME, this->ftpConfigurationInterface.getUserName());
     
-hashMap!.put(FtpConfigurationData.PASSWORD, this.ftpConfigurationInterface!.getPassword());
+hashMap.put(FtpConfigurationData::PASSWORD, this->ftpConfigurationInterface.getPassword());
     
-hashMap!.put(FtpConfigurationData.PATH, this.ftpConfigurationInterface!.getPath());
+hashMap.put(FtpConfigurationData::PATH, this->ftpConfigurationInterface.getPath());
     
 
 
@@ -90,29 +87,29 @@ hashMap!.put(FtpConfigurationData.PATH, this.ftpConfigurationInterface!.getPath(
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FtpConfigurationData.NAME;
+                        return FtpConfigurationData::NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(this.ftpConfigurationInterface!.getServer());
+vector.add(this->ftpConfigurationInterface.getServer());
     
-vector.add(this.ftpConfigurationInterface!.getUserName());
+vector.add(this->ftpConfigurationInterface.getUserName());
     
-vector.add(this.ftpConfigurationInterface!.getPassword());
+vector.add(this->ftpConfigurationInterface.getPassword());
     
-vector.add(this.ftpConfigurationInterface!.getPath());
+vector.add(this->ftpConfigurationInterface.getPath());
     
 
 

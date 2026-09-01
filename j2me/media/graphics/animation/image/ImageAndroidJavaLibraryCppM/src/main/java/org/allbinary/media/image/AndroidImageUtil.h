@@ -68,17 +68,16 @@
 class AndroidImageUtil
             : public Object
          {
-        
 
-    private: static const instance: AndroidImageUtil = new AndroidImageUtil();
+    private: static AndroidImageUtil instance() { return AndroidImageUtil(); }
 
-    public static AndroidImageUtil getInstance();
+    public: static AndroidImageUtil getInstance();
 
-    public paintBitmap(Bitmap bitmap, Bitmap originalBitmap, Paint paint);
+    public: void paintBitmap(Bitmap bitmap, Bitmap originalBitmap, Paint paint);
 
-    public paint(Image image, Image originalImage, Paint paint);
+    public: void paint(Image image, Image originalImage, Paint paint);
 
-    public rotate(Image image, Image originalImage, Matrix matrix, Paint paint);
+    public: void rotate(Image image, Image originalImage, Matrix matrix, Paint paint);
 
 };
 

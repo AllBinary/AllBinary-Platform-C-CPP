@@ -47,21 +47,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DamageFloaters: public Paintable {
-        
 
-    private: static const SINGLETON: DamageFloaters = new DamageFloaters();
+    private: static const DamageFloaters SINGLETON = DamageFloaters();
 
-    public static DamageFloaters getInstance(){
+    public: static DamageFloaters getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageFloaters.SINGLETON;
+                        return DamageFloaters::SINGLETON;
     
 }
 
 
-    public add(int32_t damage){
+    public: void add(int32_t damage){
 }
 
 

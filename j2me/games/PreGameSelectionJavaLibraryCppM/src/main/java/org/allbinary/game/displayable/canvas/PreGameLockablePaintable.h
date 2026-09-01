@@ -61,17 +61,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PreGameLockablePaintable: public LockablePaintable {
-        
 
-    private: const halfWidth: int32_t;
+    private: int32_t halfWidth;
 
-    private: const paintableForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm paintableForm;
 
-public constructor (ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex);
+public: PreGameLockablePaintable(ScrollCurrentSelectionForm paintableForm, int32_t lockedIndex);
 
-    public paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y);
+    public: void paint(Graphics graphics, int32_t currentIndex, int32_t x, int32_t y);
 
-    ScrollCurrentSelectionForm getPaintableForm();
+    protected: ScrollCurrentSelectionForm getPaintableForm();
 
 };
 

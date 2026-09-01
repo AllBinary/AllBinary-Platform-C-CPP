@@ -38,9 +38,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ResizableListenerInterface {
-        
 
-    onResizable(bool isResizable)
+    void onResizable(bool isResizable)
 
 };
 

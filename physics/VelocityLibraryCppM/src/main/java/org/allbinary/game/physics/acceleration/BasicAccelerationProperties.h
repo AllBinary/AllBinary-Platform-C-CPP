@@ -54,21 +54,20 @@
 class BasicAccelerationProperties
             : public Object
          {
-        
 
-    private: forward: int32_t= 0;
+    private: int32_t forward= 0;
 
-    private: reverse: int32_t= 0;
+    private: int32_t reverse= 0;
 
-public constructor (int32_t forward, int32_t reverse);
+public: BasicAccelerationProperties(int32_t forward, int32_t reverse);
 
-    public setReverse(int32_t reverse);
+    public: void setReverse(int32_t reverse);
 
-    public int32_t getReverse();
+    public: int32_t getReverse();
 
-    public setForward(int32_t forward);
+    public: void setForward(int32_t forward);
 
-    public int32_t getForward();
+    public: int32_t getForward();
 
 };
 

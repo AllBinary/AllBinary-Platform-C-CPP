@@ -63,36 +63,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "IdGeneratorEntityInterface.h"
 
-class IdGeneratorEntity: public AbSqlBean: public IdGeneratorEntityInterface {
-        
+class IdGeneratorEntity: public AbSqlBean, public IdGeneratorEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "idgenerator";
+    private: const std::string tableName = "idgenerator";
 
-    private: const tableData: string;
+    private: std::string tableData;
 
-    const NAME: string = "NAME";
+    const std::string NAME = "NAME";
 
-    const VALUE: string = "VALUE";
+    const std::string VALUE = "VALUE";
 
-public constructor ();
+public: IdGeneratorEntity();
 
                 //@Throws(Exception.constructor)
             
-    public Long get(string name);
+    public: Long get(std::string name);
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string value);
+    public: void delete_(std::string value);
 
-    public update(string name, Long value);
+    public: void update(std::string name, Long value);
 
-    public update(HashMap<any, any> hashMap);
+    public: void update(HashMap<any, any> hashMap);
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

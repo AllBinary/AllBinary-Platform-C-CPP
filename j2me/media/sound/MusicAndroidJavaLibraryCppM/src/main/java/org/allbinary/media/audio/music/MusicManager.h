@@ -87,63 +87,62 @@
 class MusicManager
             : public Object
          {
-        
 
-    public static pause(Activity activity, Function musicServiceClass);
+    public: static void pause(Activity activity, Function musicServiceClass);
 
-    public static resume(Activity activity, Function musicServiceClass);
+    public: static void resume(Activity activity, Function musicServiceClass);
 
-    private: const PLAY: string = "Play ";
+    private: const std::string PLAY = "Play ";
 
-    private: const FOR: string = " for: ";
+    private: const std::string FOR = " for: ";
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const musicStrings: MusicStrings = MusicStrings.getInstance()!;
+    private: const MusicStrings musicStrings = MusicStrings::getInstance();
 
-    private: const commonStateStrings: CommonStateStrings = CommonStateStrings.getInstance()!;
+    private: const CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;
+    private: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
 
-    private: const androidServicesUtil: AndroidServicesUtil = AndroidServicesUtil.getInstance()!;
+    private: const AndroidServicesUtil androidServicesUtil = AndroidServicesUtil::getInstance();
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
 
-    private: const timeDelayHelper2: TimeDelayHelper = new TimeDelayHelper(1200);
+    private: const TimeDelayHelper timeDelayHelper2 = TimeDelayHelper(1200);
 
-    private: const songList: BasicArrayList;
+    private: BasicArrayList songList;
 
-    private: currentSongSound: Sound = NoSound.getInstance()!;
+    private: Sound currentSongSound = NoSound::getInstance();
 
-    private: nextSongSound: Sound = NoSound.getInstance()!;
+    private: Sound nextSongSound = NoSound::getInstance();
 
-    private: leftVolume: int32_t = 100;
+    private: int32_t leftVolume = 100;
 
-    private: rightVolume: int32_t = 100;
+    private: int32_t rightVolume = 100;
 
-    private: const musicServiceClass: Function;
+    private: Function musicServiceClass;
 
-    private: const currentIntent: Intent;
+    private: Intent currentIntent;
 
-public constructor (Function musicServiceClass, BasicArrayList songList);
+public: MusicManager(Function musicServiceClass, BasicArrayList songList);
 
-    public nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
+    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
 
-    public reset();
+    public: void reset();
 
-    public process();
+    public: void process();
 
-    public show();
+    public: void show();
 
-    public startNewSong();
+    public: void startNewSong();
 
                 //@Throws(Exception.constructor)
             
-    public stop();
+    public: void stop();
 
 };
 

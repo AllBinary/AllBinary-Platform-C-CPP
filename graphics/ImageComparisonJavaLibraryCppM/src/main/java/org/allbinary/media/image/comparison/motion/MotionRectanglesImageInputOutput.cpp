@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -109,55 +111,52 @@
 class MotionRectanglesImageInputOutput
             : public Object
         : public ImageIOInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const NUMBER_OF_IMAGES: int32_t = 1;
+    private: const int32_t NUMBER_OF_IMAGES = 1;
 
-public constructor (){
-
-            super();
-        }
+public: MotionRectanglesImageInputOutput(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public save(Long frame){
+    public: void save(Long frame){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    motionRectanglesResultsFrameCacheable: MotionRectanglesResultsFrameCacheable = (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;;
+    MotionRectanglesResultsFrameCacheable motionRectanglesResultsFrameCacheable = (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;;
     
 
                         if(motionRectanglesResultsFrameCacheable != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    motionRectangles: MotionRectangles = motionRectanglesResultsFrameCacheable!.getMotionRectangles()!;;
+    MotionRectangles motionRectangles = motionRectanglesResultsFrameCacheable.getMotionRectangles();;
     
-this.save(motionRectangles, frame);
-    
-motionRectanglesResultsFrameCacheable= (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;
-    
-motionRectangles= motionRectanglesResultsFrameCacheable!.getMotionRectangles();
-    
-this.save(motionRectangles, frame);
+this->save(motionRectangles, frame);
     
 motionRectanglesResultsFrameCacheable= (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;
     
-motionRectangles= motionRectanglesResultsFrameCacheable!.getMotionRectangles();
+motionRectangles= motionRectanglesResultsFrameCacheable.getMotionRectangles();
     
-this.save(motionRectangles, frame);
+this->save(motionRectangles, frame);
+    
+motionRectanglesResultsFrameCacheable= (getInstance as AutomaticCacheInterface).get(frame) as MotionRectanglesResultsFrameCacheable;
+    
+motionRectangles= motionRectanglesResultsFrameCacheable.getMotionRectangles();
+    
+this->save(motionRectangles, frame);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("No Motion Rectangle Results for Frame: " +frame, this, commonStrings!.SAVE);
+                            this->logUtil.putF("No Motion Rectangle Results for Frame: " +frame, this, commonStrings.SAVE);
     
 
                         }
@@ -167,132 +166,132 @@ this.save(motionRectangles, frame);
 
                 //@Throws(Exception.constructor)
             
-    public save(MotionRectangles motionRectangles, Long frame){
+    public: void save(MotionRectangles motionRectangles, Long frame){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-
-    filePathStringBuffer: StringMaker = new StringMaker();;
-    
-filePathStringBuffer!.append(ImageOutputData.SAVE_PATH);
-    
-filePathStringBuffer!.append(LongUtil.fillIn(frame.toString()));
-    
-filePathStringBuffer!.append("_");
-    
-filePathStringBuffer!.append(motionRectangles!.getName());
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    filePathStringBuffer1: StringMaker = new StringMaker();;
+    StringMaker filePathStringBuffer = StringMaker();;
     
-filePathStringBuffer1!.append(filePathStringBuffer!.toString());
+filePathStringBuffer.append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer1!.append("_1");
+filePathStringBuffer.append(LongUtil::fillIn(frame.toString()));
     
-filePathStringBuffer1!.append(MediaDataFactory.getInstance()!.JPG.getExtension());
+filePathStringBuffer.append("_");
     
-
-    filePathStringBuffer2: StringMaker = new StringMaker();;
-    
-filePathStringBuffer2!.append(filePathStringBuffer!.toString());
-    
-filePathStringBuffer2!.append("_2");
-    
-filePathStringBuffer2!.append(MediaDataFactory.getInstance()!.JPG.getExtension());
+filePathStringBuffer.append(motionRectangles.getName());
     
 
-    filePathStringBuffer3: StringMaker = new StringMaker();;
+    StringMaker filePathStringBuffer1 = StringMaker();;
     
-filePathStringBuffer3!.append(filePathStringBuffer!.toString());
+filePathStringBuffer1.append(filePathStringBuffer.toString());
     
-filePathStringBuffer3!.append(MediaDataFactory.getInstance()!.JPG.getExtension());
+filePathStringBuffer1.append("_1");
     
-this.logUtil!.putF("Motion Image File Path 1: " +filePathStringBuffer1!.toString(), this, commonStrings!.SAVE);
-    
-this.logUtil!.putF("Motion Image File Path 2: " +filePathStringBuffer2!.toString(), this, commonStrings!.SAVE);
-    
-this.logUtil!.putF("Motion Image File Path 2: " +filePathStringBuffer3!.toString(), this, commonStrings!.SAVE);
+filePathStringBuffer1.append(MediaDataFactory::getInstance().JPG.getExtension());
     
 
-    bufferedImageCacheables: std::vector<BufferedImageCacheable> = new Array(this.NUMBER_OF_IMAGES);;
+    StringMaker filePathStringBuffer2 = StringMaker();;
+    
+filePathStringBuffer2.append(filePathStringBuffer.toString());
+    
+filePathStringBuffer2.append("_2");
+    
+filePathStringBuffer2.append(MediaDataFactory::getInstance().JPG.getExtension());
     
 
-    imageComparisonInfo: ImageComparisonResult = motionRectangles!.getImageComparisonResult()!;;
+    StringMaker filePathStringBuffer3 = StringMaker();;
+    
+filePathStringBuffer3.append(filePathStringBuffer.toString());
+    
+filePathStringBuffer3.append(MediaDataFactory::getInstance().JPG.getExtension());
+    
+this->logUtil.putF("Motion Image File Path 1: " +filePathStringBuffer1.toString(), this, commonStrings.SAVE);
+    
+this->logUtil.putF("Motion Image File Path 2: " +filePathStringBuffer2.toString(), this, commonStrings.SAVE);
+    
+this->logUtil.putF("Motion Image File Path 2: " +filePathStringBuffer3.toString(), this, commonStrings.SAVE);
     
 
-    originalBufferedImage: BufferedImage = imageComparisonInfo!.getBufferedImages()[0]!;;
+    std::vector<BufferedImageCacheable> bufferedImageCacheables = new Array(this->NUMBER_OF_IMAGES);;
     
 
-    bufferedImageInfo: BufferedImageInfo = BufferedImageInfoFactory.getInstance(imageComparisonInfo!.imageWidth, imageComparisonInfo!.imageHeight, originalBufferedImage!.getType())!;;
+    ImageComparisonResult imageComparisonInfo = motionRectangles.getImageComparisonResult();;
     
 
-    poolInterface: PoolInterface = BufferedImagePoolSingleton.getInstance()!;;
+    BufferedImage originalBufferedImage = imageComparisonInfo.getBufferedImages()[0];;
+    
+
+    BufferedImageInfo bufferedImageInfo = BufferedImageInfoFactory::getInstance(imageComparisonInfo.imageWidth, imageComparisonInfo.imageHeight, originalBufferedImage.getType());;
+    
+
+    PoolInterface poolInterface = BufferedImagePoolSingleton::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.NUMBER_OF_IMAGES; index++)
+    int32_t index = 0;index < this->NUMBER_OF_IMAGES; index++)
         {
-bufferedImageCacheables[index]= poolInterface!.remove(bufferedImageInfo) as BufferedImageCacheable;
+bufferedImageCacheables[index]= poolInterface.remove(bufferedImageInfo) as BufferedImageCacheable;
     
 }
 
-bufferedImageCacheables[0]!.getBufferedImage()!.setData(imageComparisonInfo!.getBufferedImages()[1]!.getData());
+bufferedImageCacheables[0]!.getBufferedImage().setData(imageComparisonInfo.getBufferedImages()[1]!.getData());
     
 
-                        if(this.NUMBER_OF_IMAGES > 1)
+                        if(this->NUMBER_OF_IMAGES > 1)
                         
                                     {
-                                    bufferedImageCacheables[1]!.getBufferedImage()!.setData(imageComparisonInfo!.getBufferedImages()[1]!.getData());
+                                    bufferedImageCacheables[1]!.getBufferedImage().setData(imageComparisonInfo.getBufferedImages()[1]!.getData());
     
 
                                     }
                                 
 
-    bufferedImageGraphicsArray: std::vector<Graphics>;;
+    std::vector<Graphics> bufferedImageGraphicsArray;;
     
-bufferedImageGraphicsArray= new Array(this.NUMBER_OF_IMAGES);
+bufferedImageGraphicsArray= new Array(this->NUMBER_OF_IMAGES);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.NUMBER_OF_IMAGES; index++)
+    int32_t index = 0;index < this->NUMBER_OF_IMAGES; index++)
         {
-bufferedImageGraphicsArray[index]= bufferedImageCacheables[index]!.getBufferedImage()!.getGraphics();
+bufferedImageGraphicsArray[index]= bufferedImageCacheables[index]!.getBufferedImage().getGraphics();
     
 }
 
 
-    rectangelList: Vector = motionRectangles!.getVector()!;;
+    Vector rectangelList = motionRectangles.getVector();;
     
 
-    size: int32_t = rectangelList!.length!;;
-    
-
-
-
-
-                        for (
-    index2: int32_t = 0;index2 < size; index2++)
-        {
-
-    motionRectangle: MotionRectangle = rectangelList!.get(index2) as MotionRectangle;;
-    
-
-    rectangle: Rectangle = motionRectangle!.getRectangle()!;;
+    int32_t size = rectangelList.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.NUMBER_OF_IMAGES; index++)
+    int32_t index2 = 0;index2 < size; index2++)
         {
-bufferedImageGraphicsArray[index]!.setColor(Color.ORANGE);
+
+    MotionRectangle motionRectangle = rectangelList.get(index2) as MotionRectangle;;
+    
+
+    Rectangle rectangle = motionRectangle.getRectangle();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < this->NUMBER_OF_IMAGES; index++)
+        {
+bufferedImageGraphicsArray[index]!.setColor(Color::ORANGE);
     
 bufferedImageGraphicsArray[index]!.drawRect(rectangle.x, rectangle.y, rectangle.width, rectangle.height);
     
@@ -301,24 +300,24 @@ bufferedImageGraphicsArray[index]!.drawRect(rectangle.x, rectangle.y, rectangle.
 }
 
 
-    imagePersistanceUtil: ImagePersistanceUtil = ImagePersistanceUtil.getInstance()!;;
+    ImagePersistanceUtil imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
     
 
-                        if(this.NUMBER_OF_IMAGES > 1)
+                        if(this->NUMBER_OF_IMAGES > 1)
                         
                                     {
-                                    imagePersistanceUtil!.saveWithImageIO(filePathStringBuffer1!.toString(), bufferedImageCacheables[1]!.getBufferedImage());
+                                    imagePersistanceUtil.saveWithImageIO(filePathStringBuffer1.toString(), bufferedImageCacheables[1]!.getBufferedImage());
     
 
                                     }
                                 
-imagePersistanceUtil!.saveWithImageIO(filePathStringBuffer2!.toString(), bufferedImageCacheables[0]!.getBufferedImage());
+imagePersistanceUtil.saveWithImageIO(filePathStringBuffer2.toString(), bufferedImageCacheables[0]!.getBufferedImage());
     
 
-                        if(this.NUMBER_OF_IMAGES > 2)
+                        if(this->NUMBER_OF_IMAGES > 2)
                         
                                     {
-                                    imagePersistanceUtil!.saveWithImageIO(filePathStringBuffer3!.toString(), bufferedImageCacheables[2]!.getBufferedImage());
+                                    imagePersistanceUtil.saveWithImageIO(filePathStringBuffer3.toString(), bufferedImageCacheables[2]!.getBufferedImage());
     
 
                                     }

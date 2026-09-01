@@ -48,17 +48,16 @@
         #include "Point.h"
 
 class ColorAtActionScriptConditionInterface {
-        
 
     Point getPoint();
 
-    setPoint(Point point);
+    void setPoint(Point point);
 
     ColorRangeInterface getColorRangeInterface();
 
-    setColorRangeInterface(ColorRangeInterface colorRangeInterface);
+    void setColorRangeInterface(ColorRangeInterface colorRangeInterface);
 
-    log();
+    void log();
 
 };
 

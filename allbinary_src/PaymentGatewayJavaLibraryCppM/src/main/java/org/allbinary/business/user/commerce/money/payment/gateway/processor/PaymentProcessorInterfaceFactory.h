@@ -73,20 +73,19 @@
 class PaymentProcessorInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: PaymentProcessorInterfaceFactory = new PaymentProcessorInterfaceFactory();
+    private: static PaymentProcessorInterfaceFactory instance() { return PaymentProcessorInterfaceFactory(); }
 
-    public static PaymentProcessorInterfaceFactory getInstance();
+    public: static PaymentProcessorInterfaceFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: PaymentProcessorInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public PaymentProcessorInterface getInstance(TransformInfoInterface transformInfoInterface);
+    public: PaymentProcessorInterface getInstance(TransformInfoInterface transformInfoInterface);
 
 };
 

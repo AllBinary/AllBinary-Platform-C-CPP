@@ -43,15 +43,12 @@
 class TransformInfoFactory
             : public Object
          {
-        
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoFactory(){
+}
 
 
-    public TransformInfoInterface getInstance(){
+    public: TransformInfoInterface getInstance(){
 
 
 

@@ -45,17 +45,16 @@
 class LogConfigTypeData
             : public Object
          {
-        
 
-    private: static const instance: LogConfigTypeData = new LogConfigTypeData();
+    private: static LogConfigTypeData instance() { return LogConfigTypeData(); }
 
-    public static LogConfigTypeData getInstance();
+    public: static LogConfigTypeData getInstance();
 
-private constructor ();
+private: LogConfigTypeData();
 
-    public const NAME: string = "LOG_CONFIG_TYPE_NAME";
+    public: const std::string NAME = "LOG_CONFIG_TYPE_NAME";
 
-    public const DESCRIPTION: string = "LOG_CONFIG_TYPE_DESCRIPTION";
+    public: const std::string DESCRIPTION = "LOG_CONFIG_TYPE_DESCRIPTION";
 
 };
 

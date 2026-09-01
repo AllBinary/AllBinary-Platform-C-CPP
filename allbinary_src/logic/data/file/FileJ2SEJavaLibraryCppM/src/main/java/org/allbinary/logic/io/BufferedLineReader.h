@@ -59,21 +59,20 @@
 class BufferedLineReader
             : public Object
          {
-        
 
-    private: const tmpIn: BufferedReader;
+    private: BufferedReader tmpIn;
 
-public constructor (AbFile file);
+public: BufferedLineReader(AbFile file);
 
-    public readUpToLines(int64_t readAheadIndex);
+    public: void readUpToLines(int64_t readAheadIndex);
 
                 //@Throws(Exception.constructor)
             
-    public string readLine();
+    public: std::string readLine();
 
-    public int64_t getSize();
+    public: int64_t getSize();
 
-    public int32_t getCurrent();
+    public: int32_t getCurrent();
 
 };
 

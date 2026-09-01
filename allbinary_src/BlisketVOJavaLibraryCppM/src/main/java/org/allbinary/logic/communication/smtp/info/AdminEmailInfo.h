@@ -62,15 +62,14 @@
         #include "BasicEmailInfo.h"
 
 class AdminEmailInfo: public BasicEmailInfo {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (string subject, string textBody);
+public: AdminEmailInfo(std::string subject, std::string textBody);
 
                 //@Throws(Exception.constructor)
             
-    init();
+    protected: void init();
 
 };
 

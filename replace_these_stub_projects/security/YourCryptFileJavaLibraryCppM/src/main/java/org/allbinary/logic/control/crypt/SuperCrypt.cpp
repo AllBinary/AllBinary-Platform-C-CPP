@@ -28,17 +28,14 @@
 class SuperCrypt
             : public Object
          {
-        
 
-    public static KEYMAX: int32_t = 0;
+    public: static int32_t KEYMAX = 0;
 
-public constructor (int32_t key){
-
-            super();
-        }
+public: SuperCrypt(int32_t key){
+}
 
 
-    public string encrypt(string value){
+    public: std::string encrypt(std::string value){
 
 
 
@@ -48,7 +45,7 @@ public constructor (int32_t key){
 }
 
 
-    public string decrypt(string value){
+    public: std::string decrypt(std::string value){
 
 
 

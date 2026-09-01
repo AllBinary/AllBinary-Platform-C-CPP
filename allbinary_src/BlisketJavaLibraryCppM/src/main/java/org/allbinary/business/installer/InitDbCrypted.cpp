@@ -130,23 +130,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Warning you must have sql root access
 class InitDbCrypted: public AbDatabaseManagement {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userDbInitInfo: UserDbInitInfo;
+    private: UserDbInitInfo userDbInitInfo;
 
-    private: inventoryDbInitInfo: InventoryDbInitInfo;
+    private: InventoryDbInitInfo inventoryDbInitInfo;
 
-    private: historyDbInitInfo: HistoryDbInitInfo;
+    private: HistoryDbInitInfo historyDbInitInfo;
 
-    private: staticpagesDbInitInfo: StaticPagesDbInitInfo;
+    private: StaticPagesDbInitInfo staticpagesDbInitInfo;
 
-    private: logDbInitInfo: LogDbInitInfo;
+    private: LogDbInitInfo logDbInitInfo;
 
-    private: const SQL_FILE: string = "initWeblisket.sql";
+    private: const std::string SQL_FILE = "initWeblisket.sql";
 
-public constructor (DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
+public: InitDbCrypted(DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
             super(databaseConnectionInfoInterface as DbConnectionInfo);
                     
 
@@ -155,363 +154,363 @@ public constructor (DatabaseConnectionInfoInterface databaseConnectionInfoInterf
 }
 
 
-    public Boolean addUsers(){
+    public: Boolean addUsers(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.METHOD_ADD_USERS);
+            this->logUtil.putF(this->commonStrings.START, this, this->METHOD_ADD_USERS);
     
-this.userDbInitInfo= new UserDbInitInfo();
+this->userDbInitInfo= UserDbInitInfo();
     
-this.inventoryDbInitInfo= new InventoryDbInitInfo();
+this->inventoryDbInitInfo= InventoryDbInitInfo();
     
-this.historyDbInitInfo= new HistoryDbInitInfo();
+this->historyDbInitInfo= HistoryDbInitInfo();
     
-this.staticpagesDbInitInfo= new StaticPagesDbInitInfo();
+this->staticpagesDbInitInfo= StaticPagesDbInitInfo();
     
-this.logDbInitInfo= new LogDbInitInfo();
-    
-
-    CUSTOMERDB: string = this.userDbInitInfo!.getName()!;;
+this->logDbInitInfo= LogDbInitInfo();
     
 
-    CUSTOMERDBUSER: string = this.userDbInitInfo!.getUserName()!;;
+    std::string CUSTOMERDB = this->userDbInitInfo.getName();;
     
 
-    CUSTOMERDBPASSWORD: string = this.userDbInitInfo!.getPassword()!;;
+    std::string CUSTOMERDBUSER = this->userDbInitInfo.getUserName();;
     
 
-                        if(!this.addDbUser(CUSTOMERDB, CUSTOMERDBUSER, CUSTOMERDBPASSWORD))
+    std::string CUSTOMERDBPASSWORD = this->userDbInitInfo.getPassword();;
+    
+
+                        if(!this->addDbUser(CUSTOMERDB, CUSTOMERDBUSER, CUSTOMERDBPASSWORD))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_USER +CUSTOMERDBUSER, this, this.METHOD_ADD_USERS);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +CUSTOMERDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    INVENTORYDB: string = this.inventoryDbInitInfo!.getName()!;;
+    std::string INVENTORYDB = this->inventoryDbInitInfo.getName();;
     
 
-    INVENTORYDBUSER: string = this.inventoryDbInitInfo!.getUserName()!;;
+    std::string INVENTORYDBUSER = this->inventoryDbInitInfo.getUserName();;
     
 
-    INVENTORYDBPASSWORD: string = this.inventoryDbInitInfo!.getPassword()!;;
+    std::string INVENTORYDBPASSWORD = this->inventoryDbInitInfo.getPassword();;
     
 
-                        if(!this.addDbUser(INVENTORYDB, INVENTORYDBUSER, INVENTORYDBPASSWORD))
+                        if(!this->addDbUser(INVENTORYDB, INVENTORYDBUSER, INVENTORYDBPASSWORD))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_USER +INVENTORYDBUSER, this, this.METHOD_ADD_USERS);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +INVENTORYDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    HISTORYDB: string = this.historyDbInitInfo!.getName()!;;
+    std::string HISTORYDB = this->historyDbInitInfo.getName();;
     
 
-    HISTORYDBUSER: string = this.historyDbInitInfo!.getUserName()!;;
+    std::string HISTORYDBUSER = this->historyDbInitInfo.getUserName();;
     
 
-    HISTORYDBPASSWORD: string = this.historyDbInitInfo!.getPassword()!;;
+    std::string HISTORYDBPASSWORD = this->historyDbInitInfo.getPassword();;
     
 
-                        if(!this.addDbUser(HISTORYDB, HISTORYDBUSER, HISTORYDBPASSWORD))
+                        if(!this->addDbUser(HISTORYDB, HISTORYDBUSER, HISTORYDBPASSWORD))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_USER +HISTORYDBUSER, this, this.METHOD_ADD_USERS);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +HISTORYDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    STATICPAGESDB: string = this.staticpagesDbInitInfo!.getName()!;;
+    std::string STATICPAGESDB = this->staticpagesDbInitInfo.getName();;
     
 
-    STATICPAGESDBUSER: string = this.staticpagesDbInitInfo!.getUserName()!;;
+    std::string STATICPAGESDBUSER = this->staticpagesDbInitInfo.getUserName();;
     
 
-    STATICPAGESDBPASSWORD: string = this.staticpagesDbInitInfo!.getPassword()!;;
+    std::string STATICPAGESDBPASSWORD = this->staticpagesDbInitInfo.getPassword();;
     
 
-                        if(!this.addDbUser(STATICPAGESDB, STATICPAGESDBUSER, STATICPAGESDBPASSWORD))
+                        if(!this->addDbUser(STATICPAGESDB, STATICPAGESDBUSER, STATICPAGESDBPASSWORD))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_USER +STATICPAGESDBUSER, this, this.METHOD_ADD_USERS);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +STATICPAGESDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    LOGDB: string = this.logDbInitInfo!.getName()!;;
+    std::string LOGDB = this->logDbInitInfo.getName();;
     
 
-    LOGDBUSER: string = this.logDbInitInfo!.getUserName()!;;
+    std::string LOGDBUSER = this->logDbInitInfo.getUserName();;
     
 
-    LOGDBPASSWORD: string = this.logDbInitInfo!.getPassword()!;;
+    std::string LOGDBPASSWORD = this->logDbInitInfo.getPassword();;
     
 
-                        if(!this.addDbUser(LOGDB, LOGDBUSER, LOGDBPASSWORD))
+                        if(!this->addDbUser(LOGDB, LOGDBUSER, LOGDBPASSWORD))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_USER +LOGDBUSER, this, this.METHOD_ADD_USERS);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_USER +LOGDBUSER, this, this->METHOD_ADD_USERS);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
-this.logUtil!.putF(this.commonStrings!.END, this, this.METHOD_ADD_USERS);
+this->logUtil.putF(this->commonStrings.END, this, this->METHOD_ADD_USERS);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.METHOD_ADD_USERS, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_USERS, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 }
 
 
-    public Boolean addDatabases(){
+    public: Boolean addDatabases(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.METHOD_ADD_DATABASES);
+            this->logUtil.putF(this->commonStrings.START, this, this->METHOD_ADD_DATABASES);
     
-this.userDbInitInfo= new UserDbInitInfo();
+this->userDbInitInfo= UserDbInitInfo();
     
-this.inventoryDbInitInfo= new InventoryDbInitInfo();
+this->inventoryDbInitInfo= InventoryDbInitInfo();
     
-this.historyDbInitInfo= new HistoryDbInitInfo();
+this->historyDbInitInfo= HistoryDbInitInfo();
     
-this.staticpagesDbInitInfo= new StaticPagesDbInitInfo();
+this->staticpagesDbInitInfo= StaticPagesDbInitInfo();
     
-this.logDbInitInfo= new LogDbInitInfo();
-    
-
-    CUSTOMERDB: string = this.userDbInitInfo!.getName()!;;
+this->logDbInitInfo= LogDbInitInfo();
     
 
-                        if(!this.addDb(CUSTOMERDB))
+    std::string CUSTOMERDB = this->userDbInitInfo.getName();;
+    
+
+                        if(!this->addDb(CUSTOMERDB))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_DATABASE +CUSTOMERDB, this, this.METHOD_ADD_DATABASES);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +CUSTOMERDB, this, this->METHOD_ADD_DATABASES);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    INVENTORYDB: string = this.inventoryDbInitInfo!.getName()!;;
+    std::string INVENTORYDB = this->inventoryDbInitInfo.getName();;
     
 
-                        if(!this.addDb(INVENTORYDB))
+                        if(!this->addDb(INVENTORYDB))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_DATABASE +INVENTORYDB, this, this.METHOD_ADD_DATABASES);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +INVENTORYDB, this, this->METHOD_ADD_DATABASES);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    HISTORYDB: string = this.historyDbInitInfo!.getName()!;;
+    std::string HISTORYDB = this->historyDbInitInfo.getName();;
     
 
-                        if(!this.addDb(HISTORYDB))
+                        if(!this->addDb(HISTORYDB))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_DATABASE +HISTORYDB, this, this.METHOD_ADD_DATABASES);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +HISTORYDB, this, this->METHOD_ADD_DATABASES);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    STATICPAGESDB: string = this.staticpagesDbInitInfo!.getName()!;;
+    std::string STATICPAGESDB = this->staticpagesDbInitInfo.getName();;
     
 
-                        if(!this.addDb(STATICPAGESDB))
+                        if(!this->addDb(STATICPAGESDB))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_DATABASE +STATICPAGESDB, this, this.METHOD_ADD_DATABASES);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +STATICPAGESDB, this, this->METHOD_ADD_DATABASES);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    LOGDB: string = this.logDbInitInfo!.getName()!;;
+    std::string LOGDB = this->logDbInitInfo.getName();;
     
 
-                        if(!this.addDb(LOGDB))
+                        if(!this->addDb(LOGDB))
                         
                                     {
-                                    this.logUtil!.putF(this.UNABLE_TO_CREATE_DATABASE +LOGDB, this, this.METHOD_ADD_DATABASES);
+                                    this->logUtil.putF(this->UNABLE_TO_CREATE_DATABASE +LOGDB, this, this->METHOD_ADD_DATABASES);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    file: AbFile = FileFactory.getInstance()!.getInstance(this.SQL_FILE)!;;
+    AbFile file = FileFactory::getInstance().getInstance(this->SQL_FILE);;
     
 file.createNewFile();
     
 
-    idOutData: AbDataOutputStream = DataOutputStreamFactory.getInstance()!.getInstanceForAbFile(file)!;;
+    AbDataOutputStream idOutData = DataOutputStreamFactory::getInstance().getInstanceForAbFile(file);;
     
-idOutData!.writeBytes(this.sqlCommandLog!.toString());
+idOutData.writeBytes(this->sqlCommandLog.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.METHOD_ADD_DATABASES, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_DATABASES, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 }
 
 
-    public Boolean addTables(){
+    public: Boolean addTables(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-this.logUtil!.putF(this.commonStrings!.START, this, this.METHOD_ADD_TABLES);
+this->logUtil.putF(this->commonStrings.START, this, this->METHOD_ADD_TABLES);
     
-stringBuffer!.append(UserEntityFactory.getInstance()!.createTable());
+stringBuffer.append(UserEntityFactory::getInstance().createTable());
     
-stringBuffer!.append(StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.createTable());
+stringBuffer.append(StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().createTable());
     
-stringBuffer!.append(BillingAddressesEntityFactory.getInstance()!.getInstance(this.stringUtil!.EMPTY_STRING)!.createTable());
+stringBuffer.append(BillingAddressesEntityFactory::getInstance().getInstance(this->stringUtil.EMPTY_STRING).createTable());
     
-stringBuffer!.append(ShippingAddressesEntityFactory.getInstance()!.getInstance(this.stringUtil!.EMPTY_STRING)!.createTable());
+stringBuffer.append(ShippingAddressesEntityFactory::getInstance().getInstance(this->stringUtil.EMPTY_STRING).createTable());
     
-stringBuffer!.append(PaymentEntityFactory.getInstance()!.getPaymentEntityInstance()!.createTable());
+stringBuffer.append(PaymentEntityFactory::getInstance().getPaymentEntityInstance().createTable());
     
-stringBuffer!.append(QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.createTable());
+stringBuffer.append(QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().createTable());
     
-stringBuffer!.append(OrderHistoryEntityFactory.getInstance()!.createTable());
+stringBuffer.append(OrderHistoryEntityFactory::getInstance().createTable());
     
-stringBuffer!.append(OrderItemsEntityFactory.getInstance()!.createTable());
+stringBuffer.append(OrderItemsEntityFactory::getInstance().createTable());
     
-stringBuffer!.append(TransactionEntityFactory.getInstance()!.getTransactionEntityInstance()!.createTable());
+stringBuffer.append(TransactionEntityFactory::getInstance().getTransactionEntityInstance().createTable());
     
-stringBuffer!.append(TransactionResultEntityFactory.getInstance()!.getTransactionResultEntityInstance()!.createTable());
+stringBuffer.append(TransactionResultEntityFactory::getInstance().getTransactionResultEntityInstance().createTable());
     
-stringBuffer!.append(PaymentGatewayEntityFactory.getInstance()!.createTable());
+stringBuffer.append(PaymentGatewayEntityFactory::getInstance().createTable());
     
-stringBuffer!.append(InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.createTable());
+stringBuffer.append(InventoryEntityFactory::getInstance().getInventoryEntityInstance().createTable());
     
-stringBuffer!.append(new InitInfoEntity().createTable());
+stringBuffer.append(InitInfoEntity().createTable());
     
-stringBuffer!.append(LogTableEntityFactory.getInstance()!.getLogTableEntityInstance()!.createTable());
+stringBuffer.append(LogTableEntityFactory::getInstance().getLogTableEntityInstance().createTable());
     
-stringBuffer!.append(StaticPagesEntityFactory.getInstance()!.getStaticPagesEntityInstance()!.createTable());
+stringBuffer.append(StaticPagesEntityFactory::getInstance().getStaticPagesEntityInstance().createTable());
     
-stringBuffer!.append(TransformInfoEntityBuilder.getInstance()!.createTable());
+stringBuffer.append(TransformInfoEntityBuilder::getInstance().createTable());
     
-this.logUtil!.putF(ADD_TABLES_RESULTS_LABEL +stringBuffer!.toString(), this, this.METHOD_ADD_TABLES);
+this->logUtil.putF(ADD_TABLES_RESULTS_LABEL +stringBuffer.toString(), this, this->METHOD_ADD_TABLES);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.METHOD_ADD_TABLES, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_ADD_TABLES, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

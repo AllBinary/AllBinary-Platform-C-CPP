@@ -46,56 +46,53 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CaptionAnimation: public Animation {
-        
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-    private: const overlayAnimationInterface: Animation;
+    private: Animation overlayAnimationInterface;
 
-    private: const captionDx: int32_t;
+    private: int32_t captionDx;
 
-    private: const captionDy: int32_t;
+    private: int32_t captionDy;
 
-    private: const dx: int32_t;
+    private: int32_t dx;
 
-    private: const dy: int32_t;
+    private: int32_t dy;
 
-public constructor (Animation animationInterface, Animation overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy){
-
-            super();
-        this.animationInterface= animationInterface;
+public: CaptionAnimation(Animation animationInterface, Animation overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy){
+this->animationInterface= animationInterface;
     
-this.overlayAnimationInterface= overlayAnimationInterface;
+this->overlayAnimationInterface= overlayAnimationInterface;
     
-this.captionDx= captionDx;
+this->captionDx= captionDx;
     
-this.captionDy= captionDy;
+this->captionDy= captionDy;
     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.animationInterface!.paintXY(graphics, x +this.captionDx, y +this.captionDy);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->animationInterface.paintXY(graphics, x +this->captionDx, y +this->captionDy);
     
-this.overlayAnimationInterface!.paintXY(graphics, x +this.captionDx +this.dx, y +this.captionDy +this.dy);
+this->overlayAnimationInterface.paintXY(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy);
     
 }
 
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-this.animationInterface!.paintThreedXYZ(graphics, x +this.captionDx, y +this.captionDy, z);
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+this->animationInterface.paintThreedXYZ(graphics, x +this->captionDx, y +this->captionDy, z);
     
-this.overlayAnimationInterface!.paintThreedXYZ(graphics, x +this.captionDx +this.dx, y +this.captionDy +this.dy, z);
+this->overlayAnimationInterface.paintThreedXYZ(graphics, x +this->captionDx +this->dx, y +this->captionDy +this->dy, z);
     
 }
 

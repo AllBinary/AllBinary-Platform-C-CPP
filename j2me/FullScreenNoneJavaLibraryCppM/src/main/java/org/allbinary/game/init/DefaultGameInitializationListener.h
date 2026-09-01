@@ -79,19 +79,18 @@
 class DefaultGameInitializationListener
             : public Object
         : public GameInitializedListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const swtJOGLProcessor: SWTJOGLProcessor = SWTJOGLProcessor.getInstance()!;
+    private: const SWTJOGLProcessor swtJOGLProcessor = SWTJOGLProcessor::getInstance();
 
-public constructor ();
+public: DefaultGameInitializationListener();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    firstTime: bool = true;
+    bool firstTime = true;
 
-    public onGameInitialized(GameInitializedEvent gameInitializedEvent);
+    public: void onGameInitialized(GameInitializedEvent gameInitializedEvent);
 
 };
 

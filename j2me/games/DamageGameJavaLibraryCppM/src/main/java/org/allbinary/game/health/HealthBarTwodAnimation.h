@@ -50,11 +50,10 @@
         #include "HealthBarAnimation.h"
 
 class HealthBarTwodAnimation: public HealthBarAnimation {
-        
 
-public constructor (AllBinaryLayer layerInterface, int32_t location);
+public: HealthBarTwodAnimation(AllBinaryLayer layerInterface, int32_t location);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -59,53 +61,50 @@
 class MirrorImageUtil
             : public Object
          {
-        
 
-    private: static const instance: MirrorImageUtil = new MirrorImageUtil();
+    private: static MirrorImageUtil instance() { return MirrorImageUtil(); }
 
-    public static MirrorImageUtil getInstance(){
+    public: static MirrorImageUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MirrorImageUtil.instance;
+                        return MirrorImageUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: MirrorImageUtil(){
+}
 
 
-    public BufferedImage getImage(BufferedImage bufferedImage, bool verticle, bool horizontal){
-this.logUtil!.putF("Starting", this, "getImage");
+    public: BufferedImage getImage(BufferedImage bufferedImage, bool verticle, bool horizontal){
+this->logUtil.putF("Starting", this, "getImage");
     
 
-    newBufferedImage: BufferedImage = this.imageUtil!.create(bufferedImage!.getWidth(
-                            nullptr), bufferedImage!.getHeight(
-                            nullptr))!;;
+    BufferedImage newBufferedImage = this->imageUtil.create(bufferedImage.getWidth(
+                            nullptr), bufferedImage.getHeight(
+                            nullptr));;
     
 
-    g: Graphics2D = newBufferedImage!.createGraphics()!;;
+    Graphics2D g = newBufferedImage.createGraphics();;
     
 
                         if(verticle)
                         
                                     {
                                     
-    tx: AffineTransform = AffineTransform.getScaleInstance(1,  -1)!;;
+    AffineTransform tx = AffineTransform::getScaleInstance(1,  -1);;
     
-tx.translate(0,  -bufferedImage!.getHeight(
+tx.translate(0,  -bufferedImage.getHeight(
                             nullptr));
     
 
-    op: AffineTransformOp = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);;
+    AffineTransformOp op = AffineTransformOp(tx, AffineTransformOp::TYPE_NEAREST_NEIGHBOR);;
     
 bufferedImage= op.filter(bufferedImage, 
                             nullptr);
@@ -118,13 +117,13 @@ bufferedImage= op.filter(bufferedImage,
                         
                                     {
                                     
-    tx: AffineTransform = AffineTransform.getScaleInstance( -1, 1)!;;
+    AffineTransform tx = AffineTransform::getScaleInstance( -1, 1);;
     
-tx.translate( -bufferedImage!.getWidth(
+tx.translate( -bufferedImage.getWidth(
                             nullptr), 0);
     
 
-    op: AffineTransformOp = new AffineTransformOp(tx, AffineTransformOp.TYPE_NEAREST_NEIGHBOR);;
+    AffineTransformOp op = AffineTransformOp(tx, AffineTransformOp::TYPE_NEAREST_NEIGHBOR);;
     
 bufferedImage= op.filter(bufferedImage, 
                             nullptr);
@@ -132,8 +131,8 @@ bufferedImage= op.filter(bufferedImage,
 
                                     }
                                 
-g.drawImage(bufferedImage, 0, 0, bufferedImage!.getWidth(
-                            nullptr), bufferedImage!.getHeight(
+g.drawImage(bufferedImage, 0, 0, bufferedImage.getWidth(
+                            nullptr), bufferedImage.getHeight(
                             nullptr), 
                             nullptr);
     
@@ -148,50 +147,52 @@ g.dispose();
 }
 
 
-    public std::vector<BufferedImage> getImages(BufferedImage bufferedImage, bool verticle, bool horizontal){
+    public: std::vector<BufferedImage> getImages(BufferedImage bufferedImage, bool verticle, bool horizontal){
 
-    width: int32_t = bufferedImage!.getWidth()!;;
+    int32_t width = bufferedImage.getWidth();;
     
 
-    height: int32_t = bufferedImage!.getHeight()!;;
+    int32_t height = bufferedImage.getHeight();;
     
 
-    cellHeight: int32_t = height;;
+    int32_t cellHeight = height;;
     
 
-    cellWidth: int32_t = height;;
+    int32_t cellWidth = height;;
     
 
-    numberOfFramesPerOrientation: int32_t = width /cellWidth;;
+    int32_t numberOfFramesPerOrientation = width /cellWidth;;
     
 
-    numberOfFrames: int32_t = numberOfFramesPerOrientation;;
+    int32_t numberOfFrames = numberOfFramesPerOrientation;;
     
 
                         if(verticle)
-                        numberOfFrames *= 2
+                        numberOfFrames *= 2;
+                                
 
                         if(horizontal)
-                        numberOfFrames *= 2
-this.logUtil!.putF("numberOfFramesPerOrientation: " +numberOfFramesPerOrientation +" numberOfFrames: " +numberOfFrames, this, "getImages");
+                        numberOfFrames *= 2;
+                                
+this->logUtil.putF("numberOfFramesPerOrientation: " +numberOfFramesPerOrientation +" numberOfFrames: " +numberOfFrames, this, "getImages");
     
 
-    bufferedImageArray: std::vector<BufferedImage> = new Array(numberOfFrames);;
+    std::vector<BufferedImage> bufferedImageArray = new Array(numberOfFrames);;
     
 
-    y: int32_t = 0;;
+    int32_t y = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < numberOfFramesPerOrientation; index++)
+    int32_t index = 0;index < numberOfFramesPerOrientation; index++)
         {
 
-    x: int32_t = index *cellWidth;;
+    int32_t x = index *cellWidth;;
     
-bufferedImageArray[index]= bufferedImage!.getSubimage(x, y, cellWidth, cellHeight);
+bufferedImageArray[index]= bufferedImage.getSubimage(x, y, cellWidth, cellHeight);
     
 }
 
@@ -200,9 +201,9 @@ bufferedImageArray[index]= bufferedImage!.getSubimage(x, y, cellWidth, cellHeigh
 
 
                         for (
-    index: int32_t = 0;index < numberOfFramesPerOrientation; index++)
+    int32_t index = 0;index < numberOfFramesPerOrientation; index++)
         {
-bufferedImageArray[index +numberOfFramesPerOrientation]= this.getImage(bufferedImageArray[index]!, verticle, horizontal);
+bufferedImageArray[index +numberOfFramesPerOrientation]= this->getImage(bufferedImageArray[index]!, verticle, horizontal);
     
 }
 

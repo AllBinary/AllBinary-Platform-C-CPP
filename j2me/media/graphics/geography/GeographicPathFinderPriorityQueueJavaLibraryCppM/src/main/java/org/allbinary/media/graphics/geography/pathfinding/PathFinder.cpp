@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/RuntimeException.h"
@@ -92,70 +94,67 @@
 #include "MultipassState.h"
 
 class PathFinder: public GeographicPathFinderBase {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    private: const openPriorityQueue: PriorityQueue<PathFindingNodeCost> = new PriorityQueue<PathFindingNodeCost>();
+    private: const PriorityQueue<PathFindingNodeCost> openPriorityQueue = PriorityQueue<PathFindingNodeCost>();
 
-    private: const closedSet: HashSet<PathFindingNodeCost> = new HashSet<PathFindingNodeCost>();
+    private: const HashSet<PathFindingNodeCost> closedSet = HashSet<PathFindingNodeCost>();
 
-    private: geographicMapInterface: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: Object* geographicMapInterface = NullUtil::getInstance().NULL_OBJECT;
 
-    private: costArray: std::vector<std::vector<PathFindingNodeCost>> = PathFindingNodeCost.NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
+    private: std::vector<std::vector<PathFindingNodeCost>> costArray = PathFindingNodeCost::NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY;
 
                 //@Throws(Exception.constructor)
             
-    public init(BasicGeographicMap geographicMapInterface){
-this.geographicMapInterface= geographicMapInterface;
+    public: void init(BasicGeographicMap geographicMapInterface){
+this->geographicMapInterface= geographicMapInterface;
     
 
-    tiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
-this.costArray= new Array(tiledLayer!.getColumns()).fill(null).map(() => new Array(tiledLayer!.getRows()).fill(0))
+this->costArray= new Array(tiledLayer.getColumns()).fill(null).map(() => new Array(tiledLayer.getRows()).fill(0))
                                                             ;
     
 
-    basicGeographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterface!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory basicGeographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    node: PathFindingNodeCost;;
+    PathFindingNodeCost node;;
     
 
-    sizeX: int32_t = this.costArray!.length
-                ;;
+    int32_t sizeX = this->costArray.size();;
     
 
-    sizeY: int32_t = this.costArray[0]!.length
-                ;;
+    int32_t sizeY = this->costArray[0]!.size();;
     
 
 
 
 
                         for (
-    column: int32_t = 0;column < sizeX; column++)
+    int32_t column = 0;column < sizeX; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = 0;row < sizeY; row++)
+    int32_t row = 0;row < sizeY; row++)
         {
 
-    geographicMapCellType: GeographicMapCellType = geographicMapInterface!.getCellTypeAt(basicGeographicMapCellPositionFactory!.getAt(column, row))!;;
+    GeographicMapCellType geographicMapCellType = geographicMapInterface->getCellTypeAt(basicGeographicMapCellPositionFactory.getAt(column, row));;
     
 
-    raceTrackGeographicMapCellType: RaceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = geographicMapCellType as RaceTrackGeographicMapCellType;;
     
-node= new PathFindingNodeCost(NullUtil.getInstance()!.NULL_OBJECT, basicGeographicMapCellPositionFactory!.getAt(column, row), new PathFindingNodeCostInfo(raceTrackGeographicMapCellType!.getTravelCost(),  -1));
+node= PathFindingNodeCost(NullUtil::getInstance().NULL_OBJECT, basicGeographicMapCellPositionFactory.getAt(column, row), PathFindingNodeCostInfo(raceTrackGeographicMapCellType.getTravelCost(),  -1));
     
-this.costArray[column]![row]= node;
+this->costArray[column]![row]= node;
     
 }
 
@@ -164,29 +163,29 @@ this.costArray[column]![row]= node;
 }
 
 
-    public BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths){
+    public: BasicArrayList searchTotalPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.search(startPathFindingNodeList!.get(0) as PathFindingNode, endPathFindingNodeList!.get(0) as PathFindingNode);;
+                        return this->search(startPathFindingNodeList.get(0) as PathFindingNode, endPathFindingNodeList.get(0) as PathFindingNode);;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "search", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "search", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 }
 
@@ -195,34 +194,34 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "search", e);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState){
+    public: BasicArrayList searchTotalPathN(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, int32_t totalPaths, MultipassState multipassState){
 
-                        if(multipassState!.step == 0)
+                        if(multipassState.step == 0)
                         
                                     {
-                                    multipassState!.step++;
+                                    multipassState.step++;
     
 
                                     }
                                 
                              else 
-                        if(multipassState!.step == 1)
+                        if(multipassState.step == 1)
                         
                                     {
-                                    this.searchStart(startPathFindingNodeList!.get(0) as PathFindingNode, endPathFindingNodeList!.get(0) as PathFindingNode, multipassState);
+                                    this->searchStart(startPathFindingNodeList.get(0) as PathFindingNode, endPathFindingNodeList.get(0) as PathFindingNode, multipassState);
     
 
                                     }
                                 
                              else 
-                        if(multipassState!.step == 2)
+                        if(multipassState.step == 2)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.searchN(startPathFindingNodeList!.get(0) as PathFindingNode, endPathFindingNodeList!.get(0) as PathFindingNode, multipassState);;
+                        return this->searchN(startPathFindingNodeList.get(0) as PathFindingNode, endPathFindingNodeList.get(0) as PathFindingNode, multipassState);;
     
 
                                     }
@@ -231,21 +230,21 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "search", e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList search(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode){
+    public: BasicArrayList search(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode){
 
-    list: BasicArrayList = this.findPath(startPathFindingNode!.geographicMapCellPosition, endPathFindingNode!.geographicMapCellPosition)!;;
+    BasicArrayList list = this->findPath(startPathFindingNode.geographicMapCellPosition, endPathFindingNode.geographicMapCellPosition);;
     
 
-    pathList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList pathList = BasicArrayListD();;
     
-pathList!.add(list);
+pathList.add(list);
     
 
 
@@ -258,21 +257,21 @@ pathList!.add(list);
 
                 //@Throws(Exception.constructor)
             
-    public searchStart(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState){
-this.findPathStart(startPathFindingNode!.geographicMapCellPosition, endPathFindingNode!.geographicMapCellPosition, multipassState);
+    public: void searchStart(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState){
+this->findPathStart(startPathFindingNode.geographicMapCellPosition, endPathFindingNode.geographicMapCellPosition, multipassState);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList searchN(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState){
+    public: BasicArrayList searchN(PathFindingNode startPathFindingNode, PathFindingNode endPathFindingNode, MultipassState multipassState){
 
-    list: BasicArrayList = this.findPathEnd(startPathFindingNode!.geographicMapCellPosition, endPathFindingNode!.geographicMapCellPosition, multipassState)!;;
+    BasicArrayList list = this->findPathEnd(startPathFindingNode.geographicMapCellPosition, endPathFindingNode.geographicMapCellPosition, multipassState);;
     
 
                         if(list == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -280,19 +279,19 @@ this.findPathStart(startPathFindingNode!.geographicMapCellPosition, endPathFindi
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 
                                     }
                                 
 
-    pathList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList pathList = BasicArrayListD();;
     
-pathList!.add(list);
+pathList.add(list);
     
-multipassState!.iteration= 0;
+multipassState.iteration= 0;
     
-multipassState!.step= 0;
+multipassState.step= 0;
     
 
 
@@ -305,83 +304,81 @@ multipassState!.step= 0;
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList findPath(GeographicMapCellPosition start, GeographicMapCellPosition target){
-this.openPriorityQueue!.clear();
+    public: BasicArrayList findPath(GeographicMapCellPosition start, GeographicMapCellPosition target){
+this->openPriorityQueue.clear();
     
-this.closedSet!.clear();
-    
-
-    discoveryCalculation: int64_t= 0;;
+this->closedSet.clear();
     
 
-    node: PathFindingNodeCost;;
+    int64_t discoveryCalculation= 0;;
     
 
-    targetColumn: int32_t = target.getColumn()!;;
+    PathFindingNodeCost node;;
     
 
-    targetRow: int32_t = target.getRow()!;;
+    int32_t targetColumn = target.getColumn();;
     
 
-    sizeX: int32_t = this.costArray!.length
-                ;;
+    int32_t targetRow = target.getRow();;
     
 
-    sizeY: int32_t = this.costArray[0]!.length
-                ;;
+    int32_t sizeX = this->costArray.size();;
+    
+
+    int32_t sizeY = this->costArray[0]!.size();;
     
 
 
 
 
                         for (
-    column: int32_t = 0;column < sizeX; column++)
+    int32_t column = 0;column < sizeX; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = 0;row < sizeY; row++)
+    int32_t row = 0;row < sizeY; row++)
         {
-discoveryCalculation= this.mathUtil!.abs(column -targetColumn) +this.mathUtil!.abs(row -targetRow);
+discoveryCalculation= this->mathUtil.abs(column -targetColumn) +this->mathUtil.abs(row -targetRow);
     
-node= this.costArray[column]![row]!;
+node= this->costArray[column]![row]!;
     
-node.pathFindingNodeCostInfoP!.totalCostP= 0;
+node.pathFindingNodeCostInfoP.totalCostP= 0;
     
-node.pathFindingNodeCostInfoP!.costToEndP= discoveryCalculation;
+node.pathFindingNodeCostInfoP.costToEndP= discoveryCalculation;
     
 }
 
 }
 
 
-    startNode: PathFindingNodeCost = this.costArray[start.getColumn()]![start.getRow()]!;;
+    PathFindingNodeCost startNode = this->costArray[start.getColumn()]![start.getRow()];;
     
-this.openPriorityQueue!.add(startNode);
-    
-
-    geographicMapInterface: BasicGeographicMap = this.geographicMapInterface as BasicGeographicMap;;
+this->openPriorityQueue.add(startNode);
     
 
-    basicGeographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterface!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMap geographicMapInterface = this->geographicMapInterface as BasicGeographicMap;;
     
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    BasicGeographicMapCellPositionFactory basicGeographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    targetNode: PathFindingNodeCost = this.costArray[target.getColumn()]![target.getRow()]!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    current: PathFindingNodeCost;;
+    PathFindingNodeCost targetNode = this->costArray[target.getColumn()]![target.getRow()];;
+    
+
+    PathFindingNodeCost current;;
     
 
         do
         {
-current= this.openPriorityQueue!.poll();
+current= this->openPriorityQueue.poll();
     
-this.closedSet!.add(current);
+this->closedSet.add(current);
     
 
                         if(current === targetNode)
@@ -391,42 +388,42 @@ this.closedSet!.add(current);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.extractPath(start, current);;
+                        return this->extractPath(start, current);;
     
 
                                     }
                                 
 
-    neighbor: PathFindingNodeCost;;
+    PathFindingNodeCost neighbor;;
     
 
-    neighborInfo: PathFindingNodeCostInfo;;
+    PathFindingNodeCostInfo neighborInfo;;
     
 
-    calculatedCost: int64_t= 0;;
+    int64_t calculatedCost= 0;;
     
 
 
 
 
                         for (
-    column: int32_t = current.geographicMapCellPosition!.getColumn() -1;column < current.geographicMapCellPosition!.getColumn() +2; column++)
+    int32_t column = current.geographicMapCellPosition.getColumn() -1;column < current.geographicMapCellPosition.getColumn() +2; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = current.geographicMapCellPosition!.getRow() -1;row < current.geographicMapCellPosition!.getRow() +2; row++)
+    int32_t row = current.geographicMapCellPosition.getRow() -1;row < current.geographicMapCellPosition.getRow() +2; row++)
         {
 
-                        if(column > 0 && row > 0 && column < allBinaryTiledLayer!.getColumns() && row < allBinaryTiledLayer!.getRows() && geographicMapInterface!.isOnMap(basicGeographicMapCellPositionFactory!.getAt(column, row)))
+                        if(column > 0 && row > 0 && column < allBinaryTiledLayer.getColumns() && row < allBinaryTiledLayer.getRows() && geographicMapInterface->isOnMap(basicGeographicMapCellPositionFactory.getAt(column, row)))
                         
                                     {
-                                    neighbor= this.costArray[column]![row]!;
+                                    neighbor= this->costArray[column]![row]!;
     
 
-                        if(this.closedSet!.contains(neighbor))
+                        if(this->closedSet.contains(neighbor))
                         
                                     {
                                     
@@ -438,25 +435,25 @@ this.closedSet!.add(current);
                                 
 neighborInfo= neighbor.pathFindingNodeCostInfoP;
     
-calculatedCost= neighborInfo!.costToEndP +neighborInfo!.costFromStartP +current.pathFindingNodeCostInfoP!.totalCostP;
+calculatedCost= neighborInfo.costToEndP +neighborInfo.costFromStartP +current.pathFindingNodeCostInfoP.totalCostP;
     
 
-                        if(calculatedCost < neighborInfo!.totalCostP || !this.openPriorityQueue!.contains(neighbor))
+                        if(calculatedCost < neighborInfo.totalCostP || !this->openPriorityQueue.contains(neighbor))
                         
                                     {
-                                    neighborInfo!.totalCostP= calculatedCost;
+                                    neighborInfo.totalCostP= calculatedCost;
     
 neighbor.parent= current;
     
 
-                        if(!this.openPriorityQueue!.contains(neighbor))
+                        if(!this->openPriorityQueue.contains(neighbor))
                         
                                     {
                                     
-                        if(geographicMapInterface!.isOfFourDirections(current.geographicMapCellPosition, neighbor.geographicMapCellPosition))
+                        if(geographicMapInterface->isOfFourDirections(current.geographicMapCellPosition, neighbor.geographicMapCellPosition))
                         
                                     {
-                                    this.openPriorityQueue!.add(neighbor);
+                                    this->openPriorityQueue.add(neighbor);
     
 
                                     }
@@ -476,106 +473,104 @@ neighbor.parent= current;
 
 }
 
-        while(!this.openPriorityQueue!.isEmpty())
+        while(!this->openPriorityQueue.isEmpty())
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public findPathStart(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState){
-this.openPriorityQueue!.clear();
+    public: void findPathStart(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState){
+this->openPriorityQueue.clear();
     
-this.closedSet!.clear();
-    
-
-    discoveryCalculation: int64_t= 0;;
+this->closedSet.clear();
     
 
-    node: PathFindingNodeCost;;
+    int64_t discoveryCalculation= 0;;
     
 
-    targetColumn: int32_t = target.getColumn()!;;
+    PathFindingNodeCost node;;
     
 
-    targetRow: int32_t = target.getRow()!;;
+    int32_t targetColumn = target.getColumn();;
     
 
-    sizeX: int32_t = this.costArray!.length
-                ;;
+    int32_t targetRow = target.getRow();;
     
 
-    sizeY: int32_t = this.costArray[0]!.length
-                ;;
+    int32_t sizeX = this->costArray.size();;
+    
+
+    int32_t sizeY = this->costArray[0]!.size();;
     
 
 
 
 
                         for (
-    column: int32_t = 0;column < sizeX; column++)
+    int32_t column = 0;column < sizeX; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = 0;row < sizeY; row++)
+    int32_t row = 0;row < sizeY; row++)
         {
-discoveryCalculation= this.mathUtil!.abs(column -targetColumn) +this.mathUtil!.abs(row -targetRow);
+discoveryCalculation= this->mathUtil.abs(column -targetColumn) +this->mathUtil.abs(row -targetRow);
     
-node= this.costArray[column]![row]!;
+node= this->costArray[column]![row]!;
     
-node.pathFindingNodeCostInfoP!.totalCostP= 0;
+node.pathFindingNodeCostInfoP.totalCostP= 0;
     
-node.pathFindingNodeCostInfoP!.costToEndP= discoveryCalculation;
+node.pathFindingNodeCostInfoP.costToEndP= discoveryCalculation;
     
 }
 
 }
 
 
-    startNode: PathFindingNodeCost = this.costArray[start.getColumn()]![start.getRow()]!;;
+    PathFindingNodeCost startNode = this->costArray[start.getColumn()]![start.getRow()];;
     
-this.openPriorityQueue!.add(startNode);
+this->openPriorityQueue.add(startNode);
     
-multipassState!.step++;
+multipassState.step++;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList findPathEnd(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState){
+    public: BasicArrayList findPathEnd(GeographicMapCellPosition start, GeographicMapCellPosition target, MultipassState multipassState){
 
-    geographicMapInterface: BasicGeographicMap = this.geographicMapInterface as BasicGeographicMap;;
+    BasicGeographicMap geographicMapInterface = this->geographicMapInterface as BasicGeographicMap;;
     
 
-    basicGeographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterface!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory basicGeographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    targetNode: PathFindingNodeCost = this.costArray[target.getColumn()]![target.getRow()]!;;
+    PathFindingNodeCost targetNode = this->costArray[target.getColumn()]![target.getRow()];;
     
 
-    current: PathFindingNodeCost;;
+    PathFindingNodeCost current;;
     
 
-    total: int32_t = 0;;
+    int32_t total = 0;;
     
 
         do
         {
-current= this.openPriorityQueue!.poll();
+current= this->openPriorityQueue.poll();
     
-this.closedSet!.add(current);
+this->closedSet.add(current);
     
 
                         if(current === targetNode)
@@ -585,42 +580,42 @@ this.closedSet!.add(current);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.extractPath(start, current);;
+                        return this->extractPath(start, current);;
     
 
                                     }
                                 
 
-    neighbor: PathFindingNodeCost;;
+    PathFindingNodeCost neighbor;;
     
 
-    neighborInfo: PathFindingNodeCostInfo;;
+    PathFindingNodeCostInfo neighborInfo;;
     
 
-    calculatedCost: int64_t= 0;;
+    int64_t calculatedCost= 0;;
     
 
 
 
 
                         for (
-    column: int32_t = current.geographicMapCellPosition!.getColumn() -1;column < current.geographicMapCellPosition!.getColumn() +2; column++)
+    int32_t column = current.geographicMapCellPosition.getColumn() -1;column < current.geographicMapCellPosition.getColumn() +2; column++)
         {
 
 
 
 
                         for (
-    row: int32_t = current.geographicMapCellPosition!.getRow() -1;row < current.geographicMapCellPosition!.getRow() +2; row++)
+    int32_t row = current.geographicMapCellPosition.getRow() -1;row < current.geographicMapCellPosition.getRow() +2; row++)
         {
 
-                        if(column > 0 && row > 0 && column < allBinaryTiledLayer!.getColumns() && row < allBinaryTiledLayer!.getRows() && geographicMapInterface!.isOnMap(basicGeographicMapCellPositionFactory!.getAt(column, row)))
+                        if(column > 0 && row > 0 && column < allBinaryTiledLayer.getColumns() && row < allBinaryTiledLayer.getRows() && geographicMapInterface->isOnMap(basicGeographicMapCellPositionFactory.getAt(column, row)))
                         
                                     {
-                                    neighbor= this.costArray[column]![row]!;
+                                    neighbor= this->costArray[column]![row]!;
     
 
-                        if(this.closedSet!.contains(neighbor))
+                        if(this->closedSet.contains(neighbor))
                         
                                     {
                                     
@@ -632,25 +627,25 @@ this.closedSet!.add(current);
                                 
 neighborInfo= neighbor.pathFindingNodeCostInfoP;
     
-calculatedCost= neighborInfo!.costToEndP +neighborInfo!.costFromStartP +current.pathFindingNodeCostInfoP!.totalCostP;
+calculatedCost= neighborInfo.costToEndP +neighborInfo.costFromStartP +current.pathFindingNodeCostInfoP.totalCostP;
     
 
-                        if(calculatedCost < neighborInfo!.totalCostP || !this.openPriorityQueue!.contains(neighbor))
+                        if(calculatedCost < neighborInfo.totalCostP || !this->openPriorityQueue.contains(neighbor))
                         
                                     {
-                                    neighborInfo!.totalCostP= calculatedCost;
+                                    neighborInfo.totalCostP= calculatedCost;
     
 neighbor.parent= current;
     
 
-                        if(!this.openPriorityQueue!.contains(neighbor))
+                        if(!this->openPriorityQueue.contains(neighbor))
                         
                                     {
                                     
-                        if(geographicMapInterface!.isOfFourDirections(current.geographicMapCellPosition, neighbor.geographicMapCellPosition))
+                        if(geographicMapInterface->isOfFourDirections(current.geographicMapCellPosition, neighbor.geographicMapCellPosition))
                         
                                     {
-                                    this.openPriorityQueue!.add(neighbor);
+                                    this->openPriorityQueue.add(neighbor);
     
 
                                     }
@@ -678,29 +673,29 @@ total++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 
                                     }
                                 
 }
 
-        while(!this.openPriorityQueue!.isEmpty())
+        while(!this->openPriorityQueue.isEmpty())
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    BasicArrayList extractPath(GeographicMapCellPosition start, PathFindingNodeCost current){
+    private: BasicArrayList extractPath(GeographicMapCellPosition start, PathFindingNodeCost current){
 
-    path: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList path = BasicArrayListD();;
     
 
-        while(current.parent != NullUtil.getInstance()!.NULL_OBJECT)
+        while(current.parent != NullUtil::getInstance().NULL_OBJECT)
         {
 path.add(current.geographicMapCellPosition);
     
@@ -710,7 +705,7 @@ current= current.parent as PathFindingNodeCost;
 
 path.add(start);
     
-this.basicArrayListUtil!.reverse(path);
+this->basicArrayListUtil.reverse(path);
     
 
 

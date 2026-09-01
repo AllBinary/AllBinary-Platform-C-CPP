@@ -60,35 +60,34 @@
 class GeographicMapDirectionUtil
             : public Object
          {
-        
 
-    private: static const instance: GeographicMapDirectionUtil = new GeographicMapDirectionUtil();
+    private: static GeographicMapDirectionUtil instance() { return GeographicMapDirectionUtil(); }
 
-    public static GeographicMapDirectionUtil getInstance();
+    public: static GeographicMapDirectionUtil getInstance();
 
-private constructor ();
+private: GeographicMapDirectionUtil();
 
-    private: const MESSAGE: string = "Cell Position should have been cached!!!";
-
-                //@Throws(Exception.constructor)
-            
-    public Direction getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    private: const std::string MESSAGE = "Cell Position should have been cached!!!";
 
                 //@Throws(Exception.constructor)
             
-    public Direction getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: Direction getDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public Direction getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
-
-    private: const ERROR: string = "Error: ";
-
-    private: const EQUAL: string = " == ";
+    public: Direction getEightDirectionFromCellPositionToAdjacentCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public Direction getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+    public: Direction getDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
+
+    private: const std::string ERROR = "Error: ";
+
+    private: const std::string EQUAL = " == ";
+
+                //@Throws(Exception.constructor)
+            
+    public: Direction getEightDirectionFromCellPositionToCellPosition(GeographicMapCellPosition fromGeographicMapCellPosition, GeographicMapCellPosition toGeographicMapCellPosition);
 
 };
 

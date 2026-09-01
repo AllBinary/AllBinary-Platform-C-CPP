@@ -40,11 +40,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInfoObjectConfigGeneratorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    string process(string input)
+    std::string process(std::string input)
 
 };
 

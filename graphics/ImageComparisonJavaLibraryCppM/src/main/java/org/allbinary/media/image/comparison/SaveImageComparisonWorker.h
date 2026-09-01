@@ -69,29 +69,28 @@
 class SaveImageComparisonWorker
             : public Object
         : public ImageComparisonResultsListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: const imageComparisonInfoVector: Vector = new Vector();
+    private: const Vector imageComparisonInfoVector = Vector();
 
-public constructor ();
+public: SaveImageComparisonWorker();
 
-    public onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent);
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public run();
+    public: void run();
 
 };
 

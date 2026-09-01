@@ -55,30 +55,29 @@
 class MidletExitProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: MidletExitProcessorFactory = new MidletExitProcessorFactory();
+    private: static MidletExitProcessorFactory instance() { return MidletExitProcessorFactory(); }
 
-    public static MidletExitProcessorFactory getInstance(){
+    public: static MidletExitProcessorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MidletExitProcessorFactory.instance;
+                        return MidletExitProcessorFactory::instance();
     
 }
 
 
-    public Processor getExitInstance(MIDlet midlet){
+    public: Processor getExitInstance(MIDlet midlet){
 
-                        if(AppletUtil.isAppletLoader(midlet) || J2MEUtil.isJ2ME())
+                        if(AppletUtil::isAppletLoader(midlet) || J2MEUtil::isJ2ME())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Processor.getInstance();;
+                        return Processor::getInstance();;
     
 
                                     }
@@ -88,7 +87,7 @@ class MidletExitProcessorFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MidletExitProcessor(midlet);
+                        return MidletExitProcessor(midlet);
     
 
                         }

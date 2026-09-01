@@ -54,29 +54,26 @@
 class AbeNoLicense
             : public Object
         : public AbeLicenseInterface {
-        
 
-    private: static abeNoLicense: AbeNoLicense = new AbeNoLicense();
+    private: static AbeNoLicense abeNoLicense = AbeNoLicense();
 
-    public static AbeNoLicense getInstance(){
+    public: static AbeNoLicense getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeNoLicense.abeNoLicense;
+                        return AbeNoLicense::abeNoLicense;
     
 }
 
 
-    public serverVector: BasicArrayList = new BasicArrayListD();
+    public: BasicArrayList serverVector = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: AbeNoLicense(){
+}
 
 
-    public bool hasKey(){
+    public: bool hasKey(){
 
 
 
@@ -86,47 +83,47 @@ private constructor (){
 }
 
 
-    public string getKey(string keyName){
+    public: std::string getKey(std::string keyName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public string getLicenseId(){
+    public: std::string getLicenseId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public string getSpecial(){
+    public: std::string getSpecial(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public BasicArrayList getServers(){
+    public: BasicArrayList getServers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverVector;
+                        return this->serverVector;
     
 }
 
 
-    public bool isValid(){
+    public: bool isValid(){
 
 
 
@@ -136,12 +133,12 @@ private constructor (){
 }
 
 
-    public LicenseType getLicenseType(){
+    public: LicenseType getLicenseType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseTypeFactory.getInstance()!.UNKNOWN;
+                        return LicenseTypeFactory::getInstance().UNKNOWN;
     
 }
 

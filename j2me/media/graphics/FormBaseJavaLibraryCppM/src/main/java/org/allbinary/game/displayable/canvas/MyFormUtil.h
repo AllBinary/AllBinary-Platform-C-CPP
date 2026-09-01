@@ -90,21 +90,20 @@
 class MyFormUtil
             : public Object
          {
-        
 
-    private: static const instance: MyFormUtil = new MyFormUtil();
+    private: static MyFormUtil instance() { return MyFormUtil(); }
 
-    public static MyFormUtil getInstance();
+    public: static MyFormUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: popupMenuRectangle: Rectangle = RectangleFactory.SINGLETON;
+    private: Rectangle popupMenuRectangle = RectangleFactory::SINGLETON;
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public Rectangle getPopupMenuRectangle();
+    public: Rectangle getPopupMenuRectangle();
 
 };
 

@@ -60,19 +60,18 @@
 class NoGameNotificationHudSingleton
             : public Object
          {
-        
 
-    private: static const instance: NoGameNotificationHudSingleton = new NoGameNotificationHudSingleton();
+    private: static NoGameNotificationHudSingleton instance() { return NoGameNotificationHudSingleton(); }
 
-    public static NoGameNotificationHudSingleton getInstance();
+    public: static NoGameNotificationHudSingleton getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: gameNotificationHud: GameNotificationHud = GameNotificationHud.NULL_GAME_NOTIFICATION;
+    private: GameNotificationHud gameNotificationHud = GameNotificationHud::NULL_GAME_NOTIFICATION;
 
-private constructor ();
+private: NoGameNotificationHudSingleton();
 
-    public GameNotificationHud getGameNotificationHud();
+    public: GameNotificationHud getGameNotificationHud();
 
 };
 

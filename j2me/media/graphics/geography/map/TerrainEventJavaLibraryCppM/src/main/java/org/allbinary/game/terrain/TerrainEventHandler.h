@@ -70,31 +70,30 @@
 #include "TerrainEventListenerInterface.h"
 
 class TerrainEventHandler: public BasicEventHandler {
-        
 
-    private: static hashtable: Hashtable<any, any> = NullUtil.getInstance()!.NULL_TABLE;
+    private: static Hashtable<any, any> hashtable = NullUtil::getInstance().NULL_TABLE;
 
-    public static init();
+    public: static void init();
 
-    public static TerrainEventHandler getInstance(any = {} anyType);
+    public: static TerrainEventHandler getInstance(Object* anyType);
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: TerrainEventHandler();
 
-    public addListener(TerrainEventListener terrainEventListener);
+    public: void addListener(TerrainEventListener terrainEventListener);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    public: void fireEvent(AllBinaryEventObject eventObject);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

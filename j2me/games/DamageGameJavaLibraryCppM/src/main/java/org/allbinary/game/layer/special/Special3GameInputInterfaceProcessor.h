@@ -51,13 +51,12 @@
 #include "SpecialGameInputInterface.h"
 
 class Special3GameInputInterfaceProcessor: public SpecialGameInputInterfaceProcessor {
-        
 
-public constructor (SpecialGameInputInterface collidableDestroyableDamageableLayer);
+public: Special3GameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer);
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent);
 
 };
 

@@ -55,25 +55,22 @@
 class UserEmailEventConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: userEmailEventConfigurationInterface: UserEmailEventConfigurationInterface;
+    private: UserEmailEventConfigurationInterface userEmailEventConfigurationInterface;
 
-public constructor (UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
-
-            super();
-        this.userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
+public: UserEmailEventConfigurationMapping(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface){
+this->userEmailEventConfigurationInterface= userEmailEventConfigurationInterface;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(UserEmailEventConfigurationData.NAME, this.userEmailEventConfigurationInterface!.getName());
+hashMap.put(UserEmailEventConfigurationData::NAME, this->userEmailEventConfigurationInterface.getName());
     
-hashMap!.put(UserEmailEventConfigurationData.LISTENER_CLASSPATH, this.userEmailEventConfigurationInterface!.getEventListenerClassPath());
+hashMap.put(UserEmailEventConfigurationData::LISTENER_CLASSPATH, this->userEmailEventConfigurationInterface.getEventListenerClassPath());
     
 
 
@@ -86,25 +83,25 @@ hashMap!.put(UserEmailEventConfigurationData.LISTENER_CLASSPATH, this.userEmailE
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserEmailEventConfigurationData.NAME;
+                        return UserEmailEventConfigurationData::NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(this.userEmailEventConfigurationInterface!.getName());
+vector.add(this->userEmailEventConfigurationInterface.getName());
     
-vector.add(this.userEmailEventConfigurationInterface!.getEventListenerClassPath());
+vector.add(this->userEmailEventConfigurationInterface.getEventListenerClassPath());
     
 
 

@@ -42,7 +42,6 @@
         #include "Life.h"
 
 class LifeInterfaceCompositeInterface {
-        
 
     Life getLifeInterface();
 

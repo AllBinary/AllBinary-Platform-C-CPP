@@ -78,69 +78,68 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TouchButtonInput: public Input: public GameKeyEventSourceInterface {
-        
+class TouchButtonInput: public Input, public GameKeyEventSourceInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const TOUCH_BUTTON_SOURCE_ID: int32_t = this.gameKeyEventFactory!.TOUCH_BUTTON_SOURCE_ID;
+    private: const int32_t TOUCH_BUTTON_SOURCE_ID = this->gameKeyEventFactory.TOUCH_BUTTON_SOURCE_ID;
 
-    private: gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-public constructor (int32_t id, string name){
+public: TouchButtonInput(int32_t id, std::string name){
             super(id, name);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    inputFactory: InputFactory = InputFactory.getInstance()!;;
+    InputFactory inputFactory = InputFactory::getInstance();;
     
-inputFactory!.add(this.getId(), this);
+inputFactory.add(this->getId(), this);
     
 }
 
 
-    public update(InputToGameKeyMapping inputToGameKeyMapping){
+    public: void update(InputToGameKeyMapping inputToGameKeyMapping){
 
         try {
             
-    gameKey: GameKey = inputToGameKeyMapping!.getInstance(this.getId())!;;
+    GameKey gameKey = inputToGameKeyMapping.getInstance(this->getId());;
     
-this.gameKeyEvent= this.gameKeyEventFactory!.getInstanceForInput(this, gameKey);
+this->gameKeyEvent= this->gameKeyEventFactory.getInstanceForInput(this, gameKey);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.UPDATE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.UPDATE, e);
     
 }
 
 }
 
 
-    public int32_t getSourceId(){
+    public: int32_t getSourceId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.TOUCH_BUTTON_SOURCE_ID;
+                        return this->TOUCH_BUTTON_SOURCE_ID;
     
 }
 
 
-    public GameKeyEvent getGameKeyEvent(){
+    public: GameKeyEvent getGameKeyEvent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyEvent;
+                        return this->gameKeyEvent;
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/MultiGeographicMapBehavior.h>
@@ -80,61 +82,60 @@
         #include "TopViewCharacterBehavior.h"
 
 class NonPlayerTopViewCharacterBehavior: public TopViewCharacterBehavior {
-        
 
-    private: const geographicMapBehavior: MultiGeographicMapBehavior = new MultiGeographicMapBehavior();
+    private: const MultiGeographicMapBehavior geographicMapBehavior = MultiGeographicMapBehavior();
 
-    private: const CLIFF: BasicTerrainInfo = new BasicTerrainInfo(AngleFactory.getInstance()!.DOWN);
+    private: const BasicTerrainInfo CLIFF = BasicTerrainInfo(AngleFactory::getInstance().DOWN);
 
                 //@Throws(Exception.constructor)
             
-    public terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
+    public: void terrainEvent(AllBinaryLayer layer, Direction direction, int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition){
 
-    maxColumns: int32_t = geographicMapInterfaceArray[0]!.getAllBinaryTiledLayer()!.getColumns()!;;
+    int32_t maxColumns = geographicMapInterfaceArray[0]!.getAllBinaryTiledLayer().getColumns();;
     
 
-                        if(geographicMapCellPosition!.getColumn() > 0 && geographicMapCellPosition!.getColumn() < maxColumns)
+                        if(geographicMapCellPosition.getColumn() > 0 && geographicMapCellPosition.getColumn() < maxColumns)
                         
                                     {
                                     
-    nextTerrainGeographicMapCellPosition: GeographicMapCellPosition = 
+    GeographicMapCellPosition nextTerrainGeographicMapCellPosition = 
                 null
             ;;
     
 
-    geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterfaceArray[0]!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory = geographicMapInterfaceArray[0]!.getGeographicMapCellPositionFactory();;
     
 
-                        if(direction == DirectionFactory.getInstance()!.LEFT)
+                        if(direction == DirectionFactory::getInstance().LEFT)
                         
                                     {
-                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory!.getAt(geographicMapCellPosition!.getColumn() -1, geographicMapCellPosition!.getRow());
+                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory.getAt(geographicMapCellPosition.getColumn() -1, geographicMapCellPosition.getRow());
     
 
                                     }
                                 
                              else 
-                        if(direction == DirectionFactory.getInstance()!.RIGHT)
+                        if(direction == DirectionFactory::getInstance().RIGHT)
                         
                                     {
-                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory!.getAt(geographicMapCellPosition!.getColumn() +1, geographicMapCellPosition!.getRow());
+                                    nextTerrainGeographicMapCellPosition= geographicMapCellPositionFactory.getAt(geographicMapCellPosition.getColumn() +1, geographicMapCellPosition.getRow());
     
 
                                     }
                                 
-this.geographicMapBehavior!.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, nextTerrainGeographicMapCellPosition);
+this->geographicMapBehavior.getCellTypeAt(geographicMapInterfaceArray, geographicMapCellTypeArray, nextTerrainGeographicMapCellPosition);
     
 
-    hasSolidBlock: bool = this.hasSolidBlock(geographicMapInterfaceArray, geographicMapCellTypeArray)!;;
+    bool hasSolidBlock = this->hasSolidBlock(geographicMapInterfaceArray, geographicMapCellTypeArray);;
     
 
                         if(!hasSolidBlock)
                         
                                     {
                                     
-    terrainEvent: TerrainEvent = TerrainEventCircularStaticPool.getInstance()!.getNext(this.CLIFF)!;;
+    TerrainEvent terrainEvent = TerrainEventCircularStaticPool::getInstance().getNext(this->CLIFF);;
     
-TerrainEventHandler.getInstance(layer)!.fireEvent(terrainEvent);
+TerrainEventHandler::getInstance(layer).fireEvent(terrainEvent);
     
 
                                     }
@@ -145,7 +146,7 @@ TerrainEventHandler.getInstance(layer)!.fireEvent(terrainEvent);
 }
 
 
-    public terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y){
+    public: void terrainMove(AllBinaryLayer layer, std::vector<BasicGeographicMap> geographicMapInterfaceArray, int32_t x, int32_t y){
 layer.moveDXY(x, y);
     
 }

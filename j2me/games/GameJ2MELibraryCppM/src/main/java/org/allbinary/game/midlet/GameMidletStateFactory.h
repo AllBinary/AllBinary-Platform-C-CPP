@@ -58,21 +58,20 @@
 class GameMidletStateFactory
             : public Object
          {
-        
 
-    private: static const INSTANCE: GameMidletStateFactory = new GameMidletStateFactory();
+    private: static const GameMidletStateFactory INSTANCE = GameMidletStateFactory();
 
-    public static GameMidletStateFactory getInstance();
+    public: static GameMidletStateFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: currentGameState: GameState = GameStateFactory.getInstance()!.NO_GAME_STATE;
+    private: GameState currentGameState = GameStateFactory::getInstance().NO_GAME_STATE;
 
-private constructor ();
+private: GameMidletStateFactory();
 
-    public GameState getCurrentGameState();
+    public: GameState getCurrentGameState();
 
-    public setCurrentGameState(GameState currentGameState);
+    public: void setCurrentGameState(GameState currentGameState);
 
 };
 

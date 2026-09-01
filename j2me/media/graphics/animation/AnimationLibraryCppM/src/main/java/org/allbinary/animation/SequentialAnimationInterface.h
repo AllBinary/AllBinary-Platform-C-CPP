@@ -49,11 +49,10 @@
 #include "SequenceInterface.h"
 
 class SequentialAnimationInterface: public AnimationInterface, public SequenceInterface {
-        
 
     int32_t getSize();
 
-    previousFrame();
+    void previousFrame();
 
 };
 

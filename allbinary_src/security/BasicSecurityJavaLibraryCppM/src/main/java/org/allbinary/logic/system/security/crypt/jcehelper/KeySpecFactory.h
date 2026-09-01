@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_KEYSPECFACTORY_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_KEYSPECFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -67,21 +69,20 @@
 class KeySpecFactory
             : public Object
          {
-        
 
-    private: static const instance: KeySpecFactory = new KeySpecFactory();
+    private: static KeySpecFactory instance() { return KeySpecFactory(); }
 
-    public static KeySpecFactory getInstance();
+    public: static KeySpecFactory getInstance();
 
-    public const DES: string = "DES";
+    public: const std::string DES = "DES";
 
-    public const DESEDE: string = "DESede";
+    public: const std::string DESEDE = "DESede";
 
-    public const BLOWFISH: string = "Blowfish";
+    public: const std::string BLOWFISH = "Blowfish";
 
-private constructor ();
+private: KeySpecFactory();
 
-    public KeySpec getInstance(string algorithm, std::vector<int8_t> keyData);
+    public: KeySpec getInstance(std::string algorithm, std::vector<int8_t> keyData);
 
 };
 

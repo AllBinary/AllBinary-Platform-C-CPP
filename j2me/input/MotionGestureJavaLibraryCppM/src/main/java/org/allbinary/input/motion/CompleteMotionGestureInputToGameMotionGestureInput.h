@@ -98,15 +98,14 @@
 class CompleteMotionGestureInputToGameMotionGestureInput
             : public Object
          {
-        
 
-    private: static const instance: CompleteMotionGestureInputToGameMotionGestureInput = new CompleteMotionGestureInputToGameMotionGestureInput();
+    private: static CompleteMotionGestureInputToGameMotionGestureInput instance() { return CompleteMotionGestureInputToGameMotionGestureInput(); }
 
-    public static CompleteMotionGestureInputToGameMotionGestureInput getInstance();
+    public: static CompleteMotionGestureInputToGameMotionGestureInput getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public init();
+    public: void init();
 
 };
 

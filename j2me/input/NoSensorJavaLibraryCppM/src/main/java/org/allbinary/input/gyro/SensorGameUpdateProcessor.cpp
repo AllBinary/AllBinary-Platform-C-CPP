@@ -56,41 +56,40 @@
 class SensorGameUpdateProcessor
             : public Object
          {
-        
 
-    private: inputSensor: AllBinarySensor = NoAllBinarySensor.getInstance()!;
+    private: AllBinarySensor inputSensor = NoAllBinarySensor::getInstance();
 
-    setInputSensor(AllBinarySensor inputSensor){
-this.inputSensor= inputSensor;
+    protected: void setInputSensor(AllBinarySensor inputSensor){
+this->inputSensor= inputSensor;
     
 }
 
 
-    public AllBinarySensor getInputSensor(){
+    public: AllBinarySensor getInputSensor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputSensor;
+                        return this->inputSensor;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(any = {} anyType){
+    public: void process(Object* anyType){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public sendNotifications(any = {} anyType){
+    public: void sendNotifications(Object* anyType){
 }
 
 
-    public bool isAnySensor(){
+    public: bool isAnySensor(){
 
-                        if(this.inputSensor == NoAllBinarySensor.getInstance())
+                        if(this->inputSensor == NoAllBinarySensor::getInstance())
                         
                                     {
                                     
@@ -115,8 +114,8 @@ this.inputSensor= inputSensor;
 }
 
 
-    setNoSensors(){
-this.setInputSensor(NoAllBinarySensor.getInstance());
+    protected: void setNoSensors(){
+this->setInputSensor(NoAllBinarySensor::getInstance());
     
 }
 

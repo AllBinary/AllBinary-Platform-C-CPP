@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_H
         #define ORG_ALLBINARY_GAME_MULTIPLAYER_LAYER_MULTIPLAYERGAMELAYER_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -64,18 +66,17 @@
 #include "RemoteInfo.h"
 #include "MultiplayerBehavior.h"
 
-class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer: public MultiPlayerGameLayerInterface {
-        
+class MultiPlayerGameLayer: public CollidableDestroyableDamageableLayer, public MultiPlayerGameLayerInterface {
 
-public constructor (RemoteInfo remoteInfo, std::vector<Group> groupInterface, string name, Rectangle layerInfo, ViewPositionBase viewPosition);
+public: MultiPlayerGameLayer(RemoteInfo remoteInfo, std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition);
 
-    public MultiplayerBehavior getMultiplayerBehavior();
+    public: MultiplayerBehavior getMultiplayerBehavior();
 
-    public setPingInfo(bool show);
+    public: void setPingInfo(bool show);
 
-    setFiring(int16_t firing);
+    protected: void setFiring(int16_t firing);
 
-    int16_t getFiring();
+    protected: int16_t getFiring();
 
 };
 

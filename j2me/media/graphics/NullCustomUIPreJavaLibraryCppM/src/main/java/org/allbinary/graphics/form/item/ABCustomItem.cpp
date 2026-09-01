@@ -55,16 +55,15 @@
 class ABCustomItem
             : public Object
          {
-        
 
-    public static NULL_CUSTOM_ITEM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    public: static Object* NULL_CUSTOM_ITEM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ABCustomItem getNullInstance(){
+    public: static ABCustomItem getNullInstance(){
 
-                        if(ABCustomItem.NULL_CUSTOM_ITEM == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(ABCustomItem::NULL_CUSTOM_ITEM == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    ABCustomItem.NULL_CUSTOM_ITEM= new ABCustomItem(StringUtil.getInstance()!.EMPTY_STRING, BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+                                    ABCustomItem::NULL_CUSTOM_ITEM= ABCustomItem(StringUtil::getInstance().EMPTY_STRING, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
     
 
                                     }
@@ -73,30 +72,28 @@ class ABCustomItem
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABCustomItem.NULL_CUSTOM_ITEM as ABCustomItem;
+                        return ABCustomItem::NULL_CUSTOM_ITEM as ABCustomItem;
     
 }
 
 
-protected constructor (string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-
-            super();
-        }
-
-
-    public setOwner(Screen owner){
+protected: ABCustomItem(std::string label, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void setOwner(Screen owner){
 }
 
 
-    public paintUnselected(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 }
 
 
-    public bool isFocusable(){
+    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y){
+}
+
+
+    public: bool isFocusable(){
 
 
 
@@ -106,21 +103,21 @@ protected constructor (string label, BasicColor backgroundBasicColor, BasicColor
 }
 
 
-    public string getLabel(){
+    public: std::string getLabel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public setLabel(string label){
+    public: void setLabel(std::string label){
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
@@ -130,11 +127,11 @@ protected constructor (string label, BasicColor backgroundBasicColor, BasicColor
 }
 
 
-    public setHeight(int32_t height){
+    public: void setHeight(int32_t height){
 }
 
 
-    public float getValue(){
+    public: float getValue(){
 
 
 
@@ -144,11 +141,11 @@ protected constructor (string label, BasicColor backgroundBasicColor, BasicColor
 }
 
 
-    public setValue(float value){
+    public: void setValue(float value){
 }
 
 
-    public int32_t getMinimumWidth(){
+    public: int32_t getMinimumWidth(){
 
 
 
@@ -158,7 +155,7 @@ protected constructor (string label, BasicColor backgroundBasicColor, BasicColor
 }
 
 
-    public int32_t getMinimumHeight(){
+    public: int32_t getMinimumHeight(){
 
 
 
@@ -168,7 +165,7 @@ protected constructor (string label, BasicColor backgroundBasicColor, BasicColor
 }
 
 
-    public preMeasurement(Graphics graphics){
+    public: void preMeasurement(Graphics graphics){
 }
 
 

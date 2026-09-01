@@ -64,31 +64,30 @@
 class PaymentType
             : public Object
          {
-        
 
-    private: const basicPaymentType: BasicPaymentType;
+    private: BasicPaymentType basicPaymentType;
 
-    private: const paymentTransactionInterfaceFactoryInterface: PaymentTransactionInterfaceFactoryInterface;
+    private: PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface;
 
-    private: const paymentProcessorInterfaceFactoryInterface: PaymentProcessorInterfaceFactoryInterface;
+    private: PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface;
 
-protected constructor (BasicPaymentType basicPaymentType);
+protected: PaymentType(BasicPaymentType basicPaymentType);
 
-protected constructor (BasicPaymentType basicPaymentType, PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public PaymentTransactionInterfaceFactoryInterface getPaymentTransactionInterfaceFactoryInterface();
+protected: PaymentType(BasicPaymentType basicPaymentType, PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface, PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public PaymentProcessorInterfaceFactoryInterface getPaymentProcessorInterfaceFactoryInterface();
+    public: PaymentTransactionInterfaceFactoryInterface getPaymentTransactionInterfaceFactoryInterface();
 
-    public Vector toVector();
+                //@Throws(Exception.constructor)
+            
+    public: PaymentProcessorInterfaceFactoryInterface getPaymentProcessorInterfaceFactoryInterface();
 
-    public HashMap<any, any> toHashMap();
+    public: Vector toVector();
 
-    public BasicPaymentType getBasicPaymentType();
+    public: HashMap<any, any> toHashMap();
+
+    public: BasicPaymentType getBasicPaymentType();
 
 };
 

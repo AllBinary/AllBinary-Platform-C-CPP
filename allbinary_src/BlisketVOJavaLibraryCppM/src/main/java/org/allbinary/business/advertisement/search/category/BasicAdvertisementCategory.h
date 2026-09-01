@@ -46,13 +46,12 @@
 class BasicAdvertisementCategory
             : public Object
         : public AdvertisementCategoryInterface {
-        
 
-    private: categoryId: string;
+    private: std::string categoryId;
 
-public constructor (string categoryId);
+public: BasicAdvertisementCategory(std::string categoryId);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

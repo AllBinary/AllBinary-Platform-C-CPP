@@ -52,11 +52,10 @@
 class IIOImageCacheableFactory
             : public Object
         : public CacheableInterfaceFactoryInterface {
-        
 
-public constructor ();
+public: IIOImageCacheableFactory();
 
-    public CacheableInterface getInstance(any = {} key);
+    public: CacheableInterface getInstance(Object* key);
 
 };
 

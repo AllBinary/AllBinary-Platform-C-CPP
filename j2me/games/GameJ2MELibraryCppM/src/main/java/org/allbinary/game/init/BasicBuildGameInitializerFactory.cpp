@@ -54,16 +54,15 @@
 class BasicBuildGameInitializerFactory
             : public Object
         : public GameInitializationInterfaceFactoryInterface {
-        
 
-    public static NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY: BasicBuildGameInitializerFactory = new BasicBuildGameInitializerFactory();
+    public: static BasicBuildGameInitializerFactory NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY = BasicBuildGameInitializerFactory();
 
-    public GameInitializationInterface getInstance(){
+    public: GameInitializationInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BaseGameInitialization.NULL_BASE_GAME_INITIALIZATION;
+                        return BaseGameInitialization::NULL_BASE_GAME_INITIALIZATION;
     
 }
 

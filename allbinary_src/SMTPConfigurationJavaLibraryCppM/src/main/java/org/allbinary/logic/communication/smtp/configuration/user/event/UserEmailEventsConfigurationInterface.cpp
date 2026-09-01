@@ -56,11 +56,10 @@
         #include "UserEmailEventConfigurationInterface.h"
 
 class UserEmailEventsConfigurationInterface {
-        
 
     HashMap<any, any> getEventConfigurationHashMap()
 
-    addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface)
+    void addUserEmailEventConfiguration(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface)
 
                 //@Throws(Exception.constructor)
             

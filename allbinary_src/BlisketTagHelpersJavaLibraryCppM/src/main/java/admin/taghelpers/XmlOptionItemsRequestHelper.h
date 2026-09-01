@@ -82,33 +82,32 @@
         #include "ModifyTable.h"
 
 class XmlOptionItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: xmlFileStatus: string;
+    private: std::string xmlFileStatus;
 
-    private: optionXmlFile: string;
+    private: std::string optionXmlFile;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: XmlOptionItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public getFormData();
+    public: void getFormData();
 
-    HashMap<any, any> getHashMap();
+    private: HashMap<any, any> getHashMap();
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string update();
+    public: std::string update();
 
 };
 

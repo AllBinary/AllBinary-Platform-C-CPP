@@ -47,43 +47,42 @@
 /*actual*/ class Memory
             : public Object
          {
-        
 
-    /*actual*/ public static string getInfo(){
+    /*actual*/ public: static std::string getInfo(){
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-
-    maxUtilizedMemoryAvailable: int64_t = Runtime.getRuntime()!.maxMemory()!;;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    memoryUsed: int64_t = Runtime.getRuntime()!.totalMemory()!;;
+    int64_t maxUtilizedMemoryAvailable = Runtime::getRuntime().maxMemory();;
     
-stringBuffer!.append("APK Memory: Available: ");
+
+    int64_t memoryUsed = Runtime::getRuntime().totalMemory();;
     
-stringBuffer!.appendlong(maxUtilizedMemoryAvailable);
+stringBuffer.append("APK Memory: Available: ");
     
-stringBuffer!.append("/");
+stringBuffer.appendlong(maxUtilizedMemoryAvailable);
     
-stringBuffer!.appendlong(Runtime.getRuntime()!.maxMemory());
+stringBuffer.append("/");
     
-stringBuffer!.append(" Used: ");
+stringBuffer.appendlong(Runtime::getRuntime().maxMemory());
     
-stringBuffer!.appendlong(memoryUsed);
+stringBuffer.append(" Used: ");
     
-stringBuffer!.append(" Free: ");
+stringBuffer.appendlong(memoryUsed);
     
-stringBuffer!.appendlong(maxUtilizedMemoryAvailable -memoryUsed);
+stringBuffer.append(" Free: ");
     
-stringBuffer!.append("/");
+stringBuffer.appendlong(maxUtilizedMemoryAvailable -memoryUsed);
     
-stringBuffer!.appendlong(Runtime.getRuntime()!.maxMemory() -memoryUsed);
+stringBuffer.append("/");
+    
+stringBuffer.appendlong(Runtime::getRuntime().maxMemory() -memoryUsed);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

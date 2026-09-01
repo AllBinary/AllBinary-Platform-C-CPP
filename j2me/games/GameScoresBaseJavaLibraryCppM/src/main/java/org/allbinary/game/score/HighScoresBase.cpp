@@ -65,39 +65,36 @@
 class HighScoresBase
             : public Object
         : public HighScoresFactoryInterface {
-        
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor (){
-
-            super();
-        }
+protected: HighScoresBase(){
+}
 
 
-    public fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
+    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
+    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public HighScoresHelperBaseInterface createHighScoresHelper(){
+    public: HighScoresHelperBaseInterface createHighScoresHelper(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

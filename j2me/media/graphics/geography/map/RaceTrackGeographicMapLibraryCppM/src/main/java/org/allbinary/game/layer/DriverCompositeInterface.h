@@ -42,7 +42,6 @@
         #include "Driver.h"
 
 class DriverCompositeInterface {
-        
 
     Driver getDriver();
 

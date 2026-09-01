@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGESCALEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -66,41 +68,40 @@
 class ImageScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageScaleUtil = new ImageScaleUtil();
+    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
 
-    public static ImageScaleUtil getInstance();
+    public: static ImageScaleUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageCopyUtil: ImageCopyUtil = ImageCopyUtil.getInstance()!;
+    private: const ImageCopyUtil imageCopyUtil = ImageCopyUtil::getInstance();
 
-    private: const gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;
+    private: const GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();
 
-    private: const features: Features = Features.getInstance()!;
+    private: const Features features = Features::getInstance();
 
-    private: const NO_COPY: string = "SWT should not copy images after initial loading as the alpha is not honored";
+    private: const std::string NO_COPY = "SWT should not copy images after initial loading as the alpha is not honored";
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
+private: ImageScaleUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
+    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached);
 
                 //@Throws(Exception.constructor)
             
-    public scale2(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
+    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable);
 
                 //@Throws(Exception.constructor)
             
-    public scale(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY, bool mutable);
+    public: void scale2(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY);
+
+                //@Throws(Exception.constructor)
+            
+    public: void scale(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY, bool mutable);
 
 };
 

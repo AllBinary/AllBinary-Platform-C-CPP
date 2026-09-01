@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPER_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -52,17 +54,16 @@
 #include "HighScores.h"
 
 class HighScoresHelper: public HighScoresHelperBase {
-        
 
-    private: const circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(0, 0)!;
+    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArrayP);
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP);
 
-    lastIndex: int32_t =  -1;
+    int32_t lastIndex =  -1;
 
-    public HighScores getNextHighScores();
+    public: HighScores getNextHighScores();
 
-    public bool isAnyHighScores();
+    public: bool isAnyHighScores();
 
 };
 

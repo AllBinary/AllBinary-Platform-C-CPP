@@ -45,33 +45,32 @@
         #include "ImageIcon.h"
 
 class ImageIconUnique: public ImageIcon {
-        
 
-    private: id: int32_t= 0;
+    private: int32_t id= 0;
 
-public constructor (BufferedImage bufferedImage, int32_t index){
+public: ImageIconUnique(BufferedImage bufferedImage, int32_t index){
             super(bufferedImage);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setId(index);
+this->setId(index);
     
 }
 
 
-    public int32_t getId(){
+    public: int32_t getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public setId(int32_t id){
-this.id= id;
+    public: void setId(int32_t id){
+this->id= id;
     
 }
 

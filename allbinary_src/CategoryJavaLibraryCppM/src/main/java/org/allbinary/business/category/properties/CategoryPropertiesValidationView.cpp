@@ -56,12 +56,11 @@
         #include "CategoryPropertiesView.h"
 #include "CategoryPropertiesInterface.h"
 
-class CategoryPropertiesValidationView: public CategoryPropertiesView: public ValidationInterface {
-        
+class CategoryPropertiesValidationView: public CategoryPropertiesView, public ValidationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (CategoryPropertiesInterface categoryPropertiesInterface){
+public: CategoryPropertiesValidationView(CategoryPropertiesInterface categoryPropertiesInterface){
             super(categoryPropertiesInterface);
                     
 
@@ -72,41 +71,41 @@ public constructor (CategoryPropertiesInterface categoryPropertiesInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.categoryPropertiesInterface!.isValid();;
+                        return this->categoryPropertiesInterface.isValid();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.categoryPropertiesInterface!.validationInfo());
+stringBuffer.append(this->categoryPropertiesInterface.validationInfo());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation info error", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation info error", this, "validationInfo()", e);
     
 
                                     }
@@ -124,7 +123,7 @@ stringBuffer!.append(this.categoryPropertiesInterface!.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -136,7 +135,7 @@ stringBuffer!.append(this.categoryPropertiesInterface!.validationInfo());
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

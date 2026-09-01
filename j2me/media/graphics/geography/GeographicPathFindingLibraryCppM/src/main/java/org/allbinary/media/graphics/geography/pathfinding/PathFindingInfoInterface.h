@@ -45,7 +45,6 @@
         #include "GeographicPathFinderBase.h"
 
 class PathFindingInfoInterface {
-        
 
     BasicArrayList getStartPathFindingNodeList();
 

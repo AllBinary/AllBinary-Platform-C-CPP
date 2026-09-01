@@ -46,21 +46,20 @@
 class NoHardwareComponent
             : public Object
         : public HardwareComponentInterface {
-        
 
-    private: static const instance: NoHardwareComponent = new NoHardwareComponent();
+    private: static NoHardwareComponent instance() { return NoHardwareComponent(); }
 
-    public static NoHardwareComponent getInstance(){
+    public: static NoHardwareComponent getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoHardwareComponent.instance;
+                        return NoHardwareComponent::instance();
     
 }
 
 
-    public bool compareTo(HardwareComponentInterface componentInterface){
+    public: bool compareTo(HardwareComponentInterface componentInterface){
 
                         if(this == componentInterface)
                         
@@ -83,12 +82,12 @@ class NoHardwareComponent
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.NULL_STRING;
+                        return StringUtil::getInstance().NULL_STRING;
     
 }
 

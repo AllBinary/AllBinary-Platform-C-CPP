@@ -58,26 +58,23 @@
 class ContextConfigurationDomDocumentMapping
             : public Object
         : public DomDocumentMappingInterface {
-        
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor (ContextConfigurationInterface contextConfigurationInterface){
-
-            super();
-        this.contextConfigurationInterface= contextConfigurationInterface;
+public: ContextConfigurationDomDocumentMapping(ContextConfigurationInterface contextConfigurationInterface){
+this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
-    document: Document = DomDocumentHelper.create()!;;
+    Document document = DomDocumentHelper::create();;
     
 
-    node: Node = new ContextConfigurationView(this.contextConfigurationInterface).toXmlNode(document)!;;
+    Node node = ContextConfigurationView(this->contextConfigurationInterface).toXmlNode(document);;
     
 document.appendChild(node);
     
@@ -92,12 +89,12 @@ document.appendChild(node);
 
                 //@Throws(Exception.constructor)
             
-    public string toDomDocumentString(){
+    public: std::string toDomDocumentString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper.toString(this.toXmlDoc());;
+                        return DomDocumentHelper::toString(this->toXmlDoc());;
     
 }
 

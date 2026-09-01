@@ -80,59 +80,58 @@
 class GameInfo
             : public Object
          {
-        
 
-    public static const NONE: GameInfo = new GameInfo(GameTypeFactory.getInstance()!.NONE, GameMode.NONE, PlayerTypesFactory.getInstance()!.PLAYER_TYPE_ONE,  -1,  -1);
+    public: static const GameInfo NONE = GameInfo(GameTypeFactory::getInstance().NONE, GameMode::NONE, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE,  -1,  -1);
 
-    public static const LEVEL_NAME: string = "LEVEL";
+    public: static const std::string LEVEL_NAME = "LEVEL";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameInfoData: GameInfoData = GameInfoData.getInstance()!;
+    private: const GameInfoData gameInfoData = GameInfoData::getInstance();
 
-    private: const gameType: GameType;
+    private: GameType gameType;
 
-    private: const gameMode: GameMode;
+    private: GameMode gameMode;
 
-    private: const playerType: PlayerType;
+    private: PlayerType playerType;
 
-    private: highestLevel: int32_t= 0;
+    private: int32_t highestLevel= 0;
 
-    private: currentLevel: int32_t;
+    private: int32_t currentLevel;
 
-public constructor (GameType gameType, GameMode gameMode, PlayerType playerType, int32_t highestLevel, int32_t currentLevel);
+public: GameInfo(GameType gameType, GameMode gameMode, PlayerType playerType, int32_t highestLevel, int32_t currentLevel);
 
-    public GameType getGameType();
+    public: GameType getGameType();
 
-    public GameMode getGameMode();
+    public: GameMode getGameMode();
 
-    public PlayerType getPlayerType();
+    public: PlayerType getPlayerType();
 
-    public int32_t getHighestLevel();
+    public: int32_t getHighestLevel();
 
-    public setHighestLevel(int32_t highestLevel);
+    public: void setHighestLevel(int32_t highestLevel);
 
-    public int32_t getCurrentLevel();
+    public: int32_t getCurrentLevel();
 
-    private: const NEW_LEVEL: string = "New Level: ";
+    private: const std::string NEW_LEVEL = "New Level: ";
 
-    private: const SET_CURRENT_LEVEL: string = "setCurrentLevel";
+    private: const std::string SET_CURRENT_LEVEL = "setCurrentLevel";
 
-    public setCurrentLevel(int32_t currentLevel);
+    public: void setCurrentLevel(int32_t currentLevel);
 
-    private: const NEXT: string = "Next ";
+    private: const std::string NEXT = "Next ";
 
-    private: const NEXT_GAME_LEVEL: string = "nextGameLevel";
+    private: const std::string NEXT_GAME_LEVEL = "nextGameLevel";
 
-    public nextGameLevel();
+    public: void nextGameLevel();
 
-    public previousGameLevel();
+    public: void previousGameLevel();
 
-    public bool isLastLevel();
+    public: bool isLastLevel();
 
-    public Hashtable<any, any> toHashtable();
+    public: Hashtable<any, any> toHashtable();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

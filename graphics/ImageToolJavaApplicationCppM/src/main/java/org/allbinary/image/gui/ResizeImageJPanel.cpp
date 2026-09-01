@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/System.h"
@@ -88,16 +90,15 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ResizeImageJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class ResizeImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-public constructor (ImageProcessorInput imageProcessorInput){
+public: ResizeImageJPanel(ImageProcessorInput imageProcessorInput){
             super();
                     
 
@@ -105,32 +106,32 @@ public constructor (ImageProcessorInput imageProcessorInput){
                     
 initComponents();
     
-this.imageProcessorInput= imageProcessorInput;
+this->imageProcessorInput= imageProcessorInput;
     
 
-    numberStringArray: std::vector<string> = new Array(101);;
+    std::vector<std::string> numberStringArray = new Array(101);;
     
-numberStringArray[0]= Integer.toString( -1);
+numberStringArray[0]= std::to_string();
     
 
 
 
 
                         for (
-    index: int32_t = 1;index < 100; index++)
+    int32_t index = 1;index < 100; index++)
         {
-numberStringArray[index]= index.toString();
+numberStringArray[index]= std::to_string(index);
     
 }
 
-this.jComboBox1!.setModel(new javax.swing.DefaultComboBoxModel(numberStringArray));
+this->jComboBox1.setModel(javax::swing::DefaultComboBoxModel(numberStringArray));
     
 
-    araster: Raster = this.imageProcessorInput!.getBufferedImageArray()[0]!.getAlphaRaster()!;;
+    Raster araster = this->imageProcessorInput.getBufferedImageArray()[0]!.getAlphaRaster();;
     
 
                         if(araster == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -148,41 +149,41 @@ this.jComboBox1!.setModel(new javax.swing.DefaultComboBoxModel(numberStringArray
 }
 
 
-    public process(){
-new class extends Thread
+    public: void process(){
+class extends Thread
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    imageUtil: ImageUtil = ImageUtil.getInstance()!;;
+    ImageUtil imageUtil = ImageUtil::getInstance();;
     
 
-    percent: Integer = Integer.valueOf(this::.jComboBox1!.getSelectedItem() as string)!;;
+    Integer percent = Integer::valueOf(this->jComboBox1.getSelectedItem() as string);;
     
 
-    percentAsFloat: number = Float.parseFloat(this::.floatPercentJTextField!.getText())!;;
+    number percentAsFloat = Float::parseFloat(this->floatPercentJTextField.getText());;
     
 
-    imageProcessorInput: ImageProcessorInput = this::.getImageProcessorInput()!;;
+    ImageProcessorInput imageProcessorInput = this->getImageProcessorInput();;
     
 
-    files: std::vector<File> = imageProcessorInput!.getFiles()!;;
+    std::vector<File> files = imageProcessorInput.getFiles();;
     
 
-    generatedBufferedImageArray: std::vector<BufferedImage> = 
+    std::vector<BufferedImage> generatedBufferedImageArray = 
                 null
             ;;
     
 
-                        if(percentAsFloat!.intValue() !=  -1)
+                        if(percentAsFloat.intValue() !=  -1)
                         
                                     {
-                                    generatedBufferedImageArray= imageUtil!.createBufferedImage2(imageProcessorInput!.getBufferedImageArray(), percentAsFloat, true);
+                                    generatedBufferedImageArray= imageUtil.createBufferedImage2(imageProcessorInput.getBufferedImageArray(), percentAsFloat, true);
     
 
                                     }
@@ -191,29 +192,29 @@ new class extends Thread
                         if(percent.intValue() !=  -1)
                         
                                     {
-                                    generatedBufferedImageArray= imageUtil!.createBufferedImageForResize(imageProcessorInput!.getBufferedImageArray(), percent, true);
+                                    generatedBufferedImageArray= imageUtil.createBufferedImageForResize(imageProcessorInput.getBufferedImageArray(), percent, true);
     
 
                                     }
                                 
                         else {
                             
-    width: Integer = Integer.valueOf(this::.jTextField1!.getText() as string)!;;
+    Integer width = Integer::valueOf(this->jTextField1.getText() as string);;
     
 
-    height: Integer = Integer.valueOf(this::.jTextField2!.getText() as string)!;;
+    Integer height = Integer::valueOf(this->jTextField2.getText() as string);;
     
-generatedBufferedImageArray= imageUtil!.createBufferedImage3(imageProcessorInput!.getBufferedImageArray(), width, height, true);
+generatedBufferedImageArray= imageUtil.createBufferedImage3(imageProcessorInput.getBufferedImageArray(), width, height, true);
     
 
                         }
                             
 
-    araster: Raster = generatedBufferedImageArray[0]!.getAlphaRaster()!;;
+    Raster araster = generatedBufferedImageArray[0]!.getAlphaRaster();;
     
 
                         if(araster == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -229,26 +230,26 @@ generatedBufferedImageArray= imageUtil!.createBufferedImage3(imageProcessorInput
                         }
                             
 
-    imagePersistanceUtil: ImagePersistanceUtil = ImagePersistanceUtil.getInstance()!;;
+    ImagePersistanceUtil imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < generatedBufferedImageArray!.length; index++)
+    int32_t index = 0;index < generatedBufferedImageArray.size(); index++)
         {
-imagePersistanceUtil!.saveWithBatik(FileWrapperUtil.wrapFile(files[index]!), generatedBufferedImageArray[index]!);
+imagePersistanceUtil.saveWithBatik(FileWrapperUtil::wrapFile(files[index]!), generatedBufferedImageArray[index]!);
     
 }
 
-this::.getParent()!.repaint();
+this->getParent().repaint();
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -260,50 +261,50 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 }
 
 
-    public update(){
-new class extends Thread
+    public: void update(){
+class extends Thread
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    imageProcessorInput: ImageProcessorInput = this::.getImageProcessorInput()!;;
+    ImageProcessorInput imageProcessorInput = this->getImageProcessorInput();;
     
 
-    size: int32_t = imageProcessorInput!.getBufferedImageArray()!.length;;
+    int32_t size = imageProcessorInput.getBufferedImageArray().length;;
     
 
-    bufferedImageArray: std::vector<BufferedImage> = imageProcessorInput!.getBufferedImageArray()!;;
+    std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
 
-    bufferedImage: BufferedImage;;
+    BufferedImage bufferedImage;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 bufferedImage= bufferedImageArray[0]!;
     
-this::.jTextField1!.setText(bufferedImage!.getWidth().toString());
+this->jTextField1.setText(std::to_string(getWidth));
     
-this::.jTextField2!.setText(bufferedImage!.getHeight().toString());
+this->jTextField2.setText(std::to_string(getHeight));
     
 }
 
-this::.getParent()!.repaint();
+this->getParent().repaint();
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -315,50 +316,50 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 }
 
 
-    public updateFor16Above(){
-new class extends Thread
+    public: void updateFor16Above(){
+class extends Thread
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    imageProcessorInput: ImageProcessorInput = this::.getImageProcessorInput()!;;
+    ImageProcessorInput imageProcessorInput = this->getImageProcessorInput();;
     
 
-    size: int32_t = imageProcessorInput!.getBufferedImageArray()!.length;;
+    int32_t size = imageProcessorInput.getBufferedImageArray().length;;
     
 
-    bufferedImageArray: std::vector<BufferedImage> = imageProcessorInput!.getBufferedImageArray()!;;
+    std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
 
-    bufferedImage: BufferedImage;;
+    BufferedImage bufferedImage;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 bufferedImage= bufferedImageArray[0]!;
     
-this::.jTextField1!.setText(bufferedImage!.getWidth() /16 *16.toString());
+this->jTextField1.setText(std::to_string());
     
-this::.jTextField2!.setText(bufferedImage!.getHeight() /16 *16.toString());
+this->jTextField2.setText(std::to_string());
     
 }
 
-this::.getParent()!.repaint();
+this->getParent().repaint();
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -370,50 +371,50 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 }
 
 
-    public updateFor16Below(){
-new class extends Thread
+    public: void updateFor16Below(){
+class extends Thread
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    imageProcessorInput: ImageProcessorInput = this::.getImageProcessorInput()!;;
+    ImageProcessorInput imageProcessorInput = this->getImageProcessorInput();;
     
 
-    size: int32_t = imageProcessorInput!.getBufferedImageArray()!.length;;
+    int32_t size = imageProcessorInput.getBufferedImageArray().length;;
     
 
-    bufferedImageArray: std::vector<BufferedImage> = imageProcessorInput!.getBufferedImageArray()!;;
+    std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
 
-    bufferedImage: BufferedImage;;
+    BufferedImage bufferedImage;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 bufferedImage= bufferedImageArray[0]!;
     
-this::.jTextField1!.setText(((bufferedImage!.getWidth() /16) +1) *16.toString());
+this->jTextField1.setText(std::to_string());
     
-this::.jTextField2!.setText(((bufferedImage!.getHeight() /16) +1) *16.toString());
+this->jTextField2.setText(std::to_string());
     
 }
 
-this::.getParent()!.repaint();
+this->getParent().repaint();
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -425,58 +426,58 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 }
 
 
-    public ImageProcessorInput getImageProcessorInput(){
+    public: ImageProcessorInput getImageProcessorInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageProcessorInput;
+                        return this->imageProcessorInput;
     
 }
 
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput){
-this.imageProcessorInput= imageProcessorInput;
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput){
+this->imageProcessorInput= imageProcessorInput;
     
 }
 
 
-    initComponents(){
-this.jLabel1= new javax.swing.JLabel();
+    private: void initComponents(){
+this->jLabel1= javax::swing::JLabel();
     
-this.jComboBox1= new javax.swing.JComboBox<>();
+this->jComboBox1= javax::swing::JComboBox<>();
     
-this.aboveJButton= new javax.swing.JButton();
+this->aboveJButton= javax::swing::JButton();
     
-this.jTextField1= new javax.swing.JTextField();
+this->jTextField1= javax::swing::JTextField();
     
-this.jLabel2= new javax.swing.JLabel();
+this->jLabel2= javax::swing::JLabel();
     
-this.jLabel3= new javax.swing.JLabel();
+this->jLabel3= javax::swing::JLabel();
     
-this.jTextField2= new javax.swing.JTextField();
+this->jTextField2= javax::swing::JTextField();
     
-this.updateJButton= new javax.swing.JButton();
+this->updateJButton= javax::swing::JButton();
     
-this.floatPercentJTextField= new javax.swing.JTextField();
+this->floatPercentJTextField= javax::swing::JTextField();
     
-this.adjustFor16AboveJButton= new javax.swing.JButton();
+this->adjustFor16AboveJButton= javax::swing::JButton();
     
-this.adjustFor16BelowJButton= new javax.swing.JButton();
+this->adjustFor16BelowJButton= javax::swing::JButton();
     
-this.jLabel1!.setText("Percent:");
+this->jLabel1.setText("Percent:");
     
-this.jComboBox1!.setModel(new javax.swing.DefaultComboBoxModel<>(
-                                                [
+this->jComboBox1.setModel(javax::swing::DefaultComboBoxModel<>(
+                                                {
                                                     "Item 1","Item 2","Item 3","Item 4"
-                                                ]));
+                                                }));
     
-this.aboveJButton!.setText("Process");
+this->aboveJButton.setText("Process");
     
-this.aboveJButton!.addActionListener(new class extends java.awt.event.ActionListener
+this->aboveJButton.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 aboveJButtonActionPerformed(evt);
     
 }
@@ -484,16 +485,16 @@ aboveJButtonActionPerformed(evt);
                                 }
                             );
     
-this.jLabel2!.setText("Width:");
+this->jLabel2.setText("Width:");
     
-this.jLabel3!.setText("Height:");
+this->jLabel3.setText("Height:");
     
-this.updateJButton!.setText("Update");
+this->updateJButton.setText("Update");
     
-this.updateJButton!.addActionListener(new class extends java.awt.event.ActionListener
+this->updateJButton.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 updateJButtonActionPerformed(evt);
     
 }
@@ -501,16 +502,16 @@ updateJButtonActionPerformed(evt);
                                 }
                             );
     
-this.floatPercentJTextField!.setText("-1.000000");
+this->floatPercentJTextField.setText("-1.000000");
     
-this.floatPercentJTextField!.setMinimumSize(new java.awt.Dimension(120, 22));
+this->floatPercentJTextField.setMinimumSize(java::awt::Dimension(120, 22));
     
-this.adjustFor16AboveJButton!.setText("Adjust for 16 Above");
+this->adjustFor16AboveJButton.setText("Adjust for 16 Above");
     
-this.adjustFor16AboveJButton!.addActionListener(new class extends java.awt.event.ActionListener
+this->adjustFor16AboveJButton.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 adjustFor16AboveJButtonActionPerformed(evt);
     
 }
@@ -518,12 +519,12 @@ adjustFor16AboveJButtonActionPerformed(evt);
                                 }
                             );
     
-this.adjustFor16BelowJButton!.setText("Adjust for 16 Below");
+this->adjustFor16BelowJButton.setText("Adjust for 16 Below");
     
-this.adjustFor16BelowJButton!.addActionListener(new class extends java.awt.event.ActionListener
+this->adjustFor16BelowJButton.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 adjustFor16BelowJButtonActionPerformed(evt);
     
 }
@@ -532,62 +533,62 @@ adjustFor16BelowJButtonActionPerformed(evt);
                             );
     
 
-    layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this);;
+    javax::swing::GroupLayout layout = javax::swing::GroupLayout(this);;
     
-this.setLayout(layout);
+this->setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addContainerGap()!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addComponent(jLabel1)!.addComponent(jLabel2)!.addComponent(jLabel3))!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)!.addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)!.addComponent(jTextField1)!.addComponent(jTextField2))!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addComponent(floatPercentJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(adjustFor16AboveJButton)!.addComponent(adjustFor16BelowJButton))!.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))!.addGroup(layout.createSequentialGroup()!.addComponent(updateJButton)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(aboveJButton)!.addGap(0, 250, Short.MAX_VALUE)));
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jLabel1).addComponent(jLabel2).addComponent(jLabel3)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false).addComponent(jComboBox1, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE).addComponent(jTextField1).addComponent(jTextField2)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(floatPercentJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(adjustFor16AboveJButton).addComponent(adjustFor16BelowJButton)).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)).addGroup(layout.createSequentialGroup().addComponent(updateJButton).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(aboveJButton).addGap(0, 250, Short::MAX_VALUE)));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addContainerGap()!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(jLabel1)!.addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(floatPercentJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(jLabel2)!.addComponent(adjustFor16AboveJButton))!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(jLabel3)!.addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(adjustFor16BelowJButton))!.addGap(18, 18, 18)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(aboveJButton)!.addComponent(updateJButton))!.addContainerGap(175, Short.MAX_VALUE)));
-    
-}
-
-
-    aboveJButtonActionPerformed(java.awt.event.ActionEvent evt){
-this.process();
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1).addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(floatPercentJTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(jLabel2).addComponent(adjustFor16AboveJButton)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel3).addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(adjustFor16BelowJButton)).addGap(18, 18, 18).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(aboveJButton).addComponent(updateJButton)).addContainerGap(175, Short::MAX_VALUE)));
     
 }
 
 
-    updateJButtonActionPerformed(java.awt.event.ActionEvent evt){
-this.update();
+    private: void aboveJButtonActionPerformed(java::awt::event::ActionEvent evt){
+this->process();
     
 }
 
 
-    adjustFor16AboveJButtonActionPerformed(java.awt.event.ActionEvent evt){
-this.updateFor16Above();
+    private: void updateJButtonActionPerformed(java::awt::event::ActionEvent evt){
+this->update();
     
 }
 
 
-    adjustFor16BelowJButtonActionPerformed(java.awt.event.ActionEvent evt){
-this.updateFor16Below();
+    private: void adjustFor16AboveJButtonActionPerformed(java::awt::event::ActionEvent evt){
+this->updateFor16Above();
     
 }
 
 
-    private: aboveJButton: javax.swing.JButton;
+    private: void adjustFor16BelowJButtonActionPerformed(java::awt::event::ActionEvent evt){
+this->updateFor16Below();
+    
+}
 
-    private: adjustFor16AboveJButton: javax.swing.JButton;
 
-    private: adjustFor16BelowJButton: javax.swing.JButton;
+    private: javax::swing::JButton aboveJButton;
 
-    private: floatPercentJTextField: javax.swing.JTextField;
+    private: javax::swing::JButton adjustFor16AboveJButton;
 
-    private: jComboBox1: javax.swing.JComboBox<string>;
+    private: javax::swing::JButton adjustFor16BelowJButton;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JTextField floatPercentJTextField;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JComboBox<string> jComboBox1;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jTextField1: javax.swing.JTextField;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jTextField2: javax.swing.JTextField;
+    private: javax::swing::JLabel jLabel3;
 
-    private: updateJButton: javax.swing.JButton;
+    private: javax::swing::JTextField jTextField1;
+
+    private: javax::swing::JTextField jTextField2;
+
+    private: javax::swing::JButton updateJButton;
 
 };
 

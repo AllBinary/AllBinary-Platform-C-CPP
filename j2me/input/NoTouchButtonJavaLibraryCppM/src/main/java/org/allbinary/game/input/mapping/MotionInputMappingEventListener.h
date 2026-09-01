@@ -62,13 +62,12 @@
 class MotionInputMappingEventListener
             : public Object
         : public InputMappingEventListenerInterface {
-        
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public onInputMappingEvent(InputMappingEvent inputMappingEvent);
+    public: void onInputMappingEvent(InputMappingEvent inputMappingEvent);
 
 };
 

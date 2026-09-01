@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/graphics/canvas/transition/progress/ProgressCanvas.h>
@@ -55,30 +57,29 @@
 class DemoCanvasProgressUtil
             : public Object
          {
-        
 
-    public static showProgress(DemoCanvas demoCanvas){
-DemoCanvasProgressUtil.showProgressOptionallyInTheBackground(demoCanvas, false);
+    public: static void showProgress(DemoCanvas demoCanvas){
+DemoCanvasProgressUtil::showProgressOptionallyInTheBackground(demoCanvas, false);
     
 }
 
 
-    public static showProgressOptionallyInTheBackground(DemoCanvas demoCanvas, bool background){
+    public: static void showProgressOptionallyInTheBackground(DemoCanvas demoCanvas, bool background){
 
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
     
-progressCanvas!.startBackground(background);
+progressCanvas.startBackground(background);
     
 
-    paintableArray: std::vector<PaintableInterface> = new Array(2);;
+    std::vector<PaintableInterface> paintableArray = new Array(2);;
     
 paintableArray[0]= progressCanvas;
     
-paintableArray[1]= demoCanvas!.getDefaultPaintableInterface();
+paintableArray[1]= demoCanvas.getDefaultPaintableInterface();
     
-demoCanvas!.setDefaultPaintableInterface(new PaintableComposite(paintableArray));
+demoCanvas.setDefaultPaintableInterface(PaintableComposite(paintableArray));
     
-demoCanvas!.setPaintableInterface(demoCanvas!.getDefaultPaintableInterface());
+demoCanvas.setPaintableInterface(demoCanvas.getDefaultPaintableInterface());
     
 }
 

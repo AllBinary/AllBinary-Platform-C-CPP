@@ -87,44 +87,43 @@
 #include "TransformInfoHttpInterface.h"
 #include "TransformInfoData.h"
 
-class TransformInfoHttp: public TransformInfo: public TransformInfoHttpInterface {
-        
+class TransformInfoHttp: public TransformInfo, public TransformInfoHttpInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abContext: AbContext;
+    private: AbContext abContext;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext, bool crud);
+public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext, bool crud);
 
-public constructor (HttpServletRequest request, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HttpServletRequest request, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttp(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-public constructor (TransformInfoHttp parentViewOfThisTransformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    set(HashMap<any, any> hashMap);
-
-    public WeblisketSessionInterface getWeblisketSession();
-
-    public PageContext getPageContext();
-
-    public HashMap<any, any> getPropertiesHashMap();
+public: TransformInfoHttp(TransformInfoHttp parentViewOfThisTransformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getTemplateFilePath();
+    private: void set(HashMap<any, any> hashMap);
+
+    public: WeblisketSessionInterface getWeblisketSession();
+
+    public: PageContext getPageContext();
+
+    public: HashMap<any, any> getPropertiesHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath();
+    public: AbPath getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath();
+    public: AbPath getObjectConfigFilePath();
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getDataFilePath();
 
 };
 

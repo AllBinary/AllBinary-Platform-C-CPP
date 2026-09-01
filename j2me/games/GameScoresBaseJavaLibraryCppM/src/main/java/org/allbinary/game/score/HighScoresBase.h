@@ -68,17 +68,16 @@
 class HighScoresBase
             : public Object
         : public HighScoresFactoryInterface {
-        
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor ();
+protected: HighScoresBase();
 
-    public fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
+    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener);
 
-    public fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
+    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload);
 
-    public HighScoresHelperBaseInterface createHighScoresHelper();
+    public: HighScoresHelperBaseInterface createHighScoresHelper();
 
 };
 

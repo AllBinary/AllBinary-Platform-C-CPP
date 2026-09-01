@@ -124,98 +124,97 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TagHelperInterface.h"
 
-class StaticPagesRequestHelper: public AbContext: public TagHelperInterface {
-        
+class StaticPagesRequestHelper: public AbContext, public TagHelperInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: searchParams: SearchParams;
+    private: SearchParams searchParams;
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: StaticPagesRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
             super(propertiesHashMap, pageContext);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.xslFile= propertiesHashMap!.get(TransformInfoData.getInstance()!.TEMPLATEFILENAME) as string;
+this->xslFile= propertiesHashMap.get(TransformInfoData::getInstance().TEMPLATEFILENAME) as string;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    getFormData(){
-this.storeName= this.request.getParameter(StoreFrontData.getInstance()!.NAME);
+    private: void getFormData(){
+this->storeName= this->request.getParameter(StoreFrontData::getInstance().NAME);
     
-this.searchParams= new SearchParams(this.request);
+this->searchParams= SearchParams(this->request);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    email(){
+    private: void email(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Generated Static Pages Notification Email", this, "email");
+                                    this->logUtil.putF("Generated Static Pages Notification Email", this, "email");
     
 
                                     }
                                 
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.storeName)!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->storeName);;
     
 
-    adminEmailSubject: string = "Generated Static Pages Email Notification";;
+    std::string adminEmailSubject = "Generated Static Pages Email Notification";;
     
 
-    adminEmailTextBody: string = "Generated static pages for store: " +this.storeName;;
+    std::string adminEmailTextBody = "Generated static pages for store: " +this->storeName;;
     
 
-    adminBasicEmailInfo: BasicEmailInfo = new AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
     
 
-    storeAdminBasicEmailInfo: BasicEmailInfo = new StoreEmailInfo(storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
     
 
-    storeAdminEmailInfo: EmailInfo = new EmailInfo(storeAdminBasicEmailInfo);;
+    EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;
     
 
-    adminEmailInfo: EmailInfo = new EmailInfo(adminBasicEmailInfo);;
+    EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;
     
 
-    adminUserEmailEventHandler: UserEmailEventHandler = AdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, UserEmailEventNameData.STOREGENERATINGSTATICPAGES)!;;
+    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::STOREGENERATINGSTATICPAGES);;
     
 
-    storeAdminUserEmailEventHandler: UserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(UserEmailEventNameData.STOREGENERATINGSTATICPAGES, this.abeClientInformation, storeFrontInterface)!;;
+    UserEmailEventHandler storeAdminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance().getInstance(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, this->abeClientInformation, storeFrontInterface);;
     
-storeAdminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.STOREGENERATINGSTATICPAGES, storeAdminEmailInfo);
+storeAdminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, storeAdminEmailInfo);
     
-adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.STOREGENERATINGSTATICPAGES, adminEmailInfo);
+adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STOREGENERATINGSTATICPAGES, adminEmailInfo);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "email", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "email", e);
     
 
                                     }
@@ -225,26 +224,26 @@ adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.STOREGENERAT
 }
 
 
-    public string generateStaticPages(){
+    public: std::string generateStaticPages(){
 
         try {
             
-    contentType: string = AcceptableResponseGenerator.getInstance()!.get(this.request)!;;
+    std::string contentType = AcceptableResponseGenerator::getInstance().get(this->request);;
     
 
-    searchRequest: SearchRequest = new SearchRequest(
-                            nullptr, this.searchParams, this.xslFile, contentType, this.getPropertiesHashMap(), this.getPageContext());;
+    SearchRequest searchRequest = SearchRequest(
+                            nullptr, this->searchParams, this->xslFile, contentType, this->getPropertiesHashMap(), this->getPageContext());;
     
 
-    success: string = ProductListingFactory.getInstance(searchRequest)!.generateAll(this.storeName)!;;
+    std::string success = ProductListingFactory::getInstance(searchRequest).generateAll(this->storeName);;
     
-this.email();
+this->email();
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "generateStaticPages()");
+                                    this->logUtil.putF(success, this, "generateStaticPages()");
     
 
                                     }
@@ -260,13 +259,13 @@ this.email();
 } catch(e) 
             {
 
-    error: string = "Failed to generate staticpages table";;
+    std::string error = "Failed to generate staticpages table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "generateStaticPages()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateStaticPages()", e);
     
 
                                     }
@@ -282,28 +281,28 @@ this.email();
 }
 
 
-    public string makePublic(){
+    public: std::string makePublic(){
 
         try {
             
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.storeName)!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->storeName);;
     
 
-    fromAbPath: AbPath = new AbPath(storeFrontInterface!.getTestHtmlPath() +storeFrontInterface!.getStaticPath(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath fromAbPath = AbPath(storeFrontInterface.getTestHtmlPath() +storeFrontInterface.getStaticPath(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-    toAbPath: AbPath = new AbPath(URLGLOBALS.getWebappPath() +storeFrontInterface!.getName() +AbPathData.getInstance()!.SEPARATOR +storeFrontInterface!.getStaticPath(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath toAbPath = AbPath(URLGLOBALS::getWebappPath() +storeFrontInterface.getName() +AbPathData::getInstance().SEPARATOR +storeFrontInterface.getStaticPath(), StringUtil::getInstance().EMPTY_STRING);;
     
-FileUtil.getInstance()!.copy(fromAbPath, toAbPath);
-    
-
-    success: string = "Made Public";;
+FileUtil::getInstance().copy(fromAbPath, toAbPath);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = "Made Public";;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "makePublic()");
+                                    this->logUtil.putF(success, this, "makePublic()");
     
 
                                     }
@@ -319,13 +318,13 @@ FileUtil.getInstance()!.copy(fromAbPath, toAbPath);
 } catch(e) 
             {
 
-    error: string = "Failed to makePublic";;
+    std::string error = "Failed to makePublic";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "makePublic()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "makePublic()", e);
     
 
                                     }

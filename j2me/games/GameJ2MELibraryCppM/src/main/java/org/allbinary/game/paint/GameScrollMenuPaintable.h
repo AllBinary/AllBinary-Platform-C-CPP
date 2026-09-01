@@ -78,16 +78,15 @@
         #include "BasicGameDemoPaintable.h"
 #include "MainGameDemoStatePaintable.h"
 
-class GameScrollMenuPaintable: public BasicGameDemoPaintable: public ColorChangeListener {
-        
+class GameScrollMenuPaintable: public BasicGameDemoPaintable, public ColorChangeListener {
 
-public constructor (Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface, BasicColor basicColor);
+public: GameScrollMenuPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface, BasicColor basicColor);
 
-    public setState(int32_t state);
+    public: void setState(int32_t state);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    setColor(BasicColor basicColor);
+    protected: void setColor(BasicColor basicColor);
 
 };
 

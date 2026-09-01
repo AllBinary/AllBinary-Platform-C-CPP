@@ -51,25 +51,24 @@
 class GameLayerUtil
             : public Object
          {
-        
 
-    public static bool isOnScreen(AllBinaryLayer layer){
+    public: static bool isOnScreen(AllBinaryLayer layer){
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    viewPosition: ViewPositionBase = layer.getViewPosition()!;;
+    ViewPositionBase viewPosition = layer.getViewPosition();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameLayerUtil.isInside(viewPosition!.getX(), viewPosition!.getY(), viewPosition!.getX2(), viewPosition!.getY2(), 0, 0, displayInfo!.getLastWidth(), displayInfo!.getLastHeight());;
+                        return GameLayerUtil::isInside(viewPosition.getX(), viewPosition.getY(), viewPosition.getX2(), viewPosition.getY2(), 0, 0, displayInfo.getLastWidth(), displayInfo.getLastHeight());;
     
 }
 
 
-    public static bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2){
+    public: static bool isInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, int32_t rect2X1, int32_t rect2Y1, int32_t rect2X2, int32_t rect2Y2){
 
                         if(rectX1 > rect2X1 && rectX2 < rect2X2 && rectY1 > rect2Y1 && rectY2 < rect2Y2)
                         
@@ -96,10 +95,8 @@ class GameLayerUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GameLayerUtil(){
+}
 
 
 };

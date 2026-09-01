@@ -52,13 +52,12 @@
 class AnimationBehaviorFactory
             : public Object
          {
-        
 
-    private: static const instance: AnimationBehaviorFactory = new AnimationBehaviorFactory();
+    private: static AnimationBehaviorFactory instance() { return AnimationBehaviorFactory(); }
 
-    public static AnimationBehaviorFactory getInstance();
+    public: static AnimationBehaviorFactory getInstance();
 
-    public AnimationBehavior getOrCreateInstance();
+    public: AnimationBehavior getOrCreateInstance();
 
 };
 

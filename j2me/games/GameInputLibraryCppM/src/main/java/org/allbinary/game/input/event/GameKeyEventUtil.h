@@ -46,11 +46,10 @@
 class GameKeyEventUtil
             : public Object
          {
-        
 
-    public static int32_t getKey(any = {} anyType);
+    public: static int32_t getKey(Object* anyType);
 
-private constructor ();
+private: GameKeyEventUtil();
 
 };
 

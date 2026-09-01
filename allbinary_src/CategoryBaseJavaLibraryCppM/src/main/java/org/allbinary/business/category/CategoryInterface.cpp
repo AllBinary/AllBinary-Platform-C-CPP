@@ -58,7 +58,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CategoryInterface: public TableMappingInterface, public ValidationInterface {
-        
 
     Vector getChildNodes()
 
@@ -74,11 +73,11 @@ class CategoryInterface: public TableMappingInterface, public ValidationInterfac
 
     CategoryPropertiesInterface getProperties()
 
-    setProperties(CategoryPropertiesInterface categoryPropertiesInterface)
+    void setProperties(CategoryPropertiesInterface categoryPropertiesInterface)
 
     CategoryHierarchyInterface getHierarchy()
 
-    setHierarchy(CategoryHierarchyInterface categoryHierarchyInterface)
+    void setHierarchy(CategoryHierarchyInterface categoryHierarchyInterface)
 
                 //@Throws(Exception.constructor)
             
@@ -98,7 +97,7 @@ class CategoryInterface: public TableMappingInterface, public ValidationInterfac
 
                 //@Throws(Exception.constructor)
             
-    log()
+    void log()
 
 };
 

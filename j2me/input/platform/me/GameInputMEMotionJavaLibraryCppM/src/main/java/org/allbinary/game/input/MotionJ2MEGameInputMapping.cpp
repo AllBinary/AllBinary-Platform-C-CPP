@@ -43,14 +43,13 @@
 #include "MotionJ2MEDefaultGameInputMapping.h"
 
 class MotionJ2MEGameInputMapping: public J2MEGameInputMapping {
-        
 
-    InputToGameKeyMapping getDefault(){
+    protected: InputToGameKeyMapping getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MotionJ2MEDefaultGameInputMapping().getInputMapping();;
+                        return MotionJ2MEDefaultGameInputMapping().getInputMapping();;
     
 }
 

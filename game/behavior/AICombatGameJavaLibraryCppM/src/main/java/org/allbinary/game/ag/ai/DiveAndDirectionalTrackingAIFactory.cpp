@@ -72,38 +72,37 @@
 class DiveAndDirectionalTrackingAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    visitorCanBeNull: any = hashtable.get(BasicAI.AI_VISITOR);;
+    Object* visitorCanBeNull = hashtable.get(BasicAI::AI_VISITOR);;
     
 
                         if(visitorCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    visitorCanBeNull= ThrustAIVisitorFactory.getInstance();
+                                    visitorCanBeNull= ThrustAIVisitorFactory::getInstance();
     
 
                                     }
                                 
 
-    hashtable2: Hashtable<any, any> = new BasicProbabilityAIDataFactory().getInstance()!;;
+    Hashtable<any, any> hashtable2 = BasicProbabilityAIDataFactory().getInstance();;
     
-hashtable2.put(BasicAI.AI_VISITOR, LastKeyAIVisitorFactory.getInstance());
+hashtable2.put(BasicAI::AI_VISITOR, LastKeyAIVisitorFactory::getInstance());
     
 
-    artificialIntelligenceInterface: ArtificialIntelligenceInterface = new BasicRandomAIFactory().getInstance(hashtable2, ownerLayerInterface, gameInput)!;;
+    ArtificialIntelligenceInterface artificialIntelligenceInterface = BasicRandomAIFactory().getInstance(hashtable2, ownerLayerInterface, gameInput);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, visitorCanBeNull as Visitor);
+                        return DiveAndDirectionalTrackingAI(ownerLayerInterface, artificialIntelligenceInterface, gameInput, visitorCanBeNull as Visitor);
     
 }
 

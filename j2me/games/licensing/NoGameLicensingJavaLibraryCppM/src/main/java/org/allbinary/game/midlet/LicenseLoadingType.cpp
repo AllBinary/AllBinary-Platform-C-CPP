@@ -48,12 +48,9 @@
 class LicenseLoadingType
             : public Object
          {
-        
 
- constructor (string name){
-
-            super();
-        }
+: LicenseLoadingType(std::string name){
+}
 
 
 };

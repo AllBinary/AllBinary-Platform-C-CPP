@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_H
         #define ORG_ALLBINARY_GAME_INPUT_GAMEINPUTPROCESSORUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -47,9 +49,8 @@
 class GameInputProcessorUtil
             : public Object
          {
-        
 
-    public static init(std::vector<GameInputProcessor> inputProcessorArray);
+    public: static void init(std::vector<GameInputProcessor> inputProcessorArray);
 
 };
 

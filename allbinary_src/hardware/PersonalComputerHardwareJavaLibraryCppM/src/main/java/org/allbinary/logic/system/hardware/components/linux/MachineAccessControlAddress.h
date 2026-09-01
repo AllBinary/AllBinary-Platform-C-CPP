@@ -54,13 +54,12 @@
 class MachineAccessControlAddress
             : public Object
         : public HardwareComponentInterface, public MachineAccessControlAddressInterface {
-        
 
-public constructor ();
+public: MachineAccessControlAddress();
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(HardwareComponentInterface componentInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

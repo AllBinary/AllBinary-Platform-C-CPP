@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_SCROLLMAPPLAYERGAMEINPUT_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -93,77 +95,76 @@
 #include "GameInputProcessorUtil.h"
 
 class ScrollMapPlayerGameInput: public PlayerGameInput {
-        
 
-    const inputProcessorArray: std::vector<GameInputProcessor> = new Array(InputFactory.getInstance()!.MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
 
-    private: const border: int32_t = 150;
+    private: const int32_t border = 150;
 
-    private: const inputList: BasicArrayList;
+    private: BasicArrayList inputList;
 
-    const isSingleKeyProcessing: bool = Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_REPEAT_PRESS) || Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_PRESS);
+    protected: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
 
-    private: const geographicMapInterface: BasicGeographicMap;
+    private: BasicGeographicMap geographicMapInterface;
 
-    private: maxBottom: int32_t= 0;
+    private: int32_t maxBottom= 0;
 
-    private: maxRight: int32_t= 0;
+    private: int32_t maxRight= 0;
 
-public constructor (BasicGeographicMap geographicMapInterface, BasicArrayList list, int32_t playerInputId);
+public: ScrollMapPlayerGameInput(BasicGeographicMap geographicMapInterface, BasicArrayList list, int32_t playerInputId);
 
-    private: const scrollMapEvent: ScrollMapEvent = new ScrollMapEvent(this);
-
-                //@Throws(Exception.constructor)
-            
-    move(int32_t dx, int32_t dy);
-
-    public init();
+    private: const ScrollMapEvent scrollMapEvent = ScrollMapEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public scrollMiddleX();
+    private: void move(int32_t dx, int32_t dy);
+
+    public: void init();
 
                 //@Throws(Exception.constructor)
             
-    public scrollY(int32_t anchor);
+    public: void scrollMiddleX();
 
                 //@Throws(Exception.constructor)
             
-    up();
+    public: void scrollY(int32_t anchor);
 
                 //@Throws(Exception.constructor)
             
-    down();
+    protected: void up();
 
                 //@Throws(Exception.constructor)
             
-    right();
+    protected: void down();
 
                 //@Throws(Exception.constructor)
             
-    left();
-
-    public initInputProcessors();
+    protected: void right();
 
                 //@Throws(Exception.constructor)
             
-    public processInputKey(int32_t key);
+    protected: void left();
+
+    public: void initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager);
+    public: void processInputKey(int32_t key);
 
-    int32_t getSpecialHeight();
+                //@Throws(Exception.constructor)
+            
+    public: void processInput(AllBinaryLayerManager layerManager);
 
-    int32_t getSpecialWidth();
+    private: int32_t getSpecialHeight();
 
-    public bool keepOnMapMaxY(int32_t newY);
+    private: int32_t getSpecialWidth();
 
-    public bool keepOnMapMinY(int32_t newY);
+    public: bool keepOnMapMaxY(int32_t newY);
 
-    public bool keepOnMapMaxX(int32_t newX);
+    public: bool keepOnMapMinY(int32_t newY);
 
-    public bool keepOnMapMinX(int32_t newX);
+    public: bool keepOnMapMaxX(int32_t newX);
+
+    public: bool keepOnMapMinX(int32_t newX);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -114,90 +116,87 @@
 class InputAutomationNewBundleRunnable
             : public Object
         : public RunnableInterface {
-        
 
-    private: static const FILE: string = "file:";
+    private: static const std::string FILE = "file:";
 
-    private: static const JAR_DIR_PROP: string = "org.knopflerfish.gosg.jars";
+    private: static const std::string JAR_DIR_PROP = "org.knopflerfish.gosg.jars";
 
-    private: static const INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH: string = "ia/auto";
+    private: static const std::string INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH = "ia/auto";
 
-    private: static const MODULES_START_LEVEL: int32_t = 8;
+    private: static const int32_t MODULES_START_LEVEL = 8;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const inputAutomationBundleActivator: InputAutomationBundleActivator;
+    private: InputAutomationBundleActivator inputAutomationBundleActivator;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: fileBasicArrayList: BasicArrayList;
+    private: BasicArrayList fileBasicArrayList;
 
-public constructor (InputAutomationBundleActivator inputAutomationBundleActivator){
-
-            super();
-        this.inputAutomationBundleActivator= inputAutomationBundleActivator;
+public: InputAutomationNewBundleRunnable(InputAutomationBundleActivator inputAutomationBundleActivator){
+this->inputAutomationBundleActivator= inputAutomationBundleActivator;
     
-this.fileBasicArrayList= new BasicArrayListD();
+this->fileBasicArrayList= BasicArrayListD();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread){
+    public: void setThread(Thread thread){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    updateModules(){
-this.logUtil!.putF(this.commonStrings!.START, this, "updateModules");
+    private: void updateModules(){
+this->logUtil.putF(this->commonStrings.START, this, "updateModules");
     
 
-    list: BasicArrayList = this.findNewModules()!;;
+    BasicArrayList list = this->findNewModules();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    bundle: Bundle;;
+    Bundle bundle;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-bundle= this.install(list.get(index) as URL);
+bundle= this->install(list.get(index) as URL);
     
 
                         if(bundle != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    bundle.start(InputAutomationNewBundleRunnable.MODULES_START_LEVEL);
+                                    bundle.start(InputAutomationNewBundleRunnable::MODULES_START_LEVEL);
     
 
                                     }
@@ -209,48 +208,48 @@ bundle= this.install(list.get(index) as URL);
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> getAllJarSymbolicNameHashMap(){
-this.logUtil!.putF(this.commonStrings!.START, this, "getAllJarSymbolicNameHashMap");
+    private: HashMap<any, any> getAllJarSymbolicNameHashMap(){
+this->logUtil.putF(this->commonStrings.START, this, "getAllJarSymbolicNameHashMap");
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    jarFileBasicArrayList: BasicArrayList = this.getJarModuleFileBasicArrayList()!;;
+    BasicArrayList jarFileBasicArrayList = this->getJarModuleFileBasicArrayList();;
     
-this.logUtil!.putF("Jar Module Files: " +jarFileBasicArrayList, this, "getAllJarSymbolicNameHashMap");
-    
-
-    size: int32_t = jarFileBasicArrayList!.size()!;;
+this->logUtil.putF("Jar Module Files: " +jarFileBasicArrayList, this, "getAllJarSymbolicNameHashMap");
     
 
-    file: File;;
+    int32_t size = jarFileBasicArrayList.size();;
+    
+
+    File file;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-file= jarFileBasicArrayList!.get(index) as File;
+file= jarFileBasicArrayList.get(index) as File;
     
 
                         if(!file.isDirectory())
                         
                                     {
                                     
-    fileInputStream: FileInputStream = new FileInputStream(file);;
+    FileInputStream fileInputStream = FileInputStream(file);;
     
 
-    jarInputStream: JarInputStream = new JarInputStream(fileInputStream);;
+    JarInputStream jarInputStream = JarInputStream(fileInputStream);;
     
 
-    manifest: Manifest = jarInputStream!.getManifest()!;;
+    Manifest manifest = jarInputStream.getManifest();;
     
 
                         if(manifest == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -259,13 +258,12 @@ file= jarFileBasicArrayList!.get(index) as File;
                                 
                         else {
                             
-    symbolicName: string = manifest.getMainAttributes()!.getValue(Constants.BUNDLE_SYMBOLICNAME)!;;
+    std::string symbolicName = manifest.getMainAttributes().getValue(Constants::BUNDLE_SYMBOLICNAME);;
     
 
-                        if(symbolicName != 
-                                    null
-                                )
-                        hashMap!.put(symbolicName, new URL(InputAutomationNewBundleRunnable.FILE +file.getAbsolutePath()))
+                        if(true)
+                        hashMap.put(symbolicName, URL(InputAutomationNewBundleRunnable::FILE +file.getAbsolutePath()));
+                                
 
                         }
                             
@@ -283,74 +281,74 @@ file= jarFileBasicArrayList!.get(index) as File;
 }
 
 
-    BasicArrayList getJarModuleFileBasicArrayList(){
-this.logUtil!.putF(this.commonStrings!.START, this, "getJarModuleFileBasicArrayList");
+    private: BasicArrayList getJarModuleFileBasicArrayList(){
+this->logUtil.putF(this->commonStrings.START, this, "getJarModuleFileBasicArrayList");
     
 
-    baseJarPath: string = System.getProperty(JAR_DIR_PROP)!;;
+    std::string baseJarPath = System.getProperty(JAR_DIR_PROP);;
     
 
-                        if(baseJarPath!.startsWith(InputAutomationNewBundleRunnable.FILE))
+                        if(baseJarPath.startsWith(InputAutomationNewBundleRunnable::FILE))
                         
                                     {
-                                    baseJarPath= baseJarPath!.substring(InputAutomationNewBundleRunnable.FILE.length);
+                                    baseJarPath= baseJarPath.substring(FILE.size());
     
 
                                     }
                                 
 
-    jarFileFilter: FileFilter = BasicFileFilterUtil.getInstance(".jar")!;;
+    FileFilter jarFileFilter = BasicFileFilterUtil::getInstance(".jar");;
     
 
-    path: string = baseJarPath +InputAutomationNewBundleRunnable.INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH;;
+    std::string path = baseJarPath +InputAutomationNewBundleRunnable::INPUT_AUTMATION_MODULE_BUNDLE_JAR_PATH;;
     
-this.logUtil!.putF("Path: " +path, this, "getJarModuleFileBasicArrayList");
+this->logUtil.putF("Path: " +path, this, "getJarModuleFileBasicArrayList");
     
 
-    file: File = new File(path);;
+    File file = File(path);;
     
-this.logUtil!.putF("File: " +file.getAbsolutePath() +" isDirectory: " +file.isDirectory(), this, "getJarModuleFileBasicArrayList");
+this->logUtil.putF("File: " +file.getAbsolutePath() +" isDirectory: " +file.isDirectory(), this, "getJarModuleFileBasicArrayList");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SubDirectory.getInstance()!.search(jarFileFilter, FileWrapperUtil.wrapFile(file));;
+                        return SubDirectory::getInstance().search(jarFileFilter, FileWrapperUtil::wrapFile(file));;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getInstalledJarSymbolicNameBasicArrayList(){
-this.logUtil!.putF(this.commonStrings!.START, this, "getInstalledJarSymbolicNameBasicArrayList");
+    private: BasicArrayList getInstalledJarSymbolicNameBasicArrayList(){
+this->logUtil.putF(this->commonStrings.START, this, "getInstalledJarSymbolicNameBasicArrayList");
     
 
-    vector: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
-    bundleContext: BundleContext = InputAutomationBundleActivator.getBundleContext()!;;
+    BundleContext bundleContext = InputAutomationBundleActivator::getBundleContext();;
     
 
-    bundleArray: std::vector<Bundle> = bundleContext!.getBundles()!;;
+    std::vector<Bundle> bundleArray = bundleContext.getBundles();;
     
 
                         if(bundleArray != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("bundleArray: " +bundleArray!.length, this, "getInputAutomationModuleServices");
+                                    this->logUtil.putF("bundleArray: " +bundleArray.size(), this, "getInputAutomationModuleServices");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < bundleArray!.length; index++)
+    int32_t index = 0;index < bundleArray.size(); index++)
         {
 
-    bundle: Bundle = bundleArray[index]!;;
+    Bundle bundle = bundleArray[index];;
     
 vector.add(bundle.getSymbolicName());
     
@@ -370,29 +368,29 @@ vector.add(bundle.getSymbolicName());
 
                 //@Throws(Exception.constructor)
             
-    bool isInstalled(string symbolicName){
-this.logUtil!.putF(CommonLabels.getInstance()!.START +symbolicName, this, "isInstalled");
+    private: bool isInstalled(std::string symbolicName){
+this->logUtil.putF(CommonLabels::getInstance().START +symbolicName, this, "isInstalled");
     
 
-    list: BasicArrayList = this.getInstalledJarSymbolicNameBasicArrayList()!;;
+    BasicArrayList list = this->getInstalledJarSymbolicNameBasicArrayList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    nextSymbolicName: string;;
+    std::string nextSymbolicName;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 nextSymbolicName= list.get(index) as string;
     
 
-                        if(nextSymbolicName!.compareTo(symbolicName) == 0)
+                        if(nextSymbolicName.compareTo(symbolicName) == 0)
                         
                                     {
                                     
@@ -417,42 +415,41 @@ nextSymbolicName= list.get(index) as string;
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList findNewModules(){
-this.logUtil!.putF(this.commonStrings!.START, this, "findNewModules");
+    private: BasicArrayList findNewModules(){
+this->logUtil.putF(this->commonStrings.START, this, "findNewModules");
     
 
-    vector: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList vector = BasicArrayListD();;
     
 
-    hashMap: HashMap<any, any> = this.getAllJarSymbolicNameHashMap()!;;
+    HashMap<any, any> hashMap = this->getAllJarSymbolicNameHashMap();;
     
-this.logUtil!.putF("All: " +hashMap, this, "findNewModules");
-    
-
-    set: Set = hashMap!.keys()!;;
+this->logUtil.putF("All: " +hashMap, this, "findNewModules");
     
 
-    symbolicNameArray: std::vector<any> = set.toArray()!;;
+    Set set = hashMap.keys();;
     
 
-    size: int32_t = symbolicNameArray!.length
-                ;;
+    std::vector<Object*> symbolicNameArray = set.toArray();;
+    
+
+    int32_t size = symbolicNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    symbolicName: string = symbolicNameArray[index]! as string;;
+    std::string symbolicName = symbolicNameArray[index]! as string;;
     
 
-                        if(!this.isInstalled(symbolicName))
+                        if(!this->isInstalled(symbolicName))
                         
                                     {
-                                    vector.add(hashMap!.get(symbolicName));
+                                    vector.add(hashMap.get(symbolicName));
     
 
                                     }
@@ -470,52 +467,52 @@ this.logUtil!.putF("All: " +hashMap, this, "findNewModules");
 
                 //@Throws(Exception.constructor)
             
-    Bundle install(URL url){
-this.logUtil!.putF(CommonLabels.getInstance()!.START +url, this, "install");
+    private: Bundle install(URL url){
+this->logUtil.putF(CommonLabels::getInstance().START +url, this, "install");
     
 
-    bundleContext: BundleContext = InputAutomationBundleActivator.getBundleContext()!;;
+    BundleContext bundleContext = InputAutomationBundleActivator::getBundleContext();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return bundleContext!.installBundle(url.toString());;
+                        return bundleContext.installBundle(url.toString());;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
+this->setRunning(true);
     
 
-        while(this.isRunning())
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+
+        while(this->isRunning())
         {
-timeHelper!.setStartTimeTNT();
+timeHelper.setStartTimeTNT();
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
     
-this.updateModules();
+this->updateModules();
     
 break;
 
                     
 }
 
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

@@ -82,17 +82,16 @@
 class RequestWorkFlowFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public static WorkFlowInterface getInstance(ServletRequest request, ServletResponse response, ServletConfig servletConfig, ServletContext servletContext);
+    public: static WorkFlowInterface getInstance(ServletRequest request, ServletResponse response, ServletConfig servletConfig, ServletContext servletContext);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public static WorkFlowInterface getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: static WorkFlowInterface getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
-private constructor ();
+private: RequestWorkFlowFactory();
 
 };
 

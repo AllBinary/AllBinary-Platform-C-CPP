@@ -50,9 +50,8 @@
         #include "TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory.h"
 
 class TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory: public TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory {
-        
 
-public constructor (){
+public: TouchButtonResourceOpenGLESAnimationInterfaceFactoryInterfaceFactory(){
             super("OpenGL TouchButton Animations");
                     
 
@@ -63,15 +62,15 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level){
-super.initImageCache(OpenGLImageCacheFactory.getInstance(), level);
+    public: void init(int32_t level){
+super.initImageCache(OpenGLImageCacheFactory::getInstance(), level);
     
 }
 
 
-    public bool isFeature(){
+    public: bool isFeature(){
 
-                        if(Features.getInstance()!.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     

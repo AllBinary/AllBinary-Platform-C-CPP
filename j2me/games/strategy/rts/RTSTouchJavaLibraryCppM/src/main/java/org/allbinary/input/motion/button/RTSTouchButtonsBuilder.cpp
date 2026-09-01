@@ -56,23 +56,22 @@
 #include "UpgradeDowngradeTouchButtonsBuilder.h"
 
 class RTSTouchButtonsBuilder: public BaseTouchInput {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
-list.addAllList(new BasicTouchButtonsBuilder().getList());
+list.addAllList(BasicTouchButtonsBuilder().getList());
     
-list.addAllList(new BuildingScrollTouchButtonsBuilder().getList());
+list.addAllList(BuildingScrollTouchButtonsBuilder().getList());
     
-list.addAllList(new UpgradeDowngradeTouchButtonsBuilder().getList());
+list.addAllList(UpgradeDowngradeTouchButtonsBuilder().getList());
     
 
 
@@ -84,13 +83,13 @@ list.addAllList(new UpgradeDowngradeTouchButtonsBuilder().getList());
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil.getInstance()!.getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
     
 }
 

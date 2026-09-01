@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(UpTrackballInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(UpTrackballInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    UpTrackballInputToGameKeyEventAction.instance= new UpTrackballInputToGameKeyEventAction();
+                                    UpTrackballInputToGameKeyEventAction::instance= UpTrackballInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class UpTrackballInputToGameKeyEventAction: public GameKeyCompleteMotionGestureI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpTrackballInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return UpTrackballInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Up Action", TrackballMotionGestureFactory.getInstance()!.UP, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: UpTrackballInputToGameKeyEventAction(){
+            super("Up Action", TrackballMotionGestureFactory::getInstance().UP, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

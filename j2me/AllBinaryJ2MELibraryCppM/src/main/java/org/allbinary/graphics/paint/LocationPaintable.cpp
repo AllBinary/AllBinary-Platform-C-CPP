@@ -52,21 +52,20 @@
 class LocationPaintable
             : public Object
         : public LocationPaintableInterface {
-        
 
-    private: static const instance: LocationPaintable = new LocationPaintable();
+    private: static LocationPaintable instance() { return LocationPaintable(); }
 
-    public static LocationPaintable getInstance(){
+    public: static LocationPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LocationPaintable.instance;
+                        return LocationPaintable::instance();
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 }
 
 

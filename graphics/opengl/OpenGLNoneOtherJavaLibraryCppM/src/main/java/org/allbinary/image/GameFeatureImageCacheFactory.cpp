@@ -44,26 +44,25 @@
 class GameFeatureImageCacheFactory
             : public Object
          {
-        
 
-    public static ImageCache getInstance(){
+    public: static ImageCache getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCacheFactory.getInstance();;
+                        return ImageCacheFactory::getInstance();;
     
 }
 
 
-    public static init(){
-ImageCacheFactory.init();
+    public: static void init(){
+ImageCacheFactory::init();
     
 }
 
 
-    public static releaseAll(){
-ImageCacheFactory.getInstance()!.releaseAll();
+    public: static void releaseAll(){
+ImageCacheFactory::getInstance().releaseAll();
     
 }
 

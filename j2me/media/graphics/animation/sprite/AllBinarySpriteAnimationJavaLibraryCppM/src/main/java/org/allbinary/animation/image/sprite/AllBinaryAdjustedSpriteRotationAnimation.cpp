@@ -51,29 +51,28 @@
         #include "AllBinarySpriteRotationAnimation.h"
 
 class AllBinaryAdjustedSpriteRotationAnimation: public AllBinarySpriteRotationAnimation {
-        
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (Sprite sprite, Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
+public: AllBinaryAdjustedSpriteRotationAnimation(Sprite sprite, Image image, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
             super(sprite, image, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 
 
-    public paintXY(Graphics g, int32_t x, int32_t y){
-this.sprite.setPosition(x +this.dx, y +this.dy);
+    public: void paintXY(Graphics g, int32_t x, int32_t y){
+this->sprite.setPosition(x +this->dx, y +this->dy);
     
-this.paint(g);
+this->paint(g);
     
 }
 

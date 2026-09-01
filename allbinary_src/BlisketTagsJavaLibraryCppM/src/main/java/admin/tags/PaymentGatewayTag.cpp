@@ -61,37 +61,34 @@
         #include "TableTag.h"
 
 class PaymentGatewayTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new PaymentGatewayHelperFactory());
+public: PaymentGatewayTag(){
+this->setTagHelperFactory(PaymentGatewayHelperFactory());
     
-this.setTagRequestHelperFactory(new PaymentGatewayHelperFactory());
+this->setTagRequestHelperFactory(PaymentGatewayHelperFactory());
     
 }
 
 
                 //@Throws(LicensingException.constructor, Exception.constructor)
             
-    public string process(){
+    public: std::string process(){
 
         try {
             
-    anyType: any = new PaymentGatewayHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = PaymentGatewayHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    helperClass: Function = anyType!.constructor!;;
+    Function helperClass = anyType->constructor;;
     
 
-    method: Method = helperClass!.getMethod(commonStrings!.PROCESS, 
-                            nullptr)!;;
+    Method method = helperClass.getMethod(commonStrings.PROCESS, 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -104,7 +101,7 @@ this.setTagRequestHelperFactory(new PaymentGatewayHelperFactory());
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("LicensingException", this, this.commonStrings!.PROCESS, e);
+this->logUtil.put("LicensingException", this, this->commonStrings.PROCESS, e);
     
 
 
@@ -117,10 +114,10 @@ this.logUtil!.put("LicensingException", this, this.commonStrings!.PROCESS, e);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.PROCESS, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.PROCESS, e);
     
 
                                     }
@@ -137,37 +134,37 @@ this.logUtil!.put("LicensingException", this, this.commonStrings!.PROCESS, e);
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0 || this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDERANDEVALBODY) == 0 || this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0 || this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDERANDEVALBODY) == 0 || this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEFORMEVALBODYONERROR) == 0)
                         
                                     {
                                     
-    output: string = this.process()!;;
+    std::string output = this->process();;
     
 
 
                             {
-                            this.pageContext!.getOut()!.print(output +"<br />");
+                            this->pageContext.getOut().print(output +"<br />");
     
 
                             }
                     
 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.AUTHORIZEORDEREVALBODYONERROR) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.SKIP_BODY;
+                        return this->SKIP_BODY;
     
 
                                     }
@@ -177,7 +174,7 @@ this.logUtil!.put("LicensingException", this, this.commonStrings!.PROCESS, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
 
                         }
@@ -208,7 +205,7 @@ this.logUtil!.put("LicensingException", this, this.commonStrings!.PROCESS, e);
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

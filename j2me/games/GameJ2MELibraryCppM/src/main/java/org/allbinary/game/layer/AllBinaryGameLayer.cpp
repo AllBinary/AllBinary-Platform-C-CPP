@@ -113,24 +113,23 @@
         #include "SWTUtil.h"
 #include "GameLayerUtil.h"
 
-class AllBinaryGameLayer: public AllBinaryLayer: public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
-        
+class AllBinaryGameLayer: public AllBinaryLayer, public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    const RED: BasicColor = BasicColorFactory.getInstance()!.RED;
+    protected: const BasicColor RED = BasicColorFactory::getInstance().RED;
 
-    private: const paintable: Paintable = SWTUtil.isSWT
+    private: const Paintable paintable = SWTUtil::isSWT
                         ?       
-                                new class extends Paintable
+                                class extends Paintable
                                 {
                                 
-    private: const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
-    private: const BLACK: BasicColor = BasicColorFactory.getInstance()!.BLACK;
-    public paint(Graphics graphics){
-this.basicSetColorUtil!.setBasicColorP(graphics, this.BLACK);
+    const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    const BasicColor BLACK = BasicColorFactory::getInstance().BLACK;
+    public: void paint(Graphics graphics){
+this->basicSetColorUtil.setBasicColorP(graphics, this->BLACK);
     
 }
 
@@ -138,13 +137,13 @@ this.basicSetColorUtil!.setBasicColorP(graphics, this.BLACK);
                             
                                 :
 
-                            NullPaintable.getInstance();
+                            NullPaintable::getInstance();
 
     ;
 
-    private: const gameKeyEventList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList gameKeyEventList = BasicArrayListD();
 
-public constructor (string name, Rectangle layerInfo, ViewPositionBase viewPosition){
+public: AllBinaryGameLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition){
             super(name, layerInfo, viewPosition);
                     
 
@@ -155,79 +154,79 @@ public constructor (string name, Rectangle layerInfo, ViewPositionBase viewPosit
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void set(GL gl){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public move(){
+    public: void move(){
 }
 
 
-    public BasicArrayList getGameKeyEventList(){
+    public: BasicArrayList getGameKeyEventList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyEventList;
+                        return this->gameKeyEventList;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processInput(AllBinaryLayerManager allBinaryLayerManager){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onViewPositionChangeEvent(){
-this.onChangeEvent(this.viewPositionEvent);
+    public: void onViewPositionChangeEvent(){
+this->onChangeEvent(this->viewPositionEvent);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onChangeEvent(ViewPositionEvent layerManagerEvent){
+    public: void onChangeEvent(ViewPositionEvent layerManagerEvent){
 
-                        if(GameLayerUtil.isOnScreen(this))
+                        if(GameLayerUtil::isOnScreen(this))
                         
                                     {
-                                    this.setVisible(true);
+                                    this->setVisible(true);
     
 
                                     }
                                 
                         else {
-                            this.setVisible(false);
+                            this->setVisible(false);
     
 
                         }
@@ -235,41 +234,41 @@ this.onChangeEvent(this.viewPositionEvent);
 }
 
 
-    public paintFirst(Graphics graphics){
-this.paintable.paint(graphics);
+    public: void paintFirst(Graphics graphics){
+this->paintable.paint(graphics);
     
 }
 
 
-    public paintDebug(Graphics graphics){
+    public: void paintDebug(Graphics graphics){
 
-    viewPosition: ViewPositionBase = this.getViewPosition()!;;
-    
-
-    viewX: int32_t = viewPosition!.getX()!;;
+    ViewPositionBase viewPosition = this->getViewPosition();;
     
 
-    viewY: int32_t = viewPosition!.getY()!;;
+    int32_t viewX = viewPosition.getX();;
     
-this.basicSetColorUtil!.setBasicColorP(graphics, this.RED);
+
+    int32_t viewY = viewPosition.getY();;
     
-graphics.drawRect(viewX, viewY, this.getWidth(), this.getHeight());
+this->basicSetColorUtil.setBasicColorP(graphics, this->RED);
+    
+graphics.drawRect(viewX, viewY, this->getWidth(), this->getHeight());
     
 }
 
 
-    public setWidth(int32_t width){
+    public: void setWidth(int32_t width){
 super.setLayerWidth(width);
     
-this.setHalfWidth(width>>1);
+this->setHalfWidth(width>>1);
     
 }
 
 
-    public setHeight(int32_t height){
+    public: void setHeight(int32_t height){
 super.setLayerHeight(height);
     
-this.setHalfHeight(height>>1);
+this->setHalfHeight(height>>1);
     
 }
 

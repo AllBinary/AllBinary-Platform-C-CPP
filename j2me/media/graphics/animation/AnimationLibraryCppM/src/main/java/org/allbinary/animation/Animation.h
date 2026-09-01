@@ -78,63 +78,62 @@
 class Animation
             : public Object
         : public AnimationInterface, public OpenGLSurfaceChangedInterface {
-        
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    protected: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    colorP: int32_t= 0;
+    protected: int32_t colorP= 0;
 
-    changeBasicColorP: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    protected: BasicColor changeBasicColorP = BasicColorFactory::getInstance().NULL_COLOR;
 
-    changeColorP: int32_t= 0;
+    protected: int32_t changeColorP= 0;
 
-    public alphaP: int32_t= 0;
+    public: int32_t alphaP= 0;
 
-public constructor ();
+public: Animation();
 
-    public setAlpha(int32_t alpha);
-
-                //@Throws(Exception.constructor)
-            
-    public nextFrame();
-
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
-
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
-
-    public bool isThreed();
-
-    public BasicColor getBasicColorP();
-
-    public setBasicColorP(BasicColor basicColor);
-
-    public setBackgroundBasicColorP(BasicColor basicColor);
-
-    public BasicColor getChangeBasicColor();
-
-    public changeBasicColor(BasicColor basicColor);
-
-    public int32_t getChangeColor();
-
-    public int32_t getColor();
-
-    public setScale(float scaleX, float scaleY);
-
-    public setMaxScale(float maxScaleX, float maxScaleY);
+    public: void setAlpha(int32_t alpha);
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl);
+    public: void nextFrame();
 
-    public setDx(int32_t dx);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public int32_t getDx();
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
 
-    public setDy(int32_t dy);
+    public: bool isThreed();
 
-    public int32_t getDy();
+    public: BasicColor getBasicColorP();
+
+    public: void setBasicColorP(BasicColor basicColor);
+
+    public: void setBackgroundBasicColorP(BasicColor basicColor);
+
+    public: BasicColor getChangeBasicColor();
+
+    public: void changeBasicColor(BasicColor basicColor);
+
+    public: int32_t getChangeColor();
+
+    public: int32_t getColor();
+
+    public: void setScale(float scaleX, float scaleY);
+
+    public: void setMaxScale(float maxScaleX, float maxScaleY);
+
+                //@Throws(Exception.constructor)
+            
+    public: void set(GL gl);
+
+    public: void setDx(int32_t dx);
+
+    public: int32_t getDx();
+
+    public: void setDy(int32_t dy);
+
+    public: int32_t getDy();
 
 };
 

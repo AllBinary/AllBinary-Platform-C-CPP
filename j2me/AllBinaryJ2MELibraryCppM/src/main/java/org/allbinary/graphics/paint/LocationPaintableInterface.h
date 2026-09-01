@@ -50,9 +50,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LocationPaintableInterface {
-        
 
-    paintXY(Graphics graphics, int32_t x, int32_t y);
+    void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

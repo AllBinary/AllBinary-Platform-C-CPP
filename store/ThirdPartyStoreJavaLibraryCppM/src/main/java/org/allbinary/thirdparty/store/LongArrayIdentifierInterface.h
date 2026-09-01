@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_THIRDPARTY_STORE_LONGARRAYIDENTIFIERINTERFACE_H
         #define ORG_ALLBINARY_THIRDPARTY_STORE_LONGARRAYIDENTIFIERINTERFACE_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -47,7 +49,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LongArrayIdentifierInterface {
-        
 
     std::vector<int64_t> getLongArrayIdentifier();
 

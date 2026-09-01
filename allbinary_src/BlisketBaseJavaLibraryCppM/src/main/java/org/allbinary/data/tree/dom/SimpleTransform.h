@@ -69,17 +69,16 @@
 class SimpleTransform
             : public Object
          {
-        
 
-    private: const xsltFilePath: AbPath;
+    private: AbPath xsltFilePath;
 
-    private: const dataFilePath: AbPath;
+    private: AbPath dataFilePath;
 
-public constructor (AbPath xsltFilePath, AbPath dataFilePath);
+public: SimpleTransform(AbPath xsltFilePath, AbPath dataFilePath);
 
                 //@Throws(Exception.constructor)
             
-    public string transform();
+    public: std::string transform();
 
 };
 

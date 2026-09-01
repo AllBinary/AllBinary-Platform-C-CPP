@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANDROID_INPUT_MOTION_API5_GAMEINPUTMOTIONEVENTPROCESSORAPI5_H
         #define ORG_ALLBINARY_ANDROID_INPUT_MOTION_API5_GAMEINPUTMOTIONEVENTPROCESSORAPI5_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <android/view/MotionEvent.h>
@@ -71,25 +73,24 @@
         #include "GameInputMotionInfoAPI5.h"
 
 class GameInputMotionEventProcessorAPI5: public BaseGameInputMotionEventProcessor {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameInputMotionEventProcessorAPI5 getInstance();
+    public: static GameInputMotionEventProcessorAPI5 getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const motionRecognizerArray: std::vector<MotionRecognizer>;
+    private: std::vector<MotionRecognizer> motionRecognizerArray;
 
-    private: const TOTAL_MINUS_ONE: int32_t;
+    private: int32_t TOTAL_MINUS_ONE;
 
-private constructor ();
+private: GameInputMotionEventProcessorAPI5();
 
-    bool isValid(int32_t pointerId);
+    private: bool isValid(int32_t pointerId);
 
-    public process(MotionEvent motionEvent);
+    public: void process(MotionEvent motionEvent);
 
 };
 

@@ -51,49 +51,46 @@
 class InventoryEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: InventoryEntityFactory = new InventoryEntityFactory();
+    private: static InventoryEntityFactory instance() { return InventoryEntityFactory(); }
 
-    public static InventoryEntityFactory getInstance(){
+    public: static InventoryEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventoryEntityFactory.instance;
+                        return InventoryEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: InventoryEntityFactory(){
+}
 
 
-    public InventoryEntity getInventoryEntityInstance(){
+    public: InventoryEntity getInventoryEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.user.commerce.inventory.item.InventoryEntity();
+                        return org::allbinary::data::tables::user::commerce::inventory::item::InventoryEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "getInventoryEntityInstance()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInventoryEntityInstance()", e);
     
 
                                     }

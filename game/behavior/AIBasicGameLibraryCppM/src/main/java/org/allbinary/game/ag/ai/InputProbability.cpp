@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -53,77 +55,74 @@
 class InputProbability
             : public Object
          {
-        
 
-    public static INPUT_PROBABILITY: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    public: static Integer INPUT_PROBABILITY = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: const likelyhoodIntegerArray: std::vector<std::vector<Integer>>;
+    private: std::vector<std::vector<Integer>> likelyhoodIntegerArray;
 
-    private: const repeatLikelyhoodIntegerArray: std::vector<Integer>;
+    private: std::vector<Integer> repeatLikelyhoodIntegerArray;
 
-    private: const max: int32_t;
+    private: int32_t max;
 
-    private: const timeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeDelayHelper;
 
-public constructor (std::vector<std::vector<Integer>> likelyhoodIntegerArray, std::vector<Integer> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper timeDelayHelper){
-
-            super();
-        this.likelyhoodIntegerArray= likelyhoodIntegerArray;
+public: InputProbability(std::vector<std::vector<Integer>> likelyhoodIntegerArray, std::vector<Integer> repeatLikelyhoodIntegerArray, int32_t max, TimeDelayHelper timeDelayHelper){
+this->likelyhoodIntegerArray= likelyhoodIntegerArray;
     
-this.repeatLikelyhoodIntegerArray= repeatLikelyhoodIntegerArray;
+this->repeatLikelyhoodIntegerArray= repeatLikelyhoodIntegerArray;
     
-this.max= max;
+this->max= max;
     
-this.timeDelayHelper= timeDelayHelper;
+this->timeDelayHelper= timeDelayHelper;
     
 }
 
 
-    public std::vector<std::vector<Integer>> getLikelyhoodIntegerArray(){
+    public: std::vector<std::vector<Integer>> getLikelyhoodIntegerArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.likelyhoodIntegerArray;
+                        return this->likelyhoodIntegerArray;
     
 }
 
 
-    public std::vector<Integer> getRepeatLikelyhoodIntegerArray(){
+    public: std::vector<Integer> getRepeatLikelyhoodIntegerArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.repeatLikelyhoodIntegerArray;
+                        return this->repeatLikelyhoodIntegerArray;
     
 }
 
 
-    public int32_t getMax(){
+    public: int32_t getMax(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.max;
+                        return this->max;
     
 }
 
 
-    public TimeDelayHelper getTimeDelayHelper(){
+    public: TimeDelayHelper getTimeDelayHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeDelayHelper;
+                        return this->timeDelayHelper;
     
 }
 
 
-    public Hashtable<any, any> toHashtable(){
+    public: Hashtable<any, any> toHashtable(){
 
-    hashtable: Hashtable<any, any> = new Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = Hashtable<any, any>();;
     
-hashtable.put(InputProbability.INPUT_PROBABILITY, this);
+hashtable.put(InputProbability::INPUT_PROBABILITY, this);
     
 
 

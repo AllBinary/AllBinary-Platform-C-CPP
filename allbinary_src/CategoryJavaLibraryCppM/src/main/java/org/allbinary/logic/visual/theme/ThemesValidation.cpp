@@ -58,42 +58,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ThemesData.h"
 
-class ThemesValidation: public Validation: public DomNodeInterface {
-        
+class ThemesValidation: public Validation, public DomNodeInterface {
 
-    private: themeVector: Vector;
+    private: Vector themeVector;
 
-public constructor (){
-
-            super();
-        this.themeVector= new Vector();
+public: ThemesValidation(){
+this->themeVector= Vector();
     
 }
 
 
-public constructor (Node node){
-
-            super();
-        }
+public: ThemesValidation(Node node){
+}
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        }
+public: ThemesValidation(HashMap<any, any> hashMap){
+}
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -103,7 +96,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -113,7 +106,7 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -125,24 +118,24 @@ public constructor (HashMap<any, any> hashMap){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(ThemesData.getInstance()!.NAME)!;;
+    Node node = document.createElement(ThemesData::getInstance().NAME);;
     
 
-    size: int32_t = this.themeVector!.length!;;
+    int32_t size = this->themeVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    themeDomNodeInterface: DomNodeInterface = this.themeVector!.get(i) as DomNodeInterface;;
+    DomNodeInterface themeDomNodeInterface = this->themeVector.get(i) as DomNodeInterface;;
     
-node.appendChild(themeDomNodeInterface!.toXmlNode(document));
+node.appendChild(themeDomNodeInterface.toXmlNode(document));
     
 }
 

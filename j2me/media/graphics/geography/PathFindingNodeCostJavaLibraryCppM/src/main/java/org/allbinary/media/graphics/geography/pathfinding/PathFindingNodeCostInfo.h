@@ -57,33 +57,32 @@
 class PathFindingNodeCostInfo
             : public Object
         : public Comparable<PathFindingNodeCostInfo> {
-        
 
-    private: const pathFindingNodeCostInfoData: PathFindingNodeCostInfoData = PathFindingNodeCostInfoData.getInstance()!;
+    private: const PathFindingNodeCostInfoData pathFindingNodeCostInfoData = PathFindingNodeCostInfoData::getInstance();
 
-    public costFromStartP: int64_t;
+    public: int64_t costFromStartP;
 
-    public costToEndP: int64_t;
+    public: int64_t costToEndP;
 
-    public totalCostP: int64_t= 0;
+    public: int64_t totalCostP= 0;
 
-public constructor (int64_t costFromStart, int64_t costToGoal);
+public: PathFindingNodeCostInfo(int64_t costFromStart, int64_t costToGoal);
 
-    public setCostToEnd(int64_t costToEnd);
+    public: void setCostToEnd(int64_t costToEnd);
 
-    public setTotalCost(int64_t totalCost);
+    public: void setTotalCost(int64_t totalCost);
 
                 //@Throws(Exception.constructor)
             
-    public setCalculatedTotalCost();
+    public: void setCalculatedTotalCost();
 
-    public setCostFromStart(int64_t cost);
+    public: void setCostFromStart(int64_t cost);
 
-    public addCostFromStart(int64_t cost);
+    public: void addCostFromStart(int64_t cost);
 
-    public int32_t compareTo(PathFindingNodeCostInfo pathFindingNodeCostInfo);
+    public: int32_t compareTo(PathFindingNodeCostInfo pathFindingNodeCostInfo);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

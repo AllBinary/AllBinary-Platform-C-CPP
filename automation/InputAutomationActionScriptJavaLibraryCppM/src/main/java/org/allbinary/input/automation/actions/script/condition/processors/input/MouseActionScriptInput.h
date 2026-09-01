@@ -88,44 +88,43 @@
 #include "MouseActionScriptInputData.h"
 #include "MouseInputAutomationProcessor.h"
 
-class MouseActionScriptInput: public BasicProfileActionScriptInput: public MouseActionScriptInputInterface {
-        
+class MouseActionScriptInput: public BasicProfileActionScriptInput, public MouseActionScriptInputInterface {
 
-    private: static const NAME: string = "Mouse";
+    private: static const std::string NAME = "Mouse";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: point: Point;
+    private: Point point;
 
-    private: buttons: int32_t= 0;
+    private: int32_t buttons= 0;
 
-    private: mouseActionScriptInputJPanel: MouseActionScriptInputJPanel;
+    private: MouseActionScriptInputJPanel mouseActionScriptInputJPanel;
 
-public constructor (Node node);
+public: MouseActionScriptInput(Node node);
 
-public constructor ();
+public: MouseActionScriptInput();
 
-    public setPoint(Point point);
+    public: void setPoint(Point point);
 
-    public Point getPoint();
+    public: Point getPoint();
 
-    public int32_t getButtonClicks();
+    public: int32_t getButtonClicks();
 
-    public setButtonClicks(int32_t buttons);
+    public: void setButtonClicks(int32_t buttons);
 
-    public showDialog();
+    public: void showDialog();
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame);
+    public: Node toXmlNode(Document document);
 
-    public log();
+                //@Throws(Exception.constructor)
+            
+    public: void process(Long frame);
+
+    public: void log();
 
 };
 

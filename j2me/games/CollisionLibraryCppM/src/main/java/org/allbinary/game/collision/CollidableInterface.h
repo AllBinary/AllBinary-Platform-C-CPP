@@ -59,7 +59,6 @@
         #include "CollisionType.h"
 
 class CollidableInterface: public NamedInterface {
-        
 
                 //@Throws(Exception.constructor)
             
@@ -71,7 +70,7 @@ class CollidableInterface: public NamedInterface {
 
                 //@Throws(Exception.constructor)
             
-    collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
 
     CollisionType getCollisionTypeWith(AllBinaryLayer layerInterface);
 

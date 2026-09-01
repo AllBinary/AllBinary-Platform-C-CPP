@@ -50,19 +50,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GenericViewTag: public TransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: output: string;
+    private: std::string output;
 
-    private: file: string;
+    private: std::string file;
 
-public constructor ();
+public: GenericViewTag();
 
-    public setOutput(string value);
+    public: void setOutput(std::string value);
 
-    public setFile(string value);
+    public: void setFile(std::string value);
 
 };
 

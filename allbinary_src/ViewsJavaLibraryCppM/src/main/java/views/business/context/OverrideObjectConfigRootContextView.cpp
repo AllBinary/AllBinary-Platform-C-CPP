@@ -85,21 +85,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OverrideObjectConfigRootContextView: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object transformInfoInterface){
+public: OverrideObjectConfigRootContextView(Object transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, "OverrideObjectRootContextView()");
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "OverrideObjectRootContextView()");
     
 
                                     }
@@ -109,45 +108,45 @@ public constructor (Object transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +this.getTransformInfoInterface()!.getName(), this, "view()");
+                                    this->logUtil.putF("View Name: " +this->getTransformInfoInterface().getName(), this, "view()");
     
 
                                     }
                                 
 
-    rootTransformInfoInterface: TransformInfoInterface = new TransformInfoHttp(this.getTransformInfoInterface() as TransformInfoHttp) as TransformInfoInterface;;
+    TransformInfoInterface rootTransformInfoInterface = TransformInfoHttp(this->getTransformInfoInterface() as TransformInfoHttp) as TransformInfoInterface;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getTransformInfoInterface()!.getStoreName());
+stringBuffer.append(this->getTransformInfoInterface().getStoreName());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
-    
-
-    nameStart: string = stringBuffer!.toString()!;;
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
 
-                        if(this.getTransformInfoInterface()!.getName()!.indexOf(GeneratorTransformInfoData.NAME) > 0)
+    std::string nameStart = stringBuffer.toString();;
+    
+
+                        if(this->getTransformInfoInterface().getName().indexOf(GeneratorTransformInfoData::NAME) > 0)
                         
                                     {
-                                    rootTransformInfoInterface!.setName(nameStart +GeneratorTransformInfoData.NAME);
+                                    rootTransformInfoInterface.setName(nameStart +GeneratorTransformInfoData::NAME);
     
 
                                     }
                                 
                              else 
-                        if(this.getTransformInfoInterface()!.getName()!.indexOf(RootTransformInfoData.NAME) > 0)
+                        if(this->getTransformInfoInterface().getName().indexOf(RootTransformInfoData::NAME) > 0)
                         
                                     {
-                                    rootTransformInfoInterface!.setName(nameStart +RootTransformInfoData.NAME);
+                                    rootTransformInfoInterface.setName(nameStart +RootTransformInfoData::NAME);
     
 
                                     }
@@ -156,45 +155,45 @@ stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
                             
 
 
-                            throw new Exception("Override Currently Not Supported");
+                            throw Exception("Override Currently Not Supported");
                     
 
                         }
                             
 
-    overrideObjectConfigDocument: Document = this.getTransformInfoInterface()!.getObjectConfigInterface()!.toXmlDoc()!;;
+    Document overrideObjectConfigDocument = this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Retrieved OverrideObjectConfig: " +DomDocumentHelper.toString(overrideObjectConfigDocument), this, "view()");
+                                    this->logUtil.putF("Retrieved OverrideObjectConfig: " +DomDocumentHelper::toString(overrideObjectConfigDocument), this, "view()");
     
 
                                     }
                                 
 
-    transformFactory: TransformFactory = TransformFactory.getInstance()!;;
+    TransformFactory transformFactory = TransformFactory::getInstance();;
     
 
-    rootComponentInterface: TransformInterface = transformFactory!.getInstance(this.abeClientInformation, rootTransformInfoInterface!.getName(), rootTransformInfoInterface)!;;
+    TransformInterface rootComponentInterface = transformFactory.getInstance(this->abeClientInformation, rootTransformInfoInterface.getName(), rootTransformInfoInterface);;
     
 
-    transformTemplateInterface: TransformTemplateInterface = rootComponentInterface as TransformTemplateInterface;;
+    TransformTemplateInterface transformTemplateInterface = rootComponentInterface as TransformTemplateInterface;;
     
 
-    componentInterface: TransformInterface = transformFactory!.getInstance(this.abeClientInformation, transformTemplateInterface!.getName(), rootComponentInterface!.getTransformInfoInterface())!;;
+    TransformInterface componentInterface = transformFactory.getInstance(this->abeClientInformation, transformTemplateInterface.getName(), rootComponentInterface.getTransformInfoInterface());;
     
 
-    transformInfoObjectConfigInterface: TransformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory.getInstance()!.getInstance(this.abeClientInformation, componentInterface!.getTransformInfoInterface(), overrideObjectConfigDocument)!;;
+    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(this->abeClientInformation, componentInterface.getTransformInfoInterface(), overrideObjectConfigDocument);;
     
-componentInterface!.getTransformInfoInterface()!.setObjectConfigInterface(transformInfoObjectConfigInterface);
+componentInterface.getTransformInfoInterface().setObjectConfigInterface(transformInfoObjectConfigInterface);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Set OverrideObjectConfig: " +componentInterface!.getTransformInfoInterface()!.getObjectConfigInterface()!.toString(), this, "view()");
+                                    this->logUtil.putF("Set OverrideObjectConfig: " +componentInterface.getTransformInfoInterface().getObjectConfigInterface().toString(), this, "view()");
     
 
                                     }
@@ -203,17 +202,17 @@ componentInterface!.getTransformInfoInterface()!.setObjectConfigInterface(transf
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return componentInterface!.view();;
+                        return componentInterface.view();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

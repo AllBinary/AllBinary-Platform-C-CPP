@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEINTUTIL_H
         #define ORG_ALLBINARY_LOGIC_MATH_PRIMITIVEINTUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -48,13 +50,12 @@
 class PrimitiveIntUtil
             : public Object
          {
-        
 
-    public static std::vector<int32_t> getArrayInstance();
+    public: static std::vector<int32_t> getArrayInstance();
 
-    public static std::vector<std::vector<int32_t>> getTwoDimensionalArrayInstance();
+    public: static std::vector<std::vector<int32_t>> getTwoDimensionalArrayInstance();
 
-private constructor ();
+private: PrimitiveIntUtil();
 
 };
 

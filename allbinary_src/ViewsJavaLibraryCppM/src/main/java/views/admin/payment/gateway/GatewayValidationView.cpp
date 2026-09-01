@@ -55,10 +55,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GatewayView.h"
 
-class GatewayValidationView: public HttpStoreComponentView: public ValidationComponentInterface {
-        
+class GatewayValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: GatewayValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -67,17 +66,17 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -87,7 +86,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -99,16 +98,16 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
-                            throw new Exception("validationInfo");
+                            throw Exception("validationInfo");
                     
 }
 
 
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
@@ -118,7 +117,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
 
 
@@ -130,12 +129,12 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GatewayView(this.getTransformInfoInterface()).view();;
+                        return GatewayView(this->getTransformInfoInterface()).view();;
     
 }
 

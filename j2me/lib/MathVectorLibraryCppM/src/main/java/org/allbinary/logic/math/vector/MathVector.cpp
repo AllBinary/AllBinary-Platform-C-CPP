@@ -46,50 +46,47 @@
 class MathVector
             : public Object
         : public MathVectorInterface {
-        
 
-    private: magnitudeBasicDecimal: BasicDecimal;
+    private: BasicDecimal magnitudeBasicDecimal;
 
-    private: direction: int32_t;
+    private: int32_t direction;
 
-    resultBasicDecimal: BasicDecimal;
+    protected: BasicDecimal resultBasicDecimal;
 
-public constructor (BasicDecimal magnitudeBasicDecimal, int32_t direction){
-
-            super();
-        this.magnitudeBasicDecimal= magnitudeBasicDecimal;
+public: MathVector(BasicDecimal magnitudeBasicDecimal, int32_t direction){
+this->magnitudeBasicDecimal= magnitudeBasicDecimal;
     
-this.direction= direction;
+this->direction= direction;
     
 }
 
 
-    public BasicDecimal getMagnitude(){
+    public: BasicDecimal getMagnitude(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.magnitudeBasicDecimal;
+                        return this->magnitudeBasicDecimal;
     
 }
 
 
-    public int32_t getDirection(){
+    public: int32_t getDirection(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.direction;
+                        return this->direction;
     
 }
 
 
-    public BasicDecimal getResult(){
+    public: BasicDecimal getResult(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.resultBasicDecimal;
+                        return this->resultBasicDecimal;
     
 }
 

@@ -42,30 +42,27 @@
 class AppletUtil
             : public Object
          {
-        
 
-    private: static applet: bool = false;
+    private: static bool applet = false;
 
-    public static setApplet(){
-AppletUtil.applet= true;
+    public: static void setApplet(){
+AppletUtil::applet= true;
     
 }
 
 
-    public static bool isAppletLoader(any = {} anyType){
+    public: static bool isAppletLoader(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AppletUtil.applet;
+                        return AppletUtil::applet;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AppletUtil(){
+}
 
 
 };

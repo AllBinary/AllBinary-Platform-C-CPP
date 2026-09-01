@@ -72,15 +72,14 @@
 #include "ImageAnimation.h"
 
 class AllBinaryScreenRelationalImageAnimationInterfaceFactory: public BaseImageAnimationFactory {
-        
 
-    private: lastImage: Image = NullImage.NULL_IMAGE;
+    private: Image lastImage = NullImage::NULL_IMAGE;
 
-public constructor (Image image, AnimationBehaviorFactory animationBehaviorFactory);
+public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
 };
 

@@ -70,19 +70,18 @@
 class TransformInfoPropertiesFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoPropertiesFactory = new TransformInfoPropertiesFactory();
+    private: static TransformInfoPropertiesFactory instance() { return TransformInfoPropertiesFactory(); }
 
-    public static TransformInfoPropertiesFactory getInstance();
+    public: static TransformInfoPropertiesFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: TransformInfoPropertiesFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoProperties getInstance(Node node);
+    public: TransformInfoProperties getInstance(Node node);
 
 };
 

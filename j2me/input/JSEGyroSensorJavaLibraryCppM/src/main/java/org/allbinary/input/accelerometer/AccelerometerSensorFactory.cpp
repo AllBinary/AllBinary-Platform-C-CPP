@@ -54,48 +54,47 @@
 class AccelerometerSensorFactory
             : public Object
          {
-        
 
-    private: static allBinaryAccelerometerSensor: AllBinaryOrientationSensor;
+    private: static AllBinaryOrientationSensor allBinaryAccelerometerSensor;
 
                 //@Throws(Exception.constructor)
             
-    public static init(){
+    public: static void init(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    sensorFeatureFactory: SensorFeatureFactory = SensorFeatureFactory.getInstance()!;;
+    SensorFeatureFactory sensorFeatureFactory = SensorFeatureFactory::getInstance();;
     
 
-                        if(features.isFeature(sensorFeatureFactory!.ORIENTATION_SENSORS))
+                        if(features.isFeature(sensorFeatureFactory.ORIENTATION_SENSORS))
                         
                                     {
                                     
 
 
-                            throw new Exception("No Orientation Sensors");
+                            throw Exception("No Orientation Sensors");
                     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(sensorFeatureFactory!.SIMULATED_ORIENTATION_SENSORS))
+                        if(features.isFeature(sensorFeatureFactory.SIMULATED_ORIENTATION_SENSORS))
                         
                                     {
                                     
 
 
-                            throw new Exception("No Simulation Sensors");
+                            throw Exception("No Simulation Sensors");
                     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(sensorFeatureFactory!.NO_ORIENTATION))
+                        if(features.isFeature(sensorFeatureFactory.NO_ORIENTATION))
                         
                                     {
-                                    AccelerometerSensorFactory.allBinaryAccelerometerSensor= new NoAccelerometerSensor();
+                                    AccelerometerSensorFactory::allBinaryAccelerometerSensor= NoAccelerometerSensor();
     
 
                                     }
@@ -104,7 +103,7 @@ class AccelerometerSensorFactory
                             
 
 
-                            throw new Exception("Not Such SensorFeature");
+                            throw Exception("Not Such SensorFeature");
                     
 
                         }
@@ -112,12 +111,12 @@ class AccelerometerSensorFactory
 }
 
 
-    public static AllBinaryOrientationSensor getInstance(){
+    public: static AllBinaryOrientationSensor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AccelerometerSensorFactory.allBinaryAccelerometerSensor;
+                        return AccelerometerSensorFactory::allBinaryAccelerometerSensor;
     
 }
 

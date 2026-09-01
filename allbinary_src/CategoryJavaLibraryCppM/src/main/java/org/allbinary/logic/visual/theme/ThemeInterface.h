@@ -44,15 +44,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ThemeInterface: public TableMappingInterface {
-        
 
-    string getName();
+    std::string getName();
 
-    string getPath();
+    std::string getPath();
 
-    string getPreviewImageName();
+    std::string getPreviewImageName();
 
-    string getPreviewImagePath();
+    std::string getPreviewImagePath();
 
 };
 

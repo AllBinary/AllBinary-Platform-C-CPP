@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_ROTATIONSPRITEIMAGEJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_ROTATIONSPRITEIMAGEJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -99,52 +101,51 @@
 #include "ActionListener.h"
 #include "ActionEvent.h"
 
-class RotationSpriteImageJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class RotationSpriteImageJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageStrings: ImageStrings = ImageStrings.getInstance()!;
+    private: const ImageStrings imageStrings = ImageStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-    private: result: BufferedImage;
+    private: BufferedImage result;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: RotationSpriteImageJPanel(ImageProcessorInput imageProcessorInput);
 
-    public process();
+    public: void process();
 
-    initComponents();
+    private: void initComponents();
 
-    generateJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    totalAngleJComboBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void totalAngleJComboBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: generateJButton: javax.swing.JButton;
+    private: javax::swing::JButton generateJButton;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: jPanel2: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel2;
 
-    private: jPanel3: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel3;
 
-    private: totalAngleJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JComboBox totalAngleJComboBox;
 
-    private: totalFramesJComboBox: javax.swing.JComboBox;
+    private: javax::swing::JComboBox totalFramesJComboBox;
 
-    private: writeOverOriginalJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox writeOverOriginalJCheckBox;
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
 };
 

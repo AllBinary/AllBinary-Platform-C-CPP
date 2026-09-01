@@ -73,27 +73,26 @@
         #include "HelperTag.h"
 
 class ModifyTag: public HelperTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TagHelperFactoryInterface tagHelperFactoryInterface);
-
-                //@Throws(LicensingException.constructor)
-            
-    public string insert();
+public: ModifyTag(TagHelperFactoryInterface tagHelperFactoryInterface);
 
                 //@Throws(LicensingException.constructor)
             
-    public string delete();
+    public: std::string insert();
 
                 //@Throws(LicensingException.constructor)
             
-    public string update();
+    public: std::string delete_();
+
+                //@Throws(LicensingException.constructor)
+            
+    public: std::string update();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

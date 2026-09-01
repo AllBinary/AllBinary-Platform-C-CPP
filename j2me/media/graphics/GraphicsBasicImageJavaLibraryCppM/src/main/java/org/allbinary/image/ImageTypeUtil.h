@@ -51,23 +51,22 @@
 class ImageTypeUtil
             : public Object
          {
-        
 
-    private: static SINGLETON: ImageTypeUtil = new ImageTypeUtil();
+    private: static ImageTypeUtil SINGLETON = ImageTypeUtil();
 
-    public static ImageTypeUtil getInstance();
+    public: static ImageTypeUtil getInstance();
 
-    public const PNG: string = "png";
+    public: const std::string PNG = "png";
 
-    public const JPG: string = "jpg";
+    public: const std::string JPG = "jpg";
 
-    public const GIF: string = "gif";
+    public: const std::string GIF = "gif";
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: ImageTypeUtil();
 
-    public bool isSupported(string mediaFileType);
+    public: bool isSupported(std::string mediaFileType);
 
 };
 

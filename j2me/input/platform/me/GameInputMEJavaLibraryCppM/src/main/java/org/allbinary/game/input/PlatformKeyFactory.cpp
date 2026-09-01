@@ -48,16 +48,15 @@
 class PlatformKeyFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PlatformKeyFactory getInstance(){
+    public: static PlatformKeyFactory getInstance(){
 
-                        if(PlatformKeyFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(PlatformKeyFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    PlatformKeyFactory.instance= new PlatformKeyFactory();
+                                    PlatformKeyFactory::instance= PlatformKeyFactory();
     
 
                                     }
@@ -66,97 +65,97 @@ class PlatformKeyFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformKeyFactory.instance as PlatformKeyFactory;
+                        return PlatformKeyFactory::instance() as PlatformKeyFactory;
     
 }
 
 
-    public string getString(int32_t keyCode){
+    public: std::string getString(int32_t keyCode){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEGameKey.getString(keyCode);;
+                        return J2MEGameKey::getString(keyCode);;
     
 }
 
 
-    public bool isSubmission(Input input){
+    public: bool isSubmission(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isSubmission(input);;
+                        return J2MEKeyFactory::getInstance().isSubmission(input);;
     
 }
 
 
-    public bool isDelete(Input input){
+    public: bool isDelete(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isDelete(input);;
+                        return J2MEKeyFactory::getInstance().isDelete(input);;
     
 }
 
 
-    public bool isBackSpace(Input input){
+    public: bool isBackSpace(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isBackSpace(input);;
+                        return J2MEKeyFactory::getInstance().isBackSpace(input);;
     
 }
 
 
-    public bool isLeft(Input input){
+    public: bool isLeft(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isLeft(input);;
+                        return J2MEKeyFactory::getInstance().isLeft(input);;
     
 }
 
 
-    public bool isRight(Input input){
+    public: bool isRight(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isRight(input);;
+                        return J2MEKeyFactory::getInstance().isRight(input);;
     
 }
 
 
-    public bool isUp(Input input){
+    public: bool isUp(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isUp(input);;
+                        return J2MEKeyFactory::getInstance().isUp(input);;
     
 }
 
 
-    public bool isDown(Input input){
+    public: bool isDown(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isDown(input);;
+                        return J2MEKeyFactory::getInstance().isDown(input);;
     
 }
 
 
-    public bool isEnter(Input input){
+    public: bool isEnter(Input input){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return J2MEKeyFactory.getInstance()!.isEnter(input);;
+                        return J2MEKeyFactory::getInstance().isEnter(input);;
     
 }
 

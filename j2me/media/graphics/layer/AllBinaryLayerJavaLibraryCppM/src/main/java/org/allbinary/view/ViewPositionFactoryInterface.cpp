@@ -41,7 +41,6 @@
         #include "ViewPositionBase.h"
 
 class ViewPositionFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

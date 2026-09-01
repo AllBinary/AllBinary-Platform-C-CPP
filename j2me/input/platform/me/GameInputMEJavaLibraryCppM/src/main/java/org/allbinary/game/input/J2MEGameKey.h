@@ -49,13 +49,12 @@
 #include "InputFactory.h"
 
 class J2MEGameKey: public Input {
-        
 
-    public static string getString(int32_t keyCode);
+    public: static std::string getString(int32_t keyCode);
 
-protected constructor (int32_t key, string keyName);
+protected: J2MEGameKey(int32_t key, std::string keyName);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

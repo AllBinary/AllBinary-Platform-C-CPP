@@ -49,28 +49,27 @@
 class ThreadUtil
             : public Object
          {
-        
 
-    private: static const instance: ThreadUtil = new ThreadUtil();
+    private: static ThreadUtil instance() { return ThreadUtil(); }
 
-    public static ThreadUtil getInstance(){
+    public: static ThreadUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreadUtil.instance;
+                        return ThreadUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const JOIN: string = "join";
+    public: const std::string JOIN = "join";
 
-    public bool isRunning(Thread thread){
+    public: bool isRunning(Thread thread){
 
                         if(thread != 
-                                    null
+                                    nullptr
                                  && thread.isAlive())
                         
                                     {
@@ -98,12 +97,12 @@ class ThreadUtil
 
                 //@Throws(Exception.constructor)
             
-    public join(Thread thread){
+    public: void join(Thread thread){
 
-                        if(ThreadUtil.getInstance()!.isRunning(thread))
+                        if(ThreadUtil::getInstance().isRunning(thread))
                         
                                     {
-                                    this.logUtil!.putF("Waiting for Thread To Join/End", this, this.JOIN);
+                                    this->logUtil.putF("Waiting for Thread To Join/End", this, this->JOIN);
     
 thread.join();
     

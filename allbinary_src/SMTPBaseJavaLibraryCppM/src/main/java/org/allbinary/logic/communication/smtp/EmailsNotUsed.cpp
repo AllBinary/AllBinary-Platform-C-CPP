@@ -67,58 +67,55 @@
 class EmailsNotUsed
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    emailInfoVector: Vector;
+    protected: Vector emailInfoVector;
 
-public constructor (){
-
-            super();
-        this.emailInfoVector= new Vector();
+public: EmailsNotUsed(){
+this->emailInfoVector= Vector();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "toXmlNode");
+                                    this->logUtil.putF(this->commonStrings.START, this, "toXmlNode");
     
 
                                     }
                                 
 
-    node: Node = document.createElement(EmailData.NAME)!;;
+    Node node = document.createElement(EmailData::NAME);;
     
 
-    size: int32_t = this.emailInfoVector!.length!;;
+    int32_t size = this->emailInfoVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    email: Email = this.emailInfoVector!.get(index) as Email;;
+    Email email = this->emailInfoVector.get(index) as Email;;
     
 
-    emailNode: Node = email.toXmlNode(document)!;;
+    Node emailNode = email.toXmlNode(document);;
     
 
                         if(emailNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -130,10 +127,10 @@ public constructor (){
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.END, this, "toXmlNode()");
+                                    this->logUtil.putF(this->commonStrings.END, this, "toXmlNode()");
     
 
                                     }
@@ -149,22 +146,22 @@ public constructor (){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toXmlNode()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode()", e);
     
 
                                     }
                                 
 
-    error: string = "Error Processing Order.  Please contact us if error persists.<p/>";;
+    std::string error = "Error Processing Order.  Please contact us if error persists.<p/>";;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicErrorNodeUtil.get(document, error);;
+                        return BasicErrorNodeUtil::get(document, error);;
     
 }
 

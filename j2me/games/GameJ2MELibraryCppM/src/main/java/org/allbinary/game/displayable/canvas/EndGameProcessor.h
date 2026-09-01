@@ -74,19 +74,18 @@
         #include "AllBinaryGameCanvas.h"
 
 class EndGameProcessor: public Processor {
-        
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-    private: const WAIT: int64_t = 5000;
+    private: const int64_t WAIT = 5000;
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: EndGameProcessor(AllBinaryGameCanvas gameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 

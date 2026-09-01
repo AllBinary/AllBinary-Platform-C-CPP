@@ -38,31 +38,30 @@
 class OpenGLResources
             : public Object
          {
-        
 
-    private: static const instance: OpenGLResources = new OpenGLResources();
+    private: static OpenGLResources instance() { return OpenGLResources(); }
 
-    public static OpenGLResources getInstance();
+    public: static OpenGLResources getInstance();
 
-    public init();
+    public: void init();
 
-    public bool isExcluded(string name);
+    public: bool isExcluded(std::string name);
 
-    public int32_t getIdentifier(string name, string defType, string defPackage);
-
-                //@Throws(Exception.constructor)
-            
-    public InputStream openRawResource(int32_t id);
+    public: int32_t getIdentifier(std::string name, std::string defType, std::string defPackage);
 
                 //@Throws(Exception.constructor)
             
-    public InputStream openRawResourceFromName(string resourceName);
+    public: InputStream openRawResource(int32_t id);
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resourceName);
+    public: InputStream openRawResourceFromName(std::string resourceName);
 
-    public string getPackageName();
+                //@Throws(Exception.constructor)
+            
+    public: InputStream getResourceAsStream(std::string resourceName);
+
+    public: std::string getPackageName();
 
 };
 

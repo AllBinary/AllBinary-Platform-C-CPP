@@ -42,45 +42,44 @@
         #include "BaseGameStatistics.h"
 //ActualPlatform
 /*actual*/ class GameStatisticsFactory: public BaseGameStatistics {
-        
 
-    private: static const instance: GameStatisticsFactory = new GameStatisticsFactory();
+    private: static GameStatisticsFactory instance() { return GameStatisticsFactory(); }
 
-    /*actual*/ public static GameStatisticsFactory getInstance(){
+    /*actual*/ public: static GameStatisticsFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameStatisticsFactory.instance;
+                        return GameStatisticsFactory::instance();
     
 }
 
 
-    private: stringBuffer: StringMaker = new StringMaker();
+    private: StringMaker stringBuffer = StringMaker();
 
-    public add(string string){
+    public: void add(std::string string){
 
-                        if(this.stringBuffer!.length() > 12000)
+                        if(this->stringBuffer.length() > 12000)
                         
                                     {
-                                    this.stringBuffer!.delete(0, this.stringBuffer!.length());
+                                    this->stringBuffer.delete(0, this->stringBuffer.length());
     
-this.stringBuffer!.append("Old Stats Cleared");
+this->stringBuffer.append("Old Stats Cleared");
     
 
                                     }
                                 
-this.stringBuffer!.append(string);
+this->stringBuffer.append(string);
     
 }
 
 
-    /*actual*/ public string toString(){
+    /*actual*/ public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(super.toString())!.append(this.stringBuffer!.toString())!.toString();;
+                        return StringMaker().append(super.toString()).append(this->stringBuffer.toString()).toString();;
     
 }
 

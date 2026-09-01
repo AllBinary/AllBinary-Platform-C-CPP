@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_HELP_BASICINPUTMAPPINGHELPPAINTABLE_H
 
+            #include <vector>
+        
 #include <org/allbinary/game/input/GameKey.h>
 
       
@@ -75,17 +77,16 @@
         #include "HelpPaintable.h"
 
 class BasicInputMappingHelpPaintable: public HelpPaintable {
-        
 
-    private: gameInputMappingArray: std::vector<GameInputMapping>;
+    private: std::vector<GameInputMapping> gameInputMappingArray;
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-protected constructor (std::vector<GameInputMapping> gameInputMappingArray, BasicColor basicColor);
+protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor basicColor);
 
-    public update(GameKey selectedGameKey, Input selectedInput);
+    public: void update(GameKey selectedGameKey, Input selectedInput);
 
-    string get(BasicArrayList keyList);
+    private: std::string get(BasicArrayList keyList);
 
 };
 

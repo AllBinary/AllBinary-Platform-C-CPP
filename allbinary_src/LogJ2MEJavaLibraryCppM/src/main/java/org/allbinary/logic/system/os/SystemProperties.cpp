@@ -44,70 +44,67 @@
 /*actual*/ class SystemProperties
             : public Object
          {
-        
 
-    private: static const instance: SystemProperties = new SystemProperties();
+    private: static SystemProperties instance() { return SystemProperties(); }
 
-    /*actual*/ public static SystemProperties getInstance(){
+    /*actual*/ public: static SystemProperties getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SystemProperties.instance;
+                        return SystemProperties::instance();
     
 }
 
 
-    private: const OS_NAME: string = "os.name";
+    private: const std::string OS_NAME = "os.name";
 
-    private: const OS_ARCH: string = "os.arch";
+    private: const std::string OS_ARCH = "os.arch";
 
-    private: const OS_VERSION: string = "os.version";
+    private: const std::string OS_VERSION = "os.version";
 
-    private: const USER_HOME: string = "user.home";
+    private: const std::string USER_HOME = "user.home";
 
-private constructor (){
-
-            super();
-        }
+private: SystemProperties(){
+}
 
 
-    /*actual*/ public string getName(){
+    /*actual*/ public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return System.getProperty(this.OS_NAME);;
+                        return System.getProperty(this->OS_NAME);;
     
 }
 
 
-    /*actual*/ public string getArch(){
+    /*actual*/ public: std::string getArch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return System.getProperty(this.OS_ARCH);;
+                        return System.getProperty(this->OS_ARCH);;
     
 }
 
 
-    /*actual*/ public string getVersion(){
+    /*actual*/ public: std::string getVersion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return System.getProperty(this.OS_VERSION);;
+                        return System.getProperty(this->OS_VERSION);;
     
 }
 
 
-    public string getUserHomePath(){
+    public: std::string getUserHomePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return System.getProperty(this.USER_HOME);;
+                        return System.getProperty(this->USER_HOME);;
     
 }
 

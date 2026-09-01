@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_ADCONFIGURATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -63,27 +65,26 @@
 class AdConfiguration
             : public Object
          {
-        
 
-    public const INNERACTIVE: string;
+    public: std::string INNERACTIVE;
 
-    public const LEADBOLT: string;
+    public: std::string LEADBOLT;
 
-    public const ADMOB: string;
+    public: std::string ADMOB;
 
-public constructor (std::vector<any> advertIdArray);
+public: AdConfiguration(std::vector<Object*> advertIdArray);
 
-    public std::vector<Direction> getValidAdSpots();
+    public: std::vector<Direction> getValidAdSpots();
 
-    public process(GameState gameState);
+    public: void process(GameState gameState);
 
-    public processDemo(int32_t state);
+    public: void processDemo(int32_t state);
 
-    public setShowAds();
+    public: void setShowAds();
 
-    public setToggleAds(bool showAds);
+    public: void setToggleAds(bool showAds);
 
-    public bool isShowAds();
+    public: bool isShowAds();
 
 };
 

@@ -45,7 +45,6 @@
         #include "GraphicItemInterface.h"
 
 class GraphicsItemInterfaceFactoryInterface {
-        
 
     GraphicItemInterface getInstance(CanvasJPanel canvasJPanel);
 

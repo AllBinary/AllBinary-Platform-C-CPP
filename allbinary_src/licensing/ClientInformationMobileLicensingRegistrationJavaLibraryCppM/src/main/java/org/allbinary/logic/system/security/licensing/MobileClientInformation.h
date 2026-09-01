@@ -72,15 +72,14 @@
 #include "PartnerIdentifierFileUtil.h"
 
 class MobileClientInformation: public AbeClientInformation {
-        
 
-    static const DESC: string = "Mobile";
+    protected: static const std::string DESC = "Mobile";
 
-    static const ANDROID_DESC: string = "Android" +MobileClientInformation.DESC;
+    protected: static const std::string ANDROID_DESC = "Android" +MobileClientInformation::DESC;
 
-public constructor (string name, string version, string specialName, string shortName);
+public: MobileClientInformation(std::string name, std::string version, std::string specialName, std::string shortName);
 
-    public Hashtable<any, any> toHashtable();
+    public: Hashtable<any, any> toHashtable();
 
 };
 

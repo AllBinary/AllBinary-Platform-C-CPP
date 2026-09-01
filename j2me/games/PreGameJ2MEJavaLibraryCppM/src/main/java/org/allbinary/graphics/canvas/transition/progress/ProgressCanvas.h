@@ -127,121 +127,119 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //#include "ProgressPaintable.h"
 
-class ProgressCanvas: public RunnableCanvas: public PaintableInterface, public UpdateMyFontInterface {
-        
+class ProgressCanvas: public RunnableCanvas, public PaintableInterface, public UpdateMyFontInterface {
 
-    hasPainted: bool= false;
+    protected: bool hasPainted= false;
 
-    private: const backgroundBasicColor: BasicColor;
+    private: BasicColor backgroundBasicColor;
 
 //inner= member=true isStatic=
 class ProgressPaintable: public Paintable {
-        
 
-    const progressCanvas: ProgressCanvas;
+    ProgressCanvas progressCanvas;
 
- constructor (ProgressCanvas progressCanvas);
+: ProgressPaintable(ProgressCanvas progressCanvas);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 
             
-    public const GAUGE_PAINTABLE: Paintable = new this.ProgressPaintable(this);
+    public: const Paintable GAUGE_PAINTABLE = ProgressPaintable(this);
 
-    private: const maxValue: float = 100.0;
+    private: const float maxValue = 100.0;
 
-    const gauge: ABCustomGaugeItem;
+    protected: ABCustomGaugeItem gauge;
 
-    private: const TEXT: string = this.commonStrings!.LOADING;
+    private: const std::string TEXT = this->commonStrings.LOADING;
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    allbinaryMidlet: AllBinaryMidlet = AllBinaryMidlet.getNullInstance()!;
+    protected: AllBinaryMidlet allbinaryMidlet = AllBinaryMidlet::getNullInstance();
 
-    private: value: float= 0.0;
+    private: float value= 0.0;
 
-    private: text: string = this.TEXT;
+    private: std::string text = this->TEXT;
 
-    private: background: bool = true;
+    private: bool background = true;
 
-    paintable: PaintableInterface = this.GAUGE_PAINTABLE;
+    protected: PaintableInterface paintable = this->GAUGE_PAINTABLE;
 
-    public inProgress: bool = false;
+    public: bool inProgress = false;
 
-    private: const IN_GAME_PROCESSOR: Processor = new class extends Processor
+    private: const Processor IN_GAME_PROCESSOR = class extends Processor
                                 {
                                 
-    private: const pathFindingThreadPool: ThreadPool = PathFindingThreadPool.getInstance()!;
+    const ThreadPool pathFindingThreadPool = PathFindingThreadPool::getInstance();
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
                                 }
                             ;
 
-    public inGameProcessor: Processor = Processor.getInstance()!;
+    public: Processor inGameProcessor = Processor::getInstance();
 
- constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+: ProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public init(AllBinaryMidlet gameMidlet);
+    public: void init(AllBinaryMidlet gameMidlet);
 
                 //@Throws(Exception.constructor)
             
-    public update(Graphics graphics);
+    public: void update(Graphics graphics);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    float getMaxValue();
+    protected: float getMaxValue();
 
-    public start();
+    public: void start();
 
-    private: const backgroundLabel: string = "Background AI Game Loading...";
+    private: const std::string backgroundLabel = "Background AI Game Loading...";
 
-    private: const START_BACKGROUND: string = "startBackground";
+    private: const std::string START_BACKGROUND = "startBackground";
 
-    public startBackground(bool background);
+    public: void startBackground(bool background);
 
-    public endActual();
+    public: void endActual();
 
-    public inGame();
+    public: void inGame();
 
-    public end();
+    public: void end();
 
-    public endFromInitialLazyLoadingComplete();
+    public: void endFromInitialLazyLoadingComplete();
 
-    public endIfPaintedSinceStart();
+    public: void endIfPaintedSinceStart();
 
-    const ADD_PORTION: string = "addPortion";
+    protected: const std::string ADD_PORTION = "addPortion";
 
-    const ADD_EARLY_PORTION: string = "addEarlyPortion";
+    protected: const std::string ADD_EARLY_PORTION = "addEarlyPortion";
 
-    public addEarlyPortion(int32_t value, string text, int32_t index);
+    public: void addEarlyPortion(int32_t value, std::string text, int32_t index);
 
-    public addPortion(int32_t value, string text, int32_t index);
+    public: void addPortion(int32_t value, std::string text, int32_t index);
 
-    public addNormalPortion(int32_t value, string text);
+    public: void addNormalPortion(int32_t value, std::string text);
 
-    setValue(int32_t value);
+    protected: void setValue(int32_t value);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paint2(Graphics graphics);
+    public: void paint2(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
-    float getValue();
+    protected: float getValue();
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    public string getText();
+    public: std::string getText();
 
-    setBackground(bool background);
+    protected: void setBackground(bool background);
 
-    bool isBackground();
+    protected: bool isBackground();
 
 };
 

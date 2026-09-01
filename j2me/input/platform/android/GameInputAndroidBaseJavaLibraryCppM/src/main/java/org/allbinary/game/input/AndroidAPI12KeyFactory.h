@@ -35,13 +35,12 @@
 #include "AndroidGameKey.h"
 
 class AndroidAPI12KeyFactory: public AndroidAPI9KeyFactory {
-        
 
-    private: static instance12: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance12 = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AndroidAPI12KeyFactory getAPI12Instance();
+    public: static AndroidAPI12KeyFactory getAPI12Instance();
 
-private constructor ();
+private: AndroidAPI12KeyFactory();
 
 };
 

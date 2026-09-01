@@ -57,88 +57,85 @@
 class LicenseInitInfo
             : public Object
          {
-        
 
-    private: id: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string id = StringUtil::getInstance().EMPTY_STRING;
 
-    private: serverVector: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList serverVector = BasicArrayListD();
 
-public constructor (){
-
-            super();
-        }
+public: LicenseInitInfo(){
+}
 
 
-    public string getLicenseId(){
+    public: std::string getLicenseId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public string getServer(int32_t index){
+    public: std::string getServer(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverVector!.objectArray[index]! as string;
+                        return this->serverVector.objectArray[index]! as string;
     
 }
 
 
-    public int32_t getNumberOfServers(){
+    public: int32_t getNumberOfServers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverVector!.size();;
+                        return this->serverVector.size();;
     
 }
 
 
-    public setLicenseId(string value){
-this.id= value;
+    public: void setLicenseId(std::string value){
+this->id= value;
     
 }
 
 
-    public clearServers(){
-this.serverVector= new BasicArrayListD();
+    public: void clearServers(){
+this->serverVector= BasicArrayListD();
     
 }
 
 
-    public setServer(string value, int32_t index){
-this.serverVector!.addAt(index, value);
+    public: void setServer(std::string value, int32_t index){
+this->serverVector.addAt(index, value);
     
 }
 
 
-    public addServer(string value){
-this.serverVector!.add(value);
+    public: void addServer(std::string value){
+this->serverVector.add(value);
     
 }
 
 
-    public BasicArrayList getServerList(){
+    public: BasicArrayList getServerList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverVector;
+                        return this->serverVector;
     
 }
 
 
-    public setServerList(BasicArrayList servers){
+    public: void setServerList(BasicArrayList servers){
 
-                        if(DebugFactory.getInstance() == NoDebug.getInstance())
+                        if(DebugFactory::getInstance() == NoDebug::getInstance())
                         
                                     {
-                                    this.serverVector= servers;
+                                    this->serverVector= servers;
     
 
                                     }

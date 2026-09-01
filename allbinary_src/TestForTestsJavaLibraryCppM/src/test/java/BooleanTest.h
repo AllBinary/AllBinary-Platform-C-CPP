@@ -39,7 +39,6 @@
 class BooleanTest
             : public Object
          {
-        
 
 };
 

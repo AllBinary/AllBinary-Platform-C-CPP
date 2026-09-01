@@ -45,17 +45,16 @@
 class HtmlMetaAttributesData
             : public Object
          {
-        
 
-    private: static const instance: HtmlMetaAttributesData = new HtmlMetaAttributesData();
+    private: static HtmlMetaAttributesData instance() { return HtmlMetaAttributesData(); }
 
-    public static HtmlMetaAttributesData getInstance();
+    public: static HtmlMetaAttributesData getInstance();
 
-private constructor ();
+private: HtmlMetaAttributesData();
 
-    public NAME_VALUE: string = "name";
+    public: std::string NAME_VALUE = "name";
 
-    public HTTP_EQUIV_VALUE: string = "http-equiv";
+    public: std::string HTTP_EQUIV_VALUE = "http-equiv";
 
 };
 

@@ -81,16 +81,15 @@
 class ApplicationConfiguration
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ApplicationConfiguration getInstance(){
+    public: static ApplicationConfiguration getInstance(){
 
-                        if(ApplicationConfiguration.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(ApplicationConfiguration::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    ApplicationConfiguration.instance= new ApplicationConfiguration();
+                                    ApplicationConfiguration::instance= ApplicationConfiguration();
     
 
                                     }
@@ -99,37 +98,35 @@ class ApplicationConfiguration
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ApplicationConfiguration.instance as ApplicationConfiguration;
+                        return ApplicationConfiguration::instance() as ApplicationConfiguration;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: fullscreen: bool = true;
+    private: bool fullscreen = true;
 
-    private: showTitleBar: bool = false;
+    private: bool showTitleBar = false;
 
-    private: progressBarView: bool = false;
+    private: bool progressBarView = false;
 
-    private: const FILE: string = "ReloadConfiguration.dat";
+    private: const std::string FILE = "ReloadConfiguration.dat";
 
-private constructor (){
+private: ApplicationConfiguration(){
 
-            super();
-        
         try {
             
-                        if(FileFactory.getInstance()!.isFile(this.FILE))
+                        if(FileFactory::getInstance().isFile(this->FILE))
                         
                                     {
-                                    this.read();
+                                    this->read();
     
 
                                     }
                                 
                         else {
-                            this.write();
+                            this->write();
     
 
                         }
@@ -139,9 +136,9 @@ private constructor (){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
@@ -150,24 +147,24 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
 
                 //@Throws(Exception.constructor)
             
-    read(){
+    private: void read(){
 
-    fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
+    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    fileInputStream: InputStream = fileInputStreamFactory!.getFileInputStreamInstance(StringUtil.getInstance()!.EMPTY_STRING, this.FILE)!;;
+    InputStream fileInputStream = fileInputStreamFactory.getFileInputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
     
 
-    dataInputStream: AbDataInputStream = new AbDataInputStream(fileInputStream);;
+    AbDataInputStream dataInputStream = AbDataInputStream(fileInputStream);;
     
 
-    fullScreen: int32_t = dataInputStream!.readInt()!;;
+    int32_t fullScreen = dataInputStream.readInt();;
     
 
                         if(fullScreen == 0)
                         
                                     {
-                                    this.setFullscreen(false);
+                                    this->setFullscreen(false);
     
 
                                     }
@@ -176,7 +173,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
                         if(fullScreen == 1)
                         
                                     {
-                                    this.setFullscreen(true);
+                                    this->setFullscreen(true);
     
 
                                     }
@@ -185,19 +182,19 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
                             
 
 
-                            throw new Exception("Invalid FullScreen ActivityConfiguration");
+                            throw Exception("Invalid FullScreen ActivityConfiguration");
                     
 
                         }
                             
 
-    progressBarView: int32_t = dataInputStream!.readInt()!;;
+    int32_t progressBarView = dataInputStream.readInt();;
     
 
                         if(progressBarView == 0)
                         
                                     {
-                                    this.setProgressBarView(false);
+                                    this->setProgressBarView(false);
     
 
                                     }
@@ -206,7 +203,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
                         if(progressBarView == 1)
                         
                                     {
-                                    this.setProgressBarView(true);
+                                    this->setProgressBarView(true);
     
 
                                     }
@@ -215,19 +212,19 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
                             
 
 
-                            throw new Exception("Invalid ProgressBarView ActivityConfiguration");
+                            throw Exception("Invalid ProgressBarView ActivityConfiguration");
                     
 
                         }
                             
 
-    showTitleBar: int32_t = dataInputStream!.readInt()!;;
+    int32_t showTitleBar = dataInputStream.readInt();;
     
 
                         if(showTitleBar == 0)
                         
                                     {
-                                    this.setShowTitleBar(false);
+                                    this->setShowTitleBar(false);
     
 
                                     }
@@ -236,7 +233,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
                         if(showTitleBar == 1)
                         
                                     {
-                                    this.setShowTitleBar(true);
+                                    this->setShowTitleBar(true);
     
 
                                     }
@@ -245,83 +242,83 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e)
                             
 
 
-                            throw new Exception("Invalid ShowTitleBar ActivityConfiguration");
+                            throw Exception("Invalid ShowTitleBar ActivityConfiguration");
                     
 
                         }
                             
-this.logUtil!.putF("Read Configuration: " +this.toString(), this, "read");
+this->logUtil.putF("Read Configuration: " +this->toString(), this, "read");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(){
+    public: void write(){
 
-    closeable: Closeable = NullCloseable.NULL_CLOSEABLE;;
+    Closeable closeable = NullCloseable::NULL_CLOSEABLE;;
     
 
         try {
-            this.logUtil!.putF("Write Configuration: " +this.toString(), this, "write");
+            this->logUtil.putF("Write Configuration: " +this->toString(), this, "write");
     
 
-    fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
+    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    fileOutputStream: OutputStream = fileInputStreamFactory!.getFileOutputStreamInstance(StringUtil.getInstance()!.EMPTY_STRING, this.FILE)!;;
+    OutputStream fileOutputStream = fileInputStreamFactory.getFileOutputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
     
 
-    dataOutputStream: AbDataOutputStream = new AbDataOutputStream(fileOutputStream);;
+    AbDataOutputStream dataOutputStream = AbDataOutputStream(fileOutputStream);;
     
 closeable= dataOutputStream;
     
 
-                        if(this.isFullscreen())
+                        if(this->isFullscreen())
                         
                                     {
-                                    dataOutputStream!.writeInt(1);
+                                    dataOutputStream.writeInt(1);
     
 
                                     }
                                 
                         else {
-                            dataOutputStream!.writeInt(0);
+                            dataOutputStream.writeInt(0);
     
 
                         }
                             
 
-                        if(this.isProgressBarView())
+                        if(this->isProgressBarView())
                         
                                     {
-                                    dataOutputStream!.writeInt(1);
+                                    dataOutputStream.writeInt(1);
     
 
                                     }
                                 
                         else {
-                            dataOutputStream!.writeInt(0);
+                            dataOutputStream.writeInt(0);
     
 
                         }
                             
 
-                        if(this.isShowTitleBar())
+                        if(this->isShowTitleBar())
                         
                                     {
-                                    dataOutputStream!.writeInt(1);
+                                    dataOutputStream.writeInt(1);
     
 
                                     }
                                 
                         else {
-                            dataOutputStream!.writeInt(0);
+                            dataOutputStream.writeInt(0);
     
 
                         }
                             
-dataOutputStream!.flush();
+dataOutputStream.flush();
     
 
                 //: 
@@ -335,7 +332,7 @@ dataOutputStream!.flush();
 }
 
          finally {
-            StreamUtil.getInstance()!.close(closeable);
+            StreamUtil::getInstance().close(closeable);
     
 
          }
@@ -345,25 +342,25 @@ dataOutputStream!.flush();
 
                 //@Throws(Exception.constructor)
             
-    public update(Feature gameFeature){
+    public: void update(Feature gameFeature){
 
-                        if(gameFeature == MainFeatureFactory.getInstance()!.FULL_SCREEN)
+                        if(gameFeature == MainFeatureFactory::getInstance().FULL_SCREEN)
                         
                                     {
                                     
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
                         if(features.isFeature(gameFeature))
                         
                                     {
                                     
-                        if(!this.isFullscreen())
+                        if(!this->isFullscreen())
                         
                                     {
-                                    this.setFullscreen(true);
+                                    this->setFullscreen(true);
     
-this.write();
+this->write();
     
 
                                     }
@@ -373,12 +370,12 @@ this.write();
                                 
                         else {
                             
-                        if(this.isFullscreen())
+                        if(this->isFullscreen())
                         
                                     {
-                                    this.setFullscreen(false);
+                                    this->setFullscreen(false);
     
-this.write();
+this->write();
     
 
                                     }
@@ -392,75 +389,75 @@ this.write();
 }
 
 
-    public setFullscreen(bool fullscreen){
-this.fullscreen= fullscreen;
+    public: void setFullscreen(bool fullscreen){
+this->fullscreen= fullscreen;
     
 }
 
 
-    public bool isFullscreen(){
+    public: bool isFullscreen(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fullscreen;
+                        return this->fullscreen;
     
 }
 
 
-    public setShowTitleBar(bool showTitleBar){
-this.showTitleBar= showTitleBar;
+    public: void setShowTitleBar(bool showTitleBar){
+this->showTitleBar= showTitleBar;
     
 }
 
 
-    public bool isShowTitleBar(){
+    public: bool isShowTitleBar(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.showTitleBar;
+                        return this->showTitleBar;
     
 }
 
 
-    public setProgressBarView(bool progressBarView){
-this.progressBarView= progressBarView;
+    public: void setProgressBarView(bool progressBarView){
+this->progressBarView= progressBarView;
     
 }
 
 
-    public bool isProgressBarView(){
+    public: bool isProgressBarView(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.progressBarView;
+                        return this->progressBarView;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("isFullscreen: ");
+stringBuffer.append("isFullscreen: ");
     
-stringBuffer!.appendboolean(this.isFullscreen());
+stringBuffer.appendboolean(this->isFullscreen());
     
-stringBuffer!.append(" isProgressBarView: ");
+stringBuffer.append(" isProgressBarView: ");
     
-stringBuffer!.appendboolean(this.isProgressBarView());
+stringBuffer.appendboolean(this->isProgressBarView());
     
-stringBuffer!.append(" isShowTitleBar: ");
+stringBuffer.append(" isShowTitleBar: ");
     
-stringBuffer!.appendboolean(this.isShowTitleBar());
+stringBuffer.appendboolean(this->isShowTitleBar());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

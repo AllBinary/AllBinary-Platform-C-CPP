@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -115,25 +117,24 @@
 #include "ScoreComparator.h"
 
 class RecordStoreHighScores: public HighScores {
-        
 
-    private: static const hashTable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashTable = Hashtable<any, any>();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static HighScores getInstance(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, string highScoreName, string heading, string columnTwoHeading, RecordComparator recordComparatorInterface){
+    public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface){
 
-    highScoresCanBeNull: any = RecordStoreHighScores.hashTable!.get(highScoreName);;
+    Object* highScoresCanBeNull = RecordStoreHighScores::hashTable.get(highScoreName);;
     
 
                         if(highScoresCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    highScores: HighScores = new RecordStoreHighScores(abeClientInformation, gameInfo, highScoreName, heading, columnTwoHeading, recordComparatorInterface);;
+    HighScores highScores = RecordStoreHighScores(abeClientInformation, gameInfo, highScoreName, heading, columnTwoHeading, recordComparatorInterface);;
     
-RecordStoreHighScores.hashTable!.put(highScores!.getName(), highScores);
+RecordStoreHighScores::hashTable.put(highScores.getName(), highScores);
     
 
 
@@ -153,100 +154,100 @@ RecordStoreHighScores.hashTable!.put(highScores!.getName(), highScores);
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const platformRecordIdUtil: PlatformRecordIdUtil = PlatformRecordIdUtil.getInstance()!;
+    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const RECORD_ID: string = "_HS";
+    private: const std::string RECORD_ID = "_HS";
 
-    private: const MAXHIGHSCORES: int32_t = 100;
+    private: const int32_t MAXHIGHSCORES = 100;
 
-    private: const gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: const recordComparatorInterface: RecordComparator;
+    private: RecordComparator recordComparatorInterface;
 
-private constructor (AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, string name, string heading, string columnTwoHeading, RecordComparator recordComparatorInterface){
+private: RecordStoreHighScores(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string name, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface){
             super(name, heading, columnTwoHeading);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abeClientInformation= abeClientInformation;
+this->abeClientInformation= abeClientInformation;
     
-this.gameInfo= gameInfo;
+this->gameInfo= gameInfo;
     
-this.recordComparatorInterface= recordComparatorInterface;
+this->recordComparatorInterface= recordComparatorInterface;
     
-this.load();
+this->load();
     
 }
 
 
-    string getRecordId(AbeClientInformationInterface abeClientInformation){
+    private: std::string getRecordId(AbeClientInformationInterface abeClientInformation){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.platformRecordIdUtil!.getRecordId(abeClientInformation, new StringMaker().append(CommonSeps.getInstance()!.UNDERSCORE)!.append(this.getName())!.append(this.RECORD_ID)!.toString());;
+                        return this->platformRecordIdUtil.getRecordId(abeClientInformation, StringMaker().append(CommonSeps::getInstance().UNDERSCORE).append(this->getName()).append(this->RECORD_ID).toString());;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addHighScore(HighScore newHighScore){
+    public: void addHighScore(HighScore newHighScore){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this.logUtil!.putF(new StringMaker().append("Adding HighScore: ")!.appendlong(newHighScore!.getScore())!.toString(), this, this.commonStrings!.ADD);
+            this->logUtil.putF(StringMaker().append("Adding HighScore: ").appendlong(newHighScore.getScore()).toString(), this, this->commonStrings.ADD);
     
 
-                        if(this.isTooManyHighScores())
+                        if(this->isTooManyHighScores())
                         
                                     {
-                                    this.logUtil!.putF("Removing Lowest Score", this, this.commonStrings!.ADD);
+                                    this->logUtil.putF("Removing Lowest Score", this, this->commonStrings.ADD);
     
-this.removeLowestHighScore();
+this->removeLowestHighScore();
     
 
                                     }
                                 
-recordStore= RecordStore.openRecordStore(this.getRecordId(this.abeClientInformation), true);
+recordStore= RecordStore::openRecordStore(this->getRecordId(this->abeClientInformation), true);
     
 
-    highScoreBytes: std::vector<int8_t> = newHighScore!.getAsBytes()!;;
+    std::vector<int8_t> highScoreBytes = newHighScore.getAsBytes();;
     
 
-    recordId: int32_t = recordStore!.addRecord(highScoreBytes, 0, highScoreBytes!.length)!;;
+    int32_t recordId = recordStore.addRecord(highScoreBytes, 0, highScoreBytes.size());;
     
-this.load();
+this->load();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, e);
     
 }
 
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, e);
     
 }
 */
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, e);
     
 }
 */
@@ -255,13 +256,13 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, 
         try {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put("Closing RecordStore", this, this.commonStrings!.ADD);
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings.ADD);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -270,7 +271,7 @@ recordStore!.closeRecordStore();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, e);
     
 }
 
@@ -280,61 +281,61 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, 
 }
 
 
-    removeLowestHighScore(){
+    private: void removeLowestHighScore(){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            recordStore= RecordStore.openRecordStore(this.getRecordId(this.abeClientInformation), true);
+            recordStore= RecordStore::openRecordStore(this->getRecordId(this->abeClientInformation), true);
     
 
-    recordEnum: RecordEnumeration = recordStore!.enumerateRecords(NullRecordFilter.NULL_RECORD_FILTER, NullRecordComparator.NULL_RECORD_COMPARATOR, true)!;;
+    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    scoreComparator: ScoreComparator = (this.recordComparatorInterface as ScoreComparator);;
+    ScoreComparator scoreComparator = (this->recordComparatorInterface as ScoreComparator);;
     
 
-    bestHighScore: HighScore = new HighScore( -1, "none", GameInfo.NONE, scoreComparator!.getBestScore());;
+    HighScore bestHighScore = HighScore( -1, "none", GameInfo::NONE, scoreComparator.getBestScore());;
     
 
-    recordAsBytes: std::vector<int8_t>;;
+    std::vector<int8_t> recordAsBytes;;
     
 
-    byteArrayInputStream: ByteArrayInputStream;;
+    ByteArrayInputStream byteArrayInputStream;;
     
 
-    inputStream: DataInputStream;;
+    DataInputStream inputStream;;
     
 
-        while(recordEnum!.hasNextElement())
+        while(recordEnum.hasNextElement())
         {
 
-    id: int32_t = recordEnum!.nextRecordId()!;;
+    int32_t id = recordEnum.nextRecordId();;
     
-recordAsBytes= this.tsUtil!.getRecord(recordStore, id);
+recordAsBytes= this->tsUtil.getRecord(recordStore, id);
     
 
                         if(recordAsBytes != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
+                                    byteArrayInputStream= ByteArrayInputStream(recordAsBytes);
     
-inputStream= new DataInputStream(byteArrayInputStream);
-    
-
-    name: string = inputStream!.readUTF()!;;
+inputStream= DataInputStream(byteArrayInputStream);
     
 
-    nextScore: int64_t = inputStream!.readLong()!;;
+    std::string name = inputStream.readUTF();;
     
 
-    nextCurrentHighScore: HighScore = new HighScore(id, name, GameInfo.NONE, nextScore);;
+    int64_t nextScore = inputStream.readLong();;
     
 
-                        if(this.recordComparatorInterface!.compare(nextCurrentHighScore!.getAsBytes(), bestHighScore!.getAsBytes()) == RecordComparatorI.FOLLOWS)
+    HighScore nextCurrentHighScore = HighScore(id, name, GameInfo::NONE, nextScore);;
+    
+
+                        if(this->recordComparatorInterface.compare(nextCurrentHighScore.getAsBytes(), bestHighScore.getAsBytes()) == RecordComparator::FOLLOWS)
                         
                                     {
                                     bestHighScore= nextCurrentHighScore;
@@ -348,12 +349,12 @@ inputStream= new DataInputStream(byteArrayInputStream);
 }
 
 
-                        if(bestHighScore!.getId() !=  -1)
+                        if(bestHighScore.getId() !=  -1)
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append("Removing Lowest HighScore: ")!.appendlong(bestHighScore!.getScore())!.toString(), this, this.commonStrings!.LOAD);
+                                    this->logUtil.putF(StringMaker().append("Removing Lowest HighScore: ").appendlong(bestHighScore.getScore()).toString(), this, this->commonStrings.LOAD);
     
-recordStore!.deleteRecord(bestHighScore!.getId());
+recordStore.deleteRecord(bestHighScore.getId());
     
 
                                     }
@@ -362,14 +363,14 @@ recordStore!.deleteRecord(bestHighScore!.getId());
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "removeLowestHighScore", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "removeLowestHighScore", e);
     
 }
 
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "removeLowestHighScore", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "removeLowestHighScore", e);
     
 }
 */
@@ -378,13 +379,13 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "removeLowestHighScore", 
         try {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put("Closing RecordStore", this, "removeLowestHighScore");
+                                    PreLogUtil::put("Closing RecordStore", this, "removeLowestHighScore");
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -393,7 +394,7 @@ recordStore!.closeRecordStore();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "removeLowestHighScore", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "removeLowestHighScore", e);
     
 }
 
@@ -403,78 +404,78 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "removeLowestHighScore", 
 }
 
 
-    load(){
+    private: void load(){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            recordStore= RecordStore.openRecordStore(this.getRecordId(this.abeClientInformation), true);
+            recordStore= RecordStore::openRecordStore(this->getRecordId(this->abeClientInformation), true);
     
-this.setList(new BasicArrayListD());
-    
-
-    recordEnum: RecordEnumeration = recordStore!.enumerateRecords(NullRecordFilter.NULL_RECORD_FILTER, NullRecordComparator.NULL_RECORD_COMPARATOR, true)!;;
+this->setList(BasicArrayListD());
     
 
-    recordAsBytes: std::vector<int8_t>;;
+    RecordEnumeration recordEnum = recordStore.enumerateRecords(NullRecordFilter::NULL_RECORD_FILTER, NullRecordComparator::NULL_RECORD_COMPARATOR, true);;
     
 
-    byteArrayInputStream: ByteArrayInputStream;;
+    std::vector<int8_t> recordAsBytes;;
     
 
-    inputStream: DataInputStream;;
+    ByteArrayInputStream byteArrayInputStream;;
     
 
-        while(recordEnum!.hasNextElement())
+    DataInputStream inputStream;;
+    
+
+        while(recordEnum.hasNextElement())
         {
 
-    id: int32_t = recordEnum!.nextRecordId()!;;
+    int32_t id = recordEnum.nextRecordId();;
     
-recordAsBytes= this.tsUtil!.getRecord(recordStore, id);
+recordAsBytes= this->tsUtil.getRecord(recordStore, id);
     
 
                         if(recordAsBytes != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    byteArrayInputStream= new ByteArrayInputStream(recordAsBytes);
+                                    byteArrayInputStream= ByteArrayInputStream(recordAsBytes);
     
-inputStream= new DataInputStream(byteArrayInputStream);
+inputStream= DataInputStream(byteArrayInputStream);
     
 
         try {
             
-    name: string = inputStream!.readUTF()!;;
+    std::string name = inputStream.readUTF();;
     
 
-    score: int64_t = inputStream!.readLong()!;;
+    int64_t score = inputStream.readLong();;
     
 
-    newHighScore: HighScore = new HighScore(id, name, GameInfo.NONE, score);;
+    HighScore newHighScore = HighScore(id, name, GameInfo::NONE, score);;
     
 
-    list: BasicArrayList = this.getList()!;;
+    BasicArrayList list = this->getList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    lastIndex: int32_t = size;;
+    int32_t lastIndex = size;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    highScore: HighScore = list.objectArray[index]! as HighScore;;
+    HighScore highScore = list.objectArray[index]! as HighScore;;
     
 
-                        if(this.recordComparatorInterface!.compare(newHighScore!.getAsBytes(), highScore!.getAsBytes()) == RecordComparatorI.PRECEDES)
+                        if(this->recordComparatorInterface.compare(newHighScore.getAsBytes(), highScore.getAsBytes()) == RecordComparator::PRECEDES)
                         
                                     {
                                     lastIndex= index;
@@ -493,7 +494,7 @@ list.addAt(lastIndex, newHighScore);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("EOF", this, this.commonStrings!.LOAD, e);
+this->logUtil.put("EOF", this, this->commonStrings.LOAD, e);
     
 
 
@@ -511,28 +512,28 @@ this.logUtil!.put("EOF", this, this.commonStrings!.LOAD, e);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("No High Scores", this, this.commonStrings!.LOAD, e);
+this->logUtil.put("No High Scores", this, this->commonStrings.LOAD, e);
     
 }
 
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.UNKNOWN, this, this.commonStrings!.LOAD, e);
+this->logUtil.put(this->commonStrings.UNKNOWN, this, this->commonStrings.LOAD, e);
     
 }
 */
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.UNKNOWN, this, this.commonStrings!.LOAD, e);
+this->logUtil.put(this->commonStrings.UNKNOWN, this, this->commonStrings.LOAD, e);
     
 }
 */
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.UNKNOWN, this, this.commonStrings!.LOAD, e);
+this->logUtil.put(this->commonStrings.UNKNOWN, this, this->commonStrings.LOAD, e);
     
 }
 */
@@ -541,13 +542,13 @@ this.logUtil!.put(this.commonStrings!.UNKNOWN, this, this.commonStrings!.LOAD, e
         try {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put("Closing RecordStore", this, this.commonStrings!.LOAD);
+                                    PreLogUtil::put("Closing RecordStore", this, this->commonStrings.LOAD);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -556,7 +557,7 @@ recordStore!.closeRecordStore();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.LOAD, e);
     
 }
 
@@ -566,11 +567,11 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD,
 }
 
 
-    bool isTooManyHighScores(){
+    private: bool isTooManyHighScores(){
 
-                        if(this.getList() != 
-                                    null
-                                 && this.getList()!.size() < this.MAXHIGHSCORES)
+                        if(this->getList() != 
+                                    nullptr
+                                 && this->getList().size() < this->MAXHIGHSCORES)
                         
                                     {
                                     
@@ -583,7 +584,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD,
                                     }
                                 
                         else {
-                            this.logUtil!.putF(new StringMaker().append("HighScores RecordStore Max Reached: ")!.appendint(this.MAXHIGHSCORES)!.toString(), this, "isTooManyHighScores");
+                            this->logUtil.putF(StringMaker().append("HighScores RecordStore Max Reached: ").appendint(this->MAXHIGHSCORES).toString(), this, "isTooManyHighScores");
     
 
 
@@ -600,14 +601,14 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD,
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isBestScore(HighScore newHighScore){
+    public: bool isBestScore(HighScore newHighScore){
 
         try {
             
-                        if(!this.isTooManyHighScores())
+                        if(!this->isTooManyHighScores())
                         
                                     {
-                                    this.logUtil!.putF("Slot Available for a High Score", this, "isBestScore");
+                                    this->logUtil.putF("Slot Available for a High Score", this, "isBestScore");
     
 
 
@@ -620,26 +621,26 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD,
                                 
                         else {
                             
-    list: BasicArrayList = this.getList()!;;
+    BasicArrayList list = this->getList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    highScore: HighScore = list.objectArray[index]! as HighScore;;
+    HighScore highScore = list.objectArray[index]! as HighScore;;
     
 
-                        if(this.recordComparatorInterface!.compare(newHighScore!.getAsBytes(), highScore!.getAsBytes()) == RecordComparatorI.FOLLOWS)
+                        if(this->recordComparatorInterface.compare(newHighScore.getAsBytes(), highScore.getAsBytes()) == RecordComparator::FOLLOWS)
                         
                                     {
-                                    this.logUtil!.putF("Obtained a High Score", this, "isBestScore");
+                                    this->logUtil.putF("Obtained a High Score", this, "isBestScore");
     
 
 
@@ -655,7 +656,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.LOAD,
 
                         }
                             
-this.logUtil!.putF("Not a High Score", this, "isBestScore");
+this->logUtil.putF("Not a High Score", this, "isBestScore");
     
 
 
@@ -667,7 +668,7 @@ this.logUtil!.putF("Not a High Score", this, "isBestScore");
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, e);
     
 
 
@@ -679,31 +680,31 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, 
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(super.toString());
-    
-
-    list: BasicArrayList = this.getList()!;;
+stringBuffer.append(super.toString());
     
 
-    size: int32_t = list.size()!;;
+    BasicArrayList list = this->getList();;
+    
+
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    highScore: HighScore = list.objectArray[index]! as HighScore;;
+    HighScore highScore = list.objectArray[index]! as HighScore;;
     
-stringBuffer!.append(highScore!.getScoreString());
+stringBuffer.append(highScore.getScoreString());
     
-stringBuffer!.append(CommonSeps.getInstance()!.COMMA_SEP);
+stringBuffer.append(CommonSeps::getInstance().COMMA_SEP);
     
 }
 
@@ -711,7 +712,7 @@ stringBuffer!.append(CommonSeps.getInstance()!.COMMA_SEP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

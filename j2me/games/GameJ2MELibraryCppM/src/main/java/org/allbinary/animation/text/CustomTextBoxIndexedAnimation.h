@@ -69,38 +69,37 @@
         #include "TextInterface.h"
 #include "TextChangeListener.h"
 
-class CustomTextBoxIndexedAnimation: public IndexedAnimation: public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
-        
+class CustomTextBoxIndexedAnimation: public IndexedAnimation, public RawKeyEventListener, public UpdateMyFontInterface, public TextInterface {
 
-    private: const customTextBox: CustomTextBox;
+    private: CustomTextBox customTextBox;
 
-    private: lastText: string = StringUtil.getInstance()!.INIT_STRING;
+    private: std::string lastText = StringUtil::getInstance().INIT_STRING;
 
-    hasChanged: bool = true;
+    protected: bool hasChanged = true;
 
-    private: textChangeListener: TextChangeListener = TextChangeListener.getInstance()!;
+    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
 
-public constructor (CustomTextBox customTextBox);
+public: CustomTextBoxIndexedAnimation(CustomTextBox customTextBox);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public setBackgroundBasicColorP(BasicColor basicColor);
+    public: void setBackgroundBasicColorP(BasicColor basicColor);
 
-    public setTextWithOnMeasure(string text, TextChangeListener textChangeListener);
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    public string getText();
+    public: std::string getText();
 
-    public onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
+    public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated);
 
-    public int32_t getFontHeight();
+    public: int32_t getFontHeight();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

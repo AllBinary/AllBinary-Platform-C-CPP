@@ -52,11 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TickableInterface: public NamedInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    processTick(AllBinaryLayerManager allBinaryLayerManager)
+    void processTick(AllBinaryLayerManager allBinaryLayerManager)
 
 };
 

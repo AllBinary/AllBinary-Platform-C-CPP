@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -45,31 +47,30 @@
 class BaseServiceReference
             : public Object
         : public ServiceReference {
-        
 
-    public any getProperty(string key){
-
+    public: Object* getProperty(std::string key){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
-    public std::vector<string> getPropertyKeys(){
+    public: std::vector<std::string> getPropertyKeys(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t compareTo(any = {} o){
+    public: int32_t compareTo(Object* o){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

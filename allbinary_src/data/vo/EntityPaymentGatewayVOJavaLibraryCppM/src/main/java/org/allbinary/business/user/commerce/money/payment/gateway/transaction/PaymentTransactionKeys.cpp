@@ -42,24 +42,21 @@
 class PaymentTransactionKeys
             : public Object
          {
-        
 
-    private: key: string;
+    private: std::string key;
 
-protected constructor (string value){
-
-            super();
-        this.key= value;
+protected: PaymentTransactionKeys(std::string value){
+this->key= value;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.key;
+                        return this->key;
     
 }
 

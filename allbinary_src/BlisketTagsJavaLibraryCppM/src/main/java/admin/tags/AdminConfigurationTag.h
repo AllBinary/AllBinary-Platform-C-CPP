@@ -48,9 +48,8 @@
         #include "TableTag.h"
 
 class AdminConfigurationTag: public TableTag {
-        
 
-public constructor ();
+public: AdminConfigurationTag();
 
 };
 

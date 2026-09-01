@@ -53,18 +53,17 @@
 class CollidableHelperFactory
             : public Object
          {
-        
 
-    public static CollisionHelper getInstance(){
+    public: static CollisionHelper getInstance(){
 
-                        if(Features.getInstance()!.isFeature(GameFeatureFactory.getInstance()!.COLLISIONS_WITH_SOURCE))
+                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().COLLISIONS_WITH_SOURCE))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CollisionHelper(AllBinaryLayer.NULL_ALLBINARY_LAYER);
+                        return CollisionHelper(AllBinaryLayer::NULL_ALLBINARY_LAYER);
     
 
                                     }
@@ -74,7 +73,7 @@ class CollidableHelperFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SourceCollisionHelper(AllBinaryLayer.NULL_ALLBINARY_LAYER);
+                        return SourceCollisionHelper(AllBinaryLayer::NULL_ALLBINARY_LAYER);
     
 
                         }

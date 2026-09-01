@@ -48,25 +48,24 @@
 class DisposalUtil
             : public Object
          {
-        
 
-    private: static const instance: DisposalUtil = new DisposalUtil();
+    private: static DisposalUtil instance() { return DisposalUtil(); }
 
-    public static DisposalUtil getInstance(){
+    public: static DisposalUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisposalUtil.instance;
+                        return DisposalUtil::instance();
     
 }
 
 
-    public disposeImage(Image image){
+    public: void disposeImage(Image image){
 }
 
 
-    public disposeResource(Resource resource){
+    public: void disposeResource(Resource resource){
 
                         if(!resource.isDisposed())
                         

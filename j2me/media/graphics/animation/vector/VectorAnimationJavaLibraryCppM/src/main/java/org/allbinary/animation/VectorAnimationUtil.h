@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <org/allbinary/graphics/GPoint.h>
@@ -51,19 +53,18 @@
 class VectorAnimationUtil
             : public Object
          {
-        
 
-    private: static const instance: VectorAnimationUtil = new VectorAnimationUtil();
+    private: static VectorAnimationUtil instance() { return VectorAnimationUtil(); }
 
-    public static VectorAnimationUtil getInstance();
+    public: static VectorAnimationUtil getInstance();
 
-private constructor ();
+private: VectorAnimationUtil();
 
-    public std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointListWithPointsPerFrame(BasicArrayList vector, int32_t pointsPerFrame);
+    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointListWithPointsPerFrame(BasicArrayList vector, int32_t pointsPerFrame);
 
-    public std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointList(BasicArrayList vector);
+    public: std::vector<std::vector<std::vector<int32_t>>> toAnimationArrayFromListOfPointList(BasicArrayList vector);
 
-    public std::vector<std::vector<int32_t>> toFrameArrayFromPointBasicArrayList(BasicArrayList list);
+    public: std::vector<std::vector<int32_t>> toFrameArrayFromPointBasicArrayList(BasicArrayList list);
 
 };
 

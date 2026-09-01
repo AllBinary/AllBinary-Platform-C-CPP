@@ -74,32 +74,31 @@
         #include "TransformInfoHttp.h"
 #include "TransformInfoHttpStoreInterface.h"
 
-class TransformInfoHttpStore: public TransformInfoHttp: public TransformInfoHttpStoreInterface {
-        
+class TransformInfoHttpStore: public TransformInfoHttp, public TransformInfoHttpStoreInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoHttpStore(HashMap<any, any> databaseHashMap, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-public constructor (StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext);
-
-                //@Throws(Exception.constructor)
-            
-    string getPath();
+public: TransformInfoHttpStore(StoreFrontInterface storeFrontInterface, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getTemplateFilePath();
+    private: std::string getPath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath();
+    public: AbPath getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath();
+    public: AbPath getObjectConfigFilePath();
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getDataFilePath();
 
 };
 

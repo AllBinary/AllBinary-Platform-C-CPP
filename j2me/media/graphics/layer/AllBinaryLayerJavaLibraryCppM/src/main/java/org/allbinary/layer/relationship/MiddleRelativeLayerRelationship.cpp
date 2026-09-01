@@ -50,10 +50,9 @@
         #include "RelativeLayerRelationship.h"
 
 class MiddleRelativeLayerRelationship: public RelativeLayerRelationship {
-        
 
-public constructor (AllBinaryLayer layer){
-            super(layer, PointFactory.getInstance()!.createXY(layer.getHalfWidth(), layer.getHalfHeight()), BasicArrayListUtil.getInstance()!.getImmutableInstance());
+public: MiddleRelativeLayerRelationship(AllBinaryLayer layer){
+            super(layer, PointFactory::getInstance().createXY(layer.getHalfWidth(), layer.getHalfHeight()), BasicArrayListUtil::getInstance().getImmutableInstance());
                     
 
                             //For kotlin this is before the body of the constructor.

@@ -49,26 +49,25 @@
 class RectangleCollisionPointUtil
             : public Object
          {
-        
 
-    public static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list){
+    public: static bool allPointsInside(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list){
 
-    rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;;
+    RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
     
 
-    point: GPoint;;
+    GPoint point;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size()!;--index >= 0; )
+    int32_t index = list.size();--index >= 0; )
         {
 point= list.objectArray[index]! as GPoint;
     
 
-                        if(!rectangleCollisionUtil!.isInside(rectX1, rectY1, rectX2, rectY2, point.getX(), point.getY()))
+                        if(!rectangleCollisionUtil.isInside(rectX1, rectY1, rectX2, rectY2, point.getX(), point.getY()))
                         
                                     {
                                     
@@ -91,24 +90,24 @@ point= list.objectArray[index]! as GPoint;
 }
 
 
-    public static bool allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list, int32_t xCellSize, int32_t yCellSize){
+    public: static bool allPointsInsideCell(int32_t rectX1, int32_t rectY1, int32_t rectX2, int32_t rectY2, BasicArrayList list, int32_t xCellSize, int32_t yCellSize){
 
-    rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;;
+    RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();;
     
 
-    point: GPoint;;
+    GPoint point;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size()!;--index >= 0; )
+    int32_t index = list.size();--index >= 0; )
         {
 point= list.objectArray[index]! as GPoint;
     
 
-                        if(!rectangleCollisionUtil!.isInside(rectX1, rectY1, rectX2, rectY2, point.getX() *xCellSize, point.getY() *yCellSize))
+                        if(!rectangleCollisionUtil.isInside(rectX1, rectY1, rectX2, rectY2, point.getX() *xCellSize, point.getY() *yCellSize))
                         
                                     {
                                     
@@ -131,10 +130,8 @@ point= list.objectArray[index]! as GPoint;
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: RectangleCollisionPointUtil(){
+}
 
 
 };

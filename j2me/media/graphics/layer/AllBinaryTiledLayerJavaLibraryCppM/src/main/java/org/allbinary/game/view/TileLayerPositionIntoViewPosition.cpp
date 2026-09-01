@@ -50,11 +50,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TileLayerPositionIntoViewPosition: public ViewPosition {
-        
 
-    private: tiledLayer: Layer = NullLayer.getInstance()!;
+    private: Layer tiledLayer = NullLayer::getInstance();
 
-public constructor (){
+public: TileLayerPositionIntoViewPosition(){
             super(0, 0, 0);
                     
 
@@ -63,38 +62,38 @@ public constructor (){
 }
 
 
-    public int32_t getX(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getX() -this.tiledLayer!.getXP();
+                        return super.getX() -this->tiledLayer.getXP();
     
 }
 
 
-    public int32_t getY(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getY() -this.tiledLayer!.getYP();
+                        return super.getY() -this->tiledLayer.getYP();
     
 }
 
 
-    public int32_t getZ(){
+    public: int32_t getZ(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getZ() -this.tiledLayer!.getZP();
+                        return super.getZ() -this->tiledLayer.getZP();
     
 }
 
 
-    public setTiledLayer(AllBinaryTiledLayer tiledLayer){
-this.tiledLayer= tiledLayer;
+    public: void setTiledLayer(AllBinaryTiledLayer tiledLayer){
+this->tiledLayer= tiledLayer;
     
 }
 

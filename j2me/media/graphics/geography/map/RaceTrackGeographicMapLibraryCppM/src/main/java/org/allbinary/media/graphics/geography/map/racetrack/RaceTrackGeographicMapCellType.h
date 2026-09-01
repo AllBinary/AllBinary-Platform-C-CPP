@@ -47,15 +47,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RaceTrackGeographicMapCellType: public GeographicMapCellType {
-        
 
-    public const name: string;
+    public: std::string name;
 
-    private: const travelCost: int32_t;
+    private: int32_t travelCost;
 
-public constructor (string name, int32_t type, int32_t travelCost, int32_t reset);
+public: RaceTrackGeographicMapCellType(std::string name, int32_t type, int32_t travelCost, int32_t reset);
 
-    public int32_t getTravelCost();
+    public: int32_t getTravelCost();
 
 };
 

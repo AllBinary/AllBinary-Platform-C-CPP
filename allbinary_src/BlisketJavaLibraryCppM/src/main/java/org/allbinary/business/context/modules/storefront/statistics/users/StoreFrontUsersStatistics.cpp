@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../java/lang/Exception.h"
@@ -72,62 +74,59 @@
 class StoreFrontUsersStatistics
             : public Object
         : public StoreFrontUsersStatisticsInterface {
-        
 
-    private: totalNumberOfUsers: Long;
+    private: Long totalNumberOfUsers;
 
-    private: totalUsersByRoleHashMap: HashMap<any, any>;
+    private: HashMap<any, any> totalUsersByRoleHashMap;
 
-public constructor (StoreFrontInterface storeFrontInterface){
-
-            super();
-        this.totalUsersByRoleHashMap= new HashMap<any, any>();
+public: StoreFrontUsersStatistics(StoreFrontInterface storeFrontInterface){
+this->totalUsersByRoleHashMap= HashMap<any, any>();
     
 
-    userEntityInterface: UserEntityInterface = UserEntityFactory.getInstance()!;;
+    UserEntityInterface userEntityInterface = UserEntityFactory::getInstance();;
     
 
-    userVector: Vector = userEntityInterface!.getCustomers()!;;
+    Vector userVector = userEntityInterface.getCustomers();;
     
-this.totalNumberOfUsers= new Long(userVector!.length);
+this->totalNumberOfUsers= Long(userVector.length);
     
 
-    size: int32_t = userVector!.length!;;
+    int32_t size = userVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    userInterface: UserInterface = userVector!.get(index) as UserInterface;;
+    UserInterface userInterface = userVector.get(index) as UserInterface;;
     
 
-    nextUserRole: UserRole = userInterface!.getRole()!;;
+    UserRole nextUserRole = userInterface.getRole();;
     
 
-    currentNumberOfUsersForRole: Long = this.getNewTotal(nextUserRole)!;;
+    Long currentNumberOfUsersForRole = this->getNewTotal(nextUserRole);;
     
-this.totalUsersByRoleHashMap!.put(nextUserRole, currentNumberOfUsersForRole);
+this->totalUsersByRoleHashMap.put(nextUserRole, currentNumberOfUsersForRole);
     
 }
 
 }
 
 
-    Long getNewTotal(UserRole userRole){
+    private: Long getNewTotal(UserRole userRole){
 
-    numberOfUsersForRoleLong: Long = this.totalUsersByRoleHashMap!.get(userRole) as Long;;
+    Long numberOfUsersForRoleLong = this->totalUsersByRoleHashMap.get(userRole) as Long;;
     
 
                         if(numberOfUsersForRoleLong == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    numberOfUsersForRoleLong= new Long(0);
+                                    numberOfUsersForRoleLong= Long(0);
     
 
                                     }
@@ -136,24 +135,24 @@ this.totalUsersByRoleHashMap!.put(nextUserRole, currentNumberOfUsersForRole);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(numberOfUsersForRoleLong!.longValue() +1);
+                        return Long(numberOfUsersForRoleLong.longValue() +1);
     
 }
 
 
-    public Long getNumberOfUsers(){
+    public: Long getNumberOfUsers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalNumberOfUsers;
+                        return this->totalNumberOfUsers;
     
 }
 
 
-    public Long getNumberOfUsersByRole(string role){
+    public: Long getNumberOfUsersByRole(std::string role){
 
-    totalForRole: Long = this.totalUsersByRoleHashMap!.get(role) as Long;;
+    Long totalForRole = this->totalUsersByRoleHashMap.get(role) as Long;;
     
 
 
@@ -164,38 +163,37 @@ this.totalUsersByRoleHashMap!.put(nextUserRole, currentNumberOfUsersForRole);
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(StoreFrontUsersStatisticsData.getInstance()!.NUMBEROFUSERS, this.getNumberOfUsers()!.toString());
-    
-
-    setOfUserRoles: Set = this.totalUsersByRoleHashMap!.keys()!;;
+hashMap.put(StoreFrontUsersStatisticsData::getInstance().NUMBEROFUSERS, this->getNumberOfUsers().toString());
     
 
-    nextUserRole: UserRole;;
+    Set setOfUserRoles = this->totalUsersByRoleHashMap.keys();;
     
 
-    userRoleArray: std::vector<any> = setOfUserRoles!.toArray()!;;
+    UserRole nextUserRole;;
     
 
-    size: int32_t = userRoleArray!.length
-                ;;
+    std::vector<Object*> userRoleArray = setOfUserRoles.toArray();;
+    
+
+    int32_t size = userRoleArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 nextUserRole= userRoleArray[index]! as UserRole;
     
 
-    totalForRole: Long = this.totalUsersByRoleHashMap!.get(nextUserRole) as Long;;
+    Long totalForRole = this->totalUsersByRoleHashMap.get(nextUserRole) as Long;;
     
-hashMap!.put(nextUserRole!.toString(), totalForRole!.toString());
+hashMap.put(nextUserRole.toString(), totalForRole.toString());
     
 }
 
@@ -208,7 +206,7 @@ hashMap!.put(nextUserRole!.toString(), totalForRole!.toString());
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
 
 
@@ -218,7 +216,7 @@ hashMap!.put(nextUserRole!.toString(), totalForRole!.toString());
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 

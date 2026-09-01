@@ -57,37 +57,36 @@
 class PostGameCommandFactory
             : public Object
          {
-        
 
-    private: static const instance: PostGameCommandFactory = new PostGameCommandFactory();
+    private: static PostGameCommandFactory instance() { return PostGameCommandFactory(); }
 
-    public static PostGameCommandFactory getInstance(){
+    public: static PostGameCommandFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PostGameCommandFactory.instance;
+                        return PostGameCommandFactory::instance();
     
 }
 
 
-    public addCommands(MyCanvas canvas){
+    public: void addCommands(MyCanvas canvas){
 
-    operatingSystemInterface: GenericOperatingSystem = OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!;;
+    GenericOperatingSystem operatingSystemInterface = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
     
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-                        if(!operatingSystemInterface!.isOverScan())
+                        if(!operatingSystemInterface.isOverScan())
                         
                                     {
-                                    canvas.addCommand(gameCommandsFactory!.TOGGLE_KEYBOARD);
+                                    canvas.addCommand(gameCommandsFactory.TOGGLE_KEYBOARD);
     
 
                                     }
                                 
-MultiPlayerGameFeatureFactory.getInstance()!.addCommands(canvas);
+MultiPlayerGameFeatureFactory::getInstance().addCommands(canvas);
     
 }
 

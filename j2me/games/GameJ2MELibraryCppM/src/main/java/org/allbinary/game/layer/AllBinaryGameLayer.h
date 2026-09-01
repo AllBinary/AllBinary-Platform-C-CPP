@@ -116,68 +116,67 @@
         #include "SWTUtil.h"
 #include "GameLayerUtil.h"
 
-class AllBinaryGameLayer: public AllBinaryLayer: public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
-        
+class AllBinaryGameLayer: public AllBinaryLayer, public ViewPositionEventListenerInterface, public OpenGLSurfaceChangedInterface {
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    const RED: BasicColor = BasicColorFactory.getInstance()!.RED;
+    protected: const BasicColor RED = BasicColorFactory::getInstance().RED;
 
-    private: const paintable: Paintable = SWTUtil.isSWT
+    private: const Paintable paintable = SWTUtil::isSWT
                         ?       
-                                new class extends Paintable
+                                class extends Paintable
                                 {
                                 
-    private: const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
-    private: const BLACK: BasicColor = BasicColorFactory.getInstance()!.BLACK;
-    public paint(Graphics graphics);
+    const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
+    const BasicColor BLACK = BasicColorFactory::getInstance().BLACK;
+    public: void paint(Graphics graphics);
                                 }
                             
                                 :
 
-                            NullPaintable.getInstance();
+                            NullPaintable::getInstance();
 
     ;
 
-    private: const gameKeyEventList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList gameKeyEventList = BasicArrayListD();
 
-public constructor (string name, Rectangle layerInfo, ViewPositionBase viewPosition);
-
-                //@Throws(Exception.constructor)
-            
-    public set(GL gl);
-
-    public move();
-
-    public BasicArrayList getGameKeyEventList();
+public: AllBinaryGameLayer(std::string name, Rectangle layerInfo, ViewPositionBase viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager allBinaryLayerManager);
+    public: void set(GL gl);
+
+    public: void move();
+
+    public: BasicArrayList getGameKeyEventList();
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
-
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void processInput(AllBinaryLayerManager allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public onViewPositionChangeEvent();
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public onChangeEvent(ViewPositionEvent layerManagerEvent);
+    public: void onViewPositionChangeEvent();
 
-    public paintFirst(Graphics graphics);
+                //@Throws(Exception.constructor)
+            
+    public: void onChangeEvent(ViewPositionEvent layerManagerEvent);
 
-    public paintDebug(Graphics graphics);
+    public: void paintFirst(Graphics graphics);
 
-    public setWidth(int32_t width);
+    public: void paintDebug(Graphics graphics);
 
-    public setHeight(int32_t height);
+    public: void setWidth(int32_t width);
+
+    public: void setHeight(int32_t height);
 
 };
 

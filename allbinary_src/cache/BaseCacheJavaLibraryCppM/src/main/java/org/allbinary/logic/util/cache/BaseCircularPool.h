@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_BASECIRCULARPOOL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -63,22 +65,21 @@
 class BaseCircularPool
             : public Object
          {
-        
 
-    circularIndexUtil: CircularIndexUtil = CircularIndexUtil.NULL_CIRCULAR_INDEX_UTIL;
+    protected: CircularIndexUtil circularIndexUtil = CircularIndexUtil::NULL_CIRCULAR_INDEX_UTIL;
 
-    OBJECT_ARRAY: std::vector<any> = NullUtil.getInstance()!.NULL_OBJECT_ARRAY;
+    protected: std::vector<Object*> OBJECT_ARRAY = NullUtil::getInstance().NULL_OBJECT_ARRAY;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public any getNextInstance();
+    public: Object* getNextInstance();
 
-    public init(AllBinaryObjectFactoryInterface allBinaryObjectFactoryInterface);
+    public: void init(AllBinaryObjectFactoryInterface allBinaryObjectFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public any getInstance(int32_t index);
+    public: Object* getInstance(int32_t index);
 
 };
 

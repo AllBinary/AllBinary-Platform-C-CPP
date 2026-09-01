@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -59,46 +61,44 @@
 class ImagesRatioUtil
             : public Object
          {
-        
 
-    private: static const instance: ImagesRatioUtil = new ImagesRatioUtil();
+    private: static ImagesRatioUtil instance() { return ImagesRatioUtil(); }
 
-    public static ImagesRatioUtil getInstance(){
+    public: static ImagesRatioUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImagesRatioUtil.instance;
+                        return ImagesRatioUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImagesRatioUtil(){
+}
 
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    public bool isEqual(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages){
+    public: bool isEqual(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages){
 
-    end: int32_t = totalImages;;
+    int32_t end = totalImages;;
     
 
-                        if(bufferedImageArray!.length < totalImages)
-                        end= bufferedImageArray!.length
+                        if(bufferedImageArray.size() < totalImages)
+                        end= bufferedImageArray.size();
+                                
 
-    ratio: double = (bufferedImageArray[0]!.getWidth() /bufferedImageArray[0]!.getHeight());;
+    double ratio = (bufferedImageArray[0]!.getWidth() /bufferedImageArray[0]!.getHeight());;
     
 
 
 
 
                         for (
-    index: int32_t = 1;index < end; index++)
+    int32_t index = 1;index < end; index++)
         {
 
                         if(ratio != (bufferedImageArray[index]!.getWidth() /bufferedImageArray[index]!.getHeight()))
@@ -124,22 +124,23 @@ private constructor (){
 }
 
 
-    public double getAverage(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages){
+    public: double getAverage(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages){
 
-    ratio: double = 0;;
+    double ratio = 0;;
     
 
-    end: int32_t = totalImages;;
+    int32_t end = totalImages;;
     
 
-                        if(bufferedImageArray!.length < totalImages)
-                        end= bufferedImageArray!.length
+                        if(bufferedImageArray.size() < totalImages)
+                        end= bufferedImageArray.size();
+                                
 
 
 
 
                         for (
-    index: int32_t = 0;index < end; index++)
+    int32_t index = 0;index < end; index++)
         {
 ratio += (bufferedImageArray[index]!.getWidth() /bufferedImageArray[index]!.getHeight());
     
@@ -156,67 +157,67 @@ ratio += (bufferedImageArray[index]!.getWidth() /bufferedImageArray[index]!.getH
 
                 //@Throws(Exception.constructor)
             
-    public BufferedImage fudge(BufferedImage bufferedImage, double ratio){
+    public: BufferedImage fudge(BufferedImage bufferedImage, double ratio){
 
-    imageRatio: double = (bufferedImage!.getWidth() /bufferedImage!.getHeight());;
+    double imageRatio = (bufferedImage.getWidth() /bufferedImage.getHeight());;
     
 
-    point: Point = new Point();;
+    Point point = Point();;
     
 
-    newHeight: int32_t = bufferedImage!.getHeight()!;;
+    int32_t newHeight = bufferedImage.getHeight();;
     
 
-    newWidth: int32_t = bufferedImage!.getWidth()!;;
+    int32_t newWidth = bufferedImage.getWidth();;
     
 
                         if(ratio > imageRatio)
                         
                                     {
-                                    newWidth= static_cast<int32_t>((bufferedImage!.getHeight() *ratio));
+                                    newWidth= static_cast<int32_t>((bufferedImage.getHeight() *ratio));
     
-point.x= (newWidth -bufferedImage!.getWidth()) /2;
+point.x= (newWidth -bufferedImage.getWidth()) /2;
     
 
                                     }
                                 
                         else {
-                            newHeight= static_cast<int32_t>((bufferedImage!.getWidth() /ratio));
+                            newHeight= static_cast<int32_t>((bufferedImage.getWidth() /ratio));
     
-point.y= (newHeight -bufferedImage!.getHeight()) /2;
+point.y= (newHeight -bufferedImage.getHeight()) /2;
     
 
                         }
                             
 
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
-this.logUtil!.putF(commonLabels!.WIDTH_LABEL +bufferedImage!.getWidth() +" newWidth: " +newWidth +commonLabels!.HEIGHT_LABEL +bufferedImage!.getHeight() +" newHeight: " +newHeight +" needed ratio: " +(newWidth /newHeight), this, "fudge");
-    
-
-    newBufferedImage: BufferedImage = this.imageUtil!.create(newWidth, newHeight)!;;
+this->logUtil.putF(commonLabels.WIDTH_LABEL +bufferedImage.getWidth() +" newWidth: " +newWidth +commonLabels.HEIGHT_LABEL +bufferedImage.getHeight() +" newHeight: " +newHeight +" needed ratio: " +(newWidth /newHeight), this, "fudge");
     
 
-    g: Graphics2D = newBufferedImage!.createGraphics()!;;
+    BufferedImage newBufferedImage = this->imageUtil.create(newWidth, newHeight);;
+    
+
+    Graphics2D g = newBufferedImage.createGraphics();;
     
 
                         if(point.x > 0)
                         
                                     {
                                     
-    firstColumnBufferedImage: BufferedImage = bufferedImage!.getSubimage(0, 0, 1, bufferedImage!.getHeight())!;;
+    BufferedImage firstColumnBufferedImage = bufferedImage.getSubimage(0, 0, 1, bufferedImage.getHeight());;
     
 
-    lastColumnBufferedImage: BufferedImage = bufferedImage!.getSubimage(bufferedImage!.getWidth() -1, 0, 1, bufferedImage!.getHeight())!;;
+    BufferedImage lastColumnBufferedImage = bufferedImage.getSubimage(bufferedImage.getWidth() -1, 0, 1, bufferedImage.getHeight());;
     
-this.logUtil!.putF("Draw some columns to fill in gap", this, "fudge");
+this->logUtil.putF("Draw some columns to fill in gap", this, "fudge");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < point.x; index++)
+    int32_t index = 0;index < point.x; index++)
         {
 g.drawImage(firstColumnBufferedImage, index, 0, 
                             nullptr);
@@ -234,19 +235,19 @@ g.drawImage(lastColumnBufferedImage, newWidth -index, 0,
                         
                                     {
                                     
-    firstRowBufferedImage: BufferedImage = bufferedImage!.getSubimage(0, 0, bufferedImage!.getWidth(), 1)!;;
+    BufferedImage firstRowBufferedImage = bufferedImage.getSubimage(0, 0, bufferedImage.getWidth(), 1);;
     
 
-    lastRowBufferedImage: BufferedImage = bufferedImage!.getSubimage(0, bufferedImage!.getHeight() -1, bufferedImage!.getWidth(), 1)!;;
+    BufferedImage lastRowBufferedImage = bufferedImage.getSubimage(0, bufferedImage.getHeight() -1, bufferedImage.getWidth(), 1);;
     
-this.logUtil!.putF("Draw some rows to fill in gap", this, "fudge");
+this->logUtil.putF("Draw some rows to fill in gap", this, "fudge");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < point.y; index++)
+    int32_t index = 0;index < point.y; index++)
         {
 g.drawImage(firstRowBufferedImage, 0, index, 
                             nullptr);
@@ -259,7 +260,7 @@ g.drawImage(lastRowBufferedImage, 0, newHeight -index,
 
                                     }
                                 
-g.drawImage(bufferedImage, point.x, point.y, bufferedImage!.getWidth(), bufferedImage!.getHeight(), 
+g.drawImage(bufferedImage, point.x, point.y, bufferedImage.getWidth(), bufferedImage.getHeight(), 
                             nullptr);
     
 
@@ -273,22 +274,23 @@ g.drawImage(bufferedImage, point.x, point.y, bufferedImage!.getWidth(), buffered
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<BufferedImage> fudge(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages, double ratio){
+    public: std::vector<BufferedImage> fudge(std::vector<BufferedImage> bufferedImageArray, int32_t totalImages, double ratio){
 
-    end: int32_t = totalImages;;
+    int32_t end = totalImages;;
     
 
-                        if(bufferedImageArray!.length < totalImages)
-                        end= bufferedImageArray!.length
+                        if(bufferedImageArray.size() < totalImages)
+                        end= bufferedImageArray.size();
+                                
 
-    fudgedBufferedImageArray: std::vector<BufferedImage> = new Array(end);;
+    std::vector<BufferedImage> fudgedBufferedImageArray = new Array(end);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < end; index++)
+    int32_t index = 0;index < end; index++)
         {
 fudgedBufferedImageArray[index]= fudge(bufferedImageArray[index]!, ratio);
     

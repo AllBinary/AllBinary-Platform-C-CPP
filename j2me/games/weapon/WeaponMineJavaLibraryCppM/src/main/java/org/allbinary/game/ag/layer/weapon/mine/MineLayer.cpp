@@ -74,12 +74,11 @@
         #include "MineWeaponResources.h"
 
 class MineLayer: public SimpleWeaponLayer {
-        
 
-    private: static const NAME: string = "MineLayer";
+    private: static const std::string NAME = "MineLayer";
 
-public constructor (ViewPositionBase viewPosition){
-            super(MineLayer.NAME, RemoteInfo.REMOTE_INFO,  -1, NoMovementFactory.getInstance()!.getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(MineWeaponResources.getInstance()!.RESOURCE)!.getInstance(0), SimpleWeaponLayer.createDestroyed(), new Rectangle(PointFactory.getInstance()!.ZERO_ZERO, 10, 10), viewPosition);
+public: MineLayer(ViewPositionBase viewPosition){
+            super(MineLayer::NAME, RemoteInfo::REMOTE_INFO,  -1, NoMovementFactory::getInstance().getMovmentInstance(), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().RESOURCE).getInstance(0), SimpleWeaponLayer::createDestroyed(), Rectangle(PointFactory::getInstance().ZERO_ZERO, 10, 10), viewPosition);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -87,44 +86,44 @@ public constructor (ViewPositionBase viewPosition){
 }
 
 
-    private: const viewPositionEventHandler: ViewPositionEventHandler = ViewPositionEventHandler.getInstance()!;
+    private: const ViewPositionEventHandler viewPositionEventHandler = ViewPositionEventHandler::getInstance();
 
-    public initXYZ(int32_t x, int32_t y, int32_t z){
-this.setPosition(x +5, y +5, z);
+    public: void initXYZ(int32_t x, int32_t y, int32_t z){
+this->setPosition(x +5, y +5, z);
     
-this.viewPositionEventHandler!.addListener(this as AllBinaryLayer);
+this->viewPositionEventHandler.addListener(this as AllBinaryLayer);
     
-SecondaryPlayerQueueFactory.getInstance()!.add(DropWeaponSound.getInstance());
-    
-}
-
-
-    public damage(int32_t damage, int32_t damageType){
-this.totalDamage= this.getInitDamage() +1;
+SecondaryPlayerQueueFactory::getInstance().add(DropWeaponSound::getInstance());
     
 }
 
 
-    public int32_t getDamage(int32_t damageType){
+    public: void damage(int32_t damage, int32_t damageType){
+this->totalDamage= this->getInitDamage() +1;
+    
+}
+
+
+    public: int32_t getDamage(int32_t damageType){
 super.getDamage(damageType);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInitDamage();;
+                        return this->getInitDamage();;
     
 }
 
 
-    public setDestroyed(bool destroyed){
+    public: void setDestroyed(bool destroyed){
 super.setDestroyed(destroyed);
     
 
-                        if(this.isDestroyed())
+                        if(this->isDestroyed())
                         
                                     {
-                                    this.viewPositionEventHandler!.removeListener(this);
+                                    this->viewPositionEventHandler.removeListener(this);
     
 
                                     }

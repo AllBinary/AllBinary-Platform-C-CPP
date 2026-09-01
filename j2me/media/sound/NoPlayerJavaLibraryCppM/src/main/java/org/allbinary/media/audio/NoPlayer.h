@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_NOPLAYER_H
 
+            #include <vector>
+        
 #include <javax/microedition/media/Control.h>
 
       
@@ -49,19 +51,18 @@
 #include "NullControl.h"
 
 class NoPlayer: public BasicPlayer {
-        
 
-    public static const NO_PLAYER: NoPlayer = new NoPlayer();
+    public: static const NoPlayer NO_PLAYER = NoPlayer();
 
-public constructor ();
+public: NoPlayer();
 
-    public close();
+    public: void close();
 
-    public string getContentType();
+    public: std::string getContentType();
 
-    public Control getControl(string controlType);
+    public: Control getControl(std::string controlType);
 
-    public std::vector<Control> getControls();
+    public: std::vector<Control> getControls();
 
 };
 

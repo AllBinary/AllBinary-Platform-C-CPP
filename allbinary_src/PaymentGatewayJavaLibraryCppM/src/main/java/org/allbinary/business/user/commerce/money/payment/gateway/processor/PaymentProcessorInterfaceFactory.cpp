@@ -70,55 +70,52 @@
 class PaymentProcessorInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: PaymentProcessorInterfaceFactory = new PaymentProcessorInterfaceFactory();
+    private: static PaymentProcessorInterfaceFactory instance() { return PaymentProcessorInterfaceFactory(); }
 
-    public static PaymentProcessorInterfaceFactory getInstance(){
+    public: static PaymentProcessorInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentProcessorInterfaceFactory.instance;
+                        return PaymentProcessorInterfaceFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: PaymentProcessorInterfaceFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public PaymentProcessorInterface getInstance(TransformInfoInterface transformInfoInterface){
+    public: PaymentProcessorInterface getInstance(TransformInfoInterface transformInfoInterface){
 
         try {
             
-    paymentTransactionInterface: PaymentTransactionInterface = PaymentTransactionInterfaceRequestFactory.getInstance()!.getInstance(transformInfoInterface)!;;
+    PaymentTransactionInterface paymentTransactionInterface = PaymentTransactionInterfaceRequestFactory::getInstance().getInstance(transformInfoInterface);;
     
 
-    gatewayName: string = paymentTransactionInterface!.getOrderHistory()!.getPaymentMethod()!;;
+    std::string gatewayName = paymentTransactionInterface.getOrderHistory().getPaymentMethod();;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(gatewayName))
+                        if(!StringValidationUtil::getInstance().isEmpty(gatewayName))
                         
                                     {
                                     
-    paymentType: PaymentType = PaymentTypeUtil.getInstance()!.get(gatewayName)!;;
+    PaymentType paymentType = PaymentTypeUtil::getInstance().get(gatewayName);;
     
 
-    paymentProcessorInterfaceFactoryInterface: PaymentProcessorInterfaceFactoryInterface = paymentType!.getPaymentProcessorInterfaceFactoryInterface()!;;
+    PaymentProcessorInterfaceFactoryInterface paymentProcessorInterfaceFactoryInterface = paymentType.getPaymentProcessorInterfaceFactoryInterface();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return paymentProcessorInterfaceFactoryInterface!.getInstance(transformInfoInterface, paymentTransactionInterface) as PaymentProcessorInterface;
+                        return paymentProcessorInterfaceFactoryInterface.getInstance(transformInfoInterface, paymentTransactionInterface) as PaymentProcessorInterface;
     
 
                                     }
@@ -126,20 +123,20 @@ private constructor (){
 
 
 
-                            throw new Exception("Error Getting PaymentProcessorInterface");
+                            throw Exception("Error Getting PaymentProcessorInterface");
                     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

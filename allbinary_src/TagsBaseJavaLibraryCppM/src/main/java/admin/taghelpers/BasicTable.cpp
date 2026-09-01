@@ -50,50 +50,49 @@
 class BasicTable
             : public Object
         : public BasicTableInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string drop(){
+    public: std::string drop(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string create(){
+    public: std::string create(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string restore(){
+    public: std::string restore(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string backup(){
+    public: std::string backup(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

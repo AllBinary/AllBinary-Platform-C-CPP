@@ -53,11 +53,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ValidatorBaseInterface {
-        
 
     Boolean isValid();
 
-    string validationInfo();
+    std::string validationInfo();
 
     Hashtable<any, any> toHashtable();
 

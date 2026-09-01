@@ -63,13 +63,12 @@
 class InventoryViewFactory
             : public Object
          {
-        
 
                 //@Throws(LicensingException.constructor)
             
-    public static InventoryViewSearchInterface getInstance(SearchRequest searchRequest);
+    public: static InventoryViewSearchInterface getInstance(SearchRequest searchRequest);
 
-private constructor ();
+private: InventoryViewFactory();
 
 };
 

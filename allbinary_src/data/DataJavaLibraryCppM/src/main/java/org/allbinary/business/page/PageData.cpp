@@ -42,27 +42,24 @@
 class PageData
             : public Object
          {
-        
 
-    private: static const instance: PageData = new PageData();
+    private: static PageData instance() { return PageData(); }
 
-    public static PageData getInstance(){
+    public: static PageData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PageData.instance;
+                        return PageData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PageData(){
+}
 
 
-    public const NAME: string = "PAGE_NAME";
+    public: const std::string NAME = "PAGE_NAME";
 
 };
 

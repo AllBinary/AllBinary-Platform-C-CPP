@@ -47,19 +47,18 @@
 class LogConfigTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: LogConfigTypeFactory = new LogConfigTypeFactory();
+    private: static LogConfigTypeFactory instance() { return LogConfigTypeFactory(); }
 
-    public static LogConfigTypeFactory getInstance();
+    public: static LogConfigTypeFactory getInstance();
 
-    private: const NO_DESCRIPTION: string = "No Description";
+    private: const std::string NO_DESCRIPTION = "No Description";
 
-    public const OS: LogConfigType = new LogConfigType("Operating System", this.NO_DESCRIPTION);
+    public: const LogConfigType OS = LogConfigType("Operating System", this->NO_DESCRIPTION);
 
-    public const FACTORYERROR: LogConfigType = new LogConfigType("Factory Error", this.NO_DESCRIPTION);
+    public: const LogConfigType FACTORYERROR = LogConfigType("Factory Error", this->NO_DESCRIPTION);
 
-private constructor ();
+private: LogConfigTypeFactory();
 
 };
 

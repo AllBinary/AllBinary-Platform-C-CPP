@@ -45,15 +45,14 @@
         #include "Layer.h"
 
 class NullLayer: public Layer {
-        
 
-    private: static const instance: NullLayer = new NullLayer();
+    private: static NullLayer instance() { return NullLayer(); }
 
-    public static NullLayer getInstance();
+    public: static NullLayer getInstance();
 
-private constructor ();
+private: NullLayer();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

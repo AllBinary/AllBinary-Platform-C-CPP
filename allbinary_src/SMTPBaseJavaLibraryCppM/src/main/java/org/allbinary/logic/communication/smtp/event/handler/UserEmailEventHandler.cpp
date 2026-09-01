@@ -59,18 +59,15 @@
 class UserEmailEventHandler
             : public Object
          {
-        
 
-    private: emailVector: Vector;
+    private: Vector emailVector;
 
-    private: emailInfo: EmailInfo;
+    private: EmailInfo emailInfo;
 
-    private: userEmailEventNameData: UserEmailEventNameData;
+    private: UserEmailEventNameData userEmailEventNameData;
 
-public constructor (){
-
-            super();
-        this.emailVector= new Vector();
+public: UserEmailEventHandler(){
+this->emailVector= Vector();
     
 }
 
@@ -78,48 +75,48 @@ public constructor (){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public receiveEmailInfo(UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo){
-this.userEmailEventNameData= userEmailEventNameData;
+    public: void receiveEmailInfo(UserEmailEventNameData userEmailEventNameData, EmailInfo emailInfo){
+this->userEmailEventNameData= userEmailEventNameData;
     
-this.emailInfo= emailInfo;
+this->emailInfo= emailInfo;
     
-this.fireEmailEvent();
+this->fireEmailEvent();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addListener(Vector vector){
+    public: void addListener(Vector vector){
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    userEmailEventListenerInterface: UserEmailEventListenerInterface = vector.get(index) as UserEmailEventListenerInterface;;
+    UserEmailEventListenerInterface userEmailEventListenerInterface = vector.get(index) as UserEmailEventListenerInterface;;
     
-this.addListener(userEmailEventListenerInterface);
+this->addListener(userEmailEventListenerInterface);
     
 }
 
-}
-
-//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public addListener(UserEmailEventListenerInterface emailEventListenerInterface){
-this.emailVector!.add(emailEventListenerInterface);
-    
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(UserEmailEventListenerInterface emailEventListenerInterface){
-this.emailVector!.remove(emailEventListenerInterface);
+    public: void addListener(UserEmailEventListenerInterface emailEventListenerInterface){
+this->emailVector.add(emailEventListenerInterface);
+    
+}
+
+//@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: void removeListener(UserEmailEventListenerInterface emailEventListenerInterface){
+this->emailVector.remove(emailEventListenerInterface);
     
 }
 
@@ -127,24 +124,24 @@ this.emailVector!.remove(emailEventListenerInterface);
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireEmailEvent(){
+    public: void fireEmailEvent(){
 
-    emailEvent: EmailEvent = new EmailEvent(this, this.userEmailEventNameData, this.emailInfo, 0);;
+    EmailEvent emailEvent = EmailEvent(this, this->userEmailEventNameData, this->emailInfo, 0);;
     
 
-    size: int32_t = this.emailVector!.length!;;
+    int32_t size = this->emailVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    emailEventListenerInterface: UserEmailEventListenerInterface = this.emailVector!.get(index) as UserEmailEventListenerInterface;;
+    UserEmailEventListenerInterface emailEventListenerInterface = this->emailVector.get(index) as UserEmailEventListenerInterface;;
     
-emailEventListenerInterface!.onEmailSendRequest(emailEvent);
+emailEventListenerInterface.onEmailSendRequest(emailEvent);
     
 }
 

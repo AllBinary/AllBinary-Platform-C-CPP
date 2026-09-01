@@ -52,25 +52,24 @@
 #include "AnalogLocationInputProcessor.h"
 
 class AllAnalogControllerVisitor: public AnalogControllerVisitor {
-        
 
-    public process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor){
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInputProcessor analogLocationInputProcessor){
 
-    analogLocationInputList: BasicArrayList = AnalogLocationInputFactory.getInstance()!.getList()!;;
+    BasicArrayList analogLocationInputList = AnalogLocationInputFactory::getInstance().getList();;
     
 
-    analogLocationInput: AnalogLocationInput;;
+    AnalogLocationInput analogLocationInput;;
     
 
 
 
 
                         for (
-    index: int32_t = analogLocationInputList!.size() -1;index >= 0; index--)
+    int32_t index = analogLocationInputList.size() -1;index >= 0; index--)
         {
-analogLocationInput= analogLocationInputList!.get(index) as AnalogLocationInput;
+analogLocationInput= analogLocationInputList.get(index) as AnalogLocationInput;
     
-analogLocationInputProcessor!.process(allbinaryLayerManager, analogLocationInput);
+analogLocationInputProcessor.process(allbinaryLayerManager, analogLocationInput);
     
 }
 

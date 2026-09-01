@@ -45,13 +45,12 @@
 class LockedResources
             : public Object
          {
-        
 
-    private: static const instance: LockedResources = new LockedResources();
+    private: static LockedResources instance() { return LockedResources(); }
 
-    public static LockedResources getInstance();
+    public: static LockedResources getInstance();
 
-    public const LOCKED_DEMO_GAME_FEATURE_RESOURCE: string = "/locked_demo_game_feature_64_by_64.png";
+    public: const std::string LOCKED_DEMO_GAME_FEATURE_RESOURCE = "/locked_demo_game_feature_64_by_64.png";
 
 };
 

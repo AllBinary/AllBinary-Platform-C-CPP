@@ -52,7 +52,6 @@
 #include "PositionInterface.h"
 
 class LayerInterface: public NamedInterface, public PaintableInterface, public GroupInterfaceCompositeInterface, public PositionInterface {
-        
 
     int32_t getHeight()
 
@@ -76,9 +75,9 @@ class LayerInterface: public NamedInterface, public PaintableInterface, public G
 
     bool isVisible()
 
-    moveDXYZ(int32_t dx, int32_t dy, int32_t dz)
+    void moveDXYZ(int32_t dx, int32_t dy, int32_t dz)
 
-    setVisible(bool visible)
+    void setVisible(bool visible)
 
     bool implmentsTickableInterface()
 

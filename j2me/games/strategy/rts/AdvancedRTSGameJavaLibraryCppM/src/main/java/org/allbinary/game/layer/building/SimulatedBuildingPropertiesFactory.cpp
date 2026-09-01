@@ -63,21 +63,20 @@
 #include "BuildingLayer.h"
 
 class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
-        
 
-    private: static const instanceC: SimulatedBuildingPropertiesFactory = new SimulatedBuildingPropertiesFactory();
+    private: static const SimulatedBuildingPropertiesFactory instanceC = SimulatedBuildingPropertiesFactory();
 
-    public static SimulatedBuildingPropertiesFactory getInstance(){
+    public: static SimulatedBuildingPropertiesFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimulatedBuildingPropertiesFactory.instanceC;
+                        return SimulatedBuildingPropertiesFactory::instanceC;
     
 }
 
 
-    public int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer){
+    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer){
 
 
 
@@ -87,11 +86,11 @@ class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
 }
 
 
-    public DamageFloaters getDamageFloaters(BuildingLayer buildingLayer){
+    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer){
 
-    damageFloaters: DamageFloaters = DamageFloaters.getInstance()!;;
+    DamageFloaters damageFloaters = DamageFloaters::getInstance();;
     
-this.damageFloatersPaintableInterface= damageFloaters;
+this->damageFloatersPaintableInterface= damageFloaters;
     
 
 
@@ -104,32 +103,32 @@ this.damageFloatersPaintableInterface= damageFloaters;
 
                 //@Throws(Exception.constructor)
             
-    public Paintable getHealthBar(BuildingLayer buildingLayer){
+    public: Paintable getHealthBar(BuildingLayer buildingLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullPaintable.getInstance();;
+                        return NullPaintable::getInstance();;
     
 }
 
 
-    public Hashtable<any, any> getHashtable(){
+    public: Hashtable<any, any> getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 
 
-    public TrackingEvent getTrackingEvent(BuildingLayer buildingLayer){
+    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TrackingEvent(TrackingEventHandler.getInstance());
+                        return TrackingEvent(TrackingEventHandler::getInstance());
     
 }
 

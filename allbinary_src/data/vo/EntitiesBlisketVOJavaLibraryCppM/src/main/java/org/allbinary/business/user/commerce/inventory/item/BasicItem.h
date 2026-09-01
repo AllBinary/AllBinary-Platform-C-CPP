@@ -89,205 +89,204 @@
 class BasicItem
             : public Object
         : public ItemInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    itemId: string;
+    protected: std::string itemId;
 
-    number: string;
+    protected: std::string number;
 
-    inBaskets: string;
+    protected: std::string inBaskets;
 
-    weight: string;
+    protected: std::string weight;
 
-    enabled: string;
+    protected: std::string enabled;
 
-    newOrUsed: string;
+    protected: std::string newOrUsed;
 
-    summary: string;
+    protected: std::string summary;
 
-    distributor: string;
+    protected: std::string distributor;
 
-    idUsedByDistributor: string;
+    protected: std::string idUsedByDistributor;
 
-    producedBy: string;
+    protected: std::string producedBy;
 
-    productionDate: string;
+    protected: std::string productionDate;
 
-    startProductionDate: string;
+    protected: std::string startProductionDate;
 
-    description: string;
+    protected: std::string description;
 
-    keywords: string;
+    protected: std::string keywords;
 
-    category: string;
+    protected: std::string category;
 
-    type: string;
+    protected: std::string type;
 
-    smallImage: string;
+    protected: std::string smallImage;
 
-    mediumImage: string;
+    protected: std::string mediumImage;
 
-    largeImage: string;
+    protected: std::string largeImage;
 
-    price: Money;
+    protected: Money price;
 
-    comment: string;
+    protected: std::string comment;
 
-    customs: string;
+    protected: std::string customs;
 
-    private: downloads: string;
+    private: std::string downloads;
 
-    groups: string;
+    protected: std::string groups;
 
-    options: string;
+    protected: std::string options;
 
-    permissions: string;
+    protected: std::string permissions;
 
-    specials: string;
+    protected: std::string specials;
 
-    private: downloadable: bool= false;
+    private: bool downloadable= false;
 
-    timeEntered: string;
+    protected: std::string timeEntered;
 
-    lastModified: string;
+    protected: std::string lastModified;
 
-public constructor (HashMap<any, any> itemHashMap);
+public: BasicItem(HashMap<any, any> itemHashMap);
 
-public constructor ();
+public: BasicItem();
 
-    public setId(string itemId);
+    public: void setId(std::string itemId);
 
-    public setNumber(string number);
+    public: void setNumber(std::string number);
 
-    public setInBaskets(string value);
+    public: void setInBaskets(std::string value);
 
-    public setWeight(string value);
+    public: void setWeight(std::string value);
 
-    public setNewOrUsed(string value);
+    public: void setNewOrUsed(std::string value);
 
-    public setSummary(string value);
+    public: void setSummary(std::string value);
 
-    public setDistributor(string value);
+    public: void setDistributor(std::string value);
 
-    public setIdUsedByDistributor(string value);
+    public: void setIdUsedByDistributor(std::string value);
 
-    public setProducedBy(string value);
+    public: void setProducedBy(std::string value);
 
-    public setProductionDate(string value);
+    public: void setProductionDate(std::string value);
 
-    public setStartProductionDate(string value);
+    public: void setStartProductionDate(std::string value);
 
-    public setDescription(string value);
+    public: void setDescription(std::string value);
 
-    public setKeywords(string value);
+    public: void setKeywords(std::string value);
 
-    public setCategory(string value);
+    public: void setCategory(std::string value);
 
-    public setType(string value);
+    public: void setType(std::string value);
 
-    public setSmallImage(string value);
+    public: void setSmallImage(std::string value);
 
-    public setMediumImage(string value);
+    public: void setMediumImage(std::string value);
 
-    public setLargeImage(string value);
+    public: void setLargeImage(std::string value);
 
-    public setTimeEntered(string value);
+    public: void setTimeEntered(std::string value);
 
-    public setLastModified(string value);
+    public: void setLastModified(std::string value);
 
-    public setPrice(Money value);
+    public: void setPrice(Money value);
 
-    public setComment(string value);
+    public: void setComment(std::string value);
 
-    public setCustoms(string value);
+    public: void setCustoms(std::string value);
 
-    public setDownloads(string value);
+    public: void setDownloads(std::string value);
 
-    public setGroups(string value);
+    public: void setGroups(std::string value);
 
-    public setOptions(string value);
+    public: void setOptions(std::string value);
 
-    public setPermissions(string value);
+    public: void setPermissions(std::string value);
 
-    public setSpecials(string value);
+    public: void setSpecials(std::string value);
 
-    public setEnabled(string value);
+    public: void setEnabled(std::string value);
 
-    public string getId();
+    public: std::string getId();
 
-    public string getNumber();
+    public: std::string getNumber();
 
-    public string getInBaskets();
+    public: std::string getInBaskets();
 
-    public string getWeight();
+    public: std::string getWeight();
 
-    public string getNewOrUsed();
+    public: std::string getNewOrUsed();
 
-    public string getSummary();
+    public: std::string getSummary();
 
-    public string getDistributor();
+    public: std::string getDistributor();
 
-    public string getIdUsedByDistributor();
+    public: std::string getIdUsedByDistributor();
 
-    public string getProducedBy();
+    public: std::string getProducedBy();
 
-    public string getProductionDate();
+    public: std::string getProductionDate();
 
-    public string getStartProductionDate();
+    public: std::string getStartProductionDate();
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public string getKeywords();
+    public: std::string getKeywords();
 
-    public string getCategory();
+    public: std::string getCategory();
 
-    public string getType();
+    public: std::string getType();
 
-    public string getSmallImage();
+    public: std::string getSmallImage();
 
-    public string getMediumImage();
+    public: std::string getMediumImage();
 
-    public string getLargeImage();
+    public: std::string getLargeImage();
 
-    public string getTimeEntered();
+    public: std::string getTimeEntered();
 
-    public string getLastModified();
+    public: std::string getLastModified();
 
-    public Money getPrice();
+    public: Money getPrice();
 
-    public string getComment();
+    public: std::string getComment();
 
-    public string getCustoms();
+    public: std::string getCustoms();
 
-    public string getDownloads();
+    public: std::string getDownloads();
 
-    public string getGroups();
+    public: std::string getGroups();
 
-    public string getOptions();
+    public: std::string getOptions();
 
-    public string getPermissions();
+    public: std::string getPermissions();
 
-    public string getSpecials();
+    public: std::string getSpecials();
 
-    public setDownloadable(bool downloadable);
+    public: void setDownloadable(bool downloadable);
 
-    public bool isDownloadable();
+    public: bool isDownloadable();
 
-    public string getEnabled();
+    public: std::string getEnabled();
 
-    public Money getTotal();
+    public: Money getTotal();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public Vector toVector();
+    public: Vector toVector();
 
                 //@Throws(Exception.constructor)
             
-    public any getKey();
+    public: Object* getKey();
 
 };
 

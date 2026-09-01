@@ -42,7 +42,6 @@
         #include "Health.h"
 
 class HealthInterfaceCompositeInterface {
-        
 
     Health getHealthInterface();
 

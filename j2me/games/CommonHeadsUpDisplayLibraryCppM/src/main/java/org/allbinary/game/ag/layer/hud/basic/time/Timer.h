@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_TIME_TIMER_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/math/PrimitiveLongSingleton.h>
@@ -57,41 +59,40 @@
 class Timer
             : public Object
          {
-        
 
-    private: startTime: int64_t =  -1;
+    private: int64_t startTime =  -1;
 
-    private: hundredthTime: int64_t= 0;
+    private: int64_t hundredthTime= 0;
 
-    private: maxTime: int64_t;
+    private: int64_t maxTime;
 
-    private: modifier: int64_t= 0;
+    private: int64_t modifier= 0;
 
-    private: hundrethsString: std::vector<char> = PrimitiveLongSingleton.getInstance()!.ZERO;
+    private: std::vector<char> hundrethsString = PrimitiveLongSingleton::getInstance().ZERO;
 
-    private: totalDigits: int32_t = 1;
+    private: int32_t totalDigits = 1;
 
-    private: primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-    private: const MAX: std::vector<char> = ['L','O','L'];
+    private: const std::vector<char> MAX = ['L','O','L'];
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public constructor (int32_t maxTime);
+public: Timer(int32_t maxTime);
 
-    public start();
+    public: void start();
 
-    public int64_t get();
+    public: int64_t get();
 
-    public update();
+    public: void update();
 
-    public reduce(int32_t value);
+    public: void reduce(int32_t value);
 
-    public add(int32_t value);
+    public: void add(int32_t value);
 
-    public std::vector<char> getTimeChars();
+    public: std::vector<char> getTimeChars();
 
-    public int32_t getCurrentTotalDigits();
+    public: int32_t getCurrentTotalDigits();
 
 };
 

@@ -88,61 +88,60 @@
 class QuoteRequest
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: id: string;
+    private: std::string id;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: projectInfo: string;
+    private: std::string projectInfo;
 
-    private: userComments: string;
+    private: std::string userComments;
 
-    private: budget: string;
+    private: std::string budget;
 
-    private: timeFrame: string;
+    private: std::string timeFrame;
 
-    private: comments: string;
+    private: std::string comments;
 
-public constructor (string userName, HttpServletRequest request);
+public: QuoteRequest(std::string userName, HttpServletRequest request);
 
-public constructor (HashMap<any, any> hashMap);
+public: QuoteRequest(HashMap<any, any> hashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public setUserName(string value);
+    public: void setUserName(std::string value);
 
-    public setProjectInfo(string value);
+    public: void setProjectInfo(std::string value);
 
-    public setUserComments(string value);
+    public: void setUserComments(std::string value);
 
-    public setBudget(string value);
+    public: void setBudget(std::string value);
 
-    public setTimeFrame(string value);
+    public: void setTimeFrame(std::string value);
 
-    public setComments(string value);
+    public: void setComments(std::string value);
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public string getProjectInfo();
+    public: std::string getProjectInfo();
 
-    public string getUserComments();
+    public: std::string getUserComments();
 
-    public string getBudget();
+    public: std::string getBudget();
 
-    public string getTimeFrame();
+    public: std::string getTimeFrame();
 
-    public string getComments();
+    public: std::string getComments();
 
 };
 

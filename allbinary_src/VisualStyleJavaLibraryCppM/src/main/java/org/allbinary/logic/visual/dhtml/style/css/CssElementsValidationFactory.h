@@ -60,15 +60,14 @@
 class CssElementsValidationFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getInstance(Vector cssElementStyleNodeList);
+    public: static Vector getInstance(Vector cssElementStyleNodeList);
 
-    public static Vector getInstance(HashMap<any, any> hashMap);
+    public: static Vector getInstance(HashMap<any, any> hashMap);
 
-private constructor ();
+private: CssElementsValidationFactory();
 
 };
 

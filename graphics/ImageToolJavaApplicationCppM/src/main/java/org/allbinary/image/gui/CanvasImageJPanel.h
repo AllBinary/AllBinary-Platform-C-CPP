@@ -107,68 +107,67 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class CanvasImageJPanel: public javax.swing.JPanel: public ImageProcessedVisitor {
-        
+class CanvasImageJPanel: public javax::swing::JPanel, public ImageProcessedVisitor {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const imageStrings: ImageStrings = ImageStrings.getInstance()!;
+    private: const ImageStrings imageStrings = ImageStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-    private: result: BufferedImage;
+    private: BufferedImage result;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: CanvasImageJPanel(ImageProcessorInput imageProcessorInput);
 
-    public process();
+    public: void process();
 
-    initComponents();
+    private: void initComponents();
 
-    writeOverOriginalJCheckBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void writeOverOriginalJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    generateJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    widthReductionTextFieldActionPerformed(java.awt.event.ActionEvent evt);
+    private: void widthReductionTextFieldActionPerformed(java::awt::event::ActionEvent evt);
 
-    widthReductionTextField1ActionPerformed(java.awt.event.ActionEvent evt);
+    private: void widthReductionTextField1ActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: generateJButton: javax.swing.JButton;
+    private: javax::swing::JButton generateJButton;
 
-    private: heightReductionTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField heightReductionTextField;
 
-    private: heightReductionTextField1: javax.swing.JTextField;
+    private: javax::swing::JTextField heightReductionTextField1;
 
-    private: jLabel4: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel4;
 
-    private: jLabel5: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel5;
 
-    private: jLabel6: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel6;
 
-    private: jLabel7: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel7;
 
-    private: jLabel8: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel8;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: jPanel2: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel2;
 
-    private: widthReductionTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField widthReductionTextField;
 
-    private: widthReductionTextField1: javax.swing.JTextField;
+    private: javax::swing::JTextField widthReductionTextField1;
 
-    private: writeOverOriginalJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox writeOverOriginalJCheckBox;
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
                 //@Throws(IOException.constructor)
             
-    public visit(BufferedImage generatedBufferedImage, string name, int32_t index);
+    public: void visit(BufferedImage generatedBufferedImage, std::string name, int32_t index);
 
 };
 

@@ -82,34 +82,33 @@
 #include "MotionRectanglesResultsEvent.h"
 #include "MotionRectangles.h"
 
-class MotionRectanglesWorker: public BasicEventHandler: public ImageComparisonResultsListener {
-        
+class MotionRectanglesWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageComparisonInfoVector: Vector = new Vector();
+    private: const Vector imageComparisonInfoVector = Vector();
 
-    private: const motionRectangleConstraintsInterface: MotionRectangleConstraintsInterface;
+    private: MotionRectangleConstraintsInterface motionRectangleConstraintsInterface;
 
-    private: index: int64_t= 0;
+    private: int64_t index= 0;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-public constructor (MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
+public: MotionRectanglesWorker(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface);
 
-    public onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent);
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public run();
+    public: void run();
 
 };
 

@@ -69,46 +69,43 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil.instance;
+                        return ImageRotationUtil::instance();
     
 }
 
 
-    private: const imageSwtRotationUtil: ImageSwtRotationUtil = ImageSwtRotationUtil.getInstance()!;
+    private: const ImageSwtRotationUtil imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageRotationUtil(){
+}
 
 
-    private: const features: Features = Features.getInstance()!;
+    private: const Features features = Features::getInstance();
 
-    public rotateImage(Image originalImage, Image image, int32_t totalAngle){
+    public: void rotateImage(Image originalImage, Image image, int32_t totalAngle){
 
-    originalImage2: Image = originalImage;;
+    Image originalImage2 = originalImage;;
     
 
-                        if(this.features.isFeature(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(this->features.isFeature(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     
-                        if(image.getType() >= OpenGLESImage.TYPE)
+                        if(image.getType() >= OpenGLESImage::TYPE)
                         
                                     {
                                     
-    openGLESImage: OpenGLESImage = (image as OpenGLESImage);;
+    OpenGLESImage openGLESImage = (image as OpenGLESImage);;
     
-openGLESImage!.openGLESImageProperties!.angle= totalAngle;
+openGLESImage.openGLESImageProperties.angle= totalAngle;
     
 
 
@@ -120,7 +117,7 @@ openGLESImage!.openGLESImageProperties!.angle= totalAngle;
                                     }
                                 
                         else {
-                            PreLogUtil.put("OpenGL but image is: " +image +" type: " +image.getType(), this, "rotateImage");
+                            PreLogUtil::put("OpenGL but image is: " +image +" type: " +image.getType(), this, "rotateImage");
     
 
                         }
@@ -129,15 +126,15 @@ openGLESImage!.openGLESImageProperties!.angle= totalAngle;
                                     }
                                 
 
-    originalSwtImage: org.eclipse.swt.graphics.Image = (originalImage2!.getImage() as org.eclipse.swt.graphics.Image);;
+    org::eclipse::swt::graphics::Image originalSwtImage = (originalImage2.getImage() as org::eclipse::swt::graphics::Image);;
     
 
-    gc: GC = 
+    GC gc = 
                 null
             ;;
     
 
-    copySwtImage: org.eclipse.swt.graphics.Image = 
+    org::eclipse::swt::graphics::Image copySwtImage = 
                 null
             ;;
     
@@ -146,19 +143,19 @@ openGLESImage!.openGLESImageProperties!.angle= totalAngle;
                         
                                     {
                                     
-    swtImage: SwtMutableImage = image as SwtMutableImage;;
+    SwtMutableImage swtImage = image as SwtMutableImage;;
     
-copySwtImage= swtImage!.getImage() as org.eclipse.swt.graphics.Image;
+copySwtImage= swtImage.getImage() as org::eclipse::swt::graphics::Image;
     
-gc= swtImage!.getGc();
+gc= swtImage.getGc();
     
-this.imageSwtRotationUtil!.rotateImage(originalSwtImage, copySwtImage, gc, totalAngle);
+this->imageSwtRotationUtil.rotateImage(originalSwtImage, copySwtImage, gc, totalAngle);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil.put("No rotation for: " +image.toString(), this, "rotateImage");
+                            PreLogUtil::put("No rotation for: " +image.toString(), this, "rotateImage");
     
 
                         }
@@ -168,7 +165,7 @@ this.imageSwtRotationUtil!.rotateImage(originalSwtImage, copySwtImage, gc, total
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
 
 
 

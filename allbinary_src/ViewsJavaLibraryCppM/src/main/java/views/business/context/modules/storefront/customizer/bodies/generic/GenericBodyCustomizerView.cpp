@@ -81,16 +81,15 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericBodyCustomizerView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class GenericBodyCustomizerView: public HttpStoreComponentView, public DomNodeInterface {
 
-    private: static const NAME: string = "None";
+    private: static const std::string NAME = "None";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    body: GenericBodyValidation;
+    protected: GenericBodyValidation body;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: GenericBodyCustomizerView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -101,25 +100,25 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this.body as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this->body as DomNodeInterface);
     
-this.addDomNodeInterface(this as DomNodeInterface);
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    pageName: string = TransformTemplateCustomizerUtil.getInstance()!.getPageNameHack(this.getTransformInfoInterface()!.getName(), this.getWeblisketSession()!.getStoreName())!;;
+    std::string pageName = TransformTemplateCustomizerUtil::getInstance().getPageNameHack(this->getTransformInfoInterface().getName(), this->getWeblisketSession().getStoreName());;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(pageName))
+                        if(StringValidationUtil::getInstance().isEmpty(pageName))
                         
                                     {
-                                    pageName= GenericBodyCustomizerView.NAME;
+                                    pageName= GenericBodyCustomizerView::NAME;
     
 
                                     }
@@ -128,39 +127,39 @@ this.addDomNodeInterface(this as DomNodeInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModDomHelper.createNameValueNodes(document, PageData.getInstance()!.NAME, pageName);;
+                        return ModDomHelper::createNameValueNodes(document, PageData::getInstance().NAME, pageName);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
-    success: string = DomDocumentHelper.toString(this.getDoc())!;;
+    std::string success = DomDocumentHelper::toString(this->getDoc());;
     
 
-    result: string = new StoreTransformer(this.abeClientInformation, this.getTransformInfoInterface()).translate(success)!;;
+    std::string result = StoreTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringEscapeUtils.unescapeHtml3(result);;
+                        return StringEscapeUtils::unescapeHtml3(result);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

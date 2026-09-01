@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_H
         #define ORG_ALLBINARY_INPUT_MEDIA_IMAGE_CAPTURE_SCREENSCAVANGERROBOT_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -71,17 +73,16 @@
 class ScreenScavangerRobot
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor ();
+public: ScreenScavangerRobot();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<BufferedImage> getScreenAsBufferedImages();
+    public: std::vector<BufferedImage> getScreenAsBufferedImages();
 
 };
 

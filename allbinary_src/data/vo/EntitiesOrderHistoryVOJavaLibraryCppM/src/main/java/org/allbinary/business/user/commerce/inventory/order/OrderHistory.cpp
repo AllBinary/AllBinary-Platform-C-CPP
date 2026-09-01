@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../../java/lang/Long.h"
@@ -102,36 +104,35 @@
 #include "OrderData.h"
 #include "OrderHistoryData.h"
 
-class OrderHistory: public Order: public OrderHistoryInterface {
-        
+class OrderHistory: public Order, public OrderHistoryInterface {
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: shippingAddress: StreetAddress;
+    private: StreetAddress shippingAddress;
 
-    private: billingAddress: StreetAddress;
+    private: StreetAddress billingAddress;
 
-    private: payment: Payment;
+    private: Payment payment;
 
-    private: shipDate: string;
+    private: std::string shipDate;
 
-    private: orderDate: string;
+    private: std::string orderDate;
 
-    private: transDate: string;
+    private: std::string transDate;
 
-    private: cancelDate: string;
+    private: std::string cancelDate;
 
-    private: status: string;
+    private: std::string status;
 
-    private: subTotal: Money;
+    private: Money subTotal;
 
-    private: shippingCost: Money;
+    private: Money shippingCost;
 
-    private: taxes: Money;
+    private: Money taxes;
 
-    private: total: Money;
+    private: Money total;
 
-public constructor (BasketInterface basketInterface){
+public: OrderHistory(BasketInterface basketInterface){
             super(basketInterface);
                     
 
@@ -140,331 +141,331 @@ public constructor (BasketInterface basketInterface){
 }
 
 
-public constructor (BasketInterface basketInterface, OrderHistory orderHistory){
-            super(orderHistory!.getStoreName(), basketInterface, orderHistory!.getId(), orderHistory!.getShippingMethod(), orderHistory!.getSpecial(), orderHistory!.getPaymentMethod());
+public: OrderHistory(BasketInterface basketInterface, OrderHistory orderHistory){
+            super(orderHistory.getStoreName(), basketInterface, orderHistory.getId(), orderHistory.getShippingMethod(), orderHistory.getSpecial(), orderHistory.getPaymentMethod());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.userName= orderHistory!.getUserName();
+this->userName= orderHistory.getUserName();
     
-this.shippingAddress= orderHistory!.getShippingAddress();
+this->shippingAddress= orderHistory.getShippingAddress();
     
-this.billingAddress= orderHistory!.getBillingAddress();
+this->billingAddress= orderHistory.getBillingAddress();
     
-this.payment= orderHistory!.getPaymentInfo();
+this->payment= orderHistory.getPaymentInfo();
     
-this.shipDate= orderHistory!.getShipDate();
+this->shipDate= orderHistory.getShipDate();
     
-this.orderDate= orderHistory!.getOrderDate();
+this->orderDate= orderHistory.getOrderDate();
     
-this.transDate= orderHistory!.getTransDate();
+this->transDate= orderHistory.getTransDate();
     
-this.cancelDate= orderHistory!.getCancelDate();
+this->cancelDate= orderHistory.getCancelDate();
     
-this.status= orderHistory!.getStatus();
+this->status= orderHistory.getStatus();
     
-this.subTotal= orderHistory!.getSubTotal();
+this->subTotal= orderHistory.getSubTotal();
     
-this.shippingCost= orderHistory!.getShippingCost();
+this->shippingCost= orderHistory.getShippingCost();
     
-this.taxes= orderHistory!.getTaxes();
+this->taxes= orderHistory.getTaxes();
     
-this.total= orderHistory!.getTotal();
+this->total= orderHistory.getTotal();
     
-super.setUserComments(orderHistory!.getUserComments() as string);
+super.setUserComments(orderHistory.getUserComments() as string);
     
-super.setUserCancelComments(orderHistory!.getUserCancelComments() as string);
+super.setUserCancelComments(orderHistory.getUserCancelComments() as string);
     
-super.setStoreComments(orderHistory!.getStoreComments() as string);
+super.setStoreComments(orderHistory.getStoreComments() as string);
     
-super.setStoreCancelComments(orderHistory!.getStoreCancelComments() as string);
+super.setStoreCancelComments(orderHistory.getStoreCancelComments() as string);
     
 }
 
 
-public constructor (BasketInterface basketInterface, HashMap<any, any> orderHistoryHashMap){
-            super(orderHistoryHashMap!.get(StoreFrontData.getInstance()!.NAME) as string, basketInterface, orderHistoryHashMap!.get(OrderData.ID) as string, orderHistoryHashMap!.get(ShippingMethodData.NAME) as string, orderHistoryHashMap!.get(EntryData.getInstance()!.SPECIAL) as string, orderHistoryHashMap!.get(PaymentData.METHOD) as string);
+public: OrderHistory(BasketInterface basketInterface, HashMap<any, any> orderHistoryHashMap){
+            super(orderHistoryHashMap.get(StoreFrontData::getInstance().NAME) as string, basketInterface, orderHistoryHashMap.get(OrderData::ID) as string, orderHistoryHashMap.get(ShippingMethodData::NAME) as string, orderHistoryHashMap.get(EntryData::getInstance().SPECIAL) as string, orderHistoryHashMap.get(PaymentData::METHOD) as string);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.shippingAddress= new StreetAddress(orderHistoryHashMap!.get(ShippingAddressData.NAME) as string, orderHistoryHashMap!.get(ShippingAddressData.STREET) as string, orderHistoryHashMap!.get(ShippingAddressData.CITY) as string, orderHistoryHashMap!.get(ShippingAddressData.STATE) as string, orderHistoryHashMap!.get(ShippingAddressData.CODE) as string, orderHistoryHashMap!.get(ShippingAddressData.COUNTRY) as string);
+this->shippingAddress= StreetAddress(orderHistoryHashMap.get(ShippingAddressData::NAME) as string, orderHistoryHashMap.get(ShippingAddressData::STREET) as string, orderHistoryHashMap.get(ShippingAddressData::CITY) as string, orderHistoryHashMap.get(ShippingAddressData::STATE) as string, orderHistoryHashMap.get(ShippingAddressData::CODE) as string, orderHistoryHashMap.get(ShippingAddressData::COUNTRY) as string);
     
-this.billingAddress= new StreetAddress(orderHistoryHashMap!.get(BillingAddressData.NAME) as string, orderHistoryHashMap!.get(BillingAddressData.STREET) as string, orderHistoryHashMap!.get(BillingAddressData.CITY) as string, orderHistoryHashMap!.get(BillingAddressData.STATE) as string, orderHistoryHashMap!.get(BillingAddressData.CODE) as string, orderHistoryHashMap!.get(BillingAddressData.COUNTRY) as string);
+this->billingAddress= StreetAddress(orderHistoryHashMap.get(BillingAddressData::NAME) as string, orderHistoryHashMap.get(BillingAddressData::STREET) as string, orderHistoryHashMap.get(BillingAddressData::CITY) as string, orderHistoryHashMap.get(BillingAddressData::STATE) as string, orderHistoryHashMap.get(BillingAddressData::CODE) as string, orderHistoryHashMap.get(BillingAddressData::COUNTRY) as string);
     
-this.payment= new Payment(orderHistoryHashMap);
+this->payment= Payment(orderHistoryHashMap);
     
-this.userName= orderHistoryHashMap!.get(UserData.USERNAME) as string;
+this->userName= orderHistoryHashMap.get(UserData::USERNAME) as string;
     
-this.orderDate= orderHistoryHashMap!.get(OrderHistoryData.ORDERDATE) as string;
+this->orderDate= orderHistoryHashMap.get(OrderHistoryData::ORDERDATE) as string;
     
-this.shipDate= orderHistoryHashMap!.get(OrderHistoryData.SHIPPEDDATE) as string;
+this->shipDate= orderHistoryHashMap.get(OrderHistoryData::SHIPPEDDATE) as string;
     
-this.transDate= orderHistoryHashMap!.get(OrderHistoryData.TRANSDATE) as string;
+this->transDate= orderHistoryHashMap.get(OrderHistoryData::TRANSDATE) as string;
     
-this.cancelDate= orderHistoryHashMap!.get(OrderHistoryData.CANCELDATE) as string;
+this->cancelDate= orderHistoryHashMap.get(OrderHistoryData::CANCELDATE) as string;
     
-this.status= orderHistoryHashMap!.get(OrderHistoryData.STATUS) as string;
+this->status= orderHistoryHashMap.get(OrderHistoryData::STATUS) as string;
     
-this.subTotal= new Money(orderHistoryHashMap!.get(OrderHistoryData.SUBTOTAL) as string);
+this->subTotal= Money(orderHistoryHashMap.get(OrderHistoryData::SUBTOTAL) as string);
     
-this.total= new Money(orderHistoryHashMap!.get(OrderHistoryData.TOTAL) as string);
+this->total= Money(orderHistoryHashMap.get(OrderHistoryData::TOTAL) as string);
     
-this.shippingCost= new Money(orderHistoryHashMap!.get(OrderHistoryData.SHIPPINGCOST) as string);
+this->shippingCost= Money(orderHistoryHashMap.get(OrderHistoryData::SHIPPINGCOST) as string);
     
-this.taxes= new Money(orderHistoryHashMap!.get(OrderHistoryData.TAX) as string);
+this->taxes= Money(orderHistoryHashMap.get(OrderHistoryData::TAX) as string);
     
-super.setUserComments(orderHistoryHashMap!.get(OrderData.CUSTOMERCOMMENT) as string);
+super.setUserComments(orderHistoryHashMap.get(OrderData::CUSTOMERCOMMENT) as string);
     
-super.setUserCancelComments(orderHistoryHashMap!.get(OrderData.CUSTOMERCANCELCOMMENT) as string);
+super.setUserCancelComments(orderHistoryHashMap.get(OrderData::CUSTOMERCANCELCOMMENT) as string);
     
-super.setStoreComments(orderHistoryHashMap!.get(OrderData.STORECOMMENT) as string);
+super.setStoreComments(orderHistoryHashMap.get(OrderData::STORECOMMENT) as string);
     
-super.setStoreCancelComments(orderHistoryHashMap!.get(OrderData.STORECANCELCOMMENT) as string);
-    
-}
-
-
-    public setUserName(string value){
-this.userName= value;
+super.setStoreCancelComments(orderHistoryHashMap.get(OrderData::STORECANCELCOMMENT) as string);
     
 }
 
 
-    public setDefaultShippingAddress(StreetAddress shippingAddress){
-this.shippingAddress= shippingAddress;
+    public: void setUserName(std::string value){
+this->userName= value;
     
 }
 
 
-    public setBillingAddress(StreetAddress billingAddress){
-this.billingAddress= billingAddress;
+    public: void setDefaultShippingAddress(StreetAddress shippingAddress){
+this->shippingAddress= shippingAddress;
     
 }
 
 
-    public setPaymentInfo(Payment payment){
-this.payment= payment;
+    public: void setBillingAddress(StreetAddress billingAddress){
+this->billingAddress= billingAddress;
     
 }
 
 
-    public setShipDate(string value){
-this.shipDate= value;
+    public: void setPaymentInfo(Payment payment){
+this->payment= payment;
     
 }
 
 
-    public setOrderDate(string value){
-this.orderDate= value;
+    public: void setShipDate(std::string value){
+this->shipDate= value;
     
 }
 
 
-    public setTransDate(string value){
-this.transDate= value;
+    public: void setOrderDate(std::string value){
+this->orderDate= value;
     
 }
 
 
-    public setCancelDate(string value){
-this.cancelDate= value;
+    public: void setTransDate(std::string value){
+this->transDate= value;
     
 }
 
 
-    public setStatus(string value){
-this.status= value;
+    public: void setCancelDate(std::string value){
+this->cancelDate= value;
     
 }
 
 
-    public setSubTotal(Money value){
-this.subTotal= value;
+    public: void setStatus(std::string value){
+this->status= value;
     
 }
 
 
-    public setShippingCost(Money value){
-this.shippingCost= value;
+    public: void setSubTotal(Money value){
+this->subTotal= value;
     
 }
 
 
-    public setTaxes(Money value){
-this.taxes= value;
+    public: void setShippingCost(Money value){
+this->shippingCost= value;
     
 }
 
 
-    public setTotal(Money value){
-this.total= value;
+    public: void setTaxes(Money value){
+this->taxes= value;
     
 }
 
 
-    public string getUserName(){
+    public: void setTotal(Money value){
+this->total= value;
+    
+}
+
+
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userName;
+                        return this->userName;
     
 }
 
 
-    public StreetAddress getShippingAddress(){
+    public: StreetAddress getShippingAddress(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingAddress;
+                        return this->shippingAddress;
     
 }
 
 
-    public StreetAddress getBillingAddress(){
+    public: StreetAddress getBillingAddress(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.billingAddress;
+                        return this->billingAddress;
     
 }
 
 
-    public Payment getPaymentInfo(){
+    public: Payment getPaymentInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.payment;
+                        return this->payment;
     
 }
 
 
-    public string getShipDate(){
+    public: std::string getShipDate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shipDate;
+                        return this->shipDate;
     
 }
 
 
-    public string getOrderDate(){
+    public: std::string getOrderDate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.orderDate;
+                        return this->orderDate;
     
 }
 
 
-    public string getTransDate(){
+    public: std::string getTransDate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transDate;
+                        return this->transDate;
     
 }
 
 
-    public string getCancelDate(){
+    public: std::string getCancelDate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cancelDate;
+                        return this->cancelDate;
     
 }
 
 
-    public string getStatus(){
+    public: std::string getStatus(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.status;
+                        return this->status;
     
 }
 
 
-    public Money getSubTotal(){
+    public: Money getSubTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.subTotal;
+                        return this->subTotal;
     
 }
 
 
-    public Money getShippingCost(){
+    public: Money getShippingCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingCost;
+                        return this->shippingCost;
     
 }
 
 
-    public Money getTaxes(){
+    public: Money getTaxes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.taxes;
+                        return this->taxes;
     
 }
 
 
-    public Money getTotal(){
+    public: Money getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.total;
+                        return this->total;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(UserData.USERNAME, this.userName);
+hashMap.put(UserData::USERNAME, this->userName);
     
-hashMap!.put(OrderHistoryData.ORDERDATE, this.orderDate);
+hashMap.put(OrderHistoryData::ORDERDATE, this->orderDate);
     
-hashMap!.put(OrderHistoryData.SHIPPEDDATE, this.shipDate);
+hashMap.put(OrderHistoryData::SHIPPEDDATE, this->shipDate);
     
-hashMap!.put(OrderHistoryData.TRANSDATE, this.transDate);
+hashMap.put(OrderHistoryData::TRANSDATE, this->transDate);
     
-hashMap!.put(OrderHistoryData.CANCELDATE, this.cancelDate);
+hashMap.put(OrderHistoryData::CANCELDATE, this->cancelDate);
     
-hashMap!.put(OrderHistoryData.ORDERDATEFORMATTED, new Date(new Long(this.orderDate).longValue()).toString());
+hashMap.put(OrderHistoryData::ORDERDATEFORMATTED, Date(Long(this->orderDate).longValue()).toString());
     
-hashMap!.put(OrderHistoryData.SHIPPEDDATEFORMATTED, new Date(new Long(this.shipDate).longValue()).toString());
+hashMap.put(OrderHistoryData::SHIPPEDDATEFORMATTED, Date(Long(this->shipDate).longValue()).toString());
     
-hashMap!.put(OrderHistoryData.TRANSDATEFORMATTED, new Date(new Long(this.transDate).longValue()).toString());
+hashMap.put(OrderHistoryData::TRANSDATEFORMATTED, Date(Long(this->transDate).longValue()).toString());
     
-hashMap!.put(OrderHistoryData.CANCELDATEFORMATTED, new Date(new Long(this.cancelDate).longValue()).toString());
+hashMap.put(OrderHistoryData::CANCELDATEFORMATTED, Date(Long(this->cancelDate).longValue()).toString());
     
-hashMap!.put(OrderHistoryData.STATUS, this.status);
+hashMap.put(OrderHistoryData::STATUS, this->status);
     
-hashMap!.put(OrderHistoryData.SUBTOTAL, this.subTotal!.toString());
+hashMap.put(OrderHistoryData::SUBTOTAL, this->subTotal.toString());
     
-hashMap!.put(OrderHistoryData.TOTAL, this.total.toString());
+hashMap.put(OrderHistoryData::TOTAL, this->total.toString());
     
-hashMap!.put(OrderHistoryData.SHIPPINGCOST, this.shippingCost!.toString());
+hashMap.put(OrderHistoryData::SHIPPINGCOST, this->shippingCost.toString());
     
-hashMap!.put(OrderHistoryData.TAX, this.taxes.toString());
+hashMap.put(OrderHistoryData::TAX, this->taxes.toString());
     
 
 
@@ -477,57 +478,56 @@ hashMap!.put(OrderHistoryData.TAX, this.taxes.toString());
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    hashMap: HashMap<any, any> = this.toHashMap()!;;
+    HashMap<any, any> hashMap = this->toHashMap();;
     
 
-    keySet: Set = hashMap!.keys()!;;
+    Set keySet = hashMap.keys();;
     
 
-    keyArray: std::vector<any> = keySet!.()!;;
+    std::vector<Object*> keyArray = keySet.();;
     
 
-    size: int32_t = keyArray!.length
-                ;;
+    int32_t size = keyArray.size();;
     
 
-    node: Node = document.createElement(OrderHistoryData.ORDERHISTORY)!;;
+    Node node = document.createElement(OrderHistoryData::ORDERHISTORY);;
     
 node.appendChild(super.toXmlNode(document));
     
 
-    billingAddressNode: Node = document.createElement(BillingAddressData.BILLINGADDRESS)!;;
+    Node billingAddressNode = document.createElement(BillingAddressData::BILLINGADDRESS);;
     
-billingAddressNode!.appendChild(this.billingAddress!.toXmlNode(document));
+billingAddressNode.appendChild(this->billingAddress.toXmlNode(document));
     
 
-    shippingAddressNode: Node = document.createElement(ShippingAddressData.SHIPPINGADDRESS)!;;
+    Node shippingAddressNode = document.createElement(ShippingAddressData::SHIPPINGADDRESS);;
     
-shippingAddressNode!.appendChild(this.shippingAddress!.toXmlNode(document));
+shippingAddressNode.appendChild(this->shippingAddress.toXmlNode(document));
     
 node.appendChild(billingAddressNode);
     
 node.appendChild(shippingAddressNode);
     
-node.appendChild(this.payment.toXmlNode(document));
+node.appendChild(this->payment.toXmlNode(document));
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    name: string = keyArray[i]! as string;;
+    std::string name = keyArray[i]! as string;;
     
 
-    value: string = hashMap!.get(name) as string;;
+    std::string value = hashMap.get(name) as string;;
     
-value= StringUtil.getInstance()!.getNonNull(value);
+value= StringUtil::getInstance().getNonNull(value);
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, name, value));
+node.appendChild(ModDomHelper::createNameValueNodes(document, name, value));
     
 }
 

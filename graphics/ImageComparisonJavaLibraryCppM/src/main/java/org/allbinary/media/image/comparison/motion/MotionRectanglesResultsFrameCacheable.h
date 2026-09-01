@@ -54,21 +54,20 @@
 class MotionRectanglesResultsFrameCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: motionRectangles: MotionRectangles;
+    private: MotionRectangles motionRectangles;
 
-    private: frame: Long;
+    private: Long frame;
 
-public constructor (MotionRectangles motionRectangles, Long frame);
+public: MotionRectanglesResultsFrameCacheable(MotionRectangles motionRectangles, Long frame);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public MotionRectangles getMotionRectangles();
+    public: MotionRectangles getMotionRectangles();
 
-    public setMotionRectangles(MotionRectangles motionRectangles);
+    public: void setMotionRectangles(MotionRectangles motionRectangles);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

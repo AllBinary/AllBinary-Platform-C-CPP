@@ -39,7 +39,6 @@
         #include "AllBinaryEventObject.h"
 
 class AllBinaryEventObjectFactoryInterface {
-        
 
     AllBinaryEventObject getInstance()
 

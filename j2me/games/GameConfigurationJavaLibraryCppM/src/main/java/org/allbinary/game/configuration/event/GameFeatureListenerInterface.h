@@ -51,9 +51,8 @@
         #include "GameFeatureEvent.h"
 
 class GameFeatureListenerInterface: public EventListenerInterface {
-        
 
-    onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
+    void onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
 
 };
 

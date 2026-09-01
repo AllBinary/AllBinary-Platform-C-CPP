@@ -52,9 +52,8 @@
 #include "OpenGLESGL10Image.h"
 
 class OpenGLESGL11VBOImageFactory: public OpenGLImageFactory {
-        
 
-    public Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+    public: Image getInstance(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
 
 };
 

@@ -53,26 +53,23 @@
         #include "PointsLayer.h"
 
 class PointsLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor (AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
-
-            super();
-        super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
+public: PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total){
+super.initAllBinaryLayerCircularPool(allbinaryLayerFactoryInterface, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryLayer sourceLayerInterface){
+    public: void visit(AllBinaryLayer sourceLayerInterface){
 
-    pointsLayer: PointsLayer = this.getNextInstance() as PointsLayer;;
+    PointsLayer pointsLayer = this->getNextInstance() as PointsLayer;;
     
 
-    scoreableInterface: ScoreableInterface = sourceLayerInterface as ScoreableInterface;;
+    ScoreableInterface scoreableInterface = sourceLayerInterface as ScoreableInterface;;
     
-pointsLayer!.visit(scoreableInterface);
+pointsLayer.visit(scoreableInterface);
     
 }
 

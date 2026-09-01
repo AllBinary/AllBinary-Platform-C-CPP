@@ -59,17 +59,16 @@
 class PartnerIdentifierFileUtil
             : public Object
          {
-        
 
-    private: static const instance: PartnerIdentifierFileUtil = new PartnerIdentifierFileUtil();
+    private: static PartnerIdentifierFileUtil instance() { return PartnerIdentifierFileUtil(); }
 
-    public static PartnerIdentifierFileUtil getInstance();
+    public: static PartnerIdentifierFileUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const FILE_NAME: string = "partner.txt";
+    public: const std::string FILE_NAME = "partner.txt";
 
-    public string get();
+    public: std::string get();
 
 };
 

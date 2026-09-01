@@ -100,51 +100,50 @@
 #include "PlayerGameInput.h"
 #include "GameInputProcessorComposite.h"
 
-class PreGameSelectionGameInputProcessor: public Processor: public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
-        
+class PreGameSelectionGameInputProcessor: public Processor, public GameInputProcessorInterface, public PlayerGameInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-    private: const preGameSelectorPaintable: PreGameSelectorPaintable;
+    private: PreGameSelectorPaintable preGameSelectorPaintable;
 
-    private: const inputTimeHelper: TimeDelayHelper = new TimeDelayHelper(650);
+    private: const TimeDelayHelper inputTimeHelper = TimeDelayHelper(650);
 
-    private: const nextGameState: GameState;
+    private: GameState nextGameState;
 
-    private: const playerGameInput: PlayerGameInput;
+    private: PlayerGameInput playerGameInput;
 
-    private: const lockedIndex: int32_t;
+    private: int32_t lockedIndex;
 
-    private: const abRunnable: ABRunnable = new class extends ABRunnable
+    private: const ABRunnable abRunnable = class extends ABRunnable
                                 {
                                 
-    public run();
+    public: void run();
                                 }
                             ;
 
-public constructor (AllBinaryGameCanvas gameCanvas, PreGameSelectorPaintable preGameSelectorPaintable, GameState nextGameState, int32_t lockedIndex);
+public: PreGameSelectionGameInputProcessor(AllBinaryGameCanvas gameCanvas, PreGameSelectorPaintable preGameSelectorPaintable, GameState nextGameState, int32_t lockedIndex);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
                 //@Throws(Exception.constructor)
             
-    public onInput(BasicArrayList list);
+    public: void onInput(BasicArrayList list);
 
-    public PreGameSelectorPaintable getPreGameSelectorPaintable();
+    public: PreGameSelectorPaintable getPreGameSelectorPaintable();
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager layerManager);
 
-    public initInputProcessors();
+    public: void initInputProcessors();
 
-    public string getName();
+    public: std::string getName();
 
-    public PlayerGameInput getPlayerGameInput();
+    public: PlayerGameInput getPlayerGameInput();
 
 };
 

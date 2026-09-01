@@ -95,96 +95,95 @@
 class CompleteMotionGestureInputToGameMotionGestureInput
             : public Object
          {
-        
 
-    private: static const instance: CompleteMotionGestureInputToGameMotionGestureInput = new CompleteMotionGestureInputToGameMotionGestureInput();
+    private: static CompleteMotionGestureInputToGameMotionGestureInput instance() { return CompleteMotionGestureInputToGameMotionGestureInput(); }
 
-    public static CompleteMotionGestureInputToGameMotionGestureInput getInstance(){
+    public: static CompleteMotionGestureInputToGameMotionGestureInput getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompleteMotionGestureInputToGameMotionGestureInput.instance;
+                        return CompleteMotionGestureInputToGameMotionGestureInput::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public init(){
+    public: void init(){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
-            PreLogUtil.put("Compound Motion Gestures", this, commonStrings!.INIT);
+            PreLogUtil::put("Compound Motion Gestures", this, commonStrings.INIT);
     
 
-    motionGestureConfiguration: MotionGestureConfiguration = MotionGestureConfigurationFactory.getInstance()!;;
+    MotionGestureConfiguration motionGestureConfiguration = MotionGestureConfigurationFactory::getInstance();;
     
 
-    touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!;;
+    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
-list.add(touchMotionGestureFactory!.DIAGONAL_DOWN_LEFT);
+list.add(touchMotionGestureFactory.DIAGONAL_DOWN_LEFT);
     
-motionGestureConfiguration!.addMotionGestureAction(list, DiagonalDownLeftTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, DiagonalDownLeftTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.DIAGONAL_DOWN_RIGHT);
+list.add(touchMotionGestureFactory.DIAGONAL_DOWN_RIGHT);
     
-motionGestureConfiguration!.addMotionGestureAction(list, DiagonalDownRightTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, DiagonalDownRightTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.DIAGONAL_UP_LEFT);
+list.add(touchMotionGestureFactory.DIAGONAL_UP_LEFT);
     
-motionGestureConfiguration!.addMotionGestureAction(list, DiagonalUpLeftTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, DiagonalUpLeftTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.DIAGONAL_UP_RIGHT);
+list.add(touchMotionGestureFactory.DIAGONAL_UP_RIGHT);
     
-motionGestureConfiguration!.addMotionGestureAction(list, DiagonalUpRightTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, DiagonalUpRightTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.LEFT);
+list.add(touchMotionGestureFactory.LEFT);
     
-motionGestureConfiguration!.addMotionGestureAction(list, LeftTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, LeftTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.RIGHT);
+list.add(touchMotionGestureFactory.RIGHT);
     
-motionGestureConfiguration!.addMotionGestureAction(list, RightTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, RightTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.DOWN);
+list.add(touchMotionGestureFactory.DOWN);
     
-motionGestureConfiguration!.addMotionGestureAction(list, DownTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, DownTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.UP);
+list.add(touchMotionGestureFactory.UP);
     
-motionGestureConfiguration!.addMotionGestureAction(list, UpTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, UpTouchInputToGameKeyEventAction::getInstance());
     
-list= new BasicArrayListD();
+list= BasicArrayListD();
     
-list.add(touchMotionGestureFactory!.RELEASED);
+list.add(touchMotionGestureFactory.RELEASED);
     
-motionGestureConfiguration!.addMotionGestureAction(list, ReleaseTouchInputToGameKeyEventAction.getInstance());
+motionGestureConfiguration.addMotionGestureAction(list, ReleaseTouchInputToGameKeyEventAction::getInstance());
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.INIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
     
 }
 

@@ -64,23 +64,21 @@
 class AndroidMediaPlayerWrapperListener
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: androidMediaPlayerWrapper: AndroidMediaPlayerWrapper = AndroidMediaPlayerWrapper.NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
+    private: AndroidMediaPlayerWrapper androidMediaPlayerWrapper = AndroidMediaPlayerWrapper::NULL_ANDROID_MEDIA_PLAYER_WRAPPER;
 
-public constructor (AndroidMediaPlayerWrapper androidMediaPlayerWrapper);
+public: AndroidMediaPlayerWrapperListener(AndroidMediaPlayerWrapper androidMediaPlayerWrapper);
 
 //inner= member=true isStatic=
 class MediaPlayerOnBufferingUpdateListener
             : public Object
-        : public MediaPlayer.OnBufferingUpdateListener {
-        
+        : public MediaPlayer::OnBufferingUpdateListener {
 
-    public onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i);
+    public: void onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i);
 
 };
 
@@ -88,10 +86,9 @@ class MediaPlayerOnBufferingUpdateListener
 //inner= member=true isStatic=
 class MediaPlayerOnPreparedListener
             : public Object
-        : public MediaPlayer.OnPreparedListener {
-        
+        : public MediaPlayer::OnPreparedListener {
 
-    public onPrepared(MediaPlayer mp);
+    public: void onPrepared(MediaPlayer mp);
 
 };
 
@@ -99,10 +96,9 @@ class MediaPlayerOnPreparedListener
 //inner= member=true isStatic=
 class MediaPlayerOnErrorListener
             : public Object
-        : public MediaPlayer.OnErrorListener {
-        
+        : public MediaPlayer::OnErrorListener {
 
-    public bool onError(MediaPlayer mp, int32_t what, int32_t extra);
+    public: bool onError(MediaPlayer mp, int32_t what, int32_t extra);
 
 };
 
@@ -110,81 +106,76 @@ class MediaPlayerOnErrorListener
 //inner= member=true isStatic=
 class MediaPlayerOnCompletionListener
             : public Object
-        : public MediaPlayer.OnCompletionListener {
-        
+        : public MediaPlayer::OnCompletionListener {
 
-    public onCompletion(MediaPlayer mp);
+    public: void onCompletion(MediaPlayer mp);
 
 };
 
             
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnBufferingUpdateListener: public MediaPlayerOnBufferingUpdateListener {
-        
 
-    private: const ON_BUFFERING_UPDATE: string = "onBufferingUpdate()";
+    private: const std::string ON_BUFFERING_UPDATE = "onBufferingUpdate()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
+public: AndroidMediaPlayerOnBufferingUpdateListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
 
-    public onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i);
+    public: void onBufferingUpdate(MediaPlayer mediaPlayer, int32_t i);
 
 };
 
             
-    private: mOnBufferingUpdateListener: MediaPlayer.OnBufferingUpdateListener = new this.AndroidMediaPlayerOnBufferingUpdateListener(this);
+    private: MediaPlayer::OnBufferingUpdateListener mOnBufferingUpdateListener = AndroidMediaPlayerOnBufferingUpdateListener(this);
 
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnPreparedListener: public MediaPlayerOnPreparedListener {
-        
 
-    private: const ON_PREPARE: string = "onPrepare()";
+    private: const std::string ON_PREPARE = "onPrepare()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
+public: AndroidMediaPlayerOnPreparedListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
 
-    public onPrepared(MediaPlayer mp);
+    public: void onPrepared(MediaPlayer mp);
 
 };
 
             
-    private: mOnPreparedListener: MediaPlayer.OnPreparedListener = new this.AndroidMediaPlayerOnPreparedListener(this);
+    private: MediaPlayer::OnPreparedListener mOnPreparedListener = AndroidMediaPlayerOnPreparedListener(this);
 
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnErrorListener: public MediaPlayerOnErrorListener {
-        
 
-    private: const ON_ERROR: string = "onError()";
+    private: const std::string ON_ERROR = "onError()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
+public: AndroidMediaPlayerOnErrorListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
 
-    public bool onError(MediaPlayer mp, int32_t what, int32_t extra);
+    public: bool onError(MediaPlayer mp, int32_t what, int32_t extra);
 
 };
 
             
-    private: mOnErrorListener: MediaPlayer.OnErrorListener = new this.AndroidMediaPlayerOnErrorListener(this);
+    private: MediaPlayer::OnErrorListener mOnErrorListener = AndroidMediaPlayerOnErrorListener(this);
 
 //inner= member=true isStatic=
 class AndroidMediaPlayerOnCompletionListener: public MediaPlayerOnCompletionListener {
-        
 
-    private: const ON_COMPLETE: string = "onComplete()";
+    private: const std::string ON_COMPLETE = "onComplete()";
 
-    private: const androidMediaPlayerWrapperListener: AndroidMediaPlayerWrapperListener;
+    private: AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener;
 
-public constructor (AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
+public: AndroidMediaPlayerOnCompletionListener(AndroidMediaPlayerWrapperListener androidMediaPlayerWrapperListener);
 
-    public onCompletion(MediaPlayer mp);
+    public: void onCompletion(MediaPlayer mp);
 
 };
 
             
-    private: mOnCompletionListener: MediaPlayer.OnCompletionListener = new this.AndroidMediaPlayerOnCompletionListener(this);
+    private: MediaPlayer::OnCompletionListener mOnCompletionListener = AndroidMediaPlayerOnCompletionListener(this);
 
 };
 

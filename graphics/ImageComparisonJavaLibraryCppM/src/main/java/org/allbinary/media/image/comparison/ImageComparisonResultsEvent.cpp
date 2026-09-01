@@ -42,33 +42,32 @@
         #include "ImageComparisonResult.h"
 
 class ImageComparisonResultsEvent: public AllBinaryEventObject {
-        
 
-    private: imageComparisonResult: ImageComparisonResult;
+    private: ImageComparisonResult imageComparisonResult;
 
-public constructor (any = {} anyType, ImageComparisonResult imageComparisonInfo){
+public: ImageComparisonResultsEvent(Object* anyType, ImageComparisonResult imageComparisonInfo){
             super(anyType);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setImageComparisonResult(imageComparisonInfo);
+this->setImageComparisonResult(imageComparisonInfo);
     
 }
 
 
-    public ImageComparisonResult getImageComparisonResult(){
+    public: ImageComparisonResult getImageComparisonResult(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageComparisonResult;
+                        return this->imageComparisonResult;
     
 }
 
 
-    public setImageComparisonResult(ImageComparisonResult imageComparisonResult){
-this.imageComparisonResult= imageComparisonResult;
+    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult){
+this->imageComparisonResult= imageComparisonResult;
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -83,65 +85,64 @@
 class GameFeatureFormUtil
             : public Object
          {
-        
 
-    private: static const instance: GameFeatureFormUtil = new GameFeatureFormUtil();
+    private: static GameFeatureFormUtil instance() { return GameFeatureFormUtil(); }
 
-    public static GameFeatureFormUtil getInstance(){
+    public: static GameFeatureFormUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameFeatureFormUtil.instance;
+                        return GameFeatureFormUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public ChoiceGroup getChoiceGroup(Hashtable<any, any> hashtable, string name, int32_t option){
+    public: ChoiceGroup getChoiceGroup(Hashtable<any, any> hashtable, std::string name, int32_t option){
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    choiceGroup: ChoiceGroup = new ChoiceGroup(name, option, StringUtil.getInstance()!.getArrayInstance(), NullImage.NULL_IMAGE_ARRAY);;
+    ChoiceGroup choiceGroup = ChoiceGroup(name, option, StringUtil::getInstance().getArrayInstance(), NullImage::NULL_IMAGE_ARRAY);;
     
 
-    list: BasicArrayList = hashtable.get(name) as BasicArrayList;;
+    BasicArrayList list = hashtable.get(name) as BasicArrayList;;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    ADD_CHOICE: string = ": Adding Choice: ";;
+    std::string ADD_CHOICE = ": Adding Choice: ";;
     
 
-    GET_CHOICE_GROUP: string = "getChoiceGroup";;
+    std::string GET_CHOICE_GROUP = "getChoiceGroup";;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    gameFeature: Feature = list.objectArray[index]! as Feature;;
+    Feature gameFeature = list.objectArray[index]! as Feature;;
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-this.logUtil!.putF(stringMaker!.append(name)!.append(ADD_CHOICE)!.append(gameFeature!.toString())!.toString(), this, GET_CHOICE_GROUP);
+this->logUtil.putF(stringMaker.append(name).append(ADD_CHOICE).append(gameFeature.toString()).toString(), this, GET_CHOICE_GROUP);
     
-choiceGroup!.append(gameFeature!.toString(), NullImage.NULL_IMAGE);
+choiceGroup.append(gameFeature.toString(), NullImage::NULL_IMAGE);
     
 
                         if(features.isFeature(gameFeature))
                         
                                     {
-                                    choiceGroup!.setSelectedIndex(index, true);
+                                    choiceGroup.setSelectedIndex(index, true);
     
 
                                     }
@@ -157,37 +158,37 @@ choiceGroup!.append(gameFeature!.toString(), NullImage.NULL_IMAGE);
 }
 
 
-    public addChoiceGroup(CommandForm form, Hashtable<any, any> hashtable, int32_t option){
+    public: void addChoiceGroup(CommandForm form, Hashtable<any, any> hashtable, int32_t option){
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    ADDING_CHOICE_GROUP: string = "Adding Choice Group: ";;
+    std::string ADDING_CHOICE_GROUP = "Adding Choice Group: ";;
     
 
-    ADD_CHOICE_GROUP: string = "addChoiceGroup";;
+    std::string ADD_CHOICE_GROUP = "addChoiceGroup";;
     
 
-    size: int32_t = hashtable.length!;;
+    int32_t size = hashtable.length;;
     
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(hashtable)!;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    name: string = objectArray[index]! as string;;
+    std::string name = objectArray[index]! as string;;
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-this.logUtil!.putF(stringMaker!.append(ADDING_CHOICE_GROUP)!.append(name)!.toString(), this, ADD_CHOICE_GROUP);
+this->logUtil.putF(stringMaker.append(ADDING_CHOICE_GROUP).append(name).toString(), this, ADD_CHOICE_GROUP);
     
-form.append(this.getChoiceGroup(hashtable, name, option));
+form.append(this->getChoiceGroup(hashtable, name, option));
     
 }
 
@@ -196,25 +197,25 @@ form.append(this.getChoiceGroup(hashtable, name, option));
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(CommandForm form){
+    public: void setDefault(CommandForm form){
 
-    size: int32_t = form.size()!;;
+    int32_t size = form.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = form.get(index)!;;
+    Item item = form.get(index);;
     
 
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil.getInstance()!.setDefault(item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().setDefault(item as GameConfigurationGauge);
     
 
                                     }
@@ -223,7 +224,7 @@ form.append(this.getChoiceGroup(hashtable, name, option));
                         if(item instanceof ChoiceGroup)
                         
                                     {
-                                    GameFeatureUtil.getInstance()!.setDefault(item as ChoiceGroup);
+                                    GameFeatureUtil::getInstance().setDefault(item as ChoiceGroup);
     
 
                                     }

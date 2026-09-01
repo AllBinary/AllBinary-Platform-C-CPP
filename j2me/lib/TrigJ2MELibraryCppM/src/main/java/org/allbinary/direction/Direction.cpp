@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -54,105 +56,102 @@
 class Direction
             : public Object
          {
-        
 
-    private: static directionArray: std::vector<Direction> = new Array(13);
+    private: static std::vector<Direction> directionArray = new Array(13);
 
-    public static Direction getInstance(int32_t direction){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Direction.directionArray[direction]!;
-    
-}
-
-
-    private: name: string;
-
-    private: otherName: string;
-
-    private: value: int32_t;
-
-    private: frameFactor: int32_t;
-
- constructor (string name, string otherName, int32_t value, int32_t frameFactor){
-
-            super();
-        this.name= name;
-    
-this.otherName= otherName;
-    
-this.value= value;
-    
-this.frameFactor= frameFactor;
-    
-Direction.directionArray[value]= this;
-    
-}
-
-
-    public int32_t getValue(){
+    public: static Direction getInstance(int32_t direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return Direction::directionArray[direction]!;
     
 }
 
 
-    public int32_t getFrameFactor(){
+    private: std::string name;
+
+    private: std::string otherName;
+
+    private: int32_t value;
+
+    private: int32_t frameFactor;
+
+: Direction(std::string name, std::string otherName, int32_t value, int32_t frameFactor){
+this->name= name;
+    
+this->otherName= otherName;
+    
+this->value= value;
+    
+this->frameFactor= frameFactor;
+    
+Direction::directionArray[value]= this;
+    
+}
+
+
+    public: int32_t getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frameFactor;
+                        return this->value;
     
 }
 
 
-    public string getOtherName(){
+    public: int32_t getFrameFactor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.otherName;
+                        return this->frameFactor;
     
 }
 
 
-    public string getName(){
+    public: std::string getOtherName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->otherName;
     
 }
 
 
-    public string toString(){
+    public: std::string getName(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->name;
     
-stringBuffer!.append("Direction: ");
+}
+
+
+    public: std::string toString(){
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getName());
+stringBuffer.append("Direction: ");
     
-stringBuffer!.append(" Or: ");
+stringBuffer.append(this->getName());
     
-stringBuffer!.append(this.getOtherName());
+stringBuffer.append(" Or: ");
     
-stringBuffer!.append(" Value: ");
+stringBuffer.append(this->getOtherName());
     
-stringBuffer!.appendint(this.value);
+stringBuffer.append(" Value: ");
+    
+stringBuffer.appendint(this->value);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

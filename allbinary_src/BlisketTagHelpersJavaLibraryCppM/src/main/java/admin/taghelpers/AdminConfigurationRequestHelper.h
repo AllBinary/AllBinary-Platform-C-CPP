@@ -62,19 +62,18 @@
         #include "ModifyTable.h"
 
 class AdminConfigurationRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: AdminConfigurationRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string update();
+    public: std::string update();
 
 };
 

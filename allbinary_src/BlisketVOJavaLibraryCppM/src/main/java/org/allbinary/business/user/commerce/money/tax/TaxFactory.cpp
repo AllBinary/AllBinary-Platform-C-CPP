@@ -110,115 +110,112 @@
 class TaxFactory
             : public Object
          {
-        
 
-    private: static const instance: TaxFactory = new TaxFactory();
+    private: static TaxFactory instance() { return TaxFactory(); }
 
-    public static TaxFactory getInstance(){
+    public: static TaxFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TaxFactory.instance;
+                        return TaxFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const TAXATIONFILENAME: string = "taxationMethod.xml";
+    private: const std::string TAXATIONFILENAME = "taxationMethod.xml";
 
-private constructor (){
-
-            super();
-        }
+private: TaxFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TaxModuleInterface getInstance(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
+    public: TaxModuleInterface getInstance(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(storeFrontInterface!.getName());
+stringBuffer.append(storeFrontInterface.getName());
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
-stringBuffer!.append("generic");
+stringBuffer.append("generic");
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
-stringBuffer!.append("taxes");
+stringBuffer.append("taxes");
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-
-    abPath: AbPath = new AbPath(stringBuffer!.toString(), TAXATIONFILENAME);;
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
 
-    transformInfoObjectConfigData: TransformInfoObjectConfigData = TransformInfoObjectConfigData.getInstance()!;;
+    AbPath abPath = AbPath(stringBuffer.toString(), TAXATIONFILENAME);;
     
 
-    data: string = new CryptFileReader(transformInfoObjectConfigData!.UNCRYPTED_EXTENSION, transformInfoObjectConfigData!.ENCRYPTED_EXTENSION).get(abPath)!;;
+    TransformInfoObjectConfigData transformInfoObjectConfigData = TransformInfoObjectConfigData::getInstance();;
     
 
-    document: Document = DomDocumentHelper.create(data)!;;
+    std::string data = CryptFileReader(transformInfoObjectConfigData.UNCRYPTED_EXTENSION, transformInfoObjectConfigData.ENCRYPTED_EXTENSION).get(abPath);;
     
 
-    taxNameNodeList: NodeList = document.getElementsByTagName(TaxData.NAME)!;;
+    Document document = DomDocumentHelper::create(data);;
+    
+
+    NodeList taxNameNodeList = document.getElementsByTagName(TaxData::NAME);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < taxNameNodeList!.getLength(); index++)
+    int32_t index = 0;index < taxNameNodeList.getLength(); index++)
         {
 
-    node: Node = taxNameNodeList!.item(index)!;;
+    Node node = taxNameNodeList.item(index);;
     
 
-    nodeList: NodeList = node.getChildNodes()!;;
+    NodeList nodeList = node.getChildNodes();;
     
 
                         if(nodeList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    classNameNode: Node = DomSearchHelper.getNode(DynamicObjectData.NAME, nodeList)!;;
+    Node classNameNode = DomSearchHelper::getNode(DynamicObjectData::NAME, nodeList);;
     
 
                         if(classNameNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    className: string = DomNodeHelper.getTextNodeValue(classNameNode)!;;
+    std::string className = DomNodeHelper::getTextNodeValue(classNameNode);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory.getInstance()!.getInstance(abeClientInformation, className) as TaxModuleInterface;
+                        return AbeFactory::getInstance().getInstance(abeClientInformation, className) as TaxModuleInterface;
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAX))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAX))
                         
                                     {
-                                    this.logUtil!.putF("Class Node Null", this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Class Node Null", this, this->commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -231,10 +228,10 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAX))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAX))
                         
                                     {
-                                    this.logUtil!.putF("Tax Name Node Node Children", this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Tax Name Node Node Children", this, this->commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -248,7 +245,7 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SimpleStateTaxModule() as TaxModuleInterface;
+                        return SimpleStateTaxModule() as TaxModuleInterface;
     
 }
 

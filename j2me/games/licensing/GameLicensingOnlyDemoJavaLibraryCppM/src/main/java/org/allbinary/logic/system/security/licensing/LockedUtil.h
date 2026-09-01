@@ -47,15 +47,14 @@
 class LockedUtil
             : public Object
         : public LockedUtilInterface {
-        
 
-    private: static const instance: LockedUtil = new LockedUtil();
+    private: static LockedUtil instance() { return LockedUtil(); }
 
-    public static LockedUtil getInstance();
+    public: static LockedUtil getInstance();
 
-    public bool isLocked();
+    public: bool isLocked();
 
-    public bool isLockedFeature(LockableFeature lockableFeatrue);
+    public: bool isLockedFeature(LockableFeature lockableFeatrue);
 
 };
 

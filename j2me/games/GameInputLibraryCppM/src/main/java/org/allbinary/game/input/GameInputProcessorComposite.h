@@ -57,20 +57,19 @@
 #include "GameInputProcessorInterface.h"
 
 class GameInputProcessorComposite: public PlayerGameInput {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const gameInputProcessorInterface: GameInputProcessorInterface;
+    private: GameInputProcessorInterface gameInputProcessorInterface;
 
-public constructor (string name, GameInputProcessorInterface gameInputProcessorInterface);
+public: GameInputProcessorComposite(std::string name, GameInputProcessorInterface gameInputProcessorInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public update();
+    public: void update();
 
-    private: const NAME_LABEL: string = " GameInputProcessorInterface: ";
+    private: const std::string NAME_LABEL = " GameInputProcessorInterface: ";
 
-    public string toString();
+    public: std::string toString();
 
 };
 

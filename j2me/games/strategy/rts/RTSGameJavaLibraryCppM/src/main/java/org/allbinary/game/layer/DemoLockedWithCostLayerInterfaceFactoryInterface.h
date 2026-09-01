@@ -42,7 +42,6 @@
         #include "CostLayerInterfaceFactoryInterface.h"
 
 class DemoLockedWithCostLayerInterfaceFactoryInterface: public CostLayerInterfaceFactoryInterface {
-        
 
     bool isDemoLocked();
 

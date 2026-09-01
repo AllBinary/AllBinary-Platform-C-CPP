@@ -78,52 +78,49 @@
 class TransformHttpRequestDocument
             : public Object
         : public TransformDocumentInterface {
-        
 
-    private: static const language: string = "en";
+    private: static const std::string language = "en";
 
-    private: static const local: string = "US";
+    private: static const std::string local = "US";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: baseNode: Node;
+    private: Node baseNode;
 
-    private: document: Document;
+    private: Document document;
 
-public constructor (PageContext pageContext, WeblisketSession weblisketSession){
+public: TransformHttpRequestDocument(PageContext pageContext, WeblisketSession weblisketSession){
 
-            super();
-        
         try {
             
-    contentType: string = AcceptableResponseGenerator.getInstance()!.get(pageContext!.getRequest() as HttpServletRequest)!;;
+    std::string contentType = AcceptableResponseGenerator::getInstance().get(pageContext.getRequest() as HttpServletRequest);;
     
-this.document= DomDocumentHelper.create();
-    
-
-    contentTypeNode: Node = this.document.createElement(contentType)!;;
+this->document= DomDocumentHelper::create();
     
 
-    languageTypeNode: Node = this.document.createElement(language)!;;
+    Node contentTypeNode = this->document.createElement(contentType);;
     
 
-    localTypeNode: Node = this.document.createElement(local)!;;
-    
-this.baseNode= localTypeNode;
-    
-languageTypeNode!.appendChild(localTypeNode);
-    
-contentTypeNode!.appendChild(languageTypeNode);
-    
-this.document.appendChild(contentTypeNode);
+    Node languageTypeNode = this->document.createElement(language);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+    Node localTypeNode = this->document.createElement(local);;
+    
+this->baseNode= localTypeNode;
+    
+languageTypeNode.appendChild(localTypeNode);
+    
+contentTypeNode.appendChild(languageTypeNode);
+    
+this->document.appendChild(contentTypeNode);
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.putF(this.log(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->log(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -133,10 +130,10 @@ this.document.appendChild(contentTypeNode);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 
                                     }
@@ -151,42 +148,40 @@ this.document.appendChild(contentTypeNode);
 }
 
 
-public constructor (SearchRequest searchRequest){
+public: TransformHttpRequestDocument(SearchRequest searchRequest){
 
-            super();
-        
         try {
             
-    contentType: string = searchRequest!.getContentType()!;;
+    std::string contentType = searchRequest.getContentType();;
     
-this.document= DomDocumentHelper.create();
-    
-
-    contentTypeNode: Node = this.document.createElement(contentType)!;;
+this->document= DomDocumentHelper::create();
     
 
-    languageTypeNode: Node = this.document.createElement(language)!;;
+    Node contentTypeNode = this->document.createElement(contentType);;
     
 
-    localTypeNode: Node = this.document.createElement(local)!;;
+    Node languageTypeNode = this->document.createElement(language);;
     
-this.baseNode= localTypeNode;
+
+    Node localTypeNode = this->document.createElement(local);;
     
-languageTypeNode!.appendChild(localTypeNode);
+this->baseNode= localTypeNode;
     
-contentTypeNode!.appendChild(languageTypeNode);
+languageTypeNode.appendChild(localTypeNode);
     
-this.document.appendChild(contentTypeNode);
+contentTypeNode.appendChild(languageTypeNode);
+    
+this->document.appendChild(contentTypeNode);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 
                                     }
@@ -201,60 +196,60 @@ this.document.appendChild(contentTypeNode);
 }
 
 
-    public Node getBaseNode(){
+    public: Node getBaseNode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.baseNode;
+                        return this->baseNode;
     
 }
 
 
-    public Document getDoc(){
+    public: Document getDoc(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.document;
+                        return this->document;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string log(){
+    public: std::string log(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.baseNode != 
-                                    null
+                        if(this->baseNode != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append("BaseNode: ");
+                                    stringBuffer.append("BaseNode: ");
     
-stringBuffer!.append(this.baseNode!.getNodeName());
+stringBuffer.append(this->baseNode.getNodeName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append("Log-Error: BaseNode is Null");
+                            stringBuffer.append("Log-Error: BaseNode is Null");
     
 
                         }
                             
-stringBuffer!.append("\nDocument: ");
+stringBuffer.append("\nDocument: ");
     
-stringBuffer!.append(DomDocumentHelper.toString(this.document));
+stringBuffer.append(DomDocumentHelper::toString(this->document));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

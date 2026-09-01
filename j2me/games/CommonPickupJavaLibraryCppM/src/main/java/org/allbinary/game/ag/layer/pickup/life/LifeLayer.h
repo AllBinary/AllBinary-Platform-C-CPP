@@ -66,14 +66,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LifeLayer: public AllBinaryLayer: public LifeVisitorInterface {
-        
+class LifeLayer: public AllBinaryLayer, public LifeVisitorInterface {
 
-public constructor ();
+public: LifeLayer();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public visit(Life lifeInterface);
+    public: void visit(Life lifeInterface);
 
 };
 

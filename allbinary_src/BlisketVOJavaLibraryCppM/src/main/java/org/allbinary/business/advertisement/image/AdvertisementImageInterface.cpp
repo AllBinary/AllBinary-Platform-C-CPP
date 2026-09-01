@@ -41,11 +41,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdvertisementImageInterface {
-        
 
-    string getFileName()
+    std::string getFileName()
 
-    string getUrl()
+    std::string getUrl()
 
     TwoDimensionalConstraintInterface getTwoDimensionalConstraint()
 

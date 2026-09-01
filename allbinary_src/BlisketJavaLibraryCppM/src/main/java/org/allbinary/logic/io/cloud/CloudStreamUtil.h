@@ -58,25 +58,24 @@
 class CloudStreamUtil
             : public Object
          {
-        
 
-    private: static const instance: CloudStreamUtil = new CloudStreamUtil();
+    private: static CloudStreamUtil instance() { return CloudStreamUtil(); }
 
-    public static CloudStreamUtil getInstance();
+    public: static CloudStreamUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public InputStream getFile(AbFile file);
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getFileAnyWhere(AbFile file);
+    public: InputStream getFile(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getFileLocal(AbFile file);
+    public: InputStream getFileAnyWhere(AbFile file);
+
+                //@Throws(Exception.constructor)
+            
+    public: InputStream getFileLocal(AbFile file);
 
 };
 

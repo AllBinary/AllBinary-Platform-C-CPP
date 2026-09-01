@@ -65,21 +65,20 @@
         #include "DownloadableItem.h"
 
 class DownloadableItemValidation: public Validation {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: downloadableItem: DownloadableItem;
+    private: DownloadableItem downloadableItem;
 
-public constructor (DownloadableItem downloadableItem);
+public: DownloadableItemValidation(DownloadableItem downloadableItem);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

@@ -40,28 +40,25 @@
 #include "JColorChooser.h"
 #include "BorderLayout.h"
 
-class ColorChooser: public javax.swing.JPanel {
-        
+class ColorChooser: public javax::swing::JPanel {
 
-public constructor (){
-
-            super();
-        this.initComponents();
+public: ColorChooser(){
+this->initComponents();
     
 }
 
 
-    initComponents(){
-this.jColorChooser1= new javax.swing.JColorChooser();
+    private: void initComponents(){
+this->jColorChooser1= javax::swing::JColorChooser();
     
-setLayout(new java.awt.BorderLayout());
+setLayout(java::awt::BorderLayout());
     
-add(this.jColorChooser1, java.awt.BorderLayout.CENTER);
+add(this->jColorChooser1, java.awt.BorderLayout.CENTER);
     
 }
 
 
-    private: jColorChooser1: javax.swing.JColorChooser;
+    private: javax::swing::JColorChooser jColorChooser1;
 
 };
 

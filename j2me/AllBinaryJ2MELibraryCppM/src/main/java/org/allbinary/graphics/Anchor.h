@@ -48,9 +48,8 @@
 class Anchor
             : public Object
          {
-        
 
-    public static TOP_LEFT: int32_t = Graphics.TOP&Graphics.LEFT;
+    public: static int32_t TOP_LEFT = Graphics::TOP&Graphics::LEFT;
 
 };
 

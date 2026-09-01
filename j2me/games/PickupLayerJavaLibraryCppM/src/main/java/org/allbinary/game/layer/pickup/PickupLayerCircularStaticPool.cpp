@@ -46,35 +46,32 @@
 #include "PickedUpLayerInterfaceFactoryInterface.h"
 
 class PickupLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-    private: static SINGLETON: PickupLayerCircularStaticPool = new PickupLayerCircularStaticPool();
+    private: static PickupLayerCircularStaticPool SINGLETON = PickupLayerCircularStaticPool();
 
-    public static PickupLayerCircularStaticPool getInstance(){
+    public: static PickupLayerCircularStaticPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PickupLayerCircularStaticPool.SINGLETON;
+                        return PickupLayerCircularStaticPool::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PickupLayerCircularStaticPool(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public PickedUpLayerInterface getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z){
+    public: PickedUpLayerInterface getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z){
 
-    pickupLayer: PickupLayer = this.getNextInstance() as PickupLayer;;
+    PickupLayer pickupLayer = this->getNextInstance() as PickupLayer;;
     
-pickupLayer!.initXYZ(x, y, z);
+pickupLayer.initXYZ(x, y, z);
     
-pickupLayer!.init(pickedUpLayerInterfaceFactoryInterface, pickedUpLayerInterfaceFactoryInterface!.getAnimationInterface());
+pickupLayer.init(pickedUpLayerInterfaceFactoryInterface, pickedUpLayerInterfaceFactoryInterface.getAnimationInterface());
     
 
 

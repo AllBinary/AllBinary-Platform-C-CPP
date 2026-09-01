@@ -51,15 +51,14 @@
         #include "ViewPosition.h"
 
 class StaticViewPosition: public ViewPosition {
-        
 
-public constructor (int32_t x, int32_t y, int32_t z);
+public: StaticViewPosition(int32_t x, int32_t y, int32_t z);
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public int32_t getZ();
+    public: int32_t getZ();
 
 };
 

@@ -41,27 +41,26 @@
         #include "MyCanvasEvent.h"
 
 class MyCanvasEventListener {
-        
 
-    delete(MyCanvasEvent evt)
-
-                //@Throws(Exception.constructor)
-            
-    duplicate(MyCanvasEvent evt)
-
-    select(MyCanvasEvent evt)
-
-    rotate(MyCanvasEvent evt)
-
-    explode(MyCanvasEvent evt)
+    void delete_(MyCanvasEvent evt)
 
                 //@Throws(Exception.constructor)
             
-    autoExplode(MyCanvasEvent evt)
+    void duplicate(MyCanvasEvent evt)
+
+    void select(MyCanvasEvent evt)
+
+    void rotate(MyCanvasEvent evt)
+
+    void explode(MyCanvasEvent evt)
 
                 //@Throws(Exception.constructor)
             
-    center(MyCanvasEvent evt)
+    void autoExplode(MyCanvasEvent evt)
+
+                //@Throws(Exception.constructor)
+            
+    void center(MyCanvasEvent evt)
 
 };
 

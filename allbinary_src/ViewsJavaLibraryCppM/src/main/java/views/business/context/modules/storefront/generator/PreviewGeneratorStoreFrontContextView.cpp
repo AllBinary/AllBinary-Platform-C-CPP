@@ -59,11 +59,10 @@
         #include "GeneratorStoreFrontContextView.h"
 
 class PreviewGeneratorStoreFrontContextView: public GeneratorStoreFrontContextView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -74,29 +73,29 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-    httpTransformInfoInterface: TransformInfoHttpInterface = this.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
     
-httpTransformInfoInterface!.getPropertiesHashMap()!.put(TransformInfoData.getInstance()!.PARTIAL, CommonSeps.getInstance()!.SPACE +TransformInfosData.getInstance()!.PREVIEW);
+httpTransformInfoInterface.getPropertiesHashMap().put(TransformInfoData::getInstance().PARTIAL, CommonSeps::getInstance().SPACE +TransformInfosData::getInstance().PREVIEW);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.view(TransformInfosData.getInstance()!.PREVIEW);;
+                        return this->view(TransformInfosData::getInstance().PREVIEW);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

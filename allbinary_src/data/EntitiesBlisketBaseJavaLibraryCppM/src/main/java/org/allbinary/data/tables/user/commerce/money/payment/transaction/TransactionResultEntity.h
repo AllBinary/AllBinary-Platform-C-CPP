@@ -84,26 +84,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TransactionResultEntityInterface.h"
 
-class TransactionResultEntity: public AbSqlBean: public TransactionResultEntityInterface {
-        
+class TransactionResultEntity: public AbSqlBean, public TransactionResultEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "vresults";
+    private: const std::string tableName = "vresults";
 
-public constructor ();
+public: TransactionResultEntity();
 
-    public remove(string userName, string orderNumber);
+    public: void remove(std::string userName, std::string orderNumber);
 
-    public add(string userName, string orderNumber, TransactionResultInterface transactionResultInterface);
+    public: void add(std::string userName, std::string orderNumber, TransactionResultInterface transactionResultInterface);
 
-    public TransactionResultInterface getTransactionResultInterface(string orderNumber);
+    public: TransactionResultInterface getTransactionResultInterface(std::string orderNumber);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

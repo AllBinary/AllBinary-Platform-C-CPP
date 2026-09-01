@@ -86,24 +86,23 @@
 class OperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: OperatingSystemFactory = new OperatingSystemFactory();
+    private: static OperatingSystemFactory instance() { return OperatingSystemFactory(); }
 
-    public static OperatingSystemFactory getInstance();
+    public: static OperatingSystemFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: genericOperatingSystem: GenericOperatingSystem = NoOperatingSystem.NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-    private: hasDetected: bool = false;
+    private: bool hasDetected = false;
 
-private constructor ();
+private: OperatingSystemFactory();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem getOperatingSystemInstance();
 
 };
 

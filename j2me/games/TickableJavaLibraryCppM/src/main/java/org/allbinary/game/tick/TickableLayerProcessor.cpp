@@ -51,10 +51,9 @@
 #include "TickableInterface.h"
 
 class TickableLayerProcessor: public LayerProcessor {
-        
 
-public constructor (){
-            super(new TickableLayerManager());
+public: TickableLayerProcessor(){
+            super(TickableLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -64,18 +63,18 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    tickableInterface: TickableInterface = layerInterface as TickableInterface;;
+    TickableInterface tickableInterface = layerInterface as TickableInterface;;
     
-tickableInterface!.processTick(allBinaryLayerManager);
+tickableInterface.processTick(allBinaryLayerManager);
     
 }
 
 
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
-                        if(layerInterface!.implmentsTickableInterface())
+                        if(layerInterface.implmentsTickableInterface())
                         
                                     {
                                     

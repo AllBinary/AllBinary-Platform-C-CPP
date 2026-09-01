@@ -62,68 +62,67 @@
 class WaypointPathRunnableBase
             : public Object
         : public RunnableInterface, public PriorityRunnable {
-        
 
-    private: const layerDistanceUtil: LayerDistanceUtil = LayerDistanceUtil.getInstance()!;
+    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    pathFindingLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    targetPathFindingLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    priorityP: int32_t = Integer.MAX_VALUE;
+    protected: int32_t priorityP = Integer::MAX_VALUE;
 
-    runningP: bool= false;
+    protected: bool runningP= false;
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.runningP;
+                        return this->runningP;
     
 }
 
 
-    public setRunning(bool isRunning){
-this.runningP= isRunning;
+    public: void setRunning(bool isRunning){
+this->runningP= isRunning;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread){
+    public: void setThread(Thread thread){
 }
 
 
-    public setTargetLayer(PathFindingLayerInterface waypointLayer){
-this.targetPathFindingLayer= waypointLayer;
+    public: void setTargetLayer(PathFindingLayerInterface waypointLayer){
+this->targetPathFindingLayer= waypointLayer;
     
-this.setPriority();
+this->setPriority();
     
 }
 
 
-    public setPriority(){
+    public: void setPriority(){
 
-    pathFindingLayer: AllBinaryLayer = this.pathFindingLayer as AllBinaryLayer;;
+    AllBinaryLayer pathFindingLayer = this->pathFindingLayer as AllBinaryLayer;;
     
 
-    targetLayer: AllBinaryLayer = this.targetPathFindingLayer as AllBinaryLayer;;
+    AllBinaryLayer targetLayer = this->targetPathFindingLayer as AllBinaryLayer;;
     
 
                         if(targetLayer != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    distance: int32_t = this.layerDistanceUtil!.getDistance(targetLayer, pathFindingLayer)!;;
+    int32_t distance = this->layerDistanceUtil.getDistance(targetLayer, pathFindingLayer);;
     
 
-    distanceCategory: int32_t = distance /70;;
+    int32_t distanceCategory = distance /70;;
     
-this.priorityP= distanceCategory;
+this->priorityP= distanceCategory;
     
 
                                     }
@@ -131,33 +130,33 @@ this.priorityP= distanceCategory;
 }
 
 
-    public PathFindingLayerInterface getTargetLayer(){
+    public: PathFindingLayerInterface getTargetLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.targetPathFindingLayer;
+                        return this->targetPathFindingLayer;
     
 }
 
 
-    public setUnitLayer(PathFindingLayerInterface unitLayer){
-this.pathFindingLayer= unitLayer;
+    public: void setUnitLayer(PathFindingLayerInterface unitLayer){
+this->pathFindingLayer= unitLayer;
     
 }
 
 
-    public int32_t getPriority(){
+    public: int32_t getPriority(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.priorityP;
+                        return this->priorityP;
     
 }
 
 
-    public bool isDone(){
+    public: bool isDone(){
 
 
 
@@ -167,11 +166,11 @@ this.pathFindingLayer= unitLayer;
 }
 
 
-    public run(){
+    public: void run(){
 }
 
 
-    public reset(){
+    public: void reset(){
 }
 
 

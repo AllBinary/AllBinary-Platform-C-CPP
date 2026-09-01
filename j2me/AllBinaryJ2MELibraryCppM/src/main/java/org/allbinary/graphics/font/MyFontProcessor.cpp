@@ -54,9 +54,8 @@
 class MyFontProcessor
             : public Object
          {
-        
 
-    public static int32_t defaultCharWidth(Font font){
+    public: static int32_t defaultCharWidth(Font font){
 
 
 
@@ -66,19 +65,19 @@ class MyFontProcessor
 }
 
 
-    public static int32_t defaultStringWidth(Font font, int32_t size){
+    public: static int32_t defaultStringWidth(Font font, int32_t size){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyFontProcessor.defaultCharWidth(font) *size;
+                        return MyFontProcessor::defaultCharWidth(font) *size;
     
 }
 
 
-    private: static const instance: MyFontProcessor = new MyFontProcessor();
+    private: static MyFontProcessor instance() { return MyFontProcessor(); }
 
-    public static MyFontProcessor getInstance(){
+    public: static MyFontProcessor getInstance(){
 
 
 
@@ -88,7 +87,7 @@ class MyFontProcessor
 }
 
 
-    public process(Graphics graphics){
+    public: void process(Graphics graphics){
 }
 
 

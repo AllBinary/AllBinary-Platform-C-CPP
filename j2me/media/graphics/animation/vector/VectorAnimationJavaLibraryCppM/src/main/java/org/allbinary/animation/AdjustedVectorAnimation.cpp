@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -46,27 +48,26 @@
 #include "AnimationBehavior.h"
 
 class AdjustedVectorAnimation: public VectorAnimation {
-        
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
+public: AdjustedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, int32_t dx, int32_t dy, AnimationBehavior animationBehavior){
             super(currentPoints, basicColor, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-super.paintXY(graphics, x +this.dx, y +this.dy);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+super.paintXY(graphics, x +this->dx, y +this->dy);
     
 }
 

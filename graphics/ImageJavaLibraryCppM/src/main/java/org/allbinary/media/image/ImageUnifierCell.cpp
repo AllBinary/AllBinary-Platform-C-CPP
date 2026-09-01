@@ -44,50 +44,47 @@
 class ImageUnifierCell
             : public Object
          {
-        
 
-    private: width: Integer;
+    private: Integer width;
 
-    private: height: Integer;
+    private: Integer height;
 
-public constructor (Integer width, Integer height){
-
-            super();
-        this.setWidth(width);
+public: ImageUnifierCell(Integer width, Integer height){
+this->setWidth(width);
     
-this.setHeight(height);
+this->setHeight(height);
     
 }
 
 
-    public Integer getWidth(){
+    public: Integer getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    public setWidth(Integer width){
-this.width= width;
+    public: void setWidth(Integer width){
+this->width= width;
     
 }
 
 
-    public Integer getHeight(){
+    public: Integer getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    public setHeight(Integer height){
-this.height= height;
+    public: void setHeight(Integer height){
+this->height= height;
     
 }
 

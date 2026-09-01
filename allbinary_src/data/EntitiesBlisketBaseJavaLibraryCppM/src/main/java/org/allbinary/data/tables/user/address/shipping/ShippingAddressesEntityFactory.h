@@ -57,17 +57,16 @@
 class ShippingAddressesEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: ShippingAddressesEntityFactory = new ShippingAddressesEntityFactory();
+    private: static ShippingAddressesEntityFactory instance() { return ShippingAddressesEntityFactory(); }
 
-    public static ShippingAddressesEntityFactory getInstance();
+    public: static ShippingAddressesEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ShippingAddressesEntityFactory();
 
-    public StreetAddressesEntity getInstance(string userName);
+    public: StreetAddressesEntity getInstance(std::string userName);
 
 };
 

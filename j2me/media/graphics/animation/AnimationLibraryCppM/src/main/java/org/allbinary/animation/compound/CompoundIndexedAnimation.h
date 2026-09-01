@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDINDEXEDANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -64,50 +66,49 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CompoundAnimationInterface.h"
 
-class CompoundIndexedAnimation: public IndexedAnimation: public CompoundAnimationInterface {
-        
+class CompoundIndexedAnimation: public IndexedAnimation, public CompoundAnimationInterface {
 
-    private: circularIndexUtil: CircularIndexUtil;
+    private: CircularIndexUtil circularIndexUtil;
 
-    private: animationInterfaceArray: std::vector<Animation>;
+    private: std::vector<Animation> animationInterfaceArray;
 
-public constructor (std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior);
+public: CompoundIndexedAnimation(std::vector<Animation> animationInterfaceArray, AnimationBehavior animationBehavior);
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
-
-                //@Throws(Exception.constructor)
-            
-    public nextFrame();
-
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
-
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
-
-    public IndexedAnimation getCurrentAnimation();
-
-    public nextAnimation();
-
-    public previousAnimation();
-
-    public setAnimation(int32_t index);
-
-    public std::vector<Animation> getAnimationInterfaceArray();
-
-    public setAnimationInterfaceArray(std::vector<Animation> animationInterfaceArray);
+    public: std::vector<int32_t> getSequence();
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl);
+    public: void nextFrame();
+
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+
+    public: IndexedAnimation getCurrentAnimation();
+
+    public: void nextAnimation();
+
+    public: void previousAnimation();
+
+    public: void setAnimation(int32_t index);
+
+    public: std::vector<Animation> getAnimationInterfaceArray();
+
+    public: void setAnimationInterfaceArray(std::vector<Animation> animationInterfaceArray);
+
+                //@Throws(Exception.constructor)
+            
+    public: void set(GL gl);
 
 };
 

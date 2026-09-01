@@ -69,53 +69,52 @@
 class AbPath
             : public Object
          {
-        
 
-    public static AbPath createAbPath();
+    public: static AbPath createAbPath();
 
-    private: static const NETWORK_SEP: string = ":/";
+    private: static const std::string NETWORK_SEP = ":/";
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const abPathData: AbPathData = AbPathData.getInstance()!;
+    private: const AbPathData abPathData = AbPathData::getInstance();
 
-    private: const abPathUtil: PathUtil = PathUtil.getInstance()!;
+    private: const PathUtil abPathUtil = PathUtil::getInstance();
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    schema: string = this.EMPTY_STRING;
+    protected: std::string schema = this->EMPTY_STRING;
 
-    private: path: string = this.EMPTY_STRING;
+    private: std::string path = this->EMPTY_STRING;
 
-    nameP: string = this.EMPTY_STRING;
+    protected: std::string nameP = this->EMPTY_STRING;
 
-    private: hasSchemaP: bool = false;
+    private: bool hasSchemaP = false;
 
-    private: numberOfSeps: int32_t = 0;
+    private: int32_t numberOfSeps = 0;
 
-public constructor (string aPath, string name);
+public: AbPath(std::string aPath, std::string name);
 
-    init();
+    private: void init();
 
-    string getSchema(string aPath);
+    protected: std::string getSchema(std::string aPath);
 
-    public bool hasSchema();
+    public: bool hasSchema();
 
                 //@Throws(Exception.constructor)
             
-    public string getPathFromPath(string aPath);
+    public: std::string getPathFromPath(std::string aPath);
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
-    public string toString();
+    public: std::string toString();
 
-    public string toFileSystemString();
+    public: std::string toFileSystemString();
 
-    public string getPath();
+    public: std::string getPath();
 
-    setPath(string path);
+    protected: void setPath(std::string path);
 
 };
 

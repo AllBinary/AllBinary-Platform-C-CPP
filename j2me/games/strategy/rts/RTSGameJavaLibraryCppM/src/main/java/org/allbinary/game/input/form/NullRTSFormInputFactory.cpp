@@ -46,16 +46,15 @@
 class NullRTSFormInputFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: RTSFormInput = new RTSFormInput(BasicGroupFactory.getInstance()!.NONE_ARRAY);
+    private: static const RTSFormInput SINGLETON = RTSFormInput(BasicGroupFactory::getInstance().NONE_ARRAY);
 
-    public static RTSFormInput getInstance(){
+    public: static RTSFormInput getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRTSFormInputFactory.SINGLETON;
+                        return NullRTSFormInputFactory::SINGLETON;
     
 }
 

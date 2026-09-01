@@ -81,82 +81,79 @@
 class BasicEventHandler
             : public Object
         : public BasicEventHandlerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const eventStrings: EventStrings = EventStrings.getInstance()!;
+    private: const EventStrings eventStrings = EventStrings::getInstance();
 
-    eventListenerInterfaceList: BasicArrayList;
+    protected: BasicArrayList eventListenerInterfaceList;
 
-public constructor (){
-
-            super();
-        this.eventListenerInterfaceList= new BasicArrayListD();
+public: BasicEventHandler(){
+this->eventListenerInterfaceList= BasicArrayListD();
     
 }
 
 
-    public removeAllListeners(){
-this.eventListenerInterfaceList= new BasicArrayListD();
+    public: void removeAllListeners(){
+this->eventListenerInterfaceList= BasicArrayListD();
     
 }
 
 
-    public addListeners(BasicArrayList vector){
+    public: void addListeners(BasicArrayList vector){
 
-    eventListenerInterface: EventListenerInterface;;
+    EventListenerInterface eventListenerInterface;;
     
 
-    size: int32_t = vector.size()!;;
+    int32_t size = vector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 eventListenerInterface= vector.get(index) as EventListenerInterface;
     
-this.addListenerInterface(eventListenerInterface);
+this->addListenerInterface(eventListenerInterface);
     
 }
 
 }
 
 
-    public removeListeners(BasicArrayList vector){
+    public: void removeListeners(BasicArrayList vector){
 
-    eventListenerInterface: EventListenerInterface;;
+    EventListenerInterface eventListenerInterface;;
     
 
-    size: int32_t = vector.size()!;;
+    int32_t size = vector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 eventListenerInterface= vector.get(index) as EventListenerInterface;
     
-this.removeListener(eventListenerInterface);
+this->removeListener(eventListenerInterface);
     
 }
 
 }
 
 
-    public addListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+    public: void addListenerSingleThreaded(EventListenerInterface eventListenerInterface){
 
-                        if(!this.eventListenerInterfaceList!.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
                         
                                     {
-                                    this.eventListenerInterfaceList!.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList.add(eventListenerInterface);
     
 
                                     }
@@ -164,12 +161,12 @@ this.removeListener(eventListenerInterface);
 }
 
 
-    public addListenerInterface(EventListenerInterface eventListenerInterface){
+    public: void addListenerInterface(EventListenerInterface eventListenerInterface){
 
-                        if(!this.eventListenerInterfaceList!.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
                         
                                     {
-                                    this.eventListenerInterfaceList!.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList.add(eventListenerInterface);
     
 
                                     }
@@ -177,41 +174,41 @@ this.removeListener(eventListenerInterface);
 }
 
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
-this.eventListenerInterfaceList!.remove(eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+this->eventListenerInterfaceList.remove(eventListenerInterface);
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.eventListenerInterfaceList!.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->eventListenerInterfaceList.remove(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
-    eventListenerInterface: EventListenerInterface;;
+    EventListenerInterface eventListenerInterface;;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while(index < this.eventListenerInterfaceList!.size())
+        while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this.eventListenerInterfaceList!.get(index) as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index) as EventListenerInterface;
     
-this.process(eventObject, eventListenerInterface);
+this->process(eventObject, eventListenerInterface);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.eventStrings!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->eventStrings.FIRE_EVENT, e);
     
 }
 
@@ -224,52 +221,52 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
-eventListenerInterface!.onEvent(eventObject);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+eventListenerInterface.onEvent(eventObject);
     
 }
 
 
-    public BasicArrayList getEventListenerInterfaceListP(){
+    public: BasicArrayList getEventListenerInterfaceListP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.eventListenerInterfaceList;
+                        return this->eventListenerInterfaceList;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.eventStrings!.TOTAL_LISTENERS);
+stringBuffer.append(this->eventStrings.TOTAL_LISTENERS);
     
-stringBuffer!.appendint(this.eventListenerInterfaceList!.size());
-    
-
-    eventListenerInterface: EventListenerInterface;;
+stringBuffer.appendint(this->eventListenerInterfaceList.size());
     
 
-    index: int32_t = 0;;
+    EventListenerInterface eventListenerInterface;;
     
 
-        while(index < this.eventListenerInterfaceList!.size())
+    int32_t index = 0;;
+    
+
+        while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this.eventListenerInterfaceList!.get(index) as EventListenerInterface;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index) as EventListenerInterface;
     
-stringBuffer!.append(this.eventStrings!.LISTENER_LABEL);
+stringBuffer.append(this->eventStrings.LISTENER_LABEL);
     
-stringBuffer!.append(eventListenerInterface!.toString());
+stringBuffer.append(eventListenerInterface.toString());
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.TOSTRING, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.TOSTRING, e);
     
 }
 
@@ -281,7 +278,7 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

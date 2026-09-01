@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_H
         #define ORG_ALLBINARY_LOGIC_JAVA_CHARACTER_CHARARRAYFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -45,18 +47,17 @@
 class CharArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: CharArrayFactory = new CharArrayFactory();
+    private: static CharArrayFactory instance() { return CharArrayFactory(); }
 
-    public static CharArrayFactory getInstance();
+    public: static CharArrayFactory getInstance();
 
-    private: const zeroCharArray: std::vector<char> = 
+    private: const std::vector<char> zeroCharArray = 
                                                         
                                                         new Array(0)
                                                     ;
 
-    public std::vector<char> getZeroCharArray();
+    public: std::vector<char> getZeroCharArray();
 
 };
 

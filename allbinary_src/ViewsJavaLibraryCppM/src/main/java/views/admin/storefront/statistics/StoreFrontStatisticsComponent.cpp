@@ -64,39 +64,38 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontStatisticsComponent: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    newStoreFrontInterface: StoreFrontInterface;
+    protected: StoreFrontInterface newStoreFrontInterface;
 
-    private: domNodeInterface: DomNodeInterface;
+    private: DomNodeInterface domNodeInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: StoreFrontStatisticsComponent(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.newStoreFrontInterface= StoreFrontFactory.getInstance(transformInfoInterface!.getStoreName()) as StoreFrontInterface;
+this->newStoreFrontInterface= StoreFrontFactory::getInstance(transformInfoInterface.getStoreName()) as StoreFrontInterface;
     
-this.domNodeInterface= new RealTimeStoreFrontStatisticsView(new RealTimeStoreFrontStatistics(this.newStoreFrontInterface), this.getWeblisketSession()!.getRole());
+this->domNodeInterface= RealTimeStoreFrontStatisticsView(RealTimeStoreFrontStatistics(this->newStoreFrontInterface), this->getWeblisketSession().getRole());
     
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this.domNodeInterface as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this->domNodeInterface as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -109,10 +108,10 @@ this.addDomNodeInterface(this.domNodeInterface as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

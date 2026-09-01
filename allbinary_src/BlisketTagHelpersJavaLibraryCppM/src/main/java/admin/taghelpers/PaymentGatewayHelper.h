@@ -80,31 +80,30 @@
         #include "BasicTable.h"
 
 class PaymentGatewayHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: const httpServletRequest: HttpServletRequest;
+    private: const HttpServletRequest httpServletRequest;
 
-    private: const portion: Portion;
+    private: const Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: PaymentGatewayHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public string insert();
+    public: std::string insert();
 
-    public string update();
+    public: std::string update();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string drop();
+    public: std::string drop();
 
-    public string create();
+    public: std::string create();
 
-    public string restore();
+    public: std::string restore();
 
-    public string backup();
+    public: std::string backup();
 
 };
 

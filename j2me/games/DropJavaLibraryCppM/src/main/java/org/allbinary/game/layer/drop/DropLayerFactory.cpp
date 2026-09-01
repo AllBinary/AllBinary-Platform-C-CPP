@@ -63,68 +63,65 @@
 class DropLayerFactory
             : public Object
          {
-        
 
-    private: static const DROP_LAYER_FACTORY: DropLayerFactory = new DropLayerFactory();
+    private: static const DropLayerFactory DROP_LAYER_FACTORY = DropLayerFactory();
 
-    public static DropLayerFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropLayerFactory.DROP_LAYER_FACTORY;
-    
-}
-
-
-    private: const list: BasicArrayList = new BasicArrayListD();
-
-private constructor (){
-
-            super();
-        }
-
-
-    public clear(){
-this.list.clear();
-    
-}
-
-
-    public int32_t getSize(){
+    public: static DropLayerFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size();;
+                        return DropLayerFactory::DROP_LAYER_FACTORY;
     
 }
 
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public PickedUpLayerInterfaceFactoryInterface getRandomInstance(){
+private: DropLayerFactory(){
+}
+
+
+    public: void clear(){
+this->list.clear();
+    
+}
+
+
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getRandom(this.list) as PickedUpLayerInterfaceFactoryInterface;
+                        return this->list.size();;
     
 }
 
 
-    public add(PickedUpLayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-this.list.add(layerInterfaceFactoryInterface);
-    
-}
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-
-    public BasicArrayList getList(){
+    public: PickedUpLayerInterfaceFactoryInterface getRandomInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->basicArrayListUtil.getRandom(this->list) as PickedUpLayerInterfaceFactoryInterface;
+    
+}
+
+
+    public: void add(PickedUpLayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+this->list.add(layerInterfaceFactoryInterface);
+    
+}
+
+
+    public: BasicArrayList getList(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->list;
     
 }
 

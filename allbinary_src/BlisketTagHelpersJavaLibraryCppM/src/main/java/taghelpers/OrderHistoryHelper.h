@@ -94,35 +94,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderHistoryHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: const propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: streetAddress: StreetAddress;
+    private: StreetAddress streetAddress;
 
-    private: id: string;
+    private: std::string id;
 
-    private: groupId: string;
+    private: std::string groupId;
 
-    private: status: string;
+    private: std::string status;
 
-    private: newStatus: string;
+    private: std::string newStatus;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: OrderHistoryHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
-    public string setOrderStatus();
+    public: std::string setOrderStatus();
 
 };
 

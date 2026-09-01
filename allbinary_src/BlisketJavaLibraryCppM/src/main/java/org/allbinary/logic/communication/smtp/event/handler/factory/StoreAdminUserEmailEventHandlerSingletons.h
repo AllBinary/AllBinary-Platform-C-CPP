@@ -77,23 +77,22 @@
 class StoreAdminUserEmailEventHandlerSingletons
             : public Object
          {
-        
 
-    private: static const instance: StoreAdminUserEmailEventHandlerSingletons = new StoreAdminUserEmailEventHandlerSingletons();
+    private: static StoreAdminUserEmailEventHandlerSingletons instance() { return StoreAdminUserEmailEventHandlerSingletons(); }
 
-    public static StoreAdminUserEmailEventHandlerSingletons getInstance();
+    public: static StoreAdminUserEmailEventHandlerSingletons getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const userEmailEventHandlerHashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: const HashMap<any, any> userEmailEventHandlerHashMap = HashMap<any, any>();
 
-private constructor ();
+private: StoreAdminUserEmailEventHandlerSingletons();
 
                 //@Throws(Exception.constructor)
             
-    public UserEmailEventHandler getInstance(UserEmailEventNameData userEmailEventNameData, AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
+    public: UserEmailEventHandler getInstance(UserEmailEventNameData userEmailEventNameData, AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
 
 };
 

@@ -52,17 +52,16 @@
         #include "TechEventListenerInterface.h"
 
 class TechEventHandler: public BasicEventHandler {
-        
 
-    private: static const eventHandler: TechEventHandler = new TechEventHandler();
+    private: static const TechEventHandler eventHandler = TechEventHandler();
 
-    public static TechEventHandler getInstance();
+    public: static TechEventHandler getInstance();
 
-private constructor ();
+private: TechEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

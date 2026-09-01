@@ -89,53 +89,52 @@
 class InventorySearchProductUtil
             : public Object
          {
-        
 
-    private: static const instance: InventorySearchProductUtil = new InventorySearchProductUtil();
+    private: static InventorySearchProductUtil instance() { return InventorySearchProductUtil(); }
 
-    public static InventorySearchProductUtil getInstance(){
+    public: static InventorySearchProductUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventorySearchProductUtil.instance;
+                        return InventorySearchProductUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const ITEM_NOT_FOUND: string = "Item Not Found.";
+    private: const std::string ITEM_NOT_FOUND = "Item Not Found.";
 
                 //@Throws(Exception.constructor)
             
-    public string getProduct(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, string product){
+    public: std::string getProduct(AbeClientInformationInterface abeClientInformation, SearchRequest searchRequest, std::string product){
 
         try {
             
-    inventoryEntityInterface: InventoryEntity = InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!;;
+    InventoryEntity inventoryEntityInterface = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
 
-    itemInterface: ItemInterface = inventoryEntityInterface!.getItem(product)!;;
+    ItemInterface itemInterface = inventoryEntityInterface.getItem(product);;
     
 
                         if(itemInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    viewDocumentInterface: TransformDocumentInterface = TransformStoreDocumentFactory.getInstance(searchRequest)!;;
+    TransformDocumentInterface viewDocumentInterface = TransformStoreDocumentFactory::getInstance(searchRequest);;
     
-viewDocumentInterface!.getBaseNode()!.appendChild(new BasicItemView(itemInterface, new Vector()).toXmlNode(viewDocumentInterface!.getDoc()));
-    
-
-    success: string = DomDocumentHelper.toString(viewDocumentInterface!.getDoc())!;;
+viewDocumentInterface.getBaseNode().appendChild(BasicItemView(itemInterface, Vector()).toXmlNode(viewDocumentInterface.getDoc()));
     
 
-    outputStr: string = new StoreTransformer(abeClientInformation, new TransformInfoHttpSearch(searchRequest) as TransformInfoInterface).translate(success)!;;
+    std::string success = DomDocumentHelper::toString(viewDocumentInterface.getDoc());;
+    
+
+    std::string outputStr = StoreTransformer(abeClientInformation, TransformInfoHttpSearch(searchRequest) as TransformInfoInterface).translate(success);;
     
 
 
@@ -151,7 +150,7 @@ viewDocumentInterface!.getBaseNode()!.appendChild(new BasicItemView(itemInterfac
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ITEM_NOT_FOUND;
+                        return this->ITEM_NOT_FOUND;
     
 
                         }
@@ -161,10 +160,10 @@ viewDocumentInterface!.getBaseNode()!.appendChild(new BasicItemView(itemInterfac
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRODUCTSEARCHLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRODUCTSEARCHLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "getProduct", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "getProduct", e);
     
 
                                     }
@@ -172,7 +171,7 @@ viewDocumentInterface!.getBaseNode()!.appendChild(new BasicItemView(itemInterfac
 
 
 
-                            throw new Exception("Failed to getProduct");
+                            throw Exception("Failed to getProduct");
                     
 }
 

@@ -49,11 +49,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TableMappingInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    any getKey();
+    Object* getKey();
 
                 //@Throws(Exception.constructor)
             

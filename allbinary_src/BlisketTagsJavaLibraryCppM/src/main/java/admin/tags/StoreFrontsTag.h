@@ -71,27 +71,26 @@
         #include "TableTag.h"
 
 class StoreFrontsTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
-
-                //@Throws(LicensingException.constructor)
-            
-    string generateSelect();
+public: StoreFrontsTag();
 
                 //@Throws(LicensingException.constructor)
             
-    string install();
+    private: std::string generateSelect();
 
                 //@Throws(LicensingException.constructor)
             
-    string sendStoreCreatedEmails();
+    private: std::string install();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: std::string sendStoreCreatedEmails();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

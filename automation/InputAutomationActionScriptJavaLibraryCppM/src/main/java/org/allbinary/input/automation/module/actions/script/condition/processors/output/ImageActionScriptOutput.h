@@ -77,54 +77,53 @@
 #include "ImageActionScriptOutputData.h"
 #include "ImageActionScriptOutputProcessor.h"
 
-class ImageActionScriptOutput: public BasicProfileActionScriptOutput: public ImageActionScriptOutputInterface {
-        
+class ImageActionScriptOutput: public BasicProfileActionScriptOutput, public ImageActionScriptOutputInterface {
 
-    private: static const NAME: string = "Captures";
+    private: static const std::string NAME = "Captures";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: saved: bool = false;
+    private: bool saved = false;
 
-    private: display: bool = false;
+    private: bool display = false;
 
-    private: imageTypes: ImageTypes;
+    private: ImageTypes imageTypes;
 
-    private: actionScriptOutputJPanel: ImageActionScriptOutputJPanel;
+    private: ImageActionScriptOutputJPanel actionScriptOutputJPanel;
 
-public constructor (Node node);
+public: ImageActionScriptOutput(Node node);
 
-public constructor ();
+public: ImageActionScriptOutput();
 
-    public ImageActionScriptOutputJPanel getActionScriptOutputJPanel();
+    public: ImageActionScriptOutputJPanel getActionScriptOutputJPanel();
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame);
+    public: Node toXmlNode(Document document);
 
-    public showDialog();
+                //@Throws(Exception.constructor)
+            
+    public: void process(Long frame);
 
-    public bool isSaved();
+    public: void showDialog();
 
-    public setSaved(bool saved);
+    public: bool isSaved();
 
-    public bool isDisplay();
+    public: void setSaved(bool saved);
 
-    public setDisplay(bool display);
+    public: bool isDisplay();
 
-    public string future_toString();
+    public: void setDisplay(bool display);
 
-    public log();
+    public: std::string future_toString();
 
-    public ImageTypes getImageTypes();
+    public: void log();
 
-    public setImageTypes(ImageTypes imageTypes);
+    public: ImageTypes getImageTypes();
+
+    public: void setImageTypes(ImageTypes imageTypes);
 
 };
 

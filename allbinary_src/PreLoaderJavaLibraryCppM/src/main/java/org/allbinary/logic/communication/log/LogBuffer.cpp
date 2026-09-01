@@ -47,41 +47,38 @@
 class LogBuffer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    logEntryVector: Vector;
+    Vector logEntryVector;
 
-public constructor (){
-
-            super();
-        this.logEntryVector= new Vector();
+public: LogBuffer(){
+this->logEntryVector= Vector();
     
 }
 
 
-    public add(Log log){
-this.logEntryVector!.add(log);
+    public: void add(Log log){
+this->logEntryVector.add(log);
     
 }
 
 
-    public logAll(){
+    public: void logAll(){
 
-    size: int32_t = this.logEntryVector!.length!;;
+    int32_t size = this->logEntryVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    log: Log = this.logEntryVector!.get(index) as Log;;
+    Log log = this->logEntryVector.get(index) as Log;;
     
-this.logUtil!.putL(log);
+this->logUtil.putL(log);
     
 }
 

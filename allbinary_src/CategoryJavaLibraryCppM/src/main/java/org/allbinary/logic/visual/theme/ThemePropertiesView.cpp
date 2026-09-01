@@ -58,23 +58,20 @@
 class ThemePropertiesView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: themeInterface: ThemeInterface;
+    private: ThemeInterface themeInterface;
 
-public constructor (ThemeInterface themeInterface){
-
-            super();
-        this.themeInterface= themeInterface;
+public: ThemePropertiesView(ThemeInterface themeInterface){
+this->themeInterface= themeInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = ModDomHelper.createNameValueNodes(document, ThemeData.getInstance()!.NAME, this.themeInterface!.toHashMap())!;;
+    Node node = ModDomHelper::createNameValueNodes(document, ThemeData::getInstance().NAME, this->themeInterface.toHashMap());;
     
 
 

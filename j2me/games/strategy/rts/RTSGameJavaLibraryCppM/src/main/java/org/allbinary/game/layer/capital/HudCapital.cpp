@@ -42,40 +42,37 @@
         #include "Capital.h"
 
 class HudCapital: public Capital {
-        
 
-    private: capitalGraphic: NumberStringHud;
+    private: NumberStringHud capitalGraphic;
 
-public constructor (NumberStringHud moneyGraphic){
-
-            super();
-        this.capitalGraphic= moneyGraphic;
+public: HudCapital(NumberStringHud moneyGraphic){
+this->capitalGraphic= moneyGraphic;
     
 }
 
 
-    public removeMoney(int32_t points){
+    public: void removeMoney(int32_t points){
 super.removeMoney(points);
     
-this.capitalGraphic!.reduce(points);
+this->capitalGraphic.reduce(points);
     
 }
 
 
-    public int32_t getTotalMoney(){
+    public: int32_t getTotalMoney(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.capitalGraphic!.get();;
+                        return this->capitalGraphic.get();;
     
 }
 
 
-    public addMoney(int32_t points){
+    public: void addMoney(int32_t points){
 super.addMoney(points);
     
-this.capitalGraphic!.add(points);
+this->capitalGraphic.add(points);
     
 }
 

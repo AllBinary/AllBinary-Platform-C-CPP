@@ -69,33 +69,32 @@
 #include "PointsLayerFactory.h"
 #include "PointsResources.h"
 
-class Points30kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory: public PickupProcessorInterface {
-        
+class Points30kPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public static init(){
-Points30kPickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface= new Points30kPickedUpLayerInterfaceFactory();
+    public: static void init(){
+Points30kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= Points30kPickedUpLayerInterfaceFactory();
     
 }
 
 
-    public static PickedUpLayerInterfaceFactoryInterface getInstance(){
+    public: static PickedUpLayerInterfaceFactoryInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Points30kPickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface;
+                        return Points30kPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
     
 }
 
 
-    private: pool: PointsLayerCircularStaticPool = new PointsLayerCircularStaticPool(new PointsLayerFactory(GameConfigurationUtil.getInstance()!.getCompetitionValue() *30000), 1);
+    private: PointsLayerCircularStaticPool pool = PointsLayerCircularStaticPool(PointsLayerFactory(GameConfigurationUtil::getInstance().getCompetitionValue() *30000), 1);
 
-private constructor (){
-            super(PickedUpLayerTypeFactory.getInstance()!.POINTS, IconLayerFactory.getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(PointsResources.getInstance()!.RESOURCE_3)!.getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(PointsResources.getInstance()!.RESOURCE_3)!.getInstance(0));
+private: Points30kPickedUpLayerInterfaceFactory(){
+            super(PickedUpLayerTypeFactory::getInstance().POINTS, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(PointsResources::getInstance().RESOURCE_3).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(PointsResources::getInstance().RESOURCE_3).getInstance(0));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -103,7 +102,7 @@ private constructor (){
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
@@ -115,8 +114,8 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayer sourceLayerInterface){
-this.pool.visit(sourceLayerInterface);
+    public: void process(AllBinaryLayer sourceLayerInterface){
+this->pool.visit(sourceLayerInterface);
     
 }
 

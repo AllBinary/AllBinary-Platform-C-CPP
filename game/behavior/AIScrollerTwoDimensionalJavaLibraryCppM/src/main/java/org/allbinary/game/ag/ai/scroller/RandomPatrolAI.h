@@ -62,19 +62,18 @@
         #include "BasePatrolAI.h"
 
 class RandomPatrolAI: public BasePatrolAI {
-        
 
-    private: changedDirection: bool = true;
+    private: bool changedDirection = true;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: RandomPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
-    updateRandomDistance();
+    private: void updateRandomDistance();
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    nextDirection();
+    protected: void nextDirection();
 
 };
 

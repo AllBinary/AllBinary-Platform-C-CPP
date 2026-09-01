@@ -54,17 +54,16 @@
 #include "MotionGestureEvent.h"
 
 class ScrolledMotionGesturesHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: ScrolledMotionGesturesHandler = new ScrolledMotionGesturesHandler();
+    private: static const ScrolledMotionGesturesHandler SINGLETON = ScrolledMotionGesturesHandler();
 
-    public static ScrolledMotionGesturesHandler getInstance();
+    public: static ScrolledMotionGesturesHandler getInstance();
 
-protected constructor ();
+protected: ScrolledMotionGesturesHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

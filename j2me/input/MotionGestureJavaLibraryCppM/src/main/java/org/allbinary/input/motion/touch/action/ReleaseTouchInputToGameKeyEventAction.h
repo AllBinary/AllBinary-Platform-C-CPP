@@ -67,17 +67,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ReleaseTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance();
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance();
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-private constructor ();
+private: ReleaseTouchInputToGameKeyEventAction();
 
-    public update();
+    public: void update();
 
 };
 

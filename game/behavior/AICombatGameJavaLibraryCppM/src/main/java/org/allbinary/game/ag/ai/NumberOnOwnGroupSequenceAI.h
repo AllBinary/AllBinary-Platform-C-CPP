@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_NUMBERONOWNGROUPSEQUENCEAI_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -63,15 +65,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NumberOnOwnGroupSequenceAI: public SequenceAI {
-        
 
-    private: numberOnSameTeam: std::vector<Integer>;
+    private: std::vector<Integer> numberOnSameTeam;
 
-public constructor (std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: NumberOnOwnGroupSequenceAI(std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

@@ -64,42 +64,39 @@
 class LayerBounds
             : public Object
         : public BoundsChangeEventListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    rectangle: Rectangle;
+    protected: Rectangle rectangle;
 
-protected constructor (Rectangle rectangle){
-
-            super();
-        this.rectangle= rectangle;
+protected: LayerBounds(Rectangle rectangle){
+this->rectangle= rectangle;
     
 }
 
 
-    public Rectangle getRectangleP(){
+    public: Rectangle getRectangleP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangle;
+                        return this->rectangle;
     
 }
 
 
-    public visit(BoundsVisitorInterface boundsVisitorInterface){
+    public: void visit(BoundsVisitorInterface boundsVisitorInterface){
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent){
-this.rectangle= boundsChangeEvent!.getRectangle();
+    public: void onBoundsChangeEvent(BoundsChangeEvent boundsChangeEvent){
+this->rectangle= boundsChangeEvent.getRectangle();
     
 }
 

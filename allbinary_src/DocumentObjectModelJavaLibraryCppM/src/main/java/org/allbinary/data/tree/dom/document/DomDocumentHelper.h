@@ -77,23 +77,22 @@
 class DomDocumentHelper
             : public Object
          {
-        
 
-    public static Document create();
-
-                //@Throws(Exception.constructor)
-            
-    public static Document create(InputStream inputStream);
+    public: static Document create();
 
                 //@Throws(Exception.constructor)
             
-    public static Document create(string xmlString);
+    public: static Document create(InputStream inputStream);
 
                 //@Throws(Exception.constructor)
             
-    public static string toString(Document document);
+    public: static Document create(std::string xmlString);
 
-private constructor ();
+                //@Throws(Exception.constructor)
+            
+    public: static std::string toString(Document document);
+
+private: DomDocumentHelper();
 
 };
 

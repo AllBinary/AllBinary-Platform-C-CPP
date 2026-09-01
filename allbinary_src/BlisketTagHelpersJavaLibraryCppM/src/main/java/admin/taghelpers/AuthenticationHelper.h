@@ -21,6 +21,8 @@
         #ifndef ADMIN_TAGHELPERS_AUTHENTICATIONHELPER_H
         #define ADMIN_TAGHELPERS_AUTHENTICATIONHELPER_H
 
+            #include <vector>
+        
             #include "../../java/lang/Exception.h"
         
             #include "../../java/lang/Integer.h"
@@ -103,57 +105,56 @@
         #include "TagHelper.h"
 
 class AuthenticationHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: authenticated: string;
+    private: std::string authenticated;
 
-    private: sessionUserName: string;
+    private: std::string sessionUserName;
 
-    private: role: UserRole;
+    private: UserRole role;
 
-    private: timeout: string;
+    private: std::string timeout;
 
-    private: attemptsInteger: Integer;
+    private: Integer attemptsInteger;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: AuthenticationHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
-
-                //@Throws(Exception.constructor)
-            
-    getFormData();
+public: AuthenticationHelper(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
 
                 //@Throws(Exception.constructor)
             
-    public Integer invalidateSession();
-
-    public Boolean isSessionOld();
-
-    Boolean isRarelyUsedSession();
-
-    public string validRole();
-
-    public string invalidRole();
+    private: void getFormData();
 
                 //@Throws(Exception.constructor)
             
-    public bool isAuthenticated();
+    public: Integer invalidateSession();
 
-    public Boolean isAuthenticationSessionValid(Vector roles);
+    public: Boolean isSessionOld();
 
-    public nextAttempt();
+    private: Boolean isRarelyUsedSession();
 
-    public Boolean processIfNewLogin(string userName, string password);
+    public: std::string validRole();
 
-    public Boolean processInvalidation();
+    public: std::string invalidRole();
 
-    public string outputSessionInfo();
+                //@Throws(Exception.constructor)
+            
+    public: bool isAuthenticated();
 
-    public UserRole getRole();
+    public: Boolean isAuthenticationSessionValid(Vector roles);
+
+    public: void nextAttempt();
+
+    public: Boolean processIfNewLogin(std::string userName, std::string password);
+
+    public: Boolean processInvalidation();
+
+    public: std::string outputSessionInfo();
+
+    public: UserRole getRole();
 
 };
 

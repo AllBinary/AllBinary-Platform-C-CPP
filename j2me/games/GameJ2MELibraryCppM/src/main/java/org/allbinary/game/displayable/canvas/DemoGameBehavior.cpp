@@ -69,86 +69,85 @@
 class DemoGameBehavior
             : public Object
          {
-        
 
-    private: static const instance: DemoGameBehavior = new DemoGameBehavior();
+    private: static DemoGameBehavior instance() { return DemoGameBehavior(); }
 
-    public static DemoGameBehavior getInstance(){
+    public: static DemoGameBehavior getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameBehavior.instance;
+                        return DemoGameBehavior::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public init(){
+    public: void init(){
 }
 
 
-    public pause(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void pause(AllBinaryGameCanvas allBinaryGameCanvas){
 }
 
 
-    public unPause(AllBinaryGameCanvas allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public updateTouch(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void unPause(AllBinaryGameCanvas allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updateScreenButtonPaintable(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas!.setTouchPaintableP(NullPaintable.getInstance());
-    
+    public: void updateTouch(AllBinaryGameCanvas allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setGameState(AllBinaryGameCanvas allBinaryGameCanvas){
-}
-
-
-    public removeAllGameKeyInputListeners(AllBinaryGameCanvas allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public updateEndGameProcessor(AllBinaryGameCanvas allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public buildGame(AllBinaryGameCanvas allBinaryGameCanvas){
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public run(AllBinaryGameCanvas allBinaryGameCanvas){
-
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-this.logUtil!.putF(GameTypeFactory.getInstance()!.BOT.toString(), this, commonStrings!.RUN);
+    public: void updateScreenButtonPaintable(AllBinaryGameCanvas allBinaryGameCanvas){
+allBinaryGameCanvas.setTouchPaintableP(NullPaintable::getInstance());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setHighScore(AbeClientInformationInterface abeClientInformation, AllBinaryGameCanvas allBinaryGameCanvas, string name, int64_t score, bool autoSubmit, bool isLast){
+    public: void setGameState(AllBinaryGameCanvas allBinaryGameCanvas){
+}
+
+
+    public: void removeAllGameKeyInputListeners(AllBinaryGameCanvas allBinaryGameCanvas){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void updateEndGameProcessor(AllBinaryGameCanvas allBinaryGameCanvas){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void buildGame(AllBinaryGameCanvas allBinaryGameCanvas){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void run(AllBinaryGameCanvas allBinaryGameCanvas){
+
+    CommonStrings commonStrings = CommonStrings::getInstance();;
+    
+this->logUtil.putF(GameTypeFactory::getInstance().BOT.toString(), this, commonStrings.RUN);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void setHighScore(AbeClientInformationInterface abeClientInformation, AllBinaryGameCanvas allBinaryGameCanvas, std::string name, int64_t score, bool autoSubmit, bool isLast){
 }
 
 

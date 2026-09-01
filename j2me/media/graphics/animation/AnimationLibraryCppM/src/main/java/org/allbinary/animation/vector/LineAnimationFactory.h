@@ -60,17 +60,16 @@
 class LineAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: basicColor: BasicColor;
+    private: BasicColor basicColor;
 
-public constructor (BasicColor basicColor);
+public: LineAnimationFactory(BasicColor basicColor);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

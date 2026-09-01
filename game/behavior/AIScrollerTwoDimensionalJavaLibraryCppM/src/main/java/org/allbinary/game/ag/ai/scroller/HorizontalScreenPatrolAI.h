@@ -87,33 +87,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HorizontalScreenPatrolAI: public BasicAI {
-        
 
-    public static const SOUND: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(433)!;
+    public: static const Integer SOUND = SmallIntegerSingletonFactory::getInstance().getAt(433);
 
-    keyDirection: int32_t = Canvas.LEFT;
+    protected: int32_t keyDirection = Canvas::LEFT;
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: firingX: int32_t = this.displayInfoSingleton!.getLastHalfWidth()!;
+    private: int32_t firingX = this->displayInfoSingleton.getLastHalfWidth();
 
-    private: firedIndex: int32_t = 0;
+    private: int32_t firedIndex = 0;
 
-    private: const MAX_FIRE: int32_t = 28;
+    private: const int32_t MAX_FIRE = 28;
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(240);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(240);
 
-    private: const secondaryPlayerQueue: PlayerQueue = SecondaryPlayerQueueFactory.getInstance()!;
+    private: const PlayerQueue secondaryPlayerQueue = SecondaryPlayerQueueFactory::getInstance();
 
-    private: const sound: Sound;
+    private: Sound sound;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: HorizontalScreenPatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    nextDirection();
+    protected: void nextDirection();
 
 };
 

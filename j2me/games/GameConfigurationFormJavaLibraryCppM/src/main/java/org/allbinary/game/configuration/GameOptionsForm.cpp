@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -123,74 +125,73 @@
 #include "GameConfigurationCentral.h"
 
 class GameOptionsForm: public CommandForm {
-        
 
-public constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+public: GameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
             super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.addConfiguration();
+this->addConfiguration();
     
 
-    gameFeatureFormUtil: GameFeatureFormUtil = GameFeatureFormUtil.getInstance()!;;
+    GameFeatureFormUtil gameFeatureFormUtil = GameFeatureFormUtil::getInstance();;
     
-gameFeatureFormUtil!.addChoiceGroup(this, GameFeatureChoiceGroups.getExclusiveInstance()!.get(), ChoiceI.EXCLUSIVE);
+gameFeatureFormUtil.addChoiceGroup(this, GameFeatureChoiceGroups::getExclusiveInstance().get(), Choice::EXCLUSIVE);
     
-gameFeatureFormUtil!.addChoiceGroup(this, GameFeatureChoiceGroups.getMultipleInstance()!.get(), ChoiceI.MULTIPLE);
+gameFeatureFormUtil.addChoiceGroup(this, GameFeatureChoiceGroups::getMultipleInstance().get(), Choice::MULTIPLE);
     
-this.initCommands(commandListener);
+this->initCommands(commandListener);
     
-this.setItemStateListener(new GameFeatureItemStateListener(this));
+this->setItemStateListener(GameFeatureItemStateListener(this));
     
-this.addTextFieldsIfSimulated();
+this->addTextFieldsIfSimulated();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public closeClientInformation(AbeClientInformationInterface abeClientInformation){
+    public: void closeClientInformation(AbeClientInformationInterface abeClientInformation){
 super.close();
     
-this.save(abeClientInformation);
+this->save(abeClientInformation);
     
 }
 
 
-    addTextFieldsIfSimulated(){
+    private: void addTextFieldsIfSimulated(){
 
-    key: string = OrientationData.getInstance()!.ORIENTATION_SENSOR_INPUT;;
+    std::string key = OrientationData::getInstance().ORIENTATION_SENSOR_INPUT;;
     
 
-    hashtable: Hashtable<any, any> = GameFeatureChoiceGroups.getExclusiveInstance()!.get()!;;
+    Hashtable<any, any> hashtable = GameFeatureChoiceGroups::getExclusiveInstance().get();;
     
 
                         if(hashtable != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    listCanBeNull: any = hashtable.get(key);;
+    Object* listCanBeNull = hashtable.get(key);;
     
 
                         if(listCanBeNull != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    list: BasicArrayList = listCanBeNull as BasicArrayList;;
+    BasicArrayList list = listCanBeNull as BasicArrayList;;
     
 
-                        if(list.contains(SensorFeatureFactory.getInstance()!.SIMULATED_ORIENTATION_SENSORS))
+                        if(list.contains(SensorFeatureFactory::getInstance().SIMULATED_ORIENTATION_SENSORS))
                         
                                     {
-                                    this.addTextFields();
+                                    this->addTextFields();
     
 
                                     }
@@ -204,129 +205,129 @@ this.save(abeClientInformation);
 }
 
 
-    addTextFields(){
+    private: void addTextFields(){
 
-    hashtable: Hashtable<any, any> = GameConfigurationTextInput.getHashtable()!;;
+    Hashtable<any, any> hashtable = GameConfigurationTextInput::getHashtable();;
     
 
-    size: int32_t = hashtable.length!;;
+    int32_t size = hashtable.length;;
     
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(hashtable)!;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
     
 
-    gameConfigurationTextInput: GameConfigurationTextInput;;
+    GameConfigurationTextInput gameConfigurationTextInput;;
     
 
-    textField: TextField;;
+    TextField textField;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 gameConfigurationTextInput= hashtable.get(objectArray[index]!) as GameConfigurationTextInput;
     
-textField= new TextField(gameConfigurationTextInput!.getLabel(), gameConfigurationTextInput!.getText(), 30, TextField.ANY);
+textField= TextField(gameConfigurationTextInput.getLabel(), gameConfigurationTextInput.getText(), 30, TextField::ANY);
     
-this.append(textField);
+this->append(textField);
     
 }
 
 }
 
 
-    addConfiguration(){
+    private: void addConfiguration(){
 
-    METHOD_NAME: string = "addConfiguration";;
+    std::string METHOD_NAME = "addConfiguration";;
     
 
-    NAME: string = "Name: ";;
+    std::string NAME = "Name: ";;
     
 
-    list: BasicArrayList = GameConfigurationSingleton.getInstance()!.getOptionsBasicArrayList()!;;
+    BasicArrayList list = GameConfigurationSingleton::getInstance().getOptionsBasicArrayList();;
     
 
-    GAUGE_CHANGE: Command = MyCommandsFactory.getInstance()!.GAUGE_CHANGE;;
+    Command GAUGE_CHANGE = MyCommandsFactory::getInstance().GAUGE_CHANGE;;
     
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    gameConfiguration: GameConfiguration;;
+    GameConfiguration gameConfiguration;;
     
 
-    gauge: GameConfigurationGauge;;
+    GameConfigurationGauge gauge;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 gameConfiguration= list.objectArray[index]! as GameConfiguration;
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-this.logUtil!.putF(stringMaker!.append(NAME)!.append(gameConfiguration!.toString())!.toString(), this, METHOD_NAME);
+this->logUtil.putF(stringMaker.append(NAME).append(gameConfiguration.toString()).toString(), this, METHOD_NAME);
     
-gauge= new GameConfigurationGauge(gameConfiguration);
+gauge= GameConfigurationGauge(gameConfiguration);
     
 gauge.setDefaultCommand(GAUGE_CHANGE);
     
-gauge.setItemCommandListener(new GameFeatureItemCommandListener(this));
+gauge.setItemCommandListener(GameFeatureItemCommandListener(this));
     
-this.append(gauge);
+this->append(gauge);
     
 }
 
 }
 
 
-    public initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener cmdListener){
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
-this.removeAllCommands();
+this->removeAllCommands();
     
-this.addCommand(gameCommandsFactory!.CLOSE_OPTIONS);
+this->addCommand(gameCommandsFactory.CLOSE_OPTIONS);
     
-this.addCommand(gameCommandsFactory!.DEFAULT_OPTIONS);
+this->addCommand(gameCommandsFactory.DEFAULT_OPTIONS);
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation){
+    public: void save(AbeClientInformationInterface abeClientInformation){
 
-    size: int32_t = this.size()!;;
+    int32_t size = this->size();;
     
 
-    item: Item;;
+    Item item;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-item= this.get(index);
+item= this->get(index);
     
 
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
-                                    GameConfigurationUtil.getInstance()!.update(item as GameConfigurationGauge);
+                                    GameConfigurationUtil::getInstance().update(item as GameConfigurationGauge);
     
 
                                     }
@@ -335,51 +336,51 @@ item= this.get(index);
                         if(item instanceof TextField)
                         
                                     {
-                                    GameConfigurationTextInput.update(item as TextField);
+                                    GameConfigurationTextInput::update(item as TextField);
     
 
                                     }
                                 
 }
 
-GameConfigurationUtil.getInstance()!.updateCompetitionValue();
+GameConfigurationUtil::getInstance().updateCompetitionValue();
     
 
-    hashtable: Hashtable<any, any> = new Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = Hashtable<any, any>();;
     
 
-    SCALE: GameConfiguration = GameConfigurationCentral.getInstance()!.SCALE;;
+    GameConfiguration SCALE = GameConfigurationCentral::getInstance().SCALE;;
     
-hashtable.put(SCALE.getName(), SCALE.getValue()!.toString());
-    
-
-    keyValuePersistance: KeyValuePersistance = GameConfigurationPersistanceSingleton.getInstance()!;;
-    
-keyValuePersistance!.clear();
-    
-keyValuePersistance!.loadAll(abeClientInformation);
+hashtable.put(SCALE::getName(), SCALE::getValue().toString());
     
 
-    list: BasicArrayList = keyValuePersistance!.getIds()!;;
+    KeyValuePersistance keyValuePersistance = GameConfigurationPersistanceSingleton::getInstance();;
     
-keyValuePersistance!.save(abeClientInformation, hashtable);
+keyValuePersistance.clear();
+    
+keyValuePersistance.loadAll(abeClientInformation);
     
 
-    size2: int32_t = list.size()!;;
+    BasicArrayList list = keyValuePersistance.getIds();;
+    
+keyValuePersistance.save(abeClientInformation, hashtable);
     
 
-    integer: Integer;;
+    int32_t size2 = list.size();;
+    
+
+    Integer integer;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size2; index++)
+    int32_t index = 0;index < size2; index++)
         {
 integer= list.objectArray[index]! as Integer;
     
-keyValuePersistance!.delete(abeClientInformation, integer.intValue());
+keyValuePersistance.delete(abeClientInformation, integer.intValue());
     
 }
 

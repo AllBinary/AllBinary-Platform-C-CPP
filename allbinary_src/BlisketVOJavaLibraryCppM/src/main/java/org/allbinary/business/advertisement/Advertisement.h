@@ -61,85 +61,84 @@
 class Advertisement
             : public Object
         : public AdvertisementInterface {
-        
 
-    private: artist: string;
+    private: std::string artist;
 
-    private: artistLink: string;
+    private: std::string artistLink;
 
-    private: title: string;
+    private: std::string title;
 
-    private: dateAdded: string;
+    private: std::string dateAdded;
 
-    private: directory: string;
+    private: std::string directory;
 
-    private: framedLink: string;
+    private: std::string framedLink;
 
-    private: rank: int32_t= 0;
+    private: int32_t rank= 0;
 
-    private: listPrice: Money;
+    private: Money listPrice;
 
-    private: ourPrice: Money;
+    private: Money ourPrice;
 
-    private: image: AdvertisementImageInterface;
+    private: AdvertisementImageInterface image;
 
-    private: product: AdvertisementProductInterface;
+    private: AdvertisementProductInterface product;
 
-    private: thumbnail: AdvertisementThumbnailInterface;
+    private: AdvertisementThumbnailInterface thumbnail;
 
-    private: const displayInBrowserContraintsInterface: DisplayInBrowserContraintsInterface;
+    private: DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface;
 
-public constructor ();
+public: Advertisement();
 
-    public string getArtist();
+    public: std::string getArtist();
 
-    public setArtist(string artist);
+    public: void setArtist(std::string artist);
 
-    public string getArtistLink();
+    public: std::string getArtistLink();
 
-    public setArtistLink(string artistLink);
+    public: void setArtistLink(std::string artistLink);
 
-    public string getTitle();
+    public: std::string getTitle();
 
-    public setTitle(string title);
+    public: void setTitle(std::string title);
 
-    public string getDateAdded();
+    public: std::string getDateAdded();
 
-    public setDateAdded(string dateAdded);
+    public: void setDateAdded(std::string dateAdded);
 
-    public string getDirectory();
+    public: std::string getDirectory();
 
-    public setDirectory(string directory);
+    public: void setDirectory(std::string directory);
 
-    public string getFramedLink();
+    public: std::string getFramedLink();
 
-    public setFramedLink(string framedLink);
+    public: void setFramedLink(std::string framedLink);
 
-    public Money getListPrice();
+    public: Money getListPrice();
 
-    public setListPrice(Money listPrice);
+    public: void setListPrice(Money listPrice);
 
-    public Money getOurPrice();
+    public: Money getOurPrice();
 
-    public setOurPrice(Money ourPrice);
+    public: void setOurPrice(Money ourPrice);
 
-    public int32_t getRank();
+    public: int32_t getRank();
 
-    public setRank(int32_t rank);
+    public: void setRank(int32_t rank);
 
-    public AdvertisementImageInterface getImage();
+    public: AdvertisementImageInterface getImage();
 
-    public setImage(AdvertisementImageInterface image);
+    public: void setImage(AdvertisementImageInterface image);
 
-    public AdvertisementProductInterface getProduct();
+    public: AdvertisementProductInterface getProduct();
 
-    public setProduct(AdvertisementProductInterface product);
+    public: void setProduct(AdvertisementProductInterface product);
 
-    public AdvertisementThumbnailInterface getThumbnail();
+    public: AdvertisementThumbnailInterface getThumbnail();
 
-    public setThumbnail(AdvertisementThumbnailInterface thumbnail);
+    public: void setThumbnail(AdvertisementThumbnailInterface thumbnail);
 
-    public DisplayInBrowserContraintsInterface getDisplayInBrowserContraintsInterface();
+    public: DisplayInBrowserContraintsInterface getDisplayInBrowserContraintsInterface();
 
 };
 

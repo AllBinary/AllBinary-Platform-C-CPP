@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
@@ -52,46 +54,43 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class Unit3DecalGameResources: public BasicGameResources {
-        
 
-    private: static const instance: Unit3DecalGameResources = new Unit3DecalGameResources();
+    private: static Unit3DecalGameResources instance() { return Unit3DecalGameResources(); }
 
-    public static BasicGameResources getInstance(){
+    public: static BasicGameResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Unit3DecalGameResources.instance;
+                        return Unit3DecalGameResources::instance();
     
 }
 
 
-private constructor (){
+private: Unit3DecalGameResources(){
 
-            super();
-        
-    ROOT: string = "/unit_decal";;
+    std::string ROOT = "/unit_decal";;
     
 
-    SMALL: string = "_40_by_40.png";;
+    std::string SMALL = "_40_by_40.png";;
     
 
-    MEDIUM: string = SMALL;;
+    std::string MEDIUM = SMALL;;
     
 
-    SIZE_FOUR: string = SMALL;;
+    std::string SIZE_FOUR = SMALL;;
     
 
-    SIZE_FIVE: string = SMALL;;
+    std::string SIZE_FIVE = SMALL;;
     
 
-    SIZE_SIX: string = SMALL;;
+    std::string SIZE_SIX = SMALL;;
     
 
-    SIZE: std::vector<string> = 
-                                                        [
+    std::vector<std::string> SIZE = 
+                                                        {
                                                             SMALL,MEDIUM,SIZE_FOUR,SIZE_FIVE,SIZE_SIX
-                                                        ];;
+                                                        };;
     
 super.init(ROOT, SIZE);
     
@@ -100,7 +99,7 @@ super.init(ROOT, SIZE);
 
                 //@Throws(Exception.constructor)
             
-    append(string ROOT, string sizeString){
+    protected: void append(std::string ROOT, std::string sizeString){
 super.append(ROOT, sizeString);
     
 }
@@ -108,16 +107,16 @@ super.append(ROOT, sizeString);
 
                 //@Throws(Exception.constructor)
             
-    string getString(){
+    protected: std::string getString(){
 
-                        if(AndroidUtil.isAndroid())
+                        if(AndroidUtil::isAndroid())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameGraphicsResourceUtil.getInstance()!.getStringForFeature(GraphicsFeatureFactory.getInstance()!.SPRITE_QUARTER_ROTATION_GRAPHICS);;
+                        return GameGraphicsResourceUtil::getInstance().getStringForFeature(GraphicsFeatureFactory::getInstance().SPRITE_QUARTER_ROTATION_GRAPHICS);;
     
 
                                     }

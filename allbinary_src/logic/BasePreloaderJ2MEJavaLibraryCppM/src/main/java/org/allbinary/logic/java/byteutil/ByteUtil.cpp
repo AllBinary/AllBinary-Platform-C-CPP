@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -42,39 +44,35 @@
 class ByteUtil
             : public Object
          {
-        
 
-    private: static const instance: ByteUtil = new ByteUtil();
+    private: static ByteUtil instance() { return ByteUtil(); }
 
-    public static ByteUtil getInstance(){
+    public: static ByteUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ByteUtil.instance;
+                        return ByteUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ByteUtil(){
+}
 
 
-    public std::vector<int8_t> xor(std::vector<int8_t> array, int8_t mask){
+    public: std::vector<int8_t> xor(std::vector<int8_t> array, int8_t mask){
 
-    bytes: std::vector<int8_t> = new Array(array.length);;
+    std::vector<int8_t> bytes = new Array(array.length);;
     
 
-    size: int32_t = array.length
-                ;;
+    int32_t size = array.size();;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    currentByte: int8_t;;
+    int8_t currentByte;;
     
 
         while(index < size)
@@ -96,16 +94,15 @@ index++;
 }
 
 
-    public std::vector<int8_t> not(std::vector<int8_t> array){
+    public: std::vector<int8_t> not(std::vector<int8_t> array){
 
-    bytes: std::vector<int8_t> = new Array(array.length);;
+    std::vector<int8_t> bytes = new Array(array.length);;
     
 
-    size: int32_t = array.length
-                ;;
+    int32_t size = array.size();;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
         while(index < size)
@@ -125,46 +122,54 @@ index++;
 }
 
 
-    public std::vector<int8_t> xorByte(std::vector<int8_t> array, int32_t index){
+    public: std::vector<int8_t> xorByte(std::vector<int8_t> array, int32_t index){
 
-    mask: int8_t = 0;;
+    int8_t mask = 0;;
     
 
                         if(index == 0)
-                        mask= 1
+                        mask= 1;
+                                
 
                         if(index == 1)
-                        mask= 2
+                        mask= 2;
+                                
 
                         if(index == 2)
-                        mask= 4
+                        mask= 4;
+                                
 
                         if(index == 3)
-                        mask= 8
+                        mask= 8;
+                                
 
                         if(index == 4)
-                        mask= 16
+                        mask= 16;
+                                
 
                         if(index == 5)
-                        mask= 32
+                        mask= 32;
+                                
 
                         if(index == 6)
-                        mask= 64
+                        mask= 64;
+                                
 
                         if(index == 7)
-                        mask=  -127
+                        mask=  -127;
+                                
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.xor(array, mask);;
+                        return this->xor(array, mask);;
     
 }
 
 
-    public bool compare(std::vector<int8_t> newByteArray, std::vector<int8_t> oldByteArray){
+    public: bool compare(std::vector<int8_t> newByteArray, std::vector<int8_t> oldByteArray){
 
-                        if(newByteArray!.length != oldByteArray!.length)
+                        if(newByteArray.size() != oldByteArray.size())
                         
                                     {
                                     
@@ -181,15 +186,14 @@ index++;
                         }
                             
 
-    size: int32_t = newByteArray!.length
-                ;;
+    int32_t size = newByteArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
                         if(newByteArray[index] != oldByteArray[index])
@@ -215,16 +219,16 @@ index++;
 }
 
 
-    public bool compareWithStats(std::vector<int8_t> newByteArray, int32_t newSize, std::vector<int8_t> oldByteArray, std::vector<int32_t> stats){
+    public: bool compareWithStats(std::vector<int8_t> newByteArray, int32_t newSize, std::vector<int8_t> oldByteArray, std::vector<int32_t> stats){
 
-                        if(newSize != oldByteArray!.length)
+                        if(newSize != oldByteArray.size())
                         
                                     {
                                     stats[0]=  -1;
     
 stats[2]= newSize;
     
-stats[3]= oldByteArray!.length;
+stats[3]= oldByteArray.size();
     
 
 
@@ -244,14 +248,14 @@ stats[3]= oldByteArray!.length;
 stats[1]= 0;
     
 
-    size: int32_t = newSize;;
+    int32_t size = newSize;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
                         if(newByteArray[index] != oldByteArray[index])

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -45,26 +47,25 @@
 class ModelViewProjection
             : public Object
          {
-        
 
-    private: static const instance: ModelViewProjection = new ModelViewProjection();
+    private: static ModelViewProjection instance() { return ModelViewProjection(); }
 
-    public static ModelViewProjection getInstance(){
+    public: static ModelViewProjection getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModelViewProjection.instance;
+                        return ModelViewProjection::instance();
     
 }
 
 
-    public std::vector<float> get(){
+    public: std::vector<float> get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_FLOAT_ARRAY;
+                        return NullUtil::getInstance().NULL_FLOAT_ARRAY;
     
 }
 

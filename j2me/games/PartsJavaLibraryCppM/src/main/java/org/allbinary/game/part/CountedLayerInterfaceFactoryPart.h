@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_H
         #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERINTERFACEFACTORYPART_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -84,57 +86,56 @@
 class CountedLayerInterfaceFactoryPart
             : public Object
         : public PartInterface, public UpdateMyFontInterface {
-        
 
-    public static const NULL_COUNTED_LAYER_INTERFACE_FACTORY: CountedLayerInterfaceFactoryPart = new CountedLayerInterfaceFactoryPart(0, CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY);
+    public: static const CountedLayerInterfaceFactoryPart NULL_COUNTED_LAYER_INTERFACE_FACTORY = CountedLayerInterfaceFactoryPart(0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY);
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    private: total: int32_t= 0;
+    private: int32_t total= 0;
 
-    private: totalString: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> totalString = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: xOffset: int32_t= 0;
+    private: int32_t xOffset= 0;
 
-    private: countedPickedUpLayerInterfaceFactory: CountedPickedUpLayerInterfaceFactory = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-public constructor (int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory);
+public: CountedLayerInterfaceFactoryPart(int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    init(int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory);
+    private: void init(int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory);
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer getInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
 
-    public int32_t getTotal();
+    public: int32_t getTotal();
 
-    public setTotal(int32_t total);
+    public: void setTotal(int32_t total);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
-    public Animation getAnimationInterface();
+    public: Animation getAnimationInterface();
 
-    public setAnimationInterface(Animation animationInterface);
+    public: void setAnimationInterface(Animation animationInterface);
 
-    public int32_t getXOffset();
+    public: int32_t getXOffset();
 
-    setXOffset(int32_t totalStringWidth);
+    private: void setXOffset(int32_t totalStringWidth);
 
-    public std::vector<char> getTotalString();
+    public: std::vector<char> getTotalString();
 
-    public CountedPickedUpLayerInterfaceFactory getCountedPickedUpLayerInterfaceFactory();
+    public: CountedPickedUpLayerInterfaceFactory getCountedPickedUpLayerInterfaceFactory();
 
-    public setCountedPickedUpLayerInterfaceFactory(CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory);
+    public: void setCountedPickedUpLayerInterfaceFactory(CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory);
 
 };
 

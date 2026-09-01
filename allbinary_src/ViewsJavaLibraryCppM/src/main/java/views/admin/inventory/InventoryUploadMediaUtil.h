@@ -21,6 +21,8 @@
         #ifndef VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_H
         #define VIEWS_ADMIN_INVENTORY_INVENTORYUPLOADMEDIAUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -92,41 +94,40 @@
 class InventoryUploadMediaUtil
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const mediaUtil: MediaUtil = MediaUtil.getInstance()!;
+    private: const MediaUtil mediaUtil = MediaUtil::getInstance();
 
-    private: const LARGEWIDTH: int32_t = 1024;
+    private: const int32_t LARGEWIDTH = 1024;
 
-    private: const LARGEHEIGHT: int32_t = 1024;
+    private: const int32_t LARGEHEIGHT = 1024;
 
-    private: const MEDIUMWIDTH: int32_t = 256;
+    private: const int32_t MEDIUMWIDTH = 256;
 
-    private: const MEDIUMHEIGHT: int32_t = 256;
+    private: const int32_t MEDIUMHEIGHT = 256;
 
-    private: const SMALLWIDTH: int32_t = 128;
+    private: const int32_t SMALLWIDTH = 128;
 
-    private: const SMALLHEIGHT: int32_t = 128;
+    private: const int32_t SMALLHEIGHT = 128;
 
-    private: const SMALL: string = "Small";
+    private: const std::string SMALL = "Small";
 
-    private: const MEDIUM: string = "Medium";
+    private: const std::string MEDIUM = "Medium";
 
-    private: const LARGE: string = "Large";
+    private: const std::string LARGE = "Large";
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: itemInterface: ItemInterface;
+    private: ItemInterface itemInterface;
 
-public constructor (StoreFrontInterface storeFrontInterface, ItemInterface itemInterface);
+public: InventoryUploadMediaUtil(StoreFrontInterface storeFrontInterface, ItemInterface itemInterface);
 
                 //@Throws(Exception.constructor)
             
-    public ItemInterface saveFiles(std::vector<int8_t> byteArray, string fileName, MediaData mediaData);
+    public: ItemInterface saveFiles(std::vector<int8_t> byteArray, std::string fileName, MediaData mediaData);
 
-    setFileNames(string fileName);
+    private: void setFileNames(std::string fileName);
 
 };
 

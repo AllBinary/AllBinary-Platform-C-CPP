@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_UPGRADABLERTSLAYERHUDPAINTABLE_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -66,51 +68,50 @@
 #include "RTSLayer.h"
 
 class UpgradableRTSLayerHudPaintable: public SelectionHudPaintable {
-        
 
-    private: static const instance: UpgradableRTSLayerHudPaintable = new UpgradableRTSLayerHudPaintable();
+    private: static UpgradableRTSLayerHudPaintable instance() { return UpgradableRTSLayerHudPaintable(); }
 
-    public static UpgradableRTSLayerHudPaintable getInstance();
+    public: static UpgradableRTSLayerHudPaintable getInstance();
 
-    private: const PERCENT: string = "%";
+    private: const std::string PERCENT = "%";
 
-    private: rtsLayer: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    private: CollidableDestroyableDamageableLayer rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
-    costY: int32_t= 0;
+    protected: int32_t costY= 0;
 
-    costY1: int32_t= 0;
+    protected: int32_t costY1= 0;
 
-    private: percentCompleteX2: int32_t= 0;
+    private: int32_t percentCompleteX2= 0;
 
-    private: rtsLayerCompositePaintableLateInit: RTSLayerCompositePaintable;
+    private: RTSLayerCompositePaintable rtsLayerCompositePaintableLateInit;
 
-    private: charHeight: int32_t= 0;
+    private: int32_t charHeight= 0;
 
-    private: charWidth: int32_t= 0;
+    private: int32_t charWidth= 0;
 
-private constructor ();
+private: UpgradableRTSLayerHudPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public update();
+    public: void update();
 
-    public updateSelectionInfo();
+    public: void updateSelectionInfo();
 
-    private: percentComplete: int32_t= 0;
+    private: int32_t percentComplete= 0;
 
-    private: percentCompleteX: int32_t= 0;
+    private: int32_t percentCompleteX= 0;
 
-    private: percentCompleteArray: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;
+    private: std::vector<char> percentCompleteArray = CharArrayFactory::getInstance().getZeroCharArray();
 
-    private: currentTotalDigits: int32_t= 0;
+    private: int32_t currentTotalDigits= 0;
 
-    public updateInfo();
+    public: void updateInfo();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public setRtsLayer(RTSLayer rtsLayer);
+    public: void setRtsLayer(RTSLayer rtsLayer);
 
-    CollidableDestroyableDamageableLayer getRtsLayer();
+    protected: CollidableDestroyableDamageableLayer getRtsLayer();
 
 };
 

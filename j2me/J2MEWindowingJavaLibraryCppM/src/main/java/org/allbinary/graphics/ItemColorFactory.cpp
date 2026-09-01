@@ -51,25 +51,24 @@
 class ItemColorFactory
             : public Object
          {
-        
 
-    private: static const instance: ItemColorFactory = new ItemColorFactory();
+    private: static ItemColorFactory instance() { return ItemColorFactory(); }
 
-    public static ItemColorFactory getInstance(){
+    public: static ItemColorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ItemColorFactory.instance;
+                        return ItemColorFactory::instance();
     
 }
 
 
-    public INVERT_PAINT: int32_t = static_cast<int32_t>(0xFF000000);
+    public: int32_t INVERT_PAINT = static_cast<int32_t>(0xFF000000);
 
-    public PAINT: int32_t = static_cast<int32_t>(0xFFe07718);
+    public: int32_t PAINT = static_cast<int32_t>(0xFFe07718);
 
-    public TEXT_FIELD_NO_FOCUS: int32_t = 0x7F7F7F;
+    public: int32_t TEXT_FIELD_NO_FOCUS = 0x7F7F7F;
 
 };
 

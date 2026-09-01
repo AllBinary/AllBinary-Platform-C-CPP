@@ -62,40 +62,37 @@
 class TestInputAutomationWorker
             : public Object
          {
-        
 
-    private: captureWorker: ScreenCaptureImagesWorker;
+    private: ScreenCaptureImagesWorker captureWorker;
 
-    private: imageComparisonWorker: ImageComparisonWorker;
+    private: ImageComparisonWorker imageComparisonWorker;
 
-    private: motionRectanglesWorker: MotionRectanglesWorker;
+    private: MotionRectanglesWorker motionRectanglesWorker;
 
-    private: changedPixelsImageComparisonResultsWorker: SaveImageComparisonWorker;
+    private: SaveImageComparisonWorker changedPixelsImageComparisonResultsWorker;
 
-    private: saveMotionRectanglesAsImagesWorker: SaveMotionRectanglesResultsWorker;
+    private: SaveMotionRectanglesResultsWorker saveMotionRectanglesAsImagesWorker;
 
-    private: moveMouseToFirstMotionRectanglesResultsWorker: TestInputForMotionRectanglesResultsWorker;
+    private: TestInputForMotionRectanglesResultsWorker moveMouseToFirstMotionRectanglesResultsWorker;
 
-public constructor (){
-
-            super();
-        this.captureWorker= new ScreenCaptureImagesWorker();
+public: TestInputAutomationWorker(){
+this->captureWorker= ScreenCaptureImagesWorker();
     
-this.changedPixelsImageComparisonResultsWorker= new SaveImageComparisonWorker();
+this->changedPixelsImageComparisonResultsWorker= SaveImageComparisonWorker();
     
-this.saveMotionRectanglesAsImagesWorker= new SaveMotionRectanglesResultsWorker();
+this->saveMotionRectanglesAsImagesWorker= SaveMotionRectanglesResultsWorker();
     
-this.moveMouseToFirstMotionRectanglesResultsWorker= new TestInputForMotionRectanglesResultsWorker();
+this->moveMouseToFirstMotionRectanglesResultsWorker= TestInputForMotionRectanglesResultsWorker();
     
-this.motionRectanglesWorker!.addListenerInterface(this.saveMotionRectanglesAsImagesWorker);
+this->motionRectanglesWorker.addListenerInterface(this->saveMotionRectanglesAsImagesWorker);
     
-this.motionRectanglesWorker!.addListenerInterface(this.moveMouseToFirstMotionRectanglesResultsWorker);
+this->motionRectanglesWorker.addListenerInterface(this->moveMouseToFirstMotionRectanglesResultsWorker);
     
-this.imageComparisonWorker!.addListenerInterface(this.changedPixelsImageComparisonResultsWorker);
+this->imageComparisonWorker.addListenerInterface(this->changedPixelsImageComparisonResultsWorker);
     
-this.imageComparisonWorker!.addListenerInterface(this.motionRectanglesWorker);
+this->imageComparisonWorker.addListenerInterface(this->motionRectanglesWorker);
     
-this.captureWorker!.addListenerInterface(this.imageComparisonWorker);
+this->captureWorker.addListenerInterface(this->imageComparisonWorker);
     
 }
 

@@ -54,13 +54,12 @@
 class MidletStrings
             : public Object
          {
-        
 
-    private: static const instance: MidletStrings = new MidletStrings();
+    private: static MidletStrings instance() { return MidletStrings(); }
 
-    public static MidletStrings getInstance();
+    public: static MidletStrings getInstance();
 
-    public const COMMAND_ACTION: string = "commandAction";
+    public: const std::string COMMAND_ACTION = "commandAction";
 
 };
 

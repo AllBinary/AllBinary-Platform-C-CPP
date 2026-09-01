@@ -48,11 +48,10 @@
 class TextChangeListener
             : public Object
          {
-        
 
-    private: static const instance: TextChangeListener = new TextChangeListener();
+    private: static TextChangeListener instance() { return TextChangeListener(); }
 
-    public static TextChangeListener getInstance(){
+    public: static TextChangeListener getInstance(){
 
 
 
@@ -62,7 +61,7 @@ class TextChangeListener
 }
 
 
-    onMeasure(){
+    void onMeasure(){
 }
 
 

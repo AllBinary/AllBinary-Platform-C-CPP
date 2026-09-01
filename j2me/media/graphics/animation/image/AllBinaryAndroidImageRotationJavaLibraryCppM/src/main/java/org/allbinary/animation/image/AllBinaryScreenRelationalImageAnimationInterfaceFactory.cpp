@@ -69,44 +69,43 @@
 #include "ImageAnimation.h"
 
 class AllBinaryScreenRelationalImageAnimationInterfaceFactory: public BaseImageAnimationFactory {
-        
 
-    private: lastImage: Image = NullImage.NULL_IMAGE;
+    private: Image lastImage = NullImage::NULL_IMAGE;
 
-public constructor (Image image, AnimationBehaviorFactory animationBehaviorFactory){
-            super(image, PrimitiveIntUtil.getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory);
+public: AllBinaryScreenRelationalImageAnimationInterfaceFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory){
+            super(image, PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(this.lastImage != NullImage.NULL_IMAGE)
+                        if(this->lastImage != NullImage::NULL_IMAGE)
                         
                                     {
                                     
-    androidImageInterface: AndroidImageInterface = this.lastImage as AndroidImageInterface;;
+    AndroidImageInterface androidImageInterface = this->lastImage as AndroidImageInterface;;
     
-androidImageInterface!.getBitmap()!.recycle();
+androidImageInterface.getBitmap().recycle();
     
 
                                     }
                                 
 
-    scale: float = ScreenRelationalUtil.getInstance()!.getScaleImage(image)!;;
+    float scale = ScreenRelationalUtil::getInstance().getScaleImage(image);;
     
-this.lastImage= ImageScaleUtil.getInstance()!.createImage(GameFeatureImageCacheFactory.getInstance(), this.getImage(), scale, scale, false);
+this->lastImage= ImageScaleUtil::getInstance().createImage(GameFeatureImageCacheFactory::getInstance(), this->getImage(), scale, scale, false);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageAnimation(this.lastImage, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return ImageAnimation(this->lastImage, this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 

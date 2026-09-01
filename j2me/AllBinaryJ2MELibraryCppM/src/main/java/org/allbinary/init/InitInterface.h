@@ -49,11 +49,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InitInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    init();
+    void init();
 
 };
 

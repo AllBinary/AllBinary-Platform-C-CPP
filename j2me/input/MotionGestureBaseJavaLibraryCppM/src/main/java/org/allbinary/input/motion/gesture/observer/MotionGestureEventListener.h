@@ -45,29 +45,28 @@
 #include "MotionGestureEvent.h"
 
 class MotionGestureEventListener: public BaseMotionGestureEventListener {
-        
 
-    onPressedMotionGestureEvent(MotionGestureEvent ev);
+    void onPressedMotionGestureEvent(MotionGestureEvent ev);
 
-    onUpMotionGestureEvent(MotionGestureEvent ev);
+    void onUpMotionGestureEvent(MotionGestureEvent ev);
 
-    onDownMotionGestureEvent(MotionGestureEvent ev);
+    void onDownMotionGestureEvent(MotionGestureEvent ev);
 
-    onLeftMotionGestureEvent(MotionGestureEvent ev);
+    void onLeftMotionGestureEvent(MotionGestureEvent ev);
 
-    onRightMotionGestureEvent(MotionGestureEvent ev);
+    void onRightMotionGestureEvent(MotionGestureEvent ev);
 
-    onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev);
+    void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev);
 
-    onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev);
+    void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev);
 
-    onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev);
+    void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev);
 
-    onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev);
+    void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev);
 
                 //@Throws(Exception.constructor)
             
-    released(MotionGestureEvent ev);
+    void released(MotionGestureEvent ev);
 
 };
 

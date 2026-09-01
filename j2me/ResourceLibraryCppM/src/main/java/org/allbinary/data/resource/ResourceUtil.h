@@ -71,31 +71,30 @@
 class ResourceUtil
             : public Object
          {
-        
 
-    private: static classLoader: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* classLoader = NullUtil::getInstance().NULL_OBJECT;
 
-    private: static const instance: ResourceUtil = new ResourceUtil();
+    private: static ResourceUtil instance() { return ResourceUtil(); }
 
-    public static ResourceUtil getInstance();
+    public: static ResourceUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: ResourceUtil();
 
-    public setLoadingPaths(string path, string ext);
+    public: void setLoadingPaths(std::string path, std::string ext);
 
-    public setClassLoader(ClassLoader classLoader);
-
-                //@Throws(Exception.constructor)
-            
-    public InputStream getResourceAsStream(string resource);
+    public: void setClassLoader(ClassLoader classLoader);
 
                 //@Throws(Exception.constructor)
             
-    InputStream getResourceAsStreamAtStart(string resource, int32_t startIndex);
+    public: InputStream getResourceAsStream(std::string resource);
 
-    public addResource(string resource, Integer value);
+                //@Throws(Exception.constructor)
+            
+    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex);
+
+    public: void addResource(std::string resource, Integer value);
 
 };
 

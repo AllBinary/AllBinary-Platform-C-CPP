@@ -57,9 +57,8 @@
 #include "LicenseCheckRunnableFactory.h"
 
 class SpecialDemoGameMidlet: public DemoGameMidlet {
-        
 
-public constructor (ClientInformationFactory clientInformationFactory, LicenseLoadingType licenseLoadingType, LicensedDemoSetupFactory demoSetupFactory, LicenseCheckRunnableFactory licenseCheckRunnableFactory){
+public: SpecialDemoGameMidlet(ClientInformationFactory clientInformationFactory, LicenseLoadingType licenseLoadingType, LicensedDemoSetupFactory demoSetupFactory, LicenseCheckRunnableFactory licenseCheckRunnableFactory){
             super(clientInformationFactory);
                     
 
@@ -68,12 +67,12 @@ public constructor (ClientInformationFactory clientInformationFactory, LicenseLo
 }
 
 
-    public initView(){
+    public: void initView(){
 }
 
 
-    public preInit(){
-new LicenseServerInitFileUtil().init();
+    public: void preInit(){
+LicenseServerInitFileUtil().init();
     
 }
 

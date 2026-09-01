@@ -45,17 +45,16 @@
 class Capital
             : public Object
          {
-        
 
-    private: value: int32_t= 0;
+    private: int32_t value= 0;
 
-public constructor ();
+public: Capital();
 
-    public int32_t getTotalMoney();
+    public: int32_t getTotalMoney();
 
-    public removeMoney(int32_t points);
+    public: void removeMoney(int32_t points);
 
-    public addMoney(int32_t points);
+    public: void addMoney(int32_t points);
 
 };
 

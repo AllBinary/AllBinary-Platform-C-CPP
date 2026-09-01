@@ -63,53 +63,52 @@
 class AnimationFactoryInitializationVisitor
             : public Object
          {
-        
 
-    public width: int32_t= 0;
+    public: int32_t width= 0;
 
-    public height: int32_t= 0;
+    public: int32_t height= 0;
 
-    public dx: int32_t= 0;
+    public: int32_t dx= 0;
 
-    public dy: int32_t= 0;
+    public: int32_t dy= 0;
 
-    public originalDx: int32_t= 0;
+    public: int32_t originalDx= 0;
 
-    public originalDy: int32_t= 0;
+    public: int32_t originalDy= 0;
 
-    public visit(){
+    public: void visit(){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
-    
-
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
-stringBuffer!.append(PositionStrings.getInstance()!.DX_LABEL)!.appendfloat(this.dx);
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(PositionStrings.getInstance()!.DY_LABEL)!.appendfloat(this.dy);
+stringBuffer.append(PositionStrings::getInstance().DX_LABEL).appendfloat(this->dx);
     
-stringBuffer!.append(commonLabels!.WIDTH_LABEL);
+stringBuffer.append(PositionStrings::getInstance().DY_LABEL).appendfloat(this->dy);
     
-stringBuffer!.appendint(this.width);
+stringBuffer.append(commonLabels.WIDTH_LABEL);
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.appendint(this->width);
     
-stringBuffer!.append(commonLabels!.HEIGHT_LABEL);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.appendint(this.height);
+stringBuffer.append(commonLabels.HEIGHT_LABEL);
+    
+stringBuffer.appendint(this->height);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

@@ -64,23 +64,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseResourceAnimationInterfaceFactoryInterfaceFactory {
-        
 
-    public static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory();
+    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory();
 
-public constructor (string name);
-
-                //@Throws(Exception.constructor)
-            
-    public init(int32_t level);
+public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    initImageCache(ImageCache imageCache, int32_t level);
+    public: void init(int32_t level);
 
-    public bool isLoadingLevel(int32_t level);
+                //@Throws(Exception.constructor)
+            
+    protected: void initImageCache(ImageCache imageCache, int32_t level);
 
-    public bool isFeature();
+    public: bool isLoadingLevel(int32_t level);
+
+    public: bool isFeature();
 
 };
 

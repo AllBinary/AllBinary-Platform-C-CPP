@@ -51,49 +51,46 @@
 class TransactionEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: TransactionEntityFactory = new TransactionEntityFactory();
+    private: static TransactionEntityFactory instance() { return TransactionEntityFactory(); }
 
-    public static TransactionEntityFactory getInstance(){
+    public: static TransactionEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransactionEntityFactory.instance;
+                        return TransactionEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransactionEntityFactory(){
+}
 
 
-    public TransactionEntity getTransactionEntityInstance(){
+    public: TransactionEntity getTransactionEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.user.commerce.money.payment.transaction.TransactionEntity();
+                        return org::allbinary::data::tables::user::commerce::money::payment::transaction::TransactionEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

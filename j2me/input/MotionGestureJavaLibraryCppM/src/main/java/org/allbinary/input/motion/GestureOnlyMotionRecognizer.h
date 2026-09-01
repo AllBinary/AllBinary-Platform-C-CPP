@@ -53,29 +53,28 @@
         #include "MotionRecognizer.h"
 
 class GestureOnlyMotionRecognizer: public MotionRecognizer {
-        
 
-    private: static index: int32_t = 0;
+    private: static int32_t index = 0;
 
-    private: static const pointCircularPool: GPointCircularPool = new GPointCircularPool(40);
+    private: static const GPointCircularPool pointCircularPool = GPointCircularPool(40);
 
-    private: const motionGestureRecognizer: MotionGestureRecognizer;
+    private: MotionGestureRecognizer motionGestureRecognizer;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+public: GestureOnlyMotionRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    public processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
 };
 

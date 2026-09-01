@@ -61,17 +61,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontComponent: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    newStoreFrontInterface: StoreFrontInterface;
+    protected: StoreFrontInterface newStoreFrontInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: StoreFrontComponent(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

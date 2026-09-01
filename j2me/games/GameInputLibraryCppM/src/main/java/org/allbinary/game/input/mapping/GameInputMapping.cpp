@@ -57,50 +57,47 @@
 class GameInputMapping
             : public Object
          {
-        
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: gameKey: GameKey = GameKey.NULL_GAME_KEY;
+    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
 
-public constructor (string name, GameKey gameKey){
-
-            super();
-        this.setName(name);
+public: GameInputMapping(std::string name, GameKey gameKey){
+this->setName(name);
     
-this.setGameKey(gameKey);
+this->setGameKey(gameKey);
     
 }
 
 
-    setGameKey(GameKey gameKey){
-this.gameKey= gameKey;
+    private: void setGameKey(GameKey gameKey){
+this->gameKey= gameKey;
     
 }
 
 
-    public GameKey getGameKey(){
+    public: GameKey getGameKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKey;
+                        return this->gameKey;
     
 }
 
 
-    setName(string name){
-this.name= name;
+    private: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

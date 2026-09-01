@@ -42,19 +42,8 @@
 class AndroidUtil
             : public Object
          {
-        
 
-    public static bool isMemoryRestrictive(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
-
-    public static bool isAndroid(){
+    public: static bool isMemoryRestrictive(){
 
 
 
@@ -64,10 +53,18 @@ class AndroidUtil
 }
 
 
-private constructor (){
+    public: static bool isAndroid(){
 
-            super();
-        }
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+private: AndroidUtil(){
+}
 
 
 };

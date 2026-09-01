@@ -52,15 +52,14 @@
 class BaseScalable
             : public Object
         : public ScalableListener {
-        
 
-    public float getRatio(float ratio);
+    public: float getRatio(float ratio);
 
-    public int32_t getLeft(int32_t xOffset);
+    public: int32_t getLeft(int32_t xOffset);
 
-    public int32_t getTop(int32_t yOffset);
+    public: int32_t getTop(int32_t yOffset);
 
-    public scale(float ratio);
+    public: void scale(float ratio);
 
 };
 

@@ -59,21 +59,20 @@
 class AdvertisementCampaign
             : public Object
         : public AdvertisementCampaignInterface {
-        
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (HashMap<any, any> hashMap);
+public: AdvertisementCampaign(HashMap<any, any> hashMap);
 
-    public any getComponent();
+    public: Object* getComponent();
 
-    public string getName();
+    public: std::string getName();
 
-    public setComponentName(string name);
+    public: void setComponentName(std::string name);
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface);
+    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface);
 
 };
 

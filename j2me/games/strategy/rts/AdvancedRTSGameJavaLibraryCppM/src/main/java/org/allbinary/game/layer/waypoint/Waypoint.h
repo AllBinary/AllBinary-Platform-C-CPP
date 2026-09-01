@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/RuntimeException.h"
@@ -117,54 +119,53 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WaypointBase.h"
 
-class Waypoint: public WaypointBase: public BuildingEventListenerInterface {
-        
+class Waypoint: public WaypointBase, public BuildingEventListenerInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    protected: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    const ownerLayer: PathFindingLayerInterface;
+    protected: PathFindingLayerInterface ownerLayer;
 
-    private: endList: BasicArrayList = this.basicArrayListUtil!.getImmutableInstance()!;
+    private: BasicArrayList endList = this->basicArrayListUtil.getImmutableInstance();
 
-    private: paths: std::vector<std::vector<BasicArrayList>> = this.basicArrayListUtil!.NULL_ARRAY_OF_ARRAY;
+    private: std::vector<std::vector<BasicArrayList>> paths = this->basicArrayListUtil.NULL_ARRAY_OF_ARRAY;
 
-public constructor (PathFindingLayerInterface ownerLayer, Sound sound);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
-
-    public releaseCachedPaths();
+public: Waypoint(PathFindingLayerInterface ownerLayer, Sound sound);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+
+    public: void releaseCachedPaths();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
-
-    GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition);
+    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList createPaths(GeographicMapCellPosition startGeographicMapCellPosition);
+    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
 
-    public onEvent(AllBinaryEventObject eventObject);
-
-                //@Throws(Exception.constructor)
-            
-    public onBuildingEvent(RTSLayerEvent event);
-
-    clearPaths();
-
-    public reset();
+    protected: GeographicMapCellPosition getEndGeographicMapCellPosition(GeographicMapCellPosition startGeographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public visit(PathFindingLayerInterface unitLayer);
+    private: BasicArrayList createPaths(GeographicMapCellPosition startGeographicMapCellPosition);
+
+    public: void onEvent(AllBinaryEventObject eventObject);
+
+                //@Throws(Exception.constructor)
+            
+    public: void onBuildingEvent(RTSLayerEvent event);
+
+    private: void clearPaths();
+
+    public: void reset();
+
+                //@Throws(Exception.constructor)
+            
+    public: void visit(PathFindingLayerInterface unitLayer);
 
 };
 

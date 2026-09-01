@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_UNIT_UNITITEMARRAYFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -98,33 +100,32 @@
 class UnitItemArrayFactory
             : public Object
         : public ItemArraySingletonFactoryInterface {
-        
 
-    private: static const ITEMS: std::vector<ABCustomItem> = CustomItemUtil.getInstance()!.CUSTOM_ITEM_ARRAY;
+    private: static const std::vector<ABCustomItem> ITEMS = CustomItemUtil::getInstance().CUSTOM_ITEM_ARRAY;
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    private: const resources: std::vector<BasicGameResources>;
+    private: std::vector<BasicGameResources> resources;
 
-protected constructor (std::vector<BasicGameResources> resources);
-
-                //@Throws(Exception.constructor)
-            
-    ABCustomItem createFlagItem(FlagGameResources flagResources, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+protected: UnitItemArrayFactory(std::vector<BasicGameResources> resources);
 
                 //@Throws(Exception.constructor)
             
-    ABCustomItem createNamedFlagItem(FlagGameResources flagResources, string name, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+    protected: ABCustomItem createFlagItem(FlagGameResources flagResources, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<ABCustomItem> getItems();
+    protected: ABCustomItem createNamedFlagItem(FlagGameResources flagResources, std::string name, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 
-    public std::vector<BasicGameResources> getResources();
+                //@Throws(Exception.constructor)
+            
+    public: std::vector<ABCustomItem> getItems();
 
-    public int32_t indexOf(BasicGameResources basicGameResources);
+    public: std::vector<BasicGameResources> getResources();
+
+    public: int32_t indexOf(BasicGameResources basicGameResources);
 
 };
 

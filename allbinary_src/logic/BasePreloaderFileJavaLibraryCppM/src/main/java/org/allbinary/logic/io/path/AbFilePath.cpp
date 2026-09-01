@@ -46,25 +46,24 @@
 #include "PathUtil.h"
 
 class AbFilePath: public AbPath {
-        
 
-public constructor (string aPath){
-            super(StringUtil.getInstance()!.EMPTY_STRING, StringUtil.getInstance()!.EMPTY_STRING);
+public: AbFilePath(std::string aPath){
+            super(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    pathData: AbPathData = AbPathData.getInstance()!;;
+    AbPathData pathData = AbPathData::getInstance();;
     
 
-    abPathUtil: PathUtil = PathUtil.getInstance()!;;
+    PathUtil abPathUtil = PathUtil::getInstance();;
     
-this.schema= this.getSchema(aPath);
+this->schema= this->getSchema(aPath);
     
-this.setName(pathData!.getNameFromPath(aPath));
+this->setName(pathData.getNameFromPath(aPath));
     
-this.setPath(abPathUtil!.adjust(this.getPathFromPath(abPathUtil!.removeNameFromPath(aPath)!.toString())));
+this->setPath(abPathUtil.adjust(this->getPathFromPath(abPathUtil.removeNameFromPath(aPath).toString())));
     
 }
 

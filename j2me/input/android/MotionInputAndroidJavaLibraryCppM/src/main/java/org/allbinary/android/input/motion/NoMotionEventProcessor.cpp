@@ -39,16 +39,15 @@
         #include "MotionEventProcessor.h"
 
 class NoMotionEventProcessor: public MotionEventProcessor {
-        
 
-    public static const SINGLETON: MotionEventProcessor = new MotionEventProcessor();
+    public: static const MotionEventProcessor SINGLETON = MotionEventProcessor();
 
-    public static MotionEventProcessor getInstance(){
+    public: static MotionEventProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoMotionEventProcessor.SINGLETON;
+                        return NoMotionEventProcessor::SINGLETON;
     
 }
 

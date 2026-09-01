@@ -54,17 +54,16 @@
 class BasicGroupItemsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: BasicGroupItemsEntityFactory = new BasicGroupItemsEntityFactory();
+    private: static BasicGroupItemsEntityFactory instance() { return BasicGroupItemsEntityFactory(); }
 
-    public static BasicGroupItemsEntityFactory getInstance();
+    public: static BasicGroupItemsEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: BasicGroupItemsEntityFactory();
 
-    public BasicGroupItemsEntity getBasicGroupItemsEntityInstance();
+    public: BasicGroupItemsEntity getBasicGroupItemsEntityInstance();
 
 };
 

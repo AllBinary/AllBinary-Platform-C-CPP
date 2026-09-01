@@ -52,24 +52,23 @@
 class TrackingEventCircularStaticPool
             : public Object
          {
-        
 
-    private: static instance: TrackingEventCircularStaticPool = new TrackingEventCircularStaticPool();
+    private: static TrackingEventCircularStaticPool instance = TrackingEventCircularStaticPool();
 
-    public static TrackingEventCircularStaticPool getInstance(){
+    public: static TrackingEventCircularStaticPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TrackingEventCircularStaticPool.instance;
+                        return TrackingEventCircularStaticPool::instance();
     
 }
 
 
-    private: EVENT_POOL: AllBinaryEventCircularPool = new AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
 
-    public init(){
-this.EVENT_POOL.initAllBinaryEventCircularPool(new TrackingEventFactory());
+    public: void init(){
+this->EVENT_POOL.initAllBinaryEventCircularPool(TrackingEventFactory());
     
 }
 
@@ -77,11 +76,11 @@ this.EVENT_POOL.initAllBinaryEventCircularPool(new TrackingEventFactory());
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public TrackingEvent getNextInstance(AllBinaryLayer layerInterface){
+    public: TrackingEvent getNextInstance(AllBinaryLayer layerInterface){
 
-    trackingEvent: TrackingEvent = this.EVENT_POOL.getNextInstance() as TrackingEvent;;
+    TrackingEvent trackingEvent = this->EVENT_POOL.getNextInstance() as TrackingEvent;;
     
-trackingEvent!.setLayerInterfaceForCircularStaticPool(layerInterface);
+trackingEvent.setLayerInterfaceForCircularStaticPool(layerInterface);
     
 
 

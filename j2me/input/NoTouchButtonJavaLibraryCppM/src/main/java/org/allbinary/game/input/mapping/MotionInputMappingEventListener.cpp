@@ -59,17 +59,16 @@
 class MotionInputMappingEventListener
             : public Object
         : public InputMappingEventListenerInterface {
-        
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onInputMappingEvent(InputMappingEvent inputMappingEvent){
+    public: void onInputMappingEvent(InputMappingEvent inputMappingEvent){
 }
 
 

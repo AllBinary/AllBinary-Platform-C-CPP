@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/media/Control.h>
@@ -68,69 +70,66 @@
 class BasicPlayer
             : public Object
         : public Player, public Controllable2 {
-        
 
-    public static CONTROL_TYPE: string = "ToneControl";
+    public: static std::string CONTROL_TYPE = "ToneControl";
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const listenersList: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList listenersList = BasicArrayListD();
 
-    stateP: int32_t= 0;
+    protected: int32_t stateP= 0;
 
-    loopCountP: int32_t= 0;
+    protected: int32_t loopCountP= 0;
 
-public constructor (){
-
-            super();
-        this.setLoopCount(0);
+public: BasicPlayer(){
+this->setLoopCount(0);
     
-this.setState(PlayerI.UNREALIZED);
+this->setState(Player::UNREALIZED);
     
 }
 
 
-    public string getContentType(){
+    public: std::string getContentType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public Control getControl(string controlType){
+    public: Control getControl(std::string controlType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NullControl();
+                        return NullControl();
     
 }
 
 
-    public std::vector<Control> getControls(){
+    public: std::vector<Control> getControls(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 
 
-    public close(){
+    public: void close(){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addPlayerListener(PlayerListener playerListener){
+    public: void addPlayerListener(PlayerListener playerListener){
 
-                        if(!this.listenersList!.contains(playerListener))
+                        if(!this->listenersList.contains(playerListener))
                         
                                     {
-                                    this.listenersList!.add(playerListener);
+                                    this->listenersList.add(playerListener);
     
 
                                     }
@@ -138,30 +137,30 @@ this.setState(PlayerI.UNREALIZED);
 }
 
 
-    public removePlayerListener(PlayerListener playerListener){
-this.listenersList!.remove(playerListener);
+    public: void removePlayerListener(PlayerListener playerListener){
+this->listenersList.remove(playerListener);
     
 }
 
 
-    public int32_t getState(){
+    public: int32_t getState(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.stateP;
+                        return this->stateP;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setState(int32_t state){
-this.stateP= state;
+    public: void setState(int32_t state){
+this->stateP= state;
     
 }
 
 
-    public int64_t getDuration(){
+    public: int64_t getDuration(){
 
 
 
@@ -171,7 +170,7 @@ this.stateP= state;
 }
 
 
-    public int64_t getMediaTime(){
+    public: int64_t getMediaTime(){
 
 
 
@@ -181,35 +180,35 @@ this.stateP= state;
 }
 
 
-    public deallocate(){
+    public: void deallocate(){
 }
 
 
                 //@Throws(MediaException.constructor)
             
-    public prefetch(){
+    public: void prefetch(){
 }
 
 
                 //@Throws(MediaException.constructor)
             
-    public realize(){
+    public: void realize(){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setLoopCount(int32_t count){
-this.loopCountP= count;
+    public: void setLoopCount(int32_t count){
+this->loopCountP= count;
     
 }
 
 
-    int32_t getLoopCount(){
+    protected: int32_t getLoopCount(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loopCountP;
+                        return this->loopCountP;
     
 }
 
@@ -217,7 +216,7 @@ this.loopCountP= count;
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public int64_t setMediaTime(int64_t now){
+    public: int64_t setMediaTime(int64_t now){
 
 
 
@@ -230,8 +229,8 @@ this.loopCountP= count;
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public start(){
-this.setState(PlayerI.STARTED);
+    public: void start(){
+this->setState(Player::STARTED);
     
 }
 
@@ -239,13 +238,13 @@ this.setState(PlayerI.STARTED);
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public stop(){
-this.setState(PlayerI.PREFETCHED);
+    public: void stop(){
+this->setState(Player::PREFETCHED);
     
 }
 
 
-    public setVolume(int32_t leftVolume, int32_t rightVolume){
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
 }
 
 

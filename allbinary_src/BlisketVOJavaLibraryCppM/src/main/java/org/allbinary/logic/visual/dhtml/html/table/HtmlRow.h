@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_TABLE_HTMLROW_H
 
+            #include <vector>
+        
 #include <java/util/Vector.h>
 
       
@@ -51,29 +53,28 @@
         #include "HtmlCell.h"
 
 class HtmlRow: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const START: string = "<tr ";
+    private: const std::string START = "<tr ";
 
-    private: const ENDTAG: string = "</tr>";
+    private: const std::string ENDTAG = "</tr>";
 
-    private: numberOfColumns: int32_t = 0;
+    private: int32_t numberOfColumns = 0;
 
-    private: before: string;
+    private: std::string before;
 
-    private: after: string;
+    private: std::string after;
 
-    private: htmlCellsVector: Vector;
+    private: Vector htmlCellsVector;
 
-public constructor (string before, string after);
+public: HtmlRow(std::string before, std::string after);
 
-    public addCell(HtmlCell htmlCell);
+    public: void addCell(HtmlCell htmlCell);
 
-    public int32_t getNumberOfColumns();
+    public: int32_t getNumberOfColumns();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

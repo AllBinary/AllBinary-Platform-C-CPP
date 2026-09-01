@@ -56,85 +56,84 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ActivityFractureUtilAPI5: public ActivityFractureUtilAPI1 {
-        
 
-    private: static const instance5: ActivityFractureUtilAPI5 = new ActivityFractureUtilAPI5();
+    private: static const ActivityFractureUtilAPI5 instance5 = ActivityFractureUtilAPI5();
 
-    public static ActivityFractureUtilAPI5 getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI5.instance5;
-    
-}
-
-
-    private: const FEATURE_TOUCHSCREEN_MULTITOUCH: string = "android.hardware.touchscreen.multitouch";
-
-    private: const FEATURE_TOUCHSCREEN: string = "android.hardware.touchscreen";
-
-    private: const FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT: string = "android.hardware.touchscreen.multitouch.distinct";
-
-    public process(Activity activity){
-
-    touchScreenFactory: TouchScreenFactory = TouchScreenFactory.getInstance()!;;
-    
-
-    touchScreenTypeFactory: TouchScreenTypeFactory = TouchScreenTypeFactory.getInstance()!;;
-    
-touchScreenFactory!.setTouch(this.isTouch(activity));
-    
-touchScreenFactory!.setMultiTouch(this.isMultiTouch(activity));
-    
-touchScreenFactory!.setMultiTouchDistinct(this.isMultiTouchDistinct(activity));
-    
-touchScreenTypeFactory!.update(activity);
-    
-
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-PreLogUtil.put(touchScreenFactory!.toString(), this, commonStrings!.PROCESS);
-    
-}
-
-
-    bool isTouch(Activity activity){
+    public: static ActivityFractureUtilAPI5 getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isFeature(activity, this.FEATURE_TOUCHSCREEN);;
+                        return ActivityFractureUtilAPI5::instance5;
     
 }
 
 
-    bool isMultiTouch(Activity activity){
+    private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH = "android.hardware.touchscreen.multitouch";
 
+    private: const std::string FEATURE_TOUCHSCREEN = "android.hardware.touchscreen";
 
+    private: const std::string FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT = "android.hardware.touchscreen.multitouch.distinct";
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isFeature(activity, this.FEATURE_TOUCHSCREEN_MULTITOUCH);;
+    public: void process(Activity activity){
+
+    TouchScreenFactory touchScreenFactory = TouchScreenFactory::getInstance();;
+    
+
+    TouchScreenTypeFactory touchScreenTypeFactory = TouchScreenTypeFactory::getInstance();;
+    
+touchScreenFactory.setTouch(this->isTouch(activity));
+    
+touchScreenFactory.setMultiTouch(this->isMultiTouch(activity));
+    
+touchScreenFactory.setMultiTouchDistinct(this->isMultiTouchDistinct(activity));
+    
+touchScreenTypeFactory.update(activity);
+    
+
+    CommonStrings commonStrings = CommonStrings::getInstance();;
+    
+PreLogUtil::put(touchScreenFactory.toString(), this, commonStrings.PROCESS);
     
 }
 
 
-    bool isMultiTouchDistinct(Activity activity){
+    private: bool isTouch(Activity activity){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isFeature(activity, this.FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT);;
+                        return this->isFeature(activity, this->FEATURE_TOUCHSCREEN);;
     
 }
 
 
-    bool isFeature(Activity activity, string property){
+    private: bool isMultiTouch(Activity activity){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return activity.getPackageManager()!.hasSystemFeature(property);;
+                        return this->isFeature(activity, this->FEATURE_TOUCHSCREEN_MULTITOUCH);;
+    
+}
+
+
+    private: bool isMultiTouchDistinct(Activity activity){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->isFeature(activity, this->FEATURE_TOUCHSCREEN_MULTITOUCH_DISTINCT);;
+    
+}
+
+
+    private: bool isFeature(Activity activity, std::string property){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return activity.getPackageManager().hasSystemFeature(property);;
     
 }
 

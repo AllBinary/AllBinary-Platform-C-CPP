@@ -43,16 +43,15 @@
 class InputAutomationClientInformationFactory
             : public Object
          {
-        
 
-    private: static const instance: InputAutomationClientInformation = new InputAutomationClientInformation();
+    private: static InputAutomationClientInformation instance() { return InputAutomationClientInformation(); }
 
-    public static InputAutomationClientInformation getInstance(){
+    public: static InputAutomationClientInformation getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationClientInformationFactory.instance;
+                        return InputAutomationClientInformationFactory::instance();
     
 }
 

@@ -78,20 +78,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class StoreCategoryFactory: public CategoryAbstractFactory: public CategoryFactoryInterface {
-        
+class StoreCategoryFactory: public CategoryAbstractFactory, public CategoryFactoryInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: StoreCategoryFactory(TransformInfoInterface transformInfoInterface);
 
-    public CategoryInterface getRootInstance();
+    public: CategoryInterface getRootInstance();
 
-    public CategoryInterface getRootInstance(AbPath categoryPath);
+    public: CategoryInterface getRootInstance(AbPath categoryPath);
 
-    public CategoryInterface getRootInstanceFromNode(Node node);
+    public: CategoryInterface getRootInstanceFromNode(Node node);
 
 };
 

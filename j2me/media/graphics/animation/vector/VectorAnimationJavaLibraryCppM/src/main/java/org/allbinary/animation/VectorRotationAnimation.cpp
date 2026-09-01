@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <org/allbinary/direction/Direction.h>
@@ -57,50 +59,49 @@
 #include "AnimationBehavior.h"
 
 class VectorRotationAnimation: public VectorBaseRotationAnimation {
-        
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
-            super(AngleInfo.getInstance((AngleFactory.getInstance()!.TOTAL_ANGLE /currentPoints!.length)), currentPoints, basicColor, animationBehavior);
+public: VectorRotationAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior){
+            super(AngleInfo::getInstance((AngleFactory::getInstance().TOTAL_ANGLE /currentPoints.size())), currentPoints, basicColor, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.angleInfo!.adjustAngle(this.getFrame());
+this->angleInfo.adjustAngle(this->getFrame());
     
 }
 
 
-    public setFrameByDirection(Direction direction){
+    public: void setFrameByDirection(Direction direction){
 
-    angle: Angle = this.directionUtil!.getFrameAngle(direction)!;;
+    Angle angle = this->directionUtil.getFrameAngle(direction);;
     
-this.adjustFrameToAngle(angle);
-    
-}
-
-
-    public setFrameToAngle(Angle angle){
-this.adjustFrameToAngle(angle);
+this->adjustFrameToAngle(angle);
     
 }
 
 
-    public setFrame(int32_t index){
+    public: void setFrameToAngle(Angle angle){
+this->adjustFrameToAngle(angle);
+    
+}
+
+
+    public: void setFrame(int32_t index){
 super.setFrame(index);
     
-this.angleInfo!.adjustAngle(this.getFrame());
+this->angleInfo.adjustAngle(this->getFrame());
     
 }
 
 
-    public adjustFrame(int16_t newAngle){
-this.setFrame(this.frameUtil!.getFrameForAngle(newAngle, static_cast<int32_t>(this.angleInfo!.getAngleIncrementInfo()!.getAngleIncrement())));
+    public: void adjustFrame(int16_t newAngle){
+this->setFrame(this->frameUtil.getFrameForAngle(newAngle, static_cast<int32_t>(this->angleInfo.getAngleIncrementInfo().getAngleIncrement())));
     
 }
 
 
-    public adjustFrameToAngle(Angle newAngle){
-this.adjustFrame(newAngle!.getValue());
+    public: void adjustFrameToAngle(Angle newAngle){
+this->adjustFrame(newAngle.getValue());
     
 }
 

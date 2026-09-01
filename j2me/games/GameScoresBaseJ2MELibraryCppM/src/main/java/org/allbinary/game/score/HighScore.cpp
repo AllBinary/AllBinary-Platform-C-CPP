@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,121 +72,118 @@
 class HighScore
             : public Object
          {
-        
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-    private: name: string;
+    private: std::string name;
 
-    private: const gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: const score: int64_t;
+    private: int64_t score;
 
-    private: const scoreString: string;
+    private: std::string scoreString;
 
-public constructor (int32_t id, string name, GameInfo gameInfo, int64_t score){
-
-            super();
-        this.id= id;
+public: HighScore(int32_t id, std::string name, GameInfo gameInfo, int64_t score){
+this->id= id;
     
-this.name= name;
+this->name= name;
     
-this.gameInfo= gameInfo;
+this->gameInfo= gameInfo;
     
-this.score= score;
+this->score= score;
     
-this.scoreString= (this.score).toString();
+this->scoreString= std::to_string(score);
     
 }
 
 
-    public int32_t getId(){
+    public: int32_t getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public int64_t getScore(){
+    public: int64_t getScore(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.score;
+                        return this->score;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> getAsBytes(){
+    public: std::vector<int8_t> getAsBytes(){
 
-    byteArrayOutputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream byteArrayOutputStream = ByteArrayOutputStream();;
     
 
-    outputStream: DataOutputStream = new DataOutputStream(byteArrayOutputStream);;
+    DataOutputStream outputStream = DataOutputStream(byteArrayOutputStream);;
     
-outputStream!.writeUTF(this.getName());
+outputStream.writeUTF(this->getName());
     
-outputStream!.writeLong(this.getScore());
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return byteArrayOutputStream!.toByteArray();;
-    
-}
-
-
-    public GameInfo getGameInfo(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInfo;
-    
-}
-
-
-    public string getScoreString(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scoreString;
-    
-}
-
-
-    public setName(string name){
-this.name= name;
-    
-}
-
-
-    public string toString(){
-
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+outputStream.writeLong(this->getScore());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(this.name)!.append(commonSeps!.COLON)!.appendlong(this.score)!.append(commonSeps!.FORWARD_SLASH)!.append(this.scoreString)!.toString();;
+                        return byteArrayOutputStream.toByteArray();;
+    
+}
+
+
+    public: GameInfo getGameInfo(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->gameInfo;
+    
+}
+
+
+    public: std::string getScoreString(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->scoreString;
+    
+}
+
+
+    public: void setName(std::string name){
+this->name= name;
+    
+}
+
+
+    public: std::string toString(){
+
+    CommonSeps commonSeps = CommonSeps::getInstance();;
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringMaker().append(this->name).append(commonSeps.COLON).appendlong(this->score).append(commonSeps.FORWARD_SLASH).append(this->scoreString).toString();;
     
 }
 

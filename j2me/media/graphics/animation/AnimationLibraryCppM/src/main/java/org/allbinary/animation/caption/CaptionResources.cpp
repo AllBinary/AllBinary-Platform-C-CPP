@@ -42,9 +42,8 @@
 class CaptionResources
             : public Object
          {
-        
 
-    public static const RESOURCE: string = "/character_message_bubbled_box.png";
+    public: static const std::string RESOURCE = "/character_message_bubbled_box.png";
 
 };
 

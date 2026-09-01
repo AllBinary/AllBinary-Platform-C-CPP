@@ -45,17 +45,16 @@
 class EmailServerConfigurationData
             : public Object
          {
-        
 
-    public static const NAME: string = "EMAIL_SERVER_CONFIGURATION_NAME";
+    public: static const std::string NAME = "EMAIL_SERVER_CONFIGURATION_NAME";
 
-    public static const SERVER: string = "EMAIL_SERVER_CONFIGURATION_SERVER";
+    public: static const std::string SERVER = "EMAIL_SERVER_CONFIGURATION_SERVER";
 
-    public static const ACCOUNT: string = "EMAIL_SERVER_CONFIGURATION_ACCOUNT";
+    public: static const std::string ACCOUNT = "EMAIL_SERVER_CONFIGURATION_ACCOUNT";
 
-    public static const PASSWORD: string = "EMAIL_SERVER_CONFIGURATION_PASSWORD";
+    public: static const std::string PASSWORD = "EMAIL_SERVER_CONFIGURATION_PASSWORD";
 
-private constructor ();
+private: EmailServerConfigurationData();
 
 };
 

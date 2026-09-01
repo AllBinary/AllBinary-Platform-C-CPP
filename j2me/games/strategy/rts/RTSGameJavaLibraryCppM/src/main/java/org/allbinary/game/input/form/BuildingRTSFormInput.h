@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGRTSFORMINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_BUILDINGRTSFORMINPUT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/RuntimeException.h"
@@ -148,61 +150,60 @@
         #include "RTSFormInput.h"
 
 class BuildingRTSFormInput: public RTSFormInput {
-        
 
-    private: isUnitProducer: bool;
+    private: bool isUnitProducer;
 
-    private: const buildOnPathGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent buildOnPathGameNotificationEvent;
 
-    private: const spotTakenGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent spotTakenGameNotificationEvent;
 
-    private: const selectBuildSpotGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent selectBuildSpotGameNotificationEvent;
 
-    private: const roadCollisionGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent roadCollisionGameNotificationEvent;
 
-    private: const noMoneyGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent noMoneyGameNotificationEvent;
 
-    private: const buildingCollisionGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent buildingCollisionGameNotificationEvent;
 
-    private: const structureToCloseCollisionGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent structureToCloseCollisionGameNotificationEvent;
 
-    private: const buildingGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent buildingGameNotificationEvent;
 
-    private: const mapEdgeGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent mapEdgeGameNotificationEvent;
 
-    private: const dropCellPositionHistory: DropCellPositionHistory = DropCellPositionHistory.getInstance()!;
+    private: const DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();
 
-public constructor (std::vector<Group> groupInterface, bool isUnitProducer);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: BuildingRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer);
 
                 //@Throws(Exception.constructor)
             
-    public processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
-
-    public bool isPositionBlocked();
-
-    bool isDemoLocked(ABCustomItem item);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public buildFromMotionInput(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
+
+    public: bool isPositionBlocked();
+
+    private: bool isDemoLocked(ABCustomItem item);
 
                 //@Throws(Exception.constructor)
             
-    bool attemptBuild(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex);
+    public: void buildFromMotionInput(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
 
                 //@Throws(Exception.constructor)
             
-    bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface);
+    protected: bool attemptBuild(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex);
 
                 //@Throws(Exception.constructor)
             
-    add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface);
+    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface);
 
-    bool isSurroundingCellsOffMap(RTSLayer layerInterface);
+                //@Throws(Exception.constructor)
+            
+    protected: void add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface);
+
+    private: bool isSurroundingCellsOffMap(RTSLayer layerInterface);
 
 };
 

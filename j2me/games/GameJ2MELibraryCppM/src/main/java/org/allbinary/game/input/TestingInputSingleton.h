@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_H
         #define ORG_ALLBINARY_GAME_INPUT_TESTINGINPUTSINGLETON_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -80,36 +82,35 @@
 #include "GameInputProcessorUtil.h"
 #include "TestInputInterface.h"
 
-class TestingInputSingleton: public AllBinaryGameLayer: public GameInputInterface {
-        
+class TestingInputSingleton: public AllBinaryGameLayer, public GameInputInterface {
 
-    private: static const instance: TestingInputSingleton = new TestingInputSingleton();
+    private: static TestingInputSingleton instance() { return TestingInputSingleton(); }
 
-    public static TestingInputSingleton getInstance();
+    public: static TestingInputSingleton getInstance();
 
-    const inputProcessorArray: std::vector<GameInputProcessor> = new Array(InputFactory.getInstance()!.MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
 
-private constructor ();
+private: TestingInputSingleton();
 
-    private: paintable: PaintableInterface = NullPaintable.getInstance()!;
+    private: PaintableInterface paintable = NullPaintable::getInstance();
 
-    public initInputProcessors();
+    public: void initInputProcessors();
 
-    public initInputProcessorsForTestInput(TestInputInterface aTestInputInterface);
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public processInputList(AllBinaryLayerManager allbinaryLayerManager, BasicArrayList list);
+    public: void initInputProcessorsForTestInput(TestInputInterface aTestInputInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public processInput(AllBinaryLayerManager allbinaryLayerManager);
+    public: void processInputList(AllBinaryLayerManager allbinaryLayerManager, BasicArrayList list);
 
-    public paint(Graphics graphics);
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool implmentsGameInputInterface();
+    public: void processInput(AllBinaryLayerManager allbinaryLayerManager);
+
+    public: void paint(Graphics graphics);
+
+    public: bool implmentsGameInputInterface();
 
 };
 

@@ -68,11 +68,10 @@
 class RaceTrackStartPointUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static GPoint get(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t index);
+    public: static GPoint get(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t index);
 
 };
 

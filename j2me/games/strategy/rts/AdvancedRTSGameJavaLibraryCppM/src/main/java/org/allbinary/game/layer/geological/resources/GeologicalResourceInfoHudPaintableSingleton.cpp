@@ -43,16 +43,15 @@
 class GeologicalResourceInfoHudPaintableSingleton
             : public Object
          {
-        
 
-    private: static const instance: GeologicalResourceInfoHudPaintable = new GeologicalResourceInfoHudPaintable();
+    private: static GeologicalResourceInfoHudPaintable instance() { return GeologicalResourceInfoHudPaintable(); }
 
-    public static GeologicalResourceInfoHudPaintable getInstance(){
+    public: static GeologicalResourceInfoHudPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeologicalResourceInfoHudPaintableSingleton.instance;
+                        return GeologicalResourceInfoHudPaintableSingleton::instance();
     
 }
 

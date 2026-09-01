@@ -42,10 +42,8 @@
 class AndroidUtil
             : public Object
          {
-        
 
-public:
-        static bool isMemoryRestrictive(){
+    public: static bool isMemoryRestrictive(){
 
 
 
@@ -55,7 +53,7 @@ public:
 }
 
 
-        static bool isAndroid(){
+    public: static bool isAndroid(){
 
 
 
@@ -65,8 +63,8 @@ public:
 }
 
 
-private:
-        AndroidUtil() = default;
+private: AndroidUtil(){
+}
 
 
 };

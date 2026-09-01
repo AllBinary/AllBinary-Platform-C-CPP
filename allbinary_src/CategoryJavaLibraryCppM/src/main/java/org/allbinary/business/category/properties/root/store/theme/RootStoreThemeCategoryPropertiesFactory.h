@@ -72,21 +72,20 @@
 class RootStoreThemeCategoryPropertiesFactory
             : public Object
         : public CategoryPropertiesFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: categoryPropertiesInterface: CategoryPropertiesInterface;
+    private: CategoryPropertiesInterface categoryPropertiesInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface);
 
-public constructor (TransformInfoInterface transformInfoInterface, AbPath abPath);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, AbPath abPath);
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, Node node);
 
-public constructor (TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap);
+public: RootStoreThemeCategoryPropertiesFactory(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap);
 
-    public CategoryPropertiesInterface getInstance();
+    public: CategoryPropertiesInterface getInstance();
 
 };
 

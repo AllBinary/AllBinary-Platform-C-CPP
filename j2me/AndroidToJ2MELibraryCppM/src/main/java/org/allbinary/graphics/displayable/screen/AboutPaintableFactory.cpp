@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/graphics/paint/NullPaintable.h>
@@ -48,24 +50,23 @@
 class AboutPaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: AboutPaintableFactory = new AboutPaintableFactory();
+    private: static AboutPaintableFactory instance() { return AboutPaintableFactory(); }
 
-    public static AboutPaintableFactory getInstance(){
+    public: static AboutPaintableFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AboutPaintableFactory.instance;
+                        return AboutPaintableFactory::instance();
     
 }
 
 
-    public paintableArray: std::vector<Paintable> = 
-                                                [
-                                                    NullPaintable.getInstance()
-                                                ];
+    public: std::vector<Paintable> paintableArray = 
+                                                {
+                                                    NullPaintable::getInstance()
+                                                };
 
 };
 

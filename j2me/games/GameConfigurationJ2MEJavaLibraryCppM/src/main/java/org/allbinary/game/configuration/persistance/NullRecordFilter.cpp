@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/microedition/rms/RecordFilter.h>
@@ -45,11 +47,10 @@
 class NullRecordFilter
             : public Object
         : public RecordFilter {
-        
 
-    public static NULL_RECORD_FILTER: NullRecordFilter = new NullRecordFilter();
+    public: static NullRecordFilter NULL_RECORD_FILTER = NullRecordFilter();
 
-    public bool matches(std::vector<int8_t> candidate){
+    public: bool matches(std::vector<int8_t> candidate){
 
 
 

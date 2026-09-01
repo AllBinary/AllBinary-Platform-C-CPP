@@ -21,6 +21,8 @@
         #ifndef ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_H
         #define ORG_OSGI_FRAMEWORK_NULLSERVICEREFERENCE_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -53,13 +55,12 @@
 class NullServiceReference
             : public Object
          {
-        
 
-    public any getProperty(string key);
+    public: Object* getProperty(std::string key);
 
-    public std::vector<string> getPropertyKeys();
+    public: std::vector<std::string> getPropertyKeys();
 
-    public int32_t compareTo(any = {} o);
+    public: int32_t compareTo(Object* o);
 
 };
 

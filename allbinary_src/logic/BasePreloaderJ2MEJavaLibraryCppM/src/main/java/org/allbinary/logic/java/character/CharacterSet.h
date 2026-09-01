@@ -54,11 +54,10 @@
 class CharacterSet
             : public Object
          {
-        
 
-public constructor ();
+public: CharacterSet();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

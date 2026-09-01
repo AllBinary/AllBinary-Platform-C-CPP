@@ -46,15 +46,14 @@
 #include "RaceTrackData.h"
 
 class RaceTrackGeographicMapInterface: public GeographicMapInterface {
-        
 
     RaceTrackInfo getRaceTrackInfo();
 
-    setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo);
+    void setRaceTrackInfo(RaceTrackInfo aRaceTrackInfo);
 
     RaceTrackData getRaceTrackData();
 
-    setRaceTrackData(RaceTrackData raceTrackData);
+    void setRaceTrackData(RaceTrackData raceTrackData);
 
 };
 

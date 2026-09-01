@@ -80,47 +80,46 @@
 class ReleaseControlledMotionGestureListener
             : public Object
         : public MotionGestureEventListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: currentMotionGesture: MotionGestureInput = TouchMotionGestureFactory.getInstance()!.NO_MOTION;
+    private: MotionGestureInput currentMotionGesture = TouchMotionGestureFactory::getInstance().NO_MOTION;
 
-    private: isMouseGestureOccurring: bool = false;
+    private: bool isMouseGestureOccurring = false;
 
-    private: motionGestureCollection: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList motionGestureCollection = BasicArrayListD();
 
-    private: signed: CompleteMotionGestureListenerInterface;
+    private: CompleteMotionGestureListenerInterface signed;
 
-public constructor (CompleteMotionGestureListenerInterface signed);
+public: ReleaseControlledMotionGestureListener(CompleteMotionGestureListenerInterface signed);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onUpMotionGestureEvent(MotionGestureEvent ev);
+    public: void onUpMotionGestureEvent(MotionGestureEvent ev);
 
-    public onDownMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDownMotionGestureEvent(MotionGestureEvent ev);
 
-    public onLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: void onLeftMotionGestureEvent(MotionGestureEvent ev);
 
-    public onRightMotionGestureEvent(MotionGestureEvent ev);
+    public: void onRightMotionGestureEvent(MotionGestureEvent ev);
 
-    public onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev);
 
-    public onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev);
 
-    public onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev);
 
-    public onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev);
+    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev);
 
-    public onPressedMotionGestureEvent(MotionGestureEvent ev);
+    public: void onPressedMotionGestureEvent(MotionGestureEvent ev);
 
-    public onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
 
-    public released(MotionGestureEvent ev);
+    public: void released(MotionGestureEvent ev);
 
-    public onMotionGestureEvent(MotionGestureEvent ev);
+    public: void onMotionGestureEvent(MotionGestureEvent ev);
 
 };
 

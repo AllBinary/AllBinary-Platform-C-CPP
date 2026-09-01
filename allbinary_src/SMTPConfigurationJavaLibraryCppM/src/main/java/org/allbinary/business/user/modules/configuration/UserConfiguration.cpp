@@ -61,82 +61,77 @@
 class UserConfiguration
             : public Object
         : public UserConfigurationInterface {
-        
 
-    private: userEmailConfigurationInterface: UserEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
 
-    private: timeCreated: TimeCreated;
+    private: TimeCreated timeCreated;
 
-    private: timeLastModified: TimeLastModified;
+    private: TimeLastModified timeLastModified;
 
-public constructor (){
-
-            super();
-        this.userEmailConfigurationInterface= new UserEmailConfiguration() as UserEmailConfigurationInterface;
+public: UserConfiguration(){
+this->userEmailConfigurationInterface= UserEmailConfiguration() as UserEmailConfigurationInterface;
     
-this.timeCreated= new TimeCreated(0);
+this->timeCreated= TimeCreated(0);
     
-this.timeLastModified= new TimeLastModified(0);
+this->timeLastModified= TimeLastModified(0);
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.userEmailConfigurationInterface= new UserEmailConfiguration(hashMap) as UserEmailConfigurationInterface;
+public: UserConfiguration(HashMap<any, any> hashMap){
+this->userEmailConfigurationInterface= UserEmailConfiguration(hashMap) as UserEmailConfigurationInterface;
     
-this.timeCreated= new TimeCreated(hashMap!.get(EntryData.getInstance()!.TIMECREATED) as string);
+this->timeCreated= TimeCreated(hashMap.get(EntryData::getInstance().TIMECREATED) as string);
     
-this.timeLastModified= new TimeLastModified(hashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as string);
+this->timeLastModified= TimeLastModified(hashMap.get(EntryData::getInstance().LASTMODIFIED) as string);
     
 }
 
 
-    public UserEmailConfigurationInterface getUserEmailConfigurationInterface(){
+    public: UserEmailConfigurationInterface getUserEmailConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.userEmailConfigurationInterface;
+                        return this->userEmailConfigurationInterface;
     
 }
 
 
-    public setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface){
-this.userEmailConfigurationInterface= userEmailConfigurationInterface;
+    public: void setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface){
+this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public TimeCreated getTimeCreated(){
+    public: TimeCreated getTimeCreated(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeCreated;
+                        return this->timeCreated;
     
 }
 
 
-    public TimeLastModified getTimeLastModified(){
+    public: TimeLastModified getTimeLastModified(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeLastModified;
+                        return this->timeLastModified;
     
 }
 
 
-    public setTimeCreated(TimeCreated timeCreated){
-this.timeCreated= timeCreated;
+    public: void setTimeCreated(TimeCreated timeCreated){
+this->timeCreated= timeCreated;
     
 }
 
 
-    public setTimeLastModified(TimeLastModified timeLastModified){
-this.timeLastModified= timeLastModified;
+    public: void setTimeLastModified(TimeLastModified timeLastModified){
+this->timeLastModified= timeLastModified;
     
 }
 

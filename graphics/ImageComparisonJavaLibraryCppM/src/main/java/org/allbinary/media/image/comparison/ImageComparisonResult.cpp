@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Long.h"
@@ -65,72 +67,69 @@
 class ImageComparisonResult
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const bufferedImages: std::vector<BufferedImage> = new Array(2);
+    private: const std::vector<BufferedImage> bufferedImages = new Array(2);
 
-    public const name: string;
+    public: std::string name;
 
-    public const isSameHeight: bool= false;
+    public: const bool isSameHeight= false;
 
-    public const isSameWidth: bool= false;
+    public: const bool isSameWidth= false;
 
-    public const imageHeight: int32_t;
+    public: int32_t imageHeight;
 
-    public const imageWidth: int32_t;
+    public: int32_t imageWidth;
 
-    private: const nonMatchingPixelVector: Vector;
+    private: Vector nonMatchingPixelVector;
 
-    private: const frameOne: Long;
+    private: Long frameOne;
 
-    private: const frameTwo: Long;
+    private: Long frameTwo;
 
-    public pixelsThatMatch: int32_t= 0;
+    public: int32_t pixelsThatMatch= 0;
 
-    public pixelsIgnored: int32_t= 0;
+    public: int32_t pixelsIgnored= 0;
 
-    private: tolerance: int32_t= 0;
+    private: int32_t tolerance= 0;
 
-    private: matchingPercent: float =  -1;
+    private: float matchingPercent =  -1;
 
-public constructor (string name, BufferedImage bufferedImage, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance){
-
-            super();
-        this.name= name;
+public: ImageComparisonResult(std::string name, BufferedImage bufferedImage, BufferedImage bufferedImage2, Long frameOne, Long frameTwo, int32_t tolerance){
+this->name= name;
     
-this.nonMatchingPixelVector= new Vector();
+this->nonMatchingPixelVector= Vector();
     
-this.bufferedImages[0]= bufferedImage;
+this->bufferedImages[0]= bufferedImage;
     
-this.bufferedImages[1]= bufferedImage2;
+this->bufferedImages[1]= bufferedImage2;
     
-this.frameOne= frameOne;
+this->frameOne= frameOne;
     
-this.frameTwo= frameTwo;
+this->frameTwo= frameTwo;
     
-this.setTolerance(0);
+this->setTolerance(0);
     
 
-    imageHeight: int32_t = bufferedImage!.getHeight()!;;
+    int32_t imageHeight = bufferedImage.getHeight();;
     
 
-    imageWidth: int32_t = bufferedImage!.getWidth()!;;
+    int32_t imageWidth = bufferedImage.getWidth();;
     
 
-                        if(bufferedImage!.getHeight() != bufferedImage2!.getHeight())
+                        if(bufferedImage.getHeight() != bufferedImage2.getHeight())
                         
                                     {
-                                    this.isSameHeight= false;
+                                    this->isSameHeight= false;
     
 
-                        if(imageHeight > bufferedImage2!.getHeight())
+                        if(imageHeight > bufferedImage2.getHeight())
                         
                                     {
-                                    imageHeight= bufferedImage2!.getHeight();
+                                    imageHeight= bufferedImage2.getHeight();
     
 
                                     }
@@ -139,22 +138,22 @@ this.setTolerance(0);
                                     }
                                 
                         else {
-                            this.isSameHeight= true;
+                            this->isSameHeight= true;
     
 
                         }
                             
 
-                        if(bufferedImage!.getWidth() != bufferedImage2!.getWidth())
+                        if(bufferedImage.getWidth() != bufferedImage2.getWidth())
                         
                                     {
-                                    this.isSameWidth= false;
+                                    this->isSameWidth= false;
     
 
-                        if(imageWidth > bufferedImage2!.getWidth())
+                        if(imageWidth > bufferedImage2.getWidth())
                         
                                     {
-                                    imageWidth= bufferedImage2!.getWidth();
+                                    imageWidth= bufferedImage2.getWidth();
     
 
                                     }
@@ -163,27 +162,27 @@ this.setTolerance(0);
                                     }
                                 
                         else {
-                            this.isSameWidth= true;
+                            this->isSameWidth= true;
     
 
                         }
                             
-this.imageWidth= imageWidth;
+this->imageWidth= imageWidth;
     
-this.imageHeight= imageHeight;
+this->imageHeight= imageHeight;
     
 
-                        if(!this.isSameWidth || !this.isSameHeight)
+                        if(!this->isSameWidth || !this->isSameHeight)
                         
                                     {
                                     
-    imageUtil: ImageUtil = ImageUtil.getInstance()!;;
+    ImageUtil imageUtil = ImageUtil::getInstance();;
     
-this.logUtil!.putF("Images were not the same size? Most likely a resolution change.", this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("Images were not the same size? Most likely a resolution change.", this, this->commonStrings.CONSTRUCTOR);
     
-this.logUtil!.putF("1: " +imageUtil!.toString(bufferedImage), this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("1: " +imageUtil.toString(bufferedImage), this, this->commonStrings.CONSTRUCTOR);
     
-this.logUtil!.putF("2: " +imageUtil!.toString(bufferedImage2), this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("2: " +imageUtil.toString(bufferedImage2), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -191,12 +190,12 @@ this.logUtil!.putF("2: " +imageUtil!.toString(bufferedImage2), this, this.common
 }
 
 
-    public float getMatchingPercent(){
+    public: float getMatchingPercent(){
 
-                        if(this.matchingPercent ==  -1)
+                        if(this->matchingPercent ==  -1)
                         
                                     {
-                                    this.matchingPercent= this.pixelsThatMatch /(this.imageWidth *this.imageHeight);
+                                    this->matchingPercent= this->pixelsThatMatch /(this->imageWidth *this->imageHeight);
     
 
                                     }
@@ -205,79 +204,79 @@ this.logUtil!.putF("2: " +imageUtil!.toString(bufferedImage2), this, this.common
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.matchingPercent;
+                        return this->matchingPercent;
     
 }
 
 
-    public add(PixelDelta pixel){
-this.nonMatchingPixelVector!.add(pixel);
+    public: void add(PixelDelta pixel){
+this->nonMatchingPixelVector.add(pixel);
     
 }
 
 
-    public Vector getNonMatchingPixelVector(){
+    public: Vector getNonMatchingPixelVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nonMatchingPixelVector;
+                        return this->nonMatchingPixelVector;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append("ImageComparisonInfo: ")!.append(this.name)!.append(" Number Of Matching Pixels: ")!.appendint(this.pixelsThatMatch)!.append("\nNumber Of Non-Matching Pixels: ")!.appendint(this.getNonMatchingPixelVector()!.size())!.append("\nNumber Of Pixels Ignored: ")!.appendint(this.pixelsIgnored)!.append("\nMatching Percentage: ")!.appendfloat(this.getMatchingPercent())!.toString();;
+                        return StringMaker().append("ImageComparisonInfo: ").append(this->name).append(" Number Of Matching Pixels: ").appendint(this->pixelsThatMatch).append("\nNumber Of Non-Matching Pixels: ").appendint(this->getNonMatchingPixelVector().size()).append("\nNumber Of Pixels Ignored: ").appendint(this->pixelsIgnored).append("\nMatching Percentage: ").appendfloat(this->getMatchingPercent()).toString();;
     
 }
 
 
-    public std::vector<BufferedImage> getBufferedImages(){
+    public: std::vector<BufferedImage> getBufferedImages(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bufferedImages;
+                        return this->bufferedImages;
     
 }
 
 
-    public int32_t getTolerance(){
+    public: int32_t getTolerance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tolerance;
+                        return this->tolerance;
     
 }
 
 
-    setTolerance(int32_t tolerance){
-this.tolerance= tolerance;
+    private: void setTolerance(int32_t tolerance){
+this->tolerance= tolerance;
     
 }
 
 
-    public Long getFrameOne(){
+    public: Long getFrameOne(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frameOne;
+                        return this->frameOne;
     
 }
 
 
-    public Long getFrameTwo(){
+    public: Long getFrameTwo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frameTwo;
+                        return this->frameTwo;
     
 }
 

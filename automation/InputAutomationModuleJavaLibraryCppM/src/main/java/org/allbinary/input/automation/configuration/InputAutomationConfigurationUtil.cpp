@@ -51,16 +51,15 @@
 class InputAutomationConfigurationUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static InputAutomationConfigurationModuleChangeEvent getChangeEvent(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
+    public: static InputAutomationConfigurationModuleChangeEvent getChangeEvent(InputAutomationModuleFactoryInterface inputAutomationModuleInterface){
 
-    inputAutomationModuleConfiguration: InputAutomationModuleConfiguration = new InputAutomationModuleConfiguration(inputAutomationModuleInterface);;
+    InputAutomationModuleConfiguration inputAutomationModuleConfiguration = InputAutomationModuleConfiguration(inputAutomationModuleInterface);;
     
 
-    inputAutomationConfigurationModuleChangeEvent: InputAutomationConfigurationModuleChangeEvent = new InputAutomationConfigurationModuleChangeEvent(inputAutomationModuleConfiguration);;
+    InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationModuleChangeEvent = InputAutomationConfigurationModuleChangeEvent(inputAutomationModuleConfiguration);;
     
 
 
@@ -71,10 +70,8 @@ class InputAutomationConfigurationUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InputAutomationConfigurationUtil(){
+}
 
 
 };

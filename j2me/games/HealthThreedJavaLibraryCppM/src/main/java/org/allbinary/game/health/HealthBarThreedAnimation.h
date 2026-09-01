@@ -80,23 +80,22 @@
         #include "HealthBarAnimation.h"
 
 class HealthBarThreedAnimation: public HealthBarAnimation {
-        
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-public constructor (AllBinaryLayer layerInterface, int32_t location);
+public: HealthBarThreedAnimation(AllBinaryLayer layerInterface, int32_t location);
 
-    updateColor();
+    private: void updateColor();
 
-    updateSize();
+    private: void updateSize();
 
-    public onHealthChange(int32_t newX2);
+    public: void onHealthChange(int32_t newX2);
 
-    private: const object3dProcessor: Object3dProcessor = Object3dProcessorUtil.getInstance()!.getInstanceObject3dProcessor()!;
+    private: const Object3dProcessor object3dProcessor = Object3dProcessorUtil::getInstance().getInstanceObject3dProcessor();
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

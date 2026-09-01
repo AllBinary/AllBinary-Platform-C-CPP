@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_SELECT_HTMLSELECT_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_DHTML_HTML_SELECT_HTMLSELECT_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Vector.h>
@@ -55,55 +57,54 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HtmlSelect: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const STARTSELECT: string = "<SELECT ";
+    private: const std::string STARTSELECT = "<SELECT ";
 
-    private: const ENDSELECT: string = "</SELECT>";
+    private: const std::string ENDSELECT = "</SELECT>";
 
-    private: const SIZE: string = "SIZE=\"";
+    private: const std::string SIZE = "SIZE=\"";
 
-    private: const NAME: string = "NAME=\"";
+    private: const std::string NAME = "NAME=\"";
 
-    private: const STARTOPTION: string = "<OPTION";
+    private: const std::string STARTOPTION = "<OPTION";
 
-    private: const SELETED: string = "SELECTED";
+    private: const std::string SELETED = "SELECTED";
 
-    private: const ENDOPTION: string = "</OPTION>";
+    private: const std::string ENDOPTION = "</OPTION>";
 
-    private: before: string;
+    private: std::string before;
 
-    private: name: string;
+    private: std::string name;
 
-    private: after: string;
+    private: std::string after;
 
-    private: size: string;
+    private: std::string size;
 
-    private: selected: string;
+    private: std::string selected;
 
-    private: options: Vector;
+    private: Vector options;
 
-    private: multiple: string = "multiple";
+    private: std::string multiple = "multiple";
 
-    private: isMultipleSelect: bool = false;
+    private: bool isMultipleSelect = false;
 
-public constructor (string before, string size, string name, string after);
+public: HtmlSelect(std::string before, std::string size, std::string name, std::string after);
 
-    public addOption(string key);
+    public: void addOption(std::string key);
 
-    public addOptions(string fileName);
+    public: void addOptions(std::string fileName);
 
-    public setSelected(string selected);
+    public: void setSelected(std::string selected);
 
-    public bool isMultiple();
+    public: bool isMultiple();
 
-    public setMultiple(bool value);
+    public: void setMultiple(bool value);
 
-    string getOptions();
+    private: std::string getOptions();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

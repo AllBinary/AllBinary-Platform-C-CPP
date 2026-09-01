@@ -69,35 +69,34 @@
 class AbeHttpRequestInfo
             : public Object
          {
-        
 
-    private: const NAME: string = "AbeHttpRequestInfo";
+    private: const std::string NAME = "AbeHttpRequestInfo";
 
-    private: const abeHttpRequestInfoData: AbeHttpRequestInfoData = AbeHttpRequestInfoData.getInstance()!;
+    private: const AbeHttpRequestInfoData abeHttpRequestInfoData = AbeHttpRequestInfoData::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: httpUserAgent: string;
+    private: std::string httpUserAgent;
 
-    private: remoteAddress: string;
+    private: std::string remoteAddress;
 
-    private: remoteHost: string;
+    private: std::string remoteHost;
 
-    private: remoteHostByAddr: string;
+    private: std::string remoteHostByAddr;
 
-    private: remotePort: string;
+    private: std::string remotePort;
 
-    private: requestedFilePath: string;
+    private: std::string requestedFilePath;
 
-public constructor (HashMap<any, any> hashMap);
+public: AbeHttpRequestInfo(HashMap<any, any> hashMap);
 
-public constructor (HttpServletRequest httpServletRequest);
+public: AbeHttpRequestInfo(HttpServletRequest httpServletRequest);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

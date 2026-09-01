@@ -55,33 +55,32 @@
 class PathFindingInfo
             : public Object
         : public PathFindingInfoInterface {
-        
 
-    public static const NULL_PATH_FINDING_INFO: PathFindingInfo = new PathFindingInfo(PathFindingNodeCostInfoFactoryBase.NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil.getInstance()!.getImmutableInstance(), BasicArrayListUtil.getInstance()!.getImmutableInstance());
+    public: static const PathFindingInfo NULL_PATH_FINDING_INFO = PathFindingInfo(PathFindingNodeCostInfoFactoryBase::NULL_PATH_FINDING_NODE_COST_INFO_FACTORY_BASE, BasicArrayListUtil::getInstance().getImmutableInstance(), BasicArrayListUtil::getInstance().getImmutableInstance());
 
-    private: pathFinder: GeographicPathFinderBase = GeographicPathFinderBase.NULL_GEOGRAPHIC_PATH_FINDER_BASE;
+    private: GeographicPathFinderBase pathFinder = GeographicPathFinderBase::NULL_GEOGRAPHIC_PATH_FINDER_BASE;
 
-    private: const startPathFindingNodeList: BasicArrayList;
+    private: BasicArrayList startPathFindingNodeList;
 
-    private: const endPathFindingNodeList: BasicArrayList;
+    private: BasicArrayList endPathFindingNodeList;
 
-    private: const pathFindingNodeCostInfoFactoryInterface: PathFindingNodeCostInfoFactoryBase;
+    private: PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface;
 
-public constructor (PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
+public: PathFindingInfo(PathFindingNodeCostInfoFactoryBase pathFindingNodeCostInfoFactoryInterface, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList);
 
-    public BasicArrayList getStartPathFindingNodeList();
+    public: BasicArrayList getStartPathFindingNodeList();
 
-    public BasicArrayList getEndPathFindingNodeList();
+    public: BasicArrayList getEndPathFindingNodeList();
 
-    public GeographicPathFinderBase getPathFinder();
+    public: GeographicPathFinderBase getPathFinder();
 
-    public addStartPathFindingNode(PathFindingNode startPathFindingNode);
+    public: void addStartPathFindingNode(PathFindingNode startPathFindingNode);
 
-    public addEndPathFindingNode(PathFindingNode endPathFindingNode);
+    public: void addEndPathFindingNode(PathFindingNode endPathFindingNode);
 
-    public setPathFinder(GeographicPathFinderBase pathFinder);
+    public: void setPathFinder(GeographicPathFinderBase pathFinder);
 
-    public PathFindingNodeCostInfoFactoryBase getPathFindingNodeCostInfoFactoryInterface();
+    public: PathFindingNodeCostInfoFactoryBase getPathFindingNodeCostInfoFactoryInterface();
 
 };
 

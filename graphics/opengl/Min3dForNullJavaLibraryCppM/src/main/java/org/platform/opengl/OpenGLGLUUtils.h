@@ -45,17 +45,16 @@
 class OpenGLGLUUtils
             : public Object
          {
-        
 
-    private: static const instance: OpenGLGLUUtils = new OpenGLGLUUtils();
+    private: static OpenGLGLUUtils instance() { return OpenGLGLUUtils(); }
 
-    public static OpenGLGLUUtils getInstance();
+    public: static OpenGLGLUUtils getInstance();
 
-    public ByteBuffer makeByteBuffer(OpenGLBitmap bmp, bool flip);
+    public: ByteBuffer makeByteBuffer(OpenGLBitmap bmp, bool flip);
 
-    public texImage2D(GL10 gl, string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLESImage openGLESImage, int32_t border, bool flip);
+    public: void texImage2D(GL10 gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLESImage openGLESImage, int32_t border, bool flip);
 
-    public texImage2D(GL10 gl, string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLBitmap bitmap, int32_t border, bool flip);
+    public: void texImage2D(GL10 gl, std::string glVersion, int32_t target, int32_t level, bool generateMipMap, OpenGLBitmap bitmap, int32_t border, bool flip);
 
 };
 

@@ -54,11 +54,10 @@
         #include "CollidableDestroyableDamageableLayer.h"
 
 class SpecialGameInputProcessor: public GameInputProcessor {
-        
 
-    const collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer;
+    protected: CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer;
 
-public constructor (CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
+public: SpecialGameInputProcessor(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer);
 
 };
 

@@ -60,17 +60,16 @@
 class NoCompleteMotionGestureInputEventListener
             : public Object
         : public CompleteMotionGestureInputEventListenerInterface {
-        
 
-    private: static const instance: NoCompleteMotionGestureInputEventListener = new NoCompleteMotionGestureInputEventListener();
+    private: static NoCompleteMotionGestureInputEventListener instance() { return NoCompleteMotionGestureInputEventListener(); }
 
-    public static NoCompleteMotionGestureInputEventListener getInstance();
+    public: static NoCompleteMotionGestureInputEventListener getInstance();
 
-private constructor ();
+private: NoCompleteMotionGestureInputEventListener();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
 
 };
 

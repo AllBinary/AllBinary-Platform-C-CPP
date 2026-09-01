@@ -38,13 +38,11 @@
 class R
             : public Object
          {
-        
 
 //inner= member=true isStatic=static
 class attr
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -55,7 +53,6 @@ class attr
 class drawable
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
@@ -66,17 +63,16 @@ class drawable
 class id
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*/
-    public static const custom_web_view: int32_t = 0x7f050000;
+    public: static const int32_t custom_web_view = 0x7f050000;
 
-    public static const ad_area_bottom: int32_t = 0x7f060002;
+    public: static const int32_t ad_area_bottom = 0x7f060002;
 
-    public static const ad_area_left: int32_t = 0x7f060003;
+    public: static const int32_t ad_area_left = 0x7f060003;
 
-    public static const ad_area_right: int32_t = 0x7f060004;
+    public: static const int32_t ad_area_right = 0x7f060004;
 
-    public static const ad_area_top: int32_t = 0x7f060001;
+    public: static const int32_t ad_area_top = 0x7f060001;
 /**/
 
 
@@ -87,9 +83,8 @@ class id
 class layout
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*/
-    public static const webview_layout: int32_t = 0x7f020000;
+    public: static const int32_t webview_layout = 0x7f020000;
 /**/
 
 
@@ -100,71 +95,70 @@ class layout
 class raw
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*/
-    public static const about: int32_t = 0x7f030000;
+    public: static const int32_t about = 0x7f030000;
 
-    public static const privacy_policy: int32_t = 0x7f030001;
+    public: static const int32_t privacy_policy = 0x7f030001;
 
-    public static const error: int32_t = 0x7f040000;
+    public: static const int32_t error = 0x7f040000;
 
-    public static const licenseinitdata: int32_t = 0x7f040001;
+    public: static const int32_t licenseinitdata = 0x7f040001;
 
-    public static const partner: int32_t = 0x7f040002;
+    public: static const int32_t partner = 0x7f040002;
 
-    public static const select: int32_t = 0x7f040003;
+    public: static const int32_t select = 0x7f040003;
 
-    public static const test: int32_t = 0x7f040004;
+    public: static const int32_t test = 0x7f040004;
 
-    public static const testgamedemo_wait_256_by_256: int32_t = 0x7f040005;
+    public: static const int32_t testgamedemo_wait_256_by_256 = 0x7f040005;
 
-    public static const touch_button_128_by_128: int32_t = 0x7f040026;
+    public: static const int32_t touch_button_128_by_128 = 0x7f040026;
 
-    public static const touch_button_64_by_64: int32_t = 0x7f040027;
+    public: static const int32_t touch_button_64_by_64 = 0x7f040027;
 
-    public static const touch_button_down_arrow_128_by_128: int32_t = 0x7f04002a;
+    public: static const int32_t touch_button_down_arrow_128_by_128 = 0x7f04002a;
 
-    public static const touch_button_down_arrow_64_by_64: int32_t = 0x7f04002b;
+    public: static const int32_t touch_button_down_arrow_64_by_64 = 0x7f04002b;
 
-    public static const touch_button_generic_action_128_by_128: int32_t = 0x7f04002c;
+    public: static const int32_t touch_button_generic_action_128_by_128 = 0x7f04002c;
 
-    public static const touch_button_generic_action_64_by_64: int32_t = 0x7f04002d;
+    public: static const int32_t touch_button_generic_action_64_by_64 = 0x7f04002d;
 
-    public static const touch_button_start_128_by_128: int32_t = 0x7f040038;
+    public: static const int32_t touch_button_start_128_by_128 = 0x7f040038;
 
-    public static const touch_button_start_64_by_64: int32_t = 0x7f040039;
+    public: static const int32_t touch_button_start_64_by_64 = 0x7f040039;
 
-    public static const touch_button_strafe_left_arrow_128_by_128: int32_t = 0x7f04003a;
+    public: static const int32_t touch_button_strafe_left_arrow_128_by_128 = 0x7f04003a;
 
-    public static const touch_button_strafe_left_arrow_64_by_64: int32_t = 0x7f04003b;
+    public: static const int32_t touch_button_strafe_left_arrow_64_by_64 = 0x7f04003b;
 
-    public static const touch_button_strafe_right_arrow_128_by_128: int32_t = 0x7f04003c;
+    public: static const int32_t touch_button_strafe_right_arrow_128_by_128 = 0x7f04003c;
 
-    public static const touch_button_strafe_right_arrow_64_by_64: int32_t = 0x7f04003d;
+    public: static const int32_t touch_button_strafe_right_arrow_64_by_64 = 0x7f04003d;
 
-    public static const touch_button_turn_left_arrow_128_by_128: int32_t = 0x7f04003e;
+    public: static const int32_t touch_button_turn_left_arrow_128_by_128 = 0x7f04003e;
 
-    public static const touch_button_turn_left_arrow_64_by_64: int32_t = 0x7f04003f;
+    public: static const int32_t touch_button_turn_left_arrow_64_by_64 = 0x7f04003f;
 
-    public static const touch_button_turn_right_arrow_128_by_128: int32_t = 0x7f040040;
+    public: static const int32_t touch_button_turn_right_arrow_128_by_128 = 0x7f040040;
 
-    public static const touch_button_turn_right_arrow_64_by_64: int32_t = 0x7f040041;
+    public: static const int32_t touch_button_turn_right_arrow_64_by_64 = 0x7f040041;
 
-    public static const touch_button_up_arrow_128_by_128: int32_t = 0x7f040042;
+    public: static const int32_t touch_button_up_arrow_128_by_128 = 0x7f040042;
 
-    public static const touch_button_up_arrow_64_by_64: int32_t = 0x7f040043;
+    public: static const int32_t touch_button_up_arrow_64_by_64 = 0x7f040043;
 
-    public static const ouya_a: int32_t = 0x7f040012;
+    public: static const int32_t ouya_a = 0x7f040012;
 
-    public static const ouya_o: int32_t = 0x7f040014;
+    public: static const int32_t ouya_o = 0x7f040014;
 
-    public static const ouya_u: int32_t = 0x7f040015;
+    public: static const int32_t ouya_u = 0x7f040015;
 
-    public static const ouya_y: int32_t = 0x7f040016;
+    public: static const int32_t ouya_y = 0x7f040016;
 
-    public static const ouya_key: int32_t = 0x7f040013;
+    public: static const int32_t ouya_key = 0x7f040013;
 
-    public static const google_key: int32_t = 0x7f040013;
+    public: static const int32_t google_key = 0x7f040013;
 /**/
 
 
@@ -175,9 +169,8 @@ class raw
 class string
             : public Object
          {
-        
 /*Static stuff is not allowed for CPP inner classes*/
-    public static const progressbar_in_title_string: int32_t = 0x7f050001;
+    public: static const int32_t progressbar_in_title_string = 0x7f050001;
 /**/
 
 

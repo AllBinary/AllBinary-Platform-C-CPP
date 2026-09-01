@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/media/graphics/geography/map/BasicGeographicMap.h>
@@ -49,25 +51,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TopViewCharacterInterface {
-        
 
-    terrainMove(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, int32_t x, int32_t y)
-
-                //@Throws(Exception.constructor)
-            
-    terrainEvent(int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition)
-
-    move()
-
-    upp()
-
-    leftp()
-
-    rightp()
+    void terrainMove(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, int32_t x, int32_t y)
 
                 //@Throws(Exception.constructor)
             
-    reset()
+    void terrainEvent(int32_t x, int32_t y, std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition)
+
+    void move()
+
+    void upp()
+
+    void leftp()
+
+    void rightp()
+
+                //@Throws(Exception.constructor)
+            
+    void reset()
 
 };
 

@@ -68,68 +68,65 @@
 class ResourceUtil
             : public Object
          {
-        
 
-    private: static classLoader: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* classLoader = NullUtil::getInstance().NULL_OBJECT;
 
-    private: static const instance: ResourceUtil = new ResourceUtil();
+    private: static ResourceUtil instance() { return ResourceUtil(); }
 
-    public static ResourceUtil getInstance(){
+    public: static ResourceUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil.instance;
+                        return ResourceUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ResourceUtil(){
+}
 
 
-    public setLoadingPaths(string path, string ext){
-this.logUtil!.putF(CommonStrings.getInstance()!.NOT_IMPLEMENTED, this, "setLoadingPaths");
+    public: void setLoadingPaths(std::string path, std::string ext){
+this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
 
 
-    public setClassLoader(ClassLoader classLoader){
-this.logUtil!.putF(new StringMaker().append("Resource Loader: ")!.append(classLoader!.constructor.name.toString()!)!.toString(), this, "setClassLoader");
+    public: void setClassLoader(ClassLoader classLoader){
+this->logUtil.putF(StringMaker().append("Resource Loader: ").append(classLoader->constructor.name.toString()!).toString(), this, "setClassLoader");
     
-ResourceUtil.classLoader= classLoader;
+ResourceUtil::classLoader= classLoader;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resource){
+    public: InputStream getResourceAsStream(std::string resource){
 
-    inputStream: InputStream = this.getResourceAsStreamAtStart(resource, 2)!;;
+    InputStream inputStream = this->getResourceAsStreamAtStart(resource, 2);;
     
 
                         if(inputStream == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    inputStream= this.getResourceAsStreamAtStart(resource, 1);
+                                    inputStream= this->getResourceAsStreamAtStart(resource, 1);
     
 
                         if(inputStream == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception(new StringMaker().append("Unable to obtain: ")!.append(resource)!.toString());
+                            throw Exception(StringMaker().append("Unable to obtain: ").append(resource).toString());
                     
 
                                     }
@@ -148,22 +145,22 @@ ResourceUtil.classLoader= classLoader;
 
                 //@Throws(Exception.constructor)
             
-    InputStream getResourceAsStreamAtStart(string resource, int32_t startIndex){
+    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    index: int32_t = resource.indexOf(commonSeps!.COLON)!;;
+    int32_t index = resource.indexOf(commonSeps.COLON);;
     
 
-    resourcePath: string = resource.substring(index +startIndex)!;;
+    std::string resourcePath = resource.substring(index +startIndex);;
     
 
-    inputStream: InputStream = resource..javaClass.getResourceAsStream(resourcePath)!;;
+    InputStream inputStream = resource..javaClass.getResourceAsStream(resourcePath);;
     
 
                         if(inputStream != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -177,13 +174,13 @@ ResourceUtil.classLoader= classLoader;
                                     }
                                 
 
-    classLoader: ClassLoader = ResourceUtil.classLoader as ClassLoader;;
+    ClassLoader classLoader = ResourceUtil::classLoader as ClassLoader;;
     
-inputStream= classLoader!.getResourceAsStream(resourcePath);
+inputStream= classLoader->getResourceAsStream(resourcePath);
     
 
                         if(inputStream != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -196,11 +193,11 @@ inputStream= classLoader!.getResourceAsStream(resourcePath);
 
                                     }
                                 
-inputStream= Thread.currentThread()!.getContextClassLoader()!.getResourceAsStream(resourcePath);
+inputStream= Thread::currentThread().getContextClassLoader().getResourceAsStream(resourcePath);
     
 
                         if(inputStream != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -222,7 +219,7 @@ inputStream= Thread.currentThread()!.getContextClassLoader()!.getResourceAsStrea
 }
 
 
-    public addResource(string resource, Integer value){
+    public: void addResource(std::string resource, Integer value){
 }
 
 

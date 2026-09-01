@@ -63,17 +63,16 @@
 class Movement
             : public Object
         : public MovementInterface {
-        
 
-public constructor ();
+public: Movement();
 
-    public init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
+    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
-    public stop();
+    public: void stop();
 
 };
 

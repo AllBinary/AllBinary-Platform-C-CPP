@@ -48,94 +48,93 @@
 class PlayerStateUtil
             : public Object
          {
-        
 
-    private: static const instance: PlayerStateUtil = new PlayerStateUtil();
+    private: static PlayerStateUtil instance() { return PlayerStateUtil(); }
 
-    public static PlayerStateUtil getInstance(){
+    public: static PlayerStateUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlayerStateUtil.instance;
+                        return PlayerStateUtil::instance();
     
 }
 
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const UNREALIZED: string = "UNREALIZED";
+    public: const std::string UNREALIZED = "UNREALIZED";
 
-    public const REALIZED: string = "REALIZED";
+    public: const std::string REALIZED = "REALIZED";
 
-    public const PREFETCHED: string = "PREFETCHED";
+    public: const std::string PREFETCHED = "PREFETCHED";
 
-    public const STARTED: string = "STARTED";
+    public: const std::string STARTED = "STARTED";
 
-    public const CLOSED: string = "CLOSED";
+    public: const std::string CLOSED = "CLOSED";
 
-    public string convert(int32_t state){
+    public: std::string convert(int32_t state){
 
-                        if(state == PlayerI.UNREALIZED)
+                        if(state == Player::UNREALIZED)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.UNREALIZED;
+                        return this->UNREALIZED;
     
 
                                     }
                                 
                              else 
-                        if(state == PlayerI.REALIZED)
+                        if(state == Player::REALIZED)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.REALIZED;
+                        return this->REALIZED;
     
 
                                     }
                                 
                              else 
-                        if(state == PlayerI.PREFETCHED)
+                        if(state == Player::PREFETCHED)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.PREFETCHED;
+                        return this->PREFETCHED;
     
 
                                     }
                                 
                              else 
-                        if(state == PlayerI.STARTED)
+                        if(state == Player::STARTED)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.STARTED;
+                        return this->STARTED;
     
 
                                     }
                                 
                              else 
-                        if(state == PlayerI.CLOSED)
+                        if(state == Player::CLOSED)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.CLOSED;
+                        return this->CLOSED;
     
 
                                     }
@@ -144,7 +143,7 @@ class PlayerStateUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commonStrings!.UNKNOWN;
+                        return this->commonStrings.UNKNOWN;
     
 }
 

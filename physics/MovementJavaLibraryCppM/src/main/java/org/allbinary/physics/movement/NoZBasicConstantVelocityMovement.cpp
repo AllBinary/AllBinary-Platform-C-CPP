@@ -61,45 +61,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "Movement.h"
 
-class NoZBasicConstantVelocityMovement: public Movement: public VelocityInterfaceCompositeInterface {
-        
+class NoZBasicConstantVelocityMovement: public Movement, public VelocityInterfaceCompositeInterface {
 
-    private: velocityProperties: BasicVelocityProperties;
+    private: BasicVelocityProperties velocityProperties;
 
-    private: speedBasicDecimal: BasicDecimal = BasicDecimal.ZERO_BIGDECIMAL;
+    private: BasicDecimal speedBasicDecimal = BasicDecimal::ZERO_BIGDECIMAL;
 
-    private: const axisMathVectorUtil: AxisMathVectorUtil = AxisMathVectorUtil.getInstance()!;
+    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
-public constructor (BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties){
-
-            super();
-        this.setSpeedBasicDecimal(basicDecimal);
+public: NoZBasicConstantVelocityMovement(BasicDecimal basicDecimal, BasicVelocityProperties velocityProperties){
+this->setSpeedBasicDecimal(basicDecimal);
     
-this.velocityProperties= velocityProperties;
+this->velocityProperties= velocityProperties;
     
 }
 
 
-    public init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle){
-this.speedBasicDecimal= speedBasicDecimal;
+    public: void init(BasicDecimal speedBasicDecimal, int32_t angle, int32_t otherAngle){
+this->speedBasicDecimal= speedBasicDecimal;
     
 
-    angleFactory: AngleFactory = AngleFactory.getInstance()!;;
+    AngleFactory angleFactory = AngleFactory::getInstance();;
     
-this.velocityProperties!.setVelocityWithBigDecimal(speedBasicDecimal, angleFactory!.getAt(angle), angleFactory!.getAt(otherAngle));
+this->velocityProperties.setVelocityWithBigDecimal(speedBasicDecimal, angleFactory.getAt(angle), angleFactory.getAt(otherAngle));
     
 }
 
 
-    public moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle){
+    public: void moveOutsideRadius(AllBinaryLayer layer, int64_t radius, int32_t angle, int32_t otherAngle){
 
-    scaleFactorValue: int32_t = this.speedBasicDecimal!.getScaledFactorValue()!;;
+    int32_t scaleFactorValue = this->speedBasicDecimal.getScaledFactorValue();;
     
 
-    xVector: int32_t = static_cast<int32_t>((this.axisMathVectorUtil!.calculateX(radius, angle) /scaleFactorValue));;
+    int32_t xVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateX(radius, angle) /scaleFactorValue));;
     
 
-    yVector: int32_t = static_cast<int32_t>((this.axisMathVectorUtil!.calculateY(radius, angle) /scaleFactorValue));;
+    int32_t yVector = static_cast<int32_t>((this->axisMathVectorUtil.calculateY(radius, angle) /scaleFactorValue));;
     
 layer.moveDXYZ(xVector, yVector, 0);
     
@@ -108,56 +105,56 @@ layer.moveDXYZ(xVector, yVector, 0);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer){
-layer.moveDXYZ(this.velocityProperties!.getVelocityXBasicDecimalP()!.getScaled(), this.velocityProperties!.getVelocityYBasicDecimalP()!.getScaled(), 0);
+    public: void process(AllBinaryGameLayer layer){
+layer.moveDXYZ(this->velocityProperties.getVelocityXBasicDecimalP().getScaled(), this->velocityProperties.getVelocityYBasicDecimalP().getScaled(), 0);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.velocityProperties!.toString();;
+                        return this->velocityProperties.toString();;
     
 }
 
 
-    public stop(){
-this.velocityProperties!.zero();
+    public: void stop(){
+this->velocityProperties.zero();
     
 }
 
 
-    public BasicVelocityProperties getVelocityProperties(){
+    public: BasicVelocityProperties getVelocityProperties(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.velocityProperties;
+                        return this->velocityProperties;
     
 }
 
 
-    public setVelocityProperties(BasicVelocityProperties velocityProperties){
-this.velocityProperties= velocityProperties;
+    public: void setVelocityProperties(BasicVelocityProperties velocityProperties){
+this->velocityProperties= velocityProperties;
     
 }
 
 
-    setSpeedBasicDecimal(BasicDecimal speedBasicDecimal){
-this.speedBasicDecimal= speedBasicDecimal;
+    protected: void setSpeedBasicDecimal(BasicDecimal speedBasicDecimal){
+this->speedBasicDecimal= speedBasicDecimal;
     
 }
 
 
-    BasicDecimal getSpeedBasicDecimal(){
+    protected: BasicDecimal getSpeedBasicDecimal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.speedBasicDecimal;
+                        return this->speedBasicDecimal;
     
 }
 

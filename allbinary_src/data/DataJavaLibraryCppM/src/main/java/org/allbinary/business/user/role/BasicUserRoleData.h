@@ -45,11 +45,10 @@
 class BasicUserRoleData
             : public Object
          {
-        
 
-    public static const NAME: string = "BASIC_USER_ROLE_NAME";
+    public: static const std::string NAME = "BASIC_USER_ROLE_NAME";
 
-private constructor ();
+private: BasicUserRoleData();
 
 };
 

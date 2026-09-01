@@ -73,56 +73,38 @@
 #include "AllBinaryAdjustedAndroidImageRotationAnimation.h"
 
 class AllBinaryAndroidImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactory(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactory(Image image, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryAndroidImageRotationAnimationFactory(image, width, height, (AngleFactory.getInstance()!.TOTAL_ANGLE /GameConfigurationCentral.getInstance()!.getGameControlFidelity()), animationBehaviorFactory, false);
+                        return AllBinaryAndroidImageRotationAnimationFactory(image, width, height, (AngleFactory::getInstance().TOTAL_ANGLE /GameConfigurationCentral::getInstance().getGameControlFidelity()), animationBehaviorFactory, false);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryA(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryA(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryAndroidImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, false);
+                        return AllBinaryAndroidImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, false);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryU(Image image, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryU(Image image, AnimationBehaviorFactory animationBehaviorFactory){
 
-    androidImageRotationAnimationFactory: AllBinaryAndroidImageRotationAnimationFactory = new AllBinaryAndroidImageRotationAnimationFactory(image, image.getWidth(), image.getHeight(), (AngleFactory.getInstance()!.TOTAL_ANGLE /GameConfigurationCentral.getInstance()!.getGameControlFidelity()), animationBehaviorFactory, false);;
+    AllBinaryAndroidImageRotationAnimationFactory androidImageRotationAnimationFactory = AllBinaryAndroidImageRotationAnimationFactory(image, image.getWidth(), image.getHeight(), (AngleFactory::getInstance().TOTAL_ANGLE /GameConfigurationCentral::getInstance().getGameControlFidelity()), animationBehaviorFactory, false);;
     
-androidImageRotationAnimationFactory!.init( -(image.getWidth()>>2),  -(image.getHeight()>>2));
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return androidImageRotationAnimationFactory;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryDXYU(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
-
-    androidImageRotationAnimationFactory: AllBinaryAndroidImageRotationAnimationFactory = new AllBinaryAndroidImageRotationAnimationFactory(image, image.getWidth(), image.getHeight(), (AngleFactory.getInstance()!.TOTAL_ANGLE /GameConfigurationCentral.getInstance()!.getGameControlFidelity()), animationBehaviorFactory, false);;
-    
-androidImageRotationAnimationFactory!.init(dx, dy);
+androidImageRotationAnimationFactory.init( -(image.getWidth()>>2),  -(image.getHeight()>>2));
     
 
 
@@ -135,11 +117,11 @@ androidImageRotationAnimationFactory!.init(dx, dy);
 
                 //@Throws(Exception.constructor)
             
-    public static AllBinaryAndroidImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryDXYU(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
 
-    androidImageRotationAnimationFactory: AllBinaryAndroidImageRotationAnimationFactory = new AllBinaryAndroidImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);;
+    AllBinaryAndroidImageRotationAnimationFactory androidImageRotationAnimationFactory = AllBinaryAndroidImageRotationAnimationFactory(image, image.getWidth(), image.getHeight(), (AngleFactory::getInstance().TOTAL_ANGLE /GameConfigurationCentral::getInstance().getGameControlFidelity()), animationBehaviorFactory, false);;
     
-androidImageRotationAnimationFactory!.init(dx, dy);
+androidImageRotationAnimationFactory.init(dx, dy);
     
 
 
@@ -150,50 +132,67 @@ androidImageRotationAnimationFactory!.init(dx, dy);
 }
 
 
-    public init(int32_t dx, int32_t dy){
-this.animationFactoryInitializationVisitor!.dx= dx;
+                //@Throws(Exception.constructor)
+            
+    public: static AllBinaryAndroidImageRotationAnimationFactory createFactoryADXY(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
+
+    AllBinaryAndroidImageRotationAnimationFactory androidImageRotationAnimationFactory = AllBinaryAndroidImageRotationAnimationFactory(image, width, height, angleIncrement, animationBehaviorFactory, resizeCanvasForRotation);;
     
-this.animationFactoryInitializationVisitor!.dy= dy;
+androidImageRotationAnimationFactory.init(dx, dy);
     
-this.animationFactoryInitializationVisitor!.originalDx= dx;
-    
-this.animationFactoryInitializationVisitor!.originalDy= dy;
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return androidImageRotationAnimationFactory;
     
 }
 
 
-    private: const angleIncrement: int16_t;
+    public: void init(int32_t dx, int32_t dy){
+this->animationFactoryInitializationVisitor.dx= dx;
+    
+this->animationFactoryInitializationVisitor.dy= dy;
+    
+this->animationFactoryInitializationVisitor.originalDx= dx;
+    
+this->animationFactoryInitializationVisitor.originalDy= dy;
+    
+}
 
-    private: const resizeCanvasForRotation: bool;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
-            super(image, PrimitiveIntUtil.getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
+    private: int16_t angleIncrement;
+
+    private: bool resizeCanvasForRotation;
+
+public: AllBinaryAndroidImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory, bool resizeCanvasForRotation){
+            super(image, PrimitiveIntUtil::getArrayInstance(), width, height, 0, 0, animationBehaviorFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.angleIncrement= angleIncrement;
+this->angleIncrement= angleIncrement;
     
-this.resizeCanvasForRotation= resizeCanvasForRotation;
+this->resizeCanvasForRotation= resizeCanvasForRotation;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Image getCanvasImage(){
+    private: Image getCanvasImage(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(this.resizeCanvasForRotation && !features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(this->resizeCanvasForRotation && !features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil.getInstance()!.createImageScale(this.getImage(), 1.44, false);;
+                        return ImageCopyUtil::getInstance().createImageScale(this->getImage(), 1.44, false);;
     
 
                                     }
@@ -203,7 +202,7 @@ this.resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getImage();;
+                        return this->getImage();;
     
 
                         }
@@ -213,27 +212,27 @@ this.resizeCanvasForRotation= resizeCanvasForRotation;
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    canvasImage: Image = this.getCanvasImage()!;;
+    Image canvasImage = this->getCanvasImage();;
     
 
-    scaledImage: Image = this.animationFactoryImageScaleUtil!.createImage(canvasImage, this.animationFactoryInitializationVisitor!.width, this.animationFactoryInitializationVisitor!.height, this.scaleProperties!.scaleWidth, this.scaleProperties!.scaleHeight)!;;
+    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(canvasImage, this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
-    copyOfScaledImage: Image = ImageCopyUtil.getInstance()!.createImage(scaledImage)!;;
+    Image copyOfScaledImage = ImageCopyUtil::getInstance().createImage(scaledImage);;
     
 
-                        if(this.animationFactoryInitializationVisitor!.dx != 0 || this.animationFactoryInitializationVisitor!.dy != 0)
+                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
                         
                                     {
-                                    this.animationFactoryImageScaleUtil!.processAdjust(this);
+                                    this->animationFactoryImageScaleUtil.processAdjust(this);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryAdjustedAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo.getInstance(this.angleIncrement), AngleFactory.getInstance()!.TOTAL_ANGLE, this.animationFactoryInitializationVisitor!.dx, this.animationFactoryInitializationVisitor!.dy, animationBehaviorFactory!.getOrCreateInstance());
+                        return AllBinaryAdjustedAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance().TOTAL_ANGLE, this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -243,7 +242,7 @@ this.resizeCanvasForRotation= resizeCanvasForRotation;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AllBinaryFlickerAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo.getInstance(this.angleIncrement), AngleFactory.getInstance()!.TOTAL_ANGLE, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AllBinaryFlickerAndroidImageRotationAnimation(scaledImage, copyOfScaledImage, AngleInfo::getInstance(this->angleIncrement), AngleFactory::getInstance().TOTAL_ANGLE, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }

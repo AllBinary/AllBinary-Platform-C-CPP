@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -48,41 +50,37 @@
 class ImageJ2MEScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageJ2MEScaleUtil = new ImageJ2MEScaleUtil();
+    private: static ImageJ2MEScaleUtil instance() { return ImageJ2MEScaleUtil(); }
 
-    public static ImageJ2MEScaleUtil getInstance(){
+    public: static ImageJ2MEScaleUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2MEScaleUtil.instance;
+                        return ImageJ2MEScaleUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ImageJ2MEScaleUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
+    public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
 
-    scaledImages: std::vector<Image> = new Array(images.length);;
+    std::vector<Image> scaledImages = new Array(images.length);;
     
 
 
 
 
                         for (
-    index: int32_t = images.length
-                ;--index >= 0; )
+    int32_t index = images.size();--index >= 0; )
         {
-scaledImages[index]= this.scale(images[index]!, width, height);
+scaledImages[index]= this->scale(images[index]!, width, height);
     
 }
 
@@ -97,9 +95,9 @@ scaledImages[index]= this.scale(images[index]!, width, height);
 
                 //@Throws(Exception.constructor)
             
-    public Image scale(Image image, int32_t width, int32_t height){
+    public: Image scale(Image image, int32_t width, int32_t height){
 
-    scaledImage: Image = ImageCopyUtil.getInstance()!.createImageWH(image, width, height, true)!;;
+    Image scaledImage = ImageCopyUtil::getInstance().createImageWH(image, width, height, true);;
     
 
 

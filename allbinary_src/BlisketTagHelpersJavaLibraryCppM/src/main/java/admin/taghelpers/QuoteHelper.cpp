@@ -124,167 +124,162 @@
         #include "BasicTable.h"
 
 class QuoteHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: const weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: const storeFrontInterface: StoreFrontInterface;
+    private: const StoreFrontInterface storeFrontInterface;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
+public: QuoteHelper(HashMap<any, any> hashMap, PageContext pageContext){
 
-            super();
-        
-    storeName: string = hashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(storeName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 
                                     }
                                 
                         else {
-                            this.storeFrontInterface= new StoreFront();
+                            this->storeFrontInterface= StoreFront();
     
 
                         }
                             
-this.weblisketSession= new WeblisketSession(hashMap, pageContext);
+this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
-this.portion= new Portion(hashMap);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    emailUser(QuoteRequest quoteRequest){
-
-    user: UserInterface = UserEntityFactory.getInstance()!.getUser(quoteRequest!.getUserName())!;;
-    
-
-    userEmailSubject: string = "Quote Request Receipt";;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("This is just a verification email. ");
-    
-stringBuffer!.append("We usually respond to quote request within 24 hours.");
-    
-stringBuffer!.append("\n\nThank You For Your Business.");
-    
-
-    userEmailTextBody: string = stringBuffer!.toString()!;;
-    
-
-    basicEmailInfo: BasicEmailInfo = new StoreEmailInfo(this.storeFrontInterface, userEmailSubject, userEmailTextBody) as BasicEmailInfo;;
-    
-
-    emailInfo: EmailInfo = new EmailInfo(basicEmailInfo);;
-    
-
-    userEmailEventHandler: UserEmailEventHandler = UserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, UserEmailEventNameData.QUOTEREQUEST, user)!;;
-    
-userEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.QUOTEREQUEST, emailInfo);
+this->portion= Portion(hashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    emailAdmins(QuoteRequest quoteRequest){
+    private: void emailUser(QuoteRequest quoteRequest){
 
-    adminEmailSubject: string = "Quote Request";;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("\nUserName: ");
-    
-stringBuffer!.append(quoteRequest!.getUserName());
-    
-stringBuffer!.append("\nProject Info: \n");
-    
-stringBuffer!.append(quoteRequest!.getProjectInfo());
-    
-stringBuffer!.append("\nUser Comments: \n");
-    
-stringBuffer!.append(quoteRequest!.getUserComments());
-    
-stringBuffer!.append("\nBudget: \n");
-    
-stringBuffer!.append(quoteRequest!.getBudget());
-    
-stringBuffer!.append("\nTime Frame: \n");
-    
-stringBuffer!.append(quoteRequest!.getTimeFrame());
-    
-stringBuffer!.append("\nComments: \n");
-    
-stringBuffer!.append(quoteRequest!.getComments());
+    UserInterface user = UserEntityFactory::getInstance().getUser(quoteRequest.getUserName());;
     
 
-    adminEmailTextBody: string = stringBuffer!.toString()!;;
+    std::string userEmailSubject = "Quote Request Receipt";;
     
 
-    basicEmailInfo: BasicEmailInfo = new StoreEmailInfo(this.storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("This is just a verification email. ");
+    
+stringBuffer.append("We usually respond to quote request within 24 hours.");
+    
+stringBuffer.append("\n\nThank You For Your Business.");
     
 
-    emailInfo: EmailInfo = new EmailInfo(basicEmailInfo);;
+    std::string userEmailTextBody = stringBuffer.toString();;
     
 
-    storeAdminUserEmailEventHandler: UserEmailEventHandler = AdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, UserEmailEventNameData.QUOTEREQUEST)!;;
+    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, userEmailSubject, userEmailTextBody) as BasicEmailInfo;;
     
 
-    adminUserEmailEventHandler: UserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(UserEmailEventNameData.QUOTEREQUEST, this.abeClientInformation, this.storeFrontInterface)!;;
+    EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
     
-storeAdminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.QUOTEREQUEST, emailInfo);
+
+    UserEmailEventHandler userEmailEventHandler = UserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::QUOTEREQUEST, user);;
     
-adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.QUOTEREQUEST, emailInfo);
+userEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::QUOTEREQUEST, emailInfo);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string email(){
+    private: void emailAdmins(QuoteRequest quoteRequest){
+
+    std::string adminEmailSubject = "Quote Request";;
+    
+
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("\nUserName: ");
+    
+stringBuffer.append(quoteRequest.getUserName());
+    
+stringBuffer.append("\nProject Info: \n");
+    
+stringBuffer.append(quoteRequest.getProjectInfo());
+    
+stringBuffer.append("\nUser Comments: \n");
+    
+stringBuffer.append(quoteRequest.getUserComments());
+    
+stringBuffer.append("\nBudget: \n");
+    
+stringBuffer.append(quoteRequest.getBudget());
+    
+stringBuffer.append("\nTime Frame: \n");
+    
+stringBuffer.append(quoteRequest.getTimeFrame());
+    
+stringBuffer.append("\nComments: \n");
+    
+stringBuffer.append(quoteRequest.getComments());
+    
+
+    std::string adminEmailTextBody = stringBuffer.toString();;
+    
+
+    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    
+
+    EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
+    
+
+    UserEmailEventHandler storeAdminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::QUOTEREQUEST);;
+    
+
+    UserEmailEventHandler adminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance().getInstance(UserEmailEventNameData::QUOTEREQUEST, this->abeClientInformation, this->storeFrontInterface);;
+    
+storeAdminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::QUOTEREQUEST, emailInfo);
+    
+adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::QUOTEREQUEST, emailInfo);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string email(){
 
         try {
             
-    quoteRequestEntity: QuoteRequestEntity = QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!;;
+    QuoteRequestEntity quoteRequestEntity = QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance();;
     
 
-    userName: string = this.weblisketSession!.getUserName()!;;
+    std::string userName = this->weblisketSession.getUserName();;
     
 
-    vector: Vector = quoteRequestEntity!.getIds(userName)!;;
+    Vector vector = quoteRequestEntity.getIds(userName);;
     
 
-    id: int32_t = 0;;
+    int32_t id = 0;;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    nextId: int32_t = (get as Integer).intValue()!;;
+    int32_t nextId = (get as Integer).intValue();;
     
 
                         if(id < nextId)
@@ -298,17 +293,17 @@ adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.QUOTEREQUEST
 }
 
 
-    quoteRequest: QuoteRequest = quoteRequestEntity!.get(userName, id)!;;
+    QuoteRequest quoteRequest = quoteRequestEntity.get(userName, id);;
     
 
                         if(quoteRequest != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.emailUser(quoteRequest);
+                                    this->emailUser(quoteRequest);
     
-this.emailAdmins(quoteRequest);
+this->emailAdmins(quoteRequest);
     
 
 
@@ -323,7 +318,7 @@ this.emailAdmins(quoteRequest);
                             
 
 
-                            throw new Exception("No Quote Request");
+                            throw Exception("No Quote Request");
                     
 
                         }
@@ -333,10 +328,10 @@ this.emailAdmins(quoteRequest);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "email", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "email", e);
     
 
                                     }
@@ -352,17 +347,17 @@ this.emailAdmins(quoteRequest);
 }
 
 
-    public string drop(){
+    public: std::string drop(){
 
         try {
             
-    success: string = QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.dropTable()!;;
+    std::string success = QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().dropTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, this.commonStrings!.DROP);
+                                    this->logUtil.putF(success, this, this->commonStrings.DROP);
     
 
                                     }
@@ -378,13 +373,13 @@ this.emailAdmins(quoteRequest);
 } catch(e) 
             {
 
-    error: string = "Failed to drop QuoteRequest table";;
+    std::string error = "Failed to drop QuoteRequest table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.DROP, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, e);
     
 
                                     }
@@ -400,17 +395,17 @@ this.emailAdmins(quoteRequest);
 }
 
 
-    public string create(){
+    public: std::string create(){
 
         try {
             
-    success: string = QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance()!.createTable()!;;
+    std::string success = QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance().createTable();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "create()");
+                                    this->logUtil.putF(success, this, "create()");
     
 
                                     }
@@ -426,13 +421,13 @@ this.emailAdmins(quoteRequest);
 } catch(e) 
             {
 
-    error: string = "Failed to create new QuoteRequest table";;
+    std::string error = "Failed to create new QuoteRequest table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "create()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "create()", e);
     
 
                                     }
@@ -448,20 +443,20 @@ this.emailAdmins(quoteRequest);
 }
 
 
-    public string restore(){
+    public: std::string restore(){
 
         try {
             
-    success: string = "Restore Successful";;
+    std::string success = "Restore Successful";;
     
 
-    result: string = AbSqlTableUtil.getInstance()!.restoreTable(QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance(), portion)!;;
+    std::string result = AbSqlTableUtil::getInstance().restoreTable(QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance(), portion);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "restore()");
+                                    this->logUtil.putF(success, this, "restore()");
     
 
                                     }
@@ -477,13 +472,13 @@ this.emailAdmins(quoteRequest);
 } catch(e) 
             {
 
-    error: string = "Failed to restore backup";;
+    std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "restore()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "restore()", e);
     
 
                                     }
@@ -499,20 +494,20 @@ this.emailAdmins(quoteRequest);
 }
 
 
-    public string backup(){
+    public: std::string backup(){
 
         try {
             
-    success: string = "Restore Successful";;
+    std::string success = "Restore Successful";;
     
 
-    result: string = AbSqlTableUtil.getInstance()!.backupTable(QuoteRequestEntityFactory.getInstance()!.getQuoteRequestEntityInstance())!;;
+    std::string result = AbSqlTableUtil::getInstance().backupTable(QuoteRequestEntityFactory::getInstance().getQuoteRequestEntityInstance());;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "backup()");
+                                    this->logUtil.putF(success, this, "backup()");
     
 
                                     }
@@ -528,13 +523,13 @@ this.emailAdmins(quoteRequest);
 } catch(e) 
             {
 
-    error: string = "Failed to make backup";;
+    std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "backup()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
     
 
                                     }

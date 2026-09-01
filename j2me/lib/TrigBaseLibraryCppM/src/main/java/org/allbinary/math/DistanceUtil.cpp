@@ -45,34 +45,33 @@
 class DistanceUtil
             : public Object
          {
-        
 
-    private: static const instance: DistanceUtil = new DistanceUtil();
+    private: static DistanceUtil instance() { return DistanceUtil(); }
 
-    public static DistanceUtil getInstance(){
+    public: static DistanceUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DistanceUtil.instance;
+                        return DistanceUtil::instance();
     
 }
 
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    public int32_t getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2){
+    public: int32_t getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2){
 
-    dx: int32_t = x1 -x2;;
+    int32_t dx = x1 -x2;;
     
 
-    dy: int32_t = y1 -y2;;
+    int32_t dy = y1 -y2;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return static_cast<int32_t>(this.mathUtil!.sqrt((dx *dx) +(dy *dy)));
+                        return static_cast<int32_t>(this->mathUtil.sqrt((dx *dx) +(dy *dy)));
     
 }
 

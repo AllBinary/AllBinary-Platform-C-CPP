@@ -50,9 +50,8 @@
 /*actual*/ class Memory
             : public Object
          {
-        
 
-    /*actual*/ public static string getInfo();
+    /*actual*/ public: static std::string getInfo();
 
 };
 

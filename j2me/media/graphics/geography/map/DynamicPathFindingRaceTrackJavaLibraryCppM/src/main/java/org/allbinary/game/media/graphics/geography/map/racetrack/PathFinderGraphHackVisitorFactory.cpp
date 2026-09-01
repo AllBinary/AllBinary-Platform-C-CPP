@@ -48,32 +48,29 @@
         #include "PathFinderGraphHackVisitor.h"
 
 class PathFinderGraphHackVisitorFactory: public PathFinderGraphVisitorFactoryBase {
-        
 
-    private: const edgeMinimum: int32_t;
+    private: int32_t edgeMinimum;
 
-    private: const minPathWeight: int32_t;
+    private: int32_t minPathWeight;
 
-    private: const maxPathWeight: int32_t;
+    private: int32_t maxPathWeight;
 
-public constructor (int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
-
-            super();
-        this.edgeMinimum= edgeMinimum;
+public: PathFinderGraphHackVisitorFactory(int32_t edgeMinimum, int32_t minPathWeight, int32_t maxPathWeight){
+this->edgeMinimum= edgeMinimum;
     
-this.minPathWeight= minPathWeight;
+this->minPathWeight= minPathWeight;
     
-this.maxPathWeight= maxPathWeight;
+this->maxPathWeight= maxPathWeight;
     
 }
 
 
-    public PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface){
+    public: PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PathFinderGraphHackVisitor(geographicMapInterface, this.edgeMinimum, this.minPathWeight, this.maxPathWeight);
+                        return PathFinderGraphHackVisitor(geographicMapInterface, this->edgeMinimum, this->minPathWeight, this->maxPathWeight);
     
 }
 

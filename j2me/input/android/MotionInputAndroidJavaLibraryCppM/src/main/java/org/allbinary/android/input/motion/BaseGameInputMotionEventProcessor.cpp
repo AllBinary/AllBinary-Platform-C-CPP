@@ -54,31 +54,28 @@
         #include "MotionEventProcessor.h"
 
 class BaseGameInputMotionEventProcessor: public MotionEventProcessor {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameMotionGestureListener: GameMotionGestureListener;
+    private: GameMotionGestureListener gameMotionGestureListener;
 
-protected constructor (){
-
-            super();
-        this.gameMotionGestureListener= new GameMotionGestureListener(MotionGestureReceiveInterfaceFactory.getInstance());
+protected: BaseGameInputMotionEventProcessor(){
+this->gameMotionGestureListener= GameMotionGestureListener(MotionGestureReceiveInterfaceFactory::getInstance());
     
-this.addListener();
+this->addListener();
     
 }
 
 
-    public process(MotionEvent motionEvent){
+    public: void process(MotionEvent motionEvent){
 }
 
 
-    public addListener(){
+    public: void addListener(){
 
-    motionGesturesHandler: BasicMotionGesturesHandler = BasicMotionGesturesHandler.getInstance()!;;
+    BasicMotionGesturesHandler motionGesturesHandler = BasicMotionGesturesHandler::getInstance();;
     
-motionGesturesHandler!.addListenerInterface(this.gameMotionGestureListener);
+motionGesturesHandler.addListenerInterface(this->gameMotionGestureListener);
     
 }
 

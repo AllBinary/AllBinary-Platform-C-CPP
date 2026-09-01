@@ -64,26 +64,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasicWeightShippingModule.h"
 
-class BasicWeightShippingModuleView: public BasicWeightShippingModule: public DomNodeInterface {
-        
+class BasicWeightShippingModuleView: public BasicWeightShippingModule, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: BasicWeightShippingModuleView();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public org.w3c.dom.Document toValidationInfoDoc();
+    public: org::w3c::dom::Document toValidationInfoDoc();
 
-    public org.w3c.dom.Node toValidationInfoNode(org.w3c.dom.Document document);
+    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public org.w3c.dom.Node toXmlNode(org.w3c.dom.Document document);
+    public: org::w3c::dom::Node toXmlNode(org::w3c::dom::Document document);
 
-    public org.w3c.dom.Document toXmlDoc();
+    public: org::w3c::dom::Document toXmlDoc();
 
-    public string view();
+    public: std::string view();
 
 };
 

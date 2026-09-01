@@ -53,79 +53,76 @@
 class BufferedImageFrameCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: frame: Long;
+    private: Long frame;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (BufferedImage bufferedImage, Long frame){
-
-            super();
-        this.frame= frame;
+public: BufferedImageFrameCacheable(BufferedImage bufferedImage, Long frame){
+this->frame= frame;
     
-this.setBufferedImage(bufferedImage);
+this->setBufferedImage(bufferedImage);
     
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 
 
-    public BufferedImage getBufferedImage(){
+    public: BufferedImage getBufferedImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bufferedImage;
+                        return this->bufferedImage;
     
 }
 
 
-    setBufferedImage(BufferedImage bufferedImage){
-this.bufferedImage= bufferedImage;
+    private: void setBufferedImage(BufferedImage bufferedImage){
+this->bufferedImage= bufferedImage;
     
 }
 
 
-    public Long getFrame(){
+    public: Long getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 
 
-    public setFrame(Long frame){
-this.frame= frame;
+    public: void setFrame(Long frame){
+this->frame= frame;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString()!);
     
-stringBuffer!.append(" Frame: ");
+stringBuffer.append(" Frame: ");
     
-stringBuffer!.appendlong(this.getFrame());
+stringBuffer.appendlong(this->getFrame());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

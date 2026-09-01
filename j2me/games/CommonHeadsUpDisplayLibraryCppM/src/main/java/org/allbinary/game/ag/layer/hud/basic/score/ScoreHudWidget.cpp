@@ -55,36 +55,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScoreHudWidget: public NumberStringHud {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ScoreHudWidget getInstance(int32_t maxscore, int32_t location, int32_t direction){
+    public: static ScoreHudWidget getInstance(int32_t maxscore, int32_t location, int32_t direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ScoreHudWidget(maxscore, location, direction, 2, BasicColorFactory.getInstance()!.GREY);
+                        return ScoreHudWidget(maxscore, location, direction, 2, BasicColorFactory::getInstance().GREY);
     
 }
 
 
-public constructor (int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
+public: ScoreHudWidget(int32_t maxscore, int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
             super("Pts ", maxscore, location, direction, bufferZone, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.updateMaxHeight= 14;
+this->updateMaxHeight= 14;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.updateMaxWidth= font.getSize() *5;
+this->updateMaxWidth= font.getSize() *5;
     
 super.updateMeasurement(graphics);
     

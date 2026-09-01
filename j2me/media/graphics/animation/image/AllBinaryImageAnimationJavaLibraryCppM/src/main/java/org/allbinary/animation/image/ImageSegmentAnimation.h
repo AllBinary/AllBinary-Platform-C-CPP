@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGESEGMENTANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -65,53 +67,52 @@
         #include "ImageAnimation.h"
 
 class ImageSegmentAnimation: public ImageAnimation {
-        
 
-    private: startX: int32_t;
+    private: int32_t startX;
 
-    private: startY: int32_t;
+    private: int32_t startY;
 
-    private: drawWidth: int32_t;
+    private: int32_t drawWidth;
 
-    private: drawHeight: int32_t;
+    private: int32_t drawHeight;
 
-    private: circularIndexUtil: CircularIndexUtil;
+    private: CircularIndexUtil circularIndexUtil;
 
-    private: sequenceArray: std::vector<int32_t>;
+    private: std::vector<int32_t> sequenceArray;
 
-protected constructor (Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior);
+protected: ImageSegmentAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public setSequence(std::vector<int32_t> sequenceArray);
+    public: void setSequence(std::vector<int32_t> sequenceArray);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public int32_t getStartX();
+    public: int32_t getStartX();
 
-    public setStartX(int32_t startX);
+    public: void setStartX(int32_t startX);
 
-    public int32_t getStartY();
+    public: int32_t getStartY();
 
-    public setStartY(int32_t startY);
+    public: void setStartY(int32_t startY);
 
-    public int32_t getDrawWidth();
+    public: int32_t getDrawWidth();
 
-    public setDrawWidth(int32_t drawWidth);
+    public: void setDrawWidth(int32_t drawWidth);
 
-    public int32_t getDrawHeight();
+    public: int32_t getDrawHeight();
 
-    public setDrawHeight(int32_t drawHeight);
+    public: void setDrawHeight(int32_t drawHeight);
 
 };
 

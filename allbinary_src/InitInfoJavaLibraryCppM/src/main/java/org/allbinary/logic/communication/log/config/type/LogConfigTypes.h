@@ -71,23 +71,22 @@
 class LogConfigTypes
             : public Object
          {
-        
 
-    public static const JSP_ERROR_NO_FUNCTION: string = "in JSP Not In Function";
+    public: static const std::string JSP_ERROR_NO_FUNCTION = "in JSP Not In Function";
 
-    public static LOGGING: BasicArrayList = new BasicArrayListD();
+    public: static BasicArrayList LOGGING = BasicArrayListD();
 
                     static int32_t initResult;
                 static int32_t init();
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static init();
+    public: static void init();
 
                 //@Throws(Exception.constructor)
             
-    public static LogConfigType getInstance(Node node);
+    public: static LogConfigType getInstance(Node node);
 
-private constructor ();
+private: LogConfigTypes();
 
 };
 

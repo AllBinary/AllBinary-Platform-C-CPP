@@ -48,23 +48,22 @@
 class FileFactory
             : public Object
          {
-        
 
-    private: static const instance: FileFactory = new FileFactory();
+    private: static FileFactory instance() { return FileFactory(); }
 
-    public static FileFactory getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public AbFile getInstance(string filePath);
+    public: static FileFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public AbFile getInstance(AbFile file, string childFilePath);
+    public: AbFile getInstance(std::string filePath);
 
                 //@Throws(Exception.constructor)
             
-    public bool isFile(string path);
+    public: AbFile getInstance(AbFile file, std::string childFilePath);
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isFile(std::string path);
 
 };
 

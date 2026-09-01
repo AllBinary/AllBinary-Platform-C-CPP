@@ -70,47 +70,46 @@
 class TimeDelayHelper
             : public Object
          {
-        
 
-    private: startTime: int64_t =  -1;
+    private: int64_t startTime =  -1;
 
-    private: elapsedTimeAtPause: int64_t = Long.MIN_VALUE;
+    private: int64_t elapsedTimeAtPause = Long::MIN_VALUE;
 
-    public delay: int32_t;
+    public: int32_t delay;
 
-public constructor (int32_t delay);
+public: TimeDelayHelper(int32_t delay);
 
-    public bool isTimeTNT();
+    public: bool isTimeTNT();
 
-    public bool isTimeSinceTNT(int32_t delay);
+    public: bool isTimeSinceTNT(int32_t delay);
 
-    public bool isTime(int64_t currentTime);
+    public: bool isTime(int64_t currentTime);
 
-    public bool isTimeWithoutReset(int64_t currentTime);
+    public: bool isTimeWithoutReset(int64_t currentTime);
 
-    public bool isTimeSince(int32_t delay, int64_t currentTime);
+    public: bool isTimeSince(int32_t delay, int64_t currentTime);
 
-    public int64_t getElapsedTNT();
+    public: int64_t getElapsedTNT();
 
-    public int64_t getElapsed(int64_t currentTime);
+    public: int64_t getElapsed(int64_t currentTime);
 
-    public bool isElapsed(int64_t currentTime, int64_t time);
+    public: bool isElapsed(int64_t currentTime, int64_t time);
 
-    public bool isElapsedTNT(int64_t time);
+    public: bool isElapsedTNT(int64_t time);
 
-    public setStartTime(int64_t startTime);
+    public: void setStartTime(int64_t startTime);
 
-    public int64_t getStartTime();
+    public: int64_t getStartTime();
 
-    public setStartTimeTNT();
+    public: void setStartTimeTNT();
 
-    public pause();
+    public: void pause();
 
-    public bool resume();
+    public: bool resume();
 
-    public string toStringAt(int64_t currentTime);
+    public: std::string toStringAt(int64_t currentTime);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

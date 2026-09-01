@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -60,36 +62,33 @@
 class ImageUnifierUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageUnifierUtil = new ImageUnifierUtil();
+    private: static ImageUnifierUtil instance() { return ImageUnifierUtil(); }
 
-    public static ImageUnifierUtil getInstance(){
+    public: static ImageUnifierUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageUnifierUtil.instance;
+                        return ImageUnifierUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageUnifierUtil(){
+}
 
 
-    public GraphicsConfiguration getDefaultConfiguration(){
+    public: GraphicsConfiguration getDefaultConfiguration(){
 
-    ge: GraphicsEnvironment = GraphicsEnvironment.getLocalGraphicsEnvironment()!;;
+    GraphicsEnvironment ge = GraphicsEnvironment::getLocalGraphicsEnvironment();;
     
 
-    gd: GraphicsDevice = ge.getDefaultScreenDevice()!;;
+    GraphicsDevice gd = ge.getDefaultScreenDevice();;
     
 
 
@@ -100,44 +99,44 @@ private constructor (){
 }
 
 
-    public BufferedImage getImage(std::vector<BufferedImage> bufferedImageArray, ImageUnifierProperties imageUnifierProperties){
+    public: BufferedImage getImage(std::vector<BufferedImage> bufferedImageArray, ImageUnifierProperties imageUnifierProperties){
 
-    newBufferedImage: BufferedImage = this.imageUtil!.create(imageUnifierProperties!.getWidth(), imageUnifierProperties!.getHeight())!;;
+    BufferedImage newBufferedImage = this->imageUtil.create(imageUnifierProperties.getWidth(), imageUnifierProperties.getHeight());;
     
 
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
-this.logUtil!.putF("Setting Image - " +commonLabels!.WIDTH_LABEL +newBufferedImage!.getWidth() +commonLabels!.HEIGHT_LABEL +newBufferedImage!.getHeight(), this, "getImage");
-    
-
-    g: Graphics2D = newBufferedImage!.createGraphics()!;;
+this->logUtil.putF("Setting Image - " +commonLabels.WIDTH_LABEL +newBufferedImage.getWidth() +commonLabels.HEIGHT_LABEL +newBufferedImage.getHeight(), this, "getImage");
     
 
-    columnIndex: int32_t = 0;;
+    Graphics2D g = newBufferedImage.createGraphics();;
     
 
-    rowIndex: int32_t = 0;;
+    int32_t columnIndex = 0;;
+    
+
+    int32_t rowIndex = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < bufferedImageArray!.length; index++)
+    int32_t index = 0;index < bufferedImageArray.size(); index++)
         {
 
-    x: int32_t = imageUnifierProperties!.getImageUnifierCell()!.getWidth()!.intValue() *columnIndex++;;
+    int32_t x = imageUnifierProperties.getImageUnifierCell().getWidth().intValue() *columnIndex++;;
     
 
-    y: int32_t = imageUnifierProperties!.getImageUnifierCell()!.getHeight()!.intValue() *rowIndex;;
+    int32_t y = imageUnifierProperties.getImageUnifierCell().getHeight().intValue() *rowIndex;;
     
-this.logUtil!.putF("Adding Image: " +index +" x: " +x +" y: " +y, this, "getImage");
+this->logUtil.putF("Adding Image: " +index +" x: " +x +" y: " +y, this, "getImage");
     
-g.drawImage(bufferedImageArray[index]!, x, y, imageUnifierProperties!.getImageUnifierCell()!.getWidth()!.intValue(), imageUnifierProperties!.getImageUnifierCell()!.getHeight()!.intValue(), 
+g.drawImage(bufferedImageArray[index]!, x, y, imageUnifierProperties.getImageUnifierCell().getWidth().intValue(), imageUnifierProperties.getImageUnifierCell().getHeight().intValue(), 
                             nullptr);
     
 
-    totalColumnsMinusOne: int32_t = (imageUnifierProperties!.getColumns()!.intValue() -1);;
+    int32_t totalColumnsMinusOne = (imageUnifierProperties.getColumns().intValue() -1);;
     
 
                         if(columnIndex > totalColumnsMinusOne)

@@ -63,30 +63,27 @@
 class GameRunnable
             : public Object
         : public Runnable {
-        
 
-    public const WAIT: int32_t = 240;
+    public: const int32_t WAIT = 240;
 
-    public const FAST: int32_t = 60;
+    public: const int32_t FAST = 60;
 
-    public waitInMillis: int64_t = this.WAIT;
+    public: int64_t waitInMillis = this->WAIT;
 
-public constructor (){
-
-            super();
-        }
+public: GameRunnable(){
+}
 
 
-    public run(){
-DisplayInfoSingleton.getInstance()!.process();
+    public: void run(){
+DisplayInfoSingleton::getInstance().process();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep(){
-Thread.sleep(this.waitInMillis);
+    public: void processLoopSleep(){
+Thread::sleep(this->waitInMillis);
     
 }
 

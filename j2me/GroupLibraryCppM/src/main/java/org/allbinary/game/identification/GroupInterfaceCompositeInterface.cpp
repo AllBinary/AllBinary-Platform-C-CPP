@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -45,7 +47,6 @@
         #include "Group.h"
 
 class GroupInterfaceCompositeInterface {
-        
 
     std::vector<Group> getGroupInterface()
 

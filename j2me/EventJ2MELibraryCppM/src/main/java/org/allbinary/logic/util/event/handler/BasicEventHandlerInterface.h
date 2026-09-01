@@ -58,19 +58,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicEventHandlerInterface {
-        
 
-    addListenerInterface(EventListenerInterface eventListenerInterface);
+    void addListenerInterface(EventListenerInterface eventListenerInterface);
 
-    addListeners(BasicArrayList basicArrayList);
+    void addListeners(BasicArrayList basicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    fireEvent(AllBinaryEventObject eventObject);
+    void fireEvent(AllBinaryEventObject eventObject);
 
-    removeAllListeners();
+    void removeAllListeners();
 
-    removeListener(EventListenerInterface eventListenerInterface);
+    void removeListener(EventListenerInterface eventListenerInterface);
 
 };
 

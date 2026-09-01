@@ -74,76 +74,73 @@
 class TouchJ2ME
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const DEVICE_ID: int32_t = 0;
+    private: const int32_t DEVICE_ID = 0;
 
-    private: motionRecognizer: AllMotionRecognizer = new AllMotionRecognizer();
+    private: AllMotionRecognizer motionRecognizer = AllMotionRecognizer();
 
-public constructor (){
+public: TouchJ2ME(){
 
-            super();
-        
-    motionGesturesHandler: BasicMotionGesturesHandler = this.motionRecognizer!.getMotionGestureRecognizer()!.getMotionGesturesHandler()!;;
+    BasicMotionGesturesHandler motionGesturesHandler = this->motionRecognizer.getMotionGestureRecognizer().getMotionGesturesHandler();;
     
-motionGesturesHandler!.addListenerInterface(new GameMotionGestureListener(MotionGestureReceiveInterfaceFactory.getInstance()));
+motionGesturesHandler.addListenerInterface(GameMotionGestureListener(MotionGestureReceiveInterfaceFactory::getInstance()));
     
 }
 
 
-    public pointerDragged(int32_t x, int32_t y){
+    public: void pointerDragged(int32_t x, int32_t y){
 
         try {
-            this.motionRecognizer!.processDraggedMotionEvent(x, y, DEVICE_ID, 0);
+            this->motionRecognizer.processDraggedMotionEvent(x, y, DEVICE_ID, 0);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "pointerDragged", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "pointerDragged", e);
     
 }
 
 }
 
 
-    public pointerPressed(int32_t x, int32_t y){
+    public: void pointerPressed(int32_t x, int32_t y){
 
         try {
-            this.motionRecognizer!.processStartMotionEvent(x, y, DEVICE_ID, 0);
+            this->motionRecognizer.processStartMotionEvent(x, y, DEVICE_ID, 0);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "pointerPressed", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "pointerPressed", e);
     
 }
 
 }
 
 
-    public pointerReleased(int32_t x, int32_t y){
+    public: void pointerReleased(int32_t x, int32_t y){
 
         try {
-            this.motionRecognizer!.processEndMotionEvent(x, y, DEVICE_ID, 0);
+            this->motionRecognizer.processEndMotionEvent(x, y, DEVICE_ID, 0);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "pointerReleased", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "pointerReleased", e);
     
 }
 

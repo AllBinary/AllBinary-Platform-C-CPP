@@ -43,11 +43,10 @@
 #include "RotationAnimation.h"
 
 class RotationAnimationInterfaceCompositeInterface: public IndexedAnimationInterfaceCompositeInterface {
-        
 
     RotationAnimation getRotationAnimationInterface();
 
-    setFrame(int32_t index);
+    void setFrame(int32_t index);
 
 };
 

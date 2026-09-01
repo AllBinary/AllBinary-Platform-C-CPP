@@ -51,13 +51,12 @@
 class AlphaBaseProcessor
             : public Object
          {
-        
 
-    private: static const instance: AlphaBaseProcessor = new AlphaBaseProcessor();
+    private: static AlphaBaseProcessor instance() { return AlphaBaseProcessor(); }
 
-    public static AlphaBaseProcessor getInstance();
+    public: static AlphaBaseProcessor getInstance();
 
-    public setAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t alpha);
+    public: void setAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t alpha);
 
 };
 

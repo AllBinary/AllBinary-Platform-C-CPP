@@ -54,19 +54,18 @@
 class PrimaryWaypointHelper
             : public Object
          {
-        
 
-    private: static const instance: PrimaryWaypointHelper = new PrimaryWaypointHelper();
+    private: static PrimaryWaypointHelper instance() { return PrimaryWaypointHelper(); }
 
-    public static PrimaryWaypointHelper getInstance();
+    public: static PrimaryWaypointHelper getInstance();
 
-    private: waypointLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    private: PathFindingLayerInterface waypointLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-private constructor ();
+private: PrimaryWaypointHelper();
 
-    public PathFindingLayerInterface getWaypointLayer();
+    public: PathFindingLayerInterface getWaypointLayer();
 
-    public setWaypointLayer(WaypointLayer waypointLayer);
+    public: void setWaypointLayer(WaypointLayer waypointLayer);
 
 };
 

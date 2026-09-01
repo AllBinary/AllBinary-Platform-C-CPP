@@ -56,27 +56,26 @@
         #include "AllBinaryJ2SEImageRotationAnimation.h"
 
 class AllBinaryAdjustedJ2SEImageRotationAnimation: public AllBinaryJ2SEImageRotationAnimation {
-        
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AllBinaryAdjustedJ2SEImageRotationAnimation(Image originalImage, Image image, AngleInfo angleInfo, int16_t totalAngle, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t dx, int32_t dy);
+    public: void init(int32_t dx, int32_t dy);
 
-    public setDx(int32_t dx);
+    public: void setDx(int32_t dx);
 
-    public int32_t getDx();
+    public: int32_t getDx();
 
-    public setDy(int32_t dy);
+    public: void setDy(int32_t dy);
 
-    public int32_t getDy();
+    public: int32_t getDy();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

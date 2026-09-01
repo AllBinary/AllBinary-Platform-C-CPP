@@ -63,59 +63,56 @@
 class FileLockUtil
             : public Object
          {
-        
 
-    private: static const instance: FileLockUtil = new FileLockUtil();
+    private: static FileLockUtil instance() { return FileLockUtil(); }
 
-    public static FileLockUtil getInstance(){
+    public: static FileLockUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileLockUtil.instance;
+                        return FileLockUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: FileLockUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getAll(Vector vector, bool isReturnOnFailure){
+    public: Vector getAll(Vector vector, bool isReturnOnFailure){
 
-    fileLockVector: Vector = new Vector();;
+    Vector fileLockVector = Vector();;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    file: AbFile = vector.get(index) as AbFile;;
+    AbFile file = vector.get(index) as AbFile;;
     
 
-    fileLock: FileLock = this.getLock(file)!;;
+    FileLock fileLock = this->getLock(file);;
     
 
                         if(fileLock != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("File Lock Obtained: " +file.getAbsolutePath(), this, "getAll");
+                                    this->logUtil.putF("File Lock Obtained: " +file.getAbsolutePath(), this, "getAll");
     
-fileLockVector!.add(fileLock);
+fileLockVector.add(fileLock);
     
 
                                     }
@@ -124,7 +121,7 @@ fileLockVector!.add(fileLock);
                         if(isReturnOnFailure)
                         
                                     {
-                                    this.logUtil!.putF("Total Locks Obtained: " +fileLockVector!.length, this, "getAll");
+                                    this->logUtil.putF("Total Locks Obtained: " +fileLockVector.length, this, "getAll");
     
 
 
@@ -137,7 +134,7 @@ fileLockVector!.add(fileLock);
                                 
 }
 
-this.logUtil!.putF("Total Locks Obtained: " +fileLockVector!.length, this, "getAll");
+this->logUtil.putF("Total Locks Obtained: " +fileLockVector.length, this, "getAll");
     
 
 
@@ -150,31 +147,31 @@ this.logUtil!.putF("Total Locks Obtained: " +fileLockVector!.length, this, "getA
 
                 //@Throws(Exception.constructor)
             
-    public Vector getAllPossible(Vector vector){
+    public: Vector getAllPossible(Vector vector){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getAll(vector, false);;
+                        return this->getAll(vector, false);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getAllOrNone(Vector vector){
+    public: Vector getAllOrNone(Vector vector){
 
-    fileLockVector: Vector = this.getAll(vector, true)!;;
+    Vector fileLockVector = this->getAll(vector, true);;
     
 
-                        if(vector.length != fileLockVector!.length)
+                        if(vector.length != fileLockVector.length)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Vector();
+                        return Vector();
     
 
                                     }
@@ -194,20 +191,20 @@ this.logUtil!.putF("Total Locks Obtained: " +fileLockVector!.length, this, "getA
 
                 //@Throws(Exception.constructor)
             
-    public FileLock getLock(AbFile file){
+    public: FileLock getLock(AbFile file){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getLock(AbFileOutputStream.createFromAbFileAppend(file, true));;
+                        return this->getLock(AbFileOutputStream::createFromAbFileAppend(file, true));;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Exception returns null", this, "getLock", e);
+this->logUtil.put("Exception returns null", this, "getLock", e);
     
 
 
@@ -226,11 +223,11 @@ this.logUtil!.put("Exception returns null", this, "getLock", e);
 
                 //@Throws(Exception.constructor)
             
-    public FileLock getLock(AbFileOutputStream fileOutputStream){
+    public: FileLock getLock(AbFileOutputStream fileOutputStream){
 
         try {
             
-    fileLock: FileLock = this.getLock(fileOutputStream!.getChannel())!;;
+    FileLock fileLock = this->getLock(fileOutputStream.getChannel());;
     
 
 
@@ -242,7 +239,7 @@ this.logUtil!.put("Exception returns null", this, "getLock", e);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Exception returns null", this, "getLock", e);
+this->logUtil.put("Exception returns null", this, "getLock", e);
     
 
 
@@ -253,9 +250,9 @@ this.logUtil!.put("Exception returns null", this, "getLock", e);
 }
 
          finally {
-            this.logUtil!.putF("Finally - Closing FileOutputStream", this, "getLock");
+            this->logUtil.putF("Finally - Closing FileOutputStream", this, "getLock");
     
-StreamUtil.getInstance()!.close(fileOutputStream);
+StreamUtil::getInstance().close(fileOutputStream);
     
 
          }
@@ -265,11 +262,11 @@ StreamUtil.getInstance()!.close(fileOutputStream);
 
                 //@Throws(Exception.constructor)
             
-    public FileLock getLock(FileChannel fileChannel){
+    public: FileLock getLock(FileChannel fileChannel){
 
         try {
             
-    fileLock: FileLock = fileChannel!.tryLock()!;;
+    FileLock fileLock = fileChannel.tryLock();;
     
 
 
@@ -281,7 +278,7 @@ StreamUtil.getInstance()!.close(fileOutputStream);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Exception returns null", this, "getLock", e);
+this->logUtil.put("Exception returns null", this, "getLock", e);
     
 
 
@@ -292,9 +289,9 @@ this.logUtil!.put("Exception returns null", this, "getLock", e);
 }
 
          finally {
-            this.logUtil!.putF("Finally - Closing FileChannel", this, "getLock");
+            this->logUtil.putF("Finally - Closing FileChannel", this, "getLock");
     
-fileChannel!.close();
+fileChannel.close();
     
 
          }

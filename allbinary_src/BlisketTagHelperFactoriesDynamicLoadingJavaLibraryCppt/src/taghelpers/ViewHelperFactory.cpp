@@ -59,26 +59,23 @@
 class ViewHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "taghelpers.ViewHelper";
+    private: static const std::string CLASSNAME = "taghelpers.ViewHelper";
 
-    private: static const FACTORYNAME: string = "taghelpers.ViewHelperFactory";
+    private: static const std::string FACTORYNAME = "taghelpers.ViewHelperFactory";
 
-public constructor (){
-
-            super();
-        }
+public: ViewHelperFactory(){
+}
 
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HelperFactory.getInstance(FACTORYNAME, CLASSNAME, propertiesHashMap, pageContext);;
+                        return HelperFactory::getInstance(FACTORYNAME, CLASSNAME, propertiesHashMap, pageContext);;
     
 }
 

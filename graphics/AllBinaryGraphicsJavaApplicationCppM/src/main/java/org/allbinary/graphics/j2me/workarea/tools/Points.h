@@ -52,21 +52,20 @@
 class Points
             : public Object
         : public PointsInterface {
-        
 
-    private: const pointVector: BasicArrayList;
+    private: BasicArrayList pointVector;
 
-public constructor ();
+public: Points();
 
-    public init();
+    public: void init();
 
-    public BasicArrayList getPoints();
+    public: BasicArrayList getPoints();
 
-    public addPoints(BasicArrayList vector);
+    public: void addPoints(BasicArrayList vector);
 
-    public bool isValid();
+    public: bool isValid();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
 };
 

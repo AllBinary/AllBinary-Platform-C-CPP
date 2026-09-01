@@ -45,15 +45,14 @@
 class TenderType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: TenderType(std::string name);
 
-    public bool isEqual(TenderType tenderType);
+    public: bool isEqual(TenderType tenderType);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

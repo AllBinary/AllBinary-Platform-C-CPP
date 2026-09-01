@@ -88,51 +88,50 @@
 class WaypointBase
             : public Object
         : public EventListenerInterface {
-        
 
-    public static NULL_WAYPOINT_BASE: WaypointBase = new WaypointBase(NoSound.getInstance());
+    public: static WaypointBase NULL_WAYPOINT_BASE = WaypointBase(NoSound::getInstance());
 
-    private: const connectedWaypointList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList connectedWaypointList = BasicArrayListD();
 
-    private: const sound: Sound;
+    private: Sound sound;
 
-    allBinaryGameLayerManagerP: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    protected: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-public constructor (Sound sound);
+public: WaypointBase(Sound sound);
 
-    public Sound getSound();
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
-
-    public BasicArrayList getConnectedWaypointList();
-
-    public onEvent(AllBinaryEventObject eventObject);
+    public: Sound getSound();
 
                 //@Throws(Exception.constructor)
             
-    public PathFindingInfo getPathFindingInfo(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+
+    public: BasicArrayList getConnectedWaypointList();
+
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsList(GeographicMapCellPosition geographicMapCellPosition, PathFindingInfo pathFindingInfo, MultipassState multipassState);
+    public: PathFindingInfo getPathFindingInfo(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList getPathsList(GeographicMapCellPosition geographicMapCellPosition, PathFindingInfo pathFindingInfo, MultipassState multipassState);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
+    public: BasicArrayList getPathsListRunnable(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public visit(PathFindingLayerInterface unitLayer);
+    public: BasicArrayList getPathsListFromCacheOnly(GeographicMapCellPosition geographicMapCellPosition);
 
-    public reset();
+                //@Throws(Exception.constructor)
+            
+    public: void visit(PathFindingLayerInterface unitLayer);
 
-    public int32_t getType();
+    public: void reset();
+
+    public: int32_t getType();
 
 };
 

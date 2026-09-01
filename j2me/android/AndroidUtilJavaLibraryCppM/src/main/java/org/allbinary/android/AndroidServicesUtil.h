@@ -68,23 +68,22 @@
 class AndroidServicesUtil
             : public Object
          {
-        
 
-    public static AndroidServicesUtil getInstance();
+    public: static AndroidServicesUtil getInstance();
 
-    private: static const instance: AndroidServicesUtil = new AndroidServicesUtil();
+    private: static AndroidServicesUtil instance() { return AndroidServicesUtil(); }
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;
+    private: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
 
-    private: const SERVICE_LIMIT_MAX: int32_t = 1000;
+    private: const int32_t SERVICE_LIMIT_MAX = 1000;
 
-    private: const IS_SERVICE_RUNNING: string = "isServiceRunning";
+    private: const std::string IS_SERVICE_RUNNING = "isServiceRunning";
 
-    private: const SERVICE_NOT_FOUND_RUNNING: string = "Service not found Running: ";
+    private: const std::string SERVICE_NOT_FOUND_RUNNING = "Service not found Running: ";
 
-    public bool isServiceRunning(string name);
+    public: bool isServiceRunning(std::string name);
 
 };
 

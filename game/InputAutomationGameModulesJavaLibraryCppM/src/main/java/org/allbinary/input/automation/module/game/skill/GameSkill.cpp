@@ -56,142 +56,139 @@
 class GameSkill
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
-    public static GameSkill getInstance(GameSkillType gameSkillType, string extra){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameSkill.hashMap!.get(new StringMaker().append(gameSkillType!.getName())!.append(CommonSeps.getInstance()!.SPACE)!.append(extra)!.toString()) as GameSkill;
-    
-}
-
-
-    private: gameSkillType: GameSkillType;
-
-    private: extra: string;
-
-    private: time: int32_t= 0;
-
-    private: vector: Vector;
-
-    private: const GAME_SKILL_LABEL: string = "GameSkill: ";
-
-    private: const EXTRA_LABEL: string = "Extra: ";
-
-    private: const TIME_LABEL: string = "Time: ";
-
-public constructor (GameSkillType gameSkillType, string extra, int32_t time){
-
-            super();
-        this.setGameSkillType(gameSkillType);
-    
-this.setExtra(extra);
-    
-this.setTime(time);
-    
-this.vector= new Vector();
-    
-GameSkill.hashMap!.put(new StringMaker().append(this.getGameSkillType()!.getName())!.append(CommonSeps.getInstance()!.SPACE)!.append(extra)!.toString(), this);
-    
-}
-
-
-    public GameSkillType getGameSkillType(){
+    public: static GameSkill getInstance(GameSkillType gameSkillType, std::string extra){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameSkillType;
+                        return GameSkill::hashMap.get(StringMaker().append(gameSkillType.getName()).append(CommonSeps::getInstance().SPACE).append(extra).toString()) as GameSkill;
     
 }
 
 
-    public setGameSkillType(GameSkillType gameSkillType){
-this.gameSkillType= gameSkillType;
+    private: GameSkillType gameSkillType;
+
+    private: std::string extra;
+
+    private: int32_t time= 0;
+
+    private: Vector vector;
+
+    private: const std::string GAME_SKILL_LABEL = "GameSkill: ";
+
+    private: const std::string EXTRA_LABEL = "Extra: ";
+
+    private: const std::string TIME_LABEL = "Time: ";
+
+public: GameSkill(GameSkillType gameSkillType, std::string extra, int32_t time){
+this->setGameSkillType(gameSkillType);
+    
+this->setExtra(extra);
+    
+this->setTime(time);
+    
+this->vector= Vector();
+    
+GameSkill::hashMap.put(StringMaker().append(this->getGameSkillType().getName()).append(CommonSeps::getInstance().SPACE).append(extra).toString(), this);
     
 }
 
 
-    public string getExtra(){
+    public: GameSkillType getGameSkillType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.extra;
+                        return this->gameSkillType;
     
 }
 
 
-    public setExtra(string extra){
-this.extra= extra;
+    public: void setGameSkillType(GameSkillType gameSkillType){
+this->gameSkillType= gameSkillType;
     
 }
 
 
-    public int32_t getTime(){
+    public: std::string getExtra(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.time;
+                        return this->extra;
     
 }
 
 
-    public setTime(int32_t time){
-this.time= time;
+    public: void setExtra(std::string extra){
+this->extra= extra;
     
 }
 
 
-    public addProperty(GameSkillPropertyInterface gameSkillPropertyInterface){
-this.vector.add(gameSkillPropertyInterface);
-    
-}
-
-
-    public Vector getProperties(){
+    public: int32_t getTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vector;
+                        return this->time;
     
 }
 
 
-    public string toString(){
+    public: void setTime(int32_t time){
+this->time= time;
+    
+}
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+
+    public: void addProperty(GameSkillPropertyInterface gameSkillPropertyInterface){
+this->vector.add(gameSkillPropertyInterface);
+    
+}
+
+
+    public: Vector getProperties(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->vector;
+    
+}
+
+
+    public: std::string toString(){
+
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.GAME_SKILL_LABEL);
+stringBuffer.append(this->GAME_SKILL_LABEL);
     
-stringBuffer!.append(this.getGameSkillType()!.toString());
+stringBuffer.append(this->getGameSkillType().toString());
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.append(this.EXTRA_LABEL);
+stringBuffer.append(this->EXTRA_LABEL);
     
-stringBuffer!.append(this.getExtra());
+stringBuffer.append(this->getExtra());
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.append(this.TIME_LABEL);
+stringBuffer.append(this->TIME_LABEL);
     
-stringBuffer!.appendlong(this.getTime());
+stringBuffer.appendlong(this->getTime());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

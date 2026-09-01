@@ -58,13 +58,12 @@
 #include "AdjustedRightToLeftImageAnimation.h"
 
 class RightToLeftImageAnimationFactory: public BaseImageAnimationFactory {
-        
 
-public constructor (Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+public: RightToLeftImageAnimationFactory(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
 };
 

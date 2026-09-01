@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Class.h"
@@ -56,12 +58,11 @@
 class ClassUtil
             : public Object
          {
-        
 
-    public static string viewAll(any = {} anyType, string lineBreak){
+    public: static std::string viewAll(Object* anyType, std::string lineBreak){
 
                         if(anyType != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -69,7 +70,7 @@ class ClassUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ClassUtil.viewAll(anyType!.constructor, lineBreak);;
+                        return ClassUtil::viewAll(anyType->constructor, lineBreak);;
     
 
                                     }
@@ -80,69 +81,69 @@ class ClassUtil
 }
 
 
-    public static string viewAll(Function myClass, string lineBreak){
+    public: static std::string viewAll(Function myClass, std::string lineBreak){
 
                         if(myClass != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    classes: std::vector<Function> = myClass!.getClasses()!;;
+    std::vector<Function> classes = myClass.getClasses();;
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
-stringBuffer!.append("Class: ");
+stringBuffer.append("Class: ");
     
-stringBuffer!.append(myClass!.toString()!);
+stringBuffer.append(myClass.toString()!);
     
-stringBuffer!.append(" uses ");
+stringBuffer.append(" uses ");
     
-stringBuffer!.appendint(classes.length);
+stringBuffer.appendint(classes.size());
     
-stringBuffer!.append(" other classes");
+stringBuffer.append(" other classes");
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
-stringBuffer!.append("Classes: ");
+stringBuffer.append("Classes: ");
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < classes.length; index++)
+    int32_t index = 0;index < classes.size(); index++)
         {
-stringBuffer!.append("Class: ");
+stringBuffer.append("Class: ");
     
-stringBuffer!.append(classes[index]!.getName());
+stringBuffer.append(classes[index]!.getName());
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
 }
 
-stringBuffer!.append(InterfaceUtil.viewAll(myClass, lineBreak));
+stringBuffer.append(InterfaceUtil::viewAll(myClass, lineBreak));
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
-stringBuffer!.append(ConstructorUtil.viewAll(myClass, lineBreak));
+stringBuffer.append(ConstructorUtil::viewAll(myClass, lineBreak));
     
-stringBuffer!.append(lineBreak);
+stringBuffer.append(lineBreak);
     
-stringBuffer!.append(MethodUtil.viewAll(myClass, lineBreak));
+stringBuffer.append(MethodUtil::viewAll(myClass, lineBreak));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                                     }
@@ -153,10 +154,8 @@ stringBuffer!.append(MethodUtil.viewAll(myClass, lineBreak));
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ClassUtil(){
+}
 
 
 };

@@ -83,111 +83,108 @@
 class OperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: OperatingSystemFactory = new OperatingSystemFactory();
+    private: static OperatingSystemFactory instance() { return OperatingSystemFactory(); }
 
-    public static OperatingSystemFactory getInstance(){
+    public: static OperatingSystemFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OperatingSystemFactory.instance;
+                        return OperatingSystemFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: genericOperatingSystem: GenericOperatingSystem = NoOperatingSystem.NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-    private: hasDetected: bool = false;
+    private: bool hasDetected = false;
 
-private constructor (){
-
-            super();
-        }
+private: OperatingSystemFactory(){
+}
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem getOperatingSystemInstance(){
 
         try {
             
-    operatingSystems: OperatingSystems = OperatingSystems.getInstance()!;;
+    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
     
 
-    systemProperties: SystemProperties = SystemProperties.getInstance()!;;
+    SystemProperties systemProperties = SystemProperties::getInstance();;
     
 
-    osName: string = systemProperties!.getName()!;;
+    std::string osName = systemProperties.getName();;
     
 
-    osArch: string = systemProperties!.getArch()!;;
+    std::string osArch = systemProperties.getArch();;
     
 
-    osVersion: string = systemProperties!.getVersion()!;;
+    std::string osVersion = systemProperties.getVersion();;
     
 
-                        if(!this.hasDetected)
+                        if(!this->hasDetected)
                         
                                     {
-                                    this.logUtil!.putF("osName: " +osName, this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("osName: " +osName, this, this->commonStrings.GET_INSTANCE);
     
-this.hasDetected= true;
+this->hasDetected= true;
     
 
-                        if(osName!.indexOf(operatingSystems!.LINUX) >= 0)
+                        if(osName.indexOf(operatingSystems.LINUX) >= 0)
                         
                                     {
                                     
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
                         
                                     {
-                                    this.logUtil!.putF("Found a Linux OS", this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Found a Linux OS", this, this->commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
-this.genericOperatingSystem= LinuxOperatingSystemFactory.getInstance()!.getOperatingSystemInstance();
+this->genericOperatingSystem= LinuxOperatingSystemFactory::getInstance().getOperatingSystemInstance();
     
 
                                     }
                                 
                              else 
-                        if(osName!.indexOf(operatingSystems!.WINDOWS) >= 0)
+                        if(osName.indexOf(operatingSystems.WINDOWS) >= 0)
                         
                                     {
                                     
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
                         
                                     {
-                                    this.logUtil!.putF("Found a Windows OS", this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Found a Windows OS", this, this->commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
-this.genericOperatingSystem= WindowsOperatingSystemFactory.getInstance()!.getOperatingSystemInstance();
+this->genericOperatingSystem= WindowsOperatingSystemFactory::getInstance().getOperatingSystemInstance();
     
 
                                     }
                                 
                              else 
-                        if(osName!.indexOf(operatingSystems!.SOLARIS) >= 0)
+                        if(osName.indexOf(operatingSystems.SOLARIS) >= 0)
                         
                                     {
                                     
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
                         
                                     {
-                                    this.logUtil!.putF("Found a Solaris OS", this, this.commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Found a Solaris OS", this, this->commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
-this.genericOperatingSystem= SolarisOperatingSystemFactory.getInstance()!.getOperatingSystemInstance();
+this->genericOperatingSystem= SolarisOperatingSystemFactory::getInstance().getOperatingSystemInstance();
     
 
                                     }
@@ -196,17 +193,17 @@ this.genericOperatingSystem= SolarisOperatingSystemFactory.getInstance()!.getOpe
                             
 
 
-                            throw new Exception(new StringMaker().append("OS Not Supported: ")!.append(osName)!.toString());
+                            throw Exception(StringMaker().append("OS Not Supported: ").append(osName).toString());
                     
 
                         }
                             
 
-    log: Log = LogFactory.getInstanceF(new StringMaker().append("OperatingSystem Info: ")!.append(StringUtil.getInstance()!.toString(this.genericOperatingSystem))!.toString(), this, this.commonStrings!.GET_INSTANCE)!;;
+    Log log = LogFactory::getInstanceF(StringMaker().append("OperatingSystem Info: ").append(StringUtil::getInstance().toString(this->genericOperatingSystem)).toString(), this, this->commonStrings.GET_INSTANCE);;
     
 console.log(log.toString());
     
-this.logUtil!.putL(log);
+this->logUtil.putL(log);
     
 
                                     }
@@ -215,17 +212,17 @@ this.logUtil!.putL(log);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericOperatingSystem;
+                        return this->genericOperatingSystem;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -234,7 +231,7 @@ this.logUtil!.putL(log);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoOperatingSystem.NO_OPERATING_SYSTEM;
+                        return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }
 

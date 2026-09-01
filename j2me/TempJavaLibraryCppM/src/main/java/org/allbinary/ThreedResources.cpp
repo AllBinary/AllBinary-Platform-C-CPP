@@ -42,21 +42,20 @@
 class ThreedResources
             : public Object
          {
-        
 
-    private: static const threedResources: ThreedResources = new ThreedResources();
+    private: static const ThreedResources threedResources = ThreedResources();
 
-    public static ThreedResources getThreedResources(){
+    public: static ThreedResources getThreedResources(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ThreedResources.threedResources;
+                        return ThreedResources::threedResources;
     
 }
 
 
-    public add(){
+    public: void add(){
 }
 
 

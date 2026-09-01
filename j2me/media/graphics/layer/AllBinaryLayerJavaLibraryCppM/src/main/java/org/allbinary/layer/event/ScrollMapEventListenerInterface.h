@@ -47,11 +47,10 @@
         #include "ScrollMapEvent.h"
 
 class ScrollMapEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onMoveEvent(ScrollMapEvent layerManagerEvent);
+    void onMoveEvent(ScrollMapEvent layerManagerEvent);
 
 };
 

@@ -56,9 +56,8 @@
         #include "BasicArrayList.h"
 
 class BasicArrayListS: public BasicArrayList {
-        
 
-public constructor (int32_t size);
+public: BasicArrayListS(int32_t size);
 
 };
 

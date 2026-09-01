@@ -68,43 +68,42 @@
         #include "MusicStrings.h"
 
 class BaseMusicService: public Service {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonStateStrings: CommonStateStrings = CommonStateStrings.getInstance()!;
+    private: const CommonStateStrings commonStateStrings = CommonStateStrings::getInstance();
 
-    private: const ALREADY_PLAYING: string = "This is one song per music service";
+    private: const std::string ALREADY_PLAYING = "This is one song per music service";
 
-    private: const WAITING_FOR_MUSIC_TO_END: string = "Waiting for music to end";
+    private: const std::string WAITING_FOR_MUSIC_TO_END = "Waiting for music to end";
 
-    private: player: MediaPlayer = NullAndroidCanvas.NULL_MEDIA_PLAYER;
+    private: MediaPlayer player = NullAndroidCanvas::NULL_MEDIA_PLAYER;
 
-    private: songId: int32_t =  -1;
+    private: int32_t songId =  -1;
 
-    private: leftVolume: int32_t =  -1;
+    private: int32_t leftVolume =  -1;
 
-    private: rightVolume: int32_t =  -1;
+    private: int32_t rightVolume =  -1;
 
-    public IBinder onBind(Intent intent);
+    public: IBinder onBind(Intent intent);
 
-    public onCreate();
+    public: void onCreate();
 
-    public onDestroy();
+    public: void onDestroy();
 
-    public pause();
+    public: void pause();
 
-    public resume();
+    public: void resume();
 
-    public start();
+    public: void start();
 
-    public onStart(Intent intent, int32_t startid);
+    public: void onStart(Intent intent, int32_t startid);
 
-    public int32_t onStartCommand(Intent intent, int32_t flags, int32_t startId);
+    public: int32_t onStartCommand(Intent intent, int32_t flags, int32_t startId);
 
-    public onStartCommandIntent(Intent intent);
+    public: void onStartCommandIntent(Intent intent);
 
 };
 

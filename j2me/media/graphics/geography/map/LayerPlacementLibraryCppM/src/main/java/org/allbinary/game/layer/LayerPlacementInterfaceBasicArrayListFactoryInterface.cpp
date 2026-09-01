@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/util/BasicArrayList.h>
 
       
@@ -41,7 +43,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LayerPlacementInterfaceBasicArrayListFactoryInterface {
-        
 
     BasicArrayList getInstance()
 

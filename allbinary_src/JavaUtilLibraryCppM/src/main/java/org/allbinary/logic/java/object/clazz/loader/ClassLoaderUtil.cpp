@@ -46,17 +46,16 @@
 class ClassLoaderUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static string getName(any = {} anyType){
+    public: static std::string getName(Object* anyType){
 
-    classLoader: ClassLoader = anyType!.constructor.namegetClassLoader()!;;
+    ClassLoader classLoader = anyType->constructor.namegetClassLoader();;
     
 
                         if(classLoader != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -64,7 +63,7 @@ class ClassLoaderUtil
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "ClassLoader: " +classLoader!.constructor.name.toString()!;
+                        return "ClassLoader: " +classLoader.constructor.name.toString()!;
     
 
                                     }
@@ -72,15 +71,13 @@ class ClassLoaderUtil
 
 
 
-                            throw new Exception("Unable to get ClassLoader");
+                            throw Exception("Unable to get ClassLoader");
                     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ClassLoaderUtil(){
+}
 
 
 };

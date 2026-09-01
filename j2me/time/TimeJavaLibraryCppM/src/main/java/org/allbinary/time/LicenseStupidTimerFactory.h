@@ -46,11 +46,10 @@
 class LicenseStupidTimerFactory
             : public Object
          {
-        
 
-    private: static const instance: StupidTimer = new StupidTimer();
+    private: static StupidTimer instance() { return StupidTimer(); }
 
-    public static StupidTimer getInstance();
+    public: static StupidTimer getInstance();
 
 };
 

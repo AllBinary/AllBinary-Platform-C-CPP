@@ -67,18 +67,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "DownloadableInventoryItemView.h"
 
-class NewValidationView: public DownloadableInventoryItemView: public ValidationComponentInterface {
-        
+class NewValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: NewValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
 };
 

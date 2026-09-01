@@ -53,19 +53,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StaticTileLayerIntoPositionViewPosition: public ViewPosition {
-        
 
-    private: static tiledLayer: Layer = NullLayer.getInstance()!;
+    private: static Layer tiledLayer = NullLayer::getInstance();
 
-    public static layer: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    public: static AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    public static setTiledLayer(AllBinaryTiledLayer tiledLayer){
-StaticTileLayerIntoPositionViewPosition.tiledLayer= tiledLayer;
+    public: static void setTiledLayer(AllBinaryTiledLayer tiledLayer){
+StaticTileLayerIntoPositionViewPosition::tiledLayer= tiledLayer;
     
 }
 
 
-public constructor (){
+public: StaticTileLayerIntoPositionViewPosition(){
             super(0, 0, 0);
                     
 
@@ -74,32 +73,32 @@ public constructor (){
 }
 
 
-    public int32_t getX(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getX() -StaticTileLayerIntoPositionViewPosition.tiledLayer!.getXP();
+                        return super.getX() -StaticTileLayerIntoPositionViewPosition::tiledLayer.getXP();
     
 }
 
 
-    public int32_t getY(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getY() -StaticTileLayerIntoPositionViewPosition.tiledLayer!.getYP();
+                        return super.getY() -StaticTileLayerIntoPositionViewPosition::tiledLayer.getYP();
     
 }
 
 
-    public int32_t getZ(){
+    public: int32_t getZ(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getZ() -StaticTileLayerIntoPositionViewPosition.tiledLayer!.getZP();
+                        return super.getZ() -StaticTileLayerIntoPositionViewPosition::tiledLayer.getZP();
     
 }
 

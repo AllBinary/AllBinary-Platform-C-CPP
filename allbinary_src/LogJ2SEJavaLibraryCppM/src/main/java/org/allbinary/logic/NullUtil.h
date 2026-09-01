@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_NULLUTIL_H
         #define ORG_ALLBINARY_LOGIC_NULLUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Class.h"
@@ -56,40 +58,39 @@
 /*actual*/ class NullUtil
             : public Object
          {
-        
 
-    private: static const instance: NullUtil = new NullUtil();
+    private: static NullUtil instance() { return NullUtil(); }
 
-    /*actual*/ public static NullUtil getInstance();
+    /*actual*/ public: static NullUtil getInstance();
 
-    /*actual*/ public const NULL_OBJECT: any = {};
+    /*actual*/ public: const Object* NULL_OBJECT = {};
 
-    /*actual*/ public const NULL_CLASS: Function = this.NULL_OBJECT.constructor!;
+    /*actual*/ public: const Function NULL_CLASS = this->NULL_OBJECT.constructor;
 
-    /*actual*/ public const NULL_OBJECT_ARRAY: std::vector<any> = [];
+    /*actual*/ public: const std::vector<Object*> NULL_OBJECT_ARRAY = {};
 
-    /*actual*/ public const NULL_CHAR_ARRAY: std::vector<char> = 
+    /*actual*/ public: const std::vector<char> NULL_CHAR_ARRAY = 
                                                         
                                                         new Array(0)
                                                     ;
 
-    /*actual*/ public const NULL_BYTE_ARRAY: std::vector<int8_t> = [];
+    /*actual*/ public: const std::vector<int8_t> NULL_BYTE_ARRAY = [];
 
-    /*actual*/ public const NULL_SHORT_ARRAY_ARRAY: std::vector<std::vector<int16_t>> = new Array(0).fill(null).map(() => new Array(0).fill(0));
+    /*actual*/ public: const std::vector<std::vector<int16_t>> NULL_SHORT_ARRAY_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0));
 
-    /*actual*/ public const NULL_INT_ARRAY: std::vector<int32_t> = [];
+    /*actual*/ public: const std::vector<int32_t> NULL_INT_ARRAY = [];
 
-    /*actual*/ public const NULL_INT_ARRAY_ARRAY: std::vector<std::vector<int32_t>> = new Array(0).fill(null).map(() => new Array(0).fill(0));
+    /*actual*/ public: const std::vector<std::vector<int32_t>> NULL_INT_ARRAY_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0));
 
-    /*actual*/ public const NULL_INT_ARRAY_ARRAY_ARRAY: std::vector<std::vector<std::vector<int32_t>>> = Array.from({ length: 0 }, () => Array.from({ length: 0 }, () => new Array(0).fill(0)));
+    /*actual*/ public: const std::vector<std::vector<std::vector<int32_t>>> NULL_INT_ARRAY_ARRAY_ARRAY = Array.from({ length: 0 }, () => Array.from({ length: 0 }, () => new Array(0).fill(0)));
 
-    /*actual*/ public const NULL_FLOAT_ARRAY: std::vector<float> = [];
+    /*actual*/ public: const std::vector<float> NULL_FLOAT_ARRAY = [];
 
-    /*actual*/ public const EMPTY_VECTOR: Vector<any> = new Vector<any>();
+    /*actual*/ public: const Vector<any> EMPTY_VECTOR = Vector<any>();
 
-    /*actual*/ public const NULL_TABLE: Hashtable<any, any> = new Hashtable<any, any>();
+    /*actual*/ public: const Hashtable<any, any> NULL_TABLE = Hashtable<any, any>();
 
-    /*actual*/ public const NULL_MAP: HashMap<any, any> = new HashMap<any, any>();
+    /*actual*/ public: const HashMap<any, any> NULL_MAP = HashMap<any, any>();
 
 };
 

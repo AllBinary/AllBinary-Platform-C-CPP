@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -88,39 +90,38 @@
 class SimpleFileUtil
             : public Object
          {
-        
 
-    private: static const instance: SimpleFileUtil = new SimpleFileUtil();
+    private: static SimpleFileUtil instance() { return SimpleFileUtil(); }
 
-    public static SimpleFileUtil getInstance(){
+    public: static SimpleFileUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleFileUtil.instance;
+                        return SimpleFileUtil::instance();
     
 }
 
 
-    public static OutputStream nullOutputStream(){
+    public: static OutputStream nullOutputStream(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new class extends OutputStream
+                        return class extends OutputStream
                                 {
                                 
                 //@Throws(IOException.constructor)
             
-    public write(int32_t b){
+    public: void write(int32_t b){
 }
 
                 //@Throws(IOException.constructor)
             
-    public write(std::vector<int8_t> b, int32_t off, int32_t len){
+    public: void write(std::vector<int8_t> b, int32_t off, int32_t len){
 }
 
-    public close(){
+    public: void close(){
 }
 
                                 }
@@ -129,74 +130,74 @@ class SimpleFileUtil
 }
 
 
-    public static Writer nullWriter(){
+    public: static Writer nullWriter(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new class extends Writer
+                        return class extends Writer
                                 {
                                 
-    private: closed: bool= false;
+    bool closed= false;
                 //@Throws(IOException.constructor)
             
-    public Writer append(char c){
+    public: Writer append(char c){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
                 //@Throws(IOException.constructor)
             
-    public Writer append(CharSequence csq){
+    public: Writer append(CharSequence csq){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
                 //@Throws(IOException.constructor)
             
-    public Writer append(CharSequence csq, int32_t start, int32_t end){
+    public: Writer append(CharSequence csq, int32_t start, int32_t end){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this;
+                        return *this;
     
 }
 
                 //@Throws(IOException.constructor)
             
-    public write(int32_t c){
+    public: void write(int32_t c){
 }
 
                 //@Throws(IOException.constructor)
             
-    public write(std::vector<char> cbuf, int32_t off, int32_t len){
+    public: void write(std::vector<char> cbuf, int32_t off, int32_t len){
 }
 
                 //@Throws(IOException.constructor)
             
-    public write(string str){
+    public: void write(std::string str){
 }
 
                 //@Throws(IOException.constructor)
             
-    public write(string str, int32_t off, int32_t len){
+    public: void write(std::string str, int32_t off, int32_t len){
 }
 
                 //@Throws(IOException.constructor)
             
-    public flush(){
+    public: void flush(){
 }
 
-    public close(){
+    public: void close(){
 }
 
                                 }
@@ -205,17 +206,17 @@ class SimpleFileUtil
 }
 
 
-    public static Reader nullReader(){
+    public: static Reader nullReader(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new class extends Reader
+                        return class extends Reader
                                 {
                                 
                 //@Throws(IOException.constructor)
             
-    public int32_t read(){
+    public: int32_t read(){
 
 
 
@@ -226,7 +227,7 @@ class SimpleFileUtil
 
                 //@Throws(IOException.constructor)
             
-    public int32_t read(std::vector<char> cbuf, int32_t off, int32_t len){
+    public: int32_t read(std::vector<char> cbuf, int32_t off, int32_t len){
 
 
 
@@ -237,7 +238,7 @@ class SimpleFileUtil
 
                 //@Throws(IOException.constructor)
             
-    public int32_t read(CharBuffer target){
+    public: int32_t read(CharBuffer target){
 
 
 
@@ -248,7 +249,7 @@ class SimpleFileUtil
 
                 //@Throws(IOException.constructor)
             
-    public bool ready(){
+    public: bool ready(){
 
 
 
@@ -259,7 +260,7 @@ class SimpleFileUtil
 
                 //@Throws(IOException.constructor)
             
-    public int64_t skip(int64_t n){
+    public: int64_t skip(int64_t n){
 
 
 
@@ -268,7 +269,7 @@ class SimpleFileUtil
     
 }
 
-    public close(){
+    public: void close(){
 }
 
                                 }
@@ -277,35 +278,35 @@ class SimpleFileUtil
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const NULL_WRITER: Writer = SimpleFileUtil.nullWriter()!;
+    public: const Writer NULL_WRITER = SimpleFileUtil::nullWriter();
 
-    public const NULL_READER: Reader = SimpleFileUtil.nullReader()!;
+    public: const Reader NULL_READER = SimpleFileUtil::nullReader();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const nullUtil: NullUtil = NullUtil.getInstance()!;
+    private: const NullUtil nullUtil = NullUtil::getInstance();
 
-    private: const streamUtil: StreamUtil = StreamUtil.getInstance()!;
+    private: const StreamUtil streamUtil = StreamUtil::getInstance();
 
-    public BasicArrayList loadFileAsList(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1){
+    public: BasicArrayList loadFileAsList(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loadFileAsListReturnLine(inputStream, max, byteArray1, 0);;
+                        return this->loadFileAsListReturnLine(inputStream, max, byteArray1, 0);;
     
 }
 
 
-    public BasicArrayList loadFileAsListReturnLine(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine){
+    public: BasicArrayList loadFileAsListReturnLine(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine){
 
-    stringList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList stringList = BasicArrayListD();;
     
 
                         if(inputStream == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -319,30 +320,30 @@ class SimpleFileUtil
                                     }
                                 
 
-    byteArray: std::vector<int8_t> = this.nullUtil!.NULL_BYTE_ARRAY;;
+    std::vector<int8_t> byteArray = this->nullUtil.NULL_BYTE_ARRAY;;
     
 
         try {
             
-    outputStream2: ByteArrayOutputStream = new ByteArrayOutputStream(max);;
+    ByteArrayOutputStream outputStream2 = ByteArrayOutputStream(max);;
     
-byteArray= this.streamUtil!.getByteArray(inputStream, outputStream2, byteArray1);
+byteArray= this->streamUtil.getByteArray(inputStream, outputStream2, byteArray1);
     
-this.streamUtil!.close(inputStream);
+this->streamUtil.close(inputStream);
     
 
                 //: 
 } catch(e) 
             {
-this.streamUtil!.close(inputStream);
+this->streamUtil.close(inputStream);
     
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.ADD, e);
     
 }
 
 
                         if(byteArray == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -356,17 +357,16 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.ADD, 
                                     }
                                 
 
-    size: int32_t = byteArray!.length
-                ;;
+    int32_t size = byteArray.size();;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    startIndex: int32_t= 0;;
+    int32_t startIndex= 0;;
     
 
-    returnLine: int32_t = 0;;
+    int32_t returnLine = 0;;
     
 
         while(index < size)
@@ -403,9 +403,9 @@ index++;
                                     }
                                 
 
-    s: string = String.fromCharCode(...byteArray);;
+    std::string s = String.fromCharCode(...byteArray);;
     
-stringList!.add(s);
+stringList.add(s);
     
 index++;
     
@@ -420,22 +420,21 @@ index++;
 }
 
 
-    public string createStringFromArrayOfStrings(std::vector<string> stringArray){
+    public: std::string createStringFromArrayOfStrings(std::vector<std::string> stringArray){
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    size: int32_t = stringArray!.length
-                ;;
+    int32_t size = stringArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringMaker!.append(stringArray[index]!);
+stringMaker.append(stringArray[index]!);
     
 }
 
@@ -443,7 +442,7 @@ stringMaker!.append(stringArray[index]!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringMaker!.toString();;
+                        return stringMaker.toString();;
     
 }
 

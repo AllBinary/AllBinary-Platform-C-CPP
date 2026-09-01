@@ -56,15 +56,14 @@
 #include "WaypointBehaviorBase.h"
 
 class WaypointPathRunnable: public WaypointPathRunnableBase {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: WaypointPathRunnable();
 
-    public run();
+    public: void run();
 
-    public bool isDone();
+    public: bool isDone();
 
 };
 

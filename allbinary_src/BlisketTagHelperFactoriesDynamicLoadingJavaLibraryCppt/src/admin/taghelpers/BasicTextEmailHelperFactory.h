@@ -56,17 +56,16 @@
 class BasicTextEmailHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.BasicTextEmailHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.BasicTextEmailHelper";
 
-    private: static const FACTORYNAME: string = "BasicTextEmailHelperFactory";
+    private: static const std::string FACTORYNAME = "BasicTextEmailHelperFactory";
 
-public constructor ();
+public: BasicTextEmailHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

@@ -67,56 +67,53 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WorkFlowView.h"
 
-class EditValidationView: public WorkFlowView: public ValidationComponentInterface {
-        
+class EditValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: workFlowName: string;
+    private: std::string workFlowName;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: EditValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = this.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
     
-this.workFlowName= httpTransformInfoInterface!.getPageContext()!.getRequest()!.getParameter(WorkFlowData.getInstance()!.NAME);
+this->workFlowName= httpTransformInfoInterface.getPageContext().getRequest().getParameter(WorkFlowData::getInstance().NAME);
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-                        if(this.workFlowName == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(WorkFlowEntityFactory.getInstance()!.create2()!.get(this.workFlowName, this.getTransformInfoInterface()!.getStoreName()) == 
-                                    null
+                        if(WorkFlowEntityFactory::getInstance().create2().get(this->workFlowName, this->getTransformInfoInterface().getStoreName()) == 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("WorkFlow does not exist.", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("WorkFlow does not exist.", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -125,7 +122,7 @@ this.workFlowName= httpTransformInfoInterface!.getPageContext()!.getRequest()!.g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -134,17 +131,17 @@ this.workFlowName= httpTransformInfoInterface!.getPageContext()!.getRequest()!.g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -153,46 +150,44 @@ this.workFlowName= httpTransformInfoInterface!.getPageContext()!.getRequest()!.g
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.workFlowName == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    stringBuffer!.append("WorkFlow name is invalid<br />");
+                                    stringBuffer.append("WorkFlow name is invalid<br />");
     
 
                                     }
                                 
 
-                        if(WorkFlowEntityFactory.getInstance()!.create2()!.get(this.workFlowName, this.getTransformInfoInterface()!.getStoreName()) == 
-                                    null
+                        if(WorkFlowEntityFactory::getInstance().create2().get(this->workFlowName, this->getTransformInfoInterface().getStoreName()) == 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("WorkFlow does not exist.", this, "validationInfo()");
+                                    this->logUtil.putF("WorkFlow does not exist.", this, "validationInfo()");
     
 
                                     }
                                 
-stringBuffer!.append("WorkFlow does not exist<br />");
+stringBuffer.append("WorkFlow does not exist<br />");
     
 
                                     }
@@ -201,17 +196,17 @@ stringBuffer!.append("WorkFlow does not exist<br />");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -227,7 +222,7 @@ stringBuffer!.append("WorkFlow does not exist<br />");
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -237,7 +232,7 @@ stringBuffer!.append("WorkFlow does not exist<br />");
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

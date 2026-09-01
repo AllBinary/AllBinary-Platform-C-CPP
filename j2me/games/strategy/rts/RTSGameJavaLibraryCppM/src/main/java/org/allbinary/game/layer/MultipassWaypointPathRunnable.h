@@ -79,93 +79,89 @@
 #include "WaypointBehaviorBase.h"
 
 class MultipassWaypointPathRunnable: public WaypointPathRunnableBase {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const multipassState: MultipassState = new MultipassState();
+    private: const MultipassState multipassState = MultipassState();
 
-    private: done: bool = false;
+    private: bool done = false;
 
-    private: list: BasicArrayList = this.basicArrayListUtil!.getImmutableInstance()!;
+    private: BasicArrayList list = this->basicArrayListUtil.getImmutableInstance();
 
-    private: pathFindingInfo: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: Object* pathFindingInfo = NullUtil::getInstance().NULL_OBJECT;
 
 //inner= member=true isStatic=
 class FirstRunnable: public ARunnable {
-        
 
-    private: const multipassWaypointPathRunnable: MultipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
 
- constructor (MultipassWaypointPathRunnable multipassWaypointPathRunnable);
+: FirstRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable);
 
-    public run();
+    public: void run();
 
 };
 
             
-    private: const FIRST_RUNNABLE: Runnable = new this.FirstRunnable(this);
+    private: const Runnable FIRST_RUNNABLE = FirstRunnable(this);
 //    private boolean first = true;
 //inner= member=true isStatic=
 class SecondRunnable: public ARunnable {
-        
 
-    private: const multipassWaypointPathRunnable: MultipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
 
- constructor (MultipassWaypointPathRunnable multipassWaypointPathRunnable);
+: SecondRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable);
 
-    public run();
+    public: void run();
 
 };
 
             
-    private: const SECOND_RUNNABLE: Runnable = new this.SecondRunnable(this);
+    private: const Runnable SECOND_RUNNABLE = SecondRunnable(this);
 
 //inner= member=true isStatic=
 class EndRunnable: public ARunnable {
-        
 
-    private: const multipassWaypointPathRunnable: MultipassWaypointPathRunnable;
+    private: MultipassWaypointPathRunnable multipassWaypointPathRunnable;
 
- constructor (MultipassWaypointPathRunnable multipassWaypointPathRunnable);
+: EndRunnable(MultipassWaypointPathRunnable multipassWaypointPathRunnable);
 
-    public run();
+    public: void run();
 
 };
 
             
-    private: const END_RUNNABLE: Runnable = new this.EndRunnable(this);
+    private: const Runnable END_RUNNABLE = EndRunnable(this);
 
-    private: const ALREADY_ENDED_RUNNABLE: Runnable = new class extends ARunnable
+    private: const Runnable ALREADY_ENDED_RUNNABLE = class extends ARunnable
                                 {
                                 
-    public run();
+    public: void run();
                                 }
                             ;
 
-    private: currentPassRunnable: Runnable = this.FIRST_RUNNABLE;
+    private: Runnable currentPassRunnable = this->FIRST_RUNNABLE;
 
-public constructor ();
+public: MultipassWaypointPathRunnable();
 
-    public setRunning(bool isRunning);
+    public: void setRunning(bool isRunning);
 
-    public run();
+    public: void run();
 
-    reset2();
+    private: void reset2();
 
-    finish();
+    private: void finish();
 
-    public bool isDone();
+    public: bool isDone();
 
-    public reset();
+    public: void reset();
 
-    processFirstRunnable();
+    private: void processFirstRunnable();
 
-    processSecondRunnable();
+    private: void processSecondRunnable();
 
-    processEndRunnable();
+    private: void processEndRunnable();
 
 };
 

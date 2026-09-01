@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_H
         #define ORG_ALLBINARY_GAME_AG_LAYER_HUD_BASIC_LEVEL_LEVELHUDWIDGET_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -63,44 +65,43 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LevelHudWidget: public BasicHud: public PaintableInterface {
-        
+class LevelHudWidget: public BasicHud, public PaintableInterface {
 
                 //@Throws(Exception.constructor)
             
-    public static LevelHudWidget createHud(int32_t maxlevel, int32_t location, int32_t direction);
+    public: static LevelHudWidget createHud(int32_t maxlevel, int32_t location, int32_t direction);
 
-    private: level: int32_t;
+    private: int32_t level;
 
-    private: maxlevel: int32_t;
+    private: int32_t maxlevel;
 
-    private: const levelString: std::vector<char>;
+    private: std::vector<char> levelString;
 
-    private: levelNumberCharArray: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: levelNumberTotalDigits: int32_t= 0;
+    private: int32_t levelNumberTotalDigits= 0;
 
-    private: offset: int32_t= 0;
+    private: int32_t offset= 0;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-public constructor (int32_t maxlevel, int32_t location, int32_t direction);
+public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    update();
+    private: void update();
 
-    public setLevel(int32_t level);
+    public: void setLevel(int32_t level);
 
-    public nextLevel();
+    public: void nextLevel();
 
-    public previousLevel();
+    public: void previousLevel();
 
-    public bool isComplete();
+    public: bool isComplete();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

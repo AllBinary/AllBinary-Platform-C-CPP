@@ -74,29 +74,28 @@
 class PointsDomUtil
             : public Object
          {
-        
 
-    private: static const instance: PointsDomUtil = new PointsDomUtil();
+    private: static PointsDomUtil instance() { return PointsDomUtil(); }
 
-    public static PointsDomUtil getInstance();
+    public: static PointsDomUtil getInstance();
 
-    public const LINES: string = "lines";
+    public: const std::string LINES = "lines";
 
-    public const POINTONE: string = "pointOne";
+    public: const std::string POINTONE = "pointOne";
 
-    public const POINTTWO: string = "pointTwo";
+    public: const std::string POINTTWO = "pointTwo";
 
-    private: const ROTATEDPOINTONE: string = "rotatedPointOne";
+    private: const std::string ROTATEDPOINTONE = "rotatedPointOne";
 
-    private: const ROTATEDPOINTTWO: string = "rotatedPointTwo";
+    private: const std::string ROTATEDPOINTTWO = "rotatedPointTwo";
 
-    private: const LINE: string = "line";
+    private: const std::string LINE = "line";
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom(CanvasDom canvasDom, BasicArrayList pointVector);
+    public: Node toDom(CanvasDom canvasDom, BasicArrayList pointVector);
 
-    Node getPointNode(GPoint point, string pointName);
+    private: Node getPointNode(GPoint point, std::string pointName);
 
 };
 

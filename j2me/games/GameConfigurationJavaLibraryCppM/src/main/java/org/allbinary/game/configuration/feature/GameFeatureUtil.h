@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREUTIL_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -89,43 +91,42 @@
 class GameFeatureUtil
             : public Object
          {
-        
 
-    private: static const instance: GameFeatureUtil = new GameFeatureUtil();
+    private: static GameFeatureUtil instance() { return GameFeatureUtil(); }
 
-    public static GameFeatureUtil getInstance();
+    public: static GameFeatureUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public const ON_GAME_FEATURE_CHANGE: string = "onGameFeatureChange";
+    public: const std::string ON_GAME_FEATURE_CHANGE = "onGameFeatureChange";
 
-    public const GAME_FEATURE_CHANGED: string = "Game Feature Changed: ";
-
-                //@Throws(Exception.constructor)
-            
-    public setDefault(ChoiceGroup choiceGroup);
+    public: const std::string GAME_FEATURE_CHANGED = "Game Feature Changed: ";
 
                 //@Throws(Exception.constructor)
             
-    public updateMultiple(ChoiceGroup choiceGroup);
+    public: void setDefault(ChoiceGroup choiceGroup);
 
                 //@Throws(Exception.constructor)
             
-    public updateExclusiveForChoiceGroup(ChoiceGroup choiceGroup);
-
-    public bool isExclusive(string itemLabel);
+    public: void updateMultiple(ChoiceGroup choiceGroup);
 
                 //@Throws(Exception.constructor)
             
-    updateExclusive(string selectedChoiceLabel);
+    public: void updateExclusiveForChoiceGroup(ChoiceGroup choiceGroup);
+
+    public: bool isExclusive(std::string itemLabel);
 
                 //@Throws(Exception.constructor)
             
-    public updateExclusiveList(Feature gameFeature, BasicArrayList list);
+    private: void updateExclusive(std::string selectedChoiceLabel);
+
+                //@Throws(Exception.constructor)
+            
+    public: void updateExclusiveList(Feature gameFeature, BasicArrayList list);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_BASICPAINTABLESCANVAS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -71,15 +73,14 @@
         #include "GameCommandCanvas.h"
 
 class BasicPaintablesCanvas: public GameCommandCanvas {
-        
 
-    private: const paintableArray: std::vector<Paintable>;
+    private: std::vector<Paintable> paintableArray;
 
-    private: const colorFillPaintable: ColorFillBasePaintable;
+    private: ColorFillBasePaintable colorFillPaintable;
 
-public constructor (CommandListener cmdListener, string name, AllBinaryGameLayerManager allBinaryGameLayerManager, std::vector<Paintable> paintableArray);
+public: BasicPaintablesCanvas(CommandListener cmdListener, std::string name, AllBinaryGameLayerManager allBinaryGameLayerManager, std::vector<Paintable> paintableArray);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

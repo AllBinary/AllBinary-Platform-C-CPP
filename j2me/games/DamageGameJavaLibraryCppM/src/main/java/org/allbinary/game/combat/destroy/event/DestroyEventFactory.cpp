@@ -52,24 +52,21 @@
 class DestroyEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-    private: combatGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas combatGameCanvas;
 
-public constructor (AllBinaryGameCanvas combatGameCanvas){
-
-            super();
-        this.combatGameCanvas= combatGameCanvas;
+public: DestroyEventFactory(AllBinaryGameCanvas combatGameCanvas){
+this->combatGameCanvas= combatGameCanvas;
     
 }
 
 
-    public AllBinaryEventObject getInstance(){
+    public: AllBinaryEventObject getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new DestroyedEvent(this.combatGameCanvas);
+                        return DestroyedEvent(this->combatGameCanvas);
     
 }
 

@@ -48,9 +48,8 @@
         #include "BasicColor.h"
 
 class BasicColorCompositeSetterInterface {
-        
 
-    setBasicColorP(BasicColor basicColor);
+    void setBasicColorP(BasicColor basicColor);
 
 };
 

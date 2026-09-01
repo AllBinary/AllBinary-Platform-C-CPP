@@ -46,15 +46,14 @@
 #include "BasicColor.h"
 
 class ColorChangeEvent: public AllBinaryEventObject {
-        
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-public constructor (any = {} anyType);
+public: ColorChangeEvent(Object* anyType);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    public BasicColor getBasicColorP();
+    public: BasicColor getBasicColorP();
 
 };
 

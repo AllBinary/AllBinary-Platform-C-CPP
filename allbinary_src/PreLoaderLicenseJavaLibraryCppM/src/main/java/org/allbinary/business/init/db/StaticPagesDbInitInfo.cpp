@@ -39,11 +39,10 @@
         #include "DbInitInfo.h"
 
 class StaticPagesDbInitInfo: public DbInitInfo {
-        
 
-    private: static const INITFILE: string = "staticpagesbinitdata.dat";
+    private: static const std::string INITFILE = "staticpagesbinitdata.dat";
 
-public constructor (){
+public: StaticPagesDbInitInfo(){
             super(INITFILE, true);
                     
 
@@ -52,7 +51,7 @@ public constructor (){
 }
 
 
-public constructor (bool read){
+public: StaticPagesDbInitInfo(bool read){
             super(INITFILE, read);
                     
 

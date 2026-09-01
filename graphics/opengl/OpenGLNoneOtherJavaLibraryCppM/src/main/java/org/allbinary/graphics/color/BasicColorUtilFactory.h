@@ -46,9 +46,8 @@
 class BasicColorUtilFactory
             : public Object
          {
-        
 
-    public static BasicColorUtil getInstance();
+    public: static BasicColorUtil getInstance();
 
 };
 

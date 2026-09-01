@@ -41,28 +41,27 @@
 #include "CollidableBaseBehavior.h"
 
 class CollidableAlwaysPickupNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactory {
-        
 
-    private: static const instanceC: CollidableAlwaysPickupNeverCollideBehaviorFactory = new CollidableAlwaysPickupNeverCollideBehaviorFactory();
+    private: static const CollidableAlwaysPickupNeverCollideBehaviorFactory instanceC = CollidableAlwaysPickupNeverCollideBehaviorFactory();
 
-    public static CollidableAlwaysPickupNeverCollideBehaviorFactory getInstance(){
+    public: static CollidableAlwaysPickupNeverCollideBehaviorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableAlwaysPickupNeverCollideBehaviorFactory.instanceC;
+                        return CollidableAlwaysPickupNeverCollideBehaviorFactory::instanceC;
     
 }
 
 
-    private: const instance: CollidableAlwaysPickupNeverCollideBehavior = new CollidableAlwaysPickupNeverCollideBehavior();
+    private: const CollidableAlwaysPickupNeverCollideBehavior instance = CollidableAlwaysPickupNeverCollideBehavior();
 
-    public CollidableBaseBehavior createBehavior(){
+    public: CollidableBaseBehavior createBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.instance;
+                        return this->instance();
     
 }
 

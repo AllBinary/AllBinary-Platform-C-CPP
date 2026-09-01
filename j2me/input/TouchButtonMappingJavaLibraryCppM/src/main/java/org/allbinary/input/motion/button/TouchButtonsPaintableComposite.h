@@ -97,36 +97,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TouchButtonsMappingPaintable.h"
 
-class TouchButtonsPaintableComposite: public ProcessPaintable: public CompleteMotionGestureInputEventListenerInterface {
-        
+class TouchButtonsPaintableComposite: public ProcessPaintable, public CompleteMotionGestureInputEventListenerInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: inputMappingInterface: InputMappingInterface;
+    private: InputMappingInterface inputMappingInterface;
 
-    touchButtonsPaintable: TouchButtonsMappingPaintable;
+    protected: TouchButtonsMappingPaintable touchButtonsPaintable;
 
-    private: timeHelper: TimeDelayHelper = new TimeDelayHelper(250);
+    private: TimeDelayHelper timeHelper = TimeDelayHelper(250);
 
-    private: released: bool = true;
+    private: bool released = true;
 
-public constructor (InputMappingInterface inputMappingInterface, BasicColor basicColor);
+public: TouchButtonsPaintableComposite(InputMappingInterface inputMappingInterface, BasicColor basicColor);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    private: const METHOD_NAME: string = "onCompleteMotionGestureInputEvent";
+    private: const std::string METHOD_NAME = "onCompleteMotionGestureInputEvent";
 
-    private: const RELEASE: string = "Ignoring: MotionGestureInput Release";
+    private: const std::string RELEASE = "Ignoring: MotionGestureInput Release";
 
-    private: const FAST_REPEAT: string = "Ignoring: MotionGestureInput Repeated To Quickly";
+    private: const std::string FAST_REPEAT = "Ignoring: MotionGestureInput Repeated To Quickly";
 
-    private: const IGNORE: string = "Ignoring: Until Released";
+    private: const std::string IGNORE = "Ignoring: Until Released";
 
-    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
 
-    public process();
+    public: void process();
 
 };
 

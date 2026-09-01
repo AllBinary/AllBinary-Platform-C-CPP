@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -90,96 +92,93 @@
 class BaseImageAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BaseImageAnimationFactory createFactoryBase(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static BaseImageAnimationFactory createFactoryBase(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, AnimationBehaviorFactory animationBehaviorFactory){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BaseImageAnimationFactory(image, sequenceArray, width, height, 0, 0, animationBehaviorFactory);
+                        return BaseImageAnimationFactory(image, sequenceArray, width, height, 0, 0, animationBehaviorFactory);
     
 }
 
 
-    const animationFactoryImageScaleUtil: AnimationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil.getInstance()!;
+    protected: const AnimationFactoryImageScaleUtil animationFactoryImageScaleUtil = AnimationFactoryImageScaleUtil::getInstance();
 
-    private: const image: Image;
+    private: Image image;
 
-    public const animationBehaviorFactory: AnimationBehaviorFactory;
+    public: AnimationBehaviorFactory animationBehaviorFactory;
 
-    private: const sequenceArray: std::vector<int32_t>;
+    private: std::vector<int32_t> sequenceArray;
 
-    const animationFactoryInitializationVisitor: AnimationFactoryInitializationVisitor;
+    protected: AnimationFactoryInitializationVisitor animationFactoryInitializationVisitor;
 
-    scaleProperties: ScaleProperties = ScaleProperties.instance;
+    protected: ScaleProperties scaleProperties = ScaleProperties::instance();
 
-public constructor (Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.animationFactoryInitializationVisitor= new AnimationFactoryInitializationVisitor();
+public: BaseImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
+this->animationFactoryInitializationVisitor= AnimationFactoryInitializationVisitor();
     
-this.image= image;
+this->image= image;
     
-this.animationFactoryInitializationVisitor!.width= width;
+this->animationFactoryInitializationVisitor.width= width;
     
-this.animationFactoryInitializationVisitor!.height= height;
+this->animationFactoryInitializationVisitor.height= height;
     
-this.animationBehaviorFactory= animationBehaviorFactory;
+this->animationBehaviorFactory= animationBehaviorFactory;
     
-this.sequenceArray= sequenceArray;
+this->sequenceArray= sequenceArray;
     
-this.animationFactoryInitializationVisitor!.dx= dx;
+this->animationFactoryInitializationVisitor.dx= dx;
     
-this.animationFactoryInitializationVisitor!.dy= dy;
+this->animationFactoryInitializationVisitor.dy= dy;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.getFactoryInstance()!.getInstance(instanceId);;
+                        return NullAnimationFactory::getFactoryInstance().getInstance(instanceId);;
     
 }
 
 
-    public Image getImage(){
+    public: Image getImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image;
+                        return this->image;
     
 }
 
 
-    public std::vector<int32_t> getSequenceArray(){
+    public: std::vector<int32_t> getSequenceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sequenceArray;
+                        return this->sequenceArray;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
-this.scaleProperties= scaleProperties;
+    public: void setInitialScale(ScaleProperties scaleProperties){
+this->scaleProperties= scaleProperties;
     
 
-                        if(this.scaleProperties!.shouldScale)
+                        if(this->scaleProperties.shouldScale)
                         
                                     {
-                                    this.scaleProperties!.scaleWidth= static_cast<int32_t>((this.animationFactoryInitializationVisitor!.width *this.scaleProperties!.scaleX));
+                                    this->scaleProperties.scaleWidth= static_cast<int32_t>((this->animationFactoryInitializationVisitor.width *this->scaleProperties.scaleX));
     
-this.scaleProperties!.scaleHeight= static_cast<int32_t>((this.animationFactoryInitializationVisitor!.height *this.scaleProperties!.scaleY));
+this->scaleProperties.scaleHeight= static_cast<int32_t>((this->animationFactoryInitializationVisitor.height *this->scaleProperties.scaleY));
     
 
                                     }
@@ -191,51 +190,51 @@ this.scaleProperties!.scaleHeight= static_cast<int32_t>((this.animationFactoryIn
 }
 
 
-    public AnimationFactoryInitializationVisitor getAnimationFactoryInitializationVisitorP(){
+    public: AnimationFactoryInitializationVisitor getAnimationFactoryInitializationVisitorP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationFactoryInitializationVisitor;
+                        return this->animationFactoryInitializationVisitor;
     
 }
 
 
-    public ScaleProperties getScalePropertiesP(){
+    public: ScaleProperties getScalePropertiesP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scaleProperties;
+                        return this->scaleProperties;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
-    
-
-    commonLabels: CommonLabels = CommonLabels.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    CommonLabels commonLabels = CommonLabels::getInstance();;
     
-stringBuffer!.append(super.toString());
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(commonLabels!.HEIGHT_LABEL);
+stringBuffer.append(super.toString());
     
-stringBuffer!.appendint(this.image.getHeight());
+stringBuffer.append(commonLabels.HEIGHT_LABEL);
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.appendint(this->image.getHeight());
     
-stringBuffer!.append(this.animationFactoryInitializationVisitor!.toString());
+stringBuffer.append(commonSeps.SPACE);
+    
+stringBuffer.append(this->animationFactoryInitializationVisitor.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

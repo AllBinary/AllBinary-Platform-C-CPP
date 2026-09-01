@@ -61,50 +61,45 @@
 class PaymentTransactionInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: PaymentTransactionInterfaceFactory = new PaymentTransactionInterfaceFactory();
+    private: static PaymentTransactionInterfaceFactory instance() { return PaymentTransactionInterfaceFactory(); }
 
-    public static PaymentTransactionInterfaceFactory getInstance(){
+    public: static PaymentTransactionInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentTransactionInterfaceFactory.instance;
+                        return PaymentTransactionInterfaceFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: PaymentTransactionInterfaceFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentTransactionInterface getInstance(OrderHistory orderReview){
+    public: PaymentTransactionInterface getInstance(OrderHistory orderReview){
 
         try {
             
-    gatewayName: string = orderReview!.getPaymentMethod()!;;
+    std::string gatewayName = orderReview.getPaymentMethod();;
     
 
-                        if(gatewayName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     
-    paymentType: PaymentType = PaymentTypeUtil.getInstance()!.get(gatewayName)!;;
+    PaymentType paymentType = PaymentTypeUtil::getInstance().get(gatewayName);;
     
 
-    paymentTransactionInterfaceFactoryInterface: PaymentTransactionInterfaceFactoryInterface = paymentType!.getPaymentTransactionInterfaceFactoryInterface()!;;
+    PaymentTransactionInterfaceFactoryInterface paymentTransactionInterfaceFactoryInterface = paymentType.getPaymentTransactionInterfaceFactoryInterface();;
     
 
-    paymentTransactionInterface: PaymentTransactionInterface = paymentTransactionInterfaceFactoryInterface!.getInstance(orderReview)!;;
+    PaymentTransactionInterface paymentTransactionInterface = paymentTransactionInterfaceFactoryInterface.getInstance(orderReview);;
     
 
 
@@ -118,20 +113,20 @@ private constructor (){
 
 
 
-                            throw new Exception("Failed to create PaymentTransactionInterface: " +"GatewayName is: " +gatewayName);
+                            throw Exception("Failed to create PaymentTransactionInterface: " +"GatewayName is: " +gatewayName);
                     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put("Failed to generate test data", this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put("Failed to generate test data", this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

@@ -45,23 +45,22 @@
 class SoundStrings
             : public Object
          {
-        
 
-    private: static const instance: SoundStrings = new SoundStrings();
+    private: static SoundStrings instance() { return SoundStrings(); }
 
-    public static SoundStrings getInstance();
+    public: static SoundStrings getInstance();
 
-    public const STOP_ALL: string = "stopAll";
+    public: const std::string STOP_ALL = "stopAll";
 
-    public const CLOSE_ALL: string = "closeAll";
+    public: const std::string CLOSE_ALL = "closeAll";
 
-    public const SOUND: string = " Sound: ";
+    public: const std::string SOUND = " Sound: ";
 
-    public const INIT_SOUND: string = "Initializing Sound: ";
+    public: const std::string INIT_SOUND = "Initializing Sound: ";
 
-    public const STOPPING_SOUND: string = "Stopping Sound: ";
+    public: const std::string STOPPING_SOUND = "Stopping Sound: ";
 
-    public const CLOSING_SOUND: string = "Closing Sound: ";
+    public: const std::string CLOSING_SOUND = "Closing Sound: ";
 
 };
 

@@ -65,15 +65,14 @@
 class GraphicsAnalysisUtil
             : public Object
          {
-        
 
-    private: static const MAX: int32_t = 122;
+    private: static const int32_t MAX = 122;
 
                 //@Throws(Exception.constructor)
             
-    public static double getNominator(BufferedImage bufferedImage, Integer min_x, Integer max_x, Integer y);
+    public: static double getNominator(BufferedImage bufferedImage, Integer min_x, Integer max_x, Integer y);
 
-private constructor ();
+private: GraphicsAnalysisUtil();
 
 };
 

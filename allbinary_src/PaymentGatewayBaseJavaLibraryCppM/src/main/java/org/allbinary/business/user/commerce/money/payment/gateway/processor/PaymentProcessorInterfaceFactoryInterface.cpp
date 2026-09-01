@@ -47,7 +47,6 @@
         #include "PaymentProcessorInterface.h"
 
 class PaymentProcessorInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

@@ -42,22 +42,19 @@
         #include "TransformInfoObjectConfigGenerator.h"
 
 class BasicGenerator: public TransformInfoObjectConfigGenerator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: BasicGenerator(){
+}
 
 
-    public string process(string input){
+    public: std::string process(std::string input){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Processing", this, this.commonStrings!.PROCESS);
+                                    this->logUtil.putF("Processing", this, this->commonStrings.PROCESS);
     
 
                                     }

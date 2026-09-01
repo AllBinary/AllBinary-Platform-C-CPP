@@ -69,23 +69,22 @@
 #include "ResourceRelativeRelationshipFactoryInterface.h"
 
 class FeaturedResourceRelativeRelationshipFactory: public FeaturedResourceFactory {
-        
 
-    private: static INSTANCE: FeaturedResourceRelativeRelationshipFactory = new FeaturedResourceRelativeRelationshipFactory();
+    private: static FeaturedResourceRelativeRelationshipFactory INSTANCE = FeaturedResourceRelativeRelationshipFactory();
 
-    public static FeaturedResourceRelativeRelationshipFactory getInstance();
+    public: static FeaturedResourceRelativeRelationshipFactory getInstance();
 
-private constructor ();
+private: FeaturedResourceRelativeRelationshipFactory();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList getRelativeRelationshipList(string resource, AllBinaryLayer layer);
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList duplicate(BasicArrayList list, AllBinaryLayer layer);
+    public: BasicArrayList getRelativeRelationshipList(std::string resource, AllBinaryLayer layer);
+
+                //@Throws(Exception.constructor)
+            
+    private: BasicArrayList duplicate(BasicArrayList list, AllBinaryLayer layer);
 
 };
 

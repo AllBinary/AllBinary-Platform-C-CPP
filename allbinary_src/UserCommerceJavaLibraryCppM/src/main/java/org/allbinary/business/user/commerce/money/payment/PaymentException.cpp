@@ -40,9 +40,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentException: public Exception {
-        
 
-public constructor (string error){
+public: PaymentException(std::string error){
             super(error);
                     
 

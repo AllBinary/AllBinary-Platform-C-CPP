@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Throwable.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -81,95 +83,94 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ImageBaseRotationAnimation: public RotationAnimation {
-        
 
-    private: const image: Image;
+    private: Image image;
 
-public constructor (Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
-            super(angleInfo, CircularIndexUtil.createInstance(totalAngle /angleInfo!.getAngleIncrementInfo()!.getAngleIncrement()), animationBehavior);
+public: ImageBaseRotationAnimation(Image image, AngleInfo angleInfo, int16_t totalAngle, AnimationBehavior animationBehavior){
+            super(angleInfo, CircularIndexUtil::createInstance(totalAngle /angleInfo.getAngleIncrementInfo().getAngleIncrement()), animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.image= image;
+this->image= image;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize();;
+                        return this->getSize();;
     
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    anchor: int32_t = Anchor.TOP_LEFT;
+    protected: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawImage(this.image, x, y, this.anchor);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+graphics.drawImage(this->image, x, y, this->anchor);
     
 }
 
 
-    Image getImage(){
+    protected: Image getImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image;
+                        return this->image;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image.getWidth();;
+                        return this->image.getWidth();;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image.getHeight();;
+                        return this->image.getHeight();;
     
 }
 
 
-    public close(){
-DisposalUtil.getInstance()!.disposeImage(this.image);
+    public: void close(){
+DisposalUtil::getInstance().disposeImage(this->image);
     
 }
 
 
                 //@Throws(Throwable.constructor)
             
-    finalize(){
-DisposalUtil.getInstance()!.disposeImage(this.image);
+    protected: void finalize(){
+DisposalUtil::getInstance().disposeImage(this->image);
     
 }
 

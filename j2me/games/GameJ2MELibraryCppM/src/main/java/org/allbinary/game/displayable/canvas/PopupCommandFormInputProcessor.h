@@ -66,17 +66,16 @@
 #include "PopupMenuInputProcessor.h"
 
 class PopupCommandFormInputProcessor: public CommandFormInputProcessor {
-        
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form, PopupMenuInputProcessor popupMenuInputProcessor);
-
-                //@Throws(Exception.constructor)
-            
-    public int32_t processInput(int32_t key);
+public: PopupCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form, PopupMenuInputProcessor popupMenuInputProcessor);
 
                 //@Throws(Exception.constructor)
             
-    processMotionInput(MotionGestureEvent motionGestureEvent);
+    public: int32_t processInput(int32_t key);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void processMotionInput(MotionGestureEvent motionGestureEvent);
 
 };
 

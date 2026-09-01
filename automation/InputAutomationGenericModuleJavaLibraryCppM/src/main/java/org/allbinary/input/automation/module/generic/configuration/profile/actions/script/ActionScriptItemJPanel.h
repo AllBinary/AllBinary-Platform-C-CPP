@@ -45,42 +45,41 @@
 #include "Short.h"
 #include "Dimension.h"
 
-class ActionScriptItemJPanel: public javax.swing.JPanel {
-        
+class ActionScriptItemJPanel: public javax::swing::JPanel {
 
-public constructor ();
+public: ActionScriptItemJPanel();
 
-    public javax.swing.JPanel getNewActionScriptInputJPanel();
+    public: javax::swing::JPanel getNewActionScriptInputJPanel();
 
-    public setNewActionScriptInputJPanel(javax.swing.JPanel newActionScriptInputJPanel);
+    public: void setNewActionScriptInputJPanel(javax::swing::JPanel newActionScriptInputJPanel);
 
-    public javax.swing.JPanel getRemoveJPanel();
+    public: javax::swing::JPanel getRemoveJPanel();
 
-    public setRemoveJPanel(javax.swing.JPanel removeJPanel);
+    public: void setRemoveJPanel(javax::swing::JPanel removeJPanel);
 
-    public javax.swing.JPanel getScriptItemJPanel();
+    public: javax::swing::JPanel getScriptItemJPanel();
 
-    public setScriptItemJPanel(javax.swing.JPanel scriptItemJPanel);
+    public: void setScriptItemJPanel(javax::swing::JPanel scriptItemJPanel);
 
-    public javax.swing.JPanel getNewActionScriptConditionJPanel();
+    public: javax::swing::JPanel getNewActionScriptConditionJPanel();
 
-    public setNewActionScriptConditionJPanel(javax.swing.JPanel newActionScriptConditionJPanel);
+    public: void setNewActionScriptConditionJPanel(javax::swing::JPanel newActionScriptConditionJPanel);
 
-    public javax.swing.JPanel getChildActionScriptConditionJPanel();
+    public: javax::swing::JPanel getChildActionScriptConditionJPanel();
 
-    public setChildActionScriptConditionJPanel(javax.swing.JPanel childActionScriptConditionJPanel);
+    public: void setChildActionScriptConditionJPanel(javax::swing::JPanel childActionScriptConditionJPanel);
 
-    initComponents();
+    private: void initComponents();
 
-    private: childActionScriptConditionJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel childActionScriptConditionJPanel;
 
-    private: newActionScriptConditionJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel newActionScriptConditionJPanel;
 
-    private: newActionScriptInputJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel newActionScriptInputJPanel;
 
-    private: removeJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel removeJPanel;
 
-    private: scriptItemJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel scriptItemJPanel;
 
 };
 

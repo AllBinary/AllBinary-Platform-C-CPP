@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -64,23 +66,22 @@
 class RandomPatrolFlockingFiringAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    artificialIntelligenceInterface: std::vector<ArtificialIntelligenceInterface> = new Array(2);;
+    std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface = new Array(2);;
     
-artificialIntelligenceInterface[0]= new RandomPatrolAI(hashtable, ownerLayerInterface, gameInput);
+artificialIntelligenceInterface[0]= RandomPatrolAI(hashtable, ownerLayerInterface, gameInput);
     
-artificialIntelligenceInterface[1]= new TimedFireAI(1800, ownerLayerInterface, gameInput);
+artificialIntelligenceInterface[1]= TimedFireAI(1800, ownerLayerInterface, gameInput);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ArrayAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
+                        return ArrayAI(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
     
 }
 

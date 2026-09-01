@@ -49,13 +49,12 @@
 class NoCacheableFactory
             : public Object
         : public CacheableInterfaceFactoryInterface {
-        
 
-public constructor ();
+public: NoCacheableFactory();
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface getInstance(any = {} key);
+    public: CacheableInterface getInstance(Object* key);
 
 };
 

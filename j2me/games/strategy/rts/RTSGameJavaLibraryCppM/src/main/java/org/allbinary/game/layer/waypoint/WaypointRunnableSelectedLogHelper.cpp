@@ -51,32 +51,31 @@
         #include "WaypointRunnableLogHelper.h"
 
 class WaypointRunnableSelectedLogHelper: public WaypointRunnableLogHelper {
-        
 
-    private: static const instanceC: WaypointRunnableSelectedLogHelper = new WaypointRunnableSelectedLogHelper();
+    private: static const WaypointRunnableSelectedLogHelper instanceC = WaypointRunnableSelectedLogHelper();
 
-    public static WaypointRunnableSelectedLogHelper getInstance(){
+    public: static WaypointRunnableSelectedLogHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointRunnableSelectedLogHelper.instanceC;
+                        return WaypointRunnableSelectedLogHelper::instanceC;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public start(PathFindingLayerInterface pathFindingLayerInterface){
-this.logUtil!.putF(new StringMaker().append(pathFindingLayerInterface!.getName())!.append(this.commonStrings!.START_RUNNABLE)!.toString(), this, this.commonStrings!.RUN);
+    public: void start(PathFindingLayerInterface pathFindingLayerInterface){
+this->logUtil.putF(StringMaker().append(pathFindingLayerInterface.getName()).append(this->commonStrings.START_RUNNABLE).toString(), this, this->commonStrings.RUN);
     
 }
 
 
-    public end(PathFindingLayerInterface pathFindingLayerInterface){
-this.logUtil!.putF(new StringMaker().append(pathFindingLayerInterface!.getName())!.append(this.commonStrings!.END_RUNNABLE)!.toString(), this, this.commonStrings!.RUN);
+    public: void end(PathFindingLayerInterface pathFindingLayerInterface){
+this->logUtil.putF(StringMaker().append(pathFindingLayerInterface.getName()).append(this->commonStrings.END_RUNNABLE).toString(), this, this->commonStrings.RUN);
     
 }
 

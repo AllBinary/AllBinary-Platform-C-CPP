@@ -41,15 +41,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class KeyInterface {
-        
 
-    keyPressed(int32_t keyCode);
+    void keyPressed(int32_t keyCode);
 
-    keyReleased(int32_t keyCode);
+    void keyReleased(int32_t keyCode);
 
-    keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
+    void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
 };
 

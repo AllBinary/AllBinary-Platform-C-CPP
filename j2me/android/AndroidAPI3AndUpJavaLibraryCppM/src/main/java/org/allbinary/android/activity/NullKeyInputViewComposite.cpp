@@ -50,33 +50,32 @@
 class NullKeyInputViewComposite
             : public Object
         : public KeyInputViewCompositeInterface {
-        
 
-    public static const NULL_KEY_INPUT_VIEW_COMPOSITE: NullKeyInputViewComposite = new NullKeyInputViewComposite();
+    public: static const NullKeyInputViewComposite NULL_KEY_INPUT_VIEW_COMPOSITE = NullKeyInputViewComposite();
 
-    public setKeyInputView(View keyInputView){
+    public: void setKeyInputView(View keyInputView){
 }
 
 
-    public View getRootView(){
+    public: View getRootView(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public View getView(){
+    public: View getView(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public runOnUiThread(Runnable action){
+    public: void runOnUiThread(Runnable action){
 }
 
 

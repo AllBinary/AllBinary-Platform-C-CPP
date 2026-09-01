@@ -48,7 +48,6 @@
         #include "CategoryModifierTreeInterface.h"
 
 class CategoryLoaderInterface: public CategoryModifierTreeInterface {
-        
 
     Document getDoc(CategoryInterface categoryInterface);
 

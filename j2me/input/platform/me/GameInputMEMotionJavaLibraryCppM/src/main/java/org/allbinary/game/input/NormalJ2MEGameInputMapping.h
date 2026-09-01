@@ -46,9 +46,8 @@
 #include "NormalJ2MEDefaultGameInputMapping.h"
 
 class NormalJ2MEGameInputMapping: public J2MEGameInputMapping {
-        
 
-    InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping getDefault();
 
 };
 

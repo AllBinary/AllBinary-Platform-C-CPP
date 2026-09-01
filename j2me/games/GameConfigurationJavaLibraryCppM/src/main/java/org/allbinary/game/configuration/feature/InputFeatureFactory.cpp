@@ -44,42 +44,39 @@
 class InputFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: InputFeatureFactory = new InputFeatureFactory();
+    private: static InputFeatureFactory instance() { return InputFeatureFactory(); }
 
-    public static InputFeatureFactory getInstance(){
+    public: static InputFeatureFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputFeatureFactory.instance;
+                        return InputFeatureFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InputFeatureFactory(){
+}
 
 
-    public const REMOVE_DUPLICATE_KEY_PRESSES: InputFeature = new InputFeature("Remove Duplicate Key Presses");
+    public: const InputFeature REMOVE_DUPLICATE_KEY_PRESSES = InputFeature("Remove Duplicate Key Presses");
 
-    public const INPUT_MAPPING: InputFeature = new InputFeature("Input Mapping");
+    public: const InputFeature INPUT_MAPPING = InputFeature("Input Mapping");
 
-    public const MULTI_KEY_PRESS: InputFeature = new InputFeature("Multi Key Press");
+    public: const InputFeature MULTI_KEY_PRESS = InputFeature("Multi Key Press");
 
-    public const SINGLE_KEY_REPEAT_PRESS: InputFeature = new InputFeature("Single Key Repeat Press");
+    public: const InputFeature SINGLE_KEY_REPEAT_PRESS = InputFeature("Single Key Repeat Press");
 
-    public const SINGLE_KEY_PRESS: InputFeature = new InputFeature("Single Key Press");
+    public: const InputFeature SINGLE_KEY_PRESS = InputFeature("Single Key Press");
 
-    public bool isSingleKeyProcessing(){
+    public: bool isSingleKeyProcessing(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(this.SINGLE_KEY_REPEAT_PRESS) || features.isFeature(this.SINGLE_KEY_PRESS))
+                        if(features.isFeature(this->SINGLE_KEY_REPEAT_PRESS) || features.isFeature(this->SINGLE_KEY_PRESS))
                         
                                     {
                                     

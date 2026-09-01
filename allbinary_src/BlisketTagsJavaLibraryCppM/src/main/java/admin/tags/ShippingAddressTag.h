@@ -67,27 +67,26 @@
         #include "TableTag.h"
 
 class ShippingAddressTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: value: string;
+    private: std::string value;
 
-public constructor ();
+public: ShippingAddressTag();
 
-    public setValue(string value);
-
-                //@Throws(LicensingException.constructor)
-            
-    string set();
+    public: void setValue(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    string setToBillingAddress();
+    private: std::string set();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: std::string setToBillingAddress();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

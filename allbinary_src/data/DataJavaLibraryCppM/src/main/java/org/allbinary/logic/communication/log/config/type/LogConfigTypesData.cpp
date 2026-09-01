@@ -42,23 +42,22 @@
 class LogConfigTypesData
             : public Object
          {
-        
 
-    private: static const instance: LogConfigTypesData = new LogConfigTypesData();
+    private: static LogConfigTypesData instance() { return LogConfigTypesData(); }
 
-    public static LogConfigTypesData getInstance(){
+    public: static LogConfigTypesData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogConfigTypesData.instance;
+                        return LogConfigTypesData::instance();
     
 }
 
 
-    public const NAME: string = "LOG_CONFIG_TYPES_NAME";
+    public: const std::string NAME = "LOG_CONFIG_TYPES_NAME";
 
-    public const DESCRIPTION: string = "LOG_CONFIG_TYPES_DESCRIPTION";
+    public: const std::string DESCRIPTION = "LOG_CONFIG_TYPES_DESCRIPTION";
 
 };
 

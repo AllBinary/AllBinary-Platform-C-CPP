@@ -59,63 +59,62 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SaveGameForm: public CommandForm {
-        
 
-    private: static FORM: CommandForm = CommandForm.getNullCommandForm()!;
+    private: static CommandForm FORM = CommandForm::getNullCommandForm();
 
                 //@Throws(Exception.constructor)
             
-    public static CommandForm createForm(CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-SaveGameForm.FORM= new SaveGameForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+    public: static CommandForm createForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+SaveGameForm::FORM= SaveGameForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SaveGameForm.FORM;
+                        return SaveGameForm::FORM;
     
 }
 
 
-    public static CommandForm getInstance(){
+    public: static CommandForm getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SaveGameForm.FORM;
+                        return SaveGameForm::FORM;
     
 }
 
 
-private constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+private: SaveGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
             super(commandListener, title, backgrounBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    timeString: string = (Date.now()).toString()!;;
+    std::string timeString = std::to_string(currentTimeMillis);;
     
-this.append(new TextField("Name: ", timeString, 30, TextField.ANY));
+this->append(TextField("Name: ", timeString, 30, TextField::ANY));
     
-this.initCommands(commandListener);
+this->initCommands(commandListener);
     
 }
 
 
-    public initCommands(CommandListener cmdListener){
+    public: void initCommands(CommandListener cmdListener){
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
-this.removeAllCommands();
+this->removeAllCommands();
     
-this.addCommand(gameCommandsFactory!.SAVE);
+this->addCommand(gameCommandsFactory.SAVE);
     
-this.addCommand(gameCommandsFactory!.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS);
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 

@@ -68,37 +68,34 @@
 class PaymentGatewayView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: paymentGatewayInterface: PaymentGatewayInterface;
+    private: PaymentGatewayInterface paymentGatewayInterface;
 
-public constructor (PaymentGatewayInterface paymentGatewayInterface){
-
-            super();
-        this.paymentGatewayInterface= paymentGatewayInterface;
+public: PaymentGatewayView(PaymentGatewayInterface paymentGatewayInterface){
+this->paymentGatewayInterface= paymentGatewayInterface;
     
 }
 
 
-    public PaymentGatewayInterface getPaymentGatewayInterface(){
+    public: PaymentGatewayInterface getPaymentGatewayInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentGatewayInterface;
+                        return this->paymentGatewayInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
 
@@ -111,25 +108,25 @@ public constructor (PaymentGatewayInterface paymentGatewayInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "toXmlNode");
+                                    this->logUtil.putF(this->commonStrings.START, this, "toXmlNode");
     
 
                                     }
                                 
 
-    hashMap: HashMap<any, any> = new PaymentGatewayMapping(this.paymentGatewayInterface).toHashMap()!;;
+    HashMap<any, any> hashMap = PaymentGatewayMapping(this->paymentGatewayInterface).toHashMap();;
     
-hashMap!.putAll(this.toHashMap());
+hashMap.putAll(this->toHashMap());
     
 
-    paymentGatewayNode: Node = ModDomHelper.createNodeWithValueNodes(document, PaymentGatewayData.NAME.toString(), hashMap)!;;
+    Node paymentGatewayNode = ModDomHelper::createNodeWithValueNodes(document, PaymentGatewayData::NAME.toString(), hashMap);;
     
 
 
@@ -142,10 +139,10 @@ hashMap!.putAll(this.toHashMap());
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode", e);
     
 
                                     }

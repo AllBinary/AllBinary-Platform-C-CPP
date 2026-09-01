@@ -47,16 +47,15 @@
 class BasicArrayListCacheableInterfaceFactory
             : public Object
         : public CacheableInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface getInstance(any = {} key){
+    public: CacheableInterface getInstance(Object* key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicArrayListCacheable();
+                        return BasicArrayListCacheable();
     
 }
 

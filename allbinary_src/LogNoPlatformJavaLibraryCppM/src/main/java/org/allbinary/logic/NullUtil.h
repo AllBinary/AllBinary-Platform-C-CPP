@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_NULLUTIL_H
         #define ORG_ALLBINARY_LOGIC_NULLUTIL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Class.h"
@@ -53,35 +55,34 @@
 // class NullUtil
             : public Object
          {
-        
 
-    private: static const instance: NullUtil
+    private: static NullUtil instance() { return NullUtil(); }
 
-    public static NullUtil getInstance();
+    public: static NullUtil getInstance();
 
-    public const NULL_OBJECT: any
+    public: const Object* NULL_OBJECT
 
-    public const NULL_CLASS: Function
+    public: const Function NULL_CLASS
 
-    public const NULL_OBJECT_ARRAY: std::vector<any>
+    public: const std::vector<Object*> NULL_OBJECT_ARRAY
 
-    public const NULL_CHAR_ARRAY: std::vector<char>
+    public: const std::vector<char> NULL_CHAR_ARRAY
 
-    public const NULL_BYTE_ARRAY: std::vector<int8_t>
+    public: const std::vector<int8_t> NULL_BYTE_ARRAY
 
-    public const NULL_SHORT_ARRAY_ARRAY: std::vector<std::vector<int16_t>>
+    public: const std::vector<std::vector<int16_t>> NULL_SHORT_ARRAY_ARRAY
 
-    public const NULL_INT_ARRAY: std::vector<int32_t>
+    public: const std::vector<int32_t> NULL_INT_ARRAY
 
-    public const NULL_INT_ARRAY_ARRAY: std::vector<std::vector<int32_t>>
+    public: const std::vector<std::vector<int32_t>> NULL_INT_ARRAY_ARRAY
 
-    public const NULL_INT_ARRAY_ARRAY_ARRAY: std::vector<std::vector<std::vector<int32_t>>>
+    public: const std::vector<std::vector<std::vector<int32_t>>> NULL_INT_ARRAY_ARRAY_ARRAY
 
-    public const NULL_FLOAT_ARRAY: std::vector<float>
+    public: const std::vector<float> NULL_FLOAT_ARRAY
 
-    public const EMPTY_VECTOR: Vector<any>
+    public: const Vector<any> EMPTY_VECTOR
 
-    public const NULL_TABLE: Hashtable<any, any>
+    public: const Hashtable<any, any> NULL_TABLE
 
 };
 

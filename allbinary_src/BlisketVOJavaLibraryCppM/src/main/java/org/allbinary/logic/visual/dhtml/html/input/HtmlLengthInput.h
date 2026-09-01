@@ -44,21 +44,20 @@
         #include "HtmlValueInput.h"
 
 class HtmlLengthInput: public HtmlValueInput {
-        
 
-    private: const MAXLENGTH: string = "MAXLENGTH";
+    private: const std::string MAXLENGTH = "MAXLENGTH";
 
-    private: const SIZE: string = "SIZE";
+    private: const std::string SIZE = "SIZE";
 
-    private: length: string;
+    private: std::string length;
 
-    private: size: string;
+    private: std::string size;
 
-public constructor (string before, string type, string name, string value, string after);
+public: HtmlLengthInput(std::string before, std::string type, std::string name, std::string value, std::string after);
 
-    public setMaxLength(Integer length);
+    public: void setMaxLength(Integer length);
 
-    public setSize(Integer size);
+    public: void setSize(Integer size);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -73,37 +75,36 @@
 class HighScore
             : public Object
          {
-        
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-    private: name: string;
+    private: std::string name;
 
-    private: const gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: const score: int64_t;
+    private: int64_t score;
 
-    private: const scoreString: string;
+    private: std::string scoreString;
 
-public constructor (int32_t id, string name, GameInfo gameInfo, int64_t score);
+public: HighScore(int32_t id, std::string name, GameInfo gameInfo, int64_t score);
 
-    public int32_t getId();
+    public: int32_t getId();
 
-    public string getName();
+    public: std::string getName();
 
-    public int64_t getScore();
+    public: int64_t getScore();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> getAsBytes();
+    public: std::vector<int8_t> getAsBytes();
 
-    public GameInfo getGameInfo();
+    public: GameInfo getGameInfo();
 
-    public string getScoreString();
+    public: std::string getScoreString();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

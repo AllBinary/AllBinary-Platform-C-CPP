@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -48,37 +50,34 @@
 class ImageToRotationImageArrayUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageToRotationImageArrayUtil = new ImageToRotationImageArrayUtil();
+    private: static ImageToRotationImageArrayUtil instance() { return ImageToRotationImageArrayUtil(); }
 
-    public static ImageToRotationImageArrayUtil getInstance(){
+    public: static ImageToRotationImageArrayUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageToRotationImageArrayUtil.instance;
+                        return ImageToRotationImageArrayUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ImageToRotationImageArrayUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Image> generate(Image image, int32_t angleIncrement, int32_t totalAngle){
+    public: std::vector<Image> generate(Image image, int32_t angleIncrement, int32_t totalAngle){
 
-    imageRotationUtil: ImageRotationUtil = ImageRotationUtil.getInstance()!;;
+    ImageRotationUtil imageRotationUtil = ImageRotationUtil::getInstance();;
     
 
-    totalFrames: int32_t = totalAngle /angleIncrement;;
+    int32_t totalFrames = totalAngle /angleIncrement;;
     
 
-    imageArray: std::vector<Image> = new Array(totalFrames);;
+    std::vector<Image> imageArray = new Array(totalFrames);;
     
 imageArray[0]= image;
     
@@ -87,9 +86,9 @@ imageArray[0]= image;
 
 
                         for (
-    index: int32_t = 1;index < totalFrames; index++)
+    int32_t index = 1;index < totalFrames; index++)
         {
-imageArray[index]= imageRotationUtil!.createRotatedImage(image, index *angleIncrement);
+imageArray[index]= imageRotationUtil.createRotatedImage(image, index *angleIncrement);
     
 }
 

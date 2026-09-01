@@ -45,31 +45,20 @@
 class OpenGLVersionValidator
             : public Object
          {
-        
 
-    private: static const instance: OpenGLVersionValidator = new OpenGLVersionValidator();
+    private: static OpenGLVersionValidator instance() { return OpenGLVersionValidator(); }
 
-    public static OpenGLVersionValidator getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLVersionValidator.instance;
-    
-}
-
-
-    public bool isGL31OrHigher(){
+    public: static OpenGLVersionValidator getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
+                        return OpenGLVersionValidator::instance();
     
 }
 
 
-    public bool isAvailable(string glVersionRequired){
+    public: bool isGL31OrHigher(){
 
 
 
@@ -79,11 +68,21 @@ class OpenGLVersionValidator
 }
 
 
-    public setShaderComposite(ShaderComposite shaderComposite, any = {} anyType){
+    public: bool isAvailable(std::string glVersionRequired){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
 }
 
 
-    public EGL_CONTEXT_CLIENT_VERSION_VALUE: int32_t =  -1;
+    public: void setShaderComposite(ShaderComposite shaderComposite, Object* anyType){
+}
+
+
+    public: int32_t EGL_CONTEXT_CLIENT_VERSION_VALUE =  -1;
 
 };
 

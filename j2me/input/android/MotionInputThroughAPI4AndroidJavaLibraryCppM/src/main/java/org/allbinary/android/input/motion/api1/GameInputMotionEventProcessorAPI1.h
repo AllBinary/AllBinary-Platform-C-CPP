@@ -61,19 +61,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInputMotionEventProcessorAPI1: public BaseGameInputMotionEventProcessor {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameInputMotionEventProcessorAPI1 getInstance();
+    public: static GameInputMotionEventProcessorAPI1 getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const motionRecognizer: MotionRecognizer = new AllMotionRecognizer();
+    private: const MotionRecognizer motionRecognizer = AllMotionRecognizer();
 
-private constructor ();
+private: GameInputMotionEventProcessorAPI1();
 
-    public process(MotionEvent motionEvent);
+    public: void process(MotionEvent motionEvent);
 
 };
 

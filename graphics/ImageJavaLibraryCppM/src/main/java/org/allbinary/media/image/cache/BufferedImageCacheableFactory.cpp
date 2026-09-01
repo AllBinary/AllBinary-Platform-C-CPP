@@ -50,20 +50,17 @@
 class BufferedImageCacheableFactory
             : public Object
         : public CacheableInterfaceFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: BufferedImageCacheableFactory(){
+}
 
 
-    public CacheableInterface getInstance(any = {} key){
+    public: CacheableInterface getInstance(Object* key){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BufferedImageCacheable(key as BufferedImageInfo);
+                        return BufferedImageCacheable(key as BufferedImageInfo);
     
 }
 

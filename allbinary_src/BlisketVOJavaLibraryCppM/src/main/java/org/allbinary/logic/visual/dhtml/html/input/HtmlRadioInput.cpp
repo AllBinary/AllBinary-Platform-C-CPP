@@ -43,12 +43,11 @@
 #include "HtmlInputData.h"
 
 class HtmlRadioInput: public HtmlValueInput {
-        
 
-    private: const CHECKED: string = "checked";
+    private: const std::string CHECKED = "checked";
 
-public constructor (string before, string name, string value, string after){
-            super(before, HtmlInputData.getInstance()!.RADIO, name, value, after);
+public: HtmlRadioInput(std::string before, std::string name, std::string value, std::string after){
+            super(before, HtmlInputData::getInstance().RADIO, name, value, after);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -56,8 +55,8 @@ public constructor (string before, string name, string value, string after){
 }
 
 
-    public setSelected(){
-super.addAttribute(this.CHECKED, BooleanFactory.getInstance()!.TRUE_STRING);
+    public: void setSelected(){
+super.addAttribute(this->CHECKED, BooleanFactory::getInstance().TRUE_STRING);
     
 }
 

@@ -58,19 +58,18 @@
 #include "TouchButton.h"
 
 class TouchButtonsPaintable: public Paintable {
-        
 
-    const foregroundBasicColor: BasicColor;
+    protected: BasicColor foregroundBasicColor;
 
-    const foregroundColor: int32_t;
+    protected: int32_t foregroundColor;
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const touchButtonFactory: TouchButtonFactory = TouchButtonFactory.getInstance()!;
+    private: const TouchButtonFactory touchButtonFactory = TouchButtonFactory::getInstance();
 
-public constructor (BasicColor basicColor);
+public: TouchButtonsPaintable(BasicColor basicColor);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

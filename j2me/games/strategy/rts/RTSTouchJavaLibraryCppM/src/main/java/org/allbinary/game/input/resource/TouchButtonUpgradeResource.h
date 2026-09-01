@@ -44,13 +44,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TouchButtonUpgradeResource: public TouchButtonResource {
-        
 
-    private: static const instance: TouchButtonResource = new TouchButtonUpgradeResource();
+    private: static const TouchButtonResource instance = TouchButtonUpgradeResource();
 
-    public static TouchButtonResource getInstance();
+    public: static TouchButtonResource getInstance();
 
-private constructor ();
+private: TouchButtonUpgradeResource();
 
 };
 

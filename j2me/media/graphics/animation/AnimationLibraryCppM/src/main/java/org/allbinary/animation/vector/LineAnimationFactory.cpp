@@ -57,31 +57,28 @@
 class LineAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: basicColor: BasicColor;
+    private: BasicColor basicColor;
 
-public constructor (BasicColor basicColor){
-
-            super();
-        this.basicColor= basicColor;
+public: LineAnimationFactory(BasicColor basicColor){
+this->basicColor= basicColor;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LineAnimation(this.basicColor);
+                        return LineAnimation(this->basicColor);
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

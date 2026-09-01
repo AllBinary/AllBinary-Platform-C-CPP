@@ -74,71 +74,70 @@
 class NullGameCanvasRunnable
             : public Object
         : public GameCanvasRunnableInterface {
-        
 
-    public static const NULL_GAME_CANVAS_RUNNABLE: NullGameCanvasRunnable = new NullGameCanvasRunnable();
+    public: static const NullGameCanvasRunnable NULL_GAME_CANVAS_RUNNABLE = NullGameCanvasRunnable();
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    public string getTitle();
+    public: std::string getTitle();
 
-    public bool isInitialized();
+    public: bool isInitialized();
 
-    public bool isPaused();
+    public: bool isPaused();
 
-    public unPause();
+    public: void unPause();
 
-    public pause();
+    public: void pause();
 
-    public bool isHighScoreSubmitted();
-
-                //@Throws(Exception.constructor)
-            
-    public setHighScoreSubmitted(bool highScoreSubmitted);
+    public: bool isHighScoreSubmitted();
 
                 //@Throws(Exception.constructor)
             
-    public processGameOver();
-
-    public bool isGameOver();
-
-    public initCommands(CommandListener cmdListener);
+    public: void setHighScoreSubmitted(bool highScoreSubmitted);
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getCurrentStateHashtable();
+    public: void processGameOver();
+
+    public: bool isGameOver();
+
+    public: void initCommands(CommandListener cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getLoadStateHashtable();
+    public: Hashtable<any, any> getCurrentStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public setLoadStateHashtable(Hashtable<any, any> hashtable);
-
-    public int32_t getType();
+    public: Hashtable<any, any> getLoadStateHashtable();
 
                 //@Throws(Exception.constructor)
             
-    public setGameState(GameState gameState);
+    public: void setLoadStateHashtable(Hashtable<any, any> hashtable);
 
-    public GameState getGameState();
-
-    public itemStateChanged(Item item);
-
-    public paint(Graphics graphics);
-
-    public paintThreed(Graphics graphics);
-
-    public bool isRunning();
-
-    public setRunning(bool isRunning);
+    public: int32_t getType();
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread);
+    public: void setGameState(GameState gameState);
 
-    public run();
+    public: GameState getGameState();
+
+    public: void itemStateChanged(Item item);
+
+    public: void paint(Graphics graphics);
+
+    public: void paintThreed(Graphics graphics);
+
+    public: bool isRunning();
+
+    public: void setRunning(bool isRunning);
+
+                //@Throws(Exception.constructor)
+            
+    public: void setThread(Thread thread);
+
+    public: void run();
 
 };
 

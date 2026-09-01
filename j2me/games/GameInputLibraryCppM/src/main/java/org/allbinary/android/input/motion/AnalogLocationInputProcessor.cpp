@@ -54,9 +54,8 @@
 class AnalogLocationInputProcessor
             : public Object
          {
-        
 
-    public process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInput analogLocationInput){
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, AnalogLocationInput analogLocationInput){
 }
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -61,48 +63,47 @@
 class AnalogInputBuilder
             : public Object
          {
-        
 
-    private: static const instance: AnalogInputBuilder = new AnalogInputBuilder();
+    private: static AnalogInputBuilder instance() { return AnalogInputBuilder(); }
 
-    public static AnalogInputBuilder getInstance(){
+    public: static AnalogInputBuilder getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogInputBuilder.instance;
+                        return AnalogInputBuilder::instance();
     
 }
 
 
-    public disable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
-inputProcessorArray[Canvas.UP]= new SpecialUpGameInputProcessor(collidableDestroyableDamageableLayer);
+    public: void disable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
+inputProcessorArray[Canvas::UP]= SpecialUpGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.DOWN]= new SpecialDownGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::DOWN]= SpecialDownGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.RIGHT]= new SpecialRightGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::RIGHT]= SpecialRightGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.LEFT]= new SpecialLeftGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::LEFT]= SpecialLeftGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.KEY_NUM0]= new Special1GameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::KEY_NUM0]= Special1GameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.KEY_NUM5]= new Special3GameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::KEY_NUM5]= Special3GameInputProcessor(collidableDestroyableDamageableLayer);
     
 }
 
 
-    public enable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
-inputProcessorArray[Canvas.UP]= new SpecialAnalogUpGameInputProcessor(collidableDestroyableDamageableLayer);
+    public: void enable(std::vector<GameInputProcessor> inputProcessorArray, CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
+inputProcessorArray[Canvas::UP]= SpecialAnalogUpGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.DOWN]= new SpecialAnalogDownGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::DOWN]= SpecialAnalogDownGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.RIGHT]= new SpecialAnalogRightGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::RIGHT]= SpecialAnalogRightGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.LEFT]= new SpecialAnalogLeftGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::LEFT]= SpecialAnalogLeftGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.KEY_NUM0]= new SpecialAnalogLeftTriggerGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::KEY_NUM0]= SpecialAnalogLeftTriggerGameInputProcessor(collidableDestroyableDamageableLayer);
     
-inputProcessorArray[Canvas.KEY_NUM5]= new SpecialAnalogRightTriggerGameInputProcessor(collidableDestroyableDamageableLayer);
+inputProcessorArray[Canvas::KEY_NUM5]= SpecialAnalogRightTriggerGameInputProcessor(collidableDestroyableDamageableLayer);
     
 }
 

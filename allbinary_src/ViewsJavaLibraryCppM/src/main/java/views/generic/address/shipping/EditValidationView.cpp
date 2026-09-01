@@ -63,29 +63,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ShippingAddressView.h"
 
-class EditValidationView: public ShippingAddressView: public ValidationComponentInterface {
-        
+class EditValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-    private: value: string;
+    private: std::string value;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: EditValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = this.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
     
-this.value= httpTransformInfoInterface!.getPageContext()!.getRequest()!.getParameter(StreetAddressData.ID);
+this->value= httpTransformInfoInterface.getPageContext().getRequest().getParameter(StreetAddressData::ID);
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-                        if(this.getWeblisketSession()!.getUserName() != 
-                                    null
+                        if(this->getWeblisketSession().getUserName() != 
+                                    nullptr
                                 )
                         
                                     {
@@ -93,19 +92,19 @@ this.value= httpTransformInfoInterface!.getPageContext()!.getRequest()!.getParam
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    billingAddressesEntity: ShippingAddressesEntity = new ShippingAddressesEntity(this.getWeblisketSession()!.getUserName());;
+    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
-this.streetAddress= billingAddressesEntity!.get(new Integer(this.value));
+this->streetAddress= billingAddressesEntity.get(Integer(this->value));
     
 
-                        if(this.streetAddress == 
-                                    null
+                        if(this->streetAddress == 
+                                    nullptr
                                 )
                         
                                     {
@@ -113,7 +112,7 @@ this.streetAddress= billingAddressesEntity!.get(new Integer(this.value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -122,22 +121,22 @@ this.streetAddress= billingAddressesEntity!.get(new Integer(this.value));
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.streetAddress!.isValid();;
+                        return this->streetAddress.isValid();;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.streetAddress!.validationInfo();;
+                        return this->streetAddress.validationInfo();;
     
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -147,7 +146,7 @@ this.streetAddress= billingAddressesEntity!.get(new Integer(this.value));
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

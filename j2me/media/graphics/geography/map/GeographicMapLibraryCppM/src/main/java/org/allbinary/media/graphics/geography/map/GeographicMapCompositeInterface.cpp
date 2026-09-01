@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 
 
 
@@ -40,13 +42,12 @@
 #include "BasicGeographicMap.h"
 
 class GeographicMapCompositeInterface {
-        
 
     std::vector<GeographicMapCellType> geographicMapCellTypeArray()
 
     std::vector<BasicGeographicMap> getGeographicMapInterface()
 
-    setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterface)
+    void setGeographicMapInterface(std::vector<BasicGeographicMap> geographicMapInterface)
 
 };
 

@@ -42,32 +42,29 @@
 class PointsResources
             : public Object
          {
-        
 
-    private: static const SINGLETON: PointsResources = new PointsResources();
+    private: static const PointsResources SINGLETON = PointsResources();
 
-    public static PointsResources getInstance(){
+    public: static PointsResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsResources.SINGLETON;
+                        return PointsResources::SINGLETON;
     
 }
 
 
-    public RESOURCE: string = "points_drop_20_by_20.png";
+    public: std::string RESOURCE = "points_drop_20_by_20.png";
 
-    public RESOURCE_2: string = "points_2_drop_20_by_20.png";
+    public: std::string RESOURCE_2 = "points_2_drop_20_by_20.png";
 
-    public RESOURCE_3: string = "points_3_drop_20_by_20.png";
+    public: std::string RESOURCE_3 = "points_3_drop_20_by_20.png";
 
-    public RESOURCE_4: string = "points_4_drop_20_by_20.png";
+    public: std::string RESOURCE_4 = "points_4_drop_20_by_20.png";
 
-private constructor (){
-
-            super();
-        }
+private: PointsResources(){
+}
 
 
 };

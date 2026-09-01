@@ -58,37 +58,36 @@
 class CaptureWorkerUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static processProfileActionConditions(Vector vector, Long frame){
+    public: static void processProfileActionConditions(Vector vector, Long frame){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF(commonStrings!.START, "CaptureWorkerUtil", "processProfileActionConditions");
+logUtil.putF(commonStrings.START, "CaptureWorkerUtil", "processProfileActionConditions");
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    profileActionConditionInterface: ProfileActionScriptConditionInterface = vector.get(index) as ProfileActionScriptConditionInterface;;
+    ProfileActionScriptConditionInterface profileActionConditionInterface = vector.get(index) as ProfileActionScriptConditionInterface;;
     
 
-                        if(profileActionConditionInterface!.shouldProcess(frame))
+                        if(profileActionConditionInterface.shouldProcess(frame))
                         
                                     {
-                                    profileActionConditionInterface!.process(frame);
+                                    profileActionConditionInterface.process(frame);
     
 
                                     }
@@ -102,12 +101,10 @@ logUtil!.putF(commonStrings!.START, "CaptureWorkerUtil", "processProfileActionCo
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: CaptureWorkerUtil(){
+}
 
 
 };

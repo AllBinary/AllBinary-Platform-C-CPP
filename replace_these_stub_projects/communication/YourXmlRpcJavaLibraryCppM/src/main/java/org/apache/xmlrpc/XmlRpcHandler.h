@@ -32,11 +32,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcHandler {
-        
 
                 //@Throws(Exception.constructor)
             
-    any execute(string method, Vector<any> params);
+    Object* execute(std::string method, Vector<any> params);
 
 };
 

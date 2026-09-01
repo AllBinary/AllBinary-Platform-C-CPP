@@ -49,19 +49,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CapturedImageWorkerResultsEvent: public AllBinaryEventObject {
-        
 
-    private: const frame: Long;
+    private: Long frame;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (any = {} anyType, Long frame, BufferedImage bufferedImage);
+public: CapturedImageWorkerResultsEvent(Object* anyType, Long frame, BufferedImage bufferedImage);
 
-    public BufferedImage getBufferedImage();
+    public: BufferedImage getBufferedImage();
 
-    setBufferedImage(BufferedImage bufferedImage);
+    private: void setBufferedImage(BufferedImage bufferedImage);
 
-    public Long getFrame();
+    public: Long getFrame();
 
 };
 

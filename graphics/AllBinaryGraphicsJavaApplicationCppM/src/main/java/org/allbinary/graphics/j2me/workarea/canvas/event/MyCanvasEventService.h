@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_EVENT_MYCANVASEVENTSERVICE_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Class.h"
@@ -53,36 +55,35 @@
 class MyCanvasEventService
             : public Object
          {
-        
 
-    private: static listenerList: javax.swing.event.EventListenerList = new javax.swing.event.EventListenerList();
+    private: static javax::swing::event::EventListenerList listenerList = javax::swing::event::EventListenerList();
 
-    public static DELETE: string = "delete";
+    public: static std::string DELETE = "delete";
 
-    public static DUPLICATE: string = "duplicate";
+    public: static std::string DUPLICATE = "duplicate";
 
-    public static SELECT: string = "select";
+    public: static std::string SELECT = "select";
 
-    public static ROTATE: string = "rotate";
+    public: static std::string ROTATE = "rotate";
 
-    public static EXPLODE: string = "explode";
+    public: static std::string EXPLODE = "explode";
 
-    public static AUTOEXPLODE: string = "autoExplode";
+    public: static std::string AUTOEXPLODE = "autoExplode";
 
-    public static CENTER: string = "center";
+    public: static std::string CENTER = "center";
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static addListener(MyCanvasEventListener listener);
+    public: static void addListener(MyCanvasEventListener listener);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static removeListener(MyCanvasEventListener listener);
+    public: static void removeListener(MyCanvasEventListener listener);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static fire(MyCanvasEvent evt);
+    public: static void fire(MyCanvasEvent evt);
 
-private constructor ();
+private: MyCanvasEventService();
 
 };
 

@@ -52,13 +52,12 @@
 class AdvertisementsEntityFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "org.allbinary.data.tables.AdvertisementEntity";
+    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementEntity";
 
-    public static AdvertisementsEntityInterface getInstance(){
+    public: static AdvertisementsEntityInterface getInstance(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -66,20 +65,20 @@ class AdvertisementsEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdvertisementsEntity() as AdvertisementsEntityInterface;
+                        return AdvertisementsEntity() as AdvertisementsEntityInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, "AdvertisementEntityFactory", commonStrings!.GET_INSTANCE, e);
+logUtil.put(commonStrings.EXCEPTION, "AdvertisementEntityFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -95,10 +94,8 @@ logUtil!.put(commonStrings!.EXCEPTION, "AdvertisementEntityFactory", commonStrin
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AdvertisementsEntityFactory(){
+}
 
 
 };

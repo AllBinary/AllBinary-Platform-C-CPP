@@ -55,9 +55,8 @@
 class MidletFactoryInterface
             : public Object
          {
-        
 
-    public MIDlet getInstance();
+    public: MIDlet getInstance();
 
 };
 

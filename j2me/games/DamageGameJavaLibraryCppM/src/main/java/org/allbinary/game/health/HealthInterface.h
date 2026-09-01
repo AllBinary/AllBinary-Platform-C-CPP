@@ -42,23 +42,22 @@
         #include "HealthListenerInterface.h"
 
 class HealthInterface {
-        
 
     bool isAlive();
 
-    damage(int32_t ahealth);
+    void damage(int32_t ahealth);
 
-    heal(int32_t ahealth);
+    void heal(int32_t ahealth);
 
-    healMax();
+    void healMax();
 
     int32_t getMaxHealth();
 
-    setMaxHealth(int32_t maxHealth);
+    void setMaxHealth(int32_t maxHealth);
 
     int32_t getHealth();
 
-    addListener(HealthListenerInterface healthListenerInterface);
+    void addListener(HealthListenerInterface healthListenerInterface);
 
 };
 

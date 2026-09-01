@@ -52,28 +52,27 @@
 class IdGeneratorEntityFactory
             : public Object
          {
-        
 
-    public static IdGeneratorEntityInterface getInstance(){
+    public: static IdGeneratorEntityInterface getInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.generator.IdGeneratorEntity() as IdGeneratorEntityInterface;
+                        return org::allbinary::data::tables::generator::IdGeneratorEntity() as IdGeneratorEntityInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, "ServerLicenseRequestEntityFactory", commonStrings!.GET_INSTANCE, e);
+logUtil.put(commonStrings.EXCEPTION, "ServerLicenseRequestEntityFactory", commonStrings.GET_INSTANCE, e);
     
 
 
@@ -86,10 +85,8 @@ logUtil!.put(commonStrings!.EXCEPTION, "ServerLicenseRequestEntityFactory", comm
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: IdGeneratorEntityFactory(){
+}
 
 
 };

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_FILE_UPLOAD_ABFILEITEM_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -91,65 +93,64 @@
 class AbFileItem
             : public Object
         : public FileItem {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: fieldName: string;
+    private: std::string fieldName;
 
-    private: const byteArray: std::vector<int8_t>;
+    private: std::vector<int8_t> byteArray;
 
-public constructor (string name, string fieldName, std::vector<int8_t> byteArray);
+public: AbFileItem(std::string name, std::string fieldName, std::vector<int8_t> byteArray);
 
                 //@Throws(IOException.constructor)
             
-    public InputStream getInputStream();
+    public: InputStream getInputStream();
 
-    public string getContentType();
+    public: std::string getContentType();
 
-    public string getName();
+    public: std::string getName();
 
-    public bool isInMemory();
+    public: bool isInMemory();
 
-    public int64_t getSize();
+    public: int64_t getSize();
 
-    public std::vector<int8_t> get();
+    public: std::vector<int8_t> get();
 
                 //@Throws(UnsupportedEncodingException.constructor)
             
-    public string getString(string encoding);
+    public: std::string getString(std::string encoding);
 
-    public string getString();
-
-                //@Throws(Exception.constructor)
-            
-    public write(File file);
+    public: std::string getString();
 
                 //@Throws(Exception.constructor)
             
-    public write(AbFile file);
+    public: void write(File file);
 
-    public delete();
+                //@Throws(Exception.constructor)
+            
+    public: void write(AbFile file);
 
-    public string getFieldName();
+    public: void delete_();
 
-    public setFieldName(string name);
+    public: std::string getFieldName();
 
-    public bool isFormField();
+    public: void setFieldName(std::string name);
 
-    public setFormField(bool state);
+    public: bool isFormField();
+
+    public: void setFormField(bool state);
 
                 //@Throws(IOException.constructor)
             
-    public OutputStream getOutputStream();
+    public: OutputStream getOutputStream();
 
-    public FileItemHeaders getHeaders();
+    public: FileItemHeaders getHeaders();
 
-    public setHeaders(FileItemHeaders fih);
+    public: void setHeaders(FileItemHeaders fih);
 
 };
 

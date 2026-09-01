@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -51,47 +53,44 @@
 class BaseAnimationInterfaceFactoryInterfaceComposite
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: basicAnimationInterfaceFactoryInterfaceArray: std::vector<BasicAnimationInterfaceFactoryInterface>;
+    private: std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray;
 
-public constructor (std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray){
-
-            super();
-        this.basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
+public: BaseAnimationInterfaceFactoryInterfaceComposite(std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray){
+this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.getFactoryInstance()!.getInstance(0);;
+                        return NullAnimationFactory::getFactoryInstance().getInstance(0);;
     
 }
 
 
-    public std::vector<BasicAnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray(){
+    public: std::vector<BasicAnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicAnimationInterfaceFactoryInterfaceArray;
+                        return this->basicAnimationInterfaceFactoryInterfaceArray;
     
 }
 
 
-    public setBasicAnimationInterfaceFactoryInterfaceArray(std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray){
-this.basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
+    public: void setBasicAnimationInterfaceFactoryInterfaceArray(std::vector<BasicAnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray){
+this->basicAnimationInterfaceFactoryInterfaceArray= basicAnimationInterfaceFactoryInterfaceArray;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

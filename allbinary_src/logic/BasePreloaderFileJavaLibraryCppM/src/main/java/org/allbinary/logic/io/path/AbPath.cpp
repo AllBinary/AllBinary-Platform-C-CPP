@@ -66,19 +66,18 @@
 class AbPath
             : public Object
          {
-        
 
-    public static AbPath createAbPath(){
+    public: static AbPath createAbPath(){
 
         try {
             
-    EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(EMPTY_STRING, EMPTY_STRING);
+                        return AbPath(EMPTY_STRING, EMPTY_STRING);
     
 
                 //: 
@@ -87,60 +86,58 @@ class AbPath
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 }
 
 
-    private: static const NETWORK_SEP: string = ":/";
+    private: static const std::string NETWORK_SEP = ":/";
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const abPathData: AbPathData = AbPathData.getInstance()!;
+    private: const AbPathData abPathData = AbPathData::getInstance();
 
-    private: const abPathUtil: PathUtil = PathUtil.getInstance()!;
+    private: const PathUtil abPathUtil = PathUtil::getInstance();
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    schema: string = this.EMPTY_STRING;
+    protected: std::string schema = this->EMPTY_STRING;
 
-    private: path: string = this.EMPTY_STRING;
+    private: std::string path = this->EMPTY_STRING;
 
-    nameP: string = this.EMPTY_STRING;
+    protected: std::string nameP = this->EMPTY_STRING;
 
-    private: hasSchemaP: bool = false;
+    private: bool hasSchemaP = false;
 
-    private: numberOfSeps: int32_t = 0;
+    private: int32_t numberOfSeps = 0;
 
-public constructor (string aPath, string name){
+public: AbPath(std::string aPath, std::string name){
 
-            super();
-        
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil!.isEmpty(aPath))
+                        if(!stringValidationUtil.isEmpty(aPath))
                         
                                     {
-                                    this.schema= this.getSchema(aPath);
+                                    this->schema= this->getSchema(aPath);
     
-this.nameP= name;
+this->nameP= name;
     
-this.path= this.abPathUtil!.adjustEnd(this.abPathUtil!.adjust(this.getPathFromPath(aPath)));
+this->path= this->abPathUtil.adjustEnd(this->abPathUtil.adjust(this->getPathFromPath(aPath)));
     
 
                                     }
                                 
                         else {
-                            this.init();
+                            this->init();
     
 
-                        if(!stringValidationUtil!.isEmpty(name))
+                        if(!stringValidationUtil.isEmpty(name))
                         
                                     {
-                                    this.nameP= name;
+                                    this->nameP= name;
     
 
                                     }
@@ -151,77 +148,77 @@ this.path= this.abPathUtil!.adjustEnd(this.abPathUtil!.adjust(this.getPathFromPa
 }
 
 
-    init(){
-this.schema= this.EMPTY_STRING;
+    private: void init(){
+this->schema= this->EMPTY_STRING;
     
-this.setPath(this.abPathData!.SEPARATOR);
+this->setPath(this->abPathData.SEPARATOR);
     
-this.nameP= this.EMPTY_STRING;
+this->nameP= this->EMPTY_STRING;
     
 }
 
 
-    string getSchema(string aPath){
+    protected: std::string getSchema(std::string aPath){
 
-    beginIndex: int32_t = aPath!.indexOf(this.commonSeps!.COLON)!;;
+    int32_t beginIndex = aPath.indexOf(this->commonSeps.COLON);;
     
 
                         if(beginIndex >= 0)
                         
                                     {
-                                    this.hasSchemaP= true;
+                                    this->hasSchemaP= true;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return aPath!.substring(0, beginIndex);;
+                        return aPath.substring(0, beginIndex);;
     
 
                                     }
                                 
-this.hasSchemaP= false;
+this->hasSchemaP= false;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EMPTY_STRING;
+                        return this->EMPTY_STRING;
     
 }
 
 
-    public bool hasSchema(){
+    public: bool hasSchema(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hasSchemaP;
+                        return this->hasSchemaP;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getPathFromPath(string aPath){
+    public: std::string getPathFromPath(std::string aPath){
 
-    filePathData: FilePathData = FilePathData.getInstance()!;;
+    FilePathData filePathData = FilePathData::getInstance();;
     
 
-    tempPath: string = aPath;;
+    std::string tempPath = aPath;;
     
 
-                        if(!this.hasSchema())
+                        if(!this->hasSchema())
                         
                                     {
-                                    tempPath= this.abPathUtil!.adjustStart(tempPath);
+                                    tempPath= this->abPathUtil.adjustStart(tempPath);
     
 
                                     }
                                 
                         else {
                             
-    beginIndex: int32_t = tempPath!.indexOf(this.commonSeps!.COLON)!;;
+    int32_t beginIndex = tempPath.indexOf(this->commonSeps.COLON);;
     
 
                         if(beginIndex >= 0)
@@ -230,27 +227,27 @@ this.hasSchemaP= false;
                                     beginIndex++;
     
 
-        while(tempPath[beginIndex] == this.abPathData!.SEPARATORCHAR || tempPath[beginIndex] == filePathData!.SEPARATORCHAR)
+        while(tempPath[beginIndex] == this->abPathData.SEPARATORCHAR || tempPath[beginIndex] == filePathData.SEPARATORCHAR)
         {
 beginIndex++;
     
-this.numberOfSeps++;
+this->numberOfSeps++;
     
 
-                        if(this.numberOfSeps > 2)
+                        if(this->numberOfSeps > 2)
                         
                                     {
                                     
 
 
-                            throw new Exception("Should Not Have More Than Two Seps");
+                            throw Exception("Should Not Have More Than Two Seps");
                     
 
                                     }
                                 
 }
 
-tempPath= tempPath!.substring(beginIndex, tempPath!.length);
+tempPath= tempPath.substring(beginIndex, tempPath.size());
     
 
                                     }
@@ -267,76 +264,76 @@ tempPath= tempPath!.substring(beginIndex, tempPath!.length);
 }
 
 
-    public setName(string name){
-this.nameP= name;
+    public: void setName(std::string name){
+this->nameP= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.nameP;
+                        return this->nameP;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.hasSchema())
+                        if(this->hasSchema())
                         
                                     {
-                                    stringBuffer!.append(this.schema);
+                                    stringBuffer.append(this->schema);
     
-stringBuffer!.append(AbPath.NETWORK_SEP);
+stringBuffer.append(AbPath::NETWORK_SEP);
     
 
                                     }
                                 
-stringBuffer!.append(this.getPath());
+stringBuffer.append(this->getPath());
     
-stringBuffer!.append(this.nameP);
+stringBuffer.append(this->nameP);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string toFileSystemString(){
+    public: std::string toFileSystemString(){
 
-                        if(this.hasSchema())
+                        if(this->hasSchema())
                         
                                     {
                                     
-    filePathData: FilePathData = FilePathData.getInstance()!;;
+    FilePathData filePathData = FilePathData::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.schema);
+stringBuffer.append(this->schema);
     
-stringBuffer!.append(this.commonSeps!.COLON);
+stringBuffer.append(this->commonSeps.COLON);
     
-stringBuffer!.append(filePathData!.PATH_START);
+stringBuffer.append(filePathData.PATH_START);
     
-stringBuffer!.append(FilePathUtil.adjust(this.getPath()));
+stringBuffer.append(FilePathUtil::adjust(this->getPath()));
     
-stringBuffer!.append(this.nameP);
+stringBuffer.append(this->nameP);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                                     }
@@ -346,7 +343,7 @@ stringBuffer!.append(this.nameP);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FilePathUtil.adjust(this.getPath()) +this.nameP;
+                        return FilePathUtil::adjust(this->getPath()) +this->nameP;
     
 
                         }
@@ -354,18 +351,18 @@ stringBuffer!.append(this.nameP);
 }
 
 
-    public string getPath(){
+    public: std::string getPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.path;
+                        return this->path;
     
 }
 
 
-    setPath(string path){
-this.path= path;
+    protected: void setPath(std::string path){
+this->path= path;
     
 }
 

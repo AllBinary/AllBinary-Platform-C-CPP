@@ -95,101 +95,98 @@
 class OrderStatusEmail
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: orderHistory: OrderHistory;
+    private: OrderHistory orderHistory;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: user: UserInterface;
+    private: UserInterface user;
 
-public constructor (AbeClientInformationInterface abeClientInformation, OrderHistory orderHistory){
-
-            super();
-        this.abeClientInformation= abeClientInformation;
+public: OrderStatusEmail(AbeClientInformationInterface abeClientInformation, OrderHistory orderHistory){
+this->abeClientInformation= abeClientInformation;
     
-this.orderHistory= orderHistory;
+this->orderHistory= orderHistory;
     
 
-    storeName: string = orderHistory!.getStoreName()!;;
+    std::string storeName = orderHistory.getStoreName();;
     
-this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
-this.user= UserEntityFactory.getInstance()!.getUser(orderHistory!.getUserName());
+this->user= UserEntityFactory::getInstance().getUser(orderHistory.getUserName());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.notifyStoreAdmin();
+    public: void process(){
+this->notifyStoreAdmin();
     
-this.notifyUser();
+this->notifyUser();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    notifyStoreAdmin(){
+    private: void notifyStoreAdmin(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Order Email", this, "emailStoreAdmin");
+                                    this->logUtil.putF("Order Email", this, "emailStoreAdmin");
     
 
                                     }
                                 
 
-    adminEmailSubject: string = "Order " +this.orderHistory!.getStatus() +" Attempt";;
+    std::string adminEmailSubject = "Order " +this->orderHistory.getStatus() +" Attempt";;
     
 
-    adminEmailTextBody: string = "Order attempt: " +this.orderHistory!.getId() +" Preprocessing by: " +this.user.getUserName();;
+    std::string adminEmailTextBody = "Order attempt: " +this->orderHistory.getId() +" Preprocessing by: " +this->user.getUserName();;
     
 
-    adminBasicEmailInfo: BasicEmailInfo = new AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
     
 
-    storeAdminBasicEmailInfo: BasicEmailInfo = new StoreEmailInfo(this.storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(this->storeFrontInterface, adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
     
 
-    storeAdminEmailInfo: EmailInfo = new EmailInfo(storeAdminBasicEmailInfo);;
+    EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;
     
 
-    adminEmailInfo: EmailInfo = new EmailInfo(adminBasicEmailInfo);;
+    EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;
     
 
-    userEmailEventNameData: UserEmailEventNameData = UserEmailEventNameData.getInstance(this.orderHistory!.getStatus())!;;
+    UserEmailEventNameData userEmailEventNameData = UserEmailEventNameData::getInstance(this->orderHistory.getStatus());;
     
 
-    adminUserEmailEventHandler: UserEmailEventHandler = AdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, userEmailEventNameData)!;;
+    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, userEmailEventNameData);;
     
 
-    storeAdminUserEmailEventHandler: UserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(userEmailEventNameData, this.abeClientInformation, this.storeFrontInterface)!;;
+    UserEmailEventHandler storeAdminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance().getInstance(userEmailEventNameData, this->abeClientInformation, this->storeFrontInterface);;
     
-storeAdminUserEmailEventHandler!.receiveEmailInfo(userEmailEventNameData, storeAdminEmailInfo);
+storeAdminUserEmailEventHandler.receiveEmailInfo(userEmailEventNameData, storeAdminEmailInfo);
     
-adminUserEmailEventHandler!.receiveEmailInfo(userEmailEventNameData, adminEmailInfo);
+adminUserEmailEventHandler.receiveEmailInfo(userEmailEventNameData, adminEmailInfo);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "emailAdmin", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "emailAdmin", e);
     
 
                                     }
@@ -201,47 +198,47 @@ adminUserEmailEventHandler!.receiveEmailInfo(userEmailEventNameData, adminEmailI
 
                 //@Throws(Exception.constructor)
             
-    notifyUser(){
+    private: void notifyUser(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Email User", this, "notifyUser()");
+                                    this->logUtil.putF("Email User", this, "notifyUser()");
     
 
                                     }
                                 
 
-    subject: string = "Order " +this.orderHistory!.getStatus() +" Attempt";;
+    std::string subject = "Order " +this->orderHistory.getStatus() +" Attempt";;
     
 
-    textBody: string = "Order attempt: " +this.orderHistory!.getId() +" Preprocessing by: " +this.user.getUserName();;
+    std::string textBody = "Order attempt: " +this->orderHistory.getId() +" Preprocessing by: " +this->user.getUserName();;
     
 
-    basicEmailInfo: BasicEmailInfo = new StoreEmailInfo(this.storeFrontInterface, subject, textBody) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = StoreEmailInfo(this->storeFrontInterface, subject, textBody) as BasicEmailInfo;;
     
 
-    emailInfo: EmailInfo = new EmailInfo(basicEmailInfo);;
+    EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
     
 
-    userEmailEventNameData: UserEmailEventNameData = UserEmailEventNameData.getInstance(this.orderHistory!.getStatus())!;;
+    UserEmailEventNameData userEmailEventNameData = UserEmailEventNameData::getInstance(this->orderHistory.getStatus());;
     
 
-    userEmailEventHandler: UserEmailEventHandler = UserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, userEmailEventNameData, this.user)!;;
+    UserEmailEventHandler userEmailEventHandler = UserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, userEmailEventNameData, this->user);;
     
-userEmailEventHandler!.receiveEmailInfo(userEmailEventNameData, emailInfo);
+userEmailEventHandler.receiveEmailInfo(userEmailEventNameData, emailInfo);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "notifyUser", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "notifyUser", e);
     
 
                                     }

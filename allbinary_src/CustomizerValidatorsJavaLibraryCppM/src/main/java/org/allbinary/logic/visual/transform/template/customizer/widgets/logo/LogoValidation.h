@@ -89,46 +89,45 @@
         #include "LogoData.h"
 #include "LogoImageFileUtil.h"
 
-class LogoValidation: public Validation: public DomNodeInterface {
-        
+class LogoValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: logoFileItem: FileItem;
+    private: FileItem logoFileItem;
 
-    private: logoAbPath: AbPath;
+    private: AbPath logoAbPath;
 
-    private: logoFile: string;
+    private: std::string logoFile;
 
-    private: isFile: bool;
+    private: bool isFile;
 
-public constructor ();
+public: LogoValidation();
 
-public constructor (Node node);
+public: LogoValidation(Node node);
 
-public constructor (HashMap<any, any> hashMap);
-
-                //@Throws(Exception.constructor)
-            
-    public getFormData(HashMap<any, any> hashMap);
-
-    public Boolean isValid();
-
-    public string validationInfo();
-
-    public Document toValidationInfoDoc();
-
-    public Node toValidationInfoNode(Document document);
-
-    public HashMap<any, any> toHashMap();
+public: LogoValidation(HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: void getFormData(HashMap<any, any> hashMap);
+
+    public: Boolean isValid();
+
+    public: std::string validationInfo();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public processLogoFile();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processLogoFile();
 
 };
 

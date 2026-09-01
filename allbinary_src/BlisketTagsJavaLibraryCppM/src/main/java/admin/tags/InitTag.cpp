@@ -42,14 +42,11 @@
         #include "TableTag.h"
 
 class InitTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new InitHelperFactory());
+public: InitTag(){
+this->setTagHelperFactory(InitHelperFactory());
     
-this.setTagRequestHelperFactory(new InitHelperFactory());
+this->setTagRequestHelperFactory(InitHelperFactory());
     
 }
 

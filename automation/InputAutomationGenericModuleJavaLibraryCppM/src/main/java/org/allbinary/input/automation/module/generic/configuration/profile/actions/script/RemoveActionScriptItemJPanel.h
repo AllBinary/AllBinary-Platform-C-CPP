@@ -57,22 +57,21 @@
 #include "ActionListener.h"
 #include "ActionEvent.h"
 
-class RemoveActionScriptItemJPanel: public java.awt.Panel {
-        
+class RemoveActionScriptItemJPanel: public java::awt::Panel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: genericProfileActionJPanel: GenericProfileActionJPanel;
+    private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-    private: profileActionScriptConditionInterface: ProfileActionScriptConditionInterface;
+    private: ProfileActionScriptConditionInterface profileActionScriptConditionInterface;
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel, ProfileActionScriptConditionInterface profileActionScriptConditionInterface);
+public: RemoveActionScriptItemJPanel(GenericProfileActionJPanel genericProfileActionJPanel, ProfileActionScriptConditionInterface profileActionScriptConditionInterface);
 
-    initComponents();
+    private: void initComponents();
 
-    removeJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void removeJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: removeJButton: javax.swing.JButton;
+    private: javax::swing::JButton removeJButton;
 
 };
 

@@ -44,19 +44,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TestInputInterface: public PaintableInterface {
-        
 
-    up();
+    void up();
 
-    down();
+    void down();
 
-    left();
+    void left();
 
-    right();
+    void right();
 
-    strafeLeft();
+    void strafeLeft();
 
-    strafeRight();
+    void strafeRight();
 
 };
 

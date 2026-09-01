@@ -48,9 +48,8 @@
 #include "SelectedRTSLayersPlayerGameInput.h"
 
 class SelectedRTSLayersPlayerDowngradeGameInputProcessor: public SelectedRTSLayersPlayerGameInputProcessor {
-        
 
-public constructor (SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
+public: SelectedRTSLayersPlayerDowngradeGameInputProcessor(SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGameInput){
             super(selectedRTSLayersPlayerGameInput);
                     
 
@@ -61,8 +60,8 @@ public constructor (SelectedRTSLayersPlayerGameInput selectedRTSLayersPlayerGame
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-this.selectedRTSLayersPlayerGameInput!.downgrade();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+this->selectedRTSLayersPlayerGameInput.downgrade();
     
 }
 

@@ -84,53 +84,52 @@
 #include "TouchButtonResource.h"
 
 class TouchButton: public Paintable {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TouchButton createButton(TouchButtonInput touchButtonInput, TouchButtonResource touchButtonResource, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
+    public: static TouchButton createButton(TouchButtonInput touchButtonInput, TouchButtonResource touchButtonResource, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const touchButtonInput: TouchButtonInput;
+    private: TouchButtonInput touchButtonInput;
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-    private: const hintAnimationInterface: Animation;
+    private: Animation hintAnimationInterface;
 
-    const rawRectangle: Rectangle;
+    protected: Rectangle rawRectangle;
 
-    const xBorder: int32_t;
+    protected: int32_t xBorder;
 
-    const yBorder: int32_t;
+    protected: int32_t yBorder;
 
-    rectangleP: Rectangle = RectangleFactory.SINGLETON;
+    protected: Rectangle rectangleP = RectangleFactory::SINGLETON;
 
-    const cellPositionP: CellPosition;
+    protected: CellPosition cellPositionP;
 
-    animationX: int32_t= 0;
+    protected: int32_t animationX= 0;
 
-    animationY: int32_t= 0;
+    protected: int32_t animationY= 0;
 
-    hintAnimationY: int32_t= 0;
+    protected: int32_t hintAnimationY= 0;
 
-public constructor (TouchButtonInput touchButtonInput, Animation animationInterface, Animation hintAnimationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
+public: TouchButton(TouchButtonInput touchButtonInput, Animation animationInterface, Animation hintAnimationInterface, Rectangle rawRectangle, CellPosition cellPosition, int32_t xBorder, int32_t yBorder);
 
-    public paintHint(Graphics graphics);
+    public: void paintHint(Graphics graphics);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    updateRectangle();
+    protected: void updateRectangle();
 
-    public CellPosition getCellPosition();
+    public: CellPosition getCellPosition();
 
-    public Rectangle getRectangle();
+    public: Rectangle getRectangle();
 
-    public TouchButtonInput getTouchButtonInput();
+    public: TouchButtonInput getTouchButtonInput();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

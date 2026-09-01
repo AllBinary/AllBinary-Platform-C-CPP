@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -56,55 +58,53 @@
 class CanvasExpandUtil
             : public Object
          {
-        
 
-    private: static const instance: CanvasExpandUtil = new CanvasExpandUtil();
+    private: static CanvasExpandUtil instance() { return CanvasExpandUtil(); }
 
-    public static CanvasExpandUtil getInstance(){
+    public: static CanvasExpandUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CanvasExpandUtil.instance;
+                        return CanvasExpandUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public process(ImageProcessorInput imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor visitor){
+    public: void process(ImageProcessorInput imageProcessorInput, int32_t increaseX, int32_t increaseY, ImageProcessedVisitor visitor){
 
-    imageUtil: ImageUtil = ImageUtil.getInstance()!;;
+    ImageUtil imageUtil = ImageUtil::getInstance();;
     
 
-    bufferedImageArray: std::vector<BufferedImage> = imageProcessorInput!.getBufferedImageArray()!;;
+    std::vector<BufferedImage> bufferedImageArray = imageProcessorInput.getBufferedImageArray();;
     
 
-    subBufferedImageArray: std::vector<BufferedImage> = new Array(bufferedImageArray!.length);;
+    std::vector<BufferedImage> subBufferedImageArray = new Array(bufferedImageArray.length);;
     
 
-    size: int32_t = bufferedImageArray!.length
-                ;;
+    int32_t size = bufferedImageArray.size();;
     
 
-    bufferedImage: BufferedImage;;
+    BufferedImage bufferedImage;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 bufferedImage= bufferedImageArray[index]!;
     
-subBufferedImageArray[index]= imageUtil!.createBufferedImage(bufferedImage, bufferedImage!.getWidth() +increaseX, bufferedImage!.getHeight() +increaseY, false);
+subBufferedImageArray[index]= imageUtil.createBufferedImage(bufferedImage, bufferedImage.getWidth() +increaseX, bufferedImage.getHeight() +increaseY, false);
     
-visitor.visit(subBufferedImageArray[index]!, this.stringUtil!.EMPTY_STRING, index);
+visitor.visit(subBufferedImageArray[index]!, this->stringUtil.EMPTY_STRING, index);
     
 }
 

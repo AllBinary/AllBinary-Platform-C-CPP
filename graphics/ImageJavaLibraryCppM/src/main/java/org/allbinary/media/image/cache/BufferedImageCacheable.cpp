@@ -52,63 +52,60 @@
 class BufferedImageCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: key: BufferedImageInfo;
+    private: BufferedImageInfo key;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (BufferedImageInfo key){
-
-            super();
-        this.key= key;
+public: BufferedImageCacheable(BufferedImageInfo key){
+this->key= key;
     
-this.setBufferedImage(new BufferedImage(key.getWidth(), key.getHeight(), key.getType()));
+this->setBufferedImage(BufferedImage(key.getWidth(), key.getHeight(), key.getType()));
     
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.key;
+                        return this->key;
     
 }
 
 
-    public BufferedImage getBufferedImage(){
+    public: BufferedImage getBufferedImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bufferedImage;
+                        return this->bufferedImage;
     
 }
 
 
-    setBufferedImage(BufferedImage bufferedImage){
-this.bufferedImage= bufferedImage;
+    private: void setBufferedImage(BufferedImage bufferedImage){
+this->bufferedImage= bufferedImage;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString()!);
     
-stringBuffer!.append(" ");
+stringBuffer.append(" ");
     
-stringBuffer!.append(this.getKey()!.toString());
+stringBuffer.append(this->getKey().toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

@@ -57,51 +57,50 @@
 class BaseMenuBehavior
             : public Object
          {
-        
 
-    private: static const instance: BaseMenuBehavior = new BaseMenuBehavior();
+    private: static BaseMenuBehavior instance() { return BaseMenuBehavior(); }
 
-    public static BaseMenuBehavior getInstance(){
+    public: static BaseMenuBehavior getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BaseMenuBehavior.instance;
+                        return BaseMenuBehavior::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent){
+    public: void onDisplayChangeEvent(AllBinaryGameCanvas allBinaryGameCanvas, DisplayChangeEvent displayChangeEvent){
 }
 
 
-    public initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas){
-allBinaryGameCanvas!.setNonBotPaintableP(NullPaintable.getInstance());
+    public: void initSpecialPaint(AllBinaryGameCanvas allBinaryGameCanvas){
+allBinaryGameCanvas.setNonBotPaintableP(NullPaintable::getInstance());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public initMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void initMenu(AllBinaryGameCanvas allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updateMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void updateMenu(AllBinaryGameCanvas allBinaryGameCanvas){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public popupMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void popupMenu(AllBinaryGameCanvas allBinaryGameCanvas){
 }
 
 
-    public closeMenu(AllBinaryGameCanvas allBinaryGameCanvas){
+    public: void closeMenu(AllBinaryGameCanvas allBinaryGameCanvas){
 }
 
 

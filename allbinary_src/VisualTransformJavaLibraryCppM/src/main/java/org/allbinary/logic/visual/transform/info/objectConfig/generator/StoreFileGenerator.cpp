@@ -104,65 +104,62 @@
         #include "TransformInfoObjectConfigGenerator.h"
 
 class StoreFileGenerator: public TransformInfoObjectConfigGenerator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const output: string;
+    private: std::string output;
 
-    private: const fileAbPath: AbPath;
+    private: AbPath fileAbPath;
 
-    private: const file: AbFile;
+    private: AbFile file;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: StoreFileGenerator(TransformInfoInterface transformInfoInterface){
 
-            super();
-        
-    httpTransformInfoInterface: TransformInfoHttpInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
     
 
-    weblisketSession: WeblisketSession = new WeblisketSession(httpTransformInfoInterface!.getPropertiesHashMap(), httpTransformInfoInterface!.getPageContext());;
+    WeblisketSession weblisketSession = WeblisketSession(httpTransformInfoInterface.getPropertiesHashMap(), httpTransformInfoInterface.getPageContext());;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-stringBuffer!.append(weblisketSession!.getStoreName());
+stringBuffer.append(weblisketSession.getStoreName());
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-
-    abPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
 
-    fileName: string = httpTransformInfoInterface!.getPropertiesHashMap()!.get(InputOutputTypeData.getInstance()!.FILE) as string;;
+    AbPath abPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    std::string fileName = httpTransformInfoInterface.getPropertiesHashMap().get(InputOutputTypeData::getInstance().FILE) as string;;
     
 
-                        if(stringValidationUtil!.isEmpty(fileName))
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(stringValidationUtil.isEmpty(fileName))
                         
                                     {
                                     
-    transformInfoHttpStoreInterface: TransformInfoHttpStoreInterface = transformInfoInterface as TransformInfoHttpStoreInterface;;
+    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = transformInfoInterface as TransformInfoHttpStoreInterface;;
     
-fileName= transformInfoInterface!.getName()!.substring(transformInfoHttpStoreInterface!.getStoreName()!.length() +1);
-    
-
-    outputMappingHashMap: HashMap<any, any> = new HashMap<any, any>();;
-    
-outputMappingHashMap!.put(TransformInfosData.getInstance()!.PREVIEW, "Preview");
-    
-outputMappingHashMap!.put(TransformInfosData.getInstance()!.SMALL_PREVIEW, "SmallPreview");
-    
-outputMappingHashMap!.put(CommonSeps.getInstance()!.SPACE, StringUtil.getInstance()!.EMPTY_STRING);
+fileName= transformInfoInterface.getName().substring(transformInfoHttpStoreInterface.getStoreName().length() +1);
     
 
-    replace: Replace = new Replace(outputMappingHashMap);;
+    HashMap<any, any> outputMappingHashMap = HashMap<any, any>();;
+    
+outputMappingHashMap.put(TransformInfosData::getInstance().PREVIEW, "Preview");
+    
+outputMappingHashMap.put(TransformInfosData::getInstance().SMALL_PREVIEW, "SmallPreview");
+    
+outputMappingHashMap.put(CommonSeps::getInstance().SPACE, StringUtil::getInstance().EMPTY_STRING);
+    
+
+    Replace replace = Replace(outputMappingHashMap);;
     
 fileName= replace.all(fileName);
     
@@ -170,62 +167,62 @@ fileName= replace.all(fileName);
                                     }
                                 
 
-                        if(stringValidationUtil!.isEmpty(fileName))
+                        if(stringValidationUtil.isEmpty(fileName))
                         
                                     {
                                     
 
 
-                            throw new Exception("TransformInfoObjectConfigGenerator FileName Not Specified");
+                            throw Exception("TransformInfoObjectConfigGenerator FileName Not Specified");
                     
 
                                     }
                                 
 
-    tempOutput: string = httpTransformInfoInterface!.getPropertiesHashMap()!.get(InputOutputTypeData.getInstance()!.NAME) as string;;
+    std::string tempOutput = httpTransformInfoInterface.getPropertiesHashMap().get(InputOutputTypeData::getInstance().NAME) as string;;
     
 
-                        if(stringValidationUtil!.isEmpty(tempOutput))
+                        if(stringValidationUtil.isEmpty(tempOutput))
                         
                                     {
-                                    tempOutput= InputOutputTypeData.getInstance()!.DEFAULT;
+                                    tempOutput= InputOutputTypeData::getInstance().DEFAULT;
     
 
                                     }
                                 
-this.output= tempOutput;
+this->output= tempOutput;
     
 
-                        if(stringValidationUtil!.isEmpty(this.output))
+                        if(stringValidationUtil.isEmpty(this->output))
                         
                                     {
                                     
 
 
-                            throw new Exception("TransformInfoObjectConfigGenerator Output=extension Not Specified");
+                            throw Exception("TransformInfoObjectConfigGenerator Output=extension Not Specified");
                     
 
                                     }
                                 
-stringBuffer= new StringMaker();
+stringBuffer= StringMaker();
     
-stringBuffer!.append(fileName);
+stringBuffer.append(fileName);
     
-stringBuffer!.append(AbPathData.getInstance()!.EXTENSION_SEP);
+stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
     
-stringBuffer!.append(this.output);
+stringBuffer.append(this->output);
     
-abPath= new AbPath(abPath!.toString(), stringBuffer!.toString());
+abPath= AbPath(abPath.toString(), stringBuffer.toString());
     
-this.fileAbPath= abPath;
+this->fileAbPath= abPath;
     
-this.file= AbFile.createAbFileFromAbPath(this.fileAbPath);
+this->file= AbFile::createAbFileFromAbPath(this->fileAbPath);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("File: " +this.fileAbPath!.toString(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("File: " +this->fileAbPath.toString(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -235,33 +232,33 @@ this.file= AbFile.createAbFileFromAbPath(this.fileAbPath);
 
                 //@Throws(Exception.constructor)
             
-    public string process(string input){
+    public: std::string process(std::string input){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Processing", this, this.commonStrings!.PROCESS);
+                                    this->logUtil.putF("Processing", this, this->commonStrings.PROCESS);
     
 
                                     }
                                 
 
-                        if(!this.file.exists())
+                        if(!this->file.exists())
                         
                                     {
-                                    this.file.createNewFile();
+                                    this->file.createNewFile();
     
 
                                     }
                                 
 
-                        if(this.file.exists())
+                        if(this->file.exists())
                         
                                     {
                                     
-    inputStream: InputStream = new ByteArrayInputStream(input.getBytes());;
+    InputStream inputStream = ByteArrayInputStream(input.getBytes());;
     
-FileUtil.getInstance()!.write(inputStream, this.file);
+FileUtil::getInstance().write(inputStream, this->file);
     
 
                                     }
@@ -270,16 +267,16 @@ FileUtil.getInstance()!.write(inputStream, this.file);
                             
 
 
-                            throw new Exception("Could Not Create: " +this.fileAbPath!.toString());
+                            throw Exception("Could Not Create: " +this->fileAbPath.toString());
                     
 
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Processed", this, this.commonStrings!.PROCESS);
+                                    this->logUtil.putF("Processed", this, this->commonStrings.PROCESS);
     
 
                                     }
@@ -288,7 +285,7 @@ FileUtil.getInstance()!.write(inputStream, this.file);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 

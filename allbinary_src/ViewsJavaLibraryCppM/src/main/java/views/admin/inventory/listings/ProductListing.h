@@ -21,6 +21,8 @@
         #ifndef VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTING_H
         #define VIEWS_ADMIN_INVENTORY_LISTINGS_PRODUCTLISTING_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -152,45 +154,44 @@
 class ProductListing
             : public Object
         : public ProductListingInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    private: const storeFronts: StoreFrontsEntity;
+    private: StoreFrontsEntity storeFronts;
 
-    private: const staticPages: StaticPagesEntity;
+    private: StaticPagesEntity staticPages;
 
-    private: const inventory: InventoryEntity;
+    private: InventoryEntity inventory;
 
-    private: const searchRequest: SearchRequest;
+    private: SearchRequest searchRequest;
 
-    private: const INVENTORY: string = ".InventoryView";
+    private: const std::string INVENTORY = ".InventoryView";
 
-public constructor (SearchRequest searchRequest);
-
-                //@Throws(Exception.constructor)
-            
-    HashSet getHashSet(StoreFrontInterface storeFront);
+public: ProductListing(SearchRequest searchRequest);
 
                 //@Throws(Exception.constructor)
             
-    savePage(string file, string data);
+    private: HashSet getHashSet(StoreFrontInterface storeFront);
 
                 //@Throws(Exception.constructor)
             
-    create(string keywordData, HashMap<any, any> keywordFilenameHashMap, Vector vector, AbPath staticPath);
-
-    addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<any, any> keywordFilenameHashMap);
+    private: void savePage(std::string file, std::string data);
 
                 //@Throws(Exception.constructor)
             
-    public string generateAll();
+    private: void create(std::string keywordData, HashMap<any, any> keywordFilenameHashMap, Vector vector, AbPath staticPath);
+
+    private: void addStaticPageInfoToDatabase(StoreFrontInterface storeFront, HashMap<any, any> keywordFilenameHashMap);
 
                 //@Throws(Exception.constructor)
             
-    public string generateAll(string storeName);
+    public: std::string generateAll();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string generateAll(std::string storeName);
 
 };
 

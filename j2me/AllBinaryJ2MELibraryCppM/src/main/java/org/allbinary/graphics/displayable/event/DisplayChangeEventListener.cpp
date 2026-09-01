@@ -50,11 +50,10 @@
         #include "DisplayChangeEvent.h"
 
 class DisplayChangeEventListener: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent)
+    void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent)
 
 };
 

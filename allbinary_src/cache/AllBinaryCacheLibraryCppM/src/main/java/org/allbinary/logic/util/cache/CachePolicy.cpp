@@ -42,64 +42,61 @@
 class CachePolicy
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: maxTime: int64_t= 0;
+    private: int64_t maxTime= 0;
 
-    private: maxSize: int64_t= 0;
+    private: int64_t maxSize= 0;
 
-public constructor (string name, int64_t maxTime, int64_t maxSize){
-
-            super();
-        this.name= name;
+public: CachePolicy(std::string name, int64_t maxTime, int64_t maxSize){
+this->name= name;
     
-this.setMaxTime(maxTime);
+this->setMaxTime(maxTime);
     
-this.setMaxSize(maxSize);
+this->setMaxSize(maxSize);
     
 }
 
 
-    public int64_t getMaxTime(){
+    public: int64_t getMaxTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxTime;
+                        return this->maxTime;
     
 }
 
 
-    public setMaxTime(int64_t maxTime){
-this.maxTime= maxTime;
+    public: void setMaxTime(int64_t maxTime){
+this->maxTime= maxTime;
     
 }
 
 
-    public int64_t getMaxSize(){
+    public: int64_t getMaxSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxSize;
+                        return this->maxSize;
     
 }
 
 
-    public setMaxSize(int64_t maxSize){
-this.maxSize= maxSize;
+    public: void setMaxSize(int64_t maxSize){
+this->maxSize= maxSize;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

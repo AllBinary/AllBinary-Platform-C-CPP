@@ -45,25 +45,24 @@
 class WaypointRunnableLogHelper
             : public Object
          {
-        
 
-    private: static const instance: WaypointRunnableLogHelper = new WaypointRunnableLogHelper();
+    private: static WaypointRunnableLogHelper instance() { return WaypointRunnableLogHelper(); }
 
-    public static WaypointRunnableLogHelper getInstance(){
+    public: static WaypointRunnableLogHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointRunnableLogHelper.instance;
+                        return WaypointRunnableLogHelper::instance();
     
 }
 
 
-    public start(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void start(PathFindingLayerInterface pathFindingLayerInterface){
 }
 
 
-    public end(PathFindingLayerInterface pathFindingLayerInterface){
+    public: void end(PathFindingLayerInterface pathFindingLayerInterface){
 }
 
 

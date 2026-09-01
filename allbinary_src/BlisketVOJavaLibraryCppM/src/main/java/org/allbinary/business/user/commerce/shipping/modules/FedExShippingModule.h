@@ -52,19 +52,18 @@
 class FedExShippingModule
             : public Object
         : public ShippingInterface {
-        
 
-    private: const name: string = "FedEx";
+    private: const std::string name = "FedEx";
 
-    private: const description: string = "Fast Mail";
+    private: const std::string description = "Fast Mail";
 
-public constructor ();
+public: FedExShippingModule();
 
-    public Money getCost(OrderInterface order);
+    public: Money getCost(OrderInterface order);
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public string getName();
+    public: std::string getName();
 
 };
 

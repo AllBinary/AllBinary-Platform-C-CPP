@@ -96,49 +96,48 @@
 class Cpu
             : public Object
         : public CpuInterface, public HardwareComponentInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const CPUFILE: string = "/proc/cpuinfo";
+    private: const std::string CPUFILE = "/proc/cpuinfo";
 
-    private: cpuHashMap: HashMap<any, any>;
+    private: HashMap<any, any> cpuHashMap;
 
-public constructor (string filePath);
+public: Cpu(std::string filePath);
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    init(string filePath);
+public: Cpu();
 
                 //@Throws(Exception.constructor)
             
-    init(LineNumberReader lineNumberReader, string filePath);
+    private: void init(std::string filePath);
 
-    public string getProcessor();
+                //@Throws(Exception.constructor)
+            
+    private: void init(LineNumberReader lineNumberReader, std::string filePath);
 
-    public string getVendorId();
+    public: std::string getProcessor();
 
-    public string getCpuFamily();
+    public: std::string getVendorId();
 
-    public string getModel();
+    public: std::string getCpuFamily();
 
-    public string getModelName();
+    public: std::string getModel();
 
-    public string getStepping();
+    public: std::string getModelName();
 
-    public string getCpuSpeed();
+    public: std::string getStepping();
 
-    public string getCacheSize();
+    public: std::string getCpuSpeed();
 
-    public bool compareTo(CpuInterface cpuInterface);
+    public: std::string getCacheSize();
 
-    public bool compareTo(HardwareComponentInterface componentInterface);
+    public: bool compareTo(CpuInterface cpuInterface);
 
-    public string toString();
+    public: bool compareTo(HardwareComponentInterface componentInterface);
+
+    public: std::string toString();
 
 };
 

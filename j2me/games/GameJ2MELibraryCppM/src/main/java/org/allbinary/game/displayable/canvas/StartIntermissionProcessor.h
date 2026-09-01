@@ -65,21 +65,20 @@
         #include "AllBinaryGameCanvas.h"
 
 class StartIntermissionProcessor: public Processor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-    private: const WAIT: int64_t = 5000;
+    private: const int64_t WAIT = 5000;
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: StartIntermissionProcessor(AllBinaryGameCanvas gameCanvas);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 

@@ -60,51 +60,48 @@
 class GameOptionsFormFactory
             : public Object
          {
-        
 
-    private: static const instance: GameOptionsFormFactory = new GameOptionsFormFactory();
+    private: static GameOptionsFormFactory instance() { return GameOptionsFormFactory(); }
 
-    public static GameOptionsFormFactory getInstance(){
+    public: static GameOptionsFormFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameOptionsFormFactory.instance;
+                        return GameOptionsFormFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: GameOptionsFormFactory(){
+}
 
 
-    public CommandForm init(CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+    public: CommandForm init(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+                        return GameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.INIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommandForm.getNullCommandForm();;
+                        return CommandForm::getNullCommandForm();;
     
 }
 

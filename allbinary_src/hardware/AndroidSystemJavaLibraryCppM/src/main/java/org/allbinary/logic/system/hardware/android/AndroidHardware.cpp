@@ -91,36 +91,33 @@
 class AndroidHardware
             : public Object
         : public HardwareInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: componentInterfaceVector: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList componentInterfaceVector = BasicArrayListD();
 
-    private: const PROC_BUS_INPUT_DIRECTORY: string = "/proc/bus/input/";
+    private: const std::string PROC_BUS_INPUT_DIRECTORY = "/proc/bus/input/";
 
-    private: const DEVICES: string = this.PROC_BUS_INPUT_DIRECTORY +"devices/";
+    private: const std::string DEVICES = this->PROC_BUS_INPUT_DIRECTORY +"devices/";
 
-    private: const MINHARDWARE: int32_t = 3;
+    private: const int32_t MINHARDWARE = 3;
 
-public constructor (){
-
-            super();
-        this.init(this.DEVICES);
+public: AndroidHardware(){
+this->init(this->DEVICES);
     
 
-    size: int32_t = this.componentInterfaceVector!.size()!;;
+    int32_t size = this->componentInterfaceVector.size();;
     
 
-                        if(size < this.MINHARDWARE)
+                        if(size < this->MINHARDWARE)
                         
                                     {
                                     
 
 
-                            throw new Exception("Not Enough Data For A Valid License On Linux");
+                            throw Exception("Not Enough Data For A Valid License On Linux");
                     
 
                                     }
@@ -130,19 +127,19 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    init(string filePath){
+    private: void init(std::string filePath){
 
-    lineNumberReader: Closeable = NullCloseable.NULL_CLOSEABLE;;
+    Closeable lineNumberReader = NullCloseable::NULL_CLOSEABLE;;
     
 
         try {
-            lineNumberReader= this.get(filePath);
+            lineNumberReader= this->get(filePath);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Hardware Data: " +this.toString(), this, this.commonStrings!.INIT, e);
+this->logUtil.put("Hardware Data: " +this->toString(), this, this->commonStrings.INIT, e);
     
 
 
@@ -154,11 +151,11 @@ this.logUtil!.put("Hardware Data: " +this.toString(), this, this.commonStrings!.
          finally {
             
                         if(lineNumberReader != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    lineNumberReader!.close();
+                                    lineNumberReader.close();
     
 
                                     }
@@ -171,28 +168,26 @@ this.logUtil!.put("Hardware Data: " +this.toString(), this, this.commonStrings!.
 
                 //@Throws(Exception.constructor)
             
-    LineNumberReader get(string filePath){
-this.componentInterfaceVector= new BasicArrayListD();
+    private: LineNumberReader get(std::string filePath){
+this->componentInterfaceVector= BasicArrayListD();
     
 
-    pciFile: FileReader = new FileReader(filePath);;
+    FileReader pciFile = FileReader(filePath);;
     
 
-    lineNumberReader: LineNumberReader = new LineNumberReader(pciFile);;
+    LineNumberReader lineNumberReader = LineNumberReader(pciFile);;
     
-this.logUtil!.putF("File Found", this, this.commonStrings!.CONSTRUCTOR);
-    
-
-    nextLine: string = lineNumberReader!.readLine()!;;
+this->logUtil.putF("File Found", this, this->commonStrings.CONSTRUCTOR);
     
 
-        while(nextLine != 
-                                    null
-                                )
+    std::string nextLine = lineNumberReader.readLine();;
+    
+
+        while(true)
         {
-nextLine= lineNumberReader!.readLine();
+nextLine= lineNumberReader.readLine();
     
-this.componentInterfaceVector!.add(new UnknownHardware(nextLine));
+this->componentInterfaceVector.add(UnknownHardware(nextLine));
     
 }
 
@@ -205,36 +200,36 @@ this.componentInterfaceVector!.add(new UnknownHardware(nextLine));
 }
 
 
-    public HardwareComponentInterface getComponent(int32_t index){
+    public: HardwareComponentInterface getComponent(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.componentInterfaceVector!.get(index) as HardwareComponentInterface;
+                        return this->componentInterfaceVector.get(index) as HardwareComponentInterface;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuilder: StringMaker = new StringMaker();;
+    StringMaker stringBuilder = StringMaker();;
     
 
-    size: int32_t = this.componentInterfaceVector!.size()!;;
+    int32_t size = this->componentInterfaceVector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    componentInterface: HardwareComponentInterface = this.componentInterfaceVector!.get(index) as HardwareComponentInterface;;
+    HardwareComponentInterface componentInterface = this->componentInterfaceVector.get(index) as HardwareComponentInterface;;
     
-stringBuilder!.append(componentInterface!.toString());
+stringBuilder.append(componentInterface.toString());
     
-stringBuilder!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuilder.append(CommonSeps::getInstance().NEW_LINE);
     
 }
 
@@ -242,12 +237,12 @@ stringBuilder!.append(CommonSeps.getInstance()!.NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuilder!.toString();;
+                        return stringBuilder.toString();;
     
 }
 
 
-    public bool compareTo(HardwareInterface hardwareInterface){
+    public: bool compareTo(HardwareInterface hardwareInterface){
 
 
 
@@ -257,12 +252,12 @@ stringBuilder!.append(CommonSeps.getInstance()!.NEW_LINE);
 }
 
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface){
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 

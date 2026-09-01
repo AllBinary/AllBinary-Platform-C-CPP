@@ -79,74 +79,73 @@
 class RepaintBehavior
             : public Object
          {
-        
 
-    private: static const instance: RepaintBehavior = new RepaintBehavior();
+    private: static RepaintBehavior instance() { return RepaintBehavior(); }
 
-    public static RepaintBehavior getInstance(){
+    public: static RepaintBehavior getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RepaintBehavior.instance;
+                        return RepaintBehavior::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public repaint(Canvas canvas){
+    public: void repaint(Canvas canvas){
 }
 
 
-    private: const NAME: string = "RepaintBehavior";
+    private: const std::string NAME = "RepaintBehavior";
 
-    public onChangeRepaint(Canvas canvas){
+    public: void onChangeRepaint(Canvas canvas){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(features.isFeature(openGLFeatureFactory!.OPENGL))
+                        if(features.isFeature(openGLFeatureFactory.OPENGL))
                         
                                     {
-                                    DisplayInfoSingleton.getInstance()!.process();
+                                    DisplayInfoSingleton::getInstance().process();
     
 
                                     }
                                 
                         else {
                             
-    thread: Thread = new Thread(new class extends ARunnable
+    Thread thread = Thread(class extends ARunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
         try {
             canvas.repaint();
     
-DisplayInfoSingleton.getInstance()!.process();
+DisplayInfoSingleton::getInstance().process();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
 }
 
                                 }
-                            , this.NAME);;
+                            , this->NAME);;
     
 thread.start();
     

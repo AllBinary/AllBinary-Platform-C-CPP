@@ -42,21 +42,20 @@
         #include "SWTProcessor.h"
 
 class SWTRunnableProcessor: public SWTProcessor {
-        
 
-    private: static const instanceR: SWTRunnableProcessor = new SWTRunnableProcessor();
+    private: static const SWTRunnableProcessor instanceR = SWTRunnableProcessor();
 
-    public static SWTRunnableProcessor getInstance(){
+    public: static SWTRunnableProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SWTRunnableProcessor.instanceR;
+                        return SWTRunnableProcessor::instanceR;
     
 }
 
 
-    public process(Display display){
+    public: void process(Display display){
 }
 
 

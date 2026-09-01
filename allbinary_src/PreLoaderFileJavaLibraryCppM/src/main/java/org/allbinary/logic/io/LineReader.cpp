@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -57,43 +59,40 @@
 class LineReader
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: fileName: string;
+    private: std::string fileName;
 
-    private: string: string;
+    private: std::string string;
 
-    private: index: int32_t = 0;
+    private: int32_t index = 0;
 
-    private: idFile: AbFileInputStream;
+    private: AbFileInputStream idFile;
 
-    private: idData: DataInputStream;
+    private: DataInputStream idData;
 
-public constructor (string fileName){
+public: LineReader(std::string fileName){
 
-            super();
-        
         try {
             
-    bytes: std::vector<int8_t> = new Array(100000);;
+    std::vector<int8_t> bytes = new Array(100000);;
     
-this.fileName= fileName;
+this->fileName= fileName;
     
-this.idFile= new AbFileInputStream(fileName);
+this->idFile= AbFileInputStream(fileName);
     
-this.idFile!.read(bytes);
+this->idFile.read(bytes);
     
-this.string= String.fromCharCode(...bytes);
+this->string= String.fromCharCode(...bytes);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("File: " +fileName, this, "LineReader", e);
+this->logUtil.put("File: " +fileName, this, "LineReader", e);
     
 
 
@@ -106,11 +105,11 @@ this.logUtil!.put("File: " +fileName, this, "LineReader", e);
 }
 
 
-    public bool hasNext(){
+    public: bool hasNext(){
 
         try {
             
-    nextIndex: int32_t = this.string.indexOf(CommonSeps.getInstance()!.NEW_LINE, index)!;;
+    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance().NEW_LINE, index);;
     
 
                         if(nextIndex ==  -1)
@@ -135,7 +134,7 @@ this.logUtil!.put("File: " +fileName, this, "LineReader", e);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "hasNext", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "hasNext", e);
     
 
 
@@ -156,11 +155,11 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "hasNext", e);
 
                 //@Throws(Exception.constructor)
             
-    public string next(){
+    public: std::string next(){
 
         try {
             
-    nextIndex: int32_t = this.string.indexOf(CommonSeps.getInstance()!.NEW_LINE, index)!;;
+    int32_t nextIndex = this->string.indexOf(CommonSeps::getInstance().NEW_LINE, index);;
     
 
                         if(nextIndex ==  -1)
@@ -169,13 +168,13 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, "hasNext", e);
                                     
 
 
-                            throw new Exception("next() should have been called first");
+                            throw Exception("next() should have been called first");
                     
 
                                     }
                                 
 
-    temp: string = this.string.substring(index, nextIndex)!;;
+    std::string temp = this->string.substring(index, nextIndex);;
     
 index= nextIndex +1;
     
@@ -189,7 +188,7 @@ index= nextIndex +1;
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "next", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "next", e);
     
 
 

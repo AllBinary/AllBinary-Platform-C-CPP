@@ -53,15 +53,14 @@
 class PlatformAssetManager
             : public Object
          {
-        
 
-    private: static const instance: PlatformAssetManager = new PlatformAssetManager();
+    private: static PlatformAssetManager instance() { return PlatformAssetManager(); }
 
-    public static PlatformAssetManager getInstance();
+    public: static PlatformAssetManager getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resource);
+    public: InputStream getResourceAsStream(std::string resource);
 
 };
 

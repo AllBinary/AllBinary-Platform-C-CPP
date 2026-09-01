@@ -48,9 +48,8 @@
 #include "ScrollMapPlayerGameInput.h"
 
 class ScrollMapRightGameInputProcessor: public ScrollMapGameInputProcessor {
-        
 
-public constructor (ScrollMapPlayerGameInput scrollMapPlayerGameInput){
+public: ScrollMapRightGameInputProcessor(ScrollMapPlayerGameInput scrollMapPlayerGameInput){
             super(scrollMapPlayerGameInput);
                     
 
@@ -61,8 +60,8 @@ public constructor (ScrollMapPlayerGameInput scrollMapPlayerGameInput){
 
                 //@Throws(Exception.constructor)
             
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
-this.scrollMapPlayerGameInput!.right();
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+this->scrollMapPlayerGameInput.right();
     
 }
 

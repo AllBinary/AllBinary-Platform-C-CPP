@@ -52,9 +52,8 @@
 class LicensedDemoSetupFactory
             : public Object
          {
-        
 
-    public DemoSetup getInstance();
+    public: DemoSetup getInstance();
 
 };
 

@@ -51,14 +51,11 @@
         #include "SpecialGameInputInterface.h"
 
 class SpecialGameInputInterfaceProcessor: public GameInputProcessor {
-        
 
-    const specialGameInputInterface: SpecialGameInputInterface;
+    protected: SpecialGameInputInterface specialGameInputInterface;
 
-public constructor (SpecialGameInputInterface collidableDestroyableDamageableLayer){
-
-            super();
-        this.specialGameInputInterface= collidableDestroyableDamageableLayer;
+public: SpecialGameInputInterfaceProcessor(SpecialGameInputInterface collidableDestroyableDamageableLayer){
+this->specialGameInputInterface= collidableDestroyableDamageableLayer;
     
 }
 

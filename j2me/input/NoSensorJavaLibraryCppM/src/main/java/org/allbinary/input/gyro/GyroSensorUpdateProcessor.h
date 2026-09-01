@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GyroSensorUpdateProcessor: public Processor {
-        
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 

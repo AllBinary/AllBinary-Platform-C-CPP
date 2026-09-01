@@ -61,23 +61,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GeographicMapEventHandler: public BasicEventHandler {
-        
 
-    private: static instance: GeographicMapEventHandler = new GeographicMapEventHandler();
+    private: static GeographicMapEventHandler instance = GeographicMapEventHandler();
 
-    public static GeographicMapEventHandler getInstance();
+    public: static GeographicMapEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: GeographicMapEventHandler();
 
-    public addListener(AllBinaryGameLayer gameLayer);
+    public: void addListener(AllBinaryGameLayer gameLayer);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
-    public fireEvent();
+    public: void fireEvent();
 
 };
 

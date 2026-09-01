@@ -66,33 +66,32 @@
 #include "HealLayerFactory.h"
 #include "HealthResources.h"
 
-class HealPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory: public PickupProcessorInterface {
-        
+class HealPickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public static init(){
-HealPickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface= new HealPickedUpLayerInterfaceFactory();
+    public: static void init(){
+HealPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= HealPickedUpLayerInterfaceFactory();
     
 }
 
 
-    public static PickedUpLayerInterfaceFactoryInterface getInstance(){
+    public: static PickedUpLayerInterfaceFactoryInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HealPickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface;
+                        return HealPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
     
 }
 
 
-    private: pool: HealLayerCircularStaticPool = new HealLayerCircularStaticPool(new HealLayerFactory(), 1);
+    private: HealLayerCircularStaticPool pool = HealLayerCircularStaticPool(HealLayerFactory(), 1);
 
-private constructor (){
-            super(PickedUpLayerTypeFactory.getInstance()!.HEAL, IconLayerFactory.getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(HealthResources.getInstance()!.RESOURCE)!.getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(HealthResources.getInstance()!.RESOURCE)!.getInstance(0));
+private: HealPickedUpLayerInterfaceFactory(){
+            super(PickedUpLayerTypeFactory::getInstance().HEAL, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(HealthResources::getInstance().RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(HealthResources::getInstance().RESOURCE).getInstance(0));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -100,7 +99,7 @@ private constructor (){
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
@@ -112,8 +111,8 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayer sourceLayerInterface){
-this.pool.visit(sourceLayerInterface);
+    public: void process(AllBinaryLayer sourceLayerInterface){
+this->pool.visit(sourceLayerInterface);
     
 }
 

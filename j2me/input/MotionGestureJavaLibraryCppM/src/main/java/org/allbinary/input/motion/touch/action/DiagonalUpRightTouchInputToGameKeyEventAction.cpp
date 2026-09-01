@@ -50,16 +50,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DiagonalUpRightTouchInputToGameKeyEventAction: public GameKeyCompleteMotionGestureInputEvent {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyCompleteMotionGestureInputEvent getInstance(){
+    public: static GameKeyCompleteMotionGestureInputEvent getInstance(){
 
-                        if(DiagonalUpRightTouchInputToGameKeyEventAction.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(DiagonalUpRightTouchInputToGameKeyEventAction::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    DiagonalUpRightTouchInputToGameKeyEventAction.instance= new DiagonalUpRightTouchInputToGameKeyEventAction();
+                                    DiagonalUpRightTouchInputToGameKeyEventAction::instance= DiagonalUpRightTouchInputToGameKeyEventAction();
     
 
                                     }
@@ -68,13 +67,13 @@ class DiagonalUpRightTouchInputToGameKeyEventAction: public GameKeyCompleteMotio
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DiagonalUpRightTouchInputToGameKeyEventAction.instance as GameKeyCompleteMotionGestureInputEvent;
+                        return DiagonalUpRightTouchInputToGameKeyEventAction::instance() as GameKeyCompleteMotionGestureInputEvent;
     
 }
 
 
-private constructor (){
-            super("Diagonal Up Right Action", TouchMotionGestureFactory.getInstance()!.DIAGONAL_UP_RIGHT, PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping());
+private: DiagonalUpRightTouchInputToGameKeyEventAction(){
+            super("Diagonal Up Right Action", TouchMotionGestureFactory::getInstance().DIAGONAL_UP_RIGHT, PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping());
                     
 
                             //For kotlin this is before the body of the constructor.

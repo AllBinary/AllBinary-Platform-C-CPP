@@ -42,22 +42,19 @@
 class KeyboardActionScriptInputData
             : public Object
          {
-        
 
-    public static NAME: string = "KEY_ACTION_INPUT_NAME";
+    public: static std::string NAME = "KEY_ACTION_INPUT_NAME";
 
-    public static KEY: string = "KEY_ACTION_INPUT_KEY";
+    public: static std::string KEY = "KEY_ACTION_INPUT_KEY";
 
-    public static DELAY_BETWEEN_KEYS: string = "KEY_ACTION_INPUT_DELAY_BETWEEN_KEYS";
+    public: static std::string DELAY_BETWEEN_KEYS = "KEY_ACTION_INPUT_DELAY_BETWEEN_KEYS";
 
-    public static PRESS: string = "KEY_ACTION_INPUT_PRESS";
+    public: static std::string PRESS = "KEY_ACTION_INPUT_PRESS";
 
-    public static RELEASE: string = "KEY_ACTION_INPUT_RELEASE";
+    public: static std::string RELEASE = "KEY_ACTION_INPUT_RELEASE";
 
-private constructor (){
-
-            super();
-        }
+private: KeyboardActionScriptInputData(){
+}
 
 
 };

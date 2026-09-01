@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
         #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -94,41 +96,40 @@
 class ResourceUtil
             : public Object
          {
-        
 
-    private: static const instance: ResourceUtil = new ResourceUtil();
+    private: static ResourceUtil instance() { return ResourceUtil(); }
 
-    public static ResourceUtil getInstance();
+    public: static ResourceUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: context: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: Object* context = NullUtil::getInstance().NULL_OBJECT;
 
-    private: resources: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: Object* resources = NullUtil::getInstance().NULL_OBJECT;
 
-    private: hashMap: Hashtable<any, any> = new Hashtable<any, any>();
+    private: Hashtable<any, any> hashMap = Hashtable<any, any>();
 
-private constructor ();
+private: ResourceUtil();
 
-    public setLoadingPaths(string path, string ext);
+    public: void setLoadingPaths(std::string path, std::string ext);
 
-    public Context getContext();
+    public: Context getContext();
 
-    public setContextFromActivity(Activity activity);
+    public: void setContextFromActivity(Activity activity);
 
-    public setContext(Context aContext);
+    public: void setContext(Context aContext);
 
-    public Integer getResourceId(string resource);
+    public: Integer getResourceId(std::string resource);
 
-    public addResource(string resource, Integer value);
+    public: void addResource(std::string resource, Integer value);
 
-    bool containsDuplicate(string resource, Integer value);
+    private: bool containsDuplicate(std::string resource, Integer value);
 
-    public setResources(Resources resources);
+    public: void setResources(Resources resources);
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resource);
+    public: InputStream getResourceAsStream(std::string resource);
 
 };
 

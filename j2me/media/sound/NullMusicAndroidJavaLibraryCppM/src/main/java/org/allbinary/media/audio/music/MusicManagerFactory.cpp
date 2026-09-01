@@ -47,14 +47,13 @@
 class MusicManagerFactory
             : public Object
          {
-        
 
-    public static MusicManager createMusicManager(BasicArrayList soundList){
+    public: static MusicManager createMusicManager(BasicArrayList soundList){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MusicManager(MusicService.constructor, soundList);
+                        return MusicManager(MusicService.constructor, soundList);
     
 }
 

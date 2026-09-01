@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -65,37 +67,36 @@
 #include "SimpleGeographicMapCellPositionFactory.h"
 #include "GeographicMapCellType.h"
 
-class BasicGeographicMap: public SimpleGeographicMap: public GeographicMapInterface {
-        
+class BasicGeographicMap: public SimpleGeographicMap, public GeographicMapInterface {
 
-    public static const NULL_BASIC_GEOGRAPHIC_MAP_ARRAY: std::vector<BasicGeographicMap> = [];
+    public: static const std::vector<BasicGeographicMap> NULL_BASIC_GEOGRAPHIC_MAP_ARRAY = {};
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    private: const geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory;
+    private: BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory;
 
-    private: const geographicMapCellPositionFactoryInterface: GeographicMapCellPositionFactoryInterface;
+    private: GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface;
 
-    private: const geographicMapCellTypeFactory: GeographicMapCellTypeFactory;
+    private: GeographicMapCellTypeFactory geographicMapCellTypeFactory;
 
-public constructor (Integer id, string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory){
+public: BasicGeographicMap(Integer id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory geographicMapCellPositionBaseFactory, GeographicMapCellTypeFactory geographicMapCellTypeFactory){
             super(id, name, cellTypeIdToGeographicMapCellType, tiledLayer, foregroundBasicColor, backgroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.geographicMapCellPositionFactoryInterface= geographicMapCellPositionFactoryInterface;
+this->geographicMapCellPositionFactoryInterface= geographicMapCellPositionFactoryInterface;
     
-this.geographicMapCellPositionFactory= geographicMapCellPositionBaseFactory!.getInstance(this);
+this->geographicMapCellPositionFactory= geographicMapCellPositionBaseFactory.getInstance(this);
     
-this.geographicMapCellTypeFactory= geographicMapCellTypeFactory;
+this->geographicMapCellTypeFactory= geographicMapCellTypeFactory;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getCellPosition(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition){
+    public: GeographicMapCellPosition getCellPosition(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition){
 
 
 
@@ -104,34 +105,34 @@ this.geographicMapCellTypeFactory= geographicMapCellTypeFactory;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn() -1, oldGeographicMapCellPosition!.getRow());;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn() -1, oldGeographicMapCellPosition.getRow());;
     
 }
 case 1: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn() +1, oldGeographicMapCellPosition!.getRow());;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn() +1, oldGeographicMapCellPosition.getRow());;
     
 }
 case 2: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn(), oldGeographicMapCellPosition!.getRow() -1);;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn(), oldGeographicMapCellPosition.getRow() -1);;
     
 }
 case 3: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn(), oldGeographicMapCellPosition!.getRow() +1);;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn(), oldGeographicMapCellPosition.getRow() +1);;
     
 }
 default: {
 
 
-                            throw new Exception("Only Four Directions");
+                            throw Exception("Only Four Directions");
                     
 }
 
@@ -143,20 +144,20 @@ default: {
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getCellPositionNoThrow(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition){
+    public: GeographicMapCellPosition getCellPositionNoThrow(int32_t direction, GeographicMapCellPosition oldGeographicMapCellPosition){
 
 
 
         switch (direction) {
             case 0: {
-                        if(oldGeographicMapCellPosition!.getColumn() -1 >= 0)
+                        if(oldGeographicMapCellPosition.getColumn() -1 >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn() -1, oldGeographicMapCellPosition!.getRow());;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn() -1, oldGeographicMapCellPosition.getRow());;
     
 
                                     }
@@ -166,21 +167,21 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                         }
                             
 }
 case 1: {
-                        if(oldGeographicMapCellPosition!.getColumn() +1 < this.getAllBinaryTiledLayer()!.getColumns())
+                        if(oldGeographicMapCellPosition.getColumn() +1 < this->getAllBinaryTiledLayer().getColumns())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn() +1, oldGeographicMapCellPosition!.getRow());;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn() +1, oldGeographicMapCellPosition.getRow());;
     
 
                                     }
@@ -190,21 +191,21 @@ case 1: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                         }
                             
 }
 case 2: {
-                        if(oldGeographicMapCellPosition!.getRow() -1 >= 0)
+                        if(oldGeographicMapCellPosition.getRow() -1 >= 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn(), oldGeographicMapCellPosition!.getRow() -1);;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn(), oldGeographicMapCellPosition.getRow() -1);;
     
 
                                     }
@@ -214,21 +215,21 @@ case 2: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                         }
                             
 }
 case 3: {
-                        if(oldGeographicMapCellPosition!.getRow() +1 < this.getAllBinaryTiledLayer()!.getRows())
+                        if(oldGeographicMapCellPosition.getRow() +1 < this->getAllBinaryTiledLayer().getRows())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(oldGeographicMapCellPosition!.getColumn(), oldGeographicMapCellPosition!.getRow() +1);;
+                        return this->geographicMapCellPositionFactory.getAt(oldGeographicMapCellPosition.getColumn(), oldGeographicMapCellPosition.getRow() +1);;
     
 
                                     }
@@ -238,7 +239,7 @@ case 3: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                         }
@@ -248,7 +249,7 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
 
@@ -260,16 +261,16 @@ default: {
 
                 //@Throws(Exception.constructor)
             
-    public bool isOfFourDirections(GeographicMapCellPosition oldGeographicMapCellPosition, GeographicMapCellPosition newGeographicMapCellPosition){
+    public: bool isOfFourDirections(GeographicMapCellPosition oldGeographicMapCellPosition, GeographicMapCellPosition newGeographicMapCellPosition){
 
 
 
 
                         for (
-    index: int32_t = 0;index < 4; index++)
+    int32_t index = 0;index < 4; index++)
         {
 
-                        if(newGeographicMapCellPosition == this.getCellPositionNoThrow(index, oldGeographicMapCellPosition))
+                        if(newGeographicMapCellPosition == this->getCellPositionNoThrow(index, oldGeographicMapCellPosition))
                         
                                     {
                                     
@@ -294,37 +295,37 @@ default: {
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getCellPositionAtXY(int32_t x, int32_t y){
+    public: GeographicMapCellPosition getCellPositionAtXY(int32_t x, int32_t y){
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = this.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = this->getAllBinaryTiledLayer();;
     
 
-    i_column: int32_t = this.mathUtil!.abs(x /allBinaryTiledLayer!.getCellHeight())!;;
+    int32_t i_column = this->mathUtil.abs(x /allBinaryTiledLayer.getCellHeight());;
     
 
-    i_row: int32_t = this.mathUtil!.abs(y /allBinaryTiledLayer!.getCellWidth())!;;
+    int32_t i_row = this->mathUtil.abs(y /allBinaryTiledLayer.getCellWidth());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(i_column, i_row);;
+                        return this->geographicMapCellPositionFactory.getAt(i_column, i_row);;
     
 }
 
 
-    public GeographicMapCellPosition getCellPositionAtXYNoThrow(int32_t x, int32_t y){
+    public: GeographicMapCellPosition getCellPositionAtXYNoThrow(int32_t x, int32_t y){
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = this.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = this->getAllBinaryTiledLayer();;
     
 
-    i_column: int32_t = this.mathUtil!.abs(x /allBinaryTiledLayer!.getCellHeight())!;;
+    int32_t i_column = this->mathUtil.abs(x /allBinaryTiledLayer.getCellHeight());;
     
 
-    i_row: int32_t = this.mathUtil!.abs(y /allBinaryTiledLayer!.getCellWidth())!;;
+    int32_t i_row = this->mathUtil.abs(y /allBinaryTiledLayer.getCellWidth());;
     
 
-                        if(allBinaryTiledLayer!.getColumns() > i_column && allBinaryTiledLayer!.getRows() > i_row)
+                        if(allBinaryTiledLayer.getColumns() > i_column && allBinaryTiledLayer.getRows() > i_row)
                         
                                     {
                                     
@@ -333,7 +334,7 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory!.getAt(i_column, i_row);;
+                        return this->geographicMapCellPositionFactory.getAt(i_column, i_row);;
     
 
                 //: 
@@ -343,7 +344,7 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 }
 
@@ -355,7 +356,7 @@ default: {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+                        return SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
     
 
                         }
@@ -365,18 +366,18 @@ default: {
 
                 //@Throws(Exception.constructor)
             
-    public bool isOnMap(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool isOnMap(GeographicMapCellPosition geographicMapCellPosition){
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = this.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = this->getAllBinaryTiledLayer();;
     
 
-    i_column: int32_t = geographicMapCellPosition!.getColumn()!;;
+    int32_t i_column = geographicMapCellPosition.getColumn();;
     
 
-    i_row: int32_t = geographicMapCellPosition!.getRow()!;;
+    int32_t i_row = geographicMapCellPosition.getRow();;
     
 
-                        if(allBinaryTiledLayer!.getColumns() > i_column && allBinaryTiledLayer!.getRows() > i_row)
+                        if(allBinaryTiledLayer.getColumns() > i_column && allBinaryTiledLayer.getRows() > i_row)
                         
                                     {
                                     
@@ -403,43 +404,43 @@ default: {
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getCellPositionAtNoThrow(int32_t x, int32_t y, int32_t x2, int32_t y2, BasicArrayList geographicMapCellPositionList){
-geographicMapCellPositionList!.clear();
+    public: BasicArrayList getCellPositionAtNoThrow(int32_t x, int32_t y, int32_t x2, int32_t y2, BasicArrayList geographicMapCellPositionList){
+geographicMapCellPositionList.clear();
     
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = this.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = this->getAllBinaryTiledLayer();;
     
 
-    i_columnMin: int32_t = this.mathUtil!.abs(x /allBinaryTiledLayer!.getCellHeight())!;;
+    int32_t i_columnMin = this->mathUtil.abs(x /allBinaryTiledLayer.getCellHeight());;
     
 
-    i_rowMin: int32_t = this.mathUtil!.abs(y /allBinaryTiledLayer!.getCellWidth())!;;
+    int32_t i_rowMin = this->mathUtil.abs(y /allBinaryTiledLayer.getCellWidth());;
     
 
-    i_columnMax: int32_t = this.mathUtil!.abs(x2 /allBinaryTiledLayer!.getCellHeight()) +1;;
+    int32_t i_columnMax = this->mathUtil.abs(x2 /allBinaryTiledLayer.getCellHeight()) +1;;
     
 
-    i_rowMax: int32_t = this.mathUtil!.abs(y2 /allBinaryTiledLayer!.getCellWidth()) +1;;
+    int32_t i_rowMax = this->mathUtil.abs(y2 /allBinaryTiledLayer.getCellWidth()) +1;;
     
 
 
 
 
                         for (
-    columnIndex: int32_t = i_columnMin;columnIndex < i_columnMax; columnIndex++)
+    int32_t columnIndex = i_columnMin;columnIndex < i_columnMax; columnIndex++)
         {
 
 
 
 
                         for (
-    rowIndex: int32_t = i_rowMin;rowIndex < i_rowMax; rowIndex++)
+    int32_t rowIndex = i_rowMin;rowIndex < i_rowMax; rowIndex++)
         {
 
-                        if(allBinaryTiledLayer!.getColumns() > columnIndex && allBinaryTiledLayer!.getRows() > rowIndex)
+                        if(allBinaryTiledLayer.getColumns() > columnIndex && allBinaryTiledLayer.getRows() > rowIndex)
                         
                                     {
-                                    geographicMapCellPositionList!.add(this.geographicMapCellPositionFactory!.getAt(columnIndex, rowIndex));
+                                    geographicMapCellPositionList.add(this->geographicMapCellPositionFactory.getAt(columnIndex, rowIndex));
     
 
                                     }
@@ -459,45 +460,43 @@ geographicMapCellPositionList!.clear();
 
                 //@Throws(Exception.constructor)
             
-    public bool getCellPositionsAt(Layer layer, std::vector<std::vector<GeographicMapCellPosition>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition>> cellPositionArray){
+    public: bool getCellPositionsAt(Layer layer, std::vector<std::vector<GeographicMapCellPosition>> currentCellPositionArray, std::vector<std::vector<GeographicMapCellPosition>> cellPositionArray){
 
-    hasChanged: bool = false;;
+    bool hasChanged = false;;
     
 
-    size: int32_t = cellPositionArray!.length
-                ;;
+    int32_t size = cellPositionArray.size();;
     
 
-    size2: int32_t = cellPositionArray[0]!.length
-                ;;
+    int32_t size2 = cellPositionArray[0]!.size();;
     
 
-    xPortion: int32_t = layer.getXP() /(size -1);;
+    int32_t xPortion = layer.getXP() /(size -1);;
     
 
-    yPortion: int32_t = layer.getYP() /(size -1);;
+    int32_t yPortion = layer.getYP() /(size -1);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size2; index2++)
+    int32_t index2 = 0;index2 < size2; index2++)
         {
 
-    x: int32_t = xPortion *index;;
+    int32_t x = xPortion *index;;
     
 
-    y: int32_t = yPortion *index;;
+    int32_t y = yPortion *index;;
     
-cellPositionArray[index]![index2]= this.getCellPositionAtXY(x, y);
+cellPositionArray[index]![index2]= this->getCellPositionAtXY(x, y);
     
 
                         if(currentCellPositionArray[index]![index2] != cellPositionArray[index]![index2])
@@ -523,45 +522,45 @@ cellPositionArray[index]![index2]= this.getCellPositionAtXY(x, y);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellType getCellTypeAtXY(int32_t x, int32_t y){
+    public: GeographicMapCellType getCellTypeAtXY(int32_t x, int32_t y){
 
-    cellPosition: GeographicMapCellPosition = this.getCellPositionAtXY(x, y)!;;
+    GeographicMapCellPosition cellPosition = this->getCellPositionAtXY(x, y);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getCellTypeAt(cellPosition);;
-    
-}
-
-
-    public BasicGeographicMapCellPositionFactory getGeographicMapCellPositionFactory(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactory;
+                        return this->getCellTypeAt(cellPosition);;
     
 }
 
 
-    public GeographicMapCellPositionFactoryInterface getGeographicMapCellPositionFactoryInterface(){
+    public: BasicGeographicMapCellPositionFactory getGeographicMapCellPositionFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellPositionFactoryInterface;
+                        return this->geographicMapCellPositionFactory;
     
 }
 
 
-    public GeographicMapCellTypeFactory getGeographicMapCellTypeFactory(){
+    public: GeographicMapCellPositionFactoryInterface getGeographicMapCellPositionFactoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.geographicMapCellTypeFactory;
+                        return this->geographicMapCellPositionFactoryInterface;
+    
+}
+
+
+    public: GeographicMapCellTypeFactory getGeographicMapCellTypeFactory(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->geographicMapCellTypeFactory;
     
 }
 

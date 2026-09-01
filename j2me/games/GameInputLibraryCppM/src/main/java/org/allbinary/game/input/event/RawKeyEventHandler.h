@@ -66,45 +66,44 @@
 class RawKeyEventHandler
             : public Object
          {
-        
 
-    private: static const instance: RawKeyEventHandler = new RawKeyEventHandler();
+    private: static RawKeyEventHandler instance() { return RawKeyEventHandler(); }
 
-    public static RawKeyEventHandler getInstance();
+    public: static RawKeyEventHandler getInstance();
 
-    private: static const TOTAL_LISTENERS: string = "Total Listeners: ";
+    private: static const std::string TOTAL_LISTENERS = "Total Listeners: ";
 
-    private: static const LISTENER_LABEL: string = " Listener: ";
+    private: static const std::string LISTENER_LABEL = " Listener: ";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    eventListenerInterfaceList: BasicArrayList;
+    protected: BasicArrayList eventListenerInterfaceList;
 
-public constructor ();
+public: RawKeyEventHandler();
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public addListeners(BasicArrayList vector);
+    public: void addListeners(BasicArrayList vector);
 
-    public addListenerSingleThreaded(RawKeyEventListener eventListenerInterface);
+    public: void addListenerSingleThreaded(RawKeyEventListener eventListenerInterface);
 
-    public addListener(RawKeyEventListener eventListenerInterface);
+    public: void addListener(RawKeyEventListener eventListenerInterface);
 
-    public removeListenerSingleThreaded(RawKeyEventListener eventListenerInterface);
+    public: void removeListenerSingleThreaded(RawKeyEventListener eventListenerInterface);
 
-    public removeListener(RawKeyEventListener eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public fireEvent(int32_t keyCode, int32_t deviceId, bool repeated);
+    public: void removeListener(RawKeyEventListener eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener eventListenerInterface);
+    public: void fireEvent(int32_t keyCode, int32_t deviceId, bool repeated);
 
-    public BasicArrayList getEventListenerInterfaceListP();
+                //@Throws(Exception.constructor)
+            
+    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener eventListenerInterface);
 
-    public string toString();
+    public: BasicArrayList getEventListenerInterfaceListP();
+
+    public: std::string toString();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <java/util/Enumeration.h>
@@ -51,42 +53,41 @@
 class HashtableUtil
             : public Object
          {
-        
 
-    private: static const instance: HashtableUtil = new HashtableUtil();
+    private: static HashtableUtil instance() { return HashtableUtil(); }
 
-    public static HashtableUtil getInstance(){
+    public: static HashtableUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HashtableUtil.instance;
+                        return HashtableUtil::instance();
     
 }
 
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public putAll(Hashtable<any, any> fromHashtable, Hashtable<any, any> hashtable){
+    public: void putAll(Hashtable<any, any> fromHashtable, Hashtable<any, any> hashtable){
 
-    enumeration: Enumeration<any> = fromHashtable!.keys()!;;
+    Enumeration<any> enumeration = fromHashtable.keys();;
     
 
-    keyCanBeNull: any;;
+    Object* keyCanBeNull;;
     
 
-    valueCanBeNull: any;;
+    Object* valueCanBeNull;;
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-keyCanBeNull= this.enumerationUtil!.nextElement(enumeration)!;
+keyCanBeNull= this->enumerationUtil.nextElement(enumeration)!;
     
 valueCanBeNull= hashtable.get(keyCanBeNull);
     
 
                         if(valueCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -104,20 +105,20 @@ valueCanBeNull= hashtable.get(keyCanBeNull);
 }
 
 
-    public std::vector<any> getKeysAsArray(Hashtable<any, any> hashtable){
+    public: std::vector<Object*> getKeysAsArray(Hashtable<any, any> hashtable){
 
-    objectArray: std::vector<any> = new Array(hashtable.length);;
+    std::vector<Object*> objectArray = new Array(hashtable.length);;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    enumeration: Enumeration<any> = hashtable.keys()!;;
+    Enumeration<any> enumeration = hashtable.keys();;
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-objectArray[index++]= this.enumerationUtil!.nextElement(enumeration)!;
+objectArray[index++]= this->enumerationUtil.nextElement(enumeration)!;
     
 }
 
@@ -130,17 +131,17 @@ objectArray[index++]= this.enumerationUtil!.nextElement(enumeration)!;
 }
 
 
-    public BasicArrayList getKeysAsList(Hashtable<any, any> hashtable){
+    public: BasicArrayList getKeysAsList(Hashtable<any, any> hashtable){
 
-    list: BasicArrayList = new BasicArrayListS(hashtable.length);;
+    BasicArrayList list = BasicArrayListS(hashtable.length);;
     
 
-    enumeration: Enumeration<any> = hashtable.keys()!;;
+    Enumeration<any> enumeration = hashtable.keys();;
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-list.add(this.enumerationUtil!.nextElement(enumeration)!);
+list.add(this->enumerationUtil.nextElement(enumeration)!);
     
 }
 

@@ -45,9 +45,8 @@
 class StatisticalMatchConstraints
             : public Object
          {
-        
 
-public constructor ();
+public: StatisticalMatchConstraints();
 
 };
 

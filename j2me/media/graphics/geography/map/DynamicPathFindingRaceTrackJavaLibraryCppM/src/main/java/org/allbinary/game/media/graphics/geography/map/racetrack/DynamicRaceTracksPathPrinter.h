@@ -75,11 +75,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DynamicRaceTracksPathPrinter: public RaceTracksPathPrinter {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo pathFindingInfo, int32_t size);
+    public: void printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo pathFindingInfo, int32_t size);
 
 };
 

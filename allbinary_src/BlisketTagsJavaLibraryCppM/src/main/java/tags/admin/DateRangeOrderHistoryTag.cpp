@@ -52,13 +52,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DateRangeOrderHistoryTag: public StoreValidationTransformTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: status: string;
+    private: std::string status;
 
-public constructor (){
+public: DateRangeOrderHistoryTag(){
             super();
                     
 
@@ -67,38 +66,38 @@ public constructor (){
 }
 
 
-    public setStatus(string value){
-this.status= value;
+    public: void setStatus(std::string value){
+this->status= value;
     
 }
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Tag Start", this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Tag Start", this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-this.setName("Range Order History View");
+this->setName("Range Order History View");
     
-this.setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
+this->setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
     
 
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
@@ -108,7 +107,7 @@ this.setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -125,13 +124,13 @@ this.setObjectFile("views.admin.orderhistory.DateRangeOrderHistoryView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

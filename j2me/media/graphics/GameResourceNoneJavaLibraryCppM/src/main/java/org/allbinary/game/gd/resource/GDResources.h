@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_GD_RESOURCE_GDRESOURCES_H
         #define ORG_ALLBINARY_GAME_GD_RESOURCE_GDRESOURCES_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -45,18 +47,17 @@
 class GDResources
             : public Object
          {
-        
 
-    private: static const instance: GDResources = new GDResources();
+    private: static GDResources instance() { return GDResources(); }
 
-    public static GDResources getInstance();
+    public: static GDResources getInstance();
 
-    public const resourceStringArray: std::vector<string> = 
-                                                        [
+    public: const std::vector<std::string> resourceStringArray = 
+                                                        {
                                                             
-                                                        ];
+                                                        };
 
-    public currentLayoutRequiredTotal: int32_t= 0;
+    public: int32_t currentLayoutRequiredTotal= 0;
 
 };
 

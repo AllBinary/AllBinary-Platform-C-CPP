@@ -45,7 +45,6 @@
         #include "AutomaticCacheInterface.h"
 
 class J2SECacheInterface: public AutomaticCacheInterface {
-        
 
     Set<any> keySet();
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_BASICGEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -63,47 +65,46 @@
 class BasicGeographicMapCellPositionFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const geographicMapCellPositionArray: std::vector<std::vector<GeographicMapCellPosition>>;
+    protected: std::vector<std::vector<GeographicMapCellPosition>> geographicMapCellPositionArray;
 
-    const geographicMapInterface: BasicGeographicMap;
+    protected: BasicGeographicMap geographicMapInterface;
 
-    const geographicMapCellPositionFactoryInterface: GeographicMapCellPositionFactoryInterface;
+    protected: GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface;
 
-    private: const columns: int32_t;
+    private: int32_t columns;
 
-    private: const rows: int32_t;
+    private: int32_t rows;
 
-    private: const tiledLayer: AllBinaryTiledLayer;
+    private: AllBinaryTiledLayer tiledLayer;
 
-public constructor (BasicGeographicMap geographicMapInterface);
-
-                //@Throws(Exception.constructor)
-            
-    init();
+public: BasicGeographicMapCellPositionFactory(BasicGeographicMap geographicMapInterface);
 
                 //@Throws(Exception.constructor)
             
-    public visit(GeographicMapCellPositionFactoryInitVisitorInterface geographicMapCelPositionFactoryInitVisitorInterface);
+    private: void init();
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getAt(int32_t i_column, int32_t i_row);
+    public: void visit(GeographicMapCellPositionFactoryInitVisitorInterface geographicMapCelPositionFactoryInitVisitorInterface);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getInstance(GeographicMapCellPosition anotherMapGeographicMapCellPosition);
+    public: GeographicMapCellPosition getAt(int32_t i_column, int32_t i_row);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height);
+    public: GeographicMapCellPosition getInstance(GeographicMapCellPosition anotherMapGeographicMapCellPosition);
 
-    public int32_t getColumns();
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellPosition createInstance(int32_t i_column, int32_t i_row, int32_t width, int32_t height);
 
-    public int32_t getRows();
+    public: int32_t getColumns();
+
+    public: int32_t getRows();
 
 };
 

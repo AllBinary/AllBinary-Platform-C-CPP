@@ -39,16 +39,15 @@
         #include "OpenGLVUtilBase.h"
 
 class OpenGLVUtil: public OpenGLVUtilBase {
-        
 
-    private: static const instance: OpenGLVUtil = new OpenGLVUtil();
+    private: static OpenGLVUtil instance() { return OpenGLVUtil(); }
 
-    public static OpenGLVUtil getInstance(){
+    public: static OpenGLVUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLVUtil.instance;
+                        return OpenGLVUtil::instance();
     
 }
 

@@ -65,41 +65,40 @@
 class WaypointPathRunnableBase
             : public Object
         : public RunnableInterface, public PriorityRunnable {
-        
 
-    private: const layerDistanceUtil: LayerDistanceUtil = LayerDistanceUtil.getInstance()!;
+    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    pathFindingLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface pathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    targetPathFindingLayer: PathFindingLayerInterface = NullPathFindingLayer.NULL_PATH_FINDING_LAYER;
+    protected: PathFindingLayerInterface targetPathFindingLayer = NullPathFindingLayer::NULL_PATH_FINDING_LAYER;
 
-    priorityP: int32_t = Integer.MAX_VALUE;
+    protected: int32_t priorityP = Integer::MAX_VALUE;
 
-    runningP: bool= false;
+    protected: bool runningP= false;
 
-    public bool isRunning();
+    public: bool isRunning();
 
-    public setRunning(bool isRunning);
+    public: void setRunning(bool isRunning);
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread);
+    public: void setThread(Thread thread);
 
-    public setTargetLayer(PathFindingLayerInterface waypointLayer);
+    public: void setTargetLayer(PathFindingLayerInterface waypointLayer);
 
-    public setPriority();
+    public: void setPriority();
 
-    public PathFindingLayerInterface getTargetLayer();
+    public: PathFindingLayerInterface getTargetLayer();
 
-    public setUnitLayer(PathFindingLayerInterface unitLayer);
+    public: void setUnitLayer(PathFindingLayerInterface unitLayer);
 
-    public int32_t getPriority();
+    public: int32_t getPriority();
 
-    public bool isDone();
+    public: bool isDone();
 
-    public run();
+    public: void run();
 
-    public reset();
+    public: void reset();
 
 };
 

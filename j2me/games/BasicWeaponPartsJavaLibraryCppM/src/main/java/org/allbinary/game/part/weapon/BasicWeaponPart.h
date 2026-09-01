@@ -96,49 +96,48 @@
 class BasicWeaponPart
             : public Object
         : public PartInterface, public SalvoInterface {
-        
 
-    public static BasicWeaponPart createBasicWeaponPart(Animation animationInterface);
+    public: static BasicWeaponPart createBasicWeaponPart(Animation animationInterface);
 
-    public static const NULL_BASIC_WEAPON_PART: BasicWeaponPart = BasicWeaponPart.createBasicWeaponPart(NullAnimationFactory.getFactoryInstance()!.getInstance(0))!;
+    public: static const BasicWeaponPart NULL_BASIC_WEAPON_PART = BasicWeaponPart::createBasicWeaponPart(NullAnimationFactory::getFactoryInstance().getInstance(0));
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    private: ownerLayerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer ownerLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: weaponProperties: WeaponProperties = WeaponProperties.NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
 
-    private: scoreableInterface: ScoreableInterface = NoScoreable.getInstance()!;
+    private: ScoreableInterface scoreableInterface = NoScoreable::getInstance();
 
-    relativeRelationship: RelativeRelationship = RelativeRelationship.NULL_RELATIVE_RELATIONSHIP;
+    protected: RelativeRelationship relativeRelationship = RelativeRelationship::NULL_RELATIVE_RELATIONSHIP;
 
-public constructor (Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
+public: BasicWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
 
-    public init(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
-
-                //@Throws(Exception.constructor)
-            
-    public process(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle);
+    public: void init(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
 
                 //@Throws(Exception.constructor)
             
-    public processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle);
 
-    public AllBinaryLayer getOwnerLayerInterface();
+                //@Throws(Exception.constructor)
+            
+    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
 
-    public setOwnerLayerInterface(AllBinaryLayer ownerLayerInterface);
+    public: AllBinaryLayer getOwnerLayerInterface();
 
-    public Animation getAnimationInterface();
+    public: void setOwnerLayerInterface(AllBinaryLayer ownerLayerInterface);
 
-    public setAnimationInterface(Animation animationInterface);
+    public: Animation getAnimationInterface();
 
-    public paint(Graphics graphics);
+    public: void setAnimationInterface(Animation animationInterface);
 
-    public paintThreed(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public WeaponProperties getWeaponProperties();
+    public: void paintThreed(Graphics graphics);
 
-    public setWeaponProperties(WeaponProperties weaponProperties);
+    public: WeaponProperties getWeaponProperties();
+
+    public: void setWeaponProperties(WeaponProperties weaponProperties);
 
 };
 

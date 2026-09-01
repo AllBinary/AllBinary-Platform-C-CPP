@@ -54,25 +54,24 @@
 class ShaderUpdater
             : public Object
          {
-        
 
-    private: static const instance: ShaderUpdater = new ShaderUpdater();
+    private: static ShaderUpdater instance() { return ShaderUpdater(); }
 
-    public static ShaderUpdater getInstance(){
+    public: static ShaderUpdater getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderUpdater.instance;
+                        return ShaderUpdater::instance();
     
 }
 
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const rendererStrings: RendererStrings = RendererStrings.getInstance()!;
+    protected: const RendererStrings rendererStrings = RendererStrings::getInstance();
 
-    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig){
+    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig){
 }
 
 

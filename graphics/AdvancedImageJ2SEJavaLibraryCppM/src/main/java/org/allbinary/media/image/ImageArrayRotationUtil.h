@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEARRAYROTATIONUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEARRAYROTATIONUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -62,21 +64,20 @@
 class ImageArrayRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageArrayRotationUtil = new ImageArrayRotationUtil();
+    private: static ImageArrayRotationUtil instance() { return ImageArrayRotationUtil(); }
 
-    public static ImageArrayRotationUtil getInstance();
+    public: static ImageArrayRotationUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const TOTAL_ANGLE: string = "totalAngle: ";
+    private: const std::string TOTAL_ANGLE = "totalAngle: ";
 
                 //@Throws(IOException.constructor)
             
-    public process(ImageProcessorInput imageProcessorInput, string input, ImageProcessedVisitor visitor);
+    public: void process(ImageProcessorInput imageProcessorInput, std::string input, ImageProcessedVisitor visitor);
 
 };
 

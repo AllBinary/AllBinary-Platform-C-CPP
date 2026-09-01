@@ -41,25 +41,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AnimationEventHandler: public BasicEventHandler {
-        
 
-    private: static const eventHandler: AnimationEventHandler = new AnimationEventHandler();
+    private: static const AnimationEventHandler eventHandler = AnimationEventHandler();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static AnimationEventHandler getInstance(){
+    public: static AnimationEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationEventHandler.eventHandler;
+                        return AnimationEventHandler::eventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AnimationEventHandler(){
+}
 
 
 };

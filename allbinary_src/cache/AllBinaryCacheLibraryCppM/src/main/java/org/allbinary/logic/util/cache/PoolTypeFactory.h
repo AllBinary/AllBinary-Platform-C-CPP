@@ -33,13 +33,12 @@
 class PoolTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: PoolTypeFactory = new PoolTypeFactory();
+    private: static PoolTypeFactory instance() { return PoolTypeFactory(); }
 
-    public static PoolTypeFactory getInstance();
+    public: static PoolTypeFactory getInstance();
 
-    public VECTOR_POOL: PoolType = new PoolType(CacheTypeFactory.getInstance()!.NO_CACHE);
+    public: PoolType VECTOR_POOL = PoolType(CacheTypeFactory::getInstance().NO_CACHE);
 
 };
 

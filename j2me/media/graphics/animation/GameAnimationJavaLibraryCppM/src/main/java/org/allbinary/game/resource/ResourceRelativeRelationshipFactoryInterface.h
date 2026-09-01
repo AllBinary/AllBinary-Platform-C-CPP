@@ -52,15 +52,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ResourceRelativeRelationshipFactoryInterface: public GameFeatureControlledInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    BasicArrayList getResourceRelativeRelationshipList(string resource);
+    BasicArrayList getResourceRelativeRelationshipList(std::string resource);
 
                 //@Throws(Exception.constructor)
             
-    addResourceRelativeRelationship(string resource, RelativeRelationship relativeRelationship);
+    void addResourceRelativeRelationship(std::string resource, RelativeRelationship relativeRelationship);
 
 };
 

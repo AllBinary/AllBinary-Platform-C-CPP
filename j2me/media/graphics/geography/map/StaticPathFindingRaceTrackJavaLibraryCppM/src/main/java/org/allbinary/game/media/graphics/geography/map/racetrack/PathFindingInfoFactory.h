@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_H
         #define ORG_ALLBINARY_GAME_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_PATHFINDINGINFOFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -67,17 +69,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PathFindingInfoFactory: public BasePathFindingInfoFactory {
-        
 
-    private: static const instance: PathFindingInfoFactory = new PathFindingInfoFactory();
+    private: static PathFindingInfoFactory instance() { return PathFindingInfoFactory(); }
 
-    public static PathFindingInfoFactory getInstance();
+    public: static PathFindingInfoFactory getInstance();
 
-private constructor ();
+private: PathFindingInfoFactory();
 
                 //@Throws(Exception.constructor)
             
-    public PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray);
+    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray);
 
 };
 

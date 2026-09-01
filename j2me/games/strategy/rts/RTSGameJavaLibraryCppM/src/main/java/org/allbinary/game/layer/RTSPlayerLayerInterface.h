@@ -67,13 +67,12 @@
 #include "PlayerOwnedRTSLayers.h"
 
 class RTSPlayerLayerInterface: public GameNotificationHudCompositeInterface, public BuildMenuCompositeInterface, public PlayerGameInputCompositeInterface, public DestroyedEventListenerInterface, public TickableInterface, public PathFindingLayerInterface {
-        
 
     Capital getCapital();
 
     RTSFormInput getRTSFormInput();
 
-    add(Sound sound);
+    void add(Sound sound);
 
     PlayerOwnedRTSLayers getPlayerOwnedRTSLayers();
 

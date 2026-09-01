@@ -49,20 +49,17 @@
 class NoLicense
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static init(ClassLoader classLoader, string pathString){
-Globals.init(classLoader, pathString);
+    public: static void init(ClassLoader classLoader, std::string pathString){
+Globals::init(classLoader, pathString);
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NoLicense(){
+}
 
 
 };

@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbDataInputStream: public DataInputStream {
-        
 
-public constructor (InputStream out);
+public: AbDataInputStream(InputStream out);
 
 };
 

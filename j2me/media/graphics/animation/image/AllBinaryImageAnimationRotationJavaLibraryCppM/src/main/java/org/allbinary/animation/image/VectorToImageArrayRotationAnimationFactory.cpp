@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -84,48 +86,47 @@
 #include "AdjustedImageArrayRotationAnimation.h"
 
 class VectorToImageArrayRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
-    private: imageArray: std::vector<Image> = NullImage.NULL_IMAGE_ARRAY;
+    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
-    private: angleIncrement: int32_t= 0;
+    private: int32_t angleIncrement= 0;
 
-public constructor (VectorInfo vectorInfo, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory){
-            super(AnimationFrameToImageUtil.getInstance()!.getInstanceTranslate(vectorInfo!.getWidth(), vectorInfo!.getHeight(), VectorAnimation.createVectorAnimation(vectorInfo!.getPoints(), basicColor, animationBehaviorFactory!.getOrCreateInstance())), PrimitiveIntUtil.getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory);
+public: VectorToImageArrayRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory){
+            super(AnimationFrameToImageUtil::getInstance().getInstanceTranslate(vectorInfo.getWidth(), vectorInfo.getHeight(), VectorAnimation::createVectorAnimation(vectorInfo.getPoints(), basicColor, animationBehaviorFactory.getOrCreateInstance())), PrimitiveIntUtil::getArrayInstance(), 0, 0, 0, 0, animationBehaviorFactory);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.init();
+this->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(){
+    protected: void init(){
 
-    angleFactory: AngleFactory = AngleFactory.getInstance()!;;
+    AngleFactory angleFactory = AngleFactory::getInstance();;
     
-this.angleIncrement= angleFactory!.TOTAL_ANGLE /GameConfigurationCentral.getInstance()!.getGameControlFidelity();
+this->angleIncrement= angleFactory.TOTAL_ANGLE /GameConfigurationCentral::getInstance().getGameControlFidelity();
     
-this.imageArray= ImageToRotationImageArrayUtil.getInstance()!.generate(this.getImage(), this.getAngleIncrement(), static_cast<int32_t>(angleFactory!.TOTAL_ANGLE));
+this->imageArray= ImageToRotationImageArrayUtil::getInstance().generate(this->getImage(), this->getAngleIncrement(), static_cast<int32_t>(angleFactory.TOTAL_ANGLE));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-                        if(this.animationFactoryInitializationVisitor!.dx != 0 || this.animationFactoryInitializationVisitor!.dy != 0)
+                        if(this->animationFactoryInitializationVisitor.dx != 0 || this->animationFactoryInitializationVisitor.dy != 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdjustedImageArrayRotationAnimation(this.imageArray, AngleInfo.getInstance(this.getAngleIncrement()), static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE), this.animationFactoryInitializationVisitor!.dx, this.animationFactoryInitializationVisitor!.dy, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return AdjustedImageArrayRotationAnimation(this->imageArray, AngleInfo::getInstance(this->getAngleIncrement()), static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE), this->animationFactoryInitializationVisitor.dx, this->animationFactoryInitializationVisitor.dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
@@ -135,7 +136,7 @@ this.imageArray= ImageToRotationImageArrayUtil.getInstance()!.generate(this.getI
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedImageArrayRotationAnimation.createAnimation(this.imageArray, AngleInfo.getInstance(this.angleIncrement), static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE), this.animationBehaviorFactory!.getOrCreateInstance());;
+                        return AdjustedImageArrayRotationAnimation::createAnimation(this->imageArray, AngleInfo::getInstance(this->angleIncrement), static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE), this->animationBehaviorFactory.getOrCreateInstance());;
     
 
                         }
@@ -143,17 +144,17 @@ this.imageArray= ImageToRotationImageArrayUtil.getInstance()!.generate(this.getI
 }
 
 
-    int32_t getAngleIncrement(){
+    protected: int32_t getAngleIncrement(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angleIncrement;
+                        return this->angleIncrement;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

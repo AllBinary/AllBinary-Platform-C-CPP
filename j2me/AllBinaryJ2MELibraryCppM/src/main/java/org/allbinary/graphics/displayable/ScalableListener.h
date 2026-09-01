@@ -47,7 +47,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScalableListener {
-        
 
     float getRatio(float ratio);
 
@@ -55,7 +54,7 @@ class ScalableListener {
 
     int32_t getTop(int32_t yOffset);
 
-    scale(float ratio);
+    void scale(float ratio);
 
 };
 

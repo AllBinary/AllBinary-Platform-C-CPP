@@ -51,50 +51,47 @@
 class BasicAccelerationProperties
             : public Object
          {
-        
 
-    private: forward: int32_t= 0;
+    private: int32_t forward= 0;
 
-    private: reverse: int32_t= 0;
+    private: int32_t reverse= 0;
 
-public constructor (int32_t forward, int32_t reverse){
-
-            super();
-        this.setForward(forward);
+public: BasicAccelerationProperties(int32_t forward, int32_t reverse){
+this->setForward(forward);
     
-this.setReverse(reverse);
+this->setReverse(reverse);
     
 }
 
 
-    public setReverse(int32_t reverse){
-this.reverse= reverse;
+    public: void setReverse(int32_t reverse){
+this->reverse= reverse;
     
 }
 
 
-    public int32_t getReverse(){
+    public: int32_t getReverse(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.reverse;
+                        return this->reverse;
     
 }
 
 
-    public setForward(int32_t forward){
-this.forward= forward;
+    public: void setForward(int32_t forward){
+this->forward= forward;
     
 }
 
 
-    public int32_t getForward(){
+    public: int32_t getForward(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.forward;
+                        return this->forward;
     
 }
 

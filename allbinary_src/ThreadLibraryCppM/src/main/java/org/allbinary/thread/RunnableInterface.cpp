@@ -50,15 +50,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RunnableInterface: public Runnable {
-        
 
     bool isRunning()
 
-    setRunning(bool isRunning)
+    void setRunning(bool isRunning)
 
                 //@Throws(Exception.constructor)
             
-    setThread(Thread thread)
+    void setThread(Thread thread)
 
 };
 

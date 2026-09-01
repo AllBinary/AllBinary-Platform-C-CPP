@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_KEYVALUEPERSISTANCE_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_PERSISTANCE_KEYVALUEPERSISTANCE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -101,25 +103,24 @@
 #include "NullRecordComparator.h"
 
 class KeyValuePersistance: public BasicPersitance {
-        
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-protected constructor (string recordId);
-
-                //@Throws(Exception.constructor)
-            
-    public loadAll(AbeClientInformationInterface abeClientInformation);
+protected: KeyValuePersistance(std::string recordId);
 
                 //@Throws(Exception.constructor)
             
-    public loadAllSize(AbeClientInformationInterface abeClientInformation, int32_t size);
+    public: void loadAll(AbeClientInformationInterface abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable);
+    public: void loadAllSize(AbeClientInformationInterface abeClientInformation, int32_t size);
 
-    public Hashtable<any, any> get(int32_t index);
+                //@Throws(Exception.constructor)
+            
+    public: void save(AbeClientInformationInterface abeClientInformation, Hashtable<any, any> hashtable);
+
+    public: Hashtable<any, any> get(int32_t index);
 
 };
 

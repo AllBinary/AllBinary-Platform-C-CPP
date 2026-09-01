@@ -53,11 +53,10 @@
         #include "ViewPositionEvent.h"
 
 class ViewPositionEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onChangeEvent(ViewPositionEvent layerManagerEvent);
+    void onChangeEvent(ViewPositionEvent layerManagerEvent);
 
 };
 

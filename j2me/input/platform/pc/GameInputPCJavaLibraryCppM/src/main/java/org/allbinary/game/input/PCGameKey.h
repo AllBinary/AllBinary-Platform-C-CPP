@@ -46,13 +46,12 @@
 #include "InputFactory.h"
 
 class PCGameKey: public Input {
-        
 
-    public static string getString(int32_t keyCode);
+    public: static std::string getString(int32_t keyCode);
 
- constructor (int32_t keyCode, string name);
+: PCGameKey(int32_t keyCode, std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

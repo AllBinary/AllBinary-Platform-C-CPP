@@ -75,32 +75,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "QuoteRequestEntityInterface.h"
 
-class QuoteRequestEntity: public AbSqlBean: public QuoteRequestEntityInterface {
-        
+class QuoteRequestEntity: public AbSqlBean, public QuoteRequestEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "quoterequest";
+    private: const std::string tableName = "quoterequest";
 
-public constructor ();
+public: QuoteRequestEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
                 //@Throws(Exception.constructor)
             
-    public QuoteRequest get(string userName, int32_t id);
+    public: QuoteRequest get(std::string userName, int32_t id);
 
-    public Vector getIds(string userName);
+    public: Vector getIds(std::string userName);
 
-    public deleteWhere(string key, string value);
+    public: void deleteWhere(std::string key, std::string value);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
-    public update(string userName, HashMap<any, any> updatedValues);
+    public: void update(std::string userName, HashMap<any, any> updatedValues);
 
 };
 

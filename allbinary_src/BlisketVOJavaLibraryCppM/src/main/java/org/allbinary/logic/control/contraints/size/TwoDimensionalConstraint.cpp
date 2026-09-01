@@ -47,46 +47,43 @@
 class TwoDimensionalConstraint
             : public Object
         : public TwoDimensionalConstraintInterface {
-        
 
-    private: widthSizeConstraintInterface: SizeConstraintInterface;
+    private: SizeConstraintInterface widthSizeConstraintInterface;
 
-    private: heightSizeConstraintInterface: SizeConstraintInterface;
+    private: SizeConstraintInterface heightSizeConstraintInterface;
 
-public constructor (Node node){
-
-            super();
-        }
+public: TwoDimensionalConstraint(Node node){
+}
 
 
-    public SizeConstraintInterface getHeight(){
+    public: SizeConstraintInterface getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.heightSizeConstraintInterface;
+                        return this->heightSizeConstraintInterface;
     
 }
 
 
-    public SizeConstraintInterface getWidth(){
+    public: SizeConstraintInterface getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.widthSizeConstraintInterface;
+                        return this->widthSizeConstraintInterface;
     
 }
 
 
-    public setHeight(SizeConstraintInterface heightSizeConstraintInterface){
-this.heightSizeConstraintInterface= heightSizeConstraintInterface;
+    public: void setHeight(SizeConstraintInterface heightSizeConstraintInterface){
+this->heightSizeConstraintInterface= heightSizeConstraintInterface;
     
 }
 
 
-    public setWidth(SizeConstraintInterface widthSizeConstraintInterface){
-this.widthSizeConstraintInterface= widthSizeConstraintInterface;
+    public: void setWidth(SizeConstraintInterface widthSizeConstraintInterface){
+this->widthSizeConstraintInterface= widthSizeConstraintInterface;
     
 }
 

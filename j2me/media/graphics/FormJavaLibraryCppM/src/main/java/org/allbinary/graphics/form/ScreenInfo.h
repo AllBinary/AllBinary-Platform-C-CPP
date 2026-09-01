@@ -31,19 +31,18 @@
 class ScreenInfo
             : public Object
          {
-        
 
-    private: static const instance: ScreenInfo = new ScreenInfo();
+    private: static ScreenInfo instance() { return ScreenInfo(); }
 
-    public static ScreenInfo getInstance();
+    public: static ScreenInfo getInstance();
 
-    public const SMALL_WIDTH: int32_t = 320;
+    public: const int32_t SMALL_WIDTH = 320;
 
-    public const SMALL_HEIGHT: int32_t = 240;
+    public: const int32_t SMALL_HEIGHT = 240;
 
-    public const MEDIUM_WIDTH: int32_t = 800;
+    public: const int32_t MEDIUM_WIDTH = 800;
 
-    public const MEDIUM_HEIGHT: int32_t = 600;
+    public: const int32_t MEDIUM_HEIGHT = 600;
 
 };
 

@@ -51,9 +51,8 @@
 class DemoGameMidletState
             : public Object
          {
-        
 
-public constructor ();
+public: DemoGameMidletState();
 
 };
 

@@ -53,27 +53,26 @@
 class AndroidDebug
             : public Object
         : public DebugInterface {
-        
 
-    private: startTime: int64_t = Long.MAX_VALUE;
+    private: int64_t startTime = Long::MAX_VALUE;
 
-    private: running: bool = false;
+    private: bool running = false;
 
-    private: bufferSize: int32_t = 32 *1024 *1024;
+    private: int32_t bufferSize = 32 *1024 *1024;
 
-    public start();
+    public: void start();
 
-    public stop();
+    public: void stop();
 
-    public int64_t getMaxTime();
+    public: int64_t getMaxTime();
 
-    setStartTime(int64_t startTime);
+    private: void setStartTime(int64_t startTime);
 
-    public int64_t getStartTime();
+    public: int64_t getStartTime();
 
-    setRunning(bool running);
+    private: void setRunning(bool running);
 
-    public bool isRunning();
+    public: bool isRunning();
 
 };
 

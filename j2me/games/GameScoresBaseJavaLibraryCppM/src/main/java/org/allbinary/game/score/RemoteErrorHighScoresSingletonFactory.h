@@ -49,11 +49,10 @@
 class RemoteErrorHighScoresSingletonFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: HighScores = new HighScores("Loading", "Remote High Scores Did Not Load", CommonStrings.getInstance()!.PERIODS);
+    private: static const HighScores SINGLETON = HighScores("Loading", "Remote High Scores Did Not Load", CommonStrings::getInstance().PERIODS);
 
-    public static HighScores getInstance();
+    public: static HighScores getInstance();
 
 };
 

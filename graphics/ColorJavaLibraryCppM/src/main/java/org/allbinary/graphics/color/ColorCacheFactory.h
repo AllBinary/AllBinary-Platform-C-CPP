@@ -66,18 +66,17 @@
 class ColorCacheFactory
             : public Object
          {
-        
 
-    private: static cacheInterface: AutomaticCacheInterface = 
-                null
+    private: static AutomaticCacheInterface cacheInterface = 
+                nullptr
             ;
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public static AutomaticCacheInterface getInstance();
+    public: static AutomaticCacheInterface getInstance();
 
-private constructor ();
+private: ColorCacheFactory();
 
 };
 

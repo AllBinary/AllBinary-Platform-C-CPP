@@ -57,56 +57,53 @@
 class Feature
             : public Object
          {
-        
 
-    private: static hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public static Feature getInstance(string name){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Feature.hashtable.get(name) as Feature;
-    
-}
-
-
-    static add(string name, Feature gameFeature){
-Feature.hashtable.put(name, gameFeature);
-    
-}
-
-
-    private: const name: string;
-
-public constructor (string name){
-
-            super();
-        this.name= name;
-    
-Feature.add(name, this);
-    
-ChangedGameFeatureListener.getInstance()!.add(this);
-    
-}
-
-
-    public string toString(){
+    public: static Feature getInstance(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();;
+                        return Feature::hashtable.get(name) as Feature;
     
 }
 
 
-    public string getName(){
+    private: static void add(std::string name, Feature gameFeature){
+Feature::hashtable.put(name, gameFeature);
+    
+}
+
+
+    private: std::string name;
+
+public: Feature(std::string name){
+this->name= name;
+    
+Feature::add(name, this);
+    
+ChangedGameFeatureListener::getInstance().add(this);
+    
+}
+
+
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->getName();;
+    
+}
+
+
+    public: std::string getName(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->name;
     
 }
 

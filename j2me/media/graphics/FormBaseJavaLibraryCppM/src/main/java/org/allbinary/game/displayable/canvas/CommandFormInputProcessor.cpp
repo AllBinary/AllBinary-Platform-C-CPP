@@ -120,45 +120,44 @@
 #include "CommandRunnable.h"
 //In general allow scrolling of the menu and selection the center item
 class CommandFormInputProcessor: public BasicMenuInputProcessor {
-        
 
-    private: const MOTION_GESTURE_SOURCE_ID: int32_t = GameKeyEventFactory.getInstance()!.MOTION_GESTURE_SOURCE_ID;
+    private: const int32_t MOTION_GESTURE_SOURCE_ID = GameKeyEventFactory::getInstance().MOTION_GESTURE_SOURCE_ID;
 
-    private: const CLICK_DELAY: int32_t = 150;
+    private: const int32_t CLICK_DELAY = 150;
 
-    private: const clickTimeHelper: TimeDelayHelper = new TimeDelayHelper(this.CLICK_DELAY);
+    private: const TimeDelayHelper clickTimeHelper = TimeDelayHelper(this->CLICK_DELAY);
 
-    private: const DOUBLE_CLICK_DELAY: int32_t = 1200;
+    private: const int32_t DOUBLE_CLICK_DELAY = 1200;
 
-    private: const doubleClickTimeHelper: TimeDelayHelper = new TimeDelayHelper(this.DOUBLE_CLICK_DELAY);
+    private: const TimeDelayHelper doubleClickTimeHelper = TimeDelayHelper(this->DOUBLE_CLICK_DELAY);
 
-    const isSingleKeyProcessing: bool = InputFeatureFactory.getInstance()!.isSingleKeyProcessing()!;
+    protected: const bool isSingleKeyProcessing = InputFeatureFactory::getInstance().isSingleKeyProcessing();
 
-    private: form: ScrollSelectionForm;
+    private: ScrollSelectionForm form;
 
-    private: hasPressed: bool = false;
+    private: bool hasPressed = false;
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form){
+public: CommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, MyCanvas gameCanvas, ScrollSelectionForm form){
             super(gameKeyEventList, playerInputId, gameCanvas);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.form= form;
+this->form= form;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInput(int32_t key){
+    public: int32_t processInput(int32_t key){
 
-                        if(key == Canvas.LEFT || key == Canvas.RIGHT || key == Canvas.UP || key == Canvas.DOWN)
+                        if(key == Canvas::LEFT || key == Canvas::RIGHT || key == Canvas::UP || key == Canvas::DOWN)
                         
                                     {
-                                    PrimaryPlayerQueueFactory.getInstance()!.add(SelectSound.getInstance());
+                                    PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
     
-this.form.processInputKey(key);
+this->form.processInputKey(key);
     
 
 
@@ -170,16 +169,16 @@ this.form.processInputKey(key);
                                     }
                                 
                              else 
-                        if(key == Canvas.FIRE)
+                        if(key == Canvas::FIRE)
                         
                                     {
-                                    PrimaryPlayerQueueFactory.getInstance()!.add(SelectSound.getInstance());
+                                    PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.processCommand();;
+                        return this->processCommand();;
     
 
                                     }
@@ -193,40 +192,40 @@ this.form.processInputKey(key);
 }
 
 
-    private: const PROCESS_COMMAND: string = "processCommand";
+    private: const std::string PROCESS_COMMAND = "processCommand";
 
-    int32_t processCommand(){
+    private: int32_t processCommand(){
 
-    commandCurrentSelectionForm: CommandCurrentSelectionForm = this.form as CommandCurrentSelectionForm;;
+    CommandCurrentSelectionForm commandCurrentSelectionForm = this->form as CommandCurrentSelectionForm;;
     
 
-    command: Command = commandCurrentSelectionForm!.getSelectedCommand()!;;
+    Command command = commandCurrentSelectionForm.getSelectedCommand();;
     
-this.logUtil!.putF(command.toString(), this, this.PROCESS_COMMAND);
-    
-
-    features: Features = Features.getInstance()!;;
+this->logUtil.putF(command.toString(), this, this->PROCESS_COMMAND);
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(SWTUtil.isSWT && features.isFeature(openGLFeatureFactory!.OPENGL) && command != GameCommandsFactory.getInstance()!.EXIT_COMMAND)
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
+    
+
+                        if(SWTUtil::isSWT && features.isFeature(openGLFeatureFactory.OPENGL) && command != GameCommandsFactory::getInstance().EXIT_COMMAND)
                         
                                     {
-                                    new CommandRunnable(this, command).run();
+                                    CommandRunnable(this, command).run();
     
 
                                     }
                                 
                         else {
-                            PrimaryThreadPool.getInstance()!.runTask(new CommandRunnable(this, command));
+                            PrimaryThreadPool::getInstance().runTask(CommandRunnable(this, command));
     
 
                         }
                             
 
-                        if(command == GameCommandsFactory.getInstance()!.QUIT_COMMAND)
+                        if(command == GameCommandsFactory::getInstance().QUIT_COMMAND)
                         
                                     {
                                     
@@ -253,41 +252,41 @@ this.logUtil!.putF(command.toString(), this, this.PROCESS_COMMAND);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList(){
+    public: int32_t processInputList(){
 
         try {
             
-    motionInputsIndex: int32_t = this.processMotionInputs()!;;
+    int32_t motionInputsIndex = this->processMotionInputs();;
     
 
-    list: BasicArrayList = this.getGameKeyEventList()!;;
+    BasicArrayList list = this->getGameKeyEventList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    key: int32_t = 0;;
+    int32_t key = 0;;
     
 
-    gameKeyEvent: GameKeyEvent;;
+    GameKeyEvent gameKeyEvent;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 gameKeyEvent= list.objectArray[index]! as GameKeyEvent;
     
-key= gameKeyEvent!.getKey();
+key= gameKeyEvent.getKey();
     
 
-                        if(gameKeyEvent!.getSourceId() != this.MOTION_GESTURE_SOURCE_ID)
+                        if(gameKeyEvent.getSourceId() != this->MOTION_GESTURE_SOURCE_ID)
                         
                                     {
                                     
-                        if(this.processInput(key) == 1)
+                        if(this->processInput(key) == 1)
                         
                                     {
                                     break;
@@ -301,7 +300,7 @@ key= gameKeyEvent!.getKey();
                                 
 }
 
-this.clear();
+this->clear();
     
 
                         if(size > 0 || motionInputsIndex >= 0)
@@ -330,7 +329,7 @@ this.clear();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.PROCESS_INPUT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.PROCESS_INPUT, e);
     
 
 
@@ -345,23 +344,23 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.PR
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processMotionInputs(){
+    public: int32_t processMotionInputs(){
 
-    lastIndex: int32_t = this.motionGestureEventList!.size() -1;;
+    int32_t lastIndex = this->motionGestureEventList.size() -1;;
     
 
                         if(lastIndex >= 0)
                         
                                     {
                                     
-    motionGestureEvent: MotionGestureEvent = this.motionGestureEventList!.objectArray[lastIndex]! as MotionGestureEvent;;
+    MotionGestureEvent motionGestureEvent = this->motionGestureEventList.objectArray[lastIndex]! as MotionGestureEvent;;
     
-this.processMotionInput(motionGestureEvent);
+this->processMotionInput(motionGestureEvent);
     
 
                                     }
                                 
-this.motionGestureEventList!.clear();
+this->motionGestureEventList.clear();
     
 
 
@@ -374,42 +373,42 @@ this.motionGestureEventList!.clear();
 
                 //@Throws(Exception.constructor)
             
-    processMotionInput(MotionGestureEvent motionGestureEvent){
+    protected: void processMotionInput(MotionGestureEvent motionGestureEvent){
 
-    touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!;;
+    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    motionGestureInput: MotionGestureInput = motionGestureEvent!.getMotionGesture()!;;
+    MotionGestureInput motionGestureInput = motionGestureEvent.getMotionGesture();;
     
 
-                        if(motionGestureInput == touchMotionGestureFactory!.RELEASED)
+                        if(motionGestureInput == touchMotionGestureFactory.RELEASED)
                         
                                     {
                                     
-    point: GPoint = motionGestureEvent!.getCurrentPoint()!;;
+    GPoint point = motionGestureEvent.getCurrentPoint();;
     
 
-                        if(this.form.isInForm(point))
+                        if(this->form.isInForm(point))
                         
                                     {
                                     
-    index: int32_t = this.form.getSelectedIndexForPoint(point)!;;
+    int32_t index = this->form.getSelectedIndexForPoint(point);;
     
 
                         if(index !=  -1)
                         
                                     {
-                                    PrimaryPlayerQueueFactory.getInstance()!.add(SelectSound.getInstance());
+                                    PrimaryPlayerQueueFactory::getInstance().add(SelectSound::getInstance());
     
 
-                        if(index == this.form.getSelectedIndex())
+                        if(index == this->form.getSelectedIndex())
                         
                                     {
                                     
-                        if(this.clickTimeHelper!.isTimeTNT())
+                        if(this->clickTimeHelper.isTimeTNT())
                         
                                     {
-                                    this.processCommand();
+                                    this->processCommand();
     
 
                                     }
@@ -418,7 +417,7 @@ this.motionGestureEventList!.clear();
                                     }
                                 
                         else {
-                            this.form.setSelectedIndex(index);
+                            this->form.setSelectedIndex(index);
     
 
                         }
@@ -434,39 +433,39 @@ this.motionGestureEventList!.clear();
                                     }
                                 
 
-                        if(this.hasPressed)
+                        if(this->hasPressed)
                         
                                     {
                                     
-                        if(!this.doubleClickTimeHelper!.isTimeTNT())
+                        if(!this->doubleClickTimeHelper.isTimeTNT())
                         
                                     {
-                                    this.logUtil!.putF("Double Press", this, this.gameInputStrings!.PROCESS_MOTION_INPUT);
+                                    this->logUtil.putF("Double Press", this, this->gameInputStrings.PROCESS_MOTION_INPUT);
     
-this.processCommand();
-    
-
-                                    }
-                                
-this.doubleClickTimeHelper!.delay= this.DOUBLE_CLICK_DELAY;
-    
-this.doubleClickTimeHelper!.setStartTimeTNT();
+this->processCommand();
     
 
                                     }
                                 
-this.hasPressed= false;
+this->doubleClickTimeHelper.delay= this->DOUBLE_CLICK_DELAY;
+    
+this->doubleClickTimeHelper.setStartTimeTNT();
+    
+
+                                    }
+                                
+this->hasPressed= false;
     
 
                                     }
                                 
                              else 
-                        if(motionGestureInput == touchMotionGestureFactory!.PRESSED)
+                        if(motionGestureInput == touchMotionGestureFactory.PRESSED)
                         
                                     {
-                                    this.doubleClickTimeHelper!.delay= 0;
+                                    this->doubleClickTimeHelper.delay= 0;
     
-this.hasPressed= true;
+this->hasPressed= true;
     
 
                                     }
@@ -474,14 +473,14 @@ this.hasPressed= true;
 }
 
 
-    private: const NAME_LABEL: string = " ScrollSelectionForm: ";
+    private: const std::string NAME_LABEL = " ScrollSelectionForm: ";
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(super.toString())!.append(this.NAME_LABEL)!.append(this.form.toString())!.toString();;
+                        return StringMaker().append(super.toString()).append(this->NAME_LABEL).append(this->form.toString()).toString();;
     
 }
 

@@ -54,29 +54,26 @@
 class NullRTSGameLayerPositionFinder
             : public Object
         : public LayerPositionFinderInterface {
-        
 
-    private: static const instance: NullRTSGameLayerPositionFinder = new NullRTSGameLayerPositionFinder();
+    private: static NullRTSGameLayerPositionFinder instance() { return NullRTSGameLayerPositionFinder(); }
 
-    public static NullRTSGameLayerPositionFinder getInstance(){
+    public: static NullRTSGameLayerPositionFinder getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRTSGameLayerPositionFinder.instance;
+                        return NullRTSGameLayerPositionFinder::instance();
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
+protected: NullRTSGameLayerPositionFinder(){
+}
 
 
-    public AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
+    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
 
-    layerInterface: AllBinaryLayer = DropCellPositionHistory.getInstance()!.getLayerInterface(geographicMapCellPosition)!;;
+    AllBinaryLayer layerInterface = DropCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);;
     
 
 

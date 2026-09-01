@@ -45,33 +45,32 @@
 class JvmStatisticsData
             : public Object
          {
-        
 
-    public static const JVM_STATISTICS: string = "JVM_STATISTICS_";
+    public: static const std::string JVM_STATISTICS = "JVM_STATISTICS_";
 
-    public static const NAME: string = JvmStatisticsData.JVM_STATISTICS +"NAME";
+    public: static const std::string NAME = JvmStatisticsData::JVM_STATISTICS +"NAME";
 
-    public static const TOTAL_MEMORY_BYTES: string = JvmStatisticsData.JVM_STATISTICS +"TOTAL_MEMORY_BYTES";
+    public: static const std::string TOTAL_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_BYTES";
 
-    public static const TOTAL_MEMORY_KILOBYTES: string = JvmStatisticsData.JVM_STATISTICS +"TOTAL_MEMORY_KILOBYTES";
+    public: static const std::string TOTAL_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_KILOBYTES";
 
-    public static const TOTAL_MEMORY_MEGABYTES: string = JvmStatisticsData.JVM_STATISTICS +"TOTAL_MEMORY_MEGABYTES";
+    public: static const std::string TOTAL_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"TOTAL_MEMORY_MEGABYTES";
 
-    public static const FREE_MEMORY_BYTES: string = JvmStatisticsData.JVM_STATISTICS +"FREE_MEMORY_BYTES";
+    public: static const std::string FREE_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_BYTES";
 
-    public static const FREE_MEMORY_KILOBYTES: string = JvmStatisticsData.JVM_STATISTICS +"FREE_MEMORY_KILOBYTES";
+    public: static const std::string FREE_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_KILOBYTES";
 
-    public static const FREE_MEMORY_MEGABYTES: string = JvmStatisticsData.JVM_STATISTICS +"FREE_MEMORY_MEGABYTES";
+    public: static const std::string FREE_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"FREE_MEMORY_MEGABYTES";
 
-    public static const MAX_MEMORY_BYTES: string = JvmStatisticsData.JVM_STATISTICS +"MAX_MEMORY_BYTES";
+    public: static const std::string MAX_MEMORY_BYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_BYTES";
 
-    public static const MAX_MEMORY_KILOBYTES: string = JvmStatisticsData.JVM_STATISTICS +"MAX_MEMORY_KILOBYTES";
+    public: static const std::string MAX_MEMORY_KILOBYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_KILOBYTES";
 
-    public static const MAX_MEMORY_MEGABYTES: string = JvmStatisticsData.JVM_STATISTICS +"MAX_MEMORY_MEGABYTES";
+    public: static const std::string MAX_MEMORY_MEGABYTES = JvmStatisticsData::JVM_STATISTICS +"MAX_MEMORY_MEGABYTES";
 
-    public static const NUMBER_OF_THREADS: string = JvmStatisticsData.JVM_STATISTICS +"NUMBER_OF_THREADS";
+    public: static const std::string NUMBER_OF_THREADS = JvmStatisticsData::JVM_STATISTICS +"NUMBER_OF_THREADS";
 
-private constructor ();
+private: JvmStatisticsData();
 
 };
 

@@ -43,33 +43,32 @@
 class AuthorizationTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: AuthorizationTypeFactory = new AuthorizationTypeFactory();
+    private: static AuthorizationTypeFactory instance() { return AuthorizationTypeFactory(); }
 
-    public static AuthorizationTypeFactory getInstance(){
+    public: static AuthorizationTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AuthorizationTypeFactory.instance;
+                        return AuthorizationTypeFactory::instance();
     
 }
 
 
-    public const NONE: AuthorizationType = new AuthorizationType("None");
+    public: const AuthorizationType NONE = AuthorizationType("None");
 
-    public const VOICE: AuthorizationType = new AuthorizationType("Voice");
+    public: const AuthorizationType VOICE = AuthorizationType("Voice");
 
-    public const RETINAL: AuthorizationType = new AuthorizationType("Retinal");
+    public: const AuthorizationType RETINAL = AuthorizationType("Retinal");
 
-    public const IMAGE: AuthorizationType = new AuthorizationType("Image");
+    public: const AuthorizationType IMAGE = AuthorizationType("Image");
 
-    public const DNA: AuthorizationType = new AuthorizationType("DNA");
+    public: const AuthorizationType DNA = AuthorizationType("DNA");
 
-    public const PRINT: AuthorizationType = new AuthorizationType("Print");
+    public: const AuthorizationType PRINT = AuthorizationType("Print");
 
-    public const CHIP: AuthorizationType = new AuthorizationType("Chip");
+    public: const AuthorizationType CHIP = AuthorizationType("Chip");
 
 };
 

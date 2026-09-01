@@ -73,29 +73,28 @@
 class CategoryAbstractFactory
             : public Object
         : public CategoryFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor ();
+public: CategoryAbstractFactory();
 
-    public CategoryInterface getRootInstance();
+    public: CategoryInterface getRootInstance();
 
-    public CategoryInterface getRootInstance(AbPath categoryAbPath);
+    public: CategoryInterface getRootInstance(AbPath categoryAbPath);
 
-    public CategoryInterface getRootInstanceFromNode(Node node);
+    public: CategoryInterface getRootInstanceFromNode(Node node);
 
-    public CategoryInterface getInstance(string categoryName);
+    public: CategoryInterface getInstance(std::string categoryName);
 
-    public CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, string categoryName);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, std::string categoryName);
 
-    public CategoryInterface getInstance(Node node);
+    public: CategoryInterface getInstance(Node node);
 
-    public CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, Node node);
 
-    public CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
+    public: CategoryInterface getInstance(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, HashMap<any, any> categoryPropertiesHashMap);
 
 };
 

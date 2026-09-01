@@ -48,17 +48,16 @@
 class TransformInfoDataData
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoDataData = new TransformInfoDataData();
+    private: static TransformInfoDataData instance() { return TransformInfoDataData(); }
 
-    public static TransformInfoDataData getInstance();
+    public: static TransformInfoDataData getInstance();
 
-private constructor ();
+private: TransformInfoDataData();
 
-    public const UNCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.UNCRYPTED_EXTENSION;
+    public: const std::string UNCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().UNCRYPTED_EXTENSION;
 
-    public const ENCRYPTED_EXTENSION: string = CommonDataFileStrings.getInstance()!.ENCRYPTED_EXTENSION;
+    public: const std::string ENCRYPTED_EXTENSION = CommonDataFileStrings::getInstance().ENCRYPTED_EXTENSION;
 
 };
 

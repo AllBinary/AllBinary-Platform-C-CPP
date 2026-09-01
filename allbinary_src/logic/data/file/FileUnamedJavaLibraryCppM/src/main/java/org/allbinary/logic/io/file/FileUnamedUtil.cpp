@@ -45,29 +45,28 @@
 class FileUnamedUtil
             : public Object
          {
-        
 
-    private: static const instance: FileUnamedUtil = new FileUnamedUtil();
+    private: static FileUnamedUtil instance() { return FileUnamedUtil(); }
 
-    public static FileUnamedUtil getInstance(){
+    public: static FileUnamedUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileUnamedUtil.instance;
+                        return FileUnamedUtil::instance();
     
 }
 
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    public string process(string string){
+    public: std::string process(std::string string){
 
-    simplifiedString: string = string.toLowerCase()!;;
+    std::string simplifiedString = string.toLowerCase();;
     
-simplifiedString= simplifiedString!.replace(this.commonSeps!.SPACE, this.commonSeps!.UNDERSCORE);
+simplifiedString= simplifiedString.replace(this->commonSeps.SPACE, this->commonSeps.UNDERSCORE);
     
-simplifiedString= simplifiedString!.replace(this.commonSeps!.DASH, this.commonSeps!.UNDERSCORE);
+simplifiedString= simplifiedString.replace(this->commonSeps.DASH, this->commonSeps.UNDERSCORE);
     
 
 

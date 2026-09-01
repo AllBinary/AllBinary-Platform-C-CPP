@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_COMMANDCURRENTSELECTIONFORM_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -92,48 +94,47 @@
         #include "ScrollCurrentSelectionForm.h"
 #include "ItemPaintableFactory.h"
 
-class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm: public UpdateMyFontInterface {
-        
+class CommandCurrentSelectionForm: public ScrollCurrentSelectionForm, public UpdateMyFontInterface {
 
-    const selectedAnimationArray: std::vector<Animation> = new Array(16);
+    protected: const std::vector<Animation> selectedAnimationArray = new Array(16);
 
-    const unSelectedAnimationArray: std::vector<Animation> = new Array(16);
+    protected: const std::vector<Animation> unSelectedAnimationArray = new Array(16);
 
-public constructor (string title, std::vector<ABCustomItem> items, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: CommandCurrentSelectionForm(std::string title, std::vector<ABCustomItem> items, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    initAnimations();
+    private: void initAnimations();
 
-    addAll(std::vector<ABCustomItem> items);
+    private: void addAll(std::vector<ABCustomItem> items);
 
-    addAt(int32_t index, ABCustomItem item);
+    private: void addAt(int32_t index, ABCustomItem item);
 
-    updateAll(Graphics graphics, std::vector<ABCustomItem> items);
+    private: void updateAll(Graphics graphics, std::vector<ABCustomItem> items);
 
-    updateAt(int32_t index, ABCustomItem item);
+    private: void updateAt(int32_t index, ABCustomItem item);
 
-    public Command getSelectedCommand();
+    public: Command getSelectedCommand();
 
-    public int32_t append(ABCustomItem item);
+    public: int32_t append(ABCustomItem item);
 
-    public delete(int32_t itemNum);
+    public: void delete_(int32_t itemNum);
 
-    public deleteAll();
+    public: void deleteAll();
 
-    public insert(int32_t itemNum, ABCustomItem item);
+    public: void insert(int32_t itemNum, ABCustomItem item);
 
-    public set(int32_t itemNum, ABCustomItem item);
+    public: void set(int32_t itemNum, ABCustomItem item);
 
-    public paint(Graphics graphics);
-
-                //@Throws(Exception.constructor)
-            
-    public int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+    public: void paint(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+    public: int32_t paintItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
+
+                //@Throws(Exception.constructor)
+            
+    public: int32_t paintUnselectedItem(Graphics graphics, int32_t index, ABCustomItem item, int32_t x, int32_t y);
 
 };
 

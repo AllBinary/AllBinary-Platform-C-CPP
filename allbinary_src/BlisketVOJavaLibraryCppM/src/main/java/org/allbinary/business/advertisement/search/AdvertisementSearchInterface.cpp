@@ -53,7 +53,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdvertisementSearchInterface {
-        
 
     AdvertisementWebsiteInterface getWebSite()
 
@@ -69,17 +68,17 @@ class AdvertisementSearchInterface {
 
     HashMap<any, any> getSearchParams()
 
-    setCategory(AdvertisementCategoryInterface advertisementCategoryInterface)
+    void setCategory(AdvertisementCategoryInterface advertisementCategoryInterface)
 
-    setSizeConstraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface)
+    void setSizeConstraints(TwoDimensionalConstraintInterface twoDimensionConstraintsInterface)
 
-    setPricingConstraints(PriceConstraintInterface priceConstraintInterface)
+    void setPricingConstraints(PriceConstraintInterface priceConstraintInterface)
 
-    setPageNumber(int32_t pageNumber)
+    void setPageNumber(int32_t pageNumber)
 
-    setProductsPerPage(int32_t productsPerPage)
+    void setProductsPerPage(int32_t productsPerPage)
 
-    setSearchParams(HashMap<any, any> columnAndKeywordHashMap)
+    void setSearchParams(HashMap<any, any> columnAndKeywordHashMap)
 
 };
 

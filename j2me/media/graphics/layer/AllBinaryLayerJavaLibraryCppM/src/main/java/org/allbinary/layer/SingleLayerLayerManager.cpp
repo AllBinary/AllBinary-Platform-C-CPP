@@ -40,10 +40,9 @@
 #include "LayerManagerNoDebug.h"
 
 class SingleLayerLayerManager: public LayerManager {
-        
 
-public constructor (){
-            super(LayerManagerNoDebug.getInstance());
+public: SingleLayerLayerManager(){
+            super(LayerManagerNoDebug::getInstance());
                     
 
                             //For kotlin this is before the body of the constructor.

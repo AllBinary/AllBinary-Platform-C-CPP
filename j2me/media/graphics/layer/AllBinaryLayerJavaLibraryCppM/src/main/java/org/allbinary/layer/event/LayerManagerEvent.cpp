@@ -59,58 +59,57 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LayerManagerEvent: public AllBinaryEventObject {
-        
 
-    private: layerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    private: const crud: string;
+    private: std::string crud;
 
-public constructor (LayerManager layerManager, string crud){
+public: LayerManagerEvent(LayerManager layerManager, std::string crud){
             super(layerManager);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.crud= crud;
+this->crud= crud;
     
 }
 
 
-    public AllBinaryLayer getLayerInterface(){
+    public: AllBinaryLayer getLayerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerInterface;
+                        return this->layerInterface;
     
 }
 
 
-    public setLayerInterface(AllBinaryLayer layerInterface){
-this.layerInterface= layerInterface;
+    public: void setLayerInterface(AllBinaryLayer layerInterface){
+this->layerInterface= layerInterface;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("LayerManagerEvent: \n");
+stringBuffer.append("LayerManagerEvent: \n");
     
-stringBuffer!.append("LayerInterface: ");
+stringBuffer.append("LayerInterface: ");
     
-stringBuffer!.append(this.getLayerInterface()!.toString());
+stringBuffer.append(this->getLayerInterface().toString());
     
-stringBuffer!.append("\nCRUD: ");
+stringBuffer.append("\nCRUD: ");
     
-stringBuffer!.append(this.crud.toString());
+stringBuffer.append(this->crud.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

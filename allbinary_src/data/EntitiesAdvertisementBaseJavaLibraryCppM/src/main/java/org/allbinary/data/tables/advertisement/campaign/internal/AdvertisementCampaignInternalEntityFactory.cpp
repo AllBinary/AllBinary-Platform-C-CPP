@@ -52,13 +52,12 @@
 class AdvertisementCampaignInternalEntityFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "org.allbinary.data.tables.AdvertisementCampaignEntity";
+    private: static const std::string CLASSNAME = "org.allbinary.data.tables.AdvertisementCampaignEntity";
 
-    public static AdvertisementCampaignInternalEntityInterface getInstance(){
+    public: static AdvertisementCampaignInternalEntityInterface getInstance(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -66,20 +65,20 @@ class AdvertisementCampaignInternalEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AdvertisementCampaignInternalEntity() as AdvertisementCampaignInternalEntityInterface;
+                        return AdvertisementCampaignInternalEntity() as AdvertisementCampaignInternalEntityInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, "AdvertisementCampaignEntityFactory", commonStrings!.GET_INSTANCE, e);
+logUtil.put(commonStrings.EXCEPTION, "AdvertisementCampaignEntityFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -95,10 +94,8 @@ logUtil!.put(commonStrings!.EXCEPTION, "AdvertisementCampaignEntityFactory", com
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AdvertisementCampaignInternalEntityFactory(){
+}
 
 
 };

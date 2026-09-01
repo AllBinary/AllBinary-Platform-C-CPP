@@ -68,27 +68,26 @@
 class InventoryItemViewParentTagHelper
             : public Object
          {
-        
 
-    private: static const instance: InventoryItemViewParentTagHelper = new InventoryItemViewParentTagHelper();
+    private: static InventoryItemViewParentTagHelper instance() { return InventoryItemViewParentTagHelper(); }
 
-    public static InventoryItemViewParentTagHelper getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public InventoryItemView getInventoryItemView(HelperTag inventoryTag);
+    public: static InventoryItemViewParentTagHelper getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public DownloadableInventoryItemView getDownloadableInventoryItemView(HelperTag inventoryTag);
+    public: InventoryItemView getInventoryItemView(HelperTag inventoryTag);
 
                 //@Throws(Exception.constructor)
             
-    public RequestMapInterface getRequestMapInterface(HelperTag inventoryTag);
+    public: DownloadableInventoryItemView getDownloadableInventoryItemView(HelperTag inventoryTag);
 
                 //@Throws(Exception.constructor)
             
-    public checkForValidationViewHelper(any = {} helperObject);
+    public: RequestMapInterface getRequestMapInterface(HelperTag inventoryTag);
+
+                //@Throws(Exception.constructor)
+            
+    public: void checkForValidationViewHelper(Object* helperObject);
 
 };
 

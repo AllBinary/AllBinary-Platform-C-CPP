@@ -42,9 +42,8 @@
         #include "AbeClientInformation.h"
 
 class TestClientInformation: public AbeClientInformation {
-        
 
-public constructor ();
+public: TestClientInformation();
 
 };
 

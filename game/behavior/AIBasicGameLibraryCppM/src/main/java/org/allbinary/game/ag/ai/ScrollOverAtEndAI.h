@@ -58,13 +58,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScrollOverAtEndAI: public BasicAI {
-        
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: ScrollOverAtEndAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

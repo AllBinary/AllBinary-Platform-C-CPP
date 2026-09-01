@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_DBWORKFLOWFACTORY_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_DBWORKFLOWFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -72,19 +74,18 @@
 class DbWorkFlowFactory
             : public Object
          {
-        
 
-    private: static const instance: DbWorkFlowFactory = new DbWorkFlowFactory();
+    private: static DbWorkFlowFactory instance() { return DbWorkFlowFactory(); }
 
-    public static DbWorkFlowFactory getInstance();
+    public: static DbWorkFlowFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: DbWorkFlowFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap);
+    public: WorkFlowInterface getInstance(AbeClientInformationInterface abeClientInformation, HashMap<any, any> hashMap);
 
 };
 

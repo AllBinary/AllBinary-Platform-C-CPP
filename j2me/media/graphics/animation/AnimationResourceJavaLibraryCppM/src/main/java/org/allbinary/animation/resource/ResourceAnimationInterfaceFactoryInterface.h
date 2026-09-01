@@ -52,11 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ResourceAnimationInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(string resource);
+    BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource);
 
 };
 

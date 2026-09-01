@@ -64,45 +64,42 @@
         #include "TableTag.h"
 
 class ShippingAddressTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: value: string;
+    private: std::string value;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new ShippingAddressHelperFactory());
+public: ShippingAddressTag(){
+this->setTagHelperFactory(ShippingAddressHelperFactory());
     
-this.setTagRequestHelperFactory(new ShippingAddressHelperFactory());
+this->setTagRequestHelperFactory(ShippingAddressHelperFactory());
     
 }
 
 
-    public setValue(string value){
-this.value= value;
+    public: void setValue(std::string value){
+this->value= value;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string set(){
+    private: std::string set(){
 
         try {
             
-    anyType: any = new ShippingAddressHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = ShippingAddressHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("set", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("set", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -126,13 +123,13 @@ this.value= value;
 /* catch(e) 
             {
 
-    error: string = "Failed to set Shipping Address";;
+    std::string error = "Failed to set Shipping Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "set()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "set()", e);
     
 
                                     }
@@ -150,21 +147,21 @@ this.value= value;
 
                 //@Throws(LicensingException.constructor)
             
-    string setToBillingAddress(){
+    private: std::string setToBillingAddress(){
 
         try {
             
-    anyType: any = new ShippingAddressHelperFactory().getInstance(this.getPropertiesHashMap(), this.pageContext)!;;
+    Object* anyType = ShippingAddressHelperFactory().getInstance(this->getPropertiesHashMap(), this->pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("setToBillingAddress", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("setToBillingAddress", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -188,13 +185,13 @@ this.value= value;
 /* catch(e) 
             {
 
-    error: string = "Failed Setting Shipping address to Billing Address";;
+    std::string error = "Failed Setting Shipping address to Billing Address";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setShippingAddressToBillingAddress()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setShippingAddressToBillingAddress()", e);
     
 
                                     }
@@ -212,39 +209,39 @@ this.value= value;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(ShippingAddressData.SELECT) == 0)
+                        if(this->getCommand().compareTo(ShippingAddressData::SELECT) == 0)
                         
                                     {
-                                    this.set();
+                                    this->set();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(ShippingAddressData.SETTOBILLINGADDRESS) == 0)
+                        if(this->getCommand().compareTo(ShippingAddressData::SETTOBILLINGADDRESS) == 0)
                         
                                     {
-                                    this.setToBillingAddress();
+                                    this->setToBillingAddress();
     
 
                                     }
@@ -275,7 +272,7 @@ this.value= value;
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -288,7 +285,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

@@ -69,36 +69,35 @@
 #include "GameCommandCanvas.h"
 
 class ImmediateCommandFormInputProcessor: public CommandFormInputProcessor {
-        
 
-    private: const timeHelper: TimeDelayHelper = new TimeDelayHelper(25);
+    private: const TimeDelayHelper timeHelper = TimeDelayHelper(25);
 
-    gameCommandCanvas: GameCommandCanvas;
+    protected: GameCommandCanvas gameCommandCanvas;
 
-public constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form){
+public: ImmediateCommandFormInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, GameCommandCanvas gameCommandCanvas, ScrollSelectionForm form){
             super(gameKeyEventList, playerInputId, gameCommandCanvas, form);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.gameCommandCanvas= gameCommandCanvas;
+this->gameCommandCanvas= gameCommandCanvas;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
 
         try {
             super.onPressGameKeyEvent(gameKeyEvent);
     
 
-                        if(this.timeHelper!.isTimeTNT())
+                        if(this->timeHelper.isTimeTNT())
                         
                                     {
-                                    this.processInputList();
+                                    this->processInputList();
     
-this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
+this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -107,7 +106,7 @@ this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.ON_PRESS_GAME_KEY, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_PRESS_GAME_KEY, e);
     
 }
 
@@ -115,18 +114,18 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.ON
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
 
         try {
             super.onDownGameKeyEvent(gameKeyEvent);
     
 
-                        if(this.timeHelper!.isTimeTNT())
+                        if(this->timeHelper.isTimeTNT())
                         
                                     {
-                                    this.processInputList();
+                                    this->processInputList();
     
-this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
+this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -135,7 +134,7 @@ this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.ON_DOWN_GAME_KEY, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_DOWN_GAME_KEY, e);
     
 }
 
@@ -143,18 +142,18 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.ON
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
 
         try {
             super.onUpGameKeyEvent(gameKeyEvent);
     
 
-                        if(this.timeHelper!.isTimeTNT())
+                        if(this->timeHelper.isTimeTNT())
                         
                                     {
-                                    this.processInputList();
+                                    this->processInputList();
     
-this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
+this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -163,25 +162,25 @@ this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.ON_UP_GAME_KEY, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.ON_UP_GAME_KEY, e);
     
 }
 
 }
 
 
-    public onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
 
         try {
             super.onMotionGestureEvent(motionGestureEvent);
     
 
-                        if(this.timeHelper!.isTimeTNT())
+                        if(this->timeHelper.isTimeTNT())
                         
                                     {
-                                    this.processInputList();
+                                    this->processInputList();
     
-this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
+this->gameCommandCanvas.repaintBehavior.onChangeRepaint(this->getCanvas());
     
 
                                     }
@@ -190,7 +189,7 @@ this.gameCommandCanvas!.repaintBehavior!.onChangeRepaint(this.getCanvas());
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "onMotionGestureEvent", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, "onMotionGestureEvent", e);
     
 }
 

@@ -46,13 +46,12 @@
 class ImageCacheFactory
             : public Object
          {
-        
 
-    private: static const IMAGE_CACHE: ImageCache = new ImageCache();
+    private: static const ImageCache IMAGE_CACHE = ImageCache();
 
-    public static ImageCache getInstance();
+    public: static ImageCache getInstance();
 
-    public static init();
+    public: static void init();
 
 };
 

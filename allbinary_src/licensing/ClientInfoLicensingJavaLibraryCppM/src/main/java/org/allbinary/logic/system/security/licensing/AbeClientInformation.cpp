@@ -77,11 +77,10 @@
         #include "ClientInformation.h"
 // This is the information sent to the license server
 class AbeClientInformation: public ClientInformation {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (string name, string version, string specialName, string shortName){
+public: AbeClientInformation(std::string name, std::string version, std::string specialName, std::string shortName){
             super(name, version, specialName, shortName);
                     
 
@@ -90,49 +89,49 @@ public constructor (string name, string version, string specialName, string shor
 }
 
 
-    public init(){
+    public: void init(){
 
         try {
-            this.setOperatingSystemInterface(OperatingSystemFactory.getInstance()!.getOperatingSystemInstance());
+            this->setOperatingSystemInterface(OperatingSystemFactory::getInstance().getOperatingSystemInstance());
     
 
-    licenseInitInfo: LicenseInitInfo = LicenseInitInfoUtil.getInstance()!.read()!;;
+    LicenseInitInfo licenseInitInfo = LicenseInitInfoUtil::getInstance().read();;
     
-this.setLicenseId(licenseInitInfo!.getLicenseId());
+this->setLicenseId(licenseInitInfo.getLicenseId());
     
-this.setLicenseServers(licenseInitInfo!.getServerList());
-    
-
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+this->setLicenseServers(licenseInitInfo.getServerList());
     
 
-                        if(stringValidationUtil!.isEmpty(this.getLicenseId()))
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(stringValidationUtil.isEmpty(this->getLicenseId()))
                         
                                     {
                                     
-    NONE: string = "No License Id";;
+    std::string NONE = "No License Id";;
     
-this.setLicenseId(NONE);
+this->setLicenseId(NONE);
     
 
                                     }
                                 
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.put(new StringMaker().append("Special Name: ")!.append(this.getSpecialName())!.toString(), this, commonStrings!.CONSTRUCTOR);
+PreLogUtil::put(StringMaker().append("Special Name: ").append(this->getSpecialName()).toString(), this, commonStrings.CONSTRUCTOR);
     
 
                 //: 
 } catch(e) 
             {
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Throwable.h"
@@ -50,46 +52,44 @@
 
 class InterfaceCastProxy
             : public Object
-        : public java.lang.reflect.InvocationHandler {
-        
+        : public java::lang::reflect::InvocationHandler {
 
-    public static any newInstance(any = {} anyType){
+    public: static Object* newInstance(Object* anyType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Proxy.newProxyInstance(anyType!.constructor.namegetClassLoader(), anyType!.constructor.name.getInterfaces(), new InterfaceCastProxy(anyType));;
+                        return Proxy::newProxyInstance(anyType->constructor.namegetClassLoader(), anyType->constructor.name.getInterfaces(), InterfaceCastProxy(anyType));;
     
 }
 
 
-    private: anyType: any;
+    private: Object* anyType;
 
-private constructor (any = {} anyType){
-
-            super();
-        this.anyType= anyType;
+private: InterfaceCastProxy(Object* anyType){
+this->anyType= anyType;
     
 }
 
 
                 //@Throws(Throwable.constructor)
             
-    public any invoke(any = {} proxyObject, Method proxyMethod, std::vector<any> proxyArgs){
+    public: Object* invoke(Object* proxyObject, Method proxyMethod, std::vector<Object*> proxyArgs){
 
-    methodName: string = proxyMethod!.getName()!;;
+    std::string methodName = proxyMethod.getName();;
     
 
-    realMethod: Method = this.anyType!.constructor.name.getMethod(methodName, proxyMethod!.getParameterTypes())!;;
+    Method realMethod = this->anyType.constructor.name.getMethod(methodName, proxyMethod.getParameterTypes());;
     
 
-                        if(!realMethod!.isAccessible())
-                        realMethod!.setAccessible(true)
+                        if(!realMethod.isAccessible())
+                        realMethod.setAccessible(true);
+                                
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return proxyMethod!.invoke(this.anyType, proxyArgs);;
+                        return proxyMethod.invoke(this->anyType, proxyArgs);;
     
 }
 

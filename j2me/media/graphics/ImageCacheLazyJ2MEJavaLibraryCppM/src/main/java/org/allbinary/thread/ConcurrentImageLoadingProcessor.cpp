@@ -58,41 +58,40 @@
 #include "ImageThreadPool.h"
 
 class ConcurrentImageLoadingProcessor: public BaseImageLoadingProcessor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageCache: ImageCache;
+    private: ImageCache imageCache;
 
-    private: const runnable: ABRunnable = new class extends ABRunnable
+    private: const ABRunnable runnable = class extends ABRunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
-            this.setRunning(true);
+            this->setRunning(true);
     
-imageCache!.waitForLoadNow();
+imageCache.waitForLoadNow();
     
-imageCache!.loadImages();
+imageCache.loadImages();
     
-imageCache!.loadRemainingAnimations();
+imageCache.loadRemainingAnimations();
     
-this.setRunning(false);
-    
-
-    progressCanvas: ProgressCanvas = ProgressCanvasFactory.getInstance()!;;
+this->setRunning(false);
     
 
-                        if(!progressCanvas!.inProgress)
+    ProgressCanvas progressCanvas = ProgressCanvasFactory::getInstance();;
+    
+
+                        if(!progressCanvas.inProgress)
                         
                                     {
-                                    progressCanvas!.endFromInitialLazyLoadingComplete();
+                                    progressCanvas.endFromInitialLazyLoadingComplete();
     
 
                                     }
@@ -101,9 +100,9 @@ this.setRunning(false);
                 //: 
 } catch(e) 
             {
-this.setRunning(false);
+this->setRunning(false);
     
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -112,20 +111,18 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
                                 }
                             ;
 
-public constructor (ImageCache imageCache){
-
-            super();
-        this.imageCache= imageCache;
+public: ConcurrentImageLoadingProcessor(ImageCache imageCache){
+this->imageCache= imageCache;
     
 }
 
 
-    public runTask(){
+    public: void runTask(){
 
-                        if(!this.runnable.isRunning())
+                        if(!this->runnable.isRunning())
                         
                                     {
-                                    ImageThreadPool.getInstance()!.runTask(this.runnable);
+                                    ImageThreadPool::getInstance().runTask(this->runnable);
     
 
                                     }

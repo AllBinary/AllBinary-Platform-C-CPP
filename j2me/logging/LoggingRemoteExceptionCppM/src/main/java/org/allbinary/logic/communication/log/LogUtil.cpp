@@ -78,40 +78,37 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-    private: const MESSAGE: string = "message";
+    private: const std::string MESSAGE = "message";
 
-    private: isFirstException: bool = true;
+    private: bool isFirstException = true;
 
-    private: timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(200000);
+    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(200000);
 
-    public abeClientInformation: AbeClientInformationInterface;
+    public: AbeClientInformationInterface abeClientInformation;
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    private: const stringBuffer: StringMaker = new StringMaker();
+    private: const StringMaker stringBuffer = StringMaker();
 
-    /*actual*/ public putL(Log log){
+    /*actual*/ public: void putL(Log log){
 
                         if(log == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -125,39 +122,39 @@ private constructor (){
                                     }
                                 
 
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
-this.put(specialMessage, anyType, functionName, exception);
+this->put(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
 }
 
 
-    /*actual*/ public putF(string specialMessage, string className, string functionName){
+    /*actual*/ public: void putF(std::string specialMessage, std::string className, std::string functionName){
 }
 
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
                         if(exception != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(exception.constructor.name.toString()!.compareTo(XmlRpcException.constructor.toString()!) == 0)
+                        if(exception->constructor.name.toString()!.compareTo(XmlRpcException.constructor.toString()!) == 0)
                         
                                     {
                                     
@@ -170,7 +167,7 @@ this.put(specialMessage, anyType, functionName, exception);
                                     }
                                 
 
-                        if(exception.constructor.name.toString()!.compareTo(IOException.constructor.toString()!) == 0)
+                        if(exception->constructor.name.toString()!.compareTo(IOException.constructor.toString()!) == 0)
                         
                                     {
                                     
@@ -183,62 +180,62 @@ this.put(specialMessage, anyType, functionName, exception);
                                     }
                                 
 
-                        if(this.isFirstException || this.timeDelayHelper!.isTimeTNT())
+                        if(this->isFirstException || this->timeDelayHelper.isTimeTNT())
                         
                                     {
                                     
-    className: string = CommonStrings.getInstance()!.EMPTY;;
+    std::string className = CommonStrings::getInstance().EMPTY;;
     
-this.isFirstException= false;
+this->isFirstException= false;
     
 
                         if(anyType != 
-                                    null
-                                 && anyType!.constructor.name.toString()! != 
-                                    null
+                                    nullptr
+                                 && anyType->constructor.name.toString()! != 
+                                    nullptr
                                 )
                         
                                     {
-                                    className= anyType!.constructor.name.toString()!;
+                                    className= anyType->constructor.name.toString()!;
     
 
                                     }
                                 
 
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
 
         try {
             console.log("Eeeek");
     
 
-                        if(this.abeClientInformation == 
-                                    null
+                        if(this->abeClientInformation == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
                                 
 
-    hashtable: Hashtable<any, any> = this.abeClientInformation!.toHashtable()!;;
+    Hashtable<any, any> hashtable = this->abeClientInformation.toHashtable();;
     
-this.stringBuffer!.delete(0, this.stringBuffer!.length());
+this->stringBuffer.delete(0, this->stringBuffer.length());
     
-this.stringBuffer!.append(message);
+this->stringBuffer.append(message);
     
-this.stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+this->stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-this.stringBuffer!.append(SpecialMessageUtil.getInstance()!.get());
+this->stringBuffer.append(SpecialMessageUtil::getInstance().get());
     
-hashtable.put(this.MESSAGE, this.stringBuffer!.toString());
+hashtable.put(this->MESSAGE, this->stringBuffer.toString());
     
-new XmlRpcRemoteLogClient(this.abeClientInformation).get(hashtable);
+XmlRpcRemoteLogClient(this->abeClientInformation).get(hashtable);
     
 
                 //: 

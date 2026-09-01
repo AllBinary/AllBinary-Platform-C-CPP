@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/business/category/CategoryView.h>
@@ -61,10 +63,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StoreThemeCategoryInterface.h"
 
-class StoreThemeCategoryPathView: public CategoryView: public DomNodeInterface {
-        
+class StoreThemeCategoryPathView: public CategoryView, public DomNodeInterface {
 
-public constructor (StoreThemeCategoryInterface categoryInterface){
+public: StoreThemeCategoryPathView(StoreThemeCategoryInterface categoryInterface){
             super(categoryInterface as StoreThemeCategoryInterface);
                     
 
@@ -75,34 +76,33 @@ public constructor (StoreThemeCategoryInterface categoryInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = super.toXmlNode(document)!;;
+    Node node = super.toXmlNode(document);;
     
 
-    storeThemeCategoryInterface: StoreThemeCategoryInterface = this.getCategoryInterface() as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface() as StoreThemeCategoryInterface;;
     
 
-    themeArray: std::vector<any> = storeThemeCategoryInterface!.getThemes()!.toArray()!;;
+    std::vector<Object*> themeArray = storeThemeCategoryInterface.getThemes().toArray();;
     
 
-    size: int32_t = themeArray!.length
-                ;;
+    int32_t size = themeArray.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    themeValidation: ThemeValidation = themeArray[i]! as ThemeValidation;;
+    ThemeValidation themeValidation = themeArray[i]! as ThemeValidation;;
     
 
-    domNodeInterface: DomNodeInterface = new ThemePropertiesView(themeValidation as ThemeInterface) as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = ThemePropertiesView(themeValidation as ThemeInterface) as DomNodeInterface;;
     
-node.appendChild(domNodeInterface!.toXmlNode(document));
+node.appendChild(domNodeInterface.toXmlNode(document));
     
 }
 

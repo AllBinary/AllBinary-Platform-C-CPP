@@ -41,29 +41,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentInterface {
-        
 
-    setName(string value);
+    void setName(std::string value);
 
-    setType(string value);
+    void setType(std::string value);
 
-    setExpiration(string value);
+    void setExpiration(std::string value);
 
-    setNumber(string value);
+    void setNumber(std::string value);
 
-    string getId();
+    std::string getId();
 
-    string getName();
+    std::string getName();
 
-    string getType();
+    std::string getType();
 
-    string getExpiration();
+    std::string getExpiration();
 
-    string getEncryption();
+    std::string getEncryption();
 
-    string getNumber();
+    std::string getNumber();
 
-    string getLastFour();
+    std::string getLastFour();
 
     bool isDefault();
 

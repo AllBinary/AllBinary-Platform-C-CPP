@@ -49,32 +49,31 @@
 class FilePathUtil
             : public Object
          {
-        
 
-    public static string adjust(string path){
+    public: static std::string adjust(std::string path){
 
-    abPathData: AbPathData = AbPathData.getInstance()!;;
+    AbPathData abPathData = AbPathData::getInstance();;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    filePathData: FilePathData = FilePathData.getInstance()!;;
+    FilePathData filePathData = FilePathData::getInstance();;
     
 
-                        if(stringValidationUtil!.isEmpty(path))
+                        if(stringValidationUtil.isEmpty(path))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return filePathData!.PATH_START;
+                        return filePathData.PATH_START;
     
 
                                     }
                                 
-path= path.replace(abPathData!.SEPARATORCHAR, filePathData!.SEPARATORCHAR);
+path= path.replace(abPathData.SEPARATORCHAR, filePathData.SEPARATORCHAR);
     
 
 
@@ -85,10 +84,8 @@ path= path.replace(abPathData!.SEPARATORCHAR, filePathData!.SEPARATORCHAR);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: FilePathUtil(){
+}
 
 
 };

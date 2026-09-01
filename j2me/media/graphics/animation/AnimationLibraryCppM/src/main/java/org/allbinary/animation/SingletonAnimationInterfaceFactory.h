@@ -62,21 +62,20 @@
 class SingletonAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Animation getInstance(int32_t instanceId);
+public: SingletonAnimationInterfaceFactory(Animation animationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
+
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

@@ -78,27 +78,26 @@
 class AllBinaryFlickerAndroidImageRotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: image: Image = NullImage.NULL_IMAGE;
+    private: Image image = NullImage::NULL_IMAGE;
 
-    private: const angleIncrement: int16_t;
+    private: int16_t angleIncrement;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+public: AllBinaryFlickerAndroidImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    int16_t getAngleIncrement();
+    protected: int16_t getAngleIncrement();
 
-    setImage(Image image);
+    protected: void setImage(Image image);
 
-    Image getImage();
+    protected: Image getImage();
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

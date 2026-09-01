@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_H
         #define ORG_ALLBINARY_EMULATOR_DEVICE_TRUETYPEFONTUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/RuntimeException.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -56,27 +58,26 @@
         #include "TrueTypeFontUtilBase.h"
 
 class TrueTypeFontUtil: public TrueTypeFontUtilBase {
-        
 
-    private: static const instance: TrueTypeFontUtil = new TrueTypeFontUtil();
+    private: static TrueTypeFontUtil instance() { return TrueTypeFontUtil(); }
 
-    public static TrueTypeFontUtil getInstance();
+    public: static TrueTypeFontUtil getInstance();
 
-    public fontImage: OpenGLESImage = OpenGLESImage.NULL_OPENGL_IMAGE;
+    public: OpenGLESImage fontImage = OpenGLESImage::NULL_OPENGL_IMAGE;
 
-private constructor ();
+private: TrueTypeFontUtil();
 
-    public int32_t getAsTextureSize(int32_t textureSize);
+    public: int32_t getAsTextureSize(int32_t textureSize);
 
-    public int32_t getCellSize(int32_t cellSize);
+    public: int32_t getCellSize(int32_t cellSize);
 
-    public Image getFontBitmap(string filename, int32_t fontSize, int32_t cellSize, BasicColor basicColor);
+    public: Image getFontBitmap(std::string filename, int32_t fontSize, int32_t cellSize, BasicColor basicColor);
 
-    public saveFontAtlasAsFile();
+    public: void saveFontAtlasAsFile();
 
-    public Image getFontBitmapGL(GL10 gl, string filename, int32_t cellSize, BasicColor basicColor);
+    public: Image getFontBitmapGL(GL10 gl, std::string filename, int32_t cellSize, BasicColor basicColor);
 
-    public std::vector<int32_t> getFontWidths(string filename, int32_t fontSize);
+    public: std::vector<int32_t> getFontWidths(std::string filename, int32_t fontSize);
 
 };
 

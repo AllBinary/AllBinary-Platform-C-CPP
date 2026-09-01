@@ -79,55 +79,54 @@
 class Layer
             : public Object
          {
-        
 
-    public static const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    x: int32_t= 0;
+    protected: int32_t x= 0;
 
-    y: int32_t= 0;
+    protected: int32_t y= 0;
 
-    z: int32_t = 3;
+    protected: int32_t z = 3;
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-    private: visible: bool = true;
+    private: bool visible = true;
 
-public constructor (int32_t width, int32_t height);
+public: Layer(int32_t width, int32_t height);
 
-    public setPosition(int32_t x, int32_t y, int32_t z);
+    public: void setPosition(int32_t x, int32_t y, int32_t z);
 
-    public moveDXY(int32_t dx, int32_t dy);
+    public: void moveDXY(int32_t dx, int32_t dy);
 
-    public moveDXYZ(int32_t dx, int32_t dy, int32_t dz);
+    public: void moveDXYZ(int32_t dx, int32_t dy, int32_t dz);
 
-    public int32_t getXP();
+    public: int32_t getXP();
 
-    public int32_t getYP();
+    public: int32_t getYP();
 
-    public int32_t getZP();
+    public: int32_t getZP();
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public int64_t getDepth();
+    public: int64_t getDepth();
 
-    public setVisible(bool visible);
+    public: void setVisible(bool visible);
 
-    public bool isVisible();
+    public: bool isVisible();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    setLayerWidth(int32_t width);
+    protected: void setLayerWidth(int32_t width);
 
-    setLayerHeight(int32_t height);
+    protected: void setLayerHeight(int32_t height);
 
-    public toStringAppend(StringMaker stringBuffer);
+    public: void toStringAppend(StringMaker stringBuffer);
 
 };
 

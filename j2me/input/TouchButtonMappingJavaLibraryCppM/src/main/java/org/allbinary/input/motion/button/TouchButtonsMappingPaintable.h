@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_H
         #define ORG_ALLBINARY_INPUT_MOTION_BUTTON_TOUCHBUTTONSMAPPINGPAINTABLE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -66,26 +68,25 @@
 #include "TouchButtonBlankResource.h"
 
 class TouchButtonsMappingPaintable: public Paintable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    foregroundColor: int32_t;
+    protected: int32_t foregroundColor;
 
-    private: paintableTable: std::vector<std::vector<Paintable>> = new Array(0).fill(null).map(() => new Array(0).fill(0))
+    private: std::vector<std::vector<Paintable>> paintableTable = new Array(0).fill(null).map(() => new Array(0).fill(0))
                                                             ;
 
-    private: touchButtonLocationHelper: TouchButtonLocationHelper = new TouchButtonLocationHelper();
+    private: TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();
 
-public constructor (BasicColor basicColor);
+public: TouchButtonsMappingPaintable(BasicColor basicColor);
 
-    init();
+    private: void init();
 
                 //@Throws(Exception.constructor)
             
-    std::vector<std::vector<Paintable>> createPaintableTable();
+    private: std::vector<std::vector<Paintable>> createPaintableTable();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

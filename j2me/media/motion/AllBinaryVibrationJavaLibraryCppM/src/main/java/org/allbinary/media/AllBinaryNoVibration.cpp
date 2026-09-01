@@ -39,11 +39,10 @@
         #include "AllBinaryVibrationME.h"
 
 class AllBinaryNoVibration: public AllBinaryVibrationME {
-        
 
-    public static NO_VIBRATION: AllBinaryVibrationME = new AllBinaryNoVibration();
+    public: static AllBinaryVibrationME NO_VIBRATION = AllBinaryNoVibration();
 
-    public vibrate(int32_t duration, int32_t type, int32_t volume){
+    public: void vibrate(int32_t duration, int32_t type, int32_t volume){
 }
 
 

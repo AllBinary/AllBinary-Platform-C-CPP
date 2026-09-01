@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_VECTORBASEROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -78,38 +80,37 @@
 #include "VectorAnimationInterface.h"
 #include "AnimationBehavior.h"
 
-class VectorBaseRotationAnimation: public RotationAnimation: public VectorAnimationInterface {
-        
+class VectorBaseRotationAnimation: public RotationAnimation, public VectorAnimationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: currentPoints: std::vector<std::vector<std::vector<int32_t>>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 
-public constructor (AngleInfo angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
+public: VectorBaseRotationAnimation(AngleInfo angleInfo, std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public std::vector<std::vector<int32_t>> getPoints(int32_t frame);
+    public: std::vector<std::vector<int32_t>> getPoints(int32_t frame);
 
-    public setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints);
+    public: void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints);
 
 };
 

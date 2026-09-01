@@ -104,71 +104,70 @@
 class WindowsHardware
             : public Object
         : public HardwareInterface {
-        
 
-    private: componentInterfaceVector: Vector;
+    private: Vector componentInterfaceVector;
 
-    private: videoInterfaceVector: Vector;
+    private: Vector videoInterfaceVector;
 
-    private: hardDriveControllerInterfaceVector: Vector;
+    private: Vector hardDriveControllerInterfaceVector;
 
-    private: cpuInterfaceVector: Vector;
+    private: Vector cpuInterfaceVector;
 
-    private: usbInterfaceVector: Vector;
+    private: Vector usbInterfaceVector;
 
-    private: ethernetInterfaceVector: Vector;
+    private: Vector ethernetInterfaceVector;
 
-    private: multimediaInterfaceVector: Vector;
+    private: Vector multimediaInterfaceVector;
 
-    private: fireWireInterfaceVector: Vector;
+    private: Vector fireWireInterfaceVector;
 
-    private: bridgeInterfaceVector: Vector;
+    private: Vector bridgeInterfaceVector;
 
-    private: hardDriveInterfaceVector: Vector;
+    private: Vector hardDriveInterfaceVector;
 
-    private: macInterfaceVector: Vector;
+    private: Vector macInterfaceVector;
 
-    private: monitorInterfaceVector: Vector;
+    private: Vector monitorInterfaceVector;
 
-    private: const NAME: string = "Windows Hardware Profile";
+    private: const std::string NAME = "Windows Hardware Profile";
 
-    private: const MINHARDWARE: int32_t = 0;
+    private: const int32_t MINHARDWARE = 0;
 
-    private: const componentFactory: ComponentFactory = ComponentFactory.getInstance()!;
+    private: const ComponentFactory componentFactory = ComponentFactory::getInstance();
 
-public constructor ();
+public: WindowsHardware();
 
-    string getComponentType(string component);
+    private: std::string getComponentType(std::string component);
 
-    public MediaInterface getMultimedia(int32_t index);
+    public: MediaInterface getMultimedia(int32_t index);
 
-    public BridgeInterface getBridge(int32_t index);
+    public: BridgeInterface getBridge(int32_t index);
 
-    public CpuInterface getCpu(int32_t index);
+    public: CpuInterface getCpu(int32_t index);
 
-    public EthernetInterface getEthernet(int32_t index);
+    public: EthernetInterface getEthernet(int32_t index);
 
-    public FireWireInterface getFireWire(int32_t index);
+    public: FireWireInterface getFireWire(int32_t index);
 
-    public HardDriveControllerInterface getHardDriveController(int32_t index);
+    public: HardDriveControllerInterface getHardDriveController(int32_t index);
 
-    public HardDriveInterface getHardDrive(int32_t index);
+    public: HardDriveInterface getHardDrive(int32_t index);
 
-    public MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index);
+    public: MachineAccessControlAddressInterface getMachineAccessControlAddress(int32_t index);
 
-    public MonitorInterface getMonitor(int32_t index);
+    public: MonitorInterface getMonitor(int32_t index);
 
-    public UsbInterface getUsb(int32_t index);
+    public: UsbInterface getUsb(int32_t index);
 
-    public VideoInterface getVideo(int32_t index);
+    public: VideoInterface getVideo(int32_t index);
 
-    public HardwareComponentInterface getComponent(int32_t index);
+    public: HardwareComponentInterface getComponent(int32_t index);
 
-    public string toString();
+    public: std::string toString();
 
-    public bool compareTo(HardwareInterface hardwareInterface);
+    public: bool compareTo(HardwareInterface hardwareInterface);
 
-    public Hashtable<any, any> difference(HardwareInterface hardwareInterface);
+    public: Hashtable<any, any> difference(HardwareInterface hardwareInterface);
 
 };
 

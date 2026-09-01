@@ -47,10 +47,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CacheableInterface.h"
 
-class BasicArrayListCacheable: public BasicArrayListD: public CacheableInterface {
-        
+class BasicArrayListCacheable: public BasicArrayListD, public CacheableInterface {
 
-    public any getKey();
+    public: Object* getKey();
 
 };
 

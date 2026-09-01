@@ -99,57 +99,56 @@
 class CategoryProperties
             : public Object
         : public CategoryPropertiesInterface {
-        
 
-    private: static const MAXDEPTH: int32_t = 100;
+    private: static const int32_t MAXDEPTH = 100;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: category: string;
+    private: std::string category;
 
-public constructor (string name);
+public: CategoryProperties(std::string name);
 
-public constructor (Node node);
+public: CategoryProperties(Node node);
 
-public constructor (HashMap<any, any> categoryPropertiesHashMap);
+public: CategoryProperties(HashMap<any, any> categoryPropertiesHashMap);
 
-    public bool isRealRoot();
+    public: bool isRealRoot();
 
-    public bool isRoot();
+    public: bool isRoot();
 
-    public any getKey();
+    public: Object* getKey();
 
-    public string getValue();
-
-                //@Throws(Exception.constructor)
-            
-    public AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface);
-
-    public string getFileName();
+    public: std::string getValue();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getWebAppPath();
+    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface);
 
-    public setValue(string value);
-
-    public Boolean isValid();
-
-    public HashMap<any, any> toHashMap();
-
-    public Vector toVector();
+    public: std::string getFileName();
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc();
+    public: AbPath getWebAppPath();
+
+    public: void setValue(std::string value);
+
+    public: Boolean isValid();
+
+    public: HashMap<any, any> toHashMap();
+
+    public: Vector toVector();
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string validationInfo();
 
 };
 

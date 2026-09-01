@@ -66,23 +66,22 @@
 #include "BuildingLayer.h"
 
 class SimulatedBuildingPropertiesFactory: public BuildingPropertiesFactory {
-        
 
-    private: static const instanceC: SimulatedBuildingPropertiesFactory = new SimulatedBuildingPropertiesFactory();
+    private: static const SimulatedBuildingPropertiesFactory instanceC = SimulatedBuildingPropertiesFactory();
 
-    public static SimulatedBuildingPropertiesFactory getInstance();
+    public: static SimulatedBuildingPropertiesFactory getInstance();
 
-    public int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer);
+    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer);
 
-    public DamageFloaters getDamageFloaters(BuildingLayer buildingLayer);
+    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer);
 
                 //@Throws(Exception.constructor)
             
-    public Paintable getHealthBar(BuildingLayer buildingLayer);
+    public: Paintable getHealthBar(BuildingLayer buildingLayer);
 
-    public Hashtable<any, any> getHashtable();
+    public: Hashtable<any, any> getHashtable();
 
-    public TrackingEvent getTrackingEvent(BuildingLayer buildingLayer);
+    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer);
 
 };
 

@@ -69,74 +69,73 @@
 class InitInfo
             : public Object
          {
-        
 
-    private: static const instance: InitInfo = new InitInfo();
+    private: static InitInfo instance() { return InitInfo(); }
 
-    public static InitInfo getInstance();
+    public: static InitInfo getInstance();
 
-    public const TESTING: string = "TESTING";
+    public: const std::string TESTING = "TESTING";
 
-    public const MAINPATH: string = "MAINPATH";
+    public: const std::string MAINPATH = "MAINPATH";
 
-    public const TESTHTMLPATH: string = "TESTHTMLPATH";
+    public: const std::string TESTHTMLPATH = "TESTHTMLPATH";
 
-    private: testing: string = 
-                null
+    private: std::string testing = 
+                nullptr
             ;
 
-    private: mainPath: AbPath = 
-                null
+    private: AbPath mainPath = 
+                nullptr
             ;
 
-    private: testHtmlPath: AbPath = 
-                null
+    private: AbPath testHtmlPath = 
+                nullptr
             ;
 
-    private: hasRead: bool = false;
+    private: bool hasRead = false;
 
-private constructor ();
+private: InitInfo();
 
                 //@Throws(InitException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public set();
+    public: void set();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public set(HashMap<any, any> hashMap);
+    public: void set(HashMap<any, any> hashMap);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    get();
+    private: void get();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setHasRead(bool value);
+    public: void setHasRead(bool value);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    updateIfNeeded();
+    private: void updateIfNeeded();
 
-    public bool isTesting();
+    public: bool isTesting();
 
-    public string getTesting();
+    public: std::string getTesting();
 
-    public string getTestHtmlPath();
+    public: std::string getTestHtmlPath();
 
-    public string getMainPath();
+    public: std::string getMainPath();
 
-    public setTesting(string value);
+    public: void setTesting(std::string value);
 
-    public setTestHtmlPath(AbPath value);
+    public: void setTestHtmlPath(AbPath value);
 
-    public setMainPath(AbPath value);
+    public: void setMainPath(AbPath value);
 
-    public bool isMainPathValid(AbPath abPath);
+    public: bool isMainPathValid(AbPath abPath);
 
-    public bool isTestHtmlPathValid(AbPath abPath);
+    public: bool isTestHtmlPathValid(AbPath abPath);
 
                 //@Throws(Exception.constructor)
             
-    public bool isTestingValid(string testing);
+    public: bool isTestingValid(std::string testing);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
 };
 

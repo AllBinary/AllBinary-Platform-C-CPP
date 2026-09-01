@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_H
         #define ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPSETNOTIFIER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <java/net/URL.h>
@@ -54,15 +56,14 @@
 class JavaHelpSetNotifier
             : public Object
          {
-        
 
-    private: static vector: Vector = new Vector();
+    private: static Vector vector = Vector();
 
-    static Vector get();
+    private: static Vector get();
 
-    public static bool isNotified(HelpSet helpSet);
+    public: static bool isNotified(HelpSet helpSet);
 
-private constructor ();
+private: JavaHelpSetNotifier();
 
 };
 

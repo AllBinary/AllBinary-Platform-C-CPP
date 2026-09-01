@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_HELP_JAVAHELPUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -84,32 +86,31 @@
 class JavaHelpUtil
             : public Object
          {
-        
 
-    private: static const instance: JavaHelpUtil = new JavaHelpUtil();
+    private: static JavaHelpUtil instance() { return JavaHelpUtil(); }
 
-    public static JavaHelpUtil getInstance();
+    public: static JavaHelpUtil getInstance();
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const point: Point = new Point(0, 0);
+    private: const Point point = Point(0, 0);
 
-    private: const dimension: Dimension = new Dimension(640, 480);
+    private: const Dimension dimension = Dimension(640, 480);
 
-    private: contextSensitiveHelpActionEvent: ActionEvent = new ActionEvent(new JLabel(), ActionEvent.ACTION_FIRST, 
+    private: ActionEvent contextSensitiveHelpActionEvent = ActionEvent(JLabel(), ActionEvent::ACTION_FIRST, 
                             nullptr);
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-private constructor ();
+private: JavaHelpUtil();
 
-    public HelpSet getHelpSet(string filePath);
+    public: HelpSet getHelpSet(std::string filePath);
 
-    public HelpSet getHelpSet(URL url);
+    public: HelpSet getHelpSet(URL url);
 
-    public show(HelpSet helpSet);
+    public: void show(HelpSet helpSet);
 
 };
 

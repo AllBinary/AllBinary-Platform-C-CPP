@@ -49,14 +49,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryMagneticFieldSensor.h"
 
-class NoMagneticFieldSensor: public AllBinaryMagneticFieldSensor: public AllBinarySensorListener {
-        
+class NoMagneticFieldSensor: public AllBinaryMagneticFieldSensor, public AllBinarySensorListener {
 
                 //@Throws(Exception.constructor)
             
-    public Orientation getOrientation();
+    public: Orientation getOrientation();
 
-    public onSensorChange();
+    public: void onSensorChange();
 
 };
 

@@ -39,7 +39,6 @@
         #include "DirectionalInterface.h"
 
 class DirectionalCompositeInterface {
-        
 
     DirectionalInterface getDirectionalInterface()
 

@@ -47,11 +47,10 @@
 class LongData
             : public Object
          {
-        
 
-    public static MAX_LONG_LENGTH: int32_t = new Long(Long.MAX_VALUE).toString()!.length()!;
+    public: static int32_t MAX_LONG_LENGTH = Long(Long::MAX_VALUE).toString().length();
 
-private constructor ();
+private: LongData();
 
 };
 

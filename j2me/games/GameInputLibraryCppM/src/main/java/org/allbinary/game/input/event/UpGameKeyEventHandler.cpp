@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -54,57 +56,54 @@
         #include "UpGameKeyEventHandlerBase.h"
 
 class UpGameKeyEventHandler: public UpGameKeyEventHandlerBase {
-        
 
-    private: static const instance: UpGameKeyEventHandler = new UpGameKeyEventHandler();
+    private: static UpGameKeyEventHandler instance() { return UpGameKeyEventHandler(); }
 
-    private: static const instanceArray: std::vector<UpGameKeyEventHandlerBase> = 
-                                                        [
-                                                            new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase(),new UpGameKeyEventHandlerBase()
-                                                        ];
+    private: static const std::vector<UpGameKeyEventHandlerBase> instanceArray = 
+                                                        {
+                                                            UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase(),UpGameKeyEventHandlerBase()
+                                                        };
 
-    public static UpGameKeyEventHandler getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpGameKeyEventHandler.instance;
-    
-}
-
-
-    private: const playerInputIdFactory: LocalPlayerInputIdFactory = LocalPlayerInputIdFactory.getInstance()!;
-
-    public UpGameKeyEventHandlerBase getInstanceForDevice(int32_t deviceId){
-
-    playerInputId: int32_t = this.playerInputIdFactory!.getPlayerForDevice(deviceId)!;;
-    
+    public: static UpGameKeyEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpGameKeyEventHandler.instanceArray[playerInputId]!;
+                        return UpGameKeyEventHandler::instance();
     
 }
 
 
-    public UpGameKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId){
+    private: const LocalPlayerInputIdFactory playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
+
+    public: UpGameKeyEventHandlerBase getInstanceForDevice(int32_t deviceId){
+
+    int32_t playerInputId = this->playerInputIdFactory.getPlayerForDevice(deviceId);;
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpGameKeyEventHandler.instanceArray[playerInputId]!;
+                        return UpGameKeyEventHandler::instanceArray[playerInputId]!;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+    public: UpGameKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId){
 
 
-    public removeAllListeners(){
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return UpGameKeyEventHandler::instanceArray[playerInputId]!;
+    
+}
+
+
+private: UpGameKeyEventHandler(){
+}
+
+
+    public: void removeAllListeners(){
 super.removeAllListeners();
     
 
@@ -112,16 +111,16 @@ super.removeAllListeners();
 
 
                         for (
-    index: int32_t = UpGameKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = UpGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpGameKeyEventHandler.instanceArray[index]!.removeAllListeners();
+UpGameKeyEventHandler::instanceArray[index]!.removeAllListeners();
     
 }
 
 }
 
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
 super.removeListenerSingleThreaded(eventListenerInterface);
     
 
@@ -129,16 +128,16 @@ super.removeListenerSingleThreaded(eventListenerInterface);
 
 
                         for (
-    index: int32_t = UpGameKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = UpGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpGameKeyEventHandler.instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
+UpGameKeyEventHandler::instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
+    public: void removeListener(EventListenerInterface eventListenerInterface){
 super.removeListener(eventListenerInterface);
     
 
@@ -146,9 +145,9 @@ super.removeListener(eventListenerInterface);
 
 
                         for (
-    index: int32_t = UpGameKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = UpGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-UpGameKeyEventHandler.instanceArray[index]!.removeListener(eventListenerInterface);
+UpGameKeyEventHandler::instanceArray[index]!.removeListener(eventListenerInterface);
     
 }
 

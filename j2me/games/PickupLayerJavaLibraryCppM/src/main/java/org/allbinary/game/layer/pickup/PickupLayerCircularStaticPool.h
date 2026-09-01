@@ -49,17 +49,16 @@
 #include "PickedUpLayerInterfaceFactoryInterface.h"
 
 class PickupLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-    private: static SINGLETON: PickupLayerCircularStaticPool = new PickupLayerCircularStaticPool();
+    private: static PickupLayerCircularStaticPool SINGLETON = PickupLayerCircularStaticPool();
 
-    public static PickupLayerCircularStaticPool getInstance();
+    public: static PickupLayerCircularStaticPool getInstance();
 
-private constructor ();
+private: PickupLayerCircularStaticPool();
 
                 //@Throws(Exception.constructor)
             
-    public PickedUpLayerInterface getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z);
+    public: PickedUpLayerInterface getInstanceXYZ(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface, int32_t x, int32_t y, int32_t z);
 
 };
 

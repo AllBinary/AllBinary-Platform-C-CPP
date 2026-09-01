@@ -71,21 +71,20 @@
 class AndroidOperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: AndroidOperatingSystemFactory = new AndroidOperatingSystemFactory();
+    private: static AndroidOperatingSystemFactory instance() { return AndroidOperatingSystemFactory(); }
 
-    public static AndroidOperatingSystemFactory getInstance();
+    public: static AndroidOperatingSystemFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor ();
+private: AndroidOperatingSystemFactory();
 
                 //@Throws(Exception.constructor)
             
-    public GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem getOperatingSystemInstance();
 
 };
 

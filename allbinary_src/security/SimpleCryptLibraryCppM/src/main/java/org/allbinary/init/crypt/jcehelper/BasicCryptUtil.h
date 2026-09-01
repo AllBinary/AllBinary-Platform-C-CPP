@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_H
         #define ORG_ALLBINARY_INIT_CRYPT_JCEHELPER_BASICCRYPTUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -63,21 +65,20 @@
 class BasicCryptUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicCryptUtil = new BasicCryptUtil();
+    private: static BasicCryptUtil instance() { return BasicCryptUtil(); }
 
-    public static BasicCryptUtil getInstance();
+    public: static BasicCryptUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const XML_START: string = "<?xml";
+    private: const std::string XML_START = "<?xml";
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getDecryptedInputStream(InputStream inputStream, CryptInterface cryptInterface);
+    public: InputStream getDecryptedInputStream(InputStream inputStream, CryptInterface cryptInterface);
 
 };
 

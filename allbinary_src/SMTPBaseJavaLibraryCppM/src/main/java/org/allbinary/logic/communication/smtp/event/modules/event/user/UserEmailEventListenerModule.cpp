@@ -65,53 +65,50 @@
 class UserEmailEventListenerModule
             : public Object
         : public UserEmailEventListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userInterface: UserInterface;
+    private: UserInterface userInterface;
 
-public constructor (UserInterface userInterface){
-
-            super();
-        this.userInterface= userInterface;
+public: UserEmailEventListenerModule(UserInterface userInterface){
+this->userInterface= userInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onEmailSendFailure(EmailEvent emailEvent){
+    public: void onEmailSendFailure(EmailEvent emailEvent){
 
-    to: string = this.userInterface!.getSecondaryEmail()!;;
+    std::string to = this->userInterface.getSecondaryEmail();;
     
 
-    email: BasicEmail = new BasicEmail(emailEvent!.getEmailInfo(), to);;
+    BasicEmail email = BasicEmail(emailEvent.getEmailInfo(), to);;
     
-EmailQueueFactory.getInstance()!.offer(email.getEmail() as EmailInterface);
+EmailQueueFactory::getInstance().offer(email.getEmail() as EmailInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onEmailSendRequest(EmailEvent emailEvent){
+    public: void onEmailSendRequest(EmailEvent emailEvent){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Add Email To Que For Sending: " +emailEvent!.toString(), this, "onEmailSendRequest");
+                                    this->logUtil.putF("Add Email To Que For Sending: " +emailEvent.toString(), this, "onEmailSendRequest");
     
 
                                     }
                                 
 
-    to: string = this.userInterface!.getMainEmail()!;;
+    std::string to = this->userInterface.getMainEmail();;
     
 
-    email: BasicEmail = new BasicEmail(emailEvent!.getEmailInfo(), to);;
+    BasicEmail email = BasicEmail(emailEvent.getEmailInfo(), to);;
     
-EmailQueueFactory.getInstance()!.offer(email.getEmail() as EmailInterface);
+EmailQueueFactory::getInstance().offer(email.getEmail() as EmailInterface);
     
 }
 

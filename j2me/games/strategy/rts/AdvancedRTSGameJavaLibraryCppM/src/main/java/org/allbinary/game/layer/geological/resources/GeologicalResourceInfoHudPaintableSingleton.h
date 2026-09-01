@@ -46,11 +46,10 @@
 class GeologicalResourceInfoHudPaintableSingleton
             : public Object
          {
-        
 
-    private: static const instance: GeologicalResourceInfoHudPaintable = new GeologicalResourceInfoHudPaintable();
+    private: static GeologicalResourceInfoHudPaintable instance() { return GeologicalResourceInfoHudPaintable(); }
 
-    public static GeologicalResourceInfoHudPaintable getInstance();
+    public: static GeologicalResourceInfoHudPaintable getInstance();
 
 };
 

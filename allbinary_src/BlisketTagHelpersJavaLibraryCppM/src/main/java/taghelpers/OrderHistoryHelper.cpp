@@ -91,72 +91,65 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderHistoryHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: const propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: streetAddress: StreetAddress;
+    private: StreetAddress streetAddress;
 
-    private: id: string;
+    private: std::string id;
 
-    private: groupId: string;
+    private: std::string groupId;
 
-    private: status: string;
+    private: std::string status;
 
-    private: newStatus: string;
+    private: std::string newStatus;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
-
-            super();
-        this.propertiesHashMap= propertiesHashMap;
+public: OrderHistoryHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+this->propertiesHashMap= propertiesHashMap;
     
-this.pageContext= pageContext;
+this->pageContext= pageContext;
     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
 
-    storeName: string = propertiesHashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string storeName = propertiesHashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
-this.newStatus= propertiesHashMap!.get(OrderHistoryData.STATUS) as string;
+this->newStatus= propertiesHashMap.get(OrderHistoryData::STATUS) as string;
     
 
-                        if(storeName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.storeFrontInterface= StoreFrontFactory.getInstance(storeName);
+                                    this->storeFrontInterface= StoreFrontFactory::getInstance(storeName);
     
 
                                     }
                                 
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    getFormData(){
-this.id= this.request.getParameter(OrderData.ID);
+    private: void getFormData(){
+this->id= this->request.getParameter(OrderData::ID);
     
-this.groupId= this.request.getParameter(ShippingMethodData.GROUP);
+this->groupId= this->request.getParameter(ShippingMethodData::GROUP);
     
 
-                        if(this.newStatus == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    this.newStatus= this.request.getParameter(OrderHistoryData.STATUS);
+                                    this->newStatus= this->request.getParameter(OrderHistoryData::STATUS);
     
 
                                     }
@@ -164,93 +157,93 @@ this.groupId= this.request.getParameter(ShippingMethodData.GROUP);
 }
 
 
-    public string setOrderStatus(){
+    public: std::string setOrderStatus(){
 
         try {
             
-    success: string = "Status successfully set to: " +this.status;;
+    std::string success = "Status successfully set to: " +this->status;;
     
 
-    orderReviewInterface: OrderHistoryInterface = OrderHistoryFactory.getInstance(this.id)!;;
+    OrderHistoryInterface orderReviewInterface = OrderHistoryFactory::getInstance(this->id);;
     
 
-    status: string = orderReviewInterface!.getStatus()!;;
+    std::string status = orderReviewInterface.getStatus();;
     
 
-                        if(status.compareTo(OrderHistoryData.CANCELLED) == 0)
+                        if(status.compareTo(OrderHistoryData::CANCELLED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this.id +" Already Cancelled<br/>";
+                        return "Order " +this->id +" Already Cancelled<br/>";
     
 
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData.SHIPPED) == 0)
+                        if(status.compareTo(OrderHistoryData::SHIPPED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this.id +" Already Shipped. You can't cancel a shipped order.<br/>";
+                        return "Order " +this->id +" Already Shipped. You can't cancel a shipped order.<br/>";
     
 
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData.PREPROCESSING) == 0)
+                        if(status.compareTo(OrderHistoryData::PREPROCESSING) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this.id +" has been cancelled.<br/>";
+                        return "Order " +this->id +" has been cancelled.<br/>";
     
 
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData.PARTIALLYSHIPPED) == 0)
+                        if(status.compareTo(OrderHistoryData::PARTIALLYSHIPPED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this.id +" Partially Shipped. You can cancel unshipped items, but not the whole order.<br/>";
+                        return "Order " +this->id +" Partially Shipped. You can cancel unshipped items, but not the whole order.<br/>";
     
 
                                     }
                                 
                              else 
-                        if(status.compareTo(OrderHistoryData.PROCESSING) == 0)
+                        if(status.compareTo(OrderHistoryData::PROCESSING) == 0)
                         
                                     {
                                     
-    orderHistoryEntityInterface: OrderHistoryEntityInterface = OrderHistoryEntityFactory.getInstance()!;;
+    OrderHistoryEntityInterface orderHistoryEntityInterface = OrderHistoryEntityFactory::getInstance();;
     
-orderHistoryEntityInterface!.setStatus(this.id, this.newStatus);
+orderHistoryEntityInterface.setStatus(this->id, this->newStatus);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return "Order " +this.id +" has been cancelled.<br/>";
+                        return "Order " +this->id +" has been cancelled.<br/>";
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "setOrderStatus()");
+                                    this->logUtil.putF(success, this, "setOrderStatus()");
     
 
                                     }
@@ -266,13 +259,13 @@ orderHistoryEntityInterface!.setStatus(this.id, this.newStatus);
 } catch(e) 
             {
 
-    error: string = "Failed to set order status";;
+    std::string error = "Failed to set order status";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "setOrderStatus()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "setOrderStatus()", e);
     
 
                                     }

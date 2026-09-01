@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HardwareComponentInterface {
-        
 
     bool compareTo(HardwareComponentInterface componentInterface)
 
-    string toString()
+    std::string toString()
 
 };
 

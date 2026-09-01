@@ -57,71 +57,68 @@
 class Input
             : public Object
          {
-        
 
-    private: id: int32_t= 0;
+    private: int32_t id= 0;
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (int32_t id, string name){
-
-            super();
-        this.setId(id);
+public: Input(int32_t id, std::string name){
+this->setId(id);
     
-this.setName(name);
+this->setName(name);
     
 }
 
 
-    public int32_t getId(){
+    public: int32_t getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    setId(int32_t key){
-this.id= key;
+    private: void setId(int32_t key){
+this->id= key;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    setName(string keyName){
-this.name= keyName;
+    private: void setName(std::string keyName){
+this->name= keyName;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Name: ");
+stringBuffer.append("Name: ");
     
-stringBuffer!.append(this.getName());
+stringBuffer.append(this->getName());
     
-stringBuffer!.append(" Id: ");
+stringBuffer.append(" Id: ");
     
-stringBuffer!.appendint(this.getId());
+stringBuffer.appendint(this->getId());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

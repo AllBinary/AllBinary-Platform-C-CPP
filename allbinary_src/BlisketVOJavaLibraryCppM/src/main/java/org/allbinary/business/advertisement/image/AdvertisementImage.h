@@ -49,21 +49,20 @@
 class AdvertisementImage
             : public Object
         : public AdvertisementImageInterface {
-        
 
-    private: imageFileName: string;
+    private: std::string imageFileName;
 
-    private: imageUrl: string;
+    private: std::string imageUrl;
 
-    private: constraint: TwoDimensionalConstraintInterface;
+    private: TwoDimensionalConstraintInterface constraint;
 
-public constructor ();
+public: AdvertisementImage();
 
-    public string getFileName();
+    public: std::string getFileName();
 
-    public string getUrl();
+    public: std::string getUrl();
 
-    public TwoDimensionalConstraintInterface getTwoDimensionalConstraint();
+    public: TwoDimensionalConstraintInterface getTwoDimensionalConstraint();
 
 };
 

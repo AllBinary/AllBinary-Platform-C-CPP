@@ -49,7 +49,6 @@
 #include "PlayerGameInput.h"
 
 class PlayerGameInputCompositeInterface: public GameInputInterface {
-        
 
     PlayerGameInput getPlayerGameInput();
 

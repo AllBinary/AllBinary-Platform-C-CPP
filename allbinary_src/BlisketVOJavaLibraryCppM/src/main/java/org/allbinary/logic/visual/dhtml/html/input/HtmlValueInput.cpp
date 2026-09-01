@@ -42,24 +42,23 @@
         #include "HtmlInput.h"
 
 class HtmlValueInput: public HtmlInput {
-        
 
-    private: value: string;
+    private: std::string value;
 
-    private: const VALUE: string = "VALUE";
+    private: const std::string VALUE = "VALUE";
 
-public constructor (string before, string type, string name, string value, string after){
+public: HtmlValueInput(std::string before, std::string type, std::string name, std::string value, std::string after){
             super(before, type, name, after);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-this.value= stringUtil!.EMPTY_STRING;
+this->value= stringUtil.EMPTY_STRING;
     
-addAttribute(this.VALUE, value);
+addAttribute(this->VALUE, value);
     
 }
 

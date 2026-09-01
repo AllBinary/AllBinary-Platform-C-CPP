@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -71,70 +73,69 @@
 class ChangedPixelsUtil
             : public Object
          {
-        
 
-    private: static const START_X: int32_t = 0;
+    private: static const int32_t START_X = 0;
 
-    private: static const START_Y: int32_t = 0;
+    private: static const int32_t START_Y = 0;
 
-    private: static const OFFSET: int32_t = 0;
+    private: static const int32_t OFFSET = 0;
 
-    private: static const SCAN_SIZE: int32_t = 0;
+    private: static const int32_t SCAN_SIZE = 0;
 
-    private: static const CLEAR_INT_ARRAY: std::vector<int32_t> = new Array(1800 *1600);
+    private: static const std::vector<int32_t> CLEAR_INT_ARRAY = new Array(1800 *1600);
 
                 //@Throws(Exception.constructor)
             
-    public static std::vector<BufferedImageCacheable> generateBufferedImageChacheables(ImageComparisonResult imageComparisonInfo){
+    public: static std::vector<BufferedImageCacheable> generateBufferedImageChacheables(ImageComparisonResult imageComparisonInfo){
 
-    bufferedImageCacheables: std::vector<BufferedImageCacheable>;;
+    std::vector<BufferedImageCacheable> bufferedImageCacheables;;
     
 
-    originalBufferedImage: BufferedImage = imageComparisonInfo!.getBufferedImages()[0]!;;
+    BufferedImage originalBufferedImage = imageComparisonInfo.getBufferedImages()[0];;
     
 bufferedImageCacheables= new Array(2);
     
 
-    bufferedImageInfo: BufferedImageInfo = BufferedImageInfoFactory.getInstance(imageComparisonInfo!.imageWidth, imageComparisonInfo!.imageHeight, originalBufferedImage!.getType())!;;
+    BufferedImageInfo bufferedImageInfo = BufferedImageInfoFactory::getInstance(imageComparisonInfo.imageWidth, imageComparisonInfo.imageHeight, originalBufferedImage.getType());;
     
 
-    poolInterface: PoolInterface = BufferedImagePoolSingleton.getInstance()!;;
+    PoolInterface poolInterface = BufferedImagePoolSingleton::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < bufferedImageCacheables!.length; index++)
+    int32_t index = 0;index < bufferedImageCacheables.size(); index++)
         {
 
-    bufferedImageCacheable: BufferedImageCacheable = poolInterface!.remove(bufferedImageInfo) as BufferedImageCacheable;;
+    BufferedImageCacheable bufferedImageCacheable = poolInterface.remove(bufferedImageInfo) as BufferedImageCacheable;;
     
 bufferedImageCacheables[index]= bufferedImageCacheable;
     
-bufferedImageCacheables[index]!.getBufferedImage()!.setRGB(ChangedPixelsUtil.START_X, ChangedPixelsUtil.START_Y, bufferedImageInfo!.getWidth(), bufferedImageInfo!.getHeight(), ChangedPixelsUtil.CLEAR_INT_ARRAY, ChangedPixelsUtil.OFFSET, ChangedPixelsUtil.SCAN_SIZE);
+bufferedImageCacheables[index]!.getBufferedImage().setRGB(ChangedPixelsUtil::START_X, ChangedPixelsUtil::START_Y, bufferedImageInfo.getWidth(), bufferedImageInfo.getHeight(), ChangedPixelsUtil::CLEAR_INT_ARRAY, ChangedPixelsUtil::OFFSET, ChangedPixelsUtil::SCAN_SIZE);
     
 }
 
 
-    vector: Vector = imageComparisonInfo!.getNonMatchingPixelVector()!;;
+    Vector vector = imageComparisonInfo.getNonMatchingPixelVector();;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    pixelDelta: PixelDelta = vector.get(index) as PixelDelta;;
+    PixelDelta pixelDelta = vector.get(index) as PixelDelta;;
     
 
-                        if(pixelDelta!.getColorDelta() == 
-                                    null
+                        if(pixelDelta.getColorDelta() == 
+                                    nullptr
                                 )
                         
                                     {
@@ -145,9 +146,9 @@ System.exit(0);
 
                                     }
                                 
-bufferedImageCacheables[0]!.getBufferedImage()!.setRGB(pixelDelta!.getPoint()!.getX(), pixelDelta!.getPoint()!.getY(), pixelDelta!.getColorDelta()!.getRgb1());
+bufferedImageCacheables[0]!.getBufferedImage().setRGB(pixelDelta.getPoint().getX(), pixelDelta.getPoint().getY(), pixelDelta.getColorDelta().getRgb1());
     
-bufferedImageCacheables[1]!.getBufferedImage()!.setRGB(pixelDelta!.getPoint()!.getX(), pixelDelta!.getPoint()!.getY(), pixelDelta!.getColorDelta()!.getRgb2());
+bufferedImageCacheables[1]!.getBufferedImage().setRGB(pixelDelta.getPoint().getX(), pixelDelta.getPoint().getY(), pixelDelta.getColorDelta().getRgb2());
     
 }
 
@@ -160,10 +161,8 @@ bufferedImageCacheables[1]!.getBufferedImage()!.setRGB(pixelDelta!.getPoint()!.g
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ChangedPixelsUtil(){
+}
 
 
 };

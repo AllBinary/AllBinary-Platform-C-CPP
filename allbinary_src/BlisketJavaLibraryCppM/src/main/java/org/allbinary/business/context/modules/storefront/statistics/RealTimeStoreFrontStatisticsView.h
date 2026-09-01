@@ -88,17 +88,16 @@
 class RealTimeStoreFrontStatisticsView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: const storeFrontStatisticsInterface: StoreFrontStatisticsInterface;
+    private: StoreFrontStatisticsInterface storeFrontStatisticsInterface;
 
-    private: const userRole: UserRole;
+    private: UserRole userRole;
 
-public constructor (StoreFrontStatisticsInterface storeFrontStatisticsInterface, UserRole userRole);
+public: RealTimeStoreFrontStatisticsView(StoreFrontStatisticsInterface storeFrontStatisticsInterface, UserRole userRole);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

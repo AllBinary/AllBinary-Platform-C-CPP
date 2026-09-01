@@ -49,11 +49,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameFeatureControlledInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    init(int32_t level);
+    void init(int32_t level);
 
     bool isFeature();
 

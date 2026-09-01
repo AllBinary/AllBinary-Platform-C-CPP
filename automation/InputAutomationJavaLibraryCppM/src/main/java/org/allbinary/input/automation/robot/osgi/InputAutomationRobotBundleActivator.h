@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTBUNDLEACTIVATOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ROBOT_OSGI_INPUTAUTOMATIONROBOTBUNDLEACTIVATOR_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -81,49 +83,48 @@
 class InputAutomationRobotBundleActivator
             : public Object
         : public BundleActivator {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: inputRobotInterface: std::vector<InputRobotInterface>;
+    private: std::vector<InputRobotInterface> inputRobotInterface;
 
-    private: serviceFactory: ServiceFactory;
+    private: ServiceFactory serviceFactory;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public init();
+public: InputAutomationRobotBundleActivator();
 
                 //@Throws(Exception.constructor)
             
-    public registerAsService(BundleContext bundleContext);
+    public: void init();
 
                 //@Throws(Exception.constructor)
             
-    InputAutomationRobotChangeListener getInputAutomationRobotChangeListener(BundleContext context);
-
-    addRobots(BundleContext context);
-
-    removeRobots(BundleContext context);
+    public: void registerAsService(BundleContext bundleContext);
 
                 //@Throws(Exception.constructor)
             
-    public start(BundleContext context);
+    private: InputAutomationRobotChangeListener getInputAutomationRobotChangeListener(BundleContext context);
+
+    private: void addRobots(BundleContext context);
+
+    private: void removeRobots(BundleContext context);
 
                 //@Throws(Exception.constructor)
             
-    public stop(BundleContext context);
+    public: void start(BundleContext context);
 
-    any getServiceFactory();
+                //@Throws(Exception.constructor)
+            
+    public: void stop(BundleContext context);
 
-    setServiceFactory(ServiceFactory serviceObject);
+    protected: Object* getServiceFactory();
 
-    public std::vector<InputRobotInterface> getInputRobotInterface();
+    protected: void setServiceFactory(ServiceFactory serviceObject);
 
-    public setInputRobotInterface(std::vector<InputRobotInterface> inputRobotInterface);
+    public: std::vector<InputRobotInterface> getInputRobotInterface();
+
+    public: void setInputRobotInterface(std::vector<InputRobotInterface> inputRobotInterface);
 
 };
 

@@ -49,29 +49,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CaptionAnimation: public Animation {
-        
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-    private: const overlayAnimationInterface: Animation;
+    private: Animation overlayAnimationInterface;
 
-    private: const captionDx: int32_t;
+    private: int32_t captionDx;
 
-    private: const captionDy: int32_t;
+    private: int32_t captionDy;
 
-    private: const dx: int32_t;
+    private: int32_t dx;
 
-    private: const dy: int32_t;
+    private: int32_t dy;
 
-public constructor (Animation animationInterface, Animation overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
+public: CaptionAnimation(Animation animationInterface, Animation overlayAnimationInterface, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy);
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame();
+    public: void nextFrame();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

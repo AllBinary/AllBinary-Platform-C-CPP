@@ -72,22 +72,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UsersView: public HttpContextView: public DomNodeInterface {
-        
+class UsersView: public HttpContextView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    userVector: Vector;
+    protected: Vector userVector;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: UsersView(TransformInfoInterface transformInfoInterface);
 
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public addDomNodeInterfaces();
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

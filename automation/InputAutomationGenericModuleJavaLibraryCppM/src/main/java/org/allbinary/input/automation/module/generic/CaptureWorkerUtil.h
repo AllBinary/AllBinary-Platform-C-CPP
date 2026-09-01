@@ -61,15 +61,14 @@
 class CaptureWorkerUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static processProfileActionConditions(Vector vector, Long frame);
+    public: static void processProfileActionConditions(Vector vector, Long frame);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: CaptureWorkerUtil();
 
 };
 

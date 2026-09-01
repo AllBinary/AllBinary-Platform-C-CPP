@@ -57,17 +57,16 @@
 class InventoryHelperFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "taghelpers.InventoryHelper";
+    private: static const std::string CLASSNAME = "taghelpers.InventoryHelper";
 
-    private: static const FACTORYNAME: string = "taghelpers.InventoryHelperFactory";
+    private: static const std::string FACTORYNAME = "taghelpers.InventoryHelperFactory";
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: static Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
-private constructor ();
+private: InventoryHelperFactory();
 
 };
 

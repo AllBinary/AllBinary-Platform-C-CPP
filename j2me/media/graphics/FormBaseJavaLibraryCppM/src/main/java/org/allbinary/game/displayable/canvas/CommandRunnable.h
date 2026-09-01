@@ -77,19 +77,18 @@
 class CommandRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commandFormInputProcessor: CommandFormInputProcessor;
+    private: CommandFormInputProcessor commandFormInputProcessor;
 
-    private: const command: Command;
+    private: Command command;
 
-public constructor (CommandFormInputProcessor commandFormInputProcessor, Command command);
+public: CommandRunnable(CommandFormInputProcessor commandFormInputProcessor, Command command);
 
-    public run();
+    public: void run();
 
 };
 

@@ -54,17 +54,14 @@
 class StoreFrontAdvertisementsStatistics
             : public Object
         : public StoreFrontAdvertisementsStatisticsInterface {
-        
 
-public constructor (StoreFrontInterface storeFrontInterface){
-
-            super();
-        }
+public: StoreFrontAdvertisementsStatistics(StoreFrontInterface storeFrontInterface){
+}
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
 
@@ -75,7 +72,7 @@ public constructor (StoreFrontInterface storeFrontInterface){
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
 
 
@@ -85,7 +82,7 @@ public constructor (StoreFrontInterface storeFrontInterface){
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 

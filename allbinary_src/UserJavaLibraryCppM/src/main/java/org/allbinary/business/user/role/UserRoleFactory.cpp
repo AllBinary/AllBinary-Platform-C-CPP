@@ -93,56 +93,55 @@
 class UserRoleFactory
             : public Object
          {
-        
 
-    private: static const instance: UserRoleFactory = new UserRoleFactory();
+    private: static UserRoleFactory instance() { return UserRoleFactory(); }
 
-    public static UserRoleFactory getInstance(){
+    public: static UserRoleFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserRoleFactory.instance;
+                        return UserRoleFactory::instance();
     
 }
 
 
-    private: const basicUserRoleFactory: BasicUserRoleFactory = BasicUserRoleFactory.getInstance()!;
+    private: const BasicUserRoleFactory basicUserRoleFactory = BasicUserRoleFactory::getInstance();
 
-    public const INSTALLER: UserRole = new UserRoleB(this.basicUserRoleFactory!.INSTALLER, 
+    public: const UserRole INSTALLER = UserRoleB(this->basicUserRoleFactory.INSTALLER, 
                             nullptr);
 
-    public const ADMINISTRATOR: UserRole = new UserRoleB(this.basicUserRoleFactory!.ADMINISTRATOR, new AdminUserFactory());
+    public: const UserRole ADMINISTRATOR = UserRoleB(this->basicUserRoleFactory.ADMINISTRATOR, AdminUserFactory());
 
-    public const CUSTOMER: UserRole = new UserRoleB(this.basicUserRoleFactory!.CUSTOMER, new UserFactory());
+    public: const UserRole CUSTOMER = UserRoleB(this->basicUserRoleFactory.CUSTOMER, UserFactory());
 
-    public const SUBSCRIBERCUSTOMER: UserRole = new UserRoleB(this.basicUserRoleFactory!.SUBSCRIBERCUSTOMER, new SubscriberUserFactory());
+    public: const UserRole SUBSCRIBERCUSTOMER = UserRoleB(this->basicUserRoleFactory.SUBSCRIBERCUSTOMER, SubscriberUserFactory());
 
-    public const WHOLESALECUSTOMER: UserRole = new UserRoleB(this.basicUserRoleFactory!.WHOLESALECUSTOMER, new WholesaleUserFactory());
+    public: const UserRole WHOLESALECUSTOMER = UserRoleB(this->basicUserRoleFactory.WHOLESALECUSTOMER, WholesaleUserFactory());
 
-    public const STOREMANAGER: UserRole = new UserRoleB(this.basicUserRoleFactory!.STOREMANAGER, new StoreAdminUserFactory());
+    public: const UserRole STOREMANAGER = UserRoleB(this->basicUserRoleFactory.STOREMANAGER, StoreAdminUserFactory());
 
-    public const PRODUCTMANAGER: UserRole = new UserRoleB(this.basicUserRoleFactory!.PRODUCTMANAGER, new ProductStoreAdminUserFactory());
+    public: const UserRole PRODUCTMANAGER = UserRoleB(this->basicUserRoleFactory.PRODUCTMANAGER, ProductStoreAdminUserFactory());
 
-    public const CUSTOMERMANAGER: UserRole = new UserRoleB(this.basicUserRoleFactory!.CUSTOMERMANAGER, new CustomerStoreAdminUserFactory());
+    public: const UserRole CUSTOMERMANAGER = UserRoleB(this->basicUserRoleFactory.CUSTOMERMANAGER, CustomerStoreAdminUserFactory());
 
-    public const PAYMENTMANAGER: UserRole = new UserRoleB(this.basicUserRoleFactory!.PAYMENTMANAGER, new PaymentStoreAdminUserFactory());
+    public: const UserRole PAYMENTMANAGER = UserRoleB(this->basicUserRoleFactory.PAYMENTMANAGER, PaymentStoreAdminUserFactory());
 
-    public const ORDERMANAGER: UserRole = new UserRoleB(this.basicUserRoleFactory!.ORDERMANAGER, new OrderStoreAdminUserFactory());
+    public: const UserRole ORDERMANAGER = UserRoleB(this->basicUserRoleFactory.ORDERMANAGER, OrderStoreAdminUserFactory());
 
-    public const WEBMANAGER: UserRole = new UserRoleB(this.basicUserRoleFactory!.WEBMANAGER, new WebStoreAdminUserFactory());
+    public: const UserRole WEBMANAGER = UserRoleB(this->basicUserRoleFactory.WEBMANAGER, WebStoreAdminUserFactory());
 
-    public const REVIEWER: UserRole = new UserRoleB(this.basicUserRoleFactory!.REVIEWER, new ReviewOrderStoreAdminUserFactory());
+    public: const UserRole REVIEWER = UserRoleB(this->basicUserRoleFactory.REVIEWER, ReviewOrderStoreAdminUserFactory());
 
-    public const SHIPPING: UserRole = new UserRoleB(this.basicUserRoleFactory!.SHIPPING, new ShipOrderStoreAdminUserFactory());
+    public: const UserRole SHIPPING = UserRoleB(this->basicUserRoleFactory.SHIPPING, ShipOrderStoreAdminUserFactory());
 
-    public const ADJUSTER: UserRole = new UserRoleB(this.basicUserRoleFactory!.ADJUSTER, new AdjustOrderStoreAdminUserFactory());
+    public: const UserRole ADJUSTER = UserRoleB(this->basicUserRoleFactory.ADJUSTER, AdjustOrderStoreAdminUserFactory());
 
-    public const WORKFLOWEDITOR: UserRole = new UserRoleB(this.basicUserRoleFactory!.WORKFLOWEDITOR, new WorkflowEditorWebStoreAdminUserFactory());
+    public: const UserRole WORKFLOWEDITOR = UserRoleB(this->basicUserRoleFactory.WORKFLOWEDITOR, WorkflowEditorWebStoreAdminUserFactory());
 
-    public const WIZARD: UserRole = new UserRoleB(this.basicUserRoleFactory!.WIZARD, new WizardWebStoreAdminUserFactory());
+    public: const UserRole WIZARD = UserRoleB(this->basicUserRoleFactory.WIZARD, WizardWebStoreAdminUserFactory());
 
-    public const VIEWEDITOR: UserRole = new UserRoleB(this.basicUserRoleFactory!.VIEWEDITOR, new ViewEditorWebStoreAdminUserFactory());
+    public: const UserRole VIEWEDITOR = UserRoleB(this->basicUserRoleFactory.VIEWEDITOR, ViewEditorWebStoreAdminUserFactory());
 
 };
 

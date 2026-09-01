@@ -63,29 +63,28 @@
 #include "AnalogControllerConfigurationEvent.h"
 
 class AnalogControllerConfigurationEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: AnalogControllerConfigurationEventHandler = new AnalogControllerConfigurationEventHandler();
+    private: static AnalogControllerConfigurationEventHandler instance() { return AnalogControllerConfigurationEventHandler(); }
 
-    public static AnalogControllerConfigurationEventHandler getInstance();
+    public: static AnalogControllerConfigurationEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: AnalogControllerConfigurationEventHandler();
 
-    public addListener(AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface);
+    public: void addListener(AnalogControllerConfigurationEventListenerInterface analogControllerConfigurationEventListenerInterface);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    public: void fireEvent(AllBinaryEventObject eventObject);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

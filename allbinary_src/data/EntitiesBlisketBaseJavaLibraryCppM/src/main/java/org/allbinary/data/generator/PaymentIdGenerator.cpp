@@ -50,25 +50,22 @@
         #include "UniqueIdGenerator.h"
 
 class PaymentIdGenerator: public UniqueIdGenerator {
-        
 
-    private: const IDFILE: string = "paymentId";
+    private: const std::string IDFILE = "paymentId";
 
-public constructor (){
+public: PaymentIdGenerator(){
 
-            super();
-        
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(PATH_GLOBALS.getInstance()!.INIT_PATH);
+stringBuffer.append(PATH_GLOBALS::getInstance().INIT_PATH);
     
-stringBuffer!.append(this.IDFILE);
+stringBuffer.append(this->IDFILE);
     
-stringBuffer!.append(UniqueIdGenerator.EXT);
+stringBuffer.append(UniqueIdGenerator::EXT);
     
-super.setFile(stringBuffer!.toString(), this.IDFILE);
+super.setFile(stringBuffer.toString(), this->IDFILE);
     
 }
 

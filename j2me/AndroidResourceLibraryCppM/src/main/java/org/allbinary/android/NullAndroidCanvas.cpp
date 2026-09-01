@@ -50,11 +50,10 @@
 class NullAndroidCanvas
             : public Object
          {
-        
 
-    public static const NULL_CANVAS: Canvas = new Canvas();
+    public: static const Canvas NULL_CANVAS = Canvas();
 
-    public static const NULL_MEDIA_PLAYER: MediaPlayer = new MediaPlayer();
+    public: static const MediaPlayer NULL_MEDIA_PLAYER = MediaPlayer();
 
 };
 

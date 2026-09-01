@@ -73,26 +73,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CustomItemsEntityInterface.h"
 
-class CustomItemsEntity: public AbSqlBean: public CustomItemsEntityInterface {
-        
+class CustomItemsEntity: public AbSqlBean, public CustomItemsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "customitems";
+    protected: const std::string tableName = "customitems";
 
-public constructor ();
+public: CustomItemsEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string value);
+    public: void delete_(std::string value);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

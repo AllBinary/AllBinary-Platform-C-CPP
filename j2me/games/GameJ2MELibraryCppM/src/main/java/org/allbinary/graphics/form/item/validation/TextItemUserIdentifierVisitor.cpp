@@ -58,52 +58,49 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextItemUserIdentifierVisitor: public Visitor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: TextItemUserIdentifierVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
-    value: string = anyType as string;;
+    std::string value = anyType as string;;
     
 
-                        if(value.length < 2)
+                        if(value.size() < 2)
                         
                                     {
                                     
-    charValue: char = value[0]!;;
+    char charValue = value[0];;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil!.isNumber(value))
+                        if(stringValidationUtil.isNumber(value))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return BooleanFactory::getInstance().TRUE;
     
 
                                     }
                                 
                              else 
-                        if(this.isLetter(charValue))
+                        if(this->isLetter(charValue))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return BooleanFactory::getInstance().TRUE;
     
 
                                     }
@@ -111,16 +108,16 @@ public constructor (){
                         else {
                             
         try {
-            TextNotificationUtil.getInstance()!.fireError("Only Letters & Numbers Allowed");
+            TextNotificationUtil::getInstance().fireError("Only Letters & Numbers Allowed");
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
     
 }
 
@@ -128,7 +125,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.FALSE;
+                        return BooleanFactory::getInstance().FALSE;
     
 
                         }
@@ -141,7 +138,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.FALSE;
+                        return BooleanFactory::getInstance().FALSE;
     
 
                         }
@@ -149,9 +146,9 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
 }
 
 
-    public bool isLetter(char charValue){
+    public: bool isLetter(char charValue){
 
-    value: int32_t = static_cast<int32_t>(charValue);;
+    int32_t value = static_cast<int32_t>(charValue);;
     
 
 

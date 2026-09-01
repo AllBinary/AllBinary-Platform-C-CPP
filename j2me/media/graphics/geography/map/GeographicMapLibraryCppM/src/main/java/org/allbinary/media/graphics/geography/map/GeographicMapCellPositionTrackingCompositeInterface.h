@@ -28,7 +28,6 @@
         #include "GeographicMapCellPositionTracking.h"
 
 class GeographicMapCellPositionTrackingCompositeInterface {
-        
 
     GeographicMapCellPositionTracking getGeographicMapCellPositionTracking();
 

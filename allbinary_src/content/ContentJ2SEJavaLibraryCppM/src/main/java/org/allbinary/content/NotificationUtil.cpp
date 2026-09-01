@@ -61,41 +61,40 @@
 class NotificationUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: NotificationUtil = new NotificationUtil();
+    private: static const NotificationUtil SINGLETON = NotificationUtil();
 
-    public static NotificationUtil getInstance(){
+    public: static NotificationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil.SINGLETON;
+                        return NotificationUtil::SINGLETON;
     
 }
 
 
-    private: notificationManager: NotificationManager = ResourceUtil.getInstance()!.getContext()!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager;
+    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE) as NotificationManager;
 
-    public notify(Command command, string resource, string message){
+    public: void notify(Command command, std::string resource, std::string message){
 
-    context: Context = ResourceUtil.getInstance()!.getContext()!;;
+    Context context = ResourceUtil::getInstance().getContext();;
     
 
-    intent: Intent = CommandUriAction.getInstance()!.getIntent(command)!;;
+    Intent intent = CommandUriAction::getInstance().getIntent(command);;
     
 
-    integer: Integer = ResourceUtil.getInstance()!.getResourceId(resource)!;;
+    Integer integer = ResourceUtil::getInstance().getResourceId(resource);;
     
 
-    notification: Notification = new Notification(integer.intValue(), message, Date.now());;
+    Notification notification = Notification(integer.intValue(), message, Date.now());;
     
 
-    pendingIntent: PendingIntent = PendingIntent.getActivity(context, 0, intent, 0)!;;
+    PendingIntent pendingIntent = PendingIntent::getActivity(context, 0, intent, 0);;
     
 notification.setLatestEventInfo(context, command.getLabel(), message, pendingIntent);
     
-this.notificationManager!.notify(TsUtil.getInstance()!.hashCode(command), notification);
+this->notificationManager.notify(TsUtil::getInstance().hashCode(command), notification);
     
 }
 

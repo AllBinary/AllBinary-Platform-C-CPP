@@ -53,15 +53,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameFeatureEvent: public AllBinaryEventObject {
-        
 
-    private: const whatChanged: string;
+    private: std::string whatChanged;
 
-public constructor (any = {} anyType, string whatChanged);
+public: GameFeatureEvent(Object* anyType, std::string whatChanged);
 
-    public string getWhatChanged();
+    public: std::string getWhatChanged();
 
-    public any getGameOption();
+    public: Object* getGameOption();
 
 };
 

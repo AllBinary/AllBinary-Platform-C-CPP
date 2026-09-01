@@ -45,25 +45,24 @@
 class CachePolicy
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: maxTime: int64_t= 0;
+    private: int64_t maxTime= 0;
 
-    private: maxSize: int64_t= 0;
+    private: int64_t maxSize= 0;
 
-public constructor (string name, int64_t maxTime, int64_t maxSize);
+public: CachePolicy(std::string name, int64_t maxTime, int64_t maxSize);
 
-    public int64_t getMaxTime();
+    public: int64_t getMaxTime();
 
-    public setMaxTime(int64_t maxTime);
+    public: void setMaxTime(int64_t maxTime);
 
-    public int64_t getMaxSize();
+    public: int64_t getMaxSize();
 
-    public setMaxSize(int64_t maxSize);
+    public: void setMaxSize(int64_t maxSize);
 
-    public string getName();
+    public: std::string getName();
 
 };
 

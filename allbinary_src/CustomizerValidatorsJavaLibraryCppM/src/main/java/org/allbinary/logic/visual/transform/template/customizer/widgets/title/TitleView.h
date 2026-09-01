@@ -81,31 +81,30 @@
 class TitleView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: static const NAME: string = "None";
+    private: static const std::string NAME = "None";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: title: string;
+    private: std::string title;
 
-public constructor ();
+public: TitleView();
 
-public constructor (Node node);
+public: TitleView(Node node);
 
-public constructor (HashMap<any, any> hashMap);
+public: TitleView(HashMap<any, any> hashMap);
 
-    public string getTitle();
+    public: std::string getTitle();
 
-    public getFormData(HashMap<any, any> hashMap);
+    public: void getFormData(HashMap<any, any> hashMap);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

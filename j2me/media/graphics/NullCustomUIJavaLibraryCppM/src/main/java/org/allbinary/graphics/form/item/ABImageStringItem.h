@@ -31,7 +31,6 @@
 class ABImageStringItem
             : public Object
          {
-        
 
 };
 

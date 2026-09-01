@@ -53,51 +53,48 @@
 class NullSpecialAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: static NULL_SPECIAL_ANIMATION_FACTORY: NullSpecialAnimationFactory = new NullSpecialAnimationFactory();
+    private: static NullSpecialAnimationFactory NULL_SPECIAL_ANIMATION_FACTORY = NullSpecialAnimationFactory();
 
-    public static NullSpecialAnimationFactory getFactoryInstance(){
+    public: static NullSpecialAnimationFactory getFactoryInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullSpecialAnimationFactory.NULL_SPECIAL_ANIMATION_FACTORY;
+                        return NullSpecialAnimationFactory::NULL_SPECIAL_ANIMATION_FACTORY;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NullSpecialAnimationFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialAnimation.getInstance();;
+                        return SpecialAnimation::getInstance();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialAnimation.getInstance();;
+                        return SpecialAnimation::getInstance();;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

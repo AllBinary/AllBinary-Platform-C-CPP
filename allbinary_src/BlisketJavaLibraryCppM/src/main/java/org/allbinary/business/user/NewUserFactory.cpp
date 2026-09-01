@@ -67,68 +67,67 @@
 class NewUserFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance(){
+    public: static UserInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new User();
+                        return User();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance(TransformInfoInterface transformInfoInterface){
+    public: static UserInterface getInstance(TransformInfoInterface transformInfoInterface){
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = transformInfoInterface as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = transformInfoInterface as TransformInfoHttpInterface;;
     
 
-    httpServletRequest: HttpServletRequest = httpTransformInfoInterface!.getPageContext()!.getRequest() as HttpServletRequest;;
+    HttpServletRequest httpServletRequest = httpTransformInfoInterface.getPageContext().getRequest() as HttpServletRequest;;
     
 
-    hashMap: HashMap<any, any> = new RequestParams(httpServletRequest).toHashMap()!;;
+    HashMap<any, any> hashMap = RequestParams(httpServletRequest).toHashMap();;
     
 
-    role: string = httpTransformInfoInterface!.getPropertiesHashMap()!.get(UserRoleData.NAME.toString()) as string;;
+    std::string role = httpTransformInfoInterface.getPropertiesHashMap().get(UserRoleData::NAME.toString()) as string;;
     
-hashMap!.put(UserRoleData.NAME.toString(), role);
+hashMap.put(UserRoleData::NAME.toString(), role);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CreateUserFactory.getInstance(hashMap);;
+                        return CreateUserFactory::getInstance(hashMap);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<any, any> propertiesHashMap){
+    public: static UserInterface getInstance(HttpServletRequest httpServletRequest, HashMap<any, any> propertiesHashMap){
 
                         if(propertiesHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    requestHashMap: HashMap<any, any> = new RequestParams(httpServletRequest).toHashMap()!;;
+    HashMap<any, any> requestHashMap = RequestParams(httpServletRequest).toHashMap();;
     
 
-    roleString: string = propertiesHashMap!.get(UserRoleData.NAME.toString()) as string;;
+    std::string roleString = propertiesHashMap.get(UserRoleData::NAME.toString()) as string;;
     
-requestHashMap!.put(UserRoleData.NAME.toString(), roleString);
+requestHashMap.put(UserRoleData::NAME.toString(), roleString);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CreateUserFactory.getInstance(requestHashMap);;
+                        return CreateUserFactory::getInstance(requestHashMap);;
     
 
                                     }
@@ -137,7 +136,7 @@ requestHashMap!.put(UserRoleData.NAME.toString(), roleString);
                             
 
 
-                            throw new Exception("Null HashMap");
+                            throw Exception("Null HashMap");
                     
 
                         }
@@ -145,10 +144,8 @@ requestHashMap!.put(UserRoleData.NAME.toString(), roleString);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NewUserFactory(){
+}
 
 
 };

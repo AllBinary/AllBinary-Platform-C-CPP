@@ -86,68 +86,65 @@
 class TransformInfoPropertiesDocument
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const document: Document;
+    private: Document document;
 
-public constructor (string filePath){
+public: TransformInfoPropertiesDocument(std::string filePath){
 
-            super();
-        
-    xmlFile: AbFile = AbFile.createAbFile(filePath)!;;
+    AbFile xmlFile = AbFile::createAbFile(filePath);;
     
-this.document= DomDocumentFileHelper.createDocument(xmlFile);
+this->document= DomDocumentFileHelper::createDocument(xmlFile);
     
 }
 
 
-    public HashMap<any, any> toTransformInfoPropertiesHashMap(){
+    public: HashMap<any, any> toTransformInfoPropertiesHashMap(){
 
         try {
             
-    transformInfoPropertiesHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> transformInfoPropertiesHashMap = HashMap<any, any>();;
     
 
-    transformInfosNode: Node = this.document.getElementsByTagName(TransformInfosData.getInstance()!.NAME)!.item(0)!;;
+    Node transformInfosNode = this->document.getElementsByTagName(TransformInfosData::getInstance().NAME).item(0);;
     
 
-    transformInfosChildNodeList: NodeList = transformInfosNode!.getChildNodes()!;;
+    NodeList transformInfosChildNodeList = transformInfosNode.getChildNodes();;
     
 
-    transformInfoNodeVector: Vector = DomSearchHelper.getAllNodes(TransformInfoData.getInstance()!.NAME, transformInfosChildNodeList)!;;
+    Vector transformInfoNodeVector = DomSearchHelper::getAllNodes(TransformInfoData::getInstance().NAME, transformInfosChildNodeList);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Size: " +transformInfoNodeVector!.length, this, "toTransformInfoPropertiesHashMap()");
+                                    this->logUtil.putF("Size: " +transformInfoNodeVector.length, this, "toTransformInfoPropertiesHashMap()");
     
 
                                     }
                                 
 
-    size: int32_t = transformInfoNodeVector!.length!;;
+    int32_t size = transformInfoNodeVector.length;;
     
 
-    node: Node;;
+    Node node;;
     
 
-    transformInfoProperties: TransformInfoProperties;;
+    TransformInfoProperties transformInfoProperties;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-node= transformInfoNodeVector!.get(index) as Node;
+node= transformInfoNodeVector.get(index) as Node;
     
-transformInfoProperties= TransformInfoPropertiesFactory.getInstance()!.getInstance(node);
+transformInfoProperties= TransformInfoPropertiesFactory::getInstance().getInstance(node);
     
-transformInfoPropertiesHashMap!.put(transformInfoProperties!.getName(), transformInfoProperties);
+transformInfoPropertiesHashMap.put(transformInfoProperties.getName(), transformInfoProperties);
     
 }
 
@@ -162,13 +159,13 @@ transformInfoPropertiesHashMap!.put(transformInfoProperties!.getName(), transfor
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "toTransformInfoPropertiesHashMap()", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "toTransformInfoPropertiesHashMap()", e);
     
 
                                     }

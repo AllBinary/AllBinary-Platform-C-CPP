@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_CAPTION_CAPTIONINDEXEDANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -73,51 +75,50 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CaptionIndexedAnimation: public IndexedAnimation {
-        
 
-    private: animationInterface: Animation;
+    private: Animation animationInterface;
 
-    private: movieIndexedAnimationInterface: IndexedAnimation;
+    private: IndexedAnimation movieIndexedAnimationInterface;
 
-    private: captionDx: int32_t;
+    private: int32_t captionDx;
 
-    private: captionDy: int32_t;
+    private: int32_t captionDy;
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-    private: time: int32_t;
+    private: int32_t time;
 
-    private: END_EVENT: AllBinaryEventObject;
+    private: AllBinaryEventObject END_EVENT;
 
-    private: timeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeDelayHelper;
 
-    private: player: Player;
+    private: Player player;
 
-public constructor (Animation animationInterface, IndexedAnimation movieIndexedAnimationInterface, Player player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior animationBehavior);
+public: CaptionIndexedAnimation(Animation animationInterface, IndexedAnimation movieIndexedAnimationInterface, Player player, int32_t captionDx, int32_t captionDy, int32_t dx, int32_t dy, int32_t time, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame();
+    public: void nextFrame();
 
-    public bool isLastFrame();
+    public: bool isLastFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
 
 };
 

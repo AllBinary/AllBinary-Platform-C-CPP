@@ -54,15 +54,14 @@
 class PlatformRecordIdUtil
             : public Object
          {
-        
 
-    private: static const instance: PlatformRecordIdUtil = new PlatformRecordIdUtil();
+    private: static PlatformRecordIdUtil instance() { return PlatformRecordIdUtil(); }
 
-    public static PlatformRecordIdUtil getInstance();
+    public: static PlatformRecordIdUtil getInstance();
 
-    private: const PLATFORM_SHORT_NAME: string = "AVN";
+    private: const std::string PLATFORM_SHORT_NAME = "AVN";
 
-    public string getRecordId(AbeClientInformationInterface abeClientInformation, string baseRecordId);
+    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation, std::string baseRecordId);
 
 };
 

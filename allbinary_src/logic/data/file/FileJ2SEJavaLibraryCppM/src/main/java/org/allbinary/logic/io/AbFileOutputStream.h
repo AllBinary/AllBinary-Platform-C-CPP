@@ -53,25 +53,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileOutputStream: public FileOutputStream {
-        
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromAbFile(AbFile file);
+    public: static AbFileOutputStream createFromAbFile(AbFile file);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append);
+    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePath(string name);
+    public: static AbFileOutputStream createFromFilePath(std::string name);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePathAppend(string name, bool append);
+    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append);
 
-public constructor (string name, bool append);
+public: AbFileOutputStream(std::string name, bool append);
 
 };
 

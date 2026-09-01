@@ -71,29 +71,28 @@
 class TransformInfoHttpFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TransformInfoInterface getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: static TransformInfoInterface getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    weblisketSession: WeblisketSession = new WeblisketSession(propertiesHashMap, pageContext);;
+    WeblisketSession weblisketSession = WeblisketSession(propertiesHashMap, pageContext);;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(weblisketSession!.getStoreName()))
+                        if(!StringValidationUtil::getInstance().isEmpty(weblisketSession.getStoreName()))
                         
                                     {
                                     
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(weblisketSession!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(weblisketSession.getStoreName());;
     
 
                         if(storeFrontInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -101,7 +100,7 @@ class TransformInfoHttpFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformInfoHttpStore(storeFrontInterface, propertiesHashMap, pageContext) as TransformInfoInterface;
+                        return TransformInfoHttpStore(storeFrontInterface, propertiesHashMap, pageContext) as TransformInfoInterface;
     
 
                                     }
@@ -110,7 +109,7 @@ class TransformInfoHttpFactory
                             
 
 
-                            throw new Exception("No StoreFront with: " +weblisketSession!.getStoreName());
+                            throw Exception("No StoreFront with: " +weblisketSession.getStoreName());
                     
 
                         }
@@ -123,7 +122,7 @@ class TransformInfoHttpFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TransformInfoHttpContext(propertiesHashMap, pageContext) as TransformInfoInterface;
+                        return TransformInfoHttpContext(propertiesHashMap, pageContext) as TransformInfoInterface;
     
 
                         }
@@ -133,13 +132,13 @@ class TransformInfoHttpFactory
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, "TransformInfoFactory", commonStrings!.GET_INSTANCE, e);
+logUtil.put(commonStrings.EXCEPTION, "TransformInfoFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -154,10 +153,8 @@ logUtil!.put(commonStrings!.EXCEPTION, "TransformInfoFactory", commonStrings!.GE
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoHttpFactory(){
+}
 
 
 };

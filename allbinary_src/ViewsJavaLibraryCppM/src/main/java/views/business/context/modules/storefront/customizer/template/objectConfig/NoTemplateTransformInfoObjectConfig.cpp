@@ -73,11 +73,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NoTemplateTransformInfoObjectConfig: public TransformInfoObjectConfig {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object transformInfoInterface){
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -86,75 +85,75 @@ public constructor (Object transformInfoInterface){
 }
 
 
-public constructor (Object transformInfoInterface, Object document){
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, Object document){
             super(transformInfoInterface, document);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
-public constructor (Object transformInfoInterface, string name, string type){
+public: NoTemplateTransformInfoObjectConfig(Object transformInfoInterface, std::string name, std::string type){
             super(transformInfoInterface, name, type);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setDocument(this.generate(this.toXmlDoc()));
+this->setDocument(this->generate(this->toXmlDoc()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Document generate(Document objectConfigDocument){
+    protected: Document generate(Document objectConfigDocument){
 
-    docString: string = DomDocumentHelper.toString(objectConfigDocument)!;;
+    std::string docString = DomDocumentHelper::toString(objectConfigDocument);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Initial ObjectConfig: " +docString, this, "generate()");
+                                    this->logUtil.putF("Initial ObjectConfig: " +docString, this, "generate()");
     
 
                                     }
                                 
 
-    storeName: string = this.getTransformInfoInterface()!.getStoreName()!;;
+    std::string storeName = this->getTransformInfoInterface().getStoreName();;
     
 
-    viewName: string = this.getTransformInfoInterface()!.getName()!;;
+    std::string viewName = this->getTransformInfoInterface().getName();;
     
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    VARKEY: string = TransformInfoObjectConfigData.getInstance()!.VARKEY;;
+    std::string VARKEY = TransformInfoObjectConfigData::getInstance().VARKEY;;
     
-hashMap!.put(VARKEY +StoreFrontData.getInstance()!.NAME, storeName);
+hashMap.put(VARKEY +StoreFrontData::getInstance().NAME, storeName);
     
-hashMap!.put(VARKEY +TransformInfoData.getInstance()!.OWNER, viewName);
-    
-
-    pageName: string = TransformTemplateCustomizerUtil.getInstance()!.getPageNameHack(this.getTransformInfoInterface()!.getName(), this.getTransformInfoInterface()!.getStoreName())!;;
-    
-hashMap!.put(VARKEY +TransformInfoData.getInstance()!.PARTIAL, pageName);
+hashMap.put(VARKEY +TransformInfoData::getInstance().OWNER, viewName);
     
 
-    replace: Replace = new Replace(hashMap);;
+    std::string pageName = TransformTemplateCustomizerUtil::getInstance().getPageNameHack(this->getTransformInfoInterface().getName(), this->getTransformInfoInterface().getStoreName());;
+    
+hashMap.put(VARKEY +TransformInfoData::getInstance().PARTIAL, pageName);
     
 
-    newObjectConfigDocument: Document = DomDocumentHelper.create(replace.all(docString))!;;
+    Replace replace = Replace(hashMap);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+    Document newObjectConfigDocument = DomDocumentHelper::create(replace.all(docString));;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Final ObjectConfig: " +DomDocumentHelper.toString(newObjectConfigDocument), this, "generate()");
+                                    this->logUtil.putF("Final ObjectConfig: " +DomDocumentHelper::toString(newObjectConfigDocument), this, "generate()");
     
 
                                     }

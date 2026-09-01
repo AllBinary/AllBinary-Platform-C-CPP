@@ -60,11 +60,10 @@
 class StoreFrontFactory
             : public Object
          {
-        
 
-    public static StoreFront getInstance(string storeName);
+    public: static StoreFront getInstance(std::string storeName);
 
-private constructor ();
+private: StoreFrontFactory();
 
 };
 

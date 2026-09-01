@@ -42,24 +42,21 @@
 class CanvasTreeLabel
             : public Object
          {
-        
 
-    private: label: string;
+    private: std::string label;
 
-public constructor (string str){
-
-            super();
-        this.label= str;
+public: CanvasTreeLabel(std::string str){
+this->label= str;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.label;
+                        return this->label;
     
 }
 

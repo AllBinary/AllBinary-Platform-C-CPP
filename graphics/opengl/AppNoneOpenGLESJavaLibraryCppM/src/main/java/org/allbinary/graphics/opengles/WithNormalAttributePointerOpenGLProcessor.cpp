@@ -46,31 +46,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class WithNormalAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: WithNormalAttributePointerOpenGLProcessor = new WithNormalAttributePointerOpenGLProcessor();
+    private: static WithNormalAttributePointerOpenGLProcessor instance() { return WithNormalAttributePointerOpenGLProcessor(); }
 
-    public static WithNormalAttributePointerOpenGLProcessor getInstance(){
+    public: static WithNormalAttributePointerOpenGLProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WithNormalAttributePointerOpenGLProcessor.instance;
+                        return WithNormalAttributePointerOpenGLProcessor::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: WithNormalAttributePointerOpenGLProcessor(){
+}
 
 
-    public process(GL10 gl, any = {} aObject3d){
+    public: void process(GL10 gl, Object* aObject3d){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

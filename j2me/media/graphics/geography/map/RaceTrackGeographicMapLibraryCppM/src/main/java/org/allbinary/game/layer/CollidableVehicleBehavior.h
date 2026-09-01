@@ -68,25 +68,24 @@
 #include "VehicleFrictionProperties.h"
 
 class CollidableVehicleBehavior: public CollidableDestroyableDamageableBehavior {
-        
 
-    totalImpactVelocity: int64_t = 0;
+    protected: int64_t totalImpactVelocity = 0;
 
-public constructor (bool collidable);
+public: CollidableVehicleBehavior(bool collidable);
 
                 //@Throws(Exception.constructor)
             
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface);
 
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface);
 
-    private: halfImpactVelocityX: int64_t= 0;
+    private: int64_t halfImpactVelocityX= 0;
 
-    private: halfImpactVelocityY: int64_t= 0;
+    private: int64_t halfImpactVelocityY= 0;
 
-    collideVehicle(CollidableCompositeLayer ownerLayer, VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface);
+    protected: void collideVehicle(CollidableCompositeLayer ownerLayer, VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface);
 
-    collideFriction(VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface);
+    private: void collideFriction(VehiclePropertiesCompositeInterface vehiclePropertiesCompositeInterface);
 
 };
 

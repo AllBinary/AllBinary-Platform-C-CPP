@@ -56,15 +56,14 @@
 class AllBinaryThreedTiledLayerFactory
             : public Object
          {
-        
 
-    private: static const instance: AllBinaryThreedTiledLayerFactory = new AllBinaryThreedTiledLayerFactory();
+    private: static AllBinaryThreedTiledLayerFactory instance() { return AllBinaryThreedTiledLayerFactory(); }
 
-    public static AllBinaryThreedTiledLayerFactory getInstance();
+    public: static AllBinaryThreedTiledLayerFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData);
+    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData);
 
 };
 

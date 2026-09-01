@@ -39,9 +39,8 @@
         #include "AbeClientInformation.h"
 
 class TestClientInformation: public AbeClientInformation {
-        
 
-public constructor (){
+public: TestClientInformation(){
             super("Test App Name", "0.0.1", "Test App Name 0.0.1", "TA");
                     
 

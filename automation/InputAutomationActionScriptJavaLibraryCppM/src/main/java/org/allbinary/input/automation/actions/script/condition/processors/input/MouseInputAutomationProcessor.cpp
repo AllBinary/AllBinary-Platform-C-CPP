@@ -59,55 +59,52 @@
 class MouseInputAutomationProcessor
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static process(MouseActionScriptInputInterface mouseActionScriptInputInterface){
+    public: static void process(MouseActionScriptInputInterface mouseActionScriptInputInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF(new StringMaker().append("Start - Processing Mouse Input at: ")!.append(mouseActionScriptInputInterface!.getPoint()!.toString())!.append(" clicks: ")!.appendint(mouseActionScriptInputInterface!.getButtonClicks())!.toString(), "MouseInputAutomationProcessor", commonStrings!.PROCESS);
-    
-
-    inputRobotInterface: InputRobotInterface = mouseActionScriptInputInterface!.getInputRobotInterface()!;;
+logUtil.putF(StringMaker().append("Start - Processing Mouse Input at: ").append(mouseActionScriptInputInterface.getPoint().toString()).append(" clicks: ").appendint(mouseActionScriptInputInterface.getButtonClicks()).toString(), "MouseInputAutomationProcessor", commonStrings.PROCESS);
     
 
-                        if(mouseActionScriptInputInterface!.getPoint()!.x !=  -1 && mouseActionScriptInputInterface!.getPoint()!.y !=  -1)
+    InputRobotInterface inputRobotInterface = mouseActionScriptInputInterface.getInputRobotInterface();;
+    
+
+                        if(mouseActionScriptInputInterface.getPoint().x !=  -1 && mouseActionScriptInputInterface.getPoint().y !=  -1)
                         
                                     {
-                                    inputRobotInterface!.mouseMove(mouseActionScriptInputInterface!.getPoint());
+                                    inputRobotInterface.mouseMove(mouseActionScriptInputInterface.getPoint());
     
 
                                     }
                                 
-Thread.sleep(mouseActionScriptInputInterface!.getTime());
+Thread::sleep(mouseActionScriptInputInterface.getTime());
     
 
-                        if(mouseActionScriptInputInterface!.getButtonClicks() != 0)
+                        if(mouseActionScriptInputInterface.getButtonClicks() != 0)
                         
                                     {
-                                    inputRobotInterface!.mousePress(mouseActionScriptInputInterface!.getButtonClicks());
+                                    inputRobotInterface.mousePress(mouseActionScriptInputInterface.getButtonClicks());
     
-Thread.sleep(mouseActionScriptInputInterface!.getTime());
+Thread::sleep(mouseActionScriptInputInterface.getTime());
     
-inputRobotInterface!.mouseRelease(mouseActionScriptInputInterface!.getButtonClicks());
+inputRobotInterface.mouseRelease(mouseActionScriptInputInterface.getButtonClicks());
     
 
                                     }
                                 
-Thread.sleep(mouseActionScriptInputInterface!.getTime());
+Thread::sleep(mouseActionScriptInputInterface.getTime());
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: MouseInputAutomationProcessor(){
+}
 
 
 };

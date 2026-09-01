@@ -69,40 +69,37 @@
 #include "AllBinaryGameCanvas.h"
 
 class GameCanvasPauseRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const allBinaryGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas allBinaryGameCanvas;
 
-public constructor (AllBinaryGameCanvas allBinaryGameCanvas){
-
-            super();
-        this.allBinaryGameCanvas= allBinaryGameCanvas;
+public: GameCanvasPauseRunnable(AllBinaryGameCanvas allBinaryGameCanvas){
+this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    public run(){
+    public: void run(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep(){
+    public: void processLoopSleep(){
 
         try {
             
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    isOpenGL: bool = features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL)!;;
+    bool isOpenGL = features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL);;
     
 
                         if(isOpenGL)
                         
                                     {
-                                    this.allBinaryGameCanvas!.processSleep();
+                                    this->allBinaryGameCanvas.processSleep();
     
 
                                     }
@@ -112,9 +109,9 @@ public constructor (AllBinaryGameCanvas allBinaryGameCanvas){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 

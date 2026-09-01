@@ -77,32 +77,31 @@
 #include "MineWeaponResources.h"
 
 class MineCountedPickedUpLayerInterfaceFactory: public CountedPickedUpLayerInterfaceFactory {
-        
 
-    private: static pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public static init(){
-MineCountedPickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface= new MineCountedPickedUpLayerInterfaceFactory();
+    public: static void init(){
+MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface= MineCountedPickedUpLayerInterfaceFactory();
     
 }
 
 
-    public static PickedUpLayerInterfaceFactoryInterface getInstance(){
+    public: static PickedUpLayerInterfaceFactoryInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MineCountedPickedUpLayerInterfaceFactory.pickedUpLayerInterfaceFactoryInterface;
+                        return MineCountedPickedUpLayerInterfaceFactory::pickedUpLayerInterfaceFactoryInterface;
     
 }
 
 
-    private: const weaponLayerCircularStaticPool: WeaponLayerCircularPool = MineLayerCircularStaticPool.getInstance()!;
+    private: const WeaponLayerCircularPool weaponLayerCircularStaticPool = MineLayerCircularStaticPool::getInstance();
 
-private constructor (){
-            super(PickedUpLayerTypeFactory.getInstance()!.MINE, IconLayerFactory.getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(MineWeaponResources.getInstance()!.DROP_ICON_RESOURCE)!.getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory.getInstance()!.get(MineWeaponResources.getInstance()!.DROP_RESOURCE)!.getInstance(0));
+private: MineCountedPickedUpLayerInterfaceFactory(){
+            super(PickedUpLayerTypeFactory::getInstance().MINE, IconLayerFactory::getInstance(FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_ICON_RESOURCE).getInstance(0), 10, 10), FeaturedAnimationInterfaceFactoryInterfaceFactory::getInstance().get(MineWeaponResources::getInstance().DROP_RESOURCE).getInstance(0));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -110,7 +109,7 @@ private constructor (){
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
@@ -120,27 +119,27 @@ private constructor (){
 }
 
 
-    private: const weaponProperties: WeaponProperties = new WeaponProperties( -1,  -1, 0, 8000, 10);
+    private: const WeaponProperties weaponProperties = WeaponProperties( -1,  -1, 0, 8000, 10);
 
-    private: const smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;
+    private: const SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer getNextInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
 
-    sourceLayerInterface: AllBinaryLayer = hashtable.get(this.smallIntegerSingletonFactory!.getAt(0)) as AllBinaryLayer;;
+    AllBinaryLayer sourceLayerInterface = hashtable.get(this->smallIntegerSingletonFactory.getAt(0)) as AllBinaryLayer;;
     
 
-    angle: Integer = hashtable.get(this.smallIntegerSingletonFactory!.getAt(1)) as Integer;;
+    Integer angle = hashtable.get(this->smallIntegerSingletonFactory.getAt(1)) as Integer;;
     
 
-    scoreableInterface: ScoreableInterface = sourceLayerInterface as unknown as ScoreableInterface;;
+    ScoreableInterface scoreableInterface = sourceLayerInterface as unknown as ScoreableInterface;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.weaponLayerCircularStaticPool!.getInstanceWeaponLayer(sourceLayerInterface, x, y, z, static_cast<int32_t>(angle.intValue()), 0, this.weaponProperties, scoreableInterface);;
+                        return this->weaponLayerCircularStaticPool.getInstanceWeaponLayer(sourceLayerInterface, x, y, z, static_cast<int32_t>(angle.intValue()), 0, this->weaponProperties, scoreableInterface);;
     
 }
 

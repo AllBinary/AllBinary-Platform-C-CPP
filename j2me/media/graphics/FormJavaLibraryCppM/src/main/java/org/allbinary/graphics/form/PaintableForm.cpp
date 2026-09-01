@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -68,16 +70,15 @@
 #include "FormType.h"
 
 class PaintableForm: public ABCustomForm {
-        
 
-    private: static NULL_PAINTABLE_FORM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_PAINTABLE_FORM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PaintableForm getNullPaintableForm(){
+    public: static PaintableForm getNullPaintableForm(){
 
-                        if(PaintableForm.NULL_PAINTABLE_FORM == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(PaintableForm::NULL_PAINTABLE_FORM == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    PaintableForm.NULL_PAINTABLE_FORM= new PaintableForm(StringUtil.getInstance()!.EMPTY_STRING, [], BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+                                    PaintableForm::NULL_PAINTABLE_FORM= PaintableForm(StringUtil::getInstance().EMPTY_STRING, {}, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
     
 
                                     }
@@ -86,55 +87,55 @@ class PaintableForm: public ABCustomForm {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaintableForm.NULL_PAINTABLE_FORM as PaintableForm;
+                        return PaintableForm::NULL_PAINTABLE_FORM as PaintableForm;
     
 }
 
 
-    const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    rectangle: Rectangle = RectangleFactory.SINGLETON;
+    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
 
-    x: int32_t= 0;
+    protected: int32_t x= 0;
 
-    y: int32_t= 0;
+    protected: int32_t y= 0;
 
-    formType: FormType = FormTypeFactory.getInstance()!.NULL_FORM_TYPE;
+    protected: FormType formType = FormTypeFactory::getInstance().NULL_FORM_TYPE;
 
-public constructor (string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: PaintableForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(title, items, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setSelectedIndex(0);
+this->setSelectedIndex(0);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle, FormType formType){
-this.rectangle= rectangle;
+    public: void init(Rectangle rectangle, FormType formType){
+this->rectangle= rectangle;
     
 
-    point: GPoint = this.rectangle.getPoint()!;;
+    GPoint point = this->rectangle.getPoint();;
     
-this.x= point.getX();
+this->x= point.getX();
     
-this.y= point.getY();
+this->y= point.getY();
     
-this.formType= formType;
+this->formType= formType;
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangle.getWidth();;
+                        return this->rectangle.getWidth();;
     
 }
 

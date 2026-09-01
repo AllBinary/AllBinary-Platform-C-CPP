@@ -44,52 +44,47 @@
 class Time
             : public Object
          {
-        
 
-    private: timeLong: Long;
+    private: Long timeLong;
 
-public constructor (string time){
-
-            super();
-        this.timeLong= new Long(time);
+public: Time(std::string time){
+this->timeLong= Long(time);
     
 }
 
 
-public constructor (int64_t time){
-
-            super();
-        this.timeLong= new Long(time);
+public: Time(int64_t time){
+this->timeLong= Long(time);
     
 }
 
 
-    public Long getLong(){
+    public: Long getLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeLong;
+                        return this->timeLong;
     
 }
 
 
-    public int64_t getlong(){
+    public: int64_t getlong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeLong!.longValue();;
+                        return this->timeLong.longValue();;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getLong()!.toString();;
+                        return this->getLong().toString();;
     
 }
 

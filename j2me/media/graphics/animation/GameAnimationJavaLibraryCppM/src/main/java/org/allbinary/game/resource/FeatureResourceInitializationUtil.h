@@ -58,17 +58,16 @@
 class FeatureResourceInitializationUtil
             : public Object
          {
-        
 
-    private: static const instance: FeatureResourceInitializationUtil = new FeatureResourceInitializationUtil();
+    private: static FeatureResourceInitializationUtil instance() { return FeatureResourceInitializationUtil(); }
 
-    public static FeatureResourceInitializationUtil getInstance();
+    public: static FeatureResourceInitializationUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level);
+    public: void init(int32_t level);
 
 };
 

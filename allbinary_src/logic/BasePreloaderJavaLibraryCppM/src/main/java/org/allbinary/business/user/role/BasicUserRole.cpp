@@ -50,32 +50,31 @@
 class BasicUserRole
             : public Object
         : public Serializable {
-        
 
-    private: static const roleVector: Vector<any> = new Vector<any>();
+    private: static const Vector<any> roleVector = Vector<any>();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static BasicUserRole getRole(string role){
+    public: static BasicUserRole getRole(std::string role){
 
-    roleVector: Vector<any> = BasicUserRole.getAll()!;;
+    Vector<any> roleVector = BasicUserRole::getAll();;
     
 
-    size: int32_t = roleVector!.length!;;
+    int32_t size = roleVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    userRole: BasicUserRole = roleVector!.get(index) as BasicUserRole;;
+    BasicUserRole userRole = roleVector.get(index) as BasicUserRole;;
     
 
-                        if(role.compareTo(userRole!.toString()) == 0)
+                        if(role.compareTo(userRole.toString()) == 0)
                         
                                     {
                                     
@@ -92,32 +91,32 @@ class BasicUserRole
 
 
 
-                            throw new Exception("Unable to get role - Unknown Role");
+                            throw Exception("Unable to get role - Unknown Role");
                     
 }
 
 
-    public static Vector<any> getAll(){
+    public: static Vector<any> getAll(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicUserRole.roleVector;
+                        return BasicUserRole::roleVector;
     
 }
 
 
-    private: const m_int_RoleId: int32_t;
+    private: int32_t m_int_RoleId;
 
-    private: const role: string;
+    private: std::string role;
 
-    private: const displayValue: string;
+    private: std::string displayValue;
 
-    private: const sessionTimeout: int64_t;
+    private: int64_t sessionTimeout;
 
-    private: const sessionInactivityTimeout: int64_t;
+    private: int64_t sessionInactivityTimeout;
 
- constructor (string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout){
+: BasicUserRole(std::string aRole, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout){
             this(aRole, aRole, a_int_RoleId, aSessionTimeout, aSessionInactivityTimeout);
                     
 
@@ -126,67 +125,65 @@ class BasicUserRole
 }
 
 
- constructor (string aRole, string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout){
-
-            super();
-        this.m_int_RoleId= a_int_RoleId;
+: BasicUserRole(std::string aRole, std::string aDisplayValue, int32_t a_int_RoleId, int64_t aSessionTimeout, int64_t aSessionInactivityTimeout){
+this->m_int_RoleId= a_int_RoleId;
     
-this.role= aRole;
+this->role= aRole;
     
-this.displayValue= aDisplayValue;
+this->displayValue= aDisplayValue;
     
-this.sessionTimeout= aSessionTimeout;
+this->sessionTimeout= aSessionTimeout;
     
-this.sessionInactivityTimeout= aSessionInactivityTimeout;
+this->sessionInactivityTimeout= aSessionInactivityTimeout;
     
-BasicUserRole.roleVector!.add(this);
+BasicUserRole::roleVector.add(this);
     
 }
 
 
-    int32_t getRoleId(){
+    private: int32_t getRoleId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.m_int_RoleId;
+                        return this->m_int_RoleId;
     
 }
 
 
-    public string getRole(){
+    public: std::string getRole(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.role;
+                        return this->role;
     
 }
 
 
-    public int64_t getSessionTimeout(){
+    public: int64_t getSessionTimeout(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sessionTimeout;
+                        return this->sessionTimeout;
     
 }
 
 
-    public int64_t getSessionInactivityTimeout(){
+    public: int64_t getSessionInactivityTimeout(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sessionInactivityTimeout;
+                        return this->sessionInactivityTimeout;
     
 }
 
 
-    public bool equals(BasicUserRole basicUserRole){
+    public: bool equals(BasicUserRole basicUserRole){
 
-                        if(this.getRoleId() == basicUserRole!.getRoleId())
+                        if(this->getRoleId() == basicUserRole.getRoleId())
                         
                                     {
                                     
@@ -207,12 +204,12 @@ BasicUserRole.roleVector!.add(this);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getRole();;
+                        return this->getRole();;
     
 }
 

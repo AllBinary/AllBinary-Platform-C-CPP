@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_MULTIGEOGRAPHICMAPBEHAVIOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_MULTIGEOGRAPHICMAPBEHAVIOR_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -50,11 +52,10 @@
 class MultiGeographicMapBehavior
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<GeographicMapCellType> getCellTypeAt(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition);
+    public: std::vector<GeographicMapCellType> getCellTypeAt(std::vector<BasicGeographicMap> geographicMapInterfaceArray, std::vector<GeographicMapCellType> geographicMapCellTypeArray, GeographicMapCellPosition geographicMapCellPosition);
 
 };
 

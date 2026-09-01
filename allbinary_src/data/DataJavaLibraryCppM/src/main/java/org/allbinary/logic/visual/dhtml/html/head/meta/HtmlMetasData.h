@@ -45,15 +45,14 @@
 class HtmlMetasData
             : public Object
          {
-        
 
-    private: static const instance: HtmlMetasData = new HtmlMetasData();
+    private: static HtmlMetasData instance() { return HtmlMetasData(); }
 
-    public static HtmlMetasData getInstance();
+    public: static HtmlMetasData getInstance();
 
-private constructor ();
+private: HtmlMetasData();
 
-    public NAME: string = "HTMLMETAS_NAME";
+    public: std::string NAME = "HTMLMETAS_NAME";
 
 };
 

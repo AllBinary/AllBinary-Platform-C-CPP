@@ -69,31 +69,30 @@
 class ImageCopyUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCopyUtil = new ImageCopyUtil();
+    private: static ImageCopyUtil instance() { return ImageCopyUtil(); }
 
-    public static ImageCopyUtil getInstance();
+    public: static ImageCopyUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const imageCreationUtil: ImageCreationUtil = ImageCreationUtil.getInstance()!;
+    private: const ImageCreationUtil imageCreationUtil = ImageCreationUtil::getInstance();
 
-private constructor ();
+private: ImageCopyUtil();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImageForRotation(Image originalImage);
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(Image originalImage);
+    public: Image createImageForRotation(Image originalImage);
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageScale(Image originalImage, float canvasScale, bool resize);
+    public: Image createImage(Image originalImage);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageScale(Image originalImage, float canvasScale, bool resize);
 
 };
 

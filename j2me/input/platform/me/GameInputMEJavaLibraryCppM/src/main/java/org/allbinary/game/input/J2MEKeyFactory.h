@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_J2MEKEYFACTORY_H
         #define ORG_ALLBINARY_GAME_INPUT_J2MEKEYFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -49,33 +51,32 @@
 class J2MEKeyFactory
             : public Object
          {
-        
 
-    private: static const instance: J2MEKeyFactory = new J2MEKeyFactory();
+    private: static J2MEKeyFactory instance() { return J2MEKeyFactory(); }
 
-    public static J2MEKeyFactory getInstance();
+    public: static J2MEKeyFactory getInstance();
 
-private constructor ();
+private: J2MEKeyFactory();
 
-    private: const gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;
+    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
 
-    public init();
+    public: void init();
 
-    public bool isSubmission(Input input);
+    public: bool isSubmission(Input input);
 
-    public bool isDelete(Input input);
+    public: bool isDelete(Input input);
 
-    public bool isBackSpace(Input input);
+    public: bool isBackSpace(Input input);
 
-    public bool isUp(Input input);
+    public: bool isUp(Input input);
 
-    public bool isDown(Input input);
+    public: bool isDown(Input input);
 
-    public bool isLeft(Input input);
+    public: bool isLeft(Input input);
 
-    public bool isRight(Input input);
+    public: bool isRight(Input input);
 
-    public bool isEnter(Input input);
+    public: bool isEnter(Input input);
 
 };
 

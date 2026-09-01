@@ -48,20 +48,19 @@
 class ResizableListenerHandler
             : public Object
          {
-        
 
-    private: static const instance: ResizableListenerHandler = new ResizableListenerHandler();
+    private: static ResizableListenerHandler instance() { return ResizableListenerHandler(); }
 
-    public static ResizableListenerHandler getInstance();
+    public: static ResizableListenerHandler getInstance();
 
-    public setListener(ResizableListenerInterface resizableListenerInterface);
+    public: void setListener(ResizableListenerInterface resizableListenerInterface);
 
-    public fire(bool isFullScreen);
+    public: void fire(bool isFullScreen);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireEvent(bool value);
+    public: void fireEvent(bool value);
 
 };
 

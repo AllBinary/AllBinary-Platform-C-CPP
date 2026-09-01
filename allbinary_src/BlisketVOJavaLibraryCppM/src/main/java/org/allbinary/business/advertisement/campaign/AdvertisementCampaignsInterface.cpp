@@ -41,9 +41,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdvertisementCampaignsInterface {
-        
 
-    add(AdvertisementInterface advertisementInterface)
+    void add(AdvertisementInterface advertisementInterface)
 
     AdvertisementInterface get(int32_t index)
 

@@ -60,57 +60,56 @@
 class AbXslHelper
             : public Object
          {
-        
 
-    private: static const instance: AbXslHelper = new AbXslHelper();
+    private: static AbXslHelper instance() { return AbXslHelper(); }
 
-    public static AbXslHelper getInstance(){
+    public: static AbXslHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbXslHelper.instance;
+                        return AbXslHelper::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string translate(AbFile xslFile, AbFile xmlFile){
+    public: std::string translate(AbFile xslFile, AbFile xmlFile){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.translate(xslFile!.getAbsolutePath(), xmlFile!.getAbsolutePath());;
+                        return this->translate(xslFile.getAbsolutePath(), xmlFile.getAbsolutePath());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string translate(AbPath xslPath, AbPath xmlPath){
+    public: std::string translate(AbPath xslPath, AbPath xmlPath){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.translate(xslPath!.getPath(), xmlPath!.getPath());;
+                        return this->translate(xslPath.getPath(), xmlPath.getPath());;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string translate(string xsltFilePath, string xmlFilePath){
+    public: std::string translate(std::string xsltFilePath, std::string xmlFilePath){
 
         try {
             
-    outputStream: ByteArrayOutputStream = new ByteArrayOutputStream();;
+    ByteArrayOutputStream outputStream = ByteArrayOutputStream();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return XslHelper.getInstance()!.translate(new StreamSource(xsltFilePath), new StreamSource(xmlFilePath), new StreamResult(outputStream))!.toString();;
+                        return XslHelper::getInstance().translate(StreamSource(xsltFilePath), StreamSource(xmlFilePath), StreamResult(outputStream)).toString();;
     
 
                 //: 

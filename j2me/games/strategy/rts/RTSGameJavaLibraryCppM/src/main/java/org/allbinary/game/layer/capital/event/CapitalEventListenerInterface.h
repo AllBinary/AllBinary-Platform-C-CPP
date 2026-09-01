@@ -46,11 +46,10 @@
         #include "CapitalEvent.h"
 
 class CapitalEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onCapitalChangeEvent(CapitalEvent event);
+    void onCapitalChangeEvent(CapitalEvent event);
 
 };
 

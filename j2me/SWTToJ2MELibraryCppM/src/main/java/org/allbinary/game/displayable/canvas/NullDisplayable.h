@@ -39,17 +39,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //SWTToJ2ME
 class NullDisplayable: public Canvas {
-        
 
-    private: static const SINGLETON: NullDisplayable = new NullDisplayable();
+    private: static const NullDisplayable SINGLETON = NullDisplayable();
 
-    public static NullDisplayable getInstance();
+    public: static NullDisplayable getInstance();
 
-private constructor ();
+private: NullDisplayable();
 
-    private: const baseGameStatistics: BaseGameStatistics = GameStatisticsFactory.getInstance()!;
+    private: const BaseGameStatistics baseGameStatistics = GameStatisticsFactory::getInstance();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

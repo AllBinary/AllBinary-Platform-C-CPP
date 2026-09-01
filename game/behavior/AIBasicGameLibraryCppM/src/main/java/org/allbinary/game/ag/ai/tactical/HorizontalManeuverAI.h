@@ -61,23 +61,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HorizontalManeuverAI: public BasicAI {
-        
 
-    currentRelativeAngle: int32_t = 0;
+    protected: int32_t currentRelativeAngle = 0;
 
-    private: currentSpeed: int32_t;
+    private: int32_t currentSpeed;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: HorizontalManeuverAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    reverse();
+    protected: void reverse();
 
-    accelerate();
+    private: void accelerate();
 
-    drop();
+    private: void drop();
 
 };
 

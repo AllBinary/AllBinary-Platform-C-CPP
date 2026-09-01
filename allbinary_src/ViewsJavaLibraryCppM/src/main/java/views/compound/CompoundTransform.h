@@ -73,13 +73,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CompoundTransform: public AbTransformer {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: CompoundTransform(TransformInfoInterface transformInfoInterface);
 
 };
 

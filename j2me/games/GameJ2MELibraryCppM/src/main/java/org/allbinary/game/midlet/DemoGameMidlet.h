@@ -79,43 +79,42 @@
 #include "CreateGameRunnable.h"
 
 class DemoGameMidlet: public GameMidlet {
-        
 
-public constructor (ClientInformationFactory clientInformationFactory);
-
-                //@Throws(Exception.constructor)
-            
-    bool isContinue();
-
-    public int32_t getHighestLevel();
+public: DemoGameMidlet(ClientInformationFactory clientInformationFactory);
 
                 //@Throws(Exception.constructor)
             
-    public GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface();
+    protected: bool isContinue();
+
+    public: int32_t getHighestLevel();
 
                 //@Throws(Exception.constructor)
             
-    GameCanvasRunnableInterface createGameCanvasRunnable(AllBinaryGameLayerManager allBinaryGameLayerManager);
+    public: GameCanvasRunnableInterface createDemoGameCanvasRunnableInterface();
 
                 //@Throws(Exception.constructor)
             
-    GameCanvasRunnableInterface createGameCanvasRunnableInterface();
+    protected: GameCanvasRunnableInterface createGameCanvasRunnable(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
-    public demoSetup();
+                //@Throws(Exception.constructor)
+            
+    protected: GameCanvasRunnableInterface createGameCanvasRunnableInterface();
 
-    public postDemoSetup();
+    public: void demoSetup();
+
+    public: void postDemoSetup();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setDemo();
+    public: void setDemo();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public createGame();
+    public: void createGame();
 
-    public bool isReady();
+    public: bool isReady();
 
 };
 

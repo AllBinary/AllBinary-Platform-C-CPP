@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYBASEROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYBASEROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Throwable.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -78,47 +80,46 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ImageArrayBaseRotationAnimation: public RotationAnimation {
-        
 
-    private: const imageModifierUtil: ImageModifierUtil = ImageModifierUtil.getInstanceOrCreate()!;
+    private: const ImageModifierUtil imageModifierUtil = ImageModifierUtil::getInstanceOrCreate();
 
-    private: const originalImageArray: std::vector<Image>;
+    private: std::vector<Image> originalImageArray;
 
-    private: imageArray: std::vector<Image> = NullImage.NULL_IMAGE_ARRAY;
+    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
-    private: currentImage: Image;
+    private: Image currentImage;
 
-    private: totalFrames: int32_t= 0;
+    private: int32_t totalFrames= 0;
 
-public constructor (std::vector<Image> originalImageArray, AngleInfo angleInfo, AnimationBehavior animationBehavior);
+public: ImageArrayBaseRotationAnimation(std::vector<Image> originalImageArray, AngleInfo angleInfo, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public setAlpha(int32_t alpha);
+    public: void setAlpha(int32_t alpha);
 
-    public nextRotation();
+    public: void nextRotation();
 
-    public previousRotation();
+    public: void previousRotation();
 
-    public setFrame(int32_t index2);
+    public: void setFrame(int32_t index2);
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    setImageArray(std::vector<Image> imageArray);
+    protected: void setImageArray(std::vector<Image> imageArray);
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public close();
+    public: void close();
 
                 //@Throws(Throwable.constructor)
             
-    finalize();
+    protected: void finalize();
 
 };
 

@@ -45,7 +45,6 @@
         #include "JPopupMenu.h"
 
 class CustomTreeNodeInterface: public MutableTreeNode {
-        
 
     JPopupMenu getJPopupMenu()
 

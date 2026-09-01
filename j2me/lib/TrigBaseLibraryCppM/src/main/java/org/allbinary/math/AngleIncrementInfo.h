@@ -67,31 +67,30 @@
 class AngleIncrementInfo
             : public Object
          {
-        
 
-    private: static const INCREMENT: string = "Inc: ";
+    private: static const std::string INCREMENT = "Inc: ";
 
-    private: const angleIncrement: int16_t;
+    private: int16_t angleIncrement;
 
-    public const DOWN_FRAME: Integer;
+    public: Integer DOWN_FRAME;
 
-    public const UP_FRAME: Integer;
+    public: Integer UP_FRAME;
 
-    public const LEFT_FRAME: Integer;
+    public: Integer LEFT_FRAME;
 
-    public const RIGHT_FRAME: Integer;
+    public: Integer RIGHT_FRAME;
 
-public constructor (int16_t angleIncrement);
+public: AngleIncrementInfo(int16_t angleIncrement);
 
-    private: const frameUtil: FrameUtil = FrameUtil.getInstance()!;
+    private: const FrameUtil frameUtil = FrameUtil::getInstance();
 
-    public int32_t getFrameAngle(int32_t frame);
+    public: int32_t getFrameAngle(int32_t frame);
 
-    public int16_t getAngleIncrement();
+    public: int16_t getAngleIncrement();
 
-    public string toString();
+    public: std::string toString();
 
-    public int32_t getClosestGeneralDirection(int16_t angle);
+    public: int32_t getClosestGeneralDirection(int16_t angle);
 
 };
 

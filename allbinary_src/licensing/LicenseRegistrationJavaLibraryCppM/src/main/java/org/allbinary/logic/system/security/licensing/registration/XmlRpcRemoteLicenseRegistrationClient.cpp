@@ -79,75 +79,74 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcRemoteLicenseRegistrationClient: public XmlRpcAbeClient {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const PAGE: string = "licenseregistrationserverssl.php";
+    private: const std::string PAGE = "licenseregistrationserverssl.php";
 
-public constructor (AbeClientInformationInterface clientInfo){
+public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface clientInfo){
             super(clientInfo, "LicenseRegistrationServer.process");
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setServer(0);
+this->setServer(0);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public any get(any = {} anyType, CryptInterface cryptInterface){
+    public: Object* get(Object* anyType, CryptInterface cryptInterface){
 
         try {
             
-    server: string = getClientInfo()!.getLicenseServer(this.getServer())!;;
+    std::string server = getClientInfo().getLicenseServer(this->getServer());;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(TRYING);
+stringBuffer.append(TRYING);
     
-stringBuffer!.appendint(this.getServer());
+stringBuffer.appendint(this->getServer());
     
-stringBuffer!.append(SEP);
+stringBuffer.append(SEP);
     
-stringBuffer!.append(server);
+stringBuffer.append(server);
     
-this.logUtil!.putF(CommonLabels.getInstance()!.START_LABEL +stringBuffer!.toString(), this, this.commonStrings!.GET);
-    
-
-    param: Vector = new Vector();;
+this->logUtil.putF(CommonLabels::getInstance().START_LABEL +stringBuffer.toString(), this, this->commonStrings.GET);
     
 
-    serverUrl: string = getClientInfo()!.getLicenseServer(this.getServer())!;;
+    Vector param = Vector();;
     
 
-    index: int32_t = serverUrl!.lastIndexOf("/")!;;
-    
-serverUrl= serverUrl!.substring(0, index +1) +this.PAGE;
+    std::string serverUrl = getClientInfo().getLicenseServer(this->getServer());;
     
 
-    xmlRpcClient: XmlRpcClient = new XmlRpcClient(serverUrl);;
+    int32_t index = serverUrl.lastIndexOf("/");;
     
-this.setClient(xmlRpcClient);
+serverUrl= serverUrl.substring(0, index +1) +this->PAGE;
     
-xmlRpcClient!.setBasicAuthentication(
+
+    XmlRpcClient xmlRpcClient = XmlRpcClient(serverUrl);;
+    
+this->setClient(xmlRpcClient);
+    
+xmlRpcClient.setBasicAuthentication(
                             nullptr, 
                             nullptr);
     
 
-    hashtable: Hashtable<any, any> = anyType as Hashtable<any, any>;;
+    Hashtable<any, any> hashtable = anyType as Hashtable<any, any>;;
     
-this.logUtil!.putF(CLIENT_INFO +hashtable.toString(), this, this.commonStrings!.GET);
+this->logUtil.putF(CLIENT_INFO +hashtable.toString(), this, this->commonStrings.GET);
     
 param.add(hashtable);
     
 
-    result: any = xmlRpcClient!.execute(this.getRemoteMethod(), param, cryptInterface)!;;
+    Object* result = xmlRpcClient.execute(this->getRemoteMethod(), param, cryptInterface);;
     
-this.logUtil!.putF(RESULT +result.toString(), this, this.commonStrings!.GET);
+this->logUtil.putF(RESULT +result->toString(), this, this->commonStrings.GET);
     
 isOnline= true;
     
@@ -161,17 +160,17 @@ isOnline= true;
                 //: 
 } catch(e) 
             {
-this.logUtil!.putF(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!.getStackTrace(e), this, this.commonStrings!.GET);
+this->logUtil.putF(TRYING_OTHER_SERVERS +ExceptionUtil::getInstance().getStackTrace(e), this, this->commonStrings.GET);
     
 
-                        if(!e.getMessage()!.startsWith(HOST_NOT_RESOLVED))
+                        if(!e.getMessage().startsWith(HOST_NOT_RESOLVED))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 
                                     }
@@ -180,7 +179,7 @@ this.logUtil!.putF(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!.getStackTr
                             
 
 
-                            throw new Exception(HOST_NOT_RESOLVED_MSG);
+                            throw Exception(HOST_NOT_RESOLVED_MSG);
                     
 
                         }
@@ -190,26 +189,26 @@ this.logUtil!.putF(TRYING_OTHER_SERVERS +ExceptionUtil.getInstance()!.getStackTr
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(SERVER_REPORTED_ERROR, this, this.commonStrings!.GET, e);
+this->logUtil.put(SERVER_REPORTED_ERROR, this, this->commonStrings.GET, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 }
 */
                 //: 
 /* catch(e) 
             {
-this.logUtil!.put(UNKNOWN_ERROR, this, this.commonStrings!.GET, e);
+this->logUtil.put(UNKNOWN_ERROR, this, this->commonStrings.GET, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tryAnother(anyType);;
+                        return this->tryAnother(anyType);;
     
 }
 */

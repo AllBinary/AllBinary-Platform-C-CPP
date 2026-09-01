@@ -43,29 +43,26 @@
 class SensorActionFactory
             : public Object
          {
-        
 
-    private: static const instance: SensorActionFactory = new SensorActionFactory();
+    private: static SensorActionFactory instance() { return SensorActionFactory(); }
 
-    public static SensorActionFactory getInstance(){
+    public: static SensorActionFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SensorActionFactory.instance;
+                        return SensorActionFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: SensorActionFactory(){
+}
 
 
-    public const ATTACK: SensorAction = new SensorAction("Attack");
+    public: const SensorAction ATTACK = SensorAction("Attack");
 
-    public const EVADE: SensorAction = new SensorAction("Evade");
+    public: const SensorAction EVADE = SensorAction("Evade");
 
 };
 

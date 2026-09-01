@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -57,30 +59,28 @@
 class NullIndexedAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    public static const NULL_INDEXED_ANIMATION_ARRAY: std::vector<IndexedAnimationInterface> = [];
+    public: static const std::vector<IndexedAnimationInterface> NULL_INDEXED_ANIMATION_ARRAY = {};
 
-    private: static NULL_INDEXED_ANIMATION_FACTORY: NullIndexedAnimationFactory = new NullIndexedAnimationFactory();
+    private: static NullIndexedAnimationFactory NULL_INDEXED_ANIMATION_FACTORY = NullIndexedAnimationFactory();
 
-    public static NullIndexedAnimationFactory getFactoryInstance(){
+    public: static NullIndexedAnimationFactory getFactoryInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullIndexedAnimationFactory.NULL_INDEXED_ANIMATION_FACTORY;
+                        return NullIndexedAnimationFactory::NULL_INDEXED_ANIMATION_FACTORY;
     
 }
 
 
 //inner= member=true isStatic=
 class NullIndexedAnimationInner: public NullIndexedAnimation {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
- constructor (){
-            super(new IndexedAnimationBehavior(1, 250));
+: NullIndexedAnimationInner(){
+            super(IndexedAnimationBehavior(1, 250));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -88,46 +88,44 @@ class NullIndexedAnimationInner: public NullIndexedAnimation {
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 }
 
 
 };
 
             
-    private: const NULL_ANIMATION: Animation = new this.NullIndexedAnimationInner();
+    private: const Animation NULL_ANIMATION = NullIndexedAnimationInner();
 
-private constructor (){
-
-            super();
-        }
+private: NullIndexedAnimationFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION;
+                        return this->NULL_ANIMATION;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NULL_ANIMATION;
+                        return this->NULL_ANIMATION;
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

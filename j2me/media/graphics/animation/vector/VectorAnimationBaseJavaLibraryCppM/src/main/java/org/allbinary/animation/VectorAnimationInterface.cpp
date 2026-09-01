@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -48,7 +50,6 @@
         #include "IndexedAnimationInterface.h"
 
 class VectorAnimationInterface: public IndexedAnimationInterface, public ColorCompositeInterface {
-        
 
     std::vector<std::vector<int32_t>> getPoints(int32_t frame)
 

@@ -56,35 +56,32 @@
 class BufferedLineReader
             : public Object
          {
-        
 
-    private: const tmpIn: BufferedReader;
+    private: BufferedReader tmpIn;
 
-public constructor (AbFile file){
-
-            super();
-        this.tmpIn= new BufferedReader(new FileReader(AbFileNativeUtil.get(file)));
+public: BufferedLineReader(AbFile file){
+this->tmpIn= BufferedReader(FileReader(AbFileNativeUtil::get(file)));
     
 }
 
 
-    public readUpToLines(int64_t readAheadIndex){
+    public: void readUpToLines(int64_t readAheadIndex){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string readLine(){
+    public: std::string readLine(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tmpIn!.readLine();;
+                        return this->tmpIn.readLine();;
     
 }
 
 
-    public int64_t getSize(){
+    public: int64_t getSize(){
 
 
 
@@ -94,7 +91,7 @@ public constructor (AbFile file){
 }
 
 
-    public int32_t getCurrent(){
+    public: int32_t getCurrent(){
 
 
 

@@ -71,31 +71,30 @@
 class AllBinaryPreloaderActivator
             : public Object
         : public BundleActivator {
-        
 
-    private: static context: BundleContext;
+    private: static BundleContext context;
 
-    private: static const CRYPT_REGISTRY_NAME: string = "bundle.abcs.logic.system.loader.CryptService";
+    private: static const std::string CRYPT_REGISTRY_NAME = "bundle.abcs.logic.system.loader.CryptService";
 
-    public static BundleContext getBundleContext();
+    public: static BundleContext getBundleContext();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: AllBinaryPreloaderActivator();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public start(BundleContext context);
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public registerAsService();
+    public: void start(BundleContext context);
 
                 //@Throws(Exception.constructor)
             
-    public stop(BundleContext context);
+    public: void registerAsService();
+
+                //@Throws(Exception.constructor)
+            
+    public: void stop(BundleContext context);
 
 };
 

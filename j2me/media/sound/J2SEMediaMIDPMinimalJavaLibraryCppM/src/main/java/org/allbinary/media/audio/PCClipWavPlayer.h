@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_PCCLIPWAVPLAYER_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_PCCLIPWAVPLAYER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -103,60 +105,59 @@
 #include "NullClip.h"
 #include "NullControl.h"
 
-class PCClipWavPlayer: public BasicPlayer: public LineListener {
-        
+class PCClipWavPlayer: public BasicPlayer, public LineListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const audioInputStream: AudioInputStream;
+    private: AudioInputStream audioInputStream;
 
-    private: const clip: Clip;
+    private: Clip clip;
 
-public constructor (InputStream inputStream);
+public: PCClipWavPlayer(InputStream inputStream);
 
-    public close();
+    public: void close();
 
                 //@Throws(Exception.constructor)
             
-    close2();
+    private: void close2();
 
-    public string getContentType();
+    public: std::string getContentType();
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public start();
+    public: void start();
 
                 //@Throws(Exception.constructor)
             
-    start2();
+    private: void start2();
 
                 //@Throws(Exception.constructor)
             
-    Clip create(AudioInputStream audioInputStream);
+    private: Clip create(AudioInputStream audioInputStream);
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public stop();
+    public: void stop();
 
                 //@Throws(Exception.constructor)
             
-    stop2();
+    private: void stop2();
 
-    public Control getControl(string controlType);
+    public: Control getControl(std::string controlType);
 
-    public std::vector<Control> getControls();
+    public: std::vector<Control> getControls();
 
-    public setVolume(int32_t leftVolume, int32_t rightVolume);
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume);
 
-    float getVolume();
+    private: float getVolume();
 
-    setVolumeF(float volume);
+    private: void setVolumeF(float volume);
 
-    public int64_t getDuration();
+    public: int64_t getDuration();
 
-    public update(LineEvent event);
+    public: void update(LineEvent event);
 
 };
 

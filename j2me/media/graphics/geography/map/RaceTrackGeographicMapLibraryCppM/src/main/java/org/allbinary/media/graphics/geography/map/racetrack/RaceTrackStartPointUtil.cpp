@@ -65,28 +65,27 @@
 class RaceTrackStartPointUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static GPoint get(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t index){
+    public: static GPoint get(BasicGeographicMap geographicMapInterface, PathFindingInfo pathFindingInfo, int32_t index){
 
-    list: BasicArrayList = pathFindingInfo!.getStartPathFindingNodeList()!;;
+    BasicArrayList list = pathFindingInfo.getStartPathFindingNodeList();;
     
 
-    startPathFindingNode: PathFindingNode = list.get(index) as PathFindingNode;;
+    PathFindingNode startPathFindingNode = list.get(index) as PathFindingNode;;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition = startPathFindingNode!.geographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = startPathFindingNode.geographicMapCellPosition;;
     
 
-    point: GPoint = geographicMapCellPosition!.getPoint()!;;
+    GPoint point = geographicMapCellPosition.getPoint();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointFactory.getInstance()!.createXY(point.getX(), point.getY() +geographicMapInterface!.getAllBinaryTiledLayer()!.getHalfCellHeight());;
+                        return PointFactory::getInstance().createXY(point.getX(), point.getY() +geographicMapInterface.getAllBinaryTiledLayer().getHalfCellHeight());;
     
 }
 

@@ -42,13 +42,12 @@
 #include "Sound.h"
 
 class AttackSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new AttackSound();
+    private: static Sound soundInterface = AttackSound();
 
-    public static Sound getInstance();
+    public: static Sound getInstance();
 
-private constructor ();
+private: AttackSound();
 
 };
 

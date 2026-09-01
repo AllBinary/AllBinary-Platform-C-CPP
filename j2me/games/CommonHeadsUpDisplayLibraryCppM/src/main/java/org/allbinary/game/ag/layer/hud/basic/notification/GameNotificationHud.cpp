@@ -72,12 +72,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GameNotification.h"
 
-class GameNotificationHud: public BasicHud: public GameNotificationListenerInterface {
-        
+class GameNotificationHud: public BasicHud, public GameNotificationListenerInterface {
 
-    public static const NULL_GAME_NOTIFICATION: GameNotificationHud = new GameNotificationHud(BasicHudFactory.getInstance()!.TOPCENTER, BasicHudFactory.getInstance()!.HORIZONTAL, 0, BasicColorFactory.getInstance()!.RED);
+    public: static const GameNotificationHud NULL_GAME_NOTIFICATION = GameNotificationHud(BasicHudFactory::getInstance().TOPCENTER, BasicHudFactory::getInstance().HORIZONTAL, 0, BasicColorFactory::getInstance().RED);
 
-public constructor (int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
+public: GameNotificationHud(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor){
             super(location, direction, bufferZone, basicColor);
                     
 
@@ -86,50 +85,50 @@ public constructor (int32_t location, int32_t direction, int32_t bufferZone, Bas
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    private: const METHOD_NAME: string = "onGameNotificationEvent";
+    private: const std::string METHOD_NAME = "onGameNotificationEvent";
 
-    private: lastGameNotificationEvent: GameNotificationEvent = GameNotification.NULL_GAME_NOTIFICATION_EVENT;
+    private: GameNotificationEvent lastGameNotificationEvent = GameNotification::NULL_GAME_NOTIFICATION_EVENT;
 
                 //@Throws(Exception.constructor)
             
-    public onGameNotificationEvent(GameNotificationEvent gameNotificationEvent){
+    public: void onGameNotificationEvent(GameNotificationEvent gameNotificationEvent){
 
-                        if(this.lastGameNotificationEvent != gameNotificationEvent)
+                        if(this->lastGameNotificationEvent != gameNotificationEvent)
                         
                                     {
-                                    this.lastGameNotificationEvent= gameNotificationEvent;
+                                    this->lastGameNotificationEvent= gameNotificationEvent;
     
-this.logUtil!.putF(gameNotificationEvent!.getString(), this, this.METHOD_NAME);
+this->logUtil.putF(gameNotificationEvent.getString(), this, this->METHOD_NAME);
     
 
                                     }
                                 
-this.add(gameNotificationEvent!.getString(), gameNotificationEvent!.getSeconds(), gameNotificationEvent!.getBasicColorP(), gameNotificationEvent!.getPermanent());
+this->add(gameNotificationEvent.getString(), gameNotificationEvent.getSeconds(), gameNotificationEvent.getBasicColorP(), gameNotificationEvent.getPermanent());
     
 }
 
 
-    add(string string, Integer seconds, BasicColor basicColor, Boolean permanent){
+    protected: void add(std::string string, Integer seconds, BasicColor basicColor, Boolean permanent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processTick(){
+    public: void processTick(){
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public clear(){
+    public: void clear(){
 }
 
 

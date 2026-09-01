@@ -62,23 +62,20 @@
         #include "WeaponLayer.h"
 
 class WeaponLayerCircularPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor (){
-
-            super();
-        }
+public: WeaponLayerCircularPool(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public WeaponLayer getInstanceWeaponLayer(AllBinaryLayer sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable){
+    public: WeaponLayer getInstanceWeaponLayer(AllBinaryLayer sourceLayerInterface, int32_t x, int32_t y, int32_t z, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable){
 
-    weaponLayer: WeaponLayer = super.getNextInstance() as WeaponLayer;;
+    WeaponLayer weaponLayer = super.getNextInstance() as WeaponLayer;;
     
-weaponLayer!.initXYZ(x, y, z);
+weaponLayer.initXYZ(x, y, z);
     
-weaponLayer!.init(sourceLayerInterface, angle, otherAngle, weaponProperties, scoreable);
+weaponLayer.init(sourceLayerInterface, angle, otherAngle, weaponProperties, scoreable);
     
 
 

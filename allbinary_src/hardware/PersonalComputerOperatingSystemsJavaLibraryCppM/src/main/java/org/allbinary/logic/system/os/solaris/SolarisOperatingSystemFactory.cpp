@@ -69,55 +69,52 @@
 class SolarisOperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: SolarisOperatingSystemFactory = new SolarisOperatingSystemFactory();
+    private: static SolarisOperatingSystemFactory instance() { return SolarisOperatingSystemFactory(); }
 
-    public static SolarisOperatingSystemFactory getInstance(){
+    public: static SolarisOperatingSystemFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SolarisOperatingSystemFactory.instance;
+                        return SolarisOperatingSystemFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: SolarisOperatingSystemFactory(){
+}
 
 
-    public GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem getOperatingSystemInstance(){
 
         try {
             
-    operatingSystems: OperatingSystems = OperatingSystems.getInstance()!;;
+    OperatingSystems operatingSystems = OperatingSystems::getInstance();;
     
 
-    osName: string = SystemProperties.getInstance()!.getName()!;;
+    std::string osName = SystemProperties::getInstance().getName();;
     
 
-    operatingSystemInterface: GenericOperatingSystem;;
+    GenericOperatingSystem operatingSystemInterface;;
     
 
-                        if(osName!.compareTo(operatingSystems!.SOLARIS) == 0)
+                        if(osName.compareTo(operatingSystems.SOLARIS) == 0)
                         
                                     {
-                                    operatingSystemInterface= new SolarisOS();
+                                    operatingSystemInterface= SolarisOS();
     
 
                                     }
                                 
                         else {
                             
-                        if(operatingSystems!.isUnknownSpecificOSAllowed())
+                        if(operatingSystems.isUnknownSpecificOSAllowed())
                         
                                     {
-                                    operatingSystemInterface= new SolarisOS();
+                                    operatingSystemInterface= SolarisOS();
     
 
                                     }
@@ -126,7 +123,7 @@ private constructor (){
                             
 
 
-                            throw new Exception("Specific Solaris OS Not Supported: " +osName);
+                            throw Exception("Specific Solaris OS Not Supported: " +osName);
                     
 
                         }
@@ -145,13 +142,13 @@ private constructor (){
 } catch(e) 
             {
 
-                        if(LogConfigTypes.LOGGING.contains(LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(LogConfigTypes::LOGGING.contains(LogConfigTypeFactory::getInstance().FACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -160,7 +157,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoOperatingSystem.NO_OPERATING_SYSTEM;
+                        return NoOperatingSystem::NO_OPERATING_SYSTEM;
     
 }
 

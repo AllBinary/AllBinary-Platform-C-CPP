@@ -68,71 +68,68 @@
         #include "GeographicMapCellPositionAreaBase.h"
 
 class GeographicMapCellPositionArea: public GeographicMapCellPositionAreaBase {
-        
 
-    private: const cellPositionsUtil: CellPositionsUtil = CellPositionsUtil.getInstance()!;
+    private: const CellPositionsUtil cellPositionsUtil = CellPositionsUtil::getInstance();
 
-    private: const layerCoveringCellPositionsUtil: LayerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil.getInstance()!;
+    private: const LayerCoveringCellPositionsUtil layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
 
-    private: const reusableOccupyingGeographicMapCellPositionList: BasicArrayList = new BasicArrayListS(4);
+    private: const BasicArrayList reusableOccupyingGeographicMapCellPositionList = BasicArrayListS(4);
 
-    private: const reusableSurroundingGeographicMapCellPositionList: BasicArrayList = new BasicArrayListS(12);
+    private: const BasicArrayList reusableSurroundingGeographicMapCellPositionList = BasicArrayListS(12);
 
-    private: const surroundingCircularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(0)!;
+    private: const CircularIndexUtil surroundingCircularIndexUtil = CircularIndexUtil::createInstance(0);
 
-    private: const layerInterface: AllBinaryLayer;
+    private: AllBinaryLayer layerInterface;
 
-    private: LIST: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: occupyingGeographicMapCellPositionList: BasicArrayList = this.LIST;
+    private: BasicArrayList occupyingGeographicMapCellPositionList = this->LIST;
 
-    private: surroundingGeographicMapCellPositionList: BasicArrayList = this.LIST;
+    private: BasicArrayList surroundingGeographicMapCellPositionList = this->LIST;
 
-public constructor (AllBinaryLayer layerInterface){
-
-            super();
-        this.layerInterface= layerInterface;
+public: GeographicMapCellPositionArea(AllBinaryLayer layerInterface){
+this->layerInterface= layerInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(BasicGeographicMap geographicMapInterface){
-this.occupyingGeographicMapCellPositionList= this.layerCoveringCellPositionsUtil!.getAllXY(geographicMapInterface, this.layerInterface, this.layerInterface!.getXP(), this.layerInterface!.getYP(), this.reusableOccupyingGeographicMapCellPositionList);
+    public: void update(BasicGeographicMap geographicMapInterface){
+this->occupyingGeographicMapCellPositionList= this->layerCoveringCellPositionsUtil.getAllXY(geographicMapInterface, this->layerInterface, this->layerInterface.getXP(), this->layerInterface.getYP(), this->reusableOccupyingGeographicMapCellPositionList);
     
-this.surroundingGeographicMapCellPositionList= this.cellPositionsUtil!.getAllSurrounding(geographicMapInterface, this.occupyingGeographicMapCellPositionList, this.reusableSurroundingGeographicMapCellPositionList);
+this->surroundingGeographicMapCellPositionList= this->cellPositionsUtil.getAllSurrounding(geographicMapInterface, this->occupyingGeographicMapCellPositionList, this->reusableSurroundingGeographicMapCellPositionList);
     
-this.surroundingCircularIndexUtil!.setSize(this.surroundingGeographicMapCellPositionList!.size());
+this->surroundingCircularIndexUtil.setSize(this->surroundingGeographicMapCellPositionList.size());
     
 }
 
 
-    public BasicArrayList getOccupyingGeographicMapCellPositionList(){
+    public: BasicArrayList getOccupyingGeographicMapCellPositionList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.occupyingGeographicMapCellPositionList;
+                        return this->occupyingGeographicMapCellPositionList;
     
 }
 
 
-    public BasicArrayList getSurroundingGeographicMapCellPositionList(){
+    public: BasicArrayList getSurroundingGeographicMapCellPositionList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.surroundingGeographicMapCellPositionList;
+                        return this->surroundingGeographicMapCellPositionList;
     
 }
 
 
-    public GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition(){
 
-    geographicMapCellPosition: GeographicMapCellPosition = this.surroundingGeographicMapCellPositionList!.get(this.surroundingCircularIndexUtil!.getIndex()) as GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition = this->surroundingGeographicMapCellPositionList.get(this->surroundingCircularIndexUtil.getIndex()) as GeographicMapCellPosition;;
     
-this.surroundingCircularIndexUtil!.next();
+this->surroundingCircularIndexUtil.next();
     
 
 

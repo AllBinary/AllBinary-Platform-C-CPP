@@ -84,28 +84,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GenericBodyCustomizerView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class GenericBodyCustomizerView: public HttpStoreComponentView, public DomNodeInterface {
 
-    private: static const NAME: string = "None";
+    private: static const std::string NAME = "None";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    body: GenericBodyValidation;
+    protected: GenericBodyValidation body;
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public addDomNodeInterfaces();
+public: GenericBodyCustomizerView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

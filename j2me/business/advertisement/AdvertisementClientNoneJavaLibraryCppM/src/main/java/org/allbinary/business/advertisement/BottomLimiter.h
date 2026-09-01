@@ -52,29 +52,28 @@
 class BottomLimiter
             : public Object
          {
-        
 
-    private: static const instance: BottomLimiter = new BottomLimiter();
+    private: static BottomLimiter instance() { return BottomLimiter(); }
 
-    public static BottomLimiter getInstance();
+    public: static BottomLimiter getInstance();
 
-    private: bottom: int32_t= 0;
+    private: int32_t bottom= 0;
 
-    private: deltaY: int32_t= 0;
+    private: int32_t deltaY= 0;
 
-    private: lower: int32_t= 0;
+    private: int32_t lower= 0;
 
-    private: higher: int32_t= 0;
+    private: int32_t higher= 0;
 
-private constructor ();
+private: BottomLimiter();
 
-    public init(int32_t lower, int32_t higher);
+    public: void init(int32_t lower, int32_t higher);
 
-    public update();
+    public: void update();
 
-    public int32_t getDeltaY();
+    public: int32_t getDeltaY();
 
-    public int32_t getBottom();
+    public: int32_t getBottom();
 
 };
 

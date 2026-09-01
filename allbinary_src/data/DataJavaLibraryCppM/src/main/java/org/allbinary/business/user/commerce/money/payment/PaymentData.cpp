@@ -42,53 +42,52 @@
 class PaymentData
             : public Object
          {
-        
 
-    public static const MIN: int32_t = 4;
+    public: static const int32_t MIN = 4;
 
-    public static const MAX: int32_t = 19;
+    public: static const int32_t MAX = 19;
 
-    public static const ADDNEW: string = "Add New Payment";
+    public: static const std::string ADDNEW = "Add New Payment";
 
-    public static const VIEW: string = "View Payment";
+    public: static const std::string VIEW = "View Payment";
 
-    public static const SELECT: string = "Select Payment";
+    public: static const std::string SELECT = "Select Payment";
 
-    public static const CHANGE: string = "Change Payment";
+    public: static const std::string CHANGE = "Change Payment";
 
-    public static const PAYMENT: string = "PAYMENT";
+    public: static const std::string PAYMENT = "PAYMENT";
 
-    public static const METHOD: string = "PAYMENT_METHOD";
+    public: static const std::string METHOD = "PAYMENT_METHOD";
 
-    public static const ID: string = "PAYMENT_ID";
+    public: static const std::string ID = "PAYMENT_ID";
 
-    public static const NUMBER: string = "PAYMENT_NUMBER";
+    public: static const std::string NUMBER = "PAYMENT_NUMBER";
 
-    public static const NAME: string = "PAYMENT_NAME";
+    public: static const std::string NAME = "PAYMENT_NAME";
 
-    public static const TYPE: string = "PAYMENT_TYPE";
+    public: static const std::string TYPE = "PAYMENT_TYPE";
 
-    public static const EXPIRATION: string = "PAYMENT_EXPIRATION";
+    public: static const std::string EXPIRATION = "PAYMENT_EXPIRATION";
 
-    public static const TENDERTYPE: string = "PAYMENT_TENDERTYPE";
+    public: static const std::string TENDERTYPE = "PAYMENT_TENDERTYPE";
 
-    public static const TRANSACTIONTYPE: string = "PAYMENT_TRANSACTIONTYPE";
+    public: static const std::string TRANSACTIONTYPE = "PAYMENT_TRANSACTIONTYPE";
 
-    public static const ABA: string = "PAYMENT_ABA";
+    public: static const std::string ABA = "PAYMENT_ABA";
 
-    public static const ACCOUNT: string = "PAYMENT_ACCOUNT";
+    public: static const std::string ACCOUNT = "PAYMENT_ACCOUNT";
 
-    public static const ACCOUNTTYPE: string = "PAYMENT_ACCOUNTTYPE";
+    public: static const std::string ACCOUNTTYPE = "PAYMENT_ACCOUNTTYPE";
 
-    public static const AUTHORIZATIONCODE: string = "PAYMENT_AUTHORIZATIONCODE";
+    public: static const std::string AUTHORIZATIONCODE = "PAYMENT_AUTHORIZATIONCODE";
 
-    public static const CHECKNUMBER: string = "PAYMENT_CHECKNUMBER";
+    public: static const std::string CHECKNUMBER = "PAYMENT_CHECKNUMBER";
 
-    public static const CHECKTYPE: string = "PAYMENT_CHECKTYPE";
+    public: static const std::string CHECKTYPE = "PAYMENT_CHECKTYPE";
 
-    public static const DRIVERSLICENSE: string = "PAYMENT_DRIVERSLICENSE";
+    public: static const std::string DRIVERSLICENSE = "PAYMENT_DRIVERSLICENSE";
 
-    public static const MAGNETICINKCHECKREADER: string = "PAYMENT_MAGNETICINKCHECKREADER";
+    public: static const std::string MAGNETICINKCHECKREADER = "PAYMENT_MAGNETICINKCHECKREADER";
 
 };
 

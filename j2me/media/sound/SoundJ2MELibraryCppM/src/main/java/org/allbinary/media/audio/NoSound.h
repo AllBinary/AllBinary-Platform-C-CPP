@@ -46,13 +46,12 @@
 #include "NoPlayer.h"
 
 class NoSound: public Sound {
-        
 
-    public static NoSound getInstance();
+    public: static NoSound getInstance();
 
-    private: static const instance: NoSound = new NoSound();
+    private: static NoSound instance() { return NoSound(); }
 
-private constructor ();
+private: NoSound();
 
 };
 

@@ -56,19 +56,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ViewPositionBase: public GPoint {
-        
 
-    public static const NULL_VIEW_POSITION: ViewPositionBase = new ViewPositionBase(0, 0, 0);
+    public: static const ViewPositionBase NULL_VIEW_POSITION = ViewPositionBase(0, 0, 0);
 
-protected constructor (int32_t x, int32_t y, int32_t z);
+protected: ViewPositionBase(int32_t x, int32_t y, int32_t z);
 
-    public int32_t getX2();
+    public: int32_t getX2();
 
-    public int32_t getY2();
+    public: int32_t getY2();
 
-    public int32_t getZ2();
+    public: int32_t getZ2();
 
-    public setAllbinaryLayer(any = {} allbinaryLayer);
+    public: void setAllbinaryLayer(Object* allbinaryLayer);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGETOOL_H
         #define ORG_ALLBINARY_IMAGE_IMAGETOOL_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -60,13 +62,12 @@
 class ImageTool
             : public Object
          {
-        
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: ImageTool();
 
 };
 

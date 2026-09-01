@@ -28,7 +28,6 @@
 class ImageItem
             : public Object
          {
-        
 
 };
 

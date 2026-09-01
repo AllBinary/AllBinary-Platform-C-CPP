@@ -53,25 +53,24 @@
 class BasicTable
             : public Object
         : public BasicTableInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public string drop();
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string create();
+    public: std::string drop();
 
                 //@Throws(Exception.constructor)
             
-    public string restore();
+    public: std::string create();
 
                 //@Throws(Exception.constructor)
             
-    public string backup();
+    public: std::string restore();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string backup();
 
 };
 

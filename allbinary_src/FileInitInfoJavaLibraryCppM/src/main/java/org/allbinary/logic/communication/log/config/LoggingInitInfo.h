@@ -89,65 +89,64 @@
 class LoggingInitInfo
             : public Object
          {
-        
 
-    private: static const INITFILENAME: string = "logConfig.xml";
+    private: static const std::string INITFILENAME = "logConfig.xml";
 
-    private: static const PACKAGE: string = PATH_GLOBALS.getInstance()!.INIT_PATH;
+    private: static const std::string PACKAGE = PATH_GLOBALS::getInstance().INIT_PATH;
 
-    private: static logConfigInfoList: BasicArrayList = 
-                null
+    private: static BasicArrayList logConfigInfoList = 
+                nullptr
             ;
 
-    private: static hasRead: bool = false;
+    private: static bool hasRead = false;
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static Document getDoc();
+    public: static Document getDoc();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static write();
+    public: static void write();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    static read();
+    private: static void read();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static setHasRead(bool value);
+    public: static void setHasRead(bool value);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    static updateIfNeeded();
+    private: static void updateIfNeeded();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static set(BasicArrayList logConfigInfoVector);
+    public: static void set(BasicArrayList logConfigInfoVector);
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList get();
+    public: static BasicArrayList get();
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList getTypeNameList();
+    public: static BasicArrayList getTypeNameList();
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList getTypeList();
+    public: static BasicArrayList getTypeList();
 
-public constructor ();
+public: LoggingInitInfo();
 
-    public bool isValid();
+    public: bool isValid();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getNumberOfLogConfigs();
+    public: int32_t getNumberOfLogConfigs();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

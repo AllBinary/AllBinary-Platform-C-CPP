@@ -48,28 +48,27 @@
 class DemoLimitedCommandTextItemArrayFactory
             : public Object
          {
-        
 
-    private: static const instance: DemoLimitedCommandTextItemArrayFactory = new DemoLimitedCommandTextItemArrayFactory();
+    private: static DemoLimitedCommandTextItemArrayFactory instance() { return DemoLimitedCommandTextItemArrayFactory(); }
 
-    public static DemoLimitedCommandTextItemArrayFactory getInstance(){
+    public: static DemoLimitedCommandTextItemArrayFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoLimitedCommandTextItemArrayFactory.instance;
+                        return DemoLimitedCommandTextItemArrayFactory::instance();
     
 }
 
 
-    private: const commandTextItemArrayFactory: CommandTextItemArrayFactory = new CommandTextItemArrayFactory(new LimitCommandsVisitor());
+    private: const CommandTextItemArrayFactory commandTextItemArrayFactory = CommandTextItemArrayFactory(LimitCommandsVisitor());
 
-    public CommandTextItemArrayFactory getCommandTextItemArrayFactory(){
+    public: CommandTextItemArrayFactory getCommandTextItemArrayFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.commandTextItemArrayFactory;
+                        return this->commandTextItemArrayFactory;
     
 }
 

@@ -70,53 +70,50 @@
 class ShowVirtualKeyboardRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const activity: Activity;
+    private: Activity activity;
 
-public constructor (Activity activity){
-
-            super();
-        this.activity= activity;
+public: ShowVirtualKeyboardRunnable(Activity activity){
+this->activity= activity;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
             
-    inputMethodManager: InputMethodManager = this.activity.getSystemService(Context.INPUT_METHOD_SERVICE) as unknown as InputMethodManager;;
+    InputMethodManager inputMethodManager = this->activity.getSystemService(Context::INPUT_METHOD_SERVICE) as unknown as InputMethodManager;;
     
 
-    viewCompositeInterface: ViewCompositeInterface = this.activity as unknown as ViewCompositeInterface;;
+    ViewCompositeInterface viewCompositeInterface = this->activity as unknown as ViewCompositeInterface;;
     
 
                         if(viewCompositeInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    ForcedLogUtil.log("Activity Null", this);
+                                    ForcedLogUtil::log("Activity Null", this);
     
 
                                     }
                                 
 
-    view: View = viewCompositeInterface!.getView()!;;
+    View view = viewCompositeInterface.getView();;
     
-inputMethodManager!.toggleSoftInputFromWindow(view.getWindowToken(), InputMethodManager.SHOW_FORCED, 0);
+inputMethodManager.toggleSoftInputFromWindow(view.getWindowToken(), InputMethodManager::SHOW_FORCED, 0);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 

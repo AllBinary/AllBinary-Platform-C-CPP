@@ -49,48 +49,45 @@
 class BasicColorCacheFactory
             : public Object
          {
-        
 
-    private: static const instance: BasicColorCacheFactory = new BasicColorCacheFactory();
+    private: static BasicColorCacheFactory instance() { return BasicColorCacheFactory(); }
 
-    public static BasicColorCacheFactory getInstance(){
+    public: static BasicColorCacheFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorCacheFactory.instance;
+                        return BasicColorCacheFactory::instance();
     
 }
 
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-private constructor (){
-
-            super();
-        }
+private: BasicColorCacheFactory(){
+}
 
 
-    public add(BasicColor basicDefaultColor){
-this.hashtable.put(new Integer(basicDefaultColor!.intValue()), basicDefaultColor);
+    public: void add(BasicColor basicDefaultColor){
+this->hashtable.put(Integer(basicDefaultColor.intValue()), basicDefaultColor);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public BasicColor getAndOrCreate(Integer integer){
+    public: BasicColor getAndOrCreate(Integer integer){
 
-    basicColor: BasicColor = this.hashtable.get(integer) as BasicColor;;
+    BasicColor basicColor = this->hashtable.get(integer) as BasicColor;;
     
 
                         if(basicColor == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    basicColor= BasicColorFactory.getInstance()!.createInstance(integer.intValue());
+                                    basicColor= BasicColorFactory::getInstance().createInstance(integer.intValue());
     
-this.hashtable.put(integer, basicColor);
+this->hashtable.put(integer, basicColor);
     
 
                                     }

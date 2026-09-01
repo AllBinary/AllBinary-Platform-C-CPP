@@ -42,40 +42,37 @@
 class StreetAddressData
             : public Object
          {
-        
 
-    public static const MAX: int32_t = 255;
+    public: static const int32_t MAX = 255;
 
-    public static const MIN: int32_t = 0;
+    public: static const int32_t MIN = 0;
 
-    public static const FORM: string = "FORM";
+    public: static const std::string FORM = "FORM";
 
-    public static const STATES: string = "STATES";
+    public: static const std::string STATES = "STATES";
 
-    public static const NUMBEROFADDRESSES: string = "STREETADDRESS_NUMBEROFADDRESSES";
+    public: static const std::string NUMBEROFADDRESSES = "STREETADDRESS_NUMBEROFADDRESSES";
 
-    public static const ID: string = "STREETADDRESS_ID";
+    public: static const std::string ID = "STREETADDRESS_ID";
 
-    public static const DEFAULT: string = "STREETADDRESS_DEFAULT_ADDRESS";
+    public: static const std::string DEFAULT = "STREETADDRESS_DEFAULT_ADDRESS";
 
-    public static const ADDRESS: string = "STREETADDRESS_ADDRESS";
+    public: static const std::string ADDRESS = "STREETADDRESS_ADDRESS";
 
-    public static const NAME: string = "STREETADDRESS_NAME";
+    public: static const std::string NAME = "STREETADDRESS_NAME";
 
-    public static const STREET: string = "STREETADDRESS_STREET";
+    public: static const std::string STREET = "STREETADDRESS_STREET";
 
-    public static const CITY: string = "STREETADDRESS_CITY";
+    public: static const std::string CITY = "STREETADDRESS_CITY";
 
-    public static const STATE: string = "STREETADDRESS_STATE";
+    public: static const std::string STATE = "STREETADDRESS_STATE";
 
-    public static const CODE: string = "STREETADDRESS_CODE";
+    public: static const std::string CODE = "STREETADDRESS_CODE";
 
-    public static const COUNTRY: string = "STREETADDRESS_COUNTRY";
+    public: static const std::string COUNTRY = "STREETADDRESS_COUNTRY";
 
-private constructor (){
-
-            super();
-        }
+private: StreetAddressData(){
+}
 
 
 };

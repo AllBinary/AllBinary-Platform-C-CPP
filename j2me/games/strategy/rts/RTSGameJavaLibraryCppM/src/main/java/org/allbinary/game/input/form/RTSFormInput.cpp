@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -101,55 +103,51 @@
 class RTSFormInput
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;
+    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    const newUnconstructedRTSLayerInterfaceArray: std::vector<CollidableDestroyableDamageableLayer> = new Array(7);
+    protected: const std::vector<CollidableDestroyableDamageableLayer> newUnconstructedRTSLayerInterfaceArray = new Array(7);
 
-    const groupInterfaceArray: std::vector<Group>;
+    protected: std::vector<Group> groupInterfaceArray;
 
-    private: selectedGeographicCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition selectedGeographicCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: stickyItemSelected: bool= false;
+    private: bool stickyItemSelected= false;
 
-    private: selectedStickyItemIndex: int32_t= 0;
+    private: int32_t selectedStickyItemIndex= 0;
 
-    private: selectedStickyItem: ABCustomItem = ABCustomItem.getNullInstance()!;
+    private: ABCustomItem selectedStickyItem = ABCustomItem::getNullInstance();
 
-public constructor (std::vector<Group> groupInterfaceArray){
+public: RTSFormInput(std::vector<Group> groupInterfaceArray){
 
-            super();
-        
-    size: int32_t = this.newUnconstructedRTSLayerInterfaceArray!.length
-                ;;
+    int32_t size = this->newUnconstructedRTSLayerInterfaceArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.newUnconstructedRTSLayerInterfaceArray[index]= CollidableDestroyableDamageableLayer.getNullInstance();
+this->newUnconstructedRTSLayerInterfaceArray[index]= CollidableDestroyableDamageableLayer::getNullInstance();
     
 }
 
-this.groupInterfaceArray= groupInterfaceArray;
+this->groupInterfaceArray= groupInterfaceArray;
     
-this.hashtable.put(DirectionFactory.getInstance()!.NAME, DirectionFactory.getInstance()!.DOWN);
+this->hashtable.put(DirectionFactory::getInstance().NAME, DirectionFactory::getInstance().DOWN);
     
 
                         if(groupInterfaceArray != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.hashtable.put(this.groupCommonFactory!.ID, groupInterfaceArray);
+                                    this->hashtable.put(this->groupCommonFactory.ID, groupInterfaceArray);
     
 
                                     }
@@ -159,15 +157,15 @@ this.hashtable.put(DirectionFactory.getInstance()!.NAME, DirectionFactory.getIns
 
                 //@Throws(Exception.constructor)
             
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
+    public: void processAtPoint(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
 
-    index: int32_t = this.getIndexAt(rtsPlayerLayerInterface, point)!;;
+    int32_t index = this->getIndexAt(rtsPlayerLayerInterface, point);;
     
 
                         if(index < 0)
@@ -183,14 +181,14 @@ this.hashtable.put(DirectionFactory.getInstance()!.NAME, DirectionFactory.getIns
                                     }
                                 
 
-    scrollSelectionForm: ScrollSelectionForm = rtsPlayerLayerInterface!.getCurrentScrollSelectionForm()!;;
+    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
     
 
-    item: ABCustomItem = scrollSelectionForm!.get(index)!;;
+    ABCustomItem item = scrollSelectionForm.get(index);;
     
 
                         if(item == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -203,30 +201,30 @@ this.hashtable.put(DirectionFactory.getInstance()!.NAME, DirectionFactory.getIns
 
                                     }
                                 
-this.processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+this->processGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager layerManager){
-this.setAllBinaryGameLayerManager(layerManager as AllBinaryGameLayerManager);
+    public: void process(AllBinaryLayerManager layerManager){
+this->setAllBinaryGameLayerManager(layerManager as AllBinaryGameLayerManager);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool processSticky(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
+    public: bool processSticky(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, GPoint point){
 
-    index: int32_t = this.getIndexAt(rtsPlayerLayerInterface, point)!;;
+    int32_t index = this->getIndexAt(rtsPlayerLayerInterface, point);;
     
 
                         if(index < 0)
@@ -242,14 +240,14 @@ this.setAllBinaryGameLayerManager(layerManager as AllBinaryGameLayerManager);
                                     }
                                 
 
-    scrollSelectionForm: ScrollSelectionForm = rtsPlayerLayerInterface!.getCurrentScrollSelectionForm()!;;
+    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
     
 
-    item: ABCustomItem = scrollSelectionForm!.get(index)!;;
+    ABCustomItem item = scrollSelectionForm.get(index);;
     
 
                         if(item == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -262,7 +260,7 @@ this.setAllBinaryGameLayerManager(layerManager as AllBinaryGameLayerManager);
 
                                     }
                                 
-this.processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
+this->processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, layerManager, item, index);
     
 
 
@@ -275,69 +273,69 @@ this.processStickyGameSpecific(associatedRtsLayer, rtsPlayerLayerInterface, laye
 
                 //@Throws(Exception.constructor)
             
-    public processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
+    public: void processStickyGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t index){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    ABCustomItem getItemAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point){
-this.logUtil!.putF(new StringMaker().append("Point: ")!.append(StringUtil.getInstance()!.toString(point))!.toString(), this, "getItemAt");
+    protected: ABCustomItem getItemAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point){
+this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstance().toString(point)).toString(), this, "getItemAt");
     
 
-    scrollSelectionForm: ScrollSelectionForm = rtsPlayerLayerInterface!.getCurrentScrollSelectionForm()!;;
+    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return scrollSelectionForm!.getSelectedItem(point);;
+                        return scrollSelectionForm.getSelectedItem(point);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    int32_t getIndexAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point){
-this.logUtil!.putF(new StringMaker().append("Point: ")!.append(StringUtil.getInstance()!.toString(point))!.toString(), this, "getItemAt");
+    protected: int32_t getIndexAt(RTSPlayerLayerInterface rtsPlayerLayerInterface, GPoint point){
+this->logUtil.putF(StringMaker().append("Point: ").append(StringUtil::getInstance().toString(point)).toString(), this, "getItemAt");
     
 
-    scrollSelectionForm: ScrollSelectionForm = rtsPlayerLayerInterface!.getCurrentScrollSelectionForm()!;;
+    ScrollSelectionForm scrollSelectionForm = rtsPlayerLayerInterface.getCurrentScrollSelectionForm();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return scrollSelectionForm!.getSelectedIndexForPoint(point);;
+                        return scrollSelectionForm.getSelectedIndexForPoint(point);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    CollidableDestroyableDamageableLayer getInstance(AllBinaryLayerManager layerManager, ABCustomItem aItem, GeographicMapCellPosition geographicMapCellPosition){
+    protected: CollidableDestroyableDamageableLayer getInstance(AllBinaryLayerManager layerManager, ABCustomItem aItem, GeographicMapCellPosition geographicMapCellPosition){
 
-    item: LayerInterfaceFactoryImageItem = aItem as LayerInterfaceFactoryImageItem;;
+    LayerInterfaceFactoryImageItem item = aItem as LayerInterfaceFactoryImageItem;;
     
 
-    layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface = item.getLayerInterfaceFactoryInterface()!;;
+    LayerInterfaceFactoryInterface layerInterfaceFactoryInterface = item.getLayerInterfaceFactoryInterface();;
     
 
-    cellPoint: GPoint = geographicMapCellPosition!.getPoint()!;;
+    GPoint cellPoint = geographicMapCellPosition.getPoint();;
     
 
                         if(layerInterfaceFactoryInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.hashtable.put(AllBinaryGameLayerManager.ID, layerManager);
+                                    this->hashtable.put(AllBinaryGameLayerManager::ID, layerManager);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return layerInterfaceFactoryInterface!.getNextInstance(this.getHashtable(), cellPoint!.getX(), cellPoint!.getY(), cellPoint!.getZ()) as RTSLayer;
+                        return layerInterfaceFactoryInterface.getNextInstance(this->getHashtable(), cellPoint.getX(), cellPoint.getY(), cellPoint.getZ()) as RTSLayer;
     
 
                                     }
@@ -346,83 +344,83 @@ this.logUtil!.putF(new StringMaker().append("Point: ")!.append(StringUtil.getIns
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableDestroyableDamageableLayer.getNullInstance();;
+                        return CollidableDestroyableDamageableLayer::getNullInstance();;
     
 }
 
 
-    public GeographicMapCellPosition getSelectedGeographicCellPosition(){
+    public: GeographicMapCellPosition getSelectedGeographicCellPosition(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.selectedGeographicCellPosition;
+                        return this->selectedGeographicCellPosition;
     
 }
 
 
-    public setSelectedGeographicCellPosition(GeographicMapCellPosition selectedGeographicCellPosition){
-this.logUtil!.putF(new StringMaker().append("Selected GeographicMapCellPosition: ")!.append(selectedGeographicCellPosition!.toString())!.toString(), this, "setSelectedGeographicCellPosition");
+    public: void setSelectedGeographicCellPosition(GeographicMapCellPosition selectedGeographicCellPosition){
+this->logUtil.putF(StringMaker().append("Selected GeographicMapCellPosition: ").append(selectedGeographicCellPosition.toString()).toString(), this, "setSelectedGeographicCellPosition");
     
-this.selectedGeographicCellPosition= selectedGeographicCellPosition;
+this->selectedGeographicCellPosition= selectedGeographicCellPosition;
     
 }
 
 
-    public bool isStickyItemSelected(){
+    public: bool isStickyItemSelected(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.stickyItemSelected;
+                        return this->stickyItemSelected;
     
 }
 
 
-    public setStickyItemSelected(bool stickyItemSelected){
-this.stickyItemSelected= stickyItemSelected;
+    public: void setStickyItemSelected(bool stickyItemSelected){
+this->stickyItemSelected= stickyItemSelected;
     
 }
 
 
-    public ABCustomItem getSelectedStickyItem(){
+    public: ABCustomItem getSelectedStickyItem(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.selectedStickyItem;
+                        return this->selectedStickyItem;
     
 }
 
 
-    public setSelectedStickyItem(ABCustomItem selectedStickyItem){
-this.selectedStickyItem= selectedStickyItem;
+    public: void setSelectedStickyItem(ABCustomItem selectedStickyItem){
+this->selectedStickyItem= selectedStickyItem;
     
 }
 
 
-    public int32_t getSelectedStickyItemIndex(){
+    public: int32_t getSelectedStickyItemIndex(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.selectedStickyItemIndex;
+                        return this->selectedStickyItemIndex;
     
 }
 
 
-    public setSelectedStickyItemIndex(int32_t selectedStickyItemIndex){
-this.selectedStickyItemIndex= selectedStickyItemIndex;
+    public: void setSelectedStickyItemIndex(int32_t selectedStickyItemIndex){
+this->selectedStickyItemIndex= selectedStickyItemIndex;
     
 }
 
 
-    public Hashtable<any, any> getHashtable(){
+    public: Hashtable<any, any> getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable;
+                        return this->hashtable;
     
 }
 

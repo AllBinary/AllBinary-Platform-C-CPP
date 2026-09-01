@@ -49,21 +49,20 @@
 class StatusFactory
             : public Object
          {
-        
 
-    private: static const instance: StatusFactory = new StatusFactory();
+    private: static StatusFactory instance() { return StatusFactory(); }
 
-    public static StatusFactory getInstance();
+    public: static StatusFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const SETSTATUS: string = "setStatus";
+    private: const std::string SETSTATUS = "setStatus";
 
-    private: const STATUS_LABEL: string = "Status: ";
+    private: const std::string STATUS_LABEL = "Status: ";
 
-    public setStatusNoLog(string status);
+    public: void setStatusNoLog(std::string status);
 
-    public setStatus(string status);
+    public: void setStatus(std::string status);
 
 };
 

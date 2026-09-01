@@ -54,9 +54,8 @@
 class RTSLayerFormFactory
             : public Object
         : public RTSLayerFormFactoryInterface {
-        
 
-    public ScrollSelectionForm getInstance(RTSLayer rtsLayer);
+    public: ScrollSelectionForm getInstance(RTSLayer rtsLayer);
 
 };
 

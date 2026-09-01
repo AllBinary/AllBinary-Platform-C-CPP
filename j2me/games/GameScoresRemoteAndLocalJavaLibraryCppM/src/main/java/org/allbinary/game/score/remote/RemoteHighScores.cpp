@@ -81,40 +81,39 @@
 #include "RemoteHighScoresData.h"
 
 class RemoteHighScores: public HighScores {
-        
 
-    private: static const hashTable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashTable = Hashtable<any, any>();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static HighScores getInstance(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, string heading, string columnTwoHeading, Boolean isAscending){
+    public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean isAscending){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RemoteHighScores.getInstancePreload(abeClientInformation, softwareInformation, gameInfo, heading, columnTwoHeading, isAscending, true);;
+                        return RemoteHighScores::getInstancePreload(abeClientInformation, softwareInformation, gameInfo, heading, columnTwoHeading, isAscending, true);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static HighScores getInstancePreload(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, string heading, string columnTwoHeading, Boolean isAscending, bool preload){
+    public: static HighScores getInstancePreload(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean isAscending, bool preload){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    highScores: HighScores = RemoteHighScores.hashTable!.get(gameInfo) as HighScores;;
+    HighScores highScores = RemoteHighScores::hashTable.get(gameInfo) as HighScores;;
     
 
                         if(highScores == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    highScores= new RemoteHighScores(abeClientInformation, softwareInformation, gameInfo, heading, columnTwoHeading, isAscending, preload);
+                                    highScores= RemoteHighScores(abeClientInformation, softwareInformation, gameInfo, heading, columnTwoHeading, isAscending, preload);
     
-RemoteHighScores.hashTable!.put(gameInfo, highScores);
+RemoteHighScores::hashTable.put(gameInfo, highScores);
     
 
                                     }
@@ -130,50 +129,50 @@ RemoteHighScores.hashTable!.put(gameInfo, highScores);
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, RemoteErrorHighScoresSingletonFactory.getInstance(), commonStrings!.GET_INSTANCE, e);
+logUtil.put(commonStrings.EXCEPTION, RemoteErrorHighScoresSingletonFactory::getInstance(), commonStrings.GET_INSTANCE, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RemoteErrorHighScoresSingletonFactory.getInstance();;
+                        return RemoteErrorHighScoresSingletonFactory::getInstance();;
     
 }
 
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: const softwareInformation: SoftwareInformation;
+    private: SoftwareInformation softwareInformation;
 
-    private: ascending: Boolean;
+    private: Boolean ascending;
 
-    public const ASCENDING: string = "ASCENDING";
+    public: const std::string ASCENDING = "ASCENDING";
 
-private constructor (AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, string heading, string columnTwoHeading, Boolean ascending, bool preload){
-            super(gameInfo!.toString(), heading, columnTwoHeading);
+private: RemoteHighScores(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation, GameInfo gameInfo, std::string heading, std::string columnTwoHeading, Boolean ascending, bool preload){
+            super(gameInfo.toString(), heading, columnTwoHeading);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.abeClientInformation= abeClientInformation;
+this->abeClientInformation= abeClientInformation;
     
-this.softwareInformation= softwareInformation;
+this->softwareInformation= softwareInformation;
     
-this.setAscending(ascending);
+this->setAscending(ascending);
     
 
                         if(preload)
                         
                                     {
-                                    RemoteHighScoresProcessorFactory.getInstance()!.process(this, this.abeClientInformation, gameInfo);
+                                    RemoteHighScoresProcessorFactory::getInstance().process(this, this->abeClientInformation, gameInfo);
     
 
                                     }
@@ -181,51 +180,51 @@ this.setAscending(ascending);
 }
 
 
-    public addHighScore(HighScore newHighScore){
-RemoteHighScoresSubmissionProcessorFactory.getInstance()!.process(this, this.abeClientInformation, newHighScore);
+    public: void addHighScore(HighScore newHighScore){
+RemoteHighScoresSubmissionProcessorFactory::getInstance().process(this, this->abeClientInformation, newHighScore);
     
 }
 
 
-    public update(Hashtable<any, any> hashtable){
-this.getList()!.clear();
+    public: void update(Hashtable<any, any> hashtable){
+this->getList().clear();
     
 
-    vector: Vector = hashtable.get(RemoteHighScoresData.getInstance()!.HIGH_SCORES) as Vector;;
+    Vector vector = hashtable.get(RemoteHighScoresData::getInstance().HIGH_SCORES) as Vector;;
     
 
                         if(vector != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    highScoreVector: Vector = vector.elementAt(index) as Vector;;
+    Vector highScoreVector = vector.elementAt(index) as Vector;;
     
 
-    displayName: string = highScoreVector!.elementAt(0) as string;;
+    std::string displayName = highScoreVector.elementAt(0) as string;;
     
 
-    score: string = highScoreVector!.elementAt(1) as string;;
+    std::string score = highScoreVector.elementAt(1) as string;;
     
 
-    longScore: int64_t = Long.parseLong(score)!;;
+    int64_t longScore = Long::parseLong(score);;
     
 
-    highScore: HighScore = new HighScore( -1, displayName, 
+    HighScore highScore = HighScore( -1, displayName, 
                             nullptr, longScore);;
     
-this.getList()!.add(highScore);
+this->getList().add(highScore);
     
 }
 
@@ -234,23 +233,23 @@ this.getList()!.add(highScore);
                                 
                         else {
                             
-    NEXT_ELEMENT: string = "NextElement: ";;
+    std::string NEXT_ELEMENT = "NextElement: ";;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    enumeration: Enumeration<any> = hashtable.elements()!;;
+    Enumeration<any> enumeration = hashtable.elements();;
     
 
-    nextElement: any;;
+    Object* nextElement;;
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-nextElement= this.enumerationUtil!.nextElement(enumeration)!;
+nextElement= this->enumerationUtil.nextElement(enumeration)!;
     
-this.logUtil!.putF(NEXT_ELEMENT +nextElement, this, commonStrings!.PROCESS);
+this->logUtil.putF(NEXT_ELEMENT +nextElement, this, commonStrings.PROCESS);
     
 }
 
@@ -260,28 +259,28 @@ this.logUtil!.putF(NEXT_ELEMENT +nextElement, this, commonStrings!.PROCESS);
 }
 
 
-    setAscending(Boolean ascending){
-this.ascending= ascending;
+    private: void setAscending(Boolean ascending){
+this->ascending= ascending;
     
 }
 
 
-    public Boolean getAscending(){
+    public: Boolean getAscending(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ascending;
+                        return this->ascending;
     
 }
 
 
-    public SoftwareInformation getSoftwareInformation(){
+    public: SoftwareInformation getSoftwareInformation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.softwareInformation;
+                        return this->softwareInformation;
     
 }
 

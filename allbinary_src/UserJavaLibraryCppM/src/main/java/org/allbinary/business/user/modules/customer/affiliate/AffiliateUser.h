@@ -55,19 +55,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AffiliateUser: public User {
-        
 
-    private: affiliateSales: AffiliateSales;
+    private: AffiliateSales affiliateSales;
 
-public constructor ();
+public: AffiliateUser();
 
-public constructor (HashMap<any, any> userHashMap);
+public: AffiliateUser(HashMap<any, any> userHashMap);
 
-    public validateSession(WeblisketSessionInterface weblisketSession);
+    public: void validateSession(WeblisketSessionInterface weblisketSession);
 
-    public updateSession(WeblisketSessionInterface weblisketSession);
+    public: void updateSession(WeblisketSessionInterface weblisketSession);
 
-    public Boolean isSessionValid();
+    public: Boolean isSessionValid();
 
 };
 

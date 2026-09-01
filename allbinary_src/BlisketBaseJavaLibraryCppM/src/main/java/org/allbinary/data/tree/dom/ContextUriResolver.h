@@ -88,21 +88,20 @@
 class ContextUriResolver
             : public Object
         : public URIResolver {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const uriResolverStrings: URIResolverStrings = URIResolverStrings.getInstance()!;
+    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: basicURIResolver: BasicUriResolver;
+    private: BasicUriResolver basicURIResolver;
 
-public constructor (BasicUriResolver basicURIResolver);
+public: ContextUriResolver(BasicUriResolver basicURIResolver);
 
                 //@Throws(TransformerException.constructor)
             
-    public Source resolve(string href, string base);
+    public: Source resolve(std::string href, std::string base);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

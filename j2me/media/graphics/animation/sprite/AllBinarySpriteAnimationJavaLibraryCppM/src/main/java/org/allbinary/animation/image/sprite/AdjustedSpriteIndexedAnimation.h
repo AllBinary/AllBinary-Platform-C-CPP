@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_SPRITE_ADJUSTEDSPRITEINDEXEDANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -62,19 +64,18 @@
         #include "SpriteIndexedAnimation.h"
 
 class AdjustedSpriteIndexedAnimation: public SpriteIndexedAnimation {
-        
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedSpriteIndexedAnimation(Sprite sprite, Image image, std::vector<BasicColor> basicColorArray, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
 
-    public paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y);
+    public: void paintFrame(Graphics graphics, int32_t frame, int32_t x, int32_t y);
 
-    public paintXY(Graphics g, int32_t x, int32_t y);
+    public: void paintXY(Graphics g, int32_t x, int32_t y);
 
-    public paint(Graphics g);
+    public: void paint(Graphics g);
 
 };
 

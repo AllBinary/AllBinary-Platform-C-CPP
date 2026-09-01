@@ -45,28 +45,27 @@
 class ImageIOUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BufferedImage read(AbFile file){
+    public: static BufferedImage read(AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageIO.read(AbFileNativeUtil.get(file));;
+                        return ImageIO::read(AbFileNativeUtil::get(file));;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static bool write(RenderedImage renderedImage, string name, AbFile file){
+    public: static bool write(RenderedImage renderedImage, std::string name, AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageIO.write(renderedImage, name, AbFileNativeUtil.get(file));;
+                        return ImageIO::write(renderedImage, name, AbFileNativeUtil::get(file));;
     
 }
 

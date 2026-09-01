@@ -98,42 +98,41 @@
 class AllBinaryMediaManager
             : public Object
          {
-        
 
-    private: static const THIS: string = "AllBinaryMediaManagerPC";
+    private: static const std::string THIS = "AllBinaryMediaManagerPC";
 
-    public static bool isMuted();
+    public: static bool isMuted();
 
-    public static setMuted(bool aMuted);
+    public: static void setMuted(bool aMuted);
 
-    public static bool update();
-
-                //@Throws(Exception.constructor)
-            
-    public static init(SoundsFactoryInterface soundsFactoryInterface);
+    public: static bool update();
 
                 //@Throws(Exception.constructor)
             
-    public static shutdown(SoundsFactoryInterface soundsFactoryInterface);
-
-    private: static const CREATE_PLAYER: string = "createPlayer";
+    public: static void init(SoundsFactoryInterface soundsFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public static Player createPlayer(string resource);
+    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface);
+
+    private: static const std::string CREATE_PLAYER = "createPlayer";
+
+                //@Throws(Exception.constructor)
+            
+    public: static Player createPlayer(std::string resource);
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public static Player createPlayerFromInputStream(InputStream stream, string type);
+    public: static Player createPlayerFromInputStream(InputStream stream, std::string type);
 
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static playTone(int32_t frequency, int32_t time, int32_t volume);
+    public: static void playTone(int32_t frequency, int32_t time, int32_t volume);
 
-    public static bool isInitialized();
+    public: static bool isInitialized();
 
-private constructor ();
+private: AllBinaryMediaManager();
 
 };
 

@@ -50,23 +50,22 @@
 class GraphicItemBuilder
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static GraphicItemInterface getInstance(Node node){
+    public: static GraphicItemInterface getInstance(Node node){
 
-    graphicItemName: string = node.getNodeName()!;;
+    std::string graphicItemName = node.getNodeName();;
     
 
-                        if(graphicItemName!.compareTo(PointsDomUtil.getInstance()!.LINES) == 0)
+                        if(graphicItemName.compareTo(PointsDomUtil::getInstance().LINES) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LinesGraphicItem(node);
+                        return LinesGraphicItem(node);
     
 
                                     }
@@ -75,7 +74,7 @@ class GraphicItemBuilder
                             
 
 
-                            throw new Exception("Graphic Item Does Not Exist: " +graphicItemName);
+                            throw Exception("Graphic Item Does Not Exist: " +graphicItemName);
                     
 
                         }
@@ -83,10 +82,8 @@ class GraphicItemBuilder
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GraphicItemBuilder(){
+}
 
 
 };

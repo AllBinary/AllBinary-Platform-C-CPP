@@ -34,81 +34,80 @@
 class SqlStrings
             : public Object
          {
-        
 
-    private: static const instance: SqlStrings = new SqlStrings();
+    private: static SqlStrings instance() { return SqlStrings(); }
 
-    public static SqlStrings getInstance();
+    public: static SqlStrings getInstance();
 
-    public const CREATE_DATABASE: string = "CREATE DATABASE ";
+    public: const std::string CREATE_DATABASE = "CREATE DATABASE ";
 
-    public const DROP_TABLE: string = "DROP TABLE ";
+    public: const std::string DROP_TABLE = "DROP TABLE ";
 
-    public const CREATE_TABLE: string = "CREATE TABLE ";
+    public: const std::string CREATE_TABLE = "CREATE TABLE ";
 
-    public const START: string = " (";
+    public: const std::string START = " (";
 
-    public const SELECT: string = "SELECT ";
+    public: const std::string SELECT = "SELECT ";
 
-    public const FROM: string = " FROM ";
+    public: const std::string FROM = " FROM ";
 
-    public const SELECT_ALL: string = "SELECT *";
+    public: const std::string SELECT_ALL = "SELECT *";
 
-    public const WHERE: string = " WHERE ";
+    public: const std::string WHERE = " WHERE ";
 
-    public const AND: string = " AND ";
+    public: const std::string AND = " AND ";
 
-    public const UPDATE: string = "UPDATE ";
+    public: const std::string UPDATE = "UPDATE ";
 
-    public const SET: string = " SET ";
+    public: const std::string SET = " SET ";
 
-    public const SELECT_ALL_FROM: string = this.SELECT_ALL +this.FROM;
+    public: const std::string SELECT_ALL_FROM = this->SELECT_ALL +this->FROM;
 
-    public const DELETE: string = "DELETE";
+    public: const std::string DELETE = "DELETE";
 
-    public const LIKE_QUOTE: string = " LIKE \"";
+    public: const std::string LIKE_QUOTE = " LIKE \"";
 
-    public const INSERT_INTO: string = "INSERT INTO ";
+    public: const std::string INSERT_INTO = "INSERT INTO ";
 
-    public const VALUES: string = " VALUES ('";
+    public: const std::string VALUES = " VALUES ('";
 
-    public const ORDER_BY: string = "ORDER BY";
+    public: const std::string ORDER_BY = "ORDER BY";
 
-    public const COUNT: string = "COUNT(";
+    public: const std::string COUNT = "COUNT(";
 
-    public const ASC: string = "ASC";
+    public: const std::string ASC = "ASC";
 
-    public const DESC: string = "DESC";
+    public: const std::string DESC = "DESC";
 
-    public const PRIMARY_KEY: string = "PRIMARY KEY(";
+    public: const std::string PRIMARY_KEY = "PRIMARY KEY(";
 
-    public const END: string = ") )";
+    public: const std::string END = ") )";
 
-    public const EQUAL_QUOTE: string = " = \"";
+    public: const std::string EQUAL_QUOTE = " = \"";
 
-    public const CLOSE_QUOTE: string = CommonSeps.getInstance()!.QUOTE;
+    public: const std::string CLOSE_QUOTE = CommonSeps::getInstance().QUOTE;
 
-    public const EQUAL_QUOTE_NO_SPACE: string = "=\"";
+    public: const std::string EQUAL_QUOTE_NO_SPACE = "=\"";
 
-    public const ESCAPE: string = "\\";
+    public: const std::string ESCAPE = "\\";
 
-    public const DOUBLE_ESCAPE: string = "\\\\";
+    public: const std::string DOUBLE_ESCAPE = "\\\\";
 
-    public const MORE_THAN_QUOTE: string = " > \"";
+    public: const std::string MORE_THAN_QUOTE = " > \"";
 
-    public const LESS_THAN_QUOTE: string = " < \"";
+    public: const std::string LESS_THAN_QUOTE = " < \"";
 
-    public const SINGLE_QUOTE_COMMA_SEP: string = "','";
+    public: const std::string SINGLE_QUOTE_COMMA_SEP = "','";
 
-    public const ID: string = "ID";
+    public: const std::string ID = "ID";
 
-    public const SQL_STATEMENT_LABEL: string = "SQL Statement: ";
+    public: const std::string SQL_STATEMENT_LABEL = "SQL Statement: ";
 
-    public const COLUMN_VALUE: string = "\nColumn Value: ";
+    public: const std::string COLUMN_VALUE = "\nColumn Value: ";
 
-    public const CREATE_RETURN: string = " Created Successfully";
+    public: const std::string CREATE_RETURN = " Created Successfully";
 
-    public const FIELD_VALUE: string = "\nField Value: ";
+    public: const std::string FIELD_VALUE = "\nField Value: ";
 
 };
 

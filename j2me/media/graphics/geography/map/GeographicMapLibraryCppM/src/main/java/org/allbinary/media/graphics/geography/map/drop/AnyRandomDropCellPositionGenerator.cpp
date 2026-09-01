@@ -71,56 +71,55 @@
         #include "BaseDropCellPositionGenerator.h"
 
 class AnyRandomDropCellPositionGenerator: public BaseDropCellPositionGenerator {
-        
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    geographicMapInterface: any = NullUtil.getInstance()!.NULL_OBJECT;
+    protected: Object* geographicMapInterface = NullUtil::getInstance().NULL_OBJECT;
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
-this.geographicMapInterface= geographicMapInterface;
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+this->geographicMapInterface= geographicMapInterface;
     
 
-    basicGeographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory = geographicMapInterface!.getGeographicMapCellPositionFactory()!;;
+    BasicGeographicMapCellPositionFactory basicGeographicMapCellPositionFactory = geographicMapInterface->getGeographicMapCellPositionFactory();;
     
 
-    randomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;;
+    MyRandomFactory randomFactory = MyRandomFactory::getInstance();;
     
 
-    tiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer tiledLayer = geographicMapInterface->getAllBinaryTiledLayer();;
     
 
-    total: int32_t = tiledLayer!.getColumns() *tiledLayer!.getRows();;
+    int32_t total = tiledLayer.getColumns() *tiledLayer.getRows();;
     
 
-    randomColumn: int32_t= 0;;
+    int32_t randomColumn= 0;;
     
 
-    randomRow: int32_t= 0;;
+    int32_t randomRow= 0;;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition;;
+    GeographicMapCellPosition geographicMapCellPosition;;
     
 
 
 
 
                         for (
-    index: int32_t = total;--index >= 0; )
+    int32_t index = total;--index >= 0; )
         {
-randomColumn= randomFactory!.getAbsoluteNextInt(tiledLayer!.getColumns());
+randomColumn= randomFactory.getAbsoluteNextInt(tiledLayer.getColumns());
     
-randomRow= randomFactory!.getAbsoluteNextInt(tiledLayer!.getRows());
+randomRow= randomFactory.getAbsoluteNextInt(tiledLayer.getRows());
     
-geographicMapCellPosition= basicGeographicMapCellPositionFactory!.getAt(randomColumn, randomRow);
+geographicMapCellPosition= basicGeographicMapCellPositionFactory.getAt(randomColumn, randomRow);
     
 
-                        if(this.isDropAllowedAt(geographicMapCellPosition))
+                        if(this->isDropAllowedAt(geographicMapCellPosition))
                         
                                     {
-                                    this.list.add(geographicMapCellPosition);
+                                    this->list.add(geographicMapCellPosition);
     
 
                                     }
@@ -132,7 +131,7 @@ geographicMapCellPosition= basicGeographicMapCellPositionFactory!.getAt(randomCo
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 }
 
 

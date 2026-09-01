@@ -48,24 +48,21 @@
         #include "ARunnable.h"
 
 class NullRunnable: public ARunnable {
-        
 
-    private: static const instance: NullRunnable = new NullRunnable();
+    private: static NullRunnable instance() { return NullRunnable(); }
 
-    public static NullRunnable getInstance(){
+    public: static NullRunnable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRunnable.instance;
+                        return NullRunnable::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: NullRunnable(){
+}
 
 
 };

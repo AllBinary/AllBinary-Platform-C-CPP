@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Object.h"
         
 
@@ -42,17 +44,14 @@
 class CheckType
             : public Object
          {
-        
 
-    private: const types: std::vector<string> = 
-                                                        [
+    private: const std::vector<std::string> types = 
+                                                        {
                                                             "Check","Money Order","Cashiers Check"
-                                                        ];
+                                                        };
 
-public constructor (){
-
-            super();
-        }
+public: CheckType(){
+}
 
 
 };

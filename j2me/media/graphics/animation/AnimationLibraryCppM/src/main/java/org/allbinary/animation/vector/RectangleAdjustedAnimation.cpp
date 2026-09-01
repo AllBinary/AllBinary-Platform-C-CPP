@@ -49,65 +49,62 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleAdjustedAnimation: public Animation: public ColorCompositeInterface {
-        
+class RectangleAdjustedAnimation: public Animation, public ColorCompositeInterface {
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-    private: offsetX: int32_t;
+    private: int32_t offsetX;
 
-    private: offsetY: int32_t;
+    private: int32_t offsetY;
 
-public constructor (int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor){
-
-            super();
-        this.width= width;
+public: RectangleAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor){
+this->width= width;
     
-this.height= height;
+this->height= height;
     
-this.offsetX= offsetX;
+this->offsetX= offsetX;
     
-this.offsetY= offsetY;
+this->offsetY= offsetY;
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-graphics.drawRect(x +this.offsetX, y +this.offsetY, this.width, this.height);
-    
-}
-
-
-    public setWidth(int32_t width){
-this.width= width;
+graphics.drawRect(x +this->offsetX, y +this->offsetY, this->width, this->height);
     
 }
 
 
-    public setHeight(int32_t height){
-this.height= height;
+    public: void setWidth(int32_t width){
+this->width= width;
     
 }
 
 
-    public setOffsetX(int32_t offsetX){
-this.offsetX= offsetX;
+    public: void setHeight(int32_t height){
+this->height= height;
     
 }
 
 
-    public setOffsetY(int32_t offsetY){
-this.offsetY= offsetY;
+    public: void setOffsetX(int32_t offsetX){
+this->offsetX= offsetX;
+    
+}
+
+
+    public: void setOffsetY(int32_t offsetY){
+this->offsetY= offsetY;
     
 }
 

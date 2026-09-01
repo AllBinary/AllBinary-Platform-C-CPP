@@ -64,9 +64,8 @@
         #include "NotificationBuilder.h"
 
 class NotificationBuilderAPI23: public NotificationBuilder {
-        
 
-    public Parcelable build(Context context, Command command, string message, Integer integer, PendingIntent pendingIntent);
+    public: Parcelable build(Context context, Command command, std::string message, Integer integer, PendingIntent pendingIntent);
 
 };
 

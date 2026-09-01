@@ -67,26 +67,25 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CssStyleValidation.h"
 
-class EditCssStyleValidation: public CssStyleValidation: public ValidationInterface, public DomNodeInterface {
-        
+class EditCssStyleValidation: public CssStyleValidation, public ValidationInterface, public DomNodeInterface {
 
-public constructor ();
+public: EditCssStyleValidation();
 
-public constructor (Document document);
+public: EditCssStyleValidation(Document document);
 
-public constructor (HashMap<any, any> hashMap);
+public: EditCssStyleValidation(HashMap<any, any> hashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

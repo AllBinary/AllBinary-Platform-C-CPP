@@ -46,7 +46,6 @@
         #include "RaceTrackGeographicMap.h"
 
 class RaceTrackGeographicMapInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

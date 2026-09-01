@@ -53,137 +53,134 @@
 class ColorRange
             : public Object
         : public ColorRangeInterface {
-        
 
-    private: minRed: int32_t;
+    private: int32_t minRed;
 
-    private: maxRed: int32_t;
+    private: int32_t maxRed;
 
-    private: minGreen: int32_t;
+    private: int32_t minGreen;
 
-    private: maxGreen: int32_t;
+    private: int32_t maxGreen;
 
-    private: minBlue: int32_t;
+    private: int32_t minBlue;
 
-    private: maxBlue: int32_t;
+    private: int32_t maxBlue;
 
-public constructor (){
-
-            super();
-        this.minRed= 0;
+public: ColorRange(){
+this->minRed= 0;
     
-this.maxRed= 0;
+this->maxRed= 0;
     
-this.minGreen= 0;
+this->minGreen= 0;
     
-this.maxGreen= 0;
+this->maxGreen= 0;
     
-this.minBlue= 0;
+this->minBlue= 0;
     
-this.maxBlue= 0;
+this->maxBlue= 0;
     
 }
 
 
-    public int32_t getMinRed(){
+    public: int32_t getMinRed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minRed;
+                        return this->minRed;
     
 }
 
 
-    public setMinRed(int32_t minRed){
-this.minRed= minRed;
+    public: void setMinRed(int32_t minRed){
+this->minRed= minRed;
     
 }
 
 
-    public int32_t getMaxRed(){
+    public: int32_t getMaxRed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxRed;
+                        return this->maxRed;
     
 }
 
 
-    public setMaxRed(int32_t maxRed){
-this.maxRed= maxRed;
+    public: void setMaxRed(int32_t maxRed){
+this->maxRed= maxRed;
     
 }
 
 
-    public int32_t getMinGreen(){
+    public: int32_t getMinGreen(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minGreen;
+                        return this->minGreen;
     
 }
 
 
-    public setMinGreen(int32_t minGreen){
-this.minGreen= minGreen;
+    public: void setMinGreen(int32_t minGreen){
+this->minGreen= minGreen;
     
 }
 
 
-    public int32_t getMaxGreen(){
+    public: int32_t getMaxGreen(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxGreen;
+                        return this->maxGreen;
     
 }
 
 
-    public setMaxGreen(int32_t maxGreen){
-this.maxGreen= maxGreen;
+    public: void setMaxGreen(int32_t maxGreen){
+this->maxGreen= maxGreen;
     
 }
 
 
-    public int32_t getMinBlue(){
+    public: int32_t getMinBlue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minBlue;
+                        return this->minBlue;
     
 }
 
 
-    public setMinBlue(int32_t minBlue){
-this.minBlue= minBlue;
+    public: void setMinBlue(int32_t minBlue){
+this->minBlue= minBlue;
     
 }
 
 
-    public int32_t getMaxBlue(){
+    public: int32_t getMaxBlue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxBlue;
+                        return this->maxBlue;
     
 }
 
 
-    public setMaxBlue(int32_t maxBlue){
-this.maxBlue= maxBlue;
+    public: void setMaxBlue(int32_t maxBlue){
+this->maxBlue= maxBlue;
     
 }
 
 
-    public bool isInRange(Color color){
+    public: bool isInRange(Color color){
 
-                        if(color.getRed() >= this.getMinRed() && color.getRed() <= this.getMaxRed() && color.getGreen() >= this.getMinGreen() && color.getGreen() <= this.getMaxGreen() && color.getBlue() >= this.getMinBlue() && color.getBlue() <= this.getMaxBlue())
+                        if(color.getRed() >= this->getMinRed() && color.getRed() <= this->getMaxRed() && color.getGreen() >= this->getMinGreen() && color.getGreen() <= this->getMaxGreen() && color.getBlue() >= this->getMinBlue() && color.getBlue() <= this->getMaxBlue())
                         
                                     {
                                     
@@ -208,49 +205,49 @@ this.maxBlue= maxBlue;
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("getMinRed(): ");
+stringBuffer.append("getMinRed(): ");
     
-stringBuffer!.appendint(this.getMinRed());
+stringBuffer.appendint(this->getMinRed());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("getMaxRed(): ");
+stringBuffer.append("getMaxRed(): ");
     
-stringBuffer!.appendint(this.getMaxRed());
+stringBuffer.appendint(this->getMaxRed());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("getMinGreen(): ");
+stringBuffer.append("getMinGreen(): ");
     
-stringBuffer!.appendint(this.getMinGreen());
+stringBuffer.appendint(this->getMinGreen());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("getMaxGreen(): ");
+stringBuffer.append("getMaxGreen(): ");
     
-stringBuffer!.appendint(this.getMaxGreen());
+stringBuffer.appendint(this->getMaxGreen());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("getMinBlue(): ");
+stringBuffer.append("getMinBlue(): ");
     
-stringBuffer!.appendint(this.getMinGreen());
+stringBuffer.appendint(this->getMinGreen());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("getMaxBlue(): ");
+stringBuffer.append("getMaxBlue(): ");
     
-stringBuffer!.appendint(this.getMaxBlue());
+stringBuffer.appendint(this->getMaxBlue());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

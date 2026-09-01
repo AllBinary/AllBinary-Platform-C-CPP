@@ -50,23 +50,22 @@
 #include "BasicArrayListCacheable.h"
 
 class BasicArrayListPool: public AbstractArrayListPool {
-        
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
+public: BasicArrayListPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
 
-    public clear();
-
-                //@Throws(Exception.constructor)
-            
-    public CacheableInterface remove(any = {} key);
+    public: void clear();
 
                 //@Throws(Exception.constructor)
             
-    public addAll(BasicArrayList usedList);
+    public: CacheableInterface remove(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    public releaseUsedBackToPool(BasicArrayList usedList);
+    public: void addAll(BasicArrayList usedList);
+
+                //@Throws(Exception.constructor)
+            
+    public: void releaseUsedBackToPool(BasicArrayList usedList);
 
 };
 

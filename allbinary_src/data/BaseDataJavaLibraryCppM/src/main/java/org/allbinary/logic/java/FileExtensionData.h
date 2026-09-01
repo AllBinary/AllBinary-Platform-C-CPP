@@ -45,17 +45,16 @@
 class FileExtensionData
             : public Object
          {
-        
 
-    private: static const instance: FileExtensionData = new FileExtensionData();
+    private: static FileExtensionData instance() { return FileExtensionData(); }
 
-    public static FileExtensionData getInstance();
+    public: static FileExtensionData getInstance();
 
-private constructor ();
+private: FileExtensionData();
 
-    public const DOT_JAVA_SOURCE: string = ".java";
+    public: const std::string DOT_JAVA_SOURCE = ".java";
 
-    public const JAVA_SOURCE: string = "java";
+    public: const std::string JAVA_SOURCE = "java";
 
 };
 

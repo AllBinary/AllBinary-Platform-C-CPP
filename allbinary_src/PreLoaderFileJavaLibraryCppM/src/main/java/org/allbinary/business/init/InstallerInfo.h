@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_H
         #define ORG_ALLBINARY_BUSINESS_INIT_INSTALLERINFO_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -83,57 +85,56 @@
 class InstallerInfo
             : public Object
          {
-        
 
-    private: static const instance: InstallerInfo = new InstallerInfo();
+    private: static InstallerInfo instance() { return InstallerInfo(); }
 
-    private: static const INITFILENAME: string = "installerdata.dat";
+    private: static const std::string INITFILENAME = "installerdata.dat";
 
-    private: static const PACKAGE: string = PATH_GLOBALS.getInstance()!.INIT_PATH;
+    private: static const std::string PACKAGE = PATH_GLOBALS::getInstance().INIT_PATH;
 
-    private: static userName: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: static std::string userName = StringUtil::getInstance().EMPTY_STRING;
 
-    private: static password: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: static std::string password = StringUtil::getInstance().EMPTY_STRING;
 
-    private: static hasRead: bool = false;
+    private: static bool hasRead = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static setHasRead(bool value);
+    public: static void setHasRead(bool value);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public write();
+public: InstallerInfo();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    read();
-
-    public setUserName(string userName);
-
-    public setPassword(string password);
+    public: void write();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    updateIfNeeded();
+    private: void read();
+
+    public: void setUserName(std::string userName);
+
+    public: void setPassword(std::string password);
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    private: void updateIfNeeded();
 
                 //@Throws(Exception.constructor)
             
-    public string getUserName();
+    public: std::string getUserName();
 
                 //@Throws(Exception.constructor)
             
-    public string getPassword();
+    public: std::string getPassword();
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(string userName, string password);
+    public: bool isValid(std::string userName, std::string password);
 
 };
 

@@ -46,47 +46,46 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CapturedImageWorkerResultsEvent: public AllBinaryEventObject {
-        
 
-    private: const frame: Long;
+    private: Long frame;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (any = {} anyType, Long frame, BufferedImage bufferedImage){
+public: CapturedImageWorkerResultsEvent(Object* anyType, Long frame, BufferedImage bufferedImage){
             super(anyType);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.frame= frame;
+this->frame= frame;
     
-this.setBufferedImage(bufferedImage);
+this->setBufferedImage(bufferedImage);
     
 }
 
 
-    public BufferedImage getBufferedImage(){
+    public: BufferedImage getBufferedImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bufferedImage;
+                        return this->bufferedImage;
     
 }
 
 
-    setBufferedImage(BufferedImage bufferedImage){
-this.bufferedImage= bufferedImage;
+    private: void setBufferedImage(BufferedImage bufferedImage){
+this->bufferedImage= bufferedImage;
     
 }
 
 
-    public Long getFrame(){
+    public: Long getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 

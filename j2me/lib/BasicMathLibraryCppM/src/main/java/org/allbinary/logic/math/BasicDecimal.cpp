@@ -57,210 +57,207 @@
 class BasicDecimal
             : public Object
          {
-        
 
-    public static const ZERO_BIGDECIMAL: BasicDecimal = new BasicDecimal(0);
+    public: static const BasicDecimal ZERO_BIGDECIMAL = BasicDecimal(0);
 
-    public static BasicDecimal createBigDecimal(BasicDecimal bigDecimal){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicDecimal(bigDecimal!.getUnscaled());
-    
-}
-
-
-    private: units: int64_t;
-
-public constructor (int64_t units){
-
-            super();
-        this.units= units;
-    
-this.updateScaled();
-    
-}
-
-
-    public setint(int32_t value){
-this.units= value;
-    
-this.updateScaled();
-    
-}
-
-
-    public setlong(int64_t value){
-this.units= value;
-    
-this.updateScaled();
-    
-}
-
-
-    public set(BasicDecimal bigDecimal){
-this.units= bigDecimal!.getUnscaled();
-    
-this.updateScaled();
-    
-}
-
-
-    public addint(int32_t value){
-this.units= this.units +value;
-    
-this.updateScaled();
-    
-}
-
-
-    public addlong(int64_t value){
-this.units= this.units +value;
-    
-this.updateScaled();
-    
-}
-
-
-    public add(BasicDecimal bigDecimal){
-this.units= this.units +bigDecimal!.getUnscaled();
-    
-this.updateScaled();
-    
-}
-
-
-    public subtractint(int32_t value){
-this.units= this.units -value;
-    
-this.updateScaled();
-    
-}
-
-
-    public subtractlong(int64_t value){
-this.units= this.units -value;
-    
-this.updateScaled();
-    
-}
-
-
-    public subtract(BasicDecimal bigDecimal){
-this.units= this.units -bigDecimal!.getUnscaled();
-    
-this.updateScaled();
-    
-}
-
-
-    public multiplyint(int32_t value){
-this.units= this.units *value;
-    
-this.updateScaled();
-    
-}
-
-
-    public multiplylong(int64_t value){
-this.units= this.units *value;
-    
-this.updateScaled();
-    
-}
-
-
-    public multiply(BasicDecimal bigDecimal){
-this.units= this.units *bigDecimal!.getUnscaled();
-    
-this.updateScaled();
-    
-}
-
-
-    public divideint(int32_t value){
-this.units= this.units /value;
-    
-this.updateScaled();
-    
-}
-
-
-    public dividelong(int64_t value){
-this.units= this.units /value;
-    
-this.updateScaled();
-    
-}
-
-
-    public divide(BasicDecimal bigDecimal){
-this.units= this.units /bigDecimal!.getUnscaled();
-    
-this.updateScaled();
-    
-}
-
-
-    public int64_t getUnscaled(){
+    public: static BasicDecimal createBigDecimal(BasicDecimal bigDecimal){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.units;
+                        return BasicDecimal(bigDecimal.getUnscaled());
     
 }
 
 
-    private: scaled: int32_t= 0;
+    private: int64_t units;
 
-    updateScaled(){
-this.scaled= static_cast<int32_t>((this.units /this.factorValue));
+public: BasicDecimal(int64_t units){
+this->units= units;
+    
+this->updateScaled();
     
 }
 
 
-    public int32_t getScaled(){
+    public: void setint(int32_t value){
+this->units= value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void setlong(int64_t value){
+this->units= value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void set(BasicDecimal bigDecimal){
+this->units= bigDecimal.getUnscaled();
+    
+this->updateScaled();
+    
+}
+
+
+    public: void addint(int32_t value){
+this->units= this->units +value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void addlong(int64_t value){
+this->units= this->units +value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void add(BasicDecimal bigDecimal){
+this->units= this->units +bigDecimal.getUnscaled();
+    
+this->updateScaled();
+    
+}
+
+
+    public: void subtractint(int32_t value){
+this->units= this->units -value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void subtractlong(int64_t value){
+this->units= this->units -value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void subtract(BasicDecimal bigDecimal){
+this->units= this->units -bigDecimal.getUnscaled();
+    
+this->updateScaled();
+    
+}
+
+
+    public: void multiplyint(int32_t value){
+this->units= this->units *value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void multiplylong(int64_t value){
+this->units= this->units *value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void multiply(BasicDecimal bigDecimal){
+this->units= this->units *bigDecimal.getUnscaled();
+    
+this->updateScaled();
+    
+}
+
+
+    public: void divideint(int32_t value){
+this->units= this->units /value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void dividelong(int64_t value){
+this->units= this->units /value;
+    
+this->updateScaled();
+    
+}
+
+
+    public: void divide(BasicDecimal bigDecimal){
+this->units= this->units /bigDecimal.getUnscaled();
+    
+this->updateScaled();
+    
+}
+
+
+    public: int64_t getUnscaled(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scaled;
+                        return this->units;
     
 }
 
 
-    public string toString(){
+    private: int32_t scaled= 0;
 
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return (this.units).toString();;
+    private: void updateScaled(){
+this->scaled= static_cast<int32_t>((this->units /this->factorValue));
     
 }
 
 
-    private: const factor: int32_t = ScaleFactorFactory.getInstance()!.DEFAULT_SCALE_FACTOR;
-
-    private: const factorValue: int32_t = ScaleFactorFactory.getInstance()!.DEFAULT_SCALE_VALUE;
-
-    public int32_t getScaledFactor(){
+    public: int32_t getScaled(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.factor;
+                        return this->scaled;
     
 }
 
 
-    public int32_t getScaledFactorValue(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.factorValue;
+                        return std::to_string(units);;
+    
+}
+
+
+    private: const int32_t factor = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
+
+    private: const int32_t factorValue = ScaleFactorFactory::getInstance().DEFAULT_SCALE_VALUE;
+
+    public: int32_t getScaledFactor(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->factor;
+    
+}
+
+
+    public: int32_t getScaledFactorValue(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->factorValue;
     
 }
 

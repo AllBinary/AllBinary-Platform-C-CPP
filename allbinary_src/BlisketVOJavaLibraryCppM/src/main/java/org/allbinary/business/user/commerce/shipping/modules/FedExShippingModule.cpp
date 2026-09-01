@@ -49,44 +49,41 @@
 class FedExShippingModule
             : public Object
         : public ShippingInterface {
-        
 
-    private: const name: string = "FedEx";
+    private: const std::string name = "FedEx";
 
-    private: const description: string = "Fast Mail";
+    private: const std::string description = "Fast Mail";
 
-public constructor (){
-
-            super();
-        }
+public: FedExShippingModule(){
+}
 
 
-    public Money getCost(OrderInterface order){
+    public: Money getCost(OrderInterface order){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Money();
+                        return Money();
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

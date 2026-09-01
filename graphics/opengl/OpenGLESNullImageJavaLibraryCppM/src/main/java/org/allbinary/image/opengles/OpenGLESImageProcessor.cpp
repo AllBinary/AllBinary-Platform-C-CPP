@@ -45,33 +45,32 @@
 class OpenGLESImageProcessor
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESImageProcessor = new OpenGLESImageProcessor();
+    private: static OpenGLESImageProcessor instance() { return OpenGLESImageProcessor(); }
 
-    public static OpenGLESImageProcessor getInstance(){
+    public: static OpenGLESImageProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESImageProcessor.instance;
+                        return OpenGLESImageProcessor::instance();
     
 }
 
 
-    public translate(GL10 gl, float translateX, float translateY){
+    public: void translate(GL10 gl, float translateX, float translateY){
 }
 
 
-    public rotate(GL10 gl, float angle){
+    public: void rotate(GL10 gl, float angle){
 }
 
 
-    public scale(GL10 gl, float scaleX, float scaleY){
+    public: void scale(GL10 gl, float scaleX, float scaleY){
 }
 
 
-    public colorMask(GL10 gl, float red, float green, float blue, float alpha){
+    public: void colorMask(GL10 gl, float red, float green, float blue, float alpha){
 }
 
 

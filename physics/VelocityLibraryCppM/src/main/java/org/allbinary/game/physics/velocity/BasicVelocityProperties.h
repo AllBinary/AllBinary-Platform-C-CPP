@@ -88,51 +88,50 @@
 class BasicVelocityProperties
             : public Object
         : public BasicVelocityInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const velocityXBasicDecimal: BasicDecimal;
+    protected: BasicDecimal velocityXBasicDecimal;
 
-    const velocityYBasicDecimal: BasicDecimal;
+    protected: BasicDecimal velocityYBasicDecimal;
 
-    const velocityZBasicDecimal: BasicDecimal;
+    protected: BasicDecimal velocityZBasicDecimal;
 
-    private: const axisMathVectorUtil: AxisMathVectorUtil = AxisMathVectorUtil.getInstance()!;
+    private: const AxisMathVectorUtil axisMathVectorUtil = AxisMathVectorUtil::getInstance();
 
-public constructor ();
+public: BasicVelocityProperties();
 
-    public zero();
+    public: void zero();
 
-    public BasicDecimal getVelocityXBasicDecimalP();
+    public: BasicDecimal getVelocityXBasicDecimalP();
 
-    public BasicDecimal getVelocityYBasicDecimalP();
+    public: BasicDecimal getVelocityYBasicDecimalP();
 
-    public BasicDecimal getVelocityZBasicDecimalP();
+    public: BasicDecimal getVelocityZBasicDecimalP();
 
-    const directionUtil: DirectionUtil = DirectionUtil.getInstance()!;
+    protected: const DirectionUtil directionUtil = DirectionUtil::getInstance();
 
-    public setVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
+    public: void setVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
 
-    public setVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
+    public: void setVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
 
-    public addVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
+    public: void addVelocityWithBigDecimalAndDirection(BasicDecimal magnitudeBasicDecimal, Direction direction, Direction otherDirection);
 
-    public addVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
+    public: void addVelocityWithDirection(int64_t magnitude, Direction direction, Direction otherDirection);
 
-    public setVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
+    public: void setVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
 
-    public addVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
+    public: void addVelocityWithBigDecimal(BasicDecimal magnitudeBasicDecimal, Angle angle, Angle otherAngle);
 
-    public setVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
+    public: void setVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
 
-    public addVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
+    public: void addVelocity(int64_t magnitude, Angle angle, Angle otherAngle);
 
-    public setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
+    public: void setVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
 
-    public addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
+    public: void addVelocityi(int64_t magnitude, int32_t angle, int32_t otherAngle);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

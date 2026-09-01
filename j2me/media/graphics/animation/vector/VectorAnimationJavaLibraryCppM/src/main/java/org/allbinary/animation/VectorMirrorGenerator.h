@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORMIRRORGENERATOR_H
         #define ORG_ALLBINARY_ANIMATION_VECTORMIRRORGENERATOR_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -69,23 +71,22 @@
 class VectorMirrorGenerator
             : public Object
          {
-        
 
-    private: static const instance: VectorMirrorGenerator = new VectorMirrorGenerator();
+    private: static VectorMirrorGenerator instance() { return VectorMirrorGenerator(); }
 
-    public static VectorMirrorGenerator getInstance();
+    public: static VectorMirrorGenerator getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const vectorAnimationUtil: VectorAnimationUtil = VectorAnimationUtil.getInstance()!;
+    private: const VectorAnimationUtil vectorAnimationUtil = VectorAnimationUtil::getInstance();
 
-private constructor ();
+private: VectorMirrorGenerator();
 
-    public std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<std::vector<int32_t>>> points, int32_t width);
+    public: std::vector<std::vector<std::vector<int32_t>>> getInstance(std::vector<std::vector<std::vector<int32_t>>> points, int32_t width);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getInstance(BasicArrayList pointBasicArrayList, int32_t width);
+    public: BasicArrayList getInstance(BasicArrayList pointBasicArrayList, int32_t width);
 
 };
 

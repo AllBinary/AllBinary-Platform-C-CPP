@@ -51,38 +51,35 @@
 class AnalogControllerHelper
             : public Object
          {
-        
 
-    private: const reduceTimeFactor: int32_t;
+    private: int32_t reduceTimeFactor;
 
-public constructor (int32_t reduceTimeFactor){
-
-            super();
-        this.reduceTimeFactor= reduceTimeFactor;
+public: AnalogControllerHelper(int32_t reduceTimeFactor){
+this->reduceTimeFactor= reduceTimeFactor;
     
 }
 
 
-    private: const SCALE_VALUE: int32_t = AnalogControllerConfigurationFactory.getInstance()!.SCALE_VALUE;
+    private: const int32_t SCALE_VALUE = AnalogControllerConfigurationFactory::getInstance().SCALE_VALUE;
 
-    private: const rightTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper rightTimeElapsedHelper = TimeDelayHelper(0);
 
-    private: const leftTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper leftTimeElapsedHelper = TimeDelayHelper(0);
 
-    private: const downTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper downTimeElapsedHelper = TimeDelayHelper(0);
 
-    private: const upTimeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper upTimeElapsedHelper = TimeDelayHelper(0);
 
                 //@Throws(Exception.constructor)
             
-    public right(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
-this.rightTimeElapsedHelper!.delay= ((this.SCALE_VALUE -xAnalogValue)>>this.reduceTimeFactor);
+    public: void right(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+this->rightTimeElapsedHelper.delay= ((this->SCALE_VALUE -xAnalogValue)>>this->reduceTimeFactor);
     
 
-                        if(this.rightTimeElapsedHelper!.isTimeTNT())
+                        if(this->rightTimeElapsedHelper.isTimeTNT())
                         
                                     {
-                                    collidableDestroyableDamageableLayer!.right();
+                                    collidableDestroyableDamageableLayer.right();
     
 
                                     }
@@ -92,14 +89,14 @@ this.rightTimeElapsedHelper!.delay= ((this.SCALE_VALUE -xAnalogValue)>>this.redu
 
                 //@Throws(Exception.constructor)
             
-    public left(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
-this.leftTimeElapsedHelper!.delay= ((this.SCALE_VALUE +xAnalogValue)>>this.reduceTimeFactor);
+    public: void left(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+this->leftTimeElapsedHelper.delay= ((this->SCALE_VALUE +xAnalogValue)>>this->reduceTimeFactor);
     
 
-                        if(this.leftTimeElapsedHelper!.isTimeTNT())
+                        if(this->leftTimeElapsedHelper.isTimeTNT())
                         
                                     {
-                                    collidableDestroyableDamageableLayer!.left();
+                                    collidableDestroyableDamageableLayer.left();
     
 
                                     }
@@ -109,14 +106,14 @@ this.leftTimeElapsedHelper!.delay= ((this.SCALE_VALUE +xAnalogValue)>>this.reduc
 
                 //@Throws(Exception.constructor)
             
-    public up(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
-this.upTimeElapsedHelper!.delay= ((this.SCALE_VALUE -xAnalogValue)>>this.reduceTimeFactor);
+    public: void up(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+this->upTimeElapsedHelper.delay= ((this->SCALE_VALUE -xAnalogValue)>>this->reduceTimeFactor);
     
 
-                        if(this.upTimeElapsedHelper!.isTimeTNT())
+                        if(this->upTimeElapsedHelper.isTimeTNT())
                         
                                     {
-                                    collidableDestroyableDamageableLayer!.up();
+                                    collidableDestroyableDamageableLayer.up();
     
 
                                     }
@@ -126,14 +123,14 @@ this.upTimeElapsedHelper!.delay= ((this.SCALE_VALUE -xAnalogValue)>>this.reduceT
 
                 //@Throws(Exception.constructor)
             
-    public down(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
-this.downTimeElapsedHelper!.delay= ((this.SCALE_VALUE +xAnalogValue)>>this.reduceTimeFactor);
+    public: void down(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer, int32_t xAnalogValue){
+this->downTimeElapsedHelper.delay= ((this->SCALE_VALUE +xAnalogValue)>>this->reduceTimeFactor);
     
 
-                        if(this.downTimeElapsedHelper!.isTimeTNT())
+                        if(this->downTimeElapsedHelper.isTimeTNT())
                         
                                     {
-                                    collidableDestroyableDamageableLayer!.down();
+                                    collidableDestroyableDamageableLayer.down();
     
 
                                     }

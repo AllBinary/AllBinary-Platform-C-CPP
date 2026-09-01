@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_TECHRTSFORMINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_TECHRTSFORMINPUT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/RTSGameStrings.h>
@@ -113,21 +115,20 @@
         #include "RTSFormInput.h"
 
 class TechRTSFormInput: public RTSFormInput {
-        
 
-    private: const EVENT: AllBinaryEventObject = new AllBinaryEventObject(this);
+    private: const AllBinaryEventObject EVENT = AllBinaryEventObject(this);
 
-    const noMoneyGameNotificationEvent: GameNotificationEvent;
+    protected: GameNotificationEvent noMoneyGameNotificationEvent;
 
-public constructor (std::vector<Group> groupInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: TechRTSFormInput(std::vector<Group> groupInterface);
 
                 //@Throws(Exception.constructor)
             
-    public processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
 
 };
 

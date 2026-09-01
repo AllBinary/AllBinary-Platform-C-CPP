@@ -63,13 +63,12 @@
 class StoreFrontViewFactory
             : public Object
          {
-        
 
-    public static DomNodeInterface getInstance(string storeName);
+    public: static DomNodeInterface getInstance(std::string storeName);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: StoreFrontViewFactory();
 
 };
 

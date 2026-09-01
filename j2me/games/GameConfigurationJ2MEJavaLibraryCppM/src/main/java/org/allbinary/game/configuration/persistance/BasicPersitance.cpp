@@ -87,76 +87,73 @@
 class BasicPersitance
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const persistanceStrings: PersistanceStrings = PersistanceStrings.getInstance()!;
+    protected: const PersistanceStrings persistanceStrings = PersistanceStrings::getInstance();
 
-    private: const platformRecordIdUtil: PlatformRecordIdUtil = PlatformRecordIdUtil.getInstance()!;
+    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
-    private: const recordId: string;
+    private: std::string recordId;
 
-    const valueList: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList valueList = BasicArrayListD();
 
-    const idList: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList idList = BasicArrayListD();
 
-protected constructor (string recordId){
-
-            super();
-        this.recordId= recordId;
+protected: BasicPersitance(std::string recordId){
+this->recordId= recordId;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public deleteRecoreStore(AbeClientInformationInterface abeClientInformation){
-RecordStore.deleteRecordStore(this.getRecordId(abeClientInformation));
+    public: void deleteRecoreStore(AbeClientInformationInterface abeClientInformation){
+RecordStore::deleteRecordStore(this->getRecordId(abeClientInformation));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public deleteAll(AbeClientInformationInterface abeClientInformation){
+    public: void deleteAll(AbeClientInformationInterface abeClientInformation){
 
-    size: int32_t = this.idList!.size()!;;
+    int32_t size = this->idList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    integer: Integer = this.idList!.objectArray[index]! as Integer;;
+    Integer integer = this->idList.objectArray[index]! as Integer;;
     
-this.delete(abeClientInformation, integer.intValue());
+this->delete(abeClientInformation, integer.intValue());
     
 }
 
-this.clear();
+this->clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public delete(AbeClientInformationInterface abeClientInformation, int32_t deleteId){
+    public: void delete_(AbeClientInformationInterface abeClientInformation, int32_t deleteId){
 
-    recordStore: RecordStore = NullRecordStore.NULL_RECORD_STORE;;
+    RecordStore recordStore = NullRecordStore::NULL_RECORD_STORE;;
     
 
         try {
-            this.logUtil!.putF(new StringMaker().append(this.persistanceStrings!.DELETING_WITH_ID)!.appendint(deleteId)!.toString(), this, this.commonStrings!.delete);
+            this->logUtil.putF(StringMaker().append(this->persistanceStrings.DELETING_WITH_ID).appendint(deleteId).toString(), this, this->commonStrings.delete_);
     
-recordStore= RecordStore.openRecordStore(this.getRecordId(abeClientInformation), true);
+recordStore= RecordStore::openRecordStore(this->getRecordId(abeClientInformation), true);
     
-recordStore!.deleteRecord(deleteId);
+recordStore.deleteRecord(deleteId);
     
 
                 //: 
@@ -172,13 +169,13 @@ recordStore!.deleteRecord(deleteId);
          finally {
             
                         if(recordStore != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PreLogUtil.put(this.persistanceStrings!.CLOSING_RECORDSTORE, this, this.commonStrings!.delete);
+                                    PreLogUtil::put(this->persistanceStrings.CLOSING_RECORDSTORE, this, this->commonStrings.delete_);
     
-recordStore!.closeRecordStore();
+recordStore.closeRecordStore();
     
 
                                     }
@@ -189,40 +186,40 @@ recordStore!.closeRecordStore();
 }
 
 
-    public string getRecordId(AbeClientInformationInterface abeClientInformation){
+    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.platformRecordIdUtil!.getRecordId(abeClientInformation, this.recordId);;
+                        return this->platformRecordIdUtil.getRecordId(abeClientInformation, this->recordId);;
     
 }
 
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.valueList;
+                        return this->valueList;
     
 }
 
 
-    public BasicArrayList getIds(){
+    public: BasicArrayList getIds(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.idList;
+                        return this->idList;
     
 }
 
 
-    public clear(){
-this.valueList!.clear();
+    public: void clear(){
+this->valueList.clear();
     
-this.idList!.clear();
+this->idList.clear();
     
 }
 

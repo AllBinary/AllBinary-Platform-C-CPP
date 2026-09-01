@@ -44,9 +44,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class IntermissionEnableListenerInterface {
-        
 
-    notifyIntermission(bool enable)
+    void notifyIntermission(bool enable)
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_IMAGECACHE_H
         #define ORG_ALLBINARY_IMAGE_IMAGECACHE_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -141,173 +143,168 @@
 //#include "HTMLEndProcessor.h"
 
 class ImageCache: public ImageCacheBase {
-        
 
-    public static const NULL_IMAGE_CACHE: ImageCache = new ImageCache();
+    public: static const ImageCache NULL_IMAGE_CACHE = ImageCache();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const concurrentImageLoadingProcessor: BaseImageLoadingProcessor = new ConcurrentImageLoadingProcessor(this);
+    private: const BaseImageLoadingProcessor concurrentImageLoadingProcessor = ConcurrentImageLoadingProcessor(this);
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    const resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;
+    protected: const ResourceUtil resourceUtil = ResourceUtil::getInstance();
 
-    private: const gameGlobalsFactory: GameGlobalsFactory = GameGlobalsFactory.getInstance()!;
+    private: const GameGlobalsFactory gameGlobalsFactory = GameGlobalsFactory::getInstance();
 
-    private: const gdResources: GDResources = GDResources.getInstance()!;
+    private: const GDResources gdResources = GDResources::getInstance();
 
-    public const loadNowList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList loadNowList = BasicArrayListD();
 
-    public const loadSoonList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList loadSoonList = BasicArrayListD();
 
-    public const loadList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList loadList = BasicArrayListD();
 
-    public const loadAfterList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList loadAfterList = BasicArrayListD();
 
-    private: const lock: SynchObject = new SynchObject();
+    private: const SynchObject lock = SynchObject();
 
-    private: firstTime: bool = true;
+    private: bool firstTime = true;
 
-    private: totalLoaded: int32_t = 0;
+    private: int32_t totalLoaded = 0;
 
-    public progressEnded: bool = false;
+    public: bool progressEnded = false;
 
-    public hasAnyLazyAnimationFactories: bool = false;
+    public: bool hasAnyLazyAnimationFactories = false;
 
 //inner= member=true isStatic=
 class NotHTMLProcessor: public Processor {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    public process();
+    public: void process();
 
 };
 
             
 //inner= member=true isStatic=
 class NotHTMLEndProcessor: public Processor {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    public process();
+    public: void process();
 
 };
 
             
 //inner= member=true isStatic=
 class HTMLEndProcessor: public Processor {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    public process();
+    public: void process();
 
 };
 
             
 //inner= member=true isStatic=
 class FirstProcessor: public Processor {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    public process();
+    public: void process();
 
 };
 
             
-    private: processor: Processor = new this.FirstProcessor();
+    private: Processor processor = FirstProcessor();
 
-    private: endProcessor: Processor = Processor.getInstance()!;
+    private: Processor endProcessor = Processor::getInstance();
 
-public constructor ();
+public: ImageCache();
 
-    public firstProcess();
+    public: void firstProcess();
 
-    public addListener(any = {} renderer);
-
-                //@Throws(Exception.constructor)
-            
-    public waitForLoadNow();
-
-    private: const LOAD_IMAGE_FOR_ANIMATION: string = "Load Image Animation";
+    public: void addListener(Object* renderer);
 
                 //@Throws(Exception.constructor)
             
-    public loadImageForAnimation();
+    public: void waitForLoadNow();
+
+    private: const std::string LOAD_IMAGE_FOR_ANIMATION = "Load Image Animation";
 
                 //@Throws(Exception.constructor)
             
-    public loadImages();
+    public: void loadImageForAnimation();
 
                 //@Throws(Exception.constructor)
             
-    public loadImageForAnimations();
+    public: void loadImages();
 
                 //@Throws(Exception.constructor)
             
-    public loadRemainingAnimations();
+    public: void loadImageForAnimations();
 
                 //@Throws(Exception.constructor)
             
-    bool loadImageForLazyAnimation(LazyImageRotationAnimation lazyImageRotationAnimation);
+    public: void loadRemainingAnimations();
 
                 //@Throws(Exception.constructor)
             
-    loadNextImage();
+    private: bool loadImageForLazyAnimation(LazyImageRotationAnimation lazyImageRotationAnimation);
 
                 //@Throws(Exception.constructor)
             
-    bool loadImage(Image image);
+    private: void loadNextImage();
 
                 //@Throws(Exception.constructor)
             
-    init(Image image, Image image2);
+    private: bool loadImage(Image image);
 
                 //@Throws(Exception.constructor)
             
-    Image creatImage(string key);
+    protected: void init(Image image, Image image2);
 
                 //@Throws(Exception.constructor)
             
-    public Image get(string caller, int32_t width, int32_t height);
+    protected: Image creatImage(std::string key);
 
                 //@Throws(Exception.constructor)
             
-    public Image getWithKey(any = {} key);
-
-    public int32_t getIndex(any = {} key);
+    public: Image get(std::string caller, int32_t width, int32_t height);
 
                 //@Throws(Exception.constructor)
             
-    Image createImageFromInputStream(any = {} key, InputStream inputStream);
+    public: Image getWithKey(Object* key);
+
+    public: int32_t getIndex(Object* key);
 
                 //@Throws(Exception.constructor)
             
-    Image createImageLater(string key, int32_t width, int32_t height);
-
-    public BasicArrayList getAssociated(LazyImageRotationAnimation lazyImageRotationAnimation);
-
-    public add(LazyImageRotationAnimation lazyImageRotationAnimation);
+    protected: Image createImageFromInputStream(Object* key, InputStream inputStream);
 
                 //@Throws(Exception.constructor)
             
-    public insertFirst(LazyImageRotationAnimation lazyImageRotationAnimation);
+    protected: Image createImageLater(std::string key, int32_t width, int32_t height);
 
-    public progressEnded();
+    public: BasicArrayList getAssociated(LazyImageRotationAnimation lazyImageRotationAnimation);
+
+    public: void add(LazyImageRotationAnimation lazyImageRotationAnimation);
 
                 //@Throws(Exception.constructor)
             
-    public runTask();
+    public: void insertFirst(LazyImageRotationAnimation lazyImageRotationAnimation);
 
-    public initProgress();
+    public: void progressEnded();
 
-    public bool isLazy();
+                //@Throws(Exception.constructor)
+            
+    public: void runTask();
+
+    public: void initProgress();
+
+    public: bool isLazy();
 
 };
 

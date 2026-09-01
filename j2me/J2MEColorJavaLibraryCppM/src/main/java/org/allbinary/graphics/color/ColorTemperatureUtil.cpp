@@ -44,31 +44,30 @@
 class ColorTemperatureUtil
             : public Object
          {
-        
 
-    private: static const instance: ColorTemperatureUtil = new ColorTemperatureUtil();
+    private: static ColorTemperatureUtil instance() { return ColorTemperatureUtil(); }
 
-    public static ColorTemperatureUtil getInstance(){
+    public: static ColorTemperatureUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorTemperatureUtil.instance;
+                        return ColorTemperatureUtil::instance();
     
 }
 
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    public BasicColor getBasicColor(int32_t thirdTemp){
+    public: BasicColor getBasicColor(int32_t thirdTemp){
 
-    basicColor: BasicColor = this.basicColorFactory!.RED;;
+    BasicColor basicColor = this->basicColorFactory.RED;;
     
 
                         if(thirdTemp > 3700)
                         
                                     {
-                                    basicColor= this.basicColorFactory!.PURPLE;
+                                    basicColor= this->basicColorFactory.PURPLE;
     
 
                                     }
@@ -77,7 +76,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 3200)
                         
                                     {
-                                    basicColor= this.basicColorFactory!.BLUE;
+                                    basicColor= this->basicColorFactory.BLUE;
     
 
                                     }
@@ -86,7 +85,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 2700)
                         
                                     {
-                                    basicColor= this.basicColorFactory!.PUCE;
+                                    basicColor= this->basicColorFactory.PUCE;
     
 
                                     }
@@ -95,7 +94,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 2200)
                         
                                     {
-                                    basicColor= this.basicColorFactory!.WHITE;
+                                    basicColor= this->basicColorFactory.WHITE;
     
 
                                     }
@@ -104,7 +103,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 1700)
                         
                                     {
-                                    basicColor= this.basicColorFactory!.GREEN;
+                                    basicColor= this->basicColorFactory.GREEN;
     
 
                                     }
@@ -113,7 +112,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 1200)
                         
                                     {
-                                    basicColor= this.basicColorFactory!.YELLOW;
+                                    basicColor= this->basicColorFactory.YELLOW;
     
 
                                     }
@@ -122,7 +121,7 @@ class ColorTemperatureUtil
                         if(thirdTemp > 700)
                         
                                     {
-                                    basicColor= this.basicColorFactory!.ORANGE;
+                                    basicColor= this->basicColorFactory.ORANGE;
     
 
                                     }

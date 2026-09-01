@@ -50,28 +50,27 @@
 class DataOutputStreamFactory
             : public Object
          {
-        
 
-    private: static const instance: DataOutputStreamFactory = new DataOutputStreamFactory();
+    private: static DataOutputStreamFactory instance() { return DataOutputStreamFactory(); }
 
-    public static DataOutputStreamFactory getInstance(){
+    public: static DataOutputStreamFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DataOutputStreamFactory.instance;
+                        return DataOutputStreamFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbDataOutputStream getInstanceForAbFile(AbFile file){
+    public: AbDataOutputStream getInstanceForAbFile(AbFile file){
 
-    idFileOutputStream: AbFileOutputStream = AbFileOutputStream.createFromAbFile(file)!;;
+    AbFileOutputStream idFileOutputStream = AbFileOutputStream::createFromAbFile(file);;
     
 
-    idOutData: AbDataOutputStream = new AbDataOutputStream(idFileOutputStream);;
+    AbDataOutputStream idOutData = AbDataOutputStream(idFileOutputStream);;
     
 
 
@@ -84,15 +83,15 @@ class DataOutputStreamFactory
 
                 //@Throws(Exception.constructor)
             
-    public AbDataOutputStream getInstance(string filePath, string fileName){
+    public: AbDataOutputStream getInstance(std::string filePath, std::string fileName){
 
-    fileStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
+    FileStreamFactory fileStreamFactory = FileStreamFactory::getInstance();;
     
 
-    fileOutputStream: AbFileOutputStream = fileStreamFactory!.getFileOutputStreamInstance(filePath, fileName)!;;
+    AbFileOutputStream fileOutputStream = fileStreamFactory.getFileOutputStreamInstance(filePath, fileName);;
     
 
-    idOutData: AbDataOutputStream = new AbDataOutputStream(fileOutputStream);;
+    AbDataOutputStream idOutData = AbDataOutputStream(fileOutputStream);;
     
 
 

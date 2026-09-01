@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -81,27 +83,26 @@
 class JavaHelpUtil
             : public Object
          {
-        
 
-    private: static const instance: JavaHelpUtil = new JavaHelpUtil();
+    private: static JavaHelpUtil instance() { return JavaHelpUtil(); }
 
-    public static JavaHelpUtil getInstance(){
+    public: static JavaHelpUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return JavaHelpUtil.instance;
+                        return JavaHelpUtil::instance();
     
 }
 
 
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
         try {
             
-    javaHelpUtil: JavaHelpUtil = JavaHelpUtil.getInstance()!;;
+    JavaHelpUtil javaHelpUtil = JavaHelpUtil::getInstance();;
     
-javaHelpUtil!.show(javaHelpUtil!.getHelpSet("G:/mnt/bc/mydev/working/automation/InputAutomationJavaApplication/AllBinaryInputAutomationHelp/AllBinaryInputAutomation.hs"));
+javaHelpUtil.show(javaHelpUtil.getHelpSet("G:/mnt/bc/mydev/working/automation/InputAutomationJavaApplication/AllBinaryInputAutomationHelp/AllBinaryInputAutomation.hs"));
     
 
                 //: 
@@ -112,43 +113,41 @@ javaHelpUtil!.show(javaHelpUtil!.getHelpSet("G:/mnt/bc/mydev/working/automation/
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const point: Point = new Point(0, 0);
+    private: const Point point = Point(0, 0);
 
-    private: const dimension: Dimension = new Dimension(640, 480);
+    private: const Dimension dimension = Dimension(640, 480);
 
-    private: contextSensitiveHelpActionEvent: ActionEvent = new ActionEvent(new JLabel(), ActionEvent.ACTION_FIRST, 
+    private: ActionEvent contextSensitiveHelpActionEvent = ActionEvent(JLabel(), ActionEvent::ACTION_FIRST, 
                             nullptr);
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: JavaHelpUtil(){
+}
 
 
-    public HelpSet getHelpSet(string filePath){
+    public: HelpSet getHelpSet(std::string filePath){
 
         try {
             
-    helpSetURI: URI = new File(filePath).toURI()!;;
+    URI helpSetURI = File(filePath).toURI();;
     
 
-    helpSetURL: URL = helpSetURI!.toURL()!;;
+    URL helpSetURL = helpSetURI.toURL();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getHelpSet(helpSetURL);;
+                        return this->getHelpSet(helpSetURL);;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, getInstance(), "set", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "set", e);
     
 
 
@@ -161,21 +160,21 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, getInstance(), "set", e);
 }
 
 
-    public HelpSet getHelpSet(URL url){
+    public: HelpSet getHelpSet(URL url){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HelpSet(
+                        return HelpSet(
                             nullptr, url);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, getInstance(), "set", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "set", e);
     
 
 
@@ -188,25 +187,25 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, getInstance(), "set", e);
 }
 
 
-    public show(HelpSet helpSet){
+    public: void show(HelpSet helpSet){
 
         try {
             
-    helpBroker: HelpBroker = helpSet!.createHelpBroker()!;;
+    HelpBroker helpBroker = helpSet.createHelpBroker();;
     
-helpBroker!.setLocation(this.point);
+helpBroker.setLocation(this->point);
     
-helpBroker!.setSize(this.dimension);
+helpBroker.setSize(this->dimension);
     
-new CSH.DisplayHelpFromSource(helpBroker).actionPerformed(this.contextSensitiveHelpActionEvent);
+CSH::DisplayHelpFromSource(helpBroker).actionPerformed(this->contextSensitiveHelpActionEvent);
     
-this.logUtil!.putF("CSH Action", getInstance(), "show");
+this->logUtil.putF("CSH Action", getInstance(), "show");
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, getInstance(), "show", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, getInstance(), "show", e);
     
 }
 

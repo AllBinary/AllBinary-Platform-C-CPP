@@ -115,10 +115,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CollidableWeaponBehavior.h"
 
-class WeaponLayer: public MultiPlayerGameLayer: public TickableInterface {
-        
+class WeaponLayer: public MultiPlayerGameLayer, public TickableInterface {
 
-    public static int32_t getStaticType(){
+    public: static int32_t getStaticType(){
 
 
 
@@ -128,121 +127,121 @@ class WeaponLayer: public MultiPlayerGameLayer: public TickableInterface {
 }
 
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    initAnimationInterface: Animation;
+    protected: Animation initAnimationInterface;
 
-    private: destroyedAnimationInterface: Animation;
+    private: Animation destroyedAnimationInterface;
 
-    private: sourceLayerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer sourceLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-    totalDamage: int32_t= 0;
+    protected: int32_t totalDamage= 0;
 
-    private: initDamage: int32_t= 0;
+    private: int32_t initDamage= 0;
 
-    private: destroyed: bool = true;
+    private: bool destroyed = true;
 
-    scoreableInterface: ScoreableInterface = NoScoreable.getInstance()!;
+    protected: ScoreableInterface scoreableInterface = NoScoreable::getInstance();
 
-    private: movement: Movement;
+    private: Movement movement;
 
-    private: weaponProperties: WeaponProperties = WeaponProperties.NULL_WEAPON_PROPERTIES;
+    private: WeaponProperties weaponProperties = WeaponProperties::NULL_WEAPON_PROPERTIES;
 
-    private: const multiPlayerType: int32_t;
+    private: int32_t multiPlayerType;
 
-protected constructor (string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
-            super(remoteInfo, BasicGroupFactory.getInstance()!.NONE_ARRAY, name, rectangle, viewPosition);
+protected: WeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition){
+            super(remoteInfo, BasicGroupFactory::getInstance().NONE_ARRAY, name, rectangle, viewPosition);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initAnimationInterface= animationInterface;
+this->initAnimationInterface= animationInterface;
     
-this.setAnimationInterface(animationInterface);
+this->setAnimationInterface(animationInterface);
     
-this.destroyedAnimationInterface= destroyedAnimationInterface;
+this->destroyedAnimationInterface= destroyedAnimationInterface;
     
-this.movement= movement;
+this->movement= movement;
     
-this.multiPlayerType= multiPlayerType;
+this->multiPlayerType= multiPlayerType;
     
 }
 
 
-    private: collidableWeaponBehavior: CollidableWeaponBehavior = CollidableWeaponBehavior.getNullInstance()!;
+    private: CollidableWeaponBehavior collidableWeaponBehavior = CollidableWeaponBehavior::getNullInstance();
 
-    public setCollidableInferface(CollidableBaseBehavior collidableInferface){
+    public: void setCollidableInferface(CollidableBaseBehavior collidableInferface){
 super.setCollidableInferface(collidableInferface);
     
-this.collidableWeaponBehavior= this.getCollidableInferface() as CollidableWeaponBehavior;
+this->collidableWeaponBehavior= this->getCollidableInferface() as CollidableWeaponBehavior;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public initXYZ(int32_t x, int32_t y, int32_t z){
-this.x= x;
+    public: void initXYZ(int32_t x, int32_t y, int32_t z){
+this->x= x;
     
-this.y= y;
+this->y= y;
     
-this.z= z;
+this->z= z;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(AllBinaryLayer sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable){
-this.setWeaponPropertiesP(weaponProperties);
+    public: void init(AllBinaryLayer sourceLayerInterface, int32_t angle, int32_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreable){
+this->setWeaponPropertiesP(weaponProperties);
     
-this.setReadyForExplosion(false);
+this->setReadyForExplosion(false);
     
-this.setAnimationInterface(this.getInitAnimationInterfaceP());
+this->setAnimationInterface(this->getInitAnimationInterfaceP());
     
-this.setOwnerLayerInterface(sourceLayerInterface);
+this->setOwnerLayerInterface(sourceLayerInterface);
     
-this.collidableWeaponBehavior!.init(sourceLayerInterface);
+this->collidableWeaponBehavior.init(sourceLayerInterface);
     
-this.setGroupInterfaces();
+this->setGroupInterfaces();
     
 
                         if(scoreable != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.scoreableInterface= scoreable;
+                                    this->scoreableInterface= scoreable;
     
 
                                     }
                                 
-this.totalDamage= 0;
+this->totalDamage= 0;
     
-this.initDamage= weaponProperties!.getDamage();
+this->initDamage= weaponProperties.getDamage();
     
-this.setDestroyed(false);
+this->setDestroyed(false);
     
-this.movement.init(weaponProperties!.getSpeed(), angle, otherAngle);
+this->movement.init(weaponProperties.getSpeed(), angle, otherAngle);
     
 }
 
 
-    setGroupInterfaces(){
+    protected: void setGroupInterfaces(){
 
-    basicGroupFactory: BasicGroupFactory = BasicGroupFactory.getInstance()!;;
+    BasicGroupFactory basicGroupFactory = BasicGroupFactory::getInstance();;
     
 
-                        if(this.sourceLayerInterface!.getGroupInterface()[0] == basicGroupFactory!.ENEMY)
+                        if(this->sourceLayerInterface.getGroupInterface()[0] == basicGroupFactory.ENEMY)
                         
                                     {
-                                    this.setGroupInterface(basicGroupFactory!.ENEMY_ARRAY);
+                                    this->setGroupInterface(basicGroupFactory.ENEMY_ARRAY);
     
 
                                     }
                                 
                         else {
-                            this.setGroupInterface(this.sourceLayerInterface!.getGroupInterface());
+                            this->setGroupInterface(this->sourceLayerInterface.getGroupInterface());
     
 
                         }
@@ -252,32 +251,32 @@ this.movement.init(weaponProperties!.getSpeed(), angle, otherAngle);
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 
-                        if(this.isExhausted() && !this.isDestroyed())
+                        if(this->isExhausted() && !this->isDestroyed())
                         
                                     {
                                     
-                        if(this.isReadyForExplosion())
+                        if(this->isReadyForExplosion())
                         
                                     {
                                     
-    indexedAnimationInterface: IndexedAnimation = this.getAnimationInterface() as IndexedAnimation;;
+    IndexedAnimation indexedAnimationInterface = this->getAnimationInterface() as IndexedAnimation;;
     
 
-    currentFrame: int32_t = indexedAnimationInterface!.getFrame()!;;
+    int32_t currentFrame = indexedAnimationInterface.getFrame();;
     
 
-                        if(currentFrame < indexedAnimationInterface!.getAnimationSize() -1)
+                        if(currentFrame < indexedAnimationInterface.getAnimationSize() -1)
                         
                                     {
-                                    indexedAnimationInterface!.nextFrame();
+                                    indexedAnimationInterface.nextFrame();
     
 
                                     }
                                 
                         else {
-                            this.setDestroyed(true);
+                            this->setDestroyed(true);
     
 
                         }
@@ -287,23 +286,23 @@ this.movement.init(weaponProperties!.getSpeed(), angle, otherAngle);
                                 
                         else {
                             
-    collidableWeaponBehavior: CollidableWeaponBehavior = this.getCollidableInferface() as CollidableWeaponBehavior;;
+    CollidableWeaponBehavior collidableWeaponBehavior = this->getCollidableInferface() as CollidableWeaponBehavior;;
     
 
-                        if(collidableWeaponBehavior!.isCollided())
+                        if(collidableWeaponBehavior.isCollided())
                         
                                     {
-                                    this.setAnimationInterface(this.destroyedAnimationInterface);
+                                    this->setAnimationInterface(this->destroyedAnimationInterface);
     
-this.getMovement()!.stop();
+this->getMovement().stop();
     
-this.setReadyForExplosion(true);
+this->setReadyForExplosion(true);
     
 
                                     }
                                 
                         else {
-                            this.setDestroyed(true);
+                            this->setDestroyed(true);
     
 
                         }
@@ -314,38 +313,38 @@ this.setReadyForExplosion(true);
 
                                     }
                                 
-this.movement.process(this);
+this->movement.process(this);
     
-this.totalDamage += this.weaponProperties!.getDissipation();
+this->totalDamage += this->weaponProperties.getDissipation();
     
 }
 
 
-    public bool isDestroyed(){
+    public: bool isDestroyed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.destroyed;
+                        return this->destroyed;
     
 }
 
 
-    public damage(int32_t damage, int32_t damageType){
-this.totalDamage += damage *damage;
+    public: void damage(int32_t damage, int32_t damageType){
+this->totalDamage += damage *damage;
     
 }
 
 
-    givePoints(int32_t total){
-this.scoreableInterface!.addPoints(GameConfigurationUtil.getInstance()!.getCompetitionValue() *total);
+    protected: void givePoints(int32_t total){
+this->scoreableInterface.addPoints(GameConfigurationUtil::getInstance().getCompetitionValue() *total);
     
 }
 
 
-    bool isExhausted(){
+    protected: bool isExhausted(){
 
-                        if(this.totalDamage > this.getInitDamage() || this.totalDamage < 0)
+                        if(this->totalDamage > this->getInitDamage() || this->totalDamage < 0)
                         
                                     {
                                     
@@ -370,15 +369,15 @@ this.scoreableInterface!.addPoints(GameConfigurationUtil.getInstance()!.getCompe
 }
 
 
-    public int32_t getDamage(int32_t damageType){
+    public: int32_t getDamage(int32_t damageType){
 
-                        if(!this.isExhausted())
+                        if(!this->isExhausted())
                         
                                     {
                                     
-    total: int32_t = this.getInitDamage() -this.totalDamage;;
+    int32_t total = this->getInitDamage() -this->totalDamage;;
     
-this.givePoints(total);
+this->givePoints(total);
     
 
 
@@ -398,16 +397,16 @@ this.givePoints(total);
 }
 
 
-    public setDestroyed(bool destroyed){
-this.destroyed= destroyed;
+    public: void setDestroyed(bool destroyed){
+this->destroyed= destroyed;
     
 
-                        if(this.isDestroyed())
+                        if(this->isDestroyed())
                         
                                     {
-                                    this.scoreableInterface= NoScoreable.getInstance();
+                                    this->scoreableInterface= NoScoreable::getInstance();
     
-DestroyedLayerProcessor.getInstance()!.add(this);
+DestroyedLayerProcessor::getInstance().add(this);
     
 
                                     }
@@ -415,145 +414,145 @@ DestroyedLayerProcessor.getInstance()!.add(this);
 }
 
 
-    int32_t getInitDamage(){
+    protected: int32_t getInitDamage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initDamage;
+                        return this->initDamage;
     
 }
 
 
-    setAnimationInterface(Animation animationInterface){
-this.animationInterface= animationInterface;
+    protected: void setAnimationInterface(Animation animationInterface){
+this->animationInterface= animationInterface;
     
 }
 
 
-    Animation getAnimationInterface(){
+    protected: Animation getAnimationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface;
+                        return this->animationInterface;
     
 }
 
 
-    public Animation getInitAnimationInterfaceP(){
+    public: Animation getInitAnimationInterfaceP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initAnimationInterface;
+                        return this->initAnimationInterface;
     
 }
 
 
-    public setInitAnimationInterfaceP(Animation initAnimationInterface){
-this.initAnimationInterface= initAnimationInterface;
+    public: void setInitAnimationInterfaceP(Animation initAnimationInterface){
+this->initAnimationInterface= initAnimationInterface;
     
 }
 
 
-    public Animation getDestroyedAnimationInterface(){
+    public: Animation getDestroyedAnimationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.destroyedAnimationInterface;
+                        return this->destroyedAnimationInterface;
     
 }
 
 
-    public AllBinaryLayer getOwnerLayerInterface(){
+    public: AllBinaryLayer getOwnerLayerInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.sourceLayerInterface;
+                        return this->sourceLayerInterface;
     
 }
 
 
-    public setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface){
-this.sourceLayerInterface= sourceLayerInterface;
+    public: void setOwnerLayerInterface(AllBinaryLayer sourceLayerInterface){
+this->sourceLayerInterface= sourceLayerInterface;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-    viewPosition: ViewPositionBase = this.getViewPosition()!;;
+    ViewPositionBase viewPosition = this->getViewPosition();;
     
-this.animationInterface!.paintXY(graphics, viewPosition!.getX() -this.getHalfWidth(), viewPosition!.getY() -this.getHalfHeight());
-    
-}
-
-
-    public paintThreed(Graphics graphics){
-
-    viewPosition: ViewPositionBase = this.getViewPosition()!;;
-    
-this.animationInterface!.paintThreedXYZ(graphics, viewPosition!.getX() -this.getHalfWidth(), viewPosition!.getY() -this.getHalfHeight(), viewPosition!.getZ() -this.getHalfDepth());
+this->animationInterface.paintXY(graphics, viewPosition.getX() -this->getHalfWidth(), viewPosition.getY() -this->getHalfHeight());
     
 }
 
 
-    public Movement getMovement(){
+    public: void paintThreed(Graphics graphics){
+
+    ViewPositionBase viewPosition = this->getViewPosition();;
+    
+this->animationInterface.paintThreedXYZ(graphics, viewPosition.getX() -this->getHalfWidth(), viewPosition.getY() -this->getHalfHeight(), viewPosition.getZ() -this->getHalfDepth());
+    
+}
+
+
+    public: Movement getMovement(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.movement;
+                        return this->movement;
     
 }
 
 
-    public setMovement(Movement movement){
-this.movement= movement;
+    public: void setMovement(Movement movement){
+this->movement= movement;
     
 }
 
 
-    public int32_t getType(){
+    public: int32_t getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WeaponLayer.getStaticType();;
+                        return WeaponLayer::getStaticType();;
     
 }
 
 
-    public int32_t getMultiPlayerType(){
+    public: int32_t getMultiPlayerType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.multiPlayerType;
+                        return this->multiPlayerType;
     
 }
 
 
-    public setWeaponPropertiesP(WeaponProperties weaponProperties){
-this.weaponProperties= weaponProperties;
+    public: void setWeaponPropertiesP(WeaponProperties weaponProperties){
+this->weaponProperties= weaponProperties;
     
 }
 
 
-    public WeaponProperties getWeaponPropertiesP(){
+    public: WeaponProperties getWeaponPropertiesP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.weaponProperties;
+                        return this->weaponProperties;
     
 }
 
 
-    public bool implmentsTickableInterface(){
+    public: bool implmentsTickableInterface(){
 
 
 
@@ -565,8 +564,8 @@ this.weaponProperties= weaponProperties;
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
-this.initAnimationInterface!.set(gl);
+    public: void set(GL gl){
+this->initAnimationInterface.set(gl);
     
 }
 

@@ -54,13 +54,12 @@
 class GameType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
- constructor (string name);
+: GameType(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

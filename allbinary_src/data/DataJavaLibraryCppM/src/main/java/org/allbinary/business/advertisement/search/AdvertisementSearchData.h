@@ -45,21 +45,20 @@
 class AdvertisementSearchData
             : public Object
          {
-        
 
-    private: static const instance: AdvertisementSearchData = new AdvertisementSearchData();
+    private: static AdvertisementSearchData instance() { return AdvertisementSearchData(); }
 
-    public static AdvertisementSearchData getInstance();
+    public: static AdvertisementSearchData getInstance();
 
-private constructor ();
+private: AdvertisementSearchData();
 
-    public const TITLE: string = "AFFILIATE_TITLE";
+    public: const std::string TITLE = "AFFILIATE_TITLE";
 
-    public const PRICE: string = "AFFILIATE_PRICE";
+    public: const std::string PRICE = "AFFILIATE_PRICE";
 
-    public const RELEVANCY: string = "AFFILIATE_RELEVANCY";
+    public: const std::string RELEVANCY = "AFFILIATE_RELEVANCY";
 
-    public const POPULARITY: string = "AFFILIATE_POPULARITY";
+    public: const std::string POPULARITY = "AFFILIATE_POPULARITY";
 
 };
 

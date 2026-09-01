@@ -60,35 +60,34 @@
 class DropCellPositionHistory
             : public Object
          {
-        
 
-    private: static const SINGLETON: DropCellPositionHistory = new DropCellPositionHistory();
+    private: static const DropCellPositionHistory SINGLETON = DropCellPositionHistory();
 
-    public static DropCellPositionHistory getInstance();
+    public: static DropCellPositionHistory getInstance();
 
-    private: const cellPositionFactory: CellPositionFactory = CellPositionFactory.getInstance()!;
+    private: const CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();
 
-    private: positionList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList positionList = BasicArrayListD();
 
-    private: layerList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList layerList = BasicArrayListD();
 
-    public add(CellPosition cellPosition, AllBinaryLayer layerInterface);
+    public: void add(CellPosition cellPosition, AllBinaryLayer layerInterface);
 
-    public addAll(BasicArrayList list, AllBinaryLayer layerInterface);
+    public: void addAll(BasicArrayList list, AllBinaryLayer layerInterface);
 
-    public remove(CellPosition cellPosition);
+    public: void remove(CellPosition cellPosition);
 
-    public removeAll(AllBinaryLayer layerInterface);
+    public: void removeAll(AllBinaryLayer layerInterface);
 
-    public clear();
+    public: void clear();
 
-    public bool isCellPositionWithDrop(CellPosition cellPosition);
+    public: bool isCellPositionWithDrop(CellPosition cellPosition);
 
-    public bool anyCellPositionWithDrop(BasicArrayList list);
+    public: bool anyCellPositionWithDrop(BasicArrayList list);
 
-    public CellPosition getCellPositionWithDrop(BasicArrayList list);
+    public: CellPosition getCellPositionWithDrop(BasicArrayList list);
 
-    public AllBinaryLayer getLayerInterface(CellPosition cellPosition);
+    public: AllBinaryLayer getLayerInterface(CellPosition cellPosition);
 
 };
 

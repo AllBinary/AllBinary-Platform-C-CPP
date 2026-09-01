@@ -67,21 +67,20 @@
 class LazyImageRotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: const layoutIndex: int32_t;
+    private: int32_t layoutIndex;
 
-    private: const animationInterfaceFactoryInterface: BaseImageAnimationFactory;
+    private: BaseImageAnimationFactory animationInterfaceFactoryInterface;
 
-    public scaleProperties: ScaleProperties = ScaleProperties.instance;
+    public: ScaleProperties scaleProperties = ScaleProperties::instance;
 
-public constructor (int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory animationInterfaceFactoryInterface);
+public: LazyImageRotationAnimationFactory(int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

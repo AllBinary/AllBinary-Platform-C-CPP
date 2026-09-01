@@ -21,6 +21,8 @@
         #ifndef VIEWS_ADMIN_INVENTORY_DOWNLOAD_DOWNLOADABLEINVENTORYITEMVIEW_H
         #define VIEWS_ADMIN_INVENTORY_DOWNLOAD_DOWNLOADABLEINVENTORYITEMVIEW_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -111,54 +113,53 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class DownloadableInventoryItemView: public HttpStoreComponentView: public RequestMapInterface {
-        
+class DownloadableInventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public static TYPE_ID: int32_t = 11;
+    public: static int32_t TYPE_ID = 11;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const request: HttpServletRequest;
+    protected: HttpServletRequest request;
 
-    id: string;
+    protected: std::string id;
 
-    itemInterface: ItemInterface;
+    protected: ItemInterface itemInterface;
 
-    downloadableItem: DownloadableItem;
+    protected: DownloadableItem downloadableItem;
 
-    private: requestHashMap: HashMap<any, any>;
+    private: HashMap<any, any> requestHashMap;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface);
 
-public constructor (TransformInfoInterface transformInfoInterface, string empty);
+public: DownloadableInventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty);
 
-    public int32_t getTypeId();
-
-                //@Throws(Exception.constructor)
-            
-    getFormData();
-
-    public addDomNodeInterfaces();
+    public: int32_t getTypeId();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    private: void getFormData();
+
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    processFile(FileItem fileItem);
+    public: std::string view();
 
                 //@Throws(Exception.constructor)
             
-    unzip(FileItem fileItem);
+    protected: void processFile(FileItem fileItem);
 
-    string getItemFilePath();
+                //@Throws(Exception.constructor)
+            
+    protected: void unzip(FileItem fileItem);
 
-    setRequestHashMap(HashMap<any, any> requestHashMap);
+    private: std::string getItemFilePath();
 
-    public HashMap<any, any> getRequestHashMap();
+    private: void setRequestHashMap(HashMap<any, any> requestHashMap);
 
-    public DownloadableItem getDownloadableItem();
+    public: HashMap<any, any> getRequestHashMap();
+
+    public: DownloadableItem getDownloadableItem();
 
 };
 

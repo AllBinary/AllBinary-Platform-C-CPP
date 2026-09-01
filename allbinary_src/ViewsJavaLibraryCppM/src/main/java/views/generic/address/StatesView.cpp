@@ -74,37 +74,34 @@
 class StatesView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: StatesView(){
+}
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    node: Node = document.createElement(StreetAddressData.STATES)!;;
+    Node node = document.createElement(StreetAddressData::STATES);;
     
 
-    statesFile: string = URLGLOBALS.getMainPath() +FREEBLISKET_PATH_GLOBALS.getInstance()!.LINEDATAPATH +"states.txt";;
+    std::string statesFile = URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().LINEDATAPATH +"states.txt";;
     
 
-    lineReader: LineReader = new LineReader(statesFile);;
+    LineReader lineReader = LineReader(statesFile);;
     
 
-        while(lineReader!.hasNext())
+        while(lineReader.hasNext())
         {
 
-    option: string = lineReader!.next()!;;
+    std::string option = lineReader.next();;
     
-node.appendChild(ModDomHelper.createNameValueNodes(document, StreetAddressData.STATE, option));
+node.appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::STATE, option));
     
 }
 
@@ -119,10 +116,10 @@ node.appendChild(ModDomHelper.createNameValueNodes(document, StreetAddressData.S
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }

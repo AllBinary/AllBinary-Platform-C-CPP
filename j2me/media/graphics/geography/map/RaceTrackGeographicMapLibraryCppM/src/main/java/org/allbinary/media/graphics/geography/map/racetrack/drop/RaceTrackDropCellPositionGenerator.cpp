@@ -97,43 +97,40 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RaceTrackDropCellPositionGenerator: public BaseDropCellPositionGenerator {
-        
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    private: const timeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeDelayHelper;
 
-    private: const STRAIGHTAWAY: int32_t = 4;
+    private: const int32_t STRAIGHTAWAY = 4;
 
-    raceTrackGeographicMap: RaceTrackGeographicMapInterface = NullRaceTrackGeographicMap.NULL_RACE_TRACK_GEOGRAPHIC_MAP;
+    protected: RaceTrackGeographicMapInterface raceTrackGeographicMap = NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP;
 
-    raceTrackGeographicMapCellTypeFactory: GeographicMapCellTypeFactory = GeographicMapCellTypeFactory.getInstance()!;
+    protected: GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
 
-protected constructor (){
-
-            super();
-        this.timeDelayHelper= new TimeDelayHelper(10000);
+protected: RaceTrackDropCellPositionGenerator(){
+this->timeDelayHelper= TimeDelayHelper(10000);
     
 }
 
 
-    init(){
-this.list.clear();
+    private: void init(){
+this->list.clear();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition){
 
-    raceTrackGeographicMapCellType: RaceTrackGeographicMapCellType = this.raceTrackGeographicMap!.getCellTypeAt(geographicMapCellPosition) as RaceTrackGeographicMapCellType;;
+    RaceTrackGeographicMapCellType raceTrackGeographicMapCellType = this->raceTrackGeographicMap.getCellTypeAt(geographicMapCellPosition) as RaceTrackGeographicMapCellType;;
     
 
-    raceTrackGeographicMapCellTypeFactory: RaceTrackGeographicMapCellTypeFactory = this.raceTrackGeographicMapCellTypeFactory as RaceTrackGeographicMapCellTypeFactory;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = this->raceTrackGeographicMapCellTypeFactory as RaceTrackGeographicMapCellTypeFactory;;
     
 
-                        if(raceTrackGeographicMapCellType == raceTrackGeographicMapCellTypeFactory!.HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE || raceTrackGeographicMapCellType == raceTrackGeographicMapCellTypeFactory!.VERTICAL_STRAIGHT_ROAD_CELL_TYPE)
+                        if(raceTrackGeographicMapCellType == raceTrackGeographicMapCellTypeFactory.HORIZONTAL_STRAIGHT_ROAD_CELL_TYPE || raceTrackGeographicMapCellType == raceTrackGeographicMapCellTypeFactory.VERTICAL_STRAIGHT_ROAD_CELL_TYPE)
                         
                                     {
                                     
@@ -156,57 +153,57 @@ this.list.clear();
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
-this.init();
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+this->init();
     
 
-    baseRaceTrackGeographicMap: BaseRaceTrackGeographicMap = geographicMapInterface as BaseRaceTrackGeographicMap;;
+    BaseRaceTrackGeographicMap baseRaceTrackGeographicMap = geographicMapInterface as BaseRaceTrackGeographicMap;;
     
-this.raceTrackGeographicMap= baseRaceTrackGeographicMap;
+this->raceTrackGeographicMap= baseRaceTrackGeographicMap;
     
-this.raceTrackGeographicMapCellTypeFactory= baseRaceTrackGeographicMap!.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;
-    
-
-    roadGeographicMapCellHistory: GeographicMapCellHistory = RaceTrackRoadsGeographicMapCellHistoryFactory.getInstance()!;;
+this->raceTrackGeographicMapCellTypeFactory= baseRaceTrackGeographicMap.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;
     
 
-    trackedList: BasicArrayList = roadGeographicMapCellHistory!.getTracked()!;;
+    GeographicMapCellHistory roadGeographicMapCellHistory = RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance();;
     
 
-    geographicMapCellPosition: GeographicMapCellPosition;;
+    BasicArrayList trackedList = roadGeographicMapCellHistory.getTracked();;
     
 
-    lastIndex: int32_t = trackedList!.size() -1;;
+    GeographicMapCellPosition geographicMapCellPosition;;
     
 
-    total: int32_t= 0;;
+    int32_t lastIndex = trackedList.size() -1;;
     
 
-    ahead: int32_t= 0;;
+    int32_t total= 0;;
+    
+
+    int32_t ahead= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = lastIndex;index > 0; index--)
+    int32_t index = lastIndex;index > 0; index--)
         {
-geographicMapCellPosition= trackedList!.get(index) as GeographicMapCellPosition;
+geographicMapCellPosition= trackedList.get(index) as GeographicMapCellPosition;
     
 total= 0;
     
 ahead= index;
     
 
-        while(this.isDropAllowedAt(trackedList!.get(ahead) as GeographicMapCellPosition))
+        while(this->isDropAllowedAt(trackedList.get(ahead) as GeographicMapCellPosition))
         {
 total++;
     
 
-                        if(total > this.STRAIGHTAWAY)
+                        if(total > this->STRAIGHTAWAY)
                         
                                     {
-                                    this.list.add(geographicMapCellPosition);
+                                    this->list.add(geographicMapCellPosition);
     
 break;
 
@@ -231,35 +228,35 @@ ahead++;
 }
 
 
-    size: int32_t = this.list.size()!;;
+    int32_t size = this->list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
-this.drop(allBinaryGameLayerManager, index);
+this->drop(allBinaryGameLayerManager, index);
     
 }
 
 }
 
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 
-                        if(this.timeDelayHelper!.isTime(GameTickTimeDelayHelperFactory.getInstance()!.startTime))
+                        if(this->timeDelayHelper.isTime(GameTickTimeDelayHelperFactory::getInstance().startTime))
                         
                                     {
                                     
-    index: int32_t = this.basicArrayListUtil!.getRandomIndex(this.list)!;;
+    int32_t index = this->basicArrayListUtil.getRandomIndex(this->list);;
     
-this.drop(allBinaryLayerManager, index);
+this->drop(allBinaryLayerManager, index);
     
 
                                     }
@@ -269,11 +266,11 @@ this.drop(allBinaryLayerManager, index);
 
                 //@Throws(Exception.constructor)
             
-    drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
+    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index){
 
 
 
-                            throw new Exception(CommonStrings.getInstance()!.NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
                     
 }
 

@@ -51,11 +51,10 @@
 class CanvasUtil
             : public Object
          {
-        
 
-    public static string getKeyName(int32_t key);
+    public: static std::string getKeyName(int32_t key);
 
-private constructor ();
+private: CanvasUtil();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -64,60 +66,57 @@
 class KeySpecFactory
             : public Object
          {
-        
 
-    private: static const instance: KeySpecFactory = new KeySpecFactory();
+    private: static KeySpecFactory instance() { return KeySpecFactory(); }
 
-    public static KeySpecFactory getInstance(){
+    public: static KeySpecFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return KeySpecFactory.instance;
+                        return KeySpecFactory::instance();
     
 }
 
 
-    public const DES: string = "DES";
+    public: const std::string DES = "DES";
 
-    public const DESEDE: string = "DESede";
+    public: const std::string DESEDE = "DESede";
 
-    public const BLOWFISH: string = "Blowfish";
+    public: const std::string BLOWFISH = "Blowfish";
 
-private constructor (){
-
-            super();
-        }
+private: KeySpecFactory(){
+}
 
 
-    public KeySpec getInstance(string algorithm, std::vector<int8_t> keyData){
+    public: KeySpec getInstance(std::string algorithm, std::vector<int8_t> keyData){
 
         try {
             
-    tsUtil: TsUtil = TsUtil.getInstance()!;;
+    TsUtil tsUtil = TsUtil::getInstance();;
     
 
-                        if(tsUtil!.compareTo(algorithm, this.DES) == 0)
+                        if(tsUtil.compareTo(algorithm, this->DES) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new DESKeySpec(keyData);
+                        return DESKeySpec(keyData);
     
 
                                     }
                                 
                              else 
-                        if(tsUtil!.compareTo(algorithm, this.DESEDE) == 0)
+                        if(tsUtil.compareTo(algorithm, this->DESEDE) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new DESedeKeySpec(keyData);
+                        return DESedeKeySpec(keyData);
     
 
                                     }
@@ -126,7 +125,7 @@ private constructor (){
                             
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                         }
@@ -136,14 +135,14 @@ private constructor (){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

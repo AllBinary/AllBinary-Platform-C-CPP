@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_ABCRYPT_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_CRYPT_JCEHELPER_ABCRYPT_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 
@@ -45,15 +47,14 @@
 class AbCrypt
             : public Object
          {
-        
 
-public constructor (string algorithm, string key);
+public: AbCrypt(std::string algorithm, std::string key);
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
 
-    public std::vector<int8_t> mutilate(std::vector<int8_t> array);
+    public: std::vector<int8_t> mutilate(std::vector<int8_t> array);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLECOMPOSITE_H
         #define ORG_ALLBINARY_GRAPHICS_PAINT_PAINTABLECOMPOSITE_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -46,15 +48,14 @@
 #include "PaintableInterface.h"
 
 class PaintableComposite: public Paintable {
-        
 
-    private: paintableArray: std::vector<PaintableInterface>;
+    private: std::vector<PaintableInterface> paintableArray;
 
-public constructor (std::vector<PaintableInterface> paintableArray);
+public: PaintableComposite(std::vector<PaintableInterface> paintableArray);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

@@ -45,15 +45,14 @@
 class StoreFrontOrdersStatisticsData
             : public Object
          {
-        
 
-    private: static const instance: StoreFrontOrdersStatisticsData = new StoreFrontOrdersStatisticsData();
+    private: static StoreFrontOrdersStatisticsData instance() { return StoreFrontOrdersStatisticsData(); }
 
-    public static StoreFrontOrdersStatisticsData getInstance();
+    public: static StoreFrontOrdersStatisticsData getInstance();
 
-private constructor ();
+private: StoreFrontOrdersStatisticsData();
 
-    public const NAME: string = "STOREFRONT_ORDERS_STATISTICS_NAME";
+    public: const std::string NAME = "STOREFRONT_ORDERS_STATISTICS_NAME";
 
 };
 

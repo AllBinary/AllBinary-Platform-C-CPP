@@ -41,7 +41,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DisplayInBrowserContraintsInterface {
-        
 
     bool isMountable();
 
@@ -49,15 +48,15 @@ class DisplayInBrowserContraintsInterface {
 
     bool isQuickFrameable();
 
-    setMountable(bool canBeMounted);
+    void setMountable(bool canBeMounted);
 
-    setFrameable(bool canBeFramed);
+    void setFrameable(bool canBeFramed);
 
-    setQuickFrameable(bool canBeQuickFramed);
+    void setQuickFrameable(bool canBeQuickFramed);
 
-    setMountedLink(string mountedLink);
+    void setMountedLink(std::string mountedLink);
 
-    string getMountedLink();
+    std::string getMountedLink();
 
 };
 

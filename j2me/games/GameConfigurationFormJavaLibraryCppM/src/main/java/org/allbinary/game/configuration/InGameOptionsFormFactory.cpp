@@ -75,16 +75,15 @@
 class InGameOptionsFormFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static InGameOptionsFormFactory getInstance(){
+    public: static InGameOptionsFormFactory getInstance(){
 
-                        if(InGameOptionsFormFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(InGameOptionsFormFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    InGameOptionsFormFactory.instance= new InGameOptionsFormFactory();
+                                    InGameOptionsFormFactory::instance= InGameOptionsFormFactory();
     
 
                                     }
@@ -93,25 +92,25 @@ class InGameOptionsFormFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InGameOptionsFormFactory.instance as InGameOptionsFormFactory;
+                        return InGameOptionsFormFactory::instance() as InGameOptionsFormFactory;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: SINGLETON: CommandForm = CommandForm.getNullCommandForm()!;
+    private: CommandForm SINGLETON = CommandForm::getNullCommandForm();
 
-    public init(CommandListener commandListener, Init initInterface, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+    public: void init(CommandListener commandListener, Init initInterface, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
 
         try {
             
-                        if(this.SINGLETON == CommandForm.getNullCommandForm())
+                        if(this->SINGLETON == CommandForm::getNullCommandForm())
                         
                                     {
-                                    initInterface!.init();
+                                    initInterface.init();
     
-this.SINGLETON= new InGameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
+this->SINGLETON= InGameOptionsForm(commandListener, title, backgrounBasicColor, foregroundBasicColor);
     
 
                                     }
@@ -121,21 +120,21 @@ this.SINGLETON= new InGameOptionsForm(commandListener, title, backgrounBasicColo
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.INIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.INIT, e);
     
 }
 
 }
 
 
-    public CommandForm get(){
+    public: CommandForm get(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.SINGLETON;
+                        return this->SINGLETON;
     
 }
 

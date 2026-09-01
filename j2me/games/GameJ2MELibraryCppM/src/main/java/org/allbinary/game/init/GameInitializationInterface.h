@@ -55,11 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInitializationInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
+    void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
 
 };
 

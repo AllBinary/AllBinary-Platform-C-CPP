@@ -42,27 +42,24 @@
 class OutputTypeData
             : public Object
          {
-        
 
-    private: static const instance: OutputTypeData = new OutputTypeData();
+    private: static OutputTypeData instance() { return OutputTypeData(); }
 
-    public static OutputTypeData getInstance(){
+    public: static OutputTypeData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OutputTypeData.instance;
+                        return OutputTypeData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: OutputTypeData(){
+}
 
 
-    public const NAME: string = "OUTPUT_TYPE_NAME";
+    public: const std::string NAME = "OUTPUT_TYPE_NAME";
 
 };
 

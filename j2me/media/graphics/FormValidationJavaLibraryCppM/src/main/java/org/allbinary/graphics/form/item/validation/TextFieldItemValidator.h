@@ -68,21 +68,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextFieldItemValidator: public ValidatorBase {
-        
 
-    private: const textFieldItem: ABTextFieldItem;
+    private: ABTextFieldItem textFieldItem;
 
-    private: min: int32_t;
+    private: int32_t min;
 
-    private: max: int32_t;
+    private: int32_t max;
 
-    private: allowOnEmpty: bool;
+    private: bool allowOnEmpty;
 
-public constructor (ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
+public: TextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public BasicArrayList toList();
+    public: BasicArrayList toList();
 
 };
 

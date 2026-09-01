@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPCELLTYPEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/RuntimeException.h"
@@ -51,27 +53,26 @@
 class GeographicMapCellTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: GeographicMapCellTypeFactory = new GeographicMapCellTypeFactory();
+    private: static GeographicMapCellTypeFactory instance() { return GeographicMapCellTypeFactory(); }
 
-    public static GeographicMapCellTypeFactory getInstance();
+    public: static GeographicMapCellTypeFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const geographicMapCellTypeArray: std::vector<GeographicMapCellType> = new Array(512);
+    private: const std::vector<GeographicMapCellType> geographicMapCellTypeArray = new Array(512);
 
-    public GeographicMapCellType get(int32_t type);
+    public: GeographicMapCellType get(int32_t type);
 
-    public std::vector<GeographicMapCellType> getGeographicMapCellTypeArray();
+    public: std::vector<GeographicMapCellType> getGeographicMapCellTypeArray();
 
-    public int32_t getStartType();
+    public: int32_t getStartType();
 
-    public int32_t getEndType();
+    public: int32_t getEndType();
 
-    public int32_t getEmptyType();
+    public: int32_t getEmptyType();
 
-    public bool isPath(GeographicMapCellType cellType);
+    public: bool isPath(GeographicMapCellType cellType);
 
 };
 

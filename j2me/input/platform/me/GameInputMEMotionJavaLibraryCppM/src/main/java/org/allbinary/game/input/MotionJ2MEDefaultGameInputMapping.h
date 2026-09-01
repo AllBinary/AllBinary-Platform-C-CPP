@@ -57,9 +57,8 @@
         #include "GameKeyFactory.h"
 
 class MotionJ2MEDefaultGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor ();
+public: MotionJ2MEDefaultGameInputMapping();
 
 };
 

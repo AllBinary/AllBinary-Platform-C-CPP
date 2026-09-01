@@ -52,11 +52,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TagHelperFactoryInterface {
-        
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

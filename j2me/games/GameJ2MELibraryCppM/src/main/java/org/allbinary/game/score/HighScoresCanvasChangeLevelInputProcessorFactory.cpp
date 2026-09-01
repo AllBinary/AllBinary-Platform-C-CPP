@@ -48,14 +48,13 @@
 class HighScoresCanvasChangeLevelInputProcessorFactory
             : public Object
         : public HighScoresCanvasInputProcessorFactoryInterface {
-        
 
-    public HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas){
+    public: HighScoresCanvasInputProcessor getInstance(HighScoresCanvas highScoresCanvas){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HighScoresCanvasLevelChangeInputProcessor(highScoresCanvas);
+                        return HighScoresCanvasLevelChangeInputProcessor(highScoresCanvas);
     
 }
 

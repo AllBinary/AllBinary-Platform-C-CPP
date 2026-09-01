@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_H
         #define ORG_ALLBINARY_DATA_TREE_DOM_MODDOMHELPER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -74,61 +76,60 @@
 class ModDomHelper
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Node createTextNode(Document document, string name, string text);
+    public: static Node createTextNode(Document document, std::string name, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createValueNode(Document document, string text);
+    public: static Node createValueNode(Document document, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameNode(Document document, string text);
+    public: static Node createNameNode(Document document, std::string text);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createIndexNode(Document document, int32_t index);
+    public: static Node createIndexNode(Document document, int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, string elementName, string nameText, string valueText);
+    public: static Node createNameValueNodes(Document document, std::string elementName, std::string nameText, std::string valueText);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, string elementNameAndNameText, string valueText);
+    public: static Node createNameValueNodes(Document document, std::string elementNameAndNameText, std::string valueText);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueIndexNodes(Document document, string elementNameAndNameText, int32_t index, string valueText);
+    public: static Node createNameValueIndexNodes(Document document, std::string elementNameAndNameText, int32_t index, std::string valueText);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, string rootNode, HashMap<any, any> hashMap);
+    public: static Node createNameValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, Node node, HashMap<any, any> hashMap);
+    public: static Node createNameValueNodes(Document document, Node node, HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueNodes(Document document, string rootNodeName, string duplicateNodeName, Vector valueVector);
+    public: static Node createNameValueNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNameValueIndexNodes(Document document, string rootNodeName, string duplicateNodeName, Vector valueVector);
+    public: static Node createNameValueIndexNodes(Document document, std::string rootNodeName, std::string duplicateNodeName, Vector valueVector);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNodeWithValueNodes(Document document, string rootNode, HashMap<any, any> hashMap);
+    public: static Node createNodeWithValueNodes(Document document, std::string rootNode, HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public static Node createNodeWithValueNodes(Document document, Node node, HashMap<any, any> hashMap);
+    public: static Node createNodeWithValueNodes(Document document, Node node, HashMap<any, any> hashMap);
 
-private constructor ();
+private: ModDomHelper();
 
 };
 

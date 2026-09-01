@@ -42,14 +42,11 @@
 class PaymentTransactionData
             : public Object
          {
-        
 
-    public static NAME: string = "PAYMENTTRANSACTION_NAME";
+    public: static std::string NAME = "PAYMENTTRANSACTION_NAME";
 
-private constructor (){
-
-            super();
-        }
+private: PaymentTransactionData(){
+}
 
 
 };

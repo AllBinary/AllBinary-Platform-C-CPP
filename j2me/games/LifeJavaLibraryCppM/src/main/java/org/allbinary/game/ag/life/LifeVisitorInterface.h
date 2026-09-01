@@ -42,9 +42,8 @@
         #include "Life.h"
 
 class LifeVisitorInterface {
-        
 
-    visit(Life lifeInterface);
+    void visit(Life lifeInterface);
 
 };
 

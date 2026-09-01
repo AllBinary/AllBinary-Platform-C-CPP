@@ -79,115 +79,112 @@
 #include "MotionRectanglesResultsEvent.h"
 #include "MotionRectangles.h"
 
-class MotionRectanglesWorker: public BasicEventHandler: public ImageComparisonResultsListener {
-        
+class MotionRectanglesWorker: public BasicEventHandler, public ImageComparisonResultsListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageComparisonInfoVector: Vector = new Vector();
+    private: const Vector imageComparisonInfoVector = Vector();
 
-    private: const motionRectangleConstraintsInterface: MotionRectangleConstraintsInterface;
+    private: MotionRectangleConstraintsInterface motionRectangleConstraintsInterface;
 
-    private: index: int64_t= 0;
+    private: int64_t index= 0;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-public constructor (MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
-
-            super();
-        this.motionRectangleConstraintsInterface= motionRectangleConstraintsInterface;
+public: MotionRectanglesWorker(MotionRectangleConstraintsInterface motionRectangleConstraintsInterface){
+this->motionRectangleConstraintsInterface= motionRectangleConstraintsInterface;
     
 }
 
 
-    public onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
-this.imageComparisonInfoVector!.add(imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
+this->imageComparisonInfoVector.add(imageComparisonResultsEvent);
     
-this.run();
+this->run();
     
 }
 
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject){
-this.onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
+this->onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
-    
-timeHelper!.setStartTimeTNT();
+this->setRunning(true);
     
 
-    imageComparisonResultsEvent: ImageComparisonResultsEvent = this.imageComparisonInfoVector!.get(0) as ImageComparisonResultsEvent;;
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+timeHelper.setStartTimeTNT();
     
 
-    imageComparisonInfo: ImageComparisonResult = imageComparisonResultsEvent!.getImageComparisonResult() as ImageComparisonResult;;
-    
-this.logUtil!.putF(imageComparisonInfo!.toString(), this, this.commonStrings!.RUN);
+    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0) as ImageComparisonResultsEvent;;
     
 
-    allMotionRectangles: AllMotionRectangles = new AllMotionRectangles(imageComparisonInfo);;
+    ImageComparisonResult imageComparisonInfo = imageComparisonResultsEvent.getImageComparisonResult() as ImageComparisonResult;;
     
-AllMotionRectanglesResultsCacheSingleton.getInstance()!.add(new MotionRectanglesResultsFrameCacheable(allMotionRectangles, imageComparisonInfo!.getFrameTwo()));
-    
-
-    consolidatedMotionRectangles: ConsolidateMotionRectangles = new ConsolidateMotionRectangles(allMotionRectangles);;
-    
-ConsolidatedMotionRectanglesResultsCacheSingleton.getInstance()!.add(new MotionRectanglesResultsFrameCacheable(consolidatedMotionRectangles, imageComparisonInfo!.getFrameTwo()));
+this->logUtil.putF(imageComparisonInfo.toString(), this, this->commonStrings.RUN);
     
 
-    constrainedMotionRectangles: ConstrainedMotionRectangles = new ConstrainedMotionRectangles(this.motionRectangleConstraintsInterface, consolidatedMotionRectangles);;
+    AllMotionRectangles allMotionRectangles = AllMotionRectangles(imageComparisonInfo);;
     
-constrainedMotionRectangles!.applyMotionRectangleConstraints(consolidatedMotionRectangles);
+AllMotionRectanglesResultsCacheSingleton::getInstance().add(MotionRectanglesResultsFrameCacheable(allMotionRectangles, imageComparisonInfo.getFrameTwo()));
     
-ConstrainedMotionRectanglesResultsCacheSingleton.getInstance()!.add(new MotionRectanglesResultsFrameCacheable(constrainedMotionRectangles, imageComparisonInfo!.getFrameTwo()));
+
+    ConsolidateMotionRectangles consolidatedMotionRectangles = ConsolidateMotionRectangles(allMotionRectangles);;
     
-this.fireEvent(new MotionRectanglesResultsEvent(this, imageComparisonInfo!.getFrameTwo(), constrainedMotionRectangles as MotionRectangles));
+ConsolidatedMotionRectanglesResultsCacheSingleton::getInstance().add(MotionRectanglesResultsFrameCacheable(consolidatedMotionRectangles, imageComparisonInfo.getFrameTwo()));
     
-this.imageComparisonInfoVector!.remove(imageComparisonResultsEvent);
+
+    ConstrainedMotionRectangles constrainedMotionRectangles = ConstrainedMotionRectangles(this->motionRectangleConstraintsInterface, consolidatedMotionRectangles);;
     
-this.index++;
+constrainedMotionRectangles.applyMotionRectangleConstraints(consolidatedMotionRectangles);
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+ConstrainedMotionRectanglesResultsCacheSingleton::getInstance().add(MotionRectanglesResultsFrameCacheable(constrainedMotionRectangles, imageComparisonInfo.getFrameTwo()));
     
-this.setRunning(false);
+this->fireEvent(MotionRectanglesResultsEvent(this, imageComparisonInfo.getFrameTwo(), constrainedMotionRectangles as MotionRectangles));
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->imageComparisonInfoVector.remove(imageComparisonResultsEvent);
+    
+this->index++;
+    
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+    
+this->setRunning(false);
+    
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

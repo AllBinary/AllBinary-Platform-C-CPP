@@ -75,26 +75,23 @@
 #include "UpGameKeyEventListenerInterface.h"
 
 class UpGameKeyEventHandlerBase: public BasicEventHandler {
-        
 
-    private: static const TOTAL_LISTENERS: string = " Total PlayerGameInput Listeners: ";
+    private: static const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 
-    private: static const LISTENER_LABEL: string = " PlayerGameInput Listener: ";
+    private: static const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
- constructor (){
-
-            super();
-        }
+: UpGameKeyEventHandlerBase(){
+}
 
 
-    public addListener(PlayerGameInput playerGameInput){
+    public: void addListener(PlayerGameInput playerGameInput){
 
-                        if(!this.list.contains(playerGameInput))
+                        if(!this->list.contains(playerGameInput))
                         
                                     {
-                                    this.list.add(playerGameInput);
+                                    this->list.add(playerGameInput);
     
 
                                     }
@@ -102,16 +99,16 @@ class UpGameKeyEventHandlerBase: public BasicEventHandler {
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListenerSingleThreaded(eventListenerInterface);
     
@@ -119,8 +116,8 @@ super.removeListenerSingleThreaded(eventListenerInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -129,26 +126,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    playerGameInput: PlayerGameInput = this.list.objectArray[index]! as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->list.objectArray[index]! as PlayerGameInput;;
     
-playerGameInput!.onUpGameKeyEvent(eventObject as GameKeyEvent);
+playerGameInput.onUpGameKeyEvent(eventObject as GameKeyEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -161,49 +158,49 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    upGameKeyEventListenerInterface: UpGameKeyEventListenerInterface = eventListenerInterface as UpGameKeyEventListenerInterface;;
+    UpGameKeyEventListenerInterface upGameKeyEventListenerInterface = eventListenerInterface as UpGameKeyEventListenerInterface;;
     
-upGameKeyEventListenerInterface!.onUpGameKeyEvent(eventObject as GameKeyEvent);
+upGameKeyEventListenerInterface.onUpGameKeyEvent(eventObject as GameKeyEvent);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    size: int32_t = this.list.size()!;;
+    int32_t size = this->list.size();;
     
-stringBuffer!.append(super.toString());
+stringBuffer.append(super.toString());
     
-stringBuffer!.append(UpGameKeyEventHandlerBase.TOTAL_LISTENERS);
+stringBuffer.append(UpGameKeyEventHandlerBase::TOTAL_LISTENERS);
     
-stringBuffer!.appendint(size);
+stringBuffer.appendint(size);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
         try {
             
-    eventListenerInterface: EventListenerInterface = this.list.get(index) as EventListenerInterface;;
+    EventListenerInterface eventListenerInterface = this->list.get(index) as EventListenerInterface;;
     
-stringBuffer!.append(UpGameKeyEventHandlerBase.LISTENER_LABEL);
+stringBuffer.append(UpGameKeyEventHandlerBase::LISTENER_LABEL);
     
-stringBuffer!.append(eventListenerInterface!.toString());
+stringBuffer.append(eventListenerInterface.toString());
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.TOSTRING, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.TOSTRING, e);
     
 }
 
@@ -213,7 +210,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.TOSTR
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

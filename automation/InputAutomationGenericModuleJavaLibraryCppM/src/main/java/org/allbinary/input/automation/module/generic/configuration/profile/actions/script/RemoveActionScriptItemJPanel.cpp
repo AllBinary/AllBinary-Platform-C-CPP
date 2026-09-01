@@ -54,38 +54,35 @@
 #include "ActionListener.h"
 #include "ActionEvent.h"
 
-class RemoveActionScriptItemJPanel: public java.awt.Panel {
-        
+class RemoveActionScriptItemJPanel: public java::awt::Panel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: genericProfileActionJPanel: GenericProfileActionJPanel;
+    private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-    private: profileActionScriptConditionInterface: ProfileActionScriptConditionInterface;
+    private: ProfileActionScriptConditionInterface profileActionScriptConditionInterface;
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel, ProfileActionScriptConditionInterface profileActionScriptConditionInterface){
-
-            super();
-        this.initComponents();
+public: RemoveActionScriptItemJPanel(GenericProfileActionJPanel genericProfileActionJPanel, ProfileActionScriptConditionInterface profileActionScriptConditionInterface){
+this->initComponents();
     
-this.genericProfileActionJPanel= genericProfileActionJPanel;
+this->genericProfileActionJPanel= genericProfileActionJPanel;
     
-this.profileActionScriptConditionInterface= profileActionScriptConditionInterface;
+this->profileActionScriptConditionInterface= profileActionScriptConditionInterface;
     
 }
 
 
-    initComponents(){
-this.removeJButton= new javax.swing.JButton();
+    private: void initComponents(){
+this->removeJButton= javax::swing::JButton();
     
-setLayout(new java.awt.GridLayout());
+setLayout(java::awt::GridLayout());
     
-this.removeJButton!.setText("Remove");
+this->removeJButton.setText("Remove");
     
-this.removeJButton!.addActionListener(new class extends java.awt.event.ActionListener
+this->removeJButton.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 removeJButtonActionPerformed(evt);
     
 }
@@ -93,22 +90,22 @@ removeJButtonActionPerformed(evt);
                                 }
                             );
     
-add(this.removeJButton);
+add(this->removeJButton);
     
 }
 
 
-    removeJButtonActionPerformed(java.awt.event.ActionEvent evt){
+    private: void removeJButtonActionPerformed(java::awt::event::ActionEvent evt){
 
-    genericProfileAction: GenericProfileAction = this.genericProfileActionJPanel!.getGenericProfileAction()!;;
+    GenericProfileAction genericProfileAction = this->genericProfileActionJPanel.getGenericProfileAction();;
     
 
                         if(genericProfileAction == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF("GenericProfileAction was null", this, "removeJButtonActionPerformed");
+                                    this->logUtil.putF("GenericProfileAction was null", this, "removeJButtonActionPerformed");
     
 
 
@@ -119,14 +116,14 @@ add(this.removeJButton);
 
                                     }
                                 
-genericProfileAction!.getGenericProfileActionScript()!.removeCondition(this.profileActionScriptConditionInterface);
+genericProfileAction.getGenericProfileActionScript().removeCondition(this->profileActionScriptConditionInterface);
     
-this.genericProfileActionJPanel!.updateProfileActionUI();
+this->genericProfileActionJPanel.updateProfileActionUI();
     
 }
 
 
-    private: removeJButton: javax.swing.JButton;
+    private: javax::swing::JButton removeJButton;
 
 };
 

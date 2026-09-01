@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_PAINTABLEFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_PAINTABLEFORM_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -71,29 +73,28 @@
 #include "FormType.h"
 
 class PaintableForm: public ABCustomForm {
-        
 
-    private: static NULL_PAINTABLE_FORM: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_PAINTABLE_FORM = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PaintableForm getNullPaintableForm();
+    public: static PaintableForm getNullPaintableForm();
 
-    const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    rectangle: Rectangle = RectangleFactory.SINGLETON;
+    protected: Rectangle rectangle = RectangleFactory::SINGLETON;
 
-    x: int32_t= 0;
+    protected: int32_t x= 0;
 
-    y: int32_t= 0;
+    protected: int32_t y= 0;
 
-    formType: FormType = FormTypeFactory.getInstance()!.NULL_FORM_TYPE;
+    protected: FormType formType = FormTypeFactory::getInstance().NULL_FORM_TYPE;
 
-public constructor (string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: PaintableForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle, FormType formType);
+    public: void init(Rectangle rectangle, FormType formType);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
 };
 

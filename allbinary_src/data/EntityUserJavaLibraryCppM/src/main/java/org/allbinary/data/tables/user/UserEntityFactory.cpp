@@ -51,11 +51,10 @@
 class UserEntityFactory
             : public Object
          {
-        
 
-    public static UserEntity getInstance(){
+    public: static UserEntity getInstance(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -63,20 +62,20 @@ class UserEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.user.UserEntity() as UserEntity;
+                        return org::allbinary::data::tables::user::UserEntity() as UserEntity;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    logUtil!.put(commonStrings!.EXCEPTION, "UserEntityFactory", commonStrings!.GET_INSTANCE, e);
+                                    logUtil.put(commonStrings.EXCEPTION, "UserEntityFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -92,10 +91,8 @@ class UserEntityFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: UserEntityFactory(){
+}
 
 
 };

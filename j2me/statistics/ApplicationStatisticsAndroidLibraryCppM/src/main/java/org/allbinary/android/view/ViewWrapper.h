@@ -45,15 +45,14 @@
         #include "BaseViewWrapper.h"
 
 class ViewWrapper: public BaseViewWrapper {
-        
 
-    private: const view: View;
+    private: View view;
 
-public constructor (View view);
+public: ViewWrapper(View view);
 
-    public invalidate();
+    public: void invalidate();
 
-    public postInvalidate();
+    public: void postInvalidate();
 
 };
 

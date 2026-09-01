@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -62,43 +64,39 @@
 class ImageJ2MEScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageJ2MEScaleUtil = new ImageJ2MEScaleUtil();
+    private: static ImageJ2MEScaleUtil instance() { return ImageJ2MEScaleUtil(); }
 
-    public static ImageJ2MEScaleUtil getInstance(){
+    public: static ImageJ2MEScaleUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageJ2MEScaleUtil.instance;
+                        return ImageJ2MEScaleUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageJ2MEScaleUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
+    public: std::vector<Image> scaleArray(std::vector<Image> images, int32_t width, int32_t height){
 
-    scaledImages: std::vector<Image> = new Array(images.length);;
+    std::vector<Image> scaledImages = new Array(images.length);;
     
 
 
 
 
                         for (
-    index: int32_t = images.length
-                ;--index >= 0; )
+    int32_t index = images.size();--index >= 0; )
         {
-scaledImages[index]= this.scale(images[index]!, width, height);
+scaledImages[index]= this->scale(images[index]!, width, height);
     
 }
 
@@ -113,9 +111,9 @@ scaledImages[index]= this.scale(images[index]!, width, height);
 
                 //@Throws(Exception.constructor)
             
-    public Image scale(Image image, int32_t width, int32_t height){
+    public: Image scale(Image image, int32_t width, int32_t height){
 
-    originalPlayNImage: playn.core.Image = 
+    playn::core::Image originalPlayNImage = 
                 null
             ;;
     
@@ -124,35 +122,35 @@ scaledImages[index]= this.scale(images[index]!, width, height);
                         
                                     {
                                     
-    originalHTMLImage: PlaynMutableImage = image as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = image as PlaynMutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                                     }
                                 
                         else {
                             
-    originalHTMLImage: PlaynImmutableImage = image as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = image as PlaynImmutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                         }
                             
 
-    scaledImage: Image = Image.createImage(width, height)!;;
+    Image scaledImage = Image::createImage(width, height);;
     
 
-    htmlImage: PlaynMutableImage = scaledImage as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = scaledImage as PlaynMutableImage;;
     
 
-    canvasImage: CanvasImage = htmlImage!.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
     
 
-    canvasSurface: CanvasSurface = htmlImage!.getCanvasSurface(canvasImage)!;;
+    CanvasSurface canvasSurface = htmlImage.getCanvasSurface(canvasImage);;
     
-canvasSurface!.drawImage(originalPlayNImage, 0, 0, scaledImage!.getWidth(), scaledImage!.getHeight(), 0, 0, image.getWidth(), image.getHeight());
+canvasSurface.drawImage(originalPlayNImage, 0, 0, scaledImage.getWidth(), scaledImage.getHeight(), 0, 0, image.getWidth(), image.getHeight());
     
 
 

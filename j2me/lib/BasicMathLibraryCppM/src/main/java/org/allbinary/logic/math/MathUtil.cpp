@@ -34,23 +34,22 @@
 class MathUtil
             : public Object
          {
-        
 
-    private: static const instance: MathUtil = new MathUtil();
+    private: static MathUtil instance() { return MathUtil(); }
 
-    public static MathUtil getInstance(){
+    public: static MathUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MathUtil.instance;
+                        return MathUtil::instance();
     
 }
 
 
-    public int32_t getTotalDigits(int32_t digits){
+    public: int32_t getTotalDigits(int32_t digits){
 
-    total: int32_t = 0;;
+    int32_t total = 0;;
     
 
         while(digits > 0)
@@ -70,7 +69,7 @@ total++;
 }
 
 
-    public int32_t sqrt(int32_t value){
+    public: int32_t sqrt(int32_t value){
 
                         if(value <= 1)
                         
@@ -85,10 +84,10 @@ total++;
                                     }
                                 
 
-    accumulated: int32_t = value>>1;;
+    int32_t accumulated = value>>1;;
     
 
-    result: int32_t = (accumulated +(value /accumulated))>>1;;
+    int32_t result = (accumulated +(value /accumulated))>>1;;
     
 
         do
@@ -110,9 +109,9 @@ result= (accumulated +(value /accumulated))>>1;
 }
 
 
-    private: const ACCURACY: int32_t = 100;
+    private: const int32_t ACCURACY = 100;
 
-    public double sqrtd(int32_t x){
+    public: double sqrtd(int32_t x){
 
                         if(x == 0)
                         
@@ -140,14 +139,14 @@ result= (accumulated +(value /accumulated))>>1;
                                     }
                                 
 
-    result: double = x;;
+    double result = x;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.ACCURACY; index++)
+    int32_t index = 0;index < this->ACCURACY; index++)
         {
 result= (result +(x /result)) /2;
     
@@ -162,7 +161,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public int32_t abs(int32_t value){
+    public: int32_t abs(int32_t value){
 
 
 
@@ -179,7 +178,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public int64_t abslong(int64_t value){
+    public: int64_t abslong(int64_t value){
 
 
 
@@ -196,7 +195,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public int32_t min(int32_t value, int32_t value2){
+    public: int32_t min(int32_t value, int32_t value2){
 
 
 
@@ -213,7 +212,7 @@ result= (result +(x /result)) /2;
 }
 
 
-    public int32_t max(int32_t value, int32_t value2){
+    public: int32_t max(int32_t value, int32_t value2){
 
 
 

@@ -80,15 +80,14 @@
 class GameFeatureItemCommandListener
             : public Object
         : public ItemCommandListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: gameOptionsForm: GameOptionsForm;
+    private: GameOptionsForm gameOptionsForm;
 
-public constructor (GameOptionsForm gameOptionsForm);
+public: GameFeatureItemCommandListener(GameOptionsForm gameOptionsForm);
 
-    public commandAction(Command command, Item item);
+    public: void commandAction(Command command, Item item);
 
 };
 

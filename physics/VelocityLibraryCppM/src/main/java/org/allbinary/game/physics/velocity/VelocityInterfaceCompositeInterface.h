@@ -48,7 +48,6 @@
         #include "BasicVelocityProperties.h"
 
 class VelocityInterfaceCompositeInterface {
-        
 
     BasicVelocityProperties getVelocityProperties();
 

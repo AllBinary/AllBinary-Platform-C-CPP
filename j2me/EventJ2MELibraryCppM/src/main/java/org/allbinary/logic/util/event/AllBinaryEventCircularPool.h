@@ -48,11 +48,10 @@
         #include "AllBinaryEventObjectFactoryInterface.h"
 
 class AllBinaryEventCircularPool: public BaseCircularPool {
-        
 
-public constructor (int32_t max);
+public: AllBinaryEventCircularPool(int32_t max);
 
-    public initAllBinaryEventCircularPool(AllBinaryEventObjectFactoryInterface allBinaryEventObjectFactoryInterface);
+    public: void initAllBinaryEventCircularPool(AllBinaryEventObjectFactoryInterface allBinaryEventObjectFactoryInterface);
 
 };
 

@@ -77,153 +77,150 @@
 class GameMotionGestureListener
             : public Object
         : public MotionGestureEventListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: motionGestureCollection: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList motionGestureCollection = BasicArrayListD();
 
-    private: touchGestureCollection: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList touchGestureCollection = BasicArrayListD();
 
-    private: scrolledGestureCollection: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList scrolledGestureCollection = BasicArrayListD();
 
-    private: signed: CompleteMotionGestureListenerInterface;
+    private: CompleteMotionGestureListenerInterface signed;
 
-public constructor (CompleteMotionGestureListenerInterface signed){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: GameMotionGestureListener(CompleteMotionGestureListenerInterface signed){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.signed= signed;
+this->signed= signed;
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 }
 
 
-    public onUpMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onUpMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDownMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDownMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onLeftMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onLeftMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onRightMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onRightMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalDownRightMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalDownLeftMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalUpRightMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev){
-this.onMotionGestureEvent(ev);
+    public: void onDiagonalUpLeftMotionGestureEvent(MotionGestureEvent ev){
+this->onMotionGestureEvent(ev);
     
 }
 
 
-    public onPressedMotionGestureEvent(MotionGestureEvent ev){
-this.touchGestureCollection!.add(ev.getMotionGesture());
+    public: void onPressedMotionGestureEvent(MotionGestureEvent ev){
+this->touchGestureCollection.add(ev.getMotionGesture());
     
 }
 
 
-    public released(MotionGestureEvent ev){
+    public: void released(MotionGestureEvent ev){
 
         try {
-            this.touchGestureCollection!.add(ev.getMotionGesture());
+            this->touchGestureCollection.add(ev.getMotionGesture());
     
-this.signed.onMotionGestureCompleted(this.touchGestureCollection);
+this->signed.onMotionGestureCompleted(this->touchGestureCollection);
     
-this.touchGestureCollection!.clear();
+this->touchGestureCollection.clear();
     
 
                 //: 
 } catch(e) 
             {
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.commonStrings!.EXCEPTION_LABEL);
+stringBuffer.append(this->commonStrings.EXCEPTION_LABEL);
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(ev.getMotionGesture()));
+stringBuffer.append(StringUtil::getInstance().toString(ev.getMotionGesture()));
     
-this.logUtil!.put(stringBuffer!.toString(), this, "release", e);
+this->logUtil.put(stringBuffer.toString(), this, "release", e);
     
 }
 
 }
 
 
-    public onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
 }
 
 
-    public onMotionGestureEvent(MotionGestureEvent ev){
+    public: void onMotionGestureEvent(MotionGestureEvent ev){
 
         try {
             
-    motionGestureInput: MotionGestureInput = ev.getMotionGesture()!;;
+    MotionGestureInput motionGestureInput = ev.getMotionGesture();;
     
 
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!.PRESSED)
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().PRESSED)
                         
                                     {
-                                    this.onPressedMotionGestureEvent(ev);
+                                    this->onPressedMotionGestureEvent(ev);
     
 
                                     }
                                 
                              else 
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!.RELEASED)
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().RELEASED)
                         
                                     {
-                                    this.released(ev);
+                                    this->released(ev);
     
 
                                     }
                                 
                         else {
-                            this.motionGestureCollection!.add(motionGestureInput);
+                            this->motionGestureCollection.add(motionGestureInput);
     
-this.signed.onMotionGestureCompleted(this.motionGestureCollection);
+this->signed.onMotionGestureCompleted(this->motionGestureCollection);
     
-this.motionGestureCollection!.clear();
+this->motionGestureCollection.clear();
     
-this.touchGestureCollection!.clear();
+this->touchGestureCollection.clear();
     
 
                         }
@@ -233,13 +230,13 @@ this.touchGestureCollection!.clear();
 } catch(e) 
             {
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.commonStrings!.EXCEPTION_LABEL);
+stringBuffer.append(this->commonStrings.EXCEPTION_LABEL);
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(ev.getMotionGesture()));
+stringBuffer.append(StringUtil::getInstance().toString(ev.getMotionGesture()));
     
-this.logUtil!.put(stringBuffer!.toString(), this, "onMotionGestureEvent", e);
+this->logUtil.put(stringBuffer.toString(), this, "onMotionGestureEvent", e);
     
 }
 

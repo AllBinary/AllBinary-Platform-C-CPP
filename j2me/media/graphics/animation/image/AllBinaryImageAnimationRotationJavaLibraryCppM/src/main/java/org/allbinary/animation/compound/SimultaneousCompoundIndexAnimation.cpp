@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -55,143 +57,76 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SimultaneousCompoundIndexAnimation: public IndexedAnimation {
-        
 
-    private: animationInterfaceArray: std::vector<IndexedAnimation>;
+    private: std::vector<IndexedAnimation> animationInterfaceArray;
 
-public constructor (std::vector<IndexedAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
+public: SimultaneousCompoundIndexAnimation(std::vector<IndexedAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
             super(animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.animationInterfaceArray= animationInterfaceArray;
+this->animationInterfaceArray= animationInterfaceArray;
     
 }
 
 
-    public setFrame(int32_t frameIndex){
+    public: void setFrame(int32_t frameIndex){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.setFrame(frameIndex);
+this->animationInterfaceArray[index]!.setFrame(frameIndex);
     
 }
 
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getFrame();;
+                        return this->animationInterfaceArray[0]!.getFrame();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getAnimationSize();;
+                        return this->animationInterfaceArray[0]!.getAnimationSize();;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[0]!.getSize();;
+                        return this->animationInterfaceArray[0]!.getSize();;
     
 }
 
 
-    public previousFrame(){
+    public: void previousFrame(){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.previousFrame();
-    
-}
-
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public nextFrame(){
-
-
-
-
-                        for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
-        {
-this.animationInterfaceArray[index]!.nextFrame();
-    
-}
-
-}
-
-
-    public setSequence(std::vector<int32_t> sequence){
-}
-
-
-    public std::vector<int32_t> getSequence(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
-    
-}
-
-
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-
-
-
-
-                        for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
-        {
-this.animationInterfaceArray[index]!.paintXY(graphics, x, y);
-    
-}
-
-}
-
-
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-
-
-
-
-                        for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
-        {
-this.animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
+this->animationInterfaceArray[index]!.previousFrame();
     
 }
 
@@ -200,34 +135,94 @@ this.animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void nextFrame(){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.set(gl);
+this->animationInterfaceArray[index]!.nextFrame();
     
 }
 
 }
 
 
-    public std::vector<IndexedAnimation> getAnimationInterfaceArray(){
+    public: void setSequence(std::vector<int32_t> sequence){
+}
+
+
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public setAnimationInterfaceArray(std::vector<IndexedAnimation> animationInterfaceArray){
-this.animationInterfaceArray= animationInterfaceArray;
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+
+
+
+
+                        for (
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
+        {
+this->animationInterfaceArray[index]!.paintXY(graphics, x, y);
+    
+}
+
+}
+
+
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+
+
+
+
+                        for (
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
+        {
+this->animationInterfaceArray[index]!.paintThreedXYZ(graphics, x, y, z);
+    
+}
+
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void set(GL gl){
+
+
+
+
+                        for (
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
+        {
+this->animationInterfaceArray[index]!.set(gl);
+    
+}
+
+}
+
+
+    public: std::vector<IndexedAnimation> getAnimationInterfaceArray(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->animationInterfaceArray;
+    
+}
+
+
+    public: void setAnimationInterfaceArray(std::vector<IndexedAnimation> animationInterfaceArray){
+this->animationInterfaceArray= animationInterfaceArray;
     
 }
 

@@ -30,9 +30,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ChallengerInterface {
-        
 
-    setWinner(bool isWinner)
+    void setWinner(bool isWinner)
 
 };
 

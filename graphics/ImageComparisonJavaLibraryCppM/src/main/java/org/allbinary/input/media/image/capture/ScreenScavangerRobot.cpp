@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -68,44 +70,41 @@
 class ScreenScavangerRobot
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: ScreenScavangerRobot(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<BufferedImage> getScreenAsBufferedImages(){
-this.logUtil!.putF(this.commonStrings!.START, this, "getScreenAsBufferedImages");
+    public: std::vector<BufferedImage> getScreenAsBufferedImages(){
+this->logUtil.putF(this->commonStrings.START, this, "getScreenAsBufferedImages");
     
 
-    dimScreenSize: Dimension = Toolkit.getDefaultToolkit()!.getScreenSize()!;;
+    Dimension dimScreenSize = Toolkit::getDefaultToolkit().getScreenSize();;
     
 
-    rectScreenSize: Rectangle = new Rectangle(dimScreenSize);;
+    Rectangle rectScreenSize = Rectangle(dimScreenSize);;
     
 
-    robotHashtable: Hashtable<any, any> = InputRobotFactory.getInstance()!.get()!;;
+    Hashtable<any, any> robotHashtable = InputRobotFactory::getInstance().get();;
     
 
-    bufferedImageArray: std::vector<BufferedImage> = new Array(1);;
+    std::vector<BufferedImage> bufferedImageArray = new Array(1);;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    inputRobotInterface: InputRobotInterface = robotHashtable!.get("Java Robot") as InputRobotInterface;;
+    InputRobotInterface inputRobotInterface = robotHashtable.get("Java Robot") as InputRobotInterface;;
     
-bufferedImageArray[index]= inputRobotInterface!.createScreenCapture(rectScreenSize);
+bufferedImageArray[index]= inputRobotInterface.createScreenCapture(rectScreenSize);
     
-this.logUtil!.putF("Finish", this, "getScreenAsBufferedImages");
+this->logUtil.putF("Finish", this, "getScreenAsBufferedImages");
     
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -72,16 +74,15 @@
 class GameKeyEventFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static GameKeyEventFactory getInstance(){
+    public: static GameKeyEventFactory getInstance(){
 
-                        if(GameKeyEventFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(GameKeyEventFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    GameKeyEventFactory.instance= new GameKeyEventFactory();
+                                    GameKeyEventFactory::instance= GameKeyEventFactory();
     
 
                                     }
@@ -90,50 +91,48 @@ class GameKeyEventFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameKeyEventFactory.instance as GameKeyEventFactory;
+                        return GameKeyEventFactory::instance() as GameKeyEventFactory;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const TOUCH_BUTTON_SOURCE_ID: int32_t = 2;
+    public: const int32_t TOUCH_BUTTON_SOURCE_ID = 2;
 
-    public const MOTION_GESTURE_SOURCE_ID: int32_t = 3;
+    public: const int32_t MOTION_GESTURE_SOURCE_ID = 3;
 
-    private: const MAX_SOURCES: int32_t = 4;
+    private: const int32_t MAX_SOURCES = 4;
 
-    private: ARRAY: std::vector<std::vector<GameKeyEvent>> = new Array(this.MAX_SOURCES).fill(null).map(() => new Array(InputFactory.getInstance()!.MAX).fill(0))
+    private: std::vector<std::vector<GameKeyEvent>> ARRAY = new Array(this->MAX_SOURCES).fill(null).map(() => new Array(InputFactory::getInstance().MAX).fill(0))
                                                             ;
 
-private constructor (){
-
-            super();
-        }
+private: GameKeyEventFactory(){
+}
 
 
-    public init(){
+    public: void init(){
 
-    nullUtil: NullUtil = NullUtil.getInstance()!;;
+    NullUtil nullUtil = NullUtil::getInstance();;
     
 
-    size: int32_t = InputFactory.getInstance()!.MAX;;
+    int32_t size = InputFactory::getInstance().MAX;;
     
 
 
 
 
                         for (
-    index: int32_t = this.MAX_SOURCES;--index >= 0; )
+    int32_t index = this->MAX_SOURCES;--index >= 0; )
         {
 
 
 
 
                         for (
-    index2: int32_t = size;--index2 >= 0; )
+    int32_t index2 = size;--index2 >= 0; )
         {
-this.ARRAY[index]![index2]= GameKeyEvent.createEvent(nullUtil!.NULL_OBJECT, index, index2);
+this->ARRAY[index]![index2]= GameKeyEvent::createEvent(nullUtil.NULL_OBJECT, index, index2);
     
 }
 
@@ -144,9 +143,9 @@ this.ARRAY[index]![index2]= GameKeyEvent.createEvent(nullUtil!.NULL_OBJECT, inde
 
                 //@Throws(Exception.constructor)
             
-    public GameKeyEvent getInstanceForKey(GameKeyEventSourceInterface anyType, int32_t key){
+    public: GameKeyEvent getInstanceForKey(GameKeyEventSourceInterface anyType, int32_t key){
 
-    gameKeyEvent: GameKeyEvent = this.ARRAY[anyType!.getSourceId()]![key]!;;
+    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()]![key];;
     
 
 
@@ -159,9 +158,9 @@ this.ARRAY[index]![index2]= GameKeyEvent.createEvent(nullUtil!.NULL_OBJECT, inde
 
                 //@Throws(Exception.constructor)
             
-    public GameKeyEvent getInstanceForInput(GameKeyEventSourceInterface anyType, Input input){
+    public: GameKeyEvent getInstanceForInput(GameKeyEventSourceInterface anyType, Input input){
 
-    gameKeyEvent: GameKeyEvent = this.ARRAY[anyType!.getSourceId()]![input.getId()]!;;
+    GameKeyEvent gameKeyEvent = this->ARRAY[anyType.getSourceId()]![input.getId()];;
     
 
 

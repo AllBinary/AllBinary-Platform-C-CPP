@@ -72,34 +72,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "QuoteRequestEntityInterface.h"
 
-class QuoteRequestEntity: public AbSqlBean: public QuoteRequestEntityInterface {
-        
+class QuoteRequestEntity: public AbSqlBean, public QuoteRequestEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tableName: string = "quoterequest";
+    private: const std::string tableName = "quoterequest";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: QuoteRequestEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -109,10 +108,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -124,20 +123,20 @@ this.setTableName(this.tableName);
 
                 //@Throws(Exception.constructor)
             
-    public QuoteRequest get(string userName, int32_t id){
+    public: QuoteRequest get(std::string userName, int32_t id){
 
-    row: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> row = HashMap<any, any>();;
     
-row.put(UserData.USERNAME, userName);
+row.put(UserData::USERNAME, userName);
     
-row.put(QuoteRequestData.getInstance()!.ID, id.toString());
+row.put(QuoteRequestData::getInstance().ID, std::to_string(id));
     
 
-    quoteRequestHashMap: HashMap<any, any> = super.getRow(row)!;;
+    HashMap<any, any> quoteRequestHashMap = super.getRow(row);;
     
 
                         if(quoteRequestHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -145,7 +144,7 @@ row.put(QuoteRequestData.getInstance()!.ID, id.toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.business.user.quoterequest.QuoteRequest(quoteRequestHashMap);
+                        return org::allbinary::business::user::quoterequest::QuoteRequest(quoteRequestHashMap);
     
 
                                     }
@@ -163,26 +162,26 @@ row.put(QuoteRequestData.getInstance()!.ID, id.toString());
 }
 
 
-    public Vector getIds(string userName){
+    public: Vector getIds(std::string userName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.getColumnWhere(QuoteRequestData.getInstance()!.ID, UserData.USERNAME, userName);;
+                        return super.getColumnWhere(QuoteRequestData::getInstance().ID, UserData::USERNAME, userName);;
     
 }
 
 
-    public deleteWhere(string key, string value){
+    public: void deleteWhere(std::string key, std::string value){
 
         try {
             super.deleteWhere(key, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, "deleteWhere");
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, "deleteWhere");
     
 
                                     }
@@ -192,10 +191,10 @@ row.put(QuoteRequestData.getInstance()!.ID, id.toString());
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "deleteWhere", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "deleteWhere", e);
     
 
                                     }
@@ -205,77 +204,77 @@ row.put(QuoteRequestData.getInstance()!.ID, id.toString());
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    quoteRequestData: QuoteRequestData = QuoteRequestData.getInstance()!;;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(tableName)!.append(this.sqlStrings!.START);
-    
-stringBuffer!.append(quoteRequestData!.ID)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
-    
-stringBuffer!.append(UserData.USERNAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
-    
-stringBuffer!.append(quoteRequestData!.PROJECT_INFO);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(quoteRequestData!.CUSTOMER_COMMENTS);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(quoteRequestData!.BUDGET);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(quoteRequestData!.TIMEFRAME);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(quoteRequestData!.COMMENTS);
-    
-stringBuffer!.append(this.sqlTypeStrings!.BLOB_NOT_NULL);
-    
-stringBuffer!.append(EntryData.getInstance()!.TIMECREATED);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
-    
-stringBuffer!.append(EntryData.getInstance()!.LASTMODIFIED);
-    
-stringBuffer!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL);
-    
-stringBuffer!.append(this.sqlStrings!.PRIMARY_KEY);
-    
-stringBuffer!.append(quoteRequestData!.ID);
-    
-stringBuffer!.append(this.sqlStrings!.END);
+    QuoteRequestData quoteRequestData = QuoteRequestData::getInstance();;
     
 
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+    StringMaker stringBuffer = StringMaker();;
     
-}
-
-
-    public string createTable(){
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START);
+    
+stringBuffer.append(quoteRequestData.ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+    
+stringBuffer.append(UserData::USERNAME);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
+    
+stringBuffer.append(quoteRequestData.PROJECT_INFO);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(quoteRequestData.CUSTOMER_COMMENTS);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(quoteRequestData.BUDGET);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(quoteRequestData.TIMEFRAME);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(quoteRequestData.COMMENTS);
+    
+stringBuffer.append(this->sqlTypeStrings.BLOB_NOT_NULL);
+    
+stringBuffer.append(EntryData::getInstance().TIMECREATED);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+    
+stringBuffer.append(EntryData::getInstance().LASTMODIFIED);
+    
+stringBuffer.append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL);
+    
+stringBuffer.append(this->sqlStrings.PRIMARY_KEY);
+    
+stringBuffer.append(quoteRequestData.ID);
+    
+stringBuffer.append(this->sqlStrings.END);
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string dropTable(){
+    public: std::string createTable(){
 
-    result: string = dropTable.toCharArray();;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return super.createTable(this->createTableStatement());;
+    
+}
+
+
+    public: std::string dropTable(){
+
+    std::string result = dropTable.toCharArray();;
     
 
 
@@ -286,8 +285,8 @@ stringBuffer!.append(this.sqlStrings!.END);
 }
 
 
-    public update(string userName, HashMap<any, any> updatedValues){
-super.updateWhere(UserData.USERNAME, userName, updatedValues);
+    public: void update(std::string userName, HashMap<any, any> updatedValues){
+super.updateWhere(UserData::USERNAME, userName, updatedValues);
     
 }
 

@@ -97,46 +97,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TransformInfoEntityInterface.h"
 
-class TransformInfoEntity: public AbSqlBean: public TransformInfoEntityInterface {
-        
+class TransformInfoEntity: public AbSqlBean, public TransformInfoEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "transforminfo";
+    protected: const std::string tableName = "transforminfo";
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: const transformInfoFactoryInterface: TransformInfoFactoryInterface;
+    private: TransformInfoFactoryInterface transformInfoFactoryInterface;
 
-    private: const transformInfoObjectConfigAndManipulatorFactoryInterface: TransformInfoObjectConfigAndManipulatorFactoryBase;
+    private: TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface;
 
-    private: const transformInfoObjectConfigGeneratorFactoryInterface: TransformInfoObjectConfigGeneratorFactoryInterface;
+    private: TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface;
 
-public constructor (TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface);
+public: TransformInfoEntity(TransformInfoObjectConfigGeneratorFactoryInterface transformInfoObjectConfigGeneratorFactoryInterface, TransformInfoObjectConfigAndManipulatorFactoryBase transformInfoObjectConfigAndManipulatorFactoryInterface, TransformInfoFactoryInterface transformInfoFactoryInterface);
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string value);
-
-                //@Throws(Exception.constructor)
-            
-    public TransformInfoInterface get(string name, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: void delete_(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getObjectConfigs(string storeName);
+    public: TransformInfoInterface get(std::string name, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public Vector getNames(string storeName);
+    public: Vector getObjectConfigs(std::string storeName);
 
-    public string createTableStatement();
+                //@Throws(Exception.constructor)
+            
+    public: Vector getNames(std::string storeName);
 
-    public string createTable();
+    public: std::string createTableStatement();
 
-    public update(HashMap<any, any> updatedValues);
+    public: std::string createTable();
 
-    public string dropTable();
+    public: void update(HashMap<any, any> updatedValues);
+
+    public: std::string dropTable();
 
 };
 

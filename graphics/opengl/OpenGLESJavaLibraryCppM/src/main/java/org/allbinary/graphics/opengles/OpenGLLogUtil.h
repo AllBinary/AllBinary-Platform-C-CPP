@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLLOGUTIL_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLLOGUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/khronos/opengles/GL10.h>
@@ -49,21 +51,20 @@
 class OpenGLLogUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLLogUtil = new OpenGLLogUtil();
+    private: static OpenGLLogUtil instance() { return OpenGLLogUtil(); }
 
-    public static OpenGLLogUtil getInstance();
+    public: static OpenGLLogUtil getInstance();
 
-    private: const MAX_TEXTURE: string = " Max Texture Size: ";
+    private: const std::string MAX_TEXTURE = " Max Texture Size: ";
 
-    public logError(GL10 gl);
+    public: void logError(GL10 gl);
 
-    private: const LOG_ERROR: string = "logError";
+    private: const std::string LOG_ERROR = "logError";
 
-    private: const IMAGE: string = " Image: ";
+    private: const std::string IMAGE = " Image: ";
 
-    public logError(GL10 gl, Image image);
+    public: void logError(GL10 gl, Image image);
 
 };
 

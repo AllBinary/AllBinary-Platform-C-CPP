@@ -42,14 +42,11 @@
         #include "TableTag.h"
 
 class WorkFlowTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new WorkFlowHelperFactory());
+public: WorkFlowTag(){
+this->setTagHelperFactory(WorkFlowHelperFactory());
     
-this.setTagRequestHelperFactory(new WorkFlowHelperFactory());
+this->setTagRequestHelperFactory(WorkFlowHelperFactory());
     
 }
 

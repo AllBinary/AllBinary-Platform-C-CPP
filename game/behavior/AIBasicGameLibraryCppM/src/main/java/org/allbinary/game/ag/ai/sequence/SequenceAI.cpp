@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligence.h>
@@ -67,13 +69,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SequenceAI: public ArrayAI {
-        
 
-    private: static const SEQUENCE_AI: string = "Sequence AI";
+    private: static const std::string SEQUENCE_AI = "Sequence AI";
 
-    private: index: int32_t= 0;
+    private: int32_t index= 0;
 
-public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: SequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(artificialIntelligenceInterfaceArray, ownerLayerInterface, gameInput);
                     
 
@@ -84,26 +85,26 @@ public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntel
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
-this.getArtificialIntelligenceInterface()[this.index]!.processAI(allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+this->getArtificialIntelligenceInterface()[this->index]!.processAI(allBinaryLayerManager);
     
 }
 
 
-    public next(){
-this.index++;
+    public: void next(){
+this->index++;
     
 
-    artificialIntelligenceInterface: ArtificialIntelligenceInterface = this.getSelectedArtificialIntelligenceInterface()!;;
+    ArtificialIntelligenceInterface artificialIntelligenceInterface = this->getSelectedArtificialIntelligenceInterface();;
     
 
-                        if(artificialIntelligenceInterface!.getId() == ArtificialIntelligence.AI_ID)
+                        if(artificialIntelligenceInterface.getId() == ArtificialIntelligence::AI_ID)
                         
                                     {
                                     
-    artificialIntelligenceTransitionInterface: ArtificialIntelligenceTransitionInterface = artificialIntelligenceInterface as unknown as ArtificialIntelligenceTransitionInterface;;
+    ArtificialIntelligenceTransitionInterface artificialIntelligenceTransitionInterface = artificialIntelligenceInterface as unknown as ArtificialIntelligenceTransitionInterface;;
     
-artificialIntelligenceTransitionInterface!.transition();
+artificialIntelligenceTransitionInterface.transition();
     
 
                                     }
@@ -111,57 +112,57 @@ artificialIntelligenceTransitionInterface!.transition();
 }
 
 
-    public int32_t getIndex(){
+    public: int32_t getIndex(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.index;
+                        return this->index;
     
 }
 
 
-    public setIndex(int32_t index){
-this.index= index;
+    public: void setIndex(int32_t index){
+this->index= index;
     
 }
 
 
-    public ArtificialIntelligenceInterface getSelectedArtificialIntelligenceInterface(){
+    public: ArtificialIntelligenceInterface getSelectedArtificialIntelligenceInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getArtificialIntelligenceInterface()[this.index]!;
+                        return this->getArtificialIntelligenceInterface()[this->index]!;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SequenceAI.SEQUENCE_AI;
+                        return SequenceAI::SEQUENCE_AI;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(super.toString());
+stringBuffer.append(super.toString());
     
-stringBuffer!.append(" Selected AI: ");
+stringBuffer.append(" Selected AI: ");
     
-stringBuffer!.append(StringUtil.getInstance()!.toString(this.getSelectedArtificialIntelligenceInterface()));
+stringBuffer.append(StringUtil::getInstance().toString(this->getSelectedArtificialIntelligenceInterface()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

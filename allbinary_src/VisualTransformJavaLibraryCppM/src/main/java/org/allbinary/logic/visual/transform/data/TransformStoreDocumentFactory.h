@@ -58,17 +58,16 @@
 class TransformStoreDocumentFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession);
+    public: static TransformDocumentInterface getInstance(PageContext pageContext, WeblisketSession weblisketSession);
 
                 //@Throws(Exception.constructor)
             
-    public static TransformDocumentInterface getInstance(SearchRequest searchRequest);
+    public: static TransformDocumentInterface getInstance(SearchRequest searchRequest);
 
-private constructor ();
+private: TransformStoreDocumentFactory();
 
 };
 

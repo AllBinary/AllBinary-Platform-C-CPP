@@ -52,54 +52,51 @@
 class BasicStoreFrontFactory
             : public Object
          {
-        
 
-    private: static const instance: BasicStoreFrontFactory = new BasicStoreFrontFactory();
+    private: static BasicStoreFrontFactory instance() { return BasicStoreFrontFactory(); }
 
-    public static BasicStoreFrontFactory getInstance(){
+    public: static BasicStoreFrontFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicStoreFrontFactory.instance;
+                        return BasicStoreFrontFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: BasicStoreFrontFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicStoreFrontInterface getInstance(string storeName){
+    public: BasicStoreFrontInterface getInstance(std::string storeName){
 
         try {
             
-    storeFronts: BasicStoreFrontsEntity = new BasicStoreFrontsEntity();;
+    BasicStoreFrontsEntity storeFronts = BasicStoreFrontsEntity();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return storeFronts!.getStoreFrontInterface(storeName);;
+                        return storeFronts.getStoreFrontInterface(storeName);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

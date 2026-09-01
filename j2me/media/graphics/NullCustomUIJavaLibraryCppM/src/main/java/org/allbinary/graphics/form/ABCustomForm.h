@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ABCUSTOMFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ABCUSTOMFORM_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/RuntimeException.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -60,39 +62,38 @@
         #include "CustomScreen.h"
 
 class ABCustomForm: public CustomScreen {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ABCustomForm(std::string title, std::vector<ABCustomItem> items, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public std::vector<ABCustomItem> getAllitems();
+    public: std::vector<ABCustomItem> getAllitems();
 
-    public int32_t size();
+    public: int32_t size();
 
-    public setSelectedIndex(int32_t index);
+    public: void setSelectedIndex(int32_t index);
 
-    public int32_t getSelectedIndex();
+    public: int32_t getSelectedIndex();
 
-    public deleteAll();
+    public: void deleteAll();
 
-    public delete(int32_t itemNum);
+    public: void delete_(int32_t itemNum);
 
-    public int32_t append(ABCustomItem item);
+    public: int32_t append(ABCustomItem item);
 
-    public insert(int32_t itemNum, ABCustomItem item);
+    public: void insert(int32_t itemNum, ABCustomItem item);
 
-    public set(int32_t itemNum, ABCustomItem item);
+    public: void set(int32_t itemNum, ABCustomItem item);
 
-    public ABCustomItem get(int32_t itemNum);
+    public: ABCustomItem get(int32_t itemNum);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public string getTitle();
+    public: std::string getTitle();
 
 };
 

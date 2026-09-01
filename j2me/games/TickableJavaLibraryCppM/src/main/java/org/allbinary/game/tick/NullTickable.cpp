@@ -48,34 +48,33 @@
 class NullTickable
             : public Object
         : public TickableInterface {
-        
 
-    private: static const SINGLETON: NullTickable = new NullTickable();
+    private: static const NullTickable SINGLETON = NullTickable();
 
-    public static NullTickable getInstance(){
+    public: static NullTickable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullTickable.SINGLETON;
+                        return NullTickable::SINGLETON;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 }
 
 
-    private: const NAME: string = "NulLTickable";
+    private: const std::string NAME = "NulLTickable";
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NAME;
+                        return this->NAME;
     
 }
 

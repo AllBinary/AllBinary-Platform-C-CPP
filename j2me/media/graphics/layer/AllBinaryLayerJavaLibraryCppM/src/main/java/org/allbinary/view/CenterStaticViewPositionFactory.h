@@ -59,11 +59,10 @@
 class CenterStaticViewPositionFactory
             : public Object
          {
-        
 
-public constructor ();
+public: CenterStaticViewPositionFactory();
 
-    public ViewPositionBase getInstance(int32_t z);
+    public: ViewPositionBase getInstance(int32_t z);
 
 };
 

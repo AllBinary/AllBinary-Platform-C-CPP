@@ -55,43 +55,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "EmailQueueInterface.h"
 
-class BasicEmailQueue: public BasicQueue: public EmailQueueInterface {
-        
+class BasicEmailQueue: public BasicQueue, public EmailQueueInterface {
 
-    private: static const instance: BasicEmailQueue = new BasicEmailQueue();
+    private: static BasicEmailQueue instance() { return BasicEmailQueue(); }
 
-    private: static basicEmailQueue: BasicEmailQueue;
+    private: static BasicEmailQueue basicEmailQueue;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static BasicEmailQueue getInstance();
+    public: static BasicEmailQueue getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: BasicEmailQueue();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool offer(EmailInterface emailInterface);
+    public: bool offer(EmailInterface emailInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    remove(EmailInterface emailInterface);
+    private: void remove(EmailInterface emailInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public EmailInterface remove();
+    public: EmailInterface remove();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    post(EmailInterface emailInterface);
+    private: void post(EmailInterface emailInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    processAllUnsent();
+    protected: void processAllUnsent();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    bool send(EmailInterface emailInterface);
+    private: bool send(EmailInterface emailInterface);
 
 };
 

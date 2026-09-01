@@ -55,33 +55,30 @@
 class BasicColorSetUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicColorSetUtil = new BasicColorSetUtil();
+    private: static BasicColorSetUtil instance() { return BasicColorSetUtil(); }
 
-    public static BasicColorSetUtil getInstance(){
+    public: static BasicColorSetUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicColorSetUtil.instance;
+                        return BasicColorSetUtil::instance();
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
+protected: BasicColorSetUtil(){
+}
 
 
-    public setBasicColorP(Graphics graphics, BasicColor basicColor){
-graphics.setColor(basicColor!.intValue());
+    public: void setBasicColorP(Graphics graphics, BasicColor basicColor){
+graphics.setColor(basicColor.intValue());
     
 }
 
 
-    public setBasicColorP3(Graphics graphics, BasicColor basicColor, int32_t value){
+    public: void setBasicColorP3(Graphics graphics, BasicColor basicColor, int32_t value){
 graphics.setColor(value);
     
 }

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11VBOIMAGE_H
 
+            #include <vector>
+        
 #include <java/nio/ByteBuffer.h>
 
       
@@ -75,29 +77,28 @@
         #include "OpenGLESImage.h"
 //This is not actually VBO impl
 class OpenGLESGL11VBOImage: public OpenGLESImage {
-        
 
-    private: const glUtil: GLUtil = GLUtil.getInstance()!;
+    private: const GLUtil glUtil = GLUtil::getInstance();
 
-    private: textureVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *2)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
+    private: FloatBuffer textureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-public constructor (Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+public: OpenGLESGL11VBOImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
 
-    initVertices();
+    protected: void initVertices();
 
-    public set(GL gl);
+    public: void set(GL gl);
 
-    const regionRectangleFloatArray: std::vector<float> = [0,0,0,0,0,0,0,0,0,0,0,0];
+    protected: const std::vector<float> regionRectangleFloatArray = {0,0,0,0,0,0,0,0,0,0,0,0};
 
-    regionRectangleVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *3)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
+    protected: FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-    private: const regionTextureRectangleFloatArray: std::vector<float> = new Array(8);
+    private: const std::vector<float> regionTextureRectangleFloatArray = new Array(8);
 
-    private: regionTextureVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *2)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
+    private: FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z);
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z);
 
 };
 

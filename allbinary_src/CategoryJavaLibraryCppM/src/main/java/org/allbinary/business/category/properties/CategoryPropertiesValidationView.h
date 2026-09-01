@@ -59,28 +59,27 @@
         #include "CategoryPropertiesView.h"
 #include "CategoryPropertiesInterface.h"
 
-class CategoryPropertiesValidationView: public CategoryPropertiesView: public ValidationInterface {
-        
+class CategoryPropertiesValidationView: public CategoryPropertiesView, public ValidationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (CategoryPropertiesInterface categoryPropertiesInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Boolean isValid();
+public: CategoryPropertiesValidationView(CategoryPropertiesInterface categoryPropertiesInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: Boolean isValid();
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc();
+    public: std::string validationInfo();
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: Node toValidationInfoNode(Document document);
 
 };
 

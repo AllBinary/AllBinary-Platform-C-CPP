@@ -58,41 +58,40 @@
 class InitDb
             : public Object
          {
-        
 
-    private: anyType: any;
+    private: Object* anyType;
 
-    private: const METHOD_CALL_GET_HOST_NAME: string = "getHostName";
+    private: const std::string METHOD_CALL_GET_HOST_NAME = "getHostName";
 
-    private: const METHOD_CALL_ADD_USERS: string = "addUsers";
+    private: const std::string METHOD_CALL_ADD_USERS = "addUsers";
 
-    private: const METHOD_CALL_ADD_DATABASES: string = "addDatabases";
+    private: const std::string METHOD_CALL_ADD_DATABASES = "addDatabases";
 
-    private: const METHOD_CALL_ADD_TABLES: string = "addTables";
+    private: const std::string METHOD_CALL_ADD_TABLES = "addTables";
 
-    private: const METHOD_CALL_TEMP_MAIN_PATH: string = "useTemporaryMainPath";
+    private: const std::string METHOD_CALL_TEMP_MAIN_PATH = "useTemporaryMainPath";
 
-    private: const METHOD_CALL_MAIN_PATH: string = "useNormalMainPath";
+    private: const std::string METHOD_CALL_MAIN_PATH = "useNormalMainPath";
 
-public constructor ();
+public: InitDb();
 
-public constructor (DbConnectionInfo dbConnectionInfo);
+public: InitDb(DbConnectionInfo dbConnectionInfo);
 
-    setHelper(any = {} anyType);
+    protected: void setHelper(Object* anyType);
 
-    any getHelper();
+    protected: Object* getHelper();
 
-    string getHostName();
+    private: std::string getHostName();
 
-    public bool addUsers();
+    public: bool addUsers();
 
-    public bool addDatabases();
+    public: bool addDatabases();
 
-    public bool addTables();
+    public: bool addTables();
 
-    public bool useTemporaryMainPath();
+    public: bool useTemporaryMainPath();
 
-    public bool useNormalMainPath();
+    public: bool useNormalMainPath();
 
 };
 

@@ -54,9 +54,8 @@
 class ClientInformationFactory
             : public Object
          {
-        
 
-    public ClientInformation getInstance();
+    public: ClientInformation getInstance();
 
 };
 

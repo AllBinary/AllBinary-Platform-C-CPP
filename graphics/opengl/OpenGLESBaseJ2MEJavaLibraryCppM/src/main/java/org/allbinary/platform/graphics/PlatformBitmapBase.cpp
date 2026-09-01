@@ -48,14 +48,13 @@
 class PlatformBitmapBase
             : public Object
          {
-        
 
-    public Image getImage(){
+    public: Image getImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullImage.NULL_IMAGE;
+                        return NullImage::NULL_IMAGE;
     
 }
 

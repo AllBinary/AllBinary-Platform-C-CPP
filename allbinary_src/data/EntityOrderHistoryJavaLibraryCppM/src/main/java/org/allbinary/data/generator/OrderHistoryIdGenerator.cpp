@@ -50,25 +50,22 @@
         #include "UniqueIdGenerator.h"
 
 class OrderHistoryIdGenerator: public UniqueIdGenerator {
-        
 
-    private: const IDFILE: string = "orderhistoryId";
+    private: const std::string IDFILE = "orderhistoryId";
 
-public constructor (){
+public: OrderHistoryIdGenerator(){
 
-            super();
-        
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(PATH_GLOBALS.getInstance()!.INIT_PATH);
+stringBuffer.append(PATH_GLOBALS::getInstance().INIT_PATH);
     
-stringBuffer!.append(this.IDFILE);
+stringBuffer.append(this->IDFILE);
     
-stringBuffer!.append(UniqueIdGenerator.EXT);
+stringBuffer.append(UniqueIdGenerator::EXT);
     
-super.setFile(stringBuffer!.toString(), this.IDFILE);
+super.setFile(stringBuffer.toString(), this->IDFILE);
     
 }
 

@@ -42,27 +42,24 @@
 class ColorsData
             : public Object
          {
-        
 
-    private: static const instance: ColorsData = new ColorsData();
+    private: static ColorsData instance() { return ColorsData(); }
 
-    public static ColorsData getInstance(){
+    public: static ColorsData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorsData.instance;
+                        return ColorsData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ColorsData(){
+}
 
 
-    public const NAME: string = "COLORS_NAME";
+    public: const std::string NAME = "COLORS_NAME";
 
 };
 

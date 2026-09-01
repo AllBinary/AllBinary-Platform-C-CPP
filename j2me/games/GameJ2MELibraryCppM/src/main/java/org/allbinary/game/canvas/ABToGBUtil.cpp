@@ -51,23 +51,22 @@
 class ABToGBUtil
             : public Object
          {
-        
 
-    private: static const instance: ABToGBUtil = new ABToGBUtil();
+    private: static ABToGBUtil instance() { return ABToGBUtil(); }
 
-    public static ABToGBUtil getInstance(){
+    public: static ABToGBUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ABToGBUtil.instance;
+                        return ABToGBUtil::instance();
     
 }
 
 
-    public abCanvas: Canvas = NullCanvas.NULL_CANVAS;
+    public: Canvas abCanvas = NullCanvas::NULL_CANVAS;
 
-    public allBinaryGameLayerManager: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    public: AllBinaryGameLayerManager allBinaryGameLayerManager = AllBinaryGameLayerManager::getNullInstance();
 
 };
 

@@ -80,65 +80,64 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingAddressesView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class ShippingAddressesView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    streetAddressList: Vector;
+    protected: Vector streetAddressList;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ShippingAddressesView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = this.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = this->getTransformInfoInterface() as TransformInfoHttpInterface;;
     
-this.request= httpTransformInfoInterface!.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= httpTransformInfoInterface.getPageContext().getRequest() as HttpServletRequest;
     
 }
 
 
-    HttpServletRequest getRequest(){
+    protected: HttpServletRequest getRequest(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.request;
+                        return this->request;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    billingAddressesNode: Node = document.createElement(ShippingAddressData.MULTIPLE)!;;
+    Node billingAddressesNode = document.createElement(ShippingAddressData::MULTIPLE);;
     
 
-    size: int32_t = this.streetAddressList!.length!;;
+    int32_t size = this->streetAddressList.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    streetAddress: StreetAddress = this.streetAddressList!.get(index) as StreetAddress;;
+    StreetAddress streetAddress = this->streetAddressList.get(index) as StreetAddress;;
     
-billingAddressesNode!.appendChild(streetAddress!.toXmlNode(document));
+billingAddressesNode.appendChild(streetAddress.toXmlNode(document));
     
 }
 
-billingAddressesNode!.appendChild(ModDomHelper.createNameValueNodes(document, StreetAddressData.NUMBEROFADDRESSES, new Integer(streetAddressList!.length).toString()));
+billingAddressesNode.appendChild(ModDomHelper::createNameValueNodes(document, StreetAddressData::NUMBEROFADDRESSES, Integer(streetAddressList.length).toString()));
     
 
 
@@ -151,10 +150,10 @@ billingAddressesNode!.appendChild(ModDomHelper.createNameValueNodes(document, St
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -169,18 +168,18 @@ billingAddressesNode!.appendChild(ModDomHelper.createNameValueNodes(document, St
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -193,10 +192,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

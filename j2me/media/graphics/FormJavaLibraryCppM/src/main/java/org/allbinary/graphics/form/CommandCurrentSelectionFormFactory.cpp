@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -63,19 +65,18 @@
 class CommandCurrentSelectionFormFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ScrollSelectionForm getInstance(string title, std::vector<ABCustomItem> items, Rectangle rectangle, FormType formType, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+    public: static ScrollSelectionForm getInstance(std::string title, std::vector<ABCustomItem> items, Rectangle rectangle, FormType formType, int32_t border, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
 
-                        if(Features.getInstance()!.isFeature(TouchFeatureFactory.getInstance()!.TOUCH_ENABLED))
+                        if(Features::getInstance().isFeature(TouchFeatureFactory::getInstance().TOUCH_ENABLED))
                         
                                     {
                                     
-    scrollSelectionForm: ScrollSelectionForm = new CommandCurrentSelectionForm(title, items, border, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor);;
+    ScrollSelectionForm scrollSelectionForm = CommandCurrentSelectionForm(title, items, border, moveForSmallScreen, backgroundBasicColor, foregroundBasicColor);;
     
-scrollSelectionForm!.init(rectangle, formType);
+scrollSelectionForm.init(rectangle, formType);
     
 
 
@@ -91,7 +92,7 @@ scrollSelectionForm!.init(rectangle, formType);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScrollSelectionFormNoneFactory.getInstance();;
+                        return ScrollSelectionFormNoneFactory::getInstance();;
     
 
                         }

@@ -45,13 +45,12 @@
 class PathData
             : public Object
          {
-        
 
-    private: static const instance: PathData = new PathData();
+    private: static PathData instance() { return PathData(); }
 
-    public static PathData getInstance();
+    public: static PathData getInstance();
 
-    public const OFFSET: int32_t = 400;
+    public: const int32_t OFFSET = 400;
 
 };
 

@@ -48,13 +48,12 @@
         #include "ModifierBaseProcessor.h"
 
 class AlphaProcessor: public ModifierBaseProcessor {
-        
 
-    private: static const instanceC: AlphaProcessor = new AlphaProcessor();
+    private: static const AlphaProcessor instanceC = AlphaProcessor();
 
-    public static AlphaProcessor getInstance();
+    public: static AlphaProcessor getInstance();
 
-    public updateAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, int32_t alpha);
+    public: void updateAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, int32_t alpha);
 
 };
 

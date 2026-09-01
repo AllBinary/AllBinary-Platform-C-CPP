@@ -48,32 +48,29 @@
 /*actual*/ class TimeStampUtil
             : public Object
          {
-        
 
-    private: static const instance: TimeStampUtil = new TimeStampUtil();
+    private: static TimeStampUtil instance() { return TimeStampUtil(); }
 
-    /*actual*/ public static TimeStampUtil getInstance(){
+    /*actual*/ public: static TimeStampUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeStampUtil.instance;
+                        return TimeStampUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TimeStampUtil(){
+}
 
 
-    /*actual*/ public string getAsString(){
+    /*actual*/ public: std::string getAsString(){
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    date: Date = calendar.getTime()!;;
+    Date date = calendar.getTime();;
     
 
 

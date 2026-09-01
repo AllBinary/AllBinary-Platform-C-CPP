@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -147,131 +149,122 @@
 class StoreFront
             : public Object
         : public StoreFrontInterface {
-        
 
-    private: static const RESOURCES: string = " Resources" +AbPathData.getInstance()!.SEPARATOR;
+    private: static const std::string RESOURCES = " Resources" +AbPathData::getInstance().SEPARATOR;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const abPathUtil: AbPathUtil = AbPathUtil.getInstance()!;
+    private: const AbPathUtil abPathUtil = AbPathUtil::getInstance();
 
-    private: name: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string name = this->stringUtil.EMPTY_STRING;
 
-    private: basketName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string basketName = this->stringUtil.EMPTY_STRING;
 
-    private: homeHostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string homeHostName = this->stringUtil.EMPTY_STRING;
 
-    private: homeHostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath homeHostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: hostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string hostName = this->stringUtil.EMPTY_STRING;
 
-    private: hostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath hostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: testHomeHostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testHomeHostName = this->stringUtil.EMPTY_STRING;
 
-    private: testHomeHostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath testHomeHostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: testHostName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testHostName = this->stringUtil.EMPTY_STRING;
 
-    private: testHostNamePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath testHostNamePath = this->abPathUtil.NO_ABPATH;
 
-    private: imagePath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath imagePath = this->abPathUtil.NO_ABPATH;
 
-    private: staticPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath staticPath = this->abPathUtil.NO_ABPATH;
 
-    private: categoryPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath categoryPath = this->abPathUtil.NO_ABPATH;
 
-    private: inventoryControl: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string inventoryControl = this->stringUtil.EMPTY_STRING;
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-    private: subStores: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string subStores = this->stringUtil.EMPTY_STRING;
 
-    private: tagLocation: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string tagLocation = this->stringUtil.EMPTY_STRING;
 
-    private: packageLocation: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string packageLocation = this->stringUtil.EMPTY_STRING;
 
-    private: ftp: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string ftp = this->stringUtil.EMPTY_STRING;
 
-    private: ftpPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath ftpPath = this->abPathUtil.NO_ABPATH;
 
-    private: ftpUserName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string ftpUserName = this->stringUtil.EMPTY_STRING;
 
-    private: ftpPassword: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string ftpPassword = this->stringUtil.EMPTY_STRING;
 
-    private: testFtp: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testFtp = this->stringUtil.EMPTY_STRING;
 
-    private: testFtpPath: AbPath = this.abPathUtil!.NO_ABPATH;
+    private: AbPath testFtpPath = this->abPathUtil.NO_ABPATH;
 
-    private: testFtpUserName: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testFtpUserName = this->stringUtil.EMPTY_STRING;
 
-    private: testFtpPassword: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string testFtpPassword = this->stringUtil.EMPTY_STRING;
 
-    private: timeCreated: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string timeCreated = this->stringUtil.EMPTY_STRING;
 
-    private: lastModified: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string lastModified = this->stringUtil.EMPTY_STRING;
 
-    private: const MINCHAR: int32_t = 0;
+    private: const int32_t MINCHAR = 0;
 
-    private: const MINSTORENAMELENGTH: int32_t = 1;
+    private: const int32_t MINSTORENAMELENGTH = 1;
 
-    private: const MAXCHAR: int32_t = 255;
+    private: const int32_t MAXCHAR = 255;
 
-    private: const EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: const std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const ONE_EMPTY_STRING_ARRAY: std::vector<string> = StringUtil.getInstance()!.ONE_EMPTY_STRING_ARRAY;
+    private: const std::vector<std::string> ONE_EMPTY_STRING_ARRAY = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
 
-public constructor (){
-
-            super();
-        this.contextConfigurationInterface= new ContextConfiguration();
+public: StoreFront(){
+this->contextConfigurationInterface= ContextConfiguration();
     
 }
 
 
-public constructor (HttpServletRequest request){
-
-            super();
-        this.getFormData(new RequestParams(request).toHashMap());
+public: StoreFront(HttpServletRequest request){
+this->getFormData(RequestParams(request).toHashMap());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", this, "StoreFront");
+                                    this->logUtil.putF("TWB- needs update for adding and updating context configuration - currently defaults to admin context config", this, "StoreFront");
     
 
                                     }
                                 
-this.setContextConfigurationInterface(ContextConfigurationInterfaceFactory.getInstance()!.getInstance("Admin"));
+this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::getInstance().getInstance("Admin"));
     
 }
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.getFormData(hashMap);
+public: StoreFront(HashMap<any, any> hashMap){
+this->getFormData(hashMap);
     
 
-    domDocumentString: string = hashMap!.get(StoreFrontData.getInstance()!.CONFIGURATION) as string;;
+    std::string domDocumentString = hashMap.get(StoreFrontData::getInstance().CONFIGURATION) as string;;
     
 
-                        if(domDocumentString == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
                                     
-    document: Document = DomDocumentHelper.create(domDocumentString)!;;
+    Document document = DomDocumentHelper::create(domDocumentString);;
     
-this.setContextConfigurationInterface(ContextConfigurationInterfaceFactory.getInstance()!.getInstance(document));
+this->setContextConfigurationInterface(ContextConfigurationInterfaceFactory::getInstance().getInstance(document));
     
 
                                     }
@@ -279,9 +272,9 @@ this.setContextConfigurationInterface(ContextConfigurationInterfaceFactory.getIn
 }
 
 
-    bool isColumn(string columnName){
+    private: bool isColumn(std::string columnName){
 
-                        if(columnName!.compareTo(StoreFrontData.getInstance()!.NAME) == 0 || columnName!.compareTo(UserData.MAINEMAIL) == 0)
+                        if(columnName.compareTo(StoreFrontData::getInstance().NAME) == 0 || columnName.compareTo(UserData::MAINEMAIL) == 0)
                         
                                     {
                                     
@@ -308,65 +301,65 @@ this.setContextConfigurationInterface(ContextConfigurationInterfaceFactory.getIn
 
                 //@Throws(Exception.constructor)
             
-    AbPath createPath(string key, HashMap<any, any> hashMap){
+    private: AbPath createPath(std::string key, HashMap<any, any> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(this.create(this.EMPTY_STRING, key, hashMap), StringUtil.getInstance()!.EMPTY_STRING);
+                        return AbPath(this->create(this->EMPTY_STRING, key, hashMap), StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    AbPath createPath(string append, string key, HashMap<any, any> hashMap){
+    private: AbPath createPath(std::string append, std::string key, HashMap<any, any> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(this.create(append, key, hashMap), StringUtil.getInstance()!.EMPTY_STRING);
+                        return AbPath(this->create(append, key, hashMap), StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
-    string get(string key, HashMap<any, any> hashMap){
+    private: std::string get(std::string key, HashMap<any, any> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.create(this.EMPTY_STRING, key, hashMap);;
+                        return this->create(this->EMPTY_STRING, key, hashMap);;
     
 }
 
 
-    string create(string append, string key, HashMap<any, any> hashMap){
+    private: std::string create(std::string append, std::string key, HashMap<any, any> hashMap){
 
-    path: string = hashMap!.get(key) as string;;
+    std::string path = hashMap.get(key) as string;;
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(path))
+                        if(StringValidationUtil::getInstance().isEmpty(path))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EMPTY_STRING;
+                        return this->EMPTY_STRING;
     
 
                                     }
                                 
                         else {
                             
-                        if(this.isColumn(path))
+                        if(this->isColumn(path))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return hashMap!.get(path) as string +append;
+                        return hashMap.get(path) as string +append;
     
 
                                     }
@@ -389,90 +382,90 @@ this.setContextConfigurationInterface(ContextConfigurationInterfaceFactory.getIn
 
                 //@Throws(Exception.constructor)
             
-    getFormData(HashMap<any, any> storeHashMap){
+    private: void getFormData(HashMap<any, any> storeHashMap){
 
-    storeFrontData: StoreFrontData = StoreFrontData.getInstance()!;;
+    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
     
-this.name= storeHashMap!.get(storeFrontData!.NAME) as string;
+this->name= storeHashMap.get(storeFrontData.NAME) as string;
     
-this.basketName= storeHashMap!.get(storeFrontData!.NAME) as string;
+this->basketName= storeHashMap.get(storeFrontData.NAME) as string;
     
-this.homeHostName= storeHashMap!.get(storeFrontData!.HOMEHOSTNAME) as string;
+this->homeHostName= storeHashMap.get(storeFrontData.HOMEHOSTNAME) as string;
     
-this.homeHostNamePath= this.createPath(storeFrontData!.HOMEHOSTNAMEPATH, storeHashMap);
+this->homeHostNamePath= this->createPath(storeFrontData.HOMEHOSTNAMEPATH, storeHashMap);
     
-this.hostName= storeHashMap!.get(storeFrontData!.HOSTNAME) as string;
+this->hostName= storeHashMap.get(storeFrontData.HOSTNAME) as string;
     
-this.hostNamePath= this.createPath(storeFrontData!.HOSTNAMEPATH, storeHashMap);
+this->hostNamePath= this->createPath(storeFrontData.HOSTNAMEPATH, storeHashMap);
     
-this.testHomeHostName= storeHashMap!.get(storeFrontData!.TESTHOMEHOSTNAME) as string;
+this->testHomeHostName= storeHashMap.get(storeFrontData.TESTHOMEHOSTNAME) as string;
     
-this.testHomeHostNamePath= this.createPath(storeFrontData!.TESTHOMEHOSTNAMEPATH, storeHashMap);
+this->testHomeHostNamePath= this->createPath(storeFrontData.TESTHOMEHOSTNAMEPATH, storeHashMap);
     
-this.testHostName= storeHashMap!.get(storeFrontData!.TESTHOSTNAME) as string;
+this->testHostName= storeHashMap.get(storeFrontData.TESTHOSTNAME) as string;
     
-this.testHostNamePath= this.createPath(storeFrontData!.TESTHOSTNAMEPATH, storeHashMap);
+this->testHostNamePath= this->createPath(storeFrontData.TESTHOSTNAMEPATH, storeHashMap);
     
-this.imagePath= this.createPath(StoreFront.RESOURCES, storeFrontData!.IMAGEPATH, storeHashMap);
+this->imagePath= this->createPath(StoreFront::RESOURCES, storeFrontData.IMAGEPATH, storeHashMap);
     
-this.staticPath= this.createPath(" Products" +AbPathData.getInstance()!.SEPARATOR, storeFrontData!.STATICPATH, storeHashMap);
+this->staticPath= this->createPath(" Products" +AbPathData::getInstance().SEPARATOR, storeFrontData.STATICPATH, storeHashMap);
     
-this.categoryPath= this.createPath(StoreFront.RESOURCES, storeFrontData!.CATEGORYPATH, storeHashMap);
+this->categoryPath= this->createPath(StoreFront::RESOURCES, storeFrontData.CATEGORYPATH, storeHashMap);
     
-this.inventoryControl= storeHashMap!.get(storeFrontData!.INVENTORYCONTROL) as string;
+this->inventoryControl= storeHashMap.get(storeFrontData.INVENTORYCONTROL) as string;
     
-this.subStores= storeHashMap!.get(storeFrontData!.SUBSTORES) as string;
+this->subStores= storeHashMap.get(storeFrontData.SUBSTORES) as string;
     
-this.tagLocation= storeHashMap!.get(storeFrontData!.TAGLOCATION) as string;
+this->tagLocation= storeHashMap.get(storeFrontData.TAGLOCATION) as string;
     
-this.packageLocation= storeHashMap!.get(storeFrontData!.PACKAGELOCATION) as string;
+this->packageLocation= storeHashMap.get(storeFrontData.PACKAGELOCATION) as string;
     
-this.ftp= storeHashMap!.get(storeFrontData!.FTP) as string;
+this->ftp= storeHashMap.get(storeFrontData.FTP) as string;
     
-this.ftpPath= this.createPath(storeFrontData!.FTPPATH, storeHashMap);
+this->ftpPath= this->createPath(storeFrontData.FTPPATH, storeHashMap);
     
-this.ftpUserName= storeHashMap!.get(storeFrontData!.FTPUSERNAME) as string;
+this->ftpUserName= storeHashMap.get(storeFrontData.FTPUSERNAME) as string;
     
-this.ftpPassword= storeHashMap!.get(storeFrontData!.FTPPASSWORD) as string;
+this->ftpPassword= storeHashMap.get(storeFrontData.FTPPASSWORD) as string;
     
-this.testFtp= storeHashMap!.get(storeFrontData!.TESTFTP) as string;
+this->testFtp= storeHashMap.get(storeFrontData.TESTFTP) as string;
     
-this.testFtpPath= this.createPath(storeFrontData!.TESTFTPPATH, storeHashMap);
+this->testFtpPath= this->createPath(storeFrontData.TESTFTPPATH, storeHashMap);
     
-this.testFtpUserName= storeHashMap!.get(storeFrontData!.TESTFTPUSERNAME) as string;
+this->testFtpUserName= storeHashMap.get(storeFrontData.TESTFTPUSERNAME) as string;
     
-this.testFtpPassword= storeHashMap!.get(storeFrontData!.TESTFTPPASSWORD) as string;
+this->testFtpPassword= storeHashMap.get(storeFrontData.TESTFTPPASSWORD) as string;
     
-this.timeCreated= storeHashMap!.get(EntryData.getInstance()!.TIMECREATED) as string;
+this->timeCreated= storeHashMap.get(EntryData::getInstance().TIMECREATED) as string;
     
-this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as string;
+this->lastModified= storeHashMap.get(EntryData::getInstance().LASTMODIFIED) as string;
     
 }
 
 
-    public Boolean isNameValid(){
+    public: Boolean isNameValid(){
 
-                        if(!StringValidationUtil.getInstance()!.isValidRequired(this.name, this.MINSTORENAMELENGTH, this.MAXCHAR))
+                        if(!StringValidationUtil::getInstance().isValidRequired(this->name, this->MINSTORENAMELENGTH, this->MAXCHAR))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
                         else {
                             
-    isEscapedCharactersContained: bool = false;;
+    bool isEscapedCharactersContained = false;;
     
 
-    storeNameEscaped: string = StringEscapeUtils.escapeHtml3(this.name)!;;
+    std::string storeNameEscaped = StringEscapeUtils::escapeHtml3(this->name);;
     
 
-                        if(this.name.compareTo(storeNameEscaped) != 0)
+                        if(this->name.compareTo(storeNameEscaped) != 0)
                         
                                     {
                                     isEscapedCharactersContained= true;
@@ -481,13 +474,13 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
                                     }
                                 
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    isSpacesContained: bool = false;;
+    bool isSpacesContained = false;;
     
 
-                        if(stringValidationUtil!.containsSpaces(this.name))
+                        if(stringValidationUtil.containsSpaces(this->name))
                         
                                     {
                                     isSpacesContained= true;
@@ -500,14 +493,14 @@ this.lastModified= storeHashMap!.get(EntryData.getInstance()!.LASTMODIFIED) as s
                         
                                     {
                                     
-    hashMap: HashMap<any, any> = SpecialCharacterUtil.getHashMap()!;;
+    HashMap<any, any> hashMap = SpecialCharacterUtil::getHashMap();;
     
-hashMap!.put(
-                                                [
-                                                    CommonSeps.getInstance()!.SPACE
-                                                ], this.ONE_EMPTY_STRING_ARRAY);
+hashMap.put(
+                                                {
+                                                    CommonSeps::getInstance().SPACE
+                                                }, this->ONE_EMPTY_STRING_ARRAY);
     
-this.name= new Replace(hashMap).all(this.name);
+this->name= Replace(hashMap).all(this->name);
     
 
                                     }
@@ -519,232 +512,232 @@ this.name= new Replace(hashMap).all(this.name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
-valid= this.isNameValid();
-    
-
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+valid= this->isNameValid();
     
 
-                        if(!stringValidationUtil!.isValidRequired(this.basketName, this.MINCHAR, this.MAXCHAR))
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
+    
+
+                        if(!stringValidationUtil.isValidRequired(this->basketName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.homeHostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->homeHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.homeHostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->homeHostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.hostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->hostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.hostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->hostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHomeHostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHomeHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHomeHostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHomeHostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.imagePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->imagePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.staticPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->staticPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.categoryPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->categoryPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.inventoryControl, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->inventoryControl, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.subStores, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->subStores, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.tagLocation, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->tagLocation, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.packageLocation, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->packageLocation, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftp, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftp, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftpPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftpPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftpUserName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftpUserName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftpPassword, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftpPassword, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtp, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtp, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtpPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtpPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtpUserName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtpUserName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtpPassword, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtpPassword, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
@@ -757,7 +750,7 @@ valid= this.isNameValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -767,7 +760,7 @@ valid= this.isNameValid();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                         }
@@ -775,28 +768,28 @@ valid= this.isNameValid();
 }
 
 
-    public string nameValidationInfo(){
+    public: std::string nameValidationInfo(){
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(!stringValidationUtil!.isValidRequired(this.name, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->name, this->MINCHAR, this->MAXCHAR))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Name is invalid. Must be < ");
+stringBuffer.append("Name is invalid. Must be < ");
     
-stringBuffer!.appendint(this.MAXCHAR);
+stringBuffer.appendint(this->MAXCHAR);
     
-stringBuffer!.append(" and > 0 characters.<br>");
+stringBuffer.append(" and > 0 characters.<br>");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                                     }
@@ -805,254 +798,254 @@ stringBuffer!.append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EMPTY_STRING;
+                        return this->EMPTY_STRING;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.nameValidationInfo());
+stringBuffer.append(this->nameValidationInfo());
     
 
-                        if(!stringValidationUtil!.isValidRequired(this.basketName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->basketName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Basket name is invalid. Must be < ");
+                                    stringBuffer.append("Basket name is invalid. Must be < ");
     
-stringBuffer!.appendint(this.MAXCHAR);
+stringBuffer.appendint(this->MAXCHAR);
     
-stringBuffer!.append(" and > 0 characters.<br>");
+stringBuffer.append(" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.homeHostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->homeHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Home host name is invalid. Must be < ");
+                                    stringBuffer.append("Home host name is invalid. Must be < ");
     
-stringBuffer!.appendint(this.MAXCHAR);
+stringBuffer.appendint(this->MAXCHAR);
     
-stringBuffer!.append(" and > 0 characters.<br>");
+stringBuffer.append(" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.homeHostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->homeHostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Home host name path is invalid. Must be < ");
+                                    stringBuffer.append("Home host name path is invalid. Must be < ");
     
-stringBuffer!.appendint(this.MAXCHAR);
+stringBuffer.appendint(this->MAXCHAR);
     
-stringBuffer!.append(" and > 0 characters.<br>");
+stringBuffer.append(" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.hostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->hostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Host name is invalid. Must be < ");
+                                    stringBuffer.append("Host name is invalid. Must be < ");
     
-stringBuffer!.appendint(this.MAXCHAR);
+stringBuffer.appendint(this->MAXCHAR);
     
-stringBuffer!.append(" and > 0 characters.<br>");
+stringBuffer.append(" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.hostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->hostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Host name path is invalid. Must be < ");
+                                    stringBuffer.append("Host name path is invalid. Must be < ");
     
-stringBuffer!.appendint(this.MAXCHAR);
+stringBuffer.appendint(this->MAXCHAR);
     
-stringBuffer!.append(" and > 0 characters.<br>");
+stringBuffer.append(" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHomeHostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHomeHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test home host name is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test home host name is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHomeHostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHomeHostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test home host name path is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test home host name path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHostName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHostName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test host name is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test host name is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testHostNamePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testHostNamePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test host name path is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test host name path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.imagePath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->imagePath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Image path is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Image path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.staticPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->staticPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Static path is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Static path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.categoryPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->categoryPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Category path is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Category path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.inventoryControl, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->inventoryControl, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Inventory control is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Inventory control is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.subStores, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->subStores, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Sub stores is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Sub stores is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.tagLocation, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->tagLocation, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Tag location is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Tag location is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidRequired(this.packageLocation, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidRequired(this->packageLocation, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Package location is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Package location is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftp, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftp, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Ftp is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Ftp is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftpPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftpPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Ftp path is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Ftp path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftpUserName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftpUserName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Ftp username is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Ftp username is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.ftpPassword, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->ftpPassword, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Ftp password is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Ftp password is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtp, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtp, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test ftp is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test ftp is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtpPath!.toString(), this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtpPath.toString(), this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test ftp Path is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test ftp Path is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtpUserName, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtpUserName, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test ftp username is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test ftp username is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
                                 
 
-                        if(!stringValidationUtil!.isValidNotRequired(this.testFtpPassword, this.MINCHAR, this.MAXCHAR))
+                        if(!stringValidationUtil.isValidNotRequired(this->testFtpPassword, this->MINCHAR, this->MAXCHAR))
                         
                                     {
-                                    stringBuffer!.append("Test ftp password is invalid. Must be < " +this.MAXCHAR +" and > 0 characters.<br>");
+                                    stringBuffer.append("Test ftp password is invalid. Must be < " +this->MAXCHAR +" and > 0 characters.<br>");
     
 
                                     }
@@ -1061,17 +1054,17 @@ stringBuffer!.append(" and > 0 characters.<br>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -1087,31 +1080,31 @@ stringBuffer!.append(" and > 0 characters.<br>");
 }
 
 
-    public string getTestHtmlPath(){
+    public: std::string getTestHtmlPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return org.allbinary.globals.URLGLOBALS.getTestHtmlPath() +this.getCurrentHostNamePath();
+                        return org.allbinary.globals.URLGLOBALS.getTestHtmlPath() +this->getCurrentHostNamePath();
     
 }
 
 
-    public string getCurrentHostName(){
+    public: std::string getCurrentHostName(){
 
-    location: string = this.EMPTY_STRING;;
+    std::string location = this->EMPTY_STRING;;
     
 
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHostName();
+                                    location= this->getTestHostName();
     
 
                                     }
                                 
                         else {
-                            location= this.getHostName();
+                            location= this->getHostName();
     
 
                         }
@@ -1125,21 +1118,21 @@ stringBuffer!.append(" and > 0 characters.<br>");
 }
 
 
-    public string getCurrentHostNamePath(){
+    public: std::string getCurrentHostNamePath(){
 
-    location: string = this.EMPTY_STRING;;
+    std::string location = this->EMPTY_STRING;;
     
 
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHostNamePath();
+                                    location= this->getTestHostNamePath();
     
 
                                     }
                                 
                         else {
-                            location= this.getHostNamePath();
+                            location= this->getHostNamePath();
     
 
                         }
@@ -1153,21 +1146,21 @@ stringBuffer!.append(" and > 0 characters.<br>");
 }
 
 
-    public string getCurrentHomeHostName(){
+    public: std::string getCurrentHomeHostName(){
 
-    location: string = this.EMPTY_STRING;;
+    std::string location = this->EMPTY_STRING;;
     
 
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHomeHostName();
+                                    location= this->getTestHomeHostName();
     
 
                                     }
                                 
                         else {
-                            location= this.getHomeHostName();
+                            location= this->getHomeHostName();
     
 
                         }
@@ -1181,21 +1174,21 @@ stringBuffer!.append(" and > 0 characters.<br>");
 }
 
 
-    public string getCurrentHomeHostNamePath(){
+    public: std::string getCurrentHomeHostNamePath(){
 
-    location: string = this.EMPTY_STRING;;
+    std::string location = this->EMPTY_STRING;;
     
 
                         if(org.allbinary.globals.URLGLOBALS.isTestingMode())
                         
                                     {
-                                    location= this.getTestHomeHostNamePath();
+                                    location= this->getTestHomeHostNamePath();
     
 
                                     }
                                 
                         else {
-                            location= this.getHomeHostNamePath();
+                            location= this->getHomeHostNamePath();
     
 
                         }
@@ -1209,146 +1202,146 @@ stringBuffer!.append(" and > 0 characters.<br>");
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getBasketName(){
+    public: std::string getBasketName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basketName;
+                        return this->basketName;
     
 }
 
 
-    public string getHomeHostName(){
+    public: std::string getHomeHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.homeHostName;
+                        return this->homeHostName;
     
 }
 
 
-    public string getHomeHostNamePath(){
+    public: std::string getHomeHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.homeHostNamePath!.toString();;
+                        return this->homeHostNamePath.toString();;
     
 }
 
 
-    public string getHostName(){
+    public: std::string getHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hostName;
+                        return this->hostName;
     
 }
 
 
-    public string getHostNamePath(){
+    public: std::string getHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hostNamePath!.toString();;
+                        return this->hostNamePath.toString();;
     
 }
 
 
-    public string getTestHomeHostName(){
+    public: std::string getTestHomeHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHomeHostName;
+                        return this->testHomeHostName;
     
 }
 
 
-    public string getTestHomeHostNamePath(){
+    public: std::string getTestHomeHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHomeHostNamePath!.toString();;
+                        return this->testHomeHostNamePath.toString();;
     
 }
 
 
-    public string getTestHostName(){
+    public: std::string getTestHostName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHostName;
+                        return this->testHostName;
     
 }
 
 
-    public string getTestHostNamePath(){
+    public: std::string getTestHostNamePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testHostNamePath!.toString();;
+                        return this->testHostNamePath.toString();;
     
 }
 
 
-    public string getStaticPath(){
+    public: std::string getStaticPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.staticPath!.toString();;
+                        return this->staticPath.toString();;
     
 }
 
 
-    public string getCategoryPath(){
+    public: std::string getCategoryPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.categoryPath!.toString();;
+                        return this->categoryPath.toString();;
     
 }
 
 
-    public string getInventoryControl(){
+    public: std::string getInventoryControl(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inventoryControl;
+                        return this->inventoryControl;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getSubStores(){
+    public: BasicArrayList getSubStores(){
 
         try {
             
-    tokenizer: Tokenizer = new Tokenizer(CommonSeps.getInstance()!.SEMICOLON);;
+    Tokenizer tokenizer = Tokenizer(CommonSeps::getInstance().SEMICOLON);;
     
 
-    subStoreVector: BasicArrayList = tokenizer.getTokensFromString(this.subStores, new BasicArrayListD())!;;
+    BasicArrayList subStoreVector = tokenizer.getTokensFromString(this->subStores, BasicArrayListD());;
     
 
 
@@ -1370,320 +1363,320 @@ stringBuffer!.append(" and > 0 characters.<br>");
 }
 
 
-    public string getTagLocation(){
+    public: std::string getTagLocation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tagLocation;
+                        return this->tagLocation;
     
 }
 
 
-    public string getPackageLocation(){
+    public: std::string getPackageLocation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.packageLocation;
+                        return this->packageLocation;
     
 }
 
 
-    public string getFtp(){
+    public: std::string getFtp(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftp;
+                        return this->ftp;
     
 }
 
 
-    public string getFtpUserName(){
+    public: std::string getFtpUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpUserName;
+                        return this->ftpUserName;
     
 }
 
 
-    public string getFtpPassword(){
+    public: std::string getFtpPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpPassword;
+                        return this->ftpPassword;
     
 }
 
 
-    public string getTestFtp(){
+    public: std::string getTestFtp(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtp;
+                        return this->testFtp;
     
 }
 
 
-    public string getTestFtpUserName(){
+    public: std::string getTestFtpUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtpUserName;
+                        return this->testFtpUserName;
     
 }
 
 
-    public string getTestFtpPassword(){
+    public: std::string getTestFtpPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtpPassword;
+                        return this->testFtpPassword;
     
 }
 
 
-    public string getFtpPath(){
+    public: std::string getFtpPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpPath!.toString();;
+                        return this->ftpPath.toString();;
     
 }
 
 
-    public string getTestFtpPath(){
+    public: std::string getTestFtpPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.testFtpPath!.toString();;
+                        return this->testFtpPath.toString();;
     
 }
 
 
-    public string getTimeCreated(){
+    public: std::string getTimeCreated(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeCreated;
+                        return this->timeCreated;
     
 }
 
 
-    public string getLastModified(){
+    public: std::string getLastModified(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastModified;
+                        return this->lastModified;
     
 }
 
 
-    public setName(string value){
-this.name= value;
+    public: void setName(std::string value){
+this->name= value;
     
 }
 
 
-    public setBasketName(string value){
-this.basketName= value;
+    public: void setBasketName(std::string value){
+this->basketName= value;
     
 }
 
 
-    public setHomeHostName(string value){
-this.homeHostName= value;
+    public: void setHomeHostName(std::string value){
+this->homeHostName= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setHomeHostNamePath(string value){
-this.homeHostNamePath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
+    public: void setHomeHostNamePath(std::string value){
+this->homeHostNamePath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
-    public setHostName(string value){
-this.hostName= value;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public setHostNamePath(string value){
-this.hostNamePath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
-    
-}
-
-
-    public setTestHomeHostName(string value){
-this.testHomeHostName= value;
+    public: void setHostName(std::string value){
+this->hostName= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setTestHomeHostNamePath(string value){
-this.testHomeHostNamePath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
+    public: void setHostNamePath(std::string value){
+this->hostNamePath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
-    public setTestHostName(string value){
-this.testHostName= value;
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public setTestHostNamePath(string value){
-this.testHostNamePath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
+    public: void setTestHomeHostName(std::string value){
+this->testHomeHostName= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setImagePath(string value){
-this.imagePath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
+    public: void setTestHomeHostNamePath(std::string value){
+this->testHomeHostNamePath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
+    
+}
+
+
+    public: void setTestHostName(std::string value){
+this->testHostName= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setStaticPath(string value){
-this.staticPath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
+    public: void setTestHostNamePath(std::string value){
+this->testHostNamePath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setCategoryPath(string value){
-this.categoryPath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
-    
-}
-
-
-    public setSubStores(string value){
-this.subStores= value;
-    
-}
-
-
-    public setTagLocation(string value){
-this.tagLocation= value;
-    
-}
-
-
-    public setPackageLocation(string value){
-this.packageLocation= value;
-    
-}
-
-
-    public setInventoryControl(string value){
-this.inventoryControl= value;
-    
-}
-
-
-    public getPackageLocation(string value){
-this.packageLocation= value;
-    
-}
-
-
-    public setFtp(string value){
-this.ftp= value;
-    
-}
-
-
-    public setFtpUserName(string value){
-this.ftpUserName= value;
-    
-}
-
-
-    public setFtpPassword(string value){
-this.ftpPassword= value;
-    
-}
-
-
-    public setTestFtp(string value){
-this.testFtp= value;
-    
-}
-
-
-    public setTestFtpUserName(string value){
-this.testFtpUserName= value;
-    
-}
-
-
-    public setTestFtpPassword(string value){
-this.testFtpPassword= value;
-    
-}
-
-
-    public setTimeCreated(string value){
-this.timeCreated= value;
-    
-}
-
-
-    public setLastModified(string value){
-this.lastModified= value;
+    public: void setImagePath(std::string value){
+this->imagePath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setFtpPath(string value){
-this.ftpPath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
+    public: void setStaticPath(std::string value){
+this->staticPath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setTestFtpPath(string value){
-this.testFtpPath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
+    public: void setCategoryPath(std::string value){
+this->categoryPath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
+    
+}
+
+
+    public: void setSubStores(std::string value){
+this->subStores= value;
+    
+}
+
+
+    public: void setTagLocation(std::string value){
+this->tagLocation= value;
+    
+}
+
+
+    public: void setPackageLocation(std::string value){
+this->packageLocation= value;
+    
+}
+
+
+    public: void setInventoryControl(std::string value){
+this->inventoryControl= value;
+    
+}
+
+
+    public: void getPackageLocation(std::string value){
+this->packageLocation= value;
+    
+}
+
+
+    public: void setFtp(std::string value){
+this->ftp= value;
+    
+}
+
+
+    public: void setFtpUserName(std::string value){
+this->ftpUserName= value;
+    
+}
+
+
+    public: void setFtpPassword(std::string value){
+this->ftpPassword= value;
+    
+}
+
+
+    public: void setTestFtp(std::string value){
+this->testFtp= value;
+    
+}
+
+
+    public: void setTestFtpUserName(std::string value){
+this->testFtpUserName= value;
+    
+}
+
+
+    public: void setTestFtpPassword(std::string value){
+this->testFtpPassword= value;
+    
+}
+
+
+    public: void setTimeCreated(std::string value){
+this->timeCreated= value;
+    
+}
+
+
+    public: void setLastModified(std::string value){
+this->lastModified= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    bool createDirectories(){
+    public: void setFtpPath(std::string value){
+this->ftpPath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
+    
+}
 
-    storeAbPath: AbPath = new AbPath(URLGLOBALS.getWebappPath() +this.getCurrentHomeHostNamePath(), StringUtil.getInstance()!.EMPTY_STRING);;
+
+                //@Throws(Exception.constructor)
+            
+    public: void setTestFtpPath(std::string value){
+this->testFtpPath= AbPath(value, StringUtil::getInstance().EMPTY_STRING);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    private: bool createDirectories(){
+
+    AbPath storeAbPath = AbPath(URLGLOBALS::getWebappPath() +this->getCurrentHomeHostNamePath(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-                        if(!this.directory.create(storeAbPath))
+                        if(!this->directory.create(storeAbPath))
                         
                                     {
                                     
@@ -1696,7 +1689,7 @@ this.testFtpPath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
                                     }
                                 
 
-                        if(!this.directory.create(new AbPath(storeAbPath +this.getCategoryPath(), StringUtil.getInstance()!.EMPTY_STRING)))
+                        if(!this->directory.create(AbPath(storeAbPath +this->getCategoryPath(), StringUtil::getInstance().EMPTY_STRING)))
                         
                                     {
                                     
@@ -1709,7 +1702,7 @@ this.testFtpPath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
                                     }
                                 
 
-                        if(!this.directory.create(new AbPath(storeAbPath +this.getStaticPath(), StringUtil.getInstance()!.EMPTY_STRING)))
+                        if(!this->directory.create(AbPath(storeAbPath +this->getStaticPath(), StringUtil::getInstance().EMPTY_STRING)))
                         
                                     {
                                     
@@ -1732,76 +1725,76 @@ this.testFtpPath= new AbPath(value, StringUtil.getInstance()!.EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public install(int32_t current, int32_t total){
+    public: void install(int32_t current, int32_t total){
 
         try {
             
-                        if(!this.createDirectories())
+                        if(!this->createDirectories())
                         
                                     {
                                     
 
 
-                            throw new Exception("Unable to create store directories");
+                            throw Exception("Unable to create store directories");
                     
 
                                     }
                                 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
-    
-
-    viewPath: string = stringBuffer!.toString()!;;
-    
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append(viewPath);
-    
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.INSTALLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
 
-    fromDirectoryAbPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    std::string viewPath = stringBuffer.toString();;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(viewPath);
+stringBuffer.append(viewPath);
     
-stringBuffer!.append("special");
-    
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().INSTALLPATH);
     
 
-    fromSpecialDirectoryAbPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath fromDirectoryAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(viewPath);
+stringBuffer.append(viewPath);
     
-stringBuffer!.append(this.getName());
+stringBuffer.append("special");
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
 
-    toDirectoryAbPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath fromSpecialDirectoryAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
+    
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append(viewPath);
+    
+stringBuffer.append(this->getName());
+    
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+    
+
+    AbPath toDirectoryAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
                         if(current == 0)
                         
                                     {
                                     
-                        if(!this.directory.create(toDirectoryAbPath))
+                        if(!this->directory.create(toDirectoryAbPath))
                         
                                     {
                                     
 
 
-                            throw new Exception("Unable to create store view directory: " +toDirectoryAbPath!.toString());
+                            throw Exception("Unable to create store view directory: " +toDirectoryAbPath.toString());
                     
 
                                     }
@@ -1810,30 +1803,30 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
                                     }
                                 
 
-    viewTotal: int32_t = (total *85) /100;;
+    int32_t viewTotal = (total *85) /100;;
     
 
-    installTotal: int32_t = (total *93) /100;;
+    int32_t installTotal = (total *93) /100;;
     
 
                         if(current < viewTotal)
                         
                                     {
                                     
-    file: AbFile = AbFile.createAbFileFromAbPath(fromSpecialDirectoryAbPath)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(fromSpecialDirectoryAbPath);;
     
 
                         if(file.isDirectory())
                         
                                     {
                                     
-    halfViewTotal: int32_t = viewTotal /2;;
+    int32_t halfViewTotal = viewTotal /2;;
     
 
                         if(current < halfViewTotal)
                         
                                     {
-                                    this.installViews(fromSpecialDirectoryAbPath, toDirectoryAbPath, current, halfViewTotal);
+                                    this->installViews(fromSpecialDirectoryAbPath, toDirectoryAbPath, current, halfViewTotal);
     
 
                                     }
@@ -1842,7 +1835,7 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
                         if(current < viewTotal)
                         
                                     {
-                                    this.installViews(fromDirectoryAbPath, toDirectoryAbPath, current -halfViewTotal, viewTotal -halfViewTotal);
+                                    this->installViews(fromDirectoryAbPath, toDirectoryAbPath, current -halfViewTotal, viewTotal -halfViewTotal);
     
 
                                     }
@@ -1851,7 +1844,7 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
                                     }
                                 
                         else {
-                            this.installViews(fromDirectoryAbPath, toDirectoryAbPath, current, viewTotal);
+                            this->installViews(fromDirectoryAbPath, toDirectoryAbPath, current, viewTotal);
     
 
                         }
@@ -1863,13 +1856,13 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
                         if(current < installTotal)
                         
                                     {
-                                    this.installResources(fromDirectoryAbPath, current -viewTotal, installTotal -viewTotal);
+                                    this->installResources(fromDirectoryAbPath, current -viewTotal, installTotal -viewTotal);
     
 
                                     }
                                 
                         else {
-                            this.installMedia(fromDirectoryAbPath, current -installTotal, total -installTotal);
+                            this->installMedia(fromDirectoryAbPath, current -installTotal, total -installTotal);
     
 
                         }
@@ -1879,10 +1872,10 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "install()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "install()", e);
     
 
                                     }
@@ -1899,142 +1892,142 @@ stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
 
                 //@Throws(Exception.constructor)
             
-    installViews(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, int32_t current, int32_t total){
-FileUtil.getInstance()!.copyDirectoryPortion(fromDirectoryAbPath, toDirectoryAbPath, true, false, current, total);
+    private: void installViews(AbPath fromDirectoryAbPath, AbPath toDirectoryAbPath, int32_t current, int32_t total){
+FileUtil::getInstance().copyDirectoryPortion(fromDirectoryAbPath, toDirectoryAbPath, true, false, current, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    installResources(AbPath fromDirectoryAbPath, int32_t current, int32_t total){
+    private: void installResources(AbPath fromDirectoryAbPath, int32_t current, int32_t total){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(fromDirectoryAbPath!.toString());
+stringBuffer.append(fromDirectoryAbPath.toString());
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
-stringBuffer!.append("Resources");
+stringBuffer.append("Resources");
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-
-    installCategoryAbPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
-    
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append(URLGLOBALS.getMainPath());
-    
-stringBuffer!.append(this.getCurrentHomeHostNamePath());
-    
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-stringBuffer!.append(this.getCategoryPath());
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
 
-    categoryAbPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath installCategoryAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
-FileUtil.getInstance()!.copyDirectoryPortion(installCategoryAbPath, categoryAbPath, true, false, current, total);
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append(URLGLOBALS::getMainPath());
+    
+stringBuffer.append(this->getCurrentHomeHostNamePath());
+    
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+    
+stringBuffer.append(this->getCategoryPath());
+    
+
+    AbPath categoryAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
+    
+FileUtil::getInstance().copyDirectoryPortion(installCategoryAbPath, categoryAbPath, true, false, current, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    installMedia(AbPath fromDirectoryAbPath, int32_t current, int32_t total){
+    private: void installMedia(AbPath fromDirectoryAbPath, int32_t current, int32_t total){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(fromDirectoryAbPath!.toString());
+stringBuffer.append(fromDirectoryAbPath.toString());
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.TEMPLATEPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().TEMPLATEPATH);
     
-stringBuffer!.append("images");
+stringBuffer.append("images");
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-
-    viewStoreImagesDirectoryAbPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
 
-    storeAbPath: AbPath = new AbPath(URLGLOBALS.getWebappPath() +this.getCurrentHomeHostNamePath(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath viewStoreImagesDirectoryAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
-FileUtil.getInstance()!.copyDirectoryPortion(viewStoreImagesDirectoryAbPath, storeAbPath, true, false, current, total);
+
+    AbPath storeAbPath = AbPath(URLGLOBALS::getWebappPath() +this->getCurrentHomeHostNamePath(), StringUtil::getInstance().EMPTY_STRING);;
+    
+FileUtil::getInstance().copyDirectoryPortion(viewStoreImagesDirectoryAbPath, storeAbPath, true, false, current, total);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    dataVector: Vector = new Vector();;
+    Vector dataVector = Vector();;
     
-dataVector!.add(this.name);
+dataVector.add(this->name);
     
-dataVector!.add(this.homeHostName);
+dataVector.add(this->homeHostName);
     
-dataVector!.add(this.homeHostNamePath!.toString());
+dataVector.add(this->homeHostNamePath.toString());
     
-dataVector!.add(this.hostName);
+dataVector.add(this->hostName);
     
-dataVector!.add(this.hostNamePath!.toString());
+dataVector.add(this->hostNamePath.toString());
     
-dataVector!.add(this.testHomeHostName);
+dataVector.add(this->testHomeHostName);
     
-dataVector!.add(this.testHomeHostNamePath!.toString());
+dataVector.add(this->testHomeHostNamePath.toString());
     
-dataVector!.add(this.testHostName);
+dataVector.add(this->testHostName);
     
-dataVector!.add(this.testHostNamePath!.toString());
+dataVector.add(this->testHostNamePath.toString());
     
-dataVector!.add(this.imagePath!.toString());
+dataVector.add(this->imagePath.toString());
     
-dataVector!.add(this.staticPath!.toString());
+dataVector.add(this->staticPath.toString());
     
-dataVector!.add(this.categoryPath!.toString());
+dataVector.add(this->categoryPath.toString());
     
-dataVector!.add(this.inventoryControl);
-    
-
-    contextConfigurationDomDocumentMapping: ContextConfigurationDomDocumentMapping = new ContextConfigurationDomDocumentMapping(this.getContextConfigurationInterface());;
-    
-dataVector!.add(contextConfigurationDomDocumentMapping!.toDomDocumentString());
-    
-dataVector!.add(this.subStores);
-    
-dataVector!.add(this.tagLocation);
-    
-dataVector!.add(this.packageLocation);
-    
-dataVector!.add(this.ftp);
-    
-dataVector!.add(this.ftpPath!.toString());
-    
-dataVector!.add(this.ftpUserName);
-    
-dataVector!.add(this.ftpPassword);
-    
-dataVector!.add(this.testFtp);
-    
-dataVector!.add(this.testFtpPath!.toString());
-    
-dataVector!.add(this.testFtpUserName);
-    
-dataVector!.add(this.testFtpPassword);
+dataVector.add(this->inventoryControl);
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    ContextConfigurationDomDocumentMapping contextConfigurationDomDocumentMapping = ContextConfigurationDomDocumentMapping(this->getContextConfigurationInterface());;
+    
+dataVector.add(contextConfigurationDomDocumentMapping.toDomDocumentString());
+    
+dataVector.add(this->subStores);
+    
+dataVector.add(this->tagLocation);
+    
+dataVector.add(this->packageLocation);
+    
+dataVector.add(this->ftp);
+    
+dataVector.add(this->ftpPath.toString());
+    
+dataVector.add(this->ftpUserName);
+    
+dataVector.add(this->ftpPassword);
+    
+dataVector.add(this->testFtp);
+    
+dataVector.add(this->testFtpPath.toString());
+    
+dataVector.add(this->testFtpUserName);
+    
+dataVector.add(this->testFtpPassword);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-dataVector!.add(time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
-dataVector!.add(time);
+dataVector.add(time);
+    
+dataVector.add(time);
     
 
 
@@ -2047,73 +2040,73 @@ dataVector!.add(time);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    storeFrontData: StoreFrontData = StoreFrontData.getInstance()!;;
-    
-
-    dataHashMap: HashMap<any, any> = new HashMap<any, any>();;
-    
-dataHashMap!.put(storeFrontData!.NAME, this.name);
-    
-dataHashMap!.put(storeFrontData!.HOMEHOSTNAME, this.homeHostName);
-    
-dataHashMap!.put(storeFrontData!.HOMEHOSTNAMEPATH, this.homeHostNamePath!.toString());
-    
-dataHashMap!.put(storeFrontData!.HOSTNAME, this.hostName);
-    
-dataHashMap!.put(storeFrontData!.HOSTNAMEPATH, this.hostNamePath!.toString());
-    
-dataHashMap!.put(storeFrontData!.TESTHOMEHOSTNAME, this.testHomeHostName);
-    
-dataHashMap!.put(storeFrontData!.TESTHOMEHOSTNAMEPATH, this.testHomeHostNamePath!.toString());
-    
-dataHashMap!.put(storeFrontData!.TESTHOSTNAME, this.testHostName);
-    
-dataHashMap!.put(storeFrontData!.TESTHOSTNAMEPATH, this.testHostNamePath!.toString());
-    
-dataHashMap!.put(storeFrontData!.IMAGEPATH, this.imagePath!.toString());
-    
-dataHashMap!.put(storeFrontData!.STATICPATH, this.staticPath!.toString());
-    
-dataHashMap!.put(storeFrontData!.CATEGORYPATH, this.categoryPath!.toString());
-    
-dataHashMap!.put(storeFrontData!.INVENTORYCONTROL, this.inventoryControl);
+    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
     
 
-    contextConfigurationDomDocumentMapping: ContextConfigurationDomDocumentMapping = new ContextConfigurationDomDocumentMapping(this.getContextConfigurationInterface());;
+    HashMap<any, any> dataHashMap = HashMap<any, any>();;
     
-dataHashMap!.put(storeFrontData!.CONFIGURATION, contextConfigurationDomDocumentMapping!.toDomDocumentString());
+dataHashMap.put(storeFrontData.NAME, this->name);
     
-dataHashMap!.put(storeFrontData!.SUBSTORES, this.subStores);
+dataHashMap.put(storeFrontData.HOMEHOSTNAME, this->homeHostName);
     
-dataHashMap!.put(storeFrontData!.TAGLOCATION, this.tagLocation);
+dataHashMap.put(storeFrontData.HOMEHOSTNAMEPATH, this->homeHostNamePath.toString());
     
-dataHashMap!.put(storeFrontData!.PACKAGELOCATION, this.packageLocation);
+dataHashMap.put(storeFrontData.HOSTNAME, this->hostName);
     
-dataHashMap!.put(storeFrontData!.FTP, this.ftp);
+dataHashMap.put(storeFrontData.HOSTNAMEPATH, this->hostNamePath.toString());
     
-dataHashMap!.put(storeFrontData!.FTPPATH, this.ftpPath!.toString());
+dataHashMap.put(storeFrontData.TESTHOMEHOSTNAME, this->testHomeHostName);
     
-dataHashMap!.put(storeFrontData!.FTPUSERNAME, this.ftpUserName);
+dataHashMap.put(storeFrontData.TESTHOMEHOSTNAMEPATH, this->testHomeHostNamePath.toString());
     
-dataHashMap!.put(storeFrontData!.FTPPASSWORD, this.ftpPassword);
+dataHashMap.put(storeFrontData.TESTHOSTNAME, this->testHostName);
     
-dataHashMap!.put(storeFrontData!.TESTFTP, this.testFtp);
+dataHashMap.put(storeFrontData.TESTHOSTNAMEPATH, this->testHostNamePath.toString());
     
-dataHashMap!.put(storeFrontData!.TESTFTPPATH, this.testFtpPath!.toString());
+dataHashMap.put(storeFrontData.IMAGEPATH, this->imagePath.toString());
     
-dataHashMap!.put(storeFrontData!.TESTFTPUSERNAME, this.testFtpUserName);
+dataHashMap.put(storeFrontData.STATICPATH, this->staticPath.toString());
     
-dataHashMap!.put(storeFrontData!.TESTFTPPASSWORD, this.testFtpPassword);
+dataHashMap.put(storeFrontData.CATEGORYPATH, this->categoryPath.toString());
+    
+dataHashMap.put(storeFrontData.INVENTORYCONTROL, this->inventoryControl);
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    ContextConfigurationDomDocumentMapping contextConfigurationDomDocumentMapping = ContextConfigurationDomDocumentMapping(this->getContextConfigurationInterface());;
+    
+dataHashMap.put(storeFrontData.CONFIGURATION, contextConfigurationDomDocumentMapping.toDomDocumentString());
+    
+dataHashMap.put(storeFrontData.SUBSTORES, this->subStores);
+    
+dataHashMap.put(storeFrontData.TAGLOCATION, this->tagLocation);
+    
+dataHashMap.put(storeFrontData.PACKAGELOCATION, this->packageLocation);
+    
+dataHashMap.put(storeFrontData.FTP, this->ftp);
+    
+dataHashMap.put(storeFrontData.FTPPATH, this->ftpPath.toString());
+    
+dataHashMap.put(storeFrontData.FTPUSERNAME, this->ftpUserName);
+    
+dataHashMap.put(storeFrontData.FTPPASSWORD, this->ftpPassword);
+    
+dataHashMap.put(storeFrontData.TESTFTP, this->testFtp);
+    
+dataHashMap.put(storeFrontData.TESTFTPPATH, this->testFtpPath.toString());
+    
+dataHashMap.put(storeFrontData.TESTFTPUSERNAME, this->testFtpUserName);
+    
+dataHashMap.put(storeFrontData.TESTFTPPASSWORD, this->testFtpPassword);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-dataHashMap!.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+dataHashMap.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -2124,28 +2117,28 @@ dataHashMap!.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();
+                        return this->getName();
     
 }
 
 
-    public ContextConfigurationInterface getContextConfigurationInterface(){
+    public: ContextConfigurationInterface getContextConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.contextConfigurationInterface;
+                        return this->contextConfigurationInterface;
     
 }
 
 
-    public setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface){
-this.contextConfigurationInterface= contextConfigurationInterface;
+    public: void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface){
+this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 

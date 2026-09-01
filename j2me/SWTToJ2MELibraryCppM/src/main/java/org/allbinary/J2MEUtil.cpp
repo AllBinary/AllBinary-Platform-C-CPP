@@ -42,19 +42,8 @@
 class J2MEUtil
             : public Object
          {
-        
 
-    public static bool isJ2ME(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
-    
-}
-
-
-    public static bool isJ2SE(){
+    public: static bool isJ2ME(){
 
 
 
@@ -64,7 +53,7 @@ class J2MEUtil
 }
 
 
-    public static bool isHTML(){
+    public: static bool isJ2SE(){
 
 
 
@@ -74,10 +63,18 @@ class J2MEUtil
 }
 
 
-private constructor (){
+    public: static bool isHTML(){
 
-            super();
-        }
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return false;
+    
+}
+
+
+private: J2MEUtil(){
+}
 
 
 };

@@ -69,66 +69,65 @@
         #include "HackRotationSpriteIndexedAnimation.h"
 
 class AllBinarySpriteRotationAnimation: public HackRotationSpriteIndexedAnimation {
-        
 
-public constructor (Sprite sprite, Image image, AnimationBehavior animationBehavior){
-            super(sprite, image, AngleInfo.getInstance((AngleFactory.getInstance()!.TOTAL_ANGLE /sprite.getRawFrameCount())), animationBehavior);
+public: AllBinarySpriteRotationAnimation(Sprite sprite, Image image, AnimationBehavior animationBehavior){
+            super(sprite, image, AngleInfo::getInstance((AngleFactory::getInstance().TOTAL_ANGLE /sprite.getRawFrameCount())), animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.angleInfo!.adjustAngle(this.sprite.getFrame());
+this->angleInfo.adjustAngle(this->sprite.getFrame());
     
 }
 
 
-    public nextRotation(){
-this.sprite.nextFrame();
+    public: void nextRotation(){
+this->sprite.nextFrame();
     
-this.angleInfo!.adjustAngle(this.sprite.getFrame());
-    
-}
-
-
-    public previousRotation(){
-this.sprite.prevFrame();
-    
-this.angleInfo!.adjustAngle(this.sprite.getFrame());
+this->angleInfo.adjustAngle(this->sprite.getFrame());
     
 }
 
 
-    public setFrameByDirection(Direction direction){
-
-    angle: Angle = this.directionUtil!.getFrameAngle(direction)!;;
+    public: void previousRotation(){
+this->sprite.prevFrame();
     
-this.adjustFrameToAngle(angle);
-    
-}
-
-
-    public setFrameToAngle(Angle angle){
-this.adjustFrameToAngle(angle);
+this->angleInfo.adjustAngle(this->sprite.getFrame());
     
 }
 
 
-    public setFrame(int32_t index){
-this.sprite.setFrame(index);
-    
-this.angleInfo!.adjustAngle(this.getFrame());
-    
-}
+    public: void setFrameByDirection(Direction direction){
 
-
-    public adjustFrameToAngle(Angle angle){
-this.adjustFrame(angle.getValue());
+    Angle angle = this->directionUtil.getFrameAngle(direction);;
+    
+this->adjustFrameToAngle(angle);
     
 }
 
 
-    public adjustFrame(int16_t angle){
-this.setFrame(this.frameUtil!.getFrameForAngle(angle, static_cast<int32_t>(this.angleInfo!.getAngleIncrementInfo()!.getAngleIncrement())));
+    public: void setFrameToAngle(Angle angle){
+this->adjustFrameToAngle(angle);
+    
+}
+
+
+    public: void setFrame(int32_t index){
+this->sprite.setFrame(index);
+    
+this->angleInfo.adjustAngle(this->getFrame());
+    
+}
+
+
+    public: void adjustFrameToAngle(Angle angle){
+this->adjustFrame(angle.getValue());
+    
+}
+
+
+    public: void adjustFrame(int16_t angle){
+this->setFrame(this->frameUtil.getFrameForAngle(angle, static_cast<int32_t>(this->angleInfo.getAngleIncrementInfo().getAngleIncrement())));
     
 }
 

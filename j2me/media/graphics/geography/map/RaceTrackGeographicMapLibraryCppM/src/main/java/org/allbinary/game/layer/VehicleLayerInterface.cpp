@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <org/allbinary/util/BasicArrayList.h>
@@ -59,7 +61,6 @@
         #include "VehiclePropertiesCompositeInterface.h"
 
 class VehicleLayerInterface: public LayerInterface, public VehiclePropertiesCompositeInterface {
-        
 
     BasicArrayList getGameKeyEventList()
 
@@ -69,7 +70,7 @@ class VehicleLayerInterface: public LayerInterface, public VehiclePropertiesComp
 
     RotationAnimation getRotationAnimationInterface()
 
-    setRotationAnimationInterface(RotationAnimation animationInterface)
+    void setRotationAnimationInterface(RotationAnimation animationInterface)
 
     bool isDestroyed()
 
@@ -79,13 +80,13 @@ class VehicleLayerInterface: public LayerInterface, public VehiclePropertiesComp
 
                 //@Throws(Exception.constructor)
             
-    handleFinish()
+    void handleFinish()
 
     GeographicMapCellPositionTracking getGeographicMapCellPositionTracking()
 
     std::vector<GeographicMapCellHistory> getGeographicMapCellHistoryArray()
 
-    setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory)
+    void setGeographicMapCellHistoryArray(std::vector<GeographicMapCellHistory> geographicMapCellHistory)
 
 };
 

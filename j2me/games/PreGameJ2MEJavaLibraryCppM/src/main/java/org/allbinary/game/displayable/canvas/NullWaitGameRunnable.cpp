@@ -39,16 +39,15 @@
         #include "GameRunnable.h"
 
 class NullWaitGameRunnable: public GameRunnable {
-        
 
-    private: static const instance: GameRunnable = new NullWaitGameRunnable();
+    private: static const GameRunnable instance = NullWaitGameRunnable();
 
-    public static GameRunnable getInstance(){
+    public: static GameRunnable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullWaitGameRunnable.instance;
+                        return NullWaitGameRunnable::instance();
     
 }
 

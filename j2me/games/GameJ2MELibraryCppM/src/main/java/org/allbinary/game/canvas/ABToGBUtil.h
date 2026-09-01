@@ -54,15 +54,14 @@
 class ABToGBUtil
             : public Object
          {
-        
 
-    private: static const instance: ABToGBUtil = new ABToGBUtil();
+    private: static ABToGBUtil instance() { return ABToGBUtil(); }
 
-    public static ABToGBUtil getInstance();
+    public: static ABToGBUtil getInstance();
 
-    public abCanvas: Canvas = NullCanvas.NULL_CANVAS;
+    public: Canvas abCanvas = NullCanvas::NULL_CANVAS;
 
-    public allBinaryGameLayerManager: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    public: AllBinaryGameLayerManager allBinaryGameLayerManager = AllBinaryGameLayerManager::getNullInstance();
 
 };
 

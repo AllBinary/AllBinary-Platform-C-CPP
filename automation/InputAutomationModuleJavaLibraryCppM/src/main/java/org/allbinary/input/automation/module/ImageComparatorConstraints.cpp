@@ -69,67 +69,64 @@
 class ImageComparatorConstraints
             : public Object
         : public ImageComparatorConstraintsInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: avoidVector: Vector;
+    private: Vector avoidVector;
 
-    private: maxNonMatchingPixelDeltas: int32_t= 0;
+    private: int32_t maxNonMatchingPixelDeltas= 0;
 
-    private: doImageComparisonEveryNthFrame: int32_t;
+    private: int32_t doImageComparisonEveryNthFrame;
 
-public constructor (int32_t doImageComparisonEveryNthFrame){
-
-            super();
-        this.doImageComparisonEveryNthFrame= doImageComparisonEveryNthFrame;
+public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame){
+this->doImageComparisonEveryNthFrame= doImageComparisonEveryNthFrame;
     
-this.setAvoidVector(new Vector());
+this->setAvoidVector(Vector());
     
 }
 
 
-    public Vector getAvoidVector(){
+    public: Vector getAvoidVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.avoidVector;
+                        return this->avoidVector;
     
 }
 
 
-    public bool isColorAllowed(int32_t frame, GPoint point, Color color){
+    public: bool isColorAllowed(int32_t frame, GPoint point, Color color){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isCollisionWithAvoidRectangles(Rectangle rectangle){
+    public: bool isCollisionWithAvoidRectangles(Rectangle rectangle){
 
-    isCollsionWithAvoidRectangles: bool = false;;
+    bool isCollsionWithAvoidRectangles = false;;
     
 
-    avoidVector: Vector = this.getAvoidVector()!;;
+    Vector avoidVector = this->getAvoidVector();;
     
 
-    size: int32_t = avoidVector!.length!;;
+    int32_t size = avoidVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    avoidRectangle: Rectangle = avoidVector!.get(index) as Rectangle;;
+    Rectangle avoidRectangle = avoidVector.get(index) as Rectangle;;
     
 
-                        if(RectangleCollisionUtil.isCollision(avoidRectangle, rectangle))
+                        if(RectangleCollisionUtil::isCollision(avoidRectangle, rectangle))
                         
                                     {
                                     isCollsionWithAvoidRectangles= true;
@@ -148,28 +145,28 @@ this.setAvoidVector(new Vector());
 }
 
 
-    public bool isCollisionWithAvoidRectangles(GPoint point){
+    public: bool isCollisionWithAvoidRectangles(GPoint point){
 
-    isCollsionWithAvoidRectangles: bool = false;;
+    bool isCollsionWithAvoidRectangles = false;;
     
 
-    avoidVector: Vector = this.getAvoidVector()!;;
+    Vector avoidVector = this->getAvoidVector();;
     
 
-    size: int32_t = avoidVector!.length!;;
+    int32_t size = avoidVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    avoidRectangle: Rectangle = avoidVector!.get(index) as Rectangle;;
+    Rectangle avoidRectangle = avoidVector.get(index) as Rectangle;;
     
 
-                        if(RectangleCollisionUtil.isCollision(avoidRectangle, point))
+                        if(RectangleCollisionUtil::isCollision(avoidRectangle, point))
                         
                                     {
                                     isCollsionWithAvoidRectangles= true;
@@ -191,33 +188,33 @@ break;
 }
 
 
-    public setAvoidVector(Vector avoidVector){
-this.avoidVector= avoidVector;
+    public: void setAvoidVector(Vector avoidVector){
+this->avoidVector= avoidVector;
     
 }
 
 
-    public int32_t getMaxNonMatchingPixelDeltas(){
+    public: int32_t getMaxNonMatchingPixelDeltas(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxNonMatchingPixelDeltas;
+                        return this->maxNonMatchingPixelDeltas;
     
 }
 
 
-    public setMaxNonMatchingPixelDeltas(int32_t maxNonMatchingPixelDeltas){
-this.maxNonMatchingPixelDeltas= maxNonMatchingPixelDeltas;
+    public: void setMaxNonMatchingPixelDeltas(int32_t maxNonMatchingPixelDeltas){
+this->maxNonMatchingPixelDeltas= maxNonMatchingPixelDeltas;
     
 }
 
 
-    public bool isFrameAllowed(int32_t frame){
+    public: bool isFrameAllowed(int32_t frame){
 
-    remainder: int32_t = ((frame +1) % this.doImageComparisonEveryNthFrame);;
+    int32_t remainder = ((frame +1) % this->doImageComparisonEveryNthFrame);;
     
-this.logUtil!.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageComparisonEveryNthFrame: " +this.doImageComparisonEveryNthFrame, this, "isCollisionWithAvoidRectangles");
+this->logUtil.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageComparisonEveryNthFrame: " +this->doImageComparisonEveryNthFrame, this, "isCollisionWithAvoidRectangles");
     
 
                         if(remainder == 0)
@@ -247,33 +244,33 @@ this.logUtil!.putF(" Frame: " +frame +" remainder: " +remainder +" this.doImageC
 
                 //@Throws(Exception.constructor)
             
-    public bool isImageValid(BufferedImage bufferedImage){
+    public: bool isImageValid(BufferedImage bufferedImage){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public log(){
+    public: void log(){
 
-    avoidVector: Vector = this.getAvoidVector()!;;
+    Vector avoidVector = this->getAvoidVector();;
     
 
-    size: int32_t = avoidVector!.length!;;
+    int32_t size = avoidVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    avoidRectangle: Rectangle = avoidVector!.get(index) as Rectangle;;
+    Rectangle avoidRectangle = avoidVector.get(index) as Rectangle;;
     
-this.logUtil!.putF("Avoid Rectangle: " +avoidRectangle, this, "log");
+this->logUtil.putF("Avoid Rectangle: " +avoidRectangle, this, "log");
     
 }
 

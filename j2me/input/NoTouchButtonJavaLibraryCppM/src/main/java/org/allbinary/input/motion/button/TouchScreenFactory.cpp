@@ -44,62 +44,59 @@
 class TouchScreenFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: TouchScreenFactory = new TouchScreenFactory();
+    private: static const TouchScreenFactory SINGLETON = TouchScreenFactory();
 
-    public static TouchScreenFactory getInstance(){
+    public: static TouchScreenFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenFactory.SINGLETON;
+                        return TouchScreenFactory::SINGLETON;
     
 }
 
 
-    private: multiTouch: bool= false;
+    private: bool multiTouch= false;
 
-    private: touch: bool= false;
+    private: bool touch= false;
 
-    private: touchScreenType: TouchScreenType = TouchScreenTypesFactory.getInstance()!.NOTOUCH;
+    private: TouchScreenType touchScreenType = TouchScreenTypesFactory::getInstance().NOTOUCH;
 
-private constructor (){
-
-            super();
-        }
+private: TouchScreenFactory(){
+}
 
 
-    public bool isMultiTouch(){
+    public: bool isMultiTouch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.multiTouch;
+                        return this->multiTouch;
     
 }
 
 
-    public setTouch(bool touch){
+    public: void setTouch(bool touch){
 }
 
 
-    public bool isTouch(){
+    public: bool isTouch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touch;
+                        return this->touch;
     
 }
 
 
-    public TouchScreenType getTouchScreenType(){
+    public: TouchScreenType getTouchScreenType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.touchScreenType;
+                        return this->touchScreenType;
     
 }
 

@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationRobotChangeListener {
-        
 
-    onAdd(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
+    void onAdd(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
 
-    onRemove(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
+    void onRemove(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
 
 };
 

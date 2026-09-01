@@ -60,70 +60,67 @@
 class AbstractInputRobot
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: helpSet: HelpSet;
+    private: HelpSet helpSet;
 
-public constructor (HelpSet helpSet){
-
-            super();
-        this.setHelpSet(helpSet);
+public: AbstractInputRobot(HelpSet helpSet){
+this->setHelpSet(helpSet);
     
 }
 
 
-    public HelpSet getHelpSet(){
+    public: HelpSet getHelpSet(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.helpSet;
+                        return this->helpSet;
     
 }
 
 
-    public mouseMove(Point point){
-this.mouseMove(point.x, point.y);
+    public: void mouseMove(Point point){
+this->mouseMove(point.x, point.y);
     
-this.logUtil!.putF("Moved Mouse To: x: " +point.x +" y: " +point.y, this, "moveMouse");
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y){
-
-    point: Point = PointHelper.getCenterPoint(rectangle)!;;
-    
-this.mouseMove(point.x +x, point.y +y);
-    
-this.logUtil!.putF("Moved Mouse To: x: " +point.x +" y: " +point.y +" in the middle of: " +rectangle, this, "moveMouseToTarget");
+this->logUtil.putF("Moved Mouse To: x: " +point.x +" y: " +point.y, this, "moveMouse");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public mouseMoveToTarget(Rectangle rectangle){
-this.mouseMoveToTarget(rectangle, 0, 0);
+    public: void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y){
+
+    Point point = PointHelper::getCenterPoint(rectangle);;
+    
+this->mouseMove(point.x +x, point.y +y);
+    
+this->logUtil.putF("Moved Mouse To: x: " +point.x +" y: " +point.y +" in the middle of: " +rectangle, this, "moveMouseToTarget");
     
 }
 
 
-    public mouseMove(Integer x, Integer y){
+                //@Throws(Exception.constructor)
+            
+    public: void mouseMoveToTarget(Rectangle rectangle){
+this->mouseMoveToTarget(rectangle, 0, 0);
+    
+}
+
+
+    public: void mouseMove(Integer x, Integer y){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    setHelpSet(HelpSet helpSet){
-this.helpSet= helpSet;
+    private: void setHelpSet(HelpSet helpSet){
+this->helpSet= helpSet;
     
 }
 

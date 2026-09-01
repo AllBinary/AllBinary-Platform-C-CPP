@@ -59,72 +59,69 @@
 class Group
             : public Object
         : public GroupInterface {
-        
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const teamId: int16_t;
+    private: int16_t teamId;
 
-    private: string: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string teamName, int16_t teamId){
-
-            super();
-        this.teamId= teamId;
+public: Group(std::string teamName, int16_t teamId){
+this->teamId= teamId;
     
-this.setName(teamName);
+this->setName(teamName);
     
 }
 
 
-    public string getGroupName(){
+    public: std::string getGroupName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 
-    groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;;
+    GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(groupCommonFactory!.GROUP_NAME_LABEL);
+stringBuffer.append(groupCommonFactory.GROUP_NAME_LABEL);
     
-stringBuffer!.append(this.name);
+stringBuffer.append(this->name);
     
-stringBuffer!.append(groupCommonFactory!.ID_LABEL);
+stringBuffer.append(groupCommonFactory.ID_LABEL);
     
-stringBuffer!.appendshort(this.teamId);
+stringBuffer.appendshort(this->teamId);
     
-this.string= stringBuffer!.toString();
+this->string= stringBuffer.toString();
     
 }
 
 
-    public int16_t getGroupId(){
+    public: int16_t getGroupId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.teamId;
+                        return this->teamId;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.string;
+                        return this->string;
     
 }
 

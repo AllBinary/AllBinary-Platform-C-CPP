@@ -54,38 +54,37 @@
 class AnimationFrameToImageUtil
             : public Object
          {
-        
 
-    private: static const instance: AnimationFrameToImageUtil = new AnimationFrameToImageUtil();
+    private: static AnimationFrameToImageUtil instance() { return AnimationFrameToImageUtil(); }
 
-    public static AnimationFrameToImageUtil getInstance(){
+    public: static AnimationFrameToImageUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnimationFrameToImageUtil.instance;
+                        return AnimationFrameToImageUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image getInstanceTranslate(int32_t width, int32_t height, Animation animationInterface){
+    public: Image getInstanceTranslate(int32_t width, int32_t height, Animation animationInterface){
 
-    image: Image = GameFeatureImageCacheFactory.getInstance()!.get(AnimationFrameToImageUtil.instance.constructor.name.toString()!, ((width *3)>>1), ((height *3)>>1))!;;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString()!, ((width *3)>>1), ((height *3)>>1));;
     
 
-    graphics: Graphics = image.getGraphics()!;;
+    Graphics graphics = image.getGraphics();;
     
 
-    tranlateX: int32_t = (width>>2);;
+    int32_t tranlateX = (width>>2);;
     
 
-    tranlateY: int32_t = (height>>2);;
+    int32_t tranlateY = (height>>2);;
     
 graphics.translate(tranlateX, tranlateY);
     
-animationInterface!.paintXY(graphics, 0, 0);
+animationInterface.paintXY(graphics, 0, 0);
     
 graphics.translate( -tranlateX,  -tranlateY);
     
@@ -100,14 +99,14 @@ graphics.translate( -tranlateX,  -tranlateY);
 
                 //@Throws(Exception.constructor)
             
-    public Image getInstanceWH(int32_t width, int32_t height, Animation animationInterface){
+    public: Image getInstanceWH(int32_t width, int32_t height, Animation animationInterface){
 
-    image: Image = GameFeatureImageCacheFactory.getInstance()!.get(AnimationFrameToImageUtil.instance.constructor.name.toString()!, width, height)!;;
+    Image image = GameFeatureImageCacheFactory::getInstance().get(AnimationFrameToImageUtil::instance.constructor.name.toString()!, width, height);;
     
 
-    graphics: Graphics = image.getGraphics()!;;
+    Graphics graphics = image.getGraphics();;
     
-animationInterface!.paintXY(graphics, 0, 0);
+animationInterface.paintXY(graphics, 0, 0);
     
 
 

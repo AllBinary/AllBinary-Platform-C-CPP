@@ -70,34 +70,33 @@
         #include "ShowVirtualKeyboardRunnable.h"
 #include "HideVirtualKeyboardRunnable.h"
 
-class VirtualKeyboardAPI3: public VirtualKeyboard: public VirtualKeyboardEventListenerInterface {
-        
+class VirtualKeyboardAPI3: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
 
-    public static MAX_API: int32_t = Integer.MAX_VALUE;
+    public: static int32_t MAX_API = Integer::MAX_VALUE;
 
-    public static MIN_API: int32_t = 3;
+    public: static int32_t MIN_API = 3;
 
-    private: virtualKeyboard: bool= false;
+    private: bool virtualKeyboard= false;
 
-    private: activity: Activity;
+    private: Activity activity;
 
-    private: const showVirtualKeyboardRunnable: Runnable;
+    private: Runnable showVirtualKeyboardRunnable;
 
-    private: const hideVirtualKeyboardRunnable: Runnable;
+    private: Runnable hideVirtualKeyboardRunnable;
 
-public constructor (Activity activity);
+public: VirtualKeyboardAPI3(Activity activity);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent);
 
-    public forceHide();
+    public: void forceHide();
 
-    public hide();
+    public: void hide();
 
-    showVirtualKeyboard();
+    private: void showVirtualKeyboard();
 
-    hideVirtualKeyboard();
+    private: void hideVirtualKeyboard();
 
 };
 

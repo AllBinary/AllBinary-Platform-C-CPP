@@ -55,9 +55,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScrollOverXImmediateYStopAI: public BasicAI {
-        
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: ScrollOverXImmediateYStopAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(ownerLayerInterface, gameInput);
                     
 
@@ -68,45 +67,45 @@ public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-    ownerLayerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!;;
+    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    x: int32_t = ownerLayerInterface!.getXP()!;;
+    int32_t x = ownerLayerInterface.getXP();;
     
 
-    y: int32_t = ownerLayerInterface!.getYP()!;;
+    int32_t y = ownerLayerInterface.getYP();;
     
 
-    x2: int32_t = ownerLayerInterface!.getX2()!;;
+    int32_t x2 = ownerLayerInterface.getX2();;
     
 
-    y2: int32_t = ownerLayerInterface!.getY2()!;;
+    int32_t y2 = ownerLayerInterface.getY2();;
     
 
-    width: int32_t = ownerLayerInterface!.getWidth()!;;
+    int32_t width = ownerLayerInterface.getWidth();;
     
 
-    height: int32_t = ownerLayerInterface!.getHeight()!;;
+    int32_t height = ownerLayerInterface.getHeight();;
     
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-                        if(x2 > displayInfo!.getLastWidth())
+                        if(x2 > displayInfo.getLastWidth())
                         
                                     {
-                                    ownerLayerInterface!.setPosition(0, y, ownerLayerInterface!.getZP());
+                                    ownerLayerInterface.setPosition(0, y, ownerLayerInterface.getZP());
     
 
                                     }
                                 
 
-                        if(y2 > displayInfo!.getLastHeight())
+                        if(y2 > displayInfo.getLastHeight())
                         
                                     {
-                                    ownerLayerInterface!.setPosition(x, displayInfo!.getLastHeight() -height, ownerLayerInterface!.getZP());
+                                    ownerLayerInterface.setPosition(x, displayInfo.getLastHeight() -height, ownerLayerInterface.getZP());
     
 
                                     }
@@ -115,7 +114,7 @@ public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
                         if(x < 0)
                         
                                     {
-                                    ownerLayerInterface!.setPosition(displayInfo!.getLastWidth() -width, y, ownerLayerInterface!.getZP());
+                                    ownerLayerInterface.setPosition(displayInfo.getLastWidth() -width, y, ownerLayerInterface.getZP());
     
 
                                     }
@@ -124,7 +123,7 @@ public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
                         if(y < 0)
                         
                                     {
-                                    ownerLayerInterface!.setPosition(x, 0, ownerLayerInterface!.getZP());
+                                    ownerLayerInterface.setPosition(x, 0, ownerLayerInterface.getZP());
     
 
                                     }

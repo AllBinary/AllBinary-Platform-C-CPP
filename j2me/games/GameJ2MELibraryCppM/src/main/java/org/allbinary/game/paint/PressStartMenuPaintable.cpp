@@ -73,48 +73,45 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class PressStartMenuPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class PressStartMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const PRESS_START: string = "Press Screen To Start";
+    private: const std::string PRESS_START = "Press Screen To Start";
 
-    private: const KEY_START: string = "Press or Click F2 To Begin";
+    private: const std::string KEY_START = "Press or Click F2 To Begin";
 
-    private: const MENU_START: string = "Press Start From The Menu To Begin";
+    private: const std::string MENU_START = "Press Start From The Menu To Begin";
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: startString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string startString = StringUtil::getInstance().EMPTY_STRING;
 
-    private: timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(1100);
+    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(1100);
 
-    private: flash: bool= false;
+    private: bool flash= false;
 
-public constructor (){
+public: PressStartMenuPaintable(){
 
-            super();
-        
-                        if(TouchScreenFactory.getInstance()!.isTouch())
+                        if(TouchScreenFactory::getInstance().isTouch())
                         
                                     {
-                                    this.startString= this.PRESS_START;
+                                    this->startString= this->PRESS_START;
     
 
                                     }
                                 
                              else 
-                        if(AppletUtil.isAppletLoader(this))
+                        if(AppletUtil::isAppletLoader(this))
                         
                                     {
-                                    this.startString= this.KEY_START;
+                                    this->startString= this->KEY_START;
     
 
                                     }
                                 
                         else {
-                            this.startString= this.MENU_START;
+                            this->startString= this->MENU_START;
     
 
                         }
@@ -122,41 +119,41 @@ public constructor (){
 }
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: beginWidth: int32_t= 0;
+    private: int32_t beginWidth= 0;
 
-    private: line: int32_t= 0;
+    private: int32_t line= 0;
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.beginWidth= (graphics.getFont()!.stringWidth(this.startString)>>1);
+this->beginWidth= (graphics.getFont().stringWidth(this->startString)>>1);
     
-this.line= (4 *MyFontProcessor.defaultCharWidth(font)) +(font.getHeight()>>1);
+this->line= (4 *MyFontProcessor::defaultCharWidth(font)) +(font.getHeight()>>1);
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-                        if(this.timeDelayHelper!.isTimeTNT())
+                        if(this->timeDelayHelper.isTimeTNT())
                         
                                     {
                                     
-                        if(this.isFlash())
+                        if(this->isFlash())
                         
                                     {
-                                    this.setFlash(false);
+                                    this->setFlash(false);
     
 
                                     }
                                 
                         else {
-                            this.setFlash(true);
+                            this->setFlash(true);
     
 
                         }
@@ -165,12 +162,12 @@ this.myFontProcessor= MyFontProcessor.getInstance();
                                     }
                                 
 
-                        if(this.isFlash())
+                        if(this->isFlash())
                         
                                     {
-                                    this.myFontProcessor!.process(graphics);
+                                    this->myFontProcessor.process(graphics);
     
-graphics.drawString(this.startString, displayInfo!.getLastHalfWidth() -beginWidth, displayInfo!.getLastHeight() -line, this.anchor);
+graphics.drawString(this->startString, displayInfo.getLastHalfWidth() -beginWidth, displayInfo.getLastHeight() -line, this->anchor);
     
 
                                     }
@@ -178,18 +175,18 @@ graphics.drawString(this.startString, displayInfo!.getLastHalfWidth() -beginWidt
 }
 
 
-    setFlash(bool flash){
-this.flash= flash;
+    private: void setFlash(bool flash){
+this->flash= flash;
     
 }
 
 
-    bool isFlash(){
+    private: bool isFlash(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.flash;
+                        return this->flash;
     
 }
 

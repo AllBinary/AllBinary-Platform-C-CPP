@@ -64,23 +64,22 @@
 class SmallInsert
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: fileName: string;
+    private: std::string fileName;
 
-    private: string: string;
+    private: std::string string;
 
-public constructor (string fileName);
+public: SmallInsert(std::string fileName);
 
-    public bool atBeginning(string text);
+    public: bool atBeginning(std::string text);
 
-    public bool after(string text, string after);
+    public: bool after(std::string text, std::string after);
 
-    public bool atEnd(string text);
+    public: bool atEnd(std::string text);
 
 };
 

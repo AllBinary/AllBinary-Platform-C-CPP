@@ -48,13 +48,12 @@
         #include "AllBinaryGameCanvas.h"
 
 class GameCanvasNonBotPaintable: public Paintable {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: GameCanvasNonBotPaintable(AllBinaryGameCanvas gameCanvas);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

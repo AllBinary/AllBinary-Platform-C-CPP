@@ -44,10 +44,9 @@
         #include "TransformInfo.h"
 #include "TransformInfoInterface.h"
 
-class CustomTransformInfo: public TransformInfo: public TransformInfoInterface {
-        
+class CustomTransformInfo: public TransformInfo, public TransformInfoInterface {
 
-public constructor (string outputTypeName, string inputOutputTypeName, string inputOutputTypeFile, string name, string objectFileName, string objectConfigFileName, string templateFileName, string dataFileName);
+public: CustomTransformInfo(std::string outputTypeName, std::string inputOutputTypeName, std::string inputOutputTypeFile, std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName);
 
 };
 

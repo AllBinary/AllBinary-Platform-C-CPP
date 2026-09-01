@@ -67,27 +67,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CustomLoaderTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: webappPath: string;
+    private: std::string webappPath;
 
-public constructor ();
+public: CustomLoaderTag();
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public setWebappPath(string value);
+    public: void setWebappPath(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    setCustomLoaderWebappPath();
+    private: void setCustomLoaderWebappPath();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

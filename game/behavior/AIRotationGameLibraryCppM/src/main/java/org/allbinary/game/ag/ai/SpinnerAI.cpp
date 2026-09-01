@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -55,41 +57,40 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SpinnerAI: public BasicAI {
-        
 
-    private: isEven: bool= false;
+    private: bool isEven= false;
 
-    private: direction: std::vector<int32_t>;
+    private: std::vector<int32_t> direction;
 
-public constructor (std::vector<int32_t> direction, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: SpinnerAI(std::vector<int32_t> direction, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.direction= direction;
+this->direction= direction;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-                        if(this.isEven)
+                        if(this->isEven)
                         
                                     {
-                                    super.processKeyAI(this.direction[0]!);
+                                    super.processKeyAI(this->direction[0]!);
     
-this.isEven= false;
+this->isEven= false;
     
 
                                     }
                                 
                         else {
-                            super.processKeyAI(Canvas.KEY_NUM1);
+                            super.processKeyAI(Canvas::KEY_NUM1);
     
-this.isEven= true;
+this->isEven= true;
     
 
                         }

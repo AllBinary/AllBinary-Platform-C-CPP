@@ -48,19 +48,18 @@
 class CacheType
             : public Object
          {
-        
 
-    private: const vendor: string;
+    private: std::string vendor;
 
-    private: const type: string;
+    private: std::string type;
 
-public constructor (string vendor, string type);
+public: CacheType(std::string vendor, std::string type);
 
-    public string getVendor();
+    public: std::string getVendor();
 
-    public string getType();
+    public: std::string getType();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

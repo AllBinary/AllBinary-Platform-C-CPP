@@ -42,35 +42,32 @@
 class TransformInfosData
             : public Object
          {
-        
 
-    private: static const instance: TransformInfosData = new TransformInfosData();
+    private: static TransformInfosData instance() { return TransformInfosData(); }
 
-    public static TransformInfosData getInstance(){
+    public: static TransformInfosData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfosData.instance;
+                        return TransformInfosData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfosData(){
+}
 
 
-    public const NAME: string = "TRANSFORM_INFOS_NAME";
+    public: const std::string NAME = "TRANSFORM_INFOS_NAME";
 
-    public const GROUP: string = "TRANSFORM_INFOS_GROUP";
+    public: const std::string GROUP = "TRANSFORM_INFOS_GROUP";
 
-    public const ALL: string = "TRANSFORM_INFOS_ALL";
+    public: const std::string ALL = "TRANSFORM_INFOS_ALL";
 
-    public const PREVIEW: string = "TRANSFORM_INFOS_PREVIEW";
+    public: const std::string PREVIEW = "TRANSFORM_INFOS_PREVIEW";
 
-    public const SMALL_PREVIEW: string = "TRANSFORM_INFOS_SMALL_PREVIEW";
+    public: const std::string SMALL_PREVIEW = "TRANSFORM_INFOS_SMALL_PREVIEW";
 
 };
 

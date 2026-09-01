@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_INDEPENDENTVECTOREXPLOSIONROTATIONANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -62,27 +64,26 @@
 class IndependentVectorExplosionRotationAnimationFactory
             : public Object
         : public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: framePoints: std::vector<std::vector<std::vector<int32_t>>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> framePoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    private: vectorInfo: VectorInfo;
+    private: VectorInfo vectorInfo;
 
-    private: basicColor: BasicColor;
+    private: BasicColor basicColor;
 
-    private: vectorAnimationFactoryInterface: VectorAnimationFactoryInterface;
+    private: VectorAnimationFactoryInterface vectorAnimationFactoryInterface;
 
-public constructor (VectorInfo vectorInfo, BasicColor basicColor, VectorAnimationFactoryInterface vectorAnimationFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    init();
-
-    private: const vectorExplosionGenerator: VectorExplosionGenerator = VectorExplosionGenerator.getInstance()!;
+public: IndependentVectorExplosionRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, VectorAnimationFactoryInterface vectorAnimationFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    protected: void init();
+
+    private: const VectorExplosionGenerator vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
+
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
 
 };
 

@@ -57,17 +57,16 @@
 class OrderHistoryHelperFactory
             : public Object
          {
-        
 
-    private: static const CLASSNAME: string = "taghelpers.OrderHistoryHelper";
+    private: static const std::string CLASSNAME = "taghelpers.OrderHistoryHelper";
 
-    private: static const FACTORYNAME: string = "taghelpers.OrderHistoryHelperFactory";
+    private: static const std::string FACTORYNAME = "taghelpers.OrderHistoryHelperFactory";
 
                 //@Throws(LicensingException.constructor)
             
-    public static any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: static Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
-private constructor ();
+private: OrderHistoryHelperFactory();
 
 };
 

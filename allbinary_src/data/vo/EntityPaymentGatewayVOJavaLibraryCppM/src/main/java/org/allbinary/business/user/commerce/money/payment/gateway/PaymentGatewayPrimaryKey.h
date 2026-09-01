@@ -55,24 +55,23 @@
 
 class PaymentGatewayPrimaryKey
             : public Object
-        : public java.io.Serializable {
-        
+        : public java::io::Serializable {
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string storeName, string gatewayName);
+public: PaymentGatewayPrimaryKey(std::string storeName, std::string gatewayName);
 
-    public string getStoreName();
+    public: std::string getStoreName();
 
-    public setStoreName(string storeName);
+    public: void setStoreName(std::string storeName);
 
-    public string getName();
+    public: std::string getName();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

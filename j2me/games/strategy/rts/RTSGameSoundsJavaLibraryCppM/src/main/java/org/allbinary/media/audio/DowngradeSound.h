@@ -46,13 +46,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DowngradeSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new DowngradeSound();
+    private: static Sound soundInterface = DowngradeSound();
 
-    public static Sound getInstance();
+    public: static Sound getInstance();
 
-private constructor ();
+private: DowngradeSound();
 
 };
 

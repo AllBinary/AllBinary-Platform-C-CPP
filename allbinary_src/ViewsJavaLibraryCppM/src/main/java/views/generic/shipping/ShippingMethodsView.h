@@ -107,24 +107,23 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class ShippingMethodsView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class ShippingMethodsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: shippingMethods: ShippingMethods;
+    private: ShippingMethods shippingMethods;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: ShippingMethodsView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public addDomNodeInterfaces();
+    public: void addDomNodeInterfaces();
 
-    public string view();
+    public: std::string view();
 
 };
 

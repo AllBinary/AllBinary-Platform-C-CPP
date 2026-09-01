@@ -46,13 +46,12 @@
 class MotionGestureConfigurationFactory
             : public Object
          {
-        
 
-    private: static config: MotionGestureConfiguration = new MotionGestureConfiguration();
+    private: static MotionGestureConfiguration config = MotionGestureConfiguration();
 
-    public static MotionGestureConfiguration getInstance();
+    public: static MotionGestureConfiguration getInstance();
 
-public constructor ();
+public: MotionGestureConfigurationFactory();
 
 };
 

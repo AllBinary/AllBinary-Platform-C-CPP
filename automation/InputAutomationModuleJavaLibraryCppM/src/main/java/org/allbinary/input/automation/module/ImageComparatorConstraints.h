@@ -72,39 +72,38 @@
 class ImageComparatorConstraints
             : public Object
         : public ImageComparatorConstraintsInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: avoidVector: Vector;
+    private: Vector avoidVector;
 
-    private: maxNonMatchingPixelDeltas: int32_t= 0;
+    private: int32_t maxNonMatchingPixelDeltas= 0;
 
-    private: doImageComparisonEveryNthFrame: int32_t;
+    private: int32_t doImageComparisonEveryNthFrame;
 
-public constructor (int32_t doImageComparisonEveryNthFrame);
+public: ImageComparatorConstraints(int32_t doImageComparisonEveryNthFrame);
 
-    public Vector getAvoidVector();
+    public: Vector getAvoidVector();
 
-    public bool isColorAllowed(int32_t frame, GPoint point, Color color);
+    public: bool isColorAllowed(int32_t frame, GPoint point, Color color);
 
-    public bool isCollisionWithAvoidRectangles(Rectangle rectangle);
+    public: bool isCollisionWithAvoidRectangles(Rectangle rectangle);
 
-    public bool isCollisionWithAvoidRectangles(GPoint point);
+    public: bool isCollisionWithAvoidRectangles(GPoint point);
 
-    public setAvoidVector(Vector avoidVector);
+    public: void setAvoidVector(Vector avoidVector);
 
-    public int32_t getMaxNonMatchingPixelDeltas();
+    public: int32_t getMaxNonMatchingPixelDeltas();
 
-    public setMaxNonMatchingPixelDeltas(int32_t maxNonMatchingPixelDeltas);
+    public: void setMaxNonMatchingPixelDeltas(int32_t maxNonMatchingPixelDeltas);
 
-    public bool isFrameAllowed(int32_t frame);
+    public: bool isFrameAllowed(int32_t frame);
 
                 //@Throws(Exception.constructor)
             
-    public bool isImageValid(BufferedImage bufferedImage);
+    public: bool isImageValid(BufferedImage bufferedImage);
 
-    public log();
+    public: void log();
 
 };
 

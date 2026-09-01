@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11EXTIMAGE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL11EXTIMAGE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -77,21 +79,20 @@
         #include "OpenGLESImage.h"
 //Many devices don't support this even though it is supposed to
 class OpenGLESGL11ExtImage: public OpenGLESImage {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: a: int32_t= 0;
+    private: int32_t a= 0;
 
-    private: const rectangle: std::vector<int32_t>;
+    private: std::vector<int32_t> rectangle;
 
-public constructor (Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+public: OpenGLESGL11ExtImage(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
 
-    public set(GL gl);
+    public: void set(GL gl);
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z);
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z);
 
 };
 

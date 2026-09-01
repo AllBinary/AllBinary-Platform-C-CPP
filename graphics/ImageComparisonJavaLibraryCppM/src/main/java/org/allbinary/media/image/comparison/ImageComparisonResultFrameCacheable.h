@@ -54,25 +54,24 @@
 class ImageComparisonResultFrameCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: frame: Long;
+    private: Long frame;
 
-    private: imageComparisonResult: ImageComparisonResult;
+    private: ImageComparisonResult imageComparisonResult;
 
-public constructor (ImageComparisonResult imageComparisonResult, Long frame);
+public: ImageComparisonResultFrameCacheable(ImageComparisonResult imageComparisonResult, Long frame);
 
-    public any getKey();
+    public: Object* getKey();
 
-    public Long getFrame();
+    public: Long getFrame();
 
-    public setFrame(Long frame);
+    public: void setFrame(Long frame);
 
-    public ImageComparisonResult getImageComparisonResult();
+    public: ImageComparisonResult getImageComparisonResult();
 
-    public setImageComparisonResult(ImageComparisonResult imageComparisonResult);
+    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

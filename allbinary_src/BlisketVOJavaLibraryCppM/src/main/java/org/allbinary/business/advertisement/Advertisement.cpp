@@ -58,242 +58,239 @@
 class Advertisement
             : public Object
         : public AdvertisementInterface {
-        
 
-    private: artist: string;
+    private: std::string artist;
 
-    private: artistLink: string;
+    private: std::string artistLink;
 
-    private: title: string;
+    private: std::string title;
 
-    private: dateAdded: string;
+    private: std::string dateAdded;
 
-    private: directory: string;
+    private: std::string directory;
 
-    private: framedLink: string;
+    private: std::string framedLink;
 
-    private: rank: int32_t= 0;
+    private: int32_t rank= 0;
 
-    private: listPrice: Money;
+    private: Money listPrice;
 
-    private: ourPrice: Money;
+    private: Money ourPrice;
 
-    private: image: AdvertisementImageInterface;
+    private: AdvertisementImageInterface image;
 
-    private: product: AdvertisementProductInterface;
+    private: AdvertisementProductInterface product;
 
-    private: thumbnail: AdvertisementThumbnailInterface;
+    private: AdvertisementThumbnailInterface thumbnail;
 
-    private: const displayInBrowserContraintsInterface: DisplayInBrowserContraintsInterface;
+    private: DisplayInBrowserContraintsInterface displayInBrowserContraintsInterface;
 
-public constructor (){
-
-            super();
-        this.displayInBrowserContraintsInterface= 
+public: Advertisement(){
+this->displayInBrowserContraintsInterface= 
                                         nullptr
                                     ;
     
 }
 
 
-    public string getArtist(){
+    public: std::string getArtist(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.artist;
+                        return this->artist;
     
 }
 
 
-    public setArtist(string artist){
-this.artist= artist;
+    public: void setArtist(std::string artist){
+this->artist= artist;
     
 }
 
 
-    public string getArtistLink(){
+    public: std::string getArtistLink(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.artistLink;
+                        return this->artistLink;
     
 }
 
 
-    public setArtistLink(string artistLink){
-this.artistLink= artistLink;
+    public: void setArtistLink(std::string artistLink){
+this->artistLink= artistLink;
     
 }
 
 
-    public string getTitle(){
+    public: std::string getTitle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.title;
+                        return this->title;
     
 }
 
 
-    public setTitle(string title){
-this.title= title;
+    public: void setTitle(std::string title){
+this->title= title;
     
 }
 
 
-    public string getDateAdded(){
+    public: std::string getDateAdded(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dateAdded;
+                        return this->dateAdded;
     
 }
 
 
-    public setDateAdded(string dateAdded){
-this.dateAdded= dateAdded;
+    public: void setDateAdded(std::string dateAdded){
+this->dateAdded= dateAdded;
     
 }
 
 
-    public string getDirectory(){
+    public: std::string getDirectory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directory;
+                        return this->directory;
     
 }
 
 
-    public setDirectory(string directory){
-this.directory= directory;
+    public: void setDirectory(std::string directory){
+this->directory= directory;
     
 }
 
 
-    public string getFramedLink(){
+    public: std::string getFramedLink(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.framedLink;
+                        return this->framedLink;
     
 }
 
 
-    public setFramedLink(string framedLink){
-this.framedLink= framedLink;
+    public: void setFramedLink(std::string framedLink){
+this->framedLink= framedLink;
     
 }
 
 
-    public Money getListPrice(){
+    public: Money getListPrice(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.listPrice;
+                        return this->listPrice;
     
 }
 
 
-    public setListPrice(Money listPrice){
-this.listPrice= listPrice;
+    public: void setListPrice(Money listPrice){
+this->listPrice= listPrice;
     
 }
 
 
-    public Money getOurPrice(){
+    public: Money getOurPrice(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ourPrice;
+                        return this->ourPrice;
     
 }
 
 
-    public setOurPrice(Money ourPrice){
-this.ourPrice= ourPrice;
+    public: void setOurPrice(Money ourPrice){
+this->ourPrice= ourPrice;
     
 }
 
 
-    public int32_t getRank(){
+    public: int32_t getRank(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rank;
+                        return this->rank;
     
 }
 
 
-    public setRank(int32_t rank){
-this.rank= rank;
+    public: void setRank(int32_t rank){
+this->rank= rank;
     
 }
 
 
-    public AdvertisementImageInterface getImage(){
+    public: AdvertisementImageInterface getImage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.image;
+                        return this->image;
     
 }
 
 
-    public setImage(AdvertisementImageInterface image){
-this.image= image;
+    public: void setImage(AdvertisementImageInterface image){
+this->image= image;
     
 }
 
 
-    public AdvertisementProductInterface getProduct(){
+    public: AdvertisementProductInterface getProduct(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.product;
+                        return this->product;
     
 }
 
 
-    public setProduct(AdvertisementProductInterface product){
-this.product= product;
+    public: void setProduct(AdvertisementProductInterface product){
+this->product= product;
     
 }
 
 
-    public AdvertisementThumbnailInterface getThumbnail(){
+    public: AdvertisementThumbnailInterface getThumbnail(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.thumbnail;
+                        return this->thumbnail;
     
 }
 
 
-    public setThumbnail(AdvertisementThumbnailInterface thumbnail){
-this.thumbnail= thumbnail;
+    public: void setThumbnail(AdvertisementThumbnailInterface thumbnail){
+this->thumbnail= thumbnail;
     
 }
 
 
-    public DisplayInBrowserContraintsInterface getDisplayInBrowserContraintsInterface(){
+    public: DisplayInBrowserContraintsInterface getDisplayInBrowserContraintsInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.displayInBrowserContraintsInterface;
+                        return this->displayInBrowserContraintsInterface;
     
 }
 

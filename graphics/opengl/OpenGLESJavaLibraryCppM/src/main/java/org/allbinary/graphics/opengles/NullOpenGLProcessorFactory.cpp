@@ -29,16 +29,15 @@
 class NullOpenGLProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLProcessor = new OpenGLProcessor();
+    private: static OpenGLProcessor instance() { return OpenGLProcessor(); }
 
-    public static OpenGLProcessor getInstance(){
+    public: static OpenGLProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullOpenGLProcessorFactory.instance;
+                        return NullOpenGLProcessorFactory::instance();
     
 }
 

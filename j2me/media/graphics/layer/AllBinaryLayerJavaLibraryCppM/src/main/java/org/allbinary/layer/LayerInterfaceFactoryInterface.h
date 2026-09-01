@@ -47,7 +47,6 @@
         #include "AllBinaryLayer.h"
 
 class LayerInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

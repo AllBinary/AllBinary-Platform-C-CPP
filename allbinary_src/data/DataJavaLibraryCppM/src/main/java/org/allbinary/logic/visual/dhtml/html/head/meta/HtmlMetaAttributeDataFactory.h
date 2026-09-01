@@ -46,19 +46,18 @@
 class HtmlMetaAttributeDataFactory
             : public Object
          {
-        
 
-    private: static const instance: HtmlMetaAttributeDataFactory = new HtmlMetaAttributeDataFactory();
+    private: static HtmlMetaAttributeDataFactory instance() { return HtmlMetaAttributeDataFactory(); }
 
-    public static HtmlMetaAttributeDataFactory getInstance();
+    public: static HtmlMetaAttributeDataFactory getInstance();
 
-private constructor ();
+private: HtmlMetaAttributeDataFactory();
 
-    public NAME: HtmlMetaAttributeData = new HtmlMetaAttributeData(0, "HTMLMETA_ATTRIBUTE_NAME");
+    public: HtmlMetaAttributeData NAME = HtmlMetaAttributeData(0, "HTMLMETA_ATTRIBUTE_NAME");
 
-    public HTTP_EQUIV: HtmlMetaAttributeData = new HtmlMetaAttributeData(1, "HTMLMETA_ATTRIBUTE_HTTPEQUIV");
+    public: HtmlMetaAttributeData HTTP_EQUIV = HtmlMetaAttributeData(1, "HTMLMETA_ATTRIBUTE_HTTPEQUIV");
 
-    public CONTENT: HtmlMetaAttributeData = new HtmlMetaAttributeData(2, "HTMLMETA_ATTRIBUTE_CONTENT");
+    public: HtmlMetaAttributeData CONTENT = HtmlMetaAttributeData(2, "HTMLMETA_ATTRIBUTE_CONTENT");
 
 };
 

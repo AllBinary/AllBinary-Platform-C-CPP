@@ -57,49 +57,46 @@
 class OperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: OperatingSystemFactory = new OperatingSystemFactory();
+    private: static OperatingSystemFactory instance() { return OperatingSystemFactory(); }
 
-    public static OperatingSystemFactory getInstance(){
+    public: static OperatingSystemFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OperatingSystemFactory.instance;
+                        return OperatingSystemFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: genericOperatingSystem: GenericOperatingSystem = NoOperatingSystem.NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem genericOperatingSystem = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-private constructor (){
-
-            super();
-        }
+private: OperatingSystemFactory(){
+}
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public GenericOperatingSystem getOperatingSystemInstance(){
+    public: GenericOperatingSystem getOperatingSystemInstance(){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    osString: string = new StringMaker().append("OperatingSystem Info: ")!.append(this.genericOperatingSystem!.toString())!.toString()!;;
+    std::string osString = StringMaker().append("OperatingSystem Info: ").append(this->genericOperatingSystem.toString()).toString();;
     
 console.log(osString);
     
-this.logUtil!.putF(osString, this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF(osString, this, commonStrings.GET_INSTANCE);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 }
 

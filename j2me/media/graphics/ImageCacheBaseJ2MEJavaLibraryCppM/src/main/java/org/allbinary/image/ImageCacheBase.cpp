@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -77,39 +79,36 @@
 class ImageCacheBase
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const imageFactory: ImageFactory = ImageFactory.getInstance()!;
+    protected: const ImageFactory imageFactory = ImageFactory::getInstance();
 
-    const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    protected: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    const SIZE: int32_t = 128;
+    protected: const int32_t SIZE = 128;
 
-    const widths: std::vector<int32_t> = new Array(this.SIZE);
+    protected: const std::vector<int32_t> widths = new Array(this->SIZE);
 
-    const heights: std::vector<int32_t> = new Array(this.SIZE);
+    protected: const std::vector<int32_t> heights = new Array(this->SIZE);
 
-    const listOfList: std::vector<BasicArrayList> = new Array(this.SIZE);
+    protected: const std::vector<BasicArrayList> listOfList = new Array(this->SIZE);
 
-    const availableListOfList: std::vector<BasicArrayList> = new Array(this.SIZE);
+    protected: const std::vector<BasicArrayList> availableListOfList = new Array(this->SIZE);
 
-    volume: int32_t = 0;
+    protected: int32_t volume = 0;
 
-    nextIndex: int32_t = 0;
+    protected: int32_t nextIndex = 0;
 
-public constructor (){
+public: ImageCacheBase(){
 
-            super();
-        
 
 
 
                         for (
-    index: int32_t = this.listOfList!.length -1;index >= 0; index--)
+    int32_t index = this->listOfList.size() -1;index >= 0; index--)
         {
-this.listOfList[index]= new BasicArrayListD();
+this->listOfList[index]= BasicArrayListD();
     
 }
 
@@ -118,22 +117,22 @@ this.listOfList[index]= new BasicArrayListD();
 
 
                         for (
-    index: int32_t = this.availableListOfList!.length -1;index >= 0; index--)
+    int32_t index = this->availableListOfList.size() -1;index >= 0; index--)
         {
-this.availableListOfList[index]= new BasicArrayListD();
+this->availableListOfList[index]= BasicArrayListD();
     
 }
 
 }
 
 
-    Image getImage(any = {} resourceId){
+    protected: Image getImage(Object* resourceId){
 
-    imageCanBeNull: any = this.hashtable.get(resourceId);;
+    Object* imageCanBeNull = this->hashtable.get(resourceId);;
     
 
                         if(imageCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -141,7 +140,7 @@ this.availableListOfList[index]= new BasicArrayListD();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullImage.NULL_IMAGE;
+                        return NullImage::NULL_IMAGE;
     
 
                                     }
@@ -155,42 +154,41 @@ this.availableListOfList[index]= new BasicArrayListD();
 }
 
 
-    public releaseAll(){
+    public: void releaseAll(){
 
 
 
 
                         for (
-    index: int32_t = this.listOfList!.length -1;index >= 0; index--)
+    int32_t index = this->listOfList.size() -1;index >= 0; index--)
         {
-this.availableListOfList[index]!.clear();
+this->availableListOfList[index]!.clear();
     
-this.availableListOfList[index]!.addAllList(this.listOfList[index]!);
-    
-}
-
-this.logUtil!.putF(new StringMaker().append("ImageCache: ")!.append(this.toString())!.toString(), this, "releaseAll");
+this->availableListOfList[index]!.addAllList(this->listOfList[index]!);
     
 }
 
+this->logUtil.putF(StringMaker().append("ImageCache: ").append(this->toString()).toString(), this, "releaseAll");
+    
+}
 
-    int32_t getIndexWH(int32_t width, int32_t height){
 
-    foundIndex: int32_t =  -1;;
+    protected: int32_t getIndexWH(int32_t width, int32_t height){
+
+    int32_t foundIndex =  -1;;
     
 
-    size: int32_t = this.widths.length
-                ;;
+    int32_t size = this->widths.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-                        if(this.widths[index] == width && this.heights[index] == height)
+                        if(this->widths[index] == width && this->heights[index] == height)
                         
                                     {
                                     foundIndex= index;
@@ -215,17 +213,17 @@ this.logUtil!.putF(new StringMaker().append("ImageCache: ")!.append(this.toStrin
 }
 
 
-    Image getFromAvailable(int32_t foundIndex, int32_t width, int32_t height){
+    protected: Image getFromAvailable(int32_t foundIndex, int32_t width, int32_t height){
 
                         if(foundIndex !=  -1)
                         
                                     {
                                     
-                        if(this.availableListOfList[foundIndex]!.size() > 0)
+                        if(this->availableListOfList[foundIndex]!.size() > 0)
                         
                                     {
                                     
-    list: BasicArrayList = this.availableListOfList[foundIndex]!;;
+    BasicArrayList list = this->availableListOfList[foundIndex];;
     
 
 
@@ -243,97 +241,97 @@ this.logUtil!.putF(new StringMaker().append("ImageCache: ")!.append(this.toStrin
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullImage.NULL_IMAGE;
+                        return NullImage::NULL_IMAGE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image get(string caller, int32_t width, int32_t height){
+    public: Image get(std::string caller, int32_t width, int32_t height){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image getWithKey(any = {} key){
+    public: Image getWithKey(Object* key){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Image createImage(string caller, int32_t width, int32_t height){
+    protected: Image createImage(std::string caller, int32_t width, int32_t height){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageFactory!.createImage(caller, width, height);;
+                        return this->imageFactory.createImage(caller, width, height);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Image createImageFromInputStream(any = {} key, InputStream inputStream){
+    protected: Image createImageFromInputStream(Object* key, InputStream inputStream){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageFactory!.createImageFromInputStream(key, inputStream);;
+                        return this->imageFactory.createImageFromInputStream(key, inputStream);;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
 
 
 
                         for (
-    index: int32_t = this.nextIndex -1;index >= 0; index--)
+    int32_t index = this->nextIndex -1;index >= 0; index--)
         {
 
-    width: int32_t = this.widths[index]!;;
+    int32_t width = this->widths[index];;
     
 
-    height: int32_t = this.heights[index]!;;
+    int32_t height = this->heights[index];;
     
 
-    total: int32_t = this.listOfList[index]!.size()!;;
+    int32_t total = this->listOfList[index]!.size();;
     
 
-    totalAvailable: int32_t = this.availableListOfList[index]!.size()!;;
+    int32_t totalAvailable = this->availableListOfList[index]!.size();;
     
-stringBuffer!.append(" w: ");
+stringBuffer.append(" w: ");
     
-stringBuffer!.appendint(width);
+stringBuffer.appendint(width);
     
-stringBuffer!.append(" h: ");
+stringBuffer.append(" h: ");
     
-stringBuffer!.appendint(height);
+stringBuffer.appendint(height);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(CommonLabels.getInstance()!.TOTAL_LABEL);
+stringBuffer.append(CommonLabels::getInstance().TOTAL_LABEL);
     
-stringBuffer!.appendint(total);
+stringBuffer.appendint(total);
     
-stringBuffer!.append(" available: ");
+stringBuffer.append(" available: ");
     
-stringBuffer!.appendint(totalAvailable);
+stringBuffer.appendint(totalAvailable);
     
 }
 
@@ -341,26 +339,26 @@ stringBuffer!.appendint(totalAvailable);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public Hashtable<any, any> getHashtableP(){
+    public: Hashtable<any, any> getHashtableP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable;
+                        return this->hashtable;
     
 }
 
 
-    public init(Image image){
+    public: void init(Image image){
 }
 
 
-    public initProgress(){
+    public: void initProgress(){
 }
 
 

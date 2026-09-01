@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -62,78 +64,75 @@
 class ImageScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageScaleUtil = new ImageScaleUtil();
+    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
 
-    public static ImageScaleUtil getInstance(){
+    public: static ImageScaleUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil.instance;
+                        return ImageScaleUtil::instance();
     
 }
 
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    private: const imageJ2SEUtil: ImageJ2SEUtil = ImageJ2SEUtil.getInstance()!;
+    private: const ImageJ2SEUtil imageJ2SEUtil = ImageJ2SEUtil::getInstance();
 
-    private: const imageCreationUtil: ImageCreationUtil = ImageCreationUtil.getInstance()!;
+    private: const ImageCreationUtil imageCreationUtil = ImageCreationUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageScaleUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
+    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
+                        return this->createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
+    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
 
-    width: int32_t = originalImage!.getWidth()!;;
+    int32_t width = originalImage.getWidth();;
     
 
-    height: int32_t = originalImage!.getHeight()!;;
+    int32_t height = originalImage.getHeight();;
     
 
-    scaleX: float = scaleNominatorX /scaleDenominatorX;;
+    float scaleX = scaleNominatorX /scaleDenominatorX;;
     
 
-    scaleY: float = scaleNominatorY /scaleDenominatorY;;
+    float scaleY = scaleNominatorY /scaleDenominatorY;;
     
 
-    image: Image;;
+    Image image;;
     
 
                         if(cached)
                         
                                     {
-                                    image= imageCache!.get(this.constructor.name.toString()!, static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
+                                    image= imageCache.get(this->constructor.name.toString()!, static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
     
 
                                     }
                                 
                         else {
-                            image= imageCache!.get("createImage", static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
+                            image= imageCache.get("createImage", static_cast<int32_t>((width *scaleX)), static_cast<int32_t>((height *scaleY)));
     
 
                         }
                             
-this.scale(originalImage, image, scaleX, scaleY, true);
+this->scale(originalImage, image, scaleX, scaleY, true);
     
 
 
@@ -146,41 +145,41 @@ this.scale(originalImage, image, scaleX, scaleY, true);
 
                 //@Throws(Exception.constructor)
             
-    public scale2(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
+    public: void scale2(Image originalImage, std::vector<Image> originalImageArray, std::vector<Image> ximageToShowArray, int32_t unused, float scaleX, float scaleY, float maxScaleX, float maxScaleY){
 
-                        if(maxScaleX *originalImage!.getWidth() > originalImageArray[0]!.getWidth() || maxScaleY *originalImage!.getHeight() > originalImageArray[0]!.getHeight())
+                        if(maxScaleX *originalImage.getWidth() > originalImageArray[0]!.getWidth() || maxScaleY *originalImage.getHeight() > originalImageArray[0]!.getHeight())
                         
                                     {
-                                    originalImageArray[0]= this.imageCreationUtil!.createImage(originalImage!.getWidth(), originalImage!.getHeight(), maxScaleX, maxScaleY);
+                                    originalImageArray[0]= this->imageCreationUtil.createImage(originalImage.getWidth(), originalImage.getHeight(), maxScaleX, maxScaleY);
     
 
                                     }
                                 
-this.scale(originalImage, originalImageArray[0]!, scaleX, scaleY, false);
+this->scale(originalImage, originalImageArray[0]!, scaleX, scaleY, false);
     
 }
 
 
-    public scale(Image originalImage, Image newMaxSizeImage, float scaleX, float scaleY, bool clear){
+    public: void scale(Image originalImage, Image newMaxSizeImage, float scaleX, float scaleY, bool clear){
 
-    bufferedImage: BufferedImage = this.imageUtil!.getBufferedImage(originalImage)!;;
+    BufferedImage bufferedImage = this->imageUtil.getBufferedImage(originalImage);;
     
 
-    newBufferedImage: BufferedImage = this.imageUtil!.getBufferedImage(newMaxSizeImage)!;;
+    BufferedImage newBufferedImage = this->imageUtil.getBufferedImage(newMaxSizeImage);;
     
 
-    at: AffineTransform = AffineTransform.getScaleInstance(scaleX, scaleY)!;;
+    AffineTransform at = AffineTransform::getScaleInstance(scaleX, scaleY);;
     
 
-    g: Graphics2D = newBufferedImage!.createGraphics()!;;
+    Graphics2D g = newBufferedImage.createGraphics();;
     
 
                         if(clear)
                         
                                     {
-                                    g.setBackground(this.imageJ2SEUtil!.TRANSPARENT_COLOR);
+                                    g.setBackground(this->imageJ2SEUtil.TRANSPARENT_COLOR);
     
-g.clearRect(0, 0, newBufferedImage!.getWidth(), newBufferedImage!.getHeight());
+g.clearRect(0, 0, newBufferedImage.getWidth(), newBufferedImage.getHeight());
     
 
                                     }

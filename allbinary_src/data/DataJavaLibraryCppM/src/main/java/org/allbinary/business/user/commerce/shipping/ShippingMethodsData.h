@@ -45,25 +45,24 @@
 class ShippingMethodsData
             : public Object
          {
-        
 
-    public static const SHIPPINGMETHODSORDERSUMMARIES: string = "SHIPPINGMETHODS_ORDERSUMMARIES";
+    public: static const std::string SHIPPINGMETHODSORDERSUMMARIES = "SHIPPINGMETHODS_ORDERSUMMARIES";
 
-    public static const SHIPPINGMETHODORDERSUMMARY: string = "SHIPPINGMETHOD_ORDERSUMMARY";
+    public: static const std::string SHIPPINGMETHODORDERSUMMARY = "SHIPPINGMETHOD_ORDERSUMMARY";
 
-    public static const SHIPPINGMETHODS: string = "SHIPPINGMETHODS";
+    public: static const std::string SHIPPINGMETHODS = "SHIPPINGMETHODS";
 
-    public static const NAME: string = "SHIPPINGMETHODS_NAME";
+    public: static const std::string NAME = "SHIPPINGMETHODS_NAME";
 
-    public static const SHIPPINGCOST: string = "SHIPPINGMETHOD_SHIPPINGCOST";
+    public: static const std::string SHIPPINGCOST = "SHIPPINGMETHOD_SHIPPINGCOST";
 
-    public static const TAXRATE: string = "SHIPPINGMETHOD_TAXRATE";
+    public: static const std::string TAXRATE = "SHIPPINGMETHOD_TAXRATE";
 
-    public static const SUBTOTAL: string = "SHIPPINGMETHOD_SUBTOTAL";
+    public: static const std::string SUBTOTAL = "SHIPPINGMETHOD_SUBTOTAL";
 
-    public static const TAX: string = "SHIPPINGMETHOD_TAX";
+    public: static const std::string TAX = "SHIPPINGMETHOD_TAX";
 
-    public static const TOTAL: string = "SHIPPINGMETHOD_TOTAL";
+    public: static const std::string TOTAL = "SHIPPINGMETHOD_TOTAL";
 
 };
 

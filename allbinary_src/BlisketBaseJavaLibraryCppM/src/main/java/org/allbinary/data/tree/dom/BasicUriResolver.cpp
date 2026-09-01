@@ -81,78 +81,75 @@
 class BasicUriResolver
             : public Object
         : public URIResolver {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const uriResolverStrings: URIResolverStrings = URIResolverStrings.getInstance()!;
+    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: extension: string;
+    private: std::string extension;
 
-public constructor (string extension){
-
-            super();
-        this.extension= extension;
+public: BasicUriResolver(std::string extension){
+this->extension= extension;
     
 }
 
 
-    public string getExtension(){
+    public: std::string getExtension(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.extension;
+                        return this->extension;
     
 }
 
 
                 //@Throws(TransformerException.constructor)
             
-    public Source resolve(string href, string base){
+    public: Source resolve(std::string href, std::string base){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(href);
-    
-
-    abPath: AbPath = new AbFilePath(stringBuffer!.toString()) as AbPath;;
+stringBuffer.append(href);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XMLLOGGING))
+    AbPath abPath = AbFilePath(stringBuffer.toString()) as AbPath;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(this.uriResolverStrings!.ATTEMPT);
+stringBuffer.append(this->uriResolverStrings.ATTEMPT);
     
-stringBuffer!.append(href);
+stringBuffer.append(href);
     
-stringBuffer!.append(this.uriResolverStrings!.BASE);
+stringBuffer.append(this->uriResolverStrings.BASE);
     
-stringBuffer!.append(base);
+stringBuffer.append(base);
     
-stringBuffer!.append(this.uriResolverStrings!.NEW_PATH);
+stringBuffer.append(this->uriResolverStrings.NEW_PATH);
     
-stringBuffer!.append(abPath!.toString());
+stringBuffer.append(abPath.toString());
     
-stringBuffer!.append(this.uriResolverStrings!.NOTE);
+stringBuffer.append(this->uriResolverStrings.NOTE);
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(this.uriResolverStrings!.URL_GLOBAL);
+stringBuffer.append(this->uriResolverStrings.URL_GLOBAL);
     
-stringBuffer!.append(this.uriResolverStrings!.REQUIRED_EXTENSION);
+stringBuffer.append(this->uriResolverStrings.REQUIRED_EXTENSION);
     
-stringBuffer!.append(this.extension);
+stringBuffer.append(this->extension);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.uriResolverStrings!.RESOLVE);
+this->logUtil.putF(stringBuffer.toString(), this, this->uriResolverStrings.RESOLVE);
     
 
                                     }
@@ -161,7 +158,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.uriResolverStrings!.RESO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StreamSource(new CryptFileReader(TransformInfoTemplateData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoTemplateData.getInstance()!.ENCRYPTED_EXTENSION).getInputStream(abPath));
+                        return StreamSource(CryptFileReader(TransformInfoTemplateData::getInstance().UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION).getInputStream(abPath));
     
 
                 //: 
@@ -180,30 +177,30 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.uriResolverStrings!.RESO
 
 
 
-                            throw new TransformerException(e);
+                            throw TransformerException(e);
                     
 }
 */
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(this.uriResolverStrings!.IMPORT_URL);
+stringBuffer.append(this->uriResolverStrings.IMPORT_URL);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 

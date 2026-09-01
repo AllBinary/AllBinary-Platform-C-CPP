@@ -62,34 +62,33 @@
 class GraphicsAnalysisUtil
             : public Object
          {
-        
 
-    private: static const MAX: int32_t = 122;
+    private: static const int32_t MAX = 122;
 
                 //@Throws(Exception.constructor)
             
-    public static double getNominator(BufferedImage bufferedImage, Integer min_x, Integer max_x, Integer y){
+    public: static double getNominator(BufferedImage bufferedImage, Integer min_x, Integer max_x, Integer y){
 
 
 
 
                         for (
-    index: int32_t = max_x.intValue()!;index > min_x.intValue(); )
+    int32_t index = max_x.intValue();index > min_x.intValue(); )
         {
 
-    colorInteger: Integer = Integer.valueOf(bufferedImage!.getRGB(index, y.intValue()))!;;
+    Integer colorInteger = Integer::valueOf(bufferedImage.getRGB(index, y.intValue()));;
     
 
-    automaticCacheInterface: AutomaticCacheInterface = ColorCacheFactory.getInstance()!;;
+    AutomaticCacheInterface automaticCacheInterface = ColorCacheFactory::getInstance();;
     
 
-    colorCacheable: ColorCacheable = automaticCacheInterface!.get(colorInteger) as ColorCacheable;;
+    ColorCacheable colorCacheable = automaticCacheInterface.get(colorInteger) as ColorCacheable;;
     
 
-    color: Color = colorCacheable!.getColor()!;;
+    Color color = colorCacheable.getColor();;
     
 
-                        if(color.getRed() < GraphicsAnalysisUtil.MAX && color.getGreen() < GraphicsAnalysisUtil.MAX && color.getBlue() < GraphicsAnalysisUtil.MAX)
+                        if(color.getRed() < GraphicsAnalysisUtil::MAX && color.getGreen() < GraphicsAnalysisUtil::MAX && color.getBlue() < GraphicsAnalysisUtil::MAX)
                         
                                     {
                                     
@@ -116,10 +115,8 @@ class GraphicsAnalysisUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GraphicsAnalysisUtil(){
+}
 
 
 };

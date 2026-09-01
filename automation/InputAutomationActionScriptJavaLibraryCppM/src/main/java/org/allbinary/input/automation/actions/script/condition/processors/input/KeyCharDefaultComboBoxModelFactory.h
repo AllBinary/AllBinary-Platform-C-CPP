@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYCHARDEFAULTCOMBOBOXMODELFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYCHARDEFAULTCOMBOBOXMODELFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Character.h"
@@ -60,11 +62,10 @@
 class KeyCharDefaultComboBoxModelFactory
             : public Object
          {
-        
 
-    public static DefaultComboBoxModel getInstance();
+    public: static DefaultComboBoxModel getInstance();
 
-private constructor ();
+private: KeyCharDefaultComboBoxModelFactory();
 
 };
 

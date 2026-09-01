@@ -75,59 +75,58 @@
 class AssignWaypointsUtil
             : public Object
          {
-        
 
-    private: static const instance: AssignWaypointsUtil = new AssignWaypointsUtil();
+    private: static AssignWaypointsUtil instance() { return AssignWaypointsUtil(); }
 
-    public static AssignWaypointsUtil getInstance(){
+    public: static AssignWaypointsUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AssignWaypointsUtil.instance;
+                        return AssignWaypointsUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const WAYPOINT_EVENT: RTSLayerEvent = new RTSLayerEvent(NullPathFindingLayer.NULL_PATH_FINDING_LAYER);
+    private: const RTSLayerEvent WAYPOINT_EVENT = RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
 
-    public set(UnitLayer unitLayer, AdvancedRTSGameLayer ownerAdvancedRTSGameLayer){
+    public: void set(UnitLayer unitLayer, AdvancedRTSGameLayer ownerAdvancedRTSGameLayer){
 
         try {
             
-    list: BasicArrayList = ownerAdvancedRTSGameLayer!.getWaypointBehavior()!.getOwnedWaypointList()!;;
+    BasicArrayList list = ownerAdvancedRTSGameLayer.getWaypointBehavior().getOwnedWaypointList();;
     
 
-    unitWaypointBehavior: UnitWaypointBehavior = unitLayer!.getWaypointBehavior() as UnitWaypointBehavior;;
+    UnitWaypointBehavior unitWaypointBehavior = unitLayer.getWaypointBehavior() as UnitWaypointBehavior;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    waypointLayer: RTSLayer = list.get(index) as RTSLayer;;
+    RTSLayer waypointLayer = list.get(index) as RTSLayer;;
     
-this.WAYPOINT_EVENT.setRtsLayer(waypointLayer);
+this->WAYPOINT_EVENT.setRtsLayer(waypointLayer);
     
-unitWaypointBehavior!.onWaypointEvent(this.WAYPOINT_EVENT);
+unitWaypointBehavior.onWaypointEvent(this->WAYPOINT_EVENT);
     
 }
 
 
-    waypointLayer: PathFindingLayerInterface = PrimaryWaypointHelper.getInstance()!.getWaypointLayer()!;;
+    PathFindingLayerInterface waypointLayer = PrimaryWaypointHelper::getInstance().getWaypointLayer();;
     
 
-                        if(waypointLayer != NullPathFindingLayer.NULL_PATH_FINDING_LAYER)
+                        if(waypointLayer != NullPathFindingLayer::NULL_PATH_FINDING_LAYER)
                         
                                     {
-                                    this.WAYPOINT_EVENT.setRtsLayer(waypointLayer);
+                                    this->WAYPOINT_EVENT.setRtsLayer(waypointLayer);
     
-unitWaypointBehavior!.onWaypointEvent(this.WAYPOINT_EVENT);
+unitWaypointBehavior.onWaypointEvent(this->WAYPOINT_EVENT);
     
 
                                     }
@@ -137,9 +136,9 @@ unitWaypointBehavior!.onWaypointEvent(this.WAYPOINT_EVENT);
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "set", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "set", e);
     
 }
 

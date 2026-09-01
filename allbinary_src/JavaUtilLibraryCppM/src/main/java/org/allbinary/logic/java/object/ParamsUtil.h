@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_PARAMSUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_ANYTYPE_PARAMSUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -50,11 +52,10 @@
 class ParamsUtil
             : public Object
          {
-        
 
-    public static string viewParams(std::vector<Function> params);
+    public: static std::string viewParams(std::vector<Function> params);
 
-private constructor ();
+private: ParamsUtil();
 
 };
 

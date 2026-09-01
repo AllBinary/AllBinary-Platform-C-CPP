@@ -53,26 +53,23 @@
 class LogHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.LogHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.LogHelper";
 
-    private: static const FACTORYNAME: string = "LogelperFactory";
+    private: static const std::string FACTORYNAME = "LogelperFactory";
 
-public constructor (){
-
-            super();
-        }
+public: LogHelperFactory(){
+}
 
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext){
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HelperFactory.getInstance(FACTORYNAME, CLASSNAME, hashMap, pageContext);;
+                        return HelperFactory::getInstance(FACTORYNAME, CLASSNAME, hashMap, pageContext);;
     
 }
 

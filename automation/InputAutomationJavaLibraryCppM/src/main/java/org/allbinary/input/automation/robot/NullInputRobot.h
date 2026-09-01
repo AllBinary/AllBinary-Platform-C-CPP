@@ -66,52 +66,51 @@
 #include "Rectangle.h"
 #include "Color.h"
 
-class NullInputRobot: public AbstractInputRobot: public InputRobotInterface {
-        
+class NullInputRobot: public AbstractInputRobot, public InputRobotInterface {
 
-    public static const LIBRARY_NAME: string = "null";
+    public: static const std::string LIBRARY_NAME = "null";
 
-    public static const NAME: string = "NULL";
+    public: static const std::string NAME = "NULL";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: NullInputRobot();
 
-    public string getName();
+    public: std::string getName();
 
-    public HelpSet getHelpSet();
+    public: HelpSet getHelpSet();
 
-    public Point getMousePoint();
+    public: Point getMousePoint();
 
-    public keyPress(Integer keycode);
+    public: void keyPress(Integer keycode);
 
-    public keyRelease(Integer keycode);
+    public: void keyRelease(Integer keycode);
 
-    public mouseMove(Integer x, Integer y);
+    public: void mouseMove(Integer x, Integer y);
 
-    public mousePress(Integer buttons);
+    public: void mousePress(Integer buttons);
 
-    public mouseRelease(Integer buttons);
+    public: void mouseRelease(Integer buttons);
 
-    public BufferedImage createScreenCapture(Rectangle screenRect);
+    public: BufferedImage createScreenCapture(Rectangle screenRect);
 
-    public delay(Integer ms);
+    public: void delay(Integer ms);
 
-    public Integer getAutoDelay();
+    public: Integer getAutoDelay();
 
-    public Color getPixelColor(Integer x, Integer y);
+    public: Color getPixelColor(Integer x, Integer y);
 
-    public bool isAutoWaitForIdle();
+    public: bool isAutoWaitForIdle();
 
-    public mouseWheel(Integer wheelAmt);
+    public: void mouseWheel(Integer wheelAmt);
 
-    public setAutoDelay(Integer ms);
+    public: void setAutoDelay(Integer ms);
 
-    public setAutoWaitForIdle(bool isOn);
+    public: void setAutoWaitForIdle(bool isOn);
 
-    public string toString();
+    public: std::string toString();
 
-    public waitForIdle();
+    public: void waitForIdle();
 
 };
 

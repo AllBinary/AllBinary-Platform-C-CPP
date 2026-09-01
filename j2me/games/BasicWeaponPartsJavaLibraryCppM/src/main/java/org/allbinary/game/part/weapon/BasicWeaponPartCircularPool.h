@@ -61,20 +61,19 @@
 class BasicWeaponPartCircularPool
             : public Object
          {
-        
 
-    public static const NULL_BASIC_WEAPON_PART_CIRCULAR_POOL: BasicWeaponPartCircularPool = new BasicWeaponPartCircularPool();
+    public: static const BasicWeaponPartCircularPool NULL_BASIC_WEAPON_PART_CIRCULAR_POOL = BasicWeaponPartCircularPool();
 
-    private: basicWeaponPart: BasicWeaponPart = BasicWeaponPart.NULL_BASIC_WEAPON_PART;
+    private: BasicWeaponPart basicWeaponPart = BasicWeaponPart::NULL_BASIC_WEAPON_PART;
 
                 //@Throws(Exception.constructor)
             
-    public init(BasicWeaponPartFactoryInterface basicWeaponPartFactoryInterface);
+    public: void init(BasicWeaponPartFactoryInterface basicWeaponPartFactoryInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public BasicWeaponPart getInstance(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
+    public: BasicWeaponPart getInstance(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
 
 };
 

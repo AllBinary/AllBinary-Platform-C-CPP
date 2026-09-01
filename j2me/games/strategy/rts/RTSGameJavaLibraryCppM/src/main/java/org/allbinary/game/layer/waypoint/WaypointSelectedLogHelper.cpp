@@ -69,196 +69,197 @@
         #include "WaypointLogHelper.h"
 
 class WaypointSelectedLogHelper: public WaypointLogHelper {
-        
 
-    private: static const instanceC: WaypointSelectedLogHelper = new WaypointSelectedLogHelper();
+    private: static const WaypointSelectedLogHelper instanceC = WaypointSelectedLogHelper();
 
-    public static WaypointSelectedLogHelper getInstance(){
+    public: static WaypointSelectedLogHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointSelectedLogHelper.instanceC;
+                        return WaypointSelectedLogHelper::instanceC;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    public onWaypointEvent(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
+    public: void onWaypointEvent(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(associatedAdvancedRTSGameLayer!.getName());
+stringBuffer.append(associatedAdvancedRTSGameLayer.getName());
     
-stringBuffer!.append(" onWaypointEvent: ");
+stringBuffer.append(" onWaypointEvent: ");
     
-stringBuffer!.append(advancedRTSGameLayer!.getName());
+stringBuffer.append(advancedRTSGameLayer.getName());
     
 
-                        if(advancedRTSGameLayer!.getParentLayer() != 
-                                    null
+                        if(advancedRTSGameLayer.getParentLayer() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(" With Parent: ");
+                                    stringBuffer.append(" With Parent: ");
     
-stringBuffer!.append(advancedRTSGameLayer!.getParentLayer()!.getName());
+stringBuffer.append(advancedRTSGameLayer.getParentLayer().getName());
     
 
                                     }
                                 
-this.logUtil!.putF(stringBuffer!.toString(), this, "onWaypointEvent");
+this->logUtil.putF(stringBuffer.toString(), this, "onWaypointEvent");
     
 }
 
 
-    public addWaypointFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
+    public: void addWaypointFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(associatedAdvancedRTSGameLayer!.getName());
+stringBuffer.append(associatedAdvancedRTSGameLayer.getName());
     
-stringBuffer!.append(" Adding Waypoint: ");
+stringBuffer.append(" Adding Waypoint: ");
     
-stringBuffer!.append(advancedRTSGameLayer!.getName());
+stringBuffer.append(advancedRTSGameLayer.getName());
     
 
-                        if(advancedRTSGameLayer!.getParentLayer() != 
-                                    null
+                        if(advancedRTSGameLayer.getParentLayer() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(" With Parent: ");
+                                    stringBuffer.append(" With Parent: ");
     
-stringBuffer!.append(advancedRTSGameLayer!.getParentLayer()!.getName());
+stringBuffer.append(advancedRTSGameLayer.getParentLayer().getName());
     
 
                                     }
                                 
-this.logUtil!.putF(stringBuffer!.toString(), this, "selected: onWaypointEvent");
+this->logUtil.putF(stringBuffer.toString(), this, "selected: onWaypointEvent");
     
 }
 
 
-    public addWaypointFromBuildingList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer, BasicArrayList list){
+    public: void addWaypointFromBuildingList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer, BasicArrayList list){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(associatedAdvancedRTSGameLayer!.getName());
+stringBuffer.append(associatedAdvancedRTSGameLayer.getName());
     
-stringBuffer!.append(" Waypoints: ");
+stringBuffer.append(" Waypoints: ");
     
-stringBuffer!.append(this.stringUtil!.toString(list));
+stringBuffer.append(this->stringUtil.toString(list));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "selected: onWaypointEvent");
+this->logUtil.putF(stringBuffer.toString(), this, "selected: onWaypointEvent");
     
 }
 
 
-    public insertWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, string waypointName){
+    public: void insertWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, std::string waypointName){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(associatedAdvancedRTSGameLayer!.getName());
+stringBuffer.append(associatedAdvancedRTSGameLayer.getName());
     
-stringBuffer!.append(this.commonSeps!.SPACE);
+stringBuffer.append(this->commonSeps.SPACE);
     
-stringBuffer!.append(waypointName);
+stringBuffer.append(waypointName);
     
-stringBuffer!.append(" Insert: ");
+stringBuffer.append(" Insert: ");
     
-stringBuffer!.append(rtsLayer!.getName());
+stringBuffer.append(rtsLayer.getName());
     
-stringBuffer!.append(" for Waypoint: ");
+stringBuffer.append(" for Waypoint: ");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "selected: insertWaypoint");
+this->logUtil.putF(stringBuffer.toString(), this, "selected: insertWaypoint");
     
 }
 
 
-    public insertWaypointList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, string waypointName, BasicArrayList list){
+    public: void insertWaypointList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, std::string waypointName, BasicArrayList list){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(associatedAdvancedRTSGameLayer!.getName());
+stringBuffer.append(associatedAdvancedRTSGameLayer.getName());
     
-stringBuffer!.append(this.commonSeps!.SPACE);
+stringBuffer.append(this->commonSeps.SPACE);
     
-stringBuffer!.append(waypointName);
+stringBuffer.append(waypointName);
     
-stringBuffer!.append(" Insert: ");
+stringBuffer.append(" Insert: ");
     
-stringBuffer!.append(rtsLayer!.getName());
+stringBuffer.append(rtsLayer.getName());
     
-stringBuffer!.append(" Waypoints: ");
+stringBuffer.append(" Waypoints: ");
     
-stringBuffer!.append(this.stringUtil!.toString(list));
+stringBuffer.append(this->stringUtil.toString(list));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "selected: insertWaypoint");
+this->logUtil.putF(stringBuffer.toString(), this, "selected: insertWaypoint");
     
 }
 
 
-    public setRandomGeographicMapCellHistoryList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, BasicArrayList pathsList){
+    public: void setRandomGeographicMapCellHistoryList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, BasicArrayList pathsList){
 
-    size: int32_t = pathsList!.size()!;;
+    int32_t size = pathsList.size();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(associatedAdvancedRTSGameLayer!.getName());
+stringBuffer.append(associatedAdvancedRTSGameLayer.getName());
     
-stringBuffer!.append(this.commonSeps!.SPACE);
+stringBuffer.append(this->commonSeps.SPACE);
     
-stringBuffer!.append(CommonLabels.getInstance()!.START);
+stringBuffer.append(CommonLabels::getInstance().START);
     
-stringBuffer!.appendint(size);
+stringBuffer.appendint(size);
     
-stringBuffer!.append(" -> ");
+stringBuffer.append(" -> ");
     
-stringBuffer!.append(this.stringUtil!.toString(pathsList));
+stringBuffer.append(this->stringUtil.toString(pathsList));
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "selected: setRandomGeographicMapCellHistory");
+this->logUtil.putF(stringBuffer.toString(), this, "selected: setRandomGeographicMapCellHistory");
     
 }
 
 
-    public moveAwayFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
-this.logUtil!.putF(new StringMaker().append(associatedAdvancedRTSGameLayer!.getName())!.append(" Trying to move away from building")!.toString(), this, "selected: moveAwayFromBuilding");
+    public: void moveAwayFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
+this->logUtil.putF(StringMaker().append(associatedAdvancedRTSGameLayer.getName()).append(" Trying to move away from building").toString(), this, "selected: moveAwayFromBuilding");
     
 }
 
 
-    public needToMove(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior){
-this.logUtil!.putF(new StringMaker().append(associatedAdvancedRTSGameLayer!.getName())!.append(unitWaypointBehavior!.getMovementLogicAsString())!.toString(), this, "needToMove");
+    public: void needToMove(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior){
+this->logUtil.putF(StringMaker().append(associatedAdvancedRTSGameLayer.getName()).append(unitWaypointBehavior.getMovementLogicAsString()).toString(), this, "needToMove");
     
 }
 
 
-    public setRandomGeographicMapCellHistory(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
-this.logUtil!.putF(new StringMaker().append(associatedAdvancedRTSGameLayer!.getName())!.append(" pathsList is null")!.toString(), this, "setRandomGeographicMapCellHistory");
+    public: void setRandomGeographicMapCellHistory(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
+this->logUtil.putF(StringMaker().append(associatedAdvancedRTSGameLayer.getName()).append(" pathsList is null").toString(), this, "setRandomGeographicMapCellHistory");
     
 }
 
 
-    public setCurrentPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingCurrentPathGeographicMapCellPosition, GeographicMapCellPosition currentPathGeographicMapCellPosition){
+    public: void setCurrentPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingCurrentPathGeographicMapCellPosition, GeographicMapCellPosition currentPathGeographicMapCellPosition){
 
                         if(existingCurrentPathGeographicMapCellPosition == 
-                                    null
+                                    nullptr
                                 )
-                        this.logUtil!.putF(new StringMaker().append(associatedAdvancedRTSGameLayer!.getName())!.append(" currentPathGeographicMapCellPosition: ")!.append(this.stringUtil!.toString(currentPathGeographicMapCellPosition))!.toString(), this, "setCurrentPathGeographicMapCellPosition")
+                        this->logUtil.putF(StringMaker().append(associatedAdvancedRTSGameLayer.getName()).append(" currentPathGeographicMapCellPosition: ").append(this->stringUtil.toString(currentPathGeographicMapCellPosition)).toString(), this, "setCurrentPathGeographicMapCellPosition");
+                                
 }
 
 
-    public setNextUnvisitedPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingNextUnvisitedPathGeographicMapCellPosition, GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition){
+    public: void setNextUnvisitedPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingNextUnvisitedPathGeographicMapCellPosition, GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition){
 
                         if(existingNextUnvisitedPathGeographicMapCellPosition != nextUnvisitedPathGeographicMapCellPosition)
-                        this.logUtil!.putF(new StringMaker().append(associatedAdvancedRTSGameLayer!.getName())!.append(" nextUnvisitedPathGeographicMapCellPosition: ")!.append(this.stringUtil!.toString(nextUnvisitedPathGeographicMapCellPosition))!.toString(), this, "setNextUnvisitedPathGeographicMapCellPosition")
+                        this->logUtil.putF(StringMaker().append(associatedAdvancedRTSGameLayer.getName()).append(" nextUnvisitedPathGeographicMapCellPosition: ").append(this->stringUtil.toString(nextUnvisitedPathGeographicMapCellPosition)).toString(), this, "setNextUnvisitedPathGeographicMapCellPosition");
+                                
 }
 
 

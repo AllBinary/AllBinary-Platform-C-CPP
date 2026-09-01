@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -94,46 +96,45 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TextChangeListener.h"
 
-class TextAnimation: public IndexedAnimation: public UpdateMyFontInterface {
-        
+class TextAnimation: public IndexedAnimation, public UpdateMyFontInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    textArrayP: std::vector<string> = StringUtil.getInstance()!.ONE_EMPTY_STRING_ARRAY;
+    protected: std::vector<std::string> textArrayP = StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-    private: offsetY: int32_t = 0;
+    private: int32_t offsetY = 0;
 
-    private: textChangeListener: TextChangeListener = TextChangeListener.getInstance()!;
+    private: TextChangeListener textChangeListener = TextChangeListener::getInstance();
 
-public constructor (string text, AnimationBehavior animationBehavior){
+public: TextAnimation(std::string text, AnimationBehavior animationBehavior){
             super(animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setText(text);
+this->setText(text);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.fontHeight= font.getHeight();
+this->fontHeight= font.getHeight();
     
 
-    adjustedFontHeight: int32_t = static_cast<int32_t>( -(this.fontHeight *2.00));;
+    int32_t adjustedFontHeight = static_cast<int32_t>( -(this->fontHeight *2.00));;
     
-this.offsetY= SWTJOGLProcessor.getInstance()!.isJOGL()
+this->offsetY= SWTJOGLProcessor::getInstance().isJOGL()
                         ?       
                                 adjustedFontHeight
                                 :
@@ -142,76 +143,73 @@ this.offsetY= SWTJOGLProcessor.getInstance()!.isJOGL()
 
     ;
     
-this.textChangeListener!.onMeasure();
+this->textChangeListener.onMeasure();
     
-this.textChangeListener= TextChangeListener.getInstance();
+this->textChangeListener= TextChangeListener::getInstance();
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.myFontProcessor!.process(graphics);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->myFontProcessor.process(graphics);
     
-this.paintXYNoUpdate(graphics, x, y);
+this->paintXYNoUpdate(graphics, x, y);
     
 }
 
 
-    public paintXYNoUpdate(Graphics graphics, int32_t x, int32_t y){
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+    public: void paintXYNoUpdate(Graphics graphics, int32_t x, int32_t y){
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
 
-    size: int32_t = this.textArrayP!.length
-                ;;
+    int32_t size = this->textArrayP.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this.textArrayP[index]!, x, y +this.offsetY +(index *this.fontHeight), this.anchor);
+graphics.drawString(this->textArrayP[index]!, x, y +this->offsetY +(index *this->fontHeight), this->anchor);
     
 }
 
 }
 
 
-    public setTextWithOnMeasure(string text, TextChangeListener textChangeListener){
-this.setText(text);
+    public: void setTextWithOnMeasure(std::string text, TextChangeListener textChangeListener){
+this->setText(text);
     
-this.textChangeListener= textChangeListener;
+this->textChangeListener= textChangeListener;
     
 }
 
 
-    public setText(string text){
+    public: void setText(std::string text){
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-                        if(text != 
-                                    null
-                                 && text.length > 0)
+                        if(true && text.size() > 0)
                         
                                     {
                                     
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    startIndex: int32_t = 0;;
+    int32_t startIndex = 0;;
     
 
-    endIndex: int32_t = 0;;
+    int32_t endIndex = 0;;
     
 
         while(index >= 0)
@@ -226,7 +224,7 @@ endIndex= index;
                         if(index < 0)
                         
                                     {
-                                    endIndex= text.length;
+                                    endIndex= text.size();
     
 
                                     }
@@ -255,54 +253,54 @@ index++;
                         
                                     {
                                     
-    textArray: std::vector<string> = new Array(list.size());;
+    std::vector<std::string> textArray = new Array(list.size());;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 textArray[index]= list.get(index) as string;
     
 }
 
-this.textArrayP= textArray;
+this->textArrayP= textArray;
     
 
                                     }
                                 
                         else {
-                            this.textArrayP= StringUtil.getInstance()!.ONE_EMPTY_STRING_ARRAY;
+                            this->textArrayP= StringUtil::getInstance().ONE_EMPTY_STRING_ARRAY;
     
 
                         }
                             
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public std::vector<string> getTextArray(){
+    public: std::vector<std::string> getTextArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.textArrayP;
+                        return this->textArrayP;
     
 }
 
 
-    public int32_t getFontHeight(){
+    public: int32_t getFontHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fontHeight;
+                        return this->fontHeight;
     
 }
 

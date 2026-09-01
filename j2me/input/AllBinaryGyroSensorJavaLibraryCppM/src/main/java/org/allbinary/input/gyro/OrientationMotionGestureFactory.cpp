@@ -51,16 +51,15 @@
 class OrientationMotionGestureFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static OrientationMotionGestureFactory getInstance(){
+    public: static OrientationMotionGestureFactory getInstance(){
 
-                        if(OrientationMotionGestureFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(OrientationMotionGestureFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    OrientationMotionGestureFactory.instance= new OrientationMotionGestureFactory();
+                                    OrientationMotionGestureFactory::instance= OrientationMotionGestureFactory();
     
 
                                     }
@@ -69,40 +68,38 @@ class OrientationMotionGestureFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrientationMotionGestureFactory.instance as OrientationMotionGestureFactory;
+                        return OrientationMotionGestureFactory::instance() as OrientationMotionGestureFactory;
     
 }
 
 
-    public const LEFT: MotionGestureInput;
+    public: MotionGestureInput LEFT;
 
-    public const RIGHT: MotionGestureInput;
+    public: MotionGestureInput RIGHT;
 
-    public const UP: MotionGestureInput;
+    public: MotionGestureInput UP;
 
-    public const DOWN: MotionGestureInput;
+    public: MotionGestureInput DOWN;
 
-    public const ROLL_LEFT: MotionGestureInput;
+    public: MotionGestureInput ROLL_LEFT;
 
-    public const ROLL_RIGHT: MotionGestureInput;
+    public: MotionGestureInput ROLL_RIGHT;
 
-private constructor (){
+private: OrientationMotionGestureFactory(){
 
-            super();
-        
-    MAX: int32_t = InputFactory.getInstance()!.MAX;;
+    int32_t MAX = InputFactory::getInstance().MAX;;
     
-this.LEFT= new MotionGestureInput(MAX -20, "Left Orient");
+this->LEFT= MotionGestureInput(MAX -20, "Left Orient");
     
-this.RIGHT= new MotionGestureInput(MAX -21, "Right Orient");
+this->RIGHT= MotionGestureInput(MAX -21, "Right Orient");
     
-this.UP= new MotionGestureInput(MAX -22, "Up Orient");
+this->UP= MotionGestureInput(MAX -22, "Up Orient");
     
-this.DOWN= new MotionGestureInput(MAX -23, "Down Orient");
+this->DOWN= MotionGestureInput(MAX -23, "Down Orient");
     
-this.ROLL_LEFT= new MotionGestureInput(MAX -24, "Roll Left");
+this->ROLL_LEFT= MotionGestureInput(MAX -24, "Roll Left");
     
-this.ROLL_RIGHT= new MotionGestureInput(MAX -25, "Roll Right");
+this->ROLL_RIGHT= MotionGestureInput(MAX -25, "Roll Right");
     
 }
 

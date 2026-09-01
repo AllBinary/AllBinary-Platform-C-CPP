@@ -60,50 +60,49 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GlobalsView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class GlobalsView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    globalsValidation: GlobalsValidation;
+    protected: GlobalsValidation globalsValidation;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: GlobalsView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.globalsValidation= new GlobalsValidation(this.getWeblisketSession()!.getStoreName());
+this->globalsValidation= GlobalsValidation(this->getWeblisketSession().getStoreName());
     
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this.globalsValidation as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this->globalsValidation as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.globalsValidation!.toXmlNode(document);;
+                        return this->globalsValidation.toXmlNode(document);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -120,10 +119,10 @@ this.addDomNodeInterface(this.globalsValidation as DomNodeInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -136,10 +135,10 @@ this.addDomNodeInterface(this.globalsValidation as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

@@ -60,31 +60,30 @@
 class ResourceRelativeRelationshipFactory
             : public Object
         : public ResourceRelativeRelationshipFactoryInterface {
-        
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level){
-this.setInitialized(true);
+    public: void init(int32_t level){
+this->setInitialized(true);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getResourceRelativeRelationshipList(string resource){
+    public: BasicArrayList getResourceRelativeRelationshipList(std::string resource){
 
-    listCanBeNull: any = this.hashtable.get(resource);;
+    Object* listCanBeNull = this->hashtable.get(resource);;
     
 
                         if(listCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -92,7 +91,7 @@ this.setInitialized(true);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 
                                     }
@@ -108,27 +107,27 @@ this.setInitialized(true);
 
                 //@Throws(Exception.constructor)
             
-    public addResourceRelativeRelationship(string resource, RelativeRelationship hardPoint){
+    public: void addResourceRelativeRelationship(std::string resource, RelativeRelationship hardPoint){
 
-    list: BasicArrayList = this.getResourceRelativeRelationshipList(resource)!;;
+    BasicArrayList list = this->getResourceRelativeRelationshipList(resource);;
     
 
-                        if(list == this.basicArrayListUtil!.getImmutableInstance())
+                        if(list == this->basicArrayListUtil.getImmutableInstance())
                         
                                     {
-                                    list= new BasicArrayListD();
+                                    list= BasicArrayListD();
     
 
                                     }
                                 
 list.add(hardPoint);
     
-this.hashtable.put(resource, list);
+this->hashtable.put(resource, list);
     
 }
 
 
-    public bool isLoadingLevel(int32_t level){
+    public: bool isLoadingLevel(int32_t level){
 
 
 
@@ -138,7 +137,7 @@ this.hashtable.put(resource, list);
 }
 
 
-    public bool isFeature(){
+    public: bool isFeature(){
 
 
 
@@ -148,18 +147,18 @@ this.hashtable.put(resource, list);
 }
 
 
-    public setInitialized(bool initialized){
-this.initialized= initialized;
+    public: void setInitialized(bool initialized){
+this->initialized= initialized;
     
 }
 
 
-    public bool isInitialized(){
+    public: bool isInitialized(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized;
+                        return this->initialized;
     
 }
 

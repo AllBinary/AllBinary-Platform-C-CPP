@@ -70,15 +70,14 @@
 class CustomTextAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    public static CustomTextAnimationFactory createDXY(string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static CustomTextAnimationFactory createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
 
-    customTextAnimationFactory: CustomTextAnimationFactory = new CustomTextAnimationFactory(text, fontSize, animationBehaviorFactory);;
+    CustomTextAnimationFactory customTextAnimationFactory = CustomTextAnimationFactory(text, fontSize, animationBehaviorFactory);;
     
-customTextAnimationFactory!.dx= dx;
+customTextAnimationFactory.dx= dx;
     
-customTextAnimationFactory!.dy= dy;
+customTextAnimationFactory.dy= dy;
     
 
 
@@ -89,64 +88,62 @@ customTextAnimationFactory!.dy= dy;
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const animationBehaviorFactory: AnimationBehaviorFactory;
+    private: AnimationBehaviorFactory animationBehaviorFactory;
 
-    public basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    public: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: text: string;
+    private: std::string text;
 
-    private: initScaleHeight: int32_t;
+    private: int32_t initScaleHeight;
 
-    dx: int32_t = 0;
+    protected: int32_t dx = 0;
 
-    dy: int32_t = 0;
+    protected: int32_t dy = 0;
 
-    font: Font;
+    protected: Font font;
 
-    public scaleProperties: ScaleProperties;
+    public: ScaleProperties scaleProperties;
 
-public constructor (string text, int32_t fontSize, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.scaleProperties= new ScaleProperties();
+public: CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory animationBehaviorFactory){
+this->scaleProperties= ScaleProperties();
     
-this.text= text;
+this->text= text;
     
-this.scaleProperties!.scaleHeight= static_cast<int32_t>(fontSize) -(fontSize /4);
+this->scaleProperties.scaleHeight= static_cast<int32_t>(fontSize) -(fontSize /4);
     
-this.initScaleHeight= this.scaleProperties!.scaleHeight;
+this->initScaleHeight= this->scaleProperties.scaleHeight;
     
-this.animationBehaviorFactory= animationBehaviorFactory;
+this->animationBehaviorFactory= animationBehaviorFactory;
     
-this.font= Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, this.initScaleHeight);
+this->font= Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, this->initScaleHeight);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    customTextAnimation: CustomTextAnimation;;
+    CustomTextAnimation customTextAnimation;;
     
 
-                        if(this.dx != 0 || this.dy != 0)
+                        if(this->dx != 0 || this->dy != 0)
                         
                                     {
-                                    customTextAnimation= new AdjustCustomTextAnimation(this.text, this.scaleProperties!.scaleHeight, this.dx, this.dy, this.animationBehaviorFactory!.getOrCreateInstance());
+                                    customTextAnimation= AdjustCustomTextAnimation(this->text, this->scaleProperties.scaleHeight, this->dx, this->dy, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                                     }
                                 
                         else {
-                            customTextAnimation= new CustomTextAnimation(this.text, this.scaleProperties!.scaleHeight, this.animationBehaviorFactory!.getOrCreateInstance());
+                            customTextAnimation= CustomTextAnimation(this->text, this->scaleProperties.scaleHeight, this->animationBehaviorFactory.getOrCreateInstance());
     
 
                         }
                             
-customTextAnimation!.setBasicColorP(this.basicColor);
+customTextAnimation.setBasicColorP(this->basicColor);
     
 
 
@@ -157,26 +154,26 @@ customTextAnimation!.setBasicColorP(this.basicColor);
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.font.stringWidth(this.text);;
+                        return this->font.stringWidth(this->text);;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.font.getHeight();;
+                        return this->font.getHeight();;
     
 }
 

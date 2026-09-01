@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -42,10 +44,9 @@
 class MineVectorData
             : public Object
          {
-        
 
-    public static points: std::vector<std::vector<std::vector<int32_t>>> = 
-                                                        [
+    public: static std::vector<std::vector<std::vector<int32_t>>> points = 
+                                                        {
                                                             [[10,5]
 ,[2,6]
 ,[1000,1000]
@@ -65,12 +66,10 @@ class MineVectorData
 ,[5,9]
 ,[1000,1000]
 ]
-                                                        ];
+                                                        };
 
-private constructor (){
-
-            super();
-        }
+private: MineVectorData(){
+}
 
 
 };

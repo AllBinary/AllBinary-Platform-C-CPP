@@ -72,23 +72,22 @@
 class UserDomNode
             : public Object
         : public DomNodeInterface {
-        
 
-    private: dataMappingInterface: TableMappingInterface;
+    private: TableMappingInterface dataMappingInterface;
 
-public constructor (TableMappingInterface dataMappingInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+public: UserDomNode(TableMappingInterface dataMappingInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Document toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

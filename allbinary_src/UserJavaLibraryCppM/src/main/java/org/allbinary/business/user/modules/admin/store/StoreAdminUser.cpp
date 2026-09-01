@@ -49,9 +49,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreAdminUser: public User {
-        
 
-public constructor (){
+public: StoreAdminUser(){
             super();
                     
 
@@ -60,7 +59,7 @@ public constructor (){
 }
 
 
-public constructor (HashMap<any, any> userHashMap){
+public: StoreAdminUser(HashMap<any, any> userHashMap){
             super(userHashMap);
                     
 
@@ -69,16 +68,16 @@ public constructor (HashMap<any, any> userHashMap){
 }
 
 
-    public validateSession(WeblisketSessionInterface weblisketSession){
+    public: void validateSession(WeblisketSessionInterface weblisketSession){
 super.validateSession(weblisketSession);
     
-this.updateSession(weblisketSession);
+this->updateSession(weblisketSession);
     
 }
 
 
-    public updateSession(WeblisketSessionInterface weblisketSession){
-weblisketSession!.setStoreName(this.getPermissions());
+    public: void updateSession(WeblisketSessionInterface weblisketSession){
+weblisketSession.setStoreName(this->getPermissions());
     
 }
 

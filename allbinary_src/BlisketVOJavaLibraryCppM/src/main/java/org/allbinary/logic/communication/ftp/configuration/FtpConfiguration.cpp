@@ -47,96 +47,91 @@
 class FtpConfiguration
             : public Object
         : public FtpConfigurationInterface {
-        
 
-    private: ftpServer: string;
+    private: std::string ftpServer;
 
-    private: ftpPath: string;
+    private: std::string ftpPath;
 
-    private: ftpUserName: string;
+    private: std::string ftpUserName;
 
-    private: ftpPassword: string;
+    private: std::string ftpPassword;
 
-public constructor (){
-
-            super();
-        }
+public: FtpConfiguration(){
+}
 
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.ftpServer= hashMap!.get(FtpConfigurationData.SERVER) as string;
+public: FtpConfiguration(HashMap<any, any> hashMap){
+this->ftpServer= hashMap.get(FtpConfigurationData::SERVER) as string;
     
-this.ftpPath= hashMap!.get(FtpConfigurationData.PATH) as string;
+this->ftpPath= hashMap.get(FtpConfigurationData::PATH) as string;
     
-this.ftpUserName= hashMap!.get(FtpConfigurationData.USERNAME) as string;
+this->ftpUserName= hashMap.get(FtpConfigurationData::USERNAME) as string;
     
-this.ftpPassword= hashMap!.get(FtpConfigurationData.PASSWORD) as string;
+this->ftpPassword= hashMap.get(FtpConfigurationData::PASSWORD) as string;
     
 }
 
 
-    public string getServer(){
+    public: std::string getServer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpServer;
+                        return this->ftpServer;
     
 }
 
 
-    public string getPath(){
+    public: std::string getPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpPath;
+                        return this->ftpPath;
     
 }
 
 
-    public string getUserName(){
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpUserName;
+                        return this->ftpUserName;
     
 }
 
 
-    public string getPassword(){
+    public: std::string getPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ftpPassword;
+                        return this->ftpPassword;
     
 }
 
 
-    public setServer(string value){
-this.ftpServer= value;
+    public: void setServer(std::string value){
+this->ftpServer= value;
     
 }
 
 
-    public setPath(string value){
-this.ftpPath= value;
+    public: void setPath(std::string value){
+this->ftpPath= value;
     
 }
 
 
-    public setUserName(string value){
-this.ftpUserName= value;
+    public: void setUserName(std::string value){
+this->ftpUserName= value;
     
 }
 
 
-    public setPassword(string value){
-this.ftpPassword= value;
+    public: void setPassword(std::string value){
+this->ftpPassword= value;
     
 }
 

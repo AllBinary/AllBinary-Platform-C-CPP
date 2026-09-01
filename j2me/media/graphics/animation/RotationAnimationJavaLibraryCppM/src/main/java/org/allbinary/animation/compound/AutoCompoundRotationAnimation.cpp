@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -73,223 +75,221 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CompoundAnimationInterface.h"
 
-class AutoCompoundRotationAnimation: public RotationAnimation: public CompoundAnimationInterface {
-        
+class AutoCompoundRotationAnimation: public RotationAnimation, public CompoundAnimationInterface {
 
-    private: animationInterfaceArray: std::vector<RotationAnimation>;
+    private: std::vector<RotationAnimation> animationInterfaceArray;
 
-public constructor (std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
-            super(AngleInfo.getInstance(AngleFactory.getInstance()!.QUARTER_TOTAL_ANGLE), CircularIndexUtil.createInstance(4), animationBehavior);
+public: AutoCompoundRotationAnimation(std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior){
+            super(AngleInfo::getInstance(AngleFactory::getInstance().QUARTER_TOTAL_ANGLE), CircularIndexUtil::createInstance(4), animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.animationInterfaceArray= animationInterfaceArray;
+this->animationInterfaceArray= animationInterfaceArray;
     
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.animationInterfaceArray!.length);
-    
-}
-
-
-    public setFrame(int32_t index){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.setFrame(index);
+this->circularIndexUtil= CircularIndexUtil::createInstance(this->animationInterfaceArray.size());
     
 }
 
 
-    public int32_t getFrame(){
+    public: void setFrame(int32_t index){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrame(index);
+    
+}
+
+
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.getFrame();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getFrame();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.getAnimationSize();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getAnimationSize();;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.getSize();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getSize();;
     
 }
 
 
-    public previousFrame(){
-this.circularIndexUtil!.previous();
+    public: void previousFrame(){
+this->circularIndexUtil.previous();
     
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.previousFrame();
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.previousFrame();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame(){
-this.circularIndexUtil!.next();
+    public: void nextFrame(){
+this->circularIndexUtil.next();
     
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.nextFrame();
-    
-}
-
-
-    public previousRotation(){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.previousRotation();
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.nextFrame();
     
 }
 
 
-    public nextRotation(){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.nextRotation();
+    public: void previousRotation(){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.previousRotation();
     
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void nextRotation(){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.nextRotation();
+    
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: void setSequence(std::vector<int32_t> sequence){
+}
+
+
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.paintXY(graphics, x, y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintXY(graphics, x, y);
     
 }
 
 
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.paintThreedXYZ(graphics, x, y, z);
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.paintThreedXYZ(graphics, x, y, z);
     
 }
 
 
-    public IndexedAnimation getCurrentAnimation(){
+    public: IndexedAnimation getCurrentAnimation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!;
     
 }
 
 
-    public nextAnimation(){
+    public: void nextAnimation(){
 
-    frame: int32_t = this.getFrame()!;;
+    int32_t frame = this->getFrame();;
     
-this.circularIndexUtil!.next();
+this->circularIndexUtil.next();
     
-this.setFrame(frame);
-    
-}
-
-
-    public previousAnimation(){
-
-    frame: int32_t = this.getFrame()!;;
-    
-this.circularIndexUtil!.previous();
-    
-this.setFrame(frame);
+this->setFrame(frame);
     
 }
 
 
-    public setAnimation(int32_t index){
+    public: void previousAnimation(){
 
-    frame: int32_t = this.getFrame()!;;
+    int32_t frame = this->getFrame();;
     
-this.circularIndexUtil!.setIndex(index);
+this->circularIndexUtil.previous();
     
-this.setFrame(frame);
-    
-}
-
-
-    public setFrameByDirection(Direction direction){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.setFrameByDirection(direction);
+this->setFrame(frame);
     
 }
 
 
-    public setFrameToAngle(Angle angle){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.setFrameToAngle(angle);
+    public: void setAnimation(int32_t index){
+
+    int32_t frame = this->getFrame();;
+    
+this->circularIndexUtil.setIndex(index);
+    
+this->setFrame(frame);
     
 }
 
 
-    public adjustFrameToAngle(Angle newAngle){
-this.adjustFrame(newAngle!.getValue());
+    public: void setFrameByDirection(Direction direction){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrameByDirection(direction);
     
 }
 
 
-    public adjustFrame(int16_t angle){
-this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.adjustFrame(angle);
+    public: void setFrameToAngle(Angle angle){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.setFrameToAngle(angle);
     
 }
 
 
-    public AngleInfo getAngleInfoP(){
+    public: void adjustFrameToAngle(Angle newAngle){
+this->adjustFrame(newAngle.getValue());
+    
+}
+
+
+    public: void adjustFrame(int16_t angle){
+this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.adjustFrame(angle);
+    
+}
+
+
+    public: AngleInfo getAngleInfoP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray[this.circularIndexUtil!.getIndex()]!.getAngleInfoP();;
+                        return this->animationInterfaceArray[this->circularIndexUtil.getIndex()]!.getAngleInfoP();;
     
 }
 
 
-    public std::vector<RotationAnimation> getAnimationInterfaceArray(){
+    public: std::vector<RotationAnimation> getAnimationInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceArray;
+                        return this->animationInterfaceArray;
     
 }
 
 
-    public setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray){
-this.animationInterfaceArray= animationInterfaceArray;
+    public: void setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray){
+this->animationInterfaceArray= animationInterfaceArray;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl){
+    public: void set(GL gl){
 
 
 
 
                         for (
-    index: int32_t = this.animationInterfaceArray!.length
-                ;--index >= 0; )
+    int32_t index = this->animationInterfaceArray.size();--index >= 0; )
         {
-this.animationInterfaceArray[index]!.set(gl);
+this->animationInterfaceArray[index]!.set(gl);
     
 }
 

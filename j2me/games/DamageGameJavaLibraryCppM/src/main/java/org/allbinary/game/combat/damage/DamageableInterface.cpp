@@ -49,11 +49,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DamageableInterface: public NamedInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    damage(int32_t damage, int32_t damageType)
+    void damage(int32_t damage, int32_t damageType)
 
                 //@Throws(Exception.constructor)
             

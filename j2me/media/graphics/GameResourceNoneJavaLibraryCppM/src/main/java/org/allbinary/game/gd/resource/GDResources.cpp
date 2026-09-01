@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 
@@ -42,26 +44,25 @@
 class GDResources
             : public Object
          {
-        
 
-    private: static const instance: GDResources = new GDResources();
+    private: static GDResources instance() { return GDResources(); }
 
-    public static GDResources getInstance(){
+    public: static GDResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GDResources.instance;
+                        return GDResources::instance();
     
 }
 
 
-    public const resourceStringArray: std::vector<string> = 
-                                                        [
+    public: const std::vector<std::string> resourceStringArray = 
+                                                        {
                                                             
-                                                        ];
+                                                        };
 
-    public currentLayoutRequiredTotal: int32_t= 0;
+    public: int32_t currentLayoutRequiredTotal= 0;
 
 };
 

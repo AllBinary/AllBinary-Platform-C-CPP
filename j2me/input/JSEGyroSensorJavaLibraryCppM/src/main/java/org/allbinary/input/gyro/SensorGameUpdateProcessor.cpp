@@ -63,41 +63,40 @@
 class SensorGameUpdateProcessor
             : public Object
          {
-        
 
-    private: inputSensor: AllBinarySensor;
+    private: AllBinarySensor inputSensor;
 
-    setInputSensor(AllBinarySensor inputSensor){
-this.inputSensor= inputSensor;
+    protected: void setInputSensor(AllBinarySensor inputSensor){
+this->inputSensor= inputSensor;
     
 }
 
 
-    public AllBinarySensor getInputSensor(){
+    public: AllBinarySensor getInputSensor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputSensor;
+                        return this->inputSensor;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(any = {} anyType){
+    public: void process(Object* anyType){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public sendNotifications(any = {} anyType){
+    public: void sendNotifications(Object* anyType){
 }
 
 
-    public bool isAnySensor(){
+    public: bool isAnySensor(){
 
-                        if(this.inputSensor == NoAllBinarySensor.getInstance())
+                        if(this->inputSensor == NoAllBinarySensor::getInstance())
                         
                                     {
                                     
@@ -122,12 +121,12 @@ this.inputSensor= inputSensor;
 }
 
 
-    setNoSensors(){
-GyroSensorFactory.getInstance()!.setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener.getInstance());
+    protected: void setNoSensors(){
+GyroSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
     
-AccelerometerSensorFactory.getInstance()!.setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener.getInstance());
+AccelerometerSensorFactory::getInstance().setCompleteMotionGestureInputEventListener(NoCompleteMotionGestureInputEventListener::getInstance());
     
-this.setInputSensor(NoAllBinarySensor.getInstance());
+this->setInputSensor(NoAllBinarySensor::getInstance());
     
 }
 

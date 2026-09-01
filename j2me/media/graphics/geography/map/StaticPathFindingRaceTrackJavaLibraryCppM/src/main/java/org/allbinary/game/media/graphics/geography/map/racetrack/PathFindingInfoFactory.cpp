@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/string/CommonStrings.h>
@@ -64,40 +66,37 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PathFindingInfoFactory: public BasePathFindingInfoFactory {
-        
 
-    private: static const instance: PathFindingInfoFactory = new PathFindingInfoFactory();
+    private: static PathFindingInfoFactory instance() { return PathFindingInfoFactory(); }
 
-    public static PathFindingInfoFactory getInstance(){
+    public: static PathFindingInfoFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PathFindingInfoFactory.instance;
+                        return PathFindingInfoFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PathFindingInfoFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
+    public: PathFindingInfo getInstancePathFindingInfo(BasicGeographicMap geographicMapInterface, std::vector<std::vector<int32_t>> graphArray){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-PreLogUtil.put(commonStrings!.START, this, commonStrings!.GET_INSTANCE);
+PreLogUtil::put(commonStrings.START, this, commonStrings.GET_INSTANCE);
     
 
-    pathFindingInfo: PathFindingInfo = new PathFindingInfo(new PathFindingNodeCostInfoFactoryBase(), new BasicArrayListS(1), new BasicArrayListS(1));;
+    PathFindingInfo pathFindingInfo = PathFindingInfo(PathFindingNodeCostInfoFactoryBase(), BasicArrayListS(1), BasicArrayListS(1));;
     
-RaceTrackRoadsGeographicMapCellHistoryFactory.getInstance()!.init();
+RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance().init();
     
-this.init(geographicMapInterface, pathFindingInfo, graphArray);
+this->init(geographicMapInterface, pathFindingInfo, graphArray);
     
 
 

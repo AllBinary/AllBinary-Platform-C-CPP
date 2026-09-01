@@ -63,49 +63,48 @@
 class GenericProfileCaptureWorkerFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static CaptureWorkerInterface getInstance(GenericProfile genericProfile){
+    public: static CaptureWorkerInterface getInstance(GenericProfile genericProfile){
 
-    vector: Vector = genericProfile!.getGenericProfileDataWorkerTypeVector()!;;
+    Vector vector = genericProfile.getGenericProfileDataWorkerTypeVector();;
     
 
-    size: int32_t = vector.length!;;
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    genericProfileDataWorkerType: GenericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType;;
     
 
-                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType.SCREEN_CAPTURE)
+                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType::SCREEN_CAPTURE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ScreenCaptureImagesWorker();
+                        return ScreenCaptureImagesWorker();
     
 
                                     }
                                 
                              else 
-                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType.SAVED_CAPTURE)
+                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType::SAVED_CAPTURE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SavedCaptureImagesWorker(genericProfileDataWorkerType as SavedCaptureGenericProfileDataWorkerType);
+                        return SavedCaptureImagesWorker(genericProfileDataWorkerType as SavedCaptureGenericProfileDataWorkerType);
     
 
                                     }
@@ -115,15 +114,13 @@ class GenericProfileCaptureWorkerFactory
 
 
 
-                            throw new Exception("No CaptureWorkerInterface specified in GenericProfile");
+                            throw Exception("No CaptureWorkerInterface specified in GenericProfile");
                     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GenericProfileCaptureWorkerFactory(){
+}
 
 
 };

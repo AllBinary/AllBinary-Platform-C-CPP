@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGECOMPLETEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -71,31 +73,30 @@
 class ImageCompleteUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCompleteUtil = new ImageCompleteUtil();
+    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
 
-    public static ImageCompleteUtil getInstance();
+    public: static ImageCompleteUtil getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(18000);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
 
-    private: const allTimeDelayHelper: TimeDelayHelper = new TimeDelayHelper(120000);
-
-                //@Throws(Exception.constructor)
-            
-    public waitForImage(Image image, string name);
+    private: const TimeDelayHelper allTimeDelayHelper = TimeDelayHelper(120000);
 
                 //@Throws(Exception.constructor)
             
-    public bool isReady(Image image, string name, TimeDelayHelper timeDelayHelper);
+    public: void waitForImage(Image image, std::string name);
 
                 //@Throws(Exception.constructor)
             
-    waitForATime(Image image, string name, TimeDelayHelper timeDelayHelper);
+    public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public waitForAll();
+    private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper);
+
+                //@Throws(Exception.constructor)
+            
+    public: void waitForAll();
 
 };
 

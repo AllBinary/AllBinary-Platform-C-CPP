@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -100,42 +102,39 @@
 #include "NullClip.h"
 #include "NullControl.h"
 
-class PCClipWavPlayer: public BasicPlayer: public LineListener {
-        
+class PCClipWavPlayer: public BasicPlayer, public LineListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const audioInputStream: AudioInputStream;
+    private: AudioInputStream audioInputStream;
 
-    private: const clip: Clip;
+    private: Clip clip;
 
-public constructor (InputStream inputStream){
+public: PCClipWavPlayer(InputStream inputStream){
 
-            super();
-        
-    audioInputStream: AudioInputStream = new AudioInputStream(new ByteArrayInputStream(NullUtil.getInstance()!.NULL_BYTE_ARRAY), NullAudioFormat.NULL_AUDIO_FORMAT, 0);;
+    AudioInputStream audioInputStream = AudioInputStream(ByteArrayInputStream(NullUtil::getInstance().NULL_BYTE_ARRAY), NullAudioFormat::NULL_AUDIO_FORMAT, 0);;
     
 
-    clip: Clip = new NullClip();;
+    Clip clip = NullClip();;
     
 
         try {
-            audioInputStream= AudioSystem.getAudioInputStream(inputStream);
+            audioInputStream= AudioSystem::getAudioInputStream(inputStream);
     
-clip= this.create(audioInputStream);
+clip= this->create(audioInputStream);
     
 
                         if(clip == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.put("Clip was null", this, this.commonStrings!.CONSTRUCTOR, new Exception());
+                                    this->logUtil.put("Clip was null", this, this->commonStrings.CONSTRUCTOR, Exception());
     
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -144,22 +143,22 @@ clip= this.create(audioInputStream);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 }
 
-this.audioInputStream= audioInputStream;
+this->audioInputStream= audioInputStream;
     
-this.clip= clip;
+this->clip= clip;
     
 }
 
 
-    public close(){
-MusicThreadPool.getInstance()!.runTask(new class extends ARunnable
+    public: void close(){
+MusicThreadPool::getInstance().runTask(class extends ARunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
         try {
             close2();
@@ -168,7 +167,7 @@ MusicThreadPool.getInstance()!.runTask(new class extends ARunnable
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, e);
     
 }
 
@@ -182,22 +181,22 @@ PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
 
                 //@Throws(Exception.constructor)
             
-    close2(){
-this.clip.drain();
+    private: void close2(){
+this->clip.drain();
     
-this.clip.flush();
+this->clip.flush();
     
-this.clip.close();
+this->clip.close();
     
 }
 
 
-    public string getContentType(){
+    public: std::string getContentType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
@@ -205,11 +204,11 @@ this.clip.close();
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public start(){
-MusicThreadPool.getInstance()!.runTask(new class extends ARunnable
+    public: void start(){
+MusicThreadPool::getInstance().runTask(class extends ARunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
         try {
             start2();
@@ -218,7 +217,7 @@ MusicThreadPool.getInstance()!.runTask(new class extends ARunnable
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, e);
     
 }
 
@@ -232,12 +231,12 @@ PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
 
                 //@Throws(Exception.constructor)
             
-    start2(){
-this.clip.setFramePosition(0);
+    private: void start2(){
+this->clip.setFramePosition(0);
     
-this.clip.loop(this.getLoopCount());
+this->clip.loop(this->getLoopCount());
     
-this.clip.start();
+this->clip.start();
     
 super.start();
     
@@ -246,9 +245,9 @@ super.start();
 
                 //@Throws(Exception.constructor)
             
-    Clip create(AudioInputStream audioInputStream){
+    private: Clip create(AudioInputStream audioInputStream){
 
-    clip: Clip = AudioSystem.getClip()!;;
+    Clip clip = AudioSystem::getClip();;
     
 clip.addLineListener(this);
     
@@ -266,11 +265,11 @@ clip.open(audioInputStream);
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public stop(){
-MusicThreadPool.getInstance()!.runTask(new class extends ARunnable
+    public: void stop(){
+MusicThreadPool::getInstance().runTask(class extends ARunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
         try {
             stop2();
@@ -279,7 +278,7 @@ MusicThreadPool.getInstance()!.runTask(new class extends ARunnable
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
+PreLogUtil::putOE(commonStrings.EXCEPTION, this, commonStrings.PROCESS, e);
     
 }
 
@@ -293,54 +292,54 @@ PreLogUtil.putOE(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
 
                 //@Throws(Exception.constructor)
             
-    stop2(){
-this.clip.stop();
+    private: void stop2(){
+this->clip.stop();
     
 super.stop();
     
 }
 
 
-    public Control getControl(string controlType){
+    public: Control getControl(std::string controlType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new NullControl();
+                        return NullControl();
     
 }
 
 
-    public std::vector<Control> getControls(){
+    public: std::vector<Control> getControls(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 
 
-    public setVolume(int32_t leftVolume, int32_t rightVolume){
-this.setVolumeF((leftVolume) /100.0);
+    public: void setVolume(int32_t leftVolume, int32_t rightVolume){
+this->setVolumeF((leftVolume) /100.0);
     
 }
 
 
-    float getVolume(){
+    private: float getVolume(){
 
-    masterGainFloatControl: FloatControl = clip.getControl(FloatControl.Type.MASTER_GAIN) as FloatControl;;
+    FloatControl masterGainFloatControl = clip.getControl(FloatControl::Type.MASTER_GAIN) as FloatControl;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Math.pow(10, masterGainFloatControl!.getValue() /20);
+                        return Math::pow(10, masterGainFloatControl.getValue() /20);
     
 }
 
 
-    setVolumeF(float volume){
+    private: void setVolumeF(float volume){
 
                         if(volume < 0 || volume > 1)
                         
@@ -348,48 +347,48 @@ this.setVolumeF((leftVolume) /100.0);
                                     
 
 
-                            throw new IllegalArgumentException("Volume: " +volume);
+                            throw IllegalArgumentException("Volume: " +volume);
                     
 
                                     }
                                 
 
-    masterGainFloatControl: FloatControl = this.clip.getControl(FloatControl.Type.MASTER_GAIN) as FloatControl;;
+    FloatControl masterGainFloatControl = this->clip.getControl(FloatControl::Type.MASTER_GAIN) as FloatControl;;
     
-masterGainFloatControl!.setValue(20 *Math.log10(volume));
+masterGainFloatControl.setValue(20 *Math::log10(volume));
     
 }
 
 
-    public int64_t getDuration(){
+    public: int64_t getDuration(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.clip.getMicrosecondLength() /1000;
+                        return this->clip.getMicrosecondLength() /1000;
     
 }
 
 
-    public update(LineEvent event){
+    public: void update(LineEvent event){
 
-                        if(event.getType()! === LineEvent.Type.STOP)
+                        if(event.getType() === LineEvent::Type.STOP)
                         
                                     {
                                     
-    size: int32_t = this.listenersList!.size()!;;
+    int32_t size = this->listenersList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    listener: PlayerListener = this.listenersList!.get(size) as PlayerListener;;
+    PlayerListener listener = this->listenersList.get(size) as PlayerListener;;
     
-listener.playerUpdate(this, PlayerListener.END_OF_MEDIA, 
+listener.playerUpdate(this, PlayerListener::END_OF_MEDIA, 
                             nullptr);
     
 }

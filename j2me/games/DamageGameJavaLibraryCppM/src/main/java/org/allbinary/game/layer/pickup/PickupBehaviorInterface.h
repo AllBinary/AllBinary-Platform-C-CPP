@@ -45,13 +45,12 @@
 #include "PickedUpLayerInterface.h"
 
 class PickupBehaviorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    doPickup(PickupProcessorInterface pickupProcessorInterface);
+    void doPickup(PickupProcessorInterface pickupProcessorInterface);
 
-    doPickupLayer(PickedUpLayerInterface pickupLayerInterface);
+    void doPickupLayer(PickedUpLayerInterface pickupLayerInterface);
 
 };
 

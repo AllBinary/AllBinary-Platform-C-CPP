@@ -67,17 +67,16 @@
 #include "AdjustedImageBaseRotationAnimation.h"
 
 class ImageRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
-    const angleIncrement: int16_t;
+    protected: int16_t angleIncrement;
 
-public constructor (Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
+public: ImageRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int16_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    int16_t getAngleIncrementP();
+    protected: int16_t getAngleIncrementP();
 
 };
 

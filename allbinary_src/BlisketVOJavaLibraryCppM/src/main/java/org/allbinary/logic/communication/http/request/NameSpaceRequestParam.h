@@ -74,27 +74,26 @@
 class NameSpaceRequestParam
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: nameSpaceVector: Vector;
+    private: Vector nameSpaceVector;
 
-    private: nameSpacePropertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> nameSpacePropertiesHashMap;
 
-    private: value: string;
+    private: std::string value;
 
-public constructor (string nameSpace, string value);
+public: NameSpaceRequestParam(std::string nameSpace, std::string value);
 
-    public Vector getPackages();
+    public: Vector getPackages();
 
-    public HashMap<any, any> getPackageProperties(int32_t packageIndex);
+    public: HashMap<any, any> getPackageProperties(int32_t packageIndex);
 
-    public string getValue();
+    public: std::string getValue();
 
                 //@Throws(Exception.constructor)
             
-    HashMap<any, any> generatePackagePropertiesHashMap(string properties);
+    private: HashMap<any, any> generatePackagePropertiesHashMap(std::string properties);
 
 };
 

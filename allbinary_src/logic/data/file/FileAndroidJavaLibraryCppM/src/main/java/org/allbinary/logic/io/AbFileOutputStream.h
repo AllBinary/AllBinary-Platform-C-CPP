@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_H
         #define ORG_ALLBINARY_LOGIC_IO_ABFILEOUTPUTSTREAM_H
 
+            #include <vector>
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -62,43 +64,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileOutputStream: public OutputStream {
-        
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromAbFile(AbFile file);
+    public: static AbFileOutputStream createFromAbFile(AbFile file);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append);
+    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePath(string name);
+    public: static AbFileOutputStream createFromFilePath(std::string name);
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePathAppend(string name, bool append);
+    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append);
 
-    private: fileOutputStream: FileOutputStream;
+    private: FileOutputStream fileOutputStream;
 
-public constructor (FileOutputStream fileOutputStream);
+public: AbFileOutputStream(FileOutputStream fileOutputStream);
 
-    public close();
+    public: void close();
 
-    public FileChannel getChannel();
+    public: FileChannel getChannel();
 
                 //@Throws(IOException.constructor)
             
-    public write(std::vector<int8_t> buffer);
+    public: void write(std::vector<int8_t> buffer);
 
                 //@Throws(IOException.constructor)
             
-    public write(std::vector<int8_t> buffer, int32_t offset, int32_t count);
+    public: void write(std::vector<int8_t> buffer, int32_t offset, int32_t count);
 
                 //@Throws(IOException.constructor)
             
-    public write(int32_t b);
+    public: void write(int32_t b);
 
 };
 

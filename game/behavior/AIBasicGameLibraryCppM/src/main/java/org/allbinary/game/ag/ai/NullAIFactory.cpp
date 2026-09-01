@@ -58,26 +58,25 @@
 class NullAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
-    private: static NULL_AI: NullAI = new NullAI();
+    private: static NullAI NULL_AI = NullAI();
 
-    public static ArtificialIntelligenceInterface getInstance(){
+    public: static ArtificialIntelligenceInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAIFactory.NULL_AI;
+                        return NullAIFactory::NULL_AI;
     
 }
 
 
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAIFactory.NULL_AI;
+                        return NullAIFactory::NULL_AI;
     
 }
 

@@ -42,29 +42,26 @@
 class HudResources
             : public Object
          {
-        
 
-    private: static const instance: HudResources = new HudResources();
+    private: static HudResources instance() { return HudResources(); }
 
-    public static HudResources getInstance(){
+    public: static HudResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HudResources.instance;
+                        return HudResources::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: HudResources(){
+}
 
 
-    public const RESOURCE_LIFE: string = "/hud_life_10_by_10.png";
+    public: const std::string RESOURCE_LIFE = "/hud_life_10_by_10.png";
 
-    public const RESOURCE_HEALTH: string = "/hud_health_10_by_10.png";
+    public: const std::string RESOURCE_HEALTH = "/hud_health_10_by_10.png";
 
 };
 

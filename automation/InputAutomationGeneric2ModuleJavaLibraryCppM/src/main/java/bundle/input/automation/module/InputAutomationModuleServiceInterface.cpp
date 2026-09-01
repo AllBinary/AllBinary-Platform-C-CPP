@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/input/automation/module/InputAutomationModuleFactoryInterface.h>
 
       
@@ -44,7 +46,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationModuleServiceInterface: public OSGIServiceInterface {
-        
 
     std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray()
 

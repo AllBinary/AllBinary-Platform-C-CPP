@@ -42,14 +42,11 @@
 class UserEmailConfigurationData
             : public Object
          {
-        
 
-    public static const NAME: string = "USER_EMAIL_CONFIGURATION_NAME";
+    public: static const std::string NAME = "USER_EMAIL_CONFIGURATION_NAME";
 
-private constructor (){
-
-            super();
-        }
+private: UserEmailConfigurationData(){
+}
 
 
 };

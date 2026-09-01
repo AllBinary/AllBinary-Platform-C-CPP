@@ -42,10 +42,8 @@
 class J2MEUtil
             : public Object
          {
-        
 
-public:
-    static bool isJ2ME(){
+    public: static bool isJ2ME(){
 
 
 
@@ -55,7 +53,7 @@ public:
 }
 
 
-    static bool isJ2SE(){
+    public: static bool isJ2SE(){
 
 
 
@@ -65,7 +63,7 @@ public:
 }
 
 
-    static bool isHTML(){
+    public: static bool isHTML(){
 
 
 
@@ -75,8 +73,8 @@ public:
 }
 
 
-private:
-    J2MEUtil() = default;
+private: J2MEUtil(){
+}
 
 
 };

@@ -66,193 +66,192 @@
 class GameConfigurationUtil
             : public Object
          {
-        
 
-    private: static const instance: GameConfigurationUtil = new GameConfigurationUtil();
+    private: static GameConfigurationUtil instance() { return GameConfigurationUtil(); }
 
-    public static GameConfigurationUtil getInstance(){
+    public: static GameConfigurationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationUtil.instance;
+                        return GameConfigurationUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public change(GameOptionsForm gameOptionsForm, GameConfigurationGauge gauge){
-this.update(gauge);
+    public: void change(GameOptionsForm gameOptionsForm, GameConfigurationGauge gauge){
+this->update(gauge);
     
 
-    gameConfigurationSingleton: GameConfigurationSingleton = GameConfigurationSingleton.getInstance()!;;
+    GameConfigurationSingleton gameConfigurationSingleton = GameConfigurationSingleton::getInstance();;
     
 
-    gameConfiguration: GameConfiguration = gameConfigurationSingleton!.getInstanceByName(gauge.getLabel())!;;
+    GameConfiguration gameConfiguration = gameConfigurationSingleton.getInstanceByName(gauge.getLabel());;
     
-this.updateChallange(gameOptionsForm, gameConfiguration);
+this->updateChallange(gameOptionsForm, gameConfiguration);
     
 }
 
 
-    private: const GAUGE_UPDATE: string = "Gauge Update: ";
+    private: const std::string GAUGE_UPDATE = "Gauge Update: ";
 
-    private: const FROM: string = " from: ";
+    private: const std::string FROM = " from: ";
 
-    private: const TO: string = " to: ";
-
-                //@Throws(Exception.constructor)
-            
-    public update(GameConfigurationGauge gauge){
-
-    gameConfigurationSingleton: GameConfigurationSingleton = GameConfigurationSingleton.getInstance()!;;
-    
-
-    gameConfiguration: GameConfiguration = gameConfigurationSingleton!.getInstanceByName(gauge.getLabel())!;;
-    
-
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
-    
-
-    value: Integer = smallIntegerSingletonFactory!.getAt(gauge.getValue() +gameConfiguration!.getMinValue()!.intValue())!;;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(this.GAUGE_UPDATE);
-    
-stringBuffer!.append(gameConfiguration!.getName());
-    
-stringBuffer!.append(this.FROM);
-    
-stringBuffer!.appendint(gameConfiguration!.getValue()!.intValue());
-    
-stringBuffer!.append(this.TO);
-    
-stringBuffer!.appendint(value.intValue());
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.UPDATE);
-    
-gameConfiguration!.setValue(value);
-    
-}
-
+    private: const std::string TO = " to: ";
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(GameConfigurationGauge gauge){
+    public: void update(GameConfigurationGauge gauge){
 
-    gameConfigurationSingleton: GameConfigurationSingleton = GameConfigurationSingleton.getInstance()!;;
-    
-
-    gameConfiguration: GameConfiguration = gameConfigurationSingleton!.getInstanceByName(gauge.getLabel())!;;
+    GameConfigurationSingleton gameConfigurationSingleton = GameConfigurationSingleton::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    GameConfiguration gameConfiguration = gameConfigurationSingleton.getInstanceByName(gauge.getLabel());;
     
-stringBuffer!.append("Gauge Default: ");
+
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
-stringBuffer!.append(gameConfiguration!.getName());
+
+    Integer value = smallIntegerSingletonFactory.getAt(gauge.getValue() +gameConfiguration.getMinValue().intValue());;
     
-stringBuffer!.append(this.TO);
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.appendint(gameConfiguration!.getDefaultValue()!.intValue());
+stringBuffer.append(this->GAUGE_UPDATE);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "setDefault");
+stringBuffer.append(gameConfiguration.getName());
     
-gauge.setValue(gameConfiguration!.getDefaultValue()!.intValue() -gameConfiguration!.getMinValue()!.intValue());
+stringBuffer.append(this->FROM);
     
-gameConfiguration!.setValue(gameConfiguration!.getDefaultValue());
+stringBuffer.appendint(gameConfiguration.getValue().intValue());
+    
+stringBuffer.append(this->TO);
+    
+stringBuffer.appendint(value.intValue());
+    
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.UPDATE);
+    
+gameConfiguration.setValue(value);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updateChallange(GameOptionsForm gameOptionsForm, GameConfiguration gameConfiguration){
+    public: void setDefault(GameConfigurationGauge gauge){
 
-    gameConfigurationSingleton: GameConfigurationSingleton = GameConfigurationSingleton.getInstance()!;;
+    GameConfigurationSingleton gameConfigurationSingleton = GameConfigurationSingleton::getInstance();;
     
 
-    gameConfigurationCentral: GameConfigurationCentral = GameConfigurationCentral.getInstance()!;;
+    GameConfiguration gameConfiguration = gameConfigurationSingleton.getInstanceByName(gauge.getLabel());;
     
 
-                        if(gameConfiguration == gameConfigurationCentral!.CHALLENGE_LEVEL)
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("Gauge Default: ");
+    
+stringBuffer.append(gameConfiguration.getName());
+    
+stringBuffer.append(this->TO);
+    
+stringBuffer.appendint(gameConfiguration.getDefaultValue().intValue());
+    
+this->logUtil.putF(stringBuffer.toString(), this, "setDefault");
+    
+gauge.setValue(gameConfiguration.getDefaultValue().intValue() -gameConfiguration.getMinValue().intValue());
+    
+gameConfiguration.setValue(gameConfiguration.getDefaultValue());
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void updateChallange(GameOptionsForm gameOptionsForm, GameConfiguration gameConfiguration){
+
+    GameConfigurationSingleton gameConfigurationSingleton = GameConfigurationSingleton::getInstance();;
+    
+
+    GameConfigurationCentral gameConfigurationCentral = GameConfigurationCentral::getInstance();;
+    
+
+                        if(gameConfiguration == gameConfigurationCentral.CHALLENGE_LEVEL)
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "updateChallange");
+                                    this->logUtil.putF(this->commonStrings.START, this, "updateChallange");
     
-gameConfigurationCentral!.COLLIDE_DAMAGE.setValue(gameConfiguration!.getValue());
+gameConfigurationCentral.COLLIDE_DAMAGE.setValue(gameConfiguration.getValue());
     
-gameConfigurationCentral!.ATTACK_CHALLENGE_LEVEL.setValue(gameConfiguration!.getValue());
+gameConfigurationCentral.ATTACK_CHALLENGE_LEVEL.setValue(gameConfiguration.getValue());
     
-gameConfigurationCentral!.DURABILITY_CHALLENGE_LEVEL.setValue(gameConfiguration!.getValue());
+gameConfigurationCentral.DURABILITY_CHALLENGE_LEVEL.setValue(gameConfiguration.getValue());
     
-gameConfigurationCentral!.SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration!.getValue());
+gameConfigurationCentral.SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration.getValue());
     
 
-    size: int32_t = gameOptionsForm!.size()!;;
+    int32_t size = gameOptionsForm.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = gameOptionsForm!.get(index)!;;
+    Item item = gameOptionsForm.get(index);;
     
 
                         if(item instanceof GameConfigurationGauge)
                         
                                     {
                                     
-    gauge: GameConfigurationGauge = item as GameConfigurationGauge;;
+    GameConfigurationGauge gauge = item as GameConfigurationGauge;;
     
 
-    name: string = item.getLabel()!;;
+    std::string name = item.getLabel();;
     
 
-    nextGameConfiguration: GameConfiguration = gameConfigurationSingleton!.getInstanceByName(name)!;;
+    GameConfiguration nextGameConfiguration = gameConfigurationSingleton.getInstanceByName(name);;
     
 
-                        if(nextGameConfiguration == gameConfigurationCentral!.COLLIDE_DAMAGE)
+                        if(nextGameConfiguration == gameConfigurationCentral.COLLIDE_DAMAGE)
                         
                                     {
-                                    gauge.setValue(gameConfigurationCentral!.COLLIDE_DAMAGE.getValue()!.intValue() -gameConfiguration!.getMinValue()!.intValue());
+                                    gauge.setValue(gameConfigurationCentral.COLLIDE_DAMAGE.getValue().intValue() -gameConfiguration.getMinValue().intValue());
     
 
                                     }
                                 
                              else 
-                        if(nextGameConfiguration == gameConfigurationCentral!.DURABILITY_CHALLENGE_LEVEL)
+                        if(nextGameConfiguration == gameConfigurationCentral.DURABILITY_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge.setValue(gameConfigurationCentral!.DURABILITY_CHALLENGE_LEVEL.getValue()!.intValue() -gameConfiguration!.getMinValue()!.intValue());
+                                    gauge.setValue(gameConfigurationCentral.DURABILITY_CHALLENGE_LEVEL.getValue().intValue() -gameConfiguration.getMinValue().intValue());
     
 
                                     }
                                 
                              else 
-                        if(nextGameConfiguration == gameConfigurationCentral!.ATTACK_CHALLENGE_LEVEL)
+                        if(nextGameConfiguration == gameConfigurationCentral.ATTACK_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge.setValue(gameConfigurationCentral!.ATTACK_CHALLENGE_LEVEL.getValue()!.intValue() -gameConfiguration!.getMinValue()!.intValue());
+                                    gauge.setValue(gameConfigurationCentral.ATTACK_CHALLENGE_LEVEL.getValue().intValue() -gameConfiguration.getMinValue().intValue());
     
 
                                     }
                                 
                              else 
-                        if(nextGameConfiguration == gameConfigurationCentral!.SPEED_CHALLENGE_LEVEL)
+                        if(nextGameConfiguration == gameConfigurationCentral.SPEED_CHALLENGE_LEVEL)
                         
                                     {
-                                    gauge.setValue(gameConfigurationCentral!.SPEED_CHALLENGE_LEVEL.getValue()!.intValue() -gameConfiguration!.getMinValue()!.intValue());
+                                    gauge.setValue(gameConfigurationCentral.SPEED_CHALLENGE_LEVEL.getValue().intValue() -gameConfiguration.getMinValue().intValue());
     
 
                                     }
@@ -268,27 +267,27 @@ gameConfigurationCentral!.SPEED_CHALLENGE_LEVEL.setValue(gameConfiguration!.getV
 }
 
 
-    private: COMPETITION_VALUE: int32_t = 1;
+    private: int32_t COMPETITION_VALUE = 1;
 
-    public updateCompetitionValue(){
-this.logUtil!.putF(this.commonStrings!.START, this, "updateCompetitionValue");
+    public: void updateCompetitionValue(){
+this->logUtil.putF(this->commonStrings.START, this, "updateCompetitionValue");
     
 
-    gameConfigurationCentral: GameConfigurationCentral = GameConfigurationCentral.getInstance()!;;
+    GameConfigurationCentral gameConfigurationCentral = GameConfigurationCentral::getInstance();;
     
-this.COMPETITION_VALUE= gameConfigurationCentral!.COLLIDE_DAMAGE.getValue()!.intValue() +gameConfigurationCentral!.ATTACK_CHALLENGE_LEVEL.getValue()!.intValue() +gameConfigurationCentral!.DURABILITY_CHALLENGE_LEVEL.getValue()!.intValue() +gameConfigurationCentral!.SPEED_CHALLENGE_LEVEL.getValue()!.intValue();
+this->COMPETITION_VALUE= gameConfigurationCentral.COLLIDE_DAMAGE.getValue().intValue() +gameConfigurationCentral.ATTACK_CHALLENGE_LEVEL.getValue().intValue() +gameConfigurationCentral.DURABILITY_CHALLENGE_LEVEL.getValue().intValue() +gameConfigurationCentral.SPEED_CHALLENGE_LEVEL.getValue().intValue();
     
-this.COMPETITION_VALUE= (this.COMPETITION_VALUE>>2);
+this->COMPETITION_VALUE= (this->COMPETITION_VALUE>>2);
     
 }
 
 
-    public int32_t getCompetitionValue(){
+    public: int32_t getCompetitionValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.COMPETITION_VALUE;
+                        return this->COMPETITION_VALUE;
     
 }
 

@@ -39,7 +39,6 @@
         #include "Direction.h"
 
 class DirectionCompositeInterface {
-        
 
     Direction getDirection()
 

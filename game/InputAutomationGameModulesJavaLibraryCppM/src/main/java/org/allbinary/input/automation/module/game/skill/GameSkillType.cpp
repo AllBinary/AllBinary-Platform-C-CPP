@@ -42,52 +42,49 @@
 class GameSkillType
             : public Object
          {
-        
 
-    public static MANA: GameSkillType = new GameSkillType("Mana");
+    public: static GameSkillType MANA = GameSkillType("Mana");
 
-    public static REPLENISH: GameSkillType = new GameSkillType("Replenish");
+    public: static GameSkillType REPLENISH = GameSkillType("Replenish");
 
-    public static TIMED: GameSkillType = new GameSkillType("Timed");
+    public: static GameSkillType TIMED = GameSkillType("Timed");
 
-    public static ATTACK: GameSkillType = new GameSkillType("Attack");
+    public: static GameSkillType ATTACK = GameSkillType("Attack");
 
-    public static TRANSPORT: GameSkillType = new GameSkillType("Transport");
+    public: static GameSkillType TRANSPORT = GameSkillType("Transport");
 
-    private: const SPELL_GAME_SKILL_TYPE: string = "SpellGameSkillType: ";
+    private: const std::string SPELL_GAME_SKILL_TYPE = "SpellGameSkillType: ";
 
-    private: name: string;
+    private: std::string name;
 
-private constructor (string name){
-
-            super();
-        this.setName(name);
+private: GameSkillType(std::string name){
+this->setName(name);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    setName(string name){
-this.name= name;
+    protected: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.SPELL_GAME_SKILL_TYPE +this.getName();
+                        return this->SPELL_GAME_SKILL_TYPE +this->getName();
     
 }
 

@@ -60,23 +60,22 @@
 class GameMode
             : public Object
          {
-        
 
-    public static NONE: GameMode = new GameMode(StringUtil.getInstance()!.NULL_STRING);
+    public: static GameMode NONE = GameMode(StringUtil::getInstance().NULL_STRING);
 
-    public static SERVER: GameMode = new GameMode("Server");
+    public: static GameMode SERVER = GameMode("Server");
 
-    public static CLIENT: GameMode = new GameMode("Client");
+    public: static GameMode CLIENT = GameMode("Client");
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-private constructor (string name);
+private: GameMode(std::string name);
 
-    setName(string name);
+    private: void setName(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

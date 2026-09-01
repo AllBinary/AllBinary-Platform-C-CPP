@@ -48,9 +48,8 @@
         #include "AllBinaryEventObject.h"
 
 class EventListenerInterface {
-        
 
-    onEvent(AllBinaryEventObject eventObject);
+    void onEvent(AllBinaryEventObject eventObject);
 
 };
 

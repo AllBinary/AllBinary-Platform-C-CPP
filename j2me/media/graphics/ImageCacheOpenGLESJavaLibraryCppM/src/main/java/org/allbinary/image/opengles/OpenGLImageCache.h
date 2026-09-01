@@ -82,39 +82,38 @@
         #include "OpenGLESImage.h"
 //ImageCacheOpenGLESJavaLibrary
 class OpenGLImageCache: public ImageCache {
-        
 
-    private: const imageCache: ImageCache = ImageCacheFactory.getInstance()!;
+    private: const ImageCache imageCache = ImageCacheFactory::getInstance();
 
-    private: const preResourceImageUtil: PreResourceImageUtil = PreResourceImageUtil.getInstance()!;
+    private: const PreResourceImageUtil preResourceImageUtil = PreResourceImageUtil::getInstance();
 
-    private: gl: GL10 = NullGL10.NULL_GL10;
+    private: GL10 gl = NullGL10::NULL_GL10;
 
-    private: const lock: SynchObject = new SynchObject();
+    private: const SynchObject lock = SynchObject();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: renderer: AllBinaryRendererBase3 = new AllBinaryRendererBase3();
+    private: AllBinaryRendererBase3 renderer = AllBinaryRendererBase3();
 
-public constructor ();
+public: OpenGLImageCache();
 
-    public addListener(any = {} renderer);
-
-                //@Throws(Exception.constructor)
-            
-    public update(GL10 gl);
+    public: void addListener(Object* renderer);
 
                 //@Throws(Exception.constructor)
             
-    Image createImage(string caller, int32_t width, int32_t height);
+    public: void update(GL10 gl);
 
                 //@Throws(Exception.constructor)
             
-    Image createImageFromInputStream(any = {} key, InputStream inputStream);
+    protected: Image createImage(std::string caller, int32_t width, int32_t height);
 
-    public GL10 getGlP();
+                //@Throws(Exception.constructor)
+            
+    protected: Image createImageFromInputStream(Object* key, InputStream inputStream);
 
-    public init(Image image);
+    public: GL10 getGlP();
+
+    public: void init(Image image);
 
 };
 

@@ -55,11 +55,10 @@
 class IdGeneratorEntityFactory
             : public Object
          {
-        
 
-    public static IdGeneratorEntityInterface getInstance();
+    public: static IdGeneratorEntityInterface getInstance();
 
-private constructor ();
+private: IdGeneratorEntityFactory();
 
 };
 

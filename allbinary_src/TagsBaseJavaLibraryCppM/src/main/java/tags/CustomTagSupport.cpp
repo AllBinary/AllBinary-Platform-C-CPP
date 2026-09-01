@@ -45,11 +45,10 @@
         #include "TagStrings.h"
 
 class CustomTagSupport: public TagSupport {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const tagStrings: TagStrings = TagStrings.getInstance()!;
+    protected: const TagStrings tagStrings = TagStrings::getInstance();
 
 };
 

@@ -55,9 +55,8 @@
 class GameInputMotionInfoFactory
             : public Object
          {
-        
 
-    public static GameInputMotionInfo getInstance();
+    public: static GameInputMotionInfo getInstance();
 
 };
 

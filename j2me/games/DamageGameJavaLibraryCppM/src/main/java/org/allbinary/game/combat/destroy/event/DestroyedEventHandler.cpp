@@ -63,35 +63,32 @@
 #include "DestroyedEventListenerInterface.h"
 
 class DestroyedEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: DestroyedEventHandler = new DestroyedEventHandler();
+    private: static DestroyedEventHandler instance() { return DestroyedEventHandler(); }
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static DestroyedEventHandler getInstance(){
+    public: static DestroyedEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DestroyedEventHandler.instance;
+                        return DestroyedEventHandler::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: DestroyedEventHandler(){
+}
 
 
-    public addListener(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
+    public: void addListener(CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer){
 
-                        if(!this.list.contains(collidableDestroyableDamageableLayer))
+                        if(!this->list.contains(collidableDestroyableDamageableLayer))
                         
                                     {
-                                    this.list.add(collidableDestroyableDamageableLayer);
+                                    this->list.add(collidableDestroyableDamageableLayer);
     
 
                                     }
@@ -100,8 +97,8 @@ private constructor (){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
@@ -109,8 +106,8 @@ super.removeAllListeners();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -119,26 +116,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer = this.list.objectArray[index]! as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = this->list.objectArray[index]! as CollidableDestroyableDamageableLayer;;
     
-collidableDestroyableDamageableLayer!.onDestroyed(eventObject as DestroyedEvent);
+collidableDestroyableDamageableLayer.onDestroyed(eventObject as DestroyedEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -151,11 +148,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    destroyedEventListenerInterface: DestroyedEventListenerInterface = eventListenerInterface as DestroyedEventListenerInterface;;
+    DestroyedEventListenerInterface destroyedEventListenerInterface = eventListenerInterface as DestroyedEventListenerInterface;;
     
-destroyedEventListenerInterface!.onDestroyed(eventObject as DestroyedEvent);
+destroyedEventListenerInterface.onDestroyed(eventObject as DestroyedEvent);
     
 }
 

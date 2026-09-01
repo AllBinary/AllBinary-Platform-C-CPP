@@ -52,17 +52,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DropCellPositionGeneratorInterface {
-        
 
-    string getName()
-
-                //@Throws(Exception.constructor)
-            
-    update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface)
+    std::string getName()
 
                 //@Throws(Exception.constructor)
             
-    processTick(AllBinaryLayerManager allBinaryLayerManager)
+    void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface)
+
+                //@Throws(Exception.constructor)
+            
+    void processTick(AllBinaryLayerManager allBinaryLayerManager)
 
                 //@Throws(Exception.constructor)
             

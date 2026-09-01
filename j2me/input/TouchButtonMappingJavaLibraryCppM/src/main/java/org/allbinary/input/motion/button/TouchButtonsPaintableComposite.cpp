@@ -94,71 +94,68 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "TouchButtonsMappingPaintable.h"
 
-class TouchButtonsPaintableComposite: public ProcessPaintable: public CompleteMotionGestureInputEventListenerInterface {
-        
+class TouchButtonsPaintableComposite: public ProcessPaintable, public CompleteMotionGestureInputEventListenerInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: inputMappingInterface: InputMappingInterface;
+    private: InputMappingInterface inputMappingInterface;
 
-    touchButtonsPaintable: TouchButtonsMappingPaintable;
+    protected: TouchButtonsMappingPaintable touchButtonsPaintable;
 
-    private: timeHelper: TimeDelayHelper = new TimeDelayHelper(250);
+    private: TimeDelayHelper timeHelper = TimeDelayHelper(250);
 
-    private: released: bool = true;
+    private: bool released = true;
 
-public constructor (InputMappingInterface inputMappingInterface, BasicColor basicColor){
-
-            super();
-        this.inputMappingInterface= inputMappingInterface;
+public: TouchButtonsPaintableComposite(InputMappingInterface inputMappingInterface, BasicColor basicColor){
+this->inputMappingInterface= inputMappingInterface;
     
-CompleteMotionGestureInputEventHandler.getInstance()!.addListenerInterface(this);
+CompleteMotionGestureInputEventHandler::getInstance().addListenerInterface(this);
     
-this.touchButtonsPaintable= new TouchButtonsMappingPaintable(basicColor);
+this->touchButtonsPaintable= TouchButtonsMappingPaintable(basicColor);
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    private: const METHOD_NAME: string = "onCompleteMotionGestureInputEvent";
+    private: const std::string METHOD_NAME = "onCompleteMotionGestureInputEvent";
 
-    private: const RELEASE: string = "Ignoring: MotionGestureInput Release";
+    private: const std::string RELEASE = "Ignoring: MotionGestureInput Release";
 
-    private: const FAST_REPEAT: string = "Ignoring: MotionGestureInput Repeated To Quickly";
+    private: const std::string FAST_REPEAT = "Ignoring: MotionGestureInput Repeated To Quickly";
 
-    private: const IGNORE: string = "Ignoring: Until Released";
+    private: const std::string IGNORE = "Ignoring: Until Released";
 
-    public onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
+    public: void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, "onCompleteMotionGestureInputEvent");
+            this->logUtil.putF(this->commonStrings.START, this, "onCompleteMotionGestureInputEvent");
     
 
-    touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!;;
+    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    gameKeyCompleteMotionGestureInputEvent: GameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent as GameKeyCompleteMotionGestureInputEvent;;
+    GameKeyCompleteMotionGestureInputEvent gameKeyCompleteMotionGestureInputEvent = completeMotionGestureInputEvent as GameKeyCompleteMotionGestureInputEvent;;
     
 
-    gameKey: GameKey = gameKeyCompleteMotionGestureInputEvent!.getGameKey()!;;
+    GameKey gameKey = gameKeyCompleteMotionGestureInputEvent.getGameKey();;
     
 
-    motionGestureInput: MotionGestureInput = completeMotionGestureInputEvent!.getMotionGestureInput()!;;
+    MotionGestureInput motionGestureInput = completeMotionGestureInputEvent.getMotionGestureInput();;
     
 
-                        if(motionGestureInput == touchMotionGestureFactory!.RELEASED)
+                        if(motionGestureInput == touchMotionGestureFactory.RELEASED)
                         
                                     {
-                                    this.logUtil!.putF(this.RELEASE, this, this.METHOD_NAME);
+                                    this->logUtil.putF(this->RELEASE, this, this->METHOD_NAME);
     
-this.released= true;
+this->released= true;
     
 
 
@@ -170,10 +167,10 @@ this.released= true;
                                     }
                                 
 
-                        if(motionGestureInput == TouchMotionGestureFactory.getInstance()!.NO_MOTION && !this.timeHelper!.isTimeTNT())
+                        if(motionGestureInput == TouchMotionGestureFactory::getInstance().NO_MOTION && !this->timeHelper.isTimeTNT())
                         
                                     {
-                                    this.logUtil!.putF(this.FAST_REPEAT, this, this.METHOD_NAME);
+                                    this->logUtil.putF(this->FAST_REPEAT, this, this->METHOD_NAME);
     
 
 
@@ -185,10 +182,10 @@ this.released= true;
                                     }
                                 
 
-                        if(!this.released)
+                        if(!this->released)
                         
                                     {
-                                    this.logUtil!.putF(this.IGNORE, this, this.METHOD_NAME);
+                                    this->logUtil.putF(this->IGNORE, this, this->METHOD_NAME);
     
 
 
@@ -199,25 +196,25 @@ this.released= true;
 
                                     }
                                 
-this.released= false;
+this->released= false;
     
-this.logUtil!.putF(new StringMaker().append("GameKey: ")!.append(StringUtil.getInstance()!.toString(gameKey))!.append(" MotionGestureInput: ")!.append(StringUtil.getInstance()!.toString(motionGestureInput))!.toString(), this, this.METHOD_NAME);
+this->logUtil.putF(StringMaker().append("GameKey: ").append(StringUtil::getInstance().toString(gameKey)).append(" MotionGestureInput: ").append(StringUtil::getInstance().toString(motionGestureInput)).toString(), this, this->METHOD_NAME);
     
-this.inputMappingInterface!.processInputMapping(gameKey, motionGestureInput);
+this->inputMappingInterface.processInputMapping(gameKey, motionGestureInput);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->METHOD_NAME, e);
     
 }
 
 }
 
 
-    public process(){
-CompleteMotionGestureInputEventHandler.getInstance()!.removeListener(this);
+    public: void process(){
+CompleteMotionGestureInputEventHandler::getInstance().removeListener(this);
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -45,32 +47,29 @@
 class PrimitiveIntUtil
             : public Object
          {
-        
 
-    public static std::vector<int32_t> getArrayInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_INT_ARRAY;
-    
-}
-
-
-    public static std::vector<std::vector<int32_t>> getTwoDimensionalArrayInstance(){
+    public: static std::vector<int32_t> getArrayInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY;
+                        return NullUtil::getInstance().NULL_INT_ARRAY;
     
 }
 
 
-private constructor (){
+    public: static std::vector<std::vector<int32_t>> getTwoDimensionalArrayInstance(){
 
-            super();
-        }
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
+    
+}
+
+
+private: PrimitiveIntUtil(){
+}
 
 
 };

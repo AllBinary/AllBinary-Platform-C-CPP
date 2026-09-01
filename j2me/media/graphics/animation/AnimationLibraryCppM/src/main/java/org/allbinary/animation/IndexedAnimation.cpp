@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -60,44 +62,41 @@
 #include "IndexedAnimationInterface.h"
 #include "AnimationBehavior.h"
 
-class IndexedAnimation: public Animation: public IndexedAnimationInterface {
-        
+class IndexedAnimation: public Animation, public IndexedAnimationInterface {
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const animationBehaviorP: AnimationBehavior;
+    protected: AnimationBehavior animationBehaviorP;
 
-protected constructor (AnimationBehavior animationBehavior){
-
-            super();
-        this.animationBehaviorP= animationBehavior;
+protected: IndexedAnimation(AnimationBehavior animationBehavior){
+this->animationBehaviorP= animationBehavior;
     
 }
 
 
-    public AnimationBehavior getAnimationBehavior(){
+    public: AnimationBehavior getAnimationBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationBehaviorP;
+                        return this->animationBehaviorP;
     
 }
 
 
-    public reset(){
-this.animationBehaviorP!.reset();
+    public: void reset(){
+this->animationBehaviorP.reset();
     
-this.setFrame(0);
+this->setFrame(0);
     
 }
 
 
-    public setFrame(int32_t index){
+    public: void setFrame(int32_t index){
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
@@ -109,16 +108,16 @@ this.setFrame(0);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
@@ -128,13 +127,13 @@ this.setFrame(0);
 }
 
 
-    public previousFrame(){
+    public: void previousFrame(){
 }
 
 
-    public bool isLastFrame(){
+    public: bool isLastFrame(){
 
-                        if(this.getFrame() == this.getSize() -1)
+                        if(this->getFrame() == this->getSize() -1)
                         
                                     {
                                     
@@ -159,31 +158,31 @@ this.setFrame(0);
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    public setState(IndexedAnimation indexedAnimation){
-this.setFrame(indexedAnimation!.getFrame());
+    public: void setState(IndexedAnimation indexedAnimation){
+this->setFrame(indexedAnimation.getFrame());
     
-this.setDx(indexedAnimation!.getDx());
+this->setDx(indexedAnimation.getDx());
     
-this.setDy(indexedAnimation!.getDy());
+this->setDy(indexedAnimation.getDy());
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
@@ -193,7 +192,7 @@ this.setDy(indexedAnimation!.getDy());
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 

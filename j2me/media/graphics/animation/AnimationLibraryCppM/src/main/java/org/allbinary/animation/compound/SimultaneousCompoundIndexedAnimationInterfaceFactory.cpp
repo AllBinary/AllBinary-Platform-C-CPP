@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/animation/Animation.h>
 
       
@@ -52,9 +54,8 @@
 #include "SimultaneousCompoundIndexedAnimation.h"
 
 class SimultaneousCompoundIndexedAnimationInterfaceFactory: public CompoundAnimationInterfaceFactory {
-        
 
-public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory){
+public: SimultaneousCompoundIndexedAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory){
             super(basicAnimationInterfaceFactoryInterfaceArray, animationBehaviorFactory);
                     
 
@@ -63,7 +64,7 @@ public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimati
 }
 
 
-    std::vector<Animation> createArray(int32_t size){
+    protected: std::vector<Animation> createArray(int32_t size){
 
 
 
@@ -73,12 +74,12 @@ public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimati
 }
 
 
-    Animation createAnimation(std::vector<Animation> animationArray){
+    protected: Animation createAnimation(std::vector<Animation> animationArray){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new SimultaneousCompoundIndexedAnimation(animationArray, this.animationBehaviorFactory!.getOrCreateInstance());
+                        return SimultaneousCompoundIndexedAnimation(animationArray, this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 

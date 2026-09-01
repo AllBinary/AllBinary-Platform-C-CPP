@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIOR_H
         #define ORG_ALLBINARY_GAME_LAYER_PICKUP_PICKUPBEHAVIOR_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -94,35 +96,34 @@
 class PickupBehavior
             : public Object
         : public PickupBehaviorInterface {
-        
 
-    public static NULL_PICKUP_BEHAVIOR: any = NullUtil.getInstance()!.NULL_OBJECT;
+    public: static Object* NULL_PICKUP_BEHAVIOR = NullUtil::getInstance().NULL_OBJECT;
 
-    public static PickupBehavior getNullInstance();
+    public: static PickupBehavior getNullInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const countedIndex: int32_t;
+    private: int32_t countedIndex;
 
-    private: const ownerLayerInterface: CollidableCompositeLayer;
+    private: CollidableCompositeLayer ownerLayerInterface;
 
-public constructor (CollidableCompositeLayer ownerLayerInterface, int32_t countedIndex);
+public: PickupBehavior(CollidableCompositeLayer ownerLayerInterface, int32_t countedIndex);
 
-    public doPickup(PickupProcessorInterface pickupProcessorInterface);
+    public: void doPickup(PickupProcessorInterface pickupProcessorInterface);
 
-    public doPickupLayer(PickedUpLayerInterface pickupLayerInterface);
+    public: void doPickupLayer(PickedUpLayerInterface pickupLayerInterface);
 
-    add(CountedPickedUpLayerInterfaceFactoryInterface countedPickedUpLayerInterfaceFactoryInterface);
+    protected: void add(CountedPickedUpLayerInterfaceFactoryInterface countedPickedUpLayerInterfaceFactoryInterface);
 
-    addAt(CountedPickedUpLayerInterfaceFactoryInterface countedPickedUpLayerInterfaceFactoryInterface, int32_t partIndex);
+    protected: void addAt(CountedPickedUpLayerInterfaceFactoryInterface countedPickedUpLayerInterfaceFactoryInterface, int32_t partIndex);
 
-    public CountedLayerInterfaceFactoryPart getFirstAvailableCountedLayerInterfaceFactory(std::vector<PickedUpLayerType> pickedUpLayerTypeArray);
+    public: CountedLayerInterfaceFactoryPart getFirstAvailableCountedLayerInterfaceFactory(std::vector<PickedUpLayerType> pickedUpLayerTypeArray);
 
                 //@Throws(Exception.constructor)
             
-    public CountedLayerInterfaceFactoryPart getCountedLayerInterfaceFactoryForSlot(int32_t slotIndex);
+    public: CountedLayerInterfaceFactoryPart getCountedLayerInterfaceFactoryForSlot(int32_t slotIndex);
 
-    public int32_t getCountedIndex();
+    public: int32_t getCountedIndex();
 
 };
 

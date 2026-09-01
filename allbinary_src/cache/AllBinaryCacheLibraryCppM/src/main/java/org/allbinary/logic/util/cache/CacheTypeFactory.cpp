@@ -32,27 +32,26 @@
 class CacheTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: CacheTypeFactory = new CacheTypeFactory();
+    private: static CacheTypeFactory instance() { return CacheTypeFactory(); }
 
-    public static CacheTypeFactory getInstance(){
+    public: static CacheTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CacheTypeFactory.instance;
+                        return CacheTypeFactory::instance();
     
 }
 
 
-    public NO_CACHE: CacheType = new CacheType(StringUtil.getInstance()!.EMPTY_STRING, StringUtil.getInstance()!.EMPTY_STRING);
+    public: CacheType NO_CACHE = CacheType(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING);
 
-    public CACHE: CacheType = new CacheType(StringUtil.getInstance()!.EMPTY_STRING, StringUtil.getInstance()!.EMPTY_STRING);
+    public: CacheType CACHE = CacheType(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING);
 
-    public SET: CacheType = new CacheType(StringUtil.getInstance()!.EMPTY_STRING, "Set");
+    public: CacheType SET = CacheType(StringUtil::getInstance().EMPTY_STRING, "Set");
 
-    public CACHE_VECTOR: CacheType = new CacheType(StringUtil.getInstance()!.EMPTY_STRING, StringUtil.getInstance()!.EMPTY_STRING);
+    public: CacheType CACHE_VECTOR = CacheType(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING);
 
 };
 

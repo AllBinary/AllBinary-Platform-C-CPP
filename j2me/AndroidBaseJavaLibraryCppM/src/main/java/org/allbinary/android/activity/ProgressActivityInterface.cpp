@@ -40,15 +40,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ProgressActivityInterface {
-        
 
-    runOnUiThread(Runnable action)
+    void runOnUiThread(Runnable action)
 
-    onDismissTitleProgressBar()
+    void onDismissTitleProgressBar()
 
-    onShowTitleProgressBar(int32_t value, bool indeterminate)
+    void onShowTitleProgressBar(int32_t value, bool indeterminate)
 
-    onTitleProgressBarSetProgress(int32_t value)
+    void onTitleProgressBarSetProgress(int32_t value)
 
 };
 

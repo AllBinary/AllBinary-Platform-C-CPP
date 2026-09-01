@@ -53,55 +53,52 @@
         #include "DropLayerInterface.h"
 
 class DropLayerProcessor: public BasicLayerProcessor {
-        
 
-    private: static const LAYER_PROCESSOR: BasicLayerProcessor = new DropLayerProcessor();
+    private: static const BasicLayerProcessor LAYER_PROCESSOR = DropLayerProcessor();
 
-    public static BasicLayerProcessor getInstance(){
+    public: static BasicLayerProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropLayerProcessor.LAYER_PROCESSOR;
+                        return DropLayerProcessor::LAYER_PROCESSOR;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: DropLayerProcessor(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager allBinaryLayerManager){
 
-    list: BasicArrayList = this.getList()!;;
+    BasicArrayList list = this->getList();;
     
 
-    size: int32_t = list.size()!;;
+    int32_t size = list.size();;
     
 
-    layerInterface: AllBinaryLayer;;
+    AllBinaryLayer layerInterface;;
     
 
-    dropLayerInterface: DropLayerInterface;;
+    DropLayerInterface dropLayerInterface;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 layerInterface= list.objectArray[index]! as AllBinaryLayer;
     
 dropLayerInterface= layerInterface as unknown as DropLayerInterface;
     
-layerInterface= dropLayerInterface!.getDroppedLayer() as unknown as AllBinaryLayer;
+layerInterface= dropLayerInterface.getDroppedLayer() as unknown as AllBinaryLayer;
     
-allBinaryLayerManager!.append(layerInterface);
+allBinaryLayerManager.append(layerInterface);
     
 }
 

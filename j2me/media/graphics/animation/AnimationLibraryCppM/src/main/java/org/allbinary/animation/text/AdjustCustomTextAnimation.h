@@ -48,23 +48,22 @@
         #include "CustomTextAnimation.h"
 
 class AdjustCustomTextAnimation: public CustomTextAnimation {
-        
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustCustomTextAnimation(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
 
-    public int32_t getDx();
+    public: int32_t getDx();
 
-    public setDx(int32_t dx);
+    public: void setDx(int32_t dx);
 
-    public int32_t getDy();
+    public: int32_t getDy();
 
-    public setDy(int32_t dy);
+    public: void setDy(int32_t dy);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

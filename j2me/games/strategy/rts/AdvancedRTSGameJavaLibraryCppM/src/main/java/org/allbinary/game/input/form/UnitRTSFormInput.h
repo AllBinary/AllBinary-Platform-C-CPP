@@ -20,6 +20,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_FORM_UNITRTSFORMINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_FORM_UNITRTSFORMINPUT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -131,27 +133,26 @@
 #include "PlayersSingletonFactory.h"
 
 class UnitRTSFormInput: public RTSFormInput {
-        
 
-    public static const DECAL_ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(23)!;
+    public: static const Integer DECAL_ID = SmallIntegerSingletonFactory::getInstance().getAt(23);
 
-    const noMoneyGameNotificationEvent: GameNotificationEvent;
+    protected: GameNotificationEvent noMoneyGameNotificationEvent;
 
-    const newUnitGameNotificationEvent: GameNotificationEvent;
+    protected: GameNotificationEvent newUnitGameNotificationEvent;
 
-public constructor (std::vector<Group> groupInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: UnitRTSFormInput(std::vector<Group> groupInterface);
 
                 //@Throws(Exception.constructor)
             
-    public processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    attemptBuild(RTSLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex);
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex);
+
+                //@Throws(Exception.constructor)
+            
+    private: void attemptBuild(RTSLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex);
 
 };
 

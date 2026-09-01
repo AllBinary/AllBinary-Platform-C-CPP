@@ -61,11 +61,10 @@
         #include "NotificationBuilder.h"
 
 class NotificationBuilderAPI23: public NotificationBuilder {
-        
 
-    public Parcelable build(Context context, Command command, string message, Integer integer, PendingIntent pendingIntent){
+    public: Parcelable build(Context context, Command command, std::string message, Integer integer, PendingIntent pendingIntent){
 
-    notification: Notification = new Builder(context).setSmallIcon(integer.intValue())!.setTicker(message)!.setWhen(Date.now())!.setContentTitle(command.getLabel())!.setContentText(message)!.setContentIntent(pendingIntent)!.build()!;;
+    Notification notification = Builder(context).setSmallIcon(integer.intValue()).setTicker(message).setWhen(Date.now()).setContentTitle(command.getLabel()).setContentText(message).setContentIntent(pendingIntent).build();;
     
 
 

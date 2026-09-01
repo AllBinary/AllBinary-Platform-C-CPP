@@ -44,62 +44,59 @@
 class ImageColorResults
             : public Object
          {
-        
 
-    private: colorRange: ColorRange;
+    private: ColorRange colorRange;
 
-    private: colorAverage: ColorAverage;
+    private: ColorAverage colorAverage;
 
-public constructor (){
-
-            super();
-        this.setColorRange(new ColorRange());
+public: ImageColorResults(){
+this->setColorRange(ColorRange());
     
-this.getColorRange()!.setMaxRed( -1);
+this->getColorRange().setMaxRed( -1);
     
-this.getColorRange()!.setMaxGreen( -1);
+this->getColorRange().setMaxGreen( -1);
     
-this.getColorRange()!.setMaxBlue( -1);
+this->getColorRange().setMaxBlue( -1);
     
-this.getColorRange()!.setMinRed(256);
+this->getColorRange().setMinRed(256);
     
-this.getColorRange()!.setMinGreen(256);
+this->getColorRange().setMinGreen(256);
     
-this.getColorRange()!.setMinBlue(256);
+this->getColorRange().setMinBlue(256);
     
-this.setColorAverage(new ColorAverage());
+this->setColorAverage(ColorAverage());
     
 }
 
 
-    public ColorRange getColorRange(){
+    public: ColorRange getColorRange(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorRange;
+                        return this->colorRange;
     
 }
 
 
-    public setColorRange(ColorRange colorRange){
-this.colorRange= colorRange;
+    public: void setColorRange(ColorRange colorRange){
+this->colorRange= colorRange;
     
 }
 
 
-    public ColorAverage getColorAverage(){
+    public: ColorAverage getColorAverage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.colorAverage;
+                        return this->colorAverage;
     
 }
 
 
-    public setColorAverage(ColorAverage colorAverage){
-this.colorAverage= colorAverage;
+    public: void setColorAverage(ColorAverage colorAverage){
+this->colorAverage= colorAverage;
     
 }
 

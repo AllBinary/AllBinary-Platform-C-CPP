@@ -69,23 +69,22 @@
         #include "DestroyedEventHandler.h"
 
 class DestroyedEvent: public AllBinaryEventObject {
-        
 
-    private: allBinaryGameCanvas: AllBinaryGameCanvas = NullGameCanvas.getInstance()!;
+    private: AllBinaryGameCanvas allBinaryGameCanvas = NullGameCanvas::getInstance();
 
-    private: allBinaryLayerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer allBinaryLayerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public constructor (AllBinaryGameCanvas combatGameCanvas);
+public: DestroyedEvent(AllBinaryGameCanvas combatGameCanvas);
 
-    public AllBinaryGameCanvas getAllBinaryGameCanvas();
+    public: AllBinaryGameCanvas getAllBinaryGameCanvas();
 
-    public AllBinaryLayer getLayerInterface();
+    public: AllBinaryLayer getLayerInterface();
 
-    setAllBinaryGameCanvas(AllBinaryGameCanvas allBinaryGameCanvas);
+    private: void setAllBinaryGameCanvas(AllBinaryGameCanvas allBinaryGameCanvas);
 
-    public setLayerInterfaceForCircularStaticPool(AllBinaryLayer allBinaryLayerInterface);
+    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer allBinaryLayerInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

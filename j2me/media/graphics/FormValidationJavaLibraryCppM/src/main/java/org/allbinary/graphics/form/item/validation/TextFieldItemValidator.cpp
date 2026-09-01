@@ -65,45 +65,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextFieldItemValidator: public ValidatorBase {
-        
 
-    private: const textFieldItem: ABTextFieldItem;
+    private: ABTextFieldItem textFieldItem;
 
-    private: min: int32_t;
+    private: int32_t min;
 
-    private: max: int32_t;
+    private: int32_t max;
 
-    private: allowOnEmpty: bool;
+    private: bool allowOnEmpty;
 
-public constructor (ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
-
-            super();
-        this.textFieldItem= textFieldItem;
+public: TextFieldItemValidator(ABTextFieldItem textFieldItem, int32_t min, int32_t max, bool allowOnEmpty){
+this->textFieldItem= textFieldItem;
     
-this.min= min;
+this->min= min;
     
-this.max= max;
+this->max= max;
     
-this.allowOnEmpty= allowOnEmpty;
+this->allowOnEmpty= allowOnEmpty;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-    booleanFactory: BooleanFactory = BooleanFactory.getInstance()!;;
+    BooleanFactory booleanFactory = BooleanFactory::getInstance();;
     
 
-    result: Boolean = booleanFactory!.TRUE;;
+    Boolean result = booleanFactory.TRUE;;
     
 
-    string: string = this.textFieldItem!.getString()!;;
+    std::string string = this->textFieldItem.getString();;
     
 
-    textLength: int32_t = string.length!;;
+    int32_t textLength = string.size();;
     
 
-                        if((textLength == 0 && this.allowOnEmpty) || textLength > this.min && textLength < this.max)
+                        if((textLength == 0 && this->allowOnEmpty) || textLength > this->min && textLength < this->max)
                         
                                     {
                                     
@@ -111,19 +108,19 @@ this.allowOnEmpty= allowOnEmpty;
                                 
                         else {
                             
-                        if(textLength < this.min)
+                        if(textLength < this->min)
                         
                                     {
-                                    result= booleanFactory!.FALSE;
+                                    result= booleanFactory.FALSE;
     
 
                                     }
                                 
                              else 
-                        if(textLength > this.max)
+                        if(textLength > this->max)
                         
                                     {
-                                    result= booleanFactory!.FALSE;
+                                    result= booleanFactory.FALSE;
     
 
                                     }
@@ -140,18 +137,18 @@ this.allowOnEmpty= allowOnEmpty;
 }
 
 
-    public BasicArrayList toList(){
+    public: BasicArrayList toList(){
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    string: string = this.textFieldItem!.getString()!;;
+    std::string string = this->textFieldItem.getString();;
     
 
-    textLength: int32_t = string.length!;;
+    int32_t textLength = string.size();;
     
 
-                        if(textLength > this.min && textLength < this.max)
+                        if(textLength > this->min && textLength < this->max)
                         
                                     {
                                     
@@ -159,25 +156,25 @@ this.allowOnEmpty= allowOnEmpty;
                                 
                         else {
                             
-    label: string = this.textFieldItem!.getLabel()!;;
+    std::string label = this->textFieldItem.getLabel();;
     
 
-    name: string = label.substring(0, label.length -2)!;;
+    std::string name = label.substring(0, label.size() -2);;
     
 
-                        if(textLength < this.min)
+                        if(textLength < this->min)
                         
                                     {
-                                    list.add(new StringMaker().append(name)!.append(" is to short")!.toString());
+                                    list.add(StringMaker().append(name).append(" is to short").toString());
     
 
                                     }
                                 
                              else 
-                        if(textLength > this.max)
+                        if(textLength > this->max)
                         
                                     {
-                                    list.add(new StringMaker().append(name)!.append(" is to long")!.toString());
+                                    list.add(StringMaker().append(name).append(" is to long").toString());
     
 
                                     }

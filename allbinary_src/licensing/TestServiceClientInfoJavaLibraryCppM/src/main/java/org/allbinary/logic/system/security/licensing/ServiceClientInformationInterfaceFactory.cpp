@@ -44,16 +44,15 @@
 class ServiceClientInformationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: TestClientInformation = new TestClientInformation();
+    private: static TestClientInformation instance() { return TestClientInformation(); }
 
-    public static AbeClientInformationInterface getInstance(){
+    public: static AbeClientInformationInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ServiceClientInformationInterfaceFactory.instance;
+                        return ServiceClientInformationInterfaceFactory::instance();
     
 }
 

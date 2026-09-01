@@ -71,71 +71,68 @@
 class GenericOperatingSystem
             : public Object
         : public OperatingSystemInterface {
-        
 
-    private: const osName: string;
+    private: const std::string osName;
 
-    private: const osArch: string;
+    private: const std::string osArch;
 
-    private: const osVersion: string;
+    private: const std::string osVersion;
 
-    private: const characterSet: CharacterSet = new CharacterSet();
+    private: const CharacterSet characterSet = CharacterSet();
 
-    scalable: bool = false;
+    protected: bool scalable = false;
 
-public constructor (){
+public: GenericOperatingSystem(){
 
-            super();
-        
-    systemProperties: SystemProperties = SystemProperties.getInstance()!;;
+    SystemProperties systemProperties = SystemProperties::getInstance();;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    EMPTY_STRING: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY_STRING = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(stringValidationUtil!.isEmpty(systemProperties!.getName()))
+                        if(stringValidationUtil.isEmpty(systemProperties.getName()))
                         
                                     {
-                                    this.osName= EMPTY_STRING;
+                                    this->osName= EMPTY_STRING;
     
 
                                     }
                                 
                         else {
-                            this.osName= systemProperties!.getName();
+                            this->osName= systemProperties.getName();
     
 
                         }
                             
 
-                        if(stringValidationUtil!.isEmpty(systemProperties!.getArch()))
+                        if(stringValidationUtil.isEmpty(systemProperties.getArch()))
                         
                                     {
-                                    this.osArch= EMPTY_STRING;
+                                    this->osArch= EMPTY_STRING;
     
 
                                     }
                                 
                         else {
-                            this.osArch= systemProperties!.getArch();
+                            this->osArch= systemProperties.getArch();
     
 
                         }
                             
 
-                        if(stringValidationUtil!.isEmpty(systemProperties!.getVersion()))
+                        if(stringValidationUtil.isEmpty(systemProperties.getVersion()))
                         
                                     {
-                                    this.osVersion= EMPTY_STRING;
+                                    this->osVersion= EMPTY_STRING;
     
 
                                     }
                                 
                         else {
-                            this.osVersion= systemProperties!.getVersion();
+                            this->osVersion= systemProperties.getVersion();
     
 
                         }
@@ -143,47 +140,47 @@ public constructor (){
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.osName;
+                        return this->osName;
     
 }
 
 
-    public string getVersion(){
+    public: std::string getVersion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.osVersion;
+                        return this->osVersion;
     
 }
 
 
-    public string getArch(){
+    public: std::string getArch(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.osArch;
+                        return this->osArch;
     
 }
 
 
-    public CharacterSet getCharacterSet(){
+    public: CharacterSet getCharacterSet(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.characterSet;
+                        return this->characterSet;
     
 }
 
 
-    public bool isOverScan(){
+    public: bool isOverScan(){
 
 
 
@@ -193,7 +190,7 @@ public constructor (){
 }
 
 
-    public int32_t getOverScanXPercent(){
+    public: int32_t getOverScanXPercent(){
 
 
 
@@ -203,7 +200,7 @@ public constructor (){
 }
 
 
-    public int32_t getOverScanYPercent(){
+    public: int32_t getOverScanYPercent(){
 
 
 
@@ -213,17 +210,17 @@ public constructor (){
 }
 
 
-    public bool isScalable(){
+    public: bool isScalable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scalable;
+                        return this->scalable;
     
 }
 
 
-    public bool isAutoHide(){
+    public: bool isAutoHide(){
 
 
 
@@ -233,36 +230,36 @@ public constructor (){
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    NEW_LINE: string = CommonSeps.getInstance()!.NEW_LINE;;
+    std::string NEW_LINE = CommonSeps::getInstance().NEW_LINE;;
     
 
-    osBuffer: StringMaker = new StringMaker();;
+    StringMaker osBuffer = StringMaker();;
     
-osBuffer!.append("Operating System Info: \n");
+osBuffer.append("Operating System Info: \n");
     
-osBuffer!.append(this.getName());
+osBuffer.append(this->getName());
     
-osBuffer!.append(NEW_LINE);
+osBuffer.append(NEW_LINE);
     
-osBuffer!.append(this.getArch());
+osBuffer.append(this->getArch());
     
-osBuffer!.append(NEW_LINE);
+osBuffer.append(NEW_LINE);
     
-osBuffer!.append(this.getVersion());
+osBuffer.append(this->getVersion());
     
-osBuffer!.append(NEW_LINE);
+osBuffer.append(NEW_LINE);
     
-osBuffer!.append(StringUtil.getInstance()!.toString(this.getCharacterSet()));
+osBuffer.append(StringUtil::getInstance().toString(this->getCharacterSet()));
     
-osBuffer!.append(NEW_LINE);
+osBuffer.append(NEW_LINE);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return osBuffer!.toString();;
+                        return osBuffer.toString();;
     
 }
 

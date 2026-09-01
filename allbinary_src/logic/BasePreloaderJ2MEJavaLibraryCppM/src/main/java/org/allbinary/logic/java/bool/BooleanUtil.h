@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_H
         #define ORG_ALLBINARY_LOGIC_JAVA_BOOL_BOOLEANUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -57,25 +59,24 @@
 class BooleanUtil
             : public Object
          {
-        
 
-    private: static const instance: BooleanUtil = new BooleanUtil();
+    private: static BooleanUtil instance() { return BooleanUtil(); }
 
-    public static BooleanUtil getInstance();
+    public: static BooleanUtil getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public bool getFromString(string booleanString);
+private: BooleanUtil();
 
                 //@Throws(Exception.constructor)
             
-    public bool isStringBoolean(string booleanString);
+    public: bool getFromString(std::string booleanString);
 
-    public string toStringFromBooleanArray(std::vector<bool> booleanArray);
+                //@Throws(Exception.constructor)
+            
+    public: bool isStringBoolean(std::string booleanString);
+
+    public: std::string toStringFromBooleanArray(std::vector<bool> booleanArray);
 
 };
 

@@ -65,16 +65,15 @@
 class BasicGeographicMapFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public BasicGeographicMap getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory geographicMapCellTypeFactory){
+    public: BasicGeographicMap getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData, AllBinaryTiledLayerFactoryInterface tiledLayerFactoryInterface, GeographicMapCellPositionFactoryInterface geographicMapCellPositionFactoryInterface, GeographicMapCellTypeFactory geographicMapCellTypeFactory){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicGeographicMap(SmallIntegerSingletonFactory.getInstance()!.getAt(raceTrackInfo!.getId()!.intValue() +100 +1), raceTrackInfo!.getName(), raceTrackData!.getCellTypeIdToGeographicMapCellTypeArray(), tiledLayerFactoryInterface!.getMiniInstance(raceTrackData), BasicColorFactory.getInstance()!.CLEAR_COLOR, BasicColorFactory.getInstance()!.CLEAR_COLOR, geographicMapCellPositionFactoryInterface, new GeographicMapCellPositionBaseFactory(), geographicMapCellTypeFactory);
+                        return BasicGeographicMap(SmallIntegerSingletonFactory::getInstance().getAt(raceTrackInfo.getId().intValue() +100 +1), raceTrackInfo.getName(), raceTrackData.getCellTypeIdToGeographicMapCellTypeArray(), tiledLayerFactoryInterface.getMiniInstance(raceTrackData), BasicColorFactory::getInstance().CLEAR_COLOR, BasicColorFactory::getInstance().CLEAR_COLOR, geographicMapCellPositionFactoryInterface, GeographicMapCellPositionBaseFactory(), geographicMapCellTypeFactory);
     
 }
 

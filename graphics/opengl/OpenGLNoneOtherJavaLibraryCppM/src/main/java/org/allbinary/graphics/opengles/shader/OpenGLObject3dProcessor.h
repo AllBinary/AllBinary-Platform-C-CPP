@@ -37,13 +37,12 @@
 class OpenGLObject3dProcessor
             : public Object
          {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public process(GL10 gl, any = {} object3d);
+    public: void process(GL10 gl, Object* object3d);
 
-    public process(GL10 gl, any = {} object3d, int32_t index);
+    public: void process(GL10 gl, Object* object3d, int32_t index);
 
 };
 

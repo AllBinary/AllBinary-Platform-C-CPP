@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAP_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_SIMPLEGEOGRAPHICMAP_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -64,47 +66,46 @@
 class SimpleGeographicMap
             : public Object
          {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const id: Integer;
+    private: Integer id;
 
-    private: const name: string;
+    private: std::string name;
 
-    const cellTypeIdToGeographicMapCellType: std::vector<int32_t>;
+    protected: std::vector<int32_t> cellTypeIdToGeographicMapCellType;
 
-    private: const tiledLayer: AllBinaryTiledLayer;
+    private: AllBinaryTiledLayer tiledLayer;
 
-    private: foregroundBasicColor: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    private: BasicColor foregroundBasicColor = BasicColorFactory::getInstance().NULL_COLOR;
 
-    private: backgroundBasicColor: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    private: BasicColor backgroundBasicColor = BasicColorFactory::getInstance().NULL_COLOR;
 
-public constructor (Integer id, string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor);
+public: SimpleGeographicMap(Integer id, std::string name, std::vector<int32_t> cellTypeIdToGeographicMapCellType, AllBinaryTiledLayer tiledLayer, BasicColor foregroundBasicColor, BasicColor backgroundBasicColor);
 
-    public Integer getId();
+    public: Integer getId();
 
-    public string getName();
+    public: std::string getName();
 
-    public reset();
+    public: void reset();
 
-    public AllBinaryTiledLayer getAllBinaryTiledLayer();
+    public: AllBinaryTiledLayer getAllBinaryTiledLayer();
 
-    private: const geographicMapCellTypeFactory: GeographicMapCellTypeFactory = GeographicMapCellTypeFactory.getInstance()!;
+    private: const GeographicMapCellTypeFactory geographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellType getCellTypeAt(GeographicMapCellPosition cellPosition);
+    public: GeographicMapCellType getCellTypeAt(GeographicMapCellPosition cellPosition);
 
-    public int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
+    public: int32_t getCellTypeFromMapCellTypeInt(int32_t cellTypeId);
 
-    public BasicColor getForegroundBasicColor();
+    public: BasicColor getForegroundBasicColor();
 
-    setForegroundBasicColor(BasicColor foregroundBasicColor);
+    private: void setForegroundBasicColor(BasicColor foregroundBasicColor);
 
-    public BasicColor getBackgroundBasicColor();
+    public: BasicColor getBackgroundBasicColor();
 
-    setBackgroundBasicColor(BasicColor backgroundBasicColor);
+    private: void setBackgroundBasicColor(BasicColor backgroundBasicColor);
 
 };
 

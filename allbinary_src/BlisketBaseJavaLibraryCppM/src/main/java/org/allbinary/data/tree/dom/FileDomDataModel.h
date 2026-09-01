@@ -65,15 +65,14 @@
 class FileDomDataModel
             : public Object
         : public DomNodeInterface {
-        
 
-    private: file: AbFile;
+    private: AbFile file;
 
-public constructor (AbFile file);
+public: FileDomDataModel(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -51,80 +51,77 @@
 class GameConfigurationTextInput
             : public Object
          {
-        
 
-    private: static hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public static SIMULATOR_IP: GameConfigurationTextInput = new GameConfigurationTextInput("IP: ", "192.168.1.3");
+    public: static GameConfigurationTextInput SIMULATOR_IP = GameConfigurationTextInput("IP: ", "192.168.1.3");
 
-    public static SIMULATOR_PORT: GameConfigurationTextInput = new GameConfigurationTextInput("Port: ", "8010");
+    public: static GameConfigurationTextInput SIMULATOR_PORT = GameConfigurationTextInput("Port: ", "8010");
 
-    public static update(TextField textField){
+    public: static void update(TextField textField){
 
-    anyType: any = textField!.getLabel();;
+    Object* anyType = textField.getLabel();;
     
 
-    gameConfigurationTextInput: GameConfigurationTextInput = GameConfigurationTextInput.hashtable.get(anyType) as GameConfigurationTextInput;;
+    GameConfigurationTextInput gameConfigurationTextInput = GameConfigurationTextInput::hashtable.get(anyType) as GameConfigurationTextInput;;
     
-gameConfigurationTextInput!.setText(textField!.getString());
+gameConfigurationTextInput.setText(textField.getString());
     
 }
 
 
-    public static Hashtable<any, any> getHashtable(){
+    public: static Hashtable<any, any> getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationTextInput.hashtable;
+                        return GameConfigurationTextInput::hashtable;
     
 }
 
 
-    private: label: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string label = StringUtil::getInstance().EMPTY_STRING;
 
-    private: text: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string text = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string label, string text){
-
-            super();
-        this.setText(text);
+public: GameConfigurationTextInput(std::string label, std::string text){
+this->setText(text);
     
-this.setLabel(label);
+this->setLabel(label);
     
-GameConfigurationTextInput.hashtable.put(this.getLabel(), this);
+GameConfigurationTextInput::hashtable.put(this->getLabel(), this);
     
 }
 
 
-    public setText(string text){
-this.text= text;
+    public: void setText(std::string text){
+this->text= text;
     
 }
 
 
-    public string getText(){
+    public: std::string getText(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.text;
+                        return this->text;
     
 }
 
 
-    public setLabel(string label){
-this.label= label;
+    public: void setLabel(std::string label){
+this->label= label;
     
 }
 
 
-    public string getLabel(){
+    public: std::string getLabel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.label;
+                        return this->label;
     
 }
 

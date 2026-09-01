@@ -57,46 +57,41 @@
 class CssPropertyView
             : public Object
         : public DomNodeInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: cssProperty: CssProperty;
+    private: CssProperty cssProperty;
 
-public constructor (string name){
-
-            super();
-        this.cssProperty= new CssProperty(name);
+public: CssPropertyView(std::string name){
+this->cssProperty= CssProperty(name);
     
 }
 
 
-public constructor (Node node){
-
-            super();
-        this.cssProperty= new CssProperty(node);
+public: CssPropertyView(Node node){
+this->cssProperty= CssProperty(node);
     
 }
 
 
-    public CssProperty getProperty(){
+    public: CssProperty getProperty(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cssProperty;
+                        return this->cssProperty;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cssProperty!.toXmlNode(document);;
+                        return this->cssProperty.toXmlNode(document);;
     
 }
 

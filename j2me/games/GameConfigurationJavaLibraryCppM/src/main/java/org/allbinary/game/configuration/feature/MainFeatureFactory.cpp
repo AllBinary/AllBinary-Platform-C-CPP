@@ -52,29 +52,28 @@
 class MainFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: MainFeatureFactory = new MainFeatureFactory();
+    private: static MainFeatureFactory instance() { return MainFeatureFactory(); }
 
-    public static MainFeatureFactory getInstance(){
+    public: static MainFeatureFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MainFeatureFactory.instance;
+                        return MainFeatureFactory::instance();
     
 }
 
 
-    public const FULL_SCREEN: Feature = new Feature("Full Screen");
+    public: const Feature FULL_SCREEN = Feature("Full Screen");
 
-    public const TITLE_BAR: Feature = new Feature("Title Bar");
+    public: const Feature TITLE_BAR = Feature("Title Bar");
 
-    public const STATIC: Feature = new Feature("Static Dependent Feature");
+    public: const Feature STATIC = Feature("Static Dependent Feature");
 
-    public const LOAD_ONDEMAND: Feature = new Feature("Load OnDemand");
+    public: const Feature LOAD_ONDEMAND = Feature("Load OnDemand");
 
-    public const LOAD_ALL: Feature = new Feature("Load All");
+    public: const Feature LOAD_ALL = Feature("Load All");
 
 };
 

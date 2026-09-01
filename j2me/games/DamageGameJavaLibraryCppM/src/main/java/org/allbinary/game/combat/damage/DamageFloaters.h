@@ -50,13 +50,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DamageFloaters: public Paintable {
-        
 
-    private: static const SINGLETON: DamageFloaters = new DamageFloaters();
+    private: static const DamageFloaters SINGLETON = DamageFloaters();
 
-    public static DamageFloaters getInstance();
+    public: static DamageFloaters getInstance();
 
-    public add(int32_t damage);
+    public: void add(int32_t damage);
 
 };
 

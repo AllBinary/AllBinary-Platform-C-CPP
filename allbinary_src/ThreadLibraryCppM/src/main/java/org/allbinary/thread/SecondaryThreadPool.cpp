@@ -52,21 +52,20 @@
         #include "ThreadPool.h"
 //This is mainly for network communications.
 class SecondaryThreadPool: public ThreadPool {
-        
 
-    private: static const instance: ThreadPool = new SecondaryThreadPool("Secondary", 1, ThreadPool.NORMAL_PRIORITY);
+    private: static const ThreadPool instance = SecondaryThreadPool("Secondary", 1, ThreadPool::NORMAL_PRIORITY);
 
-    public static ThreadPool getInstance(){
+    public: static ThreadPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SecondaryThreadPool.instance;
+                        return SecondaryThreadPool::instance();
     
 }
 
 
-public constructor (string poolName, int32_t numThreads, int32_t priority){
+public: SecondaryThreadPool(std::string poolName, int32_t numThreads, int32_t priority){
             super(poolName, numThreads, priority);
                     
 
@@ -75,22 +74,22 @@ public constructor (string poolName, int32_t numThreads, int32_t priority){
 }
 
 
-    public runTask(Runnable task){
-this.logUtil!.putF(new StringMaker().append(StringUtil.getInstance()!.toString(task))!.appendlong(Date.now())!.toString(), this, this.threadPoolStrings!.ADD_TASK);
+    public: void runTask(Runnable task){
+this->logUtil.putF(StringMaker().append(StringUtil::getInstance().toString(task)).appendlong(Date.now()).toString(), this, this->threadPoolStrings.ADD_TASK);
     
 super.runTask(task);
     
 }
 
 
-    startTask(Runnable task){
-this.logUtil!.putF(new StringMaker().append(this.threadPoolStrings!.START_TASK)!.append(StringUtil.getInstance()!.toString(task))!.appendlong(Date.now())!.toString(), this, this.commonStrings!.RUN);
+    protected: void startTask(Runnable task){
+this->logUtil.putF(StringMaker().append(this->threadPoolStrings.START_TASK).append(StringUtil::getInstance().toString(task)).appendlong(Date.now()).toString(), this, this->commonStrings.RUN);
     
 }
 
 
-    completedTask(Runnable task){
-this.logUtil!.putF(new StringMaker().append(this.threadPoolStrings!.COMPLETE_TASK)!.append(StringUtil.getInstance()!.toString(task))!.appendlong(Date.now())!.toString(), this, this.commonStrings!.RUN);
+    protected: void completedTask(Runnable task){
+this->logUtil.putF(StringMaker().append(this->threadPoolStrings.COMPLETE_TASK).append(StringUtil::getInstance().toString(task)).appendlong(Date.now()).toString(), this, this->commonStrings.RUN);
     
 }
 

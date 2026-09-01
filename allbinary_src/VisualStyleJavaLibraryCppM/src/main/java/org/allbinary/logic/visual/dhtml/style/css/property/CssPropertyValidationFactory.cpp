@@ -53,24 +53,21 @@
 class CssPropertyValidationFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ValidationInterface getInstance(Node node){
+    public: static ValidationInterface getInstance(Node node){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new FontFamilyValidation(node) as ValidationInterface;
+                        return FontFamilyValidation(node) as ValidationInterface;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CssPropertyValidationFactory(){
+}
 
 
 };

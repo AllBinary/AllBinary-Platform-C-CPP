@@ -47,32 +47,29 @@
 class WebappClassLoaderInfo
             : public Object
          {
-        
 
-    private: static classLoader: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* classLoader = NullUtil::getInstance().NULL_OBJECT;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static setLoader(ClassLoader classLoader){
-WebappClassLoaderInfo.classLoader= classLoader;
+    public: static void setLoader(ClassLoader classLoader){
+WebappClassLoaderInfo::classLoader= classLoader;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static ClassLoader getLoader(){
+    public: static ClassLoader getLoader(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WebappClassLoaderInfo.classLoader as ClassLoader;
+                        return WebappClassLoaderInfo::classLoader as ClassLoader;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: WebappClassLoaderInfo(){
+}
 
 
 };

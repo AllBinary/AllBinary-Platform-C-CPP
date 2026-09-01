@@ -52,88 +52,85 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DownloadItemTag: public StoreValidationTransformTag {
-        
 
-public constructor (){
-
-            super();
-        }
+public: DownloadItemTag(){
+}
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.VIEW) == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.INSERT) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
-                                    this.setName("Add Inventory Item Validation View");
+                                    this->setName("Add Inventory Item Validation View");
     
-this.setObjectFile("views.admin.inventory.download.AddFileValidationView");
+this->setObjectFile("views.admin.inventory.download.AddFileValidationView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.DELETE) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.DELETE) == 0)
                         
                                     {
-                                    this.setName("Delete Inventory Item Validation View");
+                                    this->setName("Delete Inventory Item Validation View");
     
-this.setObjectFile("views.admin.inventory.download.DeleteFileValidationView");
+this->setObjectFile("views.admin.inventory.download.DeleteFileValidationView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.EDIT) == 0)
                         
                                     {
-                                    this.setName("Edit Inventory Item Validation View");
+                                    this->setName("Edit Inventory Item Validation View");
     
-this.setObjectFile("views.admin.inventory.download.EditValidationView");
+this->setObjectFile("views.admin.inventory.download.EditValidationView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.NEW) == 0)
                         
                                     {
-                                    this.setName("New Inventory Item Validation View");
+                                    this->setName("New Inventory Item Validation View");
     
-this.setObjectFile("views.admin.inventory.download.NewValidationView");
+this->setObjectFile("views.admin.inventory.download.NewValidationView");
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.UPDATE) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.UPDATE) == 0)
                         
                                     {
-                                    this.setName("Update Inventory Item Validation View");
+                                    this->setName("Update Inventory Item Validation View");
     
-this.setObjectFile("views.admin.inventory.download.UpdateFileValidationView");
+this->setObjectFile("views.admin.inventory.download.UpdateFileValidationView");
     
 
                                     }
@@ -142,7 +139,7 @@ this.setObjectFile("views.admin.inventory.download.UpdateFileValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -159,13 +156,13 @@ this.setObjectFile("views.admin.inventory.download.UpdateFileValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -178,7 +175,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

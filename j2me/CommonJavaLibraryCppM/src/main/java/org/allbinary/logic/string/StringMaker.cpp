@@ -4,6 +4,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/System.h"
@@ -213,6 +215,7 @@ this->charArray[this->currentLength++]= 'e';
 
                         if(newCapacity < minSize)
                         newCapacity= minSize;
+                                
 
     std::vector<char> copy = 
                                                         
@@ -222,7 +225,7 @@ this->charArray[this->currentLength++]= 'e';
 
     int32_t min = this->min(this->charArray.size(), newCapacity);;
     
-std::copy(this->charArray.begin(), this->charArray.begin() + min, copy.begin());
+std::copy(this->charArray.begin() + 0, this->charArray.begin() + 0 + min, copy.begin() + 0);
     
 this->charArray= copy;
     

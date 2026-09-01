@@ -68,23 +68,22 @@
 class FileTableMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: file: AbFile;
+    private: AbFile file;
 
-public constructor (AbFile file);
-
-                //@Throws(Exception.constructor)
-            
-    public any getKey();
+public: FileTableMapping(AbFile file);
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Object* getKey();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: Vector toVector();
+
+                //@Throws(Exception.constructor)
+            
+    public: HashMap<any, any> toHashMap();
 
 };
 

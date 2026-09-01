@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_SCROLLCURRENTSELECTIONFORM_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -89,142 +91,135 @@
 //#include "TempHorizontalItemIndexDx.h"
 #include "FormType.h"
 
-class ScrollCurrentSelectionForm: public ScrollSelectionForm: public UpdateMyFontInterface {
-        
+class ScrollCurrentSelectionForm: public ScrollSelectionForm, public UpdateMyFontInterface {
 
-    private: const moveForSmallScreen: bool;
+    private: bool moveForSmallScreen;
 
 //inner= member=true isStatic=
 class TempHorizontalFormProcessor: public Processor {
-        
 
-    private: const scrollCurrentSelectionForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
 
- constructor (ScrollCurrentSelectionForm scrollCurrentSelectionForm);
+: TempHorizontalFormProcessor(ScrollCurrentSelectionForm scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 
             
 //inner= member=true isStatic=
 class HorizontalFormProcessor: public Processor {
-        
 
-    private: const scrollCurrentSelectionForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
 
- constructor (ScrollCurrentSelectionForm scrollCurrentSelectionForm);
+: HorizontalFormProcessor(ScrollCurrentSelectionForm scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 
             
 //inner= member=true isStatic=
 class VerticalFormProcessor: public Processor {
-        
 
-    private: const scrollCurrentSelectionForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
 
- constructor (ScrollCurrentSelectionForm scrollCurrentSelectionForm);
+: VerticalFormProcessor(ScrollCurrentSelectionForm scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 
             
 //inner= member=true isStatic=
 class TempHorizontalItemIndexDx: public ItemIndexDx {
-        
 
-    private: const scrollCurrentSelectionForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
 
- constructor (ScrollCurrentSelectionForm scrollCurrentSelectionForm);
+: TempHorizontalItemIndexDx(ScrollCurrentSelectionForm scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
 
 };
 
             
 //inner= member=true isStatic=
 class HorizontalItemIndexDx: public ItemIndexDx {
-        
 
-    private: const scrollCurrentSelectionForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
 
- constructor (ScrollCurrentSelectionForm scrollCurrentSelectionForm);
+: HorizontalItemIndexDx(ScrollCurrentSelectionForm scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
 
 };
 
             
 //inner= member=true isStatic=
 class VerticalItemIndexDx: public ItemIndexDx {
-        
 
-    private: const scrollCurrentSelectionForm: ScrollCurrentSelectionForm;
+    private: ScrollCurrentSelectionForm scrollCurrentSelectionForm;
 
- constructor (ScrollCurrentSelectionForm scrollCurrentSelectionForm);
+: VerticalItemIndexDx(ScrollCurrentSelectionForm scrollCurrentSelectionForm);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    public: int32_t getDx(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
 
 };
 
             
-    const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    private: processor: Processor = Processor.getInstance()!;
+    private: Processor processor = Processor::getInstance();
 
-    private: preItemIndexDx: ItemIndexDx = ItemIndexDx.getInstance()!;
+    private: ItemIndexDx preItemIndexDx = ItemIndexDx::getInstance();
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-    private: maxWidth: int32_t = 0;
+    private: int32_t maxWidth = 0;
 
-public constructor (string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ScrollCurrentSelectionForm(std::string title, std::vector<ABCustomItem> items, ItemPaintableFactory formPaintableFactory, int32_t border, int32_t adjustedExtraBorder, bool moveForSmallScreen, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle, FormType formType);
+    public: void init(Rectangle rectangle, FormType formType);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    processTempHorizontalForm();
+    private: void processTempHorizontalForm();
 
-    processHorizontalForm();
+    private: void processHorizontalForm();
 
-    processVerticalForm();
+    private: void processVerticalForm();
 
-    int32_t getXTempHorizontalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    private: int32_t getXTempHorizontalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
 
-    int32_t getXHorizontalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    private: int32_t getXHorizontalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
 
-    int32_t getXVerticalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
+    private: int32_t getXVerticalForm(int32_t index, ABCustomItem item, int32_t dx, int32_t dy);
 
-    int32_t getDiffX(ABCustomItem item);
+    protected: int32_t getDiffX(ABCustomItem item);
 
-    public int32_t getDx();
+    public: int32_t getDx();
 
-    public int32_t getDy();
+    public: int32_t getDy();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

@@ -57,29 +57,28 @@
 class BlisketServletUtil
             : public Object
          {
-        
 
-    private: static const instance: BlisketServletUtil = new BlisketServletUtil();
+    private: static BlisketServletUtil instance() { return BlisketServletUtil(); }
 
-    public static BlisketServletUtil getInstance(){
+    public: static BlisketServletUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BlisketServletUtil.instance;
+                        return BlisketServletUtil::instance();
     
 }
 
 
-    public init(HttpServletRequest request){
+    public: void init(HttpServletRequest request){
 
-    urlGlobals: AppUrlGlobals = new AppUrlGlobals();;
+    AppUrlGlobals urlGlobals = AppUrlGlobals();;
     
-urlGlobals!.setWebappPath(request.getServletContext()!.getRealPath(AbPathData.getInstance()!.SEPARATOR));
+urlGlobals.setWebappPath(request.getServletContext().getRealPath(AbPathData::getInstance().SEPARATOR));
     
-URLGLOBALS.init(urlGlobals);
+URLGLOBALS::init(urlGlobals);
     
-WebappClassLoaderInfo.setLoader(constructor.namegetClassLoader());
+WebappClassLoaderInfo::setLoader(constructor.namegetClassLoader());
     
 }
 

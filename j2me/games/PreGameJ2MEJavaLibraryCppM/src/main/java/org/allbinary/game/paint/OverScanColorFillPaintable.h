@@ -48,11 +48,10 @@
         #include "ColorFillPaintable.h"
 
 class OverScanColorFillPaintable: public ColorFillPaintable {
-        
 
-public constructor (BasicColor basicColor);
+public: OverScanColorFillPaintable(BasicColor basicColor);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

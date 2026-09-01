@@ -45,11 +45,10 @@
 class GenericProfilesData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_PROFILES_NAME";
+    public: static std::string NAME = "GENERIC_PROFILES_NAME";
 
-private constructor ();
+private: GenericProfilesData();
 
 };
 

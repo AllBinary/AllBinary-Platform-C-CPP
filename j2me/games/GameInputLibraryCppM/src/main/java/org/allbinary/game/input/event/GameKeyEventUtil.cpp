@@ -43,25 +43,22 @@
 class GameKeyEventUtil
             : public Object
          {
-        
 
-    public static int32_t getKey(any = {} anyType){
+    public: static int32_t getKey(Object* anyType){
 
-    gameKeyEvent: GameKeyEvent = anyType as GameKeyEvent;;
+    GameKeyEvent gameKeyEvent = anyType as GameKeyEvent;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return gameKeyEvent!.getKey();;
+                        return gameKeyEvent.getKey();;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: GameKeyEventUtil(){
+}
 
 
 };

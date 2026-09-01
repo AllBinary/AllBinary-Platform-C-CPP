@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PART_PARTINTERFACEUTIL_H
         #define ORG_ALLBINARY_GAME_PART_PARTINTERFACEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -46,11 +48,10 @@
 class PartInterfaceUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: std::vector<PartInterface> = [];
+    private: static const std::vector<PartInterface> SINGLETON = {};
 
-    public static std::vector<PartInterface> getZeroArray();
+    public: static std::vector<PartInterface> getZeroArray();
 
 };
 

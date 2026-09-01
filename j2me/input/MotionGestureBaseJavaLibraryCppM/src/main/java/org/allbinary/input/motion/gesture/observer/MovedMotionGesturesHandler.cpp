@@ -51,33 +51,30 @@
 #include "MotionGestureEvent.h"
 
 class MovedMotionGesturesHandler: public BasicEventHandler {
-        
 
-    private: static const SINGLETON: MovedMotionGesturesHandler = new MovedMotionGesturesHandler();
+    private: static const MovedMotionGesturesHandler SINGLETON = MovedMotionGesturesHandler();
 
-    public static MovedMotionGesturesHandler getInstance(){
+    public: static MovedMotionGesturesHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MovedMotionGesturesHandler.SINGLETON;
+                        return MovedMotionGesturesHandler::SINGLETON;
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
+protected: MovedMotionGesturesHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    baseMotionGestureEventListener: BaseMotionGestureEventListener = eventListenerInterface as BaseMotionGestureEventListener;;
+    BaseMotionGestureEventListener baseMotionGestureEventListener = eventListenerInterface as BaseMotionGestureEventListener;;
     
-baseMotionGestureEventListener!.onMotionGestureEvent(eventObject as MotionGestureEvent);
+baseMotionGestureEventListener.onMotionGestureEvent(eventObject as MotionGestureEvent);
     
 }
 

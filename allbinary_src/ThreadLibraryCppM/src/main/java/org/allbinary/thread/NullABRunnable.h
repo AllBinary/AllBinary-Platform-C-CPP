@@ -42,14 +42,13 @@
         #include "ABRunnable.h"
 
 class NullABRunnable: public ABRunnable {
-        
 
-    private: static const instance: NullABRunnable = new NullABRunnable();
+    private: static NullABRunnable instance() { return NullABRunnable(); }
 
-    public static NullABRunnable getInstance();
+    public: static NullABRunnable getInstance();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 
 };
 

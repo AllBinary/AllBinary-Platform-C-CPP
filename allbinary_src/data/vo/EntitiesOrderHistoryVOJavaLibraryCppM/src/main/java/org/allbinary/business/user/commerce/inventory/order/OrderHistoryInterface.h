@@ -50,35 +50,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderHistoryInterface {
-        
 
-    setUserName(string value);
+    void setUserName(std::string value);
 
-    setDefaultShippingAddress(StreetAddress shippingAddress);
+    void setDefaultShippingAddress(StreetAddress shippingAddress);
 
-    setBillingAddress(StreetAddress billingAddress);
+    void setBillingAddress(StreetAddress billingAddress);
 
-    setPaymentInfo(Payment payment);
+    void setPaymentInfo(Payment payment);
 
-    setShipDate(string value);
+    void setShipDate(std::string value);
 
-    setOrderDate(string value);
+    void setOrderDate(std::string value);
 
-    setTransDate(string value);
+    void setTransDate(std::string value);
 
-    setCancelDate(string value);
+    void setCancelDate(std::string value);
 
-    setStatus(string value);
+    void setStatus(std::string value);
 
-    setSubTotal(Money value);
+    void setSubTotal(Money value);
 
-    setShippingCost(Money value);
+    void setShippingCost(Money value);
 
-    setTaxes(Money value);
+    void setTaxes(Money value);
 
-    setTotal(Money value);
+    void setTotal(Money value);
 
-    string getUserName();
+    std::string getUserName();
 
     StreetAddress getShippingAddress();
 
@@ -86,15 +85,15 @@ class OrderHistoryInterface {
 
     Payment getPaymentInfo();
 
-    string getShipDate();
+    std::string getShipDate();
 
-    string getOrderDate();
+    std::string getOrderDate();
 
-    string getTransDate();
+    std::string getTransDate();
 
-    string getCancelDate();
+    std::string getCancelDate();
 
-    string getStatus();
+    std::string getStatus();
 
     Money getSubTotal();
 
@@ -104,7 +103,7 @@ class OrderHistoryInterface {
 
     Money getTotal();
 
-    string getPaymentMethod();
+    std::string getPaymentMethod();
 
 };
 

@@ -46,11 +46,10 @@
 class StatePaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: StatePaintable = new StatePaintable();
+    private: static StatePaintable instance() { return StatePaintable(); }
 
-    public static StatePaintable getInstance();
+    public: static StatePaintable getInstance();
 
 };
 

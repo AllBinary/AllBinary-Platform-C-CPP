@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSPECIALANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSPECIALANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -64,28 +66,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ImageArrayAnimation.h"
 
-class ImageArraySpecialAnimation: public ImageArrayAnimation: public SpecialAnimationInterface {
-        
+class ImageArraySpecialAnimation: public ImageArrayAnimation, public SpecialAnimationInterface {
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(270);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(270);
 
-public constructor (std::vector<Image> imageArray, AnimationBehavior animationBehavior);
+public: ImageArraySpecialAnimation(std::vector<Image> imageArray, AnimationBehavior animationBehavior);
 
-    private: loopCount: int32_t = 0;
+    private: int32_t loopCount = 0;
 
-    public int32_t getLoopCount();
+    public: int32_t getLoopCount();
 
-    public setLastFrame();
+    public: void setLastFrame();
 
-    public reset();
+    public: void reset();
 
-    public nextFrame();
+    public: void nextFrame();
 
-    private: const loopCountTotal: int32_t = 1;
+    private: const int32_t loopCountTotal = 1;
 
-    public bool isComplete();
+    public: bool isComplete();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

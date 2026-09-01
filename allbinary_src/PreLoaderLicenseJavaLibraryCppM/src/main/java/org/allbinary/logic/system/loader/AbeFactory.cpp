@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Class.h"
@@ -74,51 +76,48 @@
 class AbeFactory
             : public Object
          {
-        
 
-    private: static const instance: AbeFactory = new AbeFactory();
+    private: static AbeFactory instance() { return AbeFactory(); }
 
-    public static AbeFactory getInstance(){
+    public: static AbeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeFactory.instance;
+                        return AbeFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: useCustomLoader: bool = false;
+    private: bool useCustomLoader = false;
 
-private constructor (){
-
-            super();
-        }
+private: AbeFactory(){
+}
 
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public any getInstance(AbeClientInformationInterface abeClientInformation, string className){
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new (this.constructor.name as any)();;
+                        return new (this->constructor.name as any)();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.put("Failure for: " +className, this, "getInstance(classname)", e);
+                                    this->logUtil.put("Failure for: " +className, this, "getInstance(classname)", e);
     
 
                                     }
@@ -134,10 +133,10 @@ private constructor (){
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.put("Failure for: " +className, this, "getInstance(classname)", e);
+                                    this->logUtil.put("Failure for: " +className, this, "getInstance(classname)", e);
     
 
                                     }
@@ -156,28 +155,28 @@ private constructor (){
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public any getInstance(AbeClientInformationInterface abeClientInformation, string className, std::vector<Function> classes, std::vector<any> params){
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation, std::string className, std::vector<Function> classes, std::vector<Object*> params){
 
-    constructor: Constructor = 
+    Constructor constructor = 
                 null
             ;;
     
 
         try {
             
-    parent: ClassLoader = WebappClassLoaderInfo.getLoader()!;;
+    ClassLoader parent = WebappClassLoaderInfo::getLoader();;
     
 
-                        if(this.useCustomLoader)
+                        if(this->useCustomLoader)
                         
                                     {
                                     
-    loader: ClassLoader = new AbeClassLoader(parent, AbKeys.getInstance()!.getKey(abeClientInformation, className));;
+    ClassLoader loader = AbeClassLoader(parent, AbKeys::getInstance().getKey(abeClientInformation, className));;
     
 
-    myClass: Function = loader.loadClass(className)!;;
+    Function myClass = loader.loadClass(className);;
     
-constructor= myClass!.getConstructor(classes);
+constructor= myClass.getConstructor(classes);
     
 
 
@@ -190,9 +189,9 @@ constructor= myClass!.getConstructor(classes);
                                 
                         else {
                             
-    myClass: Function = parent.loadClass(className)!;;
+    Function myClass = parent.loadClass(className);;
     
-constructor= myClass!.getConstructor(classes);
+constructor= myClass.getConstructor(classes);
     
 
 
@@ -208,21 +207,21 @@ constructor= myClass!.getConstructor(classes);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Failure for: ");
+stringBuffer.append("Failure for: ");
     
-stringBuffer!.append(className);
+stringBuffer.append(className);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(ConstructorUtil.view(constructor, CommonSeps.getInstance()!.NEW_LINE));
+stringBuffer.append(ConstructorUtil::view(constructor, CommonSeps::getInstance().NEW_LINE));
     
-this.logUtil!.put(stringBuffer!.toString(), this, "getInstance(className,params)", e);
+this->logUtil.put(stringBuffer.toString(), this, "getInstance(className,params)", e);
     
 
                                     }
@@ -238,21 +237,21 @@ this.logUtil!.put(stringBuffer!.toString(), this, "getInstance(className,params)
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Failure for: ");
+stringBuffer.append("Failure for: ");
     
-stringBuffer!.append(className);
+stringBuffer.append(className);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(ConstructorUtil.view(constructor, CommonSeps.getInstance()!.NEW_LINE));
+stringBuffer.append(ConstructorUtil::view(constructor, CommonSeps::getInstance().NEW_LINE));
     
-this.logUtil!.put(stringBuffer!.toString(), this, "getInstance(className,params)", e);
+this->logUtil.put(stringBuffer.toString(), this, "getInstance(className,params)", e);
     
 
                                     }
@@ -271,21 +270,21 @@ this.logUtil!.put(stringBuffer!.toString(), this, "getInstance(className,params)
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Function constructor(AbeClientInformationInterface abeClientInformation, string className){
+    public: Function constructor(AbeClientInformationInterface abeClientInformation, std::string className){
 
         try {
             
-    parent: ClassLoader = WebappClassLoaderInfo.getLoader()!;;
+    ClassLoader parent = WebappClassLoaderInfo::getLoader();;
     
 
-                        if(this.useCustomLoader)
+                        if(this->useCustomLoader)
                         
                                     {
                                     
-    loader: ClassLoader = new AbeClassLoader(parent, AbKeys.getInstance()!.getKey(abeClientInformation, className));;
+    ClassLoader loader = AbeClassLoader(parent, AbKeys::getInstance().getKey(abeClientInformation, className));;
     
 
-    c: Function = loader.loadClass(className)!;;
+    Function c = loader.loadClass(className);;
     
 
 
@@ -298,7 +297,7 @@ this.logUtil!.put(stringBuffer!.toString(), this, "getInstance(className,params)
                                 
                         else {
                             
-    c: Function = parent.loadClass(className)!;;
+    Function c = parent.loadClass(className);;
     
 
 
@@ -314,10 +313,10 @@ this.logUtil!.put(stringBuffer!.toString(), this, "getInstance(className,params)
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.put("Failure for: " +className, this, "getClass(className)", e);
+                                    this->logUtil.put("Failure for: " +className, this, "getClass(className)", e);
     
 
                                     }
@@ -333,10 +332,10 @@ this.logUtil!.put(stringBuffer!.toString(), this, "getInstance(className,params)
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.put("Failure for: " +className, this, "getClass(className)", e);
+                                    this->logUtil.put("Failure for: " +className, this, "getClass(className)", e);
     
 
                                     }

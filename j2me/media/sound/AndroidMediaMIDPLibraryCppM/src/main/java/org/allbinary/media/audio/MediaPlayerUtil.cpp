@@ -52,40 +52,39 @@
 class MediaPlayerUtil
             : public Object
          {
-        
 
-    private: static const instance: MediaPlayerUtil = new MediaPlayerUtil();
+    private: static MediaPlayerUtil instance() { return MediaPlayerUtil(); }
 
-    public static MediaPlayerUtil getInstance(){
+    public: static MediaPlayerUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MediaPlayerUtil.instance;
+                        return MediaPlayerUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public waitForMediaPlayer(MediaPlayer mediaPlayer){
+    public: void waitForMediaPlayer(MediaPlayer mediaPlayer){
 
-    MESSAGE: string = "Not Stopped Waiting";;
+    std::string MESSAGE = "Not Stopped Waiting";;
     
 
-    METHOD_NAME: string = "wait";;
+    std::string METHOD_NAME = "wait";;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while(mediaPlayer!.isPlaying() && index < 50)
+        while(mediaPlayer.isPlaying() && index < 50)
         {
-this.logUtil!.putF(MESSAGE, this, METHOD_NAME);
+this->logUtil.putF(MESSAGE, this, METHOD_NAME);
     
-Thread.sleep(100);
+Thread::sleep(100);
     
 index++;
     

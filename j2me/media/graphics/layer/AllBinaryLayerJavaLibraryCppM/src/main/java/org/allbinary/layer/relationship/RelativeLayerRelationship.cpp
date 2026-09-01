@@ -59,47 +59,46 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RelativeLayerRelationship: public RelativeRelationship {
-        
 
-    private: layer: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer layer = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public constructor (AllBinaryLayer layer, GPoint point, BasicArrayList typesAllowedList){
+public: RelativeLayerRelationship(AllBinaryLayer layer, GPoint point, BasicArrayList typesAllowedList){
             super(point, typesAllowedList);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.layer= layer;
+this->layer= layer;
     
 }
 
 
-    public int32_t getX(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layer.getXP() +super.getX();
+                        return this->layer.getXP() +super.getX();
     
 }
 
 
-    public int32_t getY(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layer.getYP() +super.getY();
+                        return this->layer.getYP() +super.getY();
     
 }
 
 
-    public int32_t getZ(){
+    public: int32_t getZ(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layer.getZP() +super.getZ();
+                        return this->layer.getZP() +super.getZ();
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COMPARISONIMAGEINPUTOUTPUT_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_COMPARISONIMAGEINPUTOUTPUT_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -86,21 +88,20 @@
 class ComparisonImageInputOutput
             : public Object
         : public ImageIOInterface {
-        
 
-    private: static const ROOT_NAME: string = "_Changed_";
+    private: static const std::string ROOT_NAME = "_Changed_";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public save(Long frame);
+public: ComparisonImageInputOutput();
 
                 //@Throws(Exception.constructor)
             
-    public save(ImageComparisonResult imageComparisonResult, Long frame);
+    public: void save(Long frame);
+
+                //@Throws(Exception.constructor)
+            
+    public: void save(ImageComparisonResult imageComparisonResult, Long frame);
 
 };
 

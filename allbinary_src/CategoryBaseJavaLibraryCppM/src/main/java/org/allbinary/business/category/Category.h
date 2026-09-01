@@ -92,108 +92,107 @@
 class Category
             : public Object
         : public CategoryInterface {
-        
 
-    private: static const NOT_ROOT: string = "This is not the root so it has no file path.";
+    private: static const std::string NOT_ROOT = "This is not the root so it has no file path.";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: categoryHierarchyInterface: CategoryHierarchyInterface;
+    private: CategoryHierarchyInterface categoryHierarchyInterface;
 
-    private: categoryPropertiesInterface: CategoryPropertiesInterface;
+    private: CategoryPropertiesInterface categoryPropertiesInterface;
 
-    private: const childCategoryVector: Vector = new Vector();
+    private: const Vector childCategoryVector = Vector();
 
-    private: const typeVector: Vector = new Vector();
+    private: const Vector typeVector = Vector();
 
-    private: const PROPERTIES: Integer = new Integer(1);
+    private: const Integer PROPERTIES = Integer(1);
 
-    private: const CATEGORY: Integer = new Integer(0);
+    private: const Integer CATEGORY = Integer(0);
 
-public constructor (CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
+public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
 
-public constructor (CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
+public: Category(CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level);
 
-public constructor (CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public any getKey();
+public: Category(CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getRootFilePath();
+    public: Object* getKey();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getFilePath();
+    public: AbPath getRootFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getWebAppPath();
+    public: AbPath getFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getPath();
+    public: AbPath getWebAppPath();
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getPath();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool addChildProperty(CategoryPropertiesInterface categoryPropertiesInterface);
+    public: bool addChildProperty(CategoryPropertiesInterface categoryPropertiesInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool addChild(CategoryInterface categoryInterface);
+    public: bool addChild(CategoryInterface categoryInterface);
 
-    public Vector getChildNodes();
+    public: Vector getChildNodes();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool removeChild(CategoryInterface categoryInterface);
+    public: bool removeChild(CategoryInterface categoryInterface);
 
-    removal(Vector removalVector);
+    private: void removal(Vector removalVector);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    bool removeDuplicateChild(CategoryInterface categoryInterface);
+    private: bool removeDuplicateChild(CategoryInterface categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public bool isLeaf();
+    public: bool isLeaf();
 
-    public CategoryPropertiesInterface getProperties();
+    public: CategoryPropertiesInterface getProperties();
 
-    public setProperties(CategoryPropertiesInterface categoryPropertiesInterface);
+    public: void setProperties(CategoryPropertiesInterface categoryPropertiesInterface);
 
-    public CategoryHierarchyInterface getHierarchy();
+    public: CategoryHierarchyInterface getHierarchy();
 
-    public setHierarchy(CategoryHierarchyInterface categoryHierarchyInterface);
+    public: void setHierarchy(CategoryHierarchyInterface categoryHierarchyInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo();
+    public: std::string validationInfo();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Vector toVector();
 
                 //@Throws(Exception.constructor)
             
-    public log();
+    public: void log();
 
 };
 

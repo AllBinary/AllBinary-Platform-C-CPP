@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PART_COUNTEDLAYERSHUDPAINTABLE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -74,33 +76,32 @@
 class CountedLayersHudPaintable
             : public Object
         : public PaintableInterface, public UpdateMyFontInterface {
-        
 
-    private: static XXStringWidth: int32_t = 0;
+    private: static int32_t XXStringWidth = 0;
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const partInterfaceArray: std::vector<PartInterface>;
+    private: std::vector<PartInterface> partInterfaceArray;
 
-    private: const countedTotalStringColor: int32_t;
+    private: int32_t countedTotalStringColor;
 
-    private: const countedPartsBorder: int32_t;
+    private: int32_t countedPartsBorder;
 
-    private: const startIndex: int32_t;
+    private: int32_t startIndex;
 
-    private: const dropSize: int32_t;
+    private: int32_t dropSize;
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-public constructor (std::vector<PartInterface> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder);
+public: CountedLayersHudPaintable(std::vector<PartInterface> partInterfaceArray, int32_t dropSize, int32_t startIndex, int32_t countedTotalStringColor, int32_t countedPartsBorder);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

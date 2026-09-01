@@ -55,20 +55,19 @@
 class TrackingEventCircularStaticPool
             : public Object
          {
-        
 
-    private: static instance: TrackingEventCircularStaticPool = new TrackingEventCircularStaticPool();
+    private: static TrackingEventCircularStaticPool instance = TrackingEventCircularStaticPool();
 
-    public static TrackingEventCircularStaticPool getInstance();
+    public: static TrackingEventCircularStaticPool getInstance();
 
-    private: EVENT_POOL: AllBinaryEventCircularPool = new AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
 
-    public init();
+    public: void init();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public TrackingEvent getNextInstance(AllBinaryLayer layerInterface);
+    public: TrackingEvent getNextInstance(AllBinaryLayer layerInterface);
 
 };
 

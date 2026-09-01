@@ -45,11 +45,10 @@
         #include "ImageProcessorInputCompositeInterface.h"
 
 class ImageProcessedVisitor: public ImageProcessorInputCompositeInterface {
-        
 
                 //@Throws(IOException.constructor)
             
-    visit(BufferedImage generatedBufferedImage, string nameEnding, int32_t index)
+    void visit(BufferedImage generatedBufferedImage, std::string nameEnding, int32_t index)
 
 };
 

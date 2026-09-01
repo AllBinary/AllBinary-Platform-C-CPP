@@ -56,15 +56,14 @@
 class LogUserEmailEventListenerModule
             : public Object
         : public UserEmailEventListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: LogUserEmailEventListenerModule();
 
                 //@Throws(Exception.constructor)
             
-    public onEmailSendRequest(EmailEvent userEmailInfoEvent);
+    public: void onEmailSendRequest(EmailEvent userEmailInfoEvent);
 
 };
 

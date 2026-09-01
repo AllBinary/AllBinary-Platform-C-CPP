@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_COMPARISON_CHANGEDPIXELSUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -74,23 +76,22 @@
 class ChangedPixelsUtil
             : public Object
          {
-        
 
-    private: static const START_X: int32_t = 0;
+    private: static const int32_t START_X = 0;
 
-    private: static const START_Y: int32_t = 0;
+    private: static const int32_t START_Y = 0;
 
-    private: static const OFFSET: int32_t = 0;
+    private: static const int32_t OFFSET = 0;
 
-    private: static const SCAN_SIZE: int32_t = 0;
+    private: static const int32_t SCAN_SIZE = 0;
 
-    private: static const CLEAR_INT_ARRAY: std::vector<int32_t> = new Array(1800 *1600);
+    private: static const std::vector<int32_t> CLEAR_INT_ARRAY = new Array(1800 *1600);
 
                 //@Throws(Exception.constructor)
             
-    public static std::vector<BufferedImageCacheable> generateBufferedImageChacheables(ImageComparisonResult imageComparisonInfo);
+    public: static std::vector<BufferedImageCacheable> generateBufferedImageChacheables(ImageComparisonResult imageComparisonInfo);
 
-private constructor ();
+private: ChangedPixelsUtil();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_ITEM_LAYERINTERFACEFACTORYIMAGEITEM_H
         #define ORG_ALLBINARY_GAME_LAYER_ITEM_LAYERINTERFACEFACTORYIMAGEITEM_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -61,17 +63,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LayerInterfaceFactoryImageItem: public ABCustomImageItem {
-        
 
-    private: const animationArray: std::vector<Animation>;
+    private: std::vector<Animation> animationArray;
 
-    private: const layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface;
+    private: LayerInterfaceFactoryInterface layerInterfaceFactoryInterface;
 
-public constructor (string label, Image img, int32_t layout, string altText, BasicColor basicColor, std::vector<Animation> animationArray, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+public: LayerInterfaceFactoryImageItem(std::string label, Image img, int32_t layout, std::string altText, BasicColor basicColor, std::vector<Animation> animationArray, LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 
-    public LayerInterfaceFactoryInterface getLayerInterfaceFactoryInterface();
+    public: LayerInterfaceFactoryInterface getLayerInterfaceFactoryInterface();
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

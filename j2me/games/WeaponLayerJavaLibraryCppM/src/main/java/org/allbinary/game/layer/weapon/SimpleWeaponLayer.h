@@ -78,13 +78,12 @@
 #include "CollidableWeaponBehavior.h"
 
 class SimpleWeaponLayer: public WeaponLayer {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Animation createDestroyed();
+    public: static Animation createDestroyed();
 
-public constructor (string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
+public: SimpleWeaponLayer(std::string name, RemoteInfo remoteInfo, int32_t multiPlayerType, Movement movement, Animation animationInterface, Animation destroyedAnimationInterface, Rectangle rectangle, ViewPositionBase viewPosition);
 
 };
 

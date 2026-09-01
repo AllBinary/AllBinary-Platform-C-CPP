@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Integer.h"
@@ -54,26 +56,25 @@
 class KeyNameDefaultComboBoxModelFactory
             : public Object
          {
-        
 
-    public static DefaultComboBoxModel getInstance(){
+    public: static DefaultComboBoxModel getInstance(){
 
-    defaultComboBoxModel: DefaultComboBoxModel = new DefaultComboBoxModel();;
+    DefaultComboBoxModel defaultComboBoxModel = DefaultComboBoxModel();;
     
 
-    keyArray: std::vector<Integer> = KeySingletonFactory.getArray()!;;
+    std::vector<Integer> keyArray = KeySingletonFactory::getArray();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < keyArray!.length; index++)
+    int32_t index = 0;index < keyArray.size(); index++)
         {
 
-    keyAsString: string = KeyEvent.getKeyText(keyArray[index]!)!;;
+    std::string keyAsString = KeyEvent::getKeyText(keyArray[index]!);;
     
-defaultComboBoxModel!.addElement(keyAsString);
+defaultComboBoxModel.addElement(keyAsString);
     
 }
 
@@ -86,10 +87,8 @@ defaultComboBoxModel!.addElement(keyAsString);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: KeyNameDefaultComboBoxModelFactory(){
+}
 
 
 };

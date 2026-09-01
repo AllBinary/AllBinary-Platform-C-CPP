@@ -64,33 +64,32 @@
 class Rectangle
             : public Object
          {
-        
 
-    private: point: GPoint;
+    private: GPoint point;
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-public constructor (GPoint point, int32_t width, int32_t height);
+public: Rectangle(GPoint point, int32_t width, int32_t height);
 
-    public GPoint getPoint();
+    public: GPoint getPoint();
 
-    public setPoint(GPoint point);
+    public: void setPoint(GPoint point);
 
-    public int32_t getMaxX();
+    public: int32_t getMaxX();
 
-    public int32_t getMaxY();
+    public: int32_t getMaxY();
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public setWidth(int32_t width);
+    public: void setWidth(int32_t width);
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public setHeight(int32_t height);
+    public: void setHeight(int32_t height);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -45,14 +45,11 @@
 class InitInfoDocument
             : public Object
          {
-        
 
-    private: initInfoDocument: Document;
+    private: Document initInfoDocument;
 
-public constructor (){
-
-            super();
-        }
+public: InitInfoDocument(){
+}
 
 
 };

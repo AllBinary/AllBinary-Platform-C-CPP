@@ -79,17 +79,16 @@
         #include "BasePatrolAI.h"
 
 class FlockingAI: public BasicAI {
-        
 
-    private: const allowedDistance: int32_t;
+    private: int32_t allowedDistance;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: FlockingAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    int32_t getXYDistance(AllBinaryLayer allBinaryLayer);
+    private: int32_t getXYDistance(AllBinaryLayer allBinaryLayer);
 
 };
 

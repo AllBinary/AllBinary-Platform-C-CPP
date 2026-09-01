@@ -44,9 +44,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NullRecordStore: public RecordStore {
-        
 
-    public static NULL_RECORD_STORE: NullRecordStore = new NullRecordStore();
+    public: static NullRecordStore NULL_RECORD_STORE = NullRecordStore();
 
 };
 

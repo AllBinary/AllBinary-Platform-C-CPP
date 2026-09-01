@@ -54,19 +54,18 @@
         #include "WaypointRunnableLogHelper.h"
 
 class WaypointRunnableSelectedLogHelper: public WaypointRunnableLogHelper {
-        
 
-    private: static const instanceC: WaypointRunnableSelectedLogHelper = new WaypointRunnableSelectedLogHelper();
+    private: static const WaypointRunnableSelectedLogHelper instanceC = WaypointRunnableSelectedLogHelper();
 
-    public static WaypointRunnableSelectedLogHelper getInstance();
+    public: static WaypointRunnableSelectedLogHelper getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public start(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void start(PathFindingLayerInterface pathFindingLayerInterface);
 
-    public end(PathFindingLayerInterface pathFindingLayerInterface);
+    public: void end(PathFindingLayerInterface pathFindingLayerInterface);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_TSUTIL_H
         #define ORG_ALLBINARY_TSUTIL_H
 
+            #include <vector>
+        
             #include "../../java/lang/Object.h"
         
             #include "../../java/lang/InterruptedException.h"
@@ -68,35 +70,34 @@
 class TsUtil
             : public Object
          {
-        
 
-    private: static const instance: TsUtil = new TsUtil();
+    private: static TsUtil instance() { return TsUtil(); }
 
-    public static TsUtil getInstance();
+    public: static TsUtil getInstance();
 
-    public int32_t hashCode(any = {} anyType);
+    public: int32_t hashCode(Object* anyType);
 
                 //@Throws(InterruptedException.constructor)
             
-    public waitFor(any = {} any, int64_t timeoutMillis);
+    public: void waitFor(Object* any, int64_t timeoutMillis);
 
                 //@Throws(RecordStoreNotOpenException.constructor, InvalidRecordIDException.constructor, RecordStoreException.constructor)
             
-    public std::vector<int8_t> getRecord(any = {} anyType, int32_t recordId);
+    public: std::vector<int8_t> getRecord(Object* anyType, int32_t recordId);
 
-    public int32_t compareTo(string a, string b);
+    public: int32_t compareTo(std::string a, std::string b);
 
-    public bool equalIgnoreCase(string a, string b);
+    public: bool equalIgnoreCase(std::string a, std::string b);
 
-    public bool equalsNotstring(any = {} anyType, any = {} object2);
+    public: bool equalsNotstring(Object* anyType, Object* object2);
 
-    public int32_t toNumberFromChar(char value);
+    public: int32_t toNumberFromChar(char value);
 
-    public int32_t toNumber(int32_t value);
+    public: int32_t toNumber(int32_t value);
 
-    public std::vector<int8_t> getByteArray(string string);
+    public: std::vector<int8_t> getByteArray(std::string string);
 
-    public bool isItemListener(Displayable owner);
+    public: bool isItemListener(Displayable owner);
 
 };
 

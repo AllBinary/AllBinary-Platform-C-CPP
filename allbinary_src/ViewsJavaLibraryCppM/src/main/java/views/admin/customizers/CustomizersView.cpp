@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
@@ -96,53 +98,52 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CustomizersView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class CustomizersView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const customizersVector: Vector;
+    protected: Vector customizersVector;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: CustomizersView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.customizersVector= TransformInfoEntityBuilder.getInstance()!.getNames(this.getWeblisketSession()!.getStoreName());
+this->customizersVector= TransformInfoEntityBuilder::getInstance().getNames(this->getWeblisketSession().getStoreName());
     
 }
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    node: Node = document.createElement(TransformTemplateCustomizersData.NAME)!;;
+    Node node = document.createElement(TransformTemplateCustomizersData::NAME);;
     
 
-    unsortedCustomizerViewVector: Vector = new Vector();;
+    Vector unsortedCustomizerViewVector = Vector();;
     
 
-    size: int32_t = this.customizersVector!.length!;;
+    int32_t size = this->customizersVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    viewName: string = this.customizersVector!.get(index) as string;;
+    std::string viewName = this->customizersVector.get(index) as string;;
     
 
-                        if(viewName!.indexOf(CustomizerTransformInfoData.NAME) > 0 && viewName!.indexOf(GLOBALS2.EDIT) > 0 && viewName!.indexOf(BodyData.getInstance()!.VIEWNAMEKEY) > 0 && viewName!.indexOf(TitleData.getInstance()!.VIEWNAMEKEY) > 0)
+                        if(viewName.indexOf(CustomizerTransformInfoData::NAME) > 0 && viewName.indexOf(GLOBALS2::EDIT) > 0 && viewName.indexOf(BodyData::getInstance().VIEWNAMEKEY) > 0 && viewName.indexOf(TitleData::getInstance().VIEWNAMEKEY) > 0)
                         
                                     {
-                                    unsortedCustomizerViewVector!.add(viewName);
+                                    unsortedCustomizerViewVector.add(viewName);
     
 
                                     }
@@ -150,22 +151,22 @@ this.customizersVector= TransformInfoEntityBuilder.getInstance()!.getNames(this.
 }
 
 
-    objectArray: std::vector<any> = unsortedCustomizerViewVector!.toArray() as any[];;
+    std::vector<Object*> objectArray = unsortedCustomizerViewVector.toArray() as any[];;
     
-Arrays.sort(objectArray, new StringComparator());
+Arrays::sort(objectArray, StringComparator());
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < objectArray!.length; index++)
+    int32_t index = 0;index < objectArray.size(); index++)
         {
 
-    viewName: string = objectArray[index]! as string;;
+    std::string viewName = objectArray[index]! as string;;
     
 
-    viewNameNode: Node = ModDomHelper.createNameValueNodes(document, TransformTemplateCustomizerData.NAME, viewName, TransformTemplateCustomizerUtil.getInstance()!.getPageNameHack(viewName, this.getWeblisketSession()!.getStoreName()))!;;
+    Node viewNameNode = ModDomHelper::createNameValueNodes(document, TransformTemplateCustomizerData::NAME, viewName, TransformTemplateCustomizerUtil::getInstance().getPageNameHack(viewName, this->getWeblisketSession().getStoreName()));;
     
 node.appendChild(viewNameNode);
     
@@ -182,10 +183,10 @@ node.appendChild(viewNameNode);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -201,18 +202,18 @@ node.appendChild(viewNameNode);
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -225,10 +226,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

@@ -48,21 +48,20 @@
 class DamageableBaseBehavior
             : public Object
         : public DamageableInterface {
-        
 
-    private: static const instance: DamageableBaseBehavior = new DamageableBaseBehavior();
+    private: static DamageableBaseBehavior instance() { return DamageableBaseBehavior(); }
 
-    public static DamageableBaseBehavior getInstance();
+    public: static DamageableBaseBehavior getInstance();
 
-    public string getName();
-
-                //@Throws(Exception.constructor)
-            
-    public damage(int32_t damage, int32_t damageType);
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDamage(int32_t damageType);
+    public: void damage(int32_t damage, int32_t damageType);
+
+                //@Throws(Exception.constructor)
+            
+    public: int32_t getDamage(int32_t damageType);
 
 };
 

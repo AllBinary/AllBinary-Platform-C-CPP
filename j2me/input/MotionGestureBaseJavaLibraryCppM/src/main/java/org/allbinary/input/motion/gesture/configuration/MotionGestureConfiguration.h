@@ -66,59 +66,58 @@
 class MotionGestureConfiguration
             : public Object
          {
-        
 
-    private: diagonalMotionGestureAllowed: bool = true;
+    private: bool diagonalMotionGestureAllowed = true;
 
-    private: diagonalTolerance: int32_t = 7;
+    private: int32_t diagonalTolerance = 7;
 
-    private: minimumMotionGesture: int32_t = 9;
+    private: int32_t minimumMotionGesture = 9;
 
-    private: button: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string button = StringUtil::getInstance().EMPTY_STRING;
 
-    private: color: BasicColor = BasicColorFactory.getInstance()!.BLUE;
+    private: BasicColor color = BasicColorFactory::getInstance().BLUE;
 
-    private: executingActions: bool = true;
+    private: bool executingActions = true;
 
-    private: mouseButtonMask: int32_t = 0;
+    private: int32_t mouseButtonMask = 0;
 
-    private: activeCommands: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList activeCommands = BasicArrayListD();
 
-public constructor ();
+public: MotionGestureConfiguration();
 
-    public addMotionGestureAction(BasicArrayList list, CompleteMotionGestureInputEvent commandAction);
+    public: void addMotionGestureAction(BasicArrayList list, CompleteMotionGestureInputEvent commandAction);
 
-    public clearMotionGestureAction();
+    public: void clearMotionGestureAction();
 
-    public BasicArrayList getAssociateCommandActionsList();
+    public: BasicArrayList getAssociateCommandActionsList();
 
-    public bool isDiagonalMotionGestureAllowed();
+    public: bool isDiagonalMotionGestureAllowed();
 
-    public bool isExecutingActionsAllowed();
+    public: bool isExecutingActionsAllowed();
 
-    public setExecutingActionsAllowed(bool executingActionAllowed);
+    public: void setExecutingActionsAllowed(bool executingActionAllowed);
 
-    public setDiagonalMotionGestureAllowed(bool diagonalMotionGestureAllowed);
+    public: void setDiagonalMotionGestureAllowed(bool diagonalMotionGestureAllowed);
 
-    public int32_t getDiagonalTolerance();
+    public: int32_t getDiagonalTolerance();
 
-    public setDiagonalTolerance(int32_t diagonalTolerance);
+    public: void setDiagonalTolerance(int32_t diagonalTolerance);
 
-    public int32_t getMinimumMotionGesture();
+    public: int32_t getMinimumMotionGesture();
 
-    public setMinimumMotionGesture(int32_t minimumMotionGesture);
+    public: void setMinimumMotionGesture(int32_t minimumMotionGesture);
 
-    public string getButton();
+    public: std::string getButton();
 
-    public setButton(string button);
+    public: void setButton(std::string button);
 
-    public BasicColor getColor();
+    public: BasicColor getColor();
 
-    public setColor(BasicColor color);
+    public: void setColor(BasicColor color);
 
-    public int32_t getMouseButtonMask();
+    public: int32_t getMouseButtonMask();
 
-    public setMouseButtonMask(int32_t mouseButtonMask);
+    public: void setMouseButtonMask(int32_t mouseButtonMask);
 
 };
 

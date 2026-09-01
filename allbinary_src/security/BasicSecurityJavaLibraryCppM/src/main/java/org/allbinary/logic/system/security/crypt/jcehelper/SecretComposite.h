@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_SECRETCOMPOSITE_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <javax/crypto/Cipher.h>
@@ -53,27 +55,26 @@
         #include "BaseSecretComposite.h"
 
 class SecretComposite: public BaseSecretComposite {
-        
 
-    private: const byteUtil: ByteUtil = ByteUtil.getInstance()!;
+    private: const ByteUtil byteUtil = ByteUtil::getInstance();
 
-    private: const cipher: Cipher;
+    private: Cipher cipher;
 
-    private: const secretKey: SecretKey;
+    private: SecretKey secretKey;
 
-    private: key: std::vector<int8_t>;
+    private: std::vector<int8_t> key;
 
-public constructor (SecretKey secretKey, Cipher cipher, std::vector<int8_t> key);
-
-                //@Throws(Exception.constructor)
-            
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array);
+public: SecretComposite(SecretKey secretKey, Cipher cipher, std::vector<int8_t> key);
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 
-    std::vector<int8_t> mutilate(std::vector<int8_t> array);
+                //@Throws(Exception.constructor)
+            
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
+
+    private: std::vector<int8_t> mutilate(std::vector<int8_t> array);
 
 };
 

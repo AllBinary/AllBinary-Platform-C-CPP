@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUT_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_ACTIONS_SCRIPT_CONDITION_PROCESSORS_INPUT_KEYBOARDACTIONSCRIPTINPUT_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../../../../java/lang/Integer.h"
@@ -93,73 +95,72 @@
 #include "KeyboardActionScriptInputData.h"
 #include "KeyboardInputAutomationProcessor.h"
 
-class KeyboardActionScriptInput: public BasicProfileActionScriptInput: public KeyboardActionScriptInputInterface {
-        
+class KeyboardActionScriptInput: public BasicProfileActionScriptInput, public KeyboardActionScriptInputInterface {
 
-    private: static const NAME: string = "Keyboard";
+    private: static const std::string NAME = "Keyboard";
 
-    static string getText(std::vector<Integer> integerArray);
+    private: static std::string getText(std::vector<Integer> integerArray);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: keyArray: std::vector<Integer> = 
-                                                        [
-                                                            KeySingletonFactory.getInstance(KeyEvent.VK_0)
-                                                        ];
+    private: std::vector<Integer> keyArray = 
+                                                        {
+                                                            KeySingletonFactory::getInstance(KeyEvent::VK_0)
+                                                        };
 
-    private: keyboardActionScriptInputJPanel: KeyboardActionScriptInputJPanel;
+    private: KeyboardActionScriptInputJPanel keyboardActionScriptInputJPanel;
 
-    private: press: bool= false;
+    private: bool press= false;
 
-    private: release: bool= false;
+    private: bool release= false;
 
-    private: delayBetweenKeys: int32_t= 0;
+    private: int32_t delayBetweenKeys= 0;
 
-public constructor (Node node);
+public: KeyboardActionScriptInput(Node node);
 
-public constructor ();
+public: KeyboardActionScriptInput();
 
-    public int32_t getDelayBetweenKeys();
+    public: int32_t getDelayBetweenKeys();
 
-    public setDelayBetweenKeys(int32_t delayBetweenKeys);
+    public: void setDelayBetweenKeys(int32_t delayBetweenKeys);
 
-    public bool isPress();
+    public: bool isPress();
 
-    public setPress(bool press);
+    public: void setPress(bool press);
 
-    public bool isRelease();
+    public: bool isRelease();
 
-    public setRelease(bool release);
+    public: void setRelease(bool release);
 
-    public bool isNormal();
+    public: bool isNormal();
 
-    public setNormal();
+    public: void setNormal();
 
-    public std::vector<Integer> getKeyArray();
+    public: std::vector<Integer> getKeyArray();
 
-    public setKeyArray(std::vector<Integer> keyArray);
+    public: void setKeyArray(std::vector<Integer> keyArray);
 
-    public showDialog();
+    public: void showDialog();
 
-    public string getText();
+    public: std::string getText();
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    std::vector<Integer> integerArrayValue(string text);
+    private: std::vector<Integer> integerArrayValue(std::string text);
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public process(Long frame);
+    public: Node toXmlNode(Document document);
 
-    public log();
+                //@Throws(Exception.constructor)
+            
+    public: void process(Long frame);
 
-    public string toString();
+    public: void log();
+
+    public: std::string toString();
 
 };
 

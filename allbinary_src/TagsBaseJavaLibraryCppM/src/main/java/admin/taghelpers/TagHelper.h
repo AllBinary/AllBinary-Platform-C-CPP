@@ -49,9 +49,8 @@
 class TagHelper
             : public Object
         : public TagHelperInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
 };
 

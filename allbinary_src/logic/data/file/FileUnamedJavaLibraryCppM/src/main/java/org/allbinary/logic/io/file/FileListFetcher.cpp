@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -68,27 +70,26 @@
 class FileListFetcher
             : public Object
          {
-        
 
-    private: static const instance: FileListFetcher = new FileListFetcher();
+    private: static FileListFetcher instance() { return FileListFetcher(); }
 
-    public static FileListFetcher getInstance(){
+    public: static FileListFetcher getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileListFetcher.instance;
+                        return FileListFetcher::instance();
     
 }
 
 
-    private: const subDirectory: SubDirectory = SubDirectory.getInstance()!;
+    private: const SubDirectory subDirectory = SubDirectory::getInstance();
 
-    public BasicArrayList getFiles(string path){
+    public: BasicArrayList getFiles(std::string path){
 
         try {
             
-    files: BasicArrayList = this.subDirectory!.search(AbFile.createAbFile(path))!;;
+    BasicArrayList files = this->subDirectory.search(AbFile::createAbFile(path));;
     
 
 
@@ -115,32 +116,31 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public BasicArrayList getFiles(string path, std::vector<string> includeExtensions){
+    public: BasicArrayList getFiles(std::string path, std::vector<std::string> includeExtensions){
 
         try {
             
-    includeExtensionBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
     
 
-    size: int32_t = includeExtensions!.length
-                ;;
+    int32_t size = includeExtensions.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-includeExtensionBasicArrayList!.add(includeExtensions[index]!);
+includeExtensionBasicArrayList.add(includeExtensions[index]!);
     
 }
 
 
-    visitorFileFilter: VisitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
+    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
     
 
-    files: BasicArrayList = this.subDirectory!.search(visitorFileFilter, AbFile.createAbFile(path))!;;
+    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -167,19 +167,19 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public BasicArrayList getFiles(string path, string includeExtension){
+    public: BasicArrayList getFiles(std::string path, std::string includeExtension){
 
         try {
             
-    includeExtensionBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
     
-includeExtensionBasicArrayList!.add(includeExtension);
-    
-
-    visitorFileFilter: VisitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
+includeExtensionBasicArrayList.add(includeExtension);
     
 
-    files: BasicArrayList = this.subDirectory!.search(visitorFileFilter, AbFile.createAbFile(path))!;;
+    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList));;
+    
+
+    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -206,19 +206,19 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public BasicArrayList getFiles(string path, string pathIncludes, string includeExtension){
+    public: BasicArrayList getFiles(std::string path, std::string pathIncludes, std::string includeExtension){
 
         try {
             
-    includeExtensionBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
     
-includeExtensionBasicArrayList!.add(includeExtension);
-    
-
-    visitorFileFilter: VisitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList, pathIncludes));;
+includeExtensionBasicArrayList.add(includeExtension);
     
 
-    files: BasicArrayList = this.subDirectory!.search(visitorFileFilter, AbFile.createAbFile(path))!;;
+    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionBooleanFileVisitor(includeExtensionBasicArrayList, pathIncludes));;
+    
+
+    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -245,32 +245,31 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public BasicArrayList getTrackedFiles(string path, std::vector<string> includeExtensions){
+    public: BasicArrayList getTrackedFiles(std::string path, std::vector<std::string> includeExtensions){
 
         try {
             
-    includeExtensionBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
     
 
-    size: int32_t = includeExtensions!.length
-                ;;
+    int32_t size = includeExtensions.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-includeExtensionBasicArrayList!.add(includeExtensions[index]!);
+includeExtensionBasicArrayList.add(includeExtensions[index]!);
     
 }
 
 
-    visitorFileFilter: VisitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
+    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
     
 
-    files: BasicArrayList = this.subDirectory!.search(visitorFileFilter, AbFile.createAbFile(path))!;;
+    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -297,19 +296,19 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public BasicArrayList getTrackedFiles(string path, string includeExtension){
+    public: BasicArrayList getTrackedFiles(std::string path, std::string includeExtension){
 
         try {
             
-    includeExtensionBasicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList includeExtensionBasicArrayList = BasicArrayListD();;
     
-includeExtensionBasicArrayList!.add(includeExtension);
-    
-
-    visitorFileFilter: VisitorFileFilter = new VisitorFileFilter(new DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
+includeExtensionBasicArrayList.add(includeExtension);
     
 
-    files: BasicArrayList = this.subDirectory!.search(visitorFileFilter, AbFile.createAbFile(path))!;;
+    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryOrIncludeFileExtensionAndTrackedBooleanFileVisitor(includeExtensionBasicArrayList));;
+    
+
+    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 
@@ -336,14 +335,14 @@ console.log("Error: " +e +"\nMsg: " +e.message);
 }
 
 
-    public BasicArrayList getDirectories(string path){
+    public: BasicArrayList getDirectories(std::string path){
 
         try {
             
-    visitorFileFilter: VisitorFileFilter = new VisitorFileFilter(new DirectoryBooleanFileVisitor());;
+    VisitorFileFilter visitorFileFilter = VisitorFileFilter(DirectoryBooleanFileVisitor());;
     
 
-    files: BasicArrayList = this.subDirectory!.search(visitorFileFilter, AbFile.createAbFile(path))!;;
+    BasicArrayList files = this->subDirectory.search(visitorFileFilter, AbFile::createAbFile(path));;
     
 
 

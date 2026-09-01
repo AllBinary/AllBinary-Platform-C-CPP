@@ -73,21 +73,20 @@
 class ValidatorBase
             : public Object
         : public ValidatorBaseInterface {
-        
 
-    private: static const instance: ValidatorBase = new ValidatorBase();
+    private: static ValidatorBase instance() { return ValidatorBase(); }
 
-    public static ValidatorBase getInstance();
+    public: static ValidatorBase getInstance();
 
-public constructor ();
+public: ValidatorBase();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Hashtable<any, any> toHashtable();
+    public: Hashtable<any, any> toHashtable();
 
-    public BasicArrayList toList();
+    public: BasicArrayList toList();
 
 };
 

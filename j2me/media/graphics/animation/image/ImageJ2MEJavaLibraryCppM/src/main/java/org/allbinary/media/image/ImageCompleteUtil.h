@@ -50,15 +50,14 @@
 class ImageCompleteUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCompleteUtil = new ImageCompleteUtil();
+    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
 
-    public static ImageCompleteUtil getInstance();
+    public: static ImageCompleteUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public waitForImage(Image image, string name);
+    public: void waitForImage(Image image, std::string name);
 
 };
 

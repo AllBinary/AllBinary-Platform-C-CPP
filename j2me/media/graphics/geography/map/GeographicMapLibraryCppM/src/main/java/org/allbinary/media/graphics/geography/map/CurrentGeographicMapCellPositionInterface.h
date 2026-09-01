@@ -42,7 +42,6 @@
         #include "GeographicMapCellPosition.h"
 
 class CurrentGeographicMapCellPositionInterface {
-        
 
     GeographicMapCellPosition getCurrentGeographicMapCellPosition();
 

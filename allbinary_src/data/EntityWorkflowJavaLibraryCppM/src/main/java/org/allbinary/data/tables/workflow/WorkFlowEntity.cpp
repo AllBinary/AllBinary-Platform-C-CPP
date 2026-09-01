@@ -85,40 +85,39 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WorkFlowEntityInterface.h"
 
-class WorkFlowEntity: public AbSqlBean: public WorkFlowEntityInterface {
-        
+class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    const tableName: string = "workflows";
+    protected: const std::string tableName = "workflows";
 
-    private: const METHOD_GET: string = "get()";
+    private: const std::string METHOD_GET = "get()";
 
-    private: const METHOD_UPDATE: string = "update";
+    private: const std::string METHOD_UPDATE = "update";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: WorkFlowEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -128,10 +127,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -141,23 +140,23 @@ this.setTableName(this.tableName);
 }
 
 
-    public delete(string name, string storeName){
+    public: void delete_(std::string name, std::string storeName){
 
         try {
             
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(WorkFlowData.getInstance()!.NAME, name);
+keysAndValues.put(WorkFlowData::getInstance().NAME, name);
     
-keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
+keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 super.deleteWhere(keysAndValues);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, this.commonStrings!.delete);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
@@ -167,10 +166,10 @@ super.deleteWhere(keysAndValues);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }
@@ -182,34 +181,34 @@ super.deleteWhere(keysAndValues);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public WorkFlowInterface get(string name, string storeName){
+    public: WorkFlowInterface get(std::string name, std::string storeName){
 
         try {
             
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(WorkFlowData.getInstance()!.NAME, name);
+keysAndValues.put(WorkFlowData::getInstance().NAME, name);
     
-keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
+keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 
-    hashMap: HashMap<any, any> = super.getRow(keysAndValues)!;;
+    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DbWorkFlowFactory.getInstance()!.getInstance(this.abeClientInformation, hashMap) as WorkFlowInterface;
+                        return DbWorkFlowFactory::getInstance().getInstance(this->abeClientInformation, hashMap) as WorkFlowInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, METHOD_GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, METHOD_GET, e);
     
 
                                     }
@@ -225,10 +224,10 @@ keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, METHOD_GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, METHOD_GET, e);
     
 
                                     }
@@ -243,40 +242,40 @@ keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
 }
 
 
-    public Vector get(string storeName){
+    public: Vector get(std::string storeName){
 
         try {
             
-    workFlowsVector: Vector = new Vector();;
+    Vector workFlowsVector = Vector();;
     
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
-    
-
-    hashMapVector: Vector = super.getRows(keysAndValues)!;;
+keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 
-    size: int32_t = hashMapVector!.length!;;
+    Vector hashMapVector = super.getRows(keysAndValues);;
+    
+
+    int32_t size = hashMapVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    workFlowHashMap: HashMap<any, any> = hashMapVector!.get(i) as HashMap<any, any>;;
+    HashMap<any, any> workFlowHashMap = hashMapVector.get(i) as HashMap<any, any>;;
     
 
                         if(workFlowHashMap != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    workFlowsVector!.add(DbWorkFlowFactory.getInstance()!.getInstance(abeClientInformation, workFlowHashMap));
+                                    workFlowsVector.add(DbWorkFlowFactory::getInstance().getInstance(abeClientInformation, workFlowHashMap));
     
 
                                     }
@@ -294,10 +293,10 @@ keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.METHOD_GET, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->METHOD_GET, e);
     
 
                                     }
@@ -313,15 +312,15 @@ keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
 }
 
 
-    public update(HashMap<any, any> updatedValues){
+    public: void update(HashMap<any, any> updatedValues){
 
         try {
             
-    wherekeysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> wherekeysAndValues = HashMap<any, any>();;
     
-wherekeysAndValues!.put(WorkFlowData.getInstance()!.NAME, updatedValues!.get(WorkFlowData.getInstance()!.NAME) as string);
+wherekeysAndValues.put(WorkFlowData::getInstance().NAME, updatedValues.get(WorkFlowData::getInstance().NAME) as string);
     
-wherekeysAndValues!.put(StoreFrontData.getInstance()!.NAME, updatedValues!.get(StoreFrontData.getInstance()!.NAME) as string);
+wherekeysAndValues.put(StoreFrontData::getInstance().NAME, updatedValues.get(StoreFrontData::getInstance().NAME) as string);
     
 super.updateWhere(wherekeysAndValues, updatedValues);
     
@@ -330,10 +329,10 @@ super.updateWhere(wherekeysAndValues, updatedValues);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, METHOD_UPDATE, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, METHOD_UPDATE, e);
     
 
                                     }
@@ -343,35 +342,35 @@ super.updateWhere(wherekeysAndValues, updatedValues);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    workFlowData: WorkFlowData = WorkFlowData.getInstance()!;;
+    WorkFlowData workFlowData = WorkFlowData::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(tableName)!.append(this.sqlStrings!.START)!.append(workFlowData!.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(StoreFrontData.getInstance()!.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DynamicObjectData.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(workFlowData!.DATA)!.append(this.sqlTypeStrings!.BLOB_NOT_NULL)!.append(EntryData.getInstance()!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.LASTMODIFIED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(workFlowData!.NAME)!.append(this.sqlStrings!.END);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(workFlowData.NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(StoreFrontData::getInstance().NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DynamicObjectData::NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(workFlowData.DATA).append(this->sqlTypeStrings.BLOB_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(workFlowData.NAME).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return super.createTable(this->createTableStatement());;
     
 }
 
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
 
 

@@ -48,68 +48,67 @@
 class SimpleWeaponProperties
             : public Object
          {
-        
 
-    private: damage: int32_t= 0;
+    private: int32_t damage= 0;
 
-    private: dissipation: int16_t= 0;
+    private: int16_t dissipation= 0;
 
-    private: range: int32_t= 0;
+    private: int32_t range= 0;
 
-    public set(SimpleWeaponProperties simpleWeaponProperties){
-this.setDamage(simpleWeaponProperties!.getDamage());
+    public: void set(SimpleWeaponProperties simpleWeaponProperties){
+this->setDamage(simpleWeaponProperties.getDamage());
     
-this.setDissipation(simpleWeaponProperties!.getDissipation());
+this->setDissipation(simpleWeaponProperties.getDissipation());
     
-this.setRange(simpleWeaponProperties!.getRange());
-    
-}
-
-
-    public setDamage(int32_t damage){
-this.damage= damage;
+this->setRange(simpleWeaponProperties.getRange());
     
 }
 
 
-    public int32_t getDamage(){
+    public: void setDamage(int32_t damage){
+this->damage= damage;
+    
+}
+
+
+    public: int32_t getDamage(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.damage;
+                        return this->damage;
     
 }
 
 
-    public setDissipation(int16_t dissipation){
-this.dissipation= dissipation;
+    public: void setDissipation(int16_t dissipation){
+this->dissipation= dissipation;
     
 }
 
 
-    public int16_t getDissipation(){
+    public: int16_t getDissipation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dissipation;
+                        return this->dissipation;
     
 }
 
 
-    public int32_t getRange(){
+    public: int32_t getRange(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.range;
+                        return this->range;
     
 }
 
 
-    public setRange(int32_t range){
-this.range= range;
+    public: void setRange(int32_t range){
+this->range= range;
     
 }
 

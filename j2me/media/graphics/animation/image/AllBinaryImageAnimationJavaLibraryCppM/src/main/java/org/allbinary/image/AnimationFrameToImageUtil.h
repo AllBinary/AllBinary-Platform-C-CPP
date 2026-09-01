@@ -57,19 +57,18 @@
 class AnimationFrameToImageUtil
             : public Object
          {
-        
 
-    private: static const instance: AnimationFrameToImageUtil = new AnimationFrameToImageUtil();
+    private: static AnimationFrameToImageUtil instance() { return AnimationFrameToImageUtil(); }
 
-    public static AnimationFrameToImageUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public Image getInstanceTranslate(int32_t width, int32_t height, Animation animationInterface);
+    public: static AnimationFrameToImageUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Image getInstanceWH(int32_t width, int32_t height, Animation animationInterface);
+    public: Image getInstanceTranslate(int32_t width, int32_t height, Animation animationInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: Image getInstanceWH(int32_t width, int32_t height, Animation animationInterface);
 
 };
 

@@ -70,86 +70,83 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //SWTToJ2ME
-class OwnershipPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class OwnershipPaintable: public Paintable, public UpdateMyFontInterface {
 
-    public static OwnershipPaintable getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new OwnershipPaintable();
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    private: const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
-
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
-
-    private: const COPYRIGHT: string = "AllBinary Copyright (c) 2011";
-
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
-
-    private: color: int32_t = this.basicColor!.intValue()!;
-
-    private: anchor: int32_t = Anchor.TOP_LEFT;
-
-    private: COPYRIGHT_Y: int32_t= 0;
-
-    private: beginWidth: int32_t= 0;
-
-private constructor (){
-
-            super();
-        }
-
-
-    public updateMeasurement(Graphics graphics){
-
-    font: Font = graphics.getFont()!;;
-    
-this.COPYRIGHT_Y= 2 *font.getHeight();
-    
-this.beginWidth= (font.stringWidth(this.COPYRIGHT)>>1);
-    
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public setBasicColorP(BasicColor basicColor){
-this.basicColor= basicColor;
-    
-this.color= basicColor!.intValue();
-    
-}
-
-
-    public BasicColor getBasicColorP(){
+    public: static OwnershipPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicColor;
+                        return OwnershipPaintable();
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    private: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
+
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
+
+    private: const std::string COPYRIGHT = "AllBinary Copyright (c) 2011";
+
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
+
+    private: int32_t color = this->basicColor.intValue();
+
+    private: int32_t anchor = Anchor::TOP_LEFT;
+
+    private: int32_t COPYRIGHT_Y= 0;
+
+    private: int32_t beginWidth= 0;
+
+private: OwnershipPaintable(){
+}
+
+
+    public: void updateMeasurement(Graphics graphics){
+
+    Font font = graphics.getFont();;
     
-graphics.setColor(this.color);
+this->COPYRIGHT_Y= 2 *font.getHeight();
+    
+this->beginWidth= (font.stringWidth(this->COPYRIGHT)>>1);
+    
+this->myFontProcessor= MyFontProcessor::getInstance();
+    
+}
+
+
+    public: void setBasicColorP(BasicColor basicColor){
+this->basicColor= basicColor;
+    
+this->color= basicColor.intValue();
+    
+}
+
+
+    public: BasicColor getBasicColorP(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->basicColor;
+    
+}
+
+
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
+    
+graphics.setColor(this->color);
     
 
-    halfWidth: int32_t = this.displayInfo!.getLastHalfWidth()!;;
+    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
     
 
-    height: int32_t = this.displayInfo!.getLastHeight()!;;
+    int32_t height = this->displayInfo.getLastHeight();;
     
-graphics.drawString(this.COPYRIGHT, halfWidth -this.beginWidth, height -this.COPYRIGHT_Y, this.anchor);
+graphics.drawString(this->COPYRIGHT, halfWidth -this->beginWidth, height -this->COPYRIGHT_Y, this->anchor);
     
 }
 

@@ -41,7 +41,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RTSInterface {
-        
 
     bool isSelfUpgradeable();
 
@@ -55,7 +54,7 @@ class RTSInterface {
 
     int32_t getCost();
 
-    downgrade();
+    void downgrade();
 
     int32_t getDowngradeCost();
 
@@ -65,7 +64,7 @@ class RTSInterface {
 
     bool isUpgradeable();
 
-    upgrade();
+    void upgrade();
 
 };
 

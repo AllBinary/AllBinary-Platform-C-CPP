@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLSHADERCOMPOSITE_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_NULLSHADERCOMPOSITE_H
 
+            #include <vector>
+        
 #include <javax/microedition/khronos/opengles/GL10.h>
 
       
@@ -58,18 +60,12 @@
 #include "ModelViewProjection.h"
 
 class NullShaderComposite: public ShaderComposite {
-        
 
-    private: static const instance: NullShaderComposite = new class extends NullShaderComposite
-                                {
-                                
-    public init(GL10 gl);
-                                }
-                            ;
+    private: static NullShaderComposite instance() { return NullShaderComposite(); }
 
-    public static ShaderComposite getInstance();
+    public: static ShaderComposite getInstance();
 
-public constructor (string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor, OpenGLProcessor disableProgramShaderOpenGLProcessor);
+public: NullShaderComposite(std::string requiresOpenGLVersion, std::vector<Shader> shaderArray, CompositeShaderUpdater compositeShaderUpdater, ShaderInitializer shaderInitializer, ModelViewProjection modelViewProjection, OpenGLProcessor colorOpenGLProcessor, OpenGLProcessor vertexOpenGLProcessor, OpenGLProcessor disableProgramShaderOpenGLProcessor);
 
 };
 

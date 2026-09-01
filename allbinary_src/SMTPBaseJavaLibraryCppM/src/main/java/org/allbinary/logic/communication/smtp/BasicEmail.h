@@ -68,33 +68,32 @@
 class BasicEmail
             : public Object
         : public EmailInterface {
-        
 
-    private: email: AbEmail;
+    private: AbEmail email;
 
-public constructor (EmailInfo emailInfo, string to);
+public: BasicEmail(EmailInfo emailInfo, std::string to);
 
-    public Email getEmail();
+    public: Email getEmail();
 
-    public MimeMessage getMimeMessage();
+    public: MimeMessage getMimeMessage();
 
-    public string getDebugInfo();
-
-                //@Throws(Exception.constructor)
-            
-    public string log();
+    public: std::string getDebugInfo();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: std::string log();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: Document toXmlDoc();
 
 };
 

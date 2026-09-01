@@ -89,15 +89,14 @@
 class TransformInfoPropertiesDocument
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const document: Document;
+    private: Document document;
 
-public constructor (string filePath);
+public: TransformInfoPropertiesDocument(std::string filePath);
 
-    public HashMap<any, any> toTransformInfoPropertiesHashMap();
+    public: HashMap<any, any> toTransformInfoPropertiesHashMap();
 
 };
 

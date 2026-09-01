@@ -77,67 +77,66 @@
 class InputRobot
             : public Object
         : public InputRobotInterface {
-        
 
-    public static const NAME: string = "Java Robot";
+    public: static const std::string NAME = "Java Robot";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: robot: Robot;
+    private: Robot robot;
 
-public constructor (GraphicsDevice graphicsDevice);
+public: InputRobot(GraphicsDevice graphicsDevice);
 
-    public string getName();
+    public: std::string getName();
 
-    public HelpSet getHelpSet();
+    public: HelpSet getHelpSet();
 
-    public Point getMousePoint();
-
-                //@Throws(Exception.constructor)
-            
-    public mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y);
-
-    public mouseMove(Point point);
-
-    public mouseMove(int32_t x, int32_t y);
+    public: Point getMousePoint();
 
                 //@Throws(Exception.constructor)
             
-    public mouseMoveToTarget(Rectangle rectangle);
+    public: void mouseMoveToTarget(Rectangle rectangle, Integer x, Integer y);
 
-    public BufferedImage createScreenCapture(Rectangle screenRect);
+    public: void mouseMove(Point point);
 
-    public delay(Integer ms);
+    public: void mouseMove(int32_t x, int32_t y);
 
-    public Integer getAutoDelay();
+                //@Throws(Exception.constructor)
+            
+    public: void mouseMoveToTarget(Rectangle rectangle);
 
-    public Color getPixelColor(Integer x, Integer y);
+    public: BufferedImage createScreenCapture(Rectangle screenRect);
 
-    public bool isAutoWaitForIdle();
+    public: void delay(Integer ms);
 
-    public keyPress(Integer keycode);
+    public: Integer getAutoDelay();
 
-    public keyRelease(Integer keycode);
+    public: Color getPixelColor(Integer x, Integer y);
 
-    public mouseMove(Integer x, Integer y);
+    public: bool isAutoWaitForIdle();
 
-    public mousePress(Integer buttons);
+    public: void keyPress(Integer keycode);
 
-    public mouseRelease(Integer buttons);
+    public: void keyRelease(Integer keycode);
 
-    public mouseWheel(Integer wheelAmt);
+    public: void mouseMove(Integer x, Integer y);
 
-    public setAutoDelay(Integer ms);
+    public: void mousePress(Integer buttons);
 
-    public setAutoWaitForIdle(bool isOn);
+    public: void mouseRelease(Integer buttons);
 
-    public string toString();
+    public: void mouseWheel(Integer wheelAmt);
 
-    public waitForIdle();
+    public: void setAutoDelay(Integer ms);
 
-    public on();
+    public: void setAutoWaitForIdle(bool isOn);
 
-    public off();
+    public: std::string toString();
+
+    public: void waitForIdle();
+
+    public: void on();
+
+    public: void off();
 
 };
 

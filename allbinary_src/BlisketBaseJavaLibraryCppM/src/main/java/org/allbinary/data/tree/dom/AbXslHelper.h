@@ -63,23 +63,22 @@
 class AbXslHelper
             : public Object
          {
-        
 
-    private: static const instance: AbXslHelper = new AbXslHelper();
+    private: static AbXslHelper instance() { return AbXslHelper(); }
 
-    public static AbXslHelper getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public string translate(AbFile xslFile, AbFile xmlFile);
+    public: static AbXslHelper getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string translate(AbPath xslPath, AbPath xmlPath);
+    public: std::string translate(AbFile xslFile, AbFile xmlFile);
 
                 //@Throws(Exception.constructor)
             
-    public string translate(string xsltFilePath, string xmlFilePath);
+    public: std::string translate(AbPath xslPath, AbPath xmlPath);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string translate(std::string xsltFilePath, std::string xmlFilePath);
 
 };
 

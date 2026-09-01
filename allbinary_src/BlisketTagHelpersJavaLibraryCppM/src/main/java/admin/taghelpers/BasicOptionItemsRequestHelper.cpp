@@ -79,143 +79,140 @@
         #include "ModifyTable.h"
 
 class BasicOptionItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: optionOneTitle: string;
+    private: std::string optionOneTitle;
 
-    private: defaultOptionItem: string;
+    private: std::string defaultOptionItem;
 
-    private: defaultOptionValue: string;
+    private: std::string defaultOptionValue;
 
-    private: optionItem: Vector;
+    private: Vector optionItem;
 
-    private: optionValue: Vector;
+    private: Vector optionValue;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.request= pageContext!.getRequest() as HttpServletRequest;
+public: BasicOptionItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    public getFormData(){
-this.optionItem= new Vector();
+    public: void getFormData(){
+this->optionItem= Vector();
     
-this.optionValue= new Vector();
+this->optionValue= Vector();
     
-this.id= this.request.getParameter(BasicItemData.ID);
+this->id= this->request.getParameter(BasicItemData::ID);
     
-this.optionOneTitle= this.request.getParameter(BasicOptionItemData.OPTION_ONE_TITLE);
+this->optionOneTitle= this->request.getParameter(BasicOptionItemData::OPTION_ONE_TITLE);
     
-this.defaultOptionItem= this.request.getParameter(BasicOptionItemData.DEFAULT_OPTION_ITEM);
+this->defaultOptionItem= this->request.getParameter(BasicOptionItemData::DEFAULT_OPTION_ITEM);
     
-this.defaultOptionValue= this.request.getParameter(BasicOptionItemData.DEFAULT_OPTION_VALUE);
+this->defaultOptionValue= this->request.getParameter(BasicOptionItemData::DEFAULT_OPTION_VALUE);
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_ONE_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_ONE_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_ONE_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_ONE_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_TWO_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_TWO_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_TWO_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_TWO_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_THREE_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_THREE_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_THREE_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_THREE_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_FOUR_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_FOUR_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_FOUR_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_FOUR_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_FIVE_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_FIVE_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_FIVE_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_FIVE_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_SIX_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_SIX_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_SIX_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_SIX_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_SEVEN_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_SEVEN_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_SEVEN_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_SEVEN_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_EIGHT_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_EIGHT_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_EIGHT_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_EIGHT_VALUE));
     
-this.optionItem!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_NINE_ITEM));
+this->optionItem.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_NINE_ITEM));
     
-this.optionValue!.add(this.request.getParameter(BasicOptionItemData.OPTION_ONE_NINE_VALUE));
+this->optionValue.add(this->request.getParameter(BasicOptionItemData::OPTION_ONE_NINE_VALUE));
     
-this.timeEntered= this.request.getParameter(EntryData.getInstance()!.TIMECREATED);
+this->timeEntered= this->request.getParameter(EntryData::getInstance().TIMECREATED);
     
-this.lastModified= this.request.getParameter(EntryData.getInstance()!.LASTMODIFIED);
+this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODIFIED);
     
 }
 
 
-    HashMap<any, any> getHashMap(){
+    private: HashMap<any, any> getHashMap(){
 
-    values: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> values = HashMap<any, any>();;
     
-values.put(BasicItemData.ID, id);
+values.put(BasicItemData::ID, id);
     
-values.put(BasicOptionItemData.OPTION_ONE_ONE_ITEM, this.optionItem!.get(0));
+values.put(BasicOptionItemData::OPTION_ONE_ONE_ITEM, this->optionItem.get(0));
     
-values.put(BasicOptionItemData.OPTION_ONE_ONE_VALUE, this.optionValue!.get(0));
+values.put(BasicOptionItemData::OPTION_ONE_ONE_VALUE, this->optionValue.get(0));
     
-values.put(BasicOptionItemData.OPTION_ONE_TWO_ITEM, this.optionItem!.get(1));
+values.put(BasicOptionItemData::OPTION_ONE_TWO_ITEM, this->optionItem.get(1));
     
-values.put(BasicOptionItemData.OPTION_ONE_TWO_VALUE, this.optionValue!.get(1));
+values.put(BasicOptionItemData::OPTION_ONE_TWO_VALUE, this->optionValue.get(1));
     
-values.put(BasicOptionItemData.OPTION_ONE_THREE_ITEM, this.optionItem!.get(2));
+values.put(BasicOptionItemData::OPTION_ONE_THREE_ITEM, this->optionItem.get(2));
     
-values.put(BasicOptionItemData.OPTION_ONE_THREE_VALUE, this.optionValue!.get(2));
+values.put(BasicOptionItemData::OPTION_ONE_THREE_VALUE, this->optionValue.get(2));
     
-values.put(BasicOptionItemData.OPTION_ONE_FOUR_ITEM, this.optionItem!.get(3));
+values.put(BasicOptionItemData::OPTION_ONE_FOUR_ITEM, this->optionItem.get(3));
     
-values.put(BasicOptionItemData.OPTION_ONE_FOUR_VALUE, this.optionValue!.get(3));
+values.put(BasicOptionItemData::OPTION_ONE_FOUR_VALUE, this->optionValue.get(3));
     
-values.put(BasicOptionItemData.OPTION_ONE_FIVE_ITEM, this.optionItem!.get(4));
+values.put(BasicOptionItemData::OPTION_ONE_FIVE_ITEM, this->optionItem.get(4));
     
-values.put(BasicOptionItemData.OPTION_ONE_FIVE_VALUE, this.optionValue!.get(4));
+values.put(BasicOptionItemData::OPTION_ONE_FIVE_VALUE, this->optionValue.get(4));
     
-values.put(BasicOptionItemData.OPTION_ONE_SIX_ITEM, this.optionItem!.get(5));
+values.put(BasicOptionItemData::OPTION_ONE_SIX_ITEM, this->optionItem.get(5));
     
-values.put(BasicOptionItemData.OPTION_ONE_SIX_VALUE, this.optionValue!.get(5));
+values.put(BasicOptionItemData::OPTION_ONE_SIX_VALUE, this->optionValue.get(5));
     
-values.put(BasicOptionItemData.OPTION_ONE_SEVEN_ITEM, this.optionItem!.get(6));
+values.put(BasicOptionItemData::OPTION_ONE_SEVEN_ITEM, this->optionItem.get(6));
     
-values.put(BasicOptionItemData.OPTION_ONE_SEVEN_VALUE, this.optionValue!.get(6));
+values.put(BasicOptionItemData::OPTION_ONE_SEVEN_VALUE, this->optionValue.get(6));
     
-values.put(BasicOptionItemData.OPTION_ONE_EIGHT_ITEM, this.optionItem!.get(7));
+values.put(BasicOptionItemData::OPTION_ONE_EIGHT_ITEM, this->optionItem.get(7));
     
-values.put(BasicOptionItemData.OPTION_ONE_EIGHT_VALUE, this.optionValue!.get(7));
+values.put(BasicOptionItemData::OPTION_ONE_EIGHT_VALUE, this->optionValue.get(7));
     
-values.put(BasicOptionItemData.OPTION_ONE_NINE_ITEM, this.optionItem!.get(8));
+values.put(BasicOptionItemData::OPTION_ONE_NINE_ITEM, this->optionItem.get(8));
     
-values.put(BasicOptionItemData.OPTION_ONE_NINE_VALUE, this.optionValue!.get(8));
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+values.put(BasicOptionItemData::OPTION_ONE_NINE_VALUE, this->optionValue.get(8));
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-values.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+values.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -226,33 +223,33 @@ values.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
-values.add(this.id);
+values.add(this->id);
     
 
-    size: int32_t = this.optionValue!.length!;;
+    int32_t size = this->optionValue.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-values.add(this.optionValue!.get(index));
+values.add(this->optionValue.get(index));
     
-values.add(this.optionItem!.get(index));
+values.add(this->optionItem.get(index));
     
 }
 
@@ -260,16 +257,16 @@ values.add(time);
     
 values.add(time);
     
-BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()!.insert(values);
+BasicOptionItemsEntityFactory::getInstance().getBasicOptionItemsEntityInstance().insert(values);
     
 
-    success: string = "Successfully inserted " +this.id +" into items table";;
+    std::string success = "Successfully inserted " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "insert()");
+                                    this->logUtil.putF(success, this, "insert()");
     
 
                                     }
@@ -285,13 +282,13 @@ BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()
 } catch(e) 
             {
 
-    error: string = "Failed to insert " +this.id +" into items table";;
+    std::string error = "Failed to insert " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "inserts()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "inserts()", e);
     
 
                                     }
@@ -307,19 +304,19 @@ BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()
 }
 
 
-    public string delete(){
+    public: std::string delete_(){
 
         try {
-            BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()!.delete(this.id);
+            BasicOptionItemsEntityFactory::getInstance().getBasicOptionItemsEntityInstance().delete(this->id);
     
 
-    success: string = "Successfully deleted";;
+    std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "delete()");
+                                    this->logUtil.putF(success, this, "delete()");
     
 
                                     }
@@ -335,13 +332,13 @@ BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()
 } catch(e) 
             {
 
-    error: string = "Failed to delete";;
+    std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
     
 
                                     }
@@ -357,22 +354,22 @@ BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    success: string = "Update Pricing Successful";;
+    std::string success = "Update Pricing Successful";;
     
 
-    values: HashMap<any, any> = this.getHashMap()!;;
+    HashMap<any, any> values = this->getHashMap();;
     
-BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()!.update(values);
+BasicOptionItemsEntityFactory::getInstance().getBasicOptionItemsEntityInstance().update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append(this.id)!.append(CommonSeps.getInstance()!.SPACE)!.append(success)!.toString(), this, "update()");
+                                    this->logUtil.putF(StringMaker().append(this->id).append(CommonSeps::getInstance().SPACE).append(success).toString(), this, "update()");
     
 
                                     }
@@ -388,13 +385,13 @@ BasicOptionItemsEntityFactory.getInstance()!.getBasicOptionItemsEntityInstance()
 } catch(e) 
             {
 
-    error: string = "Failed to update: " +this.id;;
+    std::string error = "Failed to update: " +this->id;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }

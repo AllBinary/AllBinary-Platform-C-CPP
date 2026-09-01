@@ -57,68 +57,65 @@
         #include "GeologicalGeographicMapCellPosition.h"
 
 class GeologicalResourceInfoHudPaintable: public WaypointInfoHudPaintable {
-        
 
-    private: static const RESOURCES: string = "Resources: ";
+    private: static const std::string RESOURCES = "Resources: ";
 
-    private: const keyvalueDrawString: KeyValueDrawCharArray;
+    private: KeyValueDrawCharArray keyvalueDrawString;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (){
-
-            super();
-        this.keyvalueDrawString= new KeyValueDrawCharArray(GeologicalResourceInfoHudPaintable.RESOURCES, this.textX);
+public: GeologicalResourceInfoHudPaintable(){
+this->keyvalueDrawString= KeyValueDrawCharArray(GeologicalResourceInfoHudPaintable::RESOURCES, this->textX);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.fontHeight= (2 *font.getHeight());
+this->fontHeight= (2 *font.getHeight());
     
 }
 
 
-    public updateSelectionInfo(){
+    public: void updateSelectionInfo(){
 super.updateSelectionInfo();
     
 
-    rtsLayer: RTSLayer = this.rtsLayerP as RTSLayer;;
+    RTSLayer rtsLayer = this->rtsLayerP as RTSLayer;;
     
 
-    list: BasicArrayList = rtsLayer!.geographicMapCellPositionAreaBase!.getOccupyingGeographicMapCellPositionList()!;;
+    BasicArrayList list = rtsLayer.geographicMapCellPositionAreaBase.getOccupyingGeographicMapCellPositionList();;
     
 
-    total: int32_t = 0;;
+    int32_t total = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size()!;--index >= 0; )
+    int32_t index = list.size();--index >= 0; )
         {
 
-    geographicMapCellPosition: GeologicalGeographicMapCellPosition = list.get(index) as GeologicalGeographicMapCellPosition;;
+    GeologicalGeographicMapCellPosition geographicMapCellPosition = list.get(index) as GeologicalGeographicMapCellPosition;;
     
-total += geographicMapCellPosition!.getGeologicalResource()!.getTotal();
-    
-}
-
-this.keyvalueDrawString!.update(this.getPrimitiveLongUtil()!.getCharArray(total), this.getPrimitiveLongUtil()!.getCurrentTotalDigits());
+total += geographicMapCellPosition.getGeologicalResource().getTotal();
     
 }
 
+this->keyvalueDrawString.update(this->getPrimitiveLongUtil().getCharArray(total), this->getPrimitiveLongUtil().getCurrentTotalDigits());
+    
+}
 
-    public paint(Graphics graphics){
+
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
-this.keyvalueDrawString!.paint(graphics, (this.y +this.fontHeight));
+this->keyvalueDrawString.paint(graphics, (this->y +this->fontHeight));
     
 }
 

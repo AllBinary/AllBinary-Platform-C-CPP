@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_REGEX_REPLACE_REPLACE_H
         #define ORG_ALLBINARY_LOGIC_STRING_REGEX_REPLACE_REPLACE_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -81,33 +83,32 @@
 class Replace
             : public Object
          {
-        
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
+    private: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const j2seUtil: J2SEUtil = J2SEUtil.getInstance()!;
+    private: const J2SEUtil j2seUtil = J2SEUtil::getInstance();
 
-    private: const REPLACERS_: string = "Replacers: ";
+    private: const std::string REPLACERS_ = "Replacers: ";
 
-    private: const ALL: string = "all";
+    private: const std::string ALL = "all";
 
-    private: const FOUND_KEY: string = "found key total: ";
+    private: const std::string FOUND_KEY = "found key total: ";
 
-    private: const hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (string key, string value);
+public: Replace(std::string key, std::string value);
 
-public constructor (std::vector<string> keys, std::vector<string> values);
+public: Replace(std::vector<std::string> keys, std::vector<std::string> values);
 
-public constructor (HashMap<any, any> hashMap);
+public: Replace(HashMap<any, any> hashMap);
 
-    public string all(string replace);
+    public: std::string all(std::string replace);
 
-    public string upTo(string replace, int32_t total);
+    public: std::string upTo(std::string replace, int32_t total);
 
-    public string line(string replace);
+    public: std::string line(std::string replace);
 
 };
 

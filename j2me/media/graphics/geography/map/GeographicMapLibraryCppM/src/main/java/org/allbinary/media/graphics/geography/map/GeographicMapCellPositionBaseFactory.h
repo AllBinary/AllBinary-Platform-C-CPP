@@ -49,11 +49,10 @@
 class GeographicMapCellPositionBaseFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface);
+    public: BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface);
 
 };
 

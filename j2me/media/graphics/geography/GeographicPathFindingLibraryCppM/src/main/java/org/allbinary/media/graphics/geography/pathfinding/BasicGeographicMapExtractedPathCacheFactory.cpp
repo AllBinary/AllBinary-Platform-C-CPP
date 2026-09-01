@@ -33,33 +33,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicGeographicMapExtractedPathCacheFactory: public BaseBasicArrayListCache {
-        
 
-    private: static const instance: BasicGeographicMapExtractedPathCacheFactory = new BasicGeographicMapExtractedPathCacheFactory();
+    private: static BasicGeographicMapExtractedPathCacheFactory instance() { return BasicGeographicMapExtractedPathCacheFactory(); }
 
-    public static BasicGeographicMapExtractedPathCacheFactory getInstance(){
+    public: static BasicGeographicMapExtractedPathCacheFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGeographicMapExtractedPathCacheFactory.instance;
+                        return BasicGeographicMapExtractedPathCacheFactory::instance();
     
 }
 
 
-    private: maxConcurrentPaths: int32_t= 0;
+    private: int32_t maxConcurrentPaths= 0;
 
-    private: maxPaths: int32_t= 0;
+    private: int32_t maxPaths= 0;
 
-private constructor (){
-
-            super();
-        }
+private: BasicGeographicMapExtractedPathCacheFactory(){
+}
 
 
-    public init(int32_t maxConcurrentPaths, int32_t maxPaths){
+    public: void init(int32_t maxConcurrentPaths, int32_t maxPaths){
 
-                        if(maxConcurrentPaths != this.maxConcurrentPaths)
+                        if(maxConcurrentPaths != this->maxConcurrentPaths)
                         
                                     {
                                     
@@ -67,32 +64,32 @@ private constructor (){
 
 
                         for (
-    index: int32_t = maxConcurrentPaths;index >= this.maxConcurrentPaths; index--)
+    int32_t index = maxConcurrentPaths;index >= this->maxConcurrentPaths; index--)
         {
-this.list.add(new BasicArrayListS(maxPaths));
+this->list.add(BasicArrayListS(maxPaths));
     
 }
 
-this.maxConcurrentPaths= maxConcurrentPaths;
+this->maxConcurrentPaths= maxConcurrentPaths;
     
 
                                     }
                                 
-this.maxPaths= maxPaths;
+this->maxPaths= maxPaths;
     
 }
 
 
-    public BasicArrayList getPath(){
+    public: BasicArrayList getPath(){
 
-                        if(this.list.size() > 0)
+                        if(this->list.size() > 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.removeAt(0) as BasicArrayList;
+                        return this->list.removeAt(0) as BasicArrayList;
     
 
                                     }
@@ -102,7 +99,7 @@ this.maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicArrayListS(this.maxPaths);
+                        return BasicArrayListS(this->maxPaths);
     
 
                         }
@@ -110,10 +107,10 @@ this.maxPaths= maxPaths;
 }
 
 
-    public release(BasicArrayList list){
+    public: void release(BasicArrayList list){
 list.clear();
     
-this.list.add(list);
+this->list.add(list);
     
 }
 

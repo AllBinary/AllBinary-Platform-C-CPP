@@ -62,21 +62,20 @@
 class SmallDelete
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: fileName: string;
+    private: std::string fileName;
 
-    private: string: string;
+    private: std::string string;
 
-public constructor (string fileName);
+public: SmallDelete(std::string fileName);
 
-    public bool deleteAtStart(string start, string end);
+    public: bool deleteAtStart(std::string start, std::string end);
 
-    public bool deleteBetween(string start, string end, string newText);
+    public: bool deleteBetween(std::string start, std::string end, std::string newText);
 
 };
 

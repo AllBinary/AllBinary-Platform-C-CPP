@@ -127,61 +127,60 @@
 class CurrentDisplayableFactory
             : public Object
          {
-        
 
-    private: static const instance: CurrentDisplayableFactory = new CurrentDisplayableFactory();
+    private: static CurrentDisplayableFactory instance() { return CurrentDisplayableFactory(); }
 
-    public static CurrentDisplayableFactory getInstance();
+    public: static CurrentDisplayableFactory getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    private: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const SET_DISPLAYABLE: string = "setDisplayable";
+    private: const std::string SET_DISPLAYABLE = "setDisplayable";
 
-    private: const SET_RUNNABLE: string = "setRunnable";
+    private: const std::string SET_RUNNABLE = "setRunnable";
 
-    private: const CLEAR_RUNNABLE: string = "clearRunnable";
+    private: const std::string CLEAR_RUNNABLE = "clearRunnable";
 
-    private: const SET_USED_RUNNABLE: string = "setUsedRunnable";
+    private: const std::string SET_USED_RUNNABLE = "setUsedRunnable";
 
-    private: const RUNNABLE: string = "Runnable: ";
+    private: const std::string RUNNABLE = "Runnable: ";
 
-    private: const RUNNABLE_WAS_ALREADY_IN_USE: string = "Runnable was already in use: ";
+    private: const std::string RUNNABLE_WAS_ALREADY_IN_USE = "Runnable was already in use: ";
 
-    public const DEFAULT_CHILD_NAME_LIST: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList DEFAULT_CHILD_NAME_LIST = BasicArrayListD();
 
-    private: displayable: Displayable = NullDisplayable.getInstance()!;
+    private: Displayable displayable = NullDisplayable::getInstance();
 
-    private: openGlReadydisplayable: Displayable = NullDisplayable.getInstance()!;
+    private: Displayable openGlReadydisplayable = NullDisplayable::getInstance();
 
-    private: runnable: GameRunnable = NullWaitGameRunnable.getInstance()!;
+    private: GameRunnable runnable = NullWaitGameRunnable::getInstance();
 
-    private: usedRunnable: GameRunnable = NullWaitGameRunnable.getInstance()!;
+    private: GameRunnable usedRunnable = NullWaitGameRunnable::getInstance();
 
-private constructor ();
+private: CurrentDisplayableFactory();
 
-    public setMyCanvas(MyCanvas displayable);
+    public: void setMyCanvas(MyCanvas displayable);
 
-    public setDisplayable(Displayable displayable);
+    public: void setDisplayable(Displayable displayable);
 
-    public setOpenGlReadydisplayable(Displayable openGlReadydisplayable);
+    public: void setOpenGlReadydisplayable(Displayable openGlReadydisplayable);
 
-    public Displayable getOpenGlReadydisplayable();
+    public: Displayable getOpenGlReadydisplayable();
 
-    public setRunnable(GameRunnable runnable);
+    public: void setRunnable(GameRunnable runnable);
 
-    public clearRunnable();
+    public: void clearRunnable();
 
-    update();
+    private: void update();
 
-    public Displayable getDisplayable();
+    public: Displayable getDisplayable();
 
-    public GameRunnable getUsedRunnable();
+    public: GameRunnable getUsedRunnable();
 
-    public setUsedRunnable(GameRunnable usedRunnable);
+    public: void setUsedRunnable(GameRunnable usedRunnable);
 
 };
 

@@ -48,15 +48,14 @@
         #include "IntermissionEnableListenerInterface.h"
 
 class IntermissionInterface {
-        
 
     TimeDelayHelper getTimeDelayHelper()
 
     bool isEnabled()
 
-    setEnabled(bool value)
+    void setEnabled(bool value)
 
-    setListener(IntermissionEnableListenerInterface enableListener)
+    void setListener(IntermissionEnableListenerInterface enableListener)
 
 };
 

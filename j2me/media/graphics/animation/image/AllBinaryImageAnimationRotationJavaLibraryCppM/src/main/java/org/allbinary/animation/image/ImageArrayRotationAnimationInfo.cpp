@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -48,104 +50,101 @@
 class ImageArrayRotationAnimationInfo
             : public Object
          {
-        
 
-    private: imageArray: std::vector<Image>;
+    private: std::vector<Image> imageArray;
 
-    private: angleIncrement: int32_t;
+    private: int32_t angleIncrement;
 
-    private: totalAngle: int32_t;
+    private: int32_t totalAngle;
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (std::vector<Image> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy){
-
-            super();
-        this.imageArray= imageArray;
+public: ImageArrayRotationAnimationInfo(std::vector<Image> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy){
+this->imageArray= imageArray;
     
-this.angleIncrement= angleIncrement;
+this->angleIncrement= angleIncrement;
     
-this.totalAngle= totalAngle;
+this->totalAngle= totalAngle;
     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 
 
-    public setImageArray(std::vector<Image> imageArray){
-this.imageArray= imageArray;
+    public: void setImageArray(std::vector<Image> imageArray){
+this->imageArray= imageArray;
     
 }
 
 
-    public std::vector<Image> getImageArray(){
+    public: std::vector<Image> getImageArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageArray;
+                        return this->imageArray;
     
 }
 
 
-    public AngleInfo getAngleInfoP(){
+    public: AngleInfo getAngleInfoP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AngleInfo.getInstance(this.angleIncrement);;
+                        return AngleInfo::getInstance(this->angleIncrement);;
     
 }
 
 
-    public setTotalAngle(int32_t totalAngle){
-this.totalAngle= totalAngle;
+    public: void setTotalAngle(int32_t totalAngle){
+this->totalAngle= totalAngle;
     
 }
 
 
-    public int32_t getTotalAngle(){
+    public: int32_t getTotalAngle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalAngle;
+                        return this->totalAngle;
     
 }
 
 
-    public setDx(int32_t dx){
-this.dx= dx;
+    public: void setDx(int32_t dx){
+this->dx= dx;
     
 }
 
 
-    public int32_t getDx(){
+    public: int32_t getDx(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dx;
+                        return this->dx;
     
 }
 
 
-    public setDy(int32_t dy){
-this.dy= dy;
+    public: void setDy(int32_t dy){
+this->dy= dy;
     
 }
 
 
-    public int32_t getDy(){
+    public: int32_t getDy(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dy;
+                        return this->dy;
     
 }
 

@@ -51,63 +51,60 @@
 class MotionRectanglesResultsFrameCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: motionRectangles: MotionRectangles;
+    private: MotionRectangles motionRectangles;
 
-    private: frame: Long;
+    private: Long frame;
 
-public constructor (MotionRectangles motionRectangles, Long frame){
-
-            super();
-        this.frame= frame;
+public: MotionRectanglesResultsFrameCacheable(MotionRectangles motionRectangles, Long frame){
+this->frame= frame;
     
-this.setMotionRectangles(motionRectangles);
+this->setMotionRectangles(motionRectangles);
     
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 
 
-    public MotionRectangles getMotionRectangles(){
+    public: MotionRectangles getMotionRectangles(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionRectangles;
+                        return this->motionRectangles;
     
 }
 
 
-    public setMotionRectangles(MotionRectangles motionRectangles){
-this.motionRectangles= motionRectangles;
+    public: void setMotionRectangles(MotionRectangles motionRectangles){
+this->motionRectangles= motionRectangles;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString()!);
     
-stringBuffer!.append(" Frame: ");
+stringBuffer.append(" Frame: ");
     
-stringBuffer!.append(this.getKey()!.toString());
+stringBuffer.append(this->getKey().toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOST_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_PATHFINDING_PATHFINDINGNODECOST_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -57,25 +59,24 @@
 #include "Comparable.h"
 #include "PathFindingNodeCostInfo.h"
 
-class PathFindingNodeCost: public PathFindingNode: public Comparable<PathFindingNodeCost> {
-        
+class PathFindingNodeCost: public PathFindingNode, public Comparable<PathFindingNodeCost> {
 
-    public static const NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY: std::vector<std::vector<PathFindingNodeCost>> = new Array(0).fill(null).map(() => new Array(0).fill(0))
+    public: static const std::vector<std::vector<PathFindingNodeCost>> NULL_PATH_FINDING_NODE_COST_ARRAY_ARRAY = new Array(0).fill(null).map(() => new Array(0).fill(0))
                                                             ;
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    public pathFindingNodeCostInfoP: PathFindingNodeCostInfo;
+    public: PathFindingNodeCostInfo pathFindingNodeCostInfoP;
 
-public constructor (any = {} parent, GeographicMapCellPosition geographicMapCellPosition, PathFindingNodeCostInfo pathFindingNodeCostInfo);
+public: PathFindingNodeCost(Object* parent, GeographicMapCellPosition geographicMapCellPosition, PathFindingNodeCostInfo pathFindingNodeCostInfo);
 
-    public PathFindingNodeCostInfo getPathFindingNodeCostInfo();
+    public: PathFindingNodeCostInfo getPathFindingNodeCostInfo();
 
-    public setPathFindingNodeCostInfo(PathFindingNodeCostInfo pathFindingNodeCostInfo);
+    public: void setPathFindingNodeCostInfo(PathFindingNodeCostInfo pathFindingNodeCostInfo);
 
-    public int32_t compareTo(PathFindingNodeCost pathFindingNodeCost);
+    public: int32_t compareTo(PathFindingNodeCost pathFindingNodeCost);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

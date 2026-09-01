@@ -51,28 +51,27 @@
 class BasicPaymentTypeUtil
             : public Object
          {
-        
 
-    private: static const instance: BasicPaymentTypeUtil = new BasicPaymentTypeUtil();
+    private: static BasicPaymentTypeUtil instance() { return BasicPaymentTypeUtil(); }
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public static BasicPaymentTypeUtil getInstance();
+    public: static BasicPaymentTypeUtil getInstance();
 
-private constructor ();
+private: BasicPaymentTypeUtil();
 
-    private: paymentTypeVector: Vector = new Vector();
+    private: Vector paymentTypeVector = Vector();
 
-    public add(BasicPaymentType paymentType);
+    public: void add(BasicPaymentType paymentType);
 
                 //@Throws(Exception.constructor)
             
-    public BasicPaymentType get(string paymentTypeString);
+    public: BasicPaymentType get(std::string paymentTypeString);
 
-    public bool isContain(BasicPaymentType paymentType);
+    public: bool isContain(BasicPaymentType paymentType);
 
-    public Vector difference(Vector a_PaymentTypeVector);
+    public: Vector difference(Vector a_PaymentTypeVector);
 
 };
 

@@ -28,29 +28,28 @@
 class OpenGLThreadUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLThreadUtil = new OpenGLThreadUtil();
+    private: static OpenGLThreadUtil instance() { return OpenGLThreadUtil(); }
 
-    public static OpenGLThreadUtil getInstance(){
+    public: static OpenGLThreadUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLThreadUtil.instance;
+                        return OpenGLThreadUtil::instance();
     
 }
 
 
-    public set(any = {} glSurfaceView){
+    public: void set(Object* glSurfaceView){
 }
 
 
-    public onPause(){
+    public: void onPause(){
 }
 
 
-    public onResume(){
+    public: void onResume(){
 }
 
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDANIMATIONINTERFACEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -77,25 +79,24 @@
 class CompoundAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    const basicAnimationInterfaceFactoryInterfaceArrayP: std::vector<AnimationInterfaceFactoryInterface>;
+    protected: std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArrayP;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory);
+public: CompoundAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    std::vector<Animation> createArray(int32_t size);
+    protected: std::vector<Animation> createArray(int32_t size);
 
-    Animation createAnimation(std::vector<Animation> animationInterfaceArray);
+    protected: Animation createAnimation(std::vector<Animation> animationInterfaceArray);
 
-    public std::vector<AnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray();
+    public: std::vector<AnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray();
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

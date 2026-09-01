@@ -49,15 +49,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextureAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: TextureAttributePointerVBOOpenGLProcessor = new TextureAttributePointerVBOOpenGLProcessor();
+    private: static TextureAttributePointerVBOOpenGLProcessor instance() { return TextureAttributePointerVBOOpenGLProcessor(); }
 
-    public static TextureAttributePointerVBOOpenGLProcessor getInstance();
+    public: static TextureAttributePointerVBOOpenGLProcessor getInstance();
 
-public constructor ();
+public: TextureAttributePointerVBOOpenGLProcessor();
 
-    public process(GL10 gl, any = {} anyType);
+    public: void process(GL10 gl, Object* anyType);
 
 };
 

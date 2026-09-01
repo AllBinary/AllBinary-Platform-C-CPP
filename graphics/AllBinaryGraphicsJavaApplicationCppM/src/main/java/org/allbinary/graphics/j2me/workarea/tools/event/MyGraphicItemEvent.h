@@ -45,20 +45,19 @@
         #include "EventObject.h"
 #include "MyGraphicItemEventSource.h"
 
-class MyGraphicItemEvent: public java.util.EventObject {
-        
+class MyGraphicItemEvent: public java::util::EventObject {
 
-public constructor (any = {} source);
+public: MyGraphicItemEvent(Object* source);
 
-    public any getSource();
+    public: Object* getSource();
 
-    public string toString();
+    public: std::string toString();
 
-    public string getCommand();
+    public: std::string getCommand();
 
-    public MutableTreeNode getTreeNode();
+    public: MutableTreeNode getTreeNode();
 
-    public double getAngle();
+    public: double getAngle();
 
 };
 

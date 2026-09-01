@@ -87,28 +87,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryItemView.h"
 
-class EditValidationView: public InventoryItemView: public ValidationComponentInterface {
-        
+class EditValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-    private: id: string;
+    private: std::string id;
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public getFormData();
+public: EditValidationView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid();
+    public: void getFormData();
 
-    public Document toValidationInfoDoc();
+                //@Throws(Exception.constructor)
+            
+    public: Boolean isValid();
 
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(MoneyException.constructor)
             
-    public string validationInfo();
+    public: std::string validationInfo();
 
 };
 

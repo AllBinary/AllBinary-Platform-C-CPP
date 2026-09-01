@@ -56,84 +56,81 @@
 class ColorDelta
             : public Object
         : public CacheableInterface {
-        
 
-    public static any getKey(int32_t rgb1, int32_t rgb2){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(rgb1.toString())!.append(CommonSeps.getInstance()!.UNDERSCORE)!.append(rgb2.toString())!.toString();;
-    
-}
-
-
-    private: rgb1: int32_t= 0;
-
-    private: rgb2: int32_t= 0;
-
-    private: key: any;
-
-public constructor (int32_t rgb1, int32_t rgb2){
-
-            super();
-        this.setRgb1(rgb1);
-    
-this.setRgb2(rgb2);
-    
-this.key= ColorDelta.getKey(rgb1, rgb2);
-    
-}
-
-
-    public any getKey(){
+    public: static Object* getKey(int32_t rgb1, int32_t rgb2){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.key;
+                        return StringMaker().append(std::to_string(rgb1)).append(CommonSeps::getInstance().UNDERSCORE).append(std::to_string(rgb2)).toString();;
     
 }
 
 
-    public int32_t getRgb1(){
+    private: int32_t rgb1= 0;
+
+    private: int32_t rgb2= 0;
+
+    private: Object* key;
+
+public: ColorDelta(int32_t rgb1, int32_t rgb2){
+this->setRgb1(rgb1);
+    
+this->setRgb2(rgb2);
+    
+this->key= ColorDelta::getKey(rgb1, rgb2);
+    
+}
+
+
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rgb1;
+                        return this->key;
     
 }
 
 
-    setRgb1(int32_t rgb1){
-this.rgb1= rgb1;
-    
-}
-
-
-    public int32_t getRgb2(){
+    public: int32_t getRgb1(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rgb2;
+                        return this->rgb1;
     
 }
 
 
-    setRgb2(int32_t rgb2){
-this.rgb2= rgb2;
+    protected: void setRgb1(int32_t rgb1){
+this->rgb1= rgb1;
     
 }
 
 
-    public string toString(){
+    public: int32_t getRgb2(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append("ColorDelta: ")!.append(StringUtil.getInstance()!.toString(this.getKey()))!.append(" RGB1: ")!.appendint(this.getRgb1())!.append(" RGB2: ")!.appendint(this.getRgb2())!.toString();;
+                        return this->rgb2;
+    
+}
+
+
+    protected: void setRgb2(int32_t rgb2){
+this->rgb2= rgb2;
+    
+}
+
+
+    public: std::string toString(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringMaker().append("ColorDelta: ").append(StringUtil::getInstance().toString(this->getKey())).append(" RGB1: ").appendint(this->getRgb1()).append(" RGB2: ").appendint(this->getRgb2()).toString();;
     
 }
 

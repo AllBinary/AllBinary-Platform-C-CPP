@@ -66,54 +66,51 @@
 class ImageActionScriptOutputProcessor
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static process(ImageActionScriptOutputInterface imageActionScriptOutputInterface, Long frame){
+    public: static void process(ImageActionScriptOutputInterface imageActionScriptOutputInterface, Long frame){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.putF("Start - Processing at: " +imageActionScriptOutputInterface!.toString(), "ImageActionScriptOutputProcessor", commonStrings!.PROCESS);
-    
-
-    imageTypes: ImageTypes = imageActionScriptOutputInterface!.getImageTypes()!;;
+logUtil.putF("Start - Processing at: " +imageActionScriptOutputInterface.toString(), "ImageActionScriptOutputProcessor", commonStrings.PROCESS);
     
 
-    vector: Vector = imageTypes!.getVector()!;;
+    ImageTypes imageTypes = imageActionScriptOutputInterface.getImageTypes();;
     
 
-    size: int32_t = vector.length!;;
+    Vector vector = imageTypes.getVector();;
+    
+
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    imageType: InputImageType = vector.get(index) as InputImageType;;
+    InputImageType imageType = vector.get(index) as InputImageType;;
     
 
-    imageIOInterface: ImageIOInterface = InputImageIOInterfaceFactory.getInstance(imageType)!;;
+    ImageIOInterface imageIOInterface = InputImageIOInterfaceFactory::getInstance(imageType);;
     
-imageIOInterface!.save(frame);
+imageIOInterface.save(frame);
     
 }
 
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageActionScriptOutputProcessor(){
+}
 
 
 };

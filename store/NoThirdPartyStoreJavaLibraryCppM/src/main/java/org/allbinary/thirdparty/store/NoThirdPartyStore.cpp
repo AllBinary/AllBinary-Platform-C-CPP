@@ -45,10 +45,9 @@
         #include "ThirdPartyStore.h"
 
 class NoThirdPartyStore: public ThirdPartyStore {
-        
 
- constructor (){
-            super(StringUtil.getInstance()!.EMPTY_STRING);
+: NoThirdPartyStore(){
+            super(StringUtil::getInstance().EMPTY_STRING);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -56,8 +55,8 @@ class NoThirdPartyStore: public ThirdPartyStore {
 }
 
 
-    public authorize(AbeClientInformationInterface clientInformationInterface){
-this.setAuthorized(true);
+    public: void authorize(AbeClientInformationInterface clientInformationInterface){
+this->setAuthorized(true);
     
 }
 

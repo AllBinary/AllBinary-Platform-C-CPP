@@ -54,19 +54,18 @@
 class AbPathData
             : public Object
          {
-        
 
-    private: static const instance: AbPathData = new AbPathData();
+    private: static AbPathData instance() { return AbPathData(); }
 
-    public static AbPathData getInstance();
+    public: static AbPathData getInstance();
 
-    public const EXTENSION_SEP: string = CommonSeps.getInstance()!.PERIOD;
+    public: const std::string EXTENSION_SEP = CommonSeps::getInstance().PERIOD;
 
-    public const SEPARATORCHAR: char = '/';
+    public: const char SEPARATORCHAR = '/';
 
-    public const SEPARATOR: string = CommonSeps.getInstance()!.FORWARD_SLASH;
+    public: const std::string SEPARATOR = CommonSeps::getInstance().FORWARD_SLASH;
 
-private constructor ();
+private: AbPathData();
 
 };
 

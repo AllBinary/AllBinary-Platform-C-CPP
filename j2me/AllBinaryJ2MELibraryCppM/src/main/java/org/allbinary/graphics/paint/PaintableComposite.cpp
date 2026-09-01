@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -43,42 +45,39 @@
 #include "PaintableInterface.h"
 
 class PaintableComposite: public Paintable {
-        
 
-    private: paintableArray: std::vector<PaintableInterface>;
+    private: std::vector<PaintableInterface> paintableArray;
 
-public constructor (std::vector<PaintableInterface> paintableArray){
-
-            super();
-        this.paintableArray= paintableArray;
+public: PaintableComposite(std::vector<PaintableInterface> paintableArray){
+this->paintableArray= paintableArray;
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
 
 
 
                         for (
-    index: int32_t = this.paintableArray!.length -1;index >= 0; index--)
+    int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this.paintableArray[index]!.paint(graphics);
+this->paintableArray[index]!.paint(graphics);
     
 }
 
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics graphics){
 
 
 
 
                         for (
-    index: int32_t = this.paintableArray!.length -1;index >= 0; index--)
+    int32_t index = this->paintableArray.size() -1;index >= 0; index--)
         {
-this.paintableArray[index]!.paintThreed(graphics);
+this->paintableArray[index]!.paintThreed(graphics);
     
 }
 

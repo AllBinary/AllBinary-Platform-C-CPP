@@ -72,66 +72,63 @@
 class RealTimeStoreFrontStatistics
             : public Object
         : public StoreFrontStatisticsInterface {
-        
 
-    private: storeFrontAdvertisementsStatisticsInterface: StoreFrontAdvertisementsStatisticsInterface;
+    private: StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface;
 
-    private: storeFrontUsersStatisticsInterface: StoreFrontUsersStatisticsInterface;
+    private: StoreFrontUsersStatisticsInterface storeFrontUsersStatisticsInterface;
 
-    private: storeFrontInventoryStatisticsInterface: StoreFrontInventoryStatisticsInterface;
+    private: StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface;
 
-    private: storeFrontOrderHistoryStatisticsInterface: StoreFrontOrdersHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrderHistoryStatisticsInterface;
 
-public constructor (StoreFrontInterface storeFrontInterface){
-
-            super();
-        this.storeFrontAdvertisementsStatisticsInterface= new StoreFrontAdvertisementsStatistics(storeFrontInterface) as StoreFrontAdvertisementsStatisticsInterface;
+public: RealTimeStoreFrontStatistics(StoreFrontInterface storeFrontInterface){
+this->storeFrontAdvertisementsStatisticsInterface= StoreFrontAdvertisementsStatistics(storeFrontInterface) as StoreFrontAdvertisementsStatisticsInterface;
     
-this.storeFrontUsersStatisticsInterface= new StoreFrontUsersStatistics(storeFrontInterface) as StoreFrontUsersStatisticsInterface;
+this->storeFrontUsersStatisticsInterface= StoreFrontUsersStatistics(storeFrontInterface) as StoreFrontUsersStatisticsInterface;
     
-this.storeFrontInventoryStatisticsInterface= new StoreFrontInventoryStatistics(storeFrontInterface) as StoreFrontInventoryStatisticsInterface;
+this->storeFrontInventoryStatisticsInterface= StoreFrontInventoryStatistics(storeFrontInterface) as StoreFrontInventoryStatisticsInterface;
     
-this.storeFrontOrderHistoryStatisticsInterface= new StoreFrontOrdersHistoryStatistics(storeFrontInterface) as StoreFrontOrdersHistoryStatisticsInterface;
+this->storeFrontOrderHistoryStatisticsInterface= StoreFrontOrdersHistoryStatistics(storeFrontInterface) as StoreFrontOrdersHistoryStatisticsInterface;
     
 }
 
 
-    public StoreFrontAdvertisementsStatisticsInterface getAdvertisements(){
+    public: StoreFrontAdvertisementsStatisticsInterface getAdvertisements(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeFrontAdvertisementsStatisticsInterface;
+                        return this->storeFrontAdvertisementsStatisticsInterface;
     
 }
 
 
-    public StoreFrontUsersStatisticsInterface getUsers(){
+    public: StoreFrontUsersStatisticsInterface getUsers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeFrontUsersStatisticsInterface;
+                        return this->storeFrontUsersStatisticsInterface;
     
 }
 
 
-    public StoreFrontInventoryStatisticsInterface getInventory(){
+    public: StoreFrontInventoryStatisticsInterface getInventory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeFrontInventoryStatisticsInterface;
+                        return this->storeFrontInventoryStatisticsInterface;
     
 }
 
 
-    public StoreFrontOrdersHistoryStatisticsInterface getOrders(){
+    public: StoreFrontOrdersHistoryStatisticsInterface getOrders(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeFrontOrderHistoryStatisticsInterface;
+                        return this->storeFrontOrderHistoryStatisticsInterface;
     
 }
 

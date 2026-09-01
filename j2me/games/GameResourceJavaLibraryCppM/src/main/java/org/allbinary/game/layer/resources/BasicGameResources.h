@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_BASICGAMERESOURCES_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -75,27 +77,26 @@
 class BasicGameResources
             : public Object
          {
-        
 
-    static const stringBuffer: StringMaker = new StringMaker();
+    protected: static const StringMaker stringBuffer = StringMaker();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public RESOURCE: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string RESOURCE = StringUtil::getInstance().EMPTY_STRING;
 
-    public RESOURCE_DESTROY: string = StringUtil.getInstance()!.EMPTY_STRING;
+    public: std::string RESOURCE_DESTROY = StringUtil::getInstance().EMPTY_STRING;
 
-protected constructor ();
+protected: BasicGameResources();
 
-    public init(string ROOT, std::vector<string> SIZE);
-
-                //@Throws(Exception.constructor)
-            
-    append(string ROOT, string sizeString);
+    public: void init(std::string ROOT, std::vector<std::string> SIZE);
 
                 //@Throws(Exception.constructor)
             
-    string getString();
+    protected: void append(std::string ROOT, std::string sizeString);
+
+                //@Throws(Exception.constructor)
+            
+    protected: std::string getString();
 
 };
 

@@ -64,29 +64,28 @@
 class UserConfiguration
             : public Object
         : public UserConfigurationInterface {
-        
 
-    private: userEmailConfigurationInterface: UserEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
 
-    private: timeCreated: TimeCreated;
+    private: TimeCreated timeCreated;
 
-    private: timeLastModified: TimeLastModified;
+    private: TimeLastModified timeLastModified;
 
-public constructor ();
+public: UserConfiguration();
 
-public constructor (HashMap<any, any> hashMap);
+public: UserConfiguration(HashMap<any, any> hashMap);
 
-    public UserEmailConfigurationInterface getUserEmailConfigurationInterface();
+    public: UserEmailConfigurationInterface getUserEmailConfigurationInterface();
 
-    public setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface);
+    public: void setUserEmailConfigurationInterface(UserEmailConfigurationInterface userEmailConfigurationInterface);
 
-    public TimeCreated getTimeCreated();
+    public: TimeCreated getTimeCreated();
 
-    public TimeLastModified getTimeLastModified();
+    public: TimeLastModified getTimeLastModified();
 
-    public setTimeCreated(TimeCreated timeCreated);
+    public: void setTimeCreated(TimeCreated timeCreated);
 
-    public setTimeLastModified(TimeLastModified timeLastModified);
+    public: void setTimeLastModified(TimeLastModified timeLastModified);
 
 };
 

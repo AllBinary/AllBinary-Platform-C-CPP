@@ -61,106 +61,103 @@
 class BasicEmailInfo
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: subject: string;
+    private: std::string subject;
 
-    private: textBody: string;
+    private: std::string textBody;
 
-    emailServerConfigurationInterface: EmailServerConfigurationInterface;
+    protected: EmailServerConfigurationInterface emailServerConfigurationInterface;
 
-public constructor (string subject, string textBody){
+public: BasicEmailInfo(std::string subject, std::string textBody){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(commonStrings.START, this, commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.subject= subject;
+this->subject= subject;
     
-this.textBody= textBody;
+this->textBody= textBody;
     
 }
 
 
-    public string getSubject(){
+    public: std::string getSubject(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.subject;
+                        return this->subject;
     
 }
 
 
-    public string getTextBody(){
+    public: std::string getTextBody(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.textBody;
+                        return this->textBody;
     
 }
 
 
-    public EmailServerConfigurationInterface getEmailServerConfigurationInterface(){
+    public: EmailServerConfigurationInterface getEmailServerConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.emailServerConfigurationInterface;
+                        return this->emailServerConfigurationInterface;
     
 }
 
 
-    public setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface){
-this.emailServerConfigurationInterface= emailServerConfigurationInterface;
+    public: void setEmailServerConfigurationInterface(EmailServerConfigurationInterface emailServerConfigurationInterface){
+this->emailServerConfigurationInterface= emailServerConfigurationInterface;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getEmailServerConfigurationInterface()!.toString());
+stringBuffer.append(this->getEmailServerConfigurationInterface().toString());
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append("Subject: \n");
+stringBuffer.append("Subject: \n");
     
-stringBuffer!.append(this.getSubject());
+stringBuffer.append(this->getSubject());
     
-stringBuffer!.append("\nText Body: \n");
+stringBuffer.append("\nText Body: \n");
     
-stringBuffer!.append(this.getTextBody());
+stringBuffer.append(this->getTextBody());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(){
+    protected: void init(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

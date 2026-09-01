@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -67,11 +69,10 @@
 class AllBinaryMediaManager
             : public Object
          {
-        
 
-    private: static const THIS: string = "AllBinaryMediaManagerNoMediaMIDP1";
+    private: static const std::string THIS = "AllBinaryMediaManagerNoMediaMIDP1";
 
-    public static bool isMuted(){
+    public: static bool isMuted(){
 
 
 
@@ -81,11 +82,11 @@ class AllBinaryMediaManager
 }
 
 
-    public static setMuted(bool aMuted){
+    public: static void setMuted(bool aMuted){
 }
 
 
-    public static bool update(){
+    public: static bool update(){
 
 
 
@@ -97,99 +98,97 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public static init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, commonString!.INIT);
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
     
-ProgressCanvasFactory.getInstance()!.addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
     
-new Sounds(soundsFactoryInterface).init();
+Sounds(soundsFactoryInterface).init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static shutdown(SoundsFactoryInterface soundsFactoryInterface){
-new Sounds(soundsFactoryInterface).stopAll();
+    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
+Sounds(soundsFactoryInterface).stopAll();
     
-new Sounds(soundsFactoryInterface).closeAll();
+Sounds(soundsFactoryInterface).closeAll();
     
 System.gc();
     
 }
 
 
-    public static Player createPlayerFromInputStream(InputStream stream, string type){
+    public: static Player createPlayerFromInputStream(InputStream stream, std::string type){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "creatPlayer(InputStream)");
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(InputStream)");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER as Player;
+                        return NoPlayer::NO_PLAYER as Player;
     
 }
 
 
-    public static Player createPlayer(string locator){
+    public: static Player createPlayer(std::string locator){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, "creatPlayer(locator)");
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, "creatPlayer(locator)");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER as Player;
+                        return NoPlayer::NO_PLAYER as Player;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static playTone(int32_t frequency, int32_t time, int32_t volume){
+    public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
 }
 
 
-    public static std::vector<string> getSupportedContentTypes(string protocol){
+    public: static std::vector<std::string> getSupportedContentTypes(std::string protocol){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.getArrayInstance();;
+                        return StringUtil::getInstance().getArrayInstance();;
     
 }
 
 
-    public static std::vector<string> getSupportedProtocols(string content_type){
+    public: static std::vector<std::string> getSupportedProtocols(std::string content_type){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.getArrayInstance();;
+                        return StringUtil::getInstance().getArrayInstance();;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AllBinaryMediaManager(){
+}
 
 
 };

@@ -52,27 +52,26 @@
 class LayerManagerLoggingBase
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public append(AllBinaryLayer layerInterface){
+    public: void append(AllBinaryLayer layerInterface){
 }
 
 
-    public appendAt(AllBinaryLayer layerInterface, int32_t index){
+    public: void appendAt(AllBinaryLayer layerInterface, int32_t index){
 }
 
 
-    public remove(AllBinaryLayer layerInterface){
+    public: void remove(AllBinaryLayer layerInterface){
 }
 
 
-    public removeResult(LayerManager layerManager, AllBinaryLayer layerInterface, bool result){
+    public: void removeResult(LayerManager layerManager, AllBinaryLayer layerInterface, bool result){
 }
 
 
-    public clear(){
+    public: void clear(){
 }
 
 

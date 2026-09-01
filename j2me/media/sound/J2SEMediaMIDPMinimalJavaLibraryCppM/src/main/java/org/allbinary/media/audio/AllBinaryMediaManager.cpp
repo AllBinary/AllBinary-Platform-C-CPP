@@ -95,11 +95,10 @@
 class AllBinaryMediaManager
             : public Object
          {
-        
 
-    private: static const THIS: string = "AllBinaryMediaManagerPC";
+    private: static const std::string THIS = "AllBinaryMediaManagerPC";
 
-    public static bool isMuted(){
+    public: static bool isMuted(){
 
 
 
@@ -109,11 +108,11 @@ class AllBinaryMediaManager
 }
 
 
-    public static setMuted(bool aMuted){
+    public: static void setMuted(bool aMuted){
 }
 
 
-    public static bool update(){
+    public: static bool update(){
 
 
 
@@ -125,87 +124,87 @@ class AllBinaryMediaManager
 
                 //@Throws(Exception.constructor)
             
-    public static init(SoundsFactoryInterface soundsFactoryInterface){
+    public: static void init(SoundsFactoryInterface soundsFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.putF(commonString!.START, AllBinaryMediaManager.THIS, commonString!.INIT);
+logUtil.putF(commonString.START, AllBinaryMediaManager::THIS, commonString.INIT);
     
-ProgressCanvasFactory.getInstance()!.addNormalPortion(50, "Media Manager");
+ProgressCanvasFactory::getInstance().addNormalPortion(50, "Media Manager");
     
-new Sounds(soundsFactoryInterface).init();
+Sounds(soundsFactoryInterface).init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static shutdown(SoundsFactoryInterface soundsFactoryInterface){
-new Sounds(soundsFactoryInterface).stopAll();
+    public: static void shutdown(SoundsFactoryInterface soundsFactoryInterface){
+Sounds(soundsFactoryInterface).stopAll();
     
-new Sounds(soundsFactoryInterface).closeAll();
+Sounds(soundsFactoryInterface).closeAll();
     
 System.gc();
     
 }
 
 
-    private: static const CREATE_PLAYER: string = "createPlayer";
+    private: static const std::string CREATE_PLAYER = "createPlayer";
 
                 //@Throws(Exception.constructor)
             
-    public static Player createPlayer(string resource){
+    public: static Player createPlayer(std::string resource){
 
-                        if(resource.startsWith(Manager.TONE_DEVICE_LOCATOR))
+                        if(resource.startsWith(Manager::TONE_DEVICE_LOCATOR))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryMediaManager.createPlayerFromInputStream(new ByteArrayInputStream(NullUtil.getInstance()!.NULL_BYTE_ARRAY), AudioContentTypeDataFactory.getInstance()!.MIME_AUDIO_TONE.getName());;
+                        return AllBinaryMediaManager::createPlayerFromInputStream(ByteArrayInputStream(NullUtil::getInstance().NULL_BYTE_ARRAY), AudioContentTypeDataFactory::getInstance().MIME_AUDIO_TONE.getName());;
     
 
                                     }
                                 
                              else 
-                        if(Features.getInstance()!.isFeature(GameFeatureFactory.getInstance()!.SOUND))
+                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().SOUND))
                         
                                     {
                                     
         try {
             
-    inputStream: InputStream = ResourceUtil.getInstance()!.getResourceAsStream(resource)!;;
+    InputStream inputStream = ResourceUtil::getInstance().getResourceAsStream(resource);;
     
 
-    bufferedInputStream: BufferedInputStream = new BufferedInputStream(inputStream);;
+    BufferedInputStream bufferedInputStream = BufferedInputStream(inputStream);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PCClipWavPlayer(bufferedInputStream);
+                        return PCClipWavPlayer(bufferedInputStream);
     
 
                 //: 
 } catch(e) 
             {
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonString: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonString = CommonStrings::getInstance();;
     
-logUtil!.put(commonString!.EXCEPTION, AllBinaryMediaManager.THIS, CREATE_PLAYER, e);
+logUtil.put(commonString.EXCEPTION, AllBinaryMediaManager::THIS, CREATE_PLAYER, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER;
+                        return NoPlayer::NO_PLAYER;
     
 }
 
@@ -217,7 +216,7 @@ logUtil!.put(commonString!.EXCEPTION, AllBinaryMediaManager.THIS, CREATE_PLAYER,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayer.NO_PLAYER;
+                        return NoPlayer::NO_PLAYER;
     
 
                         }
@@ -227,11 +226,11 @@ logUtil!.put(commonString!.EXCEPTION, AllBinaryMediaManager.THIS, CREATE_PLAYER,
 
                 //@Throws(IOException.constructor, MediaException.constructor)
             
-    public static Player createPlayerFromInputStream(InputStream stream, string type){
+    public: static Player createPlayerFromInputStream(InputStream stream, std::string type){
 
 
 
-                            throw new MediaException("No Impl");
+                            throw MediaException("No Impl");
                     
 }
 
@@ -239,16 +238,16 @@ logUtil!.put(commonString!.EXCEPTION, AllBinaryMediaManager.THIS, CREATE_PLAYER,
                 //@Throws(MediaException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static playTone(int32_t frequency, int32_t time, int32_t volume){
+    public: static void playTone(int32_t frequency, int32_t time, int32_t volume){
 
 
 
-                            throw new MediaException("No Impl");
+                            throw MediaException("No Impl");
                     
 }
 
 
-    public static bool isInitialized(){
+    public: static bool isInitialized(){
 
 
 
@@ -258,10 +257,8 @@ logUtil!.put(commonString!.EXCEPTION, AllBinaryMediaManager.THIS, CREATE_PLAYER,
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AllBinaryMediaManager(){
+}
 
 
 };

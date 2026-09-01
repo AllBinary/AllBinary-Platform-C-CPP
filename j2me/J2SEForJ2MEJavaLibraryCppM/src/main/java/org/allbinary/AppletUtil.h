@@ -45,15 +45,14 @@
 class AppletUtil
             : public Object
          {
-        
 
-    private: static applet: bool = false;
+    private: static bool applet = false;
 
-    public static setApplet();
+    public: static void setApplet();
 
-    public static bool isAppletLoader(any = {} anyType);
+    public: static bool isAppletLoader(Object* anyType);
 
-private constructor ();
+private: AppletUtil();
 
 };
 

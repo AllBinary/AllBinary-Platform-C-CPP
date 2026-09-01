@@ -48,13 +48,12 @@
 class PathFinderGraphVisitorFactoryBase
             : public Object
          {
-        
 
-    public PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface){
-
+    public: PathFinderGraphVisitorBase getInstance(BasicGeographicMap geographicMapInterface){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 

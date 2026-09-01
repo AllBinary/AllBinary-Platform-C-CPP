@@ -77,75 +77,74 @@
 class WaypointBehaviorBase
             : public Object
         : public TickableInterface {
-        
 
-    private: const ownedWaypointList: BasicArrayList;
+    private: BasicArrayList ownedWaypointList;
 
-    waypointOverridesAttacking: bool = true;
+    protected: bool waypointOverridesAttacking = true;
 
-    private: waypoint: WaypointBase = WaypointBase.NULL_WAYPOINT_BASE;
+    private: WaypointBase waypoint = WaypointBase::NULL_WAYPOINT_BASE;
 
-public constructor ();
+public: WaypointBehaviorBase();
 
-    public string getName();
+    public: std::string getName();
 
-    public bool isRunning();
-
-                //@Throws(Exception.constructor)
-            
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
-
-    public BasicArrayList getOwnedWaypointList();
-
-    public WaypointBase getWaypoint();
-
-    public setWaypoint(WaypointBase waypoint);
-
-    public BasicArrayList getSteeringVisitorList();
-
-    public string getMovementLogicAsString();
-
-    public bool isWaypointListEmptyOrOnlyTargets();
-
-    public bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance);
-
-    public CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface();
-
-    public string getCurrentTargetingStateString();
-
-    public bool isTrackingWaypoint();
-
-    public GeographicMapCellPosition getCurrentPathGeographicMapCellPosition();
-
-    public GeographicMapCellHistory getCurrentGeographicMapCellHistory();
-
-    public bool isWaypointOverridesAttacking();
-
-    public GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition();
-
-    public bool needToMove();
-
-    public setWaypointPathsList(BasicArrayList waypointPathsList);
-
-    public BasicArrayList getWaypointPathsList();
+    public: bool isRunning();
 
                 //@Throws(Exception.constructor)
             
-    public setTarget(PathFindingLayerInterface layerInterface);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+
+    public: BasicArrayList getOwnedWaypointList();
+
+    public: WaypointBase getWaypoint();
+
+    public: void setWaypoint(WaypointBase waypoint);
+
+    public: BasicArrayList getSteeringVisitorList();
+
+    public: std::string getMovementLogicAsString();
+
+    public: bool isWaypointListEmptyOrOnlyTargets();
+
+    public: bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance);
+
+    public: CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface();
+
+    public: std::string getCurrentTargetingStateString();
+
+    public: bool isTrackingWaypoint();
+
+    public: GeographicMapCellPosition getCurrentPathGeographicMapCellPosition();
+
+    public: GeographicMapCellHistory getCurrentGeographicMapCellHistory();
+
+    public: bool isWaypointOverridesAttacking();
+
+    public: GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition();
+
+    public: bool needToMove();
+
+    public: void setWaypointPathsList(BasicArrayList waypointPathsList);
+
+    public: BasicArrayList getWaypointPathsList();
 
                 //@Throws(Exception.constructor)
             
-    public setTargetWithDistance(PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
+    public: void setTarget(PathFindingLayerInterface layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public clearTarget();
+    public: void setTargetWithDistance(PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
 
                 //@Throws(Exception.constructor)
             
-    public updatePathOnTargetMove(string reason);
+    public: void clearTarget();
 
-    private: const steeringVisitorList: BasicArrayList = new BasicArrayListD();
+                //@Throws(Exception.constructor)
+            
+    public: void updatePathOnTargetMove(std::string reason);
+
+    private: const BasicArrayList steeringVisitorList = BasicArrayListD();
 
 };
 

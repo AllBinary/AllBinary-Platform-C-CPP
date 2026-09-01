@@ -76,32 +76,31 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GameKeyCompleteMotionGestureInputEventFactory.h"
 
-class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent: public GameKeyEventSourceInterface {
-        
+class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const SOURCE_ID: int32_t = this.gameKeyEventFactory!.MOTION_GESTURE_SOURCE_ID;
+    private: const int32_t SOURCE_ID = this->gameKeyEventFactory.MOTION_GESTURE_SOURCE_ID;
 
-    private: gameKey: GameKey = GameKey.NULL_GAME_KEY;
+    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
 
-    private: gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-    private: inputToGameKeyMapping: InputToGameKeyMapping;
+    private: InputToGameKeyMapping inputToGameKeyMapping;
 
-public constructor (string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping);
+public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping);
 
-    public int32_t getSourceId();
+    public: int32_t getSourceId();
 
-    public update();
+    public: void update();
 
-    setGameKeyEvent(GameKeyEvent gameKeyEvent);
+    protected: void setGameKeyEvent(GameKeyEvent gameKeyEvent);
 
-    public GameKeyEvent getGameKeyEvent();
+    public: GameKeyEvent getGameKeyEvent();
 
-    setGameKey(GameKey gameKey);
+    protected: void setGameKey(GameKey gameKey);
 
-    public GameKey getGameKey();
+    public: GameKey getGameKey();
 
 };
 

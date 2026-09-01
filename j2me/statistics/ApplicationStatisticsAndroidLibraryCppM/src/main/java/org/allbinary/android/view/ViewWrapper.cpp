@@ -42,26 +42,23 @@
         #include "BaseViewWrapper.h"
 
 class ViewWrapper: public BaseViewWrapper {
-        
 
-    private: const view: View;
+    private: View view;
 
-public constructor (View view){
-
-            super();
-        this.view= view;
+public: ViewWrapper(View view){
+this->view= view;
     
 }
 
 
-    public invalidate(){
-this.view.invalidate();
+    public: void invalidate(){
+this->view.invalidate();
     
 }
 
 
-    public postInvalidate(){
-this.view.postInvalidate();
+    public: void postInvalidate(){
+this->view.postInvalidate();
     
 }
 

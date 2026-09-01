@@ -72,23 +72,22 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance();
+    public: static ImageRotationUtil getInstance();
 
-    private: const imageSwtRotationUtil: ImageSwtRotationUtil = ImageSwtRotationUtil.getInstance()!;
+    private: const ImageSwtRotationUtil imageSwtRotationUtil = ImageSwtRotationUtil::getInstance();
 
-private constructor ();
+private: ImageRotationUtil();
 
-    private: const features: Features = Features.getInstance()!;
+    private: const Features features = Features::getInstance();
 
-    public rotateImage(Image originalImage, Image image, int32_t totalAngle);
+    public: void rotateImage(Image originalImage, Image image, int32_t totalAngle);
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees);
 
 };
 

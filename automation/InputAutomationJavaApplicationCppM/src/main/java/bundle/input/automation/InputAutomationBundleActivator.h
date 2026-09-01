@@ -86,33 +86,32 @@
 class InputAutomationBundleActivator
             : public Object
         : public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
-        
 
-    private: static moduleManagementThread: Thread;
+    private: static Thread moduleManagementThread;
 
-    private: static bundleContext: BundleContext;
+    private: static BundleContext bundleContext;
 
-    public static BundleContext getBundleContext();
+    public: static BundleContext getBundleContext();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public start(BundleContext bundleContext);
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public registerAsService();
+    public: void start(BundleContext bundleContext);
 
                 //@Throws(Exception.constructor)
             
-    public useServices();
+    public: void registerAsService();
 
                 //@Throws(Exception.constructor)
             
-    public stop(BundleContext context);
+    public: void useServices();
+
+                //@Throws(Exception.constructor)
+            
+    public: void stop(BundleContext context);
 
 };
 

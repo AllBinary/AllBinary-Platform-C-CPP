@@ -77,13 +77,12 @@
 class DeleteCloud
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: DeleteCloud();
 
-    public bool delete(string prePath, int32_t current, int32_t total);
+    public: bool delete_(std::string prePath, int32_t current, int32_t total);
 
 };
 

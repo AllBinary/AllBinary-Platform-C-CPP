@@ -113,49 +113,46 @@
         #include "HighScoreUtil.h"
 
 class HighScoreTextBox: public CustomTextBox {
-        
 
-    private: const virtualKeyboardEventHandler: VirtualKeyboardEventHandler = VirtualKeyboardEventHandler.getInstance()!;
+    private: const VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();
 
-    private: const highScoreUtil: HighScoreUtil;
+    private: HighScoreUtil highScoreUtil;
 
-    private: const pleaseWait: Paintable = new SimpleTextPaintable(this.commonStrings!.PLEASE_WAIT, BasicColorFactory.getInstance()!.WHITE);
+    private: const Paintable pleaseWait = SimpleTextPaintable(this->commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
 
-    private: paintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable paintable = NullPaintable::getInstance();
 
-    public submitted: bool = false;
+    public: bool submitted = false;
 
-public constructor (HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
-            super(cmdListener, "New High Score Enter Name:", name, 12, TextField.ANY, Font.getDefaultFont(), backgrounBasicColor, foregroundBasicColor);
+public: HighScoreTextBox(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor){
+            super(cmdListener, "New High Score Enter Name:", name, 12, TextField::ANY, Font::getDefaultFont(), backgrounBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.highScoreUtil= new HighScoreUtil(highScoresFactoryInterface, highScoresHelper, abeClientInformation, gameInfo, cmdListener, name, highScore);
+this->highScoreUtil= HighScoreUtil(highScoresFactoryInterface, highScoresHelper, abeClientInformation, gameInfo, cmdListener, name, highScore);
     
 
-    operatingSystemInterface: GenericOperatingSystem = OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!;;
+    GenericOperatingSystem operatingSystemInterface = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
     
 
-                        if(operatingSystemInterface!.isOverScan())
+                        if(operatingSystemInterface.isOverScan())
                         
                                     {
                                     
-    username: string = InApplicationPurchaseFactory.getInstance()!.getUserName()!;;
+    std::string username = InApplicationPurchaseFactory::getInstance().getUserName();;
     
 
-                        if(username != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.getTextFieldItem()!.setString(username);
+                                    this->getTextFieldItem().setString(username);
     
 
                                     }
                                 
                         else {
-                            this.getTextFieldItem()!.setString("NoGamerInfo");
+                            this->getTextFieldItem().setString("NoGamerInfo");
     
 
                         }
@@ -166,46 +163,46 @@ this.highScoreUtil= new HighScoreUtil(highScoresFactoryInterface, highScoresHelp
 }
 
 
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
     
-PostGameCommandFactory.getInstance()!.addCommands(this);
+PostGameCommandFactory::getInstance().addCommands(this);
     
-this.addCommand(HighScoreUtil.SUBMIT_TEXTBOX_COMMAND);
+this->addCommand(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND);
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 
 
-    public open(){
-this.virtualKeyboardEventHandler!.open();
+    public: void open(){
+this->virtualKeyboardEventHandler.open();
     
-this.paintable= NullPaintable.getInstance();
+this->paintable= NullPaintable::getInstance();
     
 super.open();
     
 }
 
 
-    public close(){
-this.virtualKeyboardEventHandler!.close();
+    public: void close(){
+this->virtualKeyboardEventHandler.close();
     
-this.paintable= this.pleaseWait;
+this->paintable= this->pleaseWait;
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 super.close();
     
-this.removeCommand(HighScoreUtil.SUBMIT_TEXTBOX_COMMAND);
+this->removeCommand(HighScoreUtil::SUBMIT_TEXTBOX_COMMAND);
     
-this.update();
+this->update();
     
 
-                        if(this.submitted)
+                        if(this->submitted)
                         
                                     {
-                                    this.highScoreUtil!.saveHighScore();
+                                    this->highScoreUtil.saveHighScore();
     
 
                                     }
@@ -214,42 +211,42 @@ this.update();
                             
                         }
                             
-this.paintable= NullPaintable.getInstance();
+this->paintable= NullPaintable::getInstance();
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(){
+    public: void update(){
 
-    name: string = this.getTextFieldItem()!.getString()!;;
+    std::string name = this->getTextFieldItem().getString();;
     
-this.highScoreUtil!.update(name);
+this->highScoreUtil.update(name);
     
 super.update();
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
-this.paintable.paint(graphics);
+this->paintable.paint(graphics);
     
 }
 
 
-    public saveHighScore(){
-this.highScoreUtil!.saveHighScore();
+    public: void saveHighScore(){
+this->highScoreUtil.saveHighScore();
     
 }
 
 
-    public submit(){
-this.highScoreUtil!.submit(this);
+    public: void submit(){
+this->highScoreUtil.submit(this);
     
 }
 

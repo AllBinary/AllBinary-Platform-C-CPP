@@ -76,33 +76,32 @@
 class GenericProfileAction
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: genericProfileActionScript: GenericProfileActionScript;
+    private: GenericProfileActionScript genericProfileActionScript;
 
-    private: genericProfileActionJPanel: GenericProfileActionJPanel;
+    private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-public constructor (GenericProfileActionJPanel genericProfileActionJPanel, Node node);
+public: GenericProfileAction(GenericProfileActionJPanel genericProfileActionJPanel, Node node);
 
-public constructor (string name);
+public: GenericProfileAction(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
-    public GenericProfileActionScript getGenericProfileActionScript();
+    public: GenericProfileActionScript getGenericProfileActionScript();
 
-    public setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript);
+    public: void setGenericProfileActionScript(GenericProfileActionScript genericProfileActionScript);
 
 };
 

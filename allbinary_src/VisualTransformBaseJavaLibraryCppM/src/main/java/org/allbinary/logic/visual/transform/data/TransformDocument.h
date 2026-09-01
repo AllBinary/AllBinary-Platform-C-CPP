@@ -66,25 +66,24 @@
 class TransformDocument
             : public Object
         : public TransformDocumentInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: baseNode: Node;
+    private: Node baseNode;
 
-    private: document: Document;
+    private: Document document;
 
-public constructor ();
+public: TransformDocument();
 
-    public Node getBaseNode();
+    public: Node getBaseNode();
 
-    public Document getDoc();
+    public: Document getDoc();
 
                 //@Throws(Exception.constructor)
             
-    public string log();
+    public: std::string log();
 
 };
 

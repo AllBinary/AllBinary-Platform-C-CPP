@@ -66,88 +66,85 @@
 #include "CapturedImageWorkerResultsEvent.h"
 #include "CapturedImageInputOutput.h"
 
-class SaveCapturedImageWorker: public BasicEventHandler: public CapturedImageWorkerResultsListener {
-        
+class SaveCapturedImageWorker: public BasicEventHandler, public CapturedImageWorkerResultsListener {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: capturedImageWorkerResultsEventVector: Vector = new Vector();
+    private: Vector capturedImageWorkerResultsEventVector = Vector();
 
-public constructor (){
-
-            super();
-        }
+public: SaveCapturedImageWorker(){
+}
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageEvent){
-this.capturedImageWorkerResultsEventVector!.add(capturedImageEvent);
+    public: void onCaptureEvent(CapturedImageWorkerResultsEvent capturedImageEvent){
+this->capturedImageWorkerResultsEventVector.add(capturedImageEvent);
     
-this.run();
-    
-}
-
-
-    public onEvent(AllBinaryEventObject allBinaryEventObject){
-this.onCaptureEvent(allBinaryEventObject as CapturedImageWorkerResultsEvent);
+this->run();
     
 }
 
 
-    public run(){
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
+this->onCaptureEvent(allBinaryEventObject as CapturedImageWorkerResultsEvent);
+    
+}
+
+
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
-    
-timeHelper!.setStartTimeTNT();
+this->setRunning(true);
     
 
-    capturedImageWorkerResultsEvent: CapturedImageWorkerResultsEvent = (this.capturedImageWorkerResultsEventVector!.get(0) as CapturedImageWorkerResultsEvent);;
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+timeHelper.setStartTimeTNT();
     
 
-    screenBufferedImage: BufferedImage = capturedImageWorkerResultsEvent!.getBufferedImage()!;;
+    CapturedImageWorkerResultsEvent capturedImageWorkerResultsEvent = (this->capturedImageWorkerResultsEventVector.get(0) as CapturedImageWorkerResultsEvent);;
     
-new CapturedImageInputOutput().save(screenBufferedImage, capturedImageWorkerResultsEvent!.getFrame());
+
+    BufferedImage screenBufferedImage = capturedImageWorkerResultsEvent.getBufferedImage();;
     
-this.capturedImageWorkerResultsEventVector!.remove(capturedImageWorkerResultsEvent);
+CapturedImageInputOutput().save(screenBufferedImage, capturedImageWorkerResultsEvent.getFrame());
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->capturedImageWorkerResultsEventVector.remove(capturedImageWorkerResultsEvent);
     
-this.setRunning(false);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->setRunning(false);
+    
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

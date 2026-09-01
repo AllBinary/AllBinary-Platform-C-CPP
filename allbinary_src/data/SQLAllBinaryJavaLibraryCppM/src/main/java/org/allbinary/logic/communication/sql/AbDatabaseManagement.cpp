@@ -51,49 +51,48 @@
         #include "AbSqlBean.h"
 
 class AbDatabaseManagement: public AbSqlBean {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const sqlCommandLog: StringMaker = new StringMaker();
+    protected: const StringMaker sqlCommandLog = StringMaker();
 
-    private: const GRANT_ALL: string = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
+    private: const std::string GRANT_ALL = "GRANT SELECT, INSERT, UPDATE, DELETE, CREATE, DROP, INDEX, ALTER ON ";
 
-    private: const DOT_STAR: string = ".*";
+    private: const std::string DOT_STAR = ".*";
 
-    private: const TO: string = " TO ";
+    private: const std::string TO = " TO ";
 
-    private: const AT_LOCALHOST: string = "@localhost";
+    private: const std::string AT_LOCALHOST = "@localhost";
 
-    private: const IDENTIFIED_BY: string = " IDENTIFIED BY '";
+    private: const std::string IDENTIFIED_BY = " IDENTIFIED BY '";
 
-    private: const WITH_GRANT_OPTION: string = "' WITH GRANT OPTION";
+    private: const std::string WITH_GRANT_OPTION = "' WITH GRANT OPTION";
 
-    private: const FAILED: string = "Failed";
+    private: const std::string FAILED = "Failed";
 
-    private: const GET_HOST_NAME: string = "getHostName()";
+    private: const std::string GET_HOST_NAME = "getHostName()";
 
-    private: const METHOD_ADD_USER: string = "addUser()";
+    private: const std::string METHOD_ADD_USER = "addUser()";
 
-    const METHOD_ADD_USERS: string = "addUsers()";
+    protected: const std::string METHOD_ADD_USERS = "addUsers()";
 
-    private: const METHOD_ADD_DB: string = "addDb()";
+    private: const std::string METHOD_ADD_DB = "addDb()";
 
-    const METHOD_ADD_DATABASES: string = "addDatabases()";
+    protected: const std::string METHOD_ADD_DATABASES = "addDatabases()";
 
-    const METHOD_ADD_TABLES: string = "addTables()";
+    protected: const std::string METHOD_ADD_TABLES = "addTables()";
 
-    const UNABLE_TO_CREATE_USER: string = "Unable to Create User: ";
+    protected: const std::string UNABLE_TO_CREATE_USER = "Unable to Create User: ";
 
-    const UNABLE_TO_CREATE_DATABASE: string = "Unable to Create Database: ";
+    protected: const std::string UNABLE_TO_CREATE_DATABASE = "Unable to Create Database: ";
 
-    const UNABLE_TO_CREATE_TABLES: string = "Unable to Create Tables";
+    protected: const std::string UNABLE_TO_CREATE_TABLES = "Unable to Create Tables";
 
-    const ADD_TABLES_RESULTS_LABEL: string = "Add Table Results: ";
+    protected: const std::string ADD_TABLES_RESULTS_LABEL = "Add Table Results: ";
 
-public constructor (DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
+public: AbDatabaseManagement(DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
             super(databaseConnectionInfoInterface as DbConnectionInfo);
                     
 
@@ -102,7 +101,7 @@ public constructor (DatabaseConnectionInfoInterface databaseConnectionInfoInterf
 }
 
 
-public constructor (DbConnectionInfo connectionInfo){
+public: AbDatabaseManagement(DbConnectionInfo connectionInfo){
             super(connectionInfo);
                     
 
@@ -111,11 +110,11 @@ public constructor (DbConnectionInfo connectionInfo){
 }
 
 
-    string getHostName(){
+    private: std::string getHostName(){
 
         try {
             
-    addr: InetAddress = InetAddress.getLocalHost()!;;
+    InetAddress addr = InetAddress::getLocalHost();;
     
 
 
@@ -127,7 +126,7 @@ public constructor (DbConnectionInfo connectionInfo){
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.FAILED, this, GET_HOST_NAME, e);
+this->logUtil.put(this->FAILED, this, GET_HOST_NAME, e);
     
 
 
@@ -142,34 +141,34 @@ this.logUtil!.put(this.FAILED, this, GET_HOST_NAME, e);
 
                 //@Throws(Exception.constructor)
             
-    bool addDbUser(string hostName, string db, string userName, string password){
+    protected: bool addDbUser(std::string hostName, std::string db, std::string userName, std::string password){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.GRANT_ALL);
+stringBuffer.append(this->GRANT_ALL);
     
-stringBuffer!.append(db);
+stringBuffer.append(db);
     
-stringBuffer!.append(this.DOT_STAR);
+stringBuffer.append(this->DOT_STAR);
     
-stringBuffer!.append(this.TO);
+stringBuffer.append(this->TO);
     
-stringBuffer!.append(userName);
+stringBuffer.append(userName);
     
-stringBuffer!.append(hostName);
+stringBuffer.append(hostName);
     
-stringBuffer!.append(this.IDENTIFIED_BY);
+stringBuffer.append(this->IDENTIFIED_BY);
     
-stringBuffer!.append(password);
+stringBuffer.append(password);
     
-stringBuffer!.append(this.WITH_GRANT_OPTION);
+stringBuffer.append(this->WITH_GRANT_OPTION);
     
 
-    sqlStatement: string = stringBuffer!.toString()!;;
+    std::string sqlStatement = stringBuffer.toString();;
     
-this.sqlCommandLog!.append(sqlStatement);
+this->sqlCommandLog.append(sqlStatement);
     
-this.sqlCommandLog!.append(this.commonSeps!.NEW_LINE);
+this->sqlCommandLog.append(this->commonSeps.NEW_LINE);
     
 super.executeSQLStatement(sqlStatement);
     
@@ -182,21 +181,19 @@ super.executeSQLStatement(sqlStatement);
 }
 
 
-    bool addDbUser(string db, string userName, string password){
+    protected: bool addDbUser(std::string db, std::string userName, std::string password){
 
         try {
-            this.addDbUser(this.AT_LOCALHOST, db, userName, password);
+            this->addDbUser(this->AT_LOCALHOST, db, userName, password);
     
 
-    hostName: string = this.getHostName()!;;
+    std::string hostName = this->getHostName();;
     
 
-                        if(hostName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.addDbUser(hostName, db, userName, password);
+                                    this->addDbUser(hostName, db, userName, password);
     
 
                                     }
@@ -211,7 +208,7 @@ super.executeSQLStatement(sqlStatement);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.UNABLE_TO_CREATE_USER +userName, this, this.METHOD_ADD_USER, e);
+this->logUtil.put(this->UNABLE_TO_CREATE_USER +userName, this, this->METHOD_ADD_USER, e);
     
 
 
@@ -224,15 +221,15 @@ this.logUtil!.put(this.UNABLE_TO_CREATE_USER +userName, this, this.METHOD_ADD_US
 }
 
 
-    Boolean addDb(string db){
+    protected: Boolean addDb(std::string db){
 
         try {
             
-    sqlStatement: string = this.sqlStrings!.CREATE_DATABASE +db;;
+    std::string sqlStatement = this->sqlStrings.CREATE_DATABASE +db;;
     
-this.sqlCommandLog!.append(sqlStatement);
+this->sqlCommandLog.append(sqlStatement);
     
-this.sqlCommandLog!.append(this.commonSeps!.NEW_LINE);
+this->sqlCommandLog.append(this->commonSeps.NEW_LINE);
     
 super.executeSQLStatement(sqlStatement);
     
@@ -240,19 +237,19 @@ super.executeSQLStatement(sqlStatement);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.UNABLE_TO_CREATE_DATABASE +db, this, this.METHOD_ADD_DB, e);
+this->logUtil.put(this->UNABLE_TO_CREATE_DATABASE +db, this, this->METHOD_ADD_DB, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 

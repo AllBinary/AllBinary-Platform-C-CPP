@@ -39,11 +39,10 @@
         #include "TransformInfoHttpInterface.h"
 
 class TransformInfoHttpStoreInterface: public TransformInfoHttpInterface {
-        
 
-    setStoreName(string value)
+    void setStoreName(std::string value)
 
-    string getStoreName()
+    std::string getStoreName()
 
 };
 

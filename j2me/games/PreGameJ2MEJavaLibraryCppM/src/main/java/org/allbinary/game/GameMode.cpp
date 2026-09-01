@@ -57,46 +57,43 @@
 class GameMode
             : public Object
          {
-        
 
-    public static NONE: GameMode = new GameMode(StringUtil.getInstance()!.NULL_STRING);
+    public: static GameMode NONE = GameMode(StringUtil::getInstance().NULL_STRING);
 
-    public static SERVER: GameMode = new GameMode("Server");
+    public: static GameMode SERVER = GameMode("Server");
 
-    public static CLIENT: GameMode = new GameMode("Client");
+    public: static GameMode CLIENT = GameMode("Client");
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-private constructor (string name){
-
-            super();
-        this.setName(name);
+private: GameMode(std::string name){
+this->setName(name);
     
 }
 
 
-    setName(string name){
-this.name= name;
+    private: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();;
+                        return this->getName();;
     
 }
 

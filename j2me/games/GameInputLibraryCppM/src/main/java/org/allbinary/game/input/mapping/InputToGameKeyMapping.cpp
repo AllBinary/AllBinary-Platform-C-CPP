@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Throwable.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -94,16 +96,15 @@
         #include "InputMapping.h"
 
 class InputToGameKeyMapping: public InputMapping {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static InputToGameKeyMapping getNullInstance(){
+    public: static InputToGameKeyMapping getNullInstance(){
 
-                        if(InputToGameKeyMapping.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(InputToGameKeyMapping::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    InputToGameKeyMapping.instance= new InputToGameKeyMapping();
+                                    InputToGameKeyMapping::instance= InputToGameKeyMapping();
     
 
                                     }
@@ -112,71 +113,69 @@ class InputToGameKeyMapping: public InputMapping {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputToGameKeyMapping.instance as InputToGameKeyMapping;
+                        return InputToGameKeyMapping::instance() as InputToGameKeyMapping;
     
 }
 
 
-    private: const gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;
+    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: const mappedGameKeys: std::vector<GameKey> = 
-                                                        [
-                                                            this.gameKeyFactory!.UP,this.gameKeyFactory!.DOWN,this.gameKeyFactory!.LEFT,this.gameKeyFactory!.RIGHT
-                                                        ];
+    private: const std::vector<GameKey> mappedGameKeys = 
+                                                        {
+                                                            this->gameKeyFactory.UP,this->gameKeyFactory.DOWN,this->gameKeyFactory.LEFT,this->gameKeyFactory.RIGHT
+                                                        };
 
-    private: const platformToGameKeyMapping: std::vector<GameKey> = new Array(InputFactory.getInstance()!.MAX);
+    private: const std::vector<GameKey> platformToGameKeyMapping = new Array(InputFactory::getInstance().MAX);
 
-    negativePlatformToGameKeyMapping: std::vector<GameKey> = [];
+    protected: std::vector<GameKey> negativePlatformToGameKeyMapping = {};
 
-public constructor (){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: InputToGameKeyMapping(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.clear();
+this->clear();
     
 }
 
 
-    clear(){
+    private: void clear(){
 
 
 
 
                         for (
-    index: int32_t = this.platformToGameKeyMapping!.length -1;index >= 0; index--)
+    int32_t index = this->platformToGameKeyMapping.size() -1;index >= 0; index--)
         {
-this.platformToGameKeyMapping[index]= this.gameKeyFactory!.NONE;
+this->platformToGameKeyMapping[index]= this->gameKeyFactory.NONE;
     
 }
 
 }
 
 
-    removeAll(){
+    protected: void removeAll(){
 super.removeAll();
     
-this.clear();
+this->clear();
     
 }
 
 
-    public addMapping(InputToGameKeyMapping inputToGameKeyMapping){
+    public: void addMapping(InputToGameKeyMapping inputToGameKeyMapping){
 
 
 
 
                         for (
-    index: int32_t = inputToGameKeyMapping!.getMaxMappable() -1;index >= 0; index--)
+    int32_t index = inputToGameKeyMapping.getMaxMappable() -1;index >= 0; index--)
         {
 
-    input: Input = inputToGameKeyMapping!.getInstance(index)!;;
+    Input input = inputToGameKeyMapping.getInstance(index);;
     
 
-                        if(input != this.gameKeyFactory!.NONE)
+                        if(input != this->gameKeyFactory.NONE)
                         
                                     {
-                                    this.addAll(input, inputToGameKeyMapping!.getMappedInput(input));
+                                    this->addAll(input, inputToGameKeyMapping.getMappedInput(input));
     
 
                                     }
@@ -186,51 +185,51 @@ this.clear();
 }
 
 
-    addAll(Input input, BasicArrayList list){
+    private: void addAll(Input input, BasicArrayList list){
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    mappedToInput: Input = list.objectArray[index]! as Input;;
+    Input mappedToInput = list.objectArray[index]! as Input;;
     
-this.add(input, mappedToInput);
+this->add(input, mappedToInput);
     
 }
 
 }
 
 
-    public add(Input input, Input mappedToInput){
+    public: void add(Input input, Input mappedToInput){
 super.add(input, mappedToInput);
     
-this.set(input, mappedToInput);
+this->set(input, mappedToInput);
     
 }
 
 
-    public remove(Input input, Input mappedToInput){
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append(StringUtil.getInstance()!.toString(input))!.append(" == ")!.append(StringUtil.getInstance()!.toString(mappedToInput))!.toString(), this, "InputToGameKeyMapping::remove");
+    public: void remove(Input input, Input mappedToInput){
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(input)).append(" == ").append(StringUtil::getInstance().toString(mappedToInput)).toString(), this, "InputToGameKeyMapping::remove");
     
 super.remove(input, mappedToInput);
     
-this.set(input, this.gameKeyFactory!.NONE);
+this->set(input, this->gameKeyFactory.NONE);
     
 }
 
 
-    set(Input input, Input mappedToInput){
+    private: void set(Input input, Input mappedToInput){
 
-    id: int32_t = mappedToInput!.getId()!;;
+    int32_t id = mappedToInput.getId();;
     
 
-                        if(id >= 0 && id < this.platformToGameKeyMapping!.length)
+                        if(id >= 0 && id < this->platformToGameKeyMapping.size())
                         
                                     {
-                                    this.platformToGameKeyMapping[id]= input as GameKey;
+                                    this->platformToGameKeyMapping[id]= input as GameKey;
     
 
                                     }
@@ -238,40 +237,40 @@ this.set(input, this.gameKeyFactory!.NONE);
 }
 
 
-    public int32_t getMaxMappable(){
+    public: int32_t getMaxMappable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.platformToGameKeyMapping!.length;
+                        return this->platformToGameKeyMapping.size();
     
 }
 
 
-    public BasicArrayList getReverseInstance(int32_t id){
+    public: BasicArrayList getReverseInstance(int32_t id){
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    inputFactory: InputFactory = InputFactory.getInstance()!;;
+    InputFactory inputFactory = InputFactory::getInstance();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.platformToGameKeyMapping!.length; index++)
+    int32_t index = 0;index < this->platformToGameKeyMapping.size(); index++)
         {
 
-                        if(this.platformToGameKeyMapping[index]!.getId() == id)
+                        if(this->platformToGameKeyMapping[index]!.getId() == id)
                         
                                     {
                                     
-    input: Input = inputFactory!.getInstanceById(index)!;;
+    Input input = inputFactory.getInstanceById(index);;
     
 
                         if(input != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -296,15 +295,15 @@ this.set(input, this.gameKeyFactory!.NONE);
 
                 //@Throws(Exception.constructor)
             
-    initGameKey(Canvas canvas, GameKey gameKey){
+    private: void initGameKey(Canvas canvas, GameKey gameKey){
 
-    key: int32_t = canvas.getKeyCode(gameKey!.getId())!;;
+    int32_t key = canvas.getKeyCode(gameKey.getId());;
     
 
-                        if(key < 0 &&  -key < this.negativePlatformToGameKeyMapping!.length)
+                        if(key < 0 &&  -key < this->negativePlatformToGameKeyMapping.size())
                         
                                     {
-                                    this.negativePlatformToGameKeyMapping[ -key]= gameKey;
+                                    this->negativePlatformToGameKeyMapping[ -key]= gameKey;
     
 
                                     }
@@ -314,10 +313,10 @@ this.set(input, this.gameKeyFactory!.NONE);
                         
                                     {
                                     
-                        if(this.platformToGameKeyMapping[key] == this.gameKeyFactory!.NONE)
+                        if(this->platformToGameKeyMapping[key] == this->gameKeyFactory.NONE)
                         
                                     {
-                                    this.platformToGameKeyMapping[key]= gameKey;
+                                    this->platformToGameKeyMapping[key]= gameKey;
     
 
                                     }
@@ -326,7 +325,7 @@ this.set(input, this.gameKeyFactory!.NONE);
                                     }
                                 
                         else {
-                            PreLogUtil.putOE(new StringMaker().append(gameKey!.toString())!.append(CommonSeps.getInstance()!.COLON_SEP)!.appendint(key)!.toString(), this, this.commonStrings!.INIT, new Exception());
+                            PreLogUtil::putOE(StringMaker().append(gameKey.toString()).append(CommonSeps::getInstance().COLON_SEP).appendint(key).toString(), this, this->commonStrings.INIT, Exception());
     
 
                         }
@@ -336,22 +335,21 @@ this.set(input, this.gameKeyFactory!.NONE);
 
                 //@Throws(Exception.constructor)
             
-    int32_t getSmallestCanvasGameKeyCode(Canvas canvas){
+    private: int32_t getSmallestCanvasGameKeyCode(Canvas canvas){
 
-    nextKey: int32_t = 0;;
+    int32_t nextKey = 0;;
     
 
-    smallestKey: int32_t = 0;;
+    int32_t smallestKey = 0;;
     
 
 
 
 
                         for (
-    index: int32_t = this.mappedGameKeys!.length
-                ;--index >= 0; )
+    int32_t index = this->mappedGameKeys.size();--index >= 0; )
         {
-nextKey= canvas.getKeyCode(this.mappedGameKeys[index]!.getId());
+nextKey= canvas.getKeyCode(this->mappedGameKeys[index]!.getId());
     
 
                         if(nextKey < smallestKey)
@@ -373,14 +371,14 @@ nextKey= canvas.getKeyCode(this.mappedGameKeys[index]!.getId());
 }
 
 
-    public init(Canvas canvas){
+    public: void init(Canvas canvas){
 
         try {
             
-    negativePlatformToGameKeyMapping: std::vector<GameKey> = [];;
+    std::vector<GameKey> negativePlatformToGameKeyMapping = {};;
     
 
-    smallestKey: int32_t = this.getSmallestCanvasGameKeyCode(canvas)!;;
+    int32_t smallestKey = this->getSmallestCanvasGameKeyCode(canvas);;
     
 
                         if(smallestKey < 0)
@@ -404,14 +402,13 @@ negativePlatformToGameKeyMapping= new Array( -smallestKey);
 
 
                         for (
-    index: int32_t = negativePlatformToGameKeyMapping!.length
-                ;--index >= 0; )
+    int32_t index = negativePlatformToGameKeyMapping.size();--index >= 0; )
         {
-negativePlatformToGameKeyMapping[index]= this.gameKeyFactory!.NONE;
+negativePlatformToGameKeyMapping[index]= this->gameKeyFactory.NONE;
     
 }
 
-this.negativePlatformToGameKeyMapping= negativePlatformToGameKeyMapping;
+this->negativePlatformToGameKeyMapping= negativePlatformToGameKeyMapping;
     
 
                                     }
@@ -421,10 +418,9 @@ this.negativePlatformToGameKeyMapping= negativePlatformToGameKeyMapping;
 
 
                         for (
-    index: int32_t = this.mappedGameKeys!.length
-                ;--index >= 0; )
+    int32_t index = this->mappedGameKeys.size();--index >= 0; )
         {
-this.initGameKey(canvas, this.mappedGameKeys[index]!);
+this->initGameKey(canvas, this->mappedGameKeys[index]!);
     
 }
 
@@ -432,36 +428,36 @@ this.initGameKey(canvas, this.mappedGameKeys[index]!);
                 //: 
 } catch(t) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, t);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, t);
     
 }
 
 }
 
 
-    public GameKey getInstanceForCanvas(Canvas canvas, int32_t id){
+    public: GameKey getInstanceForCanvas(Canvas canvas, int32_t id){
 
-                        if(id >= 0 && id < this.platformToGameKeyMapping!.length)
+                        if(id >= 0 && id < this->platformToGameKeyMapping.size())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.platformToGameKeyMapping[id]!;
+                        return this->platformToGameKeyMapping[id]!;
     
 
                                     }
                                 
                              else 
-                        if(id < 0 &&  -id < this.negativePlatformToGameKeyMapping!.length)
+                        if(id < 0 &&  -id < this->negativePlatformToGameKeyMapping.size())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.negativePlatformToGameKeyMapping[ -id]!;
+                        return this->negativePlatformToGameKeyMapping[ -id]!;
     
 
                                     }
@@ -471,7 +467,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyFactory!.NONE;
+                        return this->gameKeyFactory.NONE;
     
 
                         }
@@ -479,29 +475,29 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT,
 }
 
 
-    public GameKey getInstance(int32_t id){
+    public: GameKey getInstance(int32_t id){
 
-                        if(id >= 0 && id < this.platformToGameKeyMapping!.length)
+                        if(id >= 0 && id < this->platformToGameKeyMapping.size())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.platformToGameKeyMapping[id]!;
+                        return this->platformToGameKeyMapping[id]!;
     
 
                                     }
                                 
                              else 
-                        if(id < 0 &&  -id < this.negativePlatformToGameKeyMapping!.length)
+                        if(id < 0 &&  -id < this->negativePlatformToGameKeyMapping.size())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.negativePlatformToGameKeyMapping[ -id]!;
+                        return this->negativePlatformToGameKeyMapping[ -id]!;
     
 
                                     }
@@ -511,7 +507,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT,
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameKeyFactory!.NONE;
+                        return this->gameKeyFactory.NONE;
     
 
                         }

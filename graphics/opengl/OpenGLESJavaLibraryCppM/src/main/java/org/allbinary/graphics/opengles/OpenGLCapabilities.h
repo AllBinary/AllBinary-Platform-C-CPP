@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_OPENGLCAPABILITIES_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -99,103 +101,102 @@
 class OpenGLCapabilities
             : public Object
          {
-        
 
-    private: static const instance: OpenGLCapabilities = new OpenGLCapabilities();
+    private: static OpenGLCapabilities instance() { return OpenGLCapabilities(); }
 
-    public static OpenGLCapabilities getInstance();
+    public: static OpenGLCapabilities getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const CUSTOM_GL_SURFACE_VIEW: bool = true;
+    public: const bool CUSTOM_GL_SURFACE_VIEW = true;
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: initialized: bool = false;
+    private: bool initialized = false;
 
-    private: glVersionString: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string glVersionString = this->stringUtil.EMPTY_STRING;
 
-    private: glShaderVersionString: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string glShaderVersionString = this->stringUtil.EMPTY_STRING;
 
-    public shaderVersion: int32_t = 0;
+    public: int32_t shaderVersion = 0;
 
-    private: glRenderer: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string glRenderer = this->stringUtil.EMPTY_STRING;
 
-    private: glVendor: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string glVendor = this->stringUtil.EMPTY_STRING;
 
-    private: glExtensions: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string glExtensions = this->stringUtil.EMPTY_STRING;
 
-    private: possiblyAccelerated: bool= false;
+    private: bool possiblyAccelerated= false;
 
-    private: acceleratedString: string = this.stringUtil!.EMPTY_STRING;
+    private: std::string acceleratedString = this->stringUtil.EMPTY_STRING;
 
-    public maxTextureSize: int32_t = 64;
+    public: int32_t maxTextureSize = 64;
 
-    public const VERSION_1_0: string = "1.0";
+    public: const std::string VERSION_1_0 = "1.0";
 
-    public const VERSION_1_1: string = "1.1";
+    public: const std::string VERSION_1_1 = "1.1";
 
-    public const VERSION_2_0: string = "2.0";
+    public: const std::string VERSION_2_0 = "2.0";
 
-    public const VERSION_3_0: string = "3.0";
+    public: const std::string VERSION_3_0 = "3.0";
 
-    public const VERSION_3_1: string = "3.1";
+    public: const std::string VERSION_3_1 = "3.1";
 
-    public const VERSION_3_2: string = "3.2";
+    public: const std::string VERSION_3_2 = "3.2";
 
-    public const VERSION_HIGHER_THAN_EXISTS: string = "999.999";
+    public: const std::string VERSION_HIGHER_THAN_EXISTS = "999.999";
 
-    public const VERSION_UNK: string = "Unk";
+    public: const std::string VERSION_UNK = "Unk";
 
-    public const GL_EXT_GPU_SHADER_100: string = "GL_ARB_shading_language_100";
+    public: const std::string GL_EXT_GPU_SHADER_100 = "GL_ARB_shading_language_100";
 
-    public const GL_EXT_GPU_SHADER4: string = "GL_EXT_gpu_shader4";
+    public: const std::string GL_EXT_GPU_SHADER4 = "GL_EXT_gpu_shader4";
 
-    private: glVersion: string = this.glVersionString;
+    private: std::string glVersion = this->glVersionString;
 
-    public glInstanceVersion: string = this.VERSION_UNK;
+    public: std::string glInstanceVersion = this->VERSION_UNK;
 
-    private: glExtensionDrawTexture: bool= false;
+    private: bool glExtensionDrawTexture= false;
 
-    private: glThreedDrawTexture: bool= false;
+    private: bool glThreedDrawTexture= false;
 
-    private: glExtensionGPUShader4: bool= false;
+    private: bool glExtensionGPUShader4= false;
 
-    private: glExtensionGPUShader100: bool= false;
+    private: bool glExtensionGPUShader100= false;
 
-    private: vertexBufferObjectSupport: bool= false;
+    private: bool vertexBufferObjectSupport= false;
 
-private constructor ();
+private: OpenGLCapabilities();
 
-    public bool isInitialized();
+    public: bool isInitialized();
 
-    requireInitialization();
+    private: void requireInitialization();
 
-    public initCapabilities(GL10 gl);
+    public: void initCapabilities(GL10 gl);
 
-    bool isExtension(OpenGLFeature gameFeature);
+    private: bool isExtension(OpenGLFeature gameFeature);
 
-    public bool isGlExtensionDrawTexture();
+    public: bool isGlExtensionDrawTexture();
 
-    public bool isGlExtensionGPUShader100();
+    public: bool isGlExtensionGPUShader100();
 
-    public bool isGlExtensionGPUShader4();
+    public: bool isGlExtensionGPUShader4();
 
-    public string getGlVersion();
+    public: std::string getGlVersion();
 
-    public string getGlVersionString();
+    public: std::string getGlVersionString();
 
-    public string getGlShaderVersion();
+    public: std::string getGlShaderVersion();
 
-    public bool isGlThreedDrawTexture();
+    public: bool isGlThreedDrawTexture();
 
-    public string getGlRenderer();
+    public: std::string getGlRenderer();
 
-    public bool isVertexBufferObjectSupport();
+    public: bool isVertexBufferObjectSupport();
 
-    public bool isTextureSizeValid(int32_t widthAndHeight);
+    public: bool isTextureSizeValid(int32_t widthAndHeight);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

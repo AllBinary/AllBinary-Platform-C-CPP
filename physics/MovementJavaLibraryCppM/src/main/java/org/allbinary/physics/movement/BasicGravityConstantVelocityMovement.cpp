@@ -53,10 +53,9 @@
         #include "BasicConstantVelocityMovement.h"
 
 class BasicGravityConstantVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-public constructor (BasicDecimal speedBasicDecimal){
-            super(speedBasicDecimal, new VelocityProperties(static_cast<int32_t>(speedBasicDecimal!.getUnscaled()), static_cast<int32_t>(speedBasicDecimal!.getUnscaled())));
+public: BasicGravityConstantVelocityMovement(BasicDecimal speedBasicDecimal){
+            super(speedBasicDecimal, VelocityProperties(static_cast<int32_t>(speedBasicDecimal.getUnscaled()), static_cast<int32_t>(speedBasicDecimal.getUnscaled())));
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -64,14 +63,14 @@ public constructor (BasicDecimal speedBasicDecimal){
 }
 
 
-    private: const gravityUtil: GravityUtil = GravityUtil.getInstance()!;
+    private: const GravityUtil gravityUtil = GravityUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer){
+    public: void process(AllBinaryGameLayer layer){
 super.process(layer);
     
-this.gravityUtil!.process(this.getVelocityProperties(), this.gravityUtil!.GAME_GRAVITY_VELOCITY);
+this->gravityUtil.process(this->getVelocityProperties(), this->gravityUtil.GAME_GRAVITY_VELOCITY);
     
 }
 

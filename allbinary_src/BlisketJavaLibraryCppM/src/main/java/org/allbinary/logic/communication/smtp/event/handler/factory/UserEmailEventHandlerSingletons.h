@@ -77,23 +77,22 @@
 class UserEmailEventHandlerSingletons
             : public Object
          {
-        
 
-    private: static const instance: UserEmailEventHandlerSingletons = new UserEmailEventHandlerSingletons();
+    private: static UserEmailEventHandlerSingletons instance() { return UserEmailEventHandlerSingletons(); }
 
-    public static UserEmailEventHandlerSingletons getInstance();
+    public: static UserEmailEventHandlerSingletons getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const userEmailEventHandlerHashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: const HashMap<any, any> userEmailEventHandlerHashMap = HashMap<any, any>();
 
-private constructor ();
+private: UserEmailEventHandlerSingletons();
 
                 //@Throws(Exception.constructor)
             
-    public UserEmailEventHandler getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
+    public: UserEmailEventHandler getInstance(AbeClientInformationInterface abeClientInformation, UserEmailEventNameData userEmailEventNameData, UserInterface userInterface);
 
 };
 

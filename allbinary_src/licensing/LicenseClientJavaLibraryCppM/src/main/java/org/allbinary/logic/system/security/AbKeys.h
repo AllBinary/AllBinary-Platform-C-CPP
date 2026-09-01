@@ -59,20 +59,19 @@
 class AbKeys
             : public Object
          {
-        
 
-    private: static const instance: AbKeys = new AbKeys();
+    private: static AbKeys instance() { return AbKeys(); }
 
-    public static AbKeys getInstance();
+    public: static AbKeys getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: AbKeys();
 
                 //@Throws(LicensingException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string getKey(AbeClientInformationInterface abeClientInformation, string keyName);
+    public: std::string getKey(AbeClientInformationInterface abeClientInformation, std::string keyName);
 
 };
 

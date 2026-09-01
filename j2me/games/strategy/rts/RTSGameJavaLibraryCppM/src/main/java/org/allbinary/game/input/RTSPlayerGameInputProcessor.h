@@ -43,11 +43,10 @@
 #include "RTSPlayerGameInput.h"
 
 class RTSPlayerGameInputProcessor: public GameInputProcessor {
-        
 
-    const rtsPlayerGameInput: RTSPlayerGameInput;
+    protected: RTSPlayerGameInput rtsPlayerGameInput;
 
-public constructor (RTSPlayerGameInput rtsPlayerGameInput);
+public: RTSPlayerGameInputProcessor(RTSPlayerGameInput rtsPlayerGameInput);
 
 };
 

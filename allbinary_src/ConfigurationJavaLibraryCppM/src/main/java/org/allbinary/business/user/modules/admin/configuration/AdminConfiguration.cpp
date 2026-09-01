@@ -82,50 +82,43 @@
 class AdminConfiguration
             : public Object
         : public AdminConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor (){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: AdminConfiguration(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.contextConfigurationInterface= ContextConfigurationInterfaceFactory.getInstance()!.getInstance(AdminConfigurationData.CONTEXTNAME);
+this->contextConfigurationInterface= ContextConfigurationInterfaceFactory::getInstance().getInstance(AdminConfigurationData::CONTEXTNAME);
     
 }
 
 
-public constructor (HttpServletRequest request){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: AdminConfiguration(HttpServletRequest request){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.getFormData(new RequestParams(request).toHashMap());
+this->getFormData(RequestParams(request).toHashMap());
     
 }
 
 
-public constructor (HashMap<any, any> storeHashMap){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: AdminConfiguration(HashMap<any, any> storeHashMap){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.getFormData(storeHashMap);
+this->getFormData(storeHashMap);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    getFormData(HashMap<any, any> storeHashMap){
-this.logUtil!.putF(this.commonStrings!.START, this, "getFormData");
+    private: void getFormData(HashMap<any, any> storeHashMap){
+this->logUtil.putF(this->commonStrings.START, this, "getFormData");
     
-this.setContextConfigurationInterface(new ContextConfiguration(storeHashMap) as ContextConfigurationInterface);
+this->setContextConfigurationInterface(ContextConfiguration(storeHashMap) as ContextConfigurationInterface);
     
 }
 
@@ -133,30 +126,30 @@ this.setContextConfigurationInterface(new ContextConfiguration(storeHashMap) as 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public write(){
+    public: void write(){
 
-    contextConfigurationDomDocumentMapping: ContextConfigurationDomDocumentMapping = new ContextConfigurationDomDocumentMapping(this.getContextConfigurationInterface());;
+    ContextConfigurationDomDocumentMapping contextConfigurationDomDocumentMapping = ContextConfigurationDomDocumentMapping(this->getContextConfigurationInterface());;
     
 
-    cryptFileWriter: CryptFileWriter = new CryptFileWriter(ContextConfigurationData.getInstance()!.UNCRYPTED_EXTENSION, ContextConfigurationData.getInstance()!.ENCRYPTED_EXTENSION);;
+    CryptFileWriter cryptFileWriter = CryptFileWriter(ContextConfigurationData::getInstance().UNCRYPTED_EXTENSION, ContextConfigurationData::getInstance().ENCRYPTED_EXTENSION);;
     
-cryptFileWriter!.write(ContextConfigurationPathUtil.getAbPath(AdminConfigurationData.CONTEXTNAME), contextConfigurationDomDocumentMapping!.toXmlDoc());
+cryptFileWriter.write(ContextConfigurationPathUtil::getAbPath(AdminConfigurationData::CONTEXTNAME), contextConfigurationDomDocumentMapping.toXmlDoc());
     
 }
 
 
-    public ContextConfigurationInterface getContextConfigurationInterface(){
+    public: ContextConfigurationInterface getContextConfigurationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.contextConfigurationInterface;
+                        return this->contextConfigurationInterface;
     
 }
 
 
-    public setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface){
-this.contextConfigurationInterface= contextConfigurationInterface;
+    public: void setContextConfigurationInterface(ContextConfigurationInterface contextConfigurationInterface){
+this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 

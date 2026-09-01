@@ -47,11 +47,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LogTableEntityInterface: public BasicDataTableInterface {
-        
 
-    deleteWhere(string key, string value);
+    void deleteWhere(std::string key, std::string value);
 
-    insert(Vector values);
+    void insert(Vector values);
 
 };
 

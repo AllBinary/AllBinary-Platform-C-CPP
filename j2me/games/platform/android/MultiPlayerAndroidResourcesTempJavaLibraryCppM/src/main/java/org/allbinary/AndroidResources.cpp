@@ -31,29 +31,28 @@
 class AndroidResources
             : public Object
          {
-        
 
-    private: static const instance: AndroidResources = new AndroidResources();
+    private: static AndroidResources instance() { return AndroidResources(); }
 
-    public static AndroidResources getInstance(){
+    public: static AndroidResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AndroidResources.instance;
+                        return AndroidResources::instance();
     
 }
 
 
-    public drawable: R.Companion.drawable = new R.Companion.drawable();
+    public: R::Companion::drawable drawable = R::Companion::drawable();
 
-    public id: R.Companion.id = new R.Companion.id();
+    public: R::Companion::id id = R::Companion::id();
 
-    public layout: R.Companion.layout = new R.Companion.layout();
+    public: R::Companion::layout layout = R::Companion::layout();
 
-    public raw: R.Companion.raw = new R.Companion.raw();
+    public: R::Companion::raw raw = R::Companion::raw();
 
-    public string: R.Companion.string = new R.Companion.string();
+    public: R::Companion::string string = R::Companion::string();
 
 };
 

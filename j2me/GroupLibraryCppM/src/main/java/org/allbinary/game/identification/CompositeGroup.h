@@ -65,23 +65,22 @@
 class CompositeGroup
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const groupInterface: Group;
+    private: Group groupInterface;
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-public constructor (Group groupInterface);
+public: CompositeGroup(Group groupInterface);
 
-    public clear();
+    public: void clear();
 
-    public add(Group groupInterface);
+    public: void add(Group groupInterface);
 
-    public bool isInGroup(Group groupInterface);
+    public: bool isInGroup(Group groupInterface);
 
-    public Group getGroup();
+    public: Group getGroup();
 
 };
 

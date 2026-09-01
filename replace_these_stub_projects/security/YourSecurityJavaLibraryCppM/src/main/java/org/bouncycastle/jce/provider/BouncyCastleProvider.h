@@ -30,15 +30,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BouncyCastleProvider: public Provider {
-        
 
-    private: static info: string = "BouncyCastle Security Provider v1.41";
+    private: static std::string info = "BouncyCastle Security Provider v1.41";
 
-    public static PROVIDER_NAME: string = "BC";
+    public: static std::string PROVIDER_NAME = "BC";
 
-public constructor ();
+public: BouncyCastleProvider();
 
-    public setParameter(string parameterName, any = {} parameter);
+    public: void setParameter(std::string parameterName, Object* parameter);
 
 };
 

@@ -65,45 +65,42 @@
 class FileTableMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: file: AbFile;
+    private: AbFile file;
 
-public constructor (AbFile file){
-
-            super();
-        this.file= file;
+public: FileTableMapping(AbFile file){
+this->file= file;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.file.getPath();
+                        return this->file.getPath();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    filePropertyVector: Vector = new Vector();;
+    Vector filePropertyVector = Vector();;
     
-filePropertyVector!.add(this.file.getAbsolutePath());
+filePropertyVector.add(this->file.getAbsolutePath());
     
-filePropertyVector!.add(this.file.getCanonicalPath());
+filePropertyVector.add(this->file.getCanonicalPath());
     
-filePropertyVector!.add(this.file.getName());
+filePropertyVector.add(this->file.getName());
     
-filePropertyVector!.add(this.file.getParent());
+filePropertyVector.add(this->file.getParent());
     
-filePropertyVector!.add(this.file.getPath());
+filePropertyVector.add(this->file.getPath());
     
 
 
@@ -116,41 +113,41 @@ filePropertyVector!.add(this.file.getPath());
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    filePropertyHashMap: HashMap<any, any> = new HashMap<any, any>();;
-    
-
-    pathData: AbPathData = AbPathData.getInstance()!;;
+    HashMap<any, any> filePropertyHashMap = HashMap<any, any>();;
     
 
-    pathUtil: PathUtil = PathUtil.getInstance()!;;
+    AbPathData pathData = AbPathData::getInstance();;
     
 
-    rootFileName: string = pathData!.getNameFromPath(pathUtil!.getWithoutExtension(this.file.getPath()))!;;
+    PathUtil pathUtil = PathUtil::getInstance();;
     
 
-    fileData: FileData = FileData.getInstance()!;;
+    std::string rootFileName = pathData.getNameFromPath(pathUtil.getWithoutExtension(this->file.getPath()));;
     
-filePropertyHashMap!.put(fileData!.ROOT_NAME, rootFileName);
+
+    FileData fileData = FileData::getInstance();;
     
-filePropertyHashMap!.put(fileData!.ISFILE, Boolean.valueOf(this.file.isFile())!.toString());
+filePropertyHashMap.put(fileData.ROOT_NAME, rootFileName);
     
-filePropertyHashMap!.put(fileData!.ISDIRECTORY, Boolean.valueOf(this.file.isDirectory())!.toString());
+filePropertyHashMap.put(fileData.ISFILE, Boolean::valueOf(this->file.isFile()).toString());
     
-filePropertyHashMap!.put(fileData!.ISHIDDEN, Boolean.valueOf(this.file.isHidden())!.toString());
+filePropertyHashMap.put(fileData.ISDIRECTORY, Boolean::valueOf(this->file.isDirectory()).toString());
     
-filePropertyHashMap!.put(fileData!.ISABSOLUTE, Boolean.valueOf(this.file.isAbsolute())!.toString());
+filePropertyHashMap.put(fileData.ISHIDDEN, Boolean::valueOf(this->file.isHidden()).toString());
     
-filePropertyHashMap!.put(fileData!.ABSOLUTE_PATH, file.getAbsolutePath());
+filePropertyHashMap.put(fileData.ISABSOLUTE, Boolean::valueOf(this->file.isAbsolute()).toString());
     
-filePropertyHashMap!.put(fileData!.CANONICAL_PATH, file.getCanonicalPath());
+filePropertyHashMap.put(fileData.ABSOLUTE_PATH, file.getAbsolutePath());
     
-filePropertyHashMap!.put(fileData!.NAME, file.getName());
+filePropertyHashMap.put(fileData.CANONICAL_PATH, file.getCanonicalPath());
     
-filePropertyHashMap!.put(fileData!.PARENT, file.getParent());
+filePropertyHashMap.put(fileData.NAME, file.getName());
     
-filePropertyHashMap!.put(fileData!.PATH, file.getPath());
+filePropertyHashMap.put(fileData.PARENT, file.getParent());
+    
+filePropertyHashMap.put(fileData.PATH, file.getPath());
     
 
 

@@ -51,9 +51,8 @@
 class ShakeEvent
             : public Object
          {
-        
 
- constructor ();
+: ShakeEvent();
 
 };
 

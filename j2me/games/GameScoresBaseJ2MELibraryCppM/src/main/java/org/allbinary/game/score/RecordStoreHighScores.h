@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_RECORDSTOREHIGHSCORES_H
         #define ORG_ALLBINARY_GAME_SCORE_RECORDSTOREHIGHSCORES_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/io/ByteArrayInputStream.h>
@@ -118,50 +120,49 @@
 #include "ScoreComparator.h"
 
 class RecordStoreHighScores: public HighScores {
-        
 
-    private: static const hashTable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashTable = Hashtable<any, any>();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static HighScores getInstance(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, string highScoreName, string heading, string columnTwoHeading, RecordComparator recordComparatorInterface);
+    public: static HighScores getInstance(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string highScoreName, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const platformRecordIdUtil: PlatformRecordIdUtil = PlatformRecordIdUtil.getInstance()!;
+    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const RECORD_ID: string = "_HS";
+    private: const std::string RECORD_ID = "_HS";
 
-    private: const MAXHIGHSCORES: int32_t = 100;
+    private: const int32_t MAXHIGHSCORES = 100;
 
-    private: const gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: const recordComparatorInterface: RecordComparator;
+    private: RecordComparator recordComparatorInterface;
 
-private constructor (AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, string name, string heading, string columnTwoHeading, RecordComparator recordComparatorInterface);
+private: RecordStoreHighScores(AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, std::string name, std::string heading, std::string columnTwoHeading, RecordComparator recordComparatorInterface);
 
-    string getRecordId(AbeClientInformationInterface abeClientInformation);
+    private: std::string getRecordId(AbeClientInformationInterface abeClientInformation);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addHighScore(HighScore newHighScore);
+    public: void addHighScore(HighScore newHighScore);
 
-    removeLowestHighScore();
+    private: void removeLowestHighScore();
 
-    load();
+    private: void load();
 
-    bool isTooManyHighScores();
+    private: bool isTooManyHighScores();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isBestScore(HighScore newHighScore);
+    public: bool isBestScore(HighScore newHighScore);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

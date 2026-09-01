@@ -46,55 +46,52 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
             static const char* PUBLIC = "%{public}s";
             
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    private: const LABEL: string = "org.allbinary";
+    private: const std::string LABEL = "org.allbinary";
 
-    private: const LOG_SUCCESS: string = "org.allbinary: ";
+    private: const std::string LOG_SUCCESS = "org.allbinary: ";
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    /*actual*/ public putL(Log log){
+    /*actual*/ public: void putL(Log log){
 
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
 
                         if(log != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.put(specialMessage, anyType, functionName, exception);
+                                    this->put(specialMessage, anyType, functionName, exception);
     
 
                                     }
@@ -102,24 +99,24 @@ private constructor (){
 }
 
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
 }
 
 
-    /*actual*/ public putFS(string specialMessage, string className, string functionName){
+    /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
 }
 
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
-    className: string = this.LABEL;;
+    std::string className = this->LABEL;;
     
-className= anyType!.constructor.name.toString()!;
+className= anyType->constructor.name.toString()!;
     
 
-    message: string = this.logFormatUtil!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
     
-android.util.Log.i(this.LABEL, this.LOG_SUCCESS +message);
+android.util.Log.i(this->LABEL, this->LOG_SUCCESS +message);
     
 }
 

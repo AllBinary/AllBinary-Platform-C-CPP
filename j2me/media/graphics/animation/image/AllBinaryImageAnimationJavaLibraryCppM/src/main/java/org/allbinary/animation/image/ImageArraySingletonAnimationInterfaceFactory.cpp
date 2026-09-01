@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -59,10 +61,9 @@
         #include "ImageArrayAnimation.h"
 
 class ImageArraySingletonAnimationInterfaceFactory: public SingletonAnimationInterfaceFactory {
-        
 
-public constructor (std::vector<Image> imageArray){
-            super(new ImageArrayAnimation(imageArray, AnimationBehavior.getInstance()));
+public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image> imageArray){
+            super(ImageArrayAnimation(imageArray, AnimationBehavior::getInstance()));
                     
 
                             //For kotlin this is before the body of the constructor.

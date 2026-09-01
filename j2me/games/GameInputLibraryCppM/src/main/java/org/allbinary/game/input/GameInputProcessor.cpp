@@ -61,53 +61,50 @@
 class GameInputProcessor
             : public Object
          {
-        
 
-    private: static const instance: GameInputProcessor = new GameInputProcessor();
+    private: static GameInputProcessor instance() { return GameInputProcessor(); }
 
-    public static GameInputProcessor getInstance(){
+    public: static GameInputProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputProcessor.instance;
+                        return GameInputProcessor::instance();
     
 }
 
 
-protected constructor (){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            
-    public processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+protected: GameInputProcessor(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processReleasedEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
+    public: void processEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t analogValue){
+    public: void processReleasedEvent(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allbinaryLayerManager, Integer keyAsInteger){
+    public: void processAnalog(AllBinaryLayerManager allbinaryLayerManager, GameKeyEvent gameKeyEvent, int32_t analogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processReleased(AllBinaryLayerManager allbinaryLayerManager, Integer keyAsInteger){
+    public: void process(AllBinaryLayerManager allbinaryLayerManager, Integer keyAsInteger){
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void processReleased(AllBinaryLayerManager allbinaryLayerManager, Integer keyAsInteger){
 }
 
 

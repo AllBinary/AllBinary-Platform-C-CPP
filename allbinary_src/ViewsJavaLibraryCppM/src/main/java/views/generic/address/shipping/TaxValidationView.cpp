@@ -67,10 +67,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ShippingAddressView.h"
 
-class TaxValidationView: public ShippingAddressView: public ValidationComponentInterface {
-        
+class TaxValidationView: public ShippingAddressView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: TaxValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -79,16 +78,16 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-    billingAddressesEntity: ShippingAddressesEntity = new ShippingAddressesEntity(this.getWeblisketSession()!.getUserName());;
+    ShippingAddressesEntity billingAddressesEntity = ShippingAddressesEntity(this->getWeblisketSession().getUserName());;
     
 
-    streetAddressList: Vector = billingAddressesEntity!.get()!;;
+    Vector streetAddressList = billingAddressesEntity.get();;
     
 
                         if(streetAddressList == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -96,35 +95,35 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    size: int32_t = streetAddressList!.length!;;
+    int32_t size = streetAddressList.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    aStreetAddress: StreetAddress = streetAddressList!.get(index) as StreetAddress;;
+    StreetAddress aStreetAddress = streetAddressList.get(index) as StreetAddress;;
     
 
-                        if(aStreetAddress!.getName()!.compareTo(ShippingAddressData.TAX) == 0)
+                        if(aStreetAddress.getName().compareTo(ShippingAddressData::TAX) == 0)
                         
                                     {
-                                    this.streetAddress= aStreetAddress;
+                                    this->streetAddress= aStreetAddress;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -135,22 +134,22 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -160,7 +159,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

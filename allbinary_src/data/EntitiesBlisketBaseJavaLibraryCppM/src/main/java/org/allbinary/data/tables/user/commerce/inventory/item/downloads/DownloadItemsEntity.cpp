@@ -70,34 +70,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "DownloadItemsEntityInterface.h"
 
-class DownloadItemsEntity: public AbSqlBean: public DownloadItemsEntityInterface {
-        
+class DownloadItemsEntity: public AbSqlBean, public DownloadItemsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "downloaditems";
+    protected: const std::string tableName = "downloaditems";
 
-public constructor (){
-            super(new InventoryDbInitInfo());
+public: DownloadItemsEntity(){
+            super(InventoryDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public insert(Vector values){
+    public: void insert(Vector values){
 
         try {
             super.insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, INSERT);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, INSERT);
     
 
                                     }
@@ -107,10 +106,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, INSERT, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, INSERT, e);
     
 
                                     }
@@ -120,16 +119,16 @@ this.setTableName(this.tableName);
 }
 
 
-    public delete(string value){
+    public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(DownloadItemData.ID, value);
+            super.deleteWhere(DownloadItemData::ID, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, this.commonStrings!.delete);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
@@ -139,10 +138,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }
@@ -152,46 +151,46 @@ this.setTableName(this.tableName);
 }
 
 
-    public update(HashMap<any, any> updatedValues){
-super.updateWhere(DownloadItemData.ID, updatedValues!.get(DownloadItemData.ID) as string, updatedValues);
+    public: void update(HashMap<any, any> updatedValues){
+super.updateWhere(DownloadItemData::ID, updatedValues.get(DownloadItemData::ID) as string, updatedValues);
     
 }
 
 
-    public Vector getForItem(string id){
+    public: Vector getForItem(std::string id){
 
-    returnVector: Vector = new Vector();;
+    Vector returnVector = Vector();;
     
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(BasicItemData.ID, id);
-    
-
-    vector: Vector = super.getRows(keysAndValues)!;;
+keysAndValues.put(BasicItemData::ID, id);
     
 
-    size: int32_t = vector.length!;;
+    Vector vector = super.getRows(keysAndValues);;
+    
+
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    hashMap: HashMap<any, any> = vector.get(index) as HashMap<any, any>;;
+    HashMap<any, any> hashMap = vector.get(index) as HashMap<any, any>;;
     
-returnVector!.add(new DownloadableItem(hashMap));
+returnVector.add(DownloadableItem(hashMap));
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Found: " +size, this, "getForItem");
+                                    this->logUtil.putF("Found: " +size, this, "getForItem");
     
 
                                     }
@@ -205,42 +204,42 @@ returnVector!.add(new DownloadableItem(hashMap));
 }
 
 
-    public Vector getForItem(string id, string downloadItemId){
+    public: Vector getForItem(std::string id, std::string downloadItemId){
 
-    returnVector: Vector = new Vector();;
-    
-
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
-    
-keysAndValues!.put(BasicItemData.ID, id);
-    
-keysAndValues!.put(DownloadItemData.ID, downloadItemId);
+    Vector returnVector = Vector();;
     
 
-    vector: Vector = super.getRows(keysAndValues)!;;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
+    
+keysAndValues.put(BasicItemData::ID, id);
+    
+keysAndValues.put(DownloadItemData::ID, downloadItemId);
     
 
-    size: int32_t = vector.length!;;
+    Vector vector = super.getRows(keysAndValues);;
+    
+
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    hashMap: HashMap<any, any> = vector.get(index) as HashMap<any, any>;;
+    HashMap<any, any> hashMap = vector.get(index) as HashMap<any, any>;;
     
-returnVector!.add(new DownloadableItem(hashMap));
+returnVector.add(DownloadableItem(hashMap));
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Found: " +size, this, "getForItem");
+                                    this->logUtil.putF("Found: " +size, this, "getForItem");
     
 
                                     }
@@ -254,34 +253,34 @@ returnVector!.add(new DownloadableItem(hashMap));
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE)!.append(tableName)!.append(this.sqlStrings!.START)!.append(DownloadItemData.ID)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(BasicItemData.ID)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.ENABLE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DownloadItemData.SPECIAL_NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DownloadItemData.VERSION)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DownloadItemData.CHANGES)!.append(this.sqlTypeStrings!.BLOB_NOT_NULL)!.append(DownloadItemData.SYSTEM)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DownloadItemData.PLATFORM)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DownloadItemData.LICENSE_FILE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE).append(tableName).append(this->sqlStrings.START).append(DownloadItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(BasicItemData::ID).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().ENABLE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::SPECIAL_NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::VERSION).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::CHANGES).append(this->sqlTypeStrings.BLOB_NOT_NULL).append(DownloadItemData::SYSTEM).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::PLATFORM).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::LICENSE_FILE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(DownloadItemData.FILE)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(DownloadItemData.SIZE)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(DownloadItemData.VALID_TIME)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(DownloadItemData.RETRIES)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.LASTMODIFIED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(DownloadItemData.ID)!.append(this.sqlStrings!.END);
+stringBuffer.append(DownloadItemData::FILE).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(DownloadItemData::SIZE).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(DownloadItemData::VALID_TIME).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(DownloadItemData::RETRIES).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(DownloadItemData::ID).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return super.createTable(this.createTableStatement());;
+                        return super.createTable(this->createTableStatement());;
     
 }
 
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
 
 

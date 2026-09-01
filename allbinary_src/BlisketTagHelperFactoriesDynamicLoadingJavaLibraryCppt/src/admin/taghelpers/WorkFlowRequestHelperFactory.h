@@ -56,17 +56,16 @@
 class WorkFlowRequestHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.WorkFlowHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.WorkFlowHelper";
 
-    private: static const FACTORYNAME: string = "WorkFlowHelperFactory";
+    private: static const std::string FACTORYNAME = "WorkFlowHelperFactory";
 
-public constructor ();
+public: WorkFlowRequestHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

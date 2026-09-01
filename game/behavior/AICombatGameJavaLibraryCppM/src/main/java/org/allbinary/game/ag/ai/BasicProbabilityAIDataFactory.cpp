@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -57,69 +59,68 @@
 class BasicProbabilityAIDataFactory
             : public Object
          {
-        
 
-    public Hashtable<any, any> getInstance(){
+    public: Hashtable<any, any> getInstance(){
 
-    likelyhoodIntegerArray: std::vector<std::vector<Integer>> = new Array(Canvas.KEY_NUM9 +1).fill(null).map(() => new Array(2).fill(0))
+    std::vector<std::vector<Integer>> likelyhoodIntegerArray = new Array(Canvas::KEY_NUM9 +1).fill(null).map(() => new Array(2).fill(0))
                                                             ;;
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
-likelyhoodIntegerArray[Canvas.UP]![0]= smallIntegerSingletonFactory!.getAt(0);
+likelyhoodIntegerArray[Canvas::UP]![0]= smallIntegerSingletonFactory.getAt(0);
     
-likelyhoodIntegerArray[Canvas.UP]![1]= smallIntegerSingletonFactory!.getAt(10);
+likelyhoodIntegerArray[Canvas::UP]![1]= smallIntegerSingletonFactory.getAt(10);
     
-likelyhoodIntegerArray[Canvas.DOWN]![0]= smallIntegerSingletonFactory!.getAt(10);
+likelyhoodIntegerArray[Canvas::DOWN]![0]= smallIntegerSingletonFactory.getAt(10);
     
-likelyhoodIntegerArray[Canvas.DOWN]![1]= smallIntegerSingletonFactory!.getAt(14);
+likelyhoodIntegerArray[Canvas::DOWN]![1]= smallIntegerSingletonFactory.getAt(14);
     
-likelyhoodIntegerArray[Canvas.LEFT]![0]= smallIntegerSingletonFactory!.getAt(14);
+likelyhoodIntegerArray[Canvas::LEFT]![0]= smallIntegerSingletonFactory.getAt(14);
     
-likelyhoodIntegerArray[Canvas.LEFT]![1]= smallIntegerSingletonFactory!.getAt(18);
+likelyhoodIntegerArray[Canvas::LEFT]![1]= smallIntegerSingletonFactory.getAt(18);
     
-likelyhoodIntegerArray[Canvas.RIGHT]![0]= smallIntegerSingletonFactory!.getAt(18);
+likelyhoodIntegerArray[Canvas::RIGHT]![0]= smallIntegerSingletonFactory.getAt(18);
     
-likelyhoodIntegerArray[Canvas.RIGHT]![1]= smallIntegerSingletonFactory!.getAt(22);
+likelyhoodIntegerArray[Canvas::RIGHT]![1]= smallIntegerSingletonFactory.getAt(22);
     
-likelyhoodIntegerArray[Canvas.KEY_NUM7]![0]= smallIntegerSingletonFactory!.getAt(22);
+likelyhoodIntegerArray[Canvas::KEY_NUM7]![0]= smallIntegerSingletonFactory.getAt(22);
     
-likelyhoodIntegerArray[Canvas.KEY_NUM7]![1]= smallIntegerSingletonFactory!.getAt(26);
+likelyhoodIntegerArray[Canvas::KEY_NUM7]![1]= smallIntegerSingletonFactory.getAt(26);
     
-likelyhoodIntegerArray[Canvas.KEY_NUM9]![0]= smallIntegerSingletonFactory!.getAt(26);
+likelyhoodIntegerArray[Canvas::KEY_NUM9]![0]= smallIntegerSingletonFactory.getAt(26);
     
-likelyhoodIntegerArray[Canvas.KEY_NUM9]![1]= smallIntegerSingletonFactory!.getAt(30);
+likelyhoodIntegerArray[Canvas::KEY_NUM9]![1]= smallIntegerSingletonFactory.getAt(30);
     
-likelyhoodIntegerArray[Canvas.KEY_NUM1]![0]= smallIntegerSingletonFactory!.getAt(30);
+likelyhoodIntegerArray[Canvas::KEY_NUM1]![0]= smallIntegerSingletonFactory.getAt(30);
     
-likelyhoodIntegerArray[Canvas.KEY_NUM1]![1]= smallIntegerSingletonFactory!.getAt(40);
-    
-
-    repeatLikelyhoodIntegerArray: std::vector<Integer> = new Array(Canvas.KEY_NUM9 +1);;
-    
-repeatLikelyhoodIntegerArray[Canvas.UP]= smallIntegerSingletonFactory!.getAt(0);
-    
-repeatLikelyhoodIntegerArray[Canvas.DOWN]= smallIntegerSingletonFactory!.getAt(0);
-    
-repeatLikelyhoodIntegerArray[Canvas.LEFT]= smallIntegerSingletonFactory!.getAt(0);
-    
-repeatLikelyhoodIntegerArray[Canvas.RIGHT]= smallIntegerSingletonFactory!.getAt(0);
-    
-repeatLikelyhoodIntegerArray[Canvas.KEY_NUM7]= smallIntegerSingletonFactory!.getAt(0);
-    
-repeatLikelyhoodIntegerArray[Canvas.KEY_NUM9]= smallIntegerSingletonFactory!.getAt(0);
-    
-repeatLikelyhoodIntegerArray[Canvas.KEY_NUM1]= smallIntegerSingletonFactory!.getAt(10);
+likelyhoodIntegerArray[Canvas::KEY_NUM1]![1]= smallIntegerSingletonFactory.getAt(40);
     
 
-    inputProbability: InputProbability = new InputProbability(likelyhoodIntegerArray, repeatLikelyhoodIntegerArray, 42, NoTimeDelayHelper.SINGLETON);;
+    std::vector<Integer> repeatLikelyhoodIntegerArray = new Array(Canvas::KEY_NUM9 +1);;
+    
+repeatLikelyhoodIntegerArray[Canvas::UP]= smallIntegerSingletonFactory.getAt(0);
+    
+repeatLikelyhoodIntegerArray[Canvas::DOWN]= smallIntegerSingletonFactory.getAt(0);
+    
+repeatLikelyhoodIntegerArray[Canvas::LEFT]= smallIntegerSingletonFactory.getAt(0);
+    
+repeatLikelyhoodIntegerArray[Canvas::RIGHT]= smallIntegerSingletonFactory.getAt(0);
+    
+repeatLikelyhoodIntegerArray[Canvas::KEY_NUM7]= smallIntegerSingletonFactory.getAt(0);
+    
+repeatLikelyhoodIntegerArray[Canvas::KEY_NUM9]= smallIntegerSingletonFactory.getAt(0);
+    
+repeatLikelyhoodIntegerArray[Canvas::KEY_NUM1]= smallIntegerSingletonFactory.getAt(10);
+    
+
+    InputProbability inputProbability = InputProbability(likelyhoodIntegerArray, repeatLikelyhoodIntegerArray, 42, NoTimeDelayHelper::SINGLETON);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return inputProbability!.toHashtable();;
+                        return inputProbability.toHashtable();;
     
 }
 

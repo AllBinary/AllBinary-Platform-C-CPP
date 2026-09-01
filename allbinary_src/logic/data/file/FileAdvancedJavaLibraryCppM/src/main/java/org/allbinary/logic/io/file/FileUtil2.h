@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEUTIL2_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -64,21 +66,20 @@
 class FileUtil2
             : public Object
          {
-        
 
-    private: static const instance: FileUtil2 = new FileUtil2();
+    private: static FileUtil2 instance() { return FileUtil2(); }
 
-    public static FileUtil2 getInstance();
+    public: static FileUtil2 getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const streamUtil: StreamUtil = StreamUtil.getInstance()!;
+    private: const StreamUtil streamUtil = StreamUtil::getInstance();
 
-private constructor ();
+private: FileUtil2();
 
-    public BasicArrayList loadFileAsList(AbFile file, int32_t max, std::vector<int8_t> byteArray1);
+    public: BasicArrayList loadFileAsList(AbFile file, int32_t max, std::vector<int8_t> byteArray1);
 
 };
 

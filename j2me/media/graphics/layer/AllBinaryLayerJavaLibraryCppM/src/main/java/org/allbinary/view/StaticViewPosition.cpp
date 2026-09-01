@@ -48,9 +48,8 @@
         #include "ViewPosition.h"
 
 class StaticViewPosition: public ViewPosition {
-        
 
-public constructor (int32_t x, int32_t y, int32_t z){
+public: StaticViewPosition(int32_t x, int32_t y, int32_t z){
             super(x, y, z);
                     
 
@@ -59,32 +58,32 @@ public constructor (int32_t x, int32_t y, int32_t z){
 }
 
 
-    public int32_t getX(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getRawX();;
+                        return this->getRawX();;
     
 }
 
 
-    public int32_t getY(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getRawY();;
+                        return this->getRawY();;
     
 }
 
 
-    public int32_t getZ(){
+    public: int32_t getZ(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getRawZ();;
+                        return this->getRawZ();;
     
 }
 

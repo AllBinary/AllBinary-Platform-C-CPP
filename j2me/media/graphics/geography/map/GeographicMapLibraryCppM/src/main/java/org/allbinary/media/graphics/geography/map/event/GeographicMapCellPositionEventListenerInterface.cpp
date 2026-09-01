@@ -44,15 +44,14 @@
         #include "GeographicMapCellPositionEvent.h"
 
 class GeographicMapCellPositionEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent)
+    void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent)
 
                 //@Throws(Exception.constructor)
             
-    onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent)
+    void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent)
 
 };
 

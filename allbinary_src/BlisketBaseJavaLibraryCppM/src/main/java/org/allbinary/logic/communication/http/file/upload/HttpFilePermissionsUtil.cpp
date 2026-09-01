@@ -50,25 +50,24 @@
 class HttpFilePermissionsUtil
             : public Object
          {
-        
 
-    private: static const instance: HttpFilePermissionsUtil = new HttpFilePermissionsUtil();
+    private: static HttpFilePermissionsUtil instance() { return HttpFilePermissionsUtil(); }
 
-    public static HttpFilePermissionsUtil getInstance(){
+    public: static HttpFilePermissionsUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HttpFilePermissionsUtil.instance;
+                        return HttpFilePermissionsUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public create(AbPath path){
+    public: void create(AbPath path){
 
-    file: AbFile = AbFile.createAbFileFromAbPath(path)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(path);;
     
 
                         if(!file.isFile())

@@ -55,9 +55,8 @@
 class TouchButtonsPaintableCompositeFactory
             : public Object
          {
-        
 
-    public static ProcessPaintable getInstance(InputMappingInterface inputMappingInterface, BasicColor basicColor);
+    public: static ProcessPaintable getInstance(InputMappingInterface inputMappingInterface, BasicColor basicColor);
 
 };
 

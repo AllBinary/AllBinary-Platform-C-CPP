@@ -45,15 +45,14 @@
 class PageData
             : public Object
          {
-        
 
-    private: static const instance: PageData = new PageData();
+    private: static PageData instance() { return PageData(); }
 
-    public static PageData getInstance();
+    public: static PageData getInstance();
 
-private constructor ();
+private: PageData();
 
-    public const NAME: string = "PAGE_NAME";
+    public: const std::string NAME = "PAGE_NAME";
 
 };
 

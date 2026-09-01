@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -59,68 +61,65 @@
 class IndependentVectorExplosionRotationAnimationFactory
             : public Object
         : public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-    private: framePoints: std::vector<std::vector<std::vector<int32_t>>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY_ARRAY;
+    private: std::vector<std::vector<std::vector<int32_t>>> framePoints = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY_ARRAY;
 
-    private: vectorInfo: VectorInfo;
+    private: VectorInfo vectorInfo;
 
-    private: basicColor: BasicColor;
+    private: BasicColor basicColor;
 
-    private: vectorAnimationFactoryInterface: VectorAnimationFactoryInterface;
+    private: VectorAnimationFactoryInterface vectorAnimationFactoryInterface;
 
-public constructor (VectorInfo vectorInfo, BasicColor basicColor, VectorAnimationFactoryInterface vectorAnimationFactoryInterface){
-
-            super();
-        this.vectorInfo= vectorInfo;
+public: IndependentVectorExplosionRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, VectorAnimationFactoryInterface vectorAnimationFactoryInterface){
+this->vectorInfo= vectorInfo;
     
-this.basicColor= basicColor;
+this->basicColor= basicColor;
     
-this.vectorAnimationFactoryInterface= vectorAnimationFactoryInterface;
+this->vectorAnimationFactoryInterface= vectorAnimationFactoryInterface;
     
-this.init();
+this->init();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    init(){
-this.framePoints= VectorRotationGenerator.getInstance()!.getInstance(this.vectorInfo);
+    protected: void init(){
+this->framePoints= VectorRotationGenerator::getInstance().getInstance(this->vectorInfo);
     
 }
 
 
-    private: const vectorExplosionGenerator: VectorExplosionGenerator = VectorExplosionGenerator.getInstance()!;
+    private: const VectorExplosionGenerator vectorExplosionGenerator = VectorExplosionGenerator::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface){
+    public: Animation getInstanceAnimation(Animation animationInterface){
 
-    frame: int32_t = 0;;
+    int32_t frame = 0;;
     
 
                         if(animationInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    rotationAnimationInterface: IndexedAnimation = animationInterface as IndexedAnimation;;
+    IndexedAnimation rotationAnimationInterface = animationInterface as IndexedAnimation;;
     
-frame= rotationAnimationInterface!.getFrame();
+frame= rotationAnimationInterface.getFrame();
     
 
                                     }
                                 
 
-    points: std::vector<std::vector<std::vector<int32_t>>> = this.vectorExplosionGenerator!.getInstance(this.framePoints[frame]!, 6, this.vectorExplosionGenerator!.ROTATION)!;;
+    std::vector<std::vector<std::vector<int32_t>>> points = this->vectorExplosionGenerator.getInstance(this->framePoints[frame]!, 6, this->vectorExplosionGenerator.ROTATION);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.vectorAnimationFactoryInterface!.getInstance(points, this.basicColor);;
+                        return this->vectorAnimationFactoryInterface.getInstance(points, this->basicColor);;
     
 }
 

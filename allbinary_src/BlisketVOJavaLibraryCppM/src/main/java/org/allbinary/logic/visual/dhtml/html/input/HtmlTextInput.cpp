@@ -42,17 +42,16 @@
 #include "HtmlInputData.h"
 
 class HtmlTextInput: public HtmlLengthInput {
-        
 
-public constructor (string before, string name, string value, string after){
-            super(before, HtmlInputData.getInstance()!.TEXT, name, value, after);
+public: HtmlTextInput(std::string before, std::string name, std::string value, std::string after){
+            super(before, HtmlInputData::getInstance().TEXT, name, value, after);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-setSize(new Integer(19));
+setSize(Integer(19));
     
-setMaxLength(new Integer(60));
+setMaxLength(Integer(60));
     
 }
 

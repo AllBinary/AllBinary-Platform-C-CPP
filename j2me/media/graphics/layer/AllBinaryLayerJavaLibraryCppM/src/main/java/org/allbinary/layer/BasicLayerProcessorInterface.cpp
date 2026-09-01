@@ -47,11 +47,10 @@
         #include "AllBinaryLayerManager.h"
 
 class BasicLayerProcessorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryLayerManager allBinaryLayerManager)
+    void process(AllBinaryLayerManager allBinaryLayerManager)
 
 };
 

@@ -52,21 +52,20 @@
 class TrackballMotionGestureFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static TrackballMotionGestureFactory getInstance();
+    public: static TrackballMotionGestureFactory getInstance();
 
-    public const LEFT: MotionGestureInput;
+    public: MotionGestureInput LEFT;
 
-    public const RIGHT: MotionGestureInput;
+    public: MotionGestureInput RIGHT;
 
-    public const UP: MotionGestureInput;
+    public: MotionGestureInput UP;
 
-    public const DOWN: MotionGestureInput;
+    public: MotionGestureInput DOWN;
 
-private constructor ();
+private: TrackballMotionGestureFactory();
 
 };
 

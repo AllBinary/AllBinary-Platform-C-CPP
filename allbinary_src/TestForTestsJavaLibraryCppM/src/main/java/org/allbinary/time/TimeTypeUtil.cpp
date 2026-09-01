@@ -34,27 +34,26 @@
 class TimeTypeUtil
             : public Object
          {
-        
 
-    private: static const instance: TimeTypeUtil = new TimeTypeUtil();
+    private: static TimeTypeUtil instance() { return TimeTypeUtil(); }
 
-    public static TimeTypeUtil getInstance(){
+    public: static TimeTypeUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TimeTypeUtil.instance;
+                        return TimeTypeUtil::instance();
     
 }
 
 
-    public const NIGHT: string = "Night";
+    public: const std::string NIGHT = "Night";
 
-    public const DAY: string = "Day";
+    public: const std::string DAY = "Day";
 
-    public bool isNight(){
+    public: bool isNight(){
 
-    hoursOfDay: int32_t = this.getHourOfDay()!;;
+    int32_t hoursOfDay = this->getHourOfDay();;
     
 
 
@@ -65,39 +64,39 @@ class TimeTypeUtil
 }
 
 
-    public int32_t getHourOfDay(){
+    public: int32_t getHourOfDay(){
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return calendar.get(Calendar.HOUR_OF_DAY);;
+                        return calendar.get(Calendar::HOUR_OF_DAY);;
     
 }
 
 
-    public string getNightOrDay(){
+    public: std::string getNightOrDay(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isNight()
+                        return this->isNight()
                         ?       
-                                this.NIGHT
+                                this->NIGHT
                                 :
 
-                            this.DAY;
+                            this->DAY;
 
     ;
     
 }
 
 
-    public int32_t getHourOfDay(int64_t timeInMillis){
+    public: int32_t getHourOfDay(int64_t timeInMillis){
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 calendar.setTimeInMillis(timeInMillis);
     
@@ -105,14 +104,14 @@ calendar.setTimeInMillis(timeInMillis);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return calendar.get(Calendar.HOUR_OF_DAY);;
+                        return calendar.get(Calendar::HOUR_OF_DAY);;
     
 }
 
 
-    public bool isNight(int64_t timeInMillis){
+    public: bool isNight(int64_t timeInMillis){
 
-    hoursOfDay: int32_t = this.getHourOfDay(timeInMillis)!;;
+    int32_t hoursOfDay = this->getHourOfDay(timeInMillis);;
     
 
 
@@ -123,17 +122,17 @@ calendar.setTimeInMillis(timeInMillis);
 }
 
 
-    public string getNightOrDay(int64_t timeInMillis){
+    public: std::string getNightOrDay(int64_t timeInMillis){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isNight(timeInMillis)
+                        return this->isNight(timeInMillis)
                         ?       
-                                this.NIGHT
+                                this->NIGHT
                                 :
 
-                            this.DAY;
+                            this->DAY;
 
     ;
     

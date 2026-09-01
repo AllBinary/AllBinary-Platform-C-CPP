@@ -66,37 +66,34 @@
 #include "DemoCanvas.h"
 
 class DemoGameRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const demoCanvas: DemoCanvas;
+    private: DemoCanvas demoCanvas;
 
-public constructor (DemoCanvas demoCanvas){
-
-            super();
-        this.demoCanvas= demoCanvas;
+public: DemoGameRunnable(DemoCanvas demoCanvas){
+this->demoCanvas= demoCanvas;
     
 }
 
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    public run(){
+    public: void run(){
 
         try {
-            this.demoCanvas!.getLoopTimeHelperP()!.setStartTime(this.gameTickTimeDelayHelper!.setStartTime());
+            this->demoCanvas.getLoopTimeHelperP().setStartTime(this->gameTickTimeDelayHelper.setStartTime());
     
-this.demoCanvas!.processGame();
+this->demoCanvas.processGame();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -105,8 +102,8 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep(){
-this.demoCanvas!.processLoopSleep();
+    public: void processLoopSleep(){
+this->demoCanvas.processLoopSleep();
     
 }
 

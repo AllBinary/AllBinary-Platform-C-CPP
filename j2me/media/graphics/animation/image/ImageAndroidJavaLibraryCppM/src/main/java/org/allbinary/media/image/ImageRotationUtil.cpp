@@ -63,57 +63,54 @@
 class ImageRotationUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageRotationUtil = new ImageRotationUtil();
+    private: static ImageRotationUtil instance() { return ImageRotationUtil(); }
 
-    public static ImageRotationUtil getInstance(){
+    public: static ImageRotationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageRotationUtil.instance;
+                        return ImageRotationUtil::instance();
     
 }
 
 
-    private: const matrix: Matrix = new Matrix();
+    private: const Matrix matrix = Matrix();
 
-private constructor (){
-
-            super();
-        }
+private: ImageRotationUtil(){
+}
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
                 //@Throws(Exception.constructor)
             
-    public Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
+    public: Image createRotatedImage(Image originalImage, int32_t rotationInDegrees){
 
-    image: Image = ImageCreationUtil.getInstance()!.createImageWH(originalImage!.getWidth(), originalImage!.getHeight())!;;
+    Image image = ImageCreationUtil::getInstance().createImageWH(originalImage.getWidth(), originalImage.getHeight());;
     
 
                         if(image.isMutable())
                         
                                     {
                                     
-    bitmap: Bitmap = (image as AndroidImageInterface).getBitmap()!;;
+    Bitmap bitmap = (image as AndroidImageInterface).getBitmap();;
     
 
-    width: int32_t = bitmap.getWidth()!;;
+    int32_t width = bitmap.getWidth();;
     
 
-    height: int32_t = bitmap.getHeight()!;;
+    int32_t height = bitmap.getHeight();;
     
-this.matrix.setRotate(rotationInDegrees, (width>>1), (height>>1));
+this->matrix.setRotate(rotationInDegrees, (width>>1), (height>>1));
     
 
-    canvas: Canvas = (image as AndroidImageInterface).getCanvas()!;;
+    Canvas canvas = (image as AndroidImageInterface).getCanvas();;
     
-canvas.concat(this.matrix);
+canvas.concat(this->matrix);
     
-image.getGraphics()!.drawImage(originalImage, 0, 0, this.anchor);
+image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
     
 
 
@@ -128,7 +125,7 @@ image.getGraphics()!.drawImage(originalImage, 0, 0, this.anchor);
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }

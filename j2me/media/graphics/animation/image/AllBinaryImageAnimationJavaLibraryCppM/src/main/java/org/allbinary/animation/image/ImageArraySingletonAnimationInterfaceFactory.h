@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYSINGLETONANIMATIONINTERFACEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -62,9 +64,8 @@
         #include "ImageArrayAnimation.h"
 
 class ImageArraySingletonAnimationInterfaceFactory: public SingletonAnimationInterfaceFactory {
-        
 
-public constructor (std::vector<Image> imageArray);
+public: ImageArraySingletonAnimationInterfaceFactory(std::vector<Image> imageArray);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_MULTISELECTPAINTABLE_H
         #define ORG_ALLBINARY_GAME_LAYER_MULTISELECTPAINTABLE_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -70,31 +72,30 @@
 #include "RTSLayer.h"
 
 class MultiSelectPaintable: public SelectionHudPaintable {
-        
 
-    private: const rootNameList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList rootNameList = BasicArrayListD();
 
-    private: totalCharArray: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> totalCharArray = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: rootNamesString: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string rootNamesString = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const TOTAL: string = "Total Selected: ";
+    private: const std::string TOTAL = "Total Selected: ";
 
-    private: const backgroundColor: int32_t = BasicColorFactory.getInstance()!.GREY.intValue()!;
+    private: const int32_t backgroundColor = BasicColorFactory::getInstance().GREY.intValue();
 
-    private: totalWidth: int32_t= 0;
+    private: int32_t totalWidth= 0;
 
-    private: textLine2Y: int32_t= 0;
+    private: int32_t textLine2Y= 0;
 
-public constructor ();
+public: MultiSelectPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public update(BasicArrayList list);
+    public: void update(BasicArrayList list);
 
-    clear();
+    private: void clear();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

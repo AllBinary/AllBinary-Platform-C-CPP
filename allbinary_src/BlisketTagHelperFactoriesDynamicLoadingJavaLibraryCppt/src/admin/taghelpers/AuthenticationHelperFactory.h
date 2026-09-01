@@ -59,21 +59,20 @@
 class AuthenticationHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.AuthenticationHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.AuthenticationHelper";
 
-    private: static const FACTORYNAME: string = "AuthenticationHelperFactory";
+    private: static const std::string FACTORYNAME = "AuthenticationHelperFactory";
 
-public constructor ();
-
-                //@Throws(LicensingException.constructor)
-            
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+public: AuthenticationHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+
+                //@Throws(LicensingException.constructor)
+            
+    public: Object* getInstance(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
 
 };
 

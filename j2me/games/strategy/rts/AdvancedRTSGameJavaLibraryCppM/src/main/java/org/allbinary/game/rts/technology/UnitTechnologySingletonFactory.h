@@ -45,45 +45,44 @@
 class UnitTechnologySingletonFactory
             : public Object
          {
-        
 
-    private: static const instance: UnitTechnologySingletonFactory = new UnitTechnologySingletonFactory();
+    private: static UnitTechnologySingletonFactory instance() { return UnitTechnologySingletonFactory(); }
 
-    public static UnitTechnologySingletonFactory getInstance();
+    public: static UnitTechnologySingletonFactory getInstance();
 
-    private: damage: int32_t= 0;
+    private: int32_t damage= 0;
 
-    private: health: int32_t= 0;
+    private: int32_t health= 0;
 
-    private: reload: int32_t= 0;
+    private: int32_t reload= 0;
 
-    private: repair: int32_t= 0;
+    private: int32_t repair= 0;
 
-    private: speed: int32_t= 0;
+    private: int32_t speed= 0;
 
-private constructor ();
+private: UnitTechnologySingletonFactory();
 
-    public init();
+    public: void init();
 
-    public int32_t getDamage();
+    public: int32_t getDamage();
 
-    public setDamage(int32_t damage);
+    public: void setDamage(int32_t damage);
 
-    public int32_t getHealth();
+    public: int32_t getHealth();
 
-    public setHealth(int32_t health);
+    public: void setHealth(int32_t health);
 
-    public int32_t getReload();
+    public: int32_t getReload();
 
-    public setReload(int32_t reload);
+    public: void setReload(int32_t reload);
 
-    public int32_t getRepair();
+    public: int32_t getRepair();
 
-    public setRepair(int32_t repair);
+    public: void setRepair(int32_t repair);
 
-    public int32_t getSpeed();
+    public: int32_t getSpeed();
 
-    public setSpeed(int32_t speed);
+    public: void setSpeed(int32_t speed);
 
 };
 

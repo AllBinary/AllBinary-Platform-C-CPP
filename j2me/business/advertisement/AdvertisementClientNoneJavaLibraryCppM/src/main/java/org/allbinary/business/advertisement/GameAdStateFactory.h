@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -48,26 +50,25 @@
 class GameAdStateFactory
             : public Object
         : public GameAdStateFactoryInterface {
-        
 
-    private: static const instance: GameAdStateFactory = new GameAdStateFactory();
+    private: static GameAdStateFactory instance() { return GameAdStateFactory(); }
 
-    public static GameAdStateFactory getInstance();
+    public: static GameAdStateFactory getInstance();
 
-    private: const gameAdStateArray: std::vector<GameAdState> = 
-                                                        [
-                                                            new GameAdState(new AppNameLicensingAdConfiguration())
-                                                        ];
+    private: const std::vector<GameAdState> gameAdStateArray = 
+                                                        {
+                                                            GameAdState(AppNameLicensingAdConfiguration())
+                                                        };
 
-    private: gameAdState: GameAdState = this.gameAdStateArray[0]!;
+    private: GameAdState gameAdState = this->gameAdStateArray[0];
 
-    public GameAdState getCurrentInstance();
+    public: GameAdState getCurrentInstance();
 
                 //@Throws(Exception.constructor)
             
-    public GameAdStateBase getInstanceForApp(SoftwareInformation softwareInformation);
+    public: GameAdStateBase getInstanceForApp(SoftwareInformation softwareInformation);
 
-    public bool isEnabled();
+    public: bool isEnabled();
 
 };
 

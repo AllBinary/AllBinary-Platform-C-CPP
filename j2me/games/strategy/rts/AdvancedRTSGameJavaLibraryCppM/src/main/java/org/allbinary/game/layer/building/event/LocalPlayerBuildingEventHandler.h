@@ -55,17 +55,16 @@
         #include "BuildingEventListenerInterface.h"
 
 class LocalPlayerBuildingEventHandler: public BasicEventHandler {
-        
 
-    private: static eventHandler: LocalPlayerBuildingEventHandler = new LocalPlayerBuildingEventHandler();
+    private: static LocalPlayerBuildingEventHandler eventHandler = LocalPlayerBuildingEventHandler();
 
-    public static LocalPlayerBuildingEventHandler getInstance();
+    public: static LocalPlayerBuildingEventHandler getInstance();
 
-private constructor ();
+private: LocalPlayerBuildingEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

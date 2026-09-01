@@ -45,11 +45,10 @@
 class Subscription
             : public Object
          {
-        
 
-public constructor ();
+public: Subscription();
 
-    public Boolean isSubscribed();
+    public: Boolean isSubscribed();
 
 };
 

@@ -82,106 +82,103 @@
 class ImageScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageScaleUtil = new ImageScaleUtil();
+    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
 
-    public static ImageScaleUtil getInstance(){
+    public: static ImageScaleUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil.instance;
+                        return ImageScaleUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
-
-
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-    private: anchor: int32_t = Anchor.TOP_LEFT;
-
-    private: const imageBasicArrayList: BasicArrayList = new BasicArrayListD();
-
-    private: const scaledImageBasicArrayList: BasicArrayList = new BasicArrayListD();
-
-    private: const scaleXBasicArrayList: BasicArrayList = new BasicArrayListD();
-
-    private: const scaleYBasicArrayList: BasicArrayList = new BasicArrayListD();
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
-    
+private: ImageScaleUtil(){
 }
 
 
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    private: int32_t anchor = Anchor::TOP_LEFT;
+
+    private: const BasicArrayList imageBasicArrayList = BasicArrayListD();
+
+    private: const BasicArrayList scaledImageBasicArrayList = BasicArrayListD();
+
+    private: const BasicArrayList scaleXBasicArrayList = BasicArrayListD();
+
+    private: const BasicArrayList scaleYBasicArrayList = BasicArrayListD();
+
                 //@Throws(Exception.constructor)
             
-    public Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
-
-    scaleX: float = scaleNominatorX /scaleDenominatorX;;
-    
-
-    scaleY: float = scaleNominatorY /scaleDenominatorY;;
-    
+    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage(imageCache, originalImage, scaleX, scaleY, cached);;
+                        return this->createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached){
+    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
 
-    originalAndroidImage: AndroidImageInterface = originalImage as AndroidImageInterface;;
+    float scaleX = scaleNominatorX /scaleDenominatorX;;
     
 
-    originalBitmap: Bitmap = originalAndroidImage!.getBitmap()!;;
+    float scaleY = scaleNominatorY /scaleDenominatorY;;
     
 
-    width: int32_t = static_cast<int32_t>((originalBitmap!.getWidth() *scaleX));;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->createImage(imageCache, originalImage, scaleX, scaleY, cached);;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached){
+
+    AndroidImageInterface originalAndroidImage = originalImage as AndroidImageInterface;;
     
 
-    height: int32_t = static_cast<int32_t>((originalBitmap!.getHeight() *scaleY));;
+    Bitmap originalBitmap = originalAndroidImage.getBitmap();;
     
 
-    index: int32_t = this.imageBasicArrayList!.indexOf(originalImage)!;;
+    int32_t width = static_cast<int32_t>((originalBitmap.getWidth() *scaleX));;
     
 
-    alreadyAvailable: bool = false;;
+    int32_t height = static_cast<int32_t>((originalBitmap.getHeight() *scaleY));;
+    
+
+    int32_t index = this->imageBasicArrayList.indexOf(originalImage);;
+    
+
+    bool alreadyAvailable = false;;
     
 
                         if(index >= 0)
                         
                                     {
                                     
-    scaleX2Float: number = this.scaleXBasicArrayList!.get(index);;
+    number scaleX2Float = this->scaleXBasicArrayList.get(index);;
     
 
-    scaleX2: float = scaleX2Float!!;;
+    float scaleX2 = scaleX2Float;;
     
 
-    scaleY2Float: number = this.scaleYBasicArrayList!.get(index);;
+    number scaleY2Float = this->scaleYBasicArrayList.get(index);;
     
 
-    scaleY2: float = scaleY2Float!!;;
+    float scaleY2 = scaleY2Float;;
     
 
                         if(scaleX2 == scaleX && scaleY2 == scaleY)
@@ -203,22 +200,22 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scaledImageBasicArrayList!.get(index) as Image;
+                        return this->scaledImageBasicArrayList.get(index) as Image;
     
 
                                     }
                                 
                         else {
                             
-    scaledImage: Image = this.getScaledImage(imageCache, originalImage, scaleX, scaleY, width, height, cached)!;;
+    Image scaledImage = this->getScaledImage(imageCache, originalImage, scaleX, scaleY, width, height, cached);;
     
-this.imageBasicArrayList!.add(originalImage);
+this->imageBasicArrayList.add(originalImage);
     
-this.scaledImageBasicArrayList!.add(scaledImage);
+this->scaledImageBasicArrayList.add(scaledImage);
     
-this.scaleXBasicArrayList!.add(scaleX);
+this->scaleXBasicArrayList.add(scaleX);
     
-this.scaleYBasicArrayList!.add(scaleY);
+this->scaleYBasicArrayList.add(scaleY);
     
 
 
@@ -234,21 +231,21 @@ this.scaleYBasicArrayList!.add(scaleY);
 
                 //@Throws(Exception.constructor)
             
-    Image getScaledImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached){
+    private: Image getScaledImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, int32_t width, int32_t height, bool cached){
 
-    image: Image = NullImage.NULL_IMAGE;;
+    Image image = NullImage::NULL_IMAGE;;
     
 
                         if(cached)
                         
                                     {
-                                    image= imageCache!.get(this.constructor.name.toString()!, width, height);
+                                    image= imageCache.get(this->constructor.name.toString()!, width, height);
     
 
                                     }
                                 
                         else {
-                            image= imageCache!.get(this.commonStrings!.CREATE_IMAGE, width, height);
+                            image= imageCache.get(this->commonStrings.CREATE_IMAGE, width, height);
     
 
                         }
@@ -258,11 +255,11 @@ this.scaleYBasicArrayList!.add(scaleY);
                         
                                     {
                                     
-    matrix: Matrix = new Matrix();;
+    Matrix matrix = Matrix();;
     
-this.scale(image, matrix, scaleX, scaleY);
+this->scale(image, matrix, scaleX, scaleY);
     
-image.getGraphics()!.drawImage(originalImage, 0, 0, this.anchor);
+image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
     
 
 
@@ -277,7 +274,7 @@ image.getGraphics()!.drawImage(originalImage, 0, 0, this.anchor);
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -285,11 +282,11 @@ image.getGraphics()!.drawImage(originalImage, 0, 0, this.anchor);
 }
 
 
-    scale(Image image, Matrix matrix, float scaleX, float scaleY){
+    private: void scale(Image image, Matrix matrix, float scaleX, float scaleY){
 matrix.setScale(scaleX, scaleY);
     
 
-    canvas: Canvas = (image as AndroidImageInterface).getCanvas()!;;
+    Canvas canvas = (image as AndroidImageInterface).getCanvas();;
     
 canvas.concat(matrix);
     

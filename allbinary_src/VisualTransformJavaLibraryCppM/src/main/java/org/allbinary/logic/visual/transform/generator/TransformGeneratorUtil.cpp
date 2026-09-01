@@ -71,80 +71,77 @@
 class TransformGeneratorUtil
             : public Object
          {
-        
 
-    private: static const instance: TransformGeneratorUtil = new TransformGeneratorUtil();
+    private: static TransformGeneratorUtil instance() { return TransformGeneratorUtil(); }
 
-    public static TransformGeneratorUtil getInstance(){
+    public: static TransformGeneratorUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformGeneratorUtil.instance;
+                        return TransformGeneratorUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformGeneratorUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, TransformInfoInterface ownerTransformInfoInterface){
+    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, TransformInfoInterface ownerTransformInfoInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Generating View: " +transformInfoInterface!.getName(), this, "generate()");
+                                    this->logUtil.putF("Generating View: " +transformInfoInterface.getName(), this, "generate()");
     
 
                                     }
                                 
 
-    componentInterface: TransformInterface = TransformFactory.getInstance()!.getInstance(abeClientInformation, transformInfoInterface!.getName(), ownerTransformInfoInterface)!;;
+    TransformInterface componentInterface = TransformFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface.getName(), ownerTransformInfoInterface);;
     
 
-    result: string = componentInterface!.view()!;;
+    std::string result = componentInterface.view();;
     
 
-    httpTransformInfoInterface: TransformInfoHttpInterface = componentInterface!.getTransformInfoInterface() as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface httpTransformInfoInterface = componentInterface.getTransformInfoInterface() as TransformInfoHttpInterface;;
     
 
-    inputOutputTypeData: InputOutputTypeData = InputOutputTypeData.getInstance()!;;
+    InputOutputTypeData inputOutputTypeData = InputOutputTypeData::getInstance();;
     
 
                         if(result.indexOf("<HTML>") >= 0)
                         
                                     {
-                                    httpTransformInfoInterface!.getPropertiesHashMap()!.put(inputOutputTypeData!.NAME, inputOutputTypeData!.DEFAULT);
+                                    httpTransformInfoInterface.getPropertiesHashMap().put(inputOutputTypeData.NAME, inputOutputTypeData.DEFAULT);
     
 
                                     }
                                 
                         else {
-                            httpTransformInfoInterface!.getPropertiesHashMap()!.put(inputOutputTypeData!.NAME, inputOutputTypeData!.DEFAULT_FRAGMENT);
+                            httpTransformInfoInterface.getPropertiesHashMap().put(inputOutputTypeData.NAME, inputOutputTypeData.DEFAULT_FRAGMENT);
     
 
                         }
                             
-new StoreFileGenerator(componentInterface!.getTransformInfoInterface()).process(result);
+StoreFileGenerator(componentInterface.getTransformInfoInterface()).process(result);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate a view", this, "generate()", e);
+                                    this->logUtil.put("Failed to generate a view", this, "generate()", e);
     
 
                                     }
@@ -161,8 +158,8 @@ new StoreFileGenerator(componentInterface!.getTransformInfoInterface()).process(
 
                 //@Throws(Exception.constructor)
             
-    public generate(AbeClientInformationInterface abeClientInformation, TransformInfoDomNode transformInfoDomNode, TransformInfoInterface ownerTransformInfoInterface){
-this.generate(abeClientInformation, transformInfoDomNode!.getTransformInfoInterface(), ownerTransformInfoInterface);
+    public: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoDomNode transformInfoDomNode, TransformInfoInterface ownerTransformInfoInterface){
+this->generate(abeClientInformation, transformInfoDomNode.getTransformInfoInterface(), ownerTransformInfoInterface);
     
 }
 

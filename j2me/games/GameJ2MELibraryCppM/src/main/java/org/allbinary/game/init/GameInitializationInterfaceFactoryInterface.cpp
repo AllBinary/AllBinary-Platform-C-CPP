@@ -45,7 +45,6 @@
         #include "GameInitializationInterface.h"
 
 class GameInitializationInterfaceFactoryInterface {
-        
 
     GameInitializationInterface getInstance()
 

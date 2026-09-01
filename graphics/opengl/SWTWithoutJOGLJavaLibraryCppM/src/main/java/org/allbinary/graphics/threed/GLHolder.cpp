@@ -42,25 +42,22 @@
 class GLHolder
             : public Object
          {
-        
 
-    public isCreated: bool = true;
+    public: bool isCreated = true;
 
-public constructor (){
-
-            super();
-        }
-
-
-    public runOnSurfaceCreated(any = {} renderer){
+public: GLHolder(){
 }
 
 
-    public runOnSurfaceChanged(any = {} renderer, int32_t width, int32_t height){
+    public: void runOnSurfaceCreated(Object* renderer){
 }
 
 
-    public run(any = {} renderer){
+    public: void runOnSurfaceChanged(Object* renderer, int32_t width, int32_t height){
+}
+
+
+    public: void run(Object* renderer){
 }
 
 

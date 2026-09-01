@@ -83,51 +83,50 @@
 class CapturedImageInputOutput
             : public Object
         : public ImageIOInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public save(Long frame){
+    public: void save(Long frame){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    capturedBufferedImageCacheable: BufferedImageFrameCacheable = ((getInstance as AutomaticCacheInterface).get(frame) as BufferedImageFrameCacheable);;
+    BufferedImageFrameCacheable capturedBufferedImageCacheable = ((getInstance as AutomaticCacheInterface).get(frame) as BufferedImageFrameCacheable);;
     
-this.logUtil!.putF(("Saving: " +capturedBufferedImageCacheable!.toString()), this, commonStrings!.SAVE);
+this->logUtil.putF(("Saving: " +capturedBufferedImageCacheable.toString()), this, commonStrings.SAVE);
     
-this.save(capturedBufferedImageCacheable!.getBufferedImage(), frame);
+this->save(capturedBufferedImageCacheable.getBufferedImage(), frame);
     
 }
 
 
-    public save(BufferedImage bufferedImage, Long frame){
+    public: void save(BufferedImage bufferedImage, Long frame){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
-    
-
-    imageUtil: ImageUtil = ImageUtil.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    filePathStringBuffer: StringMaker = new StringMaker();;
-    
-filePathStringBuffer!.append(ImageOutputData.SAVE_PATH);
-    
-filePathStringBuffer!.append(LongUtil.fillIn(frame.toString()));
-    
-filePathStringBuffer!.append(MediaDataFactory.getInstance()!.JPG.getExtension());
+    ImageUtil imageUtil = ImageUtil::getInstance();;
     
 
-    filePath: string = filePathStringBuffer!.toString()!;;
+    StringMaker filePathStringBuffer = StringMaker();;
     
-this.logUtil!.putF(("Image File Path: " +filePath +imageUtil!.toString(bufferedImage)), this, commonStrings!.SAVE);
+filePathStringBuffer.append(ImageOutputData::SAVE_PATH);
+    
+filePathStringBuffer.append(LongUtil::fillIn(frame.toString()));
+    
+filePathStringBuffer.append(MediaDataFactory::getInstance().JPG.getExtension());
     
 
-    imagePersistanceUtil: ImagePersistanceUtil = ImagePersistanceUtil.getInstance()!;;
+    std::string filePath = filePathStringBuffer.toString();;
     
-imagePersistanceUtil!.saveWithImageIO(filePath, bufferedImage);
+this->logUtil.putF(("Image File Path: " +filePath +imageUtil.toString(bufferedImage)), this, commonStrings.SAVE);
+    
+
+    ImagePersistanceUtil imagePersistanceUtil = ImagePersistanceUtil::getInstance();;
+    
+imagePersistanceUtil.saveWithImageIO(filePath, bufferedImage);
     
 }
 

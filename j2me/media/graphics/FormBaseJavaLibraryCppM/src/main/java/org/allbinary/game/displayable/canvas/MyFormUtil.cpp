@@ -87,41 +87,40 @@
 class MyFormUtil
             : public Object
          {
-        
 
-    private: static const instance: MyFormUtil = new MyFormUtil();
+    private: static MyFormUtil instance() { return MyFormUtil(); }
 
-    public static MyFormUtil getInstance(){
+    public: static MyFormUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MyFormUtil.instance;
+                        return MyFormUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: popupMenuRectangle: Rectangle = RectangleFactory.SINGLETON;
+    private: Rectangle popupMenuRectangle = RectangleFactory::SINGLETON;
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    isOpenGL: bool = features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL)!;;
+    bool isOpenGL = features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL);;
     
 
-    TOTAL_CHAR_WIDTH: int32_t = SWTJOGLProcessor.getInstance()!.isJOGL() && isOpenGL
+    int32_t TOTAL_CHAR_WIDTH = SWTJOGLProcessor::getInstance().isJOGL() && isOpenGL
                         ?       
                                 2
                                 :
@@ -131,22 +130,22 @@ class MyFormUtil
     ;;
     
 
-    width: int32_t = MyFontProcessor.defaultStringWidth(font, TOTAL_CHAR_WIDTH)!;;
+    int32_t width = MyFontProcessor::defaultStringWidth(font, TOTAL_CHAR_WIDTH);;
     
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-                        if(displayInfo!.getLastHeight() < 320)
+                        if(displayInfo.getLastHeight() < 320)
                         
                                     {
-                                    this.popupMenuRectangle= new Rectangle(pointFactory!.createXY(0, 25), width, (font.getHeight() *4) +2);
+                                    this->popupMenuRectangle= Rectangle(pointFactory.createXY(0, 25), width, (font.getHeight() *4) +2);
     
 
                                     }
                                 
                         else {
-                            this.popupMenuRectangle= new Rectangle(pointFactory!.createXY(0, displayInfo!.getLastHalfHeight() -70), width, (font.getHeight() *5));
+                            this->popupMenuRectangle= Rectangle(pointFactory.createXY(0, displayInfo.getLastHalfHeight() -70), width, (font.getHeight() *5));
     
 
                         }
@@ -154,12 +153,12 @@ class MyFormUtil
 }
 
 
-    public Rectangle getPopupMenuRectangle(){
+    public: Rectangle getPopupMenuRectangle(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.popupMenuRectangle;
+                        return this->popupMenuRectangle;
     
 }
 

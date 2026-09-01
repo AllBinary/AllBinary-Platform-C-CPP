@@ -58,21 +58,20 @@
 class UserEmailEventConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: userEmailEventConfigurationInterface: UserEmailEventConfigurationInterface;
+    private: UserEmailEventConfigurationInterface userEmailEventConfigurationInterface;
 
-public constructor (UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
+public: UserEmailEventConfigurationMapping(UserEmailEventConfigurationInterface userEmailEventConfigurationInterface);
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public any getKey();
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector();
+    public: Object* getKey();
+
+                //@Throws(Exception.constructor)
+            
+    public: Vector toVector();
 
 };
 

@@ -50,15 +50,14 @@
 class AndroidUtil
             : public Object
          {
-        
 
-    public static const NULL_ACTIVITY: Activity = new Activity();
+    public: static const Activity NULL_ACTIVITY = Activity();
 
-    private: static const version: int32_t = Integer.parseInt(Build.VERSION.SDK)!;
+    private: static const int32_t version = Integer::parseInt(Build::VERSION.SDK);
 
-    public static bool isMemoryRestrictive(){
+    public: static bool isMemoryRestrictive(){
 
-                        if(AndroidUtil.version < 30)
+                        if(AndroidUtil::version < 30)
                         
                                     {
                                     
@@ -79,7 +78,7 @@ class AndroidUtil
 }
 
 
-    public static bool isAndroid(){
+    public: static bool isAndroid(){
 
 
 

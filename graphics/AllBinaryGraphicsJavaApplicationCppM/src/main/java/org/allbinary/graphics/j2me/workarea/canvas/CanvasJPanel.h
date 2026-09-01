@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASJPANEL_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_WORKAREA_CANVAS_CANVASJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -162,158 +164,157 @@
 #include "MouseEvent.h"
 #include "KeyEvent.h"
 
-class CanvasJPanel: public javax.swing.JPanel: public java.awt.event.MouseListener, public java.awt.event.MouseMotionListener, public java.awt.event.KeyListener, public MyGraphicItemEventListener {
-        
+class CanvasJPanel: public javax::swing::JPanel, public java::awt::event::MouseListener, public java::awt::event::MouseMotionListener, public java::awt::event::KeyListener, public MyGraphicItemEventListener {
 
-    private: static frame: int32_t = 0;
+    private: static int32_t frame = 0;
 
-    private: static const gridColor: Color = new Color(BasicColorFactory.getInstance()!.WHITE.intValue());
+    private: static const Color gridColor = Color(BasicColorFactory::getInstance().WHITE.intValue());
 
-    private: static const backgroundColor: Color = new Color(BasicColorFactory.getInstance()!.CLEAR_COLOR.intValue());
+    private: static const Color backgroundColor = Color(BasicColorFactory::getInstance().CLEAR_COLOR.intValue());
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const guiLog: GuiLog = GuiLog.getInstance()!;
+    private: const GuiLog guiLog = GuiLog::getInstance();
 
-    private: const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    private: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    private: selectedTool: GraphicItemInterface = 
-                null
+    private: GraphicItemInterface selectedTool = 
+                nullptr
             ;
 
-    private: graphicItemHashMap: HashMap<any, any>;
+    private: HashMap<any, any> graphicItemHashMap;
 
-    private: canvasDimension: IntegerDimension;
+    private: IntegerDimension canvasDimension;
 
-    private: angle: double = 0;
+    private: double angle = 0;
 
-    private: canvasTreeNode: DefaultMutableTreeNode;
+    private: DefaultMutableTreeNode canvasTreeNode;
 
-    private: frameLabel: CanvasTreeLabel;
+    private: CanvasTreeLabel frameLabel;
 
-    private: workAreaJTreeJPanel: WorkAreaJTreeJPanel;
+    private: WorkAreaJTreeJPanel workAreaJTreeJPanel;
 
-    private: const grid: Grid;
+    private: Grid grid;
 
-public constructor (WorkAreaJTreeJPanel workAreaJTreeJPanel, Dimension dimension, int32_t x, int32_t y);
+public: CanvasJPanel(WorkAreaJTreeJPanel workAreaJTreeJPanel, Dimension dimension, int32_t x, int32_t y);
 
-public constructor (WorkAreaJTreeJPanel workAreaJTreeJPanel, Dimension dimension, CanvasDom canvasDom);
-
-                //@Throws(Exception.constructor)
-            
-    initMyComponents();
-
-    public MutableTreeNode getTreeNode();
-
-    initComponents();
+public: CanvasJPanel(WorkAreaJTreeJPanel workAreaJTreeJPanel, Dimension dimension, CanvasDom canvasDom);
 
                 //@Throws(Exception.constructor)
             
-    public setCanvasSize(int32_t x, int32_t y);
+    private: void initMyComponents();
 
-    public setGrid(GPoint point);
+    public: MutableTreeNode getTreeNode();
 
-    public setGrid(int32_t xSize, int32_t ySize);
-
-                //@Throws(Exception.constructor)
-            
-    public setDefaultGrid();
-
-    public double getAngle();
-
-    public setAngle(double angle);
-
-    public addAngle(double angle);
-
-    public explodeAll();
+    private: void initComponents();
 
                 //@Throws(Exception.constructor)
             
-    public explode(int32_t howMuch, int32_t explosionType);
+    public: void setCanvasSize(int32_t x, int32_t y);
+
+    public: void setGrid(GPoint point);
+
+    public: void setGrid(int32_t xSize, int32_t ySize);
 
                 //@Throws(Exception.constructor)
             
-    public mirror();
+    public: void setDefaultGrid();
+
+    public: double getAngle();
+
+    public: void setAngle(double angle);
+
+    public: void addAngle(double angle);
+
+    public: void explodeAll();
 
                 //@Throws(Exception.constructor)
             
-    public center();
-
-    public setNewTool();
+    public: void explode(int32_t howMuch, int32_t explosionType);
 
                 //@Throws(Exception.constructor)
             
-    public duplicateGraphicItem(GraphicItemInterface graphicItem);
+    public: void mirror();
 
                 //@Throws(Exception.constructor)
             
-    public duplicateGraphicItemHashMap(HashMap<any, any> hashMap);
+    public: void center();
 
-    public HashMap<any, any> getGraphicItemHashMap();
-
-    public int32_t getXPixelsPerWorkAreaPixel();
-
-    public int32_t getYPixelsPerWorkAreaPixel();
-
-    public GraphicItemInterface getSelectedTool();
-
-    public drawItems(Graphics graphics);
-
-    public drawGrid(Graphics graphics);
-
-    public paint(Graphics graphics);
-
-    public repaint();
+    public: void setNewTool();
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom();
-
-    public changed();
-
-    public mouseClicked(java.awt.event.MouseEvent mouseEvent);
-
-    public mouseEntered(java.awt.event.MouseEvent mouseEvent);
-
-    public mouseExited(java.awt.event.MouseEvent mouseEvent);
-
-    public mousePressed(java.awt.event.MouseEvent mouseEvent);
-
-    public mouseReleased(java.awt.event.MouseEvent mouseEvent);
-
-    public mouseDragged(java.awt.event.MouseEvent mouseEvent);
-
-    public mouseMoved(java.awt.event.MouseEvent mouseEvent);
-
-    string logMouseEvent(java.awt.event.MouseEvent mouseEvent);
-
-    public keyPressed(java.awt.event.KeyEvent keyEvent);
-
-    public keyReleased(java.awt.event.KeyEvent keyEvent);
-
-    public keyTyped(java.awt.event.KeyEvent keyEvent);
-
-    public delete(MyGraphicItemEvent evt);
-
-    public deselect(MyGraphicItemEvent evt);
-
-    public highlight(MyGraphicItemEvent evt);
+    public: void duplicateGraphicItem(GraphicItemInterface graphicItem);
 
                 //@Throws(Exception.constructor)
             
-    public CanvasJPanel duplicate();
+    public: void duplicateGraphicItemHashMap(HashMap<any, any> hashMap);
+
+    public: HashMap<any, any> getGraphicItemHashMap();
+
+    public: int32_t getXPixelsPerWorkAreaPixel();
+
+    public: int32_t getYPixelsPerWorkAreaPixel();
+
+    public: GraphicItemInterface getSelectedTool();
+
+    public: void drawItems(Graphics graphics);
+
+    public: void drawGrid(Graphics graphics);
+
+    public: void paint(Graphics graphics);
+
+    public: void repaint();
 
                 //@Throws(Exception.constructor)
             
-    public duplicate(MyGraphicItemEvent event);
+    public: Node toDom();
 
-    public rotate(MyGraphicItemEvent event);
+    public: void changed();
 
-    public IntegerDimension getCanvasDimension();
+    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent);
 
-    public setCanvasDimension(IntegerDimension canvasDimension);
+    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent);
 
-    public Grid getGrid();
+    public: void mouseExited(java::awt::event::MouseEvent mouseEvent);
+
+    public: void mousePressed(java::awt::event::MouseEvent mouseEvent);
+
+    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent);
+
+    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent);
+
+    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent);
+
+    private: std::string logMouseEvent(java::awt::event::MouseEvent mouseEvent);
+
+    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
+
+    public: void delete_(MyGraphicItemEvent evt);
+
+    public: void deselect(MyGraphicItemEvent evt);
+
+    public: void highlight(MyGraphicItemEvent evt);
+
+                //@Throws(Exception.constructor)
+            
+    public: CanvasJPanel duplicate();
+
+                //@Throws(Exception.constructor)
+            
+    public: void duplicate(MyGraphicItemEvent event);
+
+    public: void rotate(MyGraphicItemEvent event);
+
+    public: IntegerDimension getCanvasDimension();
+
+    public: void setCanvasDimension(IntegerDimension canvasDimension);
+
+    public: Grid getGrid();
 
 };
 

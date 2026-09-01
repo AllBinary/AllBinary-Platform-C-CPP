@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_ABBASICCRYPT_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -76,23 +78,22 @@
 class AbBasicCrypt
             : public Object
         : public CryptInterface {
-        
 
-    private: cipher: Cipher;
+    private: Cipher cipher;
 
-    private: secretKey: SecretKey;
+    private: SecretKey secretKey;
 
-    private: algorithm: string;
+    private: std::string algorithm;
 
-    private: key: std::vector<int8_t>;
+    private: std::vector<int8_t> key;
 
-public constructor (string algorithm, string key);
+public: AbBasicCrypt(std::string algorithm, std::string key);
 
-    init();
+    private: void init();
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
 
 };
 

@@ -47,43 +47,42 @@
 class TransformInfoProperties
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: label: string;
+    private: std::string label;
 
-    private: description: string;
+    private: std::string description;
 
-    private: objectFileName: string;
+    private: std::string objectFileName;
 
-    private: objectConfigFileName: string;
+    private: std::string objectConfigFileName;
 
-    private: templateFileName: string;
+    private: std::string templateFileName;
 
-public constructor (string name, string label, string description, string objectFileName, string objectConfigFileName, string templateFileName);
+public: TransformInfoProperties(std::string name, std::string label, std::string description, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName);
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public setDescription(string value);
+    public: void setDescription(std::string value);
 
-    public setViewFile(string value);
+    public: void setViewFile(std::string value);
 
-    public setTemplateFile(string value);
+    public: void setTemplateFile(std::string value);
 
-    public setObjectConfigFile(string value);
+    public: void setObjectConfigFile(std::string value);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getLabel();
+    public: std::string getLabel();
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public string getViewFile();
+    public: std::string getViewFile();
 
-    public string getTemplateFile();
+    public: std::string getTemplateFile();
 
-    public string getObjectConfigFile();
+    public: std::string getObjectConfigFile();
 
 };
 

@@ -56,17 +56,16 @@
         #include "BuildingEventListenerInterface.h"
 
 class BuildingEventHandler: public BasicEventHandler {
-        
 
-    private: static eventHandler: BuildingEventHandler = new BuildingEventHandler();
+    private: static BuildingEventHandler eventHandler = BuildingEventHandler();
 
-    public static BuildingEventHandler getInstance();
+    public: static BuildingEventHandler getInstance();
 
-private constructor ();
+private: BuildingEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

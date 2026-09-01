@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LAYER_ALLBINARYLAYERMANAGER_H
         #define ORG_ALLBINARY_LAYER_ALLBINARYLAYERMANAGER_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -62,48 +64,47 @@
 #include "AllBinaryLayer.h"
 
 class AllBinaryLayerManager: public LayerManager {
-        
 
-    private: const layerManagerEventHandler: LayerManagerEventHandler = LayerManagerEventHandler.getInstance()!;
+    private: const LayerManagerEventHandler layerManagerEventHandler = LayerManagerEventHandler::getInstance();
 
-    private: const createLayerManagerEvent: LayerManagerEvent = new LayerManagerEvent(this, this.layerManagerEventHandler!.CREATE);
+    private: const LayerManagerEvent createLayerManagerEvent = LayerManagerEvent(this, this->layerManagerEventHandler.CREATE);
 
-    private: const deleteLayerManagerEvent: LayerManagerEvent = new LayerManagerEvent(this, this.layerManagerEventHandler!.DELETE);
+    private: const LayerManagerEvent deleteLayerManagerEvent = LayerManagerEvent(this, this->layerManagerEventHandler.DELETE);
 
-    private: basicLayerProcessorArray: std::vector<LayerProcessor> = [];
+    private: std::vector<LayerProcessor> basicLayerProcessorArray = {};
 
-protected constructor ();
+protected: AllBinaryLayerManager();
 
-    std::vector<LayerProcessor> getLayerProcessorArray();
+    protected: std::vector<LayerProcessor> getLayerProcessorArray();
 
-    public setLayerProcessorArray(std::vector<LayerProcessor> layerProcessorArray);
+    public: void setLayerProcessorArray(std::vector<LayerProcessor> layerProcessorArray);
 
-    public log();
-
-                //@Throws(Exception.constructor)
-            
-    public append(AllBinaryLayer layerInterface);
+    public: void log();
 
                 //@Throws(Exception.constructor)
             
-    public appendAt(AllBinaryLayer layerInterface, int32_t index);
+    public: void append(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    appendProcessors(AllBinaryLayer layerInterface);
+    public: void appendAt(AllBinaryLayer layerInterface, int32_t index);
+
+                //@Throws(Exception.constructor)
+            
+    private: void appendProcessors(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public remove(AllBinaryLayer layerInterface);
+    public: void remove(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
                 //@Throws(Exception.constructor)
             
-    public cleanup();
+    public: void cleanup();
 
 };
 

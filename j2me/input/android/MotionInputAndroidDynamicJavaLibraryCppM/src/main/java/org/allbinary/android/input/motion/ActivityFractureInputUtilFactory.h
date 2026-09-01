@@ -63,9 +63,8 @@
 class ActivityFractureInputUtilFactory
             : public Object
          {
-        
 
-    public static ActivityFractureUtil getInstance();
+    public: static ActivityFractureUtil getInstance();
 
 };
 

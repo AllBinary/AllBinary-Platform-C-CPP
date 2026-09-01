@@ -57,13 +57,12 @@
 class BasicErrorNodeUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Node get(Document document, string errorText);
+    public: static Node get(Document document, std::string errorText);
 
-private constructor ();
+private: BasicErrorNodeUtil();
 
 };
 

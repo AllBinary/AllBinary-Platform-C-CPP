@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_ACTIONS_SCRIPT_CONDITION_PROCESSORS_OUTPUT_IMAGEACTIONSCRIPTOUTPUTJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Vector.h>
@@ -74,52 +76,51 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ImageActionScriptOutputJPanel: public javax.swing.JPanel {
-        
+class ImageActionScriptOutputJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: capturedImageActionScriptOutputInterface: ImageActionScriptOutputInterface;
+    private: ImageActionScriptOutputInterface capturedImageActionScriptOutputInterface;
 
-public constructor (ImageActionScriptOutputInterface capturedImageActionScriptOutputInterface);
+public: ImageActionScriptOutputJPanel(ImageActionScriptOutputInterface capturedImageActionScriptOutputInterface);
 
-    set();
+    private: void set();
 
-    update();
+    private: void update();
 
-    setImageTypeJlistModel();
+    private: void setImageTypeJlistModel();
 
-    public javax.swing.JDialog getCapturedImageActionJDialog();
+    public: javax::swing::JDialog getCapturedImageActionJDialog();
 
-    public setCapturedImageActionJDialog(javax.swing.JDialog capturedImageActionJDialog);
+    public: void setCapturedImageActionJDialog(javax::swing::JDialog capturedImageActionJDialog);
 
-    initComponents();
+    private: void initComponents();
 
-    displayJCheckBoxActionPerformed(java.awt.event.ActionEvent evt);
+    private: void displayJCheckBoxActionPerformed(java::awt::event::ActionEvent evt);
 
-    okJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    capturedImageActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void capturedImageActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: capturedImageActionJButton: javax.swing.JButton;
+    private: javax::swing::JButton capturedImageActionJButton;
 
-    private: capturedImageActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JDialog capturedImageActionJDialog;
 
-    private: displayJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox displayJCheckBox;
 
-    private: itemTypesJList: javax.swing.JList;
+    private: javax::swing::JList itemTypesJList;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jScrollPane1: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane jScrollPane1;
 
-    private: okJButton: javax.swing.JButton;
+    private: javax::swing::JButton okJButton;
 
-    private: saveJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox saveJCheckBox;
 
-    private: titleJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel titleJLabel;
 
 };
 

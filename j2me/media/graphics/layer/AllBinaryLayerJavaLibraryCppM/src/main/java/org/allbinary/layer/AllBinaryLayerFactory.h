@@ -56,13 +56,12 @@
 class AllBinaryLayerFactory
             : public Object
         : public AllBinaryLayerFactoryInterface {
-        
 
-    private: const rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-public constructor (Rectangle rectangle);
+public: AllBinaryLayerFactory(Rectangle rectangle);
 
-    public AllBinaryLayer getInstance();
+    public: AllBinaryLayer getInstance();
 
 };
 

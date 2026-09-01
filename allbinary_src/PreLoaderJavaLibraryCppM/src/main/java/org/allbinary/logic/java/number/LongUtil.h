@@ -52,11 +52,10 @@
 class LongUtil
             : public Object
          {
-        
 
-    public static string fillIn(string end);
+    public: static std::string fillIn(std::string end);
 
-private constructor ();
+private: LongUtil();
 
 };
 

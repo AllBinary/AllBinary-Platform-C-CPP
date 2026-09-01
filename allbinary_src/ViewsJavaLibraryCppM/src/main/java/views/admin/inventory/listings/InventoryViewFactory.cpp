@@ -60,13 +60,12 @@
 class InventoryViewFactory
             : public Object
          {
-        
 
                 //@Throws(LicensingException.constructor)
             
-    public static InventoryViewSearchInterface getInstance(SearchRequest searchRequest){
+    public: static InventoryViewSearchInterface getInstance(SearchRequest searchRequest){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -74,20 +73,20 @@ class InventoryViewFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new InventorySearch(searchRequest);
+                        return InventorySearch(searchRequest);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, "InventoryViewFactory", "getInstance(SearchRequest)", e);
+logUtil.put(commonStrings.EXCEPTION, "InventoryViewFactory", "getInstance(SearchRequest)", e);
     
 
                                     }
@@ -103,10 +102,8 @@ logUtil!.put(commonStrings!.EXCEPTION, "InventoryViewFactory", "getInstance(Sear
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: InventoryViewFactory(){
+}
 
 
 };

@@ -42,25 +42,24 @@
 class ServletStrings
             : public Object
          {
-        
 
-    private: static const instance: ServletStrings = new ServletStrings();
+    private: static ServletStrings instance() { return ServletStrings(); }
 
-    public static ServletStrings getInstance(){
+    public: static ServletStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ServletStrings.instance;
+                        return ServletStrings::instance();
     
 }
 
 
-    public const DOPOST: string = "doPost";
+    public: const std::string DOPOST = "doPost";
 
-    public const DOGET: string = "doGet";
+    public: const std::string DOGET = "doGet";
 
-    public const REQUEST_EXCEPTION: string = "Request Failed";
+    public: const std::string REQUEST_EXCEPTION = "Request Failed";
 
 };
 

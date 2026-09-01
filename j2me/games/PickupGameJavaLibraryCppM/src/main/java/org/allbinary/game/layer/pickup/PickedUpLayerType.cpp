@@ -51,24 +51,21 @@
 class PickedUpLayerType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
- constructor (string name){
-
-            super();
-        this.name= name;
+: PickedUpLayerType(std::string name){
+this->name= name;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

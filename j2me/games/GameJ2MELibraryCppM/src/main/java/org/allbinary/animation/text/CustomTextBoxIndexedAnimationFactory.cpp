@@ -79,61 +79,58 @@
 class CustomTextBoxIndexedAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public scaleProperties: ScaleProperties;
+    public: ScaleProperties scaleProperties;
 
-    private: const maxLength: int32_t;
+    private: int32_t maxLength;
 
-public constructor (int32_t fontSize, int32_t maxLength){
-
-            super();
-        this.scaleProperties= new ScaleProperties();
+public: CustomTextBoxIndexedAnimationFactory(int32_t fontSize, int32_t maxLength){
+this->scaleProperties= ScaleProperties();
     
-this.scaleProperties!.scaleHeight= fontSize;
+this->scaleProperties.scaleHeight= fontSize;
     
-this.maxLength= maxLength;
+this->maxLength= maxLength;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    abToGBUtil: ABToGBUtil = ABToGBUtil.getInstance()!;;
+    ABToGBUtil abToGBUtil = ABToGBUtil::getInstance();;
     
 
-    abCanvas: AllBinaryGameCanvas = abToGBUtil!.abCanvas as AllBinaryGameCanvas;;
+    AllBinaryGameCanvas abCanvas = abToGBUtil.abCanvas as AllBinaryGameCanvas;;
     
 
-    font: Font = Font.getFont(Font.FACE_SYSTEM, Font.STYLE_PLAIN, this.scaleProperties!.scaleHeight)!;;
+    Font font = Font::getFont(Font::FACE_SYSTEM, Font::STYLE_PLAIN, this->scaleProperties.scaleHeight);;
     
 
-    customTextBox: CustomTextBox = new CustomTextBox2(abCanvas!.getCustomCommandListener(), StringUtil.getInstance()!.EMPTY_STRING, StringUtil.getInstance()!.EMPTY_STRING, this.maxLength, TextField.ANY, font, abCanvas!.getLayerManager()!.getBackgroundBasicColor(), abCanvas!.getLayerManager()!.getForegroundBasicColor());;
+    CustomTextBox customTextBox = CustomTextBox2(abCanvas.getCustomCommandListener(), StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING, this->maxLength, TextField::ANY, font, abCanvas.getLayerManager().getBackgroundBasicColor(), abCanvas.getLayerManager().getForegroundBasicColor());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CustomTextBoxIndexedAnimation(customTextBox);
+                        return CustomTextBoxIndexedAnimation(customTextBox);
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    public: void setInitialScale(ScaleProperties scaleProperties){
 
-    fontSize: int32_t = this.scaleProperties!.scaleHeight;;
+    int32_t fontSize = this->scaleProperties.scaleHeight;;
     
-this.scaleProperties= scaleProperties;
+this->scaleProperties= scaleProperties;
     
 
-                        if(this.scaleProperties!.scaleHeight < 6)
+                        if(this->scaleProperties.scaleHeight < 6)
                         
                                     {
-                                    this.scaleProperties!.scaleHeight= fontSize;
+                                    this->scaleProperties.scaleHeight= fontSize;
     
 
                                     }

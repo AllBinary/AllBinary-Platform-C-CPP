@@ -63,34 +63,31 @@
 #include "ViewPositionEventListenerInterface.h"
 
 class ViewPositionEventHandler: public BasicEventHandler {
-        
 
-    private: static SINGLETON: ViewPositionEventHandler = new ViewPositionEventHandler();
+    private: static ViewPositionEventHandler SINGLETON = ViewPositionEventHandler();
 
-    public static ViewPositionEventHandler getInstance(){
+    public: static ViewPositionEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ViewPositionEventHandler.SINGLETON;
+                        return ViewPositionEventHandler::SINGLETON;
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: ViewPositionEventHandler(){
+}
 
 
-    public addListener(AllBinaryLayer layerInterface){
+    public: void addListener(AllBinaryLayer layerInterface){
 
-                        if(!this.list.contains(layerInterface))
+                        if(!this->list.contains(layerInterface))
                         
                                     {
-                                    this.list.add(layerInterface);
+                                    this->list.add(layerInterface);
     
 
                                     }
@@ -98,16 +95,16 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -116,26 +113,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    layerInterface: AllBinaryLayer = this.list.objectArray[index]! as AllBinaryLayer;;
+    AllBinaryLayer layerInterface = this->list.objectArray[index]! as AllBinaryLayer;;
     
-layerInterface!.onChangeEvent(eventObject as ViewPositionEvent);
+layerInterface.onChangeEvent(eventObject as ViewPositionEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -148,11 +145,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    viewPositionEventListenerInterface: ViewPositionEventListenerInterface = (eventListenerInterface as ViewPositionEventListenerInterface);;
+    ViewPositionEventListenerInterface viewPositionEventListenerInterface = (eventListenerInterface as ViewPositionEventListenerInterface);;
     
-viewPositionEventListenerInterface!.onChangeEvent(eventObject as ViewPositionEvent);
+viewPositionEventListenerInterface.onChangeEvent(eventObject as ViewPositionEvent);
     
 }
 

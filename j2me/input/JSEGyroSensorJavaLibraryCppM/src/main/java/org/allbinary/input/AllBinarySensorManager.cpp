@@ -51,16 +51,15 @@
 class AllBinarySensorManager
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AllBinarySensorManager getInstance(){
+    public: static AllBinarySensorManager getInstance(){
 
-                        if(AllBinarySensorManager.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(AllBinarySensorManager::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    AllBinarySensorManager.instance= new AllBinarySensorManager();
+                                    AllBinarySensorManager::instance= AllBinarySensorManager();
     
 
                                     }
@@ -69,38 +68,36 @@ class AllBinarySensorManager
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinarySensorManager.instance as AllBinarySensorManager;
+                        return AllBinarySensorManager::instance() as AllBinarySensorManager;
     
 }
 
 
-    public const ORIENTATION_SENSOR_INPUT: string = "Orientation Sensor Input";
+    public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
 
-    public const ORIENTATION_TYPE: string = "Orientation Type";
+    public: const std::string ORIENTATION_TYPE = "Orientation Type";
 
-private constructor (){
-
-            super();
-        }
-
-
-    public init(){
+private: AllBinarySensorManager(){
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    public: void init(){
+}
 
-    public BasicArrayList getSensorNamesList(){
+
+    private: const BasicArrayList list = BasicArrayListD();
+
+    public: BasicArrayList getSensorNamesList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 
 
-    public shutdown(){
+    public: void shutdown(){
 }
 
 

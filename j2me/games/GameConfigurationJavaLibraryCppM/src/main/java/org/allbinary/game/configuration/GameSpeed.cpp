@@ -44,42 +44,41 @@
 class GameSpeed
             : public Object
          {
-        
 
-    private: static const instance: GameSpeed = new GameSpeed();
+    private: static GameSpeed instance() { return GameSpeed(); }
 
-    public static GameSpeed getInstance(){
+    public: static GameSpeed getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameSpeed.instance;
+                        return GameSpeed::instance();
     
 }
 
 
-    public int32_t getSpeed(){
+    public: int32_t getSpeed(){
 
-    speedGameConfiguration: GameConfiguration = GameConfigurationCentral.getInstance()!.SPEED;;
+    GameConfiguration speedGameConfiguration = GameConfigurationCentral::getInstance().SPEED;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return (speedGameConfiguration!.getMaxValue()!.intValue() -speedGameConfiguration!.getValue()!.intValue() +1);
+                        return (speedGameConfiguration.getMaxValue().intValue() -speedGameConfiguration.getValue().intValue() +1);
     
 }
 
 
-    public int32_t getDelay(){
+    public: int32_t getDelay(){
 
-    speedGameConfiguration: GameConfiguration = GameConfigurationCentral.getInstance()!.SPEED;;
+    GameConfiguration speedGameConfiguration = GameConfigurationCentral::getInstance().SPEED;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return 19 *(speedGameConfiguration!.getMaxValue()!.intValue() -speedGameConfiguration!.getValue()!.intValue());
+                        return 19 *(speedGameConfiguration.getMaxValue().intValue() -speedGameConfiguration.getValue().intValue());
     
 }
 

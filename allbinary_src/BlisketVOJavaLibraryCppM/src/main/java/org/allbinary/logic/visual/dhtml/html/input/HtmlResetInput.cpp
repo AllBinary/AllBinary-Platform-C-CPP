@@ -42,12 +42,9 @@
 class HtmlResetInput
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: HtmlResetInput(){
+}
 
 
 };

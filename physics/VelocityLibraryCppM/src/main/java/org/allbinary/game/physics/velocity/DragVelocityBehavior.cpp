@@ -43,53 +43,34 @@
 #include "BasicVelocityProperties.h"
 
 class DragVelocityBehavior: public VelocityBehaviorBase {
-        
 
-    public static const instance: DragVelocityBehavior = new DragVelocityBehavior();
+    private: static DragVelocityBehavior instance() { return DragVelocityBehavior(); }
 
-    public reduce(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator){
+    public: void reduce(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator){
 
-                        if(velocityProperties!.getVelocityXBasicDecimalP()!.getUnscaled() != 0)
+                        if(velocityProperties.getVelocityXBasicDecimalP().getUnscaled() != 0)
                         
                                     {
                                     
-    basicDecimal: BasicDecimal = velocityProperties!.getVelocityXBasicDecimalP()!;;
+    BasicDecimal basicDecimal = velocityProperties.getVelocityXBasicDecimalP();;
     
-basicDecimal!.multiplyint(nominator);
+basicDecimal.multiplyint(nominator);
     
-basicDecimal!.divideint(denominator);
+basicDecimal.divideint(denominator);
     
 
                                     }
                                 
 
-                        if(velocityProperties!.getVelocityYBasicDecimalP()!.getUnscaled() != 0)
+                        if(velocityProperties.getVelocityYBasicDecimalP().getUnscaled() != 0)
                         
                                     {
                                     
-    basicDecimal: BasicDecimal = velocityProperties!.getVelocityYBasicDecimalP()!;;
+    BasicDecimal basicDecimal = velocityProperties.getVelocityYBasicDecimalP();;
     
-basicDecimal!.multiplyint(nominator);
+basicDecimal.multiplyint(nominator);
     
-basicDecimal!.divideint(denominator);
-    
-
-                                    }
-                                
-}
-
-
-    public reduceX(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator){
-
-    basicDecimal: BasicDecimal = velocityProperties!.getVelocityXBasicDecimalP()!;;
-    
-
-                        if(basicDecimal!.getUnscaled() != 0)
-                        
-                                    {
-                                    basicDecimal!.multiplyint(nominator);
-    
-basicDecimal!.divideint(denominator);
+basicDecimal.divideint(denominator);
     
 
                                     }
@@ -97,17 +78,35 @@ basicDecimal!.divideint(denominator);
 }
 
 
-    public reduceY(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator){
+    public: void reduceX(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator){
 
-                        if(velocityProperties!.getVelocityYBasicDecimalP()!.getUnscaled() != 0)
+    BasicDecimal basicDecimal = velocityProperties.getVelocityXBasicDecimalP();;
+    
+
+                        if(basicDecimal.getUnscaled() != 0)
+                        
+                                    {
+                                    basicDecimal.multiplyint(nominator);
+    
+basicDecimal.divideint(denominator);
+    
+
+                                    }
+                                
+}
+
+
+    public: void reduceY(BasicVelocityProperties velocityProperties, int32_t nominator, int32_t denominator){
+
+                        if(velocityProperties.getVelocityYBasicDecimalP().getUnscaled() != 0)
                         
                                     {
                                     
-    basicDecimal: BasicDecimal = velocityProperties!.getVelocityYBasicDecimalP()!;;
+    BasicDecimal basicDecimal = velocityProperties.getVelocityYBasicDecimalP();;
     
-basicDecimal!.multiplyint(nominator);
+basicDecimal.multiplyint(nominator);
     
-basicDecimal!.divideint(denominator);
+basicDecimal.divideint(denominator);
     
 
                                     }

@@ -42,29 +42,26 @@
 class OrientationData
             : public Object
          {
-        
 
-    private: static const SINGLETON: OrientationData = new OrientationData();
+    private: static const OrientationData SINGLETON = OrientationData();
 
-    public static OrientationData getInstance(){
+    public: static OrientationData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OrientationData.SINGLETON;
+                        return OrientationData::SINGLETON;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: OrientationData(){
+}
 
 
-    public const ORIENTATION_SENSOR_INPUT: string = "Orientation Sensor Input";
+    public: const std::string ORIENTATION_SENSOR_INPUT = "Orientation Sensor Input";
 
-    public const ORIENTATION_TYPE: string = "Orientation Type";
+    public: const std::string ORIENTATION_TYPE = "Orientation Type";
 
 };
 

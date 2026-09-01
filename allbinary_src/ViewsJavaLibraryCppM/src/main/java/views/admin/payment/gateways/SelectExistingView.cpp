@@ -59,11 +59,10 @@
         #include "PaymentGatewaysView.h"
 
 class SelectExistingView: public PaymentGatewayViewAbstract {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: SelectExistingView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -74,30 +73,30 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-    paymentGatewayEntityInterface: PaymentGatewayEntityInterface = PaymentGatewayEntityFactory.getInstance()!;;
+    PaymentGatewayEntityInterface paymentGatewayEntityInterface = PaymentGatewayEntityFactory::getInstance();;
     
 
-    existingGateways: Vector = paymentGatewayEntityInterface!.findPaymentTypeVectorByStore(this.getPaymentGatewayPrimaryKey()!.getStoreName())!;;
+    Vector existingGateways = paymentGatewayEntityInterface.findPaymentTypeVectorByStore(this->getPaymentGatewayPrimaryKey().getStoreName());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PaymentGatewaysView(this.getTransformInfoInterface(), existingGateways).view();;
+                        return PaymentGatewaysView(this->getTransformInfoInterface(), existingGateways).view();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
     
 
                                     }

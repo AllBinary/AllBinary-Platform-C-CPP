@@ -57,13 +57,12 @@
         #include "AllBinaryGameCanvas.h"
 
 class EndGamePaintable: public Paintable {
-        
 
-    private: gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-public constructor (AllBinaryGameCanvas gameCanvas);
+public: EndGamePaintable(AllBinaryGameCanvas gameCanvas);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

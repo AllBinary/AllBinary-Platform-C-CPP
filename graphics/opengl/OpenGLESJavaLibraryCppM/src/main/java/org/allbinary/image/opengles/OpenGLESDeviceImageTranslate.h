@@ -46,19 +46,18 @@
 #include "OpenGLESImage.h"
 
 class OpenGLESDeviceImageTranslate: public OpenGLESImageTranslate {
-        
 
-    public translateX: float = 0;
+    public: float translateX = 0;
 
-    public translateY: float = 0;
+    public: float translateY = 0;
 
-    public translateX2: float = 0;
+    public: float translateX2 = 0;
 
-    public translateY2: float = 0;
+    public: float translateY2 = 0;
 
-    public translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y);
+    public: void translate(GL10 gl, OpenGLESImage openGLESImage, float x, float y);
 
-    public translate2(GL10 gl, OpenGLESImage openGLESImage);
+    public: void translate2(GL10 gl, OpenGLESImage openGLESImage);
 
 };
 

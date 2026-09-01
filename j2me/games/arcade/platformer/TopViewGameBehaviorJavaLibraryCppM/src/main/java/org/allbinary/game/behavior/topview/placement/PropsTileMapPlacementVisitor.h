@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_H
         #define ORG_ALLBINARY_GAME_BEHAVIOR_TOPVIEW_PLACEMENT_PROPSTILEMAPPLACEMENTVISITOR_H
 
+            #include <vector>
+        
 #include <org/allbinary/game/rand/MyRandomFactory.h>
 
       
@@ -57,15 +59,14 @@
         #include "TileMapPlacementVisitor.h"
 
 class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const randomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory randomFactory = MyRandomFactory::getInstance();
 
-    public visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
+    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData);
 
-    public visit2(std::vector<std::vector<int32_t>> mapArray, std::vector<std::vector<int32_t>> mapData, int32_t index, int32_t index2);
+    public: void visit2(std::vector<std::vector<int32_t>> mapArray, std::vector<std::vector<int32_t>> mapData, int32_t index, int32_t index2);
 
 };
 

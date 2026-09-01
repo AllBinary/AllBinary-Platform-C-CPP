@@ -43,15 +43,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ProductListingInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    string generateAll();
+    std::string generateAll();
 
                 //@Throws(Exception.constructor)
             
-    string generateAll(string storeName);
+    std::string generateAll(std::string storeName);
 
 };
 

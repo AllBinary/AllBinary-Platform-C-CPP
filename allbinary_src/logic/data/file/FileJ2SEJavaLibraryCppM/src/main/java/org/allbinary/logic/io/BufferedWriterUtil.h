@@ -74,31 +74,30 @@
 class BufferedWriterUtil
             : public Object
          {
-        
 
-    private: static const instance: BufferedWriterUtil = new BufferedWriterUtil();
+    private: static BufferedWriterUtil instance() { return BufferedWriterUtil(); }
 
-    public static BufferedWriterUtil getInstance();
+    public: static BufferedWriterUtil getInstance();
 
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
+    private: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonLabels: CommonLabels = CommonLabels.getInstance()!;
+    private: const CommonLabels commonLabels = CommonLabels::getInstance();
 
-    private: const REMOVING_OLD: string = "Remove old for overwritting: ";
-
-                //@Throws(Exception.constructor)
-            
-    public overwrite(string path, string data);
+    private: const std::string REMOVING_OLD = "Remove old for overwritting: ";
 
                 //@Throws(Exception.constructor)
             
-    public overwrite(AbFile abFile, string data);
+    public: void overwrite(std::string path, std::string data);
 
                 //@Throws(Exception.constructor)
             
-    public write(AbFile abFile, string data);
+    public: void overwrite(AbFile abFile, std::string data);
+
+                //@Throws(Exception.constructor)
+            
+    public: void write(AbFile abFile, std::string data);
 
 };
 

@@ -57,27 +57,26 @@
 class BaseDropCellPositionGenerator
             : public Object
         : public DropCellPositionGeneratorInterface {
-        
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.constructor.name.toString()!;;
+                        return this->constructor.name.toString()!;;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition){
+    public: bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition){
 
 
 
@@ -89,7 +88,7 @@ class BaseDropCellPositionGenerator
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 }
 
 

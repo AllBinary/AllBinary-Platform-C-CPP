@@ -42,9 +42,8 @@
         #include "VelocityBehaviorBase.h"
 
 class NoDragVelocityBehavior: public VelocityBehaviorBase {
-        
 
-    public static const instance: NoDragVelocityBehavior = new NoDragVelocityBehavior();
+    private: static NoDragVelocityBehavior instance() { return NoDragVelocityBehavior(); }
 
 };
 

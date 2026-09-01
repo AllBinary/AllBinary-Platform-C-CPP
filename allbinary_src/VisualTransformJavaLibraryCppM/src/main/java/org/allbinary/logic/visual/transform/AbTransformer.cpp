@@ -75,136 +75,133 @@
 class AbTransformer
             : public Object
         : public BasicTransformerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-    private: inputStream: InputStream;
+    private: InputStream inputStream;
 
-    private: uriResolver: URIResolver;
+    private: URIResolver uriResolver;
 
-public constructor (TransformInfoInterface transformInfoInterface){
-
-            super();
-        this.transformInfoInterface= transformInfoInterface;
+public: AbTransformer(TransformInfoInterface transformInfoInterface){
+this->transformInfoInterface= transformInfoInterface;
     
 }
 
 
-    public TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface getTransformInfoInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformInfoInterface;
+                        return this->transformInfoInterface;
     
 }
 
 
-    public setInputStream(InputStream inputStream){
-this.inputStream= inputStream;
+    public: void setInputStream(InputStream inputStream){
+this->inputStream= inputStream;
     
 }
 
 
-    public setURIResolver(URIResolver uriResolver){
-this.uriResolver= uriResolver;
+    public: void setURIResolver(URIResolver uriResolver){
+this->uriResolver= uriResolver;
     
 }
 
 
-    public InputStream getInputStream(){
+    public: InputStream getInputStream(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputStream;
+                        return this->inputStream;
     
 }
 
 
-    public URIResolver getURIResolver(){
+    public: URIResolver getURIResolver(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.uriResolver;
+                        return this->uriResolver;
     
 }
 
 
-    public StreamSource getStreamSource(){
+    public: StreamSource getStreamSource(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StreamSource(this.getInputStream());
+                        return StreamSource(this->getInputStream());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string translate(string xmlDocumentStr){
+    public: std::string translate(std::string xmlDocumentStr){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XMLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("xml: \n" +xmlDocumentStr, this, "translate(String xmlDocumentStr)");
+                                    this->logUtil.putF("xml: \n" +xmlDocumentStr, this, "translate(String xmlDocumentStr)");
     
 
                                     }
                                 
 
-                        if(this.getURIResolver() == 
-                                    null
+                        if(this->getURIResolver() == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("No URIResolver");
+                            throw Exception("No URIResolver");
                     
 
                                     }
                                 
 
-    result: string = XslHelper.getInstance()!.translate(this.getURIResolver(), new StreamSource(this.getInputStream()), new StreamSource(new StringBufferInputStream(xmlDocumentStr)))!;;
+    std::string result = XslHelper::getInstance().translate(this->getURIResolver(), StreamSource(this->getInputStream()), StreamSource(StringBufferInputStream(xmlDocumentStr)));;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("translated xml: " +result, this, "translate(String xmlDocumentStr)");
+                                    this->logUtil.putF("translated xml: " +result, this, "translate(String xmlDocumentStr)");
     
 
                                     }
                                 
 
-    transformInfoObjectConfigGeneratorInterface: TransformInfoObjectConfigGenerator = TransformInfoObjectConfigGeneratorFactory.getInstance()!.getInstance(this.getTransformInfoInterface())!;;
+    TransformInfoObjectConfigGenerator transformInfoObjectConfigGeneratorInterface = TransformInfoObjectConfigGeneratorFactory::getInstance().getInstance(this->getTransformInfoInterface());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return transformInfoObjectConfigGeneratorInterface!.process(result);;
+                        return transformInfoObjectConfigGeneratorInterface.process(result);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.transformInfoInterface!.log(), this, "translate(document)", e);
+                                    this->logUtil.put(this->transformInfoInterface.log(), this, "translate(document)", e);
     
 
                                     }

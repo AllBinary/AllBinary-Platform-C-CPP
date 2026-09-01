@@ -48,9 +48,8 @@
 class NullThread
             : public Object
          {
-        
 
-    public static const NULL_THREAD: Thread = new Thread(NullRunnable.getInstance(), StringUtil.getInstance()!.EMPTY_STRING);
+    public: static const Thread NULL_THREAD = Thread(NullRunnable::getInstance(), StringUtil::getInstance().EMPTY_STRING);
 
 };
 

@@ -57,10 +57,9 @@
 #include "CollidableBaseBehavior.h"
 
 class OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer: public LayerProcessor {
-        
 
-public constructor (){
-            super(new OptimizedAllBinaryCollisionLayerManager());
+public: OptimizedAllBinaryCollisionLayerProcessorForCollidableLayer(){
+            super(OptimizedAllBinaryCollisionLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -70,47 +69,47 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t startIndex){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t startIndex){
 
-    collidableInterfaceCompositeInterface: CollidableCompositeLayer = layerInterface as CollidableCompositeLayer;;
+    CollidableCompositeLayer collidableInterfaceCompositeInterface = layerInterface as CollidableCompositeLayer;;
     
 
-    collidableBase: CollidableBaseBehavior = collidableInterfaceCompositeInterface!.getCollidableInferface()!;;
+    CollidableBaseBehavior collidableBase = collidableInterfaceCompositeInterface.getCollidableInferface();;
     
 
-                        if(collidableBase!.isCollidable(collidableInterfaceCompositeInterface))
+                        if(collidableBase.isCollidable(collidableInterfaceCompositeInterface))
                         
                                     {
                                     
-    layerManager: LayerManager = this.getLayerManager()!;;
+    LayerManager layerManager = this->getLayerManager();;
     
 
-    size: int32_t = layerManager!.getSize()!;;
+    int32_t size = layerManager.getSize();;
     
 
-    collidableInterfaceCompositeInterface2: CollidableCompositeLayer;;
+    CollidableCompositeLayer collidableInterfaceCompositeInterface2;;
     
 
-    collidableBase2: CollidableBaseBehavior;;
+    CollidableBaseBehavior collidableBase2;;
     
 
 
 
 
                         for (
-    index: int32_t = startIndex +1;index < size; index++)
+    int32_t index = startIndex +1;index < size; index++)
         {
-collidableInterfaceCompositeInterface2= layerManager!.getLayerAt(index) as CollidableCompositeLayer;
+collidableInterfaceCompositeInterface2= layerManager.getLayerAt(index) as CollidableCompositeLayer;
     
-collidableBase2= collidableInterfaceCompositeInterface2!.getCollidableInferface();
+collidableBase2= collidableInterfaceCompositeInterface2.getCollidableInferface();
     
 
-                        if(collidableBase2!.isCollidable(collidableInterfaceCompositeInterface) && collidableBase!.isCollision(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2))
+                        if(collidableBase2.isCollidable(collidableInterfaceCompositeInterface) && collidableBase.isCollision(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2))
                         
                                     {
-                                    collidableBase!.collide(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
+                                    collidableBase.collide(collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
     
-collidableBase2!.collide(collidableInterfaceCompositeInterface2, collidableInterfaceCompositeInterface);
+collidableBase2.collide(collidableInterfaceCompositeInterface2, collidableInterfaceCompositeInterface);
     
 
                                     }
@@ -123,9 +122,9 @@ collidableBase2!.collide(collidableInterfaceCompositeInterface2, collidableInter
 }
 
 
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
-                        if(layerInterface!.implmentsCollidableInterface())
+                        if(layerInterface.implmentsCollidableInterface())
                         
                                     {
                                     

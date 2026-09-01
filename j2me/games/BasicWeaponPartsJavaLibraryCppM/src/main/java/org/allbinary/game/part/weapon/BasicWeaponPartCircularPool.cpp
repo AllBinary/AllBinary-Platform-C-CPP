@@ -58,16 +58,15 @@
 class BasicWeaponPartCircularPool
             : public Object
          {
-        
 
-    public static const NULL_BASIC_WEAPON_PART_CIRCULAR_POOL: BasicWeaponPartCircularPool = new BasicWeaponPartCircularPool();
+    public: static const BasicWeaponPartCircularPool NULL_BASIC_WEAPON_PART_CIRCULAR_POOL = BasicWeaponPartCircularPool();
 
-    private: basicWeaponPart: BasicWeaponPart = BasicWeaponPart.NULL_BASIC_WEAPON_PART;
+    private: BasicWeaponPart basicWeaponPart = BasicWeaponPart::NULL_BASIC_WEAPON_PART;
 
                 //@Throws(Exception.constructor)
             
-    public init(BasicWeaponPartFactoryInterface basicWeaponPartFactoryInterface){
-this.basicWeaponPart= basicWeaponPartFactoryInterface!.getInstance();
+    public: void init(BasicWeaponPartFactoryInterface basicWeaponPartFactoryInterface){
+this->basicWeaponPart= basicWeaponPartFactoryInterface.getInstance();
     
 }
 
@@ -75,14 +74,14 @@ this.basicWeaponPart= basicWeaponPartFactoryInterface!.getInstance();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public BasicWeaponPart getInstance(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship){
-this.basicWeaponPart!.init(sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
+    public: BasicWeaponPart getInstance(AllBinaryLayer sourceLayerInterface, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship){
+this->basicWeaponPart.init(sourceLayerInterface, weaponProperties, scoreableInterface, relativeRelationship);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicWeaponPart;
+                        return this->basicWeaponPart;
     
 }
 

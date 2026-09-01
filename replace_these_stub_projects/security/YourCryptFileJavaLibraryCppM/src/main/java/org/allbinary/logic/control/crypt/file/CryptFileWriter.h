@@ -39,13 +39,12 @@
 class CryptFileWriter
             : public Object
          {
-        
 
-public constructor (string decryptedExtension, string encryptedExtension);
+public: CryptFileWriter(std::string decryptedExtension, std::string encryptedExtension);
 
                 //@Throws(Exception.constructor)
             
-    public write(AbPath fileAbPath, Document document);
+    public: void write(AbPath fileAbPath, Document document);
 
 };
 

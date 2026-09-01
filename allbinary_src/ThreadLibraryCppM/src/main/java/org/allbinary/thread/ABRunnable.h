@@ -54,21 +54,20 @@
 class ABRunnable
             : public Object
         : public RunnableInterface {
-        
 
-    private: running: bool = false;
+    private: bool running = false;
 
-    public setThread(Thread thread);
+    public: void setThread(Thread thread);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 
-    public run();
+    public: void run();
 
-    public int32_t getType();
+    public: int32_t getType();
 
 };
 

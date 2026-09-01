@@ -54,7 +54,6 @@
         #include "ResourceAnimationInterfaceFactoryInterface.h"
 
 class FeatureResourceAnimationInterfaceFactoryInterface: public ResourceAnimationInterfaceFactoryInterface, public RectangleResourceFactoryInterface, public GameFeatureControlledInterface {
-        
 
     Hashtable<any, any> getHashtable()
 

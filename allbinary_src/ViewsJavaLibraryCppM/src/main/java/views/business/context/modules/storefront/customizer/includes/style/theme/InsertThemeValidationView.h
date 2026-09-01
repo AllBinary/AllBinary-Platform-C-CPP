@@ -79,30 +79,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ThemeCustomizerView.h"
 
-class InsertThemeValidationView: public ThemeCustomizerView: public ValidationComponentInterface {
-        
+class InsertThemeValidationView: public ThemeCustomizerView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: requestHashMap: HashMap<any, any>;
+    private: HashMap<any, any> requestHashMap;
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Document toXmlDoc();
-
-    public Boolean isValid();
-
-    public string validationInfo();
-
-    public Document toValidationInfoDoc();
-
-    public Node toValidationInfoNode(Document document);
+public: InsertThemeValidationView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Document toXmlDoc();
+
+    public: Boolean isValid();
+
+    public: std::string validationInfo();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

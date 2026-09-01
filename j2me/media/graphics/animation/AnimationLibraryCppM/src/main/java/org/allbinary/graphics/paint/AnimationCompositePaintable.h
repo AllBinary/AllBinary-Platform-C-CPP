@@ -48,15 +48,14 @@
         #include "InitUpdatePaintable.h"
 
 class AnimationCompositePaintable: public InitUpdatePaintable {
-        
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Animation animationInterface);
+public: AnimationCompositePaintable(Animation animationInterface);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

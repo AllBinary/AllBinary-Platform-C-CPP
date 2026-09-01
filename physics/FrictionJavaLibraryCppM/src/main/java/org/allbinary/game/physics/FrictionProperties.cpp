@@ -51,16 +51,13 @@
 class FrictionProperties
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        }
+public: FrictionProperties(){
+}
 
 
-    public friction(VelocityProperties velocityProperties, int32_t nominator){
-DragVelocityBehavior.instance.reduce(velocityProperties, nominator, FrictionData.getFrictionDenominator());
+    public: void friction(VelocityProperties velocityProperties, int32_t nominator){
+DragVelocityBehavior::instance.reduce(velocityProperties, nominator, FrictionData::getFrictionDenominator());
     
 }
 

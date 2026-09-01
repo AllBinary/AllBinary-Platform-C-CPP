@@ -55,21 +55,18 @@
 class UserEmailEventsConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: userEmailEventsConfigurationInterface: UserEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
 
-public constructor (UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface){
-
-            super();
-        this.userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
+public: UserEmailEventsConfigurationMapping(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface){
+this->userEmailEventsConfigurationInterface= userEmailEventsConfigurationInterface;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
 
@@ -82,21 +79,21 @@ public constructor (UserEmailEventsConfigurationInterface userEmailEventsConfigu
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserEmailEventsConfigurationData.NAME;
+                        return UserEmailEventsConfigurationData::NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
 

@@ -67,27 +67,26 @@
 class ShippingMethods
             : public Object
         : public ShippingMethodsInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: shippingVector: Vector;
+    private: Vector shippingVector;
 
-    private: defaultShippingMethodInterface: ShippingInterface;
+    private: ShippingInterface defaultShippingMethodInterface;
 
-public constructor (AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
+public: ShippingMethods(AbeClientInformationInterface abeClientInformation, StoreFrontInterface storeFrontInterface);
 
-    public Vector get();
-
-                //@Throws(Exception.constructor)
-            
-    public ShippingInterface getShippingInterface(string name);
+    public: Vector get();
 
                 //@Throws(Exception.constructor)
             
-    public ShippingInterface getDefault();
+    public: ShippingInterface getShippingInterface(std::string name);
+
+                //@Throws(Exception.constructor)
+            
+    public: ShippingInterface getDefault();
 
 };
 

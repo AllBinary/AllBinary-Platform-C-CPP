@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUEST_BASICWORKFLOW_H
         #define ORG_ALLBINARY_LOGIC_CONTROL_WORKFLOW_REQUEST_BASICWORKFLOW_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -103,49 +105,48 @@
 class BasicWorkFlow
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: workFlowDoc: Document;
+    private: Document workFlowDoc;
 
-    private: workFlowName: string;
+    private: std::string workFlowName;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-public constructor ();
+public: BasicWorkFlow();
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicWorkFlow(HashMap<any, any> hashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> hashMap);
+public: BasicWorkFlow(HashMap<any, any> hashMap);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getStoreName();
+    public: std::string getStoreName();
 
-    public any getKey();
-
-                //@Throws(Exception.constructor)
-            
-    public Vector toVector();
+    public: Object* getKey();
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: Vector toVector();
 
-    public Node toXmlNode(Document document);
+                //@Throws(Exception.constructor)
+            
+    public: HashMap<any, any> toHashMap();
 
-    public Document toXmlDoc();
+    public: Node toXmlNode(Document document);
 
-    public Boolean isValid();
+    public: Document toXmlDoc();
 
-    public string validationInfo();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+    public: std::string validationInfo();
 
-    public Node toValidationInfoNode(Document document);
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
 
 };
 

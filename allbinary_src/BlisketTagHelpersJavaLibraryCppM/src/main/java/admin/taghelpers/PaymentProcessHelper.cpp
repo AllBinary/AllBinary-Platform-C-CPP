@@ -56,29 +56,26 @@
         #include "TagHelper.h"
 
 class PaymentProcessHelper: public TagHelper {
-        
 
-    private: paymentProcessorComponent: PaymentProcessorComponent;
+    private: PaymentProcessorComponent paymentProcessorComponent;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext){
+public: PaymentProcessHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
-            super();
-        
-    transformInfoInterface: TransformInfoHttpInterface = TransformInfoHttpFactory.getInstance(propertiesHashMap, pageContext) as TransformInfoHttpInterface;;
+    TransformInfoHttpInterface transformInfoInterface = TransformInfoHttpFactory::getInstance(propertiesHashMap, pageContext) as TransformInfoHttpInterface;;
     
-this.paymentProcessorComponent= new PaymentProcessorComponent(transformInfoInterface);
+this->paymentProcessorComponent= PaymentProcessorComponent(transformInfoInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string process(){
+    public: std::string process(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentProcessorComponent!.view();;
+                        return this->paymentProcessorComponent.view();;
     
 }
 

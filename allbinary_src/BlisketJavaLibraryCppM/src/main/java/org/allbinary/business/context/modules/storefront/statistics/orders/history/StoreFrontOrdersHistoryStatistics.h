@@ -72,35 +72,34 @@
 class StoreFrontOrdersHistoryStatistics
             : public Object
         : public StoreFrontOrdersHistoryStatisticsInterface {
-        
 
-    private: numberOfOrdersLong: Long;
+    private: Long numberOfOrdersLong;
 
-    private: subTotalMoney: Money;
+    private: Money subTotalMoney;
 
-    private: shippingCostMoney: Money;
+    private: Money shippingCostMoney;
 
-    private: taxesMoney: Money;
+    private: Money taxesMoney;
 
-    private: totalMoney: Money;
+    private: Money totalMoney;
 
-public constructor (StoreFrontInterface storeFrontInterface);
+public: StoreFrontOrdersHistoryStatistics(StoreFrontInterface storeFrontInterface);
 
-    public Long getNumberOfOrders();
+    public: Long getNumberOfOrders();
 
-    public Money getSubTotal();
+    public: Money getSubTotal();
 
-    public Money getShippingCost();
+    public: Money getShippingCost();
 
-    public Money getTaxes();
+    public: Money getTaxes();
 
-    public Money getTotal();
+    public: Money getTotal();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public any getKey();
+    public: Object* getKey();
 
 };
 

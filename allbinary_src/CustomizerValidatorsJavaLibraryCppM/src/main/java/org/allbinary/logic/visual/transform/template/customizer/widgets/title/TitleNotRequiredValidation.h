@@ -65,24 +65,23 @@
         #include "TitleView.h"
 #include "TitleData.h"
 
-class TitleNotRequiredValidation: public TitleView: public ValidationInterface {
-        
+class TitleNotRequiredValidation: public TitleView, public ValidationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: TitleNotRequiredValidation();
 
-public constructor (Node node);
+public: TitleNotRequiredValidation(Node node);
 
-public constructor (HashMap<any, any> hashMap);
+public: TitleNotRequiredValidation(HashMap<any, any> hashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

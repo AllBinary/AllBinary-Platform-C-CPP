@@ -71,34 +71,33 @@
         #include "TextAnimation.h"
 #include "TextInterface.h"
 
-class CustomTextAnimation: public TextAnimation: public TextInterface {
-        
+class CustomTextAnimation: public TextAnimation, public TextInterface {
 
-    const fontDebugFactory: FontDebugFactory = FontDebugFactory.getInstance()!;
+    protected: const FontDebugFactory fontDebugFactory = FontDebugFactory::getInstance();
 
-    const fontSize: int32_t;
+    protected: int32_t fontSize;
 
-    font: Font;
+    protected: Font font;
 
-    private: lastText: string = StringUtil.getInstance()!.INIT_STRING;
+    private: std::string lastText = StringUtil::getInstance().INIT_STRING;
 
-    hasChanged: bool = true;
+    protected: bool hasChanged = true;
 
-public constructor (string text, int32_t fontSize, AnimationBehavior animationBehavior);
+public: CustomTextAnimation(std::string text, int32_t fontSize, AnimationBehavior animationBehavior);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public setScale(float scaleX, float scaleY);
+    public: void setScale(float scaleX, float scaleY);
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    public string getText();
+    public: std::string getText();
 
-    private: textWidth: int32_t= 0;
+    private: int32_t textWidth= 0;
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getFontHeight();
+    public: int32_t getFontHeight();
 
 };
 

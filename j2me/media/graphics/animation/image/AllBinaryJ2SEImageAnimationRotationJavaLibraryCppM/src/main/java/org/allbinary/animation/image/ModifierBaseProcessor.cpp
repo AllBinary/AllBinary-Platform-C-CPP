@@ -51,25 +51,24 @@
 class ModifierBaseProcessor
             : public Object
          {
-        
 
-    private: static const instance: ModifierBaseProcessor = new ModifierBaseProcessor();
+    private: static ModifierBaseProcessor instance() { return ModifierBaseProcessor(); }
 
-    public static ModifierBaseProcessor getInstance(){
+    public: static ModifierBaseProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ModifierBaseProcessor.instance;
+                        return ModifierBaseProcessor::instance();
     
 }
 
 
-    public updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor){
+    public: void updateColor(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, BasicColor basicColor){
 }
 
 
-    public updateAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, int32_t alpha){
+    public: void updateAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t index, int32_t alpha){
 }
 
 

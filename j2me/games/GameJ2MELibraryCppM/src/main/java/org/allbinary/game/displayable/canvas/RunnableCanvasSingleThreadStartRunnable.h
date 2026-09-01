@@ -53,19 +53,18 @@
         #include "GameRunnable.h"
 
 class RunnableCanvasSingleThreadStartRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const runnableCanvas: RunnableCanvas;
+    private: RunnableCanvas runnableCanvas;
 
-public constructor (RunnableCanvas demoCanvas);
+public: RunnableCanvasSingleThreadStartRunnable(RunnableCanvas demoCanvas);
 
-    public run();
+    public: void run();
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep();
+    public: void processLoopSleep();
 
 };
 

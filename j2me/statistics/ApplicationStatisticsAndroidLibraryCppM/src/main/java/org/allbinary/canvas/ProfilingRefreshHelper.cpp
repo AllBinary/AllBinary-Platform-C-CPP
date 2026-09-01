@@ -49,64 +49,63 @@
         #include "AndroidGameStatistics.h"
 
 class ProfilingRefreshHelper: public AndroidGameStatistics {
-        
 
-    private: static const instance: ProfilingRefreshHelper = new ProfilingRefreshHelper();
+    private: static ProfilingRefreshHelper instance() { return ProfilingRefreshHelper(); }
 
-    public static AndroidGameStatistics getInstance(){
+    public: static AndroidGameStatistics getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ProfilingRefreshHelper.instance;
+                        return ProfilingRefreshHelper::instance();
     
 }
 
 
-    private: firstTime: bool = true;
+    private: bool firstTime = true;
 
-    private: bestFrameProcessingTime: int32_t= 0;
+    private: int32_t bestFrameProcessingTime= 0;
 
-    private: worstFrameProcessingTime: int32_t= 0;
+    private: int32_t worstFrameProcessingTime= 0;
 
-    private: frameProcessingTimeElapsed: int64_t= 0;
+    private: int64_t frameProcessingTimeElapsed= 0;
 
-private constructor (){
-
-            super();
-        }
+private: ProfilingRefreshHelper(){
+}
 
 
-    public initView(View view){
+    public: void initView(View view){
 super.initView(view);
     
-this.frameProcessingTimeElapsed= this.getTimeDelayHelper()!.getStartTime();
+this->frameProcessingTimeElapsed= this->getTimeDelayHelper().getStartTime();
     
-this.bestFrameProcessingTime= Integer.MAX_VALUE;
+this->bestFrameProcessingTime= Integer::MAX_VALUE;
     
-this.worstFrameProcessingTime= 0;
+this->worstFrameProcessingTime= 0;
     
 }
 
 
-    public nextFrame(){
-this.frameProcessingTimeElapsed= Date.now() -this.frameProcessingTimeElapsed;
+    public: void nextFrame(){
+this->frameProcessingTimeElapsed= Date.now() -this->frameProcessingTimeElapsed;
     
 
-                        if(this.firstTime != true)
+                        if(this->firstTime != true)
                         
                                     {
                                     
-                        if(this.frameProcessingTimeElapsed > this.worstFrameProcessingTime)
-                        this.worstFrameProcessingTime= static_cast<int32_t>(this.frameProcessingTimeElapsed)
+                        if(this->frameProcessingTimeElapsed > this->worstFrameProcessingTime)
+                        this->worstFrameProcessingTime= static_cast<int32_t>(this->frameProcessingTimeElapsed);
+                                
 
-                        if(this.frameProcessingTimeElapsed < this.bestFrameProcessingTime)
-                        this.bestFrameProcessingTime= static_cast<int32_t>(this.frameProcessingTimeElapsed)
+                        if(this->frameProcessingTimeElapsed < this->bestFrameProcessingTime)
+                        this->bestFrameProcessingTime= static_cast<int32_t>(this->frameProcessingTimeElapsed);
+                                
 
                                     }
                                 
                         else {
-                            this.firstTime= false;
+                            this->firstTime= false;
     
 
                         }
@@ -116,12 +115,12 @@ super.nextFrame();
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(super.toString())!.append(" Worst: ")!.appendint(this.worstFrameProcessingTime)!.append(" Best: ")!.appendint(this.bestFrameProcessingTime)!.toString();;
+                        return StringMaker().append(super.toString()).append(" Worst: ").appendint(this->worstFrameProcessingTime).append(" Best: ").appendint(this->bestFrameProcessingTime).toString();;
     
 }
 

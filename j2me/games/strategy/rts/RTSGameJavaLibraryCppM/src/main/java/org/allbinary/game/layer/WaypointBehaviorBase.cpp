@@ -74,33 +74,30 @@
 class WaypointBehaviorBase
             : public Object
         : public TickableInterface {
-        
 
-    private: const ownedWaypointList: BasicArrayList;
+    private: BasicArrayList ownedWaypointList;
 
-    waypointOverridesAttacking: bool = true;
+    protected: bool waypointOverridesAttacking = true;
 
-    private: waypoint: WaypointBase = WaypointBase.NULL_WAYPOINT_BASE;
+    private: WaypointBase waypoint = WaypointBase::NULL_WAYPOINT_BASE;
 
-public constructor (){
-
-            super();
-        this.ownedWaypointList= new BasicArrayListS(1);
+public: WaypointBehaviorBase(){
+this->ownedWaypointList= BasicArrayListS(1);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.constructor.name.toString()!;;
+                        return this->constructor.name.toString()!;;
     
 }
 
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
@@ -112,204 +109,204 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 }
 
 
-    public BasicArrayList getOwnedWaypointList(){
+    public: BasicArrayList getOwnedWaypointList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ownedWaypointList;
+                        return this->ownedWaypointList;
     
 }
 
 
-    public WaypointBase getWaypoint(){
+    public: WaypointBase getWaypoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.waypoint;
+                        return this->waypoint;
     
 }
 
 
-    public setWaypoint(WaypointBase waypoint){
-this.waypoint= waypoint;
+    public: void setWaypoint(WaypointBase waypoint){
+this->waypoint= waypoint;
     
 }
 
 
-    public BasicArrayList getSteeringVisitorList(){
+    public: BasicArrayList getSteeringVisitorList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.steeringVisitorList;
+                        return this->steeringVisitorList;
     
 }
 
 
-    public string getMovementLogicAsString(){
+    public: std::string getMovementLogicAsString(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isWaypointListEmptyOrOnlyTargets(){
+    public: bool isWaypointListEmptyOrOnlyTargets(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance){
+    public: bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface(){
+    public: CollidableDestroyableDamageableLayer getCurrentTargetLayerInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public string getCurrentTargetingStateString(){
+    public: std::string getCurrentTargetingStateString(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isTrackingWaypoint(){
+    public: bool isTrackingWaypoint(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public GeographicMapCellPosition getCurrentPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getCurrentPathGeographicMapCellPosition(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public GeographicMapCellHistory getCurrentGeographicMapCellHistory(){
+    public: GeographicMapCellHistory getCurrentGeographicMapCellHistory(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isWaypointOverridesAttacking(){
+    public: bool isWaypointOverridesAttacking(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.waypointOverridesAttacking;
+                        return this->waypointOverridesAttacking;
     
 }
 
 
-    public GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition(){
+    public: GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool needToMove(){
+    public: bool needToMove(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setWaypointPathsList(BasicArrayList waypointPathsList){
+    public: void setWaypointPathsList(BasicArrayList waypointPathsList){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public BasicArrayList getWaypointPathsList(){
+    public: BasicArrayList getWaypointPathsList(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setTarget(PathFindingLayerInterface layerInterface){
+    public: void setTarget(PathFindingLayerInterface layerInterface){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setTargetWithDistance(PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance){
+    public: void setTargetWithDistance(PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public clearTarget(){
+    public: void clearTarget(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public updatePathOnTargetMove(string reason){
+    public: void updatePathOnTargetMove(std::string reason){
 }
 
 
-    private: const steeringVisitorList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList steeringVisitorList = BasicArrayListD();
 
 };
 

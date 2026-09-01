@@ -47,7 +47,6 @@
         #include "TransformInfoInterface.h"
 
 class TransformInfoFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

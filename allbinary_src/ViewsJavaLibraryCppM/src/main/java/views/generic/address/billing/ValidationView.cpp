@@ -55,10 +55,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BillingAddressesView.h"
 
-class ValidationView: public BillingAddressesView: public ValidationComponentInterface {
-        
+class ValidationView: public BillingAddressesView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -67,15 +66,15 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
-    billingAddressesEntity: BillingAddressesEntity = new BillingAddressesEntity(this.getWeblisketSession()!.getUserName());;
+    BillingAddressesEntity billingAddressesEntity = BillingAddressesEntity(this->getWeblisketSession().getUserName());;
     
-this.streetAddresses= billingAddressesEntity!.get();
+this->streetAddresses= billingAddressesEntity.get();
     
 
-                        if(this.streetAddresses == 
-                                    null
+                        if(this->streetAddresses == 
+                                    nullptr
                                 )
                         
                                     {
@@ -83,20 +82,20 @@ this.streetAddresses= billingAddressesEntity!.get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(this.streetAddresses!.size() < 1)
+                        if(this->streetAddresses.size() < 1)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -105,12 +104,12 @@ this.streetAddresses= billingAddressesEntity!.get();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -120,7 +119,7 @@ this.streetAddresses= billingAddressesEntity!.get();
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -130,7 +129,7 @@ this.streetAddresses= billingAddressesEntity!.get();
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

@@ -57,13 +57,12 @@
 class AdvancedRTSLayerUtil
             : public Object
          {
-        
 
-    private: static const instance: AdvancedRTSLayerUtil = new AdvancedRTSLayerUtil();
+    private: static AdvancedRTSLayerUtil instance() { return AdvancedRTSLayerUtil(); }
 
-    public static AdvancedRTSLayerUtil getInstance();
+    public: static AdvancedRTSLayerUtil getInstance();
 
-    public Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
+    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap);
 
 };
 

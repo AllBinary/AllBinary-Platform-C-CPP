@@ -51,20 +51,15 @@
         #include "InitDb.h"
 //Warning you must have sql root access
 class DynamicInitDb: public InitDb {
-        
 
-public constructor (AbeClientInformationInterface abeClientInformation){
-
-            super();
-        this.setHelper(InitDbHelperFactory.getInstance(abeClientInformation));
+public: DynamicInitDb(AbeClientInformationInterface abeClientInformation){
+this->setHelper(InitDbHelperFactory::getInstance(abeClientInformation));
     
 }
 
 
-public constructor (AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
-
-            super();
-        this.setHelper(InitDbHelperFactory.getInstance(abeClientInformation, databaseConnectionInfoInterface));
+public: DynamicInitDb(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface){
+this->setHelper(InitDbHelperFactory::getInstance(abeClientInformation, databaseConnectionInfoInterface));
     
 }
 

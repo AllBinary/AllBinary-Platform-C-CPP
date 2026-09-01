@@ -60,21 +60,20 @@
 class GameInputMapping
             : public Object
          {
-        
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: gameKey: GameKey = GameKey.NULL_GAME_KEY;
+    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
 
-public constructor (string name, GameKey gameKey);
+public: GameInputMapping(std::string name, GameKey gameKey);
 
-    setGameKey(GameKey gameKey);
+    private: void setGameKey(GameKey gameKey);
 
-    public GameKey getGameKey();
+    public: GameKey getGameKey();
 
-    setName(string name);
+    private: void setName(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
 };
 

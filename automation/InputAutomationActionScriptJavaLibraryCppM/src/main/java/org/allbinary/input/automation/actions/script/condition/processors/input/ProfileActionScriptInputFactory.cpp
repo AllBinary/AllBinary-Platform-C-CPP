@@ -55,34 +55,33 @@
 class ProfileActionScriptInputFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ProfileActionScriptInputInterface getInstance(Node node){
+    public: static ProfileActionScriptInputInterface getInstance(Node node){
 
-    profileActionScriptInputInterface: ProfileActionScriptInputInterface = 
+    ProfileActionScriptInputInterface profileActionScriptInputInterface = 
                 null
             ;;
     
 
-                        if(DomSearchHelper.getNodeNoThrow(KeyboardActionScriptInputData.NAME, node.getChildNodes()) != 
-                                    null
+                        if(DomSearchHelper::getNodeNoThrow(KeyboardActionScriptInputData::NAME, node.getChildNodes()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    profileActionScriptInputInterface= new KeyboardActionScriptInput(node);
+                                    profileActionScriptInputInterface= KeyboardActionScriptInput(node);
     
 
                                     }
                                 
                              else 
-                        if(DomSearchHelper.getNodeNoThrow(MouseActionScriptInputData.NAME, node.getChildNodes()) != 
-                                    null
+                        if(DomSearchHelper::getNodeNoThrow(MouseActionScriptInputData::NAME, node.getChildNodes()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    profileActionScriptInputInterface= new MouseActionScriptInput(node);
+                                    profileActionScriptInputInterface= MouseActionScriptInput(node);
     
 
                                     }
@@ -91,7 +90,7 @@ class ProfileActionScriptInputFactory
                             
 
 
-                            throw new Exception("No Such ActionScript Input");
+                            throw Exception("No Such ActionScript Input");
                     
 
                         }
@@ -105,10 +104,8 @@ class ProfileActionScriptInputFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ProfileActionScriptInputFactory(){
+}
 
 
 };

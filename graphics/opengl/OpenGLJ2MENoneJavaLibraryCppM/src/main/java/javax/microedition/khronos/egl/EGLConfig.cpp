@@ -30,15 +30,12 @@
 class EGLConfig
             : public Object
          {
-        
 
-public constructor (){
-
-            super();
-        
+public: EGLConfig(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 

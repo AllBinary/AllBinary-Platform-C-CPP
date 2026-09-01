@@ -89,49 +89,48 @@
 class DomHelper
             : public Object
          {
-        
 
-    private: static const instance: DomHelper = new DomHelper();
+    private: static DomHelper instance() { return DomHelper(); }
 
-    public static DomHelper getInstance();
+    public: static DomHelper getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: DomHelper();
 
-    public Document createDocument();
-
-                //@Throws(Exception.constructor)
-            
-    public Document createDocument(File xmlFile);
+    public: Document createDocument();
 
                 //@Throws(Exception.constructor)
             
-    public string toString(Document document);
+    public: Document createDocument(File xmlFile);
 
                 //@Throws(Exception.constructor)
             
-    public save(File file, Document document);
+    public: std::string toString(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public NodeList getChildNodeList(string nodeName, NodeList nodeList);
+    public: void save(File file, Document document);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getChildrenWithoutTextNodes(string nodeName, NodeList nodeList);
+    public: NodeList getChildNodeList(std::string nodeName, NodeList nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getWithoutTextNodes(NodeList nodeList);
+    public: BasicArrayList getChildrenWithoutTextNodes(std::string nodeName, NodeList nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public Node searchNodeList(string nodeName, NodeList nodeList);
+    public: BasicArrayList getWithoutTextNodes(NodeList nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public Node searchNodeList(string nodeName, BasicArrayList nodeList);
+    public: Node searchNodeList(std::string nodeName, NodeList nodeList);
+
+                //@Throws(Exception.constructor)
+            
+    public: Node searchNodeList(std::string nodeName, BasicArrayList nodeList);
 
 };
 

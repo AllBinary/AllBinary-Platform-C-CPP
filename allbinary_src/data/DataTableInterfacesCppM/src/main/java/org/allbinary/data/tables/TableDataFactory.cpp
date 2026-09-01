@@ -47,23 +47,22 @@
 class TableDataFactory
             : public Object
          {
-        
 
-    private: static const instance: TableDataFactory = new TableDataFactory();
+    private: static TableDataFactory instance() { return TableDataFactory(); }
 
-    public static TableDataFactory getInstance(){
+    public: static TableDataFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TableDataFactory.instance;
+                        return TableDataFactory::instance();
     
 }
 
 
-    public const INTEGER_MAX_VALUE_STRING: string = Integer.toString(Integer.MAX_VALUE)!;
+    public: const std::string INTEGER_MAX_VALUE_STRING = std::to_string(MAX_VALUE);
 
-    public const ZERO_STRING: string = CommonPhoneStrings.getInstance()!.ZERO;
+    public: const std::string ZERO_STRING = CommonPhoneStrings::getInstance().ZERO;
 
 };
 

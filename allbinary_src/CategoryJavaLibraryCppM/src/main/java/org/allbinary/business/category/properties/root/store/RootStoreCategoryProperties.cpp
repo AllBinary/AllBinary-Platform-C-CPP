@@ -110,162 +110,153 @@
 class RootStoreCategoryProperties
             : public Object
         : public RootCategoryPropertiesInterface, public CategoryPropertiesInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const pathData: AbPathData = AbPathData.getInstance()!;
+    private: const AbPathData pathData = AbPathData::getInstance();
 
-    private: fileAbPath: AbPath;
+    private: AbPath fileAbPath;
 
-    private: abPath: AbPath;
+    private: AbPath abPath;
 
-    private: category: string;
+    private: std::string category;
 
-    private: isRealRoot: bool;
+    private: bool isRealRoot;
 
-    webAppAbPath: AbPath;
+    protected: AbPath webAppAbPath;
 
-    transformInfoInterface: TransformInfoInterface;
+    protected: TransformInfoInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
-
-            super();
-        this.transformInfoInterface= transformInfoInterface;
+public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface){
+this->transformInfoInterface= transformInfoInterface;
     
-this.abPath= AbPath.createAbPath();
+this->abPath= AbPath::createAbPath();
     
-this.category= CategoryData.getInstance()!.ROOTCATEGORY;
+this->category= CategoryData::getInstance().ROOTCATEGORY;
     
-this.isRealRoot= true;
+this->isRealRoot= true;
     
-this.initPath();
+this->initPath();
     
-this.log();
+this->log();
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, AbPath categoryAbPath){
-
-            super();
-        this.transformInfoInterface= transformInfoInterface;
+public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath categoryAbPath){
+this->transformInfoInterface= transformInfoInterface;
     
-this.abPath= categoryAbPath;
+this->abPath= categoryAbPath;
     
-this.category= this.pathData!.getNameFromPath(categoryAbPath!.toString());
+this->category= this->pathData.getNameFromPath(categoryAbPath.toString());
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.category))
+                        if(StringValidationUtil::getInstance().isEmpty(this->category))
                         
                                     {
-                                    this.isRealRoot= true;
+                                    this->isRealRoot= true;
     
-this.category= CategoryData.getInstance()!.ROOTCATEGORY;
+this->category= CategoryData::getInstance().ROOTCATEGORY;
     
 
                                     }
                                 
-this.initPath();
+this->initPath();
     
-this.log();
+this->log();
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node){
-
-            super();
-        this.transformInfoInterface= transformInfoInterface;
+public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, Node node){
+this->transformInfoInterface= transformInfoInterface;
     
 
-    categoryPath: string = CategoryUtil.getNameFromNode(node)!;;
+    std::string categoryPath = CategoryUtil::getNameFromNode(node);;
     
-this.abPath= new AbPath(categoryPath, StringUtil.getInstance()!.EMPTY_STRING);
+this->abPath= AbPath(categoryPath, StringUtil::getInstance().EMPTY_STRING);
     
-this.category= this.pathData!.getNameFromPath(categoryPath);
+this->category= this->pathData.getNameFromPath(categoryPath);
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.category))
+                        if(StringValidationUtil::getInstance().isEmpty(this->category))
                         
                                     {
-                                    this.isRealRoot= true;
+                                    this->isRealRoot= true;
     
-this.category= CategoryData.getInstance()!.ROOTCATEGORY;
+this->category= CategoryData::getInstance().ROOTCATEGORY;
     
 
                                     }
                                 
-this.initPath();
+this->initPath();
     
-this.log();
+this->log();
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
-
-            super();
-        this.transformInfoInterface= transformInfoInterface;
+public: RootStoreCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
+this->transformInfoInterface= transformInfoInterface;
     
 
-    categoryPath: string = .toCharArray();;
+    std::string categoryPath = .toCharArray();;
     
-this.abPath= new AbPath(categoryPath, StringUtil.getInstance()!.EMPTY_STRING);
+this->abPath= AbPath(categoryPath, StringUtil::getInstance().EMPTY_STRING);
     
-this.category= this.pathData!.getNameFromPath(categoryPath);
+this->category= this->pathData.getNameFromPath(categoryPath);
     
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.category))
+                        if(StringValidationUtil::getInstance().isEmpty(this->category))
                         
                                     {
-                                    this.isRealRoot= true;
+                                    this->isRealRoot= true;
     
-this.category= CategoryData.getInstance()!.ROOTCATEGORY;
+this->category= CategoryData::getInstance().ROOTCATEGORY;
     
 
                                     }
                                 
-this.initPath();
+this->initPath();
     
-this.log();
+this->log();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initPath(){
+    protected: void initPath(){
 
-    transformInfoHttpStoreInterface: TransformInfoHttpInterface = this.transformInfoInterface as TransformInfoHttpInterface;;
-    
-
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(transformInfoHttpStoreInterface!.getStoreName())!;;
+    TransformInfoHttpInterface transformInfoHttpStoreInterface = this->transformInfoInterface as TransformInfoHttpInterface;;
     
 
-    postPath: string = storeFrontInterface!.getCurrentHostNamePath() +storeFrontInterface!.getCategoryPath();;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface.getStoreName());;
     
 
-    httpServletRequest: HttpServletRequest = transformInfoHttpStoreInterface!.getPageContext()!.getRequest() as HttpServletRequest;;
+    std::string postPath = storeFrontInterface.getCurrentHostNamePath() +storeFrontInterface.getCategoryPath();;
     
-this.webAppAbPath= new AbPath(httpServletRequest!.getContextPath() +postPath, StringUtil.getInstance()!.EMPTY_STRING);
+
+    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest() as HttpServletRequest;;
     
-this.setRootFilePath(new AbPath(URLGLOBALS.getMainPath() +postPath, StringUtil.getInstance()!.EMPTY_STRING));
+this->webAppAbPath= AbPath(httpServletRequest.getContextPath() +postPath, StringUtil::getInstance().EMPTY_STRING);
+    
+this->setRootFilePath(AbPath(URLGLOBALS::getMainPath() +postPath, StringUtil::getInstance().EMPTY_STRING));
     
 }
 
 
-    public bool isRealRoot(){
+    public: bool isRealRoot(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRealRoot;
+                        return this->isRealRoot;
     
 }
 
 
-    public bool isRoot(){
+    public: bool isRoot(){
 
 
 
@@ -275,101 +266,101 @@ this.setRootFilePath(new AbPath(URLGLOBALS.getMainPath() +postPath, StringUtil.g
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getValue();
+                        return this->getValue();
     
 }
 
 
-    public setPath(AbPath path){
-this.abPath= path;
+    public: void setPath(AbPath path){
+this->abPath= path;
     
 }
 
 
-    public setRootFilePath(AbPath value){
-this.fileAbPath= value;
+    public: void setRootFilePath(AbPath value){
+this->fileAbPath= value;
     
 }
 
 
-    public AbPath getRootFilePath(){
+    public: AbPath getRootFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileAbPath;
+                        return this->fileAbPath;
     
 }
 
 
-    public string getValue(){
+    public: std::string getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.category;
+                        return this->category;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getWebAppPath(){
+    public: AbPath getWebAppPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.webAppAbPath;
+                        return this->webAppAbPath;
     
 }
 
 
-    public AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.abPath;
+                        return this->abPath;
     
 }
 
 
-    public string getFileName(){
+    public: std::string getFileName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getValue() +AbPathData.getInstance()!.EXTENSION_SEP +CategoryData.getInstance()!.UNCRYPTED_EXTENSION;
+                        return this->getValue() +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
     
 }
 
 
-    public setValue(string value){
-this.category= value;
+    public: void setValue(std::string value){
+this->category= value;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    categoryHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> categoryHashMap = HashMap<any, any>();;
     
-categoryHashMap!.put(CategoryData.getInstance()!.NAME, this.getValue());
+categoryHashMap.put(CategoryData::getInstance().NAME, this->getValue());
     
 
 
@@ -380,11 +371,11 @@ categoryHashMap!.put(CategoryData.getInstance()!.NAME, this.getValue());
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    categoryVector: Vector = new Vector();;
+    Vector categoryVector = Vector();;
     
-categoryVector!.add(this.getValue());
+categoryVector.add(this->getValue());
     
 
 
@@ -397,7 +388,7 @@ categoryVector!.add(this.getValue());
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -409,7 +400,7 @@ categoryVector!.add(this.getValue());
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -421,7 +412,7 @@ categoryVector!.add(this.getValue());
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -431,12 +422,12 @@ categoryVector!.add(this.getValue());
 }
 
 
-    public log(){
+    public: void log(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append("filePath = ")!.append(this.fileAbPath!.toString())!.append("\npath = ")!.append(this.abPath!.toString())!.append("\ncategory = ")!.append(this.category)!.toString(), this, "log()");
+                                    this->logUtil.putF(StringMaker().append("filePath = ").append(this->fileAbPath.toString()).append("\npath = ").append(this->abPath.toString()).append("\ncategory = ").append(this->category).toString(), this, "log()");
     
 
                                     }

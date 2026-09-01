@@ -58,11 +58,10 @@
 class BasicFileFilterUtil
             : public Object
          {
-        
 
-    public static FileFilter getInstance(string extension);
+    public: static FileFilter getInstance(std::string extension);
 
-private constructor ();
+private: BasicFileFilterUtil();
 
 };
 

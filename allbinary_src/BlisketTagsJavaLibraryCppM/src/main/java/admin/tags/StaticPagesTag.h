@@ -73,27 +73,26 @@
         #include "TableTag.h"
 
 class StaticPagesTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-public constructor ();
+public: StaticPagesTag();
 
-    public setXsl(string value);
-
-                //@Throws(LicensingException.constructor)
-            
-    public string generateStaticPages();
+    public: void setXsl(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    public string makePublic();
+    public: std::string generateStaticPages();
+
+                //@Throws(LicensingException.constructor)
+            
+    public: std::string makePublic();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

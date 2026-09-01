@@ -63,15 +63,14 @@
 class InventoryColumnUtil
             : public Object
          {
-        
 
-    private: static const instance: InventoryColumnUtil = new InventoryColumnUtil();
+    private: static InventoryColumnUtil instance() { return InventoryColumnUtil(); }
 
-    public static InventoryColumnUtil getInstance();
+    public: static InventoryColumnUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public Vector getColumnWhereLike(InventoryEntity inventoryEntity, string category, string column);
+    public: Vector getColumnWhereLike(InventoryEntity inventoryEntity, std::string category, std::string column);
 
 };
 

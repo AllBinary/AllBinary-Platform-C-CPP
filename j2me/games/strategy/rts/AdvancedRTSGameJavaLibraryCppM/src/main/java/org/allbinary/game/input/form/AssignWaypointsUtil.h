@@ -78,17 +78,16 @@
 class AssignWaypointsUtil
             : public Object
          {
-        
 
-    private: static const instance: AssignWaypointsUtil = new AssignWaypointsUtil();
+    private: static AssignWaypointsUtil instance() { return AssignWaypointsUtil(); }
 
-    public static AssignWaypointsUtil getInstance();
+    public: static AssignWaypointsUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const WAYPOINT_EVENT: RTSLayerEvent = new RTSLayerEvent(NullPathFindingLayer.NULL_PATH_FINDING_LAYER);
+    private: const RTSLayerEvent WAYPOINT_EVENT = RTSLayerEvent(NullPathFindingLayer::NULL_PATH_FINDING_LAYER);
 
-    public set(UnitLayer unitLayer, AdvancedRTSGameLayer ownerAdvancedRTSGameLayer);
+    public: void set(UnitLayer unitLayer, AdvancedRTSGameLayer ownerAdvancedRTSGameLayer);
 
 };
 

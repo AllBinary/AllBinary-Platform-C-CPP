@@ -52,13 +52,12 @@
 class NoLicense
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static init(ClassLoader classLoader, string pathString);
+    public: static void init(ClassLoader classLoader, std::string pathString);
 
-private constructor ();
+private: NoLicense();
 
 };
 

@@ -50,23 +50,22 @@
 class XmlRpcClient
             : public Object
         : public XmlRpcHandler {
-        
 
-    private: const url: URL;
+    private: URL url;
 
-public constructor (string url);
+public: XmlRpcClient(std::string url);
 
-    public URL getURL();
+    public: URL getURL();
 
-    public setBasicAuthentication(string user, string password);
-
-                //@Throws(XmlRpcException.constructor, IOException.constructor)
-            
-    public any execute(string method, Vector<any> params);
+    public: void setBasicAuthentication(std::string user, std::string password);
 
                 //@Throws(XmlRpcException.constructor, IOException.constructor)
             
-    public any execute(string method, Vector<any> params, CryptInterface cryptInterface);
+    public: Object* execute(std::string method, Vector<any> params);
+
+                //@Throws(XmlRpcException.constructor, IOException.constructor)
+            
+    public: Object* execute(std::string method, Vector<any> params, CryptInterface cryptInterface);
 
 };
 

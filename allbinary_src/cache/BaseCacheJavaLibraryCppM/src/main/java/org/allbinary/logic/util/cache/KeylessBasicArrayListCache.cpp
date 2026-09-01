@@ -53,32 +53,29 @@
         #include "IndexedBasicArrayListCache.h"
 
 class KeylessBasicArrayListCache: public IndexedBasicArrayListCache {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    protected: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: KeylessBasicArrayListCache(){
+}
 
 
-    public BasicArrayList get(){
+    public: BasicArrayList get(){
 
         try {
             
-                        if(this.index >= this.list.size())
+                        if(this->index >= this->list.size())
                         
                                     {
-                                    this.addDefault();
+                                    this->addDefault();
     
 
                                     }
                                 
 
-    list: BasicArrayList = this.getAt(this.index++) as BasicArrayList;;
+    BasicArrayList list = this->getAt(this->index++) as BasicArrayList;;
     
 
 
@@ -90,67 +87,67 @@ public constructor (){
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicArrayListUtil!.getImmutableInstance();;
+                        return this->basicArrayListUtil.getImmutableInstance();;
     
 }
 
 }
 
 
-    public clear(){
+    public: void clear(){
 super.clear();
     
 
-    basicArrayList: BasicArrayList;;
+    BasicArrayList basicArrayList;;
     
 
 
 
 
                         for (
-    index: int32_t = this.list.size() -1;index >= 0; index--)
+    int32_t index = this->list.size() -1;index >= 0; index--)
         {
-basicArrayList= (this.list.objectArray[index]! as BasicArrayList);
+basicArrayList= (this->list.objectArray[index]! as BasicArrayList);
     
-basicArrayList!.clear();
+basicArrayList.clear();
     
 }
 
 }
 
 
-    public string log(){
+    public: std::string log(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("S: ");
+stringBuffer.append("S: ");
     
-stringBuffer!.appendint(this.list.size());
-    
-
-    S_LABEL: string = " s: ";;
+stringBuffer.appendint(this->list.size());
     
 
-    basicArrayList: BasicArrayList;;
+    std::string S_LABEL = " s: ";;
+    
+
+    BasicArrayList basicArrayList;;
     
 
 
 
 
                         for (
-    index: int32_t = this.list.size() -1;index >= 0; index--)
+    int32_t index = this->list.size() -1;index >= 0; index--)
         {
-stringBuffer!.append(S_LABEL);
+stringBuffer.append(S_LABEL);
     
-basicArrayList= (this.list.objectArray[index]! as BasicArrayList);
+basicArrayList= (this->list.objectArray[index]! as BasicArrayList);
     
-stringBuffer!.appendint(basicArrayList!.size());
+stringBuffer.appendint(basicArrayList.size());
     
 }
 
@@ -158,7 +155,7 @@ stringBuffer!.appendint(basicArrayList!.size());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

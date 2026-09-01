@@ -59,50 +59,47 @@
 class SmallDelete
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: fileName: string;
+    private: std::string fileName;
 
-    private: string: string;
+    private: std::string string;
 
-public constructor (string fileName){
-
-            super();
-        this.fileName= fileName;
+public: SmallDelete(std::string fileName){
+this->fileName= fileName;
     
-this.string= AbFileSystem.getInstance()!.readAsString(fileName);
+this->string= AbFileSystem::getInstance().readAsString(fileName);
     
 }
 
 
-    public bool deleteAtStart(string start, string end){
+    public: bool deleteAtStart(std::string start, std::string end){
 
         try {
             
-    beginIndex: int32_t= 0;endIndex: int32_t= 0;;
+    int32_t beginIndex= 0;int32_t endIndex= 0;;
     
-beginIndex= this.string.indexOf(start);
+beginIndex= this->string.indexOf(start);
     
-endIndex= this.string.indexOf(end);
+endIndex= this->string.indexOf(end);
     
 
                         if(endIndex > beginIndex && beginIndex >= 0 && endIndex >= 0 && beginIndex < 10 && endIndex < 525)
                         
                                     {
                                     
-    text: string = this.string.substring(endIndex, this.string.length)!;;
+    std::string text = this->string.substring(endIndex, string.size());;
     
 
-    idFile: FileOutputStream = new FileOutputStream(this.fileName);;
+    FileOutputStream idFile = FileOutputStream(this->fileName);;
     
 
-    idOutData: DataOutputStream = new DataOutputStream(idFile);;
+    DataOutputStream idOutData = DataOutputStream(idFile);;
     
-idOutData!.writeBytes(text);
+idOutData.writeBytes(text);
     
 
 
@@ -124,10 +121,10 @@ idOutData!.writeBytes(text);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "deleteAtStart", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "deleteAtStart", e);
     
 
                                     }
@@ -143,33 +140,33 @@ idOutData!.writeBytes(text);
 }
 
 
-    public bool deleteBetween(string start, string end, string newText){
+    public: bool deleteBetween(std::string start, std::string end, std::string newText){
 
         try {
             
-    beginIndex: int32_t= 0;endIndex: int32_t= 0;;
+    int32_t beginIndex= 0;int32_t endIndex= 0;;
     
-beginIndex= this.string.indexOf(start);
+beginIndex= this->string.indexOf(start);
     
-endIndex= this.string.indexOf(end);
+endIndex= this->string.indexOf(end);
     
 
                         if(endIndex > beginIndex && beginIndex >= 0 && endIndex >= 0 && beginIndex < 50 && endIndex < 425)
                         
                                     {
                                     
-    newStart: string = this.string.substring(0, beginIndex)!;;
+    std::string newStart = this->string.substring(0, beginIndex);;
     
 
-    text: string = this.string.substring(endIndex +end.length, this.string.length)!;;
+    std::string text = this->string.substring(endIndex +end.size(), string.size());;
     
 
-    idFile: FileOutputStream = new FileOutputStream(this.fileName);;
+    FileOutputStream idFile = FileOutputStream(this->fileName);;
     
 
-    idOutData: DataOutputStream = new DataOutputStream(idFile);;
+    DataOutputStream idOutData = DataOutputStream(idFile);;
     
-idOutData!.writeBytes(newStart +newText +text);
+idOutData.writeBytes(newStart +newText +text);
     
 
 
@@ -191,10 +188,10 @@ idOutData!.writeBytes(newStart +newText +text);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.IDLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().IDLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "deleteAtStart", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "deleteAtStart", e);
     
 
                                     }

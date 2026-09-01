@@ -69,22 +69,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RootContextView: public HttpStoreComponentView: public TransformTemplateInterface {
-        
+class RootContextView: public HttpStoreComponentView, public TransformTemplateInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: RootContextView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, "RootContextView()");
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, "RootContextView()");
     
 
                                     }
@@ -94,39 +93,39 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +this.getTransformInfoInterface()!.getName(), this, "view()");
+                                    this->logUtil.putF("View Name: " +this->getTransformInfoInterface().getName(), this, "view()");
     
 
                                     }
                                 
 
-    viewName: string = this.getName()!;;
+    std::string viewName = this->getName();;
     
 
-    componentInterface: TransformInterface = TransformFactory.getInstance()!.getInstance(this.abeClientInformation, viewName, this.getTransformInfoInterface())!;;
+    TransformInterface componentInterface = TransformFactory::getInstance().getInstance(this->abeClientInformation, viewName, this->getTransformInfoInterface());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return componentInterface!.view();;
+                        return componentInterface.view();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -143,62 +142,62 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public string getName(){
+    public: std::string getName(){
 
         try {
             
-    objectConfig: NoTemplateTransformInfoObjectConfig = new NoTemplateTransformInfoObjectConfig(this.getTransformInfoInterface(), this.getTransformInfoInterface()!.getObjectConfigInterface()!.toXmlDoc());;
+    NoTemplateTransformInfoObjectConfig objectConfig = NoTemplateTransformInfoObjectConfig(this->getTransformInfoInterface(), this->getTransformInfoInterface().getObjectConfigInterface().toXmlDoc());;
     
 
-    componentsVector: Vector = objectConfig!.getTransforms()!;;
+    Vector componentsVector = objectConfig.getTransforms();;
     
 
-                        if(componentsVector!.length == 0)
+                        if(componentsVector.length == 0)
                         
                                     {
                                     
 
 
-                            throw new Exception("Template View Not Set - No Components");
+                            throw Exception("Template View Not Set - No Components");
                     
 
                                     }
                                 
 
-                        if(componentsVector!.length > 1)
+                        if(componentsVector.length > 1)
                         
                                     {
                                     
 
 
-                            throw new Exception("To Many Root Template Views: " +componentsVector!.length);
+                            throw Exception("To Many Root Template Views: " +componentsVector.length);
                     
 
                                     }
                                 
 
-    transformInfoInterface: TransformInfo = componentsVector!.get(0) as TransformInfo;;
+    TransformInfo transformInfoInterface = componentsVector.get(0) as TransformInfo;;
     
 
-    viewName: string = transformInfoInterface!.getName()!;;
+    std::string viewName = transformInfoInterface.getName();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Root Template With View Name: " +viewName, this, "getName()");
+                                    this->logUtil.putF("Root Template With View Name: " +viewName, this, "getName()");
     
 
                                     }
                                 
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(viewName))
+                        if(StringValidationUtil::getInstance().isEmpty(viewName))
                         
                                     {
                                     
 
 
-                            throw new Exception("Template View Not Set - No View Name");
+                            throw Exception("Template View Not Set - No View Name");
                     
 
                                     }
@@ -214,10 +213,10 @@ public constructor (TransformInfoInterface transformInfoInterface){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "getName()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "getName()", e);
     
 
                                     }

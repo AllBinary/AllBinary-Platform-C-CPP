@@ -70,26 +70,23 @@
 class BasicLayerProcessor
             : public Object
          {
-        
 
-    public static const NULL_LAYER_PROCESSOR: BasicLayerProcessor = new BasicLayerProcessor();
+    public: static const BasicLayerProcessor NULL_LAYER_PROCESSOR = BasicLayerProcessor();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-protected constructor (){
-
-            super();
-        }
+protected: BasicLayerProcessor(){
+}
 
 
-    public add(AllBinaryLayer layerInterface){
+    public: void add(AllBinaryLayer layerInterface){
 
-                        if(!this.list.contains(layerInterface))
+                        if(!this->list.contains(layerInterface))
                         
                                     {
-                                    this.list.add(layerInterface);
+                                    this->list.add(layerInterface);
     
 
                                     }
@@ -99,21 +96,21 @@ protected constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayerManager allBinaryLayerManager){
+    public: void process(AllBinaryLayerManager allBinaryLayerManager){
 
 
 
-                            throw new Exception(CommonStrings.getInstance()!.NOT_IMPLEMENTED);
+                            throw Exception(CommonStrings::getInstance().NOT_IMPLEMENTED);
                     
 }
 
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 

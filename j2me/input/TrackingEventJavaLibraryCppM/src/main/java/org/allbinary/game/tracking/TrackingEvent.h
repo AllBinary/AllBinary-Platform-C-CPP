@@ -60,21 +60,20 @@
         #include "TrackingEventHandler.h"
 
 class TrackingEvent: public AllBinaryEventObject {
-        
 
-    private: layerInterface: AllBinaryLayer = AllBinaryLayer.NULL_ALLBINARY_LAYER;
+    private: AllBinaryLayer layerInterface = AllBinaryLayer::NULL_ALLBINARY_LAYER;
 
-public constructor (any = {} allBinaryLayerInterface);
+public: TrackingEvent(Object* allBinaryLayerInterface);
 
-    public init(any = {} anyType);
+    public: void init(Object* anyType);
 
-    public AllBinaryLayer getLayerInterface();
+    public: AllBinaryLayer getLayerInterface();
 
-    setLayerInterface(AllBinaryLayer layerInterface);
+    private: void setLayerInterface(AllBinaryLayer layerInterface);
 
-    public setLayerInterfaceForCircularStaticPool(AllBinaryLayer layerInterface);
+    public: void setLayerInterfaceForCircularStaticPool(AllBinaryLayer layerInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

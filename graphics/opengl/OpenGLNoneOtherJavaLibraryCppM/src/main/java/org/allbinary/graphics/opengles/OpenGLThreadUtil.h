@@ -31,17 +31,16 @@
 class OpenGLThreadUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLThreadUtil = new OpenGLThreadUtil();
+    private: static OpenGLThreadUtil instance() { return OpenGLThreadUtil(); }
 
-    public static OpenGLThreadUtil getInstance();
+    public: static OpenGLThreadUtil getInstance();
 
-    public set(any = {} glSurfaceView);
+    public: void set(Object* glSurfaceView);
 
-    public onPause();
+    public: void onPause();
 
-    public onResume();
+    public: void onResume();
 
 };
 

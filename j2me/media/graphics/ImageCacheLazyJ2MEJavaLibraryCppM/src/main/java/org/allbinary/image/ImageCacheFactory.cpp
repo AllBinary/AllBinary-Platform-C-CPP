@@ -43,21 +43,20 @@
 class ImageCacheFactory
             : public Object
          {
-        
 
-    private: static const IMAGE_CACHE: ImageCache = new ImageCache();
+    private: static const ImageCache IMAGE_CACHE = ImageCache();
 
-    public static ImageCache getInstance(){
+    public: static ImageCache getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCacheFactory.IMAGE_CACHE;
+                        return ImageCacheFactory::IMAGE_CACHE;
     
 }
 
 
-    public static init(){
+    public: static void init(){
 }
 
 

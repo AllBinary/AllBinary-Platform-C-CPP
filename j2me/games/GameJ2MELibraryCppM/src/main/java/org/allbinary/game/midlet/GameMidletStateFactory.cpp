@@ -55,44 +55,41 @@
 class GameMidletStateFactory
             : public Object
          {
-        
 
-    private: static const INSTANCE: GameMidletStateFactory = new GameMidletStateFactory();
+    private: static const GameMidletStateFactory INSTANCE = GameMidletStateFactory();
 
-    public static GameMidletStateFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameMidletStateFactory.INSTANCE;
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    private: currentGameState: GameState = GameStateFactory.getInstance()!.NO_GAME_STATE;
-
-private constructor (){
-
-            super();
-        }
-
-
-    public GameState getCurrentGameState(){
+    public: static GameMidletStateFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentGameState;
+                        return GameMidletStateFactory::INSTANCE;
     
 }
 
 
-    public setCurrentGameState(GameState currentGameState){
-this.logUtil!.putF(new StringMaker().append("Current GameState: ")!.append(StringUtil.getInstance()!.toString(currentGameState))!.toString(), this, "setCurrentGameState");
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    private: GameState currentGameState = GameStateFactory::getInstance().NO_GAME_STATE;
+
+private: GameMidletStateFactory(){
+}
+
+
+    public: GameState getCurrentGameState(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->currentGameState;
     
-this.currentGameState= currentGameState;
+}
+
+
+    public: void setCurrentGameState(GameState currentGameState){
+this->logUtil.putF(StringMaker().append("Current GameState: ").append(StringUtil::getInstance().toString(currentGameState)).toString(), this, "setCurrentGameState");
+    
+this->currentGameState= currentGameState;
     
 }
 

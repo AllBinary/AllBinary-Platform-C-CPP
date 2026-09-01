@@ -39,11 +39,10 @@
         #include "BasicEventHandlerInterface.h"
 
 class BasicCompositeEventHandlerInterface {
-        
 
     BasicEventHandlerInterface getEventHandler()
 
-    setEventHandler(BasicEventHandlerInterface basicEventHandlerInterface)
+    void setEventHandler(BasicEventHandlerInterface basicEventHandlerInterface)
 
 };
 

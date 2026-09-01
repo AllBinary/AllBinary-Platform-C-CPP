@@ -49,33 +49,32 @@
 class DisplayInBrowserContraints
             : public Object
         : public DisplayInBrowserContraintsInterface {
-        
 
-    private: frameable: bool= false;
+    private: bool frameable= false;
 
-    private: mountable: bool= false;
+    private: bool mountable= false;
 
-    private: quickFrameable: bool= false;
+    private: bool quickFrameable= false;
 
-    private: mountedLink: string;
+    private: std::string mountedLink;
 
-public constructor (Node node);
+public: DisplayInBrowserContraints(Node node);
 
-    public bool isMountable();
+    public: bool isMountable();
 
-    public setMountable(bool mountable);
+    public: void setMountable(bool mountable);
 
-    public bool isFrameable();
+    public: bool isFrameable();
 
-    public setFrameable(bool frameable);
+    public: void setFrameable(bool frameable);
 
-    public bool isQuickFrameable();
+    public: bool isQuickFrameable();
 
-    public setQuickFrameable(bool quickFrameable);
+    public: void setQuickFrameable(bool quickFrameable);
 
-    public string getMountedLink();
+    public: std::string getMountedLink();
 
-    public setMountedLink(string mountedLink);
+    public: void setMountedLink(std::string mountedLink);
 
 };
 

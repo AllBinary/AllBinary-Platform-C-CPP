@@ -67,22 +67,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WorkFlowView.h"
 
-class DeleteValidationView: public WorkFlowView: public ValidationComponentInterface {
-        
+class DeleteValidationView: public WorkFlowView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: workFlowName: string;
+    private: std::string workFlowName;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: DeleteValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

@@ -58,13 +58,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LurchAI: public BasicAI {
-        
 
-    currentRelativeAngle: int32_t = 0;
+    protected: int32_t currentRelativeAngle = 0;
 
-    private: currentSpeed: int32_t= 0;
+    private: int32_t currentSpeed= 0;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: LurchAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(ownerLayerInterface, gameInput);
                     
 
@@ -75,86 +74,86 @@ public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-                        if(this.currentSpeed ==  -1)
+                        if(this->currentSpeed ==  -1)
                         
                                     {
-                                    this.currentSpeed= 5;
+                                    this->currentSpeed= 5;
     
 
                                     }
                                 
                         else {
-                            this.currentSpeed=  -1;
+                            this->currentSpeed=  -1;
     
 
                         }
                             
 
-    ownerLayerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!;;
+    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    x: int32_t = ownerLayerInterface!.getXP()!;;
+    int32_t x = ownerLayerInterface.getXP();;
     
 
-                        if(ownerLayerInterface!.getXP() -this.currentSpeed <= 0)
+                        if(ownerLayerInterface.getXP() -this->currentSpeed <= 0)
                         
                                     {
-                                    this.reverse();
+                                    this->reverse();
     
-this.drop();
+this->drop();
     
 
                                     }
                                 
 
-                        if(ownerLayerInterface!.getX2() +this.currentSpeed > DisplayInfoSingleton.getInstance()!.getLastWidth())
+                        if(ownerLayerInterface.getX2() +this->currentSpeed > DisplayInfoSingleton::getInstance().getLastWidth())
                         
                                     {
-                                    this.reverse();
+                                    this->reverse();
     
-this.accelerate();
+this->accelerate();
     
-this.drop();
+this->drop();
     
 
                                     }
                                 
 
-                        if(this.currentRelativeAngle == 0)
+                        if(this->currentRelativeAngle == 0)
                         
                                     {
-                                    x += this.currentSpeed;
-    
-
-                                    }
-                                
-                             else 
-                        if(this.currentRelativeAngle == 180)
-                        
-                                    {
-                                    x -= this.currentSpeed;
-    
-
-                                    }
-                                
-ownerLayerInterface!.setPosition(x, ownerLayerInterface!.getYP(), ownerLayerInterface!.getZP());
-    
-
-                        if(this.currentRelativeAngle == 0)
-                        
-                                    {
-                                    super.processKeyAI(Canvas.KEY_NUM0);
+                                    x += this->currentSpeed;
     
 
                                     }
                                 
                              else 
-                        if(this.currentRelativeAngle == 180)
+                        if(this->currentRelativeAngle == 180)
                         
                                     {
-                                    super.processKeyAI(Canvas.KEY_POUND);
+                                    x -= this->currentSpeed;
+    
+
+                                    }
+                                
+ownerLayerInterface.setPosition(x, ownerLayerInterface.getYP(), ownerLayerInterface.getZP());
+    
+
+                        if(this->currentRelativeAngle == 0)
+                        
+                                    {
+                                    super.processKeyAI(Canvas::KEY_NUM0);
+    
+
+                                    }
+                                
+                             else 
+                        if(this->currentRelativeAngle == 180)
+                        
+                                    {
+                                    super.processKeyAI(Canvas::KEY_POUND);
     
 
                                     }
@@ -162,21 +161,21 @@ ownerLayerInterface!.setPosition(x, ownerLayerInterface!.getYP(), ownerLayerInte
 }
 
 
-    reverse(){
+    protected: void reverse(){
 
-                        if(this.currentRelativeAngle == 180)
+                        if(this->currentRelativeAngle == 180)
                         
                                     {
-                                    this.currentRelativeAngle= 0;
+                                    this->currentRelativeAngle= 0;
     
 
                                     }
                                 
                              else 
-                        if(this.currentRelativeAngle == 0)
+                        if(this->currentRelativeAngle == 0)
                         
                                     {
-                                    this.currentRelativeAngle= 180;
+                                    this->currentRelativeAngle= 180;
     
 
                                     }
@@ -184,12 +183,12 @@ ownerLayerInterface!.setPosition(x, ownerLayerInterface!.getYP(), ownerLayerInte
 }
 
 
-    accelerate(){
+    private: void accelerate(){
 
-                        if(this.currentSpeed < 20)
+                        if(this->currentSpeed < 20)
                         
                                     {
-                                    this.currentSpeed++;
+                                    this->currentSpeed++;
     
 
                                     }
@@ -197,15 +196,15 @@ ownerLayerInterface!.setPosition(x, ownerLayerInterface!.getYP(), ownerLayerInte
 }
 
 
-    drop(){
+    private: void drop(){
 
-    ownerLayerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!;;
+    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    y: int32_t = ownerLayerInterface!.getYP()!;;
+    int32_t y = ownerLayerInterface.getYP();;
     
 
-                        if(ownerLayerInterface!.getY2() +ownerLayerInterface!.getHeight() > DisplayInfoSingleton.getInstance()!.getLastHeight())
+                        if(ownerLayerInterface.getY2() +ownerLayerInterface.getHeight() > DisplayInfoSingleton::getInstance().getLastHeight())
                         
                                     {
                                     y= 0;
@@ -214,12 +213,12 @@ ownerLayerInterface!.setPosition(x, ownerLayerInterface!.getYP(), ownerLayerInte
                                     }
                                 
                         else {
-                            y += ownerLayerInterface!.getHeight() +1;
+                            y += ownerLayerInterface.getHeight() +1;
     
 
                         }
                             
-ownerLayerInterface!.setPosition(ownerLayerInterface!.getXP(), y, ownerLayerInterface!.getZP());
+ownerLayerInterface.setPosition(ownerLayerInterface.getXP(), y, ownerLayerInterface.getZP());
     
 }
 

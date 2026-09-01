@@ -45,9 +45,8 @@
 class HtmlHiddenInput
             : public Object
          {
-        
 
-public constructor ();
+public: HtmlHiddenInput();
 
 };
 

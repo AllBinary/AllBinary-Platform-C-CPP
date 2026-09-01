@@ -96,85 +96,82 @@
 class MotionGestureRecognizer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const j2seMath: J2SEMath = J2SEMath.getInstance()!;
+    private: const J2SEMath j2seMath = J2SEMath::getInstance();
 
-    private: const origin: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: const GPoint origin = PointFactory::getInstance().ZERO_ZERO;
 
-    private: previous: GPoint = this.origin;
+    private: GPoint previous = this->origin;
 
-    private: intermediate: GPoint = this.origin;
+    private: GPoint intermediate = this->origin;
 
-    private: const line: Line = new Line(this.origin, this.origin);
+    private: const Line line = Line(this->origin, this->origin);
 
-    private: const motionGesturesHandler: BasicMotionGesturesHandler;
+    private: BasicMotionGesturesHandler motionGesturesHandler;
 
-    private: const movedMotionGesturesHandler: BasicEventHandler;
+    private: BasicEventHandler movedMotionGesturesHandler;
 
-    private: const scrolledMotionGesturesHandler: BasicEventHandler;
+    private: BasicEventHandler scrolledMotionGesturesHandler;
 
-    private: const motionEventCircularPool: MotionEventCircularPool;
+    private: MotionEventCircularPool motionEventCircularPool;
 
-public constructor (int32_t id){
-
-            super();
-        this.motionEventCircularPool= MotionEventCircularPool.createPool(id);
+public: MotionGestureRecognizer(int32_t id){
+this->motionEventCircularPool= MotionEventCircularPool::createPool(id);
     
 
-    motionGesturesHandler: BasicEventHandler = new BasicEventHandler();;
+    BasicEventHandler motionGesturesHandler = BasicEventHandler();;
     
 
-    movedMotionGesturesHandler: BasicEventHandler = motionGesturesHandler;;
+    BasicEventHandler movedMotionGesturesHandler = motionGesturesHandler;;
     
 
-    scrolledMotionGesturesHandler: BasicEventHandler = motionGesturesHandler;;
+    BasicEventHandler scrolledMotionGesturesHandler = motionGesturesHandler;;
     
 
         try {
-            motionGesturesHandler= BasicMotionGesturesHandler.getInstance();
+            motionGesturesHandler= BasicMotionGesturesHandler::getInstance();
     
-movedMotionGesturesHandler= MovedMotionGesturesHandler.getInstance();
+movedMotionGesturesHandler= MovedMotionGesturesHandler::getInstance();
     
-scrolledMotionGesturesHandler= ScrolledMotionGesturesHandler.getInstance();
+scrolledMotionGesturesHandler= ScrolledMotionGesturesHandler::getInstance();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
-this.motionGesturesHandler= motionGesturesHandler as BasicMotionGesturesHandler;
+this->motionGesturesHandler= motionGesturesHandler as BasicMotionGesturesHandler;
     
-this.movedMotionGesturesHandler= movedMotionGesturesHandler;
+this->movedMotionGesturesHandler= movedMotionGesturesHandler;
     
-this.scrolledMotionGesturesHandler= scrolledMotionGesturesHandler;
+this->scrolledMotionGesturesHandler= scrolledMotionGesturesHandler;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool processPressedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
-this.intermediate= this.origin;
+    public: bool processPressedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
+this->intermediate= this->origin;
     
-this.previous= this.origin;
+this->previous= this->origin;
     
 
-    event: MotionGestureEvent = this.motionEventCircularPool!.getInstance(TouchMotionGestureFactory.getInstance()!.PRESSED)!;;
+    MotionGestureEvent event = this->motionEventCircularPool.getInstance(TouchMotionGestureFactory::getInstance().PRESSED);;
     
-event.setPreviousPoint(this.previous);
+event.setPreviousPoint(this->previous);
     
 event.setCurrentPoint(current);
     
-this.motionGesturesHandler!.fireEvent(event);
+this->motionGesturesHandler.fireEvent(event);
     
 
 
@@ -187,15 +184,15 @@ this.motionGesturesHandler!.fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public bool processReleasedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
+    public: bool processReleasedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
 
-    event: MotionGestureEvent = this.motionEventCircularPool!.getInstance(TouchMotionGestureFactory.getInstance()!.RELEASED)!;;
+    MotionGestureEvent event = this->motionEventCircularPool.getInstance(TouchMotionGestureFactory::getInstance().RELEASED);;
     
-event.setPreviousPoint(this.previous);
+event.setPreviousPoint(this->previous);
     
 event.setCurrentPoint(current);
     
-this.motionGesturesHandler!.fireEvent(event);
+this->motionGesturesHandler.fireEvent(event);
     
 
 
@@ -208,14 +205,14 @@ this.motionGesturesHandler!.fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(GPoint current, int32_t deviceId, int32_t buttonMask){
+    public: void processDraggedMotionEvent(GPoint current, int32_t deviceId, int32_t buttonMask){
 
-                        if(this.previous == this.origin || this.intermediate == this.origin)
+                        if(this->previous == this->origin || this->intermediate == this->origin)
                         
                                     {
-                                    this.previous= current;
+                                    this->previous= current;
     
-this.intermediate= current;
+this->intermediate= current;
     
 
 
@@ -226,18 +223,18 @@ this.intermediate= current;
 
                                     }
                                 
-this.line.setP1(this.previous);
+this->line.setP1(this->previous);
     
-this.line.setP2(current);
-    
-
-    minimumMotionGesture: int32_t = MotionGestureConfigurationFactory.getInstance()!.getMinimumMotionGesture()!;;
+this->line.setP2(current);
     
 
-                        if(this.j2seMath!.abs(this.line.getDeltaX()) < minimumMotionGesture && this.j2seMath!.abs(this.line.getDeltaY()) < minimumMotionGesture)
+    int32_t minimumMotionGesture = MotionGestureConfigurationFactory::getInstance().getMinimumMotionGesture();;
+    
+
+                        if(this->j2seMath.abs(this->line.getDeltaX()) < minimumMotionGesture && this->j2seMath.abs(this->line.getDeltaY()) < minimumMotionGesture)
                         
                                     {
-                                    this.intermediate= current;
+                                    this->intermediate= current;
     
 
 
@@ -249,25 +246,25 @@ this.line.setP2(current);
                                     }
                                 
 
-    gradient: double = this.line.getGradient()!;;
+    double gradient = this->line.getGradient();;
     
 
-    absGradient: double = this.j2seMath!.abs(gradient);;
+    double absGradient = this->j2seMath.abs(gradient);;
     
 
-    conf: MotionGestureConfiguration = MotionGestureConfigurationFactory.getInstance()!;;
+    MotionGestureConfiguration conf = MotionGestureConfigurationFactory::getInstance();;
     
 
-    touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!;;
+    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    newMotionGesture: MotionGestureInput = touchMotionGestureFactory!.NO_MOTION;;
+    MotionGestureInput newMotionGesture = touchMotionGestureFactory.NO_MOTION;;
     
 
-    diagonalToleranceHigher: double = 12.0;;
+    double diagonalToleranceHigher = 12.0;;
     
 
-    diagonalToleranceLower: double = 12.0;;
+    double diagonalToleranceLower = 12.0;;
     
 
                         if(conf.isDiagonalMotionGestureAllowed())
@@ -281,20 +278,20 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                                     }
                                 
 
-                        if(absGradient > Math.tan(Math.toRadians(diagonalToleranceHigher)))
+                        if(absGradient > Math::tan(Math::toRadians(diagonalToleranceHigher)))
                         
                                     {
                                     
-                        if(this.line.getDeltaY() > 0)
+                        if(this->line.getDeltaY() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory!.UP;
+                                    newMotionGesture= touchMotionGestureFactory.UP;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory!.DOWN;
+                            newMotionGesture= touchMotionGestureFactory.DOWN;
     
 
                         }
@@ -304,20 +301,20 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                                 
                         else {
                             
-                        if(absGradient < Math.tan(Math.toRadians(diagonalToleranceLower)))
+                        if(absGradient < Math::tan(Math::toRadians(diagonalToleranceLower)))
                         
                                     {
                                     
-                        if(this.line.getDeltaX() > 0)
+                        if(this->line.getDeltaX() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory!.LEFT;
+                                    newMotionGesture= touchMotionGestureFactory.LEFT;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory!.RIGHT;
+                            newMotionGesture= touchMotionGestureFactory.RIGHT;
     
 
                         }
@@ -331,16 +328,16 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                         
                                     {
                                     
-                        if(this.line.getDeltaX() > 0)
+                        if(this->line.getDeltaX() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory!.DIAGONAL_UP_LEFT;
+                                    newMotionGesture= touchMotionGestureFactory.DIAGONAL_UP_LEFT;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory!.DIAGONAL_DOWN_RIGHT;
+                            newMotionGesture= touchMotionGestureFactory.DIAGONAL_DOWN_RIGHT;
     
 
                         }
@@ -350,16 +347,16 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
                                 
                         else {
                             
-                        if(this.line.getDeltaX() > 0)
+                        if(this->line.getDeltaX() > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory!.DIAGONAL_DOWN_LEFT;
+                                    newMotionGesture= touchMotionGestureFactory.DIAGONAL_DOWN_LEFT;
     
 
                                     }
                                 
                         else {
-                            newMotionGesture= touchMotionGestureFactory!.DIAGONAL_UP_RIGHT;
+                            newMotionGesture= touchMotionGestureFactory.DIAGONAL_UP_RIGHT;
     
 
                         }
@@ -373,18 +370,18 @@ diagonalToleranceLower= conf.getDiagonalTolerance();
 
                         }
                             
-this.previous= current;
+this->previous= current;
     
-this.intermediate= current;
+this->intermediate= current;
     
 
-    event: MotionGestureEvent = this.motionEventCircularPool!.getInstance(newMotionGesture)!;;
+    MotionGestureEvent event = this->motionEventCircularPool.getInstance(newMotionGesture);;
     
-event.setPreviousPoint(this.previous);
+event.setPreviousPoint(this->previous);
     
 event.setCurrentPoint(current);
     
-this.motionGesturesHandler!.fireEvent(event);
+this->motionGesturesHandler.fireEvent(event);
     
 
 
@@ -397,15 +394,15 @@ this.motionGesturesHandler!.fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public bool processMovedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
+    public: bool processMovedMotionEvent(GPoint current, int32_t deviceId, int32_t button){
 
-    event: MotionGestureEvent = this.motionEventCircularPool!.getInstance(TouchMotionGestureFactory.getInstance()!.NO_MOTION)!;;
+    MotionGestureEvent event = this->motionEventCircularPool.getInstance(TouchMotionGestureFactory::getInstance().NO_MOTION);;
     
-event.setPreviousPoint(this.previous);
+event.setPreviousPoint(this->previous);
     
 event.setCurrentPoint(current);
     
-this.movedMotionGesturesHandler!.fireEvent(event);
+this->movedMotionGesturesHandler.fireEvent(event);
     
 
 
@@ -418,18 +415,18 @@ this.movedMotionGesturesHandler!.fireEvent(event);
 
                 //@Throws(Exception.constructor)
             
-    public bool processScrolledMotionEvent(GPoint current, int32_t deviceId, int32_t button){
+    public: bool processScrolledMotionEvent(GPoint current, int32_t deviceId, int32_t button){
 
-    touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!;;
+    TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();;
     
 
-    newMotionGesture: MotionGestureInput = touchMotionGestureFactory!.NO_MOTION;;
+    MotionGestureInput newMotionGesture = touchMotionGestureFactory.NO_MOTION;;
     
 
                         if(button > 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory!.SCROLL_UP;
+                                    newMotionGesture= touchMotionGestureFactory.SCROLL_UP;
     
 
                                     }
@@ -438,19 +435,19 @@ this.movedMotionGesturesHandler!.fireEvent(event);
                         if(button < 0)
                         
                                     {
-                                    newMotionGesture= touchMotionGestureFactory!.SCROLL_DOWN;
+                                    newMotionGesture= touchMotionGestureFactory.SCROLL_DOWN;
     
 
                                     }
                                 
 
-    event: MotionGestureEvent = this.motionEventCircularPool!.getInstance(newMotionGesture)!;;
+    MotionGestureEvent event = this->motionEventCircularPool.getInstance(newMotionGesture);;
     
-event.setPreviousPoint(this.previous);
+event.setPreviousPoint(this->previous);
     
 event.setCurrentPoint(current);
     
-this.scrolledMotionGesturesHandler!.fireEvent(event);
+this->scrolledMotionGesturesHandler.fireEvent(event);
     
 
 
@@ -461,12 +458,12 @@ this.scrolledMotionGesturesHandler!.fireEvent(event);
 }
 
 
-    public BasicMotionGesturesHandler getMotionGesturesHandler(){
+    public: BasicMotionGesturesHandler getMotionGesturesHandler(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionGesturesHandler;
+                        return this->motionGesturesHandler;
     
 }
 

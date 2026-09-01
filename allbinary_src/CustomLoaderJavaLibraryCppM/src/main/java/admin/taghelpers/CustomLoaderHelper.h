@@ -65,23 +65,22 @@
 class CustomLoaderHelper
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: CustomLoaderHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public string getWebappPath();
+public: CustomLoaderHelper();
 
                 //@Throws(Exception.constructor)
             
-    public setWebappPath(string path);
+    public: std::string getWebappPath();
+
+                //@Throws(Exception.constructor)
+            
+    public: void setWebappPath(std::string path);
 
 };
 

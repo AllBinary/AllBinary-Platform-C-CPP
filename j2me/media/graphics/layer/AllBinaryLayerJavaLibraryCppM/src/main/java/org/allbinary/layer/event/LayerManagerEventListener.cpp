@@ -55,21 +55,20 @@
 class LayerManagerEventListener
             : public Object
         : public LayerManagerEventListenerInterface {
-        
 
-    public onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject eventObject){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent){
+    public: void onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent){
+    public: void onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent){
 }
 
 

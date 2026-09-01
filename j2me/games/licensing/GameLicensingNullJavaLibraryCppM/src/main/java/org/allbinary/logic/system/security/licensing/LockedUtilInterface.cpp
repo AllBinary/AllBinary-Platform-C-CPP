@@ -39,7 +39,6 @@
         #include "LockableFeature.h"
 
 class LockedUtilInterface {
-        
 
     bool isLocked()
 

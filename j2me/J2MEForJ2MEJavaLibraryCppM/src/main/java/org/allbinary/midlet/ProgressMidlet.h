@@ -63,15 +63,14 @@
 #include "ExitRunnable.h"
 //J2MEForJ2ME
 class ProgressMidlet: public AllBinaryMidlet {
-        
 
-    public const abeClientInformation: AbeClientInformationInterface;
+    public: AbeClientInformationInterface abeClientInformation;
 
-public constructor (ClientInformationFactory clientInformationFactory);
+public: ProgressMidlet(ClientInformationFactory clientInformationFactory);
 
-    public preInit();
+    public: void preInit();
 
-    exitProgress(bool isProgress);
+    protected: void exitProgress(bool isProgress);
 
 };
 

@@ -42,14 +42,11 @@
 class CustomizerTransformInfoData
             : public Object
          {
-        
 
-    public static const NAME: string = "CUSTOMIZER_TRANSFORM_INFO_NAME";
+    public: static const std::string NAME = "CUSTOMIZER_TRANSFORM_INFO_NAME";
 
-private constructor (){
-
-            super();
-        }
+private: CustomizerTransformInfoData(){
+}
 
 
 };

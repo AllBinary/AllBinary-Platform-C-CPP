@@ -45,33 +45,32 @@
 class CachePolicyFactory
             : public Object
          {
-        
 
-    private: static const instance: CachePolicyFactory = new CachePolicyFactory();
+    private: static CachePolicyFactory instance() { return CachePolicyFactory(); }
 
-    public static CachePolicyFactory getInstance(){
+    public: static CachePolicyFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CachePolicyFactory.instance;
+                        return CachePolicyFactory::instance();
     
 }
 
 
-    public const NAME: string = "lru";
+    public: const std::string NAME = "lru";
 
-    public MAX_TIME_THOUSAND_MAX: CachePolicy = new CachePolicy(this.NAME, Long.MAX_VALUE, 1000);
+    public: CachePolicy MAX_TIME_THOUSAND_MAX = CachePolicy(this->NAME, Long::MAX_VALUE, 1000);
 
-    public THIRTY_MINUTES_TEN_THOUSAND_MAX: CachePolicy = new CachePolicy(this.NAME, 1000 *60 *30, 10000);
+    public: CachePolicy THIRTY_MINUTES_TEN_THOUSAND_MAX = CachePolicy(this->NAME, 1000 *60 *30, 10000);
 
-    public THIRTY_MINUTES_FIFTY_THOUSAND_MAX: CachePolicy = new CachePolicy(this.NAME, 1000 *60 *30, 100000);
+    public: CachePolicy THIRTY_MINUTES_FIFTY_THOUSAND_MAX = CachePolicy(this->NAME, 1000 *60 *30, 100000);
 
-    public ONE_MINUTE_FIVE_MAX: CachePolicy = new CachePolicy(this.NAME, 1000 *60 *1, 5);
+    public: CachePolicy ONE_MINUTE_FIVE_MAX = CachePolicy(this->NAME, 1000 *60 *1, 5);
 
-    public ONE_MINUTE_TEN_MAX: CachePolicy = new CachePolicy(this.NAME, 1000 *60 *1, 10);
+    public: CachePolicy ONE_MINUTE_TEN_MAX = CachePolicy(this->NAME, 1000 *60 *1, 10);
 
-    public ONE_MINUTE_ONE_HUNDRED_MAX: CachePolicy = new CachePolicy(this.NAME, 1000 *60 *1, 100);
+    public: CachePolicy ONE_MINUTE_ONE_HUNDRED_MAX = CachePolicy(this->NAME, 1000 *60 *1, 100);
 
 };
 

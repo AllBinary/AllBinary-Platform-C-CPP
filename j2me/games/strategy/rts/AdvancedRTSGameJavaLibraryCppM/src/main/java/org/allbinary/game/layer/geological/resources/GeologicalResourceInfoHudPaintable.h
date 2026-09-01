@@ -60,21 +60,20 @@
         #include "GeologicalGeographicMapCellPosition.h"
 
 class GeologicalResourceInfoHudPaintable: public WaypointInfoHudPaintable {
-        
 
-    private: static const RESOURCES: string = "Resources: ";
+    private: static const std::string RESOURCES = "Resources: ";
 
-    private: const keyvalueDrawString: KeyValueDrawCharArray;
+    private: KeyValueDrawCharArray keyvalueDrawString;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor ();
+public: GeologicalResourceInfoHudPaintable();
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public updateSelectionInfo();
+    public: void updateSelectionInfo();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASEINTERFACE_H
         #define ORG_ALLBINARY_GAME_SCORE_HIGHSCORESHELPERBASEINTERFACE_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -49,9 +51,8 @@
 #include "HighScores.h"
 
 class HighScoresHelperBaseInterface: public HighScoresResultsListener {
-        
 
-    setSelectedHighScores(HighScores selectedHighScores);
+    void setSelectedHighScores(HighScores selectedHighScores);
 
     std::vector<HighScores> getHighScoresArray();
 

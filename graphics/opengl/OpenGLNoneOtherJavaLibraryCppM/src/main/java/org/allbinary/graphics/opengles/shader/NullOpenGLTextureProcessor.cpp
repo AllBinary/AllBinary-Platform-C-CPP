@@ -43,16 +43,15 @@
 class NullOpenGLTextureProcessor
             : public Object
          {
-        
 
-    private: static const instance: OpenGLObject3dProcessor = new OpenGLObject3dProcessor();
+    private: static OpenGLObject3dProcessor instance() { return OpenGLObject3dProcessor(); }
 
-    public static OpenGLObject3dProcessor getInstance(){
+    public: static OpenGLObject3dProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullOpenGLTextureProcessor.instance;
+                        return NullOpenGLTextureProcessor::instance();
     
 }
 

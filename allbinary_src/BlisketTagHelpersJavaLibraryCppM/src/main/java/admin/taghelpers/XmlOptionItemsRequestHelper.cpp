@@ -79,63 +79,60 @@
         #include "ModifyTable.h"
 
 class XmlOptionItemsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: xmlFileStatus: string;
+    private: std::string xmlFileStatus;
 
-    private: optionXmlFile: string;
+    private: std::string optionXmlFile;
 
-    private: timeEntered: string;
+    private: std::string timeEntered;
 
-    private: lastModified: string;
+    private: std::string lastModified;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.request= pageContext!.getRequest() as HttpServletRequest;
+public: XmlOptionItemsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    public getFormData(){
-this.id= this.request.getParameter(BasicItemData.ID);
+    public: void getFormData(){
+this->id= this->request.getParameter(BasicItemData::ID);
     
-this.xmlFileStatus= this.request.getParameter(XmlOptionItemData.XML_FILE_STATUS);
+this->xmlFileStatus= this->request.getParameter(XmlOptionItemData::XML_FILE_STATUS);
     
-this.optionXmlFile= this.request.getParameter(XmlOptionItemData.OPTION_XML_FILE);
+this->optionXmlFile= this->request.getParameter(XmlOptionItemData::OPTION_XML_FILE);
     
-this.timeEntered= this.request.getParameter(EntryData.getInstance()!.TIMECREATED);
+this->timeEntered= this->request.getParameter(EntryData::getInstance().TIMECREATED);
     
-this.lastModified= this.request.getParameter(EntryData.getInstance()!.LASTMODIFIED);
+this->lastModified= this->request.getParameter(EntryData::getInstance().LASTMODIFIED);
     
 }
 
 
-    HashMap<any, any> getHashMap(){
+    private: HashMap<any, any> getHashMap(){
 
-    values: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> values = HashMap<any, any>();;
     
-values.put(BasicItemData.ID, this.id);
+values.put(BasicItemData::ID, this->id);
     
-values.put(XmlOptionItemData.XML_FILE_STATUS, this.xmlFileStatus);
+values.put(XmlOptionItemData::XML_FILE_STATUS, this->xmlFileStatus);
     
-values.put(XmlOptionItemData.OPTION_XML_FILE, this.optionXmlFile);
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+values.put(XmlOptionItemData::OPTION_XML_FILE, this->optionXmlFile);
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-values.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+values.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -146,38 +143,38 @@ values.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 
-    values: Vector = new Vector();;
+    Vector values = Vector();;
     
-values.add(this.id);
+values.add(this->id);
     
-values.add(this.xmlFileStatus);
+values.add(this->xmlFileStatus);
     
-values.add(this.optionXmlFile);
+values.add(this->optionXmlFile);
     
 values.add(time);
     
 values.add(time);
     
-XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.insert(values);
+XmlOptionItemsEntityFactory::getInstance().getXmlOptionItemsEntityInstance().insert(values);
     
 
-    success: string = "Successfully inserted " +this.id +" into items table";;
+    std::string success = "Successfully inserted " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "insert()");
+                                    this->logUtil.putF(success, this, "insert()");
     
 
                                     }
@@ -193,13 +190,13 @@ XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.in
 } catch(e) 
             {
 
-    error: string = "Failed to insert " +this.id +" into items table";;
+    std::string error = "Failed to insert " +this->id +" into items table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "inserts()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "inserts()", e);
     
 
                                     }
@@ -215,19 +212,19 @@ XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.in
 }
 
 
-    public string delete(){
+    public: std::string delete_(){
 
         try {
-            XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.delete(this.id);
+            XmlOptionItemsEntityFactory::getInstance().getXmlOptionItemsEntityInstance().delete(this->id);
     
 
-    success: string = "Successfully deleted";;
+    std::string success = "Successfully deleted";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "delete()");
+                                    this->logUtil.putF(success, this, "delete()");
     
 
                                     }
@@ -243,13 +240,13 @@ XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.in
 } catch(e) 
             {
 
-    error: string = "Failed to delete";;
+    std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
     
 
                                     }
@@ -265,22 +262,22 @@ XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.in
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    success: string = "Update Successful";;
+    std::string success = "Update Successful";;
     
 
-    values: HashMap<any, any> = this.getHashMap()!;;
+    HashMap<any, any> values = this->getHashMap();;
     
-XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.update(values);
+XmlOptionItemsEntityFactory::getInstance().getXmlOptionItemsEntityInstance().update(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append(this.id)!.append(CommonSeps.getInstance()!.SPACE)!.append(success)!.toString(), this, "update()");
+                                    this->logUtil.putF(StringMaker().append(this->id).append(CommonSeps::getInstance().SPACE).append(success).toString(), this, "update()");
     
 
                                     }
@@ -296,13 +293,13 @@ XmlOptionItemsEntityFactory.getInstance()!.getXmlOptionItemsEntityInstance()!.up
 } catch(e) 
             {
 
-    error: string = "Failed to update: " +this.id;;
+    std::string error = "Failed to update: " +this->id;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }

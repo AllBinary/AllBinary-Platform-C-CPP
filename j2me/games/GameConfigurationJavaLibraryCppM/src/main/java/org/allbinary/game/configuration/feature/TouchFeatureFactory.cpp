@@ -55,33 +55,30 @@
 class TouchFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: TouchFeatureFactory = new TouchFeatureFactory();
+    private: static TouchFeatureFactory instance() { return TouchFeatureFactory(); }
 
-    public static TouchFeatureFactory getInstance(){
+    public: static TouchFeatureFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchFeatureFactory.instance;
+                        return TouchFeatureFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TouchFeatureFactory(){
+}
 
 
-    public const TOUCH_ENABLED: TouchFeature = new TouchFeature("Touch Enabled");
+    public: const TouchFeature TOUCH_ENABLED = TouchFeature("Touch Enabled");
 
-    public const SHOW_SCREEN_BUTTONS: TouchFeature = new TouchFeature("Show");
+    public: const TouchFeature SHOW_SCREEN_BUTTONS = TouchFeature("Show");
 
-    public const AUTO_HIDE_SHOW_SCREEN_BUTTONS: TouchFeature = new TouchFeature("Auto Hide (One Level)");
+    public: const TouchFeature AUTO_HIDE_SHOW_SCREEN_BUTTONS = TouchFeature("Auto Hide (One Level)");
 
-    public const HIDE_SCREEN_BUTTONS: TouchFeature = new TouchFeature("Hide");
+    public: const TouchFeature HIDE_SCREEN_BUTTONS = TouchFeature("Hide");
 
 };
 

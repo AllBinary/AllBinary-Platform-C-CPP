@@ -51,23 +51,22 @@
 class MotionGestureToMotionGestureActionAssociation
             : public Object
          {
-        
 
-    private: list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: motionGestureAction: CompleteMotionGestureInputEvent;
+    private: CompleteMotionGestureInputEvent motionGestureAction;
 
-public constructor (BasicArrayList list, CompleteMotionGestureInputEvent commandAction);
+public: MotionGestureToMotionGestureActionAssociation(BasicArrayList list, CompleteMotionGestureInputEvent commandAction);
 
-    public BasicArrayList getMotionGesture();
+    public: BasicArrayList getMotionGesture();
 
-    public setMotionGestures(BasicArrayList list);
+    public: void setMotionGestures(BasicArrayList list);
 
-    public CompleteMotionGestureInputEvent getCommandAction();
+    public: CompleteMotionGestureInputEvent getCommandAction();
 
-    public setMotionGestureAction(CompleteMotionGestureInputEvent commandAction);
+    public: void setMotionGestureAction(CompleteMotionGestureInputEvent commandAction);
 
-    public bool isMotionGestureArrayEquals(BasicArrayList aList);
+    public: bool isMotionGestureArrayEquals(BasicArrayList aList);
 
 };
 

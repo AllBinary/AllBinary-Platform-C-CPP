@@ -55,19 +55,18 @@
 class FrameUtil
             : public Object
          {
-        
 
-    private: static const instance: FrameUtil = new FrameUtil();
+    private: static FrameUtil instance() { return FrameUtil(); }
 
-    public static FrameUtil getInstance();
+    public: static FrameUtil getInstance();
 
-private constructor ();
+private: FrameUtil();
 
-    public int32_t getFrameForAngle(int16_t angle, int32_t angleIncrement);
+    public: int32_t getFrameForAngle(int16_t angle, int32_t angleIncrement);
 
-    public int32_t getFrameAngle(int32_t frame, int32_t angleIncrement);
+    public: int32_t getFrameAngle(int32_t frame, int32_t angleIncrement);
 
-    public int32_t adjustAngleToFrameAngle(int32_t currentAngle);
+    public: int32_t adjustAngleToFrameAngle(int32_t currentAngle);
 
 };
 

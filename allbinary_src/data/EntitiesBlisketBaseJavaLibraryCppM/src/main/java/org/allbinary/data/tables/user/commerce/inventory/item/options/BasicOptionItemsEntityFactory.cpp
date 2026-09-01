@@ -51,49 +51,46 @@
 class BasicOptionItemsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: BasicOptionItemsEntityFactory = new BasicOptionItemsEntityFactory();
+    private: static BasicOptionItemsEntityFactory instance() { return BasicOptionItemsEntityFactory(); }
 
-    public static BasicOptionItemsEntityFactory getInstance(){
+    public: static BasicOptionItemsEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicOptionItemsEntityFactory.instance;
+                        return BasicOptionItemsEntityFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: BasicOptionItemsEntityFactory(){
+}
 
 
-    public BasicOptionItemsEntity getBasicOptionItemsEntityInstance(){
+    public: BasicOptionItemsEntity getBasicOptionItemsEntityInstance(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.user.commerce.inventory.item.options.BasicOptionItemsEntity();
+                        return org::allbinary::data::tables::user::commerce::inventory::item::options::BasicOptionItemsEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

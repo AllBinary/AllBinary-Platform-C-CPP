@@ -46,11 +46,10 @@
 class LastKeyAIVisitorFactory
             : public Object
          {
-        
 
-    private: static const instance: LastKeyAIVisitor = new LastKeyAIVisitor();
+    private: static LastKeyAIVisitor instance() { return LastKeyAIVisitor(); }
 
-    public static LastKeyAIVisitor getInstance();
+    public: static LastKeyAIVisitor getInstance();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_RACETRACKDATA_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Integer.h"
@@ -59,71 +61,70 @@
 class RaceTrackData
             : public Object
          {
-        
 
-    private: tileSetImage: Image = NullImage.NULL_IMAGE;
+    private: Image tileSetImage = NullImage::NULL_IMAGE;
 
-    private: miniTileSetImage: Image = NullImage.NULL_IMAGE;
+    private: Image miniTileSetImage = NullImage::NULL_IMAGE;
 
-    private: cellWidth: int32_t = 0;
+    private: int32_t cellWidth = 0;
 
-    private: cellHeight: int32_t = 0;
+    private: int32_t cellHeight = 0;
 
-    private: miniCellWidth: int32_t = 0;
+    private: int32_t miniCellWidth = 0;
 
-    private: miniCellHeight: int32_t = 0;
+    private: int32_t miniCellHeight = 0;
 
-    private: mapArray: std::vector<std::vector<int32_t>> = NullUtil.getInstance()!.NULL_INT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int32_t>> mapArray = NullUtil::getInstance().NULL_INT_ARRAY_ARRAY;
 
-    private: cellTypeIdToGeographicMapCellTypeArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    private: std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    private: NO_OVER_PASSES_ARRAY: std::vector<CellPosition> = [];
+    private: std::vector<CellPosition> NO_OVER_PASSES_ARRAY = {};
 
-    private: overPassGeographicMapCellPositionArray: std::vector<CellPosition> = this.NO_OVER_PASSES_ARRAY;
+    private: std::vector<CellPosition> overPassGeographicMapCellPositionArray = this->NO_OVER_PASSES_ARRAY;
 
-    private: id: Integer;
+    private: Integer id;
 
-public constructor (Integer id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray);
+public: RaceTrackData(Integer id, int32_t cellWidth, int32_t cellHeight, int32_t miniCellWidth, int32_t miniCellHeight, std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray, std::vector<std::vector<int32_t>> mapArray);
 
-    setMapArray(std::vector<std::vector<int32_t>> mapArray);
+    protected: void setMapArray(std::vector<std::vector<int32_t>> mapArray);
 
-    public std::vector<std::vector<int32_t>> getMapArray();
+    public: std::vector<std::vector<int32_t>> getMapArray();
 
-    setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray);
+    protected: void setCellTypeIdToGeographicMapCellTypeArray(std::vector<int32_t> cellTypeIdToGeographicMapCellTypeArray);
 
-    public std::vector<int32_t> getCellTypeIdToGeographicMapCellTypeArray();
+    public: std::vector<int32_t> getCellTypeIdToGeographicMapCellTypeArray();
 
-    setCellWidth(int32_t cellWidth);
+    private: void setCellWidth(int32_t cellWidth);
 
-    public int32_t getCellWidth();
+    public: int32_t getCellWidth();
 
-    setCellHeight(int32_t cellHeight);
+    private: void setCellHeight(int32_t cellHeight);
 
-    public int32_t getCellHeight();
+    public: int32_t getCellHeight();
 
-    public std::vector<CellPosition> getOverPassGeographicMapCellPositionArray();
+    public: std::vector<CellPosition> getOverPassGeographicMapCellPositionArray();
 
-    public setOverPassGeographicMapCellPositionArray(std::vector<CellPosition> overPassGeographicMapCellPositionArray);
+    public: void setOverPassGeographicMapCellPositionArray(std::vector<CellPosition> overPassGeographicMapCellPositionArray);
 
-    public Image getTileSetImage();
+    public: Image getTileSetImage();
 
-    public setTileSetImage(Image tileSetImage);
+    public: void setTileSetImage(Image tileSetImage);
 
-    public Image getMiniTileSetImage();
+    public: Image getMiniTileSetImage();
 
-    public setMiniTileSetImage(Image miniTileSetImage);
+    public: void setMiniTileSetImage(Image miniTileSetImage);
 
-    public int32_t getMiniCellWidth();
+    public: int32_t getMiniCellWidth();
 
-    public setMiniCellWidth(int32_t miniCellWidth);
+    public: void setMiniCellWidth(int32_t miniCellWidth);
 
-    public int32_t getMiniCellHeight();
+    public: int32_t getMiniCellHeight();
 
-    public setMiniCellHeight(int32_t miniCellHeight);
+    public: void setMiniCellHeight(int32_t miniCellHeight);
 
-    public setId(Integer id);
+    public: void setId(Integer id);
 
-    public Integer getId();
+    public: Integer getId();
 
 };
 

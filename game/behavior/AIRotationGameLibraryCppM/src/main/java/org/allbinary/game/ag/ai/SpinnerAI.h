@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_SPINNERAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_SPINNERAI_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -58,17 +60,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SpinnerAI: public BasicAI {
-        
 
-    private: isEven: bool= false;
+    private: bool isEven= false;
 
-    private: direction: std::vector<int32_t>;
+    private: std::vector<int32_t> direction;
 
-public constructor (std::vector<int32_t> direction, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+public: SpinnerAI(std::vector<int32_t> direction, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
 };
 

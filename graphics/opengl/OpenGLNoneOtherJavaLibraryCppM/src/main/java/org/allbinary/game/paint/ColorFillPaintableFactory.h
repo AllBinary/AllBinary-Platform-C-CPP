@@ -57,13 +57,12 @@
 class ColorFillPaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: ColorFillPaintableFactory = new ColorFillPaintableFactory();
+    private: static ColorFillPaintableFactory instance() { return ColorFillPaintableFactory(); }
 
-    public static ColorFillPaintableFactory getInstance();
+    public: static ColorFillPaintableFactory getInstance();
 
-    public ColorFillBasePaintable getInstance(BasicColor basicColor, bool forThreedCanvas);
+    public: ColorFillBasePaintable getInstance(BasicColor basicColor, bool forThreedCanvas);
 
 };
 

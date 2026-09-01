@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -79,76 +81,71 @@
 class LicenseClientAndServerTest
             : public Object
          {
-        
 
-    public static main(std::vector<string> args){
+    public: static void main(std::vector<std::string> args){
 
         try {
             
-    licensingTest: LicenseClientAndServerTest = new LicenseClientAndServerTest(args);;
+    LicenseClientAndServerTest licensingTest = LicenseClientAndServerTest(args);;
     
-licensingTest!.test();
+licensingTest.test();
     
 
                 //: 
 } catch(e) 
             {
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-this.logUtil!.put(this.commonStrings!.EXCEPTION, "main()", "main()", e);
+this->logUtil.put(this->commonStrings.EXCEPTION, "main()", "main()", e);
     
 }
 
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: vector: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList vector = BasicArrayListD();
 
-public constructor (std::vector<string> options){
-
-            super();
-        LicenseInitInfoUtil.getInstance()!.setFilePath(PrintLicenseInitInfo.PATH +PATH_GLOBALS.getInstance()!.INIT_PATH);
+public: LicenseClientAndServerTest(std::vector<std::string> options){
+LicenseInitInfoUtil::getInstance().setFilePath(PrintLicenseInitInfo::PATH +PATH_GLOBALS::getInstance().INIT_PATH);
     
 
 
 
 
                         for (
-    index: int32_t = 1;index < options.length; index++)
+    int32_t index = 1;index < options.size(); index++)
         {
-this.vector.add(options[index]!);
+this->vector.add(options[index]!);
     
 }
 
 
-                        if(options.length < 2)
+                        if(options.size() < 2)
                         
                                     {
                                     
-    file: File = new File(PrintLicenseInitInfo.PATH +"testlicenseservers.txt");;
+    File file = File(PrintLicenseInitInfo::PATH +"testlicenseservers.txt");;
     
 
-    reader: FileReader = new FileReader(file);;
+    FileReader reader = FileReader(file);;
     
 
-    lineNumberReader: LineNumberReader = new LineNumberReader(reader);;
+    LineNumberReader lineNumberReader = LineNumberReader(reader);;
     
 
         while(true)
         {
 
-    line: string = lineNumberReader!.readLine()!;;
+    std::string line = lineNumberReader.readLine();;
     
 
-                        if(line != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.vector.add(line);
+                                    this->vector.add(line);
     
 
                                     }
@@ -169,79 +166,79 @@ this.vector.add(options[index]!);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public test(){
+    public: void test(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
         try {
             
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    TESTING: string = "Testing with new licence:<br/>";;
+    std::string TESTING = "Testing with new licence:<br/>";;
     
 
-    PROCESSING: string = "Processing: <br/>";;
+    std::string PROCESSING = "Processing: <br/>";;
     
 
-    END: string = "<br/>End<br/>";;
+    std::string END = "<br/>End<br/>";;
     
 
-    RESULT: string = "Test Result: ";;
+    std::string RESULT = "Test Result: ";;
     
 
-    size: int32_t = this.vector.size()!;;
+    int32_t size = this->vector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringBuffer!.append(TESTING);
+stringBuffer.append(TESTING);
     
 
-    serverName: string = this.vector.get(index) as string;;
+    std::string serverName = this->vector.get(index) as string;;
     
 
         try {
             
-    licenseInitInfo: LicenseInitInfo = new LicenseInitInfo();;
+    LicenseInitInfo licenseInitInfo = LicenseInitInfo();;
     
-licenseInitInfo!.addServer(serverName);
+licenseInitInfo.addServer(serverName);
     
-LicenseInitInfoUtil.getInstance()!.write(licenseInitInfo);
-    
-
-    abeClientInformation: AbeClientInformationInterface = AbeClientInformationInterfaceFactory.getInstance()!;;
+LicenseInitInfoUtil::getInstance().write(licenseInitInfo);
     
 
-    xmlRpcAbeLicenseClient: XmlRpcAbeLicenseRetrievalClient = new XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
+    AbeClientInformationInterface abeClientInformation = AbeClientInformationInterfaceFactory::getInstance();;
     
 
-    abeLicenseInterface: AbeLicenseInterface = xmlRpcAbeLicenseClient!.get(
+    XmlRpcAbeLicenseRetrievalClient xmlRpcAbeLicenseClient = XmlRpcAbeLicenseRetrievalClient(abeClientInformation);;
+    
+
+    AbeLicenseInterface abeLicenseInterface = xmlRpcAbeLicenseClient.get(
                             nullptr) as AbeLicenseInterface;;
     
 
                         if(abeLicenseInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(PROCESSING);
+                                    stringBuffer.append(PROCESSING);
     
-stringBuffer!.append(abeLicenseInterface!.toString());
+stringBuffer.append(abeLicenseInterface.toString());
     
 
                                     }
                                 
-stringBuffer!.append(END);
+stringBuffer.append(END);
     
-this.logUtil!.putF(RESULT +stringBuffer!.toString(), this, "test");
+this->logUtil.putF(RESULT +stringBuffer.toString(), this, "test");
     
-stringBuffer!.delete(0, stringBuffer!.length());
+stringBuffer.delete(0, stringBuffer.length());
     
 
                 //: 
@@ -249,19 +246,19 @@ stringBuffer!.delete(0, stringBuffer!.length());
             {
 list.add(serverName);
     
-this.logUtil!.put("Test Error: " +stringBuffer!.toString(), this, "test", e);
+this->logUtil.put("Test Error: " +stringBuffer.toString(), this, "test", e);
     
 }
 
 }
 
-this.logUtil!.putF("Total Servers Failed: " +list.size() +" Failed Servers: " +list.toString(), this, "test");
+this->logUtil.putF("Total Servers Failed: " +list.size() +" Failed Servers: " +list.toString(), this, "test");
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Test Error: " +stringBuffer!.toString(), this, "test", e);
+this->logUtil.put("Test Error: " +stringBuffer.toString(), this, "test", e);
     
 }
 

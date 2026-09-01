@@ -58,43 +58,42 @@
 class SubDirectory
             : public Object
          {
-        
 
-    private: static const instance: SubDirectory = new SubDirectory();
+    private: static SubDirectory instance() { return SubDirectory(); }
 
-    public static SubDirectory getInstance(){
+    public: static SubDirectory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SubDirectory.instance;
+                        return SubDirectory::instance();
     
 }
 
 
-    public static string toString(BasicArrayList files){
+    public: static std::string toString(BasicArrayList files){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    NEW_LINE: string = CommonSeps.getInstance()!.NEW_LINE;;
+    std::string NEW_LINE = CommonSeps::getInstance().NEW_LINE;;
     
 
-    size: int32_t = files.size()!;;
+    int32_t size = files.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    file: AbFile = files.get(index) as AbFile;;
+    AbFile file = files.get(index) as AbFile;;
     
-stringBuffer!.append(file.getPath());
+stringBuffer.append(file.getPath());
     
-stringBuffer!.append(NEW_LINE);
+stringBuffer.append(NEW_LINE);
     
 }
 
@@ -102,55 +101,53 @@ stringBuffer!.append(NEW_LINE);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: SubDirectory(){
+}
 
 
-    public BasicArrayList search(FileFilter fileFilter, AbFile file){
+    public: BasicArrayList search(FileFilter fileFilter, AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directory.search(fileFilter, file, true);;
+                        return this->directory.search(fileFilter, file, true);;
     
 }
 
 
-    public BasicArrayList search(AbFile file){
+    public: BasicArrayList search(AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directory.search(file, true);;
+                        return this->directory.search(file, true);;
     
 }
 
 
-    public BasicArrayList search(string searchValue, AbFile file){
+    public: BasicArrayList search(std::string searchValue, AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directory.search(searchValue, file, true);;
+                        return this->directory.search(searchValue, file, true);;
     
 }
 
 
-    public BasicArrayList search(int32_t level, AbFile file){
+    public: BasicArrayList search(int32_t level, AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.directory.search(level, file, true);;
+                        return this->directory.search(level, file, true);;
     
 }
 

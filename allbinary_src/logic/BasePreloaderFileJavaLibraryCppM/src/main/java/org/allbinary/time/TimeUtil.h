@@ -50,21 +50,20 @@
 class TimeUtil
             : public Object
          {
-        
 
-    private: static const instance: TimeUtil = new TimeUtil();
+    private: static TimeUtil instance() { return TimeUtil(); }
 
-    public static TimeUtil getInstance();
+    public: static TimeUtil getInstance();
 
-    private: static const calendar: Calendar = Calendar.getInstance()!;
+    private: static const Calendar calendar = Calendar::getInstance();
 
-    public setCalendar(Calendar calendar, string yearString, string monthString, string dayString, string hourString);
+    public: void setCalendar(Calendar calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString);
 
-    public setCalendar(Calendar calendar, string yearString, string monthString, string dayString, string hourString, string minuteString, string secondString);
+    public: void setCalendar(Calendar calendar, std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString);
 
-    public setExpirationCalendar(Calendar calendar, string yearsString, string monthsString, string daysString, string hoursString, string minutesString, string secondsString);
+    public: void setExpirationCalendar(Calendar calendar, std::string yearsString, std::string monthsString, std::string daysString, std::string hoursString, std::string minutesString, std::string secondsString);
 
-    public int64_t getTotalTime(string yearString, string monthString, string dayString, string hourString, string minuteString, string secondString);
+    public: int64_t getTotalTime(std::string yearString, std::string monthString, std::string dayString, std::string hourString, std::string minuteString, std::string secondString);
 
 };
 

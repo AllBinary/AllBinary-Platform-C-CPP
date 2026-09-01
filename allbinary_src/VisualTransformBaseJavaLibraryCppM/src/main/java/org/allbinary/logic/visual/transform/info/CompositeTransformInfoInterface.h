@@ -44,7 +44,6 @@
         #include "TransformInfoInterface.h"
 
 class CompositeTransformInfoInterface {
-        
 
                 //@Throws(Exception.constructor)
             

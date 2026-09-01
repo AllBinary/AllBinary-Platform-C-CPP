@@ -91,71 +91,68 @@
 class StoreUriResolver
             : public Object
         : public URIResolver {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const uriResolverStrings: URIResolverStrings = URIResolverStrings.getInstance()!;
+    private: const URIResolverStrings uriResolverStrings = URIResolverStrings::getInstance();
 
-    private: basicURIResolver: BasicUriResolver;
+    private: BasicUriResolver basicURIResolver;
 
-    private: parentTransformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface parentTransformInfoInterface;
 
-public constructor (TransformInfoInterface parentTransformInfoInterface, BasicUriResolver basicURIResolver){
-
-            super();
-        this.parentTransformInfoInterface= parentTransformInfoInterface;
+public: StoreUriResolver(TransformInfoInterface parentTransformInfoInterface, BasicUriResolver basicURIResolver){
+this->parentTransformInfoInterface= parentTransformInfoInterface;
     
-this.basicURIResolver= basicURIResolver;
+this->basicURIResolver= basicURIResolver;
     
 }
 
 
                 //@Throws(TransformerException.constructor)
             
-    public Source resolve(string href, string base){
+    public: Source resolve(std::string href, std::string base){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    transformInfoHttpStoreInterface: TransformInfoHttpStoreInterface = this.parentTransformInfoInterface as TransformInfoHttpStoreInterface;;
+    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->parentTransformInfoInterface as TransformInfoHttpStoreInterface;;
     
-stringBuffer!.append(URLGLOBALS.getMainPath())!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH)!.append(transformInfoHttpStoreInterface!.getStoreName())!.append(AbPathData.getInstance()!.SEPARATOR)!.append(href);
-    
-
-    fileAbPath: AbPath = new AbFilePath(stringBuffer!.toString()) as AbPath;;
+stringBuffer.append(URLGLOBALS::getMainPath()).append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH).append(transformInfoHttpStoreInterface.getStoreName()).append(AbPathData::getInstance().SEPARATOR).append(href);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XMLLOGGING))
+    AbPath fileAbPath = AbFilePath(stringBuffer.toString()) as AbPath;;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XMLLOGGING))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(this.uriResolverStrings!.ATTEMPT);
+stringBuffer.append(this->uriResolverStrings.ATTEMPT);
     
-stringBuffer!.append(href);
+stringBuffer.append(href);
     
-stringBuffer!.append(this.uriResolverStrings!.BASE);
+stringBuffer.append(this->uriResolverStrings.BASE);
     
-stringBuffer!.append(base);
+stringBuffer.append(base);
     
-stringBuffer!.append(this.uriResolverStrings!.NEW_PATH);
+stringBuffer.append(this->uriResolverStrings.NEW_PATH);
     
-stringBuffer!.append(fileAbPath!.toString());
+stringBuffer.append(fileAbPath.toString());
     
-stringBuffer!.append(this.uriResolverStrings!.NOTE);
+stringBuffer.append(this->uriResolverStrings.NOTE);
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(this.uriResolverStrings!.URL_GLOBAL);
+stringBuffer.append(this->uriResolverStrings.URL_GLOBAL);
     
-stringBuffer!.append(this.uriResolverStrings!.REQUIRED_EXTENSION);
+stringBuffer.append(this->uriResolverStrings.REQUIRED_EXTENSION);
     
-stringBuffer!.append(this.basicURIResolver!.getExtension());
+stringBuffer.append(this->basicURIResolver.getExtension());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.uriResolverStrings!.RESOLVE);
+this->logUtil.putF(stringBuffer.toString(), this, this->uriResolverStrings.RESOLVE);
     
 
                                     }
@@ -164,7 +161,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.uriResolverStrings!.RESO
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StreamSource(new CryptFileReader(TransformInfoTemplateData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoTemplateData.getInstance()!.ENCRYPTED_EXTENSION).getInputStream(fileAbPath));
+                        return StreamSource(CryptFileReader(TransformInfoTemplateData::getInstance().UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION).getInputStream(fileAbPath));
     
 
                 //: 
@@ -183,21 +180,21 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.uriResolverStrings!.RESO
 
 
 
-                            throw new TransformerException(e);
+                            throw TransformerException(e);
                     
 }
 */
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return URLGLOBALS.getMainPath() +FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH +"{Store Name if Any}/{import url}";
+                        return URLGLOBALS::getMainPath() +FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH +"{Store Name if Any}/{import url}";
     
 
                 //: 

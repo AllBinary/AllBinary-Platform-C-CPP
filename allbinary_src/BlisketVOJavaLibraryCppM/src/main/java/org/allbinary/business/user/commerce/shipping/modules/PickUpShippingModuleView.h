@@ -59,26 +59,25 @@
         #include "PickUpShippingModule.h"
 #include "Document.h"
 
-class PickUpShippingModuleView: public PickUpShippingModule: public DomNodeInterface {
-        
+class PickUpShippingModuleView: public PickUpShippingModule, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: PickUpShippingModuleView();
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public org.w3c.dom.Document toValidationInfoDoc();
+    public: org::w3c::dom::Document toValidationInfoDoc();
 
-    public org.w3c.dom.Node toValidationInfoNode(org.w3c.dom.Document document);
+    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document);
 
-    public org.w3c.dom.Document toXmlDoc();
+    public: org::w3c::dom::Document toXmlDoc();
 
-    public org.w3c.dom.Node toXmlNode(org.w3c.dom.Document document);
+    public: org::w3c::dom::Node toXmlNode(org::w3c::dom::Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public string view();
+    public: std::string view();
 
 };
 

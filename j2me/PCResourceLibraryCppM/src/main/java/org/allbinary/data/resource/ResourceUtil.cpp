@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/ClassLoader.h"
@@ -72,68 +74,65 @@
 class ResourceUtil
             : public Object
          {
-        
 
-    private: static const instance: ResourceUtil = new ResourceUtil();
+    private: static ResourceUtil instance() { return ResourceUtil(); }
 
-    public static ResourceUtil getInstance(){
+    public: static ResourceUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil.instance;
+                        return ResourceUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: path: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string path = StringUtil::getInstance().EMPTY_STRING;
 
-    private: ext: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string ext = StringUtil::getInstance().EMPTY_STRING;
 
-private constructor (){
-
-            super();
-        }
+private: ResourceUtil(){
+}
 
 
-    public setLoadingPaths(string path, string ext){
-this.path= path;
+    public: void setLoadingPaths(std::string path, std::string ext){
+this->path= path;
     
-this.ext= ext;
+this->ext= ext;
     
 }
 
 
-    public setClassLoader(ClassLoader classLoader){
+    public: void setClassLoader(ClassLoader classLoader){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resource){
+    public: InputStream getResourceAsStream(std::string resource){
 
-    inputStream: InputStream = this.getResourceAsStreamAtStart(resource, 2)!;;
+    InputStream inputStream = this->getResourceAsStreamAtStart(resource, 2);;
     
 
                         if(inputStream == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    inputStream= this.getResourceAsStreamAtStart(resource, 1);
+                                    inputStream= this->getResourceAsStreamAtStart(resource, 1);
     
 
                         if(inputStream == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception(new StringMaker().append("Unable to obtain: ")!.append(resource)!.toString());
+                            throw Exception(StringMaker().append("Unable to obtain: ").append(resource).toString());
                     
 
                                     }
@@ -152,26 +151,26 @@ this.ext= ext;
 
                 //@Throws(Exception.constructor)
             
-    InputStream getResourceAsStreamAtStart(string resource, int32_t startIndex){
+    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex){
 
-    inputStream: InputStream = new FileInputStream(new StringMaker().append(this.path)!.append(resource)!.append(this.ext)!.toString());;
+    InputStream inputStream = FileInputStream(StringMaker().append(this->path).append(resource).append(this->ext).toString());;
     
 
                         if(inputStream != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    byteArray: std::vector<int8_t> = new Array(inputStream!.available());;
+    std::vector<int8_t> byteArray = new Array(inputStream.available());;
     
-StreamUtil.getInstance()!.getByteArray(inputStream, new ByteArrayOutputStream(), byteArray);
+StreamUtil::getInstance().getByteArray(inputStream, ByteArrayOutputStream(), byteArray);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ByteArrayInputStream(byteArray);
+                        return ByteArrayInputStream(byteArray);
     
 
                                     }
@@ -185,7 +184,7 @@ StreamUtil.getInstance()!.getByteArray(inputStream, new ByteArrayOutputStream(),
 }
 
 
-    public addResource(string resource, Integer value){
+    public: void addResource(std::string resource, Integer value){
 }
 
 

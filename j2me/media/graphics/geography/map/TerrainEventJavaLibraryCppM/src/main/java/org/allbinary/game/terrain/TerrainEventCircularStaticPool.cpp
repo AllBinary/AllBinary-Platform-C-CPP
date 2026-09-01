@@ -50,24 +50,23 @@
 class TerrainEventCircularStaticPool
             : public Object
          {
-        
 
-    private: static const instance: TerrainEventCircularStaticPool = new TerrainEventCircularStaticPool();
+    private: static TerrainEventCircularStaticPool instance() { return TerrainEventCircularStaticPool(); }
 
-    public static TerrainEventCircularStaticPool getInstance(){
+    public: static TerrainEventCircularStaticPool getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TerrainEventCircularStaticPool.instance;
+                        return TerrainEventCircularStaticPool::instance();
     
 }
 
 
-    private: EVENT_POOL: AllBinaryEventCircularPool = new AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
 
-    public init(){
-this.EVENT_POOL.initAllBinaryEventCircularPool(new TerrainEventFactory());
+    public: void init(){
+this->EVENT_POOL.initAllBinaryEventCircularPool(TerrainEventFactory());
     
 }
 
@@ -75,11 +74,11 @@ this.EVENT_POOL.initAllBinaryEventCircularPool(new TerrainEventFactory());
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public TerrainEvent getNext(BasicTerrainInfo basicTerrainInfo){
+    public: TerrainEvent getNext(BasicTerrainInfo basicTerrainInfo){
 
-    trackingEvent: TerrainEvent = this.EVENT_POOL.getNextInstance() as TerrainEvent;;
+    TerrainEvent trackingEvent = this->EVENT_POOL.getNextInstance() as TerrainEvent;;
     
-trackingEvent!.setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo);
+trackingEvent.setBasicTerrainInfoForCircularStaticPool(basicTerrainInfo);
     
 
 

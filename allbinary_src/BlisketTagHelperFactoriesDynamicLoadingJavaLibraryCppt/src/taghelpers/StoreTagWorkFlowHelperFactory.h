@@ -62,17 +62,16 @@
 class StoreTagWorkFlowHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "taghelpers.StoreTagWorkFlowHelper";
+    private: static const std::string CLASSNAME = "taghelpers.StoreTagWorkFlowHelper";
 
-    private: static const FACTORYNAME: string = "taghelpers.StoreTagWorkFlowHelperFactory";
+    private: static const std::string FACTORYNAME = "taghelpers.StoreTagWorkFlowHelperFactory";
 
-public constructor ();
+public: StoreTagWorkFlowHelperFactory();
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -73,77 +75,74 @@
 class PooledImageArrayRotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static PooledImageArrayRotationAnimationFactory createFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory){
+    public: static PooledImageArrayRotationAnimationFactory createFactory(Image image, AnimationBehaviorFactory animationBehaviorFactory){
 
-    totalAngle: int32_t = static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE);;
+    int32_t totalAngle = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);;
     
 
-    angleIncrement: int32_t = (totalAngle /GameConfigurationCentral.getInstance()!.getGameControlFidelity());;
+    int32_t angleIncrement = (totalAngle /GameConfigurationCentral::getInstance().getGameControlFidelity());;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(),  -(image.getWidth()>>2),  -(image.getHeight()>>2), angleIncrement, animationBehaviorFactory);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public static PooledImageArrayRotationAnimationFactory createDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
-
-    totalAngle: int32_t = static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE);;
-    
-
-    angleIncrement: int32_t = (totalAngle /GameConfigurationCentral.getInstance()!.getGameControlFidelity());;
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(), dx, dy, angleIncrement, animationBehaviorFactory);
-    
-}
-
-
-    private: allBinaryImageRotationAnimationInfo: any = NullUtil.getInstance()!.NULL_OBJECT;
-
-    private: const animationBehaviorFactory: AnimationBehaviorFactory;
-
-public constructor (Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.animationBehaviorFactory= animationBehaviorFactory;
-    
-
-    totalAngle: int32_t = static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE);;
-    
-
-    imageArray: std::vector<Image> = ImageToRotationImageArrayUtil.getInstance()!.generate(image, angleIncrement, totalAngle)!;;
-    
-this.allBinaryImageRotationAnimationInfo= new ImageArrayRotationAnimationInfo(imageArray, angleIncrement, totalAngle, dx, dy);
+                        return PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(),  -(image.getWidth()>>2),  -(image.getHeight()>>2), angleIncrement, animationBehaviorFactory);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: static PooledImageArrayRotationAnimationFactory createDXY(Image image, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory){
+
+    int32_t totalAngle = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);;
+    
+
+    int32_t angleIncrement = (totalAngle /GameConfigurationCentral::getInstance().getGameControlFidelity());;
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdjustedImageArrayRotationAnimation.createAdjustedImageArrayRotationAnimationInfo(this.allBinaryImageRotationAnimationInfo, this.animationBehaviorFactory!.getOrCreateInstance());;
+                        return PooledImageArrayRotationAnimationFactory(image, image.getWidth(), image.getHeight(), dx, dy, angleIncrement, animationBehaviorFactory);
     
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
+    private: Object* allBinaryImageRotationAnimationInfo = NullUtil::getInstance().NULL_OBJECT;
+
+    private: AnimationBehaviorFactory animationBehaviorFactory;
+
+public: PooledImageArrayRotationAnimationFactory(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, int32_t angleIncrement, AnimationBehaviorFactory animationBehaviorFactory){
+this->animationBehaviorFactory= animationBehaviorFactory;
+    
+
+    int32_t totalAngle = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);;
+    
+
+    std::vector<Image> imageArray = ImageToRotationImageArrayUtil::getInstance().generate(image, angleIncrement, totalAngle);;
+    
+this->allBinaryImageRotationAnimationInfo= ImageArrayRotationAnimationInfo(imageArray, angleIncrement, totalAngle, dx, dy);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstance(int32_t instanceId){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AdjustedImageArrayRotationAnimation::createAdjustedImageArrayRotationAnimationInfo(this->allBinaryImageRotationAnimationInfo, this->animationBehaviorFactory.getOrCreateInstance());;
+    
+}
+
+
+    public: void setInitialScale(ScaleProperties scaleProperties){
 }
 
 

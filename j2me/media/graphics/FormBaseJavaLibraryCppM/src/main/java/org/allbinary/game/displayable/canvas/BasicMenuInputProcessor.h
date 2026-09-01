@@ -78,26 +78,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicMenuInputProcessor: public PlayerGameInput: public BaseMotionGestureEventListener {
-        
+class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureEventListener {
 
-    public const motionGestureEventList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList motionGestureEventList = BasicArrayListD();
 
-    private: canvas: Canvas = NullCanvas.NULL_CANVAS;
+    private: Canvas canvas = NullCanvas::NULL_CANVAS;
 
-protected constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas);
+protected: BasicMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas);
 
-    public onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
 
-    public onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
 
-    setCanvas(MyCanvas canvas);
+    private: void setCanvas(MyCanvas canvas);
 
-    MyCanvas getCanvas();
+    protected: MyCanvas getCanvas();
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList();
+    public: int32_t processInputList();
 
 };
 

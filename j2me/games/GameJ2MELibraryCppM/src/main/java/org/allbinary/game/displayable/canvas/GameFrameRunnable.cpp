@@ -57,41 +57,38 @@
 #include "AllBinaryGameCanvas.h"
 
 class GameFrameRunnable: public GameRunnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const gameTickDisplayInfoSingleton: GameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton.getInstance()!;
+    private: const GameTickDisplayInfoSingleton gameTickDisplayInfoSingleton = GameTickDisplayInfoSingleton::getInstance();
 
-    private: const allBinaryGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas allBinaryGameCanvas;
 
-public constructor (AllBinaryGameCanvas allBinaryGameCanvas){
-
-            super();
-        this.allBinaryGameCanvas= allBinaryGameCanvas;
+public: GameFrameRunnable(AllBinaryGameCanvas allBinaryGameCanvas){
+this->allBinaryGameCanvas= allBinaryGameCanvas;
     
 }
 
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    public run(){
+    public: void run(){
 
         try {
             
-    allBinaryGameCanvas: AllBinaryGameCanvas = this.allBinaryGameCanvas;;
+    AllBinaryGameCanvas allBinaryGameCanvas = this->allBinaryGameCanvas;;
     
-allBinaryGameCanvas!.getLoopTimeHelperP()!.setStartTime(this.gameTickTimeDelayHelper!.setStartTime());
+allBinaryGameCanvas.getLoopTimeHelperP().setStartTime(this->gameTickTimeDelayHelper.setStartTime());
     
-this.gameTickDisplayInfoSingleton!.update();
+this->gameTickDisplayInfoSingleton.update();
     
-allBinaryGameCanvas!.processGame();
+allBinaryGameCanvas.processGame();
     
 
-                        if(!allBinaryGameCanvas!.isRunning() || allBinaryGameCanvas!.isPaused())
+                        if(!allBinaryGameCanvas.isRunning() || allBinaryGameCanvas.isPaused())
                         
                                     {
-                                    allBinaryGameCanvas!.notifyDonePainting();
+                                    allBinaryGameCanvas.notifyDonePainting();
     
 
                                     }
@@ -101,9 +98,9 @@ allBinaryGameCanvas!.processGame();
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 

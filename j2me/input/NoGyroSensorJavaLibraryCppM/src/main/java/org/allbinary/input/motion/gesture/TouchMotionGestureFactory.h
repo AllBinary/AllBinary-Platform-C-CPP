@@ -64,41 +64,40 @@
 class TouchMotionGestureFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static TouchMotionGestureFactory getInstance();
+    public: static TouchMotionGestureFactory getInstance();
 
-    public const LEFT: MotionGestureInput;
+    public: MotionGestureInput LEFT;
 
-    public const RIGHT: MotionGestureInput;
+    public: MotionGestureInput RIGHT;
 
-    public const UP: MotionGestureInput;
+    public: MotionGestureInput UP;
 
-    public const DOWN: MotionGestureInput;
+    public: MotionGestureInput DOWN;
 
-    public const PRESSED: MotionGestureInput;
+    public: MotionGestureInput PRESSED;
 
-    public const RELEASED: MotionGestureInput;
+    public: MotionGestureInput RELEASED;
 
-    public const DIAGONAL_DOWN_RIGHT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_DOWN_RIGHT;
 
-    public const DIAGONAL_DOWN_LEFT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_DOWN_LEFT;
 
-    public const DIAGONAL_UP_RIGHT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_UP_RIGHT;
 
-    public const DIAGONAL_UP_LEFT: MotionGestureInput;
+    public: MotionGestureInput DIAGONAL_UP_LEFT;
 
-    public const SCROLL_UP: MotionGestureInput;
+    public: MotionGestureInput SCROLL_UP;
 
-    public const SCROLL_DOWN: MotionGestureInput;
+    public: MotionGestureInput SCROLL_DOWN;
 
-    public const NO_MOTION: MotionGestureInput;
+    public: MotionGestureInput NO_MOTION;
 
-    public const LAST_MOTION: MotionGestureInput;
+    public: MotionGestureInput LAST_MOTION;
 
-private constructor ();
+private: TouchMotionGestureFactory();
 
 };
 

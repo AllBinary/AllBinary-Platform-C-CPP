@@ -75,15 +75,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcRemoteLogClient: public XmlRpcAbeClient {
-        
 
-    private: const noCrypt: NoCrypt = new NoCrypt();
+    private: const NoCrypt noCrypt = NoCrypt();
 
-public constructor (AbeClientInformationInterface clientInfo);
+public: XmlRpcRemoteLogClient(AbeClientInformationInterface clientInfo);
 
                 //@Throws(Exception.constructor)
             
-    public any get(any = {} anyType);
+    public: Object* get(Object* anyType);
 
 };
 

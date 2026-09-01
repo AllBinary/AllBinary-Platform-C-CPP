@@ -57,35 +57,32 @@
 class AdvancedRTSGameLayerPositionFinder
             : public Object
         : public LayerPositionFinderInterface {
-        
 
-    private: static const instance: AdvancedRTSGameLayerPositionFinder = new AdvancedRTSGameLayerPositionFinder();
+    private: static AdvancedRTSGameLayerPositionFinder instance() { return AdvancedRTSGameLayerPositionFinder(); }
 
-    public static AdvancedRTSGameLayerPositionFinder getInstance(){
+    public: static AdvancedRTSGameLayerPositionFinder getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvancedRTSGameLayerPositionFinder.instance;
+                        return AdvancedRTSGameLayerPositionFinder::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AdvancedRTSGameLayerPositionFinder(){
+}
 
 
-    public AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
+    public: AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition){
 
-    layerInterface: AllBinaryLayer = DropCellPositionHistory.getInstance()!.getLayerInterface(geographicMapCellPosition)!;;
+    AllBinaryLayer layerInterface = DropCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);;
     
 
-                        if(layerInterface == AllBinaryLayer.NULL_ALLBINARY_LAYER)
+                        if(layerInterface == AllBinaryLayer::NULL_ALLBINARY_LAYER)
                         
                                     {
-                                    layerInterface= WaypointCellPositionHistory.getInstance()!.getLayerInterface(geographicMapCellPosition);
+                                    layerInterface= WaypointCellPositionHistory::getInstance().getLayerInterface(geographicMapCellPosition);
     
 
                                     }

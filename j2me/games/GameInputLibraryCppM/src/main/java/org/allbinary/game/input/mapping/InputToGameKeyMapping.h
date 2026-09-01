@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_H
         #define ORG_ALLBINARY_GAME_INPUT_MAPPING_INPUTTOGAMEKEYMAPPING_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Throwable.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -97,56 +99,55 @@
         #include "InputMapping.h"
 
 class InputToGameKeyMapping: public InputMapping {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static InputToGameKeyMapping getNullInstance();
+    public: static InputToGameKeyMapping getNullInstance();
 
-    private: const gameKeyFactory: GameKeyFactory = GameKeyFactory.getInstance()!;
+    private: const GameKeyFactory gameKeyFactory = GameKeyFactory::getInstance();
 
-    private: const mappedGameKeys: std::vector<GameKey> = 
-                                                        [
-                                                            this.gameKeyFactory!.UP,this.gameKeyFactory!.DOWN,this.gameKeyFactory!.LEFT,this.gameKeyFactory!.RIGHT
-                                                        ];
+    private: const std::vector<GameKey> mappedGameKeys = 
+                                                        {
+                                                            this->gameKeyFactory.UP,this->gameKeyFactory.DOWN,this->gameKeyFactory.LEFT,this->gameKeyFactory.RIGHT
+                                                        };
 
-    private: const platformToGameKeyMapping: std::vector<GameKey> = new Array(InputFactory.getInstance()!.MAX);
+    private: const std::vector<GameKey> platformToGameKeyMapping = new Array(InputFactory::getInstance().MAX);
 
-    negativePlatformToGameKeyMapping: std::vector<GameKey> = [];
+    protected: std::vector<GameKey> negativePlatformToGameKeyMapping = {};
 
-public constructor ();
+public: InputToGameKeyMapping();
 
-    clear();
+    private: void clear();
 
-    removeAll();
+    protected: void removeAll();
 
-    public addMapping(InputToGameKeyMapping inputToGameKeyMapping);
+    public: void addMapping(InputToGameKeyMapping inputToGameKeyMapping);
 
-    addAll(Input input, BasicArrayList list);
+    private: void addAll(Input input, BasicArrayList list);
 
-    public add(Input input, Input mappedToInput);
+    public: void add(Input input, Input mappedToInput);
 
-    public remove(Input input, Input mappedToInput);
+    public: void remove(Input input, Input mappedToInput);
 
-    set(Input input, Input mappedToInput);
+    private: void set(Input input, Input mappedToInput);
 
-    public int32_t getMaxMappable();
+    public: int32_t getMaxMappable();
 
-    public BasicArrayList getReverseInstance(int32_t id);
-
-                //@Throws(Exception.constructor)
-            
-    initGameKey(Canvas canvas, GameKey gameKey);
+    public: BasicArrayList getReverseInstance(int32_t id);
 
                 //@Throws(Exception.constructor)
             
-    int32_t getSmallestCanvasGameKeyCode(Canvas canvas);
+    private: void initGameKey(Canvas canvas, GameKey gameKey);
 
-    public init(Canvas canvas);
+                //@Throws(Exception.constructor)
+            
+    private: int32_t getSmallestCanvasGameKeyCode(Canvas canvas);
 
-    public GameKey getInstanceForCanvas(Canvas canvas, int32_t id);
+    public: void init(Canvas canvas);
 
-    public GameKey getInstance(int32_t id);
+    public: GameKey getInstanceForCanvas(Canvas canvas, int32_t id);
+
+    public: GameKey getInstance(int32_t id);
 
 };
 

@@ -42,22 +42,19 @@
 class ColorLevel
             : public Object
          {
-        
 
-    public static const COLOR_MASK: int32_t = 0x00FFFFFF;
+    public: static const int32_t COLOR_MASK = 0x00FFFFFF;
 
-    public static const MIN: int32_t = 0x44;
+    public: static const int32_t MIN = 0x44;
 
-    public static const AVG: int32_t = 0x77;
+    public: static const int32_t AVG = 0x77;
 
-    public static const LIGHT: int32_t = 0xAA;
+    public: static const int32_t LIGHT = 0xAA;
 
-    public static const HIGH: int32_t = 0xEE;
+    public: static const int32_t HIGH = 0xEE;
 
-private constructor (){
-
-            super();
-        }
+private: ColorLevel(){
+}
 
 
 };

@@ -60,11 +60,10 @@
 class ActivityFractureInputUtilFactory
             : public Object
          {
-        
 
-    public static ActivityFractureUtil getInstance(){
+    public: static ActivityFractureUtil getInstance(){
 
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
                         if(SDK_VERSION <= 4)
@@ -74,7 +73,7 @@ class ActivityFractureInputUtilFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI1.getInstance();;
+                        return ActivityFractureUtilAPI1::getInstance();;
     
 
                                     }
@@ -87,7 +86,7 @@ class ActivityFractureInputUtilFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI5.getInstance();;
+                        return ActivityFractureUtilAPI5::getInstance();;
     
 
                                     }
@@ -100,7 +99,7 @@ class ActivityFractureInputUtilFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI16.getInstance();;
+                        return ActivityFractureUtilAPI16::getInstance();;
     
 
                                     }
@@ -110,7 +109,7 @@ class ActivityFractureInputUtilFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ActivityFractureUtilAPI19.getInstance();;
+                        return ActivityFractureUtilAPI19::getInstance();;
     
 
                         }

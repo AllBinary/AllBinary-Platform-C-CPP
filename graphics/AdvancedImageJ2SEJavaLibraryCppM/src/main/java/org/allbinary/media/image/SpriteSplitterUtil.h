@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_SPRITESPLITTERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,39 +72,38 @@
 class SpriteSplitterUtil
             : public Object
          {
-        
 
-    private: static const instance: SpriteSplitterUtil = new SpriteSplitterUtil();
+    private: static SpriteSplitterUtil instance() { return SpriteSplitterUtil(); }
 
-    public static SpriteSplitterUtil getInstance();
+    public: static SpriteSplitterUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const ANIMATIONS_LABELS: std::vector<string> = 
-                                                        [
+    public: const std::vector<std::string> ANIMATIONS_LABELS = 
+                                                        {
                                                             "Row Total:","Column Total:","Column Total:","Row Total:","Column Total:","Row Total:"
-                                                        ];
+                                                        };
 
-    public const DIRECTIONAL_ANIMATIONS: string = "Directional DLRU";
+    public: const std::string DIRECTIONAL_ANIMATIONS = "Directional DLRU";
 
-    public const HORIZONTAL_ANIMATIONS: string = "Horizontal Animations";
+    public: const std::string HORIZONTAL_ANIMATIONS = "Horizontal Animations";
 
-    public const HORIZONTAL_SPRITE: string = "Horizontal A=R=Y F=C=X";
+    public: const std::string HORIZONTAL_SPRITE = "Horizontal A=R=Y F=C=X";
 
-    private: const ROW_NAME: std::vector<string> = 
-                                                        [
+    private: const std::vector<std::string> ROW_NAME = 
+                                                        {
                                                             "idle","walk","attack","defeat"
-                                                        ];
+                                                        };
 
-    private: const _ROW: string = "_row";
+    private: const std::string _ROW = "_row";
 
                 //@Throws(Exception.constructor)
             
-    public process(ImageProcessorInput imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, string spriteType, ImageProcessedVisitor visitor);
+    public: void process(ImageProcessorInput imageProcessorInput, int32_t totalFrames, int32_t totalAnimations, int32_t widthReduction, int32_t heightReduction, int32_t increaseWidth, int32_t increaseHeight, std::string spriteType, ImageProcessedVisitor visitor);
 
 };
 

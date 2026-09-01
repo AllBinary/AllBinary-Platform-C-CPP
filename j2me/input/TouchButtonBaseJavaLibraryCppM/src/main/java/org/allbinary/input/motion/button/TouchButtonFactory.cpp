@@ -59,55 +59,52 @@
 class TouchButtonFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: TouchButtonFactory = new TouchButtonFactory();
+    private: static const TouchButtonFactory SINGLETON = TouchButtonFactory();
 
-    public static TouchButtonFactory getInstance(){
+    public: static TouchButtonFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonFactory.SINGLETON;
+                        return TouchButtonFactory::SINGLETON;
     
 }
 
 
-    private: LIST: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: list: BasicArrayList = this.LIST;
+    private: BasicArrayList list = this->LIST;
 
-    private: savedList: BasicArrayList = this.LIST;
+    private: BasicArrayList savedList = this->LIST;
 
-private constructor (){
-
-            super();
-        }
+private: TouchButtonFactory(){
+}
 
 
-    public defaultList(){
-this.list= this.LIST;
+    public: void defaultList(){
+this->list= this->LIST;
     
-this.toggle(false, this.LIST);
+this->toggle(false, this->LIST);
     
 }
 
 
-    private: saved: bool = false;
+    private: bool saved = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public toggle(bool save, BasicArrayList list){
+    public: void toggle(bool save, BasicArrayList list){
 
-                        if(list != BasicArrayListUtil.getInstance()!.getImmutableInstance())
+                        if(list != BasicArrayListUtil::getInstance().getImmutableInstance())
                         
                                     {
-                                    this.savedList= list;
+                                    this->savedList= list;
     
 
-                        if(!this.saved)
+                        if(!this->saved)
                         
                                     {
-                                    this.list= this.savedList;
+                                    this->list= this->savedList;
     
 
                                     }
@@ -121,14 +118,14 @@ this.toggle(false, this.LIST);
                         
                                     {
                                     
-                        if(!this.saved)
+                        if(!this->saved)
                         
                                     {
-                                    this.saved= true;
+                                    this->saved= true;
     
-this.savedList= this.list;
+this->savedList= this->list;
     
-this.list= this.LIST;
+this->list= this->LIST;
     
 
                                     }
@@ -141,9 +138,9 @@ this.list= this.LIST;
                                     }
                                 
                         else {
-                            this.list= this.savedList;
+                            this->list= this->savedList;
     
-this.saved= false;
+this->saved= false;
     
 
                         }
@@ -156,32 +153,32 @@ this.saved= false;
 
                 //@Throws(Exception.constructor)
             
-    public setList(BasicArrayList list){
+    public: void setList(BasicArrayList list){
 
                         if(list == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("Null List");
+                            throw Exception("Null List");
                     
 
                                     }
                                 
-this.list= list;
+this->list= list;
     
 }
 
 
-    BasicArrayList getList(){
+    protected: BasicArrayList getList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->list;
     
 }
 

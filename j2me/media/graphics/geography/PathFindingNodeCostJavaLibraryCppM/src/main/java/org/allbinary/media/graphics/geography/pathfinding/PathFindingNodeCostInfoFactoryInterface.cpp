@@ -45,7 +45,6 @@
 #include "PathFindingNodeCostInfo.h"
 
 class PathFindingNodeCostInfoFactoryInterface: public PathFindingNodeCostInfoFactoryBaseInterface {
-        
 
                 //@Throws(Exception.constructor)
             

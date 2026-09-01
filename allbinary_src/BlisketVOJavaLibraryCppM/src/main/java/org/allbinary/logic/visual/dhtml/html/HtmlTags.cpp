@@ -46,40 +46,37 @@
 class HtmlTags
             : public Object
          {
-        
 
-    private: htmlTagVector: Vector;
+    private: Vector htmlTagVector;
 
-public constructor (){
-
-            super();
-        this.htmlTagVector= new Vector();
+public: HtmlTags(){
+this->htmlTagVector= Vector();
     
 }
 
 
-    public HtmlTag get(int32_t index){
+    public: HtmlTag get(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.htmlTagVector!.get(index) as HtmlTag;
+                        return this->htmlTagVector.get(index) as HtmlTag;
     
 }
 
 
-    public add(HtmlTag htmlTag){
-this.htmlTagVector!.add(htmlTag);
+    public: void add(HtmlTag htmlTag){
+this->htmlTagVector.add(htmlTag);
     
 }
 
 
-    public int32_t size(){
+    public: int32_t size(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.htmlTagVector!.length;;
+                        return this->htmlTagVector.length;;
     
 }
 

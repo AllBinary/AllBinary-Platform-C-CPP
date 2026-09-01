@@ -74,119 +74,118 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MotionGestureEvent: public AllBinaryEventObject {
-        
 
-    private: static const CURRENT: string = CommonLabels.getInstance()!.CURRENT;
+    private: static const std::string CURRENT = CommonLabels::getInstance().CURRENT;
 
-    private: static const PREVIOUS: string = " Previous: ";
+    private: static const std::string PREVIOUS = " Previous: ";
 
-    private: static const HASHCODE: string = " hashcode: ";
+    private: static const std::string HASHCODE = " hashcode: ";
 
-    private: motionGesture: MotionGestureInput = TouchMotionGestureFactory.getInstance()!.NO_MOTION;
+    private: MotionGestureInput motionGesture = TouchMotionGestureFactory::getInstance().NO_MOTION;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-    private: previousPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: GPoint previousPoint = PointFactory::getInstance().ZERO_ZERO;
 
-    private: currentPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
+    private: GPoint currentPoint = PointFactory::getInstance().ZERO_ZERO;
 
-public constructor (any = {} source, int32_t id, MotionGestureInput motionGesture){
+public: MotionGestureEvent(Object* source, int32_t id, MotionGestureInput motionGesture){
             super(source);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.id= id;
+this->id= id;
     
-this.setMotionGesture(motionGesture);
+this->setMotionGesture(motionGesture);
     
 }
 
 
-    public MotionGestureInput getMotionGesture(){
+    public: MotionGestureInput getMotionGesture(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionGesture;
+                        return this->motionGesture;
     
 }
 
 
-    public setMotionGesture(MotionGestureInput motionGesture){
-this.motionGesture= motionGesture;
+    public: void setMotionGesture(MotionGestureInput motionGesture){
+this->motionGesture= motionGesture;
     
 }
 
 
-    public GPoint getPreviousPoint(){
+    public: GPoint getPreviousPoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.previousPoint;
+                        return this->previousPoint;
     
 }
 
 
-    public setPreviousPoint(GPoint previousPoint){
-this.previousPoint= previousPoint;
+    public: void setPreviousPoint(GPoint previousPoint){
+this->previousPoint= previousPoint;
     
 }
 
 
-    public GPoint getCurrentPoint(){
+    public: GPoint getCurrentPoint(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.currentPoint;
+                        return this->currentPoint;
     
 }
 
 
-    public setCurrentPoint(GPoint currentPoint){
-this.currentPoint= currentPoint;
+    public: void setCurrentPoint(GPoint currentPoint){
+this->currentPoint= currentPoint;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-stringBuffer!.append(stringUtil!.toString(this.motionGesture));
+stringBuffer.append(stringUtil.toString(this->motionGesture));
     
-stringBuffer!.append(MotionGestureEvent.CURRENT);
+stringBuffer.append(MotionGestureEvent::CURRENT);
     
-stringBuffer!.append(stringUtil!.toString(this.currentPoint));
+stringBuffer.append(stringUtil.toString(this->currentPoint));
     
-stringBuffer!.append(MotionGestureEvent.PREVIOUS);
+stringBuffer.append(MotionGestureEvent::PREVIOUS);
     
-stringBuffer!.append(stringUtil!.toString(this.previousPoint));
+stringBuffer.append(stringUtil.toString(this->previousPoint));
     
-stringBuffer!.append(MotionGestureEvent.HASHCODE);
+stringBuffer.append(MotionGestureEvent::HASHCODE);
     
-stringBuffer!.appendint(TsUtil.getInstance()!.hashCode(this));
+stringBuffer.appendint(TsUtil::getInstance().hashCode(this));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public int32_t getId(){
+    public: int32_t getId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 

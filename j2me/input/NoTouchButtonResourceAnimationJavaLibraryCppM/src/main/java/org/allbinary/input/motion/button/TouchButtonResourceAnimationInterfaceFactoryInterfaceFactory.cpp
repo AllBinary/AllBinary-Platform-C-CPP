@@ -61,20 +61,19 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory: public BaseResourceAnimationInterfaceFactoryInterfaceFactory {
-        
 
-    public static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory(){
+    public: static TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory createFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("TouchButton Animations");
+                        return TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory("TouchButton Animations");
     
 }
 
 
-public constructor (string name){
-            super(name, new Hashtable<any, any>(), new Hashtable<any, any>(), new Hashtable<any, any>());
+public: TouchButtonResourceAnimationInterfaceFactoryInterfaceFactory(std::string name){
+            super(name, Hashtable<any, any>(), Hashtable<any, any>(), Hashtable<any, any>());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -84,17 +83,17 @@ public constructor (string name){
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level){
-this.initImageCache(ImageCacheFactory.getInstance(), level);
+    public: void init(int32_t level){
+this->initImageCache(ImageCacheFactory::getInstance(), level);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initImageCache(ImageCache imageCache, int32_t level){
+    protected: void initImageCache(ImageCache imageCache, int32_t level){
 
-                        if(this.isInitialized())
+                        if(this->isInitialized())
                         
                                     {
                                     
@@ -111,12 +110,12 @@ super.init(level);
 }
 
 
-    public bool isLoadingLevel(int32_t level){
+    public: bool isLoadingLevel(int32_t level){
 
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(level == resourceLoadingLevelFactory!.LOAD_TOUCH.getLevel())
+                        if(level == resourceLoadingLevelFactory.LOAD_TOUCH.getLevel())
                         
                                     {
                                     
@@ -141,9 +140,9 @@ super.init(level);
 }
 
 
-    public bool isFeature(){
+    public: bool isFeature(){
 
-                        if(!Features.getInstance()!.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(!Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
                                     

@@ -44,15 +44,14 @@
         #include "BaseGameStatistics.h"
 //NoPlatform
 // class GameStatisticsFactory: public BaseGameStatistics {
-        
 
-    private: static const instance: GameStatisticsFactory
+    private: static GameStatisticsFactory instance() { return GameStatisticsFactory(); }
 
-    public static GameStatisticsFactory getInstance();
+    public: static GameStatisticsFactory getInstance();
 
-    public add(string string);
+    public: void add(std::string string);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

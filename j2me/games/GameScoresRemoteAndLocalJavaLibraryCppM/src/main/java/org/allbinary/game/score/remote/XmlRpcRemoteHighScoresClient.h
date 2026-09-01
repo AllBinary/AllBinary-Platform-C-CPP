@@ -76,17 +76,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcRemoteHighScoresClient: public XmlRpcAbeClient {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: page: string;
+    private: std::string page;
 
-public constructor (AbeClientInformationInterface clientInfo, string page, string remoteMethod);
+public: XmlRpcRemoteHighScoresClient(AbeClientInformationInterface clientInfo, std::string page, std::string remoteMethod);
 
                 //@Throws(Exception.constructor)
             
-    public any get(any = {} anyType, CryptInterface cryptInterface);
+    public: Object* get(Object* anyType, CryptInterface cryptInterface);
 
 };
 

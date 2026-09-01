@@ -41,23 +41,22 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class EmailServerConfigurationInterface {
-        
 
-    setSmtpServer(string value);
+    void setSmtpServer(std::string value);
 
-    string getSmtpServer();
+    std::string getSmtpServer();
 
-    string getAccountName();
+    std::string getAccountName();
 
-    setAccountName(string accountName);
+    void setAccountName(std::string accountName);
 
-    string getPassword();
+    std::string getPassword();
 
-    setPassword(string password);
+    void setPassword(std::string password);
 
-    log();
+    void log();
 
-    string toString();
+    std::string toString();
 
 };
 

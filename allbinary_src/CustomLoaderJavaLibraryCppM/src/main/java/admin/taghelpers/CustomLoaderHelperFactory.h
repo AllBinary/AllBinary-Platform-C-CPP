@@ -62,21 +62,20 @@
 class CustomLoaderHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.CustomLoaderHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.CustomLoaderHelper";
 
-    private: static const FACTORYNAME: string = "CustomLoaderHelperFactory";
+    private: static const std::string FACTORYNAME = "CustomLoaderHelperFactory";
 
-public constructor ();
-
-                //@Throws(LicensingException.constructor)
-            
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+public: CustomLoaderHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(AbeClientInformationInterface abeClientInformation);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+
+                //@Throws(LicensingException.constructor)
+            
+    public: Object* getInstance(AbeClientInformationInterface abeClientInformation);
 
 };
 

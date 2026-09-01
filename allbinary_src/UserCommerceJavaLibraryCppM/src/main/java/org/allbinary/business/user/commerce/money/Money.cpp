@@ -61,38 +61,29 @@
 class Money
             : public Object
          {
-        
 
-    private: units: Long;
+    private: Long units;
 
-    private: const DEFAULT_CURRENCY: string = "USD";
+    private: const std::string DEFAULT_CURRENCY = "USD";
 
-public constructor (Money money){
-
-            super();
-        this.units= new Long(money.getUnits());
+public: Money(Money money){
+this->units= Long(money.getUnits());
     
 }
 
 
-public constructor (){
-
-            super();
-        this.units= new Long(0);
+public: Money(){
+this->units= Long(0);
     
 }
 
 
-public constructor (string usDollarStr){
+public: Money(std::string usDollarStr){
 
-            super();
-        
-                        if(usDollarStr != 
-                                    null
-                                 && StringValidationUtil.getInstance()!.isNumber(usDollarStr))
+                        if(true && StringValidationUtil::getInstance().isNumber(usDollarStr))
                         
                                     {
-                                    this.units= new Long(convertUsdToUnits(usDollarStr));
+                                    this->units= Long(convertUsdToUnits(usDollarStr));
     
 
                                     }
@@ -100,19 +91,17 @@ public constructor (string usDollarStr){
 }
 
 
-public constructor (int64_t units){
-
-            super();
-        this.units= new Long(units);
+public: Money(int64_t units){
+this->units= Long(units);
     
 }
 
 
-    public bool isValid(){
+    public: bool isValid(){
 
-                        if(this.units != 
-                                    null
-                                 && this.units.longValue() > 0 && this.units.longValue() < Long.MAX_VALUE)
+                        if(this->units != 
+                                    nullptr
+                                 && this->units.longValue() > 0 && this->units.longValue() < Long::MAX_VALUE)
                         
                                     {
                                     
@@ -137,64 +126,64 @@ public constructor (int64_t units){
 }
 
 
-    public add(Money moreMoney){
-this.add(moreMoney!.toString());
+    public: void add(Money moreMoney){
+this->add(moreMoney.toString());
     
 }
 
 
-    public add(string usDollarStr){
-this.units= new Long(this.units.longValue() +convertUsdToUnits(usDollarStr));
+    public: void add(std::string usDollarStr){
+this->units= Long(this->units.longValue() +convertUsdToUnits(usDollarStr));
     
 }
 
 
-    public subtract(string usDollarStr){
-this.units= new Long(this.units.longValue() -convertUsdToUnits(usDollarStr));
+    public: void subtract(std::string usDollarStr){
+this->units= Long(this->units.longValue() -convertUsdToUnits(usDollarStr));
     
 }
 
 
-    public multiply(number multiplier){
-this.units= new Long(new number(this.units.longValue() *multiplier).longValue());
+    public: void multiply(number multiplier){
+this->units= Long(number(this->units.longValue() *multiplier).longValue());
     
 }
 
 
-    public multiply(int32_t multiplier){
-this.units= new Long(this.units.longValue() *multiplier);
+    public: void multiply(int32_t multiplier){
+this->units= Long(this->units.longValue() *multiplier);
     
 }
 
 
-    string convertUnitsTo(string currency){
+    private: std::string convertUnitsTo(std::string currency){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(currency.compareTo(this.DEFAULT_CURRENCY) == 0)
+                        if(currency.compareTo(this->DEFAULT_CURRENCY) == 0)
                         
                                     {
                                     
-    dollar: int64_t = this.units.longValue() /100;;
+    int64_t dollar = this->units.longValue() /100;;
     
 
-    cents: int64_t = this.units.longValue() -(dollar *100);;
+    int64_t cents = this->units.longValue() -(dollar *100);;
     
-stringBuffer!.append(new Long(dollar).toString());
+stringBuffer.append(Long(dollar).toString());
     
-stringBuffer!.append(AbPathData.getInstance()!.EXTENSION_SEP);
+stringBuffer.append(AbPathData::getInstance().EXTENSION_SEP);
     
 
                         if(cents < 10)
                         
                                     {
-                                    stringBuffer!.append(CommonPhoneStrings.getInstance()!.ZERO);
+                                    stringBuffer.append(CommonPhoneStrings::getInstance().ZERO);
     
 
                                     }
                                 
-stringBuffer!.append(new Long(cents).toString());
+stringBuffer.append(Long(cents).toString());
     
 
                                     }
@@ -203,26 +192,26 @@ stringBuffer!.append(new Long(cents).toString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    int64_t convertUsdToUnits(string usDollarStr){
+    private: int64_t convertUsdToUnits(std::string usDollarStr){
 
-    localUnit: int64_t = 0;;
+    int64_t localUnit = 0;;
     
 
-    index: int32_t = usDollarStr!.indexOf(AbPathData.getInstance()!.EXTENSION_SEP)!;;
+    int32_t index = usDollarStr.indexOf(AbPathData::getInstance().EXTENSION_SEP);;
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    dollarStr: string = stringUtil!.EMPTY_STRING;;
+    std::string dollarStr = stringUtil.EMPTY_STRING;;
     
 
-    centsStr: string = stringUtil!.EMPTY_STRING;;
+    std::string centsStr = stringUtil.EMPTY_STRING;;
     
 
                         if(index < 1)
@@ -243,9 +232,9 @@ centsStr= substring.toCharArray();
 
                         }
                             
-localUnit= new Long(new Long(dollarStr).longValue() *100).longValue();
+localUnit= Long(Long(dollarStr).longValue() *100).longValue();
     
-localUnit += new Long(centsStr).longValue();
+localUnit += Long(centsStr).longValue();
     
 
 
@@ -256,27 +245,27 @@ localUnit += new Long(centsStr).longValue();
 }
 
 
-    public int64_t getUnits(){
+    public: int64_t getUnits(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.units.longValue();;
+                        return this->units.longValue();;
     
 }
 
 
-    public Long getUnitsLong(){
+    public: Long getUnitsLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.units;
+                        return this->units;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 

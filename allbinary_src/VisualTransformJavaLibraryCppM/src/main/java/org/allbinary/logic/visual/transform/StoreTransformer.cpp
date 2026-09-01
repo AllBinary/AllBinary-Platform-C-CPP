@@ -56,15 +56,14 @@
         #include "BasicTransformer.h"
 
 class StoreTransformer: public BasicTransformer {
-        
 
-public constructor (AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+public: StoreTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
             super(abeClientInformation, transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setURIResolver(new StoreUriResolver(this.getTransformInfoInterface(), this.getURIResolver() as BasicUriResolver) as URIResolver);
+this->setURIResolver(StoreUriResolver(this->getTransformInfoInterface(), this->getURIResolver() as BasicUriResolver) as URIResolver);
     
 }
 

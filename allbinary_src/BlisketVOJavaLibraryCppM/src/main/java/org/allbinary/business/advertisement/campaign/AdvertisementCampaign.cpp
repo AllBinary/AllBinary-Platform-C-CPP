@@ -56,19 +56,16 @@
 class AdvertisementCampaign
             : public Object
         : public AdvertisementCampaignInterface {
-        
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (HashMap<any, any> hashMap){
-
-            super();
-        this.hashMap= hashMap;
+public: AdvertisementCampaign(HashMap<any, any> hashMap){
+this->hashMap= hashMap;
     
 }
 
 
-    public any getComponent(){
+    public: Object* getComponent(){
 
 
 
@@ -78,29 +75,29 @@ public constructor (HashMap<any, any> hashMap){
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashMap!.get(AdvertisementCampaignData.getInstance()!.NAME) as string;
+                        return this->hashMap.get(AdvertisementCampaignData::getInstance().NAME) as string;
     
 }
 
 
-    public setComponentName(string name){
-this.hashMap!.put(DynamicObjectData.NAME, name);
+    public: void setComponentName(std::string name){
+this->hashMap.put(DynamicObjectData::NAME, name);
     
 }
 
 
-    public setName(string name){
-this.hashMap!.put(AdvertisementCampaignData.getInstance()!.NAME, name);
+    public: void setName(std::string name){
+this->hashMap.put(AdvertisementCampaignData::getInstance().NAME, name);
     
 }
 
 
-    public AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface){
+    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface){
 
 
 

@@ -65,19 +65,18 @@
 class PathFindingNode
             : public Object
          {
-        
 
-    public parent: any = NullUtil.getInstance()!.NULL_OBJECT;
+    public: Object* parent = NullUtil::getInstance().NULL_OBJECT;
 
-    public geographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    public: GeographicMapCellPosition geographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-public constructor (any = {} parent, GeographicMapCellPosition geographicMapCellPosition);
+public: PathFindingNode(Object* parent, GeographicMapCellPosition geographicMapCellPosition);
 
-    public PathFindingNode getParentP();
+    public: PathFindingNode getParentP();
 
-    public setGeographicMapCellPositionP(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setGeographicMapCellPositionP(GeographicMapCellPosition geographicMapCellPosition);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

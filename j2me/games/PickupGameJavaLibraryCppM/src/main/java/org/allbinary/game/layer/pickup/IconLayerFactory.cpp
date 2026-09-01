@@ -48,16 +48,15 @@
 class IconLayerFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static IconLayer getInstance(Animation animationInterface, int32_t width, int32_t height){
+    public: static IconLayer getInstance(Animation animationInterface, int32_t width, int32_t height){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new IconLayer(animationInterface, width, height);
+                        return IconLayer(animationInterface, width, height);
     
 }
 

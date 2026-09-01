@@ -56,11 +56,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextItemVisitor: public Visitor {
-        
 
-public constructor ();
+public: TextItemVisitor();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
 };
 

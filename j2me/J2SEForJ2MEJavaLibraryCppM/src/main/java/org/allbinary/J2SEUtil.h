@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_J2SEUTIL_H
         #define ORG_ALLBINARY_J2SEUTIL_H
 
+            #include <vector>
+        
             #include "../../java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -54,17 +56,16 @@
 class J2SEUtil
             : public Object
          {
-        
 
-    private: static const instance: J2SEUtil = new J2SEUtil();
+    private: static J2SEUtil instance() { return J2SEUtil(); }
 
-    public static J2SEUtil getInstance();
+    public: static J2SEUtil getInstance();
 
-    public std::vector<any> getHashMapAsArray(HashMap<any, any> hashMap);
+    public: std::vector<Object*> getHashMapAsArray(HashMap<any, any> hashMap);
 
-    public std::vector<any> getMapAsArray(Map<any, any> map);
+    public: std::vector<Object*> getMapAsArray(Map<any, any> map);
 
-    public std::vector<any> getSetAsArray(Set<string> set);
+    public: std::vector<Object*> getSetAsArray(Set<string> set);
 
 };
 

@@ -55,21 +55,18 @@
 class ContextConfigurationTableMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor (ContextConfigurationInterface contextConfigurationInterface){
-
-            super();
-        this.contextConfigurationInterface= contextConfigurationInterface;
+public: ContextConfigurationTableMapping(ContextConfigurationInterface contextConfigurationInterface){
+this->contextConfigurationInterface= contextConfigurationInterface;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
 
@@ -82,21 +79,21 @@ public constructor (ContextConfigurationInterface contextConfigurationInterface)
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ContextConfigurationData.getInstance()!.NAME;
+                        return ContextConfigurationData::getInstance().NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
 

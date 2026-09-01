@@ -56,11 +56,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CaptionAnimationHelperBase: public Animation {
-        
 
-    public static const INSTANCE: CaptionAnimationHelperBase = new CaptionAnimationHelperBase();
+    public: static const CaptionAnimationHelperBase INSTANCE = CaptionAnimationHelperBase();
 
-    public bool isShowing(){
+    public: bool isShowing(){
 
 
 
@@ -70,15 +69,15 @@ class CaptionAnimationHelperBase: public Animation {
 }
 
 
-    public tick(){
+    public: void tick(){
 }
 
 
-    public update(string message, BasicColor basicColor){
+    public: void update(std::string message, BasicColor basicColor){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 }
 
 

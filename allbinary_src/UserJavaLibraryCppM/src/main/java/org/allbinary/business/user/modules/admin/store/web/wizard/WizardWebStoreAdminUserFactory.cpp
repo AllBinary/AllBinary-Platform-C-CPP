@@ -54,34 +54,31 @@
 class WizardWebStoreAdminUserFactory
             : public Object
         : public UserFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: WizardWebStoreAdminUserFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getInstance(){
+    public: UserInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new WizardWebStoreAdminUser();
+                        return WizardWebStoreAdminUser();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getInstance(HashMap<any, any> hashMap){
+    public: UserInterface getInstance(HashMap<any, any> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new WizardWebStoreAdminUser(hashMap);
+                        return WizardWebStoreAdminUser(hashMap);
     
 }
 

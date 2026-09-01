@@ -70,17 +70,16 @@
 class CamelCaseUtil
             : public Object
          {
-        
 
-    private: static const instance: CamelCaseUtil = new CamelCaseUtil();
+    private: static CamelCaseUtil instance() { return CamelCaseUtil(); }
 
-    public static CamelCaseUtil getInstance();
+    public: static CamelCaseUtil getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public string getAsCamelCase(string string, StringMaker stringBuilder);
+    public: std::string getAsCamelCase(std::string string, StringMaker stringBuilder);
 
 };
 

@@ -138,123 +138,122 @@
 class TransformInfo
             : public Object
         : public TransformInfoInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: isChild: bool = false;
+    private: bool isChild = false;
 
-    private: name: string;
+    private: std::string name;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: objectFileName: string;
+    private: std::string objectFileName;
 
-    private: anyType: any;
+    private: Object* anyType;
 
-    private: objectConfigFileName: string;
+    private: std::string objectConfigFileName;
 
-    private: objectConfigInterface: TransformInfoObjectConfigInterface;
+    private: TransformInfoObjectConfigInterface objectConfigInterface;
 
-    private: template: string;
+    private: std::string template;
 
-    private: templateFileName: string;
+    private: std::string templateFileName;
 
-    private: dataFileName: string;
+    private: std::string dataFileName;
 
-    private: data: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string data = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor ();
+public: TransformInfo();
 
-public constructor (string name);
+public: TransformInfo(std::string name);
 
-public constructor (string name, string objectFileName, string objectConfigFileName, string templateFileName, string dataFileName);
-
-                //@Throws(Exception.constructor)
-            
-    public override(HashMap<any, any> hashMap);
-
-    public string log();
-
-    public setName(string value);
-
-    public setStoreName(string value);
-
-    public string getStoreName();
-
-    public setObject(Object anyType);
-
-    public setObjectFile(string value);
-
-    public setTemplate(string value);
-
-    public setTemplateFile(string value);
+public: TransformInfo(std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName);
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfigFileName(string value);
+    public: void override(HashMap<any, any> hashMap);
+
+    public: std::string log();
+
+    public: void setName(std::string value);
+
+    public: void setStoreName(std::string value);
+
+    public: std::string getStoreName();
+
+    public: void setObject(Object anyType);
+
+    public: void setObjectFile(std::string value);
+
+    public: void setTemplate(std::string value);
+
+    public: void setTemplateFile(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfigFile(string value);
+    protected: void setObjectConfigFileName(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfig(string value);
-
-    public setDataFile(string value);
-
-    public setData(string value);
-
-    public string getName();
-
-    public any getObject();
-
-    public string getObjectFile();
-
-    public string getTemplate();
-
-    public string getTemplateFile();
+    protected: void setObjectConfigFile(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getTemplateFilePath();
+    protected: void setObjectConfig(std::string value);
+
+    public: void setDataFile(std::string value);
+
+    public: void setData(std::string value);
+
+    public: std::string getName();
+
+    public: Object* getObject();
+
+    public: std::string getObjectFile();
+
+    public: std::string getTemplate();
+
+    public: std::string getTemplateFile();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath();
+    public: AbPath getTemplateFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath();
-
-    public string getObjectConfigFile();
-
-    string getData();
+    public: AbPath getObjectConfigFilePath();
 
                 //@Throws(Exception.constructor)
             
-    public Document getDataDocument();
+    public: AbPath getDataFilePath();
 
-    public string getDataFile();
+    public: std::string getObjectConfigFile();
 
-    public HashMap<any, any> toHashMap();
+    private: std::string getData();
 
-    public java.util.Vector toVector();
+                //@Throws(Exception.constructor)
+            
+    public: Document getDataDocument();
 
-    public any getKey();
+    public: std::string getDataFile();
 
-    public setChild();
+    public: HashMap<any, any> toHashMap();
 
-    public bool isChild();
+    public: java::util::Vector toVector();
 
-    public TransformInfoObjectConfigInterface getObjectConfigInterface();
+    public: Object* getKey();
 
-    public setObjectConfigInterface(Object objectConfigInterface);
+    public: void setChild();
+
+    public: bool isChild();
+
+    public: TransformInfoObjectConfigInterface getObjectConfigInterface();
+
+    public: void setObjectConfigInterface(Object objectConfigInterface);
 
 };
 

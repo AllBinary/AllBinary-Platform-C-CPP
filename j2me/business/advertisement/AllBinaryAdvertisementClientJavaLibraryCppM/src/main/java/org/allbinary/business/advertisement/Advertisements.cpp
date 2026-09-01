@@ -61,18 +61,17 @@
 class Advertisements
             : public Object
          {
-        
 
-    private: const bannerList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList bannerList = BasicArrayListD();
 
-    private: const pageList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList pageList = BasicArrayListD();
 
-    public addPage(AdvertisementProcessorInterface advertisementProcessorInterface){
+    public: void addPage(AdvertisementProcessorInterface advertisementProcessorInterface){
 
-                        if(!this.pageList!.contains(advertisementProcessorInterface))
+                        if(!this->pageList.contains(advertisementProcessorInterface))
                         
                                     {
-                                    this.pageList!.add(advertisementProcessorInterface);
+                                    this->pageList.add(advertisementProcessorInterface);
     
 
                                     }
@@ -80,21 +79,21 @@ class Advertisements
 }
 
 
-    public startRandomPage(){
+    public: void startRandomPage(){
 
-    size: int32_t = this.pageList!.size()!;;
+    int32_t size = this->pageList.size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    random: int32_t = this.myRandomFactory!.getAbsoluteNextInt(size)!;;
+    int32_t random = this->myRandomFactory.getAbsoluteNextInt(size);;
     
 
-    advertisementProcessorInterface: AdvertisementProcessorInterface = this.pageList!.objectArray[random]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random]! as AdvertisementProcessorInterface;;
     
-advertisementProcessorInterface!.start();
+advertisementProcessorInterface.start();
     
 
                                     }
@@ -102,27 +101,27 @@ advertisementProcessorInterface!.start();
 }
 
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    public processRandomPage(){
+    public: void processRandomPage(){
 
-                        if(LockedUtil.getInstance()!.isLocked())
+                        if(LockedUtil::getInstance().isLocked())
                         
                                     {
                                     
-    size: int32_t = this.pageList!.size()!;;
+    int32_t size = this->pageList.size();;
     
 
                         if(size > 0)
                         
                                     {
                                     
-    random: int32_t = this.myRandomFactory!.getAbsoluteNextInt(size)!;;
+    int32_t random = this->myRandomFactory.getAbsoluteNextInt(size);;
     
 
-    advertisementProcessorInterface: AdvertisementProcessorInterface = this.pageList!.objectArray[random]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[random]! as AdvertisementProcessorInterface;;
     
-advertisementProcessorInterface!.process();
+advertisementProcessorInterface.process();
     
 
                                     }
@@ -133,30 +132,30 @@ advertisementProcessorInterface!.process();
 }
 
 
-    public stopAllPage(){
+    public: void stopAllPage(){
 
 
 
 
                         for (
-    index: int32_t = this.pageList!.size()!;--index >= 0; )
+    int32_t index = this->pageList.size();--index >= 0; )
         {
 
-    advertisementProcessorInterface: AdvertisementProcessorInterface = this.pageList!.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->pageList.objectArray[index]! as AdvertisementProcessorInterface;;
     
-advertisementProcessorInterface!.stop();
+advertisementProcessorInterface.stop();
     
 }
 
 }
 
 
-    public addBanner(AdvertisementProcessorInterface advertisementProcessorInterface){
+    public: void addBanner(AdvertisementProcessorInterface advertisementProcessorInterface){
 
-                        if(!this.bannerList!.contains(advertisementProcessorInterface))
+                        if(!this->bannerList.contains(advertisementProcessorInterface))
                         
                                     {
-                                    this.bannerList!.add(advertisementProcessorInterface);
+                                    this->bannerList.add(advertisementProcessorInterface);
     
 
                                     }
@@ -164,45 +163,45 @@ advertisementProcessorInterface!.stop();
 }
 
 
-    public startAll(){
+    public: void startAll(){
 
 
 
 
                         for (
-    index: int32_t = this.bannerList!.size()!;--index >= 0; )
+    int32_t index = this->bannerList.size();--index >= 0; )
         {
 
-    advertisementProcessorInterface: AdvertisementProcessorInterface = this.bannerList!.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index]! as AdvertisementProcessorInterface;;
     
-advertisementProcessorInterface!.start();
+advertisementProcessorInterface.start();
     
 }
 
 }
 
 
-    public stopAllBanner(){
+    public: void stopAllBanner(){
 
 
 
 
                         for (
-    index: int32_t = this.bannerList!.size()!;--index >= 0; )
+    int32_t index = this->bannerList.size();--index >= 0; )
         {
 
-    advertisementProcessorInterface: AdvertisementProcessorInterface = this.bannerList!.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index]! as AdvertisementProcessorInterface;;
     
-advertisementProcessorInterface!.stop();
+advertisementProcessorInterface.stop();
     
 }
 
 }
 
 
-    public AdvertisementProcessorInterface getBanner(int32_t index){
+    public: AdvertisementProcessorInterface getBanner(int32_t index){
 
-    advertisementProcessorInterface: AdvertisementProcessorInterface = this.bannerList!.objectArray[index]! as AdvertisementProcessorInterface;;
+    AdvertisementProcessorInterface advertisementProcessorInterface = this->bannerList.objectArray[index]! as AdvertisementProcessorInterface;;
     
 
 
@@ -213,10 +212,10 @@ advertisementProcessorInterface!.stop();
 }
 
 
-    public stopAll(){
-this.stopAllBanner();
+    public: void stopAll(){
+this->stopAllBanner();
     
-this.stopAllPage();
+this->stopAllPage();
     
 }
 

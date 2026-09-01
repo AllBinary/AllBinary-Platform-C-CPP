@@ -55,62 +55,57 @@
 class InitDb
             : public Object
          {
-        
 
-    private: anyType: any;
+    private: Object* anyType;
 
-    private: const METHOD_CALL_GET_HOST_NAME: string = "getHostName";
+    private: const std::string METHOD_CALL_GET_HOST_NAME = "getHostName";
 
-    private: const METHOD_CALL_ADD_USERS: string = "addUsers";
+    private: const std::string METHOD_CALL_ADD_USERS = "addUsers";
 
-    private: const METHOD_CALL_ADD_DATABASES: string = "addDatabases";
+    private: const std::string METHOD_CALL_ADD_DATABASES = "addDatabases";
 
-    private: const METHOD_CALL_ADD_TABLES: string = "addTables";
+    private: const std::string METHOD_CALL_ADD_TABLES = "addTables";
 
-    private: const METHOD_CALL_TEMP_MAIN_PATH: string = "useTemporaryMainPath";
+    private: const std::string METHOD_CALL_TEMP_MAIN_PATH = "useTemporaryMainPath";
 
-    private: const METHOD_CALL_MAIN_PATH: string = "useNormalMainPath";
+    private: const std::string METHOD_CALL_MAIN_PATH = "useNormalMainPath";
 
-public constructor (){
-
-            super();
-        }
+public: InitDb(){
+}
 
 
-public constructor (DbConnectionInfo dbConnectionInfo){
-
-            super();
-        }
+public: InitDb(DbConnectionInfo dbConnectionInfo){
+}
 
 
-    setHelper(any = {} anyType){
-this.anyType= anyType;
+    protected: void setHelper(Object* anyType){
+this->anyType= anyType;
     
 }
 
 
-    any getHelper(){
+    protected: Object* getHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.anyType;
+                        return this->anyType;
     
 }
 
 
-    string getHostName(){
+    private: std::string getHostName(){
 
         try {
             
-    dynamicClass: Function = this.anyType!.constructor!;;
+    Function dynamicClass = this->anyType.constructor;;
     
 
-    method: Method = dynamicClass!.getMethod(this.METHOD_CALL_GET_HOST_NAME, 
-                            nullptr)!;;
+    Method method = dynamicClass.getMethod(this->METHOD_CALL_GET_HOST_NAME, 
+                            nullptr);;
     
 
-    result: string = method.invoke(this.anyType, 
+    std::string result = method.invoke(this->anyType, 
                             nullptr) as string;;
     
 
@@ -134,18 +129,18 @@ this.anyType= anyType;
 }
 
 
-    public bool addUsers(){
+    public: bool addUsers(){
 
         try {
             
-    dynamicClass: Function = this.anyType!.constructor!;;
+    Function dynamicClass = this->anyType.constructor;;
     
 
-    method: Method = dynamicClass!.getMethod(this.METHOD_CALL_ADD_USERS, 
-                            nullptr)!;;
+    Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_USERS, 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(this.anyType, 
+    Boolean result = method.invoke(this->anyType, 
                             nullptr) as Boolean;;
     
 
@@ -169,18 +164,18 @@ this.anyType= anyType;
 }
 
 
-    public bool addDatabases(){
+    public: bool addDatabases(){
 
         try {
             
-    dynamicClass: Function = this.anyType!.constructor!;;
+    Function dynamicClass = this->anyType.constructor;;
     
 
-    method: Method = dynamicClass!.getMethod(this.METHOD_CALL_ADD_DATABASES, 
-                            nullptr)!;;
+    Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_DATABASES, 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(this.anyType, 
+    Boolean result = method.invoke(this->anyType, 
                             nullptr) as Boolean;;
     
 
@@ -204,18 +199,18 @@ this.anyType= anyType;
 }
 
 
-    public bool addTables(){
+    public: bool addTables(){
 
         try {
             
-    dynamicClass: Function = this.anyType!.constructor!;;
+    Function dynamicClass = this->anyType.constructor;;
     
 
-    method: Method = dynamicClass!.getMethod(this.METHOD_CALL_ADD_TABLES, 
-                            nullptr)!;;
+    Method method = dynamicClass.getMethod(this->METHOD_CALL_ADD_TABLES, 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(this.anyType, 
+    Boolean result = method.invoke(this->anyType, 
                             nullptr) as Boolean;;
     
 
@@ -239,18 +234,18 @@ this.anyType= anyType;
 }
 
 
-    public bool useTemporaryMainPath(){
+    public: bool useTemporaryMainPath(){
 
         try {
             
-    dynamicClass: Function = this.anyType!.constructor!;;
+    Function dynamicClass = this->anyType.constructor;;
     
 
-    method: Method = dynamicClass!.getMethod(this.METHOD_CALL_TEMP_MAIN_PATH, 
-                            nullptr)!;;
+    Method method = dynamicClass.getMethod(this->METHOD_CALL_TEMP_MAIN_PATH, 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(this.anyType, 
+    Boolean result = method.invoke(this->anyType, 
                             nullptr) as Boolean;;
     
 
@@ -274,18 +269,18 @@ this.anyType= anyType;
 }
 
 
-    public bool useNormalMainPath(){
+    public: bool useNormalMainPath(){
 
         try {
             
-    dynamicClass: Function = this.anyType!.constructor!;;
+    Function dynamicClass = this->anyType.constructor;;
     
 
-    method: Method = dynamicClass!.getMethod(this.METHOD_CALL_MAIN_PATH, 
-                            nullptr)!;;
+    Method method = dynamicClass.getMethod(this->METHOD_CALL_MAIN_PATH, 
+                            nullptr);;
     
 
-    result: Boolean = method.invoke(this.anyType, 
+    Boolean result = method.invoke(this->anyType, 
                             nullptr) as Boolean;;
     
 

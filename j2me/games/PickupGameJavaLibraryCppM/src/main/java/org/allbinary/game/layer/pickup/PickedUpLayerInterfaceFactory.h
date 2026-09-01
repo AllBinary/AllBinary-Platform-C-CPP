@@ -59,21 +59,20 @@
 #include "IconLayer.h"
 
 class PickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactoryBase {
-        
 
-    private: const pickedUpLayerType: PickedUpLayerType;
+    private: PickedUpLayerType pickedUpLayerType;
 
-    private: const iconLayer: IconLayer;
+    private: IconLayer iconLayer;
 
-    private: const animationInterface: Animation;
+    private: Animation animationInterface;
 
-protected constructor (PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface);
+protected: PickedUpLayerInterfaceFactory(PickedUpLayerType pickeUpLayerType, IconLayer iconLayer, Animation animationInterface);
 
-    public AllBinaryLayer getIconLayer();
+    public: AllBinaryLayer getIconLayer();
 
-    public Animation getAnimationInterface();
+    public: Animation getAnimationInterface();
 
-    public PickedUpLayerType getPickedUpLayerType();
+    public: PickedUpLayerType getPickedUpLayerType();
 
 };
 

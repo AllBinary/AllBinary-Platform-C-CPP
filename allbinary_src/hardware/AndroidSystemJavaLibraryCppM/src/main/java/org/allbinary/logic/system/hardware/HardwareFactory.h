@@ -67,21 +67,20 @@
 class HardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: HardwareFactory = new HardwareFactory();
+    private: static HardwareFactory instance() { return HardwareFactory(); }
 
-    public static HardwareFactory getInstance();
+    public: static HardwareFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-private constructor ();
+private: HardwareFactory();
 
                 //@Throws(Exception.constructor)
             
-    public HardwareInterface getInstance(GenericOperatingSystem os);
+    public: HardwareInterface getInstance(GenericOperatingSystem os);
 
 };
 

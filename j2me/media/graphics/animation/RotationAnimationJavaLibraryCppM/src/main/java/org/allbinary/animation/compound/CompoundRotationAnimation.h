@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_COMPOUND_COMPOUNDROTATIONANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/khronos/opengles/GL.h>
@@ -76,66 +78,65 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CompoundAnimationInterface.h"
 
-class CompoundRotationAnimation: public RotationAnimation: public CompoundAnimationInterface {
-        
+class CompoundRotationAnimation: public RotationAnimation, public CompoundAnimationInterface {
 
-    private: animationInterfaceArray: std::vector<RotationAnimation>;
+    private: std::vector<RotationAnimation> animationInterfaceArray;
 
-public constructor (std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior);
+public: CompoundRotationAnimation(std::vector<RotationAnimation> animationInterfaceArray, AnimationBehavior animationBehavior);
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public int32_t getFrame();
-
-                //@Throws(Exception.constructor)
-            
-    public int32_t getAnimationSize();
-
-    public int32_t getSize();
-
-    public previousFrame();
+    public: int32_t getFrame();
 
                 //@Throws(Exception.constructor)
             
-    public nextFrame();
+    public: int32_t getAnimationSize();
 
-    public previousRotation();
+    public: int32_t getSize();
 
-    public nextRotation();
-
-    public setSequence(std::vector<int32_t> sequence);
-
-    public std::vector<int32_t> getSequence();
-
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
-
-    public paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
-
-    public IndexedAnimation getCurrentAnimation();
-
-    public nextAnimation();
-
-    public previousAnimation();
-
-    public setAnimation(int32_t index);
-
-    public setFrameByDirection(Direction direction);
-
-    public setFrameToAngle(Angle angle);
-
-    public adjustFrameToAngle(Angle newAngle);
-
-    public adjustFrame(int16_t angle);
-
-    public AngleInfo getAngleInfoP();
-
-    public std::vector<RotationAnimation> getAnimationInterfaceArray();
-
-    public setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray);
+    public: void previousFrame();
 
                 //@Throws(Exception.constructor)
             
-    public set(GL gl);
+    public: void nextFrame();
+
+    public: void previousRotation();
+
+    public: void nextRotation();
+
+    public: void setSequence(std::vector<int32_t> sequence);
+
+    public: std::vector<int32_t> getSequence();
+
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
+
+    public: void paintThreedXYZ(Graphics graphics, int32_t x, int32_t y, int32_t z);
+
+    public: IndexedAnimation getCurrentAnimation();
+
+    public: void nextAnimation();
+
+    public: void previousAnimation();
+
+    public: void setAnimation(int32_t index);
+
+    public: void setFrameByDirection(Direction direction);
+
+    public: void setFrameToAngle(Angle angle);
+
+    public: void adjustFrameToAngle(Angle newAngle);
+
+    public: void adjustFrame(int16_t angle);
+
+    public: AngleInfo getAngleInfoP();
+
+    public: std::vector<RotationAnimation> getAnimationInterfaceArray();
+
+    public: void setAnimationInterfaceArray(std::vector<RotationAnimation> animationInterfaceArray);
+
+                //@Throws(Exception.constructor)
+            
+    public: void set(GL gl);
 
 };
 

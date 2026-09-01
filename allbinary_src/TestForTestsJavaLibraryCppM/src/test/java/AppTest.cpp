@@ -36,30 +36,29 @@
 class AppTest
             : public Object
          {
-        
 
-    testAddition(){
-Assertions.assertEquals(2, 1 +1);
+    void testAddition(){
+Assertions::assertEquals(2, 1 +1);
     
 }
 
 
-    testStringEquality(){
+    void testStringEquality(){
 
-    expected: string = "Hello World!";;
+    std::string expected = "Hello World!";;
     
 
-    actual: string = "Hello World!";;
+    std::string actual = "Hello World!";;
     
-Assertions.assertEquals(expected, actual);
+Assertions::assertEquals(expected, actual);
     
 }
 
 
-    testBooleanAssertions(){
-Assertions.assertTrue(true);
+    void testBooleanAssertions(){
+Assertions::assertTrue(true);
     
-Assertions.assertFalse(false);
+Assertions::assertFalse(false);
     
 }
 

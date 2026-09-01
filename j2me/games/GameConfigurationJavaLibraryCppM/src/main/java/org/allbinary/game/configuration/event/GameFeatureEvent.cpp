@@ -50,37 +50,36 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameFeatureEvent: public AllBinaryEventObject {
-        
 
-    private: const whatChanged: string;
+    private: std::string whatChanged;
 
-public constructor (any = {} anyType, string whatChanged){
+public: GameFeatureEvent(Object* anyType, std::string whatChanged){
             super(anyType);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.whatChanged= whatChanged;
+this->whatChanged= whatChanged;
     
 }
 
 
-    public string getWhatChanged(){
+    public: std::string getWhatChanged(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.whatChanged;
+                        return this->whatChanged;
     
 }
 
 
-    public any getGameOption(){
+    public: Object* getGameOption(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSource();;
+                        return this->getSource();;
     
 }
 

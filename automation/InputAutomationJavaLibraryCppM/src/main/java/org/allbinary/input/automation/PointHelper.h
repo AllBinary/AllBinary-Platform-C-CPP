@@ -51,13 +51,12 @@
 class PointHelper
             : public Object
          {
-        
 
-    private: static const two: double = 2;
+    private: static const double two = 2;
 
-    public static Point getCenterPoint(Rectangle rectangle);
+    public: static Point getCenterPoint(Rectangle rectangle);
 
-public constructor ();
+public: PointHelper();
 
 };
 

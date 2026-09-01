@@ -56,13 +56,12 @@
         #include "Color.h"
 
 class NoImageComparatorConstraints: public ImageComparatorConstraints {
-        
 
-public constructor ();
+public: NoImageComparatorConstraints();
 
-    public bool isColorAllowed(int32_t frame, GPoint point, Color color);
+    public: bool isColorAllowed(int32_t frame, GPoint point, Color color);
 
-    public bool isImageValid(BufferedImage bufferedImage);
+    public: bool isImageValid(BufferedImage bufferedImage);
 
 };
 

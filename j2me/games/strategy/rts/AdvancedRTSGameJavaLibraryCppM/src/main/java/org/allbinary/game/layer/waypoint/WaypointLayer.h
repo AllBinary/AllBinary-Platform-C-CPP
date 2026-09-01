@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_WAYPOINT_WAYPOINTLAYER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -91,31 +93,30 @@
 #include "WaypointCellPositionHistory.h"
 
 class WaypointLayer: public AdvancedRTSGameLayer {
-        
 
-    public static int32_t getStaticType();
+    public: static int32_t getStaticType();
 
-protected constructor (RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, string rootName, string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
+protected: WaypointLayer(RemoteInfo remoteInfo, PathFindingLayerInterface parentLayer, std::vector<Group> groupInterface, std::string rootName, std::string name, AnimationInterfaceFactoryInterface animationInterfaceFactoryInterface, ProceduralAnimationInterfaceFactoryInterface proceduralAnimationInterfaceFactoryInterface, Rectangle rectangle, int32_t x, int32_t y);
 
-    public construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
+    public: void construct(RTSPlayerLayerInterface rtsPlayerLayerInterface);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
-    public damage(int32_t damage, int32_t damageType);
-
-                //@Throws(Exception.constructor)
-            
-    public int32_t getDamage(int32_t damageType);
+    public: void damage(int32_t damage, int32_t damageType);
 
                 //@Throws(Exception.constructor)
             
-    public setDestroyed(bool destroyed);
+    public: int32_t getDamage(int32_t damageType);
 
-    public int32_t getType();
+                //@Throws(Exception.constructor)
+            
+    public: void setDestroyed(bool destroyed);
 
-    public bool isSelfUpgradeable();
+    public: int32_t getType();
+
+    public: bool isSelfUpgradeable();
 
 };
 

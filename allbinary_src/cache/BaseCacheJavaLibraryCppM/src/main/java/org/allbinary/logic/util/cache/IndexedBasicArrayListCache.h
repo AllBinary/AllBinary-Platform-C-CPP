@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_H
         #define ORG_ALLBINARY_LOGIC_UTIL_CACHE_INDEXEDBASICARRAYLISTCACHE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -60,44 +62,43 @@
 #include "CacheInterface.h"
 #include "CacheableInterface.h"
 
-class IndexedBasicArrayListCache: public BaseBasicArrayListCache: public CacheInterface {
-        
+class IndexedBasicArrayListCache: public BaseBasicArrayListCache, public CacheInterface {
 
                 //@Throws(Exception.constructor)
             
-    public static IndexedBasicArrayListCache createCache(int32_t size);
+    public: static IndexedBasicArrayListCache createCache(int32_t size);
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: size: int32_t = 0;
+    private: int32_t size = 0;
 
-    index: int32_t = 0;
+    protected: int32_t index = 0;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public init(int32_t size);
-
-    public any getAt(int32_t index);
+public: IndexedBasicArrayListCache();
 
                 //@Throws(Exception.constructor)
             
-    public addDefault();
+    public: void init(int32_t size);
+
+    public: Object* getAt(int32_t index);
 
                 //@Throws(Exception.constructor)
             
-    public addObject(Object anyType);
+    public: void addDefault();
 
                 //@Throws(Exception.constructor)
             
-    public add(CacheableInterface cacheableInterface);
+    public: void addObject(Object anyType);
 
                 //@Throws(Exception.constructor)
             
-    public addArray(std::vector<CacheableInterface> cacheableInterfaces);
+    public: void add(CacheableInterface cacheableInterface);
 
-    public clear();
+                //@Throws(Exception.constructor)
+            
+    public: void addArray(std::vector<CacheableInterface> cacheableInterfaces);
+
+    public: void clear();
 
 };
 

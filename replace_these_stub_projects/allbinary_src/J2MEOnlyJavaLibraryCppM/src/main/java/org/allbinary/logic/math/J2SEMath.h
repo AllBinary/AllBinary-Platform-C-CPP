@@ -45,17 +45,16 @@
 class J2SEMath
             : public Object
          {
-        
 
-    private: static const instance: J2SEMath = new J2SEMath();
+    private: static J2SEMath instance() { return J2SEMath(); }
 
-    public static J2SEMath getInstance();
+    public: static J2SEMath getInstance();
 
-    public int32_t round(float value);
+    public: int32_t round(float value);
 
-    public float abs(float value);
+    public: float abs(float value);
 
-    public double absdouble(double value);
+    public: double absdouble(double value);
 
 };
 

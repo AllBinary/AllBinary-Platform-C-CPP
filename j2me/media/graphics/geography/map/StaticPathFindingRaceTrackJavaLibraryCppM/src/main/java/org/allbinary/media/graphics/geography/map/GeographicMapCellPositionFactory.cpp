@@ -58,45 +58,44 @@
 #include "BasicGeographicMap.h"
 
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
-        
 
-    private: static const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public static Hashtable<any, any> getHashtable(){
+    public: static Hashtable<any, any> getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GeographicMapCellPositionFactory.hashtable;
+                        return GeographicMapCellPositionFactory::hashtable;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface){
+    public: BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    allBinaryTiledLayer: AllBinaryTiledLayer = geographicMapInterface!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer allBinaryTiledLayer = geographicMapInterface.getAllBinaryTiledLayer();;
     
 
-    geographicMapCellPositionFactoryCanBeNull: any = GeographicMapCellPositionFactory.hashtable.get(allBinaryTiledLayer!.getDataId());;
+    Object* geographicMapCellPositionFactoryCanBeNull = GeographicMapCellPositionFactory::hashtable.get(allBinaryTiledLayer.getDataId());;
     
 
                         if(geographicMapCellPositionFactoryCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append("Creating GeographicMapCellPositionFactory for TileLayer: ")!.appendint(allBinaryTiledLayer!.getDataId()!.intValue())!.toString(), this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF(StringMaker().append("Creating GeographicMapCellPositionFactory for TileLayer: ").appendint(allBinaryTiledLayer.getDataId().intValue()).toString(), this, commonStrings.GET_INSTANCE);
     
-geographicMapCellPositionFactoryCanBeNull= new BasicGeographicMapCellPositionFactory(geographicMapInterface);
+geographicMapCellPositionFactoryCanBeNull= BasicGeographicMapCellPositionFactory(geographicMapInterface);
     
-GeographicMapCellPositionFactory.hashtable.put(allBinaryTiledLayer!.getDataId(), geographicMapCellPositionFactoryCanBeNull);
+GeographicMapCellPositionFactory::hashtable.put(allBinaryTiledLayer.getDataId(), geographicMapCellPositionFactoryCanBeNull);
     
 
 
@@ -108,7 +107,7 @@ GeographicMapCellPositionFactory.hashtable.put(allBinaryTiledLayer!.getDataId(),
                                     }
                                 
                         else {
-                            this.logUtil!.putF(new StringMaker().append("Reusing GeographicMapCellPositionFactory for TileLayer: ")!.appendint(allBinaryTiledLayer!.getDataId()!.intValue())!.toString(), this, commonStrings!.GET_INSTANCE);
+                            this->logUtil.putF(StringMaker().append("Reusing GeographicMapCellPositionFactory for TileLayer: ").appendint(allBinaryTiledLayer.getDataId().intValue()).toString(), this, commonStrings.GET_INSTANCE);
     
 
 

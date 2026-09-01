@@ -51,37 +51,36 @@
 class FREEBLISKET_PATH_GLOBALS
             : public Object
          {
-        
 
-    private: static const instance: FREEBLISKET_PATH_GLOBALS = new FREEBLISKET_PATH_GLOBALS();
+    private: static FREEBLISKET_PATH_GLOBALS instance() { return FREEBLISKET_PATH_GLOBALS(); }
 
-    public static FREEBLISKET_PATH_GLOBALS getInstance();
+    public: static FREEBLISKET_PATH_GLOBALS getInstance();
 
-    public const INSTALLPATH: string;
+    public: std::string INSTALLPATH;
 
-    public const XSLPATH: string;
+    public: std::string XSLPATH;
 
-    public const TEMPLATEPATH: string = "template" +AbPathData.getInstance()!.SEPARATOR;
+    public: const std::string TEMPLATEPATH = "template" +AbPathData::getInstance().SEPARATOR;
 
-    public const STYLEPATH: string = this.TEMPLATEPATH +"style" +AbPathData.getInstance()!.SEPARATOR;
+    public: const std::string STYLEPATH = this->TEMPLATEPATH +"style" +AbPathData::getInstance().SEPARATOR;
 
-    public const THEMEPATH: string = this.STYLEPATH +"theme" +AbPathData.getInstance()!.SEPARATOR;
+    public: const std::string THEMEPATH = this->STYLEPATH +"theme" +AbPathData::getInstance().SEPARATOR;
 
-    public const DBINITPATH: string = PATH_GLOBALS.getInstance()!.INIT_PATH +"db" +AbPathData.getInstance()!.SEPARATOR;
+    public: const std::string DBINITPATH = PATH_GLOBALS::getInstance().INIT_PATH +"db" +AbPathData::getInstance().SEPARATOR;
 
-    public const LINEDATAPATH: string = PATH_GLOBALS.getInstance()!.INIT_PATH +"lineData" +AbPathData.getInstance()!.SEPARATOR;
+    public: const std::string LINEDATAPATH = PATH_GLOBALS::getInstance().INIT_PATH +"lineData" +AbPathData::getInstance().SEPARATOR;
 
-    public const CONFIGURATIONPATH: string;
+    public: std::string CONFIGURATIONPATH;
 
-    public const USERCONFIGURATIONPATH: string;
+    public: std::string USERCONFIGURATIONPATH;
 
-    public const CONTEXTCONFIGURATIONPATH: string;
+    public: std::string CONTEXTCONFIGURATIONPATH;
 
-    public const LICENSEERRORPAGE: string = "LicensingError.jsp";
+    public: const std::string LICENSEERRORPAGE = "LicensingError.jsp";
 
-    public const ERRORPAGE: string = "Error.jsp";
+    public: const std::string ERRORPAGE = "Error.jsp";
 
-private constructor ();
+private: FREEBLISKET_PATH_GLOBALS();
 
 };
 

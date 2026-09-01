@@ -56,43 +56,40 @@
 class AllBinaryCollisionManager
             : public Object
          {
-        
 
-    private: static allBinaryCollisionManager: AllBinaryCollisionManager = new AllBinaryCollisionManager();
+    private: static AllBinaryCollisionManager allBinaryCollisionManager = AllBinaryCollisionManager();
 
-    public static AllBinaryCollisionManager getInstance(){
+    public: static AllBinaryCollisionManager getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryCollisionManager.allBinaryCollisionManager;
+                        return AllBinaryCollisionManager::allBinaryCollisionManager;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AllBinaryCollisionManager(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public process(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, int32_t startIndex){
+    public: void process(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, int32_t startIndex){
 
-    size: int32_t = layerManager!.getSize()!;;
+    int32_t size = layerManager.getSize();;
     
 
 
 
 
                         for (
-    index: int32_t = startIndex +1;index < size; index++)
+    int32_t index = startIndex +1;index < size; index++)
         {
 
-    collidableInterfaceCompositeInterface2: CollidableInterfaceCompositeInterface = layerManager!.getLayerAt(index) as CollidableInterfaceCompositeInterface;;
+    CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2 = layerManager.getLayerAt(index) as CollidableInterfaceCompositeInterface;;
     
-this.collide(layerManager, collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
+this->collide(layerManager, collidableInterfaceCompositeInterface, collidableInterfaceCompositeInterface2);
     
 }
 
@@ -101,24 +98,24 @@ this.collide(layerManager, collidableInterfaceCompositeInterface, collidableInte
 
                 //@Throws(Exception.constructor)
             
-    collide(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2){
+    private: void collide(LayerManager layerManager, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface2){
 
-    collidableBase2: CollidableBaseBehavior = collidableInterfaceCompositeInterface2!.getCollidableInferface()!;;
+    CollidableBaseBehavior collidableBase2 = collidableInterfaceCompositeInterface2.getCollidableInferface();;
     
 
-    collidableBase: CollidableBaseBehavior = collidableInterfaceCompositeInterface!.getCollidableInferface()!;;
+    CollidableBaseBehavior collidableBase = collidableInterfaceCompositeInterface.getCollidableInferface();;
     
 
-                        if(collidableBase2!.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
+                        if(collidableBase2.isCollidable(collidableInterfaceCompositeInterface as CollidableCompositeLayer))
                         
                                     {
                                     
-                        if(collidableBase!.isCollisionInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface2))
+                        if(collidableBase.isCollisionInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface2))
                         
                                     {
-                                    collidableBase!.collideInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface2);
+                                    collidableBase.collideInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface2);
     
-collidableBase2!.collideInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface);
+collidableBase2.collideInterface(collidableInterfaceCompositeInterface as CollidableCompositeLayer, collidableInterfaceCompositeInterface);
     
 
                                     }

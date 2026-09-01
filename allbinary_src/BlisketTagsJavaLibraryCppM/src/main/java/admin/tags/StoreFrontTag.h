@@ -70,33 +70,32 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: command: string;
+    private: std::string command;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor ();
+public: StoreFrontTag();
 
-    public setCommand(string command);
+    public: void setCommand(std::string command);
 
-    public setStoreName(string value);
-
-                //@Throws(LicensingException.constructor)
-            
-    string getCurrentLocation();
+    public: void setStoreName(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    string getCurrentHomeLocation();
+    private: std::string getCurrentLocation();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: std::string getCurrentHomeLocation();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

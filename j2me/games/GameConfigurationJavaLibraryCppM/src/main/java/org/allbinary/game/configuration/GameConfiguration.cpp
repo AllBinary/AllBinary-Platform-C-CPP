@@ -74,53 +74,50 @@
 class GameConfiguration
             : public Object
          {
-        
 
-    private: static const MIN_VALUE: Integer = new Integer(Integer.MIN_VALUE);
+    private: static const Integer MIN_VALUE = Integer(Integer::MIN_VALUE);
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: defaultValue: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer defaultValue = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: value: Integer = GameConfiguration.MIN_VALUE;
+    private: Integer value = GameConfiguration::MIN_VALUE;
 
-    private: minValue: Integer = this.defaultValue;
+    private: Integer minValue = this->defaultValue;
 
-    private: maxValue: Integer = this.defaultValue;
+    private: Integer maxValue = this->defaultValue;
 
-    private: modifiable: Boolean = BooleanFactory.getInstance()!.TRUE;
+    private: Boolean modifiable = BooleanFactory::getInstance().TRUE;
 
-public constructor (string name, Integer defaultValue, Integer minValue, Integer maxValue){
-
-            super();
-        this.setName(name);
+public: GameConfiguration(std::string name, Integer defaultValue, Integer minValue, Integer maxValue){
+this->setName(name);
     
-this.setDefaultValue(defaultValue);
+this->setDefaultValue(defaultValue);
     
-this.value= this.getDefaultValue();
+this->value= this->getDefaultValue();
     
-this.setMinValue(minValue);
+this->setMinValue(minValue);
     
-this.setMaxValue(maxValue);
+this->setMaxValue(maxValue);
     
-GameConfigurationSingleton.getInstance()!.getHashtable()!.put(this.getName(), this);
+GameConfigurationSingleton::getInstance().getHashtable().put(this->getName(), this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setValue(Integer value){
+    public: void setValue(Integer value){
 
-                        if(this.value != value)
+                        if(this->value != value)
                         
                                     {
                                     
-    oldValue: Integer = this.value;;
+    Integer oldValue = this->value;;
     
-this.value= value;
+this->value= value;
     
-GameFeatureEventHandler.getInstance()!.fireEvent(new GameFeatureEvent(this, new StringMaker().append(this.name)!.append(" value: from: ")!.appendint(oldValue!.intValue())!.append(" to ")!.appendint(this.value.intValue())!.toString()));
+GameFeatureEventHandler::getInstance().fireEvent(GameFeatureEvent(this, StringMaker().append(this->name).append(" value: from: ").appendint(oldValue.intValue()).append(" to ").appendint(this->value.intValue()).toString()));
     
 
                                     }
@@ -128,137 +125,137 @@ GameFeatureEventHandler.getInstance()!.fireEvent(new GameFeatureEvent(this, new 
 }
 
 
-    public Integer getValue(){
+    public: Integer getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 
 
-    public setMaxValue(Integer maxValue){
-this.maxValue= maxValue;
+    public: void setMaxValue(Integer maxValue){
+this->maxValue= maxValue;
     
 }
 
 
-    public Integer getMaxValue(){
+    public: Integer getMaxValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxValue;
+                        return this->maxValue;
     
 }
 
 
-    public setMinValue(Integer minValue){
-this.minValue= minValue;
+    public: void setMinValue(Integer minValue){
+this->minValue= minValue;
     
 }
 
 
-    public Integer getMinValue(){
+    public: Integer getMinValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minValue;
+                        return this->minValue;
     
 }
 
 
-    public setName(string name){
-this.name= name;
+    public: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public setDefaultValue(Integer defaultValue){
-this.defaultValue= defaultValue;
+    public: void setDefaultValue(Integer defaultValue){
+this->defaultValue= defaultValue;
     
 }
 
 
-    Integer getDefaultValue(){
+    protected: Integer getDefaultValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.defaultValue;
+                        return this->defaultValue;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(){
-this.setValue(this.getDefaultValue());
+    public: void setDefault(){
+this->setValue(this->getDefaultValue());
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Name: ");
+stringBuffer.append("Name: ");
     
-stringBuffer!.append(this.name);
+stringBuffer.append(this->name);
     
-stringBuffer!.append(" Min: ");
+stringBuffer.append(" Min: ");
     
-stringBuffer!.appendint(this.getMinValue()!.intValue());
+stringBuffer.appendint(this->getMinValue().intValue());
     
-stringBuffer!.append(" Max: ");
+stringBuffer.append(" Max: ");
     
-stringBuffer!.appendint(this.getMaxValue()!.intValue());
+stringBuffer.appendint(this->getMaxValue().intValue());
     
-stringBuffer!.append(" Value: ");
+stringBuffer.append(" Value: ");
     
-stringBuffer!.appendint(this.getValue()!.intValue());
+stringBuffer.appendint(this->getValue().intValue());
     
-stringBuffer!.append(" Default: ");
+stringBuffer.append(" Default: ");
     
-stringBuffer!.appendint(this.getDefaultValue()!.intValue());
+stringBuffer.appendint(this->getDefaultValue().intValue());
     
-stringBuffer!.append(" Modifiable: ");
+stringBuffer.append(" Modifiable: ");
     
-stringBuffer!.appendboolean(this.isModifiable().valueOf());
+stringBuffer.appendboolean(this->isModifiable().valueOf());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public setModifiable(Boolean modifiable){
-this.modifiable= modifiable;
+    public: void setModifiable(Boolean modifiable){
+this->modifiable= modifiable;
     
 }
 
 
-    public Boolean isModifiable(){
+    public: Boolean isModifiable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.modifiable;
+                        return this->modifiable;
     
 }
 

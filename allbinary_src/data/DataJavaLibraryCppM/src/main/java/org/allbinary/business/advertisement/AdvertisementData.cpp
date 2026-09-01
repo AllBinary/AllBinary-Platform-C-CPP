@@ -42,29 +42,26 @@
 class AdvertisementData
             : public Object
          {
-        
 
-    private: static const instance: AdvertisementData = new AdvertisementData();
+    private: static AdvertisementData instance() { return AdvertisementData(); }
 
-    public static AdvertisementData getInstance(){
+    public: static AdvertisementData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AdvertisementData.instance;
+                        return AdvertisementData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AdvertisementData(){
+}
 
 
-    public const NAME: string = "ADVERTISEMENT_NAME";
+    public: const std::string NAME = "ADVERTISEMENT_NAME";
 
-    public const DESCRIPTION: string = "ADVERTISEMENT_DESCRIPTION";
+    public: const std::string DESCRIPTION = "ADVERTISEMENT_DESCRIPTION";
 
 };
 

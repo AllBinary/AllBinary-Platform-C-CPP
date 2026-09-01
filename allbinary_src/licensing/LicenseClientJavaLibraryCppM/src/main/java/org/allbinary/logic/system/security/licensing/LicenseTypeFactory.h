@@ -49,19 +49,18 @@
 class LicenseTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: LicenseTypeFactory = new LicenseTypeFactory();
+    private: static LicenseTypeFactory instance() { return LicenseTypeFactory(); }
 
-    public static LicenseTypeFactory getInstance();
+    public: static LicenseTypeFactory getInstance();
 
-    public const UNKNOWN: LicenseType = new LicenseType(CommonStrings.getInstance()!.UNKNOWN);
+    public: const LicenseType UNKNOWN = LicenseType(CommonStrings::getInstance().UNKNOWN);
 
-    public const DEMO: LicenseType = new LicenseType("Demo");
+    public: const LicenseType DEMO = LicenseType("Demo");
 
-    public const NORMAL: LicenseType = new LicenseType("Normal");
+    public: const LicenseType NORMAL = LicenseType("Normal");
 
-    public LicenseType getInstance(string name);
+    public: LicenseType getInstance(std::string name);
 
 };
 

@@ -25,7 +25,6 @@
         #include "GL10.h"
 
 class GL11: public GL10 {
-        
 
 };
 

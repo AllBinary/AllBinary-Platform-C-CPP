@@ -81,31 +81,30 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance();
+    /*actual*/ public: static LogUtil getInstance();
 
-    private: const MESSAGE: string = "message";
+    private: const std::string MESSAGE = "message";
 
-    private: isFirstException: bool = true;
+    private: bool isFirstException = true;
 
-    private: timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(200000);
+    private: TimeDelayHelper timeDelayHelper = TimeDelayHelper(200000);
 
-    public abeClientInformation: AbeClientInformationInterface;
+    public: AbeClientInformationInterface abeClientInformation;
 
-private constructor ();
+private: LogUtil();
 
-    private: const stringBuffer: StringMaker = new StringMaker();
+    private: const StringMaker stringBuffer = StringMaker();
 
-    /*actual*/ public putL(Log log);
+    /*actual*/ public: void putL(Log log);
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName);
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
 
-    /*actual*/ public putF(string specialMessage, string className, string functionName);
+    /*actual*/ public: void putF(std::string specialMessage, std::string className, std::string functionName);
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
 };
 

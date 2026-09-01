@@ -48,21 +48,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MidletExitProcessor: public Processor {
-        
 
-    private: const midlet: MIDlet;
+    private: MIDlet midlet;
 
-public constructor (MIDlet midlet){
-
-            super();
-        this.midlet= midlet;
+public: MidletExitProcessor(MIDlet midlet){
+this->midlet= midlet;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    public: void process(){
 System.exit(0);
     
 }

@@ -88,34 +88,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BodyData.h"
 
-class GenericBodyValidation: public Validation: public DomNodeInterface {
-        
+class GenericBodyValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: body: string;
+    private: std::string body;
 
-public constructor ();
+public: GenericBodyValidation();
 
-public constructor (Document document);
+public: GenericBodyValidation(Document document);
 
-public constructor (HashMap<any, any> hashMap);
-
-                //@Throws(Exception.constructor)
-            
-    public getFormData(HashMap<any, any> hashMap);
-
-    public Boolean isValid();
-
-    public string validationInfo();
-
-    public Document toValidationInfoDoc();
-
-    public Node toValidationInfoNode(Document document);
+public: GenericBodyValidation(HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: void getFormData(HashMap<any, any> hashMap);
+
+    public: Boolean isValid();
+
+    public: std::string validationInfo();
+
+    public: Document toValidationInfoDoc();
+
+    public: Node toValidationInfoNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: Node toXmlNode(Document document);
 
 };
 

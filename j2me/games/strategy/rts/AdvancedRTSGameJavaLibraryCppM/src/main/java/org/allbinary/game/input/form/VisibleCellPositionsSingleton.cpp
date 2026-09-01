@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -86,151 +88,148 @@
 class VisibleCellPositionsSingleton
             : public Object
         : public BuildingEventListenerInterface, public ScrollMapEventListenerInterface {
-        
 
-    private: static const instance: VisibleCellPositionsSingleton = new VisibleCellPositionsSingleton();
+    private: static VisibleCellPositionsSingleton instance() { return VisibleCellPositionsSingleton(); }
 
-    public static VisibleCellPositionsSingleton getInstance(){
+    public: static VisibleCellPositionsSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VisibleCellPositionsSingleton.instance;
+                        return VisibleCellPositionsSingleton::instance();
     
 }
 
 
-    private: stationaryVisibleCellPositions: std::vector<std::vector<int16_t>> = NullUtil.getInstance()!.NULL_SHORT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int16_t>> stationaryVisibleCellPositions = NullUtil::getInstance().NULL_SHORT_ARRAY_ARRAY;
 
-    private: visibleCellPositions: std::vector<std::vector<int16_t>> = NullUtil.getInstance()!.NULL_SHORT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int16_t>> visibleCellPositions = NullUtil::getInstance().NULL_SHORT_ARRAY_ARRAY;
 
-    private: currentlyVisibleCellPositions: std::vector<std::vector<int16_t>> = NullUtil.getInstance()!.NULL_SHORT_ARRAY_ARRAY;
+    private: std::vector<std::vector<int16_t>> currentlyVisibleCellPositions = NullUtil::getInstance().NULL_SHORT_ARRAY_ARRAY;
 
-    public const ALL_VISIBLE_TILEDLAYER: SimpleTiledLayer = new SimpleTiledLayer(0, 0, 0, 0);
+    public: const SimpleTiledLayer ALL_VISIBLE_TILEDLAYER = SimpleTiledLayer(0, 0, 0, 0);
 
-    private: simpleTiledLayer: SimpleTiledLayer = this.ALL_VISIBLE_TILEDLAYER;
+    private: SimpleTiledLayer simpleTiledLayer = this->ALL_VISIBLE_TILEDLAYER;
 
-    private: paintSimpleTiledLayer: SimpleTiledLayer = this.ALL_VISIBLE_TILEDLAYER;
+    private: SimpleTiledLayer paintSimpleTiledLayer = this->ALL_VISIBLE_TILEDLAYER;
 
-    private: currentIndex: int32_t= 0;
+    private: int32_t currentIndex= 0;
 
-private constructor (){
-
-            super();
-        LocalPlayerBuildingEventHandler.getInstance()!.addListenerInterface(this);
+private: VisibleCellPositionsSingleton(){
+LocalPlayerBuildingEventHandler::getInstance().addListenerInterface(this);
     
-ScrollMapEventHandler.getInstance()!.addListenerInterface(this);
+ScrollMapEventHandler::getInstance().addListenerInterface(this);
     
 }
 
 
-    public init(SimpleTiledLayer simpleTiledLayer){
-this.paintSimpleTiledLayer= this.ALL_VISIBLE_TILEDLAYER;
+    public: void init(SimpleTiledLayer simpleTiledLayer){
+this->paintSimpleTiledLayer= this->ALL_VISIBLE_TILEDLAYER;
     
-this.currentIndex= 0;
-    
-
-    rows: int32_t = simpleTiledLayer!.getRows()!;;
+this->currentIndex= 0;
     
 
-    columns: int32_t = simpleTiledLayer!.getColumns()!;;
+    int32_t rows = simpleTiledLayer.getRows();;
     
-this.stationaryVisibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
+
+    int32_t columns = simpleTiledLayer.getColumns();;
     
-this.visibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
+this->stationaryVisibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
     
-this.currentlyVisibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
+this->visibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
     
-this.setSimpleTiledLayer(simpleTiledLayer);
+this->currentlyVisibleCellPositions= new Array(rows).fill(null).map(() => new Array(columns).fill(0));
+    
+this->setSimpleTiledLayer(simpleTiledLayer);
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public onBuildingEvent(RTSLayerEvent event){
-this.paintSimpleTiledLayer= this.simpleTiledLayer;
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public onMoveEvent(ScrollMapEvent scrollMapEvent){
-this.move(scrollMapEvent!.getDx(), scrollMapEvent!.getDy());
+    public: void onBuildingEvent(RTSLayerEvent event){
+this->paintSimpleTiledLayer= this->simpleTiledLayer;
     
 }
 
 
-    public addStationaryCellPositions(BasicArrayList list){
+                //@Throws(Exception.constructor)
+            
+    public: void onMoveEvent(ScrollMapEvent scrollMapEvent){
+this->move(scrollMapEvent.getDx(), scrollMapEvent.getDy());
+    
+}
+
+
+    public: void addStationaryCellPositions(BasicArrayList list){
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    cellPosition: CellPosition = list.get(index) as CellPosition;;
+    CellPosition cellPosition = list.get(index) as CellPosition;;
     
-this.stationaryVisibleCellPositions[cellPosition!.getRow()]![cellPosition!.getColumn()]++;
+this->stationaryVisibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()]++;
     
 }
 
 }
 
 
-    public removeStationaryCellPositions(BasicArrayList list){
+    public: void removeStationaryCellPositions(BasicArrayList list){
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    cellPosition: CellPosition = list.get(index) as CellPosition;;
+    CellPosition cellPosition = list.get(index) as CellPosition;;
     
-this.stationaryVisibleCellPositions[cellPosition!.getRow()]![cellPosition!.getColumn()]--;
+this->stationaryVisibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()]--;
     
 }
 
 }
 
 
-    public update(){
+    public: void update(){
 
-                        if(this.currentIndex == 0)
+                        if(this->currentIndex == 0)
                         
                                     {
                                     
-    temp: std::vector<std::vector<int16_t>> = this.currentlyVisibleCellPositions;;
+    std::vector<std::vector<int16_t>> temp = this->currentlyVisibleCellPositions;;
     
-this.currentlyVisibleCellPositions= this.visibleCellPositions;
+this->currentlyVisibleCellPositions= this->visibleCellPositions;
     
-this.visibleCellPositions= temp;
+this->visibleCellPositions= temp;
     
 
 
 
 
                         for (
-    index: int32_t = this.visibleCellPositions!.length -1;index >= 0; index--)
+    int32_t index = this->visibleCellPositions.size() -1;index >= 0; index--)
         {
 
 
 
 
                         for (
-    index2: int32_t = this.visibleCellPositions[0]!.length -1;index2 >= 0; index2--)
+    int32_t index2 = this->visibleCellPositions[0]!.size() -1;index2 >= 0; index2--)
         {
-this.visibleCellPositions[index]![index2]= this.stationaryVisibleCellPositions[index]![index2]!;
+this->visibleCellPositions[index]![index2]= this->stationaryVisibleCellPositions[index]![index2]!;
     
 }
 
@@ -239,13 +238,13 @@ this.visibleCellPositions[index]![index2]= this.stationaryVisibleCellPositions[i
 
                                     }
                                 
-this.currentIndex++;
+this->currentIndex++;
     
 
-                        if(this.currentIndex > 10)
+                        if(this->currentIndex > 10)
                         
                                     {
-                                    this.currentIndex= 0;
+                                    this->currentIndex= 0;
     
 
                                     }
@@ -253,9 +252,9 @@ this.currentIndex++;
 }
 
 
-    public bool shouldProcess(){
+    public: bool shouldProcess(){
 
-                        if(this.currentIndex == 0)
+                        if(this->currentIndex == 0)
                         
                                     {
                                     
@@ -280,27 +279,27 @@ this.currentIndex++;
 }
 
 
-    public addCellPositions(BasicArrayList list){
+    public: void addCellPositions(BasicArrayList list){
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 
-    cellPosition: CellPosition = list.get(index) as CellPosition;;
+    CellPosition cellPosition = list.get(index) as CellPosition;;
     
-this.visibleCellPositions[cellPosition!.getRow()]![cellPosition!.getColumn()]++;
+this->visibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()]++;
     
 }
 
 }
 
 
-    public bool isVisible(CellPosition cellPosition){
+    public: bool isVisible(CellPosition cellPosition){
 
-                        if(this.visibleCellPositions[cellPosition!.getRow()]![cellPosition!.getColumn()] > 0)
+                        if(this->visibleCellPositions[cellPosition.getRow()]![cellPosition.getColumn()] > 0)
                         
                                     {
                                     
@@ -325,30 +324,30 @@ this.visibleCellPositions[cellPosition!.getRow()]![cellPosition!.getColumn()]++;
 }
 
 
-    public move(int32_t dx, int32_t dy){
-this.getSimpleTiledLayer()!.moveDXY(dx, dy);
+    public: void move(int32_t dx, int32_t dy){
+this->getSimpleTiledLayer().moveDXY(dx, dy);
     
 }
 
 
-    public paint(Graphics graphics){
-this.paintSimpleTiledLayer!.paint(graphics, this.currentlyVisibleCellPositions);
+    public: void paint(Graphics graphics){
+this->paintSimpleTiledLayer.paint(graphics, this->currentlyVisibleCellPositions);
     
 }
 
 
-    setSimpleTiledLayer(SimpleTiledLayer simpleTiledLayer){
-this.simpleTiledLayer= simpleTiledLayer;
+    private: void setSimpleTiledLayer(SimpleTiledLayer simpleTiledLayer){
+this->simpleTiledLayer= simpleTiledLayer;
     
 }
 
 
-    public SimpleTiledLayer getSimpleTiledLayer(){
+    public: SimpleTiledLayer getSimpleTiledLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.simpleTiledLayer;
+                        return this->simpleTiledLayer;
     
 }
 

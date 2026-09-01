@@ -42,13 +42,12 @@
 class MultipassState
             : public Object
          {
-        
 
-    public step: int32_t= 0;
+    public: int32_t step= 0;
 
-    public iteration: int32_t= 0;
+    public: int32_t iteration= 0;
 
-    public iteration2: int32_t= 0;
+    public: int32_t iteration2= 0;
 
 };
 

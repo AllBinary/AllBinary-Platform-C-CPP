@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -53,21 +55,20 @@
 class EnumerationUtil
             : public Object
          {
-        
 
-    private: static const instance: EnumerationUtil = new EnumerationUtil();
+    private: static EnumerationUtil instance() { return EnumerationUtil(); }
 
-    public static EnumerationUtil getInstance(){
+    public: static EnumerationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EnumerationUtil.instance;
+                        return EnumerationUtil::instance();
     
 }
 
 
-    public bool hasMoreElements(Enumeration<any> enumeration){
+    public: bool hasMoreElements(Enumeration<any> enumeration){
 
 
 
@@ -77,7 +78,7 @@ class EnumerationUtil
 }
 
 
-    public any nextElement(Enumeration<any> enumeration){
+    public: Object* nextElement(Enumeration<any> enumeration){
 
 
 
@@ -87,14 +88,14 @@ class EnumerationUtil
 }
 
 
-    public std::vector<any> getAsArray(Enumeration<any> enumeration){
+    public: std::vector<Object*> getAsArray(Enumeration<any> enumeration){
 
-    basicArrayList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList basicArrayList = BasicArrayListD();;
     
 
-        while(this.hasMoreElements(enumeration))
+        while(this->hasMoreElements(enumeration))
         {
-basicArrayList!.add(this.nextElement(enumeration)!);
+basicArrayList.add(this->nextElement(enumeration)!);
     
 }
 
@@ -102,7 +103,7 @@ basicArrayList!.add(this.nextElement(enumeration)!);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return basicArrayList!.toArray();;
+                        return basicArrayList.toArray();;
     
 }
 

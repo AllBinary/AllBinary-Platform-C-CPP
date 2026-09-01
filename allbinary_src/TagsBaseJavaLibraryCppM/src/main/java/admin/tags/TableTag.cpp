@@ -80,30 +80,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TableTag: public PropertiesTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: enabled: string;
+    private: std::string enabled;
 
-    private: tagHelperFactoryInterface: TagHelperFactoryInterface;
+    private: TagHelperFactoryInterface tagHelperFactoryInterface;
 
-    private: tagRequestHelperFactoryInterface: TagHelperFactoryInterface;
+    private: TagHelperFactoryInterface tagRequestHelperFactoryInterface;
 
-    private: requestObject: any;
+    private: Object* requestObject;
 
-    private: current: Integer;
+    private: Integer current;
 
-    private: total: Integer;
+    private: Integer total;
 
-public constructor (){
+public: TableTag(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -111,21 +108,21 @@ public constructor (){
 }
 
 
-    public setIsSelected(string enabled){
-this.enabled= enabled;
+    public: void setIsSelected(std::string enabled){
+this->enabled= enabled;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isEnabled(){
+    public: bool isEnabled(){
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(this.enabled))
+                        if(!StringValidationUtil::getInstance().isEmpty(this->enabled))
                         
                                     {
                                     
-                        if(BooleanUtil.getInstance()!.getFromString(this.enabled) || this.enabled.compareTo("on") == 0)
+                        if(BooleanUtil::getInstance().getFromString(this->enabled) || this->enabled.compareTo("on") == 0)
                         
                                     {
                                     
@@ -149,87 +146,87 @@ this.enabled= enabled;
 }
 
 
-    setTagHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface){
-this.tagHelperFactoryInterface= tagHelperFactoryInterface;
+    protected: void setTagHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface){
+this->tagHelperFactoryInterface= tagHelperFactoryInterface;
     
 }
 
 
-    TagHelperFactoryInterface getTagHelperFactoryInterface(){
+    protected: TagHelperFactoryInterface getTagHelperFactoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tagHelperFactoryInterface;
+                        return this->tagHelperFactoryInterface;
     
 }
 
 
-    setTagRequestHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface){
-this.tagRequestHelperFactoryInterface= tagHelperFactoryInterface;
+    protected: void setTagRequestHelperFactory(TagHelperFactoryInterface tagHelperFactoryInterface){
+this->tagRequestHelperFactoryInterface= tagHelperFactoryInterface;
     
 }
 
 
-    TagHelperFactoryInterface getTagRequestHelperFactoryInterface(){
+    protected: TagHelperFactoryInterface getTagRequestHelperFactoryInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tagRequestHelperFactoryInterface;
+                        return this->tagRequestHelperFactoryInterface;
     
 }
 
 
-    public setCurrent(Integer current){
-this.current= current;
+    public: void setCurrent(Integer current){
+this->current= current;
     
 }
 
 
-    public Integer getCurrent(){
+    public: Integer getCurrent(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.current;
+                        return this->current;
     
 }
 
 
-    public setTotal(Integer total){
-this.total= total;
+    public: void setTotal(Integer total){
+this->total= total;
     
 }
 
 
-    public Integer getTotal(){
+    public: Integer getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.total;
+                        return this->total;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    public string drop(){
+    public: std::string drop(){
 
         try {
             
-    anyType: any = this.getTagHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("drop", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("drop", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -243,13 +240,13 @@ this.total= total;
 } catch(e) 
             {
 
-    error: string = "Failed to drop table";;
+    std::string error = "Failed to drop table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.DROP, e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.DROP, e);
     
 
                                     }
@@ -267,21 +264,21 @@ this.total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public string create(){
+    public: std::string create(){
 
         try {
             
-    anyType: any = this.getTagHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("create", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("create", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -295,13 +292,13 @@ this.total= total;
 } catch(e) 
             {
 
-    error: string = "Failed to create table";;
+    std::string error = "Failed to create table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "create()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "create()", e);
     
 
                                     }
@@ -319,21 +316,21 @@ this.total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public string restore(){
+    public: std::string restore(){
 
         try {
             
-    anyType: any = this.getTagHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("restore", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("restore", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -347,13 +344,13 @@ this.total= total;
 } catch(e) 
             {
 
-    error: string = "Failed to restore backup";;
+    std::string error = "Failed to restore backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "restore()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "restore()", e);
     
 
                                     }
@@ -371,21 +368,21 @@ this.total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public string backup(){
+    public: std::string backup(){
 
         try {
             
-    anyType: any = this.getTagHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    addressHelperClass: Function = anyType!.constructor!;;
+    Function addressHelperClass = anyType->constructor;;
     
 
-    method: Method = addressHelperClass!.getMethod("backup", 
-                            nullptr)!;;
+    Method method = addressHelperClass.getMethod("backup", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -399,13 +396,13 @@ this.total= total;
 } catch(e) 
             {
 
-    error: string = "Failed to make backup";;
+    std::string error = "Failed to make backup";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "backup()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "backup()", e);
     
 
                                     }
@@ -423,18 +420,18 @@ this.total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    helperClass: Function = this.requestObject!.constructor!;;
+    Function helperClass = this->requestObject.constructor;;
     
 
-    method: Method = helperClass!.getMethod("insert", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("insert", 
+                            nullptr);;
     
 
-    result: string = method.invoke(this.requestObject, 
+    std::string result = method.invoke(this->requestObject, 
                             nullptr) as string;;
     
 
@@ -448,13 +445,13 @@ this.total= total;
 } catch(e) 
             {
 
-    error: string = "Failed to insert";;
+    std::string error = "Failed to insert";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "insert()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
     
 
                                     }
@@ -472,18 +469,18 @@ this.total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public string delete(){
+    public: std::string delete_(){
 
         try {
             
-    helperClass: Function = this.requestObject!.constructor!;;
+    Function helperClass = this->requestObject.constructor;;
     
 
-    method: Method = helperClass!.getMethod(commonStrings!.delete, 
-                            nullptr)!;;
+    Method method = helperClass.getMethod(commonStrings.delete_, 
+                            nullptr);;
     
 
-    result: string = method.invoke(this.requestObject, 
+    std::string result = method.invoke(this->requestObject, 
                             nullptr) as string;;
     
 
@@ -497,13 +494,13 @@ this.total= total;
 } catch(e) 
             {
 
-    error: string = "Failed to delete";;
+    std::string error = "Failed to delete";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
     
 
                                     }
@@ -521,18 +518,18 @@ this.total= total;
 
                 //@Throws(LicensingException.constructor)
             
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    helperClass: Function = this.requestObject!.constructor!;;
+    Function helperClass = this->requestObject.constructor;;
     
 
-    method: Method = helperClass!.getMethod("update", 
-                            nullptr)!;;
+    Method method = helperClass.getMethod("update", 
+                            nullptr);;
     
 
-    result: string = method.invoke(this.requestObject, 
+    std::string result = method.invoke(this->requestObject, 
                             nullptr) as string;;
     
 
@@ -546,13 +543,13 @@ this.total= total;
 } catch(e) 
             {
 
-    error: string = "Failed to update";;
+    std::string error = "Failed to update";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }
@@ -570,43 +567,43 @@ this.total= total;
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
                                     
-    request: HttpServletRequest = this.pageContext!.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = this->pageContext.getRequest() as HttpServletRequest;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TableTag Helper: ");
+stringBuffer.append("TableTag Helper: ");
     
-stringBuffer!.append(this.getTagHelperFactoryInterface()!.constructor.name.toString()!);
+stringBuffer.append(this->getTagHelperFactoryInterface().constructor.name.toString()!);
     
-stringBuffer!.append(" Request URI: ");
+stringBuffer.append(" Request URI: ");
     
-stringBuffer!.append(request.getRequestURI());
+stringBuffer.append(request.getRequestURI());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.tagStrings!.DO_START_TAG);
+this->logUtil.putF(stringBuffer.toString(), this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.getTagRequestHelperFactoryInterface() != 
-                                    null
+                        if(this->getTagRequestHelperFactoryInterface() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("TableTag RequestHelper: " +this.getTagRequestHelperFactoryInterface()!.constructor.name.toString()!, this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("TableTag RequestHelper: " +this->getTagRequestHelperFactoryInterface().constructor.name.toString()!, this, this->tagStrings.DO_START_TAG);
     
 
                                     }
@@ -616,10 +613,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.tagStrings!.DO_START_TAG
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("TableTag RequestHelper: null", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("TableTag RequestHelper: null", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
@@ -628,72 +625,72 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.tagStrings!.DO_START_TAG
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("TableTag this.getCommand(): " +this.getCommand(), this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("TableTag this.getCommand(): " +this->getCommand(), this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(this.commonStrings!.INSERT) == 0 || this.getCommand()!.compareTo(SqlStrings.getInstance()!.INSERT_INTO) == 0 || this.getCommand()!.compareTo(commonStrings!.DELETE) == 0 || this.getCommand()!.compareTo(commonStrings!.UPDATE) == 0 || this.getCommand()!.compareTo(SqlStrings.getInstance()!.UPDATE) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0 || this->getCommand().compareTo(SqlStrings::getInstance().INSERT_INTO) == 0 || this->getCommand().compareTo(commonStrings.DELETE) == 0 || this->getCommand().compareTo(commonStrings.UPDATE) == 0 || this->getCommand().compareTo(SqlStrings::getInstance().UPDATE) == 0)
                         
                                     {
-                                    this.requestObject= this.getTagRequestHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext);
+                                    this->requestObject= this->getTagRequestHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);
     
 
                                     }
                                 
 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.INSERT) == 0 || this.getCommand()!.compareTo(SqlStrings.getInstance()!.INSERT_INTO) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0 || this->getCommand().compareTo(SqlStrings::getInstance().INSERT_INTO) == 0)
                         
                                     {
-                                    this.insert();
-    
-
-                                    }
-                                
-                             else 
-                        if(this.getCommand()!.compareTo(commonStrings!.DELETE) == 0)
-                        
-                                    {
-                                    this.delete();
+                                    this->insert();
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(commonStrings!.UPDATE) == 0 || this.getCommand()!.compareTo(SqlStrings.getInstance()!.UPDATE) == 0)
+                        if(this->getCommand().compareTo(commonStrings.DELETE) == 0)
                         
                                     {
-                                    this.update();
+                                    this->delete();
+    
+
+                                    }
+                                
+                             else 
+                        if(this->getCommand().compareTo(commonStrings.UPDATE) == 0 || this->getCommand().compareTo(SqlStrings::getInstance().UPDATE) == 0)
+                        
+                                    {
+                                    this->update();
     
 
                                     }
                                 
 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.BACKUP) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.BACKUP) == 0)
                         
                                     {
                                     
-    output: string = this.backup()!;;
+    std::string output = this->backup();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -708,21 +705,21 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.tagStrings!.DO_START_TAG
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(org.allbinary.globals.GLOBALS2.RESTORE) == 0)
+                        if(this->getCommand().compareTo(org.allbinary.globals.GLOBALS2.RESTORE) == 0)
                         
                                     {
-                                    this.getPropertiesHashMap()!.put("current", this.getCurrent());
+                                    this->getPropertiesHashMap().put("current", this->getCurrent());
     
-this.getPropertiesHashMap()!.put("total", this.getTotal());
-    
-
-    output: string = this.restore()!;;
+this->getPropertiesHashMap().put("total", this->getTotal());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+    std::string output = this->restore();;
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -737,17 +734,17 @@ this.getPropertiesHashMap()!.put("total", this.getTotal());
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(commonStrings!.DROP) == 0)
+                        if(this->getCommand().compareTo(commonStrings.DROP) == 0)
                         
                                     {
                                     
-    output: string = this.drop()!;;
+    std::string output = this->drop();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -762,17 +759,17 @@ this.getPropertiesHashMap()!.put("total", this.getTotal());
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(commonStrings!.CREATE) == 0)
+                        if(this->getCommand().compareTo(commonStrings.CREATE) == 0)
                         
                                     {
                                     
-    output: string = this.create()!;;
+    std::string output = this->create();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -787,17 +784,17 @@ this.getPropertiesHashMap()!.put("total", this.getTotal());
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(commonStrings!.INSERT) == 0)
+                        if(this->getCommand().compareTo(commonStrings.INSERT) == 0)
                         
                                     {
                                     
-    output: string = this.insert()!;;
+    std::string output = this->insert();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -806,17 +803,17 @@ this.getPropertiesHashMap()!.put("total", this.getTotal());
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(commonStrings!.DELETE) == 0)
+                        if(this->getCommand().compareTo(commonStrings.DELETE) == 0)
                         
                                     {
                                     
-    output: string = this.delete()!;;
+    std::string output = this->delete_();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -825,17 +822,17 @@ this.getPropertiesHashMap()!.put("total", this.getTotal());
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(commonStrings!.UPDATE) == 0)
+                        if(this->getCommand().compareTo(commonStrings.UPDATE) == 0)
                         
                                     {
                                     
-    output: string = this.update()!;;
+    std::string output = this->update();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGEXTRAOUTPUT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGEXTRAOUTPUT))
                         
                                     {
-                                    this.pageContext!.getOut()!.print(output +"<br />");
+                                    this->pageContext.getOut().print(output +"<br />");
     
 
                                     }
@@ -859,7 +856,7 @@ this.getPropertiesHashMap()!.put("total", this.getTotal());
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -872,7 +869,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

@@ -88,43 +88,42 @@
         #include "BasicTable.h"
 
 class ShippingAddressHelper: public BasicTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: streetAddress: StreetAddress;
+    private: StreetAddress streetAddress;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: ShippingAddressHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    getAddressForm();
+    private: void getAddressForm();
 
-    public string drop();
+    public: std::string drop();
 
-    public string create();
+    public: std::string create();
 
-    public string restore();
+    public: std::string restore();
 
-    public string backup();
+    public: std::string backup();
 
-    public string insert();
+    public: std::string insert();
 
-    public string update();
+    public: std::string update();
 
-    string setToBillingAddress();
+    private: std::string setToBillingAddress();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string set();
+    public: std::string set();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/game/rand/MyRandomFactory.h>
 
       
@@ -54,43 +56,40 @@
         #include "TileMapPlacementVisitor.h"
 
 class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const randomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory randomFactory = MyRandomFactory::getInstance();
 
-    public visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData){
+    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData){
 
-    layerIndex: int32_t = 0;;
+    int32_t layerIndex = 0;;
     
 
-    tileLayer: TileLayer = (lastMap!.getLayer(layerIndex) as TileLayer);;
+    TileLayer tileLayer = (lastMap.getLayer(layerIndex) as TileLayer);;
     
 
-    mapArray: std::vector<std::vector<int32_t>> = tileLayer!.getMapArray()!;;
+    std::vector<std::vector<int32_t>> mapArray = tileLayer.getMapArray();;
     
 
-    size: int32_t = mapData!.length
-                ;;
+    int32_t size = mapData.size();;
     
 
-    size2: int32_t = mapData[0]!.length
-                ;;
+    int32_t size2 = mapData[0]!.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size2; index2++)
+    int32_t index2 = 0;index2 < size2; index2++)
         {
 
                         if(mapArray[index]![index2] == 14)
@@ -100,7 +99,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                                     }
                                 
                         else {
-                            this.visit2(mapArray, mapData, index, index2);
+                            this->visit2(mapArray, mapData, index, index2);
     
 
                         }
@@ -114,7 +113,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-    randomInt: int32_t = this.randomFactory!.getAbsoluteNextIntAllowZero(3)!;;
+    int32_t randomInt = this->randomFactory.getAbsoluteNextIntAllowZero(3);;
     
 
                         if(randomInt == 0)
@@ -151,7 +150,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-    randomInt: int32_t = randomFactory!.getAbsoluteNextIntAllowZero(3)!;;
+    int32_t randomInt = randomFactory.getAbsoluteNextIntAllowZero(3);;
     
 
                         if(randomInt == 0)
@@ -195,7 +194,7 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
                         
                                     {
                                     
-    randomInt: int32_t = this.randomFactory!.getAbsoluteNextIntAllowZero(4)!;;
+    int32_t randomInt = this->randomFactory.getAbsoluteNextIntAllowZero(4);;
     
 
                         if(randomInt == 0)
@@ -246,25 +245,25 @@ class PropsTileMapPlacementVisitor: public TileMapPlacementVisitor {
 }
 
 
-    public visit2(std::vector<std::vector<int32_t>> mapArray, std::vector<std::vector<int32_t>> mapData, int32_t index, int32_t index2){
+    public: void visit2(std::vector<std::vector<int32_t>> mapArray, std::vector<std::vector<int32_t>> mapData, int32_t index, int32_t index2){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    countX: int32_t = 0;;
+    int32_t countX = 0;;
     
 
-    countY: int32_t = 0;;
+    int32_t countY = 0;;
     
 
-    index3: int32_t = index -1;;
+    int32_t index3 = index -1;;
     
 
 
 
 
                         for (
-    index4: int32_t = index2 -1;index4 > 0; index4--)
+    int32_t index4 = index2 -1;index4 > 0; index4--)
         {
 index3--;
     
@@ -294,14 +293,14 @@ index3--;
 
 
                         for (
-    index5: int32_t = index3 +1;index5 < index -1; index5++)
+    int32_t index5 = index3 +1;index5 < index -1; index5++)
         {
 
 
 
 
                         for (
-    index6: int32_t = index4 +1;index6 < index2 -1; index6++)
+    int32_t index6 = index4 +1;index6 < index2 -1; index6++)
         {
 
                         if(mapArray[index5]![index6] != 14 || mapData[index5]![index6] != 0)
@@ -321,13 +320,13 @@ index3--;
 }
 
 
-    x: int32_t = index -(countX /2);;
+    int32_t x = index -(countX /2);;
     
 
-    y: int32_t = index2 -(countY /2);;
+    int32_t y = index2 -(countY /2);;
     
 
-                        if(x >= 0 && y >= 0 && x < mapData!.length && y < mapData[0]!.length)
+                        if(x >= 0 && y >= 0 && x < mapData.size() && y < mapData[0]!.size())
                         
                                     {
                                     

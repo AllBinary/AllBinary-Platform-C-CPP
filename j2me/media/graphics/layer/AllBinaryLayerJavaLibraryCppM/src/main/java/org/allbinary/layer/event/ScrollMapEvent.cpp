@@ -41,13 +41,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ScrollMapEvent: public AllBinaryEventObject {
-        
 
-    private: dx: int32_t= 0;
+    private: int32_t dx= 0;
 
-    private: dy: int32_t= 0;
+    private: int32_t dy= 0;
 
-public constructor (any = {} anyType){
+public: ScrollMapEvent(Object* anyType){
             super(anyType);
                     
 
@@ -56,42 +55,42 @@ public constructor (any = {} anyType){
 }
 
 
-    public setDx(int32_t dx){
-this.dx= dx;
+    public: void setDx(int32_t dx){
+this->dx= dx;
     
 }
 
 
-    public int32_t getDx(){
+    public: int32_t getDx(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dx;
+                        return this->dx;
     
 }
 
 
-    public setDy(int32_t dy){
-this.dy= dy;
+    public: void setDy(int32_t dy){
+this->dy= dy;
     
 }
 
 
-    public int32_t getDy(){
+    public: int32_t getDy(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dy;
+                        return this->dy;
     
 }
 
 
-    public setDxDy(int32_t dx, int32_t dy){
-this.dx= dx;
+    public: void setDxDy(int32_t dx, int32_t dy){
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
 }
 

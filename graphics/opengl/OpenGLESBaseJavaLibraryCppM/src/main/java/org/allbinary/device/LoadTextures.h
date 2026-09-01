@@ -50,11 +50,10 @@
 class LoadTextures
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public load(GL10 gl);
+    public: void load(GL10 gl);
 
 };
 

@@ -49,44 +49,43 @@
 class PathFinderGraphVisitorBase
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public visit(any = {} graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
+    public: void visit(Object* graph, BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
+    public: void fixPath(BasicArrayList startPathFindingNodeList, BasicArrayList endPathFindingNodeList, BasicArrayList pathList){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool isValid(any = {} graphPath){
+    public: bool isValid(Object* graphPath){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public string getInvalidReason(any = {} graphPath){
+    public: std::string getInvalidReason(Object* graphPath){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

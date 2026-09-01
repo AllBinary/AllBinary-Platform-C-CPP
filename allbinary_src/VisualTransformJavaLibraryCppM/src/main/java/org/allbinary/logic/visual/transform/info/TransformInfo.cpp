@@ -135,319 +135,310 @@
 class TransformInfo
             : public Object
         : public TransformInfoInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: isChild: bool = false;
+    private: bool isChild = false;
 
-    private: name: string;
+    private: std::string name;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: objectFileName: string;
+    private: std::string objectFileName;
 
-    private: anyType: any;
+    private: Object* anyType;
 
-    private: objectConfigFileName: string;
+    private: std::string objectConfigFileName;
 
-    private: objectConfigInterface: TransformInfoObjectConfigInterface;
+    private: TransformInfoObjectConfigInterface objectConfigInterface;
 
-    private: template: string;
+    private: std::string template;
 
-    private: templateFileName: string;
+    private: std::string templateFileName;
 
-    private: dataFileName: string;
+    private: std::string dataFileName;
 
-    private: data: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string data = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (){
-
-            super();
-        }
+public: TransformInfo(){
+}
 
 
-public constructor (string name){
-
-            super();
-        this.setName(name);
+public: TransformInfo(std::string name){
+this->setName(name);
     
 }
 
 
-public constructor (string name, string objectFileName, string objectConfigFileName, string templateFileName, string dataFileName){
-
-            super();
-        this.setName(name);
+public: TransformInfo(std::string name, std::string objectFileName, std::string objectConfigFileName, std::string templateFileName, std::string dataFileName){
+this->setName(name);
     
-this.setObjectFile(objectFileName);
+this->setObjectFile(objectFileName);
     
-this.setObjectConfigFile(objectConfigFileName);
+this->setObjectConfigFile(objectConfigFileName);
     
-this.setTemplateFile(templateFileName);
+this->setTemplateFile(templateFileName);
     
-this.setDataFile(dataFileName);
+this->setDataFile(dataFileName);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public override(HashMap<any, any> hashMap){
+    public: void override(HashMap<any, any> hashMap){
 
-    transformInfoData: TransformInfoData = TransformInfoData.getInstance()!;;
+    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    aName: string = hashMap!.get(transformInfoData!.NAME) as string;;
+    std::string aName = hashMap.get(transformInfoData.NAME) as string;;
     
 
-                        if(!stringValidationUtil!.isEmpty(aName))
+                        if(!stringValidationUtil.isEmpty(aName))
                         
                                     {
-                                    this.name= aName;
+                                    this->name= aName;
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("TransformInfo properties overridden for: ");
+stringBuffer.append("TransformInfo properties overridden for: ");
     
-stringBuffer!.append(this.getName());
+stringBuffer.append(this->getName());
     
-stringBuffer!.append("\n properties: ");
+stringBuffer.append("\n properties: ");
     
-stringBuffer!.append(hashMap!.toString());
+stringBuffer.append(hashMap.toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "override(HashMap hashMap)");
+this->logUtil.putF(stringBuffer.toString(), this, "override(HashMap hashMap)");
     
 
                                     }
                                 
 
-    aStoreName: string = hashMap!.get(StoreFrontData.getInstance()!.NAME) as string;;
+    std::string aStoreName = hashMap.get(StoreFrontData::getInstance().NAME) as string;;
     
 
-                        if(!stringValidationUtil!.isEmpty(aStoreName))
+                        if(!stringValidationUtil.isEmpty(aStoreName))
                         
                                     {
-                                    this.storeName= aStoreName;
+                                    this->storeName= aStoreName;
     
 
                                     }
                                 
 
-    aObjectFileName: string = hashMap!.get(transformInfoData!.OBJECTFILENAME) as string;;
+    std::string aObjectFileName = hashMap.get(transformInfoData.OBJECTFILENAME) as string;;
     
 
-                        if(!stringValidationUtil!.isEmpty(aObjectFileName))
+                        if(!stringValidationUtil.isEmpty(aObjectFileName))
                         
                                     {
-                                    this.objectFileName= aObjectFileName;
+                                    this->objectFileName= aObjectFileName;
     
 
                                     }
                                 
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(this.storeName);
+stringBuffer.append(this->storeName);
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-
-    fileAbPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
 
-    aObject: string = hashMap!.get(transformInfoData!.OBJECT) as string;;
+    AbPath fileAbPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-                        if(!stringValidationUtil!.isEmpty(aObject))
+    std::string aObject = hashMap.get(transformInfoData.OBJECT) as string;;
+    
+
+                        if(!stringValidationUtil.isEmpty(aObject))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("TransformInfo override view Object for: " +this.getName(), this, "override(HashMap hashMap)");
+                                    this->logUtil.putF("TransformInfo override view Object for: " +this->getName(), this, "override(HashMap hashMap)");
     
 
                                     }
                                 
 
-    fileDataString: string = new CryptFileReader(TransformInfoObjectData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoObjectData.getInstance()!.ENCRYPTED_EXTENSION).get(new AbPath(fileAbPath!.toString(), aObject))!;;
+    std::string fileDataString = CryptFileReader(TransformInfoObjectData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectData::getInstance().ENCRYPTED_EXTENSION).get(AbPath(fileAbPath.toString(), aObject));;
     
 
-                        if(fileDataString != 
-                                    null
+                        if(true)
+                        
+                                    {
+                                    this->anyType= fileDataString;
+    
+
+                                    }
+                                
+
+                                    }
+                                
+
+                        if(!stringValidationUtil.isEmpty(hashMap.get(transformInfoData.OBJECTCONFIG) as string))
+                        
+                                    {
+                                    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        
+                                    {
+                                    this->logUtil.putF("TransformInfo override ObjectConfig for: " +this->getName(), this, "override(HashMap hashMap)");
+    
+
+                                    }
+                                
+this->setObjectConfig(hashMap.get(transformInfoData.OBJECTCONFIG) as string);
+    
+
+                                    }
+                                
+
+    std::string objectConfigFileName = hashMap.get(transformInfoData.OBJECTCONFIGFILENAME) as string;;
+    
+
+                        if(!stringValidationUtil.isEmpty(objectConfigFileName))
+                        
+                                    {
+                                    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
+                        
+                                    {
+                                    this->logUtil.putF("TransformInfo override ObjectConfig File for: " +this->getName(), this, "override(HashMap hashMap)");
+    
+
+                                    }
+                                
+this->setObjectConfigFile(objectConfigFileName);
+    
+
+                                    }
+                                
+
+    std::string type = hashMap.get(OutputTypeData::getInstance().NAME) as string;;
+    
+
+                        if(!stringValidationUtil.isEmpty(type))
+                        
+                                    {
+                                    
+                        if(this->getObjectConfigInterface() == 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.anyType= fileDataString;
+                                    this->setObjectConfigInterface(TransformInfoObjectConfig(this));
+    
+
+                                    }
+                                
+this->getObjectConfigInterface().setOutputTypeName(type);
     
 
                                     }
                                 
 
+    std::string aTemplateFileName = hashMap.get(transformInfoData.TEMPLATEFILENAME) as string;;
+    
+
+                        if(!stringValidationUtil.isEmpty(aTemplateFileName))
+                        
+                                    {
+                                    this->templateFileName= aTemplateFileName;
+    
+
                                     }
                                 
 
-                        if(!stringValidationUtil!.isEmpty(hashMap!.get(transformInfoData!.OBJECTCONFIG) as string))
+    std::string aTemplate = hashMap.get(transformInfoData.TEMPLATE) as string;;
+    
+
+                        if(!stringValidationUtil.isEmpty(aTemplate))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("TransformInfo override ObjectConfig for: " +this.getName(), this, "override(HashMap hashMap)");
-    
-
-                                    }
-                                
-this.setObjectConfig(hashMap!.get(transformInfoData!.OBJECTCONFIG) as string);
+                                    this->logUtil.putF("TransformInfo override Template for: " +this->getName(), this, "override(HashMap hashMap)");
     
 
                                     }
                                 
 
-    objectConfigFileName: string = hashMap!.get(transformInfoData!.OBJECTCONFIGFILENAME) as string;;
+    std::string fileDataString = CryptFileReader(TransformInfoTemplateData::getInstance().UNCRYPTED_EXTENSION, TransformInfoTemplateData::getInstance().ENCRYPTED_EXTENSION).get(AbPath(fileAbPath.toString(), aTemplate));;
     
 
-                        if(!stringValidationUtil!.isEmpty(objectConfigFileName))
+                        if(!stringValidationUtil.isEmpty(fileDataString))
                         
                                     {
-                                    
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                                    this->template= fileDataString;
+    
+
+                                    }
+                                
+
+                                    }
+                                
+
+    std::string aDataFileName = hashMap.get(transformInfoData.DATAFILENAME) as string;;
+    
+
+                        if(!stringValidationUtil.isEmpty(aDataFileName))
                         
                                     {
-                                    this.logUtil!.putF("TransformInfo override ObjectConfig File for: " +this.getName(), this, "override(HashMap hashMap)");
-    
-
-                                    }
-                                
-this.setObjectConfigFile(objectConfigFileName);
+                                    this->dataFileName= aDataFileName;
     
 
                                     }
                                 
 
-    type: string = hashMap!.get(OutputTypeData.getInstance()!.NAME) as string;;
+    std::string aData = hashMap.get(transformInfoData.DATA) as string;;
     
 
-                        if(!stringValidationUtil!.isEmpty(type))
-                        
-                                    {
-                                    
-                        if(this.getObjectConfigInterface() == 
-                                    null
-                                )
-                        
-                                    {
-                                    this.setObjectConfigInterface(new TransformInfoObjectConfig(this));
-    
-
-                                    }
-                                
-this.getObjectConfigInterface()!.setOutputTypeName(type);
-    
-
-                                    }
-                                
-
-    aTemplateFileName: string = hashMap!.get(transformInfoData!.TEMPLATEFILENAME) as string;;
-    
-
-                        if(!stringValidationUtil!.isEmpty(aTemplateFileName))
-                        
-                                    {
-                                    this.templateFileName= aTemplateFileName;
-    
-
-                                    }
-                                
-
-    aTemplate: string = hashMap!.get(transformInfoData!.TEMPLATE) as string;;
-    
-
-                        if(!stringValidationUtil!.isEmpty(aTemplate))
+                        if(!stringValidationUtil.isEmpty(aData))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("TransformInfo override Template for: " +this.getName(), this, "override(HashMap hashMap)");
+                                    this->logUtil.putF("TransformInfo override Data for: " +this->getName(), this, "override(HashMap hashMap)");
     
 
                                     }
                                 
 
-    fileDataString: string = new CryptFileReader(TransformInfoTemplateData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoTemplateData.getInstance()!.ENCRYPTED_EXTENSION).get(new AbPath(fileAbPath!.toString(), aTemplate))!;;
+    std::string fileDataString = CryptFileReader(TransformInfoDataData::getInstance().UNCRYPTED_EXTENSION, TransformInfoDataData::getInstance().ENCRYPTED_EXTENSION).get(AbPath(fileAbPath.toString(), aData));;
     
 
-                        if(!stringValidationUtil!.isEmpty(fileDataString))
+                        if(!stringValidationUtil.isEmpty(fileDataString))
                         
                                     {
-                                    this.template= fileDataString;
-    
-
-                                    }
-                                
-
-                                    }
-                                
-
-    aDataFileName: string = hashMap!.get(transformInfoData!.DATAFILENAME) as string;;
-    
-
-                        if(!stringValidationUtil!.isEmpty(aDataFileName))
-                        
-                                    {
-                                    this.dataFileName= aDataFileName;
-    
-
-                                    }
-                                
-
-    aData: string = hashMap!.get(transformInfoData!.DATA) as string;;
-    
-
-                        if(!stringValidationUtil!.isEmpty(aData))
-                        
-                                    {
-                                    
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
-                        
-                                    {
-                                    this.logUtil!.putF("TransformInfo override Data for: " +this.getName(), this, "override(HashMap hashMap)");
-    
-
-                                    }
-                                
-
-    fileDataString: string = new CryptFileReader(TransformInfoDataData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoDataData.getInstance()!.ENCRYPTED_EXTENSION).get(new AbPath(fileAbPath!.toString(), aData))!;;
-    
-
-                        if(!stringValidationUtil!.isEmpty(fileDataString))
-                        
-                                    {
-                                    this.data= fileDataString;
+                                    this->data= fileDataString;
     
 
                                     }
@@ -456,51 +447,51 @@ this.getObjectConfigInterface()!.setOutputTypeName(type);
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    stringBuffer= new StringMaker();
+                                    stringBuffer= StringMaker();
     
-stringBuffer!.append("Name: ");
+stringBuffer.append("Name: ");
     
-stringBuffer!.append(aName);
+stringBuffer.append(aName);
     
-stringBuffer!.append("\nTemp Object File: ");
+stringBuffer.append("\nTemp Object File: ");
     
-stringBuffer!.append(aObject);
+stringBuffer.append(aObject);
     
-stringBuffer!.append("\nTemp Object Config File: ");
+stringBuffer.append("\nTemp Object Config File: ");
     
-stringBuffer!.append(this.getObjectConfigFilePath()!.toString());
+stringBuffer.append(this->getObjectConfigFilePath().toString());
     
-stringBuffer!.append("\nTemp Template File: ");
+stringBuffer.append("\nTemp Template File: ");
     
-stringBuffer!.append(aTemplate);
+stringBuffer.append(aTemplate);
     
-stringBuffer!.append("\nTemp Data File: ");
+stringBuffer.append("\nTemp Data File: ");
     
-stringBuffer!.append(aData);
+stringBuffer.append(aData);
     
-stringBuffer!.append("\nStore Name: ");
+stringBuffer.append("\nStore Name: ");
     
-stringBuffer!.append(aStoreName);
+stringBuffer.append(aStoreName);
     
-stringBuffer!.append("\nObjectFile: ");
+stringBuffer.append("\nObjectFile: ");
     
-stringBuffer!.append(this.getObjectFile());
+stringBuffer.append(this->getObjectFile());
     
-stringBuffer!.append("->TransformInfo");
+stringBuffer.append("->TransformInfo");
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "TransformInfoInterface(HashMap)");
+this->logUtil.putF(stringBuffer.toString(), this, "TransformInfoInterface(HashMap)");
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORY))
                         
                                     {
-                                    this.logUtil!.putF(this.log(), this, "override");
+                                    this->logUtil.putF(this->log(), this, "override");
     
 
                                     }
@@ -508,259 +499,259 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "TransformInfoInterface(HashM
 }
 
 
-    public string log(){
+    public: std::string log(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Name: ");
+stringBuffer.append("Name: ");
     
-stringBuffer!.append(this.name);
+stringBuffer.append(this->name);
     
-stringBuffer!.append("\nObject File: ");
+stringBuffer.append("\nObject File: ");
     
-stringBuffer!.append(this.objectFileName);
+stringBuffer.append(this->objectFileName);
     
-stringBuffer!.append("\nObject Config File Path: ");
+stringBuffer.append("\nObject Config File Path: ");
     
-stringBuffer!.append(this.getObjectConfigFile());
+stringBuffer.append(this->getObjectConfigFile());
     
-stringBuffer!.append("\nTemplate File: ");
+stringBuffer.append("\nTemplate File: ");
     
-stringBuffer!.append(this.templateFileName);
+stringBuffer.append(this->templateFileName);
     
-stringBuffer!.append("\nData File: ");
+stringBuffer.append("\nData File: ");
     
-stringBuffer!.append(this.dataFileName);
+stringBuffer.append(this->dataFileName);
     
-stringBuffer!.append("\nStore Name: ");
+stringBuffer.append("\nStore Name: ");
     
-stringBuffer!.append(this.storeName);
+stringBuffer.append(this->storeName);
     
-stringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+stringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
-stringBuffer!.append(this.getObjectFile());
+stringBuffer.append(this->getObjectFile());
     
-stringBuffer!.append("->TransformInfo");
+stringBuffer.append("->TransformInfo");
     
-stringBuffer!.append("TransformInfoInterface(HashMap)");
+stringBuffer.append("TransformInfoInterface(HashMap)");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public setName(string value){
-this.name= value;
+    public: void setName(std::string value){
+this->name= value;
     
 }
 
 
-    public setStoreName(string value){
-this.storeName= value;
+    public: void setStoreName(std::string value){
+this->storeName= value;
     
 }
 
 
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.storeName;
+                        return this->storeName;
     
 }
 
 
-    public setObject(Object anyType){
-this.anyType= anyType;
+    public: void setObject(Object anyType){
+this->anyType= anyType;
     
 }
 
 
-    public setObjectFile(string value){
-this.objectFileName= value;
+    public: void setObjectFile(std::string value){
+this->objectFileName= value;
     
 }
 
 
-    public setTemplate(string value){
-this.template= value;
+    public: void setTemplate(std::string value){
+this->template= value;
     
 }
 
 
-    public setTemplateFile(string value){
-this.templateFileName= value;
+    public: void setTemplateFile(std::string value){
+this->templateFileName= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfigFileName(string value){
-this.objectConfigFileName= value;
+    protected: void setObjectConfigFileName(std::string value){
+this->objectConfigFileName= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    setObjectConfigFile(string value){
-this.objectConfigFileName= value;
+    protected: void setObjectConfigFile(std::string value){
+this->objectConfigFileName= value;
     
-this.setObjectConfigInterface(TransformInfoObjectConfigAndManipulatorFactory.getInstance()!.getInstance(this.abeClientInformation, this, this.getObjectConfigFilePath()));
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    setObjectConfig(string value){
-
-    document: Document = DomDocumentHelper.create(value)!;;
-    
-this.setObjectConfigInterface(TransformInfoObjectConfigAndManipulatorFactory.getInstance()!.getInstance(this.abeClientInformation, this, document));
-    
-}
-
-
-    public setDataFile(string value){
-this.dataFileName= value;
-    
-}
-
-
-    public setData(string value){
-this.data= value;
-    
-}
-
-
-    public string getName(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
-    
-}
-
-
-    public any getObject(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.anyType;
-    
-}
-
-
-    public string getObjectFile(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.objectFileName;
-    
-}
-
-
-    public string getTemplate(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.template;
-    
-}
-
-
-    public string getTemplateFile(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.templateFileName;
+this->setObjectConfigInterface(TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(this->abeClientInformation, this, this->getObjectConfigFilePath()));
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getTemplateFilePath(){
+    protected: void setObjectConfig(std::string value){
+
+    Document document = DomDocumentHelper::create(value);;
+    
+this->setObjectConfigInterface(TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(this->abeClientInformation, this, document));
+    
+}
+
+
+    public: void setDataFile(std::string value){
+this->dataFileName= value;
+    
+}
+
+
+    public: void setData(std::string value){
+this->data= value;
+    
+}
+
+
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFilePath(this.getTemplateFile());
+                        return this->name;
+    
+}
+
+
+    public: Object* getObject(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->anyType;
+    
+}
+
+
+    public: std::string getObjectFile(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->objectFileName;
+    
+}
+
+
+    public: std::string getTemplate(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->template;
+    
+}
+
+
+    public: std::string getTemplateFile(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->templateFileName;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath(){
+    public: AbPath getTemplateFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFilePath(this.getObjectConfigFile());
+                        return AbFilePath(this->getTemplateFile());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath(){
+    public: AbPath getObjectConfigFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFilePath(this.getDataFile());
+                        return AbFilePath(this->getObjectConfigFile());
     
 }
 
 
-    public string getObjectConfigFile(){
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getDataFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.objectConfigFileName;
+                        return AbFilePath(this->getDataFile());
     
 }
 
 
-    string getData(){
+    public: std::string getObjectConfigFile(){
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->objectConfigFileName;
+    
+}
+
+
+    private: std::string getData(){
+
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-    dataFileString: string = this.getDataFile()!;;
+    std::string dataFileString = this->getDataFile();;
     
 
-                        if(!stringValidationUtil!.isEmpty(dataFileString))
+                        if(!stringValidationUtil.isEmpty(dataFileString))
                         
                                     {
                                     
         try {
             
-    fileData: string = new CryptFileReader(TransformInfoDataData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoDataData.getInstance()!.ENCRYPTED_EXTENSION).get(this.getDataFilePath())!;;
+    std::string fileData = CryptFileReader(TransformInfoDataData::getInstance().UNCRYPTED_EXTENSION, TransformInfoDataData::getInstance().ENCRYPTED_EXTENSION).get(this->getDataFilePath());;
     
 
-                        if(!stringValidationUtil!.isEmpty(this.data))
+                        if(!stringValidationUtil.isEmpty(this->data))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Data File overriding existing data: " +this.getDataFilePath(), this, "getData()");
+                                    this->logUtil.putF("Data File overriding existing data: " +this->getDataFilePath(), this, "getData()");
     
 
                                     }
@@ -768,17 +759,17 @@ this.data= value;
 
                                     }
                                 
-this.data= fileData;
+this->data= fileData;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Could Not Load Data from: " +this.getDataFile(), this, "getData()", e);
+                                    this->logUtil.put("Could Not Load Data from: " +this->getDataFile(), this, "getData()", e);
     
 
                                     }
@@ -791,14 +782,14 @@ this.data= fileData;
 
         try {
             
-                        if(!stringValidationUtil!.isEmpty(this.data))
+                        if(!stringValidationUtil.isEmpty(this->data))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF("Data: " +DomDocumentHelper.toString(DomDocumentHelper.create(data)), this, "getData()");
+                                    this->logUtil.putF("Data: " +DomDocumentHelper::toString(DomDocumentHelper::create(data)), this, "getData()");
     
 
                                     }
@@ -808,29 +799,29 @@ this.data= fileData;
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Name: ");
+stringBuffer.append("Name: ");
     
-stringBuffer!.append(this.name);
+stringBuffer.append(this->name);
     
-stringBuffer!.append("\nEmpty Data For: ");
+stringBuffer.append("\nEmpty Data For: ");
     
-stringBuffer!.append(dataFileString);
+stringBuffer.append(dataFileString);
     
-stringBuffer!.append("\nPath: ");
+stringBuffer.append("\nPath: ");
     
-stringBuffer!.append(this.getDataFilePath()!.toFileSystemString());
+stringBuffer.append(this->getDataFilePath().toFileSystemString());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF(stringBuffer!.toString(), this, "getData()");
+                                    this->logUtil.putF(stringBuffer.toString(), this, "getData()");
     
 
                                     }
@@ -846,10 +837,10 @@ stringBuffer!.append(this.getDataFilePath()!.toFileSystemString());
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Could Not Preview Data: " +this.data, this, "getData()", e);
+                                    this->logUtil.put("Could Not Preview Data: " +this->data, this, "getData()", e);
     
 
                                     }
@@ -860,29 +851,29 @@ stringBuffer!.append(this.getDataFilePath()!.toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.data;
+                        return this->data;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document getDataDocument(){
+    public: Document getDataDocument(){
 
-    localData: string = this.getData()!;;
+    std::string localData = this->getData();;
     
 
-    stringValidationUtil: StringValidationUtil = StringValidationUtil.getInstance()!;;
+    StringValidationUtil stringValidationUtil = StringValidationUtil::getInstance();;
     
 
-                        if(stringValidationUtil!.isEmpty(localData))
+                        if(stringValidationUtil.isEmpty(localData))
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.putF("No Data So Creating New Document", this, "getDataDocument()");
+                                    this->logUtil.putF("No Data So Creating New Document", this, "getDataDocument()");
     
 
                                     }
@@ -891,14 +882,14 @@ stringBuffer!.append(this.getDataFilePath()!.toFileSystemString());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper.create();;
+                        return DomDocumentHelper::create();;
     
 
                                     }
                                 
                         else {
                             
-    document: Document = DomDocumentHelper.create(localData)!;;
+    Document document = DomDocumentHelper::create(localData);;
     
 
 
@@ -912,50 +903,50 @@ stringBuffer!.append(this.getDataFilePath()!.toFileSystemString());
 }
 
 
-    public string getDataFile(){
+    public: std::string getDataFile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dataFileName;
+                        return this->dataFileName;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    transformInfoData: TransformInfoData = TransformInfoData.getInstance()!;;
-    
-
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
-    
-hashMap!.put(transformInfoData!.NAME, this.name);
-    
-hashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
-    
-hashMap!.put(transformInfoData!.OBJECTFILENAME, this.objectFileName);
-    
-hashMap!.put(transformInfoData!.OBJECT, this.anyType);
-    
-hashMap!.put(transformInfoData!.OBJECTCONFIGFILENAME, this.getObjectConfigFile());
-    
-hashMap!.put(transformInfoData!.OBJECTCONFIG, Encoder.encode(this.getObjectConfigInterface()!.toString()!.getBytes()));
-    
-hashMap!.put(transformInfoData!.TEMPLATEFILENAME, this.templateFileName);
-    
-hashMap!.put(transformInfoData!.TEMPLATE, this.template);
-    
-hashMap!.put(transformInfoData!.DATAFILENAME, this.dataFileName);
-    
-hashMap!.put(transformInfoData!.DATA, Encoder.encode(this.data.getBytes()));
+    TransformInfoData transformInfoData = TransformInfoData::getInstance();;
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
+    
+hashMap.put(transformInfoData.NAME, this->name);
+    
+hashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
+    
+hashMap.put(transformInfoData.OBJECTFILENAME, this->objectFileName);
+    
+hashMap.put(transformInfoData.OBJECT, this->anyType);
+    
+hashMap.put(transformInfoData.OBJECTCONFIGFILENAME, this->getObjectConfigFile());
+    
+hashMap.put(transformInfoData.OBJECTCONFIG, Encoder::encode(this->getObjectConfigInterface().toString().getBytes()));
+    
+hashMap.put(transformInfoData.TEMPLATEFILENAME, this->templateFileName);
+    
+hashMap.put(transformInfoData.TEMPLATE, this->template);
+    
+hashMap.put(transformInfoData.DATAFILENAME, this->dataFileName);
+    
+hashMap.put(transformInfoData.DATA, Encoder::encode(this->data.getBytes()));
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
     
-hashMap!.put(EntryData.getInstance()!.LASTMODIFIED, time);
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
+    
+hashMap.put(EntryData::getInstance().LASTMODIFIED, time);
     
 
 
@@ -966,35 +957,35 @@ hashMap!.put(EntryData.getInstance()!.LASTMODIFIED, time);
 }
 
 
-    public java.util.Vector toVector(){
+    public: java::util::Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(this.name);
+vector.add(this->name);
     
-vector.add(this.storeName);
+vector.add(this->storeName);
     
-vector.add(this.objectFileName);
+vector.add(this->objectFileName);
     
-vector.add(this.anyType);
+vector.add(this->anyType);
     
-vector.add(this.getObjectConfigFile());
+vector.add(this->getObjectConfigFile());
     
-vector.add(Encoder.encode(this.getObjectConfigInterface()!.toString()!.getBytes()));
+vector.add(Encoder::encode(this->getObjectConfigInterface().toString().getBytes()));
     
-vector.add(this.templateFileName);
+vector.add(this->templateFileName);
     
-vector.add(this.template);
+vector.add(this->template);
     
-vector.add(this.dataFileName);
+vector.add(this->dataFileName);
     
-vector.add(Encoder.encode(this.data.getBytes()));
-    
-
-    calendar: Calendar = Calendar.getInstance()!;;
+vector.add(Encoder::encode(this->data.getBytes()));
     
 
-    time: string = new Long(calendar.getTimeInMillis()).toString();;
+    Calendar calendar = Calendar::getInstance();;
+    
+
+    std::string time = Long(calendar.getTimeInMillis()).toString();;
     
 vector.add(time);
     
@@ -1009,44 +1000,44 @@ vector.add(time);
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();
+                        return this->getName();
     
 }
 
 
-    public setChild(){
-this.isChild= true;
+    public: void setChild(){
+this->isChild= true;
     
 }
 
 
-    public bool isChild(){
+    public: bool isChild(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isChild;
+                        return this->isChild;
     
 }
 
 
-    public TransformInfoObjectConfigInterface getObjectConfigInterface(){
+    public: TransformInfoObjectConfigInterface getObjectConfigInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.objectConfigInterface;
+                        return this->objectConfigInterface;
     
 }
 
 
-    public setObjectConfigInterface(Object objectConfigInterface){
-this.objectConfigInterface= objectConfigInterface;
+    public: void setObjectConfigInterface(Object objectConfigInterface){
+this->objectConfigInterface= objectConfigInterface;
     
 }
 

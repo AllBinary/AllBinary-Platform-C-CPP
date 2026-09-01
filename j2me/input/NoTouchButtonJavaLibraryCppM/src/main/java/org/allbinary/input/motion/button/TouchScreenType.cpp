@@ -42,34 +42,31 @@
 class TouchScreenType
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
- constructor (string name){
-
-            super();
-        this.name= name;
+: TouchScreenType(std::string name){
+this->name= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();;
+                        return this->getName();;
     
 }
 

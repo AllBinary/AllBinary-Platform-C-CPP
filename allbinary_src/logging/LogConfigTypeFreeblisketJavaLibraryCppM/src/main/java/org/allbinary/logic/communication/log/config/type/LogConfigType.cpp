@@ -51,56 +51,53 @@
 class LogConfigType
             : public Object
          {
-        
 
-    public static availableLogConfigTypes: BasicArrayList = new BasicArrayListD();
+    public: static BasicArrayList availableLogConfigTypes = BasicArrayListD();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: description: string;
+    private: std::string description;
 
-public constructor (string name, string description){
-
-            super();
-        this.name= name;
+public: LogConfigType(std::string name, std::string description){
+this->name= name;
     
-this.description= description;
+this->description= description;
     
-LogConfigType.availableLogConfigTypes!.add(this);
+LogConfigType::availableLogConfigTypes.add(this);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public setName(string value){
-this.name= value;
+    public: void setName(std::string value){
+this->name= value;
     
 }
 
 
-    public setDescription(string value){
-this.description= value;
+    public: void setDescription(std::string value){
+this->description= value;
     
 }
 

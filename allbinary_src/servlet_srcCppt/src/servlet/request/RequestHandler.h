@@ -74,29 +74,28 @@
 #include "HttpServletResponse.h"
 
 class RequestHandler: public HttpServlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(ServletException.constructor)
             
-    public init(ServletConfig config);
+    public: void init(ServletConfig config);
 
-    public destroy();
-
-                //@Throws(ServletException.constructor, IOException.constructor)
-            
-    processRequest(HttpServletRequest request, HttpServletResponse response);
+    public: void destroy();
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doGet(HttpServletRequest request, HttpServletResponse response);
+    protected: void processRequest(HttpServletRequest request, HttpServletResponse response);
 
                 //@Throws(ServletException.constructor, IOException.constructor)
             
-    doPost(HttpServletRequest request, HttpServletResponse response);
+    protected: void doGet(HttpServletRequest request, HttpServletResponse response);
 
-    public string getServletInfo();
+                //@Throws(ServletException.constructor, IOException.constructor)
+            
+    protected: void doPost(HttpServletRequest request, HttpServletResponse response);
+
+    public: std::string getServletInfo();
 
 };
 

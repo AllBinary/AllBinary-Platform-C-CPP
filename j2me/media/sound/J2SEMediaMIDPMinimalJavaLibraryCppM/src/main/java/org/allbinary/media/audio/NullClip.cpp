@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/io/IOException.h>
@@ -74,23 +76,22 @@
 class NullClip
             : public Object
         : public Clip {
-        
 
-    public static const NULL_CONTROL: NullJ2SEControl = new NullJ2SEControl(BooleanControl.Type.MUTE);
+    public: static const NullJ2SEControl NULL_CONTROL = NullJ2SEControl(BooleanControl::Type.MUTE);
 
                 //@Throws(LineUnavailableException.constructor)
             
-    public open(AudioFormat format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize){
+    public: void open(AudioFormat format, std::vector<int8_t> data, int32_t offset, int32_t bufferSize){
 }
 
 
                 //@Throws(LineUnavailableException.constructor, IOException.constructor)
             
-    public open(AudioInputStream stream){
+    public: void open(AudioInputStream stream){
 }
 
 
-    public int32_t getFrameLength(){
+    public: int32_t getFrameLength(){
 
 
 
@@ -100,7 +101,7 @@ class NullClip
 }
 
 
-    public int64_t getMicrosecondLength(){
+    public: int64_t getMicrosecondLength(){
 
 
 
@@ -110,39 +111,39 @@ class NullClip
 }
 
 
-    public setFramePosition(int32_t frames){
+    public: void setFramePosition(int32_t frames){
 }
 
 
-    public setMicrosecondPosition(int64_t microseconds){
+    public: void setMicrosecondPosition(int64_t microseconds){
 }
 
 
-    public setLoopPoints(int32_t start, int32_t end){
+    public: void setLoopPoints(int32_t start, int32_t end){
 }
 
 
-    public loop(int32_t count){
+    public: void loop(int32_t count){
 }
 
 
-    public drain(){
+    public: void drain(){
 }
 
 
-    public flush(){
+    public: void flush(){
 }
 
 
-    public start(){
+    public: void start(){
 }
 
 
-    public stop(){
+    public: void stop(){
 }
 
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
@@ -152,7 +153,7 @@ class NullClip
 }
 
 
-    public bool isActive(){
+    public: bool isActive(){
 
 
 
@@ -162,27 +163,17 @@ class NullClip
 }
 
 
-    public AudioFormat getFormat(){
+    public: AudioFormat getFormat(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAudioFormat.NULL_AUDIO_FORMAT;
+                        return NullAudioFormat::NULL_AUDIO_FORMAT;
     
 }
 
 
-    public int32_t getBufferSize(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return 0;
-    
-}
-
-
-    public int32_t available(){
+    public: int32_t getBufferSize(){
 
 
 
@@ -192,7 +183,7 @@ class NullClip
 }
 
 
-    public int32_t getFramePosition(){
+    public: int32_t available(){
 
 
 
@@ -202,7 +193,7 @@ class NullClip
 }
 
 
-    public int64_t getLongFramePosition(){
+    public: int32_t getFramePosition(){
 
 
 
@@ -212,7 +203,7 @@ class NullClip
 }
 
 
-    public int64_t getMicrosecondPosition(){
+    public: int64_t getLongFramePosition(){
 
 
 
@@ -222,7 +213,17 @@ class NullClip
 }
 
 
-    public float getLevel(){
+    public: int64_t getMicrosecondPosition(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 0;
+    
+}
+
+
+    public: float getLevel(){
 
 
 
@@ -232,27 +233,27 @@ class NullClip
 }
 
 
-    public Info getLineInfo(){
+    public: Info getLineInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Info(this.constructor, NullAudioFormat.NULL_AUDIO_FORMAT);
+                        return Info(this->constructor, NullAudioFormat::NULL_AUDIO_FORMAT);
     
 }
 
 
                 //@Throws(LineUnavailableException.constructor)
             
-    public open(){
+    public: void open(){
 }
 
 
-    public close(){
+    public: void close(){
 }
 
 
-    public bool isOpen(){
+    public: bool isOpen(){
 
 
 
@@ -262,17 +263,17 @@ class NullClip
 }
 
 
-    public std::vector<Control> getControls(){
+    public: std::vector<Control> getControls(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return [];
+                        return {};
     
 }
 
 
-    public bool isControlSupported(Type control){
+    public: bool isControlSupported(Type control){
 
 
 
@@ -282,21 +283,21 @@ class NullClip
 }
 
 
-    public Control getControl(Type control){
+    public: Control getControl(Type control){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullClip.NULL_CONTROL;
+                        return NullClip::NULL_CONTROL;
     
 }
 
 
-    public addLineListener(LineListener listener){
+    public: void addLineListener(LineListener listener){
 }
 
 
-    public removeLineListener(LineListener listener){
+    public: void removeLineListener(LineListener listener){
 }
 
 

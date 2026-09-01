@@ -43,15 +43,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationBundleActivatorListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    registerAsService();
+    void registerAsService();
 
                 //@Throws(Exception.constructor)
             
-    useServices();
+    void useServices();
 
 };
 

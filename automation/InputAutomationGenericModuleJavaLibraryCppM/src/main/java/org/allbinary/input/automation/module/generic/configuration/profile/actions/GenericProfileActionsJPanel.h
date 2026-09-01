@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_GENERIC_CONFIGURATION_PROFILE_ACTIONS_GENERICPROFILEACTIONSJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/input/automation/module/DefaultListModelHelper.h>
@@ -68,68 +70,67 @@
 #include "ListSelectionEvent.h"
 #include "GenericProfileAction.h"
 
-class GenericProfileActionsJPanel: public javax.swing.JPanel {
-        
+class GenericProfileActionsJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: genericProfileActions: GenericProfileActions;
+    private: GenericProfileActions genericProfileActions;
 
-    private: genericProfileActionJPanel: GenericProfileActionJPanel;
+    private: GenericProfileActionJPanel genericProfileActionJPanel;
 
-public constructor ();
+public: GenericProfileActionsJPanel();
 
-    initComponents();
+    private: void initComponents();
 
-    public setModel();
+    public: void setModel();
 
-    saveJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void saveJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    updateProfileActionUI(string profileActionNameString);
+    private: void updateProfileActionUI(std::string profileActionNameString);
 
-    genericProfileActionsJListValueChanged(javax.swing.event.ListSelectionEvent evt);
+    private: void genericProfileActionsJListValueChanged(javax::swing::event::ListSelectionEvent evt);
 
-    okNewProfileActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void okNewProfileActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    deleteActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void deleteActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
                 //@Throws(Exception.constructor)
             
-    public selectFirstElement();
+    public: void selectFirstElement();
 
-    public GenericProfileActionJPanel getGenericProfileActionJPanel();
+    public: GenericProfileActionJPanel getGenericProfileActionJPanel();
 
-    public setGenericProfileActionJPanel(GenericProfileActionJPanel genericProfileActionJPanel);
+    public: void setGenericProfileActionJPanel(GenericProfileActionJPanel genericProfileActionJPanel);
 
-    public GenericProfileActions getGenericProfileActions();
+    public: GenericProfileActions getGenericProfileActions();
 
-    public setGenericProfileActions(GenericProfileActions genericProfileActions);
+    public: void setGenericProfileActions(GenericProfileActions genericProfileActions);
 
-    newActionJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void newActionJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: blankGenericProfileActionJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel blankGenericProfileActionJPanel;
 
-    private: deleteActionJButton: javax.swing.JButton;
+    private: javax::swing::JButton deleteActionJButton;
 
-    private: genericProfileActionsJList: javax.swing.JList;
+    private: javax::swing::JList genericProfileActionsJList;
 
-    private: genericProfileActionsJPanel: javax.swing.JPanel;
+    private: javax::swing::JPanel genericProfileActionsJPanel;
 
-    private: genericProfileActionsJScrollPane: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane genericProfileActionsJScrollPane;
 
-    private: newActionJButton: javax.swing.JButton;
+    private: javax::swing::JButton newActionJButton;
 
-    private: newProfileActionJDialog: javax.swing.JDialog;
+    private: javax::swing::JDialog newProfileActionJDialog;
 
-    private: newProfileActionJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel newProfileActionJLabel;
 
-    private: newProfileActionJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField newProfileActionJTextField;
 
-    private: okNewProfileActionJButton: javax.swing.JButton;
+    private: javax::swing::JButton okNewProfileActionJButton;
 
-    private: saveJButton: javax.swing.JButton;
+    private: javax::swing::JButton saveJButton;
 
 };
 

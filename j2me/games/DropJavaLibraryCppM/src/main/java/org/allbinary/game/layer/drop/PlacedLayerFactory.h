@@ -43,25 +43,24 @@
 class PlacedLayerFactory
             : public Object
          {
-        
 
-    private: static const instance: PlacedLayerFactory = new PlacedLayerFactory();
+    private: static PlacedLayerFactory instance() { return PlacedLayerFactory(); }
 
-    public static PlacedLayerFactory getInstance();
+    public: static PlacedLayerFactory getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: PlacedLayerFactory();
 
-    public clear();
+    public: void clear();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    public AllBinaryLayerFactoryInterface getRandomInstance();
+    public: AllBinaryLayerFactoryInterface getRandomInstance();
 
-    public add(AllBinaryLayerFactoryInterface layerInterfaceFactoryInterface);
+    public: void add(AllBinaryLayerFactoryInterface layerInterfaceFactoryInterface);
 
 };
 

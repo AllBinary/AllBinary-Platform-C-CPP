@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAUTIL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_MEDIA_MEDIAUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -65,21 +67,20 @@
 class MediaUtil
             : public Object
          {
-        
 
-    private: static const instance: MediaUtil = new MediaUtil();
+    private: static MediaUtil instance() { return MediaUtil(); }
 
-    public static MediaUtil getInstance();
+    public: static MediaUtil getInstance();
 
-    static HashMap<any, any> getImageBufferPropertyHashMap(BufferedImage bufferedImage);
+    private: static HashMap<any, any> getImageBufferPropertyHashMap(BufferedImage bufferedImage);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: MediaUtil();
 
                 //@Throws(Exception.constructor)
             
-    public saveImageFile(AbFile originalImageFile, string newImageFileName, string category, MediaData mediaData, int32_t newWidth, int32_t newHeight);
+    public: void saveImageFile(AbFile originalImageFile, std::string newImageFileName, std::string category, MediaData mediaData, int32_t newWidth, int32_t newHeight);
 
 };
 

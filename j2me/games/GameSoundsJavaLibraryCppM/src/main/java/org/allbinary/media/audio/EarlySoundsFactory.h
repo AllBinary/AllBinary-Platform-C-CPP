@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_EARLYSOUNDSFACTORY_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_EARLYSOUNDSFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 
@@ -47,15 +49,14 @@
 #include "ErrorSound.h"
 
 class EarlySoundsFactory: public BaseSoundsFactory {
-        
 
-    private: static const instance: EarlySoundsFactory = new EarlySoundsFactory();
+    private: static EarlySoundsFactory instance() { return EarlySoundsFactory(); }
 
-    public static EarlySoundsFactory getInstance();
+    public: static EarlySoundsFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Sound> getSoundInterfaceArray();
+    public: std::vector<Sound> getSoundInterfaceArray();
 
 };
 

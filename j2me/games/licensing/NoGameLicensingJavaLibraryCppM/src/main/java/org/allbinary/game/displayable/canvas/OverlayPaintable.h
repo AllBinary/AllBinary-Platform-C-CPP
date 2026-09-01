@@ -55,15 +55,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OverlayPaintable: public InitUpdatePaintable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: OverlayPaintable();
 
-    public update();
+    public: void update();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

@@ -60,70 +60,65 @@
 class TransformInfoObjectConfigGeneratorFactory
             : public Object
         : public TransformInfoObjectConfigGeneratorFactoryInterface {
-        
 
-    private: static const instance: TransformInfoObjectConfigGeneratorFactory = new TransformInfoObjectConfigGeneratorFactory();
+    private: static TransformInfoObjectConfigGeneratorFactory instance() { return TransformInfoObjectConfigGeneratorFactory(); }
 
-    public static TransformInfoObjectConfigGeneratorFactory getInstance(){
+    public: static TransformInfoObjectConfigGeneratorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectConfigGeneratorFactory.instance;
+                        return TransformInfoObjectConfigGeneratorFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformInfoObjectConfigGeneratorFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoObjectConfigGenerator getInstance(TransformInfoInterface transformInfoInterface){
+    public: TransformInfoObjectConfigGenerator getInstance(TransformInfoInterface transformInfoInterface){
 
-    type: string = transformInfoInterface!.getObjectConfigInterface()!.getOutputTypeName() as string;;
+    std::string type = transformInfoInterface.getObjectConfigInterface().getOutputTypeName() as string;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF("Generating Instance for type: " +type, this, commonStrings!.GET_INSTANCE);
+this->logUtil.putF("Generating Instance for type: " +type, this, commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
 
-                        if(type == 
-                                    null
-                                 || type.compareTo(InputOutputTypeData.getInstance()!.RESPONSE) == 0 || transformInfoInterface!.isChild())
+                        if(false || type.compareTo(InputOutputTypeData::getInstance().RESPONSE) == 0 || transformInfoInterface.isChild())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicGenerator();
+                        return BasicGenerator();
     
 
                                     }
                                 
                              else 
-                        if(type.compareTo(InputOutputTypeData.getInstance()!.FILE) == 0)
+                        if(type.compareTo(InputOutputTypeData::getInstance().FILE) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StoreFileGenerator(transformInfoInterface);
+                        return StoreFileGenerator(transformInfoInterface);
     
 
                                     }
@@ -132,7 +127,7 @@ this.logUtil!.putF("Generating Instance for type: " +type, this, commonStrings!.
                             
 
 
-                            throw new Exception("No Such TransformInfoObjectConfigGenerator Type");
+                            throw Exception("No Such TransformInfoObjectConfigGenerator Type");
                     
 
                         }

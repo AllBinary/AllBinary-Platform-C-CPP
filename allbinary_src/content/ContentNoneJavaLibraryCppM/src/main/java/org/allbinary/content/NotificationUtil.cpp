@@ -45,21 +45,20 @@
 class NotificationUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: NotificationUtil = new NotificationUtil();
+    private: static const NotificationUtil SINGLETON = NotificationUtil();
 
-    public static NotificationUtil getInstance(){
+    public: static NotificationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NotificationUtil.SINGLETON;
+                        return NotificationUtil::SINGLETON;
     
 }
 
 
-    public notify(Command command, string resource, string message){
+    public: void notify(Command command, std::string resource, std::string message){
 }
 
 

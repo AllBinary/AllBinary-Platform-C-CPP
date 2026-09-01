@@ -58,55 +58,54 @@
 class BasicTouchButtonCellPositionFactory
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public const TOP_RIGHT: CellPosition;
+    public: CellPosition TOP_RIGHT;
 
-    public const TOP_LEFT: CellPosition;
+    public: CellPosition TOP_LEFT;
 
-    public const SECOND_FROM_TOP_LEFT: CellPosition;
+    public: const CellPosition SECOND_FROM_TOP_LEFT;
 
-    public const SECOND_FROM_TOP_RIGHT: CellPosition;
+    public: const CellPosition SECOND_FROM_TOP_RIGHT;
 
-    public const TOP_SECOND_FROM_LEFT: CellPosition;
+    public: const CellPosition TOP_SECOND_FROM_LEFT;
 
-    public const TOP_SECOND_FROM_RIGHT: CellPosition;
+    public: const CellPosition TOP_SECOND_FROM_RIGHT;
 
-    public const BOTTOM_RIGHT: CellPosition;
+    public: CellPosition BOTTOM_RIGHT;
 
-    public const BOTTOM_SECOND_FROM_RIGHT: CellPosition;
+    public: CellPosition BOTTOM_SECOND_FROM_RIGHT;
 
-    public const SECOND_FROM_BOTTOM_RIGHT: CellPosition;
+    public: CellPosition SECOND_FROM_BOTTOM_RIGHT;
 
-    public const THIRD_FROM_BOTTOM_RIGHT: CellPosition;
+    public: const CellPosition THIRD_FROM_BOTTOM_RIGHT;
 
-    public const FOURTH_FROM_BOTTOM_RIGHT: CellPosition;
+    public: const CellPosition FOURTH_FROM_BOTTOM_RIGHT;
 
-    public const SECOND_FROM_BOTTOM_SECOND_FROM_RIGHT: CellPosition;
+    public: CellPosition SECOND_FROM_BOTTOM_SECOND_FROM_RIGHT;
 
-    public const SECOND_FROM_BOTTOM_THIRD_FROM_RIGHT: CellPosition;
+    public: const CellPosition SECOND_FROM_BOTTOM_THIRD_FROM_RIGHT;
 
-    public const SECOND_FROM_BOTTOM_FOURTH_FROM_RIGHT: CellPosition;
+    public: const CellPosition SECOND_FROM_BOTTOM_FOURTH_FROM_RIGHT;
 
-    public const BOTTOM_THIRD_FROM_RIGHT: CellPosition;
+    public: const CellPosition BOTTOM_THIRD_FROM_RIGHT;
 
-    public const BOTTOM_FOURTH_FROM_RIGHT: CellPosition;
+    public: const CellPosition BOTTOM_FOURTH_FROM_RIGHT;
 
-    public const BOTTOM_SECOND_FROM_LEFT: CellPosition;
+    public: CellPosition BOTTOM_SECOND_FROM_LEFT;
 
-    public const SECOND_FROM_BOTTOM_LEFT: CellPosition;
+    public: CellPosition SECOND_FROM_BOTTOM_LEFT;
 
-    public const THIRD_FROM_BOTTOM_LEFT: CellPosition;
+    public: const CellPosition THIRD_FROM_BOTTOM_LEFT;
 
-    public const BOTTOM_LEFT: CellPosition;
+    public: CellPosition BOTTOM_LEFT;
 
-    public const SECOND_FROM_BOTTOM_SECOND_FROM_LEFT: CellPosition;
+    public: CellPosition SECOND_FROM_BOTTOM_SECOND_FROM_LEFT;
 
-public constructor ();
+public: BasicTouchButtonCellPositionFactory();
 
 };
 

@@ -92,48 +92,47 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicAI: public ArtificialIntelligence: public GameKeyEventSourceInterface {
-        
+class BasicAI: public ArtificialIntelligence, public GameKeyEventSourceInterface {
 
-    public static const AI_VISITOR: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(2)!;
+    public: static const Integer AI_VISITOR = SmallIntegerSingletonFactory::getInstance().getAt(2);
 
-    public static const ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(1)!;
+    public: static const Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(1);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    protected: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const ownerLayerInterface: AllBinaryLayer;
+    private: AllBinaryLayer ownerLayerInterface;
 
-    private: const gameInput: GameInput;
+    private: GameInput gameInput;
 
-    private: lastKey: int32_t =  -1;
+    private: int32_t lastKey =  -1;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput);
-
-                //@Throws(Exception.constructor)
-            
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+public: BasicAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    public processKeyAI(int32_t key);
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
-    public setLastKey(int32_t lastKey);
+                //@Throws(Exception.constructor)
+            
+    public: void processKeyAI(int32_t key);
 
-    public int32_t getLastKey();
+    public: void setLastKey(int32_t lastKey);
 
-    public AllBinaryLayer getOwnerLayerInterface();
+    public: int32_t getLastKey();
 
-    public GameInput getGameInput();
+    public: AllBinaryLayer getOwnerLayerInterface();
 
-    public string getName();
+    public: GameInput getGameInput();
 
-    public string toString();
+    public: std::string getName();
 
-    public int32_t getSourceId();
+    public: std::string toString();
+
+    public: int32_t getSourceId();
 
 };
 

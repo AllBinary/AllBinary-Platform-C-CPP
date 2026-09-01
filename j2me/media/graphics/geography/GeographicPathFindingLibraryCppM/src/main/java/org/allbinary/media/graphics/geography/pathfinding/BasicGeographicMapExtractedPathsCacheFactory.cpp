@@ -34,33 +34,30 @@
         #include "BasicGeographicMapExtractedPathCacheFactory.h"
 
 class BasicGeographicMapExtractedPathsCacheFactory: public BaseBasicArrayListCache {
-        
 
-    private: static const instance: BasicGeographicMapExtractedPathsCacheFactory = new BasicGeographicMapExtractedPathsCacheFactory();
+    private: static BasicGeographicMapExtractedPathsCacheFactory instance() { return BasicGeographicMapExtractedPathsCacheFactory(); }
 
-    public static BasicGeographicMapExtractedPathsCacheFactory getInstance(){
+    public: static BasicGeographicMapExtractedPathsCacheFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGeographicMapExtractedPathsCacheFactory.instance;
+                        return BasicGeographicMapExtractedPathsCacheFactory::instance();
     
 }
 
 
-    private: maxConcurrentPaths: int32_t= 0;
+    private: int32_t maxConcurrentPaths= 0;
 
-    private: maxPaths: int32_t= 0;
+    private: int32_t maxPaths= 0;
 
-private constructor (){
-
-            super();
-        }
+private: BasicGeographicMapExtractedPathsCacheFactory(){
+}
 
 
-    public init(int32_t maxConcurrentPaths, int32_t maxPaths){
+    public: void init(int32_t maxConcurrentPaths, int32_t maxPaths){
 
-                        if(maxConcurrentPaths != this.maxConcurrentPaths)
+                        if(maxConcurrentPaths != this->maxConcurrentPaths)
                         
                                     {
                                     
@@ -68,32 +65,32 @@ private constructor (){
 
 
                         for (
-    index: int32_t = maxConcurrentPaths;index >= this.maxConcurrentPaths; index--)
+    int32_t index = maxConcurrentPaths;index >= this->maxConcurrentPaths; index--)
         {
-this.list.add(new BasicArrayListS(maxPaths));
+this->list.add(BasicArrayListS(maxPaths));
     
 }
 
-this.maxConcurrentPaths= maxConcurrentPaths;
+this->maxConcurrentPaths= maxConcurrentPaths;
     
 
                                     }
                                 
-this.maxPaths= maxPaths;
+this->maxPaths= maxPaths;
     
 }
 
 
-    public BasicArrayList getPaths(){
+    public: BasicArrayList getPaths(){
 
-                        if(this.list.size() > 0)
+                        if(this->list.size() > 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.removeAt(0) as BasicArrayList;
+                        return this->list.removeAt(0) as BasicArrayList;
     
 
                                     }
@@ -103,7 +100,7 @@ this.maxPaths= maxPaths;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicArrayListS(this.maxPaths);
+                        return BasicArrayListS(this->maxPaths);
     
 
                         }
@@ -111,21 +108,21 @@ this.maxPaths= maxPaths;
 }
 
 
-    public release(BasicArrayList list){
+    public: void release(BasicArrayList list){
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
-BasicGeographicMapExtractedPathCacheFactory.getInstance()!.release(list.get(index) as BasicArrayList);
+BasicGeographicMapExtractedPathCacheFactory::getInstance().release(list.get(index) as BasicArrayList);
     
 }
 
 list.clear();
     
-this.list.add(list);
+this->list.add(list);
     
 }
 

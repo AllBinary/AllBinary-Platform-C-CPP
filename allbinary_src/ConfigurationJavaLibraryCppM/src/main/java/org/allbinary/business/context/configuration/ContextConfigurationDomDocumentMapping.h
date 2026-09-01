@@ -61,19 +61,18 @@
 class ContextConfigurationDomDocumentMapping
             : public Object
         : public DomDocumentMappingInterface {
-        
 
-    private: contextConfigurationInterface: ContextConfigurationInterface;
+    private: ContextConfigurationInterface contextConfigurationInterface;
 
-public constructor (ContextConfigurationInterface contextConfigurationInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public Document toXmlDoc();
+public: ContextConfigurationDomDocumentMapping(ContextConfigurationInterface contextConfigurationInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string toDomDocumentString();
+    public: Document toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string toDomDocumentString();
 
 };
 

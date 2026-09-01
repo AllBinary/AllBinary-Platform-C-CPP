@@ -51,24 +51,21 @@
 class Angle
             : public Object
          {
-        
 
-    private: value: int16_t;
+    private: int16_t value;
 
-public constructor (int16_t angle){
-
-            super();
-        this.value= angle;
+public: Angle(int16_t angle){
+this->value= angle;
     
 }
 
 
-    public int16_t getValue(){
+    public: int16_t getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 

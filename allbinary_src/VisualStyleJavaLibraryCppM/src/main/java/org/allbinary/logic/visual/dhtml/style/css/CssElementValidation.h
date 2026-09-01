@@ -58,22 +58,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CssElementView.h"
 
-class CssElementValidation: public CssElementView: public ValidationInterface {
-        
+class CssElementValidation: public CssElementView, public ValidationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: CssElementValidation();
 
-public constructor (Node node);
+public: CssElementValidation(Node node);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

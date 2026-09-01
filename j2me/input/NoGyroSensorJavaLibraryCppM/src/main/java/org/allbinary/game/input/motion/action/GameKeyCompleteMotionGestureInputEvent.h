@@ -58,26 +58,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent: public GameKeyEventSourceInterface {
-        
+class GameKeyCompleteMotionGestureInputEvent: public CompleteMotionGestureInputEvent, public GameKeyEventSourceInterface {
 
-    private: gameKey: GameKey = GameKey.NULL_GAME_KEY;
+    private: GameKey gameKey = GameKey::NULL_GAME_KEY;
 
-    private: gameKeyEvent: GameKeyEvent = GameKeyEvent.NONE;
+    private: GameKeyEvent gameKeyEvent = GameKeyEvent::NONE;
 
-public constructor (string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping);
+public: GameKeyCompleteMotionGestureInputEvent(std::string name, MotionGestureInput motionGestureInput, InputToGameKeyMapping inputToGameKeyMapping);
 
-    public int32_t getSourceId();
+    public: int32_t getSourceId();
 
-    public update();
+    public: void update();
 
-    setGameKeyEvent(GameKeyEvent gameKeyEvent);
+    protected: void setGameKeyEvent(GameKeyEvent gameKeyEvent);
 
-    public GameKeyEvent getGameKeyEvent();
+    public: GameKeyEvent getGameKeyEvent();
 
-    setGameKey(GameKey gameKey);
+    protected: void setGameKey(GameKey gameKey);
 
-    public GameKey getGameKey();
+    public: GameKey getGameKey();
 
 };
 

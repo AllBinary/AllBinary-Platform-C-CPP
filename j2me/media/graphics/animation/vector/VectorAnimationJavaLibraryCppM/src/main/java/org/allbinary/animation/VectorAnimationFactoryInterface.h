@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORYINTERFACE_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONFACTORYINTERFACE_H
 
+            #include <vector>
+        
 #include <org/allbinary/graphics/color/BasicColor.h>
 
       
@@ -45,7 +47,6 @@
         #include "VectorAnimation.h"
 
 class VectorAnimationFactoryInterface {
-        
 
     VectorAnimation getInstance(std::vector<std::vector<std::vector<int32_t>>> points, BasicColor basicColor);
 

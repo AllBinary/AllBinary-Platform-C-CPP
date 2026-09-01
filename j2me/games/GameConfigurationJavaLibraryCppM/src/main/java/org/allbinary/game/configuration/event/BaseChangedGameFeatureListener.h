@@ -89,29 +89,28 @@
 class BaseChangedGameFeatureListener
             : public Object
         : public GameFeatureListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const gameFeatureUtil: GameFeatureUtil = GameFeatureUtil.getInstance()!;
+    protected: const GameFeatureUtil gameFeatureUtil = GameFeatureUtil::getInstance();
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    private: changed: bool = true;
+    private: bool changed = true;
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
+    public: void onGameFeatureChange(GameFeatureEvent gameFeatureEvent);
 
-    public add(Feature gameFeature);
+    public: void add(Feature gameFeature);
 
-    public remove(Feature gameFeature);
+    public: void remove(Feature gameFeature);
 
-    public setChanged(bool initialized);
+    public: void setChanged(bool initialized);
 
-    public bool isChangedFeature(Feature gameFeature);
+    public: bool isChangedFeature(Feature gameFeature);
 
-    public bool isChanged();
+    public: bool isChanged();
 
 };
 

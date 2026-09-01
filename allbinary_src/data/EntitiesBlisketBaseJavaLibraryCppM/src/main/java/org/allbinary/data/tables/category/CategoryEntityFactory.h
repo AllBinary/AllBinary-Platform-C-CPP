@@ -54,17 +54,16 @@
 class CategoryEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: CategoryEntityFactory = new CategoryEntityFactory();
+    private: static CategoryEntityFactory instance() { return CategoryEntityFactory(); }
 
-    public static CategoryEntityFactory getInstance();
+    public: static CategoryEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: CategoryEntityFactory();
 
-    public CategoryEntity getCategoryEntityInstance();
+    public: CategoryEntity getCategoryEntityInstance();
 
 };
 

@@ -39,21 +39,20 @@
 #include "Sound.h"
 
 class WorkSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new WorkSound();
+    private: static Sound soundInterface = WorkSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WorkSound.soundInterface;
+                        return WorkSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: WorkSound(){
             super("resource:/wav/work.wav");
                     
 

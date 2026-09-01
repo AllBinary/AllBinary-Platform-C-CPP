@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/RuntimeException.h"
@@ -145,126 +147,125 @@
         #include "RTSFormInput.h"
 
 class BuildingRTSFormInput: public RTSFormInput {
-        
 
-    private: isUnitProducer: bool;
+    private: bool isUnitProducer;
 
-    private: const buildOnPathGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent buildOnPathGameNotificationEvent;
 
-    private: const spotTakenGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent spotTakenGameNotificationEvent;
 
-    private: const selectBuildSpotGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent selectBuildSpotGameNotificationEvent;
 
-    private: const roadCollisionGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent roadCollisionGameNotificationEvent;
 
-    private: const noMoneyGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent noMoneyGameNotificationEvent;
 
-    private: const buildingCollisionGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent buildingCollisionGameNotificationEvent;
 
-    private: const structureToCloseCollisionGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent structureToCloseCollisionGameNotificationEvent;
 
-    private: const buildingGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent buildingGameNotificationEvent;
 
-    private: const mapEdgeGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent mapEdgeGameNotificationEvent;
 
-    private: const dropCellPositionHistory: DropCellPositionHistory = DropCellPositionHistory.getInstance()!;
+    private: const DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();
 
-public constructor (std::vector<Group> groupInterface, bool isUnitProducer){
+public: BuildingRTSFormInput(std::vector<Group> groupInterface, bool isUnitProducer){
             super(groupInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.isUnitProducer= isUnitProducer;
+this->isUnitProducer= isUnitProducer;
     
 
-    smallIntegerSingletonFactory: SmallIntegerSingletonFactory = SmallIntegerSingletonFactory.getInstance()!;;
+    SmallIntegerSingletonFactory smallIntegerSingletonFactory = SmallIntegerSingletonFactory::getInstance();;
     
 
-    basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;;
+    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
     
-this.buildOnPathGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.BUILD_ON_PATH, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->buildOnPathGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().BUILD_ON_PATH, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.spotTakenGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.SPOT_TAKEN, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->spotTakenGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().SPOT_TAKEN, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.selectBuildSpotGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.SELECT_BUILD_SPOT, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->selectBuildSpotGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().SELECT_BUILD_SPOT, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.roadCollisionGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.ROAD_COLLISION, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->roadCollisionGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().ROAD_COLLISION, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.noMoneyGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.NO_MONEY, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->noMoneyGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().NO_MONEY, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.buildingCollisionGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.BUILDING_COLLISION, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->buildingCollisionGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().BUILDING_COLLISION, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.structureToCloseCollisionGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.STRUCTURE_TO_CLOSE, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->structureToCloseCollisionGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().STRUCTURE_TO_CLOSE, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.buildingGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.BUILDING, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->buildingGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().BUILDING, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
-this.mapEdgeGameNotificationEvent= new GameNotificationEvent(this, RTSGameStrings.getInstance()!.MAP_EDGE, smallIntegerSingletonFactory!.getAt(2), basicColorFactory!.PINK, BooleanFactory.getInstance()!.FALSE);
+this->mapEdgeGameNotificationEvent= GameNotificationEvent(this, RTSGameStrings::getInstance().MAP_EDGE, smallIntegerSingletonFactory.getAt(2), basicColorFactory.PINK, BooleanFactory::getInstance().FALSE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
 super.setAllBinaryGameLayerManager(allBinaryGameLayerManager);
     
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = allBinaryGameLayerManager as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
-this.buildOnPathGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->buildOnPathGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.spotTakenGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->spotTakenGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.selectBuildSpotGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->selectBuildSpotGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.roadCollisionGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->roadCollisionGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.noMoneyGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->noMoneyGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.buildingCollisionGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->buildingCollisionGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.structureToCloseCollisionGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->structureToCloseCollisionGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.buildingGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->buildingGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
-this.mapEdgeGameNotificationEvent!.setBasicColorP(geographicMapInterface!.getForegroundBasicColor());
+this->mapEdgeGameNotificationEvent.setBasicColorP(geographicMapInterface.getForegroundBasicColor());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex){
+    public: void processGameSpecific(CollidableDestroyableDamageableLayer associatedRtsLayer, RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex){
 super.process(layerManager);
     
-this.buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemIndex);
+this->buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemIndex);
     
 }
 
 
-    public bool isPositionBlocked(){
+    public: bool isPositionBlocked(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dropCellPositionHistory!.isCellPositionWithDrop(this.getSelectedGeographicCellPosition());;
+                        return this->dropCellPositionHistory.isCellPositionWithDrop(this->getSelectedGeographicCellPosition());;
     
 }
 
 
-    bool isDemoLocked(ABCustomItem item){
+    private: bool isDemoLocked(ABCustomItem item){
 
-    factoryItem: LayerInterfaceFactoryImageItem = item as LayerInterfaceFactoryImageItem;;
+    LayerInterfaceFactoryImageItem factoryItem = item as LayerInterfaceFactoryImageItem;;
     
 
-    layerInterfaceFactoryInterface: DemoLockedWithCostLayerInterfaceFactoryInterface = factoryItem!.getLayerInterfaceFactoryInterface() as DemoLockedWithCostLayerInterfaceFactoryInterface;;
+    DemoLockedWithCostLayerInterfaceFactoryInterface layerInterfaceFactoryInterface = factoryItem.getLayerInterfaceFactoryInterface() as DemoLockedWithCostLayerInterfaceFactoryInterface;;
     
 
-                        if(LockedUtil.getInstance()!.isLocked() && layerInterfaceFactoryInterface!.isDemoLocked())
+                        if(LockedUtil::getInstance().isLocked() && layerInterfaceFactoryInterface.isDemoLocked())
                         
                                     {
                                     
@@ -291,39 +292,39 @@ this.buildFromMotionInput(rtsPlayerLayerInterface, layerManager, item, itemIndex
 
                 //@Throws(Exception.constructor)
             
-    public buildFromMotionInput(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex){
+    public: void buildFromMotionInput(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, ABCustomItem item, int32_t itemIndex){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, "buildFromMotionInput");
+this->logUtil.putF(commonStrings.START, this, "buildFromMotionInput");
     
 
                         if(layerManager == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
                                 
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
-                        if(this.isDemoLocked(item))
+                        if(this->isDemoLocked(item))
                         
                                     {
-                                    rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                                    rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
-LockedFeatureNotificationUtil.getInstance()!.fireWithColor(geographicMapInterface!.getForegroundBasicColor());
+LockedFeatureNotificationUtil::getInstance().fireWithColor(geographicMapInterface.getForegroundBasicColor());
     
 
 
@@ -335,83 +336,65 @@ LockedFeatureNotificationUtil.getInstance()!.fireWithColor(geographicMapInterfac
                                     }
                                 
 
-    geographicMapCellPosition: GeographicMapCellPosition = this.getSelectedGeographicCellPosition()!;;
+    GeographicMapCellPosition geographicMapCellPosition = this->getSelectedGeographicCellPosition();;
     
 
-                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION)
+                        if(geographicMapCellPosition != SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION)
                         
                                     {
                                     
-                        if(!this.isPositionBlocked())
+                        if(!this->isPositionBlocked())
                         
                                     {
                                     
-    geographicMapCellType: GeographicMapCellType = geographicMapInterface!.getCellTypeAt(geographicMapCellPosition)!;;
+    GeographicMapCellType geographicMapCellType = geographicMapInterface.getCellTypeAt(geographicMapCellPosition);;
     
 
-    raceTrackGeographicMapCellTypeFactory: RaceTrackGeographicMapCellTypeFactory = geographicMapInterface!.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
     
 
-                        if(!raceTrackGeographicMapCellTypeFactory!.isPath(geographicMapCellType))
+                        if(!raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellType))
                         
                                     {
                                     
-                        if(this.newUnconstructedRTSLayerInterfaceArray[itemIndex] == CollidableDestroyableDamageableLayer.getNullInstance())
+                        if(this->newUnconstructedRTSLayerInterfaceArray[itemIndex] == CollidableDestroyableDamageableLayer::getNullInstance())
                         
                                     {
-                                    this.newUnconstructedRTSLayerInterfaceArray[itemIndex]= this.getInstance(layerManager, item, geographicMapCellPosition);
+                                    this->newUnconstructedRTSLayerInterfaceArray[itemIndex]= this->getInstance(layerManager, item, geographicMapCellPosition);
     
 
                                     }
                                 
                         else {
                             
-    rtsLayer: RTSLayer = this.newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
+    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
     
 
-    cellPoint: GPoint = geographicMapCellPosition!.getPoint()!;;
+    GPoint cellPoint = geographicMapCellPosition.getPoint();;
     
-rtsLayer!.setPosition(cellPoint!.getX(), cellPoint!.getY(), cellPoint!.getZ());
+rtsLayer.setPosition(cellPoint.getX(), cellPoint.getY(), cellPoint.getZ());
     
-rtsLayer!.geographicMapCellPositionAreaBase!.update(geographicMapInterface);
+rtsLayer.geographicMapCellPositionAreaBase.update(geographicMapInterface);
     
 
                         }
                             
 
-    rtsLayer: RTSLayer = this.newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
+    RTSLayer rtsLayer = this->newUnconstructedRTSLayerInterfaceArray[itemIndex]! as RTSLayer;;
     
-this.attemptBuild(rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
+this->attemptBuild(rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
     
 
                                     }
                                 
                         else {
-                            rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                            rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.buildOnPathGameNotificationEvent);
-    
-
-                                    }
-                                
-
-                        }
-                            
-
-                                    }
-                                
-                        else {
-                            rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
-    
-
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
-                        
-                                    {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.spotTakenGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->buildOnPathGameNotificationEvent);
     
 
                                     }
@@ -423,13 +406,31 @@ this.attemptBuild(rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
                                     }
                                 
                         else {
-                            rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                            rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.selectBuildSpotGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->spotTakenGameNotificationEvent);
+    
+
+                                    }
+                                
+
+                        }
+                            
+
+                                    }
+                                
+                        else {
+                            rtsPlayerLayerInterface.add(ErrorSound::getInstance());
+    
+
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
+                        
+                                    {
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->selectBuildSpotGameNotificationEvent);
     
 
                                     }
@@ -442,17 +443,17 @@ this.attemptBuild(rtsPlayerLayerInterface, layerManager, rtsLayer, itemIndex);
 
                 //@Throws(Exception.constructor)
             
-    bool attemptBuild(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex){
-this.logUtil!.putF(new StringMaker().append("Layer: ")!.append(StringUtil.getInstance()!.toString(layerInterface))!.toString(), this, "attemptBuild");
+    protected: bool attemptBuild(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface, int32_t itemIndex){
+this->logUtil.putF(StringMaker().append("Layer: ").append(StringUtil::getInstance().toString(layerInterface)).toString(), this, "attemptBuild");
     
 
-    geographicMapCellPositionArea: GeographicMapCellPositionAreaBase = layerInterface!.geographicMapCellPositionAreaBase;;
+    GeographicMapCellPositionAreaBase geographicMapCellPositionArea = layerInterface.geographicMapCellPositionAreaBase;;
     
 
-    occupyList: BasicArrayList = geographicMapCellPositionArea!.getOccupyingGeographicMapCellPositionList()!;;
+    BasicArrayList occupyList = geographicMapCellPositionArea.getOccupyingGeographicMapCellPositionList();;
     
 
-                        if(!this.isBuildAttemptValid(rtsPlayerLayerInterface, layerInterface))
+                        if(!this->isBuildAttemptValid(rtsPlayerLayerInterface, layerInterface))
                         
                                     {
                                     
@@ -465,37 +466,37 @@ this.logUtil!.putF(new StringMaker().append("Layer: ")!.append(StringUtil.getIns
                                     }
                                 
 
-    geographicMapCellType: GeographicMapCellType;;
+    GeographicMapCellType geographicMapCellType;;
     
 
 
 
 
                         for (
-    index: int32_t = occupyList!.size() -1;index >= 0; index--)
+    int32_t index = occupyList.size() -1;index >= 0; index--)
         {
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = layerManager as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
-geographicMapCellType= geographicMapInterface!.getCellTypeAt(occupyList!.get(index) as GeographicMapCellPosition);
-    
-
-    raceTrackGeographicMapCellTypeFactory: RaceTrackGeographicMapCellTypeFactory = geographicMapInterface!.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+geographicMapCellType= geographicMapInterface.getCellTypeAt(occupyList.get(index) as GeographicMapCellPosition);
     
 
-                        if(raceTrackGeographicMapCellTypeFactory!.isPath(geographicMapCellType))
+    RaceTrackGeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = geographicMapInterface.getGeographicMapCellTypeFactory() as RaceTrackGeographicMapCellTypeFactory;;
+    
+
+                        if(raceTrackGeographicMapCellTypeFactory.isPath(geographicMapCellType))
                         
                                     {
-                                    rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                                    rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.roadCollisionGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->roadCollisionGameNotificationEvent);
     
 
                                     }
@@ -512,39 +513,39 @@ geographicMapCellType= geographicMapInterface!.getCellTypeAt(occupyList!.get(ind
 }
 
 
-    cost: int32_t = layerInterface!.getCost()!;;
+    int32_t cost = layerInterface.getCost();;
     
 
-    capital: Capital = rtsPlayerLayerInterface!.getCapital()!;;
+    Capital capital = rtsPlayerLayerInterface.getCapital();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Trying to Build: ");
+stringBuffer.append("Trying to Build: ");
     
-stringBuffer!.append(layerInterface!.getName());
+stringBuffer.append(layerInterface.getName());
     
-stringBuffer!.append(" for: $");
+stringBuffer.append(" for: $");
     
-stringBuffer!.appendint(cost);
+stringBuffer.appendint(cost);
     
-stringBuffer!.append(" with ");
+stringBuffer.append(" with ");
     
-stringBuffer!.appendint(capital.getTotalMoney());
+stringBuffer.appendint(capital.getTotalMoney());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "attemptBuild");
+this->logUtil.putF(stringBuffer.toString(), this, "attemptBuild");
     
 
                         if(cost <= capital.getTotalMoney())
                         
                                     {
-                                    layerInterface!.construct(rtsPlayerLayerInterface);
+                                    layerInterface.construct(rtsPlayerLayerInterface);
     
-this.newUnconstructedRTSLayerInterfaceArray[itemIndex]= CollidableDestroyableDamageableLayer.getNullInstance();
+this->newUnconstructedRTSLayerInterfaceArray[itemIndex]= CollidableDestroyableDamageableLayer::getNullInstance();
     
 capital.removeMoney(cost);
     
-this.add(rtsPlayerLayerInterface, layerManager, layerInterface);
+this->add(rtsPlayerLayerInterface, layerManager, layerInterface);
     
 
 
@@ -556,13 +557,13 @@ this.add(rtsPlayerLayerInterface, layerManager, layerInterface);
                                     }
                                 
                         else {
-                            rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                            rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.noMoneyGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->noMoneyGameNotificationEvent);
     
 
                                     }
@@ -581,24 +582,24 @@ this.add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface){
+    protected: bool isBuildAttemptValid(RTSPlayerLayerInterface rtsPlayerLayerInterface, RTSLayer layerInterface){
 
-    geographicMapCellPositionArea: GeographicMapCellPositionAreaBase = layerInterface!.geographicMapCellPositionAreaBase;;
+    GeographicMapCellPositionAreaBase geographicMapCellPositionArea = layerInterface.geographicMapCellPositionAreaBase;;
     
 
-    occupyList: BasicArrayList = geographicMapCellPositionArea!.getOccupyingGeographicMapCellPositionList()!;;
+    BasicArrayList occupyList = geographicMapCellPositionArea.getOccupyingGeographicMapCellPositionList();;
     
 
-                        if(this.dropCellPositionHistory!.anyCellPositionWithDrop(occupyList))
+                        if(this->dropCellPositionHistory.anyCellPositionWithDrop(occupyList))
                         
                                     {
-                                    rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                                    rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.buildingCollisionGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->buildingCollisionGameNotificationEvent);
     
 
                                     }
@@ -613,16 +614,16 @@ this.add(rtsPlayerLayerInterface, layerManager, layerInterface);
                                     }
                                 
 
-                        if(this.isUnitProducer && this.dropCellPositionHistory!.anyCellPositionWithDrop(geographicMapCellPositionArea!.getSurroundingGeographicMapCellPositionList()))
+                        if(this->isUnitProducer && this->dropCellPositionHistory.anyCellPositionWithDrop(geographicMapCellPositionArea.getSurroundingGeographicMapCellPositionList()))
                         
                                     {
-                                    rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                                    rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.structureToCloseCollisionGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->structureToCloseCollisionGameNotificationEvent);
     
 
                                     }
@@ -638,16 +639,16 @@ this.add(rtsPlayerLayerInterface, layerManager, layerInterface);
                                 
                         else {
                             
-                        if(this.isSurroundingCellsOffMap(layerInterface))
+                        if(this->isSurroundingCellsOffMap(layerInterface))
                         
                                     {
-                                    rtsPlayerLayerInterface!.add(ErrorSound.getInstance());
+                                    rtsPlayerLayerInterface.add(ErrorSound::getInstance());
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.mapEdgeGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->mapEdgeGameNotificationEvent);
     
 
                                     }
@@ -675,29 +676,29 @@ this.add(rtsPlayerLayerInterface, layerManager, layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface){
+    protected: void add(RTSPlayerLayerInterface rtsPlayerLayerInterface, AllBinaryLayerManager layerManager, RTSLayer layerInterface){
 
-    geographicMapCellPositionArea: GeographicMapCellPositionAreaBase = layerInterface!.geographicMapCellPositionAreaBase;;
-    
-
-    occupyList: BasicArrayList = geographicMapCellPositionArea!.getOccupyingGeographicMapCellPositionList()!;;
-    
-this.dropCellPositionHistory!.addAll(occupyList, layerInterface);
+    GeographicMapCellPositionAreaBase geographicMapCellPositionArea = layerInterface.geographicMapCellPositionAreaBase;;
     
 
-    rtsPlayerGameInput: RTSPlayerGameInput = rtsPlayerLayerInterface!.getPlayerGameInput() as RTSPlayerGameInput;;
+    BasicArrayList occupyList = geographicMapCellPositionArea.getOccupyingGeographicMapCellPositionList();;
     
-rtsPlayerGameInput!.setSelectedRTSLayer(layerInterface, this.getSelectedGeographicCellPosition());
-    
-layerManager!.append(layerInterface);
-    
-rtsPlayerLayerInterface!.add(BuildingSound.getInstance());
+this->dropCellPositionHistory.addAll(occupyList, layerInterface);
     
 
-                        if(!rtsPlayerLayerInterface!.implmentsArtificialIntelligenceCompositeInterface())
+    RTSPlayerGameInput rtsPlayerGameInput = rtsPlayerLayerInterface.getPlayerGameInput() as RTSPlayerGameInput;;
+    
+rtsPlayerGameInput.setSelectedRTSLayer(layerInterface, this->getSelectedGeographicCellPosition());
+    
+layerManager.append(layerInterface);
+    
+rtsPlayerLayerInterface.add(BuildingSound::getInstance());
+    
+
+                        if(!rtsPlayerLayerInterface.implmentsArtificialIntelligenceCompositeInterface())
                         
                                     {
-                                    GameNotificationEventHandler.getInstance()!.fireEvent(this.buildingGameNotificationEvent);
+                                    GameNotificationEventHandler::getInstance().fireEvent(this->buildingGameNotificationEvent);
     
 
                                     }
@@ -705,41 +706,41 @@ rtsPlayerLayerInterface!.add(BuildingSound.getInstance());
 }
 
 
-    bool isSurroundingCellsOffMap(RTSLayer layerInterface){
+    private: bool isSurroundingCellsOffMap(RTSLayer layerInterface){
 
-    geographicMapCellPositionArea: GeographicMapCellPositionAreaBase = layerInterface!.geographicMapCellPositionAreaBase;;
-    
-
-    occupyList: BasicArrayList = geographicMapCellPositionArea!.getOccupyingGeographicMapCellPositionList()!;;
+    GeographicMapCellPositionAreaBase geographicMapCellPositionArea = layerInterface.geographicMapCellPositionAreaBase;;
     
 
-    surroundList: BasicArrayList = geographicMapCellPositionArea!.getSurroundingGeographicMapCellPositionList()!;;
+    BasicArrayList occupyList = geographicMapCellPositionArea.getOccupyingGeographicMapCellPositionList();;
     
 
-    occupySize: int32_t = occupyList!.size()!;;
+    BasicArrayList surroundList = geographicMapCellPositionArea.getSurroundingGeographicMapCellPositionList();;
     
 
-    surroundSize: int32_t = surroundList!.size()!;;
+    int32_t occupySize = occupyList.size();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("occupySize: ");
-    
-stringBuffer!.appendint(occupySize);
-    
-stringBuffer!.append(" surroundSize: ");
-    
-stringBuffer!.appendint(surroundSize);
-    
-stringBuffer!.append(" surroundList: ");
-    
-stringBuffer!.append(StringUtil.getInstance()!.toString(surroundList));
-    
-this.logUtil!.putF(stringBuffer!.toString(), this, "isSurroundingCellsOffMap");
+    int32_t surroundSize = surroundList.size();;
     
 
-    isSurroundOffMap: bool = false;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("occupySize: ");
+    
+stringBuffer.appendint(occupySize);
+    
+stringBuffer.append(" surroundSize: ");
+    
+stringBuffer.appendint(surroundSize);
+    
+stringBuffer.append(" surroundList: ");
+    
+stringBuffer.append(StringUtil::getInstance().toString(surroundList));
+    
+this->logUtil.putF(stringBuffer.toString(), this, "isSurroundingCellsOffMap");
+    
+
+    bool isSurroundOffMap = false;;
     
 
                         if(occupySize == 1 && surroundSize != 8)

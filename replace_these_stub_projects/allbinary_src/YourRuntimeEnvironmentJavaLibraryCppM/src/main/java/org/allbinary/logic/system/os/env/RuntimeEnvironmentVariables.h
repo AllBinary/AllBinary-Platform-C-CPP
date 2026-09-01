@@ -62,35 +62,34 @@
 class RuntimeEnvironmentVariables
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor ();
+public: RuntimeEnvironmentVariables();
 
-    public string getTest1();
+    public: std::string getTest1();
 
-    public string getVariable(string var);
+    public: std::string getVariable(std::string var);
 
-    public Properties get();
+    public: Properties get();
 
-    public string getTempDir();
+    public: std::string getTempDir();
 
-    public string getLibraryPath();
+    public: std::string getLibraryPath();
 
-    public string getClassPath();
+    public: std::string getClassPath();
 
-    public updateLibraryPath(string libPath);
+    public: void updateLibraryPath(std::string libPath);
 
-    public string getUserHome();
+    public: std::string getUserHome();
 
-    public string getUserDir();
+    public: std::string getUserDir();
 
-    public set();
+    public: void set();
 
-    public setVariable(string var, string val);
+    public: void setVariable(std::string var, std::string val);
 
 };
 

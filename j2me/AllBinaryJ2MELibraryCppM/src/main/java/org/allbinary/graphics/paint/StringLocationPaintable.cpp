@@ -42,20 +42,17 @@
         #include "LocationPaintable.h"
 
 class StringLocationPaintable: public LocationPaintable {
-        
 
-    private: const value: string;
+    private: std::string value;
 
-public constructor (string value){
-
-            super();
-        this.value= value;
+public: StringLocationPaintable(std::string value){
+this->value= value;
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawString(this.value, x, y, 0);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+graphics.drawString(this->value, x, y, 0);
     
 }
 

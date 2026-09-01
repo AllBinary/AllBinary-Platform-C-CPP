@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGAMERESOURCES_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGAMERESOURCES_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/resources/BasicGameResources.h>
@@ -55,21 +57,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GeologicalGameResources: public BasicGameResources {
-        
 
-    private: static const instance: GeologicalGameResources = new GeologicalGameResources();
+    private: static GeologicalGameResources instance() { return GeologicalGameResources(); }
 
-    public static BasicGameResources getInstance();
+    public: static BasicGameResources getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    append(string ROOT, string sizeString);
+private: GeologicalGameResources();
 
                 //@Throws(Exception.constructor)
             
-    string getString();
+    protected: void append(std::string ROOT, std::string sizeString);
+
+                //@Throws(Exception.constructor)
+            
+    protected: std::string getString();
 
 };
 

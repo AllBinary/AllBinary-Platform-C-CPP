@@ -42,7 +42,6 @@
         #include "ValidationInterface.h"
 
 class ValidationComponentInterface: public TransformInterface, public ValidationInterface {
-        
 
 };
 

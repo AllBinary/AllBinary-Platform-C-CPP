@@ -52,24 +52,23 @@
 class AcceptableResponseUtil
             : public Object
          {
-        
 
-    private: static const instance: AcceptableResponseUtil = new AcceptableResponseUtil();
+    private: static AcceptableResponseUtil instance() { return AcceptableResponseUtil(); }
 
-    public static AcceptableResponseUtil getInstance();
+    public: static AcceptableResponseUtil getInstance();
 
                     static int32_t initResult;
                 static int32_t init();
             
-    public const candidateVector: Vector = new Vector();
+    public: const Vector candidateVector = Vector();
 
-    public const tagNameVector: Vector = new Vector();
+    public: const Vector tagNameVector = Vector();
 
-    public string get(int32_t index);
+    public: std::string get(int32_t index);
 
-    public string getTagName(int32_t index);
+    public: std::string getTagName(int32_t index);
 
-    public int32_t size();
+    public: int32_t size();
 
 };
 

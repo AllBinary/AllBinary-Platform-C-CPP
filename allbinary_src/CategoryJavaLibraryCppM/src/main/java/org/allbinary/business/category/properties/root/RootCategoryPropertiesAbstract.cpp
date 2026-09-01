@@ -71,150 +71,147 @@
 class RootCategoryPropertiesAbstract
             : public Object
         : public RootCategoryPropertiesInterface {
-        
 
-    private: const category: string = CategoryData.getInstance()!.ROOTCATEGORY;
+    private: const std::string category = CategoryData::getInstance().ROOTCATEGORY;
 
-    private: const fileName: string = this.category +AbPathData.getInstance()!.EXTENSION_SEP +CategoryData.getInstance()!.UNCRYPTED_EXTENSION;
+    private: const std::string fileName = this->category +AbPathData::getInstance().EXTENSION_SEP +CategoryData::getInstance().UNCRYPTED_EXTENSION;
 
-public constructor (){
-
-            super();
-        }
+public: RootCategoryPropertiesAbstract(){
+}
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getValue();
+                        return this->getValue();
     
 }
 
 
-    public string getValue(){
+    public: std::string getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.category;
+                        return this->category;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setValue(string value){
+    public: void setValue(std::string value){
 
 
 
-                            throw new Exception("No Value Allowed");
+                            throw Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setRootFilePath(AbPath value){
+    public: void setRootFilePath(AbPath value){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setRootFilePath(string value){
+    public: void setRootFilePath(std::string value){
 
 
 
-                            throw new Exception("No Value Allowed");
+                            throw Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getRootFilePath(){
+    public: AbPath getRootFilePath(){
 
 
 
-                            throw new Exception("No Value Allowed");
+                            throw Exception("No Value Allowed");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isRealRoot(){
+    public: bool isRealRoot(){
 
 
 
-                            throw new Exception("No A Real Root");
+                            throw Exception("No A Real Root");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isRoot(){
+    public: bool isRoot(){
 
 
 
-                            throw new Exception("Root but not implemented");
+                            throw Exception("Root but not implemented");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getWebAppPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: std::string getWebAppPath(CategoryHierarchyInterface categoryHierarchyInterface){
 
 
 
-                            throw new Exception("Not Root");
+                            throw Exception("Not Root");
                     
 }
 
 
-    public AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
+    public: AbPath getPath(CategoryHierarchyInterface categoryHierarchyInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbPath.createAbPath();;
+                        return AbPath::createAbPath();;
     
 }
 
 
-    public string getFileName(){
+    public: std::string getFileName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileName;
+                        return this->fileName;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    categoryHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> categoryHashMap = HashMap<any, any>();;
     
-categoryHashMap!.put(CategoryData.getInstance()!.NAME, this.category);
+categoryHashMap.put(CategoryData::getInstance().NAME, this->category);
     
 
 
@@ -225,11 +222,11 @@ categoryHashMap!.put(CategoryData.getInstance()!.NAME, this.category);
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    categoryVector: Vector = new Vector();;
+    Vector categoryVector = Vector();;
     
-categoryVector!.add(this.category);
+categoryVector.add(this->category);
     
 
 
@@ -242,7 +239,7 @@ categoryVector!.add(this.category);
 
                 //@Throws(Exception.constructor)
             
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -254,7 +251,7 @@ categoryVector!.add(this.category);
 
                 //@Throws(Exception.constructor)
             
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -266,7 +263,7 @@ categoryVector!.add(this.category);
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 

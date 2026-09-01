@@ -83,46 +83,45 @@
 class InputAutomationBundleActivator
             : public Object
         : public BundleActivator, public InputAutomationBundleActivatorListenerInterface {
-        
 
-    private: static moduleManagementThread: Thread;
+    private: static Thread moduleManagementThread;
 
-    private: static bundleContext: BundleContext;
+    private: static BundleContext bundleContext;
 
-    public static BundleContext getBundleContext(){
+    public: static BundleContext getBundleContext(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InputAutomationBundleActivator.bundleContext;
+                        return InputAutomationBundleActivator::bundleContext;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public start(BundleContext bundleContext){
+    public: void start(BundleContext bundleContext){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.START);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.START);
     
-this.bundleContext= bundleContext;
+this->bundleContext= bundleContext;
     
-InputAutomationBundleActivator.moduleManagementThread= new Thread(new InputAutomationNewBundleRunnable(this));
+InputAutomationBundleActivator::moduleManagementThread= Thread(InputAutomationNewBundleRunnable(this));
     
-InputAutomationBundleActivator.moduleManagementThread!.start();
+InputAutomationBundleActivator::moduleManagementThread.start();
     
-InputAutomationJFrame.create(this);
+InputAutomationJFrame::create(this);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.START, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.START, e);
     
 
 
@@ -136,42 +135,42 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.START
 
                 //@Throws(Exception.constructor)
             
-    public registerAsService(){
-OSGIActivatorUtil.registerAsService(this.getBundleContext(), InputAutomationServiceFactory.getInstance(), InputAutomationConfigurationModuleChangeListener.constructor.toString()!);
+    public: void registerAsService(){
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationConfigurationModuleChangeListener.constructor.toString()!);
     
-OSGIActivatorUtil.registerAsService(this.getBundleContext(), InputAutomationServiceFactory.getInstance(), InputAutomationRobotChangeListener.constructor.toString()!);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public useServices(){
-new InputAutomationRobotServiceConsumer(this.getBundleContext()).process();
-    
-new InputAutomationModuleServiceConsumer(this.getBundleContext()).process();
+OSGIActivatorUtil::registerAsService(this->getBundleContext(), InputAutomationServiceFactory::getInstance(), InputAutomationRobotChangeListener.constructor.toString()!);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public stop(BundleContext context){
-this.logUtil!.putF(this.commonStrings!.START, this, "stop");
+    public: void useServices(){
+InputAutomationRobotServiceConsumer(this->getBundleContext()).process();
+    
+InputAutomationModuleServiceConsumer(this->getBundleContext()).process();
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void stop(BundleContext context){
+this->logUtil.putF(this->commonStrings.START, this, "stop");
     
 
-                        if(InputAutomationJFrame.getInstance() != 
-                                    null
+                        if(InputAutomationJFrame::getInstance() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    InputAutomationJFrame.destroy();
+                                    InputAutomationJFrame::destroy();
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Nothing to stop", this, "stop");
+                            this->logUtil.putF("Nothing to stop", this, "stop");
     
 
                         }

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -68,52 +70,51 @@
 class ImageCompleteUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCompleteUtil = new ImageCompleteUtil();
+    private: static ImageCompleteUtil instance() { return ImageCompleteUtil(); }
 
-    public static ImageCompleteUtil getInstance(){
+    public: static ImageCompleteUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCompleteUtil.instance;
+                        return ImageCompleteUtil::instance();
     
 }
 
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(18000);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
 
-    private: const allTimeDelayHelper: TimeDelayHelper = new TimeDelayHelper(120000);
+    private: const TimeDelayHelper allTimeDelayHelper = TimeDelayHelper(120000);
 
                 //@Throws(Exception.constructor)
             
-    public waitForImage(Image image, string name){
-this.timeDelayHelper!.setStartTime();
+    public: void waitForImage(Image image, std::string name){
+this->timeDelayHelper.setStartTime();
     
-this.waitForATime(image, name, this.timeDelayHelper);
+this->waitForATime(image, name, this->timeDelayHelper);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isReady(Image image, string name, TimeDelayHelper timeDelayHelper){
+    public: bool isReady(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    playnImage: PlaynImage = image as PlaynImage;;
+    PlaynImage playnImage = image as PlaynImage;;
     
 
-                        if(!playnImage!.getImage()!.isReady() && playnImage!.getImage()!.width() +playnImage!.getImage()!.height() == 0)
+                        if(!playnImage.getImage().isReady() && playnImage.getImage().width() +playnImage.getImage().height() == 0)
                         
                                     {
                                     
-                        if(timeDelayHelper!.isTime())
+                        if(timeDelayHelper.isTime())
                         
                                     {
                                     
 
 
-                            throw new Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
                     
 
                                     }
@@ -138,21 +139,21 @@ this.waitForATime(image, name, this.timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    waitForATime(Image image, string name, TimeDelayHelper timeDelayHelper){
+    private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    playnImage: PlaynImage = image as PlaynImage;;
+    PlaynImage playnImage = image as PlaynImage;;
     
 
-        while(!playnImage!.getImage()!.isReady() && playnImage!.getImage()!.width() +playnImage!.getImage()!.height() == 0)
+        while(!playnImage.getImage().isReady() && playnImage.getImage().width() +playnImage.getImage().height() == 0)
         {
 
-                        if(timeDelayHelper!.isTime())
+                        if(timeDelayHelper.isTime())
                         
                                     {
                                     
 
 
-                            throw new Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
                     
 
                                     }
@@ -164,29 +165,28 @@ this.waitForATime(image, name, this.timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public waitForAll(){
-this.allTimeDelayHelper!.setStartTime();
+    public: void waitForAll(){
+this->allTimeDelayHelper.setStartTime();
     
 
-    hashtable: Hashtable<any, any> = GameFeatureImageCacheFactory.getInstance()!.getHashtable()!;;
+    Hashtable<any, any> hashtable = GameFeatureImageCacheFactory::getInstance().getHashtable();;
     
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(hashtable)!;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
     
 
-    size: int32_t = objectArray!.length
-                ;;
+    int32_t size = objectArray.size();;
     
-PreLogUtil.put("Total: " +size, this, "waitForAll");
+PreLogUtil::put("Total: " +size, this, "waitForAll");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.waitForATime(hashtable.get(objectArray[index]!) as Image, objectArray[index]! as string, this.allTimeDelayHelper);
+this->waitForATime(hashtable.get(objectArray[index]!) as Image, objectArray[index]! as string, this->allTimeDelayHelper);
     
 }
 

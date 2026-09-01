@@ -42,30 +42,27 @@
 class LicenseType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-protected constructor (string name){
-
-            super();
-        this.setName(name);
+protected: LicenseType(std::string name){
+this->setName(name);
     
 }
 
 
-    setName(string name){
-this.name= name;
+    private: void setName(std::string name){
+this->name= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

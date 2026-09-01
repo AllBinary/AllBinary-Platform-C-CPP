@@ -56,17 +56,16 @@
 class XmlOptionItemsHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.XmlOptionItemsHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.XmlOptionItemsHelper";
 
-    private: static const FACTORYNAME: string = "XmlOptionHelperFactory";
+    private: static const std::string FACTORYNAME = "XmlOptionHelperFactory";
 
-public constructor ();
+public: XmlOptionItemsHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

@@ -44,43 +44,40 @@
 class GeologicalResource
             : public Object
          {
-        
 
-    private: total: int32_t= 0;
+    private: int32_t total= 0;
 
-    private: initTotal: int32_t;
+    private: int32_t initTotal;
 
-public constructor (int32_t initTotal){
-
-            super();
-        this.initTotal= initTotal;
+public: GeologicalResource(int32_t initTotal){
+this->initTotal= initTotal;
     
-this.init();
+this->init();
     
 }
 
 
-    public init(){
-this.setTotal(this.initTotal);
+    public: void init(){
+this->setTotal(this->initTotal);
     
 }
 
 
-    public add(int32_t value){
+    public: void add(int32_t value){
 
-    max: int32_t = Integer.MAX_VALUE;;
+    int32_t max = Integer::MAX_VALUE;;
     
 
-                        if(this.getTotal() +value > max)
+                        if(this->getTotal() +value > max)
                         
                                     {
-                                    this.setTotal(max);
+                                    this->setTotal(max);
     
 
                                     }
                                 
                         else {
-                            this.setTotal(this.getTotal() +value);
+                            this->setTotal(this->getTotal() +value);
     
 
                         }
@@ -88,18 +85,18 @@ this.setTotal(this.initTotal);
 }
 
 
-    public remove(int32_t value){
+    public: void remove(int32_t value){
 
-                        if(this.getTotal() -value < 0)
+                        if(this->getTotal() -value < 0)
                         
                                     {
-                                    this.setTotal(0);
+                                    this->setTotal(0);
     
 
                                     }
                                 
                         else {
-                            this.setTotal(this.getTotal() -value);
+                            this->setTotal(this->getTotal() -value);
     
 
                         }
@@ -107,18 +104,18 @@ this.setTotal(this.initTotal);
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.total;
+                        return this->total;
     
 }
 
 
-    setTotal(int32_t total){
-this.total= total;
+    protected: void setTotal(int32_t total){
+this->total= total;
     
 }
 

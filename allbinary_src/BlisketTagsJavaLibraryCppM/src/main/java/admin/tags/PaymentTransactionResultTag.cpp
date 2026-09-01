@@ -42,14 +42,11 @@
         #include "TableTag.h"
 
 class PaymentTransactionResultTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new PaymentTransactionResultHelperFactory());
+public: PaymentTransactionResultTag(){
+this->setTagHelperFactory(PaymentTransactionResultHelperFactory());
     
-this.setTagRequestHelperFactory(new PaymentTransactionResultHelperFactory());
+this->setTagRequestHelperFactory(PaymentTransactionResultHelperFactory());
     
 }
 

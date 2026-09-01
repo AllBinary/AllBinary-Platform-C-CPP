@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_H
         #define ORG_ALLBINARY_OSGI_SERVICE_INPUTAUTOMATIONSERVICECONSUMER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -69,41 +71,40 @@
 class InputAutomationServiceConsumer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const osgiServiceUtil: OSGIServiceUtil = OSGIServiceUtil.getInstance()!;
+    protected: const OSGIServiceUtil osgiServiceUtil = OSGIServiceUtil::getInstance();
 
-    private: registryName: string;
+    private: std::string registryName;
 
-    private: bundleContext: BundleContext;
+    private: BundleContext bundleContext;
 
-    private: osgiServiceVisitorInterface: OSGIServiceVisitorInterface;
+    private: OSGIServiceVisitorInterface osgiServiceVisitorInterface;
 
-public constructor (string registryName, BundleContext bundleContext, OSGIServiceVisitorInterface osgiServiceVisitorInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public process();
+public: InputAutomationServiceConsumer(std::string registryName, BundleContext bundleContext, OSGIServiceVisitorInterface osgiServiceVisitorInterface);
 
                 //@Throws(Exception.constructor)
             
-    std::vector<ServiceReference> getServiceReferences();
+    public: void process();
 
-    public BundleContext getBundleContext();
+                //@Throws(Exception.constructor)
+            
+    private: std::vector<ServiceReference> getServiceReferences();
 
-    public setBundleContext(BundleContext aBundleContext);
+    public: BundleContext getBundleContext();
 
-    public string getRegistryName();
+    public: void setBundleContext(BundleContext aBundleContext);
 
-    public setRegistryName(string registryName);
+    public: std::string getRegistryName();
 
-    public OSGIServiceVisitorInterface getOsgiServiceVisitorInterface();
+    public: void setRegistryName(std::string registryName);
 
-    public setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface osgiServiceVisitorInterface);
+    public: OSGIServiceVisitorInterface getOsgiServiceVisitorInterface();
+
+    public: void setOsgiServiceVisitorInterface(OSGIServiceVisitorInterface osgiServiceVisitorInterface);
 
 };
 

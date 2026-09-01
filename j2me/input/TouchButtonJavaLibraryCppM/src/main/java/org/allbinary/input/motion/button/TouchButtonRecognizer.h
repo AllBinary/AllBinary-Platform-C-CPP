@@ -80,67 +80,64 @@
 class TouchButtonRecognizer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;
+    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const downGameKeyEventHandler: DownGameKeyEventHandler = DownGameKeyEventHandler.getInstance()!;
+    private: const DownGameKeyEventHandler downGameKeyEventHandler = DownGameKeyEventHandler::getInstance();
 
-    private: lastPressedTouchButtonInput: TouchButtonInput = BasicTouchInputFactory.getInstance()!.NONE;
+    private: TouchButtonInput lastPressedTouchButtonInput = BasicTouchInputFactory::getInstance().NONE;
 
-    private: const currentlyPressedTouchButtonSingleton: CurrentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton.getInstance()!;
+    private: const CurrentlyPressedTouchButtonSingleton currentlyPressedTouchButtonSingleton = CurrentlyPressedTouchButtonSingleton::getInstance();
 //CurrentlyPressedTouchButtonSingletonDebug.getInstance();
 //inner= member=true isStatic=
 class ReleaseHelper
             : public Object
          {
-        
 
-    const touchButtonRecognizer: TouchButtonRecognizer;
+    protected: TouchButtonRecognizer touchButtonRecognizer;
 
-public constructor (TouchButtonRecognizer touchButtonRecognizer);
+public: ReleaseHelper(TouchButtonRecognizer touchButtonRecognizer);
 
                 //@Throws(Exception.constructor)
             
-    public release(TouchButtonInput touchButtonInput, int32_t deviceId);
+    public: void release(TouchButtonInput touchButtonInput, int32_t deviceId);
 
 };
 
             
 //inner= member=true isStatic=
 class MultitouchReleaseHelper: public ReleaseHelper {
-        
 
-public constructor (TouchButtonRecognizer touchButtonRecognizer);
+public: MultitouchReleaseHelper(TouchButtonRecognizer touchButtonRecognizer);
 
                 //@Throws(Exception.constructor)
             
-    public release(TouchButtonInput touchButtonInput, int32_t deviceId);
+    public: void release(TouchButtonInput touchButtonInput, int32_t deviceId);
 
 };
 
             
     private: const releaseHelper;
 
-public constructor ();
+public: TouchButtonRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    processRelease(TouchButtonInput touchButtonInput, int32_t deviceId);
+    private: void processRelease(TouchButtonInput touchButtonInput, int32_t deviceId);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool releaseTouchButtonInput(int32_t x, int32_t y, int32_t deviceId);
+    public: bool releaseTouchButtonInput(int32_t x, int32_t y, int32_t deviceId);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool pressTouchButtonInput(int32_t x, int32_t y, int32_t deviceId);
+    public: bool pressTouchButtonInput(int32_t x, int32_t y, int32_t deviceId);
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -103,22 +105,21 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class SpriteSplitterImageJPanel: public javax.swing.JPanel: public ImageProcessedVisitor {
-        
+class SpriteSplitterImageJPanel: public javax::swing::JPanel, public ImageProcessedVisitor {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const imageStrings: ImageStrings = ImageStrings.getInstance()!;
+    private: const ImageStrings imageStrings = ImageStrings::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-    private: result: BufferedImage;
+    private: BufferedImage result;
 
-public constructor (ImageProcessorInput imageProcessorInput){
+public: SpriteSplitterImageJPanel(ImageProcessorInput imageProcessorInput){
             super();
                     
 
@@ -126,52 +127,52 @@ public constructor (ImageProcessorInput imageProcessorInput){
                     
 initComponents();
     
-this.imageProcessorInput= imageProcessorInput;
+this->imageProcessorInput= imageProcessorInput;
     
 }
 
 
-    public process(){
-new class extends Thread
+    public: void process(){
+class extends Thread
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    spriteSplitterUtil: SpriteSplitterUtil = SpriteSplitterUtil.getInstance()!;;
+    SpriteSplitterUtil spriteSplitterUtil = SpriteSplitterUtil::getInstance();;
     
 
-    spriteType: string = spriteTypeJComboBox!.getSelectedItem() as string;;
+    std::string spriteType = spriteTypeJComboBox.getSelectedItem() as string;;
     
 
-    totalFrames: Integer = Integer.valueOf(totalFramesJComboBox!.getSelectedItem() as string)!;;
+    Integer totalFrames = Integer::valueOf(totalFramesJComboBox.getSelectedItem() as string);;
     
 
-    totalAnimations: Integer = Integer.valueOf(totalAnimationsJComboBox!.getSelectedItem() as string)!;;
+    Integer totalAnimations = Integer::valueOf(totalAnimationsJComboBox.getSelectedItem() as string);;
     
 
-    widthReduction: int32_t = Integer.valueOf(widthReductionTextField!.getText())!;;
+    int32_t widthReduction = Integer::valueOf(widthReductionTextField.getText());;
     
 
-    heightReduction: int32_t = Integer.valueOf(heightReductionTextField!.getText())!;;
+    int32_t heightReduction = Integer::valueOf(heightReductionTextField.getText());;
     
 
-    increaseWidth: int32_t = Integer.valueOf(increaseWidthTextField!.getText())!;;
+    int32_t increaseWidth = Integer::valueOf(increaseWidthTextField.getText());;
     
 
-    increaseHeight: int32_t = Integer.valueOf(increaseHeightTextField!.getText())!;;
+    int32_t increaseHeight = Integer::valueOf(increaseHeightTextField.getText());;
     
-spriteSplitterUtil!.process(this::.getImageProcessorInput(), totalFrames, totalAnimations, widthReduction, heightReduction, increaseWidth, increaseHeight, spriteType, this::);
+spriteSplitterUtil.process(this->getImageProcessorInput(), totalFrames, totalAnimations, widthReduction, heightReduction, increaseWidth, increaseHeight, spriteType, this);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -183,25 +184,25 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 }
 
 
-    initComponents(){
-this.writeOverOriginalJCheckBox= new javax.swing.JCheckBox();
+    private: void initComponents(){
+this->writeOverOriginalJCheckBox= javax::swing::JCheckBox();
     
-this.widthReductionTextField= new javax.swing.JTextField();
+this->widthReductionTextField= javax::swing::JTextField();
     
-this.jLabel5= new javax.swing.JLabel();
+this->jLabel5= javax::swing::JLabel();
     
-this.jPanel1= new class extends javax.swing.JPanel
+this->jPanel1= class extends javax::swing::JPanel
                                 {
                                 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-                        if(this::.result != 
-                                    null
+                        if(this->result != 
+                                    nullptr
                                 )
                         
                                     {
-                                    graphics.drawImage(this::.result, 0, 0, this::.result.getWidth(
-                            nullptr), this::.result.getHeight(
+                                    graphics.drawImage(this->result, 0, 0, this->result.getWidth(
+                            nullptr), this->result.getHeight(
                             nullptr), 
                             nullptr);
     
@@ -213,82 +214,82 @@ this.jPanel1= new class extends javax.swing.JPanel
                                 }
                             ;
     
-this.jLabel4= new javax.swing.JLabel();
+this->jLabel4= javax::swing::JLabel();
     
-this.jLabel6= new javax.swing.JLabel();
+this->jLabel6= javax::swing::JLabel();
     
-this.heightReductionTextField= new javax.swing.JTextField();
+this->heightReductionTextField= javax::swing::JTextField();
     
-this.generateJButton= new javax.swing.JButton();
+this->generateJButton= javax::swing::JButton();
     
-this.jPanel2= new javax.swing.JPanel();
+this->jPanel2= javax::swing::JPanel();
     
-this.jLabel1= new javax.swing.JLabel();
+this->jLabel1= javax::swing::JLabel();
     
-this.totalFramesJComboBox= new javax.swing.JComboBox<>();
-    
-
-    size: int32_t = 70;;
+this->totalFramesJComboBox= javax::swing::JComboBox<>();
     
 
-    animationStringArray2: std::vector<string> = new Array(size -1);;
+    int32_t size = 70;;
     
 
-
-
-
-                        for (
-    index: int32_t = 1;index < size; index++)
-        {
-animationStringArray2[index -1]= index.toString();
-    
-}
-
-this.totalFramesJComboBox!.setModel(new javax.swing.DefaultComboBoxModel(animationStringArray2));
-    
-this.jLabel2= new javax.swing.JLabel();
-    
-this.totalAnimationsJComboBox= new javax.swing.JComboBox<>();
-    
-
-    animationStringArray: std::vector<string> = new Array(size -1);;
+    std::vector<std::string> animationStringArray2 = new Array(size -1);;
     
 
 
 
 
                         for (
-    index: int32_t = 1;index < size; index++)
+    int32_t index = 1;index < size; index++)
         {
-animationStringArray[index -1]= index.toString();
+animationStringArray2[index -1]= std::to_string(index);
     
 }
 
-this.totalAnimationsJComboBox!.setModel(new javax.swing.DefaultComboBoxModel(animationStringArray));
+this->totalFramesJComboBox.setModel(javax::swing::DefaultComboBoxModel(animationStringArray2));
     
-this.jLabel3= new javax.swing.JLabel();
+this->jLabel2= javax::swing::JLabel();
     
-this.spriteTypeJComboBox= new javax.swing.JComboBox<>();
+this->totalAnimationsJComboBox= javax::swing::JComboBox<>();
     
-this.spriteTypeJComboBox!.setModel(new javax.swing.DefaultComboBoxModel(
-                                                [
-                                                    org.allbinary.media.image.SpriteSplitterUtil.getInstance()!.DIRECTIONAL_ANIMATIONS,org.allbinary.media.image.SpriteSplitterUtil.getInstance()!.HORIZONTAL_ANIMATIONS,org.allbinary.media.image.SpriteSplitterUtil.getInstance()!.HORIZONTAL_SPRITE
-                                                ]));
+
+    std::vector<std::string> animationStringArray = new Array(size -1);;
     
-jLabel7= new javax.swing.JLabel();
+
+
+
+
+                        for (
+    int32_t index = 1;index < size; index++)
+        {
+animationStringArray[index -1]= std::to_string(index);
     
-this.increaseWidthTextField= new javax.swing.JTextField();
+}
+
+this->totalAnimationsJComboBox.setModel(javax::swing::DefaultComboBoxModel(animationStringArray));
     
-this.jLabel8= new javax.swing.JLabel();
+this->jLabel3= javax::swing::JLabel();
     
-this.increaseHeightTextField= new javax.swing.JTextField();
+this->spriteTypeJComboBox= javax::swing::JComboBox<>();
     
-this.writeOverOriginalJCheckBox!.setText("Write Over Original");
+this->spriteTypeJComboBox.setModel(javax::swing::DefaultComboBoxModel(
+                                                {
+                                                    org.allbinary.media.image.SpriteSplitterUtil.getInstance().DIRECTIONAL_ANIMATIONS,org.allbinary.media.image.SpriteSplitterUtil.getInstance().HORIZONTAL_ANIMATIONS,org.allbinary.media.image.SpriteSplitterUtil.getInstance().HORIZONTAL_SPRITE
+                                                }));
     
-this.writeOverOriginalJCheckBox!.addActionListener(new class extends java.awt.event.ActionListener
+jLabel7= javax::swing::JLabel();
+    
+this->increaseWidthTextField= javax::swing::JTextField();
+    
+this->jLabel8= javax::swing::JLabel();
+    
+this->increaseHeightTextField= javax::swing::JTextField();
+    
+this->writeOverOriginalJCheckBox.setText("Write Over Original");
+    
+this->writeOverOriginalJCheckBox.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 writeOverOriginalJCheckBoxActionPerformed(evt);
     
 }
@@ -296,12 +297,12 @@ writeOverOriginalJCheckBoxActionPerformed(evt);
                                 }
                             );
     
-this.widthReductionTextField!.setText(CommonPhoneStrings.getInstance()!.ZERO);
+this->widthReductionTextField.setText(CommonPhoneStrings::getInstance().ZERO);
     
-this.widthReductionTextField!.addActionListener(new class extends java.awt.event.ActionListener
+this->widthReductionTextField.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 widthReductionTextFieldActionPerformed(evt);
     
 }
@@ -309,29 +310,29 @@ widthReductionTextFieldActionPerformed(evt);
                                 }
                             );
     
-this.jLabel5!.setText("Less Width:");
+this->jLabel5.setText("Less Width:");
     
-this.jLabel4!.setText("Results:");
+this->jLabel4.setText("Results:");
     
 
-    jPanel1Layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this.jPanel1);;
+    javax::swing::GroupLayout jPanel1Layout = javax::swing::GroupLayout(this->jPanel1);;
     
-this.jPanel1!.setLayout(jPanel1Layout);
+this->jPanel1.setLayout(jPanel1Layout);
     
-jPanel1Layout!.setHorizontalGroup(jPanel1Layout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(jPanel1Layout!.createSequentialGroup()!.addComponent(jLabel4)!.addGap(0, 0, Short.MAX_VALUE)));
+jPanel1Layout.setHorizontalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel4).addGap(0, 0, Short::MAX_VALUE)));
     
-jPanel1Layout!.setVerticalGroup(jPanel1Layout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(jPanel1Layout!.createSequentialGroup()!.addComponent(jLabel4)!.addGap(0, 184, Short.MAX_VALUE)));
+jPanel1Layout.setVerticalGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(jPanel1Layout.createSequentialGroup().addComponent(jLabel4).addGap(0, 184, Short::MAX_VALUE)));
     
-this.jLabel6!.setText("Less Height:");
+this->jLabel6.setText("Less Height:");
     
-this.heightReductionTextField!.setText(CommonPhoneStrings.getInstance()!.ZERO);
+this->heightReductionTextField.setText(CommonPhoneStrings::getInstance().ZERO);
     
-this.generateJButton!.setText("Generate");
+this->generateJButton.setText("Generate");
     
-this.generateJButton!.addActionListener(new class extends java.awt.event.ActionListener
+this->generateJButton.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 generateJButtonActionPerformed(evt);
     
 }
@@ -339,14 +340,14 @@ generateJButtonActionPerformed(evt);
                                 }
                             );
     
-this.jLabel1!.setText("Row Total:");
+this->jLabel1.setText("Row Total:");
     
-this.totalFramesJComboBox!.setSelectedIndex(1);
+this->totalFramesJComboBox.setSelectedIndex(1);
     
-this.totalFramesJComboBox!.addActionListener(new class extends java.awt.event.ActionListener
+this->totalFramesJComboBox.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 totalFramesJComboBoxActionPerformed(evt);
     
 }
@@ -354,14 +355,14 @@ totalFramesJComboBoxActionPerformed(evt);
                                 }
                             );
     
-this.jLabel2!.setText("Column Total :");
+this->jLabel2.setText("Column Total :");
     
-this.totalAnimationsJComboBox!.setSelectedIndex(3);
+this->totalAnimationsJComboBox.setSelectedIndex(3);
     
-this.totalAnimationsJComboBox!.addActionListener(new class extends java.awt.event.ActionListener
+this->totalAnimationsJComboBox.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 totalAnimationsJComboBoxActionPerformed(evt);
     
 }
@@ -369,12 +370,12 @@ totalAnimationsJComboBoxActionPerformed(evt);
                                 }
                             );
     
-this.jLabel3!.setText("Type:");
+this->jLabel3.setText("Type:");
     
-this.spriteTypeJComboBox!.addActionListener(new class extends java.awt.event.ActionListener
+this->spriteTypeJComboBox.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 spriteTypeJComboBoxActionPerformed(evt);
     
 }
@@ -383,22 +384,22 @@ spriteTypeJComboBoxActionPerformed(evt);
                             );
     
 
-    jPanel2Layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this.jPanel2);;
+    javax::swing::GroupLayout jPanel2Layout = javax::swing::GroupLayout(this->jPanel2);;
     
-this.jPanel2!.setLayout(jPanel2Layout);
+this->jPanel2.setLayout(jPanel2Layout);
     
-jPanel2Layout!.setHorizontalGroup(jPanel2Layout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout!.createSequentialGroup()!.addContainerGap()!.addComponent(jLabel1)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(totalFramesJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(jLabel2)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(totalAnimationsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(jLabel3)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(spriteTypeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)!.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
+jPanel2Layout.setHorizontalGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup().addContainerGap().addComponent(jLabel1).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(totalFramesJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel2).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(totalAnimationsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel3).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(spriteTypeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE).addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
     
-jPanel2Layout!.setVerticalGroup(jPanel2Layout!.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(jPanel2Layout!.createSequentialGroup()!.addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)!.addGroup(jPanel2Layout!.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(jLabel1)!.addComponent(totalFramesJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(jLabel2)!.addComponent(totalAnimationsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(jLabel3)!.addComponent(spriteTypeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))));
+jPanel2Layout.setVerticalGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(jPanel2Layout.createSequentialGroup().addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE).addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel1).addComponent(totalFramesJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(jLabel2).addComponent(totalAnimationsJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(jLabel3).addComponent(spriteTypeJComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))));
     
-this.jLabel7!.setText("More Width:");
+this->jLabel7.setText("More Width:");
     
-this.increaseWidthTextField!.setText(CommonPhoneStrings.getInstance()!.ZERO);
+this->increaseWidthTextField.setText(CommonPhoneStrings::getInstance().ZERO);
     
-this.increaseWidthTextField!.addActionListener(new class extends java.awt.event.ActionListener
+this->increaseWidthTextField.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 increaseWidthTextFieldActionPerformed(evt);
     
 }
@@ -406,146 +407,146 @@ increaseWidthTextFieldActionPerformed(evt);
                                 }
                             );
     
-this.jLabel8!.setText("More Height:");
+this->jLabel8.setText("More Height:");
     
-this.increaseHeightTextField!.setText(CommonPhoneStrings.getInstance()!.ZERO);
+this->increaseHeightTextField.setText(CommonPhoneStrings::getInstance().ZERO);
     
 
-    layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this);;
+    javax::swing::GroupLayout layout = javax::swing::GroupLayout(this);;
     
-this.setLayout(layout);
+this->setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, Short.MAX_VALUE)!.addGap(78, 78, 78))!.addGroup(layout.createSequentialGroup()!.addContainerGap()!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)!.addGroup(layout.createSequentialGroup()!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addComponent(writeOverOriginalJCheckBox)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(generateJButton))!.addGroup(layout.createSequentialGroup()!.addComponent(jLabel5)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(widthReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(jLabel6)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(heightReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(jLabel7)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(increaseWidthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(jLabel8)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(increaseHeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)))!.addGap(0, 0, Short.MAX_VALUE)))!.addContainerGap()));
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, 415, Short::MAX_VALUE).addGap(78, 78, 78)).addGroup(layout.createSequentialGroup().addContainerGap().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE).addGroup(layout.createSequentialGroup().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addComponent(writeOverOriginalJCheckBox).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(generateJButton)).addGroup(layout.createSequentialGroup().addComponent(jLabel5).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(widthReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel6).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(heightReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel7).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(increaseWidthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jLabel8).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(increaseHeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))).addGap(0, 0, Short::MAX_VALUE))).addContainerGap()));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(jLabel7)!.addComponent(increaseWidthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(jLabel8)!.addComponent(increaseHeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(jLabel5)!.addComponent(widthReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)!.addComponent(jLabel6)!.addComponent(heightReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)!.addComponent(writeOverOriginalJCheckBox)!.addComponent(generateJButton))!.addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)!.addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)));
-    
-}
-
-
-    writeOverOriginalJCheckBoxActionPerformed(java.awt.event.ActionEvent evt){
-}
-
-
-    generateJButtonActionPerformed(java.awt.event.ActionEvent evt){
-this.process();
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel7).addComponent(increaseWidthTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(jLabel8).addComponent(increaseHeightTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(jLabel5).addComponent(widthReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE).addComponent(jLabel6).addComponent(heightReductionTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE).addComponent(writeOverOriginalJCheckBox).addComponent(generateJButton)).addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED).addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short::MAX_VALUE)));
     
 }
 
 
-    spriteTypeJComboBoxActionPerformed(java.awt.event.ActionEvent evt){
+    private: void writeOverOriginalJCheckBoxActionPerformed(java::awt::event::ActionEvent evt){
+}
 
-    spriteSplitterUtil: SpriteSplitterUtil = SpriteSplitterUtil.getInstance()!;;
+
+    private: void generateJButtonActionPerformed(java::awt::event::ActionEvent evt){
+this->process();
     
-this.jLabel1!.setText(spriteSplitterUtil!.ANIMATIONS_LABELS[this.spriteTypeJComboBox!.getSelectedIndex()]!);
+}
+
+
+    private: void spriteTypeJComboBoxActionPerformed(java::awt::event::ActionEvent evt){
+
+    SpriteSplitterUtil spriteSplitterUtil = SpriteSplitterUtil::getInstance();;
     
-this.jLabel2!.setText(spriteSplitterUtil!.ANIMATIONS_LABELS[this.spriteTypeJComboBox!.getSelectedIndex() +1]!);
+this->jLabel1.setText(spriteSplitterUtil.ANIMATIONS_LABELS[this->spriteTypeJComboBox.getSelectedIndex()]!);
+    
+this->jLabel2.setText(spriteSplitterUtil.ANIMATIONS_LABELS[this->spriteTypeJComboBox.getSelectedIndex() +1]!);
     
 }
 
 
-    totalAnimationsJComboBoxActionPerformed(java.awt.event.ActionEvent evt){
+    private: void totalAnimationsJComboBoxActionPerformed(java::awt::event::ActionEvent evt){
 }
 
 
-    totalFramesJComboBoxActionPerformed(java.awt.event.ActionEvent evt){
+    private: void totalFramesJComboBoxActionPerformed(java::awt::event::ActionEvent evt){
 }
 
 
-    widthReductionTextFieldActionPerformed(java.awt.event.ActionEvent evt){
+    private: void widthReductionTextFieldActionPerformed(java::awt::event::ActionEvent evt){
 }
 
 
-    increaseWidthTextFieldActionPerformed(java.awt.event.ActionEvent evt){
+    private: void increaseWidthTextFieldActionPerformed(java::awt::event::ActionEvent evt){
 }
 
 
-    private: generateJButton: javax.swing.JButton;
+    private: javax::swing::JButton generateJButton;
 
-    private: heightReductionTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField heightReductionTextField;
 
-    private: increaseHeightTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField increaseHeightTextField;
 
-    private: increaseWidthTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField increaseWidthTextField;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: jLabel4: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel4;
 
-    private: jLabel5: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel5;
 
-    private: jLabel6: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel6;
 
-    private: jLabel7: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel7;
 
-    private: jLabel8: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel8;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: jPanel2: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel2;
 
-    private: spriteTypeJComboBox: javax.swing.JComboBox<string>;
+    private: javax::swing::JComboBox<string> spriteTypeJComboBox;
 
-    private: totalAnimationsJComboBox: javax.swing.JComboBox<string>;
+    private: javax::swing::JComboBox<string> totalAnimationsJComboBox;
 
-    private: totalFramesJComboBox: javax.swing.JComboBox<string>;
+    private: javax::swing::JComboBox<string> totalFramesJComboBox;
 
-    private: widthReductionTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField widthReductionTextField;
 
-    private: writeOverOriginalJCheckBox: javax.swing.JCheckBox;
+    private: javax::swing::JCheckBox writeOverOriginalJCheckBox;
 
-    public ImageProcessorInput getImageProcessorInput(){
+    public: ImageProcessorInput getImageProcessorInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageProcessorInput;
+                        return this->imageProcessorInput;
     
 }
 
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput){
-this.imageProcessorInput= imageProcessorInput;
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput){
+this->imageProcessorInput= imageProcessorInput;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public visit(BufferedImage generatedBufferedImage, string name, int32_t index){
-this.logUtil!.putF(this.commonStrings!.VISIT, this, this.commonStrings!.VISIT);
+    public: void visit(BufferedImage generatedBufferedImage, std::string name, int32_t index){
+this->logUtil.putF(this->commonStrings.VISIT, this, this->commonStrings.VISIT);
     
-this.result= generatedBufferedImage;
+this->result= generatedBufferedImage;
     
-this.getParent()!.repaint();
-    
-
-    file: File = this.imageProcessorInput!.getFiles()[index]!;;
+this->getParent().repaint();
     
 
-                        if(!this.writeOverOriginalJCheckBox!.isSelected())
+    File file = this->imageProcessorInput.getFiles()[index];;
+    
+
+                        if(!this->writeOverOriginalJCheckBox.isSelected())
                         
                                     {
                                     
-    filePath: string = file.getAbsolutePath()!;;
+    std::string filePath = file.getAbsolutePath();;
     
 
-    extensionIndex: int32_t = filePath!.indexOf(this.imageStrings!.PNG_EXTENSION)!;;
+    int32_t extensionIndex = filePath.indexOf(this->imageStrings.PNG_EXTENSION);;
     
-filePath= new StringMaker().append(filePath!.substring(0, extensionIndex))!.append(this.commonSeps!.UNDERSCORE)!.append(name)!.append(this.imageStrings!.PNG_EXTENSION)!.toString();
+filePath= StringMaker().append(filePath.substring(0, extensionIndex)).append(this->commonSeps.UNDERSCORE).append(name).append(this->imageStrings.PNG_EXTENSION).toString();
     
-file= new File(filePath);
+file= File(filePath);
     
 
                                     }
                                 
 
-    isWritten: bool = ImageIO.write(this::.result as RenderedImage, imageStrings!.PNG, file)!;;
+    bool isWritten = ImageIO::write(this->result as RenderedImage, imageStrings.PNG, file);;
     
-this.logUtil!.putF(new StringMaker().append("File: ")!.append(StringUtil.getInstance()!.toString(file))!.append(" Wrote: ")!.appendboolean(isWritten)!.toString(), this, this.commonStrings!.RUN);
+this->logUtil.putF(StringMaker().append("File: ").append(StringUtil::getInstance().toString(file)).append(" Wrote: ").appendboolean(isWritten).toString(), this, this->commonStrings.RUN);
     
 }
 

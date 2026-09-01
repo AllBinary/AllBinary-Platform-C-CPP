@@ -45,15 +45,14 @@
 class TransactionType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: TransactionType(std::string name);
 
-    public bool isEqual(TransactionType transactionType);
+    public: bool isEqual(TransactionType transactionType);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -52,66 +52,63 @@
 class GameConfigurationSingleton
             : public Object
          {
-        
 
-    private: static SINGLETON: GameConfigurationSingleton = new GameConfigurationSingleton();
+    private: static GameConfigurationSingleton SINGLETON = GameConfigurationSingleton();
 
-    public static GameConfigurationSingleton getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameConfigurationSingleton.SINGLETON;
-    
-}
-
-
-    private: list: BasicArrayList;
-
-    private: hashtable: Hashtable<any, any>;
-
-private constructor (){
-
-            super();
-        this.list= new BasicArrayListD();
-    
-this.hashtable= new Hashtable<any, any>();
-    
-}
-
-
-    public GameConfiguration getInstanceByName(string name){
+    public: static GameConfigurationSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable.get(name) as GameConfiguration;
+                        return GameConfigurationSingleton::SINGLETON;
     
 }
 
 
-    public BasicArrayList getOptionsBasicArrayList(){
+    private: BasicArrayList list;
+
+    private: Hashtable<any, any> hashtable;
+
+private: GameConfigurationSingleton(){
+this->list= BasicArrayListD();
+    
+this->hashtable= Hashtable<any, any>();
+    
+}
+
+
+    public: GameConfiguration getInstanceByName(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list;
+                        return this->hashtable.get(name) as GameConfiguration;
     
 }
 
 
-    public add(GameConfiguration gameConfiguration){
-this.list.add(gameConfiguration);
-    
-}
-
-
-    public Hashtable<any, any> getHashtable(){
+    public: BasicArrayList getOptionsBasicArrayList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable;
+                        return this->list;
+    
+}
+
+
+    public: void add(GameConfiguration gameConfiguration){
+this->list.add(gameConfiguration);
+    
+}
+
+
+    public: Hashtable<any, any> getHashtable(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->hashtable;
     
 }
 

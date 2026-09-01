@@ -47,13 +47,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CompoundAnimationInterface: public AnimationInterface {
-        
 
-    nextAnimation();
+    void nextAnimation();
 
-    previousAnimation();
+    void previousAnimation();
 
-    setAnimation(int32_t index);
+    void setAnimation(int32_t index);
 
     IndexedAnimation getCurrentAnimation();
 

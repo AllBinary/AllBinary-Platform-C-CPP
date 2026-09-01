@@ -83,265 +83,262 @@
         #include "TagHelper.h"
 
 class UpdateOrderHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: entryId: string;
+    private: std::string entryId;
 
-    private: orderId: string;
+    private: std::string orderId;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: shipDate: string;
+    private: std::string shipDate;
 
-    private: orderDate: string;
+    private: std::string orderDate;
 
-    private: transDate: string;
+    private: std::string transDate;
 
-    private: cancelDate: string;
+    private: std::string cancelDate;
 
-    private: status: string;
+    private: std::string status;
 
-    private: paymentMethod: string;
+    private: std::string paymentMethod;
 
-    private: name: string;
+    private: std::string name;
 
-    private: type: string;
+    private: std::string type;
 
-    private: expiration: string;
+    private: std::string expiration;
 
-    private: number: string;
+    private: std::string number;
 
-    private: encryption: string;
+    private: std::string encryption;
 
-    private: billingName: string;
+    private: std::string billingName;
 
-    private: billingStreet: string;
+    private: std::string billingStreet;
 
-    private: billingCity: string;
+    private: std::string billingCity;
 
-    private: billingState: string;
+    private: std::string billingState;
 
-    private: billingCode: string;
+    private: std::string billingCode;
 
-    private: billingCountry: string;
+    private: std::string billingCountry;
 
-    private: shippingName: string;
+    private: std::string shippingName;
 
-    private: shippingStreet: string;
+    private: std::string shippingStreet;
 
-    private: shippingCity: string;
+    private: std::string shippingCity;
 
-    private: shippingState: string;
+    private: std::string shippingState;
 
-    private: shippingCode: string;
+    private: std::string shippingCode;
 
-    private: shippingCountry: string;
+    private: std::string shippingCountry;
 
-    private: shippingMethodName: string;
+    private: std::string shippingMethodName;
 
-    private: subTotal: string;
+    private: std::string subTotal;
 
-    private: shippingCost: string;
+    private: std::string shippingCost;
 
-    private: tax: string;
+    private: std::string tax;
 
-    private: total: string;
+    private: std::string total;
 
-    private: special: string;
+    private: std::string special;
 
-    private: userComment: string;
+    private: std::string userComment;
 
-    private: userCancelComment: string;
+    private: std::string userCancelComment;
 
-    private: storeComment: string;
+    private: std::string storeComment;
 
-    private: storeCancelComment: string;
+    private: std::string storeCancelComment;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.request= pageContext!.getRequest() as HttpServletRequest;
+public: UpdateOrderHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-    getFormData(){
-this.entryId= this.request.getParameter(EntryData.getInstance()!.ID);
+    private: void getFormData(){
+this->entryId= this->request.getParameter(EntryData::getInstance().ID);
     
-this.orderId= this.request.getParameter(OrderData.ID);
+this->orderId= this->request.getParameter(OrderData::ID);
     
-this.userName= this.request.getParameter(UserData.USERNAME);
+this->userName= this->request.getParameter(UserData::USERNAME);
     
-this.storeName= this.request.getParameter(StoreFrontData.getInstance()!.NAME);
+this->storeName= this->request.getParameter(StoreFrontData::getInstance().NAME);
     
-this.shipDate= this.request.getParameter(OrderHistoryData.SHIPPEDDATE);
+this->shipDate= this->request.getParameter(OrderHistoryData::SHIPPEDDATE);
     
-this.orderDate= this.request.getParameter(OrderHistoryData.ORDERDATE);
+this->orderDate= this->request.getParameter(OrderHistoryData::ORDERDATE);
     
-this.transDate= this.request.getParameter(OrderHistoryData.TRANSDATE);
+this->transDate= this->request.getParameter(OrderHistoryData::TRANSDATE);
     
-this.cancelDate= this.request.getParameter(OrderHistoryData.CANCELDATE);
+this->cancelDate= this->request.getParameter(OrderHistoryData::CANCELDATE);
     
-this.status= this.request.getParameter(OrderHistoryData.STATUS);
+this->status= this->request.getParameter(OrderHistoryData::STATUS);
     
-this.paymentMethod= this.request.getParameter(PaymentData.METHOD);
+this->paymentMethod= this->request.getParameter(PaymentData::METHOD);
     
-this.name= this.request.getParameter(PaymentData.NAME);
+this->name= this->request.getParameter(PaymentData::NAME);
     
-this.type= this.request.getParameter(PaymentData.TYPE);
+this->type= this->request.getParameter(PaymentData::TYPE);
     
-this.expiration= this.request.getParameter(PaymentData.EXPIRATION);
+this->expiration= this->request.getParameter(PaymentData::EXPIRATION);
     
-this.number= this.request.getParameter(PaymentData.NUMBER);
+this->number= this->request.getParameter(PaymentData::NUMBER);
     
-this.encryption= this.request.getParameter(EntryData.getInstance()!.ENCRYPTION);
+this->encryption= this->request.getParameter(EntryData::getInstance().ENCRYPTION);
     
-this.billingName= this.request.getParameter(BillingAddressData.NAME);
+this->billingName= this->request.getParameter(BillingAddressData::NAME);
     
-this.billingStreet= this.request.getParameter(BillingAddressData.STREET);
+this->billingStreet= this->request.getParameter(BillingAddressData::STREET);
     
-this.billingCity= this.request.getParameter(BillingAddressData.CITY);
+this->billingCity= this->request.getParameter(BillingAddressData::CITY);
     
-this.billingState= this.request.getParameter(BillingAddressData.STATE);
+this->billingState= this->request.getParameter(BillingAddressData::STATE);
     
-this.billingCode= this.request.getParameter(BillingAddressData.CODE);
+this->billingCode= this->request.getParameter(BillingAddressData::CODE);
     
-this.billingCountry= this.request.getParameter(BillingAddressData.COUNTRY);
+this->billingCountry= this->request.getParameter(BillingAddressData::COUNTRY);
     
-this.shippingName= this.request.getParameter(ShippingAddressData.NAME);
+this->shippingName= this->request.getParameter(ShippingAddressData::NAME);
     
-this.shippingStreet= this.request.getParameter(ShippingAddressData.STREET);
+this->shippingStreet= this->request.getParameter(ShippingAddressData::STREET);
     
-this.shippingCity= this.request.getParameter(ShippingAddressData.CITY);
+this->shippingCity= this->request.getParameter(ShippingAddressData::CITY);
     
-this.shippingState= this.request.getParameter(ShippingAddressData.STATE);
+this->shippingState= this->request.getParameter(ShippingAddressData::STATE);
     
-this.shippingCode= this.request.getParameter(ShippingAddressData.CODE);
+this->shippingCode= this->request.getParameter(ShippingAddressData::CODE);
     
-this.shippingCountry= this.request.getParameter(ShippingAddressData.COUNTRY);
+this->shippingCountry= this->request.getParameter(ShippingAddressData::COUNTRY);
     
-this.shippingMethodName= this.request.getParameter(ShippingMethodData.NAME);
+this->shippingMethodName= this->request.getParameter(ShippingMethodData::NAME);
     
-this.subTotal= this.request.getParameter(OrderHistoryData.SUBTOTAL);
+this->subTotal= this->request.getParameter(OrderHistoryData::SUBTOTAL);
     
-this.shippingCost= this.request.getParameter(OrderHistoryData.SHIPPINGCOST);
+this->shippingCost= this->request.getParameter(OrderHistoryData::SHIPPINGCOST);
     
-this.tax= this.request.getParameter(OrderHistoryData.TAX);
+this->tax= this->request.getParameter(OrderHistoryData::TAX);
     
-this.total= this.request.getParameter(OrderHistoryData.TOTAL);
+this->total= this->request.getParameter(OrderHistoryData::TOTAL);
     
-this.special= this.request.getParameter(EntryData.getInstance()!.SPECIAL);
+this->special= this->request.getParameter(EntryData::getInstance().SPECIAL);
     
-this.userComment= this.request.getParameter(OrderData.CUSTOMERCOMMENT);
+this->userComment= this->request.getParameter(OrderData::CUSTOMERCOMMENT);
     
-this.userCancelComment= this.request.getParameter(OrderData.CUSTOMERCANCELCOMMENT);
+this->userCancelComment= this->request.getParameter(OrderData::CUSTOMERCANCELCOMMENT);
     
-this.storeComment= this.request.getParameter(OrderData.STORECOMMENT);
+this->storeComment= this->request.getParameter(OrderData::STORECOMMENT);
     
-this.storeCancelComment= this.request.getParameter(OrderData.STORECANCELCOMMENT);
+this->storeCancelComment= this->request.getParameter(OrderData::STORECANCELCOMMENT);
     
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    success: string = "Successful update";;
+    std::string success = "Successful update";;
     
 
-    orderHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> orderHashMap = HashMap<any, any>();;
     
 
-    whereHashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> whereHashMap = HashMap<any, any>();;
     
-orderHashMap!.put(EntryData.getInstance()!.ID, this.entryId);
+orderHashMap.put(EntryData::getInstance().ID, this->entryId);
     
-orderHashMap!.put(OrderData.ID, this.orderId);
+orderHashMap.put(OrderData::ID, this->orderId);
     
-orderHashMap!.put(UserData.USERNAME, userName);
+orderHashMap.put(UserData::USERNAME, userName);
     
-orderHashMap!.put(StoreFrontData.getInstance()!.NAME, this.storeName);
+orderHashMap.put(StoreFrontData::getInstance().NAME, this->storeName);
     
-orderHashMap!.put(OrderHistoryData.SHIPPEDDATE, shipDate);
+orderHashMap.put(OrderHistoryData::SHIPPEDDATE, shipDate);
     
-orderHashMap!.put(OrderHistoryData.ORDERDATE, orderDate);
+orderHashMap.put(OrderHistoryData::ORDERDATE, orderDate);
     
-orderHashMap!.put(OrderHistoryData.TRANSDATE, transDate);
+orderHashMap.put(OrderHistoryData::TRANSDATE, transDate);
     
-orderHashMap!.put(OrderHistoryData.CANCELDATE, cancelDate);
+orderHashMap.put(OrderHistoryData::CANCELDATE, cancelDate);
     
-orderHashMap!.put(OrderHistoryData.STATUS, status);
+orderHashMap.put(OrderHistoryData::STATUS, status);
     
-orderHashMap!.put(PaymentData.METHOD, paymentMethod);
+orderHashMap.put(PaymentData::METHOD, paymentMethod);
     
-orderHashMap!.put(PaymentData.NAME, name);
+orderHashMap.put(PaymentData::NAME, name);
     
-orderHashMap!.put(PaymentData.TYPE, type);
+orderHashMap.put(PaymentData::TYPE, type);
     
-orderHashMap!.put(PaymentData.EXPIRATION, expiration);
+orderHashMap.put(PaymentData::EXPIRATION, expiration);
     
-orderHashMap!.put(BillingAddressData.NAME, billingName);
+orderHashMap.put(BillingAddressData::NAME, billingName);
     
-orderHashMap!.put(BillingAddressData.STREET, billingStreet);
+orderHashMap.put(BillingAddressData::STREET, billingStreet);
     
-orderHashMap!.put(BillingAddressData.CITY, billingCity);
+orderHashMap.put(BillingAddressData::CITY, billingCity);
     
-orderHashMap!.put(BillingAddressData.STATE, billingState);
+orderHashMap.put(BillingAddressData::STATE, billingState);
     
-orderHashMap!.put(BillingAddressData.CODE, billingCode);
+orderHashMap.put(BillingAddressData::CODE, billingCode);
     
-orderHashMap!.put(BillingAddressData.COUNTRY, billingCountry);
+orderHashMap.put(BillingAddressData::COUNTRY, billingCountry);
     
-orderHashMap!.put(ShippingAddressData.NAME, shippingName);
+orderHashMap.put(ShippingAddressData::NAME, shippingName);
     
-orderHashMap!.put(ShippingAddressData.STREET, shippingStreet);
+orderHashMap.put(ShippingAddressData::STREET, shippingStreet);
     
-orderHashMap!.put(ShippingAddressData.CITY, shippingCity);
+orderHashMap.put(ShippingAddressData::CITY, shippingCity);
     
-orderHashMap!.put(ShippingAddressData.STATE, shippingState);
+orderHashMap.put(ShippingAddressData::STATE, shippingState);
     
-orderHashMap!.put(ShippingAddressData.CODE, shippingCode);
+orderHashMap.put(ShippingAddressData::CODE, shippingCode);
     
-orderHashMap!.put(ShippingAddressData.COUNTRY, shippingCountry);
+orderHashMap.put(ShippingAddressData::COUNTRY, shippingCountry);
     
-orderHashMap!.put(ShippingMethodData.NAME, this.shippingMethodName);
+orderHashMap.put(ShippingMethodData::NAME, this->shippingMethodName);
     
-orderHashMap!.put(OrderHistoryData.SUBTOTAL, this.subTotal);
+orderHashMap.put(OrderHistoryData::SUBTOTAL, this->subTotal);
     
-orderHashMap!.put(OrderHistoryData.SHIPPINGCOST, this.shippingCost);
+orderHashMap.put(OrderHistoryData::SHIPPINGCOST, this->shippingCost);
     
-orderHashMap!.put(OrderHistoryData.TAX, this.tax);
+orderHashMap.put(OrderHistoryData::TAX, this->tax);
     
-orderHashMap!.put(OrderHistoryData.TOTAL, this.total);
+orderHashMap.put(OrderHistoryData::TOTAL, this->total);
     
-orderHashMap!.put(EntryData.getInstance()!.SPECIAL, this.special);
+orderHashMap.put(EntryData::getInstance().SPECIAL, this->special);
     
-orderHashMap!.put(OrderData.CUSTOMERCOMMENT, this.userComment);
+orderHashMap.put(OrderData::CUSTOMERCOMMENT, this->userComment);
     
-orderHashMap!.put(OrderData.CUSTOMERCANCELCOMMENT, this.userCancelComment);
+orderHashMap.put(OrderData::CUSTOMERCANCELCOMMENT, this->userCancelComment);
     
-orderHashMap!.put(OrderData.STORECOMMENT, this.storeComment);
+orderHashMap.put(OrderData::STORECOMMENT, this->storeComment);
     
-orderHashMap!.put(OrderData.STORECANCELCOMMENT, this.storeCancelComment);
+orderHashMap.put(OrderData::STORECANCELCOMMENT, this->storeCancelComment);
     
-whereHashMap!.put(OrderData.ID, orderId);
+whereHashMap.put(OrderData::ID, orderId);
     
-OrderHistoryEntityFactory.getInstance()!.update(whereHashMap, orderHashMap);
+OrderHistoryEntityFactory::getInstance().update(whereHashMap, orderHashMap);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "update()");
+                                    this->logUtil.putF(success, this, "update()");
     
 
                                     }
@@ -357,13 +354,13 @@ OrderHistoryEntityFactory.getInstance()!.update(whereHashMap, orderHashMap);
 } catch(e) 
             {
 
-    error: string = "Failed to update order table";;
+    std::string error = "Failed to update order table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }

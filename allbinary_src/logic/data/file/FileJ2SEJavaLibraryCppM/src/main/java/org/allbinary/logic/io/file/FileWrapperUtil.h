@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_FILEWRAPPERUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_FILEWRAPPERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -54,11 +56,10 @@
 class FileWrapperUtil
             : public Object
          {
-        
 
-    public static std::vector<AbFile> wrapFiles(std::vector<any> files);
+    public: static std::vector<AbFile> wrapFiles(std::vector<Object*> files);
 
-    public static AbFile wrapFile(File file);
+    public: static AbFile wrapFile(File file);
 
 };
 

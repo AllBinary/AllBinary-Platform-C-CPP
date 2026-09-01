@@ -30,11 +30,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OpenGLImageUtil: public OpenGLImageUtilBase {
-        
 
-    private: static const instance: OpenGLImageUtil = new OpenGLImageUtil();
+    private: static OpenGLImageUtil instance() { return OpenGLImageUtil(); }
 
-    public static OpenGLImageUtil getInstance();
+    public: static OpenGLImageUtil getInstance();
 
 };
 

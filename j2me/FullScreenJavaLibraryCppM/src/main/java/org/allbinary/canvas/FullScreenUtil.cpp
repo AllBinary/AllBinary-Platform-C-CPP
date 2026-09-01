@@ -63,34 +63,33 @@
 class FullScreenUtil
             : public Object
          {
-        
 
-    private: static const instance: FullScreenUtil = new FullScreenUtil();
+    private: static FullScreenUtil instance() { return FullScreenUtil(); }
 
-    public static FullScreenUtil getInstance(){
+    public: static FullScreenUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FullScreenUtil.instance;
+                        return FullScreenUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public initOnRun(Canvas fullScreenInterface, CommandListener commandListener){
+    public: void initOnRun(Canvas fullScreenInterface, CommandListener commandListener){
 fullScreenInterface = fullScreenInterfacefullScreenInterface as RunnableCanvas
 fullScreenInterface.
                     waitOnNotify(0);
     
 
                         if(commandListener != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.init(fullScreenInterface);
+                                    this->init(fullScreenInterface);
     
 
                                     }
@@ -98,24 +97,24 @@ fullScreenInterface.
 }
 
 
-    public init(Canvas fullScreenInterface){
+    public: void init(Canvas fullScreenInterface){
 
-    mainFeatureFactory: MainFeatureFactory = MainFeatureFactory.getInstance()!;;
+    MainFeatureFactory mainFeatureFactory = MainFeatureFactory::getInstance();;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(mainFeatureFactory!.FULL_SCREEN))
+                        if(features.isFeature(mainFeatureFactory.FULL_SCREEN))
                         
                                     {
-                                    fullScreenInterface!.setFullScreenMode(true);
+                                    fullScreenInterface.setFullScreenMode(true);
     
 
                                     }
                                 
                         else {
-                            fullScreenInterface!.setFullScreenMode(false);
+                            fullScreenInterface.setFullScreenMode(false);
     
 
                         }
@@ -123,15 +122,15 @@ fullScreenInterface.
 }
 
 
-    public bool isScreenChange(bool isFullScreen){
+    public: bool isScreenChange(bool isFullScreen){
 
-    mainFeatureFactory: MainFeatureFactory = MainFeatureFactory.getInstance()!;;
+    MainFeatureFactory mainFeatureFactory = MainFeatureFactory::getInstance();;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(mainFeatureFactory!.FULL_SCREEN) != isFullScreen)
+                        if(features.isFeature(mainFeatureFactory.FULL_SCREEN) != isFullScreen)
                         
                                     {
                                     
@@ -152,12 +151,12 @@ fullScreenInterface.
 }
 
 
-    public bool isScreenChangeCanvas(Canvas fullScreenInterface){
+    public: bool isScreenChangeCanvas(Canvas fullScreenInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isScreenChange(fullScreenInterface!.isFullScreenMode());;
+                        return this->isScreenChange(fullScreenInterface.isFullScreenMode());;
     
 }
 

@@ -73,34 +73,31 @@
 #include "LayerManagerEventListenerInterface.h"
 
 class LayerManagerEventHandler: public BasicEventHandler {
-        
 
-    private: static instance: LayerManagerEventHandler = new LayerManagerEventHandler();
+    private: static LayerManagerEventHandler instance = LayerManagerEventHandler();
 
-    public static LayerManagerEventHandler getInstance(){
+    public: static LayerManagerEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerManagerEventHandler.instance;
+                        return LayerManagerEventHandler::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: LayerManagerEventHandler(){
+}
 
 
-    public addListener(LayerManagerEventListener layerManagerEventListener){
+    public: void addListener(LayerManagerEventListener layerManagerEventListener){
 
-                        if(!this.list.contains(layerManagerEventListener))
+                        if(!this->list.contains(layerManagerEventListener))
                         
                                     {
-                                    this.list.add(layerManagerEventListener);
+                                    this->list.add(layerManagerEventListener);
     
 
                                     }
@@ -108,16 +105,16 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -126,26 +123,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    layerManagerEventListener: LayerManagerEventListener = this.list.objectArray[index]! as LayerManagerEventListener;;
+    LayerManagerEventListener layerManagerEventListener = this->list.objectArray[index]! as LayerManagerEventListener;;
     
-layerManagerEventListener!.onCreateLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListener.onCreateLayerManagerEvent(eventObject as LayerManagerEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -156,66 +153,66 @@ super.fireEvent(eventObject);
 }
 
 
-    public const CREATE: string = "Create";
+    public: const std::string CREATE = "Create";
 
-    public const DELETE: string = "Delete";
+    public: const std::string DELETE = "Delete";
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireDeleteEvent(AllBinaryEventObject eventObject){
+    public: void fireDeleteEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    layerManagerEventListener: LayerManagerEventListener = this.list.objectArray[index]! as LayerManagerEventListener;;
+    LayerManagerEventListener layerManagerEventListener = this->list.objectArray[index]! as LayerManagerEventListener;;
     
-layerManagerEventListener!.onDeleteLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListener.onDeleteLayerManagerEvent(eventObject as LayerManagerEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
 }
 
 
-    eventListenerInterfaceList: BasicArrayList = this.eventListenerInterfaceList;;
+    BasicArrayList eventListenerInterfaceList = this->eventListenerInterfaceList;;
     
 
-    eventListenerInterface: EventListenerInterface;;
+    EventListenerInterface eventListenerInterface;;
     
 
-    layerManagerEventListenerInterface: LayerManagerEventListenerInterface;;
+    LayerManagerEventListenerInterface layerManagerEventListenerInterface;;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while(index < eventListenerInterfaceList!.size())
+        while(index < eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= eventListenerInterfaceList!.objectArray[index]! as EventListenerInterface;
+            eventListenerInterface= eventListenerInterfaceList.objectArray[index]! as EventListenerInterface;
     
 layerManagerEventListenerInterface= (eventListenerInterface as LayerManagerEventListenerInterface);
     
-layerManagerEventListenerInterface!.onDeleteLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListenerInterface.onDeleteLayerManagerEvent(eventObject as LayerManagerEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -228,11 +225,11 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    layerManagerEventListenerInterface: LayerManagerEventListenerInterface = (eventListenerInterface as LayerManagerEventListenerInterface);;
+    LayerManagerEventListenerInterface layerManagerEventListenerInterface = (eventListenerInterface as LayerManagerEventListenerInterface);;
     
-layerManagerEventListenerInterface!.onCreateLayerManagerEvent(eventObject as LayerManagerEvent);
+layerManagerEventListenerInterface.onCreateLayerManagerEvent(eventObject as LayerManagerEvent);
     
 }
 

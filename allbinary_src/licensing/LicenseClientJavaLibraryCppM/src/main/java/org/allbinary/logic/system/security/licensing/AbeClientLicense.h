@@ -70,39 +70,38 @@
 class AbeClientLicense
             : public Object
         : public AbeLicenseInterface {
-        
 
-    public static bool hasRequiredKeys(Hashtable<any, any> resultHashtable);
+    public: static bool hasRequiredKeys(Hashtable<any, any> resultHashtable);
 
-    private: hashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> hashtable;
 
-    private: id: string;
+    private: std::string id;
 
-    private: servers: BasicArrayList;
+    private: BasicArrayList servers;
 
-    private: special: string;
+    private: std::string special;
 
-    private: licenseType: LicenseType;
+    private: LicenseType licenseType;
 
-public constructor (Hashtable<any, any> hashtable);
+public: AbeClientLicense(Hashtable<any, any> hashtable);
 
-    public bool hasKey();
+    public: bool hasKey();
 
-    public string getKey(string keyName);
+    public: std::string getKey(std::string keyName);
 
-    public string getLicenseId();
+    public: std::string getLicenseId();
 
-    public BasicArrayList getServers();
+    public: BasicArrayList getServers();
 
-    public bool isValid();
+    public: bool isValid();
 
-    public string toString();
+    public: std::string toString();
 
-    setSpecial(string special);
+    private: void setSpecial(std::string special);
 
-    public string getSpecial();
+    public: std::string getSpecial();
 
-    public LicenseType getLicenseType();
+    public: LicenseType getLicenseType();
 
 };
 

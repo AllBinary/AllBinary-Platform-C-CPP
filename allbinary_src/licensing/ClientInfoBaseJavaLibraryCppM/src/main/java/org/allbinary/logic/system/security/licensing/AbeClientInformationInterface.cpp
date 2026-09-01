@@ -53,35 +53,34 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbeClientInformationInterface {
-        
 
-    init()
+    void init()
 
     GenericOperatingSystem getOperatingSystemInterface()
 
-    string getName()
+    std::string getName()
 
-    string getSpecialName()
+    std::string getSpecialName()
 
-    string getVersion()
+    std::string getVersion()
 
-    string getLicenseId()
+    std::string getLicenseId()
 
     BasicArrayList getLicenseServers()
 
-    string getLicenseServer(int32_t index)
+    std::string getLicenseServer(int32_t index)
 
     int32_t getNumberOfLicenseServers()
 
     Hashtable<any, any> toHashtable()
 
-    bool isSameId(string alicenseId)
+    bool isSameId(std::string alicenseId)
 
     bool isLargerOrDifferentServerList(BasicArrayList vector)
 
     bool isHardSale()
 
-    string toShortString()
+    std::string toShortString()
 
 };
 

@@ -45,21 +45,20 @@
 class ThemeData
             : public Object
          {
-        
 
-    private: static const instance: ThemeData = new ThemeData();
+    private: static ThemeData instance() { return ThemeData(); }
 
-    public static ThemeData getInstance();
+    public: static ThemeData getInstance();
 
-private constructor ();
+private: ThemeData();
 
-    public const NAME: string = "THEME_NAME";
+    public: const std::string NAME = "THEME_NAME";
 
-    public const PATH: string = "THEME_PATH";
+    public: const std::string PATH = "THEME_PATH";
 
-    public const PREVIEW_IMAGE_NAME: string = "THEME_PREVIEW_IMAGE_NAME";
+    public: const std::string PREVIEW_IMAGE_NAME = "THEME_PREVIEW_IMAGE_NAME";
 
-    public const PREVIEW_IMAGE_PATH: string = "THEME_PREVIEW_IMAGE_PATH";
+    public: const std::string PREVIEW_IMAGE_PATH = "THEME_PREVIEW_IMAGE_PATH";
 
 };
 

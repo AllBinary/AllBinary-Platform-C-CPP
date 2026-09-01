@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_IMAGEWAITCOMPLETEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/util/Hashtable.h>
@@ -68,33 +70,32 @@
         #include "ImageCompleteUtil.h"
 
 class ImageWaitCompleteUtil: public ImageCompleteUtil {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const METHOD_NAME: string = "waitForLoad";
+    private: const std::string METHOD_NAME = "waitForLoad";
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(18000);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
 
-    private: const allTimeDelayHelper: TimeDelayHelper = new TimeDelayHelper(120000);
+    private: const TimeDelayHelper allTimeDelayHelper = TimeDelayHelper(120000);
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public waitForImage(Image image, string name);
+public: ImageWaitCompleteUtil();
 
                 //@Throws(Exception.constructor)
             
-    public handleTimeout(string name);
+    public: void waitForImage(Image image, std::string name);
 
                 //@Throws(Exception.constructor)
             
-    waitForATime(Image image, string name, TimeDelayHelper timeDelayHelper);
+    public: void handleTimeout(std::string name);
 
                 //@Throws(Exception.constructor)
             
-    public waitForAll();
+    private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper);
+
+                //@Throws(Exception.constructor)
+            
+    public: void waitForAll();
 
 };
 

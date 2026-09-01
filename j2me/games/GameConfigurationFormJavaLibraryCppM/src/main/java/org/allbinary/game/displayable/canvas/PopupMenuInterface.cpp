@@ -46,17 +46,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PopupMenuInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    popupMenu()
+    void popupMenu()
 
-    closeMenu()
+    void closeMenu()
 
                 //@Throws(Exception.constructor)
             
-    toggleMenu()
+    void toggleMenu()
 
 };
 

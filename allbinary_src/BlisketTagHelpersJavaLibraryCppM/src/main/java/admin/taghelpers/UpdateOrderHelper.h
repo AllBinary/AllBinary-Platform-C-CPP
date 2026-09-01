@@ -86,91 +86,90 @@
         #include "TagHelper.h"
 
 class UpdateOrderHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: entryId: string;
+    private: std::string entryId;
 
-    private: orderId: string;
+    private: std::string orderId;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: shipDate: string;
+    private: std::string shipDate;
 
-    private: orderDate: string;
+    private: std::string orderDate;
 
-    private: transDate: string;
+    private: std::string transDate;
 
-    private: cancelDate: string;
+    private: std::string cancelDate;
 
-    private: status: string;
+    private: std::string status;
 
-    private: paymentMethod: string;
+    private: std::string paymentMethod;
 
-    private: name: string;
+    private: std::string name;
 
-    private: type: string;
+    private: std::string type;
 
-    private: expiration: string;
+    private: std::string expiration;
 
-    private: number: string;
+    private: std::string number;
 
-    private: encryption: string;
+    private: std::string encryption;
 
-    private: billingName: string;
+    private: std::string billingName;
 
-    private: billingStreet: string;
+    private: std::string billingStreet;
 
-    private: billingCity: string;
+    private: std::string billingCity;
 
-    private: billingState: string;
+    private: std::string billingState;
 
-    private: billingCode: string;
+    private: std::string billingCode;
 
-    private: billingCountry: string;
+    private: std::string billingCountry;
 
-    private: shippingName: string;
+    private: std::string shippingName;
 
-    private: shippingStreet: string;
+    private: std::string shippingStreet;
 
-    private: shippingCity: string;
+    private: std::string shippingCity;
 
-    private: shippingState: string;
+    private: std::string shippingState;
 
-    private: shippingCode: string;
+    private: std::string shippingCode;
 
-    private: shippingCountry: string;
+    private: std::string shippingCountry;
 
-    private: shippingMethodName: string;
+    private: std::string shippingMethodName;
 
-    private: subTotal: string;
+    private: std::string subTotal;
 
-    private: shippingCost: string;
+    private: std::string shippingCost;
 
-    private: tax: string;
+    private: std::string tax;
 
-    private: total: string;
+    private: std::string total;
 
-    private: special: string;
+    private: std::string special;
 
-    private: userComment: string;
+    private: std::string userComment;
 
-    private: userCancelComment: string;
+    private: std::string userCancelComment;
 
-    private: storeComment: string;
+    private: std::string storeComment;
 
-    private: storeCancelComment: string;
+    private: std::string storeCancelComment;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: UpdateOrderHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
-    public string update();
+    public: std::string update();
 
 };
 

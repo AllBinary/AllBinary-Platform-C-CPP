@@ -52,35 +52,34 @@
 class MediaData
             : public Object
          {
-        
 
-    private: static hashMap: HashMap<any, any> = new HashMap<any, any>();
+    private: static HashMap<any, any> hashMap = HashMap<any, any>();
 
                 //@Throws(Exception.constructor)
             
-    public static MediaData get(string a_Name);
+    public: static MediaData get(std::string a_Name);
 
-    public static MediaData getDefault();
+    public: static MediaData getDefault();
 
-    public static HashMap<any, any> toHashMap();
+    public: static HashMap<any, any> toHashMap();
 
-    private: name: string;
+    private: std::string name;
 
-    private: type: string;
+    private: std::string type;
 
-    private: extension: string;
+    private: std::string extension;
 
-protected constructor (string a_Name);
+protected: MediaData(std::string a_Name);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getType();
+    public: std::string getType();
 
-    public string getExtension();
+    public: std::string getExtension();
 
-    public bool isConvertableTo(MediaData mediaData);
+    public: bool isConvertableTo(MediaData mediaData);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

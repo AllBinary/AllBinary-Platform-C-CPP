@@ -48,10 +48,9 @@
         #include "InputAutomationRobotOSGIServiceVisitor.h"
 
 class InputAutomationRobotServiceConsumer: public InputAutomationServiceConsumer {
-        
 
-public constructor (BundleContext bundleContext){
-            super(InputAutomationRobotServiceInterface.constructor.toString()!, bundleContext, new InputAutomationRobotOSGIServiceVisitor());
+public: InputAutomationRobotServiceConsumer(BundleContext bundleContext){
+            super(InputAutomationRobotServiceInterface.constructor.toString()!, bundleContext, InputAutomationRobotOSGIServiceVisitor());
                     
 
                             //For kotlin this is before the body of the constructor.

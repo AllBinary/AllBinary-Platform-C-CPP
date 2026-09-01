@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_CRYPT_JCEHELPER_NOCRYPT_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 #include <org/allbinary/init/crypt/jcehelper/CryptInterface.h>
@@ -48,11 +50,10 @@
 class NoCrypt
             : public Object
         : public CryptInterface {
-        
 
-    public std::vector<int8_t> encrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> encrypt(std::vector<int8_t> array);
 
-    public std::vector<int8_t> decrypt(std::vector<int8_t> array);
+    public: std::vector<int8_t> decrypt(std::vector<int8_t> array);
 
 };
 

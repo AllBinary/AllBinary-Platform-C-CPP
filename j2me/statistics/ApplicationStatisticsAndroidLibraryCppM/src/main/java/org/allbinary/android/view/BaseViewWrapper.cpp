@@ -42,15 +42,14 @@
 class BaseViewWrapper
             : public Object
          {
-        
 
-    public static const NULL_VIEW_WRAPPER: BaseViewWrapper = new BaseViewWrapper();
+    public: static const BaseViewWrapper NULL_VIEW_WRAPPER = BaseViewWrapper();
 
-    public invalidate(){
+    public: void invalidate(){
 }
 
 
-    public postInvalidate(){
+    public: void postInvalidate(){
 }
 
 

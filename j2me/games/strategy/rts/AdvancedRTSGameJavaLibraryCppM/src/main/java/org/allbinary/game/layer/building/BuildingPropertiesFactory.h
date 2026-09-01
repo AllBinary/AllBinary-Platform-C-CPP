@@ -84,25 +84,24 @@
 class BuildingPropertiesFactory
             : public Object
          {
-        
 
-    private: static const instance: BuildingPropertiesFactory = new BuildingPropertiesFactory();
+    private: static BuildingPropertiesFactory instance() { return BuildingPropertiesFactory(); }
 
-    public static BuildingPropertiesFactory getInstance();
+    public: static BuildingPropertiesFactory getInstance();
 
-    public int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer);
+    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer);
 
-    public damageFloatersPaintableInterface: Paintable = NullPaintable.getInstance()!;
+    public: Paintable damageFloatersPaintableInterface = NullPaintable::getInstance();
 
-    public DamageFloaters getDamageFloaters(BuildingLayer buildingLayer);
+    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer);
 
                 //@Throws(Exception.constructor)
             
-    public Paintable getHealthBar(BuildingLayer buildingLayer);
+    public: Paintable getHealthBar(BuildingLayer buildingLayer);
 
-    public Hashtable<any, any> getHashtable();
+    public: Hashtable<any, any> getHashtable();
 
-    public TrackingEvent getTrackingEvent(BuildingLayer buildingLayer);
+    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer);
 
 };
 

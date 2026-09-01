@@ -63,13 +63,12 @@
 class CreateUserFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static UserInterface getInstance(HashMap<any, any> hashMap);
+    public: static UserInterface getInstance(HashMap<any, any> hashMap);
 
-private constructor ();
+private: CreateUserFactory();
 
 };
 

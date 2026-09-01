@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/logic/string/StringUtil.h>
 
       
@@ -44,69 +46,65 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HtmlCell: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const START: string = "<td ";
+    private: const std::string START = "<td ";
 
-    private: const ENDTAG: string = "</td>";
+    private: const std::string ENDTAG = "</td>";
 
-    private: const HEIGHT: string = "height";
+    private: const std::string HEIGHT = "height";
 
-    private: const WIDTH: string = "width";
+    private: const std::string WIDTH = "width";
 
-    private: height: string;
+    private: std::string height;
 
-    private: width: string;
+    private: std::string width;
 
-    private: before: string;
+    private: std::string before;
 
-    private: body: string;
+    private: std::string body;
 
-    private: after: string;
+    private: std::string after;
 
-public constructor (string before, string width, string height, string after){
-
-            super();
-        this.before= before.toCharArray().slice(0, ).join('');
+public: HtmlCell(std::string before, std::string width, std::string height, std::string after){
+this->before= before.toCharArray().slice(0, ).join('');
     
-this.after= after.toCharArray().slice(0, ).join('');
+this->after= after.toCharArray().slice(0, ).join('');
     
-this.height= height.toCharArray().slice(0, ).join('');
+this->height= height.toCharArray().slice(0, ).join('');
     
-this.width= width.toCharArray().slice(0, ).join('');
+this->width= width.toCharArray().slice(0, ).join('');
     
-addAttribute(this.HEIGHT, this.height);
+addAttribute(this->HEIGHT, this->height);
     
-addAttribute(this.WIDTH, this.width);
+addAttribute(this->WIDTH, this->width);
     
 }
 
 
-    public addText(string body){
-this.body= body;
+    public: void addText(std::string body){
+this->body= body;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
-    
-
-    result: string = stringUtil!.EMPTY_STRING;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    attributeKeys: std::vector<any> = this.otherAttributes!.keySet()!.()!;;
+    std::string result = stringUtil.EMPTY_STRING;;
     
 
-    attributeSize: int32_t = attributeKeys!.length
-                ;;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
     
-result= this.before;
+
+    int32_t attributeSize = attributeKeys.size();;
     
-result += this.START;
+result= this->before;
+    
+result += this->START;
     
 result += " ";
     
@@ -115,18 +113,16 @@ result += " ";
 
 
                         for (
-    i: int32_t = 0;i < attributeSize; i++)
+    int32_t i = 0;i < attributeSize; i++)
         {
 
-    key: string = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i]! as string;;
     
 
-    value: string = otherAttributes!.get(key) as string;;
+    std::string value = otherAttributes.get(key) as string;;
     
 
-                        if(value != 
-                                    null
-                                 && value.compareTo(stringUtil!.EMPTY_STRING) != 0)
+                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;
@@ -142,13 +138,13 @@ result += "\" ";
                                 
 }
 
-result += this.END;
+result += this->END;
     
-result += this.body;
+result += this->body;
     
-result += this.ENDTAG;
+result += this->ENDTAG;
     
-result += this.after;
+result += this->after;
     
 
 

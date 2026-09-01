@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORY_H
         #define ORG_ALLBINARY_GAME_LAYER_GEOLOGICAL_RESOURCES_GEOLOGICALGEOGRAPHICMAPCELLPOSITIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -64,15 +66,14 @@
 class GeologicalGeographicMapCellPositionFactory
             : public Object
         : public GeographicMapCellPositionFactoryInterface {
-        
 
-    private: const resourcePerMapCellType: std::vector<int32_t>;
+    private: std::vector<int32_t> resourcePerMapCellType;
 
-public constructor (std::vector<int32_t> resourcePerMapCellType);
+public: GeologicalGeographicMapCellPositionFactory(std::vector<int32_t> resourcePerMapCellType);
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getInstance(BasicGeographicMap geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height);
+    public: GeographicMapCellPosition getInstance(BasicGeographicMap geographicMapInterface, int32_t i_column, int32_t i_row, int32_t columns, int32_t rows, int32_t width, int32_t height);
 
 };
 

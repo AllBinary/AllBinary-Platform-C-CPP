@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCOREUTIL_H
         #define ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCOREUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -92,37 +94,36 @@
 class HighScoreUtil
             : public Object
         : public HighScoresResultsListener {
-        
 
-    public static const SUBMIT_TEXTBOX_COMMAND: Command = new Command("Submit", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command SUBMIT_TEXTBOX_COMMAND = Command("Submit", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const highScoresFactoryInterface: HighScoresFactoryInterface;
+    private: HighScoresFactoryInterface highScoresFactoryInterface;
 
-    private: highScoresArray: std::vector<HighScores>;
+    private: std::vector<HighScores> highScoresArray;
 
-    private: const highScore: HighScore;
+    private: HighScore highScore;
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: const gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: const highScoresHelper: HighScoresHelperBaseInterface;
+    private: HighScoresHelperBaseInterface highScoresHelper;
 
-    private: firstTime: bool = true;
+    private: bool firstTime = true;
 
-public constructor (HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, string name, HighScore highScore);
+public: HighScoreUtil(HighScoresFactoryInterface highScoresFactoryInterface, HighScoresHelperBaseInterface highScoresHelper, AbeClientInformationInterface abeClientInformation, GameInfo gameInfo, CommandListener cmdListener, std::string name, HighScore highScore);
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArray);
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArray);
 
-    public update(string name);
+    public: void update(std::string name);
 
-    public saveHighScore();
+    public: void saveHighScore();
 
-    public submit(MyCanvas myCanvas);
+    public: void submit(MyCanvas myCanvas);
 
 };
 

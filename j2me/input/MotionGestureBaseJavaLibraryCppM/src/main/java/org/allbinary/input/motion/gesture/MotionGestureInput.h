@@ -53,9 +53,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MotionGestureInput: public Input {
-        
 
-public constructor (int32_t id, string name);
+public: MotionGestureInput(int32_t id, std::string name);
 
 };
 

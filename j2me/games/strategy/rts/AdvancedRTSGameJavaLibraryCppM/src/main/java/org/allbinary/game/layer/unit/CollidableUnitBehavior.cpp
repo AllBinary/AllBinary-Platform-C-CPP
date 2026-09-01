@@ -96,11 +96,10 @@
 //#include "SimpleSteeringVisitor.h"
 
 class CollidableUnitBehavior: public CollidableRTSBehavior {
-        
 
-    private: const layerPartialCellPositionsUtil: LayerPartialCellPositionsUtil = LayerPartialCellPositionsUtil.getInstance()!;
+    private: const LayerPartialCellPositionsUtil layerPartialCellPositionsUtil = LayerPartialCellPositionsUtil::getInstance();
 
-public constructor (bool collidable){
+public: CollidableUnitBehavior(bool collidable){
             super(collidable);
                     
 
@@ -111,17 +110,17 @@ public constructor (bool collidable){
 
                 //@Throws(Exception.constructor)
             
-    collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
-this.chase(ownerLayer, collidableInterfaceCompositeInterface);
+    protected: void collideNone(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+this->chase(ownerLayer, collidableInterfaceCompositeInterface);
     
 
-    rtsLayer: AdvancedRTSGameLayer = collidableInterfaceCompositeInterface as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsLayer = collidableInterfaceCompositeInterface as AdvancedRTSGameLayer;;
     
 
-                        if(rtsLayer!.getType() == UnitLayer.getStaticType())
+                        if(rtsLayer.getType() == UnitLayer::getStaticType())
                         
                                     {
-                                    this.collideUnit(ownerLayer, rtsLayer as UnitLayer);
+                                    this->collideUnit(ownerLayer, rtsLayer as UnitLayer);
     
 
                                     }
@@ -131,47 +130,37 @@ this.chase(ownerLayer, collidableInterfaceCompositeInterface);
 
 //inner= member=true isStatic=
 class SimpleSteeringVisitor: public SteeringVisitor {
-        
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
             
-    ownerLayer: CollidableCompositeLayer = anyType as CollidableCompositeLayer;;
+    CollidableCompositeLayer ownerLayer = anyType as CollidableCompositeLayer;;
     
 
-                        if(this.getList()!.size() > 0)
+                        if(this->getList().size() > 0)
                         
                                     {
                                     
-    allbinaryLayer: CollidableCompositeLayer = this.getList()!.get(0) as CollidableCompositeLayer;;
+    CollidableCompositeLayer allbinaryLayer = this->getList().get(0) as CollidableCompositeLayer;;
     
 
-    clear: bool = this::.steer(ownerLayer, allbinaryLayer)!;;
+    bool clear = this->steer(ownerLayer, allbinaryLayer);;
     
 
                         if(clear)
                         
                                     {
-                                    this.getList()!.clear();
+                                    this->getList().clear();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
-    
-
-                                    }
-                                
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 
                                     }
@@ -180,22 +169,31 @@ class SimpleSteeringVisitor: public SteeringVisitor {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return BooleanFactory::getInstance().TRUE;
+    
+
+                                    }
+                                
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-logUtil!.put(commonStrings!.EXCEPTION, this, "visit", e);
+logUtil.put(commonStrings.EXCEPTION, this, "visit", e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 
@@ -205,25 +203,25 @@ logUtil!.put(commonStrings!.EXCEPTION, this, "visit", e);
 };
 
             
-    private: const simpleSteeringVisitor = new this.SimpleSteeringVisitor();
+    private: const simpleSteeringVisitor = SimpleSteeringVisitor();
 
                 //@Throws(Exception.constructor)
             
-    bool steer(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    private: bool steer(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    ownerUnitLayer: UnitLayer = ownerLayer as UnitLayer;;
+    UnitLayer ownerUnitLayer = ownerLayer as UnitLayer;;
     
 
-    unitLayer: UnitLayer = collidableInterfaceCompositeInterface as UnitLayer;;
+    UnitLayer unitLayer = collidableInterfaceCompositeInterface as UnitLayer;;
     
 
-    angleInfo2: AngleInfo = unitLayer!.getRotationAnimationInterface()!.getAngleInfoP()!;;
+    AngleInfo angleInfo2 = unitLayer.getRotationAnimationInterface().getAngleInfoP();;
     
 
-    angleInfo: AngleInfo = ownerUnitLayer!.getRotationAnimationInterface()!.getAngleInfoP()!;;
+    AngleInfo angleInfo = ownerUnitLayer.getRotationAnimationInterface().getAngleInfoP();;
     
 
-    angle: int32_t = angleInfo!.getAngle() -angleInfo2!.getAngle();;
+    int32_t angle = angleInfo.getAngle() -angleInfo2.getAngle();;
     
 
                         if(angle < 90 || angle > 270)
@@ -242,7 +240,7 @@ logUtil!.put(commonStrings!.EXCEPTION, this, "visit", e);
                         if(angle >= 90 || angle <= 270)
                         
                                     {
-                                    ownerUnitLayer!.getGameKeyEventList()!.add(GameKeyEventFactory.getInstance()!.getInstanceForKey(ownerUnitLayer, Canvas.RIGHT));
+                                    ownerUnitLayer.getGameKeyEventList().add(GameKeyEventFactory::getInstance().getInstanceForKey(ownerUnitLayer, Canvas::RIGHT));
     
 
 
@@ -256,41 +254,41 @@ logUtil!.put(commonStrings!.EXCEPTION, this, "visit", e);
 
 
 
-                            throw new Exception("Error");
+                            throw Exception("Error");
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    chase(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    private: void chase(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    rtsLayer: AdvancedRTSGameLayer = collidableInterfaceCompositeInterface as AdvancedRTSGameLayer;;
+    AdvancedRTSGameLayer rtsLayer = collidableInterfaceCompositeInterface as AdvancedRTSGameLayer;;
     
 
-                        if(rtsLayer!.getType() == UnitLayer.getStaticType())
+                        if(rtsLayer.getType() == UnitLayer::getStaticType())
                         
                                     {
                                     
-                        if(!this.simpleSteeringVisitor!.getList()!.contains(collidableInterfaceCompositeInterface))
+                        if(!this->simpleSteeringVisitor.getList().contains(collidableInterfaceCompositeInterface))
                         
                                     {
-                                    this.simpleSteeringVisitor!.getList()!.add(collidableInterfaceCompositeInterface);
+                                    this->simpleSteeringVisitor.getList().add(collidableInterfaceCompositeInterface);
     
 
                                     }
                                 
 
-    ownerUnitLayer: UnitLayer = ownerLayer as UnitLayer;;
+    UnitLayer ownerUnitLayer = ownerLayer as UnitLayer;;
     
 
-    list: BasicArrayList = ownerUnitLayer!.getUnitWaypointBehavior()!.getSteeringVisitorList()!;;
+    BasicArrayList list = ownerUnitLayer.getUnitWaypointBehavior().getSteeringVisitorList();;
     
 
-                        if(!list.contains(this.simpleSteeringVisitor))
+                        if(!list.contains(this->simpleSteeringVisitor))
                         
                                     {
-                                    list.add(this.simpleSteeringVisitor);
+                                    list.add(this->simpleSteeringVisitor);
     
 
                                     }
@@ -303,76 +301,76 @@ logUtil!.put(commonStrings!.EXCEPTION, this, "visit", e);
 
                 //@Throws(Exception.constructor)
             
-    collideUnit(CollidableCompositeLayer ownerLayer, UnitLayer unitLayer){
+    protected: void collideUnit(CollidableCompositeLayer ownerLayer, UnitLayer unitLayer){
 
-    ownerUnitLayer: UnitLayer = ownerLayer as UnitLayer;;
+    UnitLayer ownerUnitLayer = ownerLayer as UnitLayer;;
     
 
-    partialPositionList: BasicArrayList = UnitLayer.getPartialpositionlist()!;;
+    BasicArrayList partialPositionList = UnitLayer::getPartialpositionlist();;
     
 
-    geographicMapCompositeInterface: GeographicMapCompositeInterface = ownerUnitLayer!.allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
+    GeographicMapCompositeInterface geographicMapCompositeInterface = ownerUnitLayer.allBinaryGameLayerManagerP as GeographicMapCompositeInterface;;
     
 
-    geographicMapInterface: BasicGeographicMap = geographicMapCompositeInterface!.getGeographicMapInterface()[0]!;;
+    BasicGeographicMap geographicMapInterface = geographicMapCompositeInterface.getGeographicMapInterface()[0];;
     
 
-    basicGeographicMap: BasicGeographicMap = geographicMapInterface;;
+    BasicGeographicMap basicGeographicMap = geographicMapInterface;;
     
 
-    dropCellPositionHistory: DropCellPositionHistory = DropCellPositionHistory.getInstance()!;;
+    DropCellPositionHistory dropCellPositionHistory = DropCellPositionHistory::getInstance();;
     
 
-    tiledLayerUtil: TiledLayerUtil = TiledLayerUtil.getInstance()!;;
+    TiledLayerUtil tiledLayerUtil = TiledLayerUtil::getInstance();;
     
 
-    tiledLayer: AllBinaryTiledLayer = basicGeographicMap!.getAllBinaryTiledLayer()!;;
+    AllBinaryTiledLayer tiledLayer = basicGeographicMap.getAllBinaryTiledLayer();;
     
 
-                        if(ownerLayer!.getXP() < unitLayer!.getXP() && ownerLayer!.getX2() > unitLayer!.getXP())
+                        if(ownerLayer.getXP() < unitLayer.getXP() && ownerLayer.getX2() > unitLayer.getXP())
                         
                                     {
                                     
-    diff: int32_t = ownerLayer!.getWidth() +1;;
+    int32_t diff = ownerLayer.getWidth() +1;;
     
-this.layerPartialCellPositionsUtil!.getAllDXY(basicGeographicMap, ownerLayer,  -diff, 0, partialPositionList);
+this->layerPartialCellPositionsUtil.getAllDXY(basicGeographicMap, ownerLayer,  -diff, 0, partialPositionList);
     
 
-                        if(!dropCellPositionHistory!.anyCellPositionWithDrop(partialPositionList))
+                        if(!dropCellPositionHistory.anyCellPositionWithDrop(partialPositionList))
                         
                                     {
                                     
-    x: int32_t = unitLayer!.getXP() -diff;;
+    int32_t x = unitLayer.getXP() -diff;;
     
 
-    y: int32_t = ownerLayer!.getYP()!;;
+    int32_t y = ownerLayer.getYP();;
     
-x= tiledLayerUtil!.keepOnMapX(tiledLayer, x, ownerLayer!.getWidth());
+x= tiledLayerUtil.keepOnMapX(tiledLayer, x, ownerLayer.getWidth());
     
-y= tiledLayerUtil!.keepOnMapY(tiledLayer, y, ownerLayer!.getHeight());
+y= tiledLayerUtil.keepOnMapY(tiledLayer, y, ownerLayer.getHeight());
     
-ownerLayer!.setPosition(x, y, ownerLayer!.getZP());
+ownerLayer.setPosition(x, y, ownerLayer.getZP());
     
 
                                     }
                                 
-this.layerPartialCellPositionsUtil!.getAllDXY(basicGeographicMap, unitLayer, diff, 0, partialPositionList);
+this->layerPartialCellPositionsUtil.getAllDXY(basicGeographicMap, unitLayer, diff, 0, partialPositionList);
     
 
-                        if(!dropCellPositionHistory!.anyCellPositionWithDrop(partialPositionList))
+                        if(!dropCellPositionHistory.anyCellPositionWithDrop(partialPositionList))
                         
                                     {
                                     
-    x: int32_t = unitLayer!.getXP() +diff;;
+    int32_t x = unitLayer.getXP() +diff;;
     
 
-    y: int32_t = unitLayer!.getYP()!;;
+    int32_t y = unitLayer.getYP();;
     
-x= tiledLayerUtil!.keepOnMapX(tiledLayer, x, unitLayer!.getWidth());
+x= tiledLayerUtil.keepOnMapX(tiledLayer, x, unitLayer.getWidth());
     
-y= tiledLayerUtil!.keepOnMapY(tiledLayer, y, unitLayer!.getHeight());
+y= tiledLayerUtil.keepOnMapY(tiledLayer, y, unitLayer.getHeight());
     
-unitLayer!.setPosition(x, y, unitLayer!.getZP());
+unitLayer.setPosition(x, y, unitLayer.getZP());
     
 
                                     }
@@ -381,50 +379,50 @@ unitLayer!.setPosition(x, y, unitLayer!.getZP());
                                     }
                                 
 
-                        if(ownerLayer!.getYP() < unitLayer!.getYP() && ownerLayer!.getY2() > unitLayer!.getYP())
+                        if(ownerLayer.getYP() < unitLayer.getYP() && ownerLayer.getY2() > unitLayer.getYP())
                         
                                     {
                                     
-    diff: int32_t = ownerLayer!.getHeight() +1;;
+    int32_t diff = ownerLayer.getHeight() +1;;
     
-this.layerPartialCellPositionsUtil!.getAllDXY(basicGeographicMap, ownerLayer, 0,  -diff, partialPositionList);
+this->layerPartialCellPositionsUtil.getAllDXY(basicGeographicMap, ownerLayer, 0,  -diff, partialPositionList);
     
 
-                        if(!dropCellPositionHistory!.anyCellPositionWithDrop(partialPositionList))
+                        if(!dropCellPositionHistory.anyCellPositionWithDrop(partialPositionList))
                         
                                     {
                                     
-    x: int32_t = ownerLayer!.getXP()!;;
+    int32_t x = ownerLayer.getXP();;
     
 
-    y: int32_t = unitLayer!.getYP() -diff;;
+    int32_t y = unitLayer.getYP() -diff;;
     
-x= tiledLayerUtil!.keepOnMapX(tiledLayer, x, ownerLayer!.getWidth());
+x= tiledLayerUtil.keepOnMapX(tiledLayer, x, ownerLayer.getWidth());
     
-y= tiledLayerUtil!.keepOnMapY(tiledLayer, y, ownerLayer!.getHeight());
+y= tiledLayerUtil.keepOnMapY(tiledLayer, y, ownerLayer.getHeight());
     
-ownerLayer!.setPosition(x, y, ownerLayer!.getZP());
+ownerLayer.setPosition(x, y, ownerLayer.getZP());
     
 
                                     }
                                 
-this.layerPartialCellPositionsUtil!.getAllDXY(basicGeographicMap, unitLayer, 0, diff, partialPositionList);
+this->layerPartialCellPositionsUtil.getAllDXY(basicGeographicMap, unitLayer, 0, diff, partialPositionList);
     
 
-                        if(!dropCellPositionHistory!.anyCellPositionWithDrop(partialPositionList))
+                        if(!dropCellPositionHistory.anyCellPositionWithDrop(partialPositionList))
                         
                                     {
                                     
-    x: int32_t = unitLayer!.getXP()!;;
+    int32_t x = unitLayer.getXP();;
     
 
-    y: int32_t = unitLayer!.getYP() +diff;;
+    int32_t y = unitLayer.getYP() +diff;;
     
-x= tiledLayerUtil!.keepOnMapX(tiledLayer, x, unitLayer!.getWidth());
+x= tiledLayerUtil.keepOnMapX(tiledLayer, x, unitLayer.getWidth());
     
-y= tiledLayerUtil!.keepOnMapY(tiledLayer, y, unitLayer!.getHeight());
+y= tiledLayerUtil.keepOnMapY(tiledLayer, y, unitLayer.getHeight());
     
-unitLayer!.setPosition(x, y, unitLayer!.getZP());
+unitLayer.setPosition(x, y, unitLayer.getZP());
     
 
                                     }

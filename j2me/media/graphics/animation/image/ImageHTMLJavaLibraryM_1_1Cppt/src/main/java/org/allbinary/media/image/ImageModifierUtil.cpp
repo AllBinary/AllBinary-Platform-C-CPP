@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Throwable.h"
@@ -82,54 +84,53 @@
 class ImageModifierUtil
             : public Object
          {
-        
 
-    public static ImageModifierUtil getInstanceOrCreate(){
+    public: static ImageModifierUtil getInstanceOrCreate(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ImageModifierUtil();
+                        return ImageModifierUtil();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const resourceCallbackStrings: ResourceCallbackStrings = ResourceCallbackStrings.getInstance()!;
+    private: const ResourceCallbackStrings resourceCallbackStrings = ResourceCallbackStrings::getInstance();
 
-    private: alphaArray: std::vector<bool>;
+    private: std::vector<bool> alphaArray;
 
-    public setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void setColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
 }
 
 
-    public changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
+    public: void changeColor(Image unusedOriginalImage, Image image, int32_t imageIndex, BasicColor basicColor){
 }
 
 
-    public setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alpha){
+    public: void setAlpha(Image originalImage, Image image, int32_t imageIndex, int32_t alpha){
 
-    alphaF: float = alpha;;
+    float alphaF = alpha;;
     
 
-    alphaFloat: float = alphaF /255;;
+    float alphaFloat = alphaF /255;;
     
-this.setAlphaF(originalImage, image, imageIndex, alphaFloat);
+this->setAlphaF(originalImage, image, imageIndex, alphaFloat);
     
 }
 
 
-    public setAlphaF(Image originalImage, Image image, int32_t imageIndex, float alpha){
+    public: void setAlphaF(Image originalImage, Image image, int32_t imageIndex, float alpha){
 
-                        if(this.alphaArray[imageIndex])
+                        if(this->alphaArray[imageIndex])
                         
                                     {
-                                    this.alphaArray[imageIndex]= false;
+                                    this->alphaArray[imageIndex]= false;
     
-this.setAlpha2(originalImage, image, imageIndex, alpha);
+this->setAlpha2(originalImage, image, imageIndex, alpha);
     
 
                                     }
@@ -137,18 +138,18 @@ this.setAlpha2(originalImage, image, imageIndex, alpha);
 }
 
 
-    public setAlpha2(Image originalImage, Image image, int32_t imageIndex, float alpha){
+    public: void setAlpha2(Image originalImage, Image image, int32_t imageIndex, float alpha){
 
-    htmlImage: PlaynImage = image as PlaynImage;;
+    PlaynImage htmlImage = image as PlaynImage;;
     
 
-    canvasImage: CanvasImage = htmlImage!.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
     
 
-    originalPlaynImage: playn.core.Image = (originalImage as PlaynImage).getImage() as playn.core.Image;;
+    playn::core::Image originalPlaynImage = (originalImage as PlaynImage).getImage() as playn::core::Image;;
     
 
-    canvas: Canvas = canvasImage!.canvas()!;;
+    Canvas canvas = canvasImage.canvas();;
     
 canvas.clear();
     
@@ -159,47 +160,46 @@ canvas.drawImage(originalPlaynImage, 0, 0);
 }
 
 
-    public setAlpha3(Image image, float alpha){
+    public: void setAlpha3(Image image, float alpha){
 
-    alphaF: float = alpha;;
+    float alphaF = alpha;;
     
 
-    alphaFloat: float = alphaF /255;;
+    float alphaFloat = alphaF /255;;
     
 
-    htmlImage: PlaynImage = image as PlaynImage;;
+    PlaynImage htmlImage = image as PlaynImage;;
     
 
-    canvasImage: CanvasImage = htmlImage!.getImage() as CanvasImage;;
+    CanvasImage canvasImage = htmlImage.getImage() as CanvasImage;;
     
 
-    canvas: Canvas = canvasImage!.canvas()!;;
+    Canvas canvas = canvasImage.canvas();;
     
 canvas.setAlpha(alphaFloat);
     
 }
 
 
-    public std::vector<Image> getImageArray(std::vector<Image> originalImageArray){
+    public: std::vector<Image> getImageArray(std::vector<Image> originalImageArray){
 
-    size: int32_t = originalImageArray!.length
-                ;;
+    int32_t size = originalImageArray.size();;
     
-this.alphaArray= new Array(size);
+this->alphaArray= new Array(size);
     
 
-    imageArray: std::vector<Image> = new Array(size);;
+    std::vector<Image> imageArray = new Array(size);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 imageArray[index]= originalImageArray[index]!;
     
-this.handleImage(imageArray, index, originalImageArray[index]!);
+this->handleImage(imageArray, index, originalImageArray[index]!);
     
 }
 
@@ -212,45 +212,45 @@ this.handleImage(imageArray, index, originalImageArray[index]!);
 }
 
 
-    public handleImage(std::vector<Image> imageArray, int32_t index, Image image){
+    public: void handleImage(std::vector<Image> imageArray, int32_t index, Image image){
 
-    image3: playn.core.Image = (image as PlaynImage).getImage() as playn.core.Image;;
+    playn::core::Image image3 = (image as PlaynImage).getImage() as playn::core::Image;;
     
 
                         if(image3 != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(image3.isReady() || image3.width() +image3.height() <= 0 || image.getName() == this.resourceCallbackStrings!.FROM_DATA)
+                        if(image3.isReady() || image3.width() +image3.height() <= 0 || image.getName() == this->resourceCallbackStrings.FROM_DATA)
                         
                                     {
-                                    this.copy(imageArray, index, image, image3);
+                                    this->copy(imageArray, index, image, image3);
     
 
                                     }
                                 
                         else {
                             
-    callback: Callback = new class extends Callback
+    Callback callback = class extends Callback
                                 {
                                 
-    public onSuccess(any = {} resource){
+    public: void onSuccess(Object* resource){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF(resourceCallbackStrings!.DONE +image.getName(), this, resourceCallbackStrings!.HANDLE_IMAGE);
+logUtil.putF(resourceCallbackStrings.DONE +image.getName(), this, resourceCallbackStrings.HANDLE_IMAGE);
     
 copy(imageArray, index, image, image3);
     
 }
 
-    public onFailure(Throwable e){
+    public: void onFailure(Throwable e){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
-logUtil!.putF(new StringMaker().append(commonStrings!.EXCEPTION_LABEL)!.append(resourceCallbackStrings!.ERROR)!.append(image.getName())!.toString(), this, resourceCallbackStrings!.HANDLE_IMAGE);
+logUtil.putF(StringMaker().append(commonStrings.EXCEPTION_LABEL).append(resourceCallbackStrings.ERROR).append(image.getName()).toString(), this, resourceCallbackStrings.HANDLE_IMAGE);
     
 }
 
@@ -266,7 +266,7 @@ image3.addCallback(callback);
                                     }
                                 
                         else {
-                            this.logUtil!.putF(this.resourceCallbackStrings!.NULL +image.isMutable(), this, this.resourceCallbackStrings!.HANDLE_IMAGE);
+                            this->logUtil.putF(this->resourceCallbackStrings.NULL +image.isMutable(), this, this->resourceCallbackStrings.HANDLE_IMAGE);
     
 
                         }
@@ -274,16 +274,16 @@ image3.addCallback(callback);
 }
 
 
-    public copy(std::vector<Image> imageArray, int32_t index, Image image, playn.core.Image image3){
+    public: void copy(std::vector<Image> imageArray, int32_t index, Image image, playn::core::Image image3){
 
         try {
             
-    image2: Image = Image.createImage(image3.width(), image3.height())!;;
+    Image image2 = Image::createImage(image3.width(), image3.height());;
     
 
-    graphics: Graphics = image2.getGraphics()!;;
+    Graphics graphics = image2.getGraphics();;
     
-graphics.drawImage(image, 0, 0, Anchor.TOP_LEFT);
+graphics.drawImage(image, 0, 0, Anchor::TOP_LEFT);
     
 imageArray[index]= image2;
     
@@ -291,26 +291,25 @@ imageArray[index]= image2;
                 //: 
 } catch(e) 
             {
-this.logUtil!.putF(this.commonStrings!.EXCEPTION_LABEL +resourceCallbackStrings!.DONE, this, resourceCallbackStrings!.HANDLE_IMAGE);
+this->logUtil.putF(this->commonStrings.EXCEPTION_LABEL +resourceCallbackStrings.DONE, this, resourceCallbackStrings.HANDLE_IMAGE);
     
 }
 
 }
 
 
-    public reset(){
+    public: void reset(){
 
-    size: int32_t = this.alphaArray!.length
-                ;;
+    int32_t size = this->alphaArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.alphaArray[index]= true;
+this->alphaArray[index]= true;
     
 }
 

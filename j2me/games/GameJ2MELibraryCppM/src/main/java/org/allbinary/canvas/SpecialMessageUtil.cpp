@@ -58,45 +58,44 @@
 class SpecialMessageUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: SpecialMessageUtil = new SpecialMessageUtil();
+    private: static const SpecialMessageUtil SINGLETON = SpecialMessageUtil();
 
-    public static SpecialMessageUtil getInstance(){
+    public: static SpecialMessageUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SpecialMessageUtil.SINGLETON;
+                        return SpecialMessageUtil::SINGLETON;
     
 }
 
 
-    public string get(){
+    public: std::string get(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(Memory.getInfo());
+stringBuffer.append(Memory::getInfo());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(GameStatisticsFactory.getInstance()!.toString());
+stringBuffer.append(GameStatisticsFactory::getInstance().toString());
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(" Option: ");
+stringBuffer.append(" Option: ");
     
 
-                        if(Features.getInstance()!.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL_AUTO_SELECT))
+                        if(Features::getInstance().isDefault(OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT))
                         
                                     {
-                                    stringBuffer!.append(OpenGLFeatureFactory.getInstance()!.OPENGL_AUTO_SELECT.getName());
+                                    stringBuffer.append(OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT.getName());
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append(OpenGLFeatureFactory.getInstance()!.OPENGL_MINIMUM.getName());
+                            stringBuffer.append(OpenGLFeatureFactory::getInstance().OPENGL_MINIMUM.getName());
     
 
                         }
@@ -105,7 +104,7 @@ stringBuffer!.append(" Option: ");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

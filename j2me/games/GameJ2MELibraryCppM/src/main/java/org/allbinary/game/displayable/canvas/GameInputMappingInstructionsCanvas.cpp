@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -80,66 +82,65 @@
         #include "GameCommandCanvas.h"
 
 class GameInputMappingInstructionsCanvas: public GameCommandCanvas {
-        
 
-    public static const DISPLAY: Command = new Command("Help", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command DISPLAY = Command("Help", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public static const CLOSE: Command = new Command("Close", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command CLOSE = Command("Close", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public static const NAME: string = "GameInputMappingInstructionsCanvas";
+    public: static const std::string NAME = "GameInputMappingInstructionsCanvas";
 
-    private: const drawStringUtil: DrawStringUtil = DrawStringUtil.getInstance()!;
+    private: const DrawStringUtil drawStringUtil = DrawStringUtil::getInstance();
 
-    const TITLE: string = "Input Instructions";
+    protected: const std::string TITLE = "Input Instructions";
 
-    private: const instructions: std::vector<string> = 
-                                                        [
-                                                            "Add Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the '1' key to select the Fire action)","2. Make the newly desired input for the selected action.","(Example: Press 'f' to add it to the selected action)","Note: If the input is already mapped to another action then it will not be added. You","will need to deleted from the other action before adding it to another.","Warning: Not all keys map for a given platform and show as Unknown.",StringUtil.getInstance()!.EMPTY_STRING,"Remove Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the key '1' to select the Fire action)","2. Select a mapped input for the selected action.","(Example: Press the key '1' to select the '1' key input for the selected Fire action)","3. Press the Delete Key."
-                                                        ];
+    private: const std::vector<std::string> instructions = 
+                                                        {
+                                                            "Add Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the '1' key to select the Fire action)","2. Make the newly desired input for the selected action.","(Example: Press 'f' to add it to the selected action)","Note: If the input is already mapped to another action then it will not be added. You","will need to deleted from the other action before adding it to another.","Warning: Not all keys map for a given platform and show as Unknown.",StringUtil::getInstance().EMPTY_STRING,"Remove Input Mapping:","1. Select the desired action by generating a currently defined input for a given action.","(Example: Press the key '1' to select the Fire action)","2. Select a mapped input for the selected action.","(Example: Press the key '1' to select the '1' key input for the selected Fire action)","3. Press the Delete Key."
+                                                        };
 
-    private: colorFillPaintable: ColorFillBasePaintable;
+    private: ColorFillBasePaintable colorFillPaintable;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-public constructor (CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager){
-            super(commandListener, GameInputMappingInstructionsCanvas.NAME, allBinaryGameLayerManager!.getBackgroundBasicColor(), allBinaryGameLayerManager!.getForegroundBasicColor());
+public: GameInputMappingInstructionsCanvas(CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager){
+            super(commandListener, GameInputMappingInstructionsCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.colorFillPaintable= ColorFillPaintableFactory.getInstance()!.getInstance(allBinaryGameLayerManager!.getBackgroundBasicColor(), false);
-    
-}
-
-
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
-    
-this.addCommand(GameInputMappingInstructionsCanvas.CLOSE);
-    
-this.setCommandListener(cmdListener);
+this->colorFillPaintable= ColorFillPaintableFactory::getInstance().getInstance(allBinaryGameLayerManager.getBackgroundBasicColor(), false);
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
     
-this.colorFillPaintable!.paint(graphics);
+this->addCommand(GameInputMappingInstructionsCanvas::CLOSE);
+    
+this->setCommandListener(cmdListener);
+    
+}
+
+
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
+    
+this->colorFillPaintable.paint(graphics);
     
 
-    halfWidth: int32_t = this.displayInfo!.getLastHalfWidth()!;;
+    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
     
 
-    beginWidth: int32_t = (graphics.getFont()!.stringWidth(this.TITLE)>>1);;
+    int32_t beginWidth = (graphics.getFont().stringWidth(this->TITLE)>>1);;
     
-graphics.setColor(this.foregroundColor);
+graphics.setColor(this->foregroundColor);
     
-graphics.drawString(this.TITLE, halfWidth -beginWidth, this.fontHeight, this.anchor);
+graphics.drawString(this->TITLE, halfWidth -beginWidth, this->fontHeight, this->anchor);
     
-this.drawStringUtil!.drawCenterStrings(graphics, this.instructions, this.displayInfo!.getLastWidth(), this.fontHeight, halfWidth, 3 *this.fontHeight);
+this->drawStringUtil.drawCenterStrings(graphics, this->instructions, this->displayInfo.getLastWidth(), this->fontHeight, halfWidth, 3 *this->fontHeight);
     
 super.paint(graphics);
     

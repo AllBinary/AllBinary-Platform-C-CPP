@@ -39,7 +39,6 @@
         #include "Animation.h"
 
 class AnimationInterfaceCompositeInterface {
-        
 
     Animation getAnimationInterface()
 

@@ -44,9 +44,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TrackListenerInterface {
-        
 
-    finished(AllBinaryLayer layerInterface);
+    void finished(AllBinaryLayer layerInterface);
 
 };
 

@@ -78,30 +78,29 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class CssStyleValidation: public Validation: public DomNodeInterface {
-        
+class CssStyleValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    cssStyleElementVector: Vector;
+    protected: Vector cssStyleElementVector;
 
-public constructor ();
+public: CssStyleValidation();
 
-public constructor (Document document);
+public: CssStyleValidation(Document document);
 
-public constructor (HashMap<any, any> hashMap);
+public: CssStyleValidation(HashMap<any, any> hashMap);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

@@ -64,23 +64,22 @@
 class BasicDirectionAIHelper
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: angleInfo: AngleInfo;
+    private: AngleInfo angleInfo;
 
-public constructor (string name, AngleInfo angleInfo);
+public: BasicDirectionAIHelper(std::string name, AngleInfo angleInfo);
 
-    int32_t turnAI(int32_t frame);
+    private: int32_t turnAI(int32_t frame);
 
-    int32_t getAIKeyPressed(Integer frame);
+    private: int32_t getAIKeyPressed(Integer frame);
 
-    public int32_t getAIKeyPressedFromDirection(Direction geographicMapDirectionData);
+    public: int32_t getAIKeyPressedFromDirection(Direction geographicMapDirectionData);
 
-    AngleInfo getAngleInfoP();
+    protected: AngleInfo getAngleInfoP();
 
-    public string getName();
+    public: std::string getName();
 
 };
 

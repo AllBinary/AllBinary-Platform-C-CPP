@@ -47,35 +47,32 @@
 class HttpRequestUtil
             : public Object
          {
-        
 
-    private: static const instance: HttpRequestUtil = new HttpRequestUtil();
+    private: static HttpRequestUtil instance() { return HttpRequestUtil(); }
 
-    public static HttpRequestUtil getInstance(){
+    public: static HttpRequestUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HttpRequestUtil.instance;
+                        return HttpRequestUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: HttpRequestUtil(){
+}
 
 
-    public int32_t getLastSeparatorIndex(string requestPath){
+    public: int32_t getLastSeparatorIndex(std::string requestPath){
 
-    beginIndex: int32_t = requestPath!.lastIndexOf(AbPathData.getInstance()!.SEPARATOR)!;;
+    int32_t beginIndex = requestPath.lastIndexOf(AbPathData::getInstance().SEPARATOR);;
     
 
                         if(beginIndex < 0)
                         
                                     {
-                                    beginIndex= requestPath!.lastIndexOf("\\");
+                                    beginIndex= requestPath.lastIndexOf("\\");
     
 
                                     }
@@ -91,9 +88,9 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public string generateFileName(string requestPath){
+    public: std::string generateFileName(std::string requestPath){
 
-    beginIndex: int32_t = this.getLastSeparatorIndex(requestPath)!;;
+    int32_t beginIndex = this->getLastSeparatorIndex(requestPath);;
     
 
                         if(beginIndex < 0)
@@ -113,7 +110,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return requestPath!.substring(beginIndex +1);;
+                        return requestPath.substring(beginIndex +1);;
     
 
                         }

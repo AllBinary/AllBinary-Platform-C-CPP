@@ -73,36 +73,35 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AdvertisementsEntityInterface.h"
 
-class AdvertisementsEntity: public AbSqlBean: public AdvertisementsEntityInterface {
-        
+class AdvertisementsEntity: public AbSqlBean, public AdvertisementsEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "advertisements";
+    protected: const std::string tableName = "advertisements";
 
-    private: const _INDEX: string = "_index";
+    private: const std::string _INDEX = "_index";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: AdvertisementsEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTableName(this.tableName);
+this->setTableName(this->tableName);
     
 }
 
 
-    public delete(string value){
+    public: void delete_(std::string value){
 
         try {
-            super.deleteWhere(EntryData.getInstance()!.ID, value);
+            super.deleteWhere(EntryData::getInstance().ID, value);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.SUCCESS, this, this.commonStrings!.delete);
+                                    this->logUtil.putF(this->commonStrings.SUCCESS, this, this->commonStrings.delete_);
     
 
                                     }
@@ -112,10 +111,10 @@ this.setTableName(this.tableName);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }
@@ -125,30 +124,30 @@ this.setTableName(this.tableName);
 }
 
 
-    public Vector get(string storeName){
+    public: Vector get(std::string storeName){
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
-    
-
-    hashMapVector: Vector = super.getRows(keysAndValues)!;;
+keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
 
-    vector: Vector = new Vector();;
+    Vector hashMapVector = super.getRows(keysAndValues);;
     
 
-    size: int32_t = hashMapVector!.length!;;
+    Vector vector = Vector();;
+    
+
+    int32_t size = hashMapVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    hashMap: HashMap<any, any> = hashMapVector!.get(index) as HashMap<any, any>;;
+    HashMap<any, any> hashMap = hashMapVector.get(index) as HashMap<any, any>;;
     
 }
 
@@ -161,16 +160,16 @@ keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
 }
 
 
-    public AdvertisementInterface get(string storeName, string advertismentName){
+    public: AdvertisementInterface get(std::string storeName, std::string advertismentName){
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(StoreFrontData.getInstance()!.NAME, storeName);
+keysAndValues.put(StoreFrontData::getInstance().NAME, storeName);
     
-keysAndValues!.put(AdvertisementData.getInstance()!.NAME, advertismentName);
+keysAndValues.put(AdvertisementData::getInstance().NAME, advertismentName);
     
 
-    hashMap: HashMap<any, any> = super.getRow(keysAndValues)!;;
+    HashMap<any, any> hashMap = super.getRow(keysAndValues);;
     
 
 
@@ -181,31 +180,31 @@ keysAndValues!.put(AdvertisementData.getInstance()!.NAME, advertismentName);
 }
 
 
-    public string createTableStatement(){
+    public: std::string createTableStatement(){
 
-    advertisementData: AdvertisementData = AdvertisementData.getInstance()!;;
+    AdvertisementData advertisementData = AdvertisementData::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.CREATE_TABLE);
+stringBuffer.append(this->sqlStrings.CREATE_TABLE);
     
-stringBuffer!.append(this.getTableName())!.append(this.sqlStrings!.START)!.append(advertisementData!.NAME)!.append(_INDEX)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(advertisementData!.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(StoreFrontData.getInstance()!.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(advertisementData!.DESCRIPTION)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL);
+stringBuffer.append(this->getTableName()).append(this->sqlStrings.START).append(advertisementData.NAME).append(_INDEX).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(advertisementData.NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(StoreFrontData::getInstance().NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(advertisementData.DESCRIPTION).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL);
     
-stringBuffer!.append(DynamicObjectData.NAME)!.append(this.sqlTypeStrings!.MAX_CHAR_COLUMN_NOT_NULL)!.append(EntryData.getInstance()!.TIMECREATED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(EntryData.getInstance()!.LASTMODIFIED)!.append(this.sqlTypeStrings!.MAX_BIG_INT_UNSIGNED_NOT_NULL)!.append(this.sqlStrings!.PRIMARY_KEY)!.append(advertisementData!.NAME)!.append(this.sqlStrings!.END);
+stringBuffer.append(DynamicObjectData::NAME).append(this->sqlTypeStrings.MAX_CHAR_COLUMN_NOT_NULL).append(EntryData::getInstance().TIMECREATED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(EntryData::getInstance().LASTMODIFIED).append(this->sqlTypeStrings.MAX_BIG_INT_UNSIGNED_NOT_NULL).append(this->sqlStrings.PRIMARY_KEY).append(advertisementData.NAME).append(this->sqlStrings.END);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string createTable(){
+    public: std::string createTable(){
 
-    returnStr: string = super.createTable(this.createTableStatement())!;;
+    std::string returnStr = super.createTable(this->createTableStatement());;
     
 
 
@@ -216,13 +215,13 @@ stringBuffer!.append(DynamicObjectData.NAME)!.append(this.sqlTypeStrings!.MAX_CH
 }
 
 
-    public update(HashMap<any, any> updatedValues){
-super.updateWhere(EntryData.getInstance()!.ID, updatedValues!.get(EntryData.getInstance()!.ID) as string, updatedValues);
+    public: void update(HashMap<any, any> updatedValues){
+super.updateWhere(EntryData::getInstance().ID, updatedValues.get(EntryData::getInstance().ID) as string, updatedValues);
     
 }
 
 
-    public string dropTable(){
+    public: std::string dropTable(){
 
 
 

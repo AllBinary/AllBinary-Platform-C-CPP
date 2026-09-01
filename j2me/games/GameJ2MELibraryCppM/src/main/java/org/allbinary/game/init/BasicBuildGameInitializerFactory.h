@@ -57,11 +57,10 @@
 class BasicBuildGameInitializerFactory
             : public Object
         : public GameInitializationInterfaceFactoryInterface {
-        
 
-    public static NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY: BasicBuildGameInitializerFactory = new BasicBuildGameInitializerFactory();
+    public: static BasicBuildGameInitializerFactory NULL_BASE_BUILD_GMAE_INITIALIZER_FACTORY = BasicBuildGameInitializerFactory();
 
-    public GameInitializationInterface getInstance();
+    public: GameInitializationInterface getInstance();
 
 };
 

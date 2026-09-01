@@ -69,21 +69,20 @@
 class ContextConfigurationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: ContextConfigurationInterfaceFactory = new ContextConfigurationInterfaceFactory();
+    private: static ContextConfigurationInterfaceFactory instance() { return ContextConfigurationInterfaceFactory(); }
 
-    public static ContextConfigurationInterfaceFactory getInstance();
+    public: static ContextConfigurationInterfaceFactory getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public ContextConfigurationInterface getInstance(Document document);
+private: ContextConfigurationInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public ContextConfigurationInterface getInstance(string contextName);
+    public: ContextConfigurationInterface getInstance(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: ContextConfigurationInterface getInstance(std::string contextName);
 
 };
 

@@ -80,21 +80,20 @@
 class NotificationUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: NotificationUtil = new NotificationUtil();
+    private: static const NotificationUtil SINGLETON = NotificationUtil();
 
-    public static NotificationUtil getInstance();
+    public: static NotificationUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: notificationManager: NotificationManager = ResourceUtil.getInstance()!.getContext()!.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager;
+    private: NotificationManager notificationManager = ResourceUtil::getInstance().getContext().getSystemService(Context::NOTIFICATION_SERVICE) as NotificationManager;
 
-    private: const notificationBuilder: NotificationBuilder;
+    private: const NotificationBuilder notificationBuilder;
 
-private constructor ();
+private: NotificationUtil();
 
-    public notify(Command command, string resource, string message);
+    public: void notify(Command command, std::string resource, std::string message);
 
 };
 

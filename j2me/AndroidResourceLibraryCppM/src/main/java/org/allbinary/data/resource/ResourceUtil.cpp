@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -91,71 +93,68 @@
 class ResourceUtil
             : public Object
          {
-        
 
-    private: static const instance: ResourceUtil = new ResourceUtil();
+    private: static ResourceUtil instance() { return ResourceUtil(); }
 
-    public static ResourceUtil getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return ResourceUtil.instance;
-    
-}
-
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    private: context: any = NullUtil.getInstance()!.NULL_OBJECT;
-
-    private: resources: any = NullUtil.getInstance()!.NULL_OBJECT;
-
-    private: hashMap: Hashtable<any, any> = new Hashtable<any, any>();
-
-private constructor (){
-
-            super();
-        }
-
-
-    public setLoadingPaths(string path, string ext){
-this.logUtil!.putF(CommonStrings.getInstance()!.NOT_IMPLEMENTED, this, "setLoadingPaths");
-    
-}
-
-
-    public Context getContext(){
+    public: static ResourceUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.context as Context;
+                        return ResourceUtil::instance();
     
 }
 
 
-    public setContextFromActivity(Activity activity){
-this.context= activity;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
+
+    private: Object* context = NullUtil::getInstance().NULL_OBJECT;
+
+    private: Object* resources = NullUtil::getInstance().NULL_OBJECT;
+
+    private: Hashtable<any, any> hashMap = Hashtable<any, any>();
+
+private: ResourceUtil(){
+}
+
+
+    public: void setLoadingPaths(std::string path, std::string ext){
+this->logUtil.putF(CommonStrings::getInstance().NOT_IMPLEMENTED, this, "setLoadingPaths");
     
 }
 
 
-    public setContext(Context aContext){
-this.context= aContext;
+    public: Context getContext(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->context as Context;
     
 }
 
 
-    public Integer getResourceId(string resource){
+    public: void setContextFromActivity(Activity activity){
+this->context= activity;
+    
+}
 
-    value: Integer = this.hashMap!.get(resource) as Integer;;
+
+    public: void setContext(Context aContext){
+this->context= aContext;
+    
+}
+
+
+    public: Integer getResourceId(std::string resource){
+
+    Integer value = this->hashMap.get(resource) as Integer;;
     
 
-                        if(DebugFactory.getInstance() != NoDebug.getInstance())
+                        if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil.put(new StringMaker().append(resource)!.append(CommonSeps.getInstance()!.COLON)!.append(value.toString())!.toString(), this, "getResourceId");
+                                    PreLogUtil::put(StringMaker().append(resource).append(CommonSeps::getInstance().COLON).append(value.toString()).toString(), this, "getResourceId");
     
 
                                     }
@@ -169,18 +168,18 @@ this.context= aContext;
 }
 
 
-    public addResource(string resource, Integer value){
+    public: void addResource(std::string resource, Integer value){
 
-                        if(DebugFactory.getInstance() != NoDebug.getInstance())
+                        if(DebugFactory::getInstance() != NoDebug::getInstance())
                         
                                     {
-                                    PreLogUtil.put(new StringMaker().append(resource)!.append(CommonSeps.getInstance()!.COLON)!.append(value.toString())!.toString(), this, "addResource");
+                                    PreLogUtil::put(StringMaker().append(resource).append(CommonSeps::getInstance().COLON).append(value.toString()).toString(), this, "addResource");
     
 
-                        if(this.containsDuplicate(resource, value))
+                        if(this->containsDuplicate(resource, value))
                         
                                     {
-                                    ForcedLogUtil.log(new StringMaker().append("Found Duplicate Resource: ")!.append(resource)!.toString(), this);
+                                    ForcedLogUtil::log(StringMaker().append("Found Duplicate Resource: ").append(resource).toString(), this);
     
 
                                     }
@@ -188,25 +187,24 @@ this.context= aContext;
 
                                     }
                                 
-this.hashMap!.put(resource, value);
+this->hashMap.put(resource, value);
     
 }
 
 
-    bool containsDuplicate(string resource, Integer value){
+    private: bool containsDuplicate(std::string resource, Integer value){
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(this.hashMap)!;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(this->hashMap);;
     
 
 
 
 
                         for (
-    index: int32_t = objectArray!.length
-                ;--index >= 0; )
+    int32_t index = objectArray.size();--index >= 0; )
         {
 
-    integer: Integer = this.hashMap!.get(objectArray[index]!) as Integer;;
+    Integer integer = this->hashMap.get(objectArray[index]!) as Integer;;
     
 
                         if(resource != objectArray[index])
@@ -246,32 +244,32 @@ this.hashMap!.put(resource, value);
 }
 
 
-    public setResources(Resources resources){
-this.logUtil!.putF(new StringMaker().append("Resource Loader: ")!.append(resources.constructor.name.toString()!)!.toString(), this, "setResources");
+    public: void setResources(Resources resources){
+this->logUtil.putF(StringMaker().append("Resource Loader: ").append(resources->constructor.name.toString()!).toString(), this, "setResources");
     
-this.resources= resources;
+this->resources= resources;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resource){
+    public: InputStream getResourceAsStream(std::string resource){
 
-    integer: Integer = this.hashMap!.get(resource) as Integer;;
+    Integer integer = this->hashMap.get(resource) as Integer;;
     
 
-    id: int32_t = integer.intValue()!;;
+    int32_t id = integer.intValue();;
     
 
-    resources: Resources = (this.resources as Resources);;
+    Resources resources = (this->resources as Resources);;
     
 
-    inputStream: InputStream = resources.openRawResource(id)!;;
+    InputStream inputStream = resources->openRawResource(id);;
     
 
                         if(inputStream != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {

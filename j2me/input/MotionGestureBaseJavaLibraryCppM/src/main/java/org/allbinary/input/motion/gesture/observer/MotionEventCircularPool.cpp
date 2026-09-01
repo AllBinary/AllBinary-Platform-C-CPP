@@ -58,26 +58,23 @@
 class MotionEventCircularPool
             : public Object
          {
-        
 
-    public static MotionEventCircularPool createPool(int32_t id){
+    public: static MotionEventCircularPool createPool(int32_t id){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new MotionEventCircularPool(id);
+                        return MotionEventCircularPool(id);
     
 }
 
 
-    private: const MIN: int32_t = TouchMotionGestureFactory.getInstance()!.LAST_MOTION.getId()!;
+    private: const int32_t MIN = TouchMotionGestureFactory::getInstance().LAST_MOTION.getId();
 
-    private: eventPool: AllBinaryEventCircularPool = new AllBinaryEventCircularPool((InputFactory.getInstance()!.MAX -1) -this.MIN);
+    private: AllBinaryEventCircularPool eventPool = AllBinaryEventCircularPool((InputFactory::getInstance().MAX -1) -this->MIN);
 
-private constructor (int32_t id){
-
-            super();
-        this.eventPool!.initAllBinaryEventCircularPool(new MotionEventFactory(this.eventPool, id));
+private: MotionEventCircularPool(int32_t id){
+this->eventPool.initAllBinaryEventCircularPool(MotionEventFactory(this->eventPool, id));
     
 }
 
@@ -85,12 +82,12 @@ private constructor (int32_t id){
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public MotionGestureEvent getInstance(MotionGestureInput motionGestureInput){
+    public: MotionGestureEvent getInstance(MotionGestureInput motionGestureInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.eventPool!.getInstance(motionGestureInput!.getId() -this.MIN) as MotionGestureEvent;
+                        return this->eventPool.getInstance(motionGestureInput.getId() -this->MIN) as MotionGestureEvent;
     
 }
 

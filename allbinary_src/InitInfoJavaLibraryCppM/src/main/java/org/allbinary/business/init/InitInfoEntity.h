@@ -69,39 +69,38 @@
 #include "InitInfo.h"
 
 class InitInfoEntity: public InitSql {
-        
 
-    private: const NAME: string = "InitInfoEntity";
+    private: const std::string NAME = "InitInfoEntity";
 
-    private: const NOTHING: string = "NOTHING";
+    private: const std::string NOTHING = "NOTHING";
 
-    private: const tableName: string = "initdata";
+    private: const std::string tableName = "initdata";
 
-    private: const tableData: string;
+    private: std::string tableData;
 
-    private: const NOT_IN_DB: string = "Not In DB";
+    private: const std::string NOT_IN_DB = "Not In DB";
 
-    private: const METHOD_GET: string = "get()";
+    private: const std::string METHOD_GET = "get()";
 
-    private: const METHOD_IS: string = "is()";
+    private: const std::string METHOD_IS = "is()";
 
-    private: const METHOD_ADD: string = "add()";
+    private: const std::string METHOD_ADD = "add()";
 
-    private: const CREATED_SUCCESS: string = " Created Successfully";
+    private: const std::string CREATED_SUCCESS = " Created Successfully";
 
-    private: const FAILED_TO_CREATE: string = "Failed to create ";
+    private: const std::string FAILED_TO_CREATE = "Failed to create ";
 
-public constructor ();
+public: InitInfoEntity();
 
-    public bool get();
+    public: bool get();
 
-    public bool is();
+    public: bool is();
 
-    public update();
+    public: void update();
 
-    public add();
+    public: void add();
 
-    public string createTable();
+    public: std::string createTable();
 
 };
 

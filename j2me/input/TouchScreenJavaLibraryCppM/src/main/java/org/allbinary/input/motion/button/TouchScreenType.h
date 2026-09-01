@@ -45,15 +45,14 @@
 class TouchScreenType
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
- constructor (string name);
+: TouchScreenType(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

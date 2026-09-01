@@ -65,38 +65,37 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "Paintable.h"
 
-class SimpleTextPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class SimpleTextPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    private: text: string;
+    private: std::string text;
 
-    private: basicColor: BasicColor;
+    private: BasicColor basicColor;
 
-    private: topScoresWidth: int32_t = 0;
+    private: int32_t topScoresWidth = 0;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-public constructor (string text, BasicColor basicColor);
+public: SimpleTextPaintable(std::string text, BasicColor basicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public setBasicColorP(BasicColor basicColor);
+    public: void setBasicColorP(BasicColor basicColor);
 
-    BasicColor getBasicColorP();
+    private: BasicColor getBasicColorP();
 
-    public setText(string text);
+    public: void setText(std::string text);
 
-    public string getText();
+    public: std::string getText();
 
 };
 

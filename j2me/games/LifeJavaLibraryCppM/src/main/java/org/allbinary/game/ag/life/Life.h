@@ -50,39 +50,38 @@
 class Life
             : public Object
         : public LifeInterface {
-        
 
-    public static Life createLife();
+    public: static Life createLife();
 
-    public static const NO_LIFE: Life = Life.createLife()!;
+    public: static const Life NO_LIFE = Life::createLife();
 
-    private: lives: int16_t;
+    private: int16_t lives;
 
-    private: startLives: int16_t;
+    private: int16_t startLives;
 
-    private: maxlives: int16_t;
+    private: int16_t maxlives;
 
-public constructor (int16_t lives, int16_t maxlives);
+public: Life(int16_t lives, int16_t maxlives);
 
-    public int16_t get();
+    public: int16_t get();
 
-    public set(int16_t lives);
+    public: void set(int16_t lives);
 
-    public reset();
+    public: void reset();
 
-    public add(int16_t lives);
+    public: void add(int16_t lives);
 
-    public bool isAlive();
+    public: bool isAlive();
 
-    public int16_t getMaxlives();
+    public: int16_t getMaxlives();
 
-    bool reachedLimit();
+    private: bool reachedLimit();
 
-    public deaths(int16_t lives);
+    public: void deaths(int16_t lives);
 
-    public int16_t getStartLives();
+    public: int16_t getStartLives();
 
-    public setStartLives(int16_t startLives);
+    public: void setStartLives(int16_t startLives);
 
 };
 

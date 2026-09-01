@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <org/allbinary/thread/ARunnable.h>
@@ -81,9 +83,8 @@
 #include "HighScoresHelperBaseInterface.h"
 
 class BasicHighScoresFactory: public HighScoresBase {
-        
 
-    public static bool loaded(int32_t index2){
+    public: static bool loaded(int32_t index2){
 
                         if(index2 >= 0)
                         
@@ -106,96 +107,94 @@ class BasicHighScoresFactory: public HighScoresBase {
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: const softwareInformation: SoftwareInformation;
+    private: SoftwareInformation softwareInformation;
 
-public constructor (AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation){
-
-            super();
-        this.abeClientInformation= abeClientInformation;
+public: BasicHighScoresFactory(AbeClientInformationInterface abeClientInformation, SoftwareInformation softwareInformation){
+this->abeClientInformation= abeClientInformation;
     
-this.softwareInformation= softwareInformation;
+this->softwareInformation= softwareInformation;
     
 }
 
 
-    private: const highScoresArray: std::vector<HighScores> = new Array(2);
+    private: const std::vector<HighScores> highScoresArray = new Array(2);
 
-    private: const TOP: string = "Top";
+    private: const std::string TOP = "Top";
 
-    private: const SCORES: string = "Scores";
+    private: const std::string SCORES = "Scores";
 
-    private: const PERSONAL_HIGH_SCORES: string = "Personal Top Scores";
+    private: const std::string PERSONAL_HIGH_SCORES = "Personal Top Scores";
 
-    private: const WORLD_TOP_SCORES: string = "World Top Scores";
+    private: const std::string WORLD_TOP_SCORES = "World Top Scores";
 
-    private: const FETCH: string = "fetchHighScores";
+    private: const std::string FETCH = "fetchHighScores";
 
-    public fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
-this.logUtil!.putF("Getting Remote/Local HighScores", this, this.FETCH);
+    public: void fetchHighScores(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener){
+this->logUtil.putF("Getting Remote/Local HighScores", this, this->FETCH);
     
-this.fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
+this->fetchHighScoresPreload(gameInfo, highScoresResultsListener, true);
     
 }
 
 
-    public fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
-SecondaryThreadPool.getInstance()!.runTask(new class extends ARunnable
+    public: void fetchHighScoresPreload(GameInfo gameInfo, HighScoresResultsListener highScoresResultsListener, bool preload){
+SecondaryThreadPool::getInstance().runTask(class extends ARunnable
                                 {
                                 
-    public run(){
+    public: void run(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
-            logUtil!.putF(this::.commonStrings!.START, this, FETCH);
+            logUtil.putF(this->commonStrings.START, this, FETCH);
     
-highScoresArray[0]= RecordStoreHighScores.getInstance(abeClientInformation, gameInfo, TOP, PERSONAL_HIGH_SCORES, SCORES, new ScoreComparator(true));
-    
-
-    gameType: GameType = gameInfo!.getGameType()!;;
+highScoresArray[0]= RecordStoreHighScores::getInstance(abeClientInformation, gameInfo, TOP, PERSONAL_HIGH_SCORES, SCORES, ScoreComparator(true));
     
 
-    gameTypeFactory: GameTypeFactory = GameTypeFactory.getInstance()!;;
+    GameType gameType = gameInfo.getGameType();;
     
 
-    gameInfo2: GameInfo = gameInfo;;
+    GameTypeFactory gameTypeFactory = GameTypeFactory::getInstance();;
     
 
-                        if(gameType == gameTypeFactory!.SINGLE_PLAYER || gameType == gameTypeFactory!.BOT)
+    GameInfo gameInfo2 = gameInfo;;
+    
+
+                        if(gameType == gameTypeFactory.SINGLE_PLAYER || gameType == gameTypeFactory.BOT)
                         
                                     {
-                                    gameInfo2= BasicHighScoresGameInfoFactory.getInstance()!.SINGLE_PLAYER_SERVER;
+                                    gameInfo2= BasicHighScoresGameInfoFactory::getInstance().SINGLE_PLAYER_SERVER;
     
 
                                     }
                                 
                              else 
-                        if(gameType == gameTypeFactory!.MULTI_PLAYER)
+                        if(gameType == gameTypeFactory.MULTI_PLAYER)
                         
                                     {
-                                    gameInfo2= BasicHighScoresGameInfoFactory.getInstance()!.MULTI_PLAYER_SERVER;
+                                    gameInfo2= BasicHighScoresGameInfoFactory::getInstance().MULTI_PLAYER_SERVER;
     
 
                                     }
                                 
-highScoresArray[1]= RemoteHighScores.getInstancePreload(abeClientInformation, softwareInformation, gameInfo2, WORLD_TOP_SCORES, SCORES, BooleanFactory.getInstance()!.FALSE, preload);
+highScoresArray[1]= RemoteHighScores::getInstancePreload(abeClientInformation, softwareInformation, gameInfo2, WORLD_TOP_SCORES, SCORES, BooleanFactory::getInstance().FALSE, preload);
     
-logUtil!.putF(this::.commonStrings!.END, this, FETCH);
+logUtil.putF(this->commonStrings.END, this, FETCH);
     
-LastFetchHighScoresFactory.getInstance()!.highScoresArray= highScoresArray;
+LastFetchHighScoresFactory::getInstance().highScoresArray= highScoresArray;
     
-highScoresResultsListener!.setHighScoresArray(highScoresArray);
+highScoresResultsListener.setHighScoresArray(highScoresArray);
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, FETCH, e);
+logUtil.put(commonStrings.EXCEPTION, this, FETCH, e);
     
 }
 
@@ -207,12 +206,12 @@ logUtil!.put(commonStrings!.EXCEPTION, this, FETCH, e);
 }
 
 
-    public HighScoresHelperBaseInterface createHighScoresHelper(){
+    public: HighScoresHelperBaseInterface createHighScoresHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HighScoresHelper2();
+                        return HighScoresHelper2();
     
 }
 

@@ -28,45 +28,42 @@
 class BasicGameInfoFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: BasicGameInfoFactory = new BasicGameInfoFactory();
+    private: static const BasicGameInfoFactory SINGLETON = BasicGameInfoFactory();
 
-    public static BasicGameInfoFactory getInstance(){
+    public: static BasicGameInfoFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicGameInfoFactory.SINGLETON;
+                        return BasicGameInfoFactory::SINGLETON;
     
 }
 
 
-    public currentReleaseIndex: int32_t= 0;
+    public: int32_t currentReleaseIndex= 0;
 
-    public currentDestroyIndex: int32_t= 0;
+    public: int32_t currentDestroyIndex= 0;
 
-    public total: int32_t= 0;
+    public: int32_t total= 0;
 
-private constructor (){
-
-            super();
-        }
+private: BasicGameInfoFactory(){
+}
 
 
-    public init(int32_t total){
-this.currentReleaseIndex= 0;
+    public: void init(int32_t total){
+this->currentReleaseIndex= 0;
     
-this.currentDestroyIndex= 0;
+this->currentDestroyIndex= 0;
     
-this.total= total;
+this->total= total;
     
 }
 
 
-    public bool isPeaked(){
+    public: bool isPeaked(){
 
-                        if(this.currentDestroyIndex >= this.total)
+                        if(this->currentDestroyIndex >= this->total)
                         
                                     {
                                     
@@ -91,12 +88,12 @@ this.total= total;
 }
 
 
-    public int32_t howManyLeft(){
+    public: int32_t howManyLeft(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.total -this.currentDestroyIndex;
+                        return this->total -this->currentDestroyIndex;
     
 }
 

@@ -53,21 +53,20 @@
         #include "BasicConstantVelocityMovement.h"
 
 class XYOscillateVelocityMovement: public BasicConstantVelocityMovement {
-        
 
-    private: oscillateMin: int32_t;
+    private: int32_t oscillateMin;
 
-    private: oscillateMax: int32_t;
+    private: int32_t oscillateMax;
 
-    private: oscillate: int32_t= 0;
+    private: int32_t oscillate= 0;
 
-    private: oscillatePositive: bool= false;
+    private: bool oscillatePositive= false;
 
-public constructor (BasicDecimal speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax);
+public: XYOscillateVelocityMovement(BasicDecimal speedBasicDecimal, int32_t oscillateMin, int32_t oscillateMax);
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryGameLayer layer);
+    public: void process(AllBinaryGameLayer layer);
 
 };
 

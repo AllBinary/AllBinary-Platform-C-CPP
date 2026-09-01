@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -59,88 +61,87 @@
         #include "Timer.h"
 
 class TimeHudWidget: public BasicHud {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TimeHudWidget getInstance(int32_t location, int32_t direction, BasicColor basicColor, Timer timer){
+    public: static TimeHudWidget getInstance(int32_t location, int32_t direction, BasicColor basicColor, Timer timer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TimeHudWidget(location, direction, 2, basicColor, timer);
+                        return TimeHudWidget(location, direction, 2, basicColor, timer);
     
 }
 
 
-    private: const TIME_STRING: string = "Time ";
+    private: const std::string TIME_STRING = "Time ";
 
-    private: const TIME_CHAR_ARRAY: std::vector<char> = ['T','i','m','e',' '];
+    private: const std::vector<char> TIME_CHAR_ARRAY = ['T','i','m','e',' '];
 
-    private: offset: int32_t= 0;
+    private: int32_t offset= 0;
 
-    private: string: std::vector<char> = PrimitiveLongSingleton.getInstance()!.ZERO;
+    private: std::vector<char> string = PrimitiveLongSingleton::getInstance().ZERO;
 
-    private: totalDigits: int32_t = 1;
+    private: int32_t totalDigits = 1;
 
-    private: const timer: Timer;
+    private: Timer timer;
 
-public constructor (int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor, Timer timer){
+public: TimeHudWidget(int32_t location, int32_t direction, int32_t bufferZone, BasicColor basicColor, Timer timer){
             super(location, direction, bufferZone, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.timer= timer;
+this->timer= timer;
     
-this.set();
+this->set();
     
-this.updateMaxHeight= 14;
+this->updateMaxHeight= 14;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.updateMaxWidth= font.getSize() *5;
+this->updateMaxWidth= font.getSize() *5;
     
-this.offset= font.stringWidth(this.TIME_STRING) +MyFontProcessor.defaultStringWidth(font, 3);
+this->offset= font.stringWidth(this->TIME_STRING) +MyFontProcessor::defaultStringWidth(font, 3);
     
 super.updateMeasurement(graphics);
     
 }
 
 
-    public update(){
-this.timer.update();
+    public: void update(){
+this->timer.update();
     
-this.set();
-    
-}
-
-
-    set(){
-this.string= this.timer.getTimeChars();
-    
-this.totalDigits= this.timer.getCurrentTotalDigits();
+this->set();
     
 }
 
 
-    public Timer getTimer(){
+    private: void set(){
+this->string= this->timer.getTimeChars();
+    
+this->totalDigits= this->timer.getCurrentTotalDigits();
+    
+}
+
+
+    public: Timer getTimer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timer;
+                        return this->timer;
     
 }
 
 
-    public paint(Graphics graphics){
-super.paintDX(graphics, this.TIME_CHAR_ARRAY, 0, this.TIME_CHAR_ARRAY.length, this.string, 0, this.totalDigits, this.offset);
+    public: void paint(Graphics graphics){
+super.paintDX(graphics, this->TIME_CHAR_ARRAY, 0, this->TIME_CHAR_ARRAY.size(), this->string, 0, this->totalDigits, this->offset);
     
 }
 

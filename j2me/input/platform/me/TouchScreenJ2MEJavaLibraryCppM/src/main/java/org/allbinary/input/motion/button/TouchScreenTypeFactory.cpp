@@ -43,25 +43,24 @@
 class TouchScreenTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: TouchScreenTypeFactory = new TouchScreenTypeFactory();
+    private: static TouchScreenTypeFactory instance() { return TouchScreenTypeFactory(); }
 
-    public static TouchScreenTypeFactory getInstance(){
+    public: static TouchScreenTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchScreenTypeFactory.instance;
+                        return TouchScreenTypeFactory::instance();
     
 }
 
 
-    public TouchScreenTypeFactory(){
+    public: void TouchScreenTypeFactory(){
 
-    touchScreenFactory: TouchScreenFactory = TouchScreenFactory.getInstance()!;;
+    TouchScreenFactory touchScreenFactory = TouchScreenFactory::getInstance();;
     
-touchScreenFactory!.setTouch(true);
+touchScreenFactory.setTouch(true);
     
 }
 

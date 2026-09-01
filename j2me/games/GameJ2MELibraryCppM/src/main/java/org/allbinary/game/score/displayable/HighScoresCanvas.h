@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORESCANVAS_H
         #define ORG_ALLBINARY_GAME_SCORE_DISPLAYABLE_HIGHSCORESCANVAS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/System.h"
@@ -143,56 +145,55 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoresCanvas: public GameCommandCanvas: public HighScoresResultsListener {
-        
+class HighScoresCanvas: public GameCommandCanvas, public HighScoresResultsListener {
 
-    public static const NAME: string = "HighScoresCanvas";
+    public: static const std::string NAME = "HighScoresCanvas";
 
-    private: paintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable paintable = NullPaintable::getInstance();
 
-    private: const highScoreCommandsFactory: HighScoreCommandsFactory = HighScoreCommandsFactory.getInstance()!;
+    private: const HighScoreCommandsFactory highScoreCommandsFactory = HighScoreCommandsFactory::getInstance();
 
-    private: const waitPaintable: SimpleTextPaintable = new SimpleTextPaintable(this.commonStrings!.PLEASE_WAIT_FOR_SERVER, BasicColorFactory.getInstance()!.WHITE);
+    private: const SimpleTextPaintable waitPaintable = SimpleTextPaintable(this->commonStrings.PLEASE_WAIT_FOR_SERVER, BasicColorFactory::getInstance().WHITE);
 
-    private: const highScoresPaintable: HighScoresPaintable;
+    private: HighScoresPaintable highScoresPaintable;
 
-    private: const highScoresFactoryInterface: HighScoresFactoryInterface;
+    private: HighScoresFactoryInterface highScoresFactoryInterface;
 
-    colorFillPaintable: ColorFillBasePaintable;
+    protected: ColorFillBasePaintable colorFillPaintable;
 
-    private: const highScoresHelper: HighScoresHelperBase = new HighScoresHelperBase();
+    private: const HighScoresHelperBase highScoresHelper = HighScoresHelperBase();
 
-    private: const gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: const highScoresCanvasInputProcessor: HighScoresCanvasInputProcessor;
+    private: HighScoresCanvasInputProcessor highScoresCanvasInputProcessor;
 
-    private: currentCommand: Command = this.highScoreCommandsFactory!.HIGH_SCORE_COMMANDS[0]!;
+    private: Command currentCommand = this->highScoreCommandsFactory.HIGH_SCORE_COMMANDS[0];
 
-    private: hasPainted: bool = false;
+    private: bool hasPainted = false;
 
-public constructor (CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, GameInfo gameInfo, HighScoresPaintable paintable, HighScoresFactoryInterface highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface highScoresCanvasInputProcessorFactoryInterface);
+public: HighScoresCanvas(CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, GameInfo gameInfo, HighScoresPaintable paintable, HighScoresFactoryInterface highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface highScoresCanvasInputProcessorFactoryInterface);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public executeUpdate();
+    public: void executeUpdate();
 
-    HighScoresPaintable getHighScoresPaintable();
+    private: HighScoresPaintable getHighScoresPaintable();
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArray);
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArray);
 
                 //@Throws(Exception.constructor)
             
-    public updateCommand(Command command);
+    public: void updateCommand(Command command);
 
-    public GameInfo getGameInfo();
+    public: GameInfo getGameInfo();
 
-    setPaintable(Paintable paintable);
+    private: void setPaintable(Paintable paintable);
 
 };
 

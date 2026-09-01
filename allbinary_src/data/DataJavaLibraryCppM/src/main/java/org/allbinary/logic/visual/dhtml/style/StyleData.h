@@ -45,17 +45,16 @@
 class StyleData
             : public Object
          {
-        
 
-    private: static const instance: StyleData = new StyleData();
+    private: static StyleData instance() { return StyleData(); }
 
-    public static StyleData getInstance();
+    public: static StyleData getInstance();
 
-private constructor ();
+private: StyleData();
 
-    public const NAME: string = "STYLE_NAME";
+    public: const std::string NAME = "STYLE_NAME";
 
-    public const NAMEMAXLEN: int32_t = 255;
+    public: const int32_t NAMEMAXLEN = 255;
 
 };
 

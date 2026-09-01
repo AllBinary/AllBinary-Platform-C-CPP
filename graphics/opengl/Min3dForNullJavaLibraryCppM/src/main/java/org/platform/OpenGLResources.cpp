@@ -35,80 +35,79 @@
 class OpenGLResources
             : public Object
          {
-        
 
-    private: static const instance: OpenGLResources = new OpenGLResources();
+    private: static OpenGLResources instance() { return OpenGLResources(); }
 
-    public static OpenGLResources getInstance(){
+    public: static OpenGLResources getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLResources.instance;
+                        return OpenGLResources::instance();
     
 }
 
 
-    public init(){
+    public: void init(){
 }
 
 
-    public bool isExcluded(string name){
+    public: bool isExcluded(std::string name){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t getIdentifier(string name, string defType, string defPackage){
+    public: int32_t getIdentifier(std::string name, std::string defType, std::string defPackage){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public InputStream openRawResource(int32_t id){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public InputStream openRawResourceFromName(string resourceName){
+    public: InputStream openRawResource(int32_t id){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public InputStream getResourceAsStream(string resourceName){
+    public: InputStream openRawResourceFromName(std::string resourceName){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public string getPackageName(){
+                //@Throws(Exception.constructor)
+            
+    public: InputStream getResourceAsStream(std::string resourceName){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
+                    
+}
+
+
+    public: std::string getPackageName(){
+
+
+
+                            throw RuntimeException();
                     
 }
 

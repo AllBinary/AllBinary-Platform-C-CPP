@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMS_H
         #define ORG_ALLBINARY_LOGIC_COMMUNICATION_HTTP_REQUEST_MULTIPARTREQUESTPARAMS_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -71,23 +73,22 @@
         #include "RequestParams.h"
 
 class MultipartRequestParams: public RequestParams {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: special: bool = false;
+    private: bool special = false;
 
-public constructor (HttpServletRequest request);
+public: MultipartRequestParams(HttpServletRequest request);
 
-public constructor (PageContext pageContext);
+public: MultipartRequestParams(PageContext pageContext);
 
-    setSpecial();
+    protected: void setSpecial();
 
-    processMultipartRequest(HttpServletRequest request);
+    private: void processMultipartRequest(HttpServletRequest request);
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
 };
 

@@ -42,25 +42,24 @@
 class FileUploadData
             : public Object
          {
-        
 
-    private: static const instance: FileUploadData = new FileUploadData();
+    private: static FileUploadData instance() { return FileUploadData(); }
 
-    public static FileUploadData getInstance(){
+    public: static FileUploadData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FileUploadData.instance;
+                        return FileUploadData::instance();
     
 }
 
 
-    public const FILE: string = "download_file_permissions.xml";
+    public: const std::string FILE = "download_file_permissions.xml";
 
-    public const UPLOAD_TO_FILE_PATH: string = "FILE_UPLOAD_UPLOAD_TO_FILE_PATH";
+    public: const std::string UPLOAD_TO_FILE_PATH = "FILE_UPLOAD_UPLOAD_TO_FILE_PATH";
 
-    public const FILE_DATA: string = "FILE_UPLOAD_FILE_DATA";
+    public: const std::string FILE_DATA = "FILE_UPLOAD_FILE_DATA";
 
 };
 

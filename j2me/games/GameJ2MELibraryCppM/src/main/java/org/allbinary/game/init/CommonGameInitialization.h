@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INIT_COMMONGAMEINITIALIZATION_H
         #define ORG_ALLBINARY_GAME_INIT_COMMONGAMEINITIALIZATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -86,19 +88,18 @@
         #include "BaseGameInitialization.h"
 
 class CommonGameInitialization: public BaseGameInitialization {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor (std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion);
-
-                //@Throws(Exception.constructor)
-            
-    public init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
+protected: CommonGameInitialization(std::vector<ResourceInitialization> resourceInitializationArray, int32_t portion);
 
                 //@Throws(Exception.constructor)
             
-    public initGame();
+    public: void init(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, int32_t level);
+
+                //@Throws(Exception.constructor)
+            
+    public: void initGame();
 
 };
 

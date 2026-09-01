@@ -42,29 +42,26 @@
 class FontFamilyData
             : public Object
          {
-        
 
-    private: static const instance: FontFamilyData = new FontFamilyData();
+    private: static FontFamilyData instance() { return FontFamilyData(); }
 
-    public static FontFamilyData getInstance(){
+    public: static FontFamilyData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FontFamilyData.instance;
+                        return FontFamilyData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: FontFamilyData(){
+}
 
 
-    public const NAME: string = "FONT_FAMILY_NAME";
+    public: const std::string NAME = "FONT_FAMILY_NAME";
 
-    public const VALUE: string = "font-family";
+    public: const std::string VALUE = "font-family";
 
 };
 

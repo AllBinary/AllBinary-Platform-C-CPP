@@ -41,43 +41,42 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OrderInterface {
-        
 
-    setShippingMethod(string shippingType)
+    void setShippingMethod(std::string shippingType)
 
-    setPaymentMethod(string value)
+    void setPaymentMethod(std::string value)
 
-    setSpecial(string special)
+    void setSpecial(std::string special)
 
-    setStoreName(string value)
+    void setStoreName(std::string value)
 
-    setUserComments(string value)
+    void setUserComments(std::string value)
 
-    setUserCancelComments(string value)
+    void setUserCancelComments(std::string value)
 
-    setStoreComments(string value)
+    void setStoreComments(std::string value)
 
-    setStoreCancelComments(string value)
+    void setStoreCancelComments(std::string value)
 
     BasketInterface getBasket()
 
-    string getShippingMethod()
+    std::string getShippingMethod()
 
-    string getPaymentMethod()
+    std::string getPaymentMethod()
 
-    string getSpecial()
+    std::string getSpecial()
 
-    string getId()
+    std::string getId()
 
-    string getStoreName()
+    std::string getStoreName()
 
-    string getUserComments()
+    std::string getUserComments()
 
-    string getUserCancelComments()
+    std::string getUserCancelComments()
 
-    string getStoreComments()
+    std::string getStoreComments()
 
-    string getStoreCancelComments()
+    std::string getStoreCancelComments()
 
 };
 

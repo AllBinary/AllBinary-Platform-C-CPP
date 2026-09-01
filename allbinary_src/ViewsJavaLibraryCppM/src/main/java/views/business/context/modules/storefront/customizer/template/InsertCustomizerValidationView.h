@@ -105,26 +105,25 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //Sets Template Type
-class InsertCustomizerValidationView: public HttpStoreComponentView: public ValidationComponentInterface {
-        
+class InsertCustomizerValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: viewName: string;
+    private: std::string viewName;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: InsertCustomizerValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

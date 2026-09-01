@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEBASE_H
         #define ORG_ALLBINARY_BUSINESS_ADVERTISEMENT_GAMEADSTATEBASE_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -76,63 +78,62 @@
 class GameAdStateBase
             : public Object
          {
-        
 
-    const adConfigurationP: AdConfiguration;
+    protected: AdConfiguration adConfigurationP;
 
-    const advertisementsP: Advertisements = new Advertisements();
+    protected: const Advertisements advertisementsP = Advertisements();
 
-    okayToShowAdsP: bool= false;
+    protected: bool okayToShowAdsP= false;
 
-public constructor (AdConfiguration adConfiguration);
+public: GameAdStateBase(AdConfiguration adConfiguration);
 
-    public initViewArray(std::vector<any> viewArray);
+    public: void initViewArray(std::vector<Object*> viewArray);
 
-    public onStart(any = {} anyType);
+    public: void onStart(Object* anyType);
 
-    public init();
+    public: void init();
 
-    public bool isShowingAtLocation(int32_t location);
+    public: bool isShowingAtLocation(int32_t location);
 
-    public bool isShowingAt();
+    public: bool isShowingAt();
 
-    public show();
+    public: void show();
 
-    public hide();
+    public: void hide();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public processAdState(GameState gameState, GameType gameType);
+    public: void processAdState(GameState gameState, GameType gameType);
 
-    public processPageAdState();
-
-                //@Throws(Exception.constructor)
-            
-    public playingAdState();
+    public: void processPageAdState();
 
                 //@Throws(Exception.constructor)
             
-    public playingAdStateWH(int32_t width, int32_t height);
+    public: void playingAdState();
 
                 //@Throws(Exception.constructor)
             
-    public notPlayingAdState();
+    public: void playingAdStateWH(int32_t width, int32_t height);
 
-    public setGameIsReady(bool gameIsReady);
+                //@Throws(Exception.constructor)
+            
+    public: void notPlayingAdState();
 
-    public bool isGameIsReady();
+    public: void setGameIsReady(bool gameIsReady);
 
-    public Advertisements getAdvertisements();
+    public: bool isGameIsReady();
 
-    public AdConfiguration getAdConfiguration();
+    public: Advertisements getAdvertisements();
 
-    public bool isOkayToShowPageAd();
+    public: AdConfiguration getAdConfiguration();
 
-    public setOkayToShowAds(bool okayToShowAds);
+    public: bool isOkayToShowPageAd();
 
-    public bool isOkayToShowAds();
+    public: void setOkayToShowAds(bool okayToShowAds);
 
-    public bool isEnabled();
+    public: bool isOkayToShowAds();
+
+    public: bool isEnabled();
 
 };
 

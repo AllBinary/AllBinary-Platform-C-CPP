@@ -55,55 +55,54 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class SpecialGameInputInterface: public PaintableInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    up()
+    void up()
 
                 //@Throws(Exception.constructor)
             
-    down()
+    void down()
 
                 //@Throws(Exception.constructor)
             
-    right()
+    void right()
 
                 //@Throws(Exception.constructor)
             
-    left()
+    void left()
 
                 //@Throws(Exception.constructor)
             
-    strafeLeft()
+    void strafeLeft()
 
                 //@Throws(Exception.constructor)
             
-    strafeRight()
+    void strafeRight()
 
                 //@Throws(Exception.constructor)
             
-    fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
+    void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
 
                 //@Throws(Exception.constructor)
             
-    special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
+    void special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
 
                 //@Throws(Exception.constructor)
             
-    special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
+    void special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
 
                 //@Throws(Exception.constructor)
             
-    special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
+    void special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
 
                 //@Throws(Exception.constructor)
             
-    special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
+    void special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
 
                 //@Throws(Exception.constructor)
             
-    special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
+    void special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent)
 
 };
 

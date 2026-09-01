@@ -39,16 +39,15 @@
         #include "LocationPaintable.h"
 
 class NullLocationPaintable: public LocationPaintable {
-        
 
-    private: static const instanceC: NullLocationPaintable = new NullLocationPaintable();
+    private: static const NullLocationPaintable instanceC = NullLocationPaintable();
 
-    public static NullLocationPaintable getInstance(){
+    public: static NullLocationPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullLocationPaintable.instanceC;
+                        return NullLocationPaintable::instanceC;
     
 }
 

@@ -45,13 +45,12 @@
 // class LogFactory
             : public Object
          {
-        
 
-    public static Log getInstanceNoF(string specialMessage, any = {} anyType, any = {} exception)
+    public: static Log getInstanceNoF(std::string specialMessage, Object* anyType, Object* exception)
 
-    public static Log getInstance(string specialMessage, any = {} anyType, string functionName, any = {} exception)
+    public: static Log getInstance(std::string specialMessage, Object* anyType, std::string functionName, Object* exception)
 
-    public static Log getInstanceF(string specialMessage, any = {} anyType, string functionName)
+    public: static Log getInstanceF(std::string specialMessage, Object* anyType, std::string functionName)
 
 };
 

@@ -51,7 +51,6 @@
 #include "Animation.h"
 
 class ProceduralAnimationInterfaceFactoryInterface: public BasicAnimationInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             

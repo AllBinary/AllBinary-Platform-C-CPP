@@ -51,33 +51,30 @@
 #include "DemoGameMidletEvent.h"
 
 class DemoGameMidletEventHandler: public BasicEventHandler {
-        
 
-    private: static const gameKeyEventHandler: DemoGameMidletEventHandler = new DemoGameMidletEventHandler();
+    private: static const DemoGameMidletEventHandler gameKeyEventHandler = DemoGameMidletEventHandler();
 
-    public static DemoGameMidletEventHandler getInstance(){
+    public: static DemoGameMidletEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameMidletEventHandler.gameKeyEventHandler;
+                        return DemoGameMidletEventHandler::gameKeyEventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: DemoGameMidletEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    demoGameMidletEventListener: DemoGameMidletEventListener = eventListenerInterface as DemoGameMidletEventListener;;
+    DemoGameMidletEventListener demoGameMidletEventListener = eventListenerInterface as DemoGameMidletEventListener;;
     
-demoGameMidletEventListener!.onDemoGameMidletEvent(eventObject as DemoGameMidletEvent);
+demoGameMidletEventListener.onDemoGameMidletEvent(eventObject as DemoGameMidletEvent);
     
 }
 

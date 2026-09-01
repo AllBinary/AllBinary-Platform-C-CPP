@@ -108,49 +108,48 @@
 class LogConfig
             : public Object
          {
-        
 
-    private: isEnabled: bool;
+    private: bool isEnabled;
 
-    private: name: string;
+    private: std::string name;
 
-    private: description: string;
+    private: std::string description;
 
-    private: path: string;
+    private: std::string path;
 
-    private: fileName: string;
+    private: std::string fileName;
 
-public constructor (string aName, string aDescription, string aPath, string aFileName);
+public: LogConfig(std::string aName, std::string aDescription, std::string aPath, std::string aFileName);
 
-public constructor (Node node);
+public: LogConfig(Node node);
 
-    public string getName();
+    public: std::string getName();
 
-    public bool isEnabled();
+    public: bool isEnabled();
 
-    public enable();
+    public: void enable();
 
-    public disable();
+    public: void disable();
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public string getFileName();
+    public: std::string getFileName();
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public setDescription(string value);
+    public: void setDescription(std::string value);
 
-    public setPath(string value);
+    public: void setPath(std::string value);
 
-    public setFileName(string value);
-
-                //@Throws(Exception.constructor)
-            
-    Document getDoc();
+    public: void setFileName(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getTypeVector();
+    private: Document getDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getTypeVector();
 
 };
 

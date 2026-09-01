@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -59,75 +61,71 @@
 class OSGIServiceUtil
             : public Object
          {
-        
 
-    private: static const instance: OSGIServiceUtil = new OSGIServiceUtil();
+    private: static OSGIServiceUtil instance() { return OSGIServiceUtil(); }
 
-    public static OSGIServiceUtil getInstance(){
+    public: static OSGIServiceUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OSGIServiceUtil.instance;
+                        return OSGIServiceUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: OSGIServiceUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector getServicesObjectVector(Object bundleContext, std::vector<ServiceReference> serviceReferences){
+    public: Vector getServicesObjectVector(Object bundleContext, std::vector<ServiceReference> serviceReferences){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
                         if(serviceReferences != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    size: int32_t = serviceReferences!.length
-                ;;
+    int32_t size = serviceReferences.size();;
     
-this.logUtil!.putF("Service References: " +size, this, "getServicesObjectVector");
+this->logUtil.putF("Service References: " +size, this, "getServicesObjectVector");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    serviceReference: ServiceReference = serviceReferences[index]!;;
+    ServiceReference serviceReference = serviceReferences[index];;
     
 
                         if(serviceReference != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    osgiServiceInterface: OSGIServiceInterface = bundleContext!.getService(serviceReference) as OSGIServiceInterface;;
+    OSGIServiceInterface osgiServiceInterface = bundleContext.getService(serviceReference) as OSGIServiceInterface;;
     
 
                         if(osgiServiceInterface == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("No Service For Reference");
+                            throw Exception("No Service For Reference");
                     
 
                                     }

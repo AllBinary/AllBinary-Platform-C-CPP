@@ -38,13 +38,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AnimationListenerInterface {
-        
 
-    onPlatformAnimationStart()
+    void onPlatformAnimationStart()
 
-    onPlatformAnimationEnd()
+    void onPlatformAnimationEnd()
 
-    onPlatformAnimationRepeat()
+    void onPlatformAnimationRepeat()
 
 };
 

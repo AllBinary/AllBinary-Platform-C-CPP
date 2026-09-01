@@ -48,72 +48,69 @@
 class Driver
             : public Object
          {
-        
 
-    public static const NULL_DRIVER: Driver = new Driver(SmallIntegerSingletonFactory.getInstance()!.getAt(0), SmallIntegerSingletonFactory.getInstance()!.getAt(0), new Aggression(SmallIntegerSingletonFactory.getInstance()!.getAt(0), SmallIntegerSingletonFactory.getInstance()!.getAt(0), SmallIntegerSingletonFactory.getInstance()!.getAt(0)));
+    public: static const Driver NULL_DRIVER = Driver(SmallIntegerSingletonFactory::getInstance().getAt(0), SmallIntegerSingletonFactory::getInstance().getAt(0), Aggression(SmallIntegerSingletonFactory::getInstance().getAt(0), SmallIntegerSingletonFactory::getInstance().getAt(0), SmallIntegerSingletonFactory::getInstance().getAt(0)));
 
-    private: turnSpeed: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer turnSpeed = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: trackPathSelectionSkill: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(0)!;
+    private: Integer trackPathSelectionSkill = SmallIntegerSingletonFactory::getInstance().getAt(0);
 
-    private: aggression: Aggression;
+    private: Aggression aggression;
 
-public constructor (Integer turnSpeed, Integer trackPathSelectionSkill, Aggression aggression){
-
-            super();
-        this.setTurnSpeed(turnSpeed);
+public: Driver(Integer turnSpeed, Integer trackPathSelectionSkill, Aggression aggression){
+this->setTurnSpeed(turnSpeed);
     
-this.setTrackPathSelectionSkill(trackPathSelectionSkill);
+this->setTrackPathSelectionSkill(trackPathSelectionSkill);
     
-this.aggression= aggression;
+this->aggression= aggression;
     
 }
 
 
-    public Integer getTurnSpeed(){
+    public: Integer getTurnSpeed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.turnSpeed;
+                        return this->turnSpeed;
     
 }
 
 
-    public setTurnSpeed(Integer turnSpeed){
-this.turnSpeed= turnSpeed;
+    public: void setTurnSpeed(Integer turnSpeed){
+this->turnSpeed= turnSpeed;
     
 }
 
 
-    public Integer getTrackPathSelectionSkill(){
+    public: Integer getTrackPathSelectionSkill(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.trackPathSelectionSkill;
+                        return this->trackPathSelectionSkill;
     
 }
 
 
-    public setTrackPathSelectionSkill(Integer trackPathSelectionSkill){
-this.trackPathSelectionSkill= trackPathSelectionSkill;
+    public: void setTrackPathSelectionSkill(Integer trackPathSelectionSkill){
+this->trackPathSelectionSkill= trackPathSelectionSkill;
     
 }
 
 
-    public Aggression getAggression(){
+    public: Aggression getAggression(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.aggression;
+                        return this->aggression;
     
 }
 
 
-    public setAggression(Aggression aggression){
-this.aggression= aggression;
+    public: void setAggression(Aggression aggression){
+this->aggression= aggression;
     
 }
 

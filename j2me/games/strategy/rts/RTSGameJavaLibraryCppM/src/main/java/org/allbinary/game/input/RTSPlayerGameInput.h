@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_RTSPLAYERGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_RTSPLAYERGAMEINPUT_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -150,87 +152,86 @@
 #include "GameInputProcessorUtil.h"
 
 class RTSPlayerGameInput: public PlayerGameInput {
-        
 
-    const inputProcessorArray: std::vector<GameInputProcessor> = new Array(InputFactory.getInstance()!.MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
 
-    const removeInputProcessorArray: std::vector<GameInputProcessor> = new Array(InputFactory.getInstance()!.MAX);
+    protected: const std::vector<GameInputProcessor> removeInputProcessorArray = new Array(InputFactory::getInstance().MAX);
 
-    private: const inputList: BasicArrayList;
+    private: BasicArrayList inputList;
 
-    private: const isSingleKeyProcessing: bool = Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_REPEAT_PRESS) || Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_PRESS);
+    private: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
 
-    private: const gameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas gameCanvas;
 
-    private: const motionGestureInputList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList motionGestureInputList = BasicArrayListD();
 
-    private: const scrollPlayerGameInput: ScrollMapPlayerGameInput;
+    private: ScrollMapPlayerGameInput scrollPlayerGameInput;
 
-    private: const selectedRTSLayerPlayerGameInput: SelectedRTSLayersPlayerGameInput;
+    private: SelectedRTSLayersPlayerGameInput selectedRTSLayerPlayerGameInput;
 
-    private: const towerInfoPaintable: RTSLayerInfoPaintable;
+    private: RTSLayerInfoPaintable towerInfoPaintable;
 
-    private: const rtsPlayerLayerInterface: RTSPlayerLayerInterface;
+    private: RTSPlayerLayerInterface rtsPlayerLayerInterface;
 
-    private: const layerPositionFinderInterface: LayerPositionFinderInterface;
+    private: LayerPositionFinderInterface layerPositionFinderInterface;
 
-    private: selectedRtsFormInput: RTSFormInput = NullRTSFormInputFactory.getInstance()!;
+    private: RTSFormInput selectedRtsFormInput = NullRTSFormInputFactory::getInstance();
 
-public constructor (AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
-
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+public: RTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    left();
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
 
                 //@Throws(Exception.constructor)
             
-    right();
-
-    public initInputProcessors();
+    protected: void left();
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager);
+    protected: void right();
+
+    public: void initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public processMotionInput(AllBinaryLayerManager layerManager);
+    public: void processInput(AllBinaryLayerManager layerManager);
 
                 //@Throws(Exception.constructor)
             
-    select(MotionGestureEvent motionGestureEvent);
+    public: void processMotionInput(AllBinaryLayerManager layerManager);
 
                 //@Throws(Exception.constructor)
             
-    public setSelectedRTSLayer(CollidableDestroyableDamageableLayer rtsLayer, GeographicMapCellPosition geographicMapCellPosition);
+    protected: void select(MotionGestureEvent motionGestureEvent);
 
-    public paint(Graphics graphics);
+                //@Throws(Exception.constructor)
+            
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer rtsLayer, GeographicMapCellPosition geographicMapCellPosition);
 
-    public updatePaintable();
+    public: void paint(Graphics graphics);
 
-    public SelectedRTSLayersPlayerGameInput getSelectedBuildingPlayerGameInput();
+    public: void updatePaintable();
 
-    public RTSFormInput getSelectedRtsFormInput();
+    public: SelectedRTSLayersPlayerGameInput getSelectedBuildingPlayerGameInput();
 
-    public setSelectedRtsFormInput(RTSFormInput selectedRtsFormInput);
+    public: RTSFormInput getSelectedRtsFormInput();
 
-    public RTSPlayerLayerInterface getRtsPlayerLayerInterface();
+    public: void setSelectedRtsFormInput(RTSFormInput selectedRtsFormInput);
 
-    public RTSLayerInfoPaintable getRTSLayerInfoPaintable();
+    public: RTSPlayerLayerInterface getRtsPlayerLayerInterface();
 
-    public BasicArrayList getMotionGestureInputList();
+    public: RTSLayerInfoPaintable getRTSLayerInfoPaintable();
 
-    AllBinaryGameCanvas getGameCanvas();
+    public: BasicArrayList getMotionGestureInputList();
 
-    public bool isIsSingleKeyProcessing();
+    protected: AllBinaryGameCanvas getGameCanvas();
 
-    public ScrollMapPlayerGameInput getScrollPlayerGameInput();
+    public: bool isIsSingleKeyProcessing();
+
+    public: ScrollMapPlayerGameInput getScrollPlayerGameInput();
 
 };
 

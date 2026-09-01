@@ -55,18 +55,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         //and remove the hidden fields
 class BasicWorkFlowTag: public StoreWorkFlowTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
+public: BasicWorkFlowTag(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
@@ -76,19 +73,19 @@ public constructor (){
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF(this->commonStrings.START, this, tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-this.getPropertiesHashMap()!.put(DynamicObjectData.NAME, "workflows.template.data.BasicStoreWorkFlow");
+this->getPropertiesHashMap().put(DynamicObjectData::NAME, "workflows.template.data.BasicStoreWorkFlow");
     
 
 
@@ -100,7 +97,7 @@ this.getPropertiesHashMap()!.put(DynamicObjectData.NAME, "workflows.template.dat
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

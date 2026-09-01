@@ -64,28 +64,25 @@
 class LazyImageRotationAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: const layoutIndex: int32_t;
+    private: int32_t layoutIndex;
 
-    private: const animationInterfaceFactoryInterface: BaseImageAnimationFactory;
+    private: BaseImageAnimationFactory animationInterfaceFactoryInterface;
 
-    public scaleProperties: ScaleProperties = ScaleProperties.instance;
+    public: ScaleProperties scaleProperties = ScaleProperties::instance();
 
-public constructor (int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory animationInterfaceFactoryInterface){
-
-            super();
-        this.layoutIndex= layoutIndex;
+public: LazyImageRotationAnimationFactory(int32_t layoutIndex, int32_t associatedLazyAnimationId, BaseImageAnimationFactory animationInterfaceFactoryInterface){
+this->layoutIndex= layoutIndex;
     
-this.animationInterfaceFactoryInterface= animationInterfaceFactoryInterface;
+this->animationInterfaceFactoryInterface= animationInterfaceFactoryInterface;
     
-ImageCacheFactory.getInstance()!.hasAnyLazyAnimationFactories= true;
+ImageCacheFactory::getInstance().hasAnyLazyAnimationFactories= true;
     
 
-                        if(this.animationInterfaceFactoryInterface!.animationBehaviorFactory == AnimationBehaviorFactory.getInstance())
+                        if(this->animationInterfaceFactoryInterface.animationBehaviorFactory == AnimationBehaviorFactory::getInstance())
                         
                                     {
-                                    ForcedLogUtil.log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", this);
+                                    ForcedLogUtil::log("Using default AnimationBehaviorFactory with IndexedAnimationFactory", this);
     
 
                                     }
@@ -95,18 +92,18 @@ ImageCacheFactory.getInstance()!.hasAnyLazyAnimationFactories= true;
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-                        if(this.animationInterfaceFactoryInterface!.getImage()!.isReady())
+                        if(this->animationInterfaceFactoryInterface.getImage().isReady())
                         
                                     {
-                                    this.animationInterfaceFactoryInterface!.setInitialScale(this.scaleProperties);
+                                    this->animationInterfaceFactoryInterface.setInitialScale(this->scaleProperties);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterfaceFactoryInterface!.getInstance(instanceId);;
+                        return this->animationInterfaceFactoryInterface.getInstance(instanceId);;
     
 
                                     }
@@ -116,7 +113,7 @@ ImageCacheFactory.getInstance()!.hasAnyLazyAnimationFactories= true;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LazyImageRotationAnimation(this.layoutIndex, instanceId, scaleProperties, this.animationInterfaceFactoryInterface, this.animationInterfaceFactoryInterface!.animationBehaviorFactory!.getOrCreateInstance());
+                        return LazyImageRotationAnimation(this->layoutIndex, instanceId, scaleProperties, this->animationInterfaceFactoryInterface, this->animationInterfaceFactoryInterface.animationBehaviorFactory.getOrCreateInstance());
     
 
                         }
@@ -124,8 +121,8 @@ ImageCacheFactory.getInstance()!.hasAnyLazyAnimationFactories= true;
 }
 
 
-    public setInitialScale(ScaleProperties scaleProperties){
-this.scaleProperties= scaleProperties;
+    public: void setInitialScale(ScaleProperties scaleProperties){
+this->scaleProperties= scaleProperties;
     
 }
 

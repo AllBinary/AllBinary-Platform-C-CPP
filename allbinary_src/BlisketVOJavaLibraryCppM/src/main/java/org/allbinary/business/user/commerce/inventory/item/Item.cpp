@@ -68,192 +68,189 @@
         #include "BasicItem.h"
 #include "OrderItemInterface.h"
 
-class Item: public BasicItem: public OrderItemInterface {
-        
+class Item: public BasicItem, public OrderItemInterface {
 
-    private: group: string;
+    private: std::string group;
 
-    private: tax: string;
+    private: std::string tax;
 
-    private: shippingType: string;
+    private: std::string shippingType;
 
-    private: shippingCost: string;
+    private: std::string shippingCost;
 
-    private: shippedDate: string;
+    private: std::string shippedDate;
 
-    private: shippingAddress: StreetAddress;
+    private: StreetAddress shippingAddress;
 
-    private: special: string;
+    private: std::string special;
 
-public constructor (HashMap<any, any> itemHashMap){
+public: Item(HashMap<any, any> itemHashMap){
             super(itemHashMap);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setData(itemHashMap);
+this->setData(itemHashMap);
     
 }
 
 
-public constructor (){
+public: Item(){
 
-            super();
-        
-    EMPTY: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string EMPTY = StringUtil::getInstance().EMPTY_STRING;;
     
-this.group= EMPTY;
+this->group= EMPTY;
     
-this.tax= EMPTY;
+this->tax= EMPTY;
     
-this.shippingType= EMPTY;
+this->shippingType= EMPTY;
     
-this.shippingCost= EMPTY;
+this->shippingCost= EMPTY;
     
-this.shippingAddress= new StreetAddress();
+this->shippingAddress= StreetAddress();
     
 }
 
 
-    setData(HashMap<any, any> itemHashMap){
-this.group= itemHashMap!.get(ShippingMethodData.GROUP) as string;
+    private: void setData(HashMap<any, any> itemHashMap){
+this->group= itemHashMap.get(ShippingMethodData::GROUP) as string;
     
-this.tax= itemHashMap!.get(OrderHistoryData.TAX) as string;
+this->tax= itemHashMap.get(OrderHistoryData::TAX) as string;
     
-this.shippingType= itemHashMap!.get(ShippingMethodData.NAME) as string;
+this->shippingType= itemHashMap.get(ShippingMethodData::NAME) as string;
     
-this.shippingCost= itemHashMap!.get(ShippingMethodData.COST) as string;
+this->shippingCost= itemHashMap.get(ShippingMethodData::COST) as string;
     
-this.shippedDate= itemHashMap!.get(OrderHistoryData.SHIPPEDDATE) as string;
+this->shippedDate= itemHashMap.get(OrderHistoryData::SHIPPEDDATE) as string;
     
-itemHashMap!.put(StreetAddressData.NAME, itemHashMap!.get(ShippingAddressData.NAME));
+itemHashMap.put(StreetAddressData::NAME, itemHashMap.get(ShippingAddressData::NAME));
     
-itemHashMap!.put(StreetAddressData.STREET, itemHashMap!.get(ShippingAddressData.STREET));
+itemHashMap.put(StreetAddressData::STREET, itemHashMap.get(ShippingAddressData::STREET));
     
-itemHashMap!.put(StreetAddressData.CITY, itemHashMap!.get(ShippingAddressData.CITY));
+itemHashMap.put(StreetAddressData::CITY, itemHashMap.get(ShippingAddressData::CITY));
     
-itemHashMap!.put(StreetAddressData.STATE, itemHashMap!.get(ShippingAddressData.STATE));
+itemHashMap.put(StreetAddressData::STATE, itemHashMap.get(ShippingAddressData::STATE));
     
-itemHashMap!.put(StreetAddressData.CODE, itemHashMap!.get(ShippingAddressData.CODE));
+itemHashMap.put(StreetAddressData::CODE, itemHashMap.get(ShippingAddressData::CODE));
     
-itemHashMap!.put(StreetAddressData.COUNTRY, itemHashMap!.get(ShippingAddressData.COUNTRY));
+itemHashMap.put(StreetAddressData::COUNTRY, itemHashMap.get(ShippingAddressData::COUNTRY));
     
-this.shippingAddress= new StreetAddress(itemHashMap);
-    
-}
-
-
-    public setGroup(string value){
-this.group= value;
+this->shippingAddress= StreetAddress(itemHashMap);
     
 }
 
 
-    public setTax(string value){
-this.tax= value;
+    public: void setGroup(std::string value){
+this->group= value;
     
 }
 
 
-    public setShippingType(string value){
-this.shippingType= value;
+    public: void setTax(std::string value){
+this->tax= value;
     
 }
 
 
-    public setShippingCost(string value){
-this.shippingCost= value;
+    public: void setShippingType(std::string value){
+this->shippingType= value;
     
 }
 
 
-    public setShippingAddress(StreetAddress value){
-this.shippingAddress= value;
+    public: void setShippingCost(std::string value){
+this->shippingCost= value;
     
 }
 
 
-    public setSpecial(string value){
-this.special= value;
+    public: void setShippingAddress(StreetAddress value){
+this->shippingAddress= value;
     
 }
 
 
-    public string getGroup(){
+    public: void setSpecial(std::string value){
+this->special= value;
+    
+}
+
+
+    public: std::string getGroup(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.group;
+                        return this->group;
     
 }
 
 
-    public string getTax(){
+    public: std::string getTax(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tax;
+                        return this->tax;
     
 }
 
 
-    public string getShippingType(){
+    public: std::string getShippingType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingType;
+                        return this->shippingType;
     
 }
 
 
-    public string getShippingCost(){
+    public: std::string getShippingCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingCost;
+                        return this->shippingCost;
     
 }
 
 
-    public StreetAddress getShippingAddress(){
+    public: StreetAddress getShippingAddress(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shippingAddress;
+                        return this->shippingAddress;
     
 }
 
 
-    public string getSpecial(){
+    public: std::string getSpecial(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.special;
+                        return this->special;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = super.toHashMap()!;;
+    HashMap<any, any> hashMap = super.toHashMap();;
     
-hashMap!.put(ShippingMethodData.GROUP, this.group);
+hashMap.put(ShippingMethodData::GROUP, this->group);
     
-hashMap!.put(OrderHistoryData.TAX, this.tax);
+hashMap.put(OrderHistoryData::TAX, this->tax);
     
-hashMap!.put(ShippingMethodData.NAME, this.shippingType);
+hashMap.put(ShippingMethodData::NAME, this->shippingType);
     
-hashMap!.put(ShippingMethodData.COST, this.shippingCost);
+hashMap.put(ShippingMethodData::COST, this->shippingCost);
     
-hashMap!.put(OrderHistoryData.SHIPPEDDATE, this.shippedDate);
+hashMap.put(OrderHistoryData::SHIPPEDDATE, this->shippedDate);
     
-hashMap!.put(EntryData.getInstance()!.SPECIAL, this.special);
+hashMap.put(EntryData::getInstance().SPECIAL, this->special);
     
 
 

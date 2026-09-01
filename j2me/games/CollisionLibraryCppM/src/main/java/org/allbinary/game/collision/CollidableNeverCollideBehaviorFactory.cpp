@@ -41,28 +41,27 @@
 #include "CollidableBaseBehavior.h"
 
 class CollidableNeverCollideBehaviorFactory: public CollidableBaseBehaviorFactory {
-        
 
-    private: static const instanceC: CollidableNeverCollideBehaviorFactory = new CollidableNeverCollideBehaviorFactory();
+    private: static const CollidableNeverCollideBehaviorFactory instanceC = CollidableNeverCollideBehaviorFactory();
 
-    public static CollidableNeverCollideBehaviorFactory getInstance(){
+    public: static CollidableNeverCollideBehaviorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableNeverCollideBehaviorFactory.instanceC;
+                        return CollidableNeverCollideBehaviorFactory::instanceC;
     
 }
 
 
-    private: const instance: CollidableNeverCollideBehavior = new CollidableNeverCollideBehavior(false);
+    private: const CollidableNeverCollideBehavior instance = CollidableNeverCollideBehavior(false);
 
-    public CollidableBaseBehavior createBehavior(){
+    public: CollidableBaseBehavior createBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.instance;
+                        return this->instance();
     
 }
 

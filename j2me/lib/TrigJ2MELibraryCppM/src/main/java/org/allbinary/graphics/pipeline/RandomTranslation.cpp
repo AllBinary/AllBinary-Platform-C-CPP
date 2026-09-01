@@ -51,32 +51,31 @@
 class RandomTranslation
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static BasicArrayList getInstance(BasicArrayList vector, int32_t howMuch){
+    public: static BasicArrayList getInstance(BasicArrayList vector, int32_t howMuch){
 
-    myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;;
-    
-
-    x: int32_t =  -myRandomFactory!.getNextInt(howMuch);;;
+    MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();;
     
 
-    y: int32_t = myRandomFactory!.getNextInt(howMuch)!;;
+    int32_t x =  -myRandomFactory.getNextInt(howMuch);;;
     
 
-    graphicsPipe: BasicGraphicsPipeline = new BasicGraphicsPipeline(vector);;
+    int32_t y = myRandomFactory.getNextInt(howMuch);;
     
-graphicsPipe!.createMatrix();
+
+    BasicGraphicsPipeline graphicsPipe = BasicGraphicsPipeline(vector);;
     
-graphicsPipe!.translate(x, y);
+graphicsPipe.createMatrix();
+    
+graphicsPipe.translate(x, y);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return graphicsPipe!.getMatrix();;
+                        return graphicsPipe.getMatrix();;
     
 }
 

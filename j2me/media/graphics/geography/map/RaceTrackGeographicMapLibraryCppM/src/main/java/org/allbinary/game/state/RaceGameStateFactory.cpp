@@ -47,16 +47,15 @@
 class RaceGameStateFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static RaceGameStateFactory getInstance(){
+    public: static RaceGameStateFactory getInstance(){
 
-                        if(RaceGameStateFactory.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(RaceGameStateFactory::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    RaceGameStateFactory.instance= new RaceGameStateFactory();
+                                    RaceGameStateFactory::instance= RaceGameStateFactory();
     
 
                                     }
@@ -65,16 +64,16 @@ class RaceGameStateFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RaceGameStateFactory.instance as RaceGameStateFactory;
+                        return RaceGameStateFactory::instance() as RaceGameStateFactory;
     
 }
 
 
-    public const START_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("START_GAME_STATE")!;
+    public: const GameState START_GAME_STATE = GameStateFactory::getInstance().createGameState("START_GAME_STATE");
 
-    public const YELLOW_LIGHT_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("YELLOW_LIGHT_GAME_STATE")!;
+    public: const GameState YELLOW_LIGHT_GAME_STATE = GameStateFactory::getInstance().createGameState("YELLOW_LIGHT_GAME_STATE");
 
-    public const RED_LIGHT_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("RED_LIGHT_GAME_STATE")!;
+    public: const GameState RED_LIGHT_GAME_STATE = GameStateFactory::getInstance().createGameState("RED_LIGHT_GAME_STATE");
 
 };
 

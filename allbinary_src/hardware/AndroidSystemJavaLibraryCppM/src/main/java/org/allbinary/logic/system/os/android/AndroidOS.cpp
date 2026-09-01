@@ -55,168 +55,165 @@
         #include "AndroidSystemProperties.h"
 
 class AndroidOS: public GenericOperatingSystem {
-        
 
-    private: stringBuffer: StringMaker = new StringMaker();
+    private: StringMaker stringBuffer = StringMaker();
 
-    private: const DEVICE_ID: string = "DeviceId";
+    private: const std::string DEVICE_ID = "DeviceId";
 
-    private: const DEVICE_SOFTWARE_VERSION: string = "DeviceSoftwareVersion";
+    private: const std::string DEVICE_SOFTWARE_VERSION = "DeviceSoftwareVersion";
 
-    private: const LINE_1_NUMBER: string = "Line1Number";
+    private: const std::string LINE_1_NUMBER = "Line1Number";
 
-public constructor (){
+public: AndroidOS(){
 
-            super();
-        
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
                         if(SDK_VERSION > 10)
                         
                                     {
-                                    this.scalable= true;
+                                    this->scalable= true;
     
 
                                     }
                                 
 
-    properties: AndroidSystemProperties = AndroidSystemProperties.getInstance()!;;
+    AndroidSystemProperties properties = AndroidSystemProperties::getInstance();;
     
 
-    commonStrings: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonStrings = CommonSeps::getInstance();;
     
-this.stringBuffer!.append(this.DEVICE_ID);
+this->stringBuffer.append(this->DEVICE_ID);
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getDeviceId());
+this->stringBuffer.append(properties.getDeviceId());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append(this.DEVICE_SOFTWARE_VERSION);
+this->stringBuffer.append(this->DEVICE_SOFTWARE_VERSION);
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getDeviceSoftwareVersion());
+this->stringBuffer.append(properties.getDeviceSoftwareVersion());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append(this.LINE_1_NUMBER);
+this->stringBuffer.append(this->LINE_1_NUMBER);
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getLine1Number());
+this->stringBuffer.append(properties.getLine1Number());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("NetworkCountryIso");
+this->stringBuffer.append("NetworkCountryIso");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getNetworkCountryIso());
+this->stringBuffer.append(properties.getNetworkCountryIso());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("NetworkOperator");
+this->stringBuffer.append("NetworkOperator");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getNetworkOperator());
+this->stringBuffer.append(properties.getNetworkOperator());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("NetworkOperatorName");
+this->stringBuffer.append("NetworkOperatorName");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getNetworkOperatorName());
+this->stringBuffer.append(properties.getNetworkOperatorName());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("NetworkType");
+this->stringBuffer.append("NetworkType");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.appendint(properties.getNetworkType());
+this->stringBuffer.appendint(properties.getNetworkType());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("PhoneType");
+this->stringBuffer.append("PhoneType");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.appendint(properties.getPhoneType());
+this->stringBuffer.appendint(properties.getPhoneType());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("SimCountryIso");
+this->stringBuffer.append("SimCountryIso");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getSimCountryIso());
+this->stringBuffer.append(properties.getSimCountryIso());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("SimOperator");
+this->stringBuffer.append("SimOperator");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getSimOperator());
+this->stringBuffer.append(properties.getSimOperator());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("SimOperatorName");
+this->stringBuffer.append("SimOperatorName");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getSimOperatorName());
+this->stringBuffer.append(properties.getSimOperatorName());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("SimSerialNumber");
+this->stringBuffer.append("SimSerialNumber");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getSimSerialNumber());
+this->stringBuffer.append(properties.getSimSerialNumber());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("SubscriberId");
+this->stringBuffer.append("SubscriberId");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getSubscriberId());
+this->stringBuffer.append(properties.getSubscriberId());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("VoiceMailAlphaTag");
+this->stringBuffer.append("VoiceMailAlphaTag");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getVoiceMailAlphaTag());
+this->stringBuffer.append(properties.getVoiceMailAlphaTag());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
-this.stringBuffer!.append("VoiceMailNumber");
+this->stringBuffer.append("VoiceMailNumber");
     
-this.stringBuffer!.append(commonStrings!.EQUALS);
+this->stringBuffer.append(commonStrings.EQUALS);
     
-this.stringBuffer!.append(properties.getVoiceMailNumber());
+this->stringBuffer.append(properties.getVoiceMailNumber());
     
-this.stringBuffer!.append(commonStrings!.SPACE);
+this->stringBuffer.append(commonStrings.SPACE);
     
 }
 
 
-    private: const OUYA: string = "ouya";
+    private: const std::string OUYA = "ouya";
 
-    public bool isOverScan(){
+    public: bool isOverScan(){
 
-    properties: AndroidSystemProperties = AndroidSystemProperties.getInstance()!;;
+    AndroidSystemProperties properties = AndroidSystemProperties::getInstance();;
     
 
-                        if(properties.getDevice()!.toLowerCase()!.indexOf(this.OUYA) >= 0)
+                        if(properties.getDevice().toLowerCase().indexOf(this->OUYA) >= 0)
                         
                                     {
                                     
@@ -237,7 +234,7 @@ this.stringBuffer!.append(commonStrings!.SPACE);
 }
 
 
-    public int32_t getOverScanXPercent(){
+    public: int32_t getOverScanXPercent(){
 
 
 
@@ -247,7 +244,7 @@ this.stringBuffer!.append(commonStrings!.SPACE);
 }
 
 
-    public int32_t getOverScanYPercent(){
+    public: int32_t getOverScanYPercent(){
 
 
 
@@ -257,23 +254,23 @@ this.stringBuffer!.append(commonStrings!.SPACE);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    osBuffer: StringMaker = new StringMaker();;
+    StringMaker osBuffer = StringMaker();;
     
-osBuffer!.append(super.toString());
+osBuffer.append(super.toString());
     
-osBuffer!.append(CommonSeps.getInstance()!.SPACE);
+osBuffer.append(CommonSeps::getInstance().SPACE);
     
-osBuffer!.append("Other System Info: \n");
+osBuffer.append("Other System Info: \n");
     
-osBuffer!.append(this.stringBuffer!.toString());
+osBuffer.append(this->stringBuffer.toString());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return osBuffer!.toString();;
+                        return osBuffer.toString();;
     
 }
 

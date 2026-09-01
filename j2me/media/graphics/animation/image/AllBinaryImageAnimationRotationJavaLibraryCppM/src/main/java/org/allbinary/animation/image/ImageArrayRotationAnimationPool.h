@@ -58,17 +58,16 @@
 #include "ImageArrayRotationAnimationCacheable.h"
 
 class ImageArrayRotationAnimationPool: public BasicArrayListResetablePool {
-        
 
-    private: static IMAGE_ROTATION_ANIMATION_POOL: PoolInterface = new ImageArrayRotationAnimationPool(new ImageArrayRotationAnimationCacheableInterfaceFactory());
+    private: static PoolInterface IMAGE_ROTATION_ANIMATION_POOL = ImageArrayRotationAnimationPool(ImageArrayRotationAnimationCacheableInterfaceFactory());
 
-    public static PoolInterface getInstance();
+    public: static PoolInterface getInstance();
 
-public constructor (CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
+public: ImageArrayRotationAnimationPool(CacheableInterfaceFactoryInterface cacheableInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public CacheableInterface remove(any = {} key);
+    public: CacheableInterface remove(Object* key);
 
 };
 

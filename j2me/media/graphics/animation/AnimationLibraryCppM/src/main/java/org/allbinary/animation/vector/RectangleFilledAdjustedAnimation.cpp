@@ -47,48 +47,47 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "RectangleFilledAnimation.h"
 
-class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation: public ColorCompositeInterface {
-        
+class RectangleFilledAdjustedAnimation: public RectangleFilledAnimation, public ColorCompositeInterface {
 
-    private: offsetX: int32_t;
+    private: int32_t offsetX;
 
-    private: offsetY: int32_t;
+    private: int32_t offsetY;
 
-public constructor (int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor){
+public: RectangleFilledAdjustedAnimation(int32_t width, int32_t height, int32_t offsetX, int32_t offsetY, BasicColor basicColor){
             super(width, height, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.offsetX= offsetX;
+this->offsetX= offsetX;
     
-this.offsetY= offsetY;
+this->offsetY= offsetY;
     
-this.setBasicColorP(basicColor);
-    
-}
-
-
-    public nextFrame(){
-}
-
-
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
-    
-super.paintXY(graphics, x +this.offsetX, y +this.offsetY);
+this->setBasicColorP(basicColor);
     
 }
 
 
-    public setOffsetX(int32_t offsetX){
-this.offsetX= offsetX;
+    public: void nextFrame(){
+}
+
+
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
+    
+super.paintXY(graphics, x +this->offsetX, y +this->offsetY);
     
 }
 
 
-    public setOffsetY(int32_t offsetY){
-this.offsetY= offsetY;
+    public: void setOffsetX(int32_t offsetX){
+this->offsetX= offsetX;
+    
+}
+
+
+    public: void setOffsetY(int32_t offsetY){
+this->offsetY= offsetY;
     
 }
 

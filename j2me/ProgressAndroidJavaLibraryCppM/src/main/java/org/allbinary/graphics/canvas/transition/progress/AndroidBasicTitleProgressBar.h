@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDBASICTITLEPROGRESSBAR_H
         #define ORG_ALLBINARY_GRAPHICS_CANVAS_TRANSITION_PROGRESS_ANDROIDBASICTITLEPROGRESSBAR_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/IllegalArgumentException.h"
@@ -132,86 +134,85 @@
 #include "TitleProgressBarSetProgressRunnable.h"
 #include "TitleProgressBarPortionSetProgressRunnable.h"
 
-class AndroidBasicTitleProgressBar: public ProgressCanvas: public DisplayChangeEventListener {
-        
+class AndroidBasicTitleProgressBar: public ProgressCanvas, public DisplayChangeEventListener {
 
-    public static const RESOURCE: string = "ProgressImage";
+    public: static const std::string RESOURCE = "ProgressImage";
 
-    private: static background: int32_t= 0;
+    private: static int32_t background= 0;
 
-    public static setBackgroundResource(int32_t background);
+    public: static void setBackgroundResource(int32_t background);
 
-    private: showTitleProgressBarRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable showTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: dismissTitleProgressBarRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable dismissTitleProgressBarRunnable = NullRunnable::getInstance();
 
-    private: titleProgressDialogPortionSetProgressRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable titleProgressDialogPortionSetProgressRunnable = NullRunnable::getInstance();
 
-    private: titleProgressDialogSetProgressRunnable: ARunnable = NullRunnable.getInstance()!;
+    private: ARunnable titleProgressDialogSetProgressRunnable = NullRunnable::getInstance();
 
-    private: midletActivity: Activity = AndroidUtil.NULL_ACTIVITY;
+    private: Activity midletActivity = AndroidUtil::NULL_ACTIVITY;
 
-    private: portion: int32_t = 0;
+    private: int32_t portion = 0;
 
-    private: const IMAGE: std::vector<Image> = new Array(4);
+    private: const std::vector<Image> IMAGE = new Array(4);
 
-    private: image: Image = NullImage.NULL_IMAGE;
+    private: Image image = NullImage::NULL_IMAGE;
 
-    private: animation: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animation = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
- constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+: AndroidBasicTitleProgressBar(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    init();
+    private: void init();
 
-    public initActivity(Activity activity);
+    public: void initActivity(Activity activity);
 
-    updateCurrent();
+    private: void updateCurrent();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
 
-    loadProgressImages();
+    private: void loadProgressImages();
 
-    public bool isInitialized();
+    public: bool isInitialized();
 
-    public start();
+    public: void start();
 
-    public end();
+    public: void end();
 
-    public addEarlyPortion(int32_t value, string text, int32_t index);
+    public: void addEarlyPortion(int32_t value, std::string text, int32_t index);
 
-    public addPortion(int32_t value, string text, int32_t index);
+    public: void addPortion(int32_t value, std::string text, int32_t index);
 
-    public addNormalPortion(int32_t value, string text);
+    public: void addNormalPortion(int32_t value, std::string text);
 
-    setValue(int32_t value);
+    protected: void setValue(int32_t value);
 
-    public waitUntilDisplayed();
-
-                //@Throws(Exception.constructor)
-            
-    setImages(int32_t index, int32_t lastWidth, int32_t lastHeight);
+    public: void waitUntilDisplayed();
 
                 //@Throws(Exception.constructor)
             
-    public initOpenGL(Graphics graphics);
+    private: void setImages(int32_t index, int32_t lastWidth, int32_t lastHeight);
 
                 //@Throws(Exception.constructor)
             
-    public update(Graphics graphics);
+    public: void initOpenGL(Graphics graphics);
 
                 //@Throws(Exception.constructor)
             
-    Image getImage(int32_t index);
+    public: void update(Graphics graphics);
 
-    public paint2(Graphics graphics);
+                //@Throws(Exception.constructor)
+            
+    private: Image getImage(int32_t index);
 
-    setBackground(bool background);
+    public: void paint2(Graphics graphics);
 
-    setPortion(int32_t portion);
+    protected: void setBackground(bool background);
 
-    int32_t getPortion();
+    protected: void setPortion(int32_t portion);
+
+    protected: int32_t getPortion();
 
 };
 

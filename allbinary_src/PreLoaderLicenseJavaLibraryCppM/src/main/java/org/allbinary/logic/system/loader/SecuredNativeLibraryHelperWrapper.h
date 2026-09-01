@@ -52,15 +52,14 @@
 #include "SecuredNativeLibraryInterface.h"
 
 class SecuredNativeLibraryHelperWrapper: public NativeLibraryHelperWrapper {
-        
 
-    private: securedNativeLibraryInterface: SecuredNativeLibraryInterface;
+    private: SecuredNativeLibraryInterface securedNativeLibraryInterface;
 
-public constructor (SecuredNativeLibraryInterface securedNativeLibraryInterface);
+public: SecuredNativeLibraryHelperWrapper(SecuredNativeLibraryInterface securedNativeLibraryInterface);
 
                 //@Throws(LicensingException.constructor)
             
-    public bool unlock(AbeClientInformationInterface abeClientInformation);
+    public: bool unlock(AbeClientInformationInterface abeClientInformation);
 
 };
 

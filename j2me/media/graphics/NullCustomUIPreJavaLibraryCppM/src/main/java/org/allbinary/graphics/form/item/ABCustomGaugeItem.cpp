@@ -34,11 +34,10 @@
         #include "ABCustomItem.h"
 
 class ABCustomGaugeItem: public ABCustomItem {
-        
 
-    public static const NULL_GAUGE_ITEM: ABCustomGaugeItem = new ABCustomGaugeItem(StringUtil.getInstance()!.EMPTY_STRING, 1, 0, BasicColorFactory.getInstance()!.BLACK, BasicColorFactory.getInstance()!.WHITE);
+    public: static const ABCustomGaugeItem NULL_GAUGE_ITEM = ABCustomGaugeItem(StringUtil::getInstance().EMPTY_STRING, 1, 0, BasicColorFactory::getInstance().BLACK, BasicColorFactory::getInstance().WHITE);
 
-public constructor (string label, int32_t maxValue, int32_t initialValue, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: ABCustomGaugeItem(std::string label, int32_t maxValue, int32_t initialValue, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(label, backgroundBasicColor, foregroundBasicColor);
                     
 

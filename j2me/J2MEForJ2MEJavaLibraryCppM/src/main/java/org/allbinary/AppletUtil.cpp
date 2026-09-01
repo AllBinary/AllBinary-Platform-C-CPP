@@ -42,9 +42,8 @@
 class AppletUtil
             : public Object
          {
-        
 
-    public static bool isAppletLoader(any = {} anyType){
+    public: static bool isAppletLoader(Object* anyType){
 
 
 
@@ -54,10 +53,8 @@ class AppletUtil
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AppletUtil(){
+}
 
 
 };

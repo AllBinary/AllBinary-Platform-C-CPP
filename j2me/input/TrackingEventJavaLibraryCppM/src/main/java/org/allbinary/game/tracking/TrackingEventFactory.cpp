@@ -59,20 +59,17 @@
 class TrackingEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: TrackingEventFactory(){
+}
 
 
-    public AllBinaryEventObject getInstance(){
+    public: AllBinaryEventObject getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TrackingEvent(TrackingEventHandler.getInstance());
+                        return TrackingEvent(TrackingEventHandler::getInstance());
     
 }
 

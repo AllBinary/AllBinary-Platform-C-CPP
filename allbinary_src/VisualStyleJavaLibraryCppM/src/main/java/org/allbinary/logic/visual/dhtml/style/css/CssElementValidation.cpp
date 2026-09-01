@@ -55,12 +55,11 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "CssElementView.h"
 
-class CssElementValidation: public CssElementView: public ValidationInterface {
-        
+class CssElementValidation: public CssElementView, public ValidationInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
+public: CssElementValidation(){
             super();
                     
 
@@ -69,7 +68,7 @@ public constructor (){
 }
 
 
-public constructor (Node node){
+public: CssElementValidation(Node node){
             super(node);
                     
 
@@ -78,26 +77,26 @@ public constructor (Node node){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("CssElementValidation", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("CssElementValidation", this, this->commonStrings.IS_VALID);
     
 
                                     }
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("CssElementValidation: " +valid, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("CssElementValidation: " +valid, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -113,10 +112,10 @@ public constructor (Node node){
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate data", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate data", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -125,38 +124,38 @@ public constructor (Node node){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getValue());
+stringBuffer.append(this->getValue());
     
-stringBuffer!.append(" Css Style is not valid.");
+stringBuffer.append(" Css Style is not valid.");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation info error", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation info error", this, "validationInfo()", e);
     
 
                                     }
@@ -172,7 +171,7 @@ stringBuffer!.append(" Css Style is not valid.");
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -182,7 +181,7 @@ stringBuffer!.append(" Css Style is not valid.");
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 

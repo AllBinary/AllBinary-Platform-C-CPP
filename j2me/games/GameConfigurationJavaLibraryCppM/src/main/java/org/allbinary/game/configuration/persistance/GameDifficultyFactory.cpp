@@ -42,34 +42,33 @@
 class GameDifficultyFactory
             : public Object
          {
-        
 
-    private: static const instance: GameDifficultyFactory = new GameDifficultyFactory();
+    private: static GameDifficultyFactory instance() { return GameDifficultyFactory(); }
 
-    public static GameDifficultyFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameDifficultyFactory.instance;
-    
-}
-
-
-    private: level: int32_t = 0;
-
-    public setLevel(int32_t level){
-this.level= level;
-    
-}
-
-
-    public int32_t getLevel(){
+    public: static GameDifficultyFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level;
+                        return GameDifficultyFactory::instance();
+    
+}
+
+
+    private: int32_t level = 0;
+
+    public: void setLevel(int32_t level){
+this->level= level;
+    
+}
+
+
+    public: int32_t getLevel(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->level;
     
 }
 

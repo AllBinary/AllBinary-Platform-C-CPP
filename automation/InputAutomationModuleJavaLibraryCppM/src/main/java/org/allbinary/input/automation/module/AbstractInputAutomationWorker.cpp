@@ -73,62 +73,59 @@
 class AbstractInputAutomationWorker
             : public Object
         : public RunnableInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: index: int64_t= 0;
+    private: int64_t index= 0;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: inputAutomationActionInterface: InputAutomationActionInterface;
+    private: InputAutomationActionInterface inputAutomationActionInterface;
 
-    private: captureWorkerInterface: CaptureWorkerInterface;
+    private: CaptureWorkerInterface captureWorkerInterface;
 
-    private: imageComparisonWorker: ImageComparisonWorker;
+    private: ImageComparisonWorker imageComparisonWorker;
 
-    private: motionRectanglesWorker: MotionRectanglesWorker;
+    private: MotionRectanglesWorker motionRectanglesWorker;
 
-    private: captureThread: Thread;
+    private: Thread captureThread;
 
-public constructor (InputAutomationActionInterface inputAutomationActionInterface){
-
-            super();
-        }
+public: AbstractInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public setThread(Thread thread){
+    public: void setThread(Thread thread){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    bool isAnyDataWorkerRunning(){
+    protected: bool isAnyDataWorkerRunning(){
 
-                        if(this.captureThread != 
-                                    null
-                                 && (this.captureThread!.isAlive() || this.getCaptureWorker()!.isRunning() || this.getMotionRectanglesWorker()!.isRunning() || this.getImageComparisonWorker()!.isRunning()))
+                        if(this->captureThread != 
+                                    nullptr
+                                 && (this->captureThread.isAlive() || this->getCaptureWorker().isRunning() || this->getMotionRectanglesWorker().isRunning() || this->getImageComparisonWorker().isRunning()))
                         
                                     {
                                     
@@ -152,16 +149,16 @@ this.running= running;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    startDataWorkers(){
+    protected: void startDataWorkers(){
 
                         if(!isAnyDataWorkerRunning())
                         
                                     {
-                                    this.captureThread= new Thread(this.getCaptureWorker());
+                                    this->captureThread= Thread(this->getCaptureWorker());
     
-this.logUtil!.putF("Starting CaptureWorkers - Need more images - Thread State: " +this.captureThread!.getState()!.toString(), this, "startCaptureWorkers");
+this->logUtil.putF("Starting CaptureWorkers - Need more images - Thread State: " +this->captureThread.getState().toString(), this, "startCaptureWorkers");
     
-this.captureThread!.start();
+this->captureThread.start();
     
 
                                     }
@@ -172,138 +169,138 @@ this.captureThread!.start();
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    waitForDataWorkers(){
+    protected: void waitForDataWorkers(){
 
         while(isAnyDataWorkerRunning())
         {
-this.logUtil!.putF("Waiting", this, this.commonStrings!.RUN);
+this->logUtil.putF("Waiting", this, this->commonStrings.RUN);
     
-Thread.sleep(250);
+Thread::sleep(250);
     
 }
 
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    stopDataWorkers(){
-this.getCaptureWorker()!.setRunning(false);
-    
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
+    protected: void stopDataWorkers(){
+this->getCaptureWorker().setRunning(false);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
+this->setRunning(true);
     
 
-        while(this.isRunning())
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+
+        while(this->isRunning())
         {
-timeHelper!.setStartTimeTNT();
+timeHelper.setStartTimeTNT();
     
-this.process();
+this->process();
     
-this.index++;
+this->index++;
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT() +" Index: " +this.index, this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT() +" Index: " +this->index, this, this->commonStrings.RUN);
     
 }
 
-this.stopDataWorkers();
+this->stopDataWorkers();
     
-this.waitForDataWorkers();
+this->waitForDataWorkers();
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 
 }
 
 
-    public InputAutomationActionInterface getInputAutomationActionInterface(){
+    public: InputAutomationActionInterface getInputAutomationActionInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputAutomationActionInterface;
+                        return this->inputAutomationActionInterface;
     
 }
 
 
-    public setInputAutomationActionInterface(InputAutomationActionInterface inputAutomationActionInterface){
-this.inputAutomationActionInterface= inputAutomationActionInterface;
+    public: void setInputAutomationActionInterface(InputAutomationActionInterface inputAutomationActionInterface){
+this->inputAutomationActionInterface= inputAutomationActionInterface;
     
 }
 
 
-    CaptureWorkerInterface getCaptureWorker(){
+    protected: CaptureWorkerInterface getCaptureWorker(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.captureWorkerInterface;
+                        return this->captureWorkerInterface;
     
 }
 
 
-    setCaptureWorker(CaptureWorkerInterface captureWorkerInterface){
-this.captureWorkerInterface= captureWorkerInterface;
+    protected: void setCaptureWorker(CaptureWorkerInterface captureWorkerInterface){
+this->captureWorkerInterface= captureWorkerInterface;
     
 }
 
 
-    ImageComparisonWorker getImageComparisonWorker(){
+    protected: ImageComparisonWorker getImageComparisonWorker(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageComparisonWorker;
+                        return this->imageComparisonWorker;
     
 }
 
 
-    setImageComparisonWorker(ImageComparisonWorker imageComparisonWorker){
-this.imageComparisonWorker= imageComparisonWorker;
+    protected: void setImageComparisonWorker(ImageComparisonWorker imageComparisonWorker){
+this->imageComparisonWorker= imageComparisonWorker;
     
 }
 
 
-    MotionRectanglesWorker getMotionRectanglesWorker(){
+    protected: MotionRectanglesWorker getMotionRectanglesWorker(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.motionRectanglesWorker;
+                        return this->motionRectanglesWorker;
     
 }
 
 
-    setMotionRectanglesWorker(MotionRectanglesWorker motionRectanglesWorker){
-this.motionRectanglesWorker= motionRectanglesWorker;
+    protected: void setMotionRectanglesWorker(MotionRectanglesWorker motionRectanglesWorker){
+this->motionRectanglesWorker= motionRectanglesWorker;
     
 }
 

@@ -65,15 +65,14 @@
 class DecalAnimationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: DecalAnimationInterfaceFactory = new DecalAnimationInterfaceFactory();
+    private: static DecalAnimationInterfaceFactory instance() { return DecalAnimationInterfaceFactory(); }
 
-    public static DecalAnimationInterfaceFactory getInstance();
+    public: static DecalAnimationInterfaceFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public AnimationInterfaceFactoryInterface getAnimationFactory(BasicGameResources basicGameResources, BasicColor basicColor);
+    public: AnimationInterfaceFactoryInterface getAnimationFactory(BasicGameResources basicGameResources, BasicColor basicColor);
 
 };
 

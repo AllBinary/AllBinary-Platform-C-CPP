@@ -57,59 +57,56 @@
 class Intermission
             : public Object
         : public IntermissionInterface {
-        
 
-    private: enabled: bool= false;
+    private: bool enabled= false;
 
-    private: const timeElapsedHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeElapsedHelper = TimeDelayHelper(0);
 
-    private: intermissionEnableListener: IntermissionEnableListenerInterface = NullIntermissionEnableListener.getInstance()!;
+    private: IntermissionEnableListenerInterface intermissionEnableListener = NullIntermissionEnableListener::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: Intermission(){
+}
 
 
-    public setListener(IntermissionEnableListenerInterface enableListener){
-this.intermissionEnableListener= enableListener;
+    public: void setListener(IntermissionEnableListenerInterface enableListener){
+this->intermissionEnableListener= enableListener;
     
 }
 
 
-    public TimeDelayHelper getTimeDelayHelper(){
+    public: TimeDelayHelper getTimeDelayHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeElapsedHelper;
+                        return this->timeElapsedHelper;
     
 }
 
 
-    public setEnabled(bool enabled){
-this.enabled= enabled;
+    public: void setEnabled(bool enabled){
+this->enabled= enabled;
     
 
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
-                                    this.getTimeDelayHelper()!.setStartTimeTNT();
+                                    this->getTimeDelayHelper().setStartTimeTNT();
     
 
                                     }
                                 
-this.intermissionEnableListener!.notifyIntermission(enabled);
+this->intermissionEnableListener.notifyIntermission(enabled);
     
 }
 
 
-    public bool isEnabled(){
+    public: bool isEnabled(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.enabled;
+                        return this->enabled;
     
 }
 

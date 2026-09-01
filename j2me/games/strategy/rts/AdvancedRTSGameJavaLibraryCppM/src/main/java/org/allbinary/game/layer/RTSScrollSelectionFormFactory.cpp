@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -74,34 +76,33 @@
 class RTSScrollSelectionFormFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ScrollSelectionForm getInstance(string formLabel, std::vector<ABCustomItem> items){
+    public: static ScrollSelectionForm getInstance(std::string formLabel, std::vector<ABCustomItem> items){
 
-    basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;;
+    BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();;
     
 
-    touchButtonLocationHelper: TouchButtonLocationHelper = new TouchButtonLocationHelper();;
+    TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();;
     
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    menuX: int32_t = CommonButtons.getInstance()!.STANDARD_BUTTON_SIZE +touchButtonLocationHelper!.getColumnsRemainderHalf();;
+    int32_t menuX = CommonButtons::getInstance().STANDARD_BUTTON_SIZE +touchButtonLocationHelper.getColumnsRemainderHalf();;
     
 
-    width: int32_t = displayInfo!.getLastWidth() -(menuX *2);;
+    int32_t width = displayInfo.getLastWidth() -(menuX *2);;
     
 
-    menuRectangle: Rectangle = new Rectangle(PointFactory.getInstance()!.createXY(menuX, 16), width, CommonButtons.getInstance()!.STANDARD_BUTTON_SIZE);;
+    Rectangle menuRectangle = Rectangle(PointFactory::getInstance().createXY(menuX, 16), width, CommonButtons::getInstance().STANDARD_BUTTON_SIZE);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MultipleScrollSelectionHorizontalForm.createForm(formLabel, items, menuRectangle, FormTypeFactory.getInstance()!.HORIZONTAL_FORM, 0, basicColorFactory!.BLACK, basicColorFactory!.WHITE);;
+                        return MultipleScrollSelectionHorizontalForm::createForm(formLabel, items, menuRectangle, FormTypeFactory::getInstance().HORIZONTAL_FORM, 0, basicColorFactory.BLACK, basicColorFactory.WHITE);;
     
 }
 

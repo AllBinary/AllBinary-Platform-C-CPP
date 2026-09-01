@@ -55,65 +55,62 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentTag: public StoreValidationTransformTag {
-        
 
-public constructor (){
-
-            super();
-        }
+public: PaymentTag(){
+}
 
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
-            this.setName("Basic Payment View");
+            this->setName("Basic Payment View");
     
-this.setObjectFile("views.generic.payment.ValidationView");
+this->setObjectFile("views.generic.payment.ValidationView");
     
 
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(this.getCommand()!.compareTo(PaymentData.VIEW) == 0 || this.getCommand()!.compareTo(PaymentData.CHANGE) == 0 || this.getCommand()!.compareTo(PaymentData.ADDNEW) == 0)
+                        if(this->getCommand().compareTo(PaymentData::VIEW) == 0 || this->getCommand().compareTo(PaymentData::CHANGE) == 0 || this->getCommand().compareTo(PaymentData::ADDNEW) == 0)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.INSERT) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.INSERT) == 0)
                         
                                     {
                                     
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(this.commonStrings!.DELETE) == 0)
+                        if(this->getCommand().compareTo(this->commonStrings.DELETE) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(PaymentData.SELECT) == 0)
+                        if(this->getCommand().compareTo(PaymentData::SELECT) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.EVAL_BODY_INCLUDE;
+                        return this->EVAL_BODY_INCLUDE;
     
 
                                     }
@@ -122,7 +119,7 @@ this.setObjectFile("views.generic.payment.ValidationView");
                             
 
 
-                            throw new Exception("No Such View Command: " +this.getCommand());
+                            throw Exception("No Such View Command: " +this->getCommand());
                     
 
                         }
@@ -139,13 +136,13 @@ this.setObjectFile("views.generic.payment.ValidationView");
 
 
 
-                            throw new Exception("Command Null");
+                            throw Exception("Command Null");
                     
 
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -158,7 +155,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

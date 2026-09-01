@@ -53,50 +53,47 @@
 class AnalogControllerConfigurationFactory
             : public Object
          {
-        
 
-    private: static const instance: AnalogControllerConfigurationFactory = new AnalogControllerConfigurationFactory();
+    private: static AnalogControllerConfigurationFactory instance() { return AnalogControllerConfigurationFactory(); }
 
-    public static AnalogControllerConfigurationFactory getInstance(){
+    public: static AnalogControllerConfigurationFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AnalogControllerConfigurationFactory.instance;
+                        return AnalogControllerConfigurationFactory::instance();
     
 }
 
 
-    public const SCALE_FACTOR: int32_t = ScaleFactorFactory.getInstance()!.DEFAULT_SCALE_FACTOR;
+    public: const int32_t SCALE_FACTOR = ScaleFactorFactory::getInstance().DEFAULT_SCALE_FACTOR;
 
-    public const SCALE_VALUE: int32_t = ScaleFactorFactory.getInstance()!.DEFAULT_SCALE_VALUE;
+    public: const int32_t SCALE_VALUE = ScaleFactorFactory::getInstance().DEFAULT_SCALE_VALUE;
 
-    private: available: bool= false;
+    private: bool available= false;
 
-    private: const analogControllerConfigurationEvent: AnalogControllerConfigurationEvent = new AnalogControllerConfigurationEvent(this);
+    private: const AnalogControllerConfigurationEvent analogControllerConfigurationEvent = AnalogControllerConfigurationEvent(this);
 
-private constructor (){
-
-            super();
-        }
+private: AnalogControllerConfigurationFactory(){
+}
 
 
-    public bool isAvailable(){
+    public: bool isAvailable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.available;
+                        return this->available;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setAvailable(bool available){
-this.available= available;
+    public: void setAvailable(bool available){
+this->available= available;
     
-AnalogControllerConfigurationEventHandler.getInstance()!.fireEvent(this.analogControllerConfigurationEvent);
+AnalogControllerConfigurationEventHandler::getInstance().fireEvent(this->analogControllerConfigurationEvent);
     
 }
 

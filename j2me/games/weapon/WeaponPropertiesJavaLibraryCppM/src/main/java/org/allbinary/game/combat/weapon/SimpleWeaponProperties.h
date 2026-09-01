@@ -51,27 +51,26 @@
 class SimpleWeaponProperties
             : public Object
          {
-        
 
-    private: damage: int32_t= 0;
+    private: int32_t damage= 0;
 
-    private: dissipation: int16_t= 0;
+    private: int16_t dissipation= 0;
 
-    private: range: int32_t= 0;
+    private: int32_t range= 0;
 
-    public set(SimpleWeaponProperties simpleWeaponProperties);
+    public: void set(SimpleWeaponProperties simpleWeaponProperties);
 
-    public setDamage(int32_t damage);
+    public: void setDamage(int32_t damage);
 
-    public int32_t getDamage();
+    public: int32_t getDamage();
 
-    public setDissipation(int16_t dissipation);
+    public: void setDissipation(int16_t dissipation);
 
-    public int16_t getDissipation();
+    public: int16_t getDissipation();
 
-    public int32_t getRange();
+    public: int32_t getRange();
 
-    public setRange(int32_t range);
+    public: void setRange(int32_t range);
 
 };
 

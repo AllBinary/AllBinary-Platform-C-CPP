@@ -59,15 +59,14 @@
         #include "TagHelper.h"
 
 class PaymentProcessHelper: public TagHelper {
-        
 
-    private: paymentProcessorComponent: PaymentProcessorComponent;
+    private: PaymentProcessorComponent paymentProcessorComponent;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: PaymentProcessHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public string process();
+    public: std::string process();
 
 };
 

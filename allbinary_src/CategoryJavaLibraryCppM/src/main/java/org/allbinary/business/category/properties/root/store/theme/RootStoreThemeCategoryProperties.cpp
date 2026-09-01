@@ -82,9 +82,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RootStoreThemeCategoryProperties: public RootStoreCategoryProperties {
-        
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -93,7 +92,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, AbPath abPath){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, AbPath abPath){
             super(transformInfoInterface, abPath);
                     
 
@@ -102,7 +101,7 @@ public constructor (TransformInfoInterface transformInfoInterface, AbPath abPath
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, Node node){
             super(transformInfoInterface, node);
                     
 
@@ -111,7 +110,7 @@ public constructor (TransformInfoInterface transformInfoInterface, Node node){
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
+public: RootStoreThemeCategoryProperties(TransformInfoInterface transformInfoInterface, HashMap<any, any> categoryPropertiesHashMap){
             super(transformInfoInterface, categoryPropertiesHashMap);
                     
 
@@ -122,35 +121,35 @@ public constructor (TransformInfoInterface transformInfoInterface, HashMap<any, 
 
                 //@Throws(Exception.constructor)
             
-    public initPath(){
+    public: void initPath(){
 
-    transformInfoHttpStoreInterface: TransformInfoHttpStoreInterface = this.transformInfoInterface as TransformInfoHttpStoreInterface;;
-    
-
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(transformInfoHttpStoreInterface!.getStoreName())!;;
+    TransformInfoHttpStoreInterface transformInfoHttpStoreInterface = this->transformInfoInterface as TransformInfoHttpStoreInterface;;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
-    
-stringBuffer!.append(storeFrontInterface!.getName());
-    
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.THEMEPATH);
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(transformInfoHttpStoreInterface.getStoreName());;
     
 
-    abPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+    
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
+    
+stringBuffer.append(storeFrontInterface.getName());
+    
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+    
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().THEMEPATH);
     
 
-    httpServletRequest: HttpServletRequest = transformInfoHttpStoreInterface!.getPageContext()!.getRequest() as HttpServletRequest;;
+    AbPath abPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
-this.webAppAbPath= new AbPath(httpServletRequest!.getContextPath() +abPath!.toString(), StringUtil.getInstance()!.EMPTY_STRING);
+
+    HttpServletRequest httpServletRequest = transformInfoHttpStoreInterface.getPageContext().getRequest() as HttpServletRequest;;
     
-this.setRootFilePath(new AbPath(URLGLOBALS.getMainPath() +abPath!.toString(), StringUtil.getInstance()!.EMPTY_STRING));
+this->webAppAbPath= AbPath(httpServletRequest.getContextPath() +abPath.toString(), StringUtil::getInstance().EMPTY_STRING);
+    
+this->setRootFilePath(AbPath(URLGLOBALS::getMainPath() +abPath.toString(), StringUtil::getInstance().EMPTY_STRING));
     
 }
 

@@ -56,17 +56,16 @@
 class PaymentTransactionResultHelperFactory
             : public Object
         : public TagHelperFactoryInterface {
-        
 
-    private: static const CLASSNAME: string = "admin.taghelpers.PaymentTransactionResultHelper";
+    private: static const std::string CLASSNAME = "admin.taghelpers.PaymentTransactionResultHelper";
 
-    private: static const FACTORYNAME: string = "PaymentTransactionResultFactory";
+    private: static const std::string FACTORYNAME = "PaymentTransactionResultFactory";
 
-public constructor ();
+public: PaymentTransactionResultHelperFactory();
 
                 //@Throws(LicensingException.constructor)
             
-    public any getInstance(HashMap<any, any> hashMap, PageContext pageContext);
+    public: Object* getInstance(HashMap<any, any> hashMap, PageContext pageContext);
 
 };
 

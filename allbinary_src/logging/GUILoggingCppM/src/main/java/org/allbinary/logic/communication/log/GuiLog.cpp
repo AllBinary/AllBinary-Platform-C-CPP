@@ -62,56 +62,54 @@
 class GuiLog
             : public Object
          {
-        
 
-    private: static const instance: GuiLog = new GuiLog();
+    private: static GuiLog instance() { return GuiLog(); }
 
-    public static GuiLog getInstance(){
+    public: static GuiLog getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GuiLog.instance;
+                        return GuiLog::instance();
     
 }
 
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: GuiLog(){
+}
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public showDialog(string msg){
+    public: void showDialog(std::string msg){
 
-    error: JDialog = new JDialog();;
+    JDialog error = JDialog();;
     
 
-    size: int32_t = msg.length *9;;
+    int32_t size = msg.size() *9;;
     
 
-    x: int32_t = size;;
+    int32_t x = size;;
     
 
                         if(x > 550)
-                        x= 550
-error.getContentPane()!.setLayout(new GridLayout(1, 1));
+                        x= 550;
+                                
+error.getContentPane().setLayout(GridLayout(1, 1));
     
 
                         if(size > 255)
                         
                                     {
                                     
-    y: int32_t = 550;;
+    int32_t y = 550;;
     
 error.setSize(x, y);
     
-error.getContentPane()!.add(new javax.swing.JScrollPane(new javax.swing.JTextArea(msg)));
+error.getContentPane().add(javax::swing::JScrollPane(javax::swing::JTextArea(msg)));
     
 
                                     }
@@ -121,11 +119,11 @@ error.getContentPane()!.add(new javax.swing.JScrollPane(new javax.swing.JTextAre
                         
                                     {
                                     
-    y: int32_t = 50;;
+    int32_t y = 50;;
     
 error.setSize(x, y);
     
-error.getContentPane()!.add(new javax.swing.JScrollPane(new javax.swing.JLabel(msg)));
+error.getContentPane().add(javax::swing::JScrollPane(javax::swing::JLabel(msg)));
     
 
                                     }
@@ -136,25 +134,25 @@ error.show();
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, any = {} anyType, string functionName){
+    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.put(specialMessage, anyType, functionName, 
+                        return this->put(specialMessage, anyType, functionName, 
                             nullptr);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, any = {} anyType, string functionName, Exception exception){
+    public: std::string put(std::string specialMessage, Object* anyType, std::string functionName, Exception exception){
 
         try {
             
-    data: string = this.logFormatUtil!.get(specialMessage, anyType!.constructor.name.toString()!, functionName, exception)!;;
+    std::string data = this->logFormatUtil.get(specialMessage, anyType->constructor.name.toString()!, functionName, exception);;
     
-this.showDialog(data);
+this->showDialog(data);
     
 console.log(data);
     
@@ -168,7 +166,7 @@ console.log(data);
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this, "put", e);
+PreLogUtil::putOE(this->commonStrings.EXCEPTION, this, "put", e);
     
 
 
@@ -182,25 +180,25 @@ PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this, "put", e);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, string className, string functionName){
+    public: std::string put(std::string specialMessage, std::string className, std::string functionName){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.put(specialMessage, className, functionName, 
+                        return this->put(specialMessage, className, functionName, 
                             nullptr);;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string put(string specialMessage, string className, string functionName, Exception exception){
+    public: std::string put(std::string specialMessage, std::string className, std::string functionName, Exception exception){
 
         try {
             
-    data: string = this.logFormatUtil!.get(specialMessage, className, functionName, exception)!;;
+    std::string data = this->logFormatUtil.get(specialMessage, className, functionName, exception);;
     
-this.showDialog(data);
+this->showDialog(data);
     
 console.log(data);
     
@@ -214,7 +212,7 @@ console.log(data);
                 //: 
 } catch(e) 
             {
-PreLogUtil.putOE(this.commonStrings!.EXCEPTION, this, "put", e);
+PreLogUtil::putOE(this->commonStrings.EXCEPTION, this, "put", e);
     
 
 

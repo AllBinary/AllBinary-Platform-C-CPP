@@ -39,21 +39,20 @@
         #include "TouchButtonResource.h"
 
 class TouchButtonDownResource: public TouchButtonResource {
-        
 
-    private: static const instance: TouchButtonResource = new TouchButtonDownResource();
+    private: static const TouchButtonResource instance = TouchButtonDownResource();
 
-    public static TouchButtonResource getInstance(){
+    public: static TouchButtonResource getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonDownResource.instance;
+                        return TouchButtonDownResource::instance();
     
 }
 
 
-private constructor (){
+private: TouchButtonDownResource(){
             super("/touch_button_down_arrow_64_by_64.png", "/touch_button_down_arrow_hint_64_by_64.png");
                     
 

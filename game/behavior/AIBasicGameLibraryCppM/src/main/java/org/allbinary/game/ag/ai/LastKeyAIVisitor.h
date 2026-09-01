@@ -58,15 +58,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LastKeyAIVisitor: public Visitor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const TRUE: Boolean = BooleanFactory.getInstance()!.TRUE;
+    private: const Boolean TRUE = BooleanFactory::getInstance().TRUE;
 
-public constructor ();
+public: LastKeyAIVisitor();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
 };
 

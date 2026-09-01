@@ -76,103 +76,102 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "StoreThemeCategoryInterface.h"
 
-class StoreThemeCategory: public Category: public StoreThemeCategoryInterface {
-        
+class StoreThemeCategory: public Category, public StoreThemeCategoryInterface {
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-    private: themeVector: Vector;
+    private: Vector themeVector;
 
-public constructor (TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
             super(categoryPropertiesFactoryInterface, level);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.transformInfoInterface= transformInfoInterface;
+this->transformInfoInterface= transformInfoInterface;
     
-this.themeVector= new Vector();
+this->themeVector= Vector();
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
             super(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.transformInfoInterface= transformInfoInterface;
+this->transformInfoInterface= transformInfoInterface;
     
-this.themeVector= new Vector();
+this->themeVector= Vector();
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface, int32_t level){
             super(categoryPropertiesFactoryInterface, level);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.transformInfoInterface= transformInfoInterface;
+this->transformInfoInterface= transformInfoInterface;
     
-this.themeVector= new Vector();
+this->themeVector= Vector();
     
-this.addThemes(node);
+this->addThemes(node);
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
+public: StoreThemeCategory(TransformInfoInterface transformInfoInterface, Node node, CategoryInterface rootCategoryInterface, CategoryInterface parentCategoryInterface, CategoryPropertiesFactoryInterface categoryPropertiesFactoryInterface){
             super(rootCategoryInterface, parentCategoryInterface, categoryPropertiesFactoryInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.transformInfoInterface= transformInfoInterface;
+this->transformInfoInterface= transformInfoInterface;
     
-this.themeVector= new Vector();
+this->themeVector= Vector();
     
-this.addThemes(node);
+this->addThemes(node);
     
 }
 
 
-    public TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface getTransformInfoInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformInfoInterface;
+                        return this->transformInfoInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addThemes(Node node){
+    public: void addThemes(Node node){
 
-    themesNode: Node = DomSearchHelper.getNode(ThemesData.getInstance()!.NAME, node.getChildNodes())!;;
+    Node themesNode = DomSearchHelper::getNode(ThemesData::getInstance().NAME, node.getChildNodes());;
     
 
-    nodeList: NodeList = themesNode!.getChildNodes()!;;
+    NodeList nodeList = themesNode.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    themeNode: Node = nodeList!.item(index)!;;
+    Node themeNode = nodeList.item(index);;
     
 
-                        if(themeNode!.getNodeName()!.compareTo(ThemeData.getInstance()!.NAME) == 0)
+                        if(themeNode.getNodeName().compareTo(ThemeData::getInstance().NAME) == 0)
                         
                                     {
-                                    this.themeVector!.add(new ThemeValidation(this, themeNode));
+                                    this->themeVector.add(ThemeValidation(this, themeNode));
     
 
                                     }
@@ -182,25 +181,25 @@ this.addThemes(node);
 }
 
 
-    public addTheme(ThemeValidation themeValidation){
-this.themeVector!.add(themeValidation);
+    public: void addTheme(ThemeValidation themeValidation){
+this->themeVector.add(themeValidation);
     
 }
 
 
-    public Vector getThemes(){
+    public: Vector getThemes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.themeVector;
+                        return this->themeVector;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
                         if(!super.isValid().valueOf())
                         
@@ -209,7 +208,7 @@ this.themeVector!.add(themeValidation);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -218,18 +217,18 @@ this.themeVector!.add(themeValidation);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    categoryHashMap: HashMap<any, any> = super.toHashMap()!;;
+    HashMap<any, any> categoryHashMap = super.toHashMap();;
     
-categoryHashMap!.put(ThemesData.getInstance()!.NAME, this.themeVector);
+categoryHashMap.put(ThemesData::getInstance().NAME, this->themeVector);
     
 
 
@@ -242,9 +241,9 @@ categoryHashMap!.put(ThemesData.getInstance()!.NAME, this.themeVector);
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    categoryVector: Vector = super.toVector()!;;
+    Vector categoryVector = super.toVector();;
     
 
 

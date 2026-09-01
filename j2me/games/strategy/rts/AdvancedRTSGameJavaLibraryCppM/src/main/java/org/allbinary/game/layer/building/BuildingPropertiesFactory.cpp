@@ -81,49 +81,48 @@
 class BuildingPropertiesFactory
             : public Object
          {
-        
 
-    private: static const instance: BuildingPropertiesFactory = new BuildingPropertiesFactory();
+    private: static BuildingPropertiesFactory instance() { return BuildingPropertiesFactory(); }
 
-    public static BuildingPropertiesFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return BuildingPropertiesFactory.instance;
-    
-}
-
-
-    public int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer){
+    public: static BuildingPropertiesFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return 10000 /buildingLayer!.getMaxLevel() +10000 % buildingLayer!.getMaxLevel();
+                        return BuildingPropertiesFactory::instance();
     
 }
 
 
-    public damageFloatersPaintableInterface: Paintable = NullPaintable.getInstance()!;
+    public: int32_t getEfficiencyPerLevel(BuildingLayer buildingLayer){
 
-    public DamageFloaters getDamageFloaters(BuildingLayer buildingLayer){
 
-    damageFloaters: DamageFloaters = DamageFloaters.getInstance()!;;
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return 10000 /buildingLayer.getMaxLevel() +10000 % buildingLayer.getMaxLevel();
+    
+}
+
+
+    public: Paintable damageFloatersPaintableInterface = NullPaintable::getInstance();
+
+    public: DamageFloaters getDamageFloaters(BuildingLayer buildingLayer){
+
+    DamageFloaters damageFloaters = DamageFloaters::getInstance();;
     
 
-                        if(Features.getInstance()!.isFeature(GameFeatureFactory.getInstance()!.DAMAGE_FLOATERS))
+                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().DAMAGE_FLOATERS))
                         
                                     {
-                                    damageFloaters= new PtsDamageFloaters(buildingLayer);
+                                    damageFloaters= PtsDamageFloaters(buildingLayer);
     
-this.damageFloatersPaintableInterface= damageFloaters;
+this->damageFloatersPaintableInterface= damageFloaters;
     
 
                                     }
                                 
                         else {
-                            damageFloaters= new DamageFloaters();
+                            damageFloaters= DamageFloaters();
     
 
                         }
@@ -139,15 +138,15 @@ this.damageFloatersPaintableInterface= damageFloaters;
 
                 //@Throws(Exception.constructor)
             
-    public Paintable getHealthBar(BuildingLayer buildingLayer){
+    public: Paintable getHealthBar(BuildingLayer buildingLayer){
 
-    healthBar: Paintable = NullPaintable.getInstance()!;;
+    Paintable healthBar = NullPaintable::getInstance();;
     
 
-                        if(Features.getInstance()!.isFeature(GameFeatureFactory.getInstance()!.HEALTH_BARS))
+                        if(Features::getInstance().isFeature(GameFeatureFactory::getInstance().HEALTH_BARS))
                         
                                     {
-                                    healthBar= new HealthBar(buildingLayer, buildingLayer!.getHealthInterface(), new HealthBarTwodAnimation(buildingLayer as AllBinaryLayer, BasicHudFactory.getInstance()!.BOTTOMLEFT),  -1);
+                                    healthBar= HealthBar(buildingLayer, buildingLayer.getHealthInterface(), HealthBarTwodAnimation(buildingLayer as AllBinaryLayer, BasicHudFactory::getInstance().BOTTOMLEFT),  -1);
     
 
                                     }
@@ -161,22 +160,22 @@ this.damageFloatersPaintableInterface= damageFloaters;
 }
 
 
-    public Hashtable<any, any> getHashtable(){
+    public: Hashtable<any, any> getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Hashtable<any, any>();
+                        return Hashtable<any, any>();
     
 }
 
 
-    public TrackingEvent getTrackingEvent(BuildingLayer buildingLayer){
+    public: TrackingEvent getTrackingEvent(BuildingLayer buildingLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TrackingEvent(buildingLayer);
+                        return TrackingEvent(buildingLayer);
     
 }
 

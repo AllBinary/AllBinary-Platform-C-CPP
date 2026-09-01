@@ -44,13 +44,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TimeBaseInterface {
-        
 
     TimeBase getTimeBase()
 
                 //@Throws(MediaException.constructor)
             
-    setTimeBase(TimeBase timeBase)
+    void setTimeBase(TimeBase timeBase)
 
 };
 

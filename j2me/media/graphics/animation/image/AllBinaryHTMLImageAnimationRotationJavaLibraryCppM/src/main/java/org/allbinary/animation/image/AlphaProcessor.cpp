@@ -45,22 +45,21 @@
         #include "AlphaBaseProcessor.h"
 
 class AlphaProcessor: public AlphaBaseProcessor {
-        
 
-    private: static const instanceC: AlphaProcessor = new AlphaProcessor();
+    private: static const AlphaProcessor instanceC = AlphaProcessor();
 
-    public static AlphaProcessor getInstance(){
+    public: static AlphaProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AlphaProcessor.instanceC;
+                        return AlphaProcessor::instanceC;
     
 }
 
 
-    public setAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t alpha){
-imageModifierUtil!.setAlpha3(imageToShow, alpha);
+    public: void setAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t alpha){
+imageModifierUtil.setAlpha3(imageToShow, alpha);
     
 }
 

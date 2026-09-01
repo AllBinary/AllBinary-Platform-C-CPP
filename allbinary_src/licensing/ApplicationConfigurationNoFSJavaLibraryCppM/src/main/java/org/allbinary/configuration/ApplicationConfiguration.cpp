@@ -51,16 +51,15 @@
 class ApplicationConfiguration
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static ApplicationConfiguration getInstance(){
+    public: static ApplicationConfiguration getInstance(){
 
-                        if(ApplicationConfiguration.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(ApplicationConfiguration::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    ApplicationConfiguration.instance= new ApplicationConfiguration();
+                                    ApplicationConfiguration::instance= ApplicationConfiguration();
     
 
                                     }
@@ -69,81 +68,79 @@ class ApplicationConfiguration
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ApplicationConfiguration.instance as ApplicationConfiguration;
+                        return ApplicationConfiguration::instance() as ApplicationConfiguration;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: fullscreen: bool = true;
+    private: bool fullscreen = true;
 
-    private: showTitleBar: bool = false;
+    private: bool showTitleBar = false;
 
-    private: progressBarView: bool = false;
+    private: bool progressBarView = false;
 
-private constructor (){
+private: ApplicationConfiguration(){
 
-            super();
-        
         try {
-            this.read();
+            this->read();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    read(){
-this.setFullscreen(true);
-    
-this.setProgressBarView(false);
-    
-this.setShowTitleBar(false);
-    
-this.logUtil!.putF("Read Configuration: " +this.toString(), this, "read");
-    
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(){
+    private: void read(){
+this->setFullscreen(true);
+    
+this->setProgressBarView(false);
+    
+this->setShowTitleBar(false);
+    
+this->logUtil.putF("Read Configuration: " +this->toString(), this, "read");
+    
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(Feature gameFeature){
+    public: void write(){
+}
 
-                        if(gameFeature == MainFeatureFactory.getInstance()!.FULL_SCREEN)
+
+                //@Throws(Exception.constructor)
+            
+    public: void update(Feature gameFeature){
+
+                        if(gameFeature == MainFeatureFactory::getInstance().FULL_SCREEN)
                         
                                     {
                                     
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
                         if(features.isFeature(gameFeature))
                         
                                     {
                                     
-                        if(!this.isFullscreen())
+                        if(!this->isFullscreen())
                         
                                     {
-                                    this.setFullscreen(true);
+                                    this->setFullscreen(true);
     
-this.write();
+this->write();
     
 
                                     }
@@ -153,12 +150,12 @@ this.write();
                                 
                         else {
                             
-                        if(this.isFullscreen())
+                        if(this->isFullscreen())
                         
                                     {
-                                    this.setFullscreen(false);
+                                    this->setFullscreen(false);
     
-this.write();
+this->write();
     
 
                                     }
@@ -172,75 +169,75 @@ this.write();
 }
 
 
-    public setFullscreen(bool fullscreen){
-this.fullscreen= fullscreen;
+    public: void setFullscreen(bool fullscreen){
+this->fullscreen= fullscreen;
     
 }
 
 
-    public bool isFullscreen(){
+    public: bool isFullscreen(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fullscreen;
+                        return this->fullscreen;
     
 }
 
 
-    public setShowTitleBar(bool showTitleBar){
-this.showTitleBar= showTitleBar;
+    public: void setShowTitleBar(bool showTitleBar){
+this->showTitleBar= showTitleBar;
     
 }
 
 
-    public bool isShowTitleBar(){
+    public: bool isShowTitleBar(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.showTitleBar;
+                        return this->showTitleBar;
     
 }
 
 
-    public setProgressBarView(bool progressBarView){
-this.progressBarView= progressBarView;
+    public: void setProgressBarView(bool progressBarView){
+this->progressBarView= progressBarView;
     
 }
 
 
-    public bool isProgressBarView(){
+    public: bool isProgressBarView(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.progressBarView;
+                        return this->progressBarView;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("isFullscreen: ");
+stringBuffer.append("isFullscreen: ");
     
-stringBuffer!.appendboolean(this.isFullscreen());
+stringBuffer.appendboolean(this->isFullscreen());
     
-stringBuffer!.append(" isProgressBarView: ");
+stringBuffer.append(" isProgressBarView: ");
     
-stringBuffer!.appendboolean(this.isProgressBarView());
+stringBuffer.appendboolean(this->isProgressBarView());
     
-stringBuffer!.append(" isShowTitleBar: ");
+stringBuffer.append(" isShowTitleBar: ");
     
-stringBuffer!.appendboolean(this.isShowTitleBar());
+stringBuffer.appendboolean(this->isShowTitleBar());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

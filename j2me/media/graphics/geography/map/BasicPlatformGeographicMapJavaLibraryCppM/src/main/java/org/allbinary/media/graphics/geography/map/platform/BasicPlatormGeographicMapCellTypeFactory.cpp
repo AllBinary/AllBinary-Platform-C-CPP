@@ -60,70 +60,67 @@
         #include "BasicPlatormGeographicMapCellType.h"
 
 class BasicPlatormGeographicMapCellTypeFactory: public GeographicMapCellTypeFactory {
-        
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    public const BLOCK_CELL_TYPE: BasicPlatormGeographicMapCellType;
+    public: BasicPlatormGeographicMapCellType BLOCK_CELL_TYPE;
 
-    public const JUMP_THRU_CELL_TYPE: BasicPlatormGeographicMapCellType;
+    public: BasicPlatormGeographicMapCellType JUMP_THRU_CELL_TYPE;
 
-    public const LADDER_CELL_TYPE: BasicPlatormGeographicMapCellType;
+    public: BasicPlatormGeographicMapCellType LADDER_CELL_TYPE;
 
-    private: const maxTileId: int32_t;
+    private: int32_t maxTileId;
 
-public constructor (Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId){
+public: BasicPlatormGeographicMapCellTypeFactory(Hashtable<any, any> tileTypeToTileIdsMap, int32_t maxTileId){
 
-            super();
-        
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(commonStrings!.START, this, commonStrings!.INIT);
+this->logUtil.putF(commonStrings.START, this, commonStrings.INIT);
     
-this.maxTileId= maxTileId;
+this->maxTileId= maxTileId;
     
-new GeographicMapCellType(0, 0);
+GeographicMapCellType(0, 0);
     
 
-    BLOCK_CELL_TYPE: BasicPlatormGeographicMapCellType = BasicPlatormGeographicMapCellType.createType(1)!;;
+    BasicPlatormGeographicMapCellType BLOCK_CELL_TYPE = BasicPlatormGeographicMapCellType::createType(1);;
     
 
-    JUMP_THRU_CELL_TYPE: BasicPlatormGeographicMapCellType = BLOCK_CELL_TYPE;;
+    BasicPlatormGeographicMapCellType JUMP_THRU_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    LADDER_CELL_TYPE: BasicPlatormGeographicMapCellType = BLOCK_CELL_TYPE;;
+    BasicPlatormGeographicMapCellType LADDER_CELL_TYPE = BLOCK_CELL_TYPE;;
     
 
-    PLATFORM: string = "Platform";;
+    std::string PLATFORM = "Platform";;
     
 
-    JUMP_TRHU: string = "JumpThru";;
+    std::string JUMP_TRHU = "JumpThru";;
     
 
-    LADDER: string = "Ladder";;
+    std::string LADDER = "Ladder";;
     
 
-    enumeration: Enumeration<any> = tileTypeToTileIdsMap!.keys()!;;
+    Enumeration<any> enumeration = tileTypeToTileIdsMap.keys();;
     
 
-    idsWithTypeList: BasicArrayList;;
+    BasicArrayList idsWithTypeList;;
     
 
-    key: string;;
+    std::string key;;
     
 
-    basicPlatormGeographicMapCellType: BasicPlatormGeographicMapCellType;;
+    BasicPlatormGeographicMapCellType basicPlatormGeographicMapCellType;;
     
 
-        while(this.enumerationUtil!.hasMoreElements(enumeration))
+        while(this->enumerationUtil.hasMoreElements(enumeration))
         {
-key= this.enumerationUtil!.nextElement(enumeration)! as string;
+key= this->enumerationUtil.nextElement(enumeration)! as string;
     
-this.logUtil!.putF(key, this, commonStrings!.INIT);
+this->logUtil.putF(key, this, commonStrings.INIT);
     
-idsWithTypeList= tileTypeToTileIdsMap!.get(key) as BasicArrayList;
+idsWithTypeList= tileTypeToTileIdsMap.get(key) as BasicArrayList;
     
-basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWithTypeList);
+basicPlatormGeographicMapCellType= BasicPlatormGeographicMapCellType(idsWithTypeList);
     
 
                         if(key === PLATFORM)
@@ -154,40 +151,40 @@ basicPlatormGeographicMapCellType= new BasicPlatormGeographicMapCellType(idsWith
                                 
 }
 
-this.BLOCK_CELL_TYPE= BLOCK_CELL_TYPE;
+this->BLOCK_CELL_TYPE= BLOCK_CELL_TYPE;
     
-this.JUMP_THRU_CELL_TYPE= JUMP_THRU_CELL_TYPE;
+this->JUMP_THRU_CELL_TYPE= JUMP_THRU_CELL_TYPE;
     
-this.LADDER_CELL_TYPE= LADDER_CELL_TYPE;
+this->LADDER_CELL_TYPE= LADDER_CELL_TYPE;
     
-new GeographicMapCellType(this.maxTileId -1, 0);
+GeographicMapCellType(this->maxTileId -1, 0);
     
-new GeographicMapCellType(this.maxTileId -2, 0);
+GeographicMapCellType(this->maxTileId -2, 0);
     
 }
 
 
-    public int32_t getStartType(){
+    public: int32_t getStartType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxTileId -1;
+                        return this->maxTileId -1;
     
 }
 
 
-    public int32_t getEndType(){
+    public: int32_t getEndType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxTileId -2;
+                        return this->maxTileId -2;
     
 }
 
 
-    public int32_t getEmptyType(){
+    public: int32_t getEmptyType(){
 
 
 
@@ -197,9 +194,9 @@ new GeographicMapCellType(this.maxTileId -2, 0);
 }
 
 
-    public bool isPath(GeographicMapCellType cellType){
+    public: bool isPath(GeographicMapCellType cellType){
 
-                        if(cellType!.getType() == 0)
+                        if(cellType.getType() == 0)
                         
                                     {
                                     

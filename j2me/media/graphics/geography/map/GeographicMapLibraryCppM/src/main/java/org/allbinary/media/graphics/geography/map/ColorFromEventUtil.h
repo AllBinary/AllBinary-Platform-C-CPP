@@ -56,17 +56,16 @@
 class ColorFromEventUtil
             : public Object
          {
-        
 
-    private: static const instance: ColorFromEventUtil = new ColorFromEventUtil();
+    private: static ColorFromEventUtil instance() { return ColorFromEventUtil(); }
 
-    public static ColorFromEventUtil getInstance();
+    public: static ColorFromEventUtil getInstance();
 
-    private: const YELLOW: BasicColor = BasicColorFactory.getInstance()!.YELLOW;
+    private: const BasicColor YELLOW = BasicColorFactory::getInstance().YELLOW;
 
-    public const COLOR_INT: int32_t = this.YELLOW.intValue()!;
+    public: const int32_t COLOR_INT = this->YELLOW.intValue();
 
-    public BasicColor getForegroundColor(AllBinaryGameCanvas gameCanvasInterface);
+    public: BasicColor getForegroundColor(AllBinaryGameCanvas gameCanvasInterface);
 
 };
 

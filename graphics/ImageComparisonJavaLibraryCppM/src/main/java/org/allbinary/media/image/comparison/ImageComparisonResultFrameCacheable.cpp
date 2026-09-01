@@ -51,79 +51,76 @@
 class ImageComparisonResultFrameCacheable
             : public Object
         : public CacheableInterface {
-        
 
-    private: frame: Long;
+    private: Long frame;
 
-    private: imageComparisonResult: ImageComparisonResult;
+    private: ImageComparisonResult imageComparisonResult;
 
-public constructor (ImageComparisonResult imageComparisonResult, Long frame){
-
-            super();
-        this.setImageComparisonResult(imageComparisonResult);
+public: ImageComparisonResultFrameCacheable(ImageComparisonResult imageComparisonResult, Long frame){
+this->setImageComparisonResult(imageComparisonResult);
     
-this.frame= frame;
+this->frame= frame;
     
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 
 
-    public Long getFrame(){
+    public: Long getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 
 
-    public setFrame(Long frame){
-this.frame= frame;
+    public: void setFrame(Long frame){
+this->frame= frame;
     
 }
 
 
-    public ImageComparisonResult getImageComparisonResult(){
+    public: ImageComparisonResult getImageComparisonResult(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageComparisonResult;
+                        return this->imageComparisonResult;
     
 }
 
 
-    public setImageComparisonResult(ImageComparisonResult imageComparisonResult){
-this.imageComparisonResult= imageComparisonResult;
+    public: void setImageComparisonResult(ImageComparisonResult imageComparisonResult){
+this->imageComparisonResult= imageComparisonResult;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.constructor.name.toString()!);
+stringBuffer.append(this->constructor.name.toString()!);
     
-stringBuffer!.append(" Frame: ");
+stringBuffer.append(" Frame: ");
     
-stringBuffer!.appendlong(this.getFrame());
+stringBuffer.appendlong(this->getFrame());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

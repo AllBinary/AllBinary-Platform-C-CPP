@@ -62,94 +62,93 @@
         #include "TransformInfoHttp.h"
 
 class TransformInfoHttpSearch: public TransformInfoHttp {
-        
 
-public constructor (SearchRequest searchRequest){
-            super(searchRequest!.getPropertiesHashMap(), searchRequest!.getPageContext());
+public: TransformInfoHttpSearch(SearchRequest searchRequest){
+            super(searchRequest.getPropertiesHashMap(), searchRequest.getPageContext());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(searchRequest!.getStoreFront()!.getName() != 
-                                    null
+                        if(searchRequest.getStoreFront().getName() != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.setStoreName(searchRequest!.getStoreFront()!.getName());
+                                    this->setStoreName(searchRequest.getStoreFront().getName());
     
 
                                     }
                                 
                         else {
-                            this.setStoreName(StringUtil.getInstance()!.EMPTY_STRING);
+                            this->setStoreName(StringUtil::getInstance().EMPTY_STRING);
     
 
                         }
                             
 
-    dataFileName: string = searchRequest!.getXslFile()!;;
+    std::string dataFileName = searchRequest.getXslFile();;
     
-this.setTemplateFile(dataFileName);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    string getPath(){
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(URLGLOBALS.getMainPath());
-    
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
-    
-stringBuffer!.append(this.getStoreName());
-    
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+this->setTemplateFile(dataFileName);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getTemplateFilePath(){
+    private: std::string getPath(){
+
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append(URLGLOBALS::getMainPath());
+    
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
+    
+stringBuffer.append(this->getStoreName());
+    
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(this.getPath(), this.getTemplateFile());
+                        return stringBuffer.toString();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getObjectConfigFilePath(){
+    public: AbPath getTemplateFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(this.getPath(), this.getObjectConfigFile());
+                        return AbPath(this->getPath(), this->getTemplateFile());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AbPath getDataFilePath(){
+    public: AbPath getObjectConfigFilePath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbPath(this.getPath(), this.getDataFile());
+                        return AbPath(this->getPath(), this->getObjectConfigFile());
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: AbPath getDataFilePath(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return AbPath(this->getPath(), this->getDataFile());
     
 }
 

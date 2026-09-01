@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Font.h>
 
       
@@ -63,81 +65,78 @@
 #include "RTSLayer.h"
 
 class UpgradableRTSLayerHudPaintable: public SelectionHudPaintable {
-        
 
-    private: static const instance: UpgradableRTSLayerHudPaintable = new UpgradableRTSLayerHudPaintable();
+    private: static UpgradableRTSLayerHudPaintable instance() { return UpgradableRTSLayerHudPaintable(); }
 
-    public static UpgradableRTSLayerHudPaintable getInstance(){
+    public: static UpgradableRTSLayerHudPaintable getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpgradableRTSLayerHudPaintable.instance;
+                        return UpgradableRTSLayerHudPaintable::instance();
     
 }
 
 
-    private: const PERCENT: string = "%";
+    private: const std::string PERCENT = "%";
 
-    private: rtsLayer: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    private: CollidableDestroyableDamageableLayer rtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
-    costY: int32_t= 0;
+    protected: int32_t costY= 0;
 
-    costY1: int32_t= 0;
+    protected: int32_t costY1= 0;
 
-    private: percentCompleteX2: int32_t= 0;
+    private: int32_t percentCompleteX2= 0;
 
-    private: rtsLayerCompositePaintableLateInit: RTSLayerCompositePaintable;
+    private: RTSLayerCompositePaintable rtsLayerCompositePaintableLateInit;
 
-    private: charHeight: int32_t= 0;
+    private: int32_t charHeight= 0;
 
-    private: charWidth: int32_t= 0;
+    private: int32_t charWidth= 0;
 
-private constructor (){
-
-            super();
-        }
+private: UpgradableRTSLayerHudPaintable(){
+}
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 super.updateMeasurement(graphics);
     
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.charHeight= font.getHeight();
+this->charHeight= font.getHeight();
     
-this.charWidth= MyFontProcessor.defaultCharWidth(font);
+this->charWidth= MyFontProcessor::defaultCharWidth(font);
     
 }
 
 
-    public update(){
+    public: void update(){
 super.update();
     
 
-    commonButtons: CommonButtons = CommonButtons.getInstance()!;;
+    CommonButtons commonButtons = CommonButtons::getInstance();;
     
-this.costY= (this.y +commonButtons!.STANDARD_BUTTON_SIZE);
+this->costY= (this->y +commonButtons.STANDARD_BUTTON_SIZE);
     
-this.costY1= (this.y +commonButtons!.STANDARD_BUTTON_SIZE -this.charHeight);
+this->costY1= (this->y +commonButtons.STANDARD_BUTTON_SIZE -this->charHeight);
     
-this.percentCompleteX2= this.imageX +commonButtons!.STANDARD_BUTTON_SIZE -this.charWidth;
-    
-
-    displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+this->percentCompleteX2= this->imageX +commonButtons.STANDARD_BUTTON_SIZE -this->charWidth;
     
 
-                        if(displayInfoSingleton!.getLastWidth() > 320)
+    DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();;
+    
+
+                        if(displayInfoSingleton.getLastWidth() > 320)
                         
                                     {
-                                    this.rtsLayerCompositePaintableLateInit= new UpgradableWideRTSLayerPaintable(this);
+                                    this->rtsLayerCompositePaintableLateInit= UpgradableWideRTSLayerPaintable(this);
     
 
                                     }
                                 
                         else {
-                            this.rtsLayerCompositePaintableLateInit= new RTSLayerCompositePaintable(this);
+                            this->rtsLayerCompositePaintableLateInit= RTSLayerCompositePaintable(this);
     
 
                         }
@@ -145,90 +144,90 @@ this.percentCompleteX2= this.imageX +commonButtons!.STANDARD_BUTTON_SIZE -this.c
 }
 
 
-    public updateSelectionInfo(){
+    public: void updateSelectionInfo(){
 
-    rtsLayer: RTSLayer = this.getRtsLayer() as RTSLayer;;
+    RTSLayer rtsLayer = this->getRtsLayer() as RTSLayer;;
     
-this.rtsLayerCompositePaintableLateInit!.update(rtsLayer);
+this->rtsLayerCompositePaintableLateInit.update(rtsLayer);
     
-this.setAnimationInterface(rtsLayer!.getVerticleBuildAnimationInterface());
+this->setAnimationInterface(rtsLayer.getVerticleBuildAnimationInterface());
     
-this.setName(rtsLayer!.getName());
+this->setName(rtsLayer.getName());
     
 }
 
 
-    private: percentComplete: int32_t= 0;
+    private: int32_t percentComplete= 0;
 
-    private: percentCompleteX: int32_t= 0;
+    private: int32_t percentCompleteX= 0;
 
-    private: percentCompleteArray: std::vector<char> = CharArrayFactory.getInstance()!.getZeroCharArray()!;
+    private: std::vector<char> percentCompleteArray = CharArrayFactory::getInstance().getZeroCharArray();
 
-    private: currentTotalDigits: int32_t= 0;
+    private: int32_t currentTotalDigits= 0;
 
-    public updateInfo(){
+    public: void updateInfo(){
 
-    rtsLayer: RTSLayer = this.getRtsLayer() as RTSLayer;;
+    RTSLayer rtsLayer = this->getRtsLayer() as RTSLayer;;
     
-this.percentComplete= rtsLayer!.getPercentComplete();
+this->percentComplete= rtsLayer.getPercentComplete();
     
 
-                        if(this.percentComplete < 10)
+                        if(this->percentComplete < 10)
                         
                                     {
-                                    this.percentCompleteX= 32;
+                                    this->percentCompleteX= 32;
     
 
                                     }
                                 
                              else 
-                        if(this.percentComplete < 100)
+                        if(this->percentComplete < 100)
                         
                                     {
-                                    this.percentCompleteX= 24;
+                                    this->percentCompleteX= 24;
     
 
                                     }
                                 
                         else {
-                            this.percentCompleteX= 16;
+                            this->percentCompleteX= 16;
     
 
                         }
                             
-this.percentCompleteArray= this.getPrimitiveLongUtil()!.getCharArray(this.percentComplete);
+this->percentCompleteArray= this->getPrimitiveLongUtil().getCharArray(this->percentComplete);
     
-this.currentTotalDigits= this.getPrimitiveLongUtil()!.getCurrentTotalDigits();
+this->currentTotalDigits= this->getPrimitiveLongUtil().getCurrentTotalDigits();
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
-this.rtsLayerCompositePaintableLateInit!.paint(graphics);
+this->rtsLayerCompositePaintableLateInit.paint(graphics);
     
-graphics.drawChars(this.percentCompleteArray, 0, this.currentTotalDigits, this.imageX +this.percentCompleteX, this.costY, 0);
+graphics.drawChars(this->percentCompleteArray, 0, this->currentTotalDigits, this->imageX +this->percentCompleteX, this->costY, 0);
     
-graphics.drawString(this.PERCENT, this.percentCompleteX2, this.costY, 0);
+graphics.drawString(this->PERCENT, this->percentCompleteX2, this->costY, 0);
     
-this.getAnimationInterface()!.paintXY(graphics, this.imageX, this.y);
-    
-}
-
-
-    public setRtsLayer(RTSLayer rtsLayer){
-this.rtsLayer= rtsLayer;
+this->getAnimationInterface().paintXY(graphics, this->imageX, this->y);
     
 }
 
 
-    CollidableDestroyableDamageableLayer getRtsLayer(){
+    public: void setRtsLayer(RTSLayer rtsLayer){
+this->rtsLayer= rtsLayer;
+    
+}
+
+
+    protected: CollidableDestroyableDamageableLayer getRtsLayer(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rtsLayer;
+                        return this->rtsLayer;
     
 }
 

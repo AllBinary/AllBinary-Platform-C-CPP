@@ -74,158 +74,157 @@
 #include "RTSPlayerLayerInterface.h"
 #include "PlayerOwnedRTSLayers.h"
 
-class NullRTSLayer: public NullPathFindingLayer: public RTSPlayerLayerInterface {
-        
+class NullRTSLayer: public NullPathFindingLayer, public RTSPlayerLayerInterface {
 
-    public static const NULL_RTS_LAYER: NullRTSLayer = new NullRTSLayer();
+    public: static const NullRTSLayer NULL_RTS_LAYER = NullRTSLayer();
 
-    public string getName(){
-
+    public: std::string getName(){
 
 
-                            throw new RuntimeException();
+
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager layerManager){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public initInputProcessors(){
+    public: void initInputProcessors(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public GameNotificationHud getGameNotificationHud(){
+    public: GameNotificationHud getGameNotificationHud(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public ScrollSelectionForm getCurrentScrollSelectionForm(){
+    public: ScrollSelectionForm getCurrentScrollSelectionForm(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm){
+    public: void setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public ScrollSelectionForm getBuildingScrollSelectionForm(){
+    public: ScrollSelectionForm getBuildingScrollSelectionForm(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public PlayerGameInput getPlayerGameInput(){
+    public: PlayerGameInput getPlayerGameInput(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
+    public: void onEvent(AllBinaryEventObject eventObject){
 
 
 
-                            throw new RuntimeException();
-                    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public onDestroyed(DestroyedEvent destroyedEvent){
-
-
-
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager){
+    public: void onDestroyed(DestroyedEvent destroyedEvent){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public Capital getCapital(){
+                //@Throws(Exception.constructor)
+            
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public RTSFormInput getRTSFormInput(){
+    public: Capital getCapital(){
+
+
+
+                            throw RuntimeException();
+                    
+}
+
+
+    public: RTSFormInput getRTSFormInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullRTSFormInputFactory.getInstance();;
+                        return NullRTSFormInputFactory::getInstance();;
     
 }
 
 
-    public add(Sound sound){
+    public: void add(Sound sound){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public PlayerOwnedRTSLayers getPlayerOwnedRTSLayers(){
+    public: PlayerOwnedRTSLayers getPlayerOwnedRTSLayers(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public bool implmentsArtificialIntelligenceCompositeInterface(){
+    public: bool implmentsArtificialIntelligenceCompositeInterface(){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

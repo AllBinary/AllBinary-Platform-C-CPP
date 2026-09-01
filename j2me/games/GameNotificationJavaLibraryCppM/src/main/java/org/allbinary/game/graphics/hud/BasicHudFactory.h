@@ -57,33 +57,32 @@
 class BasicHudFactory
             : public Object
          {
-        
 
-    private: static const instance: BasicHudFactory = new BasicHudFactory();
+    private: static BasicHudFactory instance() { return BasicHudFactory(); }
 
-    public static BasicHudFactory getInstance();
+    public: static BasicHudFactory getInstance();
 
-private constructor ();
+private: BasicHudFactory();
 
-    public const DIRECTION_EXCEPTION: string = "Only Horizontal Direction is Allowed Currently";
+    public: const std::string DIRECTION_EXCEPTION = "Only Horizontal Direction is Allowed Currently";
 
-    public const VERTICAL: int32_t = 0;
+    public: const int32_t VERTICAL = 0;
 
-    public const HORIZONTAL: int32_t = 1;
+    public: const int32_t HORIZONTAL = 1;
 
-    public const BOTTOMLEFT: int32_t = 0;
+    public: const int32_t BOTTOMLEFT = 0;
 
-    public const BOTTOMRIGHT: int32_t = 1;
+    public: const int32_t BOTTOMRIGHT = 1;
 
-    public const TOPLEFT: int32_t = 2;
+    public: const int32_t TOPLEFT = 2;
 
-    public const TOPRIGHT: int32_t = 3;
+    public: const int32_t TOPRIGHT = 3;
 
-    public const BOTTOMCENTER: int32_t = 4;
+    public: const int32_t BOTTOMCENTER = 4;
 
-    public const TOPCENTER: int32_t = 5;
+    public: const int32_t TOPCENTER = 5;
 
-    public const ABSOLUTE: int32_t = 6;
+    public: const int32_t ABSOLUTE = 6;
 
 };
 

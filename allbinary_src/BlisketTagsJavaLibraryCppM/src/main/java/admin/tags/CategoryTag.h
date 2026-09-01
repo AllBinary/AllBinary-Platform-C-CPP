@@ -73,27 +73,26 @@
         #include "TableTag.h"
 
 class CategoryTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: xsl: string;
+    private: std::string xsl;
 
-public constructor ();
+public: CategoryTag();
 
-    public setXsl(string value);
-
-                //@Throws(LicensingException.constructor)
-            
-    string viewCategory();
+    public: void setXsl(std::string value);
 
                 //@Throws(LicensingException.constructor)
             
-    string viewCategories();
+    private: std::string viewCategory();
+
+                //@Throws(LicensingException.constructor)
+            
+    private: std::string viewCategories();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

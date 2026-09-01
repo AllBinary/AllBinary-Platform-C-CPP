@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -54,57 +56,54 @@
         #include "DownGameKeyEventHandlerBase.h"
 
 class DownGameKeyEventHandler: public DownGameKeyEventHandlerBase {
-        
 
-    private: static const instance: DownGameKeyEventHandler = new DownGameKeyEventHandler();
+    private: static DownGameKeyEventHandler instance() { return DownGameKeyEventHandler(); }
 
-    private: static const instanceArray: std::vector<DownGameKeyEventHandlerBase> = 
-                                                        [
-                                                            new DownGameKeyEventHandlerBase(),new DownGameKeyEventHandlerBase(),new DownGameKeyEventHandlerBase(),new DownGameKeyEventHandlerBase(),new DownGameKeyEventHandlerBase(),new DownGameKeyEventHandlerBase()
-                                                        ];
+    private: static const std::vector<DownGameKeyEventHandlerBase> instanceArray = 
+                                                        {
+                                                            DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase(),DownGameKeyEventHandlerBase()
+                                                        };
 
-    public static DownGameKeyEventHandler getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler.instance;
-    
-}
-
-
-    private: const playerInputIdFactory: LocalPlayerInputIdFactory = LocalPlayerInputIdFactory.getInstance()!;
-
-    public DownGameKeyEventHandlerBase getInstanceForDevice(int32_t deviceId){
-
-    playerInputId: int32_t = this.playerInputIdFactory!.getPlayerForDevice(deviceId)!;;
-    
+    public: static DownGameKeyEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler.instanceArray[playerInputId]!;
+                        return DownGameKeyEventHandler::instance();
     
 }
 
 
-    public DownGameKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId){
+    private: const LocalPlayerInputIdFactory playerInputIdFactory = LocalPlayerInputIdFactory::getInstance();
+
+    public: DownGameKeyEventHandlerBase getInstanceForDevice(int32_t deviceId){
+
+    int32_t playerInputId = this->playerInputIdFactory.getPlayerForDevice(deviceId);;
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DownGameKeyEventHandler.instanceArray[playerInputId]!;
+                        return DownGameKeyEventHandler::instanceArray[playerInputId]!;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+    public: DownGameKeyEventHandlerBase getInstanceForPlayer(int32_t playerInputId){
 
 
-    public removeAllListeners(){
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return DownGameKeyEventHandler::instanceArray[playerInputId]!;
+    
+}
+
+
+private: DownGameKeyEventHandler(){
+}
+
+
+    public: void removeAllListeners(){
 super.removeAllListeners();
     
 
@@ -112,16 +111,16 @@ super.removeAllListeners();
 
 
                         for (
-    index: int32_t = DownGameKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = DownGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownGameKeyEventHandler.instanceArray[index]!.removeAllListeners();
+DownGameKeyEventHandler::instanceArray[index]!.removeAllListeners();
     
 }
 
 }
 
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface){
 super.removeListenerSingleThreaded(eventListenerInterface);
     
 
@@ -129,9 +128,9 @@ super.removeListenerSingleThreaded(eventListenerInterface);
 
 
                         for (
-    index: int32_t = DownGameKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = DownGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownGameKeyEventHandler.instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
+DownGameKeyEventHandler::instanceArray[index]!.removeListenerSingleThreaded(eventListenerInterface);
     
 }
 
@@ -139,7 +138,7 @@ DownGameKeyEventHandler.instanceArray[index]!.removeListenerSingleThreaded(event
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface){
+    public: void removeListener(EventListenerInterface eventListenerInterface){
 super.removeListener(eventListenerInterface);
     
 
@@ -147,9 +146,9 @@ super.removeListener(eventListenerInterface);
 
 
                         for (
-    index: int32_t = DownGameKeyEventHandler.instanceArray!.length -1;index >= 0; index--)
+    int32_t index = DownGameKeyEventHandler::instanceArray.size() -1;index >= 0; index--)
         {
-DownGameKeyEventHandler.instanceArray[index]!.removeListener(eventListenerInterface);
+DownGameKeyEventHandler::instanceArray[index]!.removeListener(eventListenerInterface);
     
 }
 

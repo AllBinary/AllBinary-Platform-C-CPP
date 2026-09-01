@@ -54,21 +54,20 @@
 class FontDebugFactory
             : public Object
          {
-        
 
-    private: static const instance: FontDebugFactory = new FontDebugFactory();
+    private: static FontDebugFactory instance() { return FontDebugFactory(); }
 
-    public static FontDebugFactory getInstance(){
+    public: static FontDebugFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FontDebugFactory.instance;
+                        return FontDebugFactory::instance();
     
 }
 
 
-    public setFont(Font font, Graphics graphics){
+    public: void setFont(Font font, Graphics graphics){
 graphics.setFont(font);
     
 }

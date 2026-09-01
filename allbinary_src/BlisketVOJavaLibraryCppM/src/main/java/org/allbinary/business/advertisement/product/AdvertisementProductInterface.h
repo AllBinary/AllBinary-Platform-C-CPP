@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AdvertisementProductInterface {
-        
 
-    string getType();
+    std::string getType();
 
-    string getLink();
+    std::string getLink();
 
     int32_t getNumber();
 

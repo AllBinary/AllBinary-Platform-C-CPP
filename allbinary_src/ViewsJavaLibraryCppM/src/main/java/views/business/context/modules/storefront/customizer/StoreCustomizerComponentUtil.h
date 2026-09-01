@@ -69,23 +69,22 @@
 class StoreCustomizerComponentUtil
             : public Object
          {
-        
 
-    private: static const instance: StoreCustomizerComponentUtil = new StoreCustomizerComponentUtil();
+    private: static StoreCustomizerComponentUtil instance() { return StoreCustomizerComponentUtil(); }
 
-    public static StoreCustomizerComponentUtil getInstance();
+    public: static StoreCustomizerComponentUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public string generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+private: StoreCustomizerComponentUtil();
 
                 //@Throws(Exception.constructor)
             
-    generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Vector allViewsToBeModifiedVector);
+    public: std::string generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+
+                //@Throws(Exception.constructor)
+            
+    private: void generate(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface, Vector allViewsToBeModifiedVector);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDLOADER_H
         #define ORG_ALLBINARY_GAME_LAYER_RESOURCES_ONDEMANDLOADER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -79,27 +81,26 @@
 class OnDemandLoader
             : public Object
          {
-        
 
-    private: const onDemandResourcesFactory: OnDemandResourcesFactory;
+    private: OnDemandResourcesFactory onDemandResourcesFactory;
 
-    private: const gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory: GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
+    private: GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
 
-    private: const resourceAnimationInterfaceFactoryInterfaceFactory: BaseResourceAnimationInterfaceFactoryInterfaceFactory;
+    private: BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory;
 
-public constructor (OnDemandResourcesFactory onDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory);
-
-                //@Throws(Exception.constructor)
-            
-    public init(ImageCache imageCache, int32_t level, string loadingString);
+public: OnDemandLoader(OnDemandResourcesFactory onDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory);
 
                 //@Throws(Exception.constructor)
             
-    initAll(ImageCache imageCache, string loadingString);
+    public: void init(ImageCache imageCache, int32_t level, std::string loadingString);
 
                 //@Throws(Exception.constructor)
             
-    initLevel(LayerPlacementInterfaceBasicArrayListFactoryInterface layerPlacementInterfaceBasicArrayListFactoryInterface, ImageCache imageCache, int32_t level, string loadingString);
+    private: void initAll(ImageCache imageCache, std::string loadingString);
+
+                //@Throws(Exception.constructor)
+            
+    private: void initLevel(LayerPlacementInterfaceBasicArrayListFactoryInterface layerPlacementInterfaceBasicArrayListFactoryInterface, ImageCache imageCache, int32_t level, std::string loadingString);
 
 };
 

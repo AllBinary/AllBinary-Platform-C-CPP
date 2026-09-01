@@ -49,23 +49,20 @@
 class AcceptableResponse
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-protected constructor (string candidate, string tagName, int32_t index){
-
-            super();
-        this.logUtil!.putF(tagName, this, this.commonStrings!.CONSTRUCTOR);
+protected: AcceptableResponse(std::string candidate, std::string tagName, int32_t index){
+this->logUtil.putF(tagName, this, this->commonStrings.CONSTRUCTOR);
     
 
-    acceptableResponseUtil: AcceptableResponseUtil = AcceptableResponseUtil.getInstance()!;;
+    AcceptableResponseUtil acceptableResponseUtil = AcceptableResponseUtil::getInstance();;
     
-acceptableResponseUtil!.candidateVector!.add(index, candidate);
+acceptableResponseUtil.candidateVector.add(index, candidate);
     
-acceptableResponseUtil!.tagNameVector!.add(index, tagName);
+acceptableResponseUtil.tagNameVector.add(index, tagName);
     
 }
 

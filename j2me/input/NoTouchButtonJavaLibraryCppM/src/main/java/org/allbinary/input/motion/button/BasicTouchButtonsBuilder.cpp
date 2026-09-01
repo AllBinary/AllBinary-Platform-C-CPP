@@ -56,29 +56,28 @@
         #include "BaseTouchInput.h"
 
 class BasicTouchButtonsBuilder: public BaseTouchInput {
-        
 
-    private: static const SINGLETON: BasicTouchButtonsBuilder = new BasicTouchButtonsBuilder();
+    private: static const BasicTouchButtonsBuilder SINGLETON = BasicTouchButtonsBuilder();
 
-    public static BaseTouchInput getInstance(){
+    public: static BaseTouchInput getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicTouchButtonsBuilder.SINGLETON;
+                        return BasicTouchButtonsBuilder::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.GET_LIST);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.GET_LIST);
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
 
@@ -90,13 +89,13 @@ class BasicTouchButtonsBuilder: public BaseTouchInput {
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.GET_LIST, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.GET_LIST, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil.getInstance()!.getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
     
 }
 

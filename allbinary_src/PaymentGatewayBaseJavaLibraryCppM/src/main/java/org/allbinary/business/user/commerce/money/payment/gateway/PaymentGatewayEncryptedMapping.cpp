@@ -54,48 +54,45 @@
 class PaymentGatewayEncryptedMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: paymentGatewayInterface: PaymentGatewayInterface;
+    private: PaymentGatewayInterface paymentGatewayInterface;
 
-public constructor (PaymentGatewayInterface paymentGatewayInterface){
-
-            super();
-        this.paymentGatewayInterface= paymentGatewayInterface;
+public: PaymentGatewayEncryptedMapping(PaymentGatewayInterface paymentGatewayInterface){
+this->paymentGatewayInterface= paymentGatewayInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentGatewayInterface!.toHashMap(true);;
+                        return this->paymentGatewayInterface.toHashMap(true);;
     
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentGatewayInterface!.toVector(true);;
+                        return this->paymentGatewayInterface.toVector(true);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentGatewayInterface!.getKey();
+                        return this->paymentGatewayInterface.getKey();
     
 }
 

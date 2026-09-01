@@ -46,13 +46,12 @@
 #include "HtmlInputData.h"
 
 class HtmlRadioInput: public HtmlValueInput {
-        
 
-    private: const CHECKED: string = "checked";
+    private: const std::string CHECKED = "checked";
 
-public constructor (string before, string name, string value, string after);
+public: HtmlRadioInput(std::string before, std::string name, std::string value, std::string after);
 
-    public setSelected();
+    public: void setSelected();
 
 };
 

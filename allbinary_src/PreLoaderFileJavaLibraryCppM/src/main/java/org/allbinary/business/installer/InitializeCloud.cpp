@@ -77,73 +77,70 @@
 class InitializeCloud
             : public Object
          {
-        
 
-    public static const CLOUD: string = "cloud/";
+    public: static const std::string CLOUD = "cloud/";
 
-    public static const CLOUD_UPDATE: string = "cloudupdate/";
+    public: static const std::string CLOUD_UPDATE = "cloudupdate/";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: InitializeCloud(){
+}
 
 
-    public bool initialize(string cloud, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total){
+    public: bool initialize(std::string cloud, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total){
 
         try {
             
-                        if(AbIOSystem.getInstance()!.isType("com.vobject.appengine.java.io"))
+                        if(AbIOSystem::getInstance().isType("com.vobject.appengine.java.io"))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-stringBuffer!.append(cloud);
+stringBuffer.append(cloud);
     
-stringBuffer!.append(PATH_GLOBALS.getInstance()!.DATA_PATH);
-    
-
-    path: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
-    
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(PATH_GLOBALS::getInstance().DATA_PATH);
     
 
-    realPath: AbPath = new AbPath(stringBuffer!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath path = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
+    
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
 
-    file: AbFile = AbFile.createAbFileFromAbPath(path)!;;
+    AbPath realPath = AbPath(stringBuffer.toString(), StringUtil::getInstance().EMPTY_STRING);;
     
 
-    fileBasicArrayList: BasicArrayList = Directory.getInstance()!.search(file, true)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(path);;
     
 
-    size: int32_t = fileBasicArrayList!.size()!;;
-    
-stringBuffer!.delete(0, stringBuffer!.length());
-    
-stringBuffer!.append("Searched: ");
-    
-stringBuffer!.append(path.toFileSystemString());
-    
-stringBuffer!.append(" BasicArrayList: ");
-    
-stringBuffer!.appendint(size);
+    BasicArrayList fileBasicArrayList = Directory::getInstance().search(file, true);;
     
 
-    portion: int32_t = size /total +1;;
+    int32_t size = fileBasicArrayList.size();;
+    
+stringBuffer.delete(0, stringBuffer.length());
+    
+stringBuffer.append("Searched: ");
+    
+stringBuffer.append(path.toFileSystemString());
+    
+stringBuffer.append(" BasicArrayList: ");
+    
+stringBuffer.appendint(size);
     
 
-    start: int32_t = portion *current;;
+    int32_t portion = size /total +1;;
     
 
-    end: int32_t = start +portion;;
+    int32_t start = portion *current;;
+    
+
+    int32_t end = start +portion;;
     
 
                         if(end > size)
@@ -154,44 +151,44 @@ stringBuffer!.appendint(size);
 
                                     }
                                 
-stringBuffer!.append(" Section: ");
+stringBuffer.append(" Section: ");
     
-stringBuffer!.appendint(start);
+stringBuffer.appendint(start);
     
-stringBuffer!.append(" - ");
+stringBuffer.append(" - ");
     
-stringBuffer!.appendint(end);
+stringBuffer.appendint(end);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "initialize()");
+this->logUtil.putF(stringBuffer.toString(), this, "initialize()");
     
 
-    nextFile: AbFile;;
+    AbFile nextFile;;
     
 
 
 
 
                         for (
-    index: int32_t = start;index < end; index++)
+    int32_t index = start;index < end; index++)
         {
-nextFile= fileBasicArrayList!.get(index) as AbFile;
+nextFile= fileBasicArrayList.get(index) as AbFile;
     
 
-                        if(nextFile!.isDirectory())
+                        if(nextFile.isDirectory())
                         
                                     {
                                     
                                     }
                                 
                         else {
-                            FileUtil.getInstance()!.copyToCloud(nextFile, path, realPath, cloud, overwriteNewer, overwriteAll);
+                            FileUtil::getInstance().copyToCloud(nextFile, path, realPath, cloud, overwriteNewer, overwriteAll);
     
 
                         }
                             
 }
 
-this.logUtil!.putF("Copied Files To Cloud", this, "initialize()");
+this->logUtil.putF("Copied Files To Cloud", this, "initialize()");
     
 
                                     }
@@ -206,7 +203,7 @@ this.logUtil!.putF("Copied Files To Cloud", this, "initialize()");
                 //: 
 } catch(e) 
             {
-this.logUtil!.put("Unable to copy installer files into cloud", this, "initialize()", e);
+this->logUtil.put("Unable to copy installer files into cloud", this, "initialize()", e);
     
 
 

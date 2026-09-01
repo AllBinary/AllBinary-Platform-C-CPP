@@ -46,17 +46,16 @@
 class SensorActionFactory
             : public Object
          {
-        
 
-    private: static const instance: SensorActionFactory = new SensorActionFactory();
+    private: static SensorActionFactory instance() { return SensorActionFactory(); }
 
-    public static SensorActionFactory getInstance();
+    public: static SensorActionFactory getInstance();
 
-private constructor ();
+private: SensorActionFactory();
 
-    public const ATTACK: SensorAction = new SensorAction("Attack");
+    public: const SensorAction ATTACK = SensorAction("Attack");
 
-    public const EVADE: SensorAction = new SensorAction("Evade");
+    public: const SensorAction EVADE = SensorAction("Evade");
 
 };
 

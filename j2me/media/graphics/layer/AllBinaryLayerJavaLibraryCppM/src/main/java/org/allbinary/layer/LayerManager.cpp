@@ -65,68 +65,65 @@
 class LayerManager
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const layerManagerLogging: LayerManagerLoggingBase;
+    private: LayerManagerLoggingBase layerManagerLogging;
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: const anyType: SynchObject = new SynchObject();
+    private: const SynchObject anyType = SynchObject();
 
-public constructor (LayerManagerLoggingBase layerManagerLogging){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: LayerManager(LayerManagerLoggingBase layerManagerLogging){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.layerManagerLogging= layerManagerLogging;
+this->layerManagerLogging= layerManagerLogging;
     
 }
 
 
-    public bool contains(AllBinaryLayer layerInterface){
+    public: bool contains(AllBinaryLayer layerInterface){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.contains(layerInterface);;
+                        return this->list.contains(layerInterface);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryLayer layerInterface){
+    public: void update(AllBinaryLayer layerInterface){
 
-    had: bool = this.list.remove(layerInterface)!;;
+    bool had = this->list.remove(layerInterface);;
     
 
                         if(had)
                         
                                     {
                                     
-    nextLayerInterface: AllBinaryLayer;;
+    AllBinaryLayer nextLayerInterface;;
     
 
-    size: int32_t = this.list.size()!;;
+    int32_t size = this->list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-nextLayerInterface= this.list.get(index) as AllBinaryLayer;
+nextLayerInterface= this->list.get(index) as AllBinaryLayer;
     
 
-                        if(layerInterface!.getZP() > nextLayerInterface!.getZP())
+                        if(layerInterface.getZP() > nextLayerInterface.getZP())
                         
                                     {
-                                    this.list.addAt(index, layerInterface);
+                                    this->list.addAt(index, layerInterface);
     
 
 
@@ -139,7 +136,7 @@ nextLayerInterface= this.list.get(index) as AllBinaryLayer;
                                 
 }
 
-this.list.add(layerInterface);
+this->list.add(layerInterface);
     
 
                                     }
@@ -149,27 +146,27 @@ this.list.add(layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public insert(AllBinaryLayer layerInterface){
+    public: void insert(AllBinaryLayer layerInterface){
 
-    nextLayerInterface: AllBinaryLayer;;
+    AllBinaryLayer nextLayerInterface;;
     
 
-    size: int32_t = this.list.size()!;;
+    int32_t size = this->list.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-nextLayerInterface= this.list.get(index) as AllBinaryLayer;
+nextLayerInterface= this->list.get(index) as AllBinaryLayer;
     
 
-                        if(layerInterface!.getZP() > nextLayerInterface!.getZP())
+                        if(layerInterface.getZP() > nextLayerInterface.getZP())
                         
                                     {
-                                    this.appendAt(layerInterface, index);
+                                    this->appendAt(layerInterface, index);
     
 
 
@@ -182,86 +179,86 @@ nextLayerInterface= this.list.get(index) as AllBinaryLayer;
                                 
 }
 
-this.append(layerInterface);
+this->append(layerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public append(AllBinaryLayer layerInterface){
-this.layerManagerLogging!.append(layerInterface);
+    public: void append(AllBinaryLayer layerInterface){
+this->layerManagerLogging.append(layerInterface);
     
-this.list.add(layerInterface);
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public appendAt(AllBinaryLayer layerInterface, int32_t index){
-this.layerManagerLogging!.appendAt(layerInterface, index);
-    
-this.list.addAt(index, layerInterface);
+this->list.add(layerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public remove(AllBinaryLayer layerInterface){
+    public: void appendAt(AllBinaryLayer layerInterface, int32_t index){
+this->layerManagerLogging.appendAt(layerInterface, index);
+    
+this->list.addAt(index, layerInterface);
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void remove(AllBinaryLayer layerInterface){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.anyType) 
+        //synchronized(this->anyType) 
 
         //mutex.withLock
         
-this.layerManagerLogging!.remove(layerInterface);
+this->layerManagerLogging.remove(layerInterface);
     
 
-    result: bool = this.list.remove(layerInterface)!;;
+    bool result = this->list.remove(layerInterface);;
     
-this.layerManagerLogging!.removeResult(this, layerInterface, result);
+this->layerManagerLogging.removeResult(this, layerInterface, result);
     
 
 
 }
 
 
-    public Layer getLayerAt(int32_t index){
+    public: Layer getLayerAt(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.objectArray[index]! as Layer;
+                        return this->list.objectArray[index]! as Layer;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size();;
+                        return this->list.size();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public cleanup(){
+    public: void cleanup(){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.anyType) 
+        //synchronized(this->anyType) 
 
         //mutex.withLock
         
-this.list.clear();
+this->list.clear();
     
-this.layerManagerLogging!.clear();
+this->layerManagerLogging.clear();
     
 System.gc();
     
@@ -272,29 +269,29 @@ System.gc();
 }
 
 
-    public paint(Graphics g, int32_t x, int32_t y){
+    public: void paint(Graphics g, int32_t x, int32_t y){
 
         
         //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-        //synchronized(this.anyType) 
+        //synchronized(this->anyType) 
 
         //mutex.withLock
         
 
-    comp: Layer;;
+    Layer comp;;
     
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
-comp= this.list.objectArray[index]! as Layer;
+comp= this->list.objectArray[index]! as Layer;
     
 
                         if(comp != 
-                                    null
+                                    nullptr
                                  && comp.isVisible())
                         
                                     {

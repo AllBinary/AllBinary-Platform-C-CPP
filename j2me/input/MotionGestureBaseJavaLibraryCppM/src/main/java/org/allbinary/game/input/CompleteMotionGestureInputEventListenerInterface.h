@@ -51,9 +51,8 @@
         #include "CompleteMotionGestureInputEvent.h"
 
 class CompleteMotionGestureInputEventListenerInterface: public EventListenerInterface {
-        
 
-    onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
+    void onCompleteMotionGestureInputEvent(CompleteMotionGestureInputEvent completeMotionGestureInputEvent);
 
 };
 

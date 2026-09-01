@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_H
         #define ORG_ALLBINARY_GAME_PAINT_HELP_HELPPAINTABLE_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -85,36 +87,35 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HelpPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class HelpPaintable: public Paintable, public UpdateMyFontInterface {
 
-    const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    anchor: int32_t = Anchor.TOP_LEFT;
+    protected: int32_t anchor = Anchor::TOP_LEFT;
 
-    const title: string;
+    protected: std::string title;
 
-    inputInfo: std::vector<string> = StringUtil.getInstance()!.getArrayInstance()!;
+    protected: std::vector<std::string> inputInfo = StringUtil::getInstance().getArrayInstance();
 
-    basicColor: BasicColor;
+    protected: BasicColor basicColor;
 
-    titleBeginWidth: int32_t= 0;
+    protected: int32_t titleBeginWidth= 0;
 
-    private: beginWidthArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    private: charHeight: int32_t= 0;
+    private: int32_t charHeight= 0;
 
-public constructor (string title, BasicColor backgroundBasicColor, BasicColor basicColor);
+public: HelpPaintable(std::string title, BasicColor backgroundBasicColor, BasicColor basicColor);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public setInputInfoP(std::vector<string> inputInfo);
+    public: void setInputInfoP(std::vector<std::string> inputInfo);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

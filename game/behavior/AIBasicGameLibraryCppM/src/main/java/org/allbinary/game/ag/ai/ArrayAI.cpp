@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -55,48 +57,46 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ArrayAI: public BasicAI {
-        
 
-    private: const artificialIntelligenceInterfaceArray: std::vector<ArtificialIntelligenceInterface>;
+    private: std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray;
 
-public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: ArrayAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.artificialIntelligenceInterfaceArray= artificialIntelligenceInterface;
+this->artificialIntelligenceInterfaceArray= artificialIntelligenceInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-    size: int32_t = this.artificialIntelligenceInterfaceArray!.length
-                ;;
+    int32_t size = this->artificialIntelligenceInterfaceArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.artificialIntelligenceInterfaceArray[index]!.processAI(allBinaryLayerManager);
+this->artificialIntelligenceInterfaceArray[index]!.processAI(allBinaryLayerManager);
     
 }
 
 }
 
 
-    public std::vector<ArtificialIntelligenceInterface> getArtificialIntelligenceInterface(){
+    public: std::vector<ArtificialIntelligenceInterface> getArtificialIntelligenceInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.artificialIntelligenceInterfaceArray;
+                        return this->artificialIntelligenceInterfaceArray;
     
 }
 

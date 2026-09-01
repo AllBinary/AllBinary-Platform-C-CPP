@@ -38,21 +38,20 @@
 class AnalogLocationInputFactory
             : public Object
          {
-        
 
-    private: static const instance: AnalogLocationInputFactory = new AnalogLocationInputFactory();
+    private: static AnalogLocationInputFactory instance() { return AnalogLocationInputFactory(); }
 
-    public static AnalogLocationInputFactory getInstance();
+    public: static AnalogLocationInputFactory getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: AnalogLocationInputFactory();
 
-    public addPlayer(int32_t playerInputId);
+    public: void addPlayer(int32_t playerInputId);
 
-    public AnalogLocationInput getInstanceForPlayer(int32_t playerInputId);
+    public: AnalogLocationInput getInstanceForPlayer(int32_t playerInputId);
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 

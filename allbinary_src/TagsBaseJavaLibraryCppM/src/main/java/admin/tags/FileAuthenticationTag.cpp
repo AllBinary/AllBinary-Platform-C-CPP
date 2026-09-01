@@ -96,112 +96,109 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class FileAuthenticationTag: public CustomTagSupport {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: attemptsInteger: Integer;
+    private: Integer attemptsInteger;
 
-    private: weblisketSession: BasicWeblisketSession;
+    private: BasicWeblisketSession weblisketSession;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: command: string;
+    private: std::string command;
 
-    private: userName: string;
+    private: std::string userName;
 
-    private: password: string;
+    private: std::string password;
 
-    private: newPassword: string;
+    private: std::string newPassword;
 
-    private: authenticated: string;
+    private: std::string authenticated;
 
-    private: sessionUserName: string;
+    private: std::string sessionUserName;
 
-    private: role: BasicUserRole;
+    private: BasicUserRole role;
 
-    private: timeout: string;
+    private: std::string timeout;
 
-    private: roles: Vector;
+    private: Vector roles;
 
-public constructor (){
-
-            super();
-        }
+public: FileAuthenticationTag(){
+}
 
 
-    public setCommand(string command){
-this.command= command;
+    public: void setCommand(std::string command){
+this->command= command;
     
 }
 
 
-    public setUserName(string userName){
-this.userName= userName;
+    public: void setUserName(std::string userName){
+this->userName= userName;
     
 }
 
 
-    public setPassword(string value){
-this.password= value;
+    public: void setPassword(std::string value){
+this->password= value;
     
 }
 
 
-    public setNewPassword(string value){
-this.newPassword= value;
+    public: void setNewPassword(std::string value){
+this->newPassword= value;
     
 }
 
 
-    public setRoles(Vector values){
-this.roles= values;
+    public: void setRoles(Vector values){
+this->roles= values;
     
 }
 
 
-    makeSessionValid(BasicUserRole storedRole, string userName){
-this.weblisketSession!.setAuthenticated();
+    private: void makeSessionValid(BasicUserRole storedRole, std::string userName){
+this->weblisketSession.setAuthenticated();
     
-this.weblisketSession!.setRole(storedRole);
+this->weblisketSession.setRole(storedRole);
     
-this.weblisketSession!.setUserName(userName);
+this->weblisketSession.setUserName(userName);
     
-this.request.removeAttribute(WeblisketSessionData.REMOVABLEUSERNAME);
+this->request.removeAttribute(WeblisketSessionData::REMOVABLEUSERNAME);
     
-this.request.removeAttribute(WeblisketSessionData.REMOVABLEPASSWORD);
-    
-}
-
-
-    getFormData(){
-this.authenticated= this.weblisketSession!.getAuthentication();
-    
-this.sessionUserName= this.weblisketSession!.getUserName();
-    
-this.role= this.weblisketSession!.getRole();
-    
-this.attemptsInteger= this.weblisketSession!.getAttempts();
-    
-this.timeout= this.weblisketSession!.getTimeout();
+this->request.removeAttribute(WeblisketSessionData::REMOVABLEPASSWORD);
     
 }
 
 
-    public nextAttempt(){
+    private: void getFormData(){
+this->authenticated= this->weblisketSession.getAuthentication();
+    
+this->sessionUserName= this->weblisketSession.getUserName();
+    
+this->role= this->weblisketSession.getRole();
+    
+this->attemptsInteger= this->weblisketSession.getAttempts();
+    
+this->timeout= this->weblisketSession.getTimeout();
+    
+}
 
-                        if(this.attemptsInteger != 
-                                    null
-                                 && this.attemptsInteger!.intValue() > 0)
+
+    public: void nextAttempt(){
+
+                        if(this->attemptsInteger != 
+                                    nullptr
+                                 && this->attemptsInteger.intValue() > 0)
                         
                                     {
-                                    this.weblisketSession!.setAttempts(new Integer(this.attemptsInteger!.intValue() +1));
+                                    this->weblisketSession.setAttempts(Integer(this->attemptsInteger.intValue() +1));
     
 
                                     }
                                 
                         else {
-                            this.weblisketSession!.setAttempts(new Integer(1));
+                            this->weblisketSession.setAttempts(Integer(1));
     
 
                         }
@@ -211,23 +208,23 @@ this.timeout= this.weblisketSession!.getTimeout();
 
                 //@Throws(LicensingException.constructor)
             
-    bool changePassword(){
+    private: bool changePassword(){
 
         try {
             
-    userName: string = this.request.getParameter(WeblisketSessionData.REMOVABLEUSERNAME)!;;
+    std::string userName = this->request.getParameter(WeblisketSessionData::REMOVABLEUSERNAME);;
     
 
-    password: string = this.request.getParameter(WeblisketSessionData.REMOVABLEPASSWORD)!;;
+    std::string password = this->request.getParameter(WeblisketSessionData::REMOVABLEPASSWORD);;
     
 
-    newPassword: string = this.request.getParameter(WeblisketSessionData.REMOVABLENEWPASSWORD)!;;
+    std::string newPassword = this->request.getParameter(WeblisketSessionData::REMOVABLENEWPASSWORD);;
     
 
-    newReenteredPassword: string = this.request.getParameter(WeblisketSessionData.REMOVABLEREENTERNEWPASSWORD)!;;
+    std::string newReenteredPassword = this->request.getParameter(WeblisketSessionData::REMOVABLEREENTERNEWPASSWORD);;
     
 
-                        if(newPassword!.compareTo(newReenteredPassword) != 0)
+                        if(newPassword.compareTo(newReenteredPassword) != 0)
                         
                                     {
                                     
@@ -240,19 +237,19 @@ this.timeout= this.weblisketSession!.getTimeout();
                                     }
                                 
 
-    installerInfo: InstallerInfo = new InstallerInfo();;
+    InstallerInfo installerInfo = InstallerInfo();;
     
 
-                        if(installerInfo!.isValid(userName, password))
+                        if(installerInfo.isValid(userName, password))
                         
                                     {
-                                    installerInfo!.setPassword(newPassword);
+                                    installerInfo.setPassword(newPassword);
     
-installerInfo!.write();
+installerInfo.write();
     
-this.weblisketSession!.setUserName(userName);
+this->weblisketSession.setUserName(userName);
     
-this.weblisketSession!.setPassword(newPassword);
+this->weblisketSession.setPassword(newPassword);
     
 
 
@@ -284,10 +281,10 @@ this.weblisketSession!.setPassword(newPassword);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "invalidateSession()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "invalidateSession()", e);
     
 
                                     }
@@ -303,26 +300,26 @@ this.weblisketSession!.setPassword(newPassword);
 }
 
 
-    int32_t invalidateSession(){
+    private: int32_t invalidateSession(){
 
         try {
-            this.weblisketSession!.clear();
+            this->weblisketSession.clear();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Integer(TagSupport.EVAL_BODY_INCLUDE).intValue();;
+                        return Integer(TagSupport::EVAL_BODY_INCLUDE).intValue();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "invalidateSession()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "invalidateSession()", e);
     
 
                                     }
@@ -331,7 +328,7 @@ this.weblisketSession!.setPassword(newPassword);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 }
 
@@ -340,51 +337,51 @@ this.weblisketSession!.setPassword(newPassword);
 
                 //@Throws(LicensingException.constructor)
             
-    bool isSessionOld(){
+    private: bool isSessionOld(){
 
         try {
             
-                        if(this.role != 
-                                    null
+                        if(this->role != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-    timeCreated: int64_t = this.weblisketSession!.getCreationTime()!;;
+    int64_t timeCreated = this->weblisketSession.getCreationTime();;
     
 
-    sessionTimout: int64_t = this.role.getSessionTimeout()!;;
+    int64_t sessionTimout = this->role.getSessionTimeout();;
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    timeFirst: int64_t = calendar.getTimeInMillis() -sessionTimout;;
+    int64_t timeFirst = calendar.getTimeInMillis() -sessionTimout;;
     
 
                         if(timeFirst > timeCreated)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.AUTHENTICATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().AUTHENTICATION))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Session Is Old - Timeout: ");
+stringBuffer.append("Session Is Old - Timeout: ");
     
-stringBuffer!.appendlong(sessionTimout);
+stringBuffer.appendlong(sessionTimout);
     
-stringBuffer!.append(" Eval: ");
+stringBuffer.append(" Eval: ");
     
-stringBuffer!.appendlong(timeFirst);
+stringBuffer.appendlong(timeFirst);
     
-stringBuffer!.append(" > ");
+stringBuffer.append(" > ");
     
-stringBuffer!.appendlong(timeCreated);
+stringBuffer.appendlong(timeCreated);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "isSessionOld()");
+this->logUtil.putF(stringBuffer.toString(), this, "isSessionOld()");
     
 
                                     }
@@ -393,7 +390,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE.valueOf();;
+                        return Boolean::TRUE.valueOf();;
     
 
                                     }
@@ -403,10 +400,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isSessionOld()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.AUTHENTICATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().AUTHENTICATION))
                         
                                     {
-                                    this.logUtil!.putF("Role Is Not In Session", this, "isSessionOld()");
+                                    this->logUtil.putF("Role Is Not In Session", this, "isSessionOld()");
     
 
                                     }
@@ -418,17 +415,17 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isSessionOld()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isRarelyUsedSession().valueOf();;
+                        return this->isRarelyUsedSession().valueOf();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isSessionOld()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isSessionOld()", e);
     
 
                                     }
@@ -444,48 +441,48 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isSessionOld()");
 }
 
 
-    Boolean isRarelyUsedSession(){
+    private: Boolean isRarelyUsedSession(){
 
-                        if(this.role != 
-                                    null
+                        if(this->role != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-    timeCreated: int64_t = this.weblisketSession!.getCreationTime()!;;
+    int64_t timeCreated = this->weblisketSession.getCreationTime();;
     
 
-    lastAccess: int64_t = this.weblisketSession!.getLastAccessedTime()!;;
+    int64_t lastAccess = this->weblisketSession.getLastAccessedTime();;
     
 
-    timePassed: int64_t = this.role.getSessionInactivityTimeout()!;;
+    int64_t timePassed = this->role.getSessionInactivityTimeout();;
     
 
-    calendar: Calendar = Calendar.getInstance()!;;
+    Calendar calendar = Calendar::getInstance();;
     
 
-    timeFirst: int64_t = calendar.getTimeInMillis() -lastAccess;;
+    int64_t timeFirst = calendar.getTimeInMillis() -lastAccess;;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.AUTHENTICATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().AUTHENTICATION))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Session Is Rarely Used - Timeout: ");
+stringBuffer.append("Session Is Rarely Used - Timeout: ");
     
-stringBuffer!.appendlong(lastAccess);
+stringBuffer.appendlong(lastAccess);
     
-stringBuffer!.append(" Eval: ");
+stringBuffer.append(" Eval: ");
     
-stringBuffer!.appendlong(timeFirst);
+stringBuffer.appendlong(timeFirst);
     
-stringBuffer!.append(" > ");
+stringBuffer.append(" > ");
     
-stringBuffer!.appendlong(timePassed);
+stringBuffer.appendlong(timePassed);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "isRarelyUsedSession()");
+this->logUtil.putF(stringBuffer.toString(), this, "isRarelyUsedSession()");
     
 
                                     }
@@ -495,10 +492,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isRarelyUsedSession()");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.AUTHENTICATION))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().AUTHENTICATION))
                         
                                     {
-                                    this.logUtil!.putF("Role Is Not In Session", this, "isRarelyUsedSession()");
+                                    this->logUtil.putF("Role Is Not In Session", this, "isRarelyUsedSession()");
     
 
                                     }
@@ -510,33 +507,33 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isRarelyUsedSession()");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    bool isRoleValid(){
+    private: bool isRoleValid(){
 
         try {
-            this.makeSessionValid(BasicUserRoleFactory.getInstance()!.INSTALLER, userName);
+            this->makeSessionValid(BasicUserRoleFactory::getInstance().INSTALLER, userName);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE.valueOf();;
+                        return Boolean::TRUE.valueOf();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isRoleValid()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isRoleValid()", e);
     
 
                                     }
@@ -554,32 +551,32 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "isRarelyUsedSession()");
 
                 //@Throws(LicensingException.constructor)
             
-    string validRole(){
+    private: std::string validRole(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Trying New login<p>");
+stringBuffer.append("Trying New login<p>");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed to set valid role";;
+    std::string error = "Failed to set valid role";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "validRole()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "validRole()", e);
     
 
                                     }
@@ -597,36 +594,36 @@ stringBuffer!.append("Trying New login<p>");
 
                 //@Throws(LicensingException.constructor)
             
-    string invalidRole(){
+    private: std::string invalidRole(){
 
         try {
-            this.weblisketSession!.setAuthenticated(false);
+            this->weblisketSession.setAuthenticated(false);
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Sorry your username and password is invalid on this page.");
+stringBuffer.append("Sorry your username and password is invalid on this page.");
     
-stringBuffer!.append("Trying New login<p>");
+stringBuffer.append("Trying New login<p>");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed to set role invalid";;
+    std::string error = "Failed to set role invalid";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "invalidRole()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "invalidRole()", e);
     
 
                                     }
@@ -644,37 +641,35 @@ stringBuffer!.append("Trying New login<p>");
 
                 //@Throws(LicensingException.constructor)
             
-    bool isAuthenticationSessionValid(){
+    private: bool isAuthenticationSessionValid(){
 
         try {
             
-                        if(BooleanUtil.getInstance()!.getFromString(this.authenticated))
+                        if(BooleanUtil::getInstance().getFromString(this->authenticated))
                         
                                     {
                                     
-    size: int32_t = this.roles.length!;;
+    int32_t size = this->roles.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    mustBeOfRole: BasicUserRole = this.roles.get(index) as BasicUserRole;;
+    BasicUserRole mustBeOfRole = this->roles.get(index) as BasicUserRole;;
     
 
-                        if(this.sessionUserName != 
-                                    null
-                                 && this.role. === mustBeOfRole)
+                        if(true && this->role. === mustBeOfRole)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE.valueOf();;
+                        return Boolean::TRUE.valueOf();;
     
 
                                     }
@@ -685,7 +680,7 @@ stringBuffer!.append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE.valueOf();;
+                        return Boolean::FALSE.valueOf();;
     
 
                                     }
@@ -694,17 +689,17 @@ stringBuffer!.append("Trying New login<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE.valueOf();;
+                        return Boolean::FALSE.valueOf();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isAuthenticationSessionValid()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isAuthenticationSessionValid()", e);
     
 
                                     }
@@ -722,34 +717,30 @@ stringBuffer!.append("Trying New login<p>");
 
                 //@Throws(LicensingException.constructor)
             
-    bool processIfNewLogin(){
+    private: bool processIfNewLogin(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.putF("Starting for User: " +this.userName +" Attempt: " +this.weblisketSession!.getAttempts(), this, "processIfNewLogin()");
+                                    this->logUtil.putF("Starting for User: " +this->userName +" Attempt: " +this->weblisketSession.getAttempts(), this, "processIfNewLogin()");
     
 
                                     }
                                 
 
-                        if(this.userName != 
-                                    null
-                                 && this.userName!.compareTo(StringUtil.getInstance()!.EMPTY_STRING) != 0 && this.password != 
-                                    null
-                                 && this.password.compareTo(StringUtil.getInstance()!.EMPTY_STRING) != 0)
+                        if(true && this->userName.compareTo(StringUtil::getInstance().EMPTY_STRING) != 0 && true && this->password.compareTo(StringUtil::getInstance().EMPTY_STRING) != 0)
                         
                                     {
                                     
-    login: string;;
+    std::string login;;
     
 
-    installerInfo: InstallerInfo = new InstallerInfo();;
+    InstallerInfo installerInfo = InstallerInfo();;
     
 
-                        if(installerInfo!.isValid(this.userName, this.password))
+                        if(installerInfo.isValid(this->userName, this->password))
                         
                                     {
                                     login= org.allbinary.globals.GLOBALS2.LOGINSUCCESS;
@@ -767,45 +758,45 @@ stringBuffer!.append("Trying New login<p>");
                         if(login.compareTo(org.allbinary.globals.GLOBALS2.LOGINSUCCESS) == 0)
                         
                                     {
-                                    this.weblisketSession!.setAttempts(new Integer(0));
+                                    this->weblisketSession.setAttempts(Integer(0));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE.valueOf();;
+                        return Boolean::TRUE.valueOf();;
     
 
                                     }
                                 
-this.nextAttempt();
+this->nextAttempt();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE.valueOf();;
+                        return Boolean::FALSE.valueOf();;
     
 
                                     }
                                 
-this.nextAttempt();
+this->nextAttempt();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE.valueOf();;
+                        return Boolean::FALSE.valueOf();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "processIfNewLogin()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "processIfNewLogin()", e);
     
 
                                     }
@@ -823,20 +814,20 @@ this.nextAttempt();
 
                 //@Throws(LicensingException.constructor)
             
-    bool processInvalidation(){
+    private: bool processInvalidation(){
 
         try {
             
-                        if(BooleanUtil.getInstance()!.getFromString(this.timeout))
+                        if(BooleanUtil::getInstance().getFromString(this->timeout))
                         
                                     {
-                                    this.invalidateSession();
+                                    this->invalidateSession();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE.valueOf();;
+                        return Boolean::TRUE.valueOf();;
     
 
                                     }
@@ -844,13 +835,13 @@ this.nextAttempt();
 
 
                             {
-                            this.weblisketSession!.setTimeout(BooleanFactory.getInstance()!.TRUE_STRING);
+                            this->weblisketSession.setTimeout(BooleanFactory::getInstance().TRUE_STRING);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE.valueOf();;
+                        return Boolean::FALSE.valueOf();;
     
 
                             }
@@ -860,10 +851,10 @@ this.nextAttempt();
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "isSetToInvalidate()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "isSetToInvalidate()", e);
     
 
                                     }
@@ -881,51 +872,49 @@ this.nextAttempt();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.weblisketSession= new BasicWeblisketSession(pageContext);
+this->weblisketSession= BasicWeblisketSession(pageContext);
     
-this.getFormData();
-    
-
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
-                        
-                                    {
-                                    this.logUtil!.putF("Started", this, this.tagStrings!.DO_START_TAG);
+this->getFormData();
     
 
-                                    }
-                                
-
-                        if(this.command != 
-                                    null
-                                )
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.CHANGEPASSWORD) == 0)
-                        
-                                    {
-                                    
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
-                        
-                                    {
-                                    this.logUtil!.putF("Change Password", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Started", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(!this.changePassword())
+                        if(true)
                         
                                     {
-                                    pageContext!.getOut()!.print("Password Change Attempt Failed.<p>");
+                                    
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.CHANGEPASSWORD) == 0)
+                        
+                                    {
+                                    
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
+                        
+                                    {
+                                    this->logUtil.putF("Change Password", this, this->tagStrings.DO_START_TAG);
+    
+
+                                    }
+                                
+
+                        if(!this->changePassword())
+                        
+                                    {
+                                    pageContext.getOut().print("Password Change Attempt Failed.<p>");
     
 
 
@@ -937,7 +926,7 @@ this.getFormData();
                                     }
                                 
                         else {
-                            pageContext!.getOut()!.print("Password Changed Successfully.<p>");
+                            pageContext.getOut().print("Password Changed Successfully.<p>");
     
 
 
@@ -952,14 +941,14 @@ this.getFormData();
                                     }
                                 
                              else 
-                        if(this.command.compareTo(WeblisketSessionData.INVALIDATESESSION) == 0)
+                        if(this->command.compareTo(WeblisketSessionData::INVALIDATESESSION) == 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("INVALIDATESESSION", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("INVALIDATESESSION", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
@@ -968,40 +957,40 @@ this.getFormData();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.invalidateSession();;
+                        return this->invalidateSession();;
     
 
                                     }
                                 
                         else {
                             
-                        if(this.isSessionOld())
+                        if(this->isSessionOld())
                         
                                     {
                                     
-                        if(this.processInvalidation())
+                        if(this->processInvalidation())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Processing Invalidation", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Processing Invalidation", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext!.getOut()!.print("Please login again.<p>");
+pageContext.getOut().print("Please login again.<p>");
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                                     }
@@ -1011,7 +1000,7 @@ pageContext!.getOut()!.print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                         }
@@ -1021,23 +1010,23 @@ pageContext!.getOut()!.print("Please login again.<p>");
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Preparing session for invalidation", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Preparing session for invalidation", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                                     }
@@ -1047,7 +1036,7 @@ pageContext!.getOut()!.print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                         }
@@ -1059,33 +1048,29 @@ pageContext!.getOut()!.print("Please login again.<p>");
                                     }
                                 
 
-                        if((this.userName == 
-                                    null
-                                 || this.userName!.compareTo(stringUtil!.EMPTY_STRING) == 0) && (this.password == 
-                                    null
-                                 || this.password.compareTo(stringUtil!.EMPTY_STRING) == 0) && this.roles != 
-                                    null
-                                 && this.isAuthenticationSessionValid())
+                        if((false || this->userName.compareTo(stringUtil.EMPTY_STRING) == 0) && (false || this->password.compareTo(stringUtil.EMPTY_STRING) == 0) && this->roles != 
+                                    nullptr
+                                 && this->isAuthenticationSessionValid())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Authenticated session is valid", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Authenticated session is valid", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                                     }
@@ -1095,7 +1080,7 @@ pageContext!.getOut()!.print("Please login again.<p>");
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                         }
@@ -1104,39 +1089,35 @@ pageContext!.getOut()!.print("Please login again.<p>");
                                     }
                                 
 
-                        if(this.userName != 
-                                    null
-                                 && this.password != 
-                                    null
-                                 && this.processIfNewLogin())
+                        if(true && true && this->processIfNewLogin())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Processing new login.", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Processing new login.", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.isRoleValid())
+                        if(this->isRoleValid())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Role is valid - Processing new login", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Role is valid - Processing new login", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext!.getOut()!.print(validRole());
+pageContext.getOut().print(validRole());
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1163,18 +1144,18 @@ pageContext!.getOut()!.print(validRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Role is not valid - Processing new login", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Role is not valid - Processing new login", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
-pageContext!.getOut()!.print(invalidRole());
+pageContext.getOut().print(invalidRole());
     
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
@@ -1204,23 +1185,19 @@ pageContext!.getOut()!.print(invalidRole());
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Invalid Login", this, this.tagStrings!.DO_START_TAG);
+                                    this->logUtil.putF("Invalid Login", this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.userName != 
-                                    null
-                                 && this.userName!.compareTo(StringUtil.getInstance()!.EMPTY_STRING) != 0 && this.password != 
-                                    null
-                                 && this.password.compareTo(StringUtil.getInstance()!.EMPTY_STRING) != 0)
+                        if(true && this->userName.compareTo(StringUtil::getInstance().EMPTY_STRING) != 0 && true && this->password.compareTo(StringUtil::getInstance().EMPTY_STRING) != 0)
                         
                                     {
-                                    pageContext!.getOut()!.print("Sorry your username and/or password is invalid.<p>");
+                                    pageContext.getOut().print("Sorry your username and/or password is invalid.<p>");
     
 
                                     }
@@ -1229,38 +1206,38 @@ pageContext!.getOut()!.print(invalidRole());
                         }
                             
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Major authentication error - userName: ");
+stringBuffer.append("Major authentication error - userName: ");
     
-stringBuffer!.append(this.userName);
+stringBuffer.append(this->userName);
     
-stringBuffer!.append(" Password: ");
+stringBuffer.append(" Password: ");
     
-stringBuffer!.append(this.password);
+stringBuffer.append(this->password);
     
-stringBuffer!.append(" Command: ");
+stringBuffer.append(" Command: ");
     
-stringBuffer!.append(this.command);
+stringBuffer.append(this->command);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.tagStrings!.DO_START_TAG);
+this->logUtil.putF(stringBuffer.toString(), this, this->tagStrings.DO_START_TAG);
     
 
                                     }
                                 
 
-                        if(this.command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
+                        if(this->command.compareTo(org.allbinary.globals.GLOBALS2.PROCESSBODYIFAUTHENTICATED) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.SKIP_BODY;
+                        return TagSupport::SKIP_BODY;
     
 
                                     }
@@ -1270,7 +1247,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.tagStrings!.DO_START_TAG
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                         }
@@ -1291,7 +1268,7 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.tagStrings!.DO_START_TAG
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -1304,7 +1281,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

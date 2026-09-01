@@ -62,29 +62,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicGameDemoPaintable: public StatePaintable {
-        
 
-    private: const mainDemoStatePaintable: Paintable;
+    private: Paintable mainDemoStatePaintable;
 
-    private: const ownershipPaintable: Paintable;
+    private: Paintable ownershipPaintable;
 
-    private: const helpPaintableInterface: Paintable;
+    private: Paintable helpPaintableInterface;
 
-    private: currentStatePaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable currentStatePaintable = NullPaintable::getInstance();
 
-public constructor (Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface);
+public: BasicGameDemoPaintable(Paintable mainDemoStatePaintable, Paintable ownershipPaintable, Paintable helpPaintableInterface);
 
-    public setState(int32_t state);
+    public: void setState(int32_t state);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public Paintable getHelpPaintableInterface();
+    public: Paintable getHelpPaintableInterface();
 
-    setCurrentStatePaintable(Paintable currentStatePaintable);
+    protected: void setCurrentStatePaintable(Paintable currentStatePaintable);
 
-    Paintable getCurrentStatePaintable();
+    protected: Paintable getCurrentStatePaintable();
 
-    Paintable getMainDemoStatePaintable();
+    protected: Paintable getMainDemoStatePaintable();
 
 };
 

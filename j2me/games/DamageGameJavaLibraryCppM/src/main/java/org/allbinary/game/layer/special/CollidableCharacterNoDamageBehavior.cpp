@@ -60,9 +60,8 @@
 #include "CollidableDestroyableDamageableLayer.h"
 
 class CollidableCharacterNoDamageBehavior: public CollidableDestroyableDamageableBehavior {
-        
 
-public constructor (bool collidable){
+public: CollidableCharacterNoDamageBehavior(bool collidable){
             super(collidable);
                     
 
@@ -73,21 +72,21 @@ public constructor (bool collidable){
 
                 //@Throws(Exception.constructor)
             
-    public collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
+    public: void collide(CollidableCompositeLayer ownerLayer, CollidableCompositeLayer collidableInterfaceCompositeInterface){
 
-    collisionTypeFactory: CollisionTypeFactory = CollisionTypeFactory.getInstance()!;;
+    CollisionTypeFactory collisionTypeFactory = CollisionTypeFactory::getInstance();;
     
 
-    collisionType: CollisionType = collidableInterfaceCompositeInterface!.getCollidableInferface()!.getCollisionTypeWith(ownerLayer)!;;
+    CollisionType collisionType = collidableInterfaceCompositeInterface.getCollidableInferface().getCollisionTypeWith(ownerLayer);;
     
 
-                        if(collisionType == collisionTypeFactory!.PICKUP)
+                        if(collisionType == collisionTypeFactory.PICKUP)
                         
                                     {
                                     
-    collidableDestroyableDamageableLayer: CollidableDestroyableDamageableLayer = ownerLayer as CollidableDestroyableDamageableLayer;;
+    CollidableDestroyableDamageableLayer collidableDestroyableDamageableLayer = ownerLayer as CollidableDestroyableDamageableLayer;;
     
-collidableDestroyableDamageableLayer!.getPickupBehavior()!.doPickupLayer(collidableInterfaceCompositeInterface as PickedUpLayerInterface);
+collidableDestroyableDamageableLayer.getPickupBehavior().doPickupLayer(collidableInterfaceCompositeInterface as PickedUpLayerInterface);
     
 
                                     }
@@ -101,8 +100,8 @@ collidableDestroyableDamageableLayer!.getPickupBehavior()!.doPickupLayer(collida
 
                 //@Throws(Exception.constructor)
             
-    public collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
-ForcedLogUtil.log(this.commonStrings!.NOT_IMPLEMENTED, this);
+    public: void collideInterface(CollidableCompositeLayer ownerLayer, CollidableInterfaceCompositeInterface collidableInterfaceCompositeInterface){
+ForcedLogUtil::log(this->commonStrings.NOT_IMPLEMENTED, this);
     
 }
 

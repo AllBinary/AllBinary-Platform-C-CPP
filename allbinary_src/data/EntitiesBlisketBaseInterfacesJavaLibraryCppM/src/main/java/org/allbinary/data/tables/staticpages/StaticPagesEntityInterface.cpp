@@ -47,15 +47,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StaticPagesEntityInterface: public BasicDataTableInterface {
-        
 
-    string getFile(string store, string keywords)
+    std::string getFile(std::string store, std::string keywords)
 
-    delete(string value)
+    void delete_(std::string value)
 
-    insert(Vector values)
+    void insert(Vector values)
 
-    update(HashMap<any, any> updatedValues)
+    void update(HashMap<any, any> updatedValues)
 
 };
 

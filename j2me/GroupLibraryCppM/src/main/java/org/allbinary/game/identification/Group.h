@@ -62,23 +62,22 @@
 class Group
             : public Object
         : public GroupInterface {
-        
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const teamId: int16_t;
+    private: int16_t teamId;
 
-    private: string: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string string = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string teamName, int16_t teamId);
+public: Group(std::string teamName, int16_t teamId);
 
-    public string getGroupName();
+    public: std::string getGroupName();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public int16_t getGroupId();
+    public: int16_t getGroupId();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

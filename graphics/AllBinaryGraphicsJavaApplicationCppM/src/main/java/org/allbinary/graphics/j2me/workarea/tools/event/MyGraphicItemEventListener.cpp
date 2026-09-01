@@ -41,19 +41,18 @@
         #include "MyGraphicItemEvent.h"
 
 class MyGraphicItemEventListener {
-        
 
-    delete(MyGraphicItemEvent evt)
+    void delete_(MyGraphicItemEvent evt)
 
                 //@Throws(Exception.constructor)
             
-    duplicate(MyGraphicItemEvent evt)
+    void duplicate(MyGraphicItemEvent evt)
 
-    rotate(MyGraphicItemEvent evt)
+    void rotate(MyGraphicItemEvent evt)
 
-    highlight(MyGraphicItemEvent evt)
+    void highlight(MyGraphicItemEvent evt)
 
-    deselect(MyGraphicItemEvent evt)
+    void deselect(MyGraphicItemEvent evt)
 
 };
 

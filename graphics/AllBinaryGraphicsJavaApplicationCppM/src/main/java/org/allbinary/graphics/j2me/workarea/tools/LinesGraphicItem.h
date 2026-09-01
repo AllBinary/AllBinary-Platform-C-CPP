@@ -120,134 +120,133 @@
 class LinesGraphicItem
             : public Object
         : public GraphicItemInterface {
-        
 
-    private: static const RECT: string = "rect";
+    private: static const std::string RECT = "rect";
 
-    private: static const ARC: string = "arc";
+    private: static const std::string ARC = "arc";
 
-    private: static const STRING: string = "string";
+    private: static const std::string STRING = "string";
 
-    private: static const CHAR: string = "char";
+    private: static const std::string CHAR = "char";
 
-    private: static const IMAGE: string = "image";
+    private: static const std::string IMAGE = "image";
 
-    private: static item: int32_t = 0;
+    private: static int32_t item = 0;
 
-    private: static const NAME: string = "Line Tool";
+    private: static const std::string NAME = "Line Tool";
 
-    public static string getStaticName();
+    public: static std::string getStaticName();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    private: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    private: treeNode: DefaultMutableTreeNode;
+    private: DefaultMutableTreeNode treeNode;
 
-    private: pointTreeNodeVector: Vector;
+    private: Vector pointTreeNodeVector;
 
-    private: currentMousePoint: GPoint;
+    private: GPoint currentMousePoint;
 
-    private: fulcrumPoint: GPoint;
+    private: GPoint fulcrumPoint;
 
-    private: active: bool = false;
+    private: bool active = false;
 
-    private: theta: double = 0;
+    private: double theta = 0;
 
-    private: color: Color = new Color(BasicColorFactory.getInstance()!.WHITE.intValue());
+    private: Color color = Color(BasicColorFactory::getInstance().WHITE.intValue());
 
-    private: points: Points;
+    private: Points points;
 
-public constructor ();
+public: LinesGraphicItem();
 
-public constructor (Node linesNode);
-
-                //@Throws(Exception.constructor)
-            
-    public init();
+public: LinesGraphicItem(Node linesNode);
 
                 //@Throws(Exception.constructor)
             
-    public translate(int32_t x, int32_t y);
+    public: void init();
 
-    public setRotate(double theta);
+                //@Throws(Exception.constructor)
+            
+    public: void translate(int32_t x, int32_t y);
 
-    public addRotate(double theta);
+    public: void setRotate(double theta);
 
-    public setAngle(double angle);
+    public: void addRotate(double theta);
 
-    public addAngle(double angle);
+    public: void setAngle(double angle);
 
-    public MutableTreeNode getTreeNode();
+    public: void addAngle(double angle);
 
-    public string getName();
+    public: MutableTreeNode getTreeNode();
+
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    addPoint(NodeList pointNodes);
+    private: void addPoint(NodeList pointNodes);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addPoint(GPoint point);
+    public: void addPoint(GPoint point);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public GPoint removePoint();
+    public: GPoint removePoint();
 
-    public bool isActive();
+    public: bool isActive();
 
-    public deactivate();
+    public: void deactivate();
 
-    public activate();
-
-                //@Throws(Exception.constructor)
-            
-    public duplicatePoints(BasicArrayList list);
+    public: void activate();
 
                 //@Throws(Exception.constructor)
             
-    public GraphicItemInterface duplicate();
-
-    public double getAngle();
-
-    public setFulcrumPoint(GPoint point);
-
-    public paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
+    public: void duplicatePoints(BasicArrayList list);
 
                 //@Throws(Exception.constructor)
             
-    public Node toDom(CanvasDom canvasDom);
+    public: GraphicItemInterface duplicate();
 
-    public bool isValid();
+    public: double getAngle();
 
-    public Points getPointsInterface();
+    public: void setFulcrumPoint(GPoint point);
 
-    public setPointsInterface(Points points);
+    public: void paint(Graphics g, number canvasAngle, IntegerDimension dimension, int32_t x, int32_t y);
 
-    public Color getColor();
+                //@Throws(Exception.constructor)
+            
+    public: Node toDom(CanvasDom canvasDom);
 
-    public setColor(Color color);
+    public: bool isValid();
 
-    public mouseClicked(java.awt.event.MouseEvent mouseEvent, int32_t x, int32_t y);
+    public: Points getPointsInterface();
 
-    public mouseEntered(java.awt.event.MouseEvent mouseEvent);
+    public: void setPointsInterface(Points points);
 
-    public mouseExited(java.awt.event.MouseEvent mouseEvent);
+    public: Color getColor();
 
-    public mousePressed(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void setColor(Color color);
 
-    public mouseReleased(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseClicked(java::awt::event::MouseEvent mouseEvent, int32_t x, int32_t y);
 
-    public mouseDragged(java.awt.event.MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+    public: void mouseEntered(java::awt::event::MouseEvent mouseEvent);
 
-    public mouseMoved(java.awt.event.MouseEvent mouseEvent, int32_t x, int32_t y);
+    public: void mouseExited(java::awt::event::MouseEvent mouseEvent);
 
-    public keyPressed(java.awt.event.KeyEvent keyEvent);
+    public: void mousePressed(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public keyReleased(java.awt.event.KeyEvent keyEvent);
+    public: void mouseReleased(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
 
-    public keyTyped(java.awt.event.KeyEvent keyEvent);
+    public: void mouseDragged(java::awt::event::MouseEvent mouseEvent, int32_t xPixelsPerCell, int32_t yPixelsPerCell);
+
+    public: void mouseMoved(java::awt::event::MouseEvent mouseEvent, int32_t x, int32_t y);
+
+    public: void keyPressed(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyReleased(java::awt::event::KeyEvent keyEvent);
+
+    public: void keyTyped(java::awt::event::KeyEvent keyEvent);
 
 };
 

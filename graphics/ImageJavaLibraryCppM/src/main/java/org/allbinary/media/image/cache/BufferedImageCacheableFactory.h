@@ -53,11 +53,10 @@
 class BufferedImageCacheableFactory
             : public Object
         : public CacheableInterfaceFactoryInterface {
-        
 
-public constructor ();
+public: BufferedImageCacheableFactory();
 
-    public CacheableInterface getInstance(any = {} key);
+    public: CacheableInterface getInstance(Object* key);
 
 };
 

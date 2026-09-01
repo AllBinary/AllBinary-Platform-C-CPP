@@ -68,29 +68,26 @@
 class PaymentGatewayInterfaceFactory
             : public Object
         : public PaymentGatewayInterfaceFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: PaymentGatewayInterfaceFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayInterface getInstance(HttpServletRequest httpServletRequest){
+    public: PaymentGatewayInterface getInstance(HttpServletRequest httpServletRequest){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF("Getting", this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Getting", this, commonStrings.GET_INSTANCE);
     
 
                                     }
@@ -99,17 +96,17 @@ public constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstance(new RequestParams(httpServletRequest).toHashMap());;
+                        return this->getInstance(RequestParams(httpServletRequest).toHashMap());;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "getInstance(HttpServletRequest)", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "getInstance(HttpServletRequest)", e);
     
 
                                     }
@@ -126,62 +123,62 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayInterface getInstance(BasicPaymentType paymentType){
+    public: PaymentGatewayInterface getInstance(BasicPaymentType paymentType){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(PaymentGatewayData.NAME.toString(), paymentType!.getName());
+hashMap.put(PaymentGatewayData::NAME.toString(), paymentType.getName());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getInstance(hashMap);;
+                        return this->getInstance(hashMap);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayInterface getInstance(HashMap<any, any> hashMap){
+    public: PaymentGatewayInterface getInstance(HashMap<any, any> hashMap){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
         try {
             
-    gatewayName: string = hashMap!.get(PaymentGatewayData.NAME.toString()) as string;;
+    std::string gatewayName = hashMap.get(PaymentGatewayData::NAME.toString()) as string;;
     
 
-    paymentType: BasicPaymentType = BasicPaymentTypeUtil.getInstance()!.get(gatewayName)!;;
+    BasicPaymentType paymentType = BasicPaymentTypeUtil::getInstance().get(gatewayName);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF("Getting PaymentGatewayInterface for PaymentType: " +paymentType!.getName() +" with: " +hashMap, this, commonStrings!.GET_INSTANCE);
+                                    this->logUtil.putF("Getting PaymentGatewayInterface for PaymentType: " +paymentType.getName() +" with: " +hashMap, this, commonStrings.GET_INSTANCE);
     
 
                                     }
                                 
 
-    paymentGatewayInterfaceFactoryInterface: PaymentGatewayInterfaceFactoryInterface = paymentType!.getPaymentGatewayInterfaceFactoryInterface()!;;
+    PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface = paymentType.getPaymentGatewayInterfaceFactoryInterface();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return paymentGatewayInterfaceFactoryInterface!.getInstance(hashMap);;
+                        return paymentGatewayInterfaceFactoryInterface.getInstance(hashMap);;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENTERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENTERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.GET_INSTANCE, e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.GET_INSTANCE, e);
     
 
                                     }

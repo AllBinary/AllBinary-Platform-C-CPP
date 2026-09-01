@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/game/TiledLayer.h>
@@ -46,30 +48,29 @@
 class TiledLayerFactory
             : public Object
          {
-        
 
-    public TiledLayer getInstance(RaceTrackData raceTrackData){
+    public: TiledLayer getInstance(RaceTrackData raceTrackData){
 
-    mapArray: std::vector<std::vector<int32_t>> = raceTrackData!.getMapArray()!;;
+    std::vector<std::vector<int32_t>> mapArray = raceTrackData.getMapArray();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TiledLayer(mapArray[0]!.length, mapArray!.length, raceTrackData!.getTileSetImage(), raceTrackData!.getCellWidth(), raceTrackData!.getCellHeight());
+                        return TiledLayer(mapArray[0]!.size(), mapArray.size(), raceTrackData.getTileSetImage(), raceTrackData.getCellWidth(), raceTrackData.getCellHeight());
     
 }
 
 
-    public TiledLayer getMiniInstance(RaceTrackData raceTrackData){
+    public: TiledLayer getMiniInstance(RaceTrackData raceTrackData){
 
-    mapArray: std::vector<std::vector<int32_t>> = raceTrackData!.getMapArray()!;;
+    std::vector<std::vector<int32_t>> mapArray = raceTrackData.getMapArray();;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TiledLayer(mapArray[0]!.length, mapArray!.length, raceTrackData!.getMiniTileSetImage(), raceTrackData!.getMiniCellWidth(), raceTrackData!.getMiniCellHeight());
+                        return TiledLayer(mapArray[0]!.size(), mapArray.size(), raceTrackData.getMiniTileSetImage(), raceTrackData.getMiniCellWidth(), raceTrackData.getMiniCellHeight());
     
 }
 

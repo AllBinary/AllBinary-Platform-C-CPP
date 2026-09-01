@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULEOSGISERVICEVISITOR_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -71,17 +73,16 @@
 class InputAutomationModuleOSGIServiceVisitor
             : public Object
         : public OSGIServiceVisitorInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-public constructor ();
+public: InputAutomationModuleOSGIServiceVisitor();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
-    public Boolean visit(OSGIServiceInterface osgiServiceInterface);
+    public: Boolean visit(OSGIServiceInterface osgiServiceInterface);
 
 };
 

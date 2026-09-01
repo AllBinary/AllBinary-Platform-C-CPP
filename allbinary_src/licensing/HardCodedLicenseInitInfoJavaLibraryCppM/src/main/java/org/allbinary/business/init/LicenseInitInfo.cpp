@@ -66,88 +66,85 @@
 class LicenseInitInfo
             : public Object
          {
-        
 
-    private: id: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string id = StringUtil::getInstance().EMPTY_STRING;
 
-    private: serverList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList serverList = BasicArrayListD();
 
- constructor (){
-
-            super();
-        }
+: LicenseInitInfo(){
+}
 
 
-    public string getLicenseId(){
+    public: std::string getLicenseId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.id;
+                        return this->id;
     
 }
 
 
-    public string getServer(int32_t index){
+    public: std::string getServer(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverList!.get(index) as string;
+                        return this->serverList.get(index) as string;
     
 }
 
 
-    public int32_t getNumberOfServers(){
+    public: int32_t getNumberOfServers(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverList!.size();;
+                        return this->serverList.size();;
     
 }
 
 
-    public setLicenseId(string value){
-this.id= value;
+    public: void setLicenseId(std::string value){
+this->id= value;
     
 }
 
 
-    public clearServers(){
-this.serverList!.clear();
+    public: void clearServers(){
+this->serverList.clear();
     
 }
 
 
-    public setServer(string value, int32_t index){
-this.serverList!.addAt(index, value);
+    public: void setServer(std::string value, int32_t index){
+this->serverList.addAt(index, value);
     
 }
 
 
-    public addServer(string value){
-this.serverList!.add(value);
+    public: void addServer(std::string value){
+this->serverList.add(value);
     
 }
 
 
-    public BasicArrayList getServerList(){
+    public: BasicArrayList getServerList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.serverList;
+                        return this->serverList;
     
 }
 
 
-    public setServerList(BasicArrayList servers){
+    public: void setServerList(BasicArrayList servers){
 
-                        if(DebugFactory.getInstance() == NoDebug.getInstance())
+                        if(DebugFactory::getInstance() == NoDebug::getInstance())
                         
                                     {
-                                    this.serverList= servers;
+                                    this->serverList= servers;
     
 
                                     }

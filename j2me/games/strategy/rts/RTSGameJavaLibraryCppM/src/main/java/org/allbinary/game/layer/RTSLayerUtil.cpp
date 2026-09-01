@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -88,27 +90,26 @@
 class RTSLayerUtil
             : public Object
          {
-        
 
-    private: static const instance: RTSLayerUtil = new RTSLayerUtil();
+    private: static RTSLayerUtil instance() { return RTSLayerUtil(); }
 
-    public static RTSLayerUtil getInstance(){
+    public: static RTSLayerUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSLayerUtil.instance;
+                        return RTSLayerUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const groupCommonFactory: GroupCommonFactory = GroupCommonFactory.getInstance()!;
+    private: const GroupCommonFactory groupCommonFactory = GroupCommonFactory::getInstance();
 
-    WeaponProperties createWeaponProperties(WeaponProperties weaponProperties, int32_t currentLevel, int32_t lastLevel){
+    private: WeaponProperties createWeaponProperties(WeaponProperties weaponProperties, int32_t currentLevel, int32_t lastLevel){
 
-    reloadTime: int64_t = weaponProperties!.getReloadTime()!;;
+    int64_t reloadTime = weaponProperties.getReloadTime();;
     
 
                         if(lastLevel > currentLevel)
@@ -129,7 +130,7 @@ class RTSLayerUtil
                                     }
                                 
 
-    newWeaponProperties: WeaponProperties = new WeaponProperties(reloadTime, weaponProperties!.getTargetingTime(), weaponProperties!.getSpeed()!.getUnscaled(), weaponProperties!.getDamage() /lastLevel *currentLevel, weaponProperties!.getDissipation());;
+    WeaponProperties newWeaponProperties = WeaponProperties(reloadTime, weaponProperties.getTargetingTime(), weaponProperties.getSpeed().getUnscaled(), weaponProperties.getDamage() /lastLevel *currentLevel, weaponProperties.getDissipation());;
     
 
 
@@ -140,71 +141,69 @@ class RTSLayerUtil
 }
 
 
-    public downgrade(RTSLayer rtsLayer){
-rtsLayer!.setLevel(rtsLayer!.getLevel() -1);
+    public: void downgrade(RTSLayer rtsLayer){
+rtsLayer.setLevel(rtsLayer.getLevel() -1);
     
 
-    partInterfaceArray: std::vector<PartInterface> = rtsLayer!.getPartInterfaceArray()!;;
+    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
     
 
-    size: int32_t = partInterfaceArray!.length
-                ;;
+    int32_t size = partInterfaceArray.size();;
     
 
-    partInterface: BasicWeaponPart;;
-    
-
-
-
-
-                        for (
-    index: int32_t = size;--index >= 0; )
-        {
-partInterface= partInterfaceArray[index]! as BasicWeaponPart;
-    
-partInterface!.setWeaponProperties(this.createWeaponProperties(partInterface!.getWeaponProperties(), rtsLayer!.getLevel(), rtsLayer!.getLevel() +1));
-    
-}
-
-rtsLayer!.select();
-    
-}
-
-
-    public upgrade(RTSLayer rtsLayer){
-rtsLayer!.setLevel(rtsLayer!.getLevel() +1);
-    
-
-    partInterfaceArray: std::vector<PartInterface> = rtsLayer!.getPartInterfaceArray()!;;
-    
-
-    size: int32_t = partInterfaceArray!.length
-                ;;
-    
-
-    partInterface: BasicWeaponPart;;
+    BasicWeaponPart partInterface;;
     
 
 
 
 
                         for (
-    index: int32_t = size;--index >= 0; )
+    int32_t index = size;--index >= 0; )
         {
 partInterface= partInterfaceArray[index]! as BasicWeaponPart;
     
-partInterface!.setWeaponProperties(this.createWeaponProperties(partInterface!.getWeaponProperties(), rtsLayer!.getLevel(), rtsLayer!.getLevel() -1));
+partInterface.setWeaponProperties(this->createWeaponProperties(partInterface.getWeaponProperties(), rtsLayer.getLevel(), rtsLayer.getLevel() +1));
     
 }
 
-rtsLayer!.select();
+rtsLayer.select();
     
 }
 
 
-    private: const MAX_RELOAD_TIME: int64_t = Integer.MAX_VALUE /100000;
+    public: void upgrade(RTSLayer rtsLayer){
+rtsLayer.setLevel(rtsLayer.getLevel() +1);
+    
 
-    public int64_t getCostExponential(int64_t cost){
+    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
+    
+
+    int32_t size = partInterfaceArray.size();;
+    
+
+    BasicWeaponPart partInterface;;
+    
+
+
+
+
+                        for (
+    int32_t index = size;--index >= 0; )
+        {
+partInterface= partInterfaceArray[index]! as BasicWeaponPart;
+    
+partInterface.setWeaponProperties(this->createWeaponProperties(partInterface.getWeaponProperties(), rtsLayer.getLevel(), rtsLayer.getLevel() -1));
+    
+}
+
+rtsLayer.select();
+    
+}
+
+
+    private: const int64_t MAX_RELOAD_TIME = Integer::MAX_VALUE /100000;
+
+    public: int64_t getCostExponential(int64_t cost){
 
 
 
@@ -214,11 +213,11 @@ rtsLayer!.select();
 }
 
 
-    int32_t getWeaponPropertiesCost(WeaponProperties weaponProperties){
+    private: int32_t getWeaponPropertiesCost(WeaponProperties weaponProperties){
 
-    cost: int64_t = (weaponProperties!.getDamage() +weaponProperties!.getRange() +((this.MAX_RELOAD_TIME /weaponProperties!.getReloadTime())>>1));;
+    int64_t cost = (weaponProperties.getDamage() +weaponProperties.getRange() +((this->MAX_RELOAD_TIME /weaponProperties.getReloadTime())>>1));;
     
-cost= this.getCostExponential(cost);
+cost= this->getCostExponential(cost);
     
 
 
@@ -229,35 +228,34 @@ cost= this.getCostExponential(cost);
 }
 
 
-    public int32_t getCost(RTSLayer rtsLayer){
+    public: int32_t getCost(RTSLayer rtsLayer){
 
-    total: int32_t = 0;;
+    int32_t total = 0;;
     
 
-    partInterfaceArray: std::vector<PartInterface> = rtsLayer!.getPartInterfaceArray()!;;
+    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
     
 
-    size: int32_t = partInterfaceArray!.length
-                ;;
+    int32_t size = partInterfaceArray.size();;
     
 
-    partInterface: BasicWeaponPart;;
+    BasicWeaponPart partInterface;;
     
 
-    weaponProperties: WeaponProperties;;
+    WeaponProperties weaponProperties;;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
 partInterface= partInterfaceArray[index]! as BasicWeaponPart;
     
-weaponProperties= partInterface!.getWeaponProperties();
+weaponProperties= partInterface.getWeaponProperties();
     
-total += this.getWeaponPropertiesCost(weaponProperties);
+total += this->getWeaponPropertiesCost(weaponProperties);
     
 }
 
@@ -270,43 +268,42 @@ total += this.getWeaponPropertiesCost(weaponProperties);
 }
 
 
-    public int32_t getDowngradeCost(RTSLayer rtsLayer){
+    public: int32_t getDowngradeCost(RTSLayer rtsLayer){
 
-    partInterfaceArray: std::vector<PartInterface> = rtsLayer!.getPartInterfaceArray()!;;
+    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
     
 
-    size: int32_t = partInterfaceArray!.length
-                ;;
+    int32_t size = partInterfaceArray.size();;
     
 
-    downgradeCost: int32_t = 0;;
+    int32_t downgradeCost = 0;;
     
 
-    partInterface: BasicWeaponPart;;
+    BasicWeaponPart partInterface;;
     
 
-    weaponProperties: WeaponProperties;;
+    WeaponProperties weaponProperties;;
     
 
-    downgradeWeaponCost: int32_t= 0;;
+    int32_t downgradeWeaponCost= 0;;
     
 
-    currentWeaponCost: int32_t= 0;;
+    int32_t currentWeaponCost= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
 partInterface= partInterfaceArray[index]! as BasicWeaponPart;
     
-weaponProperties= partInterface!.getWeaponProperties();
+weaponProperties= partInterface.getWeaponProperties();
     
-downgradeWeaponCost= this.getWeaponPropertiesCost(this.createWeaponProperties(weaponProperties, rtsLayer!.getLevel() -1, rtsLayer!.getLevel()));
+downgradeWeaponCost= this->getWeaponPropertiesCost(this->createWeaponProperties(weaponProperties, rtsLayer.getLevel() -1, rtsLayer.getLevel()));
     
-currentWeaponCost= this.getWeaponPropertiesCost(weaponProperties);
+currentWeaponCost= this->getWeaponPropertiesCost(weaponProperties);
     
 downgradeCost += (currentWeaponCost -downgradeWeaponCost);
     
@@ -314,7 +311,7 @@ downgradeCost += (currentWeaponCost -downgradeWeaponCost);
 
 downgradeCost= downgradeCost *9 /10;
     
-this.logUtil!.putF(new StringMaker().append("Total Cost: ")!.appendint(downgradeCost)!.toString(), this, "getDowngradeCost");
+this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(downgradeCost).toString(), this, "getDowngradeCost");
     
 
 
@@ -325,49 +322,48 @@ this.logUtil!.putF(new StringMaker().append("Total Cost: ")!.appendint(downgrade
 }
 
 
-    public int32_t getUpgradeCost(RTSLayer rtsLayer){
+    public: int32_t getUpgradeCost(RTSLayer rtsLayer){
 
-    upgradeCost: int32_t = 0;;
+    int32_t upgradeCost = 0;;
     
 
-    partInterfaceArray: std::vector<PartInterface> = rtsLayer!.getPartInterfaceArray()!;;
+    std::vector<PartInterface> partInterfaceArray = rtsLayer.getPartInterfaceArray();;
     
 
-    size: int32_t = partInterfaceArray!.length
-                ;;
+    int32_t size = partInterfaceArray.size();;
     
 
-    partInterface: BasicWeaponPart;;
+    BasicWeaponPart partInterface;;
     
 
-    weaponProperties: WeaponProperties;;
+    WeaponProperties weaponProperties;;
     
 
-    upgradedWeaponCost: int32_t= 0;;
+    int32_t upgradedWeaponCost= 0;;
     
 
-    currentWeaponCost: int32_t= 0;;
+    int32_t currentWeaponCost= 0;;
     
 
 
 
 
                         for (
-    index: int32_t = size -1;index >= 0; index--)
+    int32_t index = size -1;index >= 0; index--)
         {
 partInterface= partInterfaceArray[index]! as BasicWeaponPart;
     
-weaponProperties= partInterface!.getWeaponProperties();
+weaponProperties= partInterface.getWeaponProperties();
     
-upgradedWeaponCost= this.getWeaponPropertiesCost(this.createWeaponProperties(weaponProperties, rtsLayer!.getLevel() +1, rtsLayer!.getLevel()));
+upgradedWeaponCost= this->getWeaponPropertiesCost(this->createWeaponProperties(weaponProperties, rtsLayer.getLevel() +1, rtsLayer.getLevel()));
     
-currentWeaponCost= this.getWeaponPropertiesCost(weaponProperties);
+currentWeaponCost= this->getWeaponPropertiesCost(weaponProperties);
     
 upgradeCost += (upgradedWeaponCost -currentWeaponCost);
     
 }
 
-this.logUtil!.putF(new StringMaker().append("Total Cost: ")!.appendint(upgradeCost)!.toString(), this, "getUpgradeCost");
+this->logUtil.putF(StringMaker().append("Total Cost: ").appendint(upgradeCost).toString(), this, "getUpgradeCost");
     
 
 
@@ -380,20 +376,20 @@ this.logUtil!.putF(new StringMaker().append("Total Cost: ")!.appendint(upgradeCo
 
                 //@Throws(Exception.constructor)
             
-    public destroyAndClear(BasicArrayList list){
+    public: void destroyAndClear(BasicArrayList list){
 
-    rtsLayer: RTSLayer;;
+    RTSLayer rtsLayer;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 rtsLayer= list.get(index) as RTSLayer;
     
-rtsLayer!.setDestroyed(true);
+rtsLayer.setDestroyed(true);
     
 }
 
@@ -402,23 +398,23 @@ list.clear();
 }
 
 
-    public Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
+    public: Hashtable<any, any> createFakeRTSLayerHashtable(BaseRaceTrackGeographicMap baseRaceTrackGeographicMap){
 
-    hashtable: Hashtable<any, any> = new Hashtable<any, any>();;
+    Hashtable<any, any> hashtable = Hashtable<any, any>();;
     
 
-    layerManager: FakeLayerManager = new FakeLayerManager(GameInfo.NONE);;
+    FakeLayerManager layerManager = FakeLayerManager(GameInfo::NONE);;
     
-layerManager!.setGeographicMapInterface(
-                                                [
+layerManager.setGeographicMapInterface(
+                                                {
                                                     baseRaceTrackGeographicMap
-                                                ]);
+                                                });
     
-hashtable.put(AllBinaryGameLayerManager.ID, layerManager);
+hashtable.put(AllBinaryGameLayerManager::ID, layerManager);
     
-hashtable.put(DirectionFactory.getInstance()!.NAME, DirectionFactory.getInstance()!.LEFT);
+hashtable.put(DirectionFactory::getInstance().NAME, DirectionFactory::getInstance().LEFT);
     
-hashtable.put(this.groupCommonFactory!.ID, BasicGroupFactory.getInstance()!.NONE_ARRAY);
+hashtable.put(this->groupCommonFactory.ID, BasicGroupFactory::getInstance().NONE_ARRAY);
     
 
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -60,35 +62,33 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class KeyPressesAI: public BasicAI {
-        
 
-    private: on: bool = true;
+    private: bool on = true;
 
-    keys: std::vector<Integer>;
+    protected: std::vector<Integer> keys;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: KeyPressesAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.keys= new Array(hashtable.length);
+this->keys= new Array(hashtable.length);
     
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(hashtable)!;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
     
 
-    size: int32_t = objectArray!.length
-                ;;
+    int32_t size = objectArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.keys[index]= hashtable.get(objectArray[index]!) as Integer;
+this->keys[index]= hashtable.get(objectArray[index]!) as Integer;
     
 }
 
@@ -97,9 +97,9 @@ this.keys[index]= hashtable.get(objectArray[index]!) as Integer;
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-                        if(this.on)
+                        if(this->on)
                         
                                     {
                                     
@@ -107,9 +107,9 @@ this.keys[index]= hashtable.get(objectArray[index]!) as Integer;
 
 
                         for (
-    index: int32_t = 0;index < this.keys.length; index++)
+    int32_t index = 0;index < this->keys.size(); index++)
         {
-super.processKeyAI(this.keys[index]!.intValue());
+super.processKeyAI(this->keys[index]!.intValue());
     
 }
 
@@ -121,18 +121,18 @@ super.processKeyAI(this.keys[index]!.intValue());
 
                 //@Throws(Exception.constructor)
             
-    public toggle(){
+    public: void toggle(){
 
-                        if(this.isOn())
+                        if(this->isOn())
                         
                                     {
-                                    this.setOn(false);
+                                    this->setOn(false);
     
 
                                     }
                                 
                         else {
-                            this.setOn(true);
+                            this->setOn(true);
     
 
                         }
@@ -142,32 +142,32 @@ super.processKeyAI(this.keys[index]!.intValue());
 
                 //@Throws(Exception.constructor)
             
-    public disable(){
-this.setOn(false);
+    public: void disable(){
+this->setOn(false);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public enable(){
-this.setOn(true);
+    public: void enable(){
+this->setOn(true);
     
 }
 
 
-    setOn(bool on){
-this.on= on;
+    private: void setOn(bool on){
+this->on= on;
     
 }
 
 
-    bool isOn(){
+    protected: bool isOn(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.on;
+                        return this->on;
     
 }
 

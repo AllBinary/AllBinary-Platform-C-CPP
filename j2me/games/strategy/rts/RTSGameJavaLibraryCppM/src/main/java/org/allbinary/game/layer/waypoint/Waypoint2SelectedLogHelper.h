@@ -72,77 +72,76 @@
         #include "Waypoint2LogHelper.h"
 
 class Waypoint2SelectedLogHelper: public Waypoint2LogHelper {
-        
 
-    private: static const instanceC: Waypoint2SelectedLogHelper = new Waypoint2SelectedLogHelper();
+    private: static const Waypoint2SelectedLogHelper instanceC = Waypoint2SelectedLogHelper();
 
-    public static Waypoint2LogHelper getInstance();
+    public: static Waypoint2LogHelper getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const positionStrings: PositionStrings = PositionStrings.getInstance()!;
+    private: const PositionStrings positionStrings = PositionStrings::getInstance();
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const ENEMY_POSSIBLE_TARGET: string = " Enemy Possible Target: ";
+    private: const std::string ENEMY_POSSIBLE_TARGET = " Enemy Possible Target: ";
 
-    private: const CLOSE_RANGE: string = "closeRange: ";
+    private: const std::string CLOSE_RANGE = "closeRange: ";
 
-    private: const SENSOR_RANGE: string = " sensorRange: ";
+    private: const std::string SENSOR_RANGE = " sensorRange: ";
 
-    private: const ONLY_TARGETS: string = " Only Targets: ";
+    private: const std::string ONLY_TARGETS = " Only Targets: ";
 
-    private: const SHORTER_THAN_CURRENT_TARGET_DISTANCE: string = " isShorterThanCurrentTargetDistance: ";
+    private: const std::string SHORTER_THAN_CURRENT_TARGET_DISTANCE = " isShorterThanCurrentTargetDistance: ";
 
-    private: const CURRENT_TARGET_DESTROYED: string = " isCurrentTargetDestroyed: ";
+    private: const std::string CURRENT_TARGET_DESTROYED = " isCurrentTargetDestroyed: ";
 
-    private: const CURRENT_TARGET_NOT_AVAILABLE: string = " isCurrentTargetNotAvailable: ";
+    private: const std::string CURRENT_TARGET_NOT_AVAILABLE = " isCurrentTargetNotAvailable: ";
 
-    private: const PROCESS_POSSIBLE_TARGET: string = "selected: processPossibleTarget1";
+    private: const std::string PROCESS_POSSIBLE_TARGET = "selected: processPossibleTarget1";
 
-    public initRange(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t closeRange, int32_t sensorRange);
+    public: void initRange(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t closeRange, int32_t sensorRange);
 
-    public processPossibleTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed);
+    public: void processPossibleTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance, bool isShorterThanCurrentTargetDistance, bool isCurrentTargetDestroyed);
 
-    public processSetTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
+    public: void processSetTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
 
-    public processPossibleTargetCloser(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
+    public: void processPossibleTargetCloser(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
 
-    public setTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
+    public: void setTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface layerInterface, int32_t anotherTargetDistance);
 
-    public setTargetPath(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void setTargetPath(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public setTargetPathIgnoreNewPath(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase);
+    public: void setTargetPathIgnoreNewPath(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase);
 
-    public processWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface targetLayer, int32_t size);
+    public: void processWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase, PathFindingLayerInterface targetLayer, int32_t size);
 
-    public processWaypointTracked(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase);
+    public: void processWaypointTracked(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase waypointBehaviorBase);
 
-    public processWaypointTrackedVisit(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition geographicMapCellPosition);
+    public: void processWaypointTrackedVisit(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition geographicMapCellPosition);
 
-    public processWaypointTrackedWithoutProgress(PathFindingLayerInterface associatedAdvancedRTSGameLayer, string reason);
+    public: void processWaypointTrackedWithoutProgress(PathFindingLayerInterface associatedAdvancedRTSGameLayer, std::string reason);
 
-    public wander(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void wander(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public targetDestroyed(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void targetDestroyed(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public processTargeting(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy);
+    public: void processTargeting(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy);
 
-    public processTargetingNonWayPoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy);
+    public: void processTargetingNonWayPoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy);
 
-    public removeWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior2, PathFindingLayerInterface waypointLayer, string reason);
+    public: void removeWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior2, PathFindingLayerInterface waypointLayer, std::string reason);
 
-    public removeWaypointList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior2, BasicArrayList list);
+    public: void removeWaypointList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior2, BasicArrayList list);
 
-    public removeWaypointClear(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void removeWaypointClear(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public clearTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void clearTarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public addWaypointFromUser(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer);
+    public: void addWaypointFromUser(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer);
 
-    public targetMovedSoRetarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void targetMovedSoRetarget(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
 };
 

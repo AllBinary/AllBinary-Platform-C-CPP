@@ -43,14 +43,13 @@
 #include "DesktopDefaultGameInputMapping.h"
 
 class DesktopGameInputMapping: public PCGameInputMapping {
-        
 
-    InputToGameKeyMapping getDefault(){
+    protected: InputToGameKeyMapping getDefault(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new DesktopDefaultGameInputMapping().getInputMapping();;
+                        return DesktopDefaultGameInputMapping().getInputMapping();;
     
 }
 

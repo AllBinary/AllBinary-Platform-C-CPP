@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -60,42 +62,41 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class NumberOnOwnGroupSequenceAI: public SequenceAI {
-        
 
-    private: numberOnSameTeam: std::vector<Integer>;
+    private: std::vector<Integer> numberOnSameTeam;
 
-public constructor (std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: NumberOnOwnGroupSequenceAI(std::vector<Integer> numberOnSameTeam, std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.numberOnSameTeam= numberOnSameTeam;
+this->numberOnSameTeam= numberOnSameTeam;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-    layerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!;;
+    AllBinaryLayer layerInterface = this->getOwnerLayerInterface();;
     
 
-    index: int32_t = this.getIndex()!;;
+    int32_t index = this->getIndex();;
     
 
-                        if(this.numberOnSameTeam!.length > index)
+                        if(this->numberOnSameTeam.size() > index)
                         
                                     {
                                     
-    size: int32_t = GroupLayerManagerListener.getInstance()!.getGroupSizeFromInterface(layerInterface)!;;
+    int32_t size = GroupLayerManagerListener::getInstance().getGroupSizeFromInterface(layerInterface);;
     
 
-                        if(this.numberOnSameTeam[index]!.intValue() > size)
+                        if(this->numberOnSameTeam[index]!.intValue() > size)
                         
                                     {
-                                    this.next();
+                                    this->next();
     
 
                                     }

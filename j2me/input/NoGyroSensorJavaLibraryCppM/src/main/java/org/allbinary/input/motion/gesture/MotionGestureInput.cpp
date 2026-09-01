@@ -50,18 +50,17 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class MotionGestureInput: public Input {
-        
 
-public constructor (int32_t id, string name){
+public: MotionGestureInput(int32_t id, std::string name){
             super(id, name);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    inputFactory: InputFactory = InputFactory.getInstance()!;;
+    InputFactory inputFactory = InputFactory::getInstance();;
     
-inputFactory!.add(this.getId(), this);
+inputFactory.add(this->getId(), this);
     
 }
 

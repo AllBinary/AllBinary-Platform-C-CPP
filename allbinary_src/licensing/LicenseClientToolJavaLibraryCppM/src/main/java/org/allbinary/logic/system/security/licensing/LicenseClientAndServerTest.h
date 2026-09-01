@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSECLIENTANDSERVERTEST_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_LICENSING_LICENSECLIENTANDSERVERTEST_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -82,18 +84,17 @@
 class LicenseClientAndServerTest
             : public Object
          {
-        
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: vector: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList vector = BasicArrayListD();
 
-public constructor (std::vector<string> options);
+public: LicenseClientAndServerTest(std::vector<std::string> options);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public test();
+    public: void test();
 
 };
 

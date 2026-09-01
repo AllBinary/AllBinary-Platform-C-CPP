@@ -21,6 +21,8 @@
         #ifndef JAVAX_MICROEDITION_LCDUI_PLATFORMIMAGE_H
         #define JAVAX_MICROEDITION_LCDUI_PLATFORMIMAGE_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -59,29 +61,28 @@
 class PlatformImage
             : public Object
          {
-        
 
-    public any getImage(any = {} graphicsSurface2);
+    public: Object* getImage(Object* graphicsSurface2);
 
-    public int32_t getSurfaceWidth(any = {} graphicsSurface2, int32_t width);
+    public: int32_t getSurfaceWidth(Object* graphicsSurface2, int32_t width);
 
-    public int32_t getSurfaceHeight(any = {} graphicsSurface2, int32_t height);
+    public: int32_t getSurfaceHeight(Object* graphicsSurface2, int32_t height);
 
-    public int32_t getWidth(Image image, int32_t width);
+    public: int32_t getWidth(Image image, int32_t width);
 
-    public int32_t getHeight(Image image, int32_t height);
+    public: int32_t getHeight(Image image, int32_t height);
 
-    public javax.microedition.lcdui.Graphics getGraphics(any = {} graphicsSurface, int32_t width, int32_t height, Image image);
+    public: javax::microedition::lcdui::Graphics getGraphics(Object* graphicsSurface, int32_t width, int32_t height, Image image);
 
-    public drawImage(Image image, int32_t x, int32_t y, int32_t anchor, javax.microedition.lcdui.Graphics g2, any = {} g);
+    public: void drawImage(Image image, int32_t x, int32_t y, int32_t anchor, javax::microedition::lcdui::Graphics g2, Object* g);
 
-    public drawRegion(Image image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax.microedition.lcdui.Graphics g);
+    public: void drawRegion(Image image, int32_t x_src, int32_t y_src, int32_t width, int32_t height, int32_t transform, int32_t x_dst, int32_t y_dst, int32_t anchor, javax::microedition::lcdui::Graphics g);
 
-    public getRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image image);
+    public: void getRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image image);
 
-    public setRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image image);
+    public: void setRGB(std::vector<int32_t> argb, int32_t offset, int32_t scanlength, int32_t x, int32_t y, int32_t width, int32_t height, Image image);
 
-    public std::vector<int32_t> getData(Image image);
+    public: std::vector<int32_t> getData(Image image);
 
 };
 

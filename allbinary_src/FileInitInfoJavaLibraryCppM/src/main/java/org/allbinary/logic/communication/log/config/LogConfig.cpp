@@ -105,159 +105,154 @@
 class LogConfig
             : public Object
          {
-        
 
-    private: isEnabled: bool;
+    private: bool isEnabled;
 
-    private: name: string;
+    private: std::string name;
 
-    private: description: string;
+    private: std::string description;
 
-    private: path: string;
+    private: std::string path;
 
-    private: fileName: string;
+    private: std::string fileName;
 
-public constructor (string aName, string aDescription, string aPath, string aFileName){
-
-            super();
-        this.isEnabled= false;
+public: LogConfig(std::string aName, std::string aDescription, std::string aPath, std::string aFileName){
+this->isEnabled= false;
     
-this.name= aName;
+this->name= aName;
     
-this.description= aDescription;
+this->description= aDescription;
     
-this.path= aPath;
+this->path= aPath;
     
-this.fileName= aFileName;
+this->fileName= aFileName;
     
 }
 
 
-public constructor (Node node){
+public: LogConfig(Node node){
 
-            super();
-        
-    enabledValueNode: Node = DomSearchHelper.getNode(EntryData.getInstance()!.ENABLE, node.getChildNodes())!;;
+    Node enabledValueNode = DomSearchHelper::getNode(EntryData::getInstance().ENABLE, node.getChildNodes());;
     
 
-    isEnabledString: string = DomNodeHelper.getTextNodeValue(enabledValueNode)!;;
+    std::string isEnabledString = DomNodeHelper::getTextNodeValue(enabledValueNode);;
     
-this.isEnabled= BooleanUtil.getInstance()!.getFromString(isEnabledString);
-    
-
-    logConfigData: LogConfigData = LogConfigData.getInstance()!;;
+this->isEnabled= BooleanUtil::getInstance().getFromString(isEnabledString);
     
 
-    nameValueNode: Node = DomSearchHelper.getNode(logConfigData!.NAME, node.getChildNodes())!;;
-    
-this.name= DomNodeHelper.getTextNodeValue(nameValueNode);
+    LogConfigData logConfigData = LogConfigData::getInstance();;
     
 
-    descriptionValueNode: Node = DomSearchHelper.getNode(logConfigData!.DESCRIPTION, node.getChildNodes())!;;
+    Node nameValueNode = DomSearchHelper::getNode(logConfigData.NAME, node.getChildNodes());;
     
-this.description= DomNodeHelper.getTextNodeValue(descriptionValueNode);
+this->name= DomNodeHelper::getTextNodeValue(nameValueNode);
     
 
-    fileValueNode: Node = DomSearchHelper.getNode(logConfigData!.FILE, node.getChildNodes())!;;
+    Node descriptionValueNode = DomSearchHelper::getNode(logConfigData.DESCRIPTION, node.getChildNodes());;
     
-this.fileName= DomNodeHelper.getTextNodeValue(fileValueNode);
+this->description= DomNodeHelper::getTextNodeValue(descriptionValueNode);
+    
+
+    Node fileValueNode = DomSearchHelper::getNode(logConfigData.FILE, node.getChildNodes());;
+    
+this->fileName= DomNodeHelper::getTextNodeValue(fileValueNode);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public bool isEnabled(){
+    public: bool isEnabled(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isEnabled;
+                        return this->isEnabled;
     
 }
 
 
-    public enable(){
-this.isEnabled= true;
+    public: void enable(){
+this->isEnabled= true;
     
 }
 
 
-    public disable(){
-this.isEnabled= false;
+    public: void disable(){
+this->isEnabled= false;
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public string getFileName(){
+    public: std::string getFileName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileName;
+                        return this->fileName;
     
 }
 
 
-    public setName(string value){
-this.name= value;
+    public: void setName(std::string value){
+this->name= value;
     
 }
 
 
-    public setDescription(string value){
-this.description= value;
+    public: void setDescription(std::string value){
+this->description= value;
     
 }
 
 
-    public setPath(string value){
-this.path= value;
+    public: void setPath(std::string value){
+this->path= value;
     
 }
 
 
-    public setFileName(string value){
-this.fileName= value;
+    public: void setFileName(std::string value){
+this->fileName= value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Document getDoc(){
+    private: Document getDoc(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-stringBuffer!.append(PATH_GLOBALS.getInstance()!.INIT_PATH);
+stringBuffer.append(PATH_GLOBALS::getInstance().INIT_PATH);
     
-stringBuffer!.append(this.getFileName());
-    
-
-    file: AbFile = AbFile.createAbFile(stringBuffer!.toString())!;;
+stringBuffer.append(this->getFileName());
     
 
-    document: Document = DomDocumentHelper.create(new AbFileLocalInputStream(file))!;;
+    AbFile file = AbFile::createAbFile(stringBuffer.toString());;
+    
+
+    Document document = DomDocumentHelper::create(AbFileLocalInputStream(file));;
     
 
 
@@ -270,39 +265,39 @@ stringBuffer!.append(this.getFileName());
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getTypeVector(){
+    public: BasicArrayList getTypeVector(){
 
-    logKeyVector: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList logKeyVector = BasicArrayListD();;
     
 
-    document: Document = this.getDoc()!;;
+    Document document = this->getDoc();;
     
 
-    logConfigTypesNodeList: NodeList = document.getElementsByTagName(LogConfigTypesData.getInstance()!.NAME)!;;
+    NodeList logConfigTypesNodeList = document.getElementsByTagName(LogConfigTypesData::getInstance().NAME);;
     
 
-    logConfigTypesNode: Node = logConfigTypesNodeList!.item(0)!;;
+    Node logConfigTypesNode = logConfigTypesNodeList.item(0);;
     
 
-    logConfigTypeNodeVector: Vector = DomSearchHelper.getAllNodes(LogConfigTypeData.getInstance()!.NAME, logConfigTypesNode!.getChildNodes())!;;
+    Vector logConfigTypeNodeVector = DomSearchHelper::getAllNodes(LogConfigTypeData::getInstance().NAME, logConfigTypesNode.getChildNodes());;
     
 
-    size: int32_t = logConfigTypeNodeVector!.length!;;
+    int32_t size = logConfigTypeNodeVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    node: Node = logConfigTypeNodeVector!.elementAt(i) as Node;;
+    Node node = logConfigTypeNodeVector.elementAt(i) as Node;;
     
 
-    logType: LogConfigType = LogConfigTypes.getInstance(node)!;;
+    LogConfigType logType = LogConfigTypes::getInstance(node);;
     
-logKeyVector!.add(logType);
+logKeyVector.add(logType);
     
 }
 

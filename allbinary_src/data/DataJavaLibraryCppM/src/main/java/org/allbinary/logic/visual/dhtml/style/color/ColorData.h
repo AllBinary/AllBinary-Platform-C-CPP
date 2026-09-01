@@ -45,15 +45,14 @@
 class ColorData
             : public Object
          {
-        
 
-    private: static const instance: ColorData = new ColorData();
+    private: static ColorData instance() { return ColorData(); }
 
-    public static ColorData getInstance();
+    public: static ColorData getInstance();
 
-private constructor ();
+private: ColorData();
 
-    public const NAME: string = "COLOR_NAME";
+    public: const std::string NAME = "COLOR_NAME";
 
 };
 

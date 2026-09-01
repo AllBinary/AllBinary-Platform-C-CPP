@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_VECTOR_VECTORINFO_H
         #define ORG_ALLBINARY_VECTOR_VECTORINFO_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -54,33 +56,32 @@
 class VectorInfo
             : public Object
          {
-        
 
-    private: width: int32_t;
+    private: int32_t width;
 
-    private: height: int32_t;
+    private: int32_t height;
 
-    private: points: std::vector<std::vector<int32_t>>;
+    private: std::vector<std::vector<int32_t>> points;
 
-    private: totalFrames: int32_t;
+    private: int32_t totalFrames;
 
-public constructor (int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t totalFrames);
+public: VectorInfo(int32_t width, int32_t height, std::vector<std::vector<int32_t>> points, int32_t totalFrames);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    setWidth(int32_t width);
+    private: void setWidth(int32_t width);
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    setHeight(int32_t height);
+    private: void setHeight(int32_t height);
 
-    public std::vector<std::vector<int32_t>> getPoints();
+    public: std::vector<std::vector<int32_t>> getPoints();
 
-    setPoints(std::vector<std::vector<int32_t>> points);
+    private: void setPoints(std::vector<std::vector<int32_t>> points);
 
-    public int32_t getTotalFrames();
+    public: int32_t getTotalFrames();
 
-    setTotalFrames(int32_t totalFrames);
+    private: void setTotalFrames(int32_t totalFrames);
 
 };
 

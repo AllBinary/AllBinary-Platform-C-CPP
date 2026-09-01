@@ -74,27 +74,26 @@
         #include "TagHelper.h"
 
 class ShippingHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: shippingType: string;
+    private: std::string shippingType;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: ShippingHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
-    public string setShippingType();
+    public: std::string setShippingType();
 
 };
 

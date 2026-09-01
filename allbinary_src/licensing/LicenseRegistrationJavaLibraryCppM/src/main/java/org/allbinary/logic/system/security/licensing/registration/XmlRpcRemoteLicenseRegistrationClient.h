@@ -82,17 +82,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcRemoteLicenseRegistrationClient: public XmlRpcAbeClient {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const PAGE: string = "licenseregistrationserverssl.php";
+    private: const std::string PAGE = "licenseregistrationserverssl.php";
 
-public constructor (AbeClientInformationInterface clientInfo);
+public: XmlRpcRemoteLicenseRegistrationClient(AbeClientInformationInterface clientInfo);
 
                 //@Throws(Exception.constructor)
             
-    public any get(any = {} anyType, CryptInterface cryptInterface);
+    public: Object* get(Object* anyType, CryptInterface cryptInterface);
 
 };
 

@@ -48,11 +48,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BuildingEventListenerInterface: public EventListenerInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    onBuildingEvent(RTSLayerEvent event);
+    void onBuildingEvent(RTSLayerEvent event);
 
 };
 

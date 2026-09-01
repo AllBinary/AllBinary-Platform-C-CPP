@@ -124,25 +124,24 @@
 class PaymentTransactionInterfaceRequestFactory
             : public Object
          {
-        
 
-    private: static const instance: PaymentTransactionInterfaceRequestFactory = new PaymentTransactionInterfaceRequestFactory();
+    private: static PaymentTransactionInterfaceRequestFactory instance() { return PaymentTransactionInterfaceRequestFactory(); }
 
-    public static PaymentTransactionInterfaceRequestFactory getInstance();
+    public: static PaymentTransactionInterfaceRequestFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: PaymentTransactionInterfaceRequestFactory();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public PaymentTransactionInterface getInstance(TransformInfoInterface transformInfoInterface);
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    PaymentTransactionInterface generateFromTestData(TransformInfoInterface transformInfoInterface);
+    public: PaymentTransactionInterface getInstance(TransformInfoInterface transformInfoInterface);
+
+                //@Throws(Exception.constructor)
+            
+    private: PaymentTransactionInterface generateFromTestData(TransformInfoInterface transformInfoInterface);
 
 };
 

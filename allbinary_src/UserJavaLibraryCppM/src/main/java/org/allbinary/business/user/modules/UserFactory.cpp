@@ -54,22 +54,19 @@
 class UserFactory
             : public Object
         : public UserFactoryInterface {
-        
 
-public constructor (){
-
-            super();
-        }
+public: UserFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public UserInterface getInstance(HashMap<any, any> hashMap){
+    public: UserInterface getInstance(HashMap<any, any> hashMap){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new User(hashMap);
+                        return User(hashMap);
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACEFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_VECTORANIMATIONINTERFACEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Exception.h"
@@ -60,25 +62,24 @@
 class VectorAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    private: currentPoints: std::vector<std::vector<std::vector<int32_t>>>;
+    private: std::vector<std::vector<std::vector<int32_t>>> currentPoints;
 
-    private: basicColor: BasicColor = BasicColorFactory.getInstance()!.WHITE;
+    private: BasicColor basicColor = BasicColorFactory::getInstance().WHITE;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
+public: VectorAnimationInterfaceFactory(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    setBasicColorP(BasicColor basicColor);
+    protected: void setBasicColorP(BasicColor basicColor);
 
-    BasicColor getBasicColorP();
+    protected: BasicColor getBasicColorP();
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

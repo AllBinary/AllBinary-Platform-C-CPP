@@ -57,29 +57,28 @@
 class AbeNoLicense
             : public Object
         : public AbeLicenseInterface {
-        
 
-    private: static abeNoLicense: AbeNoLicense = new AbeNoLicense();
+    private: static AbeNoLicense abeNoLicense = AbeNoLicense();
 
-    public static AbeNoLicense getInstance();
+    public: static AbeNoLicense getInstance();
 
-    public serverVector: BasicArrayList = new BasicArrayListD();
+    public: BasicArrayList serverVector = BasicArrayListD();
 
-private constructor ();
+private: AbeNoLicense();
 
-    public bool hasKey();
+    public: bool hasKey();
 
-    public string getKey(string keyName);
+    public: std::string getKey(std::string keyName);
 
-    public string getLicenseId();
+    public: std::string getLicenseId();
 
-    public string getSpecial();
+    public: std::string getSpecial();
 
-    public BasicArrayList getServers();
+    public: BasicArrayList getServers();
 
-    public bool isValid();
+    public: bool isValid();
 
-    public LicenseType getLicenseType();
+    public: LicenseType getLicenseType();
 
 };
 

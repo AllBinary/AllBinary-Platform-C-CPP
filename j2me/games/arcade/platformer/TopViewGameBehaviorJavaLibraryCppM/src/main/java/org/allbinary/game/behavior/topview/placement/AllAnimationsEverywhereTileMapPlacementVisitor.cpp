@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/mapeditor/core/TiledMap.h>
 
       
@@ -42,29 +44,27 @@
         #include "TileMapPlacementVisitor.h"
 
 class AllAnimationsEverywhereTileMapPlacementVisitor: public TileMapPlacementVisitor {
-        
 
-    public visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData){
+    public: void visit(TiledMap lastMap, std::vector<std::vector<int32_t>> mapData){
 
-    size: int32_t = mapData!.length
-                ;;
+    int32_t size = mapData.size();;
     
 
-    size2: int32_t = mapData[0]!.length -7;;
+    int32_t size2 = mapData[0]!.size() -7;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
 
 
 
                         for (
-    index2: int32_t = 0;index2 < size2; )
+    int32_t index2 = 0;index2 < size2; )
         {
 mapData[index]![index2]= 1;
     

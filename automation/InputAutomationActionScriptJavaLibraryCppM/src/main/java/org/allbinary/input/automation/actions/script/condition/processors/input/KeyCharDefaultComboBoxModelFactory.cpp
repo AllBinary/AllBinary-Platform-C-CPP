@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../../../java/lang/Character.h"
@@ -57,32 +59,31 @@
 class KeyCharDefaultComboBoxModelFactory
             : public Object
          {
-        
 
-    public static DefaultComboBoxModel getInstance(){
+    public: static DefaultComboBoxModel getInstance(){
 
-    defaultComboBoxModel: DefaultComboBoxModel = new DefaultComboBoxModel();;
+    DefaultComboBoxModel defaultComboBoxModel = DefaultComboBoxModel();;
     
 
-    keyArray: std::vector<Integer> = KeySingletonFactory.getArray()!;;
+    std::vector<Integer> keyArray = KeySingletonFactory::getArray();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < keyArray!.length; index++)
+    int32_t index = 0;index < keyArray.size(); index++)
         {
 
-    nextKey: Integer = keyArray[index]!;;
+    Integer nextKey = keyArray[index];;
     
 
-    keyStroke: KeyStroke = KeyStroke.getKeyStroke(nextKey!.intValue(), 0)!;;
+    KeyStroke keyStroke = KeyStroke::getKeyStroke(nextKey.intValue(), 0);;
     
 
-    keyChar: char = KeyStrokeMap.getChar(keyStroke)!;;
+    char keyChar = KeyStrokeMap::getChar(keyStroke);;
     
-defaultComboBoxModel!.addElement(Character.toString(keyChar));
+defaultComboBoxModel.addElement(Character::toString(keyChar));
     
 }
 
@@ -95,10 +96,8 @@ defaultComboBoxModel!.addElement(Character.toString(keyChar));
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: KeyCharDefaultComboBoxModelFactory(){
+}
 
 
 };

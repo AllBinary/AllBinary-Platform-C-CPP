@@ -59,19 +59,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GeographicMapCellPositionEvent: public AllBinaryEventObject {
-        
 
-    private: geographicMapCellPosition: CellPosition = CellPositionFactory.getInstance()!.NONE;
+    private: CellPosition geographicMapCellPosition = CellPositionFactory::getInstance().NONE;
 
-public constructor (any = {} anyType, CellPosition geographicMapCellPosition);
+public: GeographicMapCellPositionEvent(Object* anyType, CellPosition geographicMapCellPosition);
 
-    public init(any = {} anyType);
+    public: void init(Object* anyType);
 
-    public setGeographicMapCellPosition(GeographicMapCellPosition geographicMapCellPosition);
+    public: void setGeographicMapCellPosition(GeographicMapCellPosition geographicMapCellPosition);
 
-    public GeographicMapCellPosition getGeographicMapCellPosition();
+    public: GeographicMapCellPosition getGeographicMapCellPosition();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

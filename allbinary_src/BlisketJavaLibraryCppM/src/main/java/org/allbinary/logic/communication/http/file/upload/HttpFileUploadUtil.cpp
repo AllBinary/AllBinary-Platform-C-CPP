@@ -62,63 +62,62 @@
 class HttpFileUploadUtil
             : public Object
          {
-        
 
-    private: static const instance: HttpFileUploadUtil = new HttpFileUploadUtil();
+    private: static HttpFileUploadUtil instance() { return HttpFileUploadUtil(); }
 
-    public static HttpFileUploadUtil getInstance(){
+    public: static HttpFileUploadUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return HttpFileUploadUtil.instance;
+                        return HttpFileUploadUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static log(FileItemStream fileItem){
+    public: static void log(FileItemStream fileItem){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
-    
-stringBuffer!.append("FileItem Log:");
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Content Type:");
-    
-stringBuffer!.append(fileItem!.getContentType());
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Field Name:");
-    
-stringBuffer!.append(fileItem!.getFieldName());
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Name:");
-    
-stringBuffer!.append(fileItem!.getName());
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Size:");
-    
-stringBuffer!.append(" Not Calculated Yet");
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTP))
+    CommonSeps commonSeps = CommonSeps::getInstance();;
+    
+stringBuffer.append("FileItem Log:");
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Content Type:");
+    
+stringBuffer.append(fileItem.getContentType());
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Field Name:");
+    
+stringBuffer.append(fileItem.getFieldName());
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Name:");
+    
+stringBuffer.append(fileItem.getName());
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Size:");
+    
+stringBuffer.append(" Not Calculated Yet");
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTP))
                         
                                     {
-                                    logUtil!.putF(stringBuffer!.toString(), getInstance(), "log()");
+                                    logUtil.putF(stringBuffer.toString(), getInstance(), "log()");
     
 
                                     }
@@ -126,47 +125,47 @@ stringBuffer!.append(" Not Calculated Yet");
 }
 
 
-    public static log(FileItem fileItem){
+    public: static void log(FileItem fileItem){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
-    
-stringBuffer!.append("FileItem Log:");
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Content Type:");
-    
-stringBuffer!.append(fileItem!.getContentType());
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Field Name:");
-    
-stringBuffer!.append(fileItem!.getFieldName());
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Name:");
-    
-stringBuffer!.append(fileItem!.getName());
-    
-stringBuffer!.append(commonSeps!.NEW_LINE);
-    
-stringBuffer!.append("Size:");
-    
-stringBuffer!.appendlong(fileItem!.getSize());
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.HTTPREQUEST))
+    CommonSeps commonSeps = CommonSeps::getInstance();;
+    
+stringBuffer.append("FileItem Log:");
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Content Type:");
+    
+stringBuffer.append(fileItem.getContentType());
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Field Name:");
+    
+stringBuffer.append(fileItem.getFieldName());
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Name:");
+    
+stringBuffer.append(fileItem.getName());
+    
+stringBuffer.append(commonSeps.NEW_LINE);
+    
+stringBuffer.append("Size:");
+    
+stringBuffer.appendlong(fileItem.getSize());
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().HTTPREQUEST))
                         
                                     {
-                                    logUtil!.putF(stringBuffer!.toString(), getInstance(), "log()");
+                                    logUtil.putF(stringBuffer.toString(), getInstance(), "log()");
     
 
                                     }
@@ -174,20 +173,18 @@ stringBuffer!.appendlong(fileItem!.getSize());
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: HttpFileUploadUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(any = {} anyType){
+    public: bool isValid(Object* anyType){
 
                         if(anyType != 
-                                    null
+                                    nullptr
                                  && !(anyType instanceof String))
                         
                                     {
@@ -208,7 +205,7 @@ private constructor (){
                             
 
 
-                            throw new Exception("Object Not Instance Of FileItem but is: " +ClassUtil.viewAll(anyType, CommonSeps.getInstance()!.NEW_LINE));
+                            throw Exception("Object Not Instance Of FileItem but is: " +ClassUtil::viewAll(anyType, CommonSeps::getInstance().NEW_LINE));
                     
 
                         }

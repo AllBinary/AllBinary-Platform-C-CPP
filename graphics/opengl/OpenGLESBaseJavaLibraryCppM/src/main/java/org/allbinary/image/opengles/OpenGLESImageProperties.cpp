@@ -42,27 +42,26 @@
 class OpenGLESImageProperties
             : public Object
          {
-        
 
-    public textureID: int32_t =  -1;
+    public: int32_t textureID =  -1;
 
-    public scaleX: float = 1.0;
+    public: float scaleX = 1.0;
 
-    public scaleY: float = 1.0;
+    public: float scaleY = 1.0;
 
-    public scaleX2: float = 1.0;
+    public: float scaleX2 = 1.0;
 
-    public scaleY2: float = 1.0;
+    public: float scaleY2 = 1.0;
 
-    public angle: int32_t= 0;
+    public: int32_t angle= 0;
 
-    public redf: float = 1.0;
+    public: float redf = 1.0;
 
-    public greenf: float = 1.0;
+    public: float greenf = 1.0;
 
-    public bluef: float = 1.0;
+    public: float bluef = 1.0;
 
-    public alphaf: float = 1.0;
+    public: float alphaf = 1.0;
 
 };
 

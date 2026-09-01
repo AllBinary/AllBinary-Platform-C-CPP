@@ -69,38 +69,37 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AddValidationUserView: public HttpContextView: public ValidationComponentInterface {
-        
+class AddValidationUserView: public HttpContextView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    user: UserInterface;
+    protected: UserInterface user;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: AddValidationUserView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.user= NewUserFactory.getInstance(transformInfoInterface);
+this->user= NewUserFactory::getInstance(transformInfoInterface);
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-                        if(UserEntityFactory.getInstance()!.getUser(this.user.getUserName()) != 
-                                    null
+                        if(UserEntityFactory::getInstance().getUser(this->user.getUserName()) != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("User already in existance.", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("User already in existance.", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -109,20 +108,20 @@ this.user= NewUserFactory.getInstance(transformInfoInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(this.user.isValid() == Boolean.FALSE)
+                        if(this->user.isValid() == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -131,17 +130,17 @@ this.user= NewUserFactory.getInstance(transformInfoInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -150,44 +149,44 @@ this.user= NewUserFactory.getInstance(transformInfoInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(UserEntityFactory.getInstance()!.getUser(this.user.getUserName()) != 
-                                    null
+                        if(UserEntityFactory::getInstance().getUser(this->user.getUserName()) != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("User already exists", this, "validationInfo()");
+                                    this->logUtil.putF("User already exists", this, "validationInfo()");
     
 
                                     }
                                 
-stringBuffer!.append("The User Name you selected is already in use.<br/>  Please select another User Name.<br />");
+stringBuffer.append("The User Name you selected is already in use.<br/>  Please select another User Name.<br />");
     
 
                                     }
                                 
 
-                        if(this.user.isValid() == Boolean.FALSE)
+                        if(this->user.isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append(this.user.validationInfo());
+                                    stringBuffer.append(this->user.validationInfo());
     
 
                                     }
@@ -196,17 +195,17 @@ stringBuffer!.append("The User Name you selected is already in use.<br/>  Please
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -222,7 +221,7 @@ stringBuffer!.append("The User Name you selected is already in use.<br/>  Please
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -232,7 +231,7 @@ stringBuffer!.append("The User Name you selected is already in use.<br/>  Please
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -244,12 +243,12 @@ stringBuffer!.append("The User Name you selected is already in use.<br/>  Please
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()!.view(this);;
+                        return views.ValidationOnlyTempUtil.getInstance().view(this);;
     
 }
 

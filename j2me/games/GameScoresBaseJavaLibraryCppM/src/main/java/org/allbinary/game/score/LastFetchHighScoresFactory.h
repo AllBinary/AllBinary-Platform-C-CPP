@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_SCORE_LASTFETCHHIGHSCORESFACTORY_H
         #define ORG_ALLBINARY_GAME_SCORE_LASTFETCHHIGHSCORESFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -50,13 +52,12 @@
 class LastFetchHighScoresFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static LastFetchHighScoresFactory getInstance();
+    public: static LastFetchHighScoresFactory getInstance();
 
-    public highScoresArray: std::vector<HighScores> = NoHighScoresFactory.getInstance()!.NO_HIGH_SCORES;
+    public: std::vector<HighScores> highScoresArray = NoHighScoresFactory::getInstance().NO_HIGH_SCORES;
 
 };
 

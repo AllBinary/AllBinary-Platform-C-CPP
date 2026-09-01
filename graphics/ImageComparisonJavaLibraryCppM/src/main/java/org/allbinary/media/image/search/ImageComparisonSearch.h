@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCH_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_SEARCH_IMAGECOMPARISONSEARCH_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <java/awt/image/BufferedImage.h>
@@ -63,49 +65,48 @@
 class ImageComparisonSearch
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public isSameHeight: bool= false;
+    public: bool isSameHeight= false;
 
-    public isSameWidth: bool= false;
+    public: bool isSameWidth= false;
 
-    public pixelsThatMatch: int32_t= 0;
+    public: int32_t pixelsThatMatch= 0;
 
-    public pixelsIgnored: int32_t= 0;
+    public: int32_t pixelsIgnored= 0;
 
-    public imageHeight: int32_t;
+    public: int32_t imageHeight;
 
-    public imageWidth: int32_t;
+    public: int32_t imageWidth;
 
-    private: tolerance: int32_t= 0;
+    private: int32_t tolerance= 0;
 
-    private: nonMatchingPixelVector: Vector;
+    private: Vector nonMatchingPixelVector;
 
-    private: bufferedImages: std::vector<BufferedImage>;
+    private: std::vector<BufferedImage> bufferedImages;
 
-    private: matchingPercent: float =  -1;
+    private: float matchingPercent =  -1;
 
-public constructor (BufferedImage bufferedImage, BufferedImage bufferedImage2, int32_t tolerance);
+public: ImageComparisonSearch(BufferedImage bufferedImage, BufferedImage bufferedImage2, int32_t tolerance);
 
-    float getMatchingPercent();
+    private: float getMatchingPercent();
 
-    public add(PixelDelta pixel);
+    public: void add(PixelDelta pixel);
 
-    public Vector getNonMatchingPixelVector();
+    public: Vector getNonMatchingPixelVector();
 
-    public string toString();
+    public: std::string toString();
 
-    public std::vector<BufferedImage> getBufferedImages();
+    public: std::vector<BufferedImage> getBufferedImages();
 
-    setBufferedImages(std::vector<BufferedImage> bufferedImages);
+    private: void setBufferedImages(std::vector<BufferedImage> bufferedImages);
 
-    public int32_t getTolerance();
+    public: int32_t getTolerance();
 
-    public setTolerance(int32_t tolerance);
+    public: void setTolerance(int32_t tolerance);
 
 };
 

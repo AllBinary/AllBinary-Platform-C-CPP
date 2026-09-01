@@ -61,80 +61,77 @@
 class CurrentlyPressedTouchButtonSingleton
             : public Object
          {
-        
 
-    private: static const instance: CurrentlyPressedTouchButtonSingleton = new CurrentlyPressedTouchButtonSingleton();
+    private: static CurrentlyPressedTouchButtonSingleton instance() { return CurrentlyPressedTouchButtonSingleton(); }
 
-    public static CurrentlyPressedTouchButtonSingleton getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return CurrentlyPressedTouchButtonSingleton.instance;
-    
-}
-
-
-    const list: BasicArrayList = new BasicArrayListD();
-
-protected constructor (){
-
-            super();
-        }
-
-
-    public int32_t size(){
+    public: static CurrentlyPressedTouchButtonSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.size();;
+                        return CurrentlyPressedTouchButtonSingleton::instance();
     
 }
 
 
-    public TouchButtonInput removeAt(int32_t index){
+    protected: const BasicArrayList list = BasicArrayListD();
+
+protected: CurrentlyPressedTouchButtonSingleton(){
+}
+
+
+    public: int32_t size(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.removeAt(index) as TouchButtonInput;
+                        return this->list.size();;
     
 }
 
 
-    public bool remove(TouchButtonInput touchButtonInput){
+    public: TouchButtonInput removeAt(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.remove(touchButtonInput);;
+                        return this->list.removeAt(index) as TouchButtonInput;
     
 }
 
 
-    public TouchButtonInput get(int32_t index){
+    public: bool remove(TouchButtonInput touchButtonInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.objectArray[index]! as TouchButtonInput;
+                        return this->list.remove(touchButtonInput);;
     
 }
 
 
-    public bool contains(TouchButtonInput touchButtonInput){
+    public: TouchButtonInput get(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.list.contains(touchButtonInput);;
+                        return this->list.objectArray[index]! as TouchButtonInput;
     
 }
 
 
-    public add(TouchButtonInput touchButtonInput){
-this.list.add(touchButtonInput);
+    public: bool contains(TouchButtonInput touchButtonInput){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->list.contains(touchButtonInput);;
+    
+}
+
+
+    public: void add(TouchButtonInput touchButtonInput){
+this->list.add(touchButtonInput);
     
 }
 

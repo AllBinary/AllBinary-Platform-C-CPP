@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONJFRAME_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_INPUTAUTOMATIONJFRAME_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Thread.h"
@@ -168,128 +170,127 @@
 #include "ActionEvent.h"
 #include "EventQueue.h"
 
-class InputAutomationJFrame: public javax.swing.JFrame: public InputAutomationConfigurationModuleChangeListener, public InputAutomationRobotChangeListener, public HelpSetListener {
-        
+class InputAutomationJFrame: public javax::swing::JFrame, public InputAutomationConfigurationModuleChangeListener, public InputAutomationRobotChangeListener, public HelpSetListener {
 
-    private: static INPUTAUTOMATION_JFRAME: InputAutomationJFrame;
+    private: static InputAutomationJFrame INPUTAUTOMATION_JFRAME;
 
-    public static InputAutomationJFrame getInstance();
+    public: static InputAutomationJFrame getInstance();
 
-    public static destroy();
+    public: static void destroy();
 
-    public static create(InputAutomationBundleActivatorListenerInterface inputAutomationBundleActivatorListenerInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public static main(std::vector<string> args);
-
-    const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-    private: inputAutomationModuleConfigurations: InputAutomationModuleConfigurations = new InputAutomationModuleConfigurations();
-
-    private: inputAutomationModuleFactory: InputAutomationModuleFactoryFactory;
-
-    private: inputAutomationModuleInterface: InputAutomationModuleFactoryInterface;
-
-    private: runnableInterface: RunnableInterface;
-
-    private: thread: Thread;
-
-    private: helpSet: HelpSet;
-
-    private: const uri: URI = new URI("http://geocities.com/allbinary/");
-
-public constructor ();
-
-    public helpSetAdded(HelpSetEvent helpSetEvent);
-
-    public helpSetRemoved(HelpSetEvent helpSetEvent);
+    public: static void create(InputAutomationBundleActivatorListenerInterface inputAutomationBundleActivatorListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    init();
+    public: static void main(std::vector<std::string> args);
 
-    initComponents();
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    subscriptionJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    updatesJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: InputAutomationModuleConfigurations inputAutomationModuleConfigurations = InputAutomationModuleConfigurations();
 
-    aboutJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: InputAutomationModuleFactoryFactory inputAutomationModuleFactory;
 
-    modulesJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: InputAutomationModuleFactoryInterface inputAutomationModuleInterface;
 
-    helpJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: RunnableInterface runnableInterface;
 
-    stopOnFocusJCheckBoxMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: Thread thread;
 
-    optionsJMenuActionPerformed(java.awt.event.ActionEvent evt);
+    private: HelpSet helpSet;
 
-    formWindowLostFocus(java.awt.event.WindowEvent evt);
+    private: const URI uri = URI("http://geocities.com/allbinary/");
 
-    formWindowGainedFocus(java.awt.event.WindowEvent evt);
+public: InputAutomationJFrame();
 
-    formFocusLost(java.awt.event.FocusEvent evt);
+    public: void helpSetAdded(HelpSetEvent helpSetEvent);
 
-    formFocusGained(java.awt.event.FocusEvent evt);
+    public: void helpSetRemoved(HelpSetEvent helpSetEvent);
 
-    inputAutomationModuleJListValueChanged(javax.swing.event.ListSelectionEvent evt);
+                //@Throws(Exception.constructor)
+            
+    private: void init();
 
-    stopJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void initComponents();
 
-    startJMenuItemActionPerformed(java.awt.event.ActionEvent evt);
+    private: void subscriptionJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    public javax.swing.JPanel getAutomationModuleConfigurationJPanel();
+    private: void updatesJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    public setAutomationModuleConfigurationJPanel(javax.swing.JPanel automationModuleConfigurationJPanel);
+    private: void aboutJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    public onAdd(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
+    private: void modulesJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    public onRemove(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
+    private: void helpJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    public onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent);
+    private: void stopOnFocusJCheckBoxMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    public onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent);
+    private: void optionsJMenuActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: aboutJMenuItem: javax.swing.JMenuItem;
+    private: void formWindowLostFocus(java::awt::event::WindowEvent evt);
 
-    private: automationModuleConfigurationJPanel: javax.swing.JPanel;
+    private: void formWindowGainedFocus(java::awt::event::WindowEvent evt);
 
-    private: gameRobotJTabbedPane: javax.swing.JTabbedPane;
+    private: void formFocusLost(java::awt::event::FocusEvent evt);
 
-    private: helpJMenuItem: javax.swing.JMenuItem;
+    private: void formFocusGained(java::awt::event::FocusEvent evt);
 
-    private: inputAutomationModuleJList: javax.swing.JList;
+    private: void inputAutomationModuleJListValueChanged(javax::swing::event::ListSelectionEvent evt);
 
-    private: inputAutomationModuleJPanel: javax.swing.JPanel;
+    private: void stopJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: jScrollPane1: javax.swing.JScrollPane;
+    private: void startJMenuItemActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: mainJMenuBar: javax.swing.JMenuBar;
+    public: javax::swing::JPanel getAutomationModuleConfigurationJPanel();
 
-    private: modulesJMenuItem: javax.swing.JMenuItem;
+    public: void setAutomationModuleConfigurationJPanel(javax::swing::JPanel automationModuleConfigurationJPanel);
 
-    private: noModuleSelectedJDialog: javax.swing.JDialog;
+    public: void onAdd(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
 
-    private: noModuleSelectedJLabel: javax.swing.JLabel;
+    public: void onRemove(InputAutomationRobotChangeEvent inputAutomationRobotChangeEvent);
 
-    private: optionsJMenu: javax.swing.JMenu;
+    public: void onAdd(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent);
 
-    private: processingJMenu: javax.swing.JMenu;
+    public: void onRemove(InputAutomationConfigurationModuleChangeEvent inputAutomationConfigurationChangeEvent);
 
-    private: startJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem aboutJMenuItem;
 
-    private: stopJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JPanel automationModuleConfigurationJPanel;
 
-    private: stopOnFocusJCheckBoxMenuItem: javax.swing.JCheckBoxMenuItem;
+    private: javax::swing::JTabbedPane gameRobotJTabbedPane;
 
-    private: subscriptionJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JMenuItem helpJMenuItem;
 
-    private: toolsJMenu: javax.swing.JMenu;
+    private: javax::swing::JList inputAutomationModuleJList;
 
-    private: updatesJMenuItem: javax.swing.JMenuItem;
+    private: javax::swing::JPanel inputAutomationModuleJPanel;
+
+    private: javax::swing::JScrollPane jScrollPane1;
+
+    private: javax::swing::JMenuBar mainJMenuBar;
+
+    private: javax::swing::JMenuItem modulesJMenuItem;
+
+    private: javax::swing::JDialog noModuleSelectedJDialog;
+
+    private: javax::swing::JLabel noModuleSelectedJLabel;
+
+    private: javax::swing::JMenu optionsJMenu;
+
+    private: javax::swing::JMenu processingJMenu;
+
+    private: javax::swing::JMenuItem startJMenuItem;
+
+    private: javax::swing::JMenuItem stopJMenuItem;
+
+    private: javax::swing::JCheckBoxMenuItem stopOnFocusJCheckBoxMenuItem;
+
+    private: javax::swing::JMenuItem subscriptionJMenuItem;
+
+    private: javax::swing::JMenu toolsJMenu;
+
+    private: javax::swing::JMenuItem updatesJMenuItem;
 
 };
 

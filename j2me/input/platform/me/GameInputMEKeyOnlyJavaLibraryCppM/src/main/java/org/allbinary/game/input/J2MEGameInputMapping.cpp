@@ -52,10 +52,9 @@
 #include "Input.h"
 
 class J2MEGameInputMapping: public PersistentInputMapping {
-        
 
-public constructor (){
-            super(GamePersistanceStrings.getInstance()!.SAVED_INPUT_CONFIGURATION_RECORD_ID);
+public: J2MEGameInputMapping(){
+            super(GamePersistanceStrings::getInstance().SAVED_INPUT_CONFIGURATION_RECORD_ID);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -65,20 +64,20 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public init(AbeClientInformationInterface abeClientInformation){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.INIT);
+    public: void init(AbeClientInformationInterface abeClientInformation){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.INIT);
     
-J2MEKeyFactory.getInstance()!.init();
+J2MEKeyFactory::getInstance().init();
     
 super.init(abeClientInformation);
     
 
-                        if(this.getTotalMapped() == 0 || this.isDefaultNew())
+                        if(this->getTotalMapped() == 0 || this->isDefaultNew())
                         
                                     {
-                                    this.getInputMapping()!.addMapping(this.getDefault());
+                                    this->getInputMapping().addMapping(this->getDefault());
     
-this.save(abeClientInformation);
+this->save(abeClientInformation);
     
 
                                     }
@@ -86,9 +85,9 @@ this.save(abeClientInformation);
 }
 
 
-    public bool isDelete(Input input){
+    public: bool isDelete(Input input){
 
-                        if(input == GameKeyFactory.getInstance()!.GAME_D)
+                        if(input == GameKeyFactory::getInstance().GAME_D)
                         
                                     {
                                     
@@ -113,7 +112,7 @@ this.save(abeClientInformation);
 }
 
 
-    public bool isSystemInput(Input input){
+    public: bool isSystemInput(Input input){
 
 
 

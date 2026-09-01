@@ -45,9 +45,8 @@
 class AdminConfigurationData
             : public Object
          {
-        
 
-    public static const CONTEXTNAME: string = "Admin";
+    public: static const std::string CONTEXTNAME = "Admin";
 
 };
 

@@ -54,17 +54,16 @@
 class SpecialItemsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: SpecialItemsEntityFactory = new SpecialItemsEntityFactory();
+    private: static SpecialItemsEntityFactory instance() { return SpecialItemsEntityFactory(); }
 
-    public static SpecialItemsEntityFactory getInstance();
+    public: static SpecialItemsEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: SpecialItemsEntityFactory();
 
-    public SpecialItemsEntity getSpecialItemsEntityInstance();
+    public: SpecialItemsEntity getSpecialItemsEntityInstance();
 
 };
 

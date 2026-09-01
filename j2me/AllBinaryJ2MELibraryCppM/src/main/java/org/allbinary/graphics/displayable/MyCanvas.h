@@ -99,93 +99,92 @@
 #include "CanvasStrings.h"
 #include "DisplayInfoSingleton.h"
 
-class MyCanvas: public Canvas: public DisplayableInterface, public MyCommandInterface {
-        
+class MyCanvas: public Canvas, public DisplayableInterface, public MyCommandInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    protected: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    const stringUtil: StringUtil = StringUtil.getInstance()!;
+    protected: const StringUtil stringUtil = StringUtil::getInstance();
 
-    const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const childNameList: BasicArrayList;
+    private: BasicArrayList childNameList;
 
-    private: const commandStack: Stack<any>;
+    private: Stack<any> commandStack;
 
-    private: commandListener: CommandListener = NullCommandListener.NULL_COMMAND_LISTENER;
+    private: CommandListener commandListener = NullCommandListener::NULL_COMMAND_LISTENER;
 
-    private: paused: bool= false;
+    private: bool paused= false;
 
-public constructor (string name, BasicArrayList childNameList);
+public: MyCanvas(std::string name, BasicArrayList childNameList);
 
-    public setFullScreenMode(bool mode);
+    public: void setFullScreenMode(bool mode);
 
-    sizeChanged(int32_t w, int32_t h);
+    protected: void sizeChanged(int32_t w, int32_t h);
 
-    public Stack<any> getCommandStack();
+    public: Stack<any> getCommandStack();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isCommand(Command command);
+    public: bool isCommand(Command command);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addCommand(Command command);
+    public: void addCommand(Command command);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeCommand(Command command);
+    public: void removeCommand(Command command);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllCommands();
+    public: void removeAllCommands();
 
-    public setCommandListener(CommandListener l);
+    public: void setCommandListener(CommandListener l);
 
-    public CommandListener getCustomCommandListener();
+    public: CommandListener getCustomCommandListener();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isPaused();
+    public: bool isPaused();
 
-    public removePauseCommand();
+    public: void removePauseCommand();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public pause();
+    public: void pause();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public unPause();
+    public: void unPause();
 
                 //@Throws(Exception.constructor)
             
-    process();
+    protected: void process();
 
-    paint(Graphics graphics);
+    protected: void paint(Graphics graphics);
 
-    public draw(Graphics graphics);
+    public: void draw(Graphics graphics);
 
-    public bool hasChild(MyCanvas displayable);
+    public: bool hasChild(MyCanvas displayable);
 
-    public destroy();
+    public: void destroy();
 
-    setPaused(bool isPaused);
+    protected: void setPaused(bool isPaused);
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
-    private: const touchME: TouchJ2ME = new TouchJ2ME();
+    private: const TouchJ2ME touchME = TouchJ2ME();
 
-    pointerDragged(int32_t x, int32_t y);
+    protected: void pointerDragged(int32_t x, int32_t y);
 
-    pointerPressed(int32_t x, int32_t y);
+    protected: void pointerPressed(int32_t x, int32_t y);
 
-    pointerReleased(int32_t x, int32_t y);
+    protected: void pointerReleased(int32_t x, int32_t y);
 
-    public nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
+    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume);
 
 };
 

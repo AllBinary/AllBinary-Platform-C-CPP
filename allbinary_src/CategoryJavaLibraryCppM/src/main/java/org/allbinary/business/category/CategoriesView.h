@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_H
         #define ORG_ALLBINARY_BUSINESS_CATEGORY_CATEGORIESVIEW_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -58,15 +60,14 @@
 class CategoriesView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: categoryInterface: CategoryInterface;
+    private: CategoryInterface categoryInterface;
 
-public constructor (CategoryInterface categoryInterface);
+public: CategoriesView(CategoryInterface categoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

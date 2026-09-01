@@ -57,60 +57,59 @@
 class DropCellPositionHistory
             : public Object
          {
-        
 
-    private: static const SINGLETON: DropCellPositionHistory = new DropCellPositionHistory();
+    private: static const DropCellPositionHistory SINGLETON = DropCellPositionHistory();
 
-    public static DropCellPositionHistory getInstance(){
+    public: static DropCellPositionHistory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DropCellPositionHistory.SINGLETON;
+                        return DropCellPositionHistory::SINGLETON;
     
 }
 
 
-    private: const cellPositionFactory: CellPositionFactory = CellPositionFactory.getInstance()!;
+    private: const CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();
 
-    private: positionList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList positionList = BasicArrayListD();
 
-    private: layerList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList layerList = BasicArrayListD();
 
-    public add(CellPosition cellPosition, AllBinaryLayer layerInterface){
-this.positionList!.add(cellPosition);
+    public: void add(CellPosition cellPosition, AllBinaryLayer layerInterface){
+this->positionList.add(cellPosition);
     
-this.layerList!.add(layerInterface);
+this->layerList.add(layerInterface);
     
 }
 
 
-    public addAll(BasicArrayList list, AllBinaryLayer layerInterface){
+    public: void addAll(BasicArrayList list, AllBinaryLayer layerInterface){
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
-this.add(list.get(index) as CellPosition, layerInterface);
+this->add(list.get(index) as CellPosition, layerInterface);
     
 }
 
 }
 
 
-    public remove(CellPosition cellPosition){
+    public: void remove(CellPosition cellPosition){
 
-    index: int32_t = this.positionList!.indexOf(cellPosition)!;;
+    int32_t index = this->positionList.indexOf(cellPosition);;
     
 
                         if(index >= 0)
                         
                                     {
-                                    this.positionList!.removeAt(index);
+                                    this->positionList.removeAt(index);
     
-this.layerList!.removeAt(index);
+this->layerList.removeAt(index);
     
 
                                     }
@@ -118,22 +117,22 @@ this.layerList!.removeAt(index);
 }
 
 
-    public removeAll(AllBinaryLayer layerInterface){
+    public: void removeAll(AllBinaryLayer layerInterface){
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
         while(index !=  -1)
         {
-index= this.layerList!.indexOf(layerInterface);
+index= this->layerList.indexOf(layerInterface);
     
 
                         if(index >= 0)
                         
                                     {
-                                    this.positionList!.removeAt(index);
+                                    this->positionList.removeAt(index);
     
-this.layerList!.removeAt(index);
+this->layerList.removeAt(index);
     
 
                                     }
@@ -143,34 +142,34 @@ this.layerList!.removeAt(index);
 }
 
 
-    public clear(){
-this.positionList!.clear();
+    public: void clear(){
+this->positionList.clear();
     
-this.layerList!.clear();
+this->layerList.clear();
     
 }
 
 
-    public bool isCellPositionWithDrop(CellPosition cellPosition){
+    public: bool isCellPositionWithDrop(CellPosition cellPosition){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.positionList!.contains(cellPosition);;
+                        return this->positionList.contains(cellPosition);;
     
 }
 
 
-    public bool anyCellPositionWithDrop(BasicArrayList list){
+    public: bool anyCellPositionWithDrop(BasicArrayList list){
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 
-                        if(this.isCellPositionWithDrop(list.get(index) as CellPosition))
+                        if(this->isCellPositionWithDrop(list.get(index) as CellPosition))
                         
                                     {
                                     
@@ -193,21 +192,21 @@ this.layerList!.clear();
 }
 
 
-    public CellPosition getCellPositionWithDrop(BasicArrayList list){
+    public: CellPosition getCellPositionWithDrop(BasicArrayList list){
 
-    cellPosition: CellPosition;;
+    CellPosition cellPosition;;
     
 
 
 
 
                         for (
-    index: int32_t = list.size() -1;index >= 0; index--)
+    int32_t index = list.size() -1;index >= 0; index--)
         {
 cellPosition= list.get(index) as CellPosition;
     
 
-                        if(this.isCellPositionWithDrop(cellPosition))
+                        if(this->isCellPositionWithDrop(cellPosition))
                         
                                     {
                                     
@@ -225,14 +224,14 @@ cellPosition= list.get(index) as CellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cellPositionFactory!.NONE;
+                        return this->cellPositionFactory.NONE;
     
 }
 
 
-    public AllBinaryLayer getLayerInterface(CellPosition cellPosition){
+    public: AllBinaryLayer getLayerInterface(CellPosition cellPosition){
 
-    index: int32_t = this.positionList!.indexOf(cellPosition)!;;
+    int32_t index = this->positionList.indexOf(cellPosition);;
     
 
                         if(index >= 0)
@@ -242,7 +241,7 @@ cellPosition= list.get(index) as CellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.layerList!.get(index) as AllBinaryLayer;
+                        return this->layerList.get(index) as AllBinaryLayer;
     
 
                                     }
@@ -252,7 +251,7 @@ cellPosition= list.get(index) as CellPosition;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryLayer.NULL_ALLBINARY_LAYER;
+                        return AllBinaryLayer::NULL_ALLBINARY_LAYER;
     
 
                         }

@@ -47,9 +47,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TickableLayerManager: public LayerManager {
-        
 
-public constructor ();
+public: TickableLayerManager();
 
 };
 

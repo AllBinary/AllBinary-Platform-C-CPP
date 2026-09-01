@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVELFACTORY_H
         #define ORG_ALLBINARY_GAME_RESOURCE_RESOURCELOADINGLEVELFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -57,30 +59,29 @@
 class ResourceLoadingLevelFactory
             : public Object
          {
-        
 
-    private: static const instance: ResourceLoadingLevelFactory = new ResourceLoadingLevelFactory();
+    private: static ResourceLoadingLevelFactory instance() { return ResourceLoadingLevelFactory(); }
 
-    public static ResourceLoadingLevelFactory getInstance();
+    public: static ResourceLoadingLevelFactory getInstance();
 
-    public const LOAD_EARLY: ResourceLoadingLevel = new ResourceLoadingLevel("Load Early", Integer.MAX_VALUE);
+    public: const ResourceLoadingLevel LOAD_EARLY = ResourceLoadingLevel("Load Early", Integer::MAX_VALUE);
 
-    public const LOAD_TOUCH: ResourceLoadingLevel = new ResourceLoadingLevel("Load Touch", Integer.MAX_VALUE -1);
+    public: const ResourceLoadingLevel LOAD_TOUCH = ResourceLoadingLevel("Load Touch", Integer::MAX_VALUE -1);
 
-    public const LOAD_GAME: ResourceLoadingLevel = new ResourceLoadingLevel("Load Game", Integer.MAX_VALUE -2);
+    public: const ResourceLoadingLevel LOAD_GAME = ResourceLoadingLevel("Load Game", Integer::MAX_VALUE -2);
 
-    public const LEVEL: ResourceLoadingLevel = new ResourceLoadingLevel("Level", Integer.MAX_VALUE -99);
+    public: const ResourceLoadingLevel LEVEL = ResourceLoadingLevel("Level", Integer::MAX_VALUE -99);
 
-    public const MAX_LEVEL: ResourceLoadingLevel = new ResourceLoadingLevel("Max Level", Integer.MAX_VALUE -100);
+    public: const ResourceLoadingLevel MAX_LEVEL = ResourceLoadingLevel("Max Level", Integer::MAX_VALUE -100);
 
-    public const LOAD_ALL: ResourceLoadingLevel = new ResourceLoadingLevel("Load All",  -1);
+    public: const ResourceLoadingLevel LOAD_ALL = ResourceLoadingLevel("Load All",  -1);
 
-    private: const RESOURCE_LOADING_LEVEL_ARRAY: std::vector<ResourceLoadingLevel> = 
-                                                        [
-                                                            this.LOAD_ALL,this.MAX_LEVEL,this.LEVEL,this.LOAD_GAME,this.LOAD_TOUCH,this.LOAD_EARLY
-                                                        ];
+    private: const std::vector<ResourceLoadingLevel> RESOURCE_LOADING_LEVEL_ARRAY = 
+                                                        {
+                                                            this->LOAD_ALL,this->MAX_LEVEL,this->LEVEL,this->LOAD_GAME,this->LOAD_TOUCH,this->LOAD_EARLY
+                                                        };
 
-    public string getLevelString(int32_t level);
+    public: std::string getLevelString(int32_t level);
 
 };
 

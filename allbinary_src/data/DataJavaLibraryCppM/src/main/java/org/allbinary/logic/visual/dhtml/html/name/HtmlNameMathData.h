@@ -45,23 +45,22 @@
 class HtmlNameMathData
             : public Object
          {
-        
 
-    private: static const instance: HtmlNameMathData = new HtmlNameMathData();
+    private: static HtmlNameMathData instance() { return HtmlNameMathData(); }
 
-    public static HtmlNameMathData getInstance();
+    public: static HtmlNameMathData getInstance();
 
-private constructor ();
+private: HtmlNameMathData();
 
-    public EQUALS: string = "_EQUALS_";
+    public: std::string EQUALS = "_EQUALS_";
 
-    public PLUS: string = "_PLUS_";
+    public: std::string PLUS = "_PLUS_";
 
-    public MINUS: string = "_MINUS_";
+    public: std::string MINUS = "_MINUS_";
 
-    public DIVIDE: string = "_DIVIDE_";
+    public: std::string DIVIDE = "_DIVIDE_";
 
-    public MULTIPLY: string = "_MULTIPLY_";
+    public: std::string MULTIPLY = "_MULTIPLY_";
 
 };
 

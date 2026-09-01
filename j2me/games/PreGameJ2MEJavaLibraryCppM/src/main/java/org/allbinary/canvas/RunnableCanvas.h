@@ -99,102 +99,101 @@
         #include "Processor.h"
 #include "RunnableCanvasRefreshHelper.h"
 
-class RunnableCanvas: public MyCanvas: public RunnableInterface {
-        
+class RunnableCanvas: public MyCanvas, public RunnableInterface {
 
-    const nullUtil: NullUtil = NullUtil.getInstance()!;
+    protected: const NullUtil nullUtil = NullUtil::getInstance();
 
-    private: thread: Thread = NullThread.NULL_THREAD;
+    private: Thread thread = NullThread::NULL_THREAD;
 
-    private: currentThread: Thread = NullThread.NULL_THREAD;
+    private: Thread currentThread = NullThread::NULL_THREAD;
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    const loopTimeHelper: TimeDelayHelper = new TimeDelayHelper(NullWaitGameRunnable.getInstance()!.WAIT);
+    protected: const TimeDelayHelper loopTimeHelper = TimeDelayHelper(NullWaitGameRunnable::getInstance().WAIT);
 
-    runnableCanvasRefreshHelper: Processor = Processor.getInstance()!;
+    protected: Processor runnableCanvasRefreshHelper = Processor::getInstance();
 
-    const commonLabels: CommonLabels = CommonLabels.getInstance()!;
+    protected: const CommonLabels commonLabels = CommonLabels::getInstance();
 
-    const threadObjectUtil: ThreadObjectUtil = ThreadObjectUtil.getInstance()!;
+    protected: const ThreadObjectUtil threadObjectUtil = ThreadObjectUtil::getInstance();
 
-    const SET_RUNNING: string = "setRunning";
+    protected: const std::string SET_RUNNING = "setRunning";
 
-    private: const IS_RUNNING: string = "isRunning";
+    private: const std::string IS_RUNNING = "isRunning";
 
-    private: const THREAD: string = "Thread: ";
+    private: const std::string THREAD = "Thread: ";
 
-    private: const NOT_EQUAL: string = " != ";
+    private: const std::string NOT_EQUAL = " != ";
 
-    private: const PAUSE_SLEEP: string = "pause sleep";
+    private: const std::string PAUSE_SLEEP = "pause sleep";
 
-    private: const START_PAUSE: string = "start pause - game thread sleep at: ";
+    private: const std::string START_PAUSE = "start pause - game thread sleep at: ";
 
-    private: const END_PAUSE: string = "end pause - game thread sleep at: ";
+    private: const std::string END_PAUSE = "end pause - game thread sleep at: ";
 
-    private: const PROCESS_LOOP_SLEEP: string = "processLoopSleep";
+    private: const std::string PROCESS_LOOP_SLEEP = "processLoopSleep";
 
-public constructor (CommandListener commandListener, BasicArrayList childNameList, bool hasParam);
+public: RunnableCanvas(CommandListener commandListener, BasicArrayList childNameList, bool hasParam);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    public bool isMainCanvas();
+    public: bool isMainCanvas();
 
-    public setThread(Thread thread);
+    public: void setThread(Thread thread);
 
-    public setRunning(bool running);
+    public: void setRunning(bool running);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning();
+    public: bool isRunning();
 
-    public TimeDelayHelper getLoopTimeHelperP();
+    public: TimeDelayHelper getLoopTimeHelperP();
 
-    private: pauseWait: int64_t = 0;
+    private: int64_t pauseWait = 0;
 
-    setWait(int32_t wait);
+    protected: void setWait(int32_t wait);
 
-    int32_t getWait();
+    protected: int32_t getWait();
 
-    public setCurrentThread();
+    public: void setCurrentThread();
 
-    setCurrentThreadFake();
+    protected: void setCurrentThreadFake();
 
-    showNotify();
+    protected: void showNotify();
 
-    private: notified: bool = false;
+    private: bool notified = false;
 
                 //@Throws(Exception.constructor)
             
-    stopWaiting();
+    private: void stopWaiting();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public waitOnNotify(int64_t wait);
+    public: void waitOnNotify(int64_t wait);
 
                 //@Throws(Exception.constructor)
             
-    public processSleep();
+    public: void processSleep();
 
-    public bool isPausable();
-
-                //@Throws(Exception.constructor)
-            
-    public processGameSleep(int64_t sleep);
+    public: bool isPausable();
 
                 //@Throws(Exception.constructor)
             
-    public processLoopSleep();
-
-    public bool isSingleThread();
-
-    public run();
+    public: void processGameSleep(int64_t sleep);
 
                 //@Throws(Exception.constructor)
             
-    public end2();
+    public: void processLoopSleep();
 
-    public int32_t getType();
+    public: bool isSingleThread();
+
+    public: void run();
+
+                //@Throws(Exception.constructor)
+            
+    public: void end2();
+
+    public: int32_t getType();
 
 };
 

@@ -57,42 +57,39 @@
 class LayerCollisionUtil
             : public Object
          {
-        
 
-    private: static const instance: LayerCollisionUtil = new LayerCollisionUtil();
+    private: static LayerCollisionUtil instance() { return LayerCollisionUtil(); }
 
-    public static LayerCollisionUtil getInstance(){
+    public: static LayerCollisionUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerCollisionUtil.instance;
+                        return LayerCollisionUtil::instance();
     
 }
 
 
-    private: const collisionProcessor: CollisionProcessor;
+    private: const CollisionProcessor collisionProcessor;
 
-private constructor (){
+private: LayerCollisionUtil(){
 
-            super();
-        
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    gameFeatureFactory: GameFeatureFactory = GameFeatureFactory.getInstance()!;;
+    GameFeatureFactory gameFeatureFactory = GameFeatureFactory::getInstance();;
     
 
-                        if(OpenGLFeatureUtil.getInstance()!.isAnyThreed() && !features.isFeature(gameFeatureFactory!.COLLISIONS_FORCED_TWO_DIMENSIONAL))
+                        if(OpenGLFeatureUtil::getInstance().isAnyThreed() && !features.isFeature(gameFeatureFactory.COLLISIONS_FORCED_TWO_DIMENSIONAL))
                         
                                     {
-                                    this.collisionProcessor= new CollisionThreedProcessor();
+                                    this->collisionProcessor= CollisionThreedProcessor();
     
 
                                     }
                                 
                         else {
-                            this.collisionProcessor= new Collision2DProcessor();
+                            this->collisionProcessor= Collision2DProcessor();
     
 
                         }
@@ -100,12 +97,12 @@ private constructor (){
 }
 
 
-    public bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2){
+    public: bool isCollision(AllBinaryLayer myLayer, AllBinaryLayer myLayer2){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.collisionProcessor!.isCollision(myLayer, myLayer2);;
+                        return this->collisionProcessor.isCollision(myLayer, myLayer2);;
     
 }
 

@@ -101,29 +101,28 @@
 class InputAutomationConfiguration
             : public Object
          {
-        
 
-    private: static const FILENAME: string = "InputAutomationConfig.xml";
+    private: static const std::string FILENAME = "InputAutomationConfig.xml";
 
-    public static File getFile();
+    public: static File getFile();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: installed: bool= false;
+    private: bool installed= false;
 
-    private: inputAutomationModuleConfigurationList: List<InputAutomationModuleConfiguration>;
+    private: List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList;
 
-public constructor ();
+public: InputAutomationConfiguration();
 
-    public bool isInstalled();
+    public: bool isInstalled();
 
-    public setInstalled(bool installed);
+    public: void setInstalled(bool installed);
 
-    public List<InputAutomationModuleConfiguration> getInputAutomationModuleConfigurationList();
+    public: List<InputAutomationModuleConfiguration> getInputAutomationModuleConfigurationList();
 
                 //@Throws(Exception.constructor)
             
-    public save();
+    public: void save();
 
 };
 

@@ -64,30 +64,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "DownloadableInventoryItemView.h"
 
-class NewValidationView: public DownloadableInventoryItemView: public ValidationComponentInterface {
-        
+class NewValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface, StringUtil.getInstance()!.EMPTY_STRING);
+public: NewValidationView(TransformInfoInterface transformInfoInterface){
+            super(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.itemInterface= new BasicItem() as ItemInterface;
+this->itemInterface= BasicItem() as ItemInterface;
     
-this.downloadableItem= new DownloadableItem(this.itemInterface!.getId());
+this->downloadableItem= DownloadableItem(this->itemInterface.getId());
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
@@ -97,14 +96,14 @@ this.downloadableItem= new DownloadableItem(this.itemInterface!.getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -114,7 +113,7 @@ this.downloadableItem= new DownloadableItem(this.itemInterface!.getId());
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -124,7 +123,7 @@ this.downloadableItem= new DownloadableItem(this.itemInterface!.getId());
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 

@@ -52,53 +52,50 @@
 #include "RTSLayer.h"
 
 class RTSLayerCompositePaintable: public Paintable {
-        
 
-    private: upgradeCost: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string upgradeCost = StringUtil::getInstance().EMPTY_STRING;
 
-    private: downGradeCost: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string downGradeCost = StringUtil::getInstance().EMPTY_STRING;
 
-    private: const UPGRADE: string = "Up: $";
+    private: const std::string UPGRADE = "Up: $";
 
-    private: const DOWNGRADE: string = "Down: $-";
+    private: const std::string DOWNGRADE = "Down: $-";
 
-    const upgradableRTSLayerHudPaintable: UpgradableRTSLayerHudPaintable;
+    protected: UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable;
 
-public constructor (UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable){
-
-            super();
-        this.upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
+public: RTSLayerCompositePaintable(UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintable){
+this->upgradableRTSLayerHudPaintable= upgradableRTSLayerHudPaintable;
     
 }
 
 
-    public update(RTSLayer rtsLayer){
+    public: void update(RTSLayer rtsLayer){
 
-                        if(rtsLayer!.isUpgradeable())
+                        if(rtsLayer.isUpgradeable())
                         
                                     {
-                                    this.setUpgradeCost(new StringMaker().append(this.UPGRADE)!.appendint(rtsLayer!.getUpgradeCost())!.toString());
+                                    this->setUpgradeCost(StringMaker().append(this->UPGRADE).appendint(rtsLayer.getUpgradeCost()).toString());
     
 
                                     }
                                 
                         else {
-                            this.setUpgradeCost(StringUtil.getInstance()!.EMPTY_STRING);
+                            this->setUpgradeCost(StringUtil::getInstance().EMPTY_STRING);
     
 
                         }
                             
 
-                        if(rtsLayer!.isDowngradeable())
+                        if(rtsLayer.isDowngradeable())
                         
                                     {
-                                    this.setDownGradeCost(new StringMaker().append(this.DOWNGRADE)!.appendint(rtsLayer!.getDowngradeCost())!.toString());
+                                    this->setDownGradeCost(StringMaker().append(this->DOWNGRADE).appendint(rtsLayer.getDowngradeCost()).toString());
     
 
                                     }
                                 
                         else {
-                            this.setDownGradeCost(StringUtil.getInstance()!.EMPTY_STRING);
+                            this->setDownGradeCost(StringUtil::getInstance().EMPTY_STRING);
     
 
                         }
@@ -106,42 +103,42 @@ public constructor (UpgradableRTSLayerHudPaintable upgradableRTSLayerHudPaintabl
 }
 
 
-    public paint(Graphics graphics){
-graphics.drawString(this.getDownGradeCost(), this.upgradableRTSLayerHudPaintable!.textX, this.upgradableRTSLayerHudPaintable!.costY1, 0);
+    public: void paint(Graphics graphics){
+graphics.drawString(this->getDownGradeCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY1, 0);
     
-graphics.drawString(this.getUpgradeCost(), this.upgradableRTSLayerHudPaintable!.textX, this.upgradableRTSLayerHudPaintable!.costY, 0);
-    
-}
-
-
-    setUpgradeCost(string upgradeCost){
-this.upgradeCost= upgradeCost;
+graphics.drawString(this->getUpgradeCost(), this->upgradableRTSLayerHudPaintable.textX, this->upgradableRTSLayerHudPaintable.costY, 0);
     
 }
 
 
-    string getUpgradeCost(){
+    protected: void setUpgradeCost(std::string upgradeCost){
+this->upgradeCost= upgradeCost;
+    
+}
+
+
+    protected: std::string getUpgradeCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.upgradeCost;
+                        return this->upgradeCost;
     
 }
 
 
-    setDownGradeCost(string downGradeCost){
-this.downGradeCost= downGradeCost;
+    protected: void setDownGradeCost(std::string downGradeCost){
+this->downGradeCost= downGradeCost;
     
 }
 
 
-    string getDownGradeCost(){
+    protected: std::string getDownGradeCost(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.downGradeCost;
+                        return this->downGradeCost;
     
 }
 

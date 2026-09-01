@@ -45,11 +45,10 @@
 class GlobalsData
             : public Object
          {
-        
 
-    public static const NAME: string = "GLOBALS_NAME";
+    public: static const std::string NAME = "GLOBALS_NAME";
 
-private constructor ();
+private: GlobalsData();
 
 };
 

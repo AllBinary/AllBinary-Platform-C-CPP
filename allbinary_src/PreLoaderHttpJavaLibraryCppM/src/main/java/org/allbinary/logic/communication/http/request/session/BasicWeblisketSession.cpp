@@ -72,194 +72,191 @@
 class BasicWeblisketSession
             : public Object
          {
-        
 
-    private: session: HttpSession;
+    private: HttpSession session;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (PageContext pageContext){
-
-            super();
-        this.pageContext= pageContext;
+public: BasicWeblisketSession(PageContext pageContext){
+this->pageContext= pageContext;
     
 
-    request: HttpServletRequest = pageContext!.getRequest() as HttpServletRequest;;
+    HttpServletRequest request = pageContext.getRequest() as HttpServletRequest;;
     
-this.session= request.getSession(true);
+this->session= request.getSession(true);
     
 }
 
 
-    public setRole(BasicUserRole aRole){
-this.session.setAttribute(BasicUserRoleData.NAME.toString(), aRole);
+    public: void setRole(BasicUserRole aRole){
+this->session.setAttribute(BasicUserRoleData::NAME.toString(), aRole);
     
 }
 
 
-    public BasicUserRole getRole(){
+    public: BasicUserRole getRole(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(BasicUserRoleData.NAME.toString()) as BasicUserRole;
+                        return this->session.getAttribute(BasicUserRoleData::NAME.toString()) as BasicUserRole;
     
 }
 
 
-    public setPassword(string password){
-this.session.setAttribute(UserData.PASSWORD, password);
+    public: void setPassword(std::string password){
+this->session.setAttribute(UserData::PASSWORD, password);
     
 }
 
 
-    public setUserName(string userName){
-this.session.setAttribute(UserData.USERNAME, userName);
+    public: void setUserName(std::string userName){
+this->session.setAttribute(UserData::USERNAME, userName);
     
 }
 
 
-    public setPaymentMethod(string value){
-this.session.setAttribute(PaymentGatewayData.NAME.toString(), value);
+    public: void setPaymentMethod(std::string value){
+this->session.setAttribute(PaymentGatewayData::NAME.toString(), value);
     
 }
 
 
-    public setAuthenticated(){
-this.session.setAttribute(WeblisketSessionData.AUTHENTICATED, BooleanFactory.getInstance()!.TRUE_STRING);
+    public: void setAuthenticated(){
+this->session.setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance().TRUE_STRING);
     
 }
 
 
-    public setAttempts(Integer value){
-this.session.setAttribute(WeblisketSessionData.ATTEMPTS, value);
+    public: void setAttempts(Integer value){
+this->session.setAttribute(WeblisketSessionData::ATTEMPTS, value);
     
 }
 
 
-    public setTimeout(string value){
-this.session.setAttribute(WeblisketSessionData.TIMEOUT, value);
+    public: void setTimeout(std::string value){
+this->session.setAttribute(WeblisketSessionData::TIMEOUT, value);
     
 }
 
 
-    public setStoreName(string value){
-this.session.setAttribute(StoreFrontData.getInstance()!.NAME, value);
+    public: void setStoreName(std::string value){
+this->session.setAttribute(StoreFrontData::getInstance().NAME, value);
     
 }
 
 
-    public string getWebAppPath(){
+    public: std::string getWebAppPath(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH) as string;
+                        return this->session.getAttribute(org.allbinary.globals.GLOBALS2.WEBAPPPATH) as string;
     
 }
 
 
-    public string getUserName(){
+    public: std::string getUserName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(UserData.USERNAME) as string;
+                        return this->session.getAttribute(UserData::USERNAME) as string;
     
 }
 
 
-    public string getPassword(){
+    public: std::string getPassword(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(UserData.PASSWORD) as string;
+                        return this->session.getAttribute(UserData::PASSWORD) as string;
     
 }
 
 
-    public string getPaymentMethod(){
+    public: std::string getPaymentMethod(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(PaymentGatewayData.NAME.toString()) as string;
+                        return this->session.getAttribute(PaymentGatewayData::NAME.toString()) as string;
     
 }
 
 
-    public string getAuthentication(){
+    public: std::string getAuthentication(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(WeblisketSessionData.AUTHENTICATED) as string;
+                        return this->session.getAttribute(WeblisketSessionData::AUTHENTICATED) as string;
     
 }
 
 
-    public Integer getAttempts(){
+    public: Integer getAttempts(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(WeblisketSessionData.ATTEMPTS) as Integer;
+                        return this->session.getAttribute(WeblisketSessionData::ATTEMPTS) as Integer;
     
 }
 
 
-    public string getTimeout(){
+    public: std::string getTimeout(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(WeblisketSessionData.TIMEOUT) as string;
+                        return this->session.getAttribute(WeblisketSessionData::TIMEOUT) as string;
     
 }
 
 
-    public string getStoreName(){
+    public: std::string getStoreName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getAttribute(StoreFrontData.getInstance()!.NAME) as string;
+                        return this->session.getAttribute(StoreFrontData::getInstance().NAME) as string;
     
 }
 
 
-    public setAuthenticated(bool value){
-this.session.setAttribute(WeblisketSessionData.AUTHENTICATED, BooleanFactory.getInstance()!.FALSE_STRING);
+    public: void setAuthenticated(bool value){
+this->session.setAttribute(WeblisketSessionData::AUTHENTICATED, BooleanFactory::getInstance().FALSE_STRING);
     
 }
 
 
-    public clear(){
-this.session.removeAttribute(WeblisketSessionData.AUTHENTICATED);
+    public: void clear(){
+this->session.removeAttribute(WeblisketSessionData::AUTHENTICATED);
     
-this.session.removeAttribute(WeblisketSessionData.TIMEOUT);
+this->session.removeAttribute(WeblisketSessionData::TIMEOUT);
     
-this.session.removeAttribute(BasicUserRoleData.NAME.toString());
+this->session.removeAttribute(BasicUserRoleData::NAME.toString());
     
-this.session.removeAttribute(UserData.USERNAME);
+this->session.removeAttribute(UserData::USERNAME);
     
 }
 
 
-    public int64_t getCreationTime(){
+    public: int64_t getCreationTime(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.session.getCreationTime();;
+                        return this->session.getCreationTime();;
     
 }
 
 
-    public int64_t getLastAccessedTime(){
+    public: int64_t getLastAccessedTime(){
 
-    lastAccessedTime: int64_t = this.session.getLastAccessedTime()!;;
+    int64_t lastAccessedTime = this->session.getLastAccessedTime();;
     
 
 

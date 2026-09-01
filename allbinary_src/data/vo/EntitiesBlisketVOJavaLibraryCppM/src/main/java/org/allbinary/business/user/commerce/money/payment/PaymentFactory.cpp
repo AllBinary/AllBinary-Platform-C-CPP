@@ -55,11 +55,10 @@
 class PaymentFactory
             : public Object
          {
-        
 
-    public static PaymentInterface getInstance(ServletRequest request){
+    public: static PaymentInterface getInstance(ServletRequest request){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -67,20 +66,20 @@ class PaymentFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.business.user.commerce.money.payment.Payment(request) as PaymentInterface;
+                        return org::allbinary::business::user::commerce::money::payment::Payment(request) as PaymentInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
                         
                                     {
-                                    logUtil!.put(commonStrings!.EXCEPTION, "PaymentFactory", commonStrings!.GET_INSTANCE, e);
+                                    logUtil.put(commonStrings.EXCEPTION, "PaymentFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -96,10 +95,8 @@ class PaymentFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PaymentFactory(){
+}
 
 
 };

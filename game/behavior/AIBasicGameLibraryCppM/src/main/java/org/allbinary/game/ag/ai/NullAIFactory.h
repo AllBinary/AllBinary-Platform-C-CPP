@@ -61,13 +61,12 @@
 class NullAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
-    private: static NULL_AI: NullAI = new NullAI();
+    private: static NullAI NULL_AI = NullAI();
 
-    public static ArtificialIntelligenceInterface getInstance();
+    public: static ArtificialIntelligenceInterface getInstance();
 
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
 };
 

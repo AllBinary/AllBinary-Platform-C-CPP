@@ -61,11 +61,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AccelerometerSensorUpdateProcessor: public Processor {
-        
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    public: void process();
 
 };
 

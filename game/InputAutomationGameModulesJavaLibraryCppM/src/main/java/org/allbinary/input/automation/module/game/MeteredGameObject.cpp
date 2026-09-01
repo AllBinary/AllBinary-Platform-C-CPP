@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -59,81 +61,78 @@
 class MeteredGameObject
             : public Object
         : public MeteredGameObjectInterface {
-        
 
-    private: ratios: std::vector<number>;
+    private: std::vector<number> ratios;
 
-    private: good: bool = false;
+    private: bool good = false;
 
-    private: dropping: bool = false;
+    private: bool dropping = false;
 
-    private: minX: Integer;
+    private: Integer minX;
 
-    private: maxX: Integer;
+    private: Integer maxX;
 
-    private: y: Integer;
+    private: Integer y;
 
-    private: size: Integer;
+    private: Integer size;
 
-    private: const RATIOS_LABEL: string = "Ratios: ";
+    private: const std::string RATIOS_LABEL = "Ratios: ";
 
-    private: const IS_GOOD_LABEL: string = "isGood: ";
+    private: const std::string IS_GOOD_LABEL = "isGood: ";
 
-    private: const IS_DROPPPING_LABEL: string = "isDropping: ";
+    private: const std::string IS_DROPPPING_LABEL = "isDropping: ";
 
-public constructor (std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
-
-            super();
-        this.setRatios(new Array(bufferedImage!.length));
+public: MeteredGameObject(std::vector<BufferedImage> bufferedImage, Integer minX, Integer maxX, Integer y){
+this->setRatios(new Array(bufferedImage.length));
     
-this.setMinX(minX);
+this->setMinX(minX);
     
-this.setMaxX(maxX);
+this->setMaxX(maxX);
     
-this.setY(y);
+this->setY(y);
     
-this.setSize(maxX -minX);
+this->setSize(maxX -minX);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < bufferedImage!.length; index++)
+    int32_t index = 0;index < bufferedImage.size(); index++)
         {
 
-    nominator: double = GraphicsAnalysisUtil.getNominator(bufferedImage[index]!, this.getMinX(), this.getMaxX(), this.getY())!;;
+    double nominator = GraphicsAnalysisUtil::getNominator(bufferedImage[index]!, this->getMinX(), this->getMaxX(), this->getY());;
     
-this.getRatios()[index]= new number(nominator /this.getSize());
+this->getRatios()[index]= number(nominator /this->getSize());
     
 }
 
 
-                        if(this.getRatios()[bufferedImage!.length -1]!.doubleValue() > 0.93F)
+                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() > 0.93F)
                         
                                     {
-                                    this.setGood(true);
+                                    this->setGood(true);
     
 
                                     }
                                 
                         else {
-                            this.setGood(false);
+                            this->setGood(false);
     
 
                         }
                             
 
-                        if(this.getRatios()[bufferedImage!.length -1]!.doubleValue() < this.getRatios()[0]!.doubleValue())
+                        if(this->getRatios()[bufferedImage.size() -1]!.doubleValue() < this->getRatios()[0]!.doubleValue())
                         
                                     {
-                                    this.setDropping(true);
+                                    this->setDropping(true);
     
 
                                     }
                                 
                         else {
-                            this.setDropping(false);
+                            this->setDropping(false);
     
 
                         }
@@ -141,166 +140,166 @@ this.getRatios()[index]= new number(nominator /this.getSize());
 }
 
 
-    public bool isGood(){
+    public: bool isGood(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.good;
+                        return this->good;
     
 }
 
 
-    setGood(bool good){
-this.good= good;
+    protected: void setGood(bool good){
+this->good= good;
     
 }
 
 
-    public bool isDropping(){
+    public: bool isDropping(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.dropping;
+                        return this->dropping;
     
 }
 
 
-    setDropping(bool dropping){
-this.dropping= dropping;
+    protected: void setDropping(bool dropping){
+this->dropping= dropping;
     
 }
 
 
-    public std::vector<number> getRatios(){
+    public: std::vector<number> getRatios(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.ratios;
+                        return this->ratios;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.RATIOS_LABEL);
+stringBuffer.append(this->RATIOS_LABEL);
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < this.getRatios()!.length; index++)
+    int32_t index = 0;index < this->getRatios().length; index++)
         {
-stringBuffer!.append(this.getRatios()[index]!.toString());
+stringBuffer.append(this->getRatios()[index]!.toString());
     
 
-                        if(index < this.getRatios()!.length -1)
+                        if(index < this->getRatios().length -1)
                         
                                     {
-                                    stringBuffer!.append(commonSeps!.COMMA_SEP);
+                                    stringBuffer.append(commonSeps.COMMA_SEP);
     
 
                                     }
                                 
 }
 
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.IS_GOOD_LABEL);
+stringBuffer.append(this->IS_GOOD_LABEL);
     
-stringBuffer!.appendboolean(this.isGood());
+stringBuffer.appendboolean(this->isGood());
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.IS_DROPPPING_LABEL);
+stringBuffer.append(this->IS_DROPPPING_LABEL);
     
-stringBuffer!.appendboolean(this.isDropping());
+stringBuffer.appendboolean(this->isDropping());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public setRatios(std::vector<number> ratios){
-this.ratios= ratios;
+    public: void setRatios(std::vector<number> ratios){
+this->ratios= ratios;
     
 }
 
 
-    public Integer getMinX(){
+    public: Integer getMinX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.minX;
+                        return this->minX;
     
 }
 
 
-    public setMinX(Integer minX){
-this.minX= minX;
+    public: void setMinX(Integer minX){
+this->minX= minX;
     
 }
 
 
-    public Integer getMaxX(){
+    public: Integer getMaxX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.maxX;
+                        return this->maxX;
     
 }
 
 
-    public setMaxX(Integer maxX){
-this.maxX= maxX;
+    public: void setMaxX(Integer maxX){
+this->maxX= maxX;
     
 }
 
 
-    public Integer getY(){
+    public: Integer getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.y;
+                        return this->y;
     
 }
 
 
-    public setY(Integer y){
-this.y= y;
+    public: void setY(Integer y){
+this->y= y;
     
 }
 
 
-    public Integer getSize(){
+    public: Integer getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.size;
+                        return this->size;
     
 }
 
 
-    public setSize(Integer size){
-this.size= size;
+    public: void setSize(Integer size){
+this->size= size;
     
 }
 

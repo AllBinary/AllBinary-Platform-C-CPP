@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -81,69 +83,66 @@
 class CountedLayerInterfaceFactoryPart
             : public Object
         : public PartInterface, public UpdateMyFontInterface {
-        
 
-    public static const NULL_COUNTED_LAYER_INTERFACE_FACTORY: CountedLayerInterfaceFactoryPart = new CountedLayerInterfaceFactoryPart(0, CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY);
+    public: static const CountedLayerInterfaceFactoryPart NULL_COUNTED_LAYER_INTERFACE_FACTORY = CountedLayerInterfaceFactoryPart(0, CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY);
 
-    private: const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    private: myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    private: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    private: animationInterface: Animation = NullAnimationFactory.getFactoryInstance()!.getInstance(0)!;
+    private: Animation animationInterface = NullAnimationFactory::getFactoryInstance().getInstance(0);
 
-    private: total: int32_t= 0;
+    private: int32_t total= 0;
 
-    private: totalString: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> totalString = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: xOffset: int32_t= 0;
+    private: int32_t xOffset= 0;
 
-    private: countedPickedUpLayerInterfaceFactory: CountedPickedUpLayerInterfaceFactory = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
+    private: CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-public constructor (int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory){
-
-            super();
-        this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(1000);
+public: CountedLayerInterfaceFactoryPart(int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory){
+this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(1000);
     
-this.init(total, countedPickedUpLayerInterfaceFactory);
+this->init(total, countedPickedUpLayerInterfaceFactory);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.setXOffset(font.charsWidth(this.totalString, 0, this.primitiveLongUtil!.getCurrentTotalDigits()) +(font.getSize()>>1));
+this->setXOffset(font.charsWidth(this->totalString, 0, this->primitiveLongUtil.getCurrentTotalDigits()) +(font.getSize()>>1));
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    init(int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory){
-this.setCountedPickedUpLayerInterfaceFactory(countedPickedUpLayerInterfaceFactory);
+    private: void init(int32_t total, CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory){
+this->setCountedPickedUpLayerInterfaceFactory(countedPickedUpLayerInterfaceFactory);
     
-this.total= total;
+this->total= total;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer getInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
 
-                        if(this.total > 0)
+                        if(this->total > 0)
                         
                                     {
-                                    this.setTotal(this.total -1);
+                                    this->setTotal(this->total -1);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getCountedPickedUpLayerInterfaceFactory()!.getNextInstance(hashtable, x, y, z);;
+                        return this->getCountedPickedUpLayerInterfaceFactory().getNextInstance(hashtable, x, y, z);;
     
 
                                     }
@@ -152,7 +151,7 @@ this.total= total;
                             
 
 
-                            throw new Exception("No more left. Could use a listener to automatically remove");
+                            throw Exception("No more left. Could use a listener to automatically remove");
                     
 
                         }
@@ -160,90 +159,90 @@ this.total= total;
 }
 
 
-    public int32_t getTotal(){
+    public: int32_t getTotal(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.total;
+                        return this->total;
     
 }
 
 
-    public setTotal(int32_t total){
-this.total= total;
+    public: void setTotal(int32_t total){
+this->total= total;
     
-this.totalString= this.primitiveLongUtil!.getCharArray(total);
+this->totalString= this->primitiveLongUtil.getCharArray(total);
     
-this.myFontProcessor= this.updateMyFontProcessor;
-    
-}
-
-
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+this->myFontProcessor= this->updateMyFontProcessor;
     
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
+    
 }
 
 
-    public Animation getAnimationInterface(){
+    public: void paintThreed(Graphics graphics){
+}
+
+
+    public: Animation getAnimationInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.animationInterface;
+                        return this->animationInterface;
     
 }
 
 
-    public setAnimationInterface(Animation animationInterface){
-this.animationInterface= animationInterface;
+    public: void setAnimationInterface(Animation animationInterface){
+this->animationInterface= animationInterface;
     
 }
 
 
-    public int32_t getXOffset(){
+    public: int32_t getXOffset(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.xOffset;
+                        return this->xOffset;
     
 }
 
 
-    setXOffset(int32_t totalStringWidth){
-this.xOffset= totalStringWidth;
+    private: void setXOffset(int32_t totalStringWidth){
+this->xOffset= totalStringWidth;
     
 }
 
 
-    public std::vector<char> getTotalString(){
+    public: std::vector<char> getTotalString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalString;
+                        return this->totalString;
     
 }
 
 
-    public CountedPickedUpLayerInterfaceFactory getCountedPickedUpLayerInterfaceFactory(){
+    public: CountedPickedUpLayerInterfaceFactory getCountedPickedUpLayerInterfaceFactory(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.countedPickedUpLayerInterfaceFactory;
+                        return this->countedPickedUpLayerInterfaceFactory;
     
 }
 
 
-    public setCountedPickedUpLayerInterfaceFactory(CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory){
-this.countedPickedUpLayerInterfaceFactory= countedPickedUpLayerInterfaceFactory;
+    public: void setCountedPickedUpLayerInterfaceFactory(CountedPickedUpLayerInterfaceFactory countedPickedUpLayerInterfaceFactory){
+this->countedPickedUpLayerInterfaceFactory= countedPickedUpLayerInterfaceFactory;
     
 }
 

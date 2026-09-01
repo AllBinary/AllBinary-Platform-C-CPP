@@ -67,64 +67,63 @@
         #include "ShowVirtualKeyboardRunnable.h"
 #include "HideVirtualKeyboardRunnable.h"
 
-class VirtualKeyboardAPI3: public VirtualKeyboard: public VirtualKeyboardEventListenerInterface {
-        
+class VirtualKeyboardAPI3: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
 
-    public static MAX_API: int32_t = Integer.MAX_VALUE;
+    public: static int32_t MAX_API = Integer::MAX_VALUE;
 
-    public static MIN_API: int32_t = 3;
+    public: static int32_t MIN_API = 3;
 
-    private: virtualKeyboard: bool= false;
+    private: bool virtualKeyboard= false;
 
-    private: activity: Activity;
+    private: Activity activity;
 
-    private: const showVirtualKeyboardRunnable: Runnable;
+    private: Runnable showVirtualKeyboardRunnable;
 
-    private: const hideVirtualKeyboardRunnable: Runnable;
+    private: Runnable hideVirtualKeyboardRunnable;
 
-public constructor (Activity activity){
+public: VirtualKeyboardAPI3(Activity activity){
             super();
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.activity= activity;
+this->activity= activity;
     
-this.showVirtualKeyboardRunnable= new ShowVirtualKeyboardRunnable(this.activity);
+this->showVirtualKeyboardRunnable= ShowVirtualKeyboardRunnable(this->activity);
     
-this.hideVirtualKeyboardRunnable= new HideVirtualKeyboardRunnable(this.activity);
+this->hideVirtualKeyboardRunnable= HideVirtualKeyboardRunnable(this->activity);
     
 
-    virtualKeyboardEventHandler: VirtualKeyboardEventHandler = VirtualKeyboardEventHandler.getInstance()!;;
+    VirtualKeyboardEventHandler virtualKeyboardEventHandler = VirtualKeyboardEventHandler::getInstance();;
     
-virtualKeyboardEventHandler!.removeAllListeners();
+virtualKeyboardEventHandler.removeAllListeners();
     
-virtualKeyboardEventHandler!.addListenerInterface(this);
+virtualKeyboardEventHandler.addListenerInterface(this);
     
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
+    public: void onVirtualKeyboardEvent(VirtualKeyboardEvent virtualKeyboardEvent){
 
-    isShow: Boolean = virtualKeyboardEvent!.getSource() as Boolean;;
+    Boolean isShow = virtualKeyboardEvent.getSource() as Boolean;;
     
 
                         if(isShow.valueOf())
                         
                                     {
-                                    this.showVirtualKeyboard();
+                                    this->showVirtualKeyboard();
     
 
                                     }
                                 
                         else {
-                            this.hideVirtualKeyboard();
+                            this->hideVirtualKeyboard();
     
 
                         }
@@ -132,18 +131,18 @@ ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
 }
 
 
-    public forceHide(){
-this.hideVirtualKeyboard();
+    public: void forceHide(){
+this->hideVirtualKeyboard();
     
 }
 
 
-    public hide(){
+    public: void hide(){
 
-                        if(this.virtualKeyboard)
+                        if(this->virtualKeyboard)
                         
                                     {
-                                    this.forceHide();
+                                    this->forceHide();
     
 
                                     }
@@ -151,18 +150,18 @@ this.hideVirtualKeyboard();
 }
 
 
-    showVirtualKeyboard(){
-this.activity.runOnUiThread(this.showVirtualKeyboardRunnable);
+    private: void showVirtualKeyboard(){
+this->activity.runOnUiThread(this->showVirtualKeyboardRunnable);
     
-this.virtualKeyboard= true;
+this->virtualKeyboard= true;
     
 }
 
 
-    hideVirtualKeyboard(){
-this.activity.runOnUiThread(this.hideVirtualKeyboardRunnable);
+    private: void hideVirtualKeyboard(){
+this->activity.runOnUiThread(this->hideVirtualKeyboardRunnable);
     
-this.virtualKeyboard= false;
+this->virtualKeyboard= false;
     
 }
 

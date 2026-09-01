@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGEANALYSISRESULTSJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_IMAGEANALYSISRESULTSJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Long.h"
         
             #include "../../../../java/lang/Float.h"
@@ -63,66 +65,65 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ImageAnalysisResultsJPanel: public javax.swing.JPanel {
-        
+class ImageAnalysisResultsJPanel: public javax::swing::JPanel {
 
-public constructor (std::vector<ImageAnalysisResults> imageAnalysisResultsArray);
+public: ImageAnalysisResultsJPanel(std::vector<ImageAnalysisResults> imageAnalysisResultsArray);
 
-    initComponents();
+    private: void initComponents();
 
-    updateImageColorRangeResults(ImageAnalysisResults imageAnalysisResults);
+    private: void updateImageColorRangeResults(ImageAnalysisResults imageAnalysisResults);
 
-    private: avgBlueJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField avgBlueJTextField;
 
-    private: avgGreenJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField avgGreenJTextField;
 
-    private: avgRedJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField avgRedJTextField;
 
-    private: jComboBox1: javax.swing.JComboBox;
+    private: javax::swing::JComboBox jComboBox1;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel10: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel10;
 
-    private: jLabel11: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel11;
 
-    private: jLabel12: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel12;
 
-    private: jLabel13: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel13;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: jLabel4: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel4;
 
-    private: jLabel5: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel5;
 
-    private: jLabel6: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel6;
 
-    private: jLabel7: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel7;
 
-    private: jLabel8: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel8;
 
-    private: jLabel9: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel9;
 
-    private: matchingPixelsJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField matchingPixelsJTextField;
 
-    private: maxBlueJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxBlueJTextField;
 
-    private: maxGreenJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxGreenJTextField;
 
-    private: maxRedJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField maxRedJTextField;
 
-    private: minBlueJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minBlueJTextField;
 
-    private: minGreenJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minGreenJTextField;
 
-    private: minRedJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField minRedJTextField;
 
-    private: percentMatchingJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField percentMatchingJTextField;
 
-    private: totalPixelsJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField totalPixelsJTextField;
 
 };
 

@@ -53,111 +53,104 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance(){
+    /*actual*/ public: static LogUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LogUtil.instance;
+                        return LogUtil::instance();
     
 }
 
 
-    private: const LOG_SUCCESS: string = "org.allbinary: ";
+    private: const std::string LOG_SUCCESS = "org.allbinary: ";
 
-private constructor (){
-
-            super();
-        }
+private: LogUtil(){
+}
 
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    /*actual*/ public putL(Log log){
+    /*actual*/ public: void putL(Log log){
 
-    specialMessage: string = log.getSpecialMessage()!;;
+    std::string specialMessage = log.getSpecialMessage();;
     
 
-    anyType: any = log.getObject()!;;
+    Object* anyType = log.getObject();;
     
 
-    functionName: string = log.getFunctionName()!;;
+    std::string functionName = log.getFunctionName();;
     
 
-    exception: any = log.getThrowable()!;;
+    Object* exception = log.getThrowable();;
     
-this.put(specialMessage, anyType, functionName, exception);
+this->put(specialMessage, anyType, functionName, exception);
     
 }
 
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName){
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName){
 
-    className: string = PreLogUtil.getClassName(anyType)!;;
+    std::string className = PreLogUtil::getClassName(anyType);;
     
 
-                        if(className == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    className= CommonStrings.getInstance()!.EMPTY;
+                                    className= CommonStrings::getInstance().EMPTY;
     
 
                                     }
                                 
 
-    message: string = this.logFormatUtil!.getS(className, functionName, specialMessage)!;;
+    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
     
-PlayN.log()!.debug(this.LOG_SUCCESS +message);
-    
-}
-
-
-    /*actual*/ public putFS(string specialMessage, string className, string functionName){
-
-    message: string = this.logFormatUtil!.getS(className, functionName, specialMessage)!;;
-    
-PlayN.log()!.debug(this.LOG_SUCCESS +message);
+PlayN::log().debug(this->LOG_SUCCESS +message);
     
 }
 
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName){
 
-    className: string = PreLogUtil.getClassName(anyType)!;;
+    std::string message = this->logFormatUtil.getS(className, functionName, specialMessage);;
+    
+PlayN::log().debug(this->LOG_SUCCESS +message);
+    
+}
+
+
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
+
+    std::string className = PreLogUtil::getClassName(anyType);;
     
 
-                        if(className == 
-                                    null
-                                )
+                        if(false)
                         
                                     {
-                                    className= CommonStrings.getInstance()!.EMPTY;
+                                    className= CommonStrings::getInstance().EMPTY;
     
 
                                     }
                                 
 
-    message: string = this.logFormatUtil!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = this->logFormatUtil.get(className, functionName, specialMessage, exception);;
     
 
                         if(exception != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    PlayN.log()!.error(this.LOG_SUCCESS +message, exception as Throwable);
+                                    PlayN::log().error(this->LOG_SUCCESS +message, exception as Throwable);
     
 
                                     }
                                 
                         else {
-                            PlayN.log()!.debug(this.LOG_SUCCESS +message);
+                            PlayN::log().debug(this->LOG_SUCCESS +message);
     
 
                         }

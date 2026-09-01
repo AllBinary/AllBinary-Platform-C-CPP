@@ -66,33 +66,30 @@
 class SimpleTransform
             : public Object
          {
-        
 
-    private: const xsltFilePath: AbPath;
+    private: AbPath xsltFilePath;
 
-    private: const dataFilePath: AbPath;
+    private: AbPath dataFilePath;
 
-public constructor (AbPath xsltFilePath, AbPath dataFilePath){
-
-            super();
-        this.xsltFilePath= xsltFilePath;
+public: SimpleTransform(AbPath xsltFilePath, AbPath dataFilePath){
+this->xsltFilePath= xsltFilePath;
     
-this.dataFilePath= dataFilePath;
+this->dataFilePath= dataFilePath;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string transform(){
+    public: std::string transform(){
 
-    inputStream: AbFileLocalInputStream = new AbFileLocalInputStream(AbFile.createAbFileFromAbPath(this.xsltFilePath));;
+    AbFileLocalInputStream inputStream = AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->xsltFilePath));;
     
 
-    document: Document = DomDocumentHelper.create(new AbFileLocalInputStream(AbFile.createAbFileFromAbPath(this.dataFilePath)))!;;
+    Document document = DomDocumentHelper::create(AbFileLocalInputStream(AbFile::createAbFileFromAbPath(this->dataFilePath)));;
     
 
-    result: string = XslHelper.getInstance()!.translate(new StreamSource(inputStream), new StreamSource(new StringBufferInputStream(DomDocumentHelper.toString(document))))!;;
+    std::string result = XslHelper::getInstance().translate(StreamSource(inputStream), StreamSource(StringBufferInputStream(DomDocumentHelper::toString(document))));;
     
 
 

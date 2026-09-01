@@ -48,15 +48,14 @@
 class OpenGLESImageDraw
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESImageDraw = new OpenGLESImageDraw();
+    private: static OpenGLESImageDraw instance() { return OpenGLESImageDraw(); }
 
-    public static OpenGLESImageDraw getInstance();
+    public: static OpenGLESImageDraw getInstance();
 
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z);
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z);
 
 };
 

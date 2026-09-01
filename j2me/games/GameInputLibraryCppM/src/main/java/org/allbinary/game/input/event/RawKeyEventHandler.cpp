@@ -63,71 +63,68 @@
 class RawKeyEventHandler
             : public Object
          {
-        
 
-    private: static const instance: RawKeyEventHandler = new RawKeyEventHandler();
+    private: static RawKeyEventHandler instance() { return RawKeyEventHandler(); }
 
-    public static RawKeyEventHandler getInstance(){
+    public: static RawKeyEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RawKeyEventHandler.instance;
+                        return RawKeyEventHandler::instance();
     
 }
 
 
-    private: static const TOTAL_LISTENERS: string = "Total Listeners: ";
+    private: static const std::string TOTAL_LISTENERS = "Total Listeners: ";
 
-    private: static const LISTENER_LABEL: string = " Listener: ";
+    private: static const std::string LISTENER_LABEL = " Listener: ";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    eventListenerInterfaceList: BasicArrayList;
+    protected: BasicArrayList eventListenerInterfaceList;
 
-public constructor (){
-
-            super();
-        this.eventListenerInterfaceList= new BasicArrayListD();
+public: RawKeyEventHandler(){
+this->eventListenerInterfaceList= BasicArrayListD();
     
 }
 
 
-    public removeAllListeners(){
-this.eventListenerInterfaceList= new BasicArrayListD();
+    public: void removeAllListeners(){
+this->eventListenerInterfaceList= BasicArrayListD();
     
 }
 
 
-    public addListeners(BasicArrayList vector){
+    public: void addListeners(BasicArrayList vector){
 
-    eventListenerInterface: RawKeyEventListener;;
+    RawKeyEventListener eventListenerInterface;;
     
 
-    size: int32_t = vector.size()!;;
+    int32_t size = vector.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 eventListenerInterface= vector.get(index) as RawKeyEventListener;
     
-this.addListener(eventListenerInterface);
+this->addListener(eventListenerInterface);
     
 }
 
 }
 
 
-    public addListenerSingleThreaded(RawKeyEventListener eventListenerInterface){
+    public: void addListenerSingleThreaded(RawKeyEventListener eventListenerInterface){
 
-                        if(!this.eventListenerInterfaceList!.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
                         
                                     {
-                                    this.eventListenerInterfaceList!.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList.add(eventListenerInterface);
     
 
                                     }
@@ -135,12 +132,12 @@ this.addListener(eventListenerInterface);
 }
 
 
-    public addListener(RawKeyEventListener eventListenerInterface){
+    public: void addListener(RawKeyEventListener eventListenerInterface){
 
-                        if(!this.eventListenerInterfaceList!.contains(eventListenerInterface))
+                        if(!this->eventListenerInterfaceList.contains(eventListenerInterface))
                         
                                     {
-                                    this.eventListenerInterfaceList!.add(eventListenerInterface);
+                                    this->eventListenerInterfaceList.add(eventListenerInterface);
     
 
                                     }
@@ -148,44 +145,44 @@ this.addListener(eventListenerInterface);
 }
 
 
-    public removeListenerSingleThreaded(RawKeyEventListener eventListenerInterface){
-this.eventListenerInterfaceList!.remove(eventListenerInterface);
+    public: void removeListenerSingleThreaded(RawKeyEventListener eventListenerInterface){
+this->eventListenerInterfaceList.remove(eventListenerInterface);
     
 }
 
 
-    public removeListener(RawKeyEventListener eventListenerInterface){
-this.eventListenerInterfaceList!.remove(eventListenerInterface);
+    public: void removeListener(RawKeyEventListener eventListenerInterface){
+this->eventListenerInterfaceList.remove(eventListenerInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(int32_t keyCode, int32_t deviceId, bool repeated){
+    public: void fireEvent(int32_t keyCode, int32_t deviceId, bool repeated){
 
-    eventListenerInterface: RawKeyEventListener;;
+    RawKeyEventListener eventListenerInterface;;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while(index < this.eventListenerInterfaceList!.size())
+        while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this.eventListenerInterfaceList!.get(index) as RawKeyEventListener;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index) as RawKeyEventListener;
     
-this.process(keyCode, deviceId, repeated, eventListenerInterface);
+this->process(keyCode, deviceId, repeated, eventListenerInterface);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -198,55 +195,55 @@ index++;
 
                 //@Throws(Exception.constructor)
             
-    process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener eventListenerInterface){
-eventListenerInterface!.onEventRaw(keyCode, deviceId, repeated);
+    protected: void process(int32_t keyCode, int32_t deviceId, bool repeated, RawKeyEventListener eventListenerInterface){
+eventListenerInterface.onEventRaw(keyCode, deviceId, repeated);
     
 }
 
 
-    public BasicArrayList getEventListenerInterfaceListP(){
+    public: BasicArrayList getEventListenerInterfaceListP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.eventListenerInterfaceList;
+                        return this->eventListenerInterfaceList;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(RawKeyEventHandler.TOTAL_LISTENERS);
+stringBuffer.append(RawKeyEventHandler::TOTAL_LISTENERS);
     
-stringBuffer!.appendint(this.eventListenerInterfaceList!.size());
-    
-
-    eventListenerInterface: RawKeyEventListener;;
+stringBuffer.appendint(this->eventListenerInterfaceList.size());
     
 
-    index: int32_t = 0;;
+    RawKeyEventListener eventListenerInterface;;
     
 
-        while(index < this.eventListenerInterfaceList!.size())
+    int32_t index = 0;;
+    
+
+        while(index < this->eventListenerInterfaceList.size())
         {
 
         try {
-            eventListenerInterface= this.eventListenerInterfaceList!.get(index) as RawKeyEventListener;
+            eventListenerInterface= this->eventListenerInterfaceList.get(index) as RawKeyEventListener;
     
-stringBuffer!.append(RawKeyEventHandler.LISTENER_LABEL);
+stringBuffer.append(RawKeyEventHandler::LISTENER_LABEL);
     
-stringBuffer!.append(eventListenerInterface!.toString());
+stringBuffer.append(eventListenerInterface.toString());
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.TOSTRING, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.TOSTRING, e);
     
 }
 
@@ -258,7 +255,7 @@ index++;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

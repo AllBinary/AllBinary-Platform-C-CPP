@@ -75,40 +75,39 @@
 class WebCommandProcessor
             : public Object
          {
-        
 
-    private: static const instance: WebCommandProcessor = new WebCommandProcessor();
+    private: static WebCommandProcessor instance() { return WebCommandProcessor(); }
 
-    public static WebCommandProcessor getInstance(){
+    public: static WebCommandProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WebCommandProcessor.instance;
+                        return WebCommandProcessor::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const aboutCommandProcessor: AboutCommandProcessor = AboutCommandProcessor.getInstance()!;
+    private: const AboutCommandProcessor aboutCommandProcessor = AboutCommandProcessor::getInstance();
 
-    private: const WEB_VIEW_ACTIVITY: string = "org.allbinary.android.activity.WebViewActivity";
+    private: const std::string WEB_VIEW_ACTIVITY = "org.allbinary.android.activity.WebViewActivity";
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
-    public process(CommandListener midletCommandListener, Command command, Canvas canvas){
+    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas){
 
         try {
             
-    context: Context = this.aboutCommandProcessor!.getContext() as Context;;
+    Context context = this->aboutCommandProcessor.getContext() as Context;;
     
 
-    intent: Intent = new Intent(context, TsUtil.getInstance()!.getClassClassLoader(this)!.loadClass(this.WEB_VIEW_ACTIVITY));;
+    Intent intent = Intent(context, TsUtil::getInstance().getClassClassLoader(this).loadClass(this->WEB_VIEW_ACTIVITY));;
     
-intent.putExtra(this.aboutCommandProcessor!.URL, this.list.removeAt(0) as string);
+intent.putExtra(this->aboutCommandProcessor.URL, this->list.removeAt(0) as string);
     
-intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+intent.setFlags(Intent::FLAG_ACTIVITY_NEW_TASK);
     
 context.startActivity(intent);
     
@@ -117,9 +116,9 @@ context.startActivity(intent);
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, "process", e);
+this->logUtil.put(commonStrings.EXCEPTION, this, "process", e);
     
 }
 

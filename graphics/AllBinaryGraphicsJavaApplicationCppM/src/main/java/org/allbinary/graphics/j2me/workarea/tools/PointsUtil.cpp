@@ -58,28 +58,27 @@
 class PointsUtil
             : public Object
          {
-        
 
-    private: static const instance: PointsUtil = new PointsUtil();
+    private: static PointsUtil instance() { return PointsUtil(); }
 
-    public static PointsUtil getInstance(){
+    public: static PointsUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointsUtil.instance;
+                        return PointsUtil::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList doTransforms(BasicArrayList pointVector, number angle, GPoint fulcrumPoint){
+    public: BasicArrayList doTransforms(BasicArrayList pointVector, number angle, GPoint fulcrumPoint){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return VectorRotationGenerator.getInstance()!.getListAtAngle(fulcrumPoint!.getX(), fulcrumPoint!.getY(), pointVector, AngleFactory.getInstance()!.getAt(angle.intValue()));;
+                        return VectorRotationGenerator::getInstance().getListAtAngle(fulcrumPoint.getX(), fulcrumPoint.getY(), pointVector, AngleFactory::getInstance().getAt(angle.intValue()));;
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -49,39 +51,38 @@
 #include "HighScores.h"
 
 class HighScoresHelper: public HighScoresHelperBase {
-        
 
-    private: const circularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstanceAt(0, 0)!;
+    private: const CircularIndexUtil circularIndexUtil = CircularIndexUtil::createInstanceAt(0, 0);
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArrayP){
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArrayP){
 super.setHighScoresArray(highScoresArrayP);
     
-this.circularIndexUtil!.setSize(this.highScoresArrayP!.length);
+this->circularIndexUtil.setSize(this->highScoresArrayP.size());
     
 }
 
 
-    lastIndex: int32_t =  -1;
+    int32_t lastIndex =  -1;
 
-    public HighScores getNextHighScores(){
+    public: HighScores getNextHighScores(){
 
-    highScores: HighScores = this.highScoresArrayP[this.circularIndexUtil!.getIndex()]!;;
+    HighScores highScores = this->highScoresArrayP[this->circularIndexUtil.getIndex()];;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-        while((highScores!.getTotal() < 1 || this.lastIndex == this.circularIndexUtil!.getIndex()) && index < this.highScoresArrayP!.length)
+        while((highScores.getTotal() < 1 || this->lastIndex == this->circularIndexUtil.getIndex()) && index < this->highScoresArrayP.size())
         {
-this.circularIndexUtil!.next();
+this->circularIndexUtil.next();
     
-highScores= this.highScoresArrayP[this.circularIndexUtil!.getIndex()]!;
+highScores= this->highScoresArrayP[this->circularIndexUtil.getIndex()]!;
     
 index++;
     
 }
 
-this.lastIndex= this.circularIndexUtil!.getIndex();
+this->lastIndex= this->circularIndexUtil.getIndex();
     
 
 
@@ -92,9 +93,9 @@ this.lastIndex= this.circularIndexUtil!.getIndex();
 }
 
 
-    public bool isAnyHighScores(){
+    public: bool isAnyHighScores(){
 
-                        if(this.highScoresArrayP!.length < 1)
+                        if(this->highScoresArrayP.size() < 1)
                         
                                     {
                                     
@@ -107,22 +108,22 @@ this.lastIndex= this.circularIndexUtil!.getIndex();
                                     }
                                 
 
-    anyScores: bool = false;;
+    bool anyScores = false;;
     
 
-    highScores: HighScores;;
+    HighScores highScores;;
     
 
 
 
 
                         for (
-    index: int32_t = this.highScoresArrayP!.length -1;index >= 0; index--)
+    int32_t index = this->highScoresArrayP.size() -1;index >= 0; index--)
         {
-highScores= this.highScoresArrayP[index]!;
+highScores= this->highScoresArrayP[index]!;
     
 
-                        if(highScores!.getTotal() > 0)
+                        if(highScores.getTotal() > 0)
                         
                                     {
                                     anyScores= true;

@@ -56,26 +56,25 @@
 class DisposalUtil
             : public Object
          {
-        
 
-    private: static const instance: DisposalUtil = new DisposalUtil();
+    private: static DisposalUtil instance() { return DisposalUtil(); }
 
-    public static DisposalUtil getInstance(){
+    public: static DisposalUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DisposalUtil.instance;
+                        return DisposalUtil::instance();
     
 }
 
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public disposeImage(Image image){
+    public: void disposeImage(Image image){
 
                         if(image == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -93,9 +92,9 @@ class DisposalUtil
                         
                                     {
                                     
-    mutableImage: SwtMutableImage = image as SwtMutableImage;;
+    SwtMutableImage mutableImage = image as SwtMutableImage;;
     
-this.disposeResource(mutableImage!.getImage() as Resource);
+this->disposeResource(mutableImage.getImage() as Resource);
     
 
                                     }
@@ -107,12 +106,12 @@ this.disposeResource(mutableImage!.getImage() as Resource);
 }
 
 
-    public disposeResource(Resource resource){
+    public: void disposeResource(Resource resource){
 
                         if(!resource.isDisposed())
                         
                                     {
-                                    console.log(this.commonStrings!.CLOSE);
+                                    console.log(this->commonStrings.CLOSE);
     
 resource.dispose();
     

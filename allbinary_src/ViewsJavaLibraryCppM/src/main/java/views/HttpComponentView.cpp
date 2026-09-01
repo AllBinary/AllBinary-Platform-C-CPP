@@ -84,92 +84,91 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HttpComponentView: public TransformInfoHttpComposite: public TransformInterface {
-        
+class HttpComponentView: public TransformInfoHttpComposite, public TransformInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    protected: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: domNodeInterfaceVector: Vector;
+    private: Vector domNodeInterfaceVector;
 
-    private: transformDocumentInterface: TransformDocumentInterface;
+    private: TransformDocumentInterface transformDocumentInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: HttpComponentView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("View Name: " +transformInfoInterface!.getName(), this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF("View Name: " +transformInfoInterface.getName(), this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.domNodeInterfaceVector= new Vector();
+this->domNodeInterfaceVector= Vector();
     
-this.setTransformDocumentInterface(TransformHttpRequestDocumentFactory.getInstance(this.getPageContext(), this.getWeblisketSession()));
+this->setTransformDocumentInterface(TransformHttpRequestDocumentFactory::getInstance(this->getPageContext(), this->getWeblisketSession()));
     
 }
 
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId(){
+    public: int32_t getTypeId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NO_TYPE;
+                        return this->NO_TYPE;
     
 }
 
 
-    public TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface getTransformDocumentInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformDocumentInterface;
+                        return this->transformDocumentInterface;
     
 }
 
 
-    public setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
-this.transformDocumentInterface= transformDocumentInterface;
+    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
+this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public addDomNodeInterface(DomNodeInterface domNodeInterface){
-this.domNodeInterfaceVector!.add(domNodeInterface);
+    public: void addDomNodeInterface(DomNodeInterface domNodeInterface){
+this->domNodeInterfaceVector.add(domNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
         try {
             
-    size: int32_t = this.domNodeInterfaceVector!.length!;;
+    int32_t size = this->domNodeInterfaceVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    domNodeInterface: DomNodeInterface = this.domNodeInterfaceVector!.get(index) as DomNodeInterface;;
+    DomNodeInterface domNodeInterface = this->domNodeInterfaceVector.get(index) as DomNodeInterface;;
     
-this.transformDocumentInterface!.getBaseNode()!.appendChild(domNodeInterface!.toXmlNode(this.transformDocumentInterface!.getDoc()));
+this->transformDocumentInterface.getBaseNode().appendChild(domNodeInterface.toXmlNode(this->transformDocumentInterface.getDoc()));
     
 }
 
@@ -177,17 +176,17 @@ this.transformDocumentInterface!.getBaseNode()!.appendChild(domNodeInterface!.to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransformDocumentInterface()!.getDoc();;
+                        return this->getTransformDocumentInterface().getDoc();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toXmlDoc()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlDoc()", e);
     
 
                                     }
@@ -204,29 +203,29 @@ this.transformDocumentInterface!.getBaseNode()!.appendChild(domNodeInterface!.to
 
                 //@Throws(Exception.constructor)
             
-    public Document getDoc(){
+    public: Document getDoc(){
 
-    document: Document = this.getTransformInfoInterface()!.getDataDocument()!;;
+    Document document = this->getTransformInfoInterface().getDataDocument();;
     
 
-    node: Node = DomNodeHelper.getFirstChildElement(document)!;;
+    Node node = DomNodeHelper::getFirstChildElement(document);;
     
 
                         if(node != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    dataNode: Node = this.getTransformDocumentInterface()!.getDoc()!.importNode(node, true)!;;
+    Node dataNode = this->getTransformDocumentInterface().getDoc().importNode(node, true);;
     
 
                         if(dataNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.getTransformDocumentInterface()!.getBaseNode()!.appendChild(dataNode);
+                                    this->getTransformDocumentInterface().getBaseNode().appendChild(dataNode);
     
 
                                     }
@@ -238,23 +237,23 @@ this.transformDocumentInterface!.getBaseNode()!.appendChild(domNodeInterface!.to
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransformDocumentInterface()!.getDoc();;
+                        return this->getTransformDocumentInterface().getDoc();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.toXmlDoc();
+            this->toXmlDoc();
     
 
-    success: string = DomDocumentHelper.toString(this.getDoc())!;;
+    std::string success = DomDocumentHelper::toString(this->getDoc());;
     
 
-    result: string = new BasicTransformer(this.abeClientInformation, this.getTransformInfoInterface()).translate(success)!;;
+    std::string result = BasicTransformer(this->abeClientInformation, this->getTransformInfoInterface()).translate(success);;
     
 
 
@@ -267,10 +266,10 @@ this.transformDocumentInterface!.getBaseNode()!.appendChild(domNodeInterface!.to
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

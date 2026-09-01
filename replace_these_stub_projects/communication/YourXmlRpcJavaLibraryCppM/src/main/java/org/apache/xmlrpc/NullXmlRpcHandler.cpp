@@ -51,18 +51,17 @@
 class NullXmlRpcHandler
             : public Object
         : public XmlRpcHandler {
-        
 
-    public static const NULL_XML_RPC_HANDLER: NullXmlRpcHandler = new NullXmlRpcHandler();
+    public: static const NullXmlRpcHandler NULL_XML_RPC_HANDLER = NullXmlRpcHandler();
 
                 //@Throws(Exception.constructor)
             
-    public any execute(string method, Vector<any> params){
+    public: Object* execute(std::string method, Vector<any> params){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_OBJECT;
+                        return NullUtil::getInstance().NULL_OBJECT;
     
 }
 

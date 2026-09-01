@@ -42,9 +42,8 @@
         #include "CapturedImageWorkerResultsEvent.h"
 
 class CapturedImageWorkerResultsListener: public BasicEventListenerInterface {
-        
 
-    onCaptureEvent(CapturedImageWorkerResultsEvent capturedimageworkerresultsevent)
+    void onCaptureEvent(CapturedImageWorkerResultsEvent capturedimageworkerresultsevent)
 
 };
 

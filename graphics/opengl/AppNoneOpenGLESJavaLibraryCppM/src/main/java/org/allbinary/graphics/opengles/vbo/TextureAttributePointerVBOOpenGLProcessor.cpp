@@ -46,31 +46,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextureAttributePointerVBOOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: TextureAttributePointerVBOOpenGLProcessor = new TextureAttributePointerVBOOpenGLProcessor();
+    private: static TextureAttributePointerVBOOpenGLProcessor instance() { return TextureAttributePointerVBOOpenGLProcessor(); }
 
-    public static TextureAttributePointerVBOOpenGLProcessor getInstance(){
+    public: static TextureAttributePointerVBOOpenGLProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TextureAttributePointerVBOOpenGLProcessor.instance;
+                        return TextureAttributePointerVBOOpenGLProcessor::instance();
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: TextureAttributePointerVBOOpenGLProcessor(){
+}
 
 
-    public process(GL10 gl, any = {} anyType){
+    public: void process(GL10 gl, Object* anyType){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_VECTORTOIMAGEARRAYROTATIONANIMATIONFACTORY_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_VECTORTOIMAGEARRAYROTATIONANIMATIONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -87,25 +89,24 @@
 #include "AdjustedImageArrayRotationAnimation.h"
 
 class VectorToImageArrayRotationAnimationFactory: public BaseImageAnimationFactory {
-        
 
-    private: imageArray: std::vector<Image> = NullImage.NULL_IMAGE_ARRAY;
+    private: std::vector<Image> imageArray = NullImage::NULL_IMAGE_ARRAY;
 
-    private: angleIncrement: int32_t= 0;
+    private: int32_t angleIncrement= 0;
 
-public constructor (VectorInfo vectorInfo, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
-
-                //@Throws(Exception.constructor)
-            
-    init();
+public: VectorToImageArrayRotationAnimationFactory(VectorInfo vectorInfo, BasicColor basicColor, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    protected: void init();
 
-    int32_t getAngleIncrement();
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    protected: int32_t getAngleIncrement();
+
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

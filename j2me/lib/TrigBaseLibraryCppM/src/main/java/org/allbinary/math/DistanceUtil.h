@@ -48,15 +48,14 @@
 class DistanceUtil
             : public Object
          {
-        
 
-    private: static const instance: DistanceUtil = new DistanceUtil();
+    private: static DistanceUtil instance() { return DistanceUtil(); }
 
-    public static DistanceUtil getInstance();
+    public: static DistanceUtil getInstance();
 
-    private: const mathUtil: MathUtil = MathUtil.getInstance()!;
+    private: const MathUtil mathUtil = MathUtil::getInstance();
 
-    public int32_t getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
+    public: int32_t getDistance(int32_t x1, int32_t y1, int32_t x2, int32_t y2);
 
 };
 

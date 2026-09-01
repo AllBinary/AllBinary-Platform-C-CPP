@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_NEWWORKAREAJDIALOG_H
         #define ORG_ALLBINARY_GRAPHICS_J2ME_DIALOG_NEWWORKAREAJDIALOG_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -77,30 +79,29 @@
 #include "WindowAdapter.h"
 #include "WindowEvent.h"
 
-class NewWorkAreaJDialog: public javax.swing.JDialog {
-        
+class NewWorkAreaJDialog: public javax::swing::JDialog {
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    private: parent: MyFrame;
+    private: MyFrame parent;
 
-    private: dimension: Dimension;
+    private: Dimension dimension;
 
-    private: xSizeJTextField: JTextField;
+    private: JTextField xSizeJTextField;
 
-    private: ySizeJTextField: JTextField;
+    private: JTextField ySizeJTextField;
 
-    private: nameJTextField: JTextField;
+    private: JTextField nameJTextField;
 
-public constructor (MyFrame parent, bool modal, Dimension dimension, string newName);
+public: NewWorkAreaJDialog(MyFrame parent, bool modal, Dimension dimension, std::string newName);
 
                 //@Throws(Exception.constructor)
             
-    disposeNewDialog();
+    private: void disposeNewDialog();
 
-    initComponents();
+    private: void initComponents();
 
-    closeDialog(java.awt.event.WindowEvent evt);
+    private: void closeDialog(java::awt::event::WindowEvent evt);
 
 };
 

@@ -80,17 +80,16 @@
 class InitializeCloud
             : public Object
          {
-        
 
-    public static const CLOUD: string = "cloud/";
+    public: static const std::string CLOUD = "cloud/";
 
-    public static const CLOUD_UPDATE: string = "cloudupdate/";
+    public: static const std::string CLOUD_UPDATE = "cloudupdate/";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor ();
+public: InitializeCloud();
 
-    public bool initialize(string cloud, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total);
+    public: bool initialize(std::string cloud, bool overwriteNewer, bool overwriteAll, int32_t current, int32_t total);
 
 };
 

@@ -54,17 +54,16 @@
 class DownloadItemsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: DownloadItemsEntityFactory = new DownloadItemsEntityFactory();
+    private: static DownloadItemsEntityFactory instance() { return DownloadItemsEntityFactory(); }
 
-    public static DownloadItemsEntityFactory getInstance();
+    public: static DownloadItemsEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: DownloadItemsEntityFactory();
 
-    public DownloadItemsEntity getDownloadItemsEntityInstance();
+    public: DownloadItemsEntity getDownloadItemsEntityInstance();
 
 };
 

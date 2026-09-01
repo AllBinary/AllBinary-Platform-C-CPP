@@ -74,23 +74,22 @@
 class CategoryPrivateTree
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    categoryFactoryInterface: CategoryFactoryInterface;
+    protected: CategoryFactoryInterface categoryFactoryInterface;
 
-public constructor (CategoryFactoryInterface categoryFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    save(CategoryInterface categoryInterface);
+public: CategoryPrivateTree(CategoryFactoryInterface categoryFactoryInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    delete(CategoryInterface categoryInterface);
+    protected: void save(CategoryInterface categoryInterface);
+
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    protected: void delete_(CategoryInterface categoryInterface);
 
 };
 

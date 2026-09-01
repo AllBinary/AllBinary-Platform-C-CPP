@@ -44,10 +44,9 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInputLayerManager: public LayerManager {
-        
 
-public constructor (){
-            super(LayerManagerNoDebug.getInstance());
+public: GameInputLayerManager(){
+            super(LayerManagerNoDebug::getInstance());
                     
 
                             //For kotlin this is before the body of the constructor.

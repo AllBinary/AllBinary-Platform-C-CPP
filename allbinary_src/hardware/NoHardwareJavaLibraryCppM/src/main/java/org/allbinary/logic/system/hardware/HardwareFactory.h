@@ -52,19 +52,18 @@
 class HardwareFactory
             : public Object
          {
-        
 
-    private: static const instance: HardwareFactory = new HardwareFactory();
+    private: static HardwareFactory instance() { return HardwareFactory(); }
 
-    public static HardwareFactory getInstance();
+    public: static HardwareFactory getInstance();
 
-    private: const SINGLETON: HardwareInterface = NoHardware.getInstance()!;
+    private: const HardwareInterface SINGLETON = NoHardware::getInstance();
 
-private constructor ();
+private: HardwareFactory();
 
                 //@Throws(Exception.constructor)
             
-    public HardwareInterface getInstance(OperatingSystemInterface os);
+    public: HardwareInterface getInstance(OperatingSystemInterface os);
 
 };
 

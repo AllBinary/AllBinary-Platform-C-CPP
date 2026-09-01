@@ -39,9 +39,8 @@
         #include "HtmlForm.h"
 
 class HtmlPostForm: public HtmlForm {
-        
 
-public constructor (string action){
+public: HtmlPostForm(std::string action){
             super(action);
                     
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ZIP_ZIPFILEUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ZIP_ZIPFILEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -89,21 +91,20 @@
 class ZipFileUtil
             : public Object
          {
-        
 
-    private: static const instance: ZipFileUtil = new ZipFileUtil();
+    private: static ZipFileUtil instance() { return ZipFileUtil(); }
 
-    public static ZipFileUtil getInstance();
+    public: static ZipFileUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    public create(string outFilename, BasicArrayList fileBasicArrayList);
+    public: void create(std::string outFilename, BasicArrayList fileBasicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    public unzip(string path, AbFile zipFile, string fileName);
+    public: void unzip(std::string path, AbFile zipFile, std::string fileName);
 
 };
 

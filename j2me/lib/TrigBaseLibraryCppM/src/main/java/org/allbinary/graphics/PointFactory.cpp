@@ -55,48 +55,45 @@
 class PointFactory
             : public Object
          {
-        
 
-    private: static const instance: PointFactory = new PointFactory();
+    private: static PointFactory instance() { return PointFactory(); }
 
-    public static PointFactory getInstance(){
+    public: static PointFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PointFactory.instance;
+                        return PointFactory::instance();
     
 }
 
 
-    public ZERO_ZERO: GPoint = this.createXYZ(0, 0, 0)!;
+    public: GPoint ZERO_ZERO = this->createXYZ(0, 0, 0);
 
-    public init(){
+    public: void init(){
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: PointFactory(){
+}
 
 
-    public GPoint createXY(int32_t x, int32_t y){
+    public: GPoint createXY(int32_t x, int32_t y){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GPoint(x, y, 0);
+                        return GPoint(x, y, 0);
     
 }
 
 
-    public GPoint createXYZ(int32_t x, int32_t y, int32_t z){
+    public: GPoint createXYZ(int32_t x, int32_t y, int32_t z){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new GPoint(x, y, z);
+                        return GPoint(x, y, z);
     
 }
 

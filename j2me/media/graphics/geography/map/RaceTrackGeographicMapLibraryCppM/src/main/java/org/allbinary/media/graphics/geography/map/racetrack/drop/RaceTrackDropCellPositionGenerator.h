@@ -100,39 +100,38 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class RaceTrackDropCellPositionGenerator: public BaseDropCellPositionGenerator {
-        
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-    private: const timeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeDelayHelper;
 
-    private: const STRAIGHTAWAY: int32_t = 4;
+    private: const int32_t STRAIGHTAWAY = 4;
 
-    raceTrackGeographicMap: RaceTrackGeographicMapInterface = NullRaceTrackGeographicMap.NULL_RACE_TRACK_GEOGRAPHIC_MAP;
+    protected: RaceTrackGeographicMapInterface raceTrackGeographicMap = NullRaceTrackGeographicMap::NULL_RACE_TRACK_GEOGRAPHIC_MAP;
 
-    raceTrackGeographicMapCellTypeFactory: GeographicMapCellTypeFactory = GeographicMapCellTypeFactory.getInstance()!;
+    protected: GeographicMapCellTypeFactory raceTrackGeographicMapCellTypeFactory = GeographicMapCellTypeFactory::getInstance();
 
-protected constructor ();
+protected: RaceTrackDropCellPositionGenerator();
 
-    init();
-
-                //@Throws(Exception.constructor)
-            
-    public bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition);
+    private: void init();
 
                 //@Throws(Exception.constructor)
             
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
-
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    public: bool isDropAllowedAt(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
 
 };
 

@@ -72,20 +72,19 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RootContextView: public HttpStoreComponentView: public TransformTemplateInterface {
-        
+class RootContextView: public HttpStoreComponentView, public TransformTemplateInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public string view();
+public: RootContextView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string getName();
+    public: std::string view();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string getName();
 
 };
 

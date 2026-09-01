@@ -44,20 +44,17 @@
 class NativeLibraryHelper
             : public Object
          {
-        
 
-    private: library: string;
+    private: std::string library;
 
-public constructor (string library){
-
-            super();
-        this.library= library;
+public: NativeLibraryHelper(std::string library){
+this->library= library;
     
 }
 
 
-    public load(){
-System.loadLibrary(this.library);
+    public: void load(){
+System.loadLibrary(this->library);
     
 }
 

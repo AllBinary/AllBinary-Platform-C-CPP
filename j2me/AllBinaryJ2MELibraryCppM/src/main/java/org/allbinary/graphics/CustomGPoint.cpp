@@ -39,37 +39,36 @@
         #include "GPoint.h"
 
 class CustomGPoint: public GPoint {
-        
 
-    public static const NULL_CUSTOM_POINT: CustomGPoint = new CustomGPoint(0, 0, 0);
+    public: static const CustomGPoint NULL_CUSTOM_POINT = CustomGPoint(0, 0, 0);
 
-    public static CustomGPoint getInstance(GPoint point){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CustomGPoint(point.getX(), point.getY(), point.getZ());
-    
-}
-
-
-    public static CustomGPoint getInstance3(int32_t x, int32_t y){
+    public: static CustomGPoint getInstance(GPoint point){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CustomGPoint(x, y, 3);
+                        return CustomGPoint(point.getX(), point.getY(), point.getZ());
     
 }
 
 
-    private: cx: int32_t= 0;
+    public: static CustomGPoint getInstance3(int32_t x, int32_t y){
 
-    private: cy: int32_t= 0;
 
-    private: cz: int32_t= 0;
 
-public constructor (int32_t x, int32_t y, int32_t z){
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return CustomGPoint(x, y, 3);
+    
+}
+
+
+    private: int32_t cx= 0;
+
+    private: int32_t cy= 0;
+
+    private: int32_t cz= 0;
+
+public: CustomGPoint(int32_t x, int32_t y, int32_t z){
             super(x, y, z);
                     
 
@@ -78,50 +77,50 @@ public constructor (int32_t x, int32_t y, int32_t z){
 }
 
 
-    public setX(int32_t x){
-this.cx= x;
+    public: void setX(int32_t x){
+this->cx= x;
     
 }
 
 
-    public int32_t getX(){
+    public: int32_t getX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cx;
+                        return this->cx;
     
 }
 
 
-    public setY(int32_t y){
-this.cy= y;
+    public: void setY(int32_t y){
+this->cy= y;
     
 }
 
 
-    public int32_t getY(){
+    public: int32_t getY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cy;
+                        return this->cy;
     
 }
 
 
-    public setZ(int32_t z){
-this.cz= z;
+    public: void setZ(int32_t z){
+this->cz= z;
     
 }
 
 
-    public int32_t getZ(){
+    public: int32_t getZ(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.cz;
+                        return this->cz;
     
 }
 

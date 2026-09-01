@@ -52,11 +52,10 @@
 class OnDemandResourcesFactory
             : public Object
          {
-        
 
-    public int32_t size();
+    public: int32_t size();
 
-    public OnDemandResources remove(int32_t layerId);
+    public: OnDemandResources remove(int32_t layerId);
 
 };
 

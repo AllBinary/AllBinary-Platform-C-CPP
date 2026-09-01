@@ -87,41 +87,40 @@
 class BasicEventHandler
             : public Object
         : public BasicEventHandlerInterface {
-        
 
-    public static const PERFORMANCE_MESSAGE: string = "Use Custom onEvent Methods for needed optimization";
+    public: static const std::string PERFORMANCE_MESSAGE = "Use Custom onEvent Methods for needed optimization";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: eventListenerInterfaceList: BasicArrayList;
+    private: BasicArrayList eventListenerInterfaceList;
 
-public constructor ();
+public: BasicEventHandler();
 
-    public string toString();
+    public: std::string toString();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public addListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void addListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addListenerInterface(EventListenerInterface eventListenerInterface);
+    public: void addListenerInterface(EventListenerInterface eventListenerInterface);
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
-    public BasicArrayList getEventListenerInterfaceListP();
+    public: BasicArrayList getEventListenerInterfaceListP();
 
 };
 

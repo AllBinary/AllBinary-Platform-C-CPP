@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/io/FileNotFoundException.h>
 
       
@@ -59,102 +61,99 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class AbFileOutputStream: public OutputStream {
-        
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromAbFile(AbFile file){
+    public: static AbFileOutputStream createFromAbFile(AbFile file){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(new FileOutputStream(AbFileNativeUtil.get(file)));
-    
-}
-
-
-                //@Throws(FileNotFoundException.constructor)
-            
-    public static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(new FileOutputStream(file.getPath()));
+                        return AbFileOutputStream(FileOutputStream(AbFileNativeUtil::get(file)));
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePath(string name){
+    public: static AbFileOutputStream createFromAbFileAppend(AbFile file, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(new FileOutputStream(name));
+                        return AbFileOutputStream(FileOutputStream(file.getPath()));
     
 }
 
 
                 //@Throws(FileNotFoundException.constructor)
             
-    public static AbFileOutputStream createFromFilePathAppend(string name, bool append){
+    public: static AbFileOutputStream createFromFilePath(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new AbFileOutputStream(new FileOutputStream(name));
+                        return AbFileOutputStream(FileOutputStream(name));
     
 }
 
 
-    private: fileOutputStream: FileOutputStream;
-
-public constructor (FileOutputStream fileOutputStream){
-
-            super();
-        this.fileOutputStream= fileOutputStream;
-    
-}
-
-
-    public close(){
-this.fileOutputStream!.close();
-    
-}
-
-
-    public FileChannel getChannel(){
+                //@Throws(FileNotFoundException.constructor)
+            
+    public: static AbFileOutputStream createFromFilePathAppend(std::string name, bool append){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.fileOutputStream!.getChannel();;
+                        return AbFileOutputStream(FileOutputStream(name));
+    
+}
+
+
+    private: FileOutputStream fileOutputStream;
+
+public: AbFileOutputStream(FileOutputStream fileOutputStream){
+this->fileOutputStream= fileOutputStream;
+    
+}
+
+
+    public: void close(){
+this->fileOutputStream.close();
+    
+}
+
+
+    public: FileChannel getChannel(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->fileOutputStream.getChannel();;
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public write(std::vector<int8_t> buffer){
-this.fileOutputStream!.write(buffer);
+    public: void write(std::vector<int8_t> buffer){
+this->fileOutputStream.write(buffer);
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public write(std::vector<int8_t> buffer, int32_t offset, int32_t count){
-this.fileOutputStream!.write(buffer, offset, count);
+    public: void write(std::vector<int8_t> buffer, int32_t offset, int32_t count){
+this->fileOutputStream.write(buffer, offset, count);
     
 }
 
 
                 //@Throws(IOException.constructor)
             
-    public write(int32_t b){
-this.fileOutputStream!.write(b);
+    public: void write(int32_t b){
+this->fileOutputStream.write(b);
     
 }
 

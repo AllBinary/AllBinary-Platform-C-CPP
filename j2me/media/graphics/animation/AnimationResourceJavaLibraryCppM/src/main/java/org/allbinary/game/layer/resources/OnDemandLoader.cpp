@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -76,38 +78,35 @@
 class OnDemandLoader
             : public Object
          {
-        
 
-    private: const onDemandResourcesFactory: OnDemandResourcesFactory;
+    private: OnDemandResourcesFactory onDemandResourcesFactory;
 
-    private: const gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory: GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
+    private: GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
 
-    private: const resourceAnimationInterfaceFactoryInterfaceFactory: BaseResourceAnimationInterfaceFactoryInterfaceFactory;
+    private: BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory;
 
-public constructor (OnDemandResourcesFactory onDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory){
-
-            super();
-        this.onDemandResourcesFactory= onDemandResourcesFactory;
+public: OnDemandLoader(OnDemandResourcesFactory onDemandResourcesFactory, GameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory, BaseResourceAnimationInterfaceFactoryInterfaceFactory resourceAnimationInterfaceFactoryInterfaceFactory){
+this->onDemandResourcesFactory= onDemandResourcesFactory;
     
-this.gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory= gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
+this->gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory= gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory;
     
-this.resourceAnimationInterfaceFactoryInterfaceFactory= resourceAnimationInterfaceFactoryInterfaceFactory;
+this->resourceAnimationInterfaceFactoryInterfaceFactory= resourceAnimationInterfaceFactoryInterfaceFactory;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(ImageCache imageCache, int32_t level, string loadingString){
+    public: void init(ImageCache imageCache, int32_t level, std::string loadingString){
 
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(Features.getInstance()!.isFeature(MainFeatureFactory.getInstance()!.LOAD_ALL))
+                        if(Features::getInstance().isFeature(MainFeatureFactory::getInstance().LOAD_ALL))
                         
                                     {
                                     
-                        if(this.resourceAnimationInterfaceFactoryInterfaceFactory!.isInitialized())
+                        if(this->resourceAnimationInterfaceFactoryInterfaceFactory.isInitialized())
                         
                                     {
                                     
@@ -119,19 +118,19 @@ this.resourceAnimationInterfaceFactoryInterfaceFactory= resourceAnimationInterfa
 
                                     }
                                 
-this.initAll(imageCache, loadingString);
+this->initAll(imageCache, loadingString);
     
 
                                     }
                                 
                              else 
-                        if(level != resourceLoadingLevelFactory!.LOAD_ALL.getLevel())
+                        if(level != resourceLoadingLevelFactory.LOAD_ALL.getLevel())
                         
                                     {
                                     
-    layerPlacementInterfaceBasicArrayListFactoryInterface: LayerPlacementInterfaceBasicArrayListFactoryInterface = this.gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory!.getInstance(level)!;;
+    LayerPlacementInterfaceBasicArrayListFactoryInterface layerPlacementInterfaceBasicArrayListFactoryInterface = this->gameLayerPlacementInterfaceBasicArrayListFactoryInterfaceFactory.getInstance(level);;
     
-this.initLevel(layerPlacementInterfaceBasicArrayListFactoryInterface, imageCache, level, loadingString);
+this->initLevel(layerPlacementInterfaceBasicArrayListFactoryInterface, imageCache, level, loadingString);
     
 
                                     }
@@ -141,30 +140,30 @@ this.initLevel(layerPlacementInterfaceBasicArrayListFactoryInterface, imageCache
 
                 //@Throws(Exception.constructor)
             
-    initAll(ImageCache imageCache, string loadingString){
+    private: void initAll(ImageCache imageCache, std::string loadingString){
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    portion: int32_t = 120;;
+    int32_t portion = 120;;
     
 
-    onDemandResources: OnDemandResources;;
+    OnDemandResources onDemandResources;;
     
 
 
 
 
                         for (
-    onDemandIndex: int32_t = this.onDemandResourcesFactory!.size()!;--onDemandIndex >= 0; )
+    int32_t onDemandIndex = this->onDemandResourcesFactory.size();--onDemandIndex >= 0; )
         {
-onDemandResources= this.onDemandResourcesFactory!.remove(onDemandIndex);
+onDemandResources= this->onDemandResourcesFactory.remove(onDemandIndex);
     
 
-                        if(onDemandResources != OnDemandResources.NULL_ON_DEMAND_RESOURCES)
+                        if(onDemandResources != OnDemandResources::NULL_ON_DEMAND_RESOURCES)
                         
                                     {
-                                    index= onDemandResources!.initAt(imageCache, this.resourceAnimationInterfaceFactoryInterfaceFactory, portion, loadingString, index);
+                                    index= onDemandResources.initAt(imageCache, this->resourceAnimationInterfaceFactoryInterfaceFactory, portion, loadingString, index);
     
 
                                     }
@@ -176,39 +175,38 @@ onDemandResources= this.onDemandResourcesFactory!.remove(onDemandIndex);
 
                 //@Throws(Exception.constructor)
             
-    initLevel(LayerPlacementInterfaceBasicArrayListFactoryInterface layerPlacementInterfaceBasicArrayListFactoryInterface, ImageCache imageCache, int32_t level, string loadingString){
+    private: void initLevel(LayerPlacementInterfaceBasicArrayListFactoryInterface layerPlacementInterfaceBasicArrayListFactoryInterface, ImageCache imageCache, int32_t level, std::string loadingString){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    portion: int32_t = 120;;
+    int32_t portion = 120;;
     
 
-    index: int32_t = 0;;
+    int32_t index = 0;;
     
 
-    onDemandArray: std::vector<int32_t> = layerPlacementInterfaceBasicArrayListFactoryInterface!.getOnDemandResources()!;;
+    std::vector<int32_t> onDemandArray = layerPlacementInterfaceBasicArrayListFactoryInterface.getOnDemandResources();;
     
-PreLogUtil.put(new StringMaker().append(commonStrings!.START)!.appendint(onDemandArray!.length)!.toString(), this, "initLevel");
+PreLogUtil::put(StringMaker().append(commonStrings.START).appendint(onDemandArray.size()).toString(), this, "initLevel");
     
 
-    onDemandResources: OnDemandResources;;
+    OnDemandResources onDemandResources;;
     
 
 
 
 
                         for (
-    onDemandIndex: int32_t = onDemandArray!.length
-                ;--onDemandIndex >= 0; )
+    int32_t onDemandIndex = onDemandArray.size();--onDemandIndex >= 0; )
         {
-onDemandResources= this.onDemandResourcesFactory!.remove(onDemandArray[onDemandIndex]!);
+onDemandResources= this->onDemandResourcesFactory.remove(onDemandArray[onDemandIndex]!);
     
 
-                        if(onDemandResources != OnDemandResources.NULL_ON_DEMAND_RESOURCES)
+                        if(onDemandResources != OnDemandResources::NULL_ON_DEMAND_RESOURCES)
                         
                                     {
-                                    index= onDemandResources!.initAt(imageCache, this.resourceAnimationInterfaceFactoryInterfaceFactory, portion, loadingString, index);
+                                    index= onDemandResources.initAt(imageCache, this->resourceAnimationInterfaceFactoryInterfaceFactory, portion, loadingString, index);
     
 
                                     }

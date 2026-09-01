@@ -51,23 +51,22 @@
 class PermissionItemsEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: PermissionItemsEntityFactory = new PermissionItemsEntityFactory();
+    private: static PermissionItemsEntityFactory instance() { return PermissionItemsEntityFactory(); }
 
-    public static PermissionItemsEntityFactory getInstance(){
+    public: static PermissionItemsEntityFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PermissionItemsEntityFactory.instance;
+                        return PermissionItemsEntityFactory::instance();
     
 }
 
 
-    public static PermissionItemsEntity getPermissionItemsEntityInstance(){
+    public: static PermissionItemsEntity getPermissionItemsEntityInstance(){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -75,20 +74,20 @@ class PermissionItemsEntityFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new org.allbinary.data.tables.user.commerce.inventory.item.permissions.PermissionItemsEntity();
+                        return org::allbinary::data::tables::user::commerce::inventory::item::permissions::PermissionItemsEntity();
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    logUtil!.put(commonStrings!.EXCEPTION, "PermissionItemsEntityFactory", commonStrings!.GET_INSTANCE, e);
+                                    logUtil.put(commonStrings.EXCEPTION, "PermissionItemsEntityFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -104,12 +103,10 @@ class PermissionItemsEntityFactory
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: PermissionItemsEntityFactory(){
+}
 
 
 };

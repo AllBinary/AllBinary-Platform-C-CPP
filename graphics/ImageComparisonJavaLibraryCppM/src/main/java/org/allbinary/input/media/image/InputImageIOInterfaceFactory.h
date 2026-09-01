@@ -60,13 +60,12 @@
 class InputImageIOInterfaceFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ImageIOInterface getInstance(InputImageType imageType);
+    public: static ImageIOInterface getInstance(InputImageType imageType);
 
-private constructor ();
+private: InputImageIOInterfaceFactory();
 
 };
 

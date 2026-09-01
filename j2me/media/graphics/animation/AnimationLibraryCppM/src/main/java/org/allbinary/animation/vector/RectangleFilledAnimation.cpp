@@ -61,45 +61,42 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RectangleFilledAnimation: public Animation: public ColorCompositeInterface {
-        
+class RectangleFilledAnimation: public Animation, public ColorCompositeInterface {
 
-    widthP: int32_t;
+    protected: int32_t widthP;
 
-    heightP: int32_t;
+    protected: int32_t heightP;
 
-public constructor (int32_t width, int32_t height, BasicColor basicColor){
-
-            super();
-        this.widthP= width;
+public: RectangleFilledAnimation(int32_t width, int32_t height, BasicColor basicColor){
+this->widthP= width;
     
-this.heightP= height;
+this->heightP= height;
     
-this.setBasicColorP(basicColor);
+this->setBasicColorP(basicColor);
     
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.basicSetColorUtil!.setBasicColorP3(graphics, this.getBasicColorP(), this.getColor());
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->basicSetColorUtil.setBasicColorP3(graphics, this->getBasicColorP(), this->getColor());
     
-graphics.fillRect(x, y, this.widthP, this.heightP);
-    
-}
-
-
-    public setWidth(int32_t width){
-this.widthP= width;
+graphics.fillRect(x, y, this->widthP, this->heightP);
     
 }
 
 
-    public setHeight(int32_t height){
-this.heightP= height;
+    public: void setWidth(int32_t width){
+this->widthP= width;
+    
+}
+
+
+    public: void setHeight(int32_t height){
+this->heightP= height;
     
 }
 

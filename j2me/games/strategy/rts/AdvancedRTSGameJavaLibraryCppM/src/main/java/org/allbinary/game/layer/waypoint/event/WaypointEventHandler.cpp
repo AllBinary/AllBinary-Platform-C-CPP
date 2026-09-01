@@ -52,21 +52,18 @@
         #include "WaypointEventListenerInterface.h"
 
 class WaypointEventHandler: public BasicEventHandler {
-        
 
-public constructor (){
-
-            super();
-        }
+public: WaypointEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    waypointEventListenerInterface: WaypointEventListenerInterface = (eventListenerInterface as WaypointEventListenerInterface);;
+    WaypointEventListenerInterface waypointEventListenerInterface = (eventListenerInterface as WaypointEventListenerInterface);;
     
-waypointEventListenerInterface!.onWaypointEvent(eventObject as RTSLayerEvent);
+waypointEventListenerInterface.onWaypointEvent(eventObject as RTSLayerEvent);
     
 }
 

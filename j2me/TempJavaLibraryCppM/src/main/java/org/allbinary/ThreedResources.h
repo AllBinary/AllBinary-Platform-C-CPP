@@ -45,13 +45,12 @@
 class ThreedResources
             : public Object
          {
-        
 
-    private: static const threedResources: ThreedResources = new ThreedResources();
+    private: static const ThreedResources threedResources = ThreedResources();
 
-    public static ThreedResources getThreedResources();
+    public: static ThreedResources getThreedResources();
 
-    public add();
+    public: void add();
 
 };
 

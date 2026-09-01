@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <java/util/Hashtable.h>
@@ -65,43 +67,40 @@
         #include "ImageCompleteUtil.h"
 
 class ImageWaitCompleteUtil: public ImageCompleteUtil {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const METHOD_NAME: string = "waitForLoad";
+    private: const std::string METHOD_NAME = "waitForLoad";
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(18000);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(18000);
 
-    private: const allTimeDelayHelper: TimeDelayHelper = new TimeDelayHelper(120000);
+    private: const TimeDelayHelper allTimeDelayHelper = TimeDelayHelper(120000);
 
-public constructor (){
-
-            super();
-        }
+public: ImageWaitCompleteUtil(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public waitForImage(Image image, string name){
-this.timeDelayHelper!.setStartTimeTNT();
+    public: void waitForImage(Image image, std::string name){
+this->timeDelayHelper.setStartTimeTNT();
     
-this.waitForATime(image, name, this.timeDelayHelper);
+this->waitForATime(image, name, this->timeDelayHelper);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public handleTimeout(string name){
+    public: void handleTimeout(std::string name){
 
-                        if(this.timeDelayHelper!.isTimeTNT())
+                        if(this->timeDelayHelper.isTimeTNT())
                         
                                     {
                                     
 
 
-                            throw new Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception("isReady: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
                     
 
                                     }
@@ -111,24 +110,24 @@ this.waitForATime(image, name, this.timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    waitForATime(Image image, string name, TimeDelayHelper timeDelayHelper){
+    private: void waitForATime(Image image, std::string name, TimeDelayHelper timeDelayHelper){
 
-    playnImage: PlaynImage = image as PlaynImage;;
+    PlaynImage playnImage = image as PlaynImage;;
     
 
-    playnCoreImage: playn.core.Image = playnImage!.getImage() as playn.core.Image;;
+    playn::core::Image playnCoreImage = playnImage.getImage() as playn::core::Image;;
     
 
-        while(!playnCoreImage!.isReady() || playnCoreImage!.width() +playnCoreImage!.height() <= 0)
+        while(!playnCoreImage.isReady() || playnCoreImage.width() +playnCoreImage.height() <= 0)
         {
 
-                        if(timeDelayHelper!.isTimeTNT())
+                        if(timeDelayHelper.isTimeTNT())
                         
                                     {
                                     
 
 
-                            throw new Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
+                            throw Exception("waitFor: Timeout Waiting or GameHtmlHasLoadedResourcesProcessor does not have this Image: " +name);
                     
 
                                     }
@@ -149,29 +148,28 @@ this.waitForATime(image, name, this.timeDelayHelper);
 
                 //@Throws(Exception.constructor)
             
-    public waitForAll(){
-this.allTimeDelayHelper!.setStartTimeTNT();
+    public: void waitForAll(){
+this->allTimeDelayHelper.setStartTimeTNT();
     
 
-    hashtable: Hashtable<any, any> = GameFeatureImageCacheFactory.getInstance()!.getHashtableP()!;;
+    Hashtable<any, any> hashtable = GameFeatureImageCacheFactory::getInstance().getHashtableP();;
     
 
-    objectArray: std::vector<any> = HashtableUtil.getInstance()!.getKeysAsArray(hashtable)!;;
+    std::vector<Object*> objectArray = HashtableUtil::getInstance().getKeysAsArray(hashtable);;
     
 
-    size: int32_t = objectArray!.length
-                ;;
+    int32_t size = objectArray.size();;
     
-PreLogUtil.put("Image Total: " +size, this, "waitForAll");
+PreLogUtil::put("Image Total: " +size, this, "waitForAll");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.waitForATime(hashtable.get(objectArray[index]!) as Image, objectArray[index]! as string, this.allTimeDelayHelper);
+this->waitForATime(hashtable.get(objectArray[index]!) as Image, objectArray[index]! as string, this->allTimeDelayHelper);
     
 }
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -81,58 +83,55 @@
 class InputAutomationModuleConfigurations
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-public constructor (AbeClientInformationInterface abeClientInformation, File file){
-
-            super();
-        this.setHashMap(new HashMap<any, any>());
+public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, File file){
+this->setHashMap(HashMap<any, any>());
     
 
-    bytes: std::vector<int8_t> = new Array(100000);;
+    std::vector<int8_t> bytes = new Array(100000);;
     
 
-    idFile: FileInputStream = new FileInputStream(file);;
+    FileInputStream idFile = FileInputStream(file);;
     
 
-    length: int32_t = idFile!.read(bytes)!;;
+    int32_t length = idFile.read(bytes);;
     
 
-    data: string = String.fromCharCode(...bytes);;
+    std::string data = String.fromCharCode(...bytes);;
     
 
-    endIndex: int32_t = data.lastIndexOf('>')!;;
+    int32_t endIndex = data.lastIndexOf('>');;
     
 
-    document: Document = DomDocumentHelper.create(data.substring(0, endIndex +1))!;;
+    Document document = DomDocumentHelper::create(data.substring(0, endIndex +1));;
     
 
-    nodeList: NodeList = document.getElementsByTagName(NewInputAutomationModulesData.NAME)!;;
+    NodeList nodeList = document.getElementsByTagName(NewInputAutomationModulesData::NAME);;
     
 
-                        if(nodeList!.getLength() > 0)
+                        if(nodeList.getLength() > 0)
                         
                                     {
                                     
-    nameNodeList: NodeList = document.getElementsByTagName(InputAutomationModuleData.NAME)!;;
+    NodeList nameNodeList = document.getElementsByTagName(InputAutomationModuleData::NAME);;
     
-this.logUtil!.putF("Number Of Module(s) Specified: " +nameNodeList!.getLength(), this, "Contructor");
+this->logUtil.putF("Number Of Module(s) Specified: " +nameNodeList.getLength(), this, "Contructor");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nameNodeList!.getLength(); index++)
+    int32_t index = 0;index < nameNodeList.getLength(); index++)
         {
 
-    node: Node = nameNodeList!.item(index)!;;
+    Node node = nameNodeList.item(index);;
     
-this.add(new InputAutomationModuleConfiguration(abeClientInformation, node));
+this->add(InputAutomationModuleConfiguration(abeClientInformation, node));
     
 }
 
@@ -142,92 +141,86 @@ this.add(new InputAutomationModuleConfiguration(abeClientInformation, node));
 }
 
 
-public constructor (AbeClientInformationInterface abeClientInformation, Document document){
-
-            super();
-        this.setHashMap(new HashMap<any, any>());
+public: InputAutomationModuleConfigurations(AbeClientInformationInterface abeClientInformation, Document document){
+this->setHashMap(HashMap<any, any>());
     
 
-    nameNodeList: NodeList = document.getElementsByTagName(InputAutomationModuleData.NAME)!;;
+    NodeList nameNodeList = document.getElementsByTagName(InputAutomationModuleData::NAME);;
     
-this.logUtil!.putF("Number Of Module(s) Specified: " +nameNodeList!.getLength(), this, "Contructor");
-    
-
-
-
-
-                        for (
-    index: int32_t = 0;index < nameNodeList!.getLength(); index++)
-        {
-
-    node: Node = nameNodeList!.item(index)!;;
-    
-this.add(new InputAutomationModuleConfiguration(abeClientInformation, node));
-    
-}
-
-}
-
-
-public constructor (List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList){
-
-            super();
-        this.setHashMap(new HashMap<any, any>());
-    
-
-    size: int32_t = inputAutomationModuleConfigurationList!.length!;;
-    
-
-    inputAutomationModuleConfiguration: InputAutomationModuleConfiguration;;
+this->logUtil.putF("Number Of Module(s) Specified: " +nameNodeList.getLength(), this, "Contructor");
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < nameNodeList.getLength(); index++)
         {
-inputAutomationModuleConfiguration= inputAutomationModuleConfigurationList!.get(index);
+
+    Node node = nameNodeList.item(index);;
     
-this.add(inputAutomationModuleConfiguration);
+this->add(InputAutomationModuleConfiguration(abeClientInformation, node));
+    
+}
+
+}
+
+
+public: InputAutomationModuleConfigurations(List<InputAutomationModuleConfiguration> inputAutomationModuleConfigurationList){
+this->setHashMap(HashMap<any, any>());
+    
+
+    int32_t size = inputAutomationModuleConfigurationList.length;;
+    
+
+    InputAutomationModuleConfiguration inputAutomationModuleConfiguration;;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+inputAutomationModuleConfiguration= inputAutomationModuleConfigurationList.get(index);
+    
+this->add(inputAutomationModuleConfiguration);
     
 }
 
 }
 
 
-public constructor (){
-
-            super();
-        this.setHashMap(new HashMap<any, any>());
+public: InputAutomationModuleConfigurations(){
+this->setHashMap(HashMap<any, any>());
     
 }
 
 
-    public add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
-this.getHashMap()!.put(inputAutomationModuleConfiguration!.getClassName(), inputAutomationModuleConfiguration);
+    public: void add(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+this->getHashMap().put(inputAutomationModuleConfiguration.getClassName(), inputAutomationModuleConfiguration);
     
 }
 
 
-    public remove(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
-this.getHashMap()!.remove(inputAutomationModuleConfiguration!.getClassName());
+    public: void remove(InputAutomationModuleConfiguration inputAutomationModuleConfiguration){
+this->getHashMap().remove(inputAutomationModuleConfiguration.getClassName());
     
 }
 
 
-    public HashMap<any, any> getHashMap(){
+    public: HashMap<any, any> getHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashMap;
+                        return this->hashMap;
     
 }
 
 
-    public setHashMap(HashMap<any, any> hashMap){
-this.hashMap= hashMap;
+    public: void setHashMap(HashMap<any, any> hashMap){
+this->hashMap= hashMap;
     
 }
 

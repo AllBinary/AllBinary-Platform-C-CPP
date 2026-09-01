@@ -50,10 +50,9 @@
         #include "JvmStatistics.h"
 #include "JvmStatisticsData.h"
 
-class JvmStatisticsMapping: public JvmStatistics: public TableMappingInterface {
-        
+class JvmStatisticsMapping: public JvmStatistics, public TableMappingInterface {
 
-public constructor (){
+public: JvmStatisticsMapping(){
             super();
                     
 
@@ -62,29 +61,29 @@ public constructor (){
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(JvmStatisticsData.FREE_MEMORY_BYTES, this.getFreeMemoryBytesString());
+hashMap.put(JvmStatisticsData::FREE_MEMORY_BYTES, this->getFreeMemoryBytesString());
     
-hashMap!.put(JvmStatisticsData.FREE_MEMORY_KILOBYTES, this.getFreeMemoryKilobytesString());
+hashMap.put(JvmStatisticsData::FREE_MEMORY_KILOBYTES, this->getFreeMemoryKilobytesString());
     
-hashMap!.put(JvmStatisticsData.FREE_MEMORY_MEGABYTES, this.getFreeMemoryMegabytesString());
+hashMap.put(JvmStatisticsData::FREE_MEMORY_MEGABYTES, this->getFreeMemoryMegabytesString());
     
-hashMap!.put(JvmStatisticsData.MAX_MEMORY_BYTES, this.getMaxMemoryBytesString());
+hashMap.put(JvmStatisticsData::MAX_MEMORY_BYTES, this->getMaxMemoryBytesString());
     
-hashMap!.put(JvmStatisticsData.MAX_MEMORY_KILOBYTES, this.getMaxMemoryKilobytesString());
+hashMap.put(JvmStatisticsData::MAX_MEMORY_KILOBYTES, this->getMaxMemoryKilobytesString());
     
-hashMap!.put(JvmStatisticsData.MAX_MEMORY_MEGABYTES, this.getMaxMemoryMegabytesString());
+hashMap.put(JvmStatisticsData::MAX_MEMORY_MEGABYTES, this->getMaxMemoryMegabytesString());
     
-hashMap!.put(JvmStatisticsData.NUMBER_OF_THREADS, this.getNumberOfThreadsString());
+hashMap.put(JvmStatisticsData::NUMBER_OF_THREADS, this->getNumberOfThreadsString());
     
-hashMap!.put(JvmStatisticsData.TOTAL_MEMORY_BYTES, this.getTotalMemoryBytesString());
+hashMap.put(JvmStatisticsData::TOTAL_MEMORY_BYTES, this->getTotalMemoryBytesString());
     
-hashMap!.put(JvmStatisticsData.TOTAL_MEMORY_KILOBYTES, this.getTotalMemoryKilobytesString());
+hashMap.put(JvmStatisticsData::TOTAL_MEMORY_KILOBYTES, this->getTotalMemoryKilobytesString());
     
-hashMap!.put(JvmStatisticsData.TOTAL_MEMORY_MEGABYTES, this.getTotalMemoryMegabytesString());
+hashMap.put(JvmStatisticsData::TOTAL_MEMORY_MEGABYTES, this->getTotalMemoryMegabytesString());
     
 
 
@@ -97,41 +96,41 @@ hashMap!.put(JvmStatisticsData.TOTAL_MEMORY_MEGABYTES, this.getTotalMemoryMegaby
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return JvmStatisticsData.NAME;
+                        return JvmStatisticsData::NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(this.getFreeMemoryBytesString());
+vector.add(this->getFreeMemoryBytesString());
     
-vector.add(this.getFreeMemoryKilobytesString());
+vector.add(this->getFreeMemoryKilobytesString());
     
-vector.add(this.getFreeMemoryMegabytesString());
+vector.add(this->getFreeMemoryMegabytesString());
     
-vector.add(this.getMaxMemoryBytesString());
+vector.add(this->getMaxMemoryBytesString());
     
-vector.add(this.getMaxMemoryKilobytesString());
+vector.add(this->getMaxMemoryKilobytesString());
     
-vector.add(this.getMaxMemoryMegabytesString());
+vector.add(this->getMaxMemoryMegabytesString());
     
-vector.add(this.getNumberOfThreadsString());
+vector.add(this->getNumberOfThreadsString());
     
-vector.add(this.getTotalMemoryBytesString());
+vector.add(this->getTotalMemoryBytesString());
     
-vector.add(this.getTotalMemoryKilobytesString());
+vector.add(this->getTotalMemoryKilobytesString());
     
-vector.add(this.getTotalMemoryMegabytesString());
+vector.add(this->getTotalMemoryMegabytesString());
     
 
 

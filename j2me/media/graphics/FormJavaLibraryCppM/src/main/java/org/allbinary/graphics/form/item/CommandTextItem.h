@@ -48,15 +48,14 @@
         #include "ABTextItem.h"
 
 class CommandTextItem: public ABTextItem {
-        
 
-    private: const command: Command;
+    private: Command command;
 
-public constructor (Command command, int32_t layout, string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: CommandTextItem(Command command, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public bool isFocusable();
+    public: bool isFocusable();
 
-    public Command getCommand();
+    public: Command getCommand();
 
 };
 

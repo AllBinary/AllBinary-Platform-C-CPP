@@ -61,21 +61,20 @@
 class UserEmailConfiguration
             : public Object
         : public UserEmailConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: userEmailEventsConfigurationInterface: UserEmailEventsConfigurationInterface;
+    private: UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface;
 
-public constructor ();
+public: UserEmailConfiguration();
 
-public constructor (HashMap<any, any> hashMap);
+public: UserEmailConfiguration(HashMap<any, any> hashMap);
 
-    public UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
+    public: UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface();
 
-    public setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface);
+    public: void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface userEmailEventsConfigurationInterface);
 
 };
 

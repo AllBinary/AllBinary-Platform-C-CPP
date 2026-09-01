@@ -58,13 +58,12 @@
         #include "BasicGraphicsPipeline.h"
 
 class GraphicsPipeline: public BasicGraphicsPipeline {
-        
 
-public constructor (BasicArrayList points);
+public: GraphicsPipeline(BasicArrayList points);
 
                 //@Throws(Exception.constructor)
             
-    public rotateTheta(double aTheta);
+    public: void rotateTheta(double aTheta);
 
 };
 

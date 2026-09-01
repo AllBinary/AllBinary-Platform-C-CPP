@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CELLPOSITIONSUTIL_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_CELLPOSITIONSUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Exception.h"
@@ -59,24 +61,23 @@
 class CellPositionsUtil
             : public Object
          {
-        
 
-    private: static const instance: CellPositionsUtil = new CellPositionsUtil();
+    private: static CellPositionsUtil instance() { return CellPositionsUtil(); }
 
-    public static CellPositionsUtil getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topRightGeographicMapCellPosition, int32_t columns, int32_t rows, BasicArrayList reusableList);
-
-    private: const reusableSingleThreadedSurroundingList: BasicArrayList = new BasicArrayListS(8);
+    public: static CellPositionsUtil getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getAllSurrounding(BasicGeographicMap geographicMapInterface, BasicArrayList occupyList, BasicArrayList reusableList);
+    public: BasicArrayList getAll(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition topRightGeographicMapCellPosition, int32_t columns, int32_t rows, BasicArrayList reusableList);
 
-    private: const surroundArray: std::vector<std::vector<int32_t>> = 
-                                                        [
+    private: const BasicArrayList reusableSingleThreadedSurroundingList = BasicArrayListS(8);
+
+                //@Throws(Exception.constructor)
+            
+    public: BasicArrayList getAllSurrounding(BasicGeographicMap geographicMapInterface, BasicArrayList occupyList, BasicArrayList reusableList);
+
+    private: const std::vector<std::vector<int32_t>> surroundArray = 
+                                                        {
                                                             intArrayOf( -1, -1)
 ,[0, -1]
 ,[1, -1]
@@ -86,11 +87,11 @@ class CellPositionsUtil
 ,[1,0]
 ,[ -1,0]
 
-                                                        ];
+                                                        };
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getAllSurroundingAt(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition layerGeographicMapCellPosition, BasicArrayList reusableSurroundingList);
+    public: BasicArrayList getAllSurroundingAt(BasicGeographicMap geographicMapInterface, GeographicMapCellPosition layerGeographicMapCellPosition, BasicArrayList reusableSurroundingList);
 
 };
 

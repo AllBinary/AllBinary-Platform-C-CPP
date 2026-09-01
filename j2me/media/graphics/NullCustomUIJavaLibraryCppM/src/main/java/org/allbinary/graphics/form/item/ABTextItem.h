@@ -44,16 +44,15 @@
 #include "ABCustomItemInterface.h"
 #include "ABStringComponent.h"
 
-class ABTextItem: public CustomCustomItem: public ABCustomItemInterface {
-        
+class ABTextItem: public CustomCustomItem, public ABCustomItemInterface {
 
-public constructor (string label, int32_t layout, string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+public: ABTextItem(std::string label, int32_t layout, std::string altText, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public keyPressed(int32_t keyCode);
+    public: void keyPressed(int32_t keyCode);
 
-    public paintUnselected(Graphics graphics, int32_t x, int32_t y);
+    public: void paintUnselected(Graphics graphics, int32_t x, int32_t y);
 
-    public ABStringComponent getLabelStringComponent();
+    public: ABStringComponent getLabelStringComponent();
 
 };
 

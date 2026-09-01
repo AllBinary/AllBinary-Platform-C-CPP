@@ -42,31 +42,30 @@
 class RemoteHighScoresData
             : public Object
          {
-        
 
-    private: static const SINGLETON: RemoteHighScoresData = new RemoteHighScoresData();
+    private: static const RemoteHighScoresData SINGLETON = RemoteHighScoresData();
 
-    public static RemoteHighScoresData getInstance(){
+    public: static RemoteHighScoresData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RemoteHighScoresData.SINGLETON;
+                        return RemoteHighScoresData::SINGLETON;
     
 }
 
 
-    public const HIGH_SCORES: string = "HIGH_SCORES";
+    public: const std::string HIGH_SCORES = "HIGH_SCORES";
 
-    public CUSTOMER_USER_NAME: string = "CUSTOMER_USER_NAME";
+    public: std::string CUSTOMER_USER_NAME = "CUSTOMER_USER_NAME";
 
-    public DISPLAY_NAME: string = "DISPLAY_NAME";
+    public: std::string DISPLAY_NAME = "DISPLAY_NAME";
 
-    public SCORE: string = "SCORE";
+    public: std::string SCORE = "SCORE";
 
-    public GAME_INFO: string = "GAME_INFO";
+    public: std::string GAME_INFO = "GAME_INFO";
 
-    public GAME_CONFIGURATION: string = "GAME_CONFIGURATION";
+    public: std::string GAME_CONFIGURATION = "GAME_CONFIGURATION";
 
 };
 

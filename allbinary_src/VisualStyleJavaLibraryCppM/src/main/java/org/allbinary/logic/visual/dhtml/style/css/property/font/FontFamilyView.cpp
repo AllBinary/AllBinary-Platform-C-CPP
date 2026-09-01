@@ -47,10 +47,9 @@
         #include "FontFamilyData.h"
 
 class FontFamilyView: public CssPropertyView {
-        
 
-public constructor (){
-            super(FontFamilyData.getInstance()!.VALUE);
+public: FontFamilyView(){
+            super(FontFamilyData::getInstance().VALUE);
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -58,7 +57,7 @@ public constructor (){
 }
 
 
-public constructor (Node node){
+public: FontFamilyView(Node node){
             super(node);
                     
 

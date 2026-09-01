@@ -51,22 +51,21 @@
 class LinePathAnimation
             : public Object
          {
-        
 
-    private: static const instance: LinePathAnimation = new LinePathAnimation();
+    private: static LinePathAnimation instance() { return LinePathAnimation(); }
 
-    public static LinePathAnimation getInstance(){
+    public: static LinePathAnimation getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LinePathAnimation.instance;
+                        return LinePathAnimation::instance();
     
 }
 
 
-    public paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer){
-graphics.drawLine(nextPoint!.getX(), nextPoint!.getY(), point.getX(), point.getY());
+    public: void paint(Graphics graphics, GPoint point, GPoint nextPoint, Layer tiledLayer){
+graphics.drawLine(nextPoint.getX(), nextPoint.getY(), point.getX(), point.getY());
     
 }
 

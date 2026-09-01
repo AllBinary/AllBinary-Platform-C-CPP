@@ -47,23 +47,20 @@
 class CacheInterfaceFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static CacheInterface getInstance(CacheType cacheType, CachePolicy cachePolicy){
+    public: static CacheInterface getInstance(CacheType cacheType, CachePolicy cachePolicy){
 
 
 
-                            throw new Exception("No such " +cacheType!.toString());
+                            throw Exception("No such " +cacheType.toString());
                     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CacheInterfaceFactory(){
+}
 
 
 };

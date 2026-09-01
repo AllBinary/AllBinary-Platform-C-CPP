@@ -58,50 +58,47 @@
 class MirrorMotionGestureEventUtil
             : public Object
          {
-        
 
-    private: static const instance: MirrorMotionGestureEventUtil = new MirrorMotionGestureEventUtil();
+    private: static MirrorMotionGestureEventUtil instance() { return MirrorMotionGestureEventUtil(); }
 
-    public static MirrorMotionGestureEventUtil getInstance(){
+    public: static MirrorMotionGestureEventUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MirrorMotionGestureEventUtil.instance;
+                        return MirrorMotionGestureEventUtil::instance();
     
 }
 
 
-    private: const motionEventCircularPool: MotionEventCircularPool;
+    private: MotionEventCircularPool motionEventCircularPool;
 
-private constructor (){
-
-            super();
-        this.motionEventCircularPool= MotionEventCircularPool.createPool(Integer.MAX_VALUE);
+private: MirrorMotionGestureEventUtil(){
+this->motionEventCircularPool= MotionEventCircularPool::createPool(Integer::MAX_VALUE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public MotionGestureEvent mirrorVerticle(MotionGestureEvent motionGestureEvent, int32_t halfWidth){
+    public: MotionGestureEvent mirrorVerticle(MotionGestureEvent motionGestureEvent, int32_t halfWidth){
 
-    event: MotionGestureEvent = this.motionEventCircularPool!.getInstance(motionGestureEvent!.getMotionGesture())!;;
+    MotionGestureEvent event = this->motionEventCircularPool.getInstance(motionGestureEvent.getMotionGesture());;
     
 
-    previousNewX: int32_t = this.getNewX(motionGestureEvent!.getPreviousPoint()!.getX(), halfWidth)!;;
+    int32_t previousNewX = this->getNewX(motionGestureEvent.getPreviousPoint().getX(), halfWidth);;
     
 
-    currentNewX: int32_t = this.getNewX(motionGestureEvent!.getCurrentPoint()!.getX(), halfWidth)!;;
+    int32_t currentNewX = this->getNewX(motionGestureEvent.getCurrentPoint().getX(), halfWidth);;
     
 
-    pointFactory: PointFactory = PointFactory.getInstance()!;;
+    PointFactory pointFactory = PointFactory::getInstance();;
     
 
-    mirroredPreviousPoint: GPoint = pointFactory!.createXY(previousNewX, motionGestureEvent!.getPreviousPoint()!.getY())!;;
+    GPoint mirroredPreviousPoint = pointFactory.createXY(previousNewX, motionGestureEvent.getPreviousPoint().getY());;
     
 
-    mirroredCurrentPoint: GPoint = pointFactory!.createXY(currentNewX, motionGestureEvent!.getCurrentPoint()!.getY())!;;
+    GPoint mirroredCurrentPoint = pointFactory.createXY(currentNewX, motionGestureEvent.getCurrentPoint().getY());;
     
 event.setPreviousPoint(mirroredPreviousPoint);
     
@@ -116,9 +113,9 @@ event.setCurrentPoint(mirroredCurrentPoint);
 }
 
 
-    public int32_t getNewX(int32_t x, int32_t halfWidth){
+    public: int32_t getNewX(int32_t x, int32_t halfWidth){
 
-    newX: int32_t= 0;;
+    int32_t newX= 0;;
     
 
                         if(x > halfWidth)

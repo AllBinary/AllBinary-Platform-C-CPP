@@ -61,22 +61,21 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class RTSLayerTextAnimation: public Animation: public UpdateMyFontInterface {
-        
+class RTSLayerTextAnimation: public Animation, public UpdateMyFontInterface {
 
-    private: const image: Image;
+    private: Image image;
 
-    private: const text: string;
+    private: std::string text;
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (string text, Image image);
+public: RTSLayerTextAnimation(std::string text, Image image);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

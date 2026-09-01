@@ -52,14 +52,13 @@
 class TouchButtonsPaintableCompositeFactory
             : public Object
          {
-        
 
-    public static ProcessPaintable getInstance(InputMappingInterface inputMappingInterface, BasicColor basicColor){
+    public: static ProcessPaintable getInstance(InputMappingInterface inputMappingInterface, BasicColor basicColor){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TouchButtonsPaintableComposite(inputMappingInterface, basicColor);
+                        return TouchButtonsPaintableComposite(inputMappingInterface, basicColor);
     
 }
 

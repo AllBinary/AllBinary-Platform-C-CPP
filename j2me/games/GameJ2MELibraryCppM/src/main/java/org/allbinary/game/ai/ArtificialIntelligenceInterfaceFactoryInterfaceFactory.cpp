@@ -58,37 +58,36 @@
 class ArtificialIntelligenceInterfaceFactoryInterfaceFactory
             : public Object
          {
-        
 
-    private: static SINGLETON: ArtificialIntelligenceInterfaceFactoryInterfaceFactory = new ArtificialIntelligenceInterfaceFactoryInterfaceFactory();
+    private: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory SINGLETON = ArtificialIntelligenceInterfaceFactoryInterfaceFactory();
 
-    public static ArtificialIntelligenceInterfaceFactoryInterfaceFactory getInstance(){
+    public: static ArtificialIntelligenceInterfaceFactoryInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory.SINGLETON;
+                        return ArtificialIntelligenceInterfaceFactoryInterfaceFactory::SINGLETON;
     
 }
 
 
-    private: list: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    public clear(){
-this.list= new BasicArrayListD();
+    public: void clear(){
+this->list= BasicArrayListD();
     
 }
 
 
-    public ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(Hashtable<any, any> hashtable){
+    public: ArtificialIntelligenceInterfaceFactoryInterface getInstanceFromCollection(Hashtable<any, any> hashtable){
 
-    typeInteger: Integer = hashtable.get(BasicAI.ID) as Integer;;
+    Integer typeInteger = hashtable.get(BasicAI::ID) as Integer;;
     
 
-    type: int32_t = typeInteger!.intValue()!;;
+    int32_t type = typeInteger.intValue();;
     
 
-    artificialIntelligenceInterfaceFactoryInterface: ArtificialIntelligenceInterfaceFactoryInterface = this.list.objectArray[type -1]! as ArtificialIntelligenceInterfaceFactoryInterface;;
+    ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface = this->list.objectArray[type -1]! as ArtificialIntelligenceInterfaceFactoryInterface;;
     
 
 
@@ -99,8 +98,8 @@ this.list= new BasicArrayListD();
 }
 
 
-    public add(ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface){
-this.list.add(artificialIntelligenceInterfaceFactoryInterface);
+    public: void add(ArtificialIntelligenceInterfaceFactoryInterface artificialIntelligenceInterfaceFactoryInterface){
+this->list.add(artificialIntelligenceInterfaceFactoryInterface);
     
 }
 

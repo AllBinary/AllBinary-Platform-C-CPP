@@ -52,11 +52,10 @@
 class GameInputMotionEventProcessorFactory
             : public Object
          {
-        
 
-    public static BaseGameInputMotionEventProcessor getInstance(){
+    public: static BaseGameInputMotionEventProcessor getInstance(){
 
-    SDK_VERSION: int32_t = AndroidInfoFactory.getInstance()!.getVersion()!;;
+    int32_t SDK_VERSION = AndroidInfoFactory::getInstance().getVersion();;
     
 
                         if(SDK_VERSION <= 4)
@@ -66,7 +65,7 @@ class GameInputMotionEventProcessorFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionEventProcessorAPI1.getInstance();;
+                        return GameInputMotionEventProcessorAPI1::getInstance();;
     
 
                                     }
@@ -76,7 +75,7 @@ class GameInputMotionEventProcessorFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInputMotionEventProcessorAPI5.getInstance();;
+                        return GameInputMotionEventProcessorAPI5::getInstance();;
     
 
                         }

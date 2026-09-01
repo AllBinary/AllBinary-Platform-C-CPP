@@ -49,44 +49,41 @@
 class UspsShippingModule
             : public Object
         : public ShippingInterface {
-        
 
-    private: const name: string = "USPS";
+    private: const std::string name = "USPS";
 
-    private: const description: string = "Snail Mail";
+    private: const std::string description = "Snail Mail";
 
-public constructor (){
-
-            super();
-        }
+public: UspsShippingModule(){
+}
 
 
-    public Money getCost(OrderInterface order){
+    public: Money getCost(OrderInterface order){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Money();
+                        return Money();
     
 }
 
 
-    public string getDescription(){
+    public: std::string getDescription(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.description;
+                        return this->description;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

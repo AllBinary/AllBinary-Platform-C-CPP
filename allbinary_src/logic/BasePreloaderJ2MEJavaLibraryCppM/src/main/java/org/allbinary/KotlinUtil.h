@@ -34,11 +34,10 @@
 class KotlinUtil
             : public Object
          {
-        
 
-    public static bool isKotlin();
+    public: static bool isKotlin();
 
-    public static string getShortName();
+    public: static std::string getShortName();
 
 };
 

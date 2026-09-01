@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOOBJECTFACTORY_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_INFO_TRANSFORMINFOOBJECTFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
             #include "../../../../../../java/lang/Class.h"
@@ -71,19 +73,18 @@
 class TransformInfoObjectFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformInfoObjectFactory = new TransformInfoObjectFactory();
+    private: static TransformInfoObjectFactory instance() { return TransformInfoObjectFactory(); }
 
-    public static TransformInfoObjectFactory getInstance();
+    public: static TransformInfoObjectFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: TransformInfoObjectFactory();
 
                 //@Throws(Exception.constructor)
             
-    public TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+    public: TransformInterface getInstance(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
 
 };
 

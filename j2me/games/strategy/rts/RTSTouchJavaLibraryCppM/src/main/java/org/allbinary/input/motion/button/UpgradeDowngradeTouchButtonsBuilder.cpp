@@ -67,39 +67,38 @@
 #include "BasicTouchInputFactory.h"
 
 class UpgradeDowngradeTouchButtonsBuilder: public BaseTouchInput {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList(){
+    public: BasicArrayList getList(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
-    list: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList list = BasicArrayListD();;
     
 
-    touchButtonLocationHelper: TouchButtonLocationHelper = new TouchButtonLocationHelper();;
+    TouchButtonLocationHelper touchButtonLocationHelper = TouchButtonLocationHelper();;
     
 
-    cellPositionFactory: CellPositionFactory = CellPositionFactory.getInstance()!;;
+    CellPositionFactory cellPositionFactory = CellPositionFactory::getInstance();;
     
 
-    basicTouchButtonCellPositionFactory: BasicTouchButtonCellPositionFactory = new BasicTouchButtonCellPositionFactory();;
+    BasicTouchButtonCellPositionFactory basicTouchButtonCellPositionFactory = BasicTouchButtonCellPositionFactory();;
     
 
-                        if(basicTouchButtonCellPositionFactory!.SECOND_FROM_TOP_LEFT != cellPositionFactory!.NONE && basicTouchButtonCellPositionFactory!.SECOND_FROM_TOP_RIGHT != cellPositionFactory!.NONE)
+                        if(basicTouchButtonCellPositionFactory.SECOND_FROM_TOP_LEFT != cellPositionFactory.NONE && basicTouchButtonCellPositionFactory.SECOND_FROM_TOP_RIGHT != cellPositionFactory.NONE)
                         
                                     {
                                     
-    commonButtons: CommonButtons = CommonButtons.getInstance()!;;
+    CommonButtons commonButtons = CommonButtons::getInstance();;
     
 
-    UP: TouchButton = TouchButton.createButton(BasicTouchInputFactory.getInstance()!.SPECIAL_BUTTON_TWO, TouchButtonUpgradeResource.getInstance(), commonButtons!.NORMAL_BUTTON, basicTouchButtonCellPositionFactory!.SECOND_FROM_TOP_LEFT, touchButtonLocationHelper!.getColumnsRemainderHalf(), touchButtonLocationHelper!.getRowsRemainderHalf())!;;
+    TouchButton UP = TouchButton::createButton(BasicTouchInputFactory::getInstance().SPECIAL_BUTTON_TWO, TouchButtonUpgradeResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.SECOND_FROM_TOP_LEFT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
     
 
-    DOWN: TouchButton = TouchButton.createButton(BasicTouchInputFactory.getInstance()!.SPECIAL_BUTTON_ONE, TouchButtonDowngradeResource.getInstance(), commonButtons!.NORMAL_BUTTON, basicTouchButtonCellPositionFactory!.SECOND_FROM_TOP_RIGHT, touchButtonLocationHelper!.getColumnsRemainderHalf(), touchButtonLocationHelper!.getRowsRemainderHalf())!;;
+    TouchButton DOWN = TouchButton::createButton(BasicTouchInputFactory::getInstance().SPECIAL_BUTTON_ONE, TouchButtonDowngradeResource::getInstance(), commonButtons.NORMAL_BUTTON, basicTouchButtonCellPositionFactory.SECOND_FROM_TOP_RIGHT, touchButtonLocationHelper.getColumnsRemainderHalf(), touchButtonLocationHelper.getRowsRemainderHalf());;
     
 list.add(UP);
     
@@ -118,13 +117,13 @@ list.add(DOWN);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BasicArrayListUtil.getInstance()!.getImmutableInstance();;
+                        return BasicArrayListUtil::getInstance().getImmutableInstance();;
     
 }
 

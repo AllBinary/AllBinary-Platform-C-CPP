@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_H
         #define ORG_ALLBINARY_BUSINESS_USER_COMMERCE_INVENTORY_ITEM_ITEMINFO_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 
@@ -45,19 +47,18 @@
 class ItemInfo
             : public Object
          {
-        
 
-    type: std::vector<string>;
+    std::vector<std::string> type;
 
-    view: std::vector<string>;
+    std::vector<std::string> view;
 
-    data: std::vector<string>;
+    std::vector<std::string> data;
 
-    creationDate: std::vector<string>;
+    std::vector<std::string> creationDate;
 
-    lastModified: std::vector<string>;
+    std::vector<std::string> lastModified;
 
-public constructor ();
+public: ItemInfo();
 
 };
 

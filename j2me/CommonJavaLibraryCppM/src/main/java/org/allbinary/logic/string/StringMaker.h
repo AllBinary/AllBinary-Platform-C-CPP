@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_STRING_STRINGMAKER_H
         #define ORG_ALLBINARY_LOGIC_STRING_STRINGMAKER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/System.h"

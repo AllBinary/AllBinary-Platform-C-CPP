@@ -61,22 +61,21 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ViewHelper.h"
 
-class ValidationViewHelper: public ViewHelper: public ValidationComponentInterface {
-        
+class ValidationViewHelper: public ViewHelper, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: viewInterface: ValidationComponentInterface;
+    private: ValidationComponentInterface viewInterface;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: ValidationViewHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
 };
 

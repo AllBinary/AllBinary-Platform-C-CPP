@@ -46,9 +46,8 @@
 #include "DesktopDefaultGameInputMapping.h"
 
 class DesktopGameInputMapping: public PCGameInputMapping {
-        
 
-    InputToGameKeyMapping getDefault();
+    protected: InputToGameKeyMapping getDefault();
 
 };
 

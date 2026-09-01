@@ -106,14 +106,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryItemView.h"
 
-class UpdateFileValidationView: public InventoryItemView: public ValidationComponentInterface {
-        
+class UpdateFileValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-    private: static const UPDATEPRODUCT: string = CommonStrings.getInstance()!.UPDATE;
+    private: static const std::string UPDATEPRODUCT = CommonStrings::getInstance().UPDATE;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: UpdateFileValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -122,23 +121,21 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    command: string = this.getRequestHashMap()!.get(GLOBALS2.ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
     
 
-                        if(command == 
-                                    null
-                                 || command.compareTo(UpdateFileValidationView.UPDATEPRODUCT) != 0)
+                        if(false || command.compareTo(UpdateFileValidationView::UPDATEPRODUCT) != 0)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Invalid AdminCommand=" +command, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("Invalid AdminCommand=" +command, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -147,20 +144,20 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(new BasicItemValidation(this.itemInterface).isValid() == Boolean.FALSE)
+                        if(BasicItemValidation(this->itemInterface).isValid() == Boolean::FALSE)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("BasicItem is not valid", this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("BasicItem is not valid", this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -169,38 +166,38 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getWeblisketSession()!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getWebappPath());
+stringBuffer.append(URLGLOBALS::getWebappPath());
     
-stringBuffer!.append(storeFrontInterface!.getCurrentHostNamePath());
+stringBuffer.append(storeFrontInterface.getCurrentHostNamePath());
     
-stringBuffer!.append(this.itemInterface!.getCategory());
-    
-
-    fullCategory: string = stringBuffer!.toString()!;;
+stringBuffer.append(this->itemInterface.getCategory());
     
 
-    categoryFile: AbFile = AbFile.createAbFile(fullCategory)!;;
+    std::string fullCategory = stringBuffer.toString();;
     
 
-                        if(!categoryFile!.isDirectory())
+    AbFile categoryFile = AbFile::createAbFile(fullCategory);;
+    
+
+                        if(!categoryFile.isDirectory())
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Category Does Not Exist: " +fullCategory, this, this.commonStrings!.IS_VALID);
+                                    this->logUtil.putF("Category Does Not Exist: " +fullCategory, this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -209,17 +206,17 @@ stringBuffer!.append(this.itemInterface!.getCategory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    inventoryEntity: InventoryEntity = InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!;;
+    InventoryEntity inventoryEntity = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
 
-                        if(inventoryEntity!.getItem(this.itemInterface!.getId()) == 
-                                    null
+                        if(inventoryEntity.getItem(this->itemInterface.getId()) == 
+                                    nullptr
                                 )
                         
                                     {
@@ -227,38 +224,38 @@ stringBuffer!.append(this.itemInterface!.getCategory());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    anyType: any = this.getRequestHashMap()!.get(BasicItemData.IMAGE)!;;
+    Object* anyType = this->getRequestHashMap().get(BasicItemData::IMAGE);;
     
 
-                        if(HttpFileUploadUtil.getInstance()!.isValid(anyType))
+                        if(HttpFileUploadUtil::getInstance().isValid(anyType))
                         
                                     {
                                     
-    fileItem: FileItem = anyType as FileItem;;
+    FileItem fileItem = anyType as FileItem;;
     
 
-    size: int64_t = fileItem!.getSize()!;;
+    int64_t size = fileItem.getSize();;
     
 
-    fileName: string = fileItem!.getName()!;;
+    std::string fileName = fileItem.getName();;
     
-HttpFileUploadUtil.log(fileItem);
+HttpFileUploadUtil::log(fileItem);
     
 
-                        if(this.isValid(fileName, size) == Boolean.FALSE)
+                        if(this->isValid(fileName, size) == Boolean::FALSE)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -270,17 +267,17 @@ HttpFileUploadUtil.log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.put("Exception in validation", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Exception in validation", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -289,14 +286,14 @@ HttpFileUploadUtil.log(fileItem);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -306,7 +303,7 @@ HttpFileUploadUtil.log(fileItem);
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -318,41 +315,39 @@ HttpFileUploadUtil.log(fileItem);
 
                 //@Throws(Exception.constructor)
             
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    command: string = this.getRequestHashMap()!.get(GLOBALS2.ADMINCOMMAND) as string;;
+    std::string command = this->getRequestHashMap().get(GLOBALS2::ADMINCOMMAND) as string;;
     
 
-                        if(command == 
-                                    null
-                                 || command.compareTo(UpdateFileValidationView.UPDATEPRODUCT) != 0)
+                        if(false || command.compareTo(UpdateFileValidationView::UPDATEPRODUCT) != 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CommonSeps.getInstance()!.SPACE;
+                        return CommonSeps::getInstance().SPACE;
     
 
                                     }
                                 
-stringBuffer!.append(new BasicItemValidation(this.itemInterface).validationInfo());
+stringBuffer.append(BasicItemValidation(this->itemInterface).validationInfo());
     
 
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getWeblisketSession()!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
     
 
-    fullCategory: string = URLGLOBALS.getWebappPath() as string +storeFrontInterface!.getCurrentHostNamePath() +this.itemInterface!.getCategory();;
+    std::string fullCategory = URLGLOBALS::getWebappPath() as string +storeFrontInterface.getCurrentHostNamePath() +this->itemInterface.getCategory();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Category: " +fullCategory, this, "validationInfo()");
+                                    this->logUtil.putF("Category: " +fullCategory, this, "validationInfo()");
     
 
                                     }
@@ -360,12 +355,12 @@ stringBuffer!.append(new BasicItemValidation(this.itemInterface).validationInfo(
 
         try {
             
-                        if(InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.getItem(this.itemInterface!.getId()) == 
-                                    null
+                        if(InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->itemInterface.getId()) == 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append("Item does not exist.<br>");
+                                    stringBuffer.append("Item does not exist.<br>");
     
 
                                     }
@@ -375,10 +370,10 @@ stringBuffer!.append(new BasicItemValidation(this.itemInterface).validationInfo(
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
-                                    this.logUtil!.putF("Existing Item With MoneyException", this, "validationInfo()");
+                                    this->logUtil.putF("Existing Item With MoneyException", this, "validationInfo()");
     
 
                                     }
@@ -386,25 +381,25 @@ stringBuffer!.append(new BasicItemValidation(this.itemInterface).validationInfo(
 }
 
 
-    anyType: any = this.getRequestHashMap()!.get(BasicItemData.IMAGE)!;;
+    Object* anyType = this->getRequestHashMap().get(BasicItemData::IMAGE);;
     
 
-                        if(HttpFileUploadUtil.getInstance()!.isValid(anyType))
+                        if(HttpFileUploadUtil::getInstance().isValid(anyType))
                         
                                     {
                                     
-    fileItem: FileItem = anyType as FileItem;;
+    FileItem fileItem = anyType as FileItem;;
     
 
-    size: int64_t = fileItem!.getSize()!;;
+    int64_t size = fileItem.getSize();;
     
 
-    fileName: string = fileItem!.getName()!;;
+    std::string fileName = fileItem.getName();;
     
 
-    fileItemFieldName: string = fileItem!.getFieldName()!;;
+    std::string fileItemFieldName = fileItem.getFieldName();;
     
-this.validationInfo(stringBuffer, fileName, fileItemFieldName, size);
+this->validationInfo(stringBuffer, fileName, fileItemFieldName, size);
     
 
                                     }
@@ -413,34 +408,34 @@ this.validationInfo(stringBuffer, fileName, fileItemFieldName, size);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    Boolean isValid(string fileName, int64_t size){
+    private: Boolean isValid(std::string fileName, int64_t size){
 
-    fileData: FileData = FileData.getInstance()!;;
+    FileData fileData = FileData::getInstance();;
     
 
-                        if(size > fileData!.MINIMAGEFILESIZE)
+                        if(size > fileData.MINIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(size < fileData!.MAXIMAGEFILESIZE)
+                        if(size < fileData.MAXIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(!StringValidationUtil.getInstance()!.isValidRequired(fileName, fileData!.MINLEN, fileData!.MAXLEN))
+                        if(!StringValidationUtil::getInstance().isValidRequired(fileName, fileData.MINLEN, fileData.MAXLEN))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -450,21 +445,21 @@ this.validationInfo(stringBuffer, fileName, fileItemFieldName, size);
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEW))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEW))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("File Size To Large: ");
+stringBuffer.append("File Size To Large: ");
     
-stringBuffer!.appendlong(size);
+stringBuffer.appendlong(size);
     
-stringBuffer!.append(">");
+stringBuffer.append(">");
     
-stringBuffer!.appendint(fileData!.MAXIMAGEFILESIZE);
+stringBuffer.appendint(fileData.MAXIMAGEFILESIZE);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID);
+this->logUtil.putF(stringBuffer.toString(), this, this->commonStrings.IS_VALID);
     
 
                                     }
@@ -473,12 +468,12 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.commonStrings!.IS_VALID)
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                         }
                             
-this.processImageFiles();
+this->processImageFiles();
     
 
                                     }
@@ -487,40 +482,40 @@ this.processImageFiles();
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    validationInfo(StringMaker stringBuffer, string fileName, string fileItemFieldName, int64_t size){
+    private: void validationInfo(StringMaker stringBuffer, std::string fileName, std::string fileItemFieldName, int64_t size){
 
-    fileData: FileData = FileData.getInstance()!;;
+    FileData fileData = FileData::getInstance();;
     
 
-                        if(size > fileData!.MINIMAGEFILESIZE)
+                        if(size > fileData.MINIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(fileItemFieldName!.compareTo(BasicItemData.IMAGE) == 0)
+                        if(fileItemFieldName.compareTo(BasicItemData::IMAGE) == 0)
                         
                                     {
                                     
-                        if(size < fileData!.MAXIMAGEFILESIZE)
+                        if(size < fileData.MAXIMAGEFILESIZE)
                         
                                     {
                                     
-                        if(!StringValidationUtil.getInstance()!.isValidRequired(fileName, fileData!.MINLEN, fileData!.MAXLEN))
+                        if(!StringValidationUtil::getInstance().isValidRequired(fileName, fileData.MINLEN, fileData.MAXLEN))
                         
                                     {
-                                    stringBuffer!.append("FileName must be >");
+                                    stringBuffer.append("FileName must be >");
     
-stringBuffer!.appendint(fileData!.MINLEN);
+stringBuffer.appendint(fileData.MINLEN);
     
-stringBuffer!.append("and <");
+stringBuffer.append("and <");
     
-stringBuffer!.appendint(fileData!.MAXLEN);
+stringBuffer.appendint(fileData.MAXLEN);
     
-stringBuffer!.append("<br />");
+stringBuffer.append("<br />");
     
 
                                     }
@@ -529,15 +524,15 @@ stringBuffer!.append("<br />");
                                     }
                                 
                         else {
-                            stringBuffer!.append("Image File Is Not The Right Size. ");
+                            stringBuffer.append("Image File Is Not The Right Size. ");
     
-stringBuffer!.appendint(fileData!.MINIMAGEFILESIZE);
+stringBuffer.appendint(fileData.MINIMAGEFILESIZE);
     
-stringBuffer!.append("< > ");
+stringBuffer.append("< > ");
     
-stringBuffer!.appendint(fileData!.MAXIMAGEFILESIZE);
+stringBuffer.appendint(fileData.MAXIMAGEFILESIZE);
     
-stringBuffer!.append("<br />");
+stringBuffer.append("<br />");
     
 
                         }

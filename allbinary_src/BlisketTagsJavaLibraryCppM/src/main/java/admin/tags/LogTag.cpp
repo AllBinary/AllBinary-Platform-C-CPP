@@ -42,14 +42,11 @@
         #include "TableTag.h"
 
 class LogTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new LogHelperFactory());
+public: LogTag(){
+this->setTagHelperFactory(LogHelperFactory());
     
-this.setTagRequestHelperFactory(new LogHelperFactory());
+this->setTagRequestHelperFactory(LogHelperFactory());
     
 }
 

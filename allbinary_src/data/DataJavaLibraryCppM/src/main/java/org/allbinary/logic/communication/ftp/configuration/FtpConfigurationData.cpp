@@ -42,22 +42,19 @@
 class FtpConfigurationData
             : public Object
          {
-        
 
-    public static const NAME: string = "FTP_NAME";
+    public: static const std::string NAME = "FTP_NAME";
 
-    public static const SERVER: string = "FTP_SERVER";
+    public: static const std::string SERVER = "FTP_SERVER";
 
-    public static const PATH: string = "FTP_PATH";
+    public: static const std::string PATH = "FTP_PATH";
 
-    public static const USERNAME: string = "FTP_USERNAME";
+    public: static const std::string USERNAME = "FTP_USERNAME";
 
-    public static const PASSWORD: string = "FTP_PASSWORD";
+    public: static const std::string PASSWORD = "FTP_PASSWORD";
 
-private constructor (){
-
-            super();
-        }
+private: FtpConfigurationData(){
+}
 
 
 };

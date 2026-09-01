@@ -54,13 +54,12 @@
 class AboutCommandProcessor
             : public Object
          {
-        
 
-    private: static const instance: AboutCommandProcessor = new AboutCommandProcessor();
+    private: static AboutCommandProcessor instance() { return AboutCommandProcessor(); }
 
-    public static AboutCommandProcessor getInstance();
+    public: static AboutCommandProcessor getInstance();
 
-    public process(CommandListener midletCommandListener, Command command, Canvas canvas);
+    public: void process(CommandListener midletCommandListener, Command command, Canvas canvas);
 
 };
 

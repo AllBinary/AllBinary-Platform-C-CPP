@@ -57,17 +57,16 @@
         #include "MotionEventProcessor.h"
 
 class BaseGameInputMotionEventProcessor: public MotionEventProcessor {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameMotionGestureListener: GameMotionGestureListener;
+    private: GameMotionGestureListener gameMotionGestureListener;
 
-protected constructor ();
+protected: BaseGameInputMotionEventProcessor();
 
-    public process(MotionEvent motionEvent);
+    public: void process(MotionEvent motionEvent);
 
-    public addListener();
+    public: void addListener();
 
 };
 

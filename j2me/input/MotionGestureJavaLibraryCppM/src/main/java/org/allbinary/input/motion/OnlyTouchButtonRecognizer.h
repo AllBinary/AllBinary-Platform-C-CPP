@@ -47,25 +47,24 @@
         #include "MotionRecognizer.h"
 
 class OnlyTouchButtonRecognizer: public MotionRecognizer {
-        
 
-    private: const touchButtonRecognizer: TouchButtonRecognizer;
+    private: TouchButtonRecognizer touchButtonRecognizer;
 
-    private: touchButtonProcessing: bool = false;
+    private: bool touchButtonProcessing = false;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+public: OnlyTouchButtonRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    public processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+
+                //@Throws(Exception.constructor)
+            
+    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_GEOGRAPHICMAPINTERFACE_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Integer.h"
@@ -58,13 +60,12 @@
 #include "GeographicMapCellPositionFactoryInterface.h"
 
 class GeographicMapInterface {
-        
 
     Integer getId();
 
-    string getName();
+    std::string getName();
 
-    reset();
+    void reset();
 
     AllBinaryTiledLayer getAllBinaryTiledLayer();
 

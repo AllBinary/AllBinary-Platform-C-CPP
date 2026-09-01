@@ -72,17 +72,16 @@
 class WindowsOperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: WindowsOperatingSystemFactory = new WindowsOperatingSystemFactory();
+    private: static WindowsOperatingSystemFactory instance() { return WindowsOperatingSystemFactory(); }
 
-    public static WindowsOperatingSystemFactory getInstance();
+    public: static WindowsOperatingSystemFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: WindowsOperatingSystemFactory();
 
-    public GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem getOperatingSystemInstance();
 
 };
 

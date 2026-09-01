@@ -43,21 +43,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UpgradeSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new UpgradeSound();
+    private: static Sound soundInterface = UpgradeSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UpgradeSound.soundInterface;
+                        return UpgradeSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: UpgradeSound(){
             super("resource:/wav/upgrade.wav");
                     
 

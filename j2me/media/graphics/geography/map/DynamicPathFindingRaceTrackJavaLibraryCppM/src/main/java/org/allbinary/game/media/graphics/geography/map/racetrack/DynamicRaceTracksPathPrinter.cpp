@@ -72,11 +72,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class DynamicRaceTracksPathPrinter: public RaceTracksPathPrinter {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo pathFindingInfo, int32_t size){
+    public: void printAllPaths(RaceTrackGeographicMapInterfaceFactoryInterface raceTrackGeographicMapInterfaceFactoryInterface, PathFindingInfo pathFindingInfo, int32_t size){
 
         try {
             
@@ -84,17 +83,17 @@ class DynamicRaceTracksPathPrinter: public RaceTracksPathPrinter {
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    geographicMapInterface: BasicGeographicMap = raceTrackGeographicMapInterfaceFactoryInterface!.getTrackInstance(SmallIntegerSingletonFactory.getInstance()!.getAt(index))!;;
+    BasicGeographicMap geographicMapInterface = raceTrackGeographicMapInterfaceFactoryInterface.getTrackInstance(SmallIntegerSingletonFactory::getInstance().getAt(index));;
     
 
-    list: BasicArrayList = PathGenerator.getInstance()!.createList(geographicMapInterface, RaceTrackRoadsGeographicMapCellHistoryFactory.getInstance(), pathFindingInfo, 10)!;;
+    BasicArrayList list = PathGenerator::getInstance().createList(geographicMapInterface, RaceTrackRoadsGeographicMapCellHistoryFactory::getInstance(), pathFindingInfo, 10);;
     
 console.log("Track " +index);
     
-this.printPaths(list);
+this->printPaths(list);
     
 }
 
@@ -103,9 +102,9 @@ this.printPaths(list);
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.PROCESS, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.PROCESS, e);
     
 }
 

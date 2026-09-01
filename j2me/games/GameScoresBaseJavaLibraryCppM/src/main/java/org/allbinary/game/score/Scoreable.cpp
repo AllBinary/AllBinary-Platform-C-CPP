@@ -60,44 +60,41 @@
 class Scoreable
             : public Object
         : public ScoreableInterface {
-        
 
-    public static ID: Integer = SmallIntegerSingletonFactory.getInstance()!.getAt(3)!;
+    public: static Integer ID = SmallIntegerSingletonFactory::getInstance().getAt(3);
 
-    private: points: int32_t;
+    private: int32_t points;
 
-public constructor (int32_t points){
-
-            super();
-        this.points= points;
+public: Scoreable(int32_t points){
+this->points= points;
     
 }
 
 
-    public addPoints(int32_t points){
-this.points += points;
+    public: void addPoints(int32_t points){
+this->points += points;
     
 }
 
 
-    public removePoints(int32_t points){
-this.points -= points;
+    public: void removePoints(int32_t points){
+this->points -= points;
     
 }
 
 
-    setPoints(int32_t points){
-this.points= points;
+    protected: void setPoints(int32_t points){
+this->points= points;
     
 }
 
 
-    public int32_t getPoints(){
+    public: int32_t getPoints(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.points;
+                        return this->points;
     
 }
 

@@ -28,27 +28,24 @@
 class MultiPlayerGameFeatureFactory
             : public Object
          {
-        
 
-    private: static const instance: MultiPlayerGameFeatureFactory = new MultiPlayerGameFeatureFactory();
+    private: static MultiPlayerGameFeatureFactory instance() { return MultiPlayerGameFeatureFactory(); }
 
-    public static MultiPlayerGameFeatureFactory getInstance(){
+    public: static MultiPlayerGameFeatureFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MultiPlayerGameFeatureFactory.instance;
+                        return MultiPlayerGameFeatureFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: MultiPlayerGameFeatureFactory(){
+}
 
 
-    public addCommands(any = {} anyType){
+    public: void addCommands(Object* anyType){
 }
 
 

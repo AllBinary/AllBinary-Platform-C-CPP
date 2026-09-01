@@ -49,25 +49,24 @@
 class TestInputExample
             : public Object
         : public TestInputInterface {
-        
 
-    private: testValue: int32_t= 0;
+    private: int32_t testValue= 0;
 
-    public up();
+    public: void up();
 
-    public down();
+    public: void down();
 
-    public left();
+    public: void left();
 
-    public right();
+    public: void right();
 
-    public strafeLeft();
+    public: void strafeLeft();
 
-    public strafeRight();
+    public: void strafeRight();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public paintThreed(Graphics graphics);
+    public: void paintThreed(Graphics graphics);
 
 };
 

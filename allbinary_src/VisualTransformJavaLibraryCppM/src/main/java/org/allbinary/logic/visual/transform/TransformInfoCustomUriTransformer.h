@@ -65,9 +65,8 @@
         #include "BasicTransformer.h"
 
 class TransformInfoCustomUriTransformer: public BasicTransformer {
-        
 
-public constructor (AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
+public: TransformInfoCustomUriTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface);
 
 };
 

@@ -46,15 +46,14 @@
 #include "InputFactory.h"
 
 class J2MEGameKey: public Input {
-        
 
-    public static string getString(int32_t keyCode){
+    public: static std::string getString(int32_t keyCode){
 
-    input: Input = InputFactory.getInstance()!.getInstanceById(keyCode)!;;
+    Input input = InputFactory::getInstance().getInstanceById(keyCode);;
     
 
                         if(input != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -72,7 +71,7 @@ class J2MEGameKey: public Input {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 
                         }
@@ -80,23 +79,23 @@ class J2MEGameKey: public Input {
 }
 
 
-protected constructor (int32_t key, string keyName){
+protected: J2MEGameKey(int32_t key, std::string keyName){
             super(key, keyName);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    id: int32_t = this.getId()!;;
+    int32_t id = this->getId();;
     
 
                         if(id >= 0)
                         
                                     {
                                     
-    inputFactory: InputFactory = InputFactory.getInstance()!;;
+    InputFactory inputFactory = InputFactory::getInstance();;
     
-inputFactory!.add(id, this);
+inputFactory.add(id, this);
     
 
                                     }
@@ -104,12 +103,12 @@ inputFactory!.add(id, this);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append("J2MEGameKey: ")!.append(super.toString())!.toString();;
+                        return StringMaker().append("J2MEGameKey: ").append(super.toString()).toString();;
     
 }
 

@@ -83,87 +83,86 @@
 class XmlRpcAbeClient
             : public Object
          {
-        
 
-    public static isOnline: bool = true;
+    public: static bool isOnline = true;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const remoteMethod: string;
+    private: std::string remoteMethod;
 
-    private: const clientInfo: AbeClientInformationInterface;
+    private: AbeClientInformationInterface clientInfo;
 
-    private: client: XmlRpcHandler = NullXmlRpcHandler.NULL_XML_RPC_HANDLER;
+    private: XmlRpcHandler client = NullXmlRpcHandler::NULL_XML_RPC_HANDLER;
 
-    private: server: int32_t;
+    private: int32_t server;
 
-    private: start: int32_t= 0;
+    private: int32_t start= 0;
 
-    private: maxServers: int32_t= 0;
+    private: int32_t maxServers= 0;
 
-    private: isDone: bool;
+    private: bool isDone;
 
-    private: const START_SERVER: string = "Start With Server #";
+    private: const std::string START_SERVER = "Start With Server #";
 
-    const TRYING: string = "Trying Server #";
+    protected: const std::string TRYING = "Trying Server #";
 
-    const SEP: string = CommonLabels.getInstance()!.COLON_SEP;
+    protected: const std::string SEP = CommonLabels::getInstance().COLON_SEP;
 
-    const CLIENT_INFO: string = "Client Info: \n";
+    protected: const std::string CLIENT_INFO = "Client Info: \n";
 
-    const RESULT: string = CommonLabels.getInstance()!.RESULT_ +CommonSeps.getInstance()!.NEW_LINE;
+    protected: const std::string RESULT = CommonLabels::getInstance().RESULT_ +CommonSeps::getInstance().NEW_LINE;
 
-    const INVALID: string = "License data is Invalid Trying Other Servers";
+    protected: const std::string INVALID = "License data is Invalid Trying Other Servers";
 
-    const EXCEPTION_IN_CLIENT: string = "Exception in client";
+    protected: const std::string EXCEPTION_IN_CLIENT = "Exception in client";
 
-    const SERVER_REPORTED_ERROR: string = "Server reported error";
+    protected: const std::string SERVER_REPORTED_ERROR = "Server reported error";
 
-    const UNKNOWN_ERROR: string = "Unknown License Retrieval Failure";
+    protected: const std::string UNKNOWN_ERROR = "Unknown License Retrieval Failure";
 
-    const TRYING_OTHER_SERVERS: string = "IOException Trying Other Servers";
+    protected: const std::string TRYING_OTHER_SERVERS = "IOException Trying Other Servers";
 
-    const HOST_NOT_RESOLVED_MSG: string = "Not Trying Again Since Host Unresolved";
+    protected: const std::string HOST_NOT_RESOLVED_MSG = "Not Trying Again Since Host Unresolved";
 
-    const HOST_NOT_RESOLVED: string = "Host is unresolved";
+    protected: const std::string HOST_NOT_RESOLVED = "Host is unresolved";
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-public constructor (AbeClientInformationInterface clientInfo, string remoteMethod);
-
-                //@Throws(Exception.constructor)
-            
-    public any get(any = {} anyType);
+public: XmlRpcAbeClient(AbeClientInformationInterface clientInfo, std::string remoteMethod);
 
                 //@Throws(Exception.constructor)
             
-    any tryAnother(any = {} anyType);
+    public: Object* get(Object* anyType);
 
-    AbeClientInformationInterface getClientInfo();
+                //@Throws(Exception.constructor)
+            
+    protected: Object* tryAnother(Object* anyType);
 
-    XmlRpcHandler getClient();
+    protected: AbeClientInformationInterface getClientInfo();
 
-    setClient(XmlRpcClient client);
+    protected: XmlRpcHandler getClient();
 
-    int32_t getServer();
+    protected: void setClient(XmlRpcClient client);
 
-    setServer(int32_t server);
+    protected: int32_t getServer();
 
-    int32_t getStart();
+    protected: void setServer(int32_t server);
 
-    setStart(int32_t start);
+    protected: int32_t getStart();
 
-    int32_t getMaxServers();
+    protected: void setStart(int32_t start);
 
-    setMaxServers(int32_t maxServers);
+    protected: int32_t getMaxServers();
 
-    bool isIsDone();
+    protected: void setMaxServers(int32_t maxServers);
 
-    setIsDone(bool isDone);
+    protected: bool isIsDone();
 
-    string getRemoteMethod();
+    protected: void setIsDone(bool isDone);
+
+    protected: std::string getRemoteMethod();
 
 };
 

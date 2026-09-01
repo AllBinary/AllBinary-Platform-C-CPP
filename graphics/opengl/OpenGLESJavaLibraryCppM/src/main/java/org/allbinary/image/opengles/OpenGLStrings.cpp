@@ -28,23 +28,22 @@
 class OpenGLStrings
             : public Object
          {
-        
 
-    private: static const instance: OpenGLStrings = new OpenGLStrings();
+    private: static OpenGLStrings instance() { return OpenGLStrings(); }
 
-    public static OpenGLStrings getInstance(){
+    public: static OpenGLStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLStrings.instance;
+                        return OpenGLStrings::instance();
     
 }
 
 
-    public const GL_ERROR_LABEL: string = "GLError: ";
+    public: const std::string GL_ERROR_LABEL = "GLError: ";
 
-    public const SET: string = "set(GL10)";
+    public: const std::string SET = "set(GL10)";
 
 };
 

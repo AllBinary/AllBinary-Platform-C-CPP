@@ -53,20 +53,19 @@
         #include "Color.h"
 
 class NoImageComparatorConstraints: public ImageComparatorConstraints {
-        
 
-public constructor (){
+public: NoImageComparatorConstraints(){
             super(1);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setMaxNonMatchingPixelDeltas(.MAX_VALUE());
+this->setMaxNonMatchingPixelDeltas(.MAX_VALUE());
     
 }
 
 
-    public bool isColorAllowed(int32_t frame, GPoint point, Color color){
+    public: bool isColorAllowed(int32_t frame, GPoint point, Color color){
 
 
 
@@ -76,7 +75,7 @@ this.setMaxNonMatchingPixelDeltas(.MAX_VALUE());
 }
 
 
-    public bool isImageValid(BufferedImage bufferedImage){
+    public: bool isImageValid(BufferedImage bufferedImage){
 
 
 

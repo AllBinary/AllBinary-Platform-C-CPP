@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -59,35 +61,24 @@
 class AbFileSystem
             : public Object
          {
-        
 
-    private: static const instance: AbFileSystem = new AbFileSystem();
+    private: static AbFileSystem instance() { return AbFileSystem(); }
 
-    public static AbFileSystem getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbFileSystem.instance;
-    
-}
-
-
-    private: const logUtil: LogUtil = LogUtil.getInstance()!;
-
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-    public bool isDirectoryOrFile(string path){
+    public: static AbFileSystem getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return false;
+                        return AbFileSystem::instance();
     
 }
 
 
-    public bool isDirectory(string path){
+    private: const LogUtil logUtil = LogUtil::getInstance();
+
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
+
+    public: bool isDirectoryOrFile(std::string path){
 
 
 
@@ -97,52 +88,62 @@ class AbFileSystem
 }
 
 
-    public std::vector<string> getFilesAsStringArrayForPath(string currentDirPath){
+    public: bool isDirectory(std::string path){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.getArrayInstance();;
+                        return false;
     
 }
 
 
-    public string readAsString(string fileName){
+    public: std::vector<std::string> getFilesAsStringArrayForPath(std::string currentDirPath){
 
-    bytes: std::vector<int8_t> = new Array(1000000);;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return StringUtil::getInstance().getArrayInstance();;
+    
+}
+
+
+    public: std::string readAsString(std::string fileName){
+
+    std::vector<int8_t> bytes = new Array(1000000);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readAsString(fileName, bytes);;
+                        return this->readAsString(fileName, bytes);;
     
 }
 
 
-    public string readAsString(string fileName, std::vector<int8_t> bytes){
+    public: std::string readAsString(std::string fileName, std::vector<int8_t> bytes){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
-    public bool close(any = {} closeable){
+    public: bool close(Object* closeable){
 
         try {
             
                         if(closeable != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    inputStream: InputStream = (closeable as InputStream);;
+    InputStream inputStream = (closeable as InputStream);;
     
-inputStream!.close();
+inputStream.close();
     
 
                                     }
@@ -157,7 +158,7 @@ inputStream!.close();
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CLOSE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CLOSE, e);
     
 
 

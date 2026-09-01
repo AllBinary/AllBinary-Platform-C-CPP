@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
             #include "../../../../../../java/lang/Long.h"
@@ -92,68 +94,67 @@
 #include "CaptureWorkerUtil.h"
 
 class GenericInputAutomationWorker: public AbstractInputAutomationWorker {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const PROCESS_DATA_WORKER_RESULTS: string = "processDataWorkerResults";
+    protected: const std::string PROCESS_DATA_WORKER_RESULTS = "processDataWorkerResults";
 
-    private: lastFrame: Long = new Long( -1);
+    private: Long lastFrame = Long( -1);
 
-    private: frame: Long;
+    private: Long frame;
 
-    private: genericProfile: GenericProfile;
+    private: GenericProfile genericProfile;
 
-public constructor (InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface){
+public: GenericInputAutomationWorker(InputAutomationActionInterface inputAutomationActionInterface, GenericProfile genericProfile, MotionRectangleConstraintsInterface motionRectangleConstraintsInterface, ImageComparatorConstraintsInterface imageComparatorConstraintsInterface){
             super(inputAutomationActionInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.setCaptureWorker(GenericProfileCaptureWorkerFactory.getInstance(genericProfile));
+this->setCaptureWorker(GenericProfileCaptureWorkerFactory::getInstance(genericProfile));
     
-this.setInputAutomationActionInterface(inputAutomationActionInterface);
+this->setInputAutomationActionInterface(inputAutomationActionInterface);
     
-this.setImageComparisonWorker(new ImageComparisonWorker(imageComparatorConstraintsInterface));
+this->setImageComparisonWorker(ImageComparisonWorker(imageComparatorConstraintsInterface));
     
-this.setMotionRectanglesWorker(new MotionRectanglesWorker(motionRectangleConstraintsInterface));
+this->setMotionRectanglesWorker(MotionRectanglesWorker(motionRectangleConstraintsInterface));
     
-this.setGenericProfile(genericProfile);
-    
-
-    vector: Vector = this.getGenericProfile()!.getGenericProfileDataWorkerTypeVector()!;;
+this->setGenericProfile(genericProfile);
     
 
-    size: int32_t = vector.length!;;
+    Vector vector = this->getGenericProfile().getGenericProfileDataWorkerTypeVector();;
+    
+
+    int32_t size = vector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    genericProfileDataWorkerType: GenericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType;;
+    GenericProfileDataWorkerType genericProfileDataWorkerType = vector.get(index) as GenericProfileDataWorkerType;;
     
-this.logUtil!.putF("Adding Listener: " +genericProfileDataWorkerType, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF("Adding Listener: " +genericProfileDataWorkerType, this, this->commonStrings.CONSTRUCTOR);
     
 
-                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType.COMPARISON)
+                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType::COMPARISON)
                         
                                     {
-                                    this.getCaptureWorker()!.addListenerInterface(this.getImageComparisonWorker());
+                                    this->getCaptureWorker().addListenerInterface(this->getImageComparisonWorker());
     
 
                                     }
                                 
                              else 
-                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType.MOTION)
+                        if(genericProfileDataWorkerType == GenericProfileDataWorkerType::MOTION)
                         
                                     {
-                                    this.getImageComparisonWorker()!.addListenerInterface(this.getMotionRectanglesWorker());
+                                    this->getImageComparisonWorker().addListenerInterface(this->getMotionRectanglesWorker());
     
 
                                     }
@@ -165,72 +166,71 @@ this.logUtil!.putF("Adding Listener: " +genericProfileDataWorkerType, this, this
 
                 //@Throws(Exception.constructor)
             
-    public processDataWorkerResults(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.PROCESS_DATA_WORKER_RESULTS);
+    public: void processDataWorkerResults(){
+this->logUtil.putF(this->commonStrings.START, this, this->PROCESS_DATA_WORKER_RESULTS);
     
-this.waitForDataWorkers();
-    
-
-    cacheInterface: J2SECacheInterface = CapturedBufferedImagesCacheSingleton.getInstance() as J2SECacheInterface;;
+this->waitForDataWorkers();
     
 
-    keyArray: std::vector<any> = cacheInterface!.keySet()!.()!;;
+    J2SECacheInterface cacheInterface = CapturedBufferedImagesCacheSingleton::getInstance() as J2SECacheInterface;;
     
 
-                        if(keyArray!.length > 0)
+    std::vector<Object*> keyArray = cacheInterface.keySet().();;
+    
+
+                        if(keyArray.size() > 0)
                         
                                     {
-                                    this.logUtil!.putF("Image Available", this, this.PROCESS_DATA_WORKER_RESULTS);
+                                    this->logUtil.putF("Image Available", this, this->PROCESS_DATA_WORKER_RESULTS);
     
-this.setFrame(keyArray[keyArray!.length -1]! as Long);
+this->setFrame(keyArray[keyArray.size() -1]! as Long);
     
 
-                        if(getFrame() > this.lastFrame)
+                        if(getFrame() > this->lastFrame)
                         
                                     {
-                                    this.logUtil!.putF("Processing new frame: " +getFrame(), this, this.PROCESS_DATA_WORKER_RESULTS);
+                                    this->logUtil.putF("Processing new frame: " +getFrame(), this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    hashMap: HashMap<any, any> = this.getGenericProfile()!.getGenericProfileActions()!.getHashMap()!;;
+    HashMap<any, any> hashMap = this->getGenericProfile().getGenericProfileActions().getHashMap();;
     
 
-    set: Set = hashMap!.keys()!;;
+    Set set = hashMap.keys();;
     
-this.logUtil!.putF("Processing " +set.size() +"Actions", this, this.PROCESS_DATA_WORKER_RESULTS);
-    
-
-    actionNameArray: std::vector<any> = set.toArray()!;;
+this->logUtil.putF("Processing " +set.size() +"Actions", this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    size: int32_t = actionNameArray!.length
-                ;;
+    std::vector<Object*> actionNameArray = set.toArray();;
+    
+
+    int32_t size = actionNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    actionNameString: string = actionNameArray[index]! as string;;
+    std::string actionNameString = actionNameArray[index]! as string;;
     
-this.logUtil!.putF("Processing Action: " +actionNameString, this, this.PROCESS_DATA_WORKER_RESULTS);
-    
-
-    genericProfileAction: GenericProfileAction = hashMap!.get(actionNameString) as GenericProfileAction;;
+this->logUtil.putF("Processing Action: " +actionNameString, this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
-    genericProfileActionScript: GenericProfileActionScript = genericProfileAction!.getGenericProfileActionScript()!;;
+    GenericProfileAction genericProfileAction = hashMap.get(actionNameString) as GenericProfileAction;;
     
 
-    vector: Vector = genericProfileActionScript!.getProfileActionConditionInterfaceVector()!;;
+    GenericProfileActionScript genericProfileActionScript = genericProfileAction.getGenericProfileActionScript();;
     
-CaptureWorkerUtil.processProfileActionConditions(vector, getFrame());
+
+    Vector vector = genericProfileActionScript.getProfileActionConditionInterfaceVector();;
+    
+CaptureWorkerUtil::processProfileActionConditions(vector, getFrame());
     
 }
 
-this.lastFrame= this.getFrame();
+this->lastFrame= this->getFrame();
     
 
                                     }
@@ -239,7 +239,7 @@ this.lastFrame= this.getFrame();
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Image Not Available", this, this.PROCESS_DATA_WORKER_RESULTS);
+                            this->logUtil.putF("Image Not Available", this, this->PROCESS_DATA_WORKER_RESULTS);
     
 
                         }
@@ -249,44 +249,44 @@ this.lastFrame= this.getFrame();
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.PROCESS);
+    public: void process(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.PROCESS);
     
-this.startDataWorkers();
+this->startDataWorkers();
     
-this.processDataWorkerResults();
+this->processDataWorkerResults();
     
 }
 
 
-    public GenericProfile getGenericProfile(){
+    public: GenericProfile getGenericProfile(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.genericProfile;
+                        return this->genericProfile;
     
 }
 
 
-    public setGenericProfile(GenericProfile genericProfile){
-this.genericProfile= genericProfile;
+    public: void setGenericProfile(GenericProfile genericProfile){
+this->genericProfile= genericProfile;
     
 }
 
 
-    Long getFrame(){
+    protected: Long getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 
 
-    setFrame(Long frame){
-this.frame= frame;
+    protected: void setFrame(Long frame){
+this->frame= frame;
     
 }
 

@@ -63,17 +63,16 @@
 #include "TrackingEvent.h"
 
 class TrackingEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: TrackingEventHandler = new TrackingEventHandler();
+    private: static TrackingEventHandler instance() { return TrackingEventHandler(); }
 
-    public static TrackingEventHandler getInstance();
+    public: static TrackingEventHandler getInstance();
 
-private constructor ();
+private: TrackingEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

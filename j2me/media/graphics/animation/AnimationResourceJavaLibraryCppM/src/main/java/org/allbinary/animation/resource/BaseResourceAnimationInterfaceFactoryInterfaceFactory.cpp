@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -90,94 +92,91 @@
 class BaseResourceAnimationInterfaceFactoryInterfaceFactory
             : public Object
         : public FeatureResourceAnimationInterfaceFactoryInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const hashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> hashtable;
 
-    private: const rectangleHashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> rectangleHashtable;
 
-    private: const rectangleArrayOfArraysHashtable: Hashtable<any, any>;
+    private: Hashtable<any, any> rectangleArrayOfArraysHashtable;
 
-    private: const name: string;
+    private: std::string name;
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-public constructor (string name, Hashtable<any, any> hashtable, Hashtable<any, any> rectangleHashtable, Hashtable<any, any> rectangleArrayHashtable){
-
-            super();
-        this.hashtable= hashtable;
+public: BaseResourceAnimationInterfaceFactoryInterfaceFactory(std::string name, Hashtable<any, any> hashtable, Hashtable<any, any> rectangleHashtable, Hashtable<any, any> rectangleArrayHashtable){
+this->hashtable= hashtable;
     
-this.rectangleHashtable= rectangleHashtable;
+this->rectangleHashtable= rectangleHashtable;
     
-this.rectangleArrayOfArraysHashtable= rectangleArrayHashtable;
+this->rectangleArrayOfArraysHashtable= rectangleArrayHashtable;
     
-this.name= name;
+this->name= name;
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(int32_t level){
+    public: void init(int32_t level){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(new StringMaker().append("Available List of Animations: ")!.append(this.hashtable.toString())!.toString(), this, commonStrings!.INIT);
+this->logUtil.putF(StringMaker().append("Available List of Animations: ").append(this->hashtable.toString()).toString(), this, commonStrings.INIT);
     
-this.setInitialized(true);
+this->setInitialized(true);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    initImageCache(ImageCache imageCache, int32_t level){
+    protected: void initImageCache(ImageCache imageCache, int32_t level){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public add(string resource, BasicAnimationInterfaceFactoryInterface animationInterfaceFactoryInterface){
+    public: void add(std::string resource, BasicAnimationInterfaceFactoryInterface animationInterfaceFactoryInterface){
 
-                        if(this.hashtable.containsKey(resource))
+                        if(this->hashtable.containsKey(resource))
                         
                                     {
                                     
 
 
-                            throw new Exception(new StringMaker().append("Resource Already Created: ")!.append(resource)!.toString());
+                            throw Exception(StringMaker().append("Resource Already Created: ").append(resource).toString());
                     
 
                                     }
                                 
-this.hashtable.put(resource, animationInterfaceFactoryInterface);
+this->hashtable.put(resource, animationInterfaceFactoryInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(string resource){
+    public: BasicAnimationInterfaceFactoryInterface getBasicAnimationInterfaceFactoryInstance(std::string resource){
 
-    basicAnimationInterfaceFactoryInterfaceCanBeNull: any = this.hashtable.get(resource);;
+    Object* basicAnimationInterfaceFactoryInterfaceCanBeNull = this->hashtable.get(resource);;
     
 
                         if(basicAnimationInterfaceFactoryInterfaceCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -185,7 +184,7 @@ this.hashtable.put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.NULL_NOT_FOR_USE_ANIMATION_FACTORY;
+                        return NullAnimationFactory::NULL_NOT_FOR_USE_ANIMATION_FACTORY;
     
 
                                     }
@@ -201,13 +200,13 @@ this.hashtable.put(resource, animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Rectangle getRectangle(string resource){
+    public: Rectangle getRectangle(std::string resource){
 
-    rectangleCanBeNull: any = this.rectangleHashtable!.get(resource);;
+    Object* rectangleCanBeNull = this->rectangleHashtable.get(resource);;
     
 
                         if(rectangleCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -215,7 +214,7 @@ this.hashtable.put(resource, animationInterfaceFactoryInterface);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RectangleFactory.SINGLETON;
+                        return RectangleFactory::SINGLETON;
     
 
                                     }
@@ -231,33 +230,33 @@ this.hashtable.put(resource, animationInterfaceFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    public addRectangle(string resource, Rectangle rectangle){
-this.rectangleHashtable!.put(resource, rectangle);
+    public: void addRectangle(std::string resource, Rectangle rectangle){
+this->rectangleHashtable.put(resource, rectangle);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(string resource){
+    public: std::vector<std::vector<Rectangle>> getRectangleArrayOfArrays(std::string resource){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangleArrayOfArraysHashtable!.get(resource)as std::vector<Rectangle>[];
+                        return this->rectangleArrayOfArraysHashtable.get(resource)as std::vector<Rectangle>[];
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addRectangleArrayOfArrays(string resource, std::vector<std::vector<Rectangle>> rectangleArrayOfArrays){
-this.rectangleArrayOfArraysHashtable!.put(resource, rectangleArrayOfArrays);
+    public: void addRectangleArrayOfArrays(std::string resource, std::vector<std::vector<Rectangle>> rectangleArrayOfArrays){
+this->rectangleArrayOfArraysHashtable.put(resource, rectangleArrayOfArrays);
     
 }
 
 
-    public bool isFeature(){
+    public: bool isFeature(){
 
 
 
@@ -267,12 +266,12 @@ this.rectangleArrayOfArraysHashtable!.put(resource, rectangleArrayOfArrays);
 }
 
 
-    public bool isLoadingLevel(int32_t level){
+    public: bool isLoadingLevel(int32_t level){
 
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
 
-                        if(level == resourceLoadingLevelFactory!.LOAD_ALL.getLevel())
+                        if(level == resourceLoadingLevelFactory.LOAD_ALL.getLevel())
                         
                                     {
                                     
@@ -297,58 +296,58 @@ this.rectangleArrayOfArraysHashtable!.put(resource, rectangleArrayOfArrays);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(this.constructor.name.toString()!)!.append(CommonSeps.getInstance()!.SEMICOLON)!.append(CommonSeps.getInstance()!.SPACE)!.append(this.name)!.toString();;
+                        return StringMaker().append(this->constructor.name.toString()!).append(CommonSeps::getInstance().SEMICOLON).append(CommonSeps::getInstance().SPACE).append(this->name).toString();;
     
 }
 
 
-    public Hashtable<any, any> getHashtable(){
+    public: Hashtable<any, any> getHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable;
+                        return this->hashtable;
     
 }
 
 
-    public Hashtable<any, any> getRectangleHashtable(){
+    public: Hashtable<any, any> getRectangleHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangleHashtable;
+                        return this->rectangleHashtable;
     
 }
 
 
-    public Hashtable<any, any> getRectangleArrayOfArraysHashtable(){
+    public: Hashtable<any, any> getRectangleArrayOfArraysHashtable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.rectangleArrayOfArraysHashtable;
+                        return this->rectangleArrayOfArraysHashtable;
     
 }
 
 
-    setInitialized(bool initialized){
-this.initialized= initialized;
+    protected: void setInitialized(bool initialized){
+this->initialized= initialized;
     
 }
 
 
-    public bool isInitialized(){
+    public: bool isInitialized(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initialized;
+                        return this->initialized;
     
 }
 

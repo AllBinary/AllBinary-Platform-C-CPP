@@ -44,16 +44,15 @@
 class RemoteHighScoresSubmissionProcessorFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: RemoteHighScoresSubmissionProcessorInterface = new RemoteHighScoresSubmissionProcessor();
+    private: static const RemoteHighScoresSubmissionProcessorInterface SINGLETON = RemoteHighScoresSubmissionProcessor();
 
-    public static RemoteHighScoresSubmissionProcessorInterface getInstance(){
+    public: static RemoteHighScoresSubmissionProcessorInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RemoteHighScoresSubmissionProcessorFactory.SINGLETON;
+                        return RemoteHighScoresSubmissionProcessorFactory::SINGLETON;
     
 }
 

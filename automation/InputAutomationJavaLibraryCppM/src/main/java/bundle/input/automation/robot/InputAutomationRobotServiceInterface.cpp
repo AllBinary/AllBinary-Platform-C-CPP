@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/input/automation/robot/InputRobotInterface.h>
 
       
@@ -44,7 +46,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputAutomationRobotServiceInterface: public OSGIServiceInterface {
-        
 
     std::vector<InputRobotInterface> getInputRobotInterfaceArray()
 

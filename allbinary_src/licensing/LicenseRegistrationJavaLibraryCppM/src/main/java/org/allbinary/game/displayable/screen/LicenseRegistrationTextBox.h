@@ -91,29 +91,28 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LicenseRegistrationTextBox: public CustomTextBox {
-        
 
-    public static const DISPLAY_COMMAND: Command = new Command("Register", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: static const Command DISPLAY_COMMAND = Command("Register", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    public static const SUBMIT_COMMAND: Command = new Command("Submit", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 3);
+    public: static const Command SUBMIT_COMMAND = Command("Submit", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 3);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const pleaseWaitPaintable: Paintable = new SimpleTextPaintable(commonStrings!.PLEASE_WAIT, BasicColorFactory.getInstance()!.WHITE);
+    private: const Paintable pleaseWaitPaintable = SimpleTextPaintable(commonStrings.PLEASE_WAIT, BasicColorFactory::getInstance().WHITE);
 
-    private: paintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable paintable = NullPaintable::getInstance();
 
-public constructor (CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: LicenseRegistrationTextBox(CommandListener cmdListener, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public submit();
+    public: void submit();
 
 };
 

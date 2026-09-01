@@ -61,25 +61,24 @@
 class CanvasDrawLineString
             : public Object
         : public UpdateMyFontInterface {
-        
 
-    public static const NULL_CANVAS_DRAW_LINE_STRING: CanvasDrawLineString = new CanvasDrawLineString(0, 0);
+    public: static const CanvasDrawLineString NULL_CANVAS_DRAW_LINE_STRING = CanvasDrawLineString(0, 0);
 
-    private: const drawStringUtil: DrawStringUtil = DrawStringUtil.getInstance()!;
+    private: const DrawStringUtil drawStringUtil = DrawStringUtil::getInstance();
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: x: int32_t;
+    private: int32_t x;
 
-    private: y: int32_t;
+    private: int32_t y;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (int32_t x, int32_t y);
+public: CanvasDrawLineString(int32_t x, int32_t y);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paint(Graphics graphics, string string, int32_t line);
+    public: void paint(Graphics graphics, std::string string, int32_t line);
 
 };
 

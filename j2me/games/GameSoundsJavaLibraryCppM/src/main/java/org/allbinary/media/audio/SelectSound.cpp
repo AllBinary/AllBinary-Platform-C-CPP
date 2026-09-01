@@ -40,21 +40,20 @@
 #include "Sound.h"
 //Use 8hz16bitmono for most J2ME
 class SelectSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new SelectSound();
+    private: static Sound soundInterface = SelectSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SelectSound.soundInterface;
+                        return SelectSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: SelectSound(){
             super("resource:/wav/select.wav");
                     
 

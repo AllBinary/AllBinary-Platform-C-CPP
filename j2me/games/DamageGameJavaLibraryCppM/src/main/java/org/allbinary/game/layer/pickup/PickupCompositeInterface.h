@@ -48,11 +48,10 @@
         #include "PickupBehavior.h"
 
 class PickupCompositeInterface {
-        
 
     PickupBehavior getPickupBehavior();
 
-    setPickupBehavior(PickupBehavior pickupBehavior);
+    void setPickupBehavior(PickupBehavior pickupBehavior);
 
 };
 

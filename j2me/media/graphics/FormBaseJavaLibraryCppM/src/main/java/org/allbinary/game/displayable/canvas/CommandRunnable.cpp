@@ -74,46 +74,43 @@
 class CommandRunnable
             : public Object
         : public Runnable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commandFormInputProcessor: CommandFormInputProcessor;
+    private: CommandFormInputProcessor commandFormInputProcessor;
 
-    private: const command: Command;
+    private: Command command;
 
-public constructor (CommandFormInputProcessor commandFormInputProcessor, Command command){
-
-            super();
-        this.commandFormInputProcessor= commandFormInputProcessor;
+public: CommandRunnable(CommandFormInputProcessor commandFormInputProcessor, Command command){
+this->commandFormInputProcessor= commandFormInputProcessor;
     
-this.command= command;
+this->command= command;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START_RUNNABLE, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START_RUNNABLE, this, this->commonStrings.RUN);
     
 
-    canvas: MyCanvas = this.commandFormInputProcessor!.getCanvas()!;;
+    MyCanvas canvas = this->commandFormInputProcessor.getCanvas();;
     
 
-    commandListener: CommandListener = canvas.getCustomCommandListener()!;;
+    CommandListener commandListener = canvas.getCustomCommandListener();;
     
-commandListener!.commandAction(this.command, canvas);
+commandListener.commandAction(this->command, canvas);
     
-this.logUtil!.putF(this.commonStrings!.END_RUNNABLE, this, this.commonStrings!.RUN);
+this->logUtil.putF(this->commonStrings.END_RUNNABLE, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

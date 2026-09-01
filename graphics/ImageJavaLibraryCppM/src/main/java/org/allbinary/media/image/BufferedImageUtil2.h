@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_BUFFEREDIMAGEUTIL2_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_BUFFEREDIMAGEUTIL2_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -39,15 +41,14 @@
 class BufferedImageUtil2
             : public Object
          {
-        
 
-    private: static const instance: BufferedImageUtil2 = new BufferedImageUtil2();
+    private: static BufferedImageUtil2 instance() { return BufferedImageUtil2(); }
 
-    public static BufferedImageUtil2 getInstance();
+    public: static BufferedImageUtil2 getInstance();
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    public BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray);
+    public: BufferedImage createSpriteImage(std::vector<BufferedImage> bufferedImageArray);
 
 };
 

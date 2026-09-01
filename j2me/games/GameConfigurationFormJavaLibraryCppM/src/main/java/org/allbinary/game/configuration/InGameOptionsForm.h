@@ -82,17 +82,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InGameOptionsForm: public CommandForm {
-        
 
-    public static const DISPLAY: Command = new Command("Options In Game", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command DISPLAY = Command("Options In Game", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public static const SAVE: Command = new Command("Save", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command SAVE = Command("Save", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
-    public static const DEFAULT: Command = new Command("Default", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 1);
+    public: static const Command DEFAULT = Command("Default", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 1);
 
- constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+: InGameOptionsForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
 };
 

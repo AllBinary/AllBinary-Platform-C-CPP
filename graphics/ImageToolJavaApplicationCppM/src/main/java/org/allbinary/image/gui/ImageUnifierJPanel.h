@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_GUI_IMAGEUNIFIERJPANEL_H
         #define ORG_ALLBINARY_IMAGE_GUI_IMAGEUNIFIERJPANEL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
             #include "../../../../java/lang/Integer.h"
@@ -122,114 +124,113 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ImageUnifierJPanel: public javax.swing.JPanel: public ImageProcessorInputCompositeInterface {
-        
+class ImageUnifierJPanel: public javax::swing::JPanel, public ImageProcessorInputCompositeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const imageStrings: ImageStrings = ImageStrings.getInstance()!;
+    private: const ImageStrings imageStrings = ImageStrings::getInstance();
 
-    private: const imagesRatioUtil: ImagesRatioUtil = ImagesRatioUtil.getInstance()!;
+    private: const ImagesRatioUtil imagesRatioUtil = ImagesRatioUtil::getInstance();
 
-    private: imageProcessorInput: ImageProcessorInput;
+    private: ImageProcessorInput imageProcessorInput;
 
-    private: icon: std::vector<ImageIconUnique>;
+    private: std::vector<ImageIconUnique> icon;
 
-    private: imageUnifierProperties: ImageUnifierProperties;
+    private: ImageUnifierProperties imageUnifierProperties;
 
-    private: result: BufferedImage;
+    private: BufferedImage result;
 
-    private: isImageFillIn: bool = true;
+    private: bool isImageFillIn = true;
 
-public constructor (ImageProcessorInput imageProcessorInput);
+public: ImageUnifierJPanel(ImageProcessorInput imageProcessorInput);
 
-    public init();
+    public: void init();
 
-    updateImage();
+    private: void updateImage();
 
-    updateImageWithFudgedImages();
+    private: void updateImageWithFudgedImages();
 
-    updateImage(std::vector<BufferedImage> tempBufferedImageArray);
+    private: void updateImage(std::vector<BufferedImage> tempBufferedImageArray);
 
-    updateOnPropertiesChange();
+    private: void updateOnPropertiesChange();
 
-    initComponents();
+    private: void initComponents();
 
-    jButton2ActionPerformed(java.awt.event.ActionEvent evt);
+    private: void jButton2ActionPerformed(java::awt::event::ActionEvent evt);
 
-    columnsJTextFieldKeyPressed(java.awt.event.KeyEvent evt);
+    private: void columnsJTextFieldKeyPressed(java::awt::event::KeyEvent evt);
 
-    columnsJTextFieldKeyTyped(java.awt.event.KeyEvent evt);
+    private: void columnsJTextFieldKeyTyped(java::awt::event::KeyEvent evt);
 
-    columnsJTextFieldPropertyChange(java.beans.PropertyChangeEvent evt);
+    private: void columnsJTextFieldPropertyChange(java::beans::PropertyChangeEvent evt);
 
-    fudgeItJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void fudgeItJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    cellHeightJTextFieldActionPerformed(java.awt.event.ActionEvent evt);
+    private: void cellHeightJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
 
-    cellWidthJTextFieldActionPerformed(java.awt.event.ActionEvent evt);
+    private: void cellWidthJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
 
-    columnsJTextFieldActionPerformed(java.awt.event.ActionEvent evt);
+    private: void columnsJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
 
-    rowsJTextFieldActionPerformed(java.awt.event.ActionEvent evt);
+    private: void rowsJTextFieldActionPerformed(java::awt::event::ActionEvent evt);
 
-    jButton1ActionPerformed(java.awt.event.ActionEvent evt);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt);
 
-    downJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void downJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    upJButtonActionPerformed(java.awt.event.ActionEvent evt);
+    private: void upJButtonActionPerformed(java::awt::event::ActionEvent evt);
 
-    jButtonOrderActionPerformed(java.awt.event.ActionEvent evt);
+    private: void jButtonOrderActionPerformed(java::awt::event::ActionEvent evt);
 
-    private: avgRatioJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField avgRatioJTextField;
 
-    private: cellHeightJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField cellHeightJTextField;
 
-    private: cellRatioJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField cellRatioJTextField;
 
-    private: cellWidthJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField cellWidthJTextField;
 
-    private: columnsJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField columnsJTextField;
 
-    private: downJButton: javax.swing.JButton;
+    private: javax::swing::JButton downJButton;
 
-    private: fudgeItJButton: javax.swing.JButton;
+    private: javax::swing::JButton fudgeItJButton;
 
-    private: imageJList: javax.swing.JList;
+    private: javax::swing::JList imageJList;
 
-    private: jButton1: javax.swing.JButton;
+    private: javax::swing::JButton jButton1;
 
-    private: jButton2: javax.swing.JButton;
+    private: javax::swing::JButton jButton2;
 
-    private: jButtonOrder: javax.swing.JButton;
+    private: javax::swing::JButton jButtonOrder;
 
-    private: jLabel1: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel1;
 
-    private: jLabel2: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel2;
 
-    private: jLabel3: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel3;
 
-    private: jLabel4: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel4;
 
-    private: jLabel5: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel5;
 
-    private: jLabel6: javax.swing.JLabel;
+    private: javax::swing::JLabel jLabel6;
 
-    private: jPanel1: javax.swing.JPanel;
+    private: javax::swing::JPanel jPanel1;
 
-    private: jScrollPane1: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane jScrollPane1;
 
-    private: jScrollPane2: javax.swing.JScrollPane;
+    private: javax::swing::JScrollPane jScrollPane2;
 
-    private: rowsJTextField: javax.swing.JTextField;
+    private: javax::swing::JTextField rowsJTextField;
 
-    private: upJButton: javax.swing.JButton;
+    private: javax::swing::JButton upJButton;
 
-    public ImageProcessorInput getImageProcessorInput();
+    public: ImageProcessorInput getImageProcessorInput();
 
-    public setImageProcessorInput(ImageProcessorInput imageProcessorInput);
+    public: void setImageProcessorInput(ImageProcessorInput imageProcessorInput);
 
 };
 

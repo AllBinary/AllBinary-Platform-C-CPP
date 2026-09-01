@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -112,108 +114,107 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryUploadMediaUtil.h"
 
-class InventoryItemView: public HttpStoreComponentView: public RequestMapInterface {
-        
+class InventoryItemView: public HttpStoreComponentView, public RequestMapInterface {
 
-    public static TYPE_ID: int32_t = 10;
+    public: static int32_t TYPE_ID = 10;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const request: HttpServletRequest;
+    protected: HttpServletRequest request;
 
-    private: imageFileName: string;
+    private: std::string imageFileName;
 
-    private: mediaData: MediaData;
+    private: MediaData mediaData;
 
-    itemInterface: ItemInterface;
+    protected: ItemInterface itemInterface;
 
-    downloadableItemVector: Vector;
+    protected: Vector downloadableItemVector;
 
-    private: requestHashMap: HashMap<any, any>;
+    private: HashMap<any, any> requestHashMap;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: InventoryItemView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
-public constructor (TransformInfoInterface transformInfoInterface, string empty){
+public: InventoryItemView(TransformInfoInterface transformInfoInterface, std::string empty){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.request= this.getPageContext()!.getRequest() as HttpServletRequest;
+this->request= this->getPageContext().getRequest() as HttpServletRequest;
     
 }
 
 
-    public int32_t getTypeId(){
+    public: int32_t getTypeId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventoryItemView.TYPE_ID;
+                        return InventoryItemView::TYPE_ID;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    getFormData(){
-this.setRequestHashMap(new MultipartRequestParams(this.request).toHashMap());
+    private: void getFormData(){
+this->setRequestHashMap(MultipartRequestParams(this->request).toHashMap());
     
 
-    imageFileItemObject: any = this.getRequestHashMap()!.get(BasicItemData.IMAGE)!;;
+    Object* imageFileItemObject = this->getRequestHashMap().get(BasicItemData::IMAGE);;
     
 
-                        if(HttpFileUploadUtil.getInstance()!.isValid(imageFileItemObject))
+                        if(HttpFileUploadUtil::getInstance().isValid(imageFileItemObject))
                         
                                     {
                                     
-    fileItem: FileItem = imageFileItemObject as FileItem;;
+    FileItem fileItem = imageFileItemObject as FileItem;;
     
 
                         if(fileItem != 
-                                    null
-                                 && fileItem!.getSize() > 1)
+                                    nullptr
+                                 && fileItem.getSize() > 1)
                         
                                     {
-                                    this.imageFileName= HttpRequestUtil.getInstance()!.generateFileName(fileItem!.getName());
+                                    this->imageFileName= HttpRequestUtil::getInstance().generateFileName(fileItem.getName());
     
 
-    pathData: AbPathData = AbPathData.getInstance()!;;
+    AbPathData pathData = AbPathData::getInstance();;
     
 
-    pathUtil: PathUtil = PathUtil.getInstance()!;;
+    PathUtil pathUtil = PathUtil::getInstance();;
     
-this.mediaData= MediaData.get(pathData!.getExtension(this.imageFileName));
+this->mediaData= MediaData::get(pathData.getExtension(this->imageFileName));
     
-this.imageFileName= pathUtil!.getWithoutExtension(this.imageFileName);
+this->imageFileName= pathUtil.getWithoutExtension(this->imageFileName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Uploaded File Data: ");
+stringBuffer.append("Uploaded File Data: ");
     
-stringBuffer!.append(this.imageFileName);
+stringBuffer.append(this->imageFileName);
     
-stringBuffer!.append(" Extension: ");
+stringBuffer.append(" Extension: ");
     
-stringBuffer!.append(this.mediaData!.getName());
+stringBuffer.append(this->mediaData.getName());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, "getFormData()");
+this->logUtil.putF(stringBuffer.toString(), this, "getFormData()");
     
 
                                     }
@@ -224,55 +225,55 @@ this.logUtil!.putF(stringBuffer!.toString(), this, "getFormData()");
 
                                     }
                                 
-this.itemInterface= new BasicItem(this.getRequestHashMap()) as ItemInterface;
+this->itemInterface= BasicItem(this->getRequestHashMap()) as ItemInterface;
     
 }
 
 
-    public addDomNodeInterfaces(){
+    public: void addDomNodeInterfaces(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
-    downloadableItem: DownloadableItem;;
+    DownloadableItem downloadableItem;;
     
 
-    size: int32_t = this.downloadableItemVector!.length!;;
+    int32_t size = this->downloadableItemVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-downloadableItem= this.downloadableItemVector!.get(index) as DownloadableItem;
+downloadableItem= this->downloadableItemVector.get(index) as DownloadableItem;
     
-vector.add(new DownloadableItemView(downloadableItem));
-    
-}
-
-this.addDomNodeInterface(new BasicItemView(this.itemInterface, vector));
+vector.add(DownloadableItemView(downloadableItem));
     
 }
 
+this->addDomNodeInterface(BasicItemView(this->itemInterface, vector));
+    
+}
 
-    public ItemInterface getItemInterface(){
+
+    public: ItemInterface getItemInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.itemInterface;
+                        return this->itemInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -285,10 +286,10 @@ this.addDomNodeInterface(new BasicItemView(this.itemInterface, vector));
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }
@@ -305,41 +306,40 @@ this.addDomNodeInterface(new BasicItemView(this.itemInterface, vector));
 
                 //@Throws(Exception.constructor)
             
-    processImageFiles(){
+    protected: void processImageFiles(){
 
-    set: Set = this.getRequestHashMap()!.keys()!;;
+    Set set = this->getRequestHashMap().keys();;
     
 
-    fieldNameArray: std::vector<any> = set.toArray()!;;
+    std::vector<Object*> fieldNameArray = set.toArray();;
     
 
-    size: int32_t = fieldNameArray!.length
-                ;;
+    int32_t size = fieldNameArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    fieldName: string = fieldNameArray[index]! as string;;
+    std::string fieldName = fieldNameArray[index]! as string;;
     
 
-                        if(fieldName!.compareTo(BasicItemData.IMAGE) == 0)
+                        if(fieldName.compareTo(BasicItemData::IMAGE) == 0)
                         
                                     {
                                     
-    storeFrontInterface: StoreFrontInterface = StoreFrontFactory.getInstance(this.getWeblisketSession()!.getStoreName())!;;
+    StoreFrontInterface storeFrontInterface = StoreFrontFactory::getInstance(this->getWeblisketSession().getStoreName());;
     
 
-    inventoryUploadMediaUtil: InventoryUploadMediaUtil = new InventoryUploadMediaUtil(storeFrontInterface, this.itemInterface);;
+    InventoryUploadMediaUtil inventoryUploadMediaUtil = InventoryUploadMediaUtil(storeFrontInterface, this->itemInterface);;
     
 
-    fileItem: FileItem = this.getRequestHashMap()!.get(BasicItemData.IMAGE) as FileItem;;
+    FileItem fileItem = this->getRequestHashMap().get(BasicItemData::IMAGE) as FileItem;;
     
-this.itemInterface= inventoryUploadMediaUtil!.saveFiles(fileItem!.get(), this.imageFileName, this.mediaData);
+this->itemInterface= inventoryUploadMediaUtil.saveFiles(fileItem.get(), this->imageFileName, this->mediaData);
     
 
                                     }
@@ -349,18 +349,18 @@ this.itemInterface= inventoryUploadMediaUtil!.saveFiles(fileItem!.get(), this.im
 }
 
 
-    setRequestHashMap(HashMap<any, any> requestHashMap){
-this.requestHashMap= requestHashMap;
+    private: void setRequestHashMap(HashMap<any, any> requestHashMap){
+this->requestHashMap= requestHashMap;
     
 }
 
 
-    public HashMap<any, any> getRequestHashMap(){
+    public: HashMap<any, any> getRequestHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.requestHashMap;
+                        return this->requestHashMap;
     
 }
 

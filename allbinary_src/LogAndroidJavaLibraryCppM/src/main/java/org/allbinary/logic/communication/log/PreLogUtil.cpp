@@ -51,30 +51,27 @@
 /*actual*/ class PreLogUtil
             : public Object
          {
-        
 
             static const char* PUBLIC = "%{public}s";
             
 
-    /*actual*/ public static put(string specialMessage, any = {} anyType, string functionName){
-PreLogUtil.putOE(specialMessage, anyType, functionName, NullUtil.getInstance()!.NULL_OBJECT);
+    /*actual*/ public: static void put(std::string specialMessage, Object* anyType, std::string functionName){
+PreLogUtil::putOE(specialMessage, anyType, functionName, NullUtil::getInstance().NULL_OBJECT);
     
 }
 
 
-    private: static const LABEL: string = "org.allbinary";
+    private: static const std::string LABEL = "org.allbinary";
 
-    /*actual*/ public static putOE(string specialMessage, any = {} anyType, string functionName, any = {} exception){
+    /*actual*/ public: static void putOE(std::string specialMessage, Object* anyType, std::string functionName, Object* exception){
 
-    className: string = PreLogUtil.LABEL;;
+    std::string className = PreLogUtil::LABEL;;
     
 
-    actualClassName: string = anyType!.constructor.name.toString()!!;;
+    std::string actualClassName = anyType->constructor.name.toString()!;;
     
 
-                        if(actualClassName != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
                                     className= actualClassName;
@@ -83,32 +80,30 @@ PreLogUtil.putOE(specialMessage, anyType, functionName, NullUtil.getInstance()!.
                                     }
                                 
 
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
+    
+android.util.Log.i(PreLogUtil::LABEL, message);
+    
+}
+
+
+    /*actual*/ public: static void putS(std::string specialMessage, std::string className, std::string functionName){
+PreLogUtil::putSE(specialMessage, className, functionName, NullUtil::getInstance().NULL_OBJECT);
+    
+}
+
+
+    /*actual*/ public: static void putSE(std::string specialMessage, std::string className, std::string functionName, Object* exception){
+
+    std::string message = LogFormatUtil::getInstance().get(className, functionName, specialMessage, exception);;
     
 hilog.info(0x0000, className, PreLogUtil.PUBLIC, message);
     
 }
 
 
-    /*actual*/ public static putS(string specialMessage, string className, string functionName){
-PreLogUtil.putSE(specialMessage, className, functionName, NullUtil.getInstance()!.NULL_OBJECT);
-    
+public: PreLogUtil(){
 }
-
-
-    /*actual*/ public static putSE(string specialMessage, string className, string functionName, any = {} exception){
-
-    message: string = LogFormatUtil.getInstance()!.get(className, functionName, specialMessage, exception)!;;
-    
-hilog.info(0x0000, className, PreLogUtil.PUBLIC, message);
-    
-}
-
-
-public constructor (){
-
-            super();
-        }
 
 
 };

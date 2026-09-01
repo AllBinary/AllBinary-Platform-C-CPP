@@ -51,7 +51,6 @@
         #include "PaintableInterface.h"
 
 class InitUpdatePaintableInterface: public InitInterface, public UpdateInterface, public PaintableInterface {
-        
 
 };
 

@@ -46,11 +46,10 @@
 class ThrustAIVisitorFactory
             : public Object
          {
-        
 
-    private: static const instance: ThrustAIVisitor = new ThrustAIVisitor();
+    private: static ThrustAIVisitor instance() { return ThrustAIVisitor(); }
 
-    public static ThrustAIVisitor getInstance();
+    public: static ThrustAIVisitor getInstance();
 
 };
 

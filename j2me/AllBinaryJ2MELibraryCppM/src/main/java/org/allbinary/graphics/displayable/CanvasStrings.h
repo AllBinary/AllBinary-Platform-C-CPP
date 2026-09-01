@@ -60,47 +60,46 @@
 class CanvasStrings
             : public Object
          {
-        
 
-    private: static const instance: CanvasStrings = new CanvasStrings();
+    private: static CanvasStrings instance() { return CanvasStrings(); }
 
-    public static CanvasStrings getInstance();
+    public: static CanvasStrings getInstance();
 
-    public const CONSTRUCTOR: string = "MyCanvas::MyCanvas";
+    public: const std::string CONSTRUCTOR = "MyCanvas::MyCanvas";
 
-    public const PAUSE: string = "MyCanvas::pause";
+    public: const std::string PAUSE = "MyCanvas::pause";
 
-    public const UN_PAUSE: string = "MyCanvas::unPause";
+    public: const std::string UN_PAUSE = "MyCanvas::unPause";
 
-    public const SET_FULL_SCREEN_MODE: string = "setFullScreenMode";
+    public: const std::string SET_FULL_SCREEN_MODE = "setFullScreenMode";
 
-    public const SIZE_CHANGED: string = "sizeChanged";
+    public: const std::string SIZE_CHANGED = "sizeChanged";
 
-    public const SCALED_IMAGES: string = "scaledImages";
+    public: const std::string SCALED_IMAGES = "scaledImages";
 
-    public const PAINT: string = "paint";
+    public: const std::string PAINT = "paint";
 
-    public const ON_DISPLAY_CHANGE_EVENT: string = "onDisplayChangeEvent";
+    public: const std::string ON_DISPLAY_CHANGE_EVENT = "onDisplayChangeEvent";
 
-    public const UPDATE_MEASUREMENT: string = "updateMeasurement";
+    public: const std::string UPDATE_MEASUREMENT = "updateMeasurement";
 
-    public const FD_WIDTH: string = " font/display width: ";
+    public: const std::string FD_WIDTH = " font/display width: ";
 
-    public const FD_HEIGHT: string = " font/display height: ";
+    public: const std::string FD_HEIGHT = " font/display height: ";
 
-    public const EMPTY_CHILD_NAME_LIST: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    public: const BasicArrayList EMPTY_CHILD_NAME_LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    public const ABOUT: string = "About";
+    public: const std::string ABOUT = "About";
 
-    public const OPTIONS: string = "Options";
+    public: const std::string OPTIONS = "Options";
 
-    public const FONT_ATLAS: string = "/font.png";
+    public: const std::string FONT_ATLAS = "/font.png";
 
-    public const OBJ_MODEL: string = "_obj";
+    public: const std::string OBJ_MODEL = "_obj";
 
-    public const MD2_MODEL: string = "_md2";
+    public: const std::string MD2_MODEL = "_md2";
 
-    public const _PNG: string = ".png";
+    public: const std::string _PNG = ".png";
 
 };
 

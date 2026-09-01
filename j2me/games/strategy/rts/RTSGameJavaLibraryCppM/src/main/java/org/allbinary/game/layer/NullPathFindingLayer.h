@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_H
         #define ORG_ALLBINARY_GAME_LAYER_NULLPATHFINDINGLAYER_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -84,103 +86,102 @@
 class NullPathFindingLayer
             : public Object
         : public PathFindingLayerInterface {
-        
 
-    public static const NULL_PATH_FINDING_LAYER: NullPathFindingLayer = new NullPathFindingLayer();
+    public: static const NullPathFindingLayer NULL_PATH_FINDING_LAYER = NullPathFindingLayer();
 
-    public string getName();
-
-                //@Throws(Exception.constructor)
-            
-    public BasicArrayList getEndGeographicMapCellPositionList();
-
-    public bool shouldHandleStartSameAsEnd();
-
-    public GeographicMapCellPositionAreaBase getGeographicMapCellPositionArea();
-
-    public SelectionHudPaintable getHudPaintable();
+    public: std::string getName();
 
                 //@Throws(Exception.constructor)
             
-    public handleCost(PathFindingLayerInterface ownerLayer);
+    public: BasicArrayList getEndGeographicMapCellPositionList();
 
-    public PathFindingLayerInterface getParentLayer();
+    public: bool shouldHandleStartSameAsEnd();
 
-    public RTSLayer2LogHelper getRTSLayer2LogHelper();
+    public: GeographicMapCellPositionAreaBase getGeographicMapCellPositionArea();
 
-                //@Throws(Exception.constructor)
-            
-    public setTarget(PathFindingLayerInterface targetGameLayer);
+    public: SelectionHudPaintable getHudPaintable();
 
                 //@Throws(Exception.constructor)
             
-    public init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
+    public: void handleCost(PathFindingLayerInterface ownerLayer);
 
-    public BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
+    public: PathFindingLayerInterface getParentLayer();
 
-                //@Throws(Exception.constructor)
-            
-    public setClosestGeographicMapCellHistory(BasicArrayList pathsList);
-
-    public teleportTo(GeographicMapCellPosition geographicMapCellPosition);
+    public: RTSLayer2LogHelper getRTSLayer2LogHelper();
 
                 //@Throws(Exception.constructor)
             
-    public setLoad(int32_t resource);
+    public: void setTarget(PathFindingLayerInterface targetGameLayer);
 
                 //@Throws(Exception.constructor)
             
-    public BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: void init(GeographicMapCellHistory geographicMapCellHistory, BasicArrayList geographicMapCellPositionBasicArrayList);
 
-    public bool isSelected();
-
-    public bool shouldAddWaypointFromBuilding();
-
-    public bool isShowMoreCaptionStates();
+    public: BasicArrayList getMoveOutOfBuildAreaPath(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public trackTo(string reason);
+    public: void setClosestGeographicMapCellHistory(BasicArrayList pathsList);
+
+    public: void teleportTo(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    public trackToDXY(int32_t dx, int32_t dy);
+    public: void setLoad(int32_t resource);
 
                 //@Throws(Exception.constructor)
             
-    public bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
 
-    public TrackingEvent getTrackingEvent();
+    public: bool isSelected();
 
-    public allStop();
+    public: bool shouldAddWaypointFromBuilding();
 
-    public bool isWaypointListEmptyOrOnlyTargets();
-
-                //@Throws(Exception.constructor)
-            
-    public GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+    public: bool isShowMoreCaptionStates();
 
                 //@Throws(Exception.constructor)
             
-    public GeographicMapCellPosition getTopLeftGeographicMapCellPosition();
-
-    public CaptionAnimationHelperBase getCaptionAnimationHelper();
-
-    public WaypointBehaviorBase getWaypointBehavior();
-
-    public WaypointLogHelper getWaypointLogHelper();
-
-    public Waypoint2LogHelper getWaypoint2LogHelper();
-
-    public WaypointRunnableLogHelper getWaypointRunnableLogHelper();
-
-    public std::vector<Group> getGroupInterface();
+    public: void trackTo(std::string reason);
 
                 //@Throws(Exception.constructor)
             
-    public bool isDestroyed();
+    public: void trackToDXY(int32_t dx, int32_t dy);
 
-    public int32_t getSourceId();
+                //@Throws(Exception.constructor)
+            
+    public: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+
+    public: TrackingEvent getTrackingEvent();
+
+    public: void allStop();
+
+    public: bool isWaypointListEmptyOrOnlyTargets();
+
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellPosition getCurrentGeographicMapCellPosition();
+
+                //@Throws(Exception.constructor)
+            
+    public: GeographicMapCellPosition getTopLeftGeographicMapCellPosition();
+
+    public: CaptionAnimationHelperBase getCaptionAnimationHelper();
+
+    public: WaypointBehaviorBase getWaypointBehavior();
+
+    public: WaypointLogHelper getWaypointLogHelper();
+
+    public: Waypoint2LogHelper getWaypoint2LogHelper();
+
+    public: WaypointRunnableLogHelper getWaypointRunnableLogHelper();
+
+    public: std::vector<Group> getGroupInterface();
+
+                //@Throws(Exception.constructor)
+            
+    public: bool isDestroyed();
+
+    public: int32_t getSourceId();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFORMUTIL_H
         #define ORG_ALLBINARY_GAME_CONFIGURATION_FEATURE_GAMEFEATUREFORMUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -86,21 +88,20 @@
 class GameFeatureFormUtil
             : public Object
          {
-        
 
-    private: static const instance: GameFeatureFormUtil = new GameFeatureFormUtil();
+    private: static GameFeatureFormUtil instance() { return GameFeatureFormUtil(); }
 
-    public static GameFeatureFormUtil getInstance();
+    public: static GameFeatureFormUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public ChoiceGroup getChoiceGroup(Hashtable<any, any> hashtable, string name, int32_t option);
+    public: ChoiceGroup getChoiceGroup(Hashtable<any, any> hashtable, std::string name, int32_t option);
 
-    public addChoiceGroup(CommandForm form, Hashtable<any, any> hashtable, int32_t option);
+    public: void addChoiceGroup(CommandForm form, Hashtable<any, any> hashtable, int32_t option);
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(CommandForm form);
+    public: void setDefault(CommandForm form);
 
 };
 

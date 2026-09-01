@@ -44,21 +44,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TouchButtonDowngradeResource: public TouchButtonResource {
-        
 
-    private: static const instance: TouchButtonResource = new TouchButtonDowngradeResource();
+    private: static const TouchButtonResource instance = TouchButtonDowngradeResource();
 
-    public static TouchButtonResource getInstance(){
+    public: static TouchButtonResource getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TouchButtonDowngradeResource.instance;
+                        return TouchButtonDowngradeResource::instance();
     
 }
 
 
-private constructor (){
+private: TouchButtonDowngradeResource(){
             super("/touch_button_downgrade_64_by_64.png", "/touch_button_downgrade_hint_64_by_64.png");
                     
 

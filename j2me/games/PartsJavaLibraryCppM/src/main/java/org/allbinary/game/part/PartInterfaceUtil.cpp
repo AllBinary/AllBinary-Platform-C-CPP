@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -43,16 +45,15 @@
 class PartInterfaceUtil
             : public Object
          {
-        
 
-    private: static const SINGLETON: std::vector<PartInterface> = [];
+    private: static const std::vector<PartInterface> SINGLETON = {};
 
-    public static std::vector<PartInterface> getZeroArray(){
+    public: static std::vector<PartInterface> getZeroArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PartInterfaceUtil.SINGLETON;
+                        return PartInterfaceUtil::SINGLETON;
     
 }
 

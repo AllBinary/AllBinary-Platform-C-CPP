@@ -49,11 +49,10 @@
 class NoGeographicMapCellPositionFactoryInitVisitor
             : public Object
         : public GeographicMapCellPositionFactoryInitVisitorInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
+    public: void visit(AllBinaryTiledLayer tiledLayer, GeographicMapCellPosition cellPosition){
 }
 
 

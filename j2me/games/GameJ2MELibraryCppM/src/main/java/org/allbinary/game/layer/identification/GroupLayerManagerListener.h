@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_H
         #define ORG_ALLBINARY_GAME_LAYER_IDENTIFICATION_GROUPLAYERMANAGERLISTENER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -100,49 +102,48 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GroupLayerManagerListener: public LayerManagerEventListener {
-        
 
-    private: static SINGLETON: GroupLayerManagerListener = new GroupLayerManagerListener();
+    private: static GroupLayerManagerListener SINGLETON = GroupLayerManagerListener();
 
-    public static GroupLayerManagerListener getInstance();
+    public: static GroupLayerManagerListener getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: GroupLayerManagerListener();
 
-    public clear();
+    public: void clear();
 
-    public int32_t getGroupSizeFromInterface(GroupInterfaceCompositeInterface groupInterfaceCompositeInterface);
+    public: int32_t getGroupSizeFromInterface(GroupInterfaceCompositeInterface groupInterfaceCompositeInterface);
 
-    public int32_t getGroupSize(Group groupInterface);
+    public: int32_t getGroupSize(Group groupInterface);
 
-    public BasicArrayList getList(Group groupInterface);
+    public: BasicArrayList getList(Group groupInterface);
 
-    BasicArrayList getListById(int32_t groupId);
+    private: BasicArrayList getListById(int32_t groupId);
 
-    int32_t getGroupSizeById(int32_t groupId);
+    private: int32_t getGroupSizeById(int32_t groupId);
 
-    public bool areAllOtherGroupsEmpty(Group groupInterface);
+    public: bool areAllOtherGroupsEmpty(Group groupInterface);
 
-    bool isIdInList(int32_t id, BasicArrayList excludeGroupList);
+    private: bool isIdInList(int32_t id, BasicArrayList excludeGroupList);
 
-    public bool areAllOtherGroupsLessThan(BasicArrayList excludeGroupList, int32_t maxSize);
+    public: bool areAllOtherGroupsLessThan(BasicArrayList excludeGroupList, int32_t maxSize);
 
-    public init(int32_t total);
+    public: void init(int32_t total);
 
-    public onEvent(AllBinaryEventObject eventObject);
-
-                //@Throws(Exception.constructor)
-            
-    public onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    public onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent);
+    public: void onCreateLayerManagerEvent(LayerManagerEvent layerManagerEvent);
 
-    public log();
+                //@Throws(Exception.constructor)
+            
+    public: void onDeleteLayerManagerEvent(LayerManagerEvent layerManagerEvent);
+
+    public: void log();
 
 };
 

@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <javax/microedition/khronos/egl/EGLConfig.h>
 
       
@@ -54,33 +56,30 @@
         #include "ShaderUpdater.h"
 
 class CompositeShaderUpdater: public ShaderUpdater {
-        
 
-    private: static const instanceC: CompositeShaderUpdater = new CompositeShaderUpdater(StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), NullUtil.getInstance()!.NULL_INT_ARRAY);
+    private: static const CompositeShaderUpdater instanceC = CompositeShaderUpdater(StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), NullUtil::getInstance().NULL_INT_ARRAY);
 
-    public static CompositeShaderUpdater getInstance(){
+    public: static CompositeShaderUpdater getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CompositeShaderUpdater.instanceC;
+                        return CompositeShaderUpdater::instanceC;
     
 }
 
 
-    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-public constructor (std::vector<string> uniformBlockArray, std::vector<string> uniformArray, std::vector<string> attributeArray, std::vector<int32_t> attributeHandleArray){
-
-            super();
-        }
-
-
-    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle){
+public: CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray){
 }
 
 
-    public onSurfaceDestroyed(GL10 gl){
+    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle){
+}
+
+
+    public: void onSurfaceDestroyed(GL10 gl){
 }
 
 

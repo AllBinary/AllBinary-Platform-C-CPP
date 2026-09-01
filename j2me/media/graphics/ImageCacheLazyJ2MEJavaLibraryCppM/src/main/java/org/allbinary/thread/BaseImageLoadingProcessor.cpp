@@ -42,21 +42,20 @@
 class BaseImageLoadingProcessor
             : public Object
          {
-        
 
-    private: static const instance: BaseImageLoadingProcessor = new BaseImageLoadingProcessor();
+    private: static BaseImageLoadingProcessor instance() { return BaseImageLoadingProcessor(); }
 
-    public static BaseImageLoadingProcessor getInstance(){
+    public: static BaseImageLoadingProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BaseImageLoadingProcessor.instance;
+                        return BaseImageLoadingProcessor::instance();
     
 }
 
 
-    public runTask(){
+    public: void runTask(){
 }
 
 

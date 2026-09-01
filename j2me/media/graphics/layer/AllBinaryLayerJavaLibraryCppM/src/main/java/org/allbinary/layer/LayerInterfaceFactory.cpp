@@ -73,57 +73,56 @@
 class LayerInterfaceFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: LayerInterfaceFactory = new LayerInterfaceFactory();
+    private: static const LayerInterfaceFactory SINGLETON = LayerInterfaceFactory();
 
-    public static LayerInterfaceFactory getInstance(){
+    public: static LayerInterfaceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LayerInterfaceFactory.SINGLETON;
+                        return LayerInterfaceFactory::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: list: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    public init(){
-this.list= new BasicArrayListD();
+    public: void init(){
+this->list= BasicArrayListD();
     
 }
 
 
-    private: const HASHTABLE_LABEL: string = "Hashtable: ";
+    private: const std::string HASHTABLE_LABEL = "Hashtable: ";
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getNexInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
+    public: AllBinaryLayer getNexInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.putF(new StringMaker().append(this.HASHTABLE_LABEL)!.append(StringUtil.getInstance()!.toString(hashtable))!.toString(), this, commonStrings!.GET_INSTANCE);
-    
-
-    typeInteger: Integer = hashtable.get(Layer.ID) as Integer;;
+this->logUtil.putF(StringMaker().append(this->HASHTABLE_LABEL).append(StringUtil::getInstance().toString(hashtable)).toString(), this, commonStrings.GET_INSTANCE);
     
 
-    layerInterfaceFactoryInterface: LayerInterfaceFactoryInterface = this.list.objectArray[typeInteger!.intValue() -1]! as LayerInterfaceFactoryInterface;;
+    Integer typeInteger = hashtable.get(Layer::ID) as Integer;;
+    
+
+    LayerInterfaceFactoryInterface layerInterfaceFactoryInterface = this->list.objectArray[typeInteger.intValue() -1]! as LayerInterfaceFactoryInterface;;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return layerInterfaceFactoryInterface!.getNextInstance(hashtable, x, y, z);;
+                        return layerInterfaceFactoryInterface.getNextInstance(hashtable, x, y, z);;
     
 }
 
 
-    public add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
-this.list.add(layerInterfaceFactoryInterface);
+    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface){
+this->list.add(layerInterfaceFactoryInterface);
     
 }
 

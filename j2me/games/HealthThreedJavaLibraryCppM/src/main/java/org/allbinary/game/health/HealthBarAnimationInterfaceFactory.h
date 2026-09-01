@@ -64,23 +64,22 @@
 class HealthBarAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface, public ProceduralAnimationInterfaceFactoryInterface {
-        
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public HealthBarAnimation getInstanceByLocation(AllBinaryLayer layerInterface, int32_t location);
+public: HealthBarAnimationInterfaceFactory();
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: HealthBarAnimation getInstanceByLocation(AllBinaryLayer layerInterface, int32_t location);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstanceAnimation(Animation animationInterface);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+                //@Throws(Exception.constructor)
+            
+    public: Animation getInstanceAnimation(Animation animationInterface);
+
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
 };
 

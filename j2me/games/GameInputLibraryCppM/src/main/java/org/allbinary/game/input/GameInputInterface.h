@@ -55,13 +55,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInputInterface: public NamedInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    processInput(AllBinaryLayerManager layerManager);
+    void processInput(AllBinaryLayerManager layerManager);
 
-    initInputProcessors();
+    void initInputProcessors();
 
 };
 

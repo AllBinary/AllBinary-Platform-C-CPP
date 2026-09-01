@@ -136,152 +136,150 @@
 //#include "BuildingSteeringVisitor.h"
 
 class UnitWaypointBehavior2: public UnitWaypointBehavior {
-        
 
-    private: static const runningWaypointPathList: BasicArrayList = new BasicArrayListD();
+    private: static const BasicArrayList runningWaypointPathList = BasicArrayListD();
 
-    private: static const TARGET_DISTANCE: string = "Target Distance";
+    private: static const std::string TARGET_DISTANCE = "Target Distance";
 
-    private: static const TARGET_LAYER: string = "Target Layer";
+    private: static const std::string TARGET_LAYER = "Target Layer";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const unitWaypointStrings: UnitWaypointStrings = UnitWaypointStrings.getInstance()!;
+    private: const UnitWaypointStrings unitWaypointStrings = UnitWaypointStrings::getInstance();
 
-    private: const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    private: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    private: const layerDistanceUtil: LayerDistanceUtil = LayerDistanceUtil.getInstance()!;
+    private: const LayerDistanceUtil layerDistanceUtil = LayerDistanceUtil::getInstance();
 
-    private: const pathFindingThreadPool: ThreadPool = PathFindingThreadPool.getInstance()!;
+    private: const ThreadPool pathFindingThreadPool = PathFindingThreadPool::getInstance();
 
-    private: const progressTimeDelayHelper: TimeDelayHelper;
+    private: TimeDelayHelper progressTimeDelayHelper;
 
-    private: const wanderPathsList: BasicArrayList;
+    private: BasicArrayList wanderPathsList;
 
-    private: const waypointPathRunnable: WaypointPathRunnableBase;
+    private: WaypointPathRunnableBase waypointPathRunnable;
 
-    private: sensorRange: int32_t = 0;
+    private: int32_t sensorRange = 0;
 
-    private: closeRange: int32_t = 0;
+    private: int32_t closeRange = 0;
 
-    private: nextUnvisitedPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: afterNextUnvisitedPathGeographicMapCellPosition: GeographicMapCellPosition = SimpleGeographicMapCellPositionFactory.NULL_GEOGRAPHIC_MAP_CELL_POSITION;
+    private: GeographicMapCellPosition afterNextUnvisitedPathGeographicMapCellPosition = SimpleGeographicMapCellPositionFactory::NULL_GEOGRAPHIC_MAP_CELL_POSITION;
 
-    private: waitingOnTargetPath: bool= false;
+    private: bool waitingOnTargetPath= false;
 
-    private: waitingOnWaypointPath: bool= false;
+    private: bool waitingOnWaypointPath= false;
 
-    private: targetWithoutCachedPathLayerInterface: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    private: CollidableDestroyableDamageableLayer targetWithoutCachedPathLayerInterface = CollidableDestroyableDamageableLayer::getNullInstance();
 
-public constructor (UnitLayer ownerAdvancedRTSGameLayer, AdvancedRTSGameLayer fakeWaypoint);
+public: UnitWaypointBehavior2(UnitLayer ownerAdvancedRTSGameLayer, AdvancedRTSGameLayer fakeWaypoint);
 
-    initRange(int32_t weaponRange);
+    protected: void initRange(int32_t weaponRange);
 
-    public GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition();
+    public: GeographicMapCellPosition getNextUnvisitedPathGeographicMapCellPosition();
 
-    public bool isRunning();
-
-                //@Throws(Exception.constructor)
-            
-    public processTick(AllBinaryLayerManager allBinaryLayerManager);
+    public: bool isRunning();
 
                 //@Throws(Exception.constructor)
             
-    onEnemyMovement(AdvancedRTSGameLayer layerInterface);
+    public: void processTick(AllBinaryLayerManager allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    processPossibleTarget(AdvancedRTSGameLayer layerInterface, int32_t anotherTargetDistance);
+    private: void onEnemyMovement(AdvancedRTSGameLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    teleportIfNoProgress();
+    private: void processPossibleTarget(AdvancedRTSGameLayer layerInterface, int32_t anotherTargetDistance);
 
                 //@Throws(Exception.constructor)
             
-    setTarget(AdvancedRTSGameLayer layerInterface, int32_t anotherTargetDistance);
+    private: void teleportIfNoProgress();
 
                 //@Throws(Exception.constructor)
             
-    setTargetPath();
+    private: void setTarget(AdvancedRTSGameLayer layerInterface, int32_t anotherTargetDistance);
 
                 //@Throws(Exception.constructor)
             
-    setGeographicMapCellHistoryPath(BasicArrayList geographicMapCellPositionBasicArrayList);
+    private: void setTargetPath();
 
                 //@Throws(Exception.constructor)
             
-    processWaypoint();
+    protected: void setGeographicMapCellHistoryPath(BasicArrayList geographicMapCellPositionBasicArrayList);
 
                 //@Throws(Exception.constructor)
             
-    wander();
-
-    bool visitIfAtMidPoint(GeographicMapCellPosition geographicMapCellPosition);
+    private: void processWaypoint();
 
                 //@Throws(Exception.constructor)
             
-    processTargetList();
+    private: void wander();
+
+    private: bool visitIfAtMidPoint(GeographicMapCellPosition geographicMapCellPosition);
 
                 //@Throws(Exception.constructor)
             
-    processTargeting();
-
-    updateCurrentPathGeographicMapCellPosition();
+    private: void processTargetList();
 
                 //@Throws(Exception.constructor)
             
-    setWaypointPath(AdvancedRTSGameLayer waypointLayer);
+    private: void processTargeting();
+
+    private: void updateCurrentPathGeographicMapCellPosition();
 
                 //@Throws(Exception.constructor)
             
-    runWaypointPathTask(AdvancedRTSGameLayer waypointLayer);
+    private: void setWaypointPath(AdvancedRTSGameLayer waypointLayer);
 
                 //@Throws(Exception.constructor)
             
-    removeWaypoint(RTSLayer waypointLayer, string reason);
+    private: void runWaypointPathTask(AdvancedRTSGameLayer waypointLayer);
 
                 //@Throws(Exception.constructor)
             
-    public clearTarget();
-
-    public bool isWaypointListEmptyOrOnlyTargets();
-
-    bool isCloseRange(AdvancedRTSGameLayer layerInterface, int32_t targetDistance);
-
-    public bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance);
-
-    public string getCurrentTargetingStateString();
+    private: void removeWaypoint(RTSLayer waypointLayer, std::string reason);
 
                 //@Throws(Exception.constructor)
             
-    addWaypointFromUser(AdvancedRTSGameLayer advancedRTSGameLayer);
+    public: void clearTarget();
+
+    public: bool isWaypointListEmptyOrOnlyTargets();
+
+    private: bool isCloseRange(AdvancedRTSGameLayer layerInterface, int32_t targetDistance);
+
+    public: bool isInSensorRange(CollidableDestroyableDamageableLayer layerInterface, int32_t targetDistance);
+
+    public: std::string getCurrentTargetingStateString();
+
+                //@Throws(Exception.constructor)
+            
+    protected: void addWaypointFromUser(AdvancedRTSGameLayer advancedRTSGameLayer);
 
 //inner= member=true isStatic=
 class BuildingSteeringVisitor: public SteeringVisitor {
-        
 /*Static stuff is not allowed for CPP inner classes*//**/
 
 
-    private: const positionList: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList positionList = BasicArrayListD();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
-    public BasicArrayList getPositionList();
+    public: BasicArrayList getPositionList();
 
 };
 
             
-    private: const buildingSteeringVisitor = new this.BuildingSteeringVisitor();
+    private: const buildingSteeringVisitor = BuildingSteeringVisitor();
 
                 //@Throws(Exception.constructor)
             
-    public addBuildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    public: void addBuildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
 
                 //@Throws(Exception.constructor)
             
-    bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
+    private: bool buildingChase(AllBinaryLayer allbinaryLayer, GeographicMapCellPosition cellPosition);
 
 };
 

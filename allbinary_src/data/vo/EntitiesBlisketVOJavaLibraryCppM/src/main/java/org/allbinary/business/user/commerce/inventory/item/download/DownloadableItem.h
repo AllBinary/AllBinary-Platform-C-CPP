@@ -77,63 +77,62 @@
 class DownloadableItem
             : public Object
          {
-        
 
-    private: const id: string;
+    private: std::string id;
 
-    private: const basicItemId: string;
+    private: std::string basicItemId;
 
-    private: const enabled: string;
+    private: std::string enabled;
 
-    private: const system: string;
+    private: std::string system;
 
-    private: const platform: string;
+    private: std::string platform;
 
-    private: const specialName: string;
+    private: std::string specialName;
 
-    private: const version: string;
+    private: std::string version;
 
-    private: const changes: string;
+    private: std::string changes;
 
-    private: const licenseFile: string;
+    private: std::string licenseFile;
 
-    private: const file: string;
+    private: std::string file;
 
-    private: const size: Long;
+    private: Long size;
 
-    private: const validTime: Long;
+    private: Long validTime;
 
-    private: const retries: string;
+    private: std::string retries;
 
-public constructor (string id);
+public: DownloadableItem(std::string id);
 
-public constructor (HashMap<any, any> hashMap);
+public: DownloadableItem(HashMap<any, any> hashMap);
 
-    public Vector toVector();
+    public: Vector toVector();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
-    public string getId();
+    public: std::string getId();
 
-    public string getSystem();
+    public: std::string getSystem();
 
-    public string getPlatform();
+    public: std::string getPlatform();
 
-    public string getSpecialName();
+    public: std::string getSpecialName();
 
-    public string getVersion();
+    public: std::string getVersion();
 
-    public string getChanges();
+    public: std::string getChanges();
 
-    public string getLicenseFile();
+    public: std::string getLicenseFile();
 
-    public string getFile();
+    public: std::string getFile();
 
-    public Long getSize();
+    public: Long getSize();
 
-    public Long getValidTime();
+    public: Long getValidTime();
 
-    public string getRetries();
+    public: std::string getRetries();
 
 };
 

@@ -102,9 +102,8 @@
 class PaymentTypeUtil
             : public Object
          {
-        
 
-    private: static const instance: PaymentTypeUtil = new PaymentTypeUtil();
+    private: static PaymentTypeUtil instance() { return PaymentTypeUtil(); }
 
                     static int32_t initResult = PaymentTypeUtil::init();
                 static int32_t init() { 
@@ -114,94 +113,92 @@ class PaymentTypeUtil
                     return 0;
                 }
             
-    public static PaymentTypeUtil getInstance(){
+    public: static PaymentTypeUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PaymentTypeUtil.instance;
+                        return PaymentTypeUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const PAYMENTGATEWAYFILEPATHSTRING: string;
+    private: std::string PAYMENTGATEWAYFILEPATHSTRING;
 
-    private: const SHIPPINGMETHODSFILENAME: string = "paymentGatewayTypes.xml";
+    private: const std::string SHIPPINGMETHODSFILENAME = "paymentGatewayTypes.xml";
 
-    private: defaultName: string = 
+    private: std::string defaultName = 
                 null
             ;
 
-    private: paymentTypeVector: Vector = new Vector();
+    private: Vector paymentTypeVector = Vector();
 
-private constructor (){
+private: PaymentTypeUtil(){
 
-            super();
-        
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    sep: string = AbPathData.getInstance()!.SEPARATOR;;
+    std::string sep = AbPathData::getInstance().SEPARATOR;;
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("generic");
+stringBuffer.append("generic");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("user");
+stringBuffer.append("user");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("commerce");
+stringBuffer.append("commerce");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("money");
+stringBuffer.append("money");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("payment");
+stringBuffer.append("payment");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-stringBuffer!.append("gateway");
+stringBuffer.append("gateway");
     
-stringBuffer!.append(sep);
+stringBuffer.append(sep);
     
-this.PAYMENTGATEWAYFILEPATHSTRING= stringBuffer!.toString();
+this->PAYMENTGATEWAYFILEPATHSTRING= stringBuffer.toString();
     
 }
 
 
-    public add(PaymentType paymentType){
-this.paymentTypeVector!.add(paymentType);
+    public: void add(PaymentType paymentType){
+this->paymentTypeVector.add(paymentType);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentType get(string paymentTypeString){
+    public: PaymentType get(std::string paymentTypeString){
 
-    size: int32_t = this.paymentTypeVector!.length!;;
+    int32_t size = this->paymentTypeVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    paymentType: PaymentType = this.paymentTypeVector!.get(i) as PaymentType;;
+    PaymentType paymentType = this->paymentTypeVector.get(i) as PaymentType;;
     
 
-                        if(paymentType!.getBasicPaymentType()!.getName()!.compareTo(paymentTypeString) == 0)
+                        if(paymentType.getBasicPaymentType().getName().compareTo(paymentTypeString) == 0)
                         
                                     {
                                     
@@ -218,82 +215,82 @@ this.paymentTypeVector!.add(paymentType);
 
 
 
-                            throw new Exception("Unknown PaymentType: " +paymentTypeString);
+                            throw Exception("Unknown PaymentType: " +paymentTypeString);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public initDefault(string storeName){
+    public: void initDefault(std::string storeName){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF("initDefault Payment: " +this.defaultName, this, "initDefault");
+                                    this->logUtil.putF("initDefault Payment: " +this->defaultName, this, "initDefault");
     
 
                                     }
                                 
 
-                        if(StringValidationUtil.getInstance()!.isEmpty(this.defaultName))
+                        if(StringValidationUtil::getInstance().isEmpty(this->defaultName))
                         
                                     {
                                     
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(storeName);
+stringBuffer.append(storeName);
     
-stringBuffer!.append(AbPathData.getInstance()!.SEPARATOR);
+stringBuffer.append(AbPathData::getInstance().SEPARATOR);
     
-stringBuffer!.append(this.PAYMENTGATEWAYFILEPATHSTRING);
-    
-
-    abPath: AbPath = new AbPath(stringBuffer!.toString(), this.SHIPPINGMETHODSFILENAME) as AbPath;;
+stringBuffer.append(this->PAYMENTGATEWAYFILEPATHSTRING);
     
 
-    data: string = new CryptFileReader(TransformInfoObjectConfigData.getInstance()!.UNCRYPTED_EXTENSION, TransformInfoObjectConfigData.getInstance()!.ENCRYPTED_EXTENSION).get(abPath)!;;
+    AbPath abPath = AbPath(stringBuffer.toString(), this->SHIPPINGMETHODSFILENAME) as AbPath;;
     
 
-    document: Document = DomDocumentHelper.create(data)!;;
+    std::string data = CryptFileReader(TransformInfoObjectConfigData::getInstance().UNCRYPTED_EXTENSION, TransformInfoObjectConfigData::getInstance().ENCRYPTED_EXTENSION).get(abPath);;
     
 
-    nodeList: NodeList = document.getElementsByTagName(PaymentGatewaysData.NAME)!;;
+    Document document = DomDocumentHelper::create(data);;
+    
+
+    NodeList nodeList = document.getElementsByTagName(PaymentGatewaysData::NAME);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    node: Node = nodeList!.item(index)!;;
+    Node node = nodeList.item(index);;
     
 
-    defaultPaymentGatewayNode: Node = DomSearchHelper.getNode(EntryData.getInstance()!.DEFAULT, node.getChildNodes())!;;
+    Node defaultPaymentGatewayNode = DomSearchHelper::getNode(EntryData::getInstance().DEFAULT, node.getChildNodes());;
     
 
-    defaultPaymentGatewayNodeValue: string = DomNodeHelper.getTextNodeValue(defaultPaymentGatewayNode)!;;
+    std::string defaultPaymentGatewayNodeValue = DomNodeHelper::getTextNodeValue(defaultPaymentGatewayNode);;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF("DefaultPaymentGatewayNodeValue: " +defaultPaymentGatewayNodeValue, this, "initDefault");
+                                    this->logUtil.putF("DefaultPaymentGatewayNodeValue: " +defaultPaymentGatewayNodeValue, this, "initDefault");
     
 
                                     }
                                 
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(defaultPaymentGatewayNodeValue))
+                        if(!StringValidationUtil::getInstance().isEmpty(defaultPaymentGatewayNodeValue))
                         
                                     {
-                                    this.defaultName= defaultPaymentGatewayNodeValue;
+                                    this->defaultName= defaultPaymentGatewayNodeValue;
     
 
                                     }
@@ -308,27 +305,27 @@ stringBuffer!.append(this.PAYMENTGATEWAYFILEPATHSTRING);
 
                 //@Throws(Exception.constructor)
             
-    public PaymentType getDefault(string storeName){
+    public: PaymentType getDefault(std::string storeName){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PAYMENT))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PAYMENT))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "getDefault");
+                                    this->logUtil.putF(this->commonStrings.START, this, "getDefault");
     
 
                                     }
                                 
-this.initDefault(storeName);
+this->initDefault(storeName);
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(this.defaultName))
+                        if(!StringValidationUtil::getInstance().isEmpty(this->defaultName))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.get(this.defaultName);;
+                        return this->get(this->defaultName);;
     
 
                                     }
@@ -336,41 +333,42 @@ this.initDefault(storeName);
 
 
 
-                            throw new Exception("No Default: " +this.defaultName);
+                            throw Exception("No Default: " +this->defaultName);
                     
 }
 
 
-    public bool isContain(PaymentType paymentType){
+    public: bool isContain(PaymentType paymentType){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentTypeVector!.contains(paymentType);;
+                        return this->paymentTypeVector.contains(paymentType);;
     
 }
 
 
-    public Vector difference(Vector a_PaymentTypeVector){
+    public: Vector difference(Vector a_PaymentTypeVector){
 
-    diff: Vector = new Vector();;
+    Vector diff = Vector();;
     
 
-    size: int32_t = this.paymentTypeVector!.length!;;
+    int32_t size = this->paymentTypeVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
 
-    paymentType: PaymentType = this.paymentTypeVector!.get(i) as PaymentType;;
+    PaymentType paymentType = this->paymentTypeVector.get(i) as PaymentType;;
     
 
-                        if(!a_PaymentTypeVector!.contains(paymentType))
-                        diff.add(paymentType)
+                        if(!a_PaymentTypeVector.contains(paymentType))
+                        diff.add(paymentType);
+                                
 }
 
 

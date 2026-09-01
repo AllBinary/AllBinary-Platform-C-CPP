@@ -69,43 +69,42 @@
 class GameConfigurationUtil
             : public Object
          {
-        
 
-    private: static const instance: GameConfigurationUtil = new GameConfigurationUtil();
+    private: static GameConfigurationUtil instance() { return GameConfigurationUtil(); }
 
-    public static GameConfigurationUtil getInstance();
+    public: static GameConfigurationUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
-
-                //@Throws(Exception.constructor)
-            
-    public change(GameOptionsForm gameOptionsForm, GameConfigurationGauge gauge);
-
-    private: const GAUGE_UPDATE: string = "Gauge Update: ";
-
-    private: const FROM: string = " from: ";
-
-    private: const TO: string = " to: ";
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public update(GameConfigurationGauge gauge);
+    public: void change(GameOptionsForm gameOptionsForm, GameConfigurationGauge gauge);
+
+    private: const std::string GAUGE_UPDATE = "Gauge Update: ";
+
+    private: const std::string FROM = " from: ";
+
+    private: const std::string TO = " to: ";
 
                 //@Throws(Exception.constructor)
             
-    public setDefault(GameConfigurationGauge gauge);
+    public: void update(GameConfigurationGauge gauge);
 
                 //@Throws(Exception.constructor)
             
-    public updateChallange(GameOptionsForm gameOptionsForm, GameConfiguration gameConfiguration);
+    public: void setDefault(GameConfigurationGauge gauge);
 
-    private: COMPETITION_VALUE: int32_t = 1;
+                //@Throws(Exception.constructor)
+            
+    public: void updateChallange(GameOptionsForm gameOptionsForm, GameConfiguration gameConfiguration);
 
-    public updateCompetitionValue();
+    private: int32_t COMPETITION_VALUE = 1;
 
-    public int32_t getCompetitionValue();
+    public: void updateCompetitionValue();
+
+    public: int32_t getCompetitionValue();
 
 };
 

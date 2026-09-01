@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <java/util/Arrays.h>
@@ -59,10 +61,9 @@
         #include "StoreThemeCategoryInterface.h"
 #include "ThemeComparator.h"
 
-class StoreThemeCategoryView: public CategoryView: public DomNodeInterface {
-        
+class StoreThemeCategoryView: public CategoryView, public DomNodeInterface {
 
-public constructor (StoreThemeCategoryInterface categoryInterface){
+public: StoreThemeCategoryView(StoreThemeCategoryInterface categoryInterface){
             super(categoryInterface as StoreThemeCategoryInterface);
                     
 
@@ -73,33 +74,32 @@ public constructor (StoreThemeCategoryInterface categoryInterface){
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = super.toXmlNode(document)!;;
+    Node node = super.toXmlNode(document);;
     
 
-    storeThemeCategoryInterface: StoreThemeCategoryInterface = this.getCategoryInterface() as StoreThemeCategoryInterface;;
+    StoreThemeCategoryInterface storeThemeCategoryInterface = this->getCategoryInterface() as StoreThemeCategoryInterface;;
     
 
-    themeValidationArray: std::vector<ThemeValidation> = storeThemeCategoryInterface!.getThemes()!.toArray() as ThemeValidation[];;
+    std::vector<ThemeValidation> themeValidationArray = storeThemeCategoryInterface.getThemes().toArray() as ThemeValidation[];;
     
-Arrays.sort(themeValidationArray, new ThemeComparator());
+Arrays::sort(themeValidationArray, ThemeComparator());
     
 
-    size: int32_t = themeValidationArray!.length
-                ;;
+    int32_t size = themeValidationArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    themeValidation: ThemeValidation = themeValidationArray[index]! as ThemeValidation;;
+    ThemeValidation themeValidation = themeValidationArray[index]! as ThemeValidation;;
     
-node.appendChild(themeValidation!.toXmlNode(document));
+node.appendChild(themeValidation.toXmlNode(document));
     
 }
 

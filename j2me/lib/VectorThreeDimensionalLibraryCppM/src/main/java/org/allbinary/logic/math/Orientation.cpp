@@ -58,67 +58,64 @@
 class Orientation
             : public Object
          {
-        
 
-    public static NONE: Orientation = new Orientation(0, 0, 0);
+    public: static Orientation NONE = Orientation(0, 0, 0);
 
-    private: static SINGLETON: Orientation = new Orientation(0, 0, 0);
+    private: static Orientation SINGLETON = Orientation(0, 0, 0);
 
-    public static Orientation getInstance(int32_t yaw, int32_t pitch, int32_t roll){
-Orientation.SINGLETON.yaw.setint(yaw);
+    public: static Orientation getInstance(int32_t yaw, int32_t pitch, int32_t roll){
+Orientation::SINGLETON.yaw.setint(yaw);
     
-Orientation.SINGLETON.pitch.setint(pitch);
+Orientation::SINGLETON.pitch.setint(pitch);
     
-Orientation.SINGLETON.roll.setint(roll);
-    
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return Orientation.SINGLETON;
-    
-}
-
-
-    public yaw: BasicDecimal = new BasicDecimal(0);
-
-    public pitch: BasicDecimal = new BasicDecimal(0);
-
-    public roll: BasicDecimal = new BasicDecimal(0);
-
-private constructor (int32_t yaw, int32_t pitch, int32_t roll){
-
-            super();
-        this.yaw.setint(yaw);
-    
-this.pitch.setint(pitch);
-    
-this.roll.setint(roll);
-    
-}
-
-
-    public string toString(){
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("Y: ");
-    
-stringBuffer!.append(this.yaw.toString());
-    
-stringBuffer!.append(" P: ");
-    
-stringBuffer!.append(this.pitch.toString());
-    
-stringBuffer!.append(" R: ");
-    
-stringBuffer!.append(this.roll.toString());
+Orientation::SINGLETON.roll.setint(roll);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return Orientation::SINGLETON;
+    
+}
+
+
+    public: BasicDecimal yaw = BasicDecimal(0);
+
+    public: BasicDecimal pitch = BasicDecimal(0);
+
+    public: BasicDecimal roll = BasicDecimal(0);
+
+private: Orientation(int32_t yaw, int32_t pitch, int32_t roll){
+this->yaw.setint(yaw);
+    
+this->pitch.setint(pitch);
+    
+this->roll.setint(roll);
+    
+}
+
+
+    public: std::string toString(){
+
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("Y: ");
+    
+stringBuffer.append(std::to_string(yaw));
+    
+stringBuffer.append(" P: ");
+    
+stringBuffer.append(std::to_string(pitch));
+    
+stringBuffer.append(" R: ");
+    
+stringBuffer.append(std::to_string(roll));
+    
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return stringBuffer.toString();;
     
 }
 

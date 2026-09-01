@@ -55,32 +55,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LastKeyAIVisitor: public Visitor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const TRUE: Boolean = BooleanFactory.getInstance()!.TRUE;
+    private: const Boolean TRUE = BooleanFactory::getInstance().TRUE;
 
-public constructor (){
-
-            super();
-        }
+public: LastKeyAIVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
         try {
             
-    basicAI: BasicAI = anyType as BasicAI;;
+    BasicAI basicAI = anyType as BasicAI;;
     
 
-    key: int32_t = basicAI!.getLastKey()!;;
+    int32_t key = basicAI.getLastKey();;
     
 
                         if(key !=  -1)
                         
                                     {
-                                    basicAI!.processKeyAI(key);
+                                    basicAI.processKeyAI(key);
     
 
                                     }
@@ -90,9 +87,9 @@ public constructor (){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.VISIT, e);
     
 }
 
@@ -100,7 +97,7 @@ this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.VISIT, e);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.TRUE;
+                        return this->TRUE;
     
 }
 

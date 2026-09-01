@@ -40,28 +40,25 @@
 #include "EmptyRaceRaceTrackGeographicMapCellTypeFactory.h"
 
 class CloseLoopRaceTrackGeographicMapCellTypeFactory: public RaceTrackGeographicMapCellTypeFactory {
-        
 
-    private: static const instanceC: CloseLoopRaceTrackGeographicMapCellTypeFactory = new CloseLoopRaceTrackGeographicMapCellTypeFactory();
+    private: static const CloseLoopRaceTrackGeographicMapCellTypeFactory instanceC = CloseLoopRaceTrackGeographicMapCellTypeFactory();
 
-    public static CloseLoopRaceTrackGeographicMapCellTypeFactory getInstance(){
+    public: static CloseLoopRaceTrackGeographicMapCellTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CloseLoopRaceTrackGeographicMapCellTypeFactory.instanceC;
+                        return CloseLoopRaceTrackGeographicMapCellTypeFactory::instanceC;
     
 }
 
 
-private constructor (){
-
-            super();
-        this.EMPTY_CELL_TYPE= EmptyRaceRaceTrackGeographicMapCellTypeFactory.getInstance()!.EMPTY_CELL_TYPE;
+private: CloseLoopRaceTrackGeographicMapCellTypeFactory(){
+this->EMPTY_CELL_TYPE= EmptyRaceRaceTrackGeographicMapCellTypeFactory::getInstance().EMPTY_CELL_TYPE;
     
-this.EASY_CELL_TYPE= this.EMPTY_CELL_TYPE;
+this->EASY_CELL_TYPE= this->EMPTY_CELL_TYPE;
     
-this.FINISH_LINE_ROAD_CELL_TYPE= this.START_LINE_ROAD_CELL_TYPE;
+this->FINISH_LINE_ROAD_CELL_TYPE= this->START_LINE_ROAD_CELL_TYPE;
     
 }
 

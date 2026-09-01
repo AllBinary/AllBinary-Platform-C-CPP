@@ -91,86 +91,85 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "ABTextFieldItem.h"
 
-class CustomTextBox: public GameCommandCanvas: public RawKeyEventListener {
-        
+class CustomTextBox: public GameCommandCanvas, public RawKeyEventListener {
 
-    private: const textFieldItem: ABTextFieldItem;
+    private: ABTextFieldItem textFieldItem;
 
-public constructor (CommandListener cmdListener, string label, string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+public: CustomTextBox(CommandListener cmdListener, std::string label, std::string text, int32_t maxSize, int32_t constraints, Font font, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
             super(cmdListener, label, backgroundBasicColor, foregroundBasicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    textFieldItem: ABTextFieldItem = new ABTextFieldItem(this, new TextItemVisitor(), stringUtil!.EMPTY_STRING, stringUtil!.EMPTY_STRING, maxSize, 0, stringUtil!.EMPTY_STRING, font, backgroundBasicColor, foregroundBasicColor);;
+    ABTextFieldItem textFieldItem = ABTextFieldItem(this, TextItemVisitor(), stringUtil.EMPTY_STRING, stringUtil.EMPTY_STRING, maxSize, 0, stringUtil.EMPTY_STRING, font, backgroundBasicColor, foregroundBasicColor);;
     
-textFieldItem!.setString(text);
+textFieldItem.setString(text);
     
-this.textFieldItem= textFieldItem;
+this->textFieldItem= textFieldItem;
     
-this.setTitle(label);
-    
-}
-
-
-    public submit(){
-}
-
-
-    private: const inputFactory: InputFactory = InputFactory.getInstance()!;
-
-    public onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
-this.logUtil!.putF(new StringMaker().append(this.commonStrings!.START)!.appendint(keyCode)!.toString(), this, "onEvent");
-    
-this.keyPressedByDevice(keyCode, deviceId);
+this->setTitle(label);
     
 }
 
 
-    public keyPressed(int32_t keyCode){
-this.keyPressedByDevice(keyCode, 0);
+    public: void submit(){
+}
+
+
+    private: const InputFactory inputFactory = InputFactory::getInstance();
+
+    public: void onEventRaw(int32_t keyCode, int32_t deviceId, bool repeated){
+this->logUtil.putF(StringMaker().append(this->commonStrings.START).appendint(keyCode).toString(), this, "onEvent");
+    
+this->keyPressedByDevice(keyCode, deviceId);
     
 }
 
 
-    public keyReleased(int32_t keyCode){
-this.keyReleasedByDevice(keyCode, 0);
+    public: void keyPressed(int32_t keyCode){
+this->keyPressedByDevice(keyCode, 0);
     
 }
 
 
-    public keyRepeated(int32_t keyCode){
-this.keyRepeatedByDevice(keyCode, 0);
+    public: void keyReleased(int32_t keyCode){
+this->keyReleasedByDevice(keyCode, 0);
     
 }
 
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyRepeated(int32_t keyCode){
+this->keyRepeatedByDevice(keyCode, 0);
+    
+}
+
+
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId){
 
         try {
-            this.logUtil!.putF(new StringMaker().append(CommonSeps.getInstance()!.SPACE)!.appendint(keyCode)!.toString(), this, this.gameInputStrings!.KEY_PRESSED);
+            this->logUtil.putF(StringMaker().append(CommonSeps::getInstance().SPACE).appendint(keyCode).toString(), this, this->gameInputStrings.KEY_PRESSED);
     
 
-    platformKeyFactory: PlatformKeyFactory = PlatformKeyFactory.getInstance()!;;
+    PlatformKeyFactory platformKeyFactory = PlatformKeyFactory::getInstance();;
     
 
-    input: Input = this.inputFactory!.getInstanceById(keyCode)!;;
+    Input input = this->inputFactory.getInstanceById(keyCode);;
     
 
-                        if(platformKeyFactory!.isSubmission(input))
+                        if(platformKeyFactory.isSubmission(input))
                         
                                     {
-                                    this.submit();
+                                    this->submit();
     
 
                                     }
                                 
                         else {
-                            this.textFieldItem!.keyPressed(keyCode);
+                            this->textFieldItem.keyPressed(keyCode);
     
 
                         }
@@ -179,52 +178,52 @@ this.keyRepeatedByDevice(keyCode, 0);
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.gameInputStrings!.KEY_PRESSED, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->gameInputStrings.KEY_PRESSED, e);
     
 }
 
 }
 
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId){
 }
 
 
-    public paint(Graphics graphics){
-graphics.setColor(this.backgroundColor);
+    public: void paint(Graphics graphics){
+graphics.setColor(this->backgroundColor);
     
-graphics.fillRect(0, 0, this.displayInfo!.getLastWidth(), this.displayInfo!.getLastHeight());
+graphics.fillRect(0, 0, this->displayInfo.getLastWidth(), this->displayInfo.getLastHeight());
     
-graphics.setColor(this.foregroundColor);
+graphics.setColor(this->foregroundColor);
     
 
-                        if(!J2MEUtil.isJ2ME())
+                        if(!J2MEUtil::isJ2ME())
                         
                                     {
-                                    graphics.drawString(this.getTitle(), 8, 1, 0);
+                                    graphics.drawString(this->getTitle(), 8, 1, 0);
     
 
                                     }
                                 
-this.paintXY(graphics, 8, graphics.getFont()!.getHeight() +2);
+this->paintXY(graphics, 8, graphics.getFont().getHeight() +2);
     
 super.paint(graphics);
     
 }
 
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-this.textFieldItem!.paintXY(graphics, x, y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+this->textFieldItem.paintXY(graphics, x, y);
     
 }
 
 
-    public ABTextFieldItem getTextFieldItem(){
+    public: ABTextFieldItem getTextFieldItem(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.textFieldItem;
+                        return this->textFieldItem;
     
 }
 

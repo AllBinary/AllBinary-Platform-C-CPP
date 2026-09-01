@@ -49,19 +49,18 @@
 #include "GyroSensorUpdateProcessor.h"
 
 class SingleSensorGameUpdateProcessor: public SensorGameUpdateProcessor {
-        
 
-    private: const accelerometerSensorUpdateProcessor: Processor = new AccelerometerSensorUpdateProcessor();
+    private: const Processor accelerometerSensorUpdateProcessor = AccelerometerSensorUpdateProcessor();
 
-    private: const gyroSensorUpdateProcessor: Processor = new GyroSensorUpdateProcessor();
-
-                //@Throws(Exception.constructor)
-            
-    public process(any = {} anyType);
+    private: const Processor gyroSensorUpdateProcessor = GyroSensorUpdateProcessor();
 
                 //@Throws(Exception.constructor)
             
-    public sendNotifications(any = {} anyType);
+    public: void process(Object* anyType);
+
+                //@Throws(Exception.constructor)
+            
+    public: void sendNotifications(Object* anyType);
 
 };
 

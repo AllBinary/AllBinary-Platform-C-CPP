@@ -73,132 +73,131 @@
 #include "RotationAnimationInterface.h"
 #include "AnimationBehavior.h"
 
-class RotationAnimation: public IndexedAnimation: public RotationAnimationInterface {
-        
+class RotationAnimation: public IndexedAnimation, public RotationAnimationInterface {
 
-    const frameUtil: FrameUtil = FrameUtil.getInstance()!;
+    protected: const FrameUtil frameUtil = FrameUtil::getInstance();
 
-    const directionUtil: DirectionUtil = DirectionUtil.getInstance()!;
+    protected: const DirectionUtil directionUtil = DirectionUtil::getInstance();
 
-    const angleInfo: AngleInfo;
+    protected: AngleInfo angleInfo;
 
-    circularIndexUtil: CircularIndexUtil;
+    protected: CircularIndexUtil circularIndexUtil;
 
-protected constructor (AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior){
+protected: RotationAnimation(AngleInfo angleInfo, CircularIndexUtil circularIndexUtil, AnimationBehavior animationBehavior){
             super(animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.angleInfo= angleInfo;
+this->angleInfo= angleInfo;
     
-this.circularIndexUtil= circularIndexUtil;
-    
-}
-
-
-    public nextRotationX(){
-}
-
-
-    public previousRotationX(){
-}
-
-
-    public nextRotation(){
-this.angleInfo!.adjustAngle(this.circularIndexUtil!.next());
+this->circularIndexUtil= circularIndexUtil;
     
 }
 
 
-    public previousRotation(){
-this.angleInfo!.adjustAngle(this.circularIndexUtil!.previous());
+    public: void nextRotationX(){
+}
+
+
+    public: void previousRotationX(){
+}
+
+
+    public: void nextRotation(){
+this->angleInfo.adjustAngle(this->circularIndexUtil.next());
     
 }
 
 
-    public nextRotationZ(){
-}
-
-
-    public previousRotationZ(){
-}
-
-
-    public setFrame(int32_t index){
-this.circularIndexUtil!.setIndex(index);
-    
-
-    newFrame: int32_t = this.circularIndexUtil!.getIndex()!;;
-    
-this.angleInfo!.adjustAngle(newFrame);
+    public: void previousRotation(){
+this->angleInfo.adjustAngle(this->circularIndexUtil.previous());
     
 }
 
 
-    public setFrameByDirection(Direction direction){
+    public: void nextRotationZ(){
+}
 
-    angle: Angle = this.directionUtil!.getFrameAngle(direction)!;;
+
+    public: void previousRotationZ(){
+}
+
+
+    public: void setFrame(int32_t index){
+this->circularIndexUtil.setIndex(index);
     
-this.adjustFrameToAngle(angle);
+
+    int32_t newFrame = this->circularIndexUtil.getIndex();;
+    
+this->angleInfo.adjustAngle(newFrame);
     
 }
 
 
-    public setFrameToAngle(Angle angle){
-this.adjustFrameToAngle(angle);
+    public: void setFrameByDirection(Direction direction){
+
+    Angle angle = this->directionUtil.getFrameAngle(direction);;
+    
+this->adjustFrameToAngle(angle);
     
 }
 
 
-    public adjustFrameToAngle(Angle angle){
-this.adjustFrame(angle.getValue());
+    public: void setFrameToAngle(Angle angle){
+this->adjustFrameToAngle(angle);
     
 }
 
 
-    public adjustFrame(int16_t angle){
-this.setFrame(this.frameUtil!.getFrameForAngle(angle, static_cast<int32_t>(this.angleInfo!.getAngleIncrementInfo()!.getAngleIncrement())));
+    public: void adjustFrameToAngle(Angle angle){
+this->adjustFrame(angle.getValue());
     
 }
 
 
-    public int32_t getFrame(){
+    public: void adjustFrame(int16_t angle){
+this->setFrame(this->frameUtil.getFrameForAngle(angle, static_cast<int32_t>(this->angleInfo.getAngleIncrementInfo().getAngleIncrement())));
+    
+}
+
+
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!.getIndex();;
+                        return this->circularIndexUtil.getIndex();;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!.getSize();;
+                        return this->circularIndexUtil.getSize();;
     
 }
 
 
-    public AngleInfo getAngleInfoP(){
+    public: AngleInfo getAngleInfoP(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.angleInfo;
+                        return this->angleInfo;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append(super.toString())!.append("circularIndexUtil: ")!.append(this.circularIndexUtil!.toString())!.append("angleInfo: ")!.append(this.angleInfo!.toString())!.toString();;
+                        return StringMaker().append(super.toString()).append("circularIndexUtil: ").append(this->circularIndexUtil.toString()).append("angleInfo: ").append(this->angleInfo.toString()).toString();;
     
 }
 

@@ -55,9 +55,8 @@
         #include "BasicGraphicsPipeline.h"
 
 class GraphicsPipeline: public BasicGraphicsPipeline {
-        
 
-public constructor (BasicArrayList points){
+public: GraphicsPipeline(BasicArrayList points){
             super(points);
                     
 
@@ -68,37 +67,37 @@ public constructor (BasicArrayList points){
 
                 //@Throws(Exception.constructor)
             
-    public rotateTheta(double aTheta){
+    public: void rotateTheta(double aTheta){
 
-    newVector: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList newVector = BasicArrayListD();;
     
 
-    size: int32_t = this.pointBasicArrayList!.size()!;;
+    int32_t size = this->pointBasicArrayList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    secondPoint: GPoint = pointBasicArrayList!.get(index) as GPoint;;
+    GPoint secondPoint = pointBasicArrayList.get(index) as GPoint;;
     
 
-    secondX: double = (secondPoint!.getX() *Math.cos(aTheta)) -(secondPoint!.getY() *Math.sin(aTheta));;
+    double secondX = (secondPoint.getX() *Math::cos(aTheta)) -(secondPoint.getY() *Math::sin(aTheta));;
     
 
-    secondY: double = (secondPoint!.getX() *Math.sin(aTheta)) +(secondPoint!.getY() *Math.cos(aTheta));;
+    double secondY = (secondPoint.getX() *Math::sin(aTheta)) +(secondPoint.getY() *Math::cos(aTheta));;
     
 
-    point: GPoint = PointFactory.getInstance()!.createXY((static_cast<int32_t>(secondX)), (static_cast<int32_t>(secondY)))!;;
+    GPoint point = PointFactory::getInstance().createXY((static_cast<int32_t>(secondX)), (static_cast<int32_t>(secondY)));;
     
-newVector!.add(point);
+newVector.add(point);
     
 }
 
-this.pointBasicArrayList= newVector;
+this->pointBasicArrayList= newVector;
     
 }
 

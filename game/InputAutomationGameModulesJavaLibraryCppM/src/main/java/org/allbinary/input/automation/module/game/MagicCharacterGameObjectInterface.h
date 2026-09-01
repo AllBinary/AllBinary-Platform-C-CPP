@@ -43,7 +43,6 @@
 #include "MagicGameObjectInterface.h"
 
 class MagicCharacterGameObjectInterface {
-        
 
     HitPointGameObjectInterface getHitPointGameObjectInterface();
 

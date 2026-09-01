@@ -45,41 +45,40 @@
 class OperatingSystems
             : public Object
          {
-        
 
-    private: static const instance: OperatingSystems = new OperatingSystems();
+    private: static OperatingSystems instance() { return OperatingSystems(); }
 
-    public static OperatingSystems getInstance();
+    public: static OperatingSystems getInstance();
 
-    public const LINUX: string = "Linux";
+    public: const std::string LINUX = "Linux";
 
-    public const WINDOWS: string = "Windows";
+    public: const std::string WINDOWS = "Windows";
 
-    public const SOLARIS: string = "Solaris";
+    public: const std::string SOLARIS = "Solaris";
 
-    public const WINDOWS2000: string = "Windows 2000";
+    public: const std::string WINDOWS2000 = "Windows 2000";
 
-    public const WINDOWS_NT: string = "Windows NT";
+    public: const std::string WINDOWS_NT = "Windows NT";
 
-    public const WINDOWS_10: string = "Windows 10";
+    public: const std::string WINDOWS_10 = "Windows 10";
 
-    public const WINDOWS_11: string = "Windows 11";
+    public: const std::string WINDOWS_11 = "Windows 11";
 
-    public const WINDOWS_VISTA: string = "Windows Vista";
+    public: const std::string WINDOWS_VISTA = "Windows Vista";
 
-    public const WINDOWS_XP: string = "Windows XP";
+    public: const std::string WINDOWS_XP = "Windows XP";
 
-    public const ANDROID: string = this.LINUX;
+    public: const std::string ANDROID = this->LINUX;
 
-    public const HARMONY: string = "HarmonyOS";
+    public: const std::string HARMONY = "HarmonyOS";
 
-private constructor ();
+private: OperatingSystems();
 
-    private: unknownSpecificOSAllowed: bool = true;
+    private: bool unknownSpecificOSAllowed = true;
 
-    public bool isUnknownSpecificOSAllowed();
+    public: bool isUnknownSpecificOSAllowed();
 
-    public setUnknownSpecificOSAllowed(bool aUnknownSpecificOSAllowed);
+    public: void setUnknownSpecificOSAllowed(bool aUnknownSpecificOSAllowed);
 
 };
 

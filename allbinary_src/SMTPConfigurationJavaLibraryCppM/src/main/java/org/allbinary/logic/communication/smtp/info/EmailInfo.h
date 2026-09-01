@@ -54,29 +54,28 @@
 class EmailInfo
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: basicEmailInfo: BasicEmailInfo;
+    private: BasicEmailInfo basicEmailInfo;
 
-    private: htmlAttachment: string;
+    private: std::string htmlAttachment;
 
-    private: contentBase: string;
+    private: std::string contentBase;
 
-public constructor (BasicEmailInfo basicEmailInfo);
+public: EmailInfo(BasicEmailInfo basicEmailInfo);
 
-public constructor (BasicEmailInfo basicEmailInfo, string htmlAttachment, string contentBase);
+public: EmailInfo(BasicEmailInfo basicEmailInfo, std::string htmlAttachment, std::string contentBase);
 
-    init(BasicEmailInfo basicEmailInfo, string htmlAttachment, string contentBase);
+    private: void init(BasicEmailInfo basicEmailInfo, std::string htmlAttachment, std::string contentBase);
 
-    public BasicEmailInfo getBasicEmailInfo();
+    public: BasicEmailInfo getBasicEmailInfo();
 
-    public string getHtmlAttachment();
+    public: std::string getHtmlAttachment();
 
-    public string getContentBase();
+    public: std::string getContentBase();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

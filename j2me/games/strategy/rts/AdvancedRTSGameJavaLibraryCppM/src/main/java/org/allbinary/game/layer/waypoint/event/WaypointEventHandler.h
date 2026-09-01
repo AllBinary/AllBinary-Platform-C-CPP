@@ -55,13 +55,12 @@
         #include "WaypointEventListenerInterface.h"
 
 class WaypointEventHandler: public BasicEventHandler {
-        
 
-public constructor ();
+public: WaypointEventHandler();
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

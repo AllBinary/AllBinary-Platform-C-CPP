@@ -50,13 +50,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OperatingSystemInterface {
-        
 
-    string getName();
+    std::string getName();
 
-    string getVersion();
+    std::string getVersion();
 
-    string getArch();
+    std::string getArch();
 
     CharacterSet getCharacterSet();
 
@@ -70,7 +69,7 @@ class OperatingSystemInterface {
 
     bool isAutoHide();
 
-    string toString();
+    std::string toString();
 
 };
 

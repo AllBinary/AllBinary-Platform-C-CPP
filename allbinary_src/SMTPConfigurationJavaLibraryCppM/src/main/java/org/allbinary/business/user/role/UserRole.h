@@ -54,25 +54,24 @@
 class UserRole
             : public Object
         : public Serializable {
-        
 
-    private: basicUserRole: BasicUserRole;
+    private: BasicUserRole basicUserRole;
 
-    private: userFactoryInterface: UserFactoryInterface;
+    private: UserFactoryInterface userFactoryInterface;
 
-protected constructor (BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface);
+protected: UserRole(BasicUserRole aBasicUserRole, UserFactoryInterface aUserFactoryInterface);
 
-    public string toString();
+    public: std::string toString();
 
-    public BasicUserRole getBasicUserRole();
+    public: BasicUserRole getBasicUserRole();
 
                 //@Throws(Exception.constructor)
             
-    public UserFactoryInterface getUserFactory();
+    public: UserFactoryInterface getUserFactory();
 
-    public int64_t getSessionTimeout();
+    public: int64_t getSessionTimeout();
 
-    public int64_t getSessionInactivityTimeout();
+    public: int64_t getSessionInactivityTimeout();
 
 };
 

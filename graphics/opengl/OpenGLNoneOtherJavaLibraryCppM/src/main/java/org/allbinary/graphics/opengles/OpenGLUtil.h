@@ -36,17 +36,16 @@
 class OpenGLUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLUtil = new OpenGLUtil();
+    private: static OpenGLUtil instance() { return OpenGLUtil(); }
 
-    public static OpenGLUtil getInstance();
+    public: static OpenGLUtil getInstance();
 
-    public Image addImage(Image image);
+    public: Image addImage(Image image);
 
-    public clear();
+    public: void clear();
 
-    public addRunnable(Runnable runnable);
+    public: void addRunnable(Runnable runnable);
 
 };
 

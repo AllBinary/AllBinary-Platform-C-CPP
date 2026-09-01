@@ -117,120 +117,117 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicPopupMenuPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class BasicPopupMenuPaintable: public Paintable, public UpdateMyFontInterface {
 
-    private: static const NAME: string = "MENU";
+    private: static const std::string NAME = "MENU";
 
-    const basicSetColorUtil: BasicColorSetUtil = BasicColorSetUtil.getInstance()!;
+    protected: const BasicColorSetUtil basicSetColorUtil = BasicColorSetUtil::getInstance();
 
-    private: const drawStringUtil: DrawVerticalStringUtil = DrawVerticalStringUtil.getInstance()!;
+    private: const DrawVerticalStringUtil drawStringUtil = DrawVerticalStringUtil::getInstance();
 
-    private: const label: string;
+    private: std::string label;
 
-    private: const foregroundBasicColor: BasicColor;
+    private: BasicColor foregroundBasicColor;
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: rectangle: Rectangle;
+    private: Rectangle rectangle;
 
-    private: BORDER: int32_t= 0;
+    private: int32_t BORDER= 0;
 
-    private: heightOffset: int32_t= 0;
+    private: int32_t heightOffset= 0;
 
-    private: offset: int32_t= 0;
+    private: int32_t offset= 0;
 
-    private: animationInterface: Animation;
+    private: Animation animationInterface;
 
-public constructor (Rectangle rectangle, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
-
-            super();
-        this.foregroundBasicColor= foregroundBasicColor;
+public: BasicPopupMenuPaintable(Rectangle rectangle, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor){
+this->foregroundBasicColor= foregroundBasicColor;
     
-this.label= BasicPopupMenuPaintable.NAME;
+this->label= BasicPopupMenuPaintable::NAME;
     
-this.rectangle= rectangle;
+this->rectangle= rectangle;
     
 
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
+                        if(J2MEUtil::isJ2ME() || J2MEUtil::isHTML())
                         
                                     {
-                                    this.animationInterface= NullAnimationFactory.getFactoryInstance()!.getInstance(0);
+                                    this->animationInterface= NullAnimationFactory::getFactoryInstance().getInstance(0);
     
 
                                     }
                                 
                         else {
-                            this.animationInterface= new RectangleFilledAnimation(this.rectangle.getWidth(), this.rectangle.getHeight(), BasicColorFactory.getInstance()!.TRANSPARENT_GREY);
+                            this->animationInterface= RectangleFilledAnimation(this->rectangle.getWidth(), this->rectangle.getHeight(), BasicColorFactory::getInstance().TRANSPARENT_GREY);
     
 
                         }
                             
-this.init(rectangle);
+this->init(rectangle);
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    isOpenGL: bool = features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL)!;;
+    bool isOpenGL = features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL);;
     
-this.drawStringUtil!.updateMeasurement(graphics, this.label);
-    
-
-    BORDER: int32_t = 0;;
+this->drawStringUtil.updateMeasurement(graphics, this->label);
     
 
-                        if(J2MEUtil.isHTML() || isOpenGL)
+    int32_t BORDER = 0;;
+    
+
+                        if(J2MEUtil::isHTML() || isOpenGL)
                         
                                     {
-                                    BORDER= MyFontProcessor.defaultCharWidth(font) /2;
+                                    BORDER= MyFontProcessor::defaultCharWidth(font) /2;
     
 
                                     }
                                 
                              else 
-                        if(AndroidUtil.isAndroid() || J2MEUtil.isJ2SE() || SWTUtil.isSWT)
+                        if(AndroidUtil::isAndroid() || J2MEUtil::isJ2SE() || SWTUtil::isSWT)
                         
                                     {
-                                    BORDER= MyFontProcessor.defaultCharWidth(font);
+                                    BORDER= MyFontProcessor::defaultCharWidth(font);
     
 
                                     }
                                 
                         else {
-                            BORDER= MyFontProcessor.defaultCharWidth(font) *2;
+                            BORDER= MyFontProcessor::defaultCharWidth(font) *2;
     
 
                         }
                             
-this.BORDER= BORDER;
+this->BORDER= BORDER;
     
-this.heightOffset= this.rectangle.getHeight() -(font.getHeight() *BasicPopupMenuPaintable.NAME.length);
-    
-
-                        if(OpenGLFeatureUtil.getInstance()!.isAnyThreed())
-                        
-                                    {
-                                    this.heightOffset -= font.getHeight() +2;
+this->heightOffset= this->rectangle.getHeight() -(font.getHeight() *NAME.size());
     
 
-                        if(AndroidUtil.isAndroid())
+                        if(OpenGLFeatureUtil::getInstance().isAnyThreed())
                         
                                     {
-                                    this.heightOffset= font.getHeight();
+                                    this->heightOffset -= font.getHeight() +2;
+    
+
+                        if(AndroidUtil::isAndroid())
+                        
+                                    {
+                                    this->heightOffset= font.getHeight();
     
 
                                     }
                                 
                         else {
-                            this.heightOffset -= font.getHeight() +2;
+                            this->heightOffset -= font.getHeight() +2;
     
 
                         }
@@ -238,7 +235,7 @@ this.heightOffset= this.rectangle.getHeight() -(font.getHeight() *BasicPopupMenu
 
                                     }
                                 
-this.offset= (this.heightOffset>>1) +(SWTJOGLProcessor.getInstance()!.isJOGL()
+this->offset= (this->heightOffset>>1) +(SWTJOGLProcessor::getInstance().isJOGL()
                         ?       
                                 4
                                 :
@@ -247,24 +244,24 @@ this.offset= (this.heightOffset>>1) +(SWTJOGLProcessor.getInstance()!.isJOGL()
 
     );
     
-this.myFontProcessor= MyFontProcessor.getInstance();
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public init(Rectangle rectangle){
-this.rectangle= rectangle;
+    public: void init(Rectangle rectangle){
+this->rectangle= rectangle;
     
 
-    width: int32_t = this.rectangle.getWidth()!;;
+    int32_t width = this->rectangle.getWidth();;
     
 
-    height: int32_t = this.rectangle.getHeight()!;;
+    int32_t height = this->rectangle.getHeight();;
     
 
-                        if(J2MEUtil.isJ2ME() || J2MEUtil.isHTML())
+                        if(J2MEUtil::isJ2ME() || J2MEUtil::isHTML())
                         
                                     {
                                     
@@ -272,11 +269,11 @@ this.rectangle= rectangle;
                                 
                         else {
                             
-    rectangleFilledAnimation: RectangleFilledAnimation = this.animationInterface as RectangleFilledAnimation;;
+    RectangleFilledAnimation rectangleFilledAnimation = this->animationInterface as RectangleFilledAnimation;;
     
-rectangleFilledAnimation!.setWidth(width);
+rectangleFilledAnimation.setWidth(width);
     
-rectangleFilledAnimation!.setHeight(height);
+rectangleFilledAnimation.setHeight(height);
     
 
                         }
@@ -284,29 +281,29 @@ rectangleFilledAnimation!.setHeight(height);
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
-    point: GPoint = this.rectangle.getPoint()!;;
+    GPoint point = this->rectangle.getPoint();;
     
 
-    x: int32_t = point.getX()!;;
+    int32_t x = point.getX();;
     
 
-    y: int32_t = point.getY()!;;
+    int32_t y = point.getY();;
     
 
-    width: int32_t = this.rectangle.getWidth()!;;
+    int32_t width = this->rectangle.getWidth();;
     
 
-    height: int32_t = this.rectangle.getHeight()!;;
+    int32_t height = this->rectangle.getHeight();;
     
-this.animationInterface!.paintXY(graphics, x, y);
+this->animationInterface.paintXY(graphics, x, y);
     
-this.basicSetColorUtil!.setBasicColorP(graphics, this.foregroundBasicColor);
+this->basicSetColorUtil.setBasicColorP(graphics, this->foregroundBasicColor);
     
-this.drawStringUtil!.paintVerticle(graphics, this.label, x +this.BORDER, y +this.offset, 0);
+this->drawStringUtil.paintVerticle(graphics, this->label, x +this->BORDER, y +this->offset, 0);
     
 graphics.drawRect(x, y, width, height);
     

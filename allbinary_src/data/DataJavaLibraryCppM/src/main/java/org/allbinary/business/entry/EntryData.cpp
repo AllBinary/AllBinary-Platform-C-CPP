@@ -42,43 +42,40 @@
 class EntryData
             : public Object
          {
-        
 
-    private: static const instance: EntryData = new EntryData();
+    private: static EntryData instance() { return EntryData(); }
 
-    public static EntryData getInstance(){
+    public: static EntryData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return EntryData.instance;
+                        return EntryData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: EntryData(){
+}
 
 
-    public const ID: string = "ENTRY_ID";
+    public: const std::string ID = "ENTRY_ID";
 
-    public const ENCRYPTION: string = "ENTRY_ENCRYPTION";
+    public: const std::string ENCRYPTION = "ENTRY_ENCRYPTION";
 
-    public const TIMECREATED: string = "ENTRY_TIMECREATED";
+    public: const std::string TIMECREATED = "ENTRY_TIMECREATED";
 
-    public const LASTMODIFIED: string = "ENTRY_LASTMODIFIED";
+    public: const std::string LASTMODIFIED = "ENTRY_LASTMODIFIED";
 
-    public const DEFAULT: string = "ENTRY_DEFAULT";
+    public: const std::string DEFAULT = "ENTRY_DEFAULT";
 
-    public const SPECIAL: string = "ENTRY_SPECIAL";
+    public: const std::string SPECIAL = "ENTRY_SPECIAL";
 
-    public const ENABLE: string = "ENTRY_ENABLE";
+    public: const std::string ENABLE = "ENTRY_ENABLE";
 
-    public const YES: string = "Yes";
+    public: const std::string YES = "Yes";
 
-    public const NO: string = "No";
+    public: const std::string NO = "No";
 
 };
 

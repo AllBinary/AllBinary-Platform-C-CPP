@@ -98,33 +98,32 @@
 class OrderStatusEmail
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: orderHistory: OrderHistory;
+    private: OrderHistory orderHistory;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: user: UserInterface;
+    private: UserInterface user;
 
-public constructor (AbeClientInformationInterface abeClientInformation, OrderHistory orderHistory);
-
-                //@Throws(Exception.constructor)
-            
-    public process();
+public: OrderStatusEmail(AbeClientInformationInterface abeClientInformation, OrderHistory orderHistory);
 
                 //@Throws(Exception.constructor)
             
-    notifyStoreAdmin();
+    public: void process();
 
                 //@Throws(Exception.constructor)
             
-    notifyUser();
+    private: void notifyStoreAdmin();
+
+                //@Throws(Exception.constructor)
+            
+    private: void notifyUser();
 
 };
 

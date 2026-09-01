@@ -60,25 +60,24 @@
 class KeyValueDrawString
             : public Object
         : public UpdateMyFontInterface {
-        
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: const LABEL: string;
+    private: std::string LABEL;
 
-    private: const labelX: int32_t;
+    private: int32_t labelX;
 
-    private: valueX: int32_t= 0;
+    private: int32_t valueX= 0;
 
-    private: value: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string value = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (string label, int32_t x);
+public: KeyValueDrawString(std::string label, int32_t x);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public paint(Graphics graphics, int32_t y);
+    public: void paint(Graphics graphics, int32_t y);
 
-    public update(string value);
+    public: void update(std::string value);
 
 };
 

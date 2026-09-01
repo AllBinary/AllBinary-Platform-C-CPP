@@ -54,13 +54,12 @@
 class CollisionType
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
- constructor (string name);
+: CollisionType(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

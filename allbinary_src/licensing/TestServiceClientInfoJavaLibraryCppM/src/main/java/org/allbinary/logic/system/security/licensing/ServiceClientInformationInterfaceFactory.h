@@ -47,11 +47,10 @@
 class ServiceClientInformationInterfaceFactory
             : public Object
          {
-        
 
-    private: static const instance: TestClientInformation = new TestClientInformation();
+    private: static TestClientInformation instance() { return TestClientInformation(); }
 
-    public static AbeClientInformationInterface getInstance();
+    public: static AbeClientInformationInterface getInstance();
 
 };
 

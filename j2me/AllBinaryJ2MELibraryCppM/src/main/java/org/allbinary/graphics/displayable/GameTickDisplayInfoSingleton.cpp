@@ -49,78 +49,77 @@
 class GameTickDisplayInfoSingleton
             : public Object
          {
-        
 
-    private: static const instance: GameTickDisplayInfoSingleton = new GameTickDisplayInfoSingleton();
+    private: static GameTickDisplayInfoSingleton instance() { return GameTickDisplayInfoSingleton(); }
 
-    public static GameTickDisplayInfoSingleton getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameTickDisplayInfoSingleton.instance;
-    
-}
-
-
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
-
-    private: lastWidth: int32_t = this.displayInfoSingleton!.getLastWidth()!;
-
-    private: lastHeight: int32_t = this.displayInfoSingleton!.getLastHeight()!;
-
-    private: lastHalfWidth: int32_t = this.displayInfoSingleton!.getLastHalfWidth()!;
-
-    private: lastHalfHeight: int32_t = this.displayInfoSingleton!.getLastHalfHeight()!;
-
-    public update(){
-this.lastWidth= this.displayInfoSingleton!.getLastWidth();
-    
-this.lastHeight= this.displayInfoSingleton!.getLastHeight();
-    
-this.lastHalfWidth= this.displayInfoSingleton!.getLastHalfWidth();
-    
-this.lastHalfHeight= this.displayInfoSingleton!.getLastHalfHeight();
-    
-}
-
-
-    public int32_t getLastWidth(){
+    public: static GameTickDisplayInfoSingleton getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastWidth;
+                        return GameTickDisplayInfoSingleton::instance();
     
 }
 
 
-    public int32_t getLastHeight(){
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
+    private: int32_t lastWidth = this->displayInfoSingleton.getLastWidth();
 
+    private: int32_t lastHeight = this->displayInfoSingleton.getLastHeight();
 
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastHeight;
+    private: int32_t lastHalfWidth = this->displayInfoSingleton.getLastHalfWidth();
+
+    private: int32_t lastHalfHeight = this->displayInfoSingleton.getLastHalfHeight();
+
+    public: void update(){
+this->lastWidth= this->displayInfoSingleton.getLastWidth();
+    
+this->lastHeight= this->displayInfoSingleton.getLastHeight();
+    
+this->lastHalfWidth= this->displayInfoSingleton.getLastHalfWidth();
+    
+this->lastHalfHeight= this->displayInfoSingleton.getLastHalfHeight();
     
 }
 
 
-    public int32_t getLastHalfWidth(){
+    public: int32_t getLastWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastHalfWidth;
+                        return this->lastWidth;
     
 }
 
 
-    public int32_t getLastHalfHeight(){
+    public: int32_t getLastHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.lastHalfHeight;
+                        return this->lastHeight;
+    
+}
+
+
+    public: int32_t getLastHalfWidth(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->lastHalfWidth;
+    
+}
+
+
+    public: int32_t getLastHalfHeight(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->lastHalfHeight;
     
 }
 

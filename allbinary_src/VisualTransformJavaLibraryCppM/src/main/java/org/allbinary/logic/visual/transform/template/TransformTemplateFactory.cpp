@@ -69,57 +69,54 @@
 class TransformTemplateFactory
             : public Object
          {
-        
 
-    private: static const instance: TransformTemplateFactory = new TransformTemplateFactory();
+    private: static TransformTemplateFactory instance() { return TransformTemplateFactory(); }
 
-    public static TransformTemplateFactory getInstance(){
+    public: static TransformTemplateFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformTemplateFactory.instance;
+                        return TransformTemplateFactory::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: TransformTemplateFactory(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, string templateName, HashMap<any, any> propertiesHashMap, PageContext pageContext){
+    public: TransformTemplateInterface getInstance(AbeClientInformationInterface abeClientInformation, std::string templateName, HashMap<any, any> propertiesHashMap, PageContext pageContext){
 
         try {
             
-    transformInfoEntity: TransformInfoEntity = TransformInfoEntityBuilder.getInstance()!;;
+    TransformInfoEntity transformInfoEntity = TransformInfoEntityBuilder::getInstance();;
     
 
-    transformInfoInterface: TransformInfoInterface = transformInfoEntity!.get(templateName, propertiesHashMap, pageContext)!;;
+    TransformInfoInterface transformInfoInterface = transformInfoEntity.get(templateName, propertiesHashMap, pageContext);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TransformInfoObjectFactory.getInstance()!.getInstance(abeClientInformation, transformInfoInterface) as TransformTemplateInterface;
+                        return TransformInfoObjectFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface) as TransformTemplateInterface;
     
 
                 //: 
 } catch(e) 
             {
 
-    error: string = "Failed To Get Instance";;
+    std::string error = "Failed To Get Instance";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERFACTORYERROR))
                         
                                     {
-                                    this.logUtil!.put(error +templateName +"->TemplateFactory", this, "getInstance(viewName, HashMap, PageContext)", e);
+                                    this->logUtil.put(error +templateName +"->TemplateFactory", this, "getInstance(viewName, HashMap, PageContext)", e);
     
 
                                     }

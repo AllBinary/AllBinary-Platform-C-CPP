@@ -45,9 +45,8 @@
         #include "BooleanFileVisitor.h"
 
 class ExcludeFileExtensionsBooleanFileVisitor: public BooleanFileVisitor {
-        
 
-public constructor (BasicArrayList filterStringBasicArrayList){
+public: ExcludeFileExtensionsBooleanFileVisitor(BasicArrayList filterStringBasicArrayList){
             super(filterStringBasicArrayList);
                     
 
@@ -56,16 +55,16 @@ public constructor (BasicArrayList filterStringBasicArrayList){
 }
 
 
-    public Boolean visit(AbFile file){
+    public: Boolean visit(AbFile file){
 
-                        if(this.getFilterStringBasicArrayList()!.size() == 0)
+                        if(this->getFilterStringBasicArrayList().size() == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                                     }
@@ -79,29 +78,29 @@ public constructor (BasicArrayList filterStringBasicArrayList){
 }
 
 
-    public Boolean visit(AbFile file, string fileNameString){
+    public: Boolean visit(AbFile file, std::string fileNameString){
 
-    fileNameAndExtension: string = file.getPath()!;;
+    std::string fileNameAndExtension = file.getPath();;
     
 
-                        if(fileNameAndExtension!.length > fileNameString!.length)
+                        if(fileNameAndExtension.size() > fileNameString.size())
                         
                                     {
                                     
-    startIndex: int32_t = fileNameAndExtension!.length -fileNameString!.length;;
+    int32_t startIndex = fileNameAndExtension.size() -fileNameString.size();;
     
 
-    fileName: string = fileNameAndExtension!.substring(startIndex)!;;
+    std::string fileName = fileNameAndExtension.substring(startIndex);;
     
 
-                        if(fileName!.compareTo(fileNameString) == 0)
+                        if(fileName.compareTo(fileNameString) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -113,7 +112,7 @@ public constructor (BasicArrayList filterStringBasicArrayList){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 

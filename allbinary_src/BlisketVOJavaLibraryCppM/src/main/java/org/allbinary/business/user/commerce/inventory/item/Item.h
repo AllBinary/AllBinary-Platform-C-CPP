@@ -71,54 +71,53 @@
         #include "BasicItem.h"
 #include "OrderItemInterface.h"
 
-class Item: public BasicItem: public OrderItemInterface {
-        
+class Item: public BasicItem, public OrderItemInterface {
 
-    private: group: string;
+    private: std::string group;
 
-    private: tax: string;
+    private: std::string tax;
 
-    private: shippingType: string;
+    private: std::string shippingType;
 
-    private: shippingCost: string;
+    private: std::string shippingCost;
 
-    private: shippedDate: string;
+    private: std::string shippedDate;
 
-    private: shippingAddress: StreetAddress;
+    private: StreetAddress shippingAddress;
 
-    private: special: string;
+    private: std::string special;
 
-public constructor (HashMap<any, any> itemHashMap);
+public: Item(HashMap<any, any> itemHashMap);
 
-public constructor ();
+public: Item();
 
-    setData(HashMap<any, any> itemHashMap);
+    private: void setData(HashMap<any, any> itemHashMap);
 
-    public setGroup(string value);
+    public: void setGroup(std::string value);
 
-    public setTax(string value);
+    public: void setTax(std::string value);
 
-    public setShippingType(string value);
+    public: void setShippingType(std::string value);
 
-    public setShippingCost(string value);
+    public: void setShippingCost(std::string value);
 
-    public setShippingAddress(StreetAddress value);
+    public: void setShippingAddress(StreetAddress value);
 
-    public setSpecial(string value);
+    public: void setSpecial(std::string value);
 
-    public string getGroup();
+    public: std::string getGroup();
 
-    public string getTax();
+    public: std::string getTax();
 
-    public string getShippingType();
+    public: std::string getShippingType();
 
-    public string getShippingCost();
+    public: std::string getShippingCost();
 
-    public StreetAddress getShippingAddress();
+    public: StreetAddress getShippingAddress();
 
-    public string getSpecial();
+    public: std::string getSpecial();
 
-    public HashMap<any, any> toHashMap();
+    public: HashMap<any, any> toHashMap();
 
 };
 

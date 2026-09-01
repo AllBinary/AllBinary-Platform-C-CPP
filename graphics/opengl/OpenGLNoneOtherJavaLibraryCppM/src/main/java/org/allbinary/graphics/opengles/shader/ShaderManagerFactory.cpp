@@ -43,26 +43,25 @@
 class ShaderManagerFactory
             : public Object
          {
-        
 
-    private: static const instance: ShaderManagerFactory = new ShaderManagerFactory();
+    private: static ShaderManagerFactory instance() { return ShaderManagerFactory(); }
 
-    public static ShaderManagerFactory getInstance(){
+    public: static ShaderManagerFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderManagerFactory.instance;
+                        return ShaderManagerFactory::instance();
     
 }
 
 
-    public ShaderManager create(){
+    public: ShaderManager create(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ShaderManager.getInstance();;
+                        return ShaderManager::getInstance();;
     
 }
 

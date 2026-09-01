@@ -76,38 +76,37 @@
 #include "LayerManagerEventListenerInterface.h"
 
 class LayerManagerEventHandler: public BasicEventHandler {
-        
 
-    private: static instance: LayerManagerEventHandler = new LayerManagerEventHandler();
+    private: static LayerManagerEventHandler instance = LayerManagerEventHandler();
 
-    public static LayerManagerEventHandler getInstance();
+    public: static LayerManagerEventHandler getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor ();
+private: LayerManagerEventHandler();
 
-    public addListener(LayerManagerEventListener layerManagerEventListener);
+    public: void addListener(LayerManagerEventListener layerManagerEventListener);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject);
+    public: void fireEvent(AllBinaryEventObject eventObject);
 
-    public const CREATE: string = "Create";
+    public: const std::string CREATE = "Create";
 
-    public const DELETE: string = "Delete";
+    public: const std::string DELETE = "Delete";
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public fireDeleteEvent(AllBinaryEventObject eventObject);
+    public: void fireDeleteEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface);
 
 };
 

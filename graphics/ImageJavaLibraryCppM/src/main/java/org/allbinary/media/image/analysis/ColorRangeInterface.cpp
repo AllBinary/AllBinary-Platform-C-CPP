@@ -42,31 +42,30 @@
         #include "Color.h"
 
 class ColorRangeInterface {
-        
 
     int32_t getMinRed()
 
-    setMinRed(int32_t minRed)
+    void setMinRed(int32_t minRed)
 
     int32_t getMaxRed()
 
-    setMaxRed(int32_t maxRed)
+    void setMaxRed(int32_t maxRed)
 
     int32_t getMinGreen()
 
-    setMinGreen(int32_t minGreen)
+    void setMinGreen(int32_t minGreen)
 
     int32_t getMaxGreen()
 
-    setMaxGreen(int32_t maxGreen)
+    void setMaxGreen(int32_t maxGreen)
 
     int32_t getMinBlue()
 
-    setMinBlue(int32_t minBlue)
+    void setMinBlue(int32_t minBlue)
 
     int32_t getMaxBlue()
 
-    setMaxBlue(int32_t maxBlue)
+    void setMaxBlue(int32_t maxBlue)
 
     bool isInRange(Color color)
 

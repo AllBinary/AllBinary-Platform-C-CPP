@@ -49,14 +49,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class VirtualKeyboardAPI1: public VirtualKeyboard: public VirtualKeyboardEventListenerInterface {
-        
+class VirtualKeyboardAPI1: public VirtualKeyboard, public VirtualKeyboardEventListenerInterface {
 
-    public static MIN_API: int32_t = 1;
+    public: static int32_t MIN_API = 1;
 
-    public static MAX_API: int32_t = 2;
+    public: static int32_t MAX_API = 2;
 
-public constructor (Activity activity);
+public: VirtualKeyboardAPI1(Activity activity);
 
 };
 

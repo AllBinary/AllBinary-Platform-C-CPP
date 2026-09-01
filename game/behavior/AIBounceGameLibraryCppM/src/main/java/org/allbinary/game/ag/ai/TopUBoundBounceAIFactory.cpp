@@ -82,40 +82,39 @@
 class TopUBoundBounceAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
-    velocityInterfaceCompositeInterface: VelocityInterfaceCompositeInterface = ownerLayerInterface as VelocityInterfaceCompositeInterface;;
+    VelocityInterfaceCompositeInterface velocityInterfaceCompositeInterface = ownerLayerInterface as VelocityInterfaceCompositeInterface;;
     
 
-    velocityInterface: VelocityInterface = velocityInterfaceCompositeInterface!.getVelocityProperties() as VelocityInterface;;
+    VelocityInterface velocityInterface = velocityInterfaceCompositeInterface.getVelocityProperties() as VelocityInterface;;
     
 
-    maxDistancePerTick: int32_t = (velocityInterface!.getMaxForwardVelocity()>>velocityInterface!.getVelocityXBasicDecimalP()!.getScaledFactor());;
+    int32_t maxDistancePerTick = (velocityInterface.getMaxForwardVelocity()>>velocityInterface.getVelocityXBasicDecimalP().getScaledFactor());;
     
 
-    halfWidth: int32_t = ownerLayerInterface!.getWidth() *2 +maxDistancePerTick +1;;
+    int32_t halfWidth = ownerLayerInterface.getWidth() *2 +maxDistancePerTick +1;;
     
 
-    halfHeight: int32_t = ownerLayerInterface!.getHeight() *2 +maxDistancePerTick +1;;
+    int32_t halfHeight = ownerLayerInterface.getHeight() *2 +maxDistancePerTick +1;;
     
 
-    point: GPoint = PointFactory.getInstance()!.createXY(halfWidth, halfHeight +60)!;;
+    GPoint point = PointFactory::getInstance().createXY(halfWidth, halfHeight +60);;
     
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    rectangle: Rectangle = new Rectangle(point, (displayInfo!.getLastWidth() -halfWidth -point.getX()), (displayInfo!.getLastHeight() -halfHeight -point.getY()));;
+    Rectangle rectangle = Rectangle(point, (displayInfo.getLastWidth() -halfWidth -point.getX()), (displayInfo.getLastHeight() -halfHeight -point.getY()));;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BoundBounceAI(ownerLayerInterface, gameInput, new TopULayerBounds(rectangle), new ReverseVelocityBoundsVisitor(ownerLayerInterface));
+                        return BoundBounceAI(ownerLayerInterface, gameInput, TopULayerBounds(rectangle), ReverseVelocityBoundsVisitor(ownerLayerInterface));
     
 }
 

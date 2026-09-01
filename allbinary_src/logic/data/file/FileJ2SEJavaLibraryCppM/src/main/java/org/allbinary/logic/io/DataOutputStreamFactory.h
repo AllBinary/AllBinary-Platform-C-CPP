@@ -53,19 +53,18 @@
 class DataOutputStreamFactory
             : public Object
          {
-        
 
-    private: static const instance: DataOutputStreamFactory = new DataOutputStreamFactory();
+    private: static DataOutputStreamFactory instance() { return DataOutputStreamFactory(); }
 
-    public static DataOutputStreamFactory getInstance();
-
-                //@Throws(Exception.constructor)
-            
-    public AbDataOutputStream getInstanceForAbFile(AbFile file);
+    public: static DataOutputStreamFactory getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public AbDataOutputStream getInstance(string filePath, string fileName);
+    public: AbDataOutputStream getInstanceForAbFile(AbFile file);
+
+                //@Throws(Exception.constructor)
+            
+    public: AbDataOutputStream getInstance(std::string filePath, std::string fileName);
 
 };
 

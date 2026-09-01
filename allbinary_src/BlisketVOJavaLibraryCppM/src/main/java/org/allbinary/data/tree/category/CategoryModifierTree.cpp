@@ -62,26 +62,25 @@
         #include "CategoryPrivateTree.h"
 #include "CategoryModifierTreeInterface.h"
 
-class CategoryModifierTree: public CategoryPrivateTree: public CategoryModifierTreeInterface {
-        
+class CategoryModifierTree: public CategoryPrivateTree, public CategoryModifierTreeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const directory: Directory = Directory.getInstance()!;
+    private: const Directory directory = Directory::getInstance();
 
-public constructor (CategoryFactoryInterface categoryFactoryInterface){
+public: CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface){
             super(categoryFactoryInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, "CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface)");
+                                    this->logUtil.putF(this->commonStrings.START, this, "CategoryModifierTree(CategoryFactoryInterface categoryFactoryInterface)");
     
 
                                     }
@@ -90,41 +89,41 @@ public constructor (CategoryFactoryInterface categoryFactoryInterface){
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface){
+    public: void insert(CategoryInterface parentCategoryInterface, CategoryInterface newChildCategoryInterface){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF("Inserting", this, "insert()");
+                                    this->logUtil.putF("Inserting", this, "insert()");
     
 
                                     }
                                 
 
-                        if(parentCategoryInterface!.isValid().valueOf())
+                        if(parentCategoryInterface.isValid().valueOf())
                         
                                     {
-                                    parentCategoryInterface!.addChild(newChildCategoryInterface);
+                                    parentCategoryInterface.addChild(newChildCategoryInterface);
     
 
-    directoryToBeCreatedAbPath: AbPath = new AbPath(newChildCategoryInterface!.getRootFilePath()!.toString() +newChildCategoryInterface!.getPath()!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath directoryToBeCreatedAbPath = AbPath(newChildCategoryInterface.getRootFilePath().toString() +newChildCategoryInterface.getPath().toString(), StringUtil::getInstance().EMPTY_STRING);;
     
-this.directory.create(directoryToBeCreatedAbPath);
+this->directory.create(directoryToBeCreatedAbPath);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.CATEGORY))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().CATEGORY))
                         
                                     {
-                                    this.logUtil!.putF("Saving", this, "insert()");
+                                    this->logUtil.putF("Saving", this, "insert()");
     
 
                                     }
                                 
-this.save(parentCategoryInterface);
+this->save(parentCategoryInterface);
     
-this.save(newChildCategoryInterface);
+this->save(newChildCategoryInterface);
     
 
                                     }
@@ -137,10 +136,10 @@ this.save(newChildCategoryInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "insert", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "insert", e);
     
 
                                     }
@@ -151,25 +150,25 @@ this.save(newChildCategoryInterface);
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public delete(CategoryInterface parentCategoryInterface, CategoryInterface existingChildCategoryInterface){
+    public: void delete_(CategoryInterface parentCategoryInterface, CategoryInterface existingChildCategoryInterface){
 
         try {
             
-                        if(parentCategoryInterface!.isValid().valueOf())
+                        if(parentCategoryInterface.isValid().valueOf())
                         
                                     {
-                                    parentCategoryInterface!.addChild(existingChildCategoryInterface);
+                                    parentCategoryInterface.addChild(existingChildCategoryInterface);
     
 
-    directoryToBeDeletedAbPath: AbPath = new AbPath(existingChildCategoryInterface!.getRootFilePath()!.toString() +existingChildCategoryInterface!.getPath()!.toString(), StringUtil.getInstance()!.EMPTY_STRING);;
+    AbPath directoryToBeDeletedAbPath = AbPath(existingChildCategoryInterface.getRootFilePath().toString() +existingChildCategoryInterface.getPath().toString(), StringUtil::getInstance().EMPTY_STRING);;
     
-this.delete(existingChildCategoryInterface);
+this->delete(existingChildCategoryInterface);
     
-parentCategoryInterface!.removeChild(existingChildCategoryInterface);
+parentCategoryInterface.removeChild(existingChildCategoryInterface);
     
-this.save(parentCategoryInterface);
+this->save(parentCategoryInterface);
     
-this.directory.remove(directoryToBeDeletedAbPath);
+this->directory.remove(directoryToBeDeletedAbPath);
     
 
                                     }
@@ -182,10 +181,10 @@ this.directory.remove(directoryToBeDeletedAbPath);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, this.commonStrings!.delete, e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, this->commonStrings.delete_, e);
     
 
                                     }

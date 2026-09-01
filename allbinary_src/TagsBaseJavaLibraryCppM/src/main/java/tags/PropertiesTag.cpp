@@ -45,50 +45,47 @@
         #include "CommandTag.h"
 
 class PropertiesTag: public CommandTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
+public: PropertiesTag(){
 
-            super();
-        
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 
                                     }
                                 
-this.propertiesHashMap= new HashMap<any, any>();
+this->propertiesHashMap= HashMap<any, any>();
     
 }
 
 
-    HashMap<any, any> getPropertiesHashMap(){
+    protected: HashMap<any, any> getPropertiesHashMap(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.propertiesHashMap;
+                        return this->propertiesHashMap;
     
 }
 
 
-    public int32_t doEndTag(){
+    public: int32_t doEndTag(){
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.JSPTAG))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().JSPTAG))
                         
                                     {
-                                    this.logUtil!.putF("Tag Ended", this, "doEndTag");
+                                    this->logUtil.putF("Tag Ended", this, "doEndTag");
     
 
                                     }
                                 
-this.propertiesHashMap= new HashMap<any, any>();
+this->propertiesHashMap= HashMap<any, any>();
     
 
 

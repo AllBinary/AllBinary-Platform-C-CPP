@@ -101,47 +101,46 @@
 class Features
             : public Object
          {
-        
 
-    private: static SINGLETON: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* SINGLETON = NullUtil::getInstance().NULL_OBJECT;
 
-    public static Features getInstance();
+    public: static Features getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: const defaultList: BasicArrayList;
+    private: BasicArrayList defaultList;
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public addDefault(Feature gameFeature);
+private: Features();
 
                 //@Throws(Exception.constructor)
             
-    public add(Feature gameFeature);
+    public: void addDefault(Feature gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public removeDefault(Feature gameFeature);
+    public: void add(Feature gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public remove(Feature gameFeature);
-
-    init();
-
-    public bool isDefault(Feature gameFeature);
-
-    public bool isFeature(Feature gameFeature);
+    public: void removeDefault(Feature gameFeature);
 
                 //@Throws(Exception.constructor)
             
-    public toggle(Feature gameFeature);
+    public: void remove(Feature gameFeature);
+
+    private: void init();
+
+    public: bool isDefault(Feature gameFeature);
+
+    public: bool isFeature(Feature gameFeature);
+
+                //@Throws(Exception.constructor)
+            
+    public: void toggle(Feature gameFeature);
 
 };
 

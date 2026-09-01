@@ -61,17 +61,16 @@
 #include "BasicGeographicMap.h"
 
 class GeographicMapCellPositionFactory: public GeographicMapCellPositionBaseFactory {
-        
 
-    private: static const hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: static const Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    public static Hashtable<any, any> getHashtable();
+    public: static Hashtable<any, any> getHashtable();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
                 //@Throws(Exception.constructor)
             
-    public BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface);
+    public: BasicGeographicMapCellPositionFactory getInstance(BasicGeographicMap geographicMapInterface);
 
 };
 

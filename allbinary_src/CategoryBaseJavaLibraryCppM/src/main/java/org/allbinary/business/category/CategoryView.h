@@ -76,19 +76,18 @@
 class CategoryView
             : public Object
         : public DomNodeInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: categoryInterface: CategoryInterface;
+    private: CategoryInterface categoryInterface;
 
-public constructor (CategoryInterface categoryInterface);
+public: CategoryView(CategoryInterface categoryInterface);
 
-    public CategoryInterface getCategoryInterface();
+    public: CategoryInterface getCategoryInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

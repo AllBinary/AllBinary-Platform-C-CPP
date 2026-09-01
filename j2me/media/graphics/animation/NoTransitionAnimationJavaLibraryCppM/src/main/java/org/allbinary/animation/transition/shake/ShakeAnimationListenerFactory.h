@@ -47,9 +47,8 @@
 class ShakeAnimationListenerFactory
             : public Object
          {
-        
 
-    public static ShakeAnimationListener getInstance();
+    public: static ShakeAnimationListener getInstance();
 
 };
 

@@ -42,52 +42,51 @@
 class RendererStateFactory
             : public Object
          {
-        
 
-    private: static const instance: RendererStateFactory = new RendererStateFactory();
+    private: static RendererStateFactory instance() { return RendererStateFactory(); }
 
-    public static RendererStateFactory getInstance(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return RendererStateFactory.instance;
-    
-}
-
-
-    private: loaded: bool = false;
-
-    private: surfaceChanged: bool = false;
-
-    public setLoaded(bool loaded){
-this.loaded= loaded;
-    
-}
-
-
-    public bool isLoaded(){
+    public: static RendererStateFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loaded;
+                        return RendererStateFactory::instance();
     
 }
 
 
-    public setSurfaceChanged(bool initialized){
-this.surfaceChanged= initialized;
+    private: bool loaded = false;
+
+    private: bool surfaceChanged = false;
+
+    public: void setLoaded(bool loaded){
+this->loaded= loaded;
     
 }
 
 
-    public bool isSurfaceChanged(){
+    public: bool isLoaded(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.surfaceChanged;
+                        return this->loaded;
+    
+}
+
+
+    public: void setSurfaceChanged(bool initialized){
+this->surfaceChanged= initialized;
+    
+}
+
+
+    public: bool isSurfaceChanged(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->surfaceChanged;
     
 }
 

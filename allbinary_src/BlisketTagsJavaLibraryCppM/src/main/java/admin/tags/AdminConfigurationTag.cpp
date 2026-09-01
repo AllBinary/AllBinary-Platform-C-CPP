@@ -45,14 +45,11 @@
         #include "TableTag.h"
 
 class AdminConfigurationTag: public TableTag {
-        
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new AdminConfigurationHelperFactory());
+public: AdminConfigurationTag(){
+this->setTagHelperFactory(AdminConfigurationHelperFactory());
     
-this.setTagRequestHelperFactory(new AdminConfigurationRequestHelperFactory());
+this->setTagRequestHelperFactory(AdminConfigurationRequestHelperFactory());
     
 }
 

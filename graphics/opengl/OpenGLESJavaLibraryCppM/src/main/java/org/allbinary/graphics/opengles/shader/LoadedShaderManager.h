@@ -46,11 +46,10 @@
 class LoadedShaderManager
             : public Object
          {
-        
 
-    private: static const instance: ShaderManager = new ShaderManager( -1,  -1);
+    private: static ShaderManager instance() { return ShaderManager(); }
 
-    public static ShaderManager getInstance();
+    public: static ShaderManager getInstance();
 
 };
 

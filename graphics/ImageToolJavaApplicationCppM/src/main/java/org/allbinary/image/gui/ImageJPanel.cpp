@@ -56,46 +56,43 @@
 #include "GroupLayout.h"
 #include "Short.h"
 
-class ImageJPanel: public javax.swing.JPanel {
-        
+class ImageJPanel: public javax::swing::JPanel {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const canvasStrings: CanvasStrings = CanvasStrings.getInstance()!;
+    private: const CanvasStrings canvasStrings = CanvasStrings::getInstance();
 
-    private: isDrawn: bool = false;
+    private: bool isDrawn = false;
 
-    private: bufferedImage: BufferedImage;
+    private: BufferedImage bufferedImage;
 
-public constructor (BufferedImage bufferedImage){
-
-            super();
-        this.initComponents();
+public: ImageJPanel(BufferedImage bufferedImage){
+this->initComponents();
     
-this.bufferedImage= bufferedImage;
+this->bufferedImage= bufferedImage;
     
-this.setSize(this.bufferedImage!.getWidth(
-                            nullptr), this.bufferedImage!.getHeight(
+this->setSize(this->bufferedImage.getWidth(
+                            nullptr), this->bufferedImage.getHeight(
                             nullptr));
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 
-                        if(!this.isDrawn)
+                        if(!this->isDrawn)
                         
                                     {
-                                    this.logUtil!.putF(this.commonStrings!.START, this, this.canvasStrings!.PAINT);
+                                    this->logUtil.putF(this->commonStrings.START, this, this->canvasStrings.PAINT);
     
-graphics.drawImage(bufferedImage, 0, 0, this.bufferedImage!.getWidth(
-                            nullptr), this.bufferedImage!.getHeight(
+graphics.drawImage(bufferedImage, 0, 0, this->bufferedImage.getWidth(
+                            nullptr), this->bufferedImage.getHeight(
                             nullptr), 
                             nullptr);
     
-this.isDrawn= true;
+this->isDrawn= true;
     
 
                                     }
@@ -103,15 +100,15 @@ this.isDrawn= true;
 }
 
 
-    initComponents(){
+    private: void initComponents(){
 
-    layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(this);;
+    javax::swing::GroupLayout layout = javax::swing::GroupLayout(this);;
     
-this.setLayout(layout);
+this->setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGap(0, 400, Short.MAX_VALUE));
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 400, Short::MAX_VALUE));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGap(0, 300, Short.MAX_VALUE));
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGap(0, 300, Short::MAX_VALUE));
     
 }
 

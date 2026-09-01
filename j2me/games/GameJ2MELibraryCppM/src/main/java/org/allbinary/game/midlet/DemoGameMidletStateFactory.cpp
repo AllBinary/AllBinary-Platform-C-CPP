@@ -43,32 +43,29 @@
 class DemoGameMidletStateFactory
             : public Object
          {
-        
 
-    private: static STATE: DemoGameMidletStateFactory = new DemoGameMidletStateFactory();
+    private: static DemoGameMidletStateFactory STATE = DemoGameMidletStateFactory();
 
-    public static DemoGameMidletStateFactory getInstance(){
+    public: static DemoGameMidletStateFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DemoGameMidletStateFactory.STATE;
+                        return DemoGameMidletStateFactory::STATE;
     
 }
 
 
-    public const NONE: DemoGameMidletState = new DemoGameMidletState();
+    public: const DemoGameMidletState NONE = DemoGameMidletState();
 
-    public const START_DEMO: DemoGameMidletState = new DemoGameMidletState();
+    public: const DemoGameMidletState START_DEMO = DemoGameMidletState();
 
-    public const START_GAME: DemoGameMidletState = new DemoGameMidletState();
+    public: const DemoGameMidletState START_GAME = DemoGameMidletState();
 
-    public const START_INPUT_MAPPING: DemoGameMidletState = new DemoGameMidletState();
+    public: const DemoGameMidletState START_INPUT_MAPPING = DemoGameMidletState();
 
-private constructor (){
-
-            super();
-        }
+private: DemoGameMidletStateFactory(){
+}
 
 
 };

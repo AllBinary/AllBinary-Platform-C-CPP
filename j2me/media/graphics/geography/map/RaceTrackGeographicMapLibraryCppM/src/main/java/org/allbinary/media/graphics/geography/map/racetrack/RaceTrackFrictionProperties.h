@@ -48,17 +48,16 @@
 class RaceTrackFrictionProperties
             : public Object
          {
-        
 
-    private: const ROAD_FRICTION_NOMINATOR: int32_t;
+    private: int32_t ROAD_FRICTION_NOMINATOR;
 
-    private: const GROUND_FRICTION_NOMINATOR: int32_t;
+    private: int32_t GROUND_FRICTION_NOMINATOR;
 
-public constructor (int32_t roadFriction, int32_t groundFriction);
+public: RaceTrackFrictionProperties(int32_t roadFriction, int32_t groundFriction);
 
-    public int32_t getRoadFrictionNominator();
+    public: int32_t getRoadFrictionNominator();
 
-    public int32_t getGroundFrictionNominator();
+    public: int32_t getGroundFrictionNominator();
 
 };
 

@@ -47,21 +47,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CharacterFrictionProperties: public FrictionProperties {
-        
 
-    private: const WATER_FRICTION_NOMINATOR: int32_t;
+    private: int32_t WATER_FRICTION_NOMINATOR;
 
-    private: const AIR_FRICTION_NOMINATOR: int32_t;
+    private: int32_t AIR_FRICTION_NOMINATOR;
 
-    private: const COLLISION_FRICTION_NOMINATOR: int32_t;
+    private: int32_t COLLISION_FRICTION_NOMINATOR;
 
-public constructor (int32_t airFriction, int32_t waterFriction, int32_t collisionFriction);
+public: CharacterFrictionProperties(int32_t airFriction, int32_t waterFriction, int32_t collisionFriction);
 
-    public int32_t getWATER_FRICTION_NOMINATOR();
+    public: int32_t getWATER_FRICTION_NOMINATOR();
 
-    public int32_t getAIR_FRICTION_NOMINATOR();
+    public: int32_t getAIR_FRICTION_NOMINATOR();
 
-    public int32_t getCOLLISION_FRICTION_NOMINATOR();
+    public: int32_t getCOLLISION_FRICTION_NOMINATOR();
 
 };
 

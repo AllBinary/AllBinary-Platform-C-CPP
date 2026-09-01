@@ -53,27 +53,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TextItemVisitor: public Visitor {
-        
 
-public constructor (){
-
-            super();
-        }
+public: TextItemVisitor(){
+}
 
 
-    public any visit(any = {} anyType){
+    public: Object* visit(Object* anyType){
 
-    value: string = anyType as string;;
+    std::string value = anyType as string;;
     
 
-                        if(value.length < 2)
+                        if(value.size() < 2)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.TRUE;
+                        return BooleanFactory::getInstance().TRUE;
     
 
                                     }
@@ -83,7 +80,7 @@ public constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BooleanFactory.getInstance()!.FALSE;
+                        return BooleanFactory::getInstance().FALSE;
     
 
                         }

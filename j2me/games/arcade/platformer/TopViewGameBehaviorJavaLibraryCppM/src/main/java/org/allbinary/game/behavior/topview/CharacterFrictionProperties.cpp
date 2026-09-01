@@ -44,52 +44,49 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CharacterFrictionProperties: public FrictionProperties {
-        
 
-    private: const WATER_FRICTION_NOMINATOR: int32_t;
+    private: int32_t WATER_FRICTION_NOMINATOR;
 
-    private: const AIR_FRICTION_NOMINATOR: int32_t;
+    private: int32_t AIR_FRICTION_NOMINATOR;
 
-    private: const COLLISION_FRICTION_NOMINATOR: int32_t;
+    private: int32_t COLLISION_FRICTION_NOMINATOR;
 
-public constructor (int32_t airFriction, int32_t waterFriction, int32_t collisionFriction){
-
-            super();
-        this.AIR_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -airFriction;
+public: CharacterFrictionProperties(int32_t airFriction, int32_t waterFriction, int32_t collisionFriction){
+this->AIR_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -airFriction;
     
-this.COLLISION_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -collisionFriction;
+this->COLLISION_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -collisionFriction;
     
-this.WATER_FRICTION_NOMINATOR= FrictionData.getFrictionDenominator() -waterFriction;
+this->WATER_FRICTION_NOMINATOR= FrictionData::getFrictionDenominator() -waterFriction;
     
 }
 
 
-    public int32_t getWATER_FRICTION_NOMINATOR(){
+    public: int32_t getWATER_FRICTION_NOMINATOR(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.WATER_FRICTION_NOMINATOR;
+                        return this->WATER_FRICTION_NOMINATOR;
     
 }
 
 
-    public int32_t getAIR_FRICTION_NOMINATOR(){
+    public: int32_t getAIR_FRICTION_NOMINATOR(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.AIR_FRICTION_NOMINATOR;
+                        return this->AIR_FRICTION_NOMINATOR;
     
 }
 
 
-    public int32_t getCOLLISION_FRICTION_NOMINATOR(){
+    public: int32_t getCOLLISION_FRICTION_NOMINATOR(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.COLLISION_FRICTION_NOMINATOR;
+                        return this->COLLISION_FRICTION_NOMINATOR;
     
 }
 

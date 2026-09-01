@@ -46,9 +46,8 @@
 class AbFileNativeUtil
             : public Object
          {
-        
 
-    public static File get(AbFile file){
+    public: static File get(AbFile file){
 
 
 

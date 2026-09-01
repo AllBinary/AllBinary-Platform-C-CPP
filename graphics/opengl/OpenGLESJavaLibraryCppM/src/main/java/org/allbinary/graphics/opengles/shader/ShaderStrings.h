@@ -45,19 +45,18 @@
 class ShaderStrings
             : public Object
          {
-        
 
-    private: static const instance: ShaderStrings = new ShaderStrings();
+    private: static ShaderStrings instance() { return ShaderStrings(); }
 
-    public static ShaderStrings getInstance();
+    public: static ShaderStrings getInstance();
 
-    public const NO_PROGRAM_HANDLE: string = "No program handle";
+    public: const std::string NO_PROGRAM_HANDLE = "No program handle";
 
-    public const UNIFORM_BLOCK_HANDLE: string = "Uniform Block Handle: ";
+    public: const std::string UNIFORM_BLOCK_HANDLE = "Uniform Block Handle: ";
 
-    public const UNIFORM_HANDLE: string = "Uniform Handle: ";
+    public: const std::string UNIFORM_HANDLE = "Uniform Handle: ";
 
-    public const UNIFORM_ATTRIBUTE_HANDLE: string = "Uniform Attribute Handle: ";
+    public: const std::string UNIFORM_ATTRIBUTE_HANDLE = "Uniform Attribute Handle: ";
 
 };
 

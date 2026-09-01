@@ -46,11 +46,10 @@
 class PrimaryPlayerQueueFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: PlayerQueue = new PlayerQueue(4);
+    private: static const PlayerQueue SINGLETON = PlayerQueue(4);
 
-    public static PlayerQueue getInstance();
+    public: static PlayerQueue getInstance();
 
 };
 

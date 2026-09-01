@@ -44,23 +44,20 @@
 #include "ListModel.h"
 
 class JListSwingWorker: public SwingWorker {
-        
 
-    private: jList: JList;
+    private: JList jList;
 
-    private: listModel: ListModel;
+    private: ListModel listModel;
 
-public constructor (JList jList, ListModel listModel){
-
-            super();
-        this.setJList(jList);
+public: JListSwingWorker(JList jList, ListModel listModel){
+this->setJList(jList);
     
-this.setListModel(listModel);
+this->setListModel(listModel);
     
 }
 
 
-    public any doInBackground(){
+    public: Object* doInBackground(){
 
 
 
@@ -70,40 +67,40 @@ this.setListModel(listModel);
 }
 
 
-    done(){
-this.getJList()!.setModel(this.getListModel());
+    protected: void done(){
+this->getJList().setModel(this->getListModel());
     
 }
 
 
-    JList getJList(){
+    private: JList getJList(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.jList;
+                        return this->jList;
     
 }
 
 
-    setJList(JList jList){
-this.jList= jList;
+    private: void setJList(JList jList){
+this->jList= jList;
     
 }
 
 
-    ListModel getListModel(){
+    private: ListModel getListModel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.listModel;
+                        return this->listModel;
     
 }
 
 
-    setListModel(ListModel listModel){
-this.listModel= listModel;
+    private: void setListModel(ListModel listModel){
+this->listModel= listModel;
     
 }
 

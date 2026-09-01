@@ -29,16 +29,15 @@
 class OpenGLESNullGraphicsFactory
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESGraphics = new OpenGLESGraphics();
+    private: static OpenGLESGraphics instance() { return OpenGLESGraphics(); }
 
-    public static OpenGLESGraphics getInstance(){
+    public: static OpenGLESGraphics getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLESNullGraphicsFactory.instance;
+                        return OpenGLESNullGraphicsFactory::instance();
     
 }
 

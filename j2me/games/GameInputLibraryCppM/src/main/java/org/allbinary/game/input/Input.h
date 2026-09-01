@@ -60,23 +60,22 @@
 class Input
             : public Object
          {
-        
 
-    private: id: int32_t= 0;
+    private: int32_t id= 0;
 
-    private: name: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string name = StringUtil::getInstance().EMPTY_STRING;
 
-public constructor (int32_t id, string name);
+public: Input(int32_t id, std::string name);
 
-    public int32_t getId();
+    public: int32_t getId();
 
-    setId(int32_t key);
+    private: void setId(int32_t key);
 
-    public string getName();
+    public: std::string getName();
 
-    setName(string keyName);
+    private: void setName(std::string keyName);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

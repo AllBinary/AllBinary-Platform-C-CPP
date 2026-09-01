@@ -57,19 +57,18 @@
 class PlatformBitmapBase
             : public Object
          {
-        
 
-    public static const NULL_PLATFORM_BITMAP_BASE: PlatformBitmapBase = new PlatformBitmapBase();
+    public: static const PlatformBitmapBase NULL_PLATFORM_BITMAP_BASE = PlatformBitmapBase();
 
-    public alpha: int32_t = 255;
+    public: int32_t alpha = 255;
 
-    public basicColor: BasicColor = BasicColorFactory.getInstance()!.NULL_COLOR;
+    public: BasicColor basicColor = BasicColorFactory::getInstance().NULL_COLOR;
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
-    public Image getImage();
+    public: Image getImage();
 
 };
 

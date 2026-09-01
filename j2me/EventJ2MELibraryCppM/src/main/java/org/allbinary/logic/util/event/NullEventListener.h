@@ -47,11 +47,10 @@
 class NullEventListener
             : public Object
         : public EventListenerInterface {
-        
 
-    public static const NULL_EVENT_LISTENER: NullEventListener = new NullEventListener();
+    public: static const NullEventListener NULL_EVENT_LISTENER = NullEventListener();
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
 };
 

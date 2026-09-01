@@ -48,15 +48,14 @@
 class InputAutomationConfigurationModuleChangeEvent
             : public Object
          {
-        
 
-    private: inputAutomationModuleConfiguration: InputAutomationModuleConfiguration;
+    private: InputAutomationModuleConfiguration inputAutomationModuleConfiguration;
 
-public constructor (InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+public: InputAutomationConfigurationModuleChangeEvent(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
 
-    public InputAutomationModuleConfiguration getInputAutomationModuleConfiguration();
+    public: InputAutomationModuleConfiguration getInputAutomationModuleConfiguration();
 
-    setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
+    private: void setInputAutomationModuleConfiguration(InputAutomationModuleConfiguration inputAutomationModuleConfiguration);
 
 };
 

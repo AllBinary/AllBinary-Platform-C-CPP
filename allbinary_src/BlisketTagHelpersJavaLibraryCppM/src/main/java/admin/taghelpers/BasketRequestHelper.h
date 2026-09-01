@@ -83,35 +83,34 @@
         #include "TagHelper.h"
 
 class BasketRequestHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: const storeFrontInterface: StoreFrontInterface;
+    private: const StoreFrontInterface storeFrontInterface;
 
-    private: const propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: id: string;
+    private: std::string id;
 
-    private: num: string;
+    private: std::string num;
 
-    private: const MAX: int32_t = 200;
+    private: const int32_t MAX = 200;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: BasketRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
-    public Boolean addItemToBasket();
+    public: Boolean addItemToBasket();
 
-    public Boolean removeItemFromBasket();
+    public: Boolean removeItemFromBasket();
 
-    public Boolean adjustBasket();
+    public: Boolean adjustBasket();
 
 };
 

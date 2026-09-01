@@ -49,16 +49,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryOrientationSensor.h"
 
-class NoGyroSensor: public AllBinaryOrientationSensor: public AllBinarySensorListener {
-        
+class NoGyroSensor: public AllBinaryOrientationSensor, public AllBinarySensorListener {
 
-public constructor ();
+public: NoGyroSensor();
 
                 //@Throws(Exception.constructor)
             
-    public Orientation getOrientation();
+    public: Orientation getOrientation();
 
-    public onSensorChange();
+    public: void onSensorChange();
 
 };
 

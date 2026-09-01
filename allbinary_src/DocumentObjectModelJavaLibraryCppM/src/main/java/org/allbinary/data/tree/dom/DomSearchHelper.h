@@ -56,25 +56,24 @@
 class DomSearchHelper
             : public Object
          {
-        
 
-    public static Node getNodeNoThrow(string nodeName, NodeList nodeList);
-
-                //@Throws(Exception.constructor)
-            
-    public static Node getNode(string nodeName, NodeList nodeList);
+    public: static Node getNodeNoThrow(std::string nodeName, NodeList nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public static NodeList getChildNodeList(string nodeName, NodeList nodeList);
+    public: static Node getNode(std::string nodeName, NodeList nodeList);
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getAllNodes(string nodeName, NodeList nodeList);
+    public: static NodeList getChildNodeList(std::string nodeName, NodeList nodeList);
 
-    public static Vector getAllNodesNoThrow(string nodeName, NodeList nodeList);
+                //@Throws(Exception.constructor)
+            
+    public: static Vector getAllNodes(std::string nodeName, NodeList nodeList);
 
-private constructor ();
+    public: static Vector getAllNodesNoThrow(std::string nodeName, NodeList nodeList);
+
+private: DomSearchHelper();
 
 };
 

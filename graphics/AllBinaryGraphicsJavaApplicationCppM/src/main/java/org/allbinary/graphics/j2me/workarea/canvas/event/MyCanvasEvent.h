@@ -45,20 +45,19 @@
         #include "EventObject.h"
 #include "MyCanvasEventSource.h"
 
-class MyCanvasEvent: public java.util.EventObject {
-        
+class MyCanvasEvent: public java::util::EventObject {
 
-public constructor (any = {} source);
+public: MyCanvasEvent(Object* source);
 
-    public any getSource();
+    public: Object* getSource();
 
-    public string toString();
+    public: std::string toString();
 
-    public string getCommand();
+    public: std::string getCommand();
 
-    public MutableTreeNode getTreeNode();
+    public: MutableTreeNode getTreeNode();
 
-    public double getAngle();
+    public: double getAngle();
 
 };
 

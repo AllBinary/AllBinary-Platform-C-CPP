@@ -59,30 +59,29 @@
         #include "CategoryView.h"
 #include "CategoryInterface.h"
 
-class CategoryComponent: public CategoryView: public TransformInterface {
-        
+class CategoryComponent: public CategoryView, public TransformInterface {
 
-public constructor (CategoryInterface categoryInterface);
+public: CategoryComponent(CategoryInterface categoryInterface);
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId();
+    public: int32_t getTypeId();
 
-    public TransformDocumentInterface getTransformDocumentInterface();
-
-                //@Throws(Exception.constructor)
-            
-    public TransformInfoInterface getTransformInfoInterface();
-
-    public setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface);
+    public: TransformDocumentInterface getTransformDocumentInterface();
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc();
+    public: TransformInfoInterface getTransformInfoInterface();
+
+    public: void setTransformDocumentInterface(TransformDocumentInterface viewDocumentInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Document toXmlDoc();
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

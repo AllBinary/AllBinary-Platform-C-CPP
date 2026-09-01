@@ -64,17 +64,16 @@
 class MotionEventFactory
             : public Object
         : public AllBinaryEventObjectFactoryInterface {
-        
 
-    private: static index: int32_t = 0;
+    private: static int32_t index = 0;
 
-    private: const source: any;
+    private: Object* source;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-public constructor (any = {} source, int32_t id);
+public: MotionEventFactory(Object* source, int32_t id);
 
-    public AllBinaryEventObject getInstance();
+    public: AllBinaryEventObject getInstance();
 
 };
 

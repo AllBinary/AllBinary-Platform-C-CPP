@@ -66,34 +66,31 @@
 #include "PressGameKeyEventListenerInterface.h"
 
 class PressGameKeyEventHandler: public BasicEventHandler {
-        
 
-    private: static const instance: PressGameKeyEventHandler = new PressGameKeyEventHandler();
+    private: static PressGameKeyEventHandler instance() { return PressGameKeyEventHandler(); }
 
-    public static PressGameKeyEventHandler getInstance(){
+    public: static PressGameKeyEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PressGameKeyEventHandler.instance;
+                        return PressGameKeyEventHandler::instance();
     
 }
 
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-private constructor (){
-
-            super();
-        }
+private: PressGameKeyEventHandler(){
+}
 
 
-    public addListener(PlayerGameInput playerGameInput){
+    public: void addListener(PlayerGameInput playerGameInput){
 
-                        if(!this.list.contains(playerGameInput))
+                        if(!this->list.contains(playerGameInput))
                         
                                     {
-                                    this.list.add(playerGameInput);
+                                    this->list.add(playerGameInput);
     
 
                                     }
@@ -101,16 +98,16 @@ private constructor (){
 }
 
 
-    public removeAllListeners(){
-this.list.clear();
+    public: void removeAllListeners(){
+this->list.clear();
     
 super.removeAllListeners();
     
 }
 
 
-    public removeListener(EventListenerInterface eventListenerInterface){
-this.list.remove(eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface){
+this->list.remove(eventListenerInterface);
     
 super.removeListener(eventListenerInterface);
     
@@ -119,26 +116,26 @@ super.removeListener(eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEvent(AllBinaryEventObject eventObject){
+    public: void fireEvent(AllBinaryEventObject eventObject){
 
 
 
 
                         for (
-    index: int32_t = this.list.size()!;--index >= 0; )
+    int32_t index = this->list.size();--index >= 0; )
         {
 
         try {
             
-    playerGameInput: PlayerGameInput = this.list.objectArray[index]! as PlayerGameInput;;
+    PlayerGameInput playerGameInput = this->list.objectArray[index]! as PlayerGameInput;;
     
-playerGameInput!.onPressGameKeyEvent(eventObject as GameKeyEvent);
+playerGameInput.onPressGameKeyEvent(eventObject as GameKeyEvent);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, EventStrings.getInstance()!.FIRE_EVENT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, EventStrings::getInstance().FIRE_EVENT, e);
     
 }
 
@@ -151,11 +148,11 @@ super.fireEvent(eventObject);
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    pressGameKeyEventListenerInterface: PressGameKeyEventListenerInterface = (eventListenerInterface as PressGameKeyEventListenerInterface);;
+    PressGameKeyEventListenerInterface pressGameKeyEventListenerInterface = (eventListenerInterface as PressGameKeyEventListenerInterface);;
     
-pressGameKeyEventListenerInterface!.onPressGameKeyEvent(eventObject as GameKeyEvent);
+pressGameKeyEventListenerInterface.onPressGameKeyEvent(eventObject as GameKeyEvent);
     
 }
 

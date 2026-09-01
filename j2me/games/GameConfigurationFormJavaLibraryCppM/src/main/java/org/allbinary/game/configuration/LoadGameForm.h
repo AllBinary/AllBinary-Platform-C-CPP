@@ -93,25 +93,24 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LoadGameForm: public CommandForm {
-        
 
-    private: areChoices: bool= false;
+    private: bool areChoices= false;
 
-public constructor (CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+public: LoadGameForm(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
-    public initCommands(CommandListener cmdListener);
+    public: void initCommands(CommandListener cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void update();
 
-    add(BasicArrayList list, string name, int32_t option);
+    private: void add(BasicArrayList list, std::string name, int32_t option);
 
-    ChoiceGroup getChoiceGroup(BasicArrayList list, string name, int32_t option);
+    private: ChoiceGroup getChoiceGroup(BasicArrayList list, std::string name, int32_t option);
 
-    public int32_t getSelectedId();
+    public: int32_t getSelectedId();
 
-    public int32_t getSelectedText();
+    public: int32_t getSelectedText();
 
 };
 

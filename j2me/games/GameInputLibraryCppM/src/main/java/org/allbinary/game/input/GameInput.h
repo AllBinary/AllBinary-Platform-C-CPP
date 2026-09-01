@@ -75,41 +75,40 @@
 class GameInput
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameKeyEventList: BasicArrayList;
+    private: BasicArrayList gameKeyEventList;
 
-    private: const removalGameKeyEventList: BasicArrayList;
+    private: BasicArrayList removalGameKeyEventList;
 
-    const isRemoveDuplicateKeyPresses: bool;
+    protected: bool isRemoveDuplicateKeyPresses;
 
-public constructor (BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList);
+public: GameInput(BasicArrayList gameKeyEventList, BasicArrayList removalGameKeyEventList);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public add(GameKeyEvent gameKeyEvent);
+    public: void add(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public addForRemoval(GameKeyEvent gameKeyEvent);
+    public: void addForRemoval(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isForRemoval(GameKeyEvent gameKeyEvent);
+    public: bool isForRemoval(GameKeyEvent gameKeyEvent);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public clear();
+    public: void clear();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeNonAIInputGameKeyEvents();
+    public: void removeNonAIInputGameKeyEvents();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public update();
+    public: void update();
 
-    BasicArrayList getRemovalGameKeyEventList();
+    protected: BasicArrayList getRemovalGameKeyEventList();
 
-    BasicArrayList getGameKeyEventList();
+    protected: BasicArrayList getGameKeyEventList();
 
 };
 

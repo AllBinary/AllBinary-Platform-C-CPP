@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -82,99 +84,94 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HelpPaintable: public Paintable: public UpdateMyFontInterface {
-        
+class HelpPaintable: public Paintable, public UpdateMyFontInterface {
 
-    const displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    protected: const DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();
 
-    const updateMyFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    protected: const MyFontProcessor updateMyFontProcessor = UpdateMyFontProcessor(this);
 
-    myFontProcessor: MyFontProcessor = this.updateMyFontProcessor;
+    protected: MyFontProcessor myFontProcessor = this->updateMyFontProcessor;
 
-    anchor: int32_t = Anchor.TOP_LEFT;
+    protected: int32_t anchor = Anchor::TOP_LEFT;
 
-    const title: string;
+    protected: std::string title;
 
-    inputInfo: std::vector<string> = StringUtil.getInstance()!.getArrayInstance()!;
+    protected: std::vector<std::string> inputInfo = StringUtil::getInstance().getArrayInstance();
 
-    basicColor: BasicColor;
+    protected: BasicColor basicColor;
 
-    titleBeginWidth: int32_t= 0;
+    protected: int32_t titleBeginWidth= 0;
 
-    private: beginWidthArray: std::vector<int32_t> = NullUtil.getInstance()!.NULL_INT_ARRAY;
+    private: std::vector<int32_t> beginWidthArray = NullUtil::getInstance().NULL_INT_ARRAY;
 
-    private: charHeight: int32_t= 0;
+    private: int32_t charHeight= 0;
 
-public constructor (string title, BasicColor backgroundBasicColor, BasicColor basicColor){
-
-            super();
-        this.title= title;
+public: HelpPaintable(std::string title, BasicColor backgroundBasicColor, BasicColor basicColor){
+this->title= title;
     
-this.basicColor= basicColor;
+this->basicColor= basicColor;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.titleBeginWidth= (font.stringWidth(this.title)>>1);
+this->titleBeginWidth= (font.stringWidth(this->title)>>1);
     
-this.charHeight= font.getHeight();
+this->charHeight= font.getHeight();
     
 
-    size: int32_t = this.inputInfo!.length
-                ;;
+    int32_t size = this->inputInfo.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.beginWidthArray[index]= (font.stringWidth(this.inputInfo[index]!)>>1);
+this->beginWidthArray[index]= (font.stringWidth(this->inputInfo[index]!)>>1);
     
 }
 
-this.myFontProcessor= MyFontProcessor.getInstance();
-    
-}
-
-
-    public setInputInfoP(std::vector<string> inputInfo){
-this.inputInfo= inputInfo;
-    
-this.beginWidthArray= new Array(this.inputInfo!.length);
-    
-this.myFontProcessor= this.updateMyFontProcessor;
+this->myFontProcessor= MyFontProcessor::getInstance();
     
 }
 
 
-    public paint(Graphics graphics){
-this.myFontProcessor!.process(graphics);
+    public: void setInputInfoP(std::vector<std::string> inputInfo){
+this->inputInfo= inputInfo;
+    
+this->beginWidthArray= new Array(this->inputInfo.length);
+    
+this->myFontProcessor= this->updateMyFontProcessor;
+    
+}
+
+
+    public: void paint(Graphics graphics){
+this->myFontProcessor.process(graphics);
     
 
-    halfWidth: int32_t = this.displayInfo!.getLastHalfWidth()!;;
+    int32_t halfWidth = this->displayInfo.getLastHalfWidth();;
     
-graphics.setColor(this.basicColor!.intValue());
+graphics.setColor(this->basicColor.intValue());
     
-graphics.drawString(this.title, halfWidth -this.titleBeginWidth, this.charHeight, this.anchor);
+graphics.drawString(this->title, halfWidth -this->titleBeginWidth, this->charHeight, this->anchor);
     
 
-    size: int32_t = this.inputInfo!.length
-                ;;
+    int32_t size = this->inputInfo.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-graphics.drawString(this.inputInfo[index]!, halfWidth -this.beginWidthArray[index], (index +3) *this.charHeight, this.anchor);
+graphics.drawString(this->inputInfo[index]!, halfWidth -this->beginWidthArray[index], (index +3) *this->charHeight, this->anchor);
     
 }
 

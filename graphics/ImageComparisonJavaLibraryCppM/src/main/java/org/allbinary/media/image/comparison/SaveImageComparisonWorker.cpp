@@ -66,87 +66,84 @@
 class SaveImageComparisonWorker
             : public Object
         : public ImageComparisonResultsListener {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: running: bool= false;
+    private: bool running= false;
 
-    private: const imageComparisonInfoVector: Vector = new Vector();
+    private: const Vector imageComparisonInfoVector = Vector();
 
-public constructor (){
-
-            super();
-        }
+public: SaveImageComparisonWorker(){
+}
 
 
-    public onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
-this.imageComparisonInfoVector!.add(imageComparisonResultsEvent);
+    public: void onImageComparisonResultsEvent(ImageComparisonResultsEvent imageComparisonResultsEvent){
+this->imageComparisonInfoVector.add(imageComparisonResultsEvent);
     
-this.run();
+this->run();
     
 }
 
 
-    public onEvent(AllBinaryEventObject allBinaryEventObject){
-this.onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
+    public: void onEvent(AllBinaryEventObject allBinaryEventObject){
+this->onImageComparisonResultsEvent(allBinaryEventObject as ImageComparisonResultsEvent);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.running;
+                        return this->running;
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public setRunning(bool running){
-this.running= running;
+    public: void setRunning(bool running){
+this->running= running;
     
 }
 
 
-    public run(){
+    public: void run(){
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.RUN);
+            this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.RUN);
     
-this.setRunning(true);
-    
-
-    timeHelper: TimeDelayHelper = new TimeDelayHelper(1000);;
-    
-timeHelper!.setStartTimeTNT();
+this->setRunning(true);
     
 
-    imageComparisonResultsEvent: ImageComparisonResultsEvent = this.imageComparisonInfoVector!.get(0) as ImageComparisonResultsEvent;;
+    TimeDelayHelper timeHelper = TimeDelayHelper(1000);;
+    
+timeHelper.setStartTimeTNT();
     
 
-    imageComparisonInfo: ImageComparisonResult = imageComparisonResultsEvent!.getImageComparisonResult()!;;
+    ImageComparisonResultsEvent imageComparisonResultsEvent = this->imageComparisonInfoVector.get(0) as ImageComparisonResultsEvent;;
     
-this.logUtil!.putF(imageComparisonInfo!.toString(), this, this.commonStrings!.RUN);
+
+    ImageComparisonResult imageComparisonInfo = imageComparisonResultsEvent.getImageComparisonResult();;
     
-new ComparisonImageInputOutput().save(imageComparisonInfo, imageComparisonInfo!.getFrameTwo());
+this->logUtil.putF(imageComparisonInfo.toString(), this, this->commonStrings.RUN);
     
-this.imageComparisonInfoVector!.remove(imageComparisonInfo);
+ComparisonImageInputOutput().save(imageComparisonInfo, imageComparisonInfo.getFrameTwo());
     
-this.logUtil!.putF(CommonLabels.getInstance()!.ELAPSED +timeHelper!.getElapsedTNT(), this, this.commonStrings!.RUN);
+this->imageComparisonInfoVector.remove(imageComparisonInfo);
     
-this.logUtil!.putF(this.commonStrings!.END, this, this.commonStrings!.RUN);
+this->logUtil.putF(CommonLabels::getInstance().ELAPSED +timeHelper.getElapsedTNT(), this, this->commonStrings.RUN);
+    
+this->logUtil.putF(this->commonStrings.END, this, this->commonStrings.RUN);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.RUN, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.RUN, e);
     
 }
 

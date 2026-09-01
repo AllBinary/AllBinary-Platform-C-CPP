@@ -76,25 +76,24 @@
 class LayerInterfaceFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: LayerInterfaceFactory = new LayerInterfaceFactory();
+    private: static const LayerInterfaceFactory SINGLETON = LayerInterfaceFactory();
 
-    public static LayerInterfaceFactory getInstance();
+    public: static LayerInterfaceFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: list: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList list = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    public init();
+    public: void init();
 
-    private: const HASHTABLE_LABEL: string = "Hashtable: ";
+    private: const std::string HASHTABLE_LABEL = "Hashtable: ";
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryLayer getNexInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
+    public: AllBinaryLayer getNexInstance(Hashtable<any, any> hashtable, int32_t x, int32_t y, int32_t z);
 
-    public add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
+    public: void add(LayerInterfaceFactoryInterface layerInterfaceFactoryInterface);
 
 };
 

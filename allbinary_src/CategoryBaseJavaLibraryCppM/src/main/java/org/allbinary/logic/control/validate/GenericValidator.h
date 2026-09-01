@@ -48,13 +48,12 @@
         #include "ValidatorBase.h"
 
 class GenericValidator: public ValidatorBase {
-        
 
-public constructor ();
+public: GenericValidator();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(org.w3c.dom.Document document);
+    public: Node toValidationInfoNode(org::w3c::dom::Document document);
 
 };
 

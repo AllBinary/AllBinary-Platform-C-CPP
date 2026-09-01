@@ -68,34 +68,31 @@
         #include "TableTag.h"
 
 class StoreFrontsTag: public TableTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new StoreFrontsHelperFactory());
+public: StoreFrontsTag(){
+this->setTagHelperFactory(StoreFrontsHelperFactory());
     
-this.setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
+this->setTagRequestHelperFactory(StoreFrontsRequestHelperFactory());
     
 }
 
 
                 //@Throws(LicensingException.constructor)
             
-    string generateSelect(){
+    private: std::string generateSelect(){
 
         try {
             
-    anyType: any = this.getTagHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = this->getTagHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("generateSelect", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("generateSelect", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -119,13 +116,13 @@ this.setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 /* catch(e) 
             {
 
-    error: string = "Failed to generate storefronts select";;
+    std::string error = "Failed to generate storefronts select";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "generateSelect()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateSelect()", e);
     
 
                                     }
@@ -143,18 +140,18 @@ this.setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
                 //@Throws(LicensingException.constructor)
             
-    string install(){
+    private: std::string install(){
 
         try {
             
-    anyType: any = this.getTagRequestHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = this->getTagRequestHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("install", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("install", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -178,13 +175,13 @@ this.setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 /* catch(e) 
             {
 
-    error: string = "Failed to generate storefronts select";;
+    std::string error = "Failed to generate storefronts select";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "generateSelect()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "generateSelect()", e);
     
 
                                     }
@@ -202,18 +199,18 @@ this.setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
                 //@Throws(LicensingException.constructor)
             
-    string sendStoreCreatedEmails(){
+    private: std::string sendStoreCreatedEmails(){
 
         try {
             
-    anyType: any = this.getTagRequestHelperFactoryInterface()!.getInstance(this.getPropertiesHashMap(), pageContext)!;;
+    Object* anyType = this->getTagRequestHelperFactoryInterface().getInstance(this->getPropertiesHashMap(), pageContext);;
     
 
-    method: Method = anyType!.constructor.name.getMethod("sendStoreCreatedEmails", 
-                            nullptr)!;;
+    Method method = anyType->constructor.name.getMethod("sendStoreCreatedEmails", 
+                            nullptr);;
     
 
-    result: string = method.invoke(anyType, 
+    std::string result = method.invoke(anyType, 
                             nullptr) as string;;
     
 
@@ -237,13 +234,13 @@ this.setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 /* catch(e) 
             {
 
-    error: string = "Failed to send email";;
+    std::string error = "Failed to send email";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "sendStoreCreatedEmails()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "sendStoreCreatedEmails()", e);
     
 
                                     }
@@ -261,62 +258,62 @@ this.setTagRequestHelperFactory(new StoreFrontsRequestHelperFactory());
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag(){
+    public: int32_t doStartTag(){
 
         try {
             
-                        if(this.isEnabled())
+                        if(this->isEnabled())
                         
                                     {
                                     
-                        if(this.getCommand() != 
-                                    null
+                        if(this->getCommand() != 
+                                    nullptr
                                 )
                         
                                     {
                                     
-    storeFrontData: StoreFrontData = StoreFrontData.getInstance()!;;
+    StoreFrontData storeFrontData = StoreFrontData::getInstance();;
     
 
-                        if(this.getCommand()!.compareTo(storeFrontData!.SELECT) == 0)
+                        if(this->getCommand().compareTo(storeFrontData.SELECT) == 0)
                         
                                     {
-                                    this.pageContext!.getOut()!.print(this.generateSelect());
+                                    this->pageContext.getOut().print(this->generateSelect());
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(storeFrontData!.INSTALL) == 0)
+                        if(this->getCommand().compareTo(storeFrontData.INSTALL) == 0)
                         
                                     {
-                                    this.getPropertiesHashMap()!.put("current", this.getCurrent());
+                                    this->getPropertiesHashMap().put("current", this->getCurrent());
     
-this.getPropertiesHashMap()!.put("total", this.getTotal());
+this->getPropertiesHashMap().put("total", this->getTotal());
     
 
-                        if(this.getCurrent()!.intValue() == this.getTotal()!.intValue())
+                        if(this->getCurrent().intValue() == this->getTotal().intValue())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TagSupport.EVAL_BODY_INCLUDE;
+                        return TagSupport::EVAL_BODY_INCLUDE;
     
 
                                     }
                                 
-this.install();
+this->install();
     
 
                                     }
                                 
                              else 
-                        if(this.getCommand()!.compareTo(storeFrontData!.INSTALL_COMPLETE) == 0)
+                        if(this->getCommand().compareTo(storeFrontData.INSTALL_COMPLETE) == 0)
                         
                                     {
-                                    this.sendStoreCreatedEmails();
+                                    this->sendStoreCreatedEmails();
     
 
                                     }
@@ -347,7 +344,7 @@ this.install();
                 //: 
 } catch(e) 
             {
-AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagLicensingRedirect(this->pageContext, e);
     
 
 
@@ -360,7 +357,7 @@ AbResponseHandler.sendJspTagLicensingRedirect(this.pageContext, e);
                 //: 
 /* catch(e) 
             {
-AbResponseHandler.sendJspTagRedirect(this.pageContext, e);
+AbResponseHandler::sendJspTagRedirect(this->pageContext, e);
     
 
 

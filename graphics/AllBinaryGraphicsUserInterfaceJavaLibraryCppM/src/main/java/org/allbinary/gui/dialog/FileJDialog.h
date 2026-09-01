@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GUI_DIALOG_FILEJDIALOG_H
         #define ORG_ALLBINARY_GUI_DIALOG_FILEJDIALOG_H
 
+            #include <vector>
+        
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -59,30 +61,29 @@
 #include "EventQueue.h"
 #include "JFrame.h"
 
-class FileJDialog: public javax.swing.JDialog {
-        
+class FileJDialog: public javax::swing::JDialog {
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: finishedListenerInterface: FileJDialogListenerInterface;
+    private: FileJDialogListenerInterface finishedListenerInterface;
 
-public constructor ();
+public: FileJDialog();
 
-public constructor (java.awt.Frame parent, bool modal);
+public: FileJDialog(java::awt::Frame parent, bool modal);
 
-    public addFinishedListener(FileJDialogListenerInterface finishedListenerInterface);
+    public: void addFinishedListener(FileJDialogListenerInterface finishedListenerInterface);
 
-    initComponents();
+    private: void initComponents();
 
-    jFileChooser1ActionPerformed(java.awt.event.ActionEvent evt);
+    private: void jFileChooser1ActionPerformed(java::awt::event::ActionEvent evt);
 
-    public javax.swing.JFileChooser getJFileChooser1();
+    public: javax::swing::JFileChooser getJFileChooser1();
 
-    public setJFileChooser1(javax.swing.JFileChooser jFileChooser1);
+    public: void setJFileChooser1(javax::swing::JFileChooser jFileChooser1);
 
-    private: jFileChooser1: javax.swing.JFileChooser;
+    private: javax::swing::JFileChooser jFileChooser1;
 
 };
 

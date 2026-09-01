@@ -88,38 +88,37 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "WorkFlowEntityInterface.h"
 
-class WorkFlowEntity: public AbSqlBean: public WorkFlowEntityInterface {
-        
+class WorkFlowEntity: public AbSqlBean, public WorkFlowEntityInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    const tableName: string = "workflows";
+    protected: const std::string tableName = "workflows";
 
-    private: const METHOD_GET: string = "get()";
+    private: const std::string METHOD_GET = "get()";
 
-    private: const METHOD_UPDATE: string = "update";
+    private: const std::string METHOD_UPDATE = "update";
 
-public constructor ();
+public: WorkFlowEntity();
 
-    public insert(Vector values);
+    public: void insert(Vector values);
 
-    public delete(string name, string storeName);
+    public: void delete_(std::string name, std::string storeName);
 
                 //@Throws(Exception.constructor, LicensingException.constructor)
             
-    public WorkFlowInterface get(string name, string storeName);
+    public: WorkFlowInterface get(std::string name, std::string storeName);
 
-    public Vector get(string storeName);
+    public: Vector get(std::string storeName);
 
-    public update(HashMap<any, any> updatedValues);
+    public: void update(HashMap<any, any> updatedValues);
 
-    public string createTableStatement();
+    public: std::string createTableStatement();
 
-    public string createTable();
+    public: std::string createTable();
 
-    public string dropTable();
+    public: std::string dropTable();
 
 };
 

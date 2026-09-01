@@ -76,51 +76,50 @@
 #include "PathFindingLayerInterface.h"
 
 class RTSLayerSelectedLogHelper: public RTSLayerLogHelper {
-        
 
-    private: static const instanceC: RTSLayerSelectedLogHelper = new RTSLayerSelectedLogHelper();
+    private: static const RTSLayerSelectedLogHelper instanceC = RTSLayerSelectedLogHelper();
 
-    public static RTSLayerSelectedLogHelper getInstance();
+    public: static RTSLayerSelectedLogHelper getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const positionStrings: PositionStrings = PositionStrings.getInstance()!;
+    private: const PositionStrings positionStrings = PositionStrings::getInstance();
 
-    private: const TRACKTO_TURNTO: string = "trackTo:turnTo";
+    private: const std::string TRACKTO_TURNTO = "trackTo:turnTo";
 
-    public setClosestGeographicMapCellHistory(PathFindingLayerInterface associatedAdvancedRTSGameLayer, BasicArrayList pathsList);
+    public: void setClosestGeographicMapCellHistory(PathFindingLayerInterface associatedAdvancedRTSGameLayer, BasicArrayList pathsList);
 
-    public trackTo(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition, int32_t dx, int32_t dy, string reason);
+    public: void trackTo(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition, int32_t dx, int32_t dy, std::string reason);
 
-    public turnTo(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy, AngleInfo angleInfo, int32_t angle, NamedAngle movementAngle, bool evading, int32_t targetAngle);
+    public: void turnTo(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t dx, int32_t dy, AngleInfo angleInfo, int32_t angle, NamedAngle movementAngle, bool evading, int32_t targetAngle);
 
-    public doneMoving(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void doneMoving(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public closeEnough(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void closeEnough(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public movingLeft(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void movingLeft(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public movingRight(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void movingRight(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public movingUp(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void movingUp(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public movingDown(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void movingDown(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public currentMoveEnded(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void currentMoveEnded(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public evade(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void evade(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public rotateLeft(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void rotateLeft(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public rotateRight(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void rotateRight(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public handle(PathFindingLayerInterface associatedAdvancedRTSGameLayer, NamedAngle movementAngle);
+    public: void handle(PathFindingLayerInterface associatedAdvancedRTSGameLayer, NamedAngle movementAngle);
 
-    public noRotation(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
+    public: void noRotation(PathFindingLayerInterface associatedAdvancedRTSGameLayer);
 
-    public notOnPath(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellHistory geographicMapCellHistory, GeographicMapCellPosition currentGeographicMapCellPosition, BasicArrayList pathList);
+    public: void notOnPath(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellHistory geographicMapCellHistory, GeographicMapCellPosition currentGeographicMapCellPosition, BasicArrayList pathList);
 
 };
 

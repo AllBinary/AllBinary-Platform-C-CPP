@@ -77,80 +77,77 @@
 class NewPasswordEmail
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface;
+    private: AbeClientInformationInterface abeClientInformation;
 
-    private: userInterface: UserInterface;
+    private: UserInterface userInterface;
 
-    private: newPassword: string;
+    private: std::string newPassword;
 
-public constructor (AbeClientInformationInterface abeClientInformation, UserInterface userInterface, string newPassword){
-
-            super();
-        this.abeClientInformation= abeClientInformation;
+public: NewPasswordEmail(AbeClientInformationInterface abeClientInformation, UserInterface userInterface, std::string newPassword){
+this->abeClientInformation= abeClientInformation;
     
-this.userInterface= userInterface;
+this->userInterface= userInterface;
     
-this.newPassword= newPassword;
+this->newPassword= newPassword;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public process(){
-this.notifyStoreAdmin();
+    public: void process(){
+this->notifyStoreAdmin();
     
-this.notifyUser();
+this->notifyUser();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    notifyStoreAdmin(){
+    private: void notifyStoreAdmin(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("notifyStoreAdmin", this, "notifyStoreAdmin");
+                                    this->logUtil.putF("notifyStoreAdmin", this, "notifyStoreAdmin");
     
 
                                     }
                                 
 
-    emailSubject: string = "New Password For User: " +this.userInterface!.getUserName();;
+    std::string emailSubject = "New Password For User: " +this->userInterface.getUserName();;
     
 
-    emailBody: string = "New Password: " +this.newPassword;;
+    std::string emailBody = "New Password: " +this->newPassword;;
     
 
-    basicEmailInfo: BasicEmailInfo = new AdminEmailInfo(emailSubject, emailBody) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = AdminEmailInfo(emailSubject, emailBody) as BasicEmailInfo;;
     
 
-    emailInfo: EmailInfo = new EmailInfo(basicEmailInfo);;
+    EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
     
 
-    adminUserEmailEventHandler: UserEmailEventHandler = AdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, UserEmailEventNameData.NEWPASSWORD)!;;
+    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::NEWPASSWORD);;
     
-adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.NEWPASSWORD, emailInfo);
+adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD, emailInfo);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "emailAdmin", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "emailAdmin", e);
     
 
                                     }
@@ -162,44 +159,44 @@ adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.NEWPASSWORD,
 
                 //@Throws(Exception.constructor)
             
-    notifyUser(){
+    private: void notifyUser(){
 
         try {
             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGING))
                         
                                     {
-                                    this.logUtil!.putF("Email User", this, "notifyUser()");
+                                    this->logUtil.putF("Email User", this, "notifyUser()");
     
 
                                     }
                                 
 
-    subject: string = "New Password";;
+    std::string subject = "New Password";;
     
 
-    body: string = "New Password: " +this.newPassword;;
+    std::string body = "New Password: " +this->newPassword;;
     
 
-    basicEmailInfo: BasicEmailInfo = new AdminEmailInfo(subject, body) as BasicEmailInfo;;
+    BasicEmailInfo basicEmailInfo = AdminEmailInfo(subject, body) as BasicEmailInfo;;
     
 
-    emailInfo: EmailInfo = new EmailInfo(basicEmailInfo);;
+    EmailInfo emailInfo = EmailInfo(basicEmailInfo);;
     
 
-    userEmailEventHandler: UserEmailEventHandler = UserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, UserEmailEventNameData.NEWPASSWORD, this.userInterface)!;;
+    UserEmailEventHandler userEmailEventHandler = UserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::NEWPASSWORD, this->userInterface);;
     
-userEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.NEWPASSWORD, emailInfo);
+userEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::NEWPASSWORD, emailInfo);
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.EMAILLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().EMAILLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "notifyUser", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "notifyUser", e);
     
 
                                     }

@@ -48,16 +48,13 @@
         #include "TableTag.h"
 
 class BasicOptionItemsTag: public TableTag {
-        
 
-    private: propertiesHashMap: HashMap<any, any>;
+    private: HashMap<any, any> propertiesHashMap;
 
-public constructor (){
-
-            super();
-        this.setTagHelperFactory(new BasicOptionItemsHelperFactory());
+public: BasicOptionItemsTag(){
+this->setTagHelperFactory(BasicOptionItemsHelperFactory());
     
-this.setTagRequestHelperFactory(new BasicOptionItemsRequestHelperFactory());
+this->setTagRequestHelperFactory(BasicOptionItemsRequestHelperFactory());
     
 }
 

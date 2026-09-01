@@ -75,53 +75,52 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class BasicMenuInputProcessor: public PlayerGameInput: public BaseMotionGestureEventListener {
-        
+class BasicMenuInputProcessor: public PlayerGameInput, public BaseMotionGestureEventListener {
 
-    public const motionGestureEventList: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList motionGestureEventList = BasicArrayListD();
 
-    private: canvas: Canvas = NullCanvas.NULL_CANVAS;
+    private: Canvas canvas = NullCanvas::NULL_CANVAS;
 
-protected constructor (BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas){
-            super(gameKeyEventList, new BasicArrayListD(), playerInputId);
+protected: BasicMenuInputProcessor(BasicArrayList gameKeyEventList, int32_t playerInputId, Canvas gameCanvas){
+            super(gameKeyEventList, BasicArrayListD(), playerInputId);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.canvas= gameCanvas;
+this->canvas= gameCanvas;
     
 }
 
 
-    public onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
-this.motionGestureEventList!.add(motionGestureEvent);
+    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+this->motionGestureEventList.add(motionGestureEvent);
     
 }
 
 
-    public onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent){
 }
 
 
-    setCanvas(MyCanvas canvas){
-this.canvas= canvas;
+    private: void setCanvas(MyCanvas canvas){
+this->canvas= canvas;
     
 }
 
 
-    MyCanvas getCanvas(){
+    protected: MyCanvas getCanvas(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.canvas as MyCanvas;
+                        return this->canvas as MyCanvas;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t processInputList(){
+    public: int32_t processInputList(){
 
 
 

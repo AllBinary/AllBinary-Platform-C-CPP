@@ -49,15 +49,14 @@
 class BasicHighScoresGameInfoFactory
             : public Object
          {
-        
 
-    private: static const SINGLETON: BasicHighScoresGameInfoFactory = new BasicHighScoresGameInfoFactory();
+    private: static const BasicHighScoresGameInfoFactory SINGLETON = BasicHighScoresGameInfoFactory();
 
-    public static BasicHighScoresGameInfoFactory getInstance();
+    public: static BasicHighScoresGameInfoFactory getInstance();
 
-    public const MULTI_PLAYER_SERVER: GameInfo = new GameInfo(GameTypeFactory.getInstance()!.MULTI_PLAYER, GameMode.SERVER, PlayerTypesFactory.getInstance()!.PLAYER_TYPE_ONE, 0, 0);
+    public: const GameInfo MULTI_PLAYER_SERVER = GameInfo(GameTypeFactory::getInstance().MULTI_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE, 0, 0);
 
-    public const SINGLE_PLAYER_SERVER: GameInfo = new GameInfo(GameTypeFactory.getInstance()!.SINGLE_PLAYER, GameMode.SERVER, PlayerTypesFactory.getInstance()!.PLAYER_TYPE_ONE, 0, 0);
+    public: const GameInfo SINGLE_PLAYER_SERVER = GameInfo(GameTypeFactory::getInstance().SINGLE_PLAYER, GameMode::SERVER, PlayerTypesFactory::getInstance().PLAYER_TYPE_ONE, 0, 0);
 
 };
 

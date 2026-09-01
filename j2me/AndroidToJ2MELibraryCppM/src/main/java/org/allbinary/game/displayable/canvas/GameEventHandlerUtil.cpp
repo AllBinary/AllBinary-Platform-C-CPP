@@ -51,14 +51,13 @@
 class GameEventHandlerUtil
             : public Object
          {
-        
 
-    public static removeAllListeners(){
-BasicMotionGesturesHandler.getInstance()!.removeAllListeners();
+    public: static void removeAllListeners(){
+BasicMotionGesturesHandler::getInstance().removeAllListeners();
     
-GameKeyEventHandler.getInstance()!.removeAllListeners();
+GameKeyEventHandler::getInstance().removeAllListeners();
     
-GameInputMotionEventProcessorFactory.getInstance()!.addListener();
+GameInputMotionEventProcessorFactory::getInstance().addListener();
     
 }
 

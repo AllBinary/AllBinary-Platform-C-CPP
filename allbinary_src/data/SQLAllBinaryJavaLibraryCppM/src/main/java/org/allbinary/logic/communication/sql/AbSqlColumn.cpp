@@ -58,21 +58,20 @@
         #include "AbSqlTable.h"
 
 class AbSqlColumn: public AbSqlTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const LARGEST_INT_VALUE_IN_COLUMN: string = "\nLargest Int Value in column: ";
+    private: const std::string LARGEST_INT_VALUE_IN_COLUMN = "\nLargest Int Value in column: ";
 
-    private: const METHOD_GET_LARGETS_INTEGER_IN_COLUMN: string = "getLargestIntegerInColumn";
+    private: const std::string METHOD_GET_LARGETS_INTEGER_IN_COLUMN = "getLargestIntegerInColumn";
 
-    private: const METHOD_GET_COLUMN: string = "getColumn";
+    private: const std::string METHOD_GET_COLUMN = "getColumn";
 
-    private: const METHOD_GET_COLUMN_WHERE: string = "getColumnWhere";
+    private: const std::string METHOD_GET_COLUMN_WHERE = "getColumnWhere";
 
-    private: const INVALID_RESULT: string = "-1";
+    private: const std::string INVALID_RESULT = "-1";
 
-public constructor (DbConnectionInfo databaseConnectionInfoInterface){
+public: AbSqlColumn(DbConnectionInfo databaseConnectionInfoInterface){
             super(databaseConnectionInfoInterface);
                     
 
@@ -81,44 +80,44 @@ public constructor (DbConnectionInfo databaseConnectionInfoInterface){
 }
 
 
-    public string getLargestIntegerInColumnWhere(string columnName, string key, string value){
+    public: std::string getLargestIntegerInColumnWhere(std::string columnName, std::string key, std::string value){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.SELECT);
+stringBuffer.append(this->sqlStrings.SELECT);
     
-stringBuffer!.append(columnName);
+stringBuffer.append(columnName);
     
-stringBuffer!.append(this.sqlStrings!.FROM);
+stringBuffer.append(this->sqlStrings.FROM);
     
-stringBuffer!.append(this.getTableName());
+stringBuffer.append(this->getTableName());
     
-stringBuffer!.append(this.sqlStrings!.WHERE);
+stringBuffer.append(this->sqlStrings.WHERE);
     
-stringBuffer!.append(key);
+stringBuffer.append(key);
     
-stringBuffer!.append(this.sqlStrings!.EQUAL_QUOTE);
+stringBuffer.append(this->sqlStrings.EQUAL_QUOTE);
     
-stringBuffer!.append(value);
+stringBuffer.append(value);
     
-stringBuffer!.append(this.sqlStrings!.CLOSE_QUOTE);
+stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
     
 
-    sqlStatement: string = stringBuffer!.toString()!;;
+    std::string sqlStatement = stringBuffer.toString();;
     
 
         try {
             
-    largest: int32_t = 0;;
+    int32_t largest = 0;;
     
 
-    rset: ResultSet = executeSQLStatement(sqlStatement)!;;
+    ResultSet rset = executeSQLStatement(sqlStatement);;
     
 
         while(rset.next())
         {
 
-    intValue: int32_t = rset.getInt(columnName)!;;
+    int32_t intValue = rset.getInt(columnName);;
     
 
                         if(intValue > largest)
@@ -132,23 +131,23 @@ stringBuffer!.append(this.sqlStrings!.CLOSE_QUOTE);
 }
 
 
-    largestAsString: string = new Integer(largest).toString()!;;
+    std::string largestAsString = Integer(largest).toString();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(this.sqlStrings!.SQL_STATEMENT_LABEL);
+stringBuffer.append(this->sqlStrings.SQL_STATEMENT_LABEL);
     
-stringBuffer!.append(sqlStatement);
+stringBuffer.append(sqlStatement);
     
-stringBuffer!.append(this.LARGEST_INT_VALUE_IN_COLUMN);
+stringBuffer.append(this->LARGEST_INT_VALUE_IN_COLUMN);
     
-stringBuffer!.append(largestAsString);
+stringBuffer.append(largestAsString);
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_LARGETS_INTEGER_IN_COLUMN);
+this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET_LARGETS_INTEGER_IN_COLUMN);
     
 
                                     }
@@ -164,10 +163,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_LARGETS_INTEG
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_LARGETS_INTEGER_IN_COLUMN, e);
+                                    this->logUtil.put(this->FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_LARGETS_INTEGER_IN_COLUMN, e);
     
 
                                     }
@@ -176,61 +175,61 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_LARGETS_INTEG
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.INVALID_RESULT;
+                        return this->INVALID_RESULT;
     
 }
 
 }
 
 
-    public Vector getColumn(string columnName){
+    public: Vector getColumn(std::string columnName){
 
-    column: Vector = new Vector();;
-    
-
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append(this.sqlStrings!.SELECT);
-    
-stringBuffer!.append(columnName);
-    
-stringBuffer!.append(this.sqlStrings!.FROM);
-    
-stringBuffer!.append(this.getTableName());
+    Vector column = Vector();;
     
 
-    sqlStatement: string = stringBuffer!.toString()!;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append(this->sqlStrings.SELECT);
+    
+stringBuffer.append(columnName);
+    
+stringBuffer.append(this->sqlStrings.FROM);
+    
+stringBuffer.append(this->getTableName());
+    
+
+    std::string sqlStatement = stringBuffer.toString();;
     
 
         try {
             
-    rset: ResultSet = executeSQLStatement(sqlStatement)!;;
+    ResultSet rset = executeSQLStatement(sqlStatement);;
     
 
         while(rset.next())
         {
 
-    field: string = rset.getObject(columnName)!.toString()!;;
+    std::string field = rset.getObject(columnName).toString();;
     
 column.add(field);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(this.sqlStrings!.SQL_STATEMENT_LABEL);
+stringBuffer.append(this->sqlStrings.SQL_STATEMENT_LABEL);
     
-stringBuffer!.append(sqlStatement);
+stringBuffer.append(sqlStatement);
     
-stringBuffer!.append(this.sqlStrings!.COLUMN_VALUE);
+stringBuffer.append(this->sqlStrings.COLUMN_VALUE);
     
-stringBuffer!.append(column.toString());
+stringBuffer.append(column.toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_COLUMN);
+this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET_COLUMN);
     
 
                                     }
@@ -246,10 +245,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_COLUMN);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_COLUMN, e);
+                                    this->logUtil.put(this->FAILED_SQL_STATEMENT +sqlStatement, this, METHOD_GET_COLUMN, e);
     
 
                                     }
@@ -265,39 +264,39 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_COLUMN);
 }
 
 
-    public Vector getColumnWhere(string columnName, string key, string value){
+    public: Vector getColumnWhere(std::string columnName, std::string key, std::string value){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.sqlStrings!.SELECT);
+stringBuffer.append(this->sqlStrings.SELECT);
     
-stringBuffer!.append(columnName);
+stringBuffer.append(columnName);
     
-stringBuffer!.append(this.sqlStrings!.FROM);
+stringBuffer.append(this->sqlStrings.FROM);
     
-stringBuffer!.append(this.getTableName());
+stringBuffer.append(this->getTableName());
     
-stringBuffer!.append(this.sqlStrings!.WHERE);
+stringBuffer.append(this->sqlStrings.WHERE);
     
-stringBuffer!.append(key);
+stringBuffer.append(key);
     
-stringBuffer!.append(this.sqlStrings!.EQUAL_QUOTE);
+stringBuffer.append(this->sqlStrings.EQUAL_QUOTE);
     
-stringBuffer!.append(value);
+stringBuffer.append(value);
     
-stringBuffer!.append(this.sqlStrings!.CLOSE_QUOTE);
-    
-
-    sqlStatement: string = stringBuffer!.toString()!;;
+stringBuffer.append(this->sqlStrings.CLOSE_QUOTE);
     
 
-    column: Vector = new Vector();;
+    std::string sqlStatement = stringBuffer.toString();;
     
 
-    rset: ResultSet;;
+    Vector column = Vector();;
     
 
-    field: string;;
+    ResultSet rset;;
+    
+
+    std::string field;;
     
 
         try {
@@ -306,27 +305,27 @@ stringBuffer!.append(this.sqlStrings!.CLOSE_QUOTE);
 
         while(rset.next())
         {
-field= rset.getObject(columnName)!.toString();
+field= rset.getObject(columnName).toString();
     
 column.add(field);
     
 }
 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    stringBuffer!.delete(0, stringBuffer!.length());
+                                    stringBuffer.delete(0, stringBuffer.length());
     
-stringBuffer!.append(this.sqlStrings!.SQL_STATEMENT_LABEL);
+stringBuffer.append(this->sqlStrings.SQL_STATEMENT_LABEL);
     
-stringBuffer!.append(sqlStatement);
+stringBuffer.append(sqlStatement);
     
-stringBuffer!.append(this.sqlStrings!.COLUMN_VALUE);
+stringBuffer.append(this->sqlStrings.COLUMN_VALUE);
     
-stringBuffer!.append(column.toString());
+stringBuffer.append(column.toString());
     
-this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_COLUMN_WHERE);
+this->logUtil.putF(stringBuffer.toString(), this, this->METHOD_GET_COLUMN_WHERE);
     
 
                                     }
@@ -342,10 +341,10 @@ this.logUtil!.putF(stringBuffer!.toString(), this, this.METHOD_GET_COLUMN_WHERE)
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.FAILED_SQL_STATEMENT +sqlStatement, this, this.METHOD_GET_COLUMN_WHERE, e);
+                                    this->logUtil.put(this->FAILED_SQL_STATEMENT +sqlStatement, this, this->METHOD_GET_COLUMN_WHERE, e);
     
 
                                     }

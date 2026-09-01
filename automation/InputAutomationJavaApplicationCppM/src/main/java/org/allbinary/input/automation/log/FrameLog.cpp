@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -67,105 +69,102 @@
 class FrameLog
             : public Object
          {
-        
 
-    private: static frameBytes: std::vector<int8_t> = .toCharArray().getBytes()!;
+    private: static std::vector<int8_t> frameBytes = "Frame: ".getBytes();
 
-    private: static info: std::vector<int8_t> = .toCharArray().getBytes()!;
+    private: static std::vector<int8_t> info = "Info: \n".getBytes();
 
-    private: static actions: std::vector<int8_t> = .toCharArray().getBytes()!;
+    private: static std::vector<int8_t> actions = "Actions: \n".getBytes();
 
-    private: const frame: Long;
+    private: Long frame;
 
-    private: infoStringBuffer: StringMaker = new StringMaker();
+    private: StringMaker infoStringBuffer = StringMaker();
 
-    private: actionsStringBuffer: StringMaker = new StringMaker();
+    private: StringMaker actionsStringBuffer = StringMaker();
 
-public constructor (Long frame){
-
-            super();
-        this.frame= frame;
+public: FrameLog(Long frame){
+this->frame= frame;
     
 }
 
 
-    public addInfo(string infoString){
-this.infoStringBuffer!.append(infoString);
+    public: void addInfo(std::string infoString){
+this->infoStringBuffer.append(infoString);
     
 }
 
 
-    public addActions(Vector<string> vectorOfStrings){
+    public: void addActions(Vector<string> vectorOfStrings){
 
-    size: int32_t = vectorOfStrings!.length!;;
+    int32_t size = vectorOfStrings.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.addAction(vectorOfStrings!.get(index) as string);
+this->addAction(vectorOfStrings.get(index) as string);
     
 }
 
 }
 
 
-    public addAction(string action){
-this.actionsStringBuffer!.append(action);
+    public: void addAction(std::string action){
+this->actionsStringBuffer.append(action);
     
-this.actionsStringBuffer!.append(CommonSeps.getInstance()!.NEW_LINE);
+this->actionsStringBuffer.append(CommonSeps::getInstance().NEW_LINE);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(){
+    public: void write(){
 
-    filePathStringBuffer: StringMaker = new StringMaker();;
+    StringMaker filePathStringBuffer = StringMaker();;
     
-filePathStringBuffer!.append(ImageOutputData.SAVE_PATH);
+filePathStringBuffer.append(ImageOutputData::SAVE_PATH);
     
-filePathStringBuffer!.append(LongUtil.fillIn(this.frame.toString()));
+filePathStringBuffer.append(LongUtil::fillIn(this->frame.toString()));
     
-filePathStringBuffer!.append(".txt");
-    
-
-    filePath: string = filePathStringBuffer!.toString()!;;
+filePathStringBuffer.append(".txt");
     
 
-    fileOutputStream: FileOutputStream = new FileOutputStream(new File(filePath));;
+    std::string filePath = filePathStringBuffer.toString();;
     
-fileOutputStream!.write(FrameLog.frameBytes);
+
+    FileOutputStream fileOutputStream = FileOutputStream(File(filePath));;
     
-fileOutputStream!.write(getFrame()!.toString()!.getBytes());
+fileOutputStream.write(FrameLog::frameBytes);
     
-fileOutputStream!.write('\n');
+fileOutputStream.write(getFrame().toString().getBytes());
     
-fileOutputStream!.write(FrameLog.info);
+fileOutputStream.write('\n');
     
-fileOutputStream!.write(this.infoStringBuffer!.toString()!.getBytes());
+fileOutputStream.write(FrameLog::info);
     
-fileOutputStream!.write('\n');
+fileOutputStream.write(this->infoStringBuffer.toString().getBytes());
     
-fileOutputStream!.write(FrameLog.actions);
+fileOutputStream.write('\n');
     
-fileOutputStream!.write(this.actionsStringBuffer!.toString()!.getBytes());
+fileOutputStream.write(FrameLog::actions);
     
-fileOutputStream!.close();
+fileOutputStream.write(this->actionsStringBuffer.toString().getBytes());
+    
+fileOutputStream.close();
     
 }
 
 
-    public Long getFrame(){
+    public: Long getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.frame;
+                        return this->frame;
     
 }
 

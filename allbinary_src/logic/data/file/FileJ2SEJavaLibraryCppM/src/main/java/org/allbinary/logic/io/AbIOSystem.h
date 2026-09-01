@@ -45,17 +45,16 @@
 class AbIOSystem
             : public Object
          {
-        
 
-    private: static const instance: AbIOSystem = new AbIOSystem();
+    private: static AbIOSystem instance() { return AbIOSystem(); }
 
-    public static AbIOSystem getInstance();
+    public: static AbIOSystem getInstance();
 
-    private: const type: string = "java.io";
+    private: const std::string type = "java.io";
 
-    public string getType();
+    public: std::string getType();
 
-    public bool isType(string type);
+    public: bool isType(std::string type);
 
 };
 

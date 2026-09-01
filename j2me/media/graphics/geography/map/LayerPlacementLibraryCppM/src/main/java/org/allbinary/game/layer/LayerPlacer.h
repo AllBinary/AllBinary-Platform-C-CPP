@@ -77,27 +77,26 @@
 class LayerPlacer
             : public Object
          {
-        
 
-    private: const enumerationUtil: EnumerationUtil = EnumerationUtil.getInstance()!;
+    private: const EnumerationUtil enumerationUtil = EnumerationUtil::getInstance();
 
-    const layerInterfaceVisitor: LayerInterfaceVisitor;
+    protected: LayerInterfaceVisitor layerInterfaceVisitor;
 
-    private: const dimension: GPoint;
+    private: GPoint dimension;
 
-public constructor (LayerInterfaceVisitor layerInterfaceVisitor, GPoint dimension);
-
-                //@Throws(Exception.constructor)
-            
-    public processList(BasicArrayList list);
+public: LayerPlacer(LayerInterfaceVisitor layerInterfaceVisitor, GPoint dimension);
 
                 //@Throws(Exception.constructor)
             
-    public process(LayerPlacementInterface layerPlacementInterface);
+    public: void processList(BasicArrayList list);
 
                 //@Throws(Exception.constructor)
             
-    public GPoint getPoint(LayerPlacementInterface layerPlacementInterface);
+    public: void process(LayerPlacementInterface layerPlacementInterface);
+
+                //@Throws(Exception.constructor)
+            
+    public: GPoint getPoint(LayerPlacementInterface layerPlacementInterface);
 
 };
 

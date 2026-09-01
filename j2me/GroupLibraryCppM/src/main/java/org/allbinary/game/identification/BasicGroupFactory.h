@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_H
         #define ORG_ALLBINARY_GAME_IDENTIFICATION_BASICGROUPFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -58,43 +60,42 @@
 class BasicGroupFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static BasicGroupFactory getInstance();
+    public: static BasicGroupFactory getInstance();
 
-    public const NAME: string = "GROUP_NAME";
+    public: const std::string NAME = "GROUP_NAME";
 
-    public const NO_SUCH_GROUP: string = "No Such Group: ";
+    public: const std::string NO_SUCH_GROUP = "No Such Group: ";
 
-    public const GOOD: Group = new Group("Good Guys", 0);
+    public: const Group GOOD = Group("Good Guys", 0);
 
-    public const ENEMY: Group = new Group("Bad Guys", 1);
+    public: const Group ENEMY = Group("Bad Guys", 1);
 
-    public const ENEMY_ON_LEVEL: Group = new Group("Bad Guys on Level", 2);
+    public: const Group ENEMY_ON_LEVEL = Group("Bad Guys on Level", 2);
 
-    public const NONE: Group = new Group("Not On A Team", 3);
+    public: const Group NONE = Group("Not On A Team", 3);
 
-    public const GOOD_ARRAY: std::vector<Group> = 
-                                                        [
-                                                            this.GOOD
-                                                        ];
+    public: const std::vector<Group> GOOD_ARRAY = 
+                                                        {
+                                                            this->GOOD
+                                                        };
 
-    public const ENEMY_ARRAY: std::vector<Group> = 
-                                                        [
-                                                            this.ENEMY
-                                                        ];
+    public: const std::vector<Group> ENEMY_ARRAY = 
+                                                        {
+                                                            this->ENEMY
+                                                        };
 
-    public const ENEMY_ON_LEVEL_ARRAY: std::vector<Group> = 
-                                                        [
-                                                            this.ENEMY,this.ENEMY_ON_LEVEL
-                                                        ];
+    public: const std::vector<Group> ENEMY_ON_LEVEL_ARRAY = 
+                                                        {
+                                                            this->ENEMY,this->ENEMY_ON_LEVEL
+                                                        };
 
-    public const NONE_ARRAY: std::vector<Group> = 
-                                                        [
-                                                            this.NONE
-                                                        ];
+    public: const std::vector<Group> NONE_ARRAY = 
+                                                        {
+                                                            this->NONE
+                                                        };
 
 };
 

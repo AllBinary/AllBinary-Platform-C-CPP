@@ -69,26 +69,25 @@
 #include "LifeLayerFactory.h"
 #include "LifeResources.h"
 
-class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory: public PickupProcessorInterface {
-        
+class LifePickedUpLayerInterfaceFactory: public PickedUpLayerInterfaceFactory, public PickupProcessorInterface {
 
-    private: static pickedUpLayerInterfaceFactoryInterface: PickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory.NULL_COUNTED_PICKUP_LAYER_FACTORY;
-
-                //@Throws(Exception.constructor)
-            
-    public static init();
-
-    public static PickedUpLayerInterfaceFactoryInterface getInstance();
-
-    private: pool: LifeLayerCircularStaticPool = new LifeLayerCircularStaticPool(new LifeLayerFactory(), 1);
-
-private constructor ();
-
-    public int32_t getTotal();
+    private: static PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface = CountedPickedUpLayerInterfaceFactory::NULL_COUNTED_PICKUP_LAYER_FACTORY;
 
                 //@Throws(Exception.constructor)
             
-    public process(AllBinaryLayer sourceLayerInterface);
+    public: static void init();
+
+    public: static PickedUpLayerInterfaceFactoryInterface getInstance();
+
+    private: LifeLayerCircularStaticPool pool = LifeLayerCircularStaticPool(LifeLayerFactory(), 1);
+
+private: LifePickedUpLayerInterfaceFactory();
+
+    public: int32_t getTotal();
+
+                //@Throws(Exception.constructor)
+            
+    public: void process(AllBinaryLayer sourceLayerInterface);
 
 };
 

@@ -53,19 +53,18 @@
         #include "SelectionHudPaintable.h"
 
 class RTSLayerInfoPaintable: public InitUpdatePaintable {
-        
 
-    private: initUpdatePaintable: InitUpdatePaintable = NullInitUpdatePaintable.getInstance()!;
+    private: InitUpdatePaintable initUpdatePaintable = NullInitUpdatePaintable::getInstance();
 
-public constructor ();
+public: RTSLayerInfoPaintable();
 
-    public update();
+    public: void update();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public updateRTSLayerInfoInit(InitUpdatePaintable hudPaintable);
+    public: void updateRTSLayerInfoInit(InitUpdatePaintable hudPaintable);
 
-    public updateRTSLayerInfoSelection(SelectionHudPaintable hudPaintable);
+    public: void updateRTSLayerInfoSelection(SelectionHudPaintable hudPaintable);
 
 };
 

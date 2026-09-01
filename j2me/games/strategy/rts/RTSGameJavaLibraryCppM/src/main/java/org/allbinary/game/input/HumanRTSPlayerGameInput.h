@@ -180,84 +180,83 @@
 #include "LayerPositionFinderInterface.h"
 #include "SelectRTSLayerVisitorFactoryInterface.h"
 
-class HumanRTSPlayerGameInput: public RTSPlayerGameInput: public BaseMotionGestureEventListener {
-        
+class HumanRTSPlayerGameInput: public RTSPlayerGameInput, public BaseMotionGestureEventListener {
 
-    private: isDragging: bool = false;
+    private: bool isDragging = false;
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    private: const rectangleCollisionUtil: RectangleCollisionUtil = RectangleCollisionUtil.getInstance()!;
+    private: const RectangleCollisionUtil rectangleCollisionUtil = RectangleCollisionUtil::getInstance();
 
-    private: const touchMotionGestureFactory: TouchMotionGestureFactory = TouchMotionGestureFactory.getInstance()!;
+    private: const TouchMotionGestureFactory touchMotionGestureFactory = TouchMotionGestureFactory::getInstance();
 
-    private: const PRESSED: MotionGestureInput = this.touchMotionGestureFactory!.PRESSED;
+    private: const MotionGestureInput PRESSED = this->touchMotionGestureFactory.PRESSED;
 
-    private: const RELEASED: MotionGestureInput = this.touchMotionGestureFactory!.RELEASED;
+    private: const MotionGestureInput RELEASED = this->touchMotionGestureFactory.RELEASED;
 
-    private: const touchButtonsBuilderFactory: TouchButtonsBuilderFactory;
+    private: TouchButtonsBuilderFactory touchButtonsBuilderFactory;
 
-    private: const notYoursGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent notYoursGameNotificationEvent;
 
-    private: selectedRtsLayer: CollidableDestroyableDamageableLayer = CollidableDestroyableDamageableLayer.getNullInstance()!;
+    private: CollidableDestroyableDamageableLayer selectedRtsLayer = CollidableDestroyableDamageableLayer::getNullInstance();
 
-public constructor (AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory touchButtonsBuilderFactory);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+public: HumanRTSPlayerGameInput(AllBinaryGameCanvas gameCanvas, BasicArrayList inputList, int32_t playerInputId, RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, LayerPositionFinderInterface layerPositionFinderInterface, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface, TouchButtonsBuilderFactory touchButtonsBuilderFactory);
 
                 //@Throws(Exception.constructor)
             
-    bool processDraggingMotionInput(AllBinaryLayerManager layerManager);
-
-    private: startPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
-
-    private: endPoint: GPoint = PointFactory.getInstance()!.ZERO_ZERO;
-
-    const POSSIBLE: string = "Possible: ";
-
-    const AT: string = "At: ";
-
-    const METHOD: string = "makeSelection";
-
-    const ADDING: string = "Adding: ";
-
-    const SPACE: string = CommonSeps.getInstance()!.SPACE;
-
-    makeSelection();
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    processSelectionBoxMotionInput(AllBinaryLayerManager layerManager);
+    private: bool processDraggingMotionInput(AllBinaryLayerManager layerManager);
+
+    private: GPoint startPoint = PointFactory::getInstance().ZERO_ZERO;
+
+    private: GPoint endPoint = PointFactory::getInstance().ZERO_ZERO;
+
+    const std::string POSSIBLE = "Possible: ";
+
+    const std::string AT = "At: ";
+
+    const std::string METHOD = "makeSelection";
+
+    const std::string ADDING = "Adding: ";
+
+    const std::string SPACE = CommonSeps::getInstance().SPACE;
+
+    private: void makeSelection();
 
                 //@Throws(Exception.constructor)
             
-    public processMotionInput(AllBinaryLayerManager layerManager);
-
-    public setSelectedRtsFormInput(RTSFormInput selectedRtsFormInput);
-
-    updateFormForLayer(RTSLayer rtsLayer);
-
-    updateForm(ScrollSelectionForm scrollSelectionForm, RTSFormInput rtfFormInput);
+    private: void processSelectionBoxMotionInput(AllBinaryLayerManager layerManager);
 
                 //@Throws(Exception.constructor)
             
-    public setSelectedRTSLayer(CollidableDestroyableDamageableLayer rtSLayer, GeographicMapCellPosition geographicMapCellPosition);
+    public: void processMotionInput(AllBinaryLayerManager layerManager);
 
-    private: const multiSelectPaintable: MultiSelectPaintable = new MultiSelectPaintable();
+    public: void setSelectedRtsFormInput(RTSFormInput selectedRtsFormInput);
 
-    public updatePaintable();
+    private: void updateFormForLayer(RTSLayer rtsLayer);
 
-    public paint(Graphics graphics);
+    private: void updateForm(ScrollSelectionForm scrollSelectionForm, RTSFormInput rtfFormInput);
 
-    public onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+                //@Throws(Exception.constructor)
+            
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer rtSLayer, GeographicMapCellPosition geographicMapCellPosition);
 
-    public onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+    private: const MultiSelectPaintable multiSelectPaintable = MultiSelectPaintable();
 
-    CollidableDestroyableDamageableLayer getSelectedRtsLayer();
+    public: void updatePaintable();
 
-    setSelectedRtsLayer(CollidableDestroyableDamageableLayer selectedRtsLayer);
+    public: void paint(Graphics graphics);
+
+    public: void onMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+
+    public: void onScrolledMotionGestureEvent(MotionGestureEvent motionGestureEvent);
+
+    private: CollidableDestroyableDamageableLayer getSelectedRtsLayer();
+
+    private: void setSelectedRtsLayer(CollidableDestroyableDamageableLayer selectedRtsLayer);
 
 };
 

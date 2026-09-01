@@ -68,21 +68,20 @@
 class UserEmailEventListenerModule
             : public Object
         : public UserEmailEventListenerInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: userInterface: UserInterface;
+    private: UserInterface userInterface;
 
-public constructor (UserInterface userInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public onEmailSendFailure(EmailEvent emailEvent);
+public: UserEmailEventListenerModule(UserInterface userInterface);
 
                 //@Throws(Exception.constructor)
             
-    public onEmailSendRequest(EmailEvent emailEvent);
+    public: void onEmailSendFailure(EmailEvent emailEvent);
+
+                //@Throws(Exception.constructor)
+            
+    public: void onEmailSendRequest(EmailEvent emailEvent);
 
 };
 

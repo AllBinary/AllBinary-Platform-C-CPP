@@ -106,16 +106,15 @@
 class OpenGLConfiguration
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static OpenGLConfiguration getInstance(){
+    public: static OpenGLConfiguration getInstance(){
 
-                        if(OpenGLConfiguration.instance == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(OpenGLConfiguration::instance() == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    OpenGLConfiguration.instance= new OpenGLConfiguration();
+                                    OpenGLConfiguration::instance= OpenGLConfiguration();
     
 
                                     }
@@ -124,45 +123,43 @@ class OpenGLConfiguration
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return OpenGLConfiguration.instance as OpenGLConfiguration;
+                        return OpenGLConfiguration::instance() as OpenGLConfiguration;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const FILE: string = "OpenGLConfiguration.dat";
+    private: const std::string FILE = "OpenGLConfiguration.dat";
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: opengl: bool = false;
+    private: bool opengl = false;
 
-    private: type: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.OPENGL_AS_GAME_THREAD;
+    private: OpenGLFeature type = OpenGLFeatureFactory::getInstance().OPENGL_AS_GAME_THREAD;
 
-    private: imageColor: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature imageColor = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
 
-    private: color: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.IMAGE_COLOR_DEPTH_4444;
+    private: OpenGLFeature color = OpenGLFeatureFactory::getInstance().IMAGE_COLOR_DEPTH_4444;
 
-    private: versionSelector: OpenGLFeature = OpenGLFeatureFactory.getInstance()!.OPENGL_AUTO_SELECT;
+    private: OpenGLFeature versionSelector = OpenGLFeatureFactory::getInstance().OPENGL_AUTO_SELECT;
 
-private constructor (){
+private: OpenGLConfiguration(){
 
-            super();
-        
         try {
             
-                        if(FileFactory.getInstance()!.isFile(this.FILE))
+                        if(FileFactory::getInstance().isFile(this->FILE))
                         
                                     {
-                                    this.read();
+                                    this->read();
     
 
                                     }
                                 
                         else {
-                            this.write();
+                            this->write();
     
 
                         }
@@ -171,7 +168,7 @@ private constructor (){
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.CONSTRUCTOR, e);
     
 }
 
@@ -180,27 +177,27 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
 
                 //@Throws(Exception.constructor)
             
-    read(){
+    private: void read(){
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-    fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
+    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    fileInputStream: InputStream = fileInputStreamFactory!.getFileInputStreamInstance(StringUtil.getInstance()!.EMPTY_STRING, this.FILE)!;;
+    InputStream fileInputStream = fileInputStreamFactory.getFileInputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
     
 
-    dataInputStream: DataInputStream = new DataInputStream(fileInputStream);;
+    DataInputStream dataInputStream = DataInputStream(fileInputStream);;
     
 
-    openGLValue: int32_t = dataInputStream!.readInt()!;;
+    int32_t openGLValue = dataInputStream.readInt();;
     
 
                         if(openGLValue == 0)
                         
                                     {
-                                    this.setOpenGL(false);
+                                    this->setOpenGL(false);
     
 
                                     }
@@ -209,7 +206,7 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
                         if(openGLValue == 1)
                         
                                     {
-                                    this.setOpenGL(true);
+                                    this->setOpenGL(true);
     
 
                                     }
@@ -218,28 +215,28 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
                             
 
 
-                            throw new Exception("Invalid OpenGL Setting");
+                            throw Exception("Invalid OpenGL Setting");
                     
 
                         }
                             
 
-    version: string = dataInputStream!.readUTF()!;;
+    std::string version = dataInputStream.readUTF();;
     
 
-                        if(this.tsUtil!.compareTo(version, openGLFeatureFactory!.OPENGL_AUTO_SELECT.getName()) == 0)
+                        if(this->tsUtil.compareTo(version, openGLFeatureFactory.OPENGL_AUTO_SELECT.getName()) == 0)
                         
                                     {
-                                    this.setVersionSelector(openGLFeatureFactory!.OPENGL_AUTO_SELECT);
+                                    this->setVersionSelector(openGLFeatureFactory.OPENGL_AUTO_SELECT);
     
 
                                     }
                                 
                              else 
-                        if(this.tsUtil!.compareTo(version, openGLFeatureFactory!.OPENGL_MINIMUM.getName()) == 0)
+                        if(this->tsUtil.compareTo(version, openGLFeatureFactory.OPENGL_MINIMUM.getName()) == 0)
                         
                                     {
-                                    this.setVersionSelector(openGLFeatureFactory!.OPENGL_MINIMUM);
+                                    this->setVersionSelector(openGLFeatureFactory.OPENGL_MINIMUM);
     
 
                                     }
@@ -248,28 +245,28 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading version selector: " +version);
+                            throw Exception("OpenGLConfiguration: Error reading version selector: " +version);
                     
 
                         }
                             
 
-    type: string = dataInputStream!.readUTF()!;;
+    std::string type = dataInputStream.readUTF();;
     
 
-                        if(this.tsUtil!.compareTo(type, openGLFeatureFactory!.OPENGL_AS_GAME_THREAD.getName()) == 0)
+                        if(this->tsUtil.compareTo(type, openGLFeatureFactory.OPENGL_AS_GAME_THREAD.getName()) == 0)
                         
                                     {
-                                    this.setType(openGLFeatureFactory!.OPENGL_AS_GAME_THREAD);
+                                    this->setType(openGLFeatureFactory.OPENGL_AS_GAME_THREAD);
     
 
                                     }
                                 
                              else 
-                        if(this.tsUtil!.compareTo(type, openGLFeatureFactory!.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName()) == 0)
+                        if(this->tsUtil.compareTo(type, openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS.getName()) == 0)
                         
                                     {
-                                    this.setType(openGLFeatureFactory!.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS);
+                                    this->setType(openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS);
     
 
                                     }
@@ -278,37 +275,37 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading image color");
+                            throw Exception("OpenGLConfiguration: Error reading image color");
                     
 
                         }
                             
 
-    imageColor: string = dataInputStream!.readUTF()!;;
+    std::string imageColor = dataInputStream.readUTF();;
     
 
-                        if(this.tsUtil!.compareTo(imageColor, openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444.getName()) == 0)
+                        if(this->tsUtil.compareTo(imageColor, openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444.getName()) == 0)
                         
                                     {
-                                    this.setImageColor(openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444);
-    
-
-                                    }
-                                
-                             else 
-                        if(this.tsUtil!.compareTo(imageColor, openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444.getName()) == 0)
-                        
-                                    {
-                                    this.setImageColor(openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444);
+                                    this->setImageColor(openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444);
     
 
                                     }
                                 
                              else 
-                        if(this.tsUtil!.compareTo(imageColor, openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444.getName()) == 0)
+                        if(this->tsUtil.compareTo(imageColor, openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444.getName()) == 0)
                         
                                     {
-                                    this.setImageColor(openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444);
+                                    this->setImageColor(openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444);
+    
+
+                                    }
+                                
+                             else 
+                        if(this->tsUtil.compareTo(imageColor, openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444.getName()) == 0)
+                        
+                                    {
+                                    this->setImageColor(openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444);
     
 
                                     }
@@ -317,37 +314,37 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading image color: " +imageColor);
+                            throw Exception("OpenGLConfiguration: Error reading image color: " +imageColor);
                     
 
                         }
                             
 
-    color: string = dataInputStream!.readUTF()!;;
+    std::string color = dataInputStream.readUTF();;
     
 
-                        if(this.tsUtil!.compareTo(color, openGLFeatureFactory!.OPENGL_COLOR_DEPTH_4444.getName()) == 0)
+                        if(this->tsUtil.compareTo(color, openGLFeatureFactory.OPENGL_COLOR_DEPTH_4444.getName()) == 0)
                         
                                     {
-                                    this.setColor(openGLFeatureFactory!.OPENGL_COLOR_DEPTH_4444);
-    
-
-                                    }
-                                
-                             else 
-                        if(this.tsUtil!.compareTo(color, openGLFeatureFactory!.OPENGL_COLOR_DEPTH_565.getName()) == 0)
-                        
-                                    {
-                                    this.setColor(openGLFeatureFactory!.OPENGL_COLOR_DEPTH_565);
+                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_4444);
     
 
                                     }
                                 
                              else 
-                        if(this.tsUtil!.compareTo(color, openGLFeatureFactory!.OPENGL_COLOR_DEPTH_8888.getName()) == 0)
+                        if(this->tsUtil.compareTo(color, openGLFeatureFactory.OPENGL_COLOR_DEPTH_565.getName()) == 0)
                         
                                     {
-                                    this.setColor(openGLFeatureFactory!.OPENGL_COLOR_DEPTH_8888);
+                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_565);
+    
+
+                                    }
+                                
+                             else 
+                        if(this->tsUtil.compareTo(color, openGLFeatureFactory.OPENGL_COLOR_DEPTH_8888.getName()) == 0)
+                        
+                                    {
+                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_8888);
     
 
                                     }
@@ -356,61 +353,61 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.CONST
                             
 
 
-                            throw new Exception("OpenGLConfiguration: Error reading color: " +color);
+                            throw Exception("OpenGLConfiguration: Error reading color: " +color);
                     
 
                         }
                             
-PreLogUtil.put("Read Configuration: " +this.toString(), this, "read");
+PreLogUtil::put("Read Configuration: " +this->toString(), this, "read");
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(){
+    public: void write(){
 
-    closeable: Closeable = NullCloseable.NULL_CLOSEABLE;;
+    Closeable closeable = NullCloseable::NULL_CLOSEABLE;;
     
 
         try {
-            PreLogUtil.put("Write Configuration: " +this.toString(), this, "write");
+            PreLogUtil::put("Write Configuration: " +this->toString(), this, "write");
     
 
-    fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
+    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    fileOutputStream: OutputStream = fileInputStreamFactory!.getFileOutputStreamInstance(StringUtil.getInstance()!.EMPTY_STRING, this.FILE)!;;
+    OutputStream fileOutputStream = fileInputStreamFactory.getFileOutputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
     
 
-    dataOutputStream: AbDataOutputStream = new AbDataOutputStream(fileOutputStream);;
+    AbDataOutputStream dataOutputStream = AbDataOutputStream(fileOutputStream);;
     
 closeable= dataOutputStream;
     
 
-                        if(this.isOpenGL())
+                        if(this->isOpenGL())
                         
                                     {
-                                    dataOutputStream!.writeInt(1);
+                                    dataOutputStream.writeInt(1);
     
 
                                     }
                                 
                         else {
-                            dataOutputStream!.writeInt(0);
+                            dataOutputStream.writeInt(0);
     
 
                         }
                             
-dataOutputStream!.writeUTF(this.getVersionSelector()!.getName());
+dataOutputStream.writeUTF(this->getVersionSelector().getName());
     
-dataOutputStream!.writeUTF(this.getType()!.getName());
+dataOutputStream.writeUTF(this->getType().getName());
     
-dataOutputStream!.writeUTF(this.getImageColor()!.getName());
+dataOutputStream.writeUTF(this->getImageColor().getName());
     
-dataOutputStream!.writeUTF(this.getColor()!.getName());
+dataOutputStream.writeUTF(this->getColor().getName());
     
-dataOutputStream!.flush();
+dataOutputStream.flush();
     
 
                 //: 
@@ -424,7 +421,7 @@ dataOutputStream!.flush();
 }
 
          finally {
-            StreamUtil.getInstance()!.close(closeable);
+            StreamUtil::getInstance().close(closeable);
     
 
          }
@@ -434,48 +431,48 @@ dataOutputStream!.flush();
 
                 //@Throws(Exception.constructor)
             
-    public init(){
+    public: void init(){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(ChangedGameFeatureListener.getInstance()!.isChangedFeature(MainFeatureFactory.getInstance()!.STATIC))
+                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(MainFeatureFactory::getInstance().STATIC))
                         
                                     {
                                     
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(this.isOpenGL())
+                        if(this->isOpenGL())
                         
                                     {
                                     
-                        if(features.isFeature(openGLFeatureFactory!.OPENGL_2D) || features.isFeature(openGLFeatureFactory!.OPENGL_3D) || features.isFeature(openGLFeatureFactory!.OPENGL_2D_AND_3D))
+                        if(features.isFeature(openGLFeatureFactory.OPENGL_2D) || features.isFeature(openGLFeatureFactory.OPENGL_3D) || features.isFeature(openGLFeatureFactory.OPENGL_2D_AND_3D))
                         
                                     {
                                     
-                        if(!features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(!features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
-                                    this.logUtil!.putF("Turning on OpenGL as Default", this, this.commonStrings!.INIT);
+                                    this->logUtil.putF("Turning on OpenGL as Default", this, this->commonStrings.INIT);
     
-features.addDefault(OpenGLFeatureFactory.getInstance()!.OPENGL);
+features.addDefault(OpenGLFeatureFactory::getInstance().OPENGL);
     
-this.logUtil!.putF("Using OpenGL Type Feature: " +this.getType(), this, this.commonStrings!.INIT);
+this->logUtil.putF("Using OpenGL Type Feature: " +this->getType(), this, this->commonStrings.INIT);
     
-features.addDefault(this.getType());
+features.addDefault(this->getType());
     
-this.logUtil!.putF("Using OpenGL ImageColor Feature: " +this.getImageColor(), this, this.commonStrings!.INIT);
+this->logUtil.putF("Using OpenGL ImageColor Feature: " +this->getImageColor(), this, this->commonStrings.INIT);
     
-features.addDefault(this.getImageColor());
+features.addDefault(this->getImageColor());
     
-this.logUtil!.putF("Using OpenGL Color Feature: " +this.getColor(), this, this.commonStrings!.INIT);
+this->logUtil.putF("Using OpenGL Color Feature: " +this->getColor(), this, this->commonStrings.INIT);
     
-features.addDefault(this.getColor());
+features.addDefault(this->getColor());
     
-this.logUtil!.putF("Using OpenGL Version Selector Feature: " +this.getVersionSelector(), this, this.commonStrings!.INIT);
+this->logUtil.putF("Using OpenGL Version Selector Feature: " +this->getVersionSelector(), this, this->commonStrings.INIT);
     
-features.addDefault(this.getVersionSelector());
+features.addDefault(this->getVersionSelector());
     
 
                                     }
@@ -484,7 +481,7 @@ features.addDefault(this.getVersionSelector());
                                     }
                                 
                         else {
-                            this.logUtil!.putF("OpenGL is enabled, but this game does not support OpenGL (Probably from installing with the same package name from a game that had OpenGL available)", this, this.commonStrings!.INIT);
+                            this->logUtil.putF("OpenGL is enabled, but this game does not support OpenGL (Probably from installing with the same package name from a game that had OpenGL available)", this, this->commonStrings.INIT);
     
 
                         }
@@ -493,7 +490,7 @@ features.addDefault(this.getVersionSelector());
                                     }
                                 
                         else {
-                            this.logUtil!.putF("OpenGL is Off", this, this.commonStrings!.INIT);
+                            this->logUtil.putF("OpenGL is Off", this, this->commonStrings.INIT);
     
 
                         }
@@ -503,10 +500,10 @@ features.addDefault(this.getVersionSelector());
                                 
                         else {
                             
-                        if(this.isOpenGL() && !features.isDefault(OpenGLFeatureFactory.getInstance()!.OPENGL))
+                        if(this->isOpenGL() && !features.isDefault(OpenGLFeatureFactory::getInstance().OPENGL))
                         
                                     {
-                                    PreLogUtil.put("OpenGL is set but not Enabled since statics where not cleared (Reboot or Complete exit is Required)", this, this.commonStrings!.INIT);
+                                    PreLogUtil::put("OpenGL is set but not Enabled since statics where not cleared (Reboot or Complete exit is Required)", this, this->commonStrings.INIT);
     
 
                                     }
@@ -514,25 +511,25 @@ features.addDefault(this.getVersionSelector());
 
                         }
                             
-PreLogUtil.put(this.toString(), this, this.commonStrings!.INIT);
+PreLogUtil::put(this->toString(), this, this->commonStrings.INIT);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public update(Feature gameFeature, bool colorLocked){
+    public: void update(Feature gameFeature, bool colorLocked){
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-    modified: bool = false;;
+    bool modified = false;;
     
 
-                        if(gameFeature == openGLFeatureFactory!.OPENGL)
+                        if(gameFeature == openGLFeatureFactory.OPENGL)
                         
                                     {
                                     
@@ -540,10 +537,10 @@ PreLogUtil.put(this.toString(), this, this.commonStrings!.INIT);
                         
                                     {
                                     
-                        if(!this.isOpenGL())
+                        if(!this->isOpenGL())
                         
                                     {
-                                    this.setOpenGL(true);
+                                    this->setOpenGL(true);
     
 modified= true;
     
@@ -555,10 +552,10 @@ modified= true;
                                 
                         else {
                             
-                        if(this.isOpenGL())
+                        if(this->isOpenGL())
                         
                                     {
-                                    this.setOpenGL(false);
+                                    this->setOpenGL(false);
     
 modified= true;
     
@@ -572,7 +569,7 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory!.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS || gameFeature == openGLFeatureFactory!.OPENGL_AS_GAME_THREAD)
+                        if(gameFeature == openGLFeatureFactory.OPENGL_AND_GAME_HAVE_DIFFERENT_THREADS || gameFeature == openGLFeatureFactory.OPENGL_AS_GAME_THREAD)
                         
                                     {
                                     
@@ -580,10 +577,10 @@ modified= true;
                         
                                     {
                                     
-                        if(gameFeature != this.getType())
+                        if(gameFeature != this->getType())
                         
                                     {
-                                    this.setType(gameFeature as OpenGLFeature);
+                                    this->setType(gameFeature as OpenGLFeature);
     
 modified= true;
     
@@ -597,7 +594,7 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory!.IMAGE_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory!.IMAGE_COLOR_DEPTH_8888)
+                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_8888)
                         
                                     {
                                     
@@ -605,38 +602,38 @@ modified= true;
                         
                                     {
                                     
-                        if(this.getImageColor() != gameFeature)
+                        if(this->getImageColor() != gameFeature)
                         
                                     {
-                                    this.setImageColor(gameFeature as OpenGLFeature);
+                                    this->setImageColor(gameFeature as OpenGLFeature);
     
 
                         if(colorLocked)
                         
                                     {
                                     
-                        if(gameFeature == openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444)
+                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444)
                         
                                     {
-                                    this.setColor(openGLFeatureFactory!.OPENGL_COLOR_DEPTH_4444);
+                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_4444);
     
 
                                     }
                                 
                              else 
-                        if(gameFeature == openGLFeatureFactory!.IMAGE_COLOR_DEPTH_565)
+                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_565)
                         
                                     {
-                                    this.setColor(openGLFeatureFactory!.OPENGL_COLOR_DEPTH_565);
+                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_565);
     
 
                                     }
                                 
                              else 
-                        if(gameFeature == openGLFeatureFactory!.IMAGE_COLOR_DEPTH_8888)
+                        if(gameFeature == openGLFeatureFactory.IMAGE_COLOR_DEPTH_8888)
                         
                                     {
-                                    this.setColor(openGLFeatureFactory!.OPENGL_COLOR_DEPTH_8888);
+                                    this->setColor(openGLFeatureFactory.OPENGL_COLOR_DEPTH_8888);
     
 
                                     }
@@ -656,7 +653,7 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory!.OPENGL_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory!.OPENGL_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory!.OPENGL_COLOR_DEPTH_8888)
+                        if(gameFeature == openGLFeatureFactory.OPENGL_COLOR_DEPTH_4444 || gameFeature == openGLFeatureFactory.OPENGL_COLOR_DEPTH_565 || gameFeature == openGLFeatureFactory.OPENGL_COLOR_DEPTH_8888)
                         
                                     {
                                     
@@ -664,10 +661,10 @@ modified= true;
                         
                                     {
                                     
-                        if(this.getColor() != gameFeature)
+                        if(this->getColor() != gameFeature)
                         
                                     {
-                                    this.setColor(gameFeature as OpenGLFeature);
+                                    this->setColor(gameFeature as OpenGLFeature);
     
 modified= true;
     
@@ -681,14 +678,14 @@ modified= true;
                                     }
                                 
 
-                        if(gameFeature == openGLFeatureFactory!.OPENGL_AUTO_SELECT || gameFeature == openGLFeatureFactory!.OPENGL_MINIMUM)
+                        if(gameFeature == openGLFeatureFactory.OPENGL_AUTO_SELECT || gameFeature == openGLFeatureFactory.OPENGL_MINIMUM)
                         
                                     {
                                     
                         if(features.isFeature(gameFeature))
                         
                                     {
-                                    this.setVersionSelector(gameFeature as OpenGLFeature);
+                                    this->setVersionSelector(gameFeature as OpenGLFeature);
     
 
                                     }
@@ -702,7 +699,7 @@ modified= true;
                         if(modified)
                         
                                     {
-                                    this.write();
+                                    this->write();
     
 
                                     }
@@ -710,118 +707,118 @@ modified= true;
 }
 
 
-    public setOpenGL(bool opengl){
-this.opengl= opengl;
+    public: void setOpenGL(bool opengl){
+this->opengl= opengl;
     
 }
 
 
-    public bool isOpenGL(){
+    public: bool isOpenGL(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.opengl;
+                        return this->opengl;
     
 }
 
 
-    public setImageColor(OpenGLFeature imageColor){
-this.imageColor= imageColor;
+    public: void setImageColor(OpenGLFeature imageColor){
+this->imageColor= imageColor;
     
 }
 
 
-    public OpenGLFeature getImageColor(){
+    public: OpenGLFeature getImageColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageColor;
+                        return this->imageColor;
     
 }
 
 
-    public setColor(OpenGLFeature color){
-this.color= color;
+    public: void setColor(OpenGLFeature color){
+this->color= color;
     
 }
 
 
-    public OpenGLFeature getColor(){
+    public: OpenGLFeature getColor(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.color;
+                        return this->color;
     
 }
 
 
-    public setVersionSelector(OpenGLFeature versionSelector){
-this.versionSelector= versionSelector;
+    public: void setVersionSelector(OpenGLFeature versionSelector){
+this->versionSelector= versionSelector;
     
 }
 
 
-    public OpenGLFeature getVersionSelector(){
+    public: OpenGLFeature getVersionSelector(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.versionSelector;
+                        return this->versionSelector;
     
 }
 
 
-    public setType(OpenGLFeature type){
-this.type= type;
+    public: void setType(OpenGLFeature type){
+this->type= type;
     
 }
 
 
-    public OpenGLFeature getType(){
+    public: OpenGLFeature getType(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.type;
+                        return this->type;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
-stringBuffer!.append(" isOpenGL: ");
+stringBuffer.append(" isOpenGL: ");
     
-stringBuffer!.appendboolean(this.isOpenGL());
+stringBuffer.appendboolean(this->isOpenGL());
     
-stringBuffer!.append(" VersionSelector: ");
+stringBuffer.append(" VersionSelector: ");
     
-stringBuffer!.append(stringUtil!.toString(this.getVersionSelector()));
+stringBuffer.append(stringUtil.toString(this->getVersionSelector()));
     
-stringBuffer!.append(" Type: ");
+stringBuffer.append(" Type: ");
     
-stringBuffer!.append(stringUtil!.toString(this.getType()));
+stringBuffer.append(stringUtil.toString(this->getType()));
     
-stringBuffer!.append(" Image Color: ");
+stringBuffer.append(" Image Color: ");
     
-stringBuffer!.append(stringUtil!.toString(this.getImageColor()));
+stringBuffer.append(stringUtil.toString(this->getImageColor()));
     
-stringBuffer!.append(" Color: ");
+stringBuffer.append(" Color: ");
     
-stringBuffer!.append(stringUtil!.toString(this.getColor()));
+stringBuffer.append(stringUtil.toString(this->getColor()));
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

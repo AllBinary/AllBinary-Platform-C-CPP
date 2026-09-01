@@ -58,48 +58,47 @@
 class FormTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: FormTypeFactory = new FormTypeFactory();
+    private: static FormTypeFactory instance() { return FormTypeFactory(); }
 
-    public static FormTypeFactory getInstance(){
+    public: static FormTypeFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return FormTypeFactory.instance;
+                        return FormTypeFactory::instance();
     
 }
 
 
-    public const UNK: string = "Unknown FormType";
+    public: const std::string UNK = "Unknown FormType";
 
-    public const NULL_FORM_TYPE: FormType = new FormType(StringUtil.getInstance()!.NULL_STRING);
+    public: const FormType NULL_FORM_TYPE = FormType(StringUtil::getInstance().NULL_STRING);
 
-    public const TEMP_HORIZONTAL_FORM: FormType = new FormType("TempHorizontal");
+    public: const FormType TEMP_HORIZONTAL_FORM = FormType("TempHorizontal");
 
-    public const HORIZONTAL_FORM: FormType = new FormType("Horizontal");
+    public: const FormType HORIZONTAL_FORM = FormType("Horizontal");
 
-    public const VERTICAL_CENTER_FORM: FormType = new FormType("Vertical");
+    public: const FormType VERTICAL_CENTER_FORM = FormType("Vertical");
 
-    public FormType getFormType(){
+    public: FormType getFormType(){
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    formType: FormType;;
+    FormType formType;;
     
 
-                        if(displayInfo!.isPortrait())
+                        if(displayInfo.isPortrait())
                         
                                     {
-                                    formType= this.VERTICAL_CENTER_FORM;
+                                    formType= this->VERTICAL_CENTER_FORM;
     
 
                                     }
                                 
                         else {
-                            formType= this.HORIZONTAL_FORM;
+                            formType= this->HORIZONTAL_FORM;
     
 
                         }

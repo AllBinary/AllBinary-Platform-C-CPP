@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/System.h"
@@ -140,70 +142,69 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class HighScoresCanvas: public GameCommandCanvas: public HighScoresResultsListener {
-        
+class HighScoresCanvas: public GameCommandCanvas, public HighScoresResultsListener {
 
-    public static const NAME: string = "HighScoresCanvas";
+    public: static const std::string NAME = "HighScoresCanvas";
 
-    private: paintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable paintable = NullPaintable::getInstance();
 
-    private: const highScoreCommandsFactory: HighScoreCommandsFactory = HighScoreCommandsFactory.getInstance()!;
+    private: const HighScoreCommandsFactory highScoreCommandsFactory = HighScoreCommandsFactory::getInstance();
 
-    private: const waitPaintable: SimpleTextPaintable = new SimpleTextPaintable(this.commonStrings!.PLEASE_WAIT_FOR_SERVER, BasicColorFactory.getInstance()!.WHITE);
+    private: const SimpleTextPaintable waitPaintable = SimpleTextPaintable(this->commonStrings.PLEASE_WAIT_FOR_SERVER, BasicColorFactory::getInstance().WHITE);
 
-    private: const highScoresPaintable: HighScoresPaintable;
+    private: HighScoresPaintable highScoresPaintable;
 
-    private: const highScoresFactoryInterface: HighScoresFactoryInterface;
+    private: HighScoresFactoryInterface highScoresFactoryInterface;
 
-    colorFillPaintable: ColorFillBasePaintable;
+    protected: ColorFillBasePaintable colorFillPaintable;
 
-    private: const highScoresHelper: HighScoresHelperBase = new HighScoresHelperBase();
+    private: const HighScoresHelperBase highScoresHelper = HighScoresHelperBase();
 
-    private: const gameInfo: GameInfo;
+    private: GameInfo gameInfo;
 
-    private: const highScoresCanvasInputProcessor: HighScoresCanvasInputProcessor;
+    private: HighScoresCanvasInputProcessor highScoresCanvasInputProcessor;
 
-    private: currentCommand: Command = this.highScoreCommandsFactory!.HIGH_SCORE_COMMANDS[0]!;
+    private: Command currentCommand = this->highScoreCommandsFactory.HIGH_SCORE_COMMANDS[0];
 
-    private: hasPainted: bool = false;
+    private: bool hasPainted = false;
 
-public constructor (CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, GameInfo gameInfo, HighScoresPaintable paintable, HighScoresFactoryInterface highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface highScoresCanvasInputProcessorFactoryInterface){
-            super(commandListener, HighScoresCanvas.NAME, allBinaryGameLayerManager!.getBackgroundBasicColor(), allBinaryGameLayerManager!.getForegroundBasicColor());
+public: HighScoresCanvas(CommandListener commandListener, AllBinaryGameLayerManager allBinaryGameLayerManager, GameInfo gameInfo, HighScoresPaintable paintable, HighScoresFactoryInterface highScoresFactoryInterface, HighScoresCanvasInputProcessorFactoryInterface highScoresCanvasInputProcessorFactoryInterface){
+            super(commandListener, HighScoresCanvas::NAME, allBinaryGameLayerManager.getBackgroundBasicColor(), allBinaryGameLayerManager.getForegroundBasicColor());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
-this.highScoresPaintable= paintable;
+this->highScoresPaintable= paintable;
     
-this.highScoresFactoryInterface= highScoresFactoryInterface;
+this->highScoresFactoryInterface= highScoresFactoryInterface;
     
-this.highScoresCanvasInputProcessor= highScoresCanvasInputProcessorFactoryInterface!.getInstance(this);
+this->highScoresCanvasInputProcessor= highScoresCanvasInputProcessorFactoryInterface.getInstance(this);
     
-this.gameInfo= gameInfo;
+this->gameInfo= gameInfo;
     
-this.waitPaintable!.setBasicColorP(allBinaryGameLayerManager!.getForegroundBasicColor());
+this->waitPaintable.setBasicColorP(allBinaryGameLayerManager.getForegroundBasicColor());
     
-this.getHighScoresPaintable()!.setBasicColorP(allBinaryGameLayerManager!.getForegroundBasicColor());
+this->getHighScoresPaintable().setBasicColorP(allBinaryGameLayerManager.getForegroundBasicColor());
     
-this.colorFillPaintable= ColorFillPaintableFactory.getInstance()!.getInstance(allBinaryGameLayerManager!.getBackgroundBasicColor(), false);
+this->colorFillPaintable= ColorFillPaintableFactory::getInstance().getInstance(allBinaryGameLayerManager.getBackgroundBasicColor(), false);
     
 
-                        if(this.highScoresHelper!.getHighScoresArray() == NoHighScoresFactory.getInstance()!.NO_HIGH_SCORES)
+                        if(this->highScoresHelper.getHighScoresArray() == NoHighScoresFactory::getInstance().NO_HIGH_SCORES)
                         
                                     {
-                                    this.setPaintable(this.waitPaintable);
+                                    this->setPaintable(this->waitPaintable);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("Show HighScores that are already loaded", this, this.commonStrings!.CONSTRUCTOR);
+                            this->logUtil.putF("Show HighScores that are already loaded", this, this->commonStrings.CONSTRUCTOR);
     
-this.updateCommand(this.currentCommand);
+this->updateCommand(this->currentCommand);
     
-this.setPaintable(this.getHighScoresPaintable());
+this->setPaintable(this->getHighScoresPaintable());
     
 
                         }
@@ -211,77 +212,74 @@ this.setPaintable(this.getHighScoresPaintable());
 
 //inner=true member= isStatic=
 class HighScoreRunnable: public ARunnable {
-        
 
-    const highScoresCanvas: HighScoresCanvas;
+    HighScoresCanvas highScoresCanvas;
 
- constructor (HighScoresCanvas highScoresCanvas){
-
-            super();
-        this.highScoresCanvas= highScoresCanvas;
+: HighScoreRunnable(HighScoresCanvas highScoresCanvas){
+this->highScoresCanvas= highScoresCanvas;
     
 }
 
 
-    public run(){
+    public: void run(){
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
-    highScoresCanvas: HighScoresCanvas = this.highScoresCanvas;;
+    HighScoresCanvas highScoresCanvas = this->highScoresCanvas;;
     
 
         try {
             
-    isHTML: bool = J2MEUtil.isHTML()!;;
+    bool isHTML = J2MEUtil::isHTML();;
     
 
                         if(!isHTML)
                         
                                     {
                                     
-        while(!highScoresCanvas!.hasPainted)
+        while(!highScoresCanvas.hasPainted)
         {
 }
 
-highScoresCanvas!.hasPainted= false;
+highScoresCanvas.hasPainted= false;
     
 
                                     }
                                 
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
-logUtil!.putF(stringMaker!.append("HighScoresCanvas - Request repaint to be sure: ")!.appendlong(Date.now())!.toString(), this, commonStrings!.RUN);
+logUtil.putF(stringMaker.append("HighScoresCanvas - Request repaint to be sure: ").appendlong(Date.now()).toString(), this, commonStrings.RUN);
     
-highScoresCanvas!.repaintBehavior!.onChangeRepaint(highScoresCanvas);
+highScoresCanvas.repaintBehavior.onChangeRepaint(highScoresCanvas);
     
 
                         if(!isHTML)
                         
                                     {
                                     
-        while(!highScoresCanvas!.hasPainted)
+        while(!highScoresCanvas.hasPainted)
         {
 }
 
 
                                     }
                                 
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-logUtil!.putF(stringMaker!.append("HighScoresCanvas - Now that the canvas has completed repaint go ahead and fetch the scores: ")!.appendlong(Date.now())!.toString(), this, commonStrings!.RUN);
+logUtil.putF(stringMaker.append("HighScoresCanvas - Now that the canvas has completed repaint go ahead and fetch the scores: ").appendlong(Date.now()).toString(), this, commonStrings.RUN);
     
-highScoresCanvas!.executeUpdate();
+highScoresCanvas.executeUpdate();
     
 
                 //: 
 } catch(e) 
             {
-logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
+logUtil.put(commonStrings.EXCEPTION, this, commonStrings.RUN, e);
     
 }
 
@@ -294,115 +292,115 @@ logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.RUN, e);
 
                     //Otherwise - statement - EmptyStmt
 
-SecondaryThreadPool.getInstance()!.runTask(new HighScoreRunnable(this));
+SecondaryThreadPool::getInstance().runTask(HighScoreRunnable(this));
     
 }
 
 
-    public initCommands(CommandListener cmdListener){
-this.removeAllCommands();
+    public: void initCommands(CommandListener cmdListener){
+this->removeAllCommands();
     
-this.addCommand(GameCommandsFactory.getInstance()!.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(GameCommandsFactory::getInstance().CLOSE_AND_SHOW_GAME_CANVAS);
     
-this.setCommandListener(cmdListener);
+this->setCommandListener(cmdListener);
     
 }
 
 
-    public open(){
+    public: void open(){
 super.open();
     
-this.highScoresCanvasInputProcessor!.open();
+this->highScoresCanvasInputProcessor.open();
     
 }
 
 
-    public close(){
+    public: void close(){
 super.close();
     
-this.highScoresCanvasInputProcessor!.close();
+this->highScoresCanvasInputProcessor.close();
     
 }
 
 
-    public paint(Graphics graphics){
-this.colorFillPaintable!.paint(graphics);
+    public: void paint(Graphics graphics){
+this->colorFillPaintable.paint(graphics);
     
-this.paintable.paint(graphics);
+this->paintable.paint(graphics);
     
 
-                        if(this.waitPaintable != this.paintable)
+                        if(this->waitPaintable != this->paintable)
                         
                                     {
-                                    this.highScoresCanvasInputProcessor!.paint(graphics);
+                                    this->highScoresCanvasInputProcessor.paint(graphics);
     
 
                                     }
                                 
 super.paint(graphics);
     
-this.hasPainted= true;
+this->hasPainted= true;
     
 }
 
 
-    public executeUpdate(){
+    public: void executeUpdate(){
 
         try {
-            this.highScoresFactoryInterface!.fetchHighScores(this.getGameInfo(), this);
+            this->highScoresFactoryInterface.fetchHighScores(this->getGameInfo(), this);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.UPDATE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, e);
     
 }
 
 }
 
 
-    HighScoresPaintable getHighScoresPaintable(){
+    private: HighScoresPaintable getHighScoresPaintable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoresPaintable;
+                        return this->highScoresPaintable;
     
 }
 
 
-    public setHighScoresArray(std::vector<HighScores> highScoresArray){
+    public: void setHighScoresArray(std::vector<HighScores> highScoresArray){
 
         try {
             
                         if(highScoresArray != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append(this.commonStrings!.START)!.appendint(highScoresArray!.length)!.toString(), this, "setHighScoresArray");
+                                    this->logUtil.putF(StringMaker().append(this->commonStrings.START).appendint(highScoresArray.size()).toString(), this, "setHighScoresArray");
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF(this.commonStrings!.START, this, "setHighScoresArray");
+                            this->logUtil.putF(this->commonStrings.START, this, "setHighScoresArray");
     
 
                         }
                             
-this.highScoresHelper!.setHighScoresArray(highScoresArray);
+this->highScoresHelper.setHighScoresArray(highScoresArray);
     
-this.updateCommand(this.currentCommand);
+this->updateCommand(this->currentCommand);
     
-this.setPaintable(this.getHighScoresPaintable());
+this->setPaintable(this->getHighScoresPaintable());
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.UPDATE, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.UPDATE, e);
     
 }
 
@@ -411,27 +409,27 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.UPDAT
 
                 //@Throws(Exception.constructor)
             
-    public updateCommand(Command command){
-this.logUtil!.putF(new StringMaker().append(this.commonStrings!.START)!.append(this.stringUtil!.toString(command))!.toString(), this, this.commonStrings!.UPDATE);
+    public: void updateCommand(Command command){
+this->logUtil.putF(StringMaker().append(this->commonStrings.START).append(this->stringUtil.toString(command)).toString(), this, this->commonStrings.UPDATE);
     
 
-    gameCommandsFactory: GameCommandsFactory = GameCommandsFactory.getInstance()!;;
+    GameCommandsFactory gameCommandsFactory = GameCommandsFactory::getInstance();;
     
 
-                        if(this.highScoreCommandsFactory!.isHighScoreCommand(command))
+                        if(this->highScoreCommandsFactory.isHighScoreCommand(command))
                         
                                     {
                                     
-    index: int32_t = this.highScoreCommandsFactory!.getIndex(command)!;;
+    int32_t index = this->highScoreCommandsFactory.getIndex(command);;
     
 
-    nextIndex: int32_t = index +1;;
+    int32_t nextIndex = index +1;;
     
 
-    highScoresArray: std::vector<HighScores> = this.highScoresHelper!.getHighScoresArray()!;;
+    std::vector<HighScores> highScoresArray = this->highScoresHelper.getHighScoresArray();;
     
 
-                        if(nextIndex >= highScoresArray!.length)
+                        if(nextIndex >= highScoresArray.size())
                         
                                     {
                                     nextIndex= 0;
@@ -440,16 +438,16 @@ this.logUtil!.putF(new StringMaker().append(this.commonStrings!.START)!.append(t
                                     }
                                 
 
-                        if(highScoresArray!.length > 0)
+                        if(highScoresArray.size() > 0)
                         
                                     {
-                                    this.getHighScoresPaintable()!.setHighScores(highScoresArray[index]!);
+                                    this->getHighScoresPaintable().setHighScores(highScoresArray[index]!);
     
 
                                     }
                                 
                         else {
-                            this.getHighScoresPaintable()!.setHighScores(NullHighScoresSingletonFactory.getInstance());
+                            this->getHighScoresPaintable().setHighScores(NullHighScoresSingletonFactory::getInstance());
     
 
                         }
@@ -458,11 +456,11 @@ this.logUtil!.putF(new StringMaker().append(this.commonStrings!.START)!.append(t
                         if(index != nextIndex)
                         
                                     {
-                                    this.removeAllCommands();
+                                    this->removeAllCommands();
     
-this.addCommand(gameCommandsFactory!.CLOSE_AND_SHOW_GAME_CANVAS);
+this->addCommand(gameCommandsFactory.CLOSE_AND_SHOW_GAME_CANVAS);
     
-this.addCommand(this.highScoreCommandsFactory!.HIGH_SCORE_COMMANDS[nextIndex]!);
+this->addCommand(this->highScoreCommandsFactory.HIGH_SCORE_COMMANDS[nextIndex]!);
     
 
                                     }
@@ -470,33 +468,33 @@ this.addCommand(this.highScoreCommandsFactory!.HIGH_SCORE_COMMANDS[nextIndex]!);
 
                                     }
                                 
-this.currentCommand= command;
+this->currentCommand= command;
     
-this.close();
+this->close();
     
 super.initMenu();
     
-this.open();
+this->open();
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 }
 
 
-    public GameInfo getGameInfo(){
+    public: GameInfo getGameInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.gameInfo;
+                        return this->gameInfo;
     
 }
 
 
-    setPaintable(Paintable paintable){
-this.paintable= paintable;
+    private: void setPaintable(Paintable paintable){
+this->paintable= paintable;
     
-this.repaintBehavior!.onChangeRepaint(this);
+this->repaintBehavior.onChangeRepaint(this);
     
 }
 

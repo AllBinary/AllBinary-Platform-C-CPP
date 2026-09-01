@@ -25,7 +25,6 @@
         #include "ServiceReference.h"
 
 class ServiceRegistration {
-        
 
     ServiceReference getReference()
 

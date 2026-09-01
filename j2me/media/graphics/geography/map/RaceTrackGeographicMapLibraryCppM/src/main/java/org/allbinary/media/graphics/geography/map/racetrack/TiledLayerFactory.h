@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_TILEDLAYERFACTORY_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_TILEDLAYERFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/game/TiledLayer.h>
@@ -49,11 +51,10 @@
 class TiledLayerFactory
             : public Object
          {
-        
 
-    public TiledLayer getInstance(RaceTrackData raceTrackData);
+    public: TiledLayer getInstance(RaceTrackData raceTrackData);
 
-    public TiledLayer getMiniInstance(RaceTrackData raceTrackData);
+    public: TiledLayer getMiniInstance(RaceTrackData raceTrackData);
 
 };
 

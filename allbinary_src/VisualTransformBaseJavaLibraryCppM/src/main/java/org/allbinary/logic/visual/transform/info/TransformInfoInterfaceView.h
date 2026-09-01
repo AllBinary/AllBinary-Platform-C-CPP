@@ -61,15 +61,14 @@
 class TransformInfoInterfaceView
             : public Object
         : public DomNodeInterface {
-        
 
-    private: transformInfoInterface: TransformInfoInterface;
+    private: TransformInfoInterface transformInfoInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: TransformInfoInterfaceView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

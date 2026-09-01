@@ -42,50 +42,47 @@
 class IntegerDimension
             : public Object
          {
-        
 
-    private: width: int32_t= 0;
+    private: int32_t width= 0;
 
-    private: height: int32_t= 0;
+    private: int32_t height= 0;
 
-public constructor (int32_t width, int32_t height){
-
-            super();
-        this.setWidth(width);
+public: IntegerDimension(int32_t width, int32_t height){
+this->setWidth(width);
     
-this.setHeight(height);
+this->setHeight(height);
     
 }
 
 
-    public int32_t getWidth(){
+    public: int32_t getWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.width;
+                        return this->width;
     
 }
 
 
-    public setWidth(int32_t width){
-this.width= width;
+    public: void setWidth(int32_t width){
+this->width= width;
     
 }
 
 
-    public int32_t getHeight(){
+    public: int32_t getHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.height;
+                        return this->height;
     
 }
 
 
-    public setHeight(int32_t height){
-this.height= height;
+    public: void setHeight(int32_t height){
+this->height= height;
     
 }
 

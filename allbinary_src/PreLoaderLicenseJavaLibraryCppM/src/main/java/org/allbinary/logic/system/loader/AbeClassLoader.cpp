@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Class.h"
         
             #include "../../../../../java/lang/ClassLoader.h"
@@ -80,41 +82,40 @@
         #include "NoClassDefFoundError.h"
 
 class AbeClassLoader: public ClassLoader {
-        
 
-    private: static classes: Map = new HashMap<any, any>();
+    private: static Map classes = HashMap<any, any>();
 
-    private: static PATH: string;
+    private: static std::string PATH;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abCryptUtil: AbCryptUtil = AbCryptUtil.getInstance()!;
+    private: const AbCryptUtil abCryptUtil = AbCryptUtil::getInstance();
 
-    private: const LOAD_CLASS: string = "loadClass";
+    private: const std::string LOAD_CLASS = "loadClass";
 
-    private: const ENCRYPTED_EXTENSION: string = AbPathData.getInstance()!.EXTENSION_SEP +"abc";
+    private: const std::string ENCRYPTED_EXTENSION = AbPathData::getInstance().EXTENSION_SEP +"abc";
 
-    private: key: string;
+    private: std::string key;
 
-public constructor (ClassLoader parent, string key){
+public: AbeClassLoader(ClassLoader parent, std::string key){
             super(parent);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.key= key;
+this->key= key;
     
-AbeClassLoader.PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF/classes/";
+AbeClassLoader::PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF/classes/";
     
 }
 
 
-    Function findLoadedClass1(string name){
+    protected: Function findLoadedClass1(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeClassLoader.classes.get(name) as Class<any>;
+                        return AbeClassLoader::classes.get(name) as Class<any>;
     
 }
 
@@ -122,12 +123,12 @@ AbeClassLoader.PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF/
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Function loadClass(string name){
+    public: Function loadClass(std::string name){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.loadClass(name, false);;
+                        return this->loadClass(name, false);;
     
 }
 
@@ -135,21 +136,21 @@ AbeClassLoader.PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF/
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Function loadClass(string name, bool resolve){
+    public: Function loadClass(std::string name, bool resolve){
 
-    loadedWith: string = "findLoadedClass1";;
+    std::string loadedWith = "findLoadedClass1";;
     
 
-    logBuffer: LogBuffer = new LogBuffer();;
+    LogBuffer logBuffer = LogBuffer();;
     
 
         try {
             
-    myClass: Function = this.findLoadedClass1(name)!;;
+    Function myClass = this->findLoadedClass1(name);;
     
 
                         if(myClass == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -158,11 +159,11 @@ AbeClassLoader.PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF/
             loadedWith= "super.loadClass";
     
 
-    normalClass: Function = super.loadClass(name, resolve)!;;
+    Function normalClass = super.loadClass(name, resolve);;
     
 
                         if(normalClass != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -179,64 +180,64 @@ AbeClassLoader.PATH= org.allbinary.globals.URLGLOBALS.getWebappPath() +"WEB-INF/
                 //: 
 } catch(e) 
             {
-logBuffer!.add(LogFactory.getInstance("Failed to Load Class: " +name +"\nwith: " +loadedWith, this, this.LOAD_CLASS, e));
+logBuffer.add(LogFactory::getInstance("Failed to Load Class: " +name +"\nwith: " +loadedWith, this, this->LOAD_CLASS, e));
     
 }
 
                 //: 
 /* catch(e) 
             {
-logBuffer!.add(LogFactory.getInstance("Failed to Load Class: " +name +"\nwith: " +loadedWith, this, this.LOAD_CLASS, e));
+logBuffer.add(LogFactory::getInstance("Failed to Load Class: " +name +"\nwith: " +loadedWith, this, this->LOAD_CLASS, e));
     
 }
 */
                 //: 
 /* catch(e) 
             {
-logBuffer!.add(LogFactory.getInstanceF("NoClassDefFoundError Failed Loaded Class: " +name +"\nwith: " +loadedWith, this, this.LOAD_CLASS));
+logBuffer.add(LogFactory::getInstanceF("NoClassDefFoundError Failed Loaded Class: " +name +"\nwith: " +loadedWith, this, this->LOAD_CLASS));
     
 }
 */
 
-    classBytes: std::vector<int8_t> = this.loadClassBytesFromFile(name)!;;
+    std::vector<int8_t> classBytes = this->loadClassBytesFromFile(name);;
     
 
                         if(classBytes == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new ClassNotFoundException("My Bytes not loaded for: " +name +"\nwith: " +"loadClassBytes");
+                            throw ClassNotFoundException("My Bytes not loaded for: " +name +"\nwith: " +"loadClassBytes");
                     
 
                                     }
                                 
-myClass= defineClass(name, classBytes, 0, classBytes!.length);
+myClass= defineClass(name, classBytes, 0, classBytes.size());
     
 
                         if(myClass == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new ClassNotFoundException("My Class Not Defineable for: " +name +"\nwith: " +"loadClassBytes");
+                            throw ClassNotFoundException("My Class Not Defineable for: " +name +"\nwith: " +"loadClassBytes");
                     
 
                                     }
                                 
-AbeClassLoader.classes.put(name, myClass);
+AbeClassLoader::classes.put(name, myClass);
     
 
                                     }
                                 
                         else {
-                            logBuffer!.add(LogFactory.getInstanceF("Already Loaded: " +name +"\nwith: " +loadedWith, this, this.LOAD_CLASS));
+                            logBuffer.add(LogFactory::getInstanceF("Already Loaded: " +name +"\nwith: " +loadedWith, this, this->LOAD_CLASS));
     
 
                         }
@@ -254,12 +255,12 @@ resolveClass(myClass);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    logBuffer!.logAll();
+                                    logBuffer.logAll();
     
-this.logUtil!.put("Failure loading: " +name +"\nwith: " +loadedWith, this, this.LOAD_CLASS, e);
+this->logUtil.put("Failure loading: " +name +"\nwith: " +loadedWith, this, this->LOAD_CLASS, e);
     
 
                                     }
@@ -275,23 +276,23 @@ this.logUtil!.put("Failure loading: " +name +"\nwith: " +loadedWith, this, this.
 }
 
 
-    std::vector<int8_t> loadClassBytesFromFile(string name){
+    private: std::vector<int8_t> loadClassBytesFromFile(std::string name){
 
-    in: FileInputStream = 
+    FileInputStream in = 
                 null
             ;;
     
 
-    cname: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string cname = StringUtil::getInstance().EMPTY_STRING;;
     
 
         try {
-            cname= AbeClassLoader.PATH +name.replace('.', AbPathData.getInstance()!.SEPARATORCHAR) +this.ENCRYPTED_EXTENSION;
+            cname= AbeClassLoader::PATH +name.replace('.', AbPathData::getInstance().SEPARATORCHAR) +this->ENCRYPTED_EXTENSION;
     
-in= new FileInputStream(cname);
+in= FileInputStream(cname);
     
 
-    decrypted: std::vector<int8_t> = this.abCryptUtil!.decrypt(in, this.key)!;;
+    std::vector<int8_t> decrypted = this->abCryptUtil.decrypt(in, this->key);;
     
 
 
@@ -304,15 +305,15 @@ in= new FileInputStream(cname);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.put("(Before LogBuffer Output) Failure loading Encrypted: " +name +" File: " +cname, "AbeClassLoader", "loadClassBytes", e);
+                                    this->logUtil.put("(Before LogBuffer Output) Failure loading Encrypted: " +name +" File: " +cname, "AbeClassLoader", "loadClassBytes", e);
     
 
                                     }
                                 
-StreamUtil.getInstance()!.close(in);
+StreamUtil::getInstance().close(in);
     
 }
 
@@ -320,13 +321,13 @@ StreamUtil.getInstance()!.close(in);
 /* catch(e) 
             {
 
-    loadedWith: string = "loadClassBytes";;
+    std::string loadedWith = "loadClassBytes";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.put("(Before LogBuffer Output) Failed to Loaded Class: " +name +" File: " +cname +"\nwith: " +loadedWith, this, "loadClassBytes", e);
+                                    this->logUtil.put("(Before LogBuffer Output) Failed to Loaded Class: " +name +" File: " +cname +"\nwith: " +loadedWith, this, "loadClassBytes", e);
     
 
                                     }
@@ -337,13 +338,13 @@ StreamUtil.getInstance()!.close(in);
 /* catch(e) 
             {
 
-    loadedWith: string = "loadClassBytes";;
+    std::string loadedWith = "loadClassBytes";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.putF("(Before LogBuffer Output) NoClassDefFoundError Failed Loaded Class: " +name +" File: " +cname +"\nwith: " +loadedWith, this, "loadClassBytes");
+                                    this->logUtil.putF("(Before LogBuffer Output) NoClassDefFoundError Failed Loaded Class: " +name +" File: " +cname +"\nwith: " +loadedWith, this, "loadClassBytes");
     
 
                                     }
@@ -362,18 +363,18 @@ StreamUtil.getInstance()!.close(in);
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Function oldLoadClass(string name, bool resolve){
+    public: Function oldLoadClass(std::string name, bool resolve){
 
-    loadedWith: string = "findLoadedClass1";;
+    std::string loadedWith = "findLoadedClass1";;
     
 
         try {
             
-    myClass: Function = this.findLoadedClass1(name)!;;
+    Function myClass = this->findLoadedClass1(name);;
     
 
                         if(myClass == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -382,11 +383,11 @@ StreamUtil.getInstance()!.close(in);
             loadedWith= "super.loadClass";
     
 
-    normalClass: Function = super.loadClass(name, resolve)!;;
+    Function normalClass = super.loadClass(name, resolve);;
     
 
                         if(normalClass != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
@@ -404,10 +405,10 @@ StreamUtil.getInstance()!.close(in);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADER))
                         
                                     {
-                                    this.logUtil!.putF("Failed Loaded Class: " +name +" with: " +loadedWith, this, this.LOAD_CLASS);
+                                    this->logUtil.putF("Failed Loaded Class: " +name +" with: " +loadedWith, this, this->LOAD_CLASS);
     
 
                                     }
@@ -418,10 +419,10 @@ StreamUtil.getInstance()!.close(in);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADER))
                         
                                     {
-                                    this.logUtil!.putF("Failed Loaded Class: " +name +" with: " +loadedWith, this, this.LOAD_CLASS);
+                                    this->logUtil.putF("Failed Loaded Class: " +name +" with: " +loadedWith, this, this->LOAD_CLASS);
     
 
                                     }
@@ -432,10 +433,10 @@ StreamUtil.getInstance()!.close(in);
 /* catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADER))
                         
                                     {
-                                    this.logUtil!.putF("Failed Loaded Class: " +name +" with: " +loadedWith, this, this.LOAD_CLASS);
+                                    this->logUtil.putF("Failed Loaded Class: " +name +" with: " +loadedWith, this, this->LOAD_CLASS);
     
 
                                     }
@@ -445,49 +446,49 @@ StreamUtil.getInstance()!.close(in);
 loadedWith= "loadClassBytes";
     
 
-    classBytes: std::vector<int8_t> = this.loadClassBytesFromFile(name)!;;
+    std::vector<int8_t> classBytes = this->loadClassBytesFromFile(name);;
     
 
                         if(classBytes == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new ClassNotFoundException("Bytes not loaded for: " +name);
+                            throw ClassNotFoundException("Bytes not loaded for: " +name);
                     
 
                                     }
                                 
-myClass= defineClass(name, classBytes, 0, classBytes!.length);
+myClass= defineClass(name, classBytes, 0, classBytes.size());
     
 
                         if(myClass == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new ClassNotFoundException("Class Not Defineable for: " +name);
+                            throw ClassNotFoundException("Class Not Defineable for: " +name);
                     
 
                                     }
                                 
-AbeClassLoader.classes.put(name, myClass);
+AbeClassLoader::classes.put(name, myClass);
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADER))
                         
                                     {
-                                    this.logUtil!.putF("Already Loaded: " +name +" with: " +loadedWith, this, this.LOAD_CLASS);
+                                    this->logUtil.putF("Already Loaded: " +name +" with: " +loadedWith, this, this->LOAD_CLASS);
     
 
                                     }
@@ -508,10 +509,10 @@ resolveClass(myClass);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.LOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().LOADERERROR))
                         
                                     {
-                                    this.logUtil!.put("Failure loading: " +name, "AbeClassLoader", this.LOAD_CLASS, e);
+                                    this->logUtil.put("Failure loading: " +name, "AbeClassLoader", this->LOAD_CLASS, e);
     
 
                                     }

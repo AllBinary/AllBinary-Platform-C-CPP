@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Graphics.h>
@@ -56,23 +58,22 @@
         #include "ImageSegmentAnimation.h"
 
 class TopToBottomImageAnimation: public ImageSegmentAnimation {
-        
 
-    private: currentHeight: int32_t;
+    private: int32_t currentHeight;
 
-public constructor (Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior){
+public: TopToBottomImageAnimation(Image image, std::vector<int32_t> sequenceArray, AnimationBehavior animationBehavior){
             super(image, sequenceArray, animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.currentHeight= 0;
+this->currentHeight= 0;
     
 
-                        if(this.getSequence()[0] ==  -1)
+                        if(this->getSequence()[0] ==  -1)
                         
                                     {
-                                    this.setFrame(this.getSize() -1);
+                                    this->setFrame(this->getSize() -1);
     
 
                                     }
@@ -80,9 +81,9 @@ this.currentHeight= 0;
 }
 
 
-    public nextFrame(){
+    public: void nextFrame(){
 
-                        if(this.getSequence()[0] ==  -1)
+                        if(this->getSequence()[0] ==  -1)
                         
                                     {
                                     super.previousFrame();
@@ -96,14 +97,14 @@ this.currentHeight= 0;
 
                         }
                             
-this.update();
+this->update();
     
 }
 
 
-    public previousFrame(){
+    public: void previousFrame(){
 
-                        if(this.getSequence()[0] ==  -1)
+                        if(this->getSequence()[0] ==  -1)
                         
                                     {
                                     super.nextFrame();
@@ -117,29 +118,29 @@ this.update();
 
                         }
                             
-this.update();
+this->update();
     
 }
 
 
-    public setFrame(int32_t index){
+    public: void setFrame(int32_t index){
 super.setFrame(index);
     
-this.update();
+this->update();
     
 }
 
 
-    update(){
-this.currentHeight= this.getDrawHeight() *this.getFrame() /this.getSize();
+    private: void update(){
+this->currentHeight= this->getDrawHeight() *this->getFrame() /this->getSize();
     
 }
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
-graphics.drawRegion(this.getImage(), this.getStartX(), this.getStartY(), this.getDrawWidth(), this.currentHeight, Sprite.TRANS_NONE, x, y, this.anchor);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
+graphics.drawRegion(this->getImage(), this->getStartX(), this->getStartY(), this->getDrawWidth(), this->currentHeight, Sprite::TRANS_NONE, x, y, this->anchor);
     
 }
 

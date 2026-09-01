@@ -70,57 +70,56 @@
 class GameInitializationUtil
             : public Object
          {
-        
 
-    private: static const instance: GameInitializationUtil = new GameInitializationUtil();
+    private: static GameInitializationUtil instance() { return GameInitializationUtil(); }
 
-    public static GameInitializationUtil getInstance(){
+    public: static GameInitializationUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return GameInitializationUtil.instance;
+                        return GameInitializationUtil::instance();
     
 }
 
 
-    public const EVENT: GameInitializedEvent = new GameInitializedEvent(this);
+    public: const GameInitializedEvent EVENT = GameInitializedEvent(this);
 
                 //@Throws(Exception.constructor)
             
-    public initDemo(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface){
+    public: void initDemo(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface){
 
-    mainFeatureFactory: MainFeatureFactory = MainFeatureFactory.getInstance()!;;
+    MainFeatureFactory mainFeatureFactory = MainFeatureFactory::getInstance();;
     
 
-                        if(ChangedGameFeatureListener.getInstance()!.isChangedFeature(mainFeatureFactory!.STATIC))
+                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(mainFeatureFactory.STATIC))
                         
                                     {
                                     
-    gameInitializationInterface: GameInitializationInterface = gameInitializationInterfaceFactoryInterface!.getInstance()!;;
+    GameInitializationInterface gameInitializationInterface = gameInitializationInterfaceFactoryInterface.getInstance();;
     
 
-    features: Features = Features.getInstance()!;;
+    Features features = Features::getInstance();;
     
 
-                        if(features.isFeature(mainFeatureFactory!.LOAD_ALL))
+                        if(features.isFeature(mainFeatureFactory.LOAD_ALL))
                         
                                     {
-                                    this.initGame(abeClientInformation, canvas, gameInitializationInterfaceFactoryInterface);
+                                    this->initGame(abeClientInformation, canvas, gameInitializationInterfaceFactoryInterface);
     
 
                                     }
                                 
                              else 
-                        if(features.isFeature(mainFeatureFactory!.LOAD_ONDEMAND))
+                        if(features.isFeature(mainFeatureFactory.LOAD_ONDEMAND))
                         
                                     {
                                     
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-gameInitializationInterface!.init(abeClientInformation, canvas.getCustomCommandListener(), resourceLoadingLevelFactory!.LOAD_EARLY.getLevel());
+gameInitializationInterface.init(abeClientInformation, canvas.getCustomCommandListener(), resourceLoadingLevelFactory.LOAD_EARLY.getLevel());
     
-this.EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory!.LOAD_EARLY);
+this->EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_EARLY);
     
 
                                     }
@@ -129,12 +128,12 @@ this.EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory!.LOAD_EARLY);
                             
 
 
-                            throw new Exception("No Loading Feature Available");
+                            throw Exception("No Loading Feature Available");
                     
 
                         }
                             
-GameInitializedEventHandler.getInstance()!.fireEvent(this.EVENT);
+GameInitializedEventHandler::getInstance().fireEvent(this->EVENT);
     
 
                                     }
@@ -144,24 +143,24 @@ GameInitializedEventHandler.getInstance()!.fireEvent(this.EVENT);
 
                 //@Throws(Exception.constructor)
             
-    public initGame(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface){
+    public: void initGame(AbeClientInformationInterface abeClientInformation, MyCanvas canvas, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface){
 
-                        if(ChangedGameFeatureListener.getInstance()!.isChangedFeature(MainFeatureFactory.getInstance()!.STATIC))
+                        if(ChangedGameFeatureListener::getInstance().isChangedFeature(MainFeatureFactory::getInstance().STATIC))
                         
                                     {
                                     
-    gameInitializationInterface: GameInitializationInterface = gameInitializationInterfaceFactoryInterface!.getInstance()!;;
+    GameInitializationInterface gameInitializationInterface = gameInitializationInterfaceFactoryInterface.getInstance();;
     
 
-    resourceLoadingLevelFactory: ResourceLoadingLevelFactory = ResourceLoadingLevelFactory.getInstance()!;;
+    ResourceLoadingLevelFactory resourceLoadingLevelFactory = ResourceLoadingLevelFactory::getInstance();;
     
-gameInitializationInterface!.init(abeClientInformation, canvas.getCustomCommandListener(), resourceLoadingLevelFactory!.LOAD_ALL.getLevel());
+gameInitializationInterface.init(abeClientInformation, canvas.getCustomCommandListener(), resourceLoadingLevelFactory.LOAD_ALL.getLevel());
     
-this.EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory!.LOAD_ALL);
+this->EVENT.setResourceLoadingLevel(resourceLoadingLevelFactory.LOAD_ALL);
     
-GameInitializedEventHandler.getInstance()!.fireEvent(this.EVENT);
+GameInitializedEventHandler::getInstance().fireEvent(this->EVENT);
     
-ChangedGameFeatureListener.getInstance()!.remove(MainFeatureFactory.getInstance()!.STATIC);
+ChangedGameFeatureListener::getInstance().remove(MainFeatureFactory::getInstance().STATIC);
     
 
                                     }

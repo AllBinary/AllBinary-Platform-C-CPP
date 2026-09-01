@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_OSGI_SERVICE_OSGISERVICEUTIL_H
         #define ORG_ALLBINARY_OSGI_SERVICE_OSGISERVICEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -62,19 +64,18 @@
 class OSGIServiceUtil
             : public Object
          {
-        
 
-    private: static const instance: OSGIServiceUtil = new OSGIServiceUtil();
+    private: static OSGIServiceUtil instance() { return OSGIServiceUtil(); }
 
-    public static OSGIServiceUtil getInstance();
+    public: static OSGIServiceUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: OSGIServiceUtil();
 
                 //@Throws(Exception.constructor)
             
-    public Vector getServicesObjectVector(Object bundleContext, std::vector<ServiceReference> serviceReferences);
+    public: Vector getServicesObjectVector(Object bundleContext, std::vector<ServiceReference> serviceReferences);
 
 };
 

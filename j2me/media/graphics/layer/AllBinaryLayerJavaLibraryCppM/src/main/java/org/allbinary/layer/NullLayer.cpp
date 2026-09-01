@@ -42,21 +42,20 @@
         #include "Layer.h"
 
 class NullLayer: public Layer {
-        
 
-    private: static const instance: NullLayer = new NullLayer();
+    private: static NullLayer instance() { return NullLayer(); }
 
-    public static NullLayer getInstance(){
+    public: static NullLayer getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullLayer.instance;
+                        return NullLayer::instance();
     
 }
 
 
-private constructor (){
+private: NullLayer(){
             super(0, 0);
                     
 
@@ -65,7 +64,7 @@ private constructor (){
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 

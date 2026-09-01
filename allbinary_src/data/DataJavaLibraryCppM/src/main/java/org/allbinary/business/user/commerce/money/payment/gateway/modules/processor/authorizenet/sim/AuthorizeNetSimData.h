@@ -45,41 +45,40 @@
 class AuthorizeNetSimData
             : public Object
          {
-        
 
-    public static const X_FP_HASH: string = "x_fp_hash";
+    public: static const std::string X_FP_HASH = "x_fp_hash";
 
-    public static const X_FP_SEQUENCE: string = "x_fp_sequence";
+    public: static const std::string X_FP_SEQUENCE = "x_fp_sequence";
 
-    public static const X_FP_TIMESTAMP: string = "x_fp_timestamp";
+    public: static const std::string X_FP_TIMESTAMP = "x_fp_timestamp";
 
-    public static const X_SHOW_FORM: string = "x_show_form";
+    public: static const std::string X_SHOW_FORM = "x_show_form";
 
-    public static const X_HEADER_HTML_PAYMENT_FORM: string = "x_header_html_payment_form";
+    public: static const std::string X_HEADER_HTML_PAYMENT_FORM = "x_header_html_payment_form";
 
-    public static const X_FOOTER_HTML_PAYMENT_FORM: string = "x_footer_html_payment_form";
+    public: static const std::string X_FOOTER_HTML_PAYMENT_FORM = "x_footer_html_payment_form";
 
-    public static const X_HEADER_HTML_RECEIPT: string = "x_header_html_receipt";
+    public: static const std::string X_HEADER_HTML_RECEIPT = "x_header_html_receipt";
 
-    public static const X_FOOTER_HTML_RECEIPT: string = "x_footer_html_receipt";
+    public: static const std::string X_FOOTER_HTML_RECEIPT = "x_footer_html_receipt";
 
-    public static const X_RECEIPT_LINK_TEXT: string = "x_receipt_link_text";
+    public: static const std::string X_RECEIPT_LINK_TEXT = "x_receipt_link_text";
 
-    public static const X_RECEIPT_LINK_URL: string = "x_receipt_link_url";
+    public: static const std::string X_RECEIPT_LINK_URL = "x_receipt_link_url";
 
-    public static const X_LOGO_URL: string = "x_logo_url";
+    public: static const std::string X_LOGO_URL = "x_logo_url";
 
-    public static const X_BACKGROUND_URL: string = "x_background_url";
+    public: static const std::string X_BACKGROUND_URL = "x_background_url";
 
-    public static const X_COLOR_BACKGROUND: string = "x_color_background";
+    public: static const std::string X_COLOR_BACKGROUND = "x_color_background";
 
-    public static const X_COLOR_LINK: string = "x_color_link";
+    public: static const std::string X_COLOR_LINK = "x_color_link";
 
-    public static const X_COLOR_TEXT: string = "x_color_text";
+    public: static const std::string X_COLOR_TEXT = "x_color_text";
 
-    public static const X_RELAY_URL: string = "x_relay_url";
+    public: static const std::string X_RELAY_URL = "x_relay_url";
 
-private constructor ();
+private: AuthorizeNetSimData();
 
 };
 

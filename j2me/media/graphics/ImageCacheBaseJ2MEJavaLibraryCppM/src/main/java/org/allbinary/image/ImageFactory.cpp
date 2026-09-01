@@ -50,49 +50,48 @@
 class ImageFactory
             : public Object
          {
-        
 
-    private: static const instance: ImageFactory = new ImageFactory();
+    private: static ImageFactory instance() { return ImageFactory(); }
 
-    public static ImageFactory getInstance(){
+    public: static ImageFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageFactory.instance;
+                        return ImageFactory::instance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageUrl(string url){
+    public: Image createImageUrl(std::string url){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Image.createImage(url);;
+                        return Image::createImage(url);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(string caller, int32_t width, int32_t height){
+    public: Image createImage(std::string caller, int32_t width, int32_t height){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Image.createImage(width, height);;
+                        return Image::createImage(width, height);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageFromInputStream(any = {} key, InputStream inputStream){
+    public: Image createImageFromInputStream(Object* key, InputStream inputStream){
 
-    image: Image = Image.createImage(inputStream)!;;
+    Image image = Image::createImage(inputStream);;
     
 
 

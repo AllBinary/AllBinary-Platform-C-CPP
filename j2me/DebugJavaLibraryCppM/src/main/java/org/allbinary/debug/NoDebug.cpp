@@ -43,29 +43,28 @@
 class NoDebug
             : public Object
         : public DebugInterface {
-        
 
-    private: static SINGLETON: DebugInterface = new NoDebug();
+    private: static DebugInterface SINGLETON = NoDebug();
 
-    public static DebugInterface getInstance(){
+    public: static DebugInterface getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoDebug.SINGLETON;
+                        return NoDebug::SINGLETON;
     
 }
 
 
-    public start(){
+    public: void start(){
 }
 
 
-    public stop(){
+    public: void stop(){
 }
 
 
-    public int64_t getMaxTime(){
+    public: int64_t getMaxTime(){
 
 
 
@@ -75,7 +74,7 @@ class NoDebug
 }
 
 
-    public int64_t getStartTime(){
+    public: int64_t getStartTime(){
 
 
 
@@ -85,7 +84,7 @@ class NoDebug
 }
 
 
-    public bool isRunning(){
+    public: bool isRunning(){
 
 
 

@@ -46,30 +46,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "AllBinaryOrientationSensor.h"
 
-class NoGyroSensor: public AllBinaryOrientationSensor: public AllBinarySensorListener {
-        
+class NoGyroSensor: public AllBinaryOrientationSensor, public AllBinarySensorListener {
 
-public constructor (){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.START, this, this.commonStrings!.CONSTRUCTOR);
+public: NoGyroSensor(){
+this->logUtil.putF(this->commonStrings.START, this, this->commonStrings.CONSTRUCTOR);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Orientation getOrientation(){
+    public: Orientation getOrientation(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Orientation.NONE;
+                        return Orientation::NONE;
     
 }
 
 
-    public onSensorChange(){
+    public: void onSensorChange(){
 }
 
 

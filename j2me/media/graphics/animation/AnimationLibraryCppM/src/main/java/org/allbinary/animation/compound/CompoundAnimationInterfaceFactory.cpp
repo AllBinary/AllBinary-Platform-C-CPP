@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -74,95 +76,90 @@
 class CompoundAnimationInterfaceFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    const basicAnimationInterfaceFactoryInterfaceArrayP: std::vector<AnimationInterfaceFactoryInterface>;
+    protected: std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArrayP;
 
-    const animationBehaviorFactory: AnimationBehaviorFactory;
+    protected: AnimationBehaviorFactory animationBehaviorFactory;
 
-public constructor (std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory){
-
-            super();
-        this.basicAnimationInterfaceFactoryInterfaceArrayP= basicAnimationInterfaceFactoryInterfaceArray;
+public: CompoundAnimationInterfaceFactory(std::vector<AnimationInterfaceFactoryInterface> basicAnimationInterfaceFactoryInterfaceArray, AnimationBehaviorFactory animationBehaviorFactory){
+this->basicAnimationInterfaceFactoryInterfaceArrayP= basicAnimationInterfaceFactoryInterfaceArray;
     
-this.animationBehaviorFactory= animationBehaviorFactory;
+this->animationBehaviorFactory= animationBehaviorFactory;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    size: int32_t = this.basicAnimationInterfaceFactoryInterfaceArrayP!.length
-                ;;
+    int32_t size = this->basicAnimationInterfaceFactoryInterfaceArrayP.size();;
     
 
-    animationInterfaceArray: std::vector<Animation> = this.createArray(size)!;;
-    
-
-
-
-
-                        for (
-    index: int32_t = 0;index < size; index++)
-        {
-animationInterfaceArray[index]= this.basicAnimationInterfaceFactoryInterfaceArrayP[index]!.getInstance(instanceId);
-    
-}
-
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createAnimation(animationInterfaceArray);;
-    
-}
-
-
-    std::vector<Animation> createArray(int32_t size){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.getFactoryInstance()!.EMPTY_ARRAY;
-    
-}
-
-
-    Animation createAnimation(std::vector<Animation> animationInterfaceArray){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullAnimationFactory.getFactoryInstance()!.getInstance(0);;
-    
-}
-
-
-    public std::vector<AnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray(){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.basicAnimationInterfaceFactoryInterfaceArrayP;
-    
-}
-
-
-    public setInitialScale(ScaleProperties scaleProperties){
-
-    size: int32_t = this.basicAnimationInterfaceFactoryInterfaceArrayP!.length
-                ;;
+    std::vector<Animation> animationInterfaceArray = this->createArray(size);;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.basicAnimationInterfaceFactoryInterfaceArrayP[index]!.setInitialScale(scaleProperties);
+animationInterfaceArray[index]= this->basicAnimationInterfaceFactoryInterfaceArrayP[index]!.getInstance(instanceId);
+    
+}
+
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->createAnimation(animationInterfaceArray);;
+    
+}
+
+
+    protected: std::vector<Animation> createArray(int32_t size){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullAnimationFactory::getFactoryInstance().EMPTY_ARRAY;
+    
+}
+
+
+    protected: Animation createAnimation(std::vector<Animation> animationInterfaceArray){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return NullAnimationFactory::getFactoryInstance().getInstance(0);;
+    
+}
+
+
+    public: std::vector<AnimationInterfaceFactoryInterface> getBasicAnimationInterfaceFactoryInterfaceArray(){
+
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->basicAnimationInterfaceFactoryInterfaceArrayP;
+    
+}
+
+
+    public: void setInitialScale(ScaleProperties scaleProperties){
+
+    int32_t size = this->basicAnimationInterfaceFactoryInterfaceArrayP.size();;
+    
+
+
+
+
+                        for (
+    int32_t index = 0;index < size; index++)
+        {
+this->basicAnimationInterfaceFactoryInterfaceArrayP[index]!.setInitialScale(scaleProperties);
     
 }
 

@@ -56,13 +56,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class GameInitializedEvent: public AllBinaryEventObject {
-        
 
-    private: resourceLoadingLevel: ResourceLoadingLevel = ResourceLoadingLevelFactory.getInstance()!.LEVEL;
+    private: ResourceLoadingLevel resourceLoadingLevel = ResourceLoadingLevelFactory::getInstance().LEVEL;
 
-    private: level: int32_t= 0;
+    private: int32_t level= 0;
 
-public constructor (any = {} anyType){
+public: GameInitializedEvent(Object* anyType){
             super(anyType);
                     
 
@@ -71,38 +70,38 @@ public constructor (any = {} anyType){
 }
 
 
-    public setLevel(int32_t level){
-this.level= level;
+    public: void setLevel(int32_t level){
+this->level= level;
     
-this.resourceLoadingLevel= ResourceLoadingLevelFactory.getInstance()!.LEVEL;
+this->resourceLoadingLevel= ResourceLoadingLevelFactory::getInstance().LEVEL;
     
 }
 
 
-    public int32_t getLevel(){
+    public: int32_t getLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.level;
+                        return this->level;
     
 }
 
 
-    public setResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel){
-this.resourceLoadingLevel= resourceLoadingLevel;
+    public: void setResourceLoadingLevel(ResourceLoadingLevel resourceLoadingLevel){
+this->resourceLoadingLevel= resourceLoadingLevel;
     
-this.level= this.resourceLoadingLevel!.getLevel();
+this->level= this->resourceLoadingLevel.getLevel();
     
 }
 
 
-    public ResourceLoadingLevel getResourceLoadingLevel(){
+    public: ResourceLoadingLevel getResourceLoadingLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.resourceLoadingLevel;
+                        return this->resourceLoadingLevel;
     
 }
 

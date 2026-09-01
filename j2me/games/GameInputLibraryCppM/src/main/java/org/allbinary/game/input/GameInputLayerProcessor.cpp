@@ -51,10 +51,9 @@
 #include "GameInputInterface.h"
 
 class GameInputLayerProcessor: public LayerProcessor {
-        
 
-public constructor (){
-            super(new GameInputLayerManager());
+public: GameInputLayerProcessor(){
+            super(GameInputLayerManager());
                     
 
                             //For kotlin this is before the body of the constructor.
@@ -64,18 +63,18 @@ public constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
+    public: void processAt(AllBinaryLayerManager allBinaryLayerManager, AllBinaryLayer layerInterface, int32_t index){
 
-    gameInputInterface: GameInputInterface = layerInterface as GameInputInterface;;
+    GameInputInterface gameInputInterface = layerInterface as GameInputInterface;;
     
-gameInputInterface!.processInput(allBinaryLayerManager);
+gameInputInterface.processInput(allBinaryLayerManager);
     
 }
 
 
-    public bool isProcessorLayer(AllBinaryLayer layerInterface){
+    public: bool isProcessorLayer(AllBinaryLayer layerInterface){
 
-                        if(layerInterface!.implmentsGameInputInterface())
+                        if(layerInterface.implmentsGameInputInterface())
                         
                                     {
                                     

@@ -70,15 +70,14 @@
 class AllBinaryTiledLayerFactory
             : public Object
         : public AllBinaryTiledLayerFactoryInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData);
+    public: AllBinaryTiledLayer getInstance(RaceTrackInfo raceTrackInfo, RaceTrackData raceTrackData);
 
                 //@Throws(Exception.constructor)
             
-    public AllBinaryTiledLayer getMiniInstance(RaceTrackData raceTrackData);
+    public: AllBinaryTiledLayer getMiniInstance(RaceTrackData raceTrackData);
 
 };
 

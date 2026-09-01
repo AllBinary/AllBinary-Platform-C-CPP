@@ -55,13 +55,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ThemeCustomizerView: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    validationInterface: ValidationInterface;
+    protected: ValidationInterface validationInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ThemeCustomizerView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -72,18 +71,18 @@ public constructor (TransformInfoInterface transformInfoInterface){
 
                 //@Throws(Exception.constructor)
             
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this.validationInterface as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this->validationInterface as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -96,10 +95,10 @@ this.addDomNodeInterface(this.validationInterface as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

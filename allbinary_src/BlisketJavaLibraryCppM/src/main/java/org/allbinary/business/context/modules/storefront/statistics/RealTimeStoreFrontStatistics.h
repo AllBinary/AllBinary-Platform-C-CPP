@@ -75,25 +75,24 @@
 class RealTimeStoreFrontStatistics
             : public Object
         : public StoreFrontStatisticsInterface {
-        
 
-    private: storeFrontAdvertisementsStatisticsInterface: StoreFrontAdvertisementsStatisticsInterface;
+    private: StoreFrontAdvertisementsStatisticsInterface storeFrontAdvertisementsStatisticsInterface;
 
-    private: storeFrontUsersStatisticsInterface: StoreFrontUsersStatisticsInterface;
+    private: StoreFrontUsersStatisticsInterface storeFrontUsersStatisticsInterface;
 
-    private: storeFrontInventoryStatisticsInterface: StoreFrontInventoryStatisticsInterface;
+    private: StoreFrontInventoryStatisticsInterface storeFrontInventoryStatisticsInterface;
 
-    private: storeFrontOrderHistoryStatisticsInterface: StoreFrontOrdersHistoryStatisticsInterface;
+    private: StoreFrontOrdersHistoryStatisticsInterface storeFrontOrderHistoryStatisticsInterface;
 
-public constructor (StoreFrontInterface storeFrontInterface);
+public: RealTimeStoreFrontStatistics(StoreFrontInterface storeFrontInterface);
 
-    public StoreFrontAdvertisementsStatisticsInterface getAdvertisements();
+    public: StoreFrontAdvertisementsStatisticsInterface getAdvertisements();
 
-    public StoreFrontUsersStatisticsInterface getUsers();
+    public: StoreFrontUsersStatisticsInterface getUsers();
 
-    public StoreFrontInventoryStatisticsInterface getInventory();
+    public: StoreFrontInventoryStatisticsInterface getInventory();
 
-    public StoreFrontOrdersHistoryStatisticsInterface getOrders();
+    public: StoreFrontOrdersHistoryStatisticsInterface getOrders();
 
 };
 

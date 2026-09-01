@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/thread/ARunnable.h>
 
       
@@ -51,15 +53,14 @@
 #include "EventQueue.h"
 #include "JFrame.h"
 
-class BasicTextJDialog: public javax.swing.JDialog {
-        
+class BasicTextJDialog: public javax::swing::JDialog {
 
-    public static main(std::vector<string> args){
-java.awt.EventQueue.invokeLater(new class extends ARunnable
+    public: static void main(std::vector<std::string> args){
+java.awt.EventQueue.invokeLater(class extends ARunnable
                                 {
                                 
-    public run(){
-new BasicTextJDialog(new javax.swing.JFrame(), true, "Test").setVisible(true);
+    public: void run(){
+BasicTextJDialog(javax::swing::JFrame(), true, "Test").setVisible(true);
     
 }
 
@@ -69,56 +70,54 @@ new BasicTextJDialog(new javax.swing.JFrame(), true, "Test").setVisible(true);
 }
 
 
-    private: closeListenerInterface: CloseJDialogListenerInterface;
+    private: CloseJDialogListenerInterface closeListenerInterface;
 
-public constructor (java.awt.Frame parent, bool modal, string text){
+public: BasicTextJDialog(java::awt::Frame parent, bool modal, std::string text){
             super(parent, modal);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initComponents();
+this->initComponents();
     
-this.setText(text);
-    
-}
-
-
-    public setText(string text){
-this.textJLabel!.setText(text);
+this->setText(text);
     
 }
 
 
-    public addCloseListener(CloseJDialogListenerInterface closeListenerInterface){
-this.closeListenerInterface= closeListenerInterface;
+    public: void setText(std::string text){
+this->textJLabel.setText(text);
     
 }
 
 
-public constructor (string text){
-
-            super();
-        this.initComponents();
-    
-this.textJLabel!.setText(text);
+    public: void addCloseListener(CloseJDialogListenerInterface closeListenerInterface){
+this->closeListenerInterface= closeListenerInterface;
     
 }
 
 
-    initComponents(){
-this.jButton1= new javax.swing.JButton();
+public: BasicTextJDialog(std::string text){
+this->initComponents();
     
-this.textJLabel= new javax.swing.JLabel();
+this->textJLabel.setText(text);
+    
+}
+
+
+    private: void initComponents(){
+this->jButton1= javax::swing::JButton();
+    
+this->textJLabel= javax::swing::JLabel();
     
 setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
     
-this.jButton1!.setText("OK");
+this->jButton1.setText("OK");
     
-jButton1!.addActionListener(new class extends java.awt.event.ActionListener
+jButton1.addActionListener(class extends java::awt::event::ActionListener
                                 {
                                 
-    public actionPerformed(java.awt.event.ActionEvent evt){
+    public: void actionPerformed(java::awt::event::ActionEvent evt){
 jButton1ActionPerformed(evt);
     
 }
@@ -126,32 +125,32 @@ jButton1ActionPerformed(evt);
                                 }
                             );
     
-this.textJLabel!.setText("No Text Set");
+this->textJLabel.setText("No Text Set");
     
 
-    layout: javax.swing.GroupLayout = new javax.swing.GroupLayout(getContentPane());;
+    javax::swing::GroupLayout layout = javax::swing::GroupLayout(getContentPane());;
     
-getContentPane()!.setLayout(layout);
+getContentPane().setLayout(layout);
     
-layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addGap(80, 80, 80)!.addComponent(jButton1))!.addGroup(layout.createSequentialGroup()!.addContainerGap()!.addComponent(textJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short.MAX_VALUE)))!.addContainerGap()));
+layout.setHorizontalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(80, 80, 80).addComponent(jButton1)).addGroup(layout.createSequentialGroup().addContainerGap().addComponent(textJLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 184, Short::MAX_VALUE))).addContainerGap()));
     
-layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)!.addGroup(layout.createSequentialGroup()!.addGap(20, 20, 20)!.addComponent(textJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)!.addGap(30, 30, 30)!.addComponent(jButton1)));
+layout.setVerticalGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING).addGroup(layout.createSequentialGroup().addGap(20, 20, 20).addComponent(textJLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE).addGap(30, 30, 30).addComponent(jButton1)));
     
 pack();
     
 }
 
 
-    jButton1ActionPerformed(java.awt.event.ActionEvent evt){
-this.setVisible(false);
+    private: void jButton1ActionPerformed(java::awt::event::ActionEvent evt){
+this->setVisible(false);
     
 
-                        if(this.closeListenerInterface != 
-                                    null
+                        if(this->closeListenerInterface != 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.closeListenerInterface!.onClose();
+                                    this->closeListenerInterface.onClose();
     
 
                                     }
@@ -159,9 +158,9 @@ this.setVisible(false);
 }
 
 
-    private: jButton1: javax.swing.JButton;
+    private: javax::swing::JButton jButton1;
 
-    private: textJLabel: javax.swing.JLabel;
+    private: javax::swing::JLabel textJLabel;
 
 };
 

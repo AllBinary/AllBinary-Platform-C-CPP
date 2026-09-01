@@ -50,17 +50,16 @@
 class RaceGameStateFactory
             : public Object
          {
-        
 
-    private: static instance: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* instance = NullUtil::getInstance().NULL_OBJECT;
 
-    public static RaceGameStateFactory getInstance();
+    public: static RaceGameStateFactory getInstance();
 
-    public const START_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("START_GAME_STATE")!;
+    public: const GameState START_GAME_STATE = GameStateFactory::getInstance().createGameState("START_GAME_STATE");
 
-    public const YELLOW_LIGHT_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("YELLOW_LIGHT_GAME_STATE")!;
+    public: const GameState YELLOW_LIGHT_GAME_STATE = GameStateFactory::getInstance().createGameState("YELLOW_LIGHT_GAME_STATE");
 
-    public const RED_LIGHT_GAME_STATE: GameState = GameStateFactory.getInstance()!.createGameState("RED_LIGHT_GAME_STATE")!;
+    public: const GameState RED_LIGHT_GAME_STATE = GameStateFactory::getInstance().createGameState("RED_LIGHT_GAME_STATE");
 
 };
 

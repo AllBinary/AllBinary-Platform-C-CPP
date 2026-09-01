@@ -65,19 +65,18 @@
 // class LogFormatUtil
             : public Object
          {
-        
 
-    private: static const instance: LogFormatUtil
+    private: static LogFormatUtil instance() { return LogFormatUtil(); }
 
-    public static LogFormatUtil getInstance()
-
+    public: static LogFormatUtil getInstance()
 
 
-    public string get(string className, string functionName, string specialMessage, any = {} exception)
 
-    public string getS(string className, string functionName, string specialMessage)
+    public: std::string get(std::string className, std::string functionName, std::string specialMessage, Object* exception)
 
-    public string getO(any = {} exception)
+    public: std::string getS(std::string className, std::string functionName, std::string specialMessage)
+
+    public: std::string getO(Object* exception)
 
 };
 

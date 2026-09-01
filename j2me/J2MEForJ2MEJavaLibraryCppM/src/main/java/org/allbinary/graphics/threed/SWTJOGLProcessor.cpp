@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/RuntimeException.h"
@@ -53,25 +55,24 @@
 class SWTJOGLProcessor
             : public Object
         : public Runnable {
-        
 
-    private: static const instance: SWTJOGLProcessor = new SWTJOGLProcessor();
+    private: static SWTJOGLProcessor instance() { return SWTJOGLProcessor(); }
 
-    public static SWTJOGLProcessor getInstance(){
+    public: static SWTJOGLProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return SWTJOGLProcessor.instance;
+                        return SWTJOGLProcessor::instance();
     
 }
 
 
-    public init(any = {} display, any = {} comp){
+    public: void init(Object* display, Object* comp){
 }
 
 
-    public bool isHolderCreated(){
+    public: bool isHolderCreated(){
 
 
 
@@ -81,11 +82,11 @@ class SWTJOGLProcessor
 }
 
 
-    public setRenderer(any = {} renderer){
+    public: void setRenderer(Object* renderer){
 }
 
 
-    public bool isJOGL(){
+    public: bool isJOGL(){
 
 
 
@@ -95,51 +96,51 @@ class SWTJOGLProcessor
 }
 
 
-    public createSurface(){
+    public: void createSurface(){
 }
 
 
-    public onSurfaceCreated(){
+    public: void onSurfaceCreated(){
 }
 
 
-    public onSurfaceChangedForEvent(any = {} event){
+    public: void onSurfaceChangedForEvent(Object* event){
 }
 
 
-    public onSurfaceChanged(){
+    public: void onSurfaceChanged(){
 }
 
 
-    public onSurfaceChangedWH(int32_t width, int32_t height){
+    public: void onSurfaceChangedWH(int32_t width, int32_t height){
 }
 
 
-    public addListener(){
+    public: void addListener(){
 }
 
 
-    public addListeners(MIDlet midlet){
+    public: void addListeners(MIDlet midlet){
 }
 
 
-    public run(){
+    public: void run(){
 }
 
 
-    public clear(){
+    public: void clear(){
 }
 
 
-    public setCustom(int32_t width, int32_t height, float ratio){
+    public: void setCustom(int32_t width, int32_t height, float ratio){
 }
 
 
-    public setRatioProcessor(RatioProcessor ratioProcessor){
+    public: void setRatioProcessor(RatioProcessor ratioProcessor){
 }
 
 
-    public bool isPortraitRatioProcessor(){
+    public: bool isPortraitRatioProcessor(){
 
 
 
@@ -149,38 +150,38 @@ class SWTJOGLProcessor
 }
 
 
-    public int32_t charWidth(Font font, char ch){
+    public: int32_t charWidth(Font font, char ch){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t charsWidth(Font font, std::vector<char> ch, int32_t offset, int32_t length){
+    public: int32_t charsWidth(Font font, std::vector<char> ch, int32_t offset, int32_t length){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t stringWidth(Font font, string str){
+    public: int32_t stringWidth(Font font, std::string str){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 
 
-    public int32_t substringWidth(Font font, string str, int32_t offset, int32_t len){
+    public: int32_t substringWidth(Font font, std::string str, int32_t offset, int32_t len){
 
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 }
 

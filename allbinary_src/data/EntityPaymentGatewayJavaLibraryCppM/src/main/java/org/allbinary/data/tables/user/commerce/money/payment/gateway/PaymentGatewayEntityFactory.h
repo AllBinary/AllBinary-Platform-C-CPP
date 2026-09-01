@@ -54,13 +54,12 @@
 class PaymentGatewayEntityFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static PaymentGatewayEntity getInstance();
+    public: static PaymentGatewayEntity getInstance();
 
-private constructor ();
+private: PaymentGatewayEntityFactory();
 
 };
 

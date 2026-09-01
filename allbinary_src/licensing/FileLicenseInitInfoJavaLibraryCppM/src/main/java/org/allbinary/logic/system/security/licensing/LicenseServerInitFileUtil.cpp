@@ -77,33 +77,32 @@
 class LicenseServerInitFileUtil
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const NULL_OUTPUT_STREAM: OutputStream = SimpleFileUtil.nullOutputStream()!;
+    private: const OutputStream NULL_OUTPUT_STREAM = SimpleFileUtil::nullOutputStream();
 
-    public init(){
+    public: void init(){
 
         try {
             
-    filePath: string = LicenseInitInfoUtil.getInstance()!.INITFILENAME;;
+    std::string filePath = LicenseInitInfoUtil::getInstance().INITFILENAME;;
     
-LicenseInitInfoUtil.getInstance()!.setFilePath(StringUtil.getInstance()!.EMPTY_STRING);
+LicenseInitInfoUtil::getInstance().setFilePath(StringUtil::getInstance().EMPTY_STRING);
     
 
-                        if(FileFactory.getInstance()!.isFile(filePath))
+                        if(FileFactory::getInstance().isFile(filePath))
                         
                                     {
-                                    this.logUtil!.putF("Using Existing License File", this, this.commonStrings!.INIT);
+                                    this->logUtil.putF("Using Existing License File", this, this->commonStrings.INIT);
     
 
                                     }
                                 
                         else {
-                            this.write();
+                            this->write();
     
 
                         }
@@ -112,45 +111,45 @@ LicenseInitInfoUtil.getInstance()!.setFilePath(StringUtil.getInstance()!.EMPTY_S
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 }
 
 }
 
 
-    write(){
+    private: void write(){
 
-    fileOutputStream: OutputStream = this.NULL_OUTPUT_STREAM;;
+    OutputStream fileOutputStream = this->NULL_OUTPUT_STREAM;;
     
 
         try {
             
-    resourceUtil: ResourceUtil = ResourceUtil.getInstance()!;;
+    ResourceUtil resourceUtil = ResourceUtil::getInstance();;
     
 
-    filePath: string = LicenseInitInfoUtil.getInstance()!.INITFILENAME;;
+    std::string filePath = LicenseInitInfoUtil::getInstance().INITFILENAME;;
     
 
-    inputStream: InputStream = resourceUtil!.getResourceAsStream(filePath)!;;
+    InputStream inputStream = resourceUtil.getResourceAsStream(filePath);;
     
-this.logUtil!.putF("Writing Default License File", this, this.commonStrings!.INIT);
-    
-
-    fileStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
-    
-fileOutputStream= fileStreamFactory!.getFileOutputStreamInstance(StringUtil.getInstance()!.EMPTY_STRING, filePath);
+this->logUtil.putF("Writing Default License File", this, this->commonStrings.INIT);
     
 
-    b: int32_t= 0;;
+    FileStreamFactory fileStreamFactory = FileStreamFactory::getInstance();;
+    
+fileOutputStream= fileStreamFactory.getFileOutputStreamInstance(StringUtil::getInstance().EMPTY_STRING, filePath);
     
 
-    index: int32_t = 0;;
+    int32_t b= 0;;
+    
+
+    int32_t index = 0;;
     
 
         while(true)
         {
-b= inputStream!.read();
+b= inputStream.read();
     
 
                         if(b ==  -1)
@@ -162,26 +161,26 @@ b= inputStream!.read();
 
                                     }
                                 
-fileOutputStream!.write(b);
+fileOutputStream.write(b);
     
 index++;
     
 }
 
-this.logUtil!.putF("Wrote Bytes: " +index, this, this.commonStrings!.INIT);
+this->logUtil.putF("Wrote Bytes: " +index, this, this->commonStrings.INIT);
     
-fileOutputStream!.flush();
+fileOutputStream.flush();
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, this.commonStrings!.INIT, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, this->commonStrings.INIT, e);
     
 }
 
          finally {
-            StreamUtil.getInstance()!.close(fileOutputStream);
+            StreamUtil::getInstance().close(fileOutputStream);
     
 
          }

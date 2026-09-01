@@ -45,17 +45,16 @@
         #include "Capital.h"
 
 class HudCapital: public Capital {
-        
 
-    private: capitalGraphic: NumberStringHud;
+    private: NumberStringHud capitalGraphic;
 
-public constructor (NumberStringHud moneyGraphic);
+public: HudCapital(NumberStringHud moneyGraphic);
 
-    public removeMoney(int32_t points);
+    public: void removeMoney(int32_t points);
 
-    public int32_t getTotalMoney();
+    public: int32_t getTotalMoney();
 
-    public addMoney(int32_t points);
+    public: void addMoney(int32_t points);
 
 };
 

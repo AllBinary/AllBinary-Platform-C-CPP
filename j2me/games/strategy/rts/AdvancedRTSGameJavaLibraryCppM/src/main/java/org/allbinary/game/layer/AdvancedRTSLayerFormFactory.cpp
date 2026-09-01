@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/input/RTSLayerFormFactory.h>
@@ -60,47 +62,44 @@
 #include "RTSLayer.h"
 
 class AdvancedRTSLayerFormFactory: public RTSLayerFormFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const scrollSelectionForm: ScrollSelectionForm;
+    private: ScrollSelectionForm scrollSelectionForm;
 
-protected constructor (string label, ItemArraySingletonFactoryInterface itemArrayFactoryInterface){
+protected: AdvancedRTSLayerFormFactory(std::string label, ItemArraySingletonFactoryInterface itemArrayFactoryInterface){
 
-            super();
-        
-    scrollSelectionForm: ScrollSelectionForm = ScrollSelectionForm.getNullScrollSelectionForm()!;;
+    ScrollSelectionForm scrollSelectionForm = ScrollSelectionForm::getNullScrollSelectionForm();;
     
 
         try {
             
-    items: std::vector<ABCustomItem> = itemArrayFactoryInterface!.getItems()!;;
+    std::vector<ABCustomItem> items = itemArrayFactoryInterface.getItems();;
     
-scrollSelectionForm= RTSScrollSelectionFormFactory.getInstance(label, items);
+scrollSelectionForm= RTSScrollSelectionFormFactory::getInstance(label, items);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
-    
-}
-
-this.scrollSelectionForm= scrollSelectionForm;
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
+this->scrollSelectionForm= scrollSelectionForm;
+    
+}
 
-    public ScrollSelectionForm getInstance(RTSLayer rtsLayer){
+
+    public: ScrollSelectionForm getInstance(RTSLayer rtsLayer){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.scrollSelectionForm;
+                        return this->scrollSelectionForm;
     
 }
 

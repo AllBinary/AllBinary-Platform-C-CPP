@@ -65,29 +65,28 @@
 class RelativeRelationship
             : public Object
          {
-        
 
-    public static const NULL_RELATIVE_RELATIONSHIP: RelativeRelationship = new RelativeRelationship(PointFactory.getInstance()!.ZERO_ZERO, BasicArrayListUtil.getInstance()!.getImmutableInstance());
+    public: static const RelativeRelationship NULL_RELATIVE_RELATIONSHIP = RelativeRelationship(PointFactory::getInstance().ZERO_ZERO, BasicArrayListUtil::getInstance().getImmutableInstance());
 
-    private: typesAllowedList: BasicArrayList;
+    private: BasicArrayList typesAllowedList;
 
-    private: x: int32_t;
+    private: int32_t x;
 
-    private: y: int32_t;
+    private: int32_t y;
 
-    private: z: int32_t;
+    private: int32_t z;
 
-public constructor (GPoint point, BasicArrayList typesAllowedList);
+public: RelativeRelationship(GPoint point, BasicArrayList typesAllowedList);
 
-    public int32_t getX();
+    public: int32_t getX();
 
-    public int32_t getY();
+    public: int32_t getY();
 
-    public int32_t getZ();
+    public: int32_t getZ();
 
-    public BasicArrayList getTypesAllowedList();
+    public: BasicArrayList getTypesAllowedList();
 
-    public setTypesAllowedList(BasicArrayList typesAllowedList);
+    public: void setTypesAllowedList(BasicArrayList typesAllowedList);
 
 };
 

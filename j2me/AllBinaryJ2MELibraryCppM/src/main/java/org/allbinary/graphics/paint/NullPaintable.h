@@ -51,13 +51,12 @@
         #include "Paintable.h"
 
 class NullPaintable: public Paintable {
-        
 
-    private: static const SINGLETON: NullPaintable = new NullPaintable();
+    private: static const NullPaintable SINGLETON = NullPaintable();
 
-    public static Paintable getInstance();
+    public: static Paintable getInstance();
 
-private constructor ();
+private: NullPaintable();
 
 };
 

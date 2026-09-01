@@ -107,29 +107,28 @@
         #include "AllBinaryGameCanvas.h"
 
 class FormInputProcessor: public InputProcessor {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
 
-    private: const downKeyEventHandler: DownKeyEventHandler = DownKeyEventHandler.getInstance()!;
+    private: const DownKeyEventHandler downKeyEventHandler = DownKeyEventHandler::getInstance();
 
-    private: const upGameKeyEventHandler: UpGameKeyEventHandler = UpGameKeyEventHandler.getInstance()!;
+    private: const UpGameKeyEventHandler upGameKeyEventHandler = UpGameKeyEventHandler::getInstance();
 
-    private: const inputFactory: InputFactory = InputFactory.getInstance()!;
+    private: const InputFactory inputFactory = InputFactory::getInstance();
 
-    private: const platformKeyFactory: PlatformKeyFactory = PlatformKeyFactory.getInstance()!;
+    private: const PlatformKeyFactory platformKeyFactory = PlatformKeyFactory::getInstance();
 
-    private: const allBinaryGameCanvas: AllBinaryGameCanvas;
+    private: AllBinaryGameCanvas allBinaryGameCanvas;
 
-public constructor (AllBinaryGameCanvas allBinaryGameCanvas);
+public: FormInputProcessor(AllBinaryGameCanvas allBinaryGameCanvas);
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(Canvas canvas, int32_t keyCode, int32_t deviceId);
 
 };
 

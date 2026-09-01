@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL10IMAGE_H
         #define ORG_ALLBINARY_IMAGE_OPENGLES_OPENGLESGL10IMAGE_H
 
+            #include <vector>
+        
 #include <java/nio/ByteBuffer.h>
 
       
@@ -78,37 +80,36 @@
 #include "OpenGLESImageProcessor.h"
 
 class OpenGLESGL10Image: public OpenGLESImage {
-        
 
-    private: const textureVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *2)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
+    private: const FloatBuffer textureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
 
-    private: const realOpenGLESImageDraw: OpenGLESImageDraw = new class extends OpenGLESImageDraw
+    private: const OpenGLESImageDraw realOpenGLESImageDraw = class extends OpenGLESImageDraw
                                 {
                                 
-    private: const glUtil: GLUtil = GLUtil.getInstance()!;
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
-    private: const textureVertexFloatBuffer: FloatBuffer = this::.textureVertexFloatBuffer;
-    private: const regionTextureRectangleFloatArray: std::vector<float> = new Array(8);
-    private: const regionTextureVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *2)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
-    private: const regionRectangleFloatArray: std::vector<float> = [0,0,0,0,0,0,0,0,0,0,0,0];
-    const regionRectangleVertexFloatBuffer: FloatBuffer = ByteBuffer.allocateDirect(4 *4 *3)!.order(ByteOrder.nativeOrder())!.asFloatBuffer()!;
-    const openGLESImageProperties: OpenGLESImageProperties = this::.openGLESImageProperties;
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z);
+    const GLUtil glUtil = GLUtil::getInstance();
+    const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
+    const FloatBuffer textureVertexFloatBuffer = this->textureVertexFloatBuffer;
+    const std::vector<float> regionTextureRectangleFloatArray = new Array(8);
+    const FloatBuffer regionTextureVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *2).order(ByteOrder::nativeOrder()).asFloatBuffer();
+    const std::vector<float> regionRectangleFloatArray = {0,0,0,0,0,0,0,0,0,0,0,0};
+    const FloatBuffer regionRectangleVertexFloatBuffer = ByteBuffer::allocateDirect(4 *4 *3).order(ByteOrder::nativeOrder()).asFloatBuffer();
+    const OpenGLESImageProperties openGLESImageProperties = this->openGLESImageProperties;
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z);
                                 }
                             ;
 
-    private: openGLESImageDraw: OpenGLESImageDraw = OpenGLESImageDraw.getInstance()!;
+    private: OpenGLESImageDraw openGLESImageDraw = OpenGLESImageDraw::getInstance();
 
-public constructor (Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
+public: OpenGLESGL10Image(Image image, PlatformBitmapBaseFactory bitmapFactory, PlatformTextureBaseFactory textureFactory);
 
-    initVertices();
+    protected: void initVertices();
 
-    public set(GL gl);
+    public: void set(GL gl);
 
-    public drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
+    public: void drawRegion(GL10 gl, int32_t viewHeight, float x_src, float y_src, float width, float height, int32_t x, int32_t y, int32_t z);
 
-    public draw(GL10 gl, int32_t x, int32_t y, int32_t z);
+    public: void draw(GL10 gl, int32_t x, int32_t y, int32_t z);
 
 };
 

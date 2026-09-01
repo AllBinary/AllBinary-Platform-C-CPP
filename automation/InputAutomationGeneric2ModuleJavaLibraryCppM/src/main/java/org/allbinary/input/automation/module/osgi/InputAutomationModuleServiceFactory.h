@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICEFACTORY_H
         #define ORG_ALLBINARY_INPUT_AUTOMATION_MODULE_OSGI_INPUTAUTOMATIONMODULESERVICEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Object.h"
         
 #include <org/osgi/framework/Bundle.h>
@@ -66,23 +68,22 @@
 class InputAutomationModuleServiceFactory
             : public Object
         : public ServiceFactory {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: inputAutomationModuleInterfaceArray: std::vector<InputAutomationModuleFactoryInterface>;
+    private: std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray;
 
-public constructor ();
+public: InputAutomationModuleServiceFactory();
 
-    public any getService(Bundle bundle, ServiceRegistration registration);
+    public: Object* getService(Bundle bundle, ServiceRegistration registration);
 
-    public ungetService(Bundle bundle, ServiceRegistration registration, any = {} service);
+    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service);
 
-    public std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray();
+    public: std::vector<InputAutomationModuleFactoryInterface> getInputAutomationModuleInterfaceArray();
 
-    public setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
+    public: void setInputAutomationModuleInterfaceArray(std::vector<InputAutomationModuleFactoryInterface> inputAutomationModuleInterfaceArray);
 
 };
 

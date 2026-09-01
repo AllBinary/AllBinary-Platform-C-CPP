@@ -45,11 +45,10 @@
 class GenericProfileDataWorkerData
             : public Object
          {
-        
 
-    public static NAME: string = "GENERIC_PROFILE_DATA_WORKER_NAME";
+    public: static std::string NAME = "GENERIC_PROFILE_DATA_WORKER_NAME";
 
-private constructor ();
+private: GenericProfileDataWorkerData();
 
 };
 

@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_INTPERMUTATIONVISITOR_H
         #define ORG_ALLBINARY_LOGIC_MATH_PERMUTATIONS_INTPERMUTATIONVISITOR_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/System.h"
         
 #include <org/allbinary/logic/NullUtil.h>
@@ -41,19 +43,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class IntPermutationVisitor: public Visitor {
-        
 
-    const data: std::vector<int32_t>;
+    protected: std::vector<int32_t> data;
 
-public constructor (std::vector<int32_t> data);
+public: IntPermutationVisitor(std::vector<int32_t> data);
 
-    private: stringBuilder: StringMaker = new StringMaker();
+    private: StringMaker stringBuilder = StringMaker();
 
-    public any visit(any = {} anyType);
+    public: Object* visit(Object* anyType);
 
-    public print(std::vector<int32_t> data);
+    public: void print(std::vector<int32_t> data);
 
-    public print(std::vector<int32_t> data, StringMaker stringBuilder);
+    public: void print(std::vector<int32_t> data, StringMaker stringBuilder);
 
 };
 

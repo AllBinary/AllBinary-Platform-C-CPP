@@ -104,66 +104,63 @@
         #include "ModifyTable.h"
 
 class StoreFrontsRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: const pageContext: PageContext;
+    private: PageContext pageContext;
 
-    private: const request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: const weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeName: string;
+    private: std::string storeName;
 
-    private: modifyingStoreFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface modifyingStoreFrontInterface;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext){
-
-            super();
-        this.pageContext= pageContext;
+public: StoreFrontsRequestHelper(HashMap<any, any> hashMap, PageContext pageContext){
+this->pageContext= pageContext;
     
-this.request= pageContext!.getRequest() as HttpServletRequest;
+this->request= pageContext.getRequest() as HttpServletRequest;
     
-this.weblisketSession= new WeblisketSession(hashMap, pageContext);
+this->weblisketSession= WeblisketSession(hashMap, pageContext);
     
-this.portion= new Portion(hashMap);
+this->portion= Portion(hashMap);
     
-this.getFormData();
+this->getFormData();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    getFormData(){
-this.storeName= this.weblisketSession!.getStoreName();
+    private: void getFormData(){
+this->storeName= this->weblisketSession.getStoreName();
     
-this.modifyingStoreFrontInterface= new StoreFront(this.request) as StoreFrontInterface;
+this->modifyingStoreFrontInterface= StoreFront(this->request) as StoreFrontInterface;
     
 }
 
 
-    public string update(){
+    public: std::string update(){
 
         try {
             
-    success: string = "Updated Successfully";;
+    std::string success = "Updated Successfully";;
     
 
-    hashMapData: HashMap<any, any> = this.modifyingStoreFrontInterface!.toHashMap()!;;
+    HashMap<any, any> hashMapData = this->modifyingStoreFrontInterface.toHashMap();;
     
-StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.update(hashMapData);
+StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().update(hashMapData);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "update()");
+                                    this->logUtil.putF(success, this, "update()");
     
 
                                     }
@@ -179,13 +176,13 @@ StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.update(h
 } catch(e) 
             {
 
-    error: string = "Failed to update storefronts table";;
+    std::string error = "Failed to update storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "update()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "update()", e);
     
 
                                     }
@@ -203,95 +200,95 @@ StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.update(h
 
                 //@Throws(Exception.constructor)
             
-    public sendStoreCreatedEmails(){
+    public: void sendStoreCreatedEmails(){
 
-    storeManagerEmailSubject: string = "Store Manager Nofification For Store: " +this.modifyingStoreFrontInterface!.getName();;
-    
-
-    adminEmailSubject: string = "Admin Notification For Store: " +this.modifyingStoreFrontInterface!.getName();;
+    std::string storeManagerEmailSubject = "Store Manager Nofification For Store: " +this->modifyingStoreFrontInterface.getName();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
-    
-stringBuffer!.append("Store Created: ");
-    
-stringBuffer!.append(this.modifyingStoreFrontInterface!.getName());
-    
-stringBuffer!.append("\n\n");
-    
-stringBuffer!.append("Click here for the Admin Interface:\n");
-    
-stringBuffer!.append(this.modifyingStoreFrontInterface!.getCurrentHomeHostName());
-    
-stringBuffer!.append("/admin/login.jsp\n\n");
-    
-stringBuffer!.append("Goto Your Store:\n");
-    
-stringBuffer!.append(this.modifyingStoreFrontInterface!.getCurrentHomeHostName());
-    
-stringBuffer!.append(this.modifyingStoreFrontInterface!.getName());
-    
-stringBuffer!.append("/index.jsp");
-    
-stringBuffer!.append("\n\n");
-    
-stringBuffer!.append("UserName: ");
-    
-stringBuffer!.append(this.weblisketSession!.getUserName());
+    std::string adminEmailSubject = "Admin Notification For Store: " +this->modifyingStoreFrontInterface.getName();;
     
 
-    adminEmailTextBody: string = stringBuffer!.toString()!;;
+    StringMaker stringBuffer = StringMaker();;
+    
+stringBuffer.append("Store Created: ");
+    
+stringBuffer.append(this->modifyingStoreFrontInterface.getName());
+    
+stringBuffer.append("\n\n");
+    
+stringBuffer.append("Click here for the Admin Interface:\n");
+    
+stringBuffer.append(this->modifyingStoreFrontInterface.getCurrentHomeHostName());
+    
+stringBuffer.append("/admin/login.jsp\n\n");
+    
+stringBuffer.append("Goto Your Store:\n");
+    
+stringBuffer.append(this->modifyingStoreFrontInterface.getCurrentHomeHostName());
+    
+stringBuffer.append(this->modifyingStoreFrontInterface.getName());
+    
+stringBuffer.append("/index.jsp");
+    
+stringBuffer.append("\n\n");
+    
+stringBuffer.append("UserName: ");
+    
+stringBuffer.append(this->weblisketSession.getUserName());
     
 
-    adminBasicEmailInfo: BasicEmailInfo = new AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    std::string adminEmailTextBody = stringBuffer.toString();;
     
 
-    storeAdminBasicEmailInfo: BasicEmailInfo = new StoreEmailInfo(this.modifyingStoreFrontInterface, storeManagerEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
+    BasicEmailInfo adminBasicEmailInfo = AdminEmailInfo(adminEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
     
 
-    storeAdminEmailInfo: EmailInfo = new EmailInfo(storeAdminBasicEmailInfo);;
+    BasicEmailInfo storeAdminBasicEmailInfo = StoreEmailInfo(this->modifyingStoreFrontInterface, storeManagerEmailSubject, adminEmailTextBody) as BasicEmailInfo;;
     
 
-    adminEmailInfo: EmailInfo = new EmailInfo(adminBasicEmailInfo);;
+    EmailInfo storeAdminEmailInfo = EmailInfo(storeAdminBasicEmailInfo);;
     
 
-    adminUserEmailEventHandler: UserEmailEventHandler = AdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(this.abeClientInformation, UserEmailEventNameData.STORECREATED)!;;
+    EmailInfo adminEmailInfo = EmailInfo(adminBasicEmailInfo);;
     
 
-    storeAdminUserEmailEventHandler: UserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons.getInstance()!.getInstance(UserEmailEventNameData.STORECREATED, this.abeClientInformation, this.modifyingStoreFrontInterface)!;;
+    UserEmailEventHandler adminUserEmailEventHandler = AdminUserEmailEventHandlerSingletons::getInstance().getInstance(this->abeClientInformation, UserEmailEventNameData::STORECREATED);;
     
-storeAdminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.STORECREATED, storeAdminEmailInfo);
+
+    UserEmailEventHandler storeAdminUserEmailEventHandler = StoreAdminUserEmailEventHandlerSingletons::getInstance().getInstance(UserEmailEventNameData::STORECREATED, this->abeClientInformation, this->modifyingStoreFrontInterface);;
     
-adminUserEmailEventHandler!.receiveEmailInfo(UserEmailEventNameData.STORECREATED, adminEmailInfo);
+storeAdminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STORECREATED, storeAdminEmailInfo);
+    
+adminUserEmailEventHandler.receiveEmailInfo(UserEmailEventNameData::STORECREATED, adminEmailInfo);
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string install(){
+    public: std::string install(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append("Intall StoreFront Successfully: ");
+stringBuffer.append("Intall StoreFront Successfully: ");
     
-stringBuffer!.appendint(this.portion.getCurrent()!.intValue());
+stringBuffer.appendint(this->portion.getCurrent().intValue());
     
-stringBuffer!.append(" of ");
+stringBuffer.append(" of ");
     
-stringBuffer!.appendint(this.portion.getTotal()!.intValue());
-    
-
-    success: string = stringBuffer!.toString()!;;
-    
-this.modifyingStoreFrontInterface!.install(this.portion.getCurrent()!.intValue(), this.portion.getTotal()!.intValue());
+stringBuffer.appendint(this->portion.getTotal().intValue());
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+    std::string success = stringBuffer.toString();;
+    
+this->modifyingStoreFrontInterface.install(this->portion.getCurrent().intValue(), this->portion.getTotal().intValue());
+    
+
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "install()");
+                                    this->logUtil.putF(success, this, "install()");
     
 
                                     }
@@ -307,13 +304,13 @@ this.modifyingStoreFrontInterface!.install(this.portion.getCurrent()!.intValue()
 } catch(e) 
             {
 
-    error: string = "Failed to Install storefront";;
+    std::string error = "Failed to Install storefront";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "install()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "install()", e);
     
 
                                     }
@@ -330,22 +327,22 @@ this.modifyingStoreFrontInterface!.install(this.portion.getCurrent()!.intValue()
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public string insert(){
+    public: std::string insert(){
 
         try {
             
-    success: string = "Added Successfully";;
+    std::string success = "Added Successfully";;
     
 
-    values: Vector = this.modifyingStoreFrontInterface!.toVector()!;;
+    Vector values = this->modifyingStoreFrontInterface.toVector();;
     
-StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.insert(values);
+StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().insert(values);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "insert()");
+                                    this->logUtil.putF(success, this, "insert()");
     
 
                                     }
@@ -361,13 +358,13 @@ StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.insert(v
 } catch(e) 
             {
 
-    error: string = "Failed to add storefront";;
+    std::string error = "Failed to add storefront";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "insert()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "insert()", e);
     
 
                                     }
@@ -383,19 +380,19 @@ StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.insert(v
 }
 
 
-    public string delete(){
+    public: std::string delete_(){
 
         try {
             
-    success: string = "Delete Successfully";;
+    std::string success = "Delete Successfully";;
     
-StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.delete(this.storeName);
+StoreFrontsEntityFactory::getInstance().getStoreFrontsEntityInstance().delete(this->storeName);
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGS))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGS))
                         
                                     {
-                                    this.logUtil!.putF(success, this, "delete()");
+                                    this->logUtil.putF(success, this, "delete()");
     
 
                                     }
@@ -411,13 +408,13 @@ StoreFrontsEntityFactory.getInstance()!.getStoreFrontsEntityInstance()!.delete(t
 } catch(e) 
             {
 
-    error: string = "Failed to delete storefronts table";;
+    std::string error = "Failed to delete storefronts table";;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLTAGSERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLTAGSERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "delete()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "delete()", e);
     
 
                                     }

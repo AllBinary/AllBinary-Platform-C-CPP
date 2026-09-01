@@ -111,42 +111,41 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class MiniMapLayer: public AllBinaryLayer: public GeographicMapCellPositionEventListenerInterface {
-        
+class MiniMapLayer: public AllBinaryLayer, public GeographicMapCellPositionEventListenerInterface {
 
-    const allBinaryTiledLayer: AllBinaryTiledLayer;
+    protected: AllBinaryTiledLayer allBinaryTiledLayer;
 
-    private: const geographicMapCellPositionFactory: BasicGeographicMapCellPositionFactory;
+    private: BasicGeographicMapCellPositionFactory geographicMapCellPositionFactory;
 
-    private: const list: BasicArrayList;
+    private: BasicArrayList list;
 
-    private: const basicColorList: BasicArrayList;
+    private: BasicArrayList basicColorList;
 
-    private: const positionList: BasicArrayList;
+    private: BasicArrayList positionList;
 
-    private: animationInterface: CircleFilledAnimation;
+    private: CircleFilledAnimation animationInterface;
 
-public constructor (BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition);
+public: MiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition);
 
                 //@Throws(Exception.constructor)
             
-    init();
+    protected: void init();
 
-    public onEvent(AllBinaryEventObject eventObject);
-
-                //@Throws(Exception.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
+    public: void onRemoveGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
 
-    public paintDots(Graphics graphics);
+                //@Throws(Exception.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public paint(Graphics graphics);
+    public: void onGeographicMapCellPositionEvent(GeographicMapCellPositionEvent geographicMapCellPositionEvent);
+
+    public: void paintDots(Graphics graphics);
+
+    public: void paint(Graphics graphics);
 
 };
 

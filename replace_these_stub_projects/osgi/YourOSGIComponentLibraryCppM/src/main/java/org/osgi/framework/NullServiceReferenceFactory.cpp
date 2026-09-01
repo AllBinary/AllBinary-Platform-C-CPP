@@ -43,21 +43,20 @@
 class NullServiceReferenceFactory
             : public Object
          {
-        
 
-    private: static const instance: NullServiceReferenceFactory = new NullServiceReferenceFactory();
+    private: static NullServiceReferenceFactory instance() { return NullServiceReferenceFactory(); }
 
-    public static NullServiceReferenceFactory getInstance(){
+    public: static NullServiceReferenceFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullServiceReferenceFactory.instance;
+                        return NullServiceReferenceFactory::instance();
     
 }
 
 
-    public NULL_SERVICE_REFERENCE: NullServiceReference = new NullServiceReference();
+    public: NullServiceReference NULL_SERVICE_REFERENCE = NullServiceReference();
 
 };
 

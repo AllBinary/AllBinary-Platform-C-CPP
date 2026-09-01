@@ -88,15 +88,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class OverrideObjectConfigRootContextView: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (Object transformInfoInterface);
+public: OverrideObjectConfigRootContextView(Object transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

@@ -54,28 +54,23 @@
 class BasicProfileActionScriptProcessorNode
             : public Object
          {
-        
 
-public constructor (Node node){
+public: BasicProfileActionScriptProcessorNode(Node node){
 
-            super();
-        
-    actionNode: Node = DomSearchHelper.getNode(GenericProfileActionScriptProcessorData.NAME, node.getChildNodes())!;;
+    Node actionNode = DomSearchHelper::getNode(GenericProfileActionScriptProcessorData::NAME, node.getChildNodes());;
     
 }
 
 
-public constructor (){
-
-            super();
-        }
+public: BasicProfileActionScriptProcessorNode(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(GenericProfileActionScriptProcessorData.NAME)!;;
+    Node node = document.createElement(GenericProfileActionScriptProcessorData::NAME);;
     
 
 

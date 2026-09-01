@@ -72,117 +72,114 @@
 class ImageScaleUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageScaleUtil = new ImageScaleUtil();
+    private: static ImageScaleUtil instance() { return ImageScaleUtil(); }
 
-    public static ImageScaleUtil getInstance(){
+    public: static ImageScaleUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageScaleUtil.instance;
+                        return ImageScaleUtil::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
-
-
-                //@Throws(Exception.constructor)
-            
-    public Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
-
-
-
-                        //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
-    
+private: ImageScaleUtil(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
-
-    scaleX: float = scaleNominatorX /scaleDenominatorX;;
-    
-
-    scaleY: float = scaleNominatorY /scaleDenominatorY;;
-    
+    public: Image createImage2(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage(imageCache, originalImage, scaleX, scaleY, cached);;
+                        return this->createImage3(imageCache, originalImage, scaleNominatorX, scaleDenominatorX, scaleNominatorY, scaleDenominatorY, cached, true);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached){
+    public: Image createImage3(ImageCache imageCache, Image originalImage, float scaleNominatorX, float scaleDenominatorX, float scaleNominatorY, float scaleDenominatorY, bool cached, bool mutable){
+
+    float scaleX = scaleNominatorX /scaleDenominatorX;;
+    
+
+    float scaleY = scaleNominatorY /scaleDenominatorY;;
+    
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImageInternal(originalImage, scaleX, scaleY);;
+                        return this->createImage(imageCache, originalImage, scaleX, scaleY, cached);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageInternal(Image originalImage, float scaleX, float scaleY){
+    public: Image createImage(ImageCache imageCache, Image originalImage, float scaleX, float scaleY, bool cached){
 
-    image: Image = ImageCreationUtil.getInstance()!.createImageWH(static_cast<int32_t>((originalImage!.getWidth() *scaleX)), static_cast<int32_t>((originalImage!.getHeight() *scaleY)))!;;
+
+
+                        //if statement needs to be on the same line and ternary does not work the same way.
+                        return this->createImageInternal(originalImage, scaleX, scaleY);;
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: Image createImageInternal(Image originalImage, float scaleX, float scaleY){
+
+    Image image = ImageCreationUtil::getInstance().createImageWH(static_cast<int32_t>((originalImage.getWidth() *scaleX)), static_cast<int32_t>((originalImage.getHeight() *scaleY)));;
     
 
                         if(image.isMutable())
                         
                                     {
                                     
-    originalPlayNImage: playn.core.Image = 
+    playn::core::Image originalPlayNImage = 
                 null
             ;;
     
 
-                        if(originalImage!.isMutable())
+                        if(originalImage.isMutable())
                         
                                     {
                                     
-    originalHTMLImage: PlaynMutableImage = originalImage as PlaynMutableImage;;
+    PlaynMutableImage originalHTMLImage = originalImage as PlaynMutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                                     }
                                 
                         else {
                             
-    originalHTMLImage: PlaynImmutableImage = originalImage as PlaynImmutableImage;;
+    PlaynImmutableImage originalHTMLImage = originalImage as PlaynImmutableImage;;
     
-originalPlayNImage= originalHTMLImage!.getImage() as playn.core.Image;
+originalPlayNImage= originalHTMLImage.getImage() as playn::core::Image;
     
 
                         }
                             
 
-    htmlImage: PlaynMutableImage = image as PlaynMutableImage;;
+    PlaynMutableImage htmlImage = image as PlaynMutableImage;;
     
 
-    canvasImage: ImageImpl = htmlImage!.getImage() as ImageImpl;;
+    ImageImpl canvasImage = htmlImage.getImage() as ImageImpl;;
     
 
-    playN: PlayN = PlayN.getInstance()!;;
+    PlayN playN = PlayN::getInstance();;
     
 
-    canvas: Canvas = (graphics as HtmlGraphics).get(canvasImage as HtmlImage)!;;
+    Canvas canvas = (graphics as HtmlGraphics).get(canvasImage as HtmlImage);;
     
-canvas.draw(originalPlayNImage, 0, 0, image.getWidth(), image.getHeight(), 0, 0, originalImage!.getWidth(), originalImage!.getHeight());
+canvas.draw(originalPlayNImage, 0, 0, image.getWidth(), image.getHeight(), 0, 0, originalImage.getWidth(), originalImage.getHeight());
     
 
 
@@ -197,7 +194,7 @@ canvas.draw(originalPlayNImage, 0, 0, image.getWidth(), image.getHeight(), 0, 0,
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }

@@ -77,23 +77,22 @@
 class AbFileUploadFactory
             : public Object
          {
-        
 
-    private: static const instance: AbFileUploadFactory = new AbFileUploadFactory();
+    private: static AbFileUploadFactory instance() { return AbFileUploadFactory(); }
 
-    public static AbFileUploadFactory getInstance();
+    public: static AbFileUploadFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public List getFileItemStreamList(HttpServletRequest httpServletRequest);
+private: AbFileUploadFactory();
 
                 //@Throws(Exception.constructor)
             
-    public List getFileItemList(HttpServletRequest httpServletRequest);
+    public: List getFileItemStreamList(HttpServletRequest httpServletRequest);
+
+                //@Throws(Exception.constructor)
+            
+    public: List getFileItemList(HttpServletRequest httpServletRequest);
 
 };
 

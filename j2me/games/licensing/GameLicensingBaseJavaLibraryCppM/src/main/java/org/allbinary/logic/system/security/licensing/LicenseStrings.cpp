@@ -42,21 +42,20 @@
 class LicenseStrings
             : public Object
          {
-        
 
-    private: static const instance: LicenseStrings = new LicenseStrings();
+    private: static LicenseStrings instance() { return LicenseStrings(); }
 
-    public static LicenseStrings getInstance(){
+    public: static LicenseStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return LicenseStrings.instance;
+                        return LicenseStrings::instance();
     
 }
 
 
-    public const LOCKED: string = "Demo Locked Feature";
+    public: const std::string LOCKED = "Demo Locked Feature";
 
 };
 

@@ -63,32 +63,31 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
             static const char* PUBLIC = "%{public}s";
             
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance();
+    /*actual*/ public: static LogUtil getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-    private: const LABEL: string = "org.allbinary";
+    private: const std::string LABEL = "org.allbinary";
 
-private constructor ();
+private: LogUtil();
 
-    /*actual*/ public putL(Log log);
+    /*actual*/ public: void putL(Log log);
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName);
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
 
-    public putFS(string specialMessage, string string, string functionName);
+    public: void putFS(std::string specialMessage, std::string string, std::string functionName);
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
-    /*actual*/ public putS(string specialMessage, string string, string functionName, any = {} exception);
+    /*actual*/ public: void putS(std::string specialMessage, std::string string, std::string functionName, Object* exception);
 
 };
 

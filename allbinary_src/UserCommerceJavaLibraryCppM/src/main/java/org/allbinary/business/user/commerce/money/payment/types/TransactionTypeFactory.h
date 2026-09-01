@@ -46,23 +46,22 @@
 class TransactionTypeFactory
             : public Object
          {
-        
 
-    private: static const instance: TransactionTypeFactory = new TransactionTypeFactory();
+    private: static TransactionTypeFactory instance() { return TransactionTypeFactory(); }
 
-    public static TransactionTypeFactory getInstance();
+    public: static TransactionTypeFactory getInstance();
 
-    public const SALE: TransactionType = new TransactionType("Sale");
+    public: const TransactionType SALE = TransactionType("Sale");
 
-    public const CREDIT: TransactionType = new TransactionType("Credit");
+    public: const TransactionType CREDIT = TransactionType("Credit");
 
-    public const AUTHORIZATION: TransactionType = new TransactionType("Authorization");
+    public: const TransactionType AUTHORIZATION = TransactionType("Authorization");
 
-    public const DELAYEDCAPTURE: TransactionType = new TransactionType("Delayed Capture");
+    public: const TransactionType DELAYEDCAPTURE = TransactionType("Delayed Capture");
 
-    public const VOID: TransactionType = new TransactionType("Void");
+    public: const TransactionType VOID = TransactionType("Void");
 
-    public const INQUIRY: TransactionType = new TransactionType("Inquiry");
+    public: const TransactionType INQUIRY = TransactionType("Inquiry");
 
 };
 

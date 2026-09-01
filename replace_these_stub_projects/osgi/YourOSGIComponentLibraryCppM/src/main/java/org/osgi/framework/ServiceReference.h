@@ -7,6 +7,8 @@
         #ifndef ORG_OSGI_FRAMEWORK_SERVICEREFERENCE_H
         #define ORG_OSGI_FRAMEWORK_SERVICEREFERENCE_H
 
+            #include <vector>
+        
 
 
 
@@ -28,11 +30,10 @@
         #include "Comparable.h"
 
 class ServiceReference: public Comparable {
-        
 
-    any getProperty(string key);
+    Object* getProperty(std::string key);
 
-    std::vector<string> getPropertyKeys();
+    std::vector<std::string> getPropertyKeys();
 
 };
 

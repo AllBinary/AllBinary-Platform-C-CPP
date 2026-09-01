@@ -88,75 +88,74 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "DownloadableInventoryItemView.h"
 
-class DeleteFileValidationView: public DownloadableInventoryItemView: public ValidationComponentInterface {
-        
+class DeleteFileValidationView: public DownloadableInventoryItemView, public ValidationComponentInterface {
 
-    private: downloadItemId: string;
+    private: std::string downloadItemId;
 
-public constructor (TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface, StringUtil.getInstance()!.EMPTY_STRING);
+public: DeleteFileValidationView(TransformInfoInterface transformInfoInterface){
+            super(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.getFormData();
+this->getFormData();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public getFormData(){
+    public: void getFormData(){
 
-    hashMap: HashMap<any, any> = new RequestParams(request).toHashMap()!;;
+    HashMap<any, any> hashMap = RequestParams(request).toHashMap();;
     
 
                         if(hashMap == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("No Request Params Found");
+                            throw Exception("No Request Params Found");
                     
 
                                     }
                                 
-this.id= hashMap!.get(BasicItemData.ID) as string;
+this->id= hashMap.get(BasicItemData::ID) as string;
     
-this.downloadItemId= hashMap!.get(DownloadItemData.ID) as string;
+this->downloadItemId= hashMap.get(DownloadItemData::ID) as string;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
                         if(id == 
-                                    null
-                                 || !StringValidationUtil.getInstance()!.isNumber(this.id))
+                                    nullptr
+                                 || !StringValidationUtil::getInstance().isNumber(this->id))
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    inventoryEntity: InventoryEntity = InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!;;
+    InventoryEntity inventoryEntity = InventoryEntityFactory::getInstance().getInventoryEntityInstance();;
     
-this.itemInterface= inventoryEntity!.getItem(this.id);
+this->itemInterface= inventoryEntity.getItem(this->id);
     
 
-                        if(this.itemInterface == 
-                                    null
+                        if(this->itemInterface == 
+                                    nullptr
                                 )
                         
                                     {
@@ -164,16 +163,16 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
                                 
 
-    downloadItemsEntity: DownloadItemsEntity = DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!;;
+    DownloadItemsEntity downloadItemsEntity = DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance();;
     
 
-    vector: Vector = downloadItemsEntity!.getForItem(this.id, this.downloadItemId)!;;
+    Vector vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
     
 
                         if(vector.length != 1)
@@ -183,7 +182,7 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 
                                     }
@@ -192,7 +191,7 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
@@ -202,14 +201,14 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -219,7 +218,7 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -229,45 +228,45 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.id == 
-                                    null
-                                 || !StringValidationUtil.getInstance()!.isNumber(this.id))
+                        if(this->id == 
+                                    nullptr
+                                 || !StringValidationUtil::getInstance().isNumber(this->id))
                         
                                     {
-                                    stringBuffer!.append("Id is not valid.<br />");
+                                    stringBuffer.append("Id is not valid.<br />");
     
 
                                     }
                                 
 
-                        if(InventoryEntityFactory.getInstance()!.getInventoryEntityInstance()!.getItem(this.id) == 
-                                    null
+                        if(InventoryEntityFactory::getInstance().getInventoryEntityInstance().getItem(this->id) == 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append("Item does not exist.<br />");
+                                    stringBuffer.append("Item does not exist.<br />");
     
 
                                     }
                                 
 
-    downloadItemsEntity: DownloadItemsEntity = DownloadItemsEntityFactory.getInstance()!.getDownloadItemsEntityInstance()!;;
+    DownloadItemsEntity downloadItemsEntity = DownloadItemsEntityFactory::getInstance().getDownloadItemsEntityInstance();;
     
 
-    vector: Vector = downloadItemsEntity!.getForItem(this.id, this.downloadItemId)!;;
+    Vector vector = downloadItemsEntity.getForItem(this->id, this->downloadItemId);;
     
 
                         if(vector.length == 0)
                         
                                     {
-                                    stringBuffer!.append("DownloadItem does not exist.<br />");
+                                    stringBuffer.append("DownloadItem does not exist.<br />");
     
 
                                     }
@@ -276,7 +275,7 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
                         if(vector.length > 1)
                         
                                     {
-                                    stringBuffer!.append("To Many DownloadItems exist.<br />");
+                                    stringBuffer.append("To Many DownloadItems exist.<br />");
     
 
                                     }
@@ -285,7 +284,7 @@ this.itemInterface= inventoryEntity!.getItem(this.id);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 

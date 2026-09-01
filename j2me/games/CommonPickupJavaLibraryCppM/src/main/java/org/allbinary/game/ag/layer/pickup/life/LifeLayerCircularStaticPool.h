@@ -59,13 +59,12 @@
         #include "LifeLayer.h"
 
 class LifeLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor (AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+public: LifeLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryLayer sourceLayerInterface);
+    public: void visit(AllBinaryLayer sourceLayerInterface);
 
 };
 

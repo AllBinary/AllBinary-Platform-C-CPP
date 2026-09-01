@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/ai/ArtificialIntelligenceInterface.h>
@@ -53,9 +55,8 @@
         #include "SequenceAI.h"
 
 class ComboSequenceAI: public SequenceAI {
-        
 
-public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: ComboSequenceAI(std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterface, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(artificialIntelligenceInterface, ownerLayerInterface, gameInput);
                     
 
@@ -66,22 +67,21 @@ public constructor (std::vector<ArtificialIntelligenceInterface> artificialIntel
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
 
-    artificialIntelligenceInterfaceArray: std::vector<ArtificialIntelligenceInterface> = this.getArtificialIntelligenceInterface()!;;
+    std::vector<ArtificialIntelligenceInterface> artificialIntelligenceInterfaceArray = this->getArtificialIntelligenceInterface();;
     
 
-    size: int32_t = artificialIntelligenceInterfaceArray!.length
-                ;;
+    int32_t size = artificialIntelligenceInterfaceArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-this.setIndex(index);
+this->setIndex(index);
     
 super.processAI(allBinaryLayerManager);
     

@@ -26,9 +26,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class XmlRpcException: public Exception {
-        
 
-public constructor (int32_t code, string message){
+public: XmlRpcException(int32_t code, std::string message){
             super(message);
                     
 

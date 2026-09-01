@@ -49,17 +49,16 @@
 class CustomMapGeneratorBaseFactory
             : public Object
          {
-        
 
-    private: static const instance: CustomMapGeneratorBaseFactory = new CustomMapGeneratorBaseFactory();
+    private: static CustomMapGeneratorBaseFactory instance() { return CustomMapGeneratorBaseFactory(); }
 
-    public static CustomMapGeneratorBaseFactory getInstance();
+    public: static CustomMapGeneratorBaseFactory getInstance();
 
-public constructor ();
+public: CustomMapGeneratorBaseFactory();
 
                 //@Throws(Exception.constructor)
             
-    public CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap);
+    public: CustomMapGeneratorBase create(RaceTrackGeographicMap raceTrackGeographicMap);
 
 };
 

@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BuildMenuCompositeInterface {
-        
 
     ScrollSelectionForm getCurrentScrollSelectionForm();
 
-    setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm);
+    void setCurrentScrollSelectionForm(ScrollSelectionForm currentScrollSelectionForm);
 
     ScrollSelectionForm getBuildingScrollSelectionForm();
 

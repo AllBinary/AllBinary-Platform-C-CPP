@@ -64,27 +64,26 @@
 class CurrentlyPressedTouchButtonSingleton
             : public Object
          {
-        
 
-    private: static const instance: CurrentlyPressedTouchButtonSingleton = new CurrentlyPressedTouchButtonSingleton();
+    private: static CurrentlyPressedTouchButtonSingleton instance() { return CurrentlyPressedTouchButtonSingleton(); }
 
-    public static CurrentlyPressedTouchButtonSingleton getInstance();
+    public: static CurrentlyPressedTouchButtonSingleton getInstance();
 
-    const list: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList list = BasicArrayListD();
 
-protected constructor ();
+protected: CurrentlyPressedTouchButtonSingleton();
 
-    public int32_t size();
+    public: int32_t size();
 
-    public TouchButtonInput removeAt(int32_t index);
+    public: TouchButtonInput removeAt(int32_t index);
 
-    public bool remove(TouchButtonInput touchButtonInput);
+    public: bool remove(TouchButtonInput touchButtonInput);
 
-    public TouchButtonInput get(int32_t index);
+    public: TouchButtonInput get(int32_t index);
 
-    public bool contains(TouchButtonInput touchButtonInput);
+    public: bool contains(TouchButtonInput touchButtonInput);
 
-    public add(TouchButtonInput touchButtonInput);
+    public: void add(TouchButtonInput touchButtonInput);
 
 };
 

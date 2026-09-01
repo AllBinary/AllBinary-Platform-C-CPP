@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_UTIL_TRANSFORMTEMPLATECUSTOMIZERUTIL_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_UTIL_TRANSFORMTEMPLATECUSTOMIZERUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
 #include <java/util/HashMap.h>
@@ -75,33 +77,32 @@
 class TransformTemplateCustomizerUtil
             : public Object
          {
-        
 
-    private: static const instance: TransformTemplateCustomizerUtil = new TransformTemplateCustomizerUtil();
+    private: static TransformTemplateCustomizerUtil instance() { return TransformTemplateCustomizerUtil(); }
 
-    public static TransformTemplateCustomizerUtil getInstance();
+    public: static TransformTemplateCustomizerUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const CUSTOMIZER_NAME: string;
+    private: std::string CUSTOMIZER_NAME;
 
-    private: const BODY_VIEWNAMEKEY: string;
+    private: std::string BODY_VIEWNAMEKEY;
 
-    private: const TITLE_VIEWNAMEKEY: string;
+    private: std::string TITLE_VIEWNAMEKEY;
 
-    private: const GLOBALS_NEW: string;
+    private: std::string GLOBALS_NEW;
 
-    private: const GLOBALS_INSERT: string;
+    private: std::string GLOBALS_INSERT;
 
-    private: const GLOBALS_DELETE: string;
+    private: std::string GLOBALS_DELETE;
 
-    private: const GLOBALS_EDIT: string;
+    private: std::string GLOBALS_EDIT;
 
-    private: const GLOBALS_UPDATE: string;
+    private: std::string GLOBALS_UPDATE;
 
-private constructor ();
+private: TransformTemplateCustomizerUtil();
 
-    public string getPageNameHack(string viewName, string storeName);
+    public: std::string getPageNameHack(std::string viewName, std::string storeName);
 
 };
 

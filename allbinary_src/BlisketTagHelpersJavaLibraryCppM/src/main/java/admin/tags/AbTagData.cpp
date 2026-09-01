@@ -42,14 +42,11 @@
 class AbTagData
             : public Object
          {
-        
 
-    public static const PARENT: string = "TAG_PARENT";
+    public: static const std::string PARENT = "TAG_PARENT";
 
-private constructor (){
-
-            super();
-        }
+private: AbTagData(){
+}
 
 
 };

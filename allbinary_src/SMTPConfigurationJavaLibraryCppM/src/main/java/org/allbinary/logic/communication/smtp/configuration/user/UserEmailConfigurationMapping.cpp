@@ -55,21 +55,18 @@
 class UserEmailConfigurationMapping
             : public Object
         : public TableMappingInterface {
-        
 
-    private: userEmailConfigurationInterface: UserEmailConfigurationInterface;
+    private: UserEmailConfigurationInterface userEmailConfigurationInterface;
 
-public constructor (UserEmailConfigurationInterface userEmailConfigurationInterface){
-
-            super();
-        this.userEmailConfigurationInterface= userEmailConfigurationInterface;
+public: UserEmailConfigurationMapping(UserEmailConfigurationInterface userEmailConfigurationInterface){
+this->userEmailConfigurationInterface= userEmailConfigurationInterface;
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
 
@@ -82,21 +79,21 @@ public constructor (UserEmailConfigurationInterface userEmailConfigurationInterf
 
                 //@Throws(Exception.constructor)
             
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return UserEmailConfigurationData.NAME;
+                        return UserEmailConfigurationData::NAME;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
 
 

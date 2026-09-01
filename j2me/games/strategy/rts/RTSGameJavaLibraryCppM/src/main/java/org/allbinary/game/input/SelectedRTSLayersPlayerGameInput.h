@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUT_H
         #define ORG_ALLBINARY_GAME_INPUT_SELECTEDRTSLAYERSPLAYERGAMEINPUT_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Canvas.h>
@@ -132,75 +134,74 @@
 #include "GameInputProcessorUtil.h"
 
 class SelectedRTSLayersPlayerGameInput: public PlayerGameInput {
-        
 
-    const inputProcessorArray: std::vector<GameInputProcessor> = new Array(InputFactory.getInstance()!.MAX);
+    protected: const std::vector<GameInputProcessor> inputProcessorArray = new Array(InputFactory::getInstance().MAX);
 
-    private: const list: BasicArrayList;
+    private: BasicArrayList list;
 
-    const isSingleKeyProcessing: bool = Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_REPEAT_PRESS) || Features.getInstance()!.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_PRESS);
+    protected: const bool isSingleKeyProcessing = Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS) || Features::getInstance().isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_PRESS);
 
-    private: selectedRTSLayersList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList selectedRTSLayersList = BasicArrayListD();
 
-    private: preSelectedRTSLayersList: BasicArrayList = new BasicArrayListD();
+    private: BasicArrayList preSelectedRTSLayersList = BasicArrayListD();
 
-    private: paintSelectedRTSLayersList: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList paintSelectedRTSLayersList = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: rtsPlayerLayerInterface: RTSPlayerLayerInterface;
+    private: RTSPlayerLayerInterface rtsPlayerLayerInterface;
 
-    private: const selectRTSLayerVisitorInterface: Visitor;
+    private: Visitor selectRTSLayerVisitorInterface;
 
-    private: const upgradeGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent upgradeGameNotificationEvent;
 
-    private: const noMoneyGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent noMoneyGameNotificationEvent;
 
-    private: const downgradeGameNotificationEvent: GameNotificationEvent;
+    private: GameNotificationEvent downgradeGameNotificationEvent;
 
-public constructor (RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, BasicArrayList list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
-
-    public bool isSelected(RTSLayer rtsLayer);
+public: SelectedRTSLayersPlayerGameInput(RTSLayerInfoPaintable towerInfoPaintable, RTSPlayerLayerInterface rtsPlayerLayerInterface, BasicArrayList list, int32_t playerInputId, SelectRTSLayerVisitorFactoryInterface selectRTSLayerVisitorFactoryInterface);
 
                 //@Throws(Exception.constructor)
             
-    upgrade();
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager);
+
+    public: bool isSelected(RTSLayer rtsLayer);
 
                 //@Throws(Exception.constructor)
             
-    downgrade();
-
-    public initInputProcessors();
+    protected: void upgrade();
 
                 //@Throws(Exception.constructor)
             
-    public processInputKey(int32_t key);
+    protected: void downgrade();
+
+    public: void initInputProcessors();
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager);
+    public: void processInputKey(int32_t key);
 
-    public BasicArrayList getSelectedBasicArrayList();
+                //@Throws(Exception.constructor)
+            
+    public: void processInput(AllBinaryLayerManager layerManager);
 
-    public addSelectedRTSLayer(RTSLayer selectedLayer);
+    public: BasicArrayList getSelectedBasicArrayList();
 
-    public setSelectedRTSLayer(CollidableDestroyableDamageableLayer selectedLayer);
+    public: void addSelectedRTSLayer(RTSLayer selectedLayer);
 
-    public CollidableDestroyableDamageableLayer getLastSelectedRtsLayer();
+    public: void setSelectedRTSLayer(CollidableDestroyableDamageableLayer selectedLayer);
 
-    public selectAllPreselected();
+    public: CollidableDestroyableDamageableLayer getLastSelectedRtsLayer();
 
-    public deselectAllPreselected();
+    public: void selectAllPreselected();
 
-    public deselectAll();
+    public: void deselectAllPreselected();
 
-    public bool isAnyRTSLayerSelected();
+    public: void deselectAll();
 
-    public BasicArrayList getPaintSelectedRTSLayersList();
+    public: bool isAnyRTSLayerSelected();
 
-    public BasicArrayList getPreSelectedRTSLayersList();
+    public: BasicArrayList getPaintSelectedRTSLayersList();
+
+    public: BasicArrayList getPreSelectedRTSLayersList();
 
 };
 

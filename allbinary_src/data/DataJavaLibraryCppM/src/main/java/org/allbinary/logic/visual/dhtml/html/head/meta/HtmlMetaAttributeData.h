@@ -45,17 +45,16 @@
 class HtmlMetaAttributeData
             : public Object
          {
-        
 
-    private: id: int32_t;
+    private: int32_t id;
 
-    private: name: string;
+    private: std::string name;
 
-public constructor (int32_t id, string value);
+public: HtmlMetaAttributeData(int32_t id, std::string value);
 
-    public bool equals(HtmlMetaAttributeData htmlMetaAttributeData);
+    public: bool equals(HtmlMetaAttributeData htmlMetaAttributeData);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

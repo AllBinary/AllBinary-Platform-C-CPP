@@ -67,19 +67,18 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TransformInfoRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: transformInfoInterface: TransformInfoHttpInterface;
+    private: TransformInfoHttpInterface transformInfoInterface;
 
-public constructor (HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: TransformInfoRequestHelper(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    public string update();
+    public: std::string update();
 
-    public string insert();
+    public: std::string insert();
 
-    public string delete();
+    public: std::string delete_();
 
 };
 

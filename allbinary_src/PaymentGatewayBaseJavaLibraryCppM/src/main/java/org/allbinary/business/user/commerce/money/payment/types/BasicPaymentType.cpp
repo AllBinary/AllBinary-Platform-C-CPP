@@ -69,94 +69,89 @@
 class BasicPaymentType
             : public Object
          {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: value: string;
+    private: std::string value;
 
-    private: paymentGatewayInterfaceFactoryInterface: PaymentGatewayInterfaceFactoryInterface;
+    private: PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface;
 
-    private: paymentGatewayDomNodeFactoryInterface: PaymentGatewayDomNodeFactoryInterface;
+    private: PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface;
 
-protected constructor (string paymentMethod){
-
-            super();
-        this.init(paymentMethod);
+protected: BasicPaymentType(std::string paymentMethod){
+this->init(paymentMethod);
     
 }
 
 
-protected constructor (string paymentMethod, PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface){
-
-            super();
-        this.init(paymentMethod);
+protected: BasicPaymentType(std::string paymentMethod, PaymentGatewayInterfaceFactoryInterface paymentGatewayInterfaceFactoryInterface, PaymentGatewayDomNodeFactoryInterface paymentGatewayDomNodeFactoryInterface){
+this->init(paymentMethod);
     
-this.paymentGatewayInterfaceFactoryInterface= paymentGatewayInterfaceFactoryInterface;
+this->paymentGatewayInterfaceFactoryInterface= paymentGatewayInterfaceFactoryInterface;
     
-this.paymentGatewayDomNodeFactoryInterface= paymentGatewayDomNodeFactoryInterface;
+this->paymentGatewayDomNodeFactoryInterface= paymentGatewayDomNodeFactoryInterface;
     
 }
 
 
-    init(string paymentMethod){
+    private: void init(std::string paymentMethod){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
-    
-
-    UNDERSCORE: string = "_";;
-    
-hashMap!.put(CommonSeps.getInstance()!.SPACE, UNDERSCORE);
-    
-hashMap!.put(AbPathData.getInstance()!.EXTENSION_SEP, UNDERSCORE);
-    
-hashMap!.put("-", UNDERSCORE);
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
 
-    replace: Replace = new Replace(hashMap);;
+    std::string UNDERSCORE = "_";;
     
-this.name= replace.all(paymentMethod);
+hashMap.put(CommonSeps::getInstance().SPACE, UNDERSCORE);
     
-this.value= paymentMethod;
+hashMap.put(AbPathData::getInstance().EXTENSION_SEP, UNDERSCORE);
     
-BasicPaymentTypeUtil.getInstance()!.add(this);
+hashMap.put("-", UNDERSCORE);
+    
+
+    Replace replace = Replace(hashMap);;
+    
+this->name= replace.all(paymentMethod);
+    
+this->value= paymentMethod;
+    
+BasicPaymentTypeUtil::getInstance().add(this);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getValue(){
+    public: std::string getValue(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.value;
+                        return this->value;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayInterfaceFactoryInterface getPaymentGatewayInterfaceFactoryInterface(){
+    public: PaymentGatewayInterfaceFactoryInterface getPaymentGatewayInterfaceFactoryInterface(){
 
-                        if(this.paymentGatewayInterfaceFactoryInterface == 
-                                    null
+                        if(this->paymentGatewayInterfaceFactoryInterface == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("PaymentGatewayInterfaceFactoryInterface is Null");
+                            throw Exception("PaymentGatewayInterfaceFactoryInterface is Null");
                     
 
                                     }
@@ -165,24 +160,24 @@ BasicPaymentTypeUtil.getInstance()!.add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentGatewayInterfaceFactoryInterface;
+                        return this->paymentGatewayInterfaceFactoryInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public PaymentGatewayDomNodeFactoryInterface getPaymentGatewayDomNodeFactoryInterface(){
+    public: PaymentGatewayDomNodeFactoryInterface getPaymentGatewayDomNodeFactoryInterface(){
 
-                        if(this.paymentGatewayDomNodeFactoryInterface == 
-                                    null
+                        if(this->paymentGatewayDomNodeFactoryInterface == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new Exception("PaymentGatewayDomNodeFactoryInterface is Null");
+                            throw Exception("PaymentGatewayDomNodeFactoryInterface is Null");
                     
 
                                     }
@@ -191,28 +186,28 @@ BasicPaymentTypeUtil.getInstance()!.add(this);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.paymentGatewayDomNodeFactoryInterface;
+                        return this->paymentGatewayDomNodeFactoryInterface;
     
 }
 
 
-    public any getKey(){
+    public: Object* getKey(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getName();;
+                        return this->getName();;
     
 }
 
 
-    public Vector toVector(){
+    public: Vector toVector(){
 
-    vector: Vector = new Vector();;
+    Vector vector = Vector();;
     
-vector.add(this.name);
+vector.add(this->name);
     
-vector.add(this.value);
+vector.add(this->value);
     
 
 
@@ -223,13 +218,13 @@ vector.add(this.value);
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: HashMap<any, any> toHashMap(){
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(PaymentGatewayData.NAME.toString(), this.name);
+hashMap.put(PaymentGatewayData::NAME.toString(), this->name);
     
-hashMap!.put(PaymentGatewayData.VALUE.toString(), this.value);
+hashMap.put(PaymentGatewayData::VALUE.toString(), this->value);
     
 
 
@@ -240,12 +235,12 @@ hashMap!.put(PaymentGatewayData.VALUE.toString(), this.value);
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 

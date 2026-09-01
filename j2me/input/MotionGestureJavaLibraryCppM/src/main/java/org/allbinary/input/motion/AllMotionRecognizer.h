@@ -59,49 +59,48 @@
         #include "MotionRecognizer.h"
 
 class AllMotionRecognizer: public MotionRecognizer {
-        
 
-    private: static index: int32_t = 0;
+    private: static int32_t index = 0;
 
-    private: static const pointCircularPool: GPointCircularPool = new GPointCircularPool(40);
+    private: static const GPointCircularPool pointCircularPool = GPointCircularPool(40);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const motionGestureRecognizer: MotionGestureRecognizer;
+    private: MotionGestureRecognizer motionGestureRecognizer;
 
-    private: touchButtonProcessing: bool = false;
+    private: bool touchButtonProcessing = false;
 
-    private: const touchButtonRecognizer: TouchButtonRecognizer;
+    private: TouchButtonRecognizer touchButtonRecognizer;
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-public constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+public: AllMotionRecognizer();
 
                 //@Throws(Exception.constructor)
             
-    public processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processStartMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
                 //@Throws(Exception.constructor)
             
-    public processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
-
-    private: lastX: int32_t= 0;
-
-    private: lastY: int32_t= 0;
+    public: void processEndMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
                 //@Throws(Exception.constructor)
             
-    public processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processDraggedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+
+    private: int32_t lastX= 0;
+
+    private: int32_t lastY= 0;
 
                 //@Throws(Exception.constructor)
             
-    public processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+    public: void processMovedMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
 
-    public MotionGestureRecognizer getMotionGestureRecognizer();
+                //@Throws(Exception.constructor)
+            
+    public: void processScrolledMotionEvent(int32_t x, int32_t y, int32_t deviceId, int32_t modifiers);
+
+    public: MotionGestureRecognizer getMotionGestureRecognizer();
 
 };
 

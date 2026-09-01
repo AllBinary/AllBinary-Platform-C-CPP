@@ -84,28 +84,27 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class TitleBodyCustomizerView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class TitleBodyCustomizerView: public HttpStoreComponentView, public DomNodeInterface {
 
-    private: static const NAME: string = "None";
+    private: static const std::string NAME = "None";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    titleBody: TitleBodyValidation;
+    protected: TitleBodyValidation titleBody;
 
-public constructor (TransformInfoInterface transformInfoInterface);
-
-                //@Throws(Exception.constructor)
-            
-    public addDomNodeInterfaces();
+public: TitleBodyCustomizerView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: void addDomNodeInterfaces();
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

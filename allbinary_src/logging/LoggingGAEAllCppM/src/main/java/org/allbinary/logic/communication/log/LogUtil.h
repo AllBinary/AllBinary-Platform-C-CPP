@@ -63,27 +63,26 @@
 /*actual*/ class LogUtil
             : public Object
          {
-        
 
-    private: static const instance: LogUtil = new LogUtil();
+    private: static LogUtil instance() { return LogUtil(); }
 
-    /*actual*/ public static LogUtil getInstance();
+    /*actual*/ public: static LogUtil getInstance();
 
-    private: const logger: Logger = Logger.getLogger(LogUtil.constructor.toString()!)!;
+    private: const Logger logger = Logger::getLogger(LogUtil.constructor.toString()!);
 
-    private: const logFormatUtil: LogFormatUtil = LogFormatUtil.getInstance()!;
+    private: const LogFormatUtil logFormatUtil = LogFormatUtil::getInstance();
 
-private constructor ();
+private: LogUtil();
 
-    /*actual*/ public putL(Log log);
+    /*actual*/ public: void putL(Log log);
 
-    /*actual*/ public putF(string specialMessage, any = {} anyType, string functionName);
+    /*actual*/ public: void putF(std::string specialMessage, Object* anyType, std::string functionName);
 
-    /*actual*/ public putFS(string specialMessage, string className, string functionName);
+    /*actual*/ public: void putFS(std::string specialMessage, std::string className, std::string functionName);
 
-    /*actual*/ public put(string specialMessage, any = {} anyType, string functionName, any = {} exception);
+    /*actual*/ public: void put(std::string specialMessage, Object* anyType, std::string functionName, Object* exception);
 
-    /*actual*/ public putS(string specialMessage, string className, string functionName, any = {} exception);
+    /*actual*/ public: void putS(std::string specialMessage, std::string className, std::string functionName, Object* exception);
 
 };
 

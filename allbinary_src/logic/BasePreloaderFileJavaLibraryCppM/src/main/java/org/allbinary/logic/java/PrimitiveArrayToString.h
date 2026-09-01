@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_JAVA_PRIMITIVEARRAYTOSTRING_H
         #define ORG_ALLBINARY_LOGIC_JAVA_PRIMITIVEARRAYTOSTRING_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <org/allbinary/logic/string/StringMaker.h>
@@ -48,9 +50,8 @@
 class PrimitiveArrayToString
             : public Object
          {
-        
 
-    public static string toString(std::vector<float> floats);
+    public: static std::string toString(std::vector<float> floats);
 
 };
 

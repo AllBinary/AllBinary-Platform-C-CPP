@@ -59,67 +59,66 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LurchRotationAI: public LurchAI {
-        
 
-    private: rotationAnimationInterface: IndexedAnimation;
+    private: IndexedAnimation rotationAnimationInterface;
 
-public constructor (AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: LurchRotationAI(AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface = this.getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
     
-this.rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface!.getRotationAnimationInterface();
+this->rotationAnimationInterface= rotationAnimationInterfaceCompositeInterface.getRotationAnimationInterface();
     
-this.update();
+this->update();
     
 }
 
 
-    reverse(){
+    protected: void reverse(){
 super.reverse();
     
-this.update();
+this->update();
     
 }
 
 
-    update(){
+    private: void update(){
 
-                        if(this.currentRelativeAngle == 0)
+                        if(this->currentRelativeAngle == 0)
                         
                                     {
                                     
-    rotationAnimationInterface: RotationAnimationInterface = this.rotationAnimationInterface as RotationAnimationInterface;;
+    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as RotationAnimationInterface;;
     
 
-    angleIncrementInfo: AngleIncrementInfo = rotationAnimationInterface!.getAngleInfoP()!.getAngleIncrementInfo()!;;
+    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
     
 
-    rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface = this.getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
     
-rotationAnimationInterfaceCompositeInterface!.setFrame(angleIncrementInfo!.RIGHT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.RIGHT_FRAME.intValue());
     
 
                                     }
                                 
                              else 
-                        if(this.currentRelativeAngle == 180)
+                        if(this->currentRelativeAngle == 180)
                         
                                     {
                                     
-    rotationAnimationInterface: RotationAnimationInterface = this.rotationAnimationInterface as RotationAnimationInterface;;
+    RotationAnimationInterface rotationAnimationInterface = this->rotationAnimationInterface as RotationAnimationInterface;;
     
 
-    angleIncrementInfo: AngleIncrementInfo = rotationAnimationInterface!.getAngleInfoP()!.getAngleIncrementInfo()!;;
+    AngleIncrementInfo angleIncrementInfo = rotationAnimationInterface.getAngleInfoP().getAngleIncrementInfo();;
     
 
-    rotationAnimationInterfaceCompositeInterface: RotationAnimationInterfaceCompositeInterface = this.getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
+    RotationAnimationInterfaceCompositeInterface rotationAnimationInterfaceCompositeInterface = this->getOwnerLayerInterface() as RotationAnimationInterfaceCompositeInterface;;
     
-rotationAnimationInterfaceCompositeInterface!.setFrame(angleIncrementInfo!.LEFT_FRAME.intValue());
+rotationAnimationInterfaceCompositeInterface.setFrame(angleIncrementInfo.LEFT_FRAME.intValue());
     
 
                                     }

@@ -44,21 +44,20 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ExplosionBasicSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new ExplosionBasicSound();
+    private: static Sound soundInterface = ExplosionBasicSound();
 
-    public static Sound getInstance(){
+    public: static Sound getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ExplosionBasicSound.soundInterface;
+                        return ExplosionBasicSound::soundInterface;
     
 }
 
 
-private constructor (){
+private: ExplosionBasicSound(){
             super("resource:/wav/explosion.wav");
                     
 

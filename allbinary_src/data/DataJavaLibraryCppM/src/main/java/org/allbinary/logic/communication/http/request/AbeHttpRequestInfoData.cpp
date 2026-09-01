@@ -42,37 +42,34 @@
 class AbeHttpRequestInfoData
             : public Object
          {
-        
 
-    private: static const instance: AbeHttpRequestInfoData = new AbeHttpRequestInfoData();
+    private: static AbeHttpRequestInfoData instance() { return AbeHttpRequestInfoData(); }
 
-    public static AbeHttpRequestInfoData getInstance(){
+    public: static AbeHttpRequestInfoData getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AbeHttpRequestInfoData.instance;
+                        return AbeHttpRequestInfoData::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: AbeHttpRequestInfoData(){
+}
 
 
-    public const HTTP_USER_AGENT: string = "HTTP_USER_AGENT";
+    public: const std::string HTTP_USER_AGENT = "HTTP_USER_AGENT";
 
-    public const REMOTE_ADDRESS: string = "REMOTE_ADDRESS";
+    public: const std::string REMOTE_ADDRESS = "REMOTE_ADDRESS";
 
-    public const REMOTE_HOST: string = "REMOTE_HOST";
+    public: const std::string REMOTE_HOST = "REMOTE_HOST";
 
-    public const REMOTE_HOST_BY_ADDRESS: string = "REMOTE_HOST_BY_ADDRESS";
+    public: const std::string REMOTE_HOST_BY_ADDRESS = "REMOTE_HOST_BY_ADDRESS";
 
-    public const REMOTE_PORT: string = "REMOTE_PORT";
+    public: const std::string REMOTE_PORT = "REMOTE_PORT";
 
-    public const REQUEST_FILE_PATH: string = "REQUEST_FILE_PATH";
+    public: const std::string REQUEST_FILE_PATH = "REQUEST_FILE_PATH";
 
 };
 

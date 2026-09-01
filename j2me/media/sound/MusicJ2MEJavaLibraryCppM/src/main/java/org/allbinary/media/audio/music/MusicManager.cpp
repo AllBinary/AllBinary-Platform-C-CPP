@@ -85,28 +85,27 @@
 class MusicManager
             : public Object
          {
-        
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const basicArrayListUtil: BasicArrayListUtil = BasicArrayListUtil.getInstance()!;
+    private: const BasicArrayListUtil basicArrayListUtil = BasicArrayListUtil::getInstance();
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-    private: const playerStateUtil: PlayerStateUtil = PlayerStateUtil.getInstance()!;
+    private: const PlayerStateUtil playerStateUtil = PlayerStateUtil::getInstance();
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(0);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(0);
 
-    private: const playerListener: PlayerListener = new class extends PlayerListener
+    private: const PlayerListener playerListener = class extends PlayerListener
                                 {
                                 
-    public playerUpdate(Player player, string event, any = {} eventData){
-PreLogUtil.put(event, this, commonStrings!.PROCESS);
+    public: void playerUpdate(Player player, std::string event, Object* eventData){
+PreLogUtil::put(event, this, commonStrings.PROCESS);
     
 
-                        if(event == PlayerListener.END_OF_MEDIA || event == PlayerListener.STOPPED || event == PlayerListener.CLOSED)
+                        if(event == PlayerListener::END_OF_MEDIA || event == PlayerListener::STOPPED || event == PlayerListener::CLOSED)
                         
                                     {
                                     reset();
@@ -119,83 +118,81 @@ PreLogUtil.put(event, this, commonStrings!.PROCESS);
                                 }
                             ;
 
-    private: const PLAY: string = "Play ";
+    private: const std::string PLAY = "Play ";
 
-    private: const SONG: string = " for: ";
+    private: const std::string SONG = " for: ";
 
-    private: const NEXT_SONG: string = "Next Song: ";
+    private: const std::string NEXT_SONG = "Next Song: ";
 
-    private: const STOPPING: string = "Stopping Current Song: ";
+    private: const std::string STOPPING = "Stopping Current Song: ";
 
-    private: const ENDING: string = "Ending Current Song: ";
+    private: const std::string ENDING = "Ending Current Song: ";
 
-    private: const WAITING_FOR_MEDIA_TO_END: string = "Waiting for media to end";
+    private: const std::string WAITING_FOR_MEDIA_TO_END = "Waiting for media to end";
 
-    private: const ALREADY_PLAYING: string = "Already Playing: ";
+    private: const std::string ALREADY_PLAYING = "Already Playing: ";
 
-    private: const ALREADY_ENDED: string = "Last Song already ended: ";
+    private: const std::string ALREADY_ENDED = "Last Song already ended: ";
 
-    private: const songList: BasicArrayList;
+    private: BasicArrayList songList;
 
-    private: currentSongSound: Sound = NoSound.getInstance()!;
+    private: Sound currentSongSound = NoSound::getInstance();
 
-    private: nextSongSound: Sound = NoSound.getInstance()!;
+    private: Sound nextSongSound = NoSound::getInstance();
 
-    private: reset: bool= false;
+    private: bool reset= false;
 
-    private: noDuration: bool= false;
+    private: bool noDuration= false;
 
-    private: stopped: bool = true;
+    private: bool stopped = true;
 
-public constructor (Function musicServiceClass, BasicArrayList songList){
-
-            super();
-        this.songList= songList;
+public: MusicManager(Function musicServiceClass, BasicArrayList songList){
+this->songList= songList;
     
 }
 
 
-    public startNewSong(){
+    public: void startNewSong(){
 
-                        if(this.nextSongSound == NoSound.getInstance())
+                        if(this->nextSongSound == NoSound::getInstance())
                         
                                     {
                                     
-    randomSongSound: Sound = this.basicArrayListUtil!.getRandom(this.songList) as Sound;;
+    Sound randomSongSound = this->basicArrayListUtil.getRandom(this->songList) as Sound;;
     
-this.nextSong(randomSongSound, 0, 0);
+this->nextSong(randomSongSound, 0, 0);
     
 
                                     }
                                 
-this.process();
+this->process();
     
 }
 
 
-    public nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume){
-PreLogUtil.put(new StringMaker().append(NEXT_SONG)!.append(nextSongSound!.getResource())!.toString(), this, this.commonStrings!.PROCESS);
+    public: void nextSong(Sound nextSongSound, int32_t leftVolume, int32_t rightVolume){
+PreLogUtil::put(StringMaker().append(NEXT_SONG).append(nextSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
     
-this.nextSongSound= nextSongSound;
+this->nextSongSound= nextSongSound;
     
-this.reset();
+this->reset();
     
-this.stopped= false;
-    
-}
-
-
-    public reset(){
-this.reset= true;
+this->stopped= false;
     
 }
 
 
-    public process(){
+    public: void reset(){
+this->reset= true;
+    
+}
+
+
+    public: void process(){
 
         try {
             
-                        if(this.stopped)
+                        if(this->stopped)
                         
                                     {
                                     
@@ -208,7 +205,7 @@ this.reset= true;
                                     }
                                 
 
-                        if(this.songList!.size() == 0)
+                        if(this->songList.size() == 0)
                         
                                     {
                                     
@@ -221,108 +218,108 @@ this.reset= true;
                                     }
                                 
 
-                        if((this.timeDelayHelper!.isTime(this.gameTickTimeDelayHelper!.startTime) && !this.noDuration) || this.reset)
+                        if((this->timeDelayHelper.isTime(this->gameTickTimeDelayHelper.startTime) && !this->noDuration) || this->reset)
                         
                                     {
-                                    this.reset= false;
+                                    this->reset= false;
     
-this.noDuration= false;
-    
-
-    endingCurrentSongSound: Sound = this.currentSongSound;;
+this->noDuration= false;
     
 
-    nextSongSound: Sound = this.nextSongSound;;
-    
-this.nextSongSound= NoSound.getInstance();
+    Sound endingCurrentSongSound = this->currentSongSound;;
     
 
-                        if(nextSongSound == NoSound.getInstance())
+    Sound nextSongSound = this->nextSongSound;;
+    
+this->nextSongSound= NoSound::getInstance();
+    
+
+                        if(nextSongSound == NoSound::getInstance())
                         
                                     {
-                                    this.currentSongSound= BasicArrayListUtil.getInstance()!.getRandom(this.songList) as Sound;
+                                    this->currentSongSound= BasicArrayListUtil::getInstance().getRandom(this->songList) as Sound;
     
 
                                     }
                                 
                         else {
-                            this.currentSongSound= nextSongSound;
+                            this->currentSongSound= nextSongSound;
     
 
                         }
                             
 
-    startingCurrentSongSound: Sound = this.currentSongSound;;
+    Sound startingCurrentSongSound = this->currentSongSound;;
     
 
-    duration: int64_t = this.currentSongSound!.getDuration()!;;
+    int64_t duration = this->currentSongSound.getDuration();;
     
-this.timeDelayHelper!.delay= static_cast<int32_t>(duration);
+this->timeDelayHelper.delay= static_cast<int32_t>(duration);
     
 
                         if(duration <= 0)
                         
                                     {
                                     
-    NO_DURATION_FOR: string = "No Duration for: ";;
+    std::string NO_DURATION_FOR = "No Duration for: ";;
     
-PreLogUtil.put(new StringMaker().append(NO_DURATION_FOR)!.append(this.currentSongSound!.getResource())!.toString(), this, this.commonStrings!.PROCESS);
+PreLogUtil::put(StringMaker().append(NO_DURATION_FOR).append(this->currentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
     
-this.currentSongSound!.getPlayerP()!.addPlayerListener(playerListener);
+this->currentSongSound.getPlayerP().addPlayerListener(playerListener);
     
-this.noDuration= true;
+this->noDuration= true;
     
 
                                     }
                                 
 
-                        if(endingCurrentSongSound != NoSound.getInstance())
+                        if(endingCurrentSongSound != NoSound::getInstance())
                         
                                     {
                                     
-                        if(endingCurrentSongSound == startingCurrentSongSound && endingCurrentSongSound!.getPlayerP()!.getState() == PlayerI.STARTED)
+                        if(endingCurrentSongSound == startingCurrentSongSound && endingCurrentSongSound.getPlayerP().getState() == Player::STARTED)
                         
                                     {
-                                    PreLogUtil.put(new StringMaker().append(this.ALREADY_PLAYING)!.append(endingCurrentSongSound!.getResource())!.toString(), this, this.commonStrings!.PROCESS);
+                                    PreLogUtil::put(StringMaker().append(this->ALREADY_PLAYING).append(endingCurrentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
     
-PreLogUtil.put(new StringMaker().append(this.STOPPING)!.append(endingCurrentSongSound!.getResource())!.append(this.SONG)!.appendlong(duration)!.toString(), this, this.commonStrings!.PROCESS);
+PreLogUtil::put(StringMaker().append(this->STOPPING).append(endingCurrentSongSound.getResource()).append(this->SONG).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
     
-endingCurrentSongSound!.getPlayerP()!.stop();
+endingCurrentSongSound.getPlayerP().stop();
     
-this.waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
+this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
     
 
                                     }
                                 
                         else {
                             
-                        if(endingCurrentSongSound!.getPlayerP()!.getState() == PlayerI.STARTED)
+                        if(endingCurrentSongSound.getPlayerP().getState() == Player::STARTED)
                         
                                     {
-                                    PreLogUtil.put(new StringMaker().append(this.STOPPING)!.append(endingCurrentSongSound!.getResource())!.append(this.SONG)!.appendlong(duration)!.toString(), this, this.commonStrings!.PROCESS);
+                                    PreLogUtil::put(StringMaker().append(this->STOPPING).append(endingCurrentSongSound.getResource()).append(this->SONG).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
     
-endingCurrentSongSound!.getPlayerP()!.stop();
+endingCurrentSongSound.getPlayerP().stop();
     
-this.waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
+this->waitForStateChange(endingCurrentSongSound, startingCurrentSongSound);
     
 
                                     }
                                 
                         else {
-                            PreLogUtil.put(new StringMaker().append(this.ALREADY_ENDED)!.append(this.PLAY)!.append(startingCurrentSongSound!.getResource())!.toString(), this, this.commonStrings!.PROCESS);
+                            PreLogUtil::put(StringMaker().append(this->ALREADY_ENDED).append(this->PLAY).append(startingCurrentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
     
 
-                        if(AvianUtil.isAvian())
+                        if(AvianUtil::isAvian())
                         
                                     {
-                                    endingCurrentSongSound!.getPlayerP()!.stop();
+                                    endingCurrentSongSound.getPlayerP().stop();
     
-startingCurrentSongSound!.getPlayerP()!.stop();
+startingCurrentSongSound.getPlayerP().stop();
     
 
                                     }
                                 
-startingCurrentSongSound!.getPlayerP()!.start();
+startingCurrentSongSound.getPlayerP().start();
     
 
                         }
@@ -334,9 +331,9 @@ startingCurrentSongSound!.getPlayerP()!.start();
                                     }
                                 
                         else {
-                            PreLogUtil.put(new StringMaker().append(this.PLAY)!.append(this.currentSongSound!.getResource())!.append(this.SONG)!.appendlong(duration)!.toString(), this, this.commonStrings!.PROCESS);
+                            PreLogUtil::put(StringMaker().append(this->PLAY).append(this->currentSongSound.getResource()).append(this->SONG).appendlong(duration).toString(), this, this->commonStrings.PROCESS);
     
-this.currentSongSound!.getPlayerP()!.start();
+this->currentSongSound.getPlayerP().start();
     
 
                         }
@@ -349,18 +346,18 @@ this.currentSongSound!.getPlayerP()!.start();
 } catch(e) 
             {
 
-    resource: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string resource = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(this.currentSongSound != NoSound.getInstance())
+                        if(this->currentSongSound != NoSound::getInstance())
                         
                                     {
-                                    resource= this.currentSongSound!.getResource();
+                                    resource= this->currentSongSound.getResource();
     
 
                                     }
                                 
-PreLogUtil.putOE(this.commonStrings!.EXCEPTION_LABEL +resource, this, this.commonStrings!.PROCESS, e);
+PreLogUtil::putOE(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.PROCESS, e);
     
 }
 
@@ -369,65 +366,65 @@ PreLogUtil.putOE(this.commonStrings!.EXCEPTION_LABEL +resource, this, this.commo
 
                 //@Throws(Exception.constructor)
             
-    waitForStateChange(Sound endingCurrentSongSound, Sound startingCurrentSongSound){
+    private: void waitForStateChange(Sound endingCurrentSongSound, Sound startingCurrentSongSound){
 
-        while(endingCurrentSongSound!.getPlayerP()!.getState() == PlayerI.STARTED)
+        while(endingCurrentSongSound.getPlayerP().getState() == Player::STARTED)
         {
-PreLogUtil.put(this.WAITING_FOR_MEDIA_TO_END, this, this.commonStrings!.PROCESS);
+PreLogUtil::put(this->WAITING_FOR_MEDIA_TO_END, this, this->commonStrings.PROCESS);
     
-Thread.sleep(100);
+Thread::sleep(100);
     
 }
 
-PreLogUtil.put(new StringMaker().append(this.playerStateUtil!.convert(endingCurrentSongSound!.getPlayerP()!.getState()))!.append(this.commonSeps!.SPACE)!.append(this.PLAY)!.append(startingCurrentSongSound!.getResource())!.toString(), this, this.commonStrings!.PROCESS);
+PreLogUtil::put(StringMaker().append(this->playerStateUtil.convert(endingCurrentSongSound.getPlayerP().getState())).append(this->commonSeps.SPACE).append(this->PLAY).append(startingCurrentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
     
-startingCurrentSongSound!.getPlayerP()!.start();
+startingCurrentSongSound.getPlayerP().start();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public stop(){
+    public: void stop(){
 
         try {
             
-    currentSongSound: Sound = this.currentSongSound;;
+    Sound currentSongSound = this->currentSongSound;;
     
 
-                        if(currentSongSound != NoSound.getInstance())
+                        if(currentSongSound != NoSound::getInstance())
                         
                                     {
-                                    this.stopped= true;
+                                    this->stopped= true;
     
-PreLogUtil.put(new StringMaker().append(this.ENDING)!.append(currentSongSound!.getResource())!.toString(), this, this.commonStrings!.PROCESS);
+PreLogUtil::put(StringMaker().append(this->ENDING).append(currentSongSound.getResource()).toString(), this, this->commonStrings.PROCESS);
     
-currentSongSound!.getPlayerP()!.stop();
+currentSongSound.getPlayerP().stop();
     
 
                                     }
                                 
-this.timeDelayHelper!.setStartTime(0);
+this->timeDelayHelper.setStartTime(0);
     
-PreLogUtil.put(new StringMaker().append(this.commonStrings!.END)!.append(StringUtil.getInstance()!.toString(currentSongSound))!.toString(), this, this.commonStrings!.END);
+PreLogUtil::put(StringMaker().append(this->commonStrings.END).append(StringUtil::getInstance().toString(currentSongSound)).toString(), this, this->commonStrings.END);
     
 
                 //: 
 } catch(e) 
             {
 
-    resource: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string resource = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(currentSongSound != NoSound.getInstance())
+                        if(currentSongSound != NoSound::getInstance())
                         
                                     {
-                                    resource= currentSongSound!.getResource();
+                                    resource= currentSongSound.getResource();
     
 
                                     }
                                 
-PreLogUtil.putOE(this.commonStrings!.EXCEPTION_LABEL +resource, this, this.commonStrings!.END, e);
+PreLogUtil::putOE(this->commonStrings.EXCEPTION_LABEL +resource, this, this->commonStrings.END, e);
     
 }
 

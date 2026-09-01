@@ -59,21 +59,20 @@
         #include "ProgressCanvas.h"
 
 class LazyProgressCanvas: public ProgressCanvas {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-protected constructor (string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+protected: LazyProgressCanvas(std::string title, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
-    public start();
+    public: void start();
 
-    public end();
+    public: void end();
 
-    public inGame();
+    public: void inGame();
 
-    public endFromInitialLazyLoadingComplete();
+    public: void endFromInitialLazyLoadingComplete();
 
-    public endIfPaintedSinceStart();
+    public: void endIfPaintedSinceStart();
 
 };
 

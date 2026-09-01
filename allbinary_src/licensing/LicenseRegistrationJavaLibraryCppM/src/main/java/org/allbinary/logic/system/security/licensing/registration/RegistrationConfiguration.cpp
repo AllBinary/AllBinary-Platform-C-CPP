@@ -92,44 +92,41 @@
 class RegistrationConfiguration
             : public Object
          {
-        
 
-    private: static const SINGLETON: RegistrationConfiguration = new RegistrationConfiguration();
+    private: static const RegistrationConfiguration SINGLETON = RegistrationConfiguration();
 
-    public static RegistrationConfiguration getInstance(){
+    public: static RegistrationConfiguration getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RegistrationConfiguration.SINGLETON;
+                        return RegistrationConfiguration::SINGLETON;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: registrationCode: string = "No Registration Code";
+    private: std::string registrationCode = "No Registration Code";
 
-    public const NAME: string = "registrationid";
+    public: const std::string NAME = "registrationid";
 
-    private: const FILE: string = "Registration.dat";
+    private: const std::string FILE = "Registration.dat";
 
-private constructor (){
+private: RegistrationConfiguration(){
 
-            super();
-        
         try {
             
-                        if(FileFactory.getInstance()!.isFile(this.FILE))
+                        if(FileFactory::getInstance().isFile(this->FILE))
                         
                                     {
-                                    this.read();
+                                    this->read();
     
 
                                     }
                                 
                         else {
-                            this.write();
+                            this->write();
     
 
                         }
@@ -139,61 +136,61 @@ private constructor (){
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
-this.logUtil!.put(commonStrings!.EXCEPTION, this, commonStrings!.CONSTRUCTOR, e);
+this->logUtil.put(commonStrings.EXCEPTION, this, commonStrings.CONSTRUCTOR, e);
     
 }
 
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    read(){
-
-    fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
-    
-
-    fileInputStream: InputStream = fileInputStreamFactory!.getFileInputStreamInstance(StringUtil.getInstance()!.EMPTY_STRING, this.FILE)!;;
-    
-
-    dataInputStream: DataInputStream = new DataInputStream(fileInputStream);;
-    
-this.setRegistrationCode(dataInputStream!.readUTF());
-    
-PreLogUtil.put(new StringMaker().append("Read Configuration: ")!.append(this.toString())!.toString(), this, "read");
-    
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public write(){
+    private: void read(){
 
-    dataOutputStream: AbDataOutputStream = 
+    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
+    
+
+    InputStream fileInputStream = fileInputStreamFactory.getFileInputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
+    
+
+    DataInputStream dataInputStream = DataInputStream(fileInputStream);;
+    
+this->setRegistrationCode(dataInputStream.readUTF());
+    
+PreLogUtil::put(StringMaker().append("Read Configuration: ").append(this->toString()).toString(), this, "read");
+    
+}
+
+
+                //@Throws(Exception.constructor)
+            
+    public: void write(){
+
+    AbDataOutputStream dataOutputStream = 
                 null
             ;;
     
 
         try {
-            this.logUtil!.putF(new StringMaker().append("Write Configuration: ")!.append(this.toString())!.toString(), this, "write");
+            this->logUtil.putF(StringMaker().append("Write Configuration: ").append(this->toString()).toString(), this, "write");
     
 
-    fileInputStreamFactory: FileStreamFactory = FileStreamFactory.getInstance()!;;
+    FileStreamFactory fileInputStreamFactory = FileStreamFactory::getInstance();;
     
 
-    fileOutputStream: OutputStream = fileInputStreamFactory!.getFileOutputStreamInstance(StringUtil.getInstance()!.EMPTY_STRING, this.FILE)!;;
+    OutputStream fileOutputStream = fileInputStreamFactory.getFileOutputStreamInstance(StringUtil::getInstance().EMPTY_STRING, this->FILE);;
     
-dataOutputStream= new AbDataOutputStream(fileOutputStream);
+dataOutputStream= AbDataOutputStream(fileOutputStream);
     
-dataOutputStream!.writeUTF(this.getRegistrationCode());
+dataOutputStream.writeUTF(this->getRegistrationCode());
     
-dataOutputStream!.flush();
+dataOutputStream.flush();
     
 
          finally {
-            StreamUtil.getInstance()!.close(dataOutputStream);
+            StreamUtil::getInstance().close(dataOutputStream);
     
 
          }
@@ -201,28 +198,28 @@ dataOutputStream!.flush();
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new StringMaker().append("Registration Code: ")!.append(this.getRegistrationCode())!.toString();;
+                        return StringMaker().append("Registration Code: ").append(this->getRegistrationCode()).toString();;
     
 }
 
 
-    public setRegistrationCode(string registrationCode){
-this.registrationCode= registrationCode;
+    public: void setRegistrationCode(std::string registrationCode){
+this->registrationCode= registrationCode;
     
 }
 
 
-    public string getRegistrationCode(){
+    public: std::string getRegistrationCode(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.registrationCode;
+                        return this->registrationCode;
     
 }
 

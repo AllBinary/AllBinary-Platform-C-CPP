@@ -57,46 +57,45 @@
 #include "BasicStoreFrontInterface.h"
 
 class BasicStoreFrontsEntity: public InitSql {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const tableName: string = "storefronts";
+    protected: const std::string tableName = "storefronts";
 
-public constructor (){
-            super(new UserDbInitInfo());
+public: BasicStoreFrontsEntity(){
+            super(UserDbInitInfo());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTable(this.tableName);
+this->setTable(this->tableName);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public BasicStoreFrontInterface getStoreFrontInterface(string name){
+    public: BasicStoreFrontInterface getStoreFrontInterface(std::string name){
 
-    keysAndValues: HashMap<any, any> = new HashMap<any, any>();;
+    HashMap<any, any> keysAndValues = HashMap<any, any>();;
     
-keysAndValues!.put(StoreFrontData.getInstance()!.NAME, name);
+keysAndValues.put(StoreFrontData::getInstance().NAME, name);
     
 
-    storeHashMap: HashMap<any, any> = super.getRow(keysAndValues)!;;
+    HashMap<any, any> storeHashMap = super.getRow(keysAndValues);;
     
 
                         if(storeHashMap == 
-                                    null
+                                    nullptr
                                 )
                         
-                                    throw new Exception("No Such Store: " +name);
+                                    throw Exception("No Such Store: " +name);
                                 
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.FACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().FACTORYERROR))
                         
                                     {
-                                    this.logUtil!.putF("StoreFront: " +storeHashMap!.toString(), this, "getStore()");
+                                    this->logUtil.putF("StoreFront: " +storeHashMap.toString(), this, "getStore()");
     
 
                                     }
@@ -105,7 +104,7 @@ keysAndValues!.put(StoreFrontData.getInstance()!.NAME, name);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new BasicStoreFront(storeHashMap) as BasicStoreFrontInterface;
+                        return BasicStoreFront(storeHashMap) as BasicStoreFrontInterface;
     
 }
 

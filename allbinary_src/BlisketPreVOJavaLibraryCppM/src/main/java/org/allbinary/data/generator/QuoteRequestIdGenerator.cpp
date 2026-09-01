@@ -50,25 +50,22 @@
         #include "UniqueIdGenerator.h"
 
 class QuoteRequestIdGenerator: public UniqueIdGenerator {
-        
 
-    private: const IDFILE: string = "quoterequestId";
+    private: const std::string IDFILE = "quoterequestId";
 
-public constructor (){
+public: QuoteRequestIdGenerator(){
 
-            super();
-        
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(PATH_GLOBALS.getInstance()!.INIT_PATH);
+stringBuffer.append(PATH_GLOBALS::getInstance().INIT_PATH);
     
-stringBuffer!.append(this.IDFILE);
+stringBuffer.append(this->IDFILE);
     
-stringBuffer!.append(UniqueIdGenerator.EXT);
+stringBuffer.append(UniqueIdGenerator::EXT);
     
-super.setFile(stringBuffer!.toString(), this.IDFILE);
+super.setFile(stringBuffer.toString(), this->IDFILE);
     
 }
 

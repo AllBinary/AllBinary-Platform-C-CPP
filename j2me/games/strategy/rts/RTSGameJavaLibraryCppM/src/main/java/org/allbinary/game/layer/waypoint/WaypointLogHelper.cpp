@@ -57,61 +57,60 @@
 class WaypointLogHelper
             : public Object
          {
-        
 
-    private: static const instance: WaypointLogHelper = new WaypointLogHelper();
+    private: static WaypointLogHelper instance() { return WaypointLogHelper(); }
 
-    public static WaypointLogHelper getInstance(){
+    public: static WaypointLogHelper getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return WaypointLogHelper.instance;
+                        return WaypointLogHelper::instance();
     
 }
 
 
-    public onWaypointEvent(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
+    public: void onWaypointEvent(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
 }
 
 
-    public addWaypointFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
+    public: void addWaypointFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer){
 }
 
 
-    public addWaypointFromBuildingList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer, BasicArrayList list){
+    public: void addWaypointFromBuildingList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, PathFindingLayerInterface advancedRTSGameLayer, BasicArrayList list){
 }
 
 
-    public insertWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, string waypointName){
+    public: void insertWaypoint(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, std::string waypointName){
 }
 
 
-    public insertWaypointList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, string waypointName, BasicArrayList list){
+    public: void insertWaypointList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, int32_t index, CollidableDestroyableDamageableLayer rtsLayer, std::string waypointName, BasicArrayList list){
 }
 
 
-    public setRandomGeographicMapCellHistoryList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, BasicArrayList pathsList){
+    public: void setRandomGeographicMapCellHistoryList(PathFindingLayerInterface associatedAdvancedRTSGameLayer, BasicArrayList pathsList){
 }
 
 
-    public moveAwayFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
+    public: void moveAwayFromBuilding(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
 }
 
 
-    public needToMove(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior){
+    public: void needToMove(PathFindingLayerInterface associatedAdvancedRTSGameLayer, WaypointBehaviorBase unitWaypointBehavior){
 }
 
 
-    public setRandomGeographicMapCellHistory(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
+    public: void setRandomGeographicMapCellHistory(PathFindingLayerInterface associatedAdvancedRTSGameLayer){
 }
 
 
-    public setCurrentPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingCurrentPathGeographicMapCellPosition, GeographicMapCellPosition currentPathGeographicMapCellPosition){
+    public: void setCurrentPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingCurrentPathGeographicMapCellPosition, GeographicMapCellPosition currentPathGeographicMapCellPosition){
 }
 
 
-    public setNextUnvisitedPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingNextUnvisitedPathGeographicMapCellPosition, GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition){
+    public: void setNextUnvisitedPathGeographicMapCellPosition(PathFindingLayerInterface associatedAdvancedRTSGameLayer, GeographicMapCellPosition existingNextUnvisitedPathGeographicMapCellPosition, GeographicMapCellPosition nextUnvisitedPathGeographicMapCellPosition){
 }
 
 

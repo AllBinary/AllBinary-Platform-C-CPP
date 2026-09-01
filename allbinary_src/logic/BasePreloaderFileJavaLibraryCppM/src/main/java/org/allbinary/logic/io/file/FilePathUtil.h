@@ -52,11 +52,10 @@
 class FilePathUtil
             : public Object
          {
-        
 
-    public static string adjust(string path);
+    public: static std::string adjust(std::string path);
 
-private constructor ();
+private: FilePathUtil();
 
 };
 

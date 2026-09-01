@@ -59,35 +59,34 @@
 class OSGIActivatorUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static registerAsService(BundleContext bundleContext, any = {} anyType, string serviceName){
-OSGIActivatorUtil.registerAsService(bundleContext, anyType, serviceName, new Hashtable<any, any>());
+    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName){
+OSGIActivatorUtil::registerAsService(bundleContext, anyType, serviceName, Hashtable<any, any>());
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public static registerAsService(BundleContext bundleContext, any = {} anyType, string serviceName, Hashtable<any, any> properties){
+    public: static void registerAsService(BundleContext bundleContext, Object* anyType, std::string serviceName, Hashtable<any, any> properties){
 
-    serviceRegistration: ServiceRegistration = bundleContext!.registerService(serviceName, anyType, properties)!;;
+    ServiceRegistration serviceRegistration = bundleContext.registerService(serviceName, anyType, properties);;
     
 
-    serviceReference: ServiceReference = serviceRegistration!.getReference()!;;
+    ServiceReference serviceReference = serviceRegistration.getReference();;
     
-serviceReference= bundleContext!.getServiceReference(serviceName);
+serviceReference= bundleContext.getServiceReference(serviceName);
     
 
-                        if(serviceReference == NullServiceReferenceFactory.getInstance()!.NULL_SERVICE_REFERENCE)
+                        if(serviceReference == NullServiceReferenceFactory::getInstance().NULL_SERVICE_REFERENCE)
                         
                                     {
                                     
 
 
-                            throw new Exception("No Such Service Reference");
+                            throw Exception("No Such Service Reference");
                     
 
                                     }
@@ -95,10 +94,8 @@ serviceReference= bundleContext!.getServiceReference(serviceName);
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: OSGIActivatorUtil(){
+}
 
 
 };

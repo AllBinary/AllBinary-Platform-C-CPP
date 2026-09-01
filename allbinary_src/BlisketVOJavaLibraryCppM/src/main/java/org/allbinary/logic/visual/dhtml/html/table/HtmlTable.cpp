@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <java/util/Vector.h>
 
       
@@ -51,108 +53,106 @@
         #include "HtmlRow.h"
 
 class HtmlTable: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const START: string = "<table ";
+    private: const std::string START = "<table ";
 
-    private: const ENDTAG: string = "</table>";
+    private: const std::string ENDTAG = "</table>";
 
-    private: const CLASS: string = "class";
+    private: const std::string CLASS = "class";
 
-    private: const DIRECTION: string = "dir";
+    private: const std::string DIRECTION = "dir";
 
-    private: const ID: string = "id";
+    private: const std::string ID = "id";
 
-    private: const LANG: string = "lang";
+    private: const std::string LANG = "lang";
 
-    private: const UNITS: string = "units";
+    private: const std::string UNITS = "units";
 
-    private: const BORDER: string = "border";
+    private: const std::string BORDER = "border";
 
-    private: const CELLPADDING: string = "cellpadding";
+    private: const std::string CELLPADDING = "cellpadding";
 
-    private: const CELLSPACING: string = "cellspacing";
+    private: const std::string CELLSPACING = "cellspacing";
 
-    private: const COLS: string = "cols";
+    private: const std::string COLS = "cols";
 
-    private: const FLOAT: string = "float";
+    private: const std::string FLOAT = "float";
 
-    private: const FRAME: string = "frame";
+    private: const std::string FRAME = "frame";
 
-    private: const RULES: string = "rules";
+    private: const std::string RULES = "rules";
 
-    private: const WIDTH: string = "width";
+    private: const std::string WIDTH = "width";
 
-    private: const STYLE: string = "style";
+    private: const std::string STYLE = "style";
 
-    public const BORDERCOLLAPSE: string = "border-collapse: collapse";
+    public: const std::string BORDERCOLLAPSE = "border-collapse: collapse";
 
-    private: numberOfColumns: int32_t = 0;
+    private: int32_t numberOfColumns = 0;
 
-    private: before: string;
+    private: std::string before;
 
-    private: border: string;
+    private: std::string border;
 
-    private: cellpadding: string;
+    private: std::string cellpadding;
 
-    private: cellspacing: string;
+    private: std::string cellspacing;
 
-    private: style: string;
+    private: std::string style;
 
-    private: name: string;
+    private: std::string name;
 
-    private: after: string;
+    private: std::string after;
 
-    private: htmlRowsVector: Vector;
+    private: Vector htmlRowsVector;
 
-public constructor (string before, string cellpadding, string cellspacing, string after){
-
-            super();
-        this.before= before;
+public: HtmlTable(std::string before, std::string cellpadding, std::string cellspacing, std::string after){
+this->before= before;
     
-this.cellpadding= cellpadding;
+this->cellpadding= cellpadding;
     
-this.cellspacing= cellspacing;
+this->cellspacing= cellspacing;
     
-this.after= after;
+this->after= after;
     
-this.htmlRowsVector= new Vector();
+this->htmlRowsVector= Vector();
     
-addAttribute(this.BORDER, CommonPhoneStrings.getInstance()!.ZERO);
+addAttribute(this->BORDER, CommonPhoneStrings::getInstance().ZERO);
     
-addAttribute(this.CELLPADDING, this.cellpadding);
+addAttribute(this->CELLPADDING, this->cellpadding);
     
-addAttribute(this.CELLSPACING, this.cellspacing);
+addAttribute(this->CELLSPACING, this->cellspacing);
     
-addAttribute(this.STYLE, this.BORDERCOLLAPSE);
+addAttribute(this->STYLE, this->BORDERCOLLAPSE);
     
 }
 
 
-    public addRow(HtmlRow htmlRow){
+    public: void addRow(HtmlRow htmlRow){
 
-                        if(this.numberOfColumns < htmlRow!.getNumberOfColumns())
-                        this.numberOfColumns= htmlRow!.getNumberOfColumns()
-this.htmlRowsVector!.add(htmlRow);
+                        if(this->numberOfColumns < htmlRow.getNumberOfColumns())
+                        this->numberOfColumns= htmlRow.getNumberOfColumns();
+                                
+this->htmlRowsVector.add(htmlRow);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
-    
-
-    result: string = stringUtil!.EMPTY_STRING;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    attributeKeys: std::vector<any> = this.otherAttributes!.keySet()!.()!;;
+    std::string result = stringUtil.EMPTY_STRING;;
     
-result= this.before;
+
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
     
-result += this.START;
+result= this->before;
+    
+result += this->START;
     
 result += " ";
     
@@ -161,18 +161,16 @@ result += " ";
 
 
                         for (
-    i: int32_t = 0;i < attributeKeys!.length; i++)
+    int32_t i = 0;i < attributeKeys.size(); i++)
         {
 
-    key: string = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i]! as string;;
     
 
-    value: string = otherAttributes!.get(key) as string;;
+    std::string value = otherAttributes.get(key) as string;;
     
 
-                        if(value != 
-                                    null
-                                 && value.compareTo(stringUtil!.EMPTY_STRING) != 0)
+                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;
@@ -188,27 +186,27 @@ result += "\" ";
                                 
 }
 
-result += this.END;
+result += this->END;
     
 
-    size: int32_t = this.htmlRowsVector!.length!;;
+    int32_t size = this->htmlRowsVector.length;;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < size; i++)
+    int32_t i = 0;i < size; i++)
         {
-result += this.htmlRowsVector!.get(i)!.toString();
+result += this->htmlRowsVector.get(i).toString();
     
 result += " ";
     
 }
 
-result += this.ENDTAG;
+result += this->ENDTAG;
     
-result += this.after;
+result += this->after;
     
 
 

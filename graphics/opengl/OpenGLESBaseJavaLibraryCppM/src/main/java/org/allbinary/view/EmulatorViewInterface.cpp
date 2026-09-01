@@ -30,13 +30,12 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class EmulatorViewInterface {
-        
 
-    setMidlet(MIDlet midlet)
+    void setMidlet(MIDlet midlet)
 
-    onEmulatorInitComplete(any midletActivity)
+    void onEmulatorInitComplete(Object* midletActivity)
 
-    onSetDisplayable(Displayable displayable)
+    void onSetDisplayable(Displayable displayable)
 
 };
 

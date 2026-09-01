@@ -44,11 +44,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BillingAddressesEntity: public StreetAddressesEntity {
-        
 
-    private: const TABLENAME: string = "billing";
+    private: const std::string TABLENAME = "billing";
 
-public constructor (string userName);
+public: BillingAddressesEntity(std::string userName);
 
 };
 

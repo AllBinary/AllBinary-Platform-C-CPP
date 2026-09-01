@@ -48,320 +48,317 @@
 class JvmStatistics
             : public Object
          {
-        
 
-    private: runtime: Runtime;
+    private: Runtime runtime;
 
-public constructor (){
-
-            super();
-        this.runtime= Runtime.getRuntime();
+public: JvmStatistics(){
+this->runtime= Runtime::getRuntime();
     
 }
 
 
-    public int64_t getFreeMemoryBytes(){
+    public: int64_t getFreeMemoryBytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.runtime.freeMemory();;
+                        return this->runtime.freeMemory();;
     
 }
 
 
-    public int64_t getFreeMemoryKilobytes(){
+    public: int64_t getFreeMemoryKilobytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getFreeMemoryBytes() /1024;
+                        return this->getFreeMemoryBytes() /1024;
     
 }
 
 
-    public int64_t getFreeMemoryMegabytes(){
+    public: int64_t getFreeMemoryMegabytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getFreeMemoryKilobytes() /1024;
+                        return this->getFreeMemoryKilobytes() /1024;
     
 }
 
 
-    public int64_t getMaxMemoryBytes(){
+    public: int64_t getMaxMemoryBytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.runtime.maxMemory();;
+                        return this->runtime.maxMemory();;
     
 }
 
 
-    public int64_t getMaxMemoryKilobytes(){
+    public: int64_t getMaxMemoryKilobytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getMaxMemoryBytes() /1024;
+                        return this->getMaxMemoryBytes() /1024;
     
 }
 
 
-    public int64_t getMaxMemoryMegabytes(){
+    public: int64_t getMaxMemoryMegabytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getMaxMemoryKilobytes() /1024;
+                        return this->getMaxMemoryKilobytes() /1024;
     
 }
 
 
-    public int64_t getTotalMemoryBytes(){
+    public: int64_t getTotalMemoryBytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.runtime.totalMemory();;
+                        return this->runtime.totalMemory();;
     
 }
 
 
-    public int64_t getTotalMemoryKilobytes(){
+    public: int64_t getTotalMemoryKilobytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTotalMemoryBytes() /1024;
+                        return this->getTotalMemoryBytes() /1024;
     
 }
 
 
-    public int64_t getTotalMemoryMegabytes(){
+    public: int64_t getTotalMemoryMegabytes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTotalMemoryKilobytes() /1024;
+                        return this->getTotalMemoryKilobytes() /1024;
     
 }
 
 
-    public Long getFreeMemoryBytesLong(){
+    public: Long getFreeMemoryBytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getFreeMemoryBytes());
+                        return Long(this->getFreeMemoryBytes());
     
 }
 
 
-    public Long getFreeMemoryKilobytesLong(){
+    public: Long getFreeMemoryKilobytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getFreeMemoryKilobytes());
+                        return Long(this->getFreeMemoryKilobytes());
     
 }
 
 
-    public Long getFreeMemoryMegabytesLong(){
+    public: Long getFreeMemoryMegabytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getFreeMemoryMegabytes());
+                        return Long(this->getFreeMemoryMegabytes());
     
 }
 
 
-    public Long getMaxMemoryBytesLong(){
+    public: Long getMaxMemoryBytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getMaxMemoryBytes());
+                        return Long(this->getMaxMemoryBytes());
     
 }
 
 
-    public Long getMaxMemoryKilobytesLong(){
+    public: Long getMaxMemoryKilobytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getMaxMemoryKilobytes());
+                        return Long(this->getMaxMemoryKilobytes());
     
 }
 
 
-    public Long getMaxMemoryMegabytesLong(){
+    public: Long getMaxMemoryMegabytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getMaxMemoryMegabytes());
+                        return Long(this->getMaxMemoryMegabytes());
     
 }
 
 
-    public Long getTotalMemoryBytesLong(){
+    public: Long getTotalMemoryBytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getTotalMemoryBytes());
+                        return Long(this->getTotalMemoryBytes());
     
 }
 
 
-    public Long getTotalMemoryKilobytesLong(){
+    public: Long getTotalMemoryKilobytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getTotalMemoryKilobytes());
+                        return Long(this->getTotalMemoryKilobytes());
     
 }
 
 
-    public Long getTotalMemoryMegabytesLong(){
+    public: Long getTotalMemoryMegabytesLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getTotalMemoryMegabytes());
+                        return Long(this->getTotalMemoryMegabytes());
     
 }
 
 
-    public string getFreeMemoryBytesString(){
+    public: std::string getFreeMemoryBytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getFreeMemoryBytesLong()!.toString();;
+                        return this->getFreeMemoryBytesLong().toString();;
     
 }
 
 
-    public string getFreeMemoryKilobytesString(){
+    public: std::string getFreeMemoryKilobytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getFreeMemoryKilobytesLong()!.toString();;
+                        return this->getFreeMemoryKilobytesLong().toString();;
     
 }
 
 
-    public string getFreeMemoryMegabytesString(){
+    public: std::string getFreeMemoryMegabytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getFreeMemoryMegabytesLong()!.toString();;
+                        return this->getFreeMemoryMegabytesLong().toString();;
     
 }
 
 
-    public string getMaxMemoryBytesString(){
+    public: std::string getMaxMemoryBytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getMaxMemoryBytesLong()!.toString();;
+                        return this->getMaxMemoryBytesLong().toString();;
     
 }
 
 
-    public string getMaxMemoryKilobytesString(){
+    public: std::string getMaxMemoryKilobytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getMaxMemoryKilobytesLong()!.toString();;
+                        return this->getMaxMemoryKilobytesLong().toString();;
     
 }
 
 
-    public string getMaxMemoryMegabytesString(){
+    public: std::string getMaxMemoryMegabytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getMaxMemoryMegabytesLong()!.toString();;
+                        return this->getMaxMemoryMegabytesLong().toString();;
     
 }
 
 
-    public string getTotalMemoryBytesString(){
+    public: std::string getTotalMemoryBytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTotalMemoryBytesLong()!.toString();;
+                        return this->getTotalMemoryBytesLong().toString();;
     
 }
 
 
-    public string getTotalMemoryKilobytesString(){
+    public: std::string getTotalMemoryKilobytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTotalMemoryKilobytesLong()!.toString();;
+                        return this->getTotalMemoryKilobytesLong().toString();;
     
 }
 
 
-    public string getTotalMemoryMegabytesString(){
+    public: std::string getTotalMemoryMegabytesString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTotalMemoryMegabytesLong()!.toString();;
+                        return this->getTotalMemoryMegabytesLong().toString();;
     
 }
 
 
-    public int64_t getNumberOfThreads(){
+    public: int64_t getNumberOfThreads(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Thread.activeCount();;
+                        return Thread::activeCount();;
     
 }
 
 
-    public Long getNumberOfThreadsLong(){
+    public: Long getNumberOfThreadsLong(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Long(this.getNumberOfThreads());
+                        return Long(this->getNumberOfThreads());
     
 }
 
 
-    public string getNumberOfThreadsString(){
+    public: std::string getNumberOfThreadsString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getNumberOfThreadsLong()!.toString();;
+                        return this->getNumberOfThreadsLong().toString();;
     
 }
 
 
-    public collectGarbage(){
-this.runtime.gc();
+    public: void collectGarbage(){
+this->runtime.gc();
     
 }
 

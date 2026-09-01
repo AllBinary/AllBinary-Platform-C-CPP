@@ -71,37 +71,36 @@
         #include "GeographicMapCellPositionAreaBase.h"
 
 class GeographicMapCellPositionArea: public GeographicMapCellPositionAreaBase {
-        
 
-    private: const cellPositionsUtil: CellPositionsUtil = CellPositionsUtil.getInstance()!;
+    private: const CellPositionsUtil cellPositionsUtil = CellPositionsUtil::getInstance();
 
-    private: const layerCoveringCellPositionsUtil: LayerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil.getInstance()!;
+    private: const LayerCoveringCellPositionsUtil layerCoveringCellPositionsUtil = LayerCoveringCellPositionsUtil::getInstance();
 
-    private: const reusableOccupyingGeographicMapCellPositionList: BasicArrayList = new BasicArrayListS(4);
+    private: const BasicArrayList reusableOccupyingGeographicMapCellPositionList = BasicArrayListS(4);
 
-    private: const reusableSurroundingGeographicMapCellPositionList: BasicArrayList = new BasicArrayListS(12);
+    private: const BasicArrayList reusableSurroundingGeographicMapCellPositionList = BasicArrayListS(12);
 
-    private: const surroundingCircularIndexUtil: CircularIndexUtil = CircularIndexUtil.createInstance(0)!;
+    private: const CircularIndexUtil surroundingCircularIndexUtil = CircularIndexUtil::createInstance(0);
 
-    private: const layerInterface: AllBinaryLayer;
+    private: AllBinaryLayer layerInterface;
 
-    private: LIST: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList LIST = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-    private: occupyingGeographicMapCellPositionList: BasicArrayList = this.LIST;
+    private: BasicArrayList occupyingGeographicMapCellPositionList = this->LIST;
 
-    private: surroundingGeographicMapCellPositionList: BasicArrayList = this.LIST;
+    private: BasicArrayList surroundingGeographicMapCellPositionList = this->LIST;
 
-public constructor (AllBinaryLayer layerInterface);
+public: GeographicMapCellPositionArea(AllBinaryLayer layerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public update(BasicGeographicMap geographicMapInterface);
+    public: void update(BasicGeographicMap geographicMapInterface);
 
-    public BasicArrayList getOccupyingGeographicMapCellPositionList();
+    public: BasicArrayList getOccupyingGeographicMapCellPositionList();
 
-    public BasicArrayList getSurroundingGeographicMapCellPositionList();
+    public: BasicArrayList getSurroundingGeographicMapCellPositionList();
 
-    public GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition();
+    public: GeographicMapCellPosition getNextSurroundingGeographicMapCellPosition();
 
 };
 

@@ -55,40 +55,39 @@
 class OpenGLOptions
             : public Object
          {
-        
 
-    public init(){
+    public: void init(){
 
-    openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;;
+    OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();;
     
 
-                        if(Features.getInstance()!.isFeature(openGLFeatureFactory!.OPENGL_OPTIONS))
+                        if(Features::getInstance().isFeature(openGLFeatureFactory.OPENGL_OPTIONS))
                         
                                     {
                                     
-    openGLMultipleList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList openGLMultipleList = BasicArrayListD();;
     
-openGLMultipleList!.add(openGLFeatureFactory!.OPENGL);
+openGLMultipleList.add(openGLFeatureFactory.OPENGL);
     
-GameFeatureChoiceGroups.getMultipleInstance()!.add("OpenGL (Complete Restart)", openGLMultipleList);
-    
-
-    openGLVersionSelectorMultipleList: BasicArrayList = new BasicArrayListD();;
-    
-openGLVersionSelectorMultipleList!.add(openGLFeatureFactory!.OPENGL_AUTO_SELECT);
-    
-openGLVersionSelectorMultipleList!.add(openGLFeatureFactory!.OPENGL_MINIMUM);
-    
-GameFeatureChoiceGroups.getExclusiveInstance()!.add("OpenGL Version Selector", openGLVersionSelectorMultipleList);
+GameFeatureChoiceGroups::getMultipleInstance().add("OpenGL (Complete Restart)", openGLMultipleList);
     
 
-    openGLImageColorMultipleList: BasicArrayList = new BasicArrayListD();;
+    BasicArrayList openGLVersionSelectorMultipleList = BasicArrayListD();;
     
-openGLImageColorMultipleList!.add(openGLFeatureFactory!.IMAGE_COLOR_DEPTH_4444);
+openGLVersionSelectorMultipleList.add(openGLFeatureFactory.OPENGL_AUTO_SELECT);
     
-openGLImageColorMultipleList!.add(openGLFeatureFactory!.IMAGE_COLOR_DEPTH_8888);
+openGLVersionSelectorMultipleList.add(openGLFeatureFactory.OPENGL_MINIMUM);
     
-GameFeatureChoiceGroups.getExclusiveInstance()!.add("OpenGL Image Color RGBA", openGLImageColorMultipleList);
+GameFeatureChoiceGroups::getExclusiveInstance().add("OpenGL Version Selector", openGLVersionSelectorMultipleList);
+    
+
+    BasicArrayList openGLImageColorMultipleList = BasicArrayListD();;
+    
+openGLImageColorMultipleList.add(openGLFeatureFactory.IMAGE_COLOR_DEPTH_4444);
+    
+openGLImageColorMultipleList.add(openGLFeatureFactory.IMAGE_COLOR_DEPTH_8888);
+    
+GameFeatureChoiceGroups::getExclusiveInstance().add("OpenGL Image Color RGBA", openGLImageColorMultipleList);
     
 
                                     }

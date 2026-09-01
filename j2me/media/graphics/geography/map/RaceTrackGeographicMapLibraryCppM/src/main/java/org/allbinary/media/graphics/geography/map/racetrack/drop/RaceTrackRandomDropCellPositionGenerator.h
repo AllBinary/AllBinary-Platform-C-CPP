@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_H
         #define ORG_ALLBINARY_MEDIA_GRAPHICS_GEOGRAPHY_MAP_RACETRACK_DROP_RACETRACKRANDOMDROPCELLPOSITIONGENERATOR_H
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <org/allbinary/game/layer/pickup/PickedUpLayerInterfaceFactoryInterface.h>
@@ -77,35 +79,34 @@
         #include "RaceTrackDropCellPositionGenerator.h"
 
 class RaceTrackRandomDropCellPositionGenerator: public RaceTrackDropCellPositionGenerator {
-        
 
-    private: static SINGLETON: RaceTrackRandomDropCellPositionGenerator = new RaceTrackRandomDropCellPositionGenerator();
+    private: static RaceTrackRandomDropCellPositionGenerator SINGLETON = RaceTrackRandomDropCellPositionGenerator();
 
-    public static RaceTrackRandomDropCellPositionGenerator getInstance();
+    public: static RaceTrackRandomDropCellPositionGenerator getInstance();
 
-    private: const myRandomFactory: MyRandomFactory = MyRandomFactory.getInstance()!;
+    private: const MyRandomFactory myRandomFactory = MyRandomFactory::getInstance();
 
-    private: const cellsPerRowOrColumn: int32_t = 3;
+    private: const int32_t cellsPerRowOrColumn = 3;
 
-    private: const totalCells: int32_t = this.cellsPerRowOrColumn *this.cellsPerRowOrColumn;
+    private: const int32_t totalCells = this->cellsPerRowOrColumn *this->cellsPerRowOrColumn;
 
-    private: const rowArray: std::vector<int32_t> = [0,1,2,0,1,2,0,1,2];
+    private: const std::vector<int32_t> rowArray = {0,1,2,0,1,2,0,1,2};
 
-    private: const columnArray: std::vector<int32_t> = [0,0,0,1,1,1,2,2,2];
+    private: const std::vector<int32_t> columnArray = {0,0,0,1,1,1,2,2,2};
 
-    private: cellWidth: int32_t= 0;
+    private: int32_t cellWidth= 0;
 
-    private: cellHeight: int32_t= 0;
+    private: int32_t cellHeight= 0;
 
-private constructor ();
-
-                //@Throws(Exception.constructor)
-            
-    public update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+private: RaceTrackRandomDropCellPositionGenerator();
 
                 //@Throws(Exception.constructor)
             
-    drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
+    public: void update(AllBinaryGameLayerManager allBinaryGameLayerManager, BasicGeographicMap geographicMapInterface);
+
+                //@Throws(Exception.constructor)
+            
+    protected: void drop(AllBinaryLayerManager allBinaryLayerManager, int32_t index);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTCANVAS_H
         #define ORG_ALLBINARY_GAME_DISPLAYABLE_CANVAS_STARTCANVAS_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
 #include <java/util/Hashtable.h>
@@ -305,255 +307,254 @@
 #include "GameRunnable.h"
 #include "GameInputMappingCanvas.h"
 
-class StartCanvas: public RunnableCanvas: public GameCanvasRunnableInterface, public MenuListener, public DisplayChangeEventListener {
-        
+class StartCanvas: public RunnableCanvas, public GameCanvasRunnableInterface, public MenuListener, public DisplayChangeEventListener {
 
-    private: static const id: int32_t = 0;
+    private: static const int32_t id = 0;
 
-    private: static const BOT_GAME_STATS: string = "Bot Game Statistics: ";
+    private: static const std::string BOT_GAME_STATS = "Bot Game Statistics: ";
 
-    const basicColorFactory: BasicColorFactory = BasicColorFactory.getInstance()!;
+    protected: const BasicColorFactory basicColorFactory = BasicColorFactory::getInstance();
 
-    const features: Features = Features.getInstance()!;
+    protected: const Features features = Features::getInstance();
 
-    const openGLFeatureFactory: OpenGLFeatureFactory = OpenGLFeatureFactory.getInstance()!;
+    protected: const OpenGLFeatureFactory openGLFeatureFactory = OpenGLFeatureFactory::getInstance();
 
-    const myCommandsFactory: MyCommandsFactory = MyCommandsFactory.getInstance()!;
+    protected: const MyCommandsFactory myCommandsFactory = MyCommandsFactory::getInstance();
 
-    const gameAdStateFactory: GameAdStateFactory = GameAdStateFactory.getInstance()!;
+    protected: const GameAdStateFactory gameAdStateFactory = GameAdStateFactory::getInstance();
 
-    const gameStateFactory: GameStateFactory = GameStateFactory.getInstance()!;
+    protected: const GameStateFactory gameStateFactory = GameStateFactory::getInstance();
 
-    const gameInputStrings: GameInputStrings = GameInputStrings.getInstance()!;
+    protected: const GameInputStrings gameInputStrings = GameInputStrings::getInstance();
 
-    const formUtil: FormUtil = FormUtil.getInstance()!;
+    protected: const FormUtil formUtil = FormUtil::getInstance();
 
-    private: basicGameDemoPaintable: StatePaintable = StatePaintableFactory.getInstance()!;
+    private: StatePaintable basicGameDemoPaintable = StatePaintableFactory::getInstance();
 
-    private: specialAnimationInterface: SpecialAnimation = SpecialAnimation.getInstance()!;
+    private: SpecialAnimation specialAnimationInterface = SpecialAnimation::getInstance();
 
-    paintedSpecialAnimationInterface: Animation = SpecialAnimation.getInstance()!;
+    protected: Animation paintedSpecialAnimationInterface = SpecialAnimation::getInstance();
 
-    private: const fullScreenUtil: FullScreenUtil = FullScreenUtil.getInstance()!;
+    private: const FullScreenUtil fullScreenUtil = FullScreenUtil::getInstance();
 
-    private: const highScoresHelper: HighScoresHelper = new HighScoresHelper();
+    private: const HighScoresHelper highScoresHelper = HighScoresHelper();
 
-    private: const realHighScoresPaintable: HighScoresPaintable = new HighScoresPaintable();
+    private: const HighScoresPaintable realHighScoresPaintable = HighScoresPaintable();
 
-    private: highScoresPaintable: Paintable = NullPaintable.getInstance()!;
+    private: Paintable highScoresPaintable = NullPaintable::getInstance();
 
-    private: state: int32_t = 0;
+    private: int32_t state = 0;
 
-    private: const timeDelayHelper: TimeDelayHelper = new TimeDelayHelper(6000);
+    private: const TimeDelayHelper timeDelayHelper = TimeDelayHelper(6000);
 
-    private: const highScoresFactoryInterface: HighScoresFactoryInterface;
+    private: HighScoresFactoryInterface highScoresFactoryInterface;
 
-    private: menuInputProcessor: BasicMenuInputProcessor = NoMenuInputProcessor.getInstance()!;
+    private: BasicMenuInputProcessor menuInputProcessor = NoMenuInputProcessor::getInstance();
 
-    private: menuForm: ScrollSelectionForm = ScrollSelectionForm.getNullScrollSelectionForm()!;
+    private: ScrollSelectionForm menuForm = ScrollSelectionForm::getNullScrollSelectionForm();
 
-    private: const gameInitializationInterfaceFactoryInterface: BasicBuildGameInitializerFactory;
+    private: BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface;
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-    private: defaultPaintableInterface: Paintable = NullPaintable.getInstance()!;
+    private: Paintable defaultPaintableInterface = NullPaintable::getInstance();
 
-    private: paintableInterface: PaintableInterface = NullPaintable.getInstance()!;
+    private: PaintableInterface paintableInterface = NullPaintable::getInstance();
 
-    private: const overlayPaintable: InitUpdatePaintable;
+    private: InitUpdatePaintable overlayPaintable;
 
-    private: tempWait: int32_t = NullWaitGameRunnable.getInstance()!.WAIT;
+    private: int32_t tempWait = NullWaitGameRunnable::getInstance().WAIT;
 
-    private: const inputToGameKeyMapping: InputToGameKeyMapping = PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!.getInputMapping()!;
+    private: const InputToGameKeyMapping inputToGameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance().getInputMapping();
 
-    gameRunnable: GameRunnable = NullWaitGameRunnable.getInstance()!;
+    protected: GameRunnable gameRunnable = NullWaitGameRunnable::getInstance();
 
-    private: progressPaintable: PaintableInterface = ProgressCanvasFactory.getLazyInstance()!;
+    private: PaintableInterface progressPaintable = ProgressCanvasFactory::getLazyInstance();
 
-public constructor (AbeClientInformationInterface abeClientInformation, CommandListener commandListener, HighScoresFactoryInterface highScoresFactoryInterface, Paintable paintable, InitUpdatePaintable overlayPaintable, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool isContinue);
+public: StartCanvas(AbeClientInformationInterface abeClientInformation, CommandListener commandListener, HighScoresFactoryInterface highScoresFactoryInterface, Paintable paintable, InitUpdatePaintable overlayPaintable, BasicBuildGameInitializerFactory gameInitializationInterfaceFactoryInterface, bool isContinue);
 
-    public onEvent(AllBinaryEventObject eventObject);
+    public: void onEvent(AllBinaryEventObject eventObject);
 
-    public onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
+    public: void onDisplayChangeEvent(DisplayChangeEvent displayChangeEvent);
 
-    std::vector<any> getCustomCommands();
+    protected: std::vector<Object*> getCustomCommands();
 
-    public initCommands(CommandListener cmdListener);
-
-                //@Throws(Exception.constructor)
-            
-    public initPostPaint();
+    public: void initCommands(CommandListener cmdListener);
 
                 //@Throws(Exception.constructor)
             
-    public mediaInit();
-
-    public itemStateChanged(Item item);
+    public: void initPostPaint();
 
                 //@Throws(Exception.constructor)
             
-    initMenu();
+    public: void mediaInit();
 
-    public open();
+    public: void itemStateChanged(Item item);
 
-    public close();
+                //@Throws(Exception.constructor)
+            
+    protected: void initMenu();
 
-    public int32_t getSourceId();
+    public: void open();
 
-    public keyPressed(int32_t keyCode);
+    public: void close();
 
-    public keyReleased(int32_t keyCode);
+    public: int32_t getSourceId();
 
-    public keyRepeated(int32_t keyCode);
+    public: void keyPressed(int32_t keyCode);
 
-    public keyPressedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyReleased(int32_t keyCode);
 
-    public keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyRepeated(int32_t keyCode);
 
-    private: isSingleKeyRepeatableProcessing: bool = this.features.isFeature(InputFeatureFactory.getInstance()!.SINGLE_KEY_REPEAT_PRESS)!;
+    public: void keyPressedByDevice(int32_t keyCode, int32_t deviceId);
 
-    public keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
+    public: void keyReleasedByDevice(int32_t keyCode, int32_t deviceId);
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: bool isSingleKeyRepeatableProcessing = this->features.isFeature(InputFeatureFactory::getInstance().SINGLE_KEY_REPEAT_PRESS);
 
-    private: const gameKeyEventFactory: GameKeyEventFactory = GameKeyEventFactory.getInstance()!;
+    public: void keyRepeatedByDevice(int32_t keyCode, int32_t deviceId);
 
-    addGameKeyEvent(int32_t keyCode, bool repeated);
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-    removeGameKeyEvent(int32_t keyCode, bool repeated);
+    private: const GameKeyEventFactory gameKeyEventFactory = GameKeyEventFactory::getInstance();
+
+    private: void addGameKeyEvent(int32_t keyCode, bool repeated);
+
+    private: void removeGameKeyEvent(int32_t keyCode, bool repeated);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public pause();
+    public: void pause();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public unPause();
+    public: void unPause();
 
-    public bool isPausable();
+    public: bool isPausable();
 
-    public bool isGameOver();
-
-                //@Throws(Exception.constructor)
-            
-    public setLoadStateHashtable(Hashtable<any, any> hashtable);
+    public: bool isGameOver();
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getLoadStateHashtable();
+    public: void setLoadStateHashtable(Hashtable<any, any> hashtable);
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getCurrentStateHashtable();
+    public: Hashtable<any, any> getLoadStateHashtable();
 
-    public setHighScoreSubmitted(bool isNotUsed);
+                //@Throws(Exception.constructor)
+            
+    public: Hashtable<any, any> getCurrentStateHashtable();
 
-    public paint(Graphics graphics);
+    public: void setHighScoreSubmitted(bool isNotUsed);
 
-    public paintThreed(Graphics graphics);
+    public: void paint(Graphics graphics);
+
+    public: void paintThreed(Graphics graphics);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public processGameOver();
+    public: void processGameOver();
 
-    demoStateChange();
+    protected: void demoStateChange();
 
-    private: const SET_STATE: string = "setState";
+    private: const std::string SET_STATE = "setState";
 
-    updateDemoState();
-
-                //@Throws(Exception.constructor)
-            
-    int32_t getNextRandom();
+    protected: void updateDemoState();
 
                 //@Throws(Exception.constructor)
             
-    AllBinaryGameLayerManager createGameLayerManager(int32_t randomValue);
+    protected: int32_t getNextRandom();
 
                 //@Throws(Exception.constructor)
             
-    GameCanvasRunnableInterface createRunnable(int32_t randomLevel);
+    protected: AllBinaryGameLayerManager createGameLayerManager(int32_t randomValue);
 
                 //@Throws(Exception.constructor)
             
-    createCanvas();
+    protected: GameCanvasRunnableInterface createRunnable(int32_t randomLevel);
 
                 //@Throws(Exception.constructor)
             
-    start();
-
-    public preDemoProcess();
+    protected: void createCanvas();
 
                 //@Throws(Exception.constructor)
             
-    public process();
+    protected: void start();
+
+    public: void preDemoProcess();
 
                 //@Throws(Exception.constructor)
             
-    startDemoGame();
+    public: void process();
 
                 //@Throws(Exception.constructor)
             
-    processGame();
-
-    public run();
-
-    public setRunning(bool running);
-
-    private: const baseGameStatistics: BaseGameStatistics = GameStatisticsFactory.getInstance()!;
+    protected: void startDemoGame();
 
                 //@Throws(Exception.constructor)
             
-    public end();
+    protected: void processGame();
 
-    public setGameState(GameState gameState);
+    public: void run();
 
-    public GameState getGameState();
+    public: void setRunning(bool running);
 
-    int32_t getState();
+    private: const BaseGameStatistics baseGameStatistics = GameStatisticsFactory::getInstance();
 
-    setState(int32_t state);
+                //@Throws(Exception.constructor)
+            
+    public: void end();
 
-    public bool isHighScoreSubmitted();
+    public: void setGameState(GameState gameState);
 
-    public HighScoresPaintable getRealHighScoresPaintable();
+    public: GameState getGameState();
 
-    setSpecialAnimationInterface(SpecialAnimation specialAnimationInterface);
+    protected: int32_t getState();
 
-    SpecialAnimation getSpecialAnimationInterface();
+    protected: void setState(int32_t state);
 
-    setPaintableInterface(PaintableInterface paintableInterface);
+    public: bool isHighScoreSubmitted();
 
-    PaintableInterface getPaintableInterface();
+    public: HighScoresPaintable getRealHighScoresPaintable();
 
-    setDefaultPaintableInterface(Paintable defaultPaintableInterface);
+    protected: void setSpecialAnimationInterface(SpecialAnimation specialAnimationInterface);
 
-    Paintable getDefaultPaintableInterface();
+    protected: SpecialAnimation getSpecialAnimationInterface();
 
-    public HighScoresFactoryInterface getHighScoresFactoryInterface();
+    protected: void setPaintableInterface(PaintableInterface paintableInterface);
 
-    setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor);
+    protected: PaintableInterface getPaintableInterface();
 
-    BasicMenuInputProcessor getMenuInputProcessor();
+    protected: void setDefaultPaintableInterface(Paintable defaultPaintableInterface);
 
-    public ScrollSelectionForm getMenuForm();
+    protected: Paintable getDefaultPaintableInterface();
 
-    public setMenuForm(ScrollSelectionForm menuForm);
+    public: HighScoresFactoryInterface getHighScoresFactoryInterface();
 
-    public bool isInitialized();
+    protected: void setMenuInputProcessor(BasicMenuInputProcessor menuInputProcessor);
 
-    Paintable getOverlayPaintable();
+    protected: BasicMenuInputProcessor getMenuInputProcessor();
 
-    setBasicGameDemoPaintable(StatePaintable basicGameDemoPaintable);
+    public: ScrollSelectionForm getMenuForm();
 
-    StatePaintable getBasicGameDemoPaintable();
+    public: void setMenuForm(ScrollSelectionForm menuForm);
 
-    public setTempWait(int32_t tempWait);
+    public: bool isInitialized();
 
-    public int32_t getTempWait();
+    protected: Paintable getOverlayPaintable();
 
-    public bool isSingleThread();
+    protected: void setBasicGameDemoPaintable(StatePaintable basicGameDemoPaintable);
 
-    public bool isRunningInAnotherThread();
+    protected: StatePaintable getBasicGameDemoPaintable();
 
-    public BasicBuildGameInitializerFactory getGameInitializationInterfaceFactoryInterface();
+    public: void setTempWait(int32_t tempWait);
+
+    public: int32_t getTempWait();
+
+    public: bool isSingleThread();
+
+    public: bool isRunningInAnotherThread();
+
+    public: BasicBuildGameInitializerFactory getGameInitializationInterfaceFactoryInterface();
 
 };
 

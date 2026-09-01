@@ -69,14 +69,13 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class UsersView: public HttpStoreComponentView: public DomNodeInterface {
-        
+class UsersView: public HttpStoreComponentView, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    userVector: Vector;
+    protected: Vector userVector;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: UsersView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -85,41 +84,41 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
         try {
             
-    usersNode: Node = document.createElement(UsersData.NAME)!;;
+    Node usersNode = document.createElement(UsersData::NAME);;
     
 
-    size: int32_t = this.userVector!.length!;;
+    int32_t size = this->userVector.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    userInterface: User = this.userVector!.get(index) as User;;
+    User userInterface = this->userVector.get(index) as User;;
     
 
                         if(userInterface != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    node: Node = new UserDomNode(userInterface).toXmlNode(document)!;;
+    Node node = UserDomNode(userInterface).toXmlNode(document);;
     
-usersNode!.appendChild(node);
+usersNode.appendChild(node);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF("UserHelper", this, "toXmlNode");
+                            this->logUtil.putF("UserHelper", this, "toXmlNode");
     
 
                         }
@@ -137,10 +136,10 @@ usersNode!.appendChild(node);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.XSLLOGGINGERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().XSLLOGGINGERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.FAILURE, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.FAILURE, this, "toXmlNode", e);
     
 
                                     }
@@ -156,18 +155,18 @@ usersNode!.appendChild(node);
 }
 
 
-    public addDomNodeInterfaces(){
-this.addDomNodeInterface(this as DomNodeInterface);
+    public: void addDomNodeInterfaces(){
+this->addDomNodeInterface(this as DomNodeInterface);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
-            this.addDomNodeInterfaces();
+            this->addDomNodeInterfaces();
     
 
 
@@ -180,10 +179,10 @@ this.addDomNodeInterface(this as DomNodeInterface);
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view()", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view()", e);
     
 
                                     }

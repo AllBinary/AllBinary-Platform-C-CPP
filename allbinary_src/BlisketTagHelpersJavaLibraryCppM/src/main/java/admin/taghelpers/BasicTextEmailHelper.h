@@ -74,19 +74,18 @@
         #include "TagHelper.h"
 
 class BasicTextEmailHelper: public TagHelper {
-        
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: hashMap: HashMap<any, any>;
+    private: HashMap<any, any> hashMap;
 
-    private: pageContext: PageContext;
+    private: PageContext pageContext;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: BasicTextEmailHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
                 //@Throws(Exception.constructor)
             
-    public send();
+    public: void send();
 
 };
 

@@ -66,17 +66,16 @@
 #include "ExitRunnable.h"
 //SWTForJ2ME
 class ProgressMidlet: public AllBinaryMidlet {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const abeClientInformation: AbeClientInformationInterface;
+    public: AbeClientInformationInterface abeClientInformation;
 
-public constructor (ClientInformationFactory clientInformationFactory);
+public: ProgressMidlet(ClientInformationFactory clientInformationFactory);
 
-    public preInit();
+    public: void preInit();
 
-    exitProgress(bool isProgress);
+    protected: void exitProgress(bool isProgress);
 
 };
 

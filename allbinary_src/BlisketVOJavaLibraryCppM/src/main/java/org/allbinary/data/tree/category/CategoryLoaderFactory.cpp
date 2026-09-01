@@ -55,11 +55,10 @@
 class CategoryLoaderFactory
             : public Object
          {
-        
 
-    public static CategoryLoaderInterface getInstance(CategoryFactoryInterface categoryFactoryInterface){
+    public: static CategoryLoaderInterface getInstance(CategoryFactoryInterface categoryFactoryInterface){
 
-    logUtil: LogUtil = LogUtil.getInstance()!;;
+    LogUtil logUtil = LogUtil::getInstance();;
     
 
         try {
@@ -67,20 +66,20 @@ class CategoryLoaderFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new CategoryLoader(categoryFactoryInterface);
+                        return CategoryLoader(categoryFactoryInterface);
     
 
                 //: 
 } catch(e) 
             {
 
-    commonStrings: CommonStrings = CommonStrings.getInstance()!;;
+    CommonStrings commonStrings = CommonStrings::getInstance();;
     
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.ENTITYFACTORYERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().ENTITYFACTORYERROR))
                         
                                     {
-                                    logUtil!.put(commonStrings!.EXCEPTION, "CategoryNodeFactory", commonStrings!.GET_INSTANCE, e);
+                                    logUtil.put(commonStrings.EXCEPTION, "CategoryNodeFactory", commonStrings.GET_INSTANCE, e);
     
 
                                     }
@@ -96,10 +95,8 @@ class CategoryLoaderFactory
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: CategoryLoaderFactory(){
+}
 
 
 };

@@ -49,16 +49,15 @@
 class AcceptableResponseUtil
             : public Object
          {
-        
 
-    private: static const instance: AcceptableResponseUtil = new AcceptableResponseUtil();
+    private: static AcceptableResponseUtil instance() { return AcceptableResponseUtil(); }
 
-    public static AcceptableResponseUtil getInstance(){
+    public: static AcceptableResponseUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AcceptableResponseUtil.instance;
+                        return AcceptableResponseUtil::instance();
     
 }
 
@@ -66,43 +65,43 @@ class AcceptableResponseUtil
                     static int32_t initResult = AcceptableResponseUtil::init();
                 static int32_t init() { 
                     
-TsUtil.getInstance()!.hashCode(AcceptableResponseFactory.getInstance()!.HTML);
+TsUtil::getInstance().hashCode(AcceptableResponseFactory::getInstance().HTML);
     
 
 
                     return 0;
                 }
             
-    public const candidateVector: Vector = new Vector();
+    public: const Vector candidateVector = Vector();
 
-    public const tagNameVector: Vector = new Vector();
+    public: const Vector tagNameVector = Vector();
 
-    public string get(int32_t index){
+    public: std::string get(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.candidateVector!.get(index) as string;
+                        return this->candidateVector.get(index) as string;
     
 }
 
 
-    public string getTagName(int32_t index){
+    public: std::string getTagName(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.tagNameVector!.get(index) as string;
+                        return this->tagNameVector.get(index) as string;
     
 }
 
 
-    public int32_t size(){
+    public: int32_t size(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.candidateVector!.length;;
+                        return this->candidateVector.length;;
     
 }
 

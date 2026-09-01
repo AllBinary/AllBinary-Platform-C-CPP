@@ -57,15 +57,14 @@
 class AccelerometerSensorFactory
             : public Object
          {
-        
 
-    private: static allBinaryAccelerometerSensor: AllBinaryOrientationSensor = AllBinaryOrientationSensor.NULL_ALLBINARY_ORIENTATION_SENSOR;
+    private: static AllBinaryOrientationSensor allBinaryAccelerometerSensor = AllBinaryOrientationSensor::NULL_ALLBINARY_ORIENTATION_SENSOR;
 
                 //@Throws(Exception.constructor)
             
-    public static init();
+    public: static void init();
 
-    public static AllBinaryOrientationSensor getInstance();
+    public: static AllBinaryOrientationSensor getInstance();
 
 };
 

@@ -48,9 +48,8 @@
         #include "Paintable.h"
 
 class ProcessPaintable: public Paintable {
-        
 
-    public process();
+    public: void process();
 
 };
 

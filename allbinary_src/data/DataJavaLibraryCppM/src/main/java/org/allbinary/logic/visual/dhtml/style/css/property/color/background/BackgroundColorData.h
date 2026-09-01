@@ -45,15 +45,14 @@
 class BackgroundColorData
             : public Object
          {
-        
 
-    private: static const instance: BackgroundColorData = new BackgroundColorData();
+    private: static BackgroundColorData instance() { return BackgroundColorData(); }
 
-    public static BackgroundColorData getInstance();
+    public: static BackgroundColorData getInstance();
 
-private constructor ();
+private: BackgroundColorData();
 
-    public const VALUE: string = "background-color";
+    public: const std::string VALUE = "background-color";
 
 };
 

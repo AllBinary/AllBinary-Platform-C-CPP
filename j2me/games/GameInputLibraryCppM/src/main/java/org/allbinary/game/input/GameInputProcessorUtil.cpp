@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 
@@ -44,28 +46,27 @@
 class GameInputProcessorUtil
             : public Object
          {
-        
 
-    public static init(std::vector<GameInputProcessor> inputProcessorArray){
+    public: static void init(std::vector<GameInputProcessor> inputProcessorArray){
 
-    noInputProcessor: GameInputProcessor = GameInputProcessor.getInstance()!;;
+    GameInputProcessor noInputProcessor = GameInputProcessor::getInstance();;
     
 
-    total: int32_t = InputFactory.getInstance()!.MAX;;
+    int32_t total = InputFactory::getInstance().MAX;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < total; index++)
+    int32_t index = 0;index < total; index++)
         {
 
-    inputProcessorCanBeNull: GameInputProcessor = inputProcessorArray[index];;
+    GameInputProcessor inputProcessorCanBeNull = inputProcessorArray[index];;
     
 
                         if(inputProcessorCanBeNull == 
-                                    null
+                                    nullptr
                                 )
                         
                                     {

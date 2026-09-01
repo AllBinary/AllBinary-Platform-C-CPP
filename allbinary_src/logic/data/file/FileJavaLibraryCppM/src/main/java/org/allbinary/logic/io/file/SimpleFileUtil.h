@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_SIMPLEFILEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -91,35 +93,34 @@
 class SimpleFileUtil
             : public Object
          {
-        
 
-    private: static const instance: SimpleFileUtil = new SimpleFileUtil();
+    private: static SimpleFileUtil instance() { return SimpleFileUtil(); }
 
-    public static SimpleFileUtil getInstance();
+    public: static SimpleFileUtil getInstance();
 
-    public static OutputStream nullOutputStream();
+    public: static OutputStream nullOutputStream();
 
-    public static Writer nullWriter();
+    public: static Writer nullWriter();
 
-    public static Reader nullReader();
+    public: static Reader nullReader();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const NULL_WRITER: Writer = SimpleFileUtil.nullWriter()!;
+    public: const Writer NULL_WRITER = SimpleFileUtil::nullWriter();
 
-    public const NULL_READER: Reader = SimpleFileUtil.nullReader()!;
+    public: const Reader NULL_READER = SimpleFileUtil::nullReader();
 
-    private: const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    private: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const nullUtil: NullUtil = NullUtil.getInstance()!;
+    private: const NullUtil nullUtil = NullUtil::getInstance();
 
-    private: const streamUtil: StreamUtil = StreamUtil.getInstance()!;
+    private: const StreamUtil streamUtil = StreamUtil::getInstance();
 
-    public BasicArrayList loadFileAsList(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1);
+    public: BasicArrayList loadFileAsList(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1);
 
-    public BasicArrayList loadFileAsListReturnLine(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine);
+    public: BasicArrayList loadFileAsListReturnLine(InputStream inputStream, int32_t max, std::vector<int8_t> byteArray1, int32_t includeReturnLine);
 
-    public string createStringFromArrayOfStrings(std::vector<string> stringArray);
+    public: std::string createStringFromArrayOfStrings(std::vector<std::string> stringArray);
 
 };
 

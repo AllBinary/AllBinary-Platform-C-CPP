@@ -54,11 +54,10 @@
 class OrderItemsEntityFactory
             : public Object
          {
-        
 
-    public static OrderItemsEntity getInstance();
+    public: static OrderItemsEntity getInstance();
 
-private constructor ();
+private: OrderItemsEntityFactory();
 
 };
 

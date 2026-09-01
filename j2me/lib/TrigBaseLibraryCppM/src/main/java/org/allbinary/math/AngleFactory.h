@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MATH_ANGLEFACTORY_H
         #define ORG_ALLBINARY_MATH_ANGLEFACTORY_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/RuntimeException.h"
@@ -77,43 +79,42 @@
 class AngleFactory
             : public Object
          {
-        
 
-    private: static const instance: AngleFactory = new AngleFactory();
+    private: static AngleFactory instance() { return AngleFactory(); }
 
-    public static AngleFactory getInstance();
+    public: static AngleFactory getInstance();
 
-    public static main(std::vector<string> args);
+    public: static void main(std::vector<std::string> args);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public const TOTAL_ANGLE: int16_t = 360;
+    public: const int16_t TOTAL_ANGLE = 360;
 
-    public const QUARTER_TOTAL_ANGLE: int16_t = 90;
+    public: const int16_t QUARTER_TOTAL_ANGLE = 90;
 
-    private: const angleArray: std::vector<Angle> = new Array(static_cast<int32_t>(this.TOTAL_ANGLE));
+    private: const std::vector<Angle> angleArray = new Array(static_cast<int32_t>(this->TOTAL_ANGLE));
 
-    private: const NEGATIVE_ONE: int16_t =  -1;
+    private: const int16_t NEGATIVE_ONE =  -1;
 
-    public const NOT_ANGLE: NamedAngle = new NamedAngle(this.NEGATIVE_ONE, CommonStrings.getInstance()!.EMPTY);
+    public: const NamedAngle NOT_ANGLE = NamedAngle(this->NEGATIVE_ONE, CommonStrings::getInstance().EMPTY);
 
-    public const DOWN: NamedAngle;
+    public: NamedAngle DOWN;
 
-    public const UP: NamedAngle;
+    public: NamedAngle UP;
 
-    public const LEFT: NamedAngle;
+    public: NamedAngle LEFT;
 
-    public const RIGHT: NamedAngle;
+    public: NamedAngle RIGHT;
 
-public constructor ();
+public: AngleFactory();
 
-    private: const frameUtil: FrameUtil = FrameUtil.getInstance()!;
+    private: const FrameUtil frameUtil = FrameUtil::getInstance();
 
-    public Angle getAt(int32_t index);
+    public: Angle getAt(int32_t index);
 
-    public Angle getClosestDirection(int32_t angle);
+    public: Angle getClosestDirection(int32_t angle);
 
-    public Angle getGeneralDirection();
+    public: Angle getGeneralDirection();
 
 };
 

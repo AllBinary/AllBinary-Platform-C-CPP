@@ -21,6 +21,8 @@
         #ifndef ADMIN_TAGHELPERS_AUTHENTICATIONREQUESTHELPER_H
         #define ADMIN_TAGHELPERS_AUTHENTICATIONREQUESTHELPER_H
 
+            #include <vector>
+        
             #include "../../java/lang/Exception.h"
         
 #include <java/util/HashMap.h>
@@ -101,29 +103,28 @@
         #include "TagHelper.h"
 
 class AuthenticationRequestHelper: public TagHelper {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abeClientInformation: AbeClientInformationInterface = ServiceClientInformationInterfaceFactory.getInstance()!;
+    private: const AbeClientInformationInterface abeClientInformation = ServiceClientInformationInterfaceFactory::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: AuthenticationRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-public constructor (HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
+public: AuthenticationRequestHelper(HashMap<any, any> hashMap, HttpServletRequest httpServletRequest);
 
                 //@Throws(Exception.constructor)
             
-    string generateNewPassword();
+    private: std::string generateNewPassword();
 
-    public Boolean newPassword();
+    public: Boolean newPassword();
 
-    public Boolean changePassword();
+    public: Boolean changePassword();
 
-    public Boolean isRoleValid(string userName, string password, Vector roles);
+    public: Boolean isRoleValid(std::string userName, std::string password, Vector roles);
 
 };
 

@@ -42,14 +42,11 @@
 class GroupData
             : public Object
          {
-        
 
-    public static const NAME: string = "GROUP_NAME";
+    public: static const std::string NAME = "GROUP_NAME";
 
-public constructor (){
-
-            super();
-        }
+public: GroupData(){
+}
 
 
 };

@@ -50,17 +50,16 @@
 class LogBuffer
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    logEntryVector: Vector;
+    Vector logEntryVector;
 
-public constructor ();
+public: LogBuffer();
 
-    public add(Log log);
+    public: void add(Log log);
 
-    public logAll();
+    public: void logAll();
 
 };
 

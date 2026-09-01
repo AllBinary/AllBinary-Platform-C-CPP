@@ -55,11 +55,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class ArtificialIntelligenceInterface: public IdentifierInterface {
-        
 
                 //@Throws(Exception.constructor)
             
-    processAI(AllBinaryLayerManager layerManager);
+    void processAI(AllBinaryLayerManager layerManager);
 
 };
 

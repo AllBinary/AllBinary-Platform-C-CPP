@@ -46,17 +46,16 @@
 #include "AllBinaryNoVibration.h"
 
 class AllBinaryVibration: public AllBinaryVibrationME {
-        
 
-    private: static VIBRATION: AllBinaryVibrationME = AllBinaryNoVibration.NO_VIBRATION;
+    private: static AllBinaryVibrationME VIBRATION = AllBinaryNoVibration::NO_VIBRATION;
 
-    public static AllBinaryVibrationME getInstance();
+    public: static AllBinaryVibrationME getInstance();
 
-    public static init();
+    public: static void init();
 
-private constructor ();
+private: AllBinaryVibration();
 
-    public vibrate(int32_t duration, int32_t type, int32_t volume);
+    public: void vibrate(int32_t duration, int32_t type, int32_t volume);
 
 };
 

@@ -63,23 +63,22 @@
 class MyCommandsFactory
             : public Object
          {
-        
 
-    private: static const instance: MyCommandsFactory = new MyCommandsFactory();
+    private: static MyCommandsFactory instance() { return MyCommandsFactory(); }
 
-    public static MyCommandsFactory getInstance();
+    public: static MyCommandsFactory getInstance();
 
-    public const NO_COMMAND: Command = new Command(StringUtil.getInstance()!.EMPTY_STRING, StringUtil.getInstance()!.EMPTY_STRING,  -1,  -1);
+    public: const Command NO_COMMAND = Command(StringUtil::getInstance().EMPTY_STRING, StringUtil::getInstance().EMPTY_STRING,  -1,  -1);
 
-    public const GAUGE_CHANGE: Command = new Command("GAUGE_CHANGE", StringUtil.getInstance()!.EMPTY_STRING, Command.ITEM, 1);
+    public: const Command GAUGE_CHANGE = Command("GAUGE_CHANGE", StringUtil::getInstance().EMPTY_STRING, Command::ITEM, 1);
 
-    public const SET_DISPLAYABLE: Command = new Command("Display", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 2);
+    public: const Command SET_DISPLAYABLE = Command("Display", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 2);
 
-    public const PAUSE_COMMAND: Command = new Command("Pause", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 0);
+    public: const Command PAUSE_COMMAND = Command("Pause", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 0);
 
-    public const RESUME_COMMAND: Command = new Command("Resume", StringUtil.getInstance()!.EMPTY_STRING, Command.SCREEN, 0);
+    public: const Command RESUME_COMMAND = Command("Resume", StringUtil::getInstance().EMPTY_STRING, Command::SCREEN, 0);
 
-protected constructor ();
+protected: MyCommandsFactory();
 
 };
 

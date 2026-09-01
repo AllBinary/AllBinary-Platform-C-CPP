@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_H
         #define ORG_ALLBINARY_LOGIC_MATH_SMALLINTEGERSINGLETONFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -70,41 +72,40 @@
 class SmallIntegerSingletonFactory
             : public Object
          {
-        
 
-    private: static const instance: SmallIntegerSingletonFactory = new SmallIntegerSingletonFactory();
+    private: static SmallIntegerSingletonFactory instance() { return SmallIntegerSingletonFactory(); }
 
-    public static SmallIntegerSingletonFactory getInstance();
+    public: static SmallIntegerSingletonFactory getInstance();
 
-    public const NEGATIVE_MAX: int32_t = 500;
+    public: const int32_t NEGATIVE_MAX = 500;
 
-    public const POSITIVE_MAX: int32_t = 0x2D1;
+    public: const int32_t POSITIVE_MAX = 0x2D1;
 
-    private: const INTEGER_ARRAY: std::vector<Integer> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<Integer> INTEGER_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: const STRING_ARRAY: std::vector<string> = new Array(this.NEGATIVE_MAX +this.POSITIVE_MAX);
+    private: const std::vector<std::string> STRING_ARRAY = new Array(this->NEGATIVE_MAX +this->POSITIVE_MAX);
 
-    private: MIN: int32_t = 0;
+    private: int32_t MIN = 0;
 
-    private: lastMin: int32_t = 0;
+    private: int32_t lastMin = 0;
 
-    private: lastNegativeMin: int32_t = 0;
+    private: int32_t lastNegativeMin = 0;
 
-    public int32_t getMin();
+    public: int32_t getMin();
 
-    public initWithRange(int32_t value, int32_t negativeValue);
+    public: void initWithRange(int32_t value, int32_t negativeValue);
 
-    public init();
+    public: void init();
 
-private constructor ();
+private: SmallIntegerSingletonFactory();
 
-    public Integer getAt(int32_t index);
+    public: Integer getAt(int32_t index);
 
-    public Integer getAtNoThrow(int32_t index);
+    public: Integer getAtNoThrow(int32_t index);
 
-    public Integer createInstance(int32_t index);
+    public: Integer createInstance(int32_t index);
 
-    public string getString(int32_t index);
+    public: std::string getString(int32_t index);
 
 };
 

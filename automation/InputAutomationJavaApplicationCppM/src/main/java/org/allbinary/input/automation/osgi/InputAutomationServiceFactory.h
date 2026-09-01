@@ -63,21 +63,20 @@
 class InputAutomationServiceFactory
             : public Object
         : public ServiceFactory {
-        
 
-    private: static const inputAutomationServiceFactory: InputAutomationServiceFactory = new InputAutomationServiceFactory();
+    private: static const InputAutomationServiceFactory inputAutomationServiceFactory = InputAutomationServiceFactory();
 
-    public static InputAutomationServiceFactory getInstance();
+    public: static InputAutomationServiceFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-private constructor ();
+private: InputAutomationServiceFactory();
 
-    public any getService(Bundle bundle, ServiceRegistration registration);
+    public: Object* getService(Bundle bundle, ServiceRegistration registration);
 
-    public ungetService(Bundle bundle, ServiceRegistration registration, any = {} service);
+    public: void ungetService(Bundle bundle, ServiceRegistration registration, Object* service);
 
 };
 

@@ -46,11 +46,10 @@
 class NoButtonsTouchInputFactory
             : public Object
          {
-        
 
-    private: static const instance: BaseTouchInput = new BaseTouchInput();
+    private: static BaseTouchInput instance() { return BaseTouchInput(); }
 
-    public static BaseTouchInput getInstance();
+    public: static BaseTouchInput getInstance();
 
 };
 

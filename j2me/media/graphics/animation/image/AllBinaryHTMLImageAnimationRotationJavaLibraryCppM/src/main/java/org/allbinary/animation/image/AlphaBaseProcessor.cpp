@@ -48,21 +48,20 @@
 class AlphaBaseProcessor
             : public Object
          {
-        
 
-    private: static const instance: AlphaBaseProcessor = new AlphaBaseProcessor();
+    private: static AlphaBaseProcessor instance() { return AlphaBaseProcessor(); }
 
-    public static AlphaBaseProcessor getInstance(){
+    public: static AlphaBaseProcessor getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AlphaBaseProcessor.instance;
+                        return AlphaBaseProcessor::instance();
     
 }
 
 
-    public setAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t alpha){
+    public: void setAlpha(ImageModifierUtil imageModifierUtil, Image originalImage, Image imageToShow, int32_t alpha){
 }
 
 

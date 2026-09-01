@@ -109,46 +109,45 @@
 #include "ColorAtActionScriptConditionData.h"
 #include "Color.h"
 
-class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition: public ColorAtActionScriptConditionInterface {
-        
+class ColorAtActionScriptCondition: public BasicProfileActionScriptCondition, public ColorAtActionScriptConditionInterface {
 
-    private: static const NAME: string = "If Color At";
+    private: static const std::string NAME = "If Color At";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: colorAtActionScriptConditionJPanel: ColorAtActionScriptConditionJPanel;
+    private: ColorAtActionScriptConditionJPanel colorAtActionScriptConditionJPanel;
 
-    private: point: Point;
+    private: Point point;
 
-    private: colorRangeInterface: ColorRangeInterface = new ColorRange() as ColorRangeInterface;
+    private: ColorRangeInterface colorRangeInterface = ColorRange() as ColorRangeInterface;
 
-public constructor (Node node);
+public: ColorAtActionScriptCondition(Node node);
 
-public constructor ();
+public: ColorAtActionScriptCondition();
 
-    init();
+    private: void init();
 
-    public Point getPoint();
+    public: Point getPoint();
 
-    public setPoint(Point point);
+    public: void setPoint(Point point);
 
-    public showDialog();
+    public: void showDialog();
 
-    public HashMap<any, any> toHashMap();
-
-                //@Throws(Exception.constructor)
-            
-    public Node toXmlNode(Document document);
+    public: HashMap<any, any> toHashMap();
 
                 //@Throws(Exception.constructor)
             
-    public bool shouldProcess(int64_t frame);
+    public: Node toXmlNode(Document document);
 
-    public log();
+                //@Throws(Exception.constructor)
+            
+    public: bool shouldProcess(int64_t frame);
 
-    public ColorRangeInterface getColorRangeInterface();
+    public: void log();
 
-    public setColorRangeInterface(ColorRangeInterface colorRangeInterface);
+    public: ColorRangeInterface getColorRangeInterface();
+
+    public: void setColorRangeInterface(ColorRangeInterface colorRangeInterface);
 
 };
 

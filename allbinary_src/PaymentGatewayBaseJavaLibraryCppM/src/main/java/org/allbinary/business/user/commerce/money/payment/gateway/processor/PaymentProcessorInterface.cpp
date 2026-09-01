@@ -46,11 +46,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class PaymentProcessorInterface: public DomNodeInterface {
-        
 
                 //@Throws(PaymentException.constructor, Exception.constructor)
             
-    process()
+    void process()
 
 };
 

@@ -43,7 +43,6 @@
 #include "ModifyTableInterface.h"
 
 class TableInterface: public BasicTableInterface, public ModifyTableInterface {
-        
 
 };
 

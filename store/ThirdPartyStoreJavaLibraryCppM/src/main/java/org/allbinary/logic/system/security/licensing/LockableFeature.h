@@ -54,13 +54,12 @@
 class LockableFeature
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-public constructor (string name);
+public: LockableFeature(std::string name);
 
-    public string getName();
+    public: std::string getName();
 
 };
 

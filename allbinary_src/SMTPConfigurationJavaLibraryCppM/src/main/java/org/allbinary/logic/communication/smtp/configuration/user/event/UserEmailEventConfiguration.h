@@ -56,27 +56,26 @@
 class UserEmailEventConfiguration
             : public Object
         : public UserEmailEventConfigurationInterface {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: eventListenerClassPath: string;
+    private: std::string eventListenerClassPath;
 
-public constructor ();
+public: UserEmailEventConfiguration();
 
-public constructor (HashMap<any, any> hashMap);
+public: UserEmailEventConfiguration(HashMap<any, any> hashMap);
 
-    public string getName();
+    public: std::string getName();
 
-    public setName(string name);
+    public: void setName(std::string name);
 
-    public string getEventListenerClassPath();
+    public: std::string getEventListenerClassPath();
 
-    public setEventListenerClassPath(string eventListenerClassPath);
+    public: void setEventListenerClassPath(std::string eventListenerClassPath);
 
-    public string log();
+    public: std::string log();
 
 };
 

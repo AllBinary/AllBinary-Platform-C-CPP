@@ -90,43 +90,42 @@
 class BasicPersitance
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    const persistanceStrings: PersistanceStrings = PersistanceStrings.getInstance()!;
+    protected: const PersistanceStrings persistanceStrings = PersistanceStrings::getInstance();
 
-    private: const platformRecordIdUtil: PlatformRecordIdUtil = PlatformRecordIdUtil.getInstance()!;
+    private: const PlatformRecordIdUtil platformRecordIdUtil = PlatformRecordIdUtil::getInstance();
 
-    private: const recordId: string;
+    private: std::string recordId;
 
-    const valueList: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList valueList = BasicArrayListD();
 
-    const idList: BasicArrayList = new BasicArrayListD();
+    protected: const BasicArrayList idList = BasicArrayListD();
 
-protected constructor (string recordId);
-
-                //@Throws(Exception.constructor)
-            
-    public deleteRecoreStore(AbeClientInformationInterface abeClientInformation);
+protected: BasicPersitance(std::string recordId);
 
                 //@Throws(Exception.constructor)
             
-    public deleteAll(AbeClientInformationInterface abeClientInformation);
+    public: void deleteRecoreStore(AbeClientInformationInterface abeClientInformation);
 
                 //@Throws(Exception.constructor)
             
-    public delete(AbeClientInformationInterface abeClientInformation, int32_t deleteId);
+    public: void deleteAll(AbeClientInformationInterface abeClientInformation);
 
-    public string getRecordId(AbeClientInformationInterface abeClientInformation);
+                //@Throws(Exception.constructor)
+            
+    public: void delete_(AbeClientInformationInterface abeClientInformation, int32_t deleteId);
 
-    public BasicArrayList getList();
+    public: std::string getRecordId(AbeClientInformationInterface abeClientInformation);
 
-    public BasicArrayList getIds();
+    public: BasicArrayList getList();
 
-    public clear();
+    public: BasicArrayList getIds();
+
+    public: void clear();
 
 };
 

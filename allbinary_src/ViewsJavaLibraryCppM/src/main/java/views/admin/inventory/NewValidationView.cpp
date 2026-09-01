@@ -61,28 +61,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "InventoryItemView.h"
 
-class NewValidationView: public InventoryItemView: public ValidationComponentInterface {
-        
+class NewValidationView: public InventoryItemView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
-            super(transformInfoInterface, StringUtil.getInstance()!.EMPTY_STRING);
+public: NewValidationView(TransformInfoInterface transformInfoInterface){
+            super(transformInfoInterface, StringUtil::getInstance().EMPTY_STRING);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.itemInterface= new BasicItem() as ItemInterface;
+this->itemInterface= BasicItem() as ItemInterface;
     
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 
                 //: 
@@ -92,14 +91,14 @@ this.itemInterface= new BasicItem() as ItemInterface;
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -109,7 +108,7 @@ this.itemInterface= new BasicItem() as ItemInterface;
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -119,7 +118,7 @@ this.itemInterface= new BasicItem() as ItemInterface;
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 

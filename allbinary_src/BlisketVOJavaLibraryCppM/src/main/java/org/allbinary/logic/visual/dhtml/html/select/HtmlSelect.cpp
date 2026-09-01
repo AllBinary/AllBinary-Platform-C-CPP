@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Vector.h>
@@ -52,75 +54,72 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HtmlSelect: public HtmlTag {
-        
 
-    private: const END: string = ">";
+    private: const std::string END = ">";
 
-    private: const STARTSELECT: string = "<SELECT ";
+    private: const std::string STARTSELECT = "<SELECT ";
 
-    private: const ENDSELECT: string = "</SELECT>";
+    private: const std::string ENDSELECT = "</SELECT>";
 
-    private: const SIZE: string = "SIZE=\"";
+    private: const std::string SIZE = "SIZE=\"";
 
-    private: const NAME: string = "NAME=\"";
+    private: const std::string NAME = "NAME=\"";
 
-    private: const STARTOPTION: string = "<OPTION";
+    private: const std::string STARTOPTION = "<OPTION";
 
-    private: const SELETED: string = "SELECTED";
+    private: const std::string SELETED = "SELECTED";
 
-    private: const ENDOPTION: string = "</OPTION>";
+    private: const std::string ENDOPTION = "</OPTION>";
 
-    private: before: string;
+    private: std::string before;
 
-    private: name: string;
+    private: std::string name;
 
-    private: after: string;
+    private: std::string after;
 
-    private: size: string;
+    private: std::string size;
 
-    private: selected: string;
+    private: std::string selected;
 
-    private: options: Vector;
+    private: Vector options;
 
-    private: multiple: string = "multiple";
+    private: std::string multiple = "multiple";
 
-    private: isMultipleSelect: bool = false;
+    private: bool isMultipleSelect = false;
 
-public constructor (string before, string size, string name, string after){
-
-            super();
-        this.before= before;
+public: HtmlSelect(std::string before, std::string size, std::string name, std::string after){
+this->before= before;
     
-this.size= size;
+this->size= size;
     
-this.name= name;
+this->name= name;
     
-this.after= after;
+this->after= after;
     
-this.options= new Vector();
+this->options= Vector();
     
 }
 
 
-    public addOption(string key){
-this.options.add(key);
+    public: void addOption(std::string key){
+this->options.add(key);
     
 }
 
 
-    public addOptions(string fileName){
+    public: void addOptions(std::string fileName){
 
         try {
             
-    lineReader: LineReader = new LineReader(fileName);;
+    LineReader lineReader = LineReader(fileName);;
     
 
-        while(lineReader!.hasNext())
+        while(lineReader.hasNext())
         {
 
-    option: string = lineReader!.next()!;;
+    std::string option = lineReader.next();;
     
-this.addOption(option);
+this->addOption(option);
     
 }
 
@@ -128,72 +127,69 @@ this.addOption(option);
                 //: 
 } catch(e) 
             {
-this.addOption("Error");
+this->addOption("Error");
     
 }
 
 }
 
 
-    public setSelected(string selected){
-this.selected= selected;
+    public: void setSelected(std::string selected){
+this->selected= selected;
     
 }
 
 
-    public bool isMultiple(){
+    public: bool isMultiple(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.isMultipleSelect;
+                        return this->isMultipleSelect;
     
 }
 
 
-    public setMultiple(bool value){
-this.isMultipleSelect= value;
+    public: void setMultiple(bool value){
+this->isMultipleSelect= value;
     
 }
 
 
-    string getOptions(){
+    private: std::string getOptions(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    result: string = stringUtil!.EMPTY_STRING;;
+    std::string result = stringUtil.EMPTY_STRING;;
     
 
-    optionsArray: std::vector<any> = this.options.toArray()!;;
+    std::vector<Object*> optionsArray = this->options.toArray();;
     
 
-    optionsSize: int32_t = optionsArray!.length
-                ;;
+    int32_t optionsSize = optionsArray.size();;
     
 
 
 
 
                         for (
-    i: int32_t = 0;i < optionsSize; i++)
+    int32_t i = 0;i < optionsSize; i++)
         {
 
-    value: string = optionsArray[i]! as string;;
+    std::string value = optionsArray[i]! as string;;
     
 
-                        if(value != 
-                                    null
-                                 && value.compareTo(stringUtil!.EMPTY_STRING) != 0)
+                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
-                                    result += this.STARTOPTION;
+                                    result += this->STARTOPTION;
     
-result += this.END;
+result += this->END;
     
 result += value;
     
-result += this.ENDOPTION;
+result += this->ENDOPTION;
     
 
                                     }
@@ -209,33 +205,32 @@ result += this.ENDOPTION;
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringUtil: StringUtil = StringUtil.getInstance()!;;
-    
-
-    result: string = stringUtil!.EMPTY_STRING;;
+    StringUtil stringUtil = StringUtil::getInstance();;
     
 
-    attributeKeys: std::vector<any> = this.otherAttributes!.keySet()!.()!;;
+    std::string result = stringUtil.EMPTY_STRING;;
     
 
-    attributeSize: int32_t = attributeKeys!.length
-                ;;
+    std::vector<Object*> attributeKeys = this->otherAttributes.keySet().();;
     
-result= this.before;
+
+    int32_t attributeSize = attributeKeys.size();;
     
-result += this.STARTSELECT;
+result= this->before;
     
-result += this.NAME;
+result += this->STARTSELECT;
     
-result += this.name;
+result += this->NAME;
+    
+result += this->name;
     
 result += "\" ";
     
-result += this.SIZE;
+result += this->SIZE;
     
-result += this.size;
+result += this->size;
     
 result += "\" ";
     
@@ -244,18 +239,16 @@ result += "\" ";
 
 
                         for (
-    i: int32_t = 0;i < attributeSize; i++)
+    int32_t i = 0;i < attributeSize; i++)
         {
 
-    key: string = attributeKeys[i]! as string;;
+    std::string key = attributeKeys[i]! as string;;
     
 
-    value: string = otherAttributes!.get(key) as string;;
+    std::string value = otherAttributes.get(key) as string;;
     
 
-                        if(value != 
-                                    null
-                                 && value.compareTo(stringUtil!.EMPTY_STRING) != 0)
+                        if(true && value.compareTo(stringUtil.EMPTY_STRING) != 0)
                         
                                     {
                                     result += key;
@@ -272,15 +265,16 @@ result += "\" ";
 }
 
 
-                        if(this.isMultiple())
-                        result += " " +this.multiple +" "
-result += this.END;
+                        if(this->isMultiple())
+                        result += " " +this->multiple +" ";
+                                
+result += this->END;
     
-result += this.getOptions();
+result += this->getOptions();
     
-result += this.ENDSELECT;
+result += this->ENDSELECT;
     
-result += this.after;
+result += this->after;
     
 
 

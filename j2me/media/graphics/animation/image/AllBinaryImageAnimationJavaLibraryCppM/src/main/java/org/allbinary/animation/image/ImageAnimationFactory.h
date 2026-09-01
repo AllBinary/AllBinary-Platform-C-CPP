@@ -61,17 +61,16 @@
 #include "AdjustedImageAnimation.h"
 
 class ImageAnimationFactory: public BaseImageAnimationFactory {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static ImageAnimationFactory createFactory(Image image);
+    public: static ImageAnimationFactory createFactory(Image image);
 
-public constructor (Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+public: ImageAnimationFactory(Image image, int32_t width, int32_t height, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
 };
 

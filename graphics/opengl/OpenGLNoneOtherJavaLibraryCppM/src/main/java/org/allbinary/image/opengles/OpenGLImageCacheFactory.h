@@ -51,13 +51,12 @@
 class OpenGLImageCacheFactory
             : public Object
          {
-        
 
-    private: static IMAGE_CACHE: ImageCache = ImageCache.NULL_IMAGE_CACHE;
+    private: static ImageCache IMAGE_CACHE = ImageCache::NULL_IMAGE_CACHE;
 
-    public static ImageCache getInstance();
+    public: static ImageCache getInstance();
 
-    public static init();
+    public: static void init();
 
 };
 

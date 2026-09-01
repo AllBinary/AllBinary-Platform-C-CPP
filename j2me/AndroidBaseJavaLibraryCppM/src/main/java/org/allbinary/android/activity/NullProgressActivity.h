@@ -48,17 +48,16 @@
 class NullProgressActivity
             : public Object
         : public ProgressActivityInterface {
-        
 
-    public static const NULL_PROGRESS_ACTIVITY: NullProgressActivity = new NullProgressActivity();
+    public: static const NullProgressActivity NULL_PROGRESS_ACTIVITY = NullProgressActivity();
 
-    public runOnUiThread(Runnable action);
+    public: void runOnUiThread(Runnable action);
 
-    public onDismissTitleProgressBar();
+    public: void onDismissTitleProgressBar();
 
-    public onShowTitleProgressBar(int32_t value, bool indeterminate);
+    public: void onShowTitleProgressBar(int32_t value, bool indeterminate);
 
-    public onTitleProgressBarSetProgress(int32_t value);
+    public: void onTitleProgressBarSetProgress(int32_t value);
 
 };
 

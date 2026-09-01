@@ -51,10 +51,9 @@
 #include "Document.h"
 #include "Node.h"
 
-class ValidationView: public MiniBasketView: public ValidationComponentInterface {
-        
+class ValidationView: public MiniBasketView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: ValidationView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
@@ -63,17 +62,17 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public org.w3c.dom.Document toValidationInfoDoc(){
+    public: org::w3c::dom::Document toValidationInfoDoc(){
 
 
 
@@ -83,7 +82,7 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public org.w3c.dom.Node toValidationInfoNode(org.w3c.dom.Document document){
+    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document){
 
 
 
@@ -93,12 +92,12 @@ public constructor (TransformInfoInterface transformInfoInterface){
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return MESSAGES.CONTACTADMIN;
+                        return MESSAGES::CONTACTADMIN;
     
 }
 

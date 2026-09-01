@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
         #define ORG_ALLBINARY_GRAPHICS_OPENGLES_SHADER_COMPOSITESHADERUPDATER_H
 
+            #include <vector>
+        
 #include <jsinterop/annotations/JsType.h>
 
       
@@ -70,33 +72,32 @@
 #include "ShaderStrings.h"
 
 class CompositeShaderUpdater: public ShaderUpdater {
-        
 
-    private: static const instanceC: CompositeShaderUpdater = new CompositeShaderUpdater(StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), StringUtil.getInstance()!.getArrayInstance(), NullUtil.getInstance()!.NULL_INT_ARRAY);
+    private: static const CompositeShaderUpdater instanceC = CompositeShaderUpdater(StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), StringUtil::getInstance().getArrayInstance(), NullUtil::getInstance().NULL_INT_ARRAY);
 
-    public static CompositeShaderUpdater getInstance();
+    public: static CompositeShaderUpdater getInstance();
 
-    const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    protected: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    const shaderStrings: ShaderStrings = ShaderStrings.getInstance()!;
+    protected: const ShaderStrings shaderStrings = ShaderStrings::getInstance();
 
-    public const uniformBlockHandleArray: std::vector<int32_t>;
+    public: std::vector<int32_t> uniformBlockHandleArray;
 
-    public const uniformBlockArray: std::vector<string>;
+    public: std::vector<std::string> uniformBlockArray;
 
-    public const uniformHandleArray: std::vector<int32_t>;
+    public: std::vector<int32_t> uniformHandleArray;
 
-    public const uniformArray: std::vector<string>;
+    public: std::vector<std::string> uniformArray;
 
-    public const attributeHandleArray: std::vector<int32_t>;
+    public: std::vector<int32_t> attributeHandleArray;
 
-    public const attributeArray: std::vector<string>;
+    public: std::vector<std::string> attributeArray;
 
-public constructor (std::vector<string> uniformBlockArray, std::vector<string> uniformArray, std::vector<string> attributeArray, std::vector<int32_t> attributeHandleArray);
+public: CompositeShaderUpdater(std::vector<std::string> uniformBlockArray, std::vector<std::string> uniformArray, std::vector<std::string> attributeArray, std::vector<int32_t> attributeHandleArray);
 
-    public onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle);
+    public: void onSurfaceCreated(GL10 gl, EGLConfig eglConfig, int32_t programHandle);
 
-    public onSurfaceDestroyed(GL10 gl);
+    public: void onSurfaceDestroyed(GL10 gl);
 
 };
 

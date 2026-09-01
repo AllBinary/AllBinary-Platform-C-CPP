@@ -48,9 +48,8 @@
         #include "TableTag.h"
 
 class CustomItemsTag: public TableTag {
-        
 
-public constructor ();
+public: CustomItemsTag();
 
 };
 

@@ -39,13 +39,12 @@
         #include "ABCustomItem.h"
 
 class ABCustomImageItem: public ABCustomItem {
-        
 
-    yOffset: int32_t = 0;
+    protected: int32_t yOffset = 0;
 
-public constructor (string label, Image image, int32_t layout, string altText, BasicColor basicColor, int32_t yOffset);
+public: ABCustomImageItem(std::string label, Image image, int32_t layout, std::string altText, BasicColor basicColor, int32_t yOffset);
 
-    public Image getImage();
+    public: Image getImage();
 
 };
 

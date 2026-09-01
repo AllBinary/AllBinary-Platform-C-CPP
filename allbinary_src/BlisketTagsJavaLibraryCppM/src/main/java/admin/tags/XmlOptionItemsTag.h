@@ -48,9 +48,8 @@
         #include "TableTag.h"
 
 class XmlOptionItemsTag: public TableTag {
-        
 
-public constructor ();
+public: XmlOptionItemsTag();
 
 };
 

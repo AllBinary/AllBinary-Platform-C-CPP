@@ -73,39 +73,38 @@
 class CustomTextAnimationFactory
             : public Object
         : public AnimationInterfaceFactoryInterface {
-        
 
-    public static CustomTextAnimationFactory createDXY(string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
+    public: static CustomTextAnimationFactory createDXY(std::string text, int32_t fontSize, int32_t dx, int32_t dy, AnimationBehaviorFactory animationBehaviorFactory);
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const animationBehaviorFactory: AnimationBehaviorFactory;
+    private: AnimationBehaviorFactory animationBehaviorFactory;
 
-    public basicColor: BasicColor = BasicColorFactory.getInstance()!.BLACK;
+    public: BasicColor basicColor = BasicColorFactory::getInstance().BLACK;
 
-    private: text: string;
+    private: std::string text;
 
-    private: initScaleHeight: int32_t;
+    private: int32_t initScaleHeight;
 
-    dx: int32_t = 0;
+    protected: int32_t dx = 0;
 
-    dy: int32_t = 0;
+    protected: int32_t dy = 0;
 
-    font: Font;
+    protected: Font font;
 
-    public scaleProperties: ScaleProperties;
+    public: ScaleProperties scaleProperties;
 
-public constructor (string text, int32_t fontSize, AnimationBehaviorFactory animationBehaviorFactory);
+public: CustomTextAnimationFactory(std::string text, int32_t fontSize, AnimationBehaviorFactory animationBehaviorFactory);
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId);
+    public: Animation getInstance(int32_t instanceId);
 
-    public setInitialScale(ScaleProperties scaleProperties);
+    public: void setInitialScale(ScaleProperties scaleProperties);
 
-    public int32_t getWidth();
+    public: int32_t getWidth();
 
-    public int32_t getHeight();
+    public: int32_t getHeight();
 
 };
 

@@ -77,21 +77,20 @@
 class TouchJ2ME
             : public Object
          {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const DEVICE_ID: int32_t = 0;
+    private: const int32_t DEVICE_ID = 0;
 
-    private: motionRecognizer: AllMotionRecognizer = new AllMotionRecognizer();
+    private: AllMotionRecognizer motionRecognizer = AllMotionRecognizer();
 
-public constructor ();
+public: TouchJ2ME();
 
-    public pointerDragged(int32_t x, int32_t y);
+    public: void pointerDragged(int32_t x, int32_t y);
 
-    public pointerPressed(int32_t x, int32_t y);
+    public: void pointerPressed(int32_t x, int32_t y);
 
-    public pointerReleased(int32_t x, int32_t y);
+    public: void pointerReleased(int32_t x, int32_t y);
 
 };
 

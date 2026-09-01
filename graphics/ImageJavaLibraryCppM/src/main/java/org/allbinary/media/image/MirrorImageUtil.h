@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_IMAGE_MIRRORIMAGEUTIL_H
         #define ORG_ALLBINARY_MEDIA_IMAGE_MIRRORIMAGEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <java/awt.h>
@@ -62,21 +64,20 @@
 class MirrorImageUtil
             : public Object
          {
-        
 
-    private: static const instance: MirrorImageUtil = new MirrorImageUtil();
+    private: static MirrorImageUtil instance() { return MirrorImageUtil(); }
 
-    public static MirrorImageUtil getInstance();
+    public: static MirrorImageUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-private constructor ();
+private: MirrorImageUtil();
 
-    public BufferedImage getImage(BufferedImage bufferedImage, bool verticle, bool horizontal);
+    public: BufferedImage getImage(BufferedImage bufferedImage, bool verticle, bool horizontal);
 
-    public std::vector<BufferedImage> getImages(BufferedImage bufferedImage, bool verticle, bool horizontal);
+    public: std::vector<BufferedImage> getImages(BufferedImage bufferedImage, bool verticle, bool horizontal);
 
 };
 

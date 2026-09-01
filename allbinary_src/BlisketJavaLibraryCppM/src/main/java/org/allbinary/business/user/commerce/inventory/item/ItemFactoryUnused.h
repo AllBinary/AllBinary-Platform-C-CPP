@@ -63,17 +63,16 @@
 class ItemFactoryUnused
             : public Object
          {
-        
 
                 //@Throws(MoneyException.constructor)
             
-    public static TableMappingInterface getInstance(HashMap<any, any> hashMap);
+    public: static TableMappingInterface getInstance(HashMap<any, any> hashMap);
 
                 //@Throws(Exception.constructor, MoneyException.constructor)
             
-    public static TableMappingInterface getInstance(HttpServletRequest request);
+    public: static TableMappingInterface getInstance(HttpServletRequest request);
 
-private constructor ();
+private: ItemFactoryUnused();
 
 };
 

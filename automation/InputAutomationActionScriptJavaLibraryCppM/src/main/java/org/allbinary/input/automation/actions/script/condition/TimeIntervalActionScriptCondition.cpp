@@ -74,53 +74,52 @@
 #include "TimeIntervalActionScriptConditionJPanel.h"
 #include "TimeIntervalActionScriptConditionData.h"
 
-class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition: public TimeIntervalActionScriptConditionInterface {
-        
+class TimeIntervalActionScriptCondition: public BasicProfileActionScriptCondition, public TimeIntervalActionScriptConditionInterface {
 
-    private: static const NAME: string = "Time Interval";
+    private: static const std::string NAME = "Time Interval";
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: timeIntervalActionScriptConditionJPanel: TimeIntervalActionScriptConditionJPanel;
+    private: TimeIntervalActionScriptConditionJPanel timeIntervalActionScriptConditionJPanel;
 
-    private: timeHelper: TimeDelayHelper;
+    private: TimeDelayHelper timeHelper;
 
-public constructor (Node node){
-            super(TimeIntervalActionScriptCondition.NAME, node);
+public: TimeIntervalActionScriptCondition(Node node){
+            super(TimeIntervalActionScriptCondition::NAME, node);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    actionNode: Node = DomSearchHelper.getNode(TimeIntervalActionScriptConditionData.NAME, node.getChildNodes())!;;
+    Node actionNode = DomSearchHelper::getNode(TimeIntervalActionScriptConditionData::NAME, node.getChildNodes());;
     
 
                         if(actionNode != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    nodeList: NodeList = actionNode!.getChildNodes()!;;
+    NodeList nodeList = actionNode.getChildNodes();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < nodeList!.getLength(); index++)
+    int32_t index = 0;index < nodeList.getLength(); index++)
         {
 
-    childNode: Node = nodeList!.item(index)!;;
+    Node childNode = nodeList.item(index);;
     
 
-                        if(childNode!.getNodeName()!.compareTo(TimeIntervalActionScriptConditionData.TIME) == 0)
+                        if(childNode.getNodeName().compareTo(TimeIntervalActionScriptConditionData::TIME) == 0)
                         
                                     {
                                     
-    interval: string = DomNodeHelper.getTextNodeValue(childNode)!;;
+    std::string interval = DomNodeHelper::getTextNodeValue(childNode);;
     
-this.setTimeDelayHelper(new TimeDelayHelper(Integer.valueOf(interval)));
+this->setTimeDelayHelper(TimeDelayHelper(Integer::valueOf(interval)));
     
 
                                     }
@@ -129,7 +128,7 @@ this.setTimeDelayHelper(new TimeDelayHelper(Integer.valueOf(interval)));
                             
 
 
-                            throw new Exception("Time Interval Action Script Condition Unknown Node");
+                            throw Exception("Time Interval Action Script Condition Unknown Node");
                     
 
                         }
@@ -143,48 +142,48 @@ this.setTimeDelayHelper(new TimeDelayHelper(Integer.valueOf(interval)));
                             
 
 
-                            throw new Exception("Time Interval Action Script Condition Node Null");
+                            throw Exception("Time Interval Action Script Condition Node Null");
                     
 
                         }
                             
-this.init();
+this->init();
     
 }
 
 
-public constructor (){
-            super(TimeIntervalActionScriptCondition.NAME);
+public: TimeIntervalActionScriptCondition(){
+            super(TimeIntervalActionScriptCondition::NAME);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.setTimeDelayHelper(new TimeDelayHelper(0));
+this->setTimeDelayHelper(TimeDelayHelper(0));
     
-this.init();
-    
-}
-
-
-    init(){
-this.timeIntervalActionScriptConditionJPanel= new TimeIntervalActionScriptConditionJPanel(this);
+this->init();
     
 }
 
 
-    public showDialog(){
-this.timeIntervalActionScriptConditionJPanel!.getTimeIntervalActionJDialog()!.setVisible(true);
+    private: void init(){
+this->timeIntervalActionScriptConditionJPanel= TimeIntervalActionScriptConditionJPanel(this);
     
 }
 
 
-    public HashMap<any, any> toHashMap(){
+    public: void showDialog(){
+this->timeIntervalActionScriptConditionJPanel.getTimeIntervalActionJDialog().setVisible(true);
+    
+}
 
-    hashMap: HashMap<any, any> = new HashMap<any, any>();;
+
+    public: HashMap<any, any> toHashMap(){
+
+    HashMap<any, any> hashMap = HashMap<any, any>();;
     
-hashMap!.put(TimeIntervalActionScriptConditionData.TIME, Integer.toString(this.timeHelper!.delay));
+hashMap.put(TimeIntervalActionScriptConditionData::TIME, std::to_string(delay));
     
-this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
+this->logUtil.putF("HashMap: " +hashMap.toString(), this, "toHashMap()");
     
 
 
@@ -197,11 +196,11 @@ this.logUtil!.putF("HashMap: " +hashMap!.toString(), this, "toHashMap()");
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = super.toXmlNode(document)!;;
+    Node node = super.toXmlNode(document);;
     
-node.appendChild(ModDomHelper.createNodeWithValueNodes(document, TimeIntervalActionScriptConditionData.NAME, this.toHashMap()));
+node.appendChild(ModDomHelper::createNodeWithValueNodes(document, TimeIntervalActionScriptConditionData::NAME, this->toHashMap()));
     
 
 
@@ -212,39 +211,39 @@ node.appendChild(ModDomHelper.createNodeWithValueNodes(document, TimeIntervalAct
 }
 
 
-    public log(){
-this.logUtil!.putF("Time Interval: " +this.timeHelper!.delay, this, "log");
+    public: void log(){
+this->logUtil.putF("Time Interval: " +this->timeHelper.delay, this, "log");
     
 }
 
 
-    public TimeDelayHelper getTimeDelayHelper(){
+    public: TimeDelayHelper getTimeDelayHelper(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.timeHelper;
+                        return this->timeHelper;
     
 }
 
 
-    public setTimeDelayHelper(TimeDelayHelper timeHelper){
-this.timeHelper= timeHelper;
+    public: void setTimeDelayHelper(TimeDelayHelper timeHelper){
+this->timeHelper= timeHelper;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool shouldProcess(Long frame){
+    public: bool shouldProcess(Long frame){
 
-    timeHelper: TimeDelayHelper = this.getTimeDelayHelper()!;;
+    TimeDelayHelper timeHelper = this->getTimeDelayHelper();;
     
 
-                        if(timeHelper!.isTimeTNT())
+                        if(timeHelper.isTimeTNT())
                         
                                     {
-                                    timeHelper!.setStartTimeTNT();
+                                    timeHelper.setStartTimeTNT();
     
 
 

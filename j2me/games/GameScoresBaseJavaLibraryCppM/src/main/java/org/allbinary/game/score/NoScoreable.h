@@ -42,17 +42,16 @@
         #include "Scoreable.h"
 
 class NoScoreable: public Scoreable {
-        
 
-    private: static const SINGLETON: NoScoreable = new NoScoreable();
+    private: static const NoScoreable SINGLETON = NoScoreable();
 
-    public static NoScoreable getInstance();
+    public: static NoScoreable getInstance();
 
-private constructor ();
+private: NoScoreable();
 
-    public addPoints(int32_t points);
+    public: void addPoints(int32_t points);
 
-    public removePoints(int32_t points);
+    public: void removePoints(int32_t points);
 
 };
 

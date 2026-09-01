@@ -60,17 +60,16 @@
 class GameLevelDisplayChangeEventListenersFactory
             : public Object
          {
-        
 
-    private: static const instance: GameLevelDisplayChangeEventListenersFactory = new GameLevelDisplayChangeEventListenersFactory();
+    private: static GameLevelDisplayChangeEventListenersFactory instance() { return GameLevelDisplayChangeEventListenersFactory(); }
 
-    public static GameLevelDisplayChangeEventListenersFactory getInstance();
+    public: static GameLevelDisplayChangeEventListenersFactory getInstance();
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    public add(DisplayChangeEventListener displayChangeEventListener);
+    public: void add(DisplayChangeEventListener displayChangeEventListener);
 
-    public clear();
+    public: void clear();
 
 };
 

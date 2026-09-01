@@ -50,33 +50,32 @@
 class ThirdPartyInApplicationPurchase
             : public Object
         : public ThirdPartyInApplicationPurchaseInterface {
-        
 
-    public bool isPurchased(LockableFeature lockableFeature);
+    public: bool isPurchased(LockableFeature lockableFeature);
 
-    public onCreate(any = {} anyType, any = {} stateObject);
+    public: void onCreate(Object* anyType, Object* stateObject);
 
-    public onDestroy();
+    public: void onDestroy();
 
-    public onStart();
+    public: void onStart();
 
-    public onActivityResult(int32_t requestCode, int32_t resultCode, any = {} dataObject);
+    public: void onActivityResult(int32_t requestCode, int32_t resultCode, Object* dataObject);
 
-    public onSaveInstanceState(any = {} anyType);
+    public: void onSaveInstanceState(Object* anyType);
 
-    public onStop();
+    public: void onStop();
 
-    public requestPurchase(LockableFeature lockableFeature);
+    public: void requestPurchase(LockableFeature lockableFeature);
 
-    public requestReceipts();
+    public: void requestReceipts();
 
-    public add(LockableFeature lockableFeature);
+    public: void add(LockableFeature lockableFeature);
 
-    public string getUserName();
+    public: std::string getUserName();
 
-    public bool isEnabled();
+    public: bool isEnabled();
 
-    requestProducts();
+    protected: void requestProducts();
 
 };
 

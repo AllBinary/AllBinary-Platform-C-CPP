@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Throwable.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -66,128 +68,127 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TweenedImageAnimation: public IndexedAnimation {
-        
 
-    private: const image: Image;
+    private: Image image;
 
-    private: const dx: int32_t;
+    private: int32_t dx;
 
-    private: const dy: int32_t;
+    private: int32_t dy;
 
-    private: totalFrames: int32_t;
+    private: int32_t totalFrames;
 
-    circularIndexUtil: CircularIndexUtil;
+    protected: CircularIndexUtil circularIndexUtil;
 
-public constructor (Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior){
+public: TweenedImageAnimation(Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior){
             super(animationBehavior);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.image= image;
+this->image= image;
     
-this.dx= dx;
+this->dx= dx;
     
-this.dy= dy;
+this->dy= dy;
     
-this.totalFrames= totalFrames;
+this->totalFrames= totalFrames;
     
-this.circularIndexUtil= CircularIndexUtil.createInstance(this.totalFrames);
+this->circularIndexUtil= CircularIndexUtil::createInstance(this->totalFrames);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize(){
+    public: int32_t getAnimationSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getSize();;
+                        return this->getSize();;
     
 }
 
 
-    public nextFrame(){
-this.circularIndexUtil!.next();
+    public: void nextFrame(){
+this->circularIndexUtil.next();
     
 }
 
 
-    public previousFrame(){
-this.circularIndexUtil!.previous();
+    public: void previousFrame(){
+this->circularIndexUtil.previous();
     
 }
 
 
-    public setFrame(int32_t index){
-this.circularIndexUtil!.setIndex(index);
+    public: void setFrame(int32_t index){
+this->circularIndexUtil.setIndex(index);
     
 }
 
 
-    public int32_t getFrame(){
+    public: int32_t getFrame(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.circularIndexUtil!.getIndex();;
+                        return this->circularIndexUtil.getIndex();;
     
 }
 
 
-    public int32_t getSize(){
+    public: int32_t getSize(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.totalFrames;
+                        return this->totalFrames;
     
 }
 
 
-    public setSequence(std::vector<int32_t> sequence){
+    public: void setSequence(std::vector<int32_t> sequence){
 }
 
 
-    public std::vector<int32_t> getSequence(){
+    public: std::vector<int32_t> getSequence(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PrimitiveIntUtil.getArrayInstance();;
+                        return PrimitiveIntUtil::getArrayInstance();;
     
 }
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y){
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y){
 
-    frame: int32_t = this.getFrame()!;;
+    int32_t frame = this->getFrame();;
     
 
-    currentX: int32_t = this.dx *frame;;
+    int32_t currentX = this->dx *frame;;
     
 
-    currentY: int32_t = this.dy *frame;;
+    int32_t currentY = this->dy *frame;;
     
-graphics.drawImage(this.image, x +currentX, y +currentY, this.anchor);
+graphics.drawImage(this->image, x +currentX, y +currentY, this->anchor);
     
 }
 
 
-    public close(){
-DisposalUtil.getInstance()!.disposeImage(this.image);
+    public: void close(){
+DisposalUtil::getInstance().disposeImage(this->image);
     
 }
 
 
                 //@Throws(Throwable.constructor)
             
-    finalize(){
-DisposalUtil.getInstance()!.disposeImage(this.image);
+    protected: void finalize(){
+DisposalUtil::getInstance().disposeImage(this->image);
     
 }
 

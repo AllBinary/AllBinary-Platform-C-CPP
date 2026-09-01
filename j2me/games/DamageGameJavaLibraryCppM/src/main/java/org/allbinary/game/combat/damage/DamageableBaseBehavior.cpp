@@ -45,39 +45,38 @@
 class DamageableBaseBehavior
             : public Object
         : public DamageableInterface {
-        
 
-    private: static const instance: DamageableBaseBehavior = new DamageableBaseBehavior();
+    private: static DamageableBaseBehavior instance() { return DamageableBaseBehavior(); }
 
-    public static DamageableBaseBehavior getInstance(){
+    public: static DamageableBaseBehavior getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DamageableBaseBehavior.instance;
+                        return DamageableBaseBehavior::instance();
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.constructor.name.toString()!;;
+                        return this->constructor.name.toString()!;;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public damage(int32_t damage, int32_t damageType){
+    public: void damage(int32_t damage, int32_t damageType){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDamage(int32_t damageType){
+    public: int32_t getDamage(int32_t damageType){
 
 
 

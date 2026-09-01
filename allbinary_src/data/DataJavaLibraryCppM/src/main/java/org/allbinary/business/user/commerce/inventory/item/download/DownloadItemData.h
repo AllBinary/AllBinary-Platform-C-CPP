@@ -45,45 +45,44 @@
 class DownloadItemData
             : public Object
          {
-        
 
-    public static const NAME: string = "DOWNLOADITEM_NAME";
+    public: static const std::string NAME = "DOWNLOADITEM_NAME";
 
-    public static const ID: string = "DOWNLOADITEM_ID";
+    public: static const std::string ID = "DOWNLOADITEM_ID";
 
-    public static const SYSTEM: string = "DOWNLOADITEM_SYSTEM";
+    public: static const std::string SYSTEM = "DOWNLOADITEM_SYSTEM";
 
-    public static const PLATFORM: string = "DOWNLOADITEM_PLATFORM";
+    public: static const std::string PLATFORM = "DOWNLOADITEM_PLATFORM";
 
-    public static const SPECIAL_NAME: string = "DOWNLOADITEM_SPECIAL_NAME";
+    public: static const std::string SPECIAL_NAME = "DOWNLOADITEM_SPECIAL_NAME";
 
-    public static const VERSION: string = "DOWNLOADITEM_VERSION";
+    public: static const std::string VERSION = "DOWNLOADITEM_VERSION";
 
-    public static const CHANGES: string = "DOWNLOADITEM_CHANGES";
+    public: static const std::string CHANGES = "DOWNLOADITEM_CHANGES";
 
-    public static const LICENSE_FILE: string = "DOWNLOADITEM_LICENSE_FILE";
+    public: static const std::string LICENSE_FILE = "DOWNLOADITEM_LICENSE_FILE";
 
-    public static const FILE: string = "DOWNLOADITEM_FILE";
+    public: static const std::string FILE = "DOWNLOADITEM_FILE";
 
-    public static const EXTRA_FILES: string = "DOWNLOADITEM_EXTRA_FILES";
+    public: static const std::string EXTRA_FILES = "DOWNLOADITEM_EXTRA_FILES";
 
-    public static const SIZE: string = "DOWNLOADITEM_SIZE";
+    public: static const std::string SIZE = "DOWNLOADITEM_SIZE";
 
-    public static const VALID_TIME: string = "DOWNLOADITEM_VALID_TIME";
+    public: static const std::string VALID_TIME = "DOWNLOADITEM_VALID_TIME";
 
-    public static const VALID_TIME_YEARS: string = "DOWNLOADITEM_VALID_TIME_YEAR";
+    public: static const std::string VALID_TIME_YEARS = "DOWNLOADITEM_VALID_TIME_YEAR";
 
-    public static const VALID_TIME_MONTHS: string = "DOWNLOADITEM_VALID_TIME_MONTH";
+    public: static const std::string VALID_TIME_MONTHS = "DOWNLOADITEM_VALID_TIME_MONTH";
 
-    public static const VALID_TIME_DAYS: string = "DOWNLOADITEM_VALID_TIME_DAY";
+    public: static const std::string VALID_TIME_DAYS = "DOWNLOADITEM_VALID_TIME_DAY";
 
-    public static const VALID_TIME_HOURS: string = "DOWNLOADITEM_VALID_TIME_HOUR";
+    public: static const std::string VALID_TIME_HOURS = "DOWNLOADITEM_VALID_TIME_HOUR";
 
-    public static const VALID_TIME_MINUTES: string = "DOWNLOADITEM_VALID_TIME_MINUTES";
+    public: static const std::string VALID_TIME_MINUTES = "DOWNLOADITEM_VALID_TIME_MINUTES";
 
-    public static const VALID_TIME_SECONDS: string = "DOWNLOADITEM_VALID_TIME_SECONDS";
+    public: static const std::string VALID_TIME_SECONDS = "DOWNLOADITEM_VALID_TIME_SECONDS";
 
-    public static const RETRIES: string = "DOWNLOADITEM_RETRIES";
+    public: static const std::string RETRIES = "DOWNLOADITEM_RETRIES";
 
 };
 

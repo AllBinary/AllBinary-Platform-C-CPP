@@ -58,27 +58,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class StoreFrontComponent: public HttpStoreComponentView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    newStoreFrontInterface: StoreFrontInterface;
+    protected: StoreFrontInterface newStoreFrontInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: StoreFrontComponent(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.newStoreFrontInterface= new StoreFront(this.getPageContext()!.getRequest() as HttpServletRequest) as StoreFrontInterface;
+this->newStoreFrontInterface= StoreFront(this->getPageContext().getRequest() as HttpServletRequest) as StoreFrontInterface;
     
 
-                        if(this.newStoreFrontInterface!.getName() == 
-                                    null
+                        if(this->newStoreFrontInterface.getName() == 
+                                    nullptr
                                 )
                         
                                     {
-                                    this.newStoreFrontInterface!.setName(this.getWeblisketSession()!.getStoreName());
+                                    this->newStoreFrontInterface.setName(this->getWeblisketSession().getStoreName());
     
 
                                     }
@@ -88,7 +87,7 @@ this.newStoreFrontInterface= new StoreFront(this.getPageContext()!.getRequest() 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
         try {
             
@@ -102,10 +101,10 @@ this.newStoreFrontInterface= new StoreFront(this.getPageContext()!.getRequest() 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.TAGHELPERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().TAGHELPERERROR))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
     
 
                                     }

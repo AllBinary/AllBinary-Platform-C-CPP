@@ -53,36 +53,35 @@
 class NullPlayerGameInputComposite
             : public Object
         : public PlayerGameInputCompositeInterface {
-        
 
-    public static const NULL_PLAYER_GAME_INPUT_COMPOSITE: NullPlayerGameInputComposite = new NullPlayerGameInputComposite();
+    public: static const NullPlayerGameInputComposite NULL_PLAYER_GAME_INPUT_COMPOSITE = NullPlayerGameInputComposite();
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return StringUtil.getInstance()!.EMPTY_STRING;
+                        return StringUtil::getInstance().EMPTY_STRING;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processInput(AllBinaryLayerManager layerManager){
+    public: void processInput(AllBinaryLayerManager layerManager){
 }
 
 
-    public initInputProcessors(){
+    public: void initInputProcessors(){
 }
 
 
-    public PlayerGameInput getPlayerGameInput(){
+    public: PlayerGameInput getPlayerGameInput(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NoPlayerGameInput.getInstance();;
+                        return NoPlayerGameInput::getInstance();;
     
 }
 

@@ -82,39 +82,38 @@
         #include "Table.h"
 
 class PaymentHelper: public Table {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: request: HttpServletRequest;
+    private: HttpServletRequest request;
 
-    private: value: string;
+    private: std::string value;
 
-    private: const portion: Portion;
+    private: Portion portion;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: PaymentHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    getFormData();
+    private: void getFormData();
 
-    public string insert();
+    public: std::string insert();
 
-    public string select();
+    public: std::string select();
 
-    public string delete();
+    public: std::string delete_();
 
-    public string drop();
+    public: std::string drop();
 
-    public string create();
+    public: std::string create();
 
-    public string restore();
+    public: std::string restore();
 
-    public string backup();
+    public: std::string backup();
 
                 //@Throws(LicensingException.constructor)
             
-    public string update();
+    public: std::string update();
 
 };
 

@@ -54,33 +54,32 @@
 class ColorFillPaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: ColorFillPaintableFactory = new ColorFillPaintableFactory();
+    private: static ColorFillPaintableFactory instance() { return ColorFillPaintableFactory(); }
 
-    public static ColorFillPaintableFactory getInstance(){
+    public: static ColorFillPaintableFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ColorFillPaintableFactory.instance;
+                        return ColorFillPaintableFactory::instance();
     
 }
 
 
-    public ColorFillBasePaintable getInstance(BasicColor basicColor, bool forThreedCanvas){
+    public: ColorFillBasePaintable getInstance(BasicColor basicColor, bool forThreedCanvas){
 
-    operatingSystem: GenericOperatingSystem = OperatingSystemFactory.getInstance()!.getOperatingSystemInstance()!;;
+    GenericOperatingSystem operatingSystem = OperatingSystemFactory::getInstance().getOperatingSystemInstance();;
     
 
-                        if(operatingSystem!.isOverScan())
+                        if(operatingSystem.isOverScan())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new OverScanColorFillPaintable(basicColor);
+                        return OverScanColorFillPaintable(basicColor);
     
 
                                     }
@@ -90,7 +89,7 @@ class ColorFillPaintableFactory
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ColorFillPaintable(basicColor);
+                        return ColorFillPaintable(basicColor);
     
 
                         }

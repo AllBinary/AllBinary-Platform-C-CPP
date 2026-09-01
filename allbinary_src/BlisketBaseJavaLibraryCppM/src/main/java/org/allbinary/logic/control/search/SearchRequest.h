@@ -66,43 +66,42 @@
 #include "SearchData.h"
 
 class SearchRequest: public AbContext {
-        
 
-    private: xslFile: string;
+    private: std::string xslFile;
 
-    private: pageName: string;
+    private: std::string pageName;
 
-    private: contentType: string;
+    private: std::string contentType;
 
-    private: searchParams: SearchParams;
+    private: SearchParams searchParams;
 
-    private: storeFront: StoreFrontInterface;
+    private: StoreFrontInterface storeFront;
 
-public constructor (StoreFrontInterface storeFront, SearchParams searchParams, string xslFile, string contentType, HashMap<any, any> propertiesHashMap, PageContext pageContext);
+public: SearchRequest(StoreFrontInterface storeFront, SearchParams searchParams, std::string xslFile, std::string contentType, HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-    public setStoreFront(StoreFrontInterface storeFront);
+    public: void setStoreFront(StoreFrontInterface storeFront);
 
-    public setParams(SearchParams searchParams);
+    public: void setParams(SearchParams searchParams);
 
-    public setXslFile(string value);
+    public: void setXslFile(std::string value);
 
-    public setFileBaseName(string value);
+    public: void setFileBaseName(std::string value);
 
-    public setContentType(string value);
+    public: void setContentType(std::string value);
 
-    public StoreFrontInterface getStoreFront();
+    public: StoreFrontInterface getStoreFront();
 
-    public SearchParams getParams();
+    public: SearchParams getParams();
 
-    public string getXslFile();
+    public: std::string getXslFile();
 
-    public string getFileBaseName();
+    public: std::string getFileBaseName();
 
-    public string getContentType();
+    public: std::string getContentType();
 
                 //@Throws(Exception.constructor)
             
-    public Node getFileBaseNameNode(Document document);
+    public: Node getFileBaseNameNode(Document document);
 
 };
 

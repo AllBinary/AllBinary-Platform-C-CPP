@@ -57,32 +57,29 @@
 class AllBinaryEventObject
             : public Object
          {
-        
 
-    public static const NULL_EVENT: AllBinaryEventObject = new AllBinaryEventObject(NullUtil.getInstance()!.NULL_OBJECT);
+    public: static const AllBinaryEventObject NULL_EVENT = AllBinaryEventObject(NullUtil::getInstance().NULL_OBJECT);
 
-    private: source: any;
+    private: Object* source;
 
-public constructor (any = {} anyType){
-
-            super();
-        this.source= anyType;
+public: AllBinaryEventObject(Object* anyType){
+this->source= anyType;
     
 }
 
 
-    public any getSource(){
+    public: Object* getSource(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.source;
+                        return this->source;
     
 }
 
 
-    setSource(any = {} source){
-this.source= source;
+    protected: void setSource(Object* source){
+this->source= source;
     
 }
 

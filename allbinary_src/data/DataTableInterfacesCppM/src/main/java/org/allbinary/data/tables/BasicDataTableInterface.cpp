@@ -38,11 +38,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class BasicDataTableInterface {
-        
 
-    string createTable()
+    std::string createTable()
 
-    string dropTable()
+    std::string dropTable()
 
 };
 

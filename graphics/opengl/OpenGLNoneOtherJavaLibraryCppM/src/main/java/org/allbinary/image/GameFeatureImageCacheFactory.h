@@ -47,13 +47,12 @@
 class GameFeatureImageCacheFactory
             : public Object
          {
-        
 
-    public static ImageCache getInstance();
+    public: static ImageCache getInstance();
 
-    public static init();
+    public: static void init();
 
-    public static releaseAll();
+    public: static void releaseAll();
 
 };
 

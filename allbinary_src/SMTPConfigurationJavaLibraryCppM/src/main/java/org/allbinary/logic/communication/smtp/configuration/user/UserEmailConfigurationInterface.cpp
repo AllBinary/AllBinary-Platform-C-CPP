@@ -41,11 +41,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class UserEmailConfigurationInterface {
-        
 
     UserEmailEventsConfigurationInterface getUserEmailEventsConfigurationInterface()
 
-    setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface emailEventsConfigurationInterface)
+    void setUserEmailEventsConfigurationInterface(UserEmailEventsConfigurationInterface emailEventsConfigurationInterface)
 
 };
 

@@ -55,33 +55,32 @@
 class OpenGLESGraphics
             : public Object
         : public OpenGLSurfaceChangedInterface, public GraphicsInterface {
-        
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    gl: GL10 = NullGL10.NULL_GL10;
+    protected: GL10 gl = NullGL10::NULL_GL10;
 
- constructor ();
+: OpenGLESGraphics();
 
-    public updateGL(GL gl);
+    public: void updateGL(GL gl);
 
-    public set(GL gl);
-
-                //@Throws(Exception.constructor)
-            
-    public init();
+    public: void set(GL gl);
 
                 //@Throws(Exception.constructor)
             
-    public update();
+    public: void init();
 
-    public setOrthoginalMode();
+                //@Throws(Exception.constructor)
+            
+    public: void update();
 
-    public setCameraMode();
+    public: void setOrthoginalMode();
 
-    public GL10 getGlP();
+    public: void setCameraMode();
 
-    public setFontDebug(Font font, FontDebugBase fontDebug);
+    public: GL10 getGlP();
+
+    public: void setFontDebug(Font font, FontDebugBase fontDebug);
 
 };
 

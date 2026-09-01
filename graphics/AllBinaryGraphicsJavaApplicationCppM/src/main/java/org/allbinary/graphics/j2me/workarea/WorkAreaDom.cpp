@@ -59,61 +59,44 @@
 class WorkAreaDom
             : public Object
          {
-        
 
-    public static const WORKAREA: string = "workArea";
+    public: static const std::string WORKAREA = "workArea";
 
-    public static const NAME: string = "name";
+    public: static const std::string NAME = "name";
 
-    public static const FRAMES: string = "frames";
+    public: static const std::string FRAMES = "frames";
 
-    private: name: string;
+    private: std::string name;
 
-    private: canvasNodeList: BasicArrayList;
+    private: BasicArrayList canvasNodeList;
 
-public constructor (Document document){
+public: WorkAreaDom(Document document){
 
-            super();
-        
-    workAreaNodeList: NodeList = document.getElementsByTagName(this.WORKAREA)!;;
+    NodeList workAreaNodeList = document.getElementsByTagName(this->WORKAREA);;
     
 
                         if(workAreaNodeList != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
                                     
-    numberOfworkAreas: int32_t = workAreaNodeList!.getLength()!;;
+    int32_t numberOfworkAreas = workAreaNodeList.getLength();;
     
 
                         if(numberOfworkAreas == 1)
                         
                                     {
                                     
-    numberOfNodes: int32_t = workAreaNodeList!.getLength()!;;
+    int32_t numberOfNodes = workAreaNodeList.getLength();;
     
 
-    nameNode: Node = DomHelper.getInstance()!.searchNodeList(this.NAME, workAreaNodeList!.item(0)!.getChildNodes())!;;
+    Node nameNode = DomHelper::getInstance().searchNodeList(this->NAME, workAreaNodeList.item(0).getChildNodes());;
     
 
-    nameTextNode: Node = nameNode!.getFirstChild()!;;
+    Node nameTextNode = nameNode.getFirstChild();;
     
-this.name= nameTextNode!.getNodeValue();
-    
-
-                                    }
-                                
-                        else {
-                            
-
-
-                            throw new Exception("Wrong Number of WorkAreas: " +numberOfworkAreas);
-                    
-
-                        }
-                            
-this.canvasNodeList= DomHelper.getInstance()!.getChildrenWithoutTextNodes(WorkAreaDom.FRAMES, workAreaNodeList!.item(0)!.getChildNodes());
+this->name= nameTextNode.getNodeValue();
     
 
                                     }
@@ -122,7 +105,21 @@ this.canvasNodeList= DomHelper.getInstance()!.getChildrenWithoutTextNodes(WorkAr
                             
 
 
-                            throw new Exception("workArea Node Not Found");
+                            throw Exception("Wrong Number of WorkAreas: " +numberOfworkAreas);
+                    
+
+                        }
+                            
+this->canvasNodeList= DomHelper::getInstance().getChildrenWithoutTextNodes(WorkAreaDom::FRAMES, workAreaNodeList.item(0).getChildNodes());
+    
+
+                                    }
+                                
+                        else {
+                            
+
+
+                            throw Exception("workArea Node Not Found");
                     
 
                         }
@@ -130,22 +127,22 @@ this.canvasNodeList= DomHelper.getInstance()!.getChildrenWithoutTextNodes(WorkAr
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public BasicArrayList getCanvasNodes(){
+    public: BasicArrayList getCanvasNodes(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.canvasNodeList;
+                        return this->canvasNodeList;
     
 }
 

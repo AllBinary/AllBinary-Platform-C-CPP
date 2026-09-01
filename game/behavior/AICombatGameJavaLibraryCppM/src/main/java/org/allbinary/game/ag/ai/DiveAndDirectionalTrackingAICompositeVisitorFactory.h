@@ -49,9 +49,8 @@
 class DiveAndDirectionalTrackingAICompositeVisitorFactory
             : public Object
          {
-        
 
-    public Visitor getInstance(DiveAndDirectionalTrackingAI diveBombAI);
+    public: Visitor getInstance(DiveAndDirectionalTrackingAI diveBombAI);
 
 };
 

@@ -52,36 +52,33 @@
 class ScreenRepaintProcessorFactory
             : public Object
          {
-        
 
-    private: static const instance: ScreenRepaintProcessorFactory = new ScreenRepaintProcessorFactory();
+    private: static ScreenRepaintProcessorFactory instance() { return ScreenRepaintProcessorFactory(); }
 
-    public static ScreenRepaintProcessorFactory getInstance(){
+    public: static ScreenRepaintProcessorFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ScreenRepaintProcessorFactory.instance;
+                        return ScreenRepaintProcessorFactory::instance();
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: ScreenRepaintProcessorFactory(){
+}
 
 
-    public Processor create(Displayable displayable){
+    public: Processor create(Displayable displayable){
 
-                        if(!J2MEUtil.isJ2ME())
+                        if(!J2MEUtil::isJ2ME())
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new ScreenRepaintProcessor(displayable);
+                        return ScreenRepaintProcessor(displayable);
     
 
                                     }
@@ -91,7 +88,7 @@ private constructor (){
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Processor.getInstance();;
+                        return Processor::getInstance();;
     
 
                         }

@@ -72,17 +72,16 @@
 class SolarisOperatingSystemFactory
             : public Object
          {
-        
 
-    private: static const instance: SolarisOperatingSystemFactory = new SolarisOperatingSystemFactory();
+    private: static SolarisOperatingSystemFactory instance() { return SolarisOperatingSystemFactory(); }
 
-    public static SolarisOperatingSystemFactory getInstance();
+    public: static SolarisOperatingSystemFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: SolarisOperatingSystemFactory();
 
-    public GenericOperatingSystem getOperatingSystemInstance();
+    public: GenericOperatingSystem getOperatingSystemInstance();
 
 };
 

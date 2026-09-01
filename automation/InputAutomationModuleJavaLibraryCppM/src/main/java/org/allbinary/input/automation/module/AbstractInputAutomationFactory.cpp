@@ -52,67 +52,62 @@
 #include "JPanel.h"
 
 class AbstractInputAutomationFactory: public InputAutomationModuleFactoryInterface {
-        
 
-    private: name: string;
+    private: std::string name;
 
-    private: jPanel: JPanel;
+    private: JPanel jPanel;
 
-    private: helpSet: HelpSet;
+    private: HelpSet helpSet;
 
-public constructor (string name, JPanel jPanel, HelpSet helpSet){
-
-            super();
-        this.name= name;
+public: AbstractInputAutomationFactory(std::string name, JPanel jPanel, HelpSet helpSet){
+this->name= name;
     
-this.jPanel= jPanel;
+this->jPanel= jPanel;
     
-this.helpSet= helpSet;
+this->helpSet= helpSet;
     
 }
 
 
-public constructor (string name, JPanel jPanel){
-
-            super();
-        this.name= name;
+public: AbstractInputAutomationFactory(std::string name, JPanel jPanel){
+this->name= name;
     
-this.jPanel= jPanel;
+this->jPanel= jPanel;
     
 
-    url: URL = this.constructor.name.getResource("/help/Help.hs")!;;
+    URL url = this->constructor.name.getResource("/help/Help.hs");;
     
-this.helpSet= JavaHelpUtil.getInstance()!.getHelpSet(url);
+this->helpSet= JavaHelpUtil::getInstance().getHelpSet(url);
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public JPanel getConfigurationJPanel(){
+    public: JPanel getConfigurationJPanel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.jPanel;
+                        return this->jPanel;
     
 }
 
 
-    public HelpSet getHelpSet(){
+    public: HelpSet getHelpSet(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.helpSet;
+                        return this->helpSet;
     
 }
 

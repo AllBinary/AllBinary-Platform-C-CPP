@@ -105,17 +105,16 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         // MIDlet methods not overridden are final
-class AllBinaryMidlet: public MIDlet: public CommandListener {
-        
+class AllBinaryMidlet: public MIDlet, public CommandListener {
 
-    private: static NULL_ALLBINARY_MIDLET: any = NullUtil.getInstance()!.NULL_OBJECT;
+    private: static Object* NULL_ALLBINARY_MIDLET = NullUtil::getInstance().NULL_OBJECT;
 
-    public static AllBinaryMidlet getNullInstance(){
+    public: static AllBinaryMidlet getNullInstance(){
 
-                        if(AllBinaryMidlet.NULL_ALLBINARY_MIDLET == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(AllBinaryMidlet::NULL_ALLBINARY_MIDLET == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    AllBinaryMidlet.NULL_ALLBINARY_MIDLET= new AllBinaryMidlet();
+                                    AllBinaryMidlet::NULL_ALLBINARY_MIDLET= AllBinaryMidlet();
     
 
                                     }
@@ -124,58 +123,54 @@ class AllBinaryMidlet: public MIDlet: public CommandListener {
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AllBinaryMidlet.NULL_ALLBINARY_MIDLET as AllBinaryMidlet;
+                        return AllBinaryMidlet::NULL_ALLBINARY_MIDLET as AllBinaryMidlet;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    const commonStrings: CommonStrings = CommonStrings.getInstance()!;
+    protected: const CommonStrings commonStrings = CommonStrings::getInstance();
 
-    private: const SET_DISPLAY: string = "setDisplay";
+    private: const std::string SET_DISPLAY = "setDisplay";
 
-    private: const SETTING_: string = "Setting: ";
+    private: const std::string SETTING_ = "Setting: ";
 
-    private: const _DISPLAY_: string = " Display: ";
+    private: const std::string _DISPLAY_ = " Display: ";
 
-    private: const SETTING_NO_TITLE: string = "Setting: No Title, Display: ";
+    private: const std::string SETTING_NO_TITLE = "Setting: No Title, Display: ";
 
-    private: hashtable: Hashtable<any, any> = new Hashtable<any, any>();
+    private: Hashtable<any, any> hashtable = Hashtable<any, any>();
 
-    private: midletDestroyed: bool= false;
+    private: bool midletDestroyed= false;
 
-public constructor (){
-
-            super();
-        this.logUtil!.putF(this.commonStrings!.CONSTRUCTOR, this, "AllBinaryMidlet::AllBinaryMidlet");
+public: AllBinaryMidlet(){
+this->logUtil.putF(this->commonStrings.CONSTRUCTOR, this, "AllBinaryMidlet::AllBinaryMidlet");
     
 }
 
 
-    setDisplay(Displayable newDisplay){
+    protected: void setDisplay(Displayable newDisplay){
 
-    title: string = StringUtil.getInstance()!.EMPTY_STRING;;
+    std::string title = StringUtil::getInstance().EMPTY_STRING;;
     
 
-                        if(newDisplay != NullCanvas.NULL_CANVAS)
+                        if(newDisplay != NullCanvas::NULL_CANVAS)
                         
                                     {
-                                    title= newDisplay!.getTitle();
+                                    title= newDisplay.getTitle();
     
 
-                        if(title != 
-                                    null
-                                )
+                        if(true)
                         
                                     {
-                                    this.logUtil!.putF(new StringMaker().append(this.SETTING_)!.append(title)!.append(this._DISPLAY_)!.append(StringUtil.getInstance()!.toString(newDisplay))!.toString(), this, this.SET_DISPLAY);
+                                    this->logUtil.putF(StringMaker().append(this->SETTING_).append(title).append(this->_DISPLAY_).append(StringUtil::getInstance().toString(newDisplay)).toString(), this, this->SET_DISPLAY);
     
 
                                     }
                                 
                         else {
-                            this.logUtil!.putF(new StringMaker().append(this.SETTING_NO_TITLE)!.append(StringUtil.getInstance()!.toString(newDisplay))!.toString(), this, this.SET_DISPLAY);
+                            this->logUtil.putF(StringMaker().append(this->SETTING_NO_TITLE).append(StringUtil::getInstance().toString(newDisplay)).toString(), this, this->SET_DISPLAY);
     
 
                         }
@@ -184,84 +179,84 @@ public constructor (){
                                     }
                                 
 
-    display: Display = this.getDisplay()!;;
+    Display display = this->getDisplay();;
     
 display.setCurrent(newDisplay);
     
 }
 
 
-    public Display getDisplay(){
+    public: Display getDisplay(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Display.getDisplay(this);;
+                        return Display::getDisplay(this);;
     
 }
 
 
-    Displayable getCurrentDisplayable(){
+    protected: Displayable getCurrentDisplayable(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Display.getDisplay(this)!.getCurrent();;
+                        return Display::getDisplay(this).getCurrent();;
     
 }
 
 
-    public setDestroyed(bool destroyed){
-this.midletDestroyed= destroyed;
+    public: void setDestroyed(bool destroyed){
+this->midletDestroyed= destroyed;
     
 }
 
 
-    public bool isDestroyed(){
+    public: bool isDestroyed(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.midletDestroyed;
+                        return this->midletDestroyed;
     
 }
 
 
                 //@Throws(MIDletStateChangeException.constructor)
             
-    startApp(){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    protected: void startApp(){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    pauseApp(){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    protected: void pauseApp(){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    destroyAppInRunnable(bool unconditional, bool isProgress){
+    protected: void destroyAppInRunnable(bool unconditional, bool isProgress){
 }
 
 
-    destroyApp(bool unconditional){
+    protected: void destroyApp(bool unconditional){
 
-    METHOD_NAME: string = "AllBinaryMidlet::destroyApp";;
+    std::string METHOD_NAME = "AllBinaryMidlet::destroyApp";;
     
 
         try {
-            this.logUtil!.putF(this.commonStrings!.START, this, METHOD_NAME);
+            this->logUtil.putF(this->commonStrings.START, this, METHOD_NAME);
     
-PreLogUtil.put(Memory.getInfo(), this, METHOD_NAME);
+PreLogUtil::put(Memory::getInfo(), this, METHOD_NAME);
     
-this.setDestroyed(true);
+this->setDestroyed(true);
     
 
                 //: 
 } catch(e) 
             {
-this.logUtil!.put(this.commonStrings!.EXCEPTION, this, METHOD_NAME, e);
+this->logUtil.put(this->commonStrings.EXCEPTION, this, METHOD_NAME, e);
     
 }
 
@@ -270,43 +265,43 @@ this.logUtil!.put(this.commonStrings!.EXCEPTION, this, METHOD_NAME, e);
 
                 //@Throws(Exception.constructor)
             
-    public setStartStateHashtable(Hashtable<any, any> hashtable){
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append(StringUtil.getInstance()!.toString(hashtable))!.toString(), this, "setStartStateHashtable");
+    public: void setStartStateHashtable(Hashtable<any, any> hashtable){
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(hashtable)).toString(), this, "setStartStateHashtable");
     
-this.hashtable= hashtable;
+this->hashtable= hashtable;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getStartStateHashtable(){
-this.logUtil!.putF(new StringMaker().append(CommonLabels.getInstance()!.START_LABEL)!.append(StringUtil.getInstance()!.toString(this.hashtable))!.toString(), this, "getStartStateHashtable");
+    public: Hashtable<any, any> getStartStateHashtable(){
+this->logUtil.putF(StringMaker().append(CommonLabels::getInstance().START_LABEL).append(StringUtil::getInstance().toString(this->hashtable)).toString(), this, "getStartStateHashtable");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.hashtable;
+                        return this->hashtable;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Hashtable<any, any> getCurrentStateHashtable(){
-this.logUtil!.putF(this.commonStrings!.START, this, "getStateHashtable");
+    public: Hashtable<any, any> getCurrentStateHashtable(){
+this->logUtil.putF(this->commonStrings.START, this, "getStateHashtable");
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return NullUtil.getInstance()!.NULL_TABLE;
+                        return NullUtil::getInstance().NULL_TABLE;
     
 }
 
 
-    public commandAction(Command command, Displayable displayable){
+    public: void commandAction(Command command, Displayable displayable){
 }
 
 

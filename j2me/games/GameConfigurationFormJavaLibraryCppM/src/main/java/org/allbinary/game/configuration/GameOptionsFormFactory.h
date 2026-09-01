@@ -63,17 +63,16 @@
 class GameOptionsFormFactory
             : public Object
          {
-        
 
-    private: static const instance: GameOptionsFormFactory = new GameOptionsFormFactory();
+    private: static GameOptionsFormFactory instance() { return GameOptionsFormFactory(); }
 
-    public static GameOptionsFormFactory getInstance();
+    public: static GameOptionsFormFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: GameOptionsFormFactory();
 
-    public CommandForm init(CommandListener commandListener, string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
+    public: CommandForm init(CommandListener commandListener, std::string title, BasicColor backgrounBasicColor, BasicColor foregroundBasicColor);
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GAME_AG_AI_MULTIKEYPRESSESAI_H
         #define ORG_ALLBINARY_GAME_AG_AI_MULTIKEYPRESSESAI_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/Integer.h"
@@ -67,33 +69,32 @@
         #include "KeyPressesAI.h"
 
 class MultiKeyPressesAI: public KeyPressesAI {
-        
 
-    private: const toggleTimeHelper: TimeDelayHelper = new TimeDelayHelper(600);
+    private: const TimeDelayHelper toggleTimeHelper = TimeDelayHelper(600);
 
-    private: const gameTickTimeDelayHelper: GameTickTimeDelayHelper = GameTickTimeDelayHelperFactory.getInstance()!;
+    private: const GameTickTimeDelayHelper gameTickTimeDelayHelper = GameTickTimeDelayHelperFactory::getInstance();
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
-
-                //@Throws(Exception.constructor)
-            
-    public processAI(AllBinaryLayerManager allBinaryLayerManager);
+public: MultiKeyPressesAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput);
 
                 //@Throws(Exception.constructor)
             
-    update();
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager);
 
                 //@Throws(Exception.constructor)
             
-    public toggle();
+    private: void update();
 
                 //@Throws(Exception.constructor)
             
-    public disable();
+    public: void toggle();
 
                 //@Throws(Exception.constructor)
             
-    public enable();
+    public: void disable();
+
+                //@Throws(Exception.constructor)
+            
+    public: void enable();
 
 };
 

@@ -77,31 +77,30 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "HighScoresCanvasInputProcessor.h"
 
-class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor: public UpdateMyFontInterface {
-        
+class HighScoresCanvasLevelChangeInputProcessor: public HighScoresCanvasInputProcessor, public UpdateMyFontInterface {
 
-    private: const displayInfoSingleton: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;
+    private: const DisplayInfoSingleton displayInfoSingleton = DisplayInfoSingleton::getInstance();
 
-    private: const INSTRUCTIONS: string = "(Right = Next Track, Left = Previous Track)";
+    private: const std::string INSTRUCTIONS = "(Right = Next Track, Left = Previous Track)";
 
-    private: myFontProcessor: MyFontProcessor = new UpdateMyFontProcessor(this);
+    private: MyFontProcessor myFontProcessor = UpdateMyFontProcessor(this);
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    private: fontHeight: int32_t = 0;
+    private: int32_t fontHeight = 0;
 
-public constructor (HighScoresCanvas highScoresCanvas);
+public: HighScoresCanvasLevelChangeInputProcessor(HighScoresCanvas highScoresCanvas);
 
-    public updateMeasurement(Graphics graphics);
+    public: void updateMeasurement(Graphics graphics);
 
-    public open();
+    public: void open();
 
-    public close();
+    public: void close();
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public update();
+    public: void update();
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
 };
 

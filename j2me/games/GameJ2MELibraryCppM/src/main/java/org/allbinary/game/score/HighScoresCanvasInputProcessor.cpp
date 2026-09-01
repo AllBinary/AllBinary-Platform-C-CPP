@@ -65,66 +65,65 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class HighScoresCanvasInputProcessor: public PlayerGameInput {
-        
 
-    private: const highScoresCanvas: HighScoresCanvas;
+    private: HighScoresCanvas highScoresCanvas;
 
-public constructor (HighScoresCanvas highScoresCanvas){
-            super(new BasicArrayListD(), new BasicArrayListD(),  -1);
+public: HighScoresCanvasInputProcessor(HighScoresCanvas highScoresCanvas){
+            super(BasicArrayListD(), BasicArrayListD(),  -1);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.highScoresCanvas= highScoresCanvas;
+this->highScoresCanvas= highScoresCanvas;
     
 }
 
 
-    public open(){
+    public: void open(){
 }
 
 
-    public close(){
+    public: void close(){
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onPressGameKeyEvent(GameKeyEvent gameKeyEvent){
 super.onPressGameKeyEvent(gameKeyEvent);
     
-this.update();
+this->update();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onDownGameKeyEvent(GameKeyEvent gameKeyEvent){
 super.onDownGameKeyEvent(gameKeyEvent);
     
-this.update();
+this->update();
     
 }
 
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
+    public: void onUpGameKeyEvent(GameKeyEvent gameKeyEvent){
 super.onUpGameKeyEvent(gameKeyEvent);
     
-this.update();
+this->update();
     
 }
 
 
-    public paint(Graphics graphics){
+    public: void paint(Graphics graphics){
 }
 
 
-    public HighScoresCanvas getHighScoresCanvas(){
+    public: HighScoresCanvas getHighScoresCanvas(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.highScoresCanvas;
+                        return this->highScoresCanvas;
     
 }
 

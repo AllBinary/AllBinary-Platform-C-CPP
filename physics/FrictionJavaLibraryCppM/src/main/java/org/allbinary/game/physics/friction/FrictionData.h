@@ -45,13 +45,12 @@
 class FrictionData
             : public Object
          {
-        
 
-    private: static const FRICTION_DENOMINATOR: int32_t = 100;
+    private: static const int32_t FRICTION_DENOMINATOR = 100;
 
-    public static int32_t getFrictionDenominator();
+    public: static int32_t getFrictionDenominator();
 
-private constructor ();
+private: FrictionData();
 
 };
 

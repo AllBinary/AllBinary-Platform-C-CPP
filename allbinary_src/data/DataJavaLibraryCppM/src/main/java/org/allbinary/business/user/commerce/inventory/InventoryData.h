@@ -45,9 +45,8 @@
 class InventoryData
             : public Object
          {
-        
 
-    public static const INVENTORY: string = "INVENTORY";
+    public: static const std::string INVENTORY = "INVENTORY";
 
 };
 

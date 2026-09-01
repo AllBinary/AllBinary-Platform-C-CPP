@@ -42,14 +42,11 @@
 class HeadingData
             : public Object
          {
-        
 
-    public static const NAME: string = "HEADER_NAME";
+    public: static const std::string NAME = "HEADER_NAME";
 
-private constructor (){
-
-            super();
-        }
+private: HeadingData(){
+}
 
 
 };

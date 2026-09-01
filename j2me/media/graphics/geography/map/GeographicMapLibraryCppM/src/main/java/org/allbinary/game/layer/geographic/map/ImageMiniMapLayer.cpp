@@ -62,11 +62,10 @@
         #include "MiniMapLayer.h"
 
 class ImageMiniMapLayer: public MiniMapLayer {
-        
 
-    private: image: Image = NullImage.NULL_IMAGE;
+    private: Image image = NullImage::NULL_IMAGE;
 
-public constructor (BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition){
+public: ImageMiniMapLayer(BasicGeographicMap geographicMapInterface, ViewPositionBase viewPosition){
             super(geographicMapInterface, viewPosition);
                     
 
@@ -77,24 +76,24 @@ public constructor (BasicGeographicMap geographicMapInterface, ViewPositionBase 
 
                 //@Throws(Exception.constructor)
             
-    init(){
+    protected: void init(){
 
-    aWidth: int32_t = this.allBinaryTiledLayer!.getWidth()!;;
+    int32_t aWidth = this->allBinaryTiledLayer.getWidth();;
     
 
-    aHeight: int32_t = this.allBinaryTiledLayer!.getHeight()!;;
+    int32_t aHeight = this->allBinaryTiledLayer.getHeight();;
     
-this.image= PaintableToImageUtil.getImage(this.allBinaryTiledLayer, aWidth, aHeight);
+this->image= PaintableToImageUtil::getImage(this->allBinaryTiledLayer, aWidth, aHeight);
     
 }
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paint(Graphics graphics){
-graphics.drawImage(this.image, this.x, this.y, this.anchor);
+    public: void paint(Graphics graphics){
+graphics.drawImage(this->image, this->x, this->y, this->anchor);
     
-this.paintDots(graphics);
+this->paintDots(graphics);
     
 }
 

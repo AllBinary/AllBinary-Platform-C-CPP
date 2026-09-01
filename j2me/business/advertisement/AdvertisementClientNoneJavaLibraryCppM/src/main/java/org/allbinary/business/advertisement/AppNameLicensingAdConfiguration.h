@@ -31,9 +31,8 @@
         #include "AdConfiguration.h"
 
 class AppNameLicensingAdConfiguration: public AdConfiguration {
-        
 
-public constructor ();
+public: AppNameLicensingAdConfiguration();
 
 };
 

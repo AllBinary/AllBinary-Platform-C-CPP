@@ -54,25 +54,24 @@
 class LogConfigType
             : public Object
          {
-        
 
-    public static availableLogConfigTypes: BasicArrayList = new BasicArrayListD();
+    public: static BasicArrayList availableLogConfigTypes = BasicArrayListD();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: name: string;
+    private: std::string name;
 
-    private: description: string;
+    private: std::string description;
 
-public constructor (string name, string description);
+public: LogConfigType(std::string name, std::string description);
 
-    public string getName();
+    public: std::string getName();
 
-    public string getDescription();
+    public: std::string getDescription();
 
-    public setName(string value);
+    public: void setName(std::string value);
 
-    public setDescription(string value);
+    public: void setDescription(std::string value);
 
 };
 

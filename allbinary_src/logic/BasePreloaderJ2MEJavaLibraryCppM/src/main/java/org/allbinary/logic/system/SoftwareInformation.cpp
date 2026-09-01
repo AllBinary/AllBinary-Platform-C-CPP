@@ -60,81 +60,78 @@
 class SoftwareInformation
             : public Object
          {
-        
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const shortName: string;
+    private: std::string shortName;
 
-    private: const version: string;
+    private: std::string version;
 
-public constructor (string name, string version, string shortName){
-
-            super();
-        this.name= name;
+public: SoftwareInformation(std::string name, std::string version, std::string shortName){
+this->name= name;
     
-this.version= version;
+this->version= version;
     
-this.shortName= new StringMaker().append(shortName)!.append(KotlinUtil.getShortName())!.toString();
+this->shortName= StringMaker().append(shortName).append(KotlinUtil::getShortName()).toString();
     
 }
 
 
-    public string getName(){
+    public: std::string getName(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.name;
+                        return this->name;
     
 }
 
 
-    public string getVersion(){
+    public: std::string getVersion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.version;
+                        return this->version;
     
 }
 
 
-    public string toShortString(){
+    public: std::string toShortString(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.shortName;
+                        return this->shortName;
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    NAME: string = "Name: ";;
-    
-
-    VERSION: string = "Version: ";;
+    std::string NAME = "Name: ";;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    std::string VERSION = "Version: ";;
     
-stringBuffer!.append(NAME);
+
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(this.getName());
+stringBuffer.append(NAME);
     
-stringBuffer!.append(CommonSeps.getInstance()!.SPACE);
+stringBuffer.append(this->getName());
     
-stringBuffer!.append(VERSION);
+stringBuffer.append(CommonSeps::getInstance().SPACE);
     
-stringBuffer!.append(this.getVersion());
+stringBuffer.append(VERSION);
+    
+stringBuffer.append(this->getVersion());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

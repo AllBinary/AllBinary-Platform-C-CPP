@@ -58,48 +58,45 @@
 class GameTickTimeDelayHelper
             : public Object
          {
-        
 
-    public timeDelta: int64_t= 0;
+    public: int64_t timeDelta= 0;
 
-    public startTime: int64_t;
+    public: int64_t startTime;
 
-    public lastStartTime: int64_t;
+    public: int64_t lastStartTime;
 
-public constructor (int64_t startTime){
-
-            super();
-        this.startTime= startTime;
+public: GameTickTimeDelayHelper(int64_t startTime){
+this->startTime= startTime;
     
-this.lastStartTime= 0;
+this->lastStartTime= 0;
     
 }
 
 
-    public int64_t setStartTime(){
-this.startTime= Date.now();
+    public: int64_t setStartTime(){
+this->startTime= Date.now();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startTime;
+                        return this->startTime;
     
 }
 
 
-    public loop(){
+    public: void loop(){
 
-                        if(this.lastStartTime == Long.MIN_VALUE)
+                        if(this->lastStartTime == Long::MIN_VALUE)
                         
                                     {
-                                    this.timeDelta= 0;
+                                    this->timeDelta= 0;
     
 
                                     }
                                 
                         else {
-                            this.timeDelta= Date.now() -this.lastStartTime;
+                            this->timeDelta= Date.now() -this->lastStartTime;
     
 
                         }
@@ -107,12 +104,12 @@ this.startTime= Date.now();
 }
 
 
-    public int64_t getTimeFromStart(){
+    public: int64_t getTimeFromStart(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.startTime -this.lastStartTime;
+                        return this->startTime -this->lastStartTime;
     
 }
 

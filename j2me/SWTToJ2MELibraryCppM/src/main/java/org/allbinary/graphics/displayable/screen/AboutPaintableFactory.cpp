@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <org/allbinary/game/paint/AboutPaintable.h>
@@ -54,44 +56,41 @@
 class AboutPaintableFactory
             : public Object
          {
-        
 
-    private: static const instance: AboutPaintableFactory = new AboutPaintableFactory();
+    private: static AboutPaintableFactory instance() { return AboutPaintableFactory(); }
 
-    public static AboutPaintableFactory getInstance(){
+    public: static AboutPaintableFactory getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return AboutPaintableFactory.instance;
+                        return AboutPaintableFactory::instance();
     
 }
 
 
-private constructor (){
+private: AboutPaintableFactory(){
 
-            super();
-        
-    INFO: std::vector<string> = 
-                                                        [
-                                                            "Built with the","AllBinary Platform",StringUtil.getInstance()!.EMPTY_STRING,"Comments or Questions:","support@allbinary.com"
-                                                        ];;
+    std::vector<std::string> INFO = 
+                                                        {
+                                                            "Built with the","AllBinary Platform",StringUtil::getInstance().EMPTY_STRING,"Comments or Questions:","support@allbinary.com"
+                                                        };;
     
 
-    DEVELOPERS: std::vector<string> = 
-                                                        [
+    std::vector<std::string> DEVELOPERS = 
+                                                        {
                                                             "Developed By:","Travis Berthelot"
-                                                        ];;
+                                                        };;
     
-this.paintableArray= AboutPaintable.getInstance(INFO, DEVELOPERS)!.getPaintableArrayInstance();
+this->paintableArray= AboutPaintable::getInstance(INFO, DEVELOPERS).getPaintableArrayInstance();
     
 }
 
 
-    public paintableArray: std::vector<Paintable> = 
-                                                [
-                                                    NullPaintable.getInstance()
-                                                ];
+    public: std::vector<Paintable> paintableArray = 
+                                                {
+                                                    NullPaintable::getInstance()
+                                                };
 
 };
 

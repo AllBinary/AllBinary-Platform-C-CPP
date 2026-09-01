@@ -42,11 +42,10 @@
         #include "MotionEventProcessor.h"
 
 class NoMotionEventProcessor: public MotionEventProcessor {
-        
 
-    public static const SINGLETON: MotionEventProcessor = new MotionEventProcessor();
+    public: static const MotionEventProcessor SINGLETON = MotionEventProcessor();
 
-    public static MotionEventProcessor getInstance();
+    public: static MotionEventProcessor getInstance();
 
 };
 

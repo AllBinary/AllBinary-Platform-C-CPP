@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABCRYPTUTIL_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_SECURITY_ABCRYPTUTIL_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -62,19 +64,18 @@
 class AbCryptUtil
             : public Object
          {
-        
 
-    private: static const instance: AbCryptUtil = new AbCryptUtil();
+    private: static AbCryptUtil instance() { return AbCryptUtil(); }
 
-    public static AbCryptUtil getInstance();
+    public: static AbCryptUtil getInstance();
 
-    private: const streamUtil: StreamUtil = StreamUtil.getInstance()!;
+    private: const StreamUtil streamUtil = StreamUtil::getInstance();
 
-private constructor ();
+private: AbCryptUtil();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<int8_t> decrypt(InputStream inputStream, string key);
+    public: std::vector<int8_t> decrypt(InputStream inputStream, std::string key);
 
 };
 

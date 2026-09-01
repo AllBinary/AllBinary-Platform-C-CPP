@@ -61,23 +61,22 @@
 class Orientation
             : public Object
          {
-        
 
-    public static NONE: Orientation = new Orientation(0, 0, 0);
+    public: static Orientation NONE = Orientation(0, 0, 0);
 
-    private: static SINGLETON: Orientation = new Orientation(0, 0, 0);
+    private: static Orientation SINGLETON = Orientation(0, 0, 0);
 
-    public static Orientation getInstance(int32_t yaw, int32_t pitch, int32_t roll);
+    public: static Orientation getInstance(int32_t yaw, int32_t pitch, int32_t roll);
 
-    public yaw: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal yaw = BasicDecimal(0);
 
-    public pitch: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal pitch = BasicDecimal(0);
 
-    public roll: BasicDecimal = new BasicDecimal(0);
+    public: BasicDecimal roll = BasicDecimal(0);
 
-private constructor (int32_t yaw, int32_t pitch, int32_t roll);
+private: Orientation(int32_t yaw, int32_t pitch, int32_t roll);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

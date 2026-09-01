@@ -51,17 +51,16 @@
         #include "InventorySearch.h"
 
 class AutoSearchValidationInventoryView: public InventorySearch {
-        
 
-public constructor (SearchRequest searchRequest);
+public: AutoSearchValidationInventoryView(SearchRequest searchRequest);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
 };
 

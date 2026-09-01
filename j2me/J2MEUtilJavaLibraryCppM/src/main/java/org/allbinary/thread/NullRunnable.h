@@ -51,13 +51,12 @@
         #include "ARunnable.h"
 
 class NullRunnable: public ARunnable {
-        
 
-    private: static const instance: NullRunnable = new NullRunnable();
+    private: static NullRunnable instance() { return NullRunnable(); }
 
-    public static NullRunnable getInstance();
+    public: static NullRunnable getInstance();
 
-private constructor ();
+private: NullRunnable();
 
 };
 

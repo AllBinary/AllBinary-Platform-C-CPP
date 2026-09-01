@@ -62,18 +62,17 @@
         #include "BasicTransformer.h"
 
 class TransformInfoCustomUriTransformer: public BasicTransformer {
-        
 
-public constructor (AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
+public: TransformInfoCustomUriTransformer(AbeClientInformationInterface abeClientInformation, TransformInfoInterface transformInfoInterface){
             super(abeClientInformation, transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
 
-    transformInfoObjectConfigInterface: TransformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory.getInstance()!.getInstance(abeClientInformation, transformInfoInterface) as TransformInfoObjectConfigInterface;;
+    TransformInfoObjectConfigInterface transformInfoObjectConfigInterface = TransformInfoObjectConfigAndManipulatorFactory::getInstance().getInstance(abeClientInformation, transformInfoInterface) as TransformInfoObjectConfigInterface;;
     
-this.setURIResolver(new CustomUriResolver(transformInfoObjectConfigInterface!.getImportUriPath(), this.getURIResolver() as BasicUriResolver) as URIResolver);
+this->setURIResolver(CustomUriResolver(transformInfoObjectConfigInterface.getImportUriPath(), this->getURIResolver() as BasicUriResolver) as URIResolver);
     
 }
 

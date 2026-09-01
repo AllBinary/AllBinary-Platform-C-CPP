@@ -62,15 +62,14 @@
         #include "GeneratorStoreFrontContextView.h"
 
 class PreviewGeneratorStoreFrontContextView: public GeneratorStoreFrontContextView {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: PreviewGeneratorStoreFrontContextView(TransformInfoInterface transformInfoInterface);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string view();
 
 };
 

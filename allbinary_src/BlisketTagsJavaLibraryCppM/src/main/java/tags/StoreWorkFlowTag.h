@@ -69,25 +69,24 @@
         #include "HelperTag.h"
 //and hidden field removal
 class StoreWorkFlowTag: public HelperTag {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: viewName: string;
+    private: std::string viewName;
 
-    private: viewFile: string;
+    private: std::string viewFile;
 
-public constructor ();
+public: StoreWorkFlowTag();
 
-    public setName(string value);
+    public: void setName(std::string value);
 
                 //@Throws(Exception.constructor)
             
-    int32_t process();
+    private: int32_t process();
 
                 //@Throws(JspTagException.constructor)
             
-    public int32_t doStartTag();
+    public: int32_t doStartTag();
 
 };
 

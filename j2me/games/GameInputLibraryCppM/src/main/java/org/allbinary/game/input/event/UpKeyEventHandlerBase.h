@@ -76,34 +76,33 @@
         #include "UpKeyEventListenerInterface.h"
 
 class UpKeyEventHandlerBase: public BasicEventHandler {
-        
 
-    private: static const TOTAL_LISTENERS: string = " Total PlayerGameInput Listeners: ";
+    private: static const std::string TOTAL_LISTENERS = " Total PlayerGameInput Listeners: ";
 
-    private: static const LISTENER_LABEL: string = " PlayerGameInput Listener: ";
+    private: static const std::string LISTENER_LABEL = " PlayerGameInput Listener: ";
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
- constructor ();
+: UpKeyEventHandlerBase();
 
-    public addListener(PlayerGameInput playerGameInput);
+    public: void addListener(PlayerGameInput playerGameInput);
 
-    public removeAllListeners();
+    public: void removeAllListeners();
 
-    public removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
+    public: void removeListenerSingleThreaded(EventListenerInterface eventListenerInterface);
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public removeListener(EventListenerInterface eventListenerInterface);
+    public: void removeListener(EventListenerInterface eventListenerInterface);
 
                 //@Throws(Exception.constructor)
             
-    public fireEventForInteger(Integer eventObject);
+    public: void fireEventForInteger(Integer eventObject);
 
                 //@Throws(Exception.constructor)
             
-    processForInteger(Integer eventObject, EventListenerInterface eventListenerInterface);
+    protected: void processForInteger(Integer eventObject, EventListenerInterface eventListenerInterface);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

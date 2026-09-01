@@ -43,13 +43,12 @@
 #include "Sound.h"
 //Use 8hz16bitmono for most J2ME
 class SelectSound: public CompositeSound {
-        
 
-    private: static soundInterface: Sound = new SelectSound();
+    private: static Sound soundInterface = SelectSound();
 
-    public static Sound getInstance();
+    public: static Sound getInstance();
 
-private constructor ();
+private: SelectSound();
 
 };
 

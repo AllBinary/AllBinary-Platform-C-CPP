@@ -45,23 +45,22 @@
 class RendererStateFactory
             : public Object
          {
-        
 
-    private: static const instance: RendererStateFactory = new RendererStateFactory();
+    private: static RendererStateFactory instance() { return RendererStateFactory(); }
 
-    public static RendererStateFactory getInstance();
+    public: static RendererStateFactory getInstance();
 
-    private: loaded: bool = false;
+    private: bool loaded = false;
 
-    private: surfaceChanged: bool = false;
+    private: bool surfaceChanged = false;
 
-    public setLoaded(bool loaded);
+    public: void setLoaded(bool loaded);
 
-    public bool isLoaded();
+    public: bool isLoaded();
 
-    public setSurfaceChanged(bool initialized);
+    public: void setSurfaceChanged(bool initialized);
 
-    public bool isSurfaceChanged();
+    public: bool isSurfaceChanged();
 
 };
 

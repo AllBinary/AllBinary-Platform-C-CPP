@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GUI_DIALOG_FILEJDIALOGLISTENERINTERFACE_H
         #define ORG_ALLBINARY_GUI_DIALOG_FILEJDIALOGLISTENERINTERFACE_H
 
+            #include <vector>
+        
 #include <java/io/File.h>
 
       
@@ -44,9 +46,8 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class FileJDialogListenerInterface {
-        
 
-    onFiles(std::vector<File> files);
+    void onFiles(std::vector<File> files);
 
 };
 

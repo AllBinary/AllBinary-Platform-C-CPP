@@ -50,16 +50,13 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "Paintable.h"
 
-class StatePaintable: public Paintable: public StateControlledInterface {
-        
+class StatePaintable: public Paintable, public StateControlledInterface {
 
-public constructor (){
-
-            super();
-        }
+public: StatePaintable(){
+}
 
 
-    public setState(int32_t state){
+    public: void setState(int32_t state){
 }
 
 

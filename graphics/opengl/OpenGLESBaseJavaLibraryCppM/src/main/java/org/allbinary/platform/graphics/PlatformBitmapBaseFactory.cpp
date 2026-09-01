@@ -46,16 +46,15 @@
 class PlatformBitmapBaseFactory
             : public Object
          {
-        
 
-    public static const NULL_PLATFORM_BITMAP_BASE_FACTORY: PlatformBitmapBaseFactory = new PlatformBitmapBaseFactory();
+    public: static const PlatformBitmapBaseFactory NULL_PLATFORM_BITMAP_BASE_FACTORY = PlatformBitmapBaseFactory();
 
-    public PlatformBitmapBase createBitmap(Image image){
+    public: PlatformBitmapBase createBitmap(Image image){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return PlatformBitmapBase.NULL_PLATFORM_BITMAP_BASE;
+                        return PlatformBitmapBase::NULL_PLATFORM_BITMAP_BASE;
     
 }
 

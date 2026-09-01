@@ -51,9 +51,8 @@
         #include "AbFileInputStream.h"
 
 class AbFileLocalInputStream: public AbFileInputStream {
-        
 
-public constructor (AbFile file);
+public: AbFileLocalInputStream(AbFile file);
 
 };
 

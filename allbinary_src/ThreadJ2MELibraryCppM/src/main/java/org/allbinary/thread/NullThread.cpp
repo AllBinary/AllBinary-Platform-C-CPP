@@ -44,9 +44,8 @@
 class NullThread
             : public Object
          {
-        
 
-    public static const NULL_THREAD: Thread = new Thread();
+    public: static const Thread NULL_THREAD = Thread();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METASVALIDATION_H
         #define ORG_ALLBINARY_LOGIC_VISUAL_TRANSFORM_TEMPLATE_CUSTOMIZER_INCLUDES_META_METASVALIDATION_H
 
+            #include <vector>
+        
             #include "../../../../../../../../../java/lang/Exception.h"
         
 #include <java/util/Vector.h>
@@ -82,30 +84,29 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "MetaValidation.h"
 
-class MetasValidation: public Validation: public DomNodeInterface {
-        
+class MetasValidation: public Validation, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: metaValidationVector: Vector;
+    private: Vector metaValidationVector;
 
-public constructor (string storeName);
+public: MetasValidation(std::string storeName);
 
-public constructor (Document document);
+public: MetasValidation(Document document);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document);
+    public: Node toXmlNode(Document document);
 
 };
 

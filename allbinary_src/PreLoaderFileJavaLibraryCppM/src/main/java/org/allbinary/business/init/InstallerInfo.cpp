@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -80,73 +82,70 @@
 class InstallerInfo
             : public Object
          {
-        
 
-    private: static const instance: InstallerInfo = new InstallerInfo();
+    private: static InstallerInfo instance() { return InstallerInfo(); }
 
-    private: static const INITFILENAME: string = "installerdata.dat";
+    private: static const std::string INITFILENAME = "installerdata.dat";
 
-    private: static const PACKAGE: string = PATH_GLOBALS.getInstance()!.INIT_PATH;
+    private: static const std::string PACKAGE = PATH_GLOBALS::getInstance().INIT_PATH;
 
-    private: static userName: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: static std::string userName = StringUtil::getInstance().EMPTY_STRING;
 
-    private: static password: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: static std::string password = StringUtil::getInstance().EMPTY_STRING;
 
-    private: static hasRead: bool = false;
+    private: static bool hasRead = false;
 //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public static setHasRead(bool value){
-InstallerInfo.hasRead= value;
+    public: static void setHasRead(bool value){
+InstallerInfo::hasRead= value;
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: InstallerInfo(){
+}
 
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public write(){
+    public: void write(){
 
-    FILEABPATH: AbPath = new AbPath(URLGLOBALS.getMainPath() +InstallerInfo.PACKAGE, InstallerInfo.INITFILENAME);;
+    AbPath FILEABPATH = AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
     
 
         try {
             
-    newFile: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!;;
+    AbFile newFile = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
-newFile!.createNewFile();
-    
-
-    dataOutputStream: AbDataOutputStream = DataOutputStreamFactory.getInstance()!.getInstanceForAbFile(newFile)!;;
+newFile.createNewFile();
     
 
-    cryptedUserName: std::vector<int8_t> = new WeakCrypt(1).encrypt(this.getUserName())!.getBytes()!;;
+    AbDataOutputStream dataOutputStream = DataOutputStreamFactory::getInstance().getInstanceForAbFile(newFile);;
     
 
-    cryptedPassword: std::vector<int8_t> = new WeakCrypt(2).encrypt(this.getPassword())!.getBytes()!;;
+    std::vector<int8_t> cryptedUserName = WeakCrypt(1).encrypt(this->getUserName()).getBytes();;
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedUserName));
+
+    std::vector<int8_t> cryptedPassword = WeakCrypt(2).encrypt(this->getPassword()).getBytes();;
     
-dataOutputStream!.writeUTF(DatabaseEncoder.encode(cryptedPassword));
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedUserName));
     
-InstallerInfo.hasRead= false;
+dataOutputStream.writeUTF(DatabaseEncoder::encode(cryptedPassword));
+    
+InstallerInfo::hasRead= false;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADERERROR))
                         
                                     {
-                                    this.logUtil!.putF("Failed", this, "write");
+                                    this->logUtil.putF("Failed", this, "write");
     
 
                                     }
@@ -164,44 +163,44 @@ InstallerInfo.hasRead= false;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    read(){
+    private: void read(){
 
-    FILEABPATH: AbPath = new AbPath(URLGLOBALS.getMainPath() +InstallerInfo.PACKAGE, InstallerInfo.INITFILENAME);;
+    AbPath FILEABPATH = AbPath(URLGLOBALS::getMainPath() +InstallerInfo::PACKAGE, InstallerInfo::INITFILENAME);;
     
 
         try {
             
-    file: AbFile = AbFile.createAbFileFromAbPath(FILEABPATH)!;;
+    AbFile file = AbFile::createAbFileFromAbPath(FILEABPATH);;
     
 
                         if(file.isFile())
                         
                                     {
                                     
-    iFile: AbFileLocalInputStream = new AbFileLocalInputStream(file);;
+    AbFileLocalInputStream iFile = AbFileLocalInputStream(file);;
     
 
-    iData: AbDataInputStream = new AbDataInputStream(iFile);;
+    AbDataInputStream iData = AbDataInputStream(iFile);;
     
 
-    decryptedUserName: string = decode.toCharArray();;
+    std::string decryptedUserName = decode.toCharArray();;
     
 
-    decryptedPassword: string = decode.toCharArray();;
+    std::string decryptedPassword = decode.toCharArray();;
     
-this.setUserName(new WeakCrypt(1).decrypt(decryptedUserName));
+this->setUserName(WeakCrypt(1).decrypt(decryptedUserName));
     
-this.setPassword(new WeakCrypt(2).decrypt(decryptedPassword));
+this->setPassword(WeakCrypt(2).decrypt(decryptedPassword));
     
 
                                     }
                                 
                         else {
                             
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADER))
                         
                                     {
-                                    this.logUtil!.putF("Not a File - Failed Loading: " +FILEABPATH.toString(), this, "read");
+                                    this->logUtil.putF("Not a File - Failed Loading: " +FILEABPATH::toString(), this, "read");
     
 
                                     }
@@ -214,10 +213,10 @@ this.setPassword(new WeakCrypt(2).decrypt(decryptedPassword));
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRELOADERERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADERERROR))
                         
                                     {
-                                    this.logUtil!.putF("Failed", this, "read");
+                                    this->logUtil.putF("Failed", this, "read");
     
 
                                     }
@@ -227,14 +226,14 @@ this.setPassword(new WeakCrypt(2).decrypt(decryptedPassword));
 }
 
 
-    public setUserName(string userName){
-InstallerInfo.userName= userName;
+    public: void setUserName(std::string userName){
+InstallerInfo::userName= userName;
     
 }
 
 
-    public setPassword(string password){
-InstallerInfo.password= password;
+    public: void setPassword(std::string password){
+InstallerInfo::password= password;
     
 }
 
@@ -242,28 +241,24 @@ InstallerInfo.password= password;
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    updateIfNeeded(){
+    private: void updateIfNeeded(){
 
-                        if(!InstallerInfo.hasRead)
+                        if(!InstallerInfo::hasRead)
                         
                                     {
-                                    InstallerInfo.hasRead= true;
+                                    InstallerInfo::hasRead= true;
     
-this.read();
+this->read();
     
 
-                        if(InstallerInfo.userName == 
-                                    null
-                                 || InstallerInfo.password == 
-                                    null
-                                )
+                        if(false || false)
                         
                                     {
                                     
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.PRELOADER))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().PRELOADER))
                         
                                     {
-                                    this.logUtil!.putF("Failed", this, "updateIfNeeded");
+                                    this->logUtil.putF("Failed", this, "updateIfNeeded");
     
 
                                     }
@@ -279,43 +274,39 @@ this.read();
 
                 //@Throws(Exception.constructor)
             
-    public string getUserName(){
-this.updateIfNeeded();
+    public: std::string getUserName(){
+this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InstallerInfo.userName;
+                        return InstallerInfo::userName;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string getPassword(){
-this.updateIfNeeded();
+    public: std::string getPassword(){
+this->updateIfNeeded();
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InstallerInfo.password;
+                        return InstallerInfo::password;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isValid(string userName, string password){
-this.updateIfNeeded();
+    public: bool isValid(std::string userName, std::string password){
+this->updateIfNeeded();
     
 
-                        if(this.userName != 
-                                    null
-                                 && this.userName!.compareTo(userName) == 0 && this.password != 
-                                    null
-                                 && this.password.compareTo(password) == 0)
+                        if(true && this->userName.compareTo(userName) == 0 && true && this->password.compareTo(password) == 0)
                         
                                     {
                                     

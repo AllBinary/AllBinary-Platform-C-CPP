@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_H
         #define ORG_ALLBINARY_LOGIC_IO_FILE_ABFILE_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
             #include "../../../../../java/lang/Exception.h"
@@ -72,109 +74,108 @@
 class AbFile
             : public Object
         : public AbFileInterface {
-        
 
-    public static const NULL_FILE: AbFile = AbFile.createAbFileFromRawPath(StringUtil.getInstance()!.EMPTY_STRING)!;
-
-                //@Throws(Exception.constructor)
-            
-    public static AbFile createAbFileWithChild(AbFile file, string childPathName);
+    public: static const AbFile NULL_FILE = AbFile::createAbFileFromRawPath(StringUtil::getInstance().EMPTY_STRING);
 
                 //@Throws(Exception.constructor)
             
-    public static AbFile createAbFile(string filePath);
+    public: static AbFile createAbFileWithChild(AbFile file, std::string childPathName);
 
                 //@Throws(Exception.constructor)
             
-    public static AbFile createAbFilePathAndName(string filePath, string fileName);
+    public: static AbFile createAbFile(std::string filePath);
 
-    public static AbFile createAbFileFromAbPath(AbPath abPath);
+                //@Throws(Exception.constructor)
+            
+    public: static AbFile createAbFilePathAndName(std::string filePath, std::string fileName);
 
-    public static AbFile createAbFileFromRawPath(string filePath);
+    public: static AbFile createAbFileFromAbPath(AbPath abPath);
 
-    private: const file: File;
+    public: static AbFile createAbFileFromRawPath(std::string filePath);
 
-protected constructor (File file);
+    private: File file;
 
-    File getFile();
+protected: AbFile(File file);
 
-    public string getName();
+    protected: File getFile();
 
-    public string getParent();
+    public: std::string getName();
 
-    public File getParentFile();
+    public: std::string getParent();
 
-    public string getPath();
+    public: File getParentFile();
 
-    public bool isAbsolute();
+    public: std::string getPath();
 
-    public string getAbsolutePath();
+    public: bool isAbsolute();
 
-    public File getAbsoluteFile();
+    public: std::string getAbsolutePath();
+
+    public: File getAbsoluteFile();
 
                 //@Throws(IOException.constructor)
             
-    public string getCanonicalPath();
+    public: std::string getCanonicalPath();
 
                 //@Throws(IOException.constructor)
             
-    public File getCanonicalFile();
+    public: File getCanonicalFile();
 
-    public URI toURI();
+    public: URI toURI();
 
-    public bool canRead();
+    public: bool canRead();
 
-    public bool canWrite();
+    public: bool canWrite();
 
-    public bool exists();
+    public: bool exists();
 
-    public bool isDirectory();
+    public: bool isDirectory();
 
-    public bool isFile();
+    public: bool isFile();
 
-    public bool isHidden();
+    public: bool isHidden();
 
-    public int64_t lastModified();
+    public: int64_t lastModified();
 
-    public int64_t length();
-
-                //@Throws(IOException.constructor)
-            
-    public bool createNewFile();
+    public: int64_t length();
 
                 //@Throws(IOException.constructor)
             
-    public bool delete();
+    public: bool createNewFile();
 
-    public deleteOnExit();
+                //@Throws(IOException.constructor)
+            
+    public: bool delete_();
 
-    public std::vector<string> list();
+    public: void deleteOnExit();
 
-    public std::vector<string> listWithFilter(FilenameFilter filter);
+    public: std::vector<std::string> list();
 
-    public std::vector<any> listFiles();
+    public: std::vector<std::string> listWithFilter(FilenameFilter filter);
 
-    public std::vector<any> listFilesFileNameFilter(FilenameFilter filter);
+    public: std::vector<Object*> listFiles();
 
-    public std::vector<any> listFilesFileFilter(FileFilter filter);
+    public: std::vector<Object*> listFilesFileNameFilter(FilenameFilter filter);
 
-    public bool mkdir();
+    public: std::vector<Object*> listFilesFileFilter(FileFilter filter);
 
-    public bool mkdirs();
+    public: bool mkdir();
 
-    public bool renameTo(AbFile dest);
+    public: bool mkdirs();
 
-    public bool setLastModified(int64_t time);
+    public: bool renameTo(AbFile dest);
 
-    public bool setReadOnly();
+    public: bool setLastModified(int64_t time);
 
-    public int32_t compareTo(File pathname);
+    public: bool setReadOnly();
 
-    public bool equals(any = {} obj);
+    public: int32_t compareTo(File pathname);
 
-    public int32_t hashCode();
+    public: bool equals(Object* obj);
 
-    public string toString();
+    public: int32_t hashCode();
+
+    public: std::string toString();
 
 };
 

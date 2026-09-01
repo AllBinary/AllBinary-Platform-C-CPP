@@ -58,14 +58,13 @@
 class HorizontalRotationManeuverAIFactory
             : public Object
         : public ArtificialIntelligenceInterfaceFactoryInterface {
-        
 
-    public ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+    public: ArtificialIntelligenceInterface getInstance(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new HorizontaRotationManeuverAI(ownerLayerInterface, gameInput);
+                        return HorizontaRotationManeuverAI(ownerLayerInterface, gameInput);
     
 }
 

@@ -44,7 +44,6 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class LayerPositionFinderInterface {
-        
 
     AllBinaryLayer getLayerInterface(GeographicMapCellPosition geographicMapCellPosition)
 

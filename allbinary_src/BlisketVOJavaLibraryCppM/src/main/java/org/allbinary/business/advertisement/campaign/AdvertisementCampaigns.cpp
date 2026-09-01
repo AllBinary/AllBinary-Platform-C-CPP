@@ -55,45 +55,42 @@
 class AdvertisementCampaigns
             : public Object
         : public AdvertisementCampaignsInterface {
-        
 
-    private: advertisementsVector: Vector;
+    private: Vector advertisementsVector;
 
-public constructor (Vector vector){
-
-            super();
-        this.advertisementsVector= this.advertisementsVector;
+public: AdvertisementCampaigns(Vector vector){
+this->advertisementsVector= this->advertisementsVector;
     
 }
 
 
-    public add(AdvertisementInterface advertisementInterface){
-this.advertisementsVector!.add(advertisementInterface);
+    public: void add(AdvertisementInterface advertisementInterface){
+this->advertisementsVector.add(advertisementInterface);
     
 }
 
 
-    public AdvertisementInterface get(int32_t index){
+    public: AdvertisementInterface get(int32_t index){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.advertisementsVector!.get(index) as AdvertisementInterface;
+                        return this->advertisementsVector.get(index) as AdvertisementInterface;
     
 }
 
 
-    public int32_t size(){
+    public: int32_t size(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.advertisementsVector!.length;;
+                        return this->advertisementsVector.length;;
     
 }
 
 
-    public bool isEnabled(){
+    public: bool isEnabled(){
 
 
 
@@ -103,7 +100,7 @@ this.advertisementsVector!.add(advertisementInterface);
 }
 
 
-    public AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface){
+    public: AdvertisementsInterface search(AdvertisementSearchInterface advertisementSearchInterface){
 
 
 

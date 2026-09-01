@@ -54,13 +54,12 @@
 class InputAutomationConfigurationUtil
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static InputAutomationConfigurationModuleChangeEvent getChangeEvent(InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
+    public: static InputAutomationConfigurationModuleChangeEvent getChangeEvent(InputAutomationModuleFactoryInterface inputAutomationModuleInterface);
 
-private constructor ();
+private: InputAutomationConfigurationUtil();
 
 };
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_TWEENEDIMAGEANIMATION_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Throwable.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -69,47 +71,46 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class TweenedImageAnimation: public IndexedAnimation {
-        
 
-    private: const image: Image;
+    private: Image image;
 
-    private: const dx: int32_t;
+    private: int32_t dx;
 
-    private: const dy: int32_t;
+    private: int32_t dy;
 
-    private: totalFrames: int32_t;
+    private: int32_t totalFrames;
 
-    circularIndexUtil: CircularIndexUtil;
+    protected: CircularIndexUtil circularIndexUtil;
 
-public constructor (Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior);
+public: TweenedImageAnimation(Image image, int32_t dx, int32_t dy, int32_t totalFrames, AnimationBehavior animationBehavior);
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getAnimationSize();
+    public: int32_t getAnimationSize();
 
-    public nextFrame();
+    public: void nextFrame();
 
-    public previousFrame();
+    public: void previousFrame();
 
-    public setFrame(int32_t index);
+    public: void setFrame(int32_t index);
 
-    public int32_t getFrame();
+    public: int32_t getFrame();
 
-    public int32_t getSize();
+    public: int32_t getSize();
 
-    public setSequence(std::vector<int32_t> sequence);
+    public: void setSequence(std::vector<int32_t> sequence);
 
-    public std::vector<int32_t> getSequence();
+    public: std::vector<int32_t> getSequence();
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
-    public close();
+    public: void close();
 
                 //@Throws(Throwable.constructor)
             
-    finalize();
+    protected: void finalize();
 
 };
 

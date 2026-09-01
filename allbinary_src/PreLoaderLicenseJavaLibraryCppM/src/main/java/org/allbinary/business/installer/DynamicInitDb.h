@@ -54,11 +54,10 @@
         #include "InitDb.h"
 //Warning you must have sql root access
 class DynamicInitDb: public InitDb {
-        
 
-public constructor (AbeClientInformationInterface abeClientInformation);
+public: DynamicInitDb(AbeClientInformationInterface abeClientInformation);
 
-public constructor (AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
+public: DynamicInitDb(AbeClientInformationInterface abeClientInformation, DatabaseConnectionInfoInterface databaseConnectionInfoInterface);
 
 };
 

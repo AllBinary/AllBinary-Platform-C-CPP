@@ -56,13 +56,12 @@
         #include "PointsLayer.h"
 
 class PointsLayerCircularStaticPool: public AllBinaryLayerCircularPool {
-        
 
-public constructor (AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
+public: PointsLayerCircularStaticPool(AllBinaryLayerFactoryInterface allbinaryLayerFactoryInterface, int32_t total);
 
                 //@Throws(Exception.constructor)
             
-    public visit(AllBinaryLayer sourceLayerInterface);
+    public: void visit(AllBinaryLayer sourceLayerInterface);
 
 };
 

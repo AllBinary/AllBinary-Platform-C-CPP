@@ -49,33 +49,30 @@
         #include "TechEventListenerInterface.h"
 
 class TechEventHandler: public BasicEventHandler {
-        
 
-    private: static const eventHandler: TechEventHandler = new TechEventHandler();
+    private: static const TechEventHandler eventHandler = TechEventHandler();
 
-    public static TechEventHandler getInstance(){
+    public: static TechEventHandler getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return TechEventHandler.eventHandler;
+                        return TechEventHandler::eventHandler;
     
 }
 
 
-private constructor (){
-
-            super();
-        }
+private: TechEventHandler(){
+}
 
 
                 //@Throws(Exception.constructor)
             
-    process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
+    protected: void process(AllBinaryEventObject eventObject, EventListenerInterface eventListenerInterface){
 
-    techEventListenerInterface: TechEventListenerInterface = (eventListenerInterface as TechEventListenerInterface);;
+    TechEventListenerInterface techEventListenerInterface = (eventListenerInterface as TechEventListenerInterface);;
     
-techEventListenerInterface!.onTechEvent(eventObject);
+techEventListenerInterface.onTechEvent(eventObject);
     
 }
 

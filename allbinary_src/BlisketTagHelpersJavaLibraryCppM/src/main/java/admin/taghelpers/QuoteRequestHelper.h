@@ -77,27 +77,26 @@
         #include "ModifyTable.h"
 //TWB - Am I missing the correct Quote Request? Probably not
 class QuoteRequestHelper: public ModifyTable {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: weblisketSession: WeblisketSession;
+    private: WeblisketSession weblisketSession;
 
-    private: storeFrontInterface: StoreFrontInterface;
+    private: StoreFrontInterface storeFrontInterface;
 
-    private: quoteRequest: QuoteRequest;
+    private: QuoteRequest quoteRequest;
 
-public constructor (HashMap<any, any> hashMap, PageContext pageContext);
+public: QuoteRequestHelper(HashMap<any, any> hashMap, PageContext pageContext);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public string validationInfo();
+    public: std::string validationInfo();
 
-    public string insert();
+    public: std::string insert();
 
-    public string update();
+    public: std::string update();
 
-    public string delete();
+    public: std::string delete_();
 
 };
 

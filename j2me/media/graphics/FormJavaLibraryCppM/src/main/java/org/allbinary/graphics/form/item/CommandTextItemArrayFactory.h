@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEMARRAYFACTORY_H
         #define ORG_ALLBINARY_GRAPHICS_FORM_ITEM_COMMANDTEXTITEMARRAYFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Object.h"
         
 #include <jsinterop/annotations/JsType.h>
@@ -86,15 +88,14 @@
 class CommandTextItemArrayFactory
             : public Object
          {
-        
 
-    private: const list: BasicArrayList = new BasicArrayListD();
+    private: const BasicArrayList list = BasicArrayListD();
 
-    private: const visitorInterface: Visitor;
+    private: Visitor visitorInterface;
 
-public constructor (Visitor visitorInterface);
+public: CommandTextItemArrayFactory(Visitor visitorInterface);
 
-    public std::vector<ABCustomItem> getInstance(Vector<any> vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
+    public: std::vector<ABCustomItem> getInstance(Vector<any> vector, BasicColor backgroundBasicColor, BasicColor foregroundBasicColor);
 
 };
 

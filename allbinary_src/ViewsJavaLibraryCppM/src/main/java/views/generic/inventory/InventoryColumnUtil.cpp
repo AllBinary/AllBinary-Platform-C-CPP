@@ -60,52 +60,51 @@
 class InventoryColumnUtil
             : public Object
          {
-        
 
-    private: static const instance: InventoryColumnUtil = new InventoryColumnUtil();
+    private: static InventoryColumnUtil instance() { return InventoryColumnUtil(); }
 
-    public static InventoryColumnUtil getInstance(){
+    public: static InventoryColumnUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return InventoryColumnUtil.instance;
+                        return InventoryColumnUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public Vector getColumnWhereLike(InventoryEntity inventoryEntity, string category, string column){
-this.logUtil!.putF("Start Category: " +category, this, "getKeywords");
+    public: Vector getColumnWhereLike(InventoryEntity inventoryEntity, std::string category, std::string column){
+this->logUtil.putF("Start Category: " +category, this, "getKeywords");
     
 
-    keywords: Vector = new Vector();;
+    Vector keywords = Vector();;
     
 
-    vectorOfHashMaps: Vector = inventoryEntity!.getAllRows()!;;
+    Vector vectorOfHashMaps = inventoryEntity.getAllRows();;
     
 
-    size: int32_t = vectorOfHashMaps!.length!;;
+    int32_t size = vectorOfHashMaps.length;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    hashMap: HashMap<any, any> = vectorOfHashMaps!.get(index) as HashMap<any, any>;;
+    HashMap<any, any> hashMap = vectorOfHashMaps.get(index) as HashMap<any, any>;;
     
 
-    categoryName: string = hashMap!.get(BasicItemData.CATEGORY) as string;;
+    std::string categoryName = hashMap.get(BasicItemData::CATEGORY) as string;;
     
 
-                        if(!StringValidationUtil.getInstance()!.isEmpty(categoryName) && categoryName!.startsWith(category))
+                        if(!StringValidationUtil::getInstance().isEmpty(categoryName) && categoryName.startsWith(category))
                         
                                     {
-                                    keywords.add(hashMap!.get(column));
+                                    keywords.add(hashMap.get(column));
     
 
                                     }

@@ -61,18 +61,15 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasicWeightShippingModule.h"
 
-class BasicWeightShippingModuleView: public BasicWeightShippingModule: public DomNodeInterface {
-        
+class BasicWeightShippingModuleView: public BasicWeightShippingModule, public DomNodeInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-public constructor (){
-
-            super();
-        }
+public: BasicWeightShippingModuleView(){
+}
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
@@ -82,7 +79,7 @@ public constructor (){
 }
 
 
-    public org.w3c.dom.Document toValidationInfoDoc(){
+    public: org::w3c::dom::Document toValidationInfoDoc(){
 
 
 
@@ -92,7 +89,7 @@ public constructor (){
 }
 
 
-    public org.w3c.dom.Node toValidationInfoNode(org.w3c.dom.Document document){
+    public: org::w3c::dom::Node toValidationInfoNode(org::w3c::dom::Document document){
 
 
 
@@ -102,7 +99,7 @@ public constructor (){
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
 
 
@@ -112,15 +109,15 @@ public constructor (){
 }
 
 
-    public org.w3c.dom.Node toXmlNode(org.w3c.dom.Document document){
+    public: org::w3c::dom::Node toXmlNode(org::w3c::dom::Document document){
 
         try {
             
-    shippingMethodNode: Node = document.createElement(ShippingMethodData.NAME)!;;
+    Node shippingMethodNode = document.createElement(ShippingMethodData::NAME);;
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodData.NAME, this.getName()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::NAME, this->getName()));
     
-shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, ShippingMethodData.DESCRIPTION, this.getDescription()));
+shippingMethodNode.appendChild(ModDomHelper::createNameValueNodes(document, ShippingMethodData::DESCRIPTION, this->getDescription()));
     
 
 
@@ -133,10 +130,10 @@ shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, Ship
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toXmlNode", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlNode", e);
     
 
                                     }
@@ -152,11 +149,11 @@ shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, Ship
 }
 
 
-    public org.w3c.dom.Document toXmlDoc(){
+    public: org::w3c::dom::Document toXmlDoc(){
 
         try {
             
-    document: Document = DomDocumentHelper.create()!;;
+    Document document = DomDocumentHelper::create();;
     
 
 
@@ -169,10 +166,10 @@ shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, Ship
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "toXmlDoc", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "toXmlDoc", e);
     
 
                                     }
@@ -188,24 +185,24 @@ shippingMethodNode!.appendChild(ModDomHelper.createNameValueNodes(document, Ship
 }
 
 
-    public string view(){
+    public: std::string view(){
 
         try {
             
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return commonStrings!.NOT_IMPLEMENTED;
+                        return commonStrings.NOT_IMPLEMENTED;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.SQLLOGGING))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().SQLLOGGING))
                         
                                     {
-                                    this.logUtil!.put(this.commonStrings!.EXCEPTION, this, "view", e);
+                                    this->logUtil.put(this->commonStrings.EXCEPTION, this, "view", e);
     
 
                                     }

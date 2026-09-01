@@ -89,63 +89,62 @@
 class ClientInformation
             : public Object
         : public AbeClientInformationInterface {
-        
 
-    private: operatingSystemInterface: GenericOperatingSystem = NoOperatingSystem.NO_OPERATING_SYSTEM;
+    private: GenericOperatingSystem operatingSystemInterface = NoOperatingSystem::NO_OPERATING_SYSTEM;
 
-    private: const tsUtil: TsUtil = TsUtil.getInstance()!;
+    private: const TsUtil tsUtil = TsUtil::getInstance();
 
-    private: const name: string;
+    private: std::string name;
 
-    private: const shortName: string;
+    private: std::string shortName;
 
-    private: const version: string;
+    private: std::string version;
 
-    private: const specialName: string;
+    private: std::string specialName;
 
-    private: hardSale: bool = true;
+    private: bool hardSale = true;
 
-    private: licenseId: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string licenseId = StringUtil::getInstance().EMPTY_STRING;
 
-    private: licenseServers: BasicArrayList = BasicArrayListUtil.getInstance()!.getImmutableInstance()!;
+    private: BasicArrayList licenseServers = BasicArrayListUtil::getInstance().getImmutableInstance();
 
-public constructor (string name, string version, string specialName, string shortName);
+public: ClientInformation(std::string name, std::string version, std::string specialName, std::string shortName);
 
-    public init();
+    public: void init();
 
-    public GenericOperatingSystem getOperatingSystemInterface();
+    public: GenericOperatingSystem getOperatingSystemInterface();
 
-    public string getName();
+    public: std::string getName();
 
-    public string getSpecialName();
+    public: std::string getSpecialName();
 
-    public string getVersion();
+    public: std::string getVersion();
 
-    public string getLicenseId();
+    public: std::string getLicenseId();
 
-    public BasicArrayList getLicenseServers();
+    public: BasicArrayList getLicenseServers();
 
-    public string getLicenseServer(int32_t index);
+    public: std::string getLicenseServer(int32_t index);
 
-    public int32_t getNumberOfLicenseServers();
+    public: int32_t getNumberOfLicenseServers();
 
-    public Hashtable<any, any> toHashtable();
+    public: Hashtable<any, any> toHashtable();
 
-    public bool isSameId(string alicenseId);
+    public: bool isSameId(std::string alicenseId);
 
-    public bool isLargerOrDifferentServerList(BasicArrayList list);
+    public: bool isLargerOrDifferentServerList(BasicArrayList list);
 
-    setHardSale(bool hardSale);
+    protected: void setHardSale(bool hardSale);
 
-    public bool isHardSale();
+    public: bool isHardSale();
 
-    setOperatingSystemInterface(GenericOperatingSystem operatingSystemInterface);
+    protected: void setOperatingSystemInterface(GenericOperatingSystem operatingSystemInterface);
 
-    setLicenseId(string licenseId);
+    protected: void setLicenseId(std::string licenseId);
 
-    setLicenseServers(BasicArrayList licenseServers);
+    protected: void setLicenseServers(BasicArrayList licenseServers);
 
-    public string toShortString();
+    public: std::string toShortString();
 
 };
 

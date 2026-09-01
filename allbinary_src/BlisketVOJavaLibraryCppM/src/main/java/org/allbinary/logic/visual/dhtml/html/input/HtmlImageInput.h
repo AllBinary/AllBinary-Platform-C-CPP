@@ -45,9 +45,8 @@
 class HtmlImageInput
             : public Object
          {
-        
 
-public constructor ();
+public: HtmlImageInput();
 
 };
 

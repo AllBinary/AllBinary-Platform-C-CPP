@@ -53,11 +53,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class InputMappingEvent: public AllBinaryEventObject {
-        
 
-    private: inputToGameKeyMapping: InputToGameKeyMapping = InputToGameKeyMapping.getNullInstance()!;
+    private: InputToGameKeyMapping inputToGameKeyMapping = InputToGameKeyMapping::getNullInstance();
 
-public constructor (any = {} anyType){
+public: InputMappingEvent(Object* anyType){
             super(anyType);
                     
 
@@ -66,18 +65,18 @@ public constructor (any = {} anyType){
 }
 
 
-    public setInputToGameKeyMapping(InputToGameKeyMapping inputToGameKeyMapping){
-this.inputToGameKeyMapping= inputToGameKeyMapping;
+    public: void setInputToGameKeyMapping(InputToGameKeyMapping inputToGameKeyMapping){
+this->inputToGameKeyMapping= inputToGameKeyMapping;
     
 }
 
 
-    public InputToGameKeyMapping getInputToGameKeyMapping(){
+    public: InputToGameKeyMapping getInputToGameKeyMapping(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.inputToGameKeyMapping;
+                        return this->inputToGameKeyMapping;
     
 }
 

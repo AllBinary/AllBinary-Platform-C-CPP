@@ -74,13 +74,12 @@
 class TransformInfoHttpFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static TransformInfoInterface getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext);
+    public: static TransformInfoInterface getInstance(HashMap<any, any> propertiesHashMap, PageContext pageContext);
 
-private constructor ();
+private: TransformInfoHttpFactory();
 
 };
 

@@ -49,85 +49,82 @@
 class BottomLimiter
             : public Object
          {
-        
 
-    private: static const instance: BottomLimiter = new BottomLimiter();
+    private: static BottomLimiter instance() { return BottomLimiter(); }
 
-    public static BottomLimiter getInstance(){
+    public: static BottomLimiter getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return BottomLimiter.instance;
+                        return BottomLimiter::instance();
     
 }
 
 
-    private: bottom: int32_t= 0;
+    private: int32_t bottom= 0;
 
-    private: deltaY: int32_t= 0;
+    private: int32_t deltaY= 0;
 
-    private: lower: int32_t= 0;
+    private: int32_t lower= 0;
 
-    private: higher: int32_t= 0;
+    private: int32_t higher= 0;
 
-private constructor (){
-
-            super();
-        }
+private: BottomLimiter(){
+}
 
 
-    public init(int32_t lower, int32_t higher){
-this.lower= lower;
+    public: void init(int32_t lower, int32_t higher){
+this->lower= lower;
     
-this.higher= higher;
+this->higher= higher;
     
 }
 
 
-    public update(){
+    public: void update(){
 
-    displayInfo: DisplayInfoSingleton = DisplayInfoSingleton.getInstance()!;;
+    DisplayInfoSingleton displayInfo = DisplayInfoSingleton::getInstance();;
     
 
-    gameAdState: GameAdState = GameAdStateFactory.getInstance()!.getCurrentInstance()!;;
+    GameAdState gameAdState = GameAdStateFactory::getInstance().getCurrentInstance();;
     
 
-                        if(gameAdState!.isShowingAt())
+                        if(gameAdState.isShowingAt())
                         
                                     {
-                                    this.deltaY= this.higher;
+                                    this->deltaY= this->higher;
     
 
                                     }
                                 
                         else {
-                            this.deltaY= this.lower;
+                            this->deltaY= this->lower;
     
 
                         }
                             
-this.bottom= displayInfo!.getLastHeight() -this.deltaY;
+this->bottom= displayInfo.getLastHeight() -this->deltaY;
     
 }
 
 
-    public int32_t getDeltaY(){
+    public: int32_t getDeltaY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.deltaY;
+                        return this->deltaY;
     
 }
 
 
-    public int32_t getBottom(){
+    public: int32_t getBottom(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.bottom;
+                        return this->bottom;
     
 }
 

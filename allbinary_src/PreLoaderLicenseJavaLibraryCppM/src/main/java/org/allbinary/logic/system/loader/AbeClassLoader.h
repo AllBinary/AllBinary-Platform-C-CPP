@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABECLASSLOADER_H
         #define ORG_ALLBINARY_LOGIC_SYSTEM_LOADER_ABECLASSLOADER_H
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Class.h"
         
             #include "../../../../../java/lang/ClassLoader.h"
@@ -83,42 +85,41 @@
         #include "NoClassDefFoundError.h"
 
 class AbeClassLoader: public ClassLoader {
-        
 
-    private: static classes: Map = new HashMap<any, any>();
+    private: static Map classes = HashMap<any, any>();
 
-    private: static PATH: string;
+    private: static std::string PATH;
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const abCryptUtil: AbCryptUtil = AbCryptUtil.getInstance()!;
+    private: const AbCryptUtil abCryptUtil = AbCryptUtil::getInstance();
 
-    private: const LOAD_CLASS: string = "loadClass";
+    private: const std::string LOAD_CLASS = "loadClass";
 
-    private: const ENCRYPTED_EXTENSION: string = AbPathData.getInstance()!.EXTENSION_SEP +"abc";
+    private: const std::string ENCRYPTED_EXTENSION = AbPathData::getInstance().EXTENSION_SEP +"abc";
 
-    private: key: string;
+    private: std::string key;
 
-public constructor (ClassLoader parent, string key);
+public: AbeClassLoader(ClassLoader parent, std::string key);
 
-    Function findLoadedClass1(string name);
-
-                //@Throws(ClassNotFoundException.constructor)
-            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
-
-    public Function loadClass(string name);
+    protected: Function findLoadedClass1(std::string name);
 
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Function loadClass(string name, bool resolve);
-
-    std::vector<int8_t> loadClassBytesFromFile(string name);
+    public: Function loadClass(std::string name);
 
                 //@Throws(ClassNotFoundException.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public Function oldLoadClass(string name, bool resolve);
+    public: Function loadClass(std::string name, bool resolve);
+
+    private: std::vector<int8_t> loadClassBytesFromFile(std::string name);
+
+                //@Throws(ClassNotFoundException.constructor)
+            //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
+
+    public: Function oldLoadClass(std::string name, bool resolve);
 
 };
 

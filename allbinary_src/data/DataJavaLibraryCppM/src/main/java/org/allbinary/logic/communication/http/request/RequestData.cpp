@@ -42,20 +42,17 @@
 class RequestData
             : public Object
          {
-        
 
-    public static const REQUEST: string = "REQUESTDATA_REQUEST";
+    public: static const std::string REQUEST = "REQUESTDATA_REQUEST";
 
-    public static const PARAMETER: string = "REQUESTDATA_PARAMETER";
+    public: static const std::string PARAMETER = "REQUESTDATA_PARAMETER";
 
-    public static const VIEWS: string = "REQUESTDATA_VIEWS";
+    public: static const std::string VIEWS = "REQUESTDATA_VIEWS";
 
-    public static const VISITORS: string = "REQUESTDATA_VISITORS";
+    public: static const std::string VISITORS = "REQUESTDATA_VISITORS";
 
-public constructor (){
-
-            super();
-        }
+public: RequestData(){
+}
 
 
 };

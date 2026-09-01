@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -51,9 +53,8 @@
 #include "TopToBottomImageAnimation.h"
 
 class TopToBottomImageAnimationFactory: public BaseImageAnimationFactory {
-        
 
-public constructor (Image image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory animationBehaviorFactory){
+public: TopToBottomImageAnimationFactory(Image image, std::vector<int32_t> sequenceArray, AnimationBehaviorFactory animationBehaviorFactory){
             super(image, sequenceArray, image.getWidth(), image.getHeight(), 0, 0, animationBehaviorFactory);
                     
 
@@ -64,15 +65,15 @@ public constructor (Image image, std::vector<int32_t> sequenceArray, AnimationBe
 
                 //@Throws(Exception.constructor)
             
-    public Animation getInstance(int32_t instanceId){
+    public: Animation getInstance(int32_t instanceId){
 
-    scaledImage: Image = this.animationFactoryImageScaleUtil!.createImage(this.getImage(), this.animationFactoryInitializationVisitor!.width, this.animationFactoryInitializationVisitor!.height, this.scaleProperties!.scaleWidth, this.scaleProperties!.scaleHeight)!;;
+    Image scaledImage = this->animationFactoryImageScaleUtil.createImage(this->getImage(), this->animationFactoryInitializationVisitor.width, this->animationFactoryInitializationVisitor.height, this->scaleProperties.scaleWidth, this->scaleProperties.scaleHeight);;
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new TopToBottomImageAnimation(scaledImage, this.getSequenceArray(), this.animationBehaviorFactory!.getOrCreateInstance());
+                        return TopToBottomImageAnimation(scaledImage, this->getSequenceArray(), this->animationBehaviorFactory.getOrCreateInstance());
     
 }
 

@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_H
         #define ORG_ALLBINARY_MEDIA_AUDIO_BASESOUNDSFACTORY_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/Exception.h"
@@ -55,19 +57,18 @@
 class BaseSoundsFactory
             : public Object
         : public SoundsFactoryInterface {
-        
 
-    private: initialized: bool= false;
+    private: bool initialized= false;
 
-    public init();
+    public: void init();
 
                 //@Throws(Exception.constructor)
             
-    public std::vector<Sound> getSoundInterfaceArray();
+    public: std::vector<Sound> getSoundInterfaceArray();
 
-    public setInitialized(bool initialized);
+    public: void setInitialized(bool initialized);
 
-    public bool isInitialized();
+    public: bool isInitialized();
 
 };
 

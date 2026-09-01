@@ -58,28 +58,27 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "GatewayView.h"
 
-class GatewayValidationView: public HttpStoreComponentView: public ValidationComponentInterface {
-        
+class GatewayValidationView: public HttpStoreComponentView, public ValidationComponentInterface {
 
-public constructor (TransformInfoInterface transformInfoInterface);
+public: GatewayValidationView(TransformInfoInterface transformInfoInterface);
 
-    public Boolean isValid();
+    public: Boolean isValid();
 
-    public Document toValidationInfoDoc();
+    public: Document toValidationInfoDoc();
 
-    public Node toValidationInfoNode(Document document);
-
-                //@Throws(Exception.constructor)
-            
-    public string validationInfo();
-
-    public Document toXmlDoc();
-
-    public Node toXmlNode(Document document);
+    public: Node toValidationInfoNode(Document document);
 
                 //@Throws(Exception.constructor)
             
-    public string view();
+    public: std::string validationInfo();
+
+    public: Document toXmlDoc();
+
+    public: Node toXmlNode(Document document);
+
+                //@Throws(Exception.constructor)
+            
+    public: std::string view();
 
 };
 

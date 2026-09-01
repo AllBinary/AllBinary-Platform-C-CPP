@@ -87,60 +87,60 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class AddValidationStoreFrontView: public HttpContextView: public ValidationComponentInterface {
-        
+class AddValidationStoreFrontView: public HttpContextView, public ValidationComponentInterface {
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    newStoreFrontInterface: StoreFrontInterface;
+    protected: StoreFrontInterface newStoreFrontInterface;
 
-public constructor (TransformInfoInterface transformInfoInterface){
+public: AddValidationStoreFrontView(TransformInfoInterface transformInfoInterface){
             super(transformInfoInterface);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.newStoreFrontInterface= new StoreFront(this.getPageContext()!.getRequest() as HttpServletRequest) as StoreFrontInterface;
+this->newStoreFrontInterface= StoreFront(this->getPageContext().getRequest() as HttpServletRequest) as StoreFrontInterface;
     
 
-                        if(this.newStoreFrontInterface!.getName() == 
-                                    null
+                        if(this->newStoreFrontInterface.getName() == 
+                                    nullptr
                                 )
-                        this.newStoreFrontInterface!.setName(this.getWeblisketSession()!.getStoreName())
+                        this->newStoreFrontInterface.setName(this->getWeblisketSession().getStoreName());
+                                
 }
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
         try {
             
-    valid: Boolean = Boolean.TRUE;;
+    Boolean valid = Boolean::TRUE;;
     
 
-                        if(this.newStoreFrontInterface!.isValid() == Boolean.FALSE)
+                        if(this->newStoreFrontInterface.isValid() == Boolean::FALSE)
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory.getInstance(this.newStoreFrontInterface!.getName()) != 
-                                    null
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
                                 
 
-                        if(AbFile.createAbFileFromAbPath(new AbPath(this.getStoreViewsPath(), StringUtil.getInstance()!.EMPTY_STRING))!.isFile())
+                        if(AbFile::createAbFileFromAbPath(AbPath(this->getStoreViewsPath(), StringUtil::getInstance().EMPTY_STRING)).isFile())
                         
                                     {
-                                    valid= Boolean.FALSE;
+                                    valid= Boolean::FALSE;
     
 
                                     }
@@ -156,10 +156,10 @@ this.newStoreFrontInterface= new StoreFront(this.getPageContext()!.getRequest() 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to validate form", this, this.commonStrings!.IS_VALID, e);
+                                    this->logUtil.put("Failed to validate form", this, this->commonStrings.IS_VALID, e);
     
 
                                     }
@@ -168,7 +168,7 @@ this.newStoreFrontInterface= new StoreFront(this.getPageContext()!.getRequest() 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.FALSE;
+                        return Boolean::FALSE;
     
 }
 
@@ -177,56 +177,56 @@ this.newStoreFrontInterface= new StoreFront(this.getPageContext()!.getRequest() 
 
                 //@Throws(Exception.constructor)
             
-    string getStoreViewsPath(){
+    private: std::string getStoreViewsPath(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-stringBuffer!.append(URLGLOBALS.getMainPath());
+stringBuffer.append(URLGLOBALS::getMainPath());
     
-stringBuffer!.append(FREEBLISKET_PATH_GLOBALS.getInstance()!.XSLPATH);
+stringBuffer.append(FREEBLISKET_PATH_GLOBALS::getInstance().XSLPATH);
     
-stringBuffer!.append(this.newStoreFrontInterface!.getName());
+stringBuffer.append(this->newStoreFrontInterface.getName());
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 
 
-    public string validationInfo(){
+    public: std::string validationInfo(){
 
         try {
             
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-                        if(this.newStoreFrontInterface!.isValid() == Boolean.FALSE)
+                        if(this->newStoreFrontInterface.isValid() == Boolean::FALSE)
                         
                                     {
-                                    stringBuffer!.append(this.newStoreFrontInterface!.validationInfo());
+                                    stringBuffer.append(this->newStoreFrontInterface.validationInfo());
     
 
                                     }
                                 
 
-                        if(StoreFrontFactory.getInstance(this.newStoreFrontInterface!.getName()) != 
-                                    null
+                        if(StoreFrontFactory::getInstance(this->newStoreFrontInterface.getName()) != 
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append("Store name already used<br/>");
+                                    stringBuffer.append("Store name already used<br/>");
     
 
                                     }
                                 
 
-                        if(AbFile.createAbFileFromAbPath(new AbPath(this.getStoreViewsPath(), StringUtil.getInstance()!.EMPTY_STRING))!.isFile())
+                        if(AbFile::createAbFileFromAbPath(AbPath(this->getStoreViewsPath(), StringUtil::getInstance().EMPTY_STRING)).isFile())
                         
                                     {
-                                    stringBuffer!.append("Store name clashes with template name<br/>");
+                                    stringBuffer.append("Store name clashes with template name<br/>");
     
 
                                     }
@@ -235,17 +235,17 @@ stringBuffer!.append(this.newStoreFrontInterface!.getName());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 
                 //: 
 } catch(e) 
             {
 
-                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance()!.VIEWERROR))
+                        if(org.allbinary.logic.communication.log.config.type.LogConfigTypes.LOGGING.contains(org.allbinary.logic.communication.log.config.type.LogConfigTypeFactory.getInstance().VIEWERROR))
                         
                                     {
-                                    this.logUtil!.put("Failed to generate validation error info", this, "validationInfo()", e);
+                                    this->logUtil.put("Failed to generate validation error info", this, "validationInfo()", e);
     
 
                                     }
@@ -261,7 +261,7 @@ stringBuffer!.append(this.newStoreFrontInterface!.getName());
 }
 
 
-    public Document toValidationInfoDoc(){
+    public: Document toValidationInfoDoc(){
 
 
 
@@ -271,7 +271,7 @@ stringBuffer!.append(this.newStoreFrontInterface!.getName());
 }
 
 
-    public Node toValidationInfoNode(Document document){
+    public: Node toValidationInfoNode(Document document){
 
 
 
@@ -283,12 +283,12 @@ stringBuffer!.append(this.newStoreFrontInterface!.getName());
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return views.ValidationOnlyTempUtil.getInstance()!.view(this);;
+                        return views.ValidationOnlyTempUtil.getInstance().view(this);;
     
 }
 

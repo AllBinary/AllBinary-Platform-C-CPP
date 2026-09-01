@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../java/lang/Object.h"
         
             #include "../../../../../../../java/lang/Exception.h"
@@ -70,65 +72,61 @@
 class BasketReview
             : public Object
          {
-        
 
-    items: Vector = new Vector();
+    Vector items = Vector();
 
-public constructor (){
-
-            super();
-        }
+public: BasketReview(){
+}
 
 
-    public Boolean isValid(){
+    public: Boolean isValid(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return Boolean.TRUE;
+                        return Boolean::TRUE;
     
 }
 
 
-    public addItem(Item item){
-this.items.add(item);
+    public: void addItem(Item item){
+this->items.add(item);
     
 }
 
 
-    public Vector getItems(){
+    public: Vector getItems(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.items;
+                        return this->items;
     
 }
 
 
-    public removeItem(string id){
+    public: void removeItem(std::string id){
 
-    itemArray: std::vector<any> = this.items.toArray()!;;
+    std::vector<Object*> itemArray = this->items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = itemArray[index]! as Item;;
+    Item item = itemArray[index]! as Item;;
     
 
-                        if(item.getId()!.compareTo(id) == 0)
+                        if(item.getId().compareTo(id) == 0)
                         
                                     {
-                                    this.items.remove(item);
+                                    this->items.remove(item);
     
 
                                     }
@@ -138,26 +136,25 @@ this.items.add(item);
 }
 
 
-    public adjustItem(string id, string num){
+    public: void adjustItem(std::string id, std::string num){
 
-    itemArray: std::vector<any> = this.items.toArray()!;;
+    std::vector<Object*> itemArray = this->items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = itemArray[index]! as Item;;
+    Item item = itemArray[index]! as Item;;
     
 
-                        if(item.getId()!.compareTo(id) == 0)
+                        if(item.getId().compareTo(id) == 0)
                         
                                     {
                                     item.setNumber(num);
@@ -170,28 +167,27 @@ this.items.add(item);
 }
 
 
-    public string getTotalWeight(){
+    public: std::string getTotalWeight(){
 
-    weightFloat: float = 0;;
+    float weightFloat = 0;;
     
 
-    itemArray: std::vector<any> = this.items.toArray()!;;
+    std::vector<Object*> itemArray = this->items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = itemArray[index]! as Item;;
+    Item item = itemArray[index]! as Item;;
     
-weightFloat += new number(item.getWeight());
+weightFloat += number(item.getWeight());
     
 }
 
@@ -199,43 +195,42 @@ weightFloat += new number(item.getWeight());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new number(weightFloat).toString();;
+                        return number(weightFloat).toString();;
     
 }
 
 
-    public Integer getNumberOfItems(){
+    public: Integer getNumberOfItems(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Integer(this.items.length);
+                        return Integer(this->items.length);
     
 }
 
 
-    public Set getIds(){
+    public: Set getIds(){
 
-    idSet: HashSet = new HashSet();;
+    HashSet idSet = HashSet();;
     
 
-    itemArray: std::vector<any> = this.items.toArray()!;;
+    std::vector<Object*> itemArray = this->items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = itemArray[index]! as Item;;
+    Item item = itemArray[index]! as Item;;
     
-idSet!.add(item.getId());
+idSet.add(item.getId());
     
 }
 
@@ -248,33 +243,32 @@ idSet!.add(item.getId());
 }
 
 
-    public Integer getNumberOf(string id){
+    public: Integer getNumberOf(std::string id){
 
-    itemArray: std::vector<any> = this.items.toArray()!;;
+    std::vector<Object*> itemArray = this->items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = itemArray[index]! as Item;;
+    Item item = itemArray[index]! as Item;;
     
 
-                        if(item.getId()!.compareTo(id) == 0)
+                        if(item.getId().compareTo(id) == 0)
                         
                                     {
                                     
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Integer(item.getNumber());
+                        return Integer(item.getNumber());
     
 
                                     }
@@ -285,35 +279,34 @@ idSet!.add(item.getId());
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new Integer(0);
+                        return Integer(0);
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    node: Node = document.createElement(BasketData.BASKET)!;;
+    Node node = document.createElement(BasketData::BASKET);;
     
 
-    itemArray: std::vector<any> = this.items.toArray()!;;
+    std::vector<Object*> itemArray = this->items.toArray();;
     
 
-    size: int32_t = itemArray!.length
-                ;;
+    int32_t size = itemArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
 
-    item: Item = itemArray[index]! as Item;;
+    Item item = itemArray[index]! as Item;;
     
-node.appendChild(new ItemView(item, new Vector()).toXmlNode(document));
+node.appendChild(ItemView(item, Vector()).toXmlNode(document));
     
 }
 

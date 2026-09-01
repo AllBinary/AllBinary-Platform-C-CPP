@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_H
         #define ORG_ALLBINARY_ANIMATION_ADJUSTEDVECTORANIMATION_H
 
+            #include <vector>
+        
 #include <javax/microedition/lcdui/Graphics.h>
 
       
@@ -49,15 +51,14 @@
 #include "AnimationBehavior.h"
 
 class AdjustedVectorAnimation: public VectorAnimation {
-        
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
+public: AdjustedVectorAnimation(std::vector<std::vector<std::vector<int32_t>>> currentPoints, BasicColor basicColor, int32_t dx, int32_t dy, AnimationBehavior animationBehavior);
 
-    public paintXY(Graphics graphics, int32_t x, int32_t y);
+    public: void paintXY(Graphics graphics, int32_t x, int32_t y);
 
 };
 

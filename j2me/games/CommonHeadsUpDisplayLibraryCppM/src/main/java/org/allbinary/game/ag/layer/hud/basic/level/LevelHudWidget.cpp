@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../../../../java/lang/Exception.h"
         
 #include <javax/microedition/lcdui/Font.h>
@@ -60,116 +62,115 @@
                                         
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
-class LevelHudWidget: public BasicHud: public PaintableInterface {
-        
+class LevelHudWidget: public BasicHud, public PaintableInterface {
 
                 //@Throws(Exception.constructor)
             
-    public static LevelHudWidget createHud(int32_t maxlevel, int32_t location, int32_t direction){
+    public: static LevelHudWidget createHud(int32_t maxlevel, int32_t location, int32_t direction){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new LevelHudWidget(maxlevel, location, direction);
+                        return LevelHudWidget(maxlevel, location, direction);
     
 }
 
 
-    private: level: int32_t;
+    private: int32_t level;
 
-    private: maxlevel: int32_t;
+    private: int32_t maxlevel;
 
-    private: const levelString: std::vector<char>;
+    private: std::vector<char> levelString;
 
-    private: levelNumberCharArray: std::vector<char> = NullUtil.getInstance()!.NULL_CHAR_ARRAY;
+    private: std::vector<char> levelNumberCharArray = NullUtil::getInstance().NULL_CHAR_ARRAY;
 
-    private: levelNumberTotalDigits: int32_t= 0;
+    private: int32_t levelNumberTotalDigits= 0;
 
-    private: offset: int32_t= 0;
+    private: int32_t offset= 0;
 
-    private: const primitiveLongUtil: PrimitiveLongUtil;
+    private: PrimitiveLongUtil primitiveLongUtil;
 
-public constructor (int32_t maxlevel, int32_t location, int32_t direction){
-            super(location, direction, 2, BasicColorFactory.getInstance()!.GREY);
+public: LevelHudWidget(int32_t maxlevel, int32_t location, int32_t direction){
+            super(location, direction, 2, BasicColorFactory::getInstance().GREY);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.primitiveLongUtil= PrimitiveLongUtil.createPowerOfTen(1000);
+this->primitiveLongUtil= PrimitiveLongUtil::createPowerOfTen(1000);
     
 
-    LEVEL: string = "Lv ";;
+    std::string LEVEL = "Lv ";;
     
-this.levelString= LEVEL.split('');
+this->levelString= LEVEL::split('');
     
-this.maxlevel= maxlevel;
+this->maxlevel= maxlevel;
     
-this.level= maxlevel;
+this->level= maxlevel;
     
-this.update();
+this->update();
     
-this.updateMaxHeight= 14;
+this->updateMaxHeight= 14;
     
 }
 
 
-    public updateMeasurement(Graphics graphics){
+    public: void updateMeasurement(Graphics graphics){
 
-    font: Font = graphics.getFont()!;;
+    Font font = graphics.getFont();;
     
-this.updateMaxWidth= font.getSize() *4;
+this->updateMaxWidth= font.getSize() *4;
     
-this.offset= font.charsWidth(this.levelString, 0, this.levelString!.length) +font.getSize();
+this->offset= font.charsWidth(this->levelString, 0, this->levelString.size()) +font.getSize();
     
 super.updateMeasurement(graphics);
     
 }
 
 
-    update(){
-this.levelNumberCharArray= this.primitiveLongUtil!.getCharArray(this.level);
+    private: void update(){
+this->levelNumberCharArray= this->primitiveLongUtil.getCharArray(this->level);
     
-this.levelNumberTotalDigits= this.primitiveLongUtil!.getCurrentTotalDigits();
-    
-}
-
-
-    public setLevel(int32_t level){
-this.level= level;
-    
-this.update();
+this->levelNumberTotalDigits= this->primitiveLongUtil.getCurrentTotalDigits();
     
 }
 
 
-    public nextLevel(){
-this.level++;
+    public: void setLevel(int32_t level){
+this->level= level;
     
-this.update();
+this->update();
     
 }
 
 
-    public previousLevel(){
-this.level--;
+    public: void nextLevel(){
+this->level++;
+    
+this->update();
+    
+}
+
+
+    public: void previousLevel(){
+this->level--;
     
 
-                        if(this.level < 0)
+                        if(this->level < 0)
                         
                                     {
-                                    this.level= 0;
+                                    this->level= 0;
     
 
                                     }
                                 
-this.update();
+this->update();
     
 }
 
 
-    public bool isComplete(){
+    public: bool isComplete(){
 
-                        if(this.level <= this.maxlevel)
+                        if(this->level <= this->maxlevel)
                         
                                     {
                                     
@@ -194,13 +195,13 @@ this.update();
 }
 
 
-    public paint(Graphics graphics){
-super.paintDX(graphics, this.levelString, 0, this.levelString!.length, this.levelNumberCharArray, 0, this.levelNumberTotalDigits, this.offset);
+    public: void paint(Graphics graphics){
+super.paintDX(graphics, this->levelString, 0, this->levelString.size(), this->levelNumberCharArray, 0, this->levelNumberTotalDigits, this->offset);
     
 }
 
 
-    public paintThreed(Graphics graphics){
+    public: void paintThreed(Graphics graphics){
 }
 
 

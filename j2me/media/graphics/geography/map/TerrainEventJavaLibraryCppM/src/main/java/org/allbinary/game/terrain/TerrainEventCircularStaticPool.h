@@ -53,20 +53,19 @@
 class TerrainEventCircularStaticPool
             : public Object
          {
-        
 
-    private: static const instance: TerrainEventCircularStaticPool = new TerrainEventCircularStaticPool();
+    private: static TerrainEventCircularStaticPool instance() { return TerrainEventCircularStaticPool(); }
 
-    public static TerrainEventCircularStaticPool getInstance();
+    public: static TerrainEventCircularStaticPool getInstance();
 
-    private: EVENT_POOL: AllBinaryEventCircularPool = new AllBinaryEventCircularPool(20);
+    private: AllBinaryEventCircularPool EVENT_POOL = AllBinaryEventCircularPool(20);
 
-    public init();
+    public: void init();
 
                 //@Throws(Exception.constructor)
             //@Synchronized //TWB - This is not allowed for CPP native. Instead use Coroutine logic instead.
 
-    public TerrainEvent getNext(BasicTerrainInfo basicTerrainInfo);
+    public: TerrainEvent getNext(BasicTerrainInfo basicTerrainInfo);
 
 };
 

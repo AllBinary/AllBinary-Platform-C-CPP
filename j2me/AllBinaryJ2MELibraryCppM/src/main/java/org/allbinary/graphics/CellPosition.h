@@ -59,27 +59,26 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class CellPosition: public V {
-        
 
-    public static string toStringCellPosition(CellPosition basicGeographicMapCellPosition);
+    public: static std::string toStringCellPosition(CellPosition basicGeographicMapCellPosition);
 
-    public static string toStringColRow(int32_t i_column, int32_t i_row);
+    public: static std::string toStringColRow(int32_t i_column, int32_t i_row);
 
-    private: const id: int32_t;
+    private: int32_t id;
 
-    private: const column: int32_t;
+    private: int32_t column;
 
-    private: const row: int32_t;
+    private: int32_t row;
 
-public constructor (int32_t column, int32_t row, int32_t columns, int32_t rows);
+public: CellPosition(int32_t column, int32_t row, int32_t columns, int32_t rows);
 
-    public int32_t getColumn();
+    public: int32_t getColumn();
 
-    public int32_t getRow();
+    public: int32_t getRow();
 
-    public string toString();
+    public: std::string toString();
 
-    public int32_t getId();
+    public: int32_t getId();
 
 };
 

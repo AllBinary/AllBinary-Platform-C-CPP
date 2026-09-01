@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
             #include "../../../../../java/lang/Exception.h"
         
             #include "../../../../../java/lang/RuntimeException.h"
@@ -126,17 +128,16 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "SpecialGameInputInterface.h"
 
-class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer: public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
-        
+class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer, public DestroyableInterface, public DamageableInterface, public PickupCompositeInterface, public SpecialGameInputInterface {
 
-    public static NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER: any = NullUtil.getInstance()!.NULL_OBJECT;
+    public: static Object* NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER = NullUtil::getInstance().NULL_OBJECT;
 
-    public static CollidableDestroyableDamageableLayer getNullInstance(){
+    public: static CollidableDestroyableDamageableLayer getNullInstance(){
 
-                        if(CollidableDestroyableDamageableLayer.NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER == NullUtil.getInstance()!.NULL_OBJECT)
+                        if(CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER == NullUtil::getInstance().NULL_OBJECT)
                         
                                     {
-                                    CollidableDestroyableDamageableLayer.NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER= new CollidableDestroyableDamageableLayer(BasicGroupFactory.getInstance()!.NONE_ARRAY, StringUtil.getInstance()!.EMPTY_STRING, RectangleFactory.SINGLETON, ViewPositionBase.NULL_VIEW_POSITION);
+                                    CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER= CollidableDestroyableDamageableLayer(BasicGroupFactory::getInstance().NONE_ARRAY, StringUtil::getInstance().EMPTY_STRING, RectangleFactory::SINGLETON, ViewPositionBase::NULL_VIEW_POSITION);
     
 
                                     }
@@ -145,77 +146,77 @@ class CollidableDestroyableDamageableLayer: public CollidableCompositeLayer: pub
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return CollidableDestroyableDamageableLayer.NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER as CollidableDestroyableDamageableLayer;
+                        return CollidableDestroyableDamageableLayer::NULL_COLLIDABLE_DESTROYABLE_DAMAGE_LAYER as CollidableDestroyableDamageableLayer;
     
 }
 
 
-    private: static const READYFOREXPLOSION: string = "ReadyForExplosion: ";
+    private: static const std::string READYFOREXPLOSION = "ReadyForExplosion: ";
 
-    private: groupInterface: std::vector<Group>;
+    private: std::vector<Group> groupInterface;
 
-    private: readyForExplosion: bool= false;
+    private: bool readyForExplosion= false;
 
-    private: initWidth: int32_t;
+    private: int32_t initWidth;
 
-    private: initHeight: int32_t;
+    private: int32_t initHeight;
 
-    private: initX: int32_t= 0;
+    private: int32_t initX= 0;
 
-    private: initY: int32_t= 0;
+    private: int32_t initY= 0;
 
-    private: initZ: int32_t= 0;
+    private: int32_t initZ= 0;
 
-    partInterfaceArrayP: std::vector<PartInterface> = PartInterfaceUtil.getZeroArray()!;
+    protected: std::vector<PartInterface> partInterfaceArrayP = PartInterfaceUtil::getZeroArray();
 
-    private: pickupBehavior: PickupBehavior;
+    private: PickupBehavior pickupBehavior;
 
-    public allBinaryGameLayerManagerP: AllBinaryGameLayerManager = AllBinaryGameLayerManager.getNullInstance()!;
+    public: AllBinaryGameLayerManager allBinaryGameLayerManagerP = AllBinaryGameLayerManager::getNullInstance();
 
-    public isDraggable: bool = false;
+    public: bool isDraggable = false;
 
-    public isDragged: bool = false;
+    public: bool isDragged = false;
 
-    public isDropped: bool = false;
+    public: bool isDropped = false;
 
-public constructor (std::vector<Group> groupInterface, string name, Rectangle layerInfo, ViewPositionBase viewPosition){
-            super(name, layerInfo, viewPosition, CollidableNeverCollideBehaviorFactory.getInstance());
+public: CollidableDestroyableDamageableLayer(std::vector<Group> groupInterface, std::string name, Rectangle layerInfo, ViewPositionBase viewPosition){
+            super(name, layerInfo, viewPosition, CollidableNeverCollideBehaviorFactory::getInstance());
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.initWidth= layerInfo!.getWidth();
+this->initWidth= layerInfo.getWidth();
     
-this.initHeight= layerInfo!.getHeight();
+this->initHeight= layerInfo.getHeight();
     
-this.groupInterface= groupInterface;
+this->groupInterface= groupInterface;
     
-this.pickupBehavior= PickupBehavior.getNullInstance();
-    
-}
-
-
-                //@Throws(Exception.constructor)
-            
-    public initPosition(){
-this.setPosition(this.initX, this.initY, this.initZ);
+this->pickupBehavior= PickupBehavior::getNullInstance();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public initPositionXYZ(int32_t x, int32_t y, int32_t z){
-this.initX= x;
-    
-this.initY= y;
-    
-this.initZ= z;
+    public: void initPosition(){
+this->setPosition(this->initX, this->initY, this->initZ);
     
 }
 
 
-    public paint(Graphics graphics){
+                //@Throws(Exception.constructor)
+            
+    public: void initPositionXYZ(int32_t x, int32_t y, int32_t z){
+this->initX= x;
+    
+this->initY= y;
+    
+this->initZ= z;
+    
+}
+
+
+    public: void paint(Graphics graphics){
 super.paint(graphics);
     
 }
@@ -223,68 +224,68 @@ super.paint(graphics);
 
                 //@Throws(Exception.constructor)
             
-    public damage(int32_t damage, int32_t damageType){
+    public: void damage(int32_t damage, int32_t damageType){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public int32_t getDamage(int32_t damageType){
+    public: int32_t getDamage(int32_t damageType){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public bool isDestroyed(){
+    public: bool isDestroyed(){
 
 
 
-                            throw new Exception(this.commonStrings!.NOT_IMPLEMENTED);
+                            throw Exception(this->commonStrings.NOT_IMPLEMENTED);
                     
 }
 
 
-    public std::vector<Group> getGroupInterface(){
+    public: std::vector<Group> getGroupInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.groupInterface;
+                        return this->groupInterface;
     
 }
 
 
-    public setGroupInterface(std::vector<Group> teamInterface){
-this.groupInterface= teamInterface;
+    public: void setGroupInterface(std::vector<Group> teamInterface){
+this->groupInterface= teamInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
-this.allBinaryGameLayerManagerP= allBinaryGameLayerManager;
+    public: void setAllBinaryGameLayerManager(AllBinaryGameLayerManager allBinaryGameLayerManager){
+this->allBinaryGameLayerManagerP= allBinaryGameLayerManager;
     
 
-                        if(this.allBinaryGameLayerManagerP == 
-                                    null
+                        if(this->allBinaryGameLayerManagerP == 
+                                    nullptr
                                 )
                         
                                     {
                                     
 
 
-                            throw new RuntimeException();
+                            throw RuntimeException();
                     
 
                                     }
@@ -292,297 +293,296 @@ this.allBinaryGameLayerManagerP= allBinaryGameLayerManager;
 }
 
 
-    public bool isReadyForExplosion(){
+    public: bool isReadyForExplosion(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.readyForExplosion;
+                        return this->readyForExplosion;
     
 }
 
 
-    setReadyForExplosion(bool isReadyForExplosion){
-this.readyForExplosion= isReadyForExplosion;
+    protected: void setReadyForExplosion(bool isReadyForExplosion){
+this->readyForExplosion= isReadyForExplosion;
     
 }
 
 
-    public int32_t getInitWidth(){
+    public: int32_t getInitWidth(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initWidth;
+                        return this->initWidth;
     
 }
 
 
-    public int32_t getInitHeight(){
+    public: int32_t getInitHeight(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initHeight;
+                        return this->initHeight;
     
 }
 
 
-    public int32_t getInitX(){
+    public: int32_t getInitX(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initX;
+                        return this->initX;
     
 }
 
 
-    public int32_t getInitY(){
+    public: int32_t getInitY(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.initY;
+                        return this->initY;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public up(){
+    public: void up(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public down(){
+    public: void down(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public right(){
+    public: void right(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public left(){
+    public: void left(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public strafeLeft(){
+    public: void strafeLeft(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public strafeRight(){
+    public: void strafeRight(){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void fire(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special1(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special2(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special3(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special4(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
+    public: void special5(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public upAnalog(int32_t yAnalogValue){
+    public: void upAnalog(int32_t yAnalogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public downAnalog(int32_t yAnalogValue){
+    public: void downAnalog(int32_t yAnalogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public rightAnalog(int32_t xAnalogValue){
+    public: void rightAnalog(int32_t xAnalogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public leftAnalog(int32_t xAnalogValue){
+    public: void leftAnalog(int32_t xAnalogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public rightTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue){
+    public: void rightTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue){
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public leftTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue){
+    public: void leftTrigger(AllBinaryLayerManager layerManager, GameKeyEvent gameKeyEvent, int32_t xAnalogValue){
 }
 
 
-    public onDestroyed(DestroyedEvent destroyedEvent){
+    public: void onDestroyed(DestroyedEvent destroyedEvent){
 }
 
 
-    public PickupBehavior getPickupBehavior(){
+    public: PickupBehavior getPickupBehavior(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.pickupBehavior;
+                        return this->pickupBehavior;
     
 }
 
 
-    public setPickupBehavior(PickupBehavior pickupBehavior){
-this.pickupBehavior= pickupBehavior;
+    public: void setPickupBehavior(PickupBehavior pickupBehavior){
+this->pickupBehavior= pickupBehavior;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public addPart(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface){
+    public: void addPart(PickedUpLayerInterfaceFactoryInterface pickedUpLayerInterfaceFactoryInterface){
 }
 
 
-    public setPartInterfaceArray(std::vector<PartInterface> partInterfaceArray){
-this.partInterfaceArrayP= partInterfaceArray;
+    public: void setPartInterfaceArray(std::vector<PartInterface> partInterfaceArray){
+this->partInterfaceArrayP= partInterfaceArray;
     
 }
 
 
-    public std::vector<PartInterface> getPartInterfaceArray(){
+    public: std::vector<PartInterface> getPartInterfaceArray(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.partInterfaceArrayP;
+                        return this->partInterfaceArrayP;
     
 }
 
 
-    public toStringAppend(StringMaker stringBuffer){
+    public: void toStringAppend(StringMaker stringBuffer){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    positionStrings: PositionStrings = PositionStrings.getInstance()!;;
+    PositionStrings positionStrings = PositionStrings::getInstance();;
     
 super.toStringAppend(stringBuffer);
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
 
-    groupInterfaceArray: std::vector<Group> = this.getGroupInterface()!;;
+    std::vector<Group> groupInterfaceArray = this->getGroupInterface();;
     
 
-    size: int32_t = groupInterfaceArray!.length
-                ;;
+    int32_t size = groupInterfaceArray.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-stringBuffer!.append(groupInterfaceArray[index]!.toString());
+stringBuffer.append(groupInterfaceArray[index]!.toString());
     
-stringBuffer!.append(commonSeps!.COMMA);
+stringBuffer.append(commonSeps.COMMA);
     
 }
 
 
-    pickupBehavior: PickupBehavior = this.getPickupBehavior()!;;
+    PickupBehavior pickupBehavior = this->getPickupBehavior();;
     
 
                         if(pickupBehavior != 
-                                    null
+                                    nullptr
                                 )
                         
                                     {
-                                    stringBuffer!.append(commonSeps!.NEW_LINE);
+                                    stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(pickupBehavior!.toString());
+stringBuffer.append(pickupBehavior.toString());
     
 
                                     }
                                 
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(CollidableDestroyableDamageableLayer.READYFOREXPLOSION);
+stringBuffer.append(CollidableDestroyableDamageableLayer::READYFOREXPLOSION);
     
-stringBuffer!.appendboolean(this.readyForExplosion);
+stringBuffer.appendboolean(this->readyForExplosion);
     
-stringBuffer!.append(commonSeps!.NEW_LINE);
+stringBuffer.append(commonSeps.NEW_LINE);
     
-stringBuffer!.append(this.commonStrings!.INIT);
+stringBuffer.append(this->commonStrings.INIT);
     
-stringBuffer!.append(commonSeps!.SPACE);
+stringBuffer.append(commonSeps.SPACE);
     
-stringBuffer!.append(positionStrings!.X_LABEL);
+stringBuffer.append(positionStrings.X_LABEL);
     
-stringBuffer!.appendint(this.initX);
+stringBuffer.appendint(this->initX);
     
-stringBuffer!.append(positionStrings!.Y_LABEL);
+stringBuffer.append(positionStrings.Y_LABEL);
     
-stringBuffer!.appendint(this.initX);
+stringBuffer.appendint(this->initX);
     
-stringBuffer!.append(positionStrings!.Z_LABEL);
+stringBuffer.append(positionStrings.Z_LABEL);
     
-stringBuffer!.appendint(this.initZ);
+stringBuffer.appendint(this->initZ);
     
 }
 
 
-    public string toString(){
+    public: std::string toString(){
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
-this.toStringAppend(stringBuffer);
+this->toStringAppend(stringBuffer);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

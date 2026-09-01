@@ -57,15 +57,14 @@
         #include "PaintableForm.h"
 
 class FormPaintable: public Paintable {
-        
 
-    private: const form: PaintableForm;
+    private: PaintableForm form;
 
-public constructor (PaintableForm form);
+public: FormPaintable(PaintableForm form);
 
-    public paint(Graphics graphics);
+    public: void paint(Graphics graphics);
 
-    public PaintableForm getForm();
+    public: PaintableForm getForm();
 
 };
 

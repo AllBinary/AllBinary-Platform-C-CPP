@@ -54,17 +54,16 @@
 class WorkFlowEntityFactory
             : public Object
          {
-        
 
-    private: static const instance: WorkFlowEntityFactory = new WorkFlowEntityFactory();
+    private: static WorkFlowEntityFactory instance() { return WorkFlowEntityFactory(); }
 
-    public static WorkFlowEntityFactory getInstance();
+    public: static WorkFlowEntityFactory getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-private constructor ();
+private: WorkFlowEntityFactory();
 
-    public WorkFlowEntity create2();
+    public: WorkFlowEntity create2();
 
 };
 

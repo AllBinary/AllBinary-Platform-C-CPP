@@ -49,15 +49,14 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class VertexAttributePointerOpenGLProcessor: public ObjectThreedOpenGLProcessor {
-        
 
-    private: static const instance: VertexAttributePointerOpenGLProcessor = new VertexAttributePointerOpenGLProcessor();
+    private: static VertexAttributePointerOpenGLProcessor instance() { return VertexAttributePointerOpenGLProcessor(); }
 
-    public static VertexAttributePointerOpenGLProcessor getInstance();
+    public: static VertexAttributePointerOpenGLProcessor getInstance();
 
-public constructor ();
+public: VertexAttributePointerOpenGLProcessor();
 
-    public process(GL10 gl, any = {} anyType);
+    public: void process(GL10 gl, Object* anyType);
 
 };
 

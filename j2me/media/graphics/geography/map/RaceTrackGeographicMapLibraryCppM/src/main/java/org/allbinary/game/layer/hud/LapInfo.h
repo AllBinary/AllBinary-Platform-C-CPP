@@ -48,25 +48,24 @@
 class LapInfo
             : public Object
          {
-        
 
-    public static NULL_LAP_INFO: LapInfo = new LapInfo( -1);
+    public: static LapInfo NULL_LAP_INFO = LapInfo( -1);
 
-    private: numberOfLaps: int32_t;
+    private: int32_t numberOfLaps;
 
-    private: totalLaps: int32_t;
+    private: int32_t totalLaps;
 
-public constructor (int32_t totalLaps);
+public: LapInfo(int32_t totalLaps);
 
-    public add();
+    public: void add();
 
-    public int32_t getCurrentLap();
+    public: int32_t getCurrentLap();
 
-    public int32_t getTotalLaps();
+    public: int32_t getTotalLaps();
 
-    public bool isDone();
+    public: bool isDone();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

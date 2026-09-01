@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONINFO_H
         #define ORG_ALLBINARY_ANIMATION_IMAGE_IMAGEARRAYROTATIONANIMATIONINFO_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
 #include <javax/microedition/lcdui/Image.h>
@@ -51,37 +53,36 @@
 class ImageArrayRotationAnimationInfo
             : public Object
          {
-        
 
-    private: imageArray: std::vector<Image>;
+    private: std::vector<Image> imageArray;
 
-    private: angleIncrement: int32_t;
+    private: int32_t angleIncrement;
 
-    private: totalAngle: int32_t;
+    private: int32_t totalAngle;
 
-    private: dx: int32_t;
+    private: int32_t dx;
 
-    private: dy: int32_t;
+    private: int32_t dy;
 
-public constructor (std::vector<Image> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy);
+public: ImageArrayRotationAnimationInfo(std::vector<Image> imageArray, int32_t angleIncrement, int32_t totalAngle, int32_t dx, int32_t dy);
 
-    public setImageArray(std::vector<Image> imageArray);
+    public: void setImageArray(std::vector<Image> imageArray);
 
-    public std::vector<Image> getImageArray();
+    public: std::vector<Image> getImageArray();
 
-    public AngleInfo getAngleInfoP();
+    public: AngleInfo getAngleInfoP();
 
-    public setTotalAngle(int32_t totalAngle);
+    public: void setTotalAngle(int32_t totalAngle);
 
-    public int32_t getTotalAngle();
+    public: int32_t getTotalAngle();
 
-    public setDx(int32_t dx);
+    public: void setDx(int32_t dx);
 
-    public int32_t getDx();
+    public: int32_t getDx();
 
-    public setDy(int32_t dy);
+    public: void setDy(int32_t dy);
 
-    public int32_t getDy();
+    public: int32_t getDy();
 
 };
 

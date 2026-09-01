@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 #include <org/allbinary/game/input/GameKey.h>
 
       
@@ -72,67 +74,65 @@
         #include "HelpPaintable.h"
 
 class BasicInputMappingHelpPaintable: public HelpPaintable {
-        
 
-    private: gameInputMappingArray: std::vector<GameInputMapping>;
+    private: std::vector<GameInputMapping> gameInputMappingArray;
 
-    private: const NONE: GameKey = GameKeyFactory.getInstance()!.NONE;
+    private: const GameKey NONE = GameKeyFactory::getInstance().NONE;
 
-protected constructor (std::vector<GameInputMapping> gameInputMappingArray, BasicColor basicColor){
-            super("Help Screen", BasicColorFactory.getInstance()!.BLACK, basicColor);
+protected: BasicInputMappingHelpPaintable(std::vector<GameInputMapping> gameInputMappingArray, BasicColor basicColor){
+            super("Help Screen", BasicColorFactory::getInstance().BLACK, basicColor);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-this.gameInputMappingArray= gameInputMappingArray;
+this->gameInputMappingArray= gameInputMappingArray;
     
-this.update(this.NONE, this.NONE);
+this->update(this->NONE, this->NONE);
     
 }
 
 
-    public update(GameKey selectedGameKey, Input selectedInput){
+    public: void update(GameKey selectedGameKey, Input selectedInput){
 
-    gameKeyMapping: PersistentInputMapping = PlatformInputMappingFactory.getInstance()!.getPersistentInputMappingInstance()!;;
+    PersistentInputMapping gameKeyMapping = PlatformInputMappingFactory::getInstance().getPersistentInputMappingInstance();;
     
 
-    EQUAL: string = " = ";;
+    std::string EQUAL = " = ";;
     
 
-    stringMaker: StringMaker = new StringMaker();;
+    StringMaker stringMaker = StringMaker();;
     
 
-    size: int32_t = this.gameInputMappingArray!.length
-                ;;
+    int32_t size = this->gameInputMappingArray.size();;
     
 
-    keyInfo: std::vector<string> = new Array(size);;
+    std::vector<std::string> keyInfo = new Array(size);;
     
 
-    gameInputMapping: GameInputMapping;;
+    GameInputMapping gameInputMapping;;
     
 
-    gameKey: GameKey;;
+    GameKey gameKey;;
     
 
-    list: BasicArrayList;;
+    BasicArrayList list;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-gameInputMapping= this.gameInputMappingArray[index]!;
+gameInputMapping= this->gameInputMappingArray[index]!;
     
-gameKey= gameInputMapping!.getGameKey();
+gameKey= gameInputMapping.getGameKey();
     
-list= gameKeyMapping!.getInputMapping()!.getMappedInput(gameKey);
+list= gameKeyMapping.getInputMapping().getMappedInput(gameKey);
     
-stringMaker!.delete(0, stringMaker!.length());
+stringMaker.delete(0, stringMaker.length());
     
-keyInfo[index]= stringMaker!.append(gameInputMapping!.getName())!.append(EQUAL)!.append(this.get(list))!.toString();
+keyInfo[index]= stringMaker.append(gameInputMapping.getName()).append(EQUAL).append(this->get(list)).toString();
     
 }
 
@@ -141,60 +141,60 @@ super.setInputInfoP(keyInfo);
 }
 
 
-    string get(BasicArrayList keyList){
+    private: std::string get(BasicArrayList keyList){
 
-    commonSeps: CommonSeps = CommonSeps.getInstance()!;;
+    CommonSeps commonSeps = CommonSeps::getInstance();;
     
 
-    stringBuffer: StringMaker = new StringMaker();;
+    StringMaker stringBuffer = StringMaker();;
     
 
-    AND: string = "and ";;
+    std::string AND = "and ";;
     
 
-    key: Input;;
+    Input key;;
     
 
-    size: int32_t = keyList!.size()!;;
+    int32_t size = keyList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-key= keyList!.objectArray[index]! as Input;
+key= keyList.objectArray[index]! as Input;
     
-stringBuffer!.append(key.getName());
+stringBuffer.append(key.getName());
     
 
-                        if(index +1 < keyList!.size())
+                        if(index +1 < keyList.size())
                         
                                     {
                                     
-                        if(keyList!.size() == 2)
+                        if(keyList.size() == 2)
                         
                                     {
-                                    stringBuffer!.append(commonSeps!.SPACE)!.append(AND);
+                                    stringBuffer.append(commonSeps.SPACE).append(AND);
     
 
                                     }
                                 
                         else {
                             
-                        if(index +2 == keyList!.size())
+                        if(index +2 == keyList.size())
                         
                                     {
-                                    stringBuffer!.append(commonSeps!.COMMA_SEP);
+                                    stringBuffer.append(commonSeps.COMMA_SEP);
     
-stringBuffer!.append(AND);
+stringBuffer.append(AND);
     
 
                                     }
                                 
                         else {
-                            stringBuffer!.append(commonSeps!.COMMA_SEP);
+                            stringBuffer.append(commonSeps.COMMA_SEP);
     
 
                         }
@@ -211,7 +211,7 @@ stringBuffer!.append(AND);
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return stringBuffer!.toString();;
+                        return stringBuffer.toString();;
     
 }
 

@@ -44,68 +44,65 @@
 class ImageAnalysisResults
             : public Object
          {
-        
 
-    private: imageColorRangeResults: ImageColorRangeResults;
+    private: ImageColorRangeResults imageColorRangeResults;
 
-    private: imageColorResults: ImageColorResults;
+    private: ImageColorResults imageColorResults;
 
-    private: averageAmbientLevel: float= 0.0;
+    private: float averageAmbientLevel= 0.0;
 
-public constructor (){
-
-            super();
-        this.imageColorRangeResults= new ImageColorRangeResults();
+public: ImageAnalysisResults(){
+this->imageColorRangeResults= ImageColorRangeResults();
     
-this.imageColorResults= new ImageColorResults();
+this->imageColorResults= ImageColorResults();
     
 }
 
 
-    public ImageColorRangeResults getImageColorRangeResults(){
+    public: ImageColorRangeResults getImageColorRangeResults(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageColorRangeResults;
+                        return this->imageColorRangeResults;
     
 }
 
 
-    public setImageColorRangeResults(ImageColorRangeResults imageColorRangeResults){
-this.imageColorRangeResults= imageColorRangeResults;
+    public: void setImageColorRangeResults(ImageColorRangeResults imageColorRangeResults){
+this->imageColorRangeResults= imageColorRangeResults;
     
 }
 
 
-    public float getAverageAmbientLevel(){
+    public: float getAverageAmbientLevel(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.averageAmbientLevel;
+                        return this->averageAmbientLevel;
     
 }
 
 
-    public setAverageAmbientLevel(float averageAmbientLevel){
-this.averageAmbientLevel= averageAmbientLevel;
+    public: void setAverageAmbientLevel(float averageAmbientLevel){
+this->averageAmbientLevel= averageAmbientLevel;
     
 }
 
 
-    public ImageColorResults getImageColorResults(){
+    public: ImageColorResults getImageColorResults(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.imageColorResults;
+                        return this->imageColorResults;
     
 }
 
 
-    public setImageColorResults(ImageColorResults imageColorResults){
-this.imageColorResults= imageColorResults;
+    public: void setImageColorResults(ImageColorResults imageColorResults){
+this->imageColorResults= imageColorResults;
     
 }
 

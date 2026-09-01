@@ -61,57 +61,54 @@
 class ImageCopyUtil
             : public Object
          {
-        
 
-    private: static const instance: ImageCopyUtil = new ImageCopyUtil();
+    private: static ImageCopyUtil instance() { return ImageCopyUtil(); }
 
-    public static ImageCopyUtil getInstance(){
+    public: static ImageCopyUtil getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return ImageCopyUtil.instance;
+                        return ImageCopyUtil::instance();
     
 }
 
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: const imageUtil: ImageUtil = ImageUtil.getInstance()!;
+    private: const ImageUtil imageUtil = ImageUtil::getInstance();
 
-    private: const imageCreationUtil: ImageCreationUtil = ImageCreationUtil.getInstance()!;
+    private: const ImageCreationUtil imageCreationUtil = ImageCreationUtil::getInstance();
 
-private constructor (){
-
-            super();
-        }
+private: ImageCopyUtil(){
+}
 
 
-    private: anchor: int32_t = Anchor.TOP_LEFT;
+    private: int32_t anchor = Anchor::TOP_LEFT;
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageForRotation(Image originalImage){
+    public: Image createImageForRotation(Image originalImage){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.createImage(originalImage);;
+                        return this->createImage(originalImage);;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Image createImage(Image originalImage){
+    public: Image createImage(Image originalImage){
 
-    image: Image = this.imageCreationUtil!.createImageWH(originalImage!.getWidth(), originalImage!.getHeight())!;;
+    Image image = this->imageCreationUtil.createImageWH(originalImage.getWidth(), originalImage.getHeight());;
     
 
                         if(image.isMutable())
                         
                                     {
-                                    image.getGraphics()!.drawImage(originalImage, 0, 0, this.anchor);
+                                    image.getGraphics().drawImage(originalImage, 0, 0, this->anchor);
     
 
 
@@ -126,7 +123,7 @@ private constructor (){
                             
 
 
-                            throw new Exception("Not Mutable");
+                            throw Exception("Not Mutable");
                     
 
                         }
@@ -136,12 +133,12 @@ private constructor (){
 
                 //@Throws(Exception.constructor)
             
-    public Image createImageScale(Image originalImage, float canvasScale, bool resize){
+    public: Image createImageScale(Image originalImage, float canvasScale, bool resize){
 
-    newWidth: int32_t = static_cast<int32_t>((originalImage!.getWidth() *canvasScale));;
+    int32_t newWidth = static_cast<int32_t>((originalImage.getWidth() *canvasScale));;
     
 
-    newHeight: int32_t = static_cast<int32_t>((originalImage!.getHeight() *canvasScale));;
+    int32_t newHeight = static_cast<int32_t>((originalImage.getHeight() *canvasScale));;
     
 
                         if(resize)
@@ -169,13 +166,13 @@ private constructor (){
                                     }
                                 
 
-    originalBufferedImage: BufferedImage = this.imageUtil!.getBufferedImage(originalImage)!;;
+    BufferedImage originalBufferedImage = this->imageUtil.getBufferedImage(originalImage);;
     
 
-    bufferedImage: BufferedImage = this.imageUtil!.createBufferedImageWithLargerCanvas(originalBufferedImage, newWidth, newHeight)!;;
+    BufferedImage bufferedImage = this->imageUtil.createBufferedImageWithLargerCanvas(originalBufferedImage, newWidth, newHeight);;
     
 
-    image: J2SEImmutableImage = new J2SEImmutableImage(bufferedImage);;
+    J2SEImmutableImage image = J2SEImmutableImage(bufferedImage);;
     
 
 

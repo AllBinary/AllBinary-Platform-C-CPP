@@ -41,28 +41,25 @@
 #include "AnimationBehavior.h"
 
 class IndexedAnimationBehaviorFactory: public AnimationBehaviorFactory {
-        
 
-    public frameDelayTime: int64_t;
+    public: int64_t frameDelayTime;
 
-    public loopTotal: int32_t;
+    public: int32_t loopTotal;
 
-public constructor (int32_t loopTotal, int64_t frameDelayTime){
-
-            super();
-        this.loopTotal= loopTotal;
+public: IndexedAnimationBehaviorFactory(int32_t loopTotal, int64_t frameDelayTime){
+this->loopTotal= loopTotal;
     
-this.frameDelayTime= frameDelayTime;
+this->frameDelayTime= frameDelayTime;
     
 }
 
 
-    public AnimationBehavior getOrCreateInstance(){
+    public: AnimationBehavior getOrCreateInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return new IndexedAnimationBehavior(this.loopTotal, this.frameDelayTime);
+                        return IndexedAnimationBehavior(this->loopTotal, this->frameDelayTime);
     
 }
 

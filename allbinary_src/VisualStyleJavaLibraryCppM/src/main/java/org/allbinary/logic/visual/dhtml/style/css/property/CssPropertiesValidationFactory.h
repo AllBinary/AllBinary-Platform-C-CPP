@@ -64,15 +64,14 @@
 class CssPropertiesValidationFactory
             : public Object
          {
-        
 
                 //@Throws(Exception.constructor)
             
-    public static Vector getInstance(NodeList nodeList);
+    public: static Vector getInstance(NodeList nodeList);
 
-    public static Vector getInstance(HashMap<any, any> hashMap);
+    public: static Vector getInstance(HashMap<any, any> hashMap);
 
-private constructor ();
+private: CssPropertiesValidationFactory();
 
 };
 

@@ -7,6 +7,8 @@
         #ifndef ORG_ALLBINARY_ANIMATION_PATHPARSER_H
         #define ORG_ALLBINARY_ANIMATION_PATHPARSER_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Object.h"
         
             #include "../../../java/lang/Double.h"
@@ -39,13 +41,12 @@
 class PathParser
             : public Object
          {
-        
 
-    static std::vector<string> tokenize(string d);
+    private: static std::vector<std::string> tokenize(std::string d);
 
-    public static int32_t parsePath(string d, std::vector<int32_t> outX, std::vector<int32_t> outY, int32_t maxPoints);
+    public: static int32_t parsePath(std::string d, std::vector<int32_t> outX, std::vector<int32_t> outY, int32_t maxPoints);
 
-    static bool isCommand(string tok);
+    private: static bool isCommand(std::string tok);
 
 };
 

@@ -93,89 +93,88 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         #include "BasePatrolAI.h"
 
-class PacePatrolAI: public BasePatrolAI: public TrackingEventListenerInterface {
-        
+class PacePatrolAI: public BasePatrolAI, public TrackingEventListenerInterface {
 
-    private: trackingList: BasicArrayList;
+    private: BasicArrayList trackingList;
 
-    private: firingDistance: int32_t= 0;
+    private: int32_t firingDistance= 0;
 
-    isFollowLimitedByTerrain: bool = false;
+    protected: bool isFollowLimitedByTerrain = false;
 
-public constructor (Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
+public: PacePatrolAI(Hashtable<any, any> hashtable, AllBinaryLayer ownerLayerInterface, GameInput gameInput){
             super(hashtable, ownerLayerInterface, gameInput);
                     
 
                             //For kotlin this is before the body of the constructor.
                     
-TrackingEventHandler.getInstance()!.addListenerInterface(this);
+TrackingEventHandler::getInstance().addListenerInterface(this);
     
-this.trackingList= new BasicArrayListD();
+this->trackingList= BasicArrayListD();
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public processAI(AllBinaryLayerManager allBinaryLayerManager){
-this.update();
+    public: void processAI(AllBinaryLayerManager allBinaryLayerManager){
+this->update();
     
 
-    direction: Direction = this.setFiringDirectionForTargetIfInRange()!;;
+    Direction direction = this->setFiringDirectionForTargetIfInRange();;
     
 
-    directionFactory: DirectionFactory = DirectionFactory.getInstance()!;;
+    DirectionFactory directionFactory = DirectionFactory::getInstance();;
     
 
-                        if(direction == directionFactory!.LEFT)
+                        if(direction == directionFactory.LEFT)
                         
                                     {
                                     
-                        if(this.lastKeyDirection != keyDirection || !this.isFollowLimitedByTerrain)
+                        if(this->lastKeyDirection != keyDirection || !this->isFollowLimitedByTerrain)
                         
                                     {
-                                    super.processKeyAI(Canvas.LEFT);
+                                    super.processKeyAI(Canvas::LEFT);
     
 
                                     }
                                 
-keyDirection= Canvas.LEFT;
+keyDirection= Canvas::LEFT;
     
-this.lastKeyDirection= keyDirection;
+this->lastKeyDirection= keyDirection;
     
 xTotalDistance= 0;
     
-super.processKeyAI(Canvas.KEY_NUM1);
+super.processKeyAI(Canvas::KEY_NUM1);
     
 
                                     }
                                 
                              else 
-                        if(direction == directionFactory!.RIGHT)
+                        if(direction == directionFactory.RIGHT)
                         
                                     {
                                     
-                        if(this.lastKeyDirection != keyDirection || !this.isFollowLimitedByTerrain)
+                        if(this->lastKeyDirection != keyDirection || !this->isFollowLimitedByTerrain)
                         
                                     {
-                                    super.processKeyAI(Canvas.RIGHT);
+                                    super.processKeyAI(Canvas::RIGHT);
     
 
                                     }
                                 
-keyDirection= Canvas.RIGHT;
+keyDirection= Canvas::RIGHT;
     
-this.lastKeyDirection= keyDirection;
+this->lastKeyDirection= keyDirection;
     
 xTotalDistance= 0;
     
-super.processKeyAI(Canvas.KEY_NUM1);
+super.processKeyAI(Canvas::KEY_NUM1);
     
 
                                     }
                                 
                         else {
-                            super.processKeyAI(this.keyDirection);
+                            super.processKeyAI(this->keyDirection);
     
 
                         }
@@ -183,56 +182,56 @@ super.processKeyAI(Canvas.KEY_NUM1);
 }
 
 
-    Direction setFiringDirectionForTargetIfInRange(){
+    private: Direction setFiringDirectionForTargetIfInRange(){
 
-    directionFactory: DirectionFactory = DirectionFactory.getInstance()!;;
+    DirectionFactory directionFactory = DirectionFactory::getInstance();;
     
 
-    ownerLayerInterface: AllBinaryLayer = this.getOwnerLayerInterface()!;;
+    AllBinaryLayer ownerLayerInterface = this->getOwnerLayerInterface();;
     
 
-    direction: Direction = directionFactory!.NOT_BORDERED_WITH;;
+    Direction direction = directionFactory.NOT_BORDERED_WITH;;
     
 
-    lastTrackingEvent: TrackingEvent;;
+    TrackingEvent lastTrackingEvent;;
     
 
-    lastTrackingLayerInterface: LayerInterface;;
+    LayerInterface lastTrackingLayerInterface;;
     
 
-    directionCompositeInterface: DirectionCompositeInterface;;
+    DirectionCompositeInterface directionCompositeInterface;;
     
 
-    size: int32_t = this.trackingList!.size()!;;
+    int32_t size = this->trackingList.size();;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-lastTrackingEvent= this.trackingList!.get(0) as TrackingEvent;
+lastTrackingEvent= this->trackingList.get(0) as TrackingEvent;
     
-lastTrackingLayerInterface= lastTrackingEvent!.getLayerInterface();
-    
-
-    x: int32_t = lastTrackingLayerInterface!.getXP()!;;
+lastTrackingLayerInterface= lastTrackingEvent.getLayerInterface();
     
 
-    y: int32_t = lastTrackingLayerInterface!.getYP()!;;
+    int32_t x = lastTrackingLayerInterface.getXP();;
     
 
-    yDistance: int32_t = ownerLayerInterface!.getYP() -y -ownerLayerInterface!.getHeight();;
+    int32_t y = lastTrackingLayerInterface.getYP();;
     
 
-    xDistance: int32_t = ownerLayerInterface!.getXP() -x -ownerLayerInterface!.getWidth();;
+    int32_t yDistance = ownerLayerInterface.getYP() -y -ownerLayerInterface.getHeight();;
     
 
-    absXDistance: int32_t = Math.abs(xDistance)!;;
+    int32_t xDistance = ownerLayerInterface.getXP() -x -ownerLayerInterface.getWidth();;
     
 
-    absYDistance: int32_t = Math.abs(yDistance)!;;
+    int32_t absXDistance = Math::abs(xDistance);;
+    
+
+    int32_t absYDistance = Math::abs(yDistance);;
     
 
                         if(absYDistance <= 100)
@@ -242,22 +241,22 @@ lastTrackingLayerInterface= lastTrackingEvent!.getLayerInterface();
                         if(absXDistance < getFiringDistance() /2)
                         
                                     {
-                                    directionCompositeInterface= this.getOwnerLayerInterface() as DirectionCompositeInterface;
+                                    directionCompositeInterface= this->getOwnerLayerInterface() as DirectionCompositeInterface;
     
 
-                        if(xDistance < 0 && directionCompositeInterface!.getDirection() == directionFactory!.RIGHT)
+                        if(xDistance < 0 && directionCompositeInterface.getDirection() == directionFactory.RIGHT)
                         
                                     {
-                                    direction= directionFactory!.RIGHT;
+                                    direction= directionFactory.RIGHT;
     
 
                                     }
                                 
                              else 
-                        if(xDistance > 0 && directionCompositeInterface!.getDirection() == directionFactory!.LEFT)
+                        if(xDistance > 0 && directionCompositeInterface.getDirection() == directionFactory.LEFT)
                         
                                     {
-                                    direction= directionFactory!.LEFT;
+                                    direction= directionFactory.LEFT;
     
 
                                     }
@@ -279,36 +278,36 @@ lastTrackingLayerInterface= lastTrackingEvent!.getLayerInterface();
 }
 
 
-    public disable(){
+    public: void disable(){
 }
 
 
-    public onEvent(AllBinaryEventObject eventObject){
-ForcedLogUtil.log(EventStrings.getInstance()!.PERFORMANCE_MESSAGE, this);
+    public: void onEvent(AllBinaryEventObject eventObject){
+ForcedLogUtil::log(EventStrings::getInstance().PERFORMANCE_MESSAGE, this);
     
 }
 
 
-    public onMovement(TrackingEvent trackingEvent){
-this.trackingList!.clear();
+    public: void onMovement(TrackingEvent trackingEvent){
+this->trackingList.clear();
     
-this.trackingList!.add(trackingEvent);
+this->trackingList.add(trackingEvent);
     
 }
 
 
-    public int32_t getFiringDistance(){
+    public: int32_t getFiringDistance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.firingDistance;
+                        return this->firingDistance;
     
 }
 
 
-    public setFiringDistance(int32_t firingDistance){
-this.firingDistance= firingDistance;
+    public: void setFiringDistance(int32_t firingDistance){
+this->firingDistance= firingDistance;
     
 }
 

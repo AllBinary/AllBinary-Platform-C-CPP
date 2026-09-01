@@ -18,6 +18,8 @@
 
 
 
+            #include <vector>
+        
 
 
 
@@ -38,11 +40,10 @@
         //Current folder imports from return types, extended types, and scope (deduplicated)
         
 class VectorInterface {
-        
 
     std::vector<std::vector<int32_t>> getPoints(int32_t frame)
 
-    setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints)
+    void setPoints(std::vector<std::vector<std::vector<int32_t>>> currentPoints)
 
 };
 

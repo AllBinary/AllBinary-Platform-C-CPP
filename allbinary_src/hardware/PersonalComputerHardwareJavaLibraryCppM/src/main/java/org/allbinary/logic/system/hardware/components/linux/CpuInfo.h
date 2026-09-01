@@ -45,49 +45,48 @@
 class CpuInfo
             : public Object
          {
-        
 
-    public static const PROCESSOR: CpuInfo = new CpuInfo("processor");
+    public: static const CpuInfo PROCESSOR = CpuInfo("processor");
 
-    public static const VENDORID: CpuInfo = new CpuInfo("vendor_id");
+    public: static const CpuInfo VENDORID = CpuInfo("vendor_id");
 
-    public static const CPUFAMILY: CpuInfo = new CpuInfo("cpu family");
+    public: static const CpuInfo CPUFAMILY = CpuInfo("cpu family");
 
-    public static const MODEL: CpuInfo = new CpuInfo("model");
+    public: static const CpuInfo MODEL = CpuInfo("model");
 
-    public static const MODELNAME: CpuInfo = new CpuInfo("model name");
+    public: static const CpuInfo MODELNAME = CpuInfo("model name");
 
-    public static const STEPPING: CpuInfo = new CpuInfo("stepping");
+    public: static const CpuInfo STEPPING = CpuInfo("stepping");
 
-    public static const CPUMHZ: CpuInfo = new CpuInfo("cpu MHz");
+    public: static const CpuInfo CPUMHZ = CpuInfo("cpu MHz");
 
-    public static const CACHESIZE: CpuInfo = new CpuInfo("cache size");
+    public: static const CpuInfo CACHESIZE = CpuInfo("cache size");
 
-    public static const FDIVBUG: CpuInfo = new CpuInfo("fdiv_bug");
+    public: static const CpuInfo FDIVBUG = CpuInfo("fdiv_bug");
 
-    public static const HLTBUG: CpuInfo = new CpuInfo("hlt_bug");
+    public: static const CpuInfo HLTBUG = CpuInfo("hlt_bug");
 
-    public static const F00FBUG: CpuInfo = new CpuInfo("f00f_bug");
+    public: static const CpuInfo F00FBUG = CpuInfo("f00f_bug");
 
-    public static const COMABUG: CpuInfo = new CpuInfo("coma_bug");
+    public: static const CpuInfo COMABUG = CpuInfo("coma_bug");
 
-    public static const FPU: CpuInfo = new CpuInfo("fpu");
+    public: static const CpuInfo FPU = CpuInfo("fpu");
 
-    public static const FPUEXCEPTION: CpuInfo = new CpuInfo("fpu_exception");
+    public: static const CpuInfo FPUEXCEPTION = CpuInfo("fpu_exception");
 
-    public static const CPUIDLEVEL: CpuInfo = new CpuInfo("cache size");
+    public: static const CpuInfo CPUIDLEVEL = CpuInfo("cache size");
 
-    public static const WP: CpuInfo = new CpuInfo("yes");
+    public: static const CpuInfo WP = CpuInfo("yes");
 
-    public static const FLAGS: CpuInfo = new CpuInfo("flags");
+    public: static const CpuInfo FLAGS = CpuInfo("flags");
 
-    public static const BOGOMIPS: CpuInfo = new CpuInfo("bogomips");
+    public: static const CpuInfo BOGOMIPS = CpuInfo("bogomips");
 
-    private: name: string;
+    private: std::string name;
 
-private constructor (string name);
+private: CpuInfo(std::string name);
 
-    public string toString();
+    public: std::string toString();
 
 };
 

@@ -76,37 +76,34 @@
 class DirectoryDataModel
             : public Object
         : public DomNodeInterface, public TransformInterface {
-        
 
-    private: const fileBasicArrayList: BasicArrayList;
+    private: BasicArrayList fileBasicArrayList;
 
-    private: transformDocumentInterface: TransformDocumentInterface;
+    private: TransformDocumentInterface transformDocumentInterface;
 
-public constructor (AbFile file){
-
-            super();
-        this.fileBasicArrayList= Directory.getInstance()!.search(file);
+public: DirectoryDataModel(AbFile file){
+this->fileBasicArrayList= Directory::getInstance().search(file);
     
-this.transformDocumentInterface= TransformDocumentFactory.getInstance() as TransformDocumentInterface;
+this->transformDocumentInterface= TransformDocumentFactory::getInstance() as TransformDocumentInterface;
     
 }
 
 
-    public NO_TYPE: int32_t = 0;
+    public: int32_t NO_TYPE = 0;
 
-    public int32_t getTypeId(){
+    public: int32_t getTypeId(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.NO_TYPE;
+                        return this->NO_TYPE;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public TransformInfoInterface getTransformInfoInterface(){
+    public: TransformInfoInterface getTransformInfoInterface(){
 
 
 
@@ -116,49 +113,49 @@ this.transformDocumentInterface= TransformDocumentFactory.getInstance() as Trans
 }
 
 
-    public setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
-this.transformDocumentInterface= transformDocumentInterface;
+    public: void setTransformDocumentInterface(TransformDocumentInterface transformDocumentInterface){
+this->transformDocumentInterface= transformDocumentInterface;
     
 }
 
 
-    public TransformDocumentInterface getTransformDocumentInterface(){
+    public: TransformDocumentInterface getTransformDocumentInterface(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.transformDocumentInterface;
+                        return this->transformDocumentInterface;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public Node toXmlNode(Document document){
+    public: Node toXmlNode(Document document){
 
-    dirNode: Node = document.createElement("dir")!;;
+    Node dirNode = document.createElement("dir");;
     
 
-    size: int32_t = this.fileBasicArrayList!.size()!;;
+    int32_t size = this->fileBasicArrayList.size();;
     
 
-    nextFile: AbFile;;
+    AbFile nextFile;;
     
 
-    fileNode: Node;;
+    Node fileNode;;
     
 
 
 
 
                         for (
-    index: int32_t = 0;index < size; index++)
+    int32_t index = 0;index < size; index++)
         {
-nextFile= this.fileBasicArrayList!.get(index) as AbFile;
+nextFile= this->fileBasicArrayList.get(index) as AbFile;
     
-fileNode= new FileDomDataModel(nextFile).toXmlNode(document);
+fileNode= FileDomDataModel(nextFile).toXmlNode(document);
     
-dirNode!.appendChild(fileNode);
+dirNode.appendChild(fileNode);
     
 }
 
@@ -173,29 +170,29 @@ dirNode!.appendChild(fileNode);
 
                 //@Throws(Exception.constructor)
             
-    public Document toXmlDoc(){
+    public: Document toXmlDoc(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return this.getTransformDocumentInterface()!.getDoc();;
+                        return this->getTransformDocumentInterface().getDoc();;
     
 }
 
 
                 //@Throws(Exception.constructor)
             
-    public string view(){
+    public: std::string view(){
 
-    node: Node = this.toXmlNode(this.getTransformDocumentInterface()!.getDoc())!;;
+    Node node = this->toXmlNode(this->getTransformDocumentInterface().getDoc());;
     
-this.getTransformDocumentInterface()!.getBaseNode()!.appendChild(node);
+this->getTransformDocumentInterface().getBaseNode().appendChild(node);
     
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return DomDocumentHelper.toString(this.getTransformDocumentInterface()!.getDoc());;
+                        return DomDocumentHelper::toString(this->getTransformDocumentInterface().getDoc());;
     
 }
 

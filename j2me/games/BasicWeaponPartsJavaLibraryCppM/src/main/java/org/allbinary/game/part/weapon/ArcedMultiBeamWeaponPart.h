@@ -71,19 +71,18 @@
         #include "BasicWeaponPart.h"
 
 class ArcedMultiBeamWeaponPart: public BasicWeaponPart {
-        
 
-    private: const weaponLayerCircularStaticPool: WeaponLayerCircularPool;
+    private: WeaponLayerCircularPool weaponLayerCircularStaticPool;
 
-    private: const total: int32_t;
+    private: int32_t total;
 
-public constructor (Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, int32_t total, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
+public: ArcedMultiBeamWeaponPart(Animation animationInterface, AllBinaryLayer sourceLayerInterface, WeaponLayerCircularPool weaponLayerCircularStaticPool, int32_t total, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface, RelativeRelationship relativeRelationship);
 
-    private: const TOTAL_ANGLE: int32_t = static_cast<int32_t>(AngleFactory.getInstance()!.TOTAL_ANGLE);
+    private: const int32_t TOTAL_ANGLE = static_cast<int32_t>(AngleFactory::getInstance().TOTAL_ANGLE);
 
                 //@Throws(Exception.constructor)
             
-    public processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
+    public: void processScore(AllBinaryLayerManager allbinaryLayerManager, int16_t angle, int16_t otherAngle, WeaponProperties weaponProperties, ScoreableInterface scoreableInterface);
 
 };
 

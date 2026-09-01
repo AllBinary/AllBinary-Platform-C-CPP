@@ -42,51 +42,50 @@
 class RTSGameStrings
             : public Object
          {
-        
 
-    private: static const instance: RTSGameStrings = new RTSGameStrings();
+    private: static RTSGameStrings instance() { return RTSGameStrings(); }
 
-    public static RTSGameStrings getInstance(){
+    public: static RTSGameStrings getInstance(){
 
 
 
                         //if statement needs to be on the same line and ternary does not work the same way.
-                        return RTSGameStrings.instance;
+                        return RTSGameStrings::instance();
     
 }
 
 
-    public const DRAG_TO_SPOT: string = "Please Drag";
+    public: const std::string DRAG_TO_SPOT = "Please Drag";
 
-    public const NOT_YOURS: string = "Not Yours";
+    public: const std::string NOT_YOURS = "Not Yours";
 
-    public const NEW_UNIT: string = "New Unit";
+    public: const std::string NEW_UNIT = "New Unit";
 
-    public const NEW_WAYPOINT: string = "New Waypoint";
+    public: const std::string NEW_WAYPOINT = "New Waypoint";
 
-    public const BUILDING: string = "Building";
+    public: const std::string BUILDING = "Building";
 
-    public const UPGRADE: string = "Upgrading";
+    public: const std::string UPGRADE = "Upgrading";
 
-    public const DOWNGRADE: string = "Downgrading";
+    public: const std::string DOWNGRADE = "Downgrading";
 
-    public const NO_MONEY: string = "Not Enough Money";
+    public: const std::string NO_MONEY = "Not Enough Money";
 
-    public const SPOT_TAKEN: string = "Spot Taken";
+    public: const std::string SPOT_TAKEN = "Spot Taken";
 
-    public const BUILDING_COLLISION: string = "Building Collision";
+    public: const std::string BUILDING_COLLISION = "Building Collision";
 
-    public const STRUCTURE_TO_CLOSE: string = "Building To Close";
+    public: const std::string STRUCTURE_TO_CLOSE = "Building To Close";
 
-    public const MAP_EDGE: string = "Map Edge";
+    public: const std::string MAP_EDGE = "Map Edge";
 
-    public const ROAD_COLLISION: string = "Road Collision";
+    public: const std::string ROAD_COLLISION = "Road Collision";
 
-    public const SELECT_BUILD_SPOT: string = "Select Build Spot";
+    public: const std::string SELECT_BUILD_SPOT = "Select Build Spot";
 
-    public const BUILD_ON_PATH: string = "Not On Path";
+    public: const std::string BUILD_ON_PATH = "Not On Path";
 
-    public const DRAGGABLE: string = "Draggable";
+    public: const std::string DRAGGABLE = "Draggable";
 
 };
 

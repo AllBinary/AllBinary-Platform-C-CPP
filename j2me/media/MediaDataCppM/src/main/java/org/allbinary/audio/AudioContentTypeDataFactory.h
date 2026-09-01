@@ -46,25 +46,24 @@
 class AudioContentTypeDataFactory
             : public Object
          {
-        
 
-    private: static const instance: AudioContentTypeDataFactory = new AudioContentTypeDataFactory();
+    private: static AudioContentTypeDataFactory instance() { return AudioContentTypeDataFactory(); }
 
-    public static AudioContentTypeDataFactory getInstance();
+    public: static AudioContentTypeDataFactory getInstance();
 
-    public const MIME_AUDIO_TONE: AudioContentTypeData = new AudioContentTypeData("audio/x-tone-seq");
+    public: const AudioContentTypeData MIME_AUDIO_TONE = AudioContentTypeData("audio/x-tone-seq");
 
-    public const MIME_AUDIO_AMR: AudioContentTypeData = new AudioContentTypeData("audio/amr");
+    public: const AudioContentTypeData MIME_AUDIO_AMR = AudioContentTypeData("audio/amr");
 
-    public const MIME_AUDIO_AMR_WB: AudioContentTypeData = new AudioContentTypeData("audio/amr-wb");
+    public: const AudioContentTypeData MIME_AUDIO_AMR_WB = AudioContentTypeData("audio/amr-wb");
 
-    public const MIME_AUDIO_WAV: AudioContentTypeData = new AudioContentTypeData("audio/x-wav");
+    public: const AudioContentTypeData MIME_AUDIO_WAV = AudioContentTypeData("audio/x-wav");
 
-    public const MIME_AUDIO_MIDI: AudioContentTypeData = new AudioContentTypeData("audio/midi");
+    public: const AudioContentTypeData MIME_AUDIO_MIDI = AudioContentTypeData("audio/midi");
 
-    public const MIME_AUDIO_SP_MIDI: AudioContentTypeData = new AudioContentTypeData("audio/sp-midi");
+    public: const AudioContentTypeData MIME_AUDIO_SP_MIDI = AudioContentTypeData("audio/sp-midi");
 
-private constructor ();
+private: AudioContentTypeDataFactory();
 
 };
 

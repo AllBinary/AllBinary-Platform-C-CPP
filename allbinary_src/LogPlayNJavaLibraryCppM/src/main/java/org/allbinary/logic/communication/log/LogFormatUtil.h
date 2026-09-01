@@ -68,45 +68,44 @@
 /*actual*/ class LogFormatUtil
             : public Object
          {
-        
 
-    private: static const instance: LogFormatUtil = new LogFormatUtil();
+    private: static LogFormatUtil instance() { return LogFormatUtil(); }
 
-    /*actual*/ public static LogFormatUtil getInstance();
+    /*actual*/ public: static LogFormatUtil getInstance();
 
-    private: const timeStampUtil: TimeStampUtil = TimeStampUtil.getInstance()!;
+    private: const TimeStampUtil timeStampUtil = TimeStampUtil::getInstance();
 
-    private: const commonSeps: CommonSeps = CommonSeps.getInstance()!;
+    private: const CommonSeps commonSeps = CommonSeps::getInstance();
 
-    private: const LOG_ERROR: string = "\nLog-Error: ";
+    private: const std::string LOG_ERROR = "\nLog-Error: ";
 
-    private: const EMPTY: string = "Empty";
+    private: const std::string EMPTY = "Empty";
 
-    private: const STACK_TRACE: string = "\nStack Trace: ";
+    private: const std::string STACK_TRACE = "\nStack Trace: ";
 
-    private: const TIME: string = "Time: ";
+    private: const std::string TIME = "Time: ";
 
-    private: const CLASS_NAME: string = this.commonSeps!.SPACE;
+    private: const std::string CLASS_NAME = this->commonSeps.SPACE;
 
-    private: const FUNCTION_CALL: string = CommonLabels.getInstance()!.COLON_SEP;
+    private: const std::string FUNCTION_CALL = CommonLabels::getInstance().COLON_SEP;
 
-    private: const SPECIAL_MESSAGE: string = "> ";
+    private: const std::string SPECIAL_MESSAGE = "> ";
 
-private constructor ();
+private: LogFormatUtil();
 
-    /*actual*/ public string get(string className, string functionName, string specialMessage, any = {} exception);
+    /*actual*/ public: std::string get(std::string className, std::string functionName, std::string specialMessage, Object* exception);
 
-    /*actual*/ public string getS(string className, string functionName, string specialMessage);
+    /*actual*/ public: std::string getS(std::string className, std::string functionName, std::string specialMessage);
 
-    StringMaker getF(string className, string functionName);
+    private: StringMaker getF(std::string className, std::string functionName);
 
-    private: const stringUtil: StringUtil = StringUtil.getInstance()!;
+    private: const StringUtil stringUtil = StringUtil::getInstance();
 
-    private: const exceptionUtil: ExceptionUtil = ExceptionUtil.getInstance()!;
+    private: const ExceptionUtil exceptionUtil = ExceptionUtil::getInstance();
 
-    private: const nullUtil: NullUtil = NullUtil.getInstance()!;
+    private: const NullUtil nullUtil = NullUtil::getInstance();
 
-    /*actual*/ public string getO(any = {} exception);
+    /*actual*/ public: std::string getO(Object* exception);
 
 };
 

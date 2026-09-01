@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_H
         #define ORG_ALLBINARY_CANVAS_ANDROIDGAMESTATISTICS_H
 
+            #include <vector>
+        
             #include "../../../java/lang/Long.h"
         
 #include <android/view/View.h>
@@ -59,29 +61,28 @@
         #include "BaseGameStatistics.h"
 
 class AndroidGameStatistics: public BaseGameStatistics {
-        
 
-    private: view: BaseViewWrapper = BaseViewWrapper.NULL_VIEW_WRAPPER;
+    private: BaseViewWrapper view = BaseViewWrapper::NULL_VIEW_WRAPPER;
 
-    private: totalOnDraws: int64_t= 0;
+    private: int64_t totalOnDraws= 0;
 
-    private: const ANDROID_STRING_ARRAY: std::vector<string> = new Array(14);
+    private: const std::vector<std::string> ANDROID_STRING_ARRAY = new Array(14);
 
-public constructor ();
+public: AndroidGameStatistics();
 
-    public initView(View view);
+    public: void initView(View view);
 
-    public process();
+    public: void process();
 
-    public nextOnDraw();
+    public: void nextOnDraw();
 
-    private: const TOTAL_ONDRAWS: string = " Total onDraws: ";
+    private: const std::string TOTAL_ONDRAWS = " Total onDraws: ";
 
-    private: const ONDRAWS_RATE: string = " onDraws(/10) Sec: ";
+    private: const std::string ONDRAWS_RATE = " onDraws(/10) Sec: ";
 
-    public std::vector<string> toStringArray();
+    public: std::vector<std::string> toStringArray();
 
-    public string toString();
+    public: std::string toString();
 
 };
 

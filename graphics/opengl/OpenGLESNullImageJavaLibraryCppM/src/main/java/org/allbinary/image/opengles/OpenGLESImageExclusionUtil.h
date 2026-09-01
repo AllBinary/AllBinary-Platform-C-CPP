@@ -54,15 +54,14 @@
 class OpenGLESImageExclusionUtil
             : public Object
          {
-        
 
-    private: static const instance: OpenGLESImageExclusionUtil = new OpenGLESImageExclusionUtil();
+    private: static OpenGLESImageExclusionUtil instance() { return OpenGLESImageExclusionUtil(); }
 
-    public static OpenGLESImageExclusionUtil getInstance();
+    public: static OpenGLESImageExclusionUtil getInstance();
 
-    public const list: BasicArrayList = new BasicArrayListD();
+    public: const BasicArrayList list = BasicArrayListD();
 
-    public bool isCustomScaling(Image image);
+    public: bool isCustomScaling(Image image);
 
 };
 

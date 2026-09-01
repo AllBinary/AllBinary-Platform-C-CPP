@@ -21,6 +21,8 @@
         #ifndef ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
         #define ORG_ALLBINARY_DATA_RESOURCE_RESOURCEUTIL_H
 
+            #include <vector>
+        
             #include "../../../../java/lang/Object.h"
         
             #include "../../../../java/lang/ClassLoader.h"
@@ -75,33 +77,32 @@
 class ResourceUtil
             : public Object
          {
-        
 
-    private: static const instance: ResourceUtil = new ResourceUtil();
+    private: static ResourceUtil instance() { return ResourceUtil(); }
 
-    public static ResourceUtil getInstance();
+    public: static ResourceUtil getInstance();
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    private: path: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string path = StringUtil::getInstance().EMPTY_STRING;
 
-    private: ext: string = StringUtil.getInstance()!.EMPTY_STRING;
+    private: std::string ext = StringUtil::getInstance().EMPTY_STRING;
 
-private constructor ();
+private: ResourceUtil();
 
-    public setLoadingPaths(string path, string ext);
+    public: void setLoadingPaths(std::string path, std::string ext);
 
-    public setClassLoader(ClassLoader classLoader);
-
-                //@Throws(Exception.constructor)
-            
-    public InputStream getResourceAsStream(string resource);
+    public: void setClassLoader(ClassLoader classLoader);
 
                 //@Throws(Exception.constructor)
             
-    InputStream getResourceAsStreamAtStart(string resource, int32_t startIndex);
+    public: InputStream getResourceAsStream(std::string resource);
 
-    public addResource(string resource, Integer value);
+                //@Throws(Exception.constructor)
+            
+    private: InputStream getResourceAsStreamAtStart(std::string resource, int32_t startIndex);
+
+    public: void addResource(std::string resource, Integer value);
 
 };
 

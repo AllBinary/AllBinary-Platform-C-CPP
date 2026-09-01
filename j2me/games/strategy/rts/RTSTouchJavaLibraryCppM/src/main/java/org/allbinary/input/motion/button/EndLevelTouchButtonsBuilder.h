@@ -59,11 +59,10 @@
 #include "UpgradeDowngradeTouchButtonsBuilder.h"
 
 class EndLevelTouchButtonsBuilder: public TouchButtonsListBuilder {
-        
 
-    const logUtil: LogUtil = LogUtil.getInstance()!;
+    protected: const LogUtil logUtil = LogUtil::getInstance();
 
-    public BasicArrayList getList();
+    public: BasicArrayList getList();
 
 };
 
